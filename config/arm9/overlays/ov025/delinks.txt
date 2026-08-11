@@ -169,7 +169,7 @@ asm/overlays/ov025/overlay025_selection_helpers_0220088c.s:
 asm/overlays/ov025/overlay025_selection_helpers_02200940.s:
     categories: Game code
     .text start:0x02200940 end:0x022009d8
-asm/overlays/ov025/overlay025_intro_state_022009d8.s:
+src/overlays/ov025/overlay025_intro_state.c:
     categories: Game code
     .text start:0x022009d8 end:0x02200e54
 src/overlays/ov025/overlay025_idle_state.c:
