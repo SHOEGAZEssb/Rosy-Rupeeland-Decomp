@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_effect_runtime.c. */
+/* Exact fallback; see src/overlays/ov025/overlay025_effect_frame_update.c. */
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020918f4
 .extern func_020948e4

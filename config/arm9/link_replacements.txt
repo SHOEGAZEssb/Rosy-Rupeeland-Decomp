@@ -3534,7 +3534,7 @@ build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe4cc.o 
 build/decomp/delinks/src/overlays/ov025/overlay025_effect_duration.o = build/decomp/src/overlays/ov025/overlay025_effect_duration.o
 build/decomp/delinks/src/overlays/ov025/overlay025_effect_return_config.o = build/decomp/src/overlays/ov025/overlay025_effect_return_config.o
 build/decomp/delinks/src/overlays/ov025/overlay025_effect_animation_cycle.o = build/decomp/src/overlays/ov025/overlay025_effect_animation_cycle.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_effect_runtime_021feb4c.o = build/decomp/asm/overlays/ov025/overlay025_effect_runtime_021feb4c.o
+build/decomp/delinks/src/overlays/ov025/overlay025_effect_frame_update.o = build/decomp/src/overlays/ov025/overlay025_effect_frame_update.o
 build/decomp/delinks/src/overlays/ov025/overlay025_effect_duration_query.o = build/decomp/src/overlays/ov025/overlay025_effect_duration_query.o
 build/decomp/delinks/src/overlays/ov025/overlay025_callback_helpers.o = build/decomp/src/overlays/ov025/overlay025_callback_helpers.o
 build/decomp/delinks/src/overlays/ov025/overlay025_sprite_owner_ready.o = build/decomp/src/overlays/ov025/overlay025_sprite_owner_ready.o
