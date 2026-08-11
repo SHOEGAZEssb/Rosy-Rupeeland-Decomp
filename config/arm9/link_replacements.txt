@@ -3513,8 +3513,7 @@ build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_trailing_space_cle
 build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_nonspace_count.o = build/decomp/src/overlays/ov025/overlay025_name_entry_nonspace_count.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_name_entry_021fd488.o = build/decomp/asm/overlays/ov025/overlay025_name_entry_021fd488.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_record_widget_021fd5dc.o = build/decomp/asm/overlays/ov025/overlay025_record_widget_021fd5dc.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_record_widget_021fd9e4.o = build/decomp/asm/overlays/ov025/overlay025_record_widget_021fd9e4.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_record_widget_021fdb18.o = build/decomp/asm/overlays/ov025/overlay025_record_widget_021fdb18.o
+build/decomp/delinks/src/overlays/ov025/overlay025_record_row_presentation.o = build/decomp/src/overlays/ov025/overlay025_record_row_presentation.o
 build/decomp/delinks/src/overlays/ov025/overlay025_record_row_inactive_query.o = build/decomp/src/overlays/ov025/overlay025_record_row_inactive_query.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_record_widget_021fdc60.o = build/decomp/asm/overlays/ov025/overlay025_record_widget_021fdc60.o
 build/decomp/delinks/src/overlays/ov025/overlay025_record_row_canvas_clear.o = build/decomp/src/overlays/ov025/overlay025_record_row_canvas_clear.o

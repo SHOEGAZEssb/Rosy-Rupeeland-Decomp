@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_record_widget.c. */
+/* Exact fallback; see overlay025_record_row_presentation.c. */
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 

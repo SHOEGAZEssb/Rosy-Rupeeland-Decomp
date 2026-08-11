@@ -129,67 +129,6 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
     return widget;
 }
 
-static void set_digit_modes(void *widget, s32 base, s32 separator)
-{
-    s32 value = FIELD(s32, widget, 0x7c);
-    if (value < 10) {
-        void *sprite = FIELD(void *, widget, 0x14);
-        if (sprite) GraphicsSpriteState_SetAnimationIndex(sprite, FIELD(u8, sprite, 0x38) % 10 + base);
-        sprite = FIELD(void *, widget, 0x18);
-        if (sprite) GraphicsSpriteState_SetAnimationIndex(sprite, separator + 0x12);
-        sprite = FIELD(void *, widget, 0x1c);
-        if (sprite) GraphicsSpriteState_SetAnimationIndex(sprite, base);
-    } else {
-        for (s32 i = 0; i < 6; ++i) {
-            void *sprite = FIELD(void *, widget, 0x14 + i * 4);
-            if (!sprite) continue;
-            if (i == 2) GraphicsSpriteState_SetAnimationIndex(sprite, separator);
-            else GraphicsSpriteState_SetAnimationIndex(sprite, FIELD(u8, sprite, 0x38) % 10 + base);
-        }
-    }
-}
-
-/*
- * Selects the row and moves its sprite owner to `y + 0x58`. Active rows use
- * selected main/digit/value animations (base 10, separator 30), while inactive
- * rows use main animation zero. The index badge selects animation 2*index+4.
- * Widget and sprite animation state change; returns void.
- */
-extern "C" void func_ov025_021fd9e4(void *widget, s32 y)
-{
-    FIELD(s32, widget, 0x88) = 1;
-    FIELD(s32, FIELD(void *, widget, 0xc), 0x18) = y + 0x58;
-    if (FIELD(s32, widget, 0x74)) {
-        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10),
-                      FIELD(s32, widget, 0x80) ? 2 : 0x2e);
-        set_digit_modes(widget, 10, 30);
-        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x2c),
-                      FIELD(s32, widget, 0x78) * 2 + 4);
-    } else {
-        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10), 0);
-    }
-}
-
-/*
- * Deselects the row and moves its owner to `y + 0x58`. Active rows use the
- * alternate main/digit/value animations (base 20, separator 31); inactive rows
- * use main animation one. The index badge selects animation 2*index+5.
- */
-extern "C" void func_ov025_021fdb18(void *widget, s32 y)
-{
-    FIELD(s32, widget, 0x88) = 0;
-    FIELD(s32, FIELD(void *, widget, 0xc), 0x18) = y + 0x58;
-    if (FIELD(s32, widget, 0x74)) {
-        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10),
-                      FIELD(s32, widget, 0x80) ? 3 : 0x2f);
-        set_digit_modes(widget, 20, 31);
-        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x2c),
-                      FIELD(s32, widget, 0x78) * 2 + 5);
-    } else {
-        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10), 1);
-    }
-}
-
 /* Returns one when the row is inactive (+0x74 is zero), otherwise zero. */
 extern "C" s32 func_ov025_021fdc4c(void *widget)
 {

@@ -36,12 +36,9 @@ asm/overlays/ov025/overlay025_name_entry_021fd488.s:
 asm/overlays/ov025/overlay025_record_widget_021fd5dc.s:
     categories: Game code
     .text start:0x021fd5dc end:0x021fd9e4
-asm/overlays/ov025/overlay025_record_widget_021fd9e4.s:
+src/overlays/ov025/overlay025_record_row_presentation.c:
     categories: Game code
-    .text start:0x021fd9e4 end:0x021fdb18
-asm/overlays/ov025/overlay025_record_widget_021fdb18.s:
-    categories: Game code
-    .text start:0x021fdb18 end:0x021fdc4c
+    .text start:0x021fd9e4 end:0x021fdc4c
 src/overlays/ov025/overlay025_record_row_inactive_query.c:
     categories: Game code
     .text start:0x021fdc4c end:0x021fdc60
