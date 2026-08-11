@@ -18,7 +18,6 @@ extern void Heap_Free(void *);
 extern void GameWork_SetFlag(void *, s32);
 extern void func_020593ac(void *, s32, s32, s32, s32, s32);
 extern void func_02071eb8(void *);
-extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
@@ -26,8 +25,6 @@ extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_020927b8(void *);
 extern s32 func_02093360(void *, const u16 *);
-extern void func_020954e0(void *);
-extern void func_020954f4(void *);
 extern void func_02095940(void *);
 extern void func_02095988(void *, s32);
 extern void *func_ov025_021fd5dc(void *, s32);
@@ -35,7 +32,6 @@ extern void func_ov025_021fd9e4(void *, s32);
 extern void func_ov025_021fdb18(void *, s32);
 extern s32 func_ov025_021fdc4c(void *);
 extern void func_ov025_021fde58(void *);
-extern void func_ov025_021ff140(void *);
 extern void func_ov025_02200498(void *, s32);
 extern void func_ov025_0220088c(void *);
 #ifdef __cplusplus
@@ -54,37 +50,6 @@ extern "C" void func_ov025_02200564(void *scene)
 {
     for (s32 i = 0; i < 3; ++i)
         func_02095940((u8 *)scene + 0x2f4 + i * 0xac);
-}
-
-/*
- * Enters the confirmed edit display: starts effect +0x508, enables controllers
- * +0xDC/+0xE0, shows sprites +0xC4..+0xD8, and hides sprite +0xC0.
- */
-extern "C" void func_ov025_0220058c(void *scene)
-{
-    func_ov025_021ff140(FIELD(void *, scene, 0x508));
-    func_020954e0(FIELD(void *, scene, 0xdc));
-    func_020954e0(FIELD(void *, scene, 0xe0));
-    for (s32 i = 0; i < 6; ++i)
-        FIELD(u16, FIELD(void *, scene, 0xc4 + i * 4), 0x24) &= (u16)~4;
-    FIELD(u16, FIELD(void *, scene, 0xc0), 0x24) |= 4;
-}
-
-/*
- * Leaves the edit display: stops the two effect sprites owned by +0x508,
- * disables controllers +0xDC/+0xE0, hides the six edit sprites, and restores
- * sprite +0xC0. The +0xE0/+0xE4 owner fields are established by its constructor.
- */
-extern "C" void func_ov025_022005e4(void *scene)
-{
-    void *effect = FIELD(void *, scene, 0x508);
-    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, effect, 0xe0));
-    GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, effect, 0xe4));
-    func_020954f4(FIELD(void *, scene, 0xdc));
-    func_020954f4(FIELD(void *, scene, 0xe0));
-    for (s32 i = 0; i < 6; ++i)
-        FIELD(u16, FIELD(void *, scene, 0xc4 + i * 4), 0x24) |= 4;
-    FIELD(u16, FIELD(void *, scene, 0xc0), 0x24) &= (u16)~4;
 }
 
 /*
