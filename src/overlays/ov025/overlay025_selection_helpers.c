@@ -5,32 +5,21 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const u16 data_ov025_02202c78[];
-extern const u8 data_ov025_022033b4[];
 extern void *gGameWork;
-extern void *gHeapContext;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void Heap_Free(void *);
 extern void GameWork_SetFlag(void *, s32);
 extern void func_020593ac(void *, s32, s32, s32, s32, s32);
-extern void func_02071eb8(void *);
-extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern void func_020927b8(void *);
 extern s32 func_02093360(void *, const u16 *);
 extern void func_02095940(void *);
 extern void func_02095988(void *, s32);
-extern void *func_ov025_021fd5dc(void *, s32);
-extern void func_ov025_021fd9e4(void *, s32);
-extern void func_ov025_021fdb18(void *, s32);
-extern void func_ov025_021fde58(void *);
 extern void func_ov025_0220088c(void *);
 #ifdef __cplusplus
 }
@@ -48,53 +37,6 @@ extern "C" void func_ov025_02200564(void *scene)
 {
     for (s32 i = 0; i < 3; ++i)
         func_02095940((u8 *)scene + 0x2f4 + i * 0xac);
-}
-
-static void destroy_record_row(void *row)
-{
-    if (row) {
-        GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
-        func_020927b8((u8 *)row + 0x30);
-        func_02071eb8(row);
-        Heap_Free(row);
-    }
-}
-
-static void *create_record_row(s32 index)
-{
-    void *row = Heap_Alloc(0x90, data_ov025_022033b4, 4, gHeapContext);
-    if (row)
-        row = func_ov025_021fd5dc(row, index);
-    return row;
-}
-
-/*
- * Deletes and recreates the row selected at +0x54, marks its backing owner
- * ready, returns all rows to y=0, and clears the selection to -1.
- */
-extern "C" void func_ov025_022006c4(void *scene)
-{
-    func_ov025_02200564(scene);
-    s32 index = FIELD(s32, scene, 0x54);
-    void *row = FIELD(void *, scene, 0xe4 + index * 4);
-    func_ov025_021fde58(row);
-    destroy_record_row(row);
-    row = create_record_row(index);
-    FIELD(void *, scene, 0xe4 + index * 4) = row;
-    FIELD(s32, FIELD(void *, row, 0xc), 0x20) = 1;
-    for (s32 i = 0; i < 3; ++i)
-        func_ov025_021fd9e4(FIELD(void *, scene, 0xe4 + i * 4), 0);
-    FIELD(s32, scene, 0x54) = -1;
-}
-
-/* Recreates the row indexed at +0x58 and marks its backing owner ready. */
-extern "C" void func_ov025_02200794(void *scene)
-{
-    s32 index = FIELD(s32, scene, 0x58);
-    destroy_record_row(FIELD(void *, scene, 0xe4 + index * 4));
-    void *row = create_record_row(index);
-    FIELD(void *, scene, 0xe4 + index * 4) = row;
-    FIELD(s32, FIELD(void *, row, 0xc), 0x20) = 1;
 }
 
 /*

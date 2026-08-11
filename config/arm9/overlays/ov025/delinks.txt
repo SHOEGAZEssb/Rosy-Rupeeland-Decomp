@@ -162,12 +162,9 @@ src/overlays/ov025/overlay025_edit_display_leave.c:
 src/overlays/ov025/overlay025_record_selection_layout.c:
     categories: Game code
     .text start:0x02200648 end:0x022006c4
-asm/overlays/ov025/overlay025_selection_helpers_022006c4.s:
+src/overlays/ov025/overlay025_record_row_recreate.c:
     categories: Game code
-    .text start:0x022006c4 end:0x02200794
-asm/overlays/ov025/overlay025_selection_helpers_02200794.s:
-    categories: Game code
-    .text start:0x02200794 end:0x02200824
+    .text start:0x022006c4 end:0x02200824
 src/overlays/ov025/overlay025_selection_event_commit.c:
     categories: Game code
     .text start:0x02200824 end:0x0220088c
