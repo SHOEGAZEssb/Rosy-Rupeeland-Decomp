@@ -19,14 +19,14 @@ void func_ov090_0221a8bc(void *self)
     s32 firstWidth;
     s32 secondWidth;
 
-    if (FIELD(s16, self, 0x238) < FIELD(s16, self, 0x220) + 0x10) {
-        FIELD(s16, self, 0x238) = FIELD(s16, self, 0x220);
-        if (FIELD(s16, self, 0x23a) < FIELD(s16, self, 0x220) + 6)
-            FIELD(s16, self, 0x23a) = FIELD(s16, self, 0x220);
-        else
-            FIELD(s16, self, 0x23a) -= 6;
-    } else {
+    if (FIELD(s16, self, 0x238) >= FIELD(s16, self, 0x220) + 0x10) {
         FIELD(s16, self, 0x238) -= 0x10;
+    } else {
+        FIELD(s16, self, 0x238) = FIELD(s16, self, 0x220);
+        if (FIELD(s16, self, 0x23a) >= FIELD(s16, self, 0x220) + 6)
+            FIELD(s16, self, 0x23a) -= 6;
+        else
+            FIELD(s16, self, 0x23a) = FIELD(s16, self, 0x220);
     }
 
     lower = FIELD(s16, self, 0x238);
@@ -36,9 +36,12 @@ void func_ov090_0221a8bc(void *self)
     if (firstWidth > 0)
         GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x30, 9,
                                       firstWidth + 0x30, 0x0f, 3);
-    if (secondWidth > 0)
-        GraphicsSpriteCanvas_FillRect(data_020f4e14, firstWidth + 0x30, 9,
-                                      firstWidth + secondWidth + 0x30, 0x0f, 7);
+    if (secondWidth > 0) {
+        s32 secondStart = firstWidth + 0x30;
+
+        GraphicsSpriteCanvas_FillRect(data_020f4e14, secondStart, 9,
+                                      secondStart + secondWidth, 0x0f, 7);
+    }
     if (0xb0 - (firstWidth + secondWidth) > 0)
         GraphicsSpriteCanvas_FillRect(data_020f4e14,
                                       firstWidth + secondWidth + 0x30, 9,

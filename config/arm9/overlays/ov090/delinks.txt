@@ -45,7 +45,7 @@ src/overlays/ov090/overlay090_title_event_callback_a738.c:
 src/overlays/ov090/overlay090_title_state0b_transition.c:
     categories: Game code
     .text start:0x0221a784 end:0x0221a8bc
-asm/overlays/ov090/overlay090_0221a8bc.s:
+src/overlays/ov090/overlay090_title_progress_bar.c:
     categories: Game code
     .text start:0x0221a8bc end:0x0221aa98
 src/overlays/ov090/overlay090_title_state_classify.c:
