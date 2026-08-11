@@ -12,6 +12,11 @@ extern const u8 data_ov025_02202e40[];
 extern const u8 data_ov025_02202ec8[];
 extern const u8 data_ov025_02202ed8[];
 
+typedef struct TransitionPair {
+    u32 callback;
+    u32 argument;
+} TransitionPair;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,7 +32,7 @@ extern void func_ov025_021fd9e4(void *, s32);
 extern s32 func_ov025_021fdc4c(void *);
 extern void func_ov025_021fdea0(void *, s32);
 extern s32 func_ov025_021ff0b0(void *);
-extern void func_ov025_021ff254(void *, u32, u32);
+extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200178(void *);
 extern void func_ov025_022001f4(void *);
 extern void func_ov025_02200564(void *);
@@ -36,17 +41,6 @@ extern void func_ov025_02200824(void *, s32);
 #ifdef __cplusplus
 }
 #endif
-
-static void advance_state(void *scene)
-{
-    ++FIELD(s32, scene, 4);
-    FIELD(s32, scene, 8) = 0;
-}
-
-static void transition_pair(void *scene, const u32 *pair)
-{
-    func_ov025_021ff254(scene, pair[0], pair[1]);
-}
 
 /*
  * Runs one frame of record/action selection. States 0/1 debounce input, test
@@ -61,17 +55,23 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
     switch (FIELD(s32, scene, 4)) {
     case 0:
         func_ov025_02200824(scene, 4);
-        if (++FIELD(s32, scene, 8) > 20)
-            advance_state(scene);
+        if (++FIELD(s32, scene, 8) > 20) {
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
+        }
         break;
-    case 1:
+    case 1: {
         func_ov025_02200824(scene, 4);
-        if (!(FIELD(u32, scene, 0x20) & 0x20))
+        s32 inputReady = (s32)(FIELD(u32, scene, 0x20) << 26) >> 31;
+        if (!inputReady)
             break;
+        s32 handled = 0;
         for (s32 i = 0; i < 3; ++i) {
-            void *row = FIELD(void *, scene, 0xe4 + i * 4);
-            if (!func_02092910((u8 *)row + 0x10, (u8 *)scene + 0x30))
+            void *row = FIELD(void *, (u8 *)scene + i * 4, 0xe4);
+            if (!func_02092910(FIELD(void *, row, 0x10),
+                               (u8 *)scene + 0x30))
                 continue;
+            handled = 1;
             if (i == FIELD(s32, scene, 0x54)) {
                 func_02092260(scene, 2);
                 FIELD(s32, scene, 4) = 10;
@@ -83,58 +83,82 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
                 FIELD(s32, scene, 4) = 0;
                 FIELD(s32, scene, 8) = 0;
             }
-            goto maintained_return;
+            break;
         }
-        for (s32 i = 0; i < 3; ++i) {
-            void *controller = (u8 *)scene + 0x2f4 + i * 0xac;
-            if (func_02095860(controller, (u8 *)scene + 0x30, 0, 4)) {
-                FIELD(s32, scene, 0x5b8) = i;
-                func_02092260(scene, 2);
-                advance_state(scene);
-                goto maintained_return;
+        if (!handled) {
+            for (s32 i = 0; i < 3; ++i) {
+                void *controller = (u8 *)scene + 0x2f4 + i * 0xac;
+                if (func_02095860(controller, (u8 *)scene + 0x30, 0, 4)) {
+                    FIELD(s32, scene, 0x5b8) = i;
+                    func_02092260(scene, 2);
+                    ++FIELD(s32, scene, 4);
+                    FIELD(s32, scene, 8) = 0;
+                    handled = 1;
+                    break;
+                }
             }
         }
-        GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-        for (s32 i = 0; i < 3; ++i) {
-            void *row = FIELD(void *, scene, 0xe4 + i * 4);
-            GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, row, 0xc));
-            func_ov025_021fd9e4(row, 0);
+        if (!handled) {
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+            for (s32 i = 0; i < 3; ++i) {
+                GraphicsSpriteGroup_ReleaseIndexedEntries(
+                    FIELD(void *,
+                          FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0xc));
+                func_ov025_021fd9e4(
+                    FIELD(void *, (u32 *)scene + i, 0xe4), 0);
+            }
+            FIELD(s32, scene, 0x54) = -1;
+            func_ov025_02200564(scene);
+            func_ov025_021ff254(scene,
+                *(const TransitionPair *)data_ov025_02202df8);
         }
-        FIELD(s32, scene, 0x54) = -1;
-        func_ov025_02200564(scene);
-        transition_pair(scene, (const u32 *)data_ov025_02202df8);
         break;
+    }
     case 2:
         if (func_ov025_021ff0b0((u8 *)scene + 0x2f4 +
                                 FIELD(s32, scene, 0x5b8) * 0xac)) {
-            static const u8 *const pairs[3] = {
-                data_ov025_02202ec8,
-                data_ov025_02202e40,
-                data_ov025_02202e08,
-            };
-            s32 choice = FIELD(s32, scene, 0x5b8);
-            if ((u32)choice < 3)
-                transition_pair(scene, (const u32 *)pairs[choice]);
+            switch (FIELD(s32, scene, 0x5b8)) {
+            case 0:
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202ec8);
+                break;
+            case 1:
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202e40);
+                break;
+            case 2:
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202e08);
+                break;
+            }
         }
         break;
     case 10:
         func_02091bac((u8 *)scene + 0x5fc, 3, 0, 4, 6);
-        advance_state(scene);
+        ++FIELD(s32, scene, 4);
+        FIELD(s32, scene, 8) = 0;
         /* Setup intentionally falls through to the first animation update. */
     case 11: {
         s32 value = func_02091c7c((u8 *)scene + 0x5fc, 1);
-        void *row = FIELD(void *, scene, 0xe4 + FIELD(s32, scene, 0x54) * 4);
-        func_ov025_021fdea0(row, value);
+        func_ov025_021fdea0(
+            FIELD(void *,
+                  (u8 *)scene + FIELD(s32, scene, 0x54) * 4, 0xe4),
+            value);
         if (func_02091cf0((u8 *)scene + 0x5fc)) {
-            if (func_ov025_021fdc4c(row))
-                transition_pair(scene, (const u32 *)data_ov025_02202de8);
-            else
-                transition_pair(scene, (const u32 *)data_ov025_02202ed8);
+            if (func_ov025_021fdc4c(
+                    FIELD(void *,
+                          (u8 *)scene + FIELD(s32, scene, 0x54) * 4,
+                          0xe4))) {
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202de8);
+            } else {
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202ed8);
+            }
         }
         break;
     }
     }
-maintained_return:
     func_ov025_02200178(scene);
     return 0;
 }

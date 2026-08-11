@@ -181,7 +181,7 @@ asm/overlays/ov025/overlay025_intro_state_022009d8.s:
 src/overlays/ov025/overlay025_idle_state.c:
     categories: Game code
     .text start:0x02200e54 end:0x02200fe4
-asm/overlays/ov025/overlay025_record_select_state_02200fe4.s:
+src/overlays/ov025/overlay025_record_select_state.c:
     categories: Game code
     .text start:0x02200fe4 end:0x02201348
 src/overlays/ov025/overlay025_confirmation_state.c:

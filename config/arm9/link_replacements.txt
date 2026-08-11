@@ -3561,7 +3561,7 @@ build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_0220088c.o 
 build/decomp/delinks/asm/overlays/ov025/overlay025_selection_helpers_02200940.o = build/decomp/asm/overlays/ov025/overlay025_selection_helpers_02200940.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_intro_state_022009d8.o = build/decomp/src/overlays/ov025/overlay025_intro_state_022009d8.o
 build/decomp/delinks/src/overlays/ov025/overlay025_idle_state.o = build/decomp/src/overlays/ov025/overlay025_idle_state.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_record_select_state_02200fe4.o = build/decomp/asm/overlays/ov025/overlay025_record_select_state_02200fe4.o
+build/decomp/delinks/src/overlays/ov025/overlay025_record_select_state.o = build/decomp/src/overlays/ov025/overlay025_record_select_state.o
 build/decomp/delinks/src/overlays/ov025/overlay025_confirmation_state.o = build/decomp/src/overlays/ov025/overlay025_confirmation_state.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_record_transfer_state_02201494.o = build/decomp/asm/overlays/ov025/overlay025_record_transfer_state_02201494.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_record_delete_states_02201abc.o = build/decomp/asm/overlays/ov025/overlay025_record_delete_states_02201abc.o
