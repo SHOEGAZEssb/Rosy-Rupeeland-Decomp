@@ -12,6 +12,11 @@ extern const u8 data_ov025_02202ea0[];
 extern const u8 data_ov025_02202ec0[];
 extern void *gRuntimeContext;
 
+typedef struct TransitionPair {
+    u32 callback;
+    u32 argument;
+} TransitionPair;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,7 +37,7 @@ extern void func_ov025_021fdb18(void *, s32);
 extern s32 func_ov025_021fdc4c(void *);
 extern void func_ov025_021fdea0(void *, s32);
 extern s32 func_ov025_021ff0b0(void *);
-extern void func_ov025_021ff254(void *, u32, u32);
+extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200178(void *);
 extern void func_ov025_022001f4(void *);
 extern void func_ov025_02200224(void *, s32, void *);
@@ -49,31 +54,6 @@ extern void func_ov025_02200824(void *, s32);
 }
 #endif
 
-static void advance_state(void *scene)
-{
-    ++FIELD(s32, scene, 4);
-    FIELD(s32, scene, 8) = 0;
-}
-
-static void transition_pair(void *scene, const u32 *pair)
-{
-    func_ov025_021ff254(scene, pair[0], pair[1]);
-}
-
-static void restore_rows(void *scene)
-{
-    s32 selected = FIELD(s32, scene, 0x54);
-    for (s32 i = 0; i < 3; ++i) {
-        void *row = FIELD(void *, scene, 0xe4 + i * 4);
-        if (i == selected)
-            func_ov025_021fd9e4(row, 0x10);
-        else
-            func_ov025_021fdb18(row, 0);
-    }
-    func_ov025_02200498(scene, selected);
-    func_ov025_022001f4(scene);
-}
-
 /*
  * Runs one frame of the transfer/copy flow between selected row +0x54 and
  * candidate row +0x58. It lays out rows, processes touch selection, animates
@@ -87,60 +67,79 @@ extern "C" s32 func_ov025_02201494(void *scene)
 {
     switch (FIELD(u32, scene, 4)) {
     case 0: {
-        s32 selected = FIELD(s32, scene, 0x54);
         for (s32 i = 0; i < 3; ++i) {
-            void *row = FIELD(void *, scene, 0xe4 + i * 4);
-            if (i == selected)
-                func_ov025_021fdb18(row, 0x10);
-            else
-                func_ov025_021fd9e4(row, 0);
+            if (i == FIELD(s32, scene, 0x54)) {
+                func_ov025_021fdb18(
+                    FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0x10);
+            } else {
+                func_ov025_021fd9e4(
+                    FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0);
+            }
         }
         func_ov025_02200534(scene);
         func_ov025_022001f4(scene);
         func_02095928((u8 *)scene + 0x19c);
-        func_02095820((u8 *)scene + 0x19c, 0xe4,
-                      selected == 2 ? 0x18 : 0xa0);
-        advance_state(scene);
+        if (FIELD(s32, scene, 0x54) == 2) {
+            func_02095820((u8 *)scene + 0x19c, 0xe4, 0x18);
+        } else {
+            func_02095820((u8 *)scene + 0x19c, 0xe4, 0xa0);
+        }
+        ++FIELD(s32, scene, 4);
+        FIELD(s32, scene, 8) = 0;
         /* Setup intentionally falls through to input processing. */
     }
-    case 1:
+    case 1: {
         func_ov025_02200824(scene, 4);
-        if (!(FIELD(u32, scene, 0x20) & 0x20))
+        s32 inputReady = (s32)(FIELD(u32, scene, 0x20) << 26) >> 31;
+        if (!inputReady)
             break;
+        s32 handled = 0;
         for (s32 i = 0; i < 3; ++i) {
-            void *row = FIELD(void *, scene, 0xe4 + i * 4);
-            if (func_02092910((u8 *)row + 0x10, (u8 *)scene + 0x30) &&
+            void *row = FIELD(void *, (u8 *)scene + i * 4, 0xe4);
+            if (func_02092910(FIELD(void *, row, 0x10),
+                              (u8 *)scene + 0x30) &&
                 i != FIELD(s32, scene, 0x54)) {
                 FIELD(s32, scene, 0x58) = i;
+                handled = 1;
                 func_02095940((u8 *)scene + 0x19c);
-                advance_state(scene);
-                goto maintained_return;
+                ++FIELD(s32, scene, 4);
+                FIELD(s32, scene, 8) = 0;
+                break;
             }
         }
-        if (func_02095860((u8 *)scene + 0x19c, (u8 *)scene + 0x30, 0, 4)) {
+        if (!handled &&
+            func_02095860((u8 *)scene + 0x19c,
+                          (u8 *)scene + 0x30, 0, 4)) {
             func_02092260(scene, 3);
             FIELD(s32, scene, 4) = 20;
             FIELD(s32, scene, 8) = 0;
         }
         break;
+    }
     case 2:
         func_02091bac((u8 *)scene + 0x5fc, 3, 0, 4, 6);
-        advance_state(scene);
+        ++FIELD(s32, scene, 4);
+        FIELD(s32, scene, 8) = 0;
         /* Animation setup intentionally falls through to its update. */
     case 3: {
         s32 value = func_02091c7c((u8 *)scene + 0x5fc, 1);
-        void *candidate = FIELD(void *, scene,
-                                0xe4 + FIELD(s32, scene, 0x58) * 4);
-        func_ov025_021fdea0(candidate, value);
+        func_ov025_021fdea0(
+            FIELD(void *,
+                  (u8 *)scene + FIELD(s32, scene, 0x58) * 4, 0xe4),
+            value);
         if (!func_02091cf0((u8 *)scene + 0x5fc))
             break;
-        if (func_ov025_021fdc4c(candidate)) {
+        if (func_ov025_021fdc4c(
+                FIELD(void *,
+                      (u8 *)scene + FIELD(s32, scene, 0x58) * 4,
+                      0xe4))) {
             func_ov025_02200398(scene, 2, 2);
             FIELD(s32, scene, 4) = 10;
             FIELD(s32, scene, 8) = 0;
         } else {
             func_ov025_02200224(scene, 0x13, 0);
-            advance_state(scene);
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     }
@@ -152,43 +151,62 @@ extern "C" s32 func_ov025_02201494(void *scene)
         if (choice < 0)
             break;
         func_ov025_022002b0(scene);
-        if (choice == 1) {
+        switch (choice) {
+        case 1:
             func_ov025_022001f4(scene);
             func_ov025_02200398(scene, 2, 2);
             FIELD(s32, scene, 4) = 10;
             FIELD(s32, scene, 8) = 0;
-        } else if (choice == 2) {
-            restore_rows(scene);
-            transition_pair(scene, (const u32 *)data_ov025_02202e90);
+            break;
+        case 2:
+            for (s32 i = 0; i < 3; ++i) {
+                if (i == FIELD(s32, scene, 0x54)) {
+                    func_ov025_021fd9e4(
+                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0x10);
+                } else {
+                    func_ov025_021fdb18(
+                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0);
+                }
+            }
+            func_ov025_02200498(scene, FIELD(s32, scene, 0x54));
+            func_ov025_022001f4(scene);
+            func_ov025_021ff254(scene,
+                *(const TransitionPair *)data_ov025_02202e90);
+            break;
         }
         break;
     }
     case 10:
         func_020805d0(gRuntimeContext, FIELD(s32, scene, 0x54),
                       FIELD(s32, scene, 0x58), 1);
-        advance_state(scene);
+        ++FIELD(s32, scene, 4);
+        FIELD(s32, scene, 8) = 0;
         break;
     case 11: {
         func_ov025_02200824(scene, 4);
         s32 status = func_0207f248(gRuntimeContext);
         if (status == 0)
             break;
-        if (status != -1) {
+        if (status == -1) {
+            func_ov025_02200438(scene, 1);
+            s32 result = FIELD(s32, gRuntimeContext, 0x10);
+            if (result == 3) {
+                func_ov025_02200224(scene, 0x1d, 0);
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202ea0);
+            } else if (result == 5) {
+                func_ov025_02200224(scene, 0x1e, 0);
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202e88);
+            } else if (result == 4) {
+                func_ov025_02200224(scene, 0x1f, 0);
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202ec0);
+            }
+        } else {
             func_ov025_02200468(scene);
-            advance_state(scene);
-            break;
-        }
-        func_ov025_02200438(scene, 1);
-        s32 result = FIELD(s32, gRuntimeContext, 0x10);
-        if (result == 3) {
-            func_ov025_02200224(scene, 0x1d, 0);
-            transition_pair(scene, (const u32 *)data_ov025_02202ea0);
-        } else if (result == 5) {
-            func_ov025_02200224(scene, 0x1e, 0);
-            transition_pair(scene, (const u32 *)data_ov025_02202e88);
-        } else if (result == 4) {
-            func_ov025_02200224(scene, 0x1f, 0);
-            transition_pair(scene, (const u32 *)data_ov025_02202ec0);
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     }
@@ -199,7 +217,8 @@ extern "C" s32 func_ov025_02201494(void *scene)
             func_ov025_02200438(scene, 0);
             func_ov025_02200224(scene, 0x14, 0);
             func_02092260(scene, 0x2d03);
-            advance_state(scene);
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     case 13:
@@ -207,20 +226,41 @@ extern "C" s32 func_ov025_02201494(void *scene)
         if (func_02095dd4(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                           (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
-            restore_rows(scene);
-            transition_pair(scene, (const u32 *)data_ov025_02202e10);
+            for (s32 i = 0; i < 3; ++i) {
+                if (i == FIELD(s32, scene, 0x54)) {
+                    func_ov025_021fd9e4(
+                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0x10);
+                } else {
+                    func_ov025_021fdb18(
+                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0);
+                }
+            }
+            func_ov025_02200498(scene, FIELD(s32, scene, 0x54));
+            func_ov025_022001f4(scene);
+            func_ov025_021ff254(scene,
+                *(const TransitionPair *)data_ov025_02202e10);
         }
         break;
     case 20:
         func_ov025_02200824(scene, 4);
         if (func_ov025_021ff0b0((u8 *)scene + 0x19c)) {
-            restore_rows(scene);
+            for (s32 i = 0; i < 3; ++i) {
+                if (i == FIELD(s32, scene, 0x54)) {
+                    func_ov025_021fd9e4(
+                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0x10);
+                } else {
+                    func_ov025_021fdb18(
+                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0);
+                }
+            }
+            func_ov025_02200498(scene, FIELD(s32, scene, 0x54));
+            func_ov025_022001f4(scene);
             func_02095940((u8 *)scene + 0x19c);
-            transition_pair(scene, (const u32 *)data_ov025_02202e30);
+            func_ov025_021ff254(scene,
+                *(const TransitionPair *)data_ov025_02202e30);
         }
         break;
     }
-maintained_return:
     func_ov025_02200178(scene);
     return 0;
 }

@@ -187,7 +187,7 @@ src/overlays/ov025/overlay025_record_select_state.c:
 src/overlays/ov025/overlay025_confirmation_state.c:
     categories: Game code
     .text start:0x02201348 end:0x02201494
-asm/overlays/ov025/overlay025_record_transfer_state_02201494.s:
+src/overlays/ov025/overlay025_record_transfer_state.c:
     categories: Game code
     .text start:0x02201494 end:0x02201abc
 asm/overlays/ov025/overlay025_record_delete_states_02201abc.s:
