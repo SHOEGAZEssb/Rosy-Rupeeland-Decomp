@@ -30,9 +30,7 @@ extern void func_02095988(void *, s32);
 extern void *func_ov025_021fd5dc(void *, s32);
 extern void func_ov025_021fd9e4(void *, s32);
 extern void func_ov025_021fdb18(void *, s32);
-extern s32 func_ov025_021fdc4c(void *);
 extern void func_ov025_021fde58(void *);
-extern void func_ov025_02200498(void *, s32);
 extern void func_ov025_0220088c(void *);
 #ifdef __cplusplus
 }
@@ -50,27 +48,6 @@ extern "C" void func_ov025_02200564(void *scene)
 {
     for (s32 i = 0; i < 3; ++i)
         func_02095940((u8 *)scene + 0x2f4 + i * 0xac);
-}
-
-/*
- * Stores the selected record index at +0x54, raises its row by 16 pixels, and
- * lowers the other rows. Inactive records hide all choice controllers;
- * otherwise their layout is rebuilt for the selected index.
- */
-extern "C" void func_ov025_02200648(void *scene, s32 selected)
-{
-    FIELD(s32, scene, 0x54) = selected;
-    for (s32 i = 0; i < 3; ++i) {
-        void *row = FIELD(void *, scene, 0xe4 + i * 4);
-        if (i == FIELD(s32, scene, 0x54))
-            func_ov025_021fd9e4(row, 0x10);
-        else
-            func_ov025_021fdb18(row, 0);
-    }
-    if (func_ov025_021fdc4c(FIELD(void *, scene, 0xe4 + selected * 4)))
-        func_ov025_02200564(scene);
-    else
-        func_ov025_02200498(scene, selected);
 }
 
 static void destroy_record_row(void *row)
