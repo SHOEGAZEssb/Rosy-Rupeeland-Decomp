@@ -130,12 +130,13 @@ GraphicsResourceCacheNode *func_020702b8(GraphicsResourceCache *cache,
 {
     GraphicsResourceCacheNode *current = cache->head;
 
-    while (current != 0) {
+    for (;;) {
+        if (current == 0)
+            return current;
         if (current == node)
             return current;
         current = current->next;
     }
-    return current;
 }
 #endif
 
@@ -149,11 +150,12 @@ GraphicsResourceCacheNode *func_020702d4(GraphicsResourceCache *cache,
 {
     GraphicsResourceCacheNode *current = cache->head;
 
-    while (current != 0) {
+    for (;;) {
+        if (current == 0)
+            return current;
         if (current->resourceId == resourceId)
             return current;
         current = current->next;
     }
-    return current;
 }
 #endif

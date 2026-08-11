@@ -4094,6 +4094,16 @@ build build/reports/graphics_resource_cache_lookup.txt: match_report build/repor
   report_json = build/reports/graphics_resource_cache_lookup.json
   report_args = --section .text --function func_020702b8 --function func_020702d4 --require-exact
 
+build build/decomp/src/graphics/graphics_resource_cache_portable.o: mwccarm src/graphics/graphics_resource_cache.c | include/tingle/types.h
+  source = src/graphics/graphics_resource_cache.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/reports/graphics_resource_cache_lookup_source.json: objdiff build/decomp/delinks/asm/graphics/graphics_resource_cache_lookup.o | build/decomp/src/graphics/graphics_resource_cache_portable.o
+  target_object = build/decomp/delinks/asm/graphics/graphics_resource_cache_lookup.o
+  base_object = build/decomp/src/graphics/graphics_resource_cache_portable.o
+build build/reports/graphics_resource_cache_lookup_source.txt: match_report build/reports/graphics_resource_cache_lookup_source.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_resource_cache_lookup_source.json
+  report_args = --section .text --function func_020702b8 --function func_020702d4
+
 build build/reports/graphics_archive_character_resource.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_character_resource.o | build/decomp/src/graphics/graphics_archive_character_resource.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_character_resource.o
   base_object = build/decomp/src/graphics/graphics_archive_character_resource.o
