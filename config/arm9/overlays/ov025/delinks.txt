@@ -30,7 +30,7 @@ src/overlays/ov025/overlay025_name_entry_active_clear.c:
 asm/overlays/ov025/overlay025_name_entry_021fd3f4.s:
     categories: Game code
     .text start:0x021fd3f4 end:0x021fd450
-asm/overlays/ov025/overlay025_name_entry_021fd450.s:
+src/overlays/ov025/overlay025_name_entry_nonspace_count.c:
     categories: Game code
     .text start:0x021fd450 end:0x021fd488
 asm/overlays/ov025/overlay025_name_entry_021fd488.s:

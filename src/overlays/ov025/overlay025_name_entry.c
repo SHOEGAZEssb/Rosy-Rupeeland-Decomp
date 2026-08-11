@@ -230,15 +230,6 @@ extern "C" void func_ov025_021fd3f4(void *widget)
     }
 }
 
-/* Counts and returns non-space characters in the current entered prefix. */
-extern "C" s32 func_ov025_021fd450(void *widget)
-{
-    s32 count = 0;
-    for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i)
-        if (FIELD(u16, widget, 0x180 + i * 2) != 0x20) ++count;
-    return count;
-}
-
 /*
  * Copies entered non-space UTF-16 characters to `output` and checks a hidden
  * locale-specific name. Alternate locale accepts case-insensitive "TINGLE";
