@@ -28,7 +28,7 @@ extern const char data_ov090_0221cc90[];
 extern const u8 data_ov090_0221cc88[];
 extern s32 DisplayController_GetVerticalOffset(void);
 extern void func_ov090_0221b97c(void *resource, u16 flags);
-extern s32 func_020ae024(s32 value);
+extern s32 func_020ae024(s32 y, s32 x);
 
 /*
  * Initialize the wrapper vector from the sixth argument, allocate its paired
@@ -90,16 +90,20 @@ TitleParticipantPresentation *func_ov090_0221baa8(
  */
 void func_ov090_0221baec(void *self, const void *target)
 {
-    s32 deltaY = FIELD(s32, self, 0x10) - FIELD(s32, target, 8);
+    s32 selfY = FIELD(s32, self, 0x10);
+    s32 targetY = FIELD(volatile s32, target, 8);
+    s32 selfX = FIELD(s32, self, 0x0c);
+    s32 targetX = FIELD(volatile s32, target, 4);
+    s32 deltaY = selfY - targetY;
+    s32 deltaX = selfX - targetX;
     s32 angle;
     s32 difference;
     s16 current;
-    s16 adjustment;
     void *resource;
 
-    if (FIELD(s32, self, 0x0c) == FIELD(s32, target, 4) && deltaY == 0)
+    if (deltaX == 0 && deltaY == 0)
         return;
-    angle = func_020ae024(-deltaY);
+    angle = func_020ae024(-deltaY, deltaX);
     resource = FIELD(void *, self, 4);
     current = FIELD(s16, FIELD(void *, resource, 4), 0x30);
     if (angle < current)
@@ -108,15 +112,16 @@ void func_ov090_0221baec(void *self, const void *target)
     if (difference < 0x8000) {
         if (difference > 0x300)
             difference = 0x300;
-        adjustment = difference;
     } else {
         difference = 0x10000 - difference;
         if (difference > 0x300)
             difference = 0x300;
-        adjustment = -difference;
+        difference *= -1;
     }
-    FIELD(s16, FIELD(void *, resource, 4), 0x30) = current + adjustment;
-    FIELD(s16, FIELD(void *, resource, 8), 0x30) = current + adjustment;
+    FIELD(s16, FIELD(void *, resource, 4), 0x30) =
+        (s16)(u16)(current + difference);
+    FIELD(s16, FIELD(void *, resource, 8), 0x30) =
+        (s16)(u16)(current + difference);
 }
 
 /*

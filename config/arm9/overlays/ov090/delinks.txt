@@ -123,7 +123,7 @@ asm/overlays/ov090/overlay090_0221be40.s:
 src/overlays/ov090/overlay090_title_chain_vector_helpers.c:
     categories: Game code
     .text start:0x0221c138 end:0x0221c184
-asm/overlays/ov090/overlay090_0221c184.s:
+src/overlays/ov090/overlay090_title_chain_curve_update.c:
     categories: Game code
     .text start:0x0221c184 end:0x0221c318
 src/overlays/ov090/overlay090_title_chain_member_state.c:
@@ -138,33 +138,18 @@ src/overlays/ov090/overlay090_title_chain_accessors.c:
 asm/overlays/ov090/overlay090_0221c468.s:
     categories: Game code
     .text start:0x0221c468 end:0x0221c5ec
-asm/overlays/ov090/overlay090_0221c5ec.s:
+src/overlays/ov090/overlay090_title_effect_lifecycle.c:
     categories: Game code
-    .text start:0x0221c5ec end:0x0221c638
-asm/overlays/ov090/overlay090_0221c638.s:
-    categories: Game code
-    .text start:0x0221c638 end:0x0221c68c
-asm/overlays/ov090/overlay090_0221c68c.s:
+    .text start:0x0221c5ec end:0x0221c68c
+src/overlays/ov090/overlay090_title_effect_orientation.c:
     categories: Game code
     .text start:0x0221c68c end:0x0221c728
-asm/overlays/ov090/overlay090_0221c728.s:
+src/overlays/ov090/overlay090_title_effect_forwarders.c:
     categories: Game code
-    .text start:0x0221c728 end:0x0221c73c
-asm/overlays/ov090/overlay090_0221c73c.s:
-    categories: Game code
-    .text start:0x0221c73c end:0x0221c780
+    .text start:0x0221c728 end:0x0221c780
 asm/overlays/ov090/overlay090_0221c780.s:
     categories: Game code
     .text start:0x0221c780 end:0x0221c9f8
-asm/overlays/ov090/overlay090_0221c9f8.s:
+src/overlays/ov090/overlay090_title_effect_small_helpers.c:
     categories: Game code
-    .text start:0x0221c9f8 end:0x0221ca14
-asm/overlays/ov090/overlay090_0221ca14.s:
-    categories: Game code
-    .text start:0x0221ca14 end:0x0221ca34
-asm/overlays/ov090/overlay090_0221ca34.s:
-    categories: Game code
-    .text start:0x0221ca34 end:0x0221ca58
-asm/overlays/ov090/overlay090_0221ca58.s:
-    categories: Game code
-    .text start:0x0221ca58 end:0x0221ca64
+    .text start:0x0221c9f8 end:0x0221ca64

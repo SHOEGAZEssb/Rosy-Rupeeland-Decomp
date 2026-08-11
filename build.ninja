@@ -43811,3 +43811,78 @@ build build/reports/overlay090_title_chain_accessors.txt: match_report build/rep
   report_json = build/reports/overlay090_title_chain_accessors.json
   report_args = --section .text --function func_ov090_0221c3dc --function func_ov090_0221c434 --function func_ov090_0221c440 --function func_ov090_0221c44c --function func_ov090_0221c454 --require-exact
 build overlay090_title_chain_accessors: phony build/reports/overlay090_title_chain_accessors.txt
+build build/decomp/src/overlays/ov090/overlay090_title_effect_small_helpers.o: mwccarm src/overlays/ov090/overlay090_title_effect_small_helpers.c | include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_effect_small_helpers.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_small_helpers.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/reports/overlay090_title_effect_small_helpers.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_small_helpers.o | build/decomp/src/overlays/ov090/overlay090_title_effect_small_helpers.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_small_helpers.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_effect_small_helpers.o
+build build/reports/overlay090_title_effect_small_helpers.txt: match_report build/reports/overlay090_title_effect_small_helpers.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_effect_small_helpers.json
+  report_args = --section .text --function func_ov090_0221c9f8 --function func_ov090_0221ca14 --function func_ov090_0221ca34 --function func_ov090_0221ca58 --require-exact
+build overlay090_title_effect_small_helpers: phony build/reports/overlay090_title_effect_small_helpers.txt
+build build/decomp/src/overlays/ov090/overlay090_title_effect_forwarders.o: mwccarm src/overlays/ov090/overlay090_title_effect_forwarders.c | include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_effect_forwarders.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_forwarders.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/reports/overlay090_title_effect_forwarders.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_forwarders.o | build/decomp/src/overlays/ov090/overlay090_title_effect_forwarders.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_forwarders.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_effect_forwarders.o
+build build/reports/overlay090_title_effect_forwarders.txt: match_report build/reports/overlay090_title_effect_forwarders.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_effect_forwarders.json
+  report_args = --section .text --function func_ov090_0221c728 --function func_ov090_0221c73c --require-exact
+build overlay090_title_effect_forwarders: phony build/reports/overlay090_title_effect_forwarders.txt
+build build/decomp/src/overlays/ov090/overlay090_title_effect_lifecycle.o: mwccarm src/overlays/ov090/overlay090_title_effect_lifecycle.c | include/tingle/heap.h include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_effect_lifecycle.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_lifecycle.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/reports/overlay090_title_effect_lifecycle.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_lifecycle.o | build/decomp/src/overlays/ov090/overlay090_title_effect_lifecycle.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_lifecycle.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_effect_lifecycle.o
+build build/reports/overlay090_title_effect_lifecycle.txt: match_report build/reports/overlay090_title_effect_lifecycle.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_effect_lifecycle.json
+  report_args = --section .text --function func_ov090_0221c5ec --function func_ov090_0221c638 --require-exact
+build overlay090_title_effect_lifecycle: phony build/reports/overlay090_title_effect_lifecycle.txt
+build build/decomp/src/overlays/ov090/overlay090_title_effect_orientation.o: mwccarm src/overlays/ov090/overlay090_title_effect_orientation.c | include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_effect_orientation.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_orientation.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/reports/overlay090_title_effect_orientation.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_orientation.o | build/decomp/src/overlays/ov090/overlay090_title_effect_orientation.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_effect_orientation.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_effect_orientation.o
+build build/reports/overlay090_title_effect_orientation.txt: match_report build/reports/overlay090_title_effect_orientation.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_effect_orientation.json
+  report_args = --section .text --function func_ov090_0221c68c --require-exact
+build overlay090_title_effect_orientation: phony build/reports/overlay090_title_effect_orientation.txt
+build build/decomp/src/overlays/ov090/overlay090_title_effect_constructor.o: mwccarm src/overlays/ov090/overlay090_title_effect_constructor.c | include/tingle/graphics_sprite_state.h include/tingle/heap.h include/tingle/types.h include/tingle/util_animation_resource.h
+  source = src/overlays/ov090/overlay090_title_effect_constructor.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_effect_constructor.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221c468.o | build/decomp/src/overlays/ov090/overlay090_title_effect_constructor.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221c468.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_effect_constructor.o
+build build/reports/overlay090_title_effect_constructor.txt: match_report build/reports/overlay090_title_effect_constructor.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_effect_constructor.json
+  report_args = --section .text --function func_ov090_0221c468
+build overlay090_title_effect_constructor: phony build/reports/overlay090_title_effect_constructor.txt
+build build/decomp/src/overlays/ov090/overlay090_title_effect_update.o: mwccarm src/overlays/ov090/overlay090_title_effect_update.c | include/tingle/graphics_sprite_state.h include/tingle/types.h include/tingle/util_animation_resource.h
+  source = src/overlays/ov090/overlay090_title_effect_update.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_effect_update.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221c780.o | build/decomp/src/overlays/ov090/overlay090_title_effect_update.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221c780.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_effect_update.o
+build build/reports/overlay090_title_effect_update.txt: match_report build/reports/overlay090_title_effect_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_effect_update.json
+  report_args = --section .text --function func_ov090_0221c780
+build overlay090_title_effect_update: phony build/reports/overlay090_title_effect_update.txt
+build build/decomp/src/overlays/ov090/overlay090_title_chain_curve_update.o: mwccarm src/overlays/ov090/overlay090_title_chain_curve_update.c | include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/overlays/ov090/overlay090_title_chain_curve_update.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_curve_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/reports/overlay090_title_chain_curve_update.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_curve_update.o | build/decomp/src/overlays/ov090/overlay090_title_chain_curve_update.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_curve_update.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_chain_curve_update.o
+build build/reports/overlay090_title_chain_curve_update.txt: match_report build/reports/overlay090_title_chain_curve_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_chain_curve_update.json
+  report_args = --section .text --function func_ov090_0221c184 --require-exact
+build overlay090_title_chain_curve_update: phony build/reports/overlay090_title_chain_curve_update.txt
