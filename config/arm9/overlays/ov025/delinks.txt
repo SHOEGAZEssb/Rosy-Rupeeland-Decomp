@@ -84,7 +84,7 @@ src/overlays/ov025/overlay025_effect_random_mode.c:
 src/overlays/ov025/overlay025_effect_followup.c:
     categories: Game code
     .text start:0x021fe444 end:0x021fe4cc
-asm/overlays/ov025/overlay025_effect_controller_021fe4cc.s:
+src/overlays/ov025/overlay025_effect_mode_dispatch.c:
     categories: Game code
     .text start:0x021fe4cc end:0x021fe904
 src/overlays/ov025/overlay025_effect_duration.c:

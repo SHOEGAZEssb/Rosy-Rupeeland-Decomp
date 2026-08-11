@@ -65,7 +65,7 @@ extern "C" void func_ov025_021fe4cc(void *object, s32 mode, s32 variant)
             FIELD(s32, object, 0x80) = 0;
             return;
         }
-        return;
+        break;
     case 3:
     case 4:
         if (FIELD(s32, object, 0xa4) != 0) {
