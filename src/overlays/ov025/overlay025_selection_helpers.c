@@ -1,94 +1,79 @@
 #include "tingle/types.h"
 
-/* Overlay 25 record-row selection, edit-mode visibility, and event/audio helpers. */
+/* Overlay 25 randomized title audio and descriptor-based owner query helpers. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const u16 data_ov025_02202c78[];
-extern void *gGameWork;
+struct SelectionDescriptor {
+    u16 values[11];
+};
+
 extern void *gSoundContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void GameWork_SetFlag(void *, s32);
 extern void func_020593ac(void *, s32, s32, s32, s32, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02093360(void *, const u16 *);
-extern void func_02095940(void *);
-extern void func_02095988(void *, s32);
-extern void func_ov025_0220088c(void *);
 #ifdef __cplusplus
 }
 #endif
 
-/* Selects animations 0x21, 0x23, and 0x25 on the three +0x2F4 controllers. */
-extern "C" void func_ov025_02200534(void *scene)
-{
-    for (s32 i = 0; i < 3; ++i)
-        func_02095988((u8 *)scene + 0x2f4 + i * 0xac, i * 2 + 0x21);
-}
-
-/* Hides the three 0xAC-byte controllers beginning at scene offset +0x2F4. */
-extern "C" void func_ov025_02200564(void *scene)
-{
-    for (s32 i = 0; i < 3; ++i)
-        func_02095940((u8 *)scene + 0x2f4 + i * 0xac);
-}
-
 /*
- * If event object +0x5C4 is in state 2, optionally commits `value` to object
- * +0x5E0 when it too is in state 2, sets game flag 0x3D3, then runs the sound
- * selection helper. Returns void and may update persistent game state/audio.
- */
-extern "C" void func_ov025_02200824(void *scene, s32 value)
-{
-    if (!func_02091c7c((u8 *)scene + 0x5c4, 2))
-        return;
-    if (func_02091c7c((u8 *)scene + 0x5e0, 2)) {
-        GameWork_SetFlag(gGameWork, 0x3d3);
-        func_02091b98((u8 *)scene + 0x5e0, value);
-    }
-    func_ov025_0220088c(scene);
-}
-
-/*
- * When event object +0x618 is in state 2, chooses one of six packed sound IDs
- * from +0x634, plays it through the global sound context, advances +0x634,
- * and stores the result in +0x618. Returns void; exact table meaning is unknown.
+ * When event object +0x618 is in state 2, choose one of the six confirmed local
+ * packed IDs 0x3500..0x3505 using random state +0x634, play it through the
+ * global sound context at volume 32, advance +0x634 by 10..29, and store that
+ * delay in +0x618. Sound, RNG, and event state change. The initializer is the
+ * retail source shape that emits the 12-byte template at 0x02202C78.
  */
 extern "C" void func_ov025_0220088c(void *scene)
 {
     if (func_02091c7c((u8 *)scene + 0x618, 2)) {
-        u16 sounds[6];
-        for (s32 i = 0; i < 6; ++i)
-            sounds[i] = data_ov025_02202c78[i];
+        u16 sounds[6] = {0x3500, 0x3501, 0x3502, 0x3503, 0x3504, 0x3505};
         s32 choice = func_020918f4((u8 *)scene + 0x634, 6);
-        u16 packed = sounds[choice];
-        func_020593ac(gSoundContext, packed >> 7, packed & 0x7f, 0x20, 0, 0);
+        func_020593ac(gSoundContext, sounds[choice] >> 7,
+                      sounds[choice] & 0x7f, 0x20, 0, 0);
         s32 result = func_0209189c((u8 *)scene + 0x634, 10, 30);
         func_02091b98((u8 *)scene + 0x618, result);
     }
 }
 
 /*
- * Tests a copied 11-halfword descriptor from object +0x2C against owner +0x50C.
- * Returns true immediately for owner flag bit 0; otherwise applies the inferred
- * descriptor bit adjustment and returns bit 0 of func_02093360's result.
+ * Copy the 11-halfword descriptor pointed to by object +0x2C and test it against
+ * owner +0x50C. Return true immediately for owner flag bit 0; otherwise set
+ * descriptor bit 0 at halfword 1 when object bit 5 and owner bit 1 are both
+ * set, then return bit 0 of func_02093360's result. The volatile scratch copies
+ * preserve confirmed retail stack temporaries but have no external effect.
  */
 extern "C" s32 func_ov025_02200940(void *object)
 {
-    u16 descriptor[11];
-    for (s32 i = 0; i < 11; ++i)
-        descriptor[i] = FIELD(u16, object, 0x2c + i * 2);
-    void *owner = FIELD(void *, object, 0x50c);
-    u32 flags = FIELD(u32, owner, 0x38);
-    if (flags & 1)
+    volatile u32 resultStore0;
+    volatile u32 flagsStore0;
+    volatile u32 flagsStoreConditional;
+    volatile u32 flagsStore1;
+    volatile u32 resultStore1;
+    SelectionDescriptor descriptor =
+        *(const SelectionDescriptor *)FIELD(const void *, object, 0x2c);
+    u32 flags = FIELD(u32, FIELD(void *, object, 0x50c), 0x38);
+    s32 ownerBit0 = (s32)(flags << 31) >> 31;
+    flagsStore1 = flags;
+    flagsStore0 = flags;
+    if (ownerBit0)
         return 1;
-    if ((FIELD(u32, object, 0x20) & 0x20) && (flags & 2))
-        descriptor[1] |= 1;
-    return func_02093360(owner, descriptor) & 1;
+    s32 objectBit5 = (s32)(FIELD(u32, object, 0x20) << 26) >> 31;
+    if (objectBit5) {
+        s32 ownerBit1 = (s32)(flags << 30) >> 31;
+        if (ownerBit1)
+            descriptor.values[1] |= 1;
+        flagsStoreConditional = flags;
+    }
+    s32 result = func_02093360(FIELD(void *, object, 0x50c), descriptor.values);
+    s32 resultBit0 = (s32)((u32)result << 31) >> 31;
+    resultStore1 = result;
+    resultStore0 = result;
+    return resultBit0 != 0 ? 1 : 0;
 }
