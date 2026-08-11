@@ -146,21 +146,6 @@ extern "C" void func_ov025_021fe3f8(void *object)
                         func_0209189c((u32 *)object + 0x3e, 0, 3));
 }
 
-/*
- * For current mode 3 or 6, chooses a recovered random follow-up range (4..11
- * or 15..20) and passes it to func_ov025_021FEB08. Other modes are unchanged.
- * RNG/follow-up animation state may change; returns void.
- */
-extern "C" void func_ov025_021fe444(void *object)
-{
-    if (FIELD(s32, object, 0x9c) == 3)
-        func_ov025_021feb08(object,
-            func_0209189c((u32 *)object + 0x3e, 4, 11));
-    else if (FIELD(s32, object, 0x9c) == 6)
-        func_ov025_021feb08(object,
-            func_0209189c((u32 *)object + 0x3e, 15, 20));
-}
-
 static void position_by_side(void *object, s32 animation, s32 flag,
                              s32 y, s32 child_target)
 {
