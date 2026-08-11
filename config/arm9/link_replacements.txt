@@ -71,6 +71,7 @@ build/decomp/delinks/src/graphics/graphics_archive_loader.o = build/decomp/src/g
 build/decomp/delinks/asm/graphics/graphics_archive_loader_0207142c.o = build/decomp/asm/graphics/graphics_archive_loader_0207142c.o
 build/decomp/delinks/src/graphics/graphics_archive_character_palette_release.o = build/decomp/src/graphics/graphics_archive_character_palette_release.o
 build/decomp/delinks/src/graphics/graphics_archive_screen_release.o = build/decomp/src/graphics/graphics_archive_screen_release.o
+build/decomp/delinks/src/graphics/graphics_bg_palette_upload.o = build/decomp/src/graphics/graphics_bg_palette_upload.o
 build/decomp/delinks/src/graphics/graphics_bg_resource_data.o = build/decomp/src/graphics/graphics_bg_resource_data.o
 build/decomp/delinks/src/graphics/graphics_bg_map_upload.o = build/decomp/src/graphics/graphics_bg_map_upload.o
 build/decomp/delinks/src/graphics/graphics_bg_map_palette.o = build/decomp/asm/graphics/graphics_bg_map_palette.o

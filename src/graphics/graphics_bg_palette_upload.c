@@ -46,13 +46,16 @@ void func_02070b50(GraphicsBgPaletteResource *resource, s32 destination)
     if (resource->allocation == 0)
         return;
     descriptor = resource->descriptor;
-    if (descriptor->format == 0x10) {
+    switch (descriptor->format) {
+    case 0x10:
         func_020b2058(func_02070874(resource), destination,
                       (u32)descriptor->count << 5);
-    } else if (descriptor->format == 0x100) {
+        break;
+    case 0x100:
         func_020b1618();
         func_020b1598(func_02070874(resource), destination,
                       (u32)resource->descriptor->count << 9);
         func_020b1534();
+        break;
     }
 }
