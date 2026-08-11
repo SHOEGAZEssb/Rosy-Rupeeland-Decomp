@@ -105,39 +105,6 @@ extern "C" void *func_ov025_021fdecc(void *object)
     return object;
 }
 
-static void cleanup_effect(void *object)
-{
-    FIELD(const void *, object, 0) = data_ov025_02203354;
-    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xe0));
-    GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xe4));
-    func_02071eb8((u8 *)object + 0xd4);
-    __destroy_arr((u8 *)object + 0xb0, 3, 0xc, (void *)func_02071eb8);
-    func_ov025_021fdec8(object);
-}
-
-/*
- * Releases both cloned sprite owners and all four resource descriptors while
- * retaining caller-owned object storage. Graphics/archive state changes; the
- * original object pointer is returned.
- */
-extern "C" void *func_ov025_021fe0c4(void *object)
-{
-    cleanup_effect(object);
-    return object;
-}
-
-/*
- * Deleting-destructor variant of func_ov025_021FE0C4. It performs identical
- * graphics teardown, frees the object allocation, and returns the now-invalid
- * original pointer value.
- */
-extern "C" void *func_ov025_021fe118(void *object)
-{
-    cleanup_effect(object);
-    Heap_Free(object);
-    return object;
-}
-
 /*
  * Configures the mirrored primary sprites +0xE8/+0xF0 from resource set
  * `resource_index`, animation `animation`, and final setup flag `setup_flag`.

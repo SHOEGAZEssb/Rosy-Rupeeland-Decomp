@@ -60,10 +60,10 @@ src/overlays/ov025/overlay025_effect_base_noop.c:
 asm/overlays/ov025/overlay025_effect_controller_021fdecc.s:
     categories: Game code
     .text start:0x021fdecc end:0x021fe0c4
-asm/overlays/ov025/overlay025_effect_controller_021fe0c4.s:
+src/overlays/ov025/overlay025_effect_destroy.c:
     categories: Game code
     .text start:0x021fe0c4 end:0x021fe118
-asm/overlays/ov025/overlay025_effect_controller_021fe118.s:
+src/overlays/ov025/overlay025_effect_delete.c:
     categories: Game code
     .text start:0x021fe118 end:0x021fe174
 asm/overlays/ov025/overlay025_effect_controller_021fe174.s:
