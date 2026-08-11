@@ -33,6 +33,7 @@ extern void func_ov090_0221b7e0(TitleEffectBounds *bounds, s32 left, s32 top,
                                 s32 right, s32 bottom);
 extern void func_020594ec(void *sound, s32 value);
 extern void func_020349b8(void *self, void *callback, s32 value);
+extern u64 func_020befec(s32 dividend, s32 divisor);
 
 /*
  * Remove collection-1 actors of type 4, notify all three title participants,
@@ -104,7 +105,9 @@ void func_ov090_0221b428(void *self)
             &velocity,
             data_020c9670[((u16)random >> 4) * 2 + 1] * 3,
             ((random >> 8) & 0xfff) + 0x4000, 0xa000);
-        velocity.value.y += (i % 3) * 0x4000;
+        /* Retail obtains the signed remainder from the helper's high word. */
+        velocity.value.y +=
+            (s32)(func_020befec(i, 3) >> 32) * 0x4000;
         if (i < 5) {
             tier = 2;
             lifetime = 1000;
@@ -128,7 +131,9 @@ void func_ov090_0221b428(void *self)
             0x171b, animation, 7, 1);
         if ((i & 1) != 0)
             FIELD(u16, FIELD(void *, effect, 0x54), 0x24) |= 0x40;
-        FIELD(u16, effect, 0x1fc) = i % 15;
+        /* The same ABI high word carries the signed i % 15 result. */
+        FIELD(u16, effect, 0x1fc) =
+            (s32)(func_020befec(i, 15) >> 32);
 
         if (tier == 0)
             func_ov090_0221b7e0(&bounds, -10, -6, 10, 6);

@@ -132,9 +132,10 @@ extern "C" void func_ov090_02217a3c(void *self)
     FIELD(GraphicsSpriteState *, self, 0x23c) = sprite;
     sprite->screenX = 0x31;
     sprite->screenY = 0xb2;
-    sprite->field_3a = 0;
-    sprite->flags |= 0x12;
-    GraphicsSpriteState_SetAnimationIndex(sprite, 6);
+    FIELD(GraphicsSpriteState *, self, 0x23c)->field_3a = 0;
+    FIELD(GraphicsSpriteState *, self, 0x23c)->flags |= 0x12;
+    GraphicsSpriteState_SetAnimationIndex(
+        FIELD(GraphicsSpriteState *, self, 0x23c), 6);
 
     resource = (AnimationResource *)Heap_Alloc(0x10, data_ov090_0221cc00, 4,
                                                &gHeapContext);
@@ -147,7 +148,7 @@ extern "C" void func_ov090_02217a3c(void *self)
         resource->entries[0], resource->entries[1], resource->entries[2], 2);
     FIELD(GraphicsSpriteState *, self, 0x248) = sprite;
     sprite->field_3a = 0;
-    sprite->flags |= 0x12;
+    FIELD(GraphicsSpriteState *, self, 0x248)->flags |= 0x12;
 }
 
 /* Release a nullable animation resource through its retail deleting destructor. */
