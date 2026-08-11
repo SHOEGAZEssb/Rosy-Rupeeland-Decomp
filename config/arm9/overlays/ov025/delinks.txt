@@ -135,10 +135,10 @@ src/overlays/ov025/overlay025_title_graphics_setup.c:
 src/overlays/ov025/overlay025_scene_maintenance.c:
     categories: Game code
     .text start:0x02200178 end:0x02200224
-asm/overlays/ov025/overlay025_scene_runtime_02200224.s:
+src/overlays/ov025/overlay025_modal_open.c:
     categories: Game code
     .text start:0x02200224 end:0x022002b0
-asm/overlays/ov025/overlay025_scene_runtime_022002b0.s:
+src/overlays/ov025/overlay025_modal_close.c:
     categories: Game code
     .text start:0x022002b0 end:0x022002f8
 src/overlays/ov025/overlay025_transient_sprite_setup.c:
