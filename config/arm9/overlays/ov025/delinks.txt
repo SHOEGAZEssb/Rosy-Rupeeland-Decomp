@@ -111,7 +111,7 @@ asm/overlays/ov025/overlay025_callback_helpers_021ff0c8.s:
 src/overlays/ov025/overlay025_sprite_owner_ready.c:
     categories: Game code
     .text start:0x021ff140 end:0x021ff158
-asm/overlays/ov025/overlay025_callback_helpers_021ff158.s:
+src/overlays/ov025/overlay025_effect_event_dispatch.c:
     categories: Game code
     .text start:0x021ff158 end:0x021ff1c8
 src/overlays/ov025/overlay025_callback_lifecycle_transition.c:
