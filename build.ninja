@@ -43752,7 +43752,19 @@ build build/reports/overlay090_title_participant_presentation.json: objdiff buil
 build build/reports/overlay090_title_participant_presentation.txt: match_report build/reports/overlay090_title_participant_presentation.json | tools/report_objdiff.py
   report_json = build/reports/overlay090_title_participant_presentation.json
   report_args = --section .text --function func_ov090_0221b9a0
-build overlay090_title_participant_presentation: phony build/reports/overlay090_title_participant_presentation.txt
+build build/reports/overlay090_title_participant_angle.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221baec.o | build/decomp/src/overlays/ov090/overlay090_title_participant_presentation.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221baec.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_participant_presentation.o
+build build/reports/overlay090_title_participant_angle.txt: match_report build/reports/overlay090_title_participant_angle.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_participant_angle.json
+  report_args = --section .text --function func_ov090_0221baec
+build build/reports/overlay090_title_participant_position.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_0221bb84.o | build/decomp/src/overlays/ov090/overlay090_title_participant_presentation.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_0221bb84.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_participant_presentation.o
+build build/reports/overlay090_title_participant_position.txt: match_report build/reports/overlay090_title_participant_position.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_participant_position.json
+  report_args = --section .text --function func_ov090_0221bb84
+build overlay090_title_participant_presentation: phony build/reports/overlay090_title_participant_presentation.txt build/reports/overlay090_title_participant_angle.txt build/reports/overlay090_title_participant_position.txt
 build build/decomp/src/overlays/ov090/overlay090_title_participant_presentation_destructors.o: mwccarm src/overlays/ov090/overlay090_title_participant_presentation_destructors.c | include/tingle/heap.h include/tingle/types.h include/tingle/util_animation_resource.h include/tingle/vec_fx32.h
   source = src/overlays/ov090/overlay090_title_participant_presentation_destructors.c
   cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
@@ -43764,6 +43776,17 @@ build build/reports/overlay090_title_participant_presentation_destructors.txt: m
   report_json = build/reports/overlay090_title_participant_presentation_destructors.json
   report_args = --section .text --function func_ov090_0221ba6c --function func_ov090_0221baa8 --require-exact
 build overlay090_title_participant_presentation_destructors: phony build/reports/overlay090_title_participant_presentation_destructors.txt
+build build/decomp/src/overlays/ov090/overlay090_title_participant_scale.o: mwccarm src/overlays/ov090/overlay090_title_participant_scale.c | include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_participant_scale.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_participant_scale.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/reports/overlay090_title_participant_scale.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_participant_scale.o | build/decomp/src/overlays/ov090/overlay090_title_participant_scale.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_participant_scale.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_participant_scale.o
+build build/reports/overlay090_title_participant_scale.txt: match_report build/reports/overlay090_title_participant_scale.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_participant_scale.json
+  report_args = --section .text --function func_ov090_0221bc0c --require-exact
+build overlay090_title_participant_scale: phony build/reports/overlay090_title_participant_scale.txt
 build build/decomp/src/overlays/ov090/overlay090_title_participant_presentation_array.o: mwccarm src/overlays/ov090/overlay090_title_participant_presentation_array.c | include/tingle/heap.h include/tingle/types.h include/tingle/vec_fx32.h include/tingle/vec_fx32_triple.h
   source = src/overlays/ov090/overlay090_title_participant_presentation_array.c
   cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c

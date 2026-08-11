@@ -67,9 +67,10 @@ TitleParticipantPresentation *func_ov090_0221b9a0(
  */
 void func_ov090_0221baec(void *self, const void *target)
 {
-    s32 selfY = FIELD(s32, self, 0x10);
+    /* Retail issues four ordered scalar loads rather than an LDM pair. */
+    s32 selfY = FIELD(volatile s32, self, 0x10);
     s32 targetY = FIELD(volatile s32, target, 8);
-    s32 selfX = FIELD(s32, self, 0x0c);
+    s32 selfX = FIELD(volatile s32, self, 0x0c);
     s32 targetX = FIELD(volatile s32, target, 4);
     s32 deltaY = selfY - targetY;
     s32 deltaX = selfX - targetX;
@@ -126,25 +127,4 @@ void func_ov090_0221bb84(void *self, const void *target)
     positions.secondY = vertical;
     UtilAnimationResource_UpdatePosition((UtilAnimationResource *)resource,
                                          (const TouchPoint *)&positions);
-}
-
-/* Scale both sprites from height delta, clamped to the retail 0x20..0x200 range. */
-void func_ov090_0221bc0c(void *self, s32 targetHeight)
-{
-    s32 scale = (s16)((((FIELD(s32, self, 0x14) - targetHeight) >> 12) * 4) +
-                      0x100);
-    void *resource;
-    void *sprite;
-
-    if (scale < 0x20)
-        scale = 0x20;
-    else if (scale > 0x200)
-        scale = 0x200;
-    resource = FIELD(void *, self, 4);
-    sprite = FIELD(void *, resource, 4);
-    FIELD(u16, sprite, 0x32) = scale;
-    FIELD(u16, sprite, 0x34) = scale;
-    sprite = FIELD(void *, resource, 8);
-    FIELD(u16, sprite, 0x32) = scale;
-    FIELD(u16, sprite, 0x34) = scale;
 }
