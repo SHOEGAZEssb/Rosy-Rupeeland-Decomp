@@ -108,15 +108,9 @@ asm/overlays/ov090/overlay090_0221bc0c.s:
 src/overlays/ov090/overlay090_title_participant_sprite_flags_clear.c:
     categories: Game code
     .text start:0x0221bc5c end:0x0221bc84
-asm/overlays/ov090/overlay090_0221bc84.s:
+src/overlays/ov090/overlay090_title_participant_presentation_array.c:
     categories: Game code
-    .text start:0x0221bc84 end:0x0221bd78
-asm/overlays/ov090/overlay090_0221bd78.s:
-    categories: Game code
-    .text start:0x0221bd78 end:0x0221bdd8
-asm/overlays/ov090/overlay090_0221bdd8.s:
-    categories: Game code
-    .text start:0x0221bdd8 end:0x0221be40
+    .text start:0x0221bc84 end:0x0221be40
 asm/overlays/ov090/overlay090_0221be40.s:
     categories: Game code
     .text start:0x0221be40 end:0x0221c138

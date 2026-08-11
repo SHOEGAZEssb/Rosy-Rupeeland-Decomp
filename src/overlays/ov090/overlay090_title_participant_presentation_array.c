@@ -22,6 +22,7 @@ typedef struct TitleParticipantPresentationArray {
 
 extern const u8 data_ov090_0221cc78[];
 extern const char data_ov090_0221cc98[];
+extern s32 func_020befec(s32 numerator, s32 denominator);
 extern TitleParticipantPresentation *func_ov090_0221b9a0(
     TitleParticipantPresentation *self, void *owner0, void *owner1,
     const void *resources, s32 animation, const VecFx32Object *position);
@@ -35,7 +36,7 @@ extern TitleParticipantPresentation *func_ov090_0221b9a0(
 TitleParticipantPresentationArray *func_ov090_0221bc84(
     TitleParticipantPresentationArray *self, void *owner0, void *owner1,
     const void *resources, const VecFx32Object *position, void *field0c,
-    s16 count, const s16 *animations)
+    volatile s16 count, const s16 *animations)
 {
     s32 i;
 
@@ -56,7 +57,7 @@ TitleParticipantPresentationArray *func_ov090_0221bc84(
                                       animations[i], position);
         self->items[i] = item;
     }
-    self->step = 0x8000 / (count - 1);
+    self->step = func_020befec(0x8000, count - 1);
     return self;
 }
 

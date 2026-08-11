@@ -6097,9 +6097,7 @@ build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_vector_helpers.o 
 build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_member_state.o = build/decomp/src/overlays/ov090/overlay090_title_chain_member_state.o
 build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_distance_filter.o = build/decomp/src/overlays/ov090/overlay090_title_chain_distance_filter.o
 build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_accessors.o = build/decomp/src/overlays/ov090/overlay090_title_chain_accessors.o
-build/decomp/delinks/asm/overlays/ov090/overlay090_0221bc84.o = build/decomp/asm/overlays/ov090/overlay090_0221bc84.o
-build/decomp/delinks/asm/overlays/ov090/overlay090_0221bd78.o = build/decomp/asm/overlays/ov090/overlay090_0221bd78.o
-build/decomp/delinks/asm/overlays/ov090/overlay090_0221bdd8.o = build/decomp/asm/overlays/ov090/overlay090_0221bdd8.o
+build/decomp/delinks/src/overlays/ov090/overlay090_title_participant_presentation_array.o = build/decomp/src/overlays/ov090/overlay090_title_participant_presentation_array.o
 build/decomp/delinks/asm/overlays/ov090/overlay090_0221be40.o = build/decomp/asm/overlays/ov090/overlay090_0221be40.o
 build/decomp/delinks/src/overlays/ov090/overlay090_title_chain_curve_update.o = build/decomp/src/overlays/ov090/overlay090_title_chain_curve_update.o
 build/decomp/delinks/asm/overlays/ov090/overlay090_0221c468.o = build/decomp/asm/overlays/ov090/overlay090_0221c468.o

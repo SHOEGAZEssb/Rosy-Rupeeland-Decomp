@@ -611,7 +611,7 @@ build build/reports/overlay090_0221bc5c.txt: match_report build/reports/overlay0
   report_json = build/reports/overlay090_0221bc5c.json
   report_args = --section .text --function func_ov090_0221bc5c --require-exact
 
-build build/decomp/asm/overlays/ov090/overlay090_0221bc84.o: mwasmarm asm/overlays/ov090/overlay090_0221bc84.s
+build build/decomp/asm/overlays/ov090/overlay090_0221bc84.o: mwasmarm asm/overlays/ov090/overlay090_0221bc84.s | build/decomp/src/overlays/ov090/overlay090_title_participant_presentation_array.o
 build build/decomp/delinks/asm/overlays/ov090/overlay090_0221bc84.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
   object = asm/overlays/ov090/overlay090_0221bc84.s
 build build/reports/overlay090_0221bc84.json: objdiff build/decomp/asm/overlays/ov090/overlay090_0221bc84.o build/decomp/delinks/asm/overlays/ov090/overlay090_0221bc84.o
