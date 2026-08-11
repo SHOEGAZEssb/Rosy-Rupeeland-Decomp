@@ -93,7 +93,7 @@ asm/overlays/ov025/overlay025_effect_controller_021fe4cc.s:
 src/overlays/ov025/overlay025_effect_duration.c:
     categories: Game code
     .text start:0x021fe904 end:0x021fe91c
-asm/overlays/ov025/overlay025_effect_runtime_021fe91c.s:
+src/overlays/ov025/overlay025_effect_return_config.c:
     categories: Game code
     .text start:0x021fe91c end:0x021feb08
 src/overlays/ov025/overlay025_effect_animation_cycle.c:

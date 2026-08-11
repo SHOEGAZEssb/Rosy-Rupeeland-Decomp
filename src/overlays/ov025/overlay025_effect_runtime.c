@@ -38,51 +38,6 @@ extern "C" void func_ov025_021fe904(void *object, s32 duration)
     FIELD(s32, object, 0x80) = 0;
 }
 
-static void configure_side_return(void *object, s32 animation, s32 tween_type)
-{
-    if (FIELD(s32, object, 0xa4)) {
-        func_ov025_021fe174(object, 1, animation, 2);
-        func_020948e4((u8 *)object + 0xc, tween_type, -0x20000);
-    } else {
-        func_ov025_021fe174(object, 1, animation, 0x42);
-        func_020948e4((u8 *)object + 0xc, tween_type, 0x120000);
-    }
-}
-
-/*
- * Chooses a new random side +0xA4, hides the secondary sprites, and configures
- * the current mode's return phase. Modes 3/7/11 restore variant animation and
- * a 60/120-tick wait; modes 4/6 restore secondary-pair pose plus child offset
- * and 120 ticks; mode 1 uses animation/tween type 1 with 90 ticks. Other modes
- * only receive the new side and hidden sprites. RNG/graphics state changes.
- */
-extern "C" void func_ov025_021fe91c(void *object)
-{
-    FIELD(s32, object, 0xa4) = func_020918f4((u32 *)object + 0x3e, 2);
-    FIELD(u16, FIELD(void *, object, 0xec), 0x24) |= 4;
-    FIELD(u16, FIELD(void *, object, 0xf4), 0x24) |= 4;
-    s32 mode = FIELD(s32, object, 0x9c);
-    if (mode == 3 || mode == 7 || mode == 11) {
-        configure_side_return(object, FIELD(s32, object, 0xac), 2);
-        s32 variant = FIELD(s32, object, 0xac);
-        FIELD(s32, object, 0x7c) = (variant == 0 || variant == 3) ? 120 : 60;
-        FIELD(s32, object, 0x80) = 0;
-    } else if (mode == 4 || mode == 6) {
-        if (FIELD(s32, object, 0xa4)) func_ov025_021fe248(object);
-        else func_ov025_021fe2c4(object);
-        func_020948e4((u8 *)object + 0xc, 2,
-                      FIELD(s32, object, 0xa4) ? -0x20000 : 0x120000);
-        func_020948e4((u8 *)object + 0x1c, 2, 0x40000);
-        FIELD(s32, object, 0x7c) = 120;
-        FIELD(s32, object, 0x80) = 0;
-    } else if (mode == 1) {
-        configure_side_return(object, 1, 1);
-        func_020948e4((u8 *)object + 0x1c, 3, 0x40000);
-        FIELD(s32, object, 0x7c) = 90;
-        FIELD(s32, object, 0x80) = 0;
-    }
-}
-
 /*
  * Switches the primary pair to resource 1 and `animation`, queries that
  * animation's duration, multiplies it by a random value in 5..9, and installs
