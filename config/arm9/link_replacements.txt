@@ -3524,10 +3524,10 @@ build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fdecc.o 
 build/decomp/delinks/src/overlays/ov025/overlay025_effect_destroy.o = build/decomp/src/overlays/ov025/overlay025_effect_destroy.o
 build/decomp/delinks/src/overlays/ov025/overlay025_effect_delete.o = build/decomp/src/overlays/ov025/overlay025_effect_delete.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe174.o = build/decomp/asm/overlays/ov025/overlay025_effect_controller_021fe174.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe248.o = build/decomp/asm/overlays/ov025/overlay025_effect_controller_021fe248.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe2c4.o = build/decomp/asm/overlays/ov025/overlay025_effect_controller_021fe2c4.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe340.o = build/decomp/asm/overlays/ov025/overlay025_effect_controller_021fe340.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe39c.o = build/decomp/asm/overlays/ov025/overlay025_effect_controller_021fe39c.o
+build/decomp/delinks/src/overlays/ov025/overlay025_effect_mode_right.o = build/decomp/src/overlays/ov025/overlay025_effect_mode_right.o
+build/decomp/delinks/src/overlays/ov025/overlay025_effect_mode_left.o = build/decomp/src/overlays/ov025/overlay025_effect_mode_left.o
+build/decomp/delinks/src/overlays/ov025/overlay025_effect_mode_center.o = build/decomp/src/overlays/ov025/overlay025_effect_mode_center.o
+build/decomp/delinks/src/overlays/ov025/overlay025_effect_mode_deselect.o = build/decomp/src/overlays/ov025/overlay025_effect_mode_deselect.o
 build/decomp/delinks/src/overlays/ov025/overlay025_effect_random_mode.o = build/decomp/src/overlays/ov025/overlay025_effect_random_mode.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe444.o = build/decomp/asm/overlays/ov025/overlay025_effect_controller_021fe444.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_effect_controller_021fe4cc.o = build/decomp/asm/overlays/ov025/overlay025_effect_controller_021fe4cc.o

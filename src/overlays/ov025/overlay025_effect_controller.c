@@ -132,53 +132,6 @@ extern "C" void func_ov025_021fe174(void *object, s32 resource_index,
     }
 }
 
-static void show_secondary_pair(void *object, s32 animation, bool select)
-{
-    void *sprites[2] = { FIELD(void *, object, 0xec),
-                         FIELD(void *, object, 0xf4) };
-    for (s32 i = 0; i < 2; ++i) {
-        if (select) FIELD(u16, sprites[i], 0x24) |= 2;
-        FIELD(u16, sprites[i], 0x24) &= (u16)~4;
-        GraphicsSpriteState_SetAnimationIndex(sprites[i], animation);
-    }
-}
-
-/* Selects resource 1/animation 12 with flag 2 and secondary animation 2; +0xA8 becomes 4. */
-extern "C" void func_ov025_021fe248(void *object)
-{
-    func_ov025_021fe174(object, 1, 12, 2);
-    show_secondary_pair(object, 2, true);
-    FIELD(s32, object, 0xa8) = 4;
-}
-
-/* Selects resource 1/animation 12 with flag 0x42 and secondary animation 6; +0xA8 becomes -4. */
-extern "C" void func_ov025_021fe2c4(void *object)
-{
-    func_ov025_021fe174(object, 1, 12, 0x42);
-    show_secondary_pair(object, 6, true);
-    FIELD(s32, object, 0xa8) = -4;
-}
-
-/* Selects resource 1/animation 14 with flag 2, shows secondary animation zero, and clears +0xA8. */
-extern "C" void func_ov025_021fe340(void *object)
-{
-    func_ov025_021fe174(object, 1, 14, 2);
-    show_secondary_pair(object, 0, false);
-    FIELD(s32, object, 0xa8) = 0;
-}
-
-/* Selects resource 1/animation 22, clears secondary selection flag, uses animation 13, and clears +0xA8. */
-extern "C" void func_ov025_021fe39c(void *object)
-{
-    func_ov025_021fe174(object, 1, 22, 2);
-    void *sprites[2] = { FIELD(void *, object, 0xec), FIELD(void *, object, 0xf4) };
-    for (s32 i = 0; i < 2; ++i) {
-        FIELD(u16, sprites[i], 0x24) &= (u16)~2;
-        GraphicsSpriteState_SetAnimationIndex(sprites[i], 13);
-    }
-    FIELD(s32, object, 0xa8) = 0;
-}
-
 /*
  * Chooses a random mode in 0..8 different from current +0x9C, chooses a random
  * variant in 0..2, and dispatches it through func_ov025_021FE4CC. RNG and

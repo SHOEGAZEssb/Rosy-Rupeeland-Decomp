@@ -69,16 +69,16 @@ src/overlays/ov025/overlay025_effect_delete.c:
 asm/overlays/ov025/overlay025_effect_controller_021fe174.s:
     categories: Game code
     .text start:0x021fe174 end:0x021fe248
-asm/overlays/ov025/overlay025_effect_controller_021fe248.s:
+src/overlays/ov025/overlay025_effect_mode_right.c:
     categories: Game code
     .text start:0x021fe248 end:0x021fe2c4
-asm/overlays/ov025/overlay025_effect_controller_021fe2c4.s:
+src/overlays/ov025/overlay025_effect_mode_left.c:
     categories: Game code
     .text start:0x021fe2c4 end:0x021fe340
-asm/overlays/ov025/overlay025_effect_controller_021fe340.s:
+src/overlays/ov025/overlay025_effect_mode_center.c:
     categories: Game code
     .text start:0x021fe340 end:0x021fe39c
-asm/overlays/ov025/overlay025_effect_controller_021fe39c.s:
+src/overlays/ov025/overlay025_effect_mode_deselect.c:
     categories: Game code
     .text start:0x021fe39c end:0x021fe3f8
 src/overlays/ov025/overlay025_effect_random_mode.c:
