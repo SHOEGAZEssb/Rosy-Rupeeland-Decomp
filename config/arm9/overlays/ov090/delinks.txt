@@ -87,12 +87,9 @@ src/overlays/ov090/overlay090_title_participant_virtuals.c:
 asm/overlays/ov090/overlay090_0221b9a0.s:
     categories: Game code
     .text start:0x0221b9a0 end:0x0221ba6c
-asm/overlays/ov090/overlay090_0221ba6c.s:
+src/overlays/ov090/overlay090_title_participant_presentation_destructors.c:
     categories: Game code
-    .text start:0x0221ba6c end:0x0221baa8
-asm/overlays/ov090/overlay090_0221baa8.s:
-    categories: Game code
-    .text start:0x0221baa8 end:0x0221baec
+    .text start:0x0221ba6c end:0x0221baec
 asm/overlays/ov090/overlay090_0221baec.s:
     categories: Game code
     .text start:0x0221baec end:0x0221bb84

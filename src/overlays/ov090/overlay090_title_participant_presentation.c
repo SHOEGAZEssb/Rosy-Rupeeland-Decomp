@@ -61,29 +61,6 @@ TitleParticipantPresentation *func_ov090_0221b9a0(
     return self;
 }
 
-/* Destroy the paired animation resource and embedded vector without freeing `self`. */
-TitleParticipantPresentation *func_ov090_0221ba6c(
-    TitleParticipantPresentation *self)
-{
-    self->vtable = data_ov090_0221cc68;
-    if (self->resource != 0)
-        self->resource->vtable->destroyAndFree(self->resource);
-    VecFx32Object_Destroy(&self->position);
-    return self;
-}
-
-/* Destroy the presentation contents, free `self`, and return its original pointer. */
-TitleParticipantPresentation *func_ov090_0221baa8(
-    TitleParticipantPresentation *self)
-{
-    self->vtable = data_ov090_0221cc68;
-    if (self->resource != 0)
-        self->resource->vtable->destroyAndFree(self->resource);
-    VecFx32Object_Destroy(&self->position);
-    Heap_Free(self);
-    return self;
-}
-
 /*
  * Turn both sprites toward the target point, limiting the signed angular
  * change from sprite halfword +0x30 to 0x300 per call.
