@@ -147,9 +147,10 @@ src/overlays/ov025/overlay025_transient_sprite_setup.c:
 src/overlays/ov025/overlay025_transient_sprite_controls.c:
     categories: Game code
     .text start:0x02200438 end:0x02200498
-asm/overlays/ov025/overlay025_scene_runtime_02200498.s:
+src/overlays/ov025/overlay025_choice_row_layout.c:
     categories: Game code
     .text start:0x02200498 end:0x02200534
+    .rodata start:0x02202ccc end:0x02202cf0
 src/overlays/ov025/overlay025_selection_controller_visibility.c:
     categories: Game code
     .text start:0x02200534 end:0x0220058c
