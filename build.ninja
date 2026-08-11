@@ -43875,6 +43875,16 @@ build build/reports/overlay090_title_effect_update.txt: match_report build/repor
   report_json = build/reports/overlay090_title_effect_update.json
   report_args = --section .text --function func_ov090_0221c780
 build overlay090_title_effect_update: phony build/reports/overlay090_title_effect_update.txt
+build build/decomp/src/overlays/ov090/overlay090_title_controller_update.o: mwccarm src/overlays/ov090/overlay090_title_controller_update.c | include/tingle/actor_motion.h include/tingle/display_controller.h include/tingle/game_phase_runtime.h include/tingle/game_work.h include/tingle/graphics_sprite_renderer.h include/tingle/graphics_sprite_state.h include/tingle/heap.h include/tingle/overlay_manager.h include/tingle/scene.h include/tingle/types.h include/tingle/vec_fx32.h include/tingle/vec_fx32_triple.h
+  source = src/overlays/ov090/overlay090_title_controller_update.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+build build/reports/overlay090_title_controller_update.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_02217d70.o | build/decomp/src/overlays/ov090/overlay090_title_controller_update.o
+  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_02217d70.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_controller_update.o
+build build/reports/overlay090_title_controller_update.txt: match_report build/reports/overlay090_title_controller_update.json | tools/report_objdiff.py
+  report_json = build/reports/overlay090_title_controller_update.json
+  report_args = --section .text --function func_ov090_02217d70
+build overlay090_title_controller_update: phony build/reports/overlay090_title_controller_update.txt
 build build/decomp/src/overlays/ov090/overlay090_title_chain_curve_update.o: mwccarm src/overlays/ov090/overlay090_title_chain_curve_update.c | include/tingle/types.h include/tingle/vec_fx32.h
   source = src/overlays/ov090/overlay090_title_chain_curve_update.c
   cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
