@@ -184,21 +184,6 @@ extern "C" void func_ov025_021fd314(void *widget, s32 index)
     FIELD(u16, sprite, 0x28) = 0;
 }
 
-/*
- * Truncates entered length to `index`: sprites from that slot through the old
- * end switch to mode 5, the indexed sprite becomes active with phase zero,
- * and +0x17C is updated. Character storage itself is unchanged; returns void.
- */
-extern "C" void func_ov025_021fd388(void *widget, s32 index)
-{
-    for (s32 i = index; i < FIELD(s32, widget, 0x17c); ++i)
-        GraphicsSpriteState_SetAnimationIndex(FIELD(void *, widget, 0x10 + i * 4), 5);
-    void *sprite = FIELD(void *, widget, 0x10 + index * 4);
-    FIELD(void *, widget, 0x174) = sprite;
-    FIELD(u16, sprite, 0x28) = 0;
-    FIELD(s32, widget, 0x17c) = index;
-}
-
 /* Restores active sprite phase to 0x100 and clears active pointer +0x174. */
 extern "C" void func_ov025_021fd3dc(void *widget)
 {

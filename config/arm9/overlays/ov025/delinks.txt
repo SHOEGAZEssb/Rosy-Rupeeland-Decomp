@@ -21,7 +21,7 @@ asm/overlays/ov025/overlay025_name_entry_021fd314.s:
 src/overlays/ov025/overlay025_name_entry_hit_test.c:
     categories: Game code
     .text start:0x021fd340 end:0x021fd388
-asm/overlays/ov025/overlay025_name_entry_021fd388.s:
+src/overlays/ov025/overlay025_name_entry_truncate.c:
     categories: Game code
     .text start:0x021fd388 end:0x021fd3dc
 src/overlays/ov025/overlay025_name_entry_active_clear.c:
