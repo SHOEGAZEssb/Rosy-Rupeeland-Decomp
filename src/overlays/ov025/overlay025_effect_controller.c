@@ -106,33 +106,6 @@ extern "C" void *func_ov025_021fdecc(void *object)
 }
 
 /*
- * Configures the mirrored primary sprites +0xE8/+0xF0 from resource set
- * `resource_index`, animation `animation`, and final setup flag `setup_flag`.
- * When their current resource differs, both owners are rebound first. Sprite
- * flags 1/2/6 are cleared and current coordinates are preserved. Graphics and
- * sprite state change; returns void.
- */
-extern "C" void func_ov025_021fe174(void *object, s32 resource_index,
-                                     s32 animation, s32 setup_flag)
-{
-    void *main_sprite = FIELD(void *, object, 0xe8);
-    const u8 *entry = data_ov025_02202c84 + resource_index * 8;
-    if (FIELD(u16, entry, 0) != FIELD(u32, FIELD(void *, main_sprite, 0x14), 0x10)) {
-        void *descriptor = (u8 *)object + 0xb0 + resource_index * 0xc;
-        GraphicsSpriteGroup_ReplaceStateResourcesFromSource(FIELD(void *, object, 0xe0), main_sprite, descriptor);
-        GraphicsSpriteGroup_ReplaceStateResourcesFromSource(FIELD(void *, object, 0xe4),
-                      FIELD(void *, object, 0xf0), descriptor);
-    }
-    void *sprites[2] = { main_sprite, FIELD(void *, object, 0xf0) };
-    for (s32 i = 0; i < 2; ++i) {
-        void *sprite = sprites[i];
-        FIELD(u16, sprite, 0x24) &= (u16)~0x46;
-        func_02073e48(sprite, animation, FIELD(s16, sprite, 0x2c),
-                      FIELD(s16, sprite, 0x2e), 3, 0x2000, setup_flag);
-    }
-}
-
-/*
  * Chooses a random mode in 0..8 different from current +0x9C, chooses a random
  * variant in 0..2, and dispatches it through func_ov025_021FE4CC. RNG and
  * animation state change; returns void.
