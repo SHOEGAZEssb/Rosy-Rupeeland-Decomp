@@ -45,20 +45,19 @@ void *func_02071568(void *archive, u32 resourceId)
         (u8 *)archive + 0xb4, resourceId);
     if (resource != 0) {
         resource->referenceCount++;
-        return resource;
-    }
-
-    source = (GraphicsArchiveResourceHeader *)func_0207142c(
-        archive, resourceId, &sourceSize);
-    if (source != 0 &&
-        (source->magic == 0x56434720 || source->magic == 0x56434754)) {
-        resource = (GraphicsArchiveCachedResource *)func_020713e4(0x2c);
-        if (resource != 0) {
-            resource = (GraphicsArchiveCachedResource *)func_020702f4(
-                resource, archive, source, sourceSize, resourceId);
+    } else {
+        source = (GraphicsArchiveResourceHeader *)func_0207142c(
+            archive, resourceId, &sourceSize);
+        if (source != 0 &&
+            (source->magic == 0x56434720 || source->magic == 0x56434754)) {
+            resource = (GraphicsArchiveCachedResource *)func_020713e4(0x2c);
+            if (resource != 0) {
+                resource = (GraphicsArchiveCachedResource *)func_020702f4(
+                    resource, archive, source, sourceSize, resourceId);
+            }
+            resource->referenceCount++;
+            func_02070244((u8 *)archive + 0xb4, resource);
         }
-        resource->referenceCount++;
-        func_02070244((u8 *)archive + 0xb4, resource);
     }
     return resource;
 }

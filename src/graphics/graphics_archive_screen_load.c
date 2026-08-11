@@ -44,19 +44,18 @@ void *func_020718dc(void *archive, u32 resourceId)
         (u8 *)archive + 0xd8, resourceId);
     if (resource != 0) {
         resource->referenceCount++;
-        return resource;
-    }
-
-    source = (GraphicsArchiveResourceHeader *)func_0207142c(
-        archive, resourceId, &sourceSize);
-    if (source != 0 && source->magic == 0x56534320) {
-        resource = (GraphicsArchiveCachedResource *)func_020713e4(0x28);
-        if (resource != 0) {
-            resource = (GraphicsArchiveCachedResource *)func_02070d88(
-                resource, archive, source, sourceSize, resourceId);
+    } else {
+        source = (GraphicsArchiveResourceHeader *)func_0207142c(
+            archive, resourceId, &sourceSize);
+        if (source != 0 && source->magic == 0x56534320) {
+            resource = (GraphicsArchiveCachedResource *)func_020713e4(0x28);
+            if (resource != 0) {
+                resource = (GraphicsArchiveCachedResource *)func_02070d88(
+                    resource, archive, source, sourceSize, resourceId);
+            }
+            resource->referenceCount++;
+            func_02070244((u8 *)archive + 0xd8, resource);
         }
-        resource->referenceCount++;
-        func_02070244((u8 *)archive + 0xd8, resource);
     }
     return resource;
 }
