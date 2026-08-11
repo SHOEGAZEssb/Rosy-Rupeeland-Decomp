@@ -120,12 +120,9 @@ src/overlays/ov025/overlay025_callback_lifecycle_transition.c:
 asm/overlays/ov025/overlay025_scene_lifecycle_021ff27c.s:
     categories: Game code
     .text start:0x021ff27c end:0x021ffa6c
-asm/overlays/ov025/overlay025_scene_lifecycle_021ffa6c.s:
+src/overlays/ov025/overlay025_scene_destroy.c:
     categories: Game code
-    .text start:0x021ffa6c end:0x021ffc30
-asm/overlays/ov025/overlay025_scene_lifecycle_021ffc30.s:
-    categories: Game code
-    .text start:0x021ffc30 end:0x021ffdfc
+    .text start:0x021ffa6c end:0x021ffdfc
 asm/overlays/ov025/overlay025_graphics_setup_021ffdfc.s:
     categories: Game code
     .text start:0x021ffdfc end:0x02200014

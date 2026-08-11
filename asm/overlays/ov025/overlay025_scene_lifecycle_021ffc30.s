@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_scene_lifecycle.c. */
+/* Exact fallback; see src/overlays/ov025/overlay025_scene_destroy.c. */
 .extern __destroy_arr
 .extern data_020f4e14
 .extern data_ov025_02203318
