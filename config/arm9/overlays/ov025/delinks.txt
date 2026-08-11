@@ -12,12 +12,9 @@ asm/overlays/ov025/overlay025_name_entry_021fd03c.s:
 asm/overlays/ov025/overlay025_name_entry_021fd160.s:
     categories: Game code
     .text start:0x021fd160 end:0x021fd2e8
-asm/overlays/ov025/overlay025_name_entry_021fd2e8.s:
+src/overlays/ov025/overlay025_name_entry_sprite_selection.c:
     categories: Game code
-    .text start:0x021fd2e8 end:0x021fd314
-asm/overlays/ov025/overlay025_name_entry_021fd314.s:
-    categories: Game code
-    .text start:0x021fd314 end:0x021fd340
+    .text start:0x021fd2e8 end:0x021fd340
 src/overlays/ov025/overlay025_name_entry_hit_test.c:
     categories: Game code
     .text start:0x021fd340 end:0x021fd388

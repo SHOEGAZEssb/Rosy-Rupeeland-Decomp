@@ -159,31 +159,6 @@ extern "C" void func_ov025_021fd160(void *widget, void *font_context)
     func_ov025_021fd03c(widget, font_context, 1);
 }
 
-/*
- * Selects special-key sprite `index` from the four pointers at +0x30, switches
- * it to animation/mode 3, stores it as active +0x174, and clears its +0x28
- * phase. Sprite/widget state changes; returns void.
- */
-extern "C" void func_ov025_021fd2e8(void *widget, s32 index)
-{
-    void *sprite = FIELD(void *, widget, 0x30 + index * 4);
-    FIELD(void *, widget, 0x174) = sprite;
-    GraphicsSpriteState_SetAnimationIndex(sprite, 3);
-    FIELD(u16, sprite, 0x28) = 0;
-}
-
-/*
- * Selects grid sprite `index` from the 7x11 pointers at +0x40, switches it to
- * animation/mode 2, stores it as active +0x174, and clears phase +0x28.
- */
-extern "C" void func_ov025_021fd314(void *widget, s32 index)
-{
-    void *sprite = FIELD(void *, widget, 0x40 + index * 4);
-    FIELD(void *, widget, 0x174) = sprite;
-    GraphicsSpriteState_SetAnimationIndex(sprite, 2);
-    FIELD(u16, sprite, 0x28) = 0;
-}
-
 /* Restores active sprite phase to 0x100 and clears active pointer +0x174. */
 extern "C" void func_ov025_021fd3dc(void *widget)
 {
