@@ -190,12 +190,9 @@ src/overlays/ov025/overlay025_confirmation_state.c:
 src/overlays/ov025/overlay025_record_transfer_state.c:
     categories: Game code
     .text start:0x02201494 end:0x02201abc
-asm/overlays/ov025/overlay025_record_delete_states_02201abc.s:
+src/overlays/ov025/overlay025_record_delete_states.c:
     categories: Game code
-    .text start:0x02201abc end:0x02201cfc
-asm/overlays/ov025/overlay025_record_delete_states_02201cfc.s:
-    categories: Game code
-    .text start:0x02201cfc end:0x02201ed0
+    .text start:0x02201abc end:0x02201ed0
 src/overlays/ov025/overlay025_halt_state.c:
     categories: Game code
     .text start:0x02201ed0 end:0x02201f28
