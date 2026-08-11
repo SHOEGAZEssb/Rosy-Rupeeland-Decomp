@@ -167,21 +167,6 @@ extern "C" void func_ov025_021fd3dc(void *widget)
 }
 
 /*
- * Clears every UTF-16 slot from current length through slot 15, then strips
- * trailing U+0020 spaces inside the entered prefix until the first non-space.
- * Character storage changes; no length field or external state changes.
- */
-extern "C" void func_ov025_021fd3f4(void *widget)
-{
-    for (s32 i = FIELD(s32, widget, 0x17c); i < 16; ++i)
-        FIELD(u16, widget, 0x180 + i * 2) = 0;
-    for (s32 i = FIELD(s32, widget, 0x17c) - 1; i >= 0; --i) {
-        if (FIELD(u16, widget, 0x180 + i * 2) != 0x20) return;
-        FIELD(u16, widget, 0x180 + i * 2) = 0;
-    }
-}
-
-/*
  * Copies entered non-space UTF-16 characters to `output` and checks a hidden
  * locale-specific name. Alternate locale accepts case-insensitive "TINGLE";
  * the default locale accepts four recovered hiragana codepoints or their

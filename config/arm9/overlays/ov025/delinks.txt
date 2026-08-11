@@ -24,7 +24,7 @@ src/overlays/ov025/overlay025_name_entry_truncate.c:
 src/overlays/ov025/overlay025_name_entry_active_clear.c:
     categories: Game code
     .text start:0x021fd3dc end:0x021fd3f4
-asm/overlays/ov025/overlay025_name_entry_021fd3f4.s:
+src/overlays/ov025/overlay025_name_entry_trailing_space_cleanup.c:
     categories: Game code
     .text start:0x021fd3f4 end:0x021fd450
 src/overlays/ov025/overlay025_name_entry_nonspace_count.c:

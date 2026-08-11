@@ -3509,7 +3509,7 @@ build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_sprite_selection.o
 build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_hit_test.o = build/decomp/src/overlays/ov025/overlay025_name_entry_hit_test.o
 build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_truncate.o = build/decomp/src/overlays/ov025/overlay025_name_entry_truncate.o
 build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_active_clear.o = build/decomp/src/overlays/ov025/overlay025_name_entry_active_clear.o
-build/decomp/delinks/asm/overlays/ov025/overlay025_name_entry_021fd3f4.o = build/decomp/asm/overlays/ov025/overlay025_name_entry_021fd3f4.o
+build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_trailing_space_cleanup.o = build/decomp/src/overlays/ov025/overlay025_name_entry_trailing_space_cleanup.o
 build/decomp/delinks/src/overlays/ov025/overlay025_name_entry_nonspace_count.o = build/decomp/src/overlays/ov025/overlay025_name_entry_nonspace_count.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_name_entry_021fd488.o = build/decomp/asm/overlays/ov025/overlay025_name_entry_021fd488.o
 build/decomp/delinks/asm/overlays/ov025/overlay025_record_widget_021fd5dc.o = build/decomp/asm/overlays/ov025/overlay025_record_widget_021fd5dc.o
