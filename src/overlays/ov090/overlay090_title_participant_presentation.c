@@ -14,15 +14,6 @@ typedef struct TitleParticipantPresentation {
     VecFx32Object position;
 } TitleParticipantPresentation;
 
-typedef struct TitlePresentationPositionPair {
-    const void *firstVtable;
-    s32 firstX;
-    s32 firstY;
-    const void *secondVtable;
-    s32 secondX;
-    s32 secondY;
-} TitlePresentationPositionPair;
-
 extern const u8 data_ov090_0221cc68[];
 extern const char data_ov090_0221cc90[];
 extern const u8 data_ov090_0221cc88[];
@@ -103,28 +94,34 @@ void func_ov090_0221baec(void *self, const void *target)
 }
 
 /*
- * Convert the participant and target fixed-point coordinates to the paired
- * sprite offsets, then submit two identical position records using the current
- * NDS display vertical offset.
+ * Convert participant and target fixed-point coordinates to the paired sprite
+ * offsets, construct the two retail stack position records using the current
+ * NDS display vertical offset, and submit the first record to the resource.
  */
 void func_ov090_0221bb84(void *self, const void *target)
 {
-    TitlePresentationPositionPair positions;
+    TouchPoint positions[2];
+    UtilAnimationResource *resource;
+    TouchPoint *position;
+    s32 x;
+    s32 y;
     s32 vertical;
-    void *resource = FIELD(void *, self, 4);
 
-    FIELD(s32, resource, 0x18) =
-        (FIELD(s32, self, 0x0c) >> 12) - (FIELD(s32, target, 4) >> 12);
-    FIELD(s32, resource, 0x1c) =
+    x = (FIELD(s32, self, 0x0c) >> 12) -
+        (FIELD(s32, target, 4) >> 12);
+    y =
         ((FIELD(s32, self, 0x10) >> 12) - (FIELD(s32, self, 0x14) >> 12)) -
         (FIELD(s32, target, 8) >> 12);
+    FIELD(s32, FIELD(void *, self, 4), 0x18) = x;
+    FIELD(s32, FIELD(void *, self, 4), 0x1c) = y;
     vertical = -0xc0 - DisplayController_GetVerticalOffset();
-    positions.firstVtable = data_ov090_0221cc88;
-    positions.firstX = 0;
-    positions.firstY = vertical;
-    positions.secondVtable = data_ov090_0221cc88;
-    positions.secondX = 0;
-    positions.secondY = vertical;
-    UtilAnimationResource_UpdatePosition((UtilAnimationResource *)resource,
-                                         (const TouchPoint *)&positions);
+    positions[0].vtable = (TouchPointVTable *)data_ov090_0221cc88;
+    positions[0].x = 0;
+    positions[0].y = vertical;
+    resource = (UtilAnimationResource *)FIELD(void *, self, 4);
+    position = &positions[0];
+    positions[1].vtable = (TouchPointVTable *)data_ov090_0221cc88;
+    positions[1].x = 0;
+    positions[1].y = vertical;
+    UtilAnimationResource_UpdatePosition(resource, position);
 }
