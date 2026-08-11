@@ -197,23 +197,31 @@ extern "C" void func_ov025_021fd3dc(void *widget)
  */
 extern "C" s32 func_ov025_021fd488(void *widget, u16 *output)
 {
+    s32 i = 0;
     s32 count = 0;
-    for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i) {
-        u16 character = FIELD(u16, widget, 0x180 + i * 2);
+    for (; i < FIELD(s32, widget, 0x17c); ++i) {
+        u16 character = FIELD(u16, (u8 *)widget + i * 2 + 0x100, 0x80);
         if (character != 0x20) output[count++] = character;
     }
-    if (alternate_locale()) {
-        static const char word[] = "TINGLE";
-        if (count != 6) return 0;
-        for (s32 i = 0; i < 6; ++i)
-            if (output[i] != (u16)word[i] &&
-                output[i] != (u16)(word[i] + ('a' - 'A'))) return 0;
+    if (FIELD(u8, gSystemState, 0x5f) != 0) {
+        if (count != 6) goto no_match;
+        if (output[0] != 'T' && output[0] != 't') goto no_match;
+        if (output[1] != 'I' && output[1] != 'i') goto no_match;
+        if (output[2] != 'N' && output[2] != 'n') goto no_match;
+        if (output[3] != 'G' && output[3] != 'g') goto no_match;
+        if (output[4] != 'L' && output[4] != 'l') goto no_match;
+        if (output[5] != 'E' && output[5] != 'e') goto no_match;
+        output[6] = 0;
+        return 1;
     } else {
-        static const u16 word[] = { 0x3061, 0x3093, 0x304f, 0x308b };
-        if (count != 4) return 0;
-        for (s32 i = 0; i < 4; ++i)
-            if (output[i] != word[i] && output[i] != word[i] + 0x60) return 0;
+        if (count != 4) goto no_match;
+        if (output[0] != 0x3061 && output[0] != 0x3061 + 0x60) goto no_match;
+        if (output[1] != 0x3093 && output[1] != 0x3093 + 0x60) goto no_match;
+        if (output[2] != 0x304f && output[2] != 0x304f + 0x60) goto no_match;
+        if (output[3] != 0x308b && output[3] != 0x308b + 0x60) goto no_match;
+        output[4] = 0;
+        return 1;
     }
-    output[count] = 0;
-    return 1;
+no_match:
+    return 0;
 }
