@@ -4,12 +4,18 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
+/* Four-byte special-key glyph/position record; locale selects a group of four. */
+struct SpecialGlyphRecord {
+    u16 glyph;
+    s16 x;
+};
+
 extern void *data_020f4e14;
 extern void *data_020f4e18;
-extern const u8 data_ov025_02202f40[];
+extern const SpecialGlyphRecord data_ov025_02202f40[];
 extern const u16 data_ov025_02202fc0[];
 extern const u16 data_ov025_022030f4[];
-extern void *gSystemState;
+extern u8 gSystemState[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,7 +70,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
         func_02073e48(sprite, 5, 0x33 + 22 * i, 13, 2, 0x100, 1);
     }
 
-    const u8 *special = data_ov025_02202f40 + locale * 16;
+    const u8 *special = (const u8 *)data_ov025_02202f40 + locale * 16;
     for (s32 i = 0; i < 4; ++i) {
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0),
                                      (u8 *)widget + 4, 1);
@@ -138,27 +144,35 @@ extern "C" void func_ov025_021fd160(void *widget, void *font_context)
 {
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     GraphicsSpriteRenderer_SetFontResource(data_020f4e14, font_context);
-    const u8 *special = data_ov025_02202f40 +
-                        (alternate_locale() ? 16 : 0);
+    s32 locale = 0;
+    if (FIELD(u8, gSystemState, 0x5f) != 0)
+        locale = 1;
+    const SpecialGlyphRecord *special = data_ov025_02202f40 + locale * 4;
     for (s32 i = 0; i < 4; ++i)
-        GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, FIELD(u16, special, i * 4),
-                      FIELD(s16, special, i * 4 + 2) - 5, 0xac, 14);
+        GraphicsSpriteRenderer_DrawGlyph(
+            data_020f4e14, special[i].glyph,
+            special[i].x - 5, 0xac,
+            14);
 
     for (s32 row = 0; row < 7; ++row) {
         for (s32 column = 0; column < 11; ++column) {
             s32 index = row * 11 + column;
-            u16 character = FIELD(const u16, FIELD(const u16 *, widget, 0x178),
-                                  index * 2);
-            void *sprite = FIELD(void *, widget, 0x40 + index * 4);
-            if (character != 0) {
-                FIELD(u16, sprite, 0x24) &= (u16)~4;
-                s32 glyph = GraphicsSpriteFont_MapCharacterToGlyph(character);
+            if (FIELD(const u16, FIELD(const u16 *, widget, 0x178),
+                      index * 2) != 0) {
+                void *sprite = ((void **)widget)[index + 16];
+                FIELD(u16, sprite, 0x24) &= ~4;
+                s32 glyph = GraphicsSpriteFont_MapCharacterToGlyph(
+                    FIELD(const u16, FIELD(const u16 *, widget, 0x178),
+                          index * 2));
                 s32 width = GraphicsSpriteRenderer_GetGlyphMetric(data_020f4e14, glyph);
-                s32 x = 0x13 + 22 * column + ((row & 1) ? 2 : -2) -
+                s32 x = 0x13 -
                         ((width + (s32)((u32)width >> 31)) >> 1);
-                GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, (u16)glyph,
+                x += 22 * column;
+                x += (row & 1) ? 2 : -2;
+                GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, glyph,
                               x, 0x1d + 20 * row, 14);
             } else {
+                void *sprite = ((void **)widget)[index + 16];
                 FIELD(u16, sprite, 0x24) |= 4;
             }
         }
