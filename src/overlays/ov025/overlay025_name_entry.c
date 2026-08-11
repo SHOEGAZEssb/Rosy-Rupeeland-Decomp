@@ -184,15 +184,6 @@ extern "C" void func_ov025_021fd314(void *widget, s32 index)
     FIELD(u16, sprite, 0x28) = 0;
 }
 
-/* Hit-tests entered-glyph sprites against `input`; returns their index or -1. */
-extern "C" s32 func_ov025_021fd340(void *widget, void *input)
-{
-    for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i)
-        if (func_02092910(FIELD(void *, widget, 0x10 + i * 4), input))
-            return i;
-    return -1;
-}
-
 /*
  * Truncates entered length to `index`: sprites from that slot through the old
  * end switch to mode 5, the indexed sprite becomes active with phase zero,
