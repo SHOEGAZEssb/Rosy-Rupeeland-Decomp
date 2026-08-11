@@ -6,6 +6,12 @@
 
 extern void *data_020f4e14;
 extern void *data_020f4e18;
+/* Retail copies both six-entry sprite-coordinate tables to stack temporaries. */
+struct PositionTable {
+    s32 values[6];
+};
+extern const PositionTable data_ov025_02202c9c;
+extern const PositionTable data_ov025_02202cb4;
 extern const u8 data_ov025_02202cf0[];
 extern const u8 data_ov025_02202d68[];
 extern const u32 data_ov025_02202ea8[];
@@ -18,7 +24,7 @@ extern const u8 data_ov025_0220339c[];
 extern const u8 data_ov025_022033a4[];
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern void *gSoundContext;
 
 typedef struct TransitionPair {
@@ -148,30 +154,35 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     func_02071ee0((u8 *)scene + 0x8c, data_020f4e18, 0x2427, 0x2428, 0x2429);
     func_02071ee0((u8 *)scene + 0xa4, data_020f4e18, 0x242d, 0x242e, 0x242f);
     FIELD(void *, scene, 0xb0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
-    FIELD(void *, scene, 0xb4) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    FIELD(s32, FIELD(void *, scene, 0xb4), 0x18) = 0;
-    FIELD(s32, FIELD(void *, scene, 0xb4), 0x1c) = 0x100;
-    for (s32 i = 0; i < 3; ++i) FIELD(void *, scene, 0xe4 + i * 4) = 0;
+    void *debug_group = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
+    FIELD(void *, scene, 0xb4) = debug_group;
+    FIELD(s32, debug_group, 0x18) = 0;
+    FIELD(s32, debug_group, 0x1c) = 0x100;
+    s32 i;
+    for (i = 0; i < 3; ++i)
+        FIELD(void *, (u32)scene + (i << 2), 0xe4) = 0;
 
-    for (s32 i = 0; i < 3; ++i) {
-        void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
-                                     (u8 *)scene + 0x5c, 1);
+    for (i = 0; i < 3; ++i) {
         func_020957f0((u8 *)scene + 0x2f4 + i * 0xac,
-                      sprite, 0x20 + i * 2, 1, 16);
+                      GraphicsSpriteGroup_CreateStateFromSource(
+                          FIELD(void *, scene, 0xb0),
+                          (u8 *)scene + 0x5c, 1),
+                      0x20 + i * 2, 1, 16);
         func_02095820((u8 *)scene + 0x2f4 + i * 0xac, 0xd4, 0);
         func_02095940((u8 *)scene + 0x2f4 + i * 0xac);
     }
     FIELD(void *, scene, 0xbc) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                                 (u8 *)scene + 0x8c, 2);
     func_02073e48(FIELD(void *, scene, 0xbc), 0, 0x80, 0x60, 0, 0, 6);
-    s32 x_positions[6] = {0x40, 0x67, 0x9a, 0xbf, 0xe4, 0x15};
-    s32 y_positions[6] = {0x5f, 0x32, 0x53, 0x7e, 0x4f, 0x46};
-    for (s32 i = 0; i < 6; ++i) {
+    PositionTable x_positions = data_ov025_02202c9c;
+    PositionTable y_positions = data_ov025_02202cb4;
+    for (i = 0; i < 6; ++i) {
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                                      (u8 *)scene + 0xa4, 2);
-        FIELD(void *, scene, 0xc4 + i * 4) = sprite;
-        func_02073e48(sprite, i, x_positions[i],
-                      y_positions[i] - 0x100, 1, 0xf000, 2);
+        FIELD(void *, (u32)scene + (i << 2), 0xc4) = sprite;
+        func_02073e48(FIELD(void *, (u32)scene + (i << 2), 0xc4),
+                      i, x_positions.values[i],
+                      y_positions.values[i] - 0x100, 1, 0xf000, 2);
     }
     FIELD(void *, scene, 0xc0) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                                                 (u8 *)scene + 0x98, 2);
@@ -197,7 +208,7 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     void *effect = Heap_Alloc(0xfc, data_ov025_02203384, 4, gHeapContext);
     if (effect) effect = func_ov025_021fdecc(effect);
     FIELD(void *, scene, 0x508) = effect;
-    func_02095274((u8 *)scene + 0x4f8, effect);
+    func_02095274((u8 *)scene + 0x4f8, FIELD(void *, scene, 0x508));
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                                                        (u8 *)scene + 0x74, 2);
@@ -205,8 +216,8 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     effect = Heap_Alloc(0xa0, data_ov025_0220338c, 4, gHeapContext);
     if (effect) effect = func_ov025_021ff21c(effect, sprite);
     FIELD(void *, scene, 0xdc) = effect;
-    func_02095274((u8 *)scene + 0x4f8, effect);
-    func_02094cf0(effect, data_ov025_02202d68, 1);
+    func_02095274((u8 *)scene + 0x4f8, FIELD(void *, scene, 0xdc));
+    func_02094cf0(FIELD(void *, scene, 0xdc), data_ov025_02202d68, 1);
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                             (u8 *)scene + 0x80, 2);
@@ -214,8 +225,8 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     effect = Heap_Alloc(0xa0, data_ov025_02203394, 4, gHeapContext);
     if (effect) effect = func_020953f4(effect, sprite);
     FIELD(void *, scene, 0xe0) = effect;
-    func_02095274((u8 *)scene + 0x4f8, effect);
-    func_02094cf0(effect, data_ov025_02202cf0, 1);
+    func_02095274((u8 *)scene + 0x4f8, FIELD(void *, scene, 0xe0));
+    func_02094cf0(FIELD(void *, scene, 0xe0), data_ov025_02202cf0, 1);
 
     void *overlay94 = Heap_Alloc(0x4c, data_ov025_0220339c, 4, gHeapContext);
     if (overlay94) overlay94 = func_ov094_02219568(overlay94, 0xd8, 0xd8);
@@ -224,13 +235,15 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     if (dialog) dialog = func_02092cc0(dialog, gDebugFont,
                                       FIELD(void *, scene, 0x57c));
     FIELD(void *, scene, 0x50c) = dialog;
-    func_ov025_021ff23c(dialog, 0x10, 0x70, 0xe0, 0x40);
-    FIELD(s32, dialog, 0xd0) = 13;
-    FIELD(s32, dialog, 0xd4) = 0;
-    FIELD(s32, dialog, 0xb4) = 0;
-    FIELD(s32, dialog, 0xbc) = -2;
-    FIELD(s32, dialog, 0xc0) = 0;
-    func_02092f88(dialog, 1, (u8 *)scene + 0x510);
+    func_ov025_021ff23c(FIELD(void *, scene, 0x50c),
+                        0x10, 0x70, 0xe0, 0x40);
+    void *dialog_fields = FIELD(void *, scene, 0x50c);
+    FIELD(s32, dialog_fields, 0xd0) = 13;
+    FIELD(s32, dialog_fields, 0xd4) = 0;
+    FIELD(s32, FIELD(void *, scene, 0x50c), 0xb4) = 0;
+    FIELD(s32, FIELD(void *, scene, 0x50c), 0xbc) = -2;
+    FIELD(s32, FIELD(void *, scene, 0x50c), 0xc0) = 0;
+    func_02092f88(FIELD(void *, scene, 0x50c), 1, (u8 *)scene + 0x510);
     FIELD(void *, scene, 0x59c) = 0;
     GameWork_ClearFlag(gGameWork, 0x3d3);
     GameWork_ClearFlag(gGameWork, 0x3d6);
