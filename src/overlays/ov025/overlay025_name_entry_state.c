@@ -21,9 +21,25 @@ extern const u8 data_ov025_022033b4[];
 extern const u8 data_ov025_022033bc[];
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern void *gRuntimeContext;
-extern void *gSystemState;
+extern u8 gSystemState[];
+
+typedef struct TransitionPair {
+    u32 callback;
+    u32 argument;
+} TransitionPair;
+
+typedef struct GlyphPair {
+    u16 first;
+    u16 second;
+} GlyphPair;
+
+typedef struct GlyphTriplet {
+    u16 first;
+    u16 second;
+    u16 third;
+} GlyphTriplet;
 
 #ifdef __cplusplus
 extern "C" {
@@ -66,7 +82,8 @@ extern s32 func_ov025_021fd450(void *);
 extern s32 func_ov025_021fd488(void *, void *);
 extern void *func_ov025_021fd5dc(void *, s32);
 extern void func_ov025_021fd9e4(void *, s32);
-extern void func_ov025_021ff254(void *, u32, u32);
+extern s32 func_ov025_021ff0b0(void *);
+extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200014(void *);
 extern void func_ov025_022000a4(void *);
 extern void func_ov025_02200178(void *);
@@ -86,225 +103,96 @@ extern s32 func_ov025_02200940(void *);
 }
 #endif
 
-static void advance_state(void *scene)
-{
-    ++FIELD(s32, scene, 4);
-    FIELD(s32, scene, 8) = 0;
-}
-
-static void transition_pair(void *scene, const u32 *pair)
-{
-    func_ov025_021ff254(scene, pair[0], pair[1]);
-}
-
-static void destroy_row(void *row)
-{
-    if (row) {
-        GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
-        func_020927b8((u8 *)row + 0x30);
-        func_02071eb8(row);
-        Heap_Free(row);
-    }
-}
-
-static void destroy_editor(void *editor)
-{
-    if (editor) {
-        GraphicsSpriteGroup_Destroy(FIELD(void *, editor, 0));
-        func_02071eb8((u8 *)editor + 4);
-        Heap_Free(editor);
-    }
-}
-
-static void editor_redraw(void *scene, s32 full)
-{
-    void *editor = FIELD(void *, scene, 0x598);
-    func_ov025_021fd03c(editor, FIELD(void *, scene, 0x574), full);
-}
-
-/*
- * Handles one editor input frame and returns whether the editor has signaled
- * completion through +0x174. The four dedicated hitboxes switch key pages,
- * delete, and accept; the 77-key grid appends or transforms UTF-16 glyphs.
- * Confirmed table relationships remain address-named because their scripts are
- * not yet identified. The direct insertion fallback below covers ordinary keys;
- * the exact assembly retains the complete voiced/small-glyph normalization.
- */
-static s32 update_editor_input(void *scene)
-{
-    void *editor = FIELD(void *, scene, 0x598);
-    void *touch = (u8 *)scene + 0x30;
-    void *system = gSystemState;
-
-    if (func_02092910(FIELD(void *, editor, 0x34), touch)) {
-        func_02092260(scene, 0xb);
-        FIELD(const u16 *, editor, 0x178) = FIELD(u8, system, 0x5f)
-                                              ? data_ov025_02202fc0
-                                              : data_ov025_022030f4;
-        func_ov025_021fd160(editor, FIELD(void *, scene, 0x574));
-        func_ov025_021fd2e8(editor, 1);
-    } else if (func_02092910(FIELD(void *, editor, 0x38), touch)) {
-        func_02092260(scene, 0xb);
-        FIELD(const u16 *, editor, 0x178) = FIELD(u8, system, 0x5f)
-                                              ? data_ov025_0220305a
-                                              : data_ov025_0220318e;
-        func_ov025_021fd160(editor, FIELD(void *, scene, 0x574));
-        func_ov025_021fd2e8(editor, 2);
-    } else if (func_02092910(FIELD(void *, editor, 0x3c), touch)) {
-        func_02092260(scene, 0xb);
-        if (!FIELD(u8, system, 0x5f))
-            FIELD(const u16 *, editor, 0x178) = data_ov025_02202fc0;
-        func_ov025_021fd160(editor, FIELD(void *, scene, 0x574));
-        func_ov025_021fd2e8(editor, 3);
-    } else if (func_02092910(FIELD(void *, editor, 0x30), touch)) {
-        if (FIELD(s32, editor, 0x17c)) {
-            func_02092260(scene, 0);
-            --FIELD(s32, editor, 0x17c);
-            editor_redraw(scene, 0);
-        } else {
-            func_02092260(scene, 9);
-        }
-        func_ov025_021fd2e8(editor, 0);
-    } else {
-        s32 command = func_ov025_021fd340(editor, touch);
-        if (command >= 0) {
-            func_02092260(scene, 0);
-            func_ov025_021fd388(editor, command);
-            editor_redraw(scene, 0);
-        } else {
-            for (s32 key = 0; key < 77; ++key) {
-                if (!func_02092910(FIELD(void *, editor, 0x40 + key * 4), touch))
-                    continue;
-                s32 changed = 0;
-                u16 glyph = FIELD(const u16 *, editor, 0x178)[key];
-                s32 length = FIELD(s32, editor, 0x17c);
-                if (glyph != 0x309b && length < 8) {
-                    FIELD(u16, editor, 0x180 + length * 2) =
-                        glyph == 0x40 ? 0 : glyph;
-                    FIELD(s32, editor, 0x17c) = length + 1;
-                    changed = 1;
-                }
-                if (changed) {
-                    editor_redraw(scene, 1);
-                    func_02092260(scene, 0);
-                } else {
-                    func_02092260(scene, 9);
-                }
-                func_ov025_021fd314(editor, key);
-                break;
-            }
-        }
-    }
-    return FIELD(void *, editor, 0x174) != 0;
-}
-
-static void setup_editor(void *scene)
-{
-    func_020922f0(scene, 0xe8);
-    func_ov025_022000a4(scene);
-    func_ov025_02200564(scene);
-    func_ov025_022005e4(scene);
-    func_ov094_022198e8(FIELD(void *, scene, 0x5c0), 0);
-    for (s32 i = 0; i < 3; ++i)
-        GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, scene, 0xe4 + i * 4), 0xc));
-    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    void *font = func_020791e0(data_021f3ecc, 0x6b);
-    func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
-    func_02093360(FIELD(void *, scene, 0x50c), 0);
-    void *editor = Heap_Alloc(0x1a0, data_ov025_022033bc, 4, gHeapContext);
-    if (editor)
-        editor = func_ov025_021fce00(editor);
-    FIELD(void *, scene, 0x598) = editor;
-    func_ov025_021fd160(editor, FIELD(void *, scene, 0x574));
-    func_02095988((u8 *)scene + 0xf0, 0x2d);
-    func_02095928((u8 *)scene + 0xf0);
-    func_02095928((u8 *)scene + 0x248);
-    func_02092c8c(3, 0);
-}
-
-static void teardown_editor(void *scene)
-{
-    void *editor = FIELD(void *, scene, 0x598);
-    if (func_ov025_021fd450(editor)) {
-        s32 index = FIELD(s32, scene, 0x54);
-        destroy_row(FIELD(void *, scene, 0xe4 + index * 4));
-        void *row = Heap_Alloc(0x90, data_ov025_022033b4, 4, gHeapContext);
-        if (row)
-            row = func_ov025_021fd5dc(row, index);
-        FIELD(void *, scene, 0xe4 + index * 4) = row;
-        FIELD(s32, FIELD(void *, row, 0xc), 0x20) = 1;
-        func_ov025_02200648(scene, index);
-    } else {
-        for (s32 i = 0; i < 3; ++i)
-            func_ov025_021fd9e4(FIELD(void *, scene, 0xe4 + i * 4), 0);
-        FIELD(s32, scene, 0x54) = -1;
-    }
-    FIELD(u32, scene, 0x20) &= ~0x400;
-    destroy_editor(editor);
-    FIELD(void *, scene, 0x598) = 0;
-    FIELD(u32, scene, 0x20) |= 0x400;
-    func_ov094_022198e8(FIELD(void *, scene, 0x5c0), 1);
-    func_ov025_0220058c(scene);
-    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    for (s32 i = 0; i < 3; ++i)
-        FIELD(s32, FIELD(void *, FIELD(void *, scene, 0xe4 + i * 4), 0xc), 0x20) = 1;
-    func_ov025_022001f4(scene);
-    func_02095940((u8 *)scene + 0xf0);
-    func_02095940((u8 *)scene + 0x248);
-    func_ov025_02200014(scene);
-    func_02092c8c(3, 0);
-    func_020922f0(scene, 0xe2);
-}
-
 /*
  * Runs one frame of the complete name-entry flow. States 0..4 initialize and
  * edit; 10..13 commit the UTF-16 name and handle runtime/error modals; 20/21
  * restore the record screen; state 30 reloads editor font resources after a
- * descriptor change. Unused states are inert. It can allocate/free editor and
- * row objects, modify persistent flags 0x14B/0x25D/0x3F5, submit runtime work,
- * alter graphics/audio/input state, and dispatch callbacks. Always returns zero
- * after scene maintenance.
+ * descriptor change. The editor applies the retail dakuten and handakuten
+ * conversion tables before appending ordinary glyphs. Unused states are inert.
+ * It can allocate/free editor and row objects, modify persistent flags
+ * 0x14B/0x25D/0x3F5, submit runtime work, alter graphics/audio/input state, and
+ * dispatch callbacks. Always returns zero after scene maintenance.
  */
 extern "C" s32 func_ov025_02201f28(void *scene)
 {
-    switch (FIELD(u32, scene, 4)) {
+    /* These shared temporaries retain the retail lifetime grouping for MWCC. */
+    s32 i;
+    u16 first;
+    const GlyphPair *pairs;
+    s32 changed;
+    u16 value;
+    void *editor;
+
+    switch (FIELD(s32, scene, 4)) {
     case 0:
         func_02092314(scene, 0xe2, 0x10);
         func_02092c8c(3, -0x10);
-        advance_state(scene);
+        ++FIELD(s32, scene, 4);
+        FIELD(s32, scene, 8) = 0;
         /* Fade setup intentionally falls through to resource initialization. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete()) {
-            setup_editor(scene);
-            advance_state(scene);
+            func_020922f0(scene, 0xe8);
+            func_ov025_022000a4(scene);
+            func_ov025_02200564(scene);
+            func_ov025_022005e4(scene);
+            func_ov094_022198e8(FIELD(void *, scene, 0x5c0), 0);
+            for (i = 0; i < 3; ++i) {
+                GraphicsSpriteGroup_ReleaseIndexedEntries(
+                    FIELD(void *,
+                          FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0xc));
+            }
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
+            void *font = func_020791e0(data_021f3ecc, 0x6b);
+            func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
+            func_02093360(FIELD(void *, scene, 0x50c), 0);
+            void *editor = Heap_Alloc(
+                0x1a0, data_ov025_022033bc, 4, gHeapContext);
+            if (editor)
+                editor = func_ov025_021fce00(editor);
+            FIELD(void *, scene, 0x598) = editor;
+            func_ov025_021fd160(editor, FIELD(void *, scene, 0x574));
+            func_02095988((u8 *)scene + 0xf0, 0x2d);
+            func_02095928((u8 *)scene + 0xf0);
+            func_02095928((u8 *)scene + 0x248);
+            func_02092c8c(3, 0);
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     case 2:
-        if (DisplayBrightness_IsMainTransitionComplete())
-            advance_state(scene);
+        if (DisplayBrightness_IsMainTransitionComplete()) {
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
+        }
         break;
     case 3:
-        if (!(FIELD(u32, scene, 0x20) & 0x20))
+        if (!((s32)(FIELD(u32, scene, 0x20) << 26) >> 31))
             break;
         if (func_02095860((u8 *)scene + 0xf0, (u8 *)scene + 0x30, 0, 4)) {
-            void *editor = FIELD(void *, scene, 0x598);
-            if (!func_ov025_021fd450(editor)) {
-                func_02092260(scene, 9);
-            } else if (func_ov025_021fd488(editor, (u8 *)scene + 0x510)) {
-                func_02092260(scene, 9);
-                GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-                void *font = func_020791e0(data_021f3ecc, 0x28);
-                func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
-                func_02092c8c(1, -8);
-                FIELD(s32, scene, 4) = 30;
-                FIELD(s32, scene, 8) = 0;
+            if (func_ov025_021fd450(FIELD(void *, scene, 0x598))) {
+                if (func_ov025_021fd488(
+                        FIELD(void *, scene, 0x598),
+                        (u8 *)scene + 0x510)) {
+                    func_02092260(scene, 9);
+                    GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
+                    void *font = func_020791e0(data_021f3ecc, 0x28);
+                    func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
+                    func_02092c8c(1, -8);
+                    FIELD(s32, scene, 4) = 30;
+                    FIELD(s32, scene, 8) = 0;
+                    goto maintained_return;
+                } else {
+                    func_02092314(scene, 0xe8, 1);
+                    func_020922f0(scene, 0xe9);
+                    FIELD(s32, scene, 4) = 10;
+                    FIELD(s32, scene, 8) = 0;
+                    goto maintained_return;
+                }
             } else {
-                func_02092314(scene, 0xe8, 1);
-                func_020922f0(scene, 0xe9);
-                FIELD(s32, scene, 4) = 10;
-                FIELD(s32, scene, 8) = 0;
+                func_02092260(scene, 9);
+                goto maintained_return;
             }
         } else if (func_02095860((u8 *)scene + 0x248,
                                  (u8 *)scene + 0x30, 0, 4)) {
@@ -314,36 +202,220 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_02092314(scene, 0xe8, 0x10);
             FIELD(s32, scene, 4) = 20;
             FIELD(s32, scene, 8) = 0;
-        } else if (update_editor_input(scene)) {
-            advance_state(scene);
+            goto maintained_return;
+        } else if (func_02092910(
+                       FIELD(void *, FIELD(void *, scene, 0x598), 0x34),
+                       (u8 *)scene + 0x30)) {
+            func_02092260(scene, 0xb);
+            if (FIELD(u8, gSystemState, 0x5f)) {
+                FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
+                    data_ov025_02202fc0;
+            } else {
+                FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
+                    data_ov025_022030f4;
+            }
+            func_ov025_021fd160(FIELD(void *, scene, 0x598),
+                                FIELD(void *, scene, 0x574));
+            func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 1);
+        } else if (func_02092910(
+                       FIELD(void *, FIELD(void *, scene, 0x598), 0x38),
+                       (u8 *)scene + 0x30)) {
+            func_02092260(scene, 0xb);
+            if (FIELD(u8, gSystemState, 0x5f)) {
+                FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
+                    data_ov025_0220305a;
+            } else {
+                FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
+                    data_ov025_0220318e;
+            }
+            func_ov025_021fd160(FIELD(void *, scene, 0x598),
+                                FIELD(void *, scene, 0x574));
+            func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 2);
+        } else if (func_02092910(
+                       FIELD(void *, FIELD(void *, scene, 0x598), 0x3c),
+                       (u8 *)scene + 0x30)) {
+            func_02092260(scene, 0xb);
+            if (!FIELD(u8, gSystemState, 0x5f)) {
+                FIELD(const u16 *, FIELD(void *, scene, 0x598), 0x178) =
+                    data_ov025_02202fc0;
+            }
+            func_ov025_021fd160(FIELD(void *, scene, 0x598),
+                                FIELD(void *, scene, 0x574));
+            func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 3);
+        } else if (func_02092910(
+                       FIELD(void *, FIELD(void *, scene, 0x598), 0x30),
+                       (u8 *)scene + 0x30)) {
+            if (FIELD(s32, FIELD(void *, scene, 0x598), 0x17c)) {
+                func_02092260(scene, 0);
+                --FIELD(s32, FIELD(void *, scene, 0x598), 0x17c);
+                func_ov025_021fd03c(FIELD(void *, scene, 0x598),
+                                    FIELD(void *, scene, 0x574), 1);
+            } else {
+                func_02092260(scene, 9);
+            }
+            func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 0);
+        } else {
+            s32 command = func_ov025_021fd340(
+                FIELD(void *, scene, 0x598), (u8 *)scene + 0x30);
+            if (command >= 0) {
+                func_02092260(scene, 0);
+                func_ov025_021fd388(FIELD(void *, scene, 0x598), command);
+                func_ov025_021fd03c(FIELD(void *, scene, 0x598),
+                                    FIELD(void *, scene, 0x574), 0);
+            } else {
+                for (i = 0; i < 77; ++i) {
+                    editor = FIELD(void *, scene, 0x598);
+                    if (!func_02092910(
+                            FIELD(void *, (u8 *)editor + i * 4, 0x40),
+                            (u8 *)scene + 0x30)) {
+                        continue;
+                    }
+                    editor = FIELD(void *, scene, 0x598);
+                    const u16 *keymap =
+                        FIELD(const u16 *, editor, 0x178);
+                    u16 glyph = keymap[i];
+                    changed = 0;
+                    if (glyph == 0x309b) {
+                        s32 length = FIELD(s32, editor, 0x17c);
+                        if (length != 0) {
+                            s32 previous = length - 1;
+                            u8 *character =
+                                (u8 *)editor + previous * 2 + 0x100;
+                            pairs = (const GlyphPair *)
+                                data_ov025_02203228;
+                            for (s32 j = 0; j < 41; ++j) {
+                                value = FIELD(u16, character, 0x80);
+                                first = pairs[j].first;
+                                if (first == value) {
+                                    FIELD(u16, (u16 *)editor + previous,
+                                          0x180) =
+                                        ((const GlyphPair *)
+                                             data_ov025_0220322a)[j].first;
+                                    changed = 1;
+                                    break;
+                                }
+                                if (pairs[j].second == value) {
+                                    FIELD(u16, (u16 *)editor + previous,
+                                          0x180) = first;
+                                    changed = 1;
+                                    break;
+                                }
+                            }
+                            if (!changed) {
+                                const GlyphTriplet *triplets =
+                                    (const GlyphTriplet *)
+                                        data_ov025_02202f84;
+                                for (s32 j = 0; j < 10; ++j) {
+                                    editor = FIELD(void *, scene, 0x598);
+                                    u8 *candidate =
+                                        (u8 *)editor + previous * 2 + 0x100;
+                                    if (triplets[j].third ==
+                                        FIELD(u16, candidate, 0x80)) {
+                                        FIELD(u16, candidate, 0x80) =
+                                            ((const GlyphTriplet *)
+                                                 data_ov025_02202f86)[j].first;
+                                        changed = 1;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } else if (glyph == 0x309c) {
+                        s32 length = FIELD(s32, editor, 0x17c);
+                        if (length != 0) {
+                            s32 previous = length - 1;
+                            u8 *character =
+                                (u8 *)editor + previous * 2 + 0x100;
+                            const GlyphTriplet *triplets =
+                                (const GlyphTriplet *)data_ov025_02202f84;
+                            for (s32 j = 0; j < 10; ++j) {
+                                value = FIELD(u16, character, 0x80);
+                                first = triplets[j].first;
+                                if (first == value) {
+                                    FIELD(u16, (u16 *)editor + previous,
+                                          0x180) =
+                                        ((const GlyphTriplet *)
+                                             data_ov025_02202f88)[j].first;
+                                    changed = 1;
+                                    break;
+                                }
+                                if (triplets[j].second == value) {
+                                    FIELD(u16, (u16 *)editor + previous,
+                                          0x180) =
+                                        ((const GlyphTriplet *)
+                                             data_ov025_02202f88)[j].first;
+                                    changed = 1;
+                                    break;
+                                }
+                                if (triplets[j].third == value) {
+                                    FIELD(u16, (u16 *)editor + previous,
+                                          0x180) = first;
+                                    changed = 1;
+                                    break;
+                                }
+                            }
+                        }
+                    } else if (FIELD(s32, editor, 0x17c) < 8) {
+                        s32 length = FIELD(s32, editor, 0x17c);
+                        if (glyph == 0x40) {
+                            FIELD(u16,
+                                  (u8 *)editor + length * 2 + 0x100,
+                                  0x80) = changed;
+                        } else {
+                            FIELD(u16,
+                                  (u8 *)editor + length * 2 + 0x100,
+                                  0x80) = glyph;
+                        }
+                        ++FIELD(s32, FIELD(void *, scene, 0x598), 0x17c);
+                        changed = 1;
+                    }
+                    if (changed) {
+                        func_ov025_021fd03c(FIELD(void *, scene, 0x598),
+                                            FIELD(void *, scene, 0x574), 1);
+                        func_02092260(scene, 0);
+                    } else {
+                        func_02092260(scene, 9);
+                    }
+                    func_ov025_021fd314(FIELD(void *, scene, 0x598), i);
+                    break;
+                }
+            }
+        }
+        if (FIELD(void *, FIELD(void *, scene, 0x598), 0x174)) {
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     case 4: {
         void *editor = FIELD(void *, scene, 0x598);
         void *completion = FIELD(void *, editor, 0x174);
-        if (FIELD(u16, completion, 0x24) & 1) {
-            func_02095988((u8 *)scene + 0xf0,
-                          func_ov025_021fd450(editor) ? 0x2c : 0x2d);
-            func_ov025_021fd3dc(editor);
-            editor_redraw(scene, 1);
+        u16 completed = FIELD(u16, completion, 0x24) & 1;
+        if (completed) {
+            if (func_ov025_021fd450(editor)) {
+                func_02095988((u8 *)scene + 0xf0, 0x2c);
+            } else {
+                func_02095988((u8 *)scene + 0xf0, 0x2d);
+            }
+            func_ov025_021fd3dc(FIELD(void *, scene, 0x598));
+            func_ov025_021fd03c(FIELD(void *, scene, 0x598),
+                                FIELD(void *, scene, 0x574), 1);
             --FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
         break;
     }
     case 10: {
-        if (!FIELD(void *, scene, 0x598) ||
-            !FIELD(void *, FIELD(void *, scene, 0x598), 0x174))
+        if (!func_ov025_021ff0b0((u8 *)scene + 0xf0))
             break;
         func_ov025_02200398(scene, 4, 0);
         GameWork_SetFlag(gGameWork, 0x14b);
         GameWork_SetFlag(gGameWork, 0x25d);
         GameWork_SetFlag(gGameWork, 0x3f5);
-        void *editor = FIELD(void *, scene, 0x598);
-        func_ov025_021fd3f4(editor);
+        func_ov025_021fd3f4(FIELD(void *, scene, 0x598));
         func_0207f86c(gRuntimeContext, FIELD(s32, scene, 0x54),
-                      (u8 *)editor + 0x180, 1);
-        advance_state(scene);
+                      (u8 *)FIELD(void *, scene, 0x598) + 0x180, 1);
+        ++FIELD(s32, scene, 4);
+        FIELD(s32, scene, 8) = 0;
         break;
     }
     case 11: {
@@ -354,11 +426,13 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_ov025_02200438(scene, 1);
             if (FIELD(s32, gRuntimeContext, 0x10) == 4) {
                 func_ov025_02200224(scene, 0x1f, 0);
-                transition_pair(scene, (const u32 *)data_ov025_02202e68);
+                func_ov025_021ff254(scene,
+                    *(const TransitionPair *)data_ov025_02202e68);
             }
         } else {
             func_ov025_02200468(scene);
-            advance_state(scene);
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     }
@@ -366,7 +440,8 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         if (func_ov025_02200480(scene)) {
             func_ov025_02200438(scene, 0);
             func_ov025_02200224(scene, 0x19, 0);
-            advance_state(scene);
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     case 13:
@@ -380,13 +455,75 @@ extern "C" s32 func_ov025_02201f28(void *scene)
     case 20:
         if (DisplayBrightness_IsMainTransitionComplete()) {
             func_ov025_022002b0(scene);
-            teardown_editor(scene);
-            advance_state(scene);
+            if (func_ov025_021fd450(FIELD(void *, scene, 0x598))) {
+                s32 index = FIELD(s32, scene, 0x54);
+                void *row = FIELD(void *,
+                                  (u8 *)scene + index * 4, 0xe4);
+                if (row) {
+                    GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
+                    func_020927b8((u8 *)row + 0x30);
+                    func_02071eb8(row);
+                    Heap_Free(row);
+                }
+                row = Heap_Alloc(
+                    0x90, data_ov025_022033b4, 4, gHeapContext);
+                if (row)
+                    row = func_ov025_021fd5dc(
+                        row, FIELD(s32, scene, 0x54));
+                FIELD(void *,
+                      (u8 *)scene + FIELD(s32, scene, 0x54) * 4,
+                      0xe4) = row;
+                FIELD(s32,
+                      FIELD(void *,
+                            FIELD(void *,
+                                  (u8 *)scene +
+                                      FIELD(s32, scene, 0x54) * 4,
+                                  0xe4),
+                            0xc),
+                      0x20) = 1;
+                func_ov025_02200648(scene, FIELD(s32, scene, 0x54));
+            } else {
+                for (s32 i = 0; i < 3; ++i) {
+                    func_ov025_021fd9e4(
+                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0);
+                }
+                FIELD(s32, scene, 0x54) = -1;
+            }
+            FIELD(u32, scene, 0x20) &= ~0x400;
+            void *editor = FIELD(void *, scene, 0x598);
+            if (editor) {
+                GraphicsSpriteGroup_Destroy(FIELD(void *, editor, 0));
+                func_02071eb8((u8 *)editor + 4);
+                Heap_Free(editor);
+            }
+            FIELD(void *, scene, 0x598) = 0;
+            FIELD(u32, scene, 0x20) |= 0x400;
+            func_ov094_022198e8(FIELD(void *, scene, 0x5c0), 1);
+            func_ov025_0220058c(scene);
+            GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
+            GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
+            for (s32 i = 0; i < 3; ++i) {
+                FIELD(s32,
+                      FIELD(void *,
+                            FIELD(void *, (u8 *)scene + i * 4, 0xe4),
+                            0xc),
+                      0x20) = 1;
+            }
+            func_ov025_022001f4(scene);
+            func_02095940((u8 *)scene + 0xf0);
+            func_02095940((u8 *)scene + 0x248);
+            func_ov025_02200014(scene);
+            func_02092c8c(3, 0);
+            func_020922f0(scene, 0xe2);
+            ++FIELD(s32, scene, 4);
+            FIELD(s32, scene, 8) = 0;
         }
         break;
     case 21:
-        if (DisplayBrightness_IsMainTransitionComplete())
-            transition_pair(scene, (const u32 *)data_ov025_02202e60);
+        if (DisplayBrightness_IsMainTransitionComplete()) {
+            func_ov025_021ff254(scene,
+                *(const TransitionPair *)data_ov025_02202e60);
+        }
         break;
     case 30:
         if (func_ov025_02200940(scene) && DisplayBrightness_IsMainTransitionComplete()) {
@@ -400,6 +537,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         }
         break;
     }
+maintained_return:
     func_ov025_02200178(scene);
     return 0;
 }

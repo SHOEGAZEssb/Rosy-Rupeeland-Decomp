@@ -29985,7 +29985,13 @@ build build/reports/overlay025_name_entry_state_02201f28.json: objdiff build/dec
 build build/reports/overlay025_name_entry_state_02201f28.txt: match_report build/reports/overlay025_name_entry_state_02201f28.json | tools/report_objdiff.py
   report_json = build/reports/overlay025_name_entry_state_02201f28.json
   report_args = --section .text --function func_ov025_02201f28 --require-exact
-build overlay025_name_entry_state: phony build/decomp/src/overlays/ov025/overlay025_name_entry_state.o build/decomp/asm/overlays/ov025/overlay025_name_entry_state_02201f28.o build/reports/overlay025_name_entry_state_02201f28.txt
+build build/reports/overlay025_name_entry_state_02201f28_source.json: objdiff build/decomp/delinks/asm/overlays/ov025/overlay025_name_entry_state_02201f28.o | build/decomp/src/overlays/ov025/overlay025_name_entry_state.o
+  target_object = build/decomp/delinks/asm/overlays/ov025/overlay025_name_entry_state_02201f28.o
+  base_object = build/decomp/src/overlays/ov025/overlay025_name_entry_state.o
+build build/reports/overlay025_name_entry_state_02201f28_source.txt: match_report build/reports/overlay025_name_entry_state_02201f28_source.json | tools/report_objdiff.py
+  report_json = build/reports/overlay025_name_entry_state_02201f28_source.json
+  report_args = --section .text --function func_ov025_02201f28
+build overlay025_name_entry_state: phony build/decomp/src/overlays/ov025/overlay025_name_entry_state.o build/decomp/asm/overlays/ov025/overlay025_name_entry_state_02201f28.o build/reports/overlay025_name_entry_state_02201f28.txt build/reports/overlay025_name_entry_state_02201f28_source.txt
 build overlay025_complete: phony overlay025_name_entry overlay025_record_widget overlay025_effect_controller overlay025_effect_runtime overlay025_callback_helpers overlay025_scene_lifecycle overlay025_graphics_setup overlay025_scene_runtime overlay025_selection_helpers overlay025_intro_state overlay025_idle_state overlay025_record_select_state overlay025_confirmation_state overlay025_record_transfer_state overlay025_record_delete_states overlay025_terminal_helpers overlay025_name_entry_state
 build overlay025_partial: phony overlay025_complete
 overlay026_geometry_command_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
