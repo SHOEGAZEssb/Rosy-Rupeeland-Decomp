@@ -70,8 +70,11 @@ extern "C" s32 func_ov025_02200e54(void *scene)
                 FIELD(s32, FIELD(void *, FIELD(void *, entry, 0xe4), 0xc), 0x20) = 1;
             }
             func_ov025_022001f4(scene);
-            FIELD(s32, scene, 0x5bc) = 0;
-            func_ov025_021ff254(scene, data_ov025_02202e18);
+            /* Retail commits the reset before reading the transition pair. */
+            FIELD(volatile s32, scene, 0x5bc) = 0;
+            func_ov025_021ff254(
+                scene,
+                *(volatile const TransitionPair *)&data_ov025_02202e18);
         } else if (++FIELD(s32, scene, 0x5bc) > 0x960) {
             GameWork_SetFlag(gGameWork, 0x3d6);
             func_ov025_021ff254(scene, data_ov025_02202e28);
