@@ -13,7 +13,8 @@ typedef struct EffectResourceIds {
     u16 unused;
 } EffectResourceIds;
 
-extern const EffectResourceIds data_ov025_02202c84[];
+/* This resource-ID table is writable overlay data; const changes MWCC scheduling. */
+extern EffectResourceIds data_ov025_02202c84[];
 extern const u8 data_ov025_02203354[];
 extern void *gDebugFont;
 
@@ -52,7 +53,7 @@ extern "C" void *func_ov025_021fdecc(void *object)
 
     FIELD(u32, object, 0xf8) = 0;
     for (s32 i = 0; i < 3; ++i) {
-        const EffectResourceIds *entry = &data_ov025_02202c84[i];
+        EffectResourceIds *entry = &data_ov025_02202c84[i];
         func_02071ee0((u8 *)object + 0xb0 + i * 0xc, data_020f4e18,
                       entry->first, entry->second, entry->third);
     }

@@ -159,17 +159,23 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     FIELD(s32, debug_group, 0x18) = 0;
     FIELD(s32, debug_group, 0x1c) = 0x100;
     s32 i;
-    for (i = 0; i < 3; ++i)
-        FIELD(void *, (u32)scene + (i << 2), 0xe4) = 0;
+    /* Distinct loop lifetimes preserve the retail register assignment. */
+    for (s32 j = 0; j < 3; ++j)
+        FIELD(void *, (u32)scene + (j << 2), 0xe4) = 0;
 
+    /* Keep these loop invariants explicit for MWCC's retail register coloring. */
+    s32 one = 1;
+    u8 *controllers = (u8 *)scene + 0x2f4;
+    s32 count = 16;
+    s32 stride = 0xac;
     for (i = 0; i < 3; ++i) {
-        func_020957f0((u8 *)scene + 0x2f4 + i * 0xac,
+        func_020957f0(controllers + i * stride,
                       GraphicsSpriteGroup_CreateStateFromSource(
                           FIELD(void *, scene, 0xb0),
-                          (u8 *)scene + 0x5c, 1),
-                      0x20 + i * 2, 1, 16);
-        func_02095820((u8 *)scene + 0x2f4 + i * 0xac, 0xd4, 0);
-        func_02095940((u8 *)scene + 0x2f4 + i * 0xac);
+                          (u8 *)scene + 0x5c, one),
+                      0x20 + i * 2, one, count);
+        func_02095820(controllers + i * stride, 0xd4, 0);
+        func_02095940(controllers + i * stride);
     }
     FIELD(void *, scene, 0xbc) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                                 (u8 *)scene + 0x8c, 2);
