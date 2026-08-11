@@ -51,7 +51,7 @@ asm/overlays/ov025/overlay025_record_widget_021fdc60.s:
 src/overlays/ov025/overlay025_record_row_canvas_clear.c:
     categories: Game code
     .text start:0x021fde58 end:0x021fdea0
-asm/overlays/ov025/overlay025_record_widget_021fdea0.s:
+src/overlays/ov025/overlay025_record_row_position.c:
     categories: Game code
     .text start:0x021fdea0 end:0x021fdec8
 src/overlays/ov025/overlay025_effect_base_noop.c:

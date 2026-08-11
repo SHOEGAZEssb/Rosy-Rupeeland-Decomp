@@ -254,14 +254,3 @@ extern "C" void func_ov025_021fdc60(void *widget, s32 offset)
         divisor /= 10;
     }
 }
-
-/*
- * Moves the row owner vertically to `offset + 0x28 + 60*index`, then tail-
- * invokes func_ov025_021FDC60 with the same offset. Graphics/font state change.
- */
-extern "C" void func_ov025_021fdea0(void *widget, s32 offset)
-{
-    FIELD(s32, FIELD(void *, widget, 0xc), 0x1c) =
-        offset + 0x28 + FIELD(s32, widget, 0x78) * 0x3c;
-    func_ov025_021fdc60(widget, offset);
-}
