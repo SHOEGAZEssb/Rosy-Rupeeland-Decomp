@@ -24,7 +24,7 @@ void func_ov090_0221a544(void *context, void *self,
     actor = FIELD(void *, data_021052fc, 0x2ea4);
     if (FIELD(GraphicsSpriteState *, self, 0x200) != 0) {
         u8 state = FIELD(u8, self, 0x1ec);
-        s32 offset = state == 0x1f ? -0x18000 : 0;
+        s32 offset = state != 0x1f ? 0 : -0x18000;
         GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
             FIELD(GraphicsSpriteState *, self, 0x200), origin,
             FIELD(s32, actor, 0x1c), FIELD(s32, actor, 0x20) + offset,

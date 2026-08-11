@@ -27,7 +27,7 @@ src/overlays/ov090/overlay090_title_vector_helpers.c:
 src/overlays/ov090/overlay090_title_virtual_dispatch.c:
     categories: Game code
     .text start:0x0221a504 end:0x0221a544
-asm/overlays/ov090/overlay090_0221a544.s:
+src/overlays/ov090/overlay090_title_render_callback.c:
     categories: Game code
     .text start:0x0221a544 end:0x0221a6ac
 src/overlays/ov090/overlay090_title_noop_hooks.c:
