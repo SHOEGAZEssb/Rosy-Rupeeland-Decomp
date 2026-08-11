@@ -33,7 +33,7 @@ src/overlays/ov025/overlay025_name_entry_nonspace_count.c:
 asm/overlays/ov025/overlay025_name_entry_021fd488.s:
     categories: Game code
     .text start:0x021fd488 end:0x021fd5dc
-asm/overlays/ov025/overlay025_record_widget_021fd5dc.s:
+src/overlays/ov025/overlay025_record_row_create.c:
     categories: Game code
     .text start:0x021fd5dc end:0x021fd9e4
 src/overlays/ov025/overlay025_record_row_presentation.c:
@@ -42,7 +42,7 @@ src/overlays/ov025/overlay025_record_row_presentation.c:
 src/overlays/ov025/overlay025_record_row_inactive_query.c:
     categories: Game code
     .text start:0x021fdc4c end:0x021fdc60
-asm/overlays/ov025/overlay025_record_widget_021fdc60.s:
+src/overlays/ov025/overlay025_record_row_redraw.c:
     categories: Game code
     .text start:0x021fdc60 end:0x021fde58
 src/overlays/ov025/overlay025_record_row_canvas_clear.c:

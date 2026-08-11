@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_record_widget.c. */
+/* Exact fallback; see overlay025_record_row_redraw.c. */
 .extern data_020f4e14
 .extern data_ov025_02202ef8
 .extern data_ov025_02202f60
