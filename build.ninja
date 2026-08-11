@@ -43491,18 +43491,22 @@ build build/reports/overlay090_title_setup_source.json: objdiff build/decomp/del
 build build/reports/overlay090_title_setup_source.txt: match_report build/reports/overlay090_title_setup_source.json | tools/report_objdiff.py
   report_json = build/reports/overlay090_title_setup_source.json
   report_args = --section .text --function func_ov090_02217a3c
-build build/reports/overlay090_title_dtor_source.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_02217b70.o | build/decomp/src/overlays/ov090/overlay090_title_actor_lifecycle.o
-  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_02217b70.o
-  base_object = build/decomp/src/overlays/ov090/overlay090_title_actor_lifecycle.o
+build build/decomp/src/overlays/ov090/overlay090_title_actor_destructors.o: mwccarm src/overlays/ov090/overlay090_title_actor_destructors.c | include/tingle/types.h
+  source = src/overlays/ov090/overlay090_title_actor_destructors.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+build build/decomp/delinks/src/overlays/ov090/overlay090_title_actor_destructors.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov090/delinks.txt config/arm9/overlays/ov090/symbols.txt config/arm9/overlays/ov090/relocs.txt
+build build/reports/overlay090_title_dtor_source.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_actor_destructors.o | build/decomp/src/overlays/ov090/overlay090_title_actor_destructors.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_actor_destructors.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_actor_destructors.o
 build build/reports/overlay090_title_dtor_source.txt: match_report build/reports/overlay090_title_dtor_source.json | tools/report_objdiff.py
   report_json = build/reports/overlay090_title_dtor_source.json
-  report_args = --section .text --function func_ov090_02217b70
-build build/reports/overlay090_title_deleting_dtor_source.json: objdiff build/decomp/delinks/asm/overlays/ov090/overlay090_02217c6c.o | build/decomp/src/overlays/ov090/overlay090_title_actor_lifecycle.o
-  target_object = build/decomp/delinks/asm/overlays/ov090/overlay090_02217c6c.o
-  base_object = build/decomp/src/overlays/ov090/overlay090_title_actor_lifecycle.o
+  report_args = --section .text --function func_ov090_02217b70 --require-exact
+build build/reports/overlay090_title_deleting_dtor_source.json: objdiff build/decomp/delinks/src/overlays/ov090/overlay090_title_actor_destructors.o | build/decomp/src/overlays/ov090/overlay090_title_actor_destructors.o
+  target_object = build/decomp/delinks/src/overlays/ov090/overlay090_title_actor_destructors.o
+  base_object = build/decomp/src/overlays/ov090/overlay090_title_actor_destructors.o
 build build/reports/overlay090_title_deleting_dtor_source.txt: match_report build/reports/overlay090_title_deleting_dtor_source.json | tools/report_objdiff.py
   report_json = build/reports/overlay090_title_deleting_dtor_source.json
-  report_args = --section .text --function func_ov090_02217c6c
+  report_args = --section .text --function func_ov090_02217c6c --require-exact
 build overlay090_title_lifecycle_source: phony build/reports/overlay090_title_ctor_source.txt build/reports/overlay090_title_setup_source.txt build/reports/overlay090_title_dtor_source.txt build/reports/overlay090_title_deleting_dtor_source.txt
 build build/decomp/src/overlays/ov090/overlay090_title_vector_helpers.o: mwccarm src/overlays/ov090/overlay090_title_vector_helpers.c | include/tingle/types.h include/tingle/vec_fx32.h include/tingle/vec_fx32_triple.h
   source = src/overlays/ov090/overlay090_title_vector_helpers.c

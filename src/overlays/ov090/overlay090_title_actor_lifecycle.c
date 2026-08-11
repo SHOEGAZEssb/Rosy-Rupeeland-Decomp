@@ -7,8 +7,8 @@
 #include "tingle/vec_fx32.h"
 
 /*
- * Phase-90 title actor construction, logo/copyright sprite creation, and
- * teardown. This is the retail actor reached by overlay 225's phase request.
+ * Phase-90 title actor construction and logo/copyright sprite creation. This
+ * is the retail actor reached by overlay 225's phase request.
  */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
@@ -149,51 +149,4 @@ extern "C" void func_ov090_02217a3c(void *self)
     FIELD(GraphicsSpriteState *, self, 0x248) = sprite;
     sprite->field_3a = 0;
     FIELD(GraphicsSpriteState *, self, 0x248)->flags |= 0x12;
-}
-
-/* Release a nullable animation resource through its retail deleting destructor. */
-static void ReleaseAnimationResource(AnimationResource *resource)
-{
-    if (resource != 0)
-        resource->vtable->destroyAndFree(resource);
-}
-
-/*
- * Release title sprite states and animation resources, restore debug text-grid
- * state, destroy embedded vectors, invoke the actor base destructor, and return
- * `self`. This non-deleting destructor does not free the actor allocation.
- */
-extern "C" void *func_ov090_02217b70(void *self)
-{
-    FIELD(void *, self, 0) = data_ov090_0221cb10;
-    GraphicsSpriteGroup_ReleaseIndexedEntries(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(self)));
-    if (FIELD(GraphicsSpriteState *, self, 0x200) != 0)
-        GraphicsSpriteState_ReleaseFromGroup(FIELD(GraphicsSpriteState *, self, 0x200));
-    if (FIELD(GraphicsSpriteState *, self, 0x23c) != 0)
-        GraphicsSpriteState_ReleaseFromGroup(FIELD(GraphicsSpriteState *, self, 0x23c));
-    if (FIELD(GraphicsSpriteState *, self, 0x248) != 0)
-        GraphicsSpriteState_ReleaseFromGroup(FIELD(GraphicsSpriteState *, self, 0x248));
-    ReleaseAnimationResource(FIELD(AnimationResource *, self, 0x240));
-    ReleaseAnimationResource(FIELD(AnimationResource *, self, 0x204));
-    ReleaseAnimationResource(FIELD(AnimationResource *, self, 0x208));
-    ReleaseAnimationResource(FIELD(AnimationResource *, self, 0x24c));
-    FIELD(s32, gDebugFont, 0x38) = 1;
-    GraphicsSpriteRenderer_SetTextGridPosition(
-        FIELD(GraphicsSpriteRenderer *, data_020f4e14, 0), 0, 0);
-    VecFx32Object_Destroy((VecFx32Object *)((u8 *)self + 0x224));
-    VecFx32Object_Destroy((VecFx32Object *)((u8 *)self + 0x20c));
-    func_0204d570(self);
-    return self;
-}
-
-/*
- * Deleting title-actor destructor. It performs the complete non-deleting
- * teardown, frees the allocation through the game heap, and returns `self`.
- */
-extern "C" void *func_ov090_02217c6c(void *self)
-{
-    func_ov090_02217b70(self);
-    Heap_Free(self);
-    return self;
 }
