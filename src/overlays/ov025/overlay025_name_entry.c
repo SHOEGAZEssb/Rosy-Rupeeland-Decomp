@@ -22,7 +22,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void GraphicsSpriteRenderer_DrawGlyph(void *, u16, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_GetGlyphMetric(void *, s32);
 extern s32 GraphicsSpriteFont_MapCharacterToGlyph(u16);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -100,23 +100,30 @@ extern "C" void func_ov025_021fd03c(void *widget, void *font_context,
 {
     GraphicsSpriteRenderer_SetFontResource(data_020f4e14, font_context);
     GraphicsSpriteCanvas_FillRect(data_020f4e14, 0, 0, 0xff, 0x18, 0);
-    for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i) {
-        s32 glyph = GraphicsSpriteFont_MapCharacterToGlyph(FIELD(u16, widget, 0x180 + i * 2));
+    s32 i = 0;
+    s32 glyph_height = 14;
+    s32 glyph_y = 6;
+    for (; i < FIELD(s32, widget, 0x17c); ++i) {
+        s32 glyph = GraphicsSpriteFont_MapCharacterToGlyph(
+            FIELD(u16, (u8 *)widget + i * 2 + 0x100, 0x80));
         s32 width = GraphicsSpriteRenderer_GetGlyphMetric(data_020f4e14, glyph);
-        void *sprite = FIELD(void *, widget, 0x10 + i * 4);
-        GraphicsSpriteRenderer_DrawGlyph(data_020f4e14, (u16)glyph,
-                      FIELD(s16, sprite, 0x2c) - ((width + (u32)width /
-                      0x80000000u) >> 1), 6, 14);
+        GraphicsSpriteRenderer_DrawGlyph(
+            data_020f4e14, glyph,
+            /* This pointer-table spelling recovers the retail add/load form. */
+            FIELD(s16, ((void **)widget)[i + 4], 0x2c) -
+                ((width + (s32)((u32)width >> 31)) >> 1),
+            glyph_y, glyph_height);
     }
-    for (s32 i = 0; i < 8; ++i) {
-        void *sprite = FIELD(void *, widget, 0x10 + i * 4);
-        if (i == FIELD(s32, widget, 0x17c) && show_cursor) {
-            FIELD(u16, sprite, 0x24) =
-                (FIELD(u16, sprite, 0x24) | 2) & (u16)~1;
-            FIELD(u16, sprite, 0x28) = 0;
+    for (i = 0; i < 8; ++i) {
+        if (FIELD(s32, widget, 0x17c) == i && show_cursor) {
+            void *slot = FIELD(void *, (u8 *)widget + i * 4, 0x10);
+            FIELD(u16, slot, 0x24) = (FIELD(u16, slot, 0x24) | 2) & ~1;
+            FIELD(u16, FIELD(void *, (u8 *)widget + i * 4, 0x10), 0x28) = 0;
         } else {
-            FIELD(u16, sprite, 0x24) &= (u16)~2;
-            FIELD(u16, sprite, 0x28) = 0x100;
+            void *slot = FIELD(void *, (u8 *)widget + i * 4, 0x10);
+            FIELD(u16, slot, 0x24) &= ~2;
+            FIELD(u16, FIELD(void *, (u8 *)widget + i * 4, 0x10), 0x28) =
+                0x100;
         }
     }
 }
