@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_effect_controller.c. */
+/* Exact fallback; see src/overlays/ov025/overlay025_effect_mode_right.c. */
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov025_021fe174
 

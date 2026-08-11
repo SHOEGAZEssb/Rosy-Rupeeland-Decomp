@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_effect_controller.c. */
+/* Exact fallback; see src/overlays/ov025/overlay025_effect_primary_config.c. */
 .extern data_ov025_02202c84
 .extern func_02073e48
 .extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource

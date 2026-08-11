@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_effect_controller.c. */
+/* Exact fallback; see src/overlays/ov025/overlay025_effect_destroy.c. */
 .extern __destroy_arr
 .extern data_ov025_02203354
 .extern func_02071eb8
