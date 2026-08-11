@@ -51,60 +51,6 @@ extern "C" void func_ov025_021fdec8(void *object)
     (void)object;
 }
 
-static void prepare_effect_sprite(void *sprite, s32 phase)
-{
-    FIELD(u8, sprite, 0x3a) = 3;
-    FIELD(u16, sprite, 0x28) = (u16)phase;
-    FIELD(u16, sprite, 0x24) |= 6;
-}
-
-/*
- * Constructs the effect controller over its base animation object. It creates
- * three resource descriptors from recovered ID triplets, a fourth descriptor
- * for 0x1154..0x1156, clones shared and debug-font sprite owners, creates two
- * mirrored sprite pairs, seeds RNG state +0xF8, chooses a random binary side
- * +0xA4, and enters mode 2/variant 0. Heap-independent graphics, RNG, and
- * animation state change; the initialized object pointer is returned.
- */
-extern "C" void *func_ov025_021fdecc(void *object)
-{
-    func_020949ec(object);
-    FIELD(const void *, object, 0) = data_ov025_02203354;
-    __construct_array((u8 *)object + 0xb0, 3, 0xc, (void *)func_02071ea4);
-    func_02071ea4((u8 *)object + 0xd4);
-    FIELD(u32, object, 0xf8) = 0;
-    for (s32 i = 0; i < 3; ++i) {
-        const u8 *entry = data_ov025_02202c84 + i * 8;
-        func_02071ee0((u8 *)object + 0xb0 + i * 0xc, data_020f4e18,
-                      FIELD(u16, entry, 0), FIELD(u16, entry, 2),
-                      FIELD(u16, entry, 4));
-    }
-    FIELD(u32, object, 0xf8) = genrand_int32();
-    FIELD(void *, object, 0xe0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
-    FIELD(void *, object, 0xe4) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    FIELD(s32, FIELD(void *, object, 0xe4), 0x18) = 0;
-    FIELD(s32, FIELD(void *, object, 0xe4), 0x1c) = 0x100;
-
-    FIELD(void *, object, 0xe8) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe0),
-                                                (u8 *)object + 0xb0, 2);
-    prepare_effect_sprite(FIELD(void *, object, 0xe8), 0x2000);
-    FIELD(void *, object, 0xf0) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe4),
-                                                (u8 *)object + 0xb0, 2);
-    prepare_effect_sprite(FIELD(void *, object, 0xf0), 0x2000);
-    func_02071ee0((u8 *)object + 0xd4, data_020f4e18,
-                  0x1154, 0x1155, 0x1156);
-    FIELD(void *, object, 0xec) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe0),
-                                                (u8 *)object + 0xd4, 1);
-    prepare_effect_sprite(FIELD(void *, object, 0xec), 0x2100);
-    FIELD(void *, object, 0xf4) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xe4),
-                                                (u8 *)object + 0xd4, 1);
-    prepare_effect_sprite(FIELD(void *, object, 0xf4), 0x2100);
-    FIELD(s32, object, 0xa8) = 0;
-    FIELD(s32, object, 0xa4) = func_020918f4((u32 *)object + 0x3e, 2);
-    func_ov025_021fe4cc(object, 2, 0);
-    return object;
-}
-
 /*
  * Chooses a random mode in 0..8 different from current +0x9C, chooses a random
  * variant in 0..2, and dispatches it through func_ov025_021FE4CC. RNG and

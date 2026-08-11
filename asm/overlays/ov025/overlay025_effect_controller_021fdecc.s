@@ -1,6 +1,6 @@
 .text
 
-/* Exact fallback; see src/overlays/ov025/overlay025_effect_controller.c. */
+/* Exact fallback; see src/overlays/ov025/overlay025_effect_construct.c. */
 .extern __construct_array
 .extern data_020f4e14
 .extern data_020f4e18
