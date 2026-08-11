@@ -105,7 +105,7 @@ asm/overlays/ov025/overlay025_effect_runtime_021feb4c.s:
 src/overlays/ov025/overlay025_effect_duration_query.c:
     categories: Game code
     .text start:0x021ff0b0 end:0x021ff0c8
-asm/overlays/ov025/overlay025_callback_helpers_021ff0c8.s:
+src/overlays/ov025/overlay025_callback_helpers.c:
     categories: Game code
     .text start:0x021ff0c8 end:0x021ff140
 src/overlays/ov025/overlay025_sprite_owner_ready.c:
