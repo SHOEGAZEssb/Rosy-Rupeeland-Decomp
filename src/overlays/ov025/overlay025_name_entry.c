@@ -128,11 +128,14 @@ extern "C" void func_ov025_021fd03c(void *widget, void *font_context,
     s32 glyph_height = 14;
     s32 glyph_y = 6;
     for (; i < FIELD(s32, widget, 0x17c); ++i) {
+        /* Loop-local spelling keeps MWCC's address CSE out of the long-lived
+         * parameter registers and restores the retail function size. */
+        void **renderer_address = &data_020f4e14;
         s32 glyph = GraphicsSpriteFont_MapCharacterToGlyph(
             FIELD(u16, (u8 *)widget + i * 2 + 0x100, 0x80));
-        s32 width = GraphicsSpriteRenderer_GetGlyphMetric(data_020f4e14, glyph);
+        s32 width = GraphicsSpriteRenderer_GetGlyphMetric(*renderer_address, glyph);
         GraphicsSpriteRenderer_DrawGlyph(
-            data_020f4e14, glyph,
+            *renderer_address, glyph,
             /* This pointer-table spelling recovers the retail add/load form. */
             FIELD(s16, ((void **)widget)[i + 4], 0x2c) -
                 ((width + (s32)((u32)width >> 31)) >> 1),
