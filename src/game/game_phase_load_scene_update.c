@@ -520,7 +520,9 @@ code_r0x0200defc:
     goto LAB_0200e3bc;
   }
   savedVBlankState = GX_VBlankIntr(0);
-  self->ownedObjectCallbacksEnabled = 0;
+  /* Retail clears +0x3c while VBlank is suspended so the retained phase
+   * renderer cannot upload stale maps during construction of the new scene. */
+  self->runtimeCallbacksEnabled = 0;
   GridEffectActorRegistry_FinalizeDepartingActors();
   switch(self->phase) {
   case 0x10:
@@ -894,7 +896,10 @@ code_r0x0200d5d8:
     }
     self->ownedObject = object;
   }
-  self->runtimeCallbacksEnabled = 1;
+  /* Retail writes one to +0x38 here: enable the newly constructed owned
+   * object's VBlank/HBlank callbacks. The runtime callback gate at +0x3c
+   * remains unchanged across this construction step. */
+  self->ownedObjectCallbacksEnabled = 1;
   GX_VBlankIntr(savedVBlankState);
   self->loadState++;
 LAB_0200e3bc:
