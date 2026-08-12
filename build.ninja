@@ -418,8 +418,10 @@ rule mwldarm_partial
   description = MWLDARM PARTIAL $out
 
 rule mwldarm_archive
-  command = "$mwldarm" -library $in -o $out
+  command = "$mwldarm" -library @$out.rsp -o $out
   description = MWLDARM $out
+  rspfile = $out.rsp
+  rspfile_content = $in
 
 rule dsd_delink
   command = "$dsd" delink --config-path config/arm9/config.yaml
