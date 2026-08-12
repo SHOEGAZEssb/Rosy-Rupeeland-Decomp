@@ -9,8 +9,8 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern const void *data_020c3618;
-extern const void *data_020c3630;
+extern const u32 data_020c3618[];
+extern const u32 data_020c3630[];
 extern s32 func_02092910(void *spriteState, const TouchPoint *point);
 extern s32 func_02095224(void *actor);
 extern s32 func_02095248(void *actor);

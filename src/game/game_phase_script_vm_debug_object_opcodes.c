@@ -17,7 +17,7 @@ extern void *func_020791e0(void *state, u16 value);
 extern void *DebugHudState_GetGlobal(void *value);
 extern void *DebugHudState_RefreshRectangle(void *value);
 extern void DebugHudState_Open(void *state, void *first, void *second, u32 enabled);
-extern void func_ov059_0220fd20(void *allocation, void *first,
+extern void func_ov061_0220fd20(void *allocation, void *first,
                                void *second, u32 third);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3d);
     allocation = Heap_Alloc(0x3c, data_020d5b2c, 4, &gHeapContext);
     if (allocation != 0)
-        func_ov059_0220fd20(allocation, first, second, third);
+        func_ov061_0220fd20(allocation, first, second, third);
     return 0;
 }
 

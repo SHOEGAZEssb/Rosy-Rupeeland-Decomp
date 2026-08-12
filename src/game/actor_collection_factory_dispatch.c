@@ -26,7 +26,9 @@ typedef struct FactoryActor {
 } FactoryActor;
 
 typedef struct FactoryCollection {
-    u8 field_0000[0x2e84];
+    u8 field_0000[0x0e04];
+    u8 primaryOverlaySlot_0e04[12];
+    u8 field_0e10[0x2074];
     s32 mode_2e84;
 } FactoryCollection;
 
@@ -125,6 +127,7 @@ DECLARE_ACTOR_CTOR(func_ov097_02219d20);
 extern void OS_Halt(void);
 extern void Actor_RefreshTerrainHeight(FactoryActor *);
 extern void ActorCollection_RegisterActor(FactoryCollection *, FactoryActor *);
+extern void OverlaySlot_LoadOverlay(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -258,6 +261,20 @@ void *ActorCollection_SpawnActorFromDescriptor(FactoryCollection *self,
 {
     ActorFactorySpec spec = selectFactorySpec(descriptor);
     FactoryActor *actor;
+
+    /*
+     * Kind-three subtypes 6, 7, 8, and 11 use overlay 81.  The exact retail
+     * dispatcher compares the slot's current ID with 0x51 before each of
+     * these constructors and replaces it when necessary.  Keeping this gate
+     * here is required because the constructor's vtable and state tables live
+     * in overlay-initialized data even in a host source-recompilation build.
+     */
+    if (descriptor->kind_00 == 3 &&
+        (descriptor->subtype_02 == 6 || descriptor->subtype_02 == 7 ||
+         descriptor->subtype_02 == 8 || descriptor->subtype_02 == 11)) {
+        if (*(s32 *)self->primaryOverlaySlot_0e04 != 0x51)
+            OverlaySlot_LoadOverlay(self->primaryOverlaySlot_0e04, 0x51);
+    }
 
     if (!spec.constructor) {
         OS_Halt();
