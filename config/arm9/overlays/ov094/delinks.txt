@@ -22,10 +22,10 @@ asm/overlays/ov094/overlay094_02217bc8.s:
 asm/overlays/ov094/overlay094_02217be0.s:
     categories: Game code
     .text start:0x02217be0 end:0x02217c34
-asm/overlays/ov094/overlay094_02217c34.s:
+src/overlays/ov094/overlay094_effect_list_create.c:
     categories: Game code
     .text start:0x02217c34 end:0x02217c54
-asm/overlays/ov094/overlay094_02217c54.s:
+src/overlays/ov094/overlay094_effect_list_destroy.c:
     categories: Game code
     .text start:0x02217c54 end:0x02217c74
 asm/overlays/ov094/overlay094_02217c74.s:
@@ -157,10 +157,10 @@ asm/overlays/ov094/overlay094_02219ad4.s:
 asm/overlays/ov094/overlay094_02219b78.s:
     categories: Game code
     .text start:0x02219b78 end:0x02219bac
-asm/overlays/ov094/overlay094_02219bac.s:
+src/overlays/ov094/overlay094_screen_fade_effect_sync_noop.c:
     categories: Game code
     .text start:0x02219bac end:0x02219bb0
-asm/overlays/ov094/overlay094_02219bb0.s:
+src/overlays/ov094/overlay094_effect_list_delete.c:
     categories: Game code
     .text start:0x02219bb0 end:0x02219bd8
 
