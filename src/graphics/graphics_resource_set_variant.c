@@ -7,10 +7,10 @@
  * destructor; the concrete format is not yet confirmed.
  */
 
-/* Only the offset-0x04 allocation is observed during handle teardown. */
+/* Each decoded handle retains its owning graphics archive at offset 0x04. */
 typedef struct GraphicsResourceHandleVariant {
     u32 field_00;
-    void *field_04;
+    void *archive_04;
 } GraphicsResourceHandleVariant;
 
 #ifdef __cplusplus
@@ -20,9 +20,9 @@ extern "C" {
 extern void *func_02071568(void *archive, u32 resourceId);
 extern void *func_020716bc(void *archive, u32 resourceId);
 extern void *func_02071a24(void *archive, u32 resourceId);
-extern void func_02071bdc(void *allocation);
-extern void func_02071c38(void *allocation);
-extern void func_02071da8(void *allocation);
+extern void func_02071bdc(void *archive, void *resource);
+extern void func_02071c38(void *archive, void *resource);
+extern void func_02071da8(void *archive, void *resource);
 
 #ifdef __cplusplus
 }
@@ -70,12 +70,11 @@ void GraphicsResourceSetVariant_Load(GraphicsResourceSet *set, void *archive,
 }
 
 /*
- * If resource0 is non-null, release the offset-0x04 allocation in all three
- * handles through their resource-family destructors, then clear the set. A
- * null resource0 marks the complete set empty and causes no state change. The
- * function returns no value; the helpers release graphics-library allocations.
+ * If resource0 is non-null, release all three handles from their retained
+ * archives through the appropriate cache families, then clear the set. A null
+ * resource0 marks the complete set empty and causes no state change. Final
+ * references may unlink and destroy their decoded graphics resources.
  */
-#ifndef MATCHING
 void GraphicsResourceSetVariant_ReleaseHandles(GraphicsResourceSet *set)
 {
     GraphicsResourceHandleVariant *resource0 =
@@ -87,36 +86,12 @@ void GraphicsResourceSetVariant_ReleaseHandles(GraphicsResourceSet *set)
         return;
     }
 
-    func_02071bdc(resource0->field_04);
+    func_02071bdc(resource0->archive_04, resource0);
     resource1 = (GraphicsResourceHandleVariant *)set->resource1;
-    func_02071c38(resource1->field_04);
+    func_02071c38(resource1->archive_04, resource1);
     resource2 = (GraphicsResourceHandleVariant *)set->resource2;
-    func_02071da8(resource2->field_04);
+    func_02071da8(resource2->archive_04, resource2);
     set->resource0 = 0;
     set->resource1 = 0;
     set->resource2 = 0;
 }
-#else
-/* This matching fallback implements the documented portable C directly above. */
-asm void GraphicsResourceSetVariant_ReleaseHandles(GraphicsResourceSet *set)
-{
-    stmdb sp!, {r4, lr}
-    mov r4, r0
-    ldr r1, [r4, #0]
-    cmp r1, #0
-    ldmeqia sp!, {r4, pc}
-    ldr r0, [r1, #4]
-    bl func_02071bdc
-    ldr r1, [r4, #4]
-    ldr r0, [r1, #4]
-    bl func_02071c38
-    ldr r1, [r4, #8]
-    ldr r0, [r1, #4]
-    bl func_02071da8
-    mov r0, #0
-    str r0, [r4, #0]
-    str r0, [r4, #4]
-    str r0, [r4, #8]
-    ldmia sp!, {r4, pc}
-}
-#endif
