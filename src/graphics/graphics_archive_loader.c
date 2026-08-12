@@ -69,15 +69,15 @@ extern "C"
 void *func_0207142c(GraphicsArchive *archive, u32 resourceId, u32 *outputSize)
 {
     FSFile file;
-    u32 fileIndex = resourceId >> 12;
+    const u32 entryIndex = resourceId & 0xfff;
+    const u32 fileIndex = resourceId >> 12;
     u32 compressed;
     void *buffer;
 
-    resourceId &= 0xfff;
     CheckedFS_InitFile(&file);
     if (CheckedFS_OpenFileFast(&file, archive->files[fileIndex])) {
         u32 packedSize =
-            archive->entryTables[fileIndex][resourceId].packedSize;
+            archive->entryTables[fileIndex][entryIndex].packedSize;
         *outputSize = packedSize & 0x7fffffff;
         compressed = packedSize & 0x80000000;
         if (compressed != 0) {
@@ -89,7 +89,7 @@ void *func_0207142c(GraphicsArchive *archive, u32 resourceId, u32 *outputSize)
         }
 
         CheckedFS_SeekFile(
-            &file, archive->entryTables[fileIndex][resourceId].fileOffset, 0);
+            &file, archive->entryTables[fileIndex][entryIndex].fileOffset, 0);
         if (CheckedFS_ReadFile(&file, buffer, *outputSize) != *outputSize)
             goto failure;
         CheckedFS_CloseFile(&file);

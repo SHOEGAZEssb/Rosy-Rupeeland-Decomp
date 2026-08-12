@@ -10,8 +10,9 @@ typedef struct GraphicsResourceCacheNode {
 } GraphicsResourceCacheNode;
 
 typedef struct GraphicsResourceCache {
-    GraphicsResourceCacheNode *head;
-    GraphicsResourceCacheNode *tail;
+    /* Volatile preserves retail's separate head/tail loads instead of LDMIA. */
+    GraphicsResourceCacheNode *volatile head;
+    GraphicsResourceCacheNode *volatile tail;
     u32 count;
 } GraphicsResourceCache;
 
@@ -24,12 +25,14 @@ void func_02070244(GraphicsResourceCache *cache,
                    GraphicsResourceCacheNode *node)
 {
     if (node != 0) {
+        GraphicsResourceCacheNode *head = cache->head;
         GraphicsResourceCacheNode *tail = cache->tail;
 
-        if (cache->head == 0)
-            cache->head = node;
-        else
+        /* This polarity makes MWCC use retail's NE/EQ conditional-store order. */
+        if (head != 0)
             tail->next = node;
+        else
+            cache->head = node;
         node->previous = tail;
         cache->tail = node;
         node->next = 0;
@@ -38,9 +41,9 @@ void func_02070244(GraphicsResourceCache *cache,
 }
 #else
 /*
- * This matching fallback is the portable implementation above. MWCC otherwise
- * keeps an extra empty-list branch instead of using retail's conditional
- * stores, changing instruction scheduling without changing list semantics.
+ * This matching fallback is the portable implementation above. The volatile
+ * head/tail loads and inverted conditions recover retail's conditional-store
+ * shape, but MWCC still chooses r2 rather than retail's r3 for the null link.
  */
 #ifdef __cplusplus
 extern "C" {
@@ -81,19 +84,23 @@ void func_02070280(GraphicsResourceCache *cache,
         GraphicsResourceCacheNode *previous = node->previous;
         GraphicsResourceCacheNode *next = node->next;
 
-        if (previous == 0)
-            cache->head = next;
-        else
+        /* Inverted tests preserve retail's NE/EQ conditional-store ordering. */
+        if (previous != 0)
             previous->next = next;
-        if (next == 0)
-            cache->tail = previous;
         else
+            cache->head = next;
+        if (next != 0)
             next->previous = previous;
+        else
+            cache->tail = previous;
         cache->count--;
     }
 }
 #else
-/* This matching fallback implements the documented portable C directly above. */
+/*
+ * This matching fallback implements the documented portable C directly above;
+ * MWCC keeps the next-node value in r1 rather than retail's r3.
+ */
 #ifdef __cplusplus
 extern "C" {
 #endif

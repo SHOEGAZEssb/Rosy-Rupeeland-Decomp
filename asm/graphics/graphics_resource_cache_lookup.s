@@ -1,7 +1,7 @@
 .text
 ; Matching fallbacks for the documented portable cache traversals in
-; src/graphics/graphics_resource_cache.c. MWCC otherwise emits bottom-tested
-; loops and explicit null returns for these equivalent source functions.
+; src/graphics/graphics_resource_cache.c. MWCC reproduces each retail loop body
+; but appends an unreachable `bx lr` after the back edge in both functions.
 
 .global func_020702b8
 func_020702b8:
