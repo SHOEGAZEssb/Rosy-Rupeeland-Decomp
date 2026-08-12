@@ -42104,7 +42104,7 @@ build overlay194: phony overlay194_matching
 build link_replacement_objects_187: phony build/decomp/asm/overlays/ov194/overlay194_0221d6c0.o link_replacement_objects_188
 subninja config/arm9/overlays/ov195/matching.ninja
 build overlay195: phony overlay195_matching
-build link_replacement_objects_188: phony build/decomp/asm/overlays/ov195/overlay195_0221d6c0.o link_replacement_objects_189
+build link_replacement_objects_188: phony build/decomp/src/overlays/ov195/overlay195_recovery.o link_replacement_objects_189
 subninja config/arm9/overlays/ov196/matching.ninja
 build overlay196: phony overlay196_matching
 build link_replacement_objects_189: phony build/decomp/asm/overlays/ov196/overlay196_0221d6c0.o link_replacement_objects_190
