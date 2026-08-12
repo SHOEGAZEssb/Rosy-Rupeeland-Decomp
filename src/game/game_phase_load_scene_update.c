@@ -4,9 +4,13 @@
  * Portable, address-faithful reconstruction of the six-state game-phase load
  * pipeline. It waits for fades, tears down the active phase, selects and
  * allocates the requested overlay scene, restores display/runtime resources,
- * and dispatches follow-up title/death-demo scenes. Address-derived constants
- * and names remain intact where their semantic roles are not yet confirmed.
- * The retail compiler form is retained separately for exact ROM matching.
+ * and dispatches follow-up title/death-demo scenes. Kind 16 is the retail
+ * title branch: it loads overlays 94 and 25, constructs the 0x63C-byte scene
+ * with func_ov025_021FF27C, waits for the scene callback to complete, fades
+ * both engines to black, destroys the scene, and unloads the overlays.
+ * Address-derived constants and names remain intact where their semantic roles
+ * are not yet confirmed. The retail compiler form is retained separately for
+ * exact ROM matching.
  */
 
 typedef u32 undefined4;

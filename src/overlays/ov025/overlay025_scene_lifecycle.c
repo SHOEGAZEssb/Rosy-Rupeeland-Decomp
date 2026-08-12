@@ -92,8 +92,10 @@ extern void func_ov094_022196a4(void *);
  * array), callback holder +0x4F8, touch/input and four transition objects,
  * seeds RNG +0x634, resets selection/owned-pointer fields, and configures both
  * display engines through recovered helpers. It loads all scene resource IDs,
- * creates shared/debug sprite owners and button sprites, allocates three
- * effects (+0x508/+0xDC/+0xE0), an overlay-94 object +0x5C0, and dialog +0x50C,
+ * creates shared/debug sprite owners and button sprites, and loads the retail
+ * anm_main_ttl logo, anm_nin_c_ttl copyright, anm_tach_text touch prompt, and
+ * anm_ttl_hata resource sets. It allocates three effects
+ * (+0x508/+0xDC/+0xE0), an overlay-94 object +0x5C0, and dialog +0x50C,
  * clears game flags 0x3D3/0x3D6, stops sound 0x16F, enables flag 0x400, and
  * installs callback pair data_ov025_02202EA8, whose retail first word is
  * func_ov025_022009D8 (the introductory record scan). Heap, RNG, input,

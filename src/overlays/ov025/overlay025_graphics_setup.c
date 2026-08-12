@@ -35,9 +35,12 @@ extern void func_020b44e8(void);
 /*
  * Configures both display engines with BG0/BG1/BG2 modes and layer ordering,
  * stores sub display mode 18 at scene +0x4C, and uploads resource triplets
- * 0x8030..32, 0xA138..3A, and 0xC006..08. It configures palette bank 8,
- * clears a 32-byte palette region, and rewrites shared font-renderer BG fields
- * +6/+8/+A/+C. Engine MMIO, font, resource, VRAM, and palette state change.
+ * 0x8030..32, 0xA138..3A, and 0xC006..08. Their retail bgLibKatsu archive
+ * names are bg_saveSelDlog, bg_ttl_up, and bg_effeDark respectively;
+ * func_ov025_02200014 installs the paired bg_ttl_down resource. It configures
+ * palette bank 8, clears a 32-byte palette region, and rewrites shared
+ * font-renderer BG fields +6/+8/+A/+C. Engine MMIO, font, resource, VRAM, and
+ * palette state change.
  */
 extern "C" void func_ov025_021ffdfc(void *scene)
 {

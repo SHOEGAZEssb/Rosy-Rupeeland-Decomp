@@ -47,8 +47,10 @@ extern void func_ov025_02200824(void *, s32);
  * the three rows and three +0x2F4 action controllers, and either update the
  * selected row or dispatch a callback pair. State 2 waits for a chosen action;
  * states 10/11 animate a repeated row selection and branch by record status.
- * Touch/input, controller, row-owner, audio/UI, and scene state may change.
- * Scene maintenance always runs and the function returns zero.
+ * Shared base update func_02091fb0 supplies scene flag bit 5 for an active
+ * stylus/touch sample before the row/controller hit tests. Touch/input,
+ * controller, row-owner, audio/UI, and scene state may change. Scene
+ * maintenance always runs and the function returns zero.
  */
 extern "C" s32 func_ov025_02200fe4(void *scene)
 {

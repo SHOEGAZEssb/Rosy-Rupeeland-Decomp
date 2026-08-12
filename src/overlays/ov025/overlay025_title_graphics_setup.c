@@ -26,9 +26,10 @@ extern void func_020b44e8(void);
 #endif
 
 /*
- * Sets scene display modes +0x48/+0x4C to 24/18, loads triplet
- * 0xA13B..0xA13D, selects palette bank 8, installs it in slot 3 with offset
- * 0x100, and clears both blend registers. Graphics/VRAM/MMIO state changes.
+ * Sets scene display modes +0x48/+0x4C to 24/18, loads the bgLibKatsu
+ * bg_ttl_down triplet 0xA13B..0xA13D, selects palette bank 8, installs it in
+ * slot 3 with offset 0x100, and clears both blend registers. Graphics, VRAM,
+ * and MMIO state change.
  */
 extern "C" void func_ov025_02200014(void *scene)
 {
@@ -46,10 +47,11 @@ extern "C" void func_ov025_02200014(void *scene)
 }
 
 /*
- * Sets both display modes to 28, loads 0xC006..0xC008, selects palette bank 8,
- * uploads character/map data to slot 2, copies a 32-byte palette block at
- * offset 0xA0 to destination 0x100, and configures identical 4/24/8 blend
- * parameters on both engines. Graphics, palette, and MMIO state change.
+ * Sets both display modes to 28, loads the bgLibKatsu bg_effeDark triplet
+ * 0xC006..0xC008, selects palette bank 8, uploads character/map data to slot
+ * 2, copies a 32-byte palette block at offset 0xA0 to destination 0x100, and
+ * configures identical 4/24/8 blend parameters on both engines. Graphics,
+ * palette, and MMIO state change.
  */
 extern "C" void func_ov025_022000a4(void *scene)
 {

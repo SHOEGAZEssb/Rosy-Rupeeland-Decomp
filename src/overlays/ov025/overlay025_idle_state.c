@@ -32,11 +32,14 @@ extern void func_ov025_02200824(void *, s32);
 /*
  * Runs one frame of the three-state idle prompt. State 0 reveals sprite +0xBC
  * and starts event object +0x5FC; state 1 mirrors its progress into sprite
- * halfword +0x34; state 2 either handles activity (scene flag bit 5) and enters
- * func_ov025_02200FE4 through pair +0x2E18, or sets game flag 0x3D6 after
- * 2,400 idle frames and enters func_ov025_02202B44 through pair +0x2E28.
- * Always maintains the scene and returns zero. This changes sprites, event
- * state, audio/UI state, and possibly persistent game flags.
+ * halfword +0x34; state 2 either handles activity (scene flag bit 5, set by
+ * shared base update func_02091fb0 for an active stylus/touch sample) and
+ * enters func_ov025_02200FE4 through pair +0x2E18, or sets game flag 0x3D6
+ * when the idle counter exceeds 2,400 and enters func_ov025_02202B44 through
+ * pair +0x2E28.
+ * The activity path emits packed sound 0x2D01 (group 0x5A, ID 1). Always
+ * maintains the scene and returns zero. This changes sprites, event state,
+ * audio/UI state, and possibly persistent game flags.
  */
 extern "C" s32 func_ov025_02200e54(void *scene)
 {

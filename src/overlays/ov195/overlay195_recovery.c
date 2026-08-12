@@ -6,12 +6,28 @@
  * Phase record 90 at 0x020da97c stores overlay ID 195 at offset 0x1c and this
  * overlay's callback at offset 0x24. The shared phase configuration path loads
  * that overlay before invoking the callback, which initializes the shared
- * actor-interaction runtime and registers three category-one descriptors.
- * The first descriptor's payload at 0x0221e48a begins by pushing runtime-scene
- * selector 5 and parameter zero, then invokes actor opcode 0x78. That opcode
- * is func_02016238; selector 5 constructs a GamePhaseLoadScene of kind 16,
- * whose retail loader branch selects overlay 25. Remaining record semantics
- * are not renamed because their bytecode roles are not fully established.
+ * actor-interaction runtime and registers three category-one descriptors. The
+ * descriptors select resource triplets 0x1000..0x1002, 0x241B..0x241D
+ * (anm_main_ttl), and 0x2421..0x2423 (anm_nin_c_ttl); only the first carries a
+ * script payload, selected as descriptor value three.
+ *
+ * Category callback 0x0221E419 sets GameWork flags 514 and 1013, hides the
+ * touch prompt and currency HUD, clears the phase collection actor flag via
+ * opcode 0x79, initializes actor zero with script 0x0221D975, configures
+ * selectors one and seven with 384-by-288 extents, and dispatches payload
+ * 0x0221E48A through descriptor value three. The actor-zero script fixes its
+ * position at the origin, clears inverse actor flag 0x200000, and disables its
+ * optional attachment.
+ *
+ * Payload 0x0221E48A pushes runtime-scene selector five and parameter zero,
+ * then invokes opcode 0x78 (func_02016238). Selector five constructs a
+ * GamePhaseLoadScene of kind 16, whose retail loader branch selects overlays
+ * 94 and 25 and calls func_ov025_021FF27C. After that scene completes, the
+ * script waits one update and sets flags 1016 and 902. If title idle-timeout
+ * flag 982 is set it stages phase 225, returning through the retail splash;
+ * otherwise it stores 90 at GameWork halfword +0xFE and stages phase 5. The
+ * bytecode and descriptor records remain ROM-delinked rather than rewritten
+ * as a new C state machine.
  */
 
 #ifdef __cplusplus
@@ -27,7 +43,7 @@ extern void func_02008f58(void *value);
 
 extern u8 data_ov195_0221d720[];
 extern u8 data_ov195_0221d734[];
-/* First descriptor payload containing the confirmed kind-16 load command. */
+/* First descriptor payload containing the kind-16 load and phase routing. */
 extern u8 data_ov195_0221e48a[];
 extern u8 data_ov195_0221e419[];
 extern u8 data_ov195_0221e500[];

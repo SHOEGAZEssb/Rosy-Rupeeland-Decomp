@@ -45,8 +45,8 @@ extern "C" s32 func_ov025_02201ed0(void *scene)
 }
 
 /*
- * Initializes scene command 0xE2 with duration 0x10 in state 0, advances the
- * state, and returns one. Later states have no side effects and also return one.
+ * Sends sound command 0xE2 with duration 0x10 in state 0, advances the state,
+ * and returns one. Later states have no side effects and also return one.
  */
 extern "C" s32 func_ov025_02202b44(void *scene)
 {
