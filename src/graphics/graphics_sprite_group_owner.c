@@ -1,60 +1,64 @@
+/*
+ * Recovered sprite-group ownership boundary. Groups are renderer-heap objects
+ * linked through the confirmed owner fields at offsets 0x43c through 0x444.
+ */
 #include "tingle/graphics_sprite_group.h"
+#include "tingle/heap.h"
 
-/*
- * Owner-level allocation and destruction of sprite groups. Each group is heap
- * allocated and linked into a doubly linked list embedded in the still-opaque
- * renderer owner at offsets 0x43c-0x444.
- */
+extern const char data_020e69e4[];
 
-typedef struct GraphicsSpriteGroupOwner {
-    u8 padding_000[0x43c];
-    GraphicsSpriteGroup *groupHead;
-    GraphicsSpriteGroup *groupTail;
-    u32 groupCount;
-} GraphicsSpriteGroupOwner;
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
-extern void Heap_Free(void *allocation);
-extern char data_020e69e4[];
-extern u8 gHeapContext[];
-
-#ifdef __cplusplus
-}
-#endif
-
-/*
- * Allocate and initialize a group owned by owner, append it to the owner's
- * group list, increment groupCount, and return it. Retail code assumes the
- * allocation succeeds and dereferences a null result; callers share that
- * precondition. Heap state and owner list state change, with no SDK access.
- */
+/* Allocates and initializes a group, appends it to the owner's list, updates
+ * the list count, and returns the new group (or null on allocation failure). */
 #ifndef MATCHING
-GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *ownerPointer)
+GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *owner)
 {
-    GraphicsSpriteGroupOwner *owner =
-        (GraphicsSpriteGroupOwner *)ownerPointer;
+    u8 *owner_bytes = (u8 *)owner;
     GraphicsSpriteGroup *group = (GraphicsSpriteGroup *)Heap_Alloc(
-        sizeof(GraphicsSpriteGroup), data_020e69e4, 4, gHeapContext);
+        sizeof(*group), data_020e69e4, 4, &gHeapContext);
+    GraphicsSpriteGroup *tail;
 
-    if (group != 0) {
-        GraphicsSpriteGroup_Init(group, owner);
+    if (group == 0) {
+        return 0;
     }
-    if (owner->groupHead == 0) {
-        owner->groupHead = group;
+    GraphicsSpriteGroup_Init(group, owner);
+    tail = *(GraphicsSpriteGroup **)(owner_bytes + 0x440);
+    if (*(GraphicsSpriteGroup **)(owner_bytes + 0x43c) == 0) {
+        *(GraphicsSpriteGroup **)(owner_bytes + 0x43c) = group;
     } else {
-        owner->groupTail->next = group;
+        tail->next = group;
     }
-    group->previous = owner->groupTail;
-    owner->groupTail = group;
-    owner->groupCount++;
+    group->previous = tail;
+    *(GraphicsSpriteGroup **)(owner_bytes + 0x440) = group;
+    ++*(u32 *)(owner_bytes + 0x444);
     return group;
 }
+
+/* Unlinks and clears a non-null group, frees it through the game heap, and
+ * decrements the owning renderer's group count. */
+void GraphicsSpriteGroupOwner_DestroyGroup(void *owner,
+                                           GraphicsSpriteGroup *group)
+{
+    u8 *owner_bytes = (u8 *)owner;
+
+    if (group == 0) {
+        return;
+    }
+    if (group->previous != 0) {
+        group->previous->next = group->next;
+    } else {
+        *(GraphicsSpriteGroup **)(owner_bytes + 0x43c) = group->next;
+    }
+    if (group->next != 0) {
+        group->next->previous = group->previous;
+    } else {
+        *(GraphicsSpriteGroup **)(owner_bytes + 0x440) = group->previous;
+    }
+    GraphicsSpriteGroup_Clear(group);
+    Heap_Free(group);
+    --*(u32 *)(owner_bytes + 0x444);
+}
 #else
-/* This matching fallback implements the documented portable C directly above. */
+/* Matching fallbacks implement the two documented portable routines above. */
 asm GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *owner)
 {
     stmdb sp!, {r4, lr}
@@ -82,39 +86,7 @@ sprite_group_alloc_append:
     str r1, [r4, #0x444]
     ldmia sp!, {r4, pc}
 }
-#endif
 
-/*
- * Unlink group from owner, release all states held by the group, free it, and
- * decrement groupCount. Null is ignored. The retail membership scan has no
- * observable result; valid callers must pass a group belonging to owner.
- */
-#ifndef MATCHING
-void GraphicsSpriteGroupOwner_DestroyGroup(void *ownerPointer,
-                                           GraphicsSpriteGroup *group)
-{
-    GraphicsSpriteGroupOwner *owner =
-        (GraphicsSpriteGroupOwner *)ownerPointer;
-
-    if (group == 0) {
-        return;
-    }
-    if (group->previous != 0) {
-        group->previous->next = group->next;
-    } else {
-        owner->groupHead = group->next;
-    }
-    if (group->next != 0) {
-        group->next->previous = group->previous;
-    } else {
-        owner->groupTail = group->previous;
-    }
-    GraphicsSpriteGroup_Clear(group);
-    Heap_Free(group);
-    owner->groupCount--;
-}
-#else
-/* This matching fallback implements the documented portable C directly above. */
 asm void GraphicsSpriteGroupOwner_DestroyGroup(void *owner,
                                                GraphicsSpriteGroup *group)
 {
@@ -130,7 +102,7 @@ sprite_group_owner_find:
     ldr r0, [r0, #8]
 sprite_group_owner_check:
     cmp r0, #0
-    DCD 0x1AFFFFFA
+    bne sprite_group_owner_find
 sprite_group_owner_found:
     ldr r1, [r4, #4]
     ldr r0, [r4, #8]
@@ -153,5 +125,45 @@ sprite_group_owner_count:
     sub r0, r0, #1
     str r0, [r5, #0x444]
     ldmia sp!, {r3, r4, r5, pc}
+}
+#endif
+
+/* Retail-address wrapper that creates and returns one owner-linked group. */
+#ifndef MATCHING
+GraphicsSpriteGroup *func_020742cc(void *owner)
+{
+    return GraphicsSpriteGroupOwner_CreateGroup(owner);
+}
+
+/* Creates a state from a three-resource source and returns the resulting
+ * state; attach is narrowed to the retail byte-sized flag. */
+void *func_02073ffc(GraphicsSpriteGroup *group,
+                   const GraphicsSpriteSource3 *source, s32 attach)
+{
+    return GraphicsSpriteGroup_CreateStateFromSource(group, source,
+                                                      (u8)attach);
+}
+
+/* Releases the group's indexed entries without destroying the group. */
+void func_02074110(GraphicsSpriteGroup *group)
+{
+    GraphicsSpriteGroup_ReleaseIndexedEntries(group);
+}
+
+/* Destroys a group through its stored owner; a null argument is ignored. */
+void func_0207419c(GraphicsSpriteGroup *group)
+{
+    if (group != 0) {
+        GraphicsSpriteGroupOwner_DestroyGroup(group->owner, group);
+    }
+}
+
+/* Retail 0x02073EF8 unlinks one state from its containing group and returns it
+ * to the renderer's fixed pool; the group itself remains owned by its owner. */
+void func_02073ef8(GraphicsSpriteState *state)
+{
+    if (state != 0) {
+        GraphicsSpriteState_ReleaseFromGroup(state);
+    }
 }
 #endif

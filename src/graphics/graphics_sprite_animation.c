@@ -1,79 +1,133 @@
+/*
+ * Recovered sprite animation and explicit-frame selection for archive-backed
+ * sprite states. These routines prepare lazy animation metadata and mutate
+ * caller-owned playback state; the shared graphics archive retains resources.
+ */
 #include "tingle/graphics_sprite_state.h"
 
-/*
- * Sequence and frame selection for the graphics sprite state. These routines
- * lazily prepare animation resources, clamp caller indices to resource bounds,
- * maintain an 8.8 frame-time accumulator, and invalidate an attached graphics
- * allocation when animation data changes.
- */
-
-typedef struct SpriteSequenceRecord {
+typedef struct SpriteFrameSequence {
     u16 firstFrame;
     u16 frameCount;
-    u16 field_04;
-    u16 field_06;
-} SpriteSequenceRecord;
-
-typedef struct SpriteFrameRecord {
-    u16 field_00;
     u16 duration;
-} SpriteFrameRecord;
+    u16 field_06;
+} SpriteFrameSequence;
 
-typedef struct SpriteSequenceSummary {
-    u32 field_00;
-    u32 animationCount;
-} SpriteSequenceSummary;
+typedef struct SpriteFrameTiming {
+    u16 resourceIndex;
+    u16 duration;
+} SpriteFrameTiming;
 
 typedef struct SpriteAnimationResource {
     u8 padding_00[0x14];
-    void *field_14;
-    u8 padding_18[8];
-    SpriteSequenceSummary *summary;
-    SpriteSequenceRecord *sequences;
-    SpriteFrameRecord *frames;
+    void *allocation;
+    u8 padding_18[0x0c];
+    SpriteFrameSequence *sequences;
+    SpriteFrameTiming *frames;
 } SpriteAnimationResource;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-extern void func_02070d74(SpriteAnimationResource *resource);
-
+extern void func_02070d74(void *resource);
 #ifdef __cplusplus
 }
 #endif
 
-/*
- * Select animationIndex, clamping it to the resource's final sequence. Reset
- * frameIndex and framePosition, invalidate the attached offset-0x0c byte unless
- * state field_3b bit 0 suppresses it, and clear flags bit 0. Lazy resource
- * preparation may mutate animationResource; no direct hardware write occurs.
- */
 #ifndef MATCHING
-void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state,
-                                           u8 animationIndex)
+/* Selects a clamped animation index, resets playback, invalidates any attached
+ * render record, and clears the terminal flag. Resource preparation is the
+ * only archive-side effect; the function has no return value. */
+void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *sprite,
+                                           u8 animation)
 {
     SpriteAnimationResource *resource =
-        (SpriteAnimationResource *)state->animationResource;
+        (SpriteAnimationResource *)sprite->animationResource;
+    u32 animationCount;
 
-    if (resource->field_14 == 0) {
+    if (resource->allocation == 0) {
         func_02070d74(resource);
     }
-    if (animationIndex >= resource->summary->animationCount) {
-        animationIndex = (u8)(resource->summary->animationCount - 1);
+    animationCount = *(u32 *)((u8 *)resource->allocation + 4);
+    if (animation >= animationCount) {
+        animation = (u8)(animationCount - 1);
     }
-    state->animationIndex = animationIndex;
-    state->frameIndex = 0;
-    state->framePosition = 0;
-    if ((state->field_3b & 1) == 0 && state->field_0c != 0) {
-        ((u8 *)state->field_0c)[0x0c] = 0;
+    sprite->animationIndex = animation;
+    sprite->frameIndex = 0;
+    sprite->framePosition = 0;
+    if ((sprite->field_3b & 1u) == 0 && sprite->field_0c != 0) {
+        *(u8 *)((u8 *)sprite->field_0c + 0x0c) = 0;
     }
-    state->flags &= (u16)~1;
+    sprite->flags &= 0xfffeu;
+}
+
+/* Selects a clamped frame in the current sequence, converts preceding frame
+ * durations to an 8.8 position, invalidates attached render metadata, and
+ * marks the state as explicitly positioned. */
+void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *sprite,
+                                       u8 frameIndex)
+{
+    SpriteAnimationResource *resource =
+        (SpriteAnimationResource *)sprite->animationResource;
+    SpriteFrameSequence *sequence;
+    SpriteFrameTiming *frame;
+    u32 index;
+
+    if (resource->allocation == 0) {
+        func_02070d74(resource);
+    }
+    sequence = &resource->sequences[sprite->animationIndex];
+    if (frameIndex >= sequence->frameCount) {
+        frameIndex = (u8)(sequence->frameCount - 1);
+    }
+    sprite->frameIndex = frameIndex;
+    sprite->framePosition = 0;
+    frame = &resource->frames[sequence->firstFrame];
+    for (index = 0; index < frameIndex; ++index) {
+        sprite->framePosition += frame[index].duration;
+    }
+    sprite->framePosition <<= 8;
+    if ((sprite->field_3b & 1u) == 0 && sprite->field_0c != 0) {
+        *(u8 *)((u8 *)sprite->field_0c + 0x0c) = 0;
+    }
+    sprite->flags |= 1;
+}
+
+/* Restarts the current sequence at frame/time zero, invalidates attached
+ * render metadata, and clears the terminal flag. */
+void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *sprite)
+{
+    sprite->frameIndex = 0;
+    sprite->framePosition = 0;
+    if ((sprite->field_3b & 1u) == 0 && sprite->field_0c != 0) {
+        *(u8 *)((u8 *)sprite->field_0c + 0x0c) = 0;
+    }
+    sprite->flags &= 0xfffeu;
+}
+
+/* Returns the selected sequence's total duration, lazily preparing its
+ * animation resource first. Resource preparation is the only external effect. */
+u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *sprite)
+{
+    SpriteAnimationResource *resource =
+        (SpriteAnimationResource *)sprite->animationResource;
+
+    if (resource->allocation == 0) {
+        func_02070d74(resource);
+    }
+    return resource->sequences[sprite->animationIndex].duration;
+}
+
+/* Address-derived ABI wrapper retained for portable callers that have not yet
+ * migrated to the semantic sprite-state interface. */
+void func_02072b68(void *sprite, u32 animation)
+{
+    GraphicsSpriteState_SetAnimationIndex((GraphicsSpriteState *)sprite,
+                                           (u8)animation);
 }
 #else
-/* This matching fallback implements the documented portable C directly above. */
-asm void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state,
-                                               u8 animationIndex)
+/* Matching implementations of the four documented portable routines above. */
+asm void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *sprite,
+                                                u8 animation)
 {
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
@@ -81,9 +135,9 @@ asm void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *state,
     mov r5, r1
     ldr r1, [r0, #0x14]
     cmp r1, #0
-    bne sprite_set_animation_loaded
+    bne sprite_animation_loaded
     bl func_02070d74
-sprite_set_animation_loaded:
+sprite_animation_loaded:
     ldr r0, [r4, #0x1c]
     mov r1, #0
     ldr r0, [r0, #0x20]
@@ -97,57 +151,19 @@ sprite_set_animation_loaded:
     ldrb r0, [r4, #0x3b]
     and r0, r0, #1
     tst r0, #0xff
-    bne sprite_set_animation_flags
+    bne sprite_animation_clear_terminal
     ldr r0, [r4, #0xc]
     cmp r0, #0
     strneb r1, [r0, #0xc]
-sprite_set_animation_flags:
+sprite_animation_clear_terminal:
     ldrh r0, [r4, #0x24]
     bic r0, r0, #1
     strh r0, [r4, #0x24]
     ldmia sp!, {r3, r4, r5, pc}
 }
-#endif
 
-/*
- * Select frameIndex within the current sequence, clamping to its last frame.
- * Rebuild framePosition as the sum of preceding 16-bit durations in 8.8 form,
- * invalidate the attached offset-0x0c byte unless suppressed, and set flags
- * bit 0. Lazy resource preparation may occur; there is no direct hardware I/O.
- */
-#ifndef MATCHING
-void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state,
-                                       u8 frameIndex)
-{
-    SpriteAnimationResource *resource =
-        (SpriteAnimationResource *)state->animationResource;
-    SpriteSequenceRecord *sequence;
-    SpriteFrameRecord *frame;
-    s32 i;
-
-    if (resource->field_14 == 0) {
-        func_02070d74(resource);
-    }
-    sequence = &resource->sequences[state->animationIndex];
-    if (frameIndex >= sequence->frameCount) {
-        frameIndex = (u8)(sequence->frameCount - 1);
-    }
-    state->frameIndex = frameIndex;
-    frame = &resource->frames[sequence->firstFrame];
-    state->framePosition = 0;
-    for (i = 0; i < frameIndex; i++) {
-        state->framePosition += frame[i].duration;
-    }
-    state->framePosition <<= 8;
-    if ((state->field_3b & 1) == 0 && state->field_0c != 0) {
-        ((u8 *)state->field_0c)[0x0c] = 0;
-    }
-    state->flags |= 1;
-}
-#else
-/* This matching fallback implements the documented portable C directly above. */
-asm void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state,
-                                           u8 frameIndex)
+asm void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *sprite,
+                                            u8 frameIndex)
 {
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
@@ -155,9 +171,9 @@ asm void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *state,
     mov r4, r1
     ldr r1, [r0, #0x14]
     cmp r1, #0
-    bne sprite_set_frame_loaded
+    bne sprite_frame_loaded
     bl func_02070d74
-sprite_set_frame_loaded:
+sprite_frame_loaded:
     ldr r1, [r5, #0x1c]
     ldrb r0, [r5, #0x38]
     ldr r3, [r1, #0x24]
@@ -173,53 +189,36 @@ sprite_set_frame_loaded:
     strb r4, [r5, #0x39]
     add r2, r2, r1, lsl #2
     str r3, [r5, #0x20]
-    b sprite_set_frame_sum_check
+    b sprite_frame_sum_check
+sprite_frame_sum:
     ldrh r0, [r2, #2]
     ldr r1, [r5, #0x20]
     add r3, r3, #1
     add r0, r1, r0
     str r0, [r5, #0x20]
     add r2, r2, #4
-sprite_set_frame_sum_check:
+sprite_frame_sum_check:
     cmp r3, r4
-    DCD 0xBAFFFFF7
+    blt sprite_frame_sum
     ldr r0, [r5, #0x20]
     mov r0, r0, lsl #8
     str r0, [r5, #0x20]
     ldrb r0, [r5, #0x3b]
     and r0, r0, #1
     tst r0, #0xff
-    bne sprite_set_frame_flags
+    bne sprite_frame_set_terminal
     ldr r1, [r5, #0xc]
     cmp r1, #0
     movne r0, #0
     strneb r0, [r1, #0xc]
-sprite_set_frame_flags:
+sprite_frame_set_terminal:
     ldrh r0, [r5, #0x24]
     orr r0, r0, #1
     strh r0, [r5, #0x24]
     ldmia sp!, {r3, r4, r5, pc}
 }
-#endif
 
-/*
- * Reset to frame zero and time zero, invalidate the attached offset-0x0c byte
- * unless field_3b bit 0 suppresses it, and clear flags bit 0. No resource is
- * loaded, released, or submitted to graphics hardware.
- */
-#ifndef MATCHING
-void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *state)
-{
-    state->frameIndex = 0;
-    state->framePosition = 0;
-    if ((state->field_3b & 1) == 0 && state->field_0c != 0) {
-        ((u8 *)state->field_0c)[0x0c] = 0;
-    }
-    state->flags &= (u16)~1;
-}
-#else
-/* This matching fallback implements the documented portable C directly above. */
-asm void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *state)
+asm void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *sprite)
 {
     mov r2, #0
     strb r2, [r0, #0x39]
@@ -227,46 +226,27 @@ asm void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *state)
     ldrb r1, [r0, #0x3b]
     and r1, r1, #1
     tst r1, #0xff
-    bne sprite_reset_frame_flags
+    bne sprite_reset_clear_terminal
     ldr r1, [r0, #0xc]
     cmp r1, #0
     strneb r2, [r1, #0xc]
-sprite_reset_frame_flags:
+sprite_reset_clear_terminal:
     ldrh r1, [r0, #0x24]
     bic r1, r1, #1
     strh r1, [r0, #0x24]
     bx lr
 }
-#endif
 
-/*
- * Return the current sequence's offset-0x04 halfword, preparing the animation
- * resource first when needed. State is otherwise unchanged, and the resource
- * helper is the only possible SDK/asset side effect.
- */
-#ifndef MATCHING
-u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *state)
-{
-    SpriteAnimationResource *resource =
-        (SpriteAnimationResource *)state->animationResource;
-
-    if (resource->field_14 == 0) {
-        func_02070d74(resource);
-    }
-    return resource->sequences[state->animationIndex].field_04;
-}
-#else
-/* This matching fallback implements the documented portable C directly above. */
-asm u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *state)
+asm u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *sprite)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x1c]
     ldr r1, [r0, #0x14]
     cmp r1, #0
-    bne sprite_get_sequence_loaded
+    bne sprite_duration_loaded
     bl func_02070d74
-sprite_get_sequence_loaded:
+sprite_duration_loaded:
     ldr r1, [r4, #0x1c]
     ldrb r0, [r4, #0x38]
     ldr r1, [r1, #0x24]

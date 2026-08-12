@@ -3,10 +3,21 @@
 /* Release reference-counted character and palette resources from caches. */
 
 typedef struct GraphicsCachedResource GraphicsCachedResource;
+#ifndef __MWERKS__
+typedef void (*GraphicsCachedResourceDestructor)(GraphicsCachedResource *);
+typedef struct GraphicsCachedResourceVtable {
+    GraphicsCachedResourceDestructor destroy;
+    GraphicsCachedResourceDestructor destroyAndFree;
+} GraphicsCachedResourceVtable;
+#endif
 /* The retail vtable's second slot is the deleting destructor used at zero refs. */
 struct GraphicsCachedResource {
+#ifdef __MWERKS__
     virtual void destroy(void);
     virtual void destroyAndFree(void);
+#else
+    GraphicsCachedResourceVtable *vtable;
+#endif
     u8 field_04[0x18];
     u16 referenceCount;
 };
@@ -38,7 +49,11 @@ void func_02071bdc(void *archive, GraphicsCachedResource *resource)
         return;
     func_02070280(cache, resource);
     if (resource != 0)
+#ifdef __MWERKS__
         resource->destroyAndFree();
+#else
+        resource->vtable->destroyAndFree(resource);
+#endif
 }
 
 /*
@@ -59,5 +74,9 @@ void func_02071c38(void *archive, GraphicsCachedResource *resource)
         return;
     func_02070280(cache, resource);
     if (resource != 0)
+#ifdef __MWERKS__
         resource->destroyAndFree();
+#else
+        resource->vtable->destroyAndFree(resource);
+#endif
 }

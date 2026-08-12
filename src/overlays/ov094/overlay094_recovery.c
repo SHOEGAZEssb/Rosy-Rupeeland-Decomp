@@ -6,6 +6,8 @@
  * members retain address-based names and offset-oriented descriptions.
  */
 
+#include "tingle/types.h"
+
 /* Processes ABI arguments and offset-based object state; preserves calls, observable mutations, return values, and engine effects while higher-level semantics remain unconfirmed. */
 void func_ov094_022177e0(void);
 
@@ -133,7 +135,7 @@ void func_ov094_02219494(void);
 void func_ov094_02219540(void);
 
 /* Processes ABI arguments and offset-based object state; preserves calls, observable mutations, return values, and engine effects while higher-level semantics remain unconfirmed. */
-void func_ov094_02219568(void);
+void *func_ov094_02219568(void *object, s32 width, s32 height);
 
 /* Processes ABI arguments and offset-based object state; preserves calls, observable mutations, return values, and engine effects while higher-level semantics remain unconfirmed. */
 void func_ov094_022196a4(void);
@@ -168,4 +170,3 @@ void func_ov094_02219bb0(void);
 /* Exact read-only parameters and initialized dispatch data used by the overlay; individual semantic meanings remain unconfirmed. */
 extern const unsigned char data_ov094_02219bd8[];
 extern unsigned char data_ov094_02219da0[];
-

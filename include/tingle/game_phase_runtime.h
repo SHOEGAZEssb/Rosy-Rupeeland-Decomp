@@ -57,7 +57,7 @@ void func_020083b0(void *destination, s32 a, s32 b, s32 c, s16 d);
 s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 s32 func_020084b8(GamePhaseRuntime *self, s32 x, s32 y);
 s32 func_02008514(GamePhaseRuntime *self, s32 x, s32 y);
-void func_02008570(GamePhaseRuntime *self, s32 mode, void *state);
+void func_02008570(GamePhaseRuntime *self, s32 mode, s32 use3dMode);
 void func_0200866c(GamePhaseRuntime *self);
 void func_020086f8(void *destination, GamePhaseRuntime *self);
 void func_02008740(void *destination, const void *runtimeFields);

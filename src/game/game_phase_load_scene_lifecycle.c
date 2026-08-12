@@ -1,4 +1,5 @@
 #include "tingle/game_phase_load_scene.h"
+#include "tingle/overlay_manager.h"
 #include "tingle/heap.h"
 
 /* Construct and destroy the scene that performs full game-phase loading. */
@@ -8,8 +9,6 @@ extern "C" {
 #endif
 extern SceneVTable data_020d5460;
 extern void *gLupyContext;
-extern void OverlaySlot_Init(void *object);
-extern void OverlaySlot_Destroy(void *object);
 extern void func_02092364(void *object);
 extern void func_020923a0(void *object);
 #ifdef __cplusplus
@@ -39,9 +38,9 @@ GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 phase,
     Scene_Init(&self->base);
     self->base.vtable = &data_020d5460;
     func_02092364(self->field_40);
-    OverlaySlot_Init(self->field_74);
-    OverlaySlot_Init(self->field_80);
-    OverlaySlot_Init(self->field_8c);
+    OverlaySlot_Init((OverlaySlot *)self->field_74);
+    OverlaySlot_Init((OverlaySlot *)self->field_80);
+    OverlaySlot_Init((OverlaySlot *)self->field_8c);
     self->base.value04 = 9;
     self->phase = phase;
     self->phaseArgument = phaseArgument;
@@ -67,9 +66,9 @@ GamePhaseLoadScene *GamePhaseLoadScene_Destroy(GamePhaseLoadScene *self)
     self->ownedObjectCallbacksEnabled = 0;
     if (self->ownedObject != 0)
         ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
-    OverlaySlot_Destroy(self->field_8c);
-    OverlaySlot_Destroy(self->field_80);
-    OverlaySlot_Destroy(self->field_74);
+    OverlaySlot_Destroy((OverlaySlot *)self->field_8c);
+    OverlaySlot_Destroy((OverlaySlot *)self->field_80);
+    OverlaySlot_Destroy((OverlaySlot *)self->field_74);
     func_020923a0(self->field_40);
     Scene_Destroy(&self->base);
     return self;
@@ -89,9 +88,9 @@ GamePhaseLoadScene *GamePhaseLoadScene_DestroyAndFree(GamePhaseLoadScene *self)
     self->ownedObjectCallbacksEnabled = 0;
     if (self->ownedObject != 0)
         ((OwnedObject *)self->ownedObject)->vtable->release(self->ownedObject);
-    OverlaySlot_Destroy(self->field_8c);
-    OverlaySlot_Destroy(self->field_80);
-    OverlaySlot_Destroy(self->field_74);
+    OverlaySlot_Destroy((OverlaySlot *)self->field_8c);
+    OverlaySlot_Destroy((OverlaySlot *)self->field_80);
+    OverlaySlot_Destroy((OverlaySlot *)self->field_74);
     func_020923a0(self->field_40);
     Scene_Destroy(&self->base);
     Heap_Free(self);

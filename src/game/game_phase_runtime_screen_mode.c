@@ -1,17 +1,14 @@
 #include "tingle/game_phase_runtime.h"
+#include "tingle/game_phase_state.h"
+#include "tingle/game_work.h"
 
 /* Switch runtime screen mode and synchronize the affected actors/hardware. */
-
-extern void *gGameWork;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void GamePhaseState_ConfigureMainDisplay(void *object, void *state);
-extern void GameWork_SetFlag(void *work, s32 flag);
 extern void GamePhaseAreaScene_RestoreSubDisplay(void *actor);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled);
-extern void GamePhaseRuntime_SetPlacementMode(GamePhaseRuntime *self, s32 enabled, s32 value);
 extern void func_0201dff0(void *object, s32 mode);
 #ifdef __cplusplus
 }
@@ -25,7 +22,7 @@ extern void func_0201dff0(void *object, s32 mode);
  * flag 0x3f4. Returns no value; volatile display and palette writes are
  * observable hardware effects.
  */
-void func_02008570(GamePhaseRuntime *self, s32 mode, void *state)
+void func_02008570(GamePhaseRuntime *self, s32 mode, s32 use3dMode)
 {
     u8 *b = (u8 *)self;
     volatile u32 *mainDisplay = (volatile u32 *)0x04000000;
@@ -33,13 +30,13 @@ void func_02008570(GamePhaseRuntime *self, s32 mode, void *state)
 
     if (mode == 2 || mode == 0) {
         *mainDisplay = (*mainDisplay & ~0x1f00) | 0x1000;
-        GamePhaseState_ConfigureMainDisplay(b + 0x24, state);
+        GamePhaseState_ConfigureMainDisplay((GamePhaseState *)(b + 0x24), use3dMode);
         GameWork_SetFlag(gGameWork, 0x395);
     }
     if ((u32)(mode - 1) <= 1) {
         void *object;
         volatile u16 *palette = (volatile u16 *)0x05000400;
-        void *volatile *workAddress = &gGameWork;
+        GameWork *volatile *workAddress = &gGameWork;
         *subDisplay = (*subDisplay & ~0x1f00) | 0x1000;
         GamePhaseAreaScene_RestoreSubDisplay(*(void **)(b + 0x2fb8));
         GamePhaseRuntime_RefreshAreaAuxiliaryObject(self, *(void **)(b + 0x30bc), 1);

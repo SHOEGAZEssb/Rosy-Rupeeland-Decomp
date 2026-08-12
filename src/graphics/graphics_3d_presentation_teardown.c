@@ -1,0 +1,86 @@
+
+/* Portable reconstructions of the assembly-selected presentation teardown
+ * chain rooted at retail 0x020A2324. */
+#include "tingle/heap.h"
+#include "tingle/types.h"
+
+typedef void (*ElementDestructor)(void *element);
+
+extern void func_02005058(void *vector);
+
+/* Retail array delete helper at 0x020C0C24. The allocation prefix stores the
+ * element count immediately before the first element; destruction runs in
+ * reverse order and the caller-provided header size locates the owning heap
+ * allocation. A null destructor skips element cleanup but still frees. */
+void func_020c0c24(void *array, u32 stride, u32 headerSize,
+                   ElementDestructor destructor)
+{
+    u32 count;
+
+    if (array == 0)
+        return;
+    if (destructor != 0) {
+        count = *(u32 *)((u8 *)array - 4);
+        while (count != 0) {
+            --count;
+            destructor((u8 *)array + count * stride);
+        }
+    }
+    Heap_Free((u8 *)array - headerSize);
+}
+
+/* Destroy the subordinate buffers and vector arrays of one 3D presentation. */
+void func_020a3790(void *object)
+{
+    s32 offset;
+
+    for (offset = 0x28; offset >= 0x10; offset -= 4)
+        Heap_Free(*(void **)((u8 *)object + offset));
+    func_020c0c24(*(void **)((u8 *)object + 0x0c), 0x10, 8,
+                   func_02005058);
+    func_020c0c24(*(void **)((u8 *)object + 0x08), 0x10, 8,
+                   func_02005058);
+}
+
+/* Destroy all thirty presentation slots in reverse retail order. */
+void func_020a33cc(void *manager)
+{
+    s32 index;
+
+    for (index = 29; index >= 0; --index) {
+        void **slot = (void **)((u8 *)manager + 4 + index * 4);
+        if (*slot != 0) {
+            func_020a3790(*slot);
+            Heap_Free(*slot);
+            *slot = 0;
+        }
+    }
+}
+
+/* Reset the fifteen paired presentation-record tables and active byte. */
+void func_020a2bc8(void *manager)
+{
+    s32 index;
+
+    for (index = 14; index >= 0; --index) {
+        *(u32 *)((u8 *)manager + 0xd0 + index * 4) = 0;
+        *(u32 *)((u8 *)manager + 0x184 + index * 4) = 0;
+    }
+    *((u8 *)manager + 4) = 0;
+}
+
+/* Mark the 3D presentation manager reset at retail 0x0209A4E4. */
+void func_0209a4e4(void *manager)
+{
+    *(u32 *)((u8 *)manager + 4) = 1;
+}
+
+/* Tear down the three manager families embedded at +0x4E0..+0x4E8. */
+void func_020a2324(void *object)
+{
+    func_020a33cc(*(void **)((u8 *)object + 0x4e8));
+    func_020a2bc8(*(void **)((u8 *)object + 0x4e4));
+    func_0209a4e4(*(void **)((u8 *)object + 0x4e0));
+}
+
+

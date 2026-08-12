@@ -3,10 +3,21 @@
 /* Release reference-counted screen-map resources from the archive cache. */
 
 typedef struct GraphicsCachedScreen GraphicsCachedScreen;
+#ifndef __MWERKS__
+typedef void (*GraphicsCachedScreenDestructor)(GraphicsCachedScreen *);
+typedef struct GraphicsCachedScreenVtable {
+    GraphicsCachedScreenDestructor destroy;
+    GraphicsCachedScreenDestructor destroyAndFree;
+} GraphicsCachedScreenVtable;
+#endif
 /* The retail vtable's second slot is the deleting destructor used at zero refs. */
 struct GraphicsCachedScreen {
+#ifdef __MWERKS__
     virtual void destroy(void);
     virtual void destroyAndFree(void);
+#else
+    GraphicsCachedScreenVtable *vtable;
+#endif
     u8 field_04[0x18];
     u16 referenceCount;
 };
@@ -38,5 +49,9 @@ void func_02071cf0(void *archive, GraphicsCachedScreen *resource)
         return;
     func_02070280(cache, resource);
     if (resource != 0)
+#ifdef __MWERKS__
         resource->destroyAndFree();
+#else
+        resource->vtable->destroyAndFree(resource);
+#endif
 }

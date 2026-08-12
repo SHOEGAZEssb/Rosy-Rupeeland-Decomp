@@ -15,7 +15,7 @@ extern "C" {
 extern s64 func_020befec(s32, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
-extern s32 GraphicsSpriteFont_MapCharacterToGlyph(u16);
+extern u16 GraphicsSpriteFont_MapCharacterToGlyph(u32);
 extern void func_ov025_021fde58(void *);
 #ifdef __cplusplus
 }
