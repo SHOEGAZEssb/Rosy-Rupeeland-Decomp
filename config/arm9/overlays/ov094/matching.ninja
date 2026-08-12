@@ -1,6 +1,8 @@
 # Generated exact matching fallbacks for overlay 094.
 # Regenerate with tools/generate_overlay_matching_ninja.py.
 
+overlay094_title_effect_owner_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+
 build build/decomp/asm/overlays/ov094/overlay094_022177e0.o: mwasmarm asm/overlays/ov094/overlay094_022177e0.s
 build build/decomp/delinks/asm/overlays/ov094/overlay094_022177e0.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
   object = asm/overlays/ov094/overlay094_022177e0.s
@@ -431,12 +433,14 @@ build build/reports/overlay094_02219568.txt: match_report build/reports/overlay0
   report_json = build/reports/overlay094_02219568.json
   report_args = --section .text --function func_ov094_02219568 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_022196a4.o: mwasmarm asm/overlays/ov094/overlay094_022196a4.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_022196a4.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_022196a4.s
-build build/reports/overlay094_022196a4.json: objdiff build/decomp/asm/overlays/ov094/overlay094_022196a4.o build/decomp/delinks/asm/overlays/ov094/overlay094_022196a4.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_022196a4.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_022196a4.o
+build build/decomp/src/overlays/ov094/overlay094_title_effect_owner_destroy.o: mwccarm src/overlays/ov094/overlay094_title_effect_owner_destroy.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_title_effect_owner_destroy.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_destroy.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_title_effect_owner_destroy.c
+build build/reports/overlay094_022196a4.json: objdiff build/decomp/src/overlays/ov094/overlay094_title_effect_owner_destroy.o build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_destroy.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_title_effect_owner_destroy.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_destroy.o
 build build/reports/overlay094_022196a4.txt: match_report build/reports/overlay094_022196a4.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_022196a4.json
   report_args = --section .text --function func_ov094_022196a4 --require-exact
@@ -451,12 +455,14 @@ build build/reports/overlay094_022196e8.txt: match_report build/reports/overlay0
   report_json = build/reports/overlay094_022196e8.json
   report_args = --section .text --function func_ov094_022196e8 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_022198e8.o: mwasmarm asm/overlays/ov094/overlay094_022198e8.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_022198e8.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_022198e8.s
-build build/reports/overlay094_022198e8.json: objdiff build/decomp/asm/overlays/ov094/overlay094_022198e8.o build/decomp/delinks/asm/overlays/ov094/overlay094_022198e8.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_022198e8.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_022198e8.o
+build build/decomp/src/overlays/ov094/overlay094_title_effect_owner_group_state.o: mwccarm src/overlays/ov094/overlay094_title_effect_owner_group_state.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_title_effect_owner_group_state.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_group_state.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_title_effect_owner_group_state.c
+build build/reports/overlay094_022198e8.json: objdiff build/decomp/src/overlays/ov094/overlay094_title_effect_owner_group_state.o build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_group_state.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_title_effect_owner_group_state.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_group_state.o
 build build/reports/overlay094_022198e8.txt: match_report build/reports/overlay094_022198e8.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_022198e8.json
   report_args = --section .text --function func_ov094_022198e8 --require-exact

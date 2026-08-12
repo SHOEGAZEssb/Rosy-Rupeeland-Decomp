@@ -133,13 +133,13 @@ asm/overlays/ov094/overlay094_02219540.s:
 asm/overlays/ov094/overlay094_02219568.s:
     categories: Game code
     .text start:0x02219568 end:0x022196a4
-asm/overlays/ov094/overlay094_022196a4.s:
+src/overlays/ov094/overlay094_title_effect_owner_destroy.c:
     categories: Game code
     .text start:0x022196a4 end:0x022196e8
 asm/overlays/ov094/overlay094_022196e8.s:
     categories: Game code
     .text start:0x022196e8 end:0x022198e8
-asm/overlays/ov094/overlay094_022198e8.s:
+src/overlays/ov094/overlay094_title_effect_owner_group_state.c:
     categories: Game code
     .text start:0x022198e8 end:0x0221991c
 asm/overlays/ov094/overlay094_0221991c.s:
