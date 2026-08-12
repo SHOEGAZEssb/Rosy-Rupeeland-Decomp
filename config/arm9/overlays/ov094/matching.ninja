@@ -323,107 +323,130 @@ build build/reports/overlay094_022191fc.txt: match_report build/reports/overlay0
   report_json = build/reports/overlay094_022191fc.json
   report_args = --section .text --function func_ov094_022191fc --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219230.o: mwasmarm asm/overlays/ov094/overlay094_02219230.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219230.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219230.s
-build build/reports/overlay094_02219230.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219230.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219230.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219230.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219230.o
+build build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_noop.o: mwccarm src/overlays/ov094/overlay094_screen_fade_effect_noop.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_screen_fade_effect_noop.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_noop.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_screen_fade_effect_noop.c
+build build/reports/overlay094_02219230.json: objdiff build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_noop.o build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_noop.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_noop.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_noop.o
 build build/reports/overlay094_02219230.txt: match_report build/reports/overlay094_02219230.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219230.json
   report_args = --section .text --function func_ov094_02219230 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219234.o: mwasmarm asm/overlays/ov094/overlay094_02219234.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219234.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219234.s
-build build/reports/overlay094_02219234.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219234.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219234.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219234.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219234.o
+build build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_create.o: mwccarm src/overlays/ov094/overlay094_screen_fade_effect_create.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_screen_fade_effect_create.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_create.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_screen_fade_effect_create.c
+build build/reports/overlay094_02219234.json: objdiff build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_create.o build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_create.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_create.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_create.o
 build build/reports/overlay094_02219234.txt: match_report build/reports/overlay094_02219234.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219234.json
   report_args = --section .text --function func_ov094_02219234 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219278.o: mwasmarm asm/overlays/ov094/overlay094_02219278.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219278.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219278.s
-build build/reports/overlay094_02219278.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219278.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219278.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219278.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219278.o
+build build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_destroy.o: mwccarm src/overlays/ov094/overlay094_screen_fade_effect_destroy.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_screen_fade_effect_destroy.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_destroy.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_screen_fade_effect_destroy.c
+build build/reports/overlay094_02219278.json: objdiff build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_destroy.o build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_destroy.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_destroy.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_destroy.o
 build build/reports/overlay094_02219278.txt: match_report build/reports/overlay094_02219278.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219278.json
   report_args = --section .text --function func_ov094_02219278 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_022192a8.o: mwasmarm asm/overlays/ov094/overlay094_022192a8.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_022192a8.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_022192a8.s
-build build/reports/overlay094_022192a8.json: objdiff build/decomp/asm/overlays/ov094/overlay094_022192a8.o build/decomp/delinks/asm/overlays/ov094/overlay094_022192a8.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_022192a8.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_022192a8.o
+build build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_delete.o: mwccarm src/overlays/ov094/overlay094_screen_fade_effect_delete.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_screen_fade_effect_delete.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_delete.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_screen_fade_effect_delete.c
+build build/reports/overlay094_022192a8.json: objdiff build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_delete.o build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_delete.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_delete.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_delete.o
 build build/reports/overlay094_022192a8.txt: match_report build/reports/overlay094_022192a8.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_022192a8.json
   report_args = --section .text --function func_ov094_022192a8 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_022192e0.o: mwasmarm asm/overlays/ov094/overlay094_022192e0.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_022192e0.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_022192e0.s
-build build/reports/overlay094_022192e0.json: objdiff build/decomp/asm/overlays/ov094/overlay094_022192e0.o build/decomp/delinks/asm/overlays/ov094/overlay094_022192e0.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_022192e0.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_022192e0.o
+build build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_update.o: mwccarm src/overlays/ov094/overlay094_screen_fade_effect_update.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_screen_fade_effect_update.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_screen_fade_effect_update.c
+build build/reports/overlay094_022192e0.json: objdiff build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_update.o build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_update.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_screen_fade_effect_update.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_screen_fade_effect_update.o
 build build/reports/overlay094_022192e0.txt: match_report build/reports/overlay094_022192e0.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_022192e0.json
   report_args = --section .text --function func_ov094_022192e0 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219344.o: mwasmarm asm/overlays/ov094/overlay094_02219344.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219344.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219344.s
-build build/reports/overlay094_02219344.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219344.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219344.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219344.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219344.o
+build build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_create.o: mwccarm src/overlays/ov094/overlay094_paired_sprite_effect_create.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_paired_sprite_effect_create.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_create.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_paired_sprite_effect_create.c
+build build/reports/overlay094_02219344.json: objdiff build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_create.o build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_create.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_create.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_create.o
 build build/reports/overlay094_02219344.txt: match_report build/reports/overlay094_02219344.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219344.json
   report_args = --section .text --function func_ov094_02219344 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219434.o: mwasmarm asm/overlays/ov094/overlay094_02219434.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219434.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219434.s
-build build/reports/overlay094_02219434.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219434.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219434.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219434.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219434.o
+build build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_destroy.o: mwccarm src/overlays/ov094/overlay094_paired_sprite_effect_destroy.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_paired_sprite_effect_destroy.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_destroy.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_paired_sprite_effect_destroy.c
+build build/reports/overlay094_02219434.json: objdiff build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_destroy.o build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_destroy.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_destroy.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_destroy.o
 build build/reports/overlay094_02219434.txt: match_report build/reports/overlay094_02219434.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219434.json
   report_args = --section .text --function func_ov094_02219434 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219460.o: mwasmarm asm/overlays/ov094/overlay094_02219460.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219460.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219460.s
-build build/reports/overlay094_02219460.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219460.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219460.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219460.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219460.o
+build build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_delete.o: mwccarm src/overlays/ov094/overlay094_paired_sprite_effect_delete.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_paired_sprite_effect_delete.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_delete.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_paired_sprite_effect_delete.c
+build build/reports/overlay094_02219460.json: objdiff build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_delete.o build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_delete.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_delete.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_delete.o
 build build/reports/overlay094_02219460.txt: match_report build/reports/overlay094_02219460.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219460.json
   report_args = --section .text --function func_ov094_02219460 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219494.o: mwasmarm asm/overlays/ov094/overlay094_02219494.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219494.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219494.s
-build build/reports/overlay094_02219494.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219494.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219494.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219494.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219494.o
+build build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_update.o: mwccarm src/overlays/ov094/overlay094_paired_sprite_effect_update.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_paired_sprite_effect_update.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_paired_sprite_effect_update.c
+build build/reports/overlay094_02219494.json: objdiff build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_update.o build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_update.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_update.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_update.o
 build build/reports/overlay094_02219494.txt: match_report build/reports/overlay094_02219494.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219494.json
   report_args = --section .text --function func_ov094_02219494 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_02219540.o: mwasmarm asm/overlays/ov094/overlay094_02219540.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_02219540.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_02219540.s
-build build/reports/overlay094_02219540.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219540.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219540.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_02219540.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219540.o
+build build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_sync.o: mwccarm src/overlays/ov094/overlay094_paired_sprite_effect_sync.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_paired_sprite_effect_sync.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_sync.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_paired_sprite_effect_sync.c
+build build/reports/overlay094_02219540.json: objdiff build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_sync.o build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_sync.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_paired_sprite_effect_sync.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_paired_sprite_effect_sync.o
 build build/reports/overlay094_02219540.txt: match_report build/reports/overlay094_02219540.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219540.json
   report_args = --section .text --function func_ov094_02219540 --require-exact
 
 build build/decomp/asm/overlays/ov094/overlay094_02219568.o: mwasmarm asm/overlays/ov094/overlay094_02219568.s
+build build/decomp/src/overlays/ov094/overlay094_title_effect_owner_create.o: mwccarm src/overlays/ov094/overlay094_title_effect_owner_create.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_title_effect_owner_create.c
+  cflags = $overlay094_title_effect_owner_cflags
 build build/decomp/delinks/asm/overlays/ov094/overlay094_02219568.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
   object = asm/overlays/ov094/overlay094_02219568.s
 build build/reports/overlay094_02219568.json: objdiff build/decomp/asm/overlays/ov094/overlay094_02219568.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219568.o
@@ -432,6 +455,12 @@ build build/reports/overlay094_02219568.json: objdiff build/decomp/asm/overlays/
 build build/reports/overlay094_02219568.txt: match_report build/reports/overlay094_02219568.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_02219568.json
   report_args = --section .text --function func_ov094_02219568 --require-exact
+build build/reports/overlay094_02219568_source.json: objdiff build/decomp/src/overlays/ov094/overlay094_title_effect_owner_create.o build/decomp/delinks/asm/overlays/ov094/overlay094_02219568.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_title_effect_owner_create.o
+  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_02219568.o
+build build/reports/overlay094_02219568_source.txt: match_report build/reports/overlay094_02219568_source.json | tools/report_objdiff.py
+  report_json = build/reports/overlay094_02219568_source.json
+  report_args = --section .text --function func_ov094_02219568
 
 build build/decomp/src/overlays/ov094/overlay094_title_effect_owner_destroy.o: mwccarm src/overlays/ov094/overlay094_title_effect_owner_destroy.c | include/tingle/types.h
   source = src/overlays/ov094/overlay094_title_effect_owner_destroy.c
@@ -445,12 +474,14 @@ build build/reports/overlay094_022196a4.txt: match_report build/reports/overlay0
   report_json = build/reports/overlay094_022196a4.json
   report_args = --section .text --function func_ov094_022196a4 --require-exact
 
-build build/decomp/asm/overlays/ov094/overlay094_022196e8.o: mwasmarm asm/overlays/ov094/overlay094_022196e8.s
-build build/decomp/delinks/asm/overlays/ov094/overlay094_022196e8.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
-  object = asm/overlays/ov094/overlay094_022196e8.s
-build build/reports/overlay094_022196e8.json: objdiff build/decomp/asm/overlays/ov094/overlay094_022196e8.o build/decomp/delinks/asm/overlays/ov094/overlay094_022196e8.o
-  target_object = build/decomp/asm/overlays/ov094/overlay094_022196e8.o
-  base_object = build/decomp/delinks/asm/overlays/ov094/overlay094_022196e8.o
+build build/decomp/src/overlays/ov094/overlay094_title_effect_owner_update.o: mwccarm src/overlays/ov094/overlay094_title_effect_owner_update.c | include/tingle/types.h
+  source = src/overlays/ov094/overlay094_title_effect_owner_update.c
+  cflags = $overlay094_title_effect_owner_cflags
+build build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt
+  object = src/overlays/ov094/overlay094_title_effect_owner_update.c
+build build/reports/overlay094_022196e8.json: objdiff build/decomp/src/overlays/ov094/overlay094_title_effect_owner_update.o build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_update.o
+  target_object = build/decomp/src/overlays/ov094/overlay094_title_effect_owner_update.o
+  base_object = build/decomp/delinks/src/overlays/ov094/overlay094_title_effect_owner_update.o
 build build/reports/overlay094_022196e8.txt: match_report build/reports/overlay094_022196e8.json | tools/report_objdiff.py
   report_json = build/reports/overlay094_022196e8.json
   report_args = --section .text --function func_ov094_022196e8 --require-exact
@@ -537,7 +568,7 @@ build build/reports/overlay094_02219bb0.txt: match_report build/reports/overlay0
   report_json = build/reports/overlay094_02219bb0.json
   report_args = --section .text --function func_ov094_02219bb0 --require-exact
 
-build overlay094_matching: phony build/reports/overlay094_022177e0.txt build/reports/overlay094_022179b0.txt build/reports/overlay094_022179dc.txt build/reports/overlay094_02217a10.txt build/reports/overlay094_02217bc8.txt build/reports/overlay094_02217be0.txt build/reports/overlay094_02217c34.txt build/reports/overlay094_02217c54.txt build/reports/overlay094_02217c74.txt build/reports/overlay094_02217d20.txt build/reports/overlay094_02217d64.txt build/reports/overlay094_02217e94.txt build/reports/overlay094_02217ec8.txt build/reports/overlay094_0221800c.txt build/reports/overlay094_02218040.txt build/reports/overlay094_0221807c.txt build/reports/overlay094_02218470.txt build/reports/overlay094_022185a4.txt build/reports/overlay094_022185e4.txt build/reports/overlay094_022186dc.txt build/reports/overlay094_02218720.txt build/reports/overlay094_022189f8.txt build/reports/overlay094_02218a2c.txt build/reports/overlay094_02218b14.txt build/reports/overlay094_02218b48.txt build/reports/overlay094_02218b84.txt build/reports/overlay094_02218da0.txt build/reports/overlay094_02218ed4.txt build/reports/overlay094_02218f14.txt build/reports/overlay094_0221900c.txt build/reports/overlay094_02219050.txt build/reports/overlay094_022191fc.txt build/reports/overlay094_02219230.txt build/reports/overlay094_02219234.txt build/reports/overlay094_02219278.txt build/reports/overlay094_022192a8.txt build/reports/overlay094_022192e0.txt build/reports/overlay094_02219344.txt build/reports/overlay094_02219434.txt build/reports/overlay094_02219460.txt build/reports/overlay094_02219494.txt build/reports/overlay094_02219540.txt build/reports/overlay094_02219568.txt build/reports/overlay094_022196a4.txt build/reports/overlay094_022196e8.txt build/reports/overlay094_022198e8.txt build/reports/overlay094_0221991c.txt build/reports/overlay094_022199e0.txt build/reports/overlay094_02219a08.txt build/reports/overlay094_02219ad4.txt build/reports/overlay094_02219b78.txt build/reports/overlay094_02219bac.txt build/reports/overlay094_02219bb0.txt
+build overlay094_matching: phony build/reports/overlay094_022177e0.txt build/reports/overlay094_022179b0.txt build/reports/overlay094_022179dc.txt build/reports/overlay094_02217a10.txt build/reports/overlay094_02217bc8.txt build/reports/overlay094_02217be0.txt build/reports/overlay094_02217c34.txt build/reports/overlay094_02217c54.txt build/reports/overlay094_02217c74.txt build/reports/overlay094_02217d20.txt build/reports/overlay094_02217d64.txt build/reports/overlay094_02217e94.txt build/reports/overlay094_02217ec8.txt build/reports/overlay094_0221800c.txt build/reports/overlay094_02218040.txt build/reports/overlay094_0221807c.txt build/reports/overlay094_02218470.txt build/reports/overlay094_022185a4.txt build/reports/overlay094_022185e4.txt build/reports/overlay094_022186dc.txt build/reports/overlay094_02218720.txt build/reports/overlay094_022189f8.txt build/reports/overlay094_02218a2c.txt build/reports/overlay094_02218b14.txt build/reports/overlay094_02218b48.txt build/reports/overlay094_02218b84.txt build/reports/overlay094_02218da0.txt build/reports/overlay094_02218ed4.txt build/reports/overlay094_02218f14.txt build/reports/overlay094_0221900c.txt build/reports/overlay094_02219050.txt build/reports/overlay094_022191fc.txt build/reports/overlay094_02219230.txt build/reports/overlay094_02219234.txt build/reports/overlay094_02219278.txt build/reports/overlay094_022192a8.txt build/reports/overlay094_022192e0.txt build/reports/overlay094_02219344.txt build/reports/overlay094_02219434.txt build/reports/overlay094_02219460.txt build/reports/overlay094_02219494.txt build/reports/overlay094_02219540.txt build/reports/overlay094_02219568.txt build/reports/overlay094_02219568_source.txt build/reports/overlay094_022196a4.txt build/reports/overlay094_022196e8.txt build/reports/overlay094_022198e8.txt build/reports/overlay094_0221991c.txt build/reports/overlay094_022199e0.txt build/reports/overlay094_02219a08.txt build/reports/overlay094_02219ad4.txt build/reports/overlay094_02219b78.txt build/reports/overlay094_02219bac.txt build/reports/overlay094_02219bb0.txt
 
 build build/decomp/asm/overlays/ov094/overlay094_data.o: mwasmarm asm/overlays/ov094/overlay094_data.s
 build build/decomp/delinks/asm/overlays/ov094/overlay094_data.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov094/delinks.txt config/arm9/overlays/ov094/symbols.txt config/arm9/overlays/ov094/relocs.txt

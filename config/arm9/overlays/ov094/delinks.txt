@@ -100,34 +100,34 @@ asm/overlays/ov094/overlay094_02219050.s:
 asm/overlays/ov094/overlay094_022191fc.s:
     categories: Game code
     .text start:0x022191fc end:0x02219230
-asm/overlays/ov094/overlay094_02219230.s:
+src/overlays/ov094/overlay094_screen_fade_effect_noop.c:
     categories: Game code
     .text start:0x02219230 end:0x02219234
-asm/overlays/ov094/overlay094_02219234.s:
+src/overlays/ov094/overlay094_screen_fade_effect_create.c:
     categories: Game code
     .text start:0x02219234 end:0x02219278
-asm/overlays/ov094/overlay094_02219278.s:
+src/overlays/ov094/overlay094_screen_fade_effect_destroy.c:
     categories: Game code
     .text start:0x02219278 end:0x022192a8
-asm/overlays/ov094/overlay094_022192a8.s:
+src/overlays/ov094/overlay094_screen_fade_effect_delete.c:
     categories: Game code
     .text start:0x022192a8 end:0x022192e0
-asm/overlays/ov094/overlay094_022192e0.s:
+src/overlays/ov094/overlay094_screen_fade_effect_update.c:
     categories: Game code
     .text start:0x022192e0 end:0x02219344
-asm/overlays/ov094/overlay094_02219344.s:
+src/overlays/ov094/overlay094_paired_sprite_effect_create.c:
     categories: Game code
     .text start:0x02219344 end:0x02219434
-asm/overlays/ov094/overlay094_02219434.s:
+src/overlays/ov094/overlay094_paired_sprite_effect_destroy.c:
     categories: Game code
     .text start:0x02219434 end:0x02219460
-asm/overlays/ov094/overlay094_02219460.s:
+src/overlays/ov094/overlay094_paired_sprite_effect_delete.c:
     categories: Game code
     .text start:0x02219460 end:0x02219494
-asm/overlays/ov094/overlay094_02219494.s:
+src/overlays/ov094/overlay094_paired_sprite_effect_update.c:
     categories: Game code
     .text start:0x02219494 end:0x02219540
-asm/overlays/ov094/overlay094_02219540.s:
+src/overlays/ov094/overlay094_paired_sprite_effect_sync.c:
     categories: Game code
     .text start:0x02219540 end:0x02219568
 asm/overlays/ov094/overlay094_02219568.s:
@@ -136,7 +136,7 @@ asm/overlays/ov094/overlay094_02219568.s:
 src/overlays/ov094/overlay094_title_effect_owner_destroy.c:
     categories: Game code
     .text start:0x022196a4 end:0x022196e8
-asm/overlays/ov094/overlay094_022196e8.s:
+src/overlays/ov094/overlay094_title_effect_owner_update.c:
     categories: Game code
     .text start:0x022196e8 end:0x022198e8
 src/overlays/ov094/overlay094_title_effect_owner_group_state.c:

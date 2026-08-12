@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
+; Matching fallback for the portable implementation in
+; src/overlays/ov094/overlay094_title_effect_owner_create.c.
 .extern GameWork_ClearFlag
 .extern data_020f4e14
 .extern data_020f4e18
