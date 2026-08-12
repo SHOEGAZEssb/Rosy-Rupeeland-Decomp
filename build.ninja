@@ -42537,7 +42537,7 @@ build overlay329: phony overlay329_matching
 build link_replacement_objects_322: phony build/decomp/asm/overlays/ov329/overlay329_0221d6c0.o link_replacement_objects_323
 subninja config/arm9/overlays/ov330/matching.ninja
 build overlay330: phony overlay330_matching
-build link_replacement_objects_323: phony build/decomp/asm/overlays/ov330/overlay330_0221d6c0.o link_replacement_objects_324
+build link_replacement_objects_323: phony build/decomp/src/overlays/ov330/overlay330_recovery.o build/decomp/asm/overlays/ov330/overlay330_0221d6c0.o link_replacement_objects_324
 subninja config/arm9/overlays/ov331/matching.ninja
 build overlay331: phony overlay331_matching
 build link_replacement_objects_324: phony build/decomp/asm/overlays/ov331/overlay331_0221d6c0.o link_replacement_objects_325

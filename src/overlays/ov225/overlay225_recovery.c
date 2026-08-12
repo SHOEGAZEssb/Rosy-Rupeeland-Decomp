@@ -1,15 +1,26 @@
 #include "tingle/types.h"
 
 /*
- * Recovered overlay 225 compact interpreter-data subsystem.
+ * Recovered physical overlay 225 actor/script registration subsystem.
  *
- * The overlay initializes the actor-interaction runtime, registers three
- * category-one descriptors, and publishes its script and callback records.
- * The descriptor record at 0x0221db48 selects script 0x02220df7, which
- * configures its actor and dispatches mode 2 to script 0x02220f14. On the
- * normal boot branch that script dispatches actor zero to 0x022210f2, waits
- * for selected-actor flag 169 bit 0, then passes stage 84, area 912, phase 90,
- * and mode 0 to the shared phase-request opcode at 0x02220fbd.
+ * The overlay initializes the actor-interaction runtime and publishes a
+ * sentinel-terminated table of twelve category-one actor descriptors together
+ * with its script and callback records. The literal three passed beside the
+ * table is unused by the retail batch routine; it walks 0x64-byte descriptors
+ * through the zero-type terminator. Descriptor ten's word at 0x0221db48
+ * selects script 0x02220df7, which configures its actor and dispatches mode 2
+ * to script 0x02220f14. This physical overlay is distinct from phase ID 225:
+ * that phase's metadata selects physical overlay 330.
+ *
+ * For stage 84, category callback 0x02220a93 stores 101 in GameWork halfword
+ * 0xca, performs the shared flag setup, and dispatches mode 3 to 0x02220e0e.
+ * That orchestration script chooses packed sound 0x5a01 or 0x5a02, optionally
+ * coordinates actor one when a type-seven actor exists, dispatches actor zero
+ * to 0x02220ea7, waits for selected-actor flag 169 bit 0, and performs the
+ * optional actor-one follow-up. Mode-2 script 0x02220f14 can then dispatch
+ * actor zero to 0x022210f2, wait for the same completion flag, and pass stage
+ * 84, area 912, phase 90, and mode 0 to the shared phase-request opcode at
+ * 0x02220fbd.
  *
  * Script 0x022210f2 performs the confirmed presentation work before that
  * request: it changes the actor motion mode, sets actor word-0x14 bits 1 and
@@ -34,7 +45,7 @@ extern void func_02008f58(void *value);
 
 extern u8 data_ov225_0221d720[];
 extern u8 data_ov225_0221d734[];
-/* Actor callback bytecode containing the confirmed splash-to-phase-90 path. */
+/* Actor callback bytecode containing the confirmed stage-84-to-phase-90 path. */
 extern u8 data_ov225_02220a93[];
 extern u8 data_ov225_02221d00[];
 extern u8 data_ov225_02221d04[];
@@ -45,10 +56,10 @@ extern u8 data_ov225_02221d04[];
 
 /*
  * When mode is zero, initialize actor interaction state, register and spawn
- * the overlay's three category-one descriptors, publish the overlay work and
- * script regions, and install its category callback. Nonzero modes return
- * without changing state. The routine returns no value and has no direct
- * hardware effects.
+ * the overlay's twelve sentinel-terminated category-one descriptors, publish
+ * the overlay work and script regions, and install its category callback.
+ * Nonzero modes return without changing state. The routine returns no value
+ * and has no direct hardware effects.
  */
 #ifdef __cplusplus
 extern "C"

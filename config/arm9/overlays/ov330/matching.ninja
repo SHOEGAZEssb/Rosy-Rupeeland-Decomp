@@ -1,14 +1,19 @@
-# Generated exact matching fallback for overlay 330.
-# Regenerate with tools/generate_overlay_matching_ninja.py.
+# Exact source match for phase 225's overlay-330 setup callback.
 
+overlay330_recovery_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
+build build/decomp/src/overlays/ov330/overlay330_recovery.o: mwccarm src/overlays/ov330/overlay330_recovery.c | include/tingle/types.h
+  source = src/overlays/ov330/overlay330_recovery.c
+  cflags = $overlay330_recovery_cflags
+build build/decomp/delinks/src/overlays/ov330/overlay330_recovery.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov330/delinks.txt config/arm9/overlays/ov330/symbols.txt config/arm9/overlays/ov330/relocs.txt
+  object = src/overlays/ov330/overlay330_recovery.c
 build build/decomp/asm/overlays/ov330/overlay330_0221d6c0.o: mwasmarm asm/overlays/ov330/overlay330_0221d6c0.s
 build build/decomp/delinks/asm/overlays/ov330/overlay330_0221d6c0.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov330/delinks.txt config/arm9/overlays/ov330/symbols.txt config/arm9/overlays/ov330/relocs.txt
   object = asm/overlays/ov330/overlay330_0221d6c0.s
-build build/reports/overlay330_0221d6c0.json: objdiff build/decomp/asm/overlays/ov330/overlay330_0221d6c0.o build/decomp/delinks/asm/overlays/ov330/overlay330_0221d6c0.o
-  target_object = build/decomp/asm/overlays/ov330/overlay330_0221d6c0.o
-  base_object = build/decomp/delinks/asm/overlays/ov330/overlay330_0221d6c0.o
-build build/reports/overlay330_0221d6c0.txt: match_report build/reports/overlay330_0221d6c0.json | tools/report_objdiff.py
-  report_json = build/reports/overlay330_0221d6c0.json
+build build/reports/overlay330_recovery.json: objdiff build/decomp/src/overlays/ov330/overlay330_recovery.o build/decomp/delinks/src/overlays/ov330/overlay330_recovery.o
+  target_object = build/decomp/src/overlays/ov330/overlay330_recovery.o
+  base_object = build/decomp/delinks/src/overlays/ov330/overlay330_recovery.o
+build build/reports/overlay330_recovery.txt: match_report build/reports/overlay330_recovery.json | tools/report_objdiff.py
+  report_json = build/reports/overlay330_recovery.json
   report_args = --section .text --function func_ov330_0221d6c0 --require-exact
 
-build overlay330_matching: phony build/reports/overlay330_0221d6c0.txt
+build overlay330_matching: phony build/reports/overlay330_recovery.txt
