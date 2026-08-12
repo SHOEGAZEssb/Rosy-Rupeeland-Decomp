@@ -32,22 +32,28 @@ TitleSpriteEffect *func_ov090_0221c468(
     TitleSpriteEffect *self, void *owner0, void *owner1,
     const void *resources, s32 xOffset, s32 yOffset, s32 animation)
 {
+    void *resource2;
+    void *resource1;
+    void *resource0;
     UtilAnimationResource *resource;
 
     self->vtable = data_ov090_0221ccc8;
     self->xOffset = xOffset;
     self->yOffset = yOffset;
     self->flags &= ~2;
-    self->flags &= 0xff;
+    self->flags &= ~0xff00;
     self->delay = 0;
 
     resource = (UtilAnimationResource *)Heap_Alloc(
         sizeof(UtilAnimationResource), data_ov090_0221ccd0, 4,
         &gHeapContext);
     if (resource != 0) {
+        /* Retail retains these three words across the display-offset call. */
+        resource2 = FIELD(void *, resources, 0x0c);
+        resource1 = FIELD(void *, resources, 8);
+        resource0 = FIELD(void *, resources, 4);
         resource = UtilAnimationResource_Init(
-            resource, 0, owner0, owner1, 2, FIELD(void *, resources, 4),
-            FIELD(void *, resources, 8), FIELD(void *, resources, 0x0c),
+            resource, 0, owner0, owner1, 2, resource0, resource1, resource2,
             DisplayController_GetVerticalOffset());
     }
     self->primary = resource;
@@ -58,10 +64,13 @@ TitleSpriteEffect *func_ov090_0221c468(
             sizeof(UtilAnimationResource), data_ov090_0221ccd0, 4,
             &gHeapContext);
         if (resource != 0) {
+            /* The secondary allocation repeats the same retained-word ABI. */
+            resource2 = FIELD(void *, resources, 0x0c);
+            resource1 = FIELD(void *, resources, 8);
+            resource0 = FIELD(void *, resources, 4);
             resource = UtilAnimationResource_Init(
-                resource, 0, owner0, owner1, 2,
-                FIELD(void *, resources, 4), FIELD(void *, resources, 8),
-                FIELD(void *, resources, 0x0c),
+                resource, 0, owner0, owner1, 2, resource0, resource1,
+                resource2,
                 DisplayController_GetVerticalOffset());
         }
         self->secondary = resource;

@@ -31,6 +31,9 @@ TitleParticipantPresentation *func_ov090_0221b9a0(
     const void *resources, s32 animation, const VecFx32Object *position)
 {
     UtilAnimationResource *resource;
+    void *resource2;
+    void *resource1;
+    void *resource0;
 
     self->vtable = data_ov090_0221cc68;
     VecFx32Object_InitCopy(&self->position, position);
@@ -38,9 +41,12 @@ TitleParticipantPresentation *func_ov090_0221b9a0(
         sizeof(UtilAnimationResource), data_ov090_0221cc90, 4,
         &gHeapContext);
     if (resource != 0) {
+        /* Retail retains these three words across the display-offset call. */
+        resource2 = FIELD(void *, resources, 0x0c);
+        resource1 = FIELD(void *, resources, 8);
+        resource0 = FIELD(void *, resources, 4);
         resource = UtilAnimationResource_Init(
-            resource, 0, owner0, owner1, 2, FIELD(void *, resources, 4),
-            FIELD(void *, resources, 8), FIELD(void *, resources, 0x0c),
+            resource, 0, owner0, owner1, 2, resource0, resource1, resource2,
             DisplayController_GetVerticalOffset());
     }
     self->resource = resource;
@@ -48,7 +54,7 @@ TitleParticipantPresentation *func_ov090_0221b9a0(
         (GraphicsSpriteState *)resource->handles[0], (u8)animation);
     GraphicsSpriteState_SetAnimationIndex(
         (GraphicsSpriteState *)resource->handles[1], (u8)animation);
-    func_ov090_0221b97c(resource, 2);
+    func_ov090_0221b97c(self->resource, 2);
     return self;
 }
 
