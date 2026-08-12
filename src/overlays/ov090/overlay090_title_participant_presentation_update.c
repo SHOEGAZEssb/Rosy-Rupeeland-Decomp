@@ -72,14 +72,15 @@ void func_ov090_0221be40(TitlePresentationChain *self,
             }
         } else if (i < self->count) {
             VecFx32Object difference;
-            fx32 previousValue = data_020c9670[
-                (((u16)(self->step * (i - 1))) >> 4) * 2];
+            fx32 previousValue;
 
             func_ov090_0221c138(&difference,
                                 &self->items[i - 1]->position,
                                 &self->items[i]->position);
             VecFx32Object_Assign(&working, &difference);
             VecFx32Object_Destroy(&difference);
+            previousValue = data_020c9670[
+                (((u16)((i - 1) * self->step)) >> 4) * 2];
             working.value.y -= ((previousValue - chainValue) * 3) / 2;
             if (func_ov090_0221c350(self, &working) != 0) {
                 func_ov090_0221b3d0(&working, 0x800);
@@ -92,10 +93,11 @@ void func_ov090_0221be40(TitlePresentationChain *self,
             }
         }
 
+        /* Operand order preserves retail's signed 64-bit FX multiply shape. */
         self->items[i]->position.value.x +=
-            (fx32)(((s64)chainValue * directionX + 0x800) >> 12);
+            (fx32)(((s64)directionX * chainValue + 0x800) >> 12);
         self->items[i]->position.value.y +=
-            (fx32)(((s64)chainValue * directionY + 0x800) >> 12);
+            (fx32)(((s64)directionY * chainValue + 0x800) >> 12);
         func_ov090_0221c170(self->items[i]->resource, resourceValue);
         if (updateFacing != 0)
             func_ov090_0221bc0c(self->items[i], self->scale_height_14);
