@@ -64,23 +64,24 @@ TitleParticipantPresentation *func_ov090_0221b9a0(
  */
 void func_ov090_0221baec(void *self, const void *target)
 {
-    /* Retail issues four ordered scalar loads rather than an LDM pair. */
-    s32 selfY = FIELD(volatile s32, self, 0x10);
-    s32 targetY = FIELD(volatile s32, target, 8);
-    s32 selfX = FIELD(volatile s32, self, 0x0c);
-    s32 targetX = FIELD(volatile s32, target, 4);
-    s32 deltaY = selfY - targetY;
-    s32 deltaX = selfX - targetX;
-    s32 angle;
-    s32 difference;
-    s16 current;
+    s32 deltaY;
+    s32 deltaX;
     void *resource;
+    s16 current;
+    s32 difference;
+    s32 angle;
+
+    /* This source order schedules into retail's Y-pair-then-X-pair loads. */
+    deltaX = FIELD(s32, self, 0x0c) - FIELD(s32, target, 4);
+    deltaY = FIELD(s32, self, 0x10) - FIELD(s32, target, 8);
 
     if (deltaX == 0 && deltaY == 0)
         return;
     angle = func_020ae024(-deltaY, deltaX);
+    /* Retain the resource loaded for the primary handle through both writes. */
+    current = FIELD(s16,
+                    FIELD(void *, FIELD(void *, self, 4), 4), 0x30);
     resource = FIELD(void *, self, 4);
-    current = FIELD(s16, FIELD(void *, resource, 4), 0x30);
     if (angle < current)
         angle += 0x10000;
     difference = angle - current;
