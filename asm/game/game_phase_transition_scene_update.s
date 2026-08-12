@@ -1,5 +1,6 @@
 ; Matching retail form; see src/game/game_phase_transition_scene_update.c for
-; the documented portable implementation and recovered behavior.
+; the documented exact-size portable implementation. Its sole instruction
+; mismatch is the equivalent r4 rather than r0 vtable-load base in state 3.
 .text
 .extern GameWork_TestFlag
 .extern DisplayBrightness_IsMainTransitionDecreasing
@@ -157,4 +158,3 @@ L_0200c8b0: .word gGamePhaseResumeSceneAllocationTag
 L_0200c8b4: .word gHeapContext
 L_0200c8b8: .word 0x386
 .size GamePhaseTransitionScene_Update, . - GamePhaseTransitionScene_Update
-

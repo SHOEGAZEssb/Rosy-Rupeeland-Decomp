@@ -37,31 +37,34 @@ typedef void (*GamePhaseTransitionMethod)(void *object, s32 value,
  */
 s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
 {
-    if (self->base.value08 == 0) {
-        if (GameWork_TestFlag(gGameWork, 0x3f8)) {
+    switch (self->base.value08) {
+    case 0:
+        if (!GameWork_TestFlag(gGameWork, 0x3f8)) {
+            if (!DisplayBrightness_IsMainTransitionDecreasing())
+                DisplayBrightness_StartMainTransition(2, 0x10);
+            if (!DisplayBrightness_IsSubTransitionDecreasing())
+                DisplayBrightness_StartSubTransition(2, 0x10);
+            self->base.value08++;
+        } else {
             GameWork_ClearFlag(gGameWork, 0x3f8);
             self->base.value08 = 2;
-            return 0;
+            break;
         }
-        if (!DisplayBrightness_IsMainTransitionDecreasing())
-            DisplayBrightness_StartMainTransition(2, 0x10);
-        if (!DisplayBrightness_IsSubTransitionDecreasing())
-            DisplayBrightness_StartSubTransition(2, 0x10);
-        self->base.value08++;
-    }
-
-    if (self->base.value08 == 1) {
+        /* Retail deliberately falls through and polls the fades immediately. */
+    case 1: {
         void *object;
         void **vtable;
 
         if (!DisplayBrightness_IsMainTransitionComplete() || !DisplayBrightness_IsSubTransitionComplete())
-            return 0;
+            break;
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
         object = *(void **)((u8 *)data_021052fc + 0x30e8);
         vtable = *(void ***)object;
         ((GamePhaseTransitionMethod)vtable[3])(object, 0, 0x1f);
         self->base.value08++;
-    } else if (self->base.value08 == 2) {
+        break;
+    }
+    case 2: {
         void *allocation;
 
         if (GameWork_TestFlag(gGameWork, 0x3e8)) {
@@ -74,7 +77,14 @@ s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
         if (allocation != 0)
             GamePhaseResumeScene_Init(allocation, 1);
         self->base.value08++;
-    } else if (self->base.value08 == 3) {
+        break;
+    }
+    case 3:
+        /*
+         * This expression is semantically exact. The retail compiler keeps
+         * the incoming pointer in r0 for the vtable load, while this portable
+         * build selects the equivalent saved r4 value.
+         */
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);
         if (GameWork_TestFlag(gGameWork, 0x386))
