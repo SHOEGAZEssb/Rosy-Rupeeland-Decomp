@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_periodic_effect_spawn.c.
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy

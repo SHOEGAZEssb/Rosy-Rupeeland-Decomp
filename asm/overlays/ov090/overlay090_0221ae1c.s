@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_nearest_participant.c.
 .extern data_021052fc
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign

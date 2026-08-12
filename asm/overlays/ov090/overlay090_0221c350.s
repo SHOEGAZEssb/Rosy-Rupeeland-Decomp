@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_chain_distance_filter.c.
 .extern VecFx32Object_GetMagnitude
 .extern VecFx32Object_Normalize
 .extern func_020be334

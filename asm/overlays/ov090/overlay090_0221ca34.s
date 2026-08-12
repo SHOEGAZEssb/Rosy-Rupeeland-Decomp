@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_effect_small_helpers.c.
 .extern func_ov090_0221b97c
 .extern func_ov090_0221bc5c
 

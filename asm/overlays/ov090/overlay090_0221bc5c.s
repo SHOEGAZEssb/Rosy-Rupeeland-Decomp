@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_participant_sprite_flags_clear.c.
 
 .global func_ov090_0221bc5c
 func_ov090_0221bc5c:

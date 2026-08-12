@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_actor_lifecycle.c.
 .extern GXx_SetMasterBrightness_
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag

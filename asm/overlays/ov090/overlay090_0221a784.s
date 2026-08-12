@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_state0b_transition.c.
 .extern GameWork_ClearFlag
 .extern Sound_Play
 .extern data_021052fc

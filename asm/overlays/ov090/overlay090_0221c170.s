@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_chain_vector_helpers.c.
 
 .global func_ov090_0221c170
 func_ov090_0221c170:

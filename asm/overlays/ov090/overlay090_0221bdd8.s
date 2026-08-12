@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_participant_presentation_array.c.
 .extern Heap_Free
 .extern data_ov090_0221cc78
 .extern func_02003e38

@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_progress_bar.c.
 .extern data_020f4e14
 .extern GraphicsSpriteCanvas_DrawLine
 .extern GraphicsSpriteCanvas_FillRect

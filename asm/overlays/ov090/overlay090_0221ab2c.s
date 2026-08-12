@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_state_active_query.c.
 
 .global func_ov090_0221ab2c
 func_ov090_0221ab2c:
