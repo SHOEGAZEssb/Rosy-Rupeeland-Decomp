@@ -1,5 +1,6 @@
 .text
-; Matching fallback for the portable implementation in src/overlays/ov090/overlay090_recovery.c.
+; Matching fallback for the documented portable implementation in
+; src/overlays/ov090/overlay090_title_terminal_effect_burst.c.
 .extern Heap_Alloc
 .extern data_020c9670
 .extern data_021052fc

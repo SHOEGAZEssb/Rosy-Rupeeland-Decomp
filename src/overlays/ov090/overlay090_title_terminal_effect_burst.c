@@ -50,6 +50,14 @@ void func_ov090_0221b428(void *self)
     s32 column;
     AnimationResource *resources;
     VecFx32Object origin;
+    s32 minusOne;
+    s32 smallTop;
+    s32 middleLeft;
+    s32 largeLeft;
+    s32 largeTop;
+    s32 smallLeft;
+    s32 spriteMinimum;
+    u32 randomMask;
 
     for (i = 0;
          i < FIELD(s32,
@@ -57,10 +65,16 @@ void func_ov090_0221b428(void *self)
                    0x2e74);
          i++) {
         void *actor;
+        s32 isTypeFour;
         collection =
             GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         actor = FIELD(void *, collection, i * 4);
-        if (actor != 0 && FIELD(u8, actor, 0x4d) == 4) {
+        if (actor != 0) {
+            isTypeFour = FIELD(u8, actor, 0x4d) == 4;
+        } else {
+            isTypeFour = 0;
+        }
+        if (isTypeFour) {
             ActorCollection_QueueActorForRemoval(
                 GamePhaseRuntime_GetActorCollection(data_021052fc, 1), actor);
         }
@@ -91,6 +105,14 @@ void func_ov090_0221b428(void *self)
     FIELD(AnimationResource *, self, 0x208) = resources;
 
     VecFx32Object_InitComponents(&origin, 0x200000, 0x100000, 0x20000);
+    minusOne = -1;
+    largeLeft = minusOne - 0x13;
+    largeTop = minusOne - 0x11;
+    middleLeft = minusOne - 0x0d;
+    smallLeft = minusOne - 9;
+    smallTop = minusOne - 5;
+    spriteMinimum = minusOne - 0x1f;
+    randomMask = minusOne + 0x1000;
     i = 0;
     do {
         u32 random = genrand_int32();
@@ -104,7 +126,7 @@ void func_ov090_0221b428(void *self)
         VecFx32Object_InitComponents(
             &velocity,
             data_020c9670[((u16)random >> 4) * 2 + 1] * 3,
-            ((random >> 8) & 0xfff) + 0x4000, 0xa000);
+            ((random >> 8) & randomMask) + 0x4000, 0xa000);
         /* Retail obtains the signed remainder from the helper's high word. */
         velocity.value.y +=
             (s32)(func_020befec(i, 3) >> 32) * 0x4000;
@@ -136,17 +158,17 @@ void func_ov090_0221b428(void *self)
             (s32)(func_020befec(i, 15) >> 32);
 
         if (tier == 0)
-            func_ov090_0221b7e0(&bounds, -10, -6, 10, 6);
+            func_ov090_0221b7e0(&bounds, smallLeft, smallTop, 10, 6);
         else if (tier == 1)
-            func_ov090_0221b7e0(&bounds, -14, -10, 14, 10);
+            func_ov090_0221b7e0(&bounds, middleLeft, smallLeft, 14, 10);
         else
-            func_ov090_0221b7e0(&bounds, -20, -18, 20, 20);
+            func_ov090_0221b7e0(&bounds, largeLeft, largeTop, 20, 20);
         FIELD(s8, effect, 8) = bounds.left;
         FIELD(s8, effect, 9) = bounds.top;
         FIELD(s8, effect, 10) = bounds.right;
         FIELD(s8, effect, 11) = bounds.bottom;
-        FIELD(u16, effect, 0x68) = (u16)-32;
-        FIELD(u16, effect, 0x6a) = (u16)-32;
+        FIELD(u16, effect, 0x68) = spriteMinimum;
+        FIELD(u16, effect, 0x6a) = spriteMinimum;
         FIELD(u16, effect, 0x6c) = 32;
         FIELD(u16, effect, 0x6e) = 32;
         VecFx32Object_Destroy(&velocity);
