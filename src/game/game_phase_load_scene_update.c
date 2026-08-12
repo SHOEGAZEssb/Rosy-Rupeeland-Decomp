@@ -90,7 +90,7 @@ extern int func_ov021_021fd7e8(...);
 extern int func_ov020_021fd844(...);
 extern int func_ov016_021fe77c(...);
 extern int func_ov018_021fd9f8(...);
-extern int func_ov025_021ff27c(...);
+extern void *func_ov025_021ff27c(void *scene);
 extern int func_ov004_021fc944(...);
 extern int func_ov028_021fdb00(...);
 extern int func_ov009_021fce74(...);
@@ -699,7 +699,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1a8);
     iVar5 = func_02003e14(UNK_0200e1ac,UNK_0200e1b0,4,UNK_0200e114);
     if (iVar5 != 0) {
-      iVar5 = func_ov025_021ff27c();
+      iVar5 = (int)func_ov025_021ff27c((void *)iVar5);
     }
     param_1[9] = iVar5;
     break;

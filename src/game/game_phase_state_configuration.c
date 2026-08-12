@@ -37,7 +37,7 @@ typedef struct PhaseConfiguration {
     u8 unknown_04[0x0e];
     s16 field_12;
     u8 unknown_14[0x08];
-    u32 helperValue1c;
+    u32 overlayId1c;
     u32 field_20;
     void (*callback24)(s32 value);
     u8 unknown_28[0x18];
@@ -120,7 +120,8 @@ void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configu
 
     func_020598a0(gSoundContext, (u16)config->phaseId);
     GamePhaseState_CreatePhaseObject(self, configuration);
-    OverlaySlot_LoadOverlay(self->overlaySlotStorage, config->helperValue1c);
+    /* Offset 0x1c is the phase's overlay ID; phase 90 stores overlay 195. */
+    OverlaySlot_LoadOverlay(self->overlaySlotStorage, config->overlayId1c);
     GameWork_ClearPointerBank(gGameWork, 0);
     *(u16 *)(work + 0x228) = 0;
     GameWork_SetFlag(gGameWork, 0x3ec);

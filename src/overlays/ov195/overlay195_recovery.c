@@ -3,8 +3,10 @@
 /*
  * Recovered phase-90 setup and actor-bytecode records from overlay 195.
  *
- * The phase-90 metadata callback loads this overlay, initializes the shared
- * actor-interaction runtime, and registers three category-one descriptors.
+ * Phase record 90 at 0x020da97c stores overlay ID 195 at offset 0x1c and this
+ * overlay's callback at offset 0x24. The shared phase configuration path loads
+ * that overlay before invoking the callback, which initializes the shared
+ * actor-interaction runtime and registers three category-one descriptors.
  * The first descriptor's payload at 0x0221e48a begins by pushing runtime-scene
  * selector 5 and parameter zero, then invokes actor opcode 0x78. That opcode
  * is func_02016238; selector 5 constructs a GamePhaseLoadScene of kind 16,
