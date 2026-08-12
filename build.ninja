@@ -11203,6 +11203,16 @@ build build/reports/game_phase_load_scene_update.txt: match_report build/reports
   report_json = build/reports/game_phase_load_scene_update.json
   report_args = --section .text --function GamePhaseLoadScene_Update --require-exact
 
+build build/decomp/src/game/game_phase_load_scene_update_portable.o: mwccarm src/game/game_phase_load_scene_update.c | include/tingle/types.h
+  source = src/game/game_phase_load_scene_update.c
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c
+build build/reports/game_phase_load_scene_update_source.json: objdiff build/decomp/delinks/asm/game/game_phase_load_scene_update.o | build/decomp/src/game/game_phase_load_scene_update_portable.o
+  target_object = build/decomp/delinks/asm/game/game_phase_load_scene_update.o
+  base_object = build/decomp/src/game/game_phase_load_scene_update_portable.o
+build build/reports/game_phase_load_scene_update_source.txt: match_report build/reports/game_phase_load_scene_update_source.json | tools/report_objdiff.py
+  report_json = build/reports/game_phase_load_scene_update_source.json
+  report_args = --section .text --function GamePhaseLoadScene_Update
+
 build build/reports/game_phase_load_scene_callbacks.json: objdiff build/decomp/delinks/asm/game/game_phase_load_scene_callbacks.o | build/decomp/asm/game/game_phase_load_scene_callbacks.o
   target_object = build/decomp/delinks/asm/game/game_phase_load_scene_callbacks.o
   base_object = build/decomp/asm/game/game_phase_load_scene_callbacks.o
