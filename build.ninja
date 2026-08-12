@@ -695,11 +695,11 @@ build build/decomp/asm/graphics/graphics_archive_loader_0207142c.o: mwasmarm asm
 
 build build/decomp/src/graphics/graphics_archive_character_palette_release.o: mwccarm src/graphics/graphics_archive_character_palette_release.c | include/tingle/types.h
   source = src/graphics/graphics_archive_character_palette_release.c
-  cflags = $graphics_resource_set_cflags
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
 build build/decomp/src/graphics/graphics_archive_screen_release.o: mwccarm src/graphics/graphics_archive_screen_release.c | include/tingle/types.h
   source = src/graphics/graphics_archive_screen_release.c
-  cflags = $graphics_resource_set_cflags
+  cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
 build build/decomp/delinks/src/graphics/graphics_archive_character_resource.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/decomp/delinks/asm/graphics/graphics_resource_cache_lookup.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
