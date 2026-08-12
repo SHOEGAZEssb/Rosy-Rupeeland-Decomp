@@ -106,27 +106,3 @@ s32 GamePhaseActorScriptVm_SetAttachmentHalfword36(GamePhaseActorScriptVm *self)
     *(u16 *)(object + 0x36) = (u16)value;
     return 0;
 }
-
-/* Pop a boolean; clear actor flag bit 1 when true and set it when false. */
-s32 GamePhaseActorScriptVm_SetActorFlag2Inverse(GamePhaseActorScriptVm *self)
-{
-    u32 value = GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
-    if (value != 0)
-        *flags &= ~2u;
-    else
-        *flags |= 2;
-    return 0;
-}
-
-/* Pop a boolean; clear actor flag bit 2 when true and set it when false. */
-s32 GamePhaseActorScriptVm_SetActorFlag4Inverse(GamePhaseActorScriptVm *self)
-{
-    u32 value = GamePhaseScriptVm_Pop(&self->base);
-    u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
-    if (value != 0)
-        *flags &= ~4u;
-    else
-        *flags |= 4;
-    return 0;
-}

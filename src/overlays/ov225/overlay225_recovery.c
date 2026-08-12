@@ -5,11 +5,20 @@
  *
  * The overlay initializes the actor-interaction runtime, registers three
  * category-one descriptors, and publishes its script and callback records.
- * The installed retail bytecode drives the splash actors. Its normal boot
- * branch reaches the subscript at 0x02220f14; the command at 0x02220fbd passes
- * stage 84, area 912, phase 90, and mode 0 to the shared phase-request opcode.
- * Other record semantics remain partly unconfirmed, so address-derived data
- * names are retained rather than replacing them with inferred meanings.
+ * The descriptor record at 0x0221db48 selects script 0x02220df7, which
+ * configures its actor and dispatches mode 2 to script 0x02220f14. On the
+ * normal boot branch that script dispatches actor zero to 0x022210f2, waits
+ * for selected-actor flag 169 bit 0, then passes stage 84, area 912, phase 90,
+ * and mode 0 to the shared phase-request opcode at 0x02220fbd.
+ *
+ * Script 0x022210f2 performs the confirmed presentation work before that
+ * request: it changes the actor motion mode, sets actor word-0x14 bits 1 and
+ * 2 and byte 0xe6, issues sound selector 24 with parameters 65 and 75, starts
+ * a relative 64-unit Y movement at speed 6144, waits ten ticks, plays packed
+ * sound 0x5a01 or 0x5a02 according to a modulo-two random result, waits for
+ * movement completion, and restores the actor flags and motion mode. Other
+ * record semantics remain partly unconfirmed, so address-derived data names
+ * are retained rather than replacing them with inferred meanings.
  */
 
 #ifdef __cplusplus

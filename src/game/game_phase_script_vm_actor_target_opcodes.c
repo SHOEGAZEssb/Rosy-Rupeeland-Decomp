@@ -58,10 +58,3 @@ s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActor
     GamePhaseScriptVm_SetResult(&self->base, object != 0 ? object[0x38] : 0);
     return 0;
 }
-
-/* Pop a value into the bound actor's byte at offset 0xe6 and return zero. */
-s32 GamePhaseActorScriptVm_SetFieldE6(GamePhaseActorScriptVm *self)
-{
-    *((u8 *)self->actor + 0xe6) = (u8)GamePhaseScriptVm_Pop(&self->base);
-    return 0;
-}
