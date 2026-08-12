@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Event-code callback that feeds the active phase-90 title controller state. */
+/* Event-code callback that feeds the active overlay-90 boss-stage controller state. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

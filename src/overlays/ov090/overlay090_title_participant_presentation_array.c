@@ -3,7 +3,7 @@
 #include "tingle/vec_fx32.h"
 #include "tingle/vec_fx32_triple.h"
 
-/* Array owner for phase-90 participant paired-sprite presentations. */
+/* Array owner for overlay-90 participant paired-sprite presentations. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

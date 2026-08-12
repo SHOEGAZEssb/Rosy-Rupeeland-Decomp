@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Small paired-sprite and transform helpers for the phase-90 title effect. */
+/* Small paired-sprite and transform helpers for the overlay-90 boss-stage effect. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Participant-state summary helper for the phase-90 title controller. */
+/* Participant-state summary helper for the overlay-90 boss-stage controller. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Vector and paired-resource helpers used by the phase-90 title chain. */
+/* Vector and paired-resource helpers used by the overlay-90 boss-stage chain. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

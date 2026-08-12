@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Small virtual methods shared by phase-90 title participant actors. */
+/* Small virtual methods shared by overlay-90 boss-stage participant actors. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

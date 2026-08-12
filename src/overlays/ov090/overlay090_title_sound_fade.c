@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Sound-balance helpers used by phase 90's title/cinematic states. */
+/* Sound-balance helpers used by overlay 90's boss-stage/cinematic states. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
@@ -33,7 +33,7 @@ extern "C" void func_ov090_0221b7e0(TitleBounds8 *bounds, s32 left, s32 top,
 }
 
 /*
- * Adjust and clamp title field +0x244 to 0..127, then apply complementary
+ * Adjust and clamp boss-stage field +0x244 to 0..127, then apply complementary
  * parameters 0x2330 and 0x7200 to active sound 0x54. If sound 0x55 is active
  * while 0x54 is absent, leave the balance unchanged.
  */

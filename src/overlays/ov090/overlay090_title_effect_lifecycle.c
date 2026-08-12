@@ -1,7 +1,7 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Teardown methods for the paired-sprite phase-90 title effect object. */
+/* Teardown methods for the paired-sprite overlay-90 boss-stage effect object. */
 
 typedef struct TitleEffectOwnedObject TitleEffectOwnedObject;
 

@@ -3,7 +3,7 @@
 #include "tingle/types.h"
 #include "tingle/util_animation_resource.h"
 
-/* Constructor for the optional double-buffered phase-90 title sprite effect. */
+/* Constructor for the optional double-buffered overlay-90 boss-stage sprite effect. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

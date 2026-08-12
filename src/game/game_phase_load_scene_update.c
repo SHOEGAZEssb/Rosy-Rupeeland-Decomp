@@ -689,6 +689,12 @@ code_r0x0200d3bc:
     param_1[9] = iVar5;
     break;
   case 0x10:
+    /*
+     * Phase 90 reaches this branch through overlay 195's actor bytecode.
+     * Retail loads overlay 94 and overlay 25, allocates the 0x63c overlay-25
+     * scene, and calls its constructor. These are NDS overlay boundaries, not
+     * host-side title abstractions.
+     */
     OverlaySlot_LoadOverlay(param_1 + 0x1d,UNK_0200e1a4);
     OverlaySlot_LoadOverlay(param_1 + 0x20,UNK_0200e1a8);
     iVar5 = func_02003e14(UNK_0200e1ac,UNK_0200e1b0,4,UNK_0200e114);

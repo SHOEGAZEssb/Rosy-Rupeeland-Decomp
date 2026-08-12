@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Retail event-driven transition out of phase-90 controller state 0x0b. */
+/* Retail event-driven transition out of overlay-90 controller state 0x0b. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
@@ -47,7 +47,7 @@ extern void Sound_Play(void *sound, s32 bank, s32 id);
 /*
  * Tear down the active derived-actor record, clear its control flags and game
  * flag 0x3ec, then enter controller state 0x0c. The event's three resource
- * handles replace the title sprite, animation 8 is selected, the event actor
+ * handles replace the boss-stage sprite, animation 8 is selected, the event actor
  * is queued for removal, and retail sound 0x43 is started.
  */
 extern "C" void func_ov090_0221a784(void *self, void *event)

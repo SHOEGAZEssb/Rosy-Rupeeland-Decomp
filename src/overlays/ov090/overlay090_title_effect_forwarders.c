@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Paired-sprite angle and update forwarding for the phase-90 title effect. */
+/* Paired-sprite angle and update forwarding for the overlay-90 boss-stage effect. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

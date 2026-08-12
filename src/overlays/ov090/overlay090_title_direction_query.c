@@ -1,6 +1,6 @@
 #include "tingle/system.h"
 
-/* Read the retail eight-way directional code during phase-90 title motion. */
+/* Read the retail eight-way directional code during overlay-90 boss-stage motion. */
 
 /*
  * Convert pad 1's held D-pad bits into codes 0-7; return -1 when no direction

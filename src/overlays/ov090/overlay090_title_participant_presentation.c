@@ -4,7 +4,7 @@
 #include "tingle/util_animation_resource.h"
 #include "tingle/vec_fx32.h"
 
-/* Paired-sprite presentation object used by phase-90 title participants. */
+/* Paired-sprite presentation object used by overlay-90 boss-stage participants. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

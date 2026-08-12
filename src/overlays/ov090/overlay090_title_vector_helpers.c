@@ -1,6 +1,6 @@
 #include "tingle/vec_fx32_triple.h"
 
-/* Vector and virtual-dispatch helpers used by the phase-90 title sequence. */
+/* Vector and virtual-dispatch helpers used by the overlay-90 boss-stage sequence. */
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +28,7 @@ extern "C" VecFx32Triple *func_ov090_0221a3dc(
 }
 
 /*
- * Recover an actor's world-space title-sequence point by adding its base
+ * Recover an actor's world-space boss-stage-sequence point by adding its base
  * position to the two embedded offsets at +0x2a4 and +0x2b4.
  */
 extern "C" void func_ov090_0221a420(VecFx32Object *result, const void *actor)

@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Height-derived paired-sprite scaling for phase-90 title participants. */
+/* Height-derived paired-sprite scaling for overlay-90 boss-stage participants. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

@@ -1,7 +1,7 @@
 #include "tingle/graphics_sprite_canvas.h"
 #include "tingle/types.h"
 
-/* Retail progress/status bar drawing used by the phase-90 title controller. */
+/* Retail progress/status bar drawing used by the overlay-90 boss-stage controller. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

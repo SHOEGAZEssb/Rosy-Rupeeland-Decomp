@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Sprite-position callback for the retail phase-90 title controller. */
+/* Sprite-position callback for the retail overlay-90 boss-stage controller. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
@@ -10,10 +10,10 @@ extern void *data_021052fc;
 extern void func_02031758(void);
 
 /*
- * Run the inherited presentation callback, place the main title sprite at the
+ * Run the inherited presentation callback, place the main boss-stage sprite at the
  * global actor's world position, and hide it below the retail depth threshold
  * unless controller flag bit 2 overrides the check. States 0x0e/0x0f also
- * position the secondary sprite along the timer-driven diagonal title path.
+ * position the secondary sprite along the timer-driven diagonal boss-stage path.
  */
 void func_ov090_0221a544(void *context, void *self,
                          const GraphicsPositionSource *origin)

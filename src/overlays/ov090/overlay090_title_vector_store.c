@@ -1,6 +1,6 @@
 #include "tingle/vec_fx32.h"
 
-/* Store phase-90 title-sequence vector coordinates without initializing a vtable. */
+/* Store overlay-90 boss-stage-sequence vector coordinates without initializing a vtable. */
 
 /*
  * Store x, y, and z into the value portion of a nullable vector object. The

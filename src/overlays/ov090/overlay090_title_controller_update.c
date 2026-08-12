@@ -11,7 +11,7 @@
 #include "tingle/vec_fx32.h"
 #include "tingle/vec_fx32_triple.h"
 
-/* Canonical per-frame state machine for the retail phase-90 title controller. */
+/* Canonical per-frame state machine for the retail overlay-90 boss-stage controller. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 #define TITLE_STATE(self) FIELD(u8, self, 0x1ec)
@@ -97,7 +97,7 @@ extern void Sound_Play(void *context, s32 channel, s32 soundId);
     } while (0)
 
 /*
- * Execute the retail title sequence's 0x00..0x20 switch. This is a direct
+ * Execute the retail boss-stage sequence's 0x00..0x20 switch. This is a direct
  * reconstruction of the ROM path: display interrupt gates, brightness fades,
  * participant/camera motion, audio, effects, and terminal transitions retain
  * their original state numbers, frame thresholds, offsets, and SDK calls.

@@ -7,8 +7,9 @@
 #include "tingle/vec_fx32.h"
 
 /*
- * Phase-90 title actor construction and logo/copyright sprite creation. This
- * is the retail actor reached by overlay 225's phase request.
+ * Overlay-90 boss-stage actor construction and sprite creation. Embedded
+ * BossStgMan class names establish the subsystem; its phase/actor entry path
+ * remains unconfirmed and is not treated as part of the boot/title chain.
  */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
@@ -36,7 +37,7 @@ extern void func_ov090_0221ad64(void *self, s32 first, s32 second, s32 third);
 #endif
 
 /*
- * Initialize the title controller, bind its three retail title actors, disable
+ * Initialize the boss-stage controller, bind its three retail boss-stage actors, disable
  * their normal update bit, set the phase flags, and begin with both NDS engines
  * at white master brightness. Returns `self`.
  */
@@ -108,8 +109,8 @@ extern "C" void *func_ov090_022177e0(void *self)
 }
 
 /*
- * Run base title setup, load the logo and copyright animation resources, and
- * create their sprite states in the actor collection. The primary logo is
+ * Run base boss-stage setup, load two animation-resource groups, and create
+ * their sprite states in the actor collection. The primary sprite is
  * placed at (49,178), uses animation 6, and both sprites start hidden.
  */
 extern "C" void func_ov090_02217a3c(void *self)

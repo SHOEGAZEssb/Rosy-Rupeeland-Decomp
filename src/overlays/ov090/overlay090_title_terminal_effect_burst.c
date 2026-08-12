@@ -3,7 +3,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Terminal 27-effect burst used by the retail phase-90 title sequence. */
+/* Terminal 27-effect burst used by the retail overlay-90 boss-stage sequence. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
@@ -36,7 +36,7 @@ extern void func_020349b8(void *self, void *callback, s32 value);
 extern u64 func_020befec(s32 dividend, s32 divisor);
 
 /*
- * Remove collection-1 actors of type 4, notify all three title participants,
+ * Remove collection-1 actors of type 4, notify all three boss-stage participants,
  * issue the six recovered display operations, and allocate resource set
  * 0x1719..0x171b. Spawn 27 key-0x12 presentation actors using the retail RNG,
  * tiered lifetimes/animations, angular offsets, sprite flags, bounds, and

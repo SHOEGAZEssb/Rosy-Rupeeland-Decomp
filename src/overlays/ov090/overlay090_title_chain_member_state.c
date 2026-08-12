@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Apply a shared presentation state to every member of a phase-90 chain. */
+/* Apply a shared presentation state to every member of an overlay-90 chain. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

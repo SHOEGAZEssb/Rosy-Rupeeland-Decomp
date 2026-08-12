@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 #include "tingle/util_animation_resource.h"
 
-/* Per-frame update for the double-buffered phase-90 title sprite effect. */
+/* Per-frame update for the double-buffered overlay-90 boss-stage sprite effect. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

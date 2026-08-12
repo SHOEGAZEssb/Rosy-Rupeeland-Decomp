@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Virtual update fan-out used by the phase-90 title controller. */
+/* Virtual update fan-out used by the overlay-90 boss-stage controller. */
 
 class TitleVirtualActor {
 public:

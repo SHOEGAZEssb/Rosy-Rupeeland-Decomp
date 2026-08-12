@@ -44,7 +44,9 @@ static void *allocCommandObject(u32 size, const char *tag)
  * Unsupported selectors halt. Most simple selectors map to a kind passed with
  * the parameter to a 0x9c-byte GamePhaseLoadScene object. Selector 18 reaches that
  * path with the incoming r7 value in retail; portable C uses zero while the
- * matching assembly preserves the register-dependent behavior.
+ * matching assembly preserves the register-dependent behavior. The confirmed
+ * phase-90 bootstrap bytecode uses selector 5 with parameter zero: it maps to
+ * load-scene kind 16, the retail overlay-25 title/menu scene request.
  */
 s32 func_02016238(GamePhaseActorScriptVm *self)
 {
@@ -57,7 +59,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
     case 1: kind = 2; break;
     case 3: kind = 5; break;
     case 4: kind = 6; break;
-    case 5: kind = 16; break;
+    case 5: kind = 16; break; /* Phase 90 actor bytecode -> overlay 25. */
     case 8: kind = 1; break;
     case 10: kind = 8; break;
     case 12: kind = 13; break;

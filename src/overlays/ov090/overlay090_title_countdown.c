@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Countdown adjustment used by the phase-90 title controller. */
+/* Countdown adjustment used by the overlay-90 boss-stage controller. */
 
 typedef struct TitleCountdownState {
     u8 unknown_000[0x220];

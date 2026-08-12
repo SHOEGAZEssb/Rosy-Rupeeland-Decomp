@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Participant selection helper for the phase-90 title/cinematic controller. */
+/* Participant selection helper for the overlay-90 boss-stage/cinematic controller. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

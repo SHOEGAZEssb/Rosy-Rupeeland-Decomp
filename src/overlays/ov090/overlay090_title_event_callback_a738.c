@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Secondary event-code callback for the phase-90 title controller. */
+/* Secondary event-code callback for the overlay-90 boss-stage controller. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

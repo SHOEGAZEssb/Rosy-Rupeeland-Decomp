@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Nearest-participant branch selection for the phase-90 title controller. */
+/* Nearest-participant branch selection for the overlay-90 boss-stage controller. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

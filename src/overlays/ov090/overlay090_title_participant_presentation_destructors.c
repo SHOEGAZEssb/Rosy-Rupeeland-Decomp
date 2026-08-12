@@ -4,7 +4,7 @@
 #include "tingle/vec_fx32.h"
 
 /*
- * Teardown variants for a phase-90 participant's paired-sprite presentation
+ * Teardown variants for a overlay-90 participant's paired-sprite presentation
  * owner and its embedded position vector.
  */
 

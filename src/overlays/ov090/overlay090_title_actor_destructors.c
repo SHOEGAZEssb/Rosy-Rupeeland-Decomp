@@ -5,8 +5,8 @@
 #include "tingle/vec_fx32.h"
 
 /*
- * Phase-90 title-controller teardown. These retail destructor variants release
- * the logo/copyright presentation, its resources, and embedded actor state.
+ * Overlay-90 boss-stage-controller teardown. These retail destructor variants
+ * release the sprite presentation, its resources, and embedded actor state.
  */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
@@ -25,7 +25,7 @@ extern void *func_0204d570(void *self);
 #endif
 
 /*
- * Release title sprite states and animation resources, restore debug text-grid
+ * Release boss-stage sprite states and animation resources, restore debug text-grid
  * state, destroy embedded vectors, invoke the actor base destructor, and return
  * `self`. This non-deleting destructor does not free the actor allocation.
  */
@@ -64,7 +64,7 @@ extern "C" void *func_ov090_02217b70(void *self)
 }
 
 /*
- * Perform the complete title teardown, free the actor allocation through the
+ * Perform the complete boss-stage teardown, free the actor allocation through the
  * game heap, and return its former address for the deleting-destructor ABI.
  */
 extern "C" void *func_ov090_02217c6c(void *self)

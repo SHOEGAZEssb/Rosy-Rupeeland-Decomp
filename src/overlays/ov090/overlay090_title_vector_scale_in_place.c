@@ -1,6 +1,6 @@
 #include "tingle/vec_fx32.h"
 
-/* In-place fixed-point vector scaling used for title actor separation. */
+/* In-place fixed-point vector scaling used for boss-stage actor separation. */
 
 /* Multiply all three vector components by a 20.12 fixed-point scale. */
 void func_ov090_0221b3d0(VecFx32Object *self, fx32 scale)

@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Distance correction used by the articulated phase-90 title chain. */
+/* Distance correction used by the articulated overlay-90 boss-stage chain. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

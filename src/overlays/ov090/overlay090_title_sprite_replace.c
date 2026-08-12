@@ -3,7 +3,7 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Sprite-resource replacement used by phase-90 title state transitions. */
+/* Sprite-resource replacement used by overlay-90 boss-stage state transitions. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

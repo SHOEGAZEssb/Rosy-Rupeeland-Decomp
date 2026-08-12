@@ -1,28 +1,31 @@
 /*
- * Recovered overlay 90 title-cinematic actor subsystem.
+ * Recovered overlay 90 boss-stage-cinematic actor subsystem.
  *
- * The first actor owns the retail phase-90 title sequence reached from overlay
- * 225. It binds three title actors, owns logo/copyright sprite resources, and
+ * The first actor owns a retail boss-stage sequence. Embedded class-name
+ * strings identify BossStgMan and PlantBossStgMan objects; no recovered phase
+ * metadata or actor descriptor currently connects this overlay to phase 90 or
+ * the boot/title path. It binds three participant actors, owns sprite
+ * resources, and
  * advances a 0x00-0x20 state machine containing NDS display fades, camera and
  * actor motion, audio cues, timed effects, and terminal scene transitions.
  * Later actor types implement the participants and effects used by that path.
  * Unconfirmed members retain address-based names and offset descriptions.
  */
 
-/* Initialize the title controller, bind three actors, set phase flags, and white both NDS engines. */
+/* Initialize the boss-stage controller, bind three actors, set phase flags, and white both NDS engines. */
 void func_ov090_022177e0(void);
 
-/* Load and create the retail title logo and copyright sprite resources. */
+/* Load and create the retail boss-stage animation and sprite resources. */
 void func_ov090_02217a3c(void);
 
-/* Release title sprites/resources and embedded vectors without freeing the actor. */
+/* Release boss-stage sprites/resources and embedded vectors without freeing the actor. */
 void func_ov090_02217b70(void);
 
-/* Perform the complete title-controller teardown and free its actor allocation. */
+/* Perform the complete boss-stage-controller teardown and free its actor allocation. */
 void func_ov090_02217c6c(void);
 
 /*
- * Advance the canonical title sequence. States 0x00-0x0b initialize display
+ * Advance the canonical boss-stage sequence. States 0x00-0x0b initialize display
  * routing and fades; 0x0c-0x17 animate the three bound actors and camera;
  * 0x18-0x20 run the long effect branch and its final brightness transitions.
  * The routine increments the shared state timer, blends camera vectors, updates
@@ -272,4 +275,3 @@ void func_ov090_0221ca34(void);
 
 /* Processes the supplied ABI arguments and offset-based object state; observable mutations, calls, and the encoded return value are preserved by the matching implementation, while higher-level semantics remain unconfirmed. */
 void func_ov090_0221ca58(void);
-

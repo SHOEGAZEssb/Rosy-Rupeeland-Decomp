@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Pairwise separation steering for the three phase-90 title participants. */
+/* Pairwise separation steering for the three overlay-90 boss-stage participants. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

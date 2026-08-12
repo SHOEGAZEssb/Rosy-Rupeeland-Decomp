@@ -1,7 +1,7 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Flag propagation, accessors, and release helper for phase-90 title chains. */
+/* Flag propagation, accessors, and release helper for overlay-90 boss-stage chains. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

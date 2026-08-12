@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Clear shared sprite flags on a phase-90 title participant resource pair. */
+/* Clear shared sprite flags on a overlay-90 boss-stage participant resource pair. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

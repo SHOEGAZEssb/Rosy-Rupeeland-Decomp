@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Per-frame chain update for phase-90 participant presentations. */
+/* Per-frame chain update for overlay-90 participant presentations. */
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 

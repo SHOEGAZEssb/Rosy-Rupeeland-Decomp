@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Curve-following update for the articulated phase-90 title chain. */
+/* Curve-following update for the articulated overlay-90 boss-stage chain. */
 
 typedef struct TitlePresentationNode {
     const void *vtable;
