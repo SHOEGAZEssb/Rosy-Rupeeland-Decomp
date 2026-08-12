@@ -29,14 +29,6 @@ extern void func_ov090_0221c9f8(void *resource, s32 frame);
 extern void func_ov090_0221ca14(TouchPoint *destination,
                                 const TouchPoint *source);
 
-/* Return whether either sprite in a paired animation resource has flag bit 0 set. */
-static s32 TitleSpriteEffect_AnimationActive(
-    const UtilAnimationResource *resource)
-{
-    return ((((GraphicsSpriteState *)resource->handles[0])->flags & 1) != 0 ||
-            (((GraphicsSpriteState *)resource->handles[1])->flags & 1) != 0);
-}
-
 /*
  * Place and orient the primary sprites, mirror them into the optional secondary
  * pair while its transition is active, and periodically restart the secondary
@@ -54,26 +46,31 @@ void func_ov090_0221c780(TitleSpriteEffect *self, s32 x, s32 y,
     s32 placedX;
     s32 placedY;
     s32 placedFrame;
+    s32 paletteValue;
+    UtilAnimationResource *primary;
+    u16 flags;
 
     func_ov090_0221bc5c(self->primary, 4);
     placedX = (s16)(x + self->xOffset);
     placedY = (s16)(y + self->yOffset);
     placedFrame = (s16)(frame - 1);
-    sprite = (GraphicsSpriteState *)self->primary->handles[0];
+    paletteValue = (u8)palette;
+    primary = self->primary;
+    sprite = (GraphicsSpriteState *)primary->handles[0];
     if (animation != sprite->animationIndex) {
         GraphicsSpriteState_SetAnimationIndex(
-            (GraphicsSpriteState *)self->primary->handles[0],
+            (GraphicsSpriteState *)primary->handles[0],
             (u8)animation);
         GraphicsSpriteState_SetAnimationIndex(
-            (GraphicsSpriteState *)self->primary->handles[1],
+            (GraphicsSpriteState *)primary->handles[1],
             (u8)animation);
     }
     self->primary->position.x = placedX;
     self->primary->position.y = placedY;
     func_ov090_0221c9f8(self->primary, placedFrame);
-    func_ov090_0221c170(self->primary, (u8)palette);
+    func_ov090_0221c170(self->primary, paletteValue);
 
-    if ((self->flags >> 8) != 0) {
+    if (((u32)self->flags << 16 >> 24) != 0) {
         func_ov090_0221c728(
             self->primary,
             (s16)(u16)(((GraphicsSpriteState *)self->primary->handles[0])
@@ -84,8 +81,30 @@ void func_ov090_0221c780(TitleSpriteEffect *self, s32 x, s32 y,
     }
 
     if (self->secondary != 0) {
-        if ((self->flags & 2) != 0) {
-            if (TitleSpriteEffect_AnimationActive(self->secondary)) {
+        flags = self->flags;
+        if (((u32)flags << 30 >> 31) != 0) {
+            /* Retail expands both halfword flag tests instead of calling a helper. */
+            s32 animationActive;
+            s32 firstActive;
+            s32 secondActive;
+            u16 firstFlags =
+                ((GraphicsSpriteState *)self->secondary->handles[0])->flags;
+            u16 secondFlags;
+
+            firstActive = (u16)(firstFlags & 1);
+            if (firstActive != 0) {
+                animationActive = 1;
+            } else {
+                secondFlags =
+                    ((GraphicsSpriteState *)self->secondary->handles[1])
+                        ->flags;
+                secondActive = (u16)(secondFlags & 1);
+                if (secondActive == 0)
+                    animationActive = 0;
+                else
+                    animationActive = 1;
+            }
+            if (animationActive != 0) {
                 self->flags &= ~2;
                 func_ov090_0221b97c(self->secondary, 4);
             } else {
@@ -93,21 +112,24 @@ void func_ov090_0221c780(TitleSpriteEffect *self, s32 x, s32 y,
                 self->secondary->position.x = placedX;
                 self->secondary->position.y = placedY;
                 func_ov090_0221c9f8(self->secondary, placedFrame);
-                func_ov090_0221c170(self->secondary, (u8)palette);
+                func_ov090_0221c170(self->secondary, paletteValue);
             }
-        } else if ((self->flags & 1) != 0) {
+        } else if (((u32)flags << 31 >> 31) != 0) {
             if (self->delay != 0) {
                 self->delay--;
             } else {
-                u8 currentAnimation =
-                    ((GraphicsSpriteState *)self->secondary->handles[0])
-                        ->animationIndex;
+                UtilAnimationResource *secondary;
+                u8 currentAnimation;
                 self->flags |= 2;
+                secondary = self->secondary;
+                currentAnimation =
+                    ((GraphicsSpriteState *)secondary->handles[0])
+                        ->animationIndex;
                 GraphicsSpriteState_SetAnimationIndex(
-                    (GraphicsSpriteState *)self->secondary->handles[0],
+                    (GraphicsSpriteState *)secondary->handles[0],
                     currentAnimation);
                 GraphicsSpriteState_SetAnimationIndex(
-                    (GraphicsSpriteState *)self->secondary->handles[1],
+                    (GraphicsSpriteState *)secondary->handles[1],
                     currentAnimation);
                 func_ov090_0221bc5c(self->secondary, 5);
                 self->delay =
@@ -117,9 +139,10 @@ void func_ov090_0221c780(TitleSpriteEffect *self, s32 x, s32 y,
         }
     }
 
+    paletteValue = DisplayController_GetVerticalOffset();
+    template.y = -0xc0 - paletteValue;
     template.vtable = (TouchPointVTable *)data_ov090_0221cc88;
     template.x = 0;
-    template.y = -0xc0 - DisplayController_GetVerticalOffset();
     func_ov090_0221ca14(&position, &template);
     UtilAnimationResource_UpdatePosition(self->primary, &position);
     if (self->secondary != 0) {
