@@ -24,7 +24,7 @@
 
 ## Overlays
 - When decompiling overlays, fully finish the specific overlay, before moving on to the next one.
-- Only verify the below mentionen ROM correctness guardrails after finishing the whole overlay.
+- Only verify the below mentionend ROM correctness guardrails after finishing the whole overlay.
 
 ## ROM correctness guardrail
 
