@@ -8,7 +8,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059880(void *soundContext, s32 value);
+extern void func_02059880(void *soundContext, s32 unused);
 extern void *GamePhaseMetadata_GetByIndex(s32 areaId);
 #ifdef __cplusplus
 }
