@@ -12,10 +12,9 @@
  * streamed tracks. The Nintendo build retains the original assembly for this
  * still-unmatched range. Host recompilation uses this equivalent facade and
  * leaves archive parsing, sequencing, mixing, and device I/O at the native
- * Nitro sound-driver boundary declared below. That boundary must preserve
- * Nitro's zero-duration note rule: a note-wait track resumes only after its
- * one-shot channel finishes. The opening dialogue archive relies on this
- * behavior for its per-character cue cadence.
+ * Nitro sound-driver boundary declared below. That boundary preserves the
+ * sequence-player timing, volume, envelope, and zero-duration note rules used
+ * by the opening dialogue and phase music.
  */
 
 extern const char data_020e4154[];
@@ -74,17 +73,22 @@ static s32 sound_requests_enabled(void *context)
     return (*sound_flags(context) & 4u) == 0;
 }
 
-/* Return whether the active phase's primary actor has reached the retail
- * status-bit gate used by phase-sound state 1. */
+/* Ask the active phase's primary actor whether it has reached the retail
+ * readiness gate used by phase-sound state 1. The predicate is virtual: actor
+ * subclasses do not expose a common status bit for this transition. */
 static s32 phase_sound_primary_actor_ready(void)
 {
     u8 *phase = (u8 *)data_021052fc;
     u8 *actor;
+    s32 (*query)(void *);
 
     if (phase == 0)
         return 0;
     actor = *(u8 **)(phase + 0x2ea4);
-    return actor != 0 && (*(u32 *)(actor + 0xd0) & 0x80U) != 0;
+    if (actor == 0 || *(u8 **)actor == 0)
+        return 0;
+    query = *(s32 (**)(void *))(*(u8 **)actor + 0xa8);
+    return query != 0 && query(actor) != 0;
 }
 
 /* Return whether the active phase's secondary scene carries retail flag 0x10
