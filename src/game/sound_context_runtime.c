@@ -12,7 +12,10 @@
  * streamed tracks. The Nintendo build retains the original assembly for this
  * still-unmatched range. Host recompilation uses this equivalent facade and
  * leaves archive parsing, sequencing, mixing, and device I/O at the native
- * Nitro sound-driver boundary declared below.
+ * Nitro sound-driver boundary declared below. That boundary must preserve
+ * Nitro's zero-duration note rule: a note-wait track resumes only after its
+ * one-shot channel finishes. The opening dialogue archive relies on this
+ * behavior for its per-character cue cadence.
  */
 
 extern const char data_020e4154[];
@@ -37,7 +40,7 @@ extern void TingleNativeSound_SetSequenceTrackValue(u16 sequence,
 extern s32 TingleNativeSound_IsSequencePlaying(u16 sequence);
 extern u16 TingleNativeSound_GetSequenceTrackMask(u16 sequence);
 extern void TingleNativeSound_PlayArchive(s32 archive, s32 member, s32 volume,
-                                          s32 pan, s32 flags,
+                                          s32 pan, s32 pitch,
                                           const void *owner);
 extern void TingleNativeSound_StopArchive(s32 archive, s32 member,
                                           s32 fade_frames);

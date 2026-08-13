@@ -24,7 +24,10 @@ extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 th
  * +0x26a are set to -1. Construct owner state +0x2a8, set actor type +0x4d to
  * one, clear +0x230/+0x234/+0x236, clear flag 4 at +0xd0, set actor flag
  * 0x100000 at +0x14, reset state +0x254 with zeros, and clear halfword +0x264.
- * Return self; constructors and value helpers may manage SDK-owned state.
+ * The retail entry receives the spawn descriptor in r1 and leaves it live
+ * across ActorDerivedRuntime_Init's one-argument source-level call; host ABIs
+ * must forward that implicit constructor-chain argument explicitly. Return
+ * self; constructors and value helpers may manage SDK-owned state.
  */
 void *ActorDerivedType1_Init(void *self)
 {
