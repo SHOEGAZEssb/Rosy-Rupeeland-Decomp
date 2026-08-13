@@ -5,15 +5,20 @@
 extern void *memset(void *destination, int value, u32 size);
 
 extern u8 data_020f25c4[];
+extern const u16 data_020f25a4[];
 extern void *data_020f4e18;
 extern void *gGameWork;
+extern void *gSoundContext;
 extern void *func_02071ea4(void *state);
 extern void func_02071ee0(void *state, void *archive, u32 character_id,
                          u32 palette_id, u32 screen_id);
 extern void *func_020742cc(void *owner);
 extern void func_02074110(void *group);
+extern void GraphicsSpriteGroup_Clear(void *group);
 extern void *func_02073ffc(void *group, const void *source, s32 attach);
 extern void func_02072b68(void *sprite, u32 animation);
+extern void func_02071f38(void *resource_set);
+extern void Sound_Play(void *context, s32 archive, s32 member);
 extern void func_0207419c(void *group);
 extern void func_02071eb8(void *resource_set);
 extern void Heap_Free(void *allocation);
@@ -23,6 +28,8 @@ extern s32 GraphicsSpriteRenderer_MeasureText(void *renderer,
                                               const u16 *text, s32 spacing,
                                               s32 lineSpacing);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
+extern void GraphicsSpriteCanvas_FillRect(void *canvas, s32 left, s32 top,
+                                          s32 right, s32 bottom, s32 mode);
 extern s32 GraphicsSpriteRenderer_DrawCharacter(void *renderer,
                                                 u32 characterCode,
                                                 u32 destinationX,
@@ -128,19 +135,21 @@ void func_02092e9c(void *object, const void *text, s32 mode)
 }
 
 /*
- * Execute the ordinary-text and line-control portion of the shared dialog VM
- * at 0x02093360.  This is the path used by overlay 25's title/name strings:
- * mode 3 selects immediate proportional drawing, so the complete UTF-16
- * stream is consumed in one call.  The retained state fields and returned
- * flag bits are identical to retail for this control-flow subset.
+ * Execute the ordinary-text, line-control, and input-gated page-wait portion
+ * of the shared dialog VM at 0x02093360. Input halfword 1 uses bit 1 to reveal
+ * the current page immediately and bit 0 to dismiss the animated wait marker.
+ * Control codes EE02 and EE0B enter that wait state; they differ only in the
+ * retained flag bit used by callers. The recovered timing, external-string,
+ * drawing-mode, and sound controls preserve the retail cursor and return
+ * stack, including row 7's player-name pointer at object offset 0x60.
  */
 s32 func_02093360(void *object, const void *input)
 {
     u8 *bytes = (u8 *)object;
     u32 *flags = (u32 *)(bytes + 0x38);
+    const u16 *inputState = (const u16 *)input;
     const u16 *cursor;
 
-    (void)input;
     *flags &= ~(0x200U | 0x2000U);
     GraphicsSpriteGroup_AdvanceAnimations(*(void **)(bytes + 0x08));
     GraphicsSpriteRenderer_SetFontResource(*(void **)(bytes + 0x04),
@@ -164,17 +173,28 @@ s32 func_02093360(void *object, const void *input)
                 return (s32)*flags;
             }
             *(s32 *)((u8 *)*(void **)(bytes + 0x08) + 0x20) = 1;
-            *flags &= ~2U;
-            func_02074110(*(void **)(bytes + 0x08));
-            *(s32 *)(bytes + 0x34) = 2;
-            continue;
+            if (inputState == 0 || (inputState[1] & 1U) != 0) {
+                *flags &= ~2U;
+                func_02074110(*(void **)(bytes + 0x08));
+                *(s32 *)(bytes + 0x34) = 2;
+                continue;
+            }
+            return (s32)*flags;
         }
         if (state != 2)
             return (s32)*flags;
 
-        if ((*flags & 0x80U) == 0 && *(s32 *)(bytes + 0xd8) > 0) {
-            --*(s32 *)(bytes + 0xd8);
-            return (s32)*flags;
+        if ((*flags & 0x80U) == 0) {
+            if ((*flags & 0x800U) == 0 &&
+                (inputState == 0 || (inputState[1] & 2U) != 0)) {
+                *(s32 *)(bytes + 0xd8) = 0;
+                *flags |= 0x80U;
+                if ((*flags & 0x100U) != 0)
+                    *flags |= 0x2000U;
+            } else if (*(s32 *)(bytes + 0xd8) > 0) {
+                --*(s32 *)(bytes + 0xd8);
+                return (s32)*flags;
+            }
         }
         *flags &= ~0x100U;
         cursor = *(const u16 **)(bytes + 0x3c);
@@ -199,16 +219,74 @@ s32 func_02093360(void *object, const void *input)
             continue;
         }
         if (character >= 0xee00 && character <= 0xee14) {
-            /* Parameter-bearing controls retain cursor alignment here. The
-             * overlay-25 title/name strings do not use their side effects. */
+            /* Resource-record expansion controls remain cursor-aligned until
+             * their four dedicated formatting helpers are recovered. */
             switch (character) {
-            case 0xee05: case 0xee06: case 0xee07: case 0xee08:
-            case 0xee09: case 0xee0a: case 0xee0c: case 0xee0d:
-            case 0xee0e: case 0xee0f: case 0xee12:
-                *(const u16 **)(bytes + 0x3c) = cursor + 1;
+            case 0xee01:
+                GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
+                func_02071f38(bytes + 0x20);
+                GraphicsSpriteCanvas_FillRect(
+                    *(void **)(bytes + 0x04),
+                    *(s32 *)(bytes + 0xa4), *(s32 *)(bytes + 0xa8),
+                    *(s32 *)(bytes + 0xa4) + *(s32 *)(bytes + 0xac),
+                    *(s32 *)(bytes + 0xa8) + *(s32 *)(bytes + 0xb0),
+                    *(s32 *)(bytes + 0xd4));
+                func_02092e9c(object, cursor, *(s32 *)(bytes + 0x30));
+                *(s32 *)(bytes + 0xd8) = *(s32 *)(bytes + 0xcc);
+                *flags |= 0x100U;
                 break;
+            case 0xee02:
+            case 0xee0b:
+                *flags &= ~0x80U;
+                *(s32 *)(bytes + 0xd8) = 0x1e;
+                *flags |= 2U;
+                *(u16 *)((u8 *)*(void **)(bytes + 0x10) + 0x2c) =
+                    (u16)(*(s32 *)(bytes + 0xa4) +
+                          *(s32 *)(bytes + 0xac) - 4);
+                *(u16 *)((u8 *)*(void **)(bytes + 0x10) + 0x2e) =
+                    (u16)(*(s32 *)(bytes + 0xa8) +
+                          *(s32 *)(bytes + 0xb0) - 8);
+                *(s32 *)(bytes + 0x34) = 3;
+                func_02072b68(*(void **)(bytes + 0x10), 0x18);
+                if (character != 0xee02)
+                    *flags |= 4U;
+                break;
+            case 0xee03:
             case 0xee04:
                 *flags |= 0x80U;
+                break;
+            case 0xee05:
+                *(s32 *)(bytes + 0xd8) = *cursor++;
+                *(const u16 **)(bytes + 0x3c) = cursor;
+                if ((*flags & 0x80U) != 0)
+                    *(s32 *)(bytes + 0xd8) = 0;
+                break;
+            case 0xee06:
+                *(s32 *)(bytes + 0xc4) = *cursor++;
+                *(const u16 **)(bytes + 0x3c) = cursor;
+                break;
+            case 0xee07: {
+                u16 row = *cursor++;
+                *(const u16 **)(bytes + 0x40) = cursor;
+                *(const u16 **)(bytes + 0x3c) =
+                    *(const u16 **)(bytes + 0x44 + (u32)row * 4);
+                break;
+            }
+            case 0xee08: {
+                u16 mode = *cursor++;
+                *(const u16 **)(bytes + 0x3c) = cursor;
+                *(s32 *)(bytes + 0xd0) = mode;
+                *(u16 *)((u8 *)gGameWork + 0x1d2) = mode;
+                break;
+            }
+            case 0xee09: case 0xee0a: case 0xee0c: case 0xee0d:
+            case 0xee0f: case 0xee12:
+                *(const u16 **)(bytes + 0x3c) = cursor + 1;
+                break;
+            case 0xee0e:
+                *(u32 *)(bytes + 0xe8) = *cursor++;
+                *(const u16 **)(bytes + 0x3c) = cursor;
+                *flags |= 0x200U;
                 break;
             case 0xee10:
                 *flags = (*flags & ~0x80U) | 0x800U;
@@ -216,6 +294,13 @@ s32 func_02093360(void *object, const void *input)
             case 0xee11:
                 *flags &= ~0x800U;
                 break;
+            case 0xee13: {
+                u16 packed = data_020f25a4[*cursor++];
+                *(const u16 **)(bytes + 0x3c) = cursor;
+                Sound_Play(gSoundContext, (s32)(packed >> 7),
+                           (s32)(packed & 0x7f));
+                break;
+            }
             case 0xee14:
                 *flags &= ~0x1000U;
                 break;
@@ -226,6 +311,12 @@ s32 func_02093360(void *object, const void *input)
         }
 
         {
+            if ((*flags & 0x1000U) != 0) {
+                u16 packed = data_020f25a4[0];
+                Sound_Play(gSoundContext, (s32)(packed >> 7),
+                           (s32)(packed & 0x7f));
+                *flags &= ~0x1000U;
+            }
             s32 width = GraphicsSpriteRenderer_DrawCharacter(
                 *(void **)(bytes + 0x04), character,
                 (u32)*(s32 *)(bytes + 0xdc),
@@ -272,4 +363,3 @@ void *func_02092e58(void *object)
     Heap_Free(object);
     return object;
 }
-

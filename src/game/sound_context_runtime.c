@@ -17,6 +17,8 @@
 
 extern const char data_020e4154[];
 extern void *gSoundContext;
+extern void *data_021052fc;
+extern void *data_021e9abc;
 
 extern s32 TingleNativeSound_LoadDefaultArchive(void);
 extern void TingleNativeSound_Update(void);
@@ -51,6 +53,11 @@ extern void TingleNativeSound_SetStreamVolume(s32 volume, s32 fade_frames);
 extern s32 TingleNativeSound_IsStreamPlaying(s32 stream_or_minus_one);
 extern void TingleNativeSound_SaveStreamPosition(void);
 extern void TingleNativeSound_ResumeStreamPosition(void);
+void func_02059278(void *context, u16 sequence, s32 volume);
+void func_020592fc(void *context, u16 sequence, u16 track_mask);
+void func_02059320(void *context, u16 sequence, u16 variable, u16 value);
+void func_0205974c(void *context, s32 group);
+void func_020597fc(void *context, s32 group);
 
 /* Return the facade's mutable retail flag word at offset 0x9C. */
 static u32 *sound_flags(void *context)
@@ -64,6 +71,74 @@ static s32 sound_requests_enabled(void *context)
     return (*sound_flags(context) & 4u) == 0;
 }
 
+/* Return whether the active phase's primary actor has reached the retail
+ * status-bit gate used by phase-sound state 1. */
+static s32 phase_sound_primary_actor_ready(void)
+{
+    u8 *phase = (u8 *)data_021052fc;
+    u8 *actor;
+
+    if (phase == 0)
+        return 0;
+    actor = *(u8 **)(phase + 0x2ea4);
+    return actor != 0 && (*(u32 *)(actor + 0xd0) & 0x80U) != 0;
+}
+
+/* Return whether the active phase's secondary scene carries retail flag 0x10
+ * at offset 0x268, the branch selected by phase-sound transition requests. */
+static s32 phase_sound_secondary_scene_ready(void)
+{
+    u8 *phase = (u8 *)data_021052fc;
+    u8 *scene;
+
+    if (phase == 0)
+        return 0;
+    scene = *(u8 **)(phase + 0x2ea8);
+    return scene != 0 && (*(u32 *)(scene + 0x268) & 0x10U) != 0;
+}
+
+/* Initialize the fields consumed by the recovered phase-sound state machine.
+ * Retail fills its callback-member pairs from data_020e4724 as well; the host
+ * dispatcher below selects the same states without storing ARM code pointers. */
+static void phase_sound_manager_init(u8 *manager)
+{
+    memset(manager, 0, 0xc0);
+    *(s32 *)(manager + 0x10) = -1;
+    *(s32 *)(manager + 0x14) = -1;
+    *(s32 *)(manager + 0x18) = 0;
+    *(s32 *)(manager + 0x1c) = -1;
+    *(s32 *)(manager + 0x20) = -1;
+    *(u16 *)(manager + 0x24) = 0x10b;
+    *(u16 *)(manager + 0x26) = 0;
+    *(u16 *)(manager + 0x28) = 0x115;
+    *(u16 *)(manager + 0x2a) = 0x2a;
+    *(u16 *)(manager + 0x2e) = 0;
+}
+
+/* Advance the phase-5 entry branch of retail manager state 1. It waits for
+ * the primary actor's status gate, then loads the phase group synchronously,
+ * starts the manager-owned sequence, clears track mask 0x200, and enters
+ * steady state 4. */
+static void phase_sound_manager_update(void *context)
+{
+    u8 *manager = (u8 *)data_021e9abc;
+
+    if (manager == 0 || *(s32 *)(manager + 0x18) != 1)
+        return;
+    if (phase_sound_secondary_scene_ready()) {
+        *(s32 *)(manager + 0x1c) = 1;
+        *(s32 *)(manager + 0x18) = 2;
+        return;
+    }
+    if (!phase_sound_primary_actor_ready())
+        return;
+    func_0205974c(context, *(u16 *)(manager + 0x28));
+    func_02059278(context, *(u16 *)(manager + 0x2a), 0x7f);
+    func_020592fc(context, *(u16 *)(manager + 0x2a), 0x200);
+    *(s32 *)(manager + 0x1c) = 1;
+    *(s32 *)(manager + 0x18) = 4;
+}
+
 /* Allocate and initialize the retail 0xC0-byte facade, then attach SDAT. */
 void func_020589f4(void)
 {
@@ -74,6 +149,9 @@ void func_020589f4(void)
     *(u32 *)(context + 0xa0) = 0x1e;
     *(u32 *)(context + 0xa4) = 0x7f;
     gSoundContext = context;
+    data_021e9abc = Heap_Alloc(0xc0, data_020e4154, 4, &gHeapContext);
+    if (data_021e9abc != 0)
+        phase_sound_manager_init((u8 *)data_021e9abc);
     (void)TingleNativeSound_LoadDefaultArchive();
     TingleNativeSound_SetMasterVolume(0x7f);
 }
@@ -81,7 +159,7 @@ void func_020589f4(void)
 /* Advance fades, sequence tracks, voices, and stream state once per game tick. */
 void func_02058bf8(void *context)
 {
-    (void)context;
+    phase_sound_manager_update(context);
     TingleNativeSound_Update();
 }
 
@@ -230,9 +308,40 @@ void func_02059218(void *context)
 /* Advance the phase-sound manager; resident host loads complete immediately. */
 void func_02059230(void *context, s32 enabled, s32 value)
 {
-    (void)context;
-    (void)enabled;
-    (void)value;
+    u8 *manager = (u8 *)data_021e9abc;
+
+    if (manager == 0)
+        return;
+    if (enabled != 0) {
+        if (*(s32 *)(manager + 0x18) == 0x0a) {
+            TingleNativeSound_StopSequence(*(u16 *)(manager + 0x2c), 0);
+            *(s32 *)(manager + 0x1c) = 0x0a;
+            *(s32 *)(manager + 0x18) = 0x11;
+        } else {
+            u16 sequence = *(u16 *)(manager + 0x2a);
+            if (TingleNativeSound_IsSequencePlaying(sequence))
+                TingleNativeSound_StopSequence(sequence, 0);
+            func_020597fc(context, *(u16 *)(manager + 0x28));
+            func_0205974c(context,
+                         value == 1 ? 0x1cc : *(u16 *)(manager + 0x26));
+            *(s32 *)(manager + 0x1c) = *(s32 *)(manager + 0x18);
+            *(s32 *)(manager + 0x18) = 0x0f;
+        }
+    } else if (*(s32 *)(manager + 0x18) == 0x11) {
+        u16 sequence = *(u16 *)(manager + 0x2c);
+        func_02059278(context, sequence, 0x7f);
+        func_02059320(context, sequence, 0xffff, 0);
+        func_02059320(context, sequence, 0x533, 0x7f);
+        *(s32 *)(manager + 0x1c) = 0x11;
+        *(s32 *)(manager + 0x18) = 9;
+    } else {
+        func_020597fc(context, *(u16 *)(manager + 0x26));
+        func_020597fc(context, 0x1cc);
+        func_020597fc(context, *(u16 *)(manager + 0x26));
+        *(s32 *)(manager + 0x1c) = *(s32 *)(manager + 0x18);
+        *(s32 *)(manager + 0x18) =
+            phase_sound_secondary_scene_ready() ? 3 : 1;
+    }
 }
 
 /* Submit the phase manager's alternate transition request synchronously. */
@@ -526,6 +635,15 @@ void func_020597fc(void *context, s32 group)
 /* Store the selected phase and clear its one-frame transition marker. */
 void func_020598a0(void *context, u16 phase_id)
 {
+    u8 *manager = (u8 *)data_021e9abc;
+
+    if (manager != 0) {
+        if (phase_id == 0x5a)
+            *(u16 *)(manager + 0x24) = 0x10b;
+        *(s32 *)(manager + 0x1c) = *(s32 *)(manager + 0x18);
+        *(s32 *)(manager + 0x18) =
+            phase_sound_secondary_scene_ready() ? 3 : 1;
+    }
     *(u32 *)((u8 *)context + 0xa8) = phase_id;
     *(u32 *)((u8 *)context + 0xbc) = 0;
 }
