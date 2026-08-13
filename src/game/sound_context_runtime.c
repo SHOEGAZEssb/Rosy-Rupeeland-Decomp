@@ -117,8 +117,8 @@ static void phase_sound_manager_init(u8 *manager)
 
 /* Advance the phase-5 entry branch of retail manager state 1. It waits for
  * the primary actor's status gate, then loads the phase group synchronously,
- * starts the manager-owned sequence, clears track mask 0x200, and enters
- * steady state 4. */
+ * starts the manager-owned sequence, selects audible track mask 0x200, and
+ * enters steady state 4. */
 static void phase_sound_manager_update(void *context)
 {
     u8 *manager = (u8 *)data_021e9abc;
@@ -386,7 +386,7 @@ void func_020592d8(void *context, u16 sequence, u16 track_mask, s32 value)
         TingleNativeSound_SetSequenceTrackValue(sequence, track_mask, value, 0);
 }
 
-/* Clear the selected tracks' recovered control value. */
+/* Make the selected direct-sequence tracks audible and mute the complement. */
 void func_020592fc(void *context, u16 sequence, u16 track_mask)
 {
     if (sound_requests_enabled(context))
@@ -407,7 +407,7 @@ s32 func_02059344(void *context, u16 sequence)
            TingleNativeSound_IsSequencePlaying(sequence);
 }
 
-/* Return the requested direct SSEQ's active 16-track mask. */
+/* Return the requested direct SSEQ's audible 16-track mask. */
 u16 func_0205936c(void *context, u16 sequence)
 {
     return sound_requests_enabled(context)
