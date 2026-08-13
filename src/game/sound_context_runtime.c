@@ -122,6 +122,18 @@ static void phase_sound_manager_init(u8 *manager)
     *(u16 *)(manager + 0x2e) = 0;
 }
 
+/* Start the configured phase sequence after its resident group is available.
+ * The caller owns phase-state selection; this helper only performs the
+ * game-visible load, player, track-mask, and steady-state transition. */
+static void phase_sound_manager_start_sequence(void *context, u8 *manager)
+{
+    func_0205974c(context, *(u16 *)(manager + 0x28));
+    func_02059278(context, *(u16 *)(manager + 0x2a), 0x7f);
+    func_020592fc(context, *(u16 *)(manager + 0x2a), 0x200);
+    *(s32 *)(manager + 0x1c) = 1;
+    *(s32 *)(manager + 0x18) = 4;
+}
+
 /* Advance the phase-5 entry branch of retail manager state 1. It waits for
  * the primary actor's status gate, then loads the phase group synchronously,
  * starts the manager-owned sequence, selects audible track mask 0x200, and
@@ -139,11 +151,7 @@ static void phase_sound_manager_update(void *context)
     }
     if (!phase_sound_primary_actor_ready())
         return;
-    func_0205974c(context, *(u16 *)(manager + 0x28));
-    func_02059278(context, *(u16 *)(manager + 0x2a), 0x7f);
-    func_020592fc(context, *(u16 *)(manager + 0x2a), 0x200);
-    *(s32 *)(manager + 0x1c) = 1;
-    *(s32 *)(manager + 0x18) = 4;
+    phase_sound_manager_start_sequence(context, manager);
 }
 
 /* Allocate and initialize the retail 0xC0-byte facade, then attach SDAT. */
@@ -648,8 +656,16 @@ void func_020598a0(void *context, u16 phase_id)
         if (phase_id == 0x5a)
             *(u16 *)(manager + 0x24) = 0x10b;
         *(s32 *)(manager + 0x1c) = *(s32 *)(manager + 0x18);
-        *(s32 *)(manager + 0x18) =
-            phase_sound_secondary_scene_ready() ? 3 : 1;
+        if (phase_id == 5) {
+            /* The bedroom score begins with the phase itself, underneath the
+             * independently owned opening-panel archive loop.  Waiting for
+             * the primary actor's later contact-ready transition suppresses
+             * the score for the entire intro on the host. */
+            phase_sound_manager_start_sequence(context, manager);
+        } else {
+            *(s32 *)(manager + 0x18) =
+                phase_sound_secondary_scene_ready() ? 3 : 1;
+        }
     }
     *(u32 *)((u8 *)context + 0xa8) = phase_id;
     *(u32 *)((u8 *)context + 0xbc) = 0;
