@@ -144,13 +144,6 @@ static void phase_sound_manager_update(void *context)
 
     if (manager == 0 || *(s32 *)(manager + 0x18) != 1)
         return;
-    /* The bedroom actor script owns sequence 250, but its recovered initial
-     * request currently arrives after the opening panel. Keep that same
-     * sequence resident from the first phase-5 sound tick. This is distinct
-     * from manager sequence +0x2a, whose actor-readiness gate remains below. */
-    if (*(u32 *)((u8 *)context + 0xa8) == 5 &&
-        !TingleNativeSound_IsSequencePlaying(250))
-        func_02059278(context, 250, 0x7f);
     if (phase_sound_secondary_scene_ready()) {
         *(s32 *)(manager + 0x1c) = 1;
         *(s32 *)(manager + 0x18) = 2;
@@ -663,8 +656,16 @@ void func_020598a0(void *context, u16 phase_id)
         if (phase_id == 0x5a)
             *(u16 *)(manager + 0x24) = 0x10b;
         *(s32 *)(manager + 0x1c) = *(s32 *)(manager + 0x18);
-        *(s32 *)(manager + 0x18) =
-            phase_sound_secondary_scene_ready() ? 3 : 1;
+        if (phase_id == 5) {
+            /* The manager's configured sequence 42 is the looping bedroom
+             * BGM. Overlay 110's later sequence 250 request is a finite cue,
+             * not the room score. Begin the manager sequence with phase five
+             * so the BGM is present beneath the opening dialogue. */
+            phase_sound_manager_start_sequence(context, manager);
+        } else {
+            *(s32 *)(manager + 0x18) =
+                phase_sound_secondary_scene_ready() ? 3 : 1;
+        }
     }
     *(u32 *)((u8 *)context + 0xa8) = phase_id;
     *(u32 *)((u8 *)context + 0xbc) = 0;
