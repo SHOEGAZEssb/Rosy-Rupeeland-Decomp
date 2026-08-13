@@ -188,7 +188,9 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     ActorCollection_DispatchEventToActors(bytes + 0x28, ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc));
 
     modeBits = *(const u32 *)(config + 0x40);
-    if ((s32)(modeBits << 9) < 0)
+    /* Retail's LSL #9 / ASR #31 tests metadata bit 22. Keep the mask explicit:
+     * MSVC otherwise reduces the signed-shift expression to a bit-31 test. */
+    if ((modeBits & 0x00400000) != 0)
         GamePhaseRuntime_SetDisplayRouting(0);
     else
         GamePhaseRuntime_SetDisplayRouting(1);
