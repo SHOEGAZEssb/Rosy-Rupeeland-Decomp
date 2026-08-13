@@ -58,8 +58,8 @@ extern "C" {
 #endif
 extern const char gDualLayerTileRendererArchivePath[];
 extern const char gDualLayerTileRendererLayerAllocationTag[];
-extern void *gMainBgPaletteBuffer;
-extern void *gSubBgPaletteBuffer;
+extern u8 gMainBgPaletteBuffer[];
+extern u8 gSubBgPaletteBuffer[];
 extern void GameFile_Init(void *);
 extern void GameFile_Destroy(void *);
 extern void GameFile_Open(void *, const char *);

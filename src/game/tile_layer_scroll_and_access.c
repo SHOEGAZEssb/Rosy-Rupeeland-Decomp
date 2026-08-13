@@ -140,7 +140,7 @@ void TileLayer_WriteMetatileToCache(TileLayerAccessState *self, s32 x, s32 y, u1
     s32 wrappedX = WrapCoordinate(x, 32);
     s32 wrappedY = WrapCoordinate(y, 16);
     s32 index = (wrappedX & 15) * 2 + wrappedY * 64 +
-                (wrappedX / 16) * 512;
+                (wrappedX / 16) * 1024;
     self->cache_0004[index] = definition[0] + self->definitionBase_1034;
     self->cache_0004[index + 1] = definition[1] + self->definitionBase_1034;
     self->cache_0004[index + 32] = definition[2] + self->definitionBase_1034;
