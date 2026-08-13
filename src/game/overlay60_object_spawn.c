@@ -15,8 +15,8 @@ typedef struct Overlay60ScriptContext {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021f3ecc;
-extern void *data_021f4090;
+extern u8 data_021f3ecc[];
+extern u8 data_021f4090[];
 extern char gOverlay60ScriptObjectAllocationTag[];
 extern s32 GamePhaseScriptVm_Pop(void *script);
 extern u32 func_020be328(void);
@@ -47,10 +47,16 @@ s32 func_0201d9e4(s32 input)
     return input == 0;
 }
 
-/* Look up the fixed data_021f4090 table through func_02078e98 and return it. */
-void *func_0201da20(void)
+/*
+ * Resolve the resource identifier passed in r1 through the fixed language
+ * manager. Retail replaces r0 with data_021f4090 before tail-calling
+ * func_02078e98, so the collection mode originally passed in r0 is ignored
+ * while the second argument remains the lookup identifier.
+ */
+void *func_0201da20(u32 unusedMode, u32 resourceIdentifier)
 {
-    return func_02078e98(data_021f4090, 0);
+    (void)unusedMode;
+    return func_02078e98(data_021f4090, resourceIdentifier);
 }
 
 /*
