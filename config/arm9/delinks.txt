@@ -7068,3 +7068,6 @@ asm/system/arm9_static_initializers_020c1374.s:
 src/game/sound_context_phase_selection.c:
     categories: Game code
     .text       start:0x020598a0 end:0x020598e8
+src/game/sound_context_stream_facade.c:
+    categories: Game code
+    .text       start:0x02059510 end:0x02059604
