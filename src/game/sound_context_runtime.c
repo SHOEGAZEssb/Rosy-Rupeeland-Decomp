@@ -69,11 +69,6 @@ enum {
     HOST_BEDROOM_STREAM = 13
 };
 
-/* The host preview restores the bedroom stream after scene setup clears the
- * native player. An explicit retail stream-stop request suppresses that
- * one-time recovery until the phase starts the stream again. */
-static s32 sBedroomStreamStopRequested;
-
 /* Return the facade's mutable retail flag word at offset 0x9C. */
 static u32 *sound_flags(void *context)
 {
@@ -154,7 +149,6 @@ static void phase_sound_manager_start_sequence(void *context, u8 *manager)
 static void phase_sound_manager_start_bedroom_stream(void *context,
                                                      u8 *manager)
 {
-    sBedroomStreamStopRequested = 0;
     func_02059550(context, HOST_BEDROOM_STREAM, 0, 0x7f, 0, 0);
     *(s32 *)(manager + 0x1c) = 1;
     *(s32 *)(manager + 0x18) = 4;
@@ -175,8 +169,7 @@ static void phase_sound_manager_update(void *context)
      * room score before advancing the native sound driver. */
     if (*(u32 *)((u8 *)context + 0xa8) == HOST_BEDROOM_PHASE &&
         *(s32 *)(manager + 0x18) == 4) {
-        if (!sBedroomStreamStopRequested &&
-            !TingleNativeSound_IsStreamPlaying(HOST_BEDROOM_STREAM))
+        if (!TingleNativeSound_IsStreamPlaying(HOST_BEDROOM_STREAM))
             func_02059550(context, HOST_BEDROOM_STREAM, 0, 0x7f, 0, 0);
         return;
     }
@@ -572,16 +565,6 @@ void func_0205958c(void *context, s32 fade_frames)
 {
     if (sound_requests_enabled(context))
         TingleNativeSound_StopStream(fade_frames);
-}
-
-/* Honor the retail no-argument stream stop and remember that it was an
- * intentional script request. The value passed by command opcode six is not
- * a fade duration in retail and has no observable meaning. */
-void Sound_HostStopStreamRequest(s32 unused_value)
-{
-    (void)unused_value;
-    sBedroomStreamStopRequested = 1;
-    TingleNativeSound_StopStream(0);
 }
 
 /* Fade the sole stream player to a clamped 0..127 volume. */

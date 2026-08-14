@@ -12,7 +12,7 @@
 extern void *data_021e9aa8;
 extern void func_0205adb4(void *manager);
 #ifndef __MWERKS__
-extern void Sound_HostStopStreamRequest(s32 unused_value);
+extern void TingleNativeSound_StopStream(s32 fade_frames);
 #endif
 
 /* Conditionally stop the active player owned by the resident sound manager. */
@@ -22,7 +22,7 @@ void func_020594ec(void *context, s32 unused_value)
 #ifdef __MWERKS__
         func_0205adb4(data_021e9aa8);
 #else
-        Sound_HostStopStreamRequest(unused_value);
+        TingleNativeSound_StopStream(unused_value);
 #endif
     }
 }
