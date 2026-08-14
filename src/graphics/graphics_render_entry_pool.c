@@ -250,50 +250,46 @@ void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool)
     GraphicsRenderEntry *tail = pool->tail;
     GraphicsRenderEntry *entry = head;
 
-    if (entry != 0) {
+    while (entry != 0) {
         GraphicsRenderEntry *next = entry->next;
+        s32 sortKey = entry->sortKey;
+        GraphicsRenderEntry *scan = entry->prev;
+        GraphicsRenderEntry *insertionPoint = 0;
 
-        while (next != 0) {
-            s32 sortKey = entry->sortKey;
-            GraphicsRenderEntry *scan = entry->prev;
-            GraphicsRenderEntry *insertionPoint = 0;
-
-            while (scan != 0) {
-                if (scan->sortKey <= sortKey) {
-                    break;
-                }
-                insertionPoint = scan;
-                scan = scan->prev;
+        while (scan != 0) {
+            if (scan->sortKey <= sortKey) {
+                break;
             }
-
-            if (insertionPoint != 0) {
-                GraphicsRenderEntry *beforeInsertion = insertionPoint->prev;
-                GraphicsRenderEntry *oldPrev = entry->prev;
-                GraphicsRenderEntry *oldNext = entry->next;
-
-                if (oldPrev != 0) {
-                    oldPrev->next = oldNext;
-                } else {
-                    head = oldNext;
-                }
-                if (oldNext != 0) {
-                    oldNext->prev = oldPrev;
-                } else {
-                    tail = oldPrev;
-                }
-                if (beforeInsertion != 0) {
-                    beforeInsertion->next = entry;
-                } else {
-                    head = entry;
-                }
-                insertionPoint->prev = entry;
-                entry->prev = beforeInsertion;
-                entry->next = insertionPoint;
-            }
-
-            entry = next;
-            next = entry->next;
+            insertionPoint = scan;
+            scan = scan->prev;
         }
+
+        if (insertionPoint != 0) {
+            GraphicsRenderEntry *beforeInsertion = insertionPoint->prev;
+            GraphicsRenderEntry *oldPrev = entry->prev;
+            GraphicsRenderEntry *oldNext = entry->next;
+
+            if (oldPrev != 0) {
+                oldPrev->next = oldNext;
+            } else {
+                head = oldNext;
+            }
+            if (oldNext != 0) {
+                oldNext->prev = oldPrev;
+            } else {
+                tail = oldPrev;
+            }
+            if (beforeInsertion != 0) {
+                beforeInsertion->next = entry;
+            } else {
+                head = entry;
+            }
+            insertionPoint->prev = entry;
+            entry->prev = beforeInsertion;
+            entry->next = insertionPoint;
+        }
+
+        entry = next;
     }
 
     pool->head = head;

@@ -61,9 +61,11 @@ extern void Type7Actor_LoadPersistentState(void);
 extern void *PackedTimerArray_GetGlobal(void);
 extern void PackedTimerArray_LoadFromGameWork(void *array);
 extern void func_02027930(void *state);
+extern void func_02004458(s32 mode);
 
 static u32 retail_save_crc32(const u8 *bytes, u32 size);
 static s32 retail_save_header_valid(const u8 *header);
+static s32 retail_save_payload_valid(const u8 *record);
 static void retail_save_release_game_buffer(void);
 static s32 retail_save_poll(void *context_pointer);
 static void retail_save_begin_read(void *context_pointer, u32 offset,
@@ -177,8 +179,8 @@ s32 func_0207f2e0(void *context_pointer, s32 mode)
     *(s32 *)(context + 0x00) = mode;
     *(u32 *)(context + 0x10) = 0;
     *(u32 *)(context + 0x08) = 1;
-    *(u32 *)(context + 0x1b8) = data_020ef330[0];
-    *(u32 *)(context + 0x1bc) = data_020ef330[1];
+    *(u32 *)(context + 0x1b8) = data_020ef330[2];
+    *(u32 *)(context + 0x1bc) = data_020ef330[3];
     *(u32 *)(context + 0x1b4) = 0;
     if (mode == 0) {
         do {
@@ -188,6 +190,137 @@ s32 func_0207f2e0(void *context_pointer, s32 mode)
         *(u32 *)(context + 0x28) = 0;
     }
     return *(s32 *)(context + 0x28);
+}
+
+/* Retail 0x0207F348 save-directory discovery state machine. It first scans
+ * the six directory headers from the final mirror backwards to recognize a
+ * formatted EEPROM. It then validates each primary record, retries its mirror
+ * when the payload CRC fails, and reconstructs the three 0x34-byte title-menu
+ * slot descriptions. Returns zero while an asynchronous read is pending and
+ * one once all slots have been classified as occupied, empty, or corrupt. */
+s32 func_0207f348(void *context_pointer)
+{
+    u8 *context = (u8 *)context_pointer;
+    void **transfer_slot = (void **)(data_021f5da0 + 0x14);
+    u32 *record_index = (u32 *)(data_021f5da0 + 8);
+    u32 state = *(u32 *)(context + 0x1b4);
+    s32 status;
+
+    switch (state) {
+    case 0:
+        *(u32 *)(context + 0x24) = 5 * 0xaa00u;
+        *(u32 *)(context + 0x1b4) = 1;
+        break;
+    case 1:
+        retail_save_begin_read(context, *(u32 *)(context + 0x24),
+                               context + 0xf4, 0x40);
+        *(u32 *)(context + 0x1b4) = 2;
+        break;
+    case 2:
+        status = retail_save_poll(context);
+        *(s32 *)(context + 0x28) = status;
+        if (status == 0)
+            break;
+        if (status < 0) {
+            *(u32 *)(context + 0x1b4) = 100;
+        } else if (retail_save_header_valid(context + 0xf4)) {
+            *(u32 *)(context + 0x1b4) = 5;
+        } else if (*(u32 *)(context + 0x24) == 0) {
+            *(u32 *)(context + 0x1b4) = 4;
+        } else {
+            *(u32 *)(context + 0x24) -= 0xaa00u;
+            *(u32 *)(context + 0x1b4) = 1;
+        }
+        break;
+    case 4: {
+        u32 index;
+        for (index = 0; index < 3; ++index)
+            memset(context + 0x38 + index * 0x34, 0, 0x34);
+        return 1;
+    }
+    case 5:
+        retail_save_release_game_buffer();
+        *transfer_slot = func_02003e20(0xaa00, data_020ef368, 4,
+                                      &gHeapContext);
+        *record_index = 0;
+        *(u32 *)(context + 0x1b4) = 6;
+        break;
+    case 6:
+        retail_save_begin_read(context, *record_index * 0xaa00u,
+                               *transfer_slot, 0x5f14);
+        *(u32 *)(context + 0x1b4) = 7;
+        break;
+    case 7:
+        status = retail_save_poll(context);
+        *(s32 *)(context + 0x28) = status;
+        if (status == 0)
+            break;
+        if (status < 0) {
+            retail_save_release_game_buffer();
+            *(u32 *)(context + 0x1b4) = 100;
+        } else {
+            *(u32 *)(context + 0x1b4) = 8;
+        }
+        break;
+    case 8:
+        if (!retail_save_payload_valid((const u8 *)*transfer_slot)) {
+            if (*(u32 *)(context + 0x24) < 3 * 0xaa00u) {
+                retail_save_begin_read(context,
+                    (*record_index + 3) * 0xaa00u,
+                    *transfer_slot, 0x5f14);
+                *(u32 *)(context + 0x1b4) = 7;
+            } else {
+                *(u32 *)(context + 0x1b4) = 30;
+            }
+        } else if (!retail_save_header_valid((const u8 *)*transfer_slot) ||
+                   ((const u8 *)*transfer_slot)[0x0b] == 0) {
+            *(u32 *)(context + 0x1b4) = 20;
+        } else {
+            *(u32 *)(context + 0x1b4) = 10;
+        }
+        break;
+    case 10: {
+        const u8 *record = (const u8 *)*transfer_slot;
+        u8 *metadata = context + 0x38 + *record_index * 0x34;
+        *(u16 *)(metadata + 0x00) = 1;
+        *(u32 *)(metadata + 0x04) = *(const u16 *)(record + 0x0c);
+        metadata[0x02] = record[0x0e];
+        metadata[0x03] = record[0x0f];
+        *(u32 *)(metadata + 0x10) = *(const u32 *)(record + 0x3c);
+        *(u16 *)(metadata + 0x08) = *(const u16 *)(record + 0x30);
+        *(u16 *)(metadata + 0x0a) = *(const u16 *)(record + 0x32);
+        *(u16 *)(metadata + 0x0c) = *(const u16 *)(record + 0x34);
+        *(u16 *)(metadata + 0x0e) = *(const u16 *)(record + 0x36);
+        MI_CpuCopy8(record + 0x10, metadata + 0x14, 0x20);
+        *(u32 *)(context + 0x1b4) = 40;
+        break;
+    }
+    case 20:
+        memset(context + 0x38 + *record_index * 0x34, 0, 0x34);
+        *(u16 *)(context + 0x38 + *record_index * 0x34) = 0;
+        *(u32 *)(context + 0x1b4) = 40;
+        break;
+    case 30:
+        memset(context + 0x38 + *record_index * 0x34, 0, 0x34);
+        *(u16 *)(context + 0x38 + *record_index * 0x34) = 2;
+        *(u32 *)(context + 0x1b4) = 40;
+        break;
+    case 40:
+        if (*record_index > 1) {
+            retail_save_release_game_buffer();
+            return 1;
+        }
+        ++*record_index;
+        *(u32 *)(context + 0x1b4) = 6;
+        break;
+    case 100:
+        func_02004458(1);
+        *(u32 *)(context + 0x1b4) = 101;
+        break;
+    default:
+        break;
+    }
+    return 0;
 }
 
 /* Select one retail save operation and its pointer-to-member callback. */
@@ -239,11 +372,8 @@ void func_0207ff90(void *context_pointer, s32 recordIndex, s32 asynchronous)
 /* Validate a complete record image using the retail header contract and CRC. */
 static s32 retail_save_record_valid(const u8 *record)
 {
-    u32 size = *(const u32 *)(record + 0x38);
-
-    if (size < 4 || size > 0x5f14 || !retail_save_header_valid(record))
-        return 0;
-    return *(const u32 *)record == retail_save_crc32(record + 4, size - 4);
+    return retail_save_header_valid(record) &&
+           retail_save_payload_valid(record);
 }
 
 /* Portable reconstruction of assembly-selected retail 0x0207FFE8. It reads
@@ -503,6 +633,14 @@ static s32 retail_save_header_valid(const u8 *header)
     return (*(const u32 *)(header + 4) & 0x7fffffffu) == 0x13e8a68au &&
            *(const u16 *)(header + 8) == 0x3d &&
            header[0x0a] < 3 && header[0x0b] <= 1;
+}
+
+static s32 retail_save_payload_valid(const u8 *record)
+{
+    u32 size = *(const u32 *)(record + 0x38);
+
+    return size >= 4 && size <= 0x5f14 &&
+           *(const u32 *)record == retail_save_crc32(record + 4, size - 4);
 }
 
 static void retail_save_release_game_buffer(void)
@@ -867,7 +1005,6 @@ s32 func_0208063c(void *context_pointer)
         return 0;
     }
 }
-
 
 
 
