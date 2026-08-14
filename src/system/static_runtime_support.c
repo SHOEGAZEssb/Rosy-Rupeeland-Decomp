@@ -314,6 +314,42 @@ void func_02094bbc(void *object, s32 x, s32 y, s32 z)
     func_020948d4(bytes + 0x2c, z);
 }
 
+extern s32 func_020919e8(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 func_02091a70(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 func_02091aa8(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 func_02091af0(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 func_02091b30(s32 start, s32 end, s32 duration, s32 elapsed);
+
+/*
+ * Select the retail presentation interpolation curve at 0x02094D28.
+ * The caller retains the read-only presentation object; its +0x7C duration
+ * and +0x80 elapsed fields use the same units as start/end interpolation.
+ * Modes 1..5 select the five recovered curves, while all other modes return
+ * zero. This helper performs no allocation or host I/O; its only observable
+ * game effect is the interpolated scalar returned to the presentation update.
+ */
+s32 func_02094d28(const void *object, s32 mode, s32 start, s32 end)
+{
+    const u8 *bytes = (const u8 *)object;
+    s32 duration = *(const s32 *)(bytes + 0x7c);
+    s32 elapsed = *(const s32 *)(bytes + 0x80);
+
+    switch (mode) {
+    case 1:
+        return func_02091a70(start, end, duration, elapsed);
+    case 2:
+        return func_020919e8(start, end, duration, elapsed);
+    case 3:
+        return func_02091aa8(start, end, duration, elapsed);
+    case 4:
+        return func_02091af0(start, end, duration, elapsed);
+    case 5:
+        return func_02091b30(start, end, duration, elapsed);
+    default:
+        return 0;
+    }
+}
+
 /* Publish fixed-point presentation position to its bound sprite state. */
 void func_02095508(void *object)
 {
