@@ -66,16 +66,8 @@ void func_020597fc(void *context, s32 group);
 
 enum {
     HOST_BEDROOM_PHASE = 5,
-    HOST_BEDROOM_STREAM = 13,
-    HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE = 34,
-    HOST_BEDROOM_CLOUD_REVEAL_MEMBER = 1,
-    HOST_BEDROOM_CLOUD_REVEAL_STREAM = 2
+    HOST_BEDROOM_STREAM = 13
 };
-
-/* The host preview restores the bedroom stream after scene setup clears the
- * native player. An explicit retail stream-stop request suppresses that
- * one-time recovery until the phase starts the stream again. */
-static s32 sBedroomStreamStopRequested;
 
 /* Return the facade's mutable retail flag word at offset 0x9C. */
 static u32 *sound_flags(void *context)
@@ -157,7 +149,6 @@ static void phase_sound_manager_start_sequence(void *context, u8 *manager)
 static void phase_sound_manager_start_bedroom_stream(void *context,
                                                      u8 *manager)
 {
-    sBedroomStreamStopRequested = 0;
     func_02059550(context, HOST_BEDROOM_STREAM, 0, 0x7f, 0, 0);
     *(s32 *)(manager + 0x1c) = 1;
     *(s32 *)(manager + 0x18) = 4;
@@ -173,16 +164,11 @@ static void phase_sound_manager_update(void *context)
 
     if (manager == 0)
         return;
-    /* Scene setup can reset the sole stream player after the phase-transition
-     * request. While phase five owns steady state 4, restore its identified
-     * room score before advancing the native sound driver. */
+    /* The bedroom actor script owns stream starts and stops. Hold the phase
+     * manager in steady state without reviving a script-faded stream. */
     if (*(u32 *)((u8 *)context + 0xa8) == HOST_BEDROOM_PHASE &&
-        *(s32 *)(manager + 0x18) == 4) {
-        if (!sBedroomStreamStopRequested &&
-            !TingleNativeSound_IsStreamPlaying(HOST_BEDROOM_STREAM))
-            func_02059550(context, HOST_BEDROOM_STREAM, 0, 0x7f, 0, 0);
+        *(s32 *)(manager + 0x18) == 4)
         return;
-    }
     if (*(s32 *)(manager + 0x18) != 1)
         return;
     if (phase_sound_secondary_scene_ready()) {
@@ -470,20 +456,11 @@ u16 func_0205936c(void *context, u16 sequence)
         ? TingleNativeSound_GetSequenceTrackMask(sequence) : 0;
 }
 
-/* Start a sequence-archive member with its archive defaults. The currently
- * recovered bedroom scene reaches the cloud reveal as SSAR 34:1 but omits its
- * retail STRM 2 harp request. Pair that one exact cue at the game-owned facade
- * until the indirect script owner of the stream request is recovered. */
+/* Start a sequence-archive member with its archive defaults. */
 void Sound_Play(void *context, s32 archive, s32 member)
 {
     (void)context;
     TingleNativeSound_PlayArchive(archive, member, 0x7f, 0, 0, 0);
-    if (gSoundContext != 0 &&
-        *(u32 *)((u8 *)gSoundContext + 0xa8) == HOST_BEDROOM_PHASE &&
-        archive == HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE &&
-        member == HOST_BEDROOM_CLOUD_REVEAL_MEMBER)
-        TingleNativeSound_PlayStream(HOST_BEDROOM_CLOUD_REVEAL_STREAM,
-                                     0, 0x7f, 0);
 }
 
 /* Start an effect with explicit volume, pan, pitch, and no retained owner. */
@@ -586,14 +563,12 @@ void func_0205958c(void *context, s32 fade_frames)
         TingleNativeSound_StopStream(fade_frames);
 }
 
-/* Honor the retail no-argument stream stop and remember that it was an
- * intentional script request. The value passed by command opcode six is not
- * a fade duration in retail and has no observable meaning. */
-void Sound_HostStopStreamRequest(s32 unused_value)
+/* Start one stream with the default zero offset and full-volume parameters
+ * used by retail func_0205adb4. */
+void Sound_HostPlayDefaultStreamRequest(s32 stream)
 {
-    (void)unused_value;
-    sBedroomStreamStopRequested = 1;
-    TingleNativeSound_StopStream(0);
+    if ((u32)stream <= 0xffffu)
+        TingleNativeSound_PlayStream((u16)stream, 0, 0x7f, 0);
 }
 
 /* Fade the sole stream player to a clamped 0..127 volume. */
@@ -641,12 +616,12 @@ void func_020596e8(void *context, s32 index, s32 value)
                   values[4], values[5], values[6]);
 }
 
-/* Portable stream-manager stop entry used by a few recovered callers which
- * have not yet been renamed to the game-facing 0x020594EC wrapper. */
-void func_0205adb4(void *manager, s32 fade_frames)
+/* Start one stream through the lower manager's full-volume convenience path.
+ * The manager pointer remains game-owned; native playback needs only its ID. */
+void func_0205adb4(void *manager, s32 stream)
 {
     (void)manager;
-    TingleNativeSound_StopStream(fade_frames);
+    Sound_HostPlayDefaultStreamRequest(stream);
 }
 
 /* Stop the phase-owned sequence and reproduce retail manager state 16. */
