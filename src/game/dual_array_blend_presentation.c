@@ -131,7 +131,7 @@ s32 DualArrayBlendPresentation_DispatchCallback(DualArrayBlendPresentation *self
     adjusted = (u8 *)self + (self->callbackTag0c >> 1);
     callback = (self->callbackTag0c & 1)
         ? *(TaggedCallback *)(*(u8 **)adjusted + (s32)self->callback08)
-        : *(TaggedCallback *)self->callback08;
+        : (TaggedCallback)self->callback08;
     return callback(adjusted);
 }
 
