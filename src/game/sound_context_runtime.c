@@ -66,11 +66,7 @@ void func_020597fc(void *context, s32 group);
 
 enum {
     HOST_BEDROOM_PHASE = 5,
-    HOST_BEDROOM_STREAM = 13,
-    HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE = 34,
-    HOST_BEDROOM_CLOUD_REVEAL_MEMBER = 1,
-    HOST_BEDROOM_CLOUD_REVEAL_HARP_ARCHIVE = 0,
-    HOST_BEDROOM_CLOUD_REVEAL_HARP_MEMBER = 46
+    HOST_BEDROOM_STREAM = 13
 };
 
 /* The host preview restores the bedroom stream after scene setup clears the
@@ -471,20 +467,11 @@ u16 func_0205936c(void *context, u16 sequence)
         ? TingleNativeSound_GetSequenceTrackMask(sequence) : 0;
 }
 
-/* Start a sequence-archive member with its archive defaults. The bedroom's
- * cloud reveal also starts common effect 0:46 (se_00_evt_sq01) on the same
- * frame as its scene-specific 34:1 effect. Retail Sound_Play ignores context,
- * so identify this compatibility pairing by that exact archive member. */
+/* Start a sequence-archive member with its archive defaults. */
 void Sound_Play(void *context, s32 archive, s32 member)
 {
     (void)context;
     TingleNativeSound_PlayArchive(archive, member, 0x7f, 0, 0, 0);
-    if (archive == HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE &&
-        member == HOST_BEDROOM_CLOUD_REVEAL_MEMBER) {
-        TingleNativeSound_PlayArchive(
-            HOST_BEDROOM_CLOUD_REVEAL_HARP_ARCHIVE,
-            HOST_BEDROOM_CLOUD_REVEAL_HARP_MEMBER, 0x7f, 0, 0, 0);
-    }
 }
 
 /* Start an effect with explicit volume, pan, pitch, and no retained owner. */
