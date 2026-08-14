@@ -350,6 +350,16 @@ s32 func_02094d28(const void *object, s32 mode, s32 start, s32 end)
     }
 }
 
+/*
+ * Retail presentation vtable no-op at 0x02095220. The caller retains the
+ * borrowed presentation object; the callback reports no errors, consumes no
+ * time units, performs no I/O, and has no observable game effect.
+ */
+void func_02095220(void *object)
+{
+    (void)object;
+}
+
 /* Publish fixed-point presentation position to its bound sprite state. */
 void func_02095508(void *object)
 {
