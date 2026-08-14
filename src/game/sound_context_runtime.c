@@ -66,7 +66,11 @@ void func_020597fc(void *context, s32 group);
 
 enum {
     HOST_BEDROOM_PHASE = 5,
-    HOST_BEDROOM_STREAM = 13
+    HOST_BEDROOM_STREAM = 13,
+    HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE = 34,
+    HOST_BEDROOM_CLOUD_REVEAL_MEMBER = 1,
+    HOST_BEDROOM_CLOUD_REVEAL_HARP_ARCHIVE = 0,
+    HOST_BEDROOM_CLOUD_REVEAL_HARP_MEMBER = 46
 };
 
 /* The host preview restores the bedroom stream after scene setup clears the
@@ -467,10 +471,21 @@ u16 func_0205936c(void *context, u16 sequence)
         ? TingleNativeSound_GetSequenceTrackMask(sequence) : 0;
 }
 
-/* Start a sequence-archive member with its archive defaults. */
+/* Start a sequence-archive member with its archive defaults. The bedroom's
+ * cloud reveal also starts common effect 0:46 (se_00_evt_sq01) on the same
+ * frame as 34:1. Retail audio confirms both layers, while the scene-side host
+ * path currently reaches this facade with only the phase-specific 34:1
+ * request. Keep that compatibility pairing scoped to phase 5. */
 void Sound_Play(void *context, s32 archive, s32 member)
 {
-    (void)context;
+    if (context != 0 &&
+        *(u32 *)((u8 *)context + 0xa8) == HOST_BEDROOM_PHASE &&
+        archive == HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE &&
+        member == HOST_BEDROOM_CLOUD_REVEAL_MEMBER) {
+        TingleNativeSound_PlayArchive(
+            HOST_BEDROOM_CLOUD_REVEAL_HARP_ARCHIVE,
+            HOST_BEDROOM_CLOUD_REVEAL_HARP_MEMBER, 0x7f, 0, 0, 0);
+    }
     TingleNativeSound_PlayArchive(archive, member, 0x7f, 0, 0, 0);
 }
 
