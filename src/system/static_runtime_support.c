@@ -229,6 +229,7 @@ void *func_020949ec(void *object)
     *(u16 *)(bytes + 0x84) = 0;
     *(u16 *)(bytes + 0x86) = 0;
     *(u16 *)(bytes + 0x94) = 0;
+    *(u16 *)(bytes + 0x96) = 0;
     *(u16 *)(bytes + 0x98) = 0;
     memset(bytes + 0x0c, 0, 7 * 0x10);
     func_020948d4(bytes + 0x0c, 0);
@@ -239,6 +240,14 @@ void *func_020949ec(void *object)
     func_020948d4(bytes + 0x5c, 0);
     func_020948d4(bytes + 0x6c, 0x1000);
     return object;
+}
+
+/* Construct the equivalent base-presentation variant at 0x02094AD4. Retail
+ * uses the same vtable and field initialization as func_020949ec; the distinct
+ * entry point exists so separate constructor references retain their ABI. */
+void *func_02094ad4(void *object)
+{
+    return func_020949ec(object);
 }
 
 /* Sprite-backed presentation controller constructor at retail 0x020953F4. */
