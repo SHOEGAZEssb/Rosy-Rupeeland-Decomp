@@ -15,9 +15,12 @@ extern void func_02059604(void *context, s32 first, s32 second, s32 third,
 #endif
 
 /*
- * Pop five operands and a selector, invoke the six-argument sound operation
- * only for selector 32, and return zero.  The first operand is narrowed to a
- * halfword; unsupported selectors consume their operands without side effects.
+ * Pop five operands and a selector, start a streamed track only for selector
+ * 32, and return zero. The operands are the stream ID, start position in the
+ * sound context's native units, initial volume, fade duration in frames, and
+ * fade-in flag. The stream ID is therefore script bytecode data rather than a
+ * phase-to-music table entry. It is narrowed to a halfword before dispatch;
+ * unsupported selectors consume their operands without side effects.
  */
 s32 func_0201ac18(GamePhaseActorScriptVm *self)
 {

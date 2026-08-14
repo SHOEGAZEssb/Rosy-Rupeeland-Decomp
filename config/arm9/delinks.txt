@@ -7065,3 +7065,6 @@ asm/game/tracked_resource_actor_oriented_collision_02052464.s:
 asm/system/arm9_static_initializers_020c1374.s:
     categories: Game code
     .init       start:0x020c1374 end:0x020c17f0
+src/game/sound_context_phase_selection.c:
+    categories: Game code
+    .text       start:0x020598a0 end:0x020598e8
