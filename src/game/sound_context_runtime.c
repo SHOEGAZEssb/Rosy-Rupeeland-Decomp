@@ -58,8 +58,16 @@ extern void TingleNativeSound_ResumeStreamPosition(void);
 void func_02059278(void *context, u16 sequence, s32 volume);
 void func_020592fc(void *context, u16 sequence, u16 track_mask);
 void func_02059320(void *context, u16 sequence, u16 variable, u16 value);
+void func_02059550(void *context, u16 stream, s32 start_units, s32 volume,
+                   s32 fade_frames, s32 fade_in);
+void func_0205958c(void *context, s32 fade_frames);
 void func_0205974c(void *context, s32 group);
 void func_020597fc(void *context, s32 group);
+
+enum {
+    HOST_BEDROOM_PHASE = 5,
+    HOST_BEDROOM_STREAM = 13
+};
 
 /* Return the facade's mutable retail flag word at offset 0x9C. */
 static u32 *sound_flags(void *context)
@@ -134,15 +142,38 @@ static void phase_sound_manager_start_sequence(void *context, u8 *manager)
     *(s32 *)(manager + 0x18) = 4;
 }
 
-/* Advance the phase-5 entry branch of retail manager state 1. It waits for
- * the primary actor's status gate, then loads the phase group synchronously,
- * starts the manager-owned sequence, selects audible track mask 0x200, and
- * enters steady state 4. */
+/* Start the host-identified bedroom stream immediately and hold the recovered
+ * sequence manager in steady state so its configured percussion sequence 42
+ * does not replace the room score. STRM 13 was identified by archive audition;
+ * the exact retail call chain which selects it is not recovered yet. */
+static void phase_sound_manager_start_bedroom_stream(void *context,
+                                                     u8 *manager)
+{
+    func_02059550(context, HOST_BEDROOM_STREAM, 0, 0x7f, 0, 0);
+    *(s32 *)(manager + 0x1c) = 1;
+    *(s32 *)(manager + 0x18) = 4;
+}
+
+/* Advance retail manager state 1. It waits for the primary actor's status
+ * gate, then loads the configured phase group synchronously, starts the
+ * manager-owned sequence, selects audible track mask 0x200, and enters steady
+ * state 4. */
 static void phase_sound_manager_update(void *context)
 {
     u8 *manager = (u8 *)data_021e9abc;
 
-    if (manager == 0 || *(s32 *)(manager + 0x18) != 1)
+    if (manager == 0)
+        return;
+    /* Scene setup can reset the sole stream player after the phase-transition
+     * request. While phase five owns steady state 4, restore its identified
+     * room score before advancing the native sound driver. */
+    if (*(u32 *)((u8 *)context + 0xa8) == HOST_BEDROOM_PHASE &&
+        *(s32 *)(manager + 0x18) == 4) {
+        if (!TingleNativeSound_IsStreamPlaying(HOST_BEDROOM_STREAM))
+            func_02059550(context, HOST_BEDROOM_STREAM, 0, 0x7f, 0, 0);
+        return;
+    }
+    if (*(s32 *)(manager + 0x18) != 1)
         return;
     if (phase_sound_secondary_scene_ready()) {
         *(s32 *)(manager + 0x1c) = 1;
@@ -651,17 +682,22 @@ void func_020597fc(void *context, s32 group)
 void func_020598a0(void *context, u16 phase_id)
 {
     u8 *manager = (u8 *)data_021e9abc;
+    u32 previous_phase = *(u32 *)((u8 *)context + 0xa8);
+
+    if (previous_phase == HOST_BEDROOM_PHASE &&
+        phase_id != HOST_BEDROOM_PHASE &&
+        TingleNativeSound_IsStreamPlaying(HOST_BEDROOM_STREAM))
+        func_0205958c(context, 0);
 
     if (manager != 0) {
         if (phase_id == 0x5a)
             *(u16 *)(manager + 0x24) = 0x10b;
         *(s32 *)(manager + 0x1c) = *(s32 *)(manager + 0x18);
-        if (phase_id == 5) {
-            /* The manager's configured sequence 42 is the looping bedroom
-             * BGM. Overlay 110's later sequence 250 request is a finite cue,
-             * not the room score. Begin the manager sequence with phase five
-             * so the BGM is present beneath the opening dialogue. */
-            phase_sound_manager_start_sequence(context, manager);
+        if (phase_id == HOST_BEDROOM_PHASE) {
+            /* The bedroom score is streamed audio. Start it with phase five so
+             * it is already present beneath the independently owned opening
+             * dialogue and its sequence-archive background effect. */
+            phase_sound_manager_start_bedroom_stream(context, manager);
         } else {
             *(s32 *)(manager + 0x18) =
                 phase_sound_secondary_scene_ready() ? 3 : 1;
