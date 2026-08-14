@@ -165,6 +165,53 @@ void func_020573fc(ActorAuxiliaryCollisionResource *self, s32 value)
 }
 
 /*
+ * Build the auxiliary resource's interaction rectangle for the direction in
+ * field28 bits 14..15, then translate it by the supplied position and the
+ * resource's own X/Y offset. The four directions use the retail 16-by-20
+ * extents and the result is returned as four signed pixel coordinates.
+ */
+void func_0205740c(s16 *output, const ActorAuxiliaryCollisionResource *self,
+                   const VecFx32Object *position)
+{
+    s32 direction = (s32)self->field28 / 0x4000;
+    s32 x = (position->value.x + self->position.value.x) >> 12;
+    s32 y = (position->value.y + self->position.value.y) >> 12;
+
+    output[0] = -8;
+    output[1] = -20;
+    output[2] = 8;
+    output[3] = 0;
+    switch (direction) {
+    case 0:
+        break;
+    case 1:
+        output[0] = -20;
+        output[1] = -8;
+        output[2] = 0;
+        output[3] = 8;
+        break;
+    case 2:
+        output[0] = -8;
+        output[1] = 0;
+        output[2] = 8;
+        output[3] = 20;
+        break;
+    case 3:
+        output[0] = 0;
+        output[1] = -8;
+        output[2] = 20;
+        output[3] = 8;
+        break;
+    default:
+        break;
+    }
+    output[0] = (s16)(output[0] + x);
+    output[1] = (s16)(output[1] + y);
+    output[2] = (s16)(output[2] + x);
+    output[3] = (s16)(output[3] + y);
+}
+
+/*
  * Lazily allocate 0x2c bytes tagged by data_020df208, construct the resource
  * with data obtained from the actor's collection, and store it at actor+0x1e0.
  * Then set resource X +0x18 to zero and Y +0x1c to actor s16 +0x6a in 20.12
