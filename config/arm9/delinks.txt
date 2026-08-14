@@ -7086,3 +7086,57 @@ src/graphics/title_display_setup_helpers.c:
 src/graphics/display_brightness_helpers.c:
     categories: Game code
     .text       start:0x02092c38 end:0x02092cc0
+src/graphics/animation_resource_state.c:
+    categories: Game code
+    .text       start:0x02071e90 end:0x02071ee0
+src/graphics/animation_resource_state_replace.c:
+    categories: Game code
+    .text       start:0x02071ee0 end:0x02071f38
+src/graphics/animation_resource_state_release.c:
+    categories: Game code
+    .text       start:0x02071f38 end:0x02071f80
+src/graphics/graphics_bg_character_upload_sub.c:
+    categories: Game code
+    .text       start:0x020706c4 end:0x02070750
+src/graphics/graphics_bg_palette_upload_sub.c:
+    categories: Game code
+    .text       start:0x02070bc4 end:0x02070c38
+src/graphics/graphics_bg_map_upload_sub.c:
+    categories: Game code
+    .text       start:0x02070eac end:0x02070f34
+src/math/signed_absolute.c:
+    categories: Game code
+    .text       start:0x020be334 end:0x020be340
+src/game/title_random_value.c:
+    categories: Game code
+    .text       start:0x0209189c end:0x0209192c
+src/game/title_interpolated_value.c:
+    categories: Game code
+    .text       start:0x02091b6c end:0x02091c7c
+src/game/title_interpolated_value_advance.c:
+    categories: Game code
+    .text       start:0x02091c7c end:0x02091cf0
+src/game/title_interpolated_value_complete.c:
+    categories: Game code
+    .text       start:0x02091cf0 end:0x02091d08
+src/game/title_screen_resource_collection.c:
+    categories: Game code
+    .text       start:0x020926d8 end:0x020926f8
+src/game/title_screen_resource_collection_destructor.c:
+    categories: Game code
+    .text       start:0x020926f8 end:0x0209270c
+src/game/title_screen_resource_collection_ops.c:
+    categories: Game code
+    .text       start:0x0209270c end:0x02092798
+src/game/title_character_resource_collection.c:
+    categories: Game code
+    .text       start:0x02092798 end:0x020927b8
+src/game/title_character_resource_collection_destructor.c:
+    categories: Game code
+    .text       start:0x020927b8 end:0x020927cc
+src/game/title_character_resource_collection_ops.c:
+    categories: Game code
+    .text       start:0x020927cc end:0x02092850
+src/game/title_scroll_value.c:
+    categories: Game code
+    .text       start:0x020929b0 end:0x02092a34

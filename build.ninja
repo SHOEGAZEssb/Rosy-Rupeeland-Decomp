@@ -264,6 +264,24 @@ actor_rectangle_geometry_cflags = -proc arm946e -O4 -inline off -ipa function -i
 graphics_bank_state_snapshot_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
 title_display_setup_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
 display_brightness_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+animation_resource_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+animation_resource_state_replace_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+animation_resource_state_release_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+graphics_bg_character_upload_sub_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+graphics_bg_palette_upload_sub_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+graphics_bg_map_upload_sub_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+signed_absolute_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_random_value_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_interpolated_value_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_interpolated_value_advance_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_interpolated_value_complete_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_screen_resource_collection_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_screen_resource_collection_destructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_screen_resource_collection_ops_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_character_resource_collection_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_character_resource_collection_destructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_character_resource_collection_ops_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+title_scroll_value_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
 game_heap_delete_helper_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 game_phase_script_vm_byte_read_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 game_phase_script_vm_control_flow_opcodes_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -1417,7 +1435,61 @@ build build/decomp/src/graphics/title_display_setup_helpers.o: mwccarm src/graph
 build build/decomp/src/graphics/display_brightness_helpers.o: mwccarm src/graphics/display_brightness_helpers.c | include/tingle/display_controller.h include/tingle/display_brightness.h include/tingle/types.h
   source = src/graphics/display_brightness_helpers.c
   cflags = $display_brightness_helpers_cflags
-build build/decomp/delinks/src/game/sound_context_phase_selection.o build/decomp/delinks/src/game/sound_context_stream_facade.o build/decomp/delinks/src/game/actor_interaction_candidate_runtime.o build/decomp/delinks/src/game/actor_rectangle_geometry.o build/decomp/delinks/src/graphics/graphics_bank_state_snapshot.o build/decomp/delinks/src/graphics/title_display_setup_helpers.o build/decomp/delinks/src/graphics/display_brightness_helpers.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/decomp/src/graphics/animation_resource_state.o: mwccarm src/graphics/animation_resource_state.c | include/tingle/types.h
+  source = src/graphics/animation_resource_state.c
+  cflags = $animation_resource_state_cflags
+build build/decomp/src/graphics/animation_resource_state_replace.o: mwccarm src/graphics/animation_resource_state_replace.c | include/tingle/types.h
+  source = src/graphics/animation_resource_state_replace.c
+  cflags = $animation_resource_state_replace_cflags
+build build/decomp/src/graphics/animation_resource_state_release.o: mwccarm src/graphics/animation_resource_state_release.c | include/tingle/types.h
+  source = src/graphics/animation_resource_state_release.c
+  cflags = $animation_resource_state_release_cflags
+build build/decomp/src/graphics/graphics_bg_character_upload_sub.o: mwccarm src/graphics/graphics_bg_character_upload_sub.c | include/tingle/types.h
+  source = src/graphics/graphics_bg_character_upload_sub.c
+  cflags = $graphics_bg_character_upload_sub_cflags
+build build/decomp/src/graphics/graphics_bg_palette_upload_sub.o: mwccarm src/graphics/graphics_bg_palette_upload_sub.c | include/tingle/types.h
+  source = src/graphics/graphics_bg_palette_upload_sub.c
+  cflags = $graphics_bg_palette_upload_sub_cflags
+build build/decomp/src/graphics/graphics_bg_map_upload_sub.o: mwccarm src/graphics/graphics_bg_map_upload_sub.c | include/tingle/types.h
+  source = src/graphics/graphics_bg_map_upload_sub.c
+  cflags = $graphics_bg_map_upload_sub_cflags
+build build/decomp/src/math/signed_absolute.o: mwccarm src/math/signed_absolute.c | include/tingle/types.h
+  source = src/math/signed_absolute.c
+  cflags = $signed_absolute_cflags
+build build/decomp/src/game/title_random_value.o: mwccarm src/game/title_random_value.c | include/tingle/types.h
+  source = src/game/title_random_value.c
+  cflags = $title_random_value_cflags
+build build/decomp/src/game/title_interpolated_value.o: mwccarm src/game/title_interpolated_value.c | include/tingle/types.h
+  source = src/game/title_interpolated_value.c
+  cflags = $title_interpolated_value_cflags
+build build/decomp/src/game/title_interpolated_value_advance.o: mwccarm src/game/title_interpolated_value_advance.c | include/tingle/types.h
+  source = src/game/title_interpolated_value_advance.c
+  cflags = $title_interpolated_value_advance_cflags
+build build/decomp/src/game/title_interpolated_value_complete.o: mwccarm src/game/title_interpolated_value_complete.c | include/tingle/types.h
+  source = src/game/title_interpolated_value_complete.c
+  cflags = $title_interpolated_value_complete_cflags
+build build/decomp/src/game/title_screen_resource_collection.o: mwccarm src/game/title_screen_resource_collection.c | include/tingle/types.h
+  source = src/game/title_screen_resource_collection.c
+  cflags = $title_screen_resource_collection_cflags
+build build/decomp/src/game/title_screen_resource_collection_destructor.o: mwccarm src/game/title_screen_resource_collection_destructor.c | include/tingle/types.h
+  source = src/game/title_screen_resource_collection_destructor.c
+  cflags = $title_screen_resource_collection_destructor_cflags
+build build/decomp/src/game/title_screen_resource_collection_ops.o: mwccarm src/game/title_screen_resource_collection_ops.c | include/tingle/types.h
+  source = src/game/title_screen_resource_collection_ops.c
+  cflags = $title_screen_resource_collection_ops_cflags
+build build/decomp/src/game/title_character_resource_collection.o: mwccarm src/game/title_character_resource_collection.c | include/tingle/types.h
+  source = src/game/title_character_resource_collection.c
+  cflags = $title_character_resource_collection_cflags
+build build/decomp/src/game/title_character_resource_collection_destructor.o: mwccarm src/game/title_character_resource_collection_destructor.c | include/tingle/types.h
+  source = src/game/title_character_resource_collection_destructor.c
+  cflags = $title_character_resource_collection_destructor_cflags
+build build/decomp/src/game/title_character_resource_collection_ops.o: mwccarm src/game/title_character_resource_collection_ops.c | include/tingle/types.h
+  source = src/game/title_character_resource_collection_ops.c
+  cflags = $title_character_resource_collection_ops_cflags
+build build/decomp/src/game/title_scroll_value.o: mwccarm src/game/title_scroll_value.c | include/tingle/types.h
+  source = src/game/title_scroll_value.c
+  cflags = $title_scroll_value_cflags
+build build/decomp/delinks/src/game/sound_context_phase_selection.o build/decomp/delinks/src/game/sound_context_stream_facade.o build/decomp/delinks/src/game/actor_interaction_candidate_runtime.o build/decomp/delinks/src/game/actor_rectangle_geometry.o build/decomp/delinks/src/graphics/graphics_bank_state_snapshot.o build/decomp/delinks/src/graphics/title_display_setup_helpers.o build/decomp/delinks/src/graphics/display_brightness_helpers.o build/decomp/delinks/src/graphics/animation_resource_state.o build/decomp/delinks/src/graphics/animation_resource_state_replace.o build/decomp/delinks/src/graphics/animation_resource_state_release.o build/decomp/delinks/src/graphics/graphics_bg_character_upload_sub.o build/decomp/delinks/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/delinks/src/graphics/graphics_bg_map_upload_sub.o build/decomp/delinks/src/math/signed_absolute.o build/decomp/delinks/src/game/title_random_value.o build/decomp/delinks/src/game/title_interpolated_value.o build/decomp/delinks/src/game/title_interpolated_value_advance.o build/decomp/delinks/src/game/title_interpolated_value_complete.o build/decomp/delinks/src/game/title_screen_resource_collection.o build/decomp/delinks/src/game/title_screen_resource_collection_destructor.o build/decomp/delinks/src/game/title_screen_resource_collection_ops.o build/decomp/delinks/src/game/title_character_resource_collection.o build/decomp/delinks/src/game/title_character_resource_collection_destructor.o build/decomp/delinks/src/game/title_character_resource_collection_ops.o build/decomp/delinks/src/game/title_scroll_value.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/decomp/asm/game/game_phase_state_0200e9e0.o: mwasmarm asm/game/game_phase_state_0200e9e0.s
 build build/decomp/asm/game/game_phase_state_0200ea34.o: mwasmarm asm/game/game_phase_state_0200ea34.s
 build build/decomp/asm/game/game_phase_state_0200ea48.o: mwasmarm asm/game/game_phase_state_0200ea48.s
@@ -11360,6 +11432,150 @@ build build/reports/display_brightness_helpers.txt: match_report build/reports/d
   report_args = --section .text --function func_02092c38 --function func_02092c8c --require-exact
 
 build display_brightness_helpers: phony build/reports/display_brightness_helpers.txt
+build build/reports/animation_resource_state.json: objdiff build/decomp/delinks/src/graphics/animation_resource_state.o | build/decomp/src/graphics/animation_resource_state.o
+  target_object = build/decomp/delinks/src/graphics/animation_resource_state.o
+  base_object = build/decomp/src/graphics/animation_resource_state.o
+build build/reports/animation_resource_state.txt: match_report build/reports/animation_resource_state.json | tools/report_objdiff.py
+  report_json = build/reports/animation_resource_state.json
+  report_args = --section .text --function func_02071e90 --function func_02071ea4 --function func_02071eb8 --function func_02071ecc --require-exact
+
+build animation_resource_state: phony build/reports/animation_resource_state.txt
+build build/reports/animation_resource_state_replace.json: objdiff build/decomp/delinks/src/graphics/animation_resource_state_replace.o | build/decomp/src/graphics/animation_resource_state_replace.o
+  target_object = build/decomp/delinks/src/graphics/animation_resource_state_replace.o
+  base_object = build/decomp/src/graphics/animation_resource_state_replace.o
+build build/reports/animation_resource_state_replace.txt: match_report build/reports/animation_resource_state_replace.json | tools/report_objdiff.py
+  report_json = build/reports/animation_resource_state_replace.json
+  report_args = --section .text --function func_02071ee0 --require-exact
+
+build animation_resource_state_replace: phony build/reports/animation_resource_state_replace.txt
+build build/reports/animation_resource_state_release.json: objdiff build/decomp/delinks/src/graphics/animation_resource_state_release.o | build/decomp/src/graphics/animation_resource_state_release.o
+  target_object = build/decomp/delinks/src/graphics/animation_resource_state_release.o
+  base_object = build/decomp/src/graphics/animation_resource_state_release.o
+build build/reports/animation_resource_state_release.txt: match_report build/reports/animation_resource_state_release.json | tools/report_objdiff.py
+  report_json = build/reports/animation_resource_state_release.json
+  report_args = --section .text --function func_02071f38 --require-exact
+
+build animation_resource_state_release: phony build/reports/animation_resource_state_release.txt
+build build/reports/graphics_bg_character_upload_sub.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_character_upload_sub.o | build/decomp/src/graphics/graphics_bg_character_upload_sub.o
+  target_object = build/decomp/delinks/src/graphics/graphics_bg_character_upload_sub.o
+  base_object = build/decomp/src/graphics/graphics_bg_character_upload_sub.o
+build build/reports/graphics_bg_character_upload_sub.txt: match_report build/reports/graphics_bg_character_upload_sub.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_bg_character_upload_sub.json
+  report_args = --section .text --function func_020706c4 --require-exact
+
+build graphics_bg_character_upload_sub: phony build/reports/graphics_bg_character_upload_sub.txt
+build build/reports/graphics_bg_palette_upload_sub.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_palette_upload_sub.o | build/decomp/src/graphics/graphics_bg_palette_upload_sub.o
+  target_object = build/decomp/delinks/src/graphics/graphics_bg_palette_upload_sub.o
+  base_object = build/decomp/src/graphics/graphics_bg_palette_upload_sub.o
+build build/reports/graphics_bg_palette_upload_sub.txt: match_report build/reports/graphics_bg_palette_upload_sub.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_bg_palette_upload_sub.json
+  report_args = --section .text --function func_02070bc4 --require-exact
+
+build graphics_bg_palette_upload_sub: phony build/reports/graphics_bg_palette_upload_sub.txt
+build build/reports/graphics_bg_map_upload_sub.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_map_upload_sub.o | build/decomp/src/graphics/graphics_bg_map_upload_sub.o
+  target_object = build/decomp/delinks/src/graphics/graphics_bg_map_upload_sub.o
+  base_object = build/decomp/src/graphics/graphics_bg_map_upload_sub.o
+build build/reports/graphics_bg_map_upload_sub.txt: match_report build/reports/graphics_bg_map_upload_sub.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_bg_map_upload_sub.json
+  report_args = --section .text --function func_02070eac --require-exact
+
+build graphics_bg_map_upload_sub: phony build/reports/graphics_bg_map_upload_sub.txt
+build build/reports/signed_absolute.json: objdiff build/decomp/delinks/src/math/signed_absolute.o | build/decomp/src/math/signed_absolute.o
+  target_object = build/decomp/delinks/src/math/signed_absolute.o
+  base_object = build/decomp/src/math/signed_absolute.o
+build build/reports/signed_absolute.txt: match_report build/reports/signed_absolute.json | tools/report_objdiff.py
+  report_json = build/reports/signed_absolute.json
+  report_args = --section .text --function func_020be334 --require-exact
+
+build signed_absolute: phony build/reports/signed_absolute.txt
+build build/reports/title_random_value.json: objdiff build/decomp/delinks/src/game/title_random_value.o | build/decomp/src/game/title_random_value.o
+  target_object = build/decomp/delinks/src/game/title_random_value.o
+  base_object = build/decomp/src/game/title_random_value.o
+build build/reports/title_random_value.txt: match_report build/reports/title_random_value.json | tools/report_objdiff.py
+  report_json = build/reports/title_random_value.json
+  report_args = --section .text --function func_0209189c --function func_020918f4 --require-exact
+
+build title_random_value: phony build/reports/title_random_value.txt
+build build/reports/title_interpolated_value.json: objdiff build/decomp/delinks/src/game/title_interpolated_value.o | build/decomp/src/game/title_interpolated_value.o
+  target_object = build/decomp/delinks/src/game/title_interpolated_value.o
+  base_object = build/decomp/src/game/title_interpolated_value.o
+build build/reports/title_interpolated_value.txt: match_report build/reports/title_interpolated_value.json | tools/report_objdiff.py
+  report_json = build/reports/title_interpolated_value.json
+  report_args = --section .text --function func_02091b6c --function func_02091b98 --function func_02091bac --function func_02091bd0 --require-exact
+
+build title_interpolated_value: phony build/reports/title_interpolated_value.txt
+build build/reports/title_interpolated_value_advance.json: objdiff build/decomp/delinks/src/game/title_interpolated_value_advance.o | build/decomp/src/game/title_interpolated_value_advance.o
+  target_object = build/decomp/delinks/src/game/title_interpolated_value_advance.o
+  base_object = build/decomp/src/game/title_interpolated_value_advance.o
+build build/reports/title_interpolated_value_advance.txt: match_report build/reports/title_interpolated_value_advance.json | tools/report_objdiff.py
+  report_json = build/reports/title_interpolated_value_advance.json
+  report_args = --section .text --function func_02091c7c --require-exact
+
+build title_interpolated_value_advance: phony build/reports/title_interpolated_value_advance.txt
+build build/reports/title_interpolated_value_complete.json: objdiff build/decomp/delinks/src/game/title_interpolated_value_complete.o | build/decomp/src/game/title_interpolated_value_complete.o
+  target_object = build/decomp/delinks/src/game/title_interpolated_value_complete.o
+  base_object = build/decomp/src/game/title_interpolated_value_complete.o
+build build/reports/title_interpolated_value_complete.txt: match_report build/reports/title_interpolated_value_complete.json | tools/report_objdiff.py
+  report_json = build/reports/title_interpolated_value_complete.json
+  report_args = --section .text --function func_02091cf0 --require-exact
+
+build title_interpolated_value_complete: phony build/reports/title_interpolated_value_complete.txt
+build build/reports/title_screen_resource_collection.json: objdiff build/decomp/delinks/src/game/title_screen_resource_collection.o | build/decomp/src/game/title_screen_resource_collection.o
+  target_object = build/decomp/delinks/src/game/title_screen_resource_collection.o
+  base_object = build/decomp/src/game/title_screen_resource_collection.o
+build build/reports/title_screen_resource_collection.txt: match_report build/reports/title_screen_resource_collection.json | tools/report_objdiff.py
+  report_json = build/reports/title_screen_resource_collection.json
+  report_args = --section .text --function func_020926d8 --require-exact
+
+build title_screen_resource_collection: phony build/reports/title_screen_resource_collection.txt
+build build/reports/title_screen_resource_collection_destructor.json: objdiff build/decomp/delinks/src/game/title_screen_resource_collection_destructor.o | build/decomp/src/game/title_screen_resource_collection_destructor.o
+  target_object = build/decomp/delinks/src/game/title_screen_resource_collection_destructor.o
+  base_object = build/decomp/src/game/title_screen_resource_collection_destructor.o
+build build/reports/title_screen_resource_collection_destructor.txt: match_report build/reports/title_screen_resource_collection_destructor.json | tools/report_objdiff.py
+  report_json = build/reports/title_screen_resource_collection_destructor.json
+  report_args = --section .text --function func_020926f8 --require-exact
+
+build title_screen_resource_collection_destructor: phony build/reports/title_screen_resource_collection_destructor.txt
+build build/reports/title_screen_resource_collection_ops.json: objdiff build/decomp/delinks/src/game/title_screen_resource_collection_ops.o | build/decomp/src/game/title_screen_resource_collection_ops.o
+  target_object = build/decomp/delinks/src/game/title_screen_resource_collection_ops.o
+  base_object = build/decomp/src/game/title_screen_resource_collection_ops.o
+build build/reports/title_screen_resource_collection_ops.txt: match_report build/reports/title_screen_resource_collection_ops.json | tools/report_objdiff.py
+  report_json = build/reports/title_screen_resource_collection_ops.json
+  report_args = --section .text --function func_0209270c --function func_02092754 --function func_02092790 --require-exact
+
+build title_screen_resource_collection_ops: phony build/reports/title_screen_resource_collection_ops.txt
+build build/reports/title_character_resource_collection.json: objdiff build/decomp/delinks/src/game/title_character_resource_collection.o | build/decomp/src/game/title_character_resource_collection.o
+  target_object = build/decomp/delinks/src/game/title_character_resource_collection.o
+  base_object = build/decomp/src/game/title_character_resource_collection.o
+build build/reports/title_character_resource_collection.txt: match_report build/reports/title_character_resource_collection.json | tools/report_objdiff.py
+  report_json = build/reports/title_character_resource_collection.json
+  report_args = --section .text --function func_02092798 --require-exact
+
+build title_character_resource_collection: phony build/reports/title_character_resource_collection.txt
+build build/reports/title_character_resource_collection_destructor.json: objdiff build/decomp/delinks/src/game/title_character_resource_collection_destructor.o | build/decomp/src/game/title_character_resource_collection_destructor.o
+  target_object = build/decomp/delinks/src/game/title_character_resource_collection_destructor.o
+  base_object = build/decomp/src/game/title_character_resource_collection_destructor.o
+build build/reports/title_character_resource_collection_destructor.txt: match_report build/reports/title_character_resource_collection_destructor.json | tools/report_objdiff.py
+  report_json = build/reports/title_character_resource_collection_destructor.json
+  report_args = --section .text --function func_020927b8 --require-exact
+
+build title_character_resource_collection_destructor: phony build/reports/title_character_resource_collection_destructor.txt
+build build/reports/title_character_resource_collection_ops.json: objdiff build/decomp/delinks/src/game/title_character_resource_collection_ops.o | build/decomp/src/game/title_character_resource_collection_ops.o
+  target_object = build/decomp/delinks/src/game/title_character_resource_collection_ops.o
+  base_object = build/decomp/src/game/title_character_resource_collection_ops.o
+build build/reports/title_character_resource_collection_ops.txt: match_report build/reports/title_character_resource_collection_ops.json | tools/report_objdiff.py
+  report_json = build/reports/title_character_resource_collection_ops.json
+  report_args = --section .text --function func_020927cc --function func_02092814 --require-exact
+
+build title_character_resource_collection_ops: phony build/reports/title_character_resource_collection_ops.txt
+build build/reports/title_scroll_value.json: objdiff build/decomp/delinks/src/game/title_scroll_value.o | build/decomp/src/game/title_scroll_value.o
+  target_object = build/decomp/delinks/src/game/title_scroll_value.o
+  base_object = build/decomp/src/game/title_scroll_value.o
+build build/reports/title_scroll_value.txt: match_report build/reports/title_scroll_value.json | tools/report_objdiff.py
+  report_json = build/reports/title_scroll_value.json
+  report_args = --section .text --function func_020929b0 --function func_020929f4 --require-exact
+
+build title_scroll_value: phony build/reports/title_scroll_value.txt
 build build/reports/game_phase_state_0200e9e0.json: objdiff build/decomp/delinks/asm/game/game_phase_state_0200e9e0.o | build/decomp/asm/game/game_phase_state_0200e9e0.o
   target_object = build/decomp/delinks/asm/game/game_phase_state_0200e9e0.o
   base_object = build/decomp/asm/game/game_phase_state_0200e9e0.o
@@ -12114,7 +12330,8 @@ build debug_phase_selector: phony build/decomp/delinks/asm/game/debug_phase_sele
 build game_phase_transition_scene: phony build/decomp/delinks/src/game/game_phase_transition_scene_lifecycle.o build/decomp/src/game/game_phase_transition_scene_lifecycle.o build/reports/game_phase_transition_scene_lifecycle.txt build/reports/game_phase_transition_scene_update.txt
 build game_file: phony build/decomp/delinks/src/system/game_file.o build/decomp/src/system/game_file.o build/reports/game_file.txt
 build touch_region: phony build/decomp/delinks/src/system/touch_region.o build/decomp/src/system/touch_region.o build/reports/touch_region.txt
-build archive: phony build/decomp/lib/tingle.a build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o
+build archive: phony build/decomp/lib/tingle.a build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
+  build/decomp/src/game/title_random_value.o build/decomp/src/game/title_interpolated_value.o build/decomp/src/game/title_interpolated_value_advance.o build/decomp/src/game/title_interpolated_value_complete.o build/decomp/src/game/title_screen_resource_collection.o build/decomp/src/game/title_screen_resource_collection_destructor.o build/decomp/src/game/title_screen_resource_collection_ops.o build/decomp/src/game/title_character_resource_collection.o build/decomp/src/game/title_character_resource_collection_destructor.o build/decomp/src/game/title_character_resource_collection_ops.o build/decomp/src/game/title_scroll_value.o
 build references: phony build/reference/mt19937.text.bin build/reference/init_genrand.bin build/reference/init_by_array.bin build/reference/genrand_int32.bin build/reference/InitRandom.bin
 build match: phony build/reports/mt19937.txt build/reports/input.txt build/reports/debug_menu.txt build/reports/debug_menu_exact.txt build/reports/game_work.txt build/reports/game_flags.txt build/reports/game_work_io.txt build/reports/game_phase.txt build/reports/owned_pointer_list.txt build/reports/owned_pointer_list_data.json build/reports/packed_timer_array.txt build/reports/overlay_manager.txt build/reports/runtime_init.txt build/reports/heap.txt build/reports/heap_state.json build/reports/graphics_hardware.txt build/reports/display_brightness.txt build/reports/display_controller.txt build/reports/display_controller_state.json build/reports/debug_text_frame.txt build/reports/system_state_init.txt build/reports/heap_wrappers.txt build/reports/vec_fx32.txt build/reports/vec_fx32_data.json build/reports/nitro_file.txt build/reports/nitro_file_data.json build/reports/ncg_file.txt build/reports/ncg_file_data.json build/reports/ncg_file_tag.json build/reports/ncl_file.txt build/reports/ncl_file_signature.txt build/reports/ncl_file_data.json build/reports/ncl_file_tag.json build/reports/animation_resource.txt build/reports/animation_resource_data.json build/reports/animation_binding.txt build/reports/util_animation_resource_ctor.txt build/reports/util_animation_resource.txt build/reports/util_animation_resource_data.json build/reports/util_animation_position.txt build/reports/util_animation_difference.txt build/reports/util_animation_apply.txt build/reports/scene_touch_data.json build/reports/scene.txt build/reports/scene_touch.txt build/reports/touch_panel.txt build/reports/frame_task.txt build/reports/frame_task_tags.json build/reports/frame_task_list.json build/reports/graphics_system.txt build/reports/palette_buffer.txt build/reports/palette_buffer_data.json build/reports/thread.txt build/reports/thread_data.json build/reports/bg_scroll.txt build/reports/graphics_resources.txt build/reports/graphics_resource_set.txt build/reports/graphics_resource_set_ops.txt build/reports/graphics_resource_set_variant.txt build/reports/graphics_vram_allocator.txt build/reports/graphics_render_entry_pool.txt build/reports/graphics_transfer_queue.txt build/reports/graphics_indexed_chain_pool.txt build/reports/graphics_lookup_cache.txt build/reports/graphics_sprite_state.txt build/reports/graphics_sprite_animation.txt build/reports/graphics_sprite_frame.txt build/reports/graphics_sprite_render_helpers.txt build/reports/graphics_sprite_config.txt build/reports/graphics_sprite_position.txt build/reports/graphics_sprite_position_bounds.txt build/reports/graphics_sprite_create.txt build/reports/debug_sprite_text.txt build/reports/software_canvas_lifecycle.txt build/reports/software_canvas_pixel.txt build/reports/software_canvas_line.txt build/reports/software_canvas_fill_rect.txt build/reports/software_canvas_rect.txt build/reports/software_canvas_glyph.txt build/reports/software_canvas_text.txt build/reports/game_string_list.txt build/reports/overlay_slot.txt build/reports/vec_fx32_triple.txt build/reports/vec_fx32_bezier.txt build/reports/vec_fx32_stepper.txt build/reports/spline_mover.txt build/reports/game_phase_runtime.txt build/reports/game_phase_runtime_helpers.txt build/reports/game_phase_runtime_destroy.txt build/reports/game_phase_runtime_delete.txt build/reports/game_phase_runtime_methods.txt build/reports/game_phase_runtime_update.txt build/reports/game_phase_runtime_readiness.txt build/reports/game_phase_runtime_prepare.txt build/reports/game_phase_runtime_finalize.txt build/reports/game_phase_runtime_maintenance.txt build/reports/game_phase_runtime_change_area.txt build/reports/game_phase_runtime_area_request.txt build/reports/game_phase_runtime_apply_request.txt build/reports/game_phase_runtime_secondary.txt build/reports/game_phase_runtime_actor_sync.txt build/reports/game_phase_runtime_value_helpers.txt build/reports/game_phase_runtime_request_dispatch.txt build/reports/game_phase_runtime_warp_request.txt build/reports/game_phase_runtime_screen_mode.txt build/reports/game_phase_runtime_secondary_position.txt build/reports/game_phase_runtime_primary_transform.txt build/reports/game_phase_runtime_secondary_transform.txt build/reports/game_phase_runtime_placement_mode.txt build/reports/game_phase_runtime_area_helpers.txt build/reports/game_phase_runtime_auxiliary.txt build/reports/game_phase_runtime_scene_object.txt build/reports/game_phase_runtime_transition_sync.txt build/reports/game_phase_runtime_misc.txt build/reports/actor_motion_lifecycle.txt build/reports/actor_motion_grid_target.txt build/reports/actor_motion_angle.txt build/reports/actor_motion_actor_target.txt build/reports/actor_motion_extract_target.txt build/reports/actor_motion_oscillation_setup.txt build/reports/actor_motion_oscillation_control.txt build/reports/actor_motion_oscillation_sample.txt build/reports/actor_motion_jitter_lifecycle.txt build/reports/actor_motion_jitter_update.txt build/reports/actor_motion_jitter_limits.txt build/reports/actor_motion_gamework_lifecycle.txt build/reports/actor_motion_gamework_update.txt build/reports/actor_motion_follow_actor.txt build/reports/actor_motion_area_follower_lifecycle.txt build/reports/actor_motion_area_follower_update.txt build/reports/actor_motion_area_bind.txt build/reports/actor_motion_area_direction.txt build/reports/actor_motion_area_clamp.txt build/reports/actor_motion_rectangle_translate.txt build/reports/actor_motion_area_state.txt build/reports/actor_collision_corner_response.txt build/reports/actor_collision_query.txt build/reports/actor_collision_range_scan.txt build/reports/actor_collision_overlap.txt build/reports/actor_collision_extent.txt build/reports/actor_collision_overlap_response.txt build/reports/actor_collision_swept_response.txt build/reports/actor_runtime_collection_ctor.txt build/reports/actor_runtime_owned_list_ctor.txt build/reports/actor_runtime_owned_list_dtor.txt build/reports/actor_runtime_collection_dtor.txt build/reports/actor_runtime_owned_list_clear.txt build/reports/actor_runtime_collection_state.txt build/reports/actor_runtime_collection_selection.txt build/reports/actor_runtime_collection_release.txt build/reports/actor_runtime_collection_attach.txt build/reports/actor_runtime_collection_transition.txt build/reports/actor_runtime_queue_set_pending.txt build/reports/actor_runtime_queue_append_pending.txt build/reports/actor_runtime_queue_append.txt build/reports/actor_runtime_queue_append_value.txt build/reports/actor_runtime_queue_dispatch.txt build/reports/actor_runtime_queue_missing.txt build/reports/actor_runtime_queue_status.txt build/reports/actor_runtime_scene_triple.txt build/reports/actor_runtime_scene_lifecycle.txt build/reports/actor_runtime_scene_teardown.txt build/reports/actor_runtime_scene_delete.txt build/reports/actor_runtime_scene_update.txt build/reports/actor_runtime_scene_begin.txt build/reports/actor_runtime_scene_end.txt build/reports/actor_runtime_scene_touch_begin.txt build/reports/actor_runtime_touch_copy.txt build/reports/actor_runtime_scene_touch_move.txt build/reports/actor_runtime_scene_touch_end.txt build/reports/actor_runtime_scene_actor_deactivate.txt build/reports/actor_runtime_scene_actor_activate.txt build/reports/actor_runtime_owned_list_variants.txt build/reports/actor_runtime_object_lists_ctor.txt build/reports/actor_runtime_payload_list_ctor.txt build/reports/actor_runtime_payload_list_dtor.txt build/reports/actor_runtime_payload_list_clear.txt build/reports/actor_runtime_object_lists_dtor.txt build/reports/actor_runtime_object_lists_delete.txt build/reports/actor_runtime_object_lists_clear_first.txt build/reports/actor_runtime_object_lists_clear_second.txt build/reports/actor_runtime_object_lists_clear_third.txt build/reports/actor_runtime_object_lists_populate.txt build/reports/actor_runtime_object_lists_append.txt build/reports/actor_runtime_payload_list_delete.txt build/reports/actor_runtime_grid_canvas_lifecycle.txt build/reports/actor_runtime_grid_canvas_init.txt build/reports/actor_runtime_grid_canvas_draw.txt build/reports/actor_runtime_grid_canvas_helpers.txt build/reports/actor_runtime_grid_canvas_lines.txt build/reports/actor_runtime_grid_display_select.txt build/reports/debug_phase_selector_ctor.txt build/reports/debug_phase_selector_dtor.txt build/reports/debug_phase_selector_delete.txt build/reports/debug_phase_selector_update.txt build/reports/debug_phase_selector_touch.txt build/reports/debug_phase_selector_display_restore.txt build/reports/game_phase_transition_scene_lifecycle.txt build/reports/game_phase_transition_scene_update.txt build/reports/game_phase_apply_scene.txt build/reports/game_phase_effect_scene.txt build/reports/game_phase_load_scene_lifecycle.txt build/reports/game_phase_load_scene_update.txt build/reports/game_phase_load_scene_callbacks.txt build/reports/game_phase_state_lifecycle.txt build/reports/game_phase_state_configuration.txt build/reports/game_phase_state_runtime.txt build/reports/game_phase_state_controls.txt build/reports/game_phase_state_boundary_transition.txt build/reports/game_phase_state_object_create.txt build/reports/debug_hud_state_lifecycle.txt build/reports/debug_hud_state_runtime.txt build/reports/game_phase_resume_scene.txt build/reports/game_phase_visual_effect_lifecycle.txt build/reports/game_phase_visual_effect_update.txt build/reports/game_phase_visual_effect_position.txt build/reports/game_phase_visual_effect_controls.txt build/reports/game_phase_touch_prompt_lifecycle.txt build/reports/game_phase_touch_prompt_runtime.txt build/reports/game_phase_touch_prompt_states.txt build/reports/game_phase_currency_hud_lifecycle.txt build/reports/game_phase_currency_hud_values.txt build/reports/game_phase_currency_hud_update.txt build/reports/game_phase_currency_hud_display.txt build/reports/game_phase_region_table_lifecycle.txt build/reports/game_phase_region_table_queries.txt build/reports/game_phase_region_table_load.txt build/reports/game_phase_region_table_flags.txt build/reports/game_phase_area_scene_lifecycle.txt build/reports/game_phase_area_scene_runtime.txt build/reports/game_phase_area_scene_controls.txt build/reports/game_phase_area_scene_helpers.txt build/reports/game_phase_script_vm_lifecycle.txt build/reports/game_phase_script_vm_runtime.txt build/reports/game_phase_script_vm_runtime_opcodes.txt build/reports/game_phase_script_vm_actor_opcodes.txt build/reports/game_phase_script_vm_math_opcodes.txt build/reports/game_phase_script_vm_actor_state_opcodes.txt build/reports/game_phase_script_vm_movement_opcode.txt build/reports/game_phase_script_vm_movement_status_opcodes.txt build/reports/game_phase_script_vm_actor_query_opcodes.txt build/reports/game_phase_script_vm_actor_flag_opcodes.txt build/reports/game_phase_script_vm_actor_target_opcodes.txt build/reports/game_phase_script_vm_actor_interaction_opcodes.txt build/reports/game_phase_script_vm_actor_bit_query_opcodes.txt build/reports/game_phase_script_vm_gamework_flag_opcodes.txt build/reports/game_phase_script_vm_actor_local_state_opcodes.txt build/reports/game_phase_script_vm_actor_action_opcodes.txt build/reports/game_phase_script_vm_effect_state_opcodes.txt build/reports/game_phase_script_vm_effect_spawn_opcode.txt build/reports/game_phase_script_vm_actor_position_opcodes.txt build/reports/game_phase_script_vm_phase_request_opcode.txt build/reports/game_phase_script_vm_display_opcodes.txt build/reports/game_phase_script_vm_actor_presentation_opcodes.txt build/reports/game_phase_script_vm_actor_command_dispatch.txt build/reports/game_phase_script_vm_geometry_opcodes.txt build/reports/game_phase_script_vm_debug_ui_opcodes.txt build/reports/game_phase_script_vm_debug_object_opcodes.txt build/reports/game_phase_script_vm_debug_wait_opcode.txt build/reports/game_phase_script_vm_data_table_opcodes.txt build/reports/game_phase_script_vm_actor_rect_opcodes.txt build/reports/game_phase_script_vm_actor_cross_collection_command_opcode.txt build/reports/game_phase_script_vm_utility_opcodes.txt build/reports/game_phase_script_vm_actor_activation_opcodes.txt build/reports/game_phase_script_vm_actor_presentation_rebuild_opcode.txt build/reports/game_phase_script_vm_actor_orientation_opcodes.txt build/reports/game_phase_script_vm_u16_table_update_opcodes.txt build/reports/game_phase_script_vm_table_query_opcodes.txt build/reports/game_phase_script_vm_runtime_command_dispatch.txt build/reports/game_phase_script_vm_runtime_misc_opcodes.txt build/reports/game_phase_script_vm_record_dispatch_opcodes.txt build/reports/game_phase_script_vm_packed_runtime_query_opcode.txt build/reports/game_phase_script_vm_packed_runtime_update_opcode.txt build/reports/game_phase_script_vm_actor_grid_placement_opcode.txt build/reports/game_phase_script_vm_actor_rectangle_query_opcode.txt build/reports/game_phase_script_vm_actor_sequence_opcodes.txt build/reports/game_phase_script_vm_runtime_motion_opcodes.txt build/reports/game_phase_script_vm_actor_control_flag_opcode.txt build/reports/game_phase_script_vm_currency_opcodes.txt build/reports/game_phase_script_vm_tiered_effect_opcode.txt build/reports/game_phase_script_vm_brightness_opcodes.txt build/reports/game_phase_script_vm_debug_hud_content_opcodes.txt build/reports/game_phase_script_vm_dual_effect_opcode.txt build/reports/game_phase_script_vm_runtime_control_opcodes.txt build/reports/game_phase_script_vm_indexed_object_command_opcodes.txt build/reports/game_phase_script_vm_global_object_query_opcodes.txt build/reports/game_phase_script_vm_conditional_global_command_opcode.txt build/reports/game_phase_script_vm_conditional_actor_object_opcode.txt build/reports/game_phase_script_vm_actor_vector_command_opcode.txt build/reports/game_phase_script_vm_actor_presentation_mode_opcode.txt build/reports/game_phase_script_vm_object_factory_dispatch_opcode.txt build/reports/game_phase_script_vm_actor_subtype_command_opcode.txt build/reports/game_phase_script_vm_actor_runtime_display_opcodes.txt build/reports/game_phase_script_vm_actor_bounds_opcode.txt build/reports/game_phase_script_vm_actor_interaction_bounds_opcode.txt build/reports/game_phase_script_vm_runtime_entity_control_opcodes.txt build/reports/game_phase_script_vm_runtime_entity_query_opcode.txt build/reports/game_phase_script_vm_runtime_utility_query_opcodes.txt build/reports/game_phase_script_vm_indexed_handler_opcode.txt build/reports/game_phase_script_vm_actor_effect_dispatch_opcode.txt build/reports/game_phase_script_vm_audio_actor_state_opcodes.txt build/reports/game_phase_script_vm_runtime_manager_command_opcode.txt build/reports/game_phase_script_vm_runtime_manager_query_opcode.txt build/reports/game_phase_script_vm_subsystem_command_opcode.txt build/reports/game_phase_script_vm_misc_runtime_opcodes.txt build/reports/game_phase_script_vm_runtime_scene_prepare_opcode.txt build/reports/game_phase_script_vm_visual_effect_control_opcode.txt build/reports/game_phase_script_vm_optional_object_control_opcode.txt build/reports/game_phase_script_vm_optional_object_query_opcode.txt build/reports/game_phase_script_vm_value_generation_opcode.txt build/reports/game_phase_script_vm_sound_utility_opcodes.txt build/reports/game_phase_script_vm_sound_command_opcode.txt build/reports/game_phase_script_vm_sound_parameter_opcodes.txt build/reports/game_phase_script_vm_sound_extended_command_opcode.txt build/reports/game_phase_script_vm_sound_five_operand_opcode.txt build/reports/game_phase_script_vm_sound_high_arity_opcodes.txt build/reports/game_phase_script_vm_packed_bit_grid_opcodes.txt build/reports/game_phase_script_vm_rectangle_point_query_opcode.txt build/reports/game_phase_script_vm_runtime_entity_position_opcodes.txt build/reports/game_phase_script_vm_runtime_scene_mode_opcode.txt build/reports/game_phase_script_vm_indexed_global_query_opcode.txt build/reports/game_phase_script_vm_scaled_runtime_value_opcode.txt build/reports/game_phase_script_vm_global_state_query_opcodes.txt build/reports/game_phase_script_vm_final_runtime_opcodes.txt build/reports/game_phase_actor_script_vm_lifecycle.txt build/reports/game_phase_actor_script_vm_dispatch.txt build/reports/game_heap_delete_helper.txt build/reports/game_phase_script_vm_byte_read_helpers.txt build/reports/game_phase_script_vm_control_flow_opcodes.txt build/reports/game_phase_script_vm_register_transfer_opcodes.txt build/reports/game_phase_script_vm_add_subtract_opcodes.txt build/reports/game_phase_script_vm_multiply_divide_opcodes.txt build/reports/game_phase_script_vm_bitwise_opcodes.txt build/reports/game_phase_script_vm_branch_misc_opcodes.txt build/reports/game_phase_script_vm_comparison_opcodes.txt build/reports/game_phase_script_vm_call_return_opcodes.txt build/reports/game_phase_script_vm_external_storage_opcodes.txt build/reports/game_phase_script_vm_stack_storage_opcodes.txt build/reports/sub_bg_control.txt build/reports/sub_bg_text_control.txt build/reports/sub_bg_runtime_control.txt build/reports/main_bg_control.txt build/reports/bg_resource_upload.txt build/reports/main_bg_runtime_control.txt build/reports/sub_bg_resource_upload.txt build/reports/bg_blend_control.txt build/reports/overlay52_scene_lifecycle.txt build/reports/overlay_transition_scene.txt build/reports/overlay33_runtime_scene.txt build/reports/overlay60_object_spawn.txt build/reports/runtime_presentation_manager.txt build/reports/runtime_presentation_dispatch.txt build/reports/timed_sprite_presentation.txt build/reports/timed_sprite_oriented_variant.txt build/reports/timed_sprite_offset_variant.txt build/reports/software_canvas_data.txt build/reports/graphics_sprite_group.txt build/reports/graphics_sprite_group_owner.txt build/reports/graphics_sprite_pool.txt build/reports/graphics_sprite_oam.txt build/reports/graphics_sprite_vram_binding.txt build/reports/graphics_sprite_indexed_release.txt build/reports/graphics_sprite_renderer.txt build/reports/graphics_sprite_renderer_hw.txt build/reports/graphics_sprite_renderer_accessors.txt build/reports/graphics_sprite_palette_upload.txt build/reports/graphics_sprite_text_printf.txt build/reports/graphics_sprite_text_oam.txt build/reports/graphics_sprite_font_lookup.txt build/reports/graphics_sprite_character_map.txt build/reports/graphics_sprite_number_format.txt build/reports/graphics_sprite_font_dispatch.txt build/reports/graphics_sprite_text_layout.txt build/reports/graphics_sprite_canvas.txt build/reports/graphics_sprite_runtime_lifecycle.txt build/reports/graphics_sprite_region_allocator.txt build/reports/graphics_sprite_small_region_allocator.txt build/reports/graphics_animation_instance_setup.txt build/reports/graphics_animation_instance_update.txt build/reports/graphics_3d_polygon_attr.txt build/reports/graphics_animation_instance_manager.txt build/reports/graphics_animation_instance_manager_render.txt build/reports/graphics_3d_resource_owner.txt build/reports/graphics_3d_resource_owner_lifecycle.txt build/reports/graphics_3d_resource_owner_managers.txt build/reports/graphics_animation_instance_resources.txt build/reports/graphics_3d_resource_regions.txt build/reports/graphics_3d_resource_owner_ops.txt build/reports/graphics_3d_light.txt build/reports/graphics_3d_light_set.txt build/reports/graphics_3d_scene_state.txt build/reports/graphics_3d_scene_state_apply.txt build/reports/graphics_3d_resource_binding.txt build/reports/graphics_3d_resource_binding_queries.txt build/reports/graphics_3d_render_object.txt build/reports/graphics_3d_render_object_draw.txt build/reports/graphics_display.txt build/reports/error_display.txt build/reports/checked_fs.txt build/reports/game_string.txt build/reports/game_file.txt build/reports/touch_region.txt build/decomp/lib/tingle.a references
 build rom: phony build/tingle.recompiled.nds
@@ -43545,7 +43762,8 @@ build overlay645: phony overlay645_matching
 build link_replacement_objects_623: phony build/decomp/asm/overlays/ov645/overlay645_02233c60.o link_replacement_objects_624
 subninja config/arm9/overlays/ov646/matching.ninja
 build overlay646: phony overlay646_matching
-build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o
+build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
+  build/decomp/src/game/title_random_value.o build/decomp/src/game/title_interpolated_value.o build/decomp/src/game/title_interpolated_value_advance.o build/decomp/src/game/title_interpolated_value_complete.o build/decomp/src/game/title_screen_resource_collection.o build/decomp/src/game/title_screen_resource_collection_destructor.o build/decomp/src/game/title_screen_resource_collection_ops.o build/decomp/src/game/title_character_resource_collection.o build/decomp/src/game/title_character_resource_collection_destructor.o build/decomp/src/game/title_character_resource_collection_ops.o build/decomp/src/game/title_scroll_value.o
 build build/decomp/src/overlays/ov025/overlay025_effect_base_noop.o: mwccarm src/overlays/ov025/overlay025_effect_base_noop.c | include/tingle/types.h
   source = src/overlays/ov025/overlay025_effect_base_noop.c
   cflags = $overlay025_effect_controller_cflags
