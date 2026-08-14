@@ -7077,3 +7077,12 @@ src/game/actor_interaction_candidate_runtime.c:
 src/game/actor_rectangle_geometry.c:
     categories: Game code
     .text       start:0x02056f00 end:0x02057084
+src/graphics/graphics_bank_state_snapshot.c:
+    categories: Game code
+    .text       start:0x020923a4 end:0x020925a4
+src/graphics/title_display_setup_helpers.c:
+    categories: Game code
+    .text       start:0x020925a4 end:0x020926d8
+src/graphics/display_brightness_helpers.c:
+    categories: Game code
+    .text       start:0x02092c38 end:0x02092cc0

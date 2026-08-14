@@ -7140,3 +7140,6 @@ build/decomp/delinks/src/game/sound_context_phase_selection.o = build/decomp/src
 build/decomp/delinks/src/game/sound_context_stream_facade.o = build/decomp/src/game/sound_context_stream_facade.o
 build/decomp/delinks/src/game/actor_interaction_candidate_runtime.o = build/decomp/src/game/actor_interaction_candidate_runtime.o
 build/decomp/delinks/src/game/actor_rectangle_geometry.o = build/decomp/src/game/actor_rectangle_geometry.o
+build/decomp/delinks/src/graphics/graphics_bank_state_snapshot.o = build/decomp/src/graphics/graphics_bank_state_snapshot.o
+build/decomp/delinks/src/graphics/title_display_setup_helpers.o = build/decomp/src/graphics/title_display_setup_helpers.o
+build/decomp/delinks/src/graphics/display_brightness_helpers.o = build/decomp/src/graphics/display_brightness_helpers.o
