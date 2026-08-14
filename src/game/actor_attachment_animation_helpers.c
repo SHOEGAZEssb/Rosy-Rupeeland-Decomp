@@ -4,7 +4,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02057084(s32 x, s32 y);
+extern u16 func_020ae024(s32 y, s32 x);
+extern const s8 data_020e3f50[];
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void ActorBounds_Translate(void *bounds, s32 x, s32 y);
@@ -12,6 +13,18 @@ extern void Position_AdjustForTerrainHeight(void *position);
 #ifdef __cplusplus
 }
 #endif
+
+/*
+ * Convert a signed X/Y vector into the retail 16-sector attachment direction.
+ * The arctangent helper returns a full-turn unsigned 16-bit angle; its upper
+ * nibble selects the signed direction byte in the fixed recovered lookup
+ * table. No state changes and the zero-vector result follows SDK atan2.
+ */
+s32 func_02057084(s32 x, s32 y)
+{
+    u16 angle = func_020ae024(y, x);
+    return data_020e3f50[(u32)angle >> 12];
+}
 
 /*
  * If actor+0x54 has an attachment, derive a direction from the supplied 20.12

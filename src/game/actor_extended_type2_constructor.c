@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Construct and configure the extended type-two actor object at size >=0x295. */
-extern const void *data_020dfee4;
+extern const void *data_020dfee4[];
 extern void *gInteractionRecordAllocatorPool;
 extern const char gInteractionWaypointCursorAllocationTag[];
 extern const char data_020e00c0[];

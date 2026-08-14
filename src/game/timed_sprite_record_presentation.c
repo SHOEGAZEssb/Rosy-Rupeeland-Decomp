@@ -28,7 +28,7 @@ typedef struct TimedSpriteRecordPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d62b0;
+extern void *data_020d62b0[];
 extern const char data_020d62d0[];
 extern u8 *data_021052fc;
 extern void *func_0201e250(void *self);
@@ -60,7 +60,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
     void *runtime;
 
     func_0201e250(self);
-    self->vtable = (void **)data_020d62b0;
+    self->vtable = data_020d62b0;
     self->field08 = field08;
     self->record10 = GamePhaseGraphicsMetadata_GetByIndex(*(const s16 *)(config + 0x12));
     self->field14 = *(const s32 *)(config + 0x34);

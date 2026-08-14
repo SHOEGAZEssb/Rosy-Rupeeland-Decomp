@@ -18,6 +18,7 @@ extern u8 data_021f38e8[];
 extern u8 data_021f38fc[];
 extern void OS_Halt(void);
 extern void *func_02063b90(void *database, u16 id);
+extern void func_02022fbc(void *configuration);
 
 static u16 ReadU16(const u8 *bytes)
 {
@@ -74,7 +75,9 @@ void func_020782f0(void *group_pointer, u32 slot, s32 value8, u32 actor_id,
     u8 *entry = AllocateDescriptor();
     u8 *runtime = entry + 8;
 
-    memset(entry, 0, 0x2c);
+    func_02022fbc(runtime);
+    *(u16 *)(entry + 2) = 0;
+    *(u16 *)(entry + 6) = 0;
     entry[0] = (u8)value6;
     entry[1] = (u8)value7;
     *(u16 *)(entry + 4) = (u16)(value8 << 4);
@@ -158,7 +161,6 @@ void func_02078370(void)
 {
     func_02078428(data_021f38fc);
 }
-
 
 
 

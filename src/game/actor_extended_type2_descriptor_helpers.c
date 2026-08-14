@@ -8,10 +8,88 @@ extern u8 data_020e8380[];
 extern u8 data_020e83a8[];
 extern u8 data_020e83aa[];
 extern u8 data_020e83ac[];
+extern u8 data_020e35d4[];
+extern u8 data_020e363c[];
+extern u32 data_021057cc[4];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+extern s32 func_020adcac(const s32 *left, const s32 *right);
+extern s32 func_020562cc(void *actor);
+
+/* Apply the retail kind 0x67 resource gate or kind 0x65 age gate. */
+s32 func_020562cc(void *self)
+{
+    u8 *actor = (u8 *)self;
+    u16 kind = *(u16 *)(actor + 0x4e);
+
+    if (kind == 0x67) {
+        void *resource = *(void **)(actor + 0x1fc);
+
+        if (resource != *(void **)(data_020e35d4 + 0x68))
+            return 0;
+        return *(void **)(actor + 0x200) ==
+                   *(void **)(data_020e363c + 4) ||
+               resource == 0;
+    }
+    if (kind == 0x65)
+        return *(s16 *)(actor + 0x1f6) > 60;
+    return 0;
+}
+
+/*
+ * Return the registered interaction candidate when its retail kind-specific
+ * eligibility gate passes and its fixed-point distance is below the candidate
+ * descriptor radius. The candidate and descriptor storage remain borrowed.
+ */
+void *func_020536b8(void *self)
+{
+    u8 *actor = (u8 *)self;
+    u8 *candidate = (u8 *)data_021057cc[2];
+
+    if (candidate == 0 || func_020562cc(candidate) == 0)
+        return 0;
+
+    {
+        s32 distance = func_020adcac((s32 *)(actor + 0x1c),
+                                     (s32 *)(candidate + 0x1c));
+        s32 radius = *(s16 *)(*(u8 **)(candidate + 0x1f8) + 0x0c) << 12;
+        return distance < radius ? candidate : 0;
+    }
+}
+
+/* Return slot three when its descriptor-radius distance test succeeds. */
+void *func_02053728(void *self)
+{
+    u8 *actor = (u8 *)self;
+    u8 *candidate = (u8 *)data_021057cc[3];
+    s32 distance;
+    s32 radius;
+
+    if (candidate == 0)
+        return 0;
+    distance = func_020adcac((s32 *)(candidate + 0x1c),
+                             (s32 *)(actor + 0x1c));
+    radius = *(s16 *)(*(u8 **)(candidate + 0x1f8) + 0x0c) << 12;
+    return distance < radius ? candidate : 0;
+}
+
+/* Return slot zero when its kind gate and descriptor-radius test both pass. */
+void *func_02053780(void *self)
+{
+    u8 *actor = (u8 *)self;
+    u8 *candidate = (u8 *)data_021057cc[0];
+    s32 distance;
+    s32 radius;
+
+    if (candidate == 0 || func_020562cc(candidate) == 0)
+        return 0;
+    distance = func_020adcac((s32 *)(candidate + 0x1c),
+                             (s32 *)(actor + 0x1c));
+    radius = *(s16 *)(*(u8 **)(candidate + 0x1f8) + 0x0c) << 12;
+    return distance < radius ? candidate : 0;
+}
 extern void *func_020536b8(void *actor);
 extern void *func_02053728(void *actor);
 extern void *func_02053780(void *actor);

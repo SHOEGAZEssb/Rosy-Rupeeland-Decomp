@@ -172,13 +172,50 @@ s32 TingleRecoveredCanonicalStartup(void)
     return 1;
 }
 
-/* Execute the title-relevant retail main-loop calls in their recovered order. */
+/*
+ * Derive the second, gameplay-facing pad record exactly as retail main does at
+ * 0x02000D48..0x02000E2C. Direct D-pad input selects D-pad movement, while
+ * pressing A/B/X/Y selects the alternate right/down/up/left movement layout.
+ * The physical face-button bits and GameWork's phase-owned suppression mask
+ * are removed before the normal pad edge/repeat updater receives slot one.
+ * The resulting repeated/pressed/held snapshots are also mirrored into the
+ * three GameWork halfwords consumed by other gameplay systems. Returns no
+ * value; SystemState, GameWork flag 0x384, and GameWork input snapshots change.
+ */
+static void UpdateGameplayKeyState(void)
+{
+    u16 keys = gSystemState.pads[0].held;
+    u8 *work = (u8 *)gGameWork;
+
+    if ((keys & 0x00f0) != 0) {
+        GameWork_ClearFlag(gGameWork, 0x384);
+    } else if ((keys & 0x0c03) != 0) {
+        GameWork_SetFlag(gGameWork, 0x384);
+    }
+
+    if (GameWork_TestFlag(gGameWork, 0x384) != 0) {
+        if ((keys & 0x0001) != 0) keys |= 0x0010;
+        if ((keys & 0x0002) != 0) keys |= 0x0080;
+        if ((keys & 0x0800) != 0) keys |= 0x0020;
+        if ((keys & 0x0400) != 0) keys |= 0x0040;
+    }
+
+    keys &= (u16)~0x0c03;
+    keys &= (u16)~*(s16 *)(work + 0x228);
+    UpdateKeyState(keys, 1);
+    *(u16 *)(work + 0x226) = gSystemState.pads[1].held;
+    *(u16 *)(work + 0x224) = gSystemState.pads[1].pressed;
+    *(u16 *)(work + 0x222) = gSystemState.pads[1].repeated;
+}
+
+/* Execute the recovered retail main-loop calls in their original order. */
 void TingleRecoveredCanonicalRunFrame(void)
 {
     UpdateSystemFrame();
     genrand_int32();
     DisplayBrightness_UpdateAll();
     TouchPanelManager_Update(gTouchPanelManager);
+    UpdateGameplayKeyState();
     FrameTaskList_Update();
     SceneManager_UpdateCurrent(gSceneManager);
     if (data_020f4e1c != NULL) {
