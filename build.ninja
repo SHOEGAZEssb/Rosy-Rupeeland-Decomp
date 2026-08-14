@@ -11485,7 +11485,7 @@ build build/reports/signed_absolute.json: objdiff build/decomp/delinks/src/math/
   base_object = build/decomp/src/math/signed_absolute.o
 build build/reports/signed_absolute.txt: match_report build/reports/signed_absolute.json | tools/report_objdiff.py
   report_json = build/reports/signed_absolute.json
-  report_args = --section .text --function func_020be334 --require-exact
+  report_args = --section .text --function func_020be328 --function func_020be334 --require-exact
 
 build signed_absolute: phony build/reports/signed_absolute.txt
 build build/reports/title_random_value.json: objdiff build/decomp/delinks/src/game/title_random_value.o | build/decomp/src/game/title_random_value.o
