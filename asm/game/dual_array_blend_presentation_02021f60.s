@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -93,4 +93,3 @@ DualArrayBlendPresentation_ApplyFrameOffsets: ; 0x02021f60
 .L_02022038: .word 0x4000010
 .L_0202203c: .word 0x4001018
     .size DualArrayBlendPresentation_ApplyFrameOffsets, .-DualArrayBlendPresentation_ApplyFrameOffsets
-

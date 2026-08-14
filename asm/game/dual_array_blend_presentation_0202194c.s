@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -65,4 +65,3 @@ DualArrayBlendPresentation_RetargetSeparated: ; 0x0202194c
     blt .L_02021968
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     .size DualArrayBlendPresentation_RetargetSeparated, .-DualArrayBlendPresentation_RetargetSeparated
-

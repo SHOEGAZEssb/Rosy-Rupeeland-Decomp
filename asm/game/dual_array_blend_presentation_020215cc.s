@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -99,11 +99,10 @@ DualArrayBlendPresentation_Init: ; 0x020215cc
     bl ExtendedCallbackState_SetReferencesAndReset
     mov r0, r10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_020216c8: .word data_020d658c
+.L_020216c8: .word gDualArrayBlendPresentationVtable
 .L_020216cc: .word BlendElement_DestroyNoOp
 .L_020216d0: .word func_02094ad4
 .L_020216d4: .word gGameWork
 .L_020216d8: .word 0x3d2
 .L_020216dc: .word data_020d63d0
     .size DualArrayBlendPresentation_Init, .-DualArrayBlendPresentation_Init
-

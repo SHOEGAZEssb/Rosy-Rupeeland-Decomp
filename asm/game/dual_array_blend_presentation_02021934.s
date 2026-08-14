@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -42,4 +42,3 @@ BlendElement_StartDuration: ; 0x02021934
     str r1, [r0, #0x80]
     bx lr
     .size BlendElement_StartDuration, .-BlendElement_StartDuration
-

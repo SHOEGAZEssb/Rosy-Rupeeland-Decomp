@@ -22,7 +22,7 @@ typedef s32 (*TaggedCallback)(void *);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d658c;
+extern void *gDualArrayBlendPresentationVtable;
 extern const void *data_020d63d0[];
 extern const void *data_020d63e0[];
 extern void *data_021055dc;
@@ -69,7 +69,7 @@ DualArrayBlendPresentation *DualArrayBlendPresentation_Init(
 {
     s32 i;
     func_0201e250(self);
-    self->vtable = (void **)data_020d658c;
+    self->vtable = (void **)gDualArrayBlendPresentationVtable;
     for (i = 0; i < 3; i++) {
         func_02094ad4(&self->first20[i]);
         func_02094ad4(&self->second1f4[i]);
@@ -93,7 +93,7 @@ static DualArrayBlendPresentation *teardown_blend(
     DualArrayBlendPresentation *self)
 {
     s32 i;
-    self->vtable = (void **)data_020d658c;
+    self->vtable = (void **)gDualArrayBlendPresentationVtable;
     if (self->engine18 == 1) {
         volatile u32 *dispcnt = (volatile u32 *)0x04000000;
         *dispcnt = (*dispcnt & ~0x1f00) |

@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -110,4 +110,3 @@ DualArrayBlendPresentation_UpdateTransition: ; 0x020219bc
 .L_02021ad0: .word 0x4001050
 .L_02021ad4: .word 0x4001000
     .size DualArrayBlendPresentation_UpdateTransition, .-DualArrayBlendPresentation_UpdateTransition
-

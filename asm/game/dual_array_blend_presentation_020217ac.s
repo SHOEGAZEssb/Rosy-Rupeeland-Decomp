@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -86,9 +86,8 @@ DualArrayBlendPresentation_DestroyAndFree: ; 0x020217ac
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_02021870: .word data_020d658c
+.L_02021870: .word gDualArrayBlendPresentationVtable
 .L_02021874: .word 0x4001000
 .L_02021878: .word data_021055dc
 .L_0202187c: .word BlendElement_DestroyNoOp
     .size DualArrayBlendPresentation_DestroyAndFree, .-DualArrayBlendPresentation_DestroyAndFree
-

@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -53,4 +53,3 @@ DualArrayBlendPresentation_DispatchCallback: ; 0x02021880
     mov r0, #0x0
     ldmia sp!, {r3, pc}
     .size DualArrayBlendPresentation_DispatchCallback, .-DualArrayBlendPresentation_DispatchCallback
-

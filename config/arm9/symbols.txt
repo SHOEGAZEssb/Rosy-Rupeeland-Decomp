@@ -7004,7 +7004,7 @@ data_020d64f8 kind:data(any) addr:0x020d64f8
 gPaletteCyclePresentationVtable kind:data(any) addr:0x020d6514
 data_020d653c kind:data(any) addr:0x020d653c
 data_020d6564 kind:data(any) addr:0x020d6564
-data_020d658c kind:data(any) addr:0x020d658c
+gDualArrayBlendPresentationVtable kind:data(any) addr:0x020d658c
 gOverlayPromptWorkerAllocationTag kind:data(any) addr:0x020d65ac
 gSpriteNumberGroupNodeAllocationTag kind:data(any) addr:0x020d65b4
 data_020d65bc kind:data(any) addr:0x020d65bc

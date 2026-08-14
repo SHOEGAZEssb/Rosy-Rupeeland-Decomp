@@ -9,7 +9,7 @@
 .extern data_020c36c4
 .extern data_020d63d0
 .extern data_020d63e0
-.extern data_020d658c
+.extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
 .extern func_0201e250
 .extern func_0201e28c
@@ -178,4 +178,3 @@ DualArrayBlendPresentation_ApplyScanlineOffsets: ; 0x02022040
 .L_02022254: .word 0x4000008
 .L_02022258: .word 0x400100c
     .size DualArrayBlendPresentation_ApplyScanlineOffsets, .-DualArrayBlendPresentation_ApplyScanlineOffsets
-
