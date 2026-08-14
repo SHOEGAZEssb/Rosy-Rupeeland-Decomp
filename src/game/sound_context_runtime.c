@@ -473,20 +473,18 @@ u16 func_0205936c(void *context, u16 sequence)
 
 /* Start a sequence-archive member with its archive defaults. The bedroom's
  * cloud reveal also starts common effect 0:46 (se_00_evt_sq01) on the same
- * frame as 34:1. Retail audio confirms both layers, while the scene-side host
- * path currently reaches this facade with only the phase-specific 34:1
- * request. Keep that compatibility pairing scoped to phase 5. */
+ * frame as its scene-specific 34:1 effect. Retail Sound_Play ignores context,
+ * so identify this compatibility pairing by that exact archive member. */
 void Sound_Play(void *context, s32 archive, s32 member)
 {
-    if (context != 0 &&
-        *(u32 *)((u8 *)context + 0xa8) == HOST_BEDROOM_PHASE &&
-        archive == HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE &&
+    (void)context;
+    TingleNativeSound_PlayArchive(archive, member, 0x7f, 0, 0, 0);
+    if (archive == HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE &&
         member == HOST_BEDROOM_CLOUD_REVEAL_MEMBER) {
         TingleNativeSound_PlayArchive(
             HOST_BEDROOM_CLOUD_REVEAL_HARP_ARCHIVE,
             HOST_BEDROOM_CLOUD_REVEAL_HARP_MEMBER, 0x7f, 0, 0, 0);
     }
-    TingleNativeSound_PlayArchive(archive, member, 0x7f, 0, 0, 0);
 }
 
 /* Start an effect with explicit volume, pan, pitch, and no retained owner. */
