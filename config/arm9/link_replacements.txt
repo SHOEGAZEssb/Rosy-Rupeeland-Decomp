@@ -7138,3 +7138,5 @@ build/decomp/delinks/asm/overlays/ov645/overlay645_02233c60.o = build/decomp/asm
 build/decomp/delinks/asm/overlays/ov646/overlay646_02233c60.o = build/decomp/asm/overlays/ov646/overlay646_02233c60.o
 build/decomp/delinks/src/game/sound_context_phase_selection.o = build/decomp/src/game/sound_context_phase_selection.o
 build/decomp/delinks/src/game/sound_context_stream_facade.o = build/decomp/src/game/sound_context_stream_facade.o
+build/decomp/delinks/src/game/actor_interaction_candidate_runtime.o = build/decomp/src/game/actor_interaction_candidate_runtime.o
+build/decomp/delinks/src/game/actor_rectangle_geometry.o = build/decomp/src/game/actor_rectangle_geometry.o

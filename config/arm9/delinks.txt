@@ -7071,3 +7071,9 @@ src/game/sound_context_phase_selection.c:
 src/game/sound_context_stream_facade.c:
     categories: Game code
     .text       start:0x02059510 end:0x02059604
+src/game/actor_interaction_candidate_runtime.c:
+    categories: Game code
+    .text       start:0x020534cc end:0x020536b0
+src/game/actor_rectangle_geometry.c:
+    categories: Game code
+    .text       start:0x02056f00 end:0x02057084
