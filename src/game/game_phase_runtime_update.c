@@ -3,8 +3,9 @@
 
 /*
  * Main per-frame controller for GamePhaseRuntime. It consumes queued phase
- * requests, advances the active scene, and creates transition/effect objects.
- * The retail instruction schedule is retained in the matching assembly file.
+ * requests, advances the active scene and its presentation manager at 0x2f7c,
+ * and creates transition/effect objects. The retail instruction schedule is
+ * retained in the matching assembly file.
  */
 
 extern u8 gGamePhaseRuntimeUpdateAllocationTag[];
@@ -152,7 +153,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         func_0200866c(self);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 0);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
-        func_0201dcec(b + 0x2ffc, 1);
+        func_0201dcec(b + 0x2f7c, 1);
         GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
         if (GamePhaseRuntime_DispatchActorQueryRequest(self))
             return 0;
