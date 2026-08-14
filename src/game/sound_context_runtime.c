@@ -66,7 +66,10 @@ void func_020597fc(void *context, s32 group);
 
 enum {
     HOST_BEDROOM_PHASE = 5,
-    HOST_BEDROOM_STREAM = 13
+    HOST_BEDROOM_STREAM = 13,
+    HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE = 34,
+    HOST_BEDROOM_CLOUD_REVEAL_MEMBER = 1,
+    HOST_BEDROOM_CLOUD_REVEAL_STREAM = 2
 };
 
 /* The host preview restores the bedroom stream after scene setup clears the
@@ -467,11 +470,20 @@ u16 func_0205936c(void *context, u16 sequence)
         ? TingleNativeSound_GetSequenceTrackMask(sequence) : 0;
 }
 
-/* Start a sequence-archive member with its archive defaults. */
+/* Start a sequence-archive member with its archive defaults. The currently
+ * recovered bedroom scene reaches the cloud reveal as SSAR 34:1 but omits its
+ * retail STRM 2 harp request. Pair that one exact cue at the game-owned facade
+ * until the indirect script owner of the stream request is recovered. */
 void Sound_Play(void *context, s32 archive, s32 member)
 {
     (void)context;
     TingleNativeSound_PlayArchive(archive, member, 0x7f, 0, 0, 0);
+    if (gSoundContext != 0 &&
+        *(u32 *)((u8 *)gSoundContext + 0xa8) == HOST_BEDROOM_PHASE &&
+        archive == HOST_BEDROOM_CLOUD_REVEAL_ARCHIVE &&
+        member == HOST_BEDROOM_CLOUD_REVEAL_MEMBER)
+        TingleNativeSound_PlayStream(HOST_BEDROOM_CLOUD_REVEAL_STREAM,
+                                     0, 0x7f, 0);
 }
 
 /* Start an effect with explicit volume, pan, pitch, and no retained owner. */
