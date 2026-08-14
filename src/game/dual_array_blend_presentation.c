@@ -172,11 +172,12 @@ void DualArrayBlendPresentation_RetargetSeparated(DualArrayBlendPresentation *se
 s32 DualArrayBlendPresentation_UpdateTransition(
     DualArrayBlendPresentation *self, s32 first, s32 second)
 {
-    s32 i, alpha = func_02094d28(self->first20, 1, first, second);
+    s32 i, alpha;
     for (i = 0; i < 3; i++) {
         ((ElementMethod)(*(void ***)(&self->first20[i]))[2])(&self->first20[i]);
         ((ElementMethod)(*(void ***)(&self->second1f4[i]))[2])(&self->second1f4[i]);
     }
+    alpha = func_02094d28(self->first20, 1, first, second);
     if (alpha > 16) alpha = 16;
     if (self->engine18 == 1) {
         func_020afd0c((void *)0x04000050, 3, 0x3c, alpha, 16 - alpha);
