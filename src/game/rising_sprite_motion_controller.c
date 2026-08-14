@@ -40,10 +40,11 @@ extern void VecFx32Triple_Init(void *path);
 extern void VecFx32Triple_Destroy(void *value);
 extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(PresentationValue *value);
-extern void func_02008378(PresentationValue *destination, s32 argument,
-                          PresentationValue *source);
-extern void VecFx32Triple_InitWithValues(void *destination, s32 first,
-                          PresentationValue *source, s32 second);
+extern void func_02008378(PresentationValue *destination,
+                          const PresentationValue *left,
+                          const PresentationValue *right);
+extern void VecFx32Triple_InitWithValues(void *destination, const void *first,
+                          PresentationValue *source, const void *second);
 extern void VecFx32Triple_Assign(void *path, void *source);
 extern void ActorMotionOscillation_InitInterval(void *value, s32 first, s32 second, s32 third);
 extern void ActorMotionTriple_Assign(void *state, void *source);
@@ -81,7 +82,7 @@ s32 SpriteMotionDelta_Step(SpriteMotionDelta *self);
  */
 RisingSpriteMotionController *RisingSpriteMotionController_Init(
     RisingSpriteMotionController *self, void *spriteOwner, s32 unused,
-    const s32 *spriteConfig, s32 pathArgument)
+    const s32 *spriteConfig, const PresentationValue *path, s32 sequence)
 {
     PresentationValue value60;
     PresentationValue value50;
@@ -90,6 +91,7 @@ RisingSpriteMotionController *RisingSpriteMotionController_Init(
     u8 oscillationValue[0x0c];
 
     (void)unused;
+    (void)sequence;
     self->sprite00 = 0;
     self->spriteOwner04 = spriteOwner;
     self->state08 = 0;
@@ -100,8 +102,8 @@ RisingSpriteMotionController *RisingSpriteMotionController_Init(
     self->offset5c = 0;
     self->systemTime60 = *(s32 *)(gSystemState + 0x64);
     VecFx32Object_InitComponents(&value60, 0, 0, 0x46000);
-    func_02008378(&value50, pathArgument, &value60);
-    VecFx32Triple_InitWithValues(pathValue20, pathArgument, &value50, pathArgument);
+    func_02008378(&value50, path, &value60);
+    VecFx32Triple_InitWithValues(pathValue20, path, &value50, path);
     VecFx32Triple_Assign(self->path1c, pathValue20);
     VecFx32Triple_Destroy(pathValue20);
     VecFx32Object_Destroy(&value50);

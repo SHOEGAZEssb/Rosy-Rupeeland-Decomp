@@ -59,8 +59,9 @@ extern void VecFx32Object_InitCopy(PresentationValue *destination, const void *s
 extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void VecFx32Object_Add(PresentationValue *destination,
                           PresentationValue *source);
-extern void func_02008378(PresentationValue *destination, s32 argument,
-                          PresentationValue *source);
+extern void func_02008378(PresentationValue *destination,
+                          const PresentationValue *left,
+                          const PresentationValue *right);
 extern void func_02071ea4(void *state);
 extern void func_02071eb8(void *state);
 extern void func_02071ee0(void *state, void *table, s32 first, s32 second,
@@ -74,7 +75,7 @@ extern void GameWork_SetFlag(void *gameWork, s32 flag);
 extern void *RisingSpriteMotionController_Init(void *self, void *resource24,
                                                 void *resource28,
                                                 void *spriteConfig,
-                                                s32 pathArgument,
+                                                const void *path,
                                                 s32 sequence);
 extern void *RisingSpriteMotionController_Destroy(void *controller);
 extern s32 RisingSpriteMotionController_Update(void *controller,
@@ -312,9 +313,9 @@ void RisingSpriteSwarmPresentation_SpawnController(RisingSpriteSwarmPresentation
 
     if (controller != 0) {
         VecFx32Object_InitComponents(&base, 0, 0, 0x20000);
-        func_02008378(&path, self->nextPathArgument48, &base);
+        func_02008378(&path, &self->track38, &base);
         RisingSpriteMotionController_Init(controller, self->resource24, self->resource28,
-                      self->spriteConfig2c, (s32)&path,
+                      self->spriteConfig2c, &path,
                       self->nextPathArgument48);
         VecFx32Object_Destroy(&path);
         VecFx32Object_Destroy(&base);
