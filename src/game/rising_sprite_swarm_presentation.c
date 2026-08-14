@@ -42,8 +42,10 @@ typedef struct RisingSpriteSwarmPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6358;
-extern void *data_020d6398;
+/* These symbols name the vtable storage itself. Array declarations preserve
+ * that address when portable host code assigns them to object vtable fields. */
+extern void *data_020d6358[];
+extern void *data_020d6398[];
 extern const char gRisingSpriteSwarmControllerAllocationTag[];
 extern const char gRisingSpriteSwarmControllerListNodeAllocationTag[];
 extern void *data_020f4e14;
