@@ -68,6 +68,8 @@ static void retail_save_release_game_buffer(void);
 static s32 retail_save_poll(void *context_pointer);
 static void retail_save_begin_read(void *context_pointer, u32 offset,
                                    void *destination, u32 size);
+static void retail_save_begin_write(void *context_pointer, u32 offset,
+                                    const void *source, u32 size);
 
 /* Restore every game-owned singleton mirrored in GameWork after a load. */
 void func_0207f0c0(void)
@@ -333,6 +335,130 @@ s32 func_0207ffe8(void *context_pointer)
         break;
     }
     return 0;
+}
+
+/* Begin the retail selected-record delete operation at 0x020802F4. The
+ * operation rewrites the selected primary and mirror directory headers through
+ * func_0208035c. Asynchronous callers poll func_0207f248; synchronous callers
+ * remain here until that same state machine returns a terminal status. */
+s32 func_0208035c(void *context_pointer);
+void func_020802f4(void *context_pointer, s32 recordIndex, s32 asynchronous)
+{
+    u8 *context = (u8 *)context_pointer;
+
+    *(s32 *)(context + 0x14) = recordIndex;
+    *(s32 *)(context + 0x00) = asynchronous;
+    *(u32 *)(context + 0x08) = 2;
+    *(u32 *)(context + 0x10) = 0;
+    *(u32 *)(context + 0x1b8) = data_020ef330[12];
+    *(u32 *)(context + 0x1bc) = data_020ef330[13];
+    *(u32 *)(context + 0x1b4) = 0;
+    if (!asynchronous) {
+        do {
+            *(s32 *)(context + 0x28) = func_0207f248(context);
+        } while (*(s32 *)(context + 0x28) == 0);
+    } else {
+        *(u32 *)(context + 0x28) = 0;
+    }
+}
+
+/* Retail 0x0208035C record-delete state machine. It identifies the backup
+ * device, constructs the canonical empty directory header for the selected
+ * slot, writes that header to the primary and mirror blocks, and clears the
+ * corresponding 0x34-byte cached slot description. Returns zero while work is
+ * pending, one after both copies are updated, or -1 with result code four when
+ * a backup request fails. */
+s32 func_0208035c(void *context_pointer)
+{
+    u8 *context = (u8 *)context_pointer;
+    u32 record_index = *(u32 *)(context + 0x14);
+    u8 *header = context + 0xf4 + record_index * 0x40;
+    s32 status;
+
+    switch (*(u32 *)(context + 0x1b4)) {
+    case 0:
+        if (!func_0207f288(context)) {
+            *(s32 *)(context + 0x28) = -1;
+            *(u32 *)(context + 0x10) = 4;
+            return -1;
+        }
+        *(u32 *)(context + 0x1b4) = 1;
+        break;
+    case 1:
+        memset(header, 0, 0x40);
+        *(u32 *)(header + 4) = 0x13e8a68a;
+        *(u16 *)(header + 8) = 0x3d;
+        header[0x0a] = (u8)record_index;
+        *(u32 *)(header + 0x38) = 0x40;
+        *(u32 *)header = retail_save_crc32(header + 4, 0x3c);
+        *(u32 *)(context + 0x1b4) = 2;
+        break;
+    case 2:
+        retail_save_begin_write(context, record_index * 0xaa00u,
+                                header, 0x40);
+        *(u32 *)(context + 0x1b4) = 3;
+        break;
+    case 3:
+        status = retail_save_poll(context);
+        *(s32 *)(context + 0x28) = status;
+        if (status == 0)
+            break;
+        if (status < 0) {
+            *(u32 *)(context + 0x10) = 4;
+            return -1;
+        }
+        *(u32 *)(context + 0x1b4) = 4;
+        break;
+    case 4:
+        retail_save_begin_write(context, (record_index + 3) * 0xaa00u,
+                                header, 0x40);
+        *(u32 *)(context + 0x1b4) = 5;
+        break;
+    case 5:
+        status = retail_save_poll(context);
+        *(s32 *)(context + 0x28) = status;
+        if (status == 0)
+            break;
+        if (status < 0) {
+            *(u32 *)(context + 0x10) = 4;
+            return -1;
+        }
+        *(u32 *)(context + 0x1b4) = 6;
+        break;
+    case 6:
+        memset(context + 0x38 + record_index * 0x34, 0, 0x34);
+        return 1;
+    default:
+        break;
+    }
+    return 0;
+}
+
+/* Begin the retail whole-record copy operation at 0x020805D0. Source and
+ * destination select the three primary/mirror block pairs. The installed
+ * func_0208063c callback owns transfer-buffer allocation and both durable
+ * writes; asynchronous callers poll it through func_0207f248. */
+s32 func_020805d0(void *context_pointer, s32 sourceIndex,
+                  s32 destinationIndex, s32 asynchronous)
+{
+    u8 *context = (u8 *)context_pointer;
+
+    *(s32 *)(context + 0x14) = sourceIndex;
+    *(s32 *)(context + 0x1c) = destinationIndex;
+    *(s32 *)(context + 0x00) = asynchronous;
+    *(u32 *)(context + 0x08) = 2;
+    *(u32 *)(context + 0x10) = 0;
+    *(u32 *)(context + 0x1b8) = data_020ef330[0];
+    *(u32 *)(context + 0x1bc) = data_020ef330[1];
+    *(u32 *)(context + 0x1b4) = 0;
+    if (!asynchronous) {
+        do {
+            *(s32 *)(context + 0x28) = func_0207f248(context);
+        } while (*(s32 *)(context + 0x28) == 0);
+    } else {
+        *(u32 *)(context + 0x28) = 0;
+    }
+    return *(s32 *)(context + 0x28);
 }
 
 /* Copy a 16-code-unit record name and begin its retail write operation. */
@@ -741,7 +867,6 @@ s32 func_0208063c(void *context_pointer)
         return 0;
     }
 }
-
 
 
 
