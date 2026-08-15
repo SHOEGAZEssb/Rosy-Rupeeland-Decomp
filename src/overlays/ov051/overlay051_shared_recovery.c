@@ -60,7 +60,9 @@ extern "C" void func_ov051_0220d688(void *scene)
         u8 *record = bytes + 0x10 + index * 0x10;
         s32 scalar = func_ov051_0220d7bc(
             horizontal_range, *(s32 *)(gSystemState + 0x64) + index, 0);
-        s32 lookup = ((s16)*angle) >> 4;
+        /* Retail LDRH keeps the complete unsigned 16-bit phase; treating the
+         * high half as signed would index before the 4096-pair trig table. */
+        u32 lookup = *angle >> 4;
 
         func_020ad250(record);
         func_020ad268(record, data_020c9670[lookup * 2],
