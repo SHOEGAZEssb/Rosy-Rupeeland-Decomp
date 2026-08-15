@@ -4407,9 +4407,17 @@ src/graphics/graphics_archive_character_load.c:
     categories: Game code
     .text       start:0x02071568 end:0x02071614
 
+src/graphics/graphics_archive_character_load_uncached.c:
+    categories: Game code
+    .text       start:0x0207164c end:0x020716bc
+
 src/graphics/graphics_archive_palette_load.c:
     categories: Game code
     .text       start:0x020716bc end:0x02071760
+
+src/graphics/graphics_archive_palette_load_uncached.c:
+    categories: Game code
+    .text       start:0x02071798 end:0x02071800
 
 src/graphics/graphics_archive_screen_load.c:
     categories: Game code

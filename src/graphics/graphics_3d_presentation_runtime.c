@@ -12,7 +12,7 @@ extern u8 data_020d23fc[];
 extern const char data_020f32e8[];
 extern const char data_020f32f0[];
 extern const char data_020f32f8[];
-extern u8 data_021e9e60[];
+extern void *data_020f4e18;
 extern void *data_021052fc;
 
 extern void func_02004fe0(void *vector);
@@ -27,8 +27,8 @@ extern void func_020c0bc8(void *array, u32 count, u32 element_size,
 extern void TouchPoint_Destroy(void *point);
 extern void TouchPoint_InitZero(void *point);
 
-extern void *func_0207164c(void *manager, u32 archive_id, ...);
-extern void *func_02071798(void *manager, u32 archive_id, ...);
+extern void *func_0207164c(void *manager, u32 archive_id);
+extern void *func_02071798(void *manager, u32 archive_id);
 extern u32 func_0207043c(const void *resource);
 extern u32 func_02070474(const void *resource);
 extern u32 func_020704c8(const void *resource);
@@ -37,7 +37,7 @@ extern void *func_02070874(const void *resource);
 extern u32 func_02070888(const void *resource);
 extern void func_020b44e8(void);
 extern void func_020b239c(void);
-extern void func_020b2238(u32 size, u32 destination, u32 parameter);
+extern void func_020b2238(const void *source, u32 destination, u32 size);
 extern void func_020b21c8(void);
 extern void func_020b2180(void);
 extern void func_020b210c(const void *source, u32 destination, u32 size);
@@ -49,6 +49,8 @@ extern void G3X_InitMtxStack(void);
 extern void GX_SetGraphicsMode(u32 display_mode, u32 bg_mode, u32 bg0_as_3d);
 extern u16 func_020ae740(void);
 extern u16 func_020ae72c(void);
+extern void func_020aef3c(u32 banks);
+extern void func_020aee48(u32 banks);
 
 typedef void (*RetailDestructor)(void *);
 
@@ -130,16 +132,15 @@ u32 func_02070888(const void *resource)
 void func_0209a5fc(void *object, u32 slot, u32 texture_id, u32 palette_id)
 {
     u8 *bytes = (u8 *)object;
-    void *manager = *(void **)(data_021e9e60 + 4);
-    void *texture = func_0207164c(manager, texture_id,
-                                 texture_id, palette_id, 0, palette_id);
+    void *manager = data_020f4e18;
+    void *texture = func_0207164c(manager, texture_id);
     void *palette = func_02071798(manager, palette_id);
     u32 texture_offset = *(u32 *)(bytes + 0x4d4);
     u32 palette_offset = *(u32 *)(bytes + 0x4d8);
 
     func_020b44e8();
     func_020b239c();
-    func_020b2238(*(u32 *)((u8 *)texture + 0x24), texture_offset,
+    func_020b2238(*(void **)((u8 *)texture + 0x24), texture_offset,
                   func_0207043c(texture));
     func_020b21c8();
     func_020b2180();
@@ -306,13 +307,16 @@ void *func_020a3360(void *object, void *owner)
     return object;
 }
 
-/* Resets Nitro 3D and matrix-stack state and clears the object's transfer
- * offsets/active flag through the SDK graphics boundary. */
+/* Reset Nitro 3D and matrix-stack state, select retail texture bank B and
+ * texture-palette bank G, and clear the object's transfer offsets/active flag
+ * through the SDK graphics boundary. */
 void func_0209a4f0(void *object)
 {
     u8 *bytes = (u8 *)object;
     G3X_Init();
     G3X_InitMtxStack();
+    func_020aef3c(2);
+    func_020aee48(0x40);
     *(u32 *)(bytes + 0x4cc) = 0;
     *(u32 *)(bytes + 0x4d0) = 0;
 }
