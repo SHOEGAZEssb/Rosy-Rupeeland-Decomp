@@ -53,7 +53,7 @@ void GamePhaseCurrencyHud_SetCurrency(GamePhaseCurrencyHud *self, s32 value)
 /*
  * Apply delta to persistent currency with a 0..9,999,999 clamp, update the
  * recovered positive/negative accumulators at 0x44/0x48, and prepare the HUD's
- * gain/loss animation. When enabled by flags bit 0, marker/backdrop sprites
+ * gain/loss animation. When hidden flag bit 0 is clear, marker/backdrop sprites
  * select direction-specific animations and sound 78/79 plays once. Magnitude
  * chooses flags 0x20, 0x40, or 0x80 unless forcedDuration supplies flag 0x100
  * and an explicit counter. Crossing the table threshold selected by GameWork
@@ -101,7 +101,7 @@ void GamePhaseCurrencyHud_AddCurrency(GamePhaseCurrencyHud *self, s32 delta,
     self->transitionStartValue = self->displayedValue;
     if (newValue == (s32)self->displayedValue)
         return;
-    if (!(self->flags & 1))
+    if (self->flags & 1)
         return;
 
     self->transitionState = 1;
