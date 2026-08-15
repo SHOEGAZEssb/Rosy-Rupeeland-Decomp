@@ -342,6 +342,40 @@ s32 func_02093360(void *object, const void *input)
     }
 }
 
+/*
+ * Reset the controller after a message closes (retail 0x02093998). The two
+ * owned sprite groups and the secondary resource triplet are cleared, while
+ * the controller and its borrowed renderer remain alive for reuse.
+ */
+void func_02093998(void *object)
+{
+    u8 *bytes = (u8 *)object;
+
+    GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
+    func_02071f38(bytes + 0x20);
+    func_02074110(*(void **)(bytes + 0x08));
+    *(s32 *)(bytes + 0xd8) = 0;
+    *(s32 *)(bytes + 0x34) = 0;
+}
+
+/*
+ * Clear the controller's configured text rectangle (retail 0x020939D8).
+ * The renderer is borrowed from the controller; rectangle coordinates are
+ * formed from the stored origin and extent, and the configured fill mode is
+ * forwarded unchanged to the sprite canvas.
+ */
+void func_020939d8(void *object)
+{
+    u8 *bytes = (u8 *)object;
+
+    GraphicsSpriteCanvas_FillRect(
+        *(void **)(bytes + 0x04),
+        *(s32 *)(bytes + 0xa4), *(s32 *)(bytes + 0xa8),
+        *(s32 *)(bytes + 0xa4) + *(s32 *)(bytes + 0xac),
+        *(s32 *)(bytes + 0xa8) + *(s32 *)(bytes + 0xb0),
+        *(s32 *)(bytes + 0xd4));
+}
+
 /* Release the two owned sprite groups and resource triplets while preserving
  * caller-owned controller storage (retail 0x02092E1C). */
 void *func_02092e1c(void *object)
