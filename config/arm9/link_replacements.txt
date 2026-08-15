@@ -122,6 +122,7 @@ build/decomp/delinks/src/graphics/graphics_animation_instance_resources.o = buil
 build/decomp/delinks/src/graphics/graphics_3d_resource_regions.o = build/decomp/src/graphics/graphics_3d_resource_regions.o
 build/decomp/delinks/src/graphics/graphics_3d_resource_owner_ops.o = build/decomp/src/graphics/graphics_3d_resource_owner_ops.o
 build/decomp/delinks/src/graphics/graphics_3d_presentation_update.o = build/decomp/src/graphics/graphics_3d_presentation_update.o
+build/decomp/delinks/asm/graphics/graphics_3d_runtime_manager_update.o = build/decomp/asm/graphics/graphics_3d_runtime_manager_update.o
 build/decomp/delinks/src/graphics/graphics_3d_light.o = build/decomp/src/graphics/graphics_3d_light.o
 build/decomp/delinks/src/graphics/graphics_3d_light_set.o = build/decomp/src/graphics/graphics_3d_light_set.o
 build/decomp/delinks/src/graphics/graphics_3d_scene_state.o = build/decomp/src/graphics/graphics_3d_scene_state.o
