@@ -65,6 +65,13 @@ s32 func_02083d38(void)
     return AllFlags(flags, 2);
 }
 
+/* Require the three retail progression flags 0x2c8, 0x767, and 0x74b. */
+s32 func_02084018(void)
+{
+    static const u16 flags[] = {0x2c8, 0x767, 0x74b};
+    return AllFlags(flags, 3);
+}
+
 /* Extend the 0x83d38 prerequisite with flags 0x14d and 0x768. */
 s32 func_02084080(void)
 {

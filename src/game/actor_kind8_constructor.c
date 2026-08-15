@@ -59,6 +59,11 @@ extern void GraphicsSpriteGroup_Clear(void *group);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *group);
 extern void *func_0203130c(void *actor);
 extern void Heap_Free(void *allocation);
+extern void VecFx32Object_Destroy(void *object);
+extern s32 func_02057834(void *object);
+extern void func_020576c4(void *state);
+extern s32 func_020580d4(const void *counter);
+extern void func_02057e7c(void *list, void *node);
 
 /* Initialize one 0x24-byte interaction-presentation record. */
 void func_02057570(void *self)
@@ -254,6 +259,71 @@ void func_0205878c(void *self, s32 enabled)
         *(u32 *)(actor + 0x3bc) &= ~0x80000000u;
         GraphicsSpriteGroup_ReleaseIndexedEntries(*(void **)(actor + 0x1ec));
     }
+}
+
+/*
+ * Advance the kind-eight actor's interaction presentations (retail
+ * 0x02057EE4). A zero +0x3DC state retires completed linked-list payloads.
+ * Otherwise the active descriptor's progression flag controls visibility,
+ * presentation records are refreshed, and the mode selects either one or all
+ * twelve embedded animation states. The frame counters use retail frame units
+ * and the descriptor and GameWork storage remain borrowed.
+ */
+void func_02057ee4(void *self)
+{
+    u8 *actor = (u8 *)self;
+
+    if (*(u32 *)(actor + 0x3dc) == 0) {
+        u8 *node = *(u8 **)(actor + 0x3d4);
+
+        while (node != 0) {
+            u8 *next = *(u8 **)node;
+            u8 *payload = *(u8 **)(node + 8);
+
+            if (func_02057834(payload) != 0) {
+                if (payload != 0) {
+                    VecFx32Object_Destroy(payload + 4);
+                    Heap_Free(payload);
+                }
+                func_02057e7c(actor + 0x3d0, node);
+            }
+            node = next;
+        }
+    } else {
+        u8 *runtime = *(u8 **)data_021052fc;
+        s32 tableIndex = **(s32 **)(runtime + 0x30bc);
+        u8 *record = (u8 *)func_02078418(
+            data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
+        s32 enabled = *(s32 *)(actor + 0x3c0) == -1 ||
+            GameWork_TestFlag(gGameWork, *(s32 *)(actor + 0x3c0));
+        u32 mode;
+        s32 index;
+
+        func_0207811c(record, enabled);
+        func_0205878c(actor, enabled);
+        func_020587d8(actor, 1);
+
+        runtime = *(u8 **)data_021052fc;
+        tableIndex = **(s32 **)(runtime + 0x30bc);
+        record = (u8 *)func_02078418(
+            data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
+        mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
+        if (mode == 4 || mode == 5) {
+            func_020576c4(actor + 0x1fc);
+        } else {
+            for (index = 0; index < 12; ++index)
+                func_020576c4(actor + 0x1fc + index * 0x24);
+        }
+    }
+
+    ++*(s32 *)(actor + 0x3c4);
+    if ((*(s32 *)(actor + 0x3bc) & 0x7fffffff) != 1)
+        return;
+
+    (void)func_020580d4(actor + 0x3c8);
+    *(s32 *)(actor + 0x3c8) += *(s32 *)(actor + 0x3cc);
+    if (*(s32 *)(actor + 0x3c4) > 15)
+        *(u32 *)(actor + 0x3bc) &= 0x80000000u;
 }
 
 /* Return the signed motion sample selected by the high 12 bits of a counter. */
