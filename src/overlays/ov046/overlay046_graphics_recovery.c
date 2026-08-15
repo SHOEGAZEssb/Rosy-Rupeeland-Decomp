@@ -26,6 +26,7 @@ extern "C" u8 data_ov046_0220cd14[];
 extern "C" u8 data_ov046_0220cdf0[];
 extern "C" const u8 data_020d7834[];
 extern "C" void *gGameWork;
+extern "C" u8 gSystemState[];
 extern "C" s32 GameWork_TestFlag(void *gameWork, u16 flag);
 extern "C" void func_02070f34(void *resource, s32 paletteBank);
 extern "C" void func_020b44e8(void);
@@ -195,7 +196,7 @@ extern "C" void func_ov046_0220bd14(void *panel)
 
             GraphicsResourceSet_Init(&resources);
             GraphicsResourceSet_Load(&resources, data_020f4e18,
-                                     ids[0], ids[1], 0xb10e);
+                                     ids[0], 0xb10e, ids[1]);
             if (firstState == 1) {
                 func_ov046_0220bc80(
                     panel, resources.resource2,
@@ -301,4 +302,31 @@ extern "C" void func_ov046_0220bffc(void *panel, s32 index, s32 enabled,
  * fields are modified and no value is returned; this routine directly writes
  * Nintendo DS main- or sub-engine MMIO according to the font/display owner.
  */
-extern "C" void func_ov046_0220c1d8(void *panel);
+extern "C" void func_ov046_0220c1d8(void *panel)
+{
+    bool mainEngine = FIELD(void *, panel, 0) == data_020f4e14;
+    volatile u32 *registers = (volatile u32 *)(
+        mainEngine ? 0x04000000 : 0x04001000);
+    u32 systemOffset = FIELD(u32, gSystemState, 0x64);
+    s32 slot;
+
+    registers[0] = (registers[0] & ~0x1f00u) |
+                   (FIELD(u32, panel, 0xc0) << 8);
+    registers[7] = (systemOffset & 0x1ff) |
+                   ((systemOffset << 16) & 0x01ff0000);
+
+    for (slot = 0; slot < 3; ++slot) {
+        s32 layoutIndex = FIELD(s32, panel, 0xc8 + slot * 4);
+        const u8 *layout;
+        s32 x;
+        s32 y;
+
+        if (layoutIndex < 0)
+            continue;
+        layout = data_ov046_0220cdf0 + layoutIndex * 0x28;
+        x = FIELD(s32, panel, 0x10c) - 0x80 - FIELD(s32, layout, 0x18);
+        y = FIELD(s32, panel, 0x110) - 0x60 - FIELD(s32, layout, 0x1c);
+        registers[4 + slot] = ((u32)x & 0x1ff) |
+                              (((u32)y << 16) & 0x01ff0000);
+    }
+}
