@@ -99,8 +99,9 @@ void func_ov065_0220fdac(O65Particle *p, O65Vec *start, O65Vec *end,
     VecFx32Triple_Set(p->path, start, end, &control);
     p->frame = 0; p->duration = (s16)duration; p->state = 0;
     p->rotation = (s16)rotation;
-    GraphicsSpriteGroup_ReplaceStateResources(F(void *, p->sprite, 0),
-        F(s32, r, 4), F(s32, r, 8), F(s32, r, 12));
+    GraphicsSpriteGroup_ReplaceStateResources(
+        F(void *, p->sprite, 0), p->sprite,
+        F(void *, r, 4), F(void *, r, 8), F(void *, r, 12));
     GraphicsSpriteState_SetAnimationIndex(p->sprite, animation & 0xff);
     VecFx32Object_Destroy(&control);
 }
@@ -122,8 +123,9 @@ s32 func_ov065_0220ff20(O65Particle *p, void *scene)
     } else if (p->state == 1) {
         void *r = F(void *, data_ov065_02210c00, 0x150);
         s32 animation, pan;
-        GraphicsSpriteGroup_ReplaceStateResources(F(void *, p->sprite, 0),
-            F(s32, r, 4), F(s32, r, 8), F(s32, r, 12));
+        GraphicsSpriteGroup_ReplaceStateResources(
+            F(void *, p->sprite, 0), p->sprite,
+            F(void *, r, 4), F(void *, r, 8), F(void *, r, 12));
         animation = F(u8, p->sprite, 0x38);
         GraphicsSpriteState_SetAnimationIndex(p->sprite, animation);
         F(u16, p->sprite, 0x24) &= 0xfffcu; p->state = 2;
@@ -167,7 +169,8 @@ void *func_ov065_022101bc(void *self, s32 value, O65Vec *position,
     F(s32, self, 0x144) = radius; F(s32, self, 0x148) = height;
     F(s32, self, 4) = 0x11; F(s32, self, 8) = 0;
     data_ov065_02210c00 = self;
-    F(void *, self, 0x24) = GraphicsSpriteGroupOwner_CreateGroup(F(void *, data_020f4e14, 0));
+    F(void *, self, 0x24) =
+        GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     r = Heap_Alloc(0x10, data_ov065_02210be4, 4, &gHeapContext);
     if (r != 0) AnimationResource_Init(r, 0x1714, 0x1715, 0x1716);
     F(void *, self, 0x14c) = r;
@@ -200,7 +203,8 @@ void *func_ov065_022103c8(void *self)
             Heap_Free(p->path); } Heap_Free(p); }
     }
     GraphicsSpriteGroup_Clear(F(void *, self, 0x24));
-    GraphicsSpriteGroupOwner_DestroyGroup(F(void *, data_020f4e14, 0), F(void *, self, 0x24));
+    GraphicsSpriteGroupOwner_DestroyGroup(
+        data_020f4e14, F(void *, self, 0x24));
     delete_resource(F(void *, self, 0x14c)); delete_resource(F(void *, self, 0x150));
     delete_resource(F(void *, self, 0x154)); data_ov065_02210c00 = 0;
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 2);
@@ -217,7 +221,7 @@ s32 func_ov065_02210600(void *self)
 {
     void *actor; s32 offset = 0, active = 0, g, i;
     if (SceneManager_GetCurrent(gSceneManager) != self) return 0;
-    GraphicsSpriteRenderer_ClearTextBuffer(F(void *, data_020f4e14, 0));
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     actor = F(void *, data_021052fc, 0x2ea4);
     if (F(u16, self, 0x11a) != 0) --F(u16, self, 0x11a);
