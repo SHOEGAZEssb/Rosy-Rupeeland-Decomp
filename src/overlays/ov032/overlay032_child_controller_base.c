@@ -10,7 +10,7 @@ extern "C" {
 extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
 extern void GraphicsSpriteGroup_ReleaseState(...);
 extern void func_02070934(void *);
-extern void func_02073e48(...);
+extern void func_02073e48(void *, u8, s16, s16, u8, u16, u16);
 #ifdef __cplusplus
 }
 #endif
@@ -83,16 +83,18 @@ extern "C" void func_ov032_0220147c(void *controller)
 }
 
 /*
- * Stores `arg1`/`arg2` at +0x10/+0x14, forwards position/configuration arguments
- * through `arg7` to SDK function 0x02073E48 for object +0x00, and stores `arg8`
- * at +0x2C. Returns void; the exact semantic names of the SDK arguments remain
- * unconfirmed.
+ * Stores `arg1`/`arg2` at +0x10/+0x14, then configures object +0x00 with
+ * animation `arg1`, position `arg3`/`arg4`, and render fields `arg5`..`arg7`.
+ * `arg2` is retained by the wrapper but is not forwarded to the sprite helper.
+ * Stores `arg8` at +0x2C and returns void.
  */
 extern "C" void func_ov032_022014c0(void *controller, s32 arg1, s32 arg2, s32 arg3,
                                      s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8)
 {
     FIELD(s32, controller, 0x10) = arg1;
     FIELD(s32, controller, 0x14) = arg2;
-    func_02073e48(FIELD(void *, controller, 0), arg1, arg2, arg3, arg4, arg5, arg6, arg7);
+    func_02073e48(FIELD(void *, controller, 0), (u8)arg1,
+                  (s16)arg3, (s16)arg4, (u8)arg5,
+                  (u16)arg6, (u16)arg7);
     FIELD(s32, controller, 0x2c) = arg8;
 }
