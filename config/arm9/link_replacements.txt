@@ -7189,4 +7189,5 @@ build/decomp/delinks/src/game/title_screen_resource_collection_ops.o = build/dec
 build/decomp/delinks/src/game/title_character_resource_collection.o = build/decomp/src/game/title_character_resource_collection.o
 build/decomp/delinks/src/game/title_character_resource_collection_destructor.o = build/decomp/src/game/title_character_resource_collection_destructor.o
 build/decomp/delinks/src/game/title_character_resource_collection_ops.o = build/decomp/src/game/title_character_resource_collection_ops.o
+build/decomp/delinks/src/graphics/title_palette_backdrop.o = build/decomp/src/graphics/title_palette_backdrop.o
 build/decomp/delinks/src/game/title_scroll_value.o = build/decomp/src/game/title_scroll_value.o

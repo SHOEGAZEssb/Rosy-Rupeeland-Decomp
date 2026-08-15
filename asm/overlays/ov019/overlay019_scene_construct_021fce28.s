@@ -49,7 +49,7 @@ func_ov019_021fce28:
     ldr r1, L_021fcf14
     mov r2, #0x0
     ldr r1, [r1, #0x0]
-    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, func_ov002_021fb6e0, func_ov003_021fb6e0, func_ov004_021fb6e0, func_ov005_021fb6e0, func_ov006_021fb6e0, func_ov007_021fb6e0, func_ov008_021fb6e0
+    bl func_ov000_021fb6e0 ; shared retail slot contains overlay 2 here
 L_021fceac:
     str r0, [r4, #0x5c]
     b L_021fcedc
@@ -62,7 +62,7 @@ L_021fceb4:
     ldr r1, L_021fcf18
     mov r2, #0x0
     ldr r1, [r1, #0x0]
-    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, func_ov002_021fb6e0, func_ov003_021fb6e0, func_ov004_021fb6e0, func_ov005_021fb6e0, func_ov006_021fb6e0, func_ov007_021fb6e0, func_ov008_021fb6e0
+    bl func_ov000_021fb6e0 ; shared retail slot contains overlay 2 here
 L_021fced8:
     str r0, [r4, #0x5c]
 L_021fcedc:
