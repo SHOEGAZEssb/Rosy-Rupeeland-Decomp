@@ -1,4 +1,5 @@
 #include "tingle/game_phase_script_vm.h"
+#include "tingle/sound_stream.h"
 
 /* Forward the script VM's remaining high-arity commands to the global sound context. */
 
@@ -6,8 +7,6 @@
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern void func_02059550(void *context, u16 first, s32 second, s32 third,
-                         s32 fourth, s32 fifth);
 extern void func_02059604(void *context, s32 first, s32 second, s32 third,
                          s32 fourth, s32 fifth, s32 sixth, s32 seventh);
 #ifdef __cplusplus

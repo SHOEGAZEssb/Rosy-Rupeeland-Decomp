@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/sound_stream.h"
 
 /*
  * Sound-context default-stream request recovered from ARM9 0x020594EC.
@@ -9,19 +10,16 @@
  * object and returns no status.
  */
 
-extern void *data_021e9aa8;
-extern void func_0205adb4(void *manager);
 #ifndef __MWERKS__
 extern void Sound_HostPlayDefaultStreamRequest(s32 stream);
 #endif
 
-/* Start the selected stream with the lower manager's retail defaults. The
- * matching build keeps stream in r1 across the one-argument declaration. */
+/* Start the selected stream with the lower manager's retail defaults. */
 void func_020594ec(void *context, s32 stream)
 {
     if ((*(u32 *)((u8 *)context + 0x9c) & 4) == 0) {
 #ifdef __MWERKS__
-        func_0205adb4(data_021e9aa8);
+        func_0205adb4(data_021e9aa8, stream);
 #else
         Sound_HostPlayDefaultStreamRequest(stream);
 #endif

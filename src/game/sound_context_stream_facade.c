@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/sound_stream.h"
 
 /*
  * Recovered game-facing facade for the single Nitro streamed-audio player.
@@ -7,27 +8,6 @@
  * identity and playback state live in the manager referenced by
  * data_021e9aa8; the lower manager owns NitroSDK calls and timing units.
  */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern void *data_021e9aa8;
-extern void func_0205acdc(void *manager);
-extern void func_0205acf4(void *manager);
-extern void func_0205ae3c(void *manager, s32 streamId, s32 startUnits,
-                          s32 volume, s32 fadeFrames, s32 fadeIn);
-extern void func_0205aee8(void *manager, s32 volume, s32 fadeFrames);
-extern void func_0205af24(void *manager, s32 fadeFrames);
-s32 func_02059510(void *context, s32 streamId);
-void func_02059550(void *context, s32 streamId, s32 startUnits, s32 volume,
-                   s32 fadeFrames, s32 fadeIn);
-void func_0205958c(void *context, s32 fadeFrames);
-void func_020595b0(void *context, s32 volume, s32 fadeFrames);
-void func_020595d4(void *context);
-void func_020595ec(void *context);
-#ifdef __cplusplus
-}
-#endif
 
 /*
  * Query the sole stream player. A negative streamId returns its raw active

@@ -1,4 +1,5 @@
 #include "tingle/game_phase_script_vm.h"
+#include "tingle/sound_stream.h"
 
 /* Apply adjacent two-operand controls to the script VM's global sound context. */
 
@@ -9,7 +10,6 @@ extern void *gSoundContext;
 extern void func_02059278(void *context, u16 first, u16 second);
 extern void func_0205929c(void *context, u16 first, u16 second);
 extern void func_020592c0(void *context, u16 first, s32 second);
-extern void func_020595b0(void *context, s32 first, s32 second);
 extern void func_020596e8(void *context, s32 first, s32 second);
 #ifdef __cplusplus
 }

@@ -1,5 +1,6 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
+#include "tingle/sound_stream.h"
 
 #include <string.h>
 
@@ -58,9 +59,6 @@ extern void TingleNativeSound_ResumeStreamPosition(void);
 void func_02059278(void *context, u16 sequence, s32 volume);
 void func_020592fc(void *context, u16 sequence, u16 track_mask);
 void func_02059320(void *context, u16 sequence, u16 variable, u16 value);
-void func_02059550(void *context, u16 stream, s32 start_units, s32 volume,
-                   s32 fade_frames, s32 fade_in);
-void func_0205958c(void *context, s32 fade_frames);
 void func_0205974c(void *context, s32 group);
 void func_020597fc(void *context, s32 group);
 
@@ -548,11 +546,11 @@ s32 func_02059510(void *context, s32 stream_or_minus_one)
 }
 
 /* Start a stream at a recovered 100 ms unit offset with optional fade-in. */
-void func_02059550(void *context, u16 stream, s32 start_units, s32 volume,
+void func_02059550(void *context, s32 stream, s32 start_units, s32 volume,
                    s32 fade_frames, s32 fade_in)
 {
     if (sound_requests_enabled(context))
-        TingleNativeSound_PlayStream(stream, start_units * 100, volume,
+        TingleNativeSound_PlayStream((u16)stream, start_units * 100, volume,
                                      fade_in != 0 ? fade_frames : 0);
 }
 

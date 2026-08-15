@@ -1,4 +1,5 @@
 #include "tingle/game_phase_script_vm.h"
+#include "tingle/sound_stream.h"
 
 /* Dispatch the script VM's packed sound playback and global sound-control command. */
 
@@ -13,8 +14,6 @@ extern void func_020593dc(void *context, s32 soundId, s32 variant,
 extern s32 func_020594a4(void *context, s32 soundId, s32 variant);
 extern void func_02058d40(void *context, s32 value);
 extern s32 func_02059344(void *context, u16 value);
-extern void func_020594ec(void *context, u16 value);
-extern void func_0205958c(void *context, s32 value);
 extern void func_0205974c(void *context, s32 value);
 extern void func_020597fc(void *context, s32 value);
 extern void func_02058de0(void *context, s32 enabled);

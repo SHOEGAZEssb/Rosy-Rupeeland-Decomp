@@ -1,4 +1,5 @@
 #include "tingle/game_phase_script_vm.h"
+#include "tingle/sound_stream.h"
 
 /* Implement adjacent numeric conversion and global sound-context opcodes. */
 
@@ -8,9 +9,6 @@ extern "C" {
 extern void *gSoundContext;
 extern s32 func_020570b0(u16 value);
 extern void func_02099114(s32 value);
-extern s32 func_02059510(void *context, s32 index);
-extern void func_020595d4(void *context);
-extern void func_020595ec(void *context);
 extern void func_02058ce0(void *context);
 extern void func_02059218(void *context);
 extern void func_02059a00(void *context);
