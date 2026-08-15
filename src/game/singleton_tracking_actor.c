@@ -15,7 +15,7 @@ extern "C" {
 extern void Heap_Free(void *allocation);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
-extern void *ActorDerivedRuntime_Init(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor, const void *descriptor);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
 #ifdef __cplusplus
@@ -28,10 +28,10 @@ extern void ActorDerivedRuntime_UpdateFrame(void *actor);
  * +0x208/+0x20c/+0x210/+0x214. Return self. Base construction may mutate
  * actor-owned engine state; there are no direct hardware effects.
  */
-void *func_0204d068(void *self)
+void *func_0204d068(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
-    ActorDerivedRuntime_Init(actor);
+    ActorDerivedRuntime_Init(actor, descriptor);
     *(const void **)actor = data_020e1f2c;
     *(u32 *)(actor + 0x208) = 0;
     *(u32 *)(actor + 0x20c) = 0;

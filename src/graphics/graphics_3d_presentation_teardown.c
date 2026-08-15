@@ -7,6 +7,8 @@
 typedef void (*ElementDestructor)(void *element);
 
 extern void func_02005058(void *vector);
+extern s32 func_020a3c78(void *object);
+extern void func_020a3fc4(void *object);
 
 /* Retail array delete helper at 0x020C0C24. The allocation prefix stores the
  * element count immediately before the first element; destruction runs in
@@ -57,6 +59,39 @@ void func_020a33cc(void *manager)
     }
 }
 
+/* Update all thirty presentation slots in reverse retail order. Objects whose
+ * update reports zero are synchronously destroyed and freed, and their slot is
+ * cleared; live objects and empty slots remain unchanged. */
+void func_020a6280(void *manager)
+{
+    s32 index;
+
+    for (index = 29; index >= 0; --index) {
+        void **slot = (void **)((u8 *)manager + 4 + index * 4);
+        if (*slot != 0 && func_020a3c78(*slot) == 0) {
+            func_020a3790(*slot);
+            Heap_Free(*slot);
+            *slot = 0;
+        }
+    }
+}
+
+/* Submit all thirty live presentation slots in reverse retail order unless
+ * the manager's +0x7C suppression flag is set. Slots and objects are borrowed;
+ * this pass does not change ownership. */
+void func_020a62e4(void *manager)
+{
+    s32 index;
+
+    if (*(u32 *)((u8 *)manager + 0x7c) != 0)
+        return;
+    for (index = 29; index >= 0; --index) {
+        void *object = *(void **)((u8 *)manager + 4 + index * 4);
+        if (object != 0)
+            func_020a3fc4(object);
+    }
+}
+
 /* Reset the fifteen paired presentation-record tables and active byte. */
 void func_020a2bc8(void *manager)
 {
@@ -82,5 +117,3 @@ void func_020a2324(void *object)
     func_020a2bc8(*(void **)((u8 *)object + 0x4e4));
     func_0209a4e4(*(void **)((u8 *)object + 0x4e0));
 }
-
-

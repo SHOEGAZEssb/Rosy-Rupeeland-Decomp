@@ -19,6 +19,8 @@ extern u8 data_021f38fc[];
 extern void OS_Halt(void);
 extern void *func_02063b90(void *database, u16 id);
 extern void func_02022fbc(void *configuration);
+extern u32 genrand_int32(void);
+extern void func_02062864(void *records, u16 index);
 
 static u16 ReadU16(const u8 *bytes)
 {
@@ -162,7 +164,82 @@ void func_02078370(void)
     func_02078428(data_021f38fc);
 }
 
+/* Advance one active resource descriptor to the supplied 16-bit frame. Every
+ * fifty elapsed frames, roll its byte-sized percentage and increment the
+ * runtime record count up to the configured byte-sized maximum. Backward or
+ * wrapped frame values only replace the retained frame and do not accumulate. */
+void func_020781bc(void *descriptor_pointer, u16 frame)
+{
+    u8 *descriptor = (u8 *)descriptor_pointer;
+    u16 previous;
+    u16 elapsed;
 
+    if ((*(u16 *)(descriptor + 4) & 0x0f) != 1)
+        return;
+    if (*(u16 *)(descriptor + 0x0c) >= descriptor[1]) {
+        *(u16 *)(descriptor + 6) = frame;
+        *(u16 *)(descriptor + 2) = 0;
+        return;
+    }
+    previous = *(u16 *)(descriptor + 6);
+    if (frame == previous)
+        return;
+    *(u16 *)(descriptor + 6) = frame;
+    if (frame < previous)
+        return;
+    elapsed = *(u16 *)(descriptor + 2);
+    elapsed = (u16)(elapsed + frame - previous);
+    *(u16 *)(descriptor + 2) = elapsed;
+    while (elapsed >= 50) {
+        u16 count = *(u16 *)(descriptor + 0x0c);
+
+        if (count < descriptor[1] && genrand_int32() % 100 < descriptor[0])
+            func_02062864(descriptor + 8, (u16)(count + 1));
+        elapsed = (u16)(elapsed - 50);
+        *(u16 *)(descriptor + 2) = elapsed;
+    }
+}
+
+/* Update every borrowed descriptor pointer in one group with the same frame
+ * value. The group and its pointer array remain owned by the manager. */
+void func_02078338(void *group_pointer, u16 frame)
+{
+    u8 *group = (u8 *)group_pointer;
+    void **descriptors = *(void ***)group;
+    u32 index;
+
+    for (index = 0; index < *(u32 *)(group + 4); ++index)
+        func_020781bc(descriptors[index], frame);
+}
+
+/* Update one of the manager's 271 optional groups per call, then advance the
+ * retained round-robin index with retail wraparound. The frame at +0x444 is
+ * borrowed as a scalar and no allocation or hardware operation occurs. */
+void func_02078384(void *manager_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u32 index = *(u32 *)(manager + 0x43c);
+    void *group = *(void **)(manager + index * 4);
+
+    if (group != 0)
+        func_02078338(group, *(u16 *)(manager + 0x444));
+    ++index;
+    if (index >= 0x10f)
+        index = 0;
+    *(u32 *)(manager + 0x43c) = index;
+}
+
+/* Advance the manager's retained 16-bit frame by one, or by one hundred when
+ * fast-update flag bit zero at +0x440 is set. Overflow wraps as in retail. */
+void func_020783cc(void *manager_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u16 frame = *(u16 *)(manager + 0x444);
+
+    frame = (u16)(frame +
+                  ((*(u32 *)(manager + 0x440) & 1) != 0 ? 100 : 1));
+    *(u16 *)(manager + 0x444) = frame;
+}
 
 
 

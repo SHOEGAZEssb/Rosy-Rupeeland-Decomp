@@ -11,7 +11,7 @@ extern u8 data_020ed638[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *ActorDerivedRuntime_Init(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor, const void *descriptor);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
@@ -20,7 +20,7 @@ extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 /* Shared portable constructor equivalent for the two retail entry points. */
 static void *initializeTableRecordActor(void *self, const void *descriptor)
 {
-    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
+    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self, descriptor);
     const u8 *record = 0;
     s16 key = *(const s16 *)((const u8 *)descriptor + 0x4e);
     s32 i;

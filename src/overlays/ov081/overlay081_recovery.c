@@ -113,7 +113,7 @@ extern void *ActorCollection_GetSpriteOwner(void *);
 extern s32 ActorDerivedRuntime_AcceptInteractionQuery(void *);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *);
 extern void ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
-extern void *ActorDerivedRuntime_Init(void *);
+extern void *ActorDerivedRuntime_Init(void *, const void *);
 extern void ActorDerivedRuntime_UpdateFrame(void *);
 extern void ActorDerivedType1_TrySetStateVector(void *, const void *, s32, s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
@@ -255,7 +255,7 @@ void func_ov081_02212b80(void *actor)
  */
 void *func_ov081_02212b94(void *actor, const void *configuration)
 {
-    ActorDerivedRuntime_Init(actor);
+    ActorDerivedRuntime_Init(actor, configuration);
     FIELD(const void *, actor, 0) = data_ov081_02215670;
     VecFx32Object_Init((u8 *)actor + 0x214);
     FIELD(u32, actor, 0x224) = 0x666;

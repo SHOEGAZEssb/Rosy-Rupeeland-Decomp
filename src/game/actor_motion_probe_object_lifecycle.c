@@ -11,7 +11,7 @@ extern void *data_020df61c;
 extern "C" {
 #endif
 extern void func_02033b38(void *actor, s32 column);
-extern void *ActorDerivedRuntime_Init(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor, const void *descriptor);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 extern void VecFx32Object_Init(void *vector);
 extern void VecFx32Object_Destroy(void *vector);
@@ -35,9 +35,9 @@ void ActorMotionProbe_DrawDebugInfo(void *actor, s32 column)
  * and set +0x244/+0x248/+0x24c/+0x250/+0x254 to 16/16/30/5/1600. Return
  * self; base and vector initialization establish actor-owned runtime state.
  */
-void *ActorMotionProbe_Init(void *self)
+void *ActorMotionProbe_Init(void *self, const void *descriptor)
 {
-    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
+    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self, descriptor);
     *(void **)actor = data_020df61c;
     *(u16 *)(actor + 0x208) = 0x4000;
     *(u16 *)(actor + 0x20a) = 0;

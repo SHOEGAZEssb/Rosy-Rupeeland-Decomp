@@ -10,7 +10,7 @@ extern void *data_020df774;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *ActorDerivedRuntime_Init(void *actor);
+extern void *ActorDerivedRuntime_Init(void *actor, const void *descriptor);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
 #ifdef __cplusplus
 }
@@ -25,7 +25,7 @@ extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
  */
 void *ActorModeNibble_Init(void *self, void *unused, u32 mode)
 {
-    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self);
+    u8 *actor = (u8 *)ActorDerivedRuntime_Init(self, unused);
     u16 flags;
     (void)unused;
     *(void **)actor = data_020df774;

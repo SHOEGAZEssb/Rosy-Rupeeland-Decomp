@@ -6,7 +6,7 @@ extern u8 data_020df3c8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *ActorDerivedRuntime_Init(void *self);
+extern void *ActorDerivedRuntime_Init(void *self, const void *descriptor);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Init(void *vector);
 extern void Type7MarkerPresentation_Init(void *state, void *owner);
@@ -29,12 +29,12 @@ extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 th
  * must forward that implicit constructor-chain argument explicitly. Return
  * self; constructors and value helpers may manage SDK-owned state.
  */
-void *ActorDerivedType1_Init(void *self)
+void *ActorDerivedType1_Init(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     u32 offset;
 
-    ActorDerivedRuntime_Init(actor);
+    ActorDerivedRuntime_Init(actor, descriptor);
     *(void **)actor = data_020df3c8;
     VecFx32Object_InitComponents(actor + 0x238, 0, 0, 0);
     *(s32 *)(actor + 0x248) = 0;

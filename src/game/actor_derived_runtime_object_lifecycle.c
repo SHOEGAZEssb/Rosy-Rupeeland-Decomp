@@ -7,7 +7,7 @@ extern void *data_020df510;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02030f98(void *self);
+extern void *func_02030f98(void *self, const void *descriptor);
 extern void *func_0203130c(void *self);
 extern void func_02031488(void *self);
 extern void *AnimationResource_InitEmpty(void *embedded);
@@ -17,9 +17,9 @@ extern void *AnimationResource_Destroy(void *embedded);
 #endif
 
 /* Shared portable construction equivalent for the two retail constructor entry points. */
-static void *initializeDerivedRuntimeObject(void *self)
+static void *initializeDerivedRuntimeObject(void *self, const void *descriptor)
 {
-    u8 *object = (u8 *)func_02030f98(self);
+    u8 *object = (u8 *)func_02030f98(self, descriptor);
     *(void **)object = data_020df510;
     AnimationResource_InitEmpty(object + 0x1ec);
     *(s32 *)(object + 0x1fc) = -1;
@@ -30,17 +30,19 @@ static void *initializeDerivedRuntimeObject(void *self)
 
 /*
  * Initialize the base, install the recovered vtable, initialize +0x1ec and
- * fields +0x1fc..+0x204, then return self.
+ * fields +0x1fc..+0x204, then return self. The borrowed spawn descriptor is
+ * forwarded to the base constructor and is not retained.
  */
-void *ActorDerivedRuntime_Init(void *self)
+void *ActorDerivedRuntime_Init(void *self, const void *descriptor)
 {
-    return initializeDerivedRuntimeObject(self);
+    return initializeDerivedRuntimeObject(self, descriptor);
 }
 
-/* Alternate constructor entry with behavior identical to ActorDerivedRuntime_Init; return self. */
-void *ActorDerivedRuntime_InitAlternate(void *self)
+/* Alternate constructor entry with behavior identical to
+ * ActorDerivedRuntime_Init; the descriptor is borrowed during construction. */
+void *ActorDerivedRuntime_InitAlternate(void *self, const void *descriptor)
 {
-    return initializeDerivedRuntimeObject(self);
+    return initializeDerivedRuntimeObject(self, descriptor);
 }
 
 /*

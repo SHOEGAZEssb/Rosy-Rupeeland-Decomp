@@ -46,6 +46,10 @@ extern u32 GX_VBlankIntr(u32 enable);
 extern u32 GX_HBlankIntr(u32 enable);
 extern void G3X_Init(void);
 extern void G3X_InitMtxStack(void);
+extern void func_020b0558(void);
+extern void func_020b0a54(s32 left, s32 right, s32 bottom, s32 top,
+                          s32 near_plane, s32 far_plane, s32 scale,
+                          s32 load, void *matrix);
 extern void GX_SetGraphicsMode(u32 display_mode, u32 bg_mode, u32 bg0_as_3d);
 extern u16 func_020ae740(void);
 extern u16 func_020ae72c(void);
@@ -275,6 +279,19 @@ void func_0209a4b4(void *object)
     *(u32 *)object = (u32)data_020d23fc;
 }
 
+/* Mark the small 3D manager inactive. The caller retains ownership; no SDK or
+ * allocation effects occur. */
+void func_0209a4c4(void *object)
+{
+    *(u32 *)((u8 *)object + 4) = 1;
+}
+
+/* Return the small 3D manager's inactive flag without changing state. */
+u32 func_0209a4dc(void *object)
+{
+    return *(u32 *)((u8 *)object + 4);
+}
+
 /* Initializes the paired presentation table and its fifteen touch points,
  * records owner, and returns the caller-provided object. */
 void *func_020a2aa8(void *object, void *owner)
@@ -331,6 +348,69 @@ void func_0209b478(void *object)
     func_020ae740();
     func_020ae72c();
     *(u32 *)((u8 *)object + 0x4d0) = 0;
+}
+
+/* Begin a presentation frame once: copy the borrowed world position into the
+ * object's retained position, reset the Nitro geometry engine for submission,
+ * and set the per-frame guard at +0x4CC. Repeated calls have no effect. */
+void func_0209b7a0(void *object, const void *position)
+{
+    u8 *bytes = (u8 *)object;
+
+    if (*(u32 *)(bytes + 0x4cc) != 0)
+        return;
+    func_020050a4(bytes + 0x84, position);
+    func_020b0558();
+    *(u32 *)(bytes + 0x4cc) = 1;
+}
+
+/* Finish a presentation frame. A nonzero argument requests a geometry-buffer
+ * swap through the DS command register; all calls clear the per-frame guard so
+ * the next update can install a new position. */
+void func_0209b7cc(void *object, s32 swap_buffers)
+{
+    if (swap_buffers != 0)
+        *(volatile u32 *)0x04000540 = 1;
+    *(u32 *)((u8 *)object + 0x4cc) = 0;
+}
+
+/* Pack the retail texture-parameter fields into the geometry command port.
+ * Inputs are immediate bit fields; no memory is retained and the write is
+ * synchronously visible to the Nitro geometry boundary. */
+void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
+                   u32 repeat_s, u32 repeat_t, u32 flip, u32 address)
+{
+    *(volatile u32 *)0x040004a8 =
+        (format << 26) | (address >> 3) | (generation << 30) |
+        (size_s << 20) | (size_t << 23) | (repeat_s << 16) |
+        (repeat_t << 18) | (flip << 29);
+}
+
+/* Pack the retail polygon-attribute fields into the geometry command port.
+ * Inputs are immediate bit fields; the command is submitted synchronously. */
+void func_0209b560(u32 light, u32 polygon_mode, u32 cull_mode, u32 polygon_id,
+                   u32 alpha, u32 misc)
+{
+    *(volatile u32 *)0x040004a4 =
+        light | (polygon_mode << 4) | (cull_mode << 6) | misc |
+        (polygon_id << 24) | (alpha << 16);
+}
+
+/* Establish the orthographic and material state shared by paired 3D
+ * presentation entries. The object is borrowed only for API compatibility;
+ * retail does not inspect it and retains no state through this argument. */
+void func_0209c9d4(void *object)
+{
+    (void)object;
+    func_020b0a54(-0x60000, 0x60000, -0x80000, 0x80000,
+                  0, 0x2000, 0x1000, 1, 0);
+    *(volatile u32 *)0x04000440 = 2;
+    *(volatile u32 *)0x04000454 = 0;
+    *(volatile u32 *)0x04000470 = 0x01000000;
+    *(volatile u32 *)0x04000470 = 0x01000000;
+    *(volatile u32 *)0x04000470 = 0x00001000;
+    func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);
+    func_0209b560(0, 0, 3, 2, 0x1f, 0);
 }
 
 /*
