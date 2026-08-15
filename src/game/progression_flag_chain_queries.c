@@ -40,6 +40,17 @@ void func_0208b590(void)
     GameWork_SetFlag(gGameWork, 0x746);
 }
 
+/*
+ * Complete the rupee-pond progression callback by establishing the shared
+ * initial milestone, then set its two scene-specific completion flags.
+ */
+void func_0208b600(void)
+{
+    func_0208b590();
+    GameWork_SetFlag(gGameWork, 0x25e);
+    GameWork_SetFlag(gGameWork, 0x760);
+}
+
 /* Require both retail flags used by the bedroom-to-field availability gate. */
 s32 func_02083d84(void)
 {

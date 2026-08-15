@@ -45,7 +45,7 @@ extern void VecFx32Object_Destroy(O65_ARGS);
 extern void VecFx32Triple_Set(O65_ARGS), VecFx32Triple_Destroy(O65_ARGS);
 extern void VecFx32Bezier_Evaluate3D(O65_ARGS), func_020adff0(O65_ARGS);
 extern s32 func_020befec(s32, s32);
-extern u32 func_020bf1f8(u32, u32), genrand_int32(void);
+extern u32 genrand_int32(void);
 extern void func_020593ac(O65_ARGS);
 #ifdef __cplusplus
 }
@@ -285,8 +285,9 @@ void func_ov065_02210a04(void *self, s32 amount)
                 func_ov065_0221091c(self, &target);
                 if (chosen > 0 && (genrand_int32() & 7) == 0) --chosen;
                 p = F(O65Particle *, self, 0x28 + F(s16, self, 0x118) * 0x78 + i * 4);
+                /* Retail consumes the unsigned-division remainder in r1. */
                 func_ov065_0220fdac(p, &start, &target, chosen, 0x50,
-                    (s32)func_020bf1f8(genrand_int32(), 20) + 0x43); break; }
+                    (s32)(genrand_int32() % 20) + 0x43); break; }
             --chosen;
         }
     }
