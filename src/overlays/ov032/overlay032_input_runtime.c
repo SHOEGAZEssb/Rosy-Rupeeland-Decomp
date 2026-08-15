@@ -13,7 +13,7 @@ typedef struct TouchPoint {
 } TouchPoint;
 
 extern void *gDebugFont;
-extern void *gPadState1;
+extern const u16 gPadState1[];
 extern void *gTouchPanelManager;
 extern void *gLupyContext;
 extern void *data_020f4e14[];
@@ -86,7 +86,7 @@ extern "C" s32 func_ov032_021fdf30(void *scene)
 {
     typedef s32 (*StateCallback)(void *);
     TouchPoint point;
-    FIELD(void *, scene, 0xb60) = gPadState1;
+    FIELD(const u16 *, scene, 0xb60) = gPadState1;
     TouchPanelManager_GetPoint(&point, gTouchPanelManager);
     FIELD(s32, scene, 0xb58) = point.x;
     FIELD(s32, scene, 0xb5c) = point.y;

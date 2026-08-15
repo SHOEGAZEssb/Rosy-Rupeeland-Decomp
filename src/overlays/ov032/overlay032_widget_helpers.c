@@ -65,7 +65,8 @@ extern "C" s32 func_ov032_02201e58(void *widget)
 {
     void *list = FIELD(void *, widget, 0x4c);
     s32 value = FIELD(s32, list, 0x2c);
-    if (FIELD(s32, list, 0x30) != (value + ((u32)value >> 31)) >> 1) return 0;
+    s32 midpoint = (value + (s32)((u32)value >> 31)) >> 1;
+    if (FIELD(s32, list, 0x30) != midpoint) return 0;
     if (FIELD(s32, list, 0xc) != FIELD(s32, list, 0x10)) func_ov032_02201ea4(widget);
     return 1;
 }

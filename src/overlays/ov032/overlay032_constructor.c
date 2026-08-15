@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/display_controller.h"
 
 /* Overlay 32 large composite gameplay/UI object construction. */
 
@@ -9,7 +10,7 @@ extern void *gGameWork;
 extern void *gDebugFont;
 extern void *data_020f4e18[];
 extern void *data_020f4e14[];
-extern void *gDisplayBrightnessPair[];
+extern DisplayBrightnessPair gDisplayBrightnessPair;
 extern const u8 data_ov032_02202340[];
 extern const u8 data_ov032_02202220[];
 extern u8 gHeapContext[];
@@ -32,7 +33,6 @@ extern void func_02058eb8(void *, s32, s32, s32, s32);
 extern void func_02027f94(void);
 extern void *func_02027854(void);
 extern u32 genrand_int32(void);
-extern void *DisplayBrightnessPair_GetScreen(void *, s32);
 extern void *func_02071980(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_02092cc0(void *, void *, void *);
@@ -154,8 +154,10 @@ extern "C" void *func_ov032_021fce20(void *object)
     FIELD(s32, object, 0xb78) = 0;
     FIELD(s32, object, 0xf28) = 0;
     FIELD(s32, object, 0xbdc) = genrand_int32() % 0x78;
-    FIELD(void *, object, 0xbe0) = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair[0], 0);
-    FIELD(void *, object, 0xbe4) = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair[0], 1);
+    FIELD(void *, object, 0xbe0) =
+        DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
+    FIELD(void *, object, 0xbe4) =
+        DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
     FIELD(void *, object, 8) = func_02071980(data_020f4e18[0], 0x7007);
 
     void *dialog = Heap_Alloc(0xec, data_ov032_02202340, 4, gHeapContext);

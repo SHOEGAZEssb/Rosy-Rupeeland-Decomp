@@ -204,5 +204,6 @@ extern "C" void func_ov032_021fd994(void *scene)
 /* Replaces only POWCNT bit 15 with `enabled`; other power-control bits remain unchanged. */
 extern "C" void func_ov032_021fde1c(s32 enabled)
 {
-    REG16(0x04000304) = (REG16(0x04000304) & ~0x8000) | (enabled << 15);
+    REG16(0x04000304) = (u16)((REG16(0x04000304) & ~0x8000) |
+                              ((u32)enabled << 15));
 }

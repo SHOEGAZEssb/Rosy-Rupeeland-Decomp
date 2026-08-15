@@ -86,7 +86,7 @@ extern "C" void func_ov032_021fe2f0(void *scene)
 extern "C" void func_ov032_021fe440(void *scene)
 {
     u32 index = FIELD(u32, scene, 0xc24);
-    u16 messageId = FIELD(u32, data_020c7ba8, index * 0x208);
+    u16 messageId = (u16)FIELD(u32, data_020c7ba8, index * 0x208);
     void *dialog = FIELD(void *, scene, 0x18);
     func_020939d8(dialog);
     func_02092e9c(dialog, func_020791e0(data_021f3ecc, messageId), 0);
