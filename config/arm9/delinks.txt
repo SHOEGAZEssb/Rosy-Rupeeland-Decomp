@@ -4583,6 +4583,10 @@ src/graphics/graphics_3d_resource_owner_ops.c:
     categories: Game code
     .text       start:0x020779ac end:0x02077a04
 
+src/graphics/graphics_3d_presentation_update.c:
+    categories: Game code
+    .text       start:0x020a214c end:0x020a219c
+
 src/graphics/graphics_3d_light.c:
     categories: Game code
     .text       start:0x02077a04 end:0x02077a8c
