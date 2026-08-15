@@ -8,8 +8,9 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const void *data_ov013_021feb40;
-extern const void *data_ov013_021feb58;
+/* These linker symbols denote command-stream addresses, not pointer slots. */
+extern const u32 data_ov013_021feb40[];
+extern const u32 data_ov013_021feb58[];
 extern const s32 data_ov013_021febb4[];
 extern void *gLupyContext;
 #ifdef __cplusplus

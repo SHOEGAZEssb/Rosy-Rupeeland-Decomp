@@ -8,9 +8,10 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const void *data_ov013_021fed6c;
+/* These linker symbols denote the addresses of the vtable and command stream. */
+extern const u32 data_ov013_021fed6c[];
 extern const char data_ov013_021fed80[];
-extern const void *data_ov013_021feb58;
+extern const u32 data_ov013_021feb58[];
 extern const s32 data_ov013_021fecf0[];
 extern void *data_021052fc;
 extern void *data_020f4e14;

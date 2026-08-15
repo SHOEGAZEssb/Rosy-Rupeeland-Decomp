@@ -171,14 +171,17 @@ static RisingSpriteSwarmPresentation *teardown_swarm(
     self->vtable = (void **)data_020d6398;
     node = self->controllers0c.head04;
     while (node != 0) {
+        ControllerListNode *next = node->next00;
         void *controller = node->controller08;
         if (controller != 0) {
             RisingSpriteMotionController_Destroy(controller);
             Heap_Free(controller);
         }
         RisingSpriteControllerList_RemoveNode(&self->controllers0c, node);
-        /* Retail reloads next00 through the just-freed node allocation. */
-        node = node->next00;
+        /* Retail reloads next00 through the freed allocation.  Retaining the
+         * same link before removal preserves that traversal when the host
+         * allocator poisons released blocks. */
+        node = next;
     }
     GraphicsSpriteGroup_Clear(self->resource24);
     GraphicsSpriteGroup_Clear(self->resource28);
@@ -238,8 +241,9 @@ void RisingSpriteControllerList_RemoveNode(ControllerList *self,
  * updates all children with referencePosition08, removes finished children,
  * then
  * refreshes both graphics resources and returns zero.  Retail advances list
- * iteration through a node after RisingSpriteControllerList_RemoveNode frees
- * that node.
+ * iteration through a freed node; the portable form retains the same next
+ * link before removal so host allocator poisoning cannot change valid list
+ * traversal.
  */
 s32 RisingSpriteSwarmPresentation_Update(RisingSpriteSwarmPresentation *self)
 {
@@ -282,6 +286,7 @@ s32 RisingSpriteSwarmPresentation_Update(RisingSpriteSwarmPresentation *self)
     }
     node = self->controllers0c.head04;
     while (node != 0) {
+        ControllerListNode *next = node->next00;
         void *controller = node->controller08;
         if (RisingSpriteMotionController_Update(
                 controller, self->referencePosition08) != 0) {
@@ -291,7 +296,7 @@ s32 RisingSpriteSwarmPresentation_Update(RisingSpriteSwarmPresentation *self)
                 Heap_Free(controller);
             }
         }
-        node = node->next00;
+        node = next;
     }
     GraphicsSpriteGroup_AdvanceAnimations(self->resource24);
     GraphicsSpriteGroup_AdvanceAnimations(self->resource28);
