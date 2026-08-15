@@ -116,10 +116,10 @@ void func_ov052_0220ddb4(void *scene)
     *display=(*display&~0x1f00u)|0x1500u; GX_SetBankForSubBG(4); func_020aea7c(0x80);
     bg[0]=(u16)((bg[0]&0x43u)|0x3c80u); bg[2]=(u16)((bg[2]&0x43u)|0x7e10u);
     bg[0]=(u16)((bg[0]&~3u)|3u); bg[2]=(u16)((bg[2]&~3u)|1u); *(volatile u32 *)(bg+4)=0;
-    GraphicsResourceSet_Init(&r); GraphicsResourceSet_Load(&r,data_020f4e18,0x9008,0x900a,0x900b);
+    GraphicsResourceSet_Init(&r); GraphicsResourceSet_Load(&r,data_020f4e18,0x900a,0x9008,0x900b);
     func_020b44e8(); func_020706c4(r.resource0,2,0); func_02070bc4(r.resource1,0x4000);
     func_02070eac(r.resource2,2,0); GraphicsResourceSet_ReleaseHandles(&r);
-    GraphicsResourceSet_Load(&r,data_020f4e18,0x9008,0x9007,0x9009); func_020b44e8();
+    GraphicsResourceSet_Load(&r,data_020f4e18,0x9007,0x9008,0x9009); func_020b44e8();
     func_020706c4(r.resource0,0,0); func_02070eac(r.resource2,0,0); GraphicsResourceSet_ReleaseHandles(&r);
     func_020afd28((volatile void *)0x04001020,transform,0,0,0,0);
     func_020afd28((volatile void *)0x04001030,transform,0,0,0,0);
