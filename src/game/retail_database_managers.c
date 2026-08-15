@@ -29,6 +29,7 @@ extern u8 data_020c6d18[];
 
 extern void func_02078dd4(void *manager, u16 id, void *destination,
                           u32 destination_size);
+extern void *func_02078e98(void *manager, u32 identifier);
 extern void OS_Halt(void);
 
 static u16 ReadU16(const u8 *bytes)
@@ -156,6 +157,27 @@ void func_02079264(void *manager_pointer)
         OS_Halt();
     CheckedFS_CloseFile(file);
     func_02097f94(data_021f5f18);
+}
+
+/* Resolve a selection record's language resource at retail 0x02079408.
+ * `manager_pointer` borrows the loaded 0x66-byte record array and `id` selects
+ * its leading ID. The returned descriptor remains owned by the language
+ * database; retail halts when the requested selection record does not exist. */
+void *func_02079408(void *manager_pointer, u16 id)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u8 *records = *(u8 **)manager;
+    u32 count = *(u32 *)(manager + 8);
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *record = records + index * 0x66;
+
+        if (*(u16 *)record == id)
+            return func_02078e98(data_021f4090, *(u16 *)(record + 4));
+    }
+    OS_Halt();
+    return 0;
 }
 
 /* Load the four-u16 relationship database at retail 0x020794A4. */
@@ -313,7 +335,6 @@ void func_02079694(void *manager_pointer)
     *(u32 *)(manager + 0x10c) = 0;
     *(u32 *)(manager + 0x110) = 0;
 }
-
 
 
 
