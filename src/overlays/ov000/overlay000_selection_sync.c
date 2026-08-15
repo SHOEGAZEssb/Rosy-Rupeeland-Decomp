@@ -41,9 +41,10 @@ void func_ov000_021fc9d4(Overlay000SelectionSyncState *state)
     s32 firstRow = FIELD(s32, state->controller_26c, 0x0c);
 
     state->activeIndex_25c = state->column_27c + selectedRow * 5;
-    FIELD(u16, state->cursor_020, 0x2c) = state->column_27c * 0x24 + 0x38;
+    FIELD(u16, state->cursor_020, 0x2c) =
+        (u16)(state->column_27c * 0x24 + 0x38);
     FIELD(u16, state->cursor_020, 0x2e) =
-        (selectedRow - firstRow) * 0x24 + 0x34;
+        (u16)((selectedRow - firstRow) * 0x24 + 0x34);
     if (state->transient_01c != 0) {
         return;
     }

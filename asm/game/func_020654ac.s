@@ -1,0 +1,33 @@
+.text
+; Matching fallback for the portable implementation in src/game/inventory_record_sort.c.
+.extern func_02062728
+.extern func_02064b7c
+
+.global func_020654ac
+func_020654ac:
+    stmdb sp!, {r4, r5, r6, r7, lr}
+    sub sp, sp, #0x24
+    mov r4, r2
+    mov r5, r0
+    cmp r1, r4
+    beq .L_02065504
+    mov r0, #0x24
+    mul r6, r1, r0
+    ldr r1, [r5, #0x4]
+    add r0, sp, #0x0
+    add r1, r1, r6
+    bl func_02064b7c
+    mov r0, #0x24
+    mul r7, r4, r0
+    ldr r1, [r5, #0x4]
+    add r0, r1, r6
+    add r1, r1, r7
+    bl func_02062728
+    ldr r0, [r5, #0x4]
+    add r1, sp, #0x0
+    add r0, r0, r7
+    bl func_02062728
+.L_02065504:
+    add sp, sp, #0x24
+    ldmia sp!, {r4, r5, r6, r7, pc}
+.size func_020654ac, . - func_020654ac

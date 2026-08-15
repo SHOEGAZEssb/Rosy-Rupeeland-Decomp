@@ -43824,7 +43824,7 @@ build overlay645: phony overlay645_matching
 build link_replacement_objects_623: phony build/decomp/asm/overlays/ov645/overlay645_02233c60.o link_replacement_objects_624
 subninja config/arm9/overlays/ov646/matching.ninja
 build overlay646: phony overlay646_matching
-build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
+build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/asm/game/func_02062728.o build/decomp/asm/game/func_02062828.o build/decomp/asm/game/func_02062c20.o build/decomp/asm/game/func_02062f18.o build/decomp/asm/game/func_02064b7c.o build/decomp/asm/game/func_020654ac.o build/decomp/asm/game/func_0206550c.o build/decomp/asm/game/func_020683c8.o build/decomp/asm/game/func_020683f4.o build/decomp/asm/game/func_02068408.o build/decomp/asm/game/func_02068444.o build/decomp/asm/game/func_02068538.o build/decomp/asm/game/func_020685b0.o build/decomp/asm/game/func_02068630.o build/decomp/asm/game/func_02068698.o build/decomp/asm/game/func_02068704.o build/decomp/asm/game/func_02068938.o build/decomp/asm/game/func_02068954.o build/decomp/asm/game/func_0206896c.o build/decomp/asm/game/func_02093cb4.o build/decomp/asm/game/func_02093d20.o build/decomp/asm/game/func_02094154.o build/decomp/asm/game/func_020943d4.o build/decomp/asm/game/func_02094430.o build/decomp/asm/game/func_020944f0.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
   build/decomp/src/game/title_random_value.o build/decomp/src/game/title_interpolated_value.o build/decomp/src/game/title_interpolated_value_advance.o build/decomp/src/game/title_interpolated_value_complete.o build/decomp/src/game/title_screen_resource_collection.o build/decomp/src/game/title_screen_resource_collection_destructor.o build/decomp/src/game/title_screen_resource_collection_ops.o build/decomp/src/game/title_character_resource_collection.o build/decomp/src/game/title_character_resource_collection_destructor.o build/decomp/src/game/title_character_resource_collection_ops.o build/decomp/src/game/title_scroll_value.o
 build build/decomp/src/overlays/ov025/overlay025_effect_base_noop.o: mwccarm src/overlays/ov025/overlay025_effect_base_noop.c | include/tingle/types.h
   source = src/overlays/ov025/overlay025_effect_base_noop.c
@@ -44462,3 +44462,28 @@ build build/reports/overlay090_title_chain_curve_update.txt: match_report build/
   report_json = build/reports/overlay090_title_chain_curve_update.json
   report_args = --section .text --function func_ov090_0221c184 --require-exact
 build overlay090_title_chain_curve_update: phony build/reports/overlay090_title_chain_curve_update.txt
+build build/decomp/asm/game/func_02062728.o: mwasmarm asm/game/func_02062728.s
+build build/decomp/asm/game/func_02062828.o: mwasmarm asm/game/func_02062828.s
+build build/decomp/asm/game/func_02062c20.o: mwasmarm asm/game/func_02062c20.s
+build build/decomp/asm/game/func_02062f18.o: mwasmarm asm/game/func_02062f18.s
+build build/decomp/asm/game/func_02064b7c.o: mwasmarm asm/game/func_02064b7c.s
+build build/decomp/asm/game/func_020654ac.o: mwasmarm asm/game/func_020654ac.s
+build build/decomp/asm/game/func_0206550c.o: mwasmarm asm/game/func_0206550c.s
+build build/decomp/asm/game/func_020683c8.o: mwasmarm asm/game/func_020683c8.s
+build build/decomp/asm/game/func_020683f4.o: mwasmarm asm/game/func_020683f4.s
+build build/decomp/asm/game/func_02068408.o: mwasmarm asm/game/func_02068408.s
+build build/decomp/asm/game/func_02068444.o: mwasmarm asm/game/func_02068444.s
+build build/decomp/asm/game/func_02068538.o: mwasmarm asm/game/func_02068538.s
+build build/decomp/asm/game/func_020685b0.o: mwasmarm asm/game/func_020685b0.s
+build build/decomp/asm/game/func_02068630.o: mwasmarm asm/game/func_02068630.s
+build build/decomp/asm/game/func_02068698.o: mwasmarm asm/game/func_02068698.s
+build build/decomp/asm/game/func_02068704.o: mwasmarm asm/game/func_02068704.s
+build build/decomp/asm/game/func_02068938.o: mwasmarm asm/game/func_02068938.s
+build build/decomp/asm/game/func_02068954.o: mwasmarm asm/game/func_02068954.s
+build build/decomp/asm/game/func_0206896c.o: mwasmarm asm/game/func_0206896c.s
+build build/decomp/asm/game/func_02093cb4.o: mwasmarm asm/game/func_02093cb4.s
+build build/decomp/asm/game/func_02093d20.o: mwasmarm asm/game/func_02093d20.s
+build build/decomp/asm/game/func_02094154.o: mwasmarm asm/game/func_02094154.s
+build build/decomp/asm/game/func_020943d4.o: mwasmarm asm/game/func_020943d4.s
+build build/decomp/asm/game/func_02094430.o: mwasmarm asm/game/func_02094430.s
+build build/decomp/asm/game/func_020944f0.o: mwasmarm asm/game/func_020944f0.s

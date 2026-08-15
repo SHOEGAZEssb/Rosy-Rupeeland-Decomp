@@ -55,9 +55,10 @@ void func_ov001_021fc644(Overlay001SelectionSyncState *state)
     s32 localRow;
 
     state->activeIndex_1ac = column + selectedRow * 5;
-    FIELD(u16, state->primaryCursor_020, 0x2c) = column * 0x24 + 0x38;
+    FIELD(u16, state->primaryCursor_020, 0x2c) =
+        (u16)(column * 0x24 + 0x38);
     FIELD(u16, state->primaryCursor_020, 0x2e) =
-        (selectedRow - firstVisibleRow) * 0x24 + 0x34;
+        (u16)((selectedRow - firstVisibleRow) * 0x24 + 0x34);
     if (state->transient_01c == 0) {
         state->transient_01c =
             FIELD(void *,
@@ -77,7 +78,8 @@ void func_ov001_021fc644(Overlay001SelectionSyncState *state)
         return;
     }
     FIELD(u16, state->secondaryCursor_024, 0x2c) =
-        (state->secondaryIndex_1b0 % 5) * 0x24 + 0x38;
-    FIELD(u16, state->secondaryCursor_024, 0x2e) = localRow * 0x24 + 0x34;
+        (u16)((state->secondaryIndex_1b0 % 5) * 0x24 + 0x38);
+    FIELD(u16, state->secondaryCursor_024, 0x2e) =
+        (u16)(localRow * 0x24 + 0x34);
     FIELD(u16, state->secondaryCursor_024, 0x24) &= ~4;
 }

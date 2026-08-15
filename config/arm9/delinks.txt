@@ -7156,3 +7156,102 @@ src/game/title_character_resource_collection_ops.c:
 src/game/title_scroll_value.c:
     categories: Game code
     .text       start:0x020929b0 end:0x02092a34
+asm/game/func_02062728.s:
+    categories: Game code
+    .text       start:0x02062728 end:0x02062744
+
+asm/game/func_02062828.s:
+    categories: Game code
+    .text       start:0x02062828 end:0x02062864
+
+asm/game/func_02062c20.s:
+    categories: Game code
+    .text       start:0x02062c20 end:0x02062c68
+
+asm/game/func_02062f18.s:
+    categories: Game code
+    .text       start:0x02062f18 end:0x02063014
+
+asm/game/func_02064b7c.s:
+    categories: Game code
+    .text       start:0x02064b7c end:0x02064be0
+
+asm/game/func_020654ac.s:
+    categories: Game code
+    .text       start:0x020654ac end:0x0206550c
+
+asm/game/func_0206550c.s:
+    categories: Game code
+    .text       start:0x0206550c end:0x0206563c
+
+asm/game/func_020683c8.s:
+    categories: Game code
+    .text       start:0x020683c8 end:0x020683f4
+
+asm/game/func_020683f4.s:
+    categories: Game code
+    .text       start:0x020683f4 end:0x02068408
+
+asm/game/func_02068408.s:
+    categories: Game code
+    .text       start:0x02068408 end:0x0206841c
+
+asm/game/func_02068444.s:
+    categories: Game code
+    .text       start:0x02068444 end:0x02068538
+
+asm/game/func_02068538.s:
+    categories: Game code
+    .text       start:0x02068538 end:0x020685b0
+
+asm/game/func_020685b0.s:
+    categories: Game code
+    .text       start:0x020685b0 end:0x02068630
+
+asm/game/func_02068630.s:
+    categories: Game code
+    .text       start:0x02068630 end:0x02068698
+
+asm/game/func_02068698.s:
+    categories: Game code
+    .text       start:0x02068698 end:0x02068704
+
+asm/game/func_02068704.s:
+    categories: Game code
+    .text       start:0x02068704 end:0x02068938
+
+asm/game/func_02068938.s:
+    categories: Game code
+    .text       start:0x02068938 end:0x02068954
+
+asm/game/func_02068954.s:
+    categories: Game code
+    .text       start:0x02068954 end:0x0206896c
+
+asm/game/func_0206896c.s:
+    categories: Game code
+    .text       start:0x0206896c end:0x0206899c
+
+asm/game/func_02093cb4.s:
+    categories: Game code
+    .text       start:0x02093cb4 end:0x02093d20
+
+asm/game/func_02093d20.s:
+    categories: Game code
+    .text       start:0x02093d20 end:0x02093d50
+
+asm/game/func_02094154.s:
+    categories: Game code
+    .text       start:0x02094154 end:0x020943d4
+
+asm/game/func_020943d4.s:
+    categories: Game code
+    .text       start:0x020943d4 end:0x02094430
+
+asm/game/func_02094430.s:
+    categories: Game code
+    .text       start:0x02094430 end:0x02094494
+
+asm/game/func_020944f0.s:
+    categories: Game code
+    .text       start:0x020944f0 end:0x02094550
