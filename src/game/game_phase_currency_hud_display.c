@@ -12,9 +12,10 @@ extern u32 genrand_int32(void);
 #endif
 
 /*
- * Extract seven decimal digits from value, update both displays' corresponding
- * sprite animations, clear completion/hide flags 1 and 4, and randomize scaleZ
- * when a digit changes (usually 0xe0..0x2df, with a 1/16 chance of 0xc0).
+ * Extract seven decimal digits from value, start a changed digit's animation
+ * only after its prior animation reaches terminal flag 1, clear hide flag 4,
+ * and randomize scaleZ when a digit changes (usually 0xe0..0x2df, with a 1/16
+ * chance of 0xc0).
  * Consumes the global RNG and changes sprite animation state; returns nothing.
  */
 void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value)
@@ -25,7 +26,7 @@ void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value)
         u8 number = (u8)(value % 10);
         for (display = 0; display < 2; display++) {
             GraphicsSpriteState *sprite = self->digits[display][digit];
-            if (!(sprite->flags & 1) || sprite->animationIndex != number) {
+            if ((sprite->flags & 1) && sprite->animationIndex != number) {
                 u16 scale;
                 GraphicsSpriteState_SetAnimationIndex(sprite, number);
                 sprite->flags &= ~1;
