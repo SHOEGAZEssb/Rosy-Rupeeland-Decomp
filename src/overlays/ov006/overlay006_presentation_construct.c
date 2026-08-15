@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /*
  * Overlay 6 presentation construction. This recovered constructor initializes
@@ -16,7 +17,6 @@ typedef struct Overlay006Presentation {
 extern "C" {
 #endif
 extern void *gGameWork;
-extern void *gHeapContext;
 extern void *gDebugFont;
 extern const u8 data_ov006_021fbc88[];
 extern const u8 data_ov006_021fbc9c[];
@@ -26,14 +26,12 @@ extern void func_02091e28(void *state);
 extern void func_02093a88(void *controller);
 extern void func_02091b6c(void *animation);
 extern void func_02093adc(void *controller, s32 first, s32 index, s32 third);
-extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
-                        void *heapContext);
 extern void *func_ov046_0220b7bc(void *memory, void *owner, s32 mode);
-extern void *func_ov046_0220c4a0(void);
-extern void func_02093af8(void *controller, void *value);
-extern void func_ov046_0220bffc(void *helper, void *controllerMember,
+extern s32 func_ov046_0220c4a0(void *panel);
+extern void func_02093af8(void *controller, s32 value);
+extern void func_ov046_0220bffc(void *helper, s32 controllerMember,
                                s32 first, s32 second);
-extern void func_ov046_0220c478(void *helper, void *controllerMember);
+extern void func_ov046_0220c478(void *helper, s32 controllerMember);
 extern void *func_02027fe8(void *memory, void *owner);
 extern void func_02091b98(void *animation, s32 value);
 extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
@@ -77,16 +75,18 @@ Overlay006Presentation *func_ov006_021fb708(Overlay006Presentation *state)
     func_02093adc((u8 *)state + 0x58, 0, index, 0);
     FIELD(s32, state, 0x084) = 12;
 
-    helper = Heap_Alloc(0x118, data_ov006_021fbc9c, 4, gHeapContext);
+    helper = Heap_Alloc(0x118, (const char *)data_ov006_021fbc9c, 4,
+                        &gHeapContext);
     if (helper != 0) {
         helper = func_ov046_0220b7bc(helper, gDebugFont, 0);
     }
     FIELD(void *, state, 0x090) = helper;
-    func_02093af8((u8 *)state + 0x58, func_ov046_0220c4a0());
-    func_ov046_0220bffc(helper, FIELD(void *, state, 0x064), 0, 0);
-    func_ov046_0220c478(helper, FIELD(void *, state, 0x064));
+    func_02093af8((u8 *)state + 0x58, func_ov046_0220c4a0(helper));
+    func_ov046_0220bffc(helper, FIELD(s32, state, 0x064), 0, 0);
+    func_ov046_0220c478(helper, FIELD(s32, state, 0x064));
 
-    auxiliary = Heap_Alloc(0x3c, data_ov006_021fbca4, 4, gHeapContext);
+    auxiliary = Heap_Alloc(0x3c, (const char *)data_ov006_021fbca4, 4,
+                           &gHeapContext);
     if (auxiliary != 0) {
         auxiliary = func_02027fe8(auxiliary, gDebugFont);
     }

@@ -1,7 +1,8 @@
 #include "tingle/types.h"
 
 /*
- * Packed scene sound-command adapters recovered at 0x02092260..0x02092337.
+ * Packed scene sound-command adapters and shared callbacks recovered at
+ * 0x02092260..0x0209234b.
  * Scene pointers are borrowed and unused; each 16-bit packed value stores a
  * sequence-archive ID in the upper nine bits and a member in the lower seven.
  * The game-owned sound context remains the sole routing owner.
@@ -52,4 +53,10 @@ void func_02092314(void *scene, s32 sequence, s32 fade_frames)
 {
     (void)scene;
     func_0205929c(gSoundContext, (u16)sequence, fade_frames);
+}
+
+/* Return the fixed false/zero result used by shared scene callback tables. */
+s32 func_02092344(void)
+{
+    return 0;
 }

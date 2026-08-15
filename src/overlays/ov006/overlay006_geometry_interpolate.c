@@ -19,7 +19,7 @@ extern s32 func_ov046_0220c410(void *helper, s32 key);
 extern s32 func_02091a70(s32 first, s32 second, s32 progress, s32 duration);
 extern void func_ov046_0220c46c(void *helper, s32 first, s32 second);
 extern void func_02028100(void *auxiliary, void *controllerMember);
-extern void func_ov046_0220bffc(void *helper, void *controllerMember,
+extern void func_ov046_0220bffc(void *helper, s32 controllerMember,
                                s32 first, s32 second);
 extern void func_02091b98(void *animation, s32 value);
 #ifdef __cplusplus
@@ -62,7 +62,7 @@ void func_ov006_021fb9b4(Overlay006GeometryState *state)
     }
     func_02028100(FIELD(void *, state, 0x094),
                    FIELD(void *, state, 0x064));
-    func_ov046_0220bffc(helper, FIELD(void *, state, 0x064), 0, 0);
+    func_ov046_0220bffc(helper, FIELD(s32, state, 0x064), 0, 0);
     func_02091b98((u8 *)state + 0x98, 0x78);
     FIELD(s32, state, 0x0b4) = 1;
 }

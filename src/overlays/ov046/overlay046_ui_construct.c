@@ -13,7 +13,7 @@
 extern "C" u8 data_020d77fc[];
 extern "C" u8 data_020d780c[];
 extern "C" void *gGameWork;
-extern "C" void *data_020f4e14;
+extern "C" void *data_020f4e18;
 extern "C" void func_02071ea4(void *owner);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void func_02071ee0(void *owner, void *font, u32 character,
@@ -58,13 +58,13 @@ extern "C" void *func_ov046_0220b7bc(void *object, void *font, s32 mode)
     s32 entryCount = FIELD(s16, gGameWork, 0x12e);
     FIELD(s32, object, 0xc4) = entryCount > 10 ? 10 : entryCount;
 
-    func_02071ee0((u8 *)object + 8, data_020f4e14, 0x3326, 0x3327, 0x3328);
+    func_02071ee0((u8 *)object + 8, data_020f4e18, 0x3326, 0x3327, 0x3328);
     for (s32 i = 0; i < 2; ++i) {
         u16 *ids = (u16 *)(data_020d77fc + i * 8);
-        func_02071ee0((u8 *)object + 0x14 + i * 0x0c, data_020f4e14,
+        func_02071ee0((u8 *)object + 0x14 + i * 0x0c, data_020f4e18,
                       ids[0], ids[1], ids[2]);
     }
-    func_02071ee0((u8 *)object + 0x2c, data_020f4e14,
+    func_02071ee0((u8 *)object + 0x2c, data_020f4e18,
                   0x400c, 0x400d, 0x400e);
 
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 4),
