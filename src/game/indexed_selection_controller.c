@@ -2,7 +2,7 @@
 
 /*
  * Indexed selection-controller construction and range setup recovered at
- * 0x02093a88..0x02093b1f. The caller owns the 0x38-byte state, while the
+ * 0x02093a88..0x02093cb3. The caller owns the 0x38-byte state, while the
  * installed retail table remains static game data. No allocation, hardware
  * access, or failure path occurs.
  */
@@ -50,6 +50,114 @@ void func_02093af8(void *controller, s32 value)
         value = FIELD(s32, controller, 0x08);
     FIELD(s32, controller, 0x0c) = value;
     FIELD(s32, controller, 0x10) = value;
+}
+
+/* Clear the transition phase and its per-phase frame counter. */
+void func_02093b20(void *controller)
+{
+    FIELD(s32, controller, 0x14) = 0;
+    FIELD(s32, controller, 0x18) = 0;
+}
+
+/* Snap the transition origin to the current selection. */
+void func_02093b30(void *controller)
+{
+    FIELD(s32, controller, 0x10) = FIELD(s32, controller, 0x0c);
+}
+
+/* Move one entry toward the upper bound and report whether movement occurred. */
+s32 func_02093b3c(void *controller)
+{
+    FIELD(s32, controller, 0x34) = 1;
+    if (FIELD(s32, controller, 0x0c) < FIELD(s32, controller, 0x08)) {
+        ++FIELD(s32, controller, 0x0c);
+        return 1;
+    }
+    return 0;
+}
+
+/* Move one entry toward the lower bound and report whether movement occurred. */
+s32 func_02093b64(void *controller)
+{
+    FIELD(s32, controller, 0x34) = 0;
+    if (FIELD(s32, controller, 0x0c) > FIELD(s32, controller, 0x04)) {
+        --FIELD(s32, controller, 0x0c);
+        return 1;
+    }
+    return 0;
+}
+
+/* Advance one entry, wrapping from the upper bound to the lower bound. */
+void func_02093b8c(void *controller)
+{
+    s32 value = FIELD(s32, controller, 0x0c);
+    FIELD(s32, controller, 0x0c) =
+        value < FIELD(s32, controller, 0x08)
+            ? value + 1 : FIELD(s32, controller, 0x04);
+    FIELD(s32, controller, 0x34) = 1;
+}
+
+/* Retreat one entry, wrapping from the lower bound to the upper bound. */
+void func_02093bb0(void *controller)
+{
+    s32 value = FIELD(s32, controller, 0x0c);
+    FIELD(s32, controller, 0x0c) =
+        value > FIELD(s32, controller, 0x04)
+            ? value - 1 : FIELD(s32, controller, 0x08);
+    FIELD(s32, controller, 0x34) = 0;
+}
+
+/* Return the most recently selected movement direction. */
+s32 func_02093bd4(void *controller)
+{
+    return FIELD(s32, controller, 0x34);
+}
+
+/* Advance the retail selection-transition delay and pacing state. */
+s32 func_02093bdc(void *controller)
+{
+    if (FIELD(s32, controller, 0x10) == FIELD(s32, controller, 0x0c)) {
+        FIELD(s32, controller, 0x20) = 0;
+        FIELD(s32, controller, 0x14) = 0;
+        return 0;
+    }
+
+    if (FIELD(s32, controller, 0x14) == 1) {
+        s32 frame = FIELD(s32, controller, 0x18) + 1;
+        FIELD(s32, controller, 0x18) = frame;
+        if (frame < FIELD(s32, controller, 0x1c)) {
+            FIELD(s32, controller, 0x0c) = FIELD(s32, controller, 0x10);
+            return 0;
+        }
+    }
+
+    FIELD(s32, controller, 0x18) = 0;
+    FIELD(s32, controller, 0x28) = 0;
+    ++FIELD(s32, controller, 0x14);
+    FIELD(s32, controller, 0x24) =
+        FIELD(s32, controller, 0x14) > 8
+            ? FIELD(s32, controller, 0x30)
+            : FIELD(s32, controller, 0x2c);
+    FIELD(s32, controller, 0x20) = 1;
+    return 1;
+}
+
+/* Report whether the controller is outside an active transition. */
+s32 func_02093c64(void *controller)
+{
+    return FIELD(s32, controller, 0x20) == 0;
+}
+
+/* Tick the active pacing interval and report when it is idle or complete. */
+s32 func_02093c78(void *controller)
+{
+    if (FIELD(s32, controller, 0x24) != 0) {
+        ++FIELD(s32, controller, 0x28);
+        if (FIELD(s32, controller, 0x28) != FIELD(s32, controller, 0x24))
+            return 0;
+        FIELD(s32, controller, 0x24) = 0;
+    }
+    return 1;
 }
 
 #undef FIELD
