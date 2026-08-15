@@ -14,6 +14,7 @@
 extern void *gGameWork;
 extern s32 GameWork_TestFlag(void *work, s32 flag);
 extern void GameWork_SetFlag(void *work, s32 flag);
+extern void GameWork_ClearFlag(void *work, s32 flag);
 
 static s32 AllFlags(const u16 *flags, u32 count)
 {
@@ -23,6 +24,20 @@ static s32 AllFlags(const u16 *flags, u32 count)
         if (!GameWork_TestFlag(gGameWork, flags[index]))
             return 0;
     return 1;
+}
+
+/*
+ * Establish the initial progression milestone selected by the resident
+ * callback tables.  The call borrows gGameWork, sets flags 0x25a, 0x75f,
+ * 0x73b, and 0x746, and clears the mutually exclusive flag 0x25d.
+ */
+void func_0208b590(void)
+{
+    GameWork_SetFlag(gGameWork, 0x25a);
+    GameWork_SetFlag(gGameWork, 0x75f);
+    GameWork_ClearFlag(gGameWork, 0x25d);
+    GameWork_SetFlag(gGameWork, 0x73b);
+    GameWork_SetFlag(gGameWork, 0x746);
 }
 
 /* Require both retail flags used by the bedroom-to-field availability gate. */
