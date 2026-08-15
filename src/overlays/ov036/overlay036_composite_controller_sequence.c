@@ -18,9 +18,9 @@ extern void func_0205929c(void *sound, s32 id, s32 value);
 extern void Sound_Play(void *sound, s32 id, s32 mode);
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
-extern void func_02094cf0(void *object, const void *data, s32 mode);
-extern s32 func_02095224(void *object);
-extern s32 func_02095248(void *object);
+extern void Presentation_SetScript(void *object, const void *data, s32 mode);
+extern s32 Presentation_IsScriptComplete(void *object);
+extern s32 Presentation_IsScriptSuspended(void *object);
 extern void GraphicsAnimationInstance_SetAnimation(void *resource, s32 selector);
 extern void func_ov036_021fdc1c(void *auxiliary);
 extern void func_ov036_02203024(void *controller, s32 colorMode,
@@ -60,16 +60,16 @@ extern "C" s32 func_ov036_022032a8(void *controller)
         break;
     case 1:
         if (func_02091c7c((u8 *)controller + 0xa4, 2) != 0) {
-            func_02094cf0(FIELD(void *, controller, 0xfc),
+            Presentation_SetScript(FIELD(void *, controller, 0xfc),
                           data_ov036_02204f8c, 1);
-            func_02094cf0(FIELD(void *, controller, 0xd8),
+            Presentation_SetScript(FIELD(void *, controller, 0xd8),
                           data_ov036_0220506c, 1);
             ++FIELD(s32, controller, 0xa0);
         }
         func_ov036_02203024(controller, 4, 1);
         break;
     case 2:
-        if (func_02095224(FIELD(void *, controller, 0xfc)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, controller, 0xfc)) != 0) {
             func_02091b98((u8 *)controller + 0xa4, 0x1e);
             ++FIELD(s32, controller, 0xa0);
         }
@@ -80,11 +80,11 @@ extern "C" s32 func_ov036_022032a8(void *controller)
             Sound_Play(gSoundContext, 0x1b2, 0);
             GraphicsAnimationInstance_SetAnimation(FIELD(void *, FIELD(void *, controller, 0xfc), 0x9c),
                           0);
-            func_02094cf0(FIELD(void *, controller, 0x154),
+            Presentation_SetScript(FIELD(void *, controller, 0x154),
                           data_ov036_022058e4, 1);
-            func_02094cf0(FIELD(void *, controller, 0x158),
+            Presentation_SetScript(FIELD(void *, controller, 0x158),
                           data_ov036_022058e4, 1);
-            func_02094cf0(FIELD(void *, controller, 0xf8),
+            Presentation_SetScript(FIELD(void *, controller, 0xf8),
                           data_ov036_02205400, 1);
             FIELD(u16, FIELD(void *, controller, 0x1a0), 0x14) = 0x7e00;
             ++FIELD(s32, controller, 0xa0);
@@ -92,7 +92,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
         func_ov036_02203024(controller, 1, 1);
         break;
     case 4:
-        if (func_02095248(primary) != 0) {
+        if (Presentation_IsScriptSuspended(primary) != 0) {
             func_ov036_021fdc1c(FIELD(void *, controller, 0x1a0));
             func_02091b98((u8 *)controller + 0xa4, 0x1e);
             ++FIELD(s32, controller, 0xa0);
@@ -114,7 +114,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
         func_ov036_02203024(controller, 2, 0);
         break;
     case 6:
-        if (func_02095248(primary) != 0) {
+        if (Presentation_IsScriptSuspended(primary) != 0) {
             func_ov036_021fdc1c(FIELD(void *, controller, 0x1a0));
             func_02091b98((u8 *)controller + 0xa4, 0x1e);
             ++FIELD(s32, controller, 0xa0);
@@ -139,7 +139,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
         func_ov036_02203024(controller, 3, 1);
         break;
     case 8:
-        if (func_02095248(primary) != 0) {
+        if (Presentation_IsScriptSuspended(primary) != 0) {
             func_ov036_021fdc1c(FIELD(void *, controller, 0x1a0));
             func_02091b98((u8 *)controller + 0xa4, 0x1e);
             ++FIELD(s32, controller, 0xa0);
@@ -164,7 +164,7 @@ extern "C" s32 func_ov036_022032a8(void *controller)
         func_ov036_02203024(controller, 0, 0);
         break;
     case 10:
-        if (func_02095248(primary) != 0) {
+        if (Presentation_IsScriptSuspended(primary) != 0) {
             func_0205929c(gSoundContext, 0xb2, 0x10);
             func_ov036_021fdc1c(FIELD(void *, controller, 0x1a0));
             ++FIELD(s32, controller, 0xa0);

@@ -29,10 +29,10 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *handle);
-extern void func_02095274(void *list, void *object);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *list, void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void *func_ov036_021fffa4(void *object, void *owner);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -83,8 +83,8 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0x104) = child;
-    func_02095274((u8 *)controller + 0x11c, child);
-    func_020948d4((u8 *)child + 0x6c, 0xccd);
+    PresentationList_Append((u8 *)controller + 0x11c, child);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0xccd);
 
     for (s32 i = 0; i < 5; ++i) {
         handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x100),
@@ -94,16 +94,16 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
         if (child != 0)
             child = func_020955d8(child, handle);
         FIELD(void *, controller, 0x108 + i * 4) = child;
-        func_02095274((u8 *)controller + 0x11c, child);
-        func_020948d4((u8 *)child + 0x6c, 0xccd);
+        PresentationList_Append((u8 *)controller + 0x11c, child);
+        PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0xccd);
     }
 
     child = Heap_Alloc(0xa0, data_ov036_02206170, 4, gHeapContext);
     if (child != 0)
         child = func_ov036_021fffa4(child, owner);
     FIELD(void *, controller, 0x144) = child;
-    func_02095274((u8 *)controller + 0x11c, child);
-    func_02094bbc(child, 0, 0, -0x600);
+    PresentationList_Append((u8 *)controller + 0x11c, child);
+    Presentation_SetPosition(child, 0, 0, -0x600);
 
     handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0x100),
                             (u8 *)controller + 0xcc);
@@ -113,8 +113,8 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xd8) = child;
-    func_02095274((u8 *)controller + 0x11c, child);
-    func_02094bbc(child, 0, 0xba0, 0);
-    func_020948d4((u8 *)child + 0x6c, 0xccd);
+    PresentationList_Append((u8 *)controller + 0x11c, child);
+    Presentation_SetPosition(child, 0, 0xba0, 0);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0xccd);
     return controller;
 }

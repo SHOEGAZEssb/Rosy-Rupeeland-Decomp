@@ -8,9 +8,9 @@ extern const u8 data_ov094_02219e9c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948e4(void *motion, s32 mode, s32 coordinate);
-extern void func_02094bbc(void *effect, s32 x, s32 y, s32 z);
-extern void func_020953c8(void *effect, void *firstState);
+extern void PresentationScalar_TransitionTo(void *motion, s32 mode, s32 coordinate);
+extern void Presentation_SetPosition(void *effect, s32 x, s32 y, s32 z);
+extern void SpritePresentation_InitVariant(void *effect, void *firstState);
 #ifdef __cplusplus
 }
 #endif
@@ -31,12 +31,12 @@ extern "C" void *func_ov094_02219344(void *effect, void *firstState,
                                       s32 secondCoordinate,
                                       s32 thirdCoordinate)
 {
-    func_020953c8(effect, firstState);
+    SpritePresentation_InitVariant(effect, firstState);
     *(const void **)effect = data_ov094_02219e9c;
     *(s32 *)((u8 *)effect + 0xa0) = 0;
     *(void **)((u8 *)effect + 0xa4) = secondState;
-    func_02094bbc(effect, firstCoordinate, -0x110000, 0);
-    func_020948e4((u8 *)effect + 0x1c, 1, secondCoordinate);
+    Presentation_SetPosition(effect, firstCoordinate, -0x110000, 0);
+    PresentationScalar_TransitionTo((u8 *)effect + 0x1c, 1, secondCoordinate);
 
     u16 parameter = (u16)(0x7fff - secondCoordinate / 0x1000);
     void *area = *(void **)(data_021052fc + 0x30bc);

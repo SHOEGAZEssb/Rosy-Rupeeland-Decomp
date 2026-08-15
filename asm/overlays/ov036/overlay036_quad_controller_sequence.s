@@ -7,7 +7,7 @@
     .extern func_ov036_02202628
     .extern func_02091b98
     .extern func_0205929c
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern gSoundContext
     .extern data_ov036_022054e0
 
@@ -116,16 +116,16 @@ L_022028cc:
     b L_0220291c
 L_02202904:
     add r0, r4, #0xfc
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x10c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_0220291c:
     add r0, r4, #0xfc
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x10c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02202934: .word gSoundContext

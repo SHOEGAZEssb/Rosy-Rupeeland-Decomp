@@ -25,7 +25,7 @@ extern void func_020958d8(void *);
 extern void func_02095928(void *);
 extern void func_02095988(void *, s32);
 extern void func_02092260(void *, s32);
-extern void func_02093af8(void *, s32);
+extern void IndexedSelectionController_SetValue(void *, s32);
 extern void func_ov023_021fd9d0(void *, void *, void *);
 extern void *func_ov023_021fd398(void *);
 extern void func_ov023_021fe640(void *, s32);
@@ -191,7 +191,7 @@ extern "C" void *func_ov023_021fea88(void *scene)
     u32 bank = FIELD(u32, FIELD(void *, record, 4), 0xc) & 0xff;
     for (s32 i = 0; i < FIELD(s32, scene, 0x398); ++i) {
         if (FIELD(u32, scene, 0x3a0 + i * 4) == bank) {
-            func_02093af8((u8 *)scene + 0x480, i);
+            IndexedSelectionController_SetValue((u8 *)scene + 0x480, i);
             return FIELD(void *, scene,
                          0x430 + FIELD(s32, scene, 0x48c) * 4);
         }

@@ -5,9 +5,9 @@
 .extern data_ov026_0220497c
 .extern data_ov026_02204a50
 .extern func_02071adc
-.extern func_020948d4
-.extern func_020949ec
-.extern func_02094bbc
+.extern PresentationScalar_SetImmediate
+.extern Presentation_Init
+.extern Presentation_SetPosition
 .extern func_ov026_021fce54
 .extern gHeapContext
 .extern Heap_Alloc
@@ -17,7 +17,7 @@
 func_ov026_021fec6c:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fed8c
     ldr r0, L_021fed90
     str r1, [r4, #0x0]
@@ -41,11 +41,11 @@ L_021fecc0:
     str r0, [r4, #0xa0]
     mov r2, r1
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0xa0]
     ldr r1, L_021feda0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, L_021fed94
     ldr r3, L_021fed98
     mov r0, #0xb0
@@ -62,11 +62,11 @@ L_021fed10:
     str r0, [r4, #0xa4]
     mov r2, r1
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0xa4]
     ldr r1, L_021feda0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, L_021fed94
     ldr r3, L_021fed98
     mov r0, #0xb0
@@ -83,11 +83,11 @@ L_021fed60:
     str r0, [r4, #0xa8]
     mov r2, r1
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0xa8]
     ldr r1, L_021feda0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fed8c: .word data_ov026_0220497c

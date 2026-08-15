@@ -34,8 +34,8 @@ extern void func_02091b6c(void *);
 extern void func_02091b98(void *, s32);
 extern void func_02091e28(void *);
 extern void func_020922f0(void *, s32);
-extern void func_02093a88(void *);
-extern void func_02093adc(void *, s32, s32, s32);
+extern void IndexedSelectionController_Init(void *);
+extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -72,7 +72,7 @@ extern "C" void *func_ov024_021fce2c(void *scene)
     func_020957bc((u8 *)scene + 0x80);
     __construct_array((u8 *)scene + 0x12c, 2, 0xac,
                       (void *)func_020957bc);
-    func_02093a88((u8 *)scene + 0x284);
+    IndexedSelectionController_Init((u8 *)scene + 0x284);
     func_02091b6c((u8 *)scene + 0x2c8);
 
     FIELD(void *, scene, 0x2e8) = 0;
@@ -108,7 +108,7 @@ extern "C" void *func_ov024_021fce2c(void *scene)
     void *menu = Heap_Alloc(0x15c, data_ov024_021fe34c, 4, gHeapContext);
     if (menu != 0) func_ov005_021fb86c(menu, data_020f4e14, 1);
     FIELD(void *, scene, 0x2bc) = menu;
-    func_02093adc((u8 *)scene + 0x284, 0, FIELD(s32, scene, 0x60), 0);
+    IndexedSelectionController_ConfigureRange((u8 *)scene + 0x284, 0, FIELD(s32, scene, 0x60), 0);
     FIELD(s32, scene, 0x2b0) = 12;
     func_ov005_021fbd74(menu, FIELD(s32, scene, 0x290));
 

@@ -12,7 +12,7 @@ extern "C" {
 extern void *func_ov036_021fcec4(void *object, void *argument,
                                  s32 mode, s32 type);
 extern void func_02091b6c(void *timer);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void GraphicsAnimationInstance_Destroy(void *resource);
 extern void func_ov036_021fcf30(void *object);
 extern void Heap_Free(void *allocation);
@@ -52,7 +52,7 @@ extern "C" void *func_ov036_02201d70(void *object, void *argument,
     FIELD(s32, object, 0xd0) = 0;
     FIELD(s32, object, 0xf4) = 0;
     FIELD(s32, object, 0x88) = 1;
-    func_020948d4((u8 *)object + 0x6c, 0x666);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x666);
     FIELD(s32, object, 0xa4) = 0xf;
     func_ov036_02201d60(object, 0x10);
     return object;

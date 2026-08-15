@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_callback_helpers.c. */
-.extern func_020954e0
-.extern func_020954f4
+.extern SpritePresentation_Show
+.extern SpritePresentation_Hide
 .extern gSoundContext
 .extern Sound_Play
 
@@ -20,10 +20,10 @@ L_021ff174:
     ldr r1, [r1, #0x4]
     cmp r1, #0x0
     beq L_021ff188
-    bl func_020954e0
+    bl SpritePresentation_Show
     b L_021ff18c
 L_021ff188:
-    bl func_020954f4
+    bl SpritePresentation_Hide
 L_021ff18c:
     mov r0, #0x2
     ldmia sp!, {r3, pc}

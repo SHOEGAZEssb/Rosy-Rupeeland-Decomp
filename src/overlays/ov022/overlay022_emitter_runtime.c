@@ -20,14 +20,14 @@ extern void *func_02073e48(void *, s32, s32, s32, ...);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_02091cf0(void *);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02095274(void *, void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationList_Append(void *, void *);
 extern void *func_ov022_021fce00(void *, void *, s32);
 #ifdef __cplusplus
 }
@@ -47,7 +47,7 @@ extern "C" void func_ov022_021fd2dc(void *object, s32 duration);
 extern "C" s32 func_ov022_021fcfd4(void *emitter, s32 random_arg,
                                      s32 count, s32 direction)
 {
-    s32 duration = func_02091a70(20, 200, random_arg, count);
+    s32 duration = Presentation_InterpolateLinear(20, 200, random_arg, count);
     if (duration > count * 4)
         duration = count * 4;
     func_02091bac((u8 *)emitter + 0x10, 1, 0, count, duration);
@@ -113,7 +113,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
             (u8 *)emitter + 0x64, -start[2], start[2]);
         s32 start_y = start[1] + func_0209189c(
             (u8 *)emitter + 0x64, -start[3], start[3]);
-        func_02094bbc(object, start_x << 12, start_y << 12, 0);
+        Presentation_SetPosition(object, start_x << 12, start_y << 12, 0);
 
         const s32 *end = FIELD(const s32 *, emitter, 0x6c);
         s32 end_x = end[0] + func_0209189c(
@@ -121,15 +121,15 @@ extern "C" void func_ov022_021fd068(void *emitter)
         s32 end_y = end[1] + func_0209189c(
             (u8 *)emitter + 0x64, -end[3], end[3]);
         if (FIELD(s32, emitter, 0x60) == 0) {
-            func_020948e4((u8 *)object + 0xc, 1, end_x << 12);
-            func_020948e4((u8 *)object + 0x1c, 5, end_y << 12);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 1, end_x << 12);
+            PresentationScalar_TransitionTo((u8 *)object + 0x1c, 5, end_y << 12);
         } else {
-            func_020948e4((u8 *)object + 0xc, 5, end_x << 12);
-            func_020948e4((u8 *)object + 0x1c, 1, end_y << 12);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 5, end_x << 12);
+            PresentationScalar_TransitionTo((u8 *)object + 0x1c, 1, end_y << 12);
         }
         func_ov022_021fd2dc(
             object, func_020918f4((u8 *)emitter + 0x64, 4) + 24);
-        func_02095274((u8 *)emitter + 0x48, object);
+        PresentationList_Append((u8 *)emitter + 0x48, object);
     }
 
     FIELD(s32, emitter, 0x58) = FIELD(s32, emitter, 0x20);

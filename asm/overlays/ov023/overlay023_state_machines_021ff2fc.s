@@ -5,12 +5,12 @@
 .extern data_ov023_021ffb38
 .extern data_ov023_021ffb58
 .extern func_02092260
-.extern func_02093b30
-.extern func_02093b8c
-.extern func_02093bb0
-.extern func_02093bd4
-.extern func_02093bdc
-.extern func_02093c78
+.extern IndexedSelectionController_SnapTransitionOrigin
+.extern IndexedSelectionController_IncrementWrap
+.extern IndexedSelectionController_DecrementWrap
+.extern IndexedSelectionController_GetLastDirection
+.extern IndexedSelectionController_AdvanceTransition
+.extern IndexedSelectionController_AdvancePacing
 .extern func_02093d50
 .extern func_02093de4
 .extern func_02093e0c
@@ -25,8 +25,8 @@
 .extern func_02094698
 .extern func_02094758
 .extern func_02094874
-.extern func_020948d4
-.extern func_020948e4
+.extern PresentationScalar_SetImmediate
+.extern PresentationScalar_TransitionTo
 .extern func_02095860
 .extern func_ov023_021fd730
 .extern func_ov023_021fd780
@@ -108,7 +108,7 @@ L_021ff3d0:
     mov r0, r4
     bl func_02093de4
     add r0, r5, #0x480
-    bl func_02093b30
+    bl IndexedSelectionController_SnapTransitionOrigin
     ldr r0, [r5, #0x2c]
     ldrh r0, [r0, #0x0]
     tst r0, #0x40
@@ -153,7 +153,7 @@ L_021ff46c:
     cmp r0, #0x0
     beq L_021ff488
     add r0, r5, #0x480
-    bl func_02093b8c
+    bl IndexedSelectionController_IncrementWrap
     b L_021ff61c
 L_021ff488:
     mov r0, r5
@@ -161,7 +161,7 @@ L_021ff488:
     cmp r0, #0x0
     beq L_021ff4a4
     add r0, r5, #0x480
-    bl func_02093bb0
+    bl IndexedSelectionController_DecrementWrap
     b L_021ff61c
 L_021ff4a4:
     ldr r0, [r5, #0x20]
@@ -281,37 +281,37 @@ L_021ff61c:
     b L_021ff7bc
 L_021ff650:
     add r0, r5, #0x480
-    bl func_02093bdc
+    bl IndexedSelectionController_AdvanceTransition
     cmp r0, #0x0
     beq L_021ff7bc
     mov r0, r5
     mov r1, #0x0
     bl func_02092260
     add r0, r5, #0x480
-    bl func_02093bd4
+    bl IndexedSelectionController_GetLastDirection
     cmp r0, #0x0
     beq L_021ff6a8
     ldr r0, [r5, #0x380]
     mov r1, #0x12000
     add r0, r0, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r5, #0x380]
     mov r1, #0x1
     add r0, r0, #0x1c
     mov r2, #0x16000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r5, #0x380]
     b L_021ff6d0
 L_021ff6a8:
     ldr r0, [r5, #0x384]
     mov r1, #0x4e000
     add r0, r0, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r5, #0x384]
     mov r1, #0x1
     add r0, r0, #0x1c
     mov r2, #0x4a000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r5, #0x384]
 L_021ff6d0:
     mov r0, #0x4
@@ -326,7 +326,7 @@ L_021ff6d0:
     b L_021ff7bc
 L_021ff6f8:
     add r0, r5, #0x480
-    bl func_02093c78
+    bl IndexedSelectionController_AdvancePacing
     cmp r0, #0x0
     beq L_021ff7bc
     ldr r0, [r5, #0x478]

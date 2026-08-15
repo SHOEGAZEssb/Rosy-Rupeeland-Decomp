@@ -35,9 +35,9 @@ extern "C" void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                               void *heap);
 extern "C" void *func_ov045_0220b740(void *object, void *argument,
                                       s32 orientation);
-extern "C" void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern "C" void func_020948e4(void *field, s32 mode, s32 value);
-extern "C" void func_02095274(void *list, void *object, s32 argument);
+extern "C" void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern "C" void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern "C" void PresentationList_Append(void *list, void *object, s32 argument);
 
 /*
  * Advance timing track +0x10 and derive progress relative to saved position
@@ -102,7 +102,7 @@ extern "C" void func_ov045_0220b9b8(void *object)
                 + func_0209189c((u8 *)object + 0x64,
                                  -primary->verticalRadius,
                                  primary->verticalRadius);
-        func_02094bbc(effect, x << 12, y << 12, 0);
+        Presentation_SetPosition(effect, x << 12, y << 12, 0);
 
         EmitterCoordinateRange *secondary =
             FIELD(EmitterCoordinateRange *, object, 0x6c);
@@ -115,16 +115,16 @@ extern "C" void func_ov045_0220b9b8(void *object)
                                        -secondary->verticalRadius,
                                        secondary->verticalRadius);
         if (FIELD(s32, object, 0x60) == 0) {
-            func_020948e4((u8 *)effect + 0x0c, 1, targetX << 12);
-            func_020948e4((u8 *)effect + 0x1c, 5, targetY << 12);
+            PresentationScalar_TransitionTo((u8 *)effect + 0x0c, 1, targetX << 12);
+            PresentationScalar_TransitionTo((u8 *)effect + 0x1c, 5, targetY << 12);
         } else {
-            func_020948e4((u8 *)effect + 0x0c, 5, targetX << 12);
-            func_020948e4((u8 *)effect + 0x1c, 1, targetY << 12);
+            PresentationScalar_TransitionTo((u8 *)effect + 0x0c, 5, targetX << 12);
+            PresentationScalar_TransitionTo((u8 *)effect + 0x1c, 1, targetY << 12);
         }
         FIELD(s32, effect, 0x7c) =
             (s16)(func_020918f4((u8 *)object + 0x64, 4) + 24);
         FIELD(s32, effect, 0x80) = 0;
-        func_02095274((u8 *)object + 0x48, effect, 0);
+        PresentationList_Append((u8 *)object + 0x48, effect, 0);
     }
 
     FIELD(s32, object, 0x58) = FIELD(s32, object, 0x20);

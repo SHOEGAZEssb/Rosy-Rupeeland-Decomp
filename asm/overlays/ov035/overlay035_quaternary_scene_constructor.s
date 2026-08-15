@@ -13,12 +13,12 @@
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Heap_Alloc
     .extern func_020955d8
-    .extern func_02095274
-    .extern func_02094bbc
+    .extern PresentationList_Append
+    .extern Presentation_SetPosition
     .extern func_ov035_021fcf34
-    .extern func_020948d4
-    .extern func_02094ad4
-    .extern func_020948e4
+    .extern PresentationScalar_SetImmediate
+    .extern Presentation_InitVariant
+    .extern PresentationScalar_TransitionTo
     .extern func_ov035_021fdd70
     .extern func_ov035_021fdd78
     .extern func_ov035_021ffec4
@@ -160,12 +160,12 @@ L_02200114:
     str r0, [r6, #0x108]
     mov r1, r0
     add r0, r6, #0x160
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r6, #0x108]
     mov r2, r1
     sub r3, r1, #0x300
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r6, #0x104]
     add r1, r6, #0xf4
     bl GraphicsAnimationInstanceManager_CreateInstance
@@ -186,12 +186,12 @@ L_02200178:
     str r0, [r6, #0x10c]
     mov r1, r0
     add r0, r6, #0x160
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r6, #0x10c]
     mov r2, r1
     sub r3, r1, #0x400
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r6, #0x104]
     add r1, r6, #0xcc
     bl GraphicsAnimationInstanceManager_CreateInstance
@@ -214,7 +214,7 @@ L_022001e4:
     str r0, [r6, #0xd8]
     mov r1, r0
     add r0, r6, #0x160
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, L_02200430
     ldr r3, L_0220042c
     mov r0, #0xc4
@@ -230,16 +230,16 @@ L_02200220:
     str r0, [r6, #0x114]
     mov r1, r0
     add r0, r6, #0x170
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r6, #0x114]
     mov r3, r1
     mov r2, #0x1000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r6, #0x114]
     mov r1, #0x800
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, L_02200430
     ldr r3, L_0220042c
     mov r0, #0xc4
@@ -255,16 +255,16 @@ L_02200280:
     str r0, [r6, #0x118]
     mov r1, r0
     add r0, r6, #0x170
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r6, #0x118]
     mov r3, r1
     mov r2, #0x1000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r6, #0x118]
     mov r1, #0x800
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, L_02200430
     ldr r3, L_0220042c
     mov r0, #0xc4
@@ -280,16 +280,16 @@ L_022002e0:
     str r0, [r6, #0x11c]
     mov r1, r0
     add r0, r6, #0x170
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r6, #0x11c]
     mov r3, r1
     sub r2, r1, #0x1000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r6, #0x11c]
     mov r1, #0x800
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, L_02200434
     ldr r3, L_0220042c
     mov r0, #0x9c
@@ -297,22 +297,22 @@ L_022002e0:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_02200334
-    bl func_02094ad4
+    bl Presentation_InitVariant
 L_02200334:
     str r0, [r6, #0x110]
     mov r1, r0
     add r0, r6, #0x160
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r6, #0x110]
     mov r2, r1
     mov r3, #0x1c00
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r6, #0x110]
     mov r1, #0x2
     add r0, r0, #0x2c
     mov r2, #0x2800
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [r6, #0x110]
     mov r0, #0xf0
     str r0, [r2, #0x7c]

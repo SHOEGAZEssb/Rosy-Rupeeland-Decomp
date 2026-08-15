@@ -32,12 +32,12 @@ extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_02093b30(void *);
-extern void func_02093b8c(void *);
-extern void func_02093bb0(void *);
-extern s32 func_02093bd4(void *);
-extern s32 func_02093bdc(void *);
-extern s32 func_02093c78(void *);
+extern void IndexedSelectionController_SnapTransitionOrigin(void *);
+extern void IndexedSelectionController_IncrementWrap(void *);
+extern void IndexedSelectionController_DecrementWrap(void *);
+extern s32 IndexedSelectionController_GetLastDirection(void *);
+extern s32 IndexedSelectionController_AdvanceTransition(void *);
+extern s32 IndexedSelectionController_AdvancePacing(void *);
 extern void func_02093d50(void *, s32);
 extern void func_02093de4(void *);
 extern s32 func_02093e0c(void *);
@@ -55,8 +55,8 @@ extern s32 func_020946c8(void *, void *);
 extern void func_02094738(void *, s32);
 extern s32 func_02094758(void *);
 extern void func_02094874(void *);
-extern void func_020948d4(void *, s32);
-extern void func_020948e4(void *, s32, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095928(void *);
@@ -344,7 +344,7 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
         break;
     case 2: {
         func_02093de4(ui);
-        func_02093b30((u8 *)scene + 0x480);
+        IndexedSelectionController_SnapTransitionOrigin((u8 *)scene + 0x480);
         u16 keys = FIELD(u16, FIELD(void *, scene, 0x2c), 0);
         if (keys & 0x40) func_02093e0c(ui);
         else if (keys & 0x80) func_02093e20(ui);
@@ -352,8 +352,8 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
             s32 hit = func_ov023_021fd8e4(list, (u8 *)scene + 0x30);
             if (func_02094638(ui, (u8 *)scene + 0x30)) func_02093e3c(ui);
             else if (func_02094668(ui, (u8 *)scene + 0x30)) func_02093e58(ui);
-            else if (func_ov023_021fe694(scene)) func_02093b8c((u8 *)scene + 0x480);
-            else if (func_ov023_021fe6bc(scene)) func_02093bb0((u8 *)scene + 0x480);
+            else if (func_ov023_021fe694(scene)) IndexedSelectionController_IncrementWrap((u8 *)scene + 0x480);
+            else if (func_ov023_021fe6bc(scene)) IndexedSelectionController_DecrementWrap((u8 *)scene + 0x480);
             else if ((FIELD(u32, scene, 0x20) & 0x20) &&
                      func_02094698(ui, (u8 *)scene + 0x30)) {
                 CALLBACK(scene, data_ov023_021ffb38);
@@ -380,13 +380,13 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
             }
         }
         if (func_02094758(ui)) { func_02092260(scene, 0); --FIELD(s32, scene, 4); }
-        if (func_02093bdc((u8 *)scene + 0x480)) {
+        if (IndexedSelectionController_AdvanceTransition((u8 *)scene + 0x480)) {
             func_02092260(scene, 0);
-            void *effect = func_02093bd4((u8 *)scene + 0x480) ?
+            void *effect = IndexedSelectionController_GetLastDirection((u8 *)scene + 0x480) ?
                 FIELD(void *, scene, 0x380) : FIELD(void *, scene, 0x384);
-            func_020948d4((u8 *)effect + 0x1c,
+            PresentationScalar_SetImmediate((u8 *)effect + 0x1c,
                           effect == FIELD(void *, scene, 0x380) ? 0x12000 : 0x4e000);
-            func_020948e4((u8 *)effect + 0x1c, 1,
+            PresentationScalar_TransitionTo((u8 *)effect + 0x1c, 1,
                           effect == FIELD(void *, scene, 0x380) ? 0x16000 : 0x4a000);
             FIELD(s32, effect, 0x7c) = 4;
             FIELD(s32, effect, 0x80) = 0;
@@ -395,7 +395,7 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
         break;
     }
     case 3:
-        if (func_02093c78((u8 *)scene + 0x480)) {
+        if (IndexedSelectionController_AdvancePacing((u8 *)scene + 0x480)) {
             func_ov023_021fd780(list);
             list = FIELD(void *, scene, 0x430 + FIELD(s32, scene, 0x48c) * 4);
             FIELD(void *, scene, 0x478) = list;

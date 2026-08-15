@@ -16,7 +16,7 @@
 .extern func_02091c7c
 .extern func_02092e9c
 .extern func_02093360
-.extern func_02095308
+.extern PresentationList_DeleteAll
 .extern func_ov028_021fd7e0
 .extern func_ov028_021fd86c
 
@@ -173,7 +173,7 @@ func_ov028_021fdab8:
     ldr r1, L_021fdad4
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fdad4: .word data_ov028_021ff29c

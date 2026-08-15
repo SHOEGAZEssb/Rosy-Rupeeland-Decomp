@@ -45,10 +45,10 @@
     .extern func_02092754
     .extern func_02092798
     .extern func_02092814
-    .extern func_02094bbc
-    .extern func_020953f4
-    .extern func_020954f4
-    .extern func_02095508
+    .extern Presentation_SetPosition
+    .extern SpritePresentation_Init
+    .extern SpritePresentation_Hide
+    .extern SpritePresentation_SyncPosition
     .extern func_020957bc
     .extern func_020957f0
     .extern func_02095820
@@ -251,7 +251,7 @@ L_021febe8:
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r5
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r5, r0
 L_021fed74:
     str r5, [r10, #0x260]
@@ -259,15 +259,15 @@ L_021fed74:
     mov r1, #0x2
     strb r1, [r0, #0x3a]
     ldr r0, [r10, #0x260]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     mov r1, #0x40000
     ldr r0, [r10, #0x260]
     rsb r1, r1, #0x0
     mov r2, #0x60000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r10, #0x260]
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     mov r0, #0x1
     str r0, [r10, #0x310]
     add r0, r10, #0x310

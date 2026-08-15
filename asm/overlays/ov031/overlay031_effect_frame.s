@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_effect_runtime.c for documented portable C. */
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_0209189c
-.extern func_020948e4
+.extern PresentationScalar_TransitionTo
 .extern func_ov031_021fd684
 
 
@@ -25,7 +25,7 @@ func_ov031_021fd5c0:
     mov r2, r0
     add r0, r4, #0xc0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r1, #0x200
     add r0, r4, #0x150
     rsb r1, r1, #0x0
@@ -34,7 +34,7 @@ func_ov031_021fd5c0:
     mov r2, r0
     add r0, r4, #0xd0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x150
     mov r1, #0x8
     mov r2, #0x10

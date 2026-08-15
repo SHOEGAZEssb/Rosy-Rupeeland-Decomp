@@ -25,9 +25,9 @@ extern void func_02071e04(void *, void *);
 extern void *func_02071adc(void *, s32);
 extern void *Graphics3DResourceBinding_Init(void *, void *, void *, u16, u16);
 extern void Graphics3DResourceBinding_Destroy(void *);
-extern void func_020948d4(void *, s32);
-extern void func_020949ec(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void Presentation_Init(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void *func_ov026_021fce50(void *);
 extern void *func_ov026_021fce54(void *, void *, s32, u16);
 extern void *func_ov026_021fd9c4(void *, void *, s32, s32);
@@ -57,7 +57,7 @@ static void destroy_child(void *child)
  */
 extern "C" void *func_ov026_021fef9c(void *object, void *resource_arg)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_02204960;
 
     for (s32 i = 0; i < 8; ++i) {
@@ -70,7 +70,7 @@ extern "C" void *func_ov026_021fef9c(void *object, void *resource_arg)
     }
 
     FIELD(s32, object, 0x9c) = 9;
-    func_02094bbc(object, 0, 8, 0);
+    Presentation_SetPosition(object, 0, 8, 0);
     for (s32 i = 0; i < 16; ++i)
         FIELD(void *, object, 0xa0 + i * 4) = 0;
     FIELD(s32, object, 0x13c) = 0;
@@ -103,9 +103,9 @@ extern "C" void *func_ov026_021fef9c(void *object, void *resource_arg)
     if (panel != 0)
         panel = func_ov026_021fce54(panel, model_resource, 0, 0x7fff);
     FIELD(void *, object, 0xe8) = panel;
-    func_02094bbc(panel, 0, 0, -0x266);
-    func_020948d4((u8 *)panel + 0x4c, 0x8000);
-    func_020948d4((u8 *)panel + 0x6c, 0xcd);
+    Presentation_SetPosition(panel, 0, 0, -0x266);
+    PresentationScalar_SetImmediate((u8 *)panel + 0x4c, 0x8000);
+    PresentationScalar_SetImmediate((u8 *)panel + 0x6c, 0xcd);
 
     for (s32 i = 0; i < 4; ++i) {
         /* Quarter-turn indices select interleaved sine/cosine entries. */
@@ -116,8 +116,8 @@ extern "C" void *func_ov026_021fef9c(void *object, void *resource_arg)
         if (orbit != 0)
             orbit = func_ov026_021fce54(orbit, model_resource, 2, 0x7fff);
         FIELD(void *, object, 0xec + i * 4) = orbit;
-        func_02094bbc(orbit, x, -(FIELD(s32, object, 0x13c) << 10), z);
-        func_020948d4((u8 *)orbit + 0x6c, 0x29);
+        Presentation_SetPosition(orbit, x, -(FIELD(s32, object, 0x13c) << 10), z);
+        PresentationScalar_SetImmediate((u8 *)orbit + 0x6c, 0x29);
         FIELD(s32, orbit, 0xac) = 0;
     }
 

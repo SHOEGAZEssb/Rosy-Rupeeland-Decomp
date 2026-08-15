@@ -15,10 +15,10 @@
     .extern func_ov036_021ff050
     .extern Heap_Alloc
     .extern func_020955d8
-    .extern func_02095274
-    .extern func_020948d4
+    .extern PresentationList_Append
+    .extern PresentationScalar_SetImmediate
     .extern func_ov036_021fffa4
-    .extern func_02094bbc
+    .extern Presentation_SetPosition
     .extern data_ov036_02206060
     .extern data_020f4e18
     .extern data_ov036_02206160
@@ -127,11 +127,11 @@ L_0220071c:
     str r0, [r10, #0x104]
     mov r1, r0
     add r0, r10, #0x11c
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r10, #0x104]
     ldr r1, L_022008e0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r4, L_022008d8
     mov r8, #0x0
     mov r6, #0x46
@@ -164,12 +164,12 @@ L_022007a4:
     str r0, [r1, #0x108]
     mov r1, r0
     add r0, r10, #0x11c
-    bl func_02095274
+    bl PresentationList_Append
     add r0, r10, r8, lsl #0x2
     ldr r0, [r0, #0x108]
     ldr r1, L_022008e0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r8, r8, #0x1
     cmp r8, #0x5
     blt L_02200750
@@ -186,12 +186,12 @@ L_022007fc:
     str r0, [r10, #0x144]
     mov r1, r0
     add r0, r10, #0x11c
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r10, #0x144]
     mov r2, r1
     sub r3, r1, #0x600
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r10, #0x100]
     add r1, r10, #0xcc
     bl GraphicsAnimationInstanceManager_CreateInstance
@@ -220,16 +220,16 @@ L_02200880:
     str r0, [r10, #0xd8]
     mov r1, r0
     add r0, r10, #0x11c
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r10, #0xd8]
     mov r3, r1
     mov r2, #0xba0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r10, #0xd8]
     ldr r1, L_022008e0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r10
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

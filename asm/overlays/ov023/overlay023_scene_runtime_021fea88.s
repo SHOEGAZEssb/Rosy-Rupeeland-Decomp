@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
-.extern func_02093af8
+.extern IndexedSelectionController_SetValue
 .extern func_ov023_021fd398
 
 
@@ -24,7 +24,7 @@ L_021feab4:
     cmp r2, r0
     bne L_021feadc
     add r0, r4, #0x480
-    bl func_02093af8
+    bl IndexedSelectionController_SetValue
     ldr r0, [r4, #0x48c]
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0x430]

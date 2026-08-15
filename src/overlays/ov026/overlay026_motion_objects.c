@@ -11,10 +11,10 @@ extern const u8 data_ov026_02204a08[];
 extern "C" {
 #endif
 extern void func_01ff88c4(s32, const void *, s32);
-extern void func_020948d4(void *, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_020949ec(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void Presentation_Init(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void func_02094bf0(void *, s32, s32, s32);
 extern void *func_ov026_021fce00(void *, void *, s32, u16);
 extern s32 func_ov026_021fd018(const u32 *);
@@ -59,11 +59,11 @@ extern "C" void *func_ov026_021fe5d8(void *object, void *resource,
     func_ov026_021fce00(object, resource, 3, 0x7fff);
     FIELD(const void *, object, 0) = data_ov026_02204a08;
     FIELD(s32, object, 0xb0) = 0;
-    func_02094bbc(object, arg2, arg3, arg4);
-    func_020948d4((u8 *)object + 0x6c, 0x52);
+    Presentation_SetPosition(object, arg2, arg3, arg4);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x52);
     func_02094bf0(object, arg5, arg6, 0);
-    func_020948e4((u8 *)object + 0x6c, 3, 0x148);
-    func_020948e4((u8 *)object + 0x5c, 1, 0x8000);
+    PresentationScalar_TransitionTo((u8 *)object + 0x6c, 3, 0x148);
+    PresentationScalar_TransitionTo((u8 *)object + 0x5c, 1, 0x8000);
     FIELD(s32, object, 0x7c) = 30;
     FIELD(s32, object, 0x80) = 0;
     FIELD(s32, object, 0x88) = 1;
@@ -77,7 +77,7 @@ extern "C" void *func_ov026_021fe5d8(void *object, void *resource,
  */
 extern "C" void *func_ov026_021fe680(void *object)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_022049d0;
     FIELD(s32, object, 0xc0) = 0;
     FIELD(s32, object, 0x9c) = 0x385;

@@ -7,10 +7,10 @@
     .extern func_ov036_021ff050
     .extern Heap_Alloc
     .extern func_020955d8
-    .extern func_02094bbc
+    .extern Presentation_SetPosition
     .extern func_020956a4
-    .extern func_020948e4
-    .extern func_02095274
+    .extern PresentationScalar_TransitionTo
+    .extern PresentationList_Append
     .extern func_02091b98
     .extern data_ov036_02206160
     .extern gHeapContext
@@ -56,7 +56,7 @@ L_022014e8:
     sub r1, r3, #0x700
     sub r2, r3, #0x800
     str r3, [r5, #0x1a0]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     b L_02201528
 L_02201510:
     mov r1, #0x700
@@ -64,14 +64,14 @@ L_02201510:
     mov r0, r4
     sub r2, r1, #0xf00
     str ip, [r5, #0x1a0]
-    bl func_02094bbc
+    bl Presentation_SetPosition
 L_02201528:
     mov r0, r4
     bl func_020956a4
     add r0, r4, #0x1c
     mov r1, #0x1
     mov r2, #0x1200
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x78
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -80,7 +80,7 @@ L_02201528:
     mov r2, #0x1
     add r0, r5, #0x148
     str r2, [r4, #0x88]
-    bl func_02095274
+    bl PresentationList_Append
     add r0, r5, #0x184
     mov r1, #0x1e
     bl func_02091b98

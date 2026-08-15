@@ -10,7 +10,7 @@ extern const s32 data_ov034_021fe788[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02091a70(s32 start, s32 end, s32 scale, s32 phase);
+extern s32 Presentation_InterpolateLinear(s32 start, s32 end, s32 scale, s32 phase);
 extern void func_ov034_021fd2b8(s32 x, s32 y);
 extern void func_ov034_021fd2ec(s32 x, s32 y, s32 z);
 #ifdef __cplusplus
@@ -36,7 +36,7 @@ static s32 sector_x(s32 bank, s32 sector)
 /*
  * Emits three adjacent textured quads to the Nintendo DS GX FIFO. `state` holds
  * a table bank at +0, transform words at +4/+8/+0xC, and a 16-bit cyclic phase
- * at +0x1C. The phase chooses the leading sector and feeds func_02091a70 to
+ * at +0x1C. The phase chooses the leading sector and feeds Presentation_InterpolateLinear to
  * split texture V across two rows; X coordinates come from sixteen-entry banks
  * at 0x021FE788. The third sector is emitted only when its table value is below
  * two, matching the recovered boundary guard. The routine writes GXSTAT,
@@ -50,7 +50,7 @@ extern "C" void func_ov034_021fd030(void *state)
     s32 bank = FIELD(s32, state, 0);
     s32 phase = FIELD(s32, state, 0x1c);
     s32 sector = wrap_sector(((u16)phase >> 12) + 1);
-    s32 split = (u16)(0x1e0 - func_02091a70(0, 0x1e0, 0x1000,
+    s32 split = (u16)(0x1e0 - Presentation_InterpolateLinear(0, 0x1e0, 0x1000,
                                             (u16)phase));
 
     REG32(0x04000444) = 0;

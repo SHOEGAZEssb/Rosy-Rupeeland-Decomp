@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_resource_object.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern Heap_Alloc
     .extern Graphics3DResourceBinding_Init
     .extern data_ov036_02205ff0
@@ -15,7 +15,7 @@ func_ov036_021fdf30:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr ip, L_021fdf8c
     ldr r1, L_021fdf90
     ldr r3, L_021fdf94

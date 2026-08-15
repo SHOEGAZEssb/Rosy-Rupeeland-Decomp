@@ -14,13 +14,13 @@
     .extern func_02095710
     .extern func_02091bac
     .extern Sound_Play
-    .extern func_02094bbc
-    .extern func_020948e4
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_TransitionTo
     .extern GraphicsAnimationInstance_SetAnimation
-    .extern func_02094cf0
-    .extern func_02095224
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptComplete
     .extern func_0205929c
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
     .extern gSoundContext
     .extern data_ov036_02205c2c
@@ -185,7 +185,7 @@ L_02200ddc:
     ldr r1, [r2, #0x10]
     ldr r2, [r2, #0x20]
     sub r3, r3, r7
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r2, r8, r7, lsl #0x2
     ldr r0, [r2, #0x108]
     add r1, r5, r7, lsl #0x2
@@ -197,7 +197,7 @@ L_02200ddc:
     ldr r2, [r0, #-0x4]
     mov r1, r4
     add r0, r3, #0xc
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r1, r8, r7, lsl #0x2
     ldr r0, [r1, #0x108]
     str r10, [r0, #0x7c]
@@ -249,7 +249,7 @@ L_02200ec4:
     ldr r0, [r0, #0x108]
     mov r1, r6
     mov r2, r5
-    bl func_02094cf0
+    bl Presentation_SetScript
     add r4, r4, #0x1
     cmp r4, #0x5
     blt L_02200ec4
@@ -271,7 +271,7 @@ L_02200f14:
     b L_02200f80
 L_02200f34:
     ldr r0, [r8, #0x108]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_02200f80
     ldr r0, L_02200f9c
@@ -285,14 +285,14 @@ L_02200f34:
     b L_02200f80
 L_02200f68:
     add r0, r8, #0x11c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r8, #0x100]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     b L_02200f94
 L_02200f80:
     add r0, r8, #0x11c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r8, #0x100]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0

@@ -53,8 +53,8 @@ extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void func_02092798(void *state);
 extern void func_02092814(void *state, s32 resourceId);
-extern void func_02093a88(void *state);
-extern void func_02093adc(void *state, s32 first, s32 second, s32 third);
+extern void IndexedSelectionController_Init(void *state);
+extern void IndexedSelectionController_ConfigureRange(void *state, s32 first, s32 second, s32 third);
 extern void *func_02094154(void *object, void *owner, s32 rowCount,
                            s32 columns, s32 width, s32 y, s32 mode);
 extern void func_020957bc(void *element);
@@ -99,7 +99,7 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
     func_020957bc(state->element_0d0);
     func_020957bc(state->element_17c);
     func_02092798(state->rendererState_228);
-    func_02093a88(state->controllerState_270);
+    IndexedSelectionController_Init(state->controllerState_270);
     state->owner_004 = owner;
     state->field_25c = 0;
     state->scrollOffset_264 = 0;
@@ -170,6 +170,6 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
                                    0x2a - state->scrollOffset_264, 0);
     }
     state->controller_26c = controller;
-    func_02093adc(state->controllerState_270, 0, 4, 0);
+    IndexedSelectionController_ConfigureRange(state->controllerState_270, 0, 4, 0);
     return state;
 }

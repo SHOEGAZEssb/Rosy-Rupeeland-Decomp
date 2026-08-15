@@ -9,7 +9,7 @@ extern const u8 data_ov027_021fee60[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -27,7 +27,7 @@ extern "C" void func_ov027_021fd9c8(void *record)
 extern "C" void *func_ov027_021fd9e8(void *record)
 {
     FIELD(const void *, record, 0) = data_ov027_021fee60;
-    func_02095308(record);
+    PresentationList_DeleteAll(record);
     return record;
 }
 

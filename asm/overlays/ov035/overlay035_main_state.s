@@ -10,11 +10,11 @@
     .extern func_020956fc
     .extern func_02091bd0
     .extern Sound_Play
-    .extern func_020948f8
-    .extern func_020948e4
+    .extern PresentationScalar_TransitionBy
+    .extern PresentationScalar_TransitionTo
     .extern func_ov035_021fd25c
     .extern func_0205929c
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
     .extern gSoundContext
 
@@ -165,7 +165,7 @@ L_021fe4d8:
     add r0, r0, #0x1c
     rsb r2, r2, #0x0
     mov r1, #0x5
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     mov r1, #0x0
     ldr r2, [r4, #0x108]
     mov r0, #0x28
@@ -175,7 +175,7 @@ L_021fe4d8:
     sub r2, r1, #0xe00
     add r0, r0, #0x1c
     mov r1, #0x5
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x104]
     mov r0, #0x28
     str r0, [r1, #0x7c]
@@ -201,14 +201,14 @@ L_021fe564:
     b L_021fe5b0
 L_021fe598:
     add r0, r4, #0x10c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x100]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021fe5b0:
     add r0, r4, #0x10c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x100]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0

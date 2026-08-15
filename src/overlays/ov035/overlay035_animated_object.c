@@ -11,10 +11,10 @@ extern const s16 data_020c9670[];
 extern "C" {
 #endif
 extern void func_020955b0(void *object, s32 argument);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_020948d4(void *field, s32 value);
-extern s32 func_02094dd4(void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern s32 Presentation_UpdateScript(void *object);
 extern void func_020956a4(void *object);
 #ifdef __cplusplus
 }
@@ -40,8 +40,8 @@ extern "C" void *func_ov035_021fdb54(void *object, s32 kind,
     FIELD(s32, object, 0xa4) = direction;
     s32 x = direction ? -0xa00 : 0xa00;
     s32 zMotion = direction ? 0xa00 : -0xa00;
-    func_02094bbc(object, x, baseline, positionZ);
-    func_020948e4((u8 *)object + 0x0c, 1, zMotion);
+    Presentation_SetPosition(object, x, baseline, positionZ);
+    PresentationScalar_TransitionTo((u8 *)object + 0x0c, 1, zMotion);
     FIELD(s32, object, 0x7c) = 120;
     FIELD(s32, object, 0x80) = 0;
     FIELD(s32, object, 0x88) = 1;
@@ -63,21 +63,21 @@ extern "C" s32 func_ov035_021fdbe0(void *object)
         u16 angle = (u16)(FIELD(s32, object, 0xac) +
                           (FIELD(s32, object, 0xa4) ? -0x200 : 0x200));
         FIELD(s32, object, 0xac) = angle;
-        func_020948d4((u8 *)object + 0x5c, angle);
+        PresentationScalar_SetImmediate((u8 *)object + 0x5c, angle);
         s16 sine = data_020c9670[(angle >> 4) * 2];
-        func_020948d4((u8 *)object + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)object + 0x1c,
                       FIELD(s32, object, 0xa8) + sine / 8);
     } else if (kind == 3) {
         u16 angle = (u16)(FIELD(s32, object, 0xac) + 0x200);
         FIELD(s32, object, 0xac) = angle;
         s16 rotation = *(const s16 *)((const u8 *)data_020c9670 +
                                       (angle & 0x3ffc));
-        func_020948d4((u8 *)object + 0x5c, rotation);
+        PresentationScalar_SetImmediate((u8 *)object + 0x5c, rotation);
         s16 sine = data_020c9670[(angle >> 4) * 2];
-        func_020948d4((u8 *)object + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)object + 0x1c,
                       FIELD(s32, object, 0xa8) + sine / 8);
     }
-    s32 complete = func_02094dd4(object);
+    s32 complete = Presentation_UpdateScript(object);
     func_020956a4(object);
     return complete;
 }

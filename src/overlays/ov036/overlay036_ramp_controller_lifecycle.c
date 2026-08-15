@@ -12,7 +12,7 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *list);
+extern void PresentationList_DeleteAll(void *list);
 extern void Graphics3DResourceOwner_RemoveManager(void *manager);
 extern void GraphicsResourceSetVariant_Destroy(void *resourceSet);
 extern void Heap_Free(void *allocation);
@@ -23,10 +23,10 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *handle);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void func_020956a4(void *object);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02095274(void *list, void *object);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationList_Append(void *list, void *object);
 extern void func_02091b98(void *timer, s32 duration);
 #ifdef __cplusplus
 }
@@ -42,13 +42,13 @@ extern void func_02091b98(void *timer, s32 duration);
 extern "C" void *func_ov036_02201350(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov036_02206028;
-    func_02095308((u8 *)controller + 0x148);
-    func_02095308((u8 *)controller + 0x158);
+    PresentationList_DeleteAll((u8 *)controller + 0x148);
+    PresentationList_DeleteAll((u8 *)controller + 0x158);
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0x118), 0));
     FIELD(const void *, controller, 0x158) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x158);
+    PresentationList_DeleteAll((u8 *)controller + 0x158);
     FIELD(const void *, controller, 0x148) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x148);
+    PresentationList_DeleteAll((u8 *)controller + 0x148);
     const s32 offsets[] = {0x10c, 0x100, 0xf4, 0xe8, 0xdc, 0xcc};
     for (s32 i = 0; i < 6; ++i)
         GraphicsResourceSetVariant_Destroy((u8 *)controller + offsets[i]);
@@ -63,13 +63,13 @@ extern "C" void *func_ov036_02201350(void *controller)
 extern "C" void *func_ov036_022013dc(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov036_02206028;
-    func_02095308((u8 *)controller + 0x148);
-    func_02095308((u8 *)controller + 0x158);
+    PresentationList_DeleteAll((u8 *)controller + 0x148);
+    PresentationList_DeleteAll((u8 *)controller + 0x158);
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0x118), 0));
     FIELD(const void *, controller, 0x158) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x158);
+    PresentationList_DeleteAll((u8 *)controller + 0x158);
     FIELD(const void *, controller, 0x148) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x148);
+    PresentationList_DeleteAll((u8 *)controller + 0x148);
     const s32 offsets[] = {0x10c, 0x100, 0xf4, 0xe8, 0xdc, 0xcc};
     for (s32 i = 0; i < 6; ++i)
         GraphicsResourceSetVariant_Destroy((u8 *)controller + offsets[i]);
@@ -97,16 +97,16 @@ extern "C" void func_ov036_02201470(void *controller)
         child = func_020955d8(child, handle);
     if (FIELD(s32, controller, 0x1a0) != 0) {
         FIELD(s32, controller, 0x1a0) = 0;
-        func_02094bbc(child, -0x700, -0x800, 0);
+        Presentation_SetPosition(child, -0x700, -0x800, 0);
     } else {
         FIELD(s32, controller, 0x1a0) = 1;
-        func_02094bbc(child, 0x700, -0x800, 0);
+        Presentation_SetPosition(child, 0x700, -0x800, 0);
     }
     func_020956a4(child);
-    func_020948e4((u8 *)child + 0x1c, 1, 0x1200);
+    PresentationScalar_TransitionTo((u8 *)child + 0x1c, 1, 0x1200);
     FIELD(s32, child, 0x7c) = 0x78;
     FIELD(s32, child, 0x80) = 0;
     FIELD(s32, child, 0x88) = 1;
-    func_02095274((u8 *)controller + 0x148, child);
+    PresentationList_Append((u8 *)controller + 0x148, child);
     func_02091b98((u8 *)controller + 0x184, 0x1e);
 }

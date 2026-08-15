@@ -9,7 +9,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
-.extern func_02091a70
+.extern Presentation_InterpolateLinear
 .extern func_020bf1f8
 .extern gGameWork
 .extern gSoundContext
@@ -139,7 +139,7 @@ L_02010ffc:
     ldr r1, [r10, #0xc0]
     ldr r2, [r10, #0xc8]
     mov r0, r7
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     str r0, [r10, #0xc4]
     b L_020110c0
 L_02011038:
@@ -154,14 +154,14 @@ L_02011038:
     movgt r3, #0xa
     mov r0, r7
     mov r2, #0xa
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     str r0, [r10, #0xc4]
     b L_020110c0
 L_02011070:
     ldr r1, [r10, #0xc0]
     mov r0, r7
     mov r2, #0x14
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     str r0, [r10, #0xc4]
     b L_020110c0
 L_02011088:

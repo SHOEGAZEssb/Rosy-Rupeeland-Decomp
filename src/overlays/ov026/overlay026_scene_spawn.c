@@ -15,11 +15,11 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
-extern void func_020948d4(void *, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_020948f8(void *, s32, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02095274(void *, void *);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void PresentationScalar_TransitionBy(void *, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationList_Append(void *, void *);
 extern void *func_020955d8(void *, void *);
 extern void func_020956a4(void *);
 extern void func_ov026_021fe5c0(void *, s32);
@@ -52,17 +52,17 @@ extern "C" void func_ov026_02200e0c(void *scene, s32 height)
     s32 cos_value = data_020c9670[index * 2 + 1];
     s32 x = (sin_value * 0x333 + 0x800) >> 12;
     s32 z = (cos_value * 0x333 + 0x800) >> 12;
-    func_02094bbc(object, x, height, z);
-    func_020948d4((u8 *)object + 0x6c, 0x19a);
+    Presentation_SetPosition(object, x, height, z);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x19a);
     func_020956a4(object);
     FIELD(s32, object, 0x88) = 1;
-    func_020948f8((u8 *)object + 0xc, 1,
+    PresentationScalar_TransitionBy((u8 *)object + 0xc, 1,
                   (sin_value * 0xcd + 0x800) >> 12);
-    func_020948f8((u8 *)object + 0x2c, 1,
+    PresentationScalar_TransitionBy((u8 *)object + 0x2c, 1,
                   (cos_value * 0xcd + 0x800) >> 12);
-    func_020948f8((u8 *)object + 0x1c, 5, -0x333);
-    func_020948e4((u8 *)object + 0x6c, 3, 0x666);
+    PresentationScalar_TransitionBy((u8 *)object + 0x1c, 5, -0x333);
+    PresentationScalar_TransitionTo((u8 *)object + 0x6c, 3, 0x666);
     func_ov026_021fe5c0(object,
         func_0209189c((u8 *)scene + 0x7a4, 0x1e, 0x32));
-    func_02095274((u8 *)scene + 0x304, object);
+    PresentationList_Append((u8 *)scene + 0x304, object);
 }

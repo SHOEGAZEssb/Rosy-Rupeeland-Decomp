@@ -12,12 +12,12 @@ extern u8 data_ov017_022016e0[];
 extern "C" {
 #endif
 extern void GraphicsAnimationInstance_SetAnimation(void *, s32);
-extern void func_020948d4(void *, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_020948f8(void *, s32, s32);
-extern void func_020949ec(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern s32 func_02094c48(void *);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void PresentationScalar_TransitionBy(void *, s32, s32);
+extern void Presentation_Init(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern s32 Presentation_AdvanceTransitions(void *);
 extern void func_ov017_021fd838(void *);
 extern s32 func_ov017_021fd918(void *, s32);
 #ifdef __cplusplus
@@ -36,30 +36,30 @@ extern "C" void *func_ov017_021fe190(void *state, s32 variant, s32 baseArg1,
                                       s32 baseArg3, s32 motionValue,
                                       s16 value7c, s32 componentValue)
 {
-    func_020949ec(state);
+    Presentation_Init(state);
     FIELD(const u32 *, state, 0) = data_ov017_02201654;
     FIELD(s32, state, 0x9c) = variant;
 
     if (variant == 0) {
-        func_02094bbc(state, baseArg1, 0, baseArg3);
-        func_020948f8((u8 *)state + 0x1c, 3, motionValue);
-        func_020948d4((u8 *)state + 0x6c, 0);
-        func_020948e4((u8 *)state + 0x6c, 1, 0x100);
+        Presentation_SetPosition(state, baseArg1, 0, baseArg3);
+        PresentationScalar_TransitionBy((u8 *)state + 0x1c, 3, motionValue);
+        PresentationScalar_SetImmediate((u8 *)state + 0x6c, 0);
+        PresentationScalar_TransitionTo((u8 *)state + 0x6c, 1, 0x100);
     } else if (variant == 1) {
-        func_02094bbc(state, baseArg1, motionValue, baseArg3);
-        func_020948f8((u8 *)state + 0x1c, 4, -motionValue);
-        func_020948d4((u8 *)state + 0x6c, 0x80);
-        func_020948e4((u8 *)state + 0x6c, 1, 0x100);
+        Presentation_SetPosition(state, baseArg1, motionValue, baseArg3);
+        PresentationScalar_TransitionBy((u8 *)state + 0x1c, 4, -motionValue);
+        PresentationScalar_SetImmediate((u8 *)state + 0x6c, 0x80);
+        PresentationScalar_TransitionTo((u8 *)state + 0x6c, 1, 0x100);
     } else if (variant == 2) {
-        func_02094bbc(state, baseArg1, motionValue, baseArg3);
-        func_020948f8((u8 *)state + 0x1c, 4, -motionValue);
-        func_020948d4((u8 *)state + 0x6c, 0x100);
-        func_020948e4((u8 *)state + 0x6c, 1, 0x400);
+        Presentation_SetPosition(state, baseArg1, motionValue, baseArg3);
+        PresentationScalar_TransitionBy((u8 *)state + 0x1c, 4, -motionValue);
+        PresentationScalar_SetImmediate((u8 *)state + 0x6c, 0x100);
+        PresentationScalar_TransitionTo((u8 *)state + 0x6c, 1, 0x400);
     }
 
     FIELD(s32, state, 0x7c) = value7c;
     FIELD(s32, state, 0x80) = 0;
-    func_020948d4((u8 *)state + 0x3c, componentValue);
+    PresentationScalar_SetImmediate((u8 *)state + 0x3c, componentValue);
     FIELD(s32, state, 0x88) = 1;
     return state;
 }
@@ -72,8 +72,8 @@ extern "C" void *func_ov017_021fe190(void *state, s32 variant, s32 baseArg1,
  */
 extern "C" s32 func_ov017_021fe2d4(void *state)
 {
-    func_020948d4((u8 *)state + 0x3c, FIELD(s32, state, 0x40) + 0x800);
-    if (!func_02094c48(state)) {
+    PresentationScalar_SetImmediate((u8 *)state + 0x3c, FIELD(s32, state, 0x40) + 0x800);
+    if (!Presentation_AdvanceTransitions(state)) {
         return 0;
     }
     if (FIELD(s32, state, 0x9c) == 2 &&

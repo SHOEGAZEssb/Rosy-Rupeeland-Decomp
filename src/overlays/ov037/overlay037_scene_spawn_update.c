@@ -16,12 +16,12 @@ extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceOwner
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *actor);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948d4(void *field, s32 value, ...);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_020948f8(void *field, s32 mode, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_SetImmediate(void *field, s32 value, ...);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
 extern s32 GraphicsAnimationInstance_GetSequenceDuration(void *actor);
-extern void func_02095274(void *container, void *object);
+extern void PresentationList_Append(void *container, void *object);
 extern void func_02091b98(void *timer, s32 delay);
 extern void GraphicsAnimationInstance_SetAnimation(void *actor, s32 mode);
 #ifdef __cplusplus
@@ -63,14 +63,14 @@ extern "C" void func_ov037_021fdd08(void *scene)
             object = func_020955d8(object, actor);
         s32 x = func_0209189c(randomState, -0x800, 0x800);
         s32 z = func_0209189c(randomState, 0x80, 0x100);
-        func_02094bbc(object, x, 0x1200, z);
-        func_020948d4((u8 *)object + 0x6c,
+        Presentation_SetPosition(object, x, 0x1200, z);
+        PresentationScalar_SetImmediate((u8 *)object + 0x6c,
                       func_0209189c(randomState, 0x1000, 0x2000));
-        func_020948e4((u8 *)object + 0x1c, 1,
+        PresentationScalar_TransitionTo((u8 *)object + 0x1c, 1,
                       func_0209189c(randomState, 0x800, 0xc00));
         func_ov037_021fdf50(object, GraphicsAnimationInstance_GetSequenceDuration(actor));
         FIELD(s32, object, 0x88) = 1;
-        func_02095274((u8 *)scene + 0x12c, object);
+        PresentationList_Append((u8 *)scene + 0x12c, object);
         func_02091b98((u8 *)scene + 0x1a8, 2);
     }
 
@@ -88,14 +88,14 @@ extern "C" void func_ov037_021fdd08(void *scene)
         object = func_020955d8(object, actor);
     s32 offset = func_0209189c(randomState, -0x200, 0x200);
     void *primary = FIELD(void *, scene, 0x118);
-    func_02094bbc(object, FIELD(s32, primary, 0x10) + offset,
+    Presentation_SetPosition(object, FIELD(s32, primary, 0x10) + offset,
                    FIELD(s32, primary, 0x20),
                    FIELD(s32, primary, 0x30) + 0x10);
-    func_020948f8((u8 *)object + 0x0c, 1, offset);
-    func_020948f8((u8 *)object + 0x1c, 1, 0x400);
+    PresentationScalar_TransitionBy((u8 *)object + 0x0c, 1, offset);
+    PresentationScalar_TransitionBy((u8 *)object + 0x1c, 1, 0x400);
     FIELD(s32, object, 0x7c) = 0x3c;
     FIELD(s32, object, 0x80) = 0;
     FIELD(s32, object, 0x88) = 1;
-    func_02095274((u8 *)scene + 0x12c, object);
+    PresentationList_Append((u8 *)scene + 0x12c, object);
     func_02091b98((u8 *)scene + 0x1c4, 8);
 }

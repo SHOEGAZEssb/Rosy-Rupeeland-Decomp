@@ -27,9 +27,9 @@ extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
-extern void func_02095274(void *collection, void *object);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *collection, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
 extern void func_020b0300(s32 first, s32 second, s32 third, s32 fourth,
@@ -91,8 +91,8 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
     if (object != 0)
         object = func_020955d8(object, record);
     FIELD(void *, owner, 0x104) = object;
-    func_02095274((u8 *)owner + 0x10c, object);
-    func_02094bbc(object, 0, 0x1600, 0);
+    PresentationList_Append((u8 *)owner + 0x10c, object);
+    Presentation_SetPosition(object, 0, 0x1600, 0);
 
     record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, owner, 0x100),
                            (u8 *)owner + 0xe8);
@@ -101,8 +101,8 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
     if (object != 0)
         object = func_020955d8(object, record);
     FIELD(void *, owner, 0x108) = object;
-    func_02095274((u8 *)owner + 0x10c, object);
-    func_02094bbc(object, 0, 0, 0);
+    PresentationList_Append((u8 *)owner + 0x10c, object);
+    Presentation_SetPosition(object, 0, 0, 0);
 
     record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, owner, 0x100),
                            (u8 *)owner + 0xcc);
@@ -112,9 +112,9 @@ extern "C" void *func_ov035_021fdd88(void *owner, void *resourceOwner,
     if (object != 0)
         object = func_020955d8(object, record);
     FIELD(void *, owner, 0xd8) = object;
-    func_02095274((u8 *)owner + 0x10c, object);
-    func_02094bbc(object, 0, 0x0c00, 0);
-    func_020948d4((u8 *)object + 0x6c, 0x0e66);
+    PresentationList_Append((u8 *)owner + 0x10c, object);
+    Presentation_SetPosition(object, 0, 0x0c00, 0);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x0e66);
 
     func_ov035_021fdd70((u8 *)owner + 0x0c, 0, 0x1400, 0x2800);
     func_ov035_021fdd78((u8 *)owner + 0x0c, 0, 0, 0);

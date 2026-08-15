@@ -13,9 +13,9 @@
 .extern data_ov026_02204a68
 .extern func_02071adc
 .extern Graphics3DResourceBinding_Init
-.extern func_020948d4
-.extern func_020949ec
-.extern func_02094bbc
+.extern PresentationScalar_SetImmediate
+.extern Presentation_Init
+.extern Presentation_SetPosition
 .extern func_ov026_021fce54
 .extern func_ov026_021fd9c4
 .extern func_ov026_021fdd84
@@ -29,7 +29,7 @@ func_ov026_021fef9c:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r9, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021ff298
     ldr r5, L_021ff29c
     ldr r6, L_021ff2a0
@@ -66,7 +66,7 @@ L_021ff008:
     mov r3, r1
     mov r2, #0x8
     str r4, [r10, #0x9c]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x0
     mov r8, r1
 L_021ff040:
@@ -157,15 +157,15 @@ L_021ff174:
     ldr r3, L_021ff2c4
     str r0, [r10, #0xe8]
     mov r2, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r10, #0xe8]
     mov r1, #0x8000
     add r0, r0, #0x4c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r10, #0xe8]
     mov r1, #0xcd
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r7, #0x0
     ldr r6, L_021ff2c8
     ldr r4, L_021ff2cc
@@ -210,12 +210,12 @@ L_021ff234:
     mov r2, r2, lsl #0xa
     mov r3, r9
     rsb r2, r2, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r10, r7, lsl #0x2
     ldr r0, [r0, #0xec]
     mov r1, #0x29
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r10, r7, lsl #0x2
     ldr r0, [r0, #0xec]
     add r7, r7, #0x1

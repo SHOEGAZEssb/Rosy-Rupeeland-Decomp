@@ -1,11 +1,11 @@
     .text
-    .extern func_02093b20
-    .extern func_02093c78
+    .extern IndexedSelectionController_ResetTransition
+    .extern IndexedSelectionController_AdvancePacing
     .extern func_ov006_021fb9b4
-    .extern func_02093b30
-    .extern func_02093b3c
-    .extern func_02093b64
-    .extern func_02093bdc
+    .extern IndexedSelectionController_SnapTransitionOrigin
+    .extern IndexedSelectionController_Increment
+    .extern IndexedSelectionController_Decrement
+    .extern IndexedSelectionController_AdvanceTransition
     .extern func_02092260
     .extern func_ov006_021fb950
 
@@ -25,7 +25,7 @@ func_ov006_021fbafc: ; 0x021fbafc
     b L_021fbbf0
 L_021fbb24:
     add r0, r4, #0x58
-    bl func_02093b20
+    bl IndexedSelectionController_ResetTransition
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -33,7 +33,7 @@ L_021fbb24:
     str r0, [r4, #0x8]
 L_021fbb40:
     add r0, r4, #0x58
-    bl func_02093c78
+    bl IndexedSelectionController_AdvancePacing
     cmp r0, #0x0
     beq L_021fbb80
     ldr r1, [r4, #0x64]
@@ -55,22 +55,22 @@ L_021fbb80:
     b L_021fbbf0
 L_021fbb8c:
     add r0, r4, #0x58
-    bl func_02093b30
+    bl IndexedSelectionController_SnapTransitionOrigin
     ldr r0, [r4, #0x2c]
     ldrh r0, [r0, #0x0]
     tst r0, #0x40
     beq L_021fbbb0
     add r0, r4, #0x58
-    bl func_02093b3c
+    bl IndexedSelectionController_Increment
     b L_021fbbc0
 L_021fbbb0:
     tst r0, #0x80
     beq L_021fbbc0
     add r0, r4, #0x58
-    bl func_02093b64
+    bl IndexedSelectionController_Decrement
 L_021fbbc0:
     add r0, r4, #0x58
-    bl func_02093bdc
+    bl IndexedSelectionController_AdvanceTransition
     cmp r0, #0x0
     beq L_021fbbf0
     mov r0, r4

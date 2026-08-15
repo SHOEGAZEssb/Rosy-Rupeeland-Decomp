@@ -12,23 +12,23 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02094c48(void *object);
+extern s32 Presentation_AdvanceTransitions(void *object);
 extern s32 func_0209189c(void *random, s32 minimum, s32 maximum);
 extern s32 func_020918f4(void *random, s32 maximum);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fd2a4(void *object, s16 type,
                                  s16 secondDuration, u16 colorA,
                                  u16 colorB, s16 firstDuration,
                                  s32 acceleration);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_02095274(void *list, void *object);
-extern void func_02095360(void *list);
-extern s32 func_02094d28(void *object, s32 mode, s32 first, s32 second);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationList_Append(void *list, void *object);
+extern void PresentationList_UpdateAndDeleteCompleted(void *list);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 first, s32 second);
 extern void func_ov036_021fe968(void *object, s32 x, s32 y, s32 z);
 extern void func_ov036_021fe978(void *object, s32 x, s32 y, s32 z);
 extern void Sound_Play(void *context, s32 id, s32 variant);
-extern void func_020948f8(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -66,7 +66,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
         FIELD(s32, object, 0xac) = 1;
         /* Fall through into the initial emission state. */
     case 1:
-        if (func_02094c48(object)) {
+        if (Presentation_AdvanceTransitions(object)) {
             FIELD(s32, object, 0x7c) = 0x1e;
             FIELD(s32, object, 0x80) = 0;
             FIELD(s32, object, 0xac)++;
@@ -75,7 +75,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
         if ((FIELD(s32, object, 0x80) & 1) != 0) {
             s32 x = FIELD(s32, object, 0x10) +
                     func_0209189c((u8 *)object + 0xc8, -0x10, 0x10);
-            func_020948d4((u8 *)object + 0xc, x);
+            PresentationScalar_SetImmediate((u8 *)object + 0xc, x);
 
             s32 first = func_0209189c((u8 *)object + 0xc8, 0x10, 0x1f);
             s32 third = func_0209189c((u8 *)object + 0xc8, 0, first);
@@ -87,20 +87,20 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
                                                color, color, 0, 0);
             x = FIELD(s32, object, 0x10) +
                 func_0209189c((u8 *)object + 0xc8, -0x10, 0x10);
-            func_02094bbc(particle, x, FIELD(s32, object, 0x20), 0);
+            Presentation_SetPosition(particle, x, FIELD(s32, object, 0x20), 0);
             FIELD(s32, particle, 0xa4) = 0;
             FIELD(s32, particle, 0xa8) =
                 func_0209189c((u8 *)object + 0xc8, -0x1000, 0);
             FIELD(s32, particle, 0xac) = 0;
-            func_020948d4((u8 *)particle + 0x5c,
+            PresentationScalar_SetImmediate((u8 *)particle + 0x5c,
                           func_020918f4((u8 *)object + 0xc8, 0x1000) << 4);
-            func_020948d4((u8 *)particle + 0x6c, 0x333);
-            func_02095274((u8 *)object + 0x9c, particle);
+            PresentationScalar_SetImmediate((u8 *)particle + 0x6c, 0x333);
+            PresentationList_Append((u8 *)object + 0x9c, particle);
         }
         break;
 
     case 2:
-        if (func_02094c48(object)) {
+        if (Presentation_AdvanceTransitions(object)) {
             FIELD(s32, object, 0x7c) = 4;
             FIELD(s32, object, 0x80) = 0;
             FIELD(s32, object, 0xac)++;
@@ -108,7 +108,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
         break;
 
     case 3:
-        if (func_02094c48(object)) {
+        if (Presentation_AdvanceTransitions(object)) {
             void *handle = FIELD(void *, object, 0xcc);
             if (handle != 0) {
                 func_ov036_021fe978(handle,
@@ -126,18 +126,18 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
         }
 
         (void)func_020918f4((u8 *)object + 0xc8, 0x1000);
-        s32 speed = func_02094d28(object, 1, 0xc000, 0x2000);
-        s32 duration = func_02094d28(object, 1, 0, 0x1e);
-        s32 red = func_02094d28(object, 1,
+        s32 speed = Presentation_InterpolateScalar(object, 1, 0xc000, 0x2000);
+        s32 duration = Presentation_InterpolateScalar(object, 1, 0, 0x1e);
+        s32 red = Presentation_InterpolateScalar(object, 1,
                                 FIELD(s32, object, 0xb0),
                                 FIELD(s32, object, 0xbc));
-        s32 green = func_02094d28(object, 1,
+        s32 green = Presentation_InterpolateScalar(object, 1,
                                   FIELD(s32, object, 0xb4),
                                   FIELD(s32, object, 0xc0));
-        s32 blue = func_02094d28(object, 1,
+        s32 blue = Presentation_InterpolateScalar(object, 1,
                                  FIELD(s32, object, 0xb8),
                                  FIELD(s32, object, 0xc4));
-        s32 scale = func_02094d28(object, 1, 0x1800, 0x1000);
+        s32 scale = Presentation_InterpolateScalar(object, 1, 0x1800, 0x1000);
         u16 color = pack_color(red, green, blue);
         u16 halfColor = pack_color(red / 2, green / 2, blue / 2);
 
@@ -149,7 +149,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
                     particle, 2, 0x19, color, halfColor,
                     (s16)(duration + ((i & 1) << 2)), -0x19a);
             }
-            func_02094bbc(particle, FIELD(s32, object, 0x10),
+            Presentation_SetPosition(particle, FIELD(s32, object, 0x10),
                           FIELD(s32, object, 0x20), 0);
             u16 angle = (u16)(i << 9);
             s32 index = (angle >> 4) * 2;
@@ -157,32 +157,32 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
                                 mul_q12_round(speed, data_020c9670[index]),
                                 mul_q12_round(speed, data_020c9670[index + 1]),
                                 0);
-            func_020948d4((u8 *)particle + 0x5c, (u16)-angle);
-            func_020948d4((u8 *)particle + 0x6c, scale);
-            func_02095274((u8 *)object + 0x9c, particle);
+            PresentationScalar_SetImmediate((u8 *)particle + 0x5c, (u16)-angle);
+            PresentationScalar_SetImmediate((u8 *)particle + 0x6c, scale);
+            PresentationList_Append((u8 *)object + 0x9c, particle);
         }
         break;
 
     case 4:
-        if (func_02094c48(object)) {
+        if (Presentation_AdvanceTransitions(object)) {
             s32 variant = FIELD(s32, object, 0xd0);
             Sound_Play(gSoundContext, 0x1cc,
                        variant == 0 ? 2 : (variant == 1 ? 1 : 0));
-            func_020948f8((u8 *)object + 0x1c, 5, -0x100);
+            PresentationScalar_TransitionBy((u8 *)object + 0x1c, 5, -0x100);
             FIELD(s32, object, 0x7c) = 0x10;
             FIELD(s32, object, 0x80) = 0;
             FIELD(s32, object, 0xac)++;
         } else if (FIELD(void *, object, 0xcc) != 0) {
             void *handle = FIELD(void *, object, 0xcc);
             FIELD(s32, handle, 0x24) = FIELD(s32, object, 0x20);
-            s32 value = func_02094d28(object, 1, 0, 0x1800);
+            s32 value = Presentation_InterpolateScalar(object, 1, 0, 0x1800);
             FIELD(s32, handle, 0x38) = value;
             FIELD(s32, handle, 0x34) = value;
         }
         break;
 
     case 5:
-        if (func_02094c48(object) && FIELD(s32, object, 0xa8) == 0) {
+        if (Presentation_AdvanceTransitions(object) && FIELD(s32, object, 0xa8) == 0) {
             void *handle = FIELD(void *, object, 0xcc);
             if (handle != 0)
                 FIELD(u16, handle, 0x50) |= 4;
@@ -193,7 +193,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
             void *handle = FIELD(void *, object, 0xcc);
             FIELD(s32, handle, 0x24) = FIELD(s32, object, 0x20);
             FIELD(u8, handle, 0x5b) =
-                (u8)func_02094d28(object, 1, 0x1f, 1);
+                (u8)Presentation_InterpolateScalar(object, 1, 0x1f, 1);
         }
         break;
 
@@ -201,7 +201,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
         return 1;
     }
 
-    func_02095360((u8 *)object + 0x9c);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)object + 0x9c);
     return 0;
 }
 

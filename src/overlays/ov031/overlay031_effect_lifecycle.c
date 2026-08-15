@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void func_02091e28(void *);
 extern void func_02071ea4(void *);
-extern void func_02094ad4(void *);
+extern void Presentation_InitVariant(void *);
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -24,9 +24,9 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
-extern void *func_020953f4(void *, void *);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02095508(void *);
+extern void *SpritePresentation_Init(void *, void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void SpritePresentation_SyncPosition(void *);
 extern void *func_ov031_021fd1c0(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov031_021fd254(void *);
@@ -80,7 +80,7 @@ extern "C" void *func_ov031_021fd258(void *effect)
     func_02091e28(effect);
     FIELD(const void *, effect, 0) = data_ov031_021fe758;
     func_02071ea4((u8 *)effect + 0x5c);
-    func_02094ad4((u8 *)effect + 0xb4);
+    Presentation_InitVariant((u8 *)effect + 0xb4);
     FIELD(u32, effect, 0x150) = 0;
     FIELD(u32, effect, 0x150) = genrand_int32();
     FIELD(void *, effect, 0x54) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
@@ -108,14 +108,14 @@ extern "C" void *func_ov031_021fd258(void *effect)
     if (composite != 0) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x54),
                                (u8 *)effect + 0x5c, 1);
-        composite = func_020953f4(composite, sprite);
+        composite = SpritePresentation_Init(composite, sprite);
     }
     FIELD(void *, effect, 0x70) = composite;
     func_02073e48(FIELD(void *, composite, 0x9c), 1, 0xa0, 0x12,
                   3, 0x1000, 0);
-    func_02094bbc(composite, 0xa0000,
+    Presentation_SetPosition(composite, 0xa0000,
                   FIELD(s32, effect, 0x6c) == 0 ? 0x70000 : 0x12000, 0);
-    func_02095508(composite);
+    SpritePresentation_SyncPosition(composite);
     for (s32 i = 0; i < 16; ++i)
         FIELD(void *, effect, 0x74 + i * 4) = 0;
     return effect;

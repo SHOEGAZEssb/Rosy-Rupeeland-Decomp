@@ -15,8 +15,8 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02094bbc(void *group, s32 x, s32 y, s32 mode);
-extern void func_02094cf0(void *group, const void *sequence, s32 mode);
+extern void Presentation_SetPosition(void *group, s32 x, s32 y, s32 mode);
+extern void Presentation_SetScript(void *group, const void *sequence, s32 mode);
 extern void GameWork_SetFlag(void *gameWork, s32 flag);
 extern void GamePhaseRuntime_StageAreaRequest(void *context, s32 first, s32 second, s32 third,
                          s32 fourth, s32 fifth);
@@ -84,9 +84,9 @@ extern "C" s32 func_ov033_021fd738(void *scene)
 
     if (state == 0) {
         void *primary = FIELD(void *, scene, 4);
-        func_02094bbc(group, FIELD(s32, primary, 0x1c) / 0x1000,
+        Presentation_SetPosition(group, FIELD(s32, primary, 0x1c) / 0x1000,
                       FIELD(s32, primary, 0x20) / 0x1000, 0);
-        func_02094cf0(group, data_ov033_021fdd60, 0);
+        Presentation_SetScript(group, data_ov033_021fdd60, 0);
         FIELD(s32, scene, 0xd0) = 1;
         state = 1;
     }
@@ -115,7 +115,7 @@ extern "C" s32 func_ov033_021fd738(void *scene)
         FIELD(u16, FIELD(void *, primary, 0xa8), 0x24) |= 0x10;
         refresh_secondary(scene, global);
         func_02092c8c(3, 0);
-        func_02094cf0(group, data_ov033_021fdd2c, 0);
+        Presentation_SetScript(group, data_ov033_021fdd2c, 0);
         FIELD(s32, scene, 0xd0) = 3;
     } else if (state == 3) {
         if (update_group(group))

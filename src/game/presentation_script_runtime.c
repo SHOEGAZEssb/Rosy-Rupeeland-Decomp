@@ -36,7 +36,7 @@ typedef struct PresentationScriptObject {
 typedef char PresentationScriptLayoutCheck[
     sizeof(PresentationScriptObject) == 0x9c ? 1 : -1];
 
-extern void func_020948d4(void *component, s32 value);
+extern void PresentationScalar_SetImmediate(void *component, s32 value);
 
 static s32 WrapMultiply(s32 left, s32 right)
 {
@@ -55,7 +55,7 @@ static s32 DivideSigned(s32 numerator, s32 denominator)
 }
 
 /* Cubic interpolation used by scalar mode two (retail 0x020919E8). */
-s32 func_020919e8(s32 start, s32 end, s32 duration, s32 elapsed)
+s32 Presentation_InterpolateSmoothStep(s32 start, s32 end, s32 duration, s32 elapsed)
 {
     s32 first;
     s32 second;
@@ -79,7 +79,7 @@ s32 func_020919e8(s32 start, s32 end, s32 duration, s32 elapsed)
 }
 
 /* Clamped signed linear interpolation (retail 0x02091A70). */
-s32 func_02091a70(s32 start, s32 end, s32 duration, s32 elapsed)
+s32 Presentation_InterpolateLinear(s32 start, s32 end, s32 duration, s32 elapsed)
 {
     s32 difference;
 
@@ -94,7 +94,7 @@ s32 func_02091a70(s32 start, s32 end, s32 duration, s32 elapsed)
 }
 
 /* Centered quadratic interpolation (retail 0x02091AA8). */
-s32 func_02091aa8(s32 start, s32 end, s32 duration, s32 elapsed)
+s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 duration, s32 elapsed)
 {
     s32 half;
     s32 distance;
@@ -116,7 +116,7 @@ s32 func_02091aa8(s32 start, s32 end, s32 duration, s32 elapsed)
 }
 
 /* Quadratic ease-out interpolation (retail 0x02091AF0). */
-s32 func_02091af0(s32 start, s32 end, s32 duration, s32 elapsed)
+s32 Presentation_InterpolateEaseOutQuadratic(s32 start, s32 end, s32 duration, s32 elapsed)
 {
     s32 distance;
 
@@ -134,7 +134,7 @@ s32 func_02091af0(s32 start, s32 end, s32 duration, s32 elapsed)
 }
 
 /* Quadratic ease-in interpolation (retail 0x02091B30). */
-s32 func_02091b30(s32 start, s32 end, s32 duration, s32 elapsed)
+s32 Presentation_InterpolateEaseInQuadratic(s32 start, s32 end, s32 duration, s32 elapsed)
 {
     s32 distance;
 
@@ -151,7 +151,7 @@ s32 func_02091b30(s32 start, s32 end, s32 duration, s32 elapsed)
 }
 
 /* Select an absolute scalar transition from its current value. */
-void func_020948e4(PresentationScalar *scalar, s32 mode, s32 target)
+void PresentationScalar_TransitionTo(PresentationScalar *scalar, s32 mode, s32 target)
 {
     scalar->mode = mode;
     scalar->start = scalar->current;
@@ -159,7 +159,7 @@ void func_020948e4(PresentationScalar *scalar, s32 mode, s32 target)
 }
 
 /* Select a scalar transition to an offset from its current value. */
-void func_020948f8(PresentationScalar *scalar, s32 mode, s32 offset)
+void PresentationScalar_TransitionBy(PresentationScalar *scalar, s32 mode, s32 offset)
 {
     scalar->mode = mode;
     scalar->start = scalar->current;
@@ -171,23 +171,23 @@ static void UpdateScalar(PresentationScalar *scalar, s32 duration, s32 elapsed)
     switch (scalar->mode) {
     case 1:
         scalar->current =
-            func_02091a70(scalar->start, scalar->target, duration, elapsed);
+            Presentation_InterpolateLinear(scalar->start, scalar->target, duration, elapsed);
         break;
     case 2:
         scalar->current =
-            func_020919e8(scalar->start, scalar->target, duration, elapsed);
+            Presentation_InterpolateSmoothStep(scalar->start, scalar->target, duration, elapsed);
         break;
     case 3:
         scalar->current =
-            func_02091aa8(scalar->start, scalar->target, duration, elapsed);
+            Presentation_InterpolateQuadraticPulse(scalar->start, scalar->target, duration, elapsed);
         break;
     case 4:
         scalar->current =
-            func_02091af0(scalar->start, scalar->target, duration, elapsed);
+            Presentation_InterpolateEaseOutQuadratic(scalar->start, scalar->target, duration, elapsed);
         break;
     case 5:
         scalar->current =
-            func_02091b30(scalar->start, scalar->target, duration, elapsed);
+            Presentation_InterpolateEaseInQuadratic(scalar->start, scalar->target, duration, elapsed);
         break;
     default:
         break;
@@ -197,7 +197,7 @@ static void UpdateScalar(PresentationScalar *scalar, s32 duration, s32 elapsed)
 }
 
 /* Advance all seven scalar channels by one recovered presentation tick. */
-s32 func_02094c48(PresentationScriptObject *object)
+s32 Presentation_AdvanceTransitions(PresentationScriptObject *object)
 {
     s32 index;
 
@@ -218,7 +218,7 @@ s32 func_02094c48(PresentationScriptObject *object)
 
 /* Install a recovered presentation command stream and optionally invoke the
  * derived start hook, preserving the reset order at retail 0x02094cf0. */
-void func_02094cf0(void *object, const void *commands, s32 invoke_start)
+void Presentation_SetScript(void *object, const void *commands, s32 invoke_start)
 {
     u8 *bytes = (u8 *)object;
 
@@ -243,10 +243,10 @@ static void CallPresentationSync(PresentationScriptObject *object)
  * Interpret the retail wordcode until it yields on a timed transition or
  * reaches an exit. Return one only for the normal opcode-zero completion.
  */
-s32 func_02094dd4(PresentationScriptObject *object)
+s32 Presentation_UpdateScript(PresentationScriptObject *object)
 {
     if (object->script == 0) {
-        s32 complete = func_02094c48(object);
+        s32 complete = Presentation_AdvanceTransitions(object);
         CallPresentationSync(object);
         return complete;
     }
@@ -260,24 +260,24 @@ s32 func_02094dd4(PresentationScriptObject *object)
                 object->scriptState = 1;
                 break;
             case 1:
-                func_020948d4(&object->position[0],
+                PresentationScalar_SetImmediate(&object->position[0],
                               (s32)object->script[object->scriptIndex]);
-                func_020948d4(&object->position[1],
+                PresentationScalar_SetImmediate(&object->position[1],
                               (s32)object->script[object->scriptIndex + 1]);
-                func_020948d4(&object->position[2],
+                PresentationScalar_SetImmediate(&object->position[2],
                               (s32)object->script[object->scriptIndex + 2]);
                 object->scriptIndex += 3;
                 break;
             case 2:
-                func_020948d4(&object->scale,
+                PresentationScalar_SetImmediate(&object->scale,
                               (s32)object->script[object->scriptIndex++]);
                 break;
             case 3:
-                func_020948d4(&object->rotation[0],
+                PresentationScalar_SetImmediate(&object->rotation[0],
                               (s32)object->script[object->scriptIndex]);
-                func_020948d4(&object->rotation[1],
+                PresentationScalar_SetImmediate(&object->rotation[1],
                               (s32)object->script[object->scriptIndex + 1]);
-                func_020948d4(&object->rotation[2],
+                PresentationScalar_SetImmediate(&object->rotation[2],
                               (s32)object->script[object->scriptIndex + 2]);
                 object->scriptIndex += 3;
                 break;
@@ -296,9 +296,9 @@ s32 func_02094dd4(PresentationScriptObject *object)
                 if (opcode == 7 || opcode == 8 || opcode == 9 ||
                     opcode == 11 || opcode == 15 || opcode == 16 ||
                     opcode == 17)
-                    func_020948f8(scalar, mode, value);
+                    PresentationScalar_TransitionBy(scalar, mode, value);
                 else
-                    func_020948e4(scalar, mode, value);
+                    PresentationScalar_TransitionTo(scalar, mode, value);
                 break;
             }
             case 18:
@@ -358,7 +358,7 @@ s32 func_02094dd4(PresentationScriptObject *object)
             return 1;
         }
         if (object->scriptState == 2) {
-            if (func_02094c48(object) != 0) {
+            if (Presentation_AdvanceTransitions(object) != 0) {
                 object->scriptState = 0;
                 continue;
             }

@@ -1,5 +1,5 @@
     .text
-    .extern func_02094c48
+    .extern Presentation_AdvanceTransitions
     .extern func_02091c7c
     .extern func_02091b98
     .extern func_020918f4
@@ -14,7 +14,7 @@ func_ov005_021fb75c: ; 0x021fb75c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     mov r8, r0
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     mov r5, r0
     add r0, r8, #0xb0
     mov r1, #0x2

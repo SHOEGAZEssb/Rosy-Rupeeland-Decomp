@@ -11,7 +11,7 @@ extern const s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void func_020b0808(s16 sine, s16 cosine);
 #ifdef __cplusplus
 }
@@ -26,7 +26,7 @@ extern void func_020b0808(s16 sine, s16 cosine);
 extern "C" void *func_ov036_021fd690(void *object, s32 mode, u16 valueA4,
                                       u16 valueA6, u16 valueA0, u16 valueA2)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov036_022060b4;
     FIELD(s32, object, 0x9c) = mode;
     FIELD(u16, object, 0xa0) = valueA0;

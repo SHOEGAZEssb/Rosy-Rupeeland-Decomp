@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void GraphicsSpriteState_SetAnimationIndex(void *state, s32 index);
-extern s32 func_02094dd4(void *effect);
+extern s32 Presentation_UpdateScript(void *effect);
 #ifdef __cplusplus
 }
 #endif
@@ -23,7 +23,7 @@ extern "C" s32 func_ov094_02219494(void *effect)
     s32 state = *(s32 *)((u8 *)effect + 0xa0);
     switch (state) {
     case 0:
-        if (func_02094dd4(effect)) {
+        if (Presentation_UpdateScript(effect)) {
             void *firstState = *(void **)((u8 *)effect + 0x9c);
             *(u16 *)((u8 *)firstState + 0x24) &= ~2;
             GraphicsSpriteState_SetAnimationIndex(

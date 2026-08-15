@@ -4,7 +4,7 @@
 .extern data_ov028_021ff174
 .extern data_ov028_021ff300
 .extern func_020918f4
-.extern func_02091a70
+.extern Presentation_InterpolateLinear
 .extern func_020b44e8
 .extern func_020b4554
 .extern func_ov028_021fce28
@@ -111,7 +111,7 @@ L_021fcf48:
     mov r3, r8
     and r0, r0, #0x1f
     and r1, r1, #0x1f
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r7, lsl #0x1
     ldrh r2, [r10, r1]
     ldrh r1, [r9, r1]
@@ -122,7 +122,7 @@ L_021fcf48:
     and r1, r1, #0x1f
     mov r2, #0x10
     mov r3, r8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r7, lsl #0x1
     mov r5, r0
     ldrh r0, [r10, r1]
@@ -133,7 +133,7 @@ L_021fcf48:
     and r0, r0, #0x1f
     and r1, r1, #0x1f
     mov r3, r8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     orr r1, r6, r5, lsl #0x5
     orr r1, r1, r0, lsl #0xa
     mov r0, r7, lsl #0x1

@@ -20,11 +20,11 @@
 .extern func_02091e28
 .extern func_02092798
 .extern func_02092814
-.extern func_02093a88
-.extern func_02094bbc
-.extern func_02095274
-.extern func_020953f4
-.extern func_020954f4
+.extern IndexedSelectionController_Init
+.extern Presentation_SetPosition
+.extern PresentationList_Append
+.extern SpritePresentation_Init
+.extern SpritePresentation_Hide
 .extern func_020957bc
 .extern func_020957f0
 .extern func_02095820
@@ -62,7 +62,7 @@ func_ov028_021fdb00:
     add r0, r10, #0x1fc
     bl func_02092798
     add r0, r10, #0x228
-    bl func_02093a88
+    bl IndexedSelectionController_Init
     add r0, r10, #0x264
     bl func_ov028_021fda98
     mov r0, #0x0
@@ -178,13 +178,13 @@ func_ov028_021fdb00:
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r4
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r4, r0
 L_021fdd24:
     mov r1, r4
     str r4, [r10, #0x260]
     add r0, r10, #0x264
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r10, #0x260]
     mov r1, #0x7
     ldr r0, [r0, #0x9c]
@@ -198,7 +198,7 @@ L_021fdd24:
     ldr r0, [r10, #0x260]
     ldr r1, [r10, #0x274]
     ldr r2, [r10, #0x278]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r6, L_021fdf7c
     ldr r4, L_021fdf80
     mov r9, #0x0
@@ -219,14 +219,14 @@ L_021fdd84:
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r8
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r8, r0
 L_021fddc0:
     add r0, r10, r9, lsl #0x2
     str r8, [r0, #0x1f0]
     mov r1, r8
     add r0, r10, #0x264
-    bl func_02095274
+    bl PresentationList_Append
     cmp r9, #0x0
     movne r0, #0xf0
     moveq r0, #0x10
@@ -235,7 +235,7 @@ L_021fddc0:
     ldr r0, [r0, #0x1f0]
     mov r2, #0x4a000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     cmp r9, #0x0
     movne r0, #0x5
     moveq r0, #0x3
@@ -246,7 +246,7 @@ L_021fddc0:
     bl GraphicsSpriteState_SetAnimationIndex
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0x1f0]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     add r9, r9, #0x1
     cmp r9, #0x2
     blt L_021fdd84

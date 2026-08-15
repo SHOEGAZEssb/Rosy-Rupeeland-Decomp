@@ -10,7 +10,7 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020927b8
-.extern func_02095308
+.extern PresentationList_DeleteAll
 .extern func_ov028_021fd1a8
 .extern func_ov028_021fd790
 .extern func_ov028_021fda94
@@ -65,7 +65,7 @@ L_021fe014:
     bl Heap_Free
 L_021fe030:
     add r0, r4, #0x264
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, [r4, #0x54]
     bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x58]
@@ -76,7 +76,7 @@ L_021fe030:
     ldr r1, L_021fe0a4
     add r0, r4, #0x264
     str r1, [r4, #0x264]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x1fc
     bl func_020927b8
     add r0, r4, #0x144
@@ -135,7 +135,7 @@ L_021fe114:
     bl Heap_Free
 L_021fe130:
     add r0, r4, #0x264
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, [r4, #0x54]
     bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x58]
@@ -146,7 +146,7 @@ L_021fe130:
     ldr r1, L_021fe1ac
     add r0, r4, #0x264
     str r1, [r4, #0x264]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x1fc
     bl func_020927b8
     add r0, r4, #0x144

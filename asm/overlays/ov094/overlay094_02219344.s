@@ -2,9 +2,9 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_021052fc
 .extern data_ov094_02219e9c
-.extern func_020948e4
-.extern func_02094bbc
-.extern func_020953c8
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
+.extern SpritePresentation_InitVariant
 
 .global func_ov094_02219344
 func_ov094_02219344:
@@ -12,7 +12,7 @@ func_ov094_02219344:
     mov r4, r0
     mov r6, r2
     mov r5, r3
-    bl func_020953c8
+    bl SpritePresentation_InitVariant
     ldr r0, .L_02219428
     mov r3, #0x0
     str r0, [r4, #0x0]
@@ -21,11 +21,11 @@ func_ov094_02219344:
     mov r1, r5
     sub r2, r3, #0x110000
     str r6, [r4, #0xa4]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r2, [sp, #0x10]
     add r0, r4, #0x1c
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, .L_0221942c
     ldr r3, [sp, #0x10]
     ldr r1, [r0, #0x0]

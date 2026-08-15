@@ -6,7 +6,7 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_02092b70
 .extern func_02094574
-.extern func_02095360
+.extern PresentationList_UpdateAndDeleteCompleted
 .extern func_020958d8
 .extern func_020b1ff0
 .extern func_020b2058
@@ -63,7 +63,7 @@ L_021ff144:
 L_021ff174:
     ldr r5, [r4, #0x354]
     add r0, r5, #0x48
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r5, #0x0]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x9c]

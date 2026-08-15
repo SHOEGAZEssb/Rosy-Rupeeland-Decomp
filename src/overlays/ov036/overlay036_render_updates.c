@@ -10,7 +10,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Sound_Play(void *soundContext, s32 id, s32 value);
-extern s32 func_02094d28(void *object, s32 mode, s32 first, s32 second);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 first, s32 second);
 extern s32 func_ov036_021fd28c(void *object);
 #ifdef __cplusplus
 }
@@ -63,7 +63,7 @@ extern "C" void func_ov036_021fd248(void *object)
     if (!(FIELD(u16, object, 0x98) & 8))
         return;
     FIELD(s32, object, 0xac) =
-        func_02094d28(object, 1, FIELD(s32, object, 0xb0),
+        Presentation_InterpolateScalar(object, 1, FIELD(s32, object, 0xb0),
                       FIELD(s32, object, 0xb4));
     if (func_ov036_021fd28c(object))
         FIELD(u16, object, 0x98) &= (u16)~8;

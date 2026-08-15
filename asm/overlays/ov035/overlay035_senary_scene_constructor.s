@@ -13,16 +13,16 @@
     .extern Graphics3DResourceOwner_CreateManager
     .extern Heap_Alloc
     .extern func_ov035_021fcf34
-    .extern func_02095274
-    .extern func_02094bbc
-    .extern func_020948d4
+    .extern PresentationList_Append
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_SetImmediate
     .extern func_ov035_021fdd70
     .extern func_ov035_021fdd78
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov035_021fdd28
     .extern func_020955d8
-    .extern func_02094cf0
-    .extern func_02091a70
+    .extern Presentation_SetScript
+    .extern Presentation_InterpolateLinear
     .extern func_ov035_022016ac
     .extern func_020b035c
     .extern func_020b0374
@@ -163,7 +163,7 @@ L_022018b4:
     str r0, [r5, #0x104]
     mov r1, r0
     add r0, r5, #0x11c
-    bl func_02095274
+    bl PresentationList_Append
     mov r2, #0x800
     ldr r0, [r5, #0x104]
     mov r1, #0x8000
@@ -171,11 +171,11 @@ L_022018b4:
     ldr r0, [r5, #0x104]
     sub r3, r2, #0x4800
     mov r1, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r5, #0x104]
     mov r1, #0x800
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r4, [r5, #0x104]
     ldr r1, L_02201bb4
     ldrh r3, [r4, #0x98]
@@ -195,16 +195,16 @@ L_02201930:
     str r0, [r5, #0x108]
     mov r1, r0
     add r0, r5, #0x11c
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r5, #0x108]
     mov r2, r1
     sub r3, r1, #0x4000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r5, #0x108]
     mov r1, #0x0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r4, [r5, #0x108]
     mov r1, #0x0
     ldrh r3, [r4, #0x98]
@@ -245,11 +245,11 @@ L_022019f4:
     str r0, [r5, #0xd8]
     mov r1, r0
     add r0, r5, #0x10c
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r5, #0xd8]
     ldr r1, L_02201bc0
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r7, L_02201bc4
     mov r4, #0x0
     mov r9, #0x42
@@ -272,19 +272,19 @@ L_02201a28:
     mov r1, #0x8
     mov r2, #0x4
     mov r3, r4
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     strb r0, [r10, #0x5b]
     mov r0, #0x1f
     mov r1, #0x10
     mov r2, #0x4
     mov r3, r4
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r8, r0
     mov r0, #0x1f
     mov r1, #0x0
     mov r2, #0x4
     mov r3, r4
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     orr r0, r0, r8, lsl #0xa
     strh r0, [r10, #0x4e]
     ldr r1, L_02201bbc
@@ -303,10 +303,10 @@ L_02201acc:
     str r0, [r8, #0x88]
     mov r0, r8
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r1, r8
     add r0, r5, #0x10c
-    bl func_02095274
+    bl PresentationList_Append
     add r4, r4, #0x1
     cmp r4, #0x4
     blt L_02201a28

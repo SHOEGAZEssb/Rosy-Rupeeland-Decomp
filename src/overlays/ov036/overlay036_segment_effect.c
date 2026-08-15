@@ -9,10 +9,10 @@ extern const u8 data_ov036_02206044[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
-extern void func_020948d4(void *field, s32 value);
+extern void Presentation_Init(void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern s32 func_020ae024(s32 x, s32 y);
-extern s32 func_02094d28(void *object, s32 mode, s32 first, s32 second);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
@@ -31,15 +31,15 @@ extern "C" void *func_ov036_021fd834(void *object, s16 duration,
                                       s32 initialZ, u16 red, u16 green,
                                       u16 blue)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov036_02206044;
     FIELD(s32, object, 0x9c) = x0;
     FIELD(s32, object, 0xa0) = y0;
     FIELD(s32, object, 0xa4) = x1;
     FIELD(s32, object, 0xa8) = y1;
-    func_020948d4((u8 *)object + 0x2c, initialZ);
+    PresentationScalar_SetImmediate((u8 *)object + 0x2c, initialZ);
     u16 angle = (u16)(func_020ae024(x1 - x0, y1 - y0) + 0x4000);
-    func_020948d4((u8 *)object + 0x5c, angle);
+    PresentationScalar_SetImmediate((u8 *)object + 0x5c, angle);
     FIELD(s32, object, 0xac) = 0;
     FIELD(u16, object, 0xb0) = red;
     FIELD(u16, object, 0xb2) = green;
@@ -60,14 +60,14 @@ extern "C" void *func_ov036_021fd834(void *object, s16 duration,
  */
 extern "C" void func_ov036_021fd8f8(void *object)
 {
-    func_020948d4((u8 *)object + 0x2c,
+    PresentationScalar_SetImmediate((u8 *)object + 0x2c,
                   FIELD(s32, object, 0x30) - 2);
-    FIELD(s32, object, 0xac) = func_02094d28(object, 4, 0, 0x80);
-    s32 blue = func_02094d28(object, 3, 0,
+    FIELD(s32, object, 0xac) = Presentation_InterpolateScalar(object, 4, 0, 0x80);
+    s32 blue = Presentation_InterpolateScalar(object, 3, 0,
                              FIELD(u16, object, 0xb4));
-    s32 red = func_02094d28(object, 3, 0,
+    s32 red = Presentation_InterpolateScalar(object, 3, 0,
                             FIELD(u16, object, 0xb0));
-    s32 green = func_02094d28(object, 3, 0,
+    s32 green = Presentation_InterpolateScalar(object, 3, 0,
                               FIELD(u16, object, 0xb2));
     FIELD(u16, object, 0xb6) = red | (green << 5) | (blue << 10);
 }

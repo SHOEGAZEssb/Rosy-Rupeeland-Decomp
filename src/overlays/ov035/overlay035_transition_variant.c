@@ -13,7 +13,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *Graphics3DResourceBinding_Init(void *allocation, void *resourceContext,
                           s32 argument, s32 firstId, s32 secondId);
@@ -44,7 +44,7 @@ extern void func_ov035_021fe8b0(s32 s, s32 t);
  */
 extern "C" void *func_ov035_021fe8e4(void *object, s32 argument)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov035_02203ccc;
     void *resource =
         Heap_Alloc(0x18, data_ov035_02203d30, 4, gHeapContext);

@@ -33,9 +33,9 @@ extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02094cf0(void *, const void *, s32);
-extern s32 func_02095224(void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void Presentation_SetScript(void *, const void *, s32);
+extern s32 Presentation_IsScriptComplete(void *);
 extern void func_ov002_021fbe68(void *);
 extern void func_ov021_021fd1cc(void *);
 extern void func_ov021_021fd39c(void *);
@@ -98,7 +98,7 @@ static void prepare_result_widget(void *state)
 {
     func_ov021_021ff3d8(state);
     void *widget = FIELD(void *, state, 0x384);
-    func_020948e4((u8 *)widget + 0xc, 2, 0x160);
+    PresentationScalar_TransitionTo((u8 *)widget + 0xc, 2, 0x160);
     FIELD(s32, widget, 0x7c) = 0x10;
     FIELD(s32, widget, 0x80) = 0;
 }
@@ -128,12 +128,12 @@ extern "C" s32 func_ov021_022023f0(void *state)
         if (prompt != 0)
             func_ov045_0220bc40(prompt);
         FIELD(void *, state, 0x384) = prompt;
-        func_02094cf0(prompt, data_ov021_02202cd0, 0);
+        Presentation_SetScript(prompt, data_ov021_02202cd0, 0);
         advance(state);
         break;
     }
     case 2:
-        if (func_02095224(FIELD(void *, state, 0x384)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, state, 0x384)) != 0) {
             s32 position = (s16)func_0209189c((u8 *)state + 0x2cc, 60, 90);
             FIELD(s32, FIELD(void *, state, 0x384), 0x7c) = position;
             FIELD(s32, FIELD(void *, state, 0x384), 0x80) = 0;

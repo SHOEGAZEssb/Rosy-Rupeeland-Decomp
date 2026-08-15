@@ -2,10 +2,10 @@
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_02073e48
     .extern Heap_Alloc
-    .extern func_020953f4
-    .extern func_02094bbc
-    .extern func_02095508
-    .extern func_020954f4
+    .extern SpritePresentation_Init
+    .extern Presentation_SetPosition
+    .extern SpritePresentation_SyncPosition
+    .extern SpritePresentation_Hide
     .extern func_020befec
     .extern func_020b35b0
     .extern GraphicsSpriteGroup_ReleaseIndexedEntries
@@ -37,17 +37,17 @@ func_ov004_021fbf40: ; 0x021fbf40
     cmp r0, #0x0
     beq L_021fbfa0
     mov r1, r4
-    bl func_020953f4
+    bl SpritePresentation_Init
 L_021fbfa0:
     mov r1, #0x78000
     str r0, [r10, #0x68]
     sub r2, r1, #0x98000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r10, #0x68]
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     ldr r0, [r10, #0x68]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldr r0, [r10, #0x60]
     add r1, r10, #0x54
     mov r2, #0x1
@@ -208,7 +208,7 @@ L_021fc1ec:
     mov r3, r1
     add r0, r10, #0x6c
     mov r2, #0xc0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fc240: .word data_ov004_021fcdd0

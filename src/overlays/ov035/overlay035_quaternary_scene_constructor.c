@@ -26,13 +26,13 @@ extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
-extern void func_02095274(void *collection, void *object);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void PresentationList_Append(void *collection, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void *func_ov035_021fcf34(void *object, void *resource, s32 index,
                                 s32 entry);
-extern void func_020948d4(void *field, s32 value);
-extern void *func_02094ad4(void *object);
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern void *Presentation_InitVariant(void *object);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021ffec4(void *records, s32 index, s32 value8,
@@ -72,9 +72,9 @@ static void *create_sprite(void *scene, s32 resourceOffset, u16 flags,
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (object != 0)
         object = func_020955d8(object, record);
-    func_02095274((u8 *)scene + 0x160, object);
+    PresentationList_Append((u8 *)scene + 0x160, object);
     if (z != 0)
-        func_02094bbc(object, 0, 0, z);
+        Presentation_SetPosition(object, 0, 0, z);
     return object;
 }
 
@@ -89,9 +89,9 @@ static void *create_model(void *scene, s32 index, s32 y)
     if (object != 0)
         object = func_ov035_021fcf34(object, FIELD(void *, scene, 0x100),
                                     index, 0x17);
-    func_02095274((u8 *)scene + 0x170, object);
-    func_02094bbc(object, 0, y, 0);
-    func_020948d4((u8 *)object + 0x6c, 0x800);
+    PresentationList_Append((u8 *)scene + 0x170, object);
+    Presentation_SetPosition(object, 0, y, 0);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x800);
     return object;
 }
 
@@ -154,11 +154,11 @@ extern "C" void *func_ov035_021fff38(void *scene, void *resourceOwner,
 
     void *animated = Heap_Alloc(0x9c, data_ov035_02203d58, 4, gHeapContext);
     if (animated != 0)
-        animated = func_02094ad4(animated);
+        animated = Presentation_InitVariant(animated);
     FIELD(void *, scene, 0x110) = animated;
-    func_02095274((u8 *)scene + 0x160, animated);
-    func_02094bbc(animated, 0, 0, 0x1c00);
-    func_020948e4((u8 *)animated + 0x2c, 2, 0x2800);
+    PresentationList_Append((u8 *)scene + 0x160, animated);
+    Presentation_SetPosition(animated, 0, 0, 0x1c00);
+    PresentationScalar_TransitionTo((u8 *)animated + 0x2c, 2, 0x2800);
     FIELD(s32, animated, 0x7c) = 0xf0;
     FIELD(s32, animated, 0x80) = 0;
 

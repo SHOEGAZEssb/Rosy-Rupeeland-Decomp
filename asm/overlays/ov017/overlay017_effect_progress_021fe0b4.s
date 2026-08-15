@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_progress.c. */
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
     .extern func_ov017_021fe178
 .global func_ov017_021fe0b4
 func_ov017_021fe0b4:
@@ -14,7 +14,7 @@ func_ov017_021fe0b4:
     mov r0, #0x100
     mov r1, #0x0
     mov r2, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r5, r0
     b L_021fe114
 L_021fe0e4:
@@ -22,13 +22,13 @@ L_021fe0e4:
     ldrh r3, [r4, #0x9e]
     mov r0, #0x400
     mov r1, #0x100
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r5, r0
     ldrh r2, [r4, #0x9c]
     ldrh r3, [r4, #0x9e]
     mov r0, #0xc
     mov r1, #0x3
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     str r0, [r4, #0xa4]
 L_021fe114:
     str r5, [r4, #0xd8]

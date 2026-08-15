@@ -9,7 +9,7 @@
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
     .extern func_020927b8
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern func_ov001_021fb7d4
     .extern func_ov018_021fcefc
     .extern func_ov018_021fdbd4
@@ -48,7 +48,7 @@ func_ov018_021fd388:
     blx r1
 L_021fd3cc:
     add r0, r4, #0x3cc
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, [r4, #0xc4]
     bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xcc]
@@ -82,7 +82,7 @@ L_021fd430:
     ldr r1, L_021fd4a4
     add r0, r4, #0x3cc
     str r1, [r4, #0x3cc]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0xd8
     bl func_ov018_021fcefc
     add r0, r4, #0xb8
@@ -126,7 +126,7 @@ func_ov018_021fd4a8:
     blx r1
 L_021fd4ec:
     add r0, r4, #0x3cc
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, [r4, #0xc4]
     bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0xcc]
@@ -160,7 +160,7 @@ L_021fd550:
     ldr r1, L_021fd5cc
     add r0, r4, #0x3cc
     str r1, [r4, #0x3cc]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0xd8
     bl func_ov018_021fcefc
     add r0, r4, #0xb8

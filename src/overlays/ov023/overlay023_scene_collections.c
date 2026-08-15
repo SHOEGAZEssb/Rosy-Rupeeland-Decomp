@@ -20,10 +20,10 @@ extern s32 func_0207b464(void *);
 extern s32 func_0207b490(void *);
 extern s32 func_0207b4bc(void *);
 extern s32 func_02092910(void *, void *);
-extern void func_02093adc(void *, s32, s32, s32);
-extern void func_020954c0(void *, s32);
-extern void func_020954e0(void *);
-extern void func_020954f4(void *);
+extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
+extern void SpritePresentation_SetAnimation(void *, s32);
+extern void SpritePresentation_Show(void *);
+extern void SpritePresentation_Hide(void *);
 extern void *func_ov023_021fce44(void *, void *, s32);
 extern void *func_ov023_021fd024(void *, void *);
 extern void func_ov023_021fd104(void *);
@@ -100,7 +100,7 @@ extern "C" void func_ov023_021fe39c(void *scene)
             }
         }
     }
-    func_02093adc((u8 *)scene + 0x480, 0,
+    IndexedSelectionController_ConfigureRange((u8 *)scene + 0x480, 0,
                   FIELD(s32, scene, 0x398) - 1, 0);
     func_ov023_021fe5f8(scene);
     func_ov023_021fd104(main_collection);
@@ -114,11 +114,11 @@ extern "C" void func_ov023_021fe39c(void *scene)
 extern "C" void func_ov023_021fe5f8(void *scene)
 {
     if (FIELD(s32, scene, 0x398) > 1) {
-        func_020954c0(FIELD(void *, scene, 0x380), 8);
-        func_020954c0(FIELD(void *, scene, 0x384), 10);
+        SpritePresentation_SetAnimation(FIELD(void *, scene, 0x380), 8);
+        SpritePresentation_SetAnimation(FIELD(void *, scene, 0x384), 10);
     } else {
-        func_020954c0(FIELD(void *, scene, 0x380), 9);
-        func_020954c0(FIELD(void *, scene, 0x384), 11);
+        SpritePresentation_SetAnimation(FIELD(void *, scene, 0x380), 9);
+        SpritePresentation_SetAnimation(FIELD(void *, scene, 0x384), 11);
     }
 }
 
@@ -132,11 +132,11 @@ extern "C" void func_ov023_021fe640(void *scene, s32 enabled)
     void *left = FIELD(void *, scene, 0x380);
     void *right = FIELD(void *, scene, 0x384);
     if (enabled && FIELD(s32, scene, 0x398) > 1) {
-        func_020954e0(left);
-        func_020954e0(right);
+        SpritePresentation_Show(left);
+        SpritePresentation_Show(right);
     } else {
-        func_020954f4(left);
-        func_020954f4(right);
+        SpritePresentation_Hide(left);
+        SpritePresentation_Hide(right);
     }
 }
 

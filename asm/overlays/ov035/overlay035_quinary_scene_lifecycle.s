@@ -4,7 +4,7 @@
 
     .extern func_ov035_021fd4dc
     .extern Heap_Free
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern Graphics3DResourceOwner_RemoveManager
     .extern func_02071e04
     .extern GraphicsResourceSetVariant_Destroy
@@ -27,11 +27,11 @@ func_ov035_02200d40:
     bl Heap_Free
 L_02200d6c:
     add r0, r5, #0x108
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r5, #0x118
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r5, #0x128
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, [r5, #0xf8]
     ldr r0, [r1, #0x0]
     bl Graphics3DResourceOwner_RemoveManager
@@ -42,15 +42,15 @@ L_02200d6c:
     ldr r1, L_02200df8
     add r0, r5, #0x128
     str r1, [r5, #0x128]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_02200df8
     add r0, r5, #0x118
     str r1, [r5, #0x118]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_02200df8
     add r0, r5, #0x108
     str r1, [r5, #0x108]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r5, #0xe8
     bl GraphicsResourceSetVariant_Destroy
     add r0, r5, #0xdc
@@ -79,11 +79,11 @@ func_ov035_02200dfc:
     bl Heap_Free
 L_02200e28:
     add r0, r5, #0x108
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r5, #0x118
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r5, #0x128
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, [r5, #0xf8]
     ldr r0, [r1, #0x0]
     bl Graphics3DResourceOwner_RemoveManager
@@ -94,15 +94,15 @@ L_02200e28:
     ldr r1, L_02200ebc
     add r0, r5, #0x128
     str r1, [r5, #0x128]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_02200ebc
     add r0, r5, #0x118
     str r1, [r5, #0x118]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_02200ebc
     add r0, r5, #0x108
     str r1, [r5, #0x108]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r5, #0xe8
     bl GraphicsResourceSetVariant_Destroy
     add r0, r5, #0xdc

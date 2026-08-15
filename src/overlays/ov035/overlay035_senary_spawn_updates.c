@@ -16,17 +16,17 @@ extern s32 func_020918f4(void *randomState, s32 limit);
 extern void func_ov035_02201d10(void *scene, s32 x, s32 y, s32 z,
                                s32 targetX, s32 targetY, s32 targetZ,
                                s32 targetScale, s32 resourceIndex);
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
-extern void func_02095274(void *collection, void *object);
+extern void PresentationList_Append(void *collection, void *object);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_02094cf0(void *object, const void *animation, s32 loop);
-extern void func_020948d4(void *field, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ static void *allocate_sprite(void *scene, void *record)
     void *sprite = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (sprite != 0)
         sprite = func_020955d8(sprite, record);
-    func_02095274((u8 *)scene + 0x10c, sprite);
+    PresentationList_Append((u8 *)scene + 0x10c, sprite);
     return sprite;
 }
 
@@ -84,7 +84,7 @@ extern "C" void func_ov035_02201df8(void *scene, s32 side)
                         targetX, targetY, targetZ, targetScale, side);
 
     void *model = FIELD(void *, scene, 0x104);
-    func_020948e4((u8 *)model + 0x4c, 2, modelMotion);
+    PresentationScalar_TransitionTo((u8 *)model + 0x4c, 2, modelMotion);
     FIELD(s32, model, 0x7c) = 7;
     FIELD(s32, model, 0x80) = 0;
 
@@ -96,9 +96,9 @@ extern "C" void func_ov035_02201df8(void *scene, s32 side)
                         0, 0, 0, 7, 0x40);
     s32 x = func_0209189c((u8 *)scene + 0xc0, -0x1000, 0x1000);
     s32 y = func_0209189c((u8 *)scene + 0xc0, -0x1800, 0x1800);
-    func_02094bbc(sprite, x, y, -0x3c00);
-    func_02094cf0(sprite, data_ov035_02202bbc, 0);
-    func_020948d4((u8 *)sprite + 0x6c, 0);
+    Presentation_SetPosition(sprite, x, y, -0x3c00);
+    Presentation_SetScript(sprite, data_ov035_02202bbc, 0);
+    PresentationScalar_SetImmediate((u8 *)sprite + 0x6c, 0);
     FIELD(s32, sprite, 0x88) = 1;
 }
 
@@ -124,12 +124,12 @@ extern "C" void func_ov035_02201fe4(void *scene)
                         0, 0, 0, 7, 0x40);
     s32 x = func_0209189c((u8 *)scene + 0xc0, -0x800, 0x800);
     if (func_020918f4((u8 *)scene + 0xc0, 2) != 0) {
-        func_020948d4((u8 *)sprite + 0x5c, 0x8000);
-        func_02094bbc(sprite, x, 0xe00, 0);
-        func_020948e4((u8 *)sprite + 0x1c, 3, 0xa00);
+        PresentationScalar_SetImmediate((u8 *)sprite + 0x5c, 0x8000);
+        Presentation_SetPosition(sprite, x, 0xe00, 0);
+        PresentationScalar_TransitionTo((u8 *)sprite + 0x1c, 3, 0xa00);
     } else {
-        func_02094bbc(sprite, x, -0xe00, 0);
-        func_020948e4((u8 *)sprite + 0x1c, 3, -0xa00);
+        Presentation_SetPosition(sprite, x, -0xe00, 0);
+        PresentationScalar_TransitionTo((u8 *)sprite + 0x1c, 3, -0xa00);
     }
     FIELD(s32, sprite, 0x7c) = 30;
     FIELD(s32, sprite, 0x80) = 0;

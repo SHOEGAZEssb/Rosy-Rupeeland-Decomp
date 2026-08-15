@@ -15,8 +15,8 @@ extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void
 extern void GraphicsAnimationInstance_SetAnimation(void *handle, s32 selector);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *handle);
-extern void func_02095274(void *list, void *object);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *list, void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -41,8 +41,8 @@ extern "C" void func_ov036_02201710(void *controller)
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0x120) = child;
-    func_02095274((u8 *)controller + 0x148, child);
-    func_020948d4((u8 *)child + 0x6c, 0x19a);
+    PresentationList_Append((u8 *)controller + 0x148, child);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x19a);
 
     handle = GraphicsAnimationInstanceManager_CreateInstance(manager, (u8 *)controller + 0x10c);
     FIELD(u16, handle, 0x50) |= 0x44;
@@ -51,9 +51,9 @@ extern "C" void func_ov036_02201710(void *controller)
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0x124) = child;
-    func_02095274((u8 *)controller + 0x148, child);
-    func_020948d4((u8 *)child + 0x5c, 0x8000);
-    func_020948d4((u8 *)child + 0x6c, 0x19a);
+    PresentationList_Append((u8 *)controller + 0x148, child);
+    PresentationScalar_SetImmediate((u8 *)child + 0x5c, 0x8000);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x19a);
 
     for (s32 i = 0; i < 8; ++i) {
         const u8 *record = data_ov036_022051f0 + i * 0x14;
@@ -64,8 +64,8 @@ extern "C" void func_ov036_02201710(void *controller)
         if (child != 0)
             child = func_020955d8(child, handle);
         FIELD(void *, controller, 0x128 + i * 4) = child;
-        func_02095274((u8 *)controller + 0x148, child);
-        func_020948d4((u8 *)child + 0x5c,
+        PresentationList_Append((u8 *)controller + 0x148, child);
+        PresentationScalar_SetImmediate((u8 *)child + 0x5c,
                       *(const s32 *)(record + 0x10));
     }
 }

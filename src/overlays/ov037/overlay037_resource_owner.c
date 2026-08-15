@@ -12,7 +12,7 @@ extern void *data_020f4e18[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
 extern void *Graphics3DResourceBinding_Init(void *binding, void *archive, void *owner,
@@ -31,7 +31,7 @@ extern void func_ov037_021fcf1c(void *object);
  */
 extern "C" void *func_ov037_021fd22c(void *object, void *owner)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov037_021fee5c;
     void *binding = Heap_Alloc(0x18, data_ov037_021feea8, 4, gHeapContext);
     if (binding != 0)

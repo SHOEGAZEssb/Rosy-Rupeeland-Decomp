@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_runtime.c. */
 .extern data_020c9670
 .extern GraphicsAnimationInstance_SetAnimation
-.extern func_020948d4
-.extern func_02094d28
+.extern PresentationScalar_SetImmediate
+.extern Presentation_InterpolateScalar
 .extern func_020ae024
 
 
@@ -17,7 +17,7 @@ func_ov027_021fd4dc:
     mov r4, r2
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r0, r0, lsl #0x10
     mov r0, r0, lsr #0x10
     mov r0, r0, asr #0x4
@@ -32,7 +32,7 @@ func_ov027_021fd4dc:
     ldrsh r4, [lr, r1]
     mov r1, #0x1
     ldrsh r5, [lr, ip]
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr lr, [r6, #0xb4]
     ldr ip, [r6, #0xb0]
     mul r3, r4, lr
@@ -65,12 +65,12 @@ func_ov027_021fd4dc:
     add r1, r1, r2, asr #0x8
     mov r7, r2, asr #0x8
     mov r8, r5, asr #0x8
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r6, #0x1c
     ldr r1, [r6, #0xa0]
     ldr r1, [r1, #0x8]
     add r1, r1, r5, asr #0x8
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     cmp r4, #0x20
     bge L_021fd5f4
     ldr r0, [r6, #0x9c]

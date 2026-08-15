@@ -4,7 +4,7 @@
     .extern func_02071ea4
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_020953c8
+    .extern SpritePresentation_InitVariant
 
 /* Exact fallbacks for sprite-wrapper construction; see src/overlays/ov016/overlay016_sprite_wrapper.c. */
     .global func_ov016_021fe004
@@ -16,7 +16,7 @@ func_ov016_021fe004:
     mov r1, #0x0
     mov r6, r0
     mov r4, r2
-    bl func_020953c8
+    bl SpritePresentation_InitVariant
     ldr r1, L_021fe084
     add r0, r6, #0xa0
     str r1, [r6, #0x0]

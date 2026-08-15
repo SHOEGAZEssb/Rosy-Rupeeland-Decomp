@@ -1,7 +1,7 @@
     .text
     .extern func_02092910
-    .extern func_020948f8
-    .extern func_020952b4
+    .extern PresentationScalar_TransitionBy
+    .extern PresentationList_Remove
     .extern func_02095940
     .extern func_ov016_021fe2b0
 
@@ -26,13 +26,13 @@ L_021fe59c:
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
     mov r1, r5
     add r0, r4, #0xd0
-    bl func_020952b4
+    bl PresentationList_Remove
     mov r2, #0x20000
     str r5, [r4, #0xcc]
     add r0, r5, #0x1c
     rsb r2, r2, #0x0
     mov r1, #0x1
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     ldr r1, [r4, #0xcc]
     mov r0, #0x10
     str r0, [r1, #0x7c]

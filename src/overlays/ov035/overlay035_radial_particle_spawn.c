@@ -17,9 +17,9 @@ extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fd2bc(void *object, s32 identifier,
                                 s32 directionA, s32 directionB, u16 color,
                                 s32 finalArgument);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02095274(void *collection, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationList_Append(void *collection, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -62,9 +62,9 @@ extern "C" void func_ov035_02200ec0(void *scene, s32 red, s32 green,
         particle = func_ov035_021fd2bc(particle, 0, reverseA, reverseB,
                                       color, 0);
     }
-    func_02094bbc(particle, x, y, -0x10000);
-    func_020948e4((u8 *)particle + 0x2c, 1, 0x2000);
+    Presentation_SetPosition(particle, x, y, -0x10000);
+    PresentationScalar_TransitionTo((u8 *)particle + 0x2c, 1, 0x2000);
     FIELD(s32, particle, 0x7c) = 40;
     FIELD(s32, particle, 0x80) = 0;
-    func_02095274((u8 *)scene + 0x118, particle);
+    PresentationList_Append((u8 *)scene + 0x118, particle);
 }

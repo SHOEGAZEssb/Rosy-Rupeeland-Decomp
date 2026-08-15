@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_frame_update.c. */
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020918f4
-.extern func_020948e4
-.extern func_02094dd4
-.extern func_02095224
+.extern PresentationScalar_TransitionTo
+.extern Presentation_UpdateScript
+.extern Presentation_IsScriptComplete
 .extern func_ov025_021fe174
 .extern func_ov025_021fe340
 .extern func_ov025_021fe39c
@@ -25,7 +25,7 @@ func_ov025_021feb4c:
     cmp r1, #0x0
     moveq r0, #0x0
     ldmeqia sp!, {r4, pc}
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     ldr r0, [r4, #0x9c]
     cmp r0, #0xb
     addls pc, pc, r0, lsl #0x2
@@ -45,7 +45,7 @@ L_021feb7c: ; jump table
     b L_021fef88 ; case 11
 L_021febac:
     mov r0, r4
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_021ff098
     mov r0, r4
@@ -123,7 +123,7 @@ L_021feca8:
     add r0, r4, #0x1c
     mov r1, #0x2
     mov r2, #0x60000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x3c
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -216,7 +216,7 @@ L_021fedf8:
     add r0, r4, #0x1c
     mov r1, #0x5
     mov r2, #0xa0000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x1e
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -281,7 +281,7 @@ L_021feee4:
     add r0, r4, #0x1c
     rsb r2, r2, #0x0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x5a
     str r0, [r4, #0x7c]
     mov r0, #0x0

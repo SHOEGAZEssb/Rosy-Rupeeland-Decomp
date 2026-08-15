@@ -2,11 +2,11 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_end_sequence.c. */
 .extern data_ov026_022043e4
-.extern func_020948d4
-.extern func_02094bbc
-.extern func_02094cf0
-.extern func_02095224
-.extern func_02095308
+.extern PresentationScalar_SetImmediate
+.extern Presentation_SetPosition
+.extern Presentation_SetScript
+.extern Presentation_IsScriptComplete
+.extern PresentationList_DeleteAll
 .extern func_020b0300
 .extern func_020b0374
 .extern func_ov026_022009dc
@@ -36,7 +36,7 @@ L_02203e74:
     b L_02203fd4
 L_02203ea4:
     add r0, r4, #0x304
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, #0x0
     mov ip, #0x80
     mov r1, r0
@@ -56,24 +56,24 @@ L_02203ea4:
     mov r1, #0x0
     mov r2, #0x8000
     mov r3, #0x10000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x0
     ldr r0, [r4, #0x2ec]
     mov r2, r1
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x160]
     mov r1, #0x800
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x160]
     mov r1, #0x0
     add r0, r0, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x160]
     add r1, sp, #0x4
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r2, [r4, #0x158]
     ldr r0, L_02203ff0
     mov r1, #0x0
@@ -88,15 +88,15 @@ L_02203ea4:
     mov r2, #0x1000
     ldr r0, [r4, #0x17c]
     sub r3, r2, #0x9000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x17c]
     mov r1, #0xc000
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x17c]
     mov r1, #0x0
     add r0, r0, #0x3c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x17c]
     mov r1, #0x0
     str r1, [r0, #0xa0]
@@ -105,7 +105,7 @@ L_02203ea4:
     str r0, [r4, #0x79c]
 L_02203fb4:
     ldr r0, [r4, #0x160]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_02203fd4
     mov r0, r4

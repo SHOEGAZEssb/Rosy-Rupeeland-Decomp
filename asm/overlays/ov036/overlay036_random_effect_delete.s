@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_random_effect.c for documented portable C. */
 
     .extern GraphicsAnimationInstance_Destroy
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern func_ov036_021fcf30
     .extern Heap_Free
     .extern data_ov036_02205f80
@@ -23,7 +23,7 @@ L_021fe390:
     ldr r1, L_021fe3bc
     add r0, r4, #0x9c
     str r1, [r4, #0x9c]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     bl func_ov036_021fcf30
     mov r0, r4

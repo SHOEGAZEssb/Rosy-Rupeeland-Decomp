@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov034/overlay034_sector_update.c for documented portable C. */
 
-    .extern func_02091af0
+    .extern Presentation_InterpolateEaseOutQuadratic
     .global func_ov034_021fd494
 func_ov034_021fd494:
     stmdb sp!, {r4, lr}
@@ -50,7 +50,7 @@ L_021fd508:
     ldmgeia sp!, {r4, pc}
     ldr r0, [r4, #0x14]
     ldr r1, [r4, #0x18]
-    bl func_02091af0
+    bl Presentation_InterpolateEaseOutQuadratic
     str r0, [r4, #0x1c]
     ldmia sp!, {r4, pc}
 .size func_ov034_021fd494, .-func_ov034_021fd494

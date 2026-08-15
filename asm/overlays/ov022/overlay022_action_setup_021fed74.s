@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov022/overlay022_action_setup.c. */
-.extern func_02091a70
+.extern Presentation_InterpolateLinear
 .extern func_ov046_0220bffc
 .extern func_ov046_0220c3bc
 .extern func_ov046_0220c410
@@ -40,13 +40,13 @@ func_ov022_021fed74:
     ldr r7, [r2, #0x24]
     mov r3, r6
     mov r2, r7
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r9
     mov r9, r0
     mov r0, r4
     mov r2, r7
     mov r3, r6
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r2, r0
     ldr r0, [r8, #0x35c]
     mov r1, r9

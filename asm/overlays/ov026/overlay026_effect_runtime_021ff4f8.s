@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_effect_runtime.c. */
-.extern func_02094d28
+.extern Presentation_InterpolateScalar
 
 
     .global func_ov026_021ff4f8
@@ -13,7 +13,7 @@ func_ov026_021ff4f8:
     mul r2, r3, r1
     mul r3, ip, r1
     mov r1, #0x1
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldmia sp!, {r3, pc}
 .size func_ov026_021ff4f8, .-func_ov026_021ff4f8
 

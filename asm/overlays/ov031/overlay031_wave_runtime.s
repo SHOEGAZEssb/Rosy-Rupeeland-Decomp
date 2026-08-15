@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_wave_effect.c for documented portable C. */
 .extern data_020c9670
 .extern data_ov031_021fe5fc
-.extern func_02091a70
+.extern Presentation_InterpolateLinear
 .extern func_020befec
 .extern genrand_int32
 
@@ -45,7 +45,7 @@ L_021fcf0c:
     ldr r3, [r7, #0x4a0]
     mov r0, #0x0
     mov r1, #0x100
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     str r0, [sp, #0x10]
     b L_021fcf40
 L_021fcf28:
@@ -53,7 +53,7 @@ L_021fcf28:
     ldr r3, [r7, #0x4a0]
     mov r0, #0x100
     mov r1, #0x0
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     str r0, [sp, #0x10]
 L_021fcf40:
     bl genrand_int32

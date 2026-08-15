@@ -28,9 +28,9 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
-extern void func_020948d4(void *, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_020954f4(void *);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void SpritePresentation_Hide(void *);
 extern void func_02095940(void *);
 extern void func_020958d8(void *);
 extern void func_02095988(void *, s32);
@@ -107,8 +107,8 @@ void func_ov013_021fd310(void *state)
             FIELD(s32, state, 0x974) = 1;
             FIELD(u16, related, 0x28) = 6;
             FIELD(u16, record, 0x98) |= 1;
-            func_020948d4(record + 0x1c, 0xe0000);
-            func_020948e4(record + 0x1c, 2,
+            PresentationScalar_SetImmediate(record + 0x1c, 0xe0000);
+            PresentationScalar_TransitionTo(record + 0x1c, 2,
                           FIELD(s32, descriptor, 0x0c) << 12);
             func_ov013_021fda28(record, 0x78);
             if (i >= 4) {
@@ -116,7 +116,7 @@ void func_ov013_021fd310(void *state)
                 FIELD(s32, manager, 0x18) = -256;
                 FIELD(s32, manager, 0x1c) = 0;
             }
-            func_020954f4(FIELD(void *, state, 0x948));
+            SpritePresentation_Hide(FIELD(void *, state, 0x948));
         } else if (GameWork_TestFlag(gGameWork,
                                      FIELD(u16, descriptor, 0x10))) {
             if (GameWork_TestFlag(gGameWork,
@@ -161,10 +161,10 @@ void func_ov013_021fd310(void *state)
                 FIELD(s32, state, 0x974) = 1;
                 FIELD(u16, related, 0x28) = 6;
                 FIELD(u16, record, 0x98) |= 1;
-                func_020948d4(record + 0x1c, 0xe0000);
-                func_020948e4(record + 0x1c, 2, 0x9c000);
+                PresentationScalar_SetImmediate(record + 0x1c, 0xe0000);
+                PresentationScalar_TransitionTo(record + 0x1c, 2, 0x9c000);
                 func_ov013_021fda28(record, 0x78);
-                func_020954f4(FIELD(void *, state, 0x948));
+                SpritePresentation_Hide(FIELD(void *, state, 0x948));
             } else {
                 func_02095940(record);
             }

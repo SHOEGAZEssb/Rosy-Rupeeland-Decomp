@@ -7,7 +7,7 @@ extern const u8 data_ov094_02219ed4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *effect);
+extern void Presentation_Init(void *effect);
 extern void func_020afce8(void *registerAddress, s32 value);
 #ifdef __cplusplus
 }
@@ -21,7 +21,7 @@ extern void func_020afce8(void *registerAddress, s32 value);
  */
 extern "C" void *func_ov094_02219234(void *effect)
 {
-    func_020949ec(effect);
+    Presentation_Init(effect);
     *(const void **)effect = data_ov094_02219ed4;
     *(s32 *)((u8 *)effect + 0x9c) = 0;
     *(s32 *)((u8 *)effect + 0x7c) = 0x20;

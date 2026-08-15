@@ -10,15 +10,15 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_02200234(void *object, s32 selector);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_02095274(void *list, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationList_Append(void *list, void *object);
 extern void func_02091b98(void *timer, s32 duration);
 #ifdef __cplusplus
 }
@@ -26,7 +26,7 @@ extern void func_02091b98(void *timer, s32 duration);
 
 /*
  * Allocates one 0xC4-byte orbit object from config {selector,duration}. A
- * grayscale 5:5:5 color is derived through func_02091a70(31,0,6,selector).
+ * grayscale 5:5:5 color is derived through Presentation_InterpolateLinear(31,0,6,selector).
  * Primary handle +0x9C uses mode (selector&1)+2; four handles +0xA0..+0xAC
  * alternate modes 0/1. All are created from manager +0x100/resource +0xDC,
  * use byte +0x5A=selector+0x18, flags 0x46, and receive color at +0x4E. Odd
@@ -39,7 +39,7 @@ extern void func_02091b98(void *timer, s32 duration);
 extern "C" void func_ov036_022009b8(void *controller, const void *config)
 {
     s32 selector = FIELD(s32, config, 0);
-    s32 component = func_02091a70(0x1f, 0, 6, selector);
+    s32 component = Presentation_InterpolateLinear(0x1f, 0, 6, selector);
     u16 color = (u16)(component | (component << 5) | (component << 10));
     void *orbit = Heap_Alloc(0xc4, data_ov036_02206178, 4, gHeapContext);
     if (orbit != 0)
@@ -66,9 +66,9 @@ extern "C" void func_ov036_022009b8(void *controller, const void *config)
         }
     }
 
-    func_02094bbc(orbit, 0,
+    Presentation_SetPosition(orbit, 0,
                    (selector - 1) * 0x280 - 0x600,
                    -(selector << 6));
-    func_02095274((u8 *)controller + 0x11c, orbit);
+    PresentationList_Append((u8 *)controller + 0x11c, orbit);
     func_02091b98((u8 *)controller + 0xa4, FIELD(s32, config, 4));
 }

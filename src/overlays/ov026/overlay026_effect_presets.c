@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948d4(void *, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -20,10 +20,10 @@ extern void func_020948d4(void *, s32);
 extern "C" void func_ov026_022013c0(void *scene, s32 composite_y,
                                       s32 mesh_y)
 {
-    func_020948d4((u8 *)FIELD(void *, scene, 0x160) + 0x1c, composite_y);
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0x160) + 0x1c, composite_y);
     void *mesh = FIELD(void *, scene, 0x164);
-    func_020948d4((u8 *)mesh + 0x1c, mesh_y);
-    func_020948d4((u8 *)mesh + 0x6c, 0x6000);
+    PresentationScalar_SetImmediate((u8 *)mesh + 0x1c, mesh_y);
+    PresentationScalar_SetImmediate((u8 *)mesh + 0x6c, 0x6000);
     FIELD(s32, mesh, 0xb8) = 0x6000;
 }
 
@@ -34,7 +34,7 @@ extern "C" void func_ov026_022013c0(void *scene, s32 composite_y,
 extern "C" void func_ov026_02201400(void *scene)
 {
     void *effect = FIELD(void *, scene, 0x168);
-    func_020948d4((u8 *)effect + 0x1c, -0x5000);
-    func_020948d4((u8 *)effect + 0x6c, 0x4000);
+    PresentationScalar_SetImmediate((u8 *)effect + 0x1c, -0x5000);
+    PresentationScalar_SetImmediate((u8 *)effect + 0x6c, 0x4000);
     FIELD(s32, effect, 0xb4) = 0x4000;
 }

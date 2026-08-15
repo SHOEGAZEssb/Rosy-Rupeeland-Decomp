@@ -14,7 +14,7 @@
 .extern func_02092314
 .extern func_020923a0
 .extern func_02092418
-.extern func_02095308
+.extern PresentationList_DeleteAll
 .extern func_ov048_0220b7b4
 .extern gDebugFont
 .extern gSoundContext
@@ -40,11 +40,11 @@ func_ov026_02200064:
     add r0, r4, #0x2f4
     bic r1, r1, #0x400
     str r1, [r4, #0x20]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x304
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x314
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, L_022001a8
     ldr r1, [r4, #0x15c]
     ldr r0, [r0, #0x0]
@@ -81,15 +81,15 @@ L_022000e4:
     ldr r1, L_022001b8
     add r0, r4, #0x314
     str r1, [r4, #0x314]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_022001b8
     add r0, r4, #0x304
     str r1, [r4, #0x304]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_022001b8
     add r0, r4, #0x2f4
     str r1, [r4, #0x2f4]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x180
     bl Graphics3DLightSet_Destroy
     add r0, r4, #0xac

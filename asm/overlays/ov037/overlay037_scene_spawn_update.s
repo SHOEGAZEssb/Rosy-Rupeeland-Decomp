@@ -8,15 +8,15 @@
     .extern Heap_Alloc
     .extern func_020955d8
     .extern func_0209189c
-    .extern func_02094bbc
-    .extern func_020948d4
-    .extern func_020948e4
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_SetImmediate
+    .extern PresentationScalar_TransitionTo
     .extern GraphicsAnimationInstance_GetSequenceDuration
     .extern func_ov037_021fdf50
-    .extern func_02095274
+    .extern PresentationList_Append
     .extern func_02091b98
     .extern GraphicsAnimationInstance_SetAnimation
-    .extern func_020948f8
+    .extern PresentationScalar_TransitionBy
     .extern data_ov037_021feeb0
     .extern gHeapContext
 
@@ -71,14 +71,14 @@ L_021fdd88:
     mov r1, r4
     mov r0, r5
     mov r2, #0x1200
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r6, #0xbc
     mov r1, #0x1000
     mov r2, #0x2000
     bl func_0209189c
     mov r1, r0
     add r0, r5, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r6, #0xbc
     mov r1, #0x800
     mov r2, #0xc00
@@ -86,7 +86,7 @@ L_021fdd88:
     mov r2, r0
     add r0, r5, #0x1c
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r7
     bl GraphicsAnimationInstance_GetSequenceDuration
     mov r1, r0
@@ -96,7 +96,7 @@ L_021fdd88:
     str r0, [r5, #0x88]
     mov r1, r5
     add r0, r6, #0x12c
-    bl func_02095274
+    bl PresentationList_Append
     add r0, r6, #0x1a8
     mov r1, #0x2
     bl func_02091b98
@@ -149,15 +149,15 @@ L_021fdebc:
     mov r0, r5
     add r1, r4, r1
     add r3, r3, #0x10
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r2, r4
     add r0, r5, #0xc
     mov r1, #0x1
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r5, #0x1c
     mov r1, #0x1
     mov r2, #0x400
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     mov r0, #0x3c
     str r0, [r5, #0x7c]
     mov r0, #0x0
@@ -166,7 +166,7 @@ L_021fdebc:
     str r0, [r5, #0x88]
     mov r1, r5
     add r0, r6, #0x12c
-    bl func_02095274
+    bl PresentationList_Append
     add r0, r6, #0x1c4
     mov r1, #0x8
     bl func_02091b98

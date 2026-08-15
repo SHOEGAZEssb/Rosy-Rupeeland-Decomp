@@ -6,9 +6,9 @@
 .extern GraphicsAnimationInstanceManager_Update
 .extern func_0209189c
 .extern func_020918f4
-.extern func_020948d4
-.extern func_02095274
-.extern func_02095360
+.extern PresentationScalar_SetImmediate
+.extern PresentationList_Append
+.extern PresentationList_UpdateAndDeleteCompleted
 .extern func_ov027_021fd718
 .extern func_ov027_021fe0f8
 .extern gHeapContext
@@ -20,11 +20,11 @@ func_ov027_021fe1c8:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r4, r0
     add r0, r4, #0x120
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x140
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x150
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r7, [r4, #0x134]
     b L_021fe310
 L_021fe1f0:
@@ -58,7 +58,7 @@ L_021fe244:
     bl func_0209189c
     add r1, r10, r0
     add r0, r9, #0xc
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r10, [r7, #0x20]
     add r0, r5, #0x400
     mov r1, #0x80
@@ -66,10 +66,10 @@ L_021fe244:
     bl func_0209189c
     add r1, r10, r0
     add r0, r9, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r9, #0x2c
     mov r1, #0x100
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r5, #0x400
     add r1, r6, #0xc0
     mov r2, #0x40
@@ -98,7 +98,7 @@ L_021fe244:
 L_021fe2f4:
     mov r1, r9
     add r0, r4, #0x150
-    bl func_02095274
+    bl PresentationList_Append
     add r8, r8, #0x1
     cmp r8, #0x4
     blt L_021fe220
@@ -136,7 +136,7 @@ L_021fe368:
     bl func_0209189c
     add r1, r10, r0
     add r0, r9, #0xc
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r10, [r8, #0x20]
     add r0, r5, #0x400
     add r1, r7, #0x80
@@ -144,10 +144,10 @@ L_021fe368:
     bl func_0209189c
     add r1, r10, r0
     add r0, r9, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r9, #0x2c
     mov r1, #0x100
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r5, #0x400
     add r1, r7, #0xc0
     mov r2, #0x40
@@ -172,7 +172,7 @@ L_021fe368:
     strh r0, [r9, #0xb4]
     mov r1, r9
     add r0, r4, #0x150
-    bl func_02095274
+    bl PresentationList_Append
 L_021fe418:
     ldr r8, [r8, #0x8]
 L_021fe41c:

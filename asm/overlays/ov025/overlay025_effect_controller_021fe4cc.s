@@ -2,9 +2,9 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_mode_dispatch.c. */
 .extern data_ov025_02202d24
-.extern func_020948e4
-.extern func_02094bbc
-.extern func_02094cf0
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
+.extern Presentation_SetScript
 .extern func_ov025_021fe174
 .extern func_ov025_021fe248
 .extern func_ov025_021fe2c4
@@ -54,7 +54,7 @@ L_021fe544:
     ldr r1, L_021fe900
     mov r0, r4
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldmia sp!, {r4, pc}
 L_021fe570:
     ldr r0, [r4, #0xa4]
@@ -69,12 +69,12 @@ L_021fe570:
     mov r1, #0x120000
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r2, #0x20000
     add r0, r4, #0xc
     rsb r2, r2, #0x0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021fe5ec
 L_021fe5bc:
     mov r3, #0x42
@@ -84,11 +84,11 @@ L_021fe5bc:
     rsb r1, r1, #0x0
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x120000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021fe5ec:
     ldr r0, [r4, #0xac]
     cmp r0, #0x3
@@ -123,7 +123,7 @@ L_021fe634:
     mov r1, #0x120000
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     b L_021fe688
 L_021fe668:
     mov r3, #0x42
@@ -133,12 +133,12 @@ L_021fe668:
     rsb r1, r1, #0x0
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
 L_021fe688:
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x80000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x12c
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -153,12 +153,12 @@ L_021fe6ac:
     mov r1, #0x120000
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r2, #0x20000
     add r0, r4, #0xc
     rsb r2, r2, #0x0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021fe714
 L_021fe6e8:
     bl func_ov025_021fe2c4
@@ -167,16 +167,16 @@ L_021fe6e8:
     rsb r1, r1, #0x0
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x120000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021fe714:
     add r0, r4, #0x1c
     mov r1, #0x2
     mov r2, #0x40000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x12c
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -191,7 +191,7 @@ L_021fe738:
     mov r1, #0x120000
     mov r2, #0x60000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     b L_021fe77c
 L_021fe760:
     bl func_ov025_021fe2c4
@@ -200,16 +200,16 @@ L_021fe760:
     rsb r1, r1, #0x0
     mov r2, #0x60000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
 L_021fe77c:
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x80000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x1c
     mov r1, #0x2
     mov r2, #0x60000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x12c
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -227,7 +227,7 @@ L_021fe7b0:
     mov r1, #0x120000
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     b L_021fe804
 L_021fe7e4:
     mov r3, #0x42
@@ -237,16 +237,16 @@ L_021fe7e4:
     rsb r1, r1, #0x0
     mov r2, #0xa0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
 L_021fe804:
     add r0, r4, #0xc
     mov r1, #0x1
     mov r2, #0x80000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x1c
     mov r1, #0x3
     mov r2, #0x60000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x5a
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -264,12 +264,12 @@ L_021fe838:
     mov r0, r4
     sub r2, r1, #0x200000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r2, #0x20000
     add r0, r4, #0xc
     rsb r2, r2, #0x0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021fe8b0
 L_021fe880:
     mov r3, #0x42
@@ -279,11 +279,11 @@ L_021fe880:
     mov r0, r4
     sub r2, r1, #0xc0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x120000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021fe8b0:
     mov r0, #0x1e0
     str r0, [r4, #0x7c]
@@ -296,11 +296,11 @@ L_021fe8c4:
     mov r0, r4
     sub r2, r1, #0x1a0000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r4, #0x1c
     mov r1, #0x1
     mov r2, #0xa0000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x3c
     str r0, [r4, #0x7c]
     mov r0, #0x0

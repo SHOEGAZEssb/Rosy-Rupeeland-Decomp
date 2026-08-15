@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_orbit.c. */
 .extern data_020c9670
-.extern func_020948d4
+.extern PresentationScalar_SetImmediate
 
 
     .global func_ov026_02200d38
@@ -28,7 +28,7 @@ func_ov026_02200d38:
     mov r1, r1, lsr #0xc
     add r0, r3, #0xc
     orr r1, r1, r2, lsl #0x14
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r4, #0x35c]
     ldr r0, L_02200dd4
     mov r1, r1, asr #0x4
@@ -44,7 +44,7 @@ func_ov026_02200d38:
     mov r1, r1, lsr #0xc
     add r0, r3, #0x2c
     orr r1, r1, r2, lsl #0x14
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldmia sp!, {r4, pc}
 L_02200dd4: .word data_020c9670
 .size func_ov026_02200d38, .-func_ov026_02200d38

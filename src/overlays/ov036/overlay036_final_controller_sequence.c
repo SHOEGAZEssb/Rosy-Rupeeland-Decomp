@@ -14,14 +14,14 @@ extern "C" {
 extern void func_02059278(void *sound, s32 id, s32 value);
 extern void func_0205929c(void *sound, s32 id, s32 value);
 extern void Sound_Play(void *sound, s32 id, s32 mode);
-extern void func_02094cf0(void *object, const void *data, s32 mode);
-extern s32 func_02095248(void *object);
-extern s32 func_02095224(void *object);
+extern void Presentation_SetScript(void *object, const void *data, s32 mode);
+extern s32 Presentation_IsScriptSuspended(void *object);
+extern s32 Presentation_IsScriptComplete(void *object);
 extern void func_ov036_02201d60(void *object, s32 value);
-extern void func_020948d4(void *field, s32 value);
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern s32 func_ov036_021fd28c(void *object);
-extern s32 func_02094d28(void *object, s32 mode, s32 first, s32 second);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 first, s32 second);
 extern void func_020956fc(void *object);
 extern void func_ov036_0220429c(void *controller);
 #ifdef __cplusplus
@@ -49,20 +49,20 @@ extern "C" s32 func_ov036_022042e0(void *controller)
     switch (FIELD(s32, controller, 0xa0)) {
     case 0:
         func_02059278(gSoundContext, 0xb3, 0x7f);
-        func_02094cf0(FIELD(void *, controller, 0xf0),
+        Presentation_SetScript(FIELD(void *, controller, 0xf0),
                       data_ov036_022055d0, 1);
-        func_02094cf0(FIELD(void *, controller, 0xf8),
+        Presentation_SetScript(FIELD(void *, controller, 0xf8),
                       data_ov036_022050e4, 1);
         ++FIELD(s32, controller, 0xa0);
         /* The recovered jump table intentionally continues into state 1. */
     case 1:
-        if (func_02095248(FIELD(void *, controller, 0xf8)) != 0) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, controller, 0xf8)) != 0) {
             Sound_Play(gSoundContext, 0x1b3, 1);
             FIELD(s32, FIELD(void *, controller, 0xf8), 0x90) = 0;
             void *object = FIELD(void *, controller, 0xf4);
             func_ov036_02201d60(object, 0x1f);
-            func_020948d4((u8 *)object + 0x6c, 0);
-            func_020948e4((u8 *)object + 0x6c, 1, 0x3000);
+            PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0);
+            PresentationScalar_TransitionTo((u8 *)object + 0x6c, 1, 0x3000);
             FIELD(s32, object, 0x7c) = 0xf;
             FIELD(s32, object, 0x80) = 0;
             ++FIELD(s32, controller, 0xa0);
@@ -87,17 +87,17 @@ extern "C" s32 func_ov036_022042e0(void *controller)
             FIELD(u16, object, 0x98) |= 1;
             ++FIELD(s32, controller, 0xa0);
         } else {
-            s32 value = func_02094d28(object, 1, 0x1f, 1);
+            s32 value = Presentation_InterpolateScalar(object, 1, 0x1f, 1);
             func_ov036_02201d60(object, value);
             void *child = FIELD(void *, controller, 0xd8);
             func_020956fc(child);
-            value = func_02094d28(object, 1, 1, 0x1f);
+            value = Presentation_InterpolateScalar(object, 1, 1, 0x1f);
             FIELD(u8, FIELD(void *, child, 0x9c), 0x5b) = (u8)value;
         }
         break;
     }
     case 4:
-        if (func_02095224(FIELD(void *, controller, 0xf0)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, controller, 0xf0)) != 0) {
             func_0205929c(gSoundContext, 0xb3, 0x10);
             ++FIELD(s32, controller, 0xa0);
         }

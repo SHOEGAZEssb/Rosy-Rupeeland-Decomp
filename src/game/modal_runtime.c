@@ -47,7 +47,7 @@ extern void Sound_Play(void *context, s32 channel, s32 sound_id);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void func_020927b8(void *state);
 extern void func_02071eb8(void *state);
-extern void func_020953f0(void *state);
+extern void Presentation_DestroyNoOp(void *state);
 
 /* Exact field assignment helper selected at retail 0x02091080. */
 void func_02091080(void *state, void *first, void *second,
@@ -169,7 +169,7 @@ static void ModalDestroyOwnedState(u8 *self)
     GraphicsSpriteGroup_Destroy(*(void **)(self + 4));
     func_020927b8(self + 0x228);
     for (index = 0; index < 3; ++index)
-        func_020953f0(self + 0x14 + index * 0xac);
+        Presentation_DestroyNoOp(self + 0x14 + index * 0xac);
     func_02071eb8(self + 8);
 }
 

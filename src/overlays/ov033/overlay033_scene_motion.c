@@ -19,7 +19,7 @@ extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void *func_ov074_0220fda8(void *object, s32 selection);
 extern s32 func_02093360(void *dialog, const void *inputState);
-extern s32 func_02091aa8(s32 first, s32 second, s32 third, s32 selector);
+extern s32 Presentation_InterpolateQuadraticPulse(s32 first, s32 second, s32 third, s32 selector);
 extern s32 GamePhaseState_QueryTerrainHeight(void *state, s32 x, s32 y);
 extern void func_ov033_021fd4cc(void *scene, s32 delta);
 #ifdef __cplusplus
@@ -95,7 +95,7 @@ static s32 div512_toward_zero(s32 value)
 
 /*
  * Advances the 16-bit phase at +0x38 by `delta`, derives a two-way easing
- * selector for func_02091aa8, and writes its result to sprite-group offset
+ * selector for Presentation_InterpolateQuadraticPulse, and writes its result to sprite-group offset
  * +0x12C. It queries the global tile/height state beneath the primary object's
  * fixed-point X/Y coordinates, combines that result with a signed lookup from
  * data_020c9670 and the object's +0x24 height, then stores the resulting motion
@@ -108,7 +108,7 @@ extern "C" void func_ov033_021fd4cc(void *scene, s32 delta)
     FIELD(u32, scene, 0x38) = phase;
     s32 selector = phase >> 15;
     FIELD(s32, FIELD(void *, scene, 0x48), 0x12c) =
-        func_02091aa8(0, 0x800, 0x100, selector);
+        Presentation_InterpolateQuadraticPulse(0, 0x800, 0x100, selector);
 
     void *primary = FIELD(void *, scene, 4);
     s32 xPixels = FIELD(s32, primary, 0x1c) >> 12;

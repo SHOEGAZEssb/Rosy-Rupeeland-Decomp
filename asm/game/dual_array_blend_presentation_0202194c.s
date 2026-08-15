@@ -23,10 +23,10 @@
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
-.extern func_020948e4
-.extern func_02094ad4
-.extern func_02094bbc
-.extern func_02094d28
+.extern PresentationScalar_TransitionTo
+.extern Presentation_InitVariant
+.extern Presentation_SetPosition
+.extern Presentation_InterpolateScalar
 .extern func_020afd0c
 .extern gGameWork
 .extern gSystemState
@@ -48,7 +48,7 @@ DualArrayBlendPresentation_RetargetSeparated: ; 0x0202194c
     mov r1, r6
     mov r2, r11
     add r0, r10, #0xc
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r10
     mov r1, #0x78
     bl BlendElement_StartDuration
@@ -56,7 +56,7 @@ DualArrayBlendPresentation_RetargetSeparated: ; 0x0202194c
     add r0, r9, #0xc
     mov r1, #0x2
     mov r2, #0x100000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r9
     mov r1, #0x78
     bl BlendElement_StartDuration

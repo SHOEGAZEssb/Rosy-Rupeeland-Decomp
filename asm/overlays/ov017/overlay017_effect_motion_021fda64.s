@@ -3,7 +3,7 @@
     .extern data_020c9670
     .extern data_ov017_02201414
     .extern data_ov017_022016e0
-    .extern func_020948d4
+    .extern PresentationScalar_SetImmediate
     .extern func_020adc90
     .extern func_020ae024
     .extern func_020befec
@@ -16,12 +16,12 @@ func_ov017_021fda64:
     ldr r1, [r10, #0x10]
     add r0, r10, #0xc
     add r1, r2, r1
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r2, [r10, #0xb0]
     ldr r1, [r10, #0x30]
     add r0, r10, #0x2c
     add r1, r2, r1
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r10, #0xa8]
     ldr r2, [r10, #0xdc]
     mov r0, r1, asr #0x1
@@ -123,12 +123,12 @@ func_ov017_021fda64:
     ldr r1, [r10, #0x10]
     add r0, r10, #0xc
     add r1, r2, r1
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r2, [r10, #0xb0]
     ldr r1, [r10, #0x30]
     add r0, r10, #0x2c
     add r1, r2, r1
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     b L_021fddb0
 L_021fdc44:
     ldr r5, [r2, #0x78]

@@ -12,7 +12,7 @@ extern const u8 data_ov033_021fde9c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void func_02071ea4(void *descriptor);
 extern void func_02071eb8(void *descriptor);
 extern void __construct_array(void *base, s32 count, s32 size,
@@ -81,7 +81,7 @@ extern "C" void *func_ov033_021fce1c(void *group, void *spriteContext)
         (const Overlay033SpriteSpec *)data_ov033_021fdda8;
     void *activeObject;
 
-    func_020949ec(group);
+    Presentation_Init(group);
     FIELD(const void *, group, 0) = data_ov033_021fde9c;
     __construct_array((u8 *)group + 0x9c, 9, 0xc,
                       (void *)func_02071ea4, (void *)func_02071eb8);

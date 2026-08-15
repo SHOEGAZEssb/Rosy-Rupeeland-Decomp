@@ -8,8 +8,8 @@
 .extern ActorDerivedType1_IsActiveRecordType69
 .extern ActorDerivedType1_IsActiveRecordType6A
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_020954c0
-.extern func_020954d4
+.extern SpritePresentation_SetAnimation
+.extern SpritePresentation_GetAnimation
 .extern gSceneManager
 .global GamePhaseTouchPrompt_Update
 GamePhaseTouchPrompt_Update:
@@ -70,12 +70,12 @@ L_02010470:
     cmp r0, #0x0
     beq L_020104c4
     ldr r0, [r4, #0x1c]
-    bl func_020954d4
+    bl SpritePresentation_GetAnimation
     cmp r0, #0x3
     beq L_02010510
     ldr r0, [r4, #0x1c]
     mov r1, #0x3
-    bl func_020954c0
+    bl SpritePresentation_SetAnimation
     b L_02010510
 L_020104c4:
     mov r0, r5
@@ -83,21 +83,21 @@ L_020104c4:
     cmp r0, #0x0
     beq L_02010510
     ldr r0, [r4, #0x1c]
-    bl func_020954d4
+    bl SpritePresentation_GetAnimation
     cmp r0, #0x1
     beq L_02010510
     ldr r0, [r4, #0x1c]
     mov r1, #0x1
-    bl func_020954c0
+    bl SpritePresentation_SetAnimation
     b L_02010510
 L_020104f4:
     ldr r0, [r4, #0x1c]
-    bl func_020954d4
+    bl SpritePresentation_GetAnimation
     cmp r0, #0x0
     beq L_02010510
     ldr r0, [r4, #0x1c]
     mov r1, #0x0
-    bl func_020954c0
+    bl SpritePresentation_SetAnimation
 L_02010510:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

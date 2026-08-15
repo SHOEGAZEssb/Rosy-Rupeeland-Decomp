@@ -9,7 +9,7 @@ extern const s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948d4(void *, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -35,8 +35,8 @@ extern "C" void func_ov026_02200d38(void *scene)
     void *child = FIELD(void *, scene, 0x2e8);
     s32 x = (-data_020c9670[index * 2] * radius + 0x800) >> 12;
     s32 z = (data_020c9670[index * 2 + 1] * radius + 0x800) >> 12;
-    func_020948d4((u8 *)child + 0xc, x);
-    func_020948d4((u8 *)child + 0x2c, z);
+    PresentationScalar_SetImmediate((u8 *)child + 0xc, x);
+    PresentationScalar_SetImmediate((u8 *)child + 0x2c, z);
 }
 
 /*

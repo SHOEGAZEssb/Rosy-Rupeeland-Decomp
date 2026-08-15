@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
-extern void func_020954f4(void *);
+extern void SpritePresentation_Hide(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -23,8 +23,8 @@ extern "C" void func_ov025_022005e4(void *scene)
     void *effect = FIELD(void *, scene, 0x508);
     GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, effect, 0xe0));
     GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, effect, 0xe4));
-    func_020954f4(FIELD(void *, scene, 0xdc));
-    func_020954f4(FIELD(void *, scene, 0xe0));
+    SpritePresentation_Hide(FIELD(void *, scene, 0xdc));
+    SpritePresentation_Hide(FIELD(void *, scene, 0xe0));
     for (s32 i = 0; i < 6; ++i) {
         u8 *entry = (u8 *)scene + i * 4;
         FIELD(u16, FIELD(void *, entry, 0xc4), 0x24) |= 4;

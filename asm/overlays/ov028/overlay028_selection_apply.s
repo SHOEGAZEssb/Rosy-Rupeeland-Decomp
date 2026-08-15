@@ -4,10 +4,10 @@
 .extern data_ov028_021ff208
 .extern data_ov028_021ff238
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020948e4
-.extern func_02094bbc
-.extern func_020954e0
-.extern func_020954f4
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
+.extern SpritePresentation_Show
+.extern SpritePresentation_Hide
 .extern func_020ae024
 .extern func_ov028_021fdf94
 
@@ -34,17 +34,17 @@ func_ov028_021fe558:
     mov r0, r0, lsl #0xc
     str r0, [r4, #0x278]
     ldr r0, [r4, #0x260]
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r0, [r4, #0x260]
     ldr r2, [r4, #0x274]
     add r0, r0, #0xc
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r4, #0x260]
     ldr r2, [r4, #0x278]
     add r0, r0, #0x1c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x260]
     mov r0, #0x8
     str r0, [r1, #0x7c]
@@ -88,12 +88,12 @@ L_021fe66c:
     add r0, r4, #0x274
     bl func_ov028_021fdf94
     ldr r0, [r4, #0x260]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldr r0, [r4, #0x260]
     ldr r1, [r4, #0x274]
     ldr r2, [r4, #0x278]
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x90]
     cmp r0, #0x0
     ldrneb r1, [r0, #0x38]

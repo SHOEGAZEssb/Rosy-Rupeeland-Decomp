@@ -11,10 +11,10 @@ extern const s32 data_ov034_021fe740[];
 extern "C" {
 #endif
 extern s32 func_ov034_021fe2c4(void *object);
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void func_ov034_021fda1c(void *object, s32 value);
-extern s32 func_02094d28(void *object, s32 mode, s32 start, s32 end);
-extern void func_020948d4(void *field, s32 value);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 start, s32 end);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void func_ov034_021fdac0(void *scene, s32 firstWord,
                                s32 secondWord, s32 thirdWord);
 extern void func_ov034_021fdf98(void *scene);
@@ -53,27 +53,27 @@ extern "C" s32 func_ov034_021fdfe0(void *scene)
         if (func_ov034_021fe2c4(item0)) {
             for (s32 i = 0; i < count; ++i) {
                 void *item = FIELD(void *, scene, 8 + i * 4);
-                func_020948e4((u8 *)item + 0x6c, 3, 0x266);
+                PresentationScalar_TransitionTo((u8 *)item + 0x6c, 3, 0x266);
                 func_ov034_021fda1c(item, 0x10 + i * 2);
             }
             FIELD(s32, scene, 0x1b8) = 2;
         } else {
-            u16 angle = (u16)func_02094d28(item0, 1, 0, 0x20000);
+            u16 angle = (u16)Presentation_InterpolateScalar(item0, 1, 0, 0x20000);
             s32 wave = data_020c9670[(angle >> 4) * 2] * 2;
             for (s32 i = 0; i < count; ++i)
-                func_020948d4((u8 *)FIELD(void *, scene, 8 + i * 4) + 0x4c,
+                PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 8 + i * 4) + 0x4c,
                               wave);
         }
     } else if (state == 2) {
         void *last = FIELD(void *, scene, 8 + (count - 1) * 4);
         if (func_ov034_021fe2c4(last)) {
-            func_020948e4((u8 *)owner + 0x6c, 2, 0x1800);
+            PresentationScalar_TransitionTo((u8 *)owner + 0x6c, 2, 0x1800);
             FIELD(s32, owner, 0x7c) = 0x10;
             FIELD(s32, owner, 0x80) = 0;
             for (s32 i = 0; i < count; ++i) {
                 void *item = FIELD(void *, scene, 8 + i * 4);
-                func_020948e4((u8 *)item + 0x3c, 1, -0x4000);
-                func_020948e4((u8 *)item + 0x6c, 1, 0);
+                PresentationScalar_TransitionTo((u8 *)item + 0x3c, 1, -0x4000);
+                PresentationScalar_TransitionTo((u8 *)item + 0x6c, 1, 0);
                 FIELD(s32, item, 0x7c) = 0xc;
                 FIELD(s32, item, 0x80) = 0;
             }
@@ -81,7 +81,7 @@ extern "C" s32 func_ov034_021fdfe0(void *scene)
         } else {
             for (s32 i = 0; i < count; ++i) {
                 void *item = FIELD(void *, scene, 8 + i * 4);
-                s32 value = func_02094d28(item, 3, 0, 0x1f);
+                s32 value = Presentation_InterpolateScalar(item, 3, 0, 0x1f);
                 if (value < 0) value = 0;
                 if (value > 0x1f) value = 0x1f;
                 FIELD(u16, item, 0xa6) =
@@ -90,7 +90,7 @@ extern "C" s32 func_ov034_021fdfe0(void *scene)
         }
     } else if (state == 3) {
         if (func_ov034_021fe2c4(owner)) {
-            func_020948e4((u8 *)owner + 0x6c, 2, 0x1000);
+            PresentationScalar_TransitionTo((u8 *)owner + 0x6c, 2, 0x1000);
             FIELD(s32, owner, 0x7c) = 8;
             FIELD(s32, owner, 0x80) = 0;
             FIELD(s32, scene, 0x1b8) = 4;

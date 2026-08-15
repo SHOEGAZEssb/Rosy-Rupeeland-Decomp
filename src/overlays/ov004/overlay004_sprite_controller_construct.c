@@ -27,10 +27,10 @@ extern void func_02073e48(void *sprite, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
                         void *context);
-extern void func_020953f4(void *child, void *sprite);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_02095508(void *child);
-extern void func_020954f4(void *child);
+extern void SpritePresentation_Init(void *child, void *sprite);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void SpritePresentation_SyncPosition(void *child);
+extern void SpritePresentation_Hide(void *child);
 extern s32 func_020b35b0(char *output, const char *format, s32 value);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *context);
 #ifdef __cplusplus
@@ -75,12 +75,12 @@ void func_ov004_021fbf40(Overlay004SpriteControllerState *state)
                                       state->resource_054, 0x18, 0, 0);
     child = Heap_Alloc(0xa0, data_ov004_021fcdd0, 4, gHeapContext);
     if (child != 0) {
-        func_020953f4(child, sprite);
+        SpritePresentation_Init(child, sprite);
     }
     state->child_068 = child;
-    func_02094bbc(child, 0x78000, -0x20000, 0);
-    func_02095508(child);
-    func_020954f4(child);
+    Presentation_SetPosition(child, 0x78000, -0x20000, 0);
+    SpritePresentation_SyncPosition(child);
+    SpritePresentation_Hide(child);
 
     overlay004_create_sprite(state->primaryContext_060, state->resource_054,
                              0x17, 0x67, 0x41);
@@ -123,5 +123,5 @@ void func_ov004_021fbf40(Overlay004SpriteControllerState *state)
     overlay004_create_sprite(state->primaryContext_060, state->resource_054,
                              0x0c, x, 0x61);
     GraphicsSpriteGroup_ReleaseIndexedEntries(state->primaryContext_060);
-    func_02094bbc(state->controller_06c, 0, 0xc0, 0);
+    Presentation_SetPosition(state->controller_06c, 0, 0xc0, 0);
 }

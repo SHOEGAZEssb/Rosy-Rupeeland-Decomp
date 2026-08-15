@@ -11,7 +11,7 @@ extern u8 data_ov017_022016e0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948d4(void *, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
 extern s32 func_020adc90(s32, s32);
 extern u16 func_020ae024(s32, s32);
 extern s32 func_020befec(s32, s32);
@@ -55,8 +55,8 @@ extern "C" void func_ov017_021fda64(void *state)
     s32 z;
     s32 distanceSquared;
 
-    func_020948d4((u8 *)state + 0xc, FIELD(s32, state, 0x10) + vx);
-    func_020948d4((u8 *)state + 0x2c, FIELD(s32, state, 0x30) + vz);
+    PresentationScalar_SetImmediate((u8 *)state + 0xc, FIELD(s32, state, 0x10) + vx);
+    PresentationScalar_SetImmediate((u8 *)state + 0x2c, FIELD(s32, state, 0x30) + vz);
     FIELD(s32, state, 0xdc) += vx / 4;
     FIELD(s32, state, 0xe4) += vz / 4;
     vx = fxMul(vx, 0xfd7);
@@ -81,9 +81,9 @@ extern "C" void func_ov017_021fda64(void *state)
             vz += (fxMul(nz, projection) - vz) * 2;
             FIELD(s32, state, 0xa8) = vx;
             FIELD(s32, state, 0xb0) = vz;
-            func_020948d4((u8 *)state + 0xc,
+            PresentationScalar_SetImmediate((u8 *)state + 0xc,
                           FIELD(s32, state, 0x10) + vx);
-            func_020948d4((u8 *)state + 0x2c,
+            PresentationScalar_SetImmediate((u8 *)state + 0x2c,
                           FIELD(s32, state, 0x30) + vz);
         } else {
             void *peer = FIELD(void *, data_ov017_022016e0, 0x78);

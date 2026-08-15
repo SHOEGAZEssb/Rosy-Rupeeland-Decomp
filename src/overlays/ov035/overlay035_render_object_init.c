@@ -9,7 +9,7 @@ extern const u8 data_ov035_02203b7c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -23,7 +23,7 @@ extern void func_020949ec(void *object);
 extern "C" void *func_ov035_021fcec4(void *object, void *resource,
                                       s32 resourceIndex, s32 entry)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov035_02203b7c;
     FIELD(void *, object, 0x9c) = resource;
     FIELD(s32, object, 0xa0) = resourceIndex;
@@ -53,7 +53,7 @@ extern "C" void func_ov035_021fcf30(void)
 extern "C" void *func_ov035_021fcf34(void *object, void *resource,
                                       s32 resourceIndex, s32 entry)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov035_02203b7c;
     FIELD(void *, object, 0x9c) = resource;
     FIELD(s32, object, 0xa0) = resourceIndex;

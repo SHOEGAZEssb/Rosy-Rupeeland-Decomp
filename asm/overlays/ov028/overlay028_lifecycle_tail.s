@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov028/overlay028_lifecycle_tail.c. */
 .extern data_ov028_021ff29c
-.extern func_02095308
+.extern PresentationList_DeleteAll
 .extern func_020afd0c
 .extern func_ov028_021fce94
 .extern func_ov028_021fe438
@@ -65,7 +65,7 @@ func_ov028_021ff14c:
     ldr r1, L_021ff170
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     bl Heap_Free
     mov r0, r4

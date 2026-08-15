@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020954e0(void *);
+extern void SpritePresentation_Show(void *);
 extern void func_ov025_021ff140(void *);
 #ifdef __cplusplus
 }
@@ -21,8 +21,8 @@ extern void func_ov025_021ff140(void *);
 extern "C" void func_ov025_0220058c(void *scene)
 {
     func_ov025_021ff140(FIELD(void *, scene, 0x508));
-    func_020954e0(FIELD(void *, scene, 0xdc));
-    func_020954e0(FIELD(void *, scene, 0xe0));
+    SpritePresentation_Show(FIELD(void *, scene, 0xdc));
+    SpritePresentation_Show(FIELD(void *, scene, 0xe0));
     for (s32 i = 0; i < 6; ++i) {
         u8 *entry = (u8 *)scene + i * 4;
         FIELD(u16, FIELD(void *, entry, 0xc4), 0x24) &= ~4;

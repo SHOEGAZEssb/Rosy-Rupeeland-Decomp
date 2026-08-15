@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_sequence.c for documented portable C. */
 
     .extern func_02059278
-    .extern func_02094cf0
-    .extern func_02095248
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptSuspended
     .extern GraphicsAnimationInstanceManager_RebindInstance
     .extern Sound_Play
     .extern func_ov036_022018a8
@@ -39,17 +39,17 @@ L_02201afc:
     ldr r0, [r4, #0x11c]
     ldr r1, L_02201c74
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd8]
     ldr r1, L_02201c78
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
 L_02201b3c:
     ldr r0, [r4, #0x11c]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_02201c60
     ldr r1, [r4, #0x11c]
@@ -66,7 +66,7 @@ L_02201b3c:
     b L_02201c60
 L_02201b7c:
     ldr r0, [r4, #0x11c]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_02201c60
     ldr r0, L_02201c70
@@ -92,7 +92,7 @@ L_02201b7c:
     b L_02201c60
 L_02201be0:
     ldr r0, [r4, #0x11c]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_02201c60
     ldr r0, L_02201c70

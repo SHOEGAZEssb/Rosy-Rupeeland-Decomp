@@ -22,7 +22,7 @@ extern "C" {
 #endif
 extern void *data_020f4e18;
 extern const u8 data_ov005_021fcaf0[];
-extern void func_020949ec(void *state);
+extern void Presentation_Init(void *state);
 extern void func_02071ea4(void *resource);
 extern void func_02091b6c(void *animation);
 extern u32 genrand_int32(void);
@@ -33,7 +33,7 @@ extern void func_02071ee0(void *resource, void *manager, s32 first,
 #endif
 
 /*
- * Initialize state through func_020949ec, install data_ov005_021fcaf0 as its
+ * Initialize state through Presentation_Init, install data_ov005_021fcaf0 as its
  * vtable, construct resource_09c and animation_0b0, and seed random_0ac with
  * genrand_int32. Bind resource IDs 0x4003, 0x4004, and 0x4005 through the
  * manager at data_020f4e18, retain owner at +0xA8, set enabled_088 to one, and
@@ -46,7 +46,7 @@ extern "C"
 Overlay005RenderEffect *func_ov005_021fb6e4(Overlay005RenderEffect *state,
                                              void *owner)
 {
-    func_020949ec(state);
+    Presentation_Init(state);
     state->vtable_000 = data_ov005_021fcaf0;
     func_02071ea4(state->resource_09c);
     state->random_0ac = 0;

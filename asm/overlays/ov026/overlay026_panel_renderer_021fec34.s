@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_panel_renderer.c. */
-.extern func_020948d4
+.extern PresentationScalar_SetImmediate
 
 
     .global func_ov026_021fec34
@@ -12,7 +12,7 @@ func_ov026_021fec34:
     mov r1, r2
     add r0, r6, #0x1c
     mov r4, r3
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     str r5, [r6, #0xa0]
     ldr r1, [sp, #0x10]
     str r4, [r6, #0xa4]

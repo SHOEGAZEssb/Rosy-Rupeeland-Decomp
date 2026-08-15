@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern s32 func_020918f4(void *, s32);
-extern void func_02095274(void *, void *);
+extern void PresentationList_Append(void *, void *);
 extern void *func_ov026_021fe5d8(void *, void *, s32, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ extern "C" void func_ov026_02200ff4(void *scene)
         object = func_ov026_021fe5d8(object, FIELD(void *, scene, 0x15c),
                                      x, 0x52, z, random0, random1);
     }
-    func_02095274((u8 *)scene + 0x314, object);
+    PresentationList_Append((u8 *)scene + 0x314, object);
 }
 
 /*
@@ -79,7 +79,7 @@ extern "C" void func_ov026_0220112c(void *scene)
         object = func_ov026_021fe5d8(object, FIELD(void *, scene, 0x15c),
                                      x, y, z, random0, random1);
     }
-    func_02095274((u8 *)scene + 0x314, object);
+    PresentationList_Append((u8 *)scene + 0x314, object);
 }
 
 /*
@@ -101,5 +101,5 @@ extern "C" void func_ov026_02201284(void *scene, s32 control)
         object = func_ov026_021fe5d8(object, FIELD(void *, scene, 0x15c),
                                      x, control, z, random0, random1);
     }
-    func_02095274((u8 *)scene + 0x314, object);
+    PresentationList_Append((u8 *)scene + 0x314, object);
 }

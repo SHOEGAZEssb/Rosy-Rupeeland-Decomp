@@ -60,7 +60,7 @@ extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
 extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *sprite);
 extern s32 DisplayController_GetVerticalOffset(void);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
 extern void GameWork_SetFlag(void *, u16);
 extern void GameWork_ClearFlag(void *, u16);
@@ -236,7 +236,7 @@ s32 func_02024e24(LaunchedSpritePairPresentation *self)
         self->velocity1c.z0c += self->acceleration2c;
         sine = data_020c9670[((self->angle30 & 0xffff) >> 4) * 2];
         self->velocity1c.x04 =
-            sine * func_02091a70(0, 0x10, 0x78, self->frame34);
+            sine * Presentation_InterpolateLinear(0, 0x10, 0x78, self->frame34);
         self->angle30 += 0x400;
         self->frame34++;
         break;

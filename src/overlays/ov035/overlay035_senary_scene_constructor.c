@@ -29,9 +29,9 @@ extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fcf34(void *object, void *resource, s32 index,
                                 s32 entry);
-extern void func_02095274(void *collection, void *object);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *collection, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
@@ -39,8 +39,8 @@ extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
-extern void func_02094cf0(void *object, const void *animation, s32 loop);
-extern s32 func_02091a70(s32 first, s32 second, s32 third, s32 fourth);
+extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
+extern s32 Presentation_InterpolateLinear(s32 first, s32 second, s32 third, s32 fourth);
 extern void func_ov035_022016ac(s32 enabled);
 extern void func_020b035c(const void *configuration);
 extern void func_020b0374(s32 first, s32 second, s32 third, s32 fourth);
@@ -70,7 +70,7 @@ static void *allocate_sprite(void *scene, void *record)
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (object != 0)
         object = func_020955d8(object, record);
-    func_02095274((u8 *)scene + 0x10c, object);
+    PresentationList_Append((u8 *)scene + 0x10c, object);
     return object;
 }
 
@@ -125,19 +125,19 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
     if (model != 0)
         model = func_ov035_021fcf34(model, FIELD(void *, scene, 0x100), 0, 1);
     FIELD(void *, scene, 0x104) = model;
-    func_02095274((u8 *)scene + 0x11c, model);
+    PresentationList_Append((u8 *)scene + 0x11c, model);
     FIELD(s32, model, 0xb8) = 0x8000;
-    func_02094bbc(model, 0, 0x800, -0x4000);
-    func_020948d4((u8 *)model + 0x6c, 0x800);
+    Presentation_SetPosition(model, 0, 0x800, -0x4000);
+    PresentationScalar_SetImmediate((u8 *)model + 0x6c, 0x800);
     FIELD(u16, model, 0x98) |= 1;
 
     model = Heap_Alloc(0xc4, data_ov035_02203d48, 4, gHeapContext);
     if (model != 0)
         model = func_ov035_021fcf34(model, FIELD(void *, scene, 0xfc), 3, 9);
     FIELD(void *, scene, 0x108) = model;
-    func_02095274((u8 *)scene + 0x11c, model);
-    func_02094bbc(model, 0, 0, -0x4000);
-    func_020948d4((u8 *)model + 0x6c, 0);
+    PresentationList_Append((u8 *)scene + 0x11c, model);
+    Presentation_SetPosition(model, 0, 0, -0x4000);
+    PresentationScalar_SetImmediate((u8 *)model + 0x6c, 0);
     FIELD(u16, model, 0x98) |= 1;
 
     func_ov035_021fdd70((u8 *)scene + 0x0c, 0, 0, 0x2980);
@@ -147,19 +147,19 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
     func_ov035_021fdd28(record, 0, 0, 0, 0, 2, 0x42);
     void *sprite = allocate_sprite(scene, record);
     FIELD(void *, scene, 0xd8) = sprite;
-    func_02094cf0(sprite, data_ov035_02202d74, 1);
+    Presentation_SetScript(sprite, data_ov035_02202d74, 1);
 
     for (s32 i = 0; i < 4; ++i) {
         record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf4),
                                (u8 *)scene + 0xcc);
         func_ov035_021fdd28(record, 0, 0, 0, 0, (u8)(i + 3), 0x42);
-        FIELD(u8, record, 0x5b) = (u8)func_02091a70(0x18, 8, 4, i);
-        s32 low = func_02091a70(0x1f, 0, 4, i);
-        s32 high = func_02091a70(0x1f, 0x10, 4, i);
+        FIELD(u8, record, 0x5b) = (u8)Presentation_InterpolateLinear(0x18, 8, 4, i);
+        s32 low = Presentation_InterpolateLinear(0x1f, 0, 4, i);
+        s32 high = Presentation_InterpolateLinear(0x1f, 0x10, 4, i);
         FIELD(u16, record, 0x4e) = (u16)(low | (high << 10));
         sprite = allocate_sprite(scene, record);
         FIELD(s32, sprite, 0x88) = 1;
-        func_02094cf0(sprite, data_ov035_02203630 + i * 0x50, 1);
+        Presentation_SetScript(sprite, data_ov035_02203630 + i * 0x50, 1);
     }
 
     func_ov035_022016ac(1);

@@ -25,9 +25,9 @@ extern void *func_ov034_021fd544(void *owner);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
 extern void *func_ov034_021fce04(void *object, void *owner,
                                 s32 entryIndex, u16 mode);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 mode);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 mode);
 extern void func_02094bf0(void *object, s32 first, s32 second, s32 third);
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void func_ov034_021fda34(void *object, s32 x, s32 y, s32 z);
 extern void func_ov034_021fda3c(void *object, s32 x, s32 y, s32 z);
 extern void func_ov034_021fda4c(void *base, s32 index, s32 first, s32 second,
@@ -101,12 +101,12 @@ extern "C" void *func_ov034_021fdae8(void *scene)
                                       spec->entryIndex, mode);
         }
         FIELD(void *, scene, 8 + i * 4) = item;
-        func_02094bbc(item, spec->x, spec->y, 0);
+        Presentation_SetPosition(item, spec->x, spec->y, 0);
         func_02094bf0(item, 0, 0x10000, 0x1000);
-        func_020948e4((u8 *)item + 0xc, 1, spec->fieldC);
-        func_020948e4((u8 *)item + 0x1c, 4, spec->field1C);
-        func_020948e4((u8 *)item + 0x4c, 1, 0);
-        func_020948e4((u8 *)item + 0x5c, 1, 0);
+        PresentationScalar_TransitionTo((u8 *)item + 0xc, 1, spec->fieldC);
+        PresentationScalar_TransitionTo((u8 *)item + 0x1c, 4, spec->field1C);
+        PresentationScalar_TransitionTo((u8 *)item + 0x4c, 1, 0);
+        PresentationScalar_TransitionTo((u8 *)item + 0x5c, 1, 0);
         FIELD(s32, item, 0x7c) = 0x1e;
         FIELD(s32, item, 0x80) = 0;
     }

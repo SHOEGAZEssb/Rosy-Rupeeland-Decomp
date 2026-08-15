@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_touch_prompt_states.c.
 .text
 .extern data_020c3618
-.extern func_02094cf0
-.extern func_02095224
-.extern func_020954f4
+.extern Presentation_SetScript
+.extern Presentation_IsScriptComplete
+.extern SpritePresentation_Hide
 
     .global GamePhaseTouchPrompt_UpdateHideSequence
 GamePhaseTouchPrompt_UpdateHideSequence: ; 0x02010724
@@ -34,20 +34,20 @@ L_02010764:
     ldr r0, [r4, #0x1c]
     ldr r1, L_020107b8
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x3
     str r0, [r4, #0x28]
     ldmia sp!, {r4, pc}
 L_02010794:
     ldr r0, [r4, #0x1c]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     movne r0, #0x4
     strne r0, [r4, #0x28]
     ldmia sp!, {r4, pc}
 L_020107ac:
     ldr r0, [r4, #0x1c]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldmia sp!, {r4, pc}
 L_020107b8: .word data_020c3618
     .size GamePhaseTouchPrompt_UpdateHideSequence, . - GamePhaseTouchPrompt_UpdateHideSequence

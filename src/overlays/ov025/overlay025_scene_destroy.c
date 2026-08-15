@@ -20,7 +20,7 @@ extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020926f8(void *);
 extern void func_020927b8(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov025_021fdec8(void *);
 extern void func_ov025_021ff1c8(void *);
 extern void func_ov094_022196a4(void *);
@@ -48,7 +48,7 @@ extern void func_ov094_022196a4(void *);
         FIELD(const void *, scene, 0) = data_ov025_02203370;                   \
         FIELD(u32, scene, 0x20) &= ~0x400u;                                    \
         func_020597fc(gSoundContext, 0x16f);                                   \
-        func_02095308((u8 *)scene + 0x4f8);                                    \
+        PresentationList_DeleteAll((u8 *)scene + 0x4f8);                                    \
         VIRTUAL_DESTROY(FIELD(void *, scene, 0x50c));                          \
         void *overlay94 = FIELD(void *, scene, 0x5c0);                         \
         if (overlay94 != 0) {                                                  \
@@ -78,7 +78,7 @@ extern void func_ov094_022196a4(void *);
         func_020927b8((u8 *)scene + 0x574);                                    \
         func_020926f8((u8 *)scene + 0x530);                                    \
         FIELD(const void *, scene, 0x4f8) = data_ov025_02203318;               \
-        func_02095308((u8 *)scene + 0x4f8);                                    \
+        PresentationList_DeleteAll((u8 *)scene + 0x4f8);                                    \
         __destroy_arr((u8 *)scene + 0x2f4, 3, 0xac,                            \
                       (void *)func_ov025_021ff1c8);                             \
         func_ov025_021fdec8((u8 *)scene + 0x248);                              \

@@ -11,9 +11,9 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02095274(void *, void *);
-extern void func_02095508(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationList_Append(void *, void *);
+extern void SpritePresentation_SyncPosition(void *);
 extern void func_02095928(void *);
 extern void *func_ov016_021fe004(void *, void *, void *);
 extern void func_ov016_021fe2b0(void *);
@@ -61,12 +61,12 @@ extern "C" s32 func_ov016_021fe390(void *state, void *wrapper, void *target)
                 if (actor != 0) {
                     actor = func_ov016_021fe004(actor, target, FIELD(void *, state, 0x18));
                 }
-                func_02095274((u8 *)state + 0xd0, actor);
-                func_02094bbc(actor,
+                PresentationList_Append((u8 *)state + 0xd0, actor);
+                Presentation_SetPosition(actor,
                               (FIELD(s16, position, 0x2c) + FIELD(s32, base, 0x18)) << 12,
                               (FIELD(s16, position, 0x2e) + FIELD(s32, base, 0x1c)) << 12,
                               0);
-                func_02095508(actor);
+                SpritePresentation_SyncPosition(actor);
             }
             func_ov016_021fe2b0(state);
             if (FIELD(s32, state, 0xdc) == func_ov016_021fe358(state, wrapper)) {

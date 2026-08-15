@@ -27,7 +27,7 @@ extern void func_ov037_021fd710(void *actor, s32 mode, s32 x, s32 y,
                                 s32 z, u8 parameter, u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov037_021fd5ac(void *controller, void *argument, void *actor);
-extern void func_02095274(void *container, void *object);
+extern void PresentationList_Append(void *container, void *object);
 extern void *func_020955d8(void *object, void *actor);
 extern void *func_ov037_021fd22c(void *object, void *owner);
 extern void *func_ov037_021fd1cc(void *object);
@@ -93,14 +93,14 @@ extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
     if (child != 0)
         child = func_ov037_021fd5ac(child, actor0, actor1);
     FIELD(void *, scene, 0x118) = child;
-    func_02095274((u8 *)scene + 0x12c, child);
+    PresentationList_Append((u8 *)scene + 0x12c, child);
 
     void *actor = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, (u8 *)scene + 0xd4);
     child = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);
     if (child != 0)
         child = func_020955d8(child, actor);
     FIELD(void *, scene, 0x11c) = child;
-    func_02095274((u8 *)scene + 0x12c, child);
+    PresentationList_Append((u8 *)scene + 0x12c, child);
 
     actor = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, (u8 *)scene + 0xe0);
     FIELD(u8, actor, 0x5a) = 4;
@@ -109,19 +109,19 @@ extern "C" void *func_ov037_021fd7e4(void *scene, void *owner)
     if (child != 0)
         child = func_020955d8(child, actor);
     FIELD(void *, scene, 0x120) = child;
-    func_02095274((u8 *)scene + 0x12c, child);
+    PresentationList_Append((u8 *)scene + 0x12c, child);
 
     child = Heap_Alloc(0xa0, data_ov037_021feeb8, 4, gHeapContext);
     if (child != 0)
         child = func_ov037_021fd22c(child, owner);
     FIELD(void *, scene, 0x124) = child;
-    func_02095274((u8 *)scene + 0x12c, child);
+    PresentationList_Append((u8 *)scene + 0x12c, child);
 
     child = Heap_Alloc(0x9c, data_ov037_021feeb8, 4, gHeapContext);
     if (child != 0)
         child = func_ov037_021fd1cc(child);
     FIELD(void *, scene, 0x128) = child;
-    func_02095274((u8 *)scene + 0x12c, child);
+    PresentationList_Append((u8 *)scene + 0x12c, child);
 
     func_ov037_021fd758((u8 *)scene + 8, 0, 0, 0x2800);
     func_ov037_021fd760((u8 *)scene + 8, 0, 0, 0);

@@ -9,10 +9,10 @@ typedef void (*UpdateCallback)(void *object);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02094dd4(void *object);
+extern s32 Presentation_UpdateScript(void *object);
 extern s32 func_ov036_021fd28c(void *field);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -36,17 +36,17 @@ static s32 halve(s32 value)
  */
 extern "C" s32 func_ov036_02203a38(void *object)
 {
-    s32 result = func_02094dd4(object);
+    s32 result = Presentation_UpdateScript(object);
     if (func_ov036_021fd28c((u8 *)object + 0xb4) != 0) {
         s32 target = FIELD(s32, object, 0xd4) > 0 ? -0x40 : 0x40;
-        func_020948e4((u8 *)object + 0xd0, 2, target);
+        PresentationScalar_TransitionTo((u8 *)object + 0xd0, 2, target);
         FIELD(s32, object, 0x130) = 0xc;
         FIELD(s32, object, 0x134) = 0;
     }
     s32 y = FIELD(s32, object, 0xd4);
-    func_020948d4((u8 *)FIELD(void *, object, 0x150) + 0x1c, y);
-    func_020948d4((u8 *)FIELD(void *, object, 0x154) + 0x1c, halve(y));
-    func_020948d4((u8 *)FIELD(void *, object, 0x158) + 0x1c, halve(y));
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, object, 0x150) + 0x1c, y);
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, object, 0x154) + 0x1c, halve(y));
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, object, 0x158) + 0x1c, halve(y));
     if (FIELD(s32, object, 0xb0) != 0) {
         void *field = (u8 *)object + 0xb4;
         (*(UpdateCallback *)((u8 *)FIELD(void *, field, 0) + 8))(field);

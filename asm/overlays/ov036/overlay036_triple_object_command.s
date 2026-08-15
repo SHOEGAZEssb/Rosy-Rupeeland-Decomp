@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_triple_object_command.c for documented portable C. */
 
-    .extern func_02094cf0
+    .extern Presentation_SetScript
     .extern Sound_Play
     .extern data_ov036_02204dac
     .extern data_ov036_02204dd0
@@ -37,22 +37,22 @@ L_02203b60:
     ldr r0, [r4, #0x158]
     ldr r1, L_02203c1c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x154]
     ldr r1, L_02203c20
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_02203b88:
     ldr r0, [r4, #0x158]
     ldr r1, L_02203c24
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x154]
     ldr r1, L_02203c28
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_02203bb0:
@@ -64,22 +64,22 @@ L_02203bb0:
     ldr r0, [r4, #0x158]
     ldr r1, L_02203c34
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x154]
     ldr r1, L_02203c38
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_02203bec:
     ldr r0, [r4, #0x158]
     ldr r1, L_02203c3c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x154]
     ldr r1, L_02203c40
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_02203c14:

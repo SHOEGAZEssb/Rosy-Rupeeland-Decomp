@@ -2,13 +2,13 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_end_sequence.c. */
 .extern data_ov026_022041ac
-.extern func_020948d4
-.extern func_020948e4
-.extern func_02094bbc
-.extern func_02094cf0
-.extern func_02094d28
-.extern func_02095224
-.extern func_02095308
+.extern PresentationScalar_SetImmediate
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
+.extern Presentation_SetScript
+.extern Presentation_InterpolateScalar
+.extern Presentation_IsScriptComplete
+.extern PresentationList_DeleteAll
 .extern func_ov026_021fe8fc
 .extern func_ov026_022009dc
 .extern func_ov026_02203168
@@ -36,7 +36,7 @@ L_022031a0:
     b L_02203368
 L_022031c8:
     add r0, r4, #0x304
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r2, L_02203380
     add r0, r4, #0x1c0
     mvn r1, #0xd5
@@ -46,30 +46,30 @@ L_022031c8:
     ldr r0, [r4, #0x2e8]
     add r2, r1, #0x4800
     sub r3, r1, #0x1400
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r1, L_02203384
     ldr r0, [r4, #0x2ec]
     rsb r2, r1, #0x2400
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x160]
     add r1, sp, #0x10
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r5, [r4, #0x164]
     ldr r1, L_02203388
     add r0, r5, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r5, #0x6c
     mov r1, #0x4000
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, #0x18000
     str r0, [r5, #0xb8]
     mov r1, #0x0
     ldr r0, [r4, #0x16c]
     mov r2, #0x1000
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, #0x1000
     str r0, [sp, #0x0]
     mov r0, #0x1800
@@ -86,25 +86,25 @@ L_022031c8:
     ldr r5, [r4, #0x168]
     ldr r1, L_02203388
     add r0, r5, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r5, #0x6c
     mov r1, #0x4000
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, #0xa000
     str r0, [r5, #0xb4]
     ldr r0, [r4, #0x17c]
     ldr r1, L_02203394
     ldr r2, L_02203398
     mov r3, #0x6000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x17c]
     ldr r1, L_0220339c
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x17c]
     mov r1, #0x0
     add r0, r0, #0x3c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x17c]
     mov r1, #0x0
     str r1, [r0, #0xa0]
@@ -112,7 +112,7 @@ L_022031c8:
     mov r1, #0x1
     add r0, r0, #0xc
     mov r2, #0x2000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x17c]
     mov r0, #0xb4
     str r0, [r1, #0x7c]
@@ -126,14 +126,14 @@ L_02203320:
     ldr r0, [r4, #0x160]
     sub r3, r2, #0x6000
     mov r1, #0x1
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r2, r0
     mov r1, #0x0
     ldr r0, [r4, #0x74]
     mov r3, r1
     bl func_ov026_02203178
     ldr r0, [r4, #0x160]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_02203368
     mov r0, r4

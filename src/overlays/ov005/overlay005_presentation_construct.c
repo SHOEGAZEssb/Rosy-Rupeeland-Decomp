@@ -35,9 +35,9 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 mode);
-extern void *func_020953f4(void *memory, void *drawObject);
-extern void func_02094bbc(void *object, s32 first, s32 second, s32 third);
-extern void func_02094cf0(void *object, const void *data, s32 mode);
+extern void *SpritePresentation_Init(void *memory, void *drawObject);
+extern void Presentation_SetPosition(void *object, s32 first, s32 second, s32 third);
+extern void Presentation_SetScript(void *object, const void *data, s32 mode);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern void func_ov005_021fc278(void *state);
 extern void *func_ov005_021fb86c(void *memory, void *owner,
@@ -66,7 +66,7 @@ static s16 overlay005_presentation_coordinate(s32 index, s32 offset)
  * Initialize the inherited base and install data_ov005_021fcad4. Construct
  * resource +0x54 with IDs 0x1023..0x1025 and cache the gDebugFont context at
  * +0x60. Allocate a 0xA0-byte helper tagged by data_ov005_021fcb0c; on
- * success create a mode-2 draw from +0x54 and construct func_020953f4. Store
+ * success create a mode-2 draw from +0x54 and construct SpritePresentation_Init. Store
  * it at +0x64, configure coordinates 0x130000/-0x20000/0, set its draw
  * halfwords +0x32/+0x34 to 0x200, and apply data_ov005_021fc95c in mode 1.
  *
@@ -104,16 +104,16 @@ Overlay005Presentation *func_ov005_021fbe6c(Overlay005Presentation *state)
     if (controller != 0) {
         void *draw = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x060),
                                    (u8 *)state + 0x54, 2);
-        controller = func_020953f4(controller, draw);
+        controller = SpritePresentation_Init(controller, draw);
     }
     FIELD(void *, state, 0x064) = controller;
-    func_02094bbc(controller, 0x130000, -0x20000, 0);
+    Presentation_SetPosition(controller, 0x130000, -0x20000, 0);
     {
         void *draw = FIELD(void *, controller, 0x09c);
         FIELD(u16, draw, 0x32) = 0x200;
         FIELD(u16, draw, 0x34) = 0x200;
     }
-    func_02094cf0(controller, data_ov005_021fc95c, 1);
+    Presentation_SetScript(controller, data_ov005_021fc95c, 1);
 
     FIELD(s32, state, 0x068) =
         overlay005_clamp_index(FIELD(s16, gGameWork, 0x1de));

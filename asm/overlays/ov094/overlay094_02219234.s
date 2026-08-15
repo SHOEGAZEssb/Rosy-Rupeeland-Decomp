@@ -1,14 +1,14 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_ov094_02219ed4
-.extern func_020949ec
+.extern Presentation_Init
 .extern func_020afce8
 
 .global func_ov094_02219234
 func_ov094_02219234:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, .L_02219270
     mov r2, #0x0
     str r0, [r4, #0x0]

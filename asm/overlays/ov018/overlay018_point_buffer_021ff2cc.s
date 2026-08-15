@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_point_buffer.c (deleting wrappers). */
     .extern Heap_Free
     .extern data_ov018_021ffd00
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
 .global func_ov018_021ff2cc
 func_ov018_021ff2cc:
     stmdb sp!, {r4, lr}
@@ -36,7 +36,7 @@ func_ov018_021ff308:
     ldr r1, L_021ff32c
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     bl Heap_Free
     mov r0, r4

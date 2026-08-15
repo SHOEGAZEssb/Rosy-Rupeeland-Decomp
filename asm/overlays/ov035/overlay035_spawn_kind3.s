@@ -8,7 +8,7 @@
     .extern Heap_Alloc
     .extern func_0209189c
     .extern func_ov035_021fdb54
-    .extern func_02095274
+    .extern PresentationList_Append
     .extern data_ov035_02203d28
     .extern gHeapContext
 
@@ -70,7 +70,7 @@ func_ov035_021ffb74:
 L_021ffc44:
     mov r1, r9
     add r0, r5, #0x184
-    bl func_02095274
+    bl PresentationList_Append
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 L_021ffc58: .word data_ov035_02203d28

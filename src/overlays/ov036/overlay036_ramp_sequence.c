@@ -14,8 +14,8 @@ extern "C" {
 extern void func_02059278(void *sound, s32 id, s32 value);
 extern void func_0205929c(void *sound, s32 id, s32 value);
 extern void Sound_Play(void *sound, s32 id, s32 mode);
-extern void func_02094cf0(void *object, const void *data, s32 mode);
-extern s32 func_02095248(void *object);
+extern void Presentation_SetScript(void *object, const void *data, s32 mode);
+extern s32 Presentation_IsScriptSuspended(void *object);
 extern s32 func_ov036_021fd28c(void *object);
 extern void GraphicsAnimationInstanceManager_RebindInstance(void *manager, s32 selector, void *resourceSet);
 extern void func_ov036_022018a8(void *controller);
@@ -43,14 +43,14 @@ extern "C" s32 func_ov036_02201acc(void *controller)
     switch (FIELD(s32, controller, 0xa0)) {
     case 0:
         func_02059278(gSoundContext, 0xb0, 0x7f);
-        func_02094cf0(FIELD(void *, controller, 0x11c),
+        Presentation_SetScript(FIELD(void *, controller, 0x11c),
                       data_ov036_02205340, 1);
-        func_02094cf0(FIELD(void *, controller, 0xd8),
+        Presentation_SetScript(FIELD(void *, controller, 0xd8),
                       data_ov036_02204f30, 1);
         ++FIELD(s32, controller, 0xa0);
         /* The recovered jump table intentionally continues into state 1. */
     case 1:
-        if (func_02095248(FIELD(void *, controller, 0x11c)) != 0) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, controller, 0x11c)) != 0) {
             void *child = FIELD(void *, controller, 0x11c);
             GraphicsAnimationInstanceManager_RebindInstance(FIELD(void *, controller, 0x118),
                           FIELD(s32, child, 0x9c),
@@ -60,7 +60,7 @@ extern "C" s32 func_ov036_02201acc(void *controller)
         }
         break;
     case 2:
-        if (func_02095248(FIELD(void *, controller, 0x11c)) != 0) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, controller, 0x11c)) != 0) {
             Sound_Play(gSoundContext, 0x1b0, 0);
             void *child = FIELD(void *, controller, 0x11c);
             GraphicsAnimationInstanceManager_RebindInstance(FIELD(void *, controller, 0x118),
@@ -73,7 +73,7 @@ extern "C" s32 func_ov036_02201acc(void *controller)
         }
         break;
     case 3:
-        if (func_02095248(FIELD(void *, controller, 0x11c)) != 0) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, controller, 0x11c)) != 0) {
             Sound_Play(gSoundContext, 0x1b0, 1);
             FIELD(s32, FIELD(void *, controller, 0x11c), 0x90) = 0;
             ++FIELD(s32, controller, 0xa0);

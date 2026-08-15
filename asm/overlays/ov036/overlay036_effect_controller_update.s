@@ -5,7 +5,7 @@
     .extern func_02091b98
     .extern func_02091c7c
     .extern func_ov036_021fef6c
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
     .extern data_ov036_02205ce0
 
@@ -59,18 +59,18 @@ L_021ff12c:
     b L_021ff160
 L_021ff140:
     add r0, r4, #0xf8
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x108
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0xdc]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021ff160:
     add r0, r4, #0xf8
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x108
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0xdc]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0

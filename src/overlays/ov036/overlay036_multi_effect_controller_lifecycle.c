@@ -13,12 +13,12 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void func_0205940c(void *context, s32 id, s32 value);
-extern void func_02095308(void *list);
+extern void PresentationList_DeleteAll(void *list);
 extern void func_02071e04(void *archive, void *resource);
 extern void Graphics3DResourceOwner_RemoveManager(void *manager);
 extern void GraphicsResourceSetVariant_Destroy(void *resourceSet);
 extern void Heap_Free(void *allocation);
-extern void func_02095360(void *list);
+extern void PresentationList_UpdateAndDeleteCompleted(void *list);
 extern void GraphicsAnimationInstanceManager_Update(void *manager);
 #ifdef __cplusplus
 }
@@ -35,18 +35,18 @@ extern "C" void *func_ov036_021ff5bc(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov036_022060ec;
     func_0205940c(gSoundContext, 0x1ae, 0);
-    func_02095308((u8 *)controller + 0x108);
-    func_02095308((u8 *)controller + 0x118);
-    func_02095308((u8 *)controller + 0x128);
+    PresentationList_DeleteAll((u8 *)controller + 0x108);
+    PresentationList_DeleteAll((u8 *)controller + 0x118);
+    PresentationList_DeleteAll((u8 *)controller + 0x128);
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf0));
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf4));
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
     FIELD(const void *, controller, 0x128) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x128);
+    PresentationList_DeleteAll((u8 *)controller + 0x128);
     FIELD(const void *, controller, 0x118) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x118);
+    PresentationList_DeleteAll((u8 *)controller + 0x118);
     FIELD(const void *, controller, 0x108) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x108);
+    PresentationList_DeleteAll((u8 *)controller + 0x108);
     GraphicsResourceSetVariant_Destroy((u8 *)controller + 0xdc);
     GraphicsResourceSetVariant_Destroy((u8 *)controller + 0xcc);
     return controller;
@@ -61,18 +61,18 @@ extern "C" void *func_ov036_021ff680(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov036_022060ec;
     func_0205940c(gSoundContext, 0x1ae, 0);
-    func_02095308((u8 *)controller + 0x108);
-    func_02095308((u8 *)controller + 0x118);
-    func_02095308((u8 *)controller + 0x128);
+    PresentationList_DeleteAll((u8 *)controller + 0x108);
+    PresentationList_DeleteAll((u8 *)controller + 0x118);
+    PresentationList_DeleteAll((u8 *)controller + 0x128);
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf0));
     func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf4));
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
     FIELD(const void *, controller, 0x128) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x128);
+    PresentationList_DeleteAll((u8 *)controller + 0x128);
     FIELD(const void *, controller, 0x118) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x118);
+    PresentationList_DeleteAll((u8 *)controller + 0x118);
     FIELD(const void *, controller, 0x108) = data_ov036_02205eac;
-    func_02095308((u8 *)controller + 0x108);
+    PresentationList_DeleteAll((u8 *)controller + 0x108);
     GraphicsResourceSetVariant_Destroy((u8 *)controller + 0xdc);
     GraphicsResourceSetVariant_Destroy((u8 *)controller + 0xcc);
     Heap_Free(controller);
@@ -85,8 +85,8 @@ extern "C" void *func_ov036_021ff680(void *controller)
  */
 extern "C" void func_ov036_021ff74c(void *controller)
 {
-    func_02095360((u8 *)controller + 0x108);
-    func_02095360((u8 *)controller + 0x118);
-    func_02095360((u8 *)controller + 0x128);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x108);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x118);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x128);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0xe8));
 }

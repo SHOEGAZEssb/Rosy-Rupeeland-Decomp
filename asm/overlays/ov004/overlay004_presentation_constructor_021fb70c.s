@@ -2,7 +2,7 @@
     .extern func_02091e28
     .extern data_ov004_021fcda0
     .extern func_02071ea4
-    .extern func_02094ad4
+    .extern Presentation_InitVariant
     .extern func_02091b6c
     .extern data_020f4e18
     .extern func_02071ee0
@@ -30,7 +30,7 @@ func_ov004_021fb70c: ; 0x021fb70c
     str r1, [r4, #0x0]
     bl func_02071ea4
     add r0, r4, #0x6c
-    bl func_02094ad4
+    bl Presentation_InitVariant
     add r0, r4, #0x114
     bl func_02091b6c
     add r0, r4, #0x130

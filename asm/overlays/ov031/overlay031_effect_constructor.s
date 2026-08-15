@@ -10,10 +10,10 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091e28
-.extern func_02094ad4
-.extern func_02094bbc
-.extern func_020953f4
-.extern func_02095508
+.extern Presentation_InitVariant
+.extern Presentation_SetPosition
+.extern SpritePresentation_Init
+.extern SpritePresentation_SyncPosition
 .extern gDebugFont
 .extern genrand_int32
 .extern gGameWork
@@ -32,7 +32,7 @@ func_ov031_021fd258:
     str r1, [r4, #0x0]
     bl func_02071ea4
     add r0, r4, #0xb4
-    bl func_02094ad4
+    bl Presentation_InitVariant
     mov r0, #0x0
     str r0, [r4, #0x150]
     bl genrand_int32
@@ -129,7 +129,7 @@ L_021fd3c0:
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r5
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r5, r0
 L_021fd404:
     str r5, [r4, #0x70]
@@ -152,14 +152,14 @@ L_021fd404:
     mov r3, #0x0
     bne L_021fd45c
     mov r2, #0x70000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     b L_021fd464
 L_021fd45c:
     mov r2, #0x12000
-    bl func_02094bbc
+    bl Presentation_SetPosition
 L_021fd464:
     ldr r0, [r4, #0x70]
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     mov r2, #0x0
     mov r1, r2
 L_021fd474:

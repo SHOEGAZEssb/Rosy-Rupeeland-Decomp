@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_palette_ramp.c. */
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
 .global func_ov017_02200064
 func_ov017_02200064:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -11,7 +11,7 @@ func_ov017_02200064:
     ldr r2, [r7, #0x3c8]
     add r3, r3, r0
     mov r0, #0x18
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r6, r0
     ldr r3, [r7, #0x3cc]
     ldr r0, [r7, #0x3d0]
@@ -19,7 +19,7 @@ func_ov017_02200064:
     ldr r2, [r7, #0x3c8]
     add r3, r3, r0
     mov r0, #0x18
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r5, r0
     ldr r2, [r7, #0x3cc]
     ldr r1, [r7, #0x3d0]
@@ -27,7 +27,7 @@ func_ov017_02200064:
     add r3, r2, r1
     ldr r1, [r7, #0x2cc]
     ldr r2, [r7, #0x3c8]
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r4, r0
     orr r0, r6, r5, lsl #0x5
     orr r1, r0, r4, lsl #0xa
@@ -37,19 +37,19 @@ func_ov017_02200064:
     mov r1, #0x1f
     mov r2, #0x10
     mov r3, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r9, r0
     mov r0, r5
     mov r1, #0x1f
     mov r2, #0x10
     mov r3, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r8, r0
     mov r0, r4
     mov r1, #0x1f
     mov r2, #0x10
     mov r3, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     orr r1, r9, r8, lsl #0x5
     orr r2, r1, r0, lsl #0xa
     mov r0, r6
@@ -58,19 +58,19 @@ func_ov017_02200064:
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r6, r0
     mov r0, r5
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r5, r0
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x10
     mov r3, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     orr r1, r6, r5, lsl #0x5
     orr r1, r1, r0, lsl #0xa
     add r0, r7, #0x400

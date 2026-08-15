@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov024/overlay024_state_transitions.c. */
 .extern data_ov024_021fe1e4
 .extern func_02028100
-.extern func_020919e8
+.extern Presentation_InterpolateSmoothStep
 .extern func_02091b98
 .extern func_ov002_021fbd64
 .extern func_ov005_021fbd74
@@ -45,7 +45,7 @@ func_ov024_021fdac4:
     ldr r2, [r7, #0x2ec]
     ldr r3, [r7, #0x2f0]
     mov r0, r9, lsl #0x8
-    bl func_020919e8
+    bl Presentation_InterpolateSmoothStep
     mov r2, r0, asr #0x7
     add r0, r0, r2, lsr #0x18
     mov r1, r8, lsl #0x8
@@ -53,7 +53,7 @@ func_ov024_021fdac4:
     ldr r2, [r7, #0x2ec]
     ldr r3, [r7, #0x2f0]
     mov r0, r4, lsl #0x8
-    bl func_020919e8
+    bl Presentation_InterpolateSmoothStep
     mov r2, r0, asr #0x7
     add r0, r0, r2, lsr #0x18
     mov r2, r0, asr #0x8
@@ -67,7 +67,7 @@ func_ov024_021fdac4:
     ldr r3, [r7, #0x2f0]
     mov r0, r0, lsl #0x8
     mov r1, r1, lsl #0x8
-    bl func_020919e8
+    bl Presentation_InterpolateSmoothStep
     mov r1, r0, asr #0x7
     add r0, r0, r1, lsr #0x18
     mov r0, r0, asr #0x8

@@ -9,7 +9,7 @@ extern const u8 data_ov037_021fedec[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -24,7 +24,7 @@ extern void func_020949ec(void *object);
 extern "C" void *func_ov037_021fceb0(void *object, void *owner, s32 index,
                                       s32 parameter)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov037_021fedec;
     FIELD(void *, object, 0x9c) = owner;
     FIELD(s32, object, 0xa0) = index;

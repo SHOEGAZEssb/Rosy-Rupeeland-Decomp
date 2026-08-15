@@ -27,9 +27,9 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *handle);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_02095274(void *list, void *object);
-extern void func_020948d4(void *field, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationList_Append(void *list, void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void *func_ov036_021fcf34(void *object, void *resource,
                                  s32 variant, s32 mode);
 extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
@@ -80,8 +80,8 @@ extern "C" void *func_ov036_021ff214(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xec) = child;
-    func_02094bbc(child, 0, 0x1400, 0);
-    func_02095274((u8 *)controller + 0x108, child);
+    Presentation_SetPosition(child, 0, 0x1400, 0);
+    PresentationList_Append((u8 *)controller + 0x108, child);
 
     handle = GraphicsAnimationInstanceManager_CreateInstance(manager, (u8 *)controller + 0xcc);
     func_ov036_021ff050(handle, 0, 0, 0, 0, 1, 0x46);
@@ -90,9 +90,9 @@ extern "C" void *func_ov036_021ff214(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xd8) = child;
-    func_02095274((u8 *)controller + 0x108, child);
-    func_02094bbc(child, 0, 0x300, 0);
-    func_020948d4((u8 *)child + 0x6c, 0x4000);
+    PresentationList_Append((u8 *)controller + 0x108, child);
+    Presentation_SetPosition(child, 0, 0x300, 0);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x4000);
 
     s32 variant = FIELD(s32, controller, 4) == 0x25a ? 1 : 0;
     void *primitive = Heap_Alloc(0xc4, data_ov036_02206168, 4, gHeapContext);
@@ -101,24 +101,24 @@ extern "C" void *func_ov036_021ff214(void *controller, void *owner,
                                         FIELD(void *, controller, 0xf4),
                                         variant, 8);
     FIELD(void *, controller, 0xfc) = primitive;
-    func_02095274((u8 *)controller + 0x118, primitive);
-    func_020948d4((u8 *)primitive + 0x6c, 0x800);
+    PresentationList_Append((u8 *)controller + 0x118, primitive);
+    PresentationScalar_SetImmediate((u8 *)primitive + 0x6c, 0x800);
 
     primitive = Heap_Alloc(0xc4, data_ov036_02206168, 4, gHeapContext);
     if (primitive != 0)
         primitive = func_ov036_021fcf34(primitive,
                                         FIELD(void *, controller, 0xf0), 2, 8);
     FIELD(void *, controller, 0xf8) = primitive;
-    func_02095274((u8 *)controller + 0x118, primitive);
-    func_020948d4((u8 *)primitive + 0x6c, 0x800);
+    PresentationList_Append((u8 *)controller + 0x118, primitive);
+    PresentationScalar_SetImmediate((u8 *)primitive + 0x6c, 0x800);
 
     primitive = Heap_Alloc(0xc4, data_ov036_02206168, 4, gHeapContext);
     if (primitive != 0)
         primitive = func_ov036_021fcf34(primitive,
                                         FIELD(void *, controller, 0xf0), 1, 8);
     FIELD(void *, controller, 0x100) = primitive;
-    func_02095274((u8 *)controller + 0x118, primitive);
-    func_020948d4((u8 *)primitive + 0x6c, 0x800);
+    PresentationList_Append((u8 *)controller + 0x118, primitive);
+    PresentationScalar_SetImmediate((u8 *)primitive + 0x6c, 0x800);
     FIELD(u16, primitive, 0x98) |= 1;
 
     primitive = Heap_Alloc(0xc4, data_ov036_02206168, 4, gHeapContext);
@@ -126,8 +126,8 @@ extern "C" void *func_ov036_021ff214(void *controller, void *owner,
         primitive = func_ov036_021fcf34(primitive,
                                         FIELD(void *, controller, 0xf0), 3, 0);
     FIELD(void *, controller, 0x104) = primitive;
-    func_02095274((u8 *)controller + 0x118, primitive);
-    func_020948d4((u8 *)primitive + 0x6c, 0x800);
+    PresentationList_Append((u8 *)controller + 0x118, primitive);
+    PresentationScalar_SetImmediate((u8 *)primitive + 0x6c, 0x800);
 
     func_ov036_021fe9fc((u8 *)controller + 0xc, 0, 0x3c00, 0x1400);
     func_ov036_021fea04((u8 *)controller + 0xc, 0, 0, 0);

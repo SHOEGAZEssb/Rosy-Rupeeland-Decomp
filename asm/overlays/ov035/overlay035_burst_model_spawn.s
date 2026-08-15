@@ -4,9 +4,9 @@
 
     .extern Heap_Alloc
     .extern func_ov035_02201584
-    .extern func_02094bbc
-    .extern func_020948e4
-    .extern func_02095274
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_TransitionTo
+    .extern PresentationList_Append
     .extern Sound_Play
     .extern data_ov035_02203d70
     .extern gSoundContext
@@ -35,30 +35,30 @@ L_02201d50:
     mov r1, r7
     mov r2, r6
     mov r3, r5
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r2, [sp, #0x18]
     add r0, r4, #0xc
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [sp, #0x1c]
     add r0, r4, #0x1c
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [sp, #0x20]
     add r0, r4, #0x2c
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [sp, #0x24]
     add r0, r4, #0x5c
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x10
     str r0, [r4, #0x7c]
     mov r0, #0x0
     str r0, [r4, #0x80]
     add r0, r8, #0x11c
     mov r1, r4
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r8, #0x164]
     ldr r1, L_02201df0
     cmp r0, #0x2b

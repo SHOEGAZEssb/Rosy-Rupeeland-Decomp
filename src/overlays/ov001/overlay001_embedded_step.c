@@ -13,7 +13,7 @@ typedef struct Overlay001EmbeddedStepState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02093bdc(void *embeddedState);
+extern s32 IndexedSelectionController_AdvanceTransition(void *embeddedState);
 extern void func_ov001_021fc1b8(Overlay001EmbeddedStepState *state);
 #ifdef __cplusplus
 }
@@ -29,7 +29,7 @@ extern "C"
 #endif
 s32 func_ov001_021fc2e4(Overlay001EmbeddedStepState *state)
 {
-    if (!func_02093bdc(state->embedded_1c0)) {
+    if (!IndexedSelectionController_AdvanceTransition(state->embedded_1c0)) {
         return 0;
     }
     func_ov001_021fc1b8(state);

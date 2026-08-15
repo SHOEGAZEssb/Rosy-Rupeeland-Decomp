@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern s32 func_ov017_021fe178(void *);
 #ifdef __cplusplus
 }
@@ -27,12 +27,12 @@ extern "C" void func_ov017_021fe0b4(void *state)
     s32 scale;
 
     if (func_ov017_021fe178(state)) {
-        scale = func_02091a70(0x100, 0, 8, FIELD(s32, state, 0xb8));
+        scale = Presentation_InterpolateLinear(0x100, 0, 8, FIELD(s32, state, 0xb8));
     } else {
-        scale = func_02091a70(0x400, 0x100, FIELD(u16, state, 0x9c),
+        scale = Presentation_InterpolateLinear(0x400, 0x100, FIELD(u16, state, 0x9c),
                               FIELD(u16, state, 0x9e));
         FIELD(s32, state, 0xa4) =
-            func_02091a70(0xc, 3, FIELD(u16, state, 0x9c),
+            Presentation_InterpolateLinear(0xc, 3, FIELD(u16, state, 0x9c),
                           FIELD(u16, state, 0x9e));
     }
 

@@ -1,5 +1,5 @@
     .text
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern func_02071ea4
     .extern func_02091b6c
     .extern genrand_int32
@@ -14,7 +14,7 @@ func_ov005_021fb6e4: ; 0x021fb6e4
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fb750
     add r0, r5, #0x9c
     str r1, [r5, #0x0]

@@ -6,9 +6,9 @@
     .extern func_0209189c
     .extern Heap_Alloc
     .extern func_ov035_021fd2bc
-    .extern func_02094bbc
-    .extern func_020948e4
-    .extern func_02095274
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_TransitionTo
+    .extern PresentationList_Append
     .extern data_020c9670
     .extern data_ov035_02203d68
     .extern gHeapContext
@@ -79,18 +79,18 @@ L_02200fa8:
     mov r0, r6
     mov r2, r11
     rsb r3, r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r6, #0x2c
     mov r1, #0x1
     mov r2, #0x2000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x28
     str r0, [r6, #0x7c]
     mov r2, #0x0
     mov r1, r6
     add r0, r10, #0x118
     str r2, [r6, #0x80]
-    bl func_02095274
+    bl PresentationList_Append
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_02200ff4: .word data_020c9670

@@ -13,7 +13,7 @@
 .extern Graphics3DResourceBinding_GetTextureFormat
 .extern Graphics3DResourceBinding_GetTextureWidthClass
 .extern Graphics3DResourceBinding_GetTextureHeightClass
-.extern func_020949ec
+.extern Presentation_Init
 .extern func_020afddc
 .extern func_020afe00
 .extern func_020afe28
@@ -36,7 +36,7 @@ func_ov026_021fd030:
     mov r10, r0
     mov r4, r1
     mov r6, r2
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021fd248
     ldr r1, L_021fd24c
     ldr r3, L_021fd250

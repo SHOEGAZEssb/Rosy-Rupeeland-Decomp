@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_orbit_handles.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern data_ov036_0220607c
 
     .global func_ov036_02200234
@@ -10,7 +10,7 @@ func_ov036_02200234:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_02200284
     mov r2, #0x0
     str r0, [r5, #0x0]

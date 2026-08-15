@@ -16,15 +16,15 @@ extern "C" {
 #endif
 extern void func_ov035_021fd4dc(void *list);
 extern void Sound_Play(void *soundContext, s32 id, s32 argument);
-extern s32 func_02091a70(s32 first, s32 second, s32 third, s32 fourth);
+extern s32 Presentation_InterpolateLinear(s32 first, s32 second, s32 third, s32 fourth);
 extern void func_02091b98(void *state, s32 duration);
-extern void func_02094cf0(void *object, const void *animation, s32 loop);
+extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fcf34(void *object, void *resource, s32 index,
                                 s32 entry);
-extern void func_02095274(void *collection, void *object);
-extern void func_020948d4(void *field, s32 value);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void PresentationList_Append(void *collection, void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void func_ov035_021fd51c(void *list, s32 x0, s32 y0, s32 x1, s32 y1);
 #ifdef __cplusplus
 }
@@ -53,17 +53,17 @@ extern "C" s32 func_ov035_022011a8(void *scene)
     void *resource = FIELD(void *, scene, 0xf4);
     s32 resourceValue = FIELD(s32, FIELD(void *, resource, 0x20), 4);
     s32 selection = FIELD(s32, scene, 0x134);
-    s32 duration = func_02091a70(0x1e, 0x10, resourceValue, selection);
+    s32 duration = Presentation_InterpolateLinear(0x1e, 0x10, resourceValue, selection);
     func_02091b98((u8 *)scene + 0x138, duration);
-    func_02094cf0(FIELD(void *, scene, 0x104), data_ov035_02202bd4, 0);
-    func_02094cf0(FIELD(void *, scene, 0x100), data_ov035_02202ca4, 0);
+    Presentation_SetScript(FIELD(void *, scene, 0x104), data_ov035_02202bd4, 0);
+    Presentation_SetScript(FIELD(void *, scene, 0x100), data_ov035_02202ca4, 0);
 
     void *model = Heap_Alloc(0xc4, data_ov035_02203d48, 4, gHeapContext);
     if (model != 0)
         model = func_ov035_021fcf34(model, resource, selection, 0x0b);
-    func_02095274((u8 *)scene + 0x128, model);
-    func_020948d4((u8 *)model + 0x6c, 0x666);
-    func_02094bbc(model, 0, 0x500, 0x400);
+    PresentationList_Append((u8 *)scene + 0x128, model);
+    PresentationScalar_SetImmediate((u8 *)model + 0x6c, 0x666);
+    Presentation_SetPosition(model, 0, 0x500, 0x400);
     return resourceValue == selection;
 }
 

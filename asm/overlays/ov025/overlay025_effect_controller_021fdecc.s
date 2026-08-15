@@ -12,7 +12,7 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_020918f4
-.extern func_020949ec
+.extern Presentation_Init
 .extern func_ov025_021fe4cc
 .extern gDebugFont
 .extern genrand_int32
@@ -22,7 +22,7 @@
 func_ov025_021fdecc:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r6, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021fe0a4
     ldr r4, L_021fe0a8
     str r0, [r6, #0x0]

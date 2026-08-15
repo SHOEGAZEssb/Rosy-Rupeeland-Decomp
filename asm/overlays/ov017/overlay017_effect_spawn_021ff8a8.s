@@ -4,7 +4,7 @@
     .extern data_ov017_022016b4
     .extern data_ov017_02201754
     .extern func_020918f4
-    .extern func_02095274
+    .extern PresentationList_Append
     .extern func_ov017_021fd94c
     .extern gHeapContext
 .global func_ov017_021ff8a8
@@ -336,7 +336,7 @@ L_021ffc48:
 L_021ffc98:
     ldr r0, L_021ffcc4
     mov r1, r9
-    bl func_02095274
+    bl PresentationList_Append
     mov r0, r9
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}

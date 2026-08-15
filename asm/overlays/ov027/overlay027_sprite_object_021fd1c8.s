@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_object.c. */
 .extern data_ov027_021fee98
-.extern func_02094bbc
+.extern Presentation_SetPosition
 .extern func_020955b0
 .extern func_ov027_021fd180
 
@@ -40,7 +40,7 @@ func_ov027_021fd1c8:
     mov r3, r4, lsl #0x1
     mov r0, r6
     ldmib r5, {r1, r2}
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, r6
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}

@@ -24,7 +24,7 @@ extern void Heap_Free(void *);
 extern void __register_global_object(void *, void (*)(void *), void *);
 extern void func_02091e0c(void *, s32);
 extern void func_02091e1c(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov017_021fd948(void *);
 extern void func_ov017_021fe9bc(void *);
 extern void *func_ov017_021fe9c0(void *);
@@ -89,7 +89,7 @@ extern "C" void *func_ov017_022013a4(void *state)
 extern "C" void *func_ov017_022013b8(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201628;
-    func_02095308(state);
+    PresentationList_DeleteAll(state);
     Heap_Free(state);
     return state;
 }

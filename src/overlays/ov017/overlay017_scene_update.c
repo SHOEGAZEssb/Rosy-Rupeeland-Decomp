@@ -26,11 +26,11 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void func_02092260(void *, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02095274(void *, void *);
-extern void func_020952b4(void *, void *);
-extern void func_02095360(void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationList_Append(void *, void *);
+extern void PresentationList_Remove(void *, void *);
+extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void *func_020955d8(void *, void *);
 extern void func_020958d8(void *);
 extern s32 func_020befec(s32, s32);
@@ -128,7 +128,7 @@ extern "C" void func_ov017_02200188(void *state)
                                                0x20, 0x30),
                             func_020918f4((u8 *)state + 0x3fc, 0x1000) << 4);
                     }
-                    func_02095274((u8 *)state + 0x3ec, effect);
+                    PresentationList_Append((u8 *)state + 0x3ec, effect);
                 }
             }
         }
@@ -143,7 +143,7 @@ extern "C" void func_ov017_02200188(void *state)
         FIELD(s32, data_ov017_022016e0, 0x34) = 0;
     }
 
-    func_02095360(data_ov017_02201754);
+    PresentationList_UpdateAndDeleteCompleted(data_ov017_02201754);
     FIELD(s32, state, 0x3d0) = 0;
     node = FIELD(void *, data_ov017_022016e0, 0x78);
     while (node != 0) {
@@ -164,9 +164,9 @@ extern "C" void func_ov017_02200188(void *state)
                     (s16)func_0209189c((u8 *)state + 0x3fc, 0x10, 0x18),
                     func_020918f4((u8 *)state + 0x3fc, 0x1000) << 4);
             }
-            func_02095274((u8 *)state + 0x3ec, effect);
+            PresentationList_Append((u8 *)state + 0x3ec, effect);
             FIELD(s32, state, 0x3cc) += FIELD(u16, node, 0x9c);
-            func_020952b4(data_ov017_02201754, node);
+            PresentationList_Remove(data_ov017_02201754, node);
             if (node != 0) {
                 typedef void (*Destructor)(void *);
                 FIELD(Destructor *, node, 0)[1](node);
@@ -180,7 +180,7 @@ extern "C" void func_ov017_02200188(void *state)
     FIELD(s32, FIELD(void *, state, 0x25c), 0x64) =
         FIELD(s32, state, 0x3cc) + FIELD(s32, state, 0x3d0);
     func_ov017_02200064(state);
-    func_02095360((u8 *)state + 0x3ec);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)state + 0x3ec);
 
     if (FIELD(s32, data_ov017_022016e0, 0) >=
         FIELD(s32, data_ov017_022016e0, 8) / 2) {
@@ -206,9 +206,9 @@ extern "C" void func_ov017_02200188(void *state)
             actor = Heap_Alloc(0xa0, data_ov017_022016cc, 4, gHeapContext);
             if (actor != 0)
                 actor = func_020955d8(actor, sprite);
-            func_02095274((u8 *)state + 0x3d8, actor);
-            func_02094bbc(actor, x, 0, z);
-            func_020948e4((u8 *)actor + 0x1c, 2,
+            PresentationList_Append((u8 *)state + 0x3d8, actor);
+            Presentation_SetPosition(actor, x, 0, z);
+            PresentationScalar_TransitionTo((u8 *)actor + 0x1c, 2,
                           func_0209189c((u8 *)state + 0x3fc, 0x600, 0x900));
             FIELD(s32, actor, 0x7c) = (s16)GraphicsAnimationInstance_GetSequenceDuration(sprite);
             FIELD(s32, actor, 0x80) = 0;
@@ -242,12 +242,12 @@ extern "C" void func_ov017_02200188(void *state)
                                            0x10, 0x18),
                         angleIndex << 4);
                 }
-                func_02095274((u8 *)state + 0x3ec, effect);
+                PresentationList_Append((u8 *)state + 0x3ec, effect);
             }
         }
     }
 
-    func_02095360((u8 *)state + 0x3d8);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)state + 0x3d8);
     func_ov017_021fe5b0(FIELD(void *, state, 0x254));
     func_020958d8((u8 *)state + 0x12c);
     func_020958d8((u8 *)state + 0x80);

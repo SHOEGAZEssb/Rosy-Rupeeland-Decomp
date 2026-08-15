@@ -6,7 +6,7 @@
     .extern func_ov036_021fe258
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov036_021ff050
-    .extern func_02095274
+    .extern PresentationList_Append
     .extern Sound_Play
     .extern data_ov036_02205ccc
     .extern data_ov036_02206158
@@ -55,7 +55,7 @@ L_021fefcc:
     bl func_ov036_021ff050
     mov r1, r5
     add r0, r6, #0x108
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r4, #0x1c]
     mov r1, #0x1cc
     cmp r0, #0x2

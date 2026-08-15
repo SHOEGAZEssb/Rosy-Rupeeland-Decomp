@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02091af0(s32 start, s32 end, s32 frame, s32 duration);
+extern s32 Presentation_InterpolateEaseOutQuadratic(s32 start, s32 end, s32 frame, s32 duration);
 #ifdef __cplusplus
 }
 #endif
@@ -17,7 +17,7 @@ extern s32 func_02091af0(s32 start, s32 end, s32 frame, s32 duration);
  * angular velocity +0x10 upward by 0x20 to a cap of 0x400, transitions to state
  * 2 at the cap, and adds the velocity to phase +0x1C. State 2 continues adding
  * the fixed velocity. State 3 increments frame +0x28 toward duration +0x24;
- * while active it interpolates phase from +0x14 to +0x18 with func_02091af0,
+ * while active it interpolates phase from +0x14 to +0x18 with Presentation_InterpolateEaseOutQuadratic,
  * and on completion snaps to +0x18 and returns to state 0. Other states are
  * ignored. Returns no value; only the sector state and interpolation helper
  * state change, with no direct hardware effects.
@@ -49,7 +49,7 @@ extern "C" void func_ov034_021fd494(void *state)
             return;
         }
         FIELD(s32, state, 0x1c) =
-            func_02091af0(FIELD(s32, state, 0x14),
+            Presentation_InterpolateEaseOutQuadratic(FIELD(s32, state, 0x14),
                           FIELD(s32, state, 0x18), frame, duration);
         return;
     }

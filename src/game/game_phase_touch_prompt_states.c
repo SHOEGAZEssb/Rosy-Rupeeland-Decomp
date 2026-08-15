@@ -12,11 +12,11 @@ extern void *data_021052fc;
 extern const u32 data_020c3618[];
 extern const u32 data_020c3630[];
 extern s32 func_02092910(void *spriteState, const TouchPoint *point);
-extern s32 func_02095224(void *actor);
-extern s32 func_02095248(void *actor);
-extern void func_02094cf0(void *actor, const void *sequence, s32 value);
-extern void func_020954e0(void *actor);
-extern void func_020954f4(void *actor);
+extern s32 Presentation_IsScriptComplete(void *actor);
+extern s32 Presentation_IsScriptSuspended(void *actor);
+extern void Presentation_SetScript(void *actor, const void *sequence, s32 value);
+extern void SpritePresentation_Show(void *actor);
+extern void SpritePresentation_Hide(void *actor);
 extern s32 ActorDerivedType1_IsActiveRecordType69(void *actor);
 extern s32 ActorDerivedType1_IsActiveRecordType6A(void *actor);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
@@ -35,10 +35,10 @@ extern s32 ActorDerivedType1_IsIdleEligible(void *actor);
 void GamePhaseTouchPrompt_UpdateInteraction(GamePhaseTouchPrompt *self)
 {
     if (GameWork_TestFlag(gGameWork, 0x3ec)) {
-        func_020954e0(self->actor);
+        SpritePresentation_Show(self->actor);
         switch (self->state) {
         case 0:
-            if (!func_02095248(self->actor))
+            if (!Presentation_IsScriptSuspended(self->actor))
                 break;
             *(u32 *)((u8 *)self->actor + 0x90) = 0;
             self->state = 1;
@@ -70,16 +70,16 @@ void GamePhaseTouchPrompt_UpdateInteraction(GamePhaseTouchPrompt *self)
             self->state = self->savedState;
             break;
         case 3:
-            if (func_02095224(self->actor))
+            if (Presentation_IsScriptComplete(self->actor))
                 self->state = 4;
             break;
         case 4:
-            func_02094cf0(self->actor, data_020c3630, 0);
+            Presentation_SetScript(self->actor, data_020c3630, 0);
             self->state = 0;
             break;
         }
     } else {
-        func_020954f4(self->actor);
+        SpritePresentation_Hide(self->actor);
     }
     SceneManager_SetUpdateEnabled(gSceneManager, 1);
 }
@@ -100,15 +100,15 @@ void GamePhaseTouchPrompt_UpdateHideSequence(GamePhaseTouchPrompt *self)
     case 2:
         if (++self->timer <= 2)
             return;
-        func_02094cf0(self->actor, data_020c3618, 0);
+        Presentation_SetScript(self->actor, data_020c3618, 0);
         self->state = 3;
         return;
     case 3:
-        if (func_02095224(self->actor))
+        if (Presentation_IsScriptComplete(self->actor))
             self->state = 4;
         return;
     case 4:
-        func_020954f4(self->actor);
+        SpritePresentation_Hide(self->actor);
         return;
     }
 }

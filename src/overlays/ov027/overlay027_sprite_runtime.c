@@ -11,11 +11,11 @@ extern const u8 data_ov027_021fe8ac[];
 extern "C" {
 #endif
 extern void GraphicsAnimationInstance_SetAnimation(void *, u8);
-extern void func_02094dd4(void *);
-extern s32 func_02094d28(void *, s32, s32, s32);
-extern void func_02094cf0(void *, const void *, s32);
-extern s32 func_02095224(void *);
-extern void func_020948d4(void *, s32);
+extern void Presentation_UpdateScript(void *);
+extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
+extern void Presentation_SetScript(void *, const void *, s32);
+extern s32 Presentation_IsScriptComplete(void *);
+extern void PresentationScalar_SetImmediate(void *, s32);
 extern s32 func_020ae024(s32, s32);
 #ifdef __cplusplus
 }
@@ -87,7 +87,7 @@ extern "C" s32 func_ov027_021fd258(void *object)
         }
         break;
     }
-    func_02094dd4(object);
+    Presentation_UpdateScript(object);
     return 0;
 }
 
@@ -103,12 +103,12 @@ extern "C" s32 func_ov027_021fd258(void *object)
  */
 extern "C" void func_ov027_021fd4dc(void *object, s32 from, s32 to)
 {
-    s32 angle = (u16)func_02094d28(object, 1, 0,
+    s32 angle = (u16)Presentation_InterpolateScalar(object, 1, 0,
                                     FIELD(s32, object, 0xa4));
     angle >>= 4;
     s32 trig0 = data_020c9670[angle * 2];
     s32 trig1 = data_020c9670[angle * 2 + 1];
-    s32 scale = func_02094d28(object, 1, from, to);
+    s32 scale = Presentation_InterpolateScalar(object, 1, from, to);
     s32 dx = FIELD(s32, object, 0xb0);
     s32 dy = FIELD(s32, object, 0xb4);
     s32 rotated_x = (trig0 * dy) / 0x1000 + (trig1 * dx) / 0x1000;
@@ -116,8 +116,8 @@ extern "C" void func_ov027_021fd4dc(void *object, s32 from, s32 to)
     s32 result_x = (scale * rotated_x) / 0x100;
     s32 result_y = (scale * rotated_y) / 0x100;
     const s32 *descriptor = FIELD(const s32 *, object, 0xa0);
-    func_020948d4((u8 *)object + 0xc, descriptor[1] + result_x);
-    func_020948d4((u8 *)object + 0x1c, descriptor[2] + result_y);
+    PresentationScalar_SetImmediate((u8 *)object + 0xc, descriptor[1] + result_x);
+    PresentationScalar_SetImmediate((u8 *)object + 0x1c, descriptor[2] + result_y);
 
     void *sprite = FIELD(void *, object, 0x9c);
     s32 frame = scale < 0x20 ? 4 : (u32)func_020ae024(result_x, result_y) >> 13;
@@ -139,14 +139,14 @@ extern "C" s32 func_ov027_021fd624(void *object)
     case 0:
         if (func_ov027_021fd3f0(object)) {
             GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0x9c), 0xc);
-            func_02094cf0(object, data_ov027_021fe8ac, 0);
+            Presentation_SetScript(object, data_ov027_021fe8ac, 0);
             ++FIELD(s32, object, 0xb8);
         } else {
             func_ov027_021fd4dc(object, 0x100, 0);
         }
         break;
     case 1:
-        if (func_02095224(object)) {
+        if (Presentation_IsScriptComplete(object)) {
             GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0x9c), 0);
             FIELD(s32, object, 0x7c) = 0x78;
             FIELD(s32, object, 0x80) = 0;
@@ -163,6 +163,6 @@ extern "C" s32 func_ov027_021fd624(void *object)
     case 3:
         return 1;
     }
-    func_02094dd4(object);
+    Presentation_UpdateScript(object);
     return 0;
 }

@@ -18,8 +18,8 @@
 .extern func_02091b98
 .extern func_02091e28
 .extern func_020922f0
-.extern func_02093a88
-.extern func_02093adc
+.extern IndexedSelectionController_Init
+.extern IndexedSelectionController_ConfigureRange
 .extern func_020957bc
 .extern func_020957f0
 .extern func_02095820
@@ -60,7 +60,7 @@ func_ov024_021fce2c:
     mov r2, #0xac
     bl __construct_array
     add r0, r4, #0x284
-    bl func_02093a88
+    bl IndexedSelectionController_Init
     add r0, r4, #0x2c8
     bl func_02091b6c
     mov r0, #0x0
@@ -169,7 +169,7 @@ L_021fd018:
     ldr r2, [r4, #0x60]
     mov r3, r1
     add r0, r4, #0x284
-    bl func_02093adc
+    bl IndexedSelectionController_ConfigureRange
     mov r0, #0xc
     str r0, [r4, #0x2b0]
     ldr r0, [r4, #0x2bc]

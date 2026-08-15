@@ -29,11 +29,11 @@ extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
-extern void func_02095274(void *collection, void *object);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void PresentationList_Append(void *collection, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void *func_ov035_021fe5ec(void *object, s32 argument);
 extern void *func_ov035_021fe8e4(void *object, s32 argument);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void *func_ov035_021fcf34(void *object, void *resource,
                                 s32 resourceIndex, s32 entry);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
@@ -98,46 +98,46 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
                                   (u8 *)scene + 0xdc);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 7, 0x42);
     FIELD(void *, scene, 0xfc) = create_sprite(record);
-    func_02095274((u8 *)scene + 0x10c, FIELD(void *, scene, 0xfc));
+    PresentationList_Append((u8 *)scene + 0x10c, FIELD(void *, scene, 0xfc));
 
     record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf8), (u8 *)scene + 0xe8);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 8, 0x42);
     FIELD(void *, scene, 0x100) = create_sprite(record);
-    func_02095274((u8 *)scene + 0x10c, FIELD(void *, scene, 0x100));
+    PresentationList_Append((u8 *)scene + 0x10c, FIELD(void *, scene, 0x100));
 
     record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf8), (u8 *)scene + 0xcc);
     func_ov035_021fdd28(record, 0, 0, 0, 0, 8, 0x42);
     FIELD(void *, scene, 0xd8) = create_sprite(record);
-    func_02095274((u8 *)scene + 0x10c, FIELD(void *, scene, 0xd8));
-    func_02094bbc(FIELD(void *, scene, 0xd8), 0, 0xe00, 0);
+    PresentationList_Append((u8 *)scene + 0x10c, FIELD(void *, scene, 0xd8));
+    Presentation_SetPosition(FIELD(void *, scene, 0xd8), 0, 0xe00, 0);
 
     void *object = Heap_Alloc(0xa0, data_ov035_02203d38, 4, gHeapContext);
     if (object != 0)
         object = func_ov035_021fe5ec(object, (s32)resourceOwner);
     FIELD(void *, scene, 0x13c) = object;
-    func_02095274((u8 *)scene + 0x10c, object);
-    func_02094bbc(object, 0, 0, -0x600);
-    func_020948d4((u8 *)object + 0x6c, 0x12e1);
+    PresentationList_Append((u8 *)scene + 0x10c, object);
+    Presentation_SetPosition(object, 0, 0, -0x600);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x12e1);
 
     object = Heap_Alloc(0xa0, data_ov035_02203d40, 4, gHeapContext);
     if (object != 0)
         object = func_ov035_021fe8e4(object, (s32)resourceOwner);
     FIELD(void *, scene, 0x140) = object;
-    func_02095274((u8 *)scene + 0x10c, object);
-    func_02094bbc(object, 0, -0x800, -0x600);
+    PresentationList_Append((u8 *)scene + 0x10c, object);
+    Presentation_SetPosition(object, 0, -0x800, -0x600);
 
     object = Heap_Alloc(0xc4, data_ov035_02203d48, 4, gHeapContext);
     if (object != 0)
         object = func_ov035_021fcf34(object, FIELD(void *, scene, 0xf4),
                                     0, 0x15);
     FIELD(void *, scene, 0x104) = object;
-    func_02095274((u8 *)scene + 0x11c, object);
+    PresentationList_Append((u8 *)scene + 0x11c, object);
     object = Heap_Alloc(0xc4, data_ov035_02203d48, 4, gHeapContext);
     if (object != 0)
         object = func_ov035_021fcf34(object, FIELD(void *, scene, 0xf4),
                                     1, 9);
     FIELD(void *, scene, 0x108) = object;
-    func_02095274((u8 *)scene + 0x11c, object);
+    PresentationList_Append((u8 *)scene + 0x11c, object);
     FIELD(u16, object, 0x98) |= 2;
     FIELD(u16, object, 0x98) |= 1;
 

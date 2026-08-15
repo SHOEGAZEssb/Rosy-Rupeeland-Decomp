@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void func_02071eb8(void *resourceSet);
 extern void GraphicsSpriteGroup_Destroy(void *group);
-extern void func_02095308(void *effectList);
+extern void PresentationList_DeleteAll(void *effectList);
 #ifdef __cplusplus
 }
 #endif
@@ -22,11 +22,11 @@ extern void func_02095308(void *effectList);
  */
 extern "C" void *func_ov094_022196a4(void *object)
 {
-    func_02095308((u8 *)object + 0x34);
+    PresentationList_DeleteAll((u8 *)object + 0x34);
     GraphicsSpriteGroup_Destroy(*(void **)((u8 *)object + 0x0c));
     GraphicsSpriteGroup_Destroy(*(void **)((u8 *)object + 0x10));
     *(const void **)((u8 *)object + 0x34) = data_ov094_02219e70;
-    func_02095308((u8 *)object + 0x34);
+    PresentationList_DeleteAll((u8 *)object + 0x34);
     func_02071eb8(object);
     return object;
 }

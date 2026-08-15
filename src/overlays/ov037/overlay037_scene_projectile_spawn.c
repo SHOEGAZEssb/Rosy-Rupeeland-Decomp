@@ -16,11 +16,11 @@ extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
 extern s32 func_020918f4(void *randomState, s32 bound);
 extern void *func_ov037_021fd554(void *object, void *owner, s32 offset);
 extern void func_02094bf0(void *object, s32 x, s32 y, s32 z);
-extern void func_020948d4(void *field, s32 value, ...);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_SetImmediate(void *field, s32 value, ...);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void func_ov037_021fdf50(void *object, s32 lifetime);
-extern void func_02095274(void *container, void *object);
+extern void PresentationList_Append(void *container, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -73,18 +73,18 @@ extern "C" void func_ov037_021fdf68(void *scene)
     FIELD(u16, object, 0xbc) = texture;
     FIELD(u16, object, 0xc0) = texture;
     FIELD(s32, object, 0xa4) = 1;
-    func_020948d4((u8 *)object + 0x6c, scale, 1);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, scale, 1);
 
     s32 tableIndex = (angle >> 4) * 2;
     s16 sine = data_020c9670[tableIndex];
     s16 cosine = data_020c9670[tableIndex + 1];
     s32 depth = func_0209189c(randomState, -0xc00, -0x200);
-    func_02094bbc(object, fixedMul15(sine, 0x180),
+    Presentation_SetPosition(object, fixedMul15(sine, 0x180),
                    fixedMul15(cosine, 0x180) + 0x3000, depth);
-    func_020948e4((u8 *)object + 0x0c, 1, fixedMul15(sine, 0x380));
-    func_020948e4((u8 *)object + 0x1c, 1,
+    PresentationScalar_TransitionTo((u8 *)object + 0x0c, 1, fixedMul15(sine, 0x380));
+    PresentationScalar_TransitionTo((u8 *)object + 0x1c, 1,
                   fixedMul15(cosine, 0x380) + 0x3000);
     func_ov037_021fdf50(object, func_0209189c(randomState, 0x5a, 0x78));
     FIELD(s32, object, 0x88) = 1;
-    func_02095274((u8 *)scene + 0x13c, object);
+    PresentationList_Append((u8 *)scene + 0x13c, object);
 }

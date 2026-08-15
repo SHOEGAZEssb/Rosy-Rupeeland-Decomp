@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov034/overlay034_render_object.c for documented portable C. */
 
-    .extern func_020949ec
-    .extern func_020948d4
+    .extern Presentation_Init
+    .extern PresentationScalar_SetImmediate
     .extern data_ov034_021ff178
 
     .global func_ov034_021fce00
@@ -18,7 +18,7 @@ func_ov034_021fce04:
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fce4c
     add r0, r7, #0x6c
     str r1, [r7, #0x0]
@@ -28,7 +28,7 @@ func_ov034_021fce04:
     mov r2, #0x0
     mov r1, #0x200
     strh r2, [r7, #0xa6]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r7
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_021fce4c: .word data_ov034_021ff178

@@ -1,6 +1,6 @@
     .text
     .extern func_020befec
-    .extern func_02093af8
+    .extern IndexedSelectionController_SetValue
     .extern func_02093d50
     .global func_ov000_021fca4c
 func_ov000_021fca4c:
@@ -12,7 +12,7 @@ func_ov000_021fca4c:
     str r5, [r4, #0x25c]
     bl func_020befec
     add r0, r4, #0x270
-    bl func_02093af8
+    bl IndexedSelectionController_SetValue
     mov r0, r5
     mov r1, #0x5
     bl func_020befec

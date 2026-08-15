@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_render_object_state.c for documented portable C. */
 
-    .extern func_02094d28
+    .extern Presentation_InterpolateScalar
     .extern func_ov037_021fd1b4
 
     .global func_ov037_021fd170
@@ -15,7 +15,7 @@ func_ov037_021fd170:
     ldr r2, [r4, #0xb0]
     ldr r3, [r4, #0xb4]
     mov r1, #0x1
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     str r0, [r4, #0xac]
     mov r0, r4
     bl func_ov037_021fd1b4

@@ -28,9 +28,9 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
 extern void func_02073e48(...);
 extern void *Heap_Alloc(...);
 extern void Heap_Free(void *);
-extern void *func_020953f4(...);
-extern void func_02094bbc(...);
-extern void func_02095508(void *);
+extern void *SpritePresentation_Init(...);
+extern void Presentation_SetPosition(...);
+extern void SpritePresentation_SyncPosition(void *);
 extern void func_02093d20(...);
 extern void func_020944f0(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -130,13 +130,13 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
     for (s32 i = 0; i < 2; ++i) {
         void *part = Heap_Alloc(0xa0, data_ov032_02202358, 4, gHeapContext);
         if (part != 0)
-            part = func_020953f4(part, GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1));
+            part = SpritePresentation_Init(part, GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1));
         FIELD(void *, object, 0x64 + i * 4) = part;
         void *sdk = FIELD(void *, part, 0x9c);
         FIELD(u8, sdk, 0x3a) = 2;
         FIELD(u16, sdk, 0x28) = 0x3000;
-        func_02094bbc(part, 0, i == 0 ? 0 : secondOffset, 0);
-        func_02095508(part);
+        Presentation_SetPosition(part, 0, i == 0 ? 0 : secondOffset, 0);
+        SpritePresentation_SyncPosition(part);
     }
     FIELD(void *, object, 0x60) = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
     func_02073e48(FIELD(void *, object, 0x60), 4, 0, 0, 2, 0x2000, 0);

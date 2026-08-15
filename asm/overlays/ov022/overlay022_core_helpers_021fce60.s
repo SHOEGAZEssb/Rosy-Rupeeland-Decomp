@@ -1,13 +1,13 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_core_helpers.c. */
-    .extern func_02094c48
+    .extern Presentation_AdvanceTransitions
     .extern func_ov022_021fceb0
 
 .global func_ov022_021fce60
 func_ov022_021fce60:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     ldr r2, [r4, #0x10]
     ldr r3, [r4, #0x20]
     mov r1, r2, asr #0xb

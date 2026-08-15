@@ -22,7 +22,7 @@ extern "C" void *func_0207b44c(void *entry);
 extern "C" s32 GraphicsSpriteRenderer_MeasureText(void *font, void *entry, s32 mode, s32 spacing);
 extern "C" void GraphicsSpriteRenderer_DrawText(void *font, void *entry, s32 x, s32 y,
                                s32 color, s32 mode, s32 spacing);
-extern "C" void func_02095308(void *object);
+extern "C" void PresentationList_DeleteAll(void *object);
 extern "C" void Heap_Free(void *allocation);
 
 /* Stop a nonnegative sound handle through gSoundContext; negative inputs do nothing. */
@@ -65,7 +65,7 @@ extern "C" void func_ov045_0220d2f8(u32 selector, u32 subtype)
 extern "C" void *func_ov045_0220d454(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d570;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     Heap_Free(object);
     return object;
 }

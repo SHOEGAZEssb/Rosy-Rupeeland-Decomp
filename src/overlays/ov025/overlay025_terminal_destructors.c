@@ -10,8 +10,8 @@ extern const u8 data_ov025_02203318[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02095308(void *);
-extern void func_0209548c(void *);
+extern void PresentationList_DeleteAll(void *);
+extern void SpritePresentation_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -19,7 +19,7 @@ extern void func_0209548c(void *);
 /* Runs the derived controller destructor, frees it, and returns its address. */
 extern "C" void *func_ov025_02202c20(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     Heap_Free(object);
     return object;
 }
@@ -27,7 +27,7 @@ extern "C" void *func_ov025_02202c20(void *object)
 /* Runs the derived controller destructor without freeing and returns `object`. */
 extern "C" void *func_ov025_02202c3c(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     return object;
 }
 
@@ -38,7 +38,7 @@ extern "C" void *func_ov025_02202c3c(void *object)
 extern "C" void *func_ov025_02202c50(void *object)
 {
     FIELD(const void *, object, 0) = data_ov025_02203318;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     Heap_Free(object);
     return object;
 }

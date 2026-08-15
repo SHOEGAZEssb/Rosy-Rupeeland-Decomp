@@ -5,7 +5,7 @@
     .extern func_0209189c
     .extern Heap_Alloc
     .extern func_ov036_021fd834
-    .extern func_02095274
+    .extern PresentationList_Append
     .extern data_ov036_02206198
     .extern gHeapContext
 
@@ -114,7 +114,7 @@ L_0220312c:
     mov r1, r0
 L_02203198:
     add r0, r8, #0x110
-    bl func_02095274
+    bl PresentationList_Append
     b L_02203218
 L_022031a4:
     mov r1, #0x600
@@ -146,7 +146,7 @@ L_022031a4:
     mov r1, r0
 L_02203210:
     add r0, r8, #0x110
-    bl func_02095274
+    bl PresentationList_Append
 L_02203218:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

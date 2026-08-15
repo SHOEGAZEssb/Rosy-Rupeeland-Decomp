@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_geometry_command.c. */
 .extern data_ov026_02204a28
-.extern func_020949ec
+.extern Presentation_Init
 
 
     .global func_ov026_021fce54
@@ -12,7 +12,7 @@ func_ov026_021fce54:
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fcea0
     mov r0, #0x0
     str r1, [r7, #0x0]

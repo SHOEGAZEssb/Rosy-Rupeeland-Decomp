@@ -12,15 +12,15 @@ extern "C" {
 #endif
 extern void func_02059278(void *soundContext, s32 id, s32 value);
 extern void func_0205929c(void *soundContext, s32 id, s32 value);
-extern s32 func_02095224(void *object);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02094cf0(void *object, const void *animation, s32 loop);
+extern s32 Presentation_IsScriptComplete(void *object);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
 extern void func_ov035_02201fe4(void *scene);
 extern s32 func_02091c7c(void *state, s32 value);
 extern void func_02091b98(void *state, s32 duration);
 extern void func_ov035_02201df8(void *scene, s32 side);
 extern void func_02091dac(void *state);
-extern void func_02095360(void *collection);
+extern void PresentationList_UpdateAndDeleteCompleted(void *collection);
 extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
@@ -29,8 +29,8 @@ extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 /* Updates both scene collections and resource set +0xF4. */
 static void update_scene(void *scene)
 {
-    func_02095360((u8 *)scene + 0x10c);
-    func_02095360((u8 *)scene + 0x11c);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x10c);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x11c);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0xf4));
 }
 
@@ -53,13 +53,13 @@ extern "C" s32 func_ov035_02202148(void *scene)
         ++FIELD(s32, scene, 0xa0);
         /* Fall through to poll the opening sprite immediately. */
     case 1:
-        if (func_02095224(FIELD(void *, scene, 0xd8)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0xd8)) != 0) {
             void *model = FIELD(void *, scene, 0x104);
             FIELD(u16, model, 0x98) &= (u16)~1;
-            func_020948e4((u8 *)model + 0x2c, 4, -0x2000);
+            PresentationScalar_TransitionTo((u8 *)model + 0x2c, 4, -0x2000);
             FIELD(s32, model, 0x7c) = 16;
             FIELD(s32, model, 0x80) = 0;
-            func_02094cf0(FIELD(void *, scene, 0x108),
+            Presentation_SetScript(FIELD(void *, scene, 0x108),
                           data_ov035_02203120, 0);
             ++FIELD(s32, scene, 0xa0);
         }

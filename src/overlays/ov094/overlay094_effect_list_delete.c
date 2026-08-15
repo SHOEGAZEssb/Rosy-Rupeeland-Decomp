@@ -8,7 +8,7 @@ extern const u8 data_ov094_02219e70[];
 extern "C" {
 #endif
 extern void Heap_Free(void *memory);
-extern void func_02095308(void *list);
+extern void PresentationList_DeleteAll(void *list);
 #ifdef __cplusplus
 }
 #endif
@@ -20,7 +20,7 @@ extern void func_02095308(void *list);
 extern "C" void *func_ov094_02219bb0(void *list)
 {
     *(const void **)list = data_ov094_02219e70;
-    func_02095308(list);
+    PresentationList_DeleteAll(list);
     Heap_Free(list);
     return list;
 }

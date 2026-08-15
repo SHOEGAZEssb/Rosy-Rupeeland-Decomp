@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
-.extern func_020954e0
+.extern SpritePresentation_Show
 .extern func_ov025_021ff140
 
 
@@ -12,9 +12,9 @@ func_ov025_0220058c:
     ldr r0, [r4, #0x508]
     bl func_ov025_021ff140
     ldr r0, [r4, #0xdc]
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r0, [r4, #0xe0]
-    bl func_020954e0
+    bl SpritePresentation_Show
     mov r2, #0x0
 L_022005b0:
     add r0, r4, r2, lsl #0x2

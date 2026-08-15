@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_02028100(void *, s32);
 extern void func_0202836c(void *);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
@@ -100,11 +100,11 @@ extern "C" void func_ov024_021fd968(void *scene)
     s32 new_y = func_ov046_0220c410(panel, selection);
     s32 progress = FIELD(s32, scene, 0x2a8);
     s32 duration = FIELD(s32, scene, 0x2ac);
-    s32 x = func_02091a70(old_x, new_x, progress, duration);
-    s32 y = func_02091a70(old_y, new_y, progress, duration);
+    s32 x = Presentation_InterpolateLinear(old_x, new_x, progress, duration);
+    s32 y = Presentation_InterpolateLinear(old_y, new_y, progress, duration);
     func_ov046_0220c46c(panel, x, y);
 
-    FIELD(s32, scene, 0x2e8) = func_02091a70(
+    FIELD(s32, scene, 0x2e8) = Presentation_InterpolateLinear(
         data_ov024_021fe1e4[old_selection],
         data_ov024_021fe1e4[selection], progress, duration);
     func_ov005_021fbd64(FIELD(void *, scene, 0x2bc), 0,

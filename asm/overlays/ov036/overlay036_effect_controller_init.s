@@ -10,8 +10,8 @@
     .extern Graphics3DResourceOwner_CreateManager
     .extern Heap_Alloc
     .extern func_ov036_021fdf30
-    .extern func_02095274
-    .extern func_02094bbc
+    .extern PresentationList_Append
+    .extern Presentation_SetPosition
     .extern func_ov036_021fe9fc
     .extern func_ov036_021fea04
     .extern data_ov036_02205f2c
@@ -294,12 +294,12 @@ L_021fedd4:
     str r0, [r5, #0x11c]
     mov r1, r0
     add r0, r5, #0xf8
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r5, #0x11c]
     mov r2, r1
     sub r3, r1, #0x600
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x0
     mov r2, r1
     add r0, r5, #0xc

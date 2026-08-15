@@ -32,9 +32,9 @@ extern void *func_020955d8(void *object, void *handle);
 extern void *func_ov036_02203850(void *object, void *resource);
 extern void *func_ov036_021fcf34(void *object, void *resource,
                                  s32 mode, s32 type);
-extern void func_02095274(void *list, void *object);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *list, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
 extern void func_020b0300(s32, s32, s32, s32, s32);
@@ -100,8 +100,8 @@ extern "C" void *func_ov036_02203db0(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xf8) = child;
-    func_02095274((u8 *)controller + 0xfc, child);
-    func_02094bbc(child, 0, -0x500, -0x400);
+    PresentationList_Append((u8 *)controller + 0xfc, child);
+    Presentation_SetPosition(child, 0, -0x500, -0x400);
 
     handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xe8),
                             (u8 *)controller + 0xcc);
@@ -110,16 +110,16 @@ extern "C" void *func_ov036_02203db0(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xd8) = child;
-    func_02095274((u8 *)controller + 0xfc, child);
-    func_02094bbc(child, 0, 0xc00, 0x1800);
-    func_020948d4((u8 *)child + 0x6c, 0x666);
+    PresentationList_Append((u8 *)controller + 0xfc, child);
+    Presentation_SetPosition(child, 0, 0xc00, 0x1800);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x666);
 
     void *triple = Heap_Alloc(0x15c, data_ov036_022061a0, 4, gHeapContext);
     if (triple != 0)
         triple = func_ov036_02203850(
             triple, FIELD(void *, controller, 0xec));
     FIELD(void *, controller, 0xf0) = triple;
-    func_02094bbc(triple, 0x1000, 0, 0);
+    Presentation_SetPosition(triple, 0x1000, 0, 0);
 
     void *renderObject =
         Heap_Alloc(0xc4, data_ov036_02206168, 4, gHeapContext);
@@ -127,7 +127,7 @@ extern "C" void *func_ov036_02203db0(void *controller, void *owner,
         renderObject = func_ov036_021fcf34(
             renderObject, FIELD(void *, controller, 0xec), 3, 0xe);
     FIELD(void *, controller, 0xf4) = renderObject;
-    func_02094bbc(renderObject, 0, 0x300, 0x800);
+    Presentation_SetPosition(renderObject, 0, 0x300, 0x800);
     FIELD(u16, renderObject, 0x98) |= 2;
     FIELD(u16, renderObject, 0x98) |= 1;
 

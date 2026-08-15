@@ -15,7 +15,7 @@ extern void func_0205929c(void *sound, s32 id, s32 value);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_02091b98(void *timer, s32 duration);
 extern void func_ov036_02202628(void *controller);
-extern void func_02095360(void *list);
+extern void PresentationList_UpdateAndDeleteCompleted(void *list);
 #ifdef __cplusplus
 }
 #endif
@@ -79,11 +79,11 @@ extern "C" s32 func_ov036_02202790(void *controller)
         }
         break;
     case 5:
-        func_02095360((u8 *)controller + 0xfc);
-        func_02095360((u8 *)controller + 0x10c);
+        PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0xfc);
+        PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x10c);
         return 1;
     }
-    func_02095360((u8 *)controller + 0xfc);
-    func_02095360((u8 *)controller + 0x10c);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0xfc);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x10c);
     return 0;
 }

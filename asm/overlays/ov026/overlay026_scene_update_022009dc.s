@@ -4,8 +4,8 @@
 .extern GraphicsAnimationInstanceManager_Update
 .extern func_0209189c
 .extern func_020918f4
-.extern func_020948e4
-.extern func_02095360
+.extern PresentationScalar_TransitionTo
+.extern PresentationList_UpdateAndDeleteCompleted
 .extern func_ov026_021fe5c0
 .extern func_ov026_0220046c
 .extern func_ov026_02200d08
@@ -74,11 +74,11 @@ L_02200a8c:
     bl func_ov026_02201284
 L_02200aa8:
     add r0, r4, #0x2f4
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x304
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x314
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x6c]
     bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r4, #0x70]
@@ -104,7 +104,7 @@ L_02200aa8:
     mov r2, r0
     add r0, r1, #0xc
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [r4, #0x36c]
     add r0, r4, #0x3a4
     add r0, r0, #0x400
@@ -114,7 +114,7 @@ L_02200aa8:
     mov r2, r0
     add r0, r1, #0x1c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [r4, #0x36c]
     add r0, r4, #0x3a4
     add r0, r0, #0x400
@@ -124,7 +124,7 @@ L_02200aa8:
     ldr r0, [r4, #0x2f0]
     mov r1, #0x2
     add r0, r0, #0x2c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x3a4
     add r0, r0, #0x400
     mov r1, #0x1
@@ -139,17 +139,17 @@ L_02200b9c:
     mov r1, #0x2
     add r0, r0, #0xc
     mov r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r4, #0x2f0]
     mov r1, #0x2
     add r0, r0, #0x1c
     mov r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r4, #0x2f0]
     mov r1, #0x2
     add r0, r0, #0x2c
     mov r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x2f0]
     mov r0, #0x8
     str r0, [r1, #0x7c]

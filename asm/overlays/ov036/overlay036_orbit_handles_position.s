@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_orbit_handles.c for documented portable C. */
 
-    .extern func_02094d28
+    .extern Presentation_InterpolateScalar
     .extern func_ov036_021fe978
 
     .global func_ov036_02200318
@@ -12,20 +12,20 @@ func_ov036_02200318:
     mov r7, r0
     sub r3, r2, #0x300
     mov r1, #0x2
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r4, r0
     mov r0, r7
     mov r1, #0x3
     mov r2, #0x0
     mov r3, #0x300
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r2, #0x4000
     sub r5, r0, #0x180
     mov r0, r7
     rsb r2, r2, #0x0
     mov r1, #0x1
     mov r3, #0x2000
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r7, #0xb8]
     mov r6, #0x0
     cmp r1, #0x0

@@ -15,13 +15,13 @@ typedef struct Overlay006SelectionState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02093b20(void *controller);
-extern s32 func_02093c78(void *controller);
+extern void IndexedSelectionController_ResetTransition(void *controller);
+extern s32 IndexedSelectionController_AdvancePacing(void *controller);
 extern void func_ov006_021fb9b4(void *state);
-extern void func_02093b30(void *controller);
-extern void func_02093b3c(void *controller);
-extern void func_02093b64(void *controller);
-extern s32 func_02093bdc(void *controller);
+extern void IndexedSelectionController_SnapTransitionOrigin(void *controller);
+extern void IndexedSelectionController_Increment(void *controller);
+extern void IndexedSelectionController_Decrement(void *controller);
+extern s32 IndexedSelectionController_AdvanceTransition(void *controller);
 extern void func_02092260(void *state, s32 value);
 extern s32 func_ov006_021fb950(void *state);
 #ifdef __cplusplus
@@ -36,13 +36,13 @@ static void overlay006_advance_selection(Overlay006SelectionState *state)
 }
 
 /*
- * In phase zero, call func_02093b20 on controller +0x58, advance, and fall
- * through. Phase one polls func_02093c78. While false, update geometry through
+ * In phase zero, call IndexedSelectionController_ResetTransition on controller +0x58, advance, and fall
+ * through. Phase one polls IndexedSelectionController_AdvancePacing. While false, update geometry through
  * func_ov006_021fb9b4 and finish the frame. When true, update geometry only if
  * +0x64 differs from +0x68, advance to phase two, and process it immediately.
- * Phase two calls func_02093b30, reads the input halfword through pointer +0x2C,
- * calls func_02093b3c for bit 0x40 or func_02093b64 for bit 0x80, then polls
- * func_02093bdc. When that poll succeeds, call func_02092260(state,0), decrement
+ * Phase two calls IndexedSelectionController_SnapTransitionOrigin, reads the input halfword through pointer +0x2C,
+ * calls IndexedSelectionController_Increment for bit 0x40 or IndexedSelectionController_Decrement for bit 0x80, then polls
+ * IndexedSelectionController_AdvanceTransition. When that poll succeeds, call func_02092260(state,0), decrement
  * phase back to one, and clear the timer. Always call func_ov006_021fb950 and
  * return zero. Controller/input meanings beyond these confirmed branches remain
  * unidentified; effects are delegated and there is no direct hardware access.
@@ -56,11 +56,11 @@ s32 func_ov006_021fbafc(Overlay006SelectionState *state)
 
     switch (FIELD(s32, state, 0x004)) {
     case 0:
-        func_02093b20(controller);
+        IndexedSelectionController_ResetTransition(controller);
         overlay006_advance_selection(state);
         /* Intentional same-frame fallthrough. */
     case 1:
-        if (func_02093c78(controller)) {
+        if (IndexedSelectionController_AdvancePacing(controller)) {
             if (FIELD(s32, state, 0x064) != FIELD(s32, state, 0x068)) {
                 func_ov006_021fb9b4(state);
             }
@@ -74,14 +74,14 @@ s32 func_ov006_021fbafc(Overlay006SelectionState *state)
         {
             u16 input;
 
-            func_02093b30(controller);
+            IndexedSelectionController_SnapTransitionOrigin(controller);
             input = *FIELD(u16 *, state, 0x02c);
             if (input & 0x40) {
-                func_02093b3c(controller);
+                IndexedSelectionController_Increment(controller);
             } else if (input & 0x80) {
-                func_02093b64(controller);
+                IndexedSelectionController_Decrement(controller);
             }
-            if (func_02093bdc(controller)) {
+            if (IndexedSelectionController_AdvanceTransition(controller)) {
                 func_02092260(state, 0);
                 FIELD(s32, state, 0x004)--;
                 FIELD(s32, state, 0x008) = 0;

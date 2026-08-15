@@ -19,7 +19,7 @@
     .extern func_02092638
     .extern func_020926f8
     .extern func_020927b8
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern func_ov017_021fd780
     .extern func_ov017_021fd948
     .extern func_ov017_021fe58c
@@ -45,11 +45,11 @@ L_021ff388:
     ldr r0, [r0, #0x0]
     bl func_020597fc
     ldr r0, L_021ff538
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x3d8
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x3ec
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, [r4, #0x400]
     cmp r0, #0x0
     beq L_021ff3c8
@@ -121,11 +121,11 @@ L_021ff458:
     ldr r1, L_021ff540
     add r0, r4, #0x3ec
     str r1, [r4, #0x3ec]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_021ff540
     add r0, r4, #0x3d8
     str r1, [r4, #0x3d8]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x2d0
     bl Graphics3DLightSet_Destroy
     add r0, r4, #0x290

@@ -11,7 +11,7 @@ typedef struct Overlay094SpriteStatePosition {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095508(void *effect);
+extern void SpritePresentation_SyncPosition(void *effect);
 #ifdef __cplusplus
 }
 #endif
@@ -23,7 +23,7 @@ extern void func_02095508(void *effect);
  */
 extern "C" void func_ov094_02219540(void *effect)
 {
-    func_02095508(effect);
+    SpritePresentation_SyncPosition(effect);
     Overlay094SpriteStatePosition *firstState =
         *(Overlay094SpriteStatePosition **)((u8 *)effect + 0x9c);
     s16 y = firstState->y;

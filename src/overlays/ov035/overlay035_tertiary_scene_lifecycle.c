@@ -12,7 +12,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *collection);
+extern void PresentationList_DeleteAll(void *collection);
 extern void Graphics3DResourceOwner_RemoveManager(void *resource);
 extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void Heap_Free(void *allocation);
@@ -26,7 +26,7 @@ extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fdb54(void *object, s32 kind, s32 baseArgument,
                                 s32 direction, s32 baseline, s32 positionZ,
                                 s32 angle);
-extern void func_02095274(void *collection, void *object);
+extern void PresentationList_Append(void *collection, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -35,13 +35,13 @@ extern void func_02095274(void *collection, void *object);
 static void release_tertiary_scene(void *scene)
 {
     FIELD(const void *, scene, 0) = data_ov035_02203cb0;
-    func_02095308((u8 *)scene + 0x174);
-    func_02095308((u8 *)scene + 0x184);
+    PresentationList_DeleteAll((u8 *)scene + 0x174);
+    PresentationList_DeleteAll((u8 *)scene + 0x184);
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0x124), 0));
     FIELD(const void *, scene, 0x184) = data_ov035_02203af8;
-    func_02095308((u8 *)scene + 0x184);
+    PresentationList_DeleteAll((u8 *)scene + 0x184);
     FIELD(const void *, scene, 0x174) = data_ov035_02203af8;
-    func_02095308((u8 *)scene + 0x174);
+    PresentationList_DeleteAll((u8 *)scene + 0x174);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x118);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x10c);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x100);
@@ -96,5 +96,5 @@ extern "C" void func_ov035_021ffb74(void *scene, s32 direction)
         object = func_ov035_021fdb54(object, 3, (s32)record, direction,
                                     baseline, positionZ, angle);
     }
-    func_02095274((u8 *)scene + 0x184, object);
+    PresentationList_Append((u8 *)scene + 0x184, object);
 }

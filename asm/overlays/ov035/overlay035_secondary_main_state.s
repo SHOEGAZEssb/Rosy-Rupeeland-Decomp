@@ -3,13 +3,13 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_secondary_main_state.c for documented portable C. */
 
     .extern func_02059278
-    .extern func_02094cf0
-    .extern func_02095248
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptSuspended
     .extern Sound_Play
     .extern Heap_Alloc
     .extern func_ov035_021fd7f0
-    .extern func_02095274
-    .extern func_02095224
+    .extern PresentationList_Append
+    .extern Presentation_IsScriptComplete
     .extern func_0205929c
     .extern func_ov035_021ff164
     .extern gSoundContext
@@ -47,29 +47,29 @@ L_021ff1c0:
     ldr r0, [r4, #0x100]
     ldr r1, L_021ff398
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x104]
     ldr r1, L_021ff39c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xfc]
     ldr r1, L_021ff3a0
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd8]
     ldr r1, L_021ff3a4
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x140]
     ldr r1, L_021ff3a8
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
 L_021ff230:
     ldr r0, [r4, #0x104]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021ff384
     ldr r0, L_021ff394
@@ -80,14 +80,14 @@ L_021ff230:
     ldr r0, [r4, #0x108]
     ldr r1, L_021ff3b0
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
     b L_021ff384
 L_021ff274:
     ldr r0, [r4, #0x108]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021ff384
     ldr r0, [r4, #0x100]
@@ -117,9 +117,9 @@ L_021ff2c0:
     mov r1, r0
 L_021ff2e4:
     add r0, r4, #0x12c
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r4, #0x108]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_021ff384
     ldr r0, [r4, #0x100]
@@ -141,9 +141,9 @@ L_021ff318:
     mov r1, r0
 L_021ff33c:
     add r0, r4, #0x12c
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r4, #0x100]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_021ff384
     ldr r0, L_021ff394

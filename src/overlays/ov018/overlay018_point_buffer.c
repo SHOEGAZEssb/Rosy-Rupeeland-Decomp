@@ -15,7 +15,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void *func_02003e20(u32, const void *, s32, void *);
 extern void func_02003e38(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov018_021ff3cc(void *);
 #ifdef __cplusplus
 }
@@ -50,7 +50,7 @@ extern "C" void *func_ov018_021ff2f4(void *state)
 extern "C" void *func_ov018_021ff308(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov018_021ffd00;
-    func_02095308(state);
+    PresentationList_DeleteAll(state);
     Heap_Free(state);
     return state;
 }

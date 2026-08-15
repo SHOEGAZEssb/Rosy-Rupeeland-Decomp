@@ -1,12 +1,12 @@
     .text
     .extern func_02091e28
-    .extern func_02093a88
+    .extern IndexedSelectionController_Init
     .extern func_02091b6c
-    .extern func_02093adc
+    .extern IndexedSelectionController_ConfigureRange
     .extern Heap_Alloc
     .extern func_ov046_0220b7bc
     .extern func_ov046_0220c4a0
-    .extern func_02093af8
+    .extern IndexedSelectionController_SetValue
     .extern func_ov046_0220bffc
     .extern func_ov046_0220c478
     .extern func_02027fe8
@@ -30,7 +30,7 @@ func_ov006_021fb708: ; 0x021fb708
     ldr r1, L_021fb82c
     add r0, r4, #0x58
     str r1, [r4, #0x0]
-    bl func_02093a88
+    bl IndexedSelectionController_Init
     add r0, r4, #0x98
     bl func_02091b6c
     ldr r0, L_021fb830
@@ -45,7 +45,7 @@ func_ov006_021fb708: ; 0x021fb708
     strge r0, [r4, #0x54]
     ldr r2, [r4, #0x54]
     add r0, r4, #0x58
-    bl func_02093adc
+    bl IndexedSelectionController_ConfigureRange
     mov ip, #0xc
     ldr r1, L_021fb834
     ldr r3, L_021fb838
@@ -64,7 +64,7 @@ L_021fb794:
     bl func_ov046_0220c4a0
     mov r1, r0
     add r0, r4, #0x58
-    bl func_02093af8
+    bl IndexedSelectionController_SetValue
     mov r2, #0x0
     ldr r0, [r4, #0x90]
     ldr r1, [r4, #0x64]

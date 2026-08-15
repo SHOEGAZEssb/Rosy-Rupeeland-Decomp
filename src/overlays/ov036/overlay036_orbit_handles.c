@@ -10,13 +10,13 @@ extern const u8 data_ov036_0220607c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void *func_ov036_021fcf30(void *object);
 extern void Heap_Free(void *allocation);
 extern void func_ov036_021fe978(void *handle, s32 x, s32 y, s32 z);
-extern s32 func_02094d28(void *object, s32 mode, s32 first, s32 second);
-extern void func_020948f8(void *field, s32 mode, s32 value);
-extern s32 func_02094c48(void *object);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 first, s32 second);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
+extern s32 Presentation_AdvanceTransitions(void *object);
 extern void Sound_Play(void *context, s32 id, s32 variant);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ extern void *gSoundContext;
  */
 extern "C" void *func_ov036_02200234(void *object, s32 selector)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov036_0220607c;
     FIELD(s32, object, 0xc0) = selector;
     FIELD(s32, object, 0xb4) = 0;
@@ -94,9 +94,9 @@ extern "C" void func_ov036_022002b8(void *object)
  */
 extern "C" void func_ov036_02200318(void *object)
 {
-    s32 xOffset = func_02094d28(object, 2, 0, -0x300);
-    s32 yOffset = func_02094d28(object, 3, 0, 0x300) - 0x180;
-    s32 angle = func_02094d28(object, 1, -0x4000, 0x2000);
+    s32 xOffset = Presentation_InterpolateScalar(object, 2, 0, -0x300);
+    s32 yOffset = Presentation_InterpolateScalar(object, 3, 0, 0x300) - 0x180;
+    s32 angle = Presentation_InterpolateScalar(object, 1, -0x4000, 0x2000);
     if (FIELD(s32, object, 0xb8) != 0) {
         xOffset = -xOffset;
         angle = -angle;
@@ -126,7 +126,7 @@ extern "C" s32 func_ov036_022003d4(void *object)
 {
     switch (FIELD(s32, object, 0xb4)) {
     case 0:
-        func_020948f8((u8 *)object + 0x1c, 4, 0x500);
+        PresentationScalar_TransitionBy((u8 *)object + 0x1c, 4, 0x500);
         FIELD(s32, object, 0x7c) = 0x3c;
         FIELD(s32, object, 0x80) = 0;
         FIELD(u16, FIELD(void *, object, 0x9c), 0x50) &= (u16)~4;
@@ -136,7 +136,7 @@ extern "C" s32 func_ov036_022003d4(void *object)
         /* Fall through to the opening orbit update. */
     case 1:
         func_ov036_022002b8(object);
-        if (func_02094c48(object) != 0) {
+        if (Presentation_AdvanceTransitions(object) != 0) {
             s32 selector = FIELD(s32, object, 0xc0);
             if (selector == 0)
                 Sound_Play(gSoundContext, 0x1af, 1);
@@ -151,7 +151,7 @@ extern "C" s32 func_ov036_022003d4(void *object)
         break;
     case 2:
         func_ov036_022002b8(object);
-        if (func_02094c48(object) != 0) {
+        if (Presentation_AdvanceTransitions(object) != 0) {
             FIELD(s32, object, 0x7c) = 0x3c;
             FIELD(s32, object, 0x80) = 0;
             FIELD(s32, object, 0xb4)++;
@@ -159,7 +159,7 @@ extern "C" s32 func_ov036_022003d4(void *object)
         break;
     case 3:
         func_ov036_022002b8(object);
-        if (func_02094c48(object) != 0) {
+        if (Presentation_AdvanceTransitions(object) != 0) {
             s32 selector = FIELD(s32, object, 0xc0);
             if (selector == 0)
                 Sound_Play(gSoundContext, 0x1af, 1);

@@ -2,9 +2,9 @@
     .extern GameWork_TestFlag
     .extern func_ov005_021fbe1c
     .extern func_02028100
-    .extern func_02094cf0
-    .extern func_020948e4
-    .extern func_02094d28
+    .extern Presentation_SetScript
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_InterpolateScalar
     .extern func_ov005_021fc5e4
     .extern gGameWork
 
@@ -59,17 +59,17 @@ L_021fc6c0:
     mov r1, #0x0
     ldr r0, [r4, #0x64]
     mov r2, r1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x64]
     ldr r2, [r4, #0x7c]
     add r0, r0, #0xc
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r4, #0x64]
     ldr r2, [r4, #0x80]
     add r0, r0, #0x1c
     mov r1, #0x5
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [r4, #0x64]
     mov r0, #0x3c
     str r0, [r2, #0x7c]
@@ -91,7 +91,7 @@ L_021fc734:
     mov r1, #0x2
     mov r2, #0x200
     mov r3, #0x80
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r4, #0x64]
     mov r0, r0, lsl #0x10
     ldr r1, [r1, #0x9c]

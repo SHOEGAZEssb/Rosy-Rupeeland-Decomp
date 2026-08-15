@@ -45,10 +45,10 @@ extern s32 func_020918f4(void *, s32);
 extern void func_02091e28(void *);
 extern void func_02092364(void *);
 extern void func_020923a4(void *);
-extern void *func_02094ad4(void *);
-extern void func_020948d4(void *, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02095274(void *, void *);
+extern void *Presentation_InitVariant(void *);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationList_Append(void *, void *);
 extern void func_020ae6dc(void);
 extern s32 func_020befec(s32, s32);
 extern void func_ov043_0220b740(void *);
@@ -77,7 +77,7 @@ static void register_child(void *scene, s32 field_offset, u32 size,
     (void)size;
     (void)label;
     FIELD(void *, scene, field_offset) = constructed;
-    func_02095274((u8 *)scene + 0x2f4, constructed);
+    PresentationList_Append((u8 *)scene + 0x2f4, constructed);
 }
 
 /*
@@ -148,7 +148,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     for (s32 i = 0; i < 3; ++i) {
         void *child = Heap_Alloc(0x9c, data_ov026_02204a78, 4, gHeapContext);
         if (child != 0)
-            child = func_02094ad4(child);
+            child = Presentation_InitVariant(child);
         register_child(scene, 0x2e8 + i * 4, 0x9c,
                        data_ov026_02204a78, child);
     }
@@ -181,15 +181,15 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     if (child != 0)
         child = func_ov026_021fce54(child, model_resource, 7, 0x7fff);
     register_child(scene, 0x178, 0xb0, data_ov026_02204ab0, child);
-    func_020948d4((u8 *)child + 0x6c, 0x63d);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x63d);
     child = Heap_Alloc(0xa4, data_ov026_02204ab8, 4, gHeapContext);
     if (child != 0)
         child = func_ov026_021fd5b0(child, manager);
     register_child(scene, 0x17c, 0xa4, data_ov026_02204ab8, child);
 
     func_ov026_02200d20(scene, 0x8000, 0x2000, 0);
-    func_020948d4((u8 *)FIELD(void *, scene, 0x2e8) + 0x1c, 0x1000);
-    func_02094bbc(FIELD(void *, scene, 0x2ec), 0, 0, 0);
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0x2e8) + 0x1c, 0x1000);
+    Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0, 0, 0);
     FIELD(s32, scene, 0x7a4) = 0;
 
     for (s32 i = 0; i < 24; ++i) {

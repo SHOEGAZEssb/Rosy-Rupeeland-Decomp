@@ -2,9 +2,9 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_quinary_scene_update.c for documented portable C. */
 
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
-    .extern func_02095224
+    .extern Presentation_IsScriptComplete
     .extern func_ov035_022012ac
     .extern func_ov035_021fd5ac
     .extern func_02091c7c
@@ -18,13 +18,13 @@ func_ov035_02201000:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r9, r0
     add r0, r9, #0x108
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r9, #0x118
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r9, #0xf8]
     bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r9, #0x104]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     bne L_02201044
     ldr r0, [r9, #0x174]

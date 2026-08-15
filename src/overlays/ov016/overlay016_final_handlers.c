@@ -25,7 +25,7 @@ extern s32 func_0206fb18(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
 extern void func_02092260(void *, s32);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern s32 func_02096450(void *, void *, void *, s32, s32);
 extern void func_ov000_021fc714(void *);
 extern void func_ov016_021fd3f8(void *);
@@ -211,7 +211,7 @@ extern "C" s32 func_ov016_02201304(void *state)
 extern "C" void *func_ov016_02201364(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov016_02201520;
-    func_02095308(state);
+    PresentationList_DeleteAll(state);
     Heap_Free(state);
     return state;
 }

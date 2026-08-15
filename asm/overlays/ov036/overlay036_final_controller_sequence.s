@@ -3,16 +3,16 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_final_controller_sequence.c for documented portable C. */
 
     .extern func_02059278
-    .extern func_02094cf0
-    .extern func_02095248
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptSuspended
     .extern Sound_Play
     .extern func_ov036_02201d60
-    .extern func_020948d4
-    .extern func_020948e4
+    .extern PresentationScalar_SetImmediate
+    .extern PresentationScalar_TransitionTo
     .extern func_ov036_021fd28c
-    .extern func_02094d28
+    .extern Presentation_InterpolateScalar
     .extern func_020956fc
-    .extern func_02095224
+    .extern Presentation_IsScriptComplete
     .extern func_0205929c
     .extern func_ov036_0220429c
     .extern gSoundContext
@@ -43,17 +43,17 @@ L_02204310:
     ldr r0, [r4, #0xf0]
     ldr r1, L_02204504
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xf8]
     ldr r1, L_02204508
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
 L_02204350:
     ldr r0, [r4, #0xf8]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_022044f0
     ldr r0, L_02204500
@@ -70,12 +70,12 @@ L_02204350:
     ldr r0, [r4, #0xf4]
     mov r1, #0x0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0xf4]
     mov r1, #0x1
     add r0, r0, #0x6c
     mov r2, #0x3000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0xf4]
     mov r0, #0xf
     str r0, [r1, #0x7c]
@@ -128,7 +128,7 @@ L_02204464:
     ldr r0, [r4, #0xf4]
     mov r3, r1
     mov r2, #0x1f
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r1, r0
     ldr r0, [r4, #0xf4]
     bl func_ov036_02201d60
@@ -138,14 +138,14 @@ L_02204464:
     ldr r0, [r4, #0xf4]
     mov r2, r1
     mov r3, #0x1f
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r4, #0xd8]
     ldr r1, [r1, #0x9c]
     strb r0, [r1, #0x5b]
     b L_022044f0
 L_022044b0:
     ldr r0, [r4, #0xf0]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_022044f0
     ldr r0, L_02204500

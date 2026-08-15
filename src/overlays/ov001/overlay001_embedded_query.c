@@ -13,13 +13,13 @@ typedef struct Overlay001EmbeddedQueryState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02093c78(void *embeddedState);
+extern s32 IndexedSelectionController_AdvancePacing(void *embeddedState);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pass the embedded object at state+0x1C0 to func_02093c78 and return its result
+ * Pass the embedded object at state+0x1C0 to IndexedSelectionController_AdvancePacing and return its result
  * unchanged. The query meaning remains unconfirmed; this wrapper changes no
  * other state and performs no direct hardware access.
  */
@@ -28,5 +28,5 @@ extern "C"
 #endif
 s32 func_ov001_021fc310(Overlay001EmbeddedQueryState *state)
 {
-    return func_02093c78(state->embedded_1c0);
+    return IndexedSelectionController_AdvancePacing(state->embedded_1c0);
 }

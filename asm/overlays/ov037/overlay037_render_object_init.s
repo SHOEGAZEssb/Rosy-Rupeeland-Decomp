@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_render_object_init.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern data_ov037_021fedec
 
     .global func_ov037_021fceb0
@@ -12,7 +12,7 @@ func_ov037_021fceb0:
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fcf14
     mov r0, #0x1f
     str r1, [r4, #0x0]

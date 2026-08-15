@@ -13,7 +13,7 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
 extern void func_02075020(void *);
 extern void func_02092418(void *);
@@ -37,10 +37,10 @@ extern "C" void *func_ov027_021fde24(void *scene)
 {
     FIELD(const void *, scene, 0) = data_ov027_021feeb4;
     FIELD(u32, scene, 0x20) &= ~0x400u;
-    func_02095308((u8 *)scene + 0x120);
-    func_02095308((u8 *)scene + 0x130);
-    func_02095308((u8 *)scene + 0x140);
-    func_02095308((u8 *)scene + 0x150);
+    PresentationList_DeleteAll((u8 *)scene + 0x120);
+    PresentationList_DeleteAll((u8 *)scene + 0x130);
+    PresentationList_DeleteAll((u8 *)scene + 0x140);
+    PresentationList_DeleteAll((u8 *)scene + 0x150);
 
     void *group = FIELD(void *, scene, 0x54);
     if (group) {
@@ -57,13 +57,13 @@ extern "C" void *func_ov027_021fde24(void *scene)
     func_020923a0((u8 *)scene + 0x164);
 
     FIELD(const void *, scene, 0x150) = data_ov027_021fee60;
-    func_02095308((u8 *)scene + 0x150);
+    PresentationList_DeleteAll((u8 *)scene + 0x150);
     FIELD(const void *, scene, 0x140) = data_ov027_021fee60;
-    func_02095308((u8 *)scene + 0x140);
+    PresentationList_DeleteAll((u8 *)scene + 0x140);
     FIELD(const void *, scene, 0x130) = data_ov027_021fee60;
-    func_02095308((u8 *)scene + 0x130);
+    PresentationList_DeleteAll((u8 *)scene + 0x130);
     FIELD(const void *, scene, 0x120) = data_ov027_021fee60;
-    func_02095308((u8 *)scene + 0x120);
+    PresentationList_DeleteAll((u8 *)scene + 0x120);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x74);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x68);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x5c);

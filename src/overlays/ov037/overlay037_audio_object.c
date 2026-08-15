@@ -10,7 +10,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void func_02059278(void *soundContext, u16 soundId, s32 volume);
 #ifdef __cplusplus
 }
@@ -23,7 +23,7 @@ extern void func_02059278(void *soundContext, u16 soundId, s32 volume);
  */
 extern "C" void *func_ov037_021fd1cc(void *object)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov037_021fee78;
     return object;
 }

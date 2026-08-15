@@ -12,7 +12,7 @@ extern "C" {
 extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void func_02095670(void *object);
 extern void func_ov037_021fcf1c(void *object);
-extern void func_02095308(void *container);
+extern void PresentationList_DeleteAll(void *container);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
@@ -94,7 +94,7 @@ extern "C" void func_ov037_021fea78(void)
 extern "C" void *func_ov037_021fea7c(void *container)
 {
     FIELD(const void *, container, 0) = data_ov037_021fedac;
-    func_02095308(container);
+    PresentationList_DeleteAll(container);
     Heap_Free(container);
     return container;
 }

@@ -2,11 +2,11 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_activation.c for documented portable C. */
 
-    .extern func_02094bbc
-    .extern func_020948e4
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_TransitionTo
     .extern func_020956fc
     .extern func_020ae024
-    .extern func_020948f8
+    .extern PresentationScalar_TransitionBy
     .extern data_020c9670
     .extern data_ov036_022051f0
 
@@ -21,12 +21,12 @@ func_ov036_022018a8:
     mov r2, r6
     mov r1, r5
     mvn r3, #0x1f
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r10, #0x120]
     mov r1, #0x3
     add r0, r0, #0x6c
     mov r2, #0x4000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r10, #0x120]
     mov r0, #0x1e
     str r0, [r1, #0x7c]
@@ -41,12 +41,12 @@ func_ov036_022018a8:
     mov r1, r5
     mov r2, r6
     mvn r3, #0x1f
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r10, #0x124]
     mov r1, #0x3
     add r0, r0, #0x6c
     mov r2, #0x4000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r10, #0x124]
     mov r0, #0x1e
     str r0, [r1, #0x7c]
@@ -80,7 +80,7 @@ L_02201964:
     ldr r0, [r0, #0x128]
     add r1, r5, r9
     add r2, r6, r8
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, r7, asr #0x4
     mov r7, r0, lsl #0x1
     mov r2, r7, lsl #0x1
@@ -93,7 +93,7 @@ L_02201964:
     mov r1, #0x4
     add r0, r0, #0xc
     mov r2, r2, asr #0x8
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r11, r7, lsl #0x1
     ldrsh r0, [r0, #0x2]
     add r1, r10, r4, lsl #0x2
@@ -104,13 +104,13 @@ L_02201964:
     add r0, r1, #0x1c
     mov r1, #0x4
     mov r2, r2, asr #0x8
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r10, r4, lsl #0x2
     ldr r0, [r0, #0x128]
     ldr r2, L_02201a74
     mov r1, #0x2
     add r0, r0, #0x6c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r2, r10, r4, lsl #0x2
     ldr r1, [r2, #0x128]
     mov r0, #0x3c

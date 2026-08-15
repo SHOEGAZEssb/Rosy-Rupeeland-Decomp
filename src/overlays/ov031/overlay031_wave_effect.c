@@ -11,7 +11,7 @@ extern const s16 data_020c9670[];
 extern "C" {
 #endif
 extern u32 genrand_int32(void);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -80,9 +80,9 @@ extern "C" void func_ov031_021fce98(void *effect)
         FIELD(s32, effect, 0x4a0) = ++elapsed;
     s32 scale = 0x100;
     if (FIELD(s32, effect, 0x480) == 1)
-        scale = func_02091a70(0, 0x100, duration, elapsed);
+        scale = Presentation_InterpolateLinear(0, 0x100, duration, elapsed);
     else if (FIELD(s32, effect, 0x480) == 2)
-        scale = func_02091a70(0x100, 0, duration, elapsed);
+        scale = Presentation_InterpolateLinear(0x100, 0, duration, elapsed);
 
     s32 amplitudeA = (genrand_int32() & 0xfff) * 10;
     s32 amplitudeB = (genrand_int32() & 0xfff) * 5;

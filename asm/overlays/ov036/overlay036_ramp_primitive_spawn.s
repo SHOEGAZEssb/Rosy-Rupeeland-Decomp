@@ -6,11 +6,11 @@
     .extern data_020c9670
     .extern Heap_Alloc
     .extern func_ov036_021fd690
-    .extern func_02094bbc
+    .extern Presentation_SetPosition
     .extern func_02094bf0
-    .extern func_020948f8
-    .extern func_020948e4
-    .extern func_02095274
+    .extern PresentationScalar_TransitionBy
+    .extern PresentationScalar_TransitionTo
+    .extern PresentationList_Append
     .extern data_ov036_02206180
     .extern gHeapContext
 
@@ -85,7 +85,7 @@ L_0220167c:
     mov r1, r7
     rsb r2, r2, #0x0
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x0
     mov r0, r8
     mov r2, r1
@@ -94,15 +94,15 @@ L_0220167c:
     mov r2, r5
     add r0, r8, #0xc
     mov r1, #0x1
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     mov r2, r6
     add r0, r8, #0x1c
     mov r1, #0x1
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r8, #0x2c
     mov r1, #0x1
     mvn r2, #0xff
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r9, lsl #0x10
     mov r0, r0, asr #0x10
     str r0, [r8, #0x7c]
@@ -110,7 +110,7 @@ L_0220167c:
     mov r1, #0x0
     str r1, [r8, #0x80]
     mov r1, r8
-    bl func_02095274
+    bl PresentationList_Append
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_02201700: .word data_020c9670

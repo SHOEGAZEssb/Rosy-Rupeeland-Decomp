@@ -13,10 +13,10 @@ extern void GamePhaseTouchPrompt_UpdateAlternateHideSequence(GamePhaseTouchPromp
 extern s32 ActorDerivedType1_IsActiveRecordType69(void *actor);
 extern s32 ActorDerivedType1_IsActiveRecordType6A(void *actor);
 extern void GraphicsSpriteGroup_AdvanceAnimations(GraphicsSpriteGroup *group);
-extern s32 func_020954d4(void *actor);
-extern void func_020954c0(void *actor, s32 animation);
-extern void func_020954e0(void *actor);
-extern void func_020954f4(void *actor);
+extern s32 SpritePresentation_GetAnimation(void *actor);
+extern void SpritePresentation_SetAnimation(void *actor, s32 animation);
+extern void SpritePresentation_Show(void *actor);
+extern void SpritePresentation_Hide(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -64,8 +64,8 @@ s32 GamePhaseTouchPrompt_Update(GamePhaseTouchPrompt *self)
     } else {
         animation = 0;
     }
-    if (func_020954d4(self->actor) != animation)
-        func_020954c0(self->actor, animation);
+    if (SpritePresentation_GetAnimation(self->actor) != animation)
+        SpritePresentation_SetAnimation(self->actor, animation);
     return 0;
 }
 
@@ -78,8 +78,8 @@ s32 GamePhaseTouchPrompt_SetEnabled(GamePhaseTouchPrompt *self, s32 enabled)
     s32 previous = self->enabled;
     self->enabled = enabled;
     if (enabled)
-        func_020954e0(self->actor);
+        SpritePresentation_Show(self->actor);
     else
-        func_020954f4(self->actor);
+        SpritePresentation_Hide(self->actor);
     return previous;
 }

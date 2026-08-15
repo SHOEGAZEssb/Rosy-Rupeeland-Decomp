@@ -9,9 +9,9 @@
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_02095308
-    .extern func_020953c8
-    .extern func_0209548c
+    .extern PresentationList_DeleteAll
+    .extern SpritePresentation_InitVariant
+    .extern SpritePresentation_Destroy
 .global func_ov018_021fce00
 func_ov018_021fce00:
     stmdb sp!, {r4, r5, r6, r7, lr}
@@ -21,7 +21,7 @@ func_ov018_021fce00:
     mov r5, r0
     mov r4, r2
     mov r6, r3
-    bl func_020953c8
+    bl SpritePresentation_InitVariant
     ldr r1, L_021fcea8
     add r0, r5, #0xa0
     str r1, [r5, #0x0]
@@ -67,7 +67,7 @@ func_ov018_021fceb0:
     add r0, r4, #0xa0
     bl func_02071eb8
     mov r0, r4
-    bl func_0209548c
+    bl SpritePresentation_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
     .size func_ov018_021fceb0, . - func_ov018_021fceb0
@@ -79,7 +79,7 @@ func_ov018_021fced0:
     add r0, r4, #0xa0
     bl func_02071eb8
     mov r0, r4
-    bl func_0209548c
+    bl SpritePresentation_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4
@@ -114,7 +114,7 @@ func_ov018_021fcf20:
     ldr r1, L_021fcf3c
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fcf3c: .word data_ov018_021ffd00

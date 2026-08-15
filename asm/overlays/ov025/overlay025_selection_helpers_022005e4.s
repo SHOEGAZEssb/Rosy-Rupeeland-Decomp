@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
-.extern func_020954f4
+.extern SpritePresentation_Hide
 
 
     .global func_ov025_022005e4
@@ -15,9 +15,9 @@ func_ov025_022005e4:
     ldr r0, [r4, #0xe4]
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r5, #0xdc]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldr r0, [r5, #0xe0]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     mov r2, #0x0
 L_02200614:
     add r0, r5, r2, lsl #0x2

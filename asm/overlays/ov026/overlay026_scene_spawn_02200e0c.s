@@ -6,11 +6,11 @@
 .extern GraphicsAnimationInstanceManager_CreateInstance
 .extern func_0209189c
 .extern func_020918f4
-.extern func_020948d4
-.extern func_020948e4
-.extern func_020948f8
-.extern func_02094bbc
-.extern func_02095274
+.extern PresentationScalar_SetImmediate
+.extern PresentationScalar_TransitionTo
+.extern PresentationScalar_TransitionBy
+.extern Presentation_SetPosition
+.extern PresentationList_Append
 .extern func_020955d8
 .extern func_020956a4
 .extern func_ov026_021fe5c0
@@ -86,10 +86,10 @@ L_02200e54:
     adc r10, lr, #0x0
     mov r3, r3, lsr #0xc
     orr r3, r3, r10, lsl #0x14
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r9, #0x6c
     ldr r1, L_02200fec
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r9
     bl func_020956a4
     mov r1, #0x1
@@ -104,7 +104,7 @@ L_02200e54:
     adc r3, ip, #0x0
     mov r2, r2, lsr #0xc
     orr r2, r2, r3, lsl #0x14
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r9, #0x2c
     mov r1, #0x1
     mov r3, #0x0
@@ -116,15 +116,15 @@ L_02200e54:
     adc r3, r5, #0x0
     mov r2, r2, lsr #0xc
     orr r2, r2, r3, lsl #0x14
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r9, #0x1c
     mov r1, #0x5
     sub r2, r1, #0x338
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r9, #0x6c
     mov r1, #0x3
     ldr r2, L_02200ff0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x3a4
     add r0, r0, #0x400
     mov r1, #0x1e
@@ -135,7 +135,7 @@ L_02200e54:
     bl func_ov026_021fe5c0
     mov r1, r9
     add r0, r4, #0x304
-    bl func_02095274
+    bl PresentationList_Append
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
 L_02200fdc: .word data_ov026_02204acc

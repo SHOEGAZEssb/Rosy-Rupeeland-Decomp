@@ -3,7 +3,7 @@
 .extern data_020df9e8
 .extern data_020e6adc
 .extern Actor_RestoreSavedFlags
-.extern func_020919e8
+.extern Presentation_InterpolateSmoothStep
 .global ActorExtendedType2_TransitionNoOp
 .type ActorExtendedType2_TransitionNoOp, @function
 ActorExtendedType2_TransitionNoOp: ; 0x02040a58
@@ -97,7 +97,7 @@ ActorExtendedType2_UpdateAttachmentScaleTransition: ; 0x02040a5c
     mov r0, #0x20
     mov r1, #0x100
     mov r2, #0x14
-    bl func_020919e8
+    bl Presentation_InterpolateSmoothStep
     mov r0, r0, lsl #0x10
     ldr r1, [r4, #0x54]
     mov r0, r0, asr #0x10

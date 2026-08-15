@@ -9,7 +9,7 @@ extern const u32 data_ov017_02201628[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_020add34(void *, void *);
 #ifdef __cplusplus
 }
@@ -47,7 +47,7 @@ extern "C" void *func_ov017_021fe9c0(void *state)
 extern "C" void *func_ov017_021fe9e0(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201628;
-    func_02095308(state);
+    PresentationList_DeleteAll(state);
     return state;
 }
 

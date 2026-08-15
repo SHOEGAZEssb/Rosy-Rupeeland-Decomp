@@ -6,8 +6,8 @@
 .extern func_02091b98
 .extern func_02091c7c
 .extern func_02092260
-.extern func_02094cf0
-.extern func_02095224
+.extern Presentation_SetScript
+.extern Presentation_IsScriptComplete
 .extern func_ov026_022009dc
 .extern func_ov026_02200dd8
 
@@ -36,19 +36,19 @@ L_02202e70:
     ldr r0, [r4, #0x160]
     ldr r1, L_02202f44
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x79c]
     add r0, r0, #0x1
     str r0, [r4, #0x79c]
 L_02202e8c:
     ldr r0, [r4, #0x160]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_02202f2c
     ldr r0, [r4, #0x160]
     add r1, sp, #0x0
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     add r0, r4, #0x3a8
     add r0, r0, #0x400
     mov r1, #0x3c
@@ -76,7 +76,7 @@ L_02202f00:
     mov r1, #0x8
     bl func_ov026_02200dd8
     ldr r0, [r4, #0x160]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_02202f2c
     mov r0, r4

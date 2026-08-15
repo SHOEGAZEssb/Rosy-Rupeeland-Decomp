@@ -13,13 +13,13 @@ typedef struct Overlay005CounterState {
 extern "C" {
 #endif
 extern const u8 data_ov005_021fcab0[];
-extern void func_02095308(void *state);
+extern void PresentationList_DeleteAll(void *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Install data_ov005_021fcab0 at +0x00, call func_02095308(state), and return
+ * Install data_ov005_021fcab0 at +0x00, call PresentationList_DeleteAll(state), and return
  * state. All observable teardown and ownership effects are delegated to that
  * callee; this wrapper performs no direct hardware access.
  */
@@ -29,6 +29,6 @@ extern "C"
 Overlay005CounterState *func_ov005_021fb84c(Overlay005CounterState *state)
 {
     state->descriptor_000 = data_ov005_021fcab0;
-    func_02095308(state);
+    PresentationList_DeleteAll(state);
     return state;
 }

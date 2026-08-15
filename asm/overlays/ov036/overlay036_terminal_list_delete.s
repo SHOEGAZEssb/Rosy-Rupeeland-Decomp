@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_terminal_teardown_thunks.c for documented portable C. */
 
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern Heap_Free
     .extern data_ov036_02205eac
 
@@ -12,7 +12,7 @@ func_ov036_02204d44:
     ldr r1, L_02204d68
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     bl Heap_Free
     mov r0, r4

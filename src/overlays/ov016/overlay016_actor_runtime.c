@@ -14,12 +14,12 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern s32 func_02092910(void *, void *);
-extern void func_020948f8(void *, s32, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern s32 func_02094d28(void *, s32, s32, s32);
-extern void func_02095274(void *, void *);
-extern void func_020952b4(void *, void *);
-extern void func_02095508(void *);
+extern void PresentationScalar_TransitionBy(void *, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
+extern void PresentationList_Append(void *, void *);
+extern void PresentationList_Remove(void *, void *);
+extern void SpritePresentation_SyncPosition(void *);
 extern void func_020958d8(void *);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
@@ -50,14 +50,14 @@ extern "C" s32 func_ov016_021fe4d0(void *state, void *target)
     if (actor != 0) {
         actor = func_ov016_021fe004(actor, target, FIELD(void *, state, 0x18));
     }
-    func_02095274((u8 *)state + 0xd0, actor);
+    PresentationList_Append((u8 *)state + 0xd0, actor);
     position = FIELD(void *, target, 0x10);
     base = FIELD(void *, position, 0);
-    func_02094bbc(actor,
+    Presentation_SetPosition(actor,
                   (FIELD(s16, position, 0x2c) + FIELD(s32, base, 0x18)) << 12,
                   (FIELD(s16, position, 0x2e) + FIELD(s32, base, 0x1c)) << 12,
                   0);
-    func_02095508(actor);
+    SpritePresentation_SyncPosition(actor);
     func_ov016_021fe2b0(state);
     func_02095928((u8 *)state + 0x20);
     return 1;
@@ -81,9 +81,9 @@ extern "C" void *func_ov016_021fe584(void *state, void *key, s32 remove)
             if (remove == 0) {
                 return FIELD(void *, actor, 0xac);
             }
-            func_020952b4((u8 *)state + 0xd0, actor);
+            PresentationList_Remove((u8 *)state + 0xd0, actor);
             FIELD(void *, state, 0xcc) = actor;
-            func_020948f8((u8 *)actor + 0x1c, 1, -0x20000);
+            PresentationScalar_TransitionBy((u8 *)actor + 0x1c, 1, -0x20000);
             FIELD(s32, actor, 0x7c) = 0x10;
             FIELD(s32, actor, 0x80) = 0;
             if (FIELD(s32, state, 0xdc) == 0) {
@@ -126,7 +126,7 @@ extern "C" void func_ov016_021fe63c(void *state)
             FIELD(void *, state, 0xcc) = 0;
         } else {
             FIELD(u16, FIELD(void *, actor, 0x9c), 0x34) =
-                (u16)func_02094d28(actor, 1, 0x100, 0x10);
+                (u16)Presentation_InterpolateScalar(actor, 1, 0x100, 0x10);
         }
     }
     for (actor = FIELD(void *, state, 0xd4); actor != 0;

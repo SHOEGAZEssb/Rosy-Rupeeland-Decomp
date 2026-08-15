@@ -6,8 +6,8 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_0209189c
 .extern func_020918f4
-.extern func_02095274
-.extern func_02095360
+.extern PresentationList_Append
+.extern PresentationList_UpdateAndDeleteCompleted
 .extern func_ov094_022177e0
 .extern gGameWork
 .extern gHeapContext
@@ -78,10 +78,10 @@ func_ov094_02217d64:
 .L_02217e58:
     mov r1, r7
     add r0, r8, #0x14
-    bl func_02095274
+    bl PresentationList_Append
 .L_02217e64:
     add r0, r8, #0x14
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r8, #0xc]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r8, #0x10]

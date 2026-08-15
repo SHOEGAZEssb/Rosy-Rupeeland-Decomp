@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_oscillating_object_update.c for documented portable C. */
 
-    .extern func_020948d4
+    .extern PresentationScalar_SetImmediate
     .extern func_ov036_021fe978
     .extern func_02091b98
     .extern func_02091c7c
@@ -61,11 +61,11 @@ L_02201ec0:
     add r1, r1, r0, lsr #0x18
     add r0, r4, #0xc
     add r1, r2, r1, asr #0x8
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r4, #0x20]
     add r0, r4, #0x1c
     add r1, r1, #0x18
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0xd4]
     ldr r1, [r4, #0x10]
     ldr r2, [r4, #0x20]
@@ -94,11 +94,11 @@ L_02201f40:
     add r1, r1, r0, lsr #0x18
     add r0, r4, #0xc
     add r1, r2, r1, asr #0x8
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r4, #0x20]
     add r0, r4, #0x1c
     add r1, r1, #0x18
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0xd4]
     ldr r1, [r4, #0x10]
     ldr r2, [r4, #0x20]
@@ -124,7 +124,7 @@ L_02201f40:
     mul r2, r1, r0
     add r0, r4, #0x4c
     sub r1, r3, r2
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
 L_02201fec:
     ldr r0, [r4, #0x20]
     cmp r0, #0x1600
@@ -149,7 +149,7 @@ L_02202000:
     add r0, r4, #0x6c
     mov r1, #0x400
     str r2, [r4, #0xa0]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r2, #0x10
     str r2, [sp, #0x0]
     add r0, r4, #0xd8
@@ -174,7 +174,7 @@ L_02202070:
     bl func_02091bd0
     mov r1, r0
     add r0, r4, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r4, #0xd8
     bl func_02091cf0
     cmp r0, #0x0
@@ -193,7 +193,7 @@ L_022020e0:
     ldr r1, [r4, #0x20]
     add r0, r4, #0x1c
     sub r1, r1, #0x80
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0xd4]
     ldr r1, [r4, #0x10]
     ldr r2, [r4, #0x20]

@@ -5,7 +5,7 @@
 .extern data_ov026_022049ec
 .extern data_ov026_02204a48
 .extern Heap_AllocCore
-.extern func_020949ec
+.extern Presentation_Init
 .extern func_020afddc
 .extern func_020afe00
 .extern func_020afe64
@@ -24,7 +24,7 @@ func_ov026_021fd370:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x14
     mov r10, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fd4cc
     mov r0, #0x1000
     str r1, [r10, #0x0]

@@ -17,7 +17,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern s32 func_020918f4(void *, s32);
 extern void *func_ov027_021fd408(void *, void *, const s32 *, s32);
-extern void func_02095274(void *, void *);
+extern void PresentationList_Append(void *, void *);
 extern void func_ov027_021fda08(void *, s32, s32);
 extern void func_ov027_021fe1c8(void *);
 extern void func_02059278(void *, s32, s32);
@@ -65,7 +65,7 @@ extern "C" void func_ov027_021fe4d4(void *scene)
                                     data_ov027_021feb54 + index * 3,
                                     FIELD(s32, scene, 0x5c0));
     }
-    func_02095274((u8 *)scene + 0x140, child);
+    PresentationList_Append((u8 *)scene + 0x140, child);
     FIELD(s32, scene, 0x5c0) = -FIELD(s32, scene, 0x5c0);
 }
 

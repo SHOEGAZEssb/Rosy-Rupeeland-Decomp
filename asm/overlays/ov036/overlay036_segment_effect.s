@@ -2,10 +2,10 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_segment_effect.c for documented portable C. */
 
-    .extern func_020949ec
-    .extern func_020948d4
+    .extern Presentation_Init
+    .extern PresentationScalar_SetImmediate
     .extern func_020ae024
-    .extern func_02094d28
+    .extern Presentation_InterpolateScalar
     .extern data_ov036_02206044
 
     .global func_ov036_021fd834
@@ -15,7 +15,7 @@ func_ov036_021fd834:
     mov r4, r1
     mov r7, r2
     mov r6, r3
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021fd8f4
     ldr r1, [sp, #0x18]
     str r0, [r5, #0x0]
@@ -26,7 +26,7 @@ func_ov036_021fd834:
     ldr r1, [sp, #0x20]
     str r0, [r5, #0xa8]
     add r0, r5, #0x2c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r3, [r5, #0xa4]
     ldr r0, [r5, #0x9c]
     ldr r2, [r5, #0xa8]
@@ -38,7 +38,7 @@ func_ov036_021fd834:
     mov r0, r0, lsl #0x10
     mov r1, r0, lsr #0x10
     add r0, r5, #0x5c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov ip, #0x0
     mov r0, r4, lsl #0x10
     ldr r1, [sp, #0x24]
@@ -68,30 +68,30 @@ func_ov036_021fd8f8:
     ldr r1, [r6, #0x30]
     add r0, r6, #0x2c
     sub r1, r1, #0x2
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r6
     mov r1, #0x4
     mov r2, #0x0
     mov r3, #0x80
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     str r0, [r6, #0xac]
     ldrh r3, [r6, #0xb4]
     mov r0, r6
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r5, r0
     mov r0, r6
     mov r1, #0x3
     mov r2, #0x0
     ldrh r3, [r6, #0xb0]
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r4, r0
     mov r0, r6
     mov r1, #0x3
     mov r2, #0x0
     ldrh r3, [r6, #0xb2]
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     orr r0, r4, r0, lsl #0x5
     orr r0, r0, r5, lsl #0xa
     strh r0, [r6, #0xb6]

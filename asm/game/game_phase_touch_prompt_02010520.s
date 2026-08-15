@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_touch_prompt_runtime.c.
 .text
-.extern func_020954e0
-.extern func_020954f4
+.extern SpritePresentation_Show
+.extern SpritePresentation_Hide
 .global GamePhaseTouchPrompt_SetEnabled
 GamePhaseTouchPrompt_SetEnabled:
     stmdb sp!, {r4, lr}
@@ -10,10 +10,10 @@ GamePhaseTouchPrompt_SetEnabled:
     str r1, [r0, #0x20]
     ldr r0, [r0, #0x1c]
     beq L_02010540
-    bl func_020954e0
+    bl SpritePresentation_Show
     b L_02010544
 L_02010540:
-    bl func_020954f4
+    bl SpritePresentation_Hide
 L_02010544:
     mov r0, r4
     ldmia sp!, {r4, pc}

@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void func_ov036_021fcf30(void *object);
 extern void GraphicsResourceSetVariant_Destroy(void *resourceSet);
-extern void func_02095308(void *list);
+extern void PresentationList_DeleteAll(void *list);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
@@ -86,13 +86,13 @@ extern "C" void *func_ov036_02204d2c(void *object)
 }
 
 /*
- * Restores the common list vtable, tears down the list through func_02095308,
+ * Restores the common list vtable, tears down the list through PresentationList_DeleteAll,
  * frees it, and returns the now-invalid pointer.
  */
 extern "C" void *func_ov036_02204d44(void *list)
 {
     FIELD(const void *, list, 0) = data_ov036_02205eac;
-    func_02095308(list);
+    PresentationList_DeleteAll(list);
     Heap_Free(list);
     return list;
 }

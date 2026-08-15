@@ -4,7 +4,7 @@
     .extern data_ov017_022016e0
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
     .extern gSoundContext
 .global func_ov017_021fe894
 func_ov017_021fe894:
@@ -22,7 +22,7 @@ func_ov017_021fe894:
 L_021fe8c0:
     mov r0, #0x0
     mov r1, #0x10
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r0
     ldr r0, [r10, #0x1c]
     and r1, r1, #0xff
@@ -52,7 +52,7 @@ L_021fe920:
     ldr r3, [r10, #0x64]
     mov r0, r7
     mov r1, #0xf
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r8, r0
     mov r9, r7
     mov r6, #0x1

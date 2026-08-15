@@ -25,9 +25,9 @@ extern void func_0206fcec(void *);
 extern void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(void *, s32, void *);
 extern void func_02092260(void *, s32);
 extern void func_020922f0(void *, s32);
-extern void func_02094cf0(void *, void *, s32);
-extern void func_020954c0(void *, s32);
-extern void func_020954e0(void *);
+extern void Presentation_SetScript(void *, void *, s32);
+extern void SpritePresentation_SetAnimation(void *, s32);
+extern void SpritePresentation_Show(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095928(void *);
 extern s32 func_02095dd4(void *, void *, s32);
@@ -63,7 +63,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
             if (FIELD(s32, data_ov017_022016e0, 0x80) == 0) {
                 func_02092260(state, 0x4100);
                 if (FIELD(s32, state, 0x3bc) != 0) {
-                    func_020954c0(FIELD(void *, state, 0x260), 1);
+                    SpritePresentation_SetAnimation(FIELD(void *, state, 0x260), 1);
                 } else {
                     GraphicsSpriteGroup_ReplaceStateResourcesFromSource(FIELD(void *, state, 0x58),
                                   FIELD(s32, FIELD(void *, state, 0x260), 0x9c),
@@ -72,8 +72,8 @@ extern "C" s32 func_ov017_02200cc0(void *state)
             } else {
                 func_02092260(state, 0x4103);
             }
-            func_020954e0(FIELD(void *, state, 0x260));
-            func_02094cf0(FIELD(void *, state, 0x260),
+            SpritePresentation_Show(FIELD(void *, state, 0x260));
+            Presentation_SetScript(FIELD(void *, state, 0x260),
                           data_ov017_02201420, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

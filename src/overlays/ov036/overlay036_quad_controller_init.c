@@ -33,8 +33,8 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *object, void *handle);
-extern void func_02095274(void *list, void *object);
-extern void func_02094cf0(void *object, const void *data, s32 mode);
+extern void PresentationList_Append(void *list, void *object);
+extern void Presentation_SetScript(void *object, const void *data, s32 mode);
 extern void func_020b0300(s32, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -110,8 +110,8 @@ extern "C" void *func_ov036_022021b0(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xd8) = child;
-    func_02095274((u8 *)controller + 0xfc, child);
-    func_02094cf0(child, data_ov036_022056c8, 1);
+    PresentationList_Append((u8 *)controller + 0xfc, child);
+    Presentation_SetScript(child, data_ov036_022056c8, 1);
     func_020b0300(0x7fff, 0x1f, 0x7fff, 0x3f, 0);
     FIELD(s32, controller, 0x15c) = 0;
     return controller;

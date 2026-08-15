@@ -12,8 +12,8 @@ extern "C" {
 extern void Heap_Free(void *);
 extern u32 genrand_int32(void);
 extern s32 func_01ff88c4(s32, void *, u32);
-extern void func_020949ec(void *);
-extern void func_02094bbc(void *, u32, u32, u32);
+extern void Presentation_Init(void *);
+extern void Presentation_SetPosition(void *, u32, u32, u32);
 extern void *func_ov017_021fd744(void *);
 extern void *func_ov017_021fd780(void *);
 extern void func_ov017_021fd7f8(void *, s32);
@@ -62,7 +62,7 @@ extern "C" void *func_ov017_021fd94c(void *state, u16 value9a,
                                       u16 value9c, u16 valuea0,
                                       u16 resourceId)
 {
-    func_020949ec(state);
+    Presentation_Init(state);
     FIELD(const u32 *, state, 0) = data_ov017_02201670;
     func_ov017_021fd744((u8 *)state + 0xbc);
     FIELD(u16, state, 0x9c) = value9c;
@@ -71,7 +71,7 @@ extern "C" void *func_ov017_021fd94c(void *state, u16 value9a,
     FIELD(u16, state, 0xa0) = valuea0;
     FIELD(u32, state, 0xb4) = 0;
     FIELD(u32, state, 0xb8) = 0;
-    func_02094bbc(state, baseArg1, 0x200000, baseArg3);
+    Presentation_SetPosition(state, baseArg1, 0x200000, baseArg3);
     FIELD(s32, state, 0xa4) = 0xc;
     FIELD(s32, state, 0xa8) = 0;
     FIELD(s32, state, 0xac) = 0;

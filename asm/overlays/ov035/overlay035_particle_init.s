@@ -2,13 +2,13 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_particle.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern genrand_int32
     .extern func_020918f4
     .extern func_02094bf0
     .extern func_0209189c
-    .extern func_02094bbc
-    .extern func_020948e4
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_TransitionTo
     .extern func_ov035_021fd274
     .extern data_ov035_02203c40
 
@@ -17,7 +17,7 @@
 func_ov035_021fd7f0: 
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r6, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fd9d8
     mov r0, #0x0
     str r1, [r6, #0x0]
@@ -49,12 +49,12 @@ func_ov035_021fd7f0:
     mov r1, r4
     mov r0, r6
     mov r2, #0x1200
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r2, #0x800
     add r0, r6, #0x1c
     mov r1, #0x1
     rsb r2, r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r6, #0x9c
     mov r1, #0x1e
     bl func_020918f4

@@ -11,7 +11,7 @@ extern void *data_020f4e18[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *container);
+extern void PresentationList_DeleteAll(void *container);
 extern void Graphics3DResourceOwner_RemoveManager(void *ownerResource);
 extern void func_02071e04(void *archive, void *resource);
 extern void Graphics3DLightSet_Destroy(void *table);
@@ -23,17 +23,17 @@ extern void Heap_Free(void *allocation);
 
 static void releaseSceneContents(void *scene)
 {
-    func_02095308((u8 *)scene + 0x12c);
-    func_02095308((u8 *)scene + 0x13c);
+    PresentationList_DeleteAll((u8 *)scene + 0x12c);
+    PresentationList_DeleteAll((u8 *)scene + 0x13c);
     void *resourceOwner = FIELD(void *, scene, 0x114);
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, resourceOwner, 0));
     func_02071e04(data_020f4e18[0], FIELD(void *, scene, 0x110));
     Graphics3DLightSet_Destroy((u8 *)scene + 0x14c);
 
     FIELD(const void *, scene, 0x13c) = data_ov037_021fedac;
-    func_02095308((u8 *)scene + 0x13c);
+    PresentationList_DeleteAll((u8 *)scene + 0x13c);
     FIELD(const void *, scene, 0x12c) = data_ov037_021fedac;
-    func_02095308((u8 *)scene + 0x12c);
+    PresentationList_DeleteAll((u8 *)scene + 0x12c);
 
     /* Slots are released in reverse construction order. */
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0x104);

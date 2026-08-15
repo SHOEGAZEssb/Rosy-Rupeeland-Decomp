@@ -17,8 +17,8 @@
     .extern func_020922f0
     .extern func_02092c8c
     .extern func_020939d8
-    .extern func_02095274
-    .extern func_020954e0
+    .extern PresentationList_Append
+    .extern SpritePresentation_Show
     .extern func_020afd0c
     .extern func_020befec
     .extern func_ov003_021fb7ec
@@ -119,7 +119,7 @@ L_021feb40:
     mov r1, r6
     str r6, [r4, #0x1c4]
     add r0, r4, #0x3cc
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -141,7 +141,7 @@ L_021feb68:
     mov r2, #0x24
     bl func_020afd0c
     ldr r0, [r4, #0x1c4]
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

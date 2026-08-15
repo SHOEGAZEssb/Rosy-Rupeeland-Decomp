@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_orbit_controller_destroy.c for documented portable C. */
 
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern Graphics3DResourceOwner_RemoveManager
     .extern GraphicsResourceSetVariant_Destroy
     .extern Heap_Free
@@ -16,14 +16,14 @@ func_ov036_0220094c:
     mov r4, r0
     str r1, [r4, #0x0]
     add r0, r4, #0x11c
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, [r4, #0x100]
     ldr r0, [r1, #0x0]
     bl Graphics3DResourceOwner_RemoveManager
     ldr r1, L_022009b4
     add r0, r4, #0x11c
     str r1, [r4, #0x11c]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0xf4
     bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xe8

@@ -10,12 +10,12 @@ extern const u8 data_ov036_022051f0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_020948f8(void *field, s32 mode, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
 extern void func_020956fc(void *object);
 extern s32 func_020ae024(s32 x, s32 y);
-extern void func_02095360(void *list);
+extern void PresentationList_UpdateAndDeleteCompleted(void *list);
 extern void GraphicsAnimationInstanceManager_Update(void *manager);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_ov036_02201580(void *controller, s32 duration);
@@ -55,8 +55,8 @@ extern "C" void func_ov036_022018a8(void *controller)
 
     for (s32 i = 0; i < 2; ++i) {
         void *child = FIELD(void *, controller, 0x120 + i * 4);
-        func_02094bbc(child, anchorX, anchorZ, -0x20);
-        func_020948e4((u8 *)child + 0x6c, 3, 0x4000);
+        Presentation_SetPosition(child, anchorX, anchorZ, -0x20);
+        PresentationScalar_TransitionTo((u8 *)child + 0x6c, 3, 0x4000);
         FIELD(s32, child, 0x7c) = 0x1e;
         FIELD(s32, child, 0x80) = 0;
         FIELD(s32, child, 0x88) = 1;
@@ -71,13 +71,13 @@ extern "C" void func_ov036_022018a8(void *controller)
                                        divide_by_16(zOffset + 0x100));
         u32 index = (angle >> 4) * 2;
         void *child = FIELD(void *, controller, 0x128 + i * 4);
-        func_02094bbc(child, anchorX + xOffset, anchorZ + zOffset,
+        Presentation_SetPosition(child, anchorX + xOffset, anchorZ + zOffset,
                       *(const s32 *)(record + 0xc));
-        func_020948f8((u8 *)child + 0xc, 4,
+        PresentationScalar_TransitionBy((u8 *)child + 0xc, 4,
                       halve(data_020c9670[index]));
-        func_020948f8((u8 *)child + 0x1c, 4,
+        PresentationScalar_TransitionBy((u8 *)child + 0x1c, 4,
                       halve(data_020c9670[index + 1]));
-        func_020948e4((u8 *)child + 0x6c, 2, 0x19a);
+        PresentationScalar_TransitionTo((u8 *)child + 0x6c, 2, 0x19a);
         FIELD(s32, child, 0x7c) = 0x3c;
         FIELD(s32, child, 0x80) = 0;
         FIELD(s32, child, 0x88) = 1;
@@ -93,8 +93,8 @@ extern "C" void func_ov036_022018a8(void *controller)
  */
 extern "C" void func_ov036_02201a78(void *controller)
 {
-    func_02095360((u8 *)controller + 0x148);
-    func_02095360((u8 *)controller + 0x158);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x148);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x158);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0x118));
     (void)func_02091c7c((u8 *)controller + 0x168, 0);
     for (s32 i = 0; i < 4; ++i)

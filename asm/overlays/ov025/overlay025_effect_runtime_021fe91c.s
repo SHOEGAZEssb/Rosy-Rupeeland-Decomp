@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_return_config.c. */
 .extern func_020918f4
-.extern func_020948e4
+.extern PresentationScalar_TransitionTo
 .extern func_ov025_021fe174
 .extern func_ov025_021fe248
 .extern func_ov025_021fe2c4
@@ -54,7 +54,7 @@ L_021fe994:
     add r0, r4, #0xc
     rsb r2, r2, #0x0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021fe9e4
 L_021fe9cc:
     mov r3, #0x42
@@ -62,7 +62,7 @@ L_021fe9cc:
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x120000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021fe9e4:
     ldr r0, [r4, #0xac]
     cmp r0, #0x3
@@ -95,19 +95,19 @@ L_021fea2c:
     add r0, r4, #0xc
     rsb r2, r2, #0x0
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021fea6c
 L_021fea58:
     bl func_ov025_021fe2c4
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x120000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021fea6c:
     add r0, r4, #0x1c
     mov r1, #0x2
     mov r2, #0x40000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x78
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -126,7 +126,7 @@ L_021fea90:
     add r0, r4, #0xc
     rsb r2, r2, #0x0
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021feae4
 L_021feac8:
     mov r2, r1
@@ -135,12 +135,12 @@ L_021feac8:
     add r0, r4, #0xc
     mov r1, #0x1
     mov r2, #0x120000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021feae4:
     add r0, r4, #0x1c
     mov r1, #0x3
     mov r2, #0x40000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x5a
     str r0, [r4, #0x7c]
     mov r0, #0x0

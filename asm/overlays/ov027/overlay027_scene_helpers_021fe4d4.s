@@ -5,7 +5,7 @@
 .extern data_ov027_021fef4c
 .extern GraphicsAnimationInstanceManager_CreateInstance
 .extern func_020918f4
-.extern func_02095274
+.extern PresentationList_Append
 .extern func_ov027_021fd408
 .extern gHeapContext
 .extern Heap_Alloc
@@ -41,7 +41,7 @@ func_ov027_021fe4d4:
 L_021fe538:
     mov r1, r6
     add r0, r4, #0x140
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r4, #0x5c0]
     rsb r0, r0, #0x0
     str r0, [r4, #0x5c0]

@@ -29,7 +29,7 @@ extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern s32 func_020918f4(u32 *, s32);
-extern void func_020949ec(void *);
+extern void Presentation_Init(void *);
 extern void func_ov025_021fe4cc(void *, s32, s32);
 #ifdef __cplusplus
 }
@@ -45,7 +45,7 @@ extern void func_ov025_021fe4cc(void *, s32, s32);
  */
 extern "C" void *func_ov025_021fdecc(void *object)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov025_02203354;
     __construct_array((u8 *)object + 0xb0, 3, 0xc,
                       (void *)func_02071ea4, (void *)func_02071eb8);

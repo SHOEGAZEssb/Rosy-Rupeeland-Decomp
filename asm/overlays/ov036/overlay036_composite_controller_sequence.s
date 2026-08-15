@@ -5,12 +5,12 @@
     .extern func_02059278
     .extern func_02091b98
     .extern func_02091c7c
-    .extern func_02094cf0
+    .extern Presentation_SetScript
     .extern func_ov036_02203024
-    .extern func_02095224
+    .extern Presentation_IsScriptComplete
     .extern Sound_Play
     .extern GraphicsAnimationInstance_SetAnimation
-    .extern func_02095248
+    .extern Presentation_IsScriptSuspended
     .extern func_ov036_021fdc1c
     .extern func_0205929c
     .extern func_ov036_02202fb8
@@ -63,11 +63,11 @@ L_02203320:
     ldr r0, [r4, #0xfc]
     ldr r1, L_0220375c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd8]
     ldr r1, L_02203760
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
@@ -79,7 +79,7 @@ L_02203360:
     b L_02203748
 L_02203374:
     ldr r0, [r4, #0xfc]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_0220339c
     add r0, r4, #0xa4
@@ -112,15 +112,15 @@ L_022033b0:
     ldr r0, [r4, #0x154]
     ldr r1, L_02203768
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x158]
     ldr r1, L_02203768
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xf8]
     ldr r1, L_0220376c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x1a0]
     mov r1, #0x7e00
     strh r1, [r0, #0x14]
@@ -135,7 +135,7 @@ L_02203430:
     b L_02203748
 L_02203444:
     ldr r0, [r4, #0x154]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_02203474
     ldr r0, [r4, #0x1a0]
@@ -192,7 +192,7 @@ L_02203504:
     b L_02203748
 L_02203518:
     ldr r0, [r4, #0x154]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_02203548
     ldr r0, [r4, #0x1a0]
@@ -253,7 +253,7 @@ L_022035e8:
     b L_02203748
 L_022035fc:
     ldr r0, [r4, #0x154]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_0220362c
     ldr r0, [r4, #0x1a0]
@@ -314,7 +314,7 @@ L_022036cc:
     b L_02203748
 L_022036e0:
     ldr r0, [r4, #0x154]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_02203718
     ldr r0, L_02203758

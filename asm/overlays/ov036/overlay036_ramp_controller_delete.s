@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_controller_lifecycle.c for documented portable C. */
 
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern Graphics3DResourceOwner_RemoveManager
     .extern GraphicsResourceSetVariant_Destroy
     .extern Heap_Free
@@ -16,20 +16,20 @@ func_ov036_022013dc:
     ldr r1, L_02201468
     add r0, r4, #0x148
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x158
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, [r4, #0x118]
     ldr r0, [r1, #0x0]
     bl Graphics3DResourceOwner_RemoveManager
     ldr r1, L_0220146c
     add r0, r4, #0x158
     str r1, [r4, #0x158]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_0220146c
     add r0, r4, #0x148
     str r1, [r4, #0x148]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x10c
     bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0x100

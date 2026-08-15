@@ -3,10 +3,10 @@
 /* Exact fallback; see src/overlays/ov034/overlay034_intro_state.c for documented portable C. */
 
     .extern func_ov034_021fe2c4
-    .extern func_020948e4
+    .extern PresentationScalar_TransitionTo
     .extern func_ov034_021fda1c
-    .extern func_02094d28
-    .extern func_020948d4
+    .extern Presentation_InterpolateScalar
+    .extern PresentationScalar_SetImmediate
     .extern func_ov034_021fdac0
     .extern func_ov034_021fdf98
     .extern func_ov034_021fd9c0
@@ -71,7 +71,7 @@ L_021fe060:
     mov r1, r7
     mov r2, r6
     add r0, r0, #0x6c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, r5, lsl #0x2
     mov r1, r5, lsl #0x1
     ldr r0, [r0, #0x8]
@@ -91,7 +91,7 @@ L_021fe0ac:
     mov r1, #0x1
     mov r2, #0x0
     mov r3, #0x20000
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r0, r0, lsl #0x10
     mov r0, r0, lsr #0x10
     mov r1, r0, asr #0x4
@@ -106,7 +106,7 @@ L_021fe0e4:
     ldr r0, [r0, #0x8]
     mov r1, r5
     add r0, r0, #0x4c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r6, r6, #0x1
 L_021fe0fc:
     ldr r0, [r4, #0x1b0]
@@ -126,7 +126,7 @@ L_021fe10c:
     mov r1, #0x2
     add r0, r0, #0x6c
     mov r2, #0x1800
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r8, #0x4000
     mov r9, #0x1
     ldr r1, [r4, #0x0]
@@ -145,13 +145,13 @@ L_021fe170:
     mov r1, r9
     mov r2, r8
     add r0, r0, #0x3c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, r10, lsl #0x2
     ldr r0, [r0, #0x8]
     mov r1, r7
     mov r2, r11
     add r0, r0, #0x6c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, r10, lsl #0x2
     ldr r0, [r0, #0x8]
     add r10, r10, #0x1
@@ -178,7 +178,7 @@ L_021fe1e8:
     mov r1, r9
     mov r2, r8
     mov r3, r7
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     cmp r0, #0x0
     movlt r0, r6
     blt L_021fe214
@@ -205,7 +205,7 @@ L_021fe23c:
     mov r1, #0x2
     add r0, r0, #0x6c
     mov r2, #0x1000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x0]
     mov r0, #0x8
     str r0, [r1, #0x7c]

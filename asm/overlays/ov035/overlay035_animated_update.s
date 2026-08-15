@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_animated_object.c for documented portable C. */
 
-    .extern func_020948d4
-    .extern func_02094dd4
+    .extern PresentationScalar_SetImmediate
+    .extern Presentation_UpdateScript
     .extern func_020956a4
     .extern data_020c9670
 
@@ -30,7 +30,7 @@ L_021fdc00:
     mov r1, r1, lsl #0x10
     mov r1, r1, lsr #0x10
     str r1, [r4, #0xac]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r4, #0xac]
     ldr r0, L_021fdce4
     mov r1, r1, asr #0x4
@@ -42,7 +42,7 @@ L_021fdc00:
     mov r1, r2, asr #0xb
     add r1, r2, r1, lsr #0x14
     add r1, r3, r1, asr #0xc
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     b L_021fdcc8
 L_021fdc64:
     ldr r0, [r4, #0xac]
@@ -57,7 +57,7 @@ L_021fdc64:
     ldrsh r1, [r1, r0]
     str r2, [r4, #0xac]
     add r0, r4, #0x5c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r4, #0xac]
     ldr r0, L_021fdce4
     mov r1, r1, asr #0x4
@@ -69,10 +69,10 @@ L_021fdc64:
     mov r1, r2, asr #0xb
     add r1, r2, r1, lsr #0x14
     add r1, r3, r1, asr #0xc
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
 L_021fdcc8:
     mov r0, r4
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     mov r5, r0
     mov r0, r4
     bl func_020956a4

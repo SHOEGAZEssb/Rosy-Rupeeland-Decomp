@@ -7,8 +7,8 @@
 .extern func_ov094_0221800c
 .extern func_ov094_02218040
 .extern func_ov094_0221807c
-.extern func_0209554c
-.extern func_02095540
+.extern SpritePresentation_DispatchScriptCommand
+.extern SpritePresentation_SyncVtableSlot
 .extern func_ov094_02219434
 .extern func_ov094_02219460
 .extern func_ov094_02219494
@@ -145,15 +145,15 @@ data_ov094_02219e80:
     .word func_ov094_0221800c
     .word func_ov094_02218040
     .word func_ov094_0221807c
-    .word func_0209554c
-    .word func_02095540
+    .word SpritePresentation_DispatchScriptCommand
+    .word SpritePresentation_SyncVtableSlot
     .byte 0x00, 0x00, 0x00, 0x00
     .word data_ov094_02219dd4
 data_ov094_02219e9c:
     .word func_ov094_02219434
     .word func_ov094_02219460
     .word func_ov094_02219494
-    .word func_0209554c
+    .word SpritePresentation_DispatchScriptCommand
     .word func_ov094_02219540
     .byte 0x00, 0x00, 0x00, 0x00
     .word data_ov094_02219dec
@@ -161,8 +161,8 @@ data_ov094_02219eb8:
     .word func_ov094_022179b0
     .word func_ov094_022179dc
     .word func_ov094_02217a10
-    .word func_0209554c
-    .word func_02095540
+    .word SpritePresentation_DispatchScriptCommand
+    .word SpritePresentation_SyncVtableSlot
     .byte 0x00, 0x00, 0x00, 0x00
     .word data_ov094_02219db0
 data_ov094_02219ed4:
@@ -177,8 +177,8 @@ data_ov094_02219ef0:
     .word func_ov094_02218b14
     .word func_ov094_02218b48
     .word func_ov094_02218b84
-    .word func_0209554c
-    .word func_02095540
+    .word SpritePresentation_DispatchScriptCommand
+    .word SpritePresentation_SyncVtableSlot
 data_ov094_02219f04:
     .byte 0x4b, 0x4b, 0x44, 0x4c, 0x00, 0x00, 0x00, 0x00
 data_ov094_02219f0c:

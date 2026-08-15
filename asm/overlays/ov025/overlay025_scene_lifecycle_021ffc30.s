@@ -11,7 +11,7 @@
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020926f8
 .extern func_020927b8
-.extern func_02095308
+.extern PresentationList_DeleteAll
 .extern func_ov025_021fdec8
 .extern func_ov025_021ff1c8
 .extern func_ov094_022196a4
@@ -34,7 +34,7 @@ func_ov025_021ffc30:
     bl func_020597fc
     add r0, r4, #0xf8
     add r0, r0, #0x400
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, [r4, #0x50c]
     cmp r0, #0x0
     beq L_021ffc80
@@ -105,7 +105,7 @@ L_021ffd28:
     add r0, r4, #0xf8
     str r1, [r4, #0x4f8]
     add r0, r0, #0x400
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x2f4
     mov r1, #0x3
     mov r2, #0xac

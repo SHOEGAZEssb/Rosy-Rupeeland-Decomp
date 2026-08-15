@@ -4,11 +4,11 @@
 
     .extern func_02059278
     .extern func_0205929c
-    .extern func_02094cf0
+    .extern Presentation_SetScript
     .extern func_ov035_021fd25c
     .extern func_02091c7c
     .extern func_ov035_022011a8
-    .extern func_02095224
+    .extern Presentation_IsScriptComplete
     .extern func_ov035_022012ac
     .extern func_ov035_02201000
     .extern gSoundContext
@@ -40,19 +40,19 @@ L_0220138c:
     ldr r0, [r4, #0xfc]
     ldr r1, L_022014c0
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x100]
     ldr r1, L_022014c4
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x104]
     ldr r1, L_022014c8
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd8]
     ldr r1, L_022014cc
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
@@ -84,7 +84,7 @@ L_02201444:
     mov r0, #0x1
     str r0, [r4, #0x174]
     ldr r0, [r4, #0x104]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     bne L_022014ac
     mov r0, r4

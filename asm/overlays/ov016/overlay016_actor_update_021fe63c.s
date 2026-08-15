@@ -1,7 +1,7 @@
     .text
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_02094d28
+    .extern Presentation_InterpolateScalar
     .extern func_020958d8
 
 /* Exact fallbacks for actor update; see src/overlays/ov016/overlay016_actor_runtime.c. */
@@ -42,7 +42,7 @@ L_021fe6b0:
     mov r1, #0x1
     mov r2, #0x100
     mov r3, #0x10
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r4, #0xcc]
     ldr r1, [r1, #0x9c]
     strh r0, [r1, #0x34]

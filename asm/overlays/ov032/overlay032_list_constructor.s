@@ -12,9 +12,9 @@
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02093d20
 .extern func_020944f0
-.extern func_02094bbc
-.extern func_020953f4
-.extern func_02095508
+.extern Presentation_SetPosition
+.extern SpritePresentation_Init
+.extern SpritePresentation_SyncPosition
 .extern func_ov032_02201f58
 .extern gHeapContext
 
@@ -109,7 +109,7 @@ L_022020a8:
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r4
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r4, r0
 L_022020e4:
     add r2, r10, r6, lsl #0x2
@@ -124,16 +124,16 @@ L_022020e4:
     bne L_0220211c
     mov r2, r1
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     b L_02202128
 L_0220211c:
     mov r2, r5
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
 L_02202128:
     add r0, r10, r6, lsl #0x2
     ldr r0, [r0, #0x64]
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     add r6, r6, #0x1
     cmp r6, #0x2
     blt L_022020a8

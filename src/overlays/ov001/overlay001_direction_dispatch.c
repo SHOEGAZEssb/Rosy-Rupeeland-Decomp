@@ -19,11 +19,11 @@ typedef struct Overlay001DirectionInput {
 extern "C" {
 #endif
 extern void func_02093de4(void *controller);
-extern void func_02093b30(void *embeddedState);
+extern void IndexedSelectionController_SnapTransitionOrigin(void *embeddedState);
 extern void func_02093e0c(void *controller);
 extern void func_02093e20(void *controller);
-extern void func_02093bb0(void *embeddedState);
-extern void func_02093b8c(void *embeddedState);
+extern void IndexedSelectionController_DecrementWrap(void *embeddedState);
+extern void IndexedSelectionController_IncrementWrap(void *embeddedState);
 #ifdef __cplusplus
 }
 #endif
@@ -42,15 +42,15 @@ s32 func_ov001_021fcae0(Overlay001DirectionState *state,
                          const Overlay001DirectionInput *input)
 {
     func_02093de4(state->controller_1bc);
-    func_02093b30(state->embedded_1c0);
+    IndexedSelectionController_SnapTransitionOrigin(state->embedded_1c0);
     if ((input->buttons_00 & 0x40) != 0) {
         func_02093e0c(state->controller_1bc);
     } else if ((input->buttons_00 & 0x80) != 0) {
         func_02093e20(state->controller_1bc);
     } else if ((input->buttons_00 & 0x20) != 0) {
-        func_02093bb0(state->embedded_1c0);
+        IndexedSelectionController_DecrementWrap(state->embedded_1c0);
     } else if ((input->buttons_00 & 0x10) != 0) {
-        func_02093b8c(state->embedded_1c0);
+        IndexedSelectionController_IncrementWrap(state->embedded_1c0);
     } else {
         return 0;
     }

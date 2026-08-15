@@ -5,7 +5,7 @@
     .extern GraphicsResourceSetVariant_Destroy
     .extern func_02095670
     .extern func_ov037_021fcf1c
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern Heap_Free
     .extern data_ov037_021fedac
 
@@ -111,7 +111,7 @@ func_ov037_021fea7c:
     ldr r1, L_021feaa0
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     bl Heap_Free
     mov r0, r4

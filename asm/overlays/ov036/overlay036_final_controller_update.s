@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_final_controller_update.c for documented portable C. */
 
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
 
     .global func_ov036_0220429c
@@ -18,9 +18,9 @@ func_ov036_0220429c:
     ldr r1, [r1, #0x8]
     blx r1
     add r0, r4, #0xfc
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x10c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0xe8]
     bl GraphicsAnimationInstanceManager_Update
     ldmia sp!, {r4, pc}

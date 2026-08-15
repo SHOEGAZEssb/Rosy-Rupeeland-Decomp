@@ -15,11 +15,11 @@ extern "C" {
 #endif
 extern void func_02059278(void *soundContext, s32 id, s32 value);
 extern void func_0205929c(void *soundContext, s32 id, s32 value);
-extern void func_02094cf0(void *object, const void *animation, s32 loop);
+extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
 extern s32 func_ov035_021fd25c(void *object);
 extern s32 func_02091c7c(void *state, s32 value);
 extern s32 func_ov035_022011a8(void *scene);
-extern s32 func_02095224(void *object);
+extern s32 Presentation_IsScriptComplete(void *object);
 extern void func_ov035_022012ac(void *scene);
 extern void func_ov035_02201000(void *scene);
 #ifdef __cplusplus
@@ -41,13 +41,13 @@ extern "C" s32 func_ov035_02201360(void *scene)
     switch (FIELD(s32, scene, 0xa0)) {
     case 0:
         func_02059278(gSoundContext, 0xb8, 0x7f);
-        func_02094cf0(FIELD(void *, scene, 0xfc),
+        Presentation_SetScript(FIELD(void *, scene, 0xfc),
                       data_ov035_022030a0, 1);
-        func_02094cf0(FIELD(void *, scene, 0x100),
+        Presentation_SetScript(FIELD(void *, scene, 0x100),
                       data_ov035_02202c34, 1);
-        func_02094cf0(FIELD(void *, scene, 0x104),
+        Presentation_SetScript(FIELD(void *, scene, 0x104),
                       data_ov035_02202c6c, 1);
-        func_02094cf0(FIELD(void *, scene, 0xd8),
+        Presentation_SetScript(FIELD(void *, scene, 0xd8),
                       data_ov035_02202e0c, 1);
         ++FIELD(s32, scene, 0xa0);
         /* Fall through to poll the primary sprite immediately. */
@@ -63,7 +63,7 @@ extern "C" s32 func_ov035_02201360(void *scene)
                 ++FIELD(s32, scene, 0xa0);
         } else {
             FIELD(s32, scene, 0x174) = 1;
-            if (func_02095224(FIELD(void *, scene, 0x104)) == 0)
+            if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x104)) == 0)
                 func_ov035_022012ac(scene);
         }
         break;

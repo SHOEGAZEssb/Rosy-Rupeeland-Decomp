@@ -2,9 +2,9 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_020c9670
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020919e8
-.extern func_020948d4
-.extern func_02094c48
+.extern Presentation_InterpolateSmoothStep
+.extern PresentationScalar_SetImmediate
+.extern Presentation_AdvanceTransitions
 .extern func_020befec
 .extern func_ov094_02217bc8
 .extern func_ov094_02217be0
@@ -22,7 +22,7 @@ func_ov094_02217a10:
     beq .L_02217b98
     b .L_02217bb4
 .L_02217a38:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     ldr r0, [r4, #0xac]
     add r3, r0, #0x1
     str r3, [r4, #0xac]
@@ -63,10 +63,10 @@ func_ov094_02217a10:
     rsbeq r0, r0, #0x0
     moveq r1, #0x10000
 .L_02217ad0:
-    bl func_020919e8
+    bl Presentation_InterpolateSmoothStep
     mov r1, r0
     add r0, r4, #0x3c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0xac]
     ldr r1, [r4, #0xb0]
     mov r0, r0, lsl #0x10
@@ -82,7 +82,7 @@ func_ov094_02217a10:
     add r0, r4, #0x4c
     rsb r1, r1, #0x0
     mov r1, r1, lsl #0x2
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
 .L_02217b20:
     mov r0, r4
     bl func_ov094_02217bc8
@@ -97,7 +97,7 @@ func_ov094_02217a10:
     str r0, [r4, #0xa4]
     b .L_02217bb4
 .L_02217b50:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq .L_02217bb4
     ldr r1, [r4, #0xb4]

@@ -9,7 +9,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseState
-.extern func_02091a70
+.extern Presentation_InterpolateLinear
 .extern gGameWork
 .extern genrand_int32
 
@@ -137,7 +137,7 @@ func_02024e24: ; 0x02024e24
     mov r0, #0x0
     mov r1, #0x10
     mov r2, #0x78
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mul r0, r5, r0
     str r0, [r4, #0x20]
     ldr r0, [r4, #0x30]

@@ -11,7 +11,7 @@ extern const s32 data_020c368c[];
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern u32 genrand_int32(void);
-extern s32 func_02091a70(s32 target, s32 start, s32 duration,
+extern s32 Presentation_InterpolateLinear(s32 target, s32 start, s32 duration,
                         s32 remaining);
 extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value);
 extern void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 value);
@@ -96,7 +96,7 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
         if ((s16)self->transitionTimer != 0) {
             self->transitionTimer--;
             if (self->flags & 0x100) {
-                self->displayedValue = func_02091a70(
+                self->displayedValue = Presentation_InterpolateLinear(
                     current, self->transitionStartValue,
                     self->transitionDuration, (s16)self->transitionTimer);
             } else if (self->flags & 0x20) {
@@ -105,10 +105,10 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
                 s32 remaining = (s16)self->transitionTimer;
                 if (remaining > 10)
                     remaining = 10;
-                self->displayedValue = func_02091a70(
+                self->displayedValue = Presentation_InterpolateLinear(
                     current, self->transitionStartValue, 10, remaining);
             } else {
-                self->displayedValue = func_02091a70(
+                self->displayedValue = Presentation_InterpolateLinear(
                     current, self->transitionStartValue, 20,
                     (s16)self->transitionTimer);
             }

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_activation.c for documented portable C. */
 
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
     .extern func_02091c7c
     .extern func_ov036_02201580
@@ -13,9 +13,9 @@ func_ov036_02201a78:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     add r0, r5, #0x148
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r5, #0x158
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r5, #0x118]
     bl GraphicsAnimationInstanceManager_Update
     add r0, r5, #0x168

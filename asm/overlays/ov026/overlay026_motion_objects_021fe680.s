@@ -2,14 +2,14 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_motion_objects.c. */
 .extern data_ov026_022049d0
-.extern func_020949ec
+.extern Presentation_Init
 
 
     .global func_ov026_021fe680
 func_ov026_021fe680:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021fe6e4
     ldr r1, L_021fe6e8
     str r0, [r4, #0x0]

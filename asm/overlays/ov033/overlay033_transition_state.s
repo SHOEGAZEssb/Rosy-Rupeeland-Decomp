@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov033/overlay033_transition_state.c for documented portable C. */
 
-    .extern func_02094bbc
-    .extern func_02094cf0
+    .extern Presentation_SetPosition
+    .extern Presentation_SetScript
     .extern GameWork_SetFlag
     .extern GamePhaseRuntime_StageAreaRequest
     .extern Heap_Alloc
@@ -47,11 +47,11 @@ L_021fd764:
     mov r1, r1, asr #0xc
     mov r2, r2, asr #0xc
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x48]
     ldr r1, L_021fd980
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd0]
     add r0, r0, #0x1
     str r0, [r4, #0xd0]
@@ -155,7 +155,7 @@ L_021fd910:
     ldr r0, [r4, #0x48]
     ldr r1, L_021fd998
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd0]
     add r0, r0, #0x1
     str r0, [r4, #0xd0]

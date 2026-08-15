@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_emitter_runtime.c. */
     .extern data_ov022_022005a8
     .extern data_ov022_022005b8
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
     .extern func_02091b98
     .extern func_02091bac
 
@@ -16,7 +16,7 @@ func_ov022_021fcfd4:
     mov r3, r7
     mov r0, #0x14
     mov r1, #0xc8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r4, r0
     mov r0, r7, lsl #0x2
     cmp r4, r7, lsl #0x2

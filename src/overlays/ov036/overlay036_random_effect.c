@@ -10,13 +10,13 @@ extern const u8 data_ov036_02205f80[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void *func_ov036_021fcf30(void *object);
-extern void func_02095308(void *record);
+extern void PresentationList_DeleteAll(void *record);
 extern u32 genrand_int32(void);
-extern void func_02094bbc(void *object, s32 value, s32 minimum, s32 zero);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern s32 func_02091a70(s32 minimum, s32 maximum, s32 scale, s32 value);
+extern void Presentation_SetPosition(void *object, s32 value, s32 minimum, s32 zero);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern s32 Presentation_InterpolateLinear(s32 minimum, s32 maximum, s32 scale, s32 value);
 extern void GraphicsAnimationInstance_Destroy(void *handle);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
@@ -43,7 +43,7 @@ extern "C" void func_ov036_021fe218(void *record)
 extern "C" void *func_ov036_021fe238(void *record)
 {
     FIELD(const void *, record, 0) = data_ov036_02205eac;
-    func_02095308(record);
+    PresentationList_DeleteAll(record);
     return record;
 }
 
@@ -57,17 +57,17 @@ extern "C" void *func_ov036_021fe238(void *record)
  */
 extern "C" void *func_ov036_021fe258(void *object, const void *config)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov036_02205f80;
     func_ov036_021fe218((u8 *)object + 0x9c);
     FIELD(u32, object, 0xc8) = 0;
     FIELD(u32, object, 0xc8) = genrand_int32();
     FIELD(s32, object, 0xac) = 0;
     FIELD(void *, object, 0xcc) = 0;
-    func_02094bbc(object, FIELD(s32, config, 0), -0x600, 0);
-    func_020948e4((u8 *)object + 0x1c, 4, FIELD(s32, config, 4));
+    Presentation_SetPosition(object, FIELD(s32, config, 0), -0x600, 0);
+    PresentationScalar_TransitionTo((u8 *)object + 0x1c, 4, FIELD(s32, config, 4));
     FIELD(s32, object, 0x7c) =
-        (s16)func_02091a70(0, 0xb4, 0x800, FIELD(s32, config, 4));
+        (s16)Presentation_InterpolateLinear(0, 0xb4, 0x800, FIELD(s32, config, 4));
     FIELD(s32, object, 0x80) = 0;
     FIELD(u32, object, 0xb0) = FIELD(u16, config, 8);
     FIELD(u32, object, 0xb4) = FIELD(u16, config, 0xa);
@@ -91,7 +91,7 @@ extern "C" void *func_ov036_021fe328(void *object)
     if (FIELD(void *, object, 0xcc) != 0)
         GraphicsAnimationInstance_Destroy(FIELD(void *, object, 0xcc));
     FIELD(const void *, object, 0x9c) = data_ov036_02205eac;
-    func_02095308((u8 *)object + 0x9c);
+    PresentationList_DeleteAll((u8 *)object + 0x9c);
     func_ov036_021fcf30(object);
     return object;
 }
@@ -107,7 +107,7 @@ extern "C" void *func_ov036_021fe370(void *object)
     if (FIELD(void *, object, 0xcc) != 0)
         GraphicsAnimationInstance_Destroy(FIELD(void *, object, 0xcc));
     FIELD(const void *, object, 0x9c) = data_ov036_02205eac;
-    func_02095308((u8 *)object + 0x9c);
+    PresentationList_DeleteAll((u8 *)object + 0x9c);
     func_ov036_021fcf30(object);
     Heap_Free(object);
     return object;

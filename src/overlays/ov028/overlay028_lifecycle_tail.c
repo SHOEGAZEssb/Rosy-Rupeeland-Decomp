@@ -10,7 +10,7 @@ extern const u8 data_ov028_021ff29c[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_020afd0c(void *, s32, s32, s32);
 extern void func_ov028_021fce94(void *);
 extern void func_ov028_021fe438(void *);
@@ -63,7 +63,7 @@ extern "C" s32 func_ov028_021ff128(void *state)
 extern "C" void *func_ov028_021ff14c(void *object)
 {
     FIELD(const void *, object, 0) = data_ov028_021ff29c;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     Heap_Free(object);
     return object;
 }

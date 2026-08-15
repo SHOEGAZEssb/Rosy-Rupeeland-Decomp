@@ -20,9 +20,9 @@
     .extern func_02092288
     .extern func_02092c8c
     .extern func_020939d8
-    .extern func_020948e4
-    .extern func_02094cf0
-    .extern func_02095224
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptComplete
     .extern func_ov002_021fbe68
     .extern func_ov021_021fd1cc
     .extern func_ov021_021fd39c
@@ -123,7 +123,7 @@ L_022024d4:
     ldr r1, L_02202bc0
     str r0, [r4, #0x384]
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -132,7 +132,7 @@ L_022024d4:
     b L_02202ba8
 L_022024fc:
     ldr r0, [r4, #0x384]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_02202ba8
     add r0, r4, #0x2cc
@@ -414,7 +414,7 @@ L_022028e0:
     mov r1, #0x2
     add r0, r0, #0xc
     mov r2, #0x160
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [r4, #0x384]
     mov r0, #0x10
     str r0, [r2, #0x7c]
@@ -534,7 +534,7 @@ L_02202aa8:
     mov r1, #0x2
     add r0, r0, #0xc
     mov r2, #0x160
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x384]
     mov r0, #0x10
     str r0, [r1, #0x7c]

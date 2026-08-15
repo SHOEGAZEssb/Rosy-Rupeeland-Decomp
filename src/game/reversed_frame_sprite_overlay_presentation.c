@@ -36,8 +36,8 @@ extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void *func_020953f4(void *, void *sprite);
-extern void func_02094cf0(void *, const void *, s32);
+extern void *SpritePresentation_Init(void *, void *sprite);
+extern void Presentation_SetScript(void *, const void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -64,8 +64,8 @@ ReversedFrameSpriteOverlayPresentation *ReversedFrameSpriteOverlayPresentation_I
     GraphicsSpriteState_SetAnimationIndex(sprite, (u8)frame);
     self->controller18 = Heap_Alloc(0xa0, gSpriteOverlayControllerAllocationTag, 4, &gHeapContext);
     if (self->controller18)
-        self->controller18 = func_020953f4(self->controller18, sprite);
-    func_02094cf0(self->controller18, data_020c378c, 1);
+        self->controller18 = SpritePresentation_Init(self->controller18, sprite);
+    Presentation_SetScript(self->controller18, data_020c378c, 1);
     return self;
 }
 

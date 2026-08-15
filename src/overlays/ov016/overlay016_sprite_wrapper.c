@@ -16,9 +16,9 @@ extern void func_02071ea4(void *);
 extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02095308(void *);
-extern void func_020953c8(void *, s32);
-extern void func_0209548c(void *);
+extern void PresentationList_DeleteAll(void *);
+extern void SpritePresentation_InitVariant(void *, s32);
+extern void SpritePresentation_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -32,7 +32,7 @@ extern void func_0209548c(void *);
  */
 extern "C" void *func_ov016_021fe004(void *state, void *descriptor, void *owner)
 {
-    func_020953c8(state, 0);
+    SpritePresentation_InitVariant(state, 0);
     FIELD(const u32 *, state, 0) = data_ov016_0220155c;
     func_02071ea4((u8 *)state + 0xa0);
     FIELD(void *, state, 0xac) = descriptor;
@@ -53,7 +53,7 @@ extern "C" void *func_ov016_021fe004(void *state, void *descriptor, void *owner)
 extern "C" void *func_ov016_021fe08c(void *state)
 {
     func_02071eb8((u8 *)state + 0xa0);
-    func_0209548c(state);
+    SpritePresentation_Destroy(state);
     return state;
 }
 
@@ -64,7 +64,7 @@ extern "C" void *func_ov016_021fe08c(void *state)
 extern "C" void *func_ov016_021fe0ac(void *state)
 {
     func_02071eb8((u8 *)state + 0xa0);
-    func_0209548c(state);
+    SpritePresentation_Destroy(state);
     Heap_Free(state);
     return state;
 }
@@ -88,12 +88,12 @@ extern "C" void func_ov016_021fe0d8(void *state)
 }
 
 /*
- * Restore vtable 0x02201520, destroy the inherited func_02095308 base, and
+ * Restore vtable 0x02201520, destroy the inherited PresentationList_DeleteAll base, and
  * return state. SDK state may be released; there is no direct hardware access.
  */
 extern "C" void *func_ov016_021fe0f8(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov016_02201520;
-    func_02095308(state);
+    PresentationList_DeleteAll(state);
     return state;
 }

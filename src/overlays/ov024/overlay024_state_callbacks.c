@@ -23,13 +23,13 @@ extern void func_02028100(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void func_02092314(void *, s32, s32);
-extern void func_02093af8(void *, s32);
-extern void func_02093b20(void *);
-extern void func_02093b30(void *);
-extern void func_02093b3c(void *);
-extern void func_02093b64(void *);
-extern s32 func_02093bdc(void *);
-extern s32 func_02093c78(void *);
+extern void IndexedSelectionController_SetValue(void *, s32);
+extern void IndexedSelectionController_ResetTransition(void *);
+extern void IndexedSelectionController_SnapTransitionOrigin(void *);
+extern void IndexedSelectionController_Increment(void *);
+extern void IndexedSelectionController_Decrement(void *);
+extern s32 IndexedSelectionController_AdvanceTransition(void *);
+extern s32 IndexedSelectionController_AdvancePacing(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern s32 func_ov005_021fbdf8(void *, s32, void *);
 extern void func_ov024_021fce04(void *, void *, void *);
@@ -61,13 +61,13 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
     s32 step = FIELD(s32, scene, 4);
     if (step == 0) {
         FIELD(s32, FIELD(void *, scene, 0x2bc), 0x158) = 1;
-        func_02093b20((u8 *)scene + 0x284);
+        IndexedSelectionController_ResetTransition((u8 *)scene + 0x284);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         step = 1;
     }
     if (step == 1) {
-        if (func_02093c78((u8 *)scene + 0x284)) {
+        if (IndexedSelectionController_AdvancePacing((u8 *)scene + 0x284)) {
             if (FIELD(s32, scene, 0x290) != FIELD(s32, scene, 0x294))
                 func_ov024_021fd968(scene);
             ++FIELD(s32, scene, 4);
@@ -81,12 +81,12 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
     }
 
     if (step == 2) {
-        func_02093b30((u8 *)scene + 0x284);
+        IndexedSelectionController_SnapTransitionOrigin((u8 *)scene + 0x284);
         u16 keys = *(u16 *)FIELD(void *, scene, 0x2c);
         if ((keys & 0x40) && !(keys & 0x100)) {
-            func_02093b3c((u8 *)scene + 0x284);
+            IndexedSelectionController_Increment((u8 *)scene + 0x284);
         } else if ((keys & 0x80) && !(keys & 0x100)) {
-            func_02093b64((u8 *)scene + 0x284);
+            IndexedSelectionController_Decrement((u8 *)scene + 0x284);
         } else if (FIELD(u32, scene, 0x20) & 0x20) {
             if (func_02095860((u8 *)scene + 0x80,
                               (u8 *)scene + 0x30, 0, 4)) {
@@ -140,7 +140,7 @@ extern "C" s32 func_ov024_021fdcdc(void *scene)
             }
         }
 
-        if (func_02093bdc((u8 *)scene + 0x284)) {
+        if (IndexedSelectionController_AdvanceTransition((u8 *)scene + 0x284)) {
             func_02092260(scene, 0x2e80);
             --FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
@@ -165,7 +165,7 @@ extern "C" s32 func_ov024_021fe040(void *scene)
     if (FIELD(s32, scene, 4) == 1 && func_ov024_021fdac4(scene)) {
         s32 target = FIELD(s32, scene, 0x2f4);
         func_ov024_021fd8f8(scene, target);
-        func_02093af8((u8 *)scene + 0x284, target);
+        IndexedSelectionController_SetValue((u8 *)scene + 0x284, target);
         install_pair(scene, data_ov024_021fe2f0);
     }
     func_ov024_021fd86c(scene);

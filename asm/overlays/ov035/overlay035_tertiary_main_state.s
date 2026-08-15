@@ -3,17 +3,17 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_tertiary_main_state.c for documented portable C. */
 
     .extern func_02059278
-    .extern func_02094cf0
-    .extern func_02095248
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptSuspended
     .extern GraphicsAnimationInstance_SetAnimation
     .extern Sound_Play
     .extern func_02091c7c
     .extern func_02091dac
     .extern func_ov035_021ffb74
     .extern func_02091b98
-    .extern func_02095224
+    .extern Presentation_IsScriptComplete
     .extern func_0205929c
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
     .extern gSoundContext
     .extern data_ov035_02202f70
@@ -47,37 +47,37 @@ L_021ffc88:
     ldr r0, [r4, #0x128]
     ldr r1, L_021ffe24
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x12c]
     ldr r1, L_021ffe28
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x130]
     ldr r1, L_021ffe2c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x134]
     ldr r1, L_021ffe30
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x138]
     ldr r1, L_021ffe34
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x13c]
     ldr r1, L_021ffe38
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd8]
     ldr r1, L_021ffe3c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
 L_021ffd18:
     ldr r0, [r4, #0x12c]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021ffd74
     ldr r0, [r4, #0x130]
@@ -116,7 +116,7 @@ L_021ffd74:
     b L_021ffe00
 L_021ffdac:
     ldr r0, [r4, #0x12c]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_021ffe00
     ldr r0, L_021ffe20
@@ -130,18 +130,18 @@ L_021ffdac:
     b L_021ffe00
 L_021ffde0:
     add r0, r4, #0x174
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x184
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x124]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021ffe00:
     add r0, r4, #0x174
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x184
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x124]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0

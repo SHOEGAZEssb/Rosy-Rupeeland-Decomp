@@ -29,8 +29,8 @@ extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
-extern void func_02095274(void *collection, void *object);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *collection, void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void *func_ov035_021fd4b4(void *list, s32 argument);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
@@ -66,7 +66,7 @@ static void *create_sprite(void *scene, s32 resourceOffset, s32 identifier,
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (object != 0)
         object = func_020955d8(object, record);
-    func_02095274((u8 *)scene + 0x108, object);
+    PresentationList_Append((u8 *)scene + 0x108, object);
     return object;
 }
 
@@ -124,7 +124,7 @@ extern "C" void *func_ov035_022008d0(void *scene, void *resourceOwner,
     FIELD(void *, scene, 0x100) = create_sprite(scene, 0xe8, 0, 10, 0x42);
     FIELD(void *, scene, 0x104) = create_sprite(scene, 0xe8, 2, 10, 0x41);
     FIELD(void *, scene, 0xd8) = create_sprite(scene, 0xcc, 0, 12, 0x42);
-    func_020948d4((u8 *)FIELD(void *, scene, 0xd8) + 0x6c, 0xccd);
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0xd8) + 0x6c, 0xccd);
 
     void *list = Heap_Alloc(0x18, data_ov035_02203d60, 4, gHeapContext);
     if (list != 0)

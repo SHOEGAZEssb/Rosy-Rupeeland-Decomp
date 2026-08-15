@@ -24,7 +24,7 @@ extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
-extern void func_020948e4(void *, s32, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void func_ov002_021fbe68(void *);
 extern void func_ov029_021fce4c(void *, s32, s32);
 extern void func_ov029_021fd6fc(void *);
@@ -150,7 +150,7 @@ extern "C" s32 func_ov029_021fe870(void *state)
                 Overlay029_SetPair(state, data_ov029_021feca8);
             } else {
                 func_ov029_021fd9b4(state);
-                func_020948e4((u8 *)result + 0xc, 2, 0x160);
+                PresentationScalar_TransitionTo((u8 *)result + 0xc, 2, 0x160);
                 FIELD(s32, result, 0x7c) = 0x10;
                 FIELD(s32, result, 0x80) = 0;
                 FIELD(s32, state, 0x6c) = 0;

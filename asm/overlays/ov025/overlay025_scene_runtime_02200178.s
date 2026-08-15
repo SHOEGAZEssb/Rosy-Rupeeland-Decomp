@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_scene_runtime.c. */
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_02095360
+.extern PresentationList_UpdateAndDeleteCompleted
 .extern func_020958d8
 .extern func_ov094_022196e8
 
@@ -15,7 +15,7 @@ func_ov025_02200178:
     bl func_ov094_022196e8
     add r0, r7, #0xf8
     add r0, r0, #0x400
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r7, #0xf0
     bl func_020958d8
     add r0, r7, #0x19c

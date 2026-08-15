@@ -13,8 +13,8 @@ extern "C" {
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_02092260(void *, s32);
-extern void func_02094cf0(void *, const void *, s32);
-extern s32 func_02095224(void *);
+extern void Presentation_SetScript(void *, const void *, s32);
+extern s32 Presentation_IsScriptComplete(void *);
 extern void func_ov026_022009dc(void *);
 extern void func_ov026_02200dd8(void *, s32);
 #ifdef __cplusplus
@@ -33,13 +33,13 @@ extern "C" s32 func_ov026_02202d1c(void *scene)
 {
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02094cf0(FIELD(void *, scene, 0x160), data_ov026_0220434c, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), data_ov026_0220434c, 0);
         FIELD(s32, scene, 0x79c) = 1;
         state = 1;
     }
     if (state == 1) {
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
-            func_02094cf0(FIELD(void *, scene, 0x160),
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
+            Presentation_SetScript(FIELD(void *, scene, 0x160),
                            FIELD(const void *, scene, 0x368), 0);
             func_02091b98((u8 *)scene + 0x7a8, 0x78);
             FIELD(s32, scene, 0x79c) = 2;
@@ -75,13 +75,13 @@ extern "C" s32 func_ov026_02202e2c(void *scene)
         control[i] = data_ov026_02204098[i];
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02094cf0(FIELD(void *, scene, 0x160), data_ov026_0220434c, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), data_ov026_0220434c, 0);
         FIELD(s32, scene, 0x79c) = 1;
         state = 1;
     }
     if (state == 1) {
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
-            func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
+            Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
             func_02091b98((u8 *)scene + 0x7a8, 0x3c);
             FIELD(s32, scene, 0x79c) = 2;
         }
@@ -92,7 +92,7 @@ extern "C" s32 func_ov026_02202e2c(void *scene)
         }
     } else if (state == 3) {
         func_ov026_02200dd8(scene, 8);
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
             func_ov026_022009dc(scene);
             return 1;
         }

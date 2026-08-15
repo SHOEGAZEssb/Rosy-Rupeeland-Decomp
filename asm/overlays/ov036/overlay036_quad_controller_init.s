@@ -17,8 +17,8 @@
     .extern func_ov036_021ff050
     .extern Heap_Alloc
     .extern func_020955d8
-    .extern func_02095274
-    .extern func_02094cf0
+    .extern PresentationList_Append
+    .extern Presentation_SetScript
     .extern func_020b0300
     .extern data_ov036_02205fb8
     .extern data_020f4e18
@@ -216,11 +216,11 @@ L_02202480:
     str r0, [r5, #0xd8]
     mov r1, r0
     add r0, r5, #0xfc
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r5, #0xd8]
     ldr r1, L_022024f8
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, L_022024fc
     mov r3, #0x0
     str r3, [sp, #0x0]

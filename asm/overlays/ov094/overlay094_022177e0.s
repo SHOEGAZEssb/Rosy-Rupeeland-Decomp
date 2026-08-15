@@ -3,10 +3,10 @@
 .extern data_020c9670
 .extern data_ov094_02219eb8
 .extern GraphicsSpriteState_GetSequenceDuration
-.extern func_020948d4
-.extern func_020948e4
-.extern func_02094bbc
-.extern func_020953c8
+.extern PresentationScalar_SetImmediate
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
+.extern SpritePresentation_InitVariant
 .extern func_020befec
 
 .global func_ov094_022177e0
@@ -16,7 +16,7 @@ func_ov094_022177e0:
     mov r7, r2
     mov r5, r3
     ldr r6, [sp, #0x18]
-    bl func_020953c8
+    bl SpritePresentation_InitVariant
     ldr r0, [sp, #0x1c]
     ldr r1, .L_022179a4
     mov r0, r0, asr #0x4
@@ -51,7 +51,7 @@ func_ov094_022177e0:
     mov r3, #0x0
     str r7, [r8, #0xa0]
     add r5, r5, #0x150000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, r4, lsl #0x7
     mul r1, r6, r0
     mov r0, r1, asr #0x7
@@ -60,11 +60,11 @@ func_ov094_022177e0:
     add r2, r1, #0x80000
     add r0, r8, #0xc
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r8, #0x1c
     mov r1, #0x1
     mov r2, r5
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [sp, #0x20]
     mov r2, #0x0
     mov r1, r0, lsl #0x10
@@ -79,10 +79,10 @@ func_ov094_022177e0:
     str r0, [r8, #0xb0]
     add r0, r8, #0x3c
     mov r1, #0x0
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r8, #0x4c
     mov r1, #0x0
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [sp, #0x20]
     ands r0, r0, #0x1
     str r0, [r8, #0xb8]

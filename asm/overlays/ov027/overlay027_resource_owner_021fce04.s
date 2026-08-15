@@ -5,7 +5,7 @@
 .extern data_ov027_021feed0
 .extern data_ov027_021fef1c
 .extern Graphics3DResourceBinding_Init
-.extern func_020949ec
+.extern Presentation_Init
 .extern gHeapContext
 .extern Heap_Alloc
 
@@ -15,7 +15,7 @@ func_ov027_021fce04:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr ip, L_021fce60
     ldr r1, L_021fce64
     ldr r3, L_021fce68

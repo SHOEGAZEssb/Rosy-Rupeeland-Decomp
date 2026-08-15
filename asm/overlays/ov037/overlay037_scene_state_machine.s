@@ -2,15 +2,15 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_scene_state_machine.c for documented portable C. */
 
-    .extern func_02094cf0
-    .extern func_02095248
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptSuspended
     .extern func_ov037_021fdd08
     .extern func_ov037_021fd1b4
     .extern func_02092c8c
     .extern func_ov037_021fe1f0
     .extern func_ov037_021fdf68
     .extern DisplayBrightness_IsMainTransitionComplete
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
     .extern data_ov037_021febb0
     .extern data_ov037_021feb5c
@@ -37,29 +37,29 @@ L_021fe2b4:
     ldr r0, [r4, #0x118]
     ldr r1, L_021fe42c
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x11c]
     ldr r1, L_021fe430
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x124]
     ldr r1, L_021fe434
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x120]
     ldr r1, L_021fe438
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x128]
     ldr r1, L_021fe43c
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x9c]
     add r0, r0, #0x1
     str r0, [r4, #0x9c]
 L_021fe310:
     ldr r0, [r4, #0x118]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021fe40c
     ldr r0, [r4, #0x118]
@@ -71,7 +71,7 @@ L_021fe310:
     b L_021fe40c
 L_021fe33c:
     ldr r0, [r4, #0x118]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021fe368
     ldr r0, [r4, #0x118]
@@ -120,18 +120,18 @@ L_021fe3bc:
 L_021fe3e8:
     bl func_ov037_021fe1f0
     add r0, r4, #0x12c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x13c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x114]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021fe40c:
     add r0, r4, #0x12c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x13c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x114]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0

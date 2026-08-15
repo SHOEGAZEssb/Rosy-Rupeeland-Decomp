@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_multi_effect_emitter.c for documented portable C. */
 
-    .extern func_020948e4
+    .extern PresentationScalar_TransitionTo
 
     .global func_ov036_021ff778
 func_ov036_021ff778:
@@ -11,15 +11,15 @@ func_ov036_021ff778:
     mov r4, r3
     add r0, r5, #0xc
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r2, r4
     add r0, r5, #0x1c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [sp, #0x10]
     add r0, r5, #0x2c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [sp, #0x14]
     mov r1, #0x0
     mov r0, r0, lsl #0x10

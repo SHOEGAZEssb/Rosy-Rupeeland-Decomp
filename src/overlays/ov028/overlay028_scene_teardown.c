@@ -18,7 +18,7 @@ extern void GraphicsSpriteGroup_ReplaceStateResources(void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020927b8(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov028_021fd1a8(void *);
 extern void func_ov028_021fd790(void *);
 extern void func_ov028_021fda94(void *);
@@ -62,12 +62,12 @@ extern "C" void *func_ov028_021fdfa8(void *state)
         func_ov028_021fd790(child);
         Heap_Free(child);
     }
-    func_02095308((u8 *)state + 0x264);
+    PresentationList_DeleteAll((u8 *)state + 0x264);
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x54));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x58));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     FIELD(const void *, state, 0x264) = data_ov028_021ff29c;
-    func_02095308((u8 *)state + 0x264);
+    PresentationList_DeleteAll((u8 *)state + 0x264);
     func_020927b8((u8 *)state + 0x1fc);
     func_ov028_021fda94((u8 *)state + 0x144);
     func_ov028_021fda94((u8 *)state + 0x98);

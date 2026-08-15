@@ -3,10 +3,10 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_motion_primitive.c for documented portable C. */
 
     .extern func_ov036_021fd4b0
-    .extern func_02094c48
-    .extern func_020948e4
-    .extern func_020948d4
-    .extern func_02094bbc
+    .extern Presentation_AdvanceTransitions
+    .extern PresentationScalar_TransitionTo
+    .extern PresentationScalar_SetImmediate
+    .extern Presentation_SetPosition
 
     .global func_ov036_021fd31c
 func_ov036_021fd31c:
@@ -29,7 +29,7 @@ L_021fd344:
     strh r0, [r4, #0x9c]
 L_021fd358:
     mov r0, r4
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_021fd4a4
     ldrh r0, [r4, #0x98]
@@ -47,16 +47,16 @@ L_021fd394:
     add r0, r4, #0x6c
     mov r1, #0x4
     mov r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021fd3c4
 L_021fd3a8:
     add r0, r4, #0x6c
     mov r1, #0x0
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r2, r5
     add r0, r4, #0x6c
     mov r1, #0x3
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021fd3c4:
     ldrsh r1, [r4, #0x9e]
     mov r0, r4
@@ -66,7 +66,7 @@ L_021fd3c4:
     strh r0, [r4, #0x9c]
     b L_021fd4a4
 L_021fd3e0:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     ldrnesh r0, [r4, #0x9c]
     addne r0, r0, #0x1
@@ -88,7 +88,7 @@ L_021fd3e0:
     add r1, r6, r1, asr #0x8
     add r2, r5, r2, asr #0x8
     add r3, ip, r3, asr #0x8
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0xa4]
     ldr r1, L_021fd4ac
     mul r2, r0, r1

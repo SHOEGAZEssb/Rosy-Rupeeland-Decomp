@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void func_02071e04(void *, void *);
-extern void func_020948d4(void *, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
 extern void *func_ov026_021fce50(void *);
 extern void func_ov026_021fd900(u32, u32, u32, u32, u32, u32, u32, u32);
 extern void func_ov026_021fd964(u32, u32, u32, u32, u32, u32);
@@ -97,6 +97,6 @@ extern "C" void func_ov026_021feec8(void *object)
  */
 extern "C" void func_ov026_021fef70(void *object, s32 control_id)
 {
-    func_020948d4((u8 *)FIELD(void *, object, 0xa4) + 0x1c, control_id);
-    func_020948d4((u8 *)FIELD(void *, object, 0xa8) + 0x1c, control_id);
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, object, 0xa4) + 0x1c, control_id);
+    PresentationScalar_SetImmediate((u8 *)FIELD(void *, object, 0xa8) + 0x1c, control_id);
 }

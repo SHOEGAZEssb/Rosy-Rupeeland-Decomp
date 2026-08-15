@@ -16,11 +16,11 @@
     .extern func_0209189c
     .extern func_020918f4
     .extern func_02092260
-    .extern func_020948e4
-    .extern func_02094bbc
-    .extern func_02095274
-    .extern func_020952b4
-    .extern func_02095360
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_SetPosition
+    .extern PresentationList_Append
+    .extern PresentationList_Remove
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern func_020955d8
     .extern func_020958d8
     .extern func_020befec
@@ -170,7 +170,7 @@ L_0220025c:
 L_02200390:
     mov r1, r4
     add r0, r10, #0x3ec
-    bl func_02095274
+    bl PresentationList_Append
 L_0220039c:
     ldr r1, L_02200860
     add r0, r10, #0x3ac
@@ -189,7 +189,7 @@ L_022003c4:
     str r1, [r0, #0x34]
 L_022003d4:
     ldr r0, L_02200864
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     mov r1, #0x0
     ldr r0, L_02200850
     str r1, [r10, #0x3d0]
@@ -251,14 +251,14 @@ L_02200448:
 L_022004bc:
     mov r1, r9
     add r0, r10, #0x3ec
-    bl func_02095274
+    bl PresentationList_Append
     ldrh r2, [r4, #0x9c]
     ldr r3, [r10, #0x3cc]
     ldr r0, L_02200864
     add r2, r3, r2
     mov r1, r4
     str r2, [r10, #0x3cc]
-    bl func_020952b4
+    bl PresentationList_Remove
     cmp r4, #0x0
     beq L_02200510
     mov r0, r4
@@ -284,7 +284,7 @@ L_02200514:
     str r2, [r1, #0x64]
     bl func_ov017_02200064
     add r0, r10, #0x3ec
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, L_02200850
     ldr r1, [r0, #0x8]
     ldr r2, [r0, #0x0]
@@ -349,12 +349,12 @@ L_02200578:
 L_02200630:
     mov r1, r7
     add r0, r10, #0x3d8
-    bl func_02095274
+    bl PresentationList_Append
     mov r0, r7
     mov r1, r5
     mov r3, r6
     mov r2, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r10, #0x3fc
     mov r1, #0x600
     mov r2, #0x900
@@ -362,7 +362,7 @@ L_02200630:
     mov r2, r0
     add r0, r7, #0x1c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r4
     bl GraphicsAnimationInstance_GetSequenceDuration
     mov r0, r0, lsl #0x10
@@ -452,10 +452,10 @@ L_022006c8:
 L_022007c4:
     mov r1, r7
     add r0, r10, #0x3ec
-    bl func_02095274
+    bl PresentationList_Append
 L_022007d0:
     add r0, r10, #0x3d8
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r10, #0x254]
     bl func_ov017_021fe5b0
     add r0, r10, #0x12c

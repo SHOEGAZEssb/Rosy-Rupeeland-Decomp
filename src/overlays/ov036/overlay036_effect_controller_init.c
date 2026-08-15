@@ -21,8 +21,8 @@ extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fdf30(void *object, void *owner);
-extern void func_02095274(void *list, void *object);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void PresentationList_Append(void *list, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
@@ -101,8 +101,8 @@ extern "C" void *func_ov036_021fea14(void *controller, void *owner,
     if (renderObject != 0)
         renderObject = func_ov036_021fdf30(renderObject, owner);
     FIELD(void *, controller, 0x11c) = renderObject;
-    func_02095274((u8 *)controller + 0xf8, renderObject);
-    func_02094bbc(renderObject, 0, 0, -0x600);
+    PresentationList_Append((u8 *)controller + 0xf8, renderObject);
+    Presentation_SetPosition(renderObject, 0, 0, -0x600);
 
     func_ov036_021fe9fc((u8 *)controller + 0xc, 0, 0, 0x2000);
     func_ov036_021fea04((u8 *)controller + 0xc, 0, 0, 0);

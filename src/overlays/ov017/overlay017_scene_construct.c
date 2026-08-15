@@ -56,14 +56,14 @@ extern void func_020926d8(void *);
 extern void func_02092754(void *, s32);
 extern void func_02092798(void *);
 extern void func_02092814(void *, s32);
-extern void *func_020953f4(void *, void *);
-extern void func_020954f4(void *);
-extern void func_02095508(void *);
+extern void *SpritePresentation_Init(void *, void *);
+extern void SpritePresentation_Hide(void *);
+extern void SpritePresentation_SyncPosition(void *);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095940(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void func_0205974c(void *, s32);
 extern void func_020ae778(void);
 extern void func_020ae7b0(void);
@@ -169,15 +169,15 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
 
     object = Heap_Alloc(0xa0, data_ov017_0220168c, 4, gHeapContext);
     if (object != 0) {
-        object = func_020953f4(
+        object = SpritePresentation_Init(
             object, GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58),
                                   (u8 *)state + 0x68, 1));
     }
     FIELD(void *, state, 0x260) = object;
     FIELD(u8, FIELD(void *, object, 0x9c), 0x3a) = 2;
-    func_020954f4(object);
-    func_02094bbc(object, -0x40000, 0x60000, 0);
-    func_02095508(object);
+    SpritePresentation_Hide(object);
+    Presentation_SetPosition(object, -0x40000, 0x60000, 0);
+    SpritePresentation_SyncPosition(object);
 
     FIELD(s32, state, 0x310) = 1;
     func_ov017_021fea00((u8 *)state + 0x310, 0, 0x1800, 0x1000);

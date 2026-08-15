@@ -22,10 +22,10 @@
 .extern func_02092814
 .extern func_020929b0
 .extern func_02092cc0
-.extern func_02093a88
-.extern func_02094bbc
-.extern func_020953f4
-.extern func_02095508
+.extern IndexedSelectionController_Init
+.extern Presentation_SetPosition
+.extern SpritePresentation_Init
+.extern SpritePresentation_SyncPosition
 .extern func_020957bc
 .extern func_020957f0
 .extern func_02095820
@@ -70,7 +70,7 @@ func_ov023_021fd9f8:
     mov r2, #0xac
     bl __construct_array
     add r0, r10, #0x480
-    bl func_02093a88
+    bl IndexedSelectionController_Init
     add r0, r10, #0xc4
     add r0, r0, #0x400
     bl func_020929b0
@@ -216,7 +216,7 @@ L_021fdc60:
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r9
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r9, r0
 L_021fdc9c:
     mul r0, r8, r4
@@ -229,10 +229,10 @@ L_021fdc9c:
     strh r5, [r0, #0x28]
     ldr r0, [r3, #0x380]
     mov r3, r5
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r10, r8, lsl #0x2
     ldr r0, [r0, #0x380]
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     add r8, r8, #0x1
     cmp r8, #0x2
     blt L_021fdc60

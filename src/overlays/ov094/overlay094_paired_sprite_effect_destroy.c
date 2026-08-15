@@ -8,7 +8,7 @@ extern const u8 data_ov094_02219e9c[];
 extern "C" {
 #endif
 extern void GraphicsSpriteState_ReleaseFromGroup(void *state);
-extern void func_0209548c(void *effect);
+extern void SpritePresentation_Destroy(void *effect);
 #ifdef __cplusplus
 }
 #endif
@@ -21,6 +21,6 @@ extern "C" void *func_ov094_02219434(void *effect)
 {
     *(const void **)effect = data_ov094_02219e9c;
     GraphicsSpriteState_ReleaseFromGroup(*(void **)((u8 *)effect + 0xa4));
-    func_0209548c(effect);
+    SpritePresentation_Destroy(effect);
     return effect;
 }

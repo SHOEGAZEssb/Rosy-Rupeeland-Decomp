@@ -12,7 +12,7 @@ extern const u8 data_020f261c[];
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 /* Initialize a borrowed controller state to the retail defaults. */
-void func_02093a88(void *controller)
+void IndexedSelectionController_Init(void *controller)
 {
     FIELD(const void *, controller, 0x00) = data_020f261c;
     FIELD(s32, controller, 0x04) = 0;
@@ -31,7 +31,7 @@ void func_02093a88(void *controller)
 }
 
 /* Set inclusive bounds and the current value, clearing transition progress. */
-void func_02093adc(void *controller, s32 lower, s32 upper, s32 current)
+void IndexedSelectionController_ConfigureRange(void *controller, s32 lower, s32 upper, s32 current)
 {
     FIELD(s32, controller, 0x04) = lower;
     FIELD(s32, controller, 0x08) = upper;
@@ -42,7 +42,7 @@ void func_02093adc(void *controller, s32 lower, s32 upper, s32 current)
 }
 
 /* Clamp a requested value to the configured bounds and snap both endpoints. */
-void func_02093af8(void *controller, s32 value)
+void IndexedSelectionController_SetValue(void *controller, s32 value)
 {
     if (value < FIELD(s32, controller, 0x04))
         value = FIELD(s32, controller, 0x04);
@@ -53,20 +53,20 @@ void func_02093af8(void *controller, s32 value)
 }
 
 /* Clear the transition phase and its per-phase frame counter. */
-void func_02093b20(void *controller)
+void IndexedSelectionController_ResetTransition(void *controller)
 {
     FIELD(s32, controller, 0x14) = 0;
     FIELD(s32, controller, 0x18) = 0;
 }
 
 /* Snap the transition origin to the current selection. */
-void func_02093b30(void *controller)
+void IndexedSelectionController_SnapTransitionOrigin(void *controller)
 {
     FIELD(s32, controller, 0x10) = FIELD(s32, controller, 0x0c);
 }
 
 /* Move one entry toward the upper bound and report whether movement occurred. */
-s32 func_02093b3c(void *controller)
+s32 IndexedSelectionController_Increment(void *controller)
 {
     FIELD(s32, controller, 0x34) = 1;
     if (FIELD(s32, controller, 0x0c) < FIELD(s32, controller, 0x08)) {
@@ -77,7 +77,7 @@ s32 func_02093b3c(void *controller)
 }
 
 /* Move one entry toward the lower bound and report whether movement occurred. */
-s32 func_02093b64(void *controller)
+s32 IndexedSelectionController_Decrement(void *controller)
 {
     FIELD(s32, controller, 0x34) = 0;
     if (FIELD(s32, controller, 0x0c) > FIELD(s32, controller, 0x04)) {
@@ -88,7 +88,7 @@ s32 func_02093b64(void *controller)
 }
 
 /* Advance one entry, wrapping from the upper bound to the lower bound. */
-void func_02093b8c(void *controller)
+void IndexedSelectionController_IncrementWrap(void *controller)
 {
     s32 value = FIELD(s32, controller, 0x0c);
     FIELD(s32, controller, 0x0c) =
@@ -98,7 +98,7 @@ void func_02093b8c(void *controller)
 }
 
 /* Retreat one entry, wrapping from the lower bound to the upper bound. */
-void func_02093bb0(void *controller)
+void IndexedSelectionController_DecrementWrap(void *controller)
 {
     s32 value = FIELD(s32, controller, 0x0c);
     FIELD(s32, controller, 0x0c) =
@@ -108,13 +108,13 @@ void func_02093bb0(void *controller)
 }
 
 /* Return the most recently selected movement direction. */
-s32 func_02093bd4(void *controller)
+s32 IndexedSelectionController_GetLastDirection(void *controller)
 {
     return FIELD(s32, controller, 0x34);
 }
 
 /* Advance the retail selection-transition delay and pacing state. */
-s32 func_02093bdc(void *controller)
+s32 IndexedSelectionController_AdvanceTransition(void *controller)
 {
     if (FIELD(s32, controller, 0x10) == FIELD(s32, controller, 0x0c)) {
         FIELD(s32, controller, 0x20) = 0;
@@ -143,13 +143,13 @@ s32 func_02093bdc(void *controller)
 }
 
 /* Report whether the controller is outside an active transition. */
-s32 func_02093c64(void *controller)
+s32 IndexedSelectionController_IsTransitionIdle(void *controller)
 {
     return FIELD(s32, controller, 0x20) == 0;
 }
 
 /* Tick the active pacing interval and report when it is idle or complete. */
-s32 func_02093c78(void *controller)
+s32 IndexedSelectionController_AdvancePacing(void *controller)
 {
     if (FIELD(s32, controller, 0x24) != 0) {
         ++FIELD(s32, controller, 0x28);

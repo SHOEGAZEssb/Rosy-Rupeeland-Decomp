@@ -7,7 +7,7 @@ extern const u8 data_ov094_02219e70[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *list);
+extern void PresentationList_DeleteAll(void *list);
 #ifdef __cplusplus
 }
 #endif
@@ -19,6 +19,6 @@ extern void func_02095308(void *list);
 extern "C" void *func_ov094_02217c54(void *list)
 {
     *(const void **)list = data_ov094_02219e70;
-    func_02095308(list);
+    PresentationList_DeleteAll(list);
     return list;
 }

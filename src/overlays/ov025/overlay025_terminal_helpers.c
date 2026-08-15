@@ -16,8 +16,8 @@ extern void Sound_Reset(void *);
 extern void func_02092314(void *, s32, s32);
 extern void func_020929f4(void *);
 extern void func_02092a34(void *, s32);
-extern void func_02095308(void *);
-extern void func_0209548c(void *);
+extern void PresentationList_DeleteAll(void *);
+extern void SpritePresentation_Destroy(void *);
 extern void func_ov025_02200178(void *);
 #ifdef __cplusplus
 }
@@ -100,7 +100,7 @@ extern "C" s32 func_ov025_02202bf0(void *scene)
 /* Runs the +0xDC/+0xE0-style controller destructor, frees it, and returns it. */
 extern "C" void *func_ov025_02202c20(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     Heap_Free(object);
     return object;
 }
@@ -108,7 +108,7 @@ extern "C" void *func_ov025_02202c20(void *object)
 /* Runs the controller destructor without freeing storage and returns `object`. */
 extern "C" void *func_ov025_02202c3c(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     return object;
 }
 
@@ -119,7 +119,7 @@ extern "C" void *func_ov025_02202c3c(void *object)
 extern "C" void *func_ov025_02202c50(void *object)
 {
     FIELD(const void *, object, 0) = data_ov025_02203318;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     Heap_Free(object);
     return object;
 }

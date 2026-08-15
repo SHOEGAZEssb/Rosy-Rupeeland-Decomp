@@ -16,9 +16,9 @@ extern void *gLupyContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02095248(void *);
-extern s32 func_02095224(void *);
-extern void func_02094cf0(void *, const void *, s32);
+extern s32 Presentation_IsScriptSuspended(void *);
+extern s32 Presentation_IsScriptComplete(void *);
+extern void Presentation_SetScript(void *, const void *, s32);
 extern void func_020958f0(void *);
 extern void func_020958d8(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
@@ -62,21 +62,21 @@ void func_ov013_021fdbb0(void *state)
         controller = FIELD(void *, state, 0x948);
         switch (FIELD(s32, state, 0x984)) {
         case 0:
-            if (func_02095248(controller)) {
+            if (Presentation_IsScriptSuspended(controller)) {
                 FIELD(s32, controller, 0x90) = 0;
                 FIELD(s32, state, 0x984) = 1;
             }
             break;
         case 2:
-            if (func_02095224(controller))
+            if (Presentation_IsScriptComplete(controller))
                 FIELD(s32, state, 0x984) = 3;
             break;
         case 3:
-            func_02094cf0(controller, data_ov013_021feb58, 0);
+            Presentation_SetScript(controller, data_ov013_021feb58, 0);
             FIELD(s32, state, 0x984) = 0;
             break;
         case 4:
-            func_02094cf0(controller, data_ov013_021feb40, 0);
+            Presentation_SetScript(controller, data_ov013_021feb40, 0);
             FIELD(s32, state, 0x984) = 5;
             break;
         }

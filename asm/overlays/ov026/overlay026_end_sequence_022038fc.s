@@ -2,11 +2,11 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_end_sequence.c. */
 .extern data_ov026_022040b0
-.extern func_020948d4
-.extern func_02094bbc
-.extern func_02094cf0
-.extern func_02094d28
-.extern func_02095308
+.extern PresentationScalar_SetImmediate
+.extern Presentation_SetPosition
+.extern Presentation_SetScript
+.extern Presentation_InterpolateScalar
+.extern PresentationList_DeleteAll
 .extern func_020b0300
 .extern func_ov026_021fef70
 .extern func_ov026_022009dc
@@ -38,9 +38,9 @@ L_02203930: ; jump table
     b L_02203ad4 ; case 3
 L_02203940:
     add r0, r4, #0x304
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x314
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, #0x0
     ldr r2, L_02203afc
     mov r1, #0x1f
@@ -56,12 +56,12 @@ L_02203940:
     ldr r0, [r4, #0x2e8]
     ldr r3, L_02203b04
     mov r2, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x0
     ldr r0, [r4, #0x2ec]
     ldr r2, L_02203b08
     mov r3, r1
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r2, L_02203b04
     mov r0, r4
     mov r1, #0xe900
@@ -72,14 +72,14 @@ L_02203940:
     ldr r0, [r4, #0x160]
     add r1, sp, #0x4
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r5, [r4, #0x168]
     mov r1, #0x0
     add r0, r5, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r5, #0x6c
     mov r1, #0x1000
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, #0x800
     str r0, [r5, #0xb4]
     ldr r0, [r4, #0x174]
@@ -94,15 +94,15 @@ L_02203940:
     sub r1, r0, #0x4000
     ldr r0, [r4, #0x17c]
     sub r3, r2, #0xb000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x17c]
     mov r1, #0x4000
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x17c]
     mov r1, #0x0
     add r0, r0, #0x3c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x17c]
     mov r1, #0x1
     str r1, [r0, #0xa0]
@@ -128,7 +128,7 @@ L_02203a94:
     ldr r0, [r4, #0x174]
     ldr r2, L_02203b0c
     sub r3, r1, #0xd2
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r1, r0
     ldr r0, [r4, #0x174]
     bl func_ov026_021fef70

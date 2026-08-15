@@ -5,15 +5,15 @@
     .extern func_0209189c
     .extern func_020918f4
     .extern func_ov035_02201d10
-    .extern func_020948e4
+    .extern PresentationScalar_TransitionTo
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Heap_Alloc
     .extern func_020955d8
-    .extern func_02095274
+    .extern PresentationList_Append
     .extern func_ov035_021fdd28
-    .extern func_02094bbc
-    .extern func_02094cf0
-    .extern func_020948d4
+    .extern Presentation_SetPosition
+    .extern Presentation_SetScript
+    .extern PresentationScalar_SetImmediate
     .extern data_ov035_02203d20
     .extern data_ov035_02202bbc
     .extern gHeapContext
@@ -79,7 +79,7 @@ L_02201ea8:
     mov r2, r5
     add r0, r0, #0x4c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r7, #0x104]
     mov r0, #0x7
     str r0, [r1, #0x7c]
@@ -102,7 +102,7 @@ L_02201ea8:
 L_02201f28:
     mov r1, r5
     add r0, r7, #0x10c
-    bl func_02095274
+    bl PresentationList_Append
     add r0, r7, #0xc0
     mov r1, #0x8
     bl func_020918f4
@@ -132,14 +132,14 @@ L_02201f28:
     mov r0, r5
     mov r3, #0x3c00
     rsb r3, r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, r5
     ldr r1, L_02201fe0
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     add r0, r5, #0x6c
     mov r1, #0x0
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, #0x1
     str r0, [r5, #0x88]
     add sp, sp, #0x14
@@ -178,7 +178,7 @@ func_ov035_02201fe4:
 L_02202044:
     mov r1, r4
     add r0, r5, #0x10c
-    bl func_02095274
+    bl PresentationList_Append
     add r0, r5, #0xc0
     mov r1, #0x2
     bl func_020918f4
@@ -199,7 +199,7 @@ L_02202044:
     beq L_022020e0
     add r0, r4, #0x5c
     mov r1, #0x8000
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r1, #0x800
     add r0, r5, #0xc0
     rsb r1, r1, #0x0
@@ -209,11 +209,11 @@ L_02202044:
     mov r0, r4
     mov r2, #0xe00
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r4, #0x1c
     mov r1, #0x3
     mov r2, #0xa00
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_02202120
 L_022020e0:
     mov r1, #0x800
@@ -226,12 +226,12 @@ L_022020e0:
     mov r0, r4
     rsb r2, r2, #0x0
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r2, #0xa00
     add r0, r4, #0x1c
     rsb r2, r2, #0x0
     mov r1, #0x3
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_02202120:
     mov r0, #0x1e
     str r0, [r4, #0x7c]

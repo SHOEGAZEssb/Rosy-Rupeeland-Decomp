@@ -63,10 +63,10 @@ extern void func_02092798(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void func_020929b0(void *);
-extern void func_02094cf0(void *, const void *, s32);
-extern void func_02095274(void *, void *);
-extern void func_02095308(void *);
-extern void *func_020953f4(void *, void *);
+extern void Presentation_SetScript(void *, const void *, s32);
+extern void PresentationList_Append(void *, void *);
+extern void PresentationList_DeleteAll(void *);
+extern void *SpritePresentation_Init(void *, void *);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -216,7 +216,7 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     void *effect = Heap_Alloc(0xfc, data_ov025_02203384, 4, gHeapContext);
     if (effect) effect = func_ov025_021fdecc(effect);
     FIELD(void *, scene, 0x508) = effect;
-    func_02095274((u8 *)scene + 0x4f8, FIELD(void *, scene, 0x508));
+    PresentationList_Append((u8 *)scene + 0x4f8, FIELD(void *, scene, 0x508));
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                                                        (u8 *)scene + 0x74, 2);
@@ -224,17 +224,17 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     effect = Heap_Alloc(0xa0, data_ov025_0220338c, 4, gHeapContext);
     if (effect) effect = func_ov025_021ff21c(effect, sprite);
     FIELD(void *, scene, 0xdc) = effect;
-    func_02095274((u8 *)scene + 0x4f8, FIELD(void *, scene, 0xdc));
-    func_02094cf0(FIELD(void *, scene, 0xdc), data_ov025_02202d68, 1);
+    PresentationList_Append((u8 *)scene + 0x4f8, FIELD(void *, scene, 0xdc));
+    Presentation_SetScript(FIELD(void *, scene, 0xdc), data_ov025_02202d68, 1);
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb4),
                             (u8 *)scene + 0x80, 2);
     func_02073e48(sprite, 0, 0x80, 0xb0, 1, 0x4000, 2);
     effect = Heap_Alloc(0xa0, data_ov025_02203394, 4, gHeapContext);
-    if (effect) effect = func_020953f4(effect, sprite);
+    if (effect) effect = SpritePresentation_Init(effect, sprite);
     FIELD(void *, scene, 0xe0) = effect;
-    func_02095274((u8 *)scene + 0x4f8, FIELD(void *, scene, 0xe0));
-    func_02094cf0(FIELD(void *, scene, 0xe0), data_ov025_02202cf0, 1);
+    PresentationList_Append((u8 *)scene + 0x4f8, FIELD(void *, scene, 0xe0));
+    Presentation_SetScript(FIELD(void *, scene, 0xe0), data_ov025_02202cf0, 1);
 
     void *overlay94 = Heap_Alloc(0x4c, data_ov025_0220339c, 4, gHeapContext);
     if (overlay94) overlay94 = func_ov094_02219568(overlay94, 0xd8, 0xd8);

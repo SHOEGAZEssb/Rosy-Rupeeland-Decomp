@@ -26,8 +26,8 @@ extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
 extern s32 func_0209189c(void *randomState, s32 lower, s32 upper);
 extern s32 func_020918f4(void *randomState, s32 upper);
-extern void func_02095274(void *effectList, void *effect);
-extern void func_02095360(void *effectList);
+extern void PresentationList_Append(void *effectList, void *effect);
+extern void PresentationList_UpdateAndDeleteCompleted(void *effectList);
 extern void *func_ov094_02219234(void *effect);
 extern void *func_ov094_02219344(void *effect, void *firstState,
                                 void *secondState, s32 firstCoordinate,
@@ -77,7 +77,7 @@ extern "C" s32 func_ov094_022196e8(void *object)
                     effect, firstState, secondState, firstCoordinate << 12,
                     secondCoordinate << 12, thirdCoordinate);
             }
-            func_02095274((u8 *)object + 0x34, effect);
+            PresentationList_Append((u8 *)object + 0x34, effect);
         }
 
         if (GameWork_TestFlag(gGameWork, 0x3d5)) {
@@ -87,10 +87,10 @@ extern "C" s32 func_ov094_022196e8(void *object)
             if (effect != 0) {
                 effect = func_ov094_02219234(effect);
             }
-            func_02095274((u8 *)object + 0x34, effect);
+            PresentationList_Append((u8 *)object + 0x34, effect);
         }
 
-        func_02095360((u8 *)object + 0x34);
+        PresentationList_UpdateAndDeleteCompleted((u8 *)object + 0x34);
         GraphicsSpriteGroup_AdvanceAnimations(
             *(void **)((u8 *)object + 0x0c));
         GraphicsSpriteGroup_AdvanceAnimations(

@@ -11,14 +11,14 @@
 extern "C" u8 data_ov045_0220d5a8[];
 extern "C" void *data_020f4e18;
 extern "C" void *gDebugFont;
-extern "C" void func_020949ec(void *object);
+extern "C" void Presentation_Init(void *object);
 extern "C" void func_02071ea4(void *owner);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
-extern "C" void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern "C" void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
 extern "C" void *GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 mode);
@@ -54,7 +54,7 @@ extern "C" void func_ov045_0220bc3c(void *object)
  */
 extern "C" void *func_ov045_0220bc40(void *object)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(void *, object, 0) = data_ov045_0220d5a8;
     func_02071ea4((u8 *)object + 0x9c);
     func_02071ee0((u8 *)object + 0x9c, data_020f4e18,
@@ -64,7 +64,7 @@ extern "C" void *func_ov045_0220bc40(void *object)
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xa8), (u8 *)object + 0x9c, 2);
     FIELD(u16, FIELD(void *, object, 0xac), 0x24) |= 2;
     FIELD(u8, FIELD(void *, object, 0xac), 0x3a) = 1;
-    func_02094bbc(object, 0x160, 0x60, 0);
+    Presentation_SetPosition(object, 0x160, 0x60, 0);
     ((DisplayObjectVirtual *)object)->slot4();
     return object;
 }

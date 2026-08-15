@@ -12,7 +12,7 @@ extern "C" {
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_ov036_021fef6c(void *controller, s32 configIndex);
-extern void func_02095360(void *list);
+extern void PresentationList_UpdateAndDeleteCompleted(void *list);
 extern void GraphicsAnimationInstanceManager_Update(void *manager);
 extern void Graphics3DSceneState_Apply(void *transform);
 extern void GraphicsAnimationInstanceManager_Render(void *manager, void *matrix);
@@ -56,14 +56,14 @@ extern "C" s32 func_ov036_021ff098(void *controller)
             FIELD(s32, controller, 0xa0)++;
         break;
     case 3:
-        func_02095360((u8 *)controller + 0xf8);
-        func_02095360((u8 *)controller + 0x108);
+        PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0xf8);
+        PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x108);
         GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0xdc));
         return 1;
     }
 
-    func_02095360((u8 *)controller + 0xf8);
-    func_02095360((u8 *)controller + 0x108);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0xf8);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x108);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0xdc));
     return 0;
 }

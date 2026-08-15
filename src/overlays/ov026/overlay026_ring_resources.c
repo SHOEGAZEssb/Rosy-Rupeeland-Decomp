@@ -21,7 +21,7 @@ extern void *Heap_AllocCore(u32, const void *, u32, void *);
 extern void Heap_FreeCore(void *);
 extern void *Graphics3DResourceBinding_Init(void *, void *, s32, s32, s32);
 extern void Graphics3DResourceBinding_Destroy(void *);
-extern void func_020949ec(void *);
+extern void Presentation_Init(void *);
 extern void func_020afddc(void *);
 extern void func_020afe00(void *, s32);
 extern void func_020afe64(void *, ...);
@@ -46,7 +46,7 @@ extern s32 func_ov026_021fd018(const u32 *);
  */
 extern "C" void *func_ov026_021fd370(void *object)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_022049ec;
     FIELD(s32, object, 0xb4) = 0x1000;
     void *buffer = Heap_AllocCore(0x200, data_ov026_02204a48, 4, gHeapContext);
@@ -116,7 +116,7 @@ extern "C" void func_ov026_021fd540(void *object)
  */
 extern "C" void *func_ov026_021fd5b0(void *object, s32 resource_id)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_02204998;
     void *resource = Heap_Alloc(0x18, data_ov026_02204a40, 4, gHeapContext);
     if (resource)

@@ -25,7 +25,7 @@ extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void *func_02079f3c(const void *, u16);
 extern void func_0207c460(void *, u16);
 extern s32 func_020918f4(void *, s32);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_020922f0(void *, s32);
 extern void func_020939d8(void *);
 extern s32 func_020befec(s32, s32);
@@ -180,8 +180,8 @@ extern "C" void func_ov022_021fed74(void *scene)
     s32 destination_y = func_ov046_0220c410(effect, destination);
     s32 numerator = FIELD(s32, collection, 0x24);
     s32 denominator = FIELD(s32, collection, 0x28);
-    s32 x = func_02091a70(source_x, destination_x, numerator, denominator);
-    s32 y = func_02091a70(source_y, destination_y, numerator, denominator);
+    s32 x = Presentation_InterpolateLinear(source_x, destination_x, numerator, denominator);
+    s32 y = Presentation_InterpolateLinear(source_y, destination_y, numerator, denominator);
     func_ov046_0220c46c(effect, x, y);
     if (denominator == (numerator + ((u32)numerator >> 31)) / 2)
         func_ov046_0220bffc(effect, destination, 0, 0);

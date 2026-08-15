@@ -5,10 +5,10 @@
 .extern func_02071ea4
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020948d4
-.extern func_020948e4
-.extern func_02094bbc
-.extern func_020953c8
+.extern PresentationScalar_SetImmediate
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
+.extern SpritePresentation_InitVariant
 .extern genrand_int32
 
 .global func_ov094_02217ec8
@@ -18,7 +18,7 @@ func_ov094_02217ec8:
     mov r6, r0
     mov r5, r2
     mov r4, r3
-    bl func_020953c8
+    bl SpritePresentation_InitVariant
     ldr r1, .L_02218000
     add r0, r6, #0xb0
     str r1, [r6, #0x0]
@@ -50,14 +50,14 @@ func_ov094_02217ec8:
     mov r1, r4
     mov r0, r6
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r6, #0x6c
     mov r1, #0x10
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r6, #0x6c
     mov r1, #0x1
     mov r2, #0x100
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r6, #0xa0]
     cmp r0, #0x2
     mov r0, #0x80000
@@ -72,14 +72,14 @@ func_ov094_02217ec8:
     add r0, r6, #0xc
     add r2, r2, r1
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r6, #0xbc]
     ldr r2, [r6, #0xa8]
     ldr r1, [r0, #0x4]
     add r0, r6, #0x1c
     add r2, r2, r1
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x3c
     str r0, [r6, #0x7c]
     mov r0, #0x0

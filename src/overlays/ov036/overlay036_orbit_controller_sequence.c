@@ -30,12 +30,12 @@ extern void func_02095710(void *object);
 extern void func_ov036_02200b38(void *owner, void *object,
                                 const void *config);
 extern s32 func_ov036_021fd28c(void *object);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void GraphicsAnimationInstance_SetAnimation(void *handle, u8 mode);
-extern void func_02094cf0(void *object, const void *data, s32 mode);
-extern s32 func_02095224(void *object);
-extern void func_02095360(void *list);
+extern void Presentation_SetScript(void *object, const void *data, s32 mode);
+extern s32 Presentation_IsScriptComplete(void *object);
+extern void PresentationList_UpdateAndDeleteCompleted(void *list);
 extern void GraphicsAnimationInstanceManager_Update(void *manager);
 #ifdef __cplusplus
 }
@@ -117,13 +117,13 @@ extern "C" s32 func_ov036_02200bb0(void *controller)
             void *source = FIELD(void *, controller, 0x108);
             for (s32 i = 1; i < 5; ++i) {
                 void *child = FIELD(void *, controller, 0x108 + i * 4);
-                func_02094bbc(child,
+                Presentation_SetPosition(child,
                               FIELD(s32, source, 0x10),
                               FIELD(s32, source, 0x20),
                               FIELD(s32, source, 0x30) - i);
                 FIELD(u8, FIELD(void *, child, 0x9c), 0x5b) =
                     (u8)data_ov036_02204d6c[i - 1];
-                func_020948e4((u8 *)child + 0xc, 2,
+                PresentationScalar_TransitionTo((u8 *)child + 0xc, 2,
                               data_ov036_02204d7c[i - 1]);
                 FIELD(s32, child, 0x7c) = 0x3c;
                 FIELD(s32, child, 0x80) = 0;
@@ -146,7 +146,7 @@ extern "C" s32 func_ov036_02200bb0(void *controller)
             for (s32 i = 0; i < 5; ++i) {
                 void *child = FIELD(void *, controller, 0x108 + i * 4);
                 GraphicsAnimationInstance_SetAnimation(FIELD(void *, child, 0x9c), 0);
-                func_02094cf0(child, data_ov036_02204e24, 1);
+                Presentation_SetScript(child, data_ov036_02204e24, 1);
             }
             func_02091b98((u8 *)controller + 0xa4, 0x1e);
             FIELD(s32, controller, 0xa0)++;
@@ -159,19 +159,19 @@ extern "C" s32 func_ov036_02200bb0(void *controller)
         break;
 
     case 8:
-        if (func_02095224(FIELD(void *, controller, 0x108)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, controller, 0x108)) != 0) {
             func_0205929c(gSoundContext, 0xaf, 0x10);
             FIELD(s32, controller, 0xa0)++;
         }
         break;
 
     case 9:
-        func_02095360((u8 *)controller + 0x11c);
+        PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x11c);
         GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0x100));
         return 1;
     }
 
-    func_02095360((u8 *)controller + 0x11c);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x11c);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0x100));
     return 0;
 }

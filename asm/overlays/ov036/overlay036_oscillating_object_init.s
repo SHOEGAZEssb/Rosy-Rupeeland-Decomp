@@ -4,7 +4,7 @@
 
     .extern func_ov036_021fcec4
     .extern func_02091b6c
-    .extern func_020948d4
+    .extern PresentationScalar_SetImmediate
     .extern func_ov036_02201d60
     .extern data_ov036_0220600c
 
@@ -32,7 +32,7 @@ func_ov036_02201d70:
     mov r2, #0x1
     add r0, r4, #0x6c
     str r2, [r4, #0x88]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r2, #0xf
     mov r0, r4
     mov r1, #0x10

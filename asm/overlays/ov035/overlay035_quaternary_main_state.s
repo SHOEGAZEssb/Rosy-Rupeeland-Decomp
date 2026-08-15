@@ -5,11 +5,11 @@
     .extern func_02059278
     .extern func_0205929c
     .extern Sound_Play
-    .extern func_02094cf0
-    .extern func_02095248
-    .extern func_02095224
-    .extern func_020948e4
-    .extern func_02094bbc
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptSuspended
+    .extern Presentation_IsScriptComplete
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_SetPosition
     .extern GraphicsAnimationInstanceManager_RebindInstance
     .extern func_ov035_02200574
     .extern gSoundContext
@@ -41,29 +41,29 @@ L_022005dc:
     ldr r0, [r4, #0x114]
     ldr r1, L_022007d8
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x118]
     ldr r1, L_022007d8
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x11c]
     ldr r1, L_022007dc
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x108]
     ldr r1, L_022007e0
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xd8]
     ldr r1, L_022007e4
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
 L_0220064c:
     ldr r0, [r4, #0x108]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_022007c4
     ldr r0, [r4, #0x108]
@@ -78,12 +78,12 @@ L_0220064c:
     mov r1, #0x0
     ldr r0, [r4, #0x114]
     mov r2, r1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x114]
     mov r1, #0x2
     add r0, r0, #0x1c
     mov r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r1, #0x0
     ldr r2, [r4, #0x114]
     mov r0, #0xa
@@ -91,12 +91,12 @@ L_0220064c:
     str r1, [r2, #0x80]
     ldr r0, [r4, #0x118]
     mov r2, r1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x118]
     mov r1, #0x2
     add r0, r0, #0x1c
     mov r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [r4, #0x118]
     mov r0, #0xa
     str r0, [r2, #0x7c]
@@ -104,12 +104,12 @@ L_0220064c:
     str r1, [r2, #0x80]
     ldr r0, [r4, #0x11c]
     mov r2, r1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0x11c]
     mov r1, #0x2
     add r0, r0, #0x1c
     mov r2, #0x0
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x11c]
     mov r0, #0xa
     str r0, [r1, #0x7c]
@@ -121,14 +121,14 @@ L_0220064c:
     b L_022007c4
 L_02200730:
     ldr r0, [r4, #0x108]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_022007c4
     ldr r0, [r4, #0x108]
     mov r3, #0x400
     ldr r1, [r0, #0x10]
     ldr r2, [r0, #0x20]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r1, [r4, #0x108]
     ldr r0, [r4, #0x104]
     ldr r1, [r1, #0x9c]
@@ -143,7 +143,7 @@ L_02200730:
     b L_022007c4
 L_02200784:
     ldr r0, [r4, #0x108]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_022007c4
     ldr r0, L_022007d4

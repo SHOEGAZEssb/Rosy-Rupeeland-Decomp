@@ -2,12 +2,12 @@
 
 /* Exact fallback; see src/overlays/ov034/overlay034_owner_lifecycle.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern func_02071adc
     .extern func_0201e0ec
     .extern Heap_Alloc
     .extern func_ov034_021fcff0
-    .extern func_020948d4
+    .extern PresentationScalar_SetImmediate
     .extern data_ov034_021ff194
     .extern data_020f4e18
     .extern data_021052fc
@@ -18,7 +18,7 @@
 func_ov034_021fd544:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r9, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fd61c
     ldr r0, L_021fd620
     str r1, [r9, #0x0]
@@ -66,7 +66,7 @@ L_021fd5e4:
     blt L_021fd5c0
     add r0, r9, #0x6c
     mov r1, #0x0
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r1, #0x0
     str r1, [r9, #0xc4]
     mov r0, r9

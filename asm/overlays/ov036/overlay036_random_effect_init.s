@@ -2,12 +2,12 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_random_effect.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern func_ov036_021fe218
     .extern genrand_int32
-    .extern func_02094bbc
-    .extern func_020948e4
-    .extern func_02091a70
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_InterpolateLinear
     .extern data_ov036_02205f80
 
     .global func_ov036_021fe258
@@ -15,7 +15,7 @@ func_ov036_021fe258:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fe324
     add r0, r5, #0x9c
     str r1, [r5, #0x0]
@@ -30,16 +30,16 @@ func_ov036_021fe258:
     mov r0, r5
     ldr r1, [r4, #0x0]
     sub r2, r3, #0x600
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r5, #0x1c
     mov r1, #0x4
     ldr r2, [r4, #0x4]
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x0
     mov r1, #0xb4
     mov r2, #0x800
     ldr r3, [r4, #0x4]
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r0, r0, lsl #0x10
     mov r0, r0, asr #0x10
     str r0, [r5, #0x7c]

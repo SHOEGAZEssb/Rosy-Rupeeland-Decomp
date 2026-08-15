@@ -10,7 +10,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void func_ov036_021fe978(void *resource, s32 x, s32 y, s32 z);
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
@@ -64,8 +64,8 @@ extern "C" s32 func_ov036_02201e50(void *object)
         s32 index = (FIELD(s32, object, 0xf4) >> 4) * 2;
         s32 x = FIELD(s32, object, 0xc4) +
                 divide_by_256((s16)data_020c9670[index] * 6);
-        func_020948d4((u8 *)object + 0xc, x);
-        func_020948d4((u8 *)object + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)object + 0xc, x);
+        PresentationScalar_SetImmediate((u8 *)object + 0x1c,
                       FIELD(s32, object, 0x20) + 0x18);
         func_ov036_021fe978(FIELD(void *, object, 0xd4),
                             FIELD(s32, object, 0x10),
@@ -83,7 +83,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
                 s32 selector = (FIELD(s32, object, 0xc8) +
                                 FIELD(u8, resource, 0x54)) & 7;
                 GraphicsAnimationInstance_SetAnimation(resource, selector);
-                func_020948d4((u8 *)object + 0x4c,
+                PresentationScalar_SetImmediate((u8 *)object + 0x4c,
                               FIELD(s32, object, 0x50) -
                               FIELD(s32, object, 0xc8) * 0x333);
             }
@@ -97,7 +97,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
             Sound_Play(gSoundContext, 0x1b1, 0);
             GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0xd4), 1);
             FIELD(s32, object, 0xa0) = 1;
-            func_020948d4((u8 *)object + 0x6c, 0x400);
+            PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x400);
             func_02091bac((u8 *)object + 0xd8, 1, 1, 1, 0x10);
             ++FIELD(s32, object, 0xd0);
         }
@@ -106,7 +106,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
         s32 value = func_02091c7c((u8 *)object + 0xd8, 1);
         func_ov036_02201d60(object, value);
         value = func_02091bd0((u8 *)object + 0xd8, 1, 0x400, 0x666);
-        func_020948d4((u8 *)object + 0x6c, value);
+        PresentationScalar_SetImmediate((u8 *)object + 0x6c, value);
         if (func_02091cf0((u8 *)object + 0xd8) != 0) {
             FIELD(u16, object, 0x98) |= 1;
             GraphicsAnimationInstance_SetAnimation(FIELD(void *, object, 0xd4), 2);
@@ -115,7 +115,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
         break;
     }
     case 4:
-        func_020948d4((u8 *)object + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)object + 0x1c,
                       FIELD(s32, object, 0x20) - 0x80);
         func_ov036_021fe978(FIELD(void *, object, 0xd4),
                             FIELD(s32, object, 0x10),

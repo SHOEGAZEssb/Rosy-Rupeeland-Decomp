@@ -10,7 +10,7 @@
 .extern func_02092260
 .extern func_02092c8c
 .extern func_020939d8
-.extern func_02094d28
+.extern Presentation_InterpolateScalar
 .extern func_02095820
 .extern func_02095860
 .extern func_02095928
@@ -302,7 +302,7 @@ L_021ff9cc:
     mov r1, #0x4
     mov r2, #0xd0
     mov r3, #0x70
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r2, r0
     add r0, r4, #0x200
     mov r1, #0x80

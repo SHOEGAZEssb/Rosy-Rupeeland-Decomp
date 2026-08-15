@@ -18,10 +18,10 @@ extern s32 func_02091bd0(void *state, s32 first, s32 second, s32 maximum);
 extern void func_ov035_021fe20c(void *scene, s32 direction);
 extern void func_02091dac(void *state);
 extern void func_020956fc(void *object);
-extern void func_020948f8(void *field, s32 mode, s32 value);
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern s32 func_ov035_021fd25c(void *object);
-extern void func_02095360(void *collection);
+extern void PresentationList_UpdateAndDeleteCompleted(void *collection);
 extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
@@ -93,11 +93,11 @@ extern "C" s32 func_ov035_021fe2f8(void *scene)
         if (func_02091c7c((u8 *)scene + 0xa4, 2)) {
             Sound_Play(gSoundContext, 0x1b4, 0);
             void *right = FIELD(void *, scene, 0x108);
-            func_020948f8((u8 *)right + 0x1c, 5, -0xc00);
+            PresentationScalar_TransitionBy((u8 *)right + 0x1c, 5, -0xc00);
             FIELD(s32, right, 0x7c) = 0x28;
             FIELD(s32, right, 0x80) = 0;
             void *left = FIELD(void *, scene, 0x104);
-            func_020948e4((u8 *)left + 0x1c, 5, -0xe00);
+            PresentationScalar_TransitionTo((u8 *)left + 0x1c, 5, -0xe00);
             FIELD(s32, left, 0x7c) = 0x28;
             FIELD(s32, left, 0x80) = 0;
             FIELD(s32, scene, 0xa0)++;
@@ -111,11 +111,11 @@ extern "C" s32 func_ov035_021fe2f8(void *scene)
         }
         break;
     case 6:
-        func_02095360((u8 *)scene + 0x10c);
+        PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x10c);
         GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x100));
         return 1;
     }
-    func_02095360((u8 *)scene + 0x10c);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x10c);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x100));
     return 0;
 }

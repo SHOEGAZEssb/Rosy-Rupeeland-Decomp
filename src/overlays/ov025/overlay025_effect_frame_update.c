@@ -9,9 +9,9 @@ extern "C" {
 #endif
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern s32 func_020918f4(u32 *, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02094dd4(void *);
-extern s32 func_02095224(void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void Presentation_UpdateScript(void *);
+extern s32 Presentation_IsScriptComplete(void *);
 extern void func_ov025_021fe174(void *, s32, s32, s32);
 extern void func_ov025_021fe340(void *);
 extern void func_ov025_021fe39c(void *);
@@ -37,11 +37,11 @@ extern "C" s32 func_ov025_021feb4c(void *object)
         return 0;
     }
 
-    func_02094dd4(object);
+    Presentation_UpdateScript(object);
 
     switch (FIELD(s32, object, 0x9c)) {
     case 0:
-        if (func_02095224(object) != 0) {
+        if (Presentation_IsScriptComplete(object) != 0) {
             func_ov025_021fe3f8(object);
         }
         break;
@@ -82,7 +82,7 @@ extern "C" s32 func_ov025_021feb4c(void *object)
         case 0:
             if (func_ov025_021ff0b0(object) != 0) {
                 func_ov025_021fe340(object);
-                func_020948e4((u8 *)object + 0x1c, 2, 0x60000);
+                PresentationScalar_TransitionTo((u8 *)object + 0x1c, 2, 0x60000);
                 FIELD(s32, object, 0x7c) = 60;
                 FIELD(s32, object, 0x80) = 0;
                 ++FIELD(s32, object, 0xa0);
@@ -131,7 +131,7 @@ extern "C" s32 func_ov025_021feb4c(void *object)
         case 0:
             if (func_ov025_021ff0b0(object) != 0) {
                 func_ov025_021fe39c(object);
-                func_020948e4((u8 *)object + 0x1c, 5, 0xa0000);
+                PresentationScalar_TransitionTo((u8 *)object + 0x1c, 5, 0xa0000);
                 FIELD(s32, object, 0x7c) = 30;
                 FIELD(s32, object, 0x80) = 0;
                 ++FIELD(s32, object, 0xa0);
@@ -165,7 +165,7 @@ extern "C" s32 func_ov025_021feb4c(void *object)
         case 0:
             if (func_ov025_021ff0b0(object) != 0) {
                 func_ov025_021fe340(object);
-                func_020948e4((u8 *)object + 0x1c, 2, -0x120000);
+                PresentationScalar_TransitionTo((u8 *)object + 0x1c, 2, -0x120000);
                 FIELD(s32, object, 0x7c) = 90;
                 FIELD(s32, object, 0x80) = 0;
                 ++FIELD(s32, object, 0xa0);

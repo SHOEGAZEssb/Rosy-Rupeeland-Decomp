@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_collections.c. */
-.extern func_020954e0
-.extern func_020954f4
+.extern SpritePresentation_Show
+.extern SpritePresentation_Hide
 
 
     .global func_ov023_021fe640
@@ -15,20 +15,20 @@ func_ov023_021fe640:
     cmp r0, #0x1
     ldr r0, [r4, #0x380]
     ble L_021fe670
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r0, [r4, #0x384]
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldmia sp!, {r4, pc}
 L_021fe670:
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldr r0, [r4, #0x384]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldmia sp!, {r4, pc}
 L_021fe680:
     ldr r0, [r4, #0x380]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldr r0, [r4, #0x384]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldmia sp!, {r4, pc}
 .size func_ov023_021fe640, .-func_ov023_021fe640
 

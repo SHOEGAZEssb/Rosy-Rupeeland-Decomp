@@ -24,9 +24,9 @@
 .extern func_02091e28
 .extern func_02092364
 .extern func_020923a4
-.extern func_02094ad4
-.extern func_02094bbc
-.extern func_02095274
+.extern Presentation_InitVariant
+.extern Presentation_SetPosition
+.extern PresentationList_Append
 .extern func_020ae6dc
 .extern func_ov027_021fce04
 .extern func_ov027_021fd180
@@ -146,12 +146,12 @@ L_021fdb1c:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_021fdbcc
-    bl func_02094ad4
+    bl Presentation_InitVariant
 L_021fdbcc:
     str r0, [r10, #0x118]
     mov r1, r0
     add r0, r10, #0x120
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, L_021fde0c
     ldr r3, L_021fddf8
     mov r0, #0x9c
@@ -159,12 +159,12 @@ L_021fdbcc:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_021fdbfc
-    bl func_02094ad4
+    bl Presentation_InitVariant
 L_021fdbfc:
     str r0, [r10, #0x11c]
     mov r1, r0
     add r0, r10, #0x120
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, L_021fde10
     ldr r3, L_021fddf8
     mov r0, #0xa0
@@ -178,17 +178,17 @@ L_021fdc30:
     str r0, [r10, #0x114]
     mov r1, r0
     add r0, r10, #0x120
-    bl func_02095274
+    bl PresentationList_Append
     mov r1, #0x0
     ldr r0, [r10, #0x118]
     sub r2, r1, #0x600
     mov r3, #0x3000
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x0
     ldr r0, [r10, #0x11c]
     mov r3, r1
     sub r2, r1, #0x600
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x0
     add r0, sp, #0xc
     b L_021fdc7c
@@ -252,7 +252,7 @@ L_021fdcfc:
     mov r1, r0
 L_021fdd40:
     add r0, r10, #0x130
-    bl func_02095274
+    bl PresentationList_Append
     add r9, r9, #0x1
 L_021fdd4c:
     cmp r9, #0x3a

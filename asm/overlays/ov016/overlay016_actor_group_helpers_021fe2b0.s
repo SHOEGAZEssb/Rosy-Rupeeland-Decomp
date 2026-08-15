@@ -1,6 +1,6 @@
     .text
-    .extern func_02091a70
-    .extern func_020948e4
+    .extern Presentation_InterpolateLinear
+    .extern PresentationScalar_TransitionTo
 
 /* Exact fallbacks for actor layout and aggregation; see src/overlays/ov016/overlay016_actor_group.c. */
     .global func_ov016_021fe2b0
@@ -17,7 +17,7 @@ func_ov016_021fe2b0:
     mov r1, #0x10000
     mov r2, #0xf
     mov r7, #0x0
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r8, r0
     sub r0, r5, #0x1
     mul r1, r0, r8
@@ -34,14 +34,14 @@ L_021fe30c:
     mov r1, r6
     mov r2, r9
     add r0, r10, #0xc
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r7, lsl #0x1f
     mov r0, r0, lsr #0x1c
     add r2, r0, #0x84
     mov r1, r11
     add r0, r10, #0x1c
     mov r2, r2, lsl #0xc
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     str r5, [r10, #0x7c]
     str r4, [r10, #0x80]
     ldr r10, [r10, #0x8]

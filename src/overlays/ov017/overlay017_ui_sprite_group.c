@@ -20,7 +20,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -76,7 +76,7 @@ extern "C" void func_ov017_021fe894(void *group)
         FIELD(s32, data_ov017_022016e0, 8)) {
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, group, 0x1c), 0);
     } else {
-        s32 value = func_02091a70(0, 0x10, FIELD(s32, group, 0x60),
+        s32 value = Presentation_InterpolateLinear(0, 0x10, FIELD(s32, group, 0x60),
                                   FIELD(s32, group, 0x64));
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, group, 0x1c), (u8)value);
     }
@@ -89,7 +89,7 @@ extern "C" void func_ov017_021fe894(void *group)
             }
         }
     } else {
-        s32 limit = func_02091a70(0, 15, FIELD(s32, group, 0x60),
+        s32 limit = Presentation_InterpolateLinear(0, 15, FIELD(s32, group, 0x60),
                                   FIELD(s32, group, 0x64));
         s32 played = 0;
         for (i = 0; i < limit; i++) {

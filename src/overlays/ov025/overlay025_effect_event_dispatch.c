@@ -10,8 +10,8 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Sound_Play(void *, s32, s32);
-extern void func_020954e0(void *);
-extern void func_020954f4(void *);
+extern void SpritePresentation_Show(void *);
+extern void SpritePresentation_Hide(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -26,9 +26,9 @@ extern "C" s32 func_ov025_021ff158(void *object, const void *event)
     switch (FIELD(s32, event, 0)) {
     case 0:
         if (FIELD(s32, event, 4)) {
-            func_020954e0(object);
+            SpritePresentation_Show(object);
         } else {
-            func_020954f4(object);
+            SpritePresentation_Hide(object);
         }
         return 2;
     case 1: {

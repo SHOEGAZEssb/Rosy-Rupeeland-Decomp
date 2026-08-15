@@ -196,13 +196,13 @@ extern u8 data_020f26c4[];
 extern u8 data_020f26a8[];
 
 /* Initialize one 0x10-byte presentation transform component (0x020948BC). */
-void func_020948bc(void *component)
+void PresentationScalar_Init(void *component)
 {
     memset(component, 0, 0x10);
 }
 
 /* Assign the component's three scalar axes exactly as 0x020948D4. */
-void func_020948d4(void *component, s32 value)
+void PresentationScalar_SetImmediate(void *component, s32 value)
 {
     u32 *words = (u32 *)component;
     words[1] = (u32)value;
@@ -211,14 +211,14 @@ void func_020948d4(void *component, s32 value)
 }
 
 /* Base presentation construction selected as ARM assembly in retail. */
-void *func_020949ec(void *object)
+void *Presentation_Init(void *object)
 {
     u8 *bytes = (u8 *)object;
     u32 index;
 
     *(u32 *)bytes = (u32)(uintptr_t)data_020f26c4;
     for (index = 0; index < 7; ++index)
-        func_020948bc(bytes + 0x0c + index * 0x10);
+        PresentationScalar_Init(bytes + 0x0c + index * 0x10);
     *(u32 *)(bytes + 4) = 0;
     *(u32 *)(bytes + 8) = 0;
     *(u32 *)(bytes + 0x7c) = 0;
@@ -232,35 +232,35 @@ void *func_020949ec(void *object)
     *(u16 *)(bytes + 0x96) = 0;
     *(u16 *)(bytes + 0x98) = 0;
     memset(bytes + 0x0c, 0, 7 * 0x10);
-    func_020948d4(bytes + 0x0c, 0);
-    func_020948d4(bytes + 0x1c, 0);
-    func_020948d4(bytes + 0x2c, 0);
-    func_020948d4(bytes + 0x3c, 0);
-    func_020948d4(bytes + 0x4c, 0);
-    func_020948d4(bytes + 0x5c, 0);
-    func_020948d4(bytes + 0x6c, 0x1000);
+    PresentationScalar_SetImmediate(bytes + 0x0c, 0);
+    PresentationScalar_SetImmediate(bytes + 0x1c, 0);
+    PresentationScalar_SetImmediate(bytes + 0x2c, 0);
+    PresentationScalar_SetImmediate(bytes + 0x3c, 0);
+    PresentationScalar_SetImmediate(bytes + 0x4c, 0);
+    PresentationScalar_SetImmediate(bytes + 0x5c, 0);
+    PresentationScalar_SetImmediate(bytes + 0x6c, 0x1000);
     return object;
 }
 
 /* Construct the equivalent base-presentation variant at 0x02094AD4. Retail
- * uses the same vtable and field initialization as func_020949ec; the distinct
+ * uses the same vtable and field initialization as Presentation_Init; the distinct
  * entry point exists so separate constructor references retain their ABI. */
-void *func_02094ad4(void *object)
+void *Presentation_InitVariant(void *object)
 {
-    return func_020949ec(object);
+    return Presentation_Init(object);
 }
 
 /* Sprite-backed presentation controller constructor at retail 0x020953F4. */
-void *func_020953c8(void *object, void *sprite)
+void *SpritePresentation_InitVariant(void *object, void *sprite)
 {
-    u8 *bytes = (u8 *)func_020949ec(object);
+    u8 *bytes = (u8 *)Presentation_Init(object);
     *(u32 *)bytes = (u32)(uintptr_t)data_020f26a8;
     *(u32 *)(bytes + 0x9c) = (u32)(uintptr_t)sprite;
     return object;
 }
 
 /* The retail base destructor at 0x020953f0 has no observable work. */
-void func_020953f0(void *object)
+void Presentation_DestroyNoOp(void *object)
 {
     (void)object;
 }
@@ -270,55 +270,55 @@ extern void func_02073ef8(void *group);
 /* Sprite-backed presentation destructor (retail 0x0209548C). Ownership of the
  * sprite group at +0x9C returns to its renderer before the inert base
  * presentation destructor runs. */
-void *func_0209548c(void *object)
+void *SpritePresentation_Destroy(void *object)
 {
     u8 *bytes = (u8 *)object;
 
     *(u32 *)bytes = (u32)(uintptr_t)data_020f26a8;
     func_02073ef8(*(void **)(bytes + 0x9c));
     *(u32 *)(bytes + 0x9c) = 0;
-    func_020953f0(object);
+    Presentation_DestroyNoOp(object);
     return object;
 }
 
 /* Equivalent presentation destructors selected by adjacent retail vtables.
  * 0x0209541C retains caller storage; 0x02095450 additionally frees it. */
-void *func_0209541c(void *object)
+void *SpritePresentation_DestroyInPlace(void *object)
 {
-    return func_0209548c(object);
+    return SpritePresentation_Destroy(object);
 }
 
 extern void Heap_Free(void *allocation);
 
-void *func_02095450(void *object)
+void *SpritePresentation_Delete(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     Heap_Free(object);
     return object;
 }
 
-void *func_020953f4(void *object, void *sprite)
+void *SpritePresentation_Init(void *object, void *sprite)
 {
-    u8 *bytes = (u8 *)func_020949ec(object);
+    u8 *bytes = (u8 *)Presentation_Init(object);
     *(u32 *)bytes = (u32)(uintptr_t)data_020f26a8;
     *(u32 *)(bytes + 0x9c) = (u32)(uintptr_t)sprite;
     return object;
 }
 
 /* Set the recovered presentation position triplet (retail 0x02094BBC). */
-void func_02094bbc(void *object, s32 x, s32 y, s32 z)
+void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z)
 {
     u8 *bytes = (u8 *)object;
-    func_020948d4(bytes + 0x0c, x);
-    func_020948d4(bytes + 0x1c, y);
-    func_020948d4(bytes + 0x2c, z);
+    PresentationScalar_SetImmediate(bytes + 0x0c, x);
+    PresentationScalar_SetImmediate(bytes + 0x1c, y);
+    PresentationScalar_SetImmediate(bytes + 0x2c, z);
 }
 
-extern s32 func_020919e8(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091a70(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091aa8(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091af0(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091b30(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateSmoothStep(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateLinear(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateEaseOutQuadratic(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateEaseInQuadratic(s32 start, s32 end, s32 duration, s32 elapsed);
 
 /*
  * Select the retail presentation interpolation curve at 0x02094D28.
@@ -328,7 +328,7 @@ extern s32 func_02091b30(s32 start, s32 end, s32 duration, s32 elapsed);
  * zero. This helper performs no allocation or host I/O; its only observable
  * game effect is the interpolated scalar returned to the presentation update.
  */
-s32 func_02094d28(const void *object, s32 mode, s32 start, s32 end)
+s32 Presentation_InterpolateScalar(const void *object, s32 mode, s32 start, s32 end)
 {
     const u8 *bytes = (const u8 *)object;
     s32 duration = *(const s32 *)(bytes + 0x7c);
@@ -336,15 +336,15 @@ s32 func_02094d28(const void *object, s32 mode, s32 start, s32 end)
 
     switch (mode) {
     case 1:
-        return func_02091a70(start, end, duration, elapsed);
+        return Presentation_InterpolateLinear(start, end, duration, elapsed);
     case 2:
-        return func_020919e8(start, end, duration, elapsed);
+        return Presentation_InterpolateSmoothStep(start, end, duration, elapsed);
     case 3:
-        return func_02091aa8(start, end, duration, elapsed);
+        return Presentation_InterpolateQuadraticPulse(start, end, duration, elapsed);
     case 4:
-        return func_02091af0(start, end, duration, elapsed);
+        return Presentation_InterpolateEaseOutQuadratic(start, end, duration, elapsed);
     case 5:
-        return func_02091b30(start, end, duration, elapsed);
+        return Presentation_InterpolateEaseInQuadratic(start, end, duration, elapsed);
     default:
         return 0;
     }
@@ -355,13 +355,13 @@ s32 func_02094d28(const void *object, s32 mode, s32 start, s32 end)
  * borrowed presentation object; the callback reports no errors, consumes no
  * time units, performs no I/O, and has no observable game effect.
  */
-void func_02095220(void *object)
+void Presentation_NoOp(void *object)
 {
     (void)object;
 }
 
 /* Publish fixed-point presentation position to its bound sprite state. */
-void func_02095508(void *object)
+void SpritePresentation_SyncPosition(void *object)
 {
     u8 *bytes = (u8 *)object;
     s32 x = *(s32 *)(bytes + 0x10);
@@ -375,7 +375,7 @@ void func_02095508(void *object)
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 index);
 
 /* Forward a presentation animation selection to its bound sprite. */
-void func_020954c0(void *object, u32 animation)
+void SpritePresentation_SetAnimation(void *object, u32 animation)
 {
     void *sprite = (void *)(uintptr_t)*(u32 *)((u8 *)object + 0x9c);
     GraphicsSpriteState_SetAnimationIndex(sprite, animation & 0xff);

@@ -25,7 +25,7 @@ extern void Graphics3DResourceBinding_Destroy(void *);
 extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
 extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
 extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
-extern void func_020949ec(void *);
+extern void Presentation_Init(void *);
 extern void func_020afddc(void *);
 extern void func_020afe00(void *, s32);
 extern void func_020afe28(void *, s32, s32);
@@ -52,7 +52,7 @@ extern s32 func_ov026_021fd018(const u32 *);
  */
 extern "C" void *func_ov026_021fd030(void *object, s32 resource_id, s32 variant)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_02204928;
     FIELD(s32, object, 0xb8) = 0x1000;
 

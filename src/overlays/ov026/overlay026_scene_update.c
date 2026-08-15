@@ -10,8 +10,8 @@ extern "C" {
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern void GraphicsAnimationInstanceManager_Update(void *);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02095360(void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void func_ov026_021fe5c0(void *, s32);
 extern void func_ov026_0220046c(void *);
 extern s32 func_ov026_02200d08(void *);
@@ -60,9 +60,9 @@ extern "C" void func_ov026_022009dc(void *scene)
     if (flags & 0x20000)
         func_ov026_02201284(scene, 0x3a66);
 
-    func_02095360((u8 *)scene + 0x2f4);
-    func_02095360((u8 *)scene + 0x304);
-    func_02095360((u8 *)scene + 0x314);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x2f4);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x304);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x314);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x6c));
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x70));
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x74));
@@ -72,17 +72,17 @@ extern "C" void func_ov026_022009dc(void *scene)
     if (func_ov026_02200d08(motion)) {
         if (flags & 1) {
             s32 spread = FIELD(s32, scene, 0x36c);
-            func_020948e4((u8 *)motion + 0xc, 2,
+            PresentationScalar_TransitionTo((u8 *)motion + 0xc, 2,
                            func_0209189c(rng, -spread, spread));
-            func_020948e4((u8 *)motion + 0x1c, 2,
+            PresentationScalar_TransitionTo((u8 *)motion + 0x1c, 2,
                            func_0209189c(rng, -spread, spread));
-            func_020948e4((u8 *)motion + 0x2c, 2,
+            PresentationScalar_TransitionTo((u8 *)motion + 0x2c, 2,
                            func_0209189c(rng, -spread, spread));
             func_ov026_021fe5c0(motion, func_0209189c(rng, 1, 3));
         } else {
-            func_020948e4((u8 *)motion + 0xc, 2, 0);
-            func_020948e4((u8 *)motion + 0x1c, 2, 0);
-            func_020948e4((u8 *)motion + 0x2c, 2, 0);
+            PresentationScalar_TransitionTo((u8 *)motion + 0xc, 2, 0);
+            PresentationScalar_TransitionTo((u8 *)motion + 0x1c, 2, 0);
+            PresentationScalar_TransitionTo((u8 *)motion + 0x2c, 2, 0);
             FIELD(s32, motion, 0x7c) = 8;
             FIELD(s32, motion, 0x80) = 0;
         }

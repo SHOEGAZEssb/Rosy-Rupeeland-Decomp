@@ -6,7 +6,7 @@
     .extern Heap_Alloc
     .extern func_ov074_0220fda8
     .extern func_02093360
-    .extern func_02091aa8
+    .extern Presentation_InterpolateQuadraticPulse
     .extern GamePhaseState_QueryTerrainHeight
     .extern data_021052fc
     .extern data_ov033_021fdec0
@@ -127,7 +127,7 @@ func_ov033_021fd4cc:
     mov r3, r1, asr #0x8
     mov r1, #0x800
     mov r2, #0x100
-    bl func_02091aa8
+    bl Presentation_InterpolateQuadraticPulse
     ldr r2, [r4, #0x48]
     ldr r1, L_021fd590
     str r0, [r2, #0x12c]

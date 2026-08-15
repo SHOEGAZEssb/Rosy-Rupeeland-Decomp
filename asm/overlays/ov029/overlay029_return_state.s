@@ -12,7 +12,7 @@
 .extern func_02092260
 .extern func_02092c8c
 .extern func_020939d8
-.extern func_020948e4
+.extern PresentationScalar_TransitionTo
 .extern func_ov002_021fbe68
 .extern func_ov029_021fce4c
 .extern func_ov029_021fd6fc
@@ -130,7 +130,7 @@ L_021fe9d0:
     mov r1, #0x2
     add r0, r0, #0xc
     mov r2, #0x160
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r2, [r4, #0xa0]
     mov r0, #0x10
     str r0, [r2, #0x7c]

@@ -18,9 +18,9 @@
     .extern func_020925a4
     .extern func_020925f8
     .extern func_02092638
-    .extern func_020948d4
-    .extern func_020948e4
-    .extern func_020954f4
+    .extern PresentationScalar_SetImmediate
+    .extern PresentationScalar_TransitionTo
+    .extern SpritePresentation_Hide
     .extern func_020957f0
     .extern func_02095820
     .extern func_020958d8
@@ -115,11 +115,11 @@ L_021fd34c:
     mov r1, #0xe0000
     orr r3, r3, #0x1
     strh r3, [r2, #0x24]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r2, r8, lsl #0xc
     add r0, r10, #0x1c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r10
     mov r1, #0x78
     bl func_ov013_021fda28
@@ -131,7 +131,7 @@ L_021fd34c:
     streq r5, [r1, #0x18]
     streq r0, [r1, #0x1c]
     ldr r0, [r4, #0x948]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     b L_021fd54c
 L_021fd48c:
     ldr r0, [r11, #0x0]
@@ -293,18 +293,18 @@ L_021fd640:
     orr r3, r1, #0x1
     mov r1, #0xe0000
     strh r3, [r2, #0x34]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r4, #0xb8
     add r0, r0, #0x800
     mov r1, #0x2
     mov r2, #0x92000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x78
     str r0, [r4, #0x918]
     mov r0, #0x0
     str r0, [r4, #0x91c]
     ldr r0, [r4, #0x948]
-    bl func_020954f4
+    bl SpritePresentation_Hide
 L_021fd714:
     ldr r0, [r4, #0x84]
     add r1, r4, #0x6c
@@ -372,16 +372,16 @@ L_021fd768:
     mov r1, #0xe0000
     orr r3, r3, #0x1
     strh r3, [r2, #0xd8]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r6, #0x1c
     mov r1, #0x2
     mov r2, #0x9c000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r6
     mov r1, #0x78
     bl func_ov013_021fda28
     ldr r0, [r4, #0x948]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     b L_021fd8a8
 L_021fd840:
     ldrh r1, [r8, #0xc]

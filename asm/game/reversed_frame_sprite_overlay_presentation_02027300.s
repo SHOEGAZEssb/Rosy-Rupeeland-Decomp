@@ -12,8 +12,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02094cf0
-.extern func_020953f4
+.extern Presentation_SetScript
+.extern SpritePresentation_Init
 .extern gHeapContext
 
     .global ReversedFrameSpriteOverlayPresentation_Init
@@ -58,12 +58,12 @@ ReversedFrameSpriteOverlayPresentation_Init: ; 0x02027300
     cmp r0, #0x0
     beq .L_020273a0
     mov r1, r5
-    bl func_020953f4
+    bl SpritePresentation_Init
 .L_020273a0:
     ldr r1, .L_020273d0
     mov r2, #0x1
     str r0, [r4, #0x18]
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}

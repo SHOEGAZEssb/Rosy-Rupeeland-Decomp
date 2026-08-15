@@ -11,11 +11,11 @@
 .extern ActorDerivedType1_IsActiveRecordType6A
 .extern ActorDerivedType1_IsIdleEligible
 .extern func_02092910
-.extern func_02094cf0
-.extern func_02095224
-.extern func_02095248
-.extern func_020954e0
-.extern func_020954f4
+.extern Presentation_SetScript
+.extern Presentation_IsScriptComplete
+.extern Presentation_IsScriptSuspended
+.extern SpritePresentation_Show
+.extern SpritePresentation_Hide
 .extern gGameWork
 .extern gSceneManager
 .extern gTouchPanelManager
@@ -32,7 +32,7 @@ GamePhaseTouchPrompt_UpdateInteraction: ; 0x0201054c
     cmp r0, #0x0
     ldr r0, [r4, #0x1c]
     beq L_020106f4
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r0, [r4, #0x28]
     cmp r0, #0x4
     addls pc, pc, r0, lsl #0x2
@@ -45,7 +45,7 @@ L_02010588: ; jump table
     b L_020106d8 ; case 4
 L_0201059c:
     ldr r0, [r4, #0x1c]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_020106f8
     ldr r0, [r4, #0x1c]
@@ -125,7 +125,7 @@ L_020106b4:
     b L_020106f8
 L_020106c0:
     ldr r0, [r4, #0x1c]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     movne r0, #0x4
     strne r0, [r4, #0x28]
@@ -134,12 +134,12 @@ L_020106d8:
     ldr r0, [r4, #0x1c]
     ldr r1, L_02010720
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x0
     str r0, [r4, #0x28]
     b L_020106f8
 L_020106f4:
-    bl func_020954f4
+    bl SpritePresentation_Hide
 L_020106f8:
     ldr r0, L_0201071c
     mov r1, #0x1

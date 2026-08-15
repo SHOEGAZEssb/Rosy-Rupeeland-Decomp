@@ -6,22 +6,22 @@
 .extern func_02092260
 .extern func_02092910
 .extern func_02092c8c
-.extern func_02093adc
-.extern func_02093b20
-.extern func_02093b30
-.extern func_02093b8c
-.extern func_02093bb0
-.extern func_02093bd4
-.extern func_02093bdc
-.extern func_02093c64
-.extern func_02093c78
+.extern IndexedSelectionController_ConfigureRange
+.extern IndexedSelectionController_ResetTransition
+.extern IndexedSelectionController_SnapTransitionOrigin
+.extern IndexedSelectionController_IncrementWrap
+.extern IndexedSelectionController_DecrementWrap
+.extern IndexedSelectionController_GetLastDirection
+.extern IndexedSelectionController_AdvanceTransition
+.extern IndexedSelectionController_IsTransitionIdle
+.extern IndexedSelectionController_AdvancePacing
 .extern func_02093d50
 .extern func_02093d7c
 .extern func_02094574
-.extern func_020948d4
-.extern func_020948e4
-.extern func_020954e0
-.extern func_020954f4
+.extern PresentationScalar_SetImmediate
+.extern PresentationScalar_TransitionTo
+.extern SpritePresentation_Show
+.extern SpritePresentation_Hide
 .extern func_02095860
 .extern func_02095928
 .extern func_02095940
@@ -104,15 +104,15 @@ L_021fec44:
     mov r1, #0x0
     ldr r3, [r3, #0x14]
     sub r2, r2, #0x1
-    bl func_02093adc
+    bl IndexedSelectionController_ConfigureRange
     ldr r0, [r4, #0x220]
     ldr r0, [r0, #0x40]
     cmp r0, #0x1
     ble L_021fece0
     ldr r0, [r4, #0x1f0]
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r0, [r4, #0x1f4]
-    bl func_020954e0
+    bl SpritePresentation_Show
 L_021fece0:
     add r0, r4, #0x280
     bl func_ov028_021fce28
@@ -137,7 +137,7 @@ L_021fed0c:
     b L_021ff09c
 L_021fed30:
     add r0, r4, #0x228
-    bl func_02093b20
+    bl IndexedSelectionController_ResetTransition
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -145,19 +145,19 @@ L_021fed30:
     str r0, [r4, #0x8]
 L_021fed4c:
     add r0, r4, #0x228
-    bl func_02093b30
+    bl IndexedSelectionController_SnapTransitionOrigin
     ldr r0, [r4, #0x2c]
     ldrh r0, [r0, #0x0]
     tst r0, #0x20
     beq L_021fed70
     add r0, r4, #0x228
-    bl func_02093bb0
+    bl IndexedSelectionController_DecrementWrap
     b L_021fee8c
 L_021fed70:
     tst r0, #0x10
     beq L_021fed84
     add r0, r4, #0x228
-    bl func_02093b8c
+    bl IndexedSelectionController_IncrementWrap
     b L_021fee8c
 L_021fed84:
     ldr r0, [r4, #0x20]
@@ -173,7 +173,7 @@ L_021fed84:
     cmpne r0, #0x0
     beq L_021fedc0
     add r0, r4, #0x228
-    bl func_02093bb0
+    bl IndexedSelectionController_DecrementWrap
     b L_021fee8c
 L_021fedc0:
     ldr r0, [r4, #0x1f4]
@@ -185,7 +185,7 @@ L_021fedc0:
     cmpne r0, #0x0
     beq L_021fedec
     add r0, r4, #0x228
-    bl func_02093b8c
+    bl IndexedSelectionController_IncrementWrap
     b L_021fee8c
 L_021fedec:
     ldr r0, [r4, #0x20]
@@ -199,7 +199,7 @@ L_021fedec:
     cmp r0, #0x0
     beq L_021fee28
     add r0, r4, #0x228
-    bl func_02093bb0
+    bl IndexedSelectionController_DecrementWrap
     mov r0, #0x1
     str r0, [r4, #0x1f8]
     b L_021fee8c
@@ -211,7 +211,7 @@ L_021fee28:
     cmp r0, #0x0
     beq L_021fee54
     add r0, r4, #0x228
-    bl func_02093b8c
+    bl IndexedSelectionController_IncrementWrap
     mov r0, #0x1
     str r0, [r4, #0x1f8]
     b L_021fee8c
@@ -232,34 +232,34 @@ L_021fee54:
     str r0, [r4, #0x8]
 L_021fee8c:
     add r0, r4, #0x228
-    bl func_02093bdc
+    bl IndexedSelectionController_AdvanceTransition
     cmp r0, #0x0
     beq L_021fef30
     add r0, r4, #0x228
-    bl func_02093bd4
+    bl IndexedSelectionController_GetLastDirection
     cmp r0, #0x0
     beq L_021feed8
     ldr r0, [r4, #0x1f4]
     mov r1, #0xf4000
     add r0, r0, #0xc
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x1f4]
     mov r1, #0x1
     add r0, r0, #0xc
     mov r2, #0xf0000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x1f4]
     b L_021fef00
 L_021feed8:
     ldr r0, [r4, #0x1f0]
     mov r1, #0xc000
     add r0, r0, #0xc
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r4, #0x1f0]
     mov r1, #0x1
     add r0, r0, #0xc
     mov r2, #0x10000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x1f0]
 L_021fef00:
     mov r0, #0x4
@@ -276,14 +276,14 @@ L_021fef00:
     str r0, [r4, #0x8]
 L_021fef30:
     add r0, r4, #0x228
-    bl func_02093c64
+    bl IndexedSelectionController_IsTransitionIdle
     cmp r0, #0x0
     movne r0, #0x0
     strne r0, [r4, #0x1f8]
     b L_021ff09c
 L_021fef48:
     add r0, r4, #0x228
-    bl func_02093c78
+    bl IndexedSelectionController_AdvancePacing
     cmp r0, #0x0
     beq L_021fef70
     ldr r1, [r4, #0x4]
@@ -324,9 +324,9 @@ L_021fefd4:
     cmp r0, #0x0
     beq L_021ff09c
     ldr r0, [r4, #0x1f0]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldr r0, [r4, #0x1f4]
-    bl func_020954f4
+    bl SpritePresentation_Hide
     ldr r0, [r4, #0x224]
     bl func_ov028_021fd86c
     ldr r0, [r4, #0x220]

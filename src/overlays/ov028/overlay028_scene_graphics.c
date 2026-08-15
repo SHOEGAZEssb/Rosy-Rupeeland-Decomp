@@ -33,8 +33,8 @@ extern void func_020925f8(void);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_02092850(s32);
 extern void func_02094574(void *);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02095360(void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void func_020958d8(void *);
 extern void func_020b2058(void *, s32, s32);
 extern void func_020b44e8(void);
@@ -131,16 +131,16 @@ extern "C" void func_ov028_021fe3a4(void *state)
  */
 extern "C" void func_ov028_021fe438(void *state)
 {
-    func_02095360((u8 *)state + 0x264);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)state + 0x264);
     if (FIELD(void *, state, 0x90) != 0)
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, FIELD(void *, state, 0x90), 0));
     void *child = FIELD(void *, state, 0x260);
     if (FIELD(s32, child, 0x80) >= FIELD(s32, child, 0x7c)) {
         s32 offset = func_0209189c((u8 *)state + 0x27c, -2, 2);
-        func_020948e4((u8 *)child + 0xc, 2,
+        PresentationScalar_TransitionTo((u8 *)child + 0xc, 2,
                       FIELD(s32, state, 0x274) + (offset << 12));
         offset = func_0209189c((u8 *)state + 0x27c, -2, 2);
-        func_020948e4((u8 *)child + 0x1c, 2,
+        PresentationScalar_TransitionTo((u8 *)child + 0x1c, 2,
                       FIELD(s32, state, 0x278) + (offset << 12));
         func_ov028_021fe540(child,
                            func_0209189c((u8 *)state + 0x27c, 0x10, 0x20));

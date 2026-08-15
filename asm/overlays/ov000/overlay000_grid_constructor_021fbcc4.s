@@ -18,8 +18,8 @@
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02092798
 .extern func_02092814
-.extern func_02093a88
-.extern func_02093adc
+.extern IndexedSelectionController_Init
+.extern IndexedSelectionController_ConfigureRange
 .extern func_02094154
 .extern func_020957bc
 .extern func_020957f0
@@ -47,7 +47,7 @@ func_ov000_021fbcc4: ; 0x021fbcc4
     add r0, r10, #0x228
     bl func_02092798
     add r0, r10, #0x270
-    bl func_02093a88
+    bl IndexedSelectionController_Init
     str r4, [r10, #0x4]
     mov r2, #0x0
     str r2, [r10, #0x25c]
@@ -251,7 +251,7 @@ L_021fc00c:
     mov r3, r1
     add r0, r10, #0x270
     mov r2, #0x4
-    bl func_02093adc
+    bl IndexedSelectionController_ConfigureRange
     mov r0, r10
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

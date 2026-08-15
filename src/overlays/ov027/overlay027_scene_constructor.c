@@ -36,9 +36,9 @@ extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void);
 extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
-extern void *func_02094ad4(void *);
-extern void func_02095274(void *, void *);
-extern void func_02094bbc(void *, s32, s32, s32);
+extern void *Presentation_InitVariant(void *);
+extern void PresentationList_Append(void *, void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void func_ov027_021fd9c8(void *);
 extern void *func_ov027_021fce04(void *, s32);
@@ -105,22 +105,22 @@ extern "C" void *func_ov027_021fda30(void *scene)
 
     void *child = Heap_Alloc(0x9c, data_ov027_021fef2c, 4, gHeapContext);
     if (child)
-        child = func_02094ad4(child);
+        child = Presentation_InitVariant(child);
     FIELD(void *, scene, 0x118) = child;
-    func_02095274((u8 *)scene + 0x120, child);
+    PresentationList_Append((u8 *)scene + 0x120, child);
     child = Heap_Alloc(0x9c, data_ov027_021fef2c, 4, gHeapContext);
     if (child)
-        child = func_02094ad4(child);
+        child = Presentation_InitVariant(child);
     FIELD(void *, scene, 0x11c) = child;
-    func_02095274((u8 *)scene + 0x120, child);
+    PresentationList_Append((u8 *)scene + 0x120, child);
 
     child = Heap_Alloc(0xa0, data_ov027_021fef34, 4, gHeapContext);
     if (child)
         child = func_ov027_021fce04(child, (s32)group);
     FIELD(void *, scene, 0x114) = child;
-    func_02095274((u8 *)scene + 0x120, child);
-    func_02094bbc(FIELD(void *, scene, 0x118), 0, -0x600, 0x3000);
-    func_02094bbc(FIELD(void *, scene, 0x11c), 0, -0x600, 0);
+    PresentationList_Append((u8 *)scene + 0x120, child);
+    Presentation_SetPosition(FIELD(void *, scene, 0x118), 0, -0x600, 0x3000);
+    Presentation_SetPosition(FIELD(void *, scene, 0x11c), 0, -0x600, 0);
 
     s32 order[58];
     for (s32 i = 0; i < 58; ++i)
@@ -143,7 +143,7 @@ extern "C" void *func_ov027_021fda30(void *scene)
         if (entry)
             entry = func_ov027_021fd1c8(
                 entry, resource, data_ov027_021feb54 + order[i] * 3, i);
-        func_02095274((u8 *)scene + 0x130, entry);
+        PresentationList_Append((u8 *)scene + 0x130, entry);
     }
 
     for (s32 i = 0; i < 28; ++i) {

@@ -10,9 +10,9 @@
     .extern func_02091b98
     .extern func_02091c7c
     .extern func_02091cf0
-    .extern func_020948e4
-    .extern func_02094bbc
-    .extern func_02095274
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_SetPosition
+    .extern PresentationList_Append
     .extern func_ov022_021fce00
     .extern func_ov022_021fd2dc
     .extern gHeapContext
@@ -131,7 +131,7 @@ L_021fd1b0:
     mov r0, r4
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r5, [r6, #0x6c]
     add r0, r6, #0x64
     ldr r2, [r5, #0x8]
@@ -154,19 +154,19 @@ L_021fd1b0:
     add r0, r4, #0xc
     bne L_021fd274
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r2, r7
     add r0, r4, #0x1c
     mov r1, #0x5
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     b L_021fd28c
 L_021fd274:
     mov r1, #0x5
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r2, r7
     add r0, r4, #0x1c
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
 L_021fd28c:
     add r0, r6, #0x64
     mov r1, #0x4
@@ -177,7 +177,7 @@ L_021fd28c:
     bl func_ov022_021fd2dc
     mov r1, r4
     add r0, r6, #0x48
-    bl func_02095274
+    bl PresentationList_Append
 L_021fd2b4:
     ldr r1, [r6, #0x20]
     add r0, r6, #0x10

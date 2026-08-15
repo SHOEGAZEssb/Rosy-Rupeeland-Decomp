@@ -12,10 +12,10 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" u8 data_ov045_0220d5c4[];
-extern "C" void func_020953c8(void *object, void *argument);
-extern "C" void func_0209548c(void *object);
+extern "C" void SpritePresentation_InitVariant(void *object, void *argument);
+extern "C" void SpritePresentation_Destroy(void *object);
 extern "C" void Heap_Free(void *allocation);
-extern "C" void func_02094c48(void *object);
+extern "C" void Presentation_AdvanceTransitions(void *object);
 
 /*
  * Construct a derived transient effect in caller-provided storage and return
@@ -25,7 +25,7 @@ extern "C" void func_02094c48(void *object);
 extern "C" void *func_ov045_0220b740(void *object, void *argument,
                                       void *fieldA0)
 {
-    func_020953c8(object, argument);
+    SpritePresentation_InitVariant(object, argument);
     FIELD(void *, object, 0) = data_ov045_0220d5c4;
     FIELD(void *, object, 0xa0) = fieldA0;
     FIELD(s32, object, 0x88) = 1;
@@ -38,7 +38,7 @@ extern "C" void *func_ov045_0220b740(void *object, void *argument,
  */
 extern "C" void *func_ov045_0220b770(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     return object;
 }
 
@@ -49,7 +49,7 @@ extern "C" void *func_ov045_0220b770(void *object)
  */
 extern "C" void *func_ov045_0220b784(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     Heap_Free(object);
     return object;
 }
@@ -63,7 +63,7 @@ extern "C" void *func_ov045_0220b784(void *object)
  */
 extern "C" bool func_ov045_0220b7a0(void *object)
 {
-    func_02094c48(object);
+    Presentation_AdvanceTransitions(object);
 
     s32 x = FIELD(s32, object, 0x10);
     s32 y = FIELD(s32, object, 0x20);

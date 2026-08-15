@@ -3,8 +3,8 @@
 .extern GameWork_TestFlag
 .extern data_020c9670
 .extern func_0209189c
-.extern func_020948e4
-.extern func_02094dd4
+.extern PresentationScalar_TransitionTo
+.extern Presentation_UpdateScript
 .extern func_020ae024
 .extern func_ov094_02217bc8
 .extern func_ov094_02218da0
@@ -54,7 +54,7 @@ func_ov094_02218b84:
     smulbb r1, r2, r1
     add r2, r1, #0x80000
     mov r1, #0x4
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r1, r5, #0x1
     ldr r0, .L_02218d9c
     mov r1, r1, lsl #0x1
@@ -64,7 +64,7 @@ func_ov094_02218b84:
     smulbb r1, r2, r1
     sub r2, r1, #0xa0000
     mov r1, #0x4
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x14
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -91,7 +91,7 @@ func_ov094_02218b84:
     add r2, r2, #0x80000
     add r2, r2, r0, lsl #0xc
     add r0, r4, #0xc
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0xa0
     mvn r1, #0xf
     mov r2, #0x10
@@ -102,7 +102,7 @@ func_ov094_02218b84:
     sub r2, r2, #0xa0000
     add r2, r2, r0, lsl #0xc
     add r0, r4, #0x1c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x1e
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -117,15 +117,15 @@ func_ov094_02218b84:
     add r0, r4, #0x6c
     mov r1, #0x1
     mov r2, #0x10
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0xc
     mov r1, #0x2
     mov r2, #0x80000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x1c
     mov r1, #0x2
     mov r2, #0x40000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x78
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -148,7 +148,7 @@ func_ov094_02218b84:
     ldmia sp!, {r3, r4, r5, pc}
 .L_02218d80:
     mov r0, r4
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     mov r0, r4
     bl func_ov094_02218ed4
     mov r0, #0x0

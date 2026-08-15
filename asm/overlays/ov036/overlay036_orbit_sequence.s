@@ -2,9 +2,9 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_orbit_handles.c for documented portable C. */
 
-    .extern func_020948f8
+    .extern PresentationScalar_TransitionBy
     .extern func_ov036_022002b8
-    .extern func_02094c48
+    .extern Presentation_AdvanceTransitions
     .extern Sound_Play
     .extern func_ov036_02200318
     .extern gSoundContext
@@ -26,7 +26,7 @@ L_022003fc:
     add r0, r4, #0x1c
     mov r1, #0x4
     mov r2, #0x500
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     mov r0, #0x3c
     str r0, [r4, #0x7c]
     mov r2, #0x0
@@ -51,7 +51,7 @@ L_02200458:
     mov r0, r4
     bl func_ov036_022002b8
     mov r0, r4
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_022004d0
     ldr r0, [r4, #0xc0]
@@ -87,7 +87,7 @@ L_022004d0:
 L_022004dc:
     bl func_ov036_022002b8
     mov r0, r4
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_0220058c
     mov r0, #0x3c
@@ -101,7 +101,7 @@ L_022004dc:
 L_02200510:
     bl func_ov036_022002b8
     mov r0, r4
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_02200584
     ldr r0, [r4, #0xc0]

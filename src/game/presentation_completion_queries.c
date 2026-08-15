@@ -3,7 +3,7 @@
 #include "tingle/types.h"
 
 /* Return true when no transition is active or when its state is one. */
-s32 func_02095224(const void *presentation)
+s32 Presentation_IsScriptComplete(const void *presentation)
 {
     const u8 *object = (const u8 *)presentation;
 
@@ -14,7 +14,7 @@ s32 func_02095224(const void *presentation)
 }
 
 /* Return true when no transition is active or when its state is three. */
-s32 func_02095248(const void *presentation)
+s32 Presentation_IsScriptSuspended(const void *presentation)
 {
     const u8 *object = (const u8 *)presentation;
 

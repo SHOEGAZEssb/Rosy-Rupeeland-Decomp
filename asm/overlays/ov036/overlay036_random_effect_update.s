@@ -2,20 +2,20 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_random_effect_update.c for documented portable C. */
 
-    .extern func_02094c48
+    .extern Presentation_AdvanceTransitions
     .extern func_0209189c
-    .extern func_020948d4
+    .extern PresentationScalar_SetImmediate
     .extern Heap_Alloc
     .extern func_ov036_021fd2a4
-    .extern func_02094bbc
+    .extern Presentation_SetPosition
     .extern func_020918f4
-    .extern func_02095274
+    .extern PresentationList_Append
     .extern func_ov036_021fe978
-    .extern func_02094d28
+    .extern Presentation_InterpolateScalar
     .extern func_ov036_021fe968
     .extern Sound_Play
-    .extern func_020948f8
-    .extern func_02095360
+    .extern PresentationScalar_TransitionBy
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern data_ov036_02206148
     .extern gHeapContext
     .extern data_020c9670
@@ -43,7 +43,7 @@ L_021fe3f8:
     str r0, [r9, #0xac]
 L_021fe400:
     mov r0, r9
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_021fe430
     mov r0, #0x1e
@@ -66,7 +66,7 @@ L_021fe430:
     mov r1, r0
     add r0, r9, #0xc
     add r1, r4, r1
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r9, #0xc8
     mov r1, #0x10
     mov r2, #0x1f
@@ -108,7 +108,7 @@ L_021fe4d8:
     mov r0, r5
     add r1, r4, r1
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, #0x1000
     add r0, r9, #0xc8
     rsb r1, r1, #0x0
@@ -123,16 +123,16 @@ L_021fe4d8:
     bl func_020918f4
     mov r1, r0, lsl #0x4
     add r0, r5, #0x5c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r5, #0x6c
     ldr r1, L_021fe958
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r1, r5
     add r0, r9, #0x9c
-    bl func_02095274
+    bl PresentationList_Append
     b L_021fe93c
 L_021fe55c:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_021fe93c
     mov r0, #0x4
@@ -144,7 +144,7 @@ L_021fe55c:
     str r0, [r9, #0xac]
     b L_021fe93c
 L_021fe588:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_021fe5f0
     ldr r0, [r9, #0xcc]
@@ -179,37 +179,37 @@ L_021fe5f0:
     mov r1, #0x1
     mov r2, #0xc000
     mov r3, #0x2000
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r8, r0
     mov r0, r9
     mov r1, #0x1
     mov r2, #0x0
     mov r3, #0x1e
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     str r0, [sp, #0x18]
     ldr r2, [r9, #0xb0]
     ldr r3, [r9, #0xbc]
     mov r0, r9
     mov r1, #0x1
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r6, r0
     ldr r2, [r9, #0xb4]
     ldr r3, [r9, #0xc0]
     mov r0, r9
     mov r1, #0x1
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r5, r0
     ldr r2, [r9, #0xb8]
     ldr r3, [r9, #0xc4]
     mov r0, r9
     mov r1, #0x1
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r4, r0
     mov r0, r9
     mov r1, #0x1
     mov r2, #0x1800
     mov r3, #0x1000
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     str r0, [sp, #0x14]
     orr r0, r6, r5, lsl #0x5
     orr r0, r0, r4, lsl #0xa
@@ -262,7 +262,7 @@ L_021fe72c:
     ldr r2, [r9, #0x20]
     mov r0, r6
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, r5, asr #0x4
     mov r3, r0, lsl #0x1
     ldr r1, L_021fe960
@@ -295,19 +295,19 @@ L_021fe72c:
     mov r0, r0, lsl #0x10
     mov r1, r0, lsr #0x10
     add r0, r6, #0x5c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [sp, #0x14]
     add r0, r6, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r1, r6
     add r0, r9, #0x9c
-    bl func_02095274
+    bl PresentationList_Append
     add r4, r4, #0x1
     cmp r4, #0x10
     blt L_021fe6d4
     b L_021fe93c
 L_021fe800:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_021fe88c
     ldr r0, [r9, #0xd0]
@@ -336,7 +336,7 @@ L_021fe85c:
     add r0, r9, #0x1c
     mov r1, #0x5
     mvn r2, #0xff
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     mov r0, #0x10
     str r0, [r9, #0x7c]
     mov r0, #0x0
@@ -355,13 +355,13 @@ L_021fe88c:
     mov r1, #0x1
     mov r2, #0x0
     mov r3, #0x1800
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r9, #0xcc]
     str r0, [r1, #0x38]
     str r0, [r1, #0x34]
     b L_021fe93c
 L_021fe8c4:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_021fe900
     ldr r0, [r9, #0xa8]
@@ -386,7 +386,7 @@ L_021fe900:
     mov r3, r1
     str r2, [r4, #0x24]
     mov r2, #0x1f
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r9, #0xcc]
     strb r0, [r1, #0x5b]
     b L_021fe93c
@@ -395,7 +395,7 @@ L_021fe934:
     b L_021fe948
 L_021fe93c:
     add r0, r9, #0x9c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     mov r0, #0x0
 L_021fe948:
     add sp, sp, #0x1c

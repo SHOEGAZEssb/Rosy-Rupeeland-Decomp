@@ -15,8 +15,8 @@ extern const u8 data_ov025_02203338[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *);
-extern void func_020953c8(void *, void *);
+extern void PresentationList_DeleteAll(void *);
+extern void SpritePresentation_InitVariant(void *, void *);
 extern void func_ov025_021fdec8(void *);
 #ifdef __cplusplus
 }
@@ -45,7 +45,7 @@ extern "C" void func_ov025_021ff1dc(void *holder)
 extern "C" void *func_ov025_021ff1fc(void *holder)
 {
     FIELD(const void *, holder, 0) = data_ov025_02203318;
-    func_02095308(holder);
+    PresentationList_DeleteAll(holder);
     return holder;
 }
 
@@ -55,7 +55,7 @@ extern "C" void *func_ov025_021ff1fc(void *holder)
  */
 extern "C" void *func_ov025_021ff21c(void *object, void *sprite)
 {
-    func_020953c8(object, sprite);
+    SpritePresentation_InitVariant(object, sprite);
     FIELD(const void *, object, 0) = data_ov025_02203338;
     return object;
 }

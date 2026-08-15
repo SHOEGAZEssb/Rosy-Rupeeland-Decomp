@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov033/overlay033_sprite_group.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern __construct_array
     .extern func_02071ea4
     .extern func_02071eb8
@@ -35,7 +35,7 @@ func_ov033_021fce1c:
     sub sp, sp, #0xc
     mov r6, r0
     mov r5, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021fcf74
     ldr r4, L_021fcf78
     str r0, [r6, #0x0]

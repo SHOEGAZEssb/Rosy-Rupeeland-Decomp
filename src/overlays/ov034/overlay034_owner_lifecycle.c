@@ -13,13 +13,13 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void *func_02071adc(void *resourceContext, s32 resourceId);
 extern void *func_0201e0ec(void *globalRecord);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void func_ov034_021fcff0(void *state, s32 side);
-extern void func_020948d4(void *embedded, s32 capacity);
+extern void PresentationScalar_SetImmediate(void *embedded, s32 capacity);
 extern void Heap_Free(void *allocation);
 extern void func_02071e04(void *resourceContext, void *resource);
 extern void func_ov034_021fce00(void *object);
@@ -39,7 +39,7 @@ extern void func_ov034_021fce00(void *object);
  */
 extern "C" void *func_ov034_021fd544(void *owner)
 {
-    func_020949ec(owner);
+    Presentation_Init(owner);
     FIELD(const void *, owner, 0) = data_ov034_021ff194;
     FIELD(void *, owner, 0x9c) = func_02071adc(data_020f4e18[0], 0x5001);
 
@@ -58,7 +58,7 @@ extern "C" void *func_ov034_021fd544(void *owner)
         FIELD(void *, owner, 0xa0 + i * 4) = state;
         FIELD(s32, state, 0x1c) = 0x1800;
     }
-    func_020948d4((u8 *)owner + 0x6c, 0);
+    PresentationScalar_SetImmediate((u8 *)owner + 0x6c, 0);
     FIELD(s32, owner, 0xc4) = 0;
     FIELD(s32, owner, 0xc0) = 0;
     return owner;

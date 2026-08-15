@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern func_02094d28
-.extern func_02094dd4
+.extern Presentation_InterpolateScalar
+.extern Presentation_UpdateScript
 .extern func_020afca0
 .extern func_ov094_02217bc8
 
@@ -9,7 +9,7 @@
 func_ov094_022192e0:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     ldr r0, [r4, #0x9c]
     cmp r0, #0x0
     beq .L_02219300
@@ -26,7 +26,7 @@ func_ov094_022192e0:
     mov r0, r4
     sub r3, r2, #0x4
     mov r1, #0x1
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     mov r1, r0
     ldr r0, .L_02219340
     bl func_020afca0

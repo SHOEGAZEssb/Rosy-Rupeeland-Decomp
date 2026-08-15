@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void GraphicsSpriteState_ReleaseFromGroup(void *state);
 extern void Heap_Free(void *memory);
-extern void func_0209548c(void *effect);
+extern void SpritePresentation_Destroy(void *effect);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,7 @@ extern "C" void *func_ov094_02219460(void *effect)
 {
     *(const void **)effect = data_ov094_02219e9c;
     GraphicsSpriteState_ReleaseFromGroup(*(void **)((u8 *)effect + 0xa4));
-    func_0209548c(effect);
+    SpritePresentation_Destroy(effect);
     Heap_Free(effect);
     return effect;
 }

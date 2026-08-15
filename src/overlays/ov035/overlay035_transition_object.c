@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void Graphics3DSceneState_Apply(void *state);
 extern void GraphicsAnimationInstanceManager_Render(void *resourceSet, void *transform);
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *Graphics3DResourceBinding_Init(void *allocation, void *resourceContext,
                           s32 argument, s32 firstId, s32 secondId);
@@ -44,7 +44,7 @@ extern "C" void func_ov035_021fe5cc(void *scene)
  */
 extern "C" void *func_ov035_021fe5ec(void *object, s32 argument)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov035_02203ce8;
     void *resource =
         Heap_Alloc(0x18, data_ov035_02203d30, 4, gHeapContext);

@@ -13,8 +13,8 @@ extern "C" u8 data_ov045_0220d4e8[];
 extern "C" u8 data_ov045_0220d4f8[];
 extern "C" void *gDebugFont;
 extern "C" void *data_020f4e18;
-extern "C" void func_02095308(void *object);
-extern "C" void func_02095360(void *object);
+extern "C" void PresentationList_DeleteAll(void *object);
+extern "C" void PresentationList_UpdateAndDeleteCompleted(void *object);
 extern "C" void func_02071ea4(void *owner);
 extern "C" void func_02071eb8(void *owner);
 extern "C" void func_02091b6c(void *track);
@@ -24,7 +24,7 @@ extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
 extern "C" void GraphicsSpriteGroup_Destroy(void *resource);
 extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
-extern "C" s32 func_02091a70(s32 minimum, s32 maximum, s32 seed, s32 span);
+extern "C" s32 Presentation_InterpolateLinear(s32 minimum, s32 maximum, s32 seed, s32 span);
 extern "C" void func_02091bac(void *track, s32 mode, s32 start, s32 end,
                                s32 duration);
 extern "C" void func_02091b98(void *track, s32 value);
@@ -45,13 +45,13 @@ extern "C" void *func_ov045_0220b7fc(void *object)
 
 /*
  * Restore the list vtable, release its shared base state through
- * func_02095308, and return the unchanged list pointer. Owned base state may
+ * PresentationList_DeleteAll, and return the unchanged list pointer. Owned base state may
  * be released; the caller retains the storage.
  */
 extern "C" void *func_ov045_0220b81c(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d570;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     return object;
 }
 
@@ -84,10 +84,10 @@ extern "C" void *func_ov045_0220b83c(void *object)
  */
 extern "C" void *func_ov045_0220b8cc(void *object)
 {
-    func_02095308((u8 *)object + 0x48);
+    PresentationList_DeleteAll((u8 *)object + 0x48);
     GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0));
     FIELD(void *, object, 0x48) = data_ov045_0220d570;
-    func_02095308((u8 *)object + 0x48);
+    PresentationList_DeleteAll((u8 *)object + 0x48);
     func_02071eb8((u8 *)object + 4);
     return object;
 }
@@ -98,14 +98,14 @@ extern "C" void *func_ov045_0220b8cc(void *object)
  */
 extern "C" void func_ov045_0220b908(void *object)
 {
-    func_02095360((u8 *)object + 0x48);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)object + 0x48);
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0));
 }
 
 /*
  * Configure an emitter timing run and return its selected duration. Inputs are
  * a randomization seed/value, span/count, and orientation variant. Clamp the
- * duration from func_02091a70 to four times the span, configure track +0x10,
+ * duration from Presentation_InterpolateLinear to four times the span, configure track +0x10,
  * clear elapsed fields, select the two confirmed coordinate tables at
  * +0x68/+0x6C according to the variant stored at +0x60, and prime track +0x2C
  * with ten. Timing/PRNG helper state changes; no direct hardware access occurs.
@@ -113,7 +113,7 @@ extern "C" void func_ov045_0220b908(void *object)
 extern "C" s32 func_ov045_0220b924(void *object, s32 value, s32 span,
                                     s32 variant)
 {
-    s32 duration = func_02091a70(0x14, 0xc8, value, span);
+    s32 duration = Presentation_InterpolateLinear(0x14, 0xc8, value, span);
     if (duration > span * 4)
         duration = span * 4;
     func_02091bac((u8 *)object + 0x10, 1, 0, span, duration);

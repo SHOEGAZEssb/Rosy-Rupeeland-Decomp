@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_animated_object.c for documented portable C. */
 
     .extern func_020955b0
-    .extern func_02094bbc
-    .extern func_020948e4
+    .extern Presentation_SetPosition
+    .extern PresentationScalar_TransitionTo
     .extern data_ov035_02203bec
 
 
@@ -31,11 +31,11 @@ func_ov035_021fdb54:
     subeq r5, r1, #0x1400
     mov r0, r4
     str r6, [r4, #0xa4]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r2, r5
     add r0, r4, #0xc
     mov r1, #0x1
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x78
     str r0, [r4, #0x7c]
     mov r0, #0x0

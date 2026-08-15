@@ -23,10 +23,10 @@
 .extern func_0209189c
 .extern func_020918f4
 .extern func_02092418
-.extern func_020948e4
-.extern func_02094ad4
-.extern func_02094bbc
-.extern func_02094d28
+.extern PresentationScalar_TransitionTo
+.extern Presentation_InitVariant
+.extern Presentation_SetPosition
+.extern Presentation_InterpolateScalar
 .extern func_020afd0c
 .extern gGameWork
 .extern gSystemState

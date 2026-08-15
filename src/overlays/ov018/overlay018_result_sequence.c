@@ -29,8 +29,8 @@ extern s32 func_02091cf0(void *);
 extern void func_020922f0(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
-extern void func_02095274(void *, void *);
-extern void func_020954e0(void *);
+extern void PresentationList_Append(void *, void *);
+extern void SpritePresentation_Show(void *);
 extern void func_020afd0c(volatile u16 *, s32, s32, s32, s32);
 extern s32 func_020befec(s32, s32);
 extern void func_ov003_021fb7ec(void *);
@@ -110,7 +110,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
                 FIELD(void *, state, 0x194), x, y);
         }
         FIELD(void *, state, 0x1c4) = result;
-        func_02095274((u8 *)state + 0x3cc, result);
+        PresentationList_Append((u8 *)state + 0x3cc, result);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         break;
@@ -118,7 +118,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
     case 2:
         func_02091bac((u8 *)state + 0x1a8, 1, 0, 0x10, 0x3c);
         func_020afd0c((volatile u16 *)0x04001050, 0, 0x24, 0, 0x10);
-        func_020954e0(FIELD(void *, state, 0x1c4));
+        SpritePresentation_Show(FIELD(void *, state, 0x1c4));
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         break;

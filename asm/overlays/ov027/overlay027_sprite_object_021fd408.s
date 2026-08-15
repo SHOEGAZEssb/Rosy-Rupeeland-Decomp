@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_object.c. */
 .extern data_ov027_021fef08
-.extern func_020948e4
-.extern func_02094bbc
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
 .extern func_020955b0
 .extern func_ov027_021fd180
 
@@ -31,11 +31,11 @@ func_ov027_021fd408:
     str r4, [r6, #0xa4]
     ldr r1, [r6, #0xa8]
     ldr r2, [r6, #0xac]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r6, #0x2c
     mov r1, #0x2
     mov r2, #0x100
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x78
     mov r1, #0x0
     str r0, [r6, #0x7c]

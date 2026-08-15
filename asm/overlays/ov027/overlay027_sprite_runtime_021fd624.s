@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_runtime.c. */
 .extern data_ov027_021fe8ac
 .extern GraphicsAnimationInstance_SetAnimation
-.extern func_02094cf0
-.extern func_02094dd4
-.extern func_02095224
+.extern Presentation_SetScript
+.extern Presentation_UpdateScript
+.extern Presentation_IsScriptComplete
 .extern func_ov027_021fd3f0
 .extern func_ov027_021fd4dc
 
@@ -33,7 +33,7 @@ L_021fd64c:
     ldr r1, L_021fd714
     mov r0, r4
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xb8]
     add r0, r0, #0x1
     str r0, [r4, #0xb8]
@@ -45,7 +45,7 @@ L_021fd684:
     bl func_ov027_021fd4dc
     b L_021fd704
 L_021fd698:
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_021fd704
     ldr r0, [r4, #0x9c]
@@ -76,7 +76,7 @@ L_021fd6fc:
     ldmia sp!, {r4, pc}
 L_021fd704:
     mov r0, r4
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fd714: .word data_ov027_021fe8ac

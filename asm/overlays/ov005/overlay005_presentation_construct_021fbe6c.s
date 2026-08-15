@@ -5,9 +5,9 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern Heap_Alloc
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_020953f4
-    .extern func_02094bbc
-    .extern func_02094cf0
+    .extern SpritePresentation_Init
+    .extern Presentation_SetPosition
+    .extern Presentation_SetScript
     .extern GameWork_ClearFlag
     .extern func_ov005_021fc278
     .extern func_ov005_021fb86c
@@ -65,7 +65,7 @@ func_ov005_021fbe6c: ; 0x021fbe6c
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r5
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r5, r0
 L_021fbef4:
     mov r1, #0x130000
@@ -73,7 +73,7 @@ L_021fbef4:
     str r5, [r4, #0x64]
     sub r2, r1, #0x150000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r1, [r4, #0x64]
     mov r0, #0x200
     ldr r2, [r1, #0x9c]
@@ -82,7 +82,7 @@ L_021fbef4:
     strh r0, [r2, #0x34]
     ldr r0, [r4, #0x64]
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r1, L_021fc0e8
     ldr r0, [r1, #0x0]
     add r0, r0, #0x100

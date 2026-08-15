@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_terminal_helpers.c. */
-.extern func_0209548c
+.extern SpritePresentation_Destroy
 .extern Heap_Free
 
 
@@ -9,7 +9,7 @@
 func_ov025_02202c20:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0209548c
+    bl SpritePresentation_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

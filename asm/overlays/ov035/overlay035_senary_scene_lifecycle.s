@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_senary_scene_lifecycle.c for documented portable C. */
 
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern func_02071e04
     .extern Graphics3DResourceOwner_RemoveManager
     .extern GraphicsResourceSetVariant_Destroy
@@ -18,9 +18,9 @@ func_ov035_02201bd8:
     ldr r1, L_02201c64
     add r0, r4, #0x10c
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x11c
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, L_02201c68
     ldr r1, [r4, #0xfc]
     ldr r0, [r0, #0x0]
@@ -35,11 +35,11 @@ func_ov035_02201bd8:
     ldr r1, L_02201c6c
     add r0, r4, #0x11c
     str r1, [r4, #0x11c]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_02201c6c
     add r0, r4, #0x10c
     str r1, [r4, #0x10c]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0xe8
     bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xdc
@@ -60,9 +60,9 @@ func_ov035_02201c70:
     ldr r1, L_02201d04
     add r0, r4, #0x10c
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x11c
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r0, L_02201d08
     ldr r1, [r4, #0xfc]
     ldr r0, [r0, #0x0]
@@ -77,11 +77,11 @@ func_ov035_02201c70:
     ldr r1, L_02201d0c
     add r0, r4, #0x11c
     str r1, [r4, #0x11c]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_02201d0c
     add r0, r4, #0x10c
     str r1, [r4, #0x10c]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0xe8
     bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0xdc

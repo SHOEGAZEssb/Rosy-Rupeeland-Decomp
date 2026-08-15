@@ -17,19 +17,19 @@ extern const s32 data_ov026_022043e4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948d4(void *, s32);
-extern void func_020948e4(void *, s32, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_020b0300(u16, s32, s32, s32, s32);
 extern void func_020b0374(s32, s32, s32, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02094cf0(void *, const void *, s32);
-extern s32 func_02094d28(void *, s32, s32, s32);
-extern s32 func_02095224(void *);
-extern s32 func_02095248(void *);
-extern void func_02095308(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void Presentation_SetScript(void *, const void *, s32);
+extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
+extern s32 Presentation_IsScriptComplete(void *);
+extern s32 Presentation_IsScriptSuspended(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov026_021fe8fc(void *, u16, s32, s32, s32, s32, s32,
                                 s32);
 extern void func_ov026_021fec34(void *, s32, s32, s32, u16, u16);
@@ -65,32 +65,32 @@ extern "C" s32 func_ov026_02202f4c(void *scene)
 
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02095308((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
         func_ov026_02203168((u8 *)scene + 0x1c0, 0x424, 0xf74, 0);
-        func_02094bbc(FIELD(void *, scene, 0x2e8), -0x385, 0,
+        Presentation_SetPosition(FIELD(void *, scene, 0x2e8), -0x385, 0,
                        -0x13ae);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), -0x385, 0x1bd7, 0);
-        func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), -0x385, 0x1bd7, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
 
         void *child164 = FIELD(void *, scene, 0x164);
-        func_020948d4((u8 *)child164 + 0x1c, 0x1800);
-        func_020948d4((u8 *)child164 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x1c, 0x1800);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x6c, 0x4000);
         FIELD(s32, child164, 0xb8) = 0x10000;
 
         func_ov026_021fe8fc(FIELD(void *, scene, 0x16c), 0x2108, 0x18,
                             0x385, 0x99a, 0x800, 0x333, -0x19a);
 
         void *child168 = FIELD(void *, scene, 0x168);
-        func_020948d4((u8 *)child168 + 0x1c, 0x1800);
-        func_020948d4((u8 *)child168 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x1c, 0x1800);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x6c, 0x4000);
         FIELD(s32, child168, 0xb4) = 0x6000;
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, 0x43d7, 0x20000, 0x118f6);
-        func_020948d4((u8 *)child17c + 0x6c, 0x10000);
-        func_020948d4((u8 *)child17c + 0x3c, 0x4000);
+        Presentation_SetPosition(child17c, 0x43d7, 0x20000, 0x118f6);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0x10000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0x4000);
         FIELD(s32, child17c, 0xa0) = 0;
-        func_020948e4((u8 *)child17c + 0xc, 1, 0x2000);
+        PresentationScalar_TransitionTo((u8 *)child17c + 0xc, 1, 0x2000);
         FIELD(s32, child17c, 0x7c) = 0xb4;
         FIELD(s32, child17c, 0x80) = 0;
 
@@ -98,12 +98,12 @@ extern "C" s32 func_ov026_02202f4c(void *scene)
     }
 
     if (state == 0 || state == 1) {
-        s32 value = func_02094d28(FIELD(void *, scene, 0x160), 1, 0x1000,
+        s32 value = Presentation_InterpolateScalar(FIELD(void *, scene, 0x160), 1, 0x1000,
                                   0);
         func_ov026_02203178(FIELD(void *, scene, 0x74), 0, value, 0);
-        func_02094bbc(FIELD(void *, scene, 0x16c), 0,
+        Presentation_SetPosition(FIELD(void *, scene, 0x16c), 0,
                        FIELD(s32, FIELD(void *, scene, 0x160), 0x20), 0);
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
             func_ov026_022009dc(scene);
             return 1;
         }
@@ -129,33 +129,33 @@ extern "C" s32 func_ov026_02203188(void *scene)
 
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02095308((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
         func_ov026_02203168((u8 *)scene + 0x1c0, -0xd6, 0xffa, 0);
-        func_02094bbc(FIELD(void *, scene, 0x2e8), 0x19a, 0x499a,
+        Presentation_SetPosition(FIELD(void *, scene, 0x2e8), 0x19a, 0x499a,
                        -0x1266);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), 0x19a, 0x2266, 0);
-        func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0x19a, 0x2266, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
 
         void *child164 = FIELD(void *, scene, 0x164);
-        func_020948d4((u8 *)child164 + 0x1c, -0xdccd);
-        func_020948d4((u8 *)child164 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x1c, -0xdccd);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x6c, 0x4000);
         FIELD(s32, child164, 0xb8) = 0x18000;
 
-        func_02094bbc(FIELD(void *, scene, 0x16c), 0, 0x1000, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x16c), 0, 0x1000, 0);
         func_ov026_021fe8fc(FIELD(void *, scene, 0x16c), 0x4210, 0x40,
                             0x4cd, 0x1000, 0x1800, 0x666, 0xcd);
 
         void *child168 = FIELD(void *, scene, 0x168);
-        func_020948d4((u8 *)child168 + 0x1c, -0xdccd);
-        func_020948d4((u8 *)child168 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x1c, -0xdccd);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x6c, 0x4000);
         FIELD(s32, child168, 0xb4) = 0xa000;
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, 0x4214, -0xaa8f, 0x6000);
-        func_020948d4((u8 *)child17c + 0x6c, 0xab33);
-        func_020948d4((u8 *)child17c + 0x3c, 0);
+        Presentation_SetPosition(child17c, 0x4214, -0xaa8f, 0x6000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0xab33);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0);
         FIELD(s32, child17c, 0xa0) = 0;
-        func_020948e4((u8 *)child17c + 0xc, 1, 0x2000);
+        PresentationScalar_TransitionTo((u8 *)child17c + 0xc, 1, 0x2000);
         FIELD(s32, child17c, 0x7c) = 0xb4;
         FIELD(s32, child17c, 0x80) = 0;
 
@@ -163,10 +163,10 @@ extern "C" s32 func_ov026_02203188(void *scene)
     }
 
     if (state == 0 || state == 1) {
-        s32 value = func_02094d28(FIELD(void *, scene, 0x160), 1, 0x4000,
+        s32 value = Presentation_InterpolateScalar(FIELD(void *, scene, 0x160), 1, 0x4000,
                                   -0x2000);
         func_ov026_02203178(FIELD(void *, scene, 0x74), 0, value, 0);
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
             func_ov026_022009dc(scene);
             return 1;
         }
@@ -192,18 +192,18 @@ extern "C" s32 func_ov026_022033a0(void *scene)
 
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02095308((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
         func_ov026_02203580((u8 *)scene + 0x1c0);
 
         void *object2e8 = FIELD(void *, scene, 0x2e8);
         s32 old_value = FIELD(s32, object2e8, 0x20);
-        func_02094bbc(object2e8, 0, 0x1800, -0x2000);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), 0, old_value, 0);
-        func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
+        Presentation_SetPosition(object2e8, 0, 0x1800, -0x2000);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0, old_value, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
 
         void *child164 = FIELD(void *, scene, 0x164);
-        func_020948d4((u8 *)child164 + 0x1c, 0);
-        func_020948d4((u8 *)child164 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x1c, 0);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x6c, 0x4000);
         FIELD(s32, child164, 0xb8) = 0x8000;
 
         func_ov026_021fec34(FIELD(void *, scene, 0x170), 8, 0x1000,
@@ -212,25 +212,25 @@ extern "C" s32 func_ov026_022033a0(void *scene)
                             0x400, 0x666, 0x666, 0x666, -0xcd);
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, 0, 0x3000, 0x8000);
-        func_020948d4((u8 *)child17c + 0x6c, 0x7000);
-        func_020948d4((u8 *)child17c + 0x3c, 0);
+        Presentation_SetPosition(child17c, 0, 0x3000, 0x8000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0x7000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0);
         FIELD(s32, child17c, 0xa0) = 0;
 
         ++FIELD(s32, scene, 0x79c);
     }
 
     if (state == 0 || state == 1) {
-        s32 value = func_02094d28(FIELD(void *, scene, 0x160), 1, 0x1800,
+        s32 value = Presentation_InterpolateScalar(FIELD(void *, scene, 0x160), 1, 0x1800,
                                   0x5800);
         void *object2e8 = FIELD(void *, scene, 0x2e8);
-        func_020948d4((u8 *)object2e8 + 0x1c, value);
+        PresentationScalar_SetImmediate((u8 *)object2e8 + 0x1c, value);
         s32 shared_value = FIELD(s32, object2e8, 0x20);
-        func_020948d4((u8 *)FIELD(void *, scene, 0x2ec) + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0x2ec) + 0x1c,
                        shared_value);
-        func_020948d4((u8 *)FIELD(void *, scene, 0x16c) + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0x16c) + 0x1c,
                        shared_value + 0x800);
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
             func_ov026_022009dc(scene);
             return 1;
         }
@@ -255,30 +255,30 @@ extern "C" s32 func_ov026_02203598(void *scene)
 
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02095308((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
         func_ov026_02203168((u8 *)scene + 0x1c0, -0x165, 0xff0, 0);
-        func_02094bbc(FIELD(void *, scene, 0x2e8), 0x148, 0, -0xccd);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), 0x148, 0x1a66, 0);
-        func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2e8), 0x148, 0, -0xccd);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0x148, 0x1a66, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
 
         void *child164 = FIELD(void *, scene, 0x164);
-        func_020948d4((u8 *)child164 + 0x1c, 0x1800);
-        func_020948d4((u8 *)child164 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x1c, 0x1800);
+        PresentationScalar_SetImmediate((u8 *)child164 + 0x6c, 0x4000);
         FIELD(s32, child164, 0xb8) = 0x10000;
 
         func_ov026_02203178(FIELD(void *, scene, 0x74), 0, 0x2000, 0);
 
         void *child168 = FIELD(void *, scene, 0x168);
-        func_020948d4((u8 *)child168 + 0x1c, 0x1800);
-        func_020948d4((u8 *)child168 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x1c, 0x1800);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x6c, 0x4000);
         FIELD(s32, child168, 0xb4) = 0x8000;
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, -0x30a, 0x20000, 0xb3d7);
-        func_020948d4((u8 *)child17c + 0x6c, 0xc000);
-        func_020948d4((u8 *)child17c + 0x3c, 0x4000);
+        Presentation_SetPosition(child17c, -0x30a, 0x20000, 0xb3d7);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0xc000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0x4000);
         FIELD(s32, child17c, 0xa0) = 0;
-        func_020948e4((u8 *)child17c + 0x6c, 1, 0x10000);
+        PresentationScalar_TransitionTo((u8 *)child17c + 0x6c, 1, 0x10000);
         FIELD(s32, child17c, 0x7c) = 0xb4;
         FIELD(s32, child17c, 0x80) = 0;
 
@@ -286,7 +286,7 @@ extern "C" s32 func_ov026_02203598(void *scene)
     }
 
     if ((state == 0 || state == 1) &&
-        func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
         func_ov026_022009dc(scene);
         return 1;
     }
@@ -312,16 +312,16 @@ extern "C" s32 func_ov026_02203748(void *scene)
     case 0:
         func_ov026_02203580((u8 *)scene + 0x1c0);
         func_ov026_02200d20(scene, 0x8000, 0x2000, 0);
-        func_020948d4((u8 *)FIELD(void *, scene, 0x2e8) + 0x1c, 0x1000);
+        PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0x2e8) + 0x1c, 0x1000);
         func_ov026_022013c0(scene, 0x13800, -0x1666);
-        func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
-        func_02094bbc(FIELD(void *, scene, 0x16c), 0, 0, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x16c), 0, 0, 0);
         func_ov026_021fe8fc(FIELD(void *, scene, 0x16c), 0, 0x10,
                             0x385, 0x666, 0x1000, 0x333, 0x52);
         ++FIELD(s32, scene, 0x79c);
         /* Fall through: the newly started controller may already be ready. */
     case 1:
-        if (func_02095248(FIELD(void *, scene, 0x160)) != 0) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, scene, 0x160)) != 0) {
             FIELD(s32, FIELD(void *, scene, 0x160), 0x90) = 0;
             func_02091b98((u8 *)scene + 0x7a8, 0x3c);
             ++FIELD(s32, scene, 0x79c);
@@ -335,7 +335,7 @@ extern "C" s32 func_ov026_02203748(void *scene)
         break;
     case 3:
         func_ov026_02200dd8(scene, 8);
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
             func_ov026_022009dc(scene);
             return 1;
         }
@@ -361,20 +361,20 @@ extern "C" s32 func_ov026_022038fc(void *scene)
 
     switch (FIELD(s32, scene, 0x79c)) {
     case 0: {
-        func_02095308((u8 *)scene + 0x304);
-        func_02095308((u8 *)scene + 0x314);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x314);
         func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
         *(volatile u32 *)0x04000358 = 0;
         func_ov026_02203580((u8 *)scene + 0x1c0);
-        func_02094bbc(FIELD(void *, scene, 0x2e8), 0, 0, 0x1f33);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), 0, 0x47b, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2e8), 0, 0, 0x1f33);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0, 0x47b, 0);
         func_ov026_02200d20(scene, 0xe900, 0x1f33, 0);
         func_ov026_02200d38(scene);
-        func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
 
         void *child168 = FIELD(void *, scene, 0x168);
-        func_020948d4((u8 *)child168 + 0x1c, 0);
-        func_020948d4((u8 *)child168 + 0x6c, 0x1000);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x1c, 0);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x6c, 0x1000);
         FIELD(s32, child168, 0xb4) = 0x800;
 
         void *child174 = FIELD(void *, scene, 0x174);
@@ -383,9 +383,9 @@ extern "C" s32 func_ov026_022038fc(void *scene)
         FIELD(s32, child174, 0x80) = 0;
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, -0x4000, 0x3000, -0x8000);
-        func_020948d4((u8 *)child17c + 0x6c, 0x4000);
-        func_020948d4((u8 *)child17c + 0x3c, 0);
+        Presentation_SetPosition(child17c, -0x4000, 0x3000, -0x8000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0);
         FIELD(s32, child17c, 0xa0) = 1;
         ++FIELD(s32, scene, 0x79c);
         /* Fall through to begin driving +0x174 on the setup frame. */
@@ -397,7 +397,7 @@ extern "C" s32 func_ov026_022038fc(void *scene)
             FIELD(s32, child174, 0x80) = 0;
             ++FIELD(s32, scene, 0x79c);
         } else {
-            s32 value = func_02094d28(child174, 5, 0x4f6, -0xcd);
+            s32 value = Presentation_InterpolateScalar(child174, 5, 0x4f6, -0xcd);
             func_ov026_021fef70(child174, value);
         }
         break;
@@ -430,21 +430,21 @@ extern "C" s32 func_ov026_02203b10(void *scene)
 
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02095308((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
         func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
         *(volatile u32 *)0x04000358 = 0;
         func_ov026_02203168((u8 *)scene + 0x1c0, -0x165, 0xff0, 0);
-        func_02094bbc(FIELD(void *, scene, 0x2e8), 0x1ec, 0, -0xc29);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), 0x1ec, 0x22e1, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2e8), 0x1ec, 0, -0xc29);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0x1ec, 0x22e1, 0);
 
         void *controller = FIELD(void *, scene, 0x160);
-        func_020948d4((u8 *)controller + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)controller + 0x1c,
                        (FIELD(s32, controller, 0x13c) << 10) - 0x4000);
-        func_02094cf0(controller, control, 0);
+        Presentation_SetScript(controller, control, 0);
 
         void *child168 = FIELD(void *, scene, 0x168);
-        func_020948d4((u8 *)child168 + 0x1c, 0x1800);
-        func_020948d4((u8 *)child168 + 0x6c, 0x4000);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x1c, 0x1800);
+        PresentationScalar_SetImmediate((u8 *)child168 + 0x6c, 0x4000);
         FIELD(s32, child168, 0xb4) = 0x10000;
 
         void *child158 = FIELD(void *, scene, 0x158);
@@ -455,15 +455,15 @@ extern "C" s32 func_ov026_02203b10(void *scene)
         FIELD(s32, child158, 0x28) = 0;
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, 0, 0x44000, 0);
-        func_020948d4((u8 *)child17c + 0x6c, 0x10000);
-        func_020948d4((u8 *)child17c + 0x3c, 0x4000);
+        Presentation_SetPosition(child17c, 0, 0x44000, 0);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0x10000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0x4000);
         FIELD(s32, child17c, 0xa0) = 0;
         ++FIELD(s32, scene, 0x79c);
     }
 
     if ((state == 0 || state == 1) &&
-        func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
         func_ov026_022009dc(scene);
         return 1;
     }
@@ -486,35 +486,35 @@ extern "C" s32 func_ov026_02203cc0(void *scene)
 
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02095308((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
         func_ov026_02203580((u8 *)scene + 0x1c0);
         void *object2e8 = FIELD(void *, scene, 0x2e8);
         s32 old_value = FIELD(s32, object2e8, 0x20);
-        func_02094bbc(object2e8, 0, 0x1800, -0x2000);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), 0, old_value, 0);
-        func_02094cf0(FIELD(void *, scene, 0x160), control, 0);
+        Presentation_SetPosition(object2e8, 0, 0x1800, -0x2000);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0, old_value, 0);
+        Presentation_SetScript(FIELD(void *, scene, 0x160), control, 0);
         func_ov026_021fe8fc(FIELD(void *, scene, 0x16c), 0x2108, 0x10,
                             0x400, 0x666, 0x666, 0x666, -0xcd);
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, 0, 0x5000, 0x8000);
-        func_020948d4((u8 *)child17c + 0x6c, 0x6000);
-        func_020948d4((u8 *)child17c + 0x3c, 0);
+        Presentation_SetPosition(child17c, 0, 0x5000, 0x8000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0x6000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0);
         FIELD(s32, child17c, 0xa0) = 0;
         ++FIELD(s32, scene, 0x79c);
     }
 
     if (state == 0 || state == 1) {
-        s32 value = func_02094d28(FIELD(void *, scene, 0x160), 1, 0x1800,
+        s32 value = Presentation_InterpolateScalar(FIELD(void *, scene, 0x160), 1, 0x1800,
                                   0x5800);
         void *object2e8 = FIELD(void *, scene, 0x2e8);
-        func_020948d4((u8 *)object2e8 + 0x1c, value);
+        PresentationScalar_SetImmediate((u8 *)object2e8 + 0x1c, value);
         s32 shared_value = FIELD(s32, object2e8, 0x20);
-        func_020948d4((u8 *)FIELD(void *, scene, 0x2ec) + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0x2ec) + 0x1c,
                        shared_value);
-        func_020948d4((u8 *)FIELD(void *, scene, 0x16c) + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 0x16c) + 0x1c,
                        shared_value + 0x800);
-        if (func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
             func_ov026_022009dc(scene);
             return 1;
         }
@@ -538,18 +538,18 @@ extern "C" s32 func_ov026_02203e5c(void *scene)
 
     s32 state = FIELD(s32, scene, 0x79c);
     if (state == 0) {
-        func_02095308((u8 *)scene + 0x304);
+        PresentationList_DeleteAll((u8 *)scene + 0x304);
         FIELD(s32, scene, 0x36c) = 0x80;
         func_020b0374(0, 0, 2, 0x6000);
         func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
         func_ov026_02203580((u8 *)scene + 0x1c0);
-        func_02094bbc(FIELD(void *, scene, 0x2e8), 0, 0x8000, 0x10000);
-        func_02094bbc(FIELD(void *, scene, 0x2ec), 0, 0, 0);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2e8), 0, 0x8000, 0x10000);
+        Presentation_SetPosition(FIELD(void *, scene, 0x2ec), 0, 0, 0);
 
         void *controller = FIELD(void *, scene, 0x160);
-        func_020948d4((u8 *)controller + 0x6c, 0x800);
-        func_020948d4((u8 *)controller + 0x1c, 0);
-        func_02094cf0(controller, control, 0);
+        PresentationScalar_SetImmediate((u8 *)controller + 0x6c, 0x800);
+        PresentationScalar_SetImmediate((u8 *)controller + 0x1c, 0);
+        Presentation_SetScript(controller, control, 0);
 
         void *child158 = FIELD(void *, scene, 0x158);
         FIELD(s32, child158, 0x38) = 0x599a;
@@ -559,15 +559,15 @@ extern "C" s32 func_ov026_02203e5c(void *scene)
         FIELD(s32, child158, 0x28) = 0x99a;
 
         void *child17c = FIELD(void *, scene, 0x17c);
-        func_02094bbc(child17c, 0, 0x1000, -0x8000);
-        func_020948d4((u8 *)child17c + 0x6c, 0xc000);
-        func_020948d4((u8 *)child17c + 0x3c, 0);
+        Presentation_SetPosition(child17c, 0, 0x1000, -0x8000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x6c, 0xc000);
+        PresentationScalar_SetImmediate((u8 *)child17c + 0x3c, 0);
         FIELD(s32, child17c, 0xa0) = 0;
         ++FIELD(s32, scene, 0x79c);
     }
 
     if ((state == 0 || state == 1) &&
-        func_02095224(FIELD(void *, scene, 0x160)) != 0) {
+        Presentation_IsScriptComplete(FIELD(void *, scene, 0x160)) != 0) {
         func_ov026_022009dc(scene);
         return 1;
     }

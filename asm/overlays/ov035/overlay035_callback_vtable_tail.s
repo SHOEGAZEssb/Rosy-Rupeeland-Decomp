@@ -9,7 +9,7 @@
     .extern func_ov035_021fcf30
     .extern func_02095670
     .extern GraphicsResourceSetVariant_Destroy
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern Heap_Free
     .extern gSoundContext
     .extern gSystemState
@@ -231,7 +231,7 @@ func_ov035_02202b70:
     ldr r1, L_02202b94
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     bl Heap_Free
     mov r0, r4

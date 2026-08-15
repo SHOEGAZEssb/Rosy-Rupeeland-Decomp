@@ -18,10 +18,10 @@ extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02095308(void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void PresentationList_DeleteAll(void *);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -78,7 +78,7 @@ extern "C" void *func_ov016_021fe24c(void *state)
     typedef void (*DeleteFunction)(void *);
     void *object;
 
-    func_02095308((u8 *)state + 0xd0);
+    PresentationList_DeleteAll((u8 *)state + 0xd0);
     object = FIELD(void *, state, 0xcc);
     if (object != 0) {
         DeleteFunction *vtable = *(DeleteFunction **)object;
@@ -86,7 +86,7 @@ extern "C" void *func_ov016_021fe24c(void *state)
     }
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x18));
     FIELD(const u32 *, state, 0xd0) = data_ov016_02201520;
-    func_02095308((u8 *)state + 0xd0);
+    PresentationList_DeleteAll((u8 *)state + 0xd0);
     func_ov016_021fe0d4((u8 *)state + 0x20);
     func_02071eb8((u8 *)state + 0xc);
     func_02071eb8(state);
@@ -111,12 +111,12 @@ extern "C" void func_ov016_021fe2b0(void *state)
     if (count == 0) {
         return;
     }
-    step = func_02091a70(0x20000, 0x10000, 0xf, count);
+    step = Presentation_InterpolateLinear(0x20000, 0x10000, 0xf, count);
     x = 0x80000 - ((count - 1) * step) / 2;
     for (actor = FIELD(void *, state, 0xd4); actor != 0;
          actor = FIELD(void *, actor, 8), index++, x += step) {
-        func_020948e4((u8 *)actor + 0xc, 2, x);
-        func_020948e4((u8 *)actor + 0x1c, 2,
+        PresentationScalar_TransitionTo((u8 *)actor + 0xc, 2, x);
+        PresentationScalar_TransitionTo((u8 *)actor + 0x1c, 2,
                       (index & 1) != 0 ? 0x8c000 : 0x84000);
         FIELD(s32, actor, 0x7c) = 0x10;
         FIELD(s32, actor, 0x80) = 0;

@@ -16,10 +16,10 @@ extern void func_02071ea4(void *state);
 extern void func_02071eb8(void *state);
 extern void func_02071ee0(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
-extern void *func_020953f4(void *self, GraphicsSpriteState *sprite);
-extern void func_02094bbc(void *actor, s32 x, s32 y, s32 z);
-extern void func_02095508(void *actor);
-extern void func_020954c0(void *actor, s32 animation);
+extern void *SpritePresentation_Init(void *self, GraphicsSpriteState *sprite);
+extern void Presentation_SetPosition(void *actor, s32 x, s32 y, s32 z);
+extern void SpritePresentation_SyncPosition(void *actor);
+extern void SpritePresentation_SetAnimation(void *actor, s32 animation);
 #ifdef __cplusplus
 }
 #endif
@@ -52,12 +52,12 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
     if (allocation) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteGroup,
                                &self->resources, 2);
-        allocation = func_020953f4(allocation, sprite);
+        allocation = SpritePresentation_Init(allocation, sprite);
     }
     self->actor = allocation;
-    func_02094bbc(allocation, 0xf4000, 0xd4000, 0);
-    func_02095508(self->actor);
-    func_020954c0(self->actor, 0);
+    Presentation_SetPosition(allocation, 0xf4000, 0xd4000, 0);
+    SpritePresentation_SyncPosition(self->actor);
+    SpritePresentation_SetAnimation(self->actor, 0);
     spriteState = *(void **)((u8 *)self->actor + 0x9c);
     *(u16 *)((u8 *)spriteState + 0x24) |= 2;
     return self;

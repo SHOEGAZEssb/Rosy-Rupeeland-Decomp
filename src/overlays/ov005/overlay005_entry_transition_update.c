@@ -18,9 +18,9 @@ extern void *gGameWork;
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void func_ov005_021fbe1c(void *scene);
 extern void func_02028100(void *auxiliary, s32 index);
-extern void func_02094cf0(void *controller, const void *data, s32 mode);
-extern void func_020948e4(void *object, s32 mode, s32 value);
-extern s32 func_02094d28(void *controller, s32 mode, s32 first, s32 second);
+extern void Presentation_SetScript(void *controller, const void *data, s32 mode);
+extern void PresentationScalar_TransitionTo(void *object, s32 mode, s32 value);
+extern s32 Presentation_InterpolateScalar(void *controller, s32 mode, s32 first, s32 second);
 extern s32 func_ov005_021fc5e4(void *state);
 #ifdef __cplusplus
 }
@@ -39,10 +39,10 @@ static void overlay005_advance_entry(Overlay005EntryTransitionState *state)
  * Phase one waits for gGameWork flag 0x3D3, clears controller +0x64 field
  * +0x90, sets the group flag on scene +0x74, calls func_02028100 on auxiliary
  * +0x78 with index +0x68, then advances. Phase two waits for flag 0x3D4,
- * applies null/mode 0 through func_02094cf0, configures controller members +0x0C
+ * applies null/mode 0 through Presentation_SetScript, configures controller members +0x0C
  * and +0x1C in modes 1 and 5 toward cached +0x7C/+0x80, sets controller
  * +0x7C/+0x80 to 60/0, and advances. In phase three, while controller +0x80
- * is less than +0x7C, call func_02094d28(controller,2,0x200,0x80), sign-extend
+ * is less than +0x7C, call Presentation_InterpolateScalar(controller,2,0x200,0x80), sign-extend
  * its low halfword, and write it to +0x32/+0x34 of the draw pointer at
  * controller +0x9C. Flag tests and offsets are confirmed; the visual effect
  * and exact controller field names remain unknown.
@@ -72,10 +72,10 @@ s32 func_ov005_021fc638(Overlay005EntryTransitionState *state)
     case 2:
         if (GameWork_TestFlag(gGameWork, 0x3d4)) {
             controller = FIELD(void *, state, 0x064);
-            func_02094cf0(controller, 0, 0);
-            func_020948e4((u8 *)controller + 0x0c, 1,
+            Presentation_SetScript(controller, 0, 0);
+            PresentationScalar_TransitionTo((u8 *)controller + 0x0c, 1,
                           FIELD(s32, state, 0x07c));
-            func_020948e4((u8 *)controller + 0x1c, 5,
+            PresentationScalar_TransitionTo((u8 *)controller + 0x1c, 5,
                           FIELD(s32, state, 0x080));
             FIELD(s32, controller, 0x07c) = 60;
             FIELD(s32, controller, 0x080) = 0;
@@ -87,7 +87,7 @@ s32 func_ov005_021fc638(Overlay005EntryTransitionState *state)
         controller = FIELD(void *, state, 0x064);
         if (FIELD(s32, controller, 0x080) <
             FIELD(s32, controller, 0x07c)) {
-            s16 value = (s16)func_02094d28(controller, 2, 0x200, 0x80);
+            s16 value = (s16)Presentation_InterpolateScalar(controller, 2, 0x200, 0x80);
             void *draw = FIELD(void *, controller, 0x09c);
 
             FIELD(u16, draw, 0x32) = value;

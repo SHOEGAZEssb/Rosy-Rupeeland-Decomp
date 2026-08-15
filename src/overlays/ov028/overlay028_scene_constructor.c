@@ -31,11 +31,11 @@ extern void GraphicsSpriteGroup_ReplaceStateResources(void *, s32, s32, s32);
 extern void func_02091e28(void *);
 extern void func_02092798(void *);
 extern void func_02092814(void *, s32);
-extern void func_02093a88(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02095274(void *, void *);
-extern void *func_020953f4(void *, void *);
-extern void func_020954f4(void *);
+extern void IndexedSelectionController_Init(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationList_Append(void *, void *);
+extern void *SpritePresentation_Init(void *, void *);
+extern void SpritePresentation_Hide(void *);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -73,7 +73,7 @@ extern "C" void *func_ov028_021fdb00(void *state)
     func_020957bc((u8 *)state + 0x98);
     func_020957bc((u8 *)state + 0x144);
     func_02092798((u8 *)state + 0x1fc);
-    func_02093a88((u8 *)state + 0x228);
+    IndexedSelectionController_Init((u8 *)state + 0x228);
     func_ov028_021fda98((u8 *)state + 0x264);
     FIELD(u32, state, 0x27c) = 0;
     func_ov028_021fce00((u8 *)state + 0x280);
@@ -112,13 +112,13 @@ extern "C" void *func_ov028_021fdb00(void *state)
     if (child != 0) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58),
                                (u8 *)state + 0x74, 1);
-        child = func_020953f4(child, sprite);
+        child = SpritePresentation_Init(child, sprite);
     }
     FIELD(void *, state, 0x260) = child;
-    func_02095274((u8 *)state + 0x264, child);
+    PresentationList_Append((u8 *)state + 0x264, child);
     GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0x9c), 7);
     FIELD(u16, FIELD(void *, child, 0x9c), 0x24) |= 6;
-    func_02094bbc(child, FIELD(s32, state, 0x274),
+    Presentation_SetPosition(child, FIELD(s32, state, 0x274),
                   FIELD(s32, state, 0x278), 0);
 
     for (s32 i = 0; i < 2; ++i) {
@@ -126,14 +126,14 @@ extern "C" void *func_ov028_021fdb00(void *state)
         if (child != 0) {
             sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x54),
                                    (u8 *)state + 0x5c, 1);
-            child = func_020953f4(child, sprite);
+            child = SpritePresentation_Init(child, sprite);
         }
         FIELD(void *, state, 0x1f0 + i * 4) = child;
-        func_02095274((u8 *)state + 0x264, child);
-        func_02094bbc(child, (i != 0 ? 0xf0 : 0x10) << 12,
+        PresentationList_Append((u8 *)state + 0x264, child);
+        Presentation_SetPosition(child, (i != 0 ? 0xf0 : 0x10) << 12,
                       0x4a000, 0);
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, child, 0x9c), i != 0 ? 5 : 3);
-        func_020954f4(child);
+        SpritePresentation_Hide(child);
     }
 
     void *effect = Heap_Alloc(0x74, data_ov028_021ff2e0, 4, gHeapContext);

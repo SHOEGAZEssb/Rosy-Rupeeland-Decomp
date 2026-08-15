@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_sprite_record.c for documented portable C. */
 
-    .extern func_02095308
+    .extern PresentationList_DeleteAll
     .extern GraphicsAnimationInstance_SetAnimation
     .extern data_ov035_02203af8
 
@@ -26,7 +26,7 @@ func_ov035_021fdd08:
     ldr r1, L_021fdd24
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fdd24: .word data_ov035_02203af8

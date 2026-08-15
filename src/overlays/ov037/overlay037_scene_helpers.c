@@ -9,7 +9,7 @@ extern const u8 data_ov037_021fedac[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *container);
+extern void PresentationList_DeleteAll(void *container);
 extern void GraphicsAnimationInstance_SetAnimation(void *actor, s32 mode);
 extern void func_020add34(void *record, void *recordAgain);
 #ifdef __cplusplus
@@ -36,7 +36,7 @@ extern "C" void *func_ov037_021fd6d0(void *container)
 extern "C" void *func_ov037_021fd6f0(void *container)
 {
     FIELD(const void *, container, 0) = data_ov037_021fedac;
-    func_02095308(container);
+    PresentationList_DeleteAll(container);
     return container;
 }
 

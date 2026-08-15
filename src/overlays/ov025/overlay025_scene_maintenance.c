@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
-extern void func_02095360(void *);
+extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void func_020958d8(void *);
 extern void func_ov025_021fdc60(void *, s32);
 extern void func_ov094_022196e8(void *);
@@ -25,7 +25,7 @@ extern void func_ov094_022196e8(void *);
 extern "C" void func_ov025_02200178(void *scene)
 {
     func_ov094_022196e8(FIELD(void *, scene, 0x5c0));
-    func_02095360((u8 *)scene + 0x4f8);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x4f8);
     func_020958d8((u8 *)scene + 0xf0);
     func_020958d8((u8 *)scene + 0x19c);
     func_020958d8((u8 *)scene + 0x248);

@@ -11,7 +11,7 @@ extern const u8 data_ov026_02204a28[];
 extern "C" {
 #endif
 extern void func_01ff88c4(s32, const void *, const void *);
-extern void func_020949ec(void *);
+extern void Presentation_Init(void *);
 extern void func_020b0808(s32, s32);
 extern void func_020b0844(s32, s32);
 extern void func_020b0880(s32, s32);
@@ -28,7 +28,7 @@ extern void func_ov026_021fcff4(u16, u16, s32);
 extern "C" void *func_ov026_021fce00(void *object, void *resource,
                                       s32 entry, u16 polygon)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_02204a28;
     FIELD(void *, object, 0x9c) = resource;
     FIELD(s32, object, 0xa0) = entry;

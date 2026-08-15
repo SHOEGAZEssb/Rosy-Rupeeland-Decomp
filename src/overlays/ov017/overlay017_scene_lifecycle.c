@@ -28,7 +28,7 @@ extern void func_02092418(void *);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_020926f8(void *);
 extern void func_020927b8(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void *func_ov017_021fd780(void *);
 extern void func_ov017_021fd948(void *);
 extern void *func_ov017_021fe58c(void *);
@@ -64,9 +64,9 @@ extern "C" void *func_ov017_021ff16c(void *state)
     FIELD(u32, state, 0x20) &= ~0x400U;
     destroyVirtual(FIELD(void *, state, 0x260));
     func_020597fc(gSoundContext, 0x82);
-    func_02095308(data_ov017_02201754);
-    func_02095308((u8 *)state + 0x3d8);
-    func_02095308((u8 *)state + 0x3ec);
+    PresentationList_DeleteAll(data_ov017_02201754);
+    PresentationList_DeleteAll((u8 *)state + 0x3d8);
+    PresentationList_DeleteAll((u8 *)state + 0x3ec);
     destroyVirtual(FIELD(void *, state, 0x400));
 
     if (FIELD(void *, state, 0x2c0) != 0)
@@ -101,9 +101,9 @@ extern "C" void *func_ov017_021ff16c(void *state)
     func_02092638(0, 1, 2, 3);
     func_020923a0((u8 *)state + 0x404);
     FIELD(const u32 *, state, 0x3ec) = data_ov017_02201628;
-    func_02095308((u8 *)state + 0x3ec);
+    PresentationList_DeleteAll((u8 *)state + 0x3ec);
     FIELD(const u32 *, state, 0x3d8) = data_ov017_02201628;
-    func_02095308((u8 *)state + 0x3d8);
+    PresentationList_DeleteAll((u8 *)state + 0x3d8);
     Graphics3DLightSet_Destroy((u8 *)state + 0x2d0);
     func_ov017_021fd780((u8 *)state + 0x290);
     func_ov017_021fd780((u8 *)state + 0x264);

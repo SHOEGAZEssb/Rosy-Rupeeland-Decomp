@@ -3,8 +3,8 @@
 .extern GameWork_TestFlag
 .extern data_020c9670
 .extern func_0209189c
-.extern func_020948e4
-.extern func_02094dd4
+.extern PresentationScalar_TransitionTo
+.extern Presentation_UpdateScript
 .extern func_020ae024
 .extern func_ov094_02217bc8
 .extern func_ov094_02218470
@@ -66,7 +66,7 @@ func_ov094_0221807c:
     smlabb r2, r1, r0, r2
     add r0, r4, #0xc
     mov r1, #0x4
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r1, r5, #0x1
     ldr r0, .L_02218468
     mov r1, r1, lsl #0x1
@@ -76,7 +76,7 @@ func_ov094_0221807c:
     smlabb r2, r1, r0, r2
     add r0, r4, #0x1c
     mov r1, #0x4
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x14
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -104,7 +104,7 @@ func_ov094_0221807c:
     add r2, r3, r2
     add r2, r2, r0, lsl #0xc
     add r0, r4, #0xc
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0xac
     mvn r1, #0xf
     mov r2, #0x10
@@ -116,7 +116,7 @@ func_ov094_0221807c:
     add r2, r3, r2
     add r2, r2, r0, lsl #0xc
     add r0, r4, #0x1c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x1e
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -131,21 +131,21 @@ func_ov094_0221807c:
     add r0, r4, #0x6c
     mov r1, #0x1
     mov r2, #0x100
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r4, #0xbc]
     ldr r2, [r4, #0xa4]
     ldr r1, [r0, #0x0]
     add r0, r4, #0xc
     add r2, r2, r1
     mov r1, #0x5
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r0, [r4, #0xbc]
     ldr r2, [r4, #0xa8]
     ldr r1, [r0, #0x4]
     add r0, r4, #0x1c
     add r2, r2, r1
     mov r1, #0x5
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x14
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -190,7 +190,7 @@ func_ov094_0221807c:
     add r0, r4, #0x6c
     mov r1, #0x1
     mov r2, #0x10
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, r5, asr #0x4
     mov r5, r0, lsl #0x1
     ldr r0, .L_02218468
@@ -200,7 +200,7 @@ func_ov094_0221807c:
     add r0, r4, #0xc
     add r2, r2, r1, lsl #0x7
     mov r1, #0x4
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r1, r5, #0x1
     ldr r0, .L_02218468
     mov r1, r1, lsl #0x1
@@ -209,7 +209,7 @@ func_ov094_0221807c:
     add r0, r4, #0x1c
     add r2, r2, r1, lsl #0x7
     mov r1, #0x4
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x28
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -237,7 +237,7 @@ func_ov094_0221807c:
     add r2, r3, r2
     add r2, r2, r0, lsl #0xc
     add r0, r4, #0xc
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0xac
     mvn r1, #0xf
     mov r2, #0x10
@@ -249,7 +249,7 @@ func_ov094_0221807c:
     add r2, r3, r2
     add r2, r2, r0, lsl #0xc
     add r0, r4, #0x1c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x1e
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -269,7 +269,7 @@ func_ov094_0221807c:
     ldmia sp!, {r3, r4, r5, pc}
 .L_0221844c:
     mov r0, r4
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     mov r0, r4
     bl func_ov094_022185a4
     mov r0, #0x0

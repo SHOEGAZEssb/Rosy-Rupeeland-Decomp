@@ -15,8 +15,8 @@
     .extern func_ov035_021fdd28
     .extern Heap_Alloc
     .extern func_020955d8
-    .extern func_02095274
-    .extern func_020948d4
+    .extern PresentationList_Append
+    .extern PresentationScalar_SetImmediate
     .extern func_ov035_021fd4b4
     .extern func_ov035_021fdd70
     .extern func_ov035_021fdd78
@@ -168,7 +168,7 @@ L_02200acc:
     str r0, [r5, #0xfc]
     mov r1, r0
     add r0, r5, #0x108
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r5, #0xf8]
     add r1, r5, #0xe8
     bl GraphicsAnimationInstanceManager_CreateInstance
@@ -195,7 +195,7 @@ L_02200b34:
     str r0, [r5, #0x100]
     mov r1, r0
     add r0, r5, #0x108
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r5, #0xf8]
     add r1, r5, #0xe8
     bl GraphicsAnimationInstanceManager_CreateInstance
@@ -222,7 +222,7 @@ L_02200b9c:
     str r0, [r5, #0x104]
     mov r1, r0
     add r0, r5, #0x108
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r5, #0xf8]
     add r1, r5, #0xcc
     bl GraphicsAnimationInstanceManager_CreateInstance
@@ -249,11 +249,11 @@ L_02200c04:
     str r0, [r5, #0xd8]
     mov r1, r0
     add r0, r5, #0x108
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r5, #0xd8]
     ldr r1, L_02200d30
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, L_02200d34
     ldr r3, L_02200d2c
     mov r0, #0x18

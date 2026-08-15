@@ -18,10 +18,10 @@ extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_02201d70(void *object, void *argument,
                                  void *resource, s32 variant, s32 valueC8);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void func_ov036_021fe978(void *resource, s32 x, s32 y, s32 z);
-extern void func_02095274(void *list, void *object);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *list, void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -65,13 +65,13 @@ extern "C" void func_ov036_02202628(void *controller)
     }
     s32 x = *(const s32 *)(data_ov036_022054e4 + index * 0x10);
     s32 z = *(const s32 *)(data_ov036_022054e8 + index * 0x10);
-    func_02094bbc(child, x, -0xa00, z);
+    Presentation_SetPosition(child, x, -0xa00, z);
     func_ov036_021fe978(handle, x, -0xa00, z);
     FIELD(u16, handle, 0x50) |= 0x42;
-    func_02095274((u8 *)controller + 0x10c, child);
+    PresentationList_Append((u8 *)controller + 0x10c, child);
     if (variant == 0)
-        func_020948d4((u8 *)child + 0x6c, 0x666);
+        PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x666);
     else if (variant == 1)
-        func_020948d4((u8 *)child + 0x6c, 0x400);
+        PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x400);
     ++FIELD(s32, controller, 0x15c);
 }

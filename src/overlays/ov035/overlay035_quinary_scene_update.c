@@ -7,9 +7,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095360(void *collection);
+extern void PresentationList_UpdateAndDeleteCompleted(void *collection);
 extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
-extern s32 func_02095224(void *object);
+extern s32 Presentation_IsScriptComplete(void *object);
 extern void func_ov035_022012ac(void *scene);
 extern void func_ov035_021fd5ac(void *list);
 extern s32 func_02091c7c(void *state, s32 value);
@@ -34,10 +34,10 @@ extern void func_ov035_02200ec0(void *scene, s32 red, s32 green, s32 blue);
  */
 extern "C" void func_ov035_02201000(void *scene)
 {
-    func_02095360((u8 *)scene + 0x108);
-    func_02095360((u8 *)scene + 0x118);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x108);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x118);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0xf8));
-    if (func_02095224(FIELD(void *, scene, 0x104)) == 0 &&
+    if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x104)) == 0 &&
         FIELD(s32, scene, 0x174) != 0)
         func_ov035_022012ac(scene);
     FIELD(s32, scene, 0x174) = 0;

@@ -2,14 +2,14 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_triple_object_lifecycle.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern func_ov036_021fe218
-    .extern func_02094ad4
+    .extern Presentation_InitVariant
     .extern Heap_Alloc
     .extern func_ov036_021fcf34
-    .extern func_020948d4
-    .extern func_02095274
-    .extern func_02094bbc
+    .extern PresentationScalar_SetImmediate
+    .extern PresentationList_Append
+    .extern Presentation_SetPosition
     .extern data_ov036_02205f64
     .extern data_ov036_02206168
     .extern gHeapContext
@@ -19,13 +19,13 @@ func_ov036_02203850:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_02203994
     add r0, r5, #0x9c
     str r1, [r5, #0x0]
     bl func_ov036_021fe218
     add r0, r5, #0xb4
-    bl func_02094ad4
+    bl Presentation_InitVariant
     mov r0, #0xc4
     ldr r1, L_02203998
     mov r2, #0x4
@@ -41,10 +41,10 @@ L_022038a4:
     str r0, [r5, #0x150]
     add r0, r0, #0x6c
     mov r1, #0x400
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r5, #0x150]
     add r0, r5, #0x9c
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, L_02203998
     ldr r3, L_0220399c
     mov r0, #0xc4
@@ -61,14 +61,14 @@ L_022038ec:
     str r0, [r5, #0x154]
     mov r3, r2
     mov r1, #0x400
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r5, #0x154]
     mov r1, #0x400
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r5, #0x154]
     add r0, r5, #0x9c
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, L_02203998
     ldr r3, L_0220399c
     mov r0, #0xc4
@@ -86,14 +86,14 @@ L_02203948:
     str r0, [r5, #0x158]
     mov r3, r2
     rsb r1, r1, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r5, #0x158]
     mov r1, #0x400
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r1, [r5, #0x158]
     add r0, r5, #0x9c
-    bl func_02095274
+    bl PresentationList_Append
     mov r0, #0x1
     str r0, [r5, #0xac]
     mov r1, #0x0

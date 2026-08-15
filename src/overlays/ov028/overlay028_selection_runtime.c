@@ -21,10 +21,10 @@ extern "C" {
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_020ae024(s32, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_020954e0(void *);
-extern void func_020954f4(void *);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void SpritePresentation_Show(void *);
+extern void SpritePresentation_Hide(void *);
 extern void func_ov028_021fd468(void *);
 extern void func_ov028_021fdad8(void *, s32, s32);
 extern void func_ov028_021fdf94(void *, const void *);
@@ -67,9 +67,9 @@ extern "C" void func_ov028_021fe558(void *state, s32 index)
         FIELD(s32, state, 0x278) =
             ((s32)FIELD(u16, descriptor, 0x14) - 0xc0 -
              FIELD(s16, descriptor, 0x16)) << 12;
-        func_020954e0(child);
-        func_020948e4((u8 *)child + 0xc, 2, FIELD(s32, state, 0x274));
-        func_020948e4((u8 *)child + 0x1c, 2, FIELD(s32, state, 0x278));
+        SpritePresentation_Show(child);
+        PresentationScalar_TransitionTo((u8 *)child + 0xc, 2, FIELD(s32, state, 0x274));
+        PresentationScalar_TransitionTo((u8 *)child + 0x1c, 2, FIELD(s32, state, 0x278));
         func_ov028_021fe540(child, 8);
         void *sprite = FIELD(void *, state, 0x90);
         if (sprite != 0) {
@@ -87,8 +87,8 @@ extern "C" void func_ov028_021fe558(void *state, s32 index)
         }
     } else {
         func_ov028_021fdf94((u8 *)state + 0x274, data_ov028_021ff238);
-        func_020954f4(child);
-        func_02094bbc(child, FIELD(s32, state, 0x274),
+        SpritePresentation_Hide(child);
+        Presentation_SetPosition(child, FIELD(s32, state, 0x274),
                       FIELD(s32, state, 0x278), 0);
         void *sprite = FIELD(void *, state, 0x90);
         if (sprite != 0 && FIELD(u8, sprite, 0x38) != 0xc)

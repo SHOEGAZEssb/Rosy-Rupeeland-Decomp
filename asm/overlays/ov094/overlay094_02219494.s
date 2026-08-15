@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02094dd4
+.extern Presentation_UpdateScript
 
 .global func_ov094_02219494
 func_ov094_02219494:
@@ -16,7 +16,7 @@ func_ov094_02219494:
     beq .L_02219530
     b .L_02219538
 .L_022194bc:
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     cmp r0, #0x0
     beq .L_02219538
     ldr r2, [r4, #0x9c]

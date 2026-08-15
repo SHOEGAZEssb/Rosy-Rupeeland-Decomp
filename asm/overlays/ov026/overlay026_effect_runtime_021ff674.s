@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_effect_runtime.c. */
-.extern func_020948d4
+.extern PresentationScalar_SetImmediate
 
 
     .global func_ov026_021ff674
@@ -34,13 +34,13 @@ L_021ff6c8:
     str r4, [r0, #0xac]
     ldr r0, [r2, #0xec]
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r7, r6, lsl #0x2
     ldr r0, [r0, #0xec]
     ldr r1, [r0, #0x50]
     add r0, r0, #0x4c
     add r1, r1, #0x1000
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r6, r6, #0x1
     cmp r6, #0x4
     blt L_021ff6c8

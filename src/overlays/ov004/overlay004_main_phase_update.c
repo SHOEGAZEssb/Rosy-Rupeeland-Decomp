@@ -29,9 +29,9 @@ extern void func_020afca0(volatile void *registers, s32 value);
 extern s32 func_02091cf0(void *animation);
 extern void func_02091bac(void *animation, s32 mode, s32 value, s32 scale,
                           s32 duration);
-extern void func_020954e0(void *object);
-extern void func_020948e4(void *object, s32 mode, s32 value);
-extern s32 func_02091aa8(s32 start, s32 end, s32 duration);
+extern void SpritePresentation_Show(void *object);
+extern void PresentationScalar_TransitionTo(void *object, s32 mode, s32 value);
+extern s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 duration);
 extern void func_02070958(void *resource, s32 red, s32 green, s32 blue);
 extern void func_02074dc8(void *resource, void *context);
 extern s32 func_020594a4(void *context, s32 group, s32 index);
@@ -111,12 +111,12 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
             *(volatile u16 *)0x04001050 = 0;
             func_02091bac(animationA, 1, 0x119a, 0x1000, 0x78);
             func_02091bac(animationB, 1, 0x0466, 0x0400, 0x78);
-            func_020954e0(child);
-            func_020948e4((u8 *)child + 0x1c, 2, 0x68000);
+            SpritePresentation_Show(child);
+            PresentationScalar_TransitionTo((u8 *)child + 0x1c, 2, 0x68000);
             FIELD(s32, child, 0x7c) = 60;
             FIELD(s32, child, 0x80) = 0;
             FIELD(s32, FIELD(void *, state, 0x060), 0x20) = 1;
-            func_020948e4((u8 *)state + 0x88, 2, 0x68000);
+            PresentationScalar_TransitionTo((u8 *)state + 0x88, 2, 0x68000);
             FIELD(s32, state, 0x0e8) = 60;
             FIELD(s32, state, 0x0ec) = 0;
             overlay004_advance_phase(state);
@@ -139,7 +139,7 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
             func_02092260(state, FIELD(s32, state, 0x158));
             overlay004_advance_phase(state);
         } else {
-            s32 value = func_02091aa8(0x100, 0x200, 60);
+            s32 value = Presentation_InterpolateQuadraticPulse(0x100, 0x200, 60);
 
             func_02070958(FIELD(void *, state, 0x058), value, value, value);
             func_02074dc8(data_020f4e14,

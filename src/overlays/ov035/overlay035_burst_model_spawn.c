@@ -14,9 +14,9 @@ extern "C" {
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_02201584(void *object, void *resource,
                                 s32 resourceIndex);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02095274(void *collection, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationList_Append(void *collection, void *object);
 extern void Sound_Play(void *soundContext, s32 id, s32 argument);
 #ifdef __cplusplus
 }
@@ -40,14 +40,14 @@ extern "C" void func_ov035_02201d10(void *scene, s32 x, s32 y, s32 z,
     if (object != 0)
         object = func_ov035_02201584(object, FIELD(void *, scene, 0xfc),
                                     resourceIndex);
-    func_02094bbc(object, x, y, z);
-    func_020948e4((u8 *)object + 0x0c, 1, targetX);
-    func_020948e4((u8 *)object + 0x1c, 1, targetY);
-    func_020948e4((u8 *)object + 0x2c, 1, targetZ);
-    func_020948e4((u8 *)object + 0x5c, 1, targetScale);
+    Presentation_SetPosition(object, x, y, z);
+    PresentationScalar_TransitionTo((u8 *)object + 0x0c, 1, targetX);
+    PresentationScalar_TransitionTo((u8 *)object + 0x1c, 1, targetY);
+    PresentationScalar_TransitionTo((u8 *)object + 0x2c, 1, targetZ);
+    PresentationScalar_TransitionTo((u8 *)object + 0x5c, 1, targetScale);
     FIELD(s32, object, 0x7c) = 16;
     FIELD(s32, object, 0x80) = 0;
-    func_02095274((u8 *)scene + 0x11c, object);
+    PresentationList_Append((u8 *)scene + 0x11c, object);
     if (FIELD(s32, scene, 0x164) < 0x2b)
         FIELD(s32, object, 0x88) = 1;
     Sound_Play(gSoundContext, 0x1cb, 1);

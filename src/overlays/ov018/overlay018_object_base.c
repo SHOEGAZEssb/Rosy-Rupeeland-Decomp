@@ -17,9 +17,9 @@ extern void func_02071eb8(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02095308(void *);
-extern void func_020953c8(void *, s32);
-extern void func_0209548c(void *);
+extern void PresentationList_DeleteAll(void *);
+extern void SpritePresentation_InitVariant(void *, s32);
+extern void SpritePresentation_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ extern "C" void *func_ov018_021fce00(void *state, void *renderer,
 {
     void *sprite;
 
-    func_020953c8(state, 0);
+    SpritePresentation_InitVariant(state, 0);
     FIELD(const u32 *, state, 0) = data_ov018_021ffd20;
     func_02071ea4((u8 *)state + 0xa0);
     func_02071ee0((u8 *)state + 0xa0, data_020f4e18[0],
@@ -58,7 +58,7 @@ extern "C" void *func_ov018_021fce00(void *state, void *renderer,
 extern "C" void *func_ov018_021fceb0(void *state)
 {
     func_02071eb8((u8 *)state + 0xa0);
-    func_0209548c(state);
+    SpritePresentation_Destroy(state);
     return state;
 }
 
@@ -70,7 +70,7 @@ extern "C" void *func_ov018_021fceb0(void *state)
 extern "C" void *func_ov018_021fced0(void *state)
 {
     func_02071eb8((u8 *)state + 0xa0);
-    func_0209548c(state);
+    SpritePresentation_Destroy(state);
     Heap_Free(state);
     return state;
 }
@@ -109,7 +109,7 @@ extern "C" void *func_ov018_021fcf00(void *state)
 extern "C" void *func_ov018_021fcf20(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov018_021ffd00;
-    func_02095308(state);
+    PresentationList_DeleteAll(state);
     return state;
 }
 

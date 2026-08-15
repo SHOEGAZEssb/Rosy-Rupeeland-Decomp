@@ -34,11 +34,11 @@ extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
-extern void func_02093b20(void *);
-extern void func_02093b30(void *);
-extern void func_02093b3c(void *);
-extern s32 func_02093bdc(void *);
-extern s32 func_02093c78(void *);
+extern void IndexedSelectionController_ResetTransition(void *);
+extern void IndexedSelectionController_SnapTransitionOrigin(void *);
+extern void IndexedSelectionController_Increment(void *);
+extern s32 IndexedSelectionController_AdvanceTransition(void *);
+extern s32 IndexedSelectionController_AdvancePacing(void *);
 extern void func_02093d50(void *, s32);
 extern void func_02093de4(void *);
 extern s32 func_02093e0c(void *);
@@ -57,8 +57,8 @@ extern s32 func_020946c8(void *, void *);
 extern void func_02094738(void *, s32);
 extern s32 func_02094758(void *);
 extern void func_02094874(void *);
-extern s32 func_02094d28(void *, s32, s32, s32);
-extern void func_02095308(void *);
+extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
+extern void PresentationList_DeleteAll(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095928(void *);
@@ -212,7 +212,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
             FIELD(s32, scene, 4) = 2;
             FIELD(s32, scene, 8) = 0;
         } else {
-            s32 y = func_02094d28((u8 *)scene + 0x200, 4, 208, 112);
+            s32 y = Presentation_InterpolateScalar((u8 *)scene + 0x200, 4, 208, 112);
             func_02095820((u8 *)scene + 0x200, 128, y);
         }
         break;
@@ -236,7 +236,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
     case 0:
         func_02092c8c(2, -8);
         func_ov022_021fe94c(scene);
-        func_02093b20(FIELD(void *, scene, 0x2b4));
+        IndexedSelectionController_ResetTransition(FIELD(void *, scene, 0x2b4));
         ADVANCE(scene);
         /* fall through */
     case 1:
@@ -293,9 +293,9 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         if (FIELD(s32, FIELD(void *, scene, 0x354), 0x54) == 0) {
             func_020939d8(FIELD(void *, scene, 0x2cc));
             void *collection = FIELD(void *, scene, 0x2b4);
-            func_02093b30(collection);
-            func_02093b3c(collection);
-            if (func_02093bdc(collection)) {
+            IndexedSelectionController_SnapTransitionOrigin(collection);
+            IndexedSelectionController_Increment(collection);
+            if (IndexedSelectionController_AdvanceTransition(collection)) {
                 func_02092c8c(1, 0);
                 ADVANCE(scene);
             } else {
@@ -306,7 +306,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         }
         break;
     case 7:
-        if (func_02093c78(FIELD(void *, scene, 0x2b4))) {
+        if (IndexedSelectionController_AdvancePacing(FIELD(void *, scene, 0x2b4))) {
             FIELD(s32, scene, 4) = 0;
             FIELD(s32, scene, 8) = 0;
         }
@@ -549,13 +549,13 @@ extern "C" void *func_ov022_02200478(void *object)
 
 /*
  * Derived heap destructor thunk. It restores vtable data_ov022_02200654,
- * invokes base cleanup func_02095308, frees the object, and returns the original
+ * invokes base cleanup PresentationList_DeleteAll, frees the object, and returns the original
  * pointer. Object/vtable and heap ownership change; no hardware state changes.
  */
 extern "C" void *func_ov022_0220048c(void *object)
 {
     FIELD(void *, object, 0) = data_ov022_02200654;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     Heap_Free(object);
     return object;
 }

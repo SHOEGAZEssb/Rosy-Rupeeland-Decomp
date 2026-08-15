@@ -15,11 +15,11 @@ extern s32 func_0209189c(void *random, s32 minimum, s32 maximum);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fd690(void *object, s32 mode, u16 valueA4,
                                  u16 valueA6, u16 valueA0, u16 valueA2);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void func_02094bf0(void *object, s32 x, s32 y, s32 z);
-extern void func_020948f8(void *field, s32 mode, s32 value);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02095274(void *list, void *object);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationList_Append(void *list, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -59,12 +59,12 @@ extern "C" void func_ov036_02201580(void *controller, s32 duration)
     void *object = Heap_Alloc(0xa8, data_ov036_02206180, 4, gHeapContext);
     if (object != 0)
         object = func_ov036_021fd690(object, 1, 0, 0, 0x21f, 0x18);
-    func_02094bbc(object, x, -0x600, 0);
+    Presentation_SetPosition(object, x, -0x600, 0);
     func_02094bf0(object, 0, 0, -angle);
-    func_020948f8((u8 *)object + 0xc, 1, first);
-    func_020948f8((u8 *)object + 0x1c, 1, second);
-    func_020948e4((u8 *)object + 0x2c, 1, -0x100);
+    PresentationScalar_TransitionBy((u8 *)object + 0xc, 1, first);
+    PresentationScalar_TransitionBy((u8 *)object + 0x1c, 1, second);
+    PresentationScalar_TransitionTo((u8 *)object + 0x2c, 1, -0x100);
     FIELD(s32, object, 0x7c) = (s16)duration;
     FIELD(s32, object, 0x80) = 0;
-    func_02095274((u8 *)controller + 0x158, object);
+    PresentationList_Append((u8 *)controller + 0x158, object);
 }

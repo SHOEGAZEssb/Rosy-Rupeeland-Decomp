@@ -33,9 +33,9 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void Heap_Free(void *);
-extern void *func_020953f4(void *, void *);
-extern void func_02094cf0(void *, const void *, s32);
-extern void func_02095508(void *);
+extern void *SpritePresentation_Init(void *, void *);
+extern void Presentation_SetScript(void *, const void *, s32);
+extern void SpritePresentation_SyncPosition(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *, s32, s32);
@@ -121,11 +121,11 @@ void *func_ov013_021fce2c(void *state)
     FIELD(u8, selected, 0x3a) = 3;
     controller = Heap_Alloc(0xa0, data_ov013_021fed80, 4, gHeapContext);
     if (controller != 0)
-        controller = func_020953f4(controller, selected);
+        controller = SpritePresentation_Init(controller, selected);
     FIELD(void *, state, 0x948) = controller;
-    func_02094cf0(controller, data_ov013_021feb58, 1);
+    Presentation_SetScript(controller, data_ov013_021feb58, 1);
     FIELD(s32, state, 0x984) = 0;
-    func_02095508(controller);
+    SpritePresentation_SyncPosition(controller);
     for (i = 0; i < 7; ++i)
         FIELD(void *, state, 0x950 + i * 4) = 0;
     func_ov013_021fce04(state, data_ov013_021fecf0[0],

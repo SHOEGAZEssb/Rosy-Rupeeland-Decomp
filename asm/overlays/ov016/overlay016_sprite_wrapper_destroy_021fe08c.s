@@ -1,6 +1,6 @@
     .text
     .extern func_02071eb8
-    .extern func_0209548c
+    .extern SpritePresentation_Destroy
 
 /* Exact fallbacks for sprite-wrapper destruction; see src/overlays/ov016/overlay016_sprite_wrapper.c. */
     .global func_ov016_021fe08c
@@ -11,7 +11,7 @@ func_ov016_021fe08c:
     add r0, r4, #0xa0
     bl func_02071eb8
     mov r0, r4
-    bl func_0209548c
+    bl SpritePresentation_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 

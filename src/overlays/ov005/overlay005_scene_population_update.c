@@ -27,10 +27,10 @@ extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
 extern void *func_ov005_021fb6e4(void *memory, void *owner);
 extern s32 func_0209189c(u32 *randomState, s32 minimum, s32 maximum);
-extern void func_020948d4(void *object, s32 value);
-extern void func_020948f8(void *object, s32 mode, s32 value);
-extern void func_02095274(void *container, void *object);
-extern void func_02095360(void *container);
+extern void PresentationScalar_SetImmediate(void *object, s32 value);
+extern void PresentationScalar_TransitionBy(void *object, s32 mode, s32 value);
+extern void PresentationList_Append(void *container, void *object);
+extern void PresentationList_UpdateAndDeleteCompleted(void *container);
 extern s32 GraphicsSpriteGroup_AdvanceAnimations(void *context);
 #ifdef __cplusplus
 }
@@ -49,7 +49,7 @@ extern s32 GraphicsSpriteGroup_AdvanceAnimations(void *context);
  * range beginning at data_ov005_021fc8f0[+0x100] and extending 0xC0. Configure
  * +0x1C with mode 2/value 0x18000, set child +0x7C/+0x80 to 64/0, and enqueue
  * it into +0x148. The original assumes allocation succeeds before dereference.
- * Always advance +0x148 through func_02095360, update context +0x04 through
+ * Always advance +0x148 through PresentationList_UpdateAndDeleteCompleted, update context +0x04 through
  * GraphicsSpriteGroup_AdvanceAnimations, and return that final result. MMIO destinations and random
  * ranges are confirmed; visual identities and +0x100's semantic name are not.
  */
@@ -87,22 +87,22 @@ s32 func_ov005_021fbbe8(Overlay005ScenePopulation *state)
             child = func_ov005_021fb6e4(child,
                                        FIELD(void *, state, 0x004));
         }
-        func_020948d4((u8 *)child + 0x0c,
+        PresentationScalar_SetImmediate((u8 *)child + 0x0c,
                       func_0209189c((u32 *)((u8 *)state + 0x10c), 0,
                                      0x100)
                           << 12);
         tableValue = data_ov005_021fc8f0[FIELD(s32, state, 0x100)];
-        func_020948d4((u8 *)child + 0x1c,
+        PresentationScalar_SetImmediate((u8 *)child + 0x1c,
                       func_0209189c((u32 *)((u8 *)state + 0x10c), tableValue,
                                      tableValue + 0xc0)
                           << 12);
-        func_020948f8((u8 *)child + 0x1c, 2, 0x18000);
+        PresentationScalar_TransitionBy((u8 *)child + 0x1c, 2, 0x18000);
         FIELD(s32, child, 0x7c) = 64;
         FIELD(s32, child, 0x80) = 0;
-        func_02095274((u8 *)state + 0x148, child);
+        PresentationList_Append((u8 *)state + 0x148, child);
     }
 
-    func_02095360((u8 *)state + 0x148);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)state + 0x148);
     return GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x004));
 }
 

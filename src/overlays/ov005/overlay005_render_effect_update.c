@@ -20,7 +20,7 @@ typedef struct Overlay005RenderEffect {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02094c48(void *state);
+extern s32 Presentation_AdvanceTransitions(void *state);
 extern s32 func_02091c7c(void *animation, s32 channel);
 extern void func_02091b98(void *animation, s32 value);
 extern s32 func_020918f4(u32 *randomState, s32 selector);
@@ -39,7 +39,7 @@ static s32 overlay005_fixed_to_integer(s32 value)
 }
 
 /*
- * Advance the inherited object through func_02094c48 and retain its return
+ * Advance the inherited object through Presentation_AdvanceTransitions and retain its return
  * value. Advance animation_0b0 channel 2; if inactive, return immediately.
  * Otherwise derive integer X/Y from +0x10/+0x20, submit value 8 to the
  * animation, choose scale 0x140 when func_020918f4(random_0ac,2) is nonzero
@@ -54,7 +54,7 @@ extern "C"
 #endif
 s32 func_ov005_021fb75c(Overlay005RenderEffect *state)
 {
-    s32 result = func_02094c48(state);
+    s32 result = Presentation_AdvanceTransitions(state);
 
     if (func_02091c7c(state->animation_0b0, 2)) {
         s32 y = overlay005_fixed_to_integer(state->yFixed_020);

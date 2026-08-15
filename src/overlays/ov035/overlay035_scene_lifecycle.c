@@ -12,7 +12,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095308(void *object);
+extern void PresentationList_DeleteAll(void *object);
 extern void Graphics3DResourceOwner_RemoveManager(void *resource);
 extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void Heap_Free(void *allocation);
@@ -26,7 +26,7 @@ extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fdb54(void *object, s32 kind, s32 baseArgument,
                                 s32 direction, s32 baseline, s32 positionZ,
                                 s32 angle);
-extern void func_02095274(void *collection, void *object);
+extern void PresentationList_Append(void *collection, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -41,10 +41,10 @@ extern void func_02095274(void *collection, void *object);
 extern "C" void *func_ov035_021fe13c(void *scene)
 {
     FIELD(const void *, scene, 0) = data_ov035_02203b98;
-    func_02095308((u8 *)scene + 0x10c);
+    PresentationList_DeleteAll((u8 *)scene + 0x10c);
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0x100), 0));
     FIELD(const void *, scene, 0x10c) = data_ov035_02203af8;
-    func_02095308((u8 *)scene + 0x10c);
+    PresentationList_DeleteAll((u8 *)scene + 0x10c);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xf4);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xe8);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xdc);
@@ -60,10 +60,10 @@ extern "C" void *func_ov035_021fe13c(void *scene)
 extern "C" void *func_ov035_021fe1a0(void *scene)
 {
     FIELD(const void *, scene, 0) = data_ov035_02203b98;
-    func_02095308((u8 *)scene + 0x10c);
+    PresentationList_DeleteAll((u8 *)scene + 0x10c);
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0x100), 0));
     FIELD(const void *, scene, 0x10c) = data_ov035_02203af8;
-    func_02095308((u8 *)scene + 0x10c);
+    PresentationList_DeleteAll((u8 *)scene + 0x10c);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xf4);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xe8);
     GraphicsResourceSetVariant_Destroy((u8 *)scene + 0xdc);
@@ -98,5 +98,5 @@ extern "C" void func_ov035_021fe20c(void *scene, s32 direction)
         object = func_ov035_021fdb54(object, 2, (s32)record, direction,
                                     baseline, positionZ, angle);
     }
-    func_02095274((u8 *)scene + 0x10c, object);
+    PresentationList_Append((u8 *)scene + 0x10c, object);
 }

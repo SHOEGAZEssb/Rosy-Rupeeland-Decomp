@@ -19,9 +19,9 @@ extern s32 func_02070464(void *);
 extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
 extern s32 Graphics3DResourceBinding_GetTextureWidthClass(void *);
 extern s32 Graphics3DResourceBinding_GetTextureHeightClass(void *);
-extern void func_020948d4(void *, s32);
-extern void func_020949ec(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void Presentation_Init(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void *func_ov026_021fce54(void *, void *, s32, u16);
 extern void func_ov026_021fd900(u32, u32, u32, u32, u32, u32, u32, u32);
 extern void func_ov026_021fd940(u32, s32);
@@ -84,7 +84,7 @@ extern "C" void func_ov026_021fea4c(void *object)
 extern "C" void func_ov026_021fec34(void *object, s32 count, s32 control_id,
                                      s32 texture_step, u16 color, u16 polygon)
 {
-    func_020948d4((u8 *)object + 0x1c, control_id);
+    PresentationScalar_SetImmediate((u8 *)object + 0x1c, control_id);
     FIELD(s32, object, 0xa0) = count;
     FIELD(s32, object, 0xa4) = texture_step;
     FIELD(u16, object, 0xa8) = color;
@@ -99,7 +99,7 @@ extern "C" void func_ov026_021fec34(void *object, s32 count, s32 control_id,
  */
 extern "C" void *func_ov026_021fec6c(void *object)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_0220497c;
     void *resource = func_02071adc(data_020f4e18, 0x5000);
     FIELD(void *, object, 0x9c) = resource;
@@ -108,8 +108,8 @@ extern "C" void *func_ov026_021fec6c(void *object)
         if (panel)
             panel = func_ov026_021fce54(panel, resource, i + 4, 0x7fff);
         FIELD(void *, object, 0xa0 + i * 4) = panel;
-        func_02094bbc(panel, 0, 0, 0);
-        func_020948d4((u8 *)panel + 0x6c, 0x666);
+        Presentation_SetPosition(panel, 0, 0, 0);
+        PresentationScalar_SetImmediate((u8 *)panel + 0x6c, 0x666);
     }
     return object;
 }

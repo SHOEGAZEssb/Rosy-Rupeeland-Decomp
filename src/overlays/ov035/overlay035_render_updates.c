@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02094d28(void *object, s32 mode, s32 first, s32 second);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 first, s32 second);
 extern s32 func_ov035_021fd25c(void *object);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ extern "C" void func_ov035_021fd218(void *object)
     if (!(FIELD(u16, object, 0x98) & 8))
         return;
     FIELD(s32, object, 0xac) =
-        func_02094d28(object, 1, FIELD(s32, object, 0xb0),
+        Presentation_InterpolateScalar(object, 1, FIELD(s32, object, 0xb0),
                       FIELD(s32, object, 0xb4));
     if (func_ov035_021fd25c(object))
         FIELD(u16, object, 0x98) &= (u16)~8;

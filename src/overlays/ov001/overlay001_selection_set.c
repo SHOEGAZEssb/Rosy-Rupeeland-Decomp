@@ -23,7 +23,7 @@ typedef struct Overlay001SelectionSetState {
 extern "C" {
 #endif
 extern s32 func_020befec(s32 numerator, s32 denominator);
-extern void func_02093af8(void *embeddedState, s32 column);
+extern void IndexedSelectionController_SetValue(void *embeddedState, s32 column);
 extern void func_02093d50(void *controller, s32 row);
 #ifdef __cplusplus
 }
@@ -42,7 +42,7 @@ extern "C"
 void func_ov001_021fc758(Overlay001SelectionSetState *state, s32 index)
 {
     state->activeIndex_1ac = index;
-    func_02093af8(state->embedded_1c0, index % 5);
+    IndexedSelectionController_SetValue(state->embedded_1c0, index % 5);
     func_02093d50(state->controller_1bc, index / 5);
     if (state->transient_01c != 0 &&
         state->transient_01c !=

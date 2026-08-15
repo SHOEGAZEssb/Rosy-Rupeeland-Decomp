@@ -16,9 +16,9 @@
     .extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource
     .extern func_02092260
     .extern func_020922f0
-    .extern func_02094cf0
-    .extern func_020954c0
-    .extern func_020954e0
+    .extern Presentation_SetScript
+    .extern SpritePresentation_SetAnimation
+    .extern SpritePresentation_Show
     .extern func_02095860
     .extern func_02095928
     .extern func_02095dd4
@@ -82,7 +82,7 @@ L_02200d34:
     beq L_02200d7c
     ldr r0, [r4, #0x260]
     mov r1, #0x1
-    bl func_020954c0
+    bl SpritePresentation_SetAnimation
     b L_02200d9c
 L_02200d7c:
     ldr r1, [r4, #0x260]
@@ -96,11 +96,11 @@ L_02200d94:
     bl func_02092260
 L_02200d9c:
     ldr r0, [r4, #0x260]
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r0, [r4, #0x260]
     ldr r1, L_02201328
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

@@ -10,7 +10,7 @@
 .extern func_0207b464
 .extern func_0207b490
 .extern func_0207b4bc
-.extern func_02093adc
+.extern IndexedSelectionController_ConfigureRange
 .extern func_ov023_021fce44
 .extern func_ov023_021fd024
 .extern func_ov023_021fd104
@@ -178,7 +178,7 @@ L_021fe5ac:
     mov r3, r1
     add r0, r10, #0x480
     sub r2, r2, #0x1
-    bl func_02093adc
+    bl IndexedSelectionController_ConfigureRange
     mov r0, r10
     bl func_ov023_021fe5f8
     ldr r0, [r10, #0x390]

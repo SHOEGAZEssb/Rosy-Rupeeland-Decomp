@@ -15,11 +15,11 @@ typedef struct TitleInterpolatedValue {
 } TitleInterpolatedValue;
 
 extern u8 data_020f2580[];
-extern s32 func_020919e8(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091a70(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091aa8(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091af0(s32 start, s32 end, s32 duration, s32 elapsed);
-extern s32 func_02091b30(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateSmoothStep(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateLinear(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateEaseOutQuadratic(s32 start, s32 end, s32 duration, s32 elapsed);
+extern s32 Presentation_InterpolateEaseInQuadratic(s32 start, s32 end, s32 duration, s32 elapsed);
 
 /* Construct a stopped interpolator with the retail virtual table. */
 void *func_02091b6c(TitleInterpolatedValue *value)
@@ -59,15 +59,15 @@ s32 func_02091bd0(TitleInterpolatedValue *value, s32 mode, s32 start, s32 end)
 {
     switch (mode) {
     case 1:
-        return func_02091a70(start, end, value->duration, value->elapsed);
+        return Presentation_InterpolateLinear(start, end, value->duration, value->elapsed);
     case 2:
-        return func_020919e8(start, end, value->duration, value->elapsed);
+        return Presentation_InterpolateSmoothStep(start, end, value->duration, value->elapsed);
     case 3:
-        return func_02091aa8(start, end, value->duration, value->elapsed);
+        return Presentation_InterpolateQuadraticPulse(start, end, value->duration, value->elapsed);
     case 4:
-        return func_02091af0(start, end, value->duration, value->elapsed);
+        return Presentation_InterpolateEaseOutQuadratic(start, end, value->duration, value->elapsed);
     case 5:
-        return func_02091b30(start, end, value->duration, value->elapsed);
+        return Presentation_InterpolateEaseInQuadratic(start, end, value->duration, value->elapsed);
     default:
         return 0;
     }

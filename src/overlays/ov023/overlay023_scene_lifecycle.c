@@ -40,10 +40,10 @@ extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void func_020929b0(void *);
 extern void func_02092cc0(void *, void *, void *);
-extern void func_02093a88(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void *func_020953f4(void *, void *);
-extern void func_02095508(void *);
+extern void IndexedSelectionController_Init(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void *SpritePresentation_Init(void *, void *);
+extern void SpritePresentation_SyncPosition(void *);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -91,7 +91,7 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     func_020957bc((u8 *)scene + 0x17c);
     __construct_array((u8 *)scene + 0x228, 2, 0xac,
                       (void *)func_020957bc);
-    func_02093a88((u8 *)scene + 0x480);
+    IndexedSelectionController_Init((u8 *)scene + 0x480);
     func_020929b0((u8 *)scene + 0x4c4);
     func_02091b6c((u8 *)scene + 0x4dc);
     FIELD(void *, scene, 0x4bc) = 0;
@@ -133,13 +133,13 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     for (s32 i = 0; i < 2; ++i) {
         void *effect = Heap_Alloc(0xa0, data_ov023_021ffbf0,
                                   4, gHeapContext);
-        if (effect) effect = func_020953f4(effect,
+        if (effect) effect = SpritePresentation_Init(effect,
             GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xc8), (u8 *)scene + 0xbc, 1));
         FIELD(void *, scene, 0x380 + i * 4) = effect;
         FIELD(u8, FIELD(void *, effect, 0x9c), 0x3a) = 1;
         FIELD(u16, FIELD(void *, effect, 0x9c), 0x28) = 0;
-        func_02094bbc(effect, 0x2a000, 0x16000 + i * 0x34000, 0);
-        func_02095508(effect);
+        Presentation_SetPosition(effect, 0x2a000, 0x16000 + i * 0x34000, 0);
+        SpritePresentation_SyncPosition(effect);
     }
     func_ov023_021fe640(scene, 0);
     func_ov023_021fe39c(scene);

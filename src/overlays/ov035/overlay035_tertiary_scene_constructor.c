@@ -27,7 +27,7 @@ extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_020955d8(void *allocation, void *spriteRecord);
-extern void func_02095274(void *collection, void *object);
+extern void PresentationList_Append(void *collection, void *object);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
 extern void func_020b0300(s32 first, s32 second, s32 third, s32 fourth,
@@ -59,7 +59,7 @@ static void *create_scene_sprite(void *scene, s32 resourceOffset,
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (object != 0)
         object = func_020955d8(object, record);
-    func_02095274((u8 *)scene + 0x174, object);
+    PresentationList_Append((u8 *)scene + 0x174, object);
     return object;
 }
 

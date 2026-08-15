@@ -7,9 +7,9 @@
     .extern func_020afca0
     .extern func_02091cf0
     .extern func_02091bac
-    .extern func_020954e0
-    .extern func_020948e4
-    .extern func_02091aa8
+    .extern SpritePresentation_Show
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_InterpolateQuadraticPulse
     .extern func_02070958
     .extern func_02074dc8
     .extern func_020594a4
@@ -120,12 +120,12 @@ L_021fc630:
     mov r3, #0x400
     bl func_02091bac
     ldr r0, [r4, #0x68]
-    bl func_020954e0
+    bl SpritePresentation_Show
     ldr r0, [r4, #0x68]
     mov r1, #0x2
     add r0, r0, #0x1c
     mov r2, #0x68000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x68]
     mov r0, #0x3c
     str r0, [r1, #0x7c]
@@ -136,7 +136,7 @@ L_021fc630:
     str r3, [r1, #0x20]
     add r0, r4, #0x88
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x3c
     str r0, [r4, #0xe8]
     mov r1, #0x0
@@ -195,7 +195,7 @@ L_021fc80c:
     mov r0, #0x100
     mov r1, #0x200
     mov r2, #0x3c
-    bl func_02091aa8
+    bl Presentation_InterpolateQuadraticPulse
     mov r1, r0
     ldr r0, [r4, #0x58]
     mov r2, r1

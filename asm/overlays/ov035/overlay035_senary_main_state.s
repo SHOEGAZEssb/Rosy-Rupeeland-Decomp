@@ -4,15 +4,15 @@
 
     .extern func_02059278
     .extern func_0205929c
-    .extern func_02095224
-    .extern func_020948e4
-    .extern func_02094cf0
+    .extern Presentation_IsScriptComplete
+    .extern PresentationScalar_TransitionTo
+    .extern Presentation_SetScript
     .extern func_ov035_02201fe4
     .extern func_02091c7c
     .extern func_02091b98
     .extern func_ov035_02201df8
     .extern func_02091dac
-    .extern func_02095360
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsAnimationInstanceManager_Update
     .extern gSoundContext
     .extern data_ov035_02203120
@@ -42,7 +42,7 @@ L_02202174:
     str r0, [r4, #0xa0]
 L_02202194:
     ldr r0, [r4, #0xd8]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_022022bc
     ldr r3, [r4, #0x104]
@@ -54,7 +54,7 @@ L_02202194:
     strh r0, [r3, #0x98]
     ldr r0, [r4, #0x104]
     add r0, r0, #0x2c
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     ldr r1, [r4, #0x104]
     mov r0, #0x10
     str r0, [r1, #0x7c]
@@ -62,7 +62,7 @@ L_02202194:
     str r2, [r1, #0x80]
     ldr r0, [r4, #0x108]
     ldr r1, L_022022e0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
@@ -111,18 +111,18 @@ L_02202264:
     b L_022022bc
 L_0220229c:
     add r0, r4, #0x10c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x11c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0xf4]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_022022bc:
     add r0, r4, #0x10c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     add r0, r4, #0x11c
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0xf4]
     bl GraphicsAnimationInstanceManager_Update
     mov r0, #0x0

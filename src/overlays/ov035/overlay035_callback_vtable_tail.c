@@ -20,7 +20,7 @@ extern void func_ov035_022028b4(void *object);
 extern void func_ov035_021fcf30(void);
 extern void func_02095670(void *object);
 extern void GraphicsResourceSetVariant_Destroy(void *state);
-extern void func_02095308(void *collection);
+extern void PresentationList_DeleteAll(void *collection);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
@@ -213,13 +213,13 @@ extern "C" void *func_ov035_02202b58(void *object)
 
 /*
  * Resets a collection object's vtable to data_ov035_02203af8, clears it through
- * func_02095308, frees the allocation, and returns the original now-invalid
+ * PresentationList_DeleteAll, frees the allocation, and returns the original now-invalid
  * address. Renderer/collection and heap state change.
  */
 extern "C" void *func_ov035_02202b70(void *object)
 {
     FIELD(const void *, object, 0) = data_ov035_02203af8;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     Heap_Free(object);
     return object;
 }

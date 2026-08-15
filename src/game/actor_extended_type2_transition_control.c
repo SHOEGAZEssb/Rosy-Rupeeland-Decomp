@@ -12,7 +12,7 @@ extern u8 data_020df9e8[];
 extern "C" {
 #endif
 extern void Actor_RestoreSavedFlags(void *actor);
-extern s32 func_020919e8(s32 start, s32 end, s32 step_count);
+extern s32 Presentation_InterpolateSmoothStep(s32 start, s32 end, s32 step_count);
 #ifdef __cplusplus
 }
 #endif
@@ -75,7 +75,7 @@ s32 ActorExtendedType2_UpdateAttachmentScaleTransition(void *self)
             *(u32 *)(actor + 0x260) |= 3;
             *(u32 *)(actor + 0xd0) &= ~0x100;
         } else {
-            s16 scale = (s16)func_020919e8(0x20, 0x100, 20);
+            s16 scale = (s16)Presentation_InterpolateSmoothStep(0x20, 0x100, 20);
             *(u16 *)(attachment + 0x32) = scale;
             *(u16 *)(attachment + 0x34) = scale;
             *(u16 *)(actor + 0xd6) = 19;

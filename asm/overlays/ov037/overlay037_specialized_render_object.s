@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov037/overlay037_specialized_render_object.c for documented portable C. */
 
     .extern func_ov037_021fceb0
-    .extern func_020948d4
-    .extern func_02094dd4
+    .extern PresentationScalar_SetImmediate
+    .extern Presentation_UpdateScript
     .extern data_ov037_021fee24
 
     .global func_ov037_021fd554
@@ -31,8 +31,8 @@ func_ov037_021fd584:
     ldr r1, [r4, #0x50]
     add r0, r4, #0x4c
     add r1, r2, r1
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r4
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     ldmia sp!, {r4, pc}
     .size func_ov037_021fd584, .-func_ov037_021fd584

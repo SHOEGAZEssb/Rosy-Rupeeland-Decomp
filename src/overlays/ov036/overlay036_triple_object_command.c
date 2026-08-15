@@ -17,7 +17,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02094cf0(void *object, const void *data, s32 mode);
+extern void Presentation_SetScript(void *object, const void *data, s32 mode);
 extern void Sound_Play(void *sound, s32 id, s32 mode);
 #ifdef __cplusplus
 }
@@ -39,28 +39,28 @@ extern "C" s32 func_ov036_02203b24(void *object, const void *command)
         FIELD(s32, object, 0xb0) = FIELD(s32, command, 4);
         return 2;
     case 1:
-        func_02094cf0(FIELD(void *, object, 0x158),
+        Presentation_SetScript(FIELD(void *, object, 0x158),
                       data_ov036_02204dac, 1);
-        func_02094cf0(FIELD(void *, object, 0x154),
+        Presentation_SetScript(FIELD(void *, object, 0x154),
                       data_ov036_02204dd0, 1);
         break;
     case 2:
-        func_02094cf0(FIELD(void *, object, 0x158),
+        Presentation_SetScript(FIELD(void *, object, 0x158),
                       data_ov036_02204ffc, 1);
-        func_02094cf0(FIELD(void *, object, 0x154),
+        Presentation_SetScript(FIELD(void *, object, 0x154),
                       data_ov036_02204d8c, 1);
         break;
     case 3:
         Sound_Play(gSoundContext, 0x1b3, 2);
-        func_02094cf0(FIELD(void *, object, 0x158),
+        Presentation_SetScript(FIELD(void *, object, 0x158),
                       data_ov036_02204e60, 1);
-        func_02094cf0(FIELD(void *, object, 0x154),
+        Presentation_SetScript(FIELD(void *, object, 0x154),
                       data_ov036_02204df4, 1);
         break;
     case 4:
-        func_02094cf0(FIELD(void *, object, 0x158),
+        Presentation_SetScript(FIELD(void *, object, 0x158),
                       data_ov036_02205168, 1);
-        func_02094cf0(FIELD(void *, object, 0x154),
+        Presentation_SetScript(FIELD(void *, object, 0x154),
                       data_ov036_02204ee4, 1);
         break;
     }

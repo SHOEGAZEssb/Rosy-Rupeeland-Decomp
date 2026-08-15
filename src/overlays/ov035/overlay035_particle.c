@@ -11,14 +11,14 @@ extern const s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern u32 genrand_int32(void);
 extern s32 func_020918f4(void *randomState, s32 maximum);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
 extern void func_02094bf0(void *object, s32 x, s32 y, s32 z);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_020948d4(void *field, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void func_020b0880(s16 sine, s16 cosine);
 extern void func_020b0844(s16 sine, s16 cosine);
 extern void func_020b0808(s16 sine, s16 cosine);
@@ -37,7 +37,7 @@ extern void func_ov035_021fd274(void *object, s16 duration);
  */
 extern "C" void *func_ov035_021fd7f0(void *particle)
 {
-    func_020949ec(particle);
+    Presentation_Init(particle);
     FIELD(const void *, particle, 0) = data_ov035_02203c40;
     FIELD(u32, particle, 0x9c) = 0;
     FIELD(u32, particle, 0x9c) = genrand_int32();
@@ -46,8 +46,8 @@ extern "C" void *func_ov035_021fd7f0(void *particle)
     func_02094bf0(particle, scale, scale, scale);
     s32 x = func_0209189c((u8 *)particle + 0x9c, -0x800, 0x800);
     s32 z = func_0209189c((u8 *)particle + 0x9c, -0x400, 0x400);
-    func_02094bbc(particle, x, 0x1200, z);
-    func_020948e4((u8 *)particle + 0x1c, 1, -0x800);
+    Presentation_SetPosition(particle, x, 0x1200, z);
+    PresentationScalar_TransitionTo((u8 *)particle + 0x1c, 1, -0x800);
     func_ov035_021fd274(
         particle, (s16)(func_020918f4((u8 *)particle + 0x9c, 30) + 120));
     FIELD(s32, particle, 0xa0) = 0;
@@ -100,11 +100,11 @@ extern "C" void *func_ov035_021fd7f0(void *particle)
  */
 extern "C" void func_ov035_021fd9dc(void *particle)
 {
-    func_020948d4((u8 *)particle + 0x5c,
+    PresentationScalar_SetImmediate((u8 *)particle + 0x5c,
                   FIELD(s32, particle, 0x60) + 0x400);
     FIELD(s32, particle, 0xa0) +=
         func_0209189c((u8 *)particle + 0x9c, -2, 2);
-    func_020948d4((u8 *)particle + 0x0c,
+    PresentationScalar_SetImmediate((u8 *)particle + 0x0c,
                   FIELD(s32, particle, 0x10) +
                       FIELD(s32, particle, 0xa0));
 }

@@ -1,11 +1,11 @@
 .text
-.extern func_02094c48
+.extern Presentation_AdvanceTransitions
 
 .global func_ov045_0220b7a0
 func_ov045_0220b7a0:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     ldr r2, [r4, #0x10]
     ldr r3, [r4, #0x20]
     mov r1, r2, asr #0xb

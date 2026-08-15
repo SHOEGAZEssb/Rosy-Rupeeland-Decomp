@@ -20,7 +20,7 @@ extern s32 func_ov034_021fd3f4(void *state, s32 input);
 extern s32 func_ov034_021fda00(void *owner, s32 index);
 extern void func_0205929c(void *sound, s32 id, s32 duration);
 extern void func_02059278(void *sound, s32 id, s32 value);
-extern s32 func_02094d28(void *object, s32 mode, s32 start, s32 end);
+extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 start, s32 end);
 extern void func_ov034_021fdf98(void *scene);
 extern void func_ov034_021fd978(void *owner);
 extern u32 genrand_int32(void);
@@ -115,7 +115,7 @@ extern "C" s32 func_ov034_021fe2dc(void *scene)
             FIELD(s32, scene, 0x1b8) = 9;
         }
     } else if (state == 9) {
-        FIELD(s32, owner, 0xc4) = func_02094d28(owner, 3, 0, 0x1f);
+        FIELD(s32, owner, 0xc4) = Presentation_InterpolateScalar(owner, 3, 0, 0x1f);
         if (func_ov034_021fe2c4(owner)) {
             FIELD(s32, owner, 0x7c) = 0x78;
             FIELD(s32, owner, 0x80) = 0;

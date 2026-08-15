@@ -19,10 +19,10 @@ extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091b6c(void *);
-extern void func_02094c48(void *);
-extern void func_02095308(void *);
-extern void func_020953c8(void *, void *);
-extern void func_0209548c(void *);
+extern void Presentation_AdvanceTransitions(void *);
+extern void PresentationList_DeleteAll(void *);
+extern void SpritePresentation_InitVariant(void *, void *);
+extern void SpritePresentation_Destroy(void *);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
 }
@@ -38,7 +38,7 @@ extern "C" s32 func_ov022_021fceb0(const void *object);
  */
 extern "C" void *func_ov022_021fce00(void *object, void *resource, s32 variant)
 {
-    func_020953c8(object, resource);
+    SpritePresentation_InitVariant(object, resource);
     FIELD(const void *, object, 0) = data_ov022_02200684;
     FIELD(s32, object, 0xa0) = variant;
     FIELD(s32, object, 0x88) = 1;
@@ -51,7 +51,7 @@ extern "C" void *func_ov022_021fce00(void *object, void *resource, s32 variant)
  */
 extern "C" void *func_ov022_021fce30(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     return object;
 }
 
@@ -61,7 +61,7 @@ extern "C" void *func_ov022_021fce30(void *object)
  */
 extern "C" void *func_ov022_021fce44(void *object)
 {
-    func_0209548c(object);
+    SpritePresentation_Destroy(object);
     Heap_Free(object);
     return object;
 }
@@ -74,7 +74,7 @@ extern "C" void *func_ov022_021fce44(void *object)
  */
 extern "C" s32 func_ov022_021fce60(void *object)
 {
-    func_02094c48(object);
+    Presentation_AdvanceTransitions(object);
     s32 x = FIELD(s32, object, 0x10);
     s32 y = FIELD(s32, object, 0x20);
     /* Bias negative 20.12 values so the shift truncates toward zero. */
@@ -116,7 +116,7 @@ extern "C" void func_ov022_021fcec8(void *controller)
 extern "C" void *func_ov022_021fcee8(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov022_02200654;
-    func_02095308(controller);
+    PresentationList_DeleteAll(controller);
     return controller;
 }
 
@@ -150,10 +150,10 @@ extern "C" void *func_ov022_021fcf08(void *emitter)
  */
 extern "C" void *func_ov022_021fcf98(void *emitter)
 {
-    func_02095308((u8 *)emitter + 0x48);
+    PresentationList_DeleteAll((u8 *)emitter + 0x48);
     GraphicsSpriteGroup_Destroy(FIELD(void *, emitter, 0));
     FIELD(const void *, emitter, 0x48) = data_ov022_02200654;
-    func_02095308((u8 *)emitter + 0x48);
+    PresentationList_DeleteAll((u8 *)emitter + 0x48);
     func_02071eb8((u8 *)emitter + 4);
     return emitter;
 }

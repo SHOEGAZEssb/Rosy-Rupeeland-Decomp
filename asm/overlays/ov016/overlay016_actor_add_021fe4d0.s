@@ -1,9 +1,9 @@
     .text
     .extern Heap_Alloc
     .extern data_ov016_02201580
-    .extern func_02094bbc
-    .extern func_02095274
-    .extern func_02095508
+    .extern Presentation_SetPosition
+    .extern PresentationList_Append
+    .extern SpritePresentation_SyncPosition
     .extern func_02095928
     .extern func_ov016_021fe004
     .extern func_ov016_021fe2b0
@@ -35,7 +35,7 @@ func_ov016_021fe4d0:
 L_021fe51c:
     mov r1, r4
     add r0, r5, #0xd0
-    bl func_02095274
+    bl PresentationList_Append
     ldr r2, [r6, #0x10]
     mov r0, r4
     ldr r1, [r2, #0x0]
@@ -48,9 +48,9 @@ L_021fe51c:
     mov r1, r3, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, r4
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     mov r0, r5
     bl func_ov016_021fe2b0
     add r0, r5, #0x20

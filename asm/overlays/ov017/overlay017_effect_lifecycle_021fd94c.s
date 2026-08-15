@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_lifecycle.c. */
     .extern data_ov017_02201670
-    .extern func_020949ec
-    .extern func_02094bbc
+    .extern Presentation_Init
+    .extern Presentation_SetPosition
     .extern func_ov017_021fd744
     .extern func_ov017_021fd7f8
     .extern func_ov017_021fe0b4
@@ -15,7 +15,7 @@ func_ov017_021fd94c:
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_020949ec
+    bl Presentation_Init
     ldr r1, L_021fda18
     add r0, r4, #0xbc
     str r1, [r4, #0x0]
@@ -33,7 +33,7 @@ func_ov017_021fd94c:
     mov r0, r4
     mov r2, #0x200000
     str ip, [r4, #0xb8]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r0, #0xc
     str r0, [r4, #0xa4]
     mov r0, #0x0

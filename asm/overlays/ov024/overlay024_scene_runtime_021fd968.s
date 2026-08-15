@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov024/overlay024_scene_runtime.c. */
 .extern data_ov024_021fe1e4
 .extern func_02028100
-.extern func_02091a70
+.extern Presentation_InterpolateLinear
 .extern func_02091b98
 .extern func_ov002_021fbd64
 .extern func_ov005_021fbd74
@@ -40,13 +40,13 @@ func_ov024_021fd968:
     ldr r2, [r6, #0x2a8]
     ldr r3, [r6, #0x2ac]
     mov r0, r9
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r7
     mov r7, r0
     ldr r2, [r6, #0x2a8]
     ldr r3, [r6, #0x2ac]
     mov r0, r8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r2, r0
     ldr r0, [r6, #0x2c0]
     mov r1, r7
@@ -56,7 +56,7 @@ func_ov024_021fd968:
     ldr r0, [r1, r5, lsl #0x2]
     ldr r1, [r1, r4, lsl #0x2]
     ldr r3, [r6, #0x2ac]
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     str r0, [r6, #0x2e8]
     ldr r2, [r6, #0x2e8]
     ldr r0, [r6, #0x2bc]

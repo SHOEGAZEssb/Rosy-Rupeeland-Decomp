@@ -9,8 +9,8 @@ extern const u8 data_ov034_021ff178[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
-extern void func_020948d4(void *embedded, s32 capacity, s32 initialValue);
+extern void Presentation_Init(void *object);
+extern void PresentationScalar_SetImmediate(void *embedded, s32 capacity, s32 initialValue);
 #ifdef __cplusplus
 }
 #endif
@@ -35,12 +35,12 @@ extern "C" void func_ov034_021fce00(void *object)
 extern "C" void *func_ov034_021fce04(void *object, void *owner,
                                      s32 entryIndex, u16 mode)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov034_021ff178;
     FIELD(void *, object, 0x9c) = owner;
     FIELD(s32, object, 0xa0) = entryIndex;
     FIELD(u16, object, 0xa4) = mode;
     FIELD(u16, object, 0xa6) = 0;
-    func_020948d4((u8 *)object + 0x6c, 0x200, 0);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x200, 0);
     return object;
 }

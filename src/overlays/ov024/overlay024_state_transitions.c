@@ -11,7 +11,7 @@ extern const u32 data_ov024_021fe300[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020919e8(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateSmoothStep(s32, s32, s32, s32);
 extern void func_02028100(void *, s32);
 extern void func_02091b98(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -41,7 +41,7 @@ extern "C" void func_ov024_021fdab0(void *scene, s32 target, s32 duration)
 /* Metrowerks' fixed-point interpolation is performed at eight fractional bits. */
 static s32 interpolate_8(s32 start, s32 end, s32 duration, s32 elapsed)
 {
-    s32 value = func_020919e8(start << 8, end << 8, duration, elapsed);
+    s32 value = Presentation_InterpolateSmoothStep(start << 8, end << 8, duration, elapsed);
     return (value + ((u32)(value >> 7) >> 24)) >> 8;
 }
 

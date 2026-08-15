@@ -9,12 +9,12 @@ extern const u8 data_ov036_02206108[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void func_ov036_021fd4b0(void *object, s16 duration);
-extern s32 func_02094c48(void *object);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_020948d4(void *field, s32 value);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern s32 Presentation_AdvanceTransitions(void *object);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -39,7 +39,7 @@ extern "C" void *func_ov036_021fd2a4(void *object, s16 type,
                                       u16 colorB, s16 firstDuration,
                                       s32 acceleration)
 {
-    func_020949ec(object);
+    Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov036_02206108;
     FIELD(s16, object, 0x9a) = type;
     FIELD(s16, object, 0x9c) = 0;
@@ -75,28 +75,28 @@ extern "C" s32 func_ov036_021fd31c(void *object)
         ++FIELD(s16, object, 0x9c);
         /* Fall through to poll the opening interval immediately. */
     case 1:
-        if (func_02094c48(object) != 0) {
+        if (Presentation_AdvanceTransitions(object) != 0) {
             FIELD(u16, object, 0x98) &= (u16)~1;
             s32 type = FIELD(s16, object, 0x9a);
             s32 scale = FIELD(s32, object, 0x70);
             if (type == 0) {
-                func_020948e4((u8 *)object + 0x6c, 4, 0);
+                PresentationScalar_TransitionTo((u8 *)object + 0x6c, 4, 0);
             } else if (type == 1 || type == 2) {
-                func_020948d4((u8 *)object + 0x6c, 0);
-                func_020948e4((u8 *)object + 0x6c, 3, scale);
+                PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0);
+                PresentationScalar_TransitionTo((u8 *)object + 0x6c, 3, scale);
             }
             func_ov036_021fd4b0(object, FIELD(s16, object, 0x9e));
             ++FIELD(s16, object, 0x9c);
         }
         break;
     case 2:
-        if (func_02094c48(object) != 0) {
+        if (Presentation_AdvanceTransitions(object) != 0) {
             ++FIELD(s16, object, 0x9c);
         } else {
             s32 vx = FIELD(s32, object, 0xa4);
             s32 vy = FIELD(s32, object, 0xa8);
             s32 vz = FIELD(s32, object, 0xac);
-            func_02094bbc(object,
+            Presentation_SetPosition(object,
                           FIELD(s32, object, 0x10) +
                               (vx + ((u32)(vx >> 7) >> 24) >> 8),
                           FIELD(s32, object, 0x20) +

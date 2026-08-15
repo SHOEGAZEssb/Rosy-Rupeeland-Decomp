@@ -10,7 +10,7 @@ extern const u8 data_ov026_022048b8[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov026_021fce50(void *);
 #ifdef __cplusplus
 }
@@ -66,7 +66,7 @@ extern "C" void *func_ov026_0220405c(void *object)
 extern "C" void *func_ov026_02204070(void *object)
 {
     FIELD(const void *, object, 0) = data_ov026_022048b8;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     Heap_Free(object);
     return object;
 }

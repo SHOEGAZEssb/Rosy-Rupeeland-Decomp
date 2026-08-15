@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02095360(void *list);
+extern void PresentationList_UpdateAndDeleteCompleted(void *list);
 extern void func_ov036_02203228(void *controller);
 extern void func_ov036_021fdcec(void *auxiliary);
 extern void GraphicsAnimationInstanceManager_Update(void *manager);
@@ -28,11 +28,11 @@ extern void func_02091b98(void *timer, s32 duration);
  */
 extern "C" void func_ov036_02202fb8(void *controller)
 {
-    func_02095360((u8 *)controller + 0x100);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x100);
     if ((FIELD(u16, FIELD(void *, controller, 0x154), 0x98) & 4) != 0)
         func_ov036_02203228(controller);
     func_ov036_021fdcec(FIELD(void *, controller, 0x1a0));
-    func_02095360((u8 *)controller + 0x110);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)controller + 0x110);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, controller, 0xf4));
     if (func_02091c7c((u8 *)controller + 0x120, 2) != 0) {
         func_02091dac((u8 *)controller + 0x13c);

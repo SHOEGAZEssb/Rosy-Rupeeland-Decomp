@@ -4,18 +4,18 @@
 #include "tingle/types.h"
 
 extern u8 data_020f26e0[];
-extern void func_020949ec(void *object);
+extern void Presentation_Init(void *object);
 extern void func_02072b68(void *sprite, u32 animation);
-extern void func_020948d4(void *component, s32 value);
-extern void func_020948e4(void *component, s32 mode, s32 target);
-extern s32 func_02094c48(void *object);
+extern void PresentationScalar_SetImmediate(void *component, s32 value);
+extern void PresentationScalar_TransitionTo(void *component, s32 mode, s32 target);
+extern s32 Presentation_AdvanceTransitions(void *object);
 extern s32 func_02092910(void *sprite, const void *point);
 
 void *func_020957bc(void *object)
 {
     u8 *bytes = (u8 *)object;
 
-    func_020949ec(object);
+    Presentation_Init(object);
     *(void **)(bytes + 0x00) = data_020f26e0;
     *(u32 *)(bytes + 0x9c) = 0;
     *(u32 *)(bytes + 0xa8) = 0;
@@ -48,9 +48,9 @@ void func_02095820(void *object, s32 x, s32 y)
 
     *(s32 *)(bytes + 0xa0) = fixed_x;
     *(s32 *)(bytes + 0xa4) = fixed_y;
-    func_020948d4(bytes + 0x0c, fixed_x);
-    func_020948d4(bytes + 0x1c, fixed_y);
-    func_020948d4(bytes + 0x2c, 0);
+    PresentationScalar_SetImmediate(bytes + 0x0c, fixed_x);
+    PresentationScalar_SetImmediate(bytes + 0x1c, fixed_y);
+    PresentationScalar_SetImmediate(bytes + 0x2c, 0);
 }
 
 /*
@@ -65,11 +65,11 @@ s32 func_02095860(void *object, const void *point,
     s32 hit = func_02092910(*(void **)(bytes + 0x9c), point);
 
     if (hit) {
-        func_020948d4(bytes + 0x0c, *(s32 *)(bytes + 0xa0));
-        func_020948d4(bytes + 0x1c, *(s32 *)(bytes + 0xa4));
-        func_020948e4(bytes + 0x0c, 3,
+        PresentationScalar_SetImmediate(bytes + 0x0c, *(s32 *)(bytes + 0xa0));
+        PresentationScalar_SetImmediate(bytes + 0x1c, *(s32 *)(bytes + 0xa4));
+        PresentationScalar_TransitionTo(bytes + 0x0c, 3,
                       *(s32 *)(bytes + 0xa0) + (xOffset << 12));
-        func_020948e4(bytes + 0x1c, 3,
+        PresentationScalar_TransitionTo(bytes + 0x1c, 3,
                       *(s32 *)(bytes + 0xa4) + (yOffset << 12));
         *(s32 *)(bytes + 0x7c) = 6;
         *(s32 *)(bytes + 0x80) = 0;
@@ -129,7 +129,7 @@ void func_020958f0(void *object)
 
 void func_020958d8(void *object)
 {
-    func_02094c48(object);
+    Presentation_AdvanceTransitions(object);
     func_020958f0(object);
 }
 

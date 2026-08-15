@@ -4,7 +4,7 @@
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawCharacter
 .extern GraphicsSpriteRenderer_MeasureText
-.extern func_02091aa8
+.extern Presentation_InterpolateQuadraticPulse
 
 .global func_ov058_0220ed64
 func_ov058_0220ed64:
@@ -94,7 +94,7 @@ func_ov058_0220ed64:
     mov r1, #0x6
     mov r2, #0x80
     sub r3, r6, #0x40
-    bl func_02091aa8
+    bl Presentation_InterpolateQuadraticPulse
     add r3, r5, r0
     ldr r0, .L_0220eee8
     str r11, [sp, #0x0]

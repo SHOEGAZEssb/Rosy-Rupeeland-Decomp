@@ -39,8 +39,8 @@ extern void *func_020955d8(void *object, void *handle);
 extern void *func_ov036_021fcf34(void *object, void *resource,
                                  s32 mode, s32 type);
 extern void *func_ov036_021fdbf4(void *object, s32 value);
-extern void func_02095274(void *list, void *object);
-extern void func_020948d4(void *field, s32 value);
+extern void PresentationList_Append(void *list, void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void func_02091b98(void *timer, s32 duration);
 extern void func_02091d24(void *timer, s32 first, s32 second,
                           s32 third, s32 fourth);
@@ -119,8 +119,8 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xf8) = child;
-    func_02095274((u8 *)controller + 0x100, child);
-    func_020948d4((u8 *)child + 0x6c, 0x2000);
+    PresentationList_Append((u8 *)controller + 0x100, child);
+    PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x2000);
 
     handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xf4),
                             (u8 *)controller + 0xe8);
@@ -129,7 +129,7 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xfc) = child;
-    func_02095274((u8 *)controller + 0x100, child);
+    PresentationList_Append((u8 *)controller + 0x100, child);
 
     handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xf4),
                             (u8 *)controller + 0xcc);
@@ -138,7 +138,7 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
     if (child != 0)
         child = func_020955d8(child, handle);
     FIELD(void *, controller, 0xd8) = child;
-    func_02095274((u8 *)controller + 0x100, child);
+    PresentationList_Append((u8 *)controller + 0x100, child);
 
     void *renderObject =
         Heap_Alloc(0xc4, data_ov036_02206168, 4, gHeapContext);
@@ -146,7 +146,7 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
         renderObject = func_ov036_021fcf34(
             renderObject, FIELD(void *, controller, 0x15c), 0, 0xc);
     FIELD(void *, controller, 0x154) = renderObject;
-    func_02095274((u8 *)controller + 0x100, renderObject);
+    PresentationList_Append((u8 *)controller + 0x100, renderObject);
     FIELD(u16, renderObject, 0xbc) = 0x6318;
     FIELD(u16, renderObject, 0xc0) = 0x6318;
     FIELD(u16, renderObject, 0x98) |= 1;
@@ -157,7 +157,7 @@ extern "C" void *func_ov036_022029d8(void *controller, void *owner,
         renderObject = func_ov036_021fcf34(
             renderObject, FIELD(void *, controller, 0x15c), 1, 0xc);
     FIELD(void *, controller, 0x158) = renderObject;
-    func_02095274((u8 *)controller + 0x100, renderObject);
+    PresentationList_Append((u8 *)controller + 0x100, renderObject);
     FIELD(u16, renderObject, 0xbc) = 0x218;
     FIELD(u16, renderObject, 0x98) |= 1;
     FIELD(s32, renderObject, 0xa4) = 1;

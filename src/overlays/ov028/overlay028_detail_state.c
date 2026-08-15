@@ -20,22 +20,22 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02092260(void *, s32);
 extern s32 func_02092910(void *, const void *);
 extern void func_02092c8c(s32, s32);
-extern void func_02093adc(void *, s32, s32, s32);
-extern void func_02093b20(void *);
-extern void func_02093b30(void *);
-extern void func_02093b8c(void *);
-extern void func_02093bb0(void *);
-extern s32 func_02093bd4(void *);
-extern s32 func_02093bdc(void *);
-extern s32 func_02093c64(void *);
-extern s32 func_02093c78(void *);
+extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
+extern void IndexedSelectionController_ResetTransition(void *);
+extern void IndexedSelectionController_SnapTransitionOrigin(void *);
+extern void IndexedSelectionController_IncrementWrap(void *);
+extern void IndexedSelectionController_DecrementWrap(void *);
+extern s32 IndexedSelectionController_GetLastDirection(void *);
+extern s32 IndexedSelectionController_AdvanceTransition(void *);
+extern s32 IndexedSelectionController_IsTransitionIdle(void *);
+extern s32 IndexedSelectionController_AdvancePacing(void *);
 extern void func_02093d50(void *, s32);
 extern void func_02093d7c(void *, s32);
 extern void func_02094574(void *);
-extern void func_020948d4(void *, s32);
-extern void func_020948e4(void *, s32, s32);
-extern void func_020954e0(void *);
-extern void func_020954f4(void *);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void SpritePresentation_Show(void *);
+extern void SpritePresentation_Hide(void *);
 extern s32 func_02095860(void *, const void *, s32, s32);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
@@ -103,11 +103,11 @@ extern "C" s32 func_ov028_021febd0(void *state)
             Overlay028Row *row = func_ov028_021fd5c8(list);
             func_ov028_021fd8b8(FIELD(void *, state, 0x224),
                                  row->descriptor, selected);
-            func_02093adc(choice, 0, FIELD(s32, list, 0x3c) - 1, selected);
+            IndexedSelectionController_ConfigureRange(choice, 0, FIELD(s32, list, 0x3c) - 1, selected);
         }
         if (FIELD(s32, list, 0x40) > 1) {
-            func_020954e0(FIELD(void *, state, 0x1f0));
-            func_020954e0(FIELD(void *, state, 0x1f4));
+            SpritePresentation_Show(FIELD(void *, state, 0x1f0));
+            SpritePresentation_Show(FIELD(void *, state, 0x1f4));
         }
         func_ov028_021fce28((u8 *)state + 0x280);
         func_02092c8c(1, 0);
@@ -118,32 +118,32 @@ extern "C" s32 func_ov028_021febd0(void *state)
             Overlay028_NextPhase(state);
         break;
     case 3:
-        func_02093b20(choice);
+        IndexedSelectionController_ResetTransition(choice);
         Overlay028_NextPhase(state);
         /* fall through */
     case 4: {
-        func_02093b30(choice);
+        IndexedSelectionController_SnapTransitionOrigin(choice);
         u16 keys = FIELD(u16, FIELD(void *, state, 0x2c), 0);
         if (keys & 0x20) {
-            func_02093bb0(choice);
+            IndexedSelectionController_DecrementWrap(choice);
         } else if (keys & 0x10) {
-            func_02093b8c(choice);
+            IndexedSelectionController_IncrementWrap(choice);
         } else if (FIELD(u32, state, 0x20) & 0x10) {
             s32 leftHit = func_02092910(
                 FIELD(void *, FIELD(void *, state, 0x1f0), 0x9c), point);
             if (leftHit && FIELD(s32, state, 0x1f8)) {
-                func_02093bb0(choice);
+                IndexedSelectionController_DecrementWrap(choice);
             } else {
                 s32 rightHit = func_02092910(
                     FIELD(void *, FIELD(void *, state, 0x1f4), 0x9c), point);
                 if (rightHit && FIELD(s32, state, 0x1f8)) {
-                    func_02093b8c(choice);
+                    IndexedSelectionController_IncrementWrap(choice);
                 } else if (FIELD(u32, state, 0x20) & 0x20) {
                     if (leftHit) {
-                        func_02093bb0(choice);
+                        IndexedSelectionController_DecrementWrap(choice);
                         FIELD(s32, state, 0x1f8) = 1;
                     } else if (rightHit) {
-                        func_02093b8c(choice);
+                        IndexedSelectionController_IncrementWrap(choice);
                         FIELD(s32, state, 0x1f8) = 1;
                     } else if (func_02095860((u8 *)state + 0x144,
                                              point, 0, 4)) {
@@ -154,28 +154,28 @@ extern "C" s32 func_ov028_021febd0(void *state)
                 }
             }
         }
-        if (func_02093bdc(choice)) {
+        if (IndexedSelectionController_AdvanceTransition(choice)) {
             void *child;
-            if (func_02093bd4(choice)) {
+            if (IndexedSelectionController_GetLastDirection(choice)) {
                 child = FIELD(void *, state, 0x1f4);
-                func_020948d4((u8 *)child + 0xc, 0xf4000);
-                func_020948e4((u8 *)child + 0xc, 1, 0xf0000);
+                PresentationScalar_SetImmediate((u8 *)child + 0xc, 0xf4000);
+                PresentationScalar_TransitionTo((u8 *)child + 0xc, 1, 0xf0000);
             } else {
                 child = FIELD(void *, state, 0x1f0);
-                func_020948d4((u8 *)child + 0xc, 0xc000);
-                func_020948e4((u8 *)child + 0xc, 1, 0x10000);
+                PresentationScalar_SetImmediate((u8 *)child + 0xc, 0xc000);
+                PresentationScalar_TransitionTo((u8 *)child + 0xc, 1, 0x10000);
             }
             FIELD(s32, child, 0x7c) = 4;
             FIELD(s32, child, 0x80) = 0;
             func_02092260(state, 0);
             Overlay028_NextPhase(state);
         }
-        if (func_02093c64(choice))
+        if (IndexedSelectionController_IsTransitionIdle(choice))
             FIELD(s32, state, 0x1f8) = 0;
         break;
     }
     case 5:
-        if (func_02093c78(choice)) {
+        if (IndexedSelectionController_AdvancePacing(choice)) {
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
         } else if (FIELD(s32, state, 0x250) ==
@@ -194,8 +194,8 @@ extern "C" s32 func_ov028_021febd0(void *state)
     case 11:
         if (DisplayBrightness_IsMainTransitionComplete() == 0)
             break;
-        func_020954f4(FIELD(void *, state, 0x1f0));
-        func_020954f4(FIELD(void *, state, 0x1f4));
+        SpritePresentation_Hide(FIELD(void *, state, 0x1f0));
+        SpritePresentation_Hide(FIELD(void *, state, 0x1f4));
         func_ov028_021fd86c(FIELD(void *, state, 0x224));
         {
             s32 selected = FIELD(s32, state, 0x234);

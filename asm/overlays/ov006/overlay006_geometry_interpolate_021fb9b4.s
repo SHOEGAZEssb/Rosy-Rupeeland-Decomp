@@ -1,7 +1,7 @@
     .text
     .extern func_ov046_0220c3bc
     .extern func_ov046_0220c410
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
     .extern func_ov046_0220c46c
     .extern func_02028100
     .extern func_ov046_0220bffc
@@ -35,13 +35,13 @@ func_ov006_021fb9b4: ; 0x021fb9b4
     ldr r2, [r5, #0x7c]
     ldr r3, [r5, #0x80]
     mov r0, r8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r6
     mov r6, r0
     ldr r2, [r5, #0x7c]
     ldr r3, [r5, #0x80]
     mov r0, r7
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r2, r0
     ldr r0, [r5, #0x90]
     mov r1, r6

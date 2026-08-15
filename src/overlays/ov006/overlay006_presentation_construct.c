@@ -23,12 +23,12 @@ extern const u8 data_ov006_021fbc9c[];
 extern const u8 data_ov006_021fbca4[];
 extern const s32 data_ov006_021fbc58[2];
 extern void func_02091e28(void *state);
-extern void func_02093a88(void *controller);
+extern void IndexedSelectionController_Init(void *controller);
 extern void func_02091b6c(void *animation);
-extern void func_02093adc(void *controller, s32 first, s32 index, s32 third);
+extern void IndexedSelectionController_ConfigureRange(void *controller, s32 first, s32 index, s32 third);
 extern void *func_ov046_0220b7bc(void *memory, void *owner, s32 mode);
 extern s32 func_ov046_0220c4a0(void *panel);
-extern void func_02093af8(void *controller, s32 value);
+extern void IndexedSelectionController_SetValue(void *controller, s32 value);
 extern void func_ov046_0220bffc(void *helper, s32 controllerMember,
                                s32 first, s32 second);
 extern void func_ov046_0220c478(void *helper, s32 controllerMember);
@@ -43,7 +43,7 @@ extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
  * Initialize the inherited base and install data_ov006_021fbc88. Construct
  * controller +0x58 and animation +0x98. Read signed gGameWork halfword +0x12E
  * into +0x54, replacing values >=11 with 10, and configure the controller as
- * func_02093adc(+0x58,0,index,0). Set +0x84 to 12. Allocate 0x118 bytes tagged
+ * IndexedSelectionController_ConfigureRange(+0x58,0,index,0). Set +0x84 to 12. Allocate 0x118 bytes tagged
  * by data_ov006_021fbc9c and, on success, construct overlay-46 helper
  * func_ov046_0220b7bc with gDebugFont/mode 0; store +0x90. Obtain the shared
  * overlay-46 value, bind it to controller +0x58, then call the two overlay-46
@@ -65,14 +65,14 @@ Overlay006Presentation *func_ov006_021fb708(Overlay006Presentation *state)
 
     func_02091e28(state);
     FIELD(const void *, state, 0x000) = data_ov006_021fbc88;
-    func_02093a88((u8 *)state + 0x58);
+    IndexedSelectionController_Init((u8 *)state + 0x58);
     func_02091b6c((u8 *)state + 0x98);
     index = FIELD(s16, gGameWork, 0x12e);
     if (index >= 11) {
         index = 10;
     }
     FIELD(s32, state, 0x054) = index;
-    func_02093adc((u8 *)state + 0x58, 0, index, 0);
+    IndexedSelectionController_ConfigureRange((u8 *)state + 0x58, 0, index, 0);
     FIELD(s32, state, 0x084) = 12;
 
     helper = Heap_Alloc(0x118, (const char *)data_ov006_021fbc9c, 4,
@@ -81,7 +81,7 @@ Overlay006Presentation *func_ov006_021fb708(Overlay006Presentation *state)
         helper = func_ov046_0220b7bc(helper, gDebugFont, 0);
     }
     FIELD(void *, state, 0x090) = helper;
-    func_02093af8((u8 *)state + 0x58, func_ov046_0220c4a0(helper));
+    IndexedSelectionController_SetValue((u8 *)state + 0x58, func_ov046_0220c4a0(helper));
     func_ov046_0220bffc(helper, FIELD(s32, state, 0x064), 0, 0);
     func_ov046_0220c478(helper, FIELD(s32, state, 0x064));
 

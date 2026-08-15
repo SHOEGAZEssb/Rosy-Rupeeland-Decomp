@@ -39,7 +39,7 @@ extern void func_02091e28(void *);
 extern void func_02092798(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -222,7 +222,7 @@ static void destroyScene(void *state)
     *(volatile u16 *)0x04001050 = 0;
     func_ov018_021fdbd4(state);
     destroyVirtual(FIELD(void *, state, 0x418));
-    func_02095308((u8 *)state + 0x3cc);
+    PresentationList_DeleteAll((u8 *)state + 0x3cc);
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xc4));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xcc));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0xc8));
@@ -241,7 +241,7 @@ static void destroyScene(void *state)
     func_ov018_021fe5ac(state);
     GameWork_ClearFlag(gGameWork, 0x418);
     FIELD(const u32 *, state, 0x3cc) = data_ov018_021ffd00;
-    func_02095308((u8 *)state + 0x3cc);
+    PresentationList_DeleteAll((u8 *)state + 0x3cc);
     func_ov018_021fcefc((u8 *)state + 0xd8);
     func_02071eb8((u8 *)state + 0xb8);
     func_02071eb8((u8 *)state + 0xac);

@@ -23,7 +23,7 @@ extern s32 func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_02092e9c(void *, u32, s32);
 extern void func_02093360(void *, s32);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov028_021fd7e0(void *);
 extern void func_ov028_021fd86c(void *);
 #ifdef __cplusplus
@@ -111,7 +111,7 @@ extern "C" void func_ov028_021fda98(void *object)
 extern "C" void *func_ov028_021fdab8(void *object)
 {
     FIELD(const void *, object, 0) = data_ov028_021ff29c;
-    func_02095308(object);
+    PresentationList_DeleteAll(object);
     return object;
 }
 

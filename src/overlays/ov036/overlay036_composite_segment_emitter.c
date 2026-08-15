@@ -15,7 +15,7 @@ extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fd834(void *object, s16 duration,
                                  s32 x0, s32 y0, s32 x1, s32 y1,
                                  s32 initialZ, u16 red, u16 green, u16 blue);
-extern void func_02095274(void *list, void *object);
+extern void PresentationList_Append(void *list, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -68,7 +68,7 @@ extern "C" void func_ov036_02203024(void *controller, s32 colorMode,
             segment = func_ov036_021fd834(segment, 0x3c,
                                           x, 0x1200, x, -0x600, -0x10,
                                           red, green, blue);
-        func_02095274((u8 *)controller + 0x110, segment);
+        PresentationList_Append((u8 *)controller + 0x110, segment);
     } else if (segmentType == 1) {
         s32 y = func_0209189c((u8 *)controller + 0xc0, -0x600, 0x1200);
         segment = Heap_Alloc(0xb8, data_ov036_02206198, 4, gHeapContext);
@@ -76,6 +76,6 @@ extern "C" void func_ov036_02203024(void *controller, s32 colorMode,
             segment = func_ov036_021fd834(segment, 0x3c,
                                           -0x800, y, 0x800, y + 0x80, -0x10,
                                           red, green, blue);
-        func_02095274((u8 *)controller + 0x110, segment);
+        PresentationList_Append((u8 *)controller + 0x110, segment);
     }
 }

@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_phase.c. */
     .extern data_ov017_022016e0
-    .extern func_02091a70
-    .extern func_020948d4
+    .extern Presentation_InterpolateLinear
+    .extern PresentationScalar_SetImmediate
     .extern func_020adc90
     .extern func_ov017_021fd3f0
     .extern func_ov017_021fda64
@@ -49,10 +49,10 @@ L_021fde9c:
     mov r0, #0x200000
     mov r1, #0x0
     mov r2, #0x1e
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r0
     add r0, r6, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     b L_021fe09c
 L_021fdee0:
     ldr r0, L_021fe0ac
@@ -73,7 +73,7 @@ L_021fdf04:
     mov r1, #0x10000
     add r0, r6, #0x1c
     rsb r1, r1, #0x0
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r6
     bl func_ov017_021fe178
     cmp r0, #0x0
@@ -90,10 +90,10 @@ L_021fdf58:
     mov r0, #0x0
     sub r1, r0, #0x10000
     mov r2, #0x8
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r0
     add r0, r6, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
 L_021fdf74:
     mov r0, r6
     bl func_ov017_021fda64
@@ -106,7 +106,7 @@ L_021fdf80:
     cmp r3, #0x14
     ble L_021fdfb4
     add r0, r6, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, #0x5
     str r0, [r6, #0xb4]
     mov r0, #0x0
@@ -116,10 +116,10 @@ L_021fdfb4:
     mov r0, #0x10000
     rsb r0, r0, #0x0
     mov r2, #0x14
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r0
     add r0, r6, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
 L_021fdfd0:
     mov r0, r6
     bl func_ov017_021fda64

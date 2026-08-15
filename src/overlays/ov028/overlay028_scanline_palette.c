@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern u32 genrand_int32(void);
 extern s32 func_020918f4(void *, s32);
-extern s32 func_02091a70(s32, s32, s32, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_020b4554(void *, s32);
 extern void func_020b44e8(void);
 extern void func_ov028_021fce28(void *);
@@ -77,10 +77,10 @@ extern "C" void func_ov028_021fcf2c(const u16 *from, const u16 *to,
                                       s32 weight)
 {
     for (s32 i = 0; i < 16; ++i) {
-        s32 r = func_02091a70(from[i] & 0x1f, to[i] & 0x1f, 0x10, weight);
-        s32 g = func_02091a70((from[i] >> 5) & 0x1f,
+        s32 r = Presentation_InterpolateLinear(from[i] & 0x1f, to[i] & 0x1f, 0x10, weight);
+        s32 g = Presentation_InterpolateLinear((from[i] >> 5) & 0x1f,
                               (to[i] >> 5) & 0x1f, 0x10, weight);
-        s32 b = func_02091a70((from[i] >> 10) & 0x1f,
+        s32 b = Presentation_InterpolateLinear((from[i] >> 10) & 0x1f,
                               (to[i] >> 10) & 0x1f, 0x10, weight);
         data_ov028_021ff300[i] = (u16)(r | (g << 5) | (b << 10));
     }

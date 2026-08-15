@@ -31,9 +31,9 @@
 .extern func_020929b0
 .extern func_02092cc0
 .extern func_02092f88
-.extern func_02094cf0
-.extern func_02095274
-.extern func_020953f4
+.extern Presentation_SetScript
+.extern PresentationList_Append
+.extern SpritePresentation_Init
 .extern func_020957bc
 .extern func_020957f0
 .extern func_02095820
@@ -397,7 +397,7 @@ L_021ff7a8:
     add r0, r10, #0xf8
     ldr r1, [r10, #0x508]
     add r0, r0, #0x400
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r10, #0xb4]
     add r1, r10, #0x74
     mov r2, #0x2
@@ -427,11 +427,11 @@ L_021ff81c:
     add r0, r10, #0xf8
     ldr r1, [r10, #0xdc]
     add r0, r0, #0x400
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r10, #0xdc]
     ldr r1, L_021ffa40
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r10, #0xb4]
     add r1, r10, #0x80
     mov r2, #0x2
@@ -455,17 +455,17 @@ L_021ff81c:
     cmp r0, #0x0
     beq L_021ff8a0
     mov r1, r4
-    bl func_020953f4
+    bl SpritePresentation_Init
 L_021ff8a0:
     str r0, [r10, #0xe0]
     add r0, r10, #0xf8
     ldr r1, [r10, #0xe0]
     add r0, r0, #0x400
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r10, #0xe0]
     ldr r1, L_021ffa48
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r1, L_021ffa4c
     ldr r3, L_021ffa38
     mov r0, #0x4c

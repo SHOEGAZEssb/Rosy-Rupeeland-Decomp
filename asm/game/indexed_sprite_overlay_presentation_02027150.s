@@ -13,8 +13,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02094cf0
-.extern func_020953f4
+.extern Presentation_SetScript
+.extern SpritePresentation_Init
 .extern gHeapContext
 
     .global IndexedSpriteOverlayPresentation_Init
@@ -57,12 +57,12 @@ IndexedSpriteOverlayPresentation_Init: ; 0x02027150
     cmp r0, #0x0
     beq .L_020271e8
     mov r1, r4
-    bl func_020953f4
+    bl SpritePresentation_Init
 .L_020271e8:
     ldr r1, .L_02027218
     mov r2, #0x1
     str r0, [r5, #0x18]
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_02027200: .word gIndexedSpriteOverlayPresentationVtable

@@ -12,11 +12,11 @@ extern "C" {
 #endif
 extern void *func_ov035_021fcec4(void *object, void *resource,
                                 s32 resourceIndex, s32 entry);
-extern void func_020948d4(void *field, s32 value);
-extern s32 func_02094c48(void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern s32 Presentation_AdvanceTransitions(void *object);
 extern void Sound_Play(void *soundContext, s32 id, s32 argument);
-extern void func_020948f8(void *field, s32 mode, s32 value);
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -35,7 +35,7 @@ extern "C" void *func_ov035_02201584(void *object, void *resource,
     FIELD(const void *, object, 0) = data_ov035_02203c08;
     FIELD(s32, object, 0xb8) = 0x8000;
     FIELD(s32, object, 0xc4) = 0;
-    func_020948d4((u8 *)object + 0x6c, 0x800);
+    PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x800);
     FIELD(u16, object, 0xbe) = 0x2000;
     return object;
 }
@@ -52,14 +52,14 @@ extern "C" s32 func_ov035_022015cc(void *object)
 {
     switch (FIELD(s32, object, 0xc4)) {
     case 0:
-        if (func_02094c48(object) != 0) {
+        if (Presentation_AdvanceTransitions(object) != 0) {
             Sound_Play(gSoundContext, 0x1cb, 0);
             if (FIELD(s32, object, 0x88) != 0) {
                 FIELD(s32, object, 0xa8) = 0x19;
                 FIELD(s32, object, 0xa0) = 2;
-                func_020948d4((u8 *)object + 0x6c, 0);
-                func_020948f8((u8 *)object + 0x2c, 1, -0x100);
-                func_020948e4((u8 *)object + 0x6c, 5, 0x800);
+                PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0);
+                PresentationScalar_TransitionBy((u8 *)object + 0x2c, 1, -0x100);
+                PresentationScalar_TransitionTo((u8 *)object + 0x6c, 5, 0x800);
                 FIELD(s32, object, 0x7c) = 12;
                 FIELD(s32, object, 0x80) = 0;
             }
@@ -67,7 +67,7 @@ extern "C" s32 func_ov035_022015cc(void *object)
         }
         break;
     case 1:
-        if (func_02094c48(object) != 0)
+        if (Presentation_AdvanceTransitions(object) != 0)
             ++FIELD(s32, object, 0xc4);
         break;
     case 2:

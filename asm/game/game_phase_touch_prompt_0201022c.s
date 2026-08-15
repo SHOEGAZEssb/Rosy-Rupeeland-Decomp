@@ -10,10 +10,10 @@
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02094bbc
-.extern func_020953f4
-.extern func_020954c0
-.extern func_02095508
+.extern Presentation_SetPosition
+.extern SpritePresentation_Init
+.extern SpritePresentation_SetAnimation
+.extern SpritePresentation_SyncPosition
 .extern gHeapContext
 .global GamePhaseTouchPrompt_Init
 GamePhaseTouchPrompt_Init:
@@ -58,7 +58,7 @@ GamePhaseTouchPrompt_Init:
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r1, r0
     mov r0, r5
-    bl func_020953f4
+    bl SpritePresentation_Init
     mov r5, r0
 L_020102d8:
     mov r0, r5
@@ -66,12 +66,12 @@ L_020102d8:
     mov r1, #0xf4000
     mov r2, #0xd4000
     mov r3, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r0, [r4, #0x1c]
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     ldr r0, [r4, #0x1c]
     mov r1, #0x0
-    bl func_020954c0
+    bl SpritePresentation_SetAnimation
     ldr r1, [r4, #0x1c]
     mov r0, r4
     ldr r2, [r1, #0x9c]

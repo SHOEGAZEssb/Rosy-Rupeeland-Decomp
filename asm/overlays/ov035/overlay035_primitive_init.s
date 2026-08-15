@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_primitive.c for documented portable C. */
 
-    .extern func_020949ec
+    .extern Presentation_Init
     .extern data_ov035_02203c94
 
 
@@ -13,7 +13,7 @@ func_ov035_021fd2bc:
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021fd308
     ldrh r1, [sp, #0x18]
     str r0, [r4, #0x0]

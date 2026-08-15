@@ -9,7 +9,7 @@
 .extern Graphics3DResourceOwner_Destroy
 .extern func_020923a0
 .extern func_02092418
-.extern func_02095308
+.extern PresentationList_DeleteAll
 .extern func_ov048_0220b7b4
 .extern gDebugFont
 .extern GX_SetGraphicsMode
@@ -26,13 +26,13 @@ func_ov027_021fde24:
     add r0, r4, #0x120
     bic r1, r1, #0x400
     str r1, [r4, #0x20]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x130
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x140
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x150
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r5, [r4, #0x54]
     cmp r5, #0x0
     beq L_021fde7c
@@ -65,19 +65,19 @@ L_021fde7c:
     ldr r1, L_021fdf40
     add r0, r4, #0x150
     str r1, [r4, #0x150]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_021fdf40
     add r0, r4, #0x140
     str r1, [r4, #0x140]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_021fdf40
     add r0, r4, #0x130
     str r1, [r4, #0x130]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     ldr r1, L_021fdf40
     add r0, r4, #0x120
     str r1, [r4, #0x120]
-    bl func_02095308
+    bl PresentationList_DeleteAll
     add r0, r4, #0x74
     bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0x68

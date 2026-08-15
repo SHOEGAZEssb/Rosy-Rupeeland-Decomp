@@ -16,11 +16,11 @@ extern "C" {
 extern void func_02059278(void *soundContext, s32 id, s32 value);
 extern void func_0205929c(void *soundContext, s32 id, s32 value);
 extern void Sound_Play(void *soundContext, s32 id);
-extern void func_02094cf0(void *object, const void *animation, s32 loop);
-extern s32 func_02095248(void *object);
-extern s32 func_02095224(void *object);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
+extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
+extern s32 Presentation_IsScriptSuspended(void *object);
+extern s32 Presentation_IsScriptComplete(void *object);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void GraphicsAnimationInstanceManager_RebindInstance(void *resourceSet, void *spriteRecord,
                          void *resource);
 extern void func_ov035_02200574(void *scene);
@@ -35,8 +35,8 @@ extern void func_ov035_02200574(void *scene);
  */
 static void reset_model(void *model)
 {
-    func_02094cf0(model, 0, 0);
-    func_020948e4((u8 *)model + 0x1c, 2, 0);
+    Presentation_SetScript(model, 0, 0);
+    PresentationScalar_TransitionTo((u8 *)model + 0x1c, 2, 0);
     FIELD(s32, model, 0x7c) = 10;
     FIELD(s32, model, 0x80) = 0;
 }
@@ -56,20 +56,20 @@ extern "C" s32 func_ov035_022005b0(void *scene)
     switch (FIELD(s32, scene, 0xa0)) {
     case 0:
         func_02059278(gSoundContext, 0xb7, 0x7f);
-        func_02094cf0(FIELD(void *, scene, 0x114),
+        Presentation_SetScript(FIELD(void *, scene, 0x114),
                       data_ov035_02202eb8, 1);
-        func_02094cf0(FIELD(void *, scene, 0x118),
+        Presentation_SetScript(FIELD(void *, scene, 0x118),
                       data_ov035_02202eb8, 1);
-        func_02094cf0(FIELD(void *, scene, 0x11c),
+        Presentation_SetScript(FIELD(void *, scene, 0x11c),
                       data_ov035_02202f14, 1);
-        func_02094cf0(FIELD(void *, scene, 0x108),
+        Presentation_SetScript(FIELD(void *, scene, 0x108),
                       data_ov035_0220352c, 1);
-        func_02094cf0(FIELD(void *, scene, 0xd8),
+        Presentation_SetScript(FIELD(void *, scene, 0xd8),
                       data_ov035_02202e60, 1);
         ++FIELD(s32, scene, 0xa0);
         /* Fall through: the original immediately polls the first animation. */
     case 1:
-        if (func_02095248(FIELD(void *, scene, 0x108)) != 0) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, scene, 0x108)) != 0) {
             FIELD(s32, FIELD(void *, scene, 0x108), 0x90) = 0;
             FIELD(s32, FIELD(void *, scene, 0x114), 0x90) = 0;
             Sound_Play(gSoundContext, 0x1c9);
@@ -80,9 +80,9 @@ extern "C" s32 func_ov035_022005b0(void *scene)
         }
         break;
     case 2:
-        if (func_02095248(FIELD(void *, scene, 0x108)) != 0) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, scene, 0x108)) != 0) {
             void *sprite = FIELD(void *, scene, 0x108);
-            func_02094bbc(sprite, FIELD(s32, sprite, 0x10),
+            Presentation_SetPosition(sprite, FIELD(s32, sprite, 0x10),
                           FIELD(s32, sprite, 0x20), 0x400);
             GraphicsAnimationInstanceManager_RebindInstance(FIELD(void *, scene, 0x104),
                           FIELD(void *, sprite, 0x9c),
@@ -92,7 +92,7 @@ extern "C" s32 func_ov035_022005b0(void *scene)
         }
         break;
     case 3:
-        if (func_02095224(FIELD(void *, scene, 0x108)) != 0) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x108)) != 0) {
             func_0205929c(gSoundContext, 0xb7, 0x10);
             ++FIELD(s32, scene, 0xa0);
         }

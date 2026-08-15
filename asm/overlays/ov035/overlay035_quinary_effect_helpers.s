@@ -4,14 +4,14 @@
 
     .extern func_ov035_021fd4dc
     .extern Sound_Play
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
     .extern func_02091b98
-    .extern func_02094cf0
+    .extern Presentation_SetScript
     .extern Heap_Alloc
     .extern func_ov035_021fcf34
-    .extern func_02095274
-    .extern func_020948d4
-    .extern func_02094bbc
+    .extern PresentationList_Append
+    .extern PresentationScalar_SetImmediate
+    .extern Presentation_SetPosition
     .extern func_ov035_021fd51c
     .extern gSoundContext
     .extern data_ov035_02202bd4
@@ -37,18 +37,18 @@ func_ov035_022011a8:
     mov r0, #0x1e
     ldr r2, [r1, #0x4]
     mov r1, #0x10
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     mov r1, r0
     add r0, r5, #0x138
     bl func_02091b98
     ldr r0, [r5, #0x104]
     ldr r1, L_02201298
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r5, #0x100]
     ldr r1, L_0220129c
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r1, L_022012a0
     ldr r3, L_022012a4
     mov r0, #0xc4
@@ -64,15 +64,15 @@ func_ov035_022011a8:
 L_02201244:
     mov r1, r4
     add r0, r5, #0x128
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, L_022012a8
     add r0, r4, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x500
     mov r3, #0x400
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r1, [r5, #0xf4]
     ldr r0, [r5, #0x134]
     ldr r1, [r1, #0x20]

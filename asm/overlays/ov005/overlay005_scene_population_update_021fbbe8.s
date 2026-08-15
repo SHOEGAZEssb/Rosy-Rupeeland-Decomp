@@ -6,10 +6,10 @@
     .extern Heap_Alloc
     .extern func_ov005_021fb6e4
     .extern func_0209189c
-    .extern func_020948d4
-    .extern func_020948f8
-    .extern func_02095274
-    .extern func_02095360
+    .extern PresentationScalar_SetImmediate
+    .extern PresentationScalar_TransitionBy
+    .extern PresentationList_Append
+    .extern PresentationList_UpdateAndDeleteCompleted
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern data_020f4e14
     .extern data_ov005_021fcb04
@@ -88,7 +88,7 @@ L_021fbccc:
     bl func_0209189c
     mov r1, r0, lsl #0xc
     add r0, r5, #0xc
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r2, [r4, #0x100]
     ldr r1, L_021fbd60
     add r0, r4, #0x10c
@@ -97,21 +97,21 @@ L_021fbccc:
     bl func_0209189c
     mov r1, r0, lsl #0xc
     add r0, r5, #0x1c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r5, #0x1c
     mov r1, #0x2
     mov r2, #0x18000
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     mov r0, #0x40
     str r0, [r5, #0x7c]
     mov r0, #0x0
     str r0, [r5, #0x80]
     mov r1, r5
     add r0, r4, #0x148
-    bl func_02095274
+    bl PresentationList_Append
 L_021fbd38:
     add r0, r4, #0x148
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x4]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r3, r4, r5, pc}

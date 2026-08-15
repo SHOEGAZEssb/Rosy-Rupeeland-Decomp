@@ -16,9 +16,9 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
     .extern func_02091e28
-    .extern func_02094cf0
-    .extern func_020953f4
-    .extern func_02095508
+    .extern Presentation_SetScript
+    .extern SpritePresentation_Init
+    .extern SpritePresentation_SyncPosition
     .extern func_020957bc
     .extern func_ov013_021fce00
     .extern func_ov013_021fce04
@@ -150,16 +150,16 @@ func_ov013_021fce2c:
     cmp r0, #0x0
     beq L_021fd010
     mov r1, r5
-    bl func_020953f4
+    bl SpritePresentation_Init
 L_021fd010:
     ldr r1, L_021fd094
     mov r2, #0x1
     str r0, [r4, #0x948]
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x0
     str r0, [r4, #0x984]
     ldr r0, [r4, #0x948]
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     mov r2, #0x0
     mov r1, r2
 L_021fd038:

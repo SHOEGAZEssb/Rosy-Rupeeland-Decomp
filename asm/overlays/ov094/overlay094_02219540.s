@@ -1,12 +1,12 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern func_02095508
+.extern SpritePresentation_SyncPosition
 
 .global func_ov094_02219540
 func_ov094_02219540:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02095508
+    bl SpritePresentation_SyncPosition
     ldr r0, [r4, #0x9c]
     ldr r1, [r4, #0xa4]
     ldrsh r2, [r0, #0x2e]

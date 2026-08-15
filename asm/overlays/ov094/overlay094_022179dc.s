@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_ov094_02219eb8
 .extern GraphicsSpriteState_ReleaseFromGroup
-.extern func_0209548c
+.extern SpritePresentation_Destroy
 
 .global func_ov094_022179dc
 func_ov094_022179dc:
@@ -14,7 +14,7 @@ func_ov094_022179dc:
     ldr r0, [r4, #0xa0]
     bl GraphicsSpriteState_ReleaseFromGroup
     mov r0, r4
-    bl func_0209548c
+    bl SpritePresentation_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

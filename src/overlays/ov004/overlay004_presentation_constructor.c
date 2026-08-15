@@ -38,7 +38,7 @@ extern void *gDebugFont;
 extern const s32 data_ov004_021fcd30[2];
 extern void func_02091e28(void *state);
 extern void func_02071ea4(void *resource);
-extern void func_02094ad4(void *controller);
+extern void Presentation_InitVariant(void *controller);
 extern void func_02091b6c(void *animation);
 extern void func_02071ee0(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
@@ -76,7 +76,7 @@ Overlay004PresentationState *func_ov004_021fb70c(
     func_02091e28(state);
     state->descriptor_000 = 0x021fcda0;
     func_02071ea4(state->resource_054);
-    func_02094ad4(state->controller_06c);
+    Presentation_InitVariant(state->controller_06c);
     func_02091b6c(state->animation_114);
     func_02091b6c(state->animation_130);
     state->argument1_150 = argument1;

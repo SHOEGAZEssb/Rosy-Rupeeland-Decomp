@@ -2,15 +2,15 @@
 
 /* Exact fallback; see src/overlays/ov027/overlay027_motion_object.c. */
 .extern data_ov027_021feeec
-.extern func_020948d4
-.extern func_020949ec
+.extern PresentationScalar_SetImmediate
+.extern Presentation_Init
 
 
     .global func_ov027_021fd718
 func_ov027_021fd718:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020949ec
+    bl Presentation_Init
     ldr r0, L_021fd754
     mov r1, #0x0
     str r0, [r4, #0x0]
@@ -18,7 +18,7 @@ func_ov027_021fd718:
     str r1, [r4, #0xb0]
     add r0, r4, #0x6c
     strh r2, [r4, #0xb4]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r1, #0x1
     mov r0, r4
     str r1, [r4, #0x88]

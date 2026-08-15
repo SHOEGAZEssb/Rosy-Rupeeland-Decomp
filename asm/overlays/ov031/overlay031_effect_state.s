@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_effect_runtime.c for documented portable C. */
 .extern data_ov031_021fe604
 .extern data_ov031_021fe66c
-.extern func_02094cf0
+.extern Presentation_SetScript
 .extern func_ov031_021fd69c
 .extern func_ov031_021fd798
 
@@ -45,11 +45,11 @@ L_021fd84c:
     ldr r0, [r4, #0x70]
     bne L_021fd884
     ldr r1, L_021fd914
-    bl func_02094cf0
+    bl Presentation_SetScript
     b L_021fd88c
 L_021fd884:
     ldr r1, L_021fd918
-    bl func_02094cf0
+    bl Presentation_SetScript
 L_021fd88c:
     ldr r0, [r4, #0x68]
     add r0, r0, #0x1

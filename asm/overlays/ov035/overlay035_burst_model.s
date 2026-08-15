@@ -3,11 +3,11 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_burst_model.c for documented portable C. */
 
     .extern func_ov035_021fcec4
-    .extern func_020948d4
-    .extern func_02094c48
+    .extern PresentationScalar_SetImmediate
+    .extern Presentation_AdvanceTransitions
     .extern Sound_Play
-    .extern func_020948f8
-    .extern func_020948e4
+    .extern PresentationScalar_TransitionBy
+    .extern PresentationScalar_TransitionTo
     .extern data_ov035_02203c08
     .extern gSoundContext
 
@@ -25,7 +25,7 @@ func_ov035_02201584:
     add r0, r4, #0x6c
     mov r1, #0x800
     str r2, [r4, #0xc4]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r1, #0x2000
     mov r0, r4
     strh r1, [r4, #0xbe]
@@ -46,7 +46,7 @@ func_ov035_022015cc:
     beq L_02201694
     b L_0220169c
 L_022015f4:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     beq L_0220169c
     ldr r0, L_022016a4
@@ -63,15 +63,15 @@ L_022015f4:
     add r0, r4, #0x6c
     mov r1, #0x0
     str r2, [r4, #0xa0]
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r0, r4, #0x2c
     mov r1, #0x1
     mvn r2, #0xff
-    bl func_020948f8
+    bl PresentationScalar_TransitionBy
     add r0, r4, #0x6c
     mov r1, #0x5
     mov r2, #0x800
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0xc
     str r0, [r4, #0x7c]
     mov r0, #0x0
@@ -82,7 +82,7 @@ L_0220166c:
     str r0, [r4, #0xc4]
     b L_0220169c
 L_0220167c:
-    bl func_02094c48
+    bl Presentation_AdvanceTransitions
     cmp r0, #0x0
     ldrne r0, [r4, #0xc4]
     addne r0, r0, #0x1

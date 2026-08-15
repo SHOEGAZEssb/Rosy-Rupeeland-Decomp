@@ -11,8 +11,8 @@ extern "C" {
 #endif
 extern void Sound_Play(void *, s32, s32);
 extern void func_0205940c(void *, s32, s32);
-extern void func_020948d4(void *, s32);
-extern s32 func_02094d28(void *, s32, s32, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern void func_ov026_021fdd28(void *);
 extern void func_ov026_021fe284(void *);
 extern void func_ov026_021fe56c(void *);
@@ -36,7 +36,7 @@ static void submit_child(void *child)
  */
 extern "C" s32 func_ov026_021ff4f8(void *object)
 {
-    return func_02094d28(object, 1, FIELD(s32, object, 0x134) * 10,
+    return Presentation_InterpolateScalar(object, 1, FIELD(s32, object, 0x134) * 10,
                          FIELD(s32, object, 0x138) * 10);
 }
 
@@ -99,8 +99,8 @@ extern "C" void func_ov026_021ff674(void *object)
         for (s32 i = 0; i < 4; ++i) {
             void *panel = FIELD(void *, object, 0xec + i * 4);
             FIELD(s32, panel, 0xac) = 1;
-            func_020948d4((u8 *)panel + 0x6c, control);
-            func_020948d4((u8 *)panel + 0x4c,
+            PresentationScalar_SetImmediate((u8 *)panel + 0x6c, control);
+            PresentationScalar_SetImmediate((u8 *)panel + 0x4c,
                           FIELD(s32, panel, 0x50) + 0x1000);
         }
     } else {

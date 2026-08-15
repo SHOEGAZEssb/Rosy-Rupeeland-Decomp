@@ -12,12 +12,12 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void func_02095360(void *);
+extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void *func_ov027_021fd718(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
-extern void func_020948d4(void *, s32);
-extern void func_02095274(void *, void *);
+extern void PresentationScalar_SetImmediate(void *, s32);
+extern void PresentationList_Append(void *, void *);
 extern void GraphicsAnimationInstanceManager_Update(void *);
 extern void func_ov027_021fe0f8(void *);
 #ifdef __cplusplus
@@ -48,9 +48,9 @@ static void *allocate_motion(void)
  */
 extern "C" void func_ov027_021fe1c8(void *scene)
 {
-    func_02095360((u8 *)scene + 0x120);
-    func_02095360((u8 *)scene + 0x140);
-    func_02095360((u8 *)scene + 0x150);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x120);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x140);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x150);
     void *rng = (u8 *)scene + 0x5bc;
 
     for (void *node = FIELD(void *, scene, 0x134); node;
@@ -69,9 +69,9 @@ extern "C" void func_ov027_021fe1c8(void *scene)
                     func_0209189c(rng, -0x100, 0x100);
             s32 y = FIELD(s32, node, 0x20) +
                     func_0209189c(rng, 0x80, 0x180);
-            func_020948d4((u8 *)motion + 0xc, x);
-            func_020948d4((u8 *)motion + 0x1c, y);
-            func_020948d4((u8 *)motion + 0x2c, 0x100);
+            PresentationScalar_SetImmediate((u8 *)motion + 0xc, x);
+            PresentationScalar_SetImmediate((u8 *)motion + 0x1c, y);
+            PresentationScalar_SetImmediate((u8 *)motion + 0x2c, 0x100);
             FIELD(s32, motion, 0x9c) = func_0209189c(rng, -0x40, 0x40);
             FIELD(s32, motion, 0xa0) = func_0209189c(rng, 0x80, 0x100);
             FIELD(s32, motion, 0xa4) = 0x10;
@@ -82,7 +82,7 @@ extern "C" void func_ov027_021fe1c8(void *scene)
                 FIELD(u16, motion, 0xb4) =
                     data_ov027_021fe950[descriptor[0]];
             }
-            func_02095274((u8 *)scene + 0x150, motion);
+            PresentationList_Append((u8 *)scene + 0x150, motion);
         }
     }
 
@@ -96,9 +96,9 @@ extern "C" void func_ov027_021fe1c8(void *scene)
                 func_0209189c(rng, -0x100, 0x100);
         s32 y = FIELD(s32, node, 0x20) +
                 func_0209189c(rng, -0x80, 0x80);
-        func_020948d4((u8 *)motion + 0xc, x);
-        func_020948d4((u8 *)motion + 0x1c, y);
-        func_020948d4((u8 *)motion + 0x2c, 0x100);
+        PresentationScalar_SetImmediate((u8 *)motion + 0xc, x);
+        PresentationScalar_SetImmediate((u8 *)motion + 0x1c, y);
+        PresentationScalar_SetImmediate((u8 *)motion + 0x2c, 0x100);
         FIELD(s32, motion, 0x9c) = func_0209189c(rng, -0x40, 0x40);
         FIELD(s32, motion, 0xa0) = func_0209189c(rng, 0x80, 0x100);
         FIELD(s32, motion, 0xa4) = 0x80;
@@ -106,7 +106,7 @@ extern "C" void func_ov027_021fe1c8(void *scene)
         FIELD(s32, motion, 0xa8) = 0;
         FIELD(u16, motion, 0xb4) =
             (u16)((func_0209189c(rng, 0, 0x10) << 10) | 0x3ff);
-        func_02095274((u8 *)scene + 0x150, motion);
+        PresentationList_Append((u8 *)scene + 0x150, motion);
     }
 
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x58));

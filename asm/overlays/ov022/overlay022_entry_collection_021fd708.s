@@ -4,7 +4,7 @@
     .extern data_ov022_022006bc
     .extern func_02003e20
     .extern func_02093a34
-    .extern func_02093adc
+    .extern IndexedSelectionController_ConfigureRange
     .extern func_020c09cc
     .extern func_ov022_021fd6fc
     .extern gHeapContext
@@ -47,7 +47,7 @@ L_021fd77c:
     mov r0, r4
     mov r3, r1
     sub r2, r2, #0x1
-    bl func_02093adc
+    bl IndexedSelectionController_ConfigureRange
     b L_021fd7a0
 L_021fd79c:
     str r0, [r4, #0x38]

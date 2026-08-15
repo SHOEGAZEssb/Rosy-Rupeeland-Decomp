@@ -11,8 +11,8 @@ extern "C" {
 #endif
 extern void *func_ov037_021fceb0(void *object, void *owner, s32 index,
                                  s32 parameter);
-extern void func_020948d4(void *field, s32 value, s32 delta);
-extern void func_02094dd4(void *object);
+extern void PresentationScalar_SetImmediate(void *field, s32 value, s32 delta);
+extern void Presentation_UpdateScript(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ extern "C" void *func_ov037_021fd554(void *object, void *owner, s32 offset)
 extern "C" void func_ov037_021fd584(void *object)
 {
     s32 offset = FIELD(s32, object, 0xc4);
-    func_020948d4((u8 *)object + 0x4c,
+    PresentationScalar_SetImmediate((u8 *)object + 0x4c,
                   FIELD(s32, object, 0x50) + offset, offset);
-    func_02094dd4(object);
+    Presentation_UpdateScript(object);
 }

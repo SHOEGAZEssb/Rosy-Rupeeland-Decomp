@@ -3,10 +3,10 @@
 /* Exact fallback; see src/overlays/ov034/overlay034_selection_state.c for documented portable C. */
 
     .extern func_ov034_021fe2c4
-    .extern func_020948e4
+    .extern PresentationScalar_TransitionTo
     .extern func_ov034_021fda1c
-    .extern func_02094d28
-    .extern func_020948d4
+    .extern Presentation_InterpolateScalar
+    .extern PresentationScalar_SetImmediate
     .extern func_ov034_021fdac0
     .extern func_ov034_021fdf98
     .extern func_ov034_021fd9c0
@@ -239,7 +239,7 @@ L_021fe5dc:
     mov r1, #0x3
     mov r2, #0x0
     mov r3, #0x1f
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r5, #0x0]
     str r0, [r1, #0xc4]
     ldr r0, [r5, #0x0]

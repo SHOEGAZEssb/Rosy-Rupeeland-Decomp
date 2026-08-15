@@ -7,23 +7,23 @@
     .extern func_02091c7c
     .extern Sound_Play
     .extern func_02091bac
-    .extern func_02094cf0
+    .extern Presentation_SetScript
     .extern func_02091bd0
     .extern func_ov036_021ff778
-    .extern func_02094d28
+    .extern Presentation_InterpolateScalar
     .extern func_ov036_021ff7cc
     .extern func_ov036_021fd28c
-    .extern func_02095248
+    .extern Presentation_IsScriptSuspended
     .extern func_0205940c
-    .extern func_02095224
+    .extern Presentation_IsScriptComplete
     .extern func_0209189c
     .extern Heap_Alloc
     .extern func_ov036_021fd2a4
-    .extern func_02094bbc
+    .extern Presentation_SetPosition
     .extern func_ov036_021fe968
     .extern func_020918f4
-    .extern func_020948d4
-    .extern func_02095274
+    .extern PresentationScalar_SetImmediate
+    .extern PresentationList_Append
     .extern func_0205929c
     .extern func_020594a4
     .extern func_ov036_021ff74c
@@ -87,7 +87,7 @@ L_021ffa40:
     ldr r0, [r4, #0xd8]
     ldr r1, L_021ffee8
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
@@ -129,7 +129,7 @@ L_021ffb1c:
     ldr r0, [r4, #0xd8]
     mov r2, r1
     mov r3, #0x1f
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r4, #0xd8]
     ldr r1, [r1, #0x9c]
     strb r0, [r1, #0x5b]
@@ -155,11 +155,11 @@ L_021ffb4c:
     str r2, [r0, #0xa0]
     ldr r0, [r4, #0x100]
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xfc]
     ldr r1, L_021ffeec
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x3c
     str r0, [sp, #0x0]
     add r0, r4, #0xa4
@@ -179,7 +179,7 @@ L_021ffbd0:
     mov r0, r4
     bl func_ov036_021ff7cc
     ldr r0, [r4, #0x100]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021ffc30
     ldr r0, L_021ffee0
@@ -198,34 +198,34 @@ L_021ffbd0:
     b L_021ffecc
 L_021ffc30:
     ldr r0, [r4, #0xd8]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     bne L_021ffecc
     mov r1, #0x1
     ldr r0, [r4, #0xd8]
     mov r3, r1
     mov r2, #0x1f
-    bl func_02094d28
+    bl Presentation_InterpolateScalar
     ldr r1, [r4, #0xd8]
     ldr r1, [r1, #0x9c]
     strb r0, [r1, #0x5b]
     b L_021ffecc
 L_021ffc64:
     ldr r0, [r4, #0x100]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021ffecc
     ldr r0, [r4, #0xec]
     ldr r1, L_021ffef0
     mov r2, #0x1
-    bl func_02094cf0
+    bl Presentation_SetScript
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]
     b L_021ffecc
 L_021ffc94:
     ldr r0, [r4, #0xec]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021ffecc
     ldr r0, L_021ffee0
@@ -279,7 +279,7 @@ L_021ffd40:
     ldr r2, [r10, #0x20]
     ldr r3, [r10, #0x30]
     mov r0, r8
-    bl func_02094bbc
+    bl Presentation_SetPosition
     ldr r9, [r8, #0x10]
     add r0, r4, #0xc0
     mov r1, #0x4000
@@ -295,10 +295,10 @@ L_021ffd40:
     bl func_020918f4
     mov r1, r0, lsl #0x4
     add r0, r8, #0x5c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r1, r8
     add r0, r4, #0x128
-    bl func_02095274
+    bl PresentationList_Append
     add r7, r7, #0x1
     cmp r7, #0x10
     blt L_021ffcc8
@@ -315,7 +315,7 @@ L_021ffd40:
     b L_021ffecc
 L_021ffdf0:
     ldr r0, [r4, #0xec]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021ffecc
     ldr r0, L_021ffee0
@@ -339,7 +339,7 @@ L_021ffdf0:
     b L_021ffecc
 L_021ffe4c:
     ldr r0, [r4, #0xec]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     beq L_021ffe80
     ldr r0, L_021ffee0

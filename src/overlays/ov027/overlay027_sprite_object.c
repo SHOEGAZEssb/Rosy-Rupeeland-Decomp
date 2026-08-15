@@ -12,8 +12,8 @@ extern "C" {
 #endif
 extern void GraphicsAnimationInstance_SetAnimation(void *, u8);
 extern void func_020955b0(void *, void *);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_020948e4(void *, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -54,7 +54,7 @@ extern "C" void *func_ov027_021fd1c8(void *object, void *base_arg,
     func_ov027_021fd180(FIELD(void *, object, 0x9c), descriptor[0], 0, 0,
                          0, 0x14, 2);
     FIELD(u8, FIELD(void *, object, 0x9c), 0x59) = 3;
-    func_02094bbc(object, descriptor[1], descriptor[2], index * 2);
+    Presentation_SetPosition(object, descriptor[1], descriptor[2], index * 2);
     return object;
 }
 
@@ -74,9 +74,9 @@ extern "C" void *func_ov027_021fd408(void *object, void *base_arg,
     FIELD(s32, object, 0xa8) = descriptor[1] < 0 ? -0x800 : 0x800;
     FIELD(s32, object, 0xac) = descriptor[2];
     FIELD(s32, object, 0xa4) = value_a4;
-    func_02094bbc(object, FIELD(s32, object, 0xa8),
+    Presentation_SetPosition(object, FIELD(s32, object, 0xa8),
                    FIELD(s32, object, 0xac), 0x1000);
-    func_020948e4((u8 *)object + 0x2c, 2, 0x100);
+    PresentationScalar_TransitionTo((u8 *)object + 0x2c, 2, 0x100);
     FIELD(s32, object, 0x7c) = 0x78;
     FIELD(s32, object, 0x80) = 0;
     FIELD(s32, object, 0xb0) = FIELD(s32, object, 0xa8) - descriptor[1];

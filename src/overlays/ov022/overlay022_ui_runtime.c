@@ -30,7 +30,7 @@ extern void func_02092e9c(void *, const void *, s32);
 extern s32 func_02093360(void *, const void *);
 extern void func_020939d8(void *);
 extern void func_02094574(void *);
-extern void func_02095360(void *);
+extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_020958d8(void *);
@@ -174,7 +174,7 @@ extern "C" void func_ov022_021ff0d0(void *scene)
             0x60 - FIELD(s32, effect, 0x110);
     }
     void *owner = FIELD(void *, scene, 0x354);
-    func_02095360((u8 *)owner + 0x48);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)owner + 0x48);
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, owner, 0));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x9c));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0xa0));

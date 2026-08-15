@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_runtime.c. */
 .extern GraphicsAnimationInstance_SetAnimation
-.extern func_02094dd4
+.extern Presentation_UpdateScript
 .extern func_ov027_021fd3d8
 .extern func_ov027_021fd3f0
 
@@ -109,7 +109,7 @@ L_021fd39c:
     str r0, [r4, #0xa8]
 L_021fd3c8:
     mov r0, r4
-    bl func_02094dd4
+    bl Presentation_UpdateScript
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .size func_ov027_021fd258, .-func_ov027_021fd258

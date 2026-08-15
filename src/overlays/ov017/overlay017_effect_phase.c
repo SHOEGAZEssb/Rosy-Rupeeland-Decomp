@@ -9,8 +9,8 @@ extern u8 data_ov017_022016e0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02091a70(s32, s32, s32, s32);
-extern void func_020948d4(void *, s32);
+extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
+extern void PresentationScalar_SetImmediate(void *, s32);
 extern s32 func_020adc90(s32, s32);
 extern s32 func_ov017_021fd3f0(void);
 extern void func_ov017_021fda64(void *);
@@ -50,8 +50,8 @@ extern "C" s32 func_ov017_021fde40(void *state)
             FIELD(s32, state, 0xb4) = 2;
             FIELD(s32, state, 0xb8) = 0;
         } else {
-            func_020948d4((u8 *)state + 0x1c,
-                          func_02091a70(0x200000, 0, 0x1e, counter));
+            PresentationScalar_SetImmediate((u8 *)state + 0x1c,
+                          Presentation_InterpolateLinear(0x200000, 0, 0x1e, counter));
         }
         break;
     case 2:
@@ -65,10 +65,10 @@ extern "C" s32 func_ov017_021fde40(void *state)
     case 3:
         counter = ++FIELD(s32, state, 0xb8);
         if (counter <= 8) {
-            func_020948d4((u8 *)state + 0x1c,
-                          func_02091a70(0, -0x10000, 8, counter));
+            PresentationScalar_SetImmediate((u8 *)state + 0x1c,
+                          Presentation_InterpolateLinear(0, -0x10000, 8, counter));
         } else {
-            func_020948d4((u8 *)state + 0x1c, -0x10000);
+            PresentationScalar_SetImmediate((u8 *)state + 0x1c, -0x10000);
             FIELD(s32, state, 0xb4) =
                 func_ov017_021fe178(state) ? 6 : 4;
             FIELD(s32, state, 0xb8) = 0;
@@ -78,10 +78,10 @@ extern "C" s32 func_ov017_021fde40(void *state)
     case 4:
         counter = ++FIELD(s32, state, 0xb8);
         if (counter <= 0x14) {
-            func_020948d4((u8 *)state + 0x1c,
-                          func_02091a70(-0x10000, 0, 0x14, counter));
+            PresentationScalar_SetImmediate((u8 *)state + 0x1c,
+                          Presentation_InterpolateLinear(-0x10000, 0, 0x14, counter));
         } else {
-            func_020948d4((u8 *)state + 0x1c, 0);
+            PresentationScalar_SetImmediate((u8 *)state + 0x1c, 0);
             FIELD(s32, state, 0xb4) = 5;
             FIELD(s32, state, 0xb8) = 0;
         }

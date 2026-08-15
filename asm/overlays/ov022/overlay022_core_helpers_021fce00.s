@@ -1,14 +1,14 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_core_helpers.c. */
     .extern data_ov022_02200684
-    .extern func_020953c8
+    .extern SpritePresentation_InitVariant
 
 .global func_ov022_021fce00
 func_ov022_021fce00:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r2
-    bl func_020953c8
+    bl SpritePresentation_InitVariant
     ldr r0, L_021fce2c
     mov r1, #0x1
     str r0, [r5, #0x0]

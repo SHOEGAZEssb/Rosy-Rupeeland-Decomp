@@ -23,7 +23,7 @@ extern "C" {
 extern void func_02093d7c(void *controller, s32 value);
 extern void func_02093d50(void *controller, s32 value);
 extern void func_02094574(void *controller);
-extern void func_02093af8(void *embeddedState, s32 value);
+extern void IndexedSelectionController_SetValue(void *embeddedState, s32 value);
 extern void func_ov000_021fc340(Overlay000ViewApplyState *state, s32 scrollY);
 extern void func_ov000_021fc254(Overlay000ViewApplyState *state);
 extern void func_ov000_021fc9d4(Overlay000ViewApplyState *state);
@@ -48,7 +48,7 @@ void func_ov000_021fcae8(Overlay000ViewApplyState *state,
     func_02093d7c(state->controller_26c, record->field_00);
     func_02093d50(state->controller_26c, record->field_08);
     func_02094574(state->controller_26c);
-    func_02093af8(state->embedded_270, record->field_04);
+    IndexedSelectionController_SetValue(state->embedded_270, record->field_04);
     func_ov000_021fc340(state, scrollY);
     func_ov000_021fc254(state);
     func_ov000_021fc9d4(state);

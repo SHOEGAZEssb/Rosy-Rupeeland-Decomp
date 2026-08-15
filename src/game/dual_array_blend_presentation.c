@@ -31,10 +31,10 @@ extern u8 gSystemState[];
 extern const s16 data_020c36c4[];
 extern void *func_0201e250(void *);
 extern void *func_0201e28c(void *);
-extern void func_02094ad4(void *);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_020948e4(void *, s32, s32);
-extern s32 func_02094d28(void *, s32, s32, s32);
+extern void Presentation_InitVariant(void *);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern u32 genrand_int32(void);
 extern s32 func_020918f4(u32 *, s32);
 extern s32 func_0209189c(u32 *, s32, s32);
@@ -71,15 +71,15 @@ DualArrayBlendPresentation *DualArrayBlendPresentation_Init(
     func_0201e250(self);
     self->vtable = (void **)gDualArrayBlendPresentationVtable;
     for (i = 0; i < 3; i++) {
-        func_02094ad4(&self->first20[i]);
-        func_02094ad4(&self->second1f4[i]);
+        Presentation_InitVariant(&self->first20[i]);
+        Presentation_InitVariant(&self->second1f4[i]);
     }
     self->random3c8 = genrand_int32();
     self->engine18 = engine;
     for (i = 0; i < 3; i++) {
         s32 offset = (2 - i) << 15;
-        func_02094bbc(&self->first20[i], 0x100000 - offset, 0, 0);
-        func_02094bbc(&self->second1f4[i], offset, 0, 0);
+        Presentation_SetPosition(&self->first20[i], 0x100000 - offset, 0, 0);
+        Presentation_SetPosition(&self->second1f4[i], offset, 0, 0);
     }
     GameWork_SetFlag(gGameWork, 0x3d2);
     self->active1c = 1;
@@ -141,9 +141,9 @@ void DualArrayBlendPresentation_RetargetMirrored(DualArrayBlendPresentation *sel
     s32 i;
     for (i = 0; i < 3; i++) {
         s32 offset = (2 - i) << 15;
-        func_020948e4(self->first20[i].bytes + 0x0c, 2, 0x100000 - offset);
+        PresentationScalar_TransitionTo(self->first20[i].bytes + 0x0c, 2, 0x100000 - offset);
         BlendElement_StartDuration(&self->first20[i], 120);
-        func_020948e4(self->second1f4[i].bytes + 0x0c, 2, offset);
+        PresentationScalar_TransitionTo(self->second1f4[i].bytes + 0x0c, 2, offset);
         BlendElement_StartDuration(&self->second1f4[i], 120);
     }
 }
@@ -157,9 +157,9 @@ void DualArrayBlendPresentation_RetargetSeparated(DualArrayBlendPresentation *se
 {
     s32 i;
     for (i = 0; i < 3; i++) {
-        func_020948e4(self->first20[i].bytes + 0x0c, 2, 0);
+        PresentationScalar_TransitionTo(self->first20[i].bytes + 0x0c, 2, 0);
         BlendElement_StartDuration(&self->first20[i], 120);
-        func_020948e4(self->second1f4[i].bytes + 0x0c, 2, 0x100000);
+        PresentationScalar_TransitionTo(self->second1f4[i].bytes + 0x0c, 2, 0x100000);
         BlendElement_StartDuration(&self->second1f4[i], 120);
     }
 }
@@ -177,7 +177,7 @@ s32 DualArrayBlendPresentation_UpdateTransition(
         ((ElementMethod)(*(void ***)(&self->first20[i]))[2])(&self->first20[i]);
         ((ElementMethod)(*(void ***)(&self->second1f4[i]))[2])(&self->second1f4[i]);
     }
-    alpha = func_02094d28(self->first20, 1, first, second);
+    alpha = Presentation_InterpolateScalar(self->first20, 1, first, second);
     if (alpha > 16) alpha = 16;
     if (self->engine18 == 1) {
         func_020afd0c((void *)0x04000050, 3, 0x3c, alpha, 16 - alpha);
@@ -197,13 +197,13 @@ void DualArrayBlendPresentation_RetargetCompletedRandomly(
     s32 i;
     for (i = 0; i < 3; i++) {
         if (((ElementMethod)(*(void ***)(&self->first20[i]))[2])(&self->first20[i])) {
-            func_020948e4(self->first20[i].bytes + 0x0c, 2,
+            PresentationScalar_TransitionTo(self->first20[i].bytes + 0x0c, 2,
                           func_020918f4(&self->random3c8, 16) << 12);
             BlendElement_StartDuration(&self->first20[i],
                           func_0209189c(&self->random3c8, 60, 120));
         }
         if (((ElementMethod)(*(void ***)(&self->second1f4[i]))[2])(&self->second1f4[i])) {
-            func_020948e4(self->second1f4[i].bytes + 0x0c, 2,
+            PresentationScalar_TransitionTo(self->second1f4[i].bytes + 0x0c, 2,
                           (0x100 - func_020918f4(&self->random3c8, 16)) << 12);
             BlendElement_StartDuration(&self->second1f4[i],
                           func_0209189c(&self->random3c8, 60, 120));

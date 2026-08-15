@@ -13,7 +13,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern s32 func_0209189c(void *, s32, s32);
-extern void func_020948e4(void *, s32, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void func_ov031_021fd684(void *, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -23,7 +23,7 @@ extern void Heap_Free(void *);
 extern void *func_ov031_021fd19c(void *, void *, s32, s32, s32);
 extern s32 func_ov031_021fd1e0(void *);
 extern void *func_ov031_021fd1c0(void *);
-extern void func_02094cf0(void *, const void *, s32);
+extern void Presentation_SetScript(void *, const void *, s32);
 extern void func_ov031_021fd69c(void *);
 extern void func_ov031_021fd798(void *);
 #ifdef __cplusplus
@@ -51,9 +51,9 @@ extern "C" void func_ov031_021fd5c0(void *effect)
 {
     if (update_polymorphic((u8 *)effect + 0xb4) != 0) {
         s32 value = func_0209189c((u8 *)effect + 0x150, -0x400, 0x400);
-        func_020948e4((u8 *)effect + 0xc0, 2, value);
+        PresentationScalar_TransitionTo((u8 *)effect + 0xc0, 2, value);
         value = func_0209189c((u8 *)effect + 0x150, -0x200, 0x200);
-        func_020948e4((u8 *)effect + 0xd0, 2, value);
+        PresentationScalar_TransitionTo((u8 *)effect + 0xd0, 2, value);
         value = func_0209189c((u8 *)effect + 0x150, 8, 0x10);
         func_ov031_021fd684((u8 *)effect + 0xb4, value);
     }
@@ -146,7 +146,7 @@ extern "C" s32 func_ov031_021fd7fc(void *effect)
         /* Intentional recovered fallthrough into state 1. */
     case 1:
         if (update_polymorphic(composite) != 0) {
-            func_02094cf0(composite,
+            Presentation_SetScript(composite,
                 FIELD(s32, effect, 0x6c) == 0 ? data_ov031_021fe604
                                                : data_ov031_021fe66c, 0);
             ++FIELD(s32, effect, 0x68);

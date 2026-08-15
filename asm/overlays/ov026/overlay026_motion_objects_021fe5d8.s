@@ -2,9 +2,9 @@
 
 /* Exact fallback; see src/overlays/ov026/overlay026_motion_objects.c. */
 .extern data_ov026_02204a08
-.extern func_020948d4
-.extern func_020948e4
-.extern func_02094bbc
+.extern PresentationScalar_SetImmediate
+.extern PresentationScalar_TransitionTo
+.extern Presentation_SetPosition
 .extern func_02094bf0
 .extern func_ov026_021fce00
 
@@ -26,10 +26,10 @@ func_ov026_021fe5d8:
     str ip, [r4, #0x0]
     mov ip, #0x0
     str ip, [r4, #0xb0]
-    bl func_02094bbc
+    bl Presentation_SetPosition
     add r0, r4, #0x6c
     mov r1, #0x52
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     mov r0, r4
     ldr r1, [sp, #0x14]
     ldr r2, [sp, #0x18]
@@ -38,11 +38,11 @@ func_ov026_021fe5d8:
     add r0, r4, #0x6c
     mov r1, #0x3
     mov r2, #0x148
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x5c
     mov r1, #0x1
     mov r2, #0x8000
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     mov r0, #0x1e
     str r0, [r4, #0x7c]
     mov r0, #0x0

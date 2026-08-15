@@ -7,10 +7,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948d4(void *field, s32 value);
-extern void func_020948e4(void *field, s32 mode, s32 value);
-extern void func_020948f8(void *field, s32 mode, s32 value);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionBy(void *field, s32 mode, s32 value);
 extern void func_ov036_021fd4b0(void *object, s16 duration);
 #ifdef __cplusplus
 }
@@ -29,13 +29,13 @@ extern "C" void func_ov036_02200b38(void *owner, void *object,
 {
     (void)owner;
     s32 index = FIELD(s32, config, 0);
-    func_02094bbc(object,
+    Presentation_SetPosition(object,
                    FIELD(s32, config, 8),
                    FIELD(s32, config, 0xc) + index * 0x280 - 0x600,
                    -(index << 6) - 0x20);
-    func_020948d4((u8 *)object + 0x5c, 0);
-    func_020948e4((u8 *)object + 0x5c, 2, FIELD(s32, config, 0x10));
-    func_020948f8((u8 *)object + 0x1c,
+    PresentationScalar_SetImmediate((u8 *)object + 0x5c, 0);
+    PresentationScalar_TransitionTo((u8 *)object + 0x5c, 2, FIELD(s32, config, 0x10));
+    PresentationScalar_TransitionBy((u8 *)object + 0x1c,
                   FIELD(s32, config, 0x1c),
                   FIELD(s32, config, 0x14));
     func_ov036_021fd4b0(object, (s16)FIELD(s32, config, 0x18));

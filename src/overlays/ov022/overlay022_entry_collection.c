@@ -15,7 +15,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void *func_02003e20(u32, const void *, u32, void *);
 extern void func_02093a34(void *);
-extern void func_02093adc(void *, s32, s32, s32);
+extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void func_020c09cc(void *, s32, s32, s32, void (*)(void *), void *);
 extern void func_020c0c24(void *, s32, s32, void (*)(void *));
 #ifdef __cplusplus
@@ -56,7 +56,7 @@ extern "C" void *func_ov022_021fd708(void *collection, s32 capacity)
             func_020c09cc(entries, capacity, 8, 8,
                           func_ov022_021fd6fc, 0);
         FIELD(void *, collection, 0x38) = entries;
-        func_02093adc(collection, 0, capacity - 1, 0);
+        IndexedSelectionController_ConfigureRange(collection, 0, capacity - 1, 0);
     } else {
         FIELD(void *, collection, 0x38) = 0;
     }

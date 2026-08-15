@@ -6,9 +6,9 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02092260
-    .extern func_02094cf0
-    .extern func_02095224
-    .extern func_02095248
+    .extern Presentation_SetScript
+    .extern Presentation_IsScriptComplete
+    .extern Presentation_IsScriptSuspended
     .extern func_02095860
     .extern func_020958d8
     .extern func_020958f0
@@ -42,7 +42,7 @@ L_021fdbd4: ; jump table
     b L_021fdc60 ; case 5
 L_021fdbec:
     ldr r0, [r6, #0x948]
-    bl func_02095248
+    bl Presentation_IsScriptSuspended
     cmp r0, #0x0
     beq L_021fdc60
     ldr r0, [r6, #0x948]
@@ -53,7 +53,7 @@ L_021fdbec:
     b L_021fdc60
 L_021fdc14:
     ldr r0, [r6, #0x948]
-    bl func_02095224
+    bl Presentation_IsScriptComplete
     cmp r0, #0x0
     movne r0, #0x3
     strne r0, [r6, #0x984]
@@ -62,7 +62,7 @@ L_021fdc2c:
     ldr r0, [r6, #0x948]
     ldr r1, L_021fdd80
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x0
     str r0, [r6, #0x984]
     b L_021fdc60
@@ -70,7 +70,7 @@ L_021fdc48:
     ldr r0, [r6, #0x948]
     ldr r1, L_021fdd84
     mov r2, #0x0
-    bl func_02094cf0
+    bl Presentation_SetScript
     mov r0, #0x5
     str r0, [r6, #0x984]
 L_021fdc60:

@@ -2,13 +2,13 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_orbit_spawn.c for documented portable C. */
 
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
     .extern Heap_Alloc
     .extern func_ov036_02200234
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov036_021ff050
-    .extern func_02094bbc
-    .extern func_02095274
+    .extern Presentation_SetPosition
+    .extern PresentationList_Append
     .extern func_02091b98
     .extern data_ov036_02206178
     .extern gHeapContext
@@ -23,7 +23,7 @@ func_ov036_022009b8:
     mov r0, #0x1f
     mov r1, #0x0
     mov r2, #0x6
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     orr r1, r0, r0, lsl #0x5
     orr r0, r1, r0, lsl #0xa
     mov r4, r0, lsl #0x10
@@ -103,10 +103,10 @@ L_02200adc:
     sub r2, r2, #0x600
     rsb r3, r1, #0x0
     mov r1, #0x0
-    bl func_02094bbc
+    bl Presentation_SetPosition
     mov r1, r8
     add r0, r10, #0x11c
-    bl func_02095274
+    bl PresentationList_Append
     ldr r1, [r9, #0x4]
     add r0, r10, #0xa4
     bl func_02091b98

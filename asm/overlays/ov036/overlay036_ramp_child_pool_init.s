@@ -6,8 +6,8 @@
     .extern GraphicsAnimationInstance_SetAnimation
     .extern Heap_Alloc
     .extern func_020955d8
-    .extern func_02095274
-    .extern func_020948d4
+    .extern PresentationList_Append
+    .extern PresentationScalar_SetImmediate
     .extern data_ov036_02206160
     .extern data_ov036_022051f0
     .extern gHeapContext
@@ -38,11 +38,11 @@ L_02201760:
     str r0, [r10, #0x120]
     mov r1, r0
     add r0, r10, #0x148
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r10, #0x120]
     ldr r1, L_022018a0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r10, #0x118]
     add r1, r10, #0x10c
     bl GraphicsAnimationInstanceManager_CreateInstance
@@ -65,15 +65,15 @@ L_022017c8:
     str r0, [r10, #0x124]
     mov r1, r0
     add r0, r10, #0x148
-    bl func_02095274
+    bl PresentationList_Append
     ldr r0, [r10, #0x124]
     mov r1, #0x8000
     add r0, r0, #0x5c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r0, [r10, #0x124]
     ldr r1, L_022018a0
     add r0, r0, #0x6c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     ldr r6, L_022018a4
     ldr r11, L_02201898
     mov r9, #0x0
@@ -106,12 +106,12 @@ L_02201860:
     str r0, [r1, #0x128]
     mov r1, r0
     add r0, r10, #0x148
-    bl func_02095274
+    bl PresentationList_Append
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0x128]
     ldr r1, [r8, #0x10]
     add r0, r0, #0x5c
-    bl func_020948d4
+    bl PresentationScalar_SetImmediate
     add r9, r9, #0x1
     cmp r9, #0x8
     blt L_0220180c

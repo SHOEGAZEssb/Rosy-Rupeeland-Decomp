@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov034/overlay034_gx_strip.c for documented portable C. */
 
-    .extern func_02091a70
+    .extern Presentation_InterpolateLinear
     .extern func_ov034_021fd2b8
     .extern func_ov034_021fd2ec
     .extern data_ov034_021fe788
@@ -40,7 +40,7 @@ func_ov034_021fd030:
     mov r1, #0x1e0
     mov r2, #0x1000
     mov r5, r5, lsl #0x12
-    bl func_02091a70
+    bl Presentation_InterpolateLinear
     rsb r0, r0, #0x1e0
     mov r0, r0, lsl #0x10
     mov r0, r0, lsr #0x10

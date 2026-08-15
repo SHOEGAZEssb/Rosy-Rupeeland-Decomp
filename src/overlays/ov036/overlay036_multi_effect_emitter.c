@@ -11,7 +11,7 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948e4(void *field, s32 mode, s32 value);
+extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern s32 func_ov036_021fd28c(void *object);
 extern s32 func_0209189c(void *random, s32 minimum, s32 maximum);
 extern s32 func_020918f4(void *random, s32 maximum);
@@ -20,9 +20,9 @@ extern void *func_ov036_021fd2a4(void *object, s16 type,
                                  s16 secondDuration, u16 colorA,
                                  u16 colorB, s16 firstDuration,
                                  s32 acceleration);
-extern void func_02094bbc(void *object, s32 x, s32 y, s32 z);
-extern void func_020948d4(void *field, s32 value);
-extern void func_02095274(void *list, void *object);
+extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
+extern void PresentationScalar_SetImmediate(void *field, s32 value);
+extern void PresentationList_Append(void *list, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -44,9 +44,9 @@ extern "C" void func_ov036_021ff778(void *owner, void *child,
                                      s32 x, s32 y, s32 z, s32 duration)
 {
     (void)owner;
-    func_020948e4((u8 *)child + 0xc, 2, x);
-    func_020948e4((u8 *)child + 0x1c, 2, y);
-    func_020948e4((u8 *)child + 0x2c, 2, z);
+    PresentationScalar_TransitionTo((u8 *)child + 0xc, 2, x);
+    PresentationScalar_TransitionTo((u8 *)child + 0x1c, 2, y);
+    PresentationScalar_TransitionTo((u8 *)child + 0x2c, 2, z);
     FIELD(s32, child, 0x7c) = (s16)duration;
     FIELD(s32, child, 0x80) = 0;
 }
@@ -92,9 +92,9 @@ extern "C" void func_ov036_021ff7cc(void *controller, s32 range)
         particle = func_ov036_021fd2a4(particle, 1, duration,
                                        halfColor, fullColor, 0, acceleration);
     }
-    func_02094bbc(particle, x, 0, z);
-    func_020948d4((u8 *)particle + 0x5c,
+    Presentation_SetPosition(particle, x, 0, z);
+    PresentationScalar_SetImmediate((u8 *)particle + 0x5c,
                   func_020918f4((u8 *)controller + 0xc0, 0x1000) << 4);
-    func_020948d4((u8 *)particle + 0x6c, 0x333);
-    func_02095274((u8 *)controller + 0x128, particle);
+    PresentationScalar_SetImmediate((u8 *)particle + 0x6c, 0x333);
+    PresentationList_Append((u8 *)controller + 0x128, particle);
 }

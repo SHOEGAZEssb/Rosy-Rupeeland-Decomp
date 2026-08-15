@@ -19,15 +19,15 @@ extern "C" {
 extern void func_02059278(void *sound, s32 id, s32 value);
 extern void func_0205929c(void *sound, s32 id, s32 value);
 extern void Sound_Play(void *sound, s32 id, s32 parameter);
-extern void func_02094cf0(void *object, const void *motion, s32 enabled);
-extern s32 func_02095248(void *object);
-extern s32 func_02095224(void *object);
+extern void Presentation_SetScript(void *object, const void *motion, s32 enabled);
+extern s32 Presentation_IsScriptSuspended(void *object);
+extern s32 Presentation_IsScriptComplete(void *object);
 extern void GraphicsAnimationInstance_SetAnimation(void *object, u8 identifier);
 extern s32 func_02091c7c(void *state, s32 mode);
 extern void func_02091dac(void *state);
 extern void func_ov035_021ffb74(void *scene, s32 direction);
 extern void func_02091b98(void *state, s32 value);
-extern void func_02095360(void *collection);
+extern void PresentationList_UpdateAndDeleteCompleted(void *collection);
 extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 #ifdef __cplusplus
 }
@@ -36,8 +36,8 @@ extern void GraphicsAnimationInstanceManager_Update(void *resourceSet);
 /* Updates both tertiary collections and their resource set. */
 static void update_tertiary_scene(void *scene)
 {
-    func_02095360((u8 *)scene + 0x174);
-    func_02095360((u8 *)scene + 0x184);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x174);
+    PresentationList_UpdateAndDeleteCompleted((u8 *)scene + 0x184);
     GraphicsAnimationInstanceManager_Update(FIELD(void *, scene, 0x124));
 }
 
@@ -56,24 +56,24 @@ extern "C" s32 func_ov035_021ffc60(void *scene)
     switch (FIELD(s32, scene, 0xa0)) {
     case 0:
         func_02059278(gSoundContext, 0xb6, 0x7f);
-        func_02094cf0(FIELD(void *, scene, 0x128),
+        Presentation_SetScript(FIELD(void *, scene, 0x128),
                       data_ov035_02202f70, 1);
-        func_02094cf0(FIELD(void *, scene, 0x12c),
+        Presentation_SetScript(FIELD(void *, scene, 0x12c),
                       data_ov035_02203770, 1);
-        func_02094cf0(FIELD(void *, scene, 0x130),
+        Presentation_SetScript(FIELD(void *, scene, 0x130),
                       data_ov035_02202bfc, 1);
-        func_02094cf0(FIELD(void *, scene, 0x134),
+        Presentation_SetScript(FIELD(void *, scene, 0x134),
                       data_ov035_02202ba8, 1);
-        func_02094cf0(FIELD(void *, scene, 0x138),
+        Presentation_SetScript(FIELD(void *, scene, 0x138),
                       data_ov035_02202ce4, 1);
-        func_02094cf0(FIELD(void *, scene, 0x13c),
+        Presentation_SetScript(FIELD(void *, scene, 0x13c),
                       data_ov035_02202d2c, 1);
-        func_02094cf0(FIELD(void *, scene, 0xd8),
+        Presentation_SetScript(FIELD(void *, scene, 0xd8),
                       data_ov035_022031c8, 1);
         FIELD(s32, scene, 0xa0)++;
         /* The recovered switch intentionally continues into stage 1. */
     case 1:
-        if (func_02095248(FIELD(void *, scene, 0x12c))) {
+        if (Presentation_IsScriptSuspended(FIELD(void *, scene, 0x12c))) {
             FIELD(s32, FIELD(void *, scene, 0x130), 0x90) = 0;
             GraphicsAnimationInstance_SetAnimation(
                 FIELD(void *, FIELD(void *, scene, 0x134), 0x9c), 2);
@@ -89,7 +89,7 @@ extern "C" s32 func_ov035_021ffc60(void *scene)
         }
         break;
     case 2:
-        if (func_02095224(FIELD(void *, scene, 0x12c))) {
+        if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x12c))) {
             func_0205929c(gSoundContext, 0xb6, 0x10);
             FIELD(s32, scene, 0xa0)++;
         }

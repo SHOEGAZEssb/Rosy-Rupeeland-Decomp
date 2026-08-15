@@ -25,7 +25,7 @@ extern void Graphics3DLightSet_Destroy(void *);
 extern void func_02092314(void *, s32, s32);
 extern void func_020923a0(void *);
 extern void func_02092418(void *);
-extern void func_02095308(void *);
+extern void PresentationList_DeleteAll(void *);
 extern void func_ov048_0220b7b4(void *);
 #ifdef __cplusplus
 }
@@ -43,9 +43,9 @@ static void teardown_scene(void *scene)
     func_02092314(scene, 0x3d, 8);
     func_0205940c(gSoundContext, 0x22, 0);
     FIELD(u32, scene, 0x20) &= ~0x400;
-    func_02095308((u8 *)scene + 0x2f4);
-    func_02095308((u8 *)scene + 0x304);
-    func_02095308((u8 *)scene + 0x314);
+    PresentationList_DeleteAll((u8 *)scene + 0x2f4);
+    PresentationList_DeleteAll((u8 *)scene + 0x304);
+    PresentationList_DeleteAll((u8 *)scene + 0x314);
     func_02071e04(data_020f4e18, FIELD(void *, scene, 0x15c));
     void *manager = FIELD(void *, scene, 0x68);
     if (manager != 0) {
@@ -63,11 +63,11 @@ static void teardown_scene(void *scene)
 
     /* The second pass restores each small record's own vtable before base teardown. */
     FIELD(const void *, scene, 0x314) = data_ov026_022048b8;
-    func_02095308((u8 *)scene + 0x314);
+    PresentationList_DeleteAll((u8 *)scene + 0x314);
     FIELD(const void *, scene, 0x304) = data_ov026_022048b8;
-    func_02095308((u8 *)scene + 0x304);
+    PresentationList_DeleteAll((u8 *)scene + 0x304);
     FIELD(const void *, scene, 0x2f4) = data_ov026_022048b8;
-    func_02095308((u8 *)scene + 0x2f4);
+    PresentationList_DeleteAll((u8 *)scene + 0x2f4);
     Graphics3DLightSet_Destroy((u8 *)scene + 0x180);
     for (s32 off = 0xac; off >= 0x7c; off -= 0xc)
         GraphicsResourceSetVariant_Destroy((u8 *)scene + off);

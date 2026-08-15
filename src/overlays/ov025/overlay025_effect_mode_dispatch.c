@@ -9,9 +9,9 @@ extern const u8 data_ov025_02202d24[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020948e4(void *, s32, s32);
-extern void func_02094bbc(void *, s32, s32, s32);
-extern void func_02094cf0(void *, const void *, s32);
+extern void PresentationScalar_TransitionTo(void *, s32, s32);
+extern void Presentation_SetPosition(void *, s32, s32, s32);
+extern void Presentation_SetScript(void *, const void *, s32);
 extern void func_ov025_021fe174(void *, s32, s32, s32);
 extern void func_ov025_021fe248(void *);
 extern void func_ov025_021fe2c4(void *);
@@ -39,19 +39,19 @@ extern "C" void func_ov025_021fe4cc(void *object, s32 mode, s32 variant)
     case 0:
         if (FIELD(s32, object, 0xa4) != 0) {
             func_ov025_021fe174(object, 0, 0, 2);
-            func_02094cf0(object, data_ov025_02202d24, 1);
+            Presentation_SetScript(object, data_ov025_02202d24, 1);
             return;
         }
         /* The opposite side deliberately shares mode 2 setup. */
     case 2:
         if (FIELD(s32, object, 0xa4) != 0) {
             func_ov025_021fe174(object, 1, FIELD(s32, object, 0xac), 2);
-            func_02094bbc(object, 0x120000, 0xa0000, 0);
-            func_020948e4((u8 *)object + 0xc, 2, -0x20000);
+            Presentation_SetPosition(object, 0x120000, 0xa0000, 0);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, -0x20000);
         } else {
             func_ov025_021fe174(object, 1, FIELD(s32, object, 0xac), 0x42);
-            func_02094bbc(object, -0x20000, 0xa0000, 0);
-            func_020948e4((u8 *)object + 0xc, 2, 0x120000);
+            Presentation_SetPosition(object, -0x20000, 0xa0000, 0);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, 0x120000);
         }
         switch (FIELD(s32, object, 0xac)) {
         case 0:
@@ -70,26 +70,26 @@ extern "C" void func_ov025_021fe4cc(void *object, s32 mode, s32 variant)
     case 4:
         if (FIELD(s32, object, 0xa4) != 0) {
             func_ov025_021fe174(object, 1, FIELD(s32, object, 0xac), 2);
-            func_02094bbc(object, 0x120000, 0xa0000, 0);
+            Presentation_SetPosition(object, 0x120000, 0xa0000, 0);
         } else {
             func_ov025_021fe174(object, 1, FIELD(s32, object, 0xac), 0x42);
-            func_02094bbc(object, -0x20000, 0xa0000, 0);
+            Presentation_SetPosition(object, -0x20000, 0xa0000, 0);
         }
-        func_020948e4((u8 *)object + 0xc, 2, 0x80000);
+        PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, 0x80000);
         FIELD(s32, object, 0x7c) = 300;
         FIELD(s32, object, 0x80) = 0;
         return;
     case 5:
         if (FIELD(s32, object, 0xa4) != 0) {
             func_ov025_021fe248(object);
-            func_02094bbc(object, 0x120000, 0xa0000, 0);
-            func_020948e4((u8 *)object + 0xc, 2, -0x20000);
+            Presentation_SetPosition(object, 0x120000, 0xa0000, 0);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, -0x20000);
         } else {
             func_ov025_021fe2c4(object);
-            func_02094bbc(object, -0x20000, 0xa0000, 0);
-            func_020948e4((u8 *)object + 0xc, 2, 0x120000);
+            Presentation_SetPosition(object, -0x20000, 0xa0000, 0);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, 0x120000);
         }
-        func_020948e4((u8 *)object + 0x1c, 2, 0x40000);
+        PresentationScalar_TransitionTo((u8 *)object + 0x1c, 2, 0x40000);
         FIELD(s32, object, 0x7c) = 300;
         FIELD(s32, object, 0x80) = 0;
         return;
@@ -98,46 +98,46 @@ extern "C" void func_ov025_021fe4cc(void *object, s32 mode, s32 variant)
     case 8:
         if (FIELD(s32, object, 0xa4) != 0) {
             func_ov025_021fe248(object);
-            func_02094bbc(object, 0x120000, 0x60000, 0);
+            Presentation_SetPosition(object, 0x120000, 0x60000, 0);
         } else {
             func_ov025_021fe2c4(object);
-            func_02094bbc(object, -0x20000, 0x60000, 0);
+            Presentation_SetPosition(object, -0x20000, 0x60000, 0);
         }
-        func_020948e4((u8 *)object + 0xc, 2, 0x80000);
-        func_020948e4((u8 *)object + 0x1c, 2, 0x60000);
+        PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, 0x80000);
+        PresentationScalar_TransitionTo((u8 *)object + 0x1c, 2, 0x60000);
         FIELD(s32, object, 0x7c) = 300;
         FIELD(s32, object, 0x80) = 0;
         return;
     case 1:
         if (FIELD(s32, object, 0xa4) != 0) {
             func_ov025_021fe174(object, 1, 1, 2);
-            func_02094bbc(object, 0x120000, 0xa0000, 0);
+            Presentation_SetPosition(object, 0x120000, 0xa0000, 0);
         } else {
             func_ov025_021fe174(object, 1, 1, 0x42);
-            func_02094bbc(object, -0x20000, 0xa0000, 0);
+            Presentation_SetPosition(object, -0x20000, 0xa0000, 0);
         }
-        func_020948e4((u8 *)object + 0xc, 1, 0x80000);
-        func_020948e4((u8 *)object + 0x1c, 3, 0x60000);
+        PresentationScalar_TransitionTo((u8 *)object + 0xc, 1, 0x80000);
+        PresentationScalar_TransitionTo((u8 *)object + 0x1c, 3, 0x60000);
         FIELD(s32, object, 0x7c) = 90;
         FIELD(s32, object, 0x80) = 0;
         return;
     case 10:
         if (FIELD(s32, object, 0xa4) != 0) {
             func_ov025_021fe174(object, 1, 13, 2);
-            func_02094bbc(object, 0x120000, -0xe0000, 0);
-            func_020948e4((u8 *)object + 0xc, 2, -0x20000);
+            Presentation_SetPosition(object, 0x120000, -0xe0000, 0);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, -0x20000);
         } else {
             func_ov025_021fe174(object, 1, 13, 0x42);
-            func_02094bbc(object, -0x20000, -0xe0000, 0);
-            func_020948e4((u8 *)object + 0xc, 2, 0x120000);
+            Presentation_SetPosition(object, -0x20000, -0xe0000, 0);
+            PresentationScalar_TransitionTo((u8 *)object + 0xc, 2, 0x120000);
         }
         FIELD(s32, object, 0x7c) = 480;
         FIELD(s32, object, 0x80) = 0;
         return;
     case 11:
         func_ov025_021fe39c(object);
-        func_02094bbc(object, 0x80000, -0x120000, 0);
-        func_020948e4((u8 *)object + 0x1c, 1, 0xa0000);
+        Presentation_SetPosition(object, 0x80000, -0x120000, 0);
+        PresentationScalar_TransitionTo((u8 *)object + 0x1c, 1, 0xa0000);
         FIELD(s32, object, 0x7c) = 60;
         FIELD(s32, object, 0x80) = 0;
         return;

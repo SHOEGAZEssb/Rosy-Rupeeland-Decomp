@@ -20,8 +20,8 @@
 .extern func_02092638
 .extern func_02092850
 .extern func_02094574
-.extern func_020948e4
-.extern func_02095360
+.extern PresentationScalar_TransitionTo
+.extern PresentationList_UpdateAndDeleteCompleted
 .extern func_020958d8
 .extern func_020b2058
 .extern func_020b44e8
@@ -215,7 +215,7 @@ func_ov028_021fe438:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x264
-    bl func_02095360
+    bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r4, #0x90]
     cmp r0, #0x0
     beq L_021fe45c
@@ -239,7 +239,7 @@ L_021fe45c:
     add r2, r2, r0, lsl #0xc
     add r0, r1, #0xc
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x27c
     mvn r1, #0x1
     mov r2, #0x2
@@ -249,7 +249,7 @@ L_021fe45c:
     add r2, r2, r0, lsl #0xc
     add r0, r1, #0x1c
     mov r1, #0x2
-    bl func_020948e4
+    bl PresentationScalar_TransitionTo
     add r0, r4, #0x27c
     mov r1, #0x10
     mov r2, #0x20
