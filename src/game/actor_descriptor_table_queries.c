@@ -19,6 +19,15 @@ extern u8 data_020c4424[];
 extern u8 data_021e9d2c[];
 extern u8 gSystemState[];
 
+/* Return the actor-database definition type for one actor ID (0x02062DE4). */
+s32 func_02062de4(u16 id)
+{
+    u8 *record = (u8 *)func_02063b90(data_021e9ad0, id);
+    u8 *definition = *(u8 **)(record + 8);
+
+    return definition[2];
+}
+
 /*
  * Initialize a range descriptor for actor `id`. The database definition at
  * +8 is borrowed, and `lastIndex` is clamped to retail's inclusive limit by

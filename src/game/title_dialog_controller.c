@@ -16,6 +16,8 @@ extern void *func_020742cc(void *owner);
 extern void func_02074110(void *group);
 extern void GraphicsSpriteGroup_Clear(void *group);
 extern void *func_02073ffc(void *group, const void *source, s32 attach);
+extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
+                          s32 enabled, s32 field28, s32 flags);
 extern void func_02072b68(void *sprite, u32 animation);
 extern void func_02071f38(void *resource_set);
 extern void Sound_Play(void *context, s32 archive, s32 member);
@@ -34,6 +36,15 @@ extern s32 GraphicsSpriteRenderer_DrawCharacter(void *renderer,
                                                 u32 characterCode,
                                                 u32 destinationX,
                                                 u32 destinationY, u32 mode);
+extern s32 func_02062de4(u16 id);
+extern void func_020627a0(void *descriptor, u16 id, u16 last_index);
+extern void func_020627d0(void *descriptor, u16 id, u16 kind, u16 quantity);
+extern void *func_02062918(void *descriptor, s32 index);
+extern void *func_020628c8(void *descriptor);
+extern u32 func_02063064(void *component);
+extern u32 func_02063074(void *component);
+extern u32 func_02063084(void *component);
+extern s32 func_02063190(void *component);
 
 void *func_02092cc0(void *object, void *font, void *text_resource)
 {
@@ -135,6 +146,58 @@ void func_02092e9c(void *object, const void *text, s32 mode)
 }
 
 /*
+ * Expand one actor descriptor into the inline dialog stream (0x02092FA4).
+ * The descriptor and its component resources are temporary and borrowed from
+ * the actor database. Two sprites are appended at the current text position,
+ * the localized label is copied into the controller-owned 31-code-unit buffer,
+ * and the VM cursor is redirected there until its terminating zero returns to
+ * the saved resource-string cursor.
+ */
+void func_02092fa4(void *object)
+{
+    u8 *bytes = (u8 *)object;
+    u8 descriptor[0x24];
+    void *component;
+    void *sprite;
+    const u16 *label;
+    u16 *destination = (u16 *)(bytes + 0x64);
+    s32 index = 0;
+
+    GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
+    func_02071f38(bytes + 0x20);
+    memset(descriptor, 0, sizeof(descriptor));
+    *(void **)(descriptor + 0x14) = descriptor;
+    *(u32 *)(descriptor + 0x18) = 1;
+    *(void **)(descriptor + 0x1c) = descriptor;
+
+    if (func_02062de4((u16)*(u32 *)(bytes + 0xe4)) == 1)
+        func_020627d0(descriptor, (u16)*(u32 *)(bytes + 0xe4), 1, 1);
+    else
+        func_020627a0(descriptor, (u16)*(u32 *)(bytes + 0xe4), 1);
+
+    component = func_02062918(descriptor, 0);
+    func_02071ee0(bytes + 0x20, data_020f4e18,
+                  func_02063064(component), func_02063074(component),
+                  func_02063084(component));
+    *(s32 *)(bytes + 0xdc) += 0x10;
+    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
+    func_02073e48(sprite, func_02063190(component),
+                  *(s32 *)(bytes + 0xdc), *(s32 *)(bytes + 0xe0), 0, 0, 0);
+    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
+    func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
+                  *(s32 *)(bytes + 0xe0), 1, 0, 0);
+    *(s32 *)(bytes + 0xdc) += 0x10;
+
+    label = (const u16 *)func_020628c8(descriptor);
+    while (index < 0x1f && label[index] != 0) {
+        destination[index] = label[index];
+        ++index;
+    }
+    destination[index] = 0;
+    *(const u16 **)(bytes + 0x3c) = destination;
+}
+
+/*
  * Execute the ordinary-text, line-control, and input-gated page-wait portion
  * of the shared dialog VM at 0x02093360. Input halfword 1 uses bit 1 to reveal
  * the current page immediately and bit 0 to dismiss the animated wait marker.
@@ -219,8 +282,7 @@ s32 func_02093360(void *object, const void *input)
             continue;
         }
         if (character >= 0xee00 && character <= 0xee14) {
-            /* Resource-record expansion controls remain cursor-aligned until
-             * their four dedicated formatting helpers are recovered. */
+            /* Unrecovered resource-record variants remain cursor-aligned. */
             switch (character) {
             case 0xee01:
                 GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
@@ -279,8 +341,18 @@ s32 func_02093360(void *object, const void *input)
                 *(u16 *)((u8 *)gGameWork + 0x1d2) = mode;
                 break;
             }
-            case 0xee09: case 0xee0a: case 0xee0c: case 0xee0d:
-            case 0xee0f: case 0xee12:
+            case 0xee09:
+                *(const u16 **)(bytes + 0x40) = cursor + 1;
+                *(u32 *)(bytes + 0xe4) = *cursor;
+                func_02092fa4(object);
+                break;
+            case 0xee0a:
+                *(const u16 **)(bytes + 0x40) = cursor + 1;
+                *(s32 *)(bytes + 0xe4) =
+                    *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
+                func_02092fa4(object);
+                break;
+            case 0xee0c: case 0xee0d: case 0xee0f: case 0xee12:
                 *(const u16 **)(bytes + 0x3c) = cursor + 1;
                 break;
             case 0xee0e:

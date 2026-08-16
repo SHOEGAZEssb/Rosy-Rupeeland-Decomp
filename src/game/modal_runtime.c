@@ -240,4 +240,3 @@ void *func_020959d4(void *storage, s32 first, s32 second)
     return self;
 }
 
-
