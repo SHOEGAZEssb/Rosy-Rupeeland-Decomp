@@ -26,6 +26,7 @@ extern const char data_020ea5c8[];
 extern const char data_020ea5d8[];
 extern const char data_020ea5e0[];
 extern u8 data_021f4090[];
+extern u8 data_021f4020[];
 extern u8 data_021f5f18[];
 extern u8 data_021f3ecc[];
 extern const u32 data_020c6d14;
@@ -34,6 +35,7 @@ extern u8 data_020c6d18[];
 extern void func_02078dd4(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *func_02078e98(void *manager, u32 identifier);
+extern void *func_02079408(void *manager, u16 identifier);
 extern void func_02097eec(void *entry, u16 identifier);
 extern void OS_Halt(void);
 
@@ -80,6 +82,15 @@ void func_02097f94(void *manager_pointer)
             *(u32 *)(destination + 4) = destination_count + 1;
         }
     }
+}
+
+/* Resolve the borrowed message record selected by an eight-byte history
+ * entry's leading identifier. The database retains ownership. */
+void *func_02097f18(void *entry_pointer)
+{
+    RetailSelectionEntry *entry = (RetailSelectionEntry *)entry_pointer;
+
+    return func_02079408(data_021f4020, entry->identifier);
 }
 
 /* Return the borrowed text field at +6 in the database record referenced by
@@ -449,4 +460,3 @@ void func_02079694(void *manager_pointer)
     *(u32 *)(manager + 0x10c) = 0;
     *(u32 *)(manager + 0x110) = 0;
 }
-
