@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_020f4e14;
-extern void *data_021f3ecc;
+extern u8 data_021f3ecc[];
 extern const char data_ov016_022015b0[];
 extern const char data_ov016_022015b8[];
 extern void *gDebugFont;

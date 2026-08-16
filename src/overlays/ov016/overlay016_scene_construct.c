@@ -108,7 +108,7 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 owner, s32 mode)
     if (mode == 0 || mode == 2) {
         func_ov016_021ff094(state);
         func_ov016_021ff404(state);
-        func_ov016_021fe754((u8 *)state + 0x454,
+        func_ov016_021fe754(state,
                             data_ov016_02201410[0], data_ov016_02201410[1]);
     } else if (mode == 1) {
         func_ov016_021ff17c(state);
@@ -130,7 +130,7 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 owner, s32 mode)
         func_020957f0((u8 *)state + 0x398, sprite, 4, 1, 0);
         func_02095820((u8 *)state + 0x398, 0x14, 0x25);
         func_02095940((u8 *)state + 0x398);
-        func_ov016_021fe754((u8 *)state + 0x454,
+        func_ov016_021fe754(state,
                             data_ov016_022013e8[0], data_ov016_022013e8[1]);
     }
 
