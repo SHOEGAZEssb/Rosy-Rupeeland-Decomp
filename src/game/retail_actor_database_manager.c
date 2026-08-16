@@ -27,6 +27,7 @@ extern const char *data_020c45a4[];
 extern u8 data_021f3ecc[];
 extern u8 data_021f4090[];
 extern void OS_Halt(void);
+extern void func_02022fbc(void *descriptor);
 extern void func_02078dd4(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *func_02079fc4(void *manager, u16 id);
@@ -92,12 +93,7 @@ void *func_02063b90(void *database, u16 id)
 
 static void InitializeRuntimeEntry(u8 *entry)
 {
-    *(u16 *)(entry + 2) = 0;
-    *(u16 *)(entry + 4) = 0;
-    *(u16 *)(entry + 6) = 0;
-    *(void **)(entry + 8) = 0;
-    *(u32 *)(entry + 0x0c) = 0;
-    *(u32 *)(entry + 0x20) = 0;
+    func_02022fbc(entry);
 }
 
 /* Initialize the first 0x1c-byte retail runtime-entry container. */
@@ -485,9 +481,3 @@ void func_0206328c(void)
     if (manager != 0)
         func_0206330c(manager);
 }
-
-
-
-
-
-

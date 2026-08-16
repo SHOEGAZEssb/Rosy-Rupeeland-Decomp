@@ -216,7 +216,7 @@ s32 func_02057834(void *self)
     *(u32 *)(descriptor + 0x20) = 0;
     func_020627a0(
         descriptor,
-        *(u16 *)*(u8 **)(*(u8 **)(request + 0) + 0x14), 0);
+        *(u16 *)*(u8 **)(*(u8 **)(request + 0) + 0x14), 1);
 
     VecFx32Object_InitCopy(&position,
                            (const VecFx32Object *)(request + 4));

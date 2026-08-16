@@ -28,14 +28,14 @@ extern void *data_020f4e18;
 extern u8 data_021f3ecc[];
 extern const u8 data_020d780c[];
 extern const u16 *func_020628c8(void *record);
-extern void func_02062918(void *record, s32 index);
+extern void *func_02062918(void *record, s32 index);
 extern void *func_02062928(void *record);
 extern s32 func_02062ae4(void *record);
 extern u8 *func_02062e00(void *record);
-extern u32 func_02063064(void);
-extern u32 func_02063074(void);
-extern u32 func_02063084(void);
-extern u32 func_02063190(void);
+extern u32 func_02063064(void *component);
+extern u32 func_02063074(void *component);
+extern u32 func_02063084(void *component);
+extern u32 func_02063190(void *component);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
@@ -73,6 +73,7 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
 {
     const u16 *text;
     void *sprite;
+    void *component;
     u32 resource0;
     u32 resource1;
     u32 resource2;
@@ -135,16 +136,16 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
     GraphicsSpriteRenderer_DrawText(state->renderer_00, func_020628c8(record),
                   0x5c, 0x34, 0xe, 6, 0);
 
-    func_02062918(record, 0);
-    resource0 = func_02063064();
-    func_02062918(record, 0);
-    resource1 = func_02063074();
-    func_02062918(record, 0);
-    resource2 = func_02063084();
+    component = func_02062918(record, 0);
+    resource0 = func_02063064(component);
+    component = func_02062918(record, 0);
+    resource1 = func_02063074(component);
+    component = func_02062918(record, 0);
+    resource2 = func_02063084(component);
     func_02071ee0(state->resource_14, data_020f4e18,
                   resource0, resource1, resource2);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_14, 2);
-    func_02062918(record, 0);
-    resource3 = func_02063190();
+    component = func_02062918(record, 0);
+    resource3 = func_02063190(component);
     func_02073e48(sprite, resource3, 0x48, 0x44, 1, 0, 0);
 }

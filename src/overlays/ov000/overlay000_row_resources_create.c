@@ -9,8 +9,8 @@
 
 typedef struct Overlay000RowResourcesState {
     u8 field_000[0x08];
-    u8 resourceContext_008[1];
-    u8 field_009[0x247];
+    void *spriteGroup_008;
+    u8 field_00c[0x244];
     void *metadata_250;
     s32 cellCount_254;
 } Overlay000RowResourcesState;
@@ -72,7 +72,8 @@ void func_ov000_021fc84c(Overlay000RowResourcesState *state, s32 row)
         second = func_02063074(func_02062918(cell, 0));
         third = func_02063084(func_02062918(cell, 0));
         func_02071ee0(metadata, data_020f4e18, first, second, third);
-        resource = GraphicsSpriteGroup_CreateStateFromSource(state->resourceContext_008, metadata, 2);
+        resource = GraphicsSpriteGroup_CreateStateFromSource(
+            state->spriteGroup_008, metadata, 2);
         value = func_02063190(func_02062918(cell, 0));
         func_02073e48(resource, value, FIELD(s32, metadata, 0x14),
                       FIELD(s32, metadata, 0x18), 2, 0x3000, 0);

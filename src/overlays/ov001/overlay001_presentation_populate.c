@@ -23,14 +23,14 @@ extern "C" {
 extern u8 gSystemState[];
 extern void *data_020f4e18;
 extern const u16 *func_020628c8(void *record);
-extern void func_02062918(void *record, s32 index);
+extern void *func_02062918(void *record, s32 index);
 extern void *func_02062928(void *record);
 extern const u16 *func_02062a60(void *record);
 extern s32 func_02062ab0(void *record);
-extern u32 func_02063064(void);
-extern u32 func_02063074(void);
-extern u32 func_02063084(void);
-extern u32 func_02063190(void);
+extern u32 func_02063064(void *component);
+extern u32 func_02063074(void *component);
+extern u32 func_02063084(void *component);
+extern u32 func_02063190(void *component);
 extern void func_02071ee0(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
@@ -65,6 +65,7 @@ void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
                          void *record, s32 createDetail)
 {
     void *resource;
+    void *component;
     u32 first;
     u32 second;
     u32 third;
@@ -98,16 +99,17 @@ void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
                   0x5c, 0x38, 0xe, 6, 0);
 
     if (createDetail != 0) {
-        func_02062918(record, 0);
-        first = func_02063064();
-        func_02062918(record, 0);
-        second = func_02063074();
-        func_02062918(record, 0);
-        third = func_02063084();
+        component = func_02062918(record, 0);
+        first = func_02063064(component);
+        component = func_02062918(record, 0);
+        second = func_02063074(component);
+        component = func_02062918(record, 0);
+        third = func_02063084(component);
         func_02071ee0(state->resource_14, data_020f4e18,
                       first, second, third);
         resource = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_14, 2);
-        func_02062918(record, 0);
-        func_02073e48(resource, func_02063190(), 0x48, 0x48, 1, 0, 0);
+        component = func_02062918(record, 0);
+        func_02073e48(resource, func_02063190(component),
+                      0x48, 0x48, 1, 0, 0);
     }
 }

@@ -15,7 +15,10 @@ extern s32 func_02065034(void *state);
 extern void *func_02063b90(void *database, u16 id);
 extern void func_02071ee0(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
+extern void func_02078dd4(void *manager, u16 id, void *destination,
+                          u32 destination_size);
 extern u8 data_021e9ad0[];
+extern u8 data_021f4090[];
 extern void func_020b5294(void);
 extern u8 data_020c4424[];
 extern u8 data_021e9d2c[];
@@ -111,6 +114,28 @@ void func_0207811c(void *self, s32 enabled)
 void *func_02062918(void *self, s32 index)
 {
     return (u8 *)self + (index == 0 ? 0x10 : 0x18);
+}
+
+/*
+ * Load the localized 0x200-byte detail resource selected by an inventory
+ * record into the actor database's scratch buffer at +0x50 and return that
+ * borrowed buffer. Kind-one empty subtype records use the database default
+ * actor's resource ID; all other valid records use their own metadata ID.
+ */
+void *func_02062928(void *self)
+{
+    u8 *record = (u8 *)self;
+    u8 *metadata = *(u8 **)(record + 8);
+    u16 resource_id;
+
+    if (metadata[2] == 1 && *(u16 *)(record + 4) == 0 &&
+        *(u16 *)(record + 6) != 2) {
+        metadata = *(u8 **)(data_021e9ad0 + 0x254);
+    }
+    resource_id = *(u16 *)(metadata + 6);
+    func_02078dd4(data_021f4090, resource_id, data_021e9ad0 + 0x50,
+                  0x200);
+    return data_021e9ad0 + 0x50;
 }
 
 /*

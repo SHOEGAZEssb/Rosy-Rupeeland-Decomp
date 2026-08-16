@@ -12,7 +12,7 @@ extern "C" {
 extern s32 func_02062b28(void *);
 extern void *func_ov000_021fcad8(void *);
 extern void func_ov000_021fb890(void *, s32);
-extern void func_ov000_021fb8f0(void *);
+extern void func_ov000_021fb8f0(void *, void *);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
 extern void func_02095988(void *, s32);
@@ -71,8 +71,9 @@ extern "C" void func_ov016_021ffc2c(void *state)
 {
     if (FIELD(s32, state, 0x54) == 1 && FIELD(s32, state, 0x47c) == 0) {
         void *entry = func_ov000_021fcad8(FIELD(void *, state, 0x44c));
-        if (FIELD(void *, entry, 0xc) != 0) {
-            func_ov000_021fb8f0(FIELD(void *, state, 0x450));
+        void *record = FIELD(void *, entry, 0xc);
+        if (record != 0) {
+            func_ov000_021fb8f0(FIELD(void *, state, 0x450), record);
             FIELD(u32, state, 0x4c) |= 2;
         } else {
             func_ov000_021fb890(FIELD(void *, state, 0x450), 1);

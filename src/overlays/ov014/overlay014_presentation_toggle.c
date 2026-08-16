@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *func_ov000_021fcad8(void *);
-extern void func_ov000_021fb8f0(void *);
+extern void func_ov000_021fb8f0(void *, void *);
 extern void func_ov000_021fb890(void *, s32);
 #ifdef __cplusplus
 }
@@ -24,10 +24,15 @@ extern "C"
 #endif
 void func_ov014_021fd2f8(void *state, s32 forceDisabled)
 {
-    if (forceDisabled == 0 &&
-        *(void **)((u8 *)func_ov000_021fcad8(
-            *(void **)((u8 *)state + 0x78)) + 0x0c) != 0) {
-        func_ov000_021fb8f0(*(void **)((u8 *)state + 0x88));
+    void *record = 0;
+
+    if (forceDisabled == 0) {
+        void *entry = func_ov000_021fcad8(*(void **)((u8 *)state + 0x78));
+        record = *(void **)((u8 *)entry + 0x0c);
+    }
+
+    if (record != 0) {
+        func_ov000_021fb8f0(*(void **)((u8 *)state + 0x88), record);
         *(u32 *)((u8 *)state + 0x4c) |= 2;
     } else {
         func_ov000_021fb890(*(void **)((u8 *)state + 0x88), 1);
