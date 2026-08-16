@@ -194,6 +194,7 @@ void func_0207139c(void)
 
 extern u8 data_020f26c4[];
 extern u8 data_020f26a8[];
+extern u8 data_020f26fc[];
 
 /* Initialize one 0x10-byte presentation transform component (0x020948BC). */
 void PresentationScalar_Init(void *component)
@@ -303,6 +304,44 @@ void *SpritePresentation_Init(void *object, void *sprite)
     *(u32 *)bytes = (u32)(uintptr_t)data_020f26a8;
     *(u32 *)(bytes + 0x9c) = (u32)(uintptr_t)sprite;
     return object;
+}
+
+/* Construct the alternate sprite-backed presentation at retail 0x020955D8.
+ * Caller storage remains owned by the caller and the sprite pointer at +0x9C
+ * is borrowed. The distinct vtable selects this subtype's recovered update
+ * and destruction behavior; construction returns the original object. */
+void *func_020955d8(void *object, void *sprite)
+{
+    u8 *bytes = (u8 *)Presentation_Init(object);
+
+    *(u32 *)bytes = (u32)(uintptr_t)data_020f26fc;
+    *(u32 *)(bytes + 0x9c) = (u32)(uintptr_t)sprite;
+    return object;
+}
+
+/* Synchronize an alternate sprite presentation's position, rotation, and
+ * scale fields at retail 0x020956A4. The presentation and its borrowed sprite
+ * remain caller-owned; only the sprite's render-state fields are updated. */
+void func_020956a4(void *object)
+{
+    u8 *bytes = (u8 *)object;
+    u8 *sprite = *(u8 **)(bytes + 0x9c);
+    s32 scale = *(s32 *)(bytes + 0x70);
+
+    *(s32 *)(sprite + 0x20) = *(s32 *)(bytes + 0x10);
+    *(s32 *)(sprite + 0x24) = *(s32 *)(bytes + 0x20);
+    *(s32 *)(sprite + 0x28) = *(s32 *)(bytes + 0x30);
+    *(u16 *)(sprite + 0x48) = (u16)*(s32 *)(bytes + 0x40);
+    *(u16 *)(sprite + 0x4a) = (u16)*(s32 *)(bytes + 0x50);
+    *(u16 *)(sprite + 0x4c) = (u16)*(s32 *)(bytes + 0x60);
+    *(s32 *)(sprite + 0x38) = scale;
+    *(s32 *)(sprite + 0x34) = scale;
+}
+
+/* Preserve the distinct retail 0x020956F0 entry point used by one subtype. */
+void func_020956f0(void *object)
+{
+    func_020956a4(object);
 }
 
 /* Set the recovered presentation position triplet (retail 0x02094BBC). */
