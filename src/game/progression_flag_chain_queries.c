@@ -306,6 +306,20 @@ s32 func_02085f38(void)
     return func_020859e8() && AllFlags(flags, 8);
 }
 
+/* Join the 0x85f38 and 0x84404 branches, then require flag 0x806. */
+s32 func_02086104(void)
+{
+    return func_02085f38() && func_02084404() &&
+           GameWork_TestFlag(gGameWork, 0x806);
+}
+
+/* Require the standalone ordered progression flags 0x808, 0xc8, and 0x81. */
+s32 func_02086150(void)
+{
+    static const u16 flags[] = {0x808, 0x0c8, 0x081};
+    return AllFlags(flags, 3);
+}
+
 /* Extend the shared 0x86054 prerequisite with progression flag 0x802. */
 s32 func_020861b4(void)
 {
@@ -373,6 +387,25 @@ s32 func_020898e8(void)
 s32 func_02089b20(void)
 {
     return func_020859e8() && GameWork_TestFlag(gGameWork, 0x7fd);
+}
+
+/* Extend the shared 0x85f38 prerequisite with progression flag 0x7ff. */
+s32 func_02089b5c(void)
+{
+    return func_02085f38() && GameWork_TestFlag(gGameWork, 0x7ff);
+}
+
+/* Join the 0x85f38 and 0x84404 branches, then require flag 0x805. */
+s32 func_02089bd4(void)
+{
+    return func_02085f38() && func_02084404() &&
+           GameWork_TestFlag(gGameWork, 0x805);
+}
+
+/* Return the normalized state of progression flag 0x807. */
+s32 func_02089c20(void)
+{
+    return GameWork_TestFlag(gGameWork, 0x807) != 0;
 }
 
 /* Extend the shared 0x86054 prerequisite with progression flag 0x801. */
