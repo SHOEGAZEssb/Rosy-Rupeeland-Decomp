@@ -42,6 +42,18 @@ void func_02070830(void *resource)
     *allocation = 0;
 }
 
+/* Release the optional alternate decoded buffer at +0x28 and clear its owner
+ * field. The resource remains caller-owned; a null buffer is a no-op. */
+void func_02070934(void *resource)
+{
+    void **allocation = (void **)((u8 *)resource + 0x28);
+
+    if (*allocation == 0)
+        return;
+    func_02002728(*allocation);
+    *allocation = 0;
+}
+
 /* Release a cell/animation allocation and all four derived table pointers. */
 void func_02070d38(void *resource)
 {

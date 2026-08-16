@@ -562,3 +562,23 @@ void *func_02094430(void *controller)
     Heap_Free(controller);
     return controller;
 }
+
+/* Destroy the alternate scroll-controller variant's two owned arrow
+ * presentations, sprite group, and resource handle without freeing its
+ * caller-owned storage. Returns the original controller. */
+void *func_02094494(void *controller)
+{
+    s32 index;
+
+    FIELD(void *, controller, 0) = data_020f263c;
+    for (index = 0; index < 2; ++index) {
+        void *part = FIELD(void *, controller, 0x64 + index * 4);
+        if (part != 0) {
+            void **vtable = FIELD(void **, part, 0);
+            ((VirtualDestroy)vtable[1])(part);
+        }
+    }
+    GraphicsSpriteGroup_Destroy(FIELD(void *, controller, 0x50));
+    func_02071eb8((u8 *)controller + 0x54);
+    return controller;
+}
