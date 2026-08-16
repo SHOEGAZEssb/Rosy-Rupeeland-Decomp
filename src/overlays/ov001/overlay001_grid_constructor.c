@@ -64,9 +64,9 @@ extern void func_020957f0(void *element, void *sprite, s32 animation,
                            s32 mode, s32 flags);
 extern void func_02095820(void *element, s32 width, s32 height);
 extern void func_02095940(void *element);
-extern void func_020c09cc(void *array, s32 count, s32 elementSize,
-                           s32 alignment, void (*constructor)(void *),
-                           void (*destructor)(void *));
+extern void *func_020c09cc(void *array, s32 count, s32 elementSize,
+                            s32 alignment, void (*constructor)(void *),
+                            void (*destructor)(void *));
 extern void func_ov001_021fc404(void *state, s32 index, s32 initialize);
 #ifdef __cplusplus
 }
@@ -148,8 +148,9 @@ Overlay001GridState *func_ov001_021fbabc(Overlay001GridState *state,
     state->cells_20c = (u8 *)func_02003e20(
         roundedCount * 0x20 + 8, data_ov001_021fcc90, 4, &gHeapContext);
     if (state->cells_20c != 0) {
-        func_020c09cc(state->cells_20c, roundedCount, 0x20, 8,
-                      func_020683c8, func_020683f4);
+        state->cells_20c = (u8 *)func_020c09cc(
+            state->cells_20c, roundedCount, 0x20, 8,
+            func_020683c8, func_020683f4);
     }
     for (index = 0; index < state->cellCount_1a4; index++) {
         u8 *cell = state->cells_20c + index * 0x20;
