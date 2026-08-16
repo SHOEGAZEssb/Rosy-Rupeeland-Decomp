@@ -105,20 +105,21 @@ extern "C" s32 func_ov032_02201670(void *controller)
 }
 
 /*
- * Constructs the detail widget at `widget` for `scene`: clamps the global count
- * to four, creates its sprite controller at +0x18, loads archive resource 0x7006
- * at +0x48, patches three confirmed tilemap halfwords, allocates the 0x80-byte
- * list object at +0x4C, and initializes it for `count+1` rows. Returns void.
+ * Constructs the detail widget at `widget` for `scene`: retains the complete
+ * history count while clamping the last initially visible row to four, creates
+ * its sprite controller at +0x18, loads archive resource 0x7006 at +0x48,
+ * patches three confirmed tilemap halfwords, allocates the 0x80-byte list
+ * object at +0x4C, and initializes it for every history row. Returns void.
  */
 extern "C" void func_ov032_0220173c(void *widget, void *scene)
 {
     FIELD(void *, widget, 0) = scene;
     FIELD(s32, widget, 0x10) = 0;
     FIELD(s32, widget, 8) = 0;
-    s32 count = FIELD(s32, data_021f5f18, 0x460) - 1;
-    FIELD(s32, widget, 0xc) = count;
-    if (count + 1 >= 5) count = 4;
-    FIELD(s32, widget, 0x14) = count;
+    s32 last = FIELD(s32, data_021f5f18, 0x460) - 1;
+    s32 visibleLast = last + 1 >= 5 ? 4 : last;
+    FIELD(s32, widget, 0xc) = last;
+    FIELD(s32, widget, 0x14) = visibleLast;
     func_ov032_02201450((u8 *)widget + 0x18, FIELD(void *, scene, 0), (u8 *)scene + 0x28);
     func_ov032_022014c0((u8 *)widget + 0x18, 0x15, 0x15, 0x78, 0x24, 2, 0, 4, 0);
     FIELD(u16, FIELD(void *, widget, 0x18), 0x24) &= ~4;
@@ -131,7 +132,7 @@ extern "C" void func_ov032_0220173c(void *widget, void *scene)
     FIELD(u16, map, 8) = 0x294a;
     void *list = Heap_Alloc(0x80, (const char *)data_ov032_02202350, 4,
                             &gHeapContext);
-    if (list != 0) list = func_ov032_02201f80(list, data_020f4e14[0], count + 1, 5, 0xd4, 0x28, 0);
+    if (list != 0) list = func_ov032_02201f80(list, data_020f4e14[0], last + 1, 5, 0xd4, 0x28, 0);
     FIELD(void *, widget, 0x4c) = list;
     func_02094550(list, 2);
     func_02094574(list);
