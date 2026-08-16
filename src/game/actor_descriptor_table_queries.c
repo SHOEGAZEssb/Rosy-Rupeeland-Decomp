@@ -206,6 +206,23 @@ s32 func_020629a0(void *self)
     return 0;
 }
 
+#ifndef MATCHING
+/* Return the presentation animation selected by a descriptor. Kind-two
+ * definitions always use animation seven. Other supported kinds map panel
+ * image two to animation nine and every remaining image to animation six.
+ * The descriptor and its definition remain borrowed and are not modified. */
+s32 func_02062ab0(void *self)
+{
+    u8 *definition = *(u8 **)((u8 *)self + 8);
+
+    if (definition[2] == 2)
+        return 7;
+    if (func_020629a0(self) == 2)
+        return 9;
+    return 6;
+}
+#endif
+
 /*
  * Return the localized secondary panel label. Kind one normally selects the
  * resource string at +8, with a fixed empty-subtype label for its zero-value

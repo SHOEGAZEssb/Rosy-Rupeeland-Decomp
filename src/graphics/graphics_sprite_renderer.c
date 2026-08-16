@@ -6,6 +6,18 @@
  * transfer queue used by later frame-building and upload paths.
  */
 
+extern void func_02070860(void *resource);
+extern void *func_02070874(void *resource);
+extern u32 GX_VBlankIntr(u32 enabled);
+
+typedef struct GraphicsSpriteStatePoolPrefix {
+    u32 count;
+    u32 interrupt_state;
+    void *free_head;
+} GraphicsSpriteStatePoolPrefix;
+
+extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
+
 /*
  * Construct every embedded allocator/pool in dependency order, store the three
  * caller configuration words, initialize owner-list and control fields, run
@@ -48,3 +60,43 @@ GraphicsSpriteRenderer *GraphicsSpriteRenderer_Init(GraphicsSpriteRenderer *rend
     renderer->field_18 = 0;
     return renderer;
 }
+
+#ifndef MATCHING
+/* Queue every pending 0x200-byte indexed graphics block at retail 0x02075290.
+ * The renderer retains its resources and descriptor chains; the transfer
+ * queue borrows source buffers until VBlank consumption. IRQ state is restored
+ * after each resource, byte destinations are derived from chain indices, and
+ * field_34 records completion. Repeated calls or disabled renderers are inert. */
+void func_02075290(GraphicsSpriteRenderer *renderer)
+{
+    GraphicsIndexedChainEntry *root;
+
+    if (renderer->field_30 == 0 || renderer->field_34 != 0)
+        return;
+    GraphicsSpriteRenderer_ConfigureObjectDisplay(renderer);
+    root = renderer->indexedPool1.head;
+    while (root != 0) {
+        u8 *resource = (u8 *)root->field_0c;
+        GraphicsIndexedChainEntry *entry = root;
+        u16 count;
+        u32 interrupt_state;
+        u32 index;
+
+        if (*(void **)(resource + 0x14) == 0)
+            func_02070860(resource);
+        interrupt_state = GX_VBlankIntr(0);
+        gGraphicsSpriteStatePool.interrupt_state = interrupt_state;
+        count = *(u16 *)(*(u8 **)(resource + 0x20) + 6);
+        for (index = 0; index < count; ++index) {
+            GraphicsTransferQueue_Enqueue(
+                &renderer->transferQueue, 3,
+                (u8 *)func_02070874(resource) + index * 0x200,
+                (u32)entry->index << 9, 0x200);
+            entry = entry->chainNext;
+        }
+        GX_VBlankIntr(gGraphicsSpriteStatePool.interrupt_state);
+        root = root->next;
+    }
+    renderer->field_34 = 1;
+}
+#endif

@@ -344,6 +344,24 @@ void func_020956f0(void *object)
     func_020956a4(object);
 }
 
+extern void GraphicsAnimationInstance_Destroy(void *instance);
+
+/* Delete the alternate sprite-backed presentation at retail 0x02095634.
+ * The borrowed animation instance is unlinked and destroyed by its graphics
+ * owner, the inert presentation base is finalized, and caller storage returns
+ * to the heap. The former object address is returned as required by retail. */
+void *func_02095634(void *object)
+{
+    u8 *bytes = (u8 *)object;
+
+    *(u32 *)bytes = (u32)(uintptr_t)data_020f26fc;
+    GraphicsAnimationInstance_Destroy(*(void **)(bytes + 0x9c));
+    *(void **)(bytes + 0x9c) = 0;
+    Presentation_DestroyNoOp(object);
+    Heap_Free(object);
+    return object;
+}
+
 /* Set the recovered presentation position triplet (retail 0x02094BBC). */
 void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z)
 {

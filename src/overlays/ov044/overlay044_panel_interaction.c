@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" u8 data_021f3ecc[];
-extern "C" void *gSystemState;
+extern "C" u8 gSystemState[];
 extern "C" void GraphicsSpriteState_ReleaseFromGroup(void *binding);
 extern "C" void GraphicsSpriteCanvas_FillRect(void *font, s32 x, s32 y, s32 color,
                                s32 width, s32 flags);

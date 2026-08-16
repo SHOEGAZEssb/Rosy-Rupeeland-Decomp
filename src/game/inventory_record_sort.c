@@ -98,6 +98,25 @@ s32 func_0206492c(void *collection, u16 id)
     return -1;
 }
 
+#ifndef MATCHING
+/* Find a valid descriptor with the requested ID in the alternate collection
+ * layout at retail 0x0206514C. Records and metadata remain collection-owned;
+ * the function returns the zero-based slot or minus one without side effects. */
+s32 func_0206514c(void *collection, u16 id)
+{
+    u8 *records = FIELD(u8 *, collection, 4);
+    s32 index;
+
+    for (index = 0; index < FIELD(s32, collection, 0x0c); ++index) {
+        u8 *record = records + index * 0x24;
+
+        if (func_02062b28(record) == 0 && FIELD(u16, record, 0) == id)
+            return index;
+    }
+    return -1;
+}
+#endif
+
 /* Find the first invalid/free record slot, or return minus one. */
 s32 func_02064990(void *collection)
 {

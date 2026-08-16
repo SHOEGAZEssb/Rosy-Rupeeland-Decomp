@@ -90,6 +90,24 @@ void *func_02071148(void *self)
     return func_0207039c(self);
 }
 
+/* Heap-deleting resource destructor at retail 0x02071200. The optional base
+ * payload is released first, then the caller-owned header returns to Heap. */
+void *func_02071200(void *self)
+{
+    func_02070204(self);
+    Heap_Free(self);
+    return self;
+}
+
+/* Equivalent deleting destructor retained at retail 0x02071278 for the
+ * adjacent resource subtype and its distinct vtable entry. */
+void *func_02071278(void *self)
+{
+    func_02070204(self);
+    Heap_Free(self);
+    return self;
+}
+
 /* Derived deleting destructor; frees decoded data at +0x28, the base payload,
  * and finally the header through the archive allocator. */
 void *func_020707d4(void *self)
