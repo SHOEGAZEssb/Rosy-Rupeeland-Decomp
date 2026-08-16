@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void *data_ov044_0220d31c;
+extern "C" u32 data_ov044_0220d31c[];
 extern "C" u32 data_020f4e14;
 extern "C" void *gDebugFont;
 extern "C" void func_ov044_0220b8e4(void *panel);

@@ -8,7 +8,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void *data_ov044_0220d31c;
+extern "C" u32 data_ov044_0220d31c[];
 extern "C" u32 data_020f4e18;
 extern "C" u32 data_020f4e14;
 extern "C" const u8 data_ov044_0220d340[];

@@ -34,7 +34,8 @@ extern "C" void func_ov001_021fb81c(void *preview, s32 mode);
 extern "C" void func_ov044_0220c74c(void *object, u32 messageId)
 {
     GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 6, 0xff, 0x16, 0);
-    GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)object + 0x54);
+    GraphicsSpriteRenderer_SetFontResource(gDebugFont,
+                                           FIELD(void *, object, 0x54));
     const void *text = func_020791e0(data_021f3ecc, (u16)messageId);
     s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, text, 8, 0);
     text = func_020791e0(data_021f3ecc, (u16)messageId);

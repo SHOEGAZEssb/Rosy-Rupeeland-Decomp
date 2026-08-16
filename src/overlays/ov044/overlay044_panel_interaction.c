@@ -71,7 +71,8 @@ extern "C" void func_ov044_0220bba4(void *object)
         s32 index = FIELD(s32, child, 0xc) + visible;
         if (index >= FIELD(s32, object, 0x40))
             break;
-        GraphicsSpriteRenderer_SetFontResource(font, (u8 *)object + 0x14);
+        GraphicsSpriteRenderer_SetFontResource(font,
+                                               FIELD(void *, object, 0x14));
         void *record = (u8 *)FIELD(void *, object, 0x38) + index * 0x20;
         s32 y = (visible + 1) * 24;
         if (func_ov044_0220bb48(record, 1)) {
