@@ -9,6 +9,7 @@ extern const u16 data_020f25a4[];
 extern void *data_020f4e18;
 extern void *gGameWork;
 extern void *gSoundContext;
+extern u8 data_021f3d68[];
 extern void *func_02071ea4(void *state);
 extern void func_02071ee0(void *state, void *archive, u32 character_id,
                          u32 palette_id, u32 screen_id);
@@ -45,6 +46,7 @@ extern u32 func_02063064(void *component);
 extern u32 func_02063074(void *component);
 extern u32 func_02063084(void *component);
 extern s32 func_02063190(void *component);
+extern u8 *func_02079a7c(void *table, u32 key);
 
 void *func_02092cc0(void *object, void *font, void *text_resource)
 {
@@ -198,13 +200,37 @@ void func_02092fa4(void *object)
 }
 
 /*
+ * Expand runtime-record +0x18 into the dialog's 31-code-unit inline buffer
+ * (retail 0x0209317C). The record is selected by the u16 identifier retained
+ * at controller +0xE4. The source remains owned by the runtime record table;
+ * the controller redirects its cursor to the bounded, terminated copy until
+ * the saved resource-string cursor at +0x40 resumes the surrounding text.
+ */
+void func_0209317c(void *object)
+{
+    u8 *bytes = (u8 *)object;
+    const u16 *source = (const u16 *)(
+        func_02079a7c(data_021f3d68, (u16)*(u32 *)(bytes + 0xe4)) + 0x18);
+    u16 *destination = (u16 *)(bytes + 0x64);
+    s32 index = 0;
+
+    while (index < 0x1f && source[index] != 0) {
+        destination[index] = source[index];
+        ++index;
+    }
+    destination[index] = 0;
+    *(const u16 **)(bytes + 0x3c) = destination;
+}
+
+/*
  * Execute the ordinary-text, line-control, and input-gated page-wait portion
  * of the shared dialog VM at 0x02093360. Input halfword 1 uses bit 1 to reveal
  * the current page immediately and bit 0 to dismiss the animated wait marker.
  * Control codes EE02 and EE0B enter that wait state; they differ only in the
  * retained flag bit used by callers. The recovered timing, external-string,
  * drawing-mode, and sound controls preserve the retail cursor and return
- * stack, including row 7's player-name pointer at object offset 0x60.
+ * stack, including row 7's player-name pointer at object offset 0x60 and
+ * runtime-record label expansion through EE0C/EE0D.
  */
 s32 func_02093360(void *object, const void *input)
 {
@@ -352,7 +378,18 @@ s32 func_02093360(void *object, const void *input)
                     *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
                 func_02092fa4(object);
                 break;
-            case 0xee0c: case 0xee0d: case 0xee0f: case 0xee12:
+            case 0xee0c:
+                *(const u16 **)(bytes + 0x40) = cursor + 1;
+                *(u32 *)(bytes + 0xe4) = *cursor;
+                func_0209317c(object);
+                break;
+            case 0xee0d:
+                *(const u16 **)(bytes + 0x40) = cursor + 1;
+                *(s32 *)(bytes + 0xe4) =
+                    *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
+                func_0209317c(object);
+                break;
+            case 0xee0f: case 0xee12:
                 *(const u16 **)(bytes + 0x3c) = cursor + 1;
                 break;
             case 0xee0e:
