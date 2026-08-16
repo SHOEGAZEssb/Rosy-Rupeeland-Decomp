@@ -63,8 +63,8 @@ s32 GamePhaseActorScriptVm_LookupDirectionTowardCoordinates(GamePhaseActorScript
     s32 targetY = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 targetX = (s32)GamePhaseScriptVm_Pop(&self->base);
     VecFx32Object *position = (VecFx32Object *)((u8 *)self->actor + 0x18);
-    s32 angle = func_020ae024((targetX << 12) - position->value.x,
-                             (targetY << 12) - position->value.y);
+    s32 angle = func_020ae024((targetY << 12) - position->value.y,
+                             (targetX << 12) - position->value.x);
     GamePhaseScriptVm_SetResult(&self->base, data_020d5af8[((u32)angle << 4) >> 16]);
     return 0;
 }
