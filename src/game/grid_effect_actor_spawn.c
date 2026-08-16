@@ -17,11 +17,11 @@ extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void 
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
 extern void **GridEffectActorRegistry_AcquireSlot(void);
 extern void func_02062728(void *subobject, void *source);
-extern void func_02062918(void *source, s32 index);
-extern u32 func_02063064(void);
-extern u32 func_02063074(void);
-extern u32 func_02063084(void);
-extern u32 func_02063190(void);
+extern void *func_02062918(void *source, s32 index);
+extern u32 func_02063064(void *component);
+extern u32 func_02063074(void *component);
+extern u32 func_02063084(void *component);
+extern u32 func_02063190(void *component);
 #ifdef __cplusplus
 }
 #endif
@@ -47,18 +47,20 @@ void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer)
     u32 resource1;
     u32 resource2;
     u32 resource3;
+    void *component;
 
     if (slot == 0)
         return 0;
 
-    func_02062918(source, 0);
-    resource0 = func_02063064();
-    func_02062918(source, 0);
-    resource1 = func_02063074();
-    func_02062918(source, 0);
-    resource2 = func_02063084();
-    func_02062918(source, 0);
-    resource3 = func_02063190();
+
+    component = func_02062918(source, 0);
+    resource0 = func_02063064(component);
+    component = func_02062918(source, 0);
+    resource1 = func_02063074(component);
+    component = func_02062918(source, 0);
+    resource2 = func_02063084(component);
+    component = func_02062918(source, 0);
+    resource3 = func_02063190(component);
 
     ActorSpawnDescriptor_Init(descriptor, 4, 20,
                   resource0, resource1, resource2, 2, resource3,

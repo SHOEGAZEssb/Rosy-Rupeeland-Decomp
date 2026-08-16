@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /*
  * Recovered resource setup for the grid/effect actor. It allocates a small
@@ -7,17 +8,15 @@
  */
 
 extern const u8 gGridEffectActorAnimationResourceAllocationTag[];
-extern void *gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
 extern void *AnimationResource_Init(void *storage, u32 resource0, u32 resource1,
                            u32 resource2);
-extern void *ActorCollection_GetSpriteOwner(void);
+extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void func_020313b4(void *actor, void *bundle, u32 mode);
-extern void Actor_GetCollection(void *actor);
+extern void *Actor_GetCollection(void *actor);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
@@ -38,7 +37,12 @@ extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, voi
  */
 void GridEffectActor_SetupPresentationResources(void *actor, const void *descriptor)
 {
-    void *bundle = Heap_Alloc(0x10, gGridEffectActorAnimationResourceAllocationTag, 4, gHeapContext);
+    void *bundle = Heap_Alloc(
+        0x10, (const char *)gGridEffectActorAnimationResourceAllocationTag,
+        4, &gHeapContext);
+    void *collection;
+    void *owner;
+
     if (bundle != 0) {
         bundle = AnimationResource_Init(bundle,
                               FIELD(u32, descriptor, 4),
@@ -46,13 +50,13 @@ void GridEffectActor_SetupPresentationResources(void *actor, const void *descrip
                               FIELD(u32, descriptor, 12));
     }
     FIELD(void *, actor, 0x1ec) = bundle;
-    Actor_GetCollection(actor);
+    collection = Actor_GetCollection(actor);
+    owner = ActorCollection_GetSpriteOwner(collection);
     void *presentation = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(), FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
+        owner, FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
         FIELD(void *, bundle, 12), FIELD(u8, descriptor, 0x10));
     FIELD(void *, actor, 0x54) = presentation;
     func_020313b4(actor, bundle, FIELD(u8, descriptor, 0x10));
     GraphicsSpriteState_SetAnimationIndex(presentation, FIELD(u8, descriptor, 0x11));
     FIELD(u16, presentation, 0x24) |= 6;
 }
-

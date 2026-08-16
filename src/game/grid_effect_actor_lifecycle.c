@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
 extern void func_02022fbc(void *subobject);
-extern void *func_02030f98(void *actor);
+extern void *func_02030f98(void *actor, const void *descriptor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
@@ -25,15 +25,16 @@ extern void GridEffectActorRegistry_Unregister(void *actor);
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
 /*
- * Input is actor storage. Construct the inherited actor, install
+ * Inputs are actor storage and its borrowed spawn descriptor. Construct the
+ * inherited actor, install
  * gGridEffectActorVtable, clear the pointer at 0x1EC, the bitfield halfword at 0x1F0,
  * and counter 0x1F2, initialize the subobject at 0x1F4, then set bytes 0x21A
  * and 0x21B to -1 and zero. Return self. Parent/subobject engine state changes;
  * no hardware is accessed directly.
  */
-void *GridEffectActor_Init(void *self)
+void *GridEffectActor_Init(void *self, const void *descriptor)
 {
-    func_02030f98(self);
+    func_02030f98(self, descriptor);
     FIELD(const void *, self, 0) = gGridEffectActorVtable;
     FIELD(void *, self, 0x1ec) = 0;
     FIELD(u16, self, 0x1f0) = 0;

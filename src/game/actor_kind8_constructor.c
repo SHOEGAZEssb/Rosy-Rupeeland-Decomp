@@ -214,8 +214,9 @@ s32 func_02057834(void *self)
     *(u32 *)(descriptor + 0x18) = 1;
     *(void **)(descriptor + 0x1c) = descriptor;
     *(u32 *)(descriptor + 0x20) = 0;
-    func_020627a0(descriptor,
-                  *(u16 *)(*(u8 **)(request + 0) + 0x14), 0);
+    func_020627a0(
+        descriptor,
+        *(u16 *)*(u8 **)(*(u8 **)(request + 0) + 0x14), 0);
 
     VecFx32Object_InitCopy(&position,
                            (const VecFx32Object *)(request + 4));
@@ -470,17 +471,17 @@ void func_0205878c(void *self, s32 enabled)
 
 /*
  * Advance the kind-eight actor's interaction presentations (retail
- * 0x02057EE4). A zero +0x3DC state retires completed linked-list payloads.
- * Otherwise the active descriptor's progression flag controls visibility,
- * presentation records are refreshed, and the mode selects either one or all
- * twelve embedded animation states. The frame counters use retail frame units
- * and the descriptor and GameWork storage remain borrowed.
+ * 0x02057EE4). A nonzero +0x3DC count advances and retires linked-list
+ * payloads; an empty list refreshes presentation visibility from the active
+ * descriptor's progression flag. After either path, the descriptor mode
+ * selects one or all twelve embedded idle-animation states. The frame counters
+ * use retail frame units and descriptor/GameWork storage remains borrowed.
  */
 void func_02057ee4(void *self)
 {
     u8 *actor = (u8 *)self;
 
-    if (*(u32 *)(actor + 0x3dc) == 0) {
+    if (*(u32 *)(actor + 0x3dc) != 0) {
         u8 *node = *(u8 **)(actor + 0x3d4);
 
         while (node != 0) {
@@ -503,17 +504,20 @@ void func_02057ee4(void *self)
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
         s32 enabled = *(s32 *)(actor + 0x3c0) == -1 ||
             GameWork_TestFlag(gGameWork, *(s32 *)(actor + 0x3c0));
-        u32 mode;
-        s32 index;
 
         func_0207811c(record, enabled);
         func_0205878c(actor, enabled);
         func_020587d8(actor, 1);
+    }
 
-        runtime = *(u8 **)data_021052fc;
-        tableIndex = **(s32 **)(runtime + 0x30bc);
-        record = (u8 *)func_02078418(
+    {
+        u8 *runtime = *(u8 **)data_021052fc;
+        s32 tableIndex = **(s32 **)(runtime + 0x30bc);
+        u8 *record = (u8 *)func_02078418(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
+        u32 mode;
+        s32 index;
+
         mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
         if (mode == 4 || mode == 5) {
             func_020576c4(actor + 0x1fc);

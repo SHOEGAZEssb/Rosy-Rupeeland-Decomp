@@ -15,6 +15,171 @@ typedef struct InventoryRecordCollection {
 } InventoryRecordCollection;
 
 extern s32 func_02062b28(void *record);
+extern void func_02062864(void *record, u16 count);
+extern void func_020627d0(void *record, u16 id, u16 subtype, u16 count);
+extern void *func_02063b90(void *database, u16 id);
+void func_02064b1c(void *collection, s32 first, s32 second);
+extern void OS_Halt(void);
+extern u8 data_021e9ad0[];
+
+/* Return the borrowed metadata pointer stored by an inventory record. */
+void *func_02062e00(void *record)
+{
+    return FIELD(void *, record, 8);
+}
+
+/* Return one when a valid inventory record carries the requested ID. */
+s32 func_02062b74(void *record, u16 id)
+{
+    if (func_02062b28(record) != 0)
+        return 0;
+    return FIELD(u16, record, 0) == id;
+}
+
+/*
+ * Return whether a record's metadata class permits quantities to merge.
+ * Types one and two are unique; type zero merges, while type three follows
+ * the nonzero byte-three flag in its borrowed detail record.
+ */
+s32 func_02062ba4(void *record)
+{
+    u8 *metadata = FIELD(u8 *, record, 8);
+
+    switch (metadata[2]) {
+    case 0:
+        return 1;
+    case 1:
+    case 2:
+        return 0;
+    case 3:
+        return (*(u8 **)(metadata + 8))[3] != 0;
+    default:
+        OS_Halt();
+        return 0;
+    }
+}
+
+/*
+ * Copy an incoming record into an empty collection slot. Type-one records
+ * retain their subtype; other classes resolve metadata by ID and copy only
+ * the clamped quantity fields used by retail inventory storage.
+ */
+void func_02062744(void *destination, const void *source)
+{
+    u8 *metadata = FIELD(u8 *, source, 8);
+    u16 id = FIELD(u16, source, 0);
+
+    if (metadata[2] == 1) {
+        func_020627d0(destination, id, FIELD(u16, source, 6),
+                      FIELD(u16, source, 4));
+        return;
+    }
+    FIELD(u16, destination, 0) = id;
+    FIELD(void *, destination, 8) = func_02063b90(data_021e9ad0, id);
+    func_02062864(destination, FIELD(u16, source, 4));
+}
+
+/* Find the first valid record with the requested ID, or return minus one. */
+s32 func_0206492c(void *collection, u16 id)
+{
+    u8 *records = FIELD(u8 *, collection, 8);
+    s32 index;
+
+    for (index = 0; index < FIELD(s32, collection, 0x10); ++index) {
+        u8 *record = records + index * 0x24;
+
+        if (func_02062b74(record, id) != 0)
+            return index;
+    }
+    return -1;
+}
+
+/* Find the first invalid/free record slot, or return minus one. */
+s32 func_02064990(void *collection)
+{
+    u8 *records = FIELD(u8 *, collection, 8);
+    s32 index;
+
+    for (index = 0; index < FIELD(s32, collection, 0x10); ++index) {
+        if (func_02062b28(records + index * 0x24) != 0)
+            return index;
+    }
+    return -1;
+}
+
+/* Move the first free slot to index zero by adjacent record swaps. */
+void func_020649d4(void *collection)
+{
+    s32 index = func_02064990(collection);
+
+    if (index == -1) {
+        OS_Halt();
+        return;
+    }
+    while (index > 0) {
+        func_02064b1c(collection, index, index - 1);
+        --index;
+    }
+}
+
+/* Add a signed quantity delta and apply the retail 99-unit clamp. */
+void func_02064ad8(void *record, s32 delta)
+{
+    func_02062864(record, (u16)(FIELD(u16, record, 4) + delta));
+}
+
+/*
+ * Return whether the collection can accept incoming. Mergeable records fit
+ * when their ID already exists or the collection has a free counted slot;
+ * unique records additionally require quantity one and no existing ID.
+ */
+s32 func_02064884(void *collection, void *incoming)
+{
+    u8 *metadata = (u8 *)func_02062e00(incoming);
+    s32 index;
+
+    if (metadata[2] != 0)
+        (void)func_02062e00(incoming);
+    index = func_0206492c(collection, FIELD(u16, metadata, 0));
+    if (func_02062ba4(incoming) != 0) {
+        return index >= 0 ||
+               FIELD(s32, collection, 0x14) <
+                   FIELD(s32, collection, 0x10);
+    }
+    return FIELD(u16, incoming, 4) == 1 && index < 0 &&
+           FIELD(s32, collection, 0x14) < FIELD(s32, collection, 0x10);
+}
+
+/*
+ * Merge or insert one inventory record and return the affected slot. New
+ * records are inserted into the free slot moved to index zero; retail returns
+ * the sentinel record immediately before the array for that insertion path.
+ * The collection owns its record array and borrowed metadata references.
+ */
+void *func_02064a18(void *collection, void *incoming)
+{
+    u8 *records = FIELD(u8 *, collection, 8);
+    s32 index = -1;
+
+    if (func_02064884(collection, incoming) == 0)
+        return 0;
+    if (func_02062ba4(incoming) != 0) {
+        u8 *metadata = FIELD(u8 *, incoming, 8);
+
+        index = func_0206492c(collection, FIELD(u16, metadata, 0));
+        if (index >= 0) {
+            u8 *record = records + index * 0x24;
+
+            func_02064ad8(record, FIELD(s16, incoming, 4));
+            return record;
+        }
+    }
+
+    func_020649d4(collection);
+    func_02062744(records, incoming);
+    ++FIELD(s32, collection, 0x14);
+    return records + index * 0x24;
+}
 
 /* Return flag bit one from a valid record's +0x02 status halfword. Invalid
  * records return zero. The record is borrowed and this query has no effects. */

@@ -11,7 +11,8 @@ extern const u8 gSceneTouchInitialData[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031758(const void *source, void *actor);
+extern void func_02031758(const void *source, void *actor,
+                          const void *transform);
 extern void func_02031cac(void *actor, const void *touch_data);
 #ifdef __cplusplus
 }
@@ -26,15 +27,17 @@ typedef struct RecoveredTouchData {
 } RecoveredTouchData;
 
 /*
- * Inputs are a source record and an actor. Run the inherited func_02031758
- * callback with both original inputs. If actor pointer 0x58 is non-null, build
+ * Inputs are a source record, actor, and borrowed presentation transform. Run
+ * the inherited func_02031758 callback with all three original inputs. If
+ * actor pointer 0x58 is non-null, build
  * a three-word record containing gSceneTouchInitialData and source words 1..2,
  * then pass it to func_02031cac. Returns nothing; actor touch state may change
  * and no hardware is accessed directly.
  */
-void GridEffectActor_ApplyTouchData(const void *source, void *actor)
+void GridEffectActor_ApplyTouchData(const void *source, void *actor,
+                                    const void *transform)
 {
-    func_02031758(source, actor);
+    func_02031758(source, actor, transform);
     if (FIELD(void *, actor, 0x58) != 0) {
         RecoveredTouchData data;
         data.initial_data = gSceneTouchInitialData;
