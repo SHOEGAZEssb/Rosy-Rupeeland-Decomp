@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /*
  * Overlay 43 subscene transitions. These recovered state machines suspend the
@@ -10,7 +11,6 @@
 
 extern "C" void *data_020f4e14;
 extern "C" void *gDebugFont;
-extern "C" void *gHeapContext;
 extern "C" void *gGameWork;
 extern "C" u8 data_ov043_0220c4d0[];
 extern "C" u8 data_ov043_0220c4d8[];
@@ -25,8 +25,7 @@ extern "C" void func_ov043_0220bd24(void *object);
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void OverlaySlot_LoadOverlay(void *object, s32 value);
 extern "C" void OverlaySlot_UnloadOverlay(void *object);
-extern "C" void *Heap_Alloc(s32 size, const void *tag, void *heap);
-extern "C" void *func_ov023_021fe77c(void *storage, s32 page, s32 gameValue);
+extern "C" void *func_ov016_021fe77c(void *storage, s32 page, s32 gameValue);
 extern "C" void *func_ov017_021feab4(void *storage, s32 count,
                                       const u32 *values, s32 selected,
                                       s32 gameValue);
@@ -94,9 +93,10 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         OverlaySlot_LoadOverlay((u8 *)object + 0x2dc, 0);
         OverlaySlot_LoadOverlay((u8 *)object + 0x2e8, 16);
         {
-            void *child = Heap_Alloc(0x488, data_ov043_0220c4d0, gHeapContext);
+            void *child = Heap_Alloc(0x488, (const char *)data_ov043_0220c4d0,
+                                     4, &gHeapContext);
             if (child)
-                child = func_ov023_021fe77c(child,
+                child = func_ov016_021fe77c(child,
                                             FIELD(s32, object, 0x58),
                                             FIELD(s32, object, 0x54));
             FIELD(void *, object, 0x2f4) = child;
@@ -182,7 +182,8 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         }
         OverlaySlot_LoadOverlay((u8 *)object + 0x2e8, 17);
         {
-            void *child = Heap_Alloc(0x444, data_ov043_0220c4d8, gHeapContext);
+            void *child = Heap_Alloc(0x444, (const char *)data_ov043_0220c4d8,
+                                     4, &gHeapContext);
             if (child)
                 child = func_ov017_021feab4(child,
                                             FIELD(s32, object, 0x298),

@@ -69,8 +69,8 @@ static void overlay016_release_scene(void *state)
 
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
-    GraphicsSpriteRenderer_QueuePaletteUploads(FIELD(void *, data_020f4e14, 0));
-    GraphicsSpriteRenderer_QueuePaletteUploads(FIELD(void *, gDebugFont, 0));
+    GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
+    GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
 
     func_ov016_021fe0d4((u8 *)state + 0x398);
     func_ov016_021fe0d4((u8 *)state + 0x2ec);

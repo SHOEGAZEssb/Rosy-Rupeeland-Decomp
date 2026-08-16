@@ -53,7 +53,8 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
     FIELD(s32, state, 0xe0) = (index + 1) * 5;
     FIELD(u32, state, 0xe4) = data_ov016_02201394[index];
     FIELD(void *, state, 0xcc) = 0;
-    FIELD(void *, state, 0x18) = GraphicsSpriteGroupOwner_CreateGroup(FIELD(void *, data_020f4e14, 0));
+    FIELD(void *, state, 0x18) =
+        GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     func_02071ee0(state, data_020f4e18, 0xd, 0xe, 0xf);
     func_02071ee0((u8 *)state + 0xc, data_020f4e18, 0x19, 0x1a, 0x1b);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x18), state, 1);

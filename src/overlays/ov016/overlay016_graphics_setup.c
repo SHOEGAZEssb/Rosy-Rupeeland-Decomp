@@ -94,8 +94,8 @@ extern "C" void func_ov016_021fedc4(void *state)
     handle = func_02092790(&manager, 1);
     func_02070eac(handle, 1, 0);
 
-    mainFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(FIELD(void *, data_020f4e14, 0));
-    debugFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(FIELD(void *, gDebugFont, 0));
+    mainFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
+    debugFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);
     FIELD(u16, debugFont, 6) = FIELD(u16, mainFont, 0xe);
     FIELD(u16, mainFont, 6) = FIELD(u16, mainFont, 0xe);
     FIELD(u16, debugFont, 8) = FIELD(u16, mainFont, 0x1e);

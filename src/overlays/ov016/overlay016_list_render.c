@@ -60,7 +60,7 @@ extern "C" void func_ov016_021fd3f8(void *state)
 
             GraphicsSpriteRenderer_DrawText(font, func_020628c8((u8 *)metadata + 4), 0x44,
                           (slot + 1) * 0x18, textColor, 4, 0);
-            value = func_020651a4((u8 *)FIELD(void *, data_021e9ac0, 0) + 0x1c,
+            value = func_020651a4((u8 *)data_021e9ac0 + 0x1c,
                                   FIELD(u16, metadata, 4));
             if (gSystemState[0x5f] != 0) {
                 baseline -= 2;

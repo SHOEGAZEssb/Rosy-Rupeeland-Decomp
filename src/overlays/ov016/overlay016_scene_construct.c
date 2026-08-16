@@ -17,7 +17,7 @@ extern void *gGameWork;
 extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *, s32);
-extern void func_02064be0(void *);
+extern void func_02064be0(void *, s32);
 extern void func_02071ea4(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -90,7 +90,7 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 owner, s32 mode)
     FIELD(u32, state, 0x480) = 0;
     FIELD(u32, state, 0x484) = 1;
 
-    func_02064be0(FIELD(void *, data_021e9ac0, 0));
+    func_02064be0(data_021e9ac0, 0);
     func_02092754((u8 *)state + 0x84, 0x801b);
     func_02092754((u8 *)state + 0x84, 0x801c);
     func_02092754((u8 *)state + 0x84, 0x8010);
@@ -100,7 +100,8 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 owner, s32 mode)
     func_02092814((u8 *)state + 0x60, 0x7001);
     func_02071ee0((u8 *)state + 0xc8, data_020f4e18, 0xd, 0xe, 0xf);
     func_02071ee0((u8 *)state + 0xd4, data_020f4e18, 0x1c, 0x1d, 0x1e);
-    FIELD(void *, state, 0xe0) = GraphicsSpriteGroupOwner_CreateGroup(FIELD(void *, data_020f4e14, 0));
+    FIELD(void *, state, 0xe0) =
+        GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     func_ov016_021ff288(state);
     func_ov016_021fedc4(state);
 

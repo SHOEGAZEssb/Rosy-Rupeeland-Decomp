@@ -101,6 +101,69 @@ void *func_02064b7c(void *destination, const void *source)
     return destination;
 }
 
+/* Swap the assignable fields of two indexed records in the +0x08 table. */
+void func_02064b1c(void *collection, s32 first, s32 second)
+{
+    u8 temporary[0x24];
+    u8 *records;
+
+    if (first == second)
+        return;
+    records = FIELD(u8 *, collection, 8);
+    func_02064b7c(temporary, records + first * 0x24);
+    func_02062728(records + first * 0x24, records + second * 0x24);
+    func_02062728(records + second * 0x24, temporary);
+}
+
+/*
+ * Reorder the +0x08 record table whose count is at +0x10. Mode zero moves
+ * invalid records behind valid entries. Modes one and two bubble-sort by the
+ * retail key using key variants zero and one respectively. The operation is
+ * synchronous and mutates only the caller-owned record table.
+ */
+void func_02064be0(void *collection, s32 mode)
+{
+    s32 count = FIELD(s32, collection, 0x10);
+    u8 *records = FIELD(u8 *, collection, 8);
+    s32 outer;
+
+    if (count <= 1)
+        return;
+    if (mode == 0) {
+        for (outer = 0; outer < count - 1; ++outer) {
+            s32 inner;
+            s32 swapped = 0;
+
+            if (func_02062b28(records + outer * 0x24) == 0)
+                continue;
+            for (inner = outer + 1; inner < count; ++inner) {
+                if (func_02062b28(records + inner * 0x24) == 0) {
+                    func_02064b1c(collection, outer, inner);
+                    swapped = 1;
+                    break;
+                }
+            }
+            if (!swapped)
+                return;
+        }
+    } else if (mode == 1 || mode == 2) {
+        s32 key_mode = mode - 1;
+
+        for (outer = 0; outer < count; ++outer) {
+            s32 inner;
+
+            for (inner = count - 1; inner > outer; --inner) {
+                u32 current = func_02062f18(records + inner * 0x24,
+                                             key_mode);
+                u32 previous = func_02062f18(records + (inner - 1) * 0x24,
+                                              key_mode);
+                if (current < previous)
+                    func_02064b1c(collection, inner, inner - 1);
+            }
+        }
+    }
+}
+
 /* Swap the assignable fields of two indexed collection records in place. */
 void func_020654ac(InventoryRecordCollection *collection,
                    s32 first, s32 second)
