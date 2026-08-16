@@ -1,6 +1,8 @@
 #include "tingle/types.h"
 
 extern void OS_Halt(void);
+extern const u8 data_020ea650[];
+extern const u8 data_020ea65c[];
 
 /*
  * Find an identifier in the retail text/resource table. Records are borrowed
@@ -22,6 +24,27 @@ u8 *func_02079f3c(void *self, u16 identifier)
         if (*(u16 *)record == identifier)
             return record;
         ++index;
+    }
+    OS_Halt();
+    return 0;
+}
+
+/*
+ * Map one of the 36 signed auxiliary identifiers to its localized text record
+ * (retail 0x0207A00C). Each 0x18-byte mapping row supplies a text identifier;
+ * return the borrowed UTF-16 payload after the record's identifier halfword.
+ * An unknown auxiliary identifier is a retail invariant violation.
+ */
+const u16 *func_0207a00c(void *text_table, s32 identifier)
+{
+    s32 index;
+
+    for (index = 0; index < 0x24; ++index) {
+        const u8 *mapping = data_020ea650 + index * 0x18;
+        if (*(const s16 *)mapping == identifier) {
+            u16 text_id = *(const u16 *)(data_020ea65c + index * 0x18);
+            return (const u16 *)(func_02079f3c(text_table, text_id) + 2);
+        }
     }
     OS_Halt();
     return 0;

@@ -23,6 +23,33 @@ extern void OS_Halt(void);
 extern void *func_02063b90(void *database, u16 id);
 extern void func_020634b0(void *manager);
 
+/* Return the 0x10C-byte phase record whose leading halfword matches id
+ * (retail 0x0206F360). The database retains ownership; a missing identifier
+ * is a retail invariant violation and reaches the halt boundary. */
+void *func_0206f360(void *database_pointer, u16 id)
+{
+    u8 *database = (u8 *)database_pointer;
+    u8 *records = *(u8 **)database;
+    u32 count = *(u32 *)(database + 8);
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *record = records + index * 0x10c;
+        if (*(u16 *)record == id)
+            return record;
+    }
+    OS_Halt();
+    return 0;
+}
+
+/* Store the phase record selected from the global phase database into the
+ * caller's borrowed pointer slot (retail 0x0206FA70). The identifier is
+ * truncated to u16 exactly as in retail; no allocation or hardware I/O occurs. */
+void func_0206fa70(void **destination, u16 id)
+{
+    *destination = func_0206f360(data_021e9de8, id);
+}
+
 static u16 ReadU16(const u8 *bytes)
 {
     return (u16)(bytes[0] | ((u16)bytes[1] << 8));
@@ -163,7 +190,6 @@ void func_0206f780(void)
     func_0206f7bc(data_021e9e00);
     func_020634b0(*(void **)data_021e9ac0);
 }
-
 
 
 

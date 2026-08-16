@@ -10,6 +10,7 @@ extern void *data_020f4e18;
 extern void *gGameWork;
 extern void *gSoundContext;
 extern u8 data_021f3d68[];
+extern u8 data_021f3ecc[];
 extern void *func_02071ea4(void *state);
 extern void func_02071ee0(void *state, void *archive, u32 character_id,
                          u32 palette_id, u32 screen_id);
@@ -47,6 +48,8 @@ extern u32 func_02063074(void *component);
 extern u32 func_02063084(void *component);
 extern s32 func_02063190(void *component);
 extern u8 *func_02079a7c(void *table, u32 key);
+extern const u16 *func_0207a00c(void *text_table, s32 identifier);
+extern void func_0206fa70(void **destination, u16 id);
 
 void *func_02092cc0(void *object, void *font, void *text_resource)
 {
@@ -199,6 +202,19 @@ void func_02092fa4(void *object)
     *(const u16 **)(bytes + 0x3c) = destination;
 }
 
+static void CopyInlineDialogLabel(u8 *bytes, const u16 *source)
+{
+    u16 *destination = (u16 *)(bytes + 0x64);
+    s32 index = 0;
+
+    while (index < 0x1f && source[index] != 0) {
+        destination[index] = source[index];
+        ++index;
+    }
+    destination[index] = 0;
+    *(const u16 **)(bytes + 0x3c) = destination;
+}
+
 /*
  * Expand runtime-record +0x18 into the dialog's 31-code-unit inline buffer
  * (retail 0x0209317C). The record is selected by the u16 identifier retained
@@ -211,15 +227,51 @@ void func_0209317c(void *object)
     u8 *bytes = (u8 *)object;
     const u16 *source = (const u16 *)(
         func_02079a7c(data_021f3d68, (u16)*(u32 *)(bytes + 0xe4)) + 0x18);
-    u16 *destination = (u16 *)(bytes + 0x64);
-    s32 index = 0;
 
-    while (index < 0x1f && source[index] != 0) {
-        destination[index] = source[index];
-        ++index;
-    }
-    destination[index] = 0;
-    *(const u16 **)(bytes + 0x3c) = destination;
+    CopyInlineDialogLabel(bytes, source);
+}
+
+/* Expand the localized auxiliary-record label selected by controller +0xE4
+ * into the inline dialog buffer (retail 0x020931E4). The lookup and source
+ * remain game-owned; the copied text is bounded to 31 UTF-16 code units. */
+void func_020931e4(void *object)
+{
+    u8 *bytes = (u8 *)object;
+    const u16 *source = func_0207a00c(data_021f3ecc,
+                                      *(s32 *)(bytes + 0xe4));
+
+    CopyInlineDialogLabel(bytes, source);
+}
+
+/*
+ * Expand the phase/recipe label selected by controller +0xE4 and append its
+ * retail inline icon pair (retail 0x02093248). Sprite groups and the resource
+ * triplet are controller-owned; the phase record and localized label remain
+ * borrowed. Cursor X advances by 32 pixels before the bounded label stream is
+ * installed, preserving the visible text and icon layout.
+ */
+void func_02093248(void *object)
+{
+    u8 *bytes = (u8 *)object;
+    void *record;
+    void *sprite;
+    const u16 *label;
+
+    GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
+    func_02071f38(bytes + 0x20);
+    func_0206fa70(&record, (u16)*(u32 *)(bytes + 0xe4));
+    func_02071ee0(bytes + 0x20, data_020f4e18,
+                  0xd084, 0xd081, 0xd082);
+    *(s32 *)(bytes + 0xdc) += 0x10;
+    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
+    func_02073e48(sprite, 0, *(s32 *)(bytes + 0xdc),
+                  *(s32 *)(bytes + 0xe0), 0, 0, 0);
+    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
+    func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
+                  *(s32 *)(bytes + 0xe0), 1, 0, 0);
+    *(s32 *)(bytes + 0xdc) += 0x10;
+    label = (const u16 *)func_020628c8((u8 *)record + 4);
+    CopyInlineDialogLabel(bytes, label);
 }
 
 /*
@@ -308,7 +360,7 @@ s32 func_02093360(void *object, const void *input)
             continue;
         }
         if (character >= 0xee00 && character <= 0xee14) {
-            /* Unrecovered resource-record variants remain cursor-aligned. */
+            /* Resource-record variants save the surrounding-string cursor. */
             switch (character) {
             case 0xee01:
                 GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
@@ -389,8 +441,17 @@ s32 func_02093360(void *object, const void *input)
                     *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
                 func_0209317c(object);
                 break;
-            case 0xee0f: case 0xee12:
-                *(const u16 **)(bytes + 0x3c) = cursor + 1;
+            case 0xee0f:
+                *(const u16 **)(bytes + 0x40) = cursor + 1;
+                *(s32 *)(bytes + 0xe4) =
+                    *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
+                func_020931e4(object);
+                break;
+            case 0xee12:
+                *(const u16 **)(bytes + 0x40) = cursor + 1;
+                *(s32 *)(bytes + 0xe4) =
+                    *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
+                func_02093248(object);
                 break;
             case 0xee0e:
                 *(u32 *)(bytes + 0xe8) = *cursor++;
