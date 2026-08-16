@@ -50,7 +50,8 @@ extern "C" void func_ov016_021fd3f8(void *state)
         }
         descriptor = (u8 *)FIELD(void *, state, 0x4c) + index * 0x14;
         item = FIELD(void *, descriptor, 0);
-        GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x28);
+        GraphicsSpriteRenderer_SetFontResource(font,
+                                               FIELD(void *, state, 0x28));
         if (item != 0) {
             void *metadata = FIELD(void *, item, 0);
             s32 textColor = (FIELD(u16, descriptor, 0xc) & 7) != 0 ? 5 : 0xe;
@@ -65,7 +66,8 @@ extern "C" void func_ov016_021fd3f8(void *state)
             if (gSystemState[0x5f] != 0) {
                 baseline -= 2;
             }
-            GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x2c);
+            GraphicsSpriteRenderer_SetFontResource(
+                font, FIELD(void *, state, 0x2c));
             func_02092960(font, value, 10, 0xb0, baseline, numberColor, 8, 1);
         } else {
             void *message = func_02079f3c(data_021f3ecc, 0x188);

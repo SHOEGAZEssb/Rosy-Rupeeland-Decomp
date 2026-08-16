@@ -127,10 +127,12 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
         }
 
         GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), 0x59, 0x27, 0xd9, 0x47, 0);
-        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0), (u8 *)state + 0xdc);
+        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0),
+                                               FIELD(void *, state, 0xdc));
         GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 0), func_020628c8(header),
                       0x59, 0x27, 0xe, 6, 0);
-        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0), (u8 *)state + 0xd8);
+        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0),
+                                               FIELD(void *, state, 0xd8));
         GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 0), func_02062a60(header), 0x6b,
                       gSystemState[0x5f] != 0 ? 0x39 : 0x3b, 0xe, 4, 0);
 
@@ -145,7 +147,8 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
                 void *row = (u8 *)table + 0x28 + i * 0x24;
                 s32 color = FIELD(u8, selection, 0xe + i) == 2 ? 5 : 0xe;
 
-                GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0), (u8 *)state + 0xd4);
+                GraphicsSpriteRenderer_SetFontResource(
+                    FIELD(void *, state, 0), FIELD(void *, state, 0xd4));
                 GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 0), func_020628c8(row),
                               x + 0x3a, y + 0x53, color, 4, 0);
             }

@@ -191,6 +191,72 @@ void func_02097eec(void *entry_pointer, u16 identifier)
     WriteU16(entry, 2, 0);
 }
 
+/*
+ * Copy one borrowed eight-byte history entry into caller-owned storage. No
+ * allocation occurs; the identifier, state halfword, and record pointer are
+ * copied exactly as stored by retail.
+ */
+void func_020980dc(void *destination_pointer, const void *source_pointer)
+{
+    u8 *destination = (u8 *)destination_pointer;
+    const u8 *source = (const u8 *)source_pointer;
+
+    WriteU16(destination, 0, ReadU16(source, 0));
+    WriteU16(destination, 2, ReadU16(source, 2));
+    *(void **)(destination + 4) = *(void *const *)(source + 4);
+}
+
+/*
+ * Return one when `identifier` already occurs in the borrowed history array
+ * at state +0x370, otherwise zero. The signed count at +0x460 is the retail
+ * loop bound, and this query has no side effects.
+ */
+s32 func_02098310(void *state_pointer, u16 identifier)
+{
+    u8 *state = (u8 *)state_pointer;
+    s32 count = *(s32 *)(state + 0x460);
+    s32 index;
+
+    for (index = 0; index < count; ++index)
+        if (ReadU16(state, 0x370 + index * 8) == identifier)
+            return 1;
+    return 0;
+}
+
+/*
+ * Insert a unique identifier into the caller-owned history at state +0x370.
+ * Entries whose record has a nonnegative signed byte at +3 are kept ahead of
+ * the remaining entries. Existing entries are shifted in-place, the new
+ * record is initialized through the borrowed retail database, and the count
+ * at +0x460 is incremented. Duplicate identifiers leave state unchanged.
+ */
+void func_02098020(void *state_pointer, u16 identifier)
+{
+    u8 *state = (u8 *)state_pointer;
+    u8 *entries = state + 0x370;
+    s32 count;
+    s32 index;
+
+    if (func_02098310(state, identifier) != 0)
+        return;
+
+    count = *(s32 *)(state + 0x460);
+    if (count == 0) {
+        func_02097eec(entries, identifier);
+    } else if (*(s8 *)(*(u8 **)(entries + 4) + 3) >= 0) {
+        for (index = count; index > 1; --index)
+            func_020980dc(entries + index * 8,
+                          entries + (index - 1) * 8);
+        func_02097eec(entries + 8, identifier);
+    } else {
+        for (index = count; index > 0; --index)
+            func_020980dc(entries + index * 8,
+                          entries + (index - 1) * 8);
+        func_02097eec(entries, identifier);
+    }
+    *(s32 *)(state + 0x460) = count + 1;
+}
+
 s32 func_0206fa9c(void *entry_slot_pointer)
 {
     u8 *entry = *(u8 **)entry_slot_pointer;
@@ -551,7 +617,6 @@ void func_0206f8c8(void *state_pointer)
     }
     WriteU32(state, 4, (u32)(highest + 1));
 }
-
 
 
 

@@ -9,6 +9,8 @@
 
 extern void func_02062864(void *records, u16 index);
 extern s32 func_02062b28(void *record);
+extern s32 func_02062b74(void *record, u16 selector);
+extern void *func_02062e00(void *record);
 extern s32 func_02065034(void *state);
 extern void *func_02063b90(void *database, u16 id);
 extern void func_02071ee0(void *resource, void *manager, u32 first,
@@ -316,6 +318,34 @@ s32 func_02065034(void *state)
             return index;
     }
     return -1;
+}
+
+/*
+ * Find the first inactive kind-one descriptor accepted by `selector` and
+ * return its quantity halfword. The state and its 0x24-byte entry array are
+ * borrowed. Retail returns zero when no matching entry exists and makes no
+ * changes to either object.
+ */
+s32 func_020651a4(void *state, u16 selector)
+{
+    u8 *bytes = (u8 *)state;
+    u8 *entries = *(u8 **)(bytes + 4);
+    s32 count = *(s32 *)(bytes + 0x0c);
+    s32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *entry = entries + index * 0x24;
+        u8 *definition;
+
+        if (func_02062b28(entry) != 0)
+            continue;
+        definition = (u8 *)func_02062e00(entry);
+        if (definition[2] != 1)
+            continue;
+        if (func_02062b74(entry, selector) != 0)
+            return *(u16 *)(entry + 4);
+    }
+    return 0;
 }
 
 /*

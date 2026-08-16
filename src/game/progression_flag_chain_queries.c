@@ -60,6 +60,20 @@ void func_0208b600(void)
     GameWork_SetFlag(gGameWork, 0x760);
 }
 
+/*
+ * Complete the related progression callback by establishing the shared
+ * milestone and setting its three retail completion flags. The only borrowed
+ * object is gGameWork; the observable effect is the four set/clear operations
+ * performed by func_0208b590 followed by flags 0x398, 0x76b, and 0x1f0.
+ */
+void func_0208bb0c(void)
+{
+    func_0208b590();
+    GameWork_SetFlag(gGameWork, 0x398);
+    GameWork_SetFlag(gGameWork, 0x76b);
+    GameWork_SetFlag(gGameWork, 0x1f0);
+}
+
 /* Require both retail flags used by the bedroom-to-field availability gate. */
 s32 func_02083d84(void)
 {

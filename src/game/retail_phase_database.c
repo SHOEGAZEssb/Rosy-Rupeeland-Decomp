@@ -23,6 +23,10 @@ extern u8 data_021e9e1c[];
 extern void OS_Halt(void);
 extern void *func_02063b90(void *database, u16 id);
 extern void func_020634b0(void *manager);
+extern void func_02022fbc(void *descriptor);
+extern void func_020627a0(void *descriptor, u16 id, u16 last_index);
+extern void func_020627d0(void *descriptor, u16 id, u16 kind, u16 quantity);
+extern void *func_02062728(void *destination, const void *source);
 
 /* Return the 0x10C-byte phase record whose leading halfword matches id
  * (retail 0x0206F360). The database retains ownership; a missing identifier
@@ -59,11 +63,42 @@ static u16 ReadU16(const u8 *bytes)
 static void InitializeActorEntry(u8 *entry, u16 actor_id, u16 quantity,
                                  u16 field6)
 {
-    memset(entry, 0, 0x24);
-    *(u16 *)(entry + 0) = actor_id;
-    *(u16 *)(entry + 4) = quantity > 99 ? 99 : quantity;
-    *(u16 *)(entry + 6) = field6;
-    *(void **)(entry + 8) = func_02063b90(data_021e9ad0, actor_id);
+    if (field6 == 1)
+        func_020627d0(entry, actor_id, field6, quantity);
+    else
+        func_020627a0(entry, actor_id, quantity);
+}
+
+/* Construct the seven self-linked actor descriptors embedded in one record. */
+static void InitializePhaseRecord(u8 *record)
+{
+    u32 index;
+
+    func_02022fbc(record + 4);
+    for (index = 0; index < 6; ++index)
+        func_02022fbc(record + 0x28 + index * 0x24);
+    *(u16 *)(record + 0) = 0;
+    *(u16 *)(record + 2) = 0;
+    *(u32 *)(record + 0x100) = 0;
+    *(u32 *)(record + 0x104) = 0;
+    *(u32 *)(record + 0x108) = 0;
+}
+
+/* Assign a phase record while retaining every destination descriptor's
+ * constructor-established self-links, as retail func_0206F6E0 does. */
+static void CopyPhaseRecord(u8 *destination, const u8 *source)
+{
+    u32 index;
+
+    *(u16 *)(destination + 0) = *(const u16 *)(source + 0);
+    *(u16 *)(destination + 2) = *(const u16 *)(source + 2);
+    func_02062728(destination + 4, source + 4);
+    for (index = 0; index < 6; ++index)
+        func_02062728(destination + 0x28 + index * 0x24,
+                      source + 0x28 + index * 0x24);
+    *(u32 *)(destination + 0x100) = *(const u32 *)(source + 0x100);
+    *(u32 *)(destination + 0x104) = *(const u32 *)(source + 0x104);
+    *(u32 *)(destination + 0x108) = *(const u32 *)(source + 0x108);
 }
 
 /* Load, filter, and sort 0x10c-byte phase records at retail 0x0206F3A4. */
@@ -90,6 +125,8 @@ void func_0206f3a4(void *database_pointer)
         Heap_Free(*(void **)database);
     records = Heap_Alloc((file_count - 3) * 0x10c, data_020e5908, 4,
                          &gHeapContext);
+    for (index = 0; index < file_count - 3; ++index)
+        InitializePhaseRecord(records + index * 0x10c);
     *(u8 **)database = records;
     *(u32 *)(database + 4) = file_count - 3;
     for (file_index = 0; file_index < file_count; ++file_index) {
@@ -103,7 +140,6 @@ void func_0206f3a4(void *database_pointer)
         if (phase_id == 0x1c || phase_id == 0x1e || phase_id == 0x22)
             continue;
         record = records + stored_count * 0x10c;
-        memset(record, 0, 0x10c);
         *(u16 *)(record + 0) = phase_id;
         *(u16 *)(record + 2) = ReadU16(input + 0x1c);
         InitializeActorEntry(record + 4, ReadU16(input + 2), 1, 1);
@@ -132,10 +168,9 @@ void func_0206f3a4(void *database_pointer)
             u8 temporary[0x10c];
 
             memcpy(temporary, records + position * 0x10c, sizeof(temporary));
-            memcpy(records + position * 0x10c,
-                   records + (position - 1) * 0x10c, sizeof(temporary));
-            memcpy(records + (position - 1) * 0x10c, temporary,
-                   sizeof(temporary));
+            CopyPhaseRecord(records + position * 0x10c,
+                            records + (position - 1) * 0x10c);
+            CopyPhaseRecord(records + (position - 1) * 0x10c, temporary);
             --position;
         }
     }
@@ -239,7 +274,6 @@ void func_0206f780(void)
     func_0206f7bc(data_021e9e00);
     func_020634b0(*(void **)data_021e9ac0);
 }
-
 
 
 
