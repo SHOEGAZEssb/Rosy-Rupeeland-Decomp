@@ -3,6 +3,7 @@
 
 /* Portable reconstruction of the retail phase descriptor aggregate. */
 #include "tingle/checked_fs.h"
+#include "tingle/game_work.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -182,6 +183,54 @@ void func_0206f7bc(void *manager_pointer)
         pointers[index] = records + index * 0x10c;
 }
 
+/* Mark the phase record referenced by a manager pointer slot as unlocked
+ * (retail 0x0206FAD8). The slot and record remain manager-owned. The record's
+ * signed bit index at +0x104 selects one bit in GameWork +0xEE0; retail does
+ * not validate that index because every canonical phase record supplies one. */
+void func_0206fad8(void *slot_pointer)
+{
+    u8 *record = *(u8 **)slot_pointer;
+    s32 bit = *(s32 *)(record + 0x104);
+
+    gGameWork->bytes0EE0[(u32)bit >> 3] |=
+        (u8)(1u << ((u32)bit & 7));
+}
+
+/* Unlock the phase/recipe identified by its leading halfword (retail
+ * 0x0206F914). The manager's +4 high-water mark advances to one past the
+ * matching pointer index. After the first unlock, retail sets game flag 0x15
+ * once every phase record is unlocked. Unknown identifiers leave the table
+ * unchanged apart from the same completion scan used by retail. */
+void func_0206f914(void *manager_pointer, u16 id)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u32 count = *(u32 *)manager;
+    void **slots = *(void ***)(manager + 8);
+    u32 high_water = 0;
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        if (*(u16 *)slots[index] == id) {
+            func_0206fad8(&slots[index]);
+            high_water = index + 1;
+            break;
+        }
+    }
+    if (*(u32 *)(manager + 4) < high_water)
+        *(u32 *)(manager + 4) = high_water;
+
+    if (GameWork_TestFlag(gGameWork, 0x15))
+        return;
+    for (index = 0; index < count; ++index) {
+        s32 bit = *(s32 *)((u8 *)slots[index] + 0x104);
+
+        if ((gGameWork->bytes0EE0[(u32)bit >> 3] &
+             (u8)(1u << ((u32)bit & 7))) == 0)
+            return;
+    }
+    GameWork_SetFlag(gGameWork, 0x15);
+}
+
 /* Execute the exact retail phase database aggregate order at 0x0206F780. */
 void func_0206f780(void)
 {
@@ -190,7 +239,6 @@ void func_0206f780(void)
     func_0206f7bc(data_021e9e00);
     func_020634b0(*(void **)data_021e9ac0);
 }
-
 
 
 
