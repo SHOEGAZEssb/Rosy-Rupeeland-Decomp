@@ -27,8 +27,9 @@ extern void *data_020f4e18;
 extern PaletteBuffer gSubBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *);
 extern void DualLayerTileRendererBase_Destroy(void *);
-extern void DualLayerTileRenderer_LoadFromConfig(void *);
-extern void DualLayerTileRenderer_ActivateLayers(void *);
+extern void DualLayerTileRenderer_LoadFromConfig(void *, const void *, s32,
+                                                 s32);
+extern void DualLayerTileRenderer_ActivateLayers(void *, s32);
 extern void func_020b44e8(void);
 extern void func_020706c4(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
@@ -64,21 +65,26 @@ SubThreeLayerResourceRenderer *SubThreeLayerResourceRenderer_DestroyAndFree(SubT
 }
 
 /*
- * Run first-path activation, clear status bit zero on both attached layers,
- * then configure and upload the three fixed background resource sets.
+ * Forward the caller-owned config and mode selectors through first-path
+ * activation, clear status bit zero on both attached layers, then configure
+ * and upload the three fixed background resource sets.
  */
-void SubThreeLayerResourceRenderer_ActivatePrimary(SubThreeLayerResourceRenderer *self)
+void SubThreeLayerResourceRenderer_ActivatePrimary(
+    SubThreeLayerResourceRenderer *self, const void *config, s32 mode,
+    s32 variant)
 {
-    DualLayerTileRenderer_LoadFromConfig(self);
+    DualLayerTileRenderer_LoadFromConfig(self, config, mode, variant);
     self->layer_28->status_1030 &= ~1u;
     self->layer_2c->status_1030 &= ~1u;
     SubThreeLayerResourceRenderer_LoadBgResources(self);
 }
 
-/* Run second-path activation, then configure and upload the three resource sets. */
-void SubThreeLayerResourceRenderer_ActivateSecondary(SubThreeLayerResourceRenderer *self)
+/* Forward the caller's notification flag through second-path activation, then
+ * configure and upload the three resource sets. */
+void SubThreeLayerResourceRenderer_ActivateSecondary(
+    SubThreeLayerResourceRenderer *self, s32 notify)
 {
-    DualLayerTileRenderer_ActivateLayers(self);
+    DualLayerTileRenderer_ActivateLayers(self, notify);
     SubThreeLayerResourceRenderer_LoadBgResources(self);
 }
 

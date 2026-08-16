@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Construct and destroy a recovered derived actor object with an embedded +0x1ec helper. */
-extern void *data_020df510;
+extern void *data_020df510[];
 
 #ifdef __cplusplus
 extern "C" {

@@ -5,7 +5,7 @@
  * Construct and destroy an actor subclass carrying a four-bit mode in field
  * +0x208.
  */
-extern void *data_020df774;
+extern void *data_020df774[];
 
 #ifdef __cplusplus
 extern "C" {

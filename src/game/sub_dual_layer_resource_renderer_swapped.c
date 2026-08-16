@@ -30,8 +30,9 @@ extern void *gSubDualLayerResourceRendererSwappedVtable;
 extern void *data_020f4e18;
 extern void DualLayerTileRendererBase_InitBase(void *);
 extern void DualLayerTileRendererBase_Destroy(void *);
-extern void DualLayerTileRenderer_LoadFromConfig(void *);
-extern void DualLayerTileRenderer_ActivateLayers(void *);
+extern void DualLayerTileRenderer_LoadFromConfig(void *, const void *, s32,
+                                                 s32);
+extern void DualLayerTileRenderer_ActivateLayers(void *, s32);
 extern void DualLayerTileRenderer_UploadPalette(void *);
 extern void func_020b44e8(void);
 extern void func_020706c4(void *, s32, s32);
@@ -66,17 +67,22 @@ SubDualLayerResourceRendererSwapped *SubDualLayerResourceRendererSwapped_Destroy
     return self;
 }
 
-/* Run the first common activation path, then perform the swapped resource setup. */
-void SubDualLayerResourceRendererSwapped_ActivatePrimary(SubDualLayerResourceRendererSwapped *self)
+/* Forward the caller-owned config and mode selectors through the first common
+ * activation path, then perform the swapped resource setup. */
+void SubDualLayerResourceRendererSwapped_ActivatePrimary(
+    SubDualLayerResourceRendererSwapped *self, const void *config, s32 mode,
+    s32 variant)
 {
-    DualLayerTileRenderer_LoadFromConfig(self);
+    DualLayerTileRenderer_LoadFromConfig(self, config, mode, variant);
     SubDualLayerResourceRendererSwapped_LoadBgResources(self);
 }
 
-/* Run the second common activation path, then perform the swapped resource setup. */
-void SubDualLayerResourceRendererSwapped_ActivateSecondary(SubDualLayerResourceRendererSwapped *self)
+/* Forward the caller's notification flag through the second common activation
+ * path, then perform the swapped resource setup. */
+void SubDualLayerResourceRendererSwapped_ActivateSecondary(
+    SubDualLayerResourceRendererSwapped *self, s32 notify)
 {
-    DualLayerTileRenderer_ActivateLayers(self);
+    DualLayerTileRenderer_ActivateLayers(self, notify);
     SubDualLayerResourceRendererSwapped_LoadBgResources(self);
 }
 

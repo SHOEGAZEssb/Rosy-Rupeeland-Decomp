@@ -1,18 +1,61 @@
-/*
- * Recovered overlay 107 compact interpreter-data subsystem.
- *
- * The overlay registers a large initialized bytecode-like record set with the
- * engine and owns two trailing zero-initialized work fields. Record semantics
- * are not yet confirmed, so address-derived names remain in use.
- */
+#include "tingle/types.h"
 
 /*
- * Registers the overlay records when r0 is zero; otherwise returns immediately.
- * The routine updates engine-managed registration state, returns no value, and
- * has no direct hardware effects visible in this overlay.
+ * Recovered phase-two category-one actor registration from overlay 107.
+ *
+ * The overlay owns a sentinel-terminated array of actor spawn descriptors and
+ * the bytecode reached through the descriptor records and category callback.
+ * Exact record bytes remain in the matching data object.
  */
-void func_ov107_0221d6c0(void);
+
+typedef struct ActorSpawnDescriptor {
+    u8 bytes[0x64];
+} ActorSpawnDescriptor;
+typedef u8 ActorScriptBytecode;
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void ActorInteractionRuntime_Init(void);
+extern void ActorInteractionRuntime_NoOp(void *work);
+extern void ActorDescriptorBatch_RegisterAndSpawnCategory1(
+    void *work, s32 unusedCount, ActorSpawnDescriptor *descriptors);
+extern void ActorDescriptorBatch_SetCategory1Callback(
+    const ActorScriptBytecode *callback);
+extern void func_02008f58(void *records);
+
+extern u8 data_ov107_0221d720[];
+extern ActorSpawnDescriptor data_ov107_0221d734[];
+extern ActorScriptBytecode data_ov107_0221fb89[];
+extern u8 data_ov107_02229d20[];
+extern u8 data_ov107_02229d24[];
+
+#ifdef __cplusplus
+}
+#endif
+
+/*
+ * When mode is zero, initialize shared actor-interaction state, register and
+ * spawn the category-one descriptor batch, publish the work and auxiliary
+ * records, and install the bytecode callback. Nonzero modes return unchanged.
+ * The literal three matches retail although registration is sentinel-driven.
+ * Returns no value and performs no direct hardware or SDK operation.
+ */
+#ifdef __cplusplus
+extern "C"
+#endif
+void func_ov107_0221d6c0(s32 mode)
+{
+    if (mode != 0)
+        return;
+
+    ActorInteractionRuntime_Init();
+    ActorDescriptorBatch_RegisterAndSpawnCategory1(
+        data_ov107_02229d24, 3, data_ov107_0221d734);
+    ActorInteractionRuntime_NoOp(data_ov107_02229d20);
+    func_02008f58(data_ov107_0221d720);
+    ActorDescriptorBatch_SetCategory1Callback(data_ov107_0221fb89);
+}
 
 /* Exact initialized records and zero-initialized work fields used by the overlay. */
-extern unsigned char data_ov107_0221d720[];
-extern unsigned char data_ov107_02229d20[];

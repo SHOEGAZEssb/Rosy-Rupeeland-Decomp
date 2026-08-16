@@ -21,8 +21,10 @@ extern void *data_020f4e18;
 extern PaletteBuffer gMainBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *self);
 extern void DualLayerTileRendererBase_Destroy(void *self);
-extern void DualLayerTileRenderer_LoadFromConfig(void *self);
-extern void DualLayerTileRenderer_ActivateLayers(void *self);
+extern void DualLayerTileRenderer_LoadFromConfig(void *self,
+                                                 const void *config,
+                                                 s32 mode, s32 variant);
+extern void DualLayerTileRenderer_ActivateLayers(void *self, s32 notify);
 extern void func_020b44e8(void);
 extern void func_02070638(void *resource, s32 background, s32 value);
 extern void func_02070e0c(void *resource, s32 background, s32 value);
@@ -55,17 +57,22 @@ MainDualLayerResourceRenderer *MainDualLayerResourceRenderer_DestroyAndFree(Main
     return self;
 }
 
-/* Run the first common activation path, then perform this variant's resource setup. */
-void MainDualLayerResourceRenderer_ActivatePrimary(MainDualLayerResourceRenderer *self)
+/* Forward the caller-owned config and mode selectors through the first common
+ * activation path, then perform this variant's resource setup. */
+void MainDualLayerResourceRenderer_ActivatePrimary(
+    MainDualLayerResourceRenderer *self, const void *config, s32 mode,
+    s32 variant)
 {
-    DualLayerTileRenderer_LoadFromConfig(self);
+    DualLayerTileRenderer_LoadFromConfig(self, config, mode, variant);
     MainDualLayerResourceRenderer_LoadBgResources(self);
 }
 
-/* Run the second common activation path, then perform this variant's resource setup. */
-void MainDualLayerResourceRenderer_ActivateSecondary(MainDualLayerResourceRenderer *self)
+/* Forward the caller's notification flag through the second common activation
+ * path, then perform this variant's resource setup. */
+void MainDualLayerResourceRenderer_ActivateSecondary(
+    MainDualLayerResourceRenderer *self, s32 notify)
 {
-    DualLayerTileRenderer_ActivateLayers(self);
+    DualLayerTileRenderer_ActivateLayers(self, notify);
     MainDualLayerResourceRenderer_LoadBgResources(self);
 }
 

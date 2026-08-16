@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031758(void *source);
+extern void func_02031758(void *output, void *actor, const void *transform);
 extern void func_02031cac(void *actor, const TouchPoint *point);
 extern void func_02032a94(void *actor, void *other, s32 mode);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -19,16 +19,17 @@ extern s32 Actor_TryDispatchActivationMode2(void *actor);
 #endif
 
 /*
- * Pass source through func_02031758, copy its words +0x04/+0x08 into a stack
- * TouchPoint using gSceneTouchInitialData's point vtable, and forward that
- * point to actor through func_02031cac. Returns no value; both helpers can
- * mutate source/actor interaction state.
+ * Pass source, actor, and transform through func_02031758, copy source words
+ * +0x04/+0x08 into a stack TouchPoint using gSceneTouchInitialData's point
+ * vtable, and forward that point to actor through func_02031cac. Returns no
+ * value; both helpers can mutate source/actor interaction state.
  */
-void ActorDerivedRuntime_ForwardTouchPoint(void *source, void *actor)
+void ActorDerivedRuntime_ForwardTouchPoint(void *source, void *actor,
+                                           const void *transform)
 {
     u8 *input = (u8 *)source;
     TouchPoint point;
-    func_02031758(source);
+    func_02031758(source, actor, transform);
     point.vtable = &gSceneTouchInitialData.pointVTable;
     point.x = *(u32 *)(input + 4);
     point.y = *(u32 *)(input + 8);

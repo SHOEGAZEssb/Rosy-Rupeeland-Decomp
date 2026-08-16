@@ -5,7 +5,7 @@
  * Construct, destroy, debug-render, initialize, and update the motion-probe
  * actor subclass.
  */
-extern void *data_020df61c;
+extern void *data_020df61c[];
 
 #ifdef __cplusplus
 extern "C" {

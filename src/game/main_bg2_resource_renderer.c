@@ -18,8 +18,9 @@ extern void *data_020f4e18;
 extern PaletteBuffer gMainBgPaletteBuffer;
 extern void DualLayerTileRendererBase_InitBase(void *);
 extern void DualLayerTileRendererBase_Destroy(void *);
-extern void DualLayerTileRenderer_LoadFromConfig(void *);
-extern void DualLayerTileRenderer_ActivateLayers(void *);
+extern void DualLayerTileRenderer_LoadFromConfig(void *, const void *, s32,
+                                                 s32);
+extern void DualLayerTileRenderer_ActivateLayers(void *, s32);
 extern void func_020b44e8(void);
 extern void func_02070638(void *, s32, s32);
 extern void func_02070e0c(void *, s32, s32);
@@ -52,17 +53,21 @@ MainBg0ResourceRenderer *MainBg0ResourceRenderer_DestroyAndFree(MainBg0ResourceR
     return self;
 }
 
-/* Run the first common activation path, then load and upload the BG0 resources. */
-void MainBg0ResourceRenderer_ActivatePrimary(MainBg0ResourceRenderer *self)
+/* Forward the caller-owned config and mode selectors through the first common
+ * activation path, then load and upload the BG0 resources. */
+void MainBg0ResourceRenderer_ActivatePrimary(
+    MainBg0ResourceRenderer *self, const void *config, s32 mode, s32 variant)
 {
-    DualLayerTileRenderer_LoadFromConfig(self);
+    DualLayerTileRenderer_LoadFromConfig(self, config, mode, variant);
     MainBg0ResourceRenderer_LoadBgResources(self);
 }
 
-/* Run the second common activation path, then load and upload the BG0 resources. */
-void MainBg0ResourceRenderer_ActivateSecondary(MainBg0ResourceRenderer *self)
+/* Forward the caller's notification flag through the second common activation
+ * path, then load and upload the BG0 resources. */
+void MainBg0ResourceRenderer_ActivateSecondary(MainBg0ResourceRenderer *self,
+                                               s32 notify)
 {
-    DualLayerTileRenderer_ActivateLayers(self);
+    DualLayerTileRenderer_ActivateLayers(self, notify);
     MainBg0ResourceRenderer_LoadBgResources(self);
 }
 

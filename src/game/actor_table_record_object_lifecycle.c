@@ -5,7 +5,7 @@
  * Construct and destroy an actor subclass configured from a recovered
  * 12-entry record table.
  */
-extern void *data_020df910;
+extern void *data_020df910[];
 extern u8 data_020ed638[];
 
 #ifdef __cplusplus

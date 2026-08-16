@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Apply table-record presentation state and manage a registered derived subclass lifecycle. */
-extern void *data_020df840;
+extern void *data_020df840[];
 extern u8 gActorRegisteredSubclassCounters[];
 extern void *gActorRegisteredSubclassRegistry[4];
 

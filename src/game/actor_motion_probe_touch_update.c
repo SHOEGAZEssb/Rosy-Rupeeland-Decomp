@@ -7,7 +7,7 @@ extern s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031758(void *source);
+extern void func_02031758(void *output, void *actor, const void *transform);
 extern u32 genrand_int32(void);
 extern u64 func_020bf1f8(u32 value, u32 divisor);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -36,8 +36,9 @@ static s32 centeredRandom(s32 range)
 }
 
 /*
- * Run func_02031758(source), preserve signed attachment offsets +0x2c/+0x2e,
- * and decrement actor timer +0x240. On expiry reset it from +0x24c, choose
+ * Run func_02031758(source, actor, transform), preserve signed attachment
+ * offsets +0x2c/+0x2e, and decrement actor timer +0x240. On expiry reset it
+ * from +0x24c, choose
  * centered random X/Y within ranges +0x244/+0x248, scale both by fixed value
  * +0x20c, and form a target vector. Store target minus current vector +0x210
  * at delta +0x230, divide its Y/Z components +0x234/+0x238 by duration +0x24c,
@@ -52,7 +53,8 @@ static s32 centeredRandom(s32 range)
  * func_02031cac. Returns no value; RNG, vector lifecycles, attachment writes,
  * and touch dispatch mutate global/actor/presentation state.
  */
-void ActorMotionProbe_UpdateTouchMotion(void *source, void *self)
+void ActorMotionProbe_UpdateTouchMotion(void *source, void *self,
+                                        const void *transform)
 {
     u8 *output = (u8 *)source;
     u8 *actor = (u8 *)self;
@@ -61,7 +63,7 @@ void ActorMotionProbe_UpdateTouchMotion(void *source, void *self)
     s16 baseY;
     s32 oscillation;
 
-    func_02031758(source);
+    func_02031758(source, self, transform);
     attachment = *(u8 **)(actor + 0x54);
     baseX = *(s16 *)(attachment + 0x2c);
     baseY = *(s16 *)(attachment + 0x2e);
