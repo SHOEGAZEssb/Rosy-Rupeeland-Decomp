@@ -85,11 +85,15 @@ SpriteNode *func_02022b08(SpriteNodeList *self,u8 *sprite)
     self->tail04=n;self->count0c++;return self->tail04;
 }
 
-/* Release every sprite through spriteOwner, erase its node, tear down resource/list state, and return self. */
+/*
+ * Release every sprite through spriteOwner, erase its node, tear down
+ * resource/list state, and return self. Cache the successor before deletion so
+ * portable hosts do not read node storage after Heap_Free invalidates it.
+ */
 SpriteNumberGroup *func_02022b70(SpriteNumberGroup *self)
 {
-    SpriteNode *n=self->nodes04.head08;
-    while(n){GraphicsSpriteGroup_ReleaseState(self->spriteOwner00,n->sprite08);func_02022bc8(&self->nodes04,n);n=n->next00;}
+    SpriteNode *n=self->nodes04.tail04;
+    while(n){SpriteNode *next=n->next00;GraphicsSpriteGroup_ReleaseState(self->spriteOwner00,n->sprite08);func_02022bc8(&self->nodes04,n);n=next;}
     func_02071eb8(self->resource18);self->nodes04.vtable=(void **)data_020d660c;func_02022ac8(&self->nodes04);return self;
 }
 
