@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 32 dialog allocation/teardown and orchestration of its five 0x6C-byte child objects. */
 
@@ -7,7 +8,6 @@
 extern void *data_020f4e14[];
 extern void *data_020f4e18[];
 extern void *gSoundContext;
-extern void *gHeapContext;
 extern const u8 data_020c7ba8[];
 extern const u8 data_ov032_02202340[];
 
@@ -15,7 +15,6 @@ extern const u8 data_ov032_02202340[];
 extern "C" {
 #endif
 extern void *func_02071980(...);
-extern void *Heap_Alloc(...);
 extern void *func_02092cc0(...);
 extern void func_ov032_021fce08(...);
 extern void func_020939d8(void *);
@@ -50,7 +49,8 @@ extern "C" void func_ov032_021fe6b0(void *scene)
 {
     FIELD(void *, scene, 0xc) = func_02071980(data_020f4e18[0], 0x7006);
 
-    void *upper = Heap_Alloc(0xec, data_ov032_02202340, 4, gHeapContext);
+    void *upper = Heap_Alloc(0xec, (const char *)data_ov032_02202340, 4,
+                             &gHeapContext);
     if (upper != 0) upper = func_02092cc0(upper, data_020f4e14[0], FIELD(void *, scene, 0xc));
     FIELD(void *, scene, 0x18) = upper;
     func_ov032_021fce08(upper, 0x40, 0x1a, 0xa0, 0x1e);
@@ -59,7 +59,8 @@ extern "C" void func_ov032_021fe6b0(void *scene)
     FIELD(s32, upper, 0xd0) = 0xd;
     FIELD(s32, upper, 0xd4) = 0;
 
-    void *lower = Heap_Alloc(0xec, data_ov032_02202340, 4, gHeapContext);
+    void *lower = Heap_Alloc(0xec, (const char *)data_ov032_02202340, 4,
+                             &gHeapContext);
     if (lower != 0) lower = func_02092cc0(lower, data_020f4e14[0], FIELD(void *, scene, 8));
     FIELD(void *, scene, 0x14) = lower;
     func_ov032_021fce08(lower, 0x5c, 0x98, 0x8c, 0x1e);

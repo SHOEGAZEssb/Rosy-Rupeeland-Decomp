@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 32 controller scale interpolation and detail-widget lifecycle/positioning. */
 
@@ -7,7 +8,6 @@
 extern u8 data_021f5f18[];
 extern void *data_020f4e14[];
 extern void *data_020f4e18[];
-extern void *gHeapContext;
 extern const u8 data_ov032_02202350[];
 
 #ifdef __cplusplus
@@ -33,7 +33,6 @@ extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_02071d4c(...);
 extern void GraphicsSpriteRenderer_ClearFontResource(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void *Heap_Alloc(...);
 extern void Heap_Free(void *);
 extern void *func_ov032_02201f80(...);
 extern void func_02094550(...);
@@ -130,7 +129,8 @@ extern "C" void func_ov032_0220173c(void *widget, void *scene)
     FIELD(u16, map, 4) = 0x4210;
     FIELD(u16, map, 6) = 0x4a52;
     FIELD(u16, map, 8) = 0x294a;
-    void *list = Heap_Alloc(0x80, data_ov032_02202350, 4, gHeapContext);
+    void *list = Heap_Alloc(0x80, (const char *)data_ov032_02202350, 4,
+                            &gHeapContext);
     if (list != 0) list = func_ov032_02201f80(list, data_020f4e14[0], count + 1, 5, 0xd4, 0x28, 0);
     FIELD(void *, widget, 0x4c) = list;
     func_02094550(list, 2);

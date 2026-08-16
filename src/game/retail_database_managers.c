@@ -82,6 +82,15 @@ void func_02097f94(void *manager_pointer)
     }
 }
 
+/* Return the borrowed text field at +6 in the database record referenced by
+ * an eight-byte selection-history entry. Neither object is modified. */
+void *func_02097f30(void *entry_pointer)
+{
+    RetailSelectionEntry *entry = (RetailSelectionEntry *)entry_pointer;
+
+    return entry->record + 6;
+}
+
 /*
  * Choose one identifier from a group while excluding `previous_identifier`.
  * The group storage remains owned by the selection manager. Retail callers
@@ -440,5 +449,4 @@ void func_02079694(void *manager_pointer)
     *(u32 *)(manager + 0x10c) = 0;
     *(u32 *)(manager + 0x110) = 0;
 }
-
 

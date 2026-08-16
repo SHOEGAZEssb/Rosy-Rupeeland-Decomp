@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 32 detail-widget row hit testing, rendering, and custom list-object construction/destruction. */
 
@@ -6,7 +7,6 @@
 
 extern void *data_020f4e14[];
 extern void *data_020f4e18[];
-extern void *gHeapContext;
 extern const u8 data_021f6288[];
 extern const u8 data_020f263c[];
 extern const u8 data_ov032_02202308[];
@@ -26,7 +26,6 @@ extern void func_02071ee0(...);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
 extern void func_02073e48(...);
-extern void *Heap_Alloc(...);
 extern void Heap_Free(void *);
 extern void *SpritePresentation_Init(...);
 extern void Presentation_SetPosition(...);
@@ -129,7 +128,8 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
 
     s32 secondOffset = (height + 0x5c) << 12;
     for (s32 i = 0; i < 2; ++i) {
-        void *part = Heap_Alloc(0xa0, data_ov032_02202358, 4, gHeapContext);
+        void *part = Heap_Alloc(0xa0, (const char *)data_ov032_02202358, 4,
+                                &gHeapContext);
         if (part != 0)
             part = SpritePresentation_Init(part, GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1));
         FIELD(void *, object, 0x64 + i * 4) = part;

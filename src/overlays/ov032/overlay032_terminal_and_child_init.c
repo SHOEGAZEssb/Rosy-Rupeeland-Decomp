@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/heap.h"
 
 /* Overlay 32 terminal halt sequence and initialization of 0x6C-byte display children. */
 
@@ -10,7 +11,6 @@ typedef struct GraphicsResourceSet { void *tiles; void *map; void *palette; } Gr
 
 extern void *gSoundContext;
 extern void *gDebugFont;
-extern void *gHeapContext;
 extern void *data_020f4e14[];
 extern void *data_020f4e18[];
 extern const u8 data_ov032_02202348[];
@@ -28,7 +28,6 @@ extern s32 func_0207042c(void *);
 extern void func_02070b50(...);
 extern void func_02070e0c(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
-extern void *Heap_Alloc(...);
 extern void *func_020959d4(...);
 extern void func_02095c30(...);
 extern void Sound_Reset(void *);
@@ -79,7 +78,8 @@ extern "C" s32 func_ov032_02200da4(void *scene)
         func_02070e0c(set->palette, 2, 0);
         GraphicsResourceSet_ReleaseHandles(set);
         REG16(0x05000000) = 0x24a3;
-        void *object = Heap_Alloc(0x2d0, data_ov032_02202348, 4, gHeapContext);
+        void *object = Heap_Alloc(0x2d0, (const char *)data_ov032_02202348, 4,
+                                  &gHeapContext);
         if (object != 0) object = func_020959d4(object, 0, 0);
         FIELD(void *, scene, 0xf24) = object;
         func_02095c30(object, 0x1f);
