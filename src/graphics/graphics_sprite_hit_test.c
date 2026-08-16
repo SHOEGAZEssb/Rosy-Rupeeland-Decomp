@@ -1,11 +1,12 @@
 
 /*
  * Portable reconstruction of the assembly-selected sprite hit tests at
- * 0x02073AA8 and 0x02092910.  The former follows the current animation cell
- * chain and rejects transparent pixels; the latter applies the shared scene
- * visibility/owner guards before forwarding the touch coordinates.  All
- * coordinates are integer screen pixels and all referenced resource storage
- * remains owned by the recovered graphics caches.
+ * 0x02073AA8, 0x0209286C, and 0x02092910.  The first follows the current
+ * animation cell chain and rejects transparent pixels; the latter two apply
+ * the shared scene visibility/owner guards before testing a rectangular
+ * extent or forwarding the touch coordinates.  All coordinates are integer
+ * screen pixels and all referenced resource storage remains owned by the
+ * recovered graphics caches.
  */
 #include "tingle/graphics_sprite_state.h"
 #include "tingle/types.h"
@@ -181,6 +182,34 @@ s32 func_02073aa8(GraphicsSpriteState *state, s32 pointX, s32 pointY)
     return 0;
 }
 
+/*
+ * Test whether a touch point lies within inclusive horizontal and vertical
+ * radii of the sprite's owner-relative center.  Hidden sprites, detached
+ * states, and disabled owners cannot be hit.  The point flags are not read.
+ */
+s32 func_0209286c(GraphicsSpriteState *state, const SpriteTouchPoint *point,
+                  s32 horizontalRadius, s32 verticalRadius)
+{
+    SpriteOwnerState *owner;
+    s32 centerX;
+    s32 centerY;
+
+    if (state == 0 || (state->flags & 0x0c) != 0)
+        return 0;
+    owner = (SpriteOwnerState *)state->field_00;
+    if (owner->enabled == 0)
+        return 0;
+
+    centerX = state->screenX + owner->screenX;
+    centerY = state->screenY + owner->screenY;
+    if (centerX - horizontalRadius > point->x ||
+        centerX + horizontalRadius < point->x ||
+        centerY - verticalRadius > point->y ||
+        centerY + verticalRadius < point->y)
+        return 0;
+    return 1;
+}
+
 /* Apply the shared hidden/inactive guards used by scene touch callers. */
 s32 func_02092910(GraphicsSpriteState *state, const SpriteTouchPoint *point)
 {
@@ -193,4 +222,3 @@ s32 func_02092910(GraphicsSpriteState *state, const SpriteTouchPoint *point)
         return 0;
     return func_02073aa8(state, point->x, point->y);
 }
-

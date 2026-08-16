@@ -1,10 +1,14 @@
 
 
 
-/* Portable reconstructions of assembly-selected retail database loaders. */
+/*
+ * Portable reconstructions of assembly-selected retail database loaders and
+ * the randomized selection-history operations backed by those databases.
+ */
 #include "tingle/game_file.h"
 #include "tingle/checked_fs.h"
 #include "tingle/heap.h"
+#include "tingle/random.h"
 #include "tingle/types.h"
 
 
@@ -30,7 +34,20 @@ extern u8 data_020c6d18[];
 extern void func_02078dd4(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *func_02078e98(void *manager, u32 identifier);
+extern void func_02097eec(void *entry, u16 identifier);
 extern void OS_Halt(void);
+
+typedef struct RetailSelectionGroup {
+    u32 index;
+    u32 count;
+    u32 identifiers[20];
+} RetailSelectionGroup;
+
+typedef struct RetailSelectionEntry {
+    u16 identifier;
+    u16 active;
+    u8 *record;
+} RetailSelectionEntry;
 
 static u16 ReadU16(const u8 *bytes)
 {
@@ -63,6 +80,94 @@ void func_02097f94(void *manager_pointer)
             *(u32 *)(destination + 4) = destination_count + 1;
         }
     }
+}
+
+/*
+ * Choose one identifier from a group while excluding `previous_identifier`.
+ * The group storage remains owned by the selection manager. Retail callers
+ * ensure at least one eligible identifier exists.
+ */
+s32 func_02097f3c(void *group_pointer, s32 previous_identifier)
+{
+    RetailSelectionGroup *group = (RetailSelectionGroup *)group_pointer;
+    u32 eligible[20];
+    u32 eligible_count = 0;
+    u32 index;
+
+    for (index = 0; index < group->count; ++index) {
+        if (group->identifiers[index] != (u32)previous_identifier)
+            eligible[eligible_count++] = group->identifiers[index];
+    }
+    /* Retail's division helper returns the quotient in r0 and remainder in
+     * r1; this caller consumes r1, which portable C expresses directly. */
+    index = genrand_int32() % eligible_count;
+    return (s32)eligible[index];
+}
+
+/* Copy one manager-owned eight-byte selection-history record. */
+static void CopySelectionEntry(RetailSelectionEntry *destination,
+                               const RetailSelectionEntry *source)
+{
+    destination->identifier = source->identifier;
+    destination->active = source->active;
+    destination->record = source->record;
+}
+
+/*
+ * Advance the randomized selection history using the active group at +0x464.
+ * A nonnegative group on the current record replaces the head while excluding
+ * its prior identifier; otherwise the existing borrowed record pointers move
+ * down by one slot and a new head is inserted. The manager owns all history
+ * slots, while the referenced database records remain database-owned.
+ */
+void func_020980f8(void *manager_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    RetailSelectionGroup *group = (RetailSelectionGroup *)(
+        manager + *(u32 *)(manager + 0x464) * 0x58);
+    RetailSelectionEntry *history = (RetailSelectionEntry *)(manager + 0x370);
+    s32 count = *(s32 *)(manager + 0x460);
+    s32 identifier;
+
+    if (count == 0) {
+        identifier = func_02097f3c(group, -1);
+        func_02097eec(history, (u16)identifier);
+        *(s32 *)(manager + 0x460) = count + 1;
+        return;
+    }
+
+    if ((s8)history[0].record[3] >= 0) {
+        identifier = func_02097f3c(group, history[0].identifier);
+        func_02097eec(history, (u16)identifier);
+        return;
+    }
+
+    while (count > 0) {
+        CopySelectionEntry(&history[count], &history[count - 1]);
+        --count;
+    }
+    identifier = func_02097f3c(group, -1);
+    func_02097eec(history, (u16)identifier);
+    ++*(s32 *)(manager + 0x460);
+}
+
+/*
+ * Return whether the history contains an inactive record from the special
+ * negative group. Record pointers are borrowed from the loaded selection
+ * database; this query does not mutate either owner.
+ */
+s32 func_02098348(void *manager_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    RetailSelectionEntry *history = (RetailSelectionEntry *)(manager + 0x370);
+    s32 count = *(s32 *)(manager + 0x460);
+    s32 index;
+
+    for (index = 0; index < count; ++index) {
+        if ((s8)history[index].record[3] < 0 && history[index].active != 1)
+            return 1;
+    }
+    return 0;
 }
 
 /* Release one retail heap array whose pointer/count occupy the first 8 bytes. */
@@ -335,8 +440,5 @@ void func_02079694(void *manager_pointer)
     *(u32 *)(manager + 0x10c) = 0;
     *(u32 *)(manager + 0x110) = 0;
 }
-
-
-
 
 

@@ -21,12 +21,12 @@ extern "C" void func_020926d8(void *transfer);
 extern "C" void GraphicsResourceSet_Load(void *resources, void *archive,
                                           s32 first, s32 second, s32 third,
                                           s32 fourth);
-extern "C" void *GraphicsResourceSet_Apply(void *resources, s32 engine, s32 value);
+extern "C" void GraphicsResourceSet_Apply(void *resources, s32 engine, s32 value);
 extern "C" void func_02070f80(void *resource, s32 value);
 extern "C" void func_020b44e8(void);
 extern "C" void func_02072048(void *resources, s32 engine, s32 value);
 extern "C" void func_02092754(void *transfer, s32 resourceId);
-extern "C" void func_02092790(void *transfer, s32 engine);
+extern "C" void *func_02092790(void *transfer, s32 engine);
 extern "C" void func_02070eac(void *resource, s32 engine, s32 value);
 extern "C" void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
 extern "C" void func_020926f8(void *transfer);
@@ -78,8 +78,8 @@ extern "C" void func_ov043_0220ba28(void *object)
                               0x8012, 0x8013, 0x8014, 0x8014);
     func_02092754(transfer, 0x8016);
     func_020b44e8();
-    void *resource = GraphicsResourceSet_Apply(resources, 0, 0);
-    func_02092790(transfer, 0);
+    GraphicsResourceSet_Apply(resources, 0, 0);
+    void *resource = func_02092790(transfer, 0);
     func_02070eac(resource, 2, 0);
 
     void *font = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
