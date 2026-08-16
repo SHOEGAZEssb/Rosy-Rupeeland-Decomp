@@ -78,9 +78,10 @@ extern "C" void func_ov032_021fde38(void *scene)
 /*
  * Samples touch/pad state into `scene`, records a touch-down edge at +0xB84,
  * and invokes the encoded state callback at +0xB6C/+0xB70. A zero callback
- * result triggers renderer/UI cleanup and display shutdown; the callback result
- * is returned unchanged. The callback encoding is a compiler member-pointer
- * representation and its owning class is not yet confirmed.
+ * result advances both sprite groups, the currency HUD, and the paired prompt
+ * sprites; the callback result is returned unchanged. The callback encoding is
+ * a compiler member-pointer representation and its owning class is not yet
+ * confirmed.
  */
 extern "C" s32 func_ov032_021fdf30(void *scene)
 {
@@ -109,7 +110,7 @@ extern "C" s32 func_ov032_021fdf30(void *scene)
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 4));
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0));
         GamePhaseCurrencyHud_Update(gLupyContext);
-        func_ov032_021fde38(scene);
+        func_ov032_021fe024(scene);
     }
     return result;
 }
