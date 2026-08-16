@@ -52,6 +52,7 @@ extern void func_0207bb94(void *database);
 extern void func_0207be20(void *database);
 extern void func_0207c084(void *database);
 extern void *func_0207a2cc(void *manager);
+extern void *gGameWork;
 
 static u16 ReadU16(const u8 *bytes)
 {
@@ -73,6 +74,25 @@ void *func_0207b5dc(void *database_pointer, u16 id)
     }
     OS_Halt();
     return 0;
+}
+
+/*
+ * Resolve selector through the retail record database, then test the GameWork
+ * availability bit indexed by record halfword +0x02. The first argument is a
+ * borrowed caller context retained by the resident callback ABI but unused by
+ * retail; selector selects the borrowed record. Returns normalized zero/one
+ * and does not modify either database or save state.
+ */
+s32 func_0207a450(void *context, s32 selector)
+{
+    u8 *record;
+    u32 index;
+
+    (void)context;
+    record = (u8 *)func_0207b5dc(data_021f5138, (u16)selector);
+    index = *(u16 *)(record + 2);
+    return (((u8 *)gGameWork)[0xf68 + index / 8] &
+            (u8)(1u << (index % 8))) != 0;
 }
 
 /* Return the retail record bank selected by packed flag bits 8..11. */
@@ -588,7 +608,6 @@ void func_0207a268(void)
     if (manager != 0)
         func_0207a2cc(manager);
 }
-
 
 
 

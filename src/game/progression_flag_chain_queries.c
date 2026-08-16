@@ -1,8 +1,8 @@
 #include "tingle/types.h"
 
 /*
- * Ordered progression-flag query chain recovered from ARM9 0x02083AF8 through
- * 0x020857AC.
+ * Ordered progression-flag query chains recovered from the resident ARM9
+ * availability callback tables.
  *
  * These callbacks back the resident indexed-handler tables used by the phase
  * script VM.  Each stage requires all earlier milestones and its own ordered
@@ -15,6 +15,15 @@ extern void *gGameWork;
 extern s32 GameWork_TestFlag(void *work, s32 flag);
 extern void GameWork_SetFlag(void *work, s32 flag);
 extern void GameWork_ClearFlag(void *work, s32 flag);
+
+extern s32 func_02085668(void);
+extern s32 func_020859e8(void);
+extern s32 func_02086054(void);
+extern s32 func_02086264(void);
+extern s32 func_02087ddc(void);
+extern s32 func_0208821c(void);
+extern s32 func_0208514c(void);
+extern s32 func_02085f38(void);
 
 static s32 AllFlags(const u16 *flags, u32 count)
 {
@@ -143,6 +152,258 @@ s32 func_020857ac(void)
 {
     static const u16 flags[] = {0x7cb, 0x80d};
     return func_020849f4() && AllFlags(flags, 2);
+}
+
+/* Require the paired flags used by the shared 0x84e10 prerequisite. */
+s32 func_02084b58(void)
+{
+    static const u16 flags[] = {0x756, 0x794};
+    return AllFlags(flags, 2);
+}
+
+/* Join 0x84b58 and 0x849f4, then require its three ordered flags. */
+s32 func_02084e10(void)
+{
+    static const u16 flags[] = {0x795, 0x8b7, 0x7cc};
+    return func_02084b58() && func_020849f4() && AllFlags(flags, 3);
+}
+
+/* Extend the 0x8514c milestone with the five flags preceding 0x859e8. */
+s32 func_02085668(void)
+{
+    static const u16 flags[] = {0xbe5, 0x7dc, 0x7f3, 0x8b5, 0x7a8};
+    return func_0208514c() && AllFlags(flags, 5);
+}
+
+/* Extend 0x85668 with the five ordered flags used by 0x859e8. */
+s32 func_020859e8(void)
+{
+    static const u16 flags[] = {0xbe6, 0x7eb, 0x7fb, 0x8d1, 0x8b3};
+    return func_02085668() && AllFlags(flags, 5);
+}
+
+/* Extend 0x85f38 through progression flags 0x800 and 0x801. */
+s32 func_02086054(void)
+{
+    static const u16 flags[] = {0x800, 0x801};
+    return func_02085f38() && AllFlags(flags, 2);
+}
+
+/* Extend 0x85f38 through the eight flags used by 0x86264. */
+s32 func_02086264(void)
+{
+    static const u16 flags[] = {
+        0xbe8, 0x815, 0x82f, 0x817, 0x827, 0x829, 0x8d3, 0x825
+    };
+    return func_02085f38() && AllFlags(flags, 8);
+}
+
+/* Extend 0x84e10 with progression flags 0x8b8, 0x7b9, and 0x7f7. */
+s32 func_02087ddc(void)
+{
+    static const u16 flags[] = {0x8b8, 0x7b9, 0x7f7};
+    return func_02084e10() && AllFlags(flags, 3);
+}
+
+/* Extend 0x87ddc with progression flags 0x7c0, 0x8cd, and 0x7d2. */
+s32 func_0208552c(void)
+{
+    static const u16 flags[] = {0x7c0, 0x8cd, 0x7d2};
+    return func_02087ddc() && AllFlags(flags, 3);
+}
+
+/* Extend 0x8552c with progression flags 0x8ce and 0x80b. */
+s32 func_0208821c(void)
+{
+    static const u16 flags[] = {0x8ce, 0x80b};
+    return func_0208552c() && AllFlags(flags, 2);
+}
+
+/* Extend the 0x840dc milestone with flags 0x1ff and 0x76f. */
+s32 func_020843a8(void)
+{
+    static const u16 flags[] = {0x1ff, 0x76f};
+    return func_020840dc() && AllFlags(flags, 2);
+}
+
+/* Require the paired flags used by the shared 0x84b10 prerequisite. */
+s32 func_02084b10(void)
+{
+    static const u16 flags[] = {0x755, 0x770};
+    return AllFlags(flags, 2);
+}
+
+/* Extend the 0x840dc branch through its shared gate and five flags. */
+s32 func_02084404(void)
+{
+    static const u16 flags[] = {0x065, 0x771, 0x805, 0x8cb, 0x7ad};
+    return func_020840dc() && func_02084b10() && AllFlags(flags, 5);
+}
+
+/* Require progression flags 0x78f and 0x778. */
+s32 func_02084bfc(void)
+{
+    static const u16 flags[] = {0x78f, 0x778};
+    return AllFlags(flags, 2);
+}
+
+/* Return the normalized state of progression flag 0x78d. */
+s32 func_02084de4(void)
+{
+    return GameWork_TestFlag(gGameWork, 0x78d) != 0;
+}
+
+/* Extend the 0x849f4 milestone with flags 0x797, 0x7e0, and 0x7a8. */
+s32 func_02084e9c(void)
+{
+    static const u16 flags[] = {0x797, 0x7e0, 0x7a8};
+    return func_020849f4() && AllFlags(flags, 3);
+}
+
+/* Extend the 0x84404 branch with progression flag 0x7af. */
+s32 func_02085224(void)
+{
+    return func_02084404() && GameWork_TestFlag(gGameWork, 0x7af);
+}
+
+/* Extend the 0x845a0 branch with progression flag 0x7af. */
+s32 func_02085260(void)
+{
+    return func_020845a0() && GameWork_TestFlag(gGameWork, 0x7af);
+}
+
+/* Return the normalized state of progression flag 0x7c9. */
+s32 func_02085780(void)
+{
+    return GameWork_TestFlag(gGameWork, 0x7c9) != 0;
+}
+
+/* Extend the 0x8514c milestone with progression flag 0x7d1. */
+s32 func_02085870(void)
+{
+    return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7d1);
+}
+
+/* Extend two shared prerequisites with progression flag 0x7a9. */
+s32 func_02085aa4(void)
+{
+    return func_02084e9c() && func_02085668() &&
+           GameWork_TestFlag(gGameWork, 0x7a9);
+}
+
+/* Extend the shared 0x87ddc prerequisite with progression flag 0x7f8. */
+s32 func_02085d00(void)
+{
+    return func_02087ddc() && GameWork_TestFlag(gGameWork, 0x7f8);
+}
+
+/* Extend the shared 0x859e8 prerequisite with its eight ordered flags. */
+s32 func_02085f38(void)
+{
+    static const u16 flags[] = {
+        0xbe7, 0x80d, 0x7ff, 0x803, 0x805, 0x80f, 0x811, 0x829
+    };
+    return func_020859e8() && AllFlags(flags, 8);
+}
+
+/* Extend the shared 0x86054 prerequisite with progression flag 0x802. */
+s32 func_020861b4(void)
+{
+    return func_02086054() && GameWork_TestFlag(gGameWork, 0x802);
+}
+
+/* Extend the shared 0x8821c prerequisite with progression flag 0x80c. */
+s32 func_020861f0(void)
+{
+    return func_0208821c() && GameWork_TestFlag(gGameWork, 0x80c);
+}
+
+/* Extend the shared 0x86264 prerequisite with progression flag 0x826. */
+s32 func_02086418(void)
+{
+    return func_02086264() && GameWork_TestFlag(gGameWork, 0x826);
+}
+
+/* Join the 0x85f38/final chains and require progression flag 0x80e. */
+s32 func_02086564(void)
+{
+    return func_02085f38() && func_020857ac() &&
+           GameWork_TestFlag(gGameWork, 0x80e);
+}
+
+/* Extend the shared 0x859e8 prerequisite with progression flag 0x8b4. */
+s32 func_02087da0(void)
+{
+    return func_020859e8() && GameWork_TestFlag(gGameWork, 0x8b4);
+}
+
+/* Preserve the retail repeated 0x770 gate after the shared prerequisites. */
+s32 func_02088b9c(void)
+{
+    return func_020840dc() && func_02084b10() &&
+           GameWork_TestFlag(gGameWork, 0x770);
+}
+
+/* Return the normalized state of progression flag 0x78c. */
+s32 func_02088ff4(void)
+{
+    return GameWork_TestFlag(gGameWork, 0x78c) != 0;
+}
+
+/* Extend the 0x84404 branch with progression flag 0x7ad. */
+s32 func_0208921c(void)
+{
+    return func_02084404() && GameWork_TestFlag(gGameWork, 0x7ad);
+}
+
+/* Extend two shared prerequisites with progression flag 0x7a8. */
+s32 func_02089780(void)
+{
+    return func_02084e9c() && func_02085668() &&
+           GameWork_TestFlag(gGameWork, 0x7a8);
+}
+
+/* Extend the shared 0x87ddc prerequisite with progression flag 0x7f7. */
+s32 func_020898e8(void)
+{
+    return func_02087ddc() && GameWork_TestFlag(gGameWork, 0x7f7);
+}
+
+/* Extend the shared 0x859e8 prerequisite with progression flag 0x7fd. */
+s32 func_02089b20(void)
+{
+    return func_020859e8() && GameWork_TestFlag(gGameWork, 0x7fd);
+}
+
+/* Extend the shared 0x86054 prerequisite with progression flag 0x801. */
+s32 func_02089c4c(void)
+{
+    return func_02086054() && GameWork_TestFlag(gGameWork, 0x801);
+}
+
+/* Extend the shared 0x8821c prerequisite with progression flag 0x80b. */
+s32 func_02089c88(void)
+{
+    return func_0208821c() && GameWork_TestFlag(gGameWork, 0x80b);
+}
+
+/* Extend the shared 0x86264 prerequisite with progression flag 0x825. */
+s32 func_02089db4(void)
+{
+    return func_02086264() && GameWork_TestFlag(gGameWork, 0x825);
+}
+
+/* Join the 0x85f38/final chains and require progression flag 0x80d. */
+s32 func_02089ec4(void)
+{
+    return func_02085f38() && func_020857ac() &&
+           GameWork_TestFlag(gGameWork, 0x80d);
+}
+
+/* Extend the shared 0x859e8 prerequisite with progression flag 0x8b3. */
+s32 func_0208ad20(void)
+{
+    return func_020859e8() && GameWork_TestFlag(gGameWork, 0x8b3);
 }
 
 /* Secondary-table classification paired with the 0x857ac query. */
