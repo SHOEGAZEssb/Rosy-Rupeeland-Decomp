@@ -116,6 +116,23 @@ s32 func_02095f30(void *choice)
     return *(s32 *)(bytes + 0x80) >= *(s32 *)(bytes + 0x7c);
 }
 
+/*
+ * Copy a caller-owned UTF-16 attachment into the modal's inline buffer at
+ * +0x250. At most 63 code units are retained and the destination is always
+ * terminated; the source remains owned by the caller.
+ */
+void func_02095f48(void *state, const u16 *attachment)
+{
+    u16 *destination = (u16 *)((u8 *)state + 0x250);
+    s32 index = 0;
+
+    while (index < 0x3f && attachment[index] != 0) {
+        destination[index] = attachment[index];
+        ++index;
+    }
+    destination[index] = 0;
+}
+
 /* Exact three-choice modal input/update state machine at retail 0x02095DD4. */
 s32 func_02095dd4(void *state, void *input, s32 input_enabled)
 {
@@ -222,6 +239,5 @@ void *func_020959d4(void *storage, s32 first, s32 second)
     func_02092f88(dialog, 1, self + 0x250);
     return self;
 }
-
 
 
