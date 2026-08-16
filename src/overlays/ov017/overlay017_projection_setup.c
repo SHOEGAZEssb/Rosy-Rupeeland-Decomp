@@ -31,7 +31,8 @@ extern "C" void func_ov017_021ff75c(void *state)
 {
     volatile s32 *reg444 = (volatile s32 *)0x04000444;
     volatile s32 *reg448 = (volatile s32 *)0x04000448;
-    s32 outputs[3];
+    /* Position-test output is X/Y/Z at slots 1..3 plus W at slot 0. */
+    s32 outputs[4];
     s32 radius = data_ov017_02201414[
         FIELD(s32, data_ov017_022016e0, 0xc)];
 

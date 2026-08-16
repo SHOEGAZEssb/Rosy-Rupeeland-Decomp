@@ -25,7 +25,7 @@ extern void func_020b0f40(s32 field_00, s32 field_04, s32 field_08,
 extern void func_020b08bc(const s32 *field_00, const s32 *field_04,
                           const s32 *field_08, s32 field_0c, s32 *output);
 extern void func_020b58d4(const s32 *source, s32 *destination);
-extern void func_020ad378(s32 *destination, const s32 *source);
+extern s32 func_020ad378(const s32 *source, s32 *destination);
 
 #ifdef __cplusplus
 }

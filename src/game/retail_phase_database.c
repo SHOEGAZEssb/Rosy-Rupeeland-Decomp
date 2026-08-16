@@ -28,6 +28,21 @@ extern void func_020627a0(void *descriptor, u16 id, u16 last_index);
 extern void func_020627d0(void *descriptor, u16 id, u16 kind, u16 quantity);
 extern void *func_02062728(void *destination, const void *source);
 
+#ifndef MATCHING
+extern void func_02064e28(void *collection);
+extern void *func_02064a18(void *collection, void *incoming);
+extern s32 func_0206492c(void *collection, u16 id);
+extern void func_02062744(void *destination, const void *source);
+extern void func_02062808(void *record);
+extern void func_02062874(void *record, u16 quantity);
+#endif
+
+/* Retain one borrowed phase-record pointer in a caller-owned result slot. */
+void func_0206fa94(void *destination, void *phase)
+{
+    *(void **)destination = phase;
+}
+
 /* Return the 0x10C-byte phase record whose leading halfword matches id
  * (retail 0x0206F360). The database retains ownership; a missing identifier
  * is a retail invariant violation and reaches the halt boundary. */
@@ -195,6 +210,122 @@ void func_0206fc00(void *container_pointer)
         memset(entries + index * 0x24, 0, 0x24);
 }
 
+#ifndef MATCHING
+/* Reset the phase-selection collection and its embedded result descriptor.
+ * Allocated collection storage remains owned by the container. */
+void func_0206fc20(void *container)
+{
+    func_02064e28(container);
+    func_02062808((u8 *)container + 0x1c);
+}
+
+/* Add one actor ID to the phase-selection collection using a temporary,
+ * self-linked descriptor. Retail halts when the fixed collection is full. */
+void func_0206fc38(void *container, u16 actor_id, s32 quantity)
+{
+    u8 descriptor[0x24];
+
+    memset(descriptor, 0, sizeof(descriptor));
+    *(void **)(descriptor + 0x14) = descriptor;
+    *(u32 *)(descriptor + 0x18) = 1;
+    *(void **)(descriptor + 0x1c) = descriptor;
+    func_020627a0(descriptor, actor_id, (u16)quantity);
+    if (func_02064a18(container, descriptor) == 0)
+        OS_Halt();
+}
+
+/* Find a phase record whose ingredient IDs match the selected collection and
+ * whose quantities all yield the same exact positive multiplier. The record
+ * is borrowed from database; multiplier receives that common quotient. */
+static u8 *FindMatchingPhase(void *database_pointer, void *container_pointer,
+                             s32 *multiplier)
+{
+    u8 *database = (u8 *)database_pointer;
+    u8 *container = (u8 *)container_pointer;
+    u8 *records = *(u8 **)database;
+    s32 phase_index;
+
+    for (phase_index = 0; phase_index < *(s32 *)(database + 8);
+         ++phase_index) {
+        u8 *phase = records + phase_index * 0x10c;
+        s32 common = 0;
+        s32 ingredient;
+        s32 valid = 1;
+
+        if (*(s32 *)(phase + 0x100) != *(s32 *)(container + 0x14))
+            continue;
+        for (ingredient = 0; ingredient < *(s32 *)(phase + 0x100);
+             ++ingredient) {
+            u8 *required = phase + 0x28 + ingredient * 0x24;
+            u8 *definition = *(u8 **)(required + 8);
+            s32 selected_index = func_0206492c(
+                container, *(u16 *)definition);
+            u16 available;
+            u16 needed;
+            s32 quotient;
+
+            if (selected_index < 0) {
+                valid = 0;
+                break;
+            }
+            available = *(u16 *)(*(u8 **)(container + 8) +
+                                  selected_index * 0x24 + 4);
+            needed = *(u16 *)(required + 4);
+            quotient = available / needed;
+            if (available % needed != 0 ||
+                (common > 0 && quotient != common)) {
+                valid = 0;
+                break;
+            }
+            common = quotient;
+        }
+        if (valid) {
+            *multiplier = common;
+            return phase;
+        }
+    }
+    return 0;
+}
+
+/* Resolve and materialize the output descriptor for the selected ingredient
+ * combination. Returns one on a match and zero when no phase fits. */
+static s32 BuildMatchingPhaseResult(void *container, void *output)
+{
+    s32 multiplier = 0;
+    u8 *phase = FindMatchingPhase(data_021e9de8, container, &multiplier);
+
+    if (phase == 0)
+        return 0;
+    func_02062744(output, phase + 4);
+    func_02062874(output, (u16)multiplier);
+    return 1;
+}
+
+/* Build the embedded phase result and scale its quantity by category. */
+s32 func_0206fca0(void *container, s32 category)
+{
+    u8 *result = (u8 *)container + 0x1c;
+
+    if (!BuildMatchingPhaseResult(container, result))
+        return 0;
+    func_02062874(result, (u16)(category * *(u16 *)(result + 4)));
+    return 1;
+}
+
+/* Retain and return the phase record matching the current ingredient set.
+ * The borrowed record pointer is stored in the container's slot at +0x40. */
+void *func_0206fd30(void *container)
+{
+    s32 multiplier = 0;
+    void *phase = FindMatchingPhase(data_021e9de8, container, &multiplier);
+
+    if (phase == 0)
+        return 0;
+    func_0206fa94((u8 *)container + 0x40, phase);
+    return (u8 *)container + 0x40;
+}
+#endif
+
 /* Build the phase-record pointer view at retail 0x0206F7BC. */
 void func_0206f7bc(void *manager_pointer)
 {
@@ -274,7 +405,5 @@ void func_0206f780(void)
     func_0206f7bc(data_021e9e00);
     func_020634b0(*(void **)data_021e9ac0);
 }
-
-
 
 

@@ -22,6 +22,10 @@ void func_02064b1c(void *collection, s32 first, s32 second);
 extern void OS_Halt(void);
 extern u8 data_021e9ad0[];
 
+#ifndef MATCHING
+extern void func_02062808(void *record);
+#endif
+
 /* Return the borrowed metadata pointer stored by an inventory record. */
 void *func_02062e00(void *record)
 {
@@ -127,6 +131,42 @@ void func_02064ad8(void *record, s32 delta)
 {
     func_02062864(record, (u16)(FIELD(u16, record, 4) + delta));
 }
+
+#ifndef MATCHING
+/* Clear every currently valid descriptor in a fixed collection, then reset
+ * its active count. The collection retains its allocation and capacity. */
+void func_02064e28(void *collection)
+{
+    u8 *records = FIELD(u8 *, collection, 8);
+    s32 index;
+
+    for (index = 0; index < FIELD(s32, collection, 0x10); ++index) {
+        u8 *record = records + index * 0x24;
+
+        if (func_02062b28(record) == 0)
+            func_02062808(record);
+    }
+    FIELD(s32, collection, 0x14) = 0;
+}
+
+/* Remove quantity from one collection slot. A zero amount or an exact match
+ * clears the descriptor and decrements the active count; smaller amounts are
+ * subtracted with retail's 16-bit wrap and clamp behavior. */
+void func_02064e7c(void *collection, s32 index, u16 amount)
+{
+    u8 *record;
+
+    if (FIELD(s32, collection, 0x14) == 0)
+        return;
+    record = FIELD(u8 *, collection, 8) + index * 0x24;
+    if (amount != 0 && amount != FIELD(u16, record, 4)) {
+        func_02062864(record, (u16)(FIELD(u16, record, 4) - amount));
+        return;
+    }
+    func_02062808(record);
+    --FIELD(s32, collection, 0x14);
+}
+#endif
 
 /*
  * Return whether the collection can accept incoming. Mergeable records fit

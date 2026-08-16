@@ -24,6 +24,33 @@ extern u8 data_020c4424[];
 extern u8 data_021e9d2c[];
 extern u8 gSystemState[];
 
+#ifndef MATCHING
+/* Clear one 0x24-byte runtime descriptor while retaining its leading ID.
+ * All subordinate pointers are borrowed and are simply detached. */
+void func_02062808(void *self)
+{
+    u8 *record = (u8 *)self;
+
+    *(u32 *)(record + 8) = 0;
+    *(u32 *)(record + 0x0c) = 0;
+    *(u32 *)(record + 0x20) = 0;
+    *(u16 *)(record + 6) = 0;
+    *(u16 *)(record + 4) = 0;
+    *(u16 *)(record + 2) = 0;
+}
+
+/* Return the kind-zero descriptor's value field at resource offset +0x10.
+ * Other actor-definition kinds have no value and return zero. */
+s32 func_02062b0c(void *self)
+{
+    u8 *definition = *(u8 **)((u8 *)self + 8);
+
+    if (definition[2] != 0)
+        return 0;
+    return *(s32 *)(*(u8 **)(definition + 8) + 0x10);
+}
+#endif
+
 /* Return the actor-database definition type for one actor ID (0x02062DE4). */
 s32 func_02062de4(u16 id)
 {
