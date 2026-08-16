@@ -93,7 +93,7 @@ extern "C" s32 func_ov032_021feea0(void *scene)
         if (FIELD(s32, scene, 0xb84)) {
             s32 selected = 0;
             void *touch = (u8 *)scene + 0xb54;
-            if (func_ov032_021ff288((u8 *)scene + 0x154, touch, 0, -1)) {
+            if (func_ov032_021ff288((u8 *)scene + 0x154, touch, -1, -1)) {
                 Sound_Play(gSoundContext, 0x81, 5);
                 FIELD(s32, scene, 0xb64) = 20;
                 selected = 1;
