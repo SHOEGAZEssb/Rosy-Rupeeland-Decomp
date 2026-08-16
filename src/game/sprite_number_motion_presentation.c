@@ -17,7 +17,7 @@ typedef struct SpriteNumberMotionPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6658;
+extern void *data_020d6658[];
 extern const char gSpriteNumberGroupAllocationTag[];
 extern void *func_0201e250(void *);
 extern void *func_0201e28c(void *);

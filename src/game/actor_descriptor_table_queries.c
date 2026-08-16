@@ -310,6 +310,44 @@ s32 func_02065034(void *state)
 }
 
 /*
+ * Return one when `record` is an inactive kind-one descriptor with subtype
+ * one. The descriptor and its database definition are borrowed; this query
+ * has no side effects.
+ */
+s32 func_02062c68(void *record)
+{
+    u8 *bytes = (u8 *)record;
+    u8 *definition;
+
+    if (func_02062b28(record) != 0)
+        return 0;
+    definition = *(u8 **)(bytes + 8);
+    if (definition[2] != 1)
+        return 0;
+    return *(u16 *)(bytes + 6) == 1;
+}
+
+/*
+ * Count inactive kind-one/subtype-one descriptors in the borrowed 0x24-byte
+ * entry array at +4. The signed count at +0x0c bounds the scan, matching the
+ * retail loop; no state or ownership changes occur.
+ */
+s32 func_0206522c(void *state)
+{
+    u8 *bytes = (u8 *)state;
+    u8 *entries = *(u8 **)(bytes + 4);
+    s32 count = *(s32 *)(bytes + 0x0c);
+    s32 matches = 0;
+    s32 index;
+
+    for (index = 0; index < count; ++index) {
+        if (func_02062c68(entries + index * 0x24) != 0)
+            ++matches;
+    }
+    return matches;
+}
+
+/*
  * Activate the first eligible 0x24-byte entry in `state`. Return zero without
  * changes when none is eligible. Otherwise initialize it for actor ID 0x3e,
  * increment the active count at +0x10, and return one.
