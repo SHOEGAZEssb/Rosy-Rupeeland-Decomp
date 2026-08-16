@@ -28,7 +28,8 @@ Graphics3DResourceOwner *Graphics3DResourceOwner_Init(
     Graphics3DResourceOwner *owner, u32 textureBankMode, u32 paletteBankMode);
 Graphics3DResourceOwner *Graphics3DResourceOwner_Destroy(
     Graphics3DResourceOwner *owner);
-void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner);
+GraphicsAnimationInstanceManager *Graphics3DResourceOwner_CreateManager(
+    Graphics3DResourceOwner *owner);
 void Graphics3DResourceOwner_RemoveManager(Graphics3DResourceOwner *owner,
                                             GraphicsAnimationInstanceManager *manager);
 void Graphics3DResourceOwner_ClearManagers(Graphics3DResourceOwner *owner);

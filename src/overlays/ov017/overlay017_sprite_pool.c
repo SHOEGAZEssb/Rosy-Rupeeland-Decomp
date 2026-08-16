@@ -47,8 +47,8 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
     FIELD(u32, pool, 0x54) = 0;
     FIELD(u32, pool, 0x54) = genrand_int32();
     FIELD(void *, pool, 0) = Graphics3DResourceOwner_CreateManager(resourceContext);
-    GraphicsResourceSetVariant_Load((u8 *)pool + 4, data_020f4e18[0], 0x6020, 0x601e,
-                  0x601f);
+    GraphicsResourceSetVariant_Load((u8 *)pool + 4, data_020f4e18[0], 0x601e,
+                                    0x601f, 0x6020);
     Graphics3DResourceOwner_PrepareResources(resourceContext, (u8 *)pool + 4);
 
     for (i = 0; i < 8; i++) {

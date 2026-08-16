@@ -24,11 +24,11 @@ extern u8 gHeapContext[];
  * list, and increment managerCount. Heap allocation uses tag gGraphicsAnimationInstanceManagerAllocationTag,
  * four-byte alignment, and gHeapContext. Retail assumes allocation succeeds:
  * a null result still reaches the link stores and is outside the valid path.
- * Although the recovered C signature is void, retail leaves the new manager in
- * r0 and several callers consume that register as the created-manager result.
+ * Returns the new manager, matching the retail r0 result consumed by callers.
  */
 #ifndef MATCHING
-void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
+GraphicsAnimationInstanceManager *Graphics3DResourceOwner_CreateManager(
+    Graphics3DResourceOwner *owner)
 {
     GraphicsAnimationInstanceManager *manager =
         (GraphicsAnimationInstanceManager *)Heap_Alloc(
@@ -46,10 +46,12 @@ void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
     manager->previous = owner->managerTail;
     owner->managerTail = manager;
     owner->managerCount++;
+    return manager;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void Graphics3DResourceOwner_CreateManager(Graphics3DResourceOwner *owner)
+asm GraphicsAnimationInstanceManager *Graphics3DResourceOwner_CreateManager(
+    Graphics3DResourceOwner *owner)
 {
     stmdb sp!, {r4, lr}
     /* Load allocation tag gGraphicsAnimationInstanceManagerAllocationTag from the trailing literal. */
