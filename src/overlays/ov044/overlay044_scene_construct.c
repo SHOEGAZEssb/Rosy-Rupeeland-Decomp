@@ -11,9 +11,9 @@
 extern "C" void *data_ov044_0220d31c;
 extern "C" u32 data_020f4e18;
 extern "C" u32 data_020f4e14;
-extern "C" const void *data_ov044_0220d340;
+extern "C" const u8 data_ov044_0220d340[];
 extern "C" u32 data_ov044_0220d2e0[2];
-extern "C" void *gHeapContext;
+extern "C" u8 gHeapContext[];
 extern "C" void *gDebugFont;
 extern "C" void *gGameWork;
 extern "C" void func_02091e28(void *object);

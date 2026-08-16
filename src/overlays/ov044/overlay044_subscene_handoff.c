@@ -10,8 +10,8 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void *data_020f4e14;
-extern "C" const void *data_ov044_0220d358;
-extern "C" void *gHeapContext;
+extern "C" const u8 data_ov044_0220d358[];
+extern "C" u8 gHeapContext[];
 extern "C" void *gGameWork;
 extern "C" u32 data_ov044_0220d2c8[2];
 extern "C" u32 data_ov044_0220d2c0[2];

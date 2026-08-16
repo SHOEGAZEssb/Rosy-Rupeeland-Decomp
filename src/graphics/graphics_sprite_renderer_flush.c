@@ -39,7 +39,12 @@ extern void func_02073340(void *state, void *entry, void *queue,
 extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *renderer,
                                                         void *entry);
 
-/* Portable reconstruction of the assembly-selected frame builder at 0x020745C4. */
+/* Portable reconstruction of the assembly-selected frame builder at 0x020745C4.
+ * A submission that cannot fit the remaining 128-entry OAM staging pool, or
+ * whose graphics range cannot fit VRAM, is omitted for this frame. This keeps
+ * malformed or over-budget presentation data from handing a partial/null
+ * chain to the retail builders; valid submissions retain retail ordering and
+ * effects. */
 void func_020745c4(void *renderer_pointer, s32 sort_roots)
 {
     u8 *renderer = (u8 *)renderer_pointer;
@@ -70,7 +75,9 @@ void func_020745c4(void *renderer_pointer, s32 sort_roots)
                 } else if ((flags & 0x1c) == 0) {
                     u16 cell_count =
                         GraphicsSpriteState_GetCurrentFrameResourceField02(state);
-                    if (cell_count != 0) {
+                    u32 allocated_count = *(u32 *)(renderer + 0x1a7c);
+                    if (cell_count != 0 && allocated_count <= 128U &&
+                        cell_count <= 128U - allocated_count) {
                         void *entry;
 
                         if (*(void **)(state + 0x10) == 0) {
@@ -86,8 +93,10 @@ void func_020745c4(void *renderer_pointer, s32 sort_roots)
                                     *(const u16 *)(metadata + 0x24),
                                     *(void **)(state + 0x14), 2);
                         }
-                        entry = GraphicsRenderEntryPool_AllocateChain(
-                            renderer + 0xe70, cell_count);
+                        entry = *(void **)(state + 0x0c) != 0
+                                    ? GraphicsRenderEntryPool_AllocateChain(
+                                          renderer + 0xe70, cell_count)
+                                    : 0;
                         if (entry != 0) {
                             if (*(s16 *)(state + 0x30) == 0 &&
                                 *(s16 *)(state + 0x32) == 0x100 &&
@@ -239,4 +248,3 @@ void func_020748a8(void *renderer_pointer)
             func_020b1dfc(source, destination, 0x6000);
     }
 }
-

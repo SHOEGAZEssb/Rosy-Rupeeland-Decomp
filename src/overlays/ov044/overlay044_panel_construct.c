@@ -8,7 +8,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void *data_020f4e18;
-extern "C" void *gHeapContext;
+extern "C" u8 gHeapContext[];
 extern "C" u8 data_ov044_0220d330[];
 extern "C" u8 data_ov044_0220d338[];
 extern "C" void func_02071ea4(void *owner);
@@ -21,7 +21,8 @@ extern "C" void *func_02003e20(s32 size, const void *tag,
 extern "C" void func_020c09cc(void *records, s32 count, s32 stride,
                                s32 alignment, void (*construct)(void *),
                                void (*destroy)(void *));
-extern "C" void *Heap_Alloc(s32 size, const void *tag, void *heap);
+extern "C" void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
+                              void *heap);
 extern "C" void *func_02094154(void *storage, void *font, s32 count,
                                 s32 mode, s32 x, s32 y, s32 spacing);
 extern "C" void func_02094574(void *child);
@@ -61,14 +62,16 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
             func_020c09cc(records, rowCount, 0x20, 8,
                            func_020683c8, func_020683f4);
         FIELD(void *, object, 0x38) = records;
-        void *child = Heap_Alloc(0x80, data_ov044_0220d338, gHeapContext);
+        void *child = Heap_Alloc(0x80, data_ov044_0220d338, 4,
+                                 gHeapContext);
         if (child)
             child = func_02094154(child, font, rowCount, 5,
                                   0xd6, 0x1c, 0xc);
         FIELD(void *, object, 0x44) = child;
     } else {
         FIELD(void *, object, 0x38) = 0;
-        void *child = Heap_Alloc(0x80, data_ov044_0220d338, gHeapContext);
+        void *child = Heap_Alloc(0x80, data_ov044_0220d338, 4,
+                                 gHeapContext);
         if (child)
             child = func_02094154(child, font, 1, 1,
                                   0xd6, 0x1c, 8);

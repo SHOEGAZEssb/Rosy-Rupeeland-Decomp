@@ -8,8 +8,8 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" const void *data_ov044_0220d350;
-extern "C" void *gHeapContext;
+extern "C" const u8 data_ov044_0220d350[];
+extern "C" u8 gHeapContext[];
 extern "C" void *func_02092790(void *resource, s32 enabled);
 extern "C" void func_02070e0c(void *resource, s32 destination, s32 offset);
 extern "C" void *Heap_Alloc(u32 size, const void *tag, s32 alignment,

@@ -10,8 +10,8 @@
 
 extern "C" void *gGameWork;
 extern "C" void *data_021e9ac0;
-extern "C" const void *data_ov044_0220d348;
-extern "C" void *gHeapContext;
+extern "C" const u8 data_ov044_0220d348[];
+extern "C" u8 gHeapContext[];
 extern "C" void *data_020f4e14;
 extern "C" s32 GameWork_TestFlag(void *work, u32 flag);
 extern "C" void GameWork_ClearFlag(void *work, u32 flag);

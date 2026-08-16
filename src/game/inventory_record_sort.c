@@ -16,6 +16,15 @@ typedef struct InventoryRecordCollection {
 
 extern s32 func_02062b28(void *record);
 
+/* Return flag bit one from a valid record's +0x02 status halfword. Invalid
+ * records return zero. The record is borrowed and this query has no effects. */
+s32 func_02062c00(void *record)
+{
+    if (func_02062b28(record) != 0)
+        return 0;
+    return FIELD(u16, record, 2) & 2;
+}
+
 /* Return whether a valid type-one record denotes its empty subtype. */
 s32 func_02062c20(void *record)
 {
