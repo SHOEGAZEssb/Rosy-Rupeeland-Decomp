@@ -95,7 +95,7 @@ extern void *func_ov027_021fda30(void *object);
 extern void *func_ov017_021fda3c(void *object);
 extern void *func_ov036_022045d4(void *object, s32 argument);
 extern void *func_ov035_02202378(void *object, s32 argument);
-extern void *func_ov019_021fce28(void *object, s32 argument);
+extern void *func_ov019_021fce28(void *object, s32 argument, void *mode);
 extern void *func_ov037_021fe4fc(void *object, s32 argument);
 #ifdef __cplusplus
 }
@@ -874,7 +874,11 @@ code_r0x0200d5d8:
     OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e150);
     object = Heap_Alloc(100,UNK_0200e154,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov019_021fce28(object,self->phaseArgument);
+      /* Retail selects the alternate LCD route for phase 10 so the live main
+       * scene remains visible while overlay 19 owns the keypad screen. */
+      object = func_ov019_021fce28(
+          object, self->phaseArgument,
+          (void *)(u64)(self->phase == 10));
     }
     self->ownedObject = object;
     break;
