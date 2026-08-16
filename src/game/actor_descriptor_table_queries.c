@@ -15,6 +15,9 @@ extern void func_02071ee0(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern u8 data_021e9ad0[];
 extern void func_020b5294(void);
+extern u8 data_020c4424[];
+extern u8 data_021e9d2c[];
+extern u8 gSystemState[];
 
 /*
  * Initialize a range descriptor for actor `id`. The database definition at
@@ -97,6 +100,76 @@ void func_0207811c(void *self, s32 enabled)
 void *func_02062918(void *self, s32 index)
 {
     return (u8 *)self + (index == 0 ? 0x10 : 0x18);
+}
+
+/*
+ * Return the localized primary label selected by one actor descriptor. Kind
+ * one normally uses definition +0x10, but its zero-quantity subtype-one case
+ * borrows the database default definition. Other kinds use definition +0x10.
+ * Returned strings remain owned by the database.
+ */
+void *func_020628c8(void *self)
+{
+    u8 *record = (u8 *)self;
+    u8 *definition = *(u8 **)(record + 8);
+
+    if (definition[2] != 1 || *(u16 *)(record + 4) != 0 ||
+        *(u16 *)(record + 6) == 2)
+        return definition + 0x10;
+    if (*(u16 *)(record + 6) == 1)
+        return *(u8 **)(data_021e9ad0 + 0x254) + 0x10;
+    return self;
+}
+
+/*
+ * Return the panel-image selector for a descriptor. Kind zero uses image zero;
+ * ordinary kind-one records read resource byte +4, while the zero-quantity
+ * subtype-one record uses image two. Unsupported retail states halt.
+ */
+s32 func_020629a0(void *self)
+{
+    u8 *record = (u8 *)self;
+    u8 *definition = *(u8 **)(record + 8);
+
+    if (definition[2] == 0)
+        return 0;
+    if (definition[2] == 1) {
+        if (*(u16 *)(record + 4) != 0 || *(u16 *)(record + 6) == 2)
+            return (*(u8 **)(definition + 8))[4];
+        if (*(u16 *)(record + 6) == 1)
+            return 2;
+    }
+    func_020b5294();
+    return 0;
+}
+
+/*
+ * Return the localized secondary panel label. Kind one normally selects the
+ * resource string at +8, with a fixed empty-subtype label for its zero-value
+ * subtype one. Other kinds select one of the 0x40-byte language records at
+ * 0x020C4424. Returned strings are borrowed.
+ */
+void *func_02062a60(void *self)
+{
+    u8 *record = (u8 *)self;
+    u8 *definition = *(u8 **)(record + 8);
+
+    if (definition[2] == 1) {
+        if (*(u16 *)(record + 4) == 0 && *(u16 *)(record + 6) == 1)
+            return data_021e9d2c;
+        return *(u8 **)(definition + 8) + 8;
+    }
+    return data_020c4424 + (u32)gSystemState[0x5f] * 0x40;
+}
+
+/* Return the kind-zero resource animation byte +6, or zero for other kinds. */
+s32 func_02062ae4(void *self)
+{
+    u8 *definition = *(u8 **)((u8 *)self + 8);
+
+    if (definition[2] == 0)
+        return (*(u8 **)(definition + 8))[6];
+    return 0;
 }
 
 /* Resolve the backing resource record selected by one descriptor component. */

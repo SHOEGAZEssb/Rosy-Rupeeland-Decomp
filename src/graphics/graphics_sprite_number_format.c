@@ -118,3 +118,24 @@ sprite_number_test:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 }
 #endif
+
+/*
+ * Format one integer into a stack-owned UTF-16 buffer and draw it at the
+ * requested position. `placeValue` selects the highest decimal place,
+ * `zeroPad` controls leading zeroes, and the remaining arguments are forwarded
+ * as text color/mode and glyph advance. Returns the rendered width; only the
+ * caller's renderer tile buffer changes.
+ */
+#ifndef MATCHING
+s32 func_02092960(GraphicsSpriteRenderer *renderer, s32 value,
+                  s32 placeValue, s32 destinationX, s32 destinationY,
+                  u32 mode, s32 glyphAdvance, s32 zeroPad)
+{
+    u16 text[32];
+
+    GraphicsSpriteText_FormatDecimal(text, value, placeValue, zeroPad);
+    return GraphicsSpriteRenderer_DrawText(renderer, text, destinationX,
+                                           destinationY, mode, glyphAdvance,
+                                           0);
+}
+#endif

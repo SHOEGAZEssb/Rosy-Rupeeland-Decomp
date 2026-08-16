@@ -71,6 +71,9 @@ u8 GraphicsSpriteRenderer_GetGlyphMetric(GraphicsSpriteRenderer *renderer,
 u16 GraphicsSpriteFont_MapCharacterToGlyph(u32 characterCode);
 void GraphicsSpriteText_FormatDecimal(u16 *destination, s32 value,
                                       s32 placeValue, s32 zeroPad);
+s32 func_02092960(GraphicsSpriteRenderer *renderer, s32 value,
+                  s32 placeValue, s32 destinationX, s32 destinationY,
+                  u32 mode, s32 glyphAdvance, s32 zeroPad);
 u32 GraphicsSpriteRenderer_DrawCharacter(GraphicsSpriteRenderer *renderer,
                                          u32 characterCode, u32 destinationX,
                                          u32 destinationY, u32 mode);
