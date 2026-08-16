@@ -55,6 +55,13 @@ extern u16 func_020ae740(void);
 extern u16 func_020ae72c(void);
 extern void func_020aef3c(u32 banks);
 extern void func_020aee48(u32 banks);
+#ifndef MATCHING
+extern void TingleNativeG3_SetMatrixMode(u32 mode);
+extern void TingleNativeG3_Identity(void);
+extern void TingleNativeG3_Translate(s32 x, s32 y, s32 z);
+extern void TingleNativeG3_SetTextureParam(u32 value);
+extern void TingleNativeG3_SetPolygonAttr(u32 value);
+#endif
 
 typedef void (*RetailDestructor)(void *);
 
@@ -380,10 +387,14 @@ void func_0209b7cc(void *object, s32 swap_buffers)
 void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
                    u32 repeat_s, u32 repeat_t, u32 flip, u32 address)
 {
-    *(volatile u32 *)0x040004a8 =
+    u32 value =
         (format << 26) | (address >> 3) | (generation << 30) |
         (size_s << 20) | (size_t << 23) | (repeat_s << 16) |
         (repeat_t << 18) | (flip << 29);
+    *(volatile u32 *)0x040004a8 = value;
+#ifndef MATCHING
+    TingleNativeG3_SetTextureParam(value);
+#endif
 }
 
 /* Pack the retail polygon-attribute fields into the geometry command port.
@@ -391,9 +402,13 @@ void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
 void func_0209b560(u32 light, u32 polygon_mode, u32 cull_mode, u32 polygon_id,
                    u32 alpha, u32 misc)
 {
-    *(volatile u32 *)0x040004a4 =
+    u32 value =
         light | (polygon_mode << 4) | (cull_mode << 6) | misc |
         (polygon_id << 24) | (alpha << 16);
+    *(volatile u32 *)0x040004a4 = value;
+#ifndef MATCHING
+    TingleNativeG3_SetPolygonAttr(value);
+#endif
 }
 
 /* Establish the orthographic and material state shared by paired 3D
@@ -409,6 +424,11 @@ void func_0209c9d4(void *object)
     *(volatile u32 *)0x04000470 = 0x01000000;
     *(volatile u32 *)0x04000470 = 0x01000000;
     *(volatile u32 *)0x04000470 = 0x00001000;
+#ifndef MATCHING
+    TingleNativeG3_SetMatrixMode(2);
+    TingleNativeG3_Identity();
+    TingleNativeG3_Translate(0x01000000, 0x01000000, 0x00001000);
+#endif
     func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);
     func_0209b560(0, 0, 3, 2, 0x1f, 0);
 }

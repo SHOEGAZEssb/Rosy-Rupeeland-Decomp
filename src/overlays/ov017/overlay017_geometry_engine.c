@@ -11,6 +11,15 @@ extern void func_ov017_021fd60c(s32, s32, s32, s32, s32, s32);
 extern void func_ov017_021fd638(void);
 extern void func_ov017_021fd64c(s32, s32, s32);
 extern void func_ov017_021fd680(s32, s32, s32);
+#ifndef MATCHING
+extern void TingleNativeG3_SetPolygonAttr(u32 value);
+extern void TingleNativeG3_SetTextureParam(u32 value);
+extern void TingleNativeG3_Begin(u32 primitive);
+extern void TingleNativeG3_End(void);
+extern void TingleNativeG3_Color(u32 color);
+extern void TingleNativeG3_Vertex16(u32 xy, u32 z);
+extern void TingleNativeG3_Normal(u32 normal);
+#endif
 #ifdef __cplusplus
 }
 #endif
@@ -54,6 +63,9 @@ extern "C" void func_ov017_021fd414(void *state)
                                   row * 0x6c + column * 0xc;
 
             *(volatile u32 *)0x04000500 = 2;
+#ifndef MATCHING
+            TingleNativeG3_Begin(2);
+#endif
             func_ov017_021fd64c(FIELD(s16, valuesNext, 0),
                                 FIELD(s16, valuesNext, 4),
                                 FIELD(s16, valuesNext, 8));
@@ -79,6 +91,9 @@ extern "C" void func_ov017_021fd414(void *state)
                                 FIELD(s16, coordsCurrent, 0x10),
                                 FIELD(s16, coordsCurrent, 0x14));
             *(volatile u32 *)0x04000504 = 0;
+#ifndef MATCHING
+            TingleNativeG3_End();
+#endif
         }
     }
 }
@@ -92,9 +107,13 @@ extern "C" void func_ov017_021fd414(void *state)
 extern "C" void func_ov017_021fd60c(s32 value0, s32 value1, s32 value2,
                                       s32 value3, s32 value4, s32 value5)
 {
-    *(volatile u32 *)0x040004a4 =
+    u32 value =
         (u32)value0 | ((u32)value1 << 4) | ((u32)value2 << 6) |
         (u32)value5 | ((u32)value4 << 16) | ((u32)value3 << 24);
+    *(volatile u32 *)0x040004a4 = value;
+#ifndef MATCHING
+    TingleNativeG3_SetPolygonAttr(value);
+#endif
 }
 
 /*
@@ -104,6 +123,9 @@ extern "C" void func_ov017_021fd60c(s32 value0, s32 value1, s32 value2,
 extern "C" void func_ov017_021fd638(void)
 {
     *(volatile u32 *)0x040004a8 = 0;
+#ifndef MATCHING
+    TingleNativeG3_SetTextureParam(0);
+#endif
 }
 
 /*
@@ -113,10 +135,14 @@ extern "C" void func_ov017_021fd638(void)
  */
 extern "C" void func_ov017_021fd64c(s32 x, s32 y, s32 z)
 {
-    *(volatile u32 *)0x04000484 =
+    u32 value =
         ((u32)(x >> 3) & 0x3ff) |
         (((u32)(y >> 3) & 0x3ff) << 10) |
         (((u32)(z >> 3) & 0x3ff) << 20);
+    *(volatile u32 *)0x04000484 = value;
+#ifndef MATCHING
+    TingleNativeG3_Normal(value);
+#endif
 }
 
 /*
@@ -129,4 +155,7 @@ extern "C" void func_ov017_021fd680(s32 x, s32 y, s32 z)
     volatile u32 *command = (volatile u32 *)0x0400048c;
     *command = (u16)x | ((u32)(u16)y << 16);
     *command = (u16)z;
+#ifndef MATCHING
+    TingleNativeG3_Vertex16((u16)x | ((u32)(u16)y << 16), (u16)z);
+#endif
 }

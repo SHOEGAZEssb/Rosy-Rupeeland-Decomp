@@ -22,6 +22,9 @@ extern void func_0209cdd0(void *presentation, void *manager);
 extern void func_0209c9d4(void *presentation);
 extern void func_020a31d0(void *manager, const s32 *coordinates,
                           const u16 *colors);
+#ifndef MATCHING
+extern void TingleNativeG3_Translate(s32 x, s32 y, s32 z);
+#endif
 
 #ifdef __cplusplus
 }
@@ -119,6 +122,9 @@ void func_020a2fd0(void *manager)
     *(volatile s32 *)0x04000470 = -(base_x >> 12);
     *(volatile s32 *)0x04000470 = -(base_y >> 12);
     *(volatile s32 *)0x04000470 = 0;
+#ifndef MATCHING
+    TingleNativeG3_Translate(-(base_x >> 12), -(base_y >> 12), 0);
+#endif
 
     for (index = 14; index >= 0; --index) {
         s32 center;

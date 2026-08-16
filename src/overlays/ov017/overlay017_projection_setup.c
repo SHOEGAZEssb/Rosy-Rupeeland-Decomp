@@ -14,6 +14,9 @@ extern s32 func_020adc90(s32, s32);
 extern s32 func_020b01a0(s32 *, s32 *);
 extern void func_020b0558(void);
 extern void Graphics3DSceneState_Apply(void *);
+#ifndef MATCHING
+extern void TingleNativeG3_ProjectPosition(s32, s32, s32, s32 *, s32 *);
+#endif
 #ifdef __cplusplus
 }
 #endif
@@ -44,8 +47,13 @@ extern "C" void func_ov017_021ff75c(void *state)
     reg444[0xb] = 0;
     reg444[0x60] = 0;
     reg444[0x60] = 0;
+#ifndef MATCHING
+    TingleNativeG3_ProjectPosition(radius * 0x10, 0, 0,
+                                   &outputs[1], &outputs[0]);
+#else
     while (func_020b01a0(&outputs[1], &outputs[0]) != 0) {
     }
+#endif
     FIELD(s32, state, 0x3a4) =
         func_020adc90(outputs[1], outputs[0]) * 0x80 / 0x1000 + 0x80;
 
@@ -56,8 +64,13 @@ extern "C" void func_ov017_021ff75c(void *state)
     reg448[0xa] = radius * 0x10;
     reg448[0x5f] = 0;
     reg448[0x5f] = 0;
+#ifndef MATCHING
+    TingleNativeG3_ProjectPosition(0, 0, radius * 0x10,
+                                   &outputs[1], &outputs[0]);
+#else
     while (func_020b01a0(&outputs[1], &outputs[0]) != 0) {
     }
+#endif
     FIELD(s32, state, 0x3a8) =
         0x60 - func_020adc90(outputs[2], outputs[0]) * 0x60 / 0x1000;
     *reg448 = 1;

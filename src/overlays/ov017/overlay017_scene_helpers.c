@@ -11,6 +11,9 @@ extern void *data_021e9ac0;
 extern "C" {
 #endif
 extern s32 func_020651a4(void *);
+#ifndef MATCHING
+extern void TingleNativeG3_SetMaterial(u32 value);
+#endif
 #ifdef __cplusplus
 }
 #endif
@@ -70,8 +73,11 @@ extern "C" s32 func_ov017_0220087c(void *timer)
  */
 extern "C" void func_ov017_02200a8c(u32 low, u32 high, s32 enabled)
 {
-    *(volatile u32 *)0x040004c0 = low | (high << 16) |
-                                  ((enabled != 0) << 15);
+    u32 value = low | (high << 16) | ((u32)(enabled != 0) << 15);
+    *(volatile u32 *)0x040004c0 = value;
+#ifndef MATCHING
+    TingleNativeG3_SetMaterial(value);
+#endif
 }
 
 /*

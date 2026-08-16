@@ -32,6 +32,12 @@ extern s32 func_020b01a0(s32 *position, s32 *w);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void func_020b4554(void *address, u32 size);
 extern s32 func_01ff88c4(s32 dma_channel, const void *commands, u32 size);
+extern void TingleNativeG3_Push(void);
+extern void TingleNativeG3_Pop(u32 count);
+extern void TingleNativeG3_Translate(s32 x, s32 y, s32 z);
+extern void TingleNativeG3_Scale(s32 x, s32 y, s32 z);
+extern void TingleNativeG3_Begin(u32 primitive);
+extern void TingleNativeG3_End(void);
 #endif
 
 #ifdef __cplusplus
@@ -82,12 +88,16 @@ void func_02076db0(GraphicsAnimationInstance *instance, void *render_context)
         scale_y = -scale_y;
 
     *matrix_push = 0;
+    TingleNativeG3_Push();
     Graphics3DCommand_SetPolygonAttr(
         instance->field_57, instance->field_58, instance->field_59,
         instance->field_5a, instance->field_5b, instance->field_44);
     *translation = manager->translationX + instance->field_20;
     *translation = manager->translationY + instance->field_24;
     *translation = manager->translationZ + instance->field_28;
+    TingleNativeG3_Translate(manager->translationX + instance->field_20,
+                             manager->translationY + instance->field_24,
+                             manager->translationZ + instance->field_28);
 
     if ((instance->flags & 0x80) != 0) {
         *(volatile u32 *)0x04000598 = 0;
@@ -108,6 +118,7 @@ void func_02076db0(GraphicsAnimationInstance *instance, void *render_context)
     *scale = scale_x;
     *scale = scale_y;
     *scale = 0x1000;
+    TingleNativeG3_Scale(scale_x, scale_y, 0x1000);
 
     for (index = 0; index < command_count; ++index, command += 0x38) {
         u32 texture_parameter;
@@ -127,6 +138,7 @@ void func_02076db0(GraphicsAnimationInstance *instance, void *render_context)
         *(u32 *)(data_021f38a0 + 8) =
             (*(u32 *)(command + 8) * texture_width + palette_offset) >> 4;
         *begin_vertices = 1;
+        TingleNativeG3_Begin(1);
         if (instance->field_57 != 0)
             *(u32 *)(data_021f38a0 + 0x18) = 0x1ff00000;
         else
@@ -134,6 +146,7 @@ void func_02076db0(GraphicsAnimationInstance *instance, void *render_context)
         func_020b4554(data_021f38a0, 0x38);
         func_01ff88c4(3, data_021f38a0, 0x38);
         *end_vertices = 0;
+        TingleNativeG3_End();
         if ((instance->flags & 0x100) != 0) {
             *(u32 *)(data_021f38a0 + 4) = 0;
             *(u32 *)(data_021f38a0 + 4) = 0;
@@ -160,6 +173,7 @@ void func_02076db0(GraphicsAnimationInstance *instance, void *render_context)
         }
     }
     *matrix_pop = 1;
+    TingleNativeG3_Pop(1);
 }
 #endif
 
@@ -186,6 +200,9 @@ void GraphicsAnimationInstanceManager_Render(GraphicsAnimationInstanceManager *m
     REG_G3_MTX_TRANS = manager->translationX;
     REG_G3_MTX_TRANS = manager->translationY;
     REG_G3_MTX_TRANS = manager->translationZ;
+    TingleNativeG3_Push();
+    TingleNativeG3_Translate(manager->translationX, manager->translationY,
+                             manager->translationZ);
 
     instance = manager->head;
     while (instance != 0) {
@@ -204,6 +221,7 @@ void GraphicsAnimationInstanceManager_Render(GraphicsAnimationInstanceManager *m
     }
 
     REG_G3_MTX_POP = 1;
+    TingleNativeG3_Pop(1);
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */

@@ -19,6 +19,10 @@ extern void func_02071e04(void *, void *);
 extern void func_020b0808(s32, s32);
 extern void func_020b0844(s32, s32);
 extern void func_020b0880(s32, s32);
+#ifndef MATCHING
+extern void TingleNativeG3_Translate(s32, s32, s32);
+extern void TingleNativeG3_Scale(s32, s32, s32);
+#endif
 #ifdef __cplusplus
 }
 #endif
@@ -135,6 +139,11 @@ extern "C" void func_ov017_021fd838(void *state)
     *translation = FIELD(u32, state, 8);
     *translation = FIELD(u32, state, 0xc);
     *translation = FIELD(u32, state, 0x10);
+#ifndef MATCHING
+    TingleNativeG3_Translate(FIELD(s32, state, 8),
+                             FIELD(s32, state, 0xc),
+                             FIELD(s32, state, 0x10));
+#endif
     index = ((u16)FIELD(u32, state, 0x20)) >> 4;
     func_020b0880(data_020c9670[index * 2], data_020c9670[index * 2 + 1]);
     index = ((u16)FIELD(u32, state, 0x24)) >> 4;
@@ -144,4 +153,9 @@ extern "C" void func_ov017_021fd838(void *state)
     *scale = FIELD(u32, state, 0x14);
     *scale = FIELD(u32, state, 0x18);
     *scale = FIELD(u32, state, 0x1c);
+#ifndef MATCHING
+    TingleNativeG3_Scale(FIELD(s32, state, 0x14),
+                         FIELD(s32, state, 0x18),
+                         FIELD(s32, state, 0x1c));
+#endif
 }

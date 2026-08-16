@@ -10,6 +10,11 @@
 #define REG_G3_LIGHT_VECTOR (*(volatile u32 *)0x040004c8)
 #define REG_G3_LIGHT_COLOR (*(volatile u32 *)0x040004cc)
 
+#ifndef MATCHING
+extern void TingleNativeG3_SetLightVector(u32 value);
+extern void TingleNativeG3_SetLightColor(u32 value);
+#endif
+
 /* Clear all coordinates, RGB555 color, and the 16-bit enabled selector. */
 void Graphics3DLight_Init(Graphics3DLight *light)
 {
@@ -47,4 +52,11 @@ void Graphics3DLight_Apply(const Graphics3DLight *light, u32 lightId)
     REG_G3_LIGHT_VECTOR = ((u32)x & 0x3ff) | (((u32)y & 0x3ff) << 10) |
                           (((u32)z & 0x3ff) << 20) | (lightId << 30);
     REG_G3_LIGHT_COLOR = light->color | (lightId << 30);
+#ifndef MATCHING
+    TingleNativeG3_SetLightVector(((u32)x & 0x3ff) |
+                                  (((u32)y & 0x3ff) << 10) |
+                                  (((u32)z & 0x3ff) << 20) |
+                                  (lightId << 30));
+    TingleNativeG3_SetLightColor(light->color | (lightId << 30));
+#endif
 }

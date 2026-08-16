@@ -14,7 +14,7 @@
 #define REG_G3_COLOR (*(volatile u32 *)0x04000480)
 #define REG_G3_TEXCOORD (*(volatile u32 *)0x04000488)
 #define REG_G3_VTX_16 (*(volatile u32 *)0x0400048c)
-#define REG_G3_VTX_XZ (*(volatile u32 *)0x04000494)
+#define REG_G3_VTX_XY (*(volatile u32 *)0x04000494)
 #define REG_G3_TEXIMAGE_PARAM (*(volatile u32 *)0x040004a8)
 #define REG_G3_PLTT_BASE (*(volatile u32 *)0x040004ac)
 #define REG_G3_BEGIN_VTXS (*(volatile u32 *)0x04000500)
@@ -27,6 +27,20 @@ extern "C" {
 extern u32 func_02070474(const void *resource);
 extern u32 func_020704c8(const void *resource);
 extern u32 func_02070580(const void *resource);
+#ifndef MATCHING
+extern void TingleNativeG3_Push(void);
+extern void TingleNativeG3_Pop(u32 count);
+extern void TingleNativeG3_SetMatrixMode(u32 mode);
+extern void TingleNativeG3_Identity(void);
+extern void TingleNativeG3_SetTextureParam(u32 value);
+extern void TingleNativeG3_SetPaletteBase(u32 value);
+extern void TingleNativeG3_Begin(u32 primitive);
+extern void TingleNativeG3_End(void);
+extern void TingleNativeG3_Color(u32 color);
+extern void TingleNativeG3_TexCoord(u32 coordinate);
+extern void TingleNativeG3_Vertex16(u32 xy, u32 z);
+extern void TingleNativeG3_VertexXY(u32 xy);
+#endif
 
 #ifdef __cplusplus
 }
@@ -52,6 +66,13 @@ void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
     REG_G3_MTX_PUSH = 0;
     REG_G3_MTX_MODE = 0;
     REG_G3_MTX_IDENTITY = 0;
+#ifndef MATCHING
+    TingleNativeG3_Push();
+    TingleNativeG3_SetMatrixMode(0);
+    TingleNativeG3_Identity();
+    TingleNativeG3_SetMatrixMode(2);
+    TingleNativeG3_Identity();
+#endif
     REG_G3_MTX_MODE = 2;
     REG_G3_MTX_IDENTITY = 0;
 
@@ -64,26 +85,56 @@ void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
         (format << 26) | (binding->textureRegion->offset >> 3) |
         0x40000000 | (width << 20) | (height << 23) | 0x30000 |
         (object->field_04 << 29);
+#ifndef MATCHING
+    TingleNativeG3_SetTextureParam(REG_G3_TEXIMAGE_PARAM);
+#endif
 
     paletteShift = format == 2 ? 3 : 4;
     REG_G3_PLTT_BASE = binding->paletteRegion->offset >> paletteShift;
+#ifndef MATCHING
+    TingleNativeG3_SetPaletteBase(REG_G3_PLTT_BASE);
+    TingleNativeG3_Begin(1);
+#endif
 
     REG_G3_BEGIN_VTXS = 1;
     REG_G3_COLOR = object->color;
+#ifndef MATCHING
+    TingleNativeG3_Color(object->color);
+#endif
 
     REG_G3_TEXCOORD = 0;
     REG_G3_VTX_16 = 0x1000f000;
     REG_G3_VTX_16 = object->depth & 0xffff;
+#ifndef MATCHING
+    TingleNativeG3_TexCoord(0);
+    TingleNativeG3_Vertex16(0x1000f000, object->depth & 0xffff);
+#endif
 
     REG_G3_TEXCOORD = 0x00001000;
-    REG_G3_VTX_XZ = 0x10001000;
+    REG_G3_VTX_XY = 0x10001000;
+#ifndef MATCHING
+    TingleNativeG3_TexCoord(0x00001000);
+    TingleNativeG3_VertexXY(0x10001000);
+#endif
     REG_G3_TEXCOORD = 0x0c001000;
-    REG_G3_VTX_XZ = 0xf0001000;
+    REG_G3_VTX_XY = 0xf0001000;
+#ifndef MATCHING
+    TingleNativeG3_TexCoord(0x0c001000);
+    TingleNativeG3_VertexXY(0xf0001000);
+#endif
     REG_G3_TEXCOORD = 0x0c000000;
-    REG_G3_VTX_XZ = 0xf000f000;
+    REG_G3_VTX_XY = 0xf000f000;
+#ifndef MATCHING
+    TingleNativeG3_TexCoord(0x0c000000);
+    TingleNativeG3_VertexXY(0xf000f000);
+#endif
 
     REG_G3_END_VTXS = 0;
     REG_G3_MTX_POP = 1;
+#ifndef MATCHING
+    TingleNativeG3_End();
+    TingleNativeG3_Pop(1);
+#endif
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */

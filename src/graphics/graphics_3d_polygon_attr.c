@@ -8,6 +8,10 @@
 
 #define REG_G3_POLYGON_ATTR (*(volatile u32 *)0x040004a4)
 
+#ifndef MATCHING
+extern void TingleNativeG3_SetPolygonAttr(u32 value);
+#endif
+
 /*
  * Write one polygon-attribute command. lightMask occupies bits 0..3,
  * polygonMode bits 4..5, cullMode bits 6..7, alpha bits 16..20, and polygonId
@@ -19,6 +23,10 @@ void Graphics3DCommand_SetPolygonAttr(u32 lightMask, u32 polygonMode,
                                       u32 cullMode, u32 polygonId, u32 alpha,
                                       u32 miscFlags)
 {
-    REG_G3_POLYGON_ATTR = lightMask | (polygonMode << 4) | (cullMode << 6) |
-                          miscFlags | (polygonId << 24) | (alpha << 16);
+    u32 value = lightMask | (polygonMode << 4) | (cullMode << 6) |
+                miscFlags | (polygonId << 24) | (alpha << 16);
+    REG_G3_POLYGON_ATTR = value;
+#ifndef MATCHING
+    TingleNativeG3_SetPolygonAttr(value);
+#endif
 }

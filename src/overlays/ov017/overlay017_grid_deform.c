@@ -12,6 +12,9 @@ extern "C" {
 extern void func_020b5880(void *, void *, u32);
 extern s32 func_020befec(s32, s32);
 extern s32 func_ov017_021fd3f0(void);
+#ifndef MATCHING
+extern u32 TingleNativeMath_Sqrt64(u64 value);
+#endif
 #ifdef __cplusplus
 }
 #endif
@@ -25,11 +28,15 @@ static s32 fxMul(s32 value, s32 factor)
 /* Submit a signed squared magnitude to the DS square-root unit and return its result. */
 static s32 hardwareSqrt(s32 squared)
 {
+#ifndef MATCHING
+    return (s32)TingleNativeMath_Sqrt64((u64)(s64)squared);
+#else
     volatile u8 *regs = (volatile u8 *)0x040002b0;
     *(volatile u16 *)regs = 1;
     *(volatile s32 *)(regs + 8) = squared;
     *(volatile s32 *)(regs + 0xc) = squared >> 31;
     return func_ov017_021fd3f0();
+#endif
 }
 
 /* Add the 20.12 cross product of vectors A and B to the supplied accumulator. */
@@ -68,9 +75,9 @@ extern "C" void func_ov017_021fcf6c(void *state)
             s32 *live = GRID_POINT(state, row, column);
             s32 *velocity = (s32 *)((u8 *)state + row * 0x24 +
                                       column * 4);
-            s32 laplacian = snapshot[3] + snapshot[-3] +
-                            snapshot[27] + snapshot[-27] -
-                            snapshot[0] * 4;
+            s32 laplacian = snapshot[4] + snapshot[-2] +
+                            snapshot[28] + snapshot[-26] -
+                            snapshot[1] * 4;
 
             *velocity += laplacian / 4;
             live[1] += *velocity / 16;
