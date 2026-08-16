@@ -48,7 +48,8 @@ extern void func_ov016_021ff510(void *);
  * base, install vtable 0x02201540, initialize embedded state/resources at +0x60,
  * +0x84, +0xC8, +0xD4, five 0xAC-byte actor records (+0xE8..+0x443), and the
  * value helper at +0x454. Clear all confirmed runtime pointers/counters, store
- * owner +0x54, mode +0x58, and five times mode+1 at +0x5C. Register resource IDs
+ * cooking mode +0x54, game value +0x58, and five times game value+1 at +0x5C.
+ * Register resource IDs
  * 0x801B/0x801C/0x8010/0x8011/0x800B and 0x7005/0x7001, load triples 0x0D-0x0F
  * and 0x1C-0x1E, acquire child +0xE0, and run common setup helpers.
  * Modes 0/2 use the 0x02201410 transition pair; mode 1 creates and stops three
@@ -56,7 +57,8 @@ extern void func_ov016_021ff510(void *);
  * Finally clear game flag 0x3A6, set state bit 10 at +0x20, and return state.
  * Numerous SDK graphics/actor resources change; no direct MMIO occurs.
  */
-extern "C" void *func_ov016_021fe77c(void *state, s32 owner, s32 mode)
+extern "C" void *func_ov016_021fe77c(void *state, s32 cookingMode,
+                                      s32 gameValue)
 {
     void *sprite;
 
@@ -73,9 +75,9 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 owner, s32 mode)
     func_020957bc((u8 *)state + 0x398);
     func_ov016_021fe740((u8 *)state + 0x454);
 
-    FIELD(s32, state, 0x54) = owner;
-    FIELD(s32, state, 0x58) = mode;
-    FIELD(s32, state, 0x5c) = (mode + 1) * 5;
+    FIELD(s32, state, 0x54) = cookingMode;
+    FIELD(s32, state, 0x58) = gameValue;
+    FIELD(s32, state, 0x5c) = (gameValue + 1) * 5;
     FIELD(u32, state, 0x444) = 0;
     FIELD(u32, state, 0x460) = 0;
     FIELD(u32, state, 0x464) = 0;
@@ -105,12 +107,12 @@ extern "C" void *func_ov016_021fe77c(void *state, s32 owner, s32 mode)
     func_ov016_021ff288(state);
     func_ov016_021fedc4(state);
 
-    if (mode == 0 || mode == 2) {
+    if (cookingMode == 0 || cookingMode == 2) {
         func_ov016_021ff094(state);
         func_ov016_021ff404(state);
         func_ov016_021fe754(state,
                             data_ov016_02201410[0], data_ov016_02201410[1]);
-    } else if (mode == 1) {
+    } else if (cookingMode == 1) {
         func_ov016_021ff17c(state);
         func_ov016_021ff510(state);
 
