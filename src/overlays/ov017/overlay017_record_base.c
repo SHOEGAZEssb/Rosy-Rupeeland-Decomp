@@ -95,7 +95,8 @@ extern "C" void func_ov017_021fea18(void *records, s32 index, s32 value0,
     if (index >= 0 && index < 4) {
         void *entry = (u8 *)records + index * 0x10;
         FIELD(u16, entry, 0xe) = 1;
-        FIELD(u16, entry, 0xc) = packed0 | (packed1 << 5) | (packed2 << 10);
+        FIELD(u16, entry, 0xc) =
+            (u16)(packed0 | (packed1 << 5) | (packed2 << 10));
     }
 }
 

@@ -96,7 +96,7 @@ extern "C" void func_ov017_021fe894(void *group)
             void *sprite = FIELD(void *, group, 0x20 + i * 4);
             if (FIELD(u8, sprite, 0x38) != 2) {
                 if (!played) {
-                    u16 soundId = i + 0x4105;
+                    u16 soundId = (u16)(i + 0x4105);
                     Sound_Play(gSoundContext, soundId >> 7, soundId & 0x7f);
                     played = 1;
                 }

@@ -1,8 +1,8 @@
 
 /*
  * Portable reconstructions of the assembly-selected sprite-font bindings at
- * 0x02074B9C and 0x02075398.  All allocations, resource ownership, and queued
- * transfers remain in the recovered renderer and heap implementations.
+ * 0x02074B9C, 0x02075358, and 0x02075398. All allocations, resource ownership,
+ * VRAM-bank transitions, and queued transfers remain in recovered systems.
  */
 #include "tingle/graphics_indexed_chain_pool.h"
 #include "tingle/graphics_render_entry_pool.h"
@@ -19,6 +19,8 @@ extern HeapContext gHeapContext;
 
 extern void *func_02070874(void *resource);
 extern void func_02070860(void *resource);
+extern u16 func_020ae754(void);
+extern u16 func_020ae678(void);
 extern u32 GX_VBlankIntr(u32 state);
 
 typedef struct GraphicsSpriteStatePoolPrefix {
@@ -110,6 +112,23 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
     }
     ++entry->field_10;
     return entry;
+}
+
+/* Release the object extended-palette VRAM bank retained by a renderer whose
+ * +0x30 and +0x34 state words are both active. Engine zero selects the main
+ * bank and every other engine selects the sub bank. Clear +0x34 after the SDK
+ * bank transition; inactive renderers are unchanged. The second retail
+ * argument is unused and the function returns no value. */
+void func_02075358(GraphicsSpriteRenderer *renderer, s32 unused)
+{
+    (void)unused;
+    if (renderer->field_30 == 0 || renderer->field_34 == 0)
+        return;
+    if (renderer->engine == 0)
+        func_020ae754();
+    else
+        func_020ae678();
+    renderer->field_34 = 0;
 }
 
 /* Bind the two font resources and initialize the retail twelve-entry text

@@ -31,13 +31,13 @@ extern "C" void func_ov017_02200064(void *state)
     s32 blue = Presentation_InterpolateLinear(0x1f, FIELD(s32, state, 0x2cc), duration,
                              progress);
 
-    FIELD(u16, state, 0x438) = red | (green << 5) | (blue << 10);
-    FIELD(u16, state, 0x43a) =
+    FIELD(u16, state, 0x438) = (u16)(red | (green << 5) | (blue << 10));
+    FIELD(u16, state, 0x43a) = (u16)(
         Presentation_InterpolateLinear(red, 0x1f, 0x10, 8) |
         (Presentation_InterpolateLinear(green, 0x1f, 0x10, 8) << 5) |
-        (Presentation_InterpolateLinear(blue, 0x1f, 0x10, 8) << 10);
-    FIELD(u16, state, 0x43c) =
+        (Presentation_InterpolateLinear(blue, 0x1f, 0x10, 8) << 10));
+    FIELD(u16, state, 0x43c) = (u16)(
         Presentation_InterpolateLinear(red, 0, 0x10, 8) |
         (Presentation_InterpolateLinear(green, 0, 0x10, 8) << 5) |
-        (Presentation_InterpolateLinear(blue, 0, 0x10, 8) << 10);
+        (Presentation_InterpolateLinear(blue, 0, 0x10, 8) << 10));
 }

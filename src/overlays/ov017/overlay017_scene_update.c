@@ -1,3 +1,4 @@
+#include "tingle/heap.h"
 #include "tingle/types.h"
 
 /* Overlay 17 per-frame input projection, grid interaction, effect spawning, and subsystem updates. */
@@ -6,19 +7,18 @@
 
 extern const s16 data_020c9670[];
 extern const s32 data_ov017_02201414[];
-extern const u8 data_ov017_022016c4[];
-extern const u8 data_ov017_022016cc[];
+extern const char data_ov017_022016c4[];
+extern const char data_ov017_022016cc[];
 extern u8 data_ov017_022016e0[];
 extern u8 data_ov017_022016f0[];
 extern u8 data_ov017_022016f8[];
 extern u8 data_ov017_0220170c[];
 extern u8 data_ov017_02201754[];
-extern void *gHeapContext;
+extern HeapContext gHeapContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern s32 GraphicsAnimationInstance_GetSequenceDuration(void *);
 extern void GraphicsAnimationInstanceManager_Update(void *);
@@ -120,7 +120,7 @@ extern "C" void func_ov017_02200188(void *state)
                 if (button9 != 0 && FIELD(s32, state, 0x3f8) < 0x20 &&
                     (FIELD(u32, data_ov017_022016e0, 0) & 1)) {
                     void *effect = Heap_Alloc(
-                        0xa0, data_ov017_022016c4, 4, gHeapContext);
+                        0xa0, data_ov017_022016c4, 4, &gHeapContext);
                     if (effect != 0) {
                         effect = func_ov017_021fe190(
                             effect, 0, currentX << 4, currentZ << 4, -0x80,
@@ -157,7 +157,7 @@ extern "C" void func_ov017_02200188(void *state)
             func_ov017_021fd6b0(FIELD(void *, state, 0x2c0), x, z, -0x80);
         if (phase == 6) {
             void *effect = Heap_Alloc(
-                0xa0, data_ov017_022016c4, 4, gHeapContext);
+                0xa0, data_ov017_022016c4, 4, &gHeapContext);
             if (effect != 0) {
                 effect = func_ov017_021fe190(
                     effect, 2, x, z, y,
@@ -203,7 +203,7 @@ extern "C" void func_ov017_02200188(void *state)
             z = coordinateToGrid(distance * data_020c9670[angleIndex * 2 + 1]);
             sprite = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, state, 0x244),
                                    (u8 *)state + 0x248);
-            actor = Heap_Alloc(0xa0, data_ov017_022016cc, 4, gHeapContext);
+            actor = Heap_Alloc(0xa0, data_ov017_022016cc, 4, &gHeapContext);
             if (actor != 0)
                 actor = func_020955d8(actor, sprite);
             PresentationList_Append((u8 *)state + 0x3d8, actor);
@@ -234,7 +234,7 @@ extern "C" void func_ov017_02200188(void *state)
             z = coordinateToGrid(distance * data_020c9670[angleIndex * 2 + 1]);
             if (FIELD(s32, state, 0x3f8) < 0x20) {
                 void *effect = Heap_Alloc(
-                    0xa0, data_ov017_022016c4, 4, gHeapContext);
+                    0xa0, data_ov017_022016c4, 4, &gHeapContext);
                 if (effect != 0) {
                     effect = func_ov017_021fe190(
                         effect, 1, x, z, -0x80,

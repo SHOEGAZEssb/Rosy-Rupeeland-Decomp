@@ -1,3 +1,4 @@
+#include "tingle/heap.h"
 #include "tingle/types.h"
 
 /* Overlay 17 scene construction, resource acquisition, object population, and initial graphics setup. */
@@ -12,20 +13,19 @@ extern u8 data_021e9e1c[];
 extern const s32 data_ov017_02201414[];
 extern const s32 data_ov017_02201548[2];
 extern const u32 data_ov017_02201638[];
-extern const u8 data_ov017_02201684[];
-extern const u8 data_ov017_0220168c[];
-extern const u8 data_ov017_02201694[];
-extern const u8 data_ov017_0220169c[];
-extern const u8 data_ov017_022016a4[];
-extern const u8 data_ov017_022016ac[];
+extern const char data_ov017_02201684[];
+extern const char data_ov017_0220168c[];
+extern const char data_ov017_02201694[];
+extern const char data_ov017_0220169c[];
+extern const char data_ov017_022016a4[];
+extern const char data_ov017_022016ac[];
 extern u8 data_ov017_022016e0[];
-extern void *gHeapContext;
+extern HeapContext gHeapContext;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
 extern u32 func_02062a50(void *);
 extern s32 func_02062b0c(void *);
@@ -142,7 +142,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     func_020ae7b0();
     func_020ae778();
 
-    object = Heap_Alloc(0x624, data_ov017_02201684, 4, gHeapContext);
+    object = Heap_Alloc(0x624, data_ov017_02201684, 4, &gHeapContext);
     if (object != 0)
         object = Graphics3DResourceOwner_Init(object, 1, 1);
     FIELD(void *, state, 0x240) = object;
@@ -167,7 +167,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     func_02095820((u8 *)state + 0x80, 0xb0, 0xa0);
     func_02095940((u8 *)state + 0x80);
 
-    object = Heap_Alloc(0xa0, data_ov017_0220168c, 4, gHeapContext);
+    object = Heap_Alloc(0xa0, data_ov017_0220168c, 4, &gHeapContext);
     if (object != 0) {
         object = SpritePresentation_Init(
             object, GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x58),
@@ -242,22 +242,22 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     FIELD(s32, state, 0x280) = 0x400;
     func_ov017_021fd7f8((u8 *)state + 0x290, 0x5052);
 
-    object = Heap_Alloc(0x58, data_ov017_02201694, 4, gHeapContext);
+    object = Heap_Alloc(0x58, data_ov017_02201694, 4, &gHeapContext);
     if (object != 0)
         object = func_ov017_021fe40c(object, FIELD(void *, state, 0x240));
     FIELD(void *, state, 0x254) = object;
-    object = Heap_Alloc(0x68, data_ov017_0220169c, 4, gHeapContext);
+    object = Heap_Alloc(0x68, data_ov017_0220169c, 4, &gHeapContext);
     if (object != 0)
         object = func_ov017_021fe75c(
             object, FIELD(s32, state, 0x3c0), FIELD(s32, state, 0x3c8));
     FIELD(void *, state, 0x25c) = object;
-    object = Heap_Alloc(0x10, data_ov017_022016a4, 4, gHeapContext);
+    object = Heap_Alloc(0x10, data_ov017_022016a4, 4, &gHeapContext);
     if (object != 0) {
         object = Graphics3DRenderObject_Init(object, data_020f4e18[0],
                                FIELD(void *, state, 0x240), 0x6122, 0x6123);
     }
     FIELD(void *, state, 0x2bc) = object;
-    object = Heap_Alloc(0xca8, data_ov017_022016ac, 4, gHeapContext);
+    object = Heap_Alloc(0xca8, data_ov017_022016ac, 4, &gHeapContext);
     if (object != 0) {
         object = func_ov017_021fce00(
             object, data_ov017_02201414[radiusIndex] + 0xc);

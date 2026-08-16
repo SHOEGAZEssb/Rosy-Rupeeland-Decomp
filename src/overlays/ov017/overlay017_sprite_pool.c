@@ -66,7 +66,8 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
         coordinateX = radius * data_020c9670[tableIndex * 2] / 0x100;
         func_ov017_021fe3c4(sprite,
                            (u8)func_020918f4((u8 *)pool + 0x54, 3),
-                           coordinateX, -0x666, coordinateZ, 0x20, 0x42);
+                           (u32)coordinateX, (u32)-0x666, (u32)coordinateZ,
+                           0x20, 0x42);
         FIELD(s32, sprite, 0x34) = 0;
         FIELD(s32, sprite, 0x38) = 0;
         FIELD(u16, sprite, 0x4a) = angle + 0x4000;
