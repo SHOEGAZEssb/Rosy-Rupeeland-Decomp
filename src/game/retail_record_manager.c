@@ -54,6 +54,107 @@ extern void func_0207c084(void *database);
 extern void *func_0207a2cc(void *manager);
 extern void *gGameWork;
 
+/* Copy the mutable descriptor fields retained by the manager's ordered list.
+ * Both records are borrowed 16-byte slots; identity storage at +0 is retained. */
+void func_0207a904(void *destination_pointer, const void *source_pointer)
+{
+    u8 *destination = (u8 *)destination_pointer;
+    const u8 *source = (const u8 *)source_pointer;
+
+    *(void **)(destination + 4) = *(void *const *)(source + 4);
+    *(s32 *)(destination + 8) = *(const s32 *)(source + 8);
+    *(s32 *)(destination + 0x0c) = *(const s32 *)(source + 0x0c);
+}
+
+/* Insert a descriptor state at the front of manager +0x48, shifting existing
+ * 16-byte entries right. A matching record ID is already represented and is
+ * left unchanged. The manager owns the slots; the descriptor record is borrowed. */
+void func_0207a880(void *manager_pointer, const void *descriptor_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    const u8 *descriptor = (const u8 *)descriptor_pointer;
+    s32 count = *(s32 *)(manager + 0xcc8);
+    s32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *entry = manager + 0x48 + index * 0x10;
+        if (**(u16 **)(entry + 4) == **(u16 *const *)(descriptor + 4))
+            return;
+    }
+    for (index = count - 1; index >= 0; --index) {
+        func_0207a904(manager + 0x48 + (index + 1) * 0x10,
+                      manager + 0x48 + index * 0x10);
+    }
+    func_0207a904(manager + 0x48, descriptor);
+    *(s32 *)(manager + 0xcc8) = count + 1;
+}
+
+/* Move an existing descriptor state to the front of manager +0x48 after its
+ * mutable value/tier changes. Missing IDs preserve retail's fatal assertion.
+ * Slot storage is manager-owned and descriptor pointers remain borrowed. */
+void func_0207a920(void *manager_pointer, const void *descriptor_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    const u8 *descriptor = (const u8 *)descriptor_pointer;
+    s32 count = *(s32 *)(manager + 0xcc8);
+    s32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *entry = manager + 0x48 + index * 0x10;
+        if (**(u16 **)(entry + 4) == **(u16 *const *)(descriptor + 4)) {
+            while (index > 0) {
+                func_0207a904(manager + 0x48 + index * 0x10,
+                              manager + 0x48 + (index - 1) * 0x10);
+                --index;
+            }
+            func_0207a904(manager + 0x48, descriptor);
+            return;
+        }
+    }
+    OS_Halt();
+}
+
+/* Apply a descriptor value and derive its active tier from the record's
+ * descending threshold table. Type-one descriptors reject values below their
+ * first threshold and notify the owning manager only on initial insertion or
+ * tier changes when record flag +0x04 is zero. Other types store the raw value.
+ * Descriptor state changes synchronously; no allocation or hardware access. */
+void func_0207c5c8(void *descriptor_pointer, s32 value)
+{
+    u8 *descriptor = (u8 *)descriptor_pointer;
+    u8 *record = *(u8 **)(descriptor + 4);
+    u32 flags = *(u32 *)(record + 0x0c);
+    s32 type = (s32)((flags >> 8) & 0x0f);
+    s32 previous;
+    s32 tier;
+    s32 index;
+
+    if (type != 1) {
+        *(s32 *)(descriptor + 8) = value;
+        return;
+    }
+    if (value < *(s32 *)(record + 0x10))
+        return;
+    tier = 0;
+    for (index = (s32)((flags >> 12) & 0x0f) - 1; index >= 0; --index) {
+        if (value >= *(s32 *)(record + 0x10 + index * 4)) {
+            tier = index;
+            break;
+        }
+    }
+    previous = *(s32 *)(descriptor + 8);
+    *(s32 *)(descriptor + 8) = value;
+    if (previous == 0) {
+        *(s32 *)(descriptor + 0x0c) = tier;
+        if (*(u16 *)(record + 4) == 0)
+            func_0207a880(*(void **)data_021f5128, descriptor);
+    } else if (*(s32 *)(descriptor + 0x0c) != tier) {
+        *(s32 *)(descriptor + 0x0c) = tier;
+        if (*(u16 *)(record + 4) == 0)
+            func_0207a920(*(void **)data_021f5128, descriptor);
+    }
+}
+
 static u16 ReadU16(const u8 *bytes)
 {
     return (u16)(bytes[0] | ((u16)bytes[1] << 8));

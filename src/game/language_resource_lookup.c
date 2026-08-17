@@ -41,8 +41,24 @@ typedef struct ResourceFileManager {
 
 extern u8 data_021f4090[];
 extern u8 data_021f5138[];
+extern void OS_Halt(void);
 extern u32 func_02078d54(void *manager, u16 identifier);
 void *func_02078e98(ResourceFileManager *manager, u32 identifier);
+
+typedef struct DescriptorMessageRecord {
+    u16 identifier;
+    u16 resources[7];
+} DescriptorMessageRecord;
+
+typedef struct DescriptorMessageTable {
+    u8 padding_00[8];
+    DescriptorMessageRecord *primaryRecords;
+    u32 field_0c;
+    DescriptorMessageRecord *secondaryRecords;
+    u8 padding_14[0x10];
+    s32 primaryCount;
+    s32 secondaryCount;
+} DescriptorMessageTable;
 
 /* Maps a language message identifier to the byte length of its resource via
  * the global resource manager. A missing record has length zero. */
@@ -79,6 +95,57 @@ const void *func_0207c278(const void *table, s32 group, s32 index)
 
     return func_02078e98((ResourceFileManager *)data_021f4090,
                          *(const u16 *)record);
+}
+
+/* Resolve one descriptor message slot. IDs below 2000 use the primary
+ * 16-byte record bank and IDs 2000..2999 use the secondary bank. Retail-valid
+ * callers provide a present ID and slot 0..6; invalid IDs request a fatal halt.
+ * The returned language payload is borrowed from the global resource cache. */
+const void *func_0207c320(const void *table_pointer, s32 identifier,
+                          s32 slot)
+{
+    const DescriptorMessageTable *table =
+        (const DescriptorMessageTable *)table_pointer;
+    const DescriptorMessageRecord *records;
+    s32 count;
+    s32 index;
+
+    if (identifier >= 3000) {
+        OS_Halt();
+        return 0;
+    }
+    if (identifier >= 2000) {
+        records = table->secondaryRecords;
+        count = table->secondaryCount;
+    } else {
+        records = table->primaryRecords;
+        count = table->primaryCount;
+    }
+    identifier = (u16)identifier;
+    for (index = 0; index < count; ++index) {
+        if (records[index].identifier == identifier) {
+            return func_02078e98((ResourceFileManager *)data_021f4090,
+                                 records[index].resources[slot]);
+        }
+    }
+    OS_Halt();
+    return 0;
+}
+
+/* Return one message payload owned by a type-one descriptor. The descriptor
+ * and its record are borrowed; invalid descriptor types preserve retail's
+ * fatal assertion path and return null only if that boundary continues. */
+const void *func_0207c4cc(const void *descriptor_pointer, s32 slot)
+{
+    const u8 *descriptor = (const u8 *)descriptor_pointer;
+    const u8 *record = *(const u8 *const *)(descriptor + 4);
+    u32 type = (*(const u32 *)(record + 0x0c) >> 8) & 0x0f;
+
+    if (type == 1) {
+        return func_0207c320(data_021f5138, *(const u16 *)record, slot);
+    }
+    OS_Halt();
+    return 0;
 }
 
 /* Resolve a mode-owned message key through the global message-group table. */
