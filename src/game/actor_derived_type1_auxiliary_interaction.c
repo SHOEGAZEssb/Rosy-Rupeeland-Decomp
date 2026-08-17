@@ -1512,6 +1512,7 @@ s32 func_0206aa10(void *object)
 {
     u8 *list = (u8 *)object;
     u8 *node = *(u8 **)(list + 4);
+    u8 *cursor;
     u8 *next;
     u8 *previous;
     if (node == 0)
@@ -1530,15 +1531,15 @@ s32 func_0206aa10(void *object)
     }
     if (previous != 0)
         *(u8 **)(previous + 0x1c) = next;
-    node = *(u8 **)(list + 4);
-    if (node == 0) {
+    cursor = *(u8 **)(list + 4);
+    if (cursor == 0) {
         *(void **)(list + 8) = 0;
         *(void **)(list + 12) = 0;
     } else {
-        if (*(void **)(node + 0x18) == 0)
-            *(void **)(list + 8) = node;
-        if (*(void **)(node + 0x1c) == 0)
-            *(void **)(list + 12) = node;
+        if (*(void **)(cursor + 0x18) == 0)
+            *(void **)(list + 8) = cursor;
+        if (*(void **)(cursor + 0x1c) == 0)
+            *(void **)(list + 12) = cursor;
     }
     Heap_Free(node);
     --*(s32 *)(list + 0);
