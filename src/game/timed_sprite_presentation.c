@@ -22,7 +22,7 @@ extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Add(PresentationTrack *first,PresentationTrack *second);
 extern void VecFx32_Subtract(void *output,PresentationTrack *track,s32 argument);
 extern u8 *GraphicsSpriteGroup_CreateState(u32 first,u32 second,u32 third,u32 fourth,u32 fifth);
-extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner);
+extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner, void *sprite);
 #ifdef __cplusplus
 }
 #endif
@@ -61,11 +61,12 @@ TimedSpritePresentation *func_0201e290(TimedSpritePresentation *self,u8 *config)
     return self;
 }
 
-/* Release the sprite owner and both tracks, then return self without freeing it. */
+/* Release the sprite from its owner and destroy both tracks, then return self
+ * without freeing it. */
 TimedSpritePresentation *func_0201e308(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
-    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite, self->sprite);
     VecFx32Object_Destroy(&self->second18);
     VecFx32Object_Destroy(&self->first08);
     return self;
@@ -75,7 +76,7 @@ TimedSpritePresentation *func_0201e308(TimedSpritePresentation *self)
 TimedSpritePresentation *func_0201e340(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
-    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite, self->sprite);
     VecFx32Object_Destroy(&self->second18);
     VecFx32Object_Destroy(&self->first08);
     Heap_Free(self);
@@ -86,7 +87,7 @@ TimedSpritePresentation *func_0201e340(TimedSpritePresentation *self)
 TimedSpritePresentation *func_0201e380(TimedSpritePresentation *self)
 {
     self->vtable=data_020d6098;
-    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite);
+    GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite, self->sprite);
     VecFx32Object_Destroy(&self->second18);
     VecFx32Object_Destroy(&self->first08);
     return self;
