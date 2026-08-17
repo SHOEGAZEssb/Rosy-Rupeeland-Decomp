@@ -40,7 +40,7 @@ struct OrbitTimedSprite {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6118;
+extern u8 data_020d6118[];
 extern const s16 data_020c9670[];
 extern OrbitTimedSprite *func_0201e6e4(OrbitTimedSprite *self, u8 *owner,
                                        u8 *config, s32 spriteValue);
