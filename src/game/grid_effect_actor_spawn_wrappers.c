@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
 /*
  * Recovered spawn variants for the grid/effect actor. They share the core
@@ -11,9 +12,6 @@ extern u16 gGridEffectActorRuntimeState[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
-extern void VecFx32Object_Destroy(void *vector);
-extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
@@ -21,12 +19,6 @@ extern u32 genrand_int32(void);
 #endif
 
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
-
-typedef struct FxVector3 {
-    s32 x;
-    s32 y;
-    s32 z;
-} FxVector3;
 
 static s32 fx_mul(s32 a, s32 b)
 {
@@ -42,7 +34,7 @@ static s32 fx_mul(s32 a, s32 b)
 s32 GridEffectActor_SpawnWithRandomVelocity(const void *position, void *source, s16 timer)
 {
     void *actor = GridEffectActor_SpawnCore(position, source, timer);
-    FxVector3 velocity;
+    VecFx32Object velocity;
     if (actor == 0)
         return 0;
     u32 random = genrand_int32();
@@ -50,7 +42,7 @@ s32 GridEffectActor_SpawnWithRandomVelocity(const void *position, void *source, 
                   0x1000 - (s32)(random & 0x1fff),
                   0x1000 - (s32)((random >> 16) & 0x1fff),
                   0x3000);
-    VecFx32Object_Assign((u8 *)actor + 0x38, &velocity);
+    VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x38), &velocity);
     VecFx32Object_Destroy(&velocity);
     return 1;
 }
@@ -76,7 +68,8 @@ s32 GridEffectActor_SpawnWithVelocity(const void *position, const void *velocity
     void *actor = GridEffectActor_SpawnCore(position, source, timer);
     if (actor == 0)
         return 0;
-    VecFx32Object_Assign((u8 *)actor + 0x38, velocity);
+    VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x38),
+                         (const VecFx32Object *)velocity);
     FIELD(u32, actor, 0x14) |= 2;
     return 1;
 }
@@ -91,20 +84,19 @@ s32 GridEffectActor_SpawnWithVelocity(const void *position, const void *velocity
 s32 GridEffectActor_SpawnWithRadialVelocity(const void *position, void *source, s16 timer)
 {
     void *actor = GridEffectActor_SpawnCore(position, source, timer);
-    FxVector3 velocity;
+    VecFx32Object velocity;
     if (actor == 0)
         return 0;
-
     gGridEffectActorRuntimeState[0] = (u16)(gGridEffectActorRuntimeState[0] +
         (genrand_int32() & 0xfff) + 0x1999);
     if (gGridEffectActorRuntimeState[0] > 0x8000)
         gGridEffectActorRuntimeState[0] -= 0x8000;
-    s32 index = (s16)gGridEffectActorRuntimeState[0] >> 4;
+    s32 index = gGridEffectActorRuntimeState[0] >> 4;
     VecFx32Object_InitComponents(&velocity,
                   fx_mul(data_020c9670[index * 2 + 1], 0x1333),
                   fx_mul(data_020c9670[index * 2], 0x1333),
                   0x3000);
-    VecFx32Object_Assign((u8 *)actor + 0x38, &velocity);
+    VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x38), &velocity);
     VecFx32Object_Destroy(&velocity);
     return 1;
 }

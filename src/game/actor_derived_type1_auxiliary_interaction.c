@@ -166,9 +166,39 @@ extern const u16 data_020e5804;
 extern u8 *func_0206899c(s32 index);
 extern void func_020a2894(void *manager, s32 subtype, s32 x, s32 y,
                           s32 kind);
+extern u32 func_020a4df0(void *manager, s32 kind, const void *bounds,
+                         s32 lifetime);
 #ifdef __cplusplus
 }
 #endif
+
+/* Copy the two-word descriptor payload from source to caller-owned storage. */
+void func_020635f4(void *destination, const void *source)
+{
+    *(u32 *)destination = *(const u32 *)source;
+    *(u32 *)((u8 *)destination + 4) = *(const u32 *)((const u8 *)source + 4);
+}
+
+/* Set the three game-progress flags selected by retail callback 0x0208B96C. */
+void func_0208b96c(void)
+{
+    GameWork_SetFlag(gGameWork, 0x2c8);
+    GameWork_SetFlag(gGameWork, 0x767);
+    GameWork_SetFlag(gGameWork, 0x74b);
+}
+
+/* Submit the point-sized effect rectangle used by retail 0x020A2894. */
+void func_020a2894(void *manager, s32 subtype, s32 x, s32 y, s32 kind)
+{
+    s32 bounds[4];
+
+    bounds[0] = x << 12;
+    bounds[1] = y << 12;
+    bounds[2] = bounds[0];
+    bounds[3] = bounds[1];
+    func_020a4df0(*(void **)((u8 *)manager + 0x4e8), subtype + 0x14,
+                   bounds, kind * 0x19a + 0x1000);
+}
 
 /* Initialize a two-word counter pair to the supplied capacity. */
 void *func_020693ec(void *object, s32 capacity)
