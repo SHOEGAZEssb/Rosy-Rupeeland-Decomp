@@ -7,7 +7,7 @@ typedef struct OffsetTimedSprite{void *vtable;u8 *sprite;Track first08;Track sec
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6084;
+extern u8 data_020d6084[];
 extern OffsetTimedSprite *func_0201e290(OffsetTimedSprite *,u8 *);
 extern OffsetTimedSprite *func_0201e380(OffsetTimedSprite *);
 extern void func_0201e3b8(OffsetTimedSprite *,s32);
@@ -19,7 +19,8 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
 }
 #endif
 
-/* Initialize the base, copy tracks/lifetime, remember offset, clear sprite flag 2, set sprite value, and return self. */
+/* Initialize the base, install the vtable at data_020d6084, copy tracks/lifetime,
+ * remember offset, clear sprite flag 2, set sprite value, and return self. */
 OffsetTimedSprite *func_0201e584(OffsetTimedSprite *self,u8 *config,s32 spriteValue,s32 offset)
 {
     func_0201e290(self,config);self->vtable=data_020d6084;self->offset2c=offset;
