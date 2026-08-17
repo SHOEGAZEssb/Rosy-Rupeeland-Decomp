@@ -59,15 +59,15 @@ extern "C" void func_ov015_021fd6c8(void *state)
     void *status = func_ov001_021fc7e4(FIELD(void *, state, 0xdc));
 
     if (FIELD(void *, state, 0xec) != 0) {
-        s32 value = func_020651a4((u8 *)FIELD(void *, data_021e9ac0, 0) + 0x1c,
+        s32 value = func_020651a4((u8 *)data_021e9ac0 + 0x1c,
                                  *(u16 *)FIELD(void *, state, 0xec));
         s32 bottom = gSystemState[0x5f] != 0 ? 0x7e : 0x7c;
 
-        GraphicsSpriteRenderer_SetFontResource(FIELD(void *, gDebugFont, 0), FIELD(void *, state, 0x78));
-        GraphicsSpriteCanvas_FillRect(FIELD(void *, gDebugFont, 0), 0x40, 0x74, 0x58, bottom, 0);
-        func_02092960(FIELD(void *, gDebugFont, 0), value, 10, 0x40, 0x74,
+        GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x78));
+        GraphicsSpriteCanvas_FillRect(gDebugFont, 0x40, 0x74, 0x58, bottom, 0);
+        func_02092960(gDebugFont, value, 10, 0x40, 0x74,
                       value >= 99 ? 3 : 0xe, 8, 1);
-        GraphicsSpriteCanvas_FillRect(FIELD(void *, data_020f4e14, 0), 0x40, 6, 0xc0, 0x16, 0);
+        GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, 6, 0xc0, 0x16, 0);
 
         if (FIELD(void *, status, 0xc) == 0) {
             FIELD(u16, FIELD(void *, state, 0x70), 0x24) |= 4;
@@ -76,10 +76,10 @@ extern "C" void func_ov015_021fd6c8(void *state)
             s32 width;
 
             FIELD(u16, FIELD(void *, state, 0x70), 0x24) &= (u16)~4;
-            GraphicsSpriteRenderer_SetFontResource(FIELD(void *, data_020f4e14, 0), FIELD(void *, state, 0x7c));
-            width = GraphicsSpriteRenderer_MeasureText(FIELD(void *, data_020f4e14, 0), text, 8, 0);
+            GraphicsSpriteRenderer_SetFontResource(data_020f4e14, FIELD(void *, state, 0x7c));
+            width = GraphicsSpriteRenderer_MeasureText(data_020f4e14, text, 8, 0);
             text = func_020628c8(FIELD(void *, status, 0xc));
-            GraphicsSpriteRenderer_DrawText(FIELD(void *, data_020f4e14, 0), text,
+            GraphicsSpriteRenderer_DrawText(data_020f4e14, text,
                           0x80 - width / 2, 6, 0xe, 8, 0);
         }
     } else if (FIELD(void *, status, 0xc) != 0) {
