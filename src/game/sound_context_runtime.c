@@ -62,11 +62,6 @@ void func_02059320(void *context, u16 sequence, u16 variable, u16 value);
 void func_0205974c(void *context, s32 group);
 void func_020597fc(void *context, s32 group);
 
-enum {
-    HOST_BEDROOM_PHASE = 5,
-    HOST_BEDROOM_STREAM = 13
-};
-
 /* Return the facade's mutable retail flag word at offset 0x9C. */
 static u32 *sound_flags(void *context)
 {
@@ -140,18 +135,6 @@ static void phase_sound_manager_start_sequence(void *context, u8 *manager)
     *(s32 *)(manager + 0x18) = 4;
 }
 
-/* Start the host-identified bedroom stream immediately and hold the recovered
- * sequence manager in steady state so its configured percussion sequence 42
- * does not replace the room score. STRM 13 was identified by archive audition;
- * the exact retail call chain which selects it is not recovered yet. */
-static void phase_sound_manager_start_bedroom_stream(void *context,
-                                                     u8 *manager)
-{
-    func_02059550(context, HOST_BEDROOM_STREAM, 0, 0x7f, 0, 0);
-    *(s32 *)(manager + 0x1c) = 1;
-    *(s32 *)(manager + 0x18) = 4;
-}
-
 /* Advance retail manager state 1. It waits for the primary actor's status
  * gate, then loads the configured phase group synchronously, starts the
  * manager-owned sequence, selects audible track mask 0x200, and enters steady
@@ -161,11 +144,6 @@ static void phase_sound_manager_update(void *context)
     u8 *manager = (u8 *)data_021e9abc;
 
     if (manager == 0)
-        return;
-    /* The bedroom actor script owns stream starts and stops. Hold the phase
-     * manager in steady state without reviving a script-faded stream. */
-    if (*(u32 *)((u8 *)context + 0xa8) == HOST_BEDROOM_PHASE &&
-        *(s32 *)(manager + 0x18) == 4)
         return;
     if (*(s32 *)(manager + 0x18) != 1)
         return;
@@ -684,26 +662,12 @@ void func_020597fc(void *context, s32 group)
 void func_020598a0(void *context, u16 phase_id)
 {
     u8 *manager = (u8 *)data_021e9abc;
-    u32 previous_phase = *(u32 *)((u8 *)context + 0xa8);
-
-    if (previous_phase == HOST_BEDROOM_PHASE &&
-        phase_id != HOST_BEDROOM_PHASE &&
-        TingleNativeSound_IsStreamPlaying(HOST_BEDROOM_STREAM))
-        func_0205958c(context, 0);
-
     if (manager != 0) {
         if (phase_id == 0x5a)
             *(u16 *)(manager + 0x24) = 0x10b;
         *(s32 *)(manager + 0x1c) = *(s32 *)(manager + 0x18);
-        if (phase_id == HOST_BEDROOM_PHASE) {
-            /* The bedroom score is streamed audio. Start it with phase five so
-             * it is already present beneath the independently owned opening
-             * dialogue and its sequence-archive background effect. */
-            phase_sound_manager_start_bedroom_stream(context, manager);
-        } else {
-            *(s32 *)(manager + 0x18) =
-                phase_sound_secondary_scene_ready() ? 3 : 1;
-        }
+        *(s32 *)(manager + 0x18) =
+            phase_sound_secondary_scene_ready() ? 3 : 1;
     }
     *(u32 *)((u8 *)context + 0xa8) = phase_id;
     *(u32 *)((u8 *)context + 0xbc) = 0;
