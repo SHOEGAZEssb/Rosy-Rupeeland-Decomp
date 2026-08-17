@@ -50,11 +50,11 @@ s32 ActorMotion_ConfigureGridTarget(ActorMotion *self, s32 xIndex, s32 yIndex,
         VecFx32_Subtract(&displacement, &destination, &self->position);
         self->field_2c = divisor;
         if (divisor == 0) {
-            self->field_1c = displacement.value.y;
-            self->field_20 = displacement.value.z;
+            self->field_1c = displacement.value.x;
+            self->field_20 = displacement.value.y;
         } else {
-            self->field_1c = func_020befec(displacement.value.y, divisor);
-            self->field_20 = func_020befec(displacement.value.z, divisor);
+            self->field_1c = func_020befec(displacement.value.x, divisor);
+            self->field_20 = func_020befec(displacement.value.y, divisor);
         }
         self->field_24 = destination.value.x;
         self->field_28 = destination.value.y;
