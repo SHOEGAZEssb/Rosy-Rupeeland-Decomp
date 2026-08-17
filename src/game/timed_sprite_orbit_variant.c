@@ -139,7 +139,7 @@ s32 func_0201ea98(OrbitTimedSprite *self)
 void func_0201eb18(OrbitTimedSprite *self, const void *ownerPosition,
                    const BoundsCenter *unusedCenter)
 {
-    s32 tableIndex = ((s16)self->angle38 >> 4) * 2;
+    s32 tableIndex = (self->angle38 >> 4) * 2;
     s32 x = *(s32 *)&self->first08.bytes[4]
             + data_020c9670[tableIndex] * 0x14;
     s32 y = *(s32 *)&self->first08.bytes[8]

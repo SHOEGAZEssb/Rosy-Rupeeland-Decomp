@@ -28,8 +28,8 @@ extern void *func_0206ec68(void *object);
 extern s32 OverlayManager_GetGlobal(void);
 extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
 extern s32 GameWork_TestFlag(void *work, s32 flag);
-extern void PackedTimerArray_GetGlobal(void);
-extern void PackedTimerArray_Update(void);
+extern void *PackedTimerArray_GetGlobal(void);
+extern void PackedTimerArray_Update(void *array);
 extern void func_02027f94(void);
 extern void func_02027654(void);
 extern s32 FrameCounter_Tick31(void *object);
@@ -110,8 +110,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
     if (func_02007868(object) &&
         !GameWork_TestFlag(gGameWork, 0x3ee) &&
         (s32)(*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 7) < 0) {
-        PackedTimerArray_GetGlobal();
-        PackedTimerArray_Update();
+        PackedTimerArray_Update(PackedTimerArray_GetGlobal());
         if (!GameWork_TestFlag(gGameWork, 0x40f)) {
             func_02027f94();
             func_02027654();
