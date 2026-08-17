@@ -207,6 +207,15 @@ s32 func_020629a0(void *self)
 }
 
 #ifndef MATCHING
+/* Return the descriptor subtype halfword at +6. The borrowed descriptor is
+ * not modified, and retail performs no validation. */
+s32 func_02062a08(void *self)
+{
+    return *(u16 *)((u8 *)self + 6);
+}
+#endif
+
+#ifndef MATCHING
 /* Return the presentation animation selected by a descriptor. Kind-two
  * definitions always use animation seven. Other supported kinds map panel
  * image two to animation nine and every remaining image to animation six.

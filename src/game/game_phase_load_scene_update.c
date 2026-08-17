@@ -694,7 +694,8 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e18c);
     object = Heap_Alloc(UNK_0200e190,UNK_0200e194,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov016_021fe77c(object,2,(int)*(short *)(gGameWork + 0x206));
+      object = func_ov016_021fe77c(
+          object, 2, (int)*(s16 *)((u8 *)gGameWork + 0x206));
     }
     self->ownedObject = object;
     break;
