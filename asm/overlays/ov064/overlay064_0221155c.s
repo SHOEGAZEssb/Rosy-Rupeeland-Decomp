@@ -17,16 +17,16 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020a7c4c
 .extern func_020befec
-.extern func_ov064_02211098
-.extern func_ov064_022110d0
-.extern func_ov064_02211abc
-.extern func_ov064_02211af4
-.extern func_ov064_02211b3c
+.extern Overlay064VecFx32_Add
+.extern Overlay064VecFx32Path_Init
+.extern Overlay064VecFx32_Subtract
+.extern Overlay064VecFx32_Divide
+.extern Overlay064VecFx32_Set
 .extern gDebugFont
 .extern gSoundContext
 
-.global func_ov064_0221155c
-func_ov064_0221155c:
+.global Overlay064Scene_UpdateMode3
+Overlay064Scene_UpdateMode3:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x150
     mov r5, r0
@@ -81,15 +81,15 @@ func_ov064_0221155c:
     add r0, sp, #0x60
     add r1, sp, #0xf0
     add r2, sp, #0x100
-    bl func_ov064_02211abc
+    bl Overlay064VecFx32_Subtract
     add r0, sp, #0x50
     add r1, sp, #0x60
     mov r2, #0x2000
-    bl func_ov064_02211af4
+    bl Overlay064VecFx32_Divide
     add r0, sp, #0xe0
     add r1, sp, #0x100
     add r2, sp, #0x50
-    bl func_ov064_02211098
+    bl Overlay064VecFx32_Add
     add r0, sp, #0x50
     bl VecFx32Object_Destroy
     add r0, sp, #0x60
@@ -98,7 +98,7 @@ func_ov064_0221155c:
     add r1, sp, #0x100
     add r2, sp, #0xf0
     add r3, sp, #0xe0
-    bl func_ov064_022110d0
+    bl Overlay064VecFx32Path_Init
     ldrsh r0, [r5, #0x74]
     mov r1, #0x78
     mov r0, r0, lsl #0xc
@@ -158,24 +158,24 @@ func_ov064_0221155c:
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, #0x0
-    bl func_ov064_02211b3c
+    bl Overlay064VecFx32_Set
     mov r1, #0x0
     add r0, sp, #0xf0
     mov r3, r1
     mov r2, #0x14000
-    bl func_ov064_02211b3c
+    bl Overlay064VecFx32_Set
     add r0, sp, #0x40
     add r1, sp, #0xf0
     add r2, sp, #0x100
-    bl func_ov064_02211abc
+    bl Overlay064VecFx32_Subtract
     add r0, sp, #0x30
     add r1, sp, #0x40
     mov r2, #0x2000
-    bl func_ov064_02211af4
+    bl Overlay064VecFx32_Divide
     add r0, sp, #0x20
     add r1, sp, #0x100
     add r2, sp, #0x30
-    bl func_ov064_02211098
+    bl Overlay064VecFx32_Add
     add r0, sp, #0xe0
     add r1, sp, #0x20
     bl VecFx32Object_Assign
@@ -189,7 +189,7 @@ func_ov064_0221155c:
     add r1, sp, #0x100
     add r2, sp, #0xf0
     add r3, sp, #0xe0
-    bl func_ov064_022110d0
+    bl Overlay064VecFx32Path_Init
     mov r2, r4
     add r0, sp, #0x10
     add r1, sp, #0x70
@@ -386,4 +386,4 @@ func_ov064_0221155c:
 .L_02211ab0: .word 0x20a
 .L_02211ab4: .word 0x167
 .L_02211ab8: .word gDisplayBrightnessPair
-.size func_ov064_0221155c, . - func_ov064_0221155c
+.size Overlay064Scene_UpdateMode3, . - Overlay064Scene_UpdateMode3

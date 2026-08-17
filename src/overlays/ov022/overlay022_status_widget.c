@@ -22,7 +22,7 @@ extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, ...);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, s32, s32, s32);
-extern s32 func_0207b44c(void *);
+extern s32 RecordMode_GetMessageGroup(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 func_020918f4(void *, s32);
 extern u32 genrand_int32(void);
@@ -45,7 +45,7 @@ extern "C" void func_ov022_021fd594(void *widget);
  */
 extern "C" void func_ov022_021fd2f4(void)
 {
-    s32 value = func_0207b44c(FIELD(void *, data_021f5128[0], 0x1c));
+    s32 value = RecordMode_GetMessageGroup(FIELD(void *, data_021f5128[0], 0x1c));
     s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, value, 8, -2);
     s32 half = (width + (width >> 31)) >> 1;
     GraphicsSpriteRenderer_DrawText(gDebugFont, value, 64 - half, 172, 13, 8, -2);

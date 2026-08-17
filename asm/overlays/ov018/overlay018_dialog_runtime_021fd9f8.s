@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_dialog_runtime.c (layout, text, and input helpers). */
     .extern MIi_CpuCopy16
     .extern data_021f3ecc
-    .extern func_02079160
+    .extern LanguageLookup_GetResourceSize
     .extern func_020791e0
     .extern func_02092e9c
     .extern func_02093360
@@ -24,7 +24,7 @@ func_ov018_021fda10:
     mov r5, r1, lsr #0x10
     ldr r0, L_021fda5c
     mov r1, r5
-    bl func_02079160
+    bl LanguageLookup_GetResourceSize
     mov r4, r0
     ldr r0, L_021fda5c
     mov r1, r5

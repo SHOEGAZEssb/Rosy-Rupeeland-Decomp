@@ -2,7 +2,7 @@
 .text
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
-.extern func_0207ae34
+.extern RecordCategory_RemoveById
 .global func_02017750
 func_02017750:
     stmdb sp!, {r3, r4, r5, lr}
@@ -15,7 +15,7 @@ func_02017750:
     mov r1, r4
     ldr r2, [r2]
     ldr r0, [r2, r0, lsl #2]
-    bl func_0207ae34
+    bl RecordCategory_RemoveById
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_02017784: .word data_021f5128

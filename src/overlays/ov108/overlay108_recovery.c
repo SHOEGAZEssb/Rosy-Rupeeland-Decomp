@@ -45,7 +45,7 @@ extern u8 data_ov108_022268a4[];
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov108_0221d6c0(s32 mode)
+void Overlay108_RegisterActorDescriptors(s32 mode)
 {
     if (mode != 0)
         return;

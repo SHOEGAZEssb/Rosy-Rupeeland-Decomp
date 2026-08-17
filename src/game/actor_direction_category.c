@@ -3,7 +3,7 @@
 /* Recovered classification of retail area/direction codes for actor effects. */
 
 /* Return the presentation-table group (zero through five) for one code. */
-s32 func_0207a19c(s32 value)
+s32 ActorDirection_GetPresentationGroup(s32 value)
 {
     if ((value >= 0x28 && value <= 0x2f) || value == 0x20 || value == 0x25)
         return 0;

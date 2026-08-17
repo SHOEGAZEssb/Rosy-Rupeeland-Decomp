@@ -15,7 +15,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern s32 func_0207abd8(void *, s32);
+extern s32 RecordSelection_HasAvailableEntry(void *, s32);
 extern void func_02093d50(void *, s32);
 extern void func_02093d7c(void *, s32);
 extern void func_020957f0(void *, void *, s32, s32, s32);
@@ -43,7 +43,7 @@ extern "C" void func_ov021_021fe520(void *state)
     u8 *record = (u8 *)data_021f5128[FIELD(s32, state, 0x54)];
     s32 channel;
     for (channel = 0; channel < 2; channel++) {
-        if (func_0207abd8(record, channel) != 0) {
+        if (RecordSelection_HasAvailableEntry(record, channel) != 0) {
             s32 capacity;
             if (channel == 2)
                 capacity = FIELD(s32, record, 8) +

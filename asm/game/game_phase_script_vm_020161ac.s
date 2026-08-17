@@ -3,7 +3,7 @@
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_020636ac
+.extern InventoryManager_ContainsId
 .global func_020161ac
 func_020161ac:
     stmdb sp!, {r4, lr}
@@ -12,7 +12,7 @@ func_020161ac:
     ldr r2, L_020161f0
     mov r1, r0
     ldr r0, [r2]
-    bl func_020636ac
+    bl InventoryManager_ContainsId
     cmp r0, #0
     mov r0, r4
     beq L_020161e0

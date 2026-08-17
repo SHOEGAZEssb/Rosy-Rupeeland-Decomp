@@ -3,8 +3,8 @@
 .extern VecFx32Object_Init
 .extern VecFx32Triple_Set
 
-.global func_ov064_022110d0
-func_ov064_022110d0:
+.global Overlay064VecFx32Path_Init
+Overlay064VecFx32Path_Init:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r6, r1
@@ -22,4 +22,4 @@ func_ov064_022110d0:
     bl VecFx32Triple_Set
     mov r0, r7
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.size func_ov064_022110d0, . - func_ov064_022110d0
+.size Overlay064VecFx32Path_Init, . - Overlay064VecFx32Path_Init

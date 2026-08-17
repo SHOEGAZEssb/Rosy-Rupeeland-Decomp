@@ -45,7 +45,7 @@ extern void func_0201ded4(O64_ARGS), func_0201e14c(O64_ARGS);
 extern void *func_02025300(O64_ARGS);
 extern void func_02058de0(O64_ARGS), func_0205974c(O64_ARGS);
 extern void func_0206c978(O64_ARGS);
-extern s32 func_0207a19c(O64_ARGS), func_020ae1fc(O64_ARGS);
+extern s32 ActorDirection_GetPresentationGroup(O64_ARGS), func_020ae1fc(O64_ARGS);
 extern void GamePhaseRuntime_SynchronizeActorPlacement(O64_ARGS);
 extern void ActorFeedback_UpdatePresentations(O64_ARGS);
 extern void *ActorMotionAreaFollower_GetPosition(O64_ARGS);
@@ -60,27 +60,27 @@ extern void GamePhaseCurrencyHud_AddCurrency(O64_ARGS);
 extern void *func_02022cb0(O64_ARGS);
 extern void Actor_RefreshTerrainHeight(O64_ARGS);
 extern void GridEffectActorRegistry_BroadcastSlot1c(O64_ARGS);
-extern void func_0205557c(O64_ARGS);
+extern void ActorInteractionRegistry_UpdateAll(O64_ARGS);
 extern s32 func_020befec(O64_ARGS);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(O64_ARGS);
 extern void VecFx32Bezier_Evaluate3D(O64_ARGS);
-extern void func_ov064_0221102c(VecFx32Object *output,
+extern void Overlay064VecFx32_Scale(VecFx32Object *output,
                                 const VecFx32Object *input, s32 scale);
-extern void func_ov064_02211098(VecFx32Object *output,
+extern void Overlay064VecFx32_Add(VecFx32Object *output,
                                 const VecFx32Object *first,
                                 const VecFx32Object *second);
-extern void *func_ov064_022110d0(void *path,
+extern void *Overlay064VecFx32Path_Init(void *path,
                                  const VecFx32Object *first,
                                  const VecFx32Object *second,
                                  const VecFx32Object *third);
-extern void func_ov064_02211b4c(void *scene,
+extern void Overlay064Scene_SpawnRewardEffect(void *scene,
                                 const VecFx32Object *position);
-extern void func_ov064_02211abc(VecFx32Object *output,
+extern void Overlay064VecFx32_Subtract(VecFx32Object *output,
                                 const VecFx32Object *first,
                                 const VecFx32Object *second);
-extern void func_ov064_02211af4(VecFx32Object *output,
+extern void Overlay064VecFx32_Divide(VecFx32Object *output,
                                 const VecFx32Object *input, s32 value);
-extern void func_ov064_02211b3c(VecFx32Object *output,
+extern void Overlay064VecFx32_Set(VecFx32Object *output,
                                 s32 x, s32 y, s32 z);
 extern void func_020adff0(O64_ARGS), VecFx32Triple_Set(O64_ARGS);
 extern u32 genrand_int32(O64_ARGS);
@@ -155,7 +155,7 @@ static s32 run_scene_step(void *scene)
 
 /* Construct the mode-selected scene, its presentation resources, and the
  * actor/runtime relationships used by the overlay state machine. */
-void *func_ov064_0220fd20(void *scene, s32 mode, u32 parameter)
+void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
 {
     void *presentation;
     void *actorCollection;
@@ -210,7 +210,7 @@ void *func_ov064_0220fd20(void *scene, s32 mode, u32 parameter)
         if (special)
             actorY -= 0x18;
         F(u8, scene, 0x76) = index != 6 && index != 0x14;
-        index = func_0207a19c(F(void *, F(void *, data_021052fc, 0x30bc), 0));
+        index = ActorDirection_GetPresentationGroup(F(void *, F(void *, data_021052fc, 0x30bc), 0));
         F(u32, scene, 0x80) = data_020ed530[index * 2 + F(u8, scene, 0x76)];
         F(s16, presentation, 0x2c) = actorX;
         F(s16, presentation, 0x2e) = actorY;
@@ -434,19 +434,19 @@ static void *destroy_scene(void *scene, s32 freeScene)
 }
 
 /* Destroy in place while retaining the caller-owned scene allocation. */
-void *func_ov064_02210658(void *scene)
+void *Overlay064Scene_Destroy(void *scene)
 {
     return destroy_scene(scene, 0);
 }
 
 /* Deleting destructor: perform ordinary teardown and release the allocation. */
-void *func_ov064_0221089c(void *scene)
+void *Overlay064Scene_Delete(void *scene)
 {
     return destroy_scene(scene, 1);
 }
 
 /* Drive the mode-zero actor presentation through its five retail states. */
-s32 func_ov064_02210c5c(void *scene)
+s32 Overlay064Scene_UpdateMode0(void *scene)
 {
     void *actor = F(void *, data_021052fc, 0x2ea4);
     s32 state;
@@ -490,18 +490,18 @@ s32 func_ov064_02210c5c(void *scene)
             F(u16, F(void *, scene, 0x30), 0x24) |= 6;
             VecFx32Object_InitCopy(
                 &savedPosition, (const VecFx32Object *)((u8 *)actor + 0x284));
-            func_ov064_0221102c(
+            Overlay064VecFx32_Scale(
                 &transformedA,
                 (const VecFx32Object *)((u8 *)actor + 0x18), 0x4cd);
-            func_ov064_0221102c(&transformedB, &savedPosition, 0xb33);
-            func_ov064_02211098((VecFx32Object *)curve,
+            Overlay064VecFx32_Scale(&transformedB, &savedPosition, 0xb33);
+            Overlay064VecFx32_Add((VecFx32Object *)curve,
                                 &transformedA, &transformedB);
             VecFx32Object_Destroy(&transformedB);
             VecFx32Object_Destroy(&transformedA);
             motion = Heap_Alloc(0x30, data_ov064_02211ed4, 4,
                                 &gHeapContext);
             if (motion != 0)
-                motion = func_ov064_022110d0(
+                motion = Overlay064VecFx32Path_Init(
                     motion, (const VecFx32Object *)((u8 *)actor + 0x18),
                     &savedPosition, (const VecFx32Object *)curve);
             F(void *, scene, 0x84) = motion;
@@ -521,7 +521,7 @@ s32 func_ov064_02210c5c(void *scene)
                     0x2000, -0xc0);
             }
             func_0201ded4((u8 *)data_021052fc + 0x2f7c, motion);
-            func_ov064_02211b4c(scene, &savedPosition);
+            Overlay064Scene_SpawnRewardEffect(scene, &savedPosition);
             VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x18),
                                  &destination);
             VecFx32Object_Destroy(&destination);
@@ -567,12 +567,12 @@ s32 func_ov064_02210c5c(void *scene)
     }
 
     GridEffectActorRegistry_BroadcastSlot1c();
-    func_0205557c();
+    ActorInteractionRegistry_UpdateAll();
     return result;
 }
 
 /* Drive the mode-one replacement, payment, sound, and fade sequence. */
-s32 func_ov064_02211114(void *scene)
+s32 Overlay064Scene_UpdateMode1(void *scene)
 {
     void *actor = F(void *, data_021052fc, 0x2ea4);
     s32 state;
@@ -635,13 +635,13 @@ s32 func_ov064_02211114(void *scene)
 
     if (!result) {
         GridEffectActorRegistry_BroadcastSlot1c();
-        func_0205557c();
+        ActorInteractionRegistry_UpdateAll();
     }
     return result;
 }
 
 /* Drive the mode-two payment, sound, and immediate fade sequence. */
-s32 func_ov064_02211374(void *scene)
+s32 Overlay064Scene_UpdateMode2(void *scene)
 {
     void *actor = F(void *, data_021052fc, 0x2ea4);
     s32 state;
@@ -693,14 +693,14 @@ s32 func_ov064_02211374(void *scene)
 
     if (!result) {
         GridEffectActorRegistry_BroadcastSlot1c();
-        func_0205557c();
+        ActorInteractionRegistry_UpdateAll();
     }
     return result;
 }
 
 /* Drive the mode-three scripted sprite arcs, reveal, sound sequence, and
  * closing fade. Direct display/palette writes are the original DS effects. */
-s32 func_ov064_0221155c(void *scene)
+s32 Overlay064Scene_UpdateMode3(void *scene)
 {
     s32 state;
     s32 index;
@@ -734,12 +734,12 @@ s32 func_ov064_0221155c(void *scene)
 
             VecFx32Object_InitComponents(&start, 0x100000, 0x20000, 0);
             VecFx32Object_InitComponents(&end, 0xc8000, 0x70000, 0);
-            func_ov064_02211abc(&difference, &end, &start);
-            func_ov064_02211af4(&scaled, &difference, 0x2000);
-            func_ov064_02211098(&control, &start, &scaled);
+            Overlay064VecFx32_Subtract(&difference, &end, &start);
+            Overlay064VecFx32_Divide(&scaled, &difference, 0x2000);
+            Overlay064VecFx32_Add(&control, &start, &scaled);
             VecFx32Object_Destroy(&scaled);
             VecFx32Object_Destroy(&difference);
-            func_ov064_022110d0(pathA, &start, &end, &control);
+            Overlay064VecFx32Path_Init(pathA, &start, &end, &control);
             progress = func_020befec(F(s16, scene, 0x74) << 12, 0x78);
             VecFx32Bezier_Evaluate3D(&position, pathA, progress);
             sprite = F(void *, scene, 0x68);
@@ -758,17 +758,17 @@ s32 func_ov064_0221155c(void *scene)
                 GraphicsSpriteState_SetAnimationIndex(sprite, 3);
             }
 
-            func_ov064_02211b3c(
+            Overlay064VecFx32_Set(
                 &start, F(s16, scene, 0x7c) << 12,
                 F(s16, scene, 0x7e) << 12, 0);
-            func_ov064_02211b3c(&end, 0, 0x14000, 0);
-            func_ov064_02211abc(&difference, &end, &start);
-            func_ov064_02211af4(&scaled, &difference, 0x2000);
-            func_ov064_02211098(&difference, &start, &scaled);
+            Overlay064VecFx32_Set(&end, 0, 0x14000, 0);
+            Overlay064VecFx32_Subtract(&difference, &end, &start);
+            Overlay064VecFx32_Divide(&scaled, &difference, 0x2000);
+            Overlay064VecFx32_Add(&difference, &start, &scaled);
             VecFx32Object_Assign(&control, &difference);
             VecFx32Object_Destroy(&difference);
             VecFx32Object_Destroy(&scaled);
-            func_ov064_022110d0(pathB, &start, &end, &control);
+            Overlay064VecFx32Path_Init(pathB, &start, &end, &control);
             VecFx32Bezier_Evaluate3D(&difference, pathB, progress);
             VecFx32Object_Assign(&position, &difference);
             VecFx32Object_Destroy(&difference);
@@ -845,11 +845,11 @@ s32 func_ov064_0221155c(void *scene)
 
 /* Select and spawn the mode-zero reward effect using the retail weighted
  * table, preserving the one-time GameWork selection rule. */
-void func_ov064_02211b4c(void *scene, const VecFx32Object *position)
+void Overlay064Scene_SpawnRewardEffect(void *scene, const VecFx32Object *position)
 {
     u64 division = func_020bf1f8(genrand_int32(), 0x64);
     s32 random = (s32)(division >> 32);
-    s32 category = func_0207a19c(
+    s32 category = ActorDirection_GetPresentationGroup(
         F(s32, F(void *, data_021052fc, 0x30bc), 0));
     s32 selection = 0;
     s32 cumulative = 0;
@@ -878,7 +878,7 @@ void func_ov064_02211b4c(void *scene, const VecFx32Object *position)
         *(void **)(descriptor + 0x1c) = descriptor;
         func_020627a0(descriptor, id, 1);
         VecFx32Object_InitComponents(&offset, 0, 0, 0x20000);
-        func_ov064_02211098(&spawnPosition, position, &offset);
+        Overlay064VecFx32_Add(&spawnPosition, position, &offset);
         VecFx32Object_Destroy(&offset);
         effect = GridEffectActor_Spawn(&spawnPosition, descriptor, 0x168);
         VecFx32Object_InitComponents(&offset, 0, 0, 0x5000);
@@ -889,7 +889,7 @@ void func_ov064_02211b4c(void *scene, const VecFx32Object *position)
 }
 
 /* Scale a value-object's three fx32 components with retail rounding. */
-void func_ov064_0221102c(VecFx32Object *output,
+void Overlay064VecFx32_Scale(VecFx32Object *output,
                          const VecFx32Object *input, s32 scale)
 {
     s32 index;
@@ -902,7 +902,7 @@ void func_ov064_0221102c(VecFx32Object *output,
 }
 
 /* Initialize an output value and calculate the shared vector helper result. */
-void func_ov064_02211098(VecFx32Object *output,
+void Overlay064VecFx32_Add(VecFx32Object *output,
                          const VecFx32Object *first,
                          const VecFx32Object *second)
 {
@@ -912,7 +912,7 @@ void func_ov064_02211098(VecFx32Object *output,
 }
 
 /* Construct the three-point fx32 path object used by the actor arc. */
-void *func_ov064_022110d0(void *path, const VecFx32Object *first,
+void *Overlay064VecFx32Path_Init(void *path, const VecFx32Object *first,
                           const VecFx32Object *second,
                           const VecFx32Object *third)
 {
@@ -924,7 +924,7 @@ void *func_ov064_022110d0(void *path, const VecFx32Object *first,
 }
 
 /* Initialize an output value and calculate the companion shared vector op. */
-void func_ov064_02211abc(VecFx32Object *output,
+void Overlay064VecFx32_Subtract(VecFx32Object *output,
                          const VecFx32Object *first,
                          const VecFx32Object *second)
 {
@@ -934,7 +934,7 @@ void func_ov064_02211abc(VecFx32Object *output,
 }
 
 /* Apply the shared scalar transform independently to all three components. */
-void func_ov064_02211af4(VecFx32Object *output,
+void Overlay064VecFx32_Divide(VecFx32Object *output,
                          const VecFx32Object *input, s32 value)
 {
     VecFx32Object_Init(output);
@@ -944,7 +944,7 @@ void func_ov064_02211af4(VecFx32Object *output,
 }
 
 /* Store three fx32 components in an optional value-object payload. */
-void func_ov064_02211b3c(VecFx32Object *output, s32 x, s32 y, s32 z)
+void Overlay064VecFx32_Set(VecFx32Object *output, s32 x, s32 y, s32 z)
 {
     VecFx32Value *value = output != 0 ? &output->value : 0;
 
@@ -955,7 +955,7 @@ void func_ov064_02211b3c(VecFx32Object *output, s32 x, s32 y, s32 z)
 
 /* Advance the selected scene branch and synchronize its shared actor/UI
  * presentation state. A completed branch deletes the scene and returns one. */
-s32 func_ov064_02210ae8(void *scene)
+s32 Overlay064Scene_Update(void *scene)
 {
     s32 complete = run_scene_step(scene);
 
@@ -1001,7 +1001,7 @@ s32 func_ov064_02210ae8(void *scene)
 
 /* Update the scene's selected display effect. Modes zero through two defer to
  * the shared runtime object; mode three performs the retail fade registers. */
-s32 func_ov064_02211cec(void *scene)
+s32 Overlay064Scene_UpdateDisplayEffect(void *scene)
 {
     if (F(u8, scene, 0x77) != 3) {
         void *runtime = data_021052fc;

@@ -35,7 +35,7 @@ extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern u32 func_02079160(const void *, s32);
+extern u32 LanguageLookup_GetResourceSize(const void *, s32);
 extern const void *func_020791e0(const void *, s32);
 extern void func_02091e28(void *);
 extern void func_02092798(void *);
@@ -170,10 +170,10 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     FIELD(u32, state, 0x2cc) = genrand_int32();
     func_0206550c((u8 *)data_021e9ac0 + 0x34, 1);
     func_02064be0(data_021e9ac0, 0);
-    u32 size = func_02079160(data_021f3ecc, 0x2e2);
+    u32 size = LanguageLookup_GetResourceSize(data_021f3ecc, 0x2e2);
     MIi_CpuCopy16(func_020791e0(data_021f3ecc, 0x2e2),
                   (u8 *)state + 0x2d4, size);
-    size = func_02079160(data_021f3ecc, 0x2e3);
+    size = LanguageLookup_GetResourceSize(data_021f3ecc, 0x2e3);
     MIi_CpuCopy16(func_020791e0(data_021f3ecc, 0x2e3),
                   (u8 *)state + 0x314, size);
 

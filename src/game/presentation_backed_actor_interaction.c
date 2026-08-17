@@ -57,7 +57,7 @@ static void complete_interaction(void *actor)
  * 0x1F2 value (or zero for rejected type 13). Engine heap, sound, presentation,
  * effect, and actor state may change; no hardware registers are touched here.
  */
-s32 func_0204df40(void *actor, void *trigger)
+s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
 {
     u16 type = FIELD(u16, actor, 0x4e);
     s32 sound = -1;

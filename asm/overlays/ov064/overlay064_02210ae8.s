@@ -15,8 +15,8 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern gLupyContext
 
-.global func_ov064_02210ae8
-func_ov064_02210ae8:
+.global Overlay064Scene_Update
+Overlay064Scene_Update:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r5, r0
@@ -115,4 +115,4 @@ func_ov064_02210ae8:
     ldmia sp!, {r4, r5, r6, pc}
 .L_02210c54: .word data_021052fc
 .L_02210c58: .word gLupyContext
-.size func_ov064_02210ae8, . - func_ov064_02210ae8
+.size Overlay064Scene_Update, . - Overlay064Scene_Update

@@ -12,9 +12,9 @@
     .extern GamePhaseCurrencyHud_AddCurrency
     .extern func_02062ca8
     .extern GraphicsSpriteText_FormatDecimal
-    .extern func_0207ab48
-    .extern func_0207c4cc
-    .extern func_0207c5c8
+    .extern RecordCategory_PublishById
+    .extern RecordDescriptor_GetMessage
+    .extern RecordDescriptor_SetValue
     .extern func_0209189c
     .extern func_02092260
     .extern func_02092288
@@ -224,7 +224,7 @@ L_02202618:
     str r0, [r4, #0x3e8]
     ldr r0, [r4, #0x2bc]
     mov r1, #0x4
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0
@@ -235,7 +235,7 @@ L_02202668:
     bl func_ov021_021ff380
     ldr r0, [r4, #0x2bc]
     mov r1, #0x3
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0
@@ -256,14 +256,14 @@ L_02202690:
     cmp r2, r1, asr #0x1
     bgt L_022026e0
     mov r1, #0x6
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0
     b L_022026f4
 L_022026e0:
     mov r1, #0x5
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0
@@ -342,7 +342,7 @@ L_022027f4:
     str r0, [r4, #0x3d8]
     ldr r0, [r4, #0x2bc]
     ldr r1, [r4, #0x394]
-    bl func_0207c5c8
+    bl RecordDescriptor_SetValue
     ldr r0, L_02202bc8
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_GetCurrency
@@ -513,7 +513,7 @@ L_02202a38:
     ldr r0, [r4, #0x54]
     ldrh r1, [r1, #0x0]
     ldr r0, [r2, r0, lsl #0x2]
-    bl func_0207ab48
+    bl RecordCategory_PublishById
     ldr r1, L_02202bd8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -542,7 +542,7 @@ L_02202aa8:
     str r0, [r1, #0x80]
     ldr r0, [r4, #0x2bc]
     mov r1, #0x1
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0

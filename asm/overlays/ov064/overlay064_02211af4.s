@@ -3,8 +3,8 @@
 .extern VecFx32Object_Init
 .extern func_020adc90
 
-.global func_ov064_02211af4
-func_ov064_02211af4:
+.global Overlay064VecFx32_Divide
+Overlay064VecFx32_Divide:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r1
     mov r6, r0
@@ -23,4 +23,4 @@ func_ov064_02211af4:
     bl func_020adc90
     str r0, [r6, #0xc]
     ldmia sp!, {r4, r5, r6, pc}
-.size func_ov064_02211af4, . - func_ov064_02211af4
+.size Overlay064VecFx32_Divide, . - Overlay064VecFx32_Divide

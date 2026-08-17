@@ -57,7 +57,7 @@ extern void GameWork_SetFlag(void *work, s32 flag);
 
 /* Copy the mutable descriptor fields retained by the manager's ordered list.
  * Both records are borrowed 16-byte slots; identity storage at +0 is retained. */
-void func_0207a904(void *destination_pointer, const void *source_pointer)
+void RecordSlot_CopyMutableState(void *destination_pointer, const void *source_pointer)
 {
     u8 *destination = (u8 *)destination_pointer;
     const u8 *source = (const u8 *)source_pointer;
@@ -70,7 +70,7 @@ void func_0207a904(void *destination_pointer, const void *source_pointer)
 /* Insert a descriptor state at the front of manager +0x48, shifting existing
  * 16-byte entries right. A matching record ID is already represented and is
  * left unchanged. The manager owns the slots; the descriptor record is borrowed. */
-void func_0207a880(void *manager_pointer, const void *descriptor_pointer)
+void RecordManager_InsertDescriptorAtFront(void *manager_pointer, const void *descriptor_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     const u8 *descriptor = (const u8 *)descriptor_pointer;
@@ -83,17 +83,17 @@ void func_0207a880(void *manager_pointer, const void *descriptor_pointer)
             return;
     }
     for (index = count - 1; index >= 0; --index) {
-        func_0207a904(manager + 0x48 + (index + 1) * 0x10,
+        RecordSlot_CopyMutableState(manager + 0x48 + (index + 1) * 0x10,
                       manager + 0x48 + index * 0x10);
     }
-    func_0207a904(manager + 0x48, descriptor);
+    RecordSlot_CopyMutableState(manager + 0x48, descriptor);
     *(s32 *)(manager + 0xcc8) = count + 1;
 }
 
 /* Move an existing descriptor state to the front of manager +0x48 after its
  * mutable value/tier changes. Missing IDs preserve retail's fatal assertion.
  * Slot storage is manager-owned and descriptor pointers remain borrowed. */
-void func_0207a920(void *manager_pointer, const void *descriptor_pointer)
+void RecordManager_MoveDescriptorToFront(void *manager_pointer, const void *descriptor_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     const u8 *descriptor = (const u8 *)descriptor_pointer;
@@ -104,11 +104,11 @@ void func_0207a920(void *manager_pointer, const void *descriptor_pointer)
         u8 *entry = manager + 0x48 + index * 0x10;
         if (**(u16 **)(entry + 4) == **(u16 *const *)(descriptor + 4)) {
             while (index > 0) {
-                func_0207a904(manager + 0x48 + index * 0x10,
+                RecordSlot_CopyMutableState(manager + 0x48 + index * 0x10,
                               manager + 0x48 + (index - 1) * 0x10);
                 --index;
             }
-            func_0207a904(manager + 0x48, descriptor);
+            RecordSlot_CopyMutableState(manager + 0x48, descriptor);
             return;
         }
     }
@@ -120,7 +120,7 @@ void func_0207a920(void *manager_pointer, const void *descriptor_pointer)
  * first threshold and notify the owning manager only on initial insertion or
  * tier changes when record flag +0x04 is zero. Other types store the raw value.
  * Descriptor state changes synchronously; no allocation or hardware access. */
-void func_0207c5c8(void *descriptor_pointer, s32 value)
+void RecordDescriptor_SetValue(void *descriptor_pointer, s32 value)
 {
     u8 *descriptor = (u8 *)descriptor_pointer;
     u8 *record = *(u8 **)(descriptor + 4);
@@ -148,11 +148,11 @@ void func_0207c5c8(void *descriptor_pointer, s32 value)
     if (previous == 0) {
         *(s32 *)(descriptor + 0x0c) = tier;
         if (*(u16 *)(record + 4) == 0)
-            func_0207a880(*(void **)data_021f5128, descriptor);
+            RecordManager_InsertDescriptorAtFront(*(void **)data_021f5128, descriptor);
     } else if (*(s32 *)(descriptor + 0x0c) != tier) {
         *(s32 *)(descriptor + 0x0c) = tier;
         if (*(u16 *)(record + 4) == 0)
-            func_0207a920(*(void **)data_021f5128, descriptor);
+            RecordManager_MoveDescriptorToFront(*(void **)data_021f5128, descriptor);
     }
 }
 
@@ -206,7 +206,7 @@ u32 func_0207b334(u16 id)
 
 /* Mark the save-owned discovery bit for a borrowed category slot. The bit
  * index is record halfword +0x02; the slot and GameWork remain caller-owned. */
-void func_0207c550(void *slot_pointer)
+void RecordSlot_MarkDiscovered(void *slot_pointer)
 {
     u8 *slot = (u8 *)slot_pointer;
     u8 *record = *(u8 **)(slot + 4);
@@ -217,19 +217,19 @@ void func_0207c550(void *slot_pointer)
 
 /* Publish one borrowed category slot: persist its discovery flag first, then
  * invoke the category's primary virtual callback synchronously. */
-void func_0207aba4(void *category_pointer, u32 bank, u32 index)
+void RecordCategory_PublishSlot(void *category_pointer, u32 bank, u32 index)
 {
     u8 *category = (u8 *)category_pointer;
     u8 *slot = *(u8 **)(category + 0x18 + bank * 4) + index * 0x10;
     void (**vtable)(void *, void *) = *(void (***)(void *, void *))category;
 
-    func_0207c550(slot);
+    RecordSlot_MarkDiscovered(slot);
     (*vtable)(category, slot);
 }
 
 /* Find a retail record ID in its type-selected category bank and publish the
  * matching borrowed slot. Missing IDs are a no-op and no ownership changes. */
-void func_0207ab48(void *category_pointer, u16 id)
+void RecordCategory_PublishById(void *category_pointer, u16 id)
 {
     u8 *category = (u8 *)category_pointer;
     u32 bank = func_0207b334(id);
@@ -240,7 +240,7 @@ void func_0207ab48(void *category_pointer, u16 id)
     for (index = 0; index < count; ++index) {
         u8 *slot = slots + index * 0x10;
         if (*(u16 *)(*(u8 **)(slot + 4)) == id) {
-            func_0207aba4(category, bank, index);
+            RecordCategory_PublishSlot(category, bank, index);
             return;
         }
     }
@@ -248,7 +248,7 @@ void func_0207ab48(void *category_pointer, u16 id)
 
 /* Remove the first slot matching a retail ID from its selected category bank,
  * compacting the manager-owned slots in place. Missing IDs are a no-op. */
-void func_0207ae34(void *category_pointer, u16 id)
+void RecordCategory_RemoveById(void *category_pointer, u16 id)
 {
     u8 *category = (u8 *)category_pointer;
     u32 bank = func_0207b334(id);
@@ -263,7 +263,7 @@ void func_0207ae34(void *category_pointer, u16 id)
         if (*(u16 *)(*(u8 **)(slot + 4)) != id)
             continue;
         for (move_index = index; move_index + 1 < *count; ++move_index)
-            func_0207a904(slots + move_index * 0x10,
+            RecordSlot_CopyMutableState(slots + move_index * 0x10,
                           slots + (move_index + 1) * 0x10);
         --*count;
         return;
@@ -271,7 +271,7 @@ void func_0207ae34(void *category_pointer, u16 id)
 }
 
 /* Mark the save-owned completion bit for a borrowed category slot. */
-void func_0207c58c(void *slot_pointer)
+void RecordSlot_MarkComplete(void *slot_pointer)
 {
     u8 *slot = (u8 *)slot_pointer;
     u8 *record = *(u8 **)(slot + 4);
@@ -281,7 +281,7 @@ void func_0207c58c(void *slot_pointer)
 }
 
 /* Report whether a nonempty type-one descriptor reached its last tier. */
-s32 func_0207e024(const void *slot_pointer)
+s32 RecordSlot_IsFinalTier(const void *slot_pointer)
 {
     const u8 *slot = (const u8 *)slot_pointer;
     const u8 *record = *(const u8 *const *)(slot + 4);
@@ -293,7 +293,7 @@ s32 func_0207e024(const void *slot_pointer)
 
 /* Complete and remove a type-one descriptor when its record-specific terminal
  * condition is met. Save bits and category slots retain their original owners. */
-void func_0207b3a4(void *category_pointer, void *slot_pointer)
+void RecordCategory_CompleteTerminalType1Slot(void *category_pointer, void *slot_pointer)
 {
     u8 *slot = (u8 *)slot_pointer;
     u8 *record = *(u8 **)(slot + 4);
@@ -301,9 +301,9 @@ void func_0207b3a4(void *category_pointer, void *slot_pointer)
 
     if (type != 1)
         return;
-    if (*(u16 *)(record + 4) == 1 || func_0207e024(slot)) {
-        func_0207c58c(slot);
-        func_0207ae34(category_pointer, *(u16 *)record);
+    if (*(u16 *)(record + 4) == 1 || RecordSlot_IsFinalTier(slot)) {
+        RecordSlot_MarkComplete(slot);
+        RecordCategory_RemoveById(category_pointer, *(u16 *)record);
     }
 }
 
@@ -335,27 +335,27 @@ void *func_0207acd0(void *category_pointer, u16 id)
 
 /* Apply category-five's special completion transitions, publish the matching
  * GameWork milestone flags, then perform the common terminal-slot removal. */
-void func_0207df24(void *category_pointer, void *slot_pointer)
+void RecordCategory_ApplyCategory5Completion(void *category_pointer, void *slot_pointer)
 {
     u8 *slot = (u8 *)slot_pointer;
     u16 id = *(u16 *)(*(u8 **)(slot + 4));
 
     if (id == 0x402) {
-        if (func_0207e024(slot))
+        if (RecordSlot_IsFinalTier(slot))
             GameWork_SetFlag(gGameWork, 0x63);
     } else if (id == 0x451) {
-        if (func_0207e024(slot))
+        if (RecordSlot_IsFinalTier(slot))
             GameWork_SetFlag(gGameWork, 0x6c);
     } else if (id == 0x3b) {
-        func_0207ae34(category_pointer, 0x3b);
+        RecordCategory_RemoveById(category_pointer, 0x3b);
         func_0207acd0(category_pointer, 0x48);
         GameWork_SetFlag(gGameWork, 0xaf);
     } else if (id == 0x3c) {
-        func_0207ae34(category_pointer, 0x3c);
+        RecordCategory_RemoveById(category_pointer, 0x3c);
         func_0207acd0(category_pointer, 0x4a);
         GameWork_SetFlag(gGameWork, 0xb0);
     }
-    func_0207b3a4(category_pointer, slot_pointer);
+    RecordCategory_CompleteTerminalType1Slot(category_pointer, slot_pointer);
 }
 
 static void PopulateRecordCategory(u8 *category, u16 excluded0,

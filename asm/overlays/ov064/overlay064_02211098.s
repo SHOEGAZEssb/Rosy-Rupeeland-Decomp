@@ -3,8 +3,8 @@
 .extern VecFx32Object_Init
 .extern func_020adff0
 
-.global func_ov064_02211098
-func_ov064_02211098:
+.global Overlay064VecFx32_Add
+Overlay064VecFx32_Add:
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r2
     mov r5, r1
@@ -19,4 +19,4 @@ func_ov064_02211098:
     add r2, r6, #0x4
     bl func_020adff0
     ldmia sp!, {r4, r5, r6, pc}
-.size func_ov064_02211098, . - func_ov064_02211098
+.size Overlay064VecFx32_Add, . - Overlay064VecFx32_Add

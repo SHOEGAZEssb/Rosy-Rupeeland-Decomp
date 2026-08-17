@@ -62,7 +62,7 @@ typedef struct DescriptorMessageTable {
 
 /* Maps a language message identifier to the byte length of its resource via
  * the global resource manager. A missing record has length zero. */
-u32 func_02079160(const LookupIndexPrefix *table, s32 identifier)
+u32 LanguageLookup_GetResourceSize(const LookupIndexPrefix *table, s32 identifier)
 {
     const LanguageLookupRecord *records =
         (const LanguageLookupRecord *)table->records;
@@ -88,7 +88,7 @@ u32 func_02079160(const LookupIndexPrefix *table, s32 identifier)
 }
 
 /* Resolve one resource ID from the selected 0x9C-byte message group. */
-const void *func_0207c278(const void *table, s32 group, s32 index)
+const void *RecordMessageTable_GetGroupMessage(const void *table, s32 group, s32 index)
 {
     const u8 *record = (const u8 *)table + group * 0x9c +
                        index * 4 + 0x1d0;
@@ -101,7 +101,7 @@ const void *func_0207c278(const void *table, s32 group, s32 index)
  * 16-byte record bank and IDs 2000..2999 use the secondary bank. Retail-valid
  * callers provide a present ID and slot 0..6; invalid IDs request a fatal halt.
  * The returned language payload is borrowed from the global resource cache. */
-const void *func_0207c320(const void *table_pointer, s32 identifier,
+const void *DescriptorMessageTable_GetMessage(const void *table_pointer, s32 identifier,
                           s32 slot)
 {
     const DescriptorMessageTable *table =
@@ -135,28 +135,28 @@ const void *func_0207c320(const void *table_pointer, s32 identifier,
 /* Return one message payload owned by a type-one descriptor. The descriptor
  * and its record are borrowed; invalid descriptor types preserve retail's
  * fatal assertion path and return null only if that boundary continues. */
-const void *func_0207c4cc(const void *descriptor_pointer, s32 slot)
+const void *RecordDescriptor_GetMessage(const void *descriptor_pointer, s32 slot)
 {
     const u8 *descriptor = (const u8 *)descriptor_pointer;
     const u8 *record = *(const u8 *const *)(descriptor + 4);
     u32 type = (*(const u32 *)(record + 0x0c) >> 8) & 0x0f;
 
     if (type == 1) {
-        return func_0207c320(data_021f5138, *(const u16 *)record, slot);
+        return DescriptorMessageTable_GetMessage(data_021f5138, *(const u16 *)record, slot);
     }
     OS_Halt();
     return 0;
 }
 
 /* Resolve a mode-owned message key through the global message-group table. */
-const void *func_0207b388(const void *mode_record, s32 key)
+const void *RecordMode_GetMessage(const void *mode_record, s32 key)
 {
-    return func_0207c278(data_021f5138,
+    return RecordMessageTable_GetGroupMessage(data_021f5138,
                          *(const s32 *)((const u8 *)mode_record + 4), key);
 }
 
 /* Return the borrowed 0x9C-byte global group selected by a mode record. */
-void *func_0207b44c(const void *mode_record)
+void *RecordMode_GetMessageGroup(const void *mode_record)
 {
     s32 group = *(const s32 *)((const u8 *)mode_record + 4);
 

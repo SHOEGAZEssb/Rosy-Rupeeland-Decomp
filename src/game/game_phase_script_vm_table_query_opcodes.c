@@ -9,7 +9,7 @@ extern void *data_021e9ac0;
 extern u8 data_021e9e00[];
 extern void func_02063820(void *table, u16 value);
 extern void *func_020636f0(void *table);
-extern void *func_020636ac(void *table, u32 value);
+extern void *InventoryManager_ContainsId(void *table, u32 value);
 extern void *func_0206f9d4(void *table, u32 value);
 #ifdef __cplusplus
 }
@@ -30,11 +30,11 @@ s32 func_0201616c(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a value, push whether func_020636ac finds it in data_021e9ac0, and return zero. */
+/* Pop a value, push whether InventoryManager_ContainsId finds it in data_021e9ac0, and return zero. */
 s32 func_020161ac(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_020636ac(data_021e9ac0, value) != 0);
+    GamePhaseScriptVm_SetResult(&self->base, InventoryManager_ContainsId(data_021e9ac0, value) != 0);
     return 0;
 }
 

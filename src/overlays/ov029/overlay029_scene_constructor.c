@@ -22,7 +22,7 @@ extern void GameWork_ClearFlag(void *, s32);
 extern u32 genrand_int32(void);
 extern void func_0201e14c(void *, s32);
 extern void *func_020716bc(void *, s32);
-extern void *func_0207c4cc(void *);
+extern void *RecordDescriptor_GetMessage(void *);
 extern void func_02091e28(void *);
 extern void func_02092798(void *);
 extern void func_02092814(void *, s32);
@@ -104,7 +104,7 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
     FIELD(void *, state, 0xa4) = external;
     if (FIELD(void *, external, 0x30) != 0)
         FIELD(u32, state, 0x4c) |= 2;
-    u16 *identity = (u16 *)func_0207c4cc(temporary);
+    u16 *identity = (u16 *)RecordDescriptor_GetMessage(temporary);
     if (identity[0] == 0xee0e)
         func_ov045_0220c128(external, identity[1]);
 

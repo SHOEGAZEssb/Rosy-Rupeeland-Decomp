@@ -23,9 +23,9 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern const void *func_020791e0(const void *, u16);
 extern const void *func_02079f3c(const void *, u16);
-extern const void *func_0207b388(void *, s32);
+extern const void *RecordMode_GetMessage(void *, s32);
 extern void GamePhaseCurrencyHud_Update(void *);
-extern void func_02092b70(void *, void *);
+extern void Presentation_BlendPalette16(void *, void *);
 extern void func_02092e9c(void *, const void *, s32);
 extern s32 func_02093360(void *, const void *);
 extern void func_020939d8(void *);
@@ -180,7 +180,7 @@ extern "C" void func_ov022_021ff0d0(void *scene)
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0xa0));
     if (FIELD(s32, scene, 0x370) < 0x10) {
         ++FIELD(s32, scene, 0x370);
-        func_02092b70(FIELD(void *, scene, 0x368),
+        Presentation_BlendPalette16(FIELD(void *, scene, 0x368),
                       FIELD(void *, scene, 0x36c));
         func_020b1ff0(data_021f5ee8, 0, 0x20);
         func_020b2058(data_021f5ee8, 0x100, 0x20);
@@ -210,7 +210,7 @@ extern "C" void func_ov022_021ff220(void *scene, s32 key)
     void *dialog = FIELD(void *, scene, 0x2cc);
     FIELD(s32, dialog, 0xd0) = 0xd;
     FIELD(s32, dialog, 0xd4) = 0;
-    const void *text = func_0207b388(FIELD(void *, data_021f5128, 0x1c), key);
+    const void *text = RecordMode_GetMessage(FIELD(void *, data_021f5128, 0x1c), key);
     func_02092e9c(dialog, text, 4);
     s32 result = func_02093360(dialog, data_021f5ed0);
     if (result & 0x200)

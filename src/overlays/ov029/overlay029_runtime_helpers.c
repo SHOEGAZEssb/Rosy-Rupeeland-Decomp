@@ -19,13 +19,13 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02072048(void *, s32, s32);
-extern void *func_0207c4cc(void *, s32);
+extern void *RecordDescriptor_GetMessage(void *, s32);
 extern void func_020926d8(void *);
 extern void func_020926f8(void *);
 extern void func_02092754(void *, s32);
 extern void *func_02092790(void *, s32);
 extern void func_02092850(s32);
-extern void func_02092b70(void *, void *, s32);
+extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void func_02092e9c(void *, void *, s32);
 extern s32 func_02093360(void *, const void *);
 extern void func_020939d8(void *);
@@ -95,7 +95,7 @@ extern "C" void func_ov029_021fd6fc(void *state)
     s32 progress = FIELD(s32, state, 0xdc);
     if (progress < 0x10) {
         FIELD(s32, state, 0xdc) = progress + 1;
-        func_02092b70(FIELD(void *, state, 0xd4),
+        Presentation_BlendPalette16(FIELD(void *, state, 0xd4),
                       FIELD(void *, state, 0xd8), progress + 1);
         func_020b1ff0(data_021f5ee8, 0, 0x20);
         if (FIELD(void *, state, 0xa8) == 0)
@@ -117,7 +117,7 @@ extern "C" void func_ov029_021fd7a8(void *state, s32 index)
     u8 temporary[16];
     func_ov029_021fce00(temporary, FIELD(void *, state, 0x68));
     func_020939d8(FIELD(void *, state, 0x9c));
-    void *entry = func_0207c4cc(temporary, index);
+    void *entry = RecordDescriptor_GetMessage(temporary, index);
     func_02092e9c(FIELD(void *, state, 0x9c), entry, 4);
     s32 flags = func_02093360(FIELD(void *, state, 0x9c), data_021f5ed0);
     if (flags & 0x200)

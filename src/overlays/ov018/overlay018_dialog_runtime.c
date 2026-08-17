@@ -19,7 +19,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern void *ActorCollection_FindActorByDescriptorValue(void *, void *);
-extern u32 func_02079160(void *, u16);
+extern u32 LanguageLookup_GetResourceSize(void *, u16);
 extern void *func_020791e0(void *, u16);
 extern void *func_02092cc0(void *, void *, void *);
 extern void func_02092e9c(void *, void *, s32);
@@ -83,7 +83,7 @@ extern "C" void func_ov018_021fd9f8(void *dialog, s32 valueA4, s32 valueA8,
  */
 extern "C" void func_ov018_021fda10(void *state, u16 messageId)
 {
-    u32 length = func_02079160(data_021f3ecc, messageId);
+    u32 length = LanguageLookup_GetResourceSize(data_021f3ecc, messageId);
     void *text = func_020791e0(data_021f3ecc, messageId);
     MIi_CpuCopy16(text, (u8 *)state + 0x1c8, length);
     func_02092e9c(FIELD(void *, state, 0x418),

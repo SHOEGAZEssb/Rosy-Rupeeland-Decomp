@@ -27,7 +27,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
-extern const void *func_0207b44c(void *);
+extern const void *RecordMode_GetMessageGroup(void *);
 extern s32 func_0207b464(void *);
 extern s32 func_0207b490(void *);
 extern s32 func_0207b4bc(void *);
@@ -174,7 +174,7 @@ extern "C" void func_ov023_021fd7a8(void *collection)
             GraphicsSpriteRenderer_SetFontResource(FIELD(void *, collection, 0),
                           FIELD(void *, collection, 0x20));
             u32 bank_index = FIELD(u32, FIELD(void *, record, 4), 0xc) & 0xff;
-            const void *label = func_0207b44c(
+            const void *label = RecordMode_GetMessageGroup(
                 (u8 *)((void **)data_021f5128)[bank_index] + 0x660);
             GraphicsSpriteRenderer_DrawText(FIELD(void *, collection, 0), label, 0x40,
                           gSystemState[0x5f] ? 0x1e : 0x20, 14, 8, 0);

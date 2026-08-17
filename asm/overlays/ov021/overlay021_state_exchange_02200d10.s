@@ -14,8 +14,8 @@
     .extern GamePhaseCurrencyHud_GetCurrency
     .extern GamePhaseCurrencyHud_AddCurrency
     .extern func_02062ca8
-    .extern func_0207ab48
-    .extern func_0207c5c8
+    .extern RecordCategory_PublishById
+    .extern RecordDescriptor_SetValue
     .extern func_02092c8c
     .extern func_020939d8
     .extern func_ov021_021fd1b8
@@ -135,7 +135,7 @@ L_02200df4:
 L_02200e6c:
     mov r1, r5
     ldr r5, [r0, #0x8]
-    bl func_0207c5c8
+    bl RecordDescriptor_SetValue
     ldr r0, [r4, #0x2bc]
     ldr r0, [r0, #0xc]
     str r0, [r4, #0x3dc]
@@ -144,7 +144,7 @@ L_02200e6c:
     ble L_02200e9c
     ldr r0, [r4, #0x2bc]
     mov r1, r5
-    bl func_0207c5c8
+    bl RecordDescriptor_SetValue
 L_02200e9c:
     mov r0, #0xa
     str r0, [r4, #0x4]
@@ -331,7 +331,7 @@ L_02201124:
     ldr r0, [r4, #0x54]
     ldrh r1, [r1, #0x0]
     ldr r0, [r2, r0, lsl #0x2]
-    bl func_0207ab48
+    bl RecordCategory_PublishById
     ldr r1, L_022011a0
     mov r0, r4
     ldmia r1, {r1, r2}

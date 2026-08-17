@@ -5,8 +5,8 @@
     .extern data_021f5128
     .extern data_ov021_02202ec8
     .extern DisplayBrightness_IsMainTransitionComplete
-    .extern func_0207ab48
-    .extern func_0207c4cc
+    .extern RecordCategory_PublishById
+    .extern RecordDescriptor_GetMessage
     .extern func_02092c8c
     .extern func_020939d8
     .extern func_ov021_021fd7c0
@@ -40,7 +40,7 @@ L_02200484:
     beq L_02200604
     ldr r0, [r4, #0x2bc]
     ldr r1, [r4, #0x3dc]
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0
@@ -132,7 +132,7 @@ L_022005d4:
     ldr r0, [r4, #0x54]
     ldrh r1, [r1, #0x0]
     ldr r0, [r2, r0, lsl #0x2]
-    bl func_0207ab48
+    bl RecordCategory_PublishById
     ldr r1, L_0220062c
     mov r0, r4
     ldmia r1, {r1, r2}

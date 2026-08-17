@@ -7,8 +7,8 @@
     .extern data_ov021_02202f38
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_0207ab48
-    .extern func_0207c4cc
+    .extern RecordCategory_PublishById
+    .extern RecordDescriptor_GetMessage
     .extern func_02092850
     .extern func_02092c8c
     .extern func_02093360
@@ -53,7 +53,7 @@ L_021ff884:
     beq L_021ff9e8
     ldr r0, [r4, #0x2bc]
     mov r1, #0x0
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0
@@ -93,7 +93,7 @@ L_021ff8e8:
     ldr r0, [r4, #0x54]
     ldrh r1, [r1, #0x0]
     ldr r0, [r2, r0, lsl #0x2]
-    bl func_0207ab48
+    bl RecordCategory_PublishById
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

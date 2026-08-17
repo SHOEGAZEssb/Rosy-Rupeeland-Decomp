@@ -31,7 +31,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
-extern u32 func_02079160(const void *, s32);
+extern u32 LanguageLookup_GetResourceSize(const void *, s32);
 extern const void *func_020791e0(const void *, s32);
 extern void func_02092798(void *);
 extern void func_02092814(void *, s32);
@@ -70,7 +70,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     FIELD(s32, FIELD(void *, state, 0x1c), 0x1c) = 0x1c;
     FIELD(void *, state, 0x20) = GraphicsSpriteGroupOwner_CreateGroup(font);
 
-    u32 length = func_02079160(data_021f3ecc, 0x2e5);
+    u32 length = LanguageLookup_GetResourceSize(data_021f3ecc, 0x2e5);
     MIi_CpuCopy16(func_020791e0(data_021f3ecc, 0x2e5),
                   (u8 *)state + 0x64, length);
     func_02071ee0((u8 *)state + 4, data_020f4e18[0], 0x3d, 0x3e, 0x3f);

@@ -25,9 +25,9 @@ extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
-extern void func_0207ab48(void *, u16);
-extern const void *func_0207c4cc(const void *, s32);
-extern void func_0207c5c8(void *, s32);
+extern void RecordCategory_PublishById(void *, u16);
+extern const void *RecordDescriptor_GetMessage(const void *, s32);
+extern void RecordDescriptor_SetValue(void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
@@ -167,18 +167,18 @@ extern "C" s32 func_ov021_022023f0(void *state)
                 if (FIELD(s32, state, 0x394) >= FIELD(s32, record, 0x10) * 2) {
                     func_ov045_0220bd90(FIELD(void *, state, 0x384));
                     FIELD(s32, state, 0x3e8) = 1;
-                    func_ov021_021ff1d0(state, func_0207c4cc(desc, 4));
+                    func_ov021_021ff1d0(state, RecordDescriptor_GetMessage(desc, 4));
                 } else {
                     func_ov045_0220bdf0(FIELD(void *, state, 0x384));
                     func_ov021_021ff380(state);
-                    func_ov021_021ff1d0(state, func_0207c4cc(desc, 3));
+                    func_ov021_021ff1d0(state, RecordDescriptor_GetMessage(desc, 3));
                 }
             } else if (action == 4) {
                 func_02092260(state, 0x6b);
                 func_ov045_0220bdb0(FIELD(void *, state, 0x384));
                 func_ov021_021ff3ac(state);
                 func_ov021_021ff1d0(
-                    state, func_0207c4cc(
+                    state, RecordDescriptor_GetMessage(
                         desc, FIELD(s32, state, 0x394) <=
                                       FIELD(s32, record, 0x10) / 2 ? 6 : 5));
             }
@@ -203,7 +203,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
                 FIELD(s32, state, 8) = 0;
             } else if (action == 3) {
                 FIELD(s32, state, 0x3d8) = 1;
-                func_0207c5c8(FIELD(void *, state, 0x2bc),
+                RecordDescriptor_SetValue(FIELD(void *, state, 0x2bc),
                               FIELD(s32, state, 0x394));
                 animate_currency(state, FIELD(s32, state, 0x394), 1);
                 FIELD(s32, state, 4) = 10;
@@ -264,7 +264,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
                 if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
                     FIELD(s32, state, 0x3d8) = 1;
                 u8 *record = FIELD(u8 *, FIELD(u8 *, state, 0x2bc), 4);
-                func_0207ab48(data_021f5128[FIELD(s32, state, 0x54)],
+                RecordCategory_PublishById(data_021f5128[FIELD(s32, state, 0x54)],
                               FIELD(u16, record, 0));
                 change_state(state, data_ov021_02202d58);
             }
@@ -275,7 +275,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
             func_ov045_0220bc34(FIELD(void *, state, 0x3ec)) == 0) {
             prepare_result_widget(state);
             func_ov021_021ff1d0(
-                state, func_0207c4cc(FIELD(void *, state, 0x2bc), 1));
+                state, RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 1));
             advance(state);
         }
         break;

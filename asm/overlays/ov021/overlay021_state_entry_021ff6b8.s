@@ -11,7 +11,7 @@
     .extern GamePhaseCurrencyHud_SetVisible
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_0207c4cc
+    .extern RecordDescriptor_GetMessage
     .extern func_02095940
     .extern func_ov021_021fd7c0
     .extern func_ov021_021feea4
@@ -64,7 +64,7 @@ L_021ff6f4:
     ldr r2, [r3, #0x4c]
     ldr r0, [r2, r0]
     str r0, [r4, #0x2bc]
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     ldrh r2, [r0, #0x0]
     ldr r1, L_021ff828
     cmp r2, r1

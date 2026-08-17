@@ -9,6 +9,6 @@ build build/reports/overlay379_02233c60.json: objdiff build/decomp/asm/overlays/
   base_object = build/decomp/delinks/asm/overlays/ov379/overlay379_02233c60.o
 build build/reports/overlay379_02233c60.txt: match_report build/reports/overlay379_02233c60.json | tools/report_objdiff.py
   report_json = build/reports/overlay379_02233c60.json
-  report_args = --section .text --function func_ov379_02233c60 --require-exact
+  report_args = --section .text --function Overlay379_RegisterActorDescriptors --require-exact
 
 build overlay379_matching: phony build/reports/overlay379_02233c60.txt

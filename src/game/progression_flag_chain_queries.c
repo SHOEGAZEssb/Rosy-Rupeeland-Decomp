@@ -75,14 +75,14 @@ void func_0208bb0c(void)
 }
 
 /* Set the paired progression flags consumed by the shared 0x02084B10 gate. */
-void func_0208c108(void)
+void ProgressionFlags_SetGate755And770(void)
 {
     GameWork_SetFlag(gGameWork, 0x755);
     GameWork_SetFlag(gGameWork, 0x770);
 }
 
 /* Set the paired progression flags used by the 0x02089020 callback chain. */
-void func_0208c138(void)
+void ProgressionFlags_SetGate756And794(void)
 {
     GameWork_SetFlag(gGameWork, 0x756);
     GameWork_SetFlag(gGameWork, 0x794);
@@ -248,26 +248,26 @@ s32 func_0208821c(void)
 }
 
 /* Extend the shared 0x84b58/0x849f4 prerequisites with flag 0x794. */
-s32 func_02089020(void)
+s32 ProgressionFlags_TestGate794(void)
 {
     return func_02084b58() && func_020849f4() &&
            GameWork_TestFlag(gGameWork, 0x794);
 }
 
 /* Extend the shared 0x87ddc prerequisite with flag 0x7b9. */
-s32 func_02089424(void)
+s32 ProgressionFlags_TestGate7B9(void)
 {
     return func_02087ddc() && GameWork_TestFlag(gGameWork, 0x7b9);
 }
 
 /* Extend the shared 0x84e10 prerequisite with flag 0x8b7. */
-s32 func_0208ad5c(void)
+s32 ProgressionFlags_TestGate8B7(void)
 {
     return func_02084e10() && GameWork_TestFlag(gGameWork, 0x8b7);
 }
 
 /* Extend the shared 0x8552c prerequisite with flag 0x8cd. */
-s32 func_0208b040(void)
+s32 ProgressionFlags_TestGate8CD(void)
 {
     return func_0208552c() && GameWork_TestFlag(gGameWork, 0x8cd);
 }
@@ -287,7 +287,7 @@ s32 func_02084b10(void)
 }
 
 /* Return the normalized state of progression flag 0x757. */
-s32 func_02084ba4(void)
+s32 ProgressionFlags_TestFlag757(void)
 {
     return GameWork_TestFlag(gGameWork, 0x757) != 0;
 }

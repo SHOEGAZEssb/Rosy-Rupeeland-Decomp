@@ -98,7 +98,7 @@ s32 Presentation_InterpolateLinear(s32 start, s32 end, s32 duration, s32 elapsed
 
 /* Blend the first sixteen BGR555 colors into the shared transient palette.
  * The resulting 32 bytes are cache-cleaned before the graphics queue flush. */
-void func_02092b70(const u16 *from, const u16 *to, s32 elapsed)
+void Presentation_BlendPalette16(const u16 *from, const u16 *to, s32 elapsed)
 {
     s32 index;
 

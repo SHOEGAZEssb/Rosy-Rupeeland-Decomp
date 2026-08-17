@@ -35,9 +35,9 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
-extern void func_0207ab48(void *, u16);
-extern const void *func_0207c4cc(const void *, s32);
-extern void func_0207c5c8(void *, s32);
+extern void RecordCategory_PublishById(void *, u16);
+extern const void *RecordDescriptor_GetMessage(const void *, s32);
+extern void RecordDescriptor_SetValue(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void func_020939d8(void *);
@@ -149,7 +149,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
                 func_02092c8c(1, -8);
                 func_020939d8(FIELD(void *, state, 0x388));
                 func_ov021_021ff1d0(
-                    state, func_0207c4cc(FIELD(void *, state, 0x2bc), 2));
+                    state, RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 2));
                 func_ov045_0220c028(FIELD(void *, state, 0x38c));
                 FIELD(s32, state, 4) = 20;
                 FIELD(s32, state, 8) = 0;
@@ -223,10 +223,10 @@ extern "C" s32 func_ov021_02200d10(void *state)
                 FIELD(s32, state, 8) = 0;
             } else {
                 s32 previous = FIELD(s32, desc, 8);
-                func_0207c5c8(desc, amount);
+                RecordDescriptor_SetValue(desc, amount);
                 FIELD(s32, state, 0x3dc) = FIELD(s32, desc, 0xc);
                 if (previous > amount)
-                    func_0207c5c8(desc, previous);
+                    RecordDescriptor_SetValue(desc, previous);
                 FIELD(s32, state, 4) = 10;
                 FIELD(s32, state, 8) = 0;
             }
@@ -306,7 +306,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
                     if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
                         FIELD(s32, state, 0x3d8) = 1;
                     u8 *record = FIELD(u8 *, FIELD(u8 *, state, 0x2bc), 4);
-                    func_0207ab48(data_021f5128[FIELD(s32, state, 0x54)],
+                    RecordCategory_PublishById(data_021f5128[FIELD(s32, state, 0x54)],
                                   FIELD(u16, record, 0));
                     change_state(state, data_ov021_02202e38);
                 }

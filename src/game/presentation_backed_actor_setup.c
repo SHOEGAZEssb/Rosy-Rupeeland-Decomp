@@ -33,7 +33,7 @@ extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, voi
  * and 2 at offset 0x24. Returns nothing; resource/presentation state changes,
  * but no hardware is accessed directly here.
  */
-void func_0204d794(void *actor, const void *descriptor)
+void PresentationBackedActor_InitPresentation(void *actor, const void *descriptor)
 {
     void *resource0 = func_02071e60(data_020f4e18,
                                     FIELD(u32, descriptor, 0x04));
@@ -56,7 +56,7 @@ void func_0204d794(void *actor, const void *descriptor)
  * then apply the 0x1EE selection to the presentation at 0x54. Returns nothing;
  * presentation playback state changes and no hardware is touched directly.
  */
-void func_0204d82c(void *actor, u16 value_1f2, u16 value_1f4,
+void PresentationBackedActor_SetPlaybackParameters(void *actor, u16 value_1f2, u16 value_1f4,
                    u8 selection, u8 value_1ef)
 {
     FIELD(u16, actor, 0x1f2) = value_1f2;

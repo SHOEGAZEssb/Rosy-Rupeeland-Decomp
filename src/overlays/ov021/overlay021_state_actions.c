@@ -23,8 +23,8 @@ extern void GameWork_SetFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern const void *func_0207c4cc(const void *, s32);
-extern void func_0207ab48(void *, u16);
+extern const void *RecordDescriptor_GetMessage(const void *, s32);
+extern void RecordCategory_PublishById(void *, u16);
 extern void func_02092260(void *, s32);
 extern void func_02092850(s32);
 extern void func_02092c8c(s32, s32);
@@ -79,7 +79,7 @@ extern "C" s32 func_ov021_02200360(void *state)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             const void *content =
-                func_0207c4cc(FIELD(void *, state, 0x2bc), 0);
+                RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 0);
             func_ov021_021ff1d0(state, content);
             func_ov045_0220c028(FIELD(void *, state, 0x38c));
             FIELD(s32, state, 4)++;
@@ -91,7 +91,7 @@ extern "C" s32 func_ov021_02200360(void *state)
             func_02092c8c(1, -16);
             const u8 *descriptor = FIELD(const u8 *, state, 0x2bc);
             const u8 *record = FIELD(const u8 *, descriptor, 4);
-            func_0207ab48(data_021f5128[FIELD(s32, state, 0x54)],
+            RecordCategory_PublishById(data_021f5128[FIELD(s32, state, 0x54)],
                           FIELD(u16, record, 0));
             func_ov021_021fd7c0(state, data_ov021_02202ed0[0],
                                 data_ov021_02202ed0[1]);
@@ -121,7 +121,7 @@ extern "C" s32 func_ov021_0220044c(void *state)
         /* Deliberate fall-through. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            const void *content = func_0207c4cc(
+            const void *content = RecordDescriptor_GetMessage(
                 FIELD(void *, state, 0x2bc),
                 FIELD(s32, state, 0x3dc));
             func_ov021_021ff1d0(state, content);
@@ -157,7 +157,7 @@ extern "C" s32 func_ov021_0220044c(void *state)
                         FIELD(s32, state, 0x3d8) = 1;
                 }
             }
-            func_0207ab48(data_021f5128[FIELD(s32, state, 0x54)],
+            RecordCategory_PublishById(data_021f5128[FIELD(s32, state, 0x54)],
                           FIELD(u16, record, 0));
             func_ov021_021fd7c0(state, data_ov021_02202ec8[0],
                                 data_ov021_02202ec8[1]);

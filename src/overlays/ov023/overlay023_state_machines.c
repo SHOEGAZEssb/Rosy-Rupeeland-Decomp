@@ -24,7 +24,7 @@ extern "C" {
 #endif
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern const void *func_0207c4cc(void *, s32);
+extern const void *RecordDescriptor_GetMessage(void *, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091bd0(void *, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
@@ -256,7 +256,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
                             func_02091bd0(transition, 1, 0x200, 0x180));
         if (func_02091cf0(transition) && DisplayBrightness_IsMainTransitionComplete()) {
             void *record = FIELD(void *, entry, 0);
-            const void *text = func_0207c4cc(
+            const void *text = RecordDescriptor_GetMessage(
                 record, FIELD(s32, record, 0xc));
             func_ov023_021fe804(scene, text, record);
             ADVANCE(scene);

@@ -9,7 +9,7 @@
 .extern data_ov029_021fed18
 .extern func_0201e14c
 .extern func_020716bc
-.extern func_0207c4cc
+.extern RecordDescriptor_GetMessage
 .extern func_02091e28
 .extern func_02092798
 .extern func_02092814
@@ -136,7 +136,7 @@ L_021fcf88:
     orrne r0, r0, #0x2
     strne r0, [r5, #0x4c]
     add r0, sp, #0x4
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     ldrh r2, [r0, #0x0]
     ldr r1, L_021fd154
     cmp r2, r1

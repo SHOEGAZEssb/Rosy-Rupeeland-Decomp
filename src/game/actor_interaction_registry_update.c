@@ -20,7 +20,7 @@ extern u32 data_02105804[16];
 } while (0)
 
 /* Update every live object in retail priority order; returns no value. */
-void func_0205557c(void)
+void ActorInteractionRegistry_UpdateAll(void)
 {
     s32 index;
 

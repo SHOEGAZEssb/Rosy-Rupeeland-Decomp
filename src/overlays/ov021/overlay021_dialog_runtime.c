@@ -12,7 +12,7 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern const void *func_0207b388(void *, s32);
+extern const void *RecordMode_GetMessage(void *, s32);
 extern void func_02092e9c(void *, const void *, s32);
 extern s32 func_02093360(void *, const void *);
 extern void func_020939d8(void *);
@@ -42,7 +42,7 @@ extern "C" void func_ov021_021ff0e0(void *state, s32 messageId)
     func_020939d8(dialog);
     FIELD(s32, dialog, 0xd0) = 0xd;
     FIELD(s32, dialog, 0xd4) = 0;
-    func_02092e9c(dialog, func_0207b388(modeRecord, messageId), 4);
+    func_02092e9c(dialog, RecordMode_GetMessage(modeRecord, messageId), 4);
     s32 result = func_02093360(dialog, data_021f5ed0);
     void *external = FIELD(void *, state, 0x38c);
     if ((result & 0x200) != 0) {

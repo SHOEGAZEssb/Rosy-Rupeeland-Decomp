@@ -13,15 +13,15 @@
 .extern func_0201ded4
 .extern func_02022cb0
 .extern GridEffectActorRegistry_BroadcastSlot1c
-.extern func_0205557c
+.extern ActorInteractionRegistry_UpdateAll
 .extern func_02058d40
 .extern func_02059278
 .extern gHeapContext
 .extern gLupyContext
 .extern gSoundContext
 
-.global func_ov064_02211374
-func_ov064_02211374:
+.global Overlay064Scene_UpdateMode2
+Overlay064Scene_UpdateMode2:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x8
     mov r6, r0
@@ -139,7 +139,7 @@ func_ov064_02211374:
     bgt .L_0221153c
 .L_02211530:
     bl GridEffectActorRegistry_BroadcastSlot1c
-    bl func_0205557c
+    bl ActorInteractionRegistry_UpdateAll
     mov r0, #0x0
 .L_0221153c:
     add sp, sp, #0x8
@@ -150,4 +150,4 @@ func_ov064_02211374:
 .L_02211550: .word data_ov064_02211ecc
 .L_02211554: .word gHeapContext
 .L_02211558: .word gDisplayBrightnessPair
-.size func_ov064_02211374, . - func_ov064_02211374
+.size Overlay064Scene_UpdateMode2, . - Overlay064Scene_UpdateMode2

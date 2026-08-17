@@ -5,16 +5,16 @@
 .extern func_02031758
 .extern func_02032a94
 .extern Type7Actor_GetStateCode
-.extern func_0204deec
-.extern func_0204df40
+.extern PresentationBackedActor_CanAcquireTarget
+.extern PresentationBackedActor_HandleInteraction
 .extern func_020adcac
 .text
-    .global func_0204de18
+    .global PresentationBackedActor_AcquireNearbyTarget
 
-func_0204de18: ; 0x0204de18
+PresentationBackedActor_AcquireNearbyTarget: ; 0x0204de18
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_0204deec
+    bl PresentationBackedActor_CanAcquireTarget
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}
     ldr r0, .L_0204ded0
@@ -34,7 +34,7 @@ func_0204de18: ; 0x0204de18
     ldr r1, [r1, #0x0]
     add r1, r1, #0x2000
     ldr r1, [r1, #0xea4]
-    bl func_0204df40
+    bl PresentationBackedActor_HandleInteraction
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204de78:
     ldr r0, .L_0204ded0
@@ -57,7 +57,7 @@ func_0204de18: ; 0x0204de18
     ldmgeia sp!, {r3, r4, r5, pc}
     mov r0, r4
     mov r1, r5
-    bl func_0204df40
+    bl PresentationBackedActor_HandleInteraction
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204ded0: .word data_021052fc
-.size func_0204de18, . - func_0204de18
+.size PresentationBackedActor_AcquireNearbyTarget, . - PresentationBackedActor_AcquireNearbyTarget

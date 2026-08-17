@@ -8,8 +8,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .text
-    .global func_0204d794
-func_0204d794:
+    .global PresentationBackedActor_InitPresentation
+PresentationBackedActor_InitPresentation:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x4
     ldr r2, .L_0204d828
@@ -48,10 +48,10 @@ func_0204d794:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 .L_0204d828: .word data_020f4e18
-.size func_0204d794, . - func_0204d794
+.size PresentationBackedActor_InitPresentation, . - PresentationBackedActor_InitPresentation
 
-    .global func_0204d82c
-func_0204d82c:
+    .global PresentationBackedActor_SetPlaybackParameters
+PresentationBackedActor_SetPlaybackParameters:
     stmdb sp!, {r3, lr}
     add ip, r0, #0x100
     strh r1, [ip, #0xf2]
@@ -63,5 +63,5 @@ func_0204d82c:
     ldr r0, [r0, #0x54]
     bl GraphicsSpriteState_SetAnimationIndex
     ldmia sp!, {r3, pc}
-.size func_0204d82c, . - func_0204d82c
+.size PresentationBackedActor_SetPlaybackParameters, . - PresentationBackedActor_SetPlaybackParameters
 

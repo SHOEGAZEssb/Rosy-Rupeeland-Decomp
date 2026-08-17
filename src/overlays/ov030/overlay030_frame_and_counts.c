@@ -15,7 +15,7 @@ extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_ov045_0220c18c(void *);
 extern void func_ov030_021fd304(void *);
 extern void func_ov045_0220b908(void *);
-extern void func_02092b70(void *, void *, s32);
+extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void func_020b2058(const void *, s32, s32);
 extern void func_020b1ff0(const void *, s32, s32);
 extern s32 func_0206492c(void *, s32);
@@ -49,7 +49,7 @@ extern "C" void func_ov030_021fe768(void *scene)
     if (step < 0x10) {
         ++step;
         FIELD(s32, scene, 0x334) = step;
-        func_02092b70(FIELD(void *, scene, 0x32c),
+        Presentation_BlendPalette16(FIELD(void *, scene, 0x32c),
                       FIELD(void *, scene, 0x330), step);
         func_020b2058(data_021f5ee8, 0, 0x20);
         func_020b1ff0(data_021f5ee8, 0, 0x20);

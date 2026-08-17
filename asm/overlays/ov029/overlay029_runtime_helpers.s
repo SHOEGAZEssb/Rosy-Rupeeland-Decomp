@@ -8,13 +8,13 @@
 .extern func_02070e0c
 .extern func_02072048
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_0207c4cc
+.extern RecordDescriptor_GetMessage
 .extern func_020926d8
 .extern func_020926f8
 .extern func_02092754
 .extern func_02092790
 .extern func_02092850
-.extern func_02092b70
+.extern Presentation_BlendPalette16
 .extern func_02092e9c
 .extern func_02093360
 .extern func_020939d8
@@ -117,7 +117,7 @@ L_021fd748:
     str r2, [r4, #0xdc]
     ldr r0, [r4, #0xd4]
     ldr r1, [r4, #0xd8]
-    bl func_02092b70
+    bl Presentation_BlendPalette16
     ldr r0, L_021fd7a4
     mov r1, #0x0
     mov r2, #0x20
@@ -146,7 +146,7 @@ func_ov029_021fd7a8:
     bl func_020939d8
     add r0, sp, #0x8
     mov r1, r4
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     ldr r0, [r5, #0x9c]
     mov r2, #0x4

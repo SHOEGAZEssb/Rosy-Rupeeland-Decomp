@@ -3,7 +3,7 @@
     .extern data_021f5128
     .extern data_021f5ed0
     .extern GraphicsSpriteRenderer_SetFontResource
-    .extern func_0207b388
+    .extern RecordMode_GetMessage
     .extern func_02092e9c
     .extern func_02093360
     .extern func_020939d8
@@ -31,7 +31,7 @@ func_ov021_021ff0e0:
     mov r0, r6
     mov r1, r4
     str r2, [r3, #0xd4]
-    bl func_0207b388
+    bl RecordMode_GetMessage
     mov r1, r0
     ldr r0, [r5, #0x388]
     mov r2, #0x4

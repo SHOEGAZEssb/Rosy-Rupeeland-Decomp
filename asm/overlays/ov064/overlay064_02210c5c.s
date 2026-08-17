@@ -17,19 +17,19 @@
 .extern func_02022cb0
 .extern Actor_RefreshTerrainHeight
 .extern GridEffectActorRegistry_BroadcastSlot1c
-.extern func_0205557c
+.extern ActorInteractionRegistry_UpdateAll
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
-.extern func_ov064_0221102c
-.extern func_ov064_02211098
-.extern func_ov064_022110d0
-.extern func_ov064_02211b4c
+.extern Overlay064VecFx32_Scale
+.extern Overlay064VecFx32_Add
+.extern Overlay064VecFx32Path_Init
+.extern Overlay064Scene_SpawnRewardEffect
 .extern gHeapContext
 .extern gLupyContext
 .extern gSoundContext
 
-.global func_ov064_02210c5c
-func_ov064_02210c5c:
+.global Overlay064Scene_UpdateMode0
+Overlay064Scene_UpdateMode0:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x68
     mov r6, r0
@@ -109,15 +109,15 @@ func_ov064_02210c5c:
     ldr r2, .L_02211014
     add r0, sp, #0x18
     add r1, r4, #0x18
-    bl func_ov064_0221102c
+    bl Overlay064VecFx32_Scale
     ldr r2, .L_02211018
     add r0, sp, #0x8
     add r1, sp, #0x58
-    bl func_ov064_0221102c
+    bl Overlay064VecFx32_Scale
     add r0, sp, #0x48
     add r1, sp, #0x18
     add r2, sp, #0x8
-    bl func_ov064_02211098
+    bl Overlay064VecFx32_Add
     add r0, sp, #0x8
     bl VecFx32Object_Destroy
     add r0, sp, #0x18
@@ -132,7 +132,7 @@ func_ov064_02210c5c:
     add r2, sp, #0x58
     add r3, sp, #0x48
     add r1, r4, #0x18
-    bl func_ov064_022110d0
+    bl Overlay064VecFx32Path_Init
 .L_02210de8:
     str r0, [r6, #0x84]
     ldr r0, .L_02211024
@@ -179,7 +179,7 @@ func_ov064_02210c5c:
     bl func_0201ded4
     add r1, sp, #0x58
     mov r0, r6
-    bl func_ov064_02211b4c
+    bl Overlay064Scene_SpawnRewardEffect
     add r1, sp, #0x38
     add r0, r4, #0x18
     bl VecFx32Object_Assign
@@ -268,12 +268,12 @@ func_ov064_02210c5c:
     movs r0, r0, lsr #0x10
     beq .L_02210ff8
     bl GridEffectActorRegistry_BroadcastSlot1c
-    bl func_0205557c
+    bl ActorInteractionRegistry_UpdateAll
     mov r0, #0x1
     b .L_02211004
 .L_02210ff8:
     bl GridEffectActorRegistry_BroadcastSlot1c
-    bl func_0205557c
+    bl ActorInteractionRegistry_UpdateAll
     mov r0, #0x0
 .L_02211004:
     add sp, sp, #0x68
@@ -286,4 +286,4 @@ func_ov064_02210c5c:
 .L_02211020: .word gHeapContext
 .L_02211024: .word gLupyContext
 .L_02211028: .word data_ov064_02211ecc
-.size func_ov064_02210c5c, . - func_ov064_02210c5c
+.size Overlay064Scene_UpdateMode0, . - Overlay064Scene_UpdateMode0

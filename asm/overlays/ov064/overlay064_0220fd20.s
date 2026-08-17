@@ -35,7 +35,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_0207a19c
+.extern ActorDirection_GetPresentationGroup
 .extern func_020ae1fc
 .extern gDebugFont
 .extern gGameWork
@@ -43,8 +43,8 @@
 .extern gLupyContext
 .extern gSoundContext
 
-.global func_ov064_0220fd20
-func_ov064_0220fd20:
+.global Overlay064Scene_Construct
+Overlay064Scene_Construct:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x2c
     mov r4, r0
@@ -163,7 +163,7 @@ func_ov064_0220fd20:
     add r0, r0, #0x3000
     ldr r0, [r0, #0xbc]
     ldr r0, [r0, #0x0]
-    bl func_0207a19c
+    bl ActorDirection_GetPresentationGroup
     ldrsb r1, [r4, #0x76]
     ldr r2, .L_02210614
     mov r1, r1, lsl #0x1
@@ -657,4 +657,4 @@ func_ov064_0220fd20:
 .L_0221064c: .word data_ov064_02211dd4
 .L_02210650: .word 0x400006c
 .L_02210654: .word data_020cdc1c
-.size func_ov064_0220fd20, . - func_ov064_0220fd20
+.size Overlay064Scene_Construct, . - Overlay064Scene_Construct

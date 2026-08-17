@@ -3,7 +3,7 @@
     .extern data_021f5128
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_MeasureText
-    .extern func_0207b44c
+    .extern RecordMode_GetMessageGroup
     .extern gDebugFont
 
 .global func_ov022_021fd2f4
@@ -13,7 +13,7 @@ func_ov022_021fd2f4:
     ldr r0, L_021fd368
     ldr r0, [r0, #0x0]
     ldr r0, [r0, #0x1c]
-    bl func_0207b44c
+    bl RecordMode_GetMessageGroup
     mov r4, r0
     ldr r0, L_021fd36c
     mov r2, #0x8

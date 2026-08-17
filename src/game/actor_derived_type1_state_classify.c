@@ -15,7 +15,7 @@ extern void *ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern void *OverlayManager_GetGlobal(void *value);
 extern void OverlayManager_LoadOverlay(void *value, s32 mode, u32 mask);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
-extern void *func_ov064_0220fd20(void *storage, s32 variant, u32 value);
+extern void *Overlay064Scene_Construct(void *storage, s32 variant, u32 value);
 extern void Type7AuxiliaryPresentation_Activate(void *object);
 extern void Sound_Play(void *soundContext, u32 sound, u32 variant);
 #ifdef __cplusplus
@@ -140,7 +140,7 @@ void ActorDerivedType1_ClassifyState(void *self)
                                     &gHeapContext);
             if (allocation != 0) {
                 s32 variant = GameWork_TestFlag(gGameWork, 0x12) != 0 ? 2 : 0;
-                func_ov064_0220fd20(allocation, variant, 0xc8);
+                Overlay064Scene_Construct(allocation, variant, 0xc8);
             }
             *(u32 *)(actor + 0x230) |= 0x80000;
             return;

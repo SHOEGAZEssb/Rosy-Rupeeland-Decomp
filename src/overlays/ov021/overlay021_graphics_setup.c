@@ -35,7 +35,7 @@ extern void *func_02092790(void *, s32);
 extern void func_02092850(s32);
 extern void func_020929f4(void *);
 extern void func_02092a34(void *, s32);
-extern void func_02092b70(void *, void *, s32);
+extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(const void *, s32, s32);
@@ -126,7 +126,7 @@ extern "C" void func_ov021_021fe098(void *state)
     FIELD(void *, state, 0x3f0) = buffer;
     FIELD(void *, state, 0x3f4) = buffer;
     FIELD(s32, state, 0x3f8) = 0x10;
-    func_02092b70(buffer, buffer, 0);
+    Presentation_BlendPalette16(buffer, buffer, 0);
 
     u8 resources[12];
     GraphicsResourceSet_Init(resources);

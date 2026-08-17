@@ -4,7 +4,7 @@
 .extern data_ov023_021ffb40
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_0207c4cc
+.extern RecordDescriptor_GetMessage
 .extern func_02091bac
 .extern func_02091bd0
 .extern func_02091c7c
@@ -78,7 +78,7 @@ L_021ff978:
     ldr r5, [r0, #0x0]
     ldr r1, [r5, #0xc]
     mov r0, r5
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     mov r2, r5

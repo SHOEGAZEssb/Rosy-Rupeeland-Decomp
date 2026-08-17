@@ -4,7 +4,7 @@
     .extern data_020f4e14
     .extern data_021f5128
     .extern data_ov021_02202f98
-    .extern func_0207abd8
+    .extern RecordSelection_HasAvailableEntry
     .extern func_02093d50
     .extern func_02093d7c
     .extern func_ov021_021fce18
@@ -24,7 +24,7 @@ func_ov021_021fe520:
 L_021fe53c:
     mov r0, r7
     mov r1, r8
-    bl func_0207abd8
+    bl RecordSelection_HasAvailableEntry
     cmp r0, #0x0
     beq L_021fe610
     cmp r8, #0x2

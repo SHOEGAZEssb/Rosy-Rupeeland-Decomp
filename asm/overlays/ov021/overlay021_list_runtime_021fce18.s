@@ -12,7 +12,7 @@
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02079160
+    .extern LanguageLookup_GetResourceSize
     .extern func_020791e0
     .extern func_02092798
     .extern func_02092814
@@ -51,7 +51,7 @@ func_ov021_021fce18:
     str r0, [r7, #0x20]
     ldr r0, L_021fd050
     ldr r1, L_021fd054
-    bl func_02079160
+    bl LanguageLookup_GetResourceSize
     mov r8, r0
     ldr r0, L_021fd050
     ldr r1, L_021fd054

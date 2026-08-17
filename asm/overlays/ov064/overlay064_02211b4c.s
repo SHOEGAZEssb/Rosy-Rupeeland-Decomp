@@ -9,14 +9,14 @@
 .extern VecFx32Object_Assign
 .extern GridEffectActor_Spawn
 .extern func_020627a0
-.extern func_0207a19c
+.extern ActorDirection_GetPresentationGroup
 .extern func_020bf1f8
-.extern func_ov064_02211098
+.extern Overlay064VecFx32_Add
 .extern gGameWork
 .extern genrand_int32
 
-.global func_ov064_02211b4c
-func_ov064_02211b4c:
+.global Overlay064Scene_SpawnRewardEffect
+Overlay064Scene_SpawnRewardEffect:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x54
     mov r9, r0
@@ -30,7 +30,7 @@ func_ov064_02211b4c:
     add r0, r0, #0x3000
     ldr r0, [r0, #0xbc]
     ldr r0, [r0, #0x0]
-    bl func_0207a19c
+    bl ActorDirection_GetPresentationGroup
     ldr r1, .L_02211cdc
     mov r4, r0
     ldr r0, [r1, #0x0]
@@ -98,7 +98,7 @@ func_ov064_02211b4c:
     add r0, sp, #0x20
     add r2, sp, #0x10
     mov r1, r8
-    bl func_ov064_02211098
+    bl Overlay064VecFx32_Add
     add r0, sp, #0x10
     bl VecFx32Object_Destroy
     add r0, sp, #0x20
@@ -126,4 +126,4 @@ func_ov064_02211b4c:
 .L_02211ce0: .word 0x411
 .L_02211ce4: .word data_020ed548
 .L_02211ce8: .word 0xffff
-.size func_ov064_02211b4c, . - func_ov064_02211b4c
+.size Overlay064Scene_SpawnRewardEffect, . - Overlay064Scene_SpawnRewardEffect

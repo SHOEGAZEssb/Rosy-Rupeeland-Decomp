@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
-.extern func_0204d82c
+.extern PresentationBackedActor_SetPlaybackParameters
 .text
 
     .global PresentationBackedActor_Spawn
@@ -73,7 +73,7 @@ PresentationBackedActor_Spawn: ; 0x0204e2ac
     and r3, r3, #0xff
     mov r4, r0
     str r5, [sp, #0x0]
-    bl func_0204d82c
+    bl PresentationBackedActor_SetPlaybackParameters
     ldr r1, [sp, #0xc0]
     add r0, r4, #0x38
     bl VecFx32Object_Assign

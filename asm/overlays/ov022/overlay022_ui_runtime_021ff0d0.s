@@ -4,7 +4,7 @@
 .extern data_021f5ee8
 .extern GamePhaseCurrencyHud_Update
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_02092b70
+.extern Presentation_BlendPalette16
 .extern func_02094574
 .extern PresentationList_UpdateAndDeleteCompleted
 .extern func_020958d8
@@ -77,7 +77,7 @@ L_021ff174:
     str r2, [r4, #0x370]
     ldr r0, [r4, #0x368]
     ldr r1, [r4, #0x36c]
-    bl func_02092b70
+    bl Presentation_BlendPalette16
     ldr r0, L_021ff1e0
     mov r1, #0x0
     mov r2, #0x20

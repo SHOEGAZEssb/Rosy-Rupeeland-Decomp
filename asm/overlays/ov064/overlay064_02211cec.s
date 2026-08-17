@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern func_020afce8
 
-.global func_ov064_02211cec
-func_ov064_02211cec:
+.global Overlay064Scene_UpdateDisplayEffect
+Overlay064Scene_UpdateDisplayEffect:
     stmdb sp!, {r4, lr}
     ldrb r1, [r0, #0x77]
     cmp r1, #0x3
@@ -65,4 +65,4 @@ func_ov064_02211cec:
     ldmia sp!, {r4, pc}
 .L_02211dc8: .word data_021052fc
 .L_02211dcc: .word 0x4001050
-.size func_ov064_02211cec, . - func_ov064_02211cec
+.size Overlay064Scene_UpdateDisplayEffect, . - Overlay064Scene_UpdateDisplayEffect

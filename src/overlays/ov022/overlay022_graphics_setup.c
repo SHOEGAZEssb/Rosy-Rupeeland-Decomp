@@ -30,7 +30,7 @@ extern void func_02092638(s32, s32, s32, s32);
 extern void func_02092688(s32, s32, s32, s32);
 extern void func_020929f4(void *);
 extern void func_02092a34(void *, s32);
-extern void func_02092b70(s32, s32, s32);
+extern void Presentation_BlendPalette16(s32, s32, s32);
 extern void func_020afd0c(void *, s32, s32, s32, ...);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(void *, s32, s32);
@@ -119,7 +119,7 @@ extern "C" void func_ov022_021fe498(void *scene)
     FIELD(s32, scene, 0x36c) = palette;
     FIELD(s32, scene, 0x368) = palette;
     FIELD(s32, scene, 0x370) = 0x10;
-    func_02092b70(FIELD(s32, scene, 0x368),
+    Presentation_BlendPalette16(FIELD(s32, scene, 0x368),
                   FIELD(s32, scene, 0x36c), 0);
     u32 resources[3];
     GraphicsResourceSet_Init(resources);

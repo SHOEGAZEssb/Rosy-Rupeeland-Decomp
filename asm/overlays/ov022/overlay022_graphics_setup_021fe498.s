@@ -4,7 +4,7 @@
     .extern func_020706c4
     .extern func_02070874
     .extern func_02070eac
-    .extern func_02092b70
+    .extern Presentation_BlendPalette16
     .extern func_020b1ff0
     .extern func_020b44e8
     .extern GraphicsResourceSet_Destroy
@@ -26,7 +26,7 @@ func_ov022_021fe498:
     ldr r0, [r4, #0x368]
     ldr r1, [r4, #0x36c]
     mov r2, #0x0
-    bl func_02092b70
+    bl Presentation_BlendPalette16
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     ldr r3, L_021fe53c

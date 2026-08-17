@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov064/overlay064_recovery.c.
 .extern VecFx32Object_Init
 
-.global func_ov064_0221102c
-func_ov064_0221102c:
+.global Overlay064VecFx32_Scale
+Overlay064VecFx32_Scale:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r1
     mov r6, r0
@@ -31,4 +31,4 @@ func_ov064_0221102c:
     orr r1, r1, r0, lsl #0x14
     str r1, [r6, #0xc]
     ldmia sp!, {r4, r5, r6, pc}
-.size func_ov064_0221102c, . - func_ov064_0221102c
+.size Overlay064VecFx32_Scale, . - Overlay064VecFx32_Scale

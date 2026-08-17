@@ -21,7 +21,7 @@ extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02064d90(void *, s32);
 extern void func_0206563c(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
-extern void func_02092b70(void *, void *, s32);
+extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void func_02094574(void *);
 extern void func_020958d8(void *);
 extern void func_020b1ff0(void *, s32, s32);
@@ -202,7 +202,7 @@ extern "C" void func_ov021_021feea4(void *state)
     if (timer < 0x10) {
         timer++;
         FIELD(s32, state, 0x3f8) = timer;
-        func_02092b70(FIELD(void *, state, 0x3f0),
+        Presentation_BlendPalette16(FIELD(void *, state, 0x3f0),
                       FIELD(void *, state, 0x3f4), timer);
         func_020b1ff0((void *)data_021f5ee8, 0, 0x20);
         if (FIELD(void *, state, 0x390) == 0 &&

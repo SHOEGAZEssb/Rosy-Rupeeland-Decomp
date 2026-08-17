@@ -36,7 +36,7 @@ void *func_02062e00(void *record)
 }
 
 /* Return the active-entry count for channel zero/one, or their sum for two. */
-s32 func_0207a578(void *record, s32 channel)
+s32 RecordSelection_GetChannelCount(void *record, s32 channel)
 {
     if (channel == 2)
         return FIELD(s32, record, 8) + FIELD(s32, record, 0xc);
@@ -44,7 +44,7 @@ s32 func_0207a578(void *record, s32 channel)
 }
 
 /* Find an eligible matching ID in the collection's secondary record table. */
-s32 func_020650c4(void *collection_pointer, u16 id)
+s32 InventoryRecordCollection_FindEligibleId(void *collection_pointer, u16 id)
 {
     InventoryRecordCollection *collection =
         (InventoryRecordCollection *)collection_pointer;
@@ -65,31 +65,31 @@ s32 func_020650c4(void *collection_pointer, u16 id)
 }
 
 /* Return whether either inventory collection contains the requested ID. */
-s32 func_020636ac(void *collection, u32 id)
+s32 InventoryManager_ContainsId(void *collection, u32 id)
 {
     u16 narrowed = (u16)id;
 
     if (func_0206492c(collection, narrowed) >= 0)
         return 1;
-    return func_020650c4((u8 *)collection + 0x34, narrowed) >= 0;
+    return InventoryRecordCollection_FindEligibleId((u8 *)collection + 0x34, narrowed) >= 0;
 }
 
 /* Test whether one of a record's selected channels contains an available
  * inventory entry or a nonzero embedded status nibble. */
-s32 func_0207abd8(void *record, s32 channel)
+s32 RecordSelection_HasAvailableEntry(void *record, s32 channel)
 {
     s32 index;
 
     if (channel == 0)
-        return func_0207a578(record, 0) > 0;
-    if (channel != 1 || func_0207a578(record, 1) <= 0)
+        return RecordSelection_GetChannelCount(record, 0) > 0;
+    if (channel != 1 || RecordSelection_GetChannelCount(record, 1) <= 0)
         return 0;
-    for (index = 0; index < func_0207a578(record, 1); ++index) {
+    for (index = 0; index < RecordSelection_GetChannelCount(record, 1); ++index) {
         u8 *entry = FIELD(u8 *, record, 0x1c) + index * 0x10;
         u8 *metadata = FIELD(u8 *, entry, 4);
 
         if ((FIELD(u32, metadata, 0xc) & 0xf00) != 0 ||
-            func_020636ac(FIELD(void *, data_021e9ac0, 0),
+            InventoryManager_ContainsId(FIELD(void *, data_021e9ac0, 0),
                           FIELD(u32, metadata, 0x10)) != 0)
             return 1;
     }

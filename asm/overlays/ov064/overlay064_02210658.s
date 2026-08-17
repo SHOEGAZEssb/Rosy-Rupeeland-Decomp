@@ -20,8 +20,8 @@
 .extern gGameWork
 .extern gSoundContext
 
-.global func_ov064_02210658
-func_ov064_02210658:
+.global Overlay064Scene_Destroy
+Overlay064Scene_Destroy:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     ldr r1, .L_02210884
@@ -180,4 +180,4 @@ func_ov064_02210658:
 .L_02210890: .word data_021052fc
 .L_02210894: .word gSoundContext
 .L_02210898: .word gGameWork
-.size func_ov064_02210658, . - func_ov064_02210658
+.size Overlay064Scene_Destroy, . - Overlay064Scene_Destroy

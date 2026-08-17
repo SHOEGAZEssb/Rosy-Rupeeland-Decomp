@@ -9,7 +9,7 @@ build build/reports/overlay108_0221d6c0.json: objdiff build/decomp/asm/overlays/
   base_object = build/decomp/delinks/asm/overlays/ov108/overlay108_0221d6c0.o
 build build/reports/overlay108_0221d6c0.txt: match_report build/reports/overlay108_0221d6c0.json | tools/report_objdiff.py
   report_json = build/reports/overlay108_0221d6c0.json
-  report_args = --section .text --function func_ov108_0221d6c0 --require-exact
+  report_args = --section .text --function Overlay108_RegisterActorDescriptors --require-exact
 
 build overlay108_matching: phony build/reports/overlay108_0221d6c0.txt
 

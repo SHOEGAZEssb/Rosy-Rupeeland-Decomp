@@ -5,7 +5,7 @@
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
 .extern GraphicsSpriteCanvas_FillRect
-.extern func_0207b44c
+.extern RecordMode_GetMessageGroup
 .extern gSystemState
 
 
@@ -58,7 +58,7 @@ L_021fd7fc:
     ldr r0, [r0, #0xc]
     and r0, r0, #0xff
     ldr r0, [r1, r0, lsl #0x2]
-    bl func_0207b44c
+    bl RecordMode_GetMessageGroup
     str r11, [sp, #0x0]
     mov r1, #0x8
     str r1, [sp, #0x4]

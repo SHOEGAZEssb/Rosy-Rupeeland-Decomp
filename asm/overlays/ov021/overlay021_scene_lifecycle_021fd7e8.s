@@ -16,7 +16,7 @@
     .extern func_02071ea4
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02079160
+    .extern LanguageLookup_GetResourceSize
     .extern func_020791e0
     .extern func_02091e28
     .extern func_02092798
@@ -120,7 +120,7 @@ L_021fd8c4:
     bl func_02064be0
     ldr r0, L_021fdb48
     ldr r1, L_021fdb4c
-    bl func_02079160
+    bl LanguageLookup_GetResourceSize
     mov r4, r0
     ldr r0, L_021fdb48
     ldr r1, L_021fdb4c
@@ -130,7 +130,7 @@ L_021fd8c4:
     bl MIi_CpuCopy16
     ldr r0, L_021fdb48
     ldr r1, L_021fdb50
-    bl func_02079160
+    bl LanguageLookup_GetResourceSize
     mov r4, r0
     ldr r0, L_021fdb48
     ldr r1, L_021fdb50

@@ -5,7 +5,7 @@
     .extern data_ov021_02202e90
     .extern GamePhaseCurrencyHud_GetCurrency
     .extern GraphicsSpriteText_FormatDecimal
-    .extern func_0207c4cc
+    .extern RecordDescriptor_GetMessage
     .extern func_02092260
     .extern func_02092c8c
     .extern func_020939d8
@@ -186,7 +186,7 @@ L_02200bfc:
     bl func_020939d8
     ldr r0, [r4, #0x2bc]
     mov r1, #0x2
-    bl func_0207c4cc
+    bl RecordDescriptor_GetMessage
     mov r1, r0
     mov r0, r4
     bl func_ov021_021ff1d0

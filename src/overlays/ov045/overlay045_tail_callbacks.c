@@ -18,7 +18,7 @@ extern "C" u8 data_ov045_0220d570[];
 extern "C" void func_020597fc(void *context, s32 handle);
 extern "C" s32 GameWork_TestFlag(void *work, s32 flag);
 extern "C" s32 func_02079f3c(void *table, s32 id);
-extern "C" void *func_0207b44c(void *entry);
+extern "C" void *RecordMode_GetMessageGroup(void *entry);
 extern "C" s32 GraphicsSpriteRenderer_MeasureText(void *font, void *entry, s32 mode, s32 spacing);
 extern "C" void GraphicsSpriteRenderer_DrawText(void *font, void *entry, s32 x, s32 y,
                                s32 color, s32 mode, s32 spacing);
@@ -34,7 +34,7 @@ extern "C" void func_ov045_0220d2d8(s32 handle)
 
 /*
  * Draw the selector's preview centered around X=0x54 at Y=0xAC. Most selectors
- * resolve data_021f5128[selector] through func_0207b44c. Selector 9, and
+ * resolve data_021f5128[selector] through RecordMode_GetMessageGroup. Selector 9, and
  * selector 8/subtype 0x2C, use flagged lookup ID 0x1B6 plus two when progress
  * flag 0x3A5 is set. Other selector-8 subtypes use data_020ed6e0 records with
  * stride 0x68. Measure with mode 8/spacing -2, halve width toward zero, then
@@ -51,7 +51,7 @@ extern "C" void func_ov045_0220d2f8(u32 selector, u32 subtype)
         else
             entry = data_020ed6e0 + subtype * 0x68;
     } else {
-        entry = func_0207b44c(data_021f5128[selector]);
+        entry = RecordMode_GetMessageGroup(data_021f5128[selector]);
     }
     s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, entry, 8, -2);
     width = (width + (s32)((u32)width >> 31)) >> 1;

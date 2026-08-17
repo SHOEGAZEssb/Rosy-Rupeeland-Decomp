@@ -19,8 +19,8 @@
 .extern func_020a25c8
 .text
 
-    .global func_0204df40
-func_0204df40: ; 0x0204df40
+    .global PresentationBackedActor_HandleInteraction
+PresentationBackedActor_HandleInteraction: ; 0x0204df40
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0xc
     mov r6, r0
@@ -251,4 +251,4 @@ func_0204df40: ; 0x0204df40
 .L_0204e2a0: .word gHeapContext
 .L_0204e2a4: .word gGameWork
 .L_0204e2a8: .word gSoundContext
-.size func_0204df40, . - func_0204df40
+.size PresentationBackedActor_HandleInteraction, . - PresentationBackedActor_HandleInteraction

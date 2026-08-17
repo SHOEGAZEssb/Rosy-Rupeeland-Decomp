@@ -15,7 +15,7 @@ extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
-extern void func_0204d82c(void *actor, u16 value_1f2, u16 value_1f4,
+extern void PresentationBackedActor_SetPlaybackParameters(void *actor, u16 value_1f2, u16 value_1f4,
                           u8 selection, u8 value_1ef);
 #ifdef __cplusplus
 }
@@ -28,7 +28,7 @@ extern void func_0204d82c(void *actor, u16 value_1f2, u16 value_1f4,
  * a vector copied to actor+0x38, four descriptor arguments, a final playback
  * byte, and a flag selecting descriptor bit 0x200 for types other than 18.
  * Build a 100-byte descriptor with position components converted from fx32,
- * allocate the actor, configure it through func_0204d82c, set flags 0x1F0100,
+ * allocate the actor, configure it through PresentationBackedActor_SetPlaybackParameters, set flags 0x1F0100,
  * and install -16/+16 bounds at 0x60..0x66. Return the new actor. Allocation
  * and engine manager state change; no hardware registers are touched directly.
  */
@@ -52,7 +52,7 @@ void *PresentationBackedActor_Spawn(s32 type, u32 value_1f4, u32 value_1f2,
 
     void *manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
-    func_0204d82c(actor, value_1f2, value_1f4,
+    PresentationBackedActor_SetPlaybackParameters(actor, value_1f2, value_1f4,
                   (u8)selection, (u8)value_1ef);
     VecFx32Object_Assign((u8 *)actor + 0x38, vector_38);
     FIELD(u32, actor, 0x10) |= 0x1f0100;

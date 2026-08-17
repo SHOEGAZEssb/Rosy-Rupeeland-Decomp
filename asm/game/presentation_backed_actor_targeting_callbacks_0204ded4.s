@@ -5,25 +5,25 @@
 .extern func_02031758
 .extern func_02032a94
 .text
-    .global func_0204ded4
+    .global PresentationBackedActor_ForwardPairInteraction
 
-func_0204ded4: ; 0x0204ded4
+PresentationBackedActor_ForwardPairInteraction: ; 0x0204ded4
     ldr ip, .L_0204dedc
     bx ip
 .L_0204dedc: .word func_02032a94
-.size func_0204ded4, . - func_0204ded4
+.size PresentationBackedActor_ForwardPairInteraction, . - PresentationBackedActor_ForwardPairInteraction
 
-    .global func_0204dee0
+    .global PresentationBackedActor_BuildTargetTransform
 
-func_0204dee0: ; 0x0204dee0
+PresentationBackedActor_BuildTargetTransform: ; 0x0204dee0
     ldr ip, .L_0204dee8
     bx ip
 .L_0204dee8: .word func_02031758
-.size func_0204dee0, . - func_0204dee0
+.size PresentationBackedActor_BuildTargetTransform, . - PresentationBackedActor_BuildTargetTransform
 
-    .global func_0204deec
+    .global PresentationBackedActor_CanAcquireTarget
 
-func_0204deec: ; 0x0204deec
+PresentationBackedActor_CanAcquireTarget: ; 0x0204deec
     stmdb sp!, {r3, lr}
     add r0, r0, #0x100
     ldrh r0, [r0, #0xec]
@@ -46,5 +46,5 @@ func_0204deec: ; 0x0204deec
     ldmia sp!, {r3, pc}
 .L_0204df38: .word gActorRuntimeCollection
 .L_0204df3c: .word data_021052fc
-.size func_0204deec, . - func_0204deec
+.size PresentationBackedActor_CanAcquireTarget, . - PresentationBackedActor_CanAcquireTarget
 

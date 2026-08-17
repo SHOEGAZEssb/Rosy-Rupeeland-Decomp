@@ -4,7 +4,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern func_0207ac84
 .extern func_0207b334
-.extern func_0207c5c8
+.extern RecordDescriptor_SetValue
 .global func_02017818
 func_02017818:
     stmdb sp!, {r4, r5, r6, lr}
@@ -28,7 +28,7 @@ func_02017818:
     cmp r0, #0
     beq L_02017870
     mov r1, r5
-    bl func_0207c5c8
+    bl RecordDescriptor_SetValue
 L_02017870:
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}

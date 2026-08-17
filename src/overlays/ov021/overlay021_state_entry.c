@@ -28,8 +28,8 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern const void *func_0207c4cc(const void *, s32);
-extern void func_0207ab48(void *, u16);
+extern const void *RecordDescriptor_GetMessage(const void *, s32);
+extern void RecordCategory_PublishById(void *, u16);
 extern void func_02092260(void *, s32);
 extern void func_02092850(s32);
 extern void func_02092c8c(s32, s32);
@@ -93,7 +93,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
             const void *descriptor =
                 FIELD(const void *, FIELD(u8 *, list, 0x4c) + index * 12, 0);
             FIELD(const void *, state, 0x2bc) = descriptor;
-            const u16 *record = (const u16 *)func_0207c4cc(descriptor, 0);
+            const u16 *record = (const u16 *)RecordDescriptor_GetMessage(descriptor, 0);
             if (record[0] == 0xee0e)
                 func_ov045_0220c128(FIELD(void *, state, 0x38c), record[1]);
             func_ov021_021fd7c0(state, data_ov021_02202e50[0],
@@ -138,7 +138,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             const void *content =
-                func_0207c4cc(FIELD(void *, state, 0x2bc), 0);
+                RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 0);
             func_ov021_021ff1d0(state, content);
             s32 result = func_02093360(FIELD(void *, state, 0x388),
                                        data_021f5ed0);
@@ -157,7 +157,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
             const u8 *record = FIELD(const u8 *, descriptor, 4);
             void *modeRecord =
                 data_021f5128[FIELD(s32, state, 0x54)];
-            func_0207ab48(modeRecord, FIELD(u16, record, 0));
+            RecordCategory_PublishById(modeRecord, FIELD(u16, record, 0));
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }

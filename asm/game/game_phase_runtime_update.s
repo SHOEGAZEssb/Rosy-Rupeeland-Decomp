@@ -119,7 +119,7 @@ L_02007508:
     beq L_02007540
     mov r1, #0x3
     mov r2, #0x0
-    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, func_ov064_0220fd20, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
+    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
 L_02007540:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
@@ -285,7 +285,7 @@ L_0200776c:
     beq L_020077a4
     mov r1, #0x3
     mov r2, #0x0
-    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, func_ov064_0220fd20, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
+    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
 L_020077a4:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
