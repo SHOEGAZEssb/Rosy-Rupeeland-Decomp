@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
 /*
  * Recovered amount-splitting spawner for presentation-backed actors. It maps
@@ -13,8 +14,6 @@ extern u16 gPresentationBackedActorRuntimeState[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
-extern void VecFx32Object_Destroy(void *vector);
 extern void *PresentationBackedActor_Spawn(s32 type, u32 value_1f4, u32 value_1f2,
                            const void *position, const void *vector_38,
                            u32 descriptor_arg0, u32 descriptor_arg1,
@@ -26,18 +25,12 @@ extern u32 genrand_int32(void);
 }
 #endif
 
-typedef struct FxVector3 {
-    s32 x;
-    s32 y;
-    s32 z;
-} FxVector3;
-
 /*
  * Inputs are the spawned actors' playback value, a signed amount, their
  * position source, and an opaque descriptor argument. Choose an initial tier
  * from one third of the amount, repeatedly subtract the largest applicable
  * threshold in data_020c3e78, and spawn no more than five type-10 actors. The
- * Y/Z velocity components come from data_020c9670 at the global angle's upper
+ * X/Y velocity components come from data_020c9670 at the global angle's upper
  * bits and are scaled by 3/2. After each spawn, advance that angle by a random
  * remainder modulo 0x3000 plus 0x1800. Returns nothing; actor-manager and RNG
  * state change, while hardware is not accessed directly.
@@ -45,11 +38,12 @@ typedef struct FxVector3 {
 void PresentationBackedActor_SpawnSplitAmount(u32 playback_value, s32 amount,
                    const void *position, u32 descriptor_arg)
 {
-    FxVector3 velocity;
+    VecFx32Object velocity;
     s32 third = func_020adae4(amount, 3);
     s32 tier = 0;
     s32 spawned;
 
+    (void)descriptor_arg;
     VecFx32Object_InitComponents(&velocity, 0, 0, 0x2000);
     while (tier < 7 && data_020c3e78[tier] <= third)
         tier++;
@@ -63,9 +57,9 @@ void PresentationBackedActor_SpawnSplitAmount(u32 playback_value, s32 amount,
             if (denomination <= amount) {
                 s32 angle_index = ((s16)gPresentationBackedActorRuntimeState[0] >> 4);
                 amount = (s16)(amount - denomination);
-                velocity.y = func_020adae4(
+                velocity.value.x = func_020adae4(
                     data_020c9670[angle_index * 2 + 1] * 3, 2);
-                velocity.z = func_020adae4(
+                velocity.value.y = func_020adae4(
                     data_020c9670[angle_index * 2] * 3, 2);
                 PresentationBackedActor_Spawn(10, playback_value, denomination, position,
                               &velocity, 0x300d, 0x300e, 0x300f,
@@ -78,4 +72,3 @@ void PresentationBackedActor_SpawnSplitAmount(u32 playback_value, s32 amount,
     }
     VecFx32Object_Destroy(&velocity);
 }
-

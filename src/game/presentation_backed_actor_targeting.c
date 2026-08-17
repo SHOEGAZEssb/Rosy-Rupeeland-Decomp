@@ -13,8 +13,8 @@ extern const u8 gActorRuntimeCollection[];
 extern "C" {
 #endif
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
-extern void func_02031758(void);
-extern void func_02032a94(void);
+extern void func_02031758(void *output, void *actor, const void *transform);
+extern void func_02032a94(void *actor, void *other, s32 mode);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 func_0204deec(void *actor);
 extern void func_0204df40(void *actor, void *target);
@@ -59,18 +59,18 @@ void func_0204de18(void *actor)
  * Forward all register inputs to func_02032a94 and propagate its return value.
  * This recovered tail-call thunk has only the callee's engine-side effects.
  */
-void func_0204ded4(void)
+void func_0204ded4(void *actor, void *other, s32 mode)
 {
-    func_02032a94();
+    func_02032a94(actor, other, mode);
 }
 
 /*
  * Forward all register inputs to func_02031758 and propagate its return value.
  * This recovered tail-call thunk has only the callee's engine-side effects.
  */
-void func_0204dee0(void)
+void func_0204dee0(void *output, void *actor, const void *transform)
 {
-    func_02031758();
+    func_02031758(output, actor, transform);
 }
 
 /*

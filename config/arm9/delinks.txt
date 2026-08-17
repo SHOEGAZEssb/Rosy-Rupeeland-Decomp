@@ -7090,6 +7090,12 @@ src/game/sound_context_stream_facade.c:
 src/game/actor_interaction_candidate_runtime.c:
     categories: Game code
     .text       start:0x020534cc end:0x020536b0
+src/game/actor_interaction_registry_update.c:
+    categories: Game code
+    .text       start:0x0205557c end:0x02055688
+src/game/actor_direction_category.c:
+    categories: Game code
+    .text       start:0x0207a19c end:0x0207a268
 src/game/actor_rectangle_geometry.c:
     categories: Game code
     .text       start:0x02056f00 end:0x02057084

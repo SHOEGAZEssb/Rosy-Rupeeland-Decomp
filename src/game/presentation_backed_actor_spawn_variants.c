@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
 /*
  * Recovered convenience spawners for presentation-backed actors. One chooses
@@ -13,8 +14,6 @@ extern u16 gPresentationBackedActorRuntimeState[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
-extern void VecFx32Object_Destroy(void *vector);
 extern void *PresentationBackedActor_Spawn(s32 type, u32 value_1f4, u32 value_1f2,
                            const void *position, const void *vector_38,
                            u32 descriptor_arg0, u32 descriptor_arg1,
@@ -25,12 +24,6 @@ extern u32 genrand_int32(void);
 #ifdef __cplusplus
 }
 #endif
-
-typedef struct FxVector3 {
-    s32 x;
-    s32 y;
-    s32 z;
-} FxVector3;
 
 /*
  * Inputs are a playback value, an amount, a position, and a vector source.
@@ -64,23 +57,24 @@ void *PresentationBackedActor_SpawnAmountVariant(u32 playback_value, s32 amount,
 /*
  * Inputs are a playback value, an amount, and a position. Initialize a local
  * vector, take one third of the amount as a signed 16-bit value, and spawn
- * three type-19 actors using resources 0x3010, 0x300E, and 0x3011. Each vector
- * uses the global angle's table entry scaled by 3/2; advance the angle by a
+ * three type-19 actors using resources 0x3010, 0x300E, and 0x3011. Each
+ * vector's X/Y payload uses the global angle's table entry scaled by 3/2;
+ * advance the angle by a
  * random remainder modulo 0x3000 plus 0x3000 after every spawn. Returns nothing;
  * actor-manager and RNG state change and hardware is not accessed directly.
  */
 void PresentationBackedActor_SpawnTripleVariant(u32 playback_value, s32 amount, const void *position)
 {
-    FxVector3 velocity;
+    VecFx32Object velocity;
     s16 divided_amount = (s16)func_020adae4(amount, 3);
     s32 i;
 
     VecFx32Object_InitComponents(&velocity, 0, 0, 0x2000);
     for (i = 0; i < 3; i++) {
         s32 angle_index = (s16)gPresentationBackedActorRuntimeState[0] >> 4;
-        velocity.y = func_020adae4(
+        velocity.value.x = func_020adae4(
             data_020c9670[angle_index * 2 + 1] * 3, 2);
-        velocity.z = func_020adae4(
+        velocity.value.y = func_020adae4(
             data_020c9670[angle_index * 2] * 3, 2);
         PresentationBackedActor_Spawn(19, playback_value, divided_amount, position,
                       &velocity, 0x3010, 0x300e, 0x3011, 0, 7, 1);
@@ -89,4 +83,3 @@ void PresentationBackedActor_SpawnTripleVariant(u32 playback_value, s32 amount, 
     }
     VecFx32Object_Destroy(&velocity);
 }
-

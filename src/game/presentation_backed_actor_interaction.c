@@ -81,7 +81,7 @@ s32 func_0204df40(void *actor, void *trigger)
         }
 
         GamePhaseCurrencyHud_AddCurrency(gLupyContext, FIELD(s16, actor, 0x1f2), 0);
-        void *effect = Heap_Alloc(0x44, gPresentationBackedActorCurrencyEffectAllocationTag, 4, gHeapContext);
+        void *effect = Heap_Alloc(0x44, gPresentationBackedActorCurrencyEffectAllocationTag, 4, &gHeapContext);
         if (effect != 0) {
             void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
             effect = func_02022cb0(effect, point, actor,
@@ -117,4 +117,3 @@ s32 func_0204df40(void *actor, void *trigger)
         Sound_Play(gSoundContext, (u16)sound >> 7, (u16)sound & 0x7f);
     return FIELD(s16, actor, 0x1f2);
 }
-
