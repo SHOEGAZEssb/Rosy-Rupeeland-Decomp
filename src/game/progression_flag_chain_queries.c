@@ -74,6 +74,13 @@ void func_0208bb0c(void)
     GameWork_SetFlag(gGameWork, 0x1f0);
 }
 
+/* Set the paired progression flags consumed by the shared 0x02084B10 gate. */
+void func_0208c108(void)
+{
+    GameWork_SetFlag(gGameWork, 0x755);
+    GameWork_SetFlag(gGameWork, 0x770);
+}
+
 /* Require both retail flags used by the bedroom-to-field availability gate. */
 s32 func_02083d84(void)
 {
@@ -245,6 +252,12 @@ s32 func_02084b10(void)
 {
     static const u16 flags[] = {0x755, 0x770};
     return AllFlags(flags, 2);
+}
+
+/* Return the normalized state of progression flag 0x757. */
+s32 func_02084ba4(void)
+{
+    return GameWork_TestFlag(gGameWork, 0x757) != 0;
 }
 
 /* Extend the 0x840dc branch through its shared gate and five flags. */
