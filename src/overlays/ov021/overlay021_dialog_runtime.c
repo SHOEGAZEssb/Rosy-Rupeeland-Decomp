@@ -54,7 +54,8 @@ extern "C" void func_ov021_021ff0e0(void *state, s32 messageId)
     } else {
         func_ov045_0220c028(external);
     }
-    GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x58);
+    GraphicsSpriteRenderer_SetFontResource(
+        gDebugFont, FIELD(void *, state, 0x58));
     func_ov045_0220d2f8(FIELD(s32, state, 0x54), 0);
 }
 
@@ -78,7 +79,8 @@ extern "C" void func_ov021_021ff1d0(void *state, const void *content)
         func_ov045_0220c128(external, FIELD(s32, dialog, 0xe8));
     else
         func_ov045_0220c028(external);
-    GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x58);
+    GraphicsSpriteRenderer_SetFontResource(
+        gDebugFont, FIELD(void *, state, 0x58));
     func_ov045_0220d2f8(FIELD(s32, state, 0x54), 0);
 }
 

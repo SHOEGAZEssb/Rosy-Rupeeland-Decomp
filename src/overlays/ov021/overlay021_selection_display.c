@@ -70,7 +70,8 @@ extern "C" void func_ov021_021ff3d8(void *state)
 extern "C" void func_ov021_021ff404(void *state, const void *descriptor)
 {
     void *font = data_020f4e14;
-    GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x64);
+    GraphicsSpriteRenderer_SetFontResource(
+        font, FIELD(void *, state, 0x64));
     if (descriptor != 0) {
         const u8 *record = FIELD(const u8 *, descriptor, 4);
         u32 category = (FIELD(u32, record, 0xc) >> 16) & 0xf;
@@ -113,7 +114,8 @@ extern "C" void func_ov021_021ff504(void *state, const void *item)
         return;
     }
     FIELD(u16, sprite, 0x24) &= (u16)~4;
-    GraphicsSpriteRenderer_SetFontResource(font, (u8 *)state + 0x64);
+    GraphicsSpriteRenderer_SetFontResource(
+        font, FIELD(void *, state, 0x64));
     GraphicsSpriteRenderer_DrawText(font, func_020628c8((void *)item), 0x10, 6,
                   0xe, 4, 0);
 }

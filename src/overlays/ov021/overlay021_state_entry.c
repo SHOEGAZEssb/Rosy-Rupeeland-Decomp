@@ -101,7 +101,8 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
         } else {
             if (GameWork_TestFlag(gGameWork, 0x3b2) != 0) {
                 GameWork_ClearFlag(gGameWork, 0x3b2);
-                GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x58);
+                GraphicsSpriteRenderer_SetFontResource(
+                    gDebugFont, FIELD(void *, state, 0x58));
                 func_ov045_0220d2f8(FIELD(s32, state, 0x54), 0);
             } else {
                 func_ov021_021ff0e0(state, 0);
