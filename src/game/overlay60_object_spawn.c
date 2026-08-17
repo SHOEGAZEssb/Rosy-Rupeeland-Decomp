@@ -19,7 +19,7 @@ extern u8 data_021f3ecc[];
 extern u8 data_021f4090[];
 extern char gOverlay60ScriptObjectAllocationTag[];
 extern s32 GamePhaseScriptVm_Pop(void *script);
-extern u32 func_020be328(void);
+extern s32 func_020be328(s32 value);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 value);
 extern void *func_020791e0(void *table, u16 index);
 extern void Actor_GetCollection(void *owner);
@@ -61,8 +61,10 @@ void *func_0201da20(u32 unusedMode, u32 resourceIdentifier)
 
 /*
  * If presentation flag bit 1, the owner sprite, and displayValue are usable,
- * choose an SDK-derived byte for the sprite, mark negative display values with
- * sprite flag 0x40, and set sprite halfword flag 2.  Returns no value.
+ * choose the display value's absolute low byte for the sprite, mark negative
+ * display values with sprite flag 0x40, and set sprite halfword flag 2. The
+ * value is passed explicitly even though retail's ARM call reuses r0 across
+ * the preceding comparisons. Returns no value.
  */
 void func_0201da34(Overlay60ScriptContext *context)
 {
@@ -72,7 +74,7 @@ void func_0201da34(Overlay60ScriptContext *context)
 
     if (enabled == 0 || sprite == 0 || context->displayValue90 == -128)
         return;
-    value = func_020be328();
+    value = (u32)func_020be328(context->displayValue90);
     GraphicsSpriteState_SetAnimationIndex(sprite, value & 0xff);
     if (context->displayValue90 < 0)
         *(u32 *)((u8 *)sprite + 0x24) |= 0x40;
