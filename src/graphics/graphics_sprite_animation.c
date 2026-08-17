@@ -119,7 +119,7 @@ u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *sprite)
 
 /* Address-derived ABI wrapper retained for portable callers that have not yet
  * migrated to the semantic sprite-state interface. */
-void func_02072b68(void *sprite, u32 animation)
+void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation)
 {
     GraphicsSpriteState_SetAnimationIndex((GraphicsSpriteState *)sprite,
                                            (u8)animation);

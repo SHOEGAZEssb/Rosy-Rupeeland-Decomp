@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_02022cb0
 .extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
@@ -77,7 +77,7 @@ ActorDerivedType1_TryApplyInteractionAmount: ; 0x02039a54
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     mov r0, r6
     bl Type1Actor_TryEnterFailureState
     mov r0, #0x1

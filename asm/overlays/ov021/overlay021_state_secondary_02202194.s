@@ -7,7 +7,7 @@
     .extern func_02092c8c
     .extern func_02095928
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fe144
+    .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fea68
     .extern func_ov021_021fecd0
     .extern func_ov021_021feea4
@@ -45,7 +45,7 @@ L_022021e0:
     mov r0, r4
     bl func_ov021_021fecd0
     mov r0, r4
-    bl func_ov021_021fe144
+    bl Overlay021_SetupMainBackground
     ldr r0, L_0220229c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer

@@ -7,13 +7,13 @@
 .extern OverlayManager_GetGlobal
 .extern VecFx32Object_Destroy
 .extern func_0201e28c
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
-.extern func_ov050_0220d8f4
+.extern Overlay050EffectManager_Destroy
 .extern gDebugFont
 
-.global func_ov050_0220dcb8
-func_ov050_0220dcb8:
+.global Overlay050Scene_Destroy
+Overlay050Scene_Destroy:
     stmdb sp!, {r4, r5, r6, lr}
     ldr r1, .L_0220dd44
     mov r6, r0
@@ -25,7 +25,7 @@ func_ov050_0220dcb8:
     cmp r5, #0x0
     beq .L_0220dcec
     mov r0, r5
-    bl func_ov050_0220d8f4
+    bl Overlay050EffectManager_Destroy
     mov r0, r5
     bl Heap_Free
 .L_0220dcec:
@@ -46,7 +46,7 @@ func_ov050_0220dcb8:
     add r0, r6, #0x30
     bl VecFx32Object_Destroy
     add r0, r6, #0x8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r6
     bl func_0201e28c
     mov r0, r6
@@ -54,4 +54,4 @@ func_ov050_0220dcb8:
 .L_0220dd44: .word data_ov050_0220e3c0
 .L_0220dd48: .word data_020f4e14
 .L_0220dd4c: .word gDebugFont
-.size func_ov050_0220dcb8, . - func_ov050_0220dcb8
+.size Overlay050Scene_Destroy, . - Overlay050Scene_Destroy

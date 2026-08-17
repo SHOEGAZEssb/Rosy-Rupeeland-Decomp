@@ -11,7 +11,7 @@ extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern s32 Type7Actor_HasFlag4Target(void *actor);
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 #ifdef __cplusplus
 }
@@ -62,7 +62,7 @@ s32 Type7Actor_UpdateTargetProximityState(void *self)
             return 0;
         }
         if ((*(u32 *)(actor + 0x268) & 0x80) != 0
-            && func_020be328(Actor_GetCachedTerrainHeight(actor)
+            && SignedAbsoluteValueVariant(Actor_GetCachedTerrainHeight(actor)
                              - Actor_GetCachedTerrainHeight(target)) < 0x20000) {
             Type7Actor_ResetInteractionState(actor);
             return 0;

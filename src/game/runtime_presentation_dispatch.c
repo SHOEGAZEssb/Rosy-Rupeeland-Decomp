@@ -74,7 +74,7 @@ void func_0201e0f4(RuntimePresentationManager *self)
 }
 
 /* Broadcast argument through virtual 0x1c to every object in both lists. */
-void func_0201e14c(RuntimePresentationManager *self, s32 argument)
+void RuntimePresentationManager_BroadcastSlot1C(RuntimePresentationManager *self, s32 argument)
 {
     PresentationNode *node;
     for (node=self->first.head; node; node=node->next)

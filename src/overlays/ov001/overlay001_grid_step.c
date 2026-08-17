@@ -13,7 +13,7 @@ typedef struct Overlay001GridStepState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02094758(void *controller);
+extern s32 InventoryScroll_UpdateSelectionMovement(void *controller);
 extern void func_ov001_021fc1b8(Overlay001GridStepState *state);
 #ifdef __cplusplus
 }
@@ -29,7 +29,7 @@ extern "C"
 #endif
 s32 func_ov001_021fc214(Overlay001GridStepState *state)
 {
-    if (!func_02094758(state->controller_1bc)) {
+    if (!InventoryScroll_UpdateSelectionMovement(state->controller_1bc)) {
         return 0;
     }
     func_ov001_021fc1b8(state);

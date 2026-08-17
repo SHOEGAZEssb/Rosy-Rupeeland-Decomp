@@ -2,7 +2,7 @@
 .extern func_020ae024
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02071e60
-.extern func_02071e70
+.extern GraphicsArchive_FindPaletteResource
 .extern func_02071e80
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern data_020f4e18
@@ -105,7 +105,7 @@ Type7MarkerPresentation_ReloadResources: ; 0x0204cf28
     mov r5, r0
     ldr r0, [r1, #0x0]
     ldr r1, .L_0204cf9c
-    bl func_02071e70
+    bl GraphicsArchive_FindPaletteResource
     ldr r1, .L_0204cf94
     mov r4, r0
     ldr r0, [r1, #0x0]

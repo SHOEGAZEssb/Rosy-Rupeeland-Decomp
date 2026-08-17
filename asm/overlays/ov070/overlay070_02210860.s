@@ -11,7 +11,7 @@
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02058d40
+.extern Sound_StopAllDirectSequences
 .extern func_020593ac
 .extern func_020594ec
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -426,7 +426,7 @@ func_ov070_02210860:
     ldr r0, .L_0221183c
     mov r1, r5
     ldr r0, [r0, #0x0]
-    bl func_02058d40
+    bl Sound_StopAllDirectSequences
     ldr r0, [r4, #0x48]
     ldr r0, [r0, #0x1f4]
     cmp r0, #0x2

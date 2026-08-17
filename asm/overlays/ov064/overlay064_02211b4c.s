@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern GridEffectActor_Spawn
-.extern func_020627a0
+.extern ActorDescriptor_InitRange
 .extern ActorDirection_GetPresentationGroup
 .extern func_020bf1f8
 .extern Overlay064VecFx32_Add
@@ -89,7 +89,7 @@ Overlay064Scene_SpawnRewardEffect:
     str r2, [sp, #0x48]
     str r0, [sp, #0x4c]
     str r3, [sp, #0x50]
-    bl func_020627a0
+    bl ActorDescriptor_InitRange
     mov r1, #0x0
     add r0, sp, #0x10
     mov r2, r1

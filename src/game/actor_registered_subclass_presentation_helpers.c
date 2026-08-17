@@ -12,8 +12,8 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020be334(s32 value);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void func_020593ac(void *context, s32 sound, s32 variant,
@@ -36,7 +36,7 @@ extern void *TrackedResourceActor_SpawnFromKey(s32 effect, const void *first, co
 void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
 {
     u8 *actor = (u8 *)self;
-    s32 magnitude = func_020be334(*(s32 *)(actor + 0x44));
+    s32 magnitude = SignedAbsoluteValue(*(s32 *)(actor + 0x44));
 
     if (magnitude > 0x1000) {
         u8 *reference = (u8 *)ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
@@ -49,7 +49,7 @@ void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
             pan = -128;
         if (pan > 127)
             pan = 127;
-        volume = (magnitude >> 7) - func_020adae4(func_020be328(pan), 3);
+        volume = (magnitude >> 7) - func_020adae4(SignedAbsoluteValueVariant(pan), 3);
         if (volume > 127)
             volume = 127;
         if (volume < 0)

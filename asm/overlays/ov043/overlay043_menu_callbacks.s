@@ -3,7 +3,7 @@
 .extern func_ov043_0220b744
 .extern func_02095860
 .extern func_02092260
-.extern func_ov043_0220bd24
+.extern Overlay043_UpdatePresentationResources
 .extern data_020f4e14
 .extern gDebugFont
 .extern data_ov043_0220c448
@@ -112,7 +112,7 @@ func_ov043_0220bdb8:
     bl func_ov043_0220b744
 .L_0220beb8:
     mov r0, r4
-    bl func_ov043_0220bd24
+    bl Overlay043_UpdatePresentationResources
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_0220bec8: .word data_ov043_0220c490

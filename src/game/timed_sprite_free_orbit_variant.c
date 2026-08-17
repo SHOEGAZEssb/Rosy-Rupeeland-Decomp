@@ -48,7 +48,7 @@ extern FreeOrbitTimedSprite *func_0201e9d8(FreeOrbitTimedSprite *self,
                                            s32 spriteValue,
                                            s16 spriteOffset, s16 spriteByte);
 extern FreeOrbitTimedSprite *func_0201e380(FreeOrbitTimedSprite *self);
-extern void func_0201e3b8(FreeOrbitTimedSprite *self, s32 enabled);
+extern void TimedSpritePresentation_SetVisible(FreeOrbitTimedSprite *self, s32 enabled);
 extern void VecFx32Object_InitCopy(PresentationTrack *track, const void *source);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Add(PresentationTrack *first,
@@ -102,7 +102,7 @@ s32 func_0201ec40(FreeOrbitTimedSprite *self)
 
     self->remaining28--;
     if (self->remaining28 < 0) {
-        func_0201e3b8(self, 0);
+        TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
     zeroCenter.vtable = data_020d5b10;

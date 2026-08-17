@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_multi_effect_sequence.c for documented portable C. */
 
-    .extern func_02059278
+    .extern Sound_PlayDirectSequence
     .extern func_02091b98
     .extern func_02091c7c
     .extern Sound_Play
@@ -21,10 +21,10 @@
     .extern func_ov036_021fd2a4
     .extern Presentation_SetPosition
     .extern func_ov036_021fe968
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern PresentationScalar_SetImmediate
     .extern PresentationList_Append
-    .extern func_0205929c
+    .extern Sound_StopDirectSequence
     .extern func_020594a4
     .extern func_ov036_021ff74c
     .extern gSoundContext
@@ -59,7 +59,7 @@ L_021ffa14:
     mov r1, #0xae
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     add r0, r4, #0xa4
     mov r1, #0x3c
     bl func_02091b98
@@ -292,7 +292,7 @@ L_021ffd40:
     bl func_ov036_021fe968
     add r0, r4, #0xc0
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r1, r0, lsl #0x4
     add r0, r8, #0x5c
     bl PresentationScalar_SetImmediate
@@ -346,7 +346,7 @@ L_021ffe4c:
     mov r1, #0xae
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]

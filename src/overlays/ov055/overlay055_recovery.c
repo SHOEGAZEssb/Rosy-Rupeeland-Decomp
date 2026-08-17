@@ -22,8 +22,8 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *); extern void Heap_Free(void *);
 extern void *__construct_array(void *, s32, s32, void (*)(void *), void (*)(void *));
 extern void *__destroy_arr(void *, s32, s32, void (*)(void *));
-extern u32 genrand_int32(void); extern void *func_02027f94(void); extern s32 func_02027e8c(void *);
-extern void func_02071ea4(void *); extern void func_02071eb8(void *);
+extern u32 genrand_int32(void); extern void *GamePhaseProgress_GetOrCreateGlobal(void); extern s32 func_02027e8c(void *);
+extern void AnimationResourceState_InitEmbedded(void *); extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateState(void *, void *, void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -34,10 +34,10 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *VecFx32Object_Init(void *); extern void *VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void *VecFx32Object_Assign(void *, const void *); extern void *VecFx32Object_Destroy(void *);
-extern void *func_0201e250(void *); extern void *func_0201e28c(void *); extern void func_0201ded4(void *, void *);
+extern void *TimedSpritePresentation_InitBase(void *); extern void *func_0201e28c(void *); extern void PresentationList_AppendObject(void *, void *);
 extern void *OverlayManager_GetGlobal(void); extern void OverlayManager_UnloadOverlay(void *, s32);
 extern void *func_02071568(void *, u32); extern void *func_020716bc(void *, u32);
-extern void *func_020718dc(void *, u32); extern void *func_02070874(void *);
+extern void *func_020718dc(void *, u32); extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070f34(void *, s32); extern void func_02071bdc(void *, void *);
 extern void func_02071c38(void *, void *); extern void func_02071cf0(void *, void *);
 extern void func_020b44e8(void); extern void func_020b1c64(const void *, u32, u32);
@@ -52,14 +52,14 @@ void *func_ov055_0220e400(void *object, void *group)
 {
     u8 resource[12]; void *sprite;
     FIELD(void *, object, 0) = 0; FIELD(s32, object, 4) = 0; FIELD(s32, object, 8) = 0;
-    func_02071ea4(resource); FIELD(s32, object, 8) = FIELD(s32, func_02027f94(), 0x10);
+    AnimationResourceState_InitEmbedded(resource); FIELD(s32, object, 8) = FIELD(s32, GamePhaseProgress_GetOrCreateGlobal(), 0x10);
     if (FIELD(s32, object, 8) == 2) func_02071ee0(resource, data_020f4e18[0], 0x224b, 0x224c, 0x224d);
     else func_02071ee0(resource, data_020f4e18[0], 0x2239, 0x223a, 0x223b);
     sprite = GraphicsSpriteGroup_CreateState(group, FIELD(void *, resource, 0), FIELD(void *, resource, 4), FIELD(void *, resource, 8), 2);
     FIELD(void *, object, 0) = sprite; FIELD(u16, sprite, 0x24) |= 4;
     GraphicsSpriteState_SetAnimationIndex(sprite, 1); FIELD(u16, sprite, 0x2c) = 0x80; FIELD(u16, sprite, 0x2e) = 0x2f;
     if (FIELD(s32, object, 8) == 2) FIELD(u16, sprite, 0x24) |= 2; else FIELD(u16, sprite, 0x24) &= (u16)~2;
-    FIELD(u8, sprite, 0x3a) = 2; func_02071eb8(resource); return object;
+    FIELD(u8, sprite, 0x3a) = 2; AnimationResourceState_Destroy(resource); return object;
 }
 
 /* Restart the object's animation at the recovered random cadence. */
@@ -74,7 +74,7 @@ void func_ov055_0220e518(void *object)
 /* Construct the effect collection, resources, sprites, and child object. */
 void *func_ov055_0220e574(void *c, void *primary, void *secondary, s32 mode)
 {
-    void *s, *child; __construct_array(c, 3, 12, func_02071ea4, func_02071eb8);
+    void *s, *child; __construct_array(c, 3, 12, AnimationResourceState_InitEmbedded, AnimationResourceState_Destroy);
     FIELD(void *, c, 0x24)=primary; FIELD(void *, c, 0x28)=secondary; FIELD(s32,c,0x38)=0; FIELD(s32,c,0x3c)=0; FIELD(s32,c,0x40)=0;
     func_02071ee0(c,data_020f4e18[0],0x2239,0x223a,0x223b); func_02071ee0((u8*)c+12,data_020f4e18[0],0x223f,0x2240,0x2241);
     func_02071ee0((u8*)c+24,data_020f4e18[0],0x224b,0x224c,0x224d);
@@ -89,7 +89,7 @@ void *func_ov055_0220e574(void *c, void *primary, void *secondary, s32 mode)
 
 /* Destroy the optional child and embedded resource array. */
 void *func_ov055_0220e7cc(void *c)
-{ if(FIELD(void*,c,0x44)) Heap_Free(FIELD(void*,c,0x44)); __destroy_arr(c,3,12,func_02071eb8); return c; }
+{ if(FIELD(void*,c,0x44)) Heap_Free(FIELD(void*,c,0x44)); __destroy_arr(c,3,12,AnimationResourceState_Destroy); return c; }
 
 /* Periodically select a different frame and advance the child object. */
 void func_ov055_0220e804(void *c)
@@ -111,7 +111,7 @@ void func_ov055_0220e8a0(void *c)
 /* Construct the scene base, groups, and owned collection. */
 void *func_ov055_0220e8b8(void *scene, void *owner, s32 mode)
 {
-    void *c; void (**vtable)(void*,s32); func_0201e250(scene); FIELD(const void*,scene,0)=data_ov055_0220f058;
+    void *c; void (**vtable)(void*,s32); TimedSpritePresentation_InitBase(scene); FIELD(const void*,scene,0)=data_ov055_0220f058;
     VecFx32Object_Init((u8*)scene+8); FIELD(void*,scene,0x1c)=0; FIELD(void*,scene,0x28)=owner; FIELD(s32,scene,0x2c)=mode;
     FIELD(void*,scene,0x1c)=GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]); FIELD(void*,scene,0x20)=GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     c=Heap_Alloc(0x48,data_ov055_0220f080,4,gHeapContext); if(c)c=func_ov055_0220e574(c,FIELD(void*,scene,0x1c),FIELD(void*,scene,0x20),mode); FIELD(void*,scene,0x24)=c;
@@ -125,7 +125,7 @@ void func_ov055_0220e96c(void *scene)
     *bg=(u16)((*bg&0x43)|0x9a04); *display=(*display&~0x1f00u)|(((((*display&0x1f00u)>>8)|2u)<<8)); *bg=(u16)((*bg&~3u)|2u);
     if(FIELD(s32,scene,0x2c)>=2){volatile u32 *sd=(volatile u32*)0x04001000; volatile u16 *sb1=(volatile u16*)0x0400100c,*sb2=(volatile u16*)0x0400100e;
         *sb1=(u16)((*sb1&0x43)|0x9c10); *sd=(*sd&~0x1f00u)|(((((*sd&0x1f00u)>>8)|4u)<<8)); *sb2=(u16)((*sb2&~3u)|2u);}
-    func_ov055_0220ebec(scene); (void)func_02027f94(); func_ov055_0220e8a0(FIELD(void*,scene,0x24)); func_ov055_0220e860(FIELD(void*,scene,0x24));
+    func_ov055_0220ebec(scene); (void)GamePhaseProgress_GetOrCreateGlobal(); func_ov055_0220e8a0(FIELD(void*,scene,0x24)); func_ov055_0220e860(FIELD(void*,scene,0x24));
     if(FIELD(s32,scene,0x2c)>2) FIELD(u16,FIELD(void*,FIELD(void*,scene,0x24),0x34),0x24)|=4;
 }
 
@@ -159,9 +159,9 @@ static void Overlay055_LoadBgPair(const Overlay055BgConfig *config, s32 sub)
         for(t=0;t<count;++t)tiles[t]=(u16)((tiles[t]&0xfc00u)|((tiles[t]&0x3ffu)+(e->character_destination>>5)));
         func_02070f34(map,(s32)e->palette_bank); func_020b44e8();
         if(sub){func_020b1b2c(FIELD(void*,map,0x24),(u32)(i*3)<<8,0x300); func_020b17ec(FIELD(void*,character,0x24),e->character_destination,e->character_size);
-            PaletteBuffer_Write(gSubBgPaletteBuffer,func_02070874(palette),e->palette_bank<<5,e->palette_count<<5);}
+            PaletteBuffer_Write(gSubBgPaletteBuffer,GraphicsBgResourceData_GetDecoded(palette),e->palette_bank<<5,e->palette_count<<5);}
         else{func_020b1c64(FIELD(void*,map,0x24),(u32)(i*3)<<8,0x300); func_020b1924(FIELD(void*,character,0x24),e->character_destination,e->character_size);
-            PaletteBuffer_Write(gMainBgPaletteBuffer,func_02070874(palette),e->palette_bank<<5,e->palette_count<<5);}
+            PaletteBuffer_Write(gMainBgPaletteBuffer,GraphicsBgResourceData_GetDecoded(palette),e->palette_bank<<5,e->palette_count<<5);}
         func_02071bdc(archive,character); func_02071c38(archive,palette); func_02071cf0(archive,map);}
 }
 
@@ -180,8 +180,8 @@ void func_ov055_0220eefc(void *scene, const void *v)
 /* Allocate, construct, and register the scene. */
 void *func_ov055_0220ef6c(void)
 {
-    void *scene=Heap_Alloc(0x30,data_ov055_0220f088,4,gHeapContext); if(scene){u8 *runtime=(u8*)data_021052fc; scene=func_ov055_0220e8b8(scene,runtime+0x2fbc,func_02027e8c(func_02027f94()));}
-    func_0201ded4((u8*)data_021052fc+0x2f7c,scene); return scene;
+    void *scene=Heap_Alloc(0x30,data_ov055_0220f088,4,gHeapContext); if(scene){u8 *runtime=(u8*)data_021052fc; scene=func_ov055_0220e8b8(scene,runtime+0x2fbc,func_02027e8c(GamePhaseProgress_GetOrCreateGlobal()));}
+    PresentationList_AppendObject((u8*)data_021052fc+0x2f7c,scene); return scene;
 }
 
 /* Submit or release both collection sprite groups. */

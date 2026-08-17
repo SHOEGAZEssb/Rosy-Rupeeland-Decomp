@@ -23,7 +23,7 @@ extern void func_020280d8(void *object);
 extern void Heap_Free(void *memory);
 extern void *func_ov005_021fbb78(void *scene);
 extern void func_020925dc(s32 value);
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 #ifdef __cplusplus
 }
 #endif
@@ -74,7 +74,7 @@ Overlay005Presentation *func_ov005_021fc110(Overlay005Presentation *state)
     func_020925dc(0);
     *(volatile u16 *)0x04001050 = 0;
     *(volatile u32 *)0x04001000 &= ~0xe000;
-    func_02071eb8((u8 *)state + 0x54);
+    AnimationResourceState_Destroy((u8 *)state + 0x54);
     return state;
 }
 

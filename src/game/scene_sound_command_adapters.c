@@ -10,11 +10,11 @@
 
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 archive, s32 member);
-extern void func_02059278(void *context, u16 sequence, s32 volume);
+extern void Sound_PlayDirectSequence(void *context, u16 sequence, s32 volume);
 extern void func_0205940c(void *context, s32 archive, s32 member);
 extern void func_0205943c(void *context, s32 archive, s32 member, s32 value,
                           s32 pan, s32 pitch);
-extern void func_0205929c(void *context, u16 sequence, s32 fade_frames);
+extern void Sound_StopDirectSequence(void *context, u16 sequence, s32 fade_frames);
 
 /* Start one packed sequence-archive member with its default parameters. */
 void func_02092260(void *scene, s32 packed)
@@ -45,14 +45,14 @@ void func_020922b0(void *scene, s32 packed, s32 argument)
 void func_020922f0(void *scene, s32 sequence)
 {
     (void)scene;
-    func_02059278(gSoundContext, (u16)sequence, 0x7f);
+    Sound_PlayDirectSequence(gSoundContext, (u16)sequence, 0x7f);
 }
 
 /* Stop or fade a direct sequence by ID. */
 void func_02092314(void *scene, s32 sequence, s32 fade_frames)
 {
     (void)scene;
-    func_0205929c(gSoundContext, (u16)sequence, fade_frames);
+    Sound_StopDirectSequence(gSoundContext, (u16)sequence, fade_frames);
 }
 
 /* Return the fixed false/zero result used by shared scene callback tables. */

@@ -28,33 +28,33 @@ extern "C" {
 #endif
 extern u32 genrand_int32(void);
 extern u32 func_02062a50(void *);
-extern s32 func_02062b0c(void *);
-extern s32 func_0206492c(void *, u16);
-extern void func_02064e7c(void *, s32, u16);
-extern void func_0206fc20(void *);
-extern void func_0206fc38(void *, u16, s32);
-extern s32 func_0206fca0(void *, s32);
-extern void *func_0206fd30(void *);
-extern void func_02071ea4(void *);
+extern s32 ActorDescriptor_GetKind0Value(void *);
+extern s32 InventoryRecordCollection_FindId(void *, u16);
+extern void InventoryRecordCollection_RemoveQuantity(void *, s32, u16);
+extern void RetailPhaseSelection_Reset(void *);
+extern void RetailPhaseSelection_AddActor(void *, u16, s32);
+extern s32 RetailPhaseSelection_BuildScaledResult(void *, s32);
+extern void *RetailPhaseSelection_SelectMatchingRecord(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02075358(void *, s32);
+extern void GraphicsSpriteRenderer_ReleaseExtendedPalette(void *, s32);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern void Graphics3DLightSet_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void *Graphics3DRenderObject_Init(void *, void *, void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
-extern void func_02091e28(void *);
+extern s32 TitleRandom_NextBounded(void *, s32);
+extern void SceneInputBase_Init(void *);
 extern void func_02092364(void *);
 extern void func_020923a4(void *);
-extern void func_020926d8(void *);
+extern void TitleScreenResourceCollection_Init(void *);
 extern void func_02092754(void *, s32);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 extern void *SpritePresentation_Init(void *, void *);
 extern void SpritePresentation_Hide(void *);
@@ -64,24 +64,24 @@ extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095940(void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
-extern void func_0205974c(void *, s32);
+extern void Sound_LoadGroup(void *, s32);
 extern void func_020ae778(void);
 extern void func_020ae7b0(void);
 extern void *func_ov017_021fce00(void *, s32);
 extern void *func_ov017_021fd744(void *);
-extern void func_ov017_021fd7f8(void *, s32);
+extern void Overlay017Transform_ReplaceResource(void *, s32);
 extern void *func_ov017_021fe40c(void *, void *);
-extern void *func_ov017_021fe75c(void *, s32, s32);
+extern void *Overlay017UiSpriteGroup_Init(void *, s32, s32);
 extern void *func_ov017_021fe9c0(void *);
 extern void func_ov017_021fea00(void *, s32, s32, s32);
-extern void func_ov017_021fea08(void *, s32, s32, s32);
+extern void Overlay017Record_SetSecondaryVector(void *, s32, s32, s32);
 extern void func_ov017_021fea18(void *, s32, s32, s32, s32, u32, u32, u32);
 extern void func_ov017_021fea8c(void *, s32, s32, s32);
 extern void func_ov017_021ff150(void *);
 extern void func_ov017_021ff58c(void *);
 extern void func_ov017_021ff75c(void *);
 extern void *func_ov017_021ff8a8(void *, s32, u32, u32, u16);
-extern void func_ov017_02200064(void *);
+extern void Overlay017_UpdatePaletteRamp(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -108,15 +108,15 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     void *global;
     s32 i;
 
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const u32 *, state, 0) = data_ov017_02201638;
-    func_02071ea4((u8 *)state + 0x5c);
-    func_02071ea4((u8 *)state + 0x68);
-    func_02071ea4((u8 *)state + 0x74);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x5c);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x68);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x74);
     func_020957bc((u8 *)state + 0x80);
     func_020957bc((u8 *)state + 0x12c);
-    func_02092798((u8 *)state + 0x1d8);
-    func_020926d8((u8 *)state + 0x1fc);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x1d8);
+    TitleScreenResourceCollection_Init((u8 *)state + 0x1fc);
     GraphicsResourceSetVariant_Init((u8 *)state + 0x248);
     func_ov017_021fd744((u8 *)state + 0x264);
     func_ov017_021fd744((u8 *)state + 0x290);
@@ -137,7 +137,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     FIELD(s32, state, 0x3e8) = 0;
     FIELD(void *, state, 0x400) = 0;
     FIELD(void *, state, 0x440) = 0;
-    func_02075358(data_020f4e14, 0);
+    GraphicsSpriteRenderer_ReleaseExtendedPalette(data_020f4e14, 0);
     func_020923a4((u8 *)state + 0x404);
     func_020ae7b0();
     func_020ae778();
@@ -181,13 +181,13 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
 
     FIELD(s32, state, 0x310) = 1;
     func_ov017_021fea00((u8 *)state + 0x310, 0, 0x1800, 0x1000);
-    func_ov017_021fea08((u8 *)state + 0x310, 0, 0, 0);
+    Overlay017Record_SetSecondaryVector((u8 *)state + 0x310, 0, 0, 0);
     func_ov017_021fea18((u8 *)state + 0x2d0, 0,
                         0x1000, -0x1000, -0x1000, 0x1f, 0x1f, 0x1f);
     func_ov017_021fea18((u8 *)state + 0x2d0, 1,
                         0x800, -0x1000, 0, 0x1f, 0x1f, 0x1f);
 
-    func_0206fc20(data_021e9e1c);
+    RetailPhaseSelection_Reset(data_021e9e1c);
     global = data_021e9ac0;
     FIELD(s32, state, 0x3c0) = effectCount;
     FIELD(s32, state, 0x3c4) = category;
@@ -201,13 +201,13 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
         s32 angle;
         s32 radius;
 
-        func_0206fc38(data_021e9e1c, effectId, 1);
-        recordIndex = func_0206492c(global, effectId);
-        recordValue = func_02062b0c(
+        RetailPhaseSelection_AddActor(data_021e9e1c, effectId, 1);
+        recordIndex = InventoryRecordCollection_FindId(global, effectId);
+        recordValue = ActorDescriptor_GetKind0Value(
             (u8 *)FIELD(void *, global, 8) + recordIndex * 0x24);
-        func_02064e7c(global, recordIndex, (u16)category);
-        angle = func_020918f4((u8 *)state + 0x3fc, 0x1000) << 1;
-        radius = func_020918f4(
+        InventoryRecordCollection_RemoveQuantity(global, recordIndex, (u16)category);
+        angle = TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000) << 1;
+        radius = TitleRandom_NextBounded(
             (u8 *)state + 0x3fc,
             data_ov017_02201414[radiusIndex] - 0xc);
         func_ov017_021ff8a8(
@@ -219,8 +219,8 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     }
 
     FIELD(s32, state, 0x3b8) = 0;
-    FIELD(s32, state, 0x3bc) = func_0206fca0(data_021e9e1c, category);
-    FIELD(void *, state, 0x258) = func_0206fd30(data_021e9e1c);
+    FIELD(s32, state, 0x3bc) = RetailPhaseSelection_BuildScaledResult(data_021e9e1c, category);
+    FIELD(void *, state, 0x258) = RetailPhaseSelection_SelectMatchingRecord(data_021e9e1c);
     if (FIELD(void *, state, 0x258) == 0) {
         FIELD(s32, state, 0x2c4) = 0xc;
         FIELD(s32, state, 0x2c8) = 0x10;
@@ -233,14 +233,14 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
         FIELD(s32, state, 0x2cc) = (color >> 10) & 0x1f;
     }
 
-    func_ov017_02200064(state);
+    Overlay017_UpdatePaletteRamp(state);
     func_ov017_021ff58c(state);
     func_ov017_021ff75c(state);
-    func_ov017_021fd7f8((u8 *)state + 0x264, 0x5011);
+    Overlay017Transform_ReplaceResource((u8 *)state + 0x264, 0x5011);
     FIELD(s32, state, 0x278) = 0x400;
     FIELD(s32, state, 0x27c) = 0x400;
     FIELD(s32, state, 0x280) = 0x400;
-    func_ov017_021fd7f8((u8 *)state + 0x290, 0x5052);
+    Overlay017Transform_ReplaceResource((u8 *)state + 0x290, 0x5052);
 
     object = Heap_Alloc(0x58, data_ov017_02201694, 4, &gHeapContext);
     if (object != 0)
@@ -248,7 +248,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     FIELD(void *, state, 0x254) = object;
     object = Heap_Alloc(0x68, data_ov017_0220169c, 4, &gHeapContext);
     if (object != 0)
-        object = func_ov017_021fe75c(
+        object = Overlay017UiSpriteGroup_Init(
             object, FIELD(s32, state, 0x3c0), FIELD(s32, state, 0x3c8));
     FIELD(void *, state, 0x25c) = object;
     object = Heap_Alloc(0x10, data_ov017_022016a4, 4, &gHeapContext);
@@ -264,7 +264,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     }
     FIELD(void *, state, 0x2c0) = object;
 
-    func_0205974c(gSoundContext, 0x82);
+    Sound_LoadGroup(gSoundContext, 0x82);
     FIELD(u32, state, 0x20) |= 0x400;
     func_ov017_021fea8c(state, data_ov017_02201548[0],
                         data_ov017_02201548[1], 0);

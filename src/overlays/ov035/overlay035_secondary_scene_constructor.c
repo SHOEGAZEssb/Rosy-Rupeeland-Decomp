@@ -21,14 +21,14 @@ extern void func_ov035_021fdce8(void *record);
 extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
-extern void *func_02071adc(void *resourceContext, s32 resourceId);
+extern void *GraphicsArchive_AcquireOwlvResource(void *resourceContext, s32 resourceId);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *allocation, void *spriteRecord);
+extern void *AlternateSpritePresentation_Init(void *allocation, void *spriteRecord);
 extern void PresentationList_Append(void *collection, void *object);
 extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void *func_ov035_021fe5ec(void *object, s32 argument);
@@ -40,7 +40,7 @@ extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
 extern void func_020b0300(s32 first, s32 second, s32 third, s32 fourth,
                          s32 fifth);
-extern void func_02092850(s32 value);
+extern void TitlePalette_SetMainBackdrop(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -50,7 +50,7 @@ static void *create_sprite(void *record)
 {
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (object != 0)
-        object = func_020955d8(object, record);
+        object = AlternateSpritePresentation_Init(object, record);
     return object;
 }
 
@@ -92,7 +92,7 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xe8);
     Graphics3DResourceOwner_PrepareResources(resourceOwner, (u8 *)scene + 0xcc);
 
-    FIELD(void *, scene, 0xf4) = func_02071adc(data_020f4e18[0], 0x5009);
+    FIELD(void *, scene, 0xf4) = GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5009);
     FIELD(void *, scene, 0xf8) = Graphics3DResourceOwner_CreateManager(resourceOwner);
     void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0xf8),
                                   (u8 *)scene + 0xdc);
@@ -144,6 +144,6 @@ extern "C" void *func_ov035_021feb7c(void *scene, void *resourceOwner,
     func_ov035_021fdd70((u8 *)scene + 0x0c, 0, 0x1400, 0x2800);
     func_ov035_021fdd78((u8 *)scene + 0x0c, 0, 0, 0);
     func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     return scene;
 }

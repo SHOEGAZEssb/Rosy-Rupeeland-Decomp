@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 extern s32 func_02034568(void *actor, s32 x, s32 y, s32 expectedHeight);
-extern void func_020c10d4(void *destination, u32 size);
+extern void Memory_ClearBytes(void *destination, u32 size);
 #ifdef __cplusplus
 }
 #endif
@@ -19,7 +19,7 @@ extern void func_020c10d4(void *destination, u32 size);
  * Returns no value; the clear helper initializes two local count arrays and
  * terrain queries read global map state.
  */
-void func_02034894(void *self, void *value)
+void ActorTerrain_ApplyNeighborAxisBias(void *self, void *value)
 {
     u8 *vector = (u8 *)value;
     s32 xCounts[3];
@@ -30,8 +30,8 @@ void func_02034894(void *self, void *value)
     s32 dx;
     s32 dy;
 
-    func_020c10d4(xCounts, sizeof(xCounts));
-    func_020c10d4(yCounts, sizeof(yCounts));
+    Memory_ClearBytes(xCounts, sizeof(xCounts));
+    Memory_ClearBytes(yCounts, sizeof(yCounts));
     for (dx = -1; dx <= 1; ++dx) {
         for (dy = -1; dy <= 1; ++dy) {
             if (func_02034568(self, dx + (originalX >> 16),

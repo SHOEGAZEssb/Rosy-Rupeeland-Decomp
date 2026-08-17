@@ -1,8 +1,8 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_geometry_engine.c. */
-.global func_ov017_021fd3f0
-func_ov017_021fd3f0:
+.global Overlay017_WaitForSquareRoot
+Overlay017_WaitForSquareRoot:
     ldr r1, L_021fd40c
 L_021fd3f4:
     ldrh r0, [r1, #0x0]
@@ -13,5 +13,5 @@ L_021fd3f4:
     bx lr
 L_021fd40c: .word 0x40002b0
 L_021fd410: .word 0x40002b4
-    .size func_ov017_021fd3f0, . - func_ov017_021fd3f0
+    .size Overlay017_WaitForSquareRoot, . - Overlay017_WaitForSquareRoot
 

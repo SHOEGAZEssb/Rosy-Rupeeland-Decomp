@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -15,7 +15,7 @@ extern s32 func_020be334(s32 value);
  * intersection width/height, push actor position fields 0x1c/0x20 out along
  * an edge indicated by bits 1/2/4/8. All edge bits are then ORed into actor
  * byte 0x4b, even when no positional correction was eligible. Returns no
- * value; func_020be334 supplies absolute value and no hardware is touched.
+ * value; SignedAbsoluteValue supplies absolute value and no hardware is touched.
  */
 void ActorCollision_ApplyOverlapResponse(void *actorPointer, s32 deltaX, s32 deltaY, u8 edgeFlags,
                    const ActorCollisionRange *intersection)
@@ -23,7 +23,7 @@ void ActorCollision_ApplyOverlapResponse(void *actorPointer, s32 deltaX, s32 del
     u8 *actor = (u8 *)actorPointer;
     s32 overlap = intersection->maxX - intersection->minX;
 
-    if (deltaX != 0 && overlap <= func_020be334(deltaX)) {
+    if (deltaX != 0 && overlap <= SignedAbsoluteValue(deltaX)) {
         if (deltaX > 0 && (edgeFlags & 2))
             *(s32 *)(actor + 0x1c) -= overlap;
         if (deltaX < 0 && (edgeFlags & 1))
@@ -31,7 +31,7 @@ void ActorCollision_ApplyOverlapResponse(void *actorPointer, s32 deltaX, s32 del
     }
 
     overlap = intersection->maxY - intersection->minY;
-    if (deltaY != 0 && overlap <= func_020be334(deltaY)) {
+    if (deltaY != 0 && overlap <= SignedAbsoluteValue(deltaY)) {
         if (deltaY > 0 && (edgeFlags & 8))
             *(s32 *)(actor + 0x20) -= overlap;
         if (deltaY < 0 && (edgeFlags & 4))

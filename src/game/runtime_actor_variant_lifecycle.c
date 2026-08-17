@@ -11,7 +11,7 @@ extern const u8 data_020e2028[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *func_02030f98(void *actor, const void *descriptor);
+extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
 extern void func_0203130c(void *actor);
 #ifdef __cplusplus
 }
@@ -26,14 +26,14 @@ static void callDescriptorHook(void *self, void *value)
 
 /*
  * Inputs are destination actor storage and a descriptor. Construct the base
- * through func_02030f98, install vtable data_020e2028, and, when descriptor
+ * through ActorRuntimeBase_Init, install vtable data_020e2028, and, when descriptor
  * word +0x2c is non-null, invoke virtual slot 0x74 with that word. Return self.
  * Base construction and the optional virtual hook may change engine state;
  * there are no direct hardware effects.
  */
 void *func_0204d244(void *self, const void *descriptor)
 {
-    func_02030f98(self, descriptor);
+    ActorRuntimeBase_Init(self, descriptor);
     *(const void **)self = data_020e2028;
     if (*(void **)((u8 *)descriptor + 0x2c) != 0)
         callDescriptorHook(self, *(void **)((u8 *)descriptor + 0x2c));
@@ -48,7 +48,7 @@ void *func_0204d244(void *self, const void *descriptor)
  */
 void *func_0204d284(void *self, const void *descriptor)
 {
-    func_02030f98(self, descriptor);
+    ActorRuntimeBase_Init(self, descriptor);
     *(const void **)self = data_020e2028;
     if (*(void **)((u8 *)descriptor + 0x2c) != 0)
         callDescriptorHook(self, *(void **)((u8 *)descriptor + 0x2c));

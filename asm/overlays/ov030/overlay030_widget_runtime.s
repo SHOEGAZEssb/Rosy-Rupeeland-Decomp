@@ -4,7 +4,7 @@
 .extern data_020c9670
 .extern data_020f4e14
 .extern func_02070958
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_Destroy
@@ -47,11 +47,11 @@ L_021fd294:
     add r0, r4, #0x58
     bl func_ov030_021fcf18
     add r0, r4, #0x1c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x10
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_ov030_021fd27c, .-func_ov030_021fd27c

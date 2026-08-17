@@ -7,14 +7,14 @@
 .extern data_ov029_021fecfc
 .extern data_ov029_021fed10
 .extern data_ov029_021fed18
-.extern func_0201e14c
+.extern RuntimePresentationManager_BroadcastSlot1C
 .extern func_020716bc
 .extern RecordDescriptor_GetMessage
-.extern func_02091e28
-.extern func_02092798
+.extern SceneInputBase_Init
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 .extern func_020929b0
-.extern func_02092cc0
+.extern TitleDialog_Init
 .extern func_02092f88
 .extern func_020afd0c
 .extern func_ov029_021fce00
@@ -39,11 +39,11 @@ func_ov029_021fce74:
     sub sp, sp, #0x14
     mov r5, r0
     mov r4, r1
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fd134
     add r0, r5, #0x78
     str r1, [r5, #0x0]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     mov r1, #0x0
     add r0, r5, #0xec
     str r1, [r5, #0xe4]
@@ -53,7 +53,7 @@ func_ov029_021fce74:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e14c
+    bl RuntimePresentationManager_BroadcastSlot1C
     bl genrand_int32
     ldr r1, L_021fd13c
     str r0, [r5, #0xe4]
@@ -175,7 +175,7 @@ L_021fd04c:
     ldr r1, L_021fd168
     ldr r2, [r5, #0x78]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fd08c:
     str r0, [r5, #0x9c]
     mov r0, #0x84

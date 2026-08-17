@@ -2,8 +2,8 @@
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_participant_summary.c.
 .extern VecFx32Object_Assign
-.extern func_02059278
-.extern func_0205929c
+.extern Sound_PlayDirectSequence
+.extern Sound_StopDirectSequence
 .extern gSoundContext
 
 .global func_ov090_0221b03c
@@ -93,12 +93,12 @@ func_ov090_0221b03c:
     mov r1, #0x54
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_0221b190
     mov r1, #0x55
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldmia sp!, {r4, r5, r6, pc}
 .L_0221b190: .word gSoundContext
 .size func_ov090_0221b03c, . - func_ov090_0221b03c

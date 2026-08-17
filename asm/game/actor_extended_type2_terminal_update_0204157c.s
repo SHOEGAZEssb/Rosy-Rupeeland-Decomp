@@ -6,7 +6,7 @@
 .extern PresentationBackedActor_SpawnSplitAmount
 .extern PresentationBackedActor_SpawnTripleVariant
 .extern GridEffectActor_SpawnWithRandomVelocity
-.extern func_02062864
+.extern ActorDescriptor_SetRangeEnd
 .extern func_020695f4
 .global ActorExtendedType2_ResetTerminalAttachmentState
 .type ActorExtendedType2_ResetTerminalAttachmentState, @function
@@ -62,7 +62,7 @@ ActorExtendedType2_UpdateTerminalState18: ; 0x020415a8
     mov r0, r7
     mov r1, #0x1
     ldrh r8, [r7, #0x4]
-    bl func_02062864
+    bl ActorDescriptor_SetRangeEnd
     mov r9, #0x0
     add r6, sp, #0x4
     mov r5, #0x12c

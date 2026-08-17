@@ -18,7 +18,7 @@ extern void func_020b44e8(void);
 extern void func_ov016_021fd188(void *);
 extern void func_ov016_021fd1e0(void *);
 extern void func_ov016_021ff04c(s32);
-extern void func_ov016_021ff068(s32, s32, s32, s32);
+extern void Overlay016_ConfigureMainBg3(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ extern "C" void func_ov016_021ff094(void *state)
 
     func_ov016_021ff04c(0);
     FIELD(s32, state, 0x48) = 0x1c;
-    func_ov016_021ff068(0, 0, 0x1e, 4);
+    Overlay016_ConfigureMainBg3(0, 0, 0x1e, 4);
     func_020925f8();
     func_02092638(0, 0, 2, 3);
 
@@ -66,7 +66,7 @@ extern "C" void func_ov016_021ff17c(void *state)
     GraphicsResourceSet resources;
 
     FIELD(s32, state, 0x48) = 0x1c;
-    func_ov016_021ff068(0, 0, 0x1e, 4);
+    Overlay016_ConfigureMainBg3(0, 0, 0x1e, 4);
     func_020925f8();
     *(volatile u32 *)0x04000018 = 0x00380000;
     func_02092638(0, 0, 3, 2);

@@ -12,7 +12,7 @@ extern u8 gActorRuntimeCollection[];
 extern "C" {
 #endif
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *registry);
-extern void func_02032a94(void *actor, void *other, s32 mode);
+extern void ActorContactState_AddContact(void *actor, void *other, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -34,7 +34,7 @@ void func_0204d3e0(void)
 
 /*
  * Inputs are a runtime actor variant, another actor, and a mode. Invoke base
- * interaction helper func_02032a94 with all three inputs, construct a temporary
+ * interaction helper ActorContactState_AddContact with all three inputs, construct a temporary
  * zero VecFx32Object, assign it into actor vector +0x38, and destroy the
  * temporary. If the other actor's type byte +0x4d is one, mode is zero, actor
  * pointer +0x188 is non-null, actor byte +0xe8 is zero, and registry predicate
@@ -47,7 +47,7 @@ s32 func_0204d3e4(void *self, void *other, s32 mode)
     u8 *actor = (u8 *)self;
     u8 *otherActor = (u8 *)other;
     VecFx32Object zero;
-    func_02032a94(actor, otherActor, mode);
+    ActorContactState_AddContact(actor, otherActor, mode);
     VecFx32Object_InitComponents(&zero, 0, 0, 0);
     VecFx32Object_Assign((VecFx32Object *)(actor + 0x38), &zero);
     VecFx32Object_Destroy(&zero);

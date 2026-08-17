@@ -4,7 +4,7 @@
 .extern GameWork_TestFlag
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern ActorCollection_SetEnabled
 .extern func_ov051_0220d688
 .extern gGameWork
@@ -33,7 +33,7 @@ func_ov051_0220da24:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, r1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 .L_0220da88:

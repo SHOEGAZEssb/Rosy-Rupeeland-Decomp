@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032a94(void *actor, u32 argument1, u32 argument2);
+extern void ActorContactState_AddContact(void *actor, u32 argument1, u32 argument2);
 #ifdef __cplusplus
 }
 #endif
@@ -15,7 +15,7 @@ typedef void (*ForwardFunction)(void *, u32, u32);
 
 /*
  * Inputs are a timed actor and two opaque callback arguments. Forwards all
- * three values first to actor virtual slot 0xC4 and then to func_02032a94.
+ * three values first to actor virtual slot 0xC4 and then to ActorContactState_AddContact.
  * Returns nothing. Both callbacks can mutate engine state or cross SDK
  * boundaries; this wrapper has no direct hardware effects.
  */
@@ -23,5 +23,5 @@ void TrackedResourceActorType26_ForwardInteractionCallback(void *actor, u32 argu
 {
     (*(ForwardFunction *)((u8 *)FIELD(void *, actor, 0) + 0xc4))
         (actor, argument1, argument2);
-    func_02032a94(actor, argument1, argument2);
+    ActorContactState_AddContact(actor, argument1, argument2);
 }

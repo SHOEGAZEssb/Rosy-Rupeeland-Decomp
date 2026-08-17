@@ -9,7 +9,7 @@
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_020922f0
 .extern func_02092c8c
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern func_ov030_021fcf20
 .extern func_ov030_021fda14
 .extern func_ov030_021fe554
@@ -86,7 +86,7 @@ L_021fef3c:
     cmp r0, #0x0
     beq L_021ff000
     ldr r0, [r4, #0x2bc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, L_021ff020
     ldr r1, L_021ff024
     ldr r0, [r0, #0x0]

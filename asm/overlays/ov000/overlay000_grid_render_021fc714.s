@@ -2,7 +2,7 @@
     .extern GraphicsSpriteCanvas_FillRect
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern func_ov000_021fc834
-    .extern func_02062ba4
+    .extern InventoryRecord_CanMergeQuantity
     .extern func_ov000_021fb6e0
     .global func_ov000_021fc714
 func_ov000_021fc714:
@@ -62,7 +62,7 @@ L_021fc77c:
     movge r1, #0x7
     sub r6, r8, r2
     strge r1, [sp, #0x8]
-    bl func_02062ba4
+    bl InventoryRecord_CanMergeQuantity
     cmp r0, #0x0
     beq L_021fc814
     ldr r0, [sp, #0x8]

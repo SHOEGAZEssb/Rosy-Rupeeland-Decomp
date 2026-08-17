@@ -40,8 +40,8 @@ extern void func_02070f34(void *resource, s32 value);
 extern void func_020706c4(void *resource, s32 first, s32 second);
 extern void func_02070bc4(void *resource, s32 value);
 extern void func_02070eac(void *resource, s32 first, s32 second);
-extern u16 *func_02070874(void *resource);
-extern void func_0209285c(void);
+extern u16 *GraphicsBgResourceData_GetDecoded(void *resource);
+extern void TitlePalette_SetSubBackdrop(void);
 extern void GraphicsResourceSet_Destroy(Overlay005GraphicsResourceSet *set);
 #ifdef __cplusplus
 }
@@ -95,7 +95,7 @@ static void overlay005_select_resource_ids(const Overlay005GraphicsState *state,
  * set with arguments 0/0. Then load fixed IDs 0xC00C..0xC00E; configure the
  * third resource with 0x0F, synchronize, configure first as 3/0, second as
  * 0x1E0, and third as 3/0. Cache the first halfword returned for the second
- * resource at +0x84, call func_0209285c, destroy the temporary set, and return
+ * resource at +0x84, call TitlePalette_SetSubBackdrop, destroy the temporary set, and return
  * no value. All MMIO and resource IDs are confirmed; SDK helper semantics are
  * described only to the level visible here.
  */
@@ -134,7 +134,7 @@ void func_ov005_021fc278(Overlay005GraphicsState *state)
     func_020706c4(set.first, 3, 0);
     func_02070bc4(set.second, 0x1e0);
     func_02070eac(set.third, 3, 0);
-    state->field_084 = *func_02070874(set.second);
-    func_0209285c();
+    state->field_084 = *GraphicsBgResourceData_GetDecoded(set.second);
+    TitlePalette_SetSubBackdrop();
     GraphicsResourceSet_Destroy(&set);
 }

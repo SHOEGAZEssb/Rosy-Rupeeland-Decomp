@@ -5,7 +5,7 @@
 .extern func_020313b4
 .extern Actor_GetCollection
 .extern func_02071ee0
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
     .global Actor_RebuildPrimaryAttachment
@@ -31,7 +31,7 @@ Actor_RebuildPrimaryAttachment: ; 0x0203bae4
     mov r1, #0x0
     add r0, r4, #0x1f0
     str r1, [r4, #0x58]
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     ldr r0, .L_0203bba0
     str r5, [sp, #0x0]
     ldr r1, [r0, #0x0]

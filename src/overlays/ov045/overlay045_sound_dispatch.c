@@ -13,7 +13,7 @@ struct SoundPair {
 };
 
 extern "C" void *gSoundContext;
-extern "C" void func_0205974c(void *context, s32 soundId);
+extern "C" void Sound_LoadGroup(void *context, s32 soundId);
 extern "C" void Sound_Play(void *context, s32 soundId, s32 argument);
 
 /*
@@ -59,7 +59,7 @@ extern "C" s32 func_ov045_0220c9e8(u32 selector, u32 subtype)
     } else {
         pair = top[selector];
     }
-    func_0205974c(gSoundContext, pair.prepare);
+    Sound_LoadGroup(gSoundContext, pair.prepare);
     Sound_Play(gSoundContext, pair.play, 0);
     return pair.prepare;
 }

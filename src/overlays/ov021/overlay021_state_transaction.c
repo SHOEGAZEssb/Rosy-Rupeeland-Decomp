@@ -32,7 +32,7 @@ extern s32 func_0209189c(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void Presentation_SetScript(void *, const void *, s32);
 extern s32 Presentation_IsScriptComplete(void *);
@@ -41,10 +41,10 @@ extern void func_ov021_021fd1cc(void *);
 extern void func_ov021_021fd39c(void *);
 extern void func_ov021_021fd490(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
-extern void func_ov021_021fe144(void *);
+extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe6b0(void *);
 extern void func_ov021_021feea4(void *);
-extern void func_ov021_021fee14(void *);
+extern void Overlay021_DestroyAuxiliaryPanel(void *);
 extern void func_ov021_021fee54(void *);
 extern void func_ov021_021ff050(void *, s32);
 extern s32 func_ov021_021ff0c8(void *);
@@ -53,8 +53,8 @@ extern void func_ov021_021ff1d0(void *, const void *);
 extern s32 func_ov021_021ff274(void *);
 extern void func_ov021_021ff380(void *);
 extern void func_ov021_021ff3ac(void *);
-extern void func_ov021_021ff3d8(void *);
-extern u32 func_ov021_021ff4f0(const void *);
+extern void Overlay021_UpdateTileTransitionOffset20(void *);
+extern u32 Overlay021Descriptor_GetFlags16_19(const void *);
 extern s32 func_ov021_021ffa10(const void *);
 extern void func_ov045_0220bc40(void *);
 extern s32 func_ov045_0220b924(void *, s32, s32, s32);
@@ -96,7 +96,7 @@ static void animate_currency(void *state, s32 amount, s32 debit)
 
 static void prepare_result_widget(void *state)
 {
-    func_ov021_021ff3d8(state);
+    Overlay021_UpdateTileTransitionOffset20(state);
     void *widget = FIELD(void *, state, 0x384);
     PresentationScalar_TransitionTo((u8 *)widget + 0xc, 2, 0x160);
     FIELD(s32, widget, 0x7c) = 0x10;
@@ -234,7 +234,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
         if (func_ov021_021ff0c8(FIELD(void *, state, 0x384)) != 0) {
             destroy_polymorphic(FIELD(void *, state, 0x384));
             FIELD(void *, state, 0x384) = 0;
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             func_02092c8c(1, -16);
             FIELD(s32, state, 4) = 30;
             FIELD(s32, state, 8) = 0;
@@ -242,7 +242,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
         break;
     case 30:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov021_021fee14(state);
+            Overlay021_DestroyAuxiliaryPanel(state);
             func_ov021_021fe6b0(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             if (FIELD(void *, state, 0x37c) != 0) {
@@ -256,7 +256,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
                 func_02062ca8(FIELD(void *, state, 0x380));
                 change_state(state, data_ov021_02202d38);
             } else {
-                func_ov021_021fe144(state);
+                Overlay021_SetupMainBackground(state);
                 func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
                 func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
                 func_ov021_021fd490(FIELD(void *, state, 0x2c0));
@@ -317,14 +317,14 @@ extern "C" s32 func_ov021_02202be0(void *state)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021ff0e0(
-                state, func_ov021_021ff4f0(FIELD(void *, state, 0x2bc)) == 2
+                state, Overlay021Descriptor_GetFlags16_19(FIELD(void *, state, 0x2bc)) == 2
                            ? 1 : 8);
             advance(state);
         }
         break;
     case 2:
         if (func_ov021_021ff274(state) != 0) {
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             change_state(state, FIELD(void *, state, 0x354) != 0
                                     ? data_ov021_02202d48
                                     : data_ov021_02202d70);

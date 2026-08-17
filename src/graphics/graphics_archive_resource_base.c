@@ -63,7 +63,7 @@ void *func_020701d0(void *self)
 }
 
 /* Second non-deleting destructor variant; frees payload and returns self. */
-void *func_02070204(void *self)
+void *GraphicsArchiveResource_DestroyVariant(void *self)
 {
     DestroyResourceData(self);
     return self;
@@ -73,13 +73,13 @@ void *func_02070204(void *self)
  * the header through the archive allocator stored in the global context. */
 void *func_0207039c(void *self)
 {
-    func_02070204(self);
+    GraphicsArchiveResource_DestroyVariant(self);
     func_020a7298(*(void **)(data_021e9e60 + 4), self);
     return self;
 }
 
 /* Screen-resource deleting destructor sharing the base allocator contract. */
-void *func_02070de4(void *self)
+void *GraphicsScreenResource_Delete(void *self)
 {
     return func_0207039c(self);
 }
@@ -92,18 +92,18 @@ void *func_02071148(void *self)
 
 /* Heap-deleting resource destructor at retail 0x02071200. The optional base
  * payload is released first, then the caller-owned header returns to Heap. */
-void *func_02071200(void *self)
+void *GraphicsArchiveResource_DeleteHeapPrimary(void *self)
 {
-    func_02070204(self);
+    GraphicsArchiveResource_DestroyVariant(self);
     Heap_Free(self);
     return self;
 }
 
 /* Equivalent deleting destructor retained at retail 0x02071278 for the
  * adjacent resource subtype and its distinct vtable entry. */
-void *func_02071278(void *self)
+void *GraphicsArchiveResource_DeleteHeapSecondary(void *self)
 {
-    func_02070204(self);
+    GraphicsArchiveResource_DestroyVariant(self);
     Heap_Free(self);
     return self;
 }
@@ -119,7 +119,7 @@ void *func_020707d4(void *self)
     if (decoded != 0) {
         Heap_Free(decoded);
     }
-    func_02070204(self);
+    GraphicsArchiveResource_DestroyVariant(self);
     func_020a7298(*(void **)(data_021e9e60 + 4), self);
     return self;
 }

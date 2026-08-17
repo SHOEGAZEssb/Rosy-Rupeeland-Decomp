@@ -10,8 +10,8 @@ extern const u8 data_ov035_02203120[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059278(void *soundContext, s32 id, s32 value);
-extern void func_0205929c(void *soundContext, s32 id, s32 value);
+extern void Sound_PlayDirectSequence(void *soundContext, s32 id, s32 value);
+extern void Sound_StopDirectSequence(void *soundContext, s32 id, s32 value);
 extern s32 Presentation_IsScriptComplete(void *object);
 extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
@@ -49,7 +49,7 @@ extern "C" s32 func_ov035_02202148(void *scene)
 {
     switch (FIELD(s32, scene, 0xa0)) {
     case 0:
-        func_02059278(gSoundContext, 0xb9, 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, 0xb9, 0x7f);
         ++FIELD(s32, scene, 0xa0);
         /* Fall through to poll the opening sprite immediately. */
     case 1:
@@ -78,7 +78,7 @@ extern "C" s32 func_ov035_02202148(void *scene)
         break;
     case 3:
         if (func_02091c7c((u8 *)scene + 0xa4, 2) != 0) {
-            func_0205929c(gSoundContext, 0xb9, 0x10);
+            Sound_StopDirectSequence(gSoundContext, 0xb9, 0x10);
             ++FIELD(s32, scene, 0xa0);
         }
         break;

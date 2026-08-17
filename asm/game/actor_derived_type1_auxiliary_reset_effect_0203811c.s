@@ -10,7 +10,7 @@
 .extern func_02008378
 .extern ActorMotionJitter_EnsureMinimum
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern func_0206e590
 .extern gGameWork
 .extern gHeapContext
@@ -30,7 +30,7 @@ ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     cmp r5, #0x0
     beq .L_02038158
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02038158:

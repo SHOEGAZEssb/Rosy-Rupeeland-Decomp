@@ -4,7 +4,7 @@
     .extern data_021052fc
     .extern data_ov018_021ffcd0
     .extern VecFx32Object_Destroy
-    .extern func_0200875c
+    .extern GamePhaseRuntime_BuildSecondaryTransform
     .extern GamePhaseRuntime_GetAuxiliaryOverlayObject
     .extern GamePhaseMetadata_WriteAdjustedCoordinates
     .extern func_020afaec
@@ -124,7 +124,7 @@ func_ov018_021fd740:
     mov r4, r0
     ldr r1, [r1, #0x0]
     add r0, sp, #0x0
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     ldr r1, [sp, #0x4]
     add r0, sp, #0x0
     mov r1, r1, asr #0xc

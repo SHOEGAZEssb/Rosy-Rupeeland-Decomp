@@ -66,7 +66,7 @@ void *func_020713e4(u32 size)
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_0207142c(GraphicsArchive *archive, u32 resourceId, u32 *outputSize)
+void *GraphicsArchive_LoadIndexedPayload(GraphicsArchive *archive, u32 resourceId, u32 *outputSize)
 {
     FSFile file;
     const u32 entryIndex = resourceId & 0xfff;

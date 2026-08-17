@@ -16,11 +16,11 @@ extern "C" u8 data_ov050_0220e3e8[];
 extern "C" u8 data_ov050_0220e3f0[];
 extern "C" void *Heap_Alloc(u32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
-extern "C" void *func_0201e250(void *);
+extern "C" void *TimedSpritePresentation_InitBase(void *);
 extern "C" void *func_0201e28c(void *);
-extern "C" void func_0201ded4(void *, void *);
-extern "C" void func_02071ea4(void *);
-extern "C" void func_02071eb8(void *);
+extern "C" void PresentationList_AppendObject(void *, void *);
+extern "C" void AnimationResourceState_InitEmbedded(void *);
+extern "C" void AnimationResourceState_Destroy(void *);
 extern "C" void func_02071ee0(void *, void *, s32, s32, s32);
 extern "C" void *VecFx32Object_Init(void *);
 extern "C" void *VecFx32Object_InitCopy(void *, const void *);
@@ -38,12 +38,12 @@ extern "C" void GameWork_ClearFlag(void *, s32);
 extern "C" void func_020adff0(const void *, const void *, void *);
 extern "C" void *func_ov050_0220d824(void *, void *, void *, const void *,
                                       const void *);
-extern "C" void *func_ov050_0220d8f4(void *);
-extern "C" s32 func_ov050_0220d9c4(void *, const void *);
-extern "C" void func_ov050_0220db40(void *, u32);
-extern "C" void func_ov050_0220e204(void *, s32);
-extern "C" bool func_ov050_0220e224(void *);
-extern "C" void func_ov050_0220e26c(void *, s32);
+extern "C" void *Overlay050EffectManager_Destroy(void *);
+extern "C" s32 Overlay050EffectManager_Update(void *, const void *);
+extern "C" void Overlay050Effect_SetAlpha(void *, u32);
+extern "C" void Overlay050Scene_SetChildValue30(void *, s32);
+extern "C" bool Overlay050Scene_AreChildrenIdle(void *);
+extern "C" void Overlay050Scene_SetChildValue34(void *, s32);
 extern "C" void func_ov050_0220e168(void *, const void *, const void *);
 
 /*
@@ -58,9 +58,9 @@ extern "C" void *func_ov050_0220db84(void *scene, void *argument,
 {
     s32 index;
 
-    func_0201e250(scene);
+    TimedSpritePresentation_InitBase(scene);
     FIELD(void *, scene, 0) = data_ov050_0220e3c0;
-    func_02071ea4((u8 *)scene + 8);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 8);
     FIELD(void *, scene, 0x2c) = argument;
     VecFx32Object_InitCopy((u8 *)scene + 0x30, origin);
     FIELD(s32, scene, 0x40) = 0;
@@ -105,7 +105,7 @@ static void *DestroyScene(void *scene, s32 freeScene)
     for (index = 0; index < 4; ++index) {
         void *child = FIELD(void *, scene, 0x1c + index * 4);
         if (child != 0) {
-            func_ov050_0220d8f4(child);
+            Overlay050EffectManager_Destroy(child);
             Heap_Free(child);
         }
     }
@@ -115,14 +115,14 @@ static void *DestroyScene(void *scene, s32 freeScene)
         gDebugFont, FIELD(void *, scene, 0x18));
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 0);
     VecFx32Object_Destroy((u8 *)scene + 0x30);
-    func_02071eb8((u8 *)scene + 8);
+    AnimationResourceState_Destroy((u8 *)scene + 8);
     func_0201e28c(scene);
     if (freeScene != 0)
         Heap_Free(scene);
     return scene;
 }
 
-extern "C" void *func_ov050_0220dcb8(void *scene)
+extern "C" void *Overlay050Scene_Destroy(void *scene)
 {
     return DestroyScene(scene, 0);
 }
@@ -132,7 +132,7 @@ extern "C" void *func_ov050_0220dcb8(void *scene)
  * its former address identity. Heap/SDK state changes and the result is not
  * safe to dereference.
  */
-extern "C" void *func_ov050_0220dd50(void *scene)
+extern "C" void *Overlay050Scene_Delete(void *scene)
 {
     return DestroyScene(scene, 1);
 }
@@ -144,12 +144,12 @@ extern "C" void *func_ov050_0220dd50(void *scene)
  * rendering. Scene, children, heap, GameWork, RNG, and SDK state can change;
  * no direct MMIO is performed. State meanings remain offset-derived.
  */
-extern "C" s32 func_ov050_0220ddf0(void *scene)
+extern "C" s32 Overlay050Scene_Update(void *scene)
 {
     s16 phaseMode;
     s32 index;
 
-    if (func_ov050_0220e224(scene))
+    if (Overlay050Scene_AreChildrenIdle(scene))
         GameWork_ClearFlag(gGameWork, 0x245);
     else
         GameWork_SetFlag(gGameWork, 0x245);
@@ -158,25 +158,25 @@ extern "C" s32 func_ov050_0220ddf0(void *scene)
 
     if (GameWork_TestFlag(gGameWork, 0x244)) {
         FIELD(s32, scene, 0x40) = 0;
-        func_ov050_0220e26c(scene, 0);
+        Overlay050Scene_SetChildValue34(scene, 0);
     } else {
-        func_ov050_0220e26c(scene, 1);
+        Overlay050Scene_SetChildValue34(scene, 1);
         phaseMode = FIELD(s16, gGameWork, 0x78);
         if (phaseMode == 2) {
             if (FIELD(s32, scene, 0x40) == 0) {
-                func_ov050_0220e204(scene, 0xc00);
+                Overlay050Scene_SetChildValue30(scene, 0xc00);
                 ++FIELD(s32, scene, 0x40);
             }
         } else if (phaseMode == 3) {
             if (FIELD(s32, scene, 0x40) == 0) {
                 FIELD(s32, scene, 0x44) = 0x40;
-                func_ov050_0220e204(scene, 0x1400);
+                Overlay050Scene_SetChildValue30(scene, 0x1400);
                 ++FIELD(s32, scene, 0x40);
             }
         } else if (phaseMode == 4) {
             switch (FIELD(s32, scene, 0x40)) {
             case 0:
-                func_ov050_0220e204(scene, 0x1000);
+                Overlay050Scene_SetChildValue30(scene, 0x1000);
                 FIELD(s32, scene, 0x44) = 0x100;
                 FIELD(s32, scene, 0x5c) = 0;
                 FIELD(s32, FIELD(void *, scene, 0x1c), 0x30) = 0x2000;
@@ -186,7 +186,7 @@ extern "C" s32 func_ov050_0220ddf0(void *scene)
                 break;
             case 1:
                 if (--FIELD(s32, scene, 0x4c) <= 0) {
-                    func_ov050_0220e204(scene, 0x1000);
+                    Overlay050Scene_SetChildValue30(scene, 0x1000);
                     FIELD(s32, scene, 0x4c) = 30;
                     ++FIELD(s32, scene, 0x40);
                 }
@@ -223,8 +223,8 @@ extern "C" s32 func_ov050_0220ddf0(void *scene)
         VecFx32Object_Assign((u8 *)child + 0x20, transformed);
         VecFx32Object_Destroy(transformed);
         VecFx32Object_Destroy(offset);
-        func_ov050_0220d9c4(child, FIELD(void *, scene, 0x2c));
-        func_ov050_0220db40(child, phase < 0x8000 ? 2 : 3);
+        Overlay050EffectManager_Update(child, FIELD(void *, scene, 0x2c));
+        Overlay050Effect_SetAlpha(child, phase < 0x8000 ? 2 : 3);
     }
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x14));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x18));
@@ -260,6 +260,6 @@ extern "C" void *func_ov050_0220e1a0(void *argument,
 
     if (scene != 0)
         scene = func_ov050_0220db84(scene, argument, origin, resources);
-    func_0201ded4((u8 *)data_021052fc + 0x2f7c, scene);
+    PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, scene);
     return scene;
 }

@@ -16,7 +16,7 @@ extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void func_02070638(void *, s32, s32);
 extern void func_020706c4(void *, s32, s32);
-extern s32 func_02070874(void *);
+extern s32 GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02070f34(void *, s32);
@@ -115,7 +115,7 @@ extern "C" void func_ov022_021fe3c0(void *scene)
  */
 extern "C" void func_ov022_021fe498(void *scene)
 {
-    s32 palette = func_02070874(FIELD(void *, scene, 0x374)) + 0x20;
+    s32 palette = GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x374)) + 0x20;
     FIELD(s32, scene, 0x36c) = palette;
     FIELD(s32, scene, 0x368) = palette;
     FIELD(s32, scene, 0x370) = 0x10;

@@ -14,14 +14,14 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern s32 func_0209189c(void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void PresentationScalar_TransitionBy(void *, s32, s32);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationList_Append(void *, void *);
-extern void *func_020955d8(void *, void *);
-extern void func_020956a4(void *);
+extern void *AlternateSpritePresentation_Init(void *, void *);
+extern void AlternateSpritePresentation_SyncTransform(void *);
 extern void func_ov026_021fe5c0(void *, s32);
 extern void func_ov026_021ff830(void *, u32, s32, s32, s32, u8, u32);
 #ifdef __cplusplus
@@ -42,9 +42,9 @@ extern "C" void func_ov026_02200e0c(void *scene, s32 height)
                                   (u8 *)scene + 0x94);
     void *object = Heap_Alloc(0xa0, data_ov026_02204acc, 4, gHeapContext);
     if (object != 0)
-        object = func_020955d8(object, record);
+        object = AlternateSpritePresentation_Init(object, record);
 
-    u32 angle = (u32)func_020918f4((u8 *)scene + 0x7a4, 0x1000);
+    u32 angle = (u32)TitleRandom_NextBounded((u8 *)scene + 0x7a4, 0x1000);
     func_ov026_021ff830(record, 0, 0, 0, 0, 0x14, 0x42);
     FIELD(s32, record, 0x44) = 0x8000;
     s32 index = (angle >> 4) & 0xfff;
@@ -54,7 +54,7 @@ extern "C" void func_ov026_02200e0c(void *scene, s32 height)
     s32 z = (cos_value * 0x333 + 0x800) >> 12;
     Presentation_SetPosition(object, x, height, z);
     PresentationScalar_SetImmediate((u8 *)object + 0x6c, 0x19a);
-    func_020956a4(object);
+    AlternateSpritePresentation_SyncTransform(object);
     FIELD(s32, object, 0x88) = 1;
     PresentationScalar_TransitionBy((u8 *)object + 0xc, 1,
                   (sin_value * 0xcd + 0x800) >> 12);

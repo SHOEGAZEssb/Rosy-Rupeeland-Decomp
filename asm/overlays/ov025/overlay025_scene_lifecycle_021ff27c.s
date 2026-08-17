@@ -15,21 +15,21 @@
 .extern data_ov025_02203394
 .extern data_ov025_0220339c
 .extern data_ov025_022033a4
-.extern func_0205974c
-.extern func_02071ea4
+.extern Sound_LoadGroup
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02091b6c
-.extern func_02091e28
-.extern func_020926d8
+.extern SceneInputBase_Init
+.extern TitleScreenResourceCollection_Init
 .extern func_02092754
-.extern func_02092798
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 .extern func_020929b0
-.extern func_02092cc0
+.extern TitleDialog_Init
 .extern func_02092f88
 .extern Presentation_SetScript
 .extern PresentationList_Append
@@ -61,23 +61,23 @@ func_ov025_021ff27c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x3c
     mov r10, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021ff9dc
     add r0, r10, #0x5c
     str r1, [r10, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x68
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x74
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x80
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x8c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x98
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0xa4
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0xf0
     bl func_020957bc
     add r0, r10, #0x19c
@@ -95,10 +95,10 @@ func_ov025_021ff27c:
     add r0, r0, #0x400
     bl func_ov025_021ff1dc
     add r0, r10, #0x530
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     add r0, r10, #0x174
     add r0, r0, #0x400
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x5a0
     bl func_020929b0
     add r0, r10, #0x1c4
@@ -488,7 +488,7 @@ L_021ff8ec:
     ldr r1, L_021ff9ec
     ldr r2, [r10, #0x57c]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021ff91c:
     str r0, [r10, #0x50c]
     mov r0, #0x40
@@ -527,7 +527,7 @@ L_021ff91c:
     ldr r0, L_021ffa60
     ldr r1, L_021ffa64
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     ldr r1, [r10, #0x20]
     mov r0, r10
     orr r1, r1, #0x400

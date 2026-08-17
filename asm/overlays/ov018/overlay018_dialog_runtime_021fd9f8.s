@@ -4,8 +4,8 @@
     .extern data_021f3ecc
     .extern LanguageLookup_GetResourceSize
     .extern func_020791e0
-    .extern func_02092e9c
-    .extern func_02093360
+    .extern TitleDialog_SetText
+    .extern TitleDialog_UpdateTextPage
 .global func_ov018_021fd9f8
 func_ov018_021fd9f8:
     str r1, [r0, #0xa4]
@@ -35,7 +35,7 @@ func_ov018_021fda10:
     ldr r0, [r6, #0x418]
     add r1, r6, #0x1c8
     mov r2, #0x4
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldmia sp!, {r4, r5, r6, pc}
 L_021fda5c: .word data_021f3ecc
     .size func_ov018_021fda10, . - func_ov018_021fda10
@@ -101,7 +101,7 @@ L_021fdae0:
 L_021fdb38:
     ldr r0, [r4, #0x418]
     add r1, sp, #0x1c
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x1f
     str r0, [sp, #0x0]
     str r0, [sp, #0x18]

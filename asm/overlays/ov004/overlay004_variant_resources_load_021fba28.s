@@ -10,7 +10,7 @@
     .extern func_02070bc4
     .extern func_02070eac
     .extern GraphicsResourceSet_ReleaseHandles
-    .extern func_0205974c
+    .extern Sound_LoadGroup
     .extern GraphicsResourceSet_Destroy
     .extern data_020f4e18
     .extern gSoundContext
@@ -328,7 +328,7 @@ L_021fbe84:
     ldr r0, L_021fbf0c
     ldr r1, [r4, #0x154]
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

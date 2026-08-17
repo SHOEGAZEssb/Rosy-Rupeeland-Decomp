@@ -12,14 +12,14 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092260
 .extern func_02092c8c
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern func_02095860
 .extern func_ov030_021fda14
 .extern func_ov030_021fe768
 .extern func_ov030_021fea00
 .extern func_ov030_021feb0c
 .extern func_ov045_0220c9e8
-.extern func_ov045_0220d2f8
+.extern Overlay045_DrawSelectorPreview
 .extern gDebugFont
 .extern gLupyContext
 
@@ -51,7 +51,7 @@ L_021feb84:
     bl GraphicsSpriteRenderer_SetFontResource
     mov r0, #0x8
     mov r1, #0x21
-    bl func_ov045_0220d2f8
+    bl Overlay045_DrawSelectorPreview
     ldr r1, [r4, #0x20]
     mov r0, #0x0
     bic r1, r1, #0x1
@@ -132,7 +132,7 @@ L_021fecb4:
     cmp r0, #0x0
     beq L_021fed08
     ldr r0, [r4, #0x2bc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
     bl func_02092260

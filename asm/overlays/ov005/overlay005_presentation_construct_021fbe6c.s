@@ -1,6 +1,6 @@
     .text
-    .extern func_02091e28
-    .extern func_02071ea4
+    .extern SceneInputBase_Init
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern Heap_Alloc
@@ -35,11 +35,11 @@
 func_ov005_021fbe6c: ; 0x021fbe6c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fc0cc
     add r0, r4, #0x54
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldr r3, L_021fc0d0
     ldr r0, L_021fc0d4
     str r3, [sp, #0x0]

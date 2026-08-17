@@ -37,7 +37,7 @@ extern "C" void func_ov016_021ff04c(s32 enabled)
  * at shifts 14, 7, 8, and 2, preserving only existing bits 0, 1, and 6. Return
  * void. The volatile halfword write directly changes BG3 size/map/tile settings.
  */
-extern "C" void func_ov016_021ff068(s32 size, s32 mapBase, s32 colorMode, s32 tileBase)
+extern "C" void Overlay016_ConfigureMainBg3(s32 size, s32 mapBase, s32 colorMode, s32 tileBase)
 {
     volatile u16 *bg3 = (volatile u16 *)0x0400000e;
     *bg3 = (u16)((*bg3 & 0x43) | (size << 14) | (mapBase << 7) |

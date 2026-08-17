@@ -12,16 +12,16 @@ extern const s16 data_020c9670[];
 extern "C" {
 #endif
 extern void *func_020791e0(const void *table, s32 id);
-extern void func_02092e9c(void *dialog, void *text, s32 mode);
+extern void TitleDialog_SetText(void *dialog, void *text, s32 mode);
 extern s32 func_ov033_021fd418(void *scene);
-extern void func_0205929c(void *sound, s32 id, s32 duration);
+extern void Sound_StopDirectSequence(void *sound, s32 id, s32 duration);
 extern void func_02091b98(void *interpolator, s32 value);
-extern void func_020939d8(void *dialog);
+extern void TitleDialog_ClearTextRect(void *dialog);
 extern void func_ov033_021fd4cc(void *scene, s32 delta);
 extern void VecFx32Object_Add(void *destination, void *source);
 extern s32 func_02091c7c(void *interpolator, s32 advance);
-extern void func_0205974c(void *sound, s32 id);
-extern void func_02059278(void *sound, s32 id, s32 value);
+extern void Sound_LoadGroup(void *sound, s32 id);
+extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
 extern void func_02091bac(void *interpolator, s32 mode, s32 start,
                          s32 end, s32 duration);
 extern s32 func_02091cf0(void *interpolator);
@@ -31,7 +31,7 @@ extern void GraphicsSpriteGroup_ReplaceStateResources(void *context, void *sprit
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
 extern void Sound_Play(void *sound, s32 id, s32 parameter);
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
-extern void func_020597fc(void *sound, s32 id);
+extern void Sound_ReleaseGroup(void *sound, s32 id);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteContext);
 #ifdef __cplusplus
 }
@@ -62,16 +62,16 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
 
     if (state == 0) {
         void *text = func_020791e0(data_021f3ecc, 0x1fc);
-        func_02092e9c(FIELD(void *, scene, 0xc4), text, 2);
+        TitleDialog_SetText(FIELD(void *, scene, 0xc4), text, 2);
         FIELD(s32, scene, 0xd0) = 1;
         state = 1;
     }
 
     if (state == 1) {
         if (func_ov033_021fd418(scene)) {
-            func_0205929c(gSoundContext, 0x68, 0xc);
+            Sound_StopDirectSequence(gSoundContext, 0x68, 0xc);
             func_02091b98((u8 *)scene + 0x84, 0xc);
-            func_020939d8(FIELD(void *, scene, 0xc4));
+            TitleDialog_ClearTextRect(FIELD(void *, scene, 0xc4));
             FIELD(s32, scene, 0xd0) = 2;
         } else {
             func_ov033_021fd4cc(scene, 0x800);
@@ -82,8 +82,8 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
         }
     } else if (state == 2) {
         if (func_02091c7c((u8 *)scene + 0x84, 2) != 0) {
-            func_0205974c(gSoundContext, 0x1f4);
-            func_02059278(gSoundContext, 0x67, 0x7f);
+            Sound_LoadGroup(gSoundContext, 0x1f4);
+            Sound_PlayDirectSequence(gSoundContext, 0x67, 0x7f);
             func_02091bac((u8 *)scene + 0x84, 1, 0, 0x800, 0x78);
             func_02091b98((u8 *)scene + 0x68, 0x14);
             FIELD(s32, scene, 0xd0) = 3;
@@ -133,8 +133,8 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
                 FIELD(u32, secondary, 0x268) &= ~0x40000u;
                 Type7Actor_ResetMotionAndCooldown(secondary);
             }
-            func_020597fc(gSoundContext, 0x1f4);
-            func_0205929c(gSoundContext, 0x67, 0x1e);
+            Sound_ReleaseGroup(gSoundContext, 0x1f4);
+            Sound_StopDirectSequence(gSoundContext, 0x67, 0x1e);
             FIELD(s32, scene, 0xd0) = 5;
         }
     } else if (state == 5) {

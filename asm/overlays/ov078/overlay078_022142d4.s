@@ -6,7 +6,7 @@
 .extern data_ov078_02215d48
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern func_02034a60
 .extern func_0204cfa4
 .extern func_020adc90
@@ -271,7 +271,7 @@ func_ov078_022142d4:
     mov r1, r6
     mov r2, r5
     str r6, [r7, #0x2ac]
-    bl func_02032a94
+    bl ActorContactState_AddContact
     add sp, sp, #0x30
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .L_022146b0: .word data_ov078_02215c88

@@ -5,11 +5,11 @@
 
 extern u8 data_020f26e0[];
 extern void Presentation_Init(void *object);
-extern void func_02072b68(void *sprite, u32 animation);
+extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern void PresentationScalar_SetImmediate(void *component, s32 value);
 extern void PresentationScalar_TransitionTo(void *component, s32 mode, s32 target);
 extern s32 Presentation_AdvanceTransitions(void *object);
-extern s32 func_02092910(void *sprite, const void *point);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *sprite, const void *point);
 
 void *func_020957bc(void *object)
 {
@@ -33,7 +33,7 @@ void func_020957f0(void *object, void *sprite, s32 animation,
     u8 *sprite_bytes = (u8 *)sprite;
 
     *(void **)(bytes + 0x9c) = sprite;
-    func_02072b68(sprite, (u32)animation & 0xffu);
+    GraphicsSpriteState_SetAnimation(sprite, (u32)animation & 0xffu);
     sprite_bytes[0x3a] = (u8)display_mode;
     *(u16 *)(sprite_bytes + 0x28) = (u16)attribute;
 }
@@ -62,7 +62,7 @@ s32 func_02095860(void *object, const void *point,
                   s32 xOffset, s32 yOffset)
 {
     u8 *bytes = (u8 *)object;
-    s32 hit = func_02092910(*(void **)(bytes + 0x9c), point);
+    s32 hit = GraphicsSpriteState_TestTouchPoint(*(void **)(bytes + 0x9c), point);
 
     if (hit) {
         PresentationScalar_SetImmediate(bytes + 0x0c, *(s32 *)(bytes + 0xa0));
@@ -107,12 +107,12 @@ void func_02095988(void *object, s32 animation)
 {
     void *sprite = *(void **)((u8 *)object + 0x9c);
     if (sprite != 0) {
-        func_02072b68(sprite, (u32)animation & 0xffu);
+        GraphicsSpriteState_SetAnimation(sprite, (u32)animation & 0xffu);
     }
 }
 
 /* Advance controller interpolation and publish its rounded coordinates. */
-void func_020958f0(void *object)
+void SpriteMotionController_PublishCoordinates(void *object)
 {
     u8 *bytes = (u8 *)object;
     u8 *sprite = *(u8 **)(bytes + 0x9c);
@@ -130,6 +130,6 @@ void func_020958f0(void *object)
 void func_020958d8(void *object)
 {
     Presentation_AdvanceTransitions(object);
-    func_020958f0(object);
+    SpriteMotionController_PublishCoordinates(object);
 }
 

@@ -12,10 +12,10 @@
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern func_02092c8c
 .extern func_ov001_021fbe6c
 .extern gDebugFont
@@ -28,7 +28,7 @@
 func_0202225c: ; 0x0202225c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_020222cc
     add r0, r4, #0x10
     str r1, [r4, #0x0]

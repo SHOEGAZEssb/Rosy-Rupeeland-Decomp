@@ -128,7 +128,7 @@ extern "C" void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern "C" void ActorCollection_SetEnabled(void *collection, s32 enabled);
 extern "C" s32 GameWork_TestFlag(void *work, u32 flag);
 extern "C" void GameWork_ClearFlag(void *work, u32 flag);
-extern "C" void func_02008570(void *runtime, s32 first, s32 second);
+extern "C" void GamePhaseRuntime_ApplyScreenMode(void *runtime, s32 first, s32 second);
 extern "C" void func_ov051_0220d688(void *scene);
 
 extern "C" s32 func_ov051_0220da24(void *scene)
@@ -139,7 +139,7 @@ extern "C" s32 func_ov051_0220da24(void *scene)
                                1);
     if (GameWork_TestFlag(gGameWork, 0x40b)) {
         GameWork_ClearFlag(gGameWork, 0x40b);
-        func_02008570(runtime, 1, 1);
+        GamePhaseRuntime_ApplyScreenMode(runtime, 1, 1);
         return 1;
     }
     func_ov051_0220d688(scene);

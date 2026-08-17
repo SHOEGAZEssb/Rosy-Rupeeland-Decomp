@@ -5,7 +5,7 @@
 .extern func_02070638
 .extern func_02070e0c
 .extern func_02070b50
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern PaletteBuffer_Write
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_02070f80
@@ -60,7 +60,7 @@ MainThreeLayerResourceRenderer_LoadBgResources: ; 0x0202cc88
     mov r1, #0x0
     bl func_02070b50
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
     ldr r0, .L_0202cf00
     mov r2, #0x0
@@ -108,7 +108,7 @@ MainThreeLayerResourceRenderer_LoadBgResources: ; 0x0202cc88
     mov r1, #0xc0
     bl func_02070b50
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
     mov r2, #0xc0
     ldr r0, .L_0202cf00
@@ -160,7 +160,7 @@ MainThreeLayerResourceRenderer_LoadBgResources: ; 0x0202cc88
     mov r1, #0x1e0
     bl func_02070b50
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
     ldr r0, .L_0202cf00
     mov r2, #0x1e0

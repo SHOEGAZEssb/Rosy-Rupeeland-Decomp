@@ -12,10 +12,10 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void func_02070e0c(void *, s32, s32);
-extern void *func_02092790(void *, s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
-extern void func_02095c30(void *, s32);
-extern void func_02095f48(void *, void *);
+extern void ModalState_InitResources(void *, s32);
+extern void ModalState_CopyAttachmentText(void *, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -28,13 +28,13 @@ extern void func_02095f48(void *, void *);
  */
 extern "C" void func_ov025_02200224(void *scene, s32 selection, void *payload)
 {
-    func_02070e0c(func_02092790((u8 *)scene + 0x530, 0), 1, 0);
+    func_02070e0c(TitleScreenResourceCollection_Get((u8 *)scene + 0x530, 0), 1, 0);
     void *modal = Heap_Alloc(0x2d0, data_ov025_022033ac, 4, gHeapContext);
     if (modal)
         modal = func_020959d4(modal, 0, 0);
     FIELD(void *, scene, 0x59c) = modal;
     if (payload)
-        func_02095f48(FIELD(void *, scene, 0x59c), payload);
-    func_02095c30(FIELD(void *, scene, 0x59c), selection);
+        ModalState_CopyAttachmentText(FIELD(void *, scene, 0x59c), payload);
+    ModalState_InitResources(FIELD(void *, scene, 0x59c), selection);
     FIELD(u32, scene, 0x48) |= 2;
 }

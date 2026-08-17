@@ -10,12 +10,12 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_02022cb0
 .extern GridEffectActorRegistry_BroadcastSlot1c
 .extern ActorInteractionRegistry_UpdateAll
-.extern func_02058d40
-.extern func_02059278
+.extern Sound_StopAllDirectSequences
+.extern Sound_PlayDirectSequence
 .extern gHeapContext
 .extern gLupyContext
 .extern gSoundContext
@@ -104,7 +104,7 @@ Overlay064Scene_UpdateMode2:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     ldr r0, .L_02211558
     mov r1, #0x0
     bl DisplayBrightnessPair_GetScreen
@@ -122,12 +122,12 @@ Overlay064Scene_UpdateMode2:
     ldr r0, .L_02211548
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02058d40
+    bl Sound_StopAllDirectSequences
     ldr r0, .L_02211548
     mov r1, #0x27
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     b .L_02211530
 .L_02211514:
     ldrsh r0, [r6, #0x74]

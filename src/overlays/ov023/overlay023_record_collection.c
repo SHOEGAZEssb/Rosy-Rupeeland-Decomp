@@ -15,8 +15,8 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02003e20(u32, const void *, u32, void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
@@ -27,12 +27,12 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern s32 func_0207b4e8(void *);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, ...);
-extern void func_02094550(void *, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_SetSpritePriority(void *, s32);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_020c09cc(void *, s32, s32, s32, ...);
 extern void func_020c0c24(void *, s32, s32, void *);
@@ -56,7 +56,7 @@ extern void func_ov023_021fd268(void *);
  */
 extern "C" void *func_ov023_021fce44(void *collection, void *font, s32 capacity)
 {
-    func_02092798((u8 *)collection + 8);
+    TitleCharacterResourceCollection_Init((u8 *)collection + 8);
     FIELD(void *, collection, 0) = font;
     FIELD(void *, collection, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, collection, 4), 0x18) = 40;
@@ -77,8 +77,8 @@ extern "C" void *func_ov023_021fce44(void *collection, void *font, s32 capacity)
         ui = func_02094154(ui, font, capacity ? capacity : 1,
                           capacity ? 4 : 1, 0xdc, 40, -4);
     FIELD(void *, collection, 0x38) = ui;
-    func_02094550(ui, 0);
-    func_02094574(ui);
+    InventoryScroll_SetSpritePriority(ui, 0);
+    InventoryScroll_UpdatePresentation(ui);
     func_ov023_021fd0dc(collection);
     func_02092814((u8 *)collection + 8, 0x7007);
     func_02092814((u8 *)collection + 8, 0x7000);

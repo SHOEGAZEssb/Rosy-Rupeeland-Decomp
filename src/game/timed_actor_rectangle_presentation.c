@@ -21,9 +21,9 @@ extern "C" {
 extern void *data_020d6a24;
 extern u8 *data_021052fc;
 extern void *data_020f4e14;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
-extern void func_0201ded4(void *, void *);
+extern void PresentationList_AppendObject(void *, void *);
 extern const s32 *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 func_020befec(s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -40,13 +40,13 @@ TimedActorRectanglePresentation *func_02025120(
     TimedActorRectanglePresentation *self, void *actor, s32 firstExtent,
     s32 secondExtent, s32 lifetime)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)data_020d6a24;
     self->actor08 = (u8 *)actor;
     self->firstExtent0c = (s16)firstExtent;
     self->secondExtent0e = (s16)secondExtent;
     self->remaining10 = lifetime;
-    func_0201ded4(data_021052fc + 0x2f7c, self);
+    PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
     return self;
 }
 

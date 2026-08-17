@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
-extern s32 func_020918f4(void *randomState, s32 bound);
+extern s32 TitleRandom_NextBounded(void *randomState, s32 bound);
 extern void *func_ov037_021fd554(void *object, void *owner, s32 offset);
 extern void func_02094bf0(void *object, s32 x, s32 y, s32 z);
 extern void PresentationScalar_SetImmediate(void *field, s32 value, ...);
@@ -49,10 +49,10 @@ extern "C" void func_ov037_021fdf68(void *scene)
     }
 
     s32 angle = func_0209189c(randomState, 0x740, 0x8c0) << 4;
-    s32 secondAngle = func_020918f4(randomState, 0x1000) << 4;
+    s32 secondAngle = TitleRandom_NextBounded(randomState, 0x1000) << 4;
     func_02094bf0(object, 0, secondAngle, -angle);
 
-    s32 choice = func_020918f4(randomState, 0x1c);
+    s32 choice = TitleRandom_NextBounded(randomState, 0x1c);
     u16 texture;
     s32 scale;
     if (choice >= 21) {

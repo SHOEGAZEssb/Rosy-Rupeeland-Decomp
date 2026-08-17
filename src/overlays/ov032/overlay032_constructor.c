@@ -18,7 +18,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_ov032_0220142c(void *);
 extern void func_ov032_021fce00(void *);
 extern void __construct_array(void *, s32, s32, void *, void *);
@@ -26,22 +26,22 @@ extern void GraphicsResourceSet_Init(void *);
 extern void func_ov032_021fd7a4(void *);
 extern void func_02092364(void *);
 extern void func_ov032_021fd7c0(void *);
-extern void func_ov032_021fd7e0(void *);
+extern void Overlay032Child_Destroy(void *);
 extern s32 func_020adc90(s32, s32);
-extern void func_0205974c(void *, s32);
+extern void Sound_LoadGroup(void *, s32);
 extern void func_02058eb8(void *, s32, s32, s32, s32);
-extern void *func_02027f94(void);
-extern s32 func_02027854(void *);
+extern void *GamePhaseProgress_GetOrCreateGlobal(void);
+extern s32 GamePhaseProgress_GetCurrentAdjustedThreshold(void *);
 extern u32 genrand_int32(void);
-extern void *func_02071980(void *, s32);
+extern void *GraphicsArchive_AcquireVfdResource(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void *func_02092cc0(void *, void *, void *);
+extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_ov032_021fce08(void *, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_ov032_02200f88(void *, void *, s32, void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_ov032_02201450(void *, void *, void *);
+extern void Overlay032Controller_CreateObject(void *, void *, void *);
 extern void func_ov032_022014c0(void *, s32, s32, s32, s32, s32, s32, s32, s32);
 extern void GameWork_ClearFlag(void *, s32);
 #ifdef __cplusplus
@@ -66,7 +66,7 @@ typedef struct Overlay032ControllerSpec {
 static void setup_controller(void *object, const Overlay032ControllerSpec *spec)
 {
     void *controller = (u8 *)object + spec->offset;
-    func_ov032_02201450(controller,
+    Overlay032Controller_CreateObject(controller,
         FIELD(void *, object, spec->rendererOffset),
         (u8 *)object + spec->resourceOffset);
     func_ov032_022014c0(controller, spec->first, spec->second,
@@ -118,7 +118,7 @@ extern "C" void *func_ov032_021fce20(void *object)
     };
 
     for (s32 i = 0; i < 6; ++i)
-        func_02071ea4((u8 *)object + resourceOffsets[i]);
+        AnimationResourceState_InitEmbedded((u8 *)object + resourceOffsets[i]);
     for (s32 offset = 0x64; offset <= 0x304; offset += 0x30)
         func_ov032_0220142c((u8 *)object + offset);
     __construct_array((u8 *)object + 0x334, 0x28, 0x30,
@@ -132,7 +132,7 @@ extern "C" void *func_ov032_021fce20(void *object)
     func_02092364((u8 *)object + 0xbe8);
     __construct_array((u8 *)object + 0xc44, 5, 0x6c,
                       (void *)func_ov032_021fd7c0,
-                      (void *)func_ov032_021fd7e0);
+                      (void *)Overlay032Child_Destroy);
     func_ov032_0220142c((u8 *)object + 0xedc);
     GraphicsResourceSet_Init((u8 *)object + 0xf18);
 
@@ -142,10 +142,10 @@ extern "C" void *func_ov032_021fce20(void *object)
         FIELD(s32, object, 0xe60 + i * 4) = i + 0x4c;
     FIELD(s32, object, 0xc30) = func_020adc90(0xf000, 0x28000);
     FIELD(s32, object, 0xc38) = func_020adc90(0x100000, 0x3c000);
-    func_0205974c(gSoundContext, 0x81);
+    Sound_LoadGroup(gSoundContext, 0x81);
     func_02058eb8(gSoundContext, 1, 0, 0x14, 0x1e);
     FIELD(s32, object, 0xc1c) = FIELD(s16, gGameWork, 0x1ce);
-    FIELD(s32, object, 0xc20) = func_02027854(func_02027f94());
+    FIELD(s32, object, 0xc20) = GamePhaseProgress_GetCurrentAdjustedThreshold(GamePhaseProgress_GetOrCreateGlobal());
     FIELD(s32, object, 0xc24) = FIELD(s32, object, 0xc1c);
     FIELD(s32, object, 0xb74) = 0;
     FIELD(s32, object, 0xc2c) = 0;
@@ -157,11 +157,11 @@ extern "C" void *func_ov032_021fce20(void *object)
         DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 0);
     FIELD(void *, object, 0xbe4) =
         DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
-    FIELD(void *, object, 8) = func_02071980(data_020f4e18[0], 0x7007);
+    FIELD(void *, object, 8) = GraphicsArchive_AcquireVfdResource(data_020f4e18[0], 0x7007);
 
     void *dialog = Heap_Alloc(0xec, data_ov032_02202340, 4, gHeapContext);
     if (dialog != 0)
-        dialog = func_02092cc0(dialog, gDebugFont, FIELD(void *, object, 8));
+        dialog = TitleDialog_Init(dialog, gDebugFont, FIELD(void *, object, 8));
     FIELD(void *, object, 0x10) = dialog;
     func_ov032_021fce08(dialog, 0x20, 0x7e, 0xbe, 0x32);
     FIELD(s32, dialog, 0xb4) = 0;

@@ -5,7 +5,7 @@
 .extern GamePhaseRegionTable_Destroy
 .extern func_0201df64
 .extern func_0201e0ec
-.extern func_0202d3cc
+.extern ActorCollectionActivation_DestroyReservedSlot
 .extern ActorDerivedType1_ClearFailureCounter
 .extern ActorFeedback_DestroyPresentations
 .extern func_020a2324
@@ -56,7 +56,7 @@ GamePhaseState_ResetActivePhase: ; 0x0200ea48
     blx r1
 L_0200eaec:
     add r0, r4, #0x4
-    bl func_0202d3cc
+    bl ActorCollectionActivation_DestroyReservedSlot
     add r0, r4, #0x2000
     ldr r0, [r0, #0xe80]
     bl ActorDerivedType1_ClearFailureCounter

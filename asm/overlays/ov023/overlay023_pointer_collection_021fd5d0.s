@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_pointer_collection.c. */
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
 .extern func_020c0c24
@@ -32,7 +32,7 @@ L_021fd614:
     add r0, r4, #0x18
     bl func_020927b8
     add r0, r4, #0x8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fd62c: .word func_ov023_021fd630

@@ -14,14 +14,14 @@ extern u8 gSystemState[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020946a8(void *model, s32 mode);
-extern s32 func_02093ffc(void *model);
+extern void InventoryScroll_BeginMarkerDrag(void *model, s32 mode);
+extern s32 InventoryScroll_UpdateInterpolation(void *model);
 extern void func_ov038_021fd578(void *presentation);
 extern void func_02092288(void *presentation, s32 event);
-extern void func_02093de4(void *model);
-extern s32 func_020946c8(void *model, void *input);
+extern void InventoryScroll_SaveOrigins(void *model);
+extern s32 InventoryScroll_UpdateMarkerDrag(void *model, void *input);
 extern void func_02092260(void *presentation, s32 event);
-extern void func_02094738(void *model, s32 mode);
+extern void InventoryScroll_EndMarkerDrag(void *model, s32 mode);
 extern void func_ov038_021fce04(void *node, u32 first, u32 second);
 extern void func_ov038_021fd37c(void *presentation);
 extern void func_ov046_0220c1d8(void *panel);
@@ -34,7 +34,7 @@ extern void Heap_Free(void *allocation);
  * Drive a three-phase close/confirmation flow. Phase zero starts model mode 4;
  * phase one waits for completion, emits event 8 if the window origin changed,
  * and otherwise refreshes pending selection animation; phase two accepts a
- * gated input through func_020946c8 or, after the gate clears, starts model
+ * gated input through InventoryScroll_UpdateMarkerDrag or, after the gate clears, starts model
  * mode 6 and installs the callback pair at 0x021FDCD8. Always advances the UI
  * update, returns zero, and may change model, phase, event, and callback state.
  */
@@ -43,12 +43,12 @@ extern "C" s32 func_ov038_021fdacc(void *presentation)
     void *model = FIELD(void *, presentation, 0x314);
     switch (FIELD(s32, presentation, 4)) {
     case 0:
-        func_020946a8(model, 4);
+        InventoryScroll_BeginMarkerDrag(model, 4);
         FIELD(s32, presentation, 4)++;
         FIELD(s32, presentation, 8) = 0;
         /* fall through */
     case 1:
-        if (!func_02093ffc(model)) {
+        if (!InventoryScroll_UpdateInterpolation(model)) {
             func_ov038_021fd578(presentation);
             break;
         }
@@ -59,15 +59,15 @@ extern "C" s32 func_ov038_021fdacc(void *presentation)
         FIELD(s32, presentation, 8) = 0;
         /* fall through */
     case 2:
-        func_02093de4(model);
+        InventoryScroll_SaveOrigins(model);
         if ((FIELD(u32, presentation, 0x20) & 0x10) != 0) {
-            if (func_020946c8(model, (u8 *)presentation + 0x30)) {
+            if (InventoryScroll_UpdateMarkerDrag(model, (u8 *)presentation + 0x30)) {
                 func_02092260(presentation, 8);
                 FIELD(s32, presentation, 4)--;
                 FIELD(s32, presentation, 8) = 0;
             }
         } else {
-            func_02094738(model, 6);
+            InventoryScroll_EndMarkerDrag(model, 6);
             func_ov038_021fce04(presentation, data_ov038_021fdcd8[0],
                                 data_ov038_021fdcd8[1]);
         }

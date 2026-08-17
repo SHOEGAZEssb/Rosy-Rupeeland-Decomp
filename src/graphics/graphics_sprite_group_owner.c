@@ -130,7 +130,7 @@ sprite_group_owner_count:
 
 /* Retail-address wrapper that creates and returns one owner-linked group. */
 #ifndef MATCHING
-GraphicsSpriteGroup *func_020742cc(void *owner)
+GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner)
 {
     return GraphicsSpriteGroupOwner_CreateGroup(owner);
 }
@@ -145,7 +145,7 @@ void *func_02073ffc(GraphicsSpriteGroup *group,
 }
 
 /* Releases the group's indexed entries without destroying the group. */
-void func_02074110(GraphicsSpriteGroup *group)
+void GraphicsSpriteGroup_ClearStates(GraphicsSpriteGroup *group)
 {
     GraphicsSpriteGroup_ReleaseIndexedEntries(group);
 }

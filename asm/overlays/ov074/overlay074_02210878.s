@@ -6,7 +6,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern SplineMover_InitTransition
-.extern func_0200875c
+.extern GamePhaseRuntime_BuildSecondaryTransform
 .extern func_ov074_02210a04
 
 .global func_ov074_02210878
@@ -20,7 +20,7 @@ func_ov074_02210878:
     ldr r1, .L_02210a00
     add r0, sp, #0x84
     ldr r1, [r1, #0x0]
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     cmp r4, #0x3
     addls pc, pc, r4, lsl #0x2
     b .L_022109cc

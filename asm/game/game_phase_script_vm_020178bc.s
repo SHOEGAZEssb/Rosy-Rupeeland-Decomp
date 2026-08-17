@@ -3,7 +3,7 @@
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_0207a450
+.extern RetailRecordManager_IsSelectorAvailable
 .global func_020178bc
 func_020178bc:
     stmdb sp!, {r3, r4, r5, lr}
@@ -13,7 +13,7 @@ func_020178bc:
     mov r1, r0
     ldr r0, [r2]
     mov r4, #0
-    bl func_0207a450
+    bl RetailRecordManager_IsSelectorAvailable
     cmp r0, #0
     movne r4, #1
     mov r0, r5

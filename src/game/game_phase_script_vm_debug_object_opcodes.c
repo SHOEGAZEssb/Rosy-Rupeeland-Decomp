@@ -11,7 +11,7 @@ extern const char data_020d5b2c[];
 extern u8 data_021f3ecc[];
 extern void *Actor_GetCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
-extern void *func_0201d9e4(u32 value);
+extern void *DisplayRouting_MatchesRequest(u32 value);
 extern void func_0201da34(GamePhaseActorScriptVm *self);
 extern void *func_020791e0(void *state, u16 value);
 extern void *DebugHudState_GetGlobal(void *value);
@@ -25,7 +25,7 @@ extern void func_ov061_0220fd20(void *allocation, void *first,
 
 /*
  * Pop third, second, and first operands. Resolve first through the bound
- * collection mode and second through func_0201d9e4, load overlay 61 (0x3d)
+ * collection mode and second through DisplayRouting_MatchesRequest, load overlay 61 (0x3d)
  * in slot 2, allocate 0x3c bytes, and initialize it through the common
  * overlay-59..74 entry point with the third operand. Returns zero.
  */
@@ -36,7 +36,7 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
     u32 firstValue = GamePhaseScriptVm_Pop(&self->base);
     u8 *collection = (u8 *)Actor_GetCollection(self->actor);
     void *second = func_0201da20(*(u32 *)(collection + 0x2e84), firstValue);
-    void *first = func_0201d9e4(secondValue);
+    void *first = DisplayRouting_MatchesRequest(secondValue);
     void *allocation;
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3d);
     allocation = Heap_Alloc(0x3c, data_020d5b2c, 4, &gHeapContext);
@@ -48,7 +48,7 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
 /*
  * Pop and discard two operands, pop lookup and table operands, update VM-side
  * state through func_0201da34, resolve the table operand through
- * data_021f3ecc/func_020791e0 and the lookup through func_0201d9e4, then feed
+ * data_021f3ecc/func_020791e0 and the lookup through DisplayRouting_MatchesRequest, then feed
  * both to the recovered debug-state chain with enabled=1. Returns zero.
  */
 s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *self)
@@ -63,7 +63,7 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *
         u32 tableValue = GamePhaseScriptVm_Pop(&self->base);
         func_0201da34(self);
         second = func_020791e0(data_021f3ecc, (u16)tableValue);
-        first = func_0201d9e4(lookup);
+        first = DisplayRouting_MatchesRequest(lookup);
     }
     state = DebugHudState_GetGlobal(first);
     state = DebugHudState_RefreshRectangle(state);

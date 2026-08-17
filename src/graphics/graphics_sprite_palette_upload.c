@@ -27,7 +27,7 @@ extern "C" {
 #endif
 
 extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
-extern void *func_02070874(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern u32 GX_VBlankIntr(u32 state);
 
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer
 
     gGraphicsSpriteStatePool.interruptState = GX_VBlankIntr(0);
     for (index = 0; index < resource->header->recordCount; index++) {
-        u8 *source = (u8 *)func_02070874(resource) + index * 0x20;
+        u8 *source = (u8 *)GraphicsBgResourceData_GetDecoded(resource) + index * 0x20;
 
         GraphicsTransferQueue_Enqueue(
             &renderer->transferQueue, 2, source,
@@ -79,7 +79,7 @@ asm void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *rend
     mov r4, #2
     b sprite_palette_upload_test
 sprite_palette_upload_loop:
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r2, r0
     str r5, [sp]
     ldrb r3, [r6, #0x12]

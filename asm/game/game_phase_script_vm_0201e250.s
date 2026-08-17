@@ -7,11 +7,11 @@
 .extern VecFx32_Subtract
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 .extern data_020d6248
 .extern data_020d6098
-.global func_0201e250
-func_0201e250: ; 0x0201e250
+.global TimedSpritePresentation_InitBase
+TimedSpritePresentation_InitBase: ; 0x0201e250
     ldr r1, L_0201e270
     str r1, [r0, #0x0]
     ldr r1, [r0, #0x4]
@@ -23,4 +23,4 @@ func_0201e250: ; 0x0201e250
 L_0201e270: .word data_020d6248
 
 
-.size func_0201e250, . - func_0201e250
+.size TimedSpritePresentation_InitBase, . - TimedSpritePresentation_InitBase

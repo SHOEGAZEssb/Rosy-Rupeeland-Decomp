@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_0201e0ec
 .extern func_0209b58c
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern func_020bf1f8
 .extern func_ov069_0220fd20
 .extern genrand_int32
@@ -92,7 +92,7 @@ func_ov069_0220ff38:
     ldr r1, [r4, #0x20]
     mla r1, r0, r3, r1
     str r1, [r4, #0x20]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     ldr r1, .L_022106fc
     mov r2, #0x18
     mul r1, r0, r1
@@ -160,7 +160,7 @@ func_ov069_0220ff38:
     ldr r1, [r4, #0x20]
     add r1, r1, r2, lsl #0xc
     str r1, [r4, #0x20]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     ldr r1, .L_022106fc
     ldr r3, [r4, #0xc]
     mul r1, r0, r1
@@ -278,7 +278,7 @@ func_ov069_0220ff38:
     ldr r1, [r5, #0x20]
     add r1, r1, r3
     str r1, [r5, #0x20]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     ldr r1, .L_022106fc
     mov r2, #0x18
     mul r3, r0, r1

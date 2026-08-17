@@ -15,7 +15,7 @@ extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern s32 func_020adcac(const void *first, const void *second);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void Type7Actor_UpdateMotionTowardTransform(void *actor, const void *transform);
 extern void Type7Actor_ResetInteractionState(void *actor);
@@ -156,7 +156,7 @@ s32 Type7Actor_UpdateRelatedTargetMotion(void *self)
             Type7Actor_EnterFlag20State(actor);
             return 0;
         }
-        if (func_020be328(Actor_GetCachedTerrainHeight(actor) - Actor_GetCachedTerrainHeight(related))
+        if (SignedAbsoluteValueVariant(Actor_GetCachedTerrainHeight(actor) - Actor_GetCachedTerrainHeight(related))
             >= 0x20000) {
             Type7Actor_EnterFlag80State(actor);
             return 0;

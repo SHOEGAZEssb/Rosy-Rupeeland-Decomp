@@ -12,7 +12,7 @@ typedef struct GraphicsBgResourceData {
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_02070874(GraphicsBgResourceData *resource)
+void *GraphicsBgResourceData_GetDecoded(GraphicsBgResourceData *resource)
 {
     if (resource->alternateData != 0)
         return resource->alternateData;

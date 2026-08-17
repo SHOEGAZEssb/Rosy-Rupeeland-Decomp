@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern Overlay094SpriteGroup *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
-extern void func_02071ea4(void *resourceSet);
+extern void AnimationResourceState_InitEmbedded(void *resourceSet);
 extern void func_02071ee0(void *resourceSet, void *archive, s32 characterId,
                          s32 paletteId, s32 screenId);
 extern void func_02091b6c(void *randomState);
@@ -38,7 +38,7 @@ extern void func_ov094_02217c34(void *effectList);
  */
 extern "C" void *func_ov094_02219568(void *object, s32 width, s32 height)
 {
-    func_02071ea4(object);
+    AnimationResourceState_InitEmbedded(object);
     *(s32 *)((u8 *)object + 0x14) = 0;
     func_02091b6c((u8 *)object + 0x18);
     func_ov094_02217c34((u8 *)object + 0x34);

@@ -5,14 +5,14 @@
 .extern data_ov026_02204acc
 .extern GraphicsAnimationInstanceManager_CreateInstance
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationScalar_SetImmediate
 .extern PresentationScalar_TransitionTo
 .extern PresentationScalar_TransitionBy
 .extern Presentation_SetPosition
 .extern PresentationList_Append
-.extern func_020955d8
-.extern func_020956a4
+.extern AlternateSpritePresentation_Init
+.extern AlternateSpritePresentation_SyncTransform
 .extern func_ov026_021fe5c0
 .extern func_ov026_021ff830
 .extern gHeapContext
@@ -37,13 +37,13 @@ func_ov026_02200e0c:
     movs r9, r0
     beq L_02200e54
     mov r1, r5
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
     mov r9, r0
 L_02200e54:
     add r0, r4, #0x3a4
     add r0, r0, #0x400
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r1, #0x0
     mov r7, r0, lsl #0x14
     str r1, [sp, #0x0]
@@ -91,7 +91,7 @@ L_02200e54:
     ldr r1, L_02200fec
     bl PresentationScalar_SetImmediate
     mov r0, r9
-    bl func_020956a4
+    bl AlternateSpritePresentation_SyncTransform
     mov r1, #0x1
     str r1, [r9, #0x88]
     add r0, r9, #0xc

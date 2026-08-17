@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 #ifdef __cplusplus
@@ -17,7 +17,7 @@ extern s32 func_0209189c(void *, s32, s32);
 
 /*
  * Select a render object from manager +0x84 and resource +0x78, assign it the
- * low byte returned by func_020918f4(+0x978,4), and write two randomized signed
+ * low byte returned by TitleRandom_NextBounded(+0x978,4), and write two randomized signed
  * coordinates at +0x2C/+0x2E. Argument two contributes fixed-point fields
  * +0x10/+0x20 divided toward zero by 0x1000; arguments three/four are symmetric
  * random ranges. Finally set halfword bit 0x100 at +0x24. Return void; callees
@@ -32,7 +32,7 @@ void func_ov013_021fdfd4(void *state, void *record, s32 horizontalRange,
 {
     void *target = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                  (u8 *)state + 0x78, 1);
-    s32 selector = func_020918f4((u8 *)state + 0x978, 4);
+    s32 selector = TitleRandom_NextBounded((u8 *)state + 0x978, 4);
     s32 fixed;
 
     GraphicsSpriteState_SetAnimationIndex(target, selector & 0xff);

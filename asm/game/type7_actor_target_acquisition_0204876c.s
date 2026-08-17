@@ -12,7 +12,7 @@
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetCallbackPair
 .extern func_020adcac
-.extern func_020be334
+.extern SignedAbsoluteValue
 .global Type7Actor_TryAcquireTarget
 .type Type7Actor_TryAcquireTarget, @function
 
@@ -136,7 +136,7 @@ Type7Actor_TryAcquireTarget: ; 0x0204876c
     bl Actor_GetCachedTerrainHeight
     ldr r1, [r8, #0x24]
     sub r0, r1, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x20000
     bgt .L_02048994
     adds r1, r8, #0x18

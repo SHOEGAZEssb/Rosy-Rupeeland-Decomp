@@ -3,7 +3,7 @@
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_capture_state_machine.c. */
 .extern func_0207043c
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070888
 .extern func_020afce8
 .extern func_020b1924
@@ -140,7 +140,7 @@ func_ov041_021fe8b8: ; 0x021fe8b8
     mla r0, r1, r0, r5
     ldr r6, [r0, #0x4c]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r6
     bl func_02070888
@@ -163,7 +163,7 @@ func_ov041_021fe8b8: ; 0x021fe8b8
     mla r0, r1, r0, r5
     ldr r6, [r0, #0x4c]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r6
     bl func_02070888

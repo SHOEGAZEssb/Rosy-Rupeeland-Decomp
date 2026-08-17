@@ -17,8 +17,8 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059278(void *sound, s32 id, s32 value);
-extern void func_0205929c(void *sound, s32 id, s32 value);
+extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
+extern void Sound_StopDirectSequence(void *sound, s32 id, s32 value);
 extern void Sound_Play(void *sound, s32 id, s32 parameter);
 extern void Presentation_SetScript(void *object, const void *motion, s32 enabled);
 extern s32 Presentation_IsScriptSuspended(void *object);
@@ -55,7 +55,7 @@ extern "C" s32 func_ov035_021ff190(void *scene)
 {
     switch (FIELD(s32, scene, 0xa0)) {
     case 0:
-        func_02059278(gSoundContext, 0xb5, 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, 0xb5, 0x7f);
         Presentation_SetScript(FIELD(void *, scene, 0x100),
                       data_ov035_02203344, 1);
         Presentation_SetScript(FIELD(void *, scene, 0x104),
@@ -95,7 +95,7 @@ extern "C" s32 func_ov035_021ff190(void *scene)
     case 4:
         PresentationList_Append((u8 *)scene + 0x12c, create_particle());
         if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x100))) {
-            func_0205929c(gSoundContext, 0xb5, 0x10);
+            Sound_StopDirectSequence(gSoundContext, 0xb5, 0x10);
             FIELD(s32, scene, 0xa0)++;
         }
         break;

@@ -1,23 +1,23 @@
     .text
     .extern func_ov001_021fb81c
-    .extern func_02062928
-    .extern func_02092e9c
-    .extern func_020939d8
-    .extern func_02093360
+    .extern ActorDescriptor_LoadDetailResource
+    .extern TitleDialog_SetText
+    .extern TitleDialog_ClearTextRect
+    .extern TitleDialog_UpdateTextPage
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_02062a60
+    .extern ActorDescriptor_GetSecondaryLabel
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_02062ab0
+    .extern ActorDescriptor_GetPresentationAnimation
     .extern func_02073e48
-    .extern func_020628c8
-    .extern func_02062918
-    .extern func_02063064
-    .extern func_02063074
-    .extern func_02063084
+    .extern ActorDescriptor_GetPrimaryLabel
+    .extern ActorDescriptor_GetComponent
+    .extern ActorDescriptorComponent_GetCharacterResourceId
+    .extern ActorDescriptorComponent_GetPaletteResourceId
+    .extern ActorDescriptorComponent_GetCellResourceId
     .extern func_02071ee0
-    .extern func_02063190
+    .extern ActorDescriptorComponent_GetAnimation
     .extern gSystemState
     .extern data_020f4e18
     .global func_ov001_021fb87c
@@ -31,16 +31,16 @@ func_ov001_021fb87c: ; 0x021fb87c
     mov r1, #0x0
     bl func_ov001_021fb81c
     mov r0, r5
-    bl func_02062928
+    bl ActorDescriptor_LoadDetailResource
     mov r1, r0
     ldr r0, [r6, #0x44]
     mov r2, #0x1
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r6, #0x44]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r6, #0x44]
     mov r1, #0x0
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     ldr r0, L_021fbaa0
     mov r7, #0x58
     ldrb r0, [r0, #0x5f]
@@ -58,7 +58,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     mov r3, #0xe0
     bl GraphicsSpriteCanvas_FillRect
     mov r0, r5
-    bl func_02062a60
+    bl ActorDescriptor_GetSecondaryLabel
     mov r1, r0
     mov r0, #0xe
     str r0, [sp, #0x0]
@@ -76,7 +76,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     bl GraphicsSpriteGroup_CreateStateFromSource
     mov r7, r0
     mov r0, r5
-    bl func_02062ab0
+    bl ActorDescriptor_GetPresentationAnimation
     mov r2, #0x1
     str r2, [sp, #0x0]
     mov r2, #0x0
@@ -100,7 +100,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     mov r3, #0xcc
     bl GraphicsSpriteCanvas_FillRect
     mov r0, r5
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r1, r0
     mov r0, #0xe
     str r0, [sp, #0x0]
@@ -116,18 +116,18 @@ func_ov001_021fb87c: ; 0x021fb87c
     beq L_021fba98
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063064
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCharacterResourceId
     mov r7, r0
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063074
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetPaletteResourceId
     mov r4, r0
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063084
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCellResourceId
     mov r2, r7
     mov r3, r4
     str r0, [sp, #0x0]
@@ -142,8 +142,8 @@ func_ov001_021fb87c: ; 0x021fb87c
     mov r4, r0
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     mov r1, r0
     mov r0, r4
     mov r2, #0x1

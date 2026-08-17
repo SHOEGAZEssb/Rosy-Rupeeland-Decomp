@@ -5,8 +5,8 @@
 .extern data_021f5ed0
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern func_020791e0
-.extern func_02092e9c
-.extern func_02093360
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
 .extern func_ov022_021fd2f4
 .extern func_ov022_021fd4d4
 .extern func_ov022_021fd5d4
@@ -30,10 +30,10 @@ func_ov022_021ff2c4:
     mov r1, r0
     ldr r0, [r4, #0x2cc]
     mov r2, #0x4
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r4, #0x2cc]
     ldr r1, L_021ff360
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]

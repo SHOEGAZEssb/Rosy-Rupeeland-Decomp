@@ -3,7 +3,7 @@
 ; src/overlays/ov090/overlay090_title_chain_distance_filter.c.
 .extern VecFx32Object_GetMagnitude
 .extern VecFx32Object_Normalize
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_ov090_0221b3d0
 
 .global func_ov090_0221c350
@@ -16,7 +16,7 @@ func_ov090_0221c350:
     ldr r1, [r7, #0xc]
     mov r4, r0
     sub r0, r4, r1
-    bl func_020be334
+    bl SignedAbsoluteValue
     mov r5, r0
     cmp r5, #0x1000
     ble .L_0221c3d4

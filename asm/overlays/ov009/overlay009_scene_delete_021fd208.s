@@ -5,7 +5,7 @@
     .extern data_ov009_021fee8c
     .extern data_ov009_021feec0
     .extern Heap_FreeCore
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020923a0
     .extern func_02092418
@@ -36,7 +36,7 @@ L_021fd224:
     add r0, r5, #0x13c
     bl func_020923a0
     add r0, r5, #0x78
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r5
     bl Scene_Destroy
     mov r0, r5

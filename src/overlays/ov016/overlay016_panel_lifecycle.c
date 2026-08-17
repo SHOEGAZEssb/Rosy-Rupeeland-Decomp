@@ -11,14 +11,14 @@ extern u8 gSystemState[];
 extern "C" {
 #endif
 extern void __construct_array(void *, s32, s32, void (*)(void *), void (*)(void *));
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091b6c(void *);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 #ifdef __cplusplus
 }
@@ -40,12 +40,12 @@ extern "C" void *func_ov016_021fd6c8(void *state, void *owner)
     s32 xOffset = gSystemState[0x5f] != 0 ? -0x10 : 0;
     s32 yOffset = 0;
 
-    func_02071ea4((u8 *)state + 0xc);
-    func_02071ea4((u8 *)state + 0x18);
-    __construct_array((u8 *)state + 0x24, 6, 0xc, func_02071ea4, func_02071eb8);
-    func_02071ea4((u8 *)state + 0x6c);
-    func_02071ea4((u8 *)state + 0x78);
-    func_02092798((u8 *)state + 0xd4);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xc);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x18);
+    __construct_array((u8 *)state + 0x24, 6, 0xc, AnimationResourceState_InitEmbedded, AnimationResourceState_Destroy);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x6c);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x78);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0xd4);
     func_02091b6c((u8 *)state + 0xf8);
     FIELD(void *, state, 0) = owner;
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(owner);

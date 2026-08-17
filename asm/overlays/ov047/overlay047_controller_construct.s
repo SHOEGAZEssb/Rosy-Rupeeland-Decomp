@@ -1,12 +1,12 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov047/overlay047_controller_recovery.c.
 .extern data_020f4e18
-.extern func_020703d8
+.extern GraphicsSpriteResource_ReleaseTexture
 .extern func_0207043c
 .extern func_02070474
 .extern func_020704c8
 .extern func_02070580
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070888
 .extern func_02071568
 .extern func_020716bc
@@ -113,7 +113,7 @@ func_ov047_0220b740:
     bl func_020b21c8
     bl func_020b2180
     ldr r0, [r6, #0x4]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r7, r0
     ldr r0, [r6, #0x4]
     bl func_02070888
@@ -123,7 +123,7 @@ func_ov047_0220b740:
     bl func_020b210c
     bl func_020b20b4
     ldr r0, [r6, #0x0]
-    bl func_020703d8
+    bl GraphicsSpriteResource_ReleaseTexture
     str r5, [r6, #0x8]
     str r4, [r6, #0xc]
     ldr r0, [r6, #0x8]

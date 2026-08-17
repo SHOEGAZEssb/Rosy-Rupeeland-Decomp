@@ -13,7 +13,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Sound_Play(void *, s32, s32);
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
@@ -33,12 +33,12 @@ extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
  * their recovered fixed coordinates and flags, then return group. Resource,
  * renderer, and sprite SDK state change; no direct hardware access occurs.
  */
-extern "C" void *func_ov017_021fe75c(void *group, s32 duration, s32 current)
+extern "C" void *Overlay017UiSpriteGroup_Init(void *group, s32 duration, s32 current)
 {
     s32 i;
 
-    func_02071ea4((u8 *)group + 4);
-    func_02071ea4((u8 *)group + 0x10);
+    AnimationResourceState_InitEmbedded((u8 *)group + 4);
+    AnimationResourceState_InitEmbedded((u8 *)group + 0x10);
     FIELD(s32, group, 0x5c) = duration;
     FIELD(s32, group, 0x60) = current;
     FIELD(s32, group, 0x64) = 0;

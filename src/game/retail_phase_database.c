@@ -21,24 +21,24 @@ extern u8 data_021e9de8[];
 extern u8 data_021e9e00[];
 extern u8 data_021e9e1c[];
 extern void OS_Halt(void);
-extern void *func_02063b90(void *database, u16 id);
+extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
 extern void func_020634b0(void *manager);
-extern void func_02022fbc(void *descriptor);
-extern void func_020627a0(void *descriptor, u16 id, u16 last_index);
-extern void func_020627d0(void *descriptor, u16 id, u16 kind, u16 quantity);
-extern void *func_02062728(void *destination, const void *source);
+extern void SelfLinkedSpriteConfig_Init(void *descriptor);
+extern void ActorDescriptor_InitRange(void *descriptor, u16 id, u16 last_index);
+extern void ActorDescriptor_Init(void *descriptor, u16 id, u16 kind, u16 quantity);
+extern void *InventoryRecord_Assign(void *destination, const void *source);
 
 #ifndef MATCHING
-extern void func_02064e28(void *collection);
-extern void *func_02064a18(void *collection, void *incoming);
-extern s32 func_0206492c(void *collection, u16 id);
-extern void func_02062744(void *destination, const void *source);
-extern void func_02062808(void *record);
-extern void func_02062874(void *record, u16 quantity);
+extern void InventoryRecordCollection_Clear(void *collection);
+extern void *InventoryRecordCollection_MergeOrInsert(void *collection, void *incoming);
+extern s32 InventoryRecordCollection_FindId(void *collection, u16 id);
+extern void InventoryRecord_CopyForInsertion(void *destination, const void *source);
+extern void ActorDescriptor_ClearRuntime(void *record);
+extern void ActorDescriptor_SetQuantity(void *record, u16 quantity);
 #endif
 
 /* Retain one borrowed phase-record pointer in a caller-owned result slot. */
-void func_0206fa94(void *destination, void *phase)
+void RetailPhaseResult_SetRecord(void *destination, void *phase)
 {
     *(void **)destination = phase;
 }
@@ -46,7 +46,7 @@ void func_0206fa94(void *destination, void *phase)
 /* Return the 0x10C-byte phase record whose leading halfword matches id
  * (retail 0x0206F360). The database retains ownership; a missing identifier
  * is a retail invariant violation and reaches the halt boundary. */
-void *func_0206f360(void *database_pointer, u16 id)
+void *RetailPhaseDatabase_FindById(void *database_pointer, u16 id)
 {
     u8 *database = (u8 *)database_pointer;
     u8 *records = *(u8 **)database;
@@ -65,9 +65,9 @@ void *func_0206f360(void *database_pointer, u16 id)
 /* Store the phase record selected from the global phase database into the
  * caller's borrowed pointer slot (retail 0x0206FA70). The identifier is
  * truncated to u16 exactly as in retail; no allocation or hardware I/O occurs. */
-void func_0206fa70(void **destination, u16 id)
+void RetailPhaseDatabase_SelectById(void **destination, u16 id)
 {
-    *destination = func_0206f360(data_021e9de8, id);
+    *destination = RetailPhaseDatabase_FindById(data_021e9de8, id);
 }
 
 static u16 ReadU16(const u8 *bytes)
@@ -79,9 +79,9 @@ static void InitializeActorEntry(u8 *entry, u16 actor_id, u16 quantity,
                                  u16 field6)
 {
     if (field6 == 1)
-        func_020627d0(entry, actor_id, field6, quantity);
+        ActorDescriptor_Init(entry, actor_id, field6, quantity);
     else
-        func_020627a0(entry, actor_id, quantity);
+        ActorDescriptor_InitRange(entry, actor_id, quantity);
 }
 
 /* Construct the seven self-linked actor descriptors embedded in one record. */
@@ -89,9 +89,9 @@ static void InitializePhaseRecord(u8 *record)
 {
     u32 index;
 
-    func_02022fbc(record + 4);
+    SelfLinkedSpriteConfig_Init(record + 4);
     for (index = 0; index < 6; ++index)
-        func_02022fbc(record + 0x28 + index * 0x24);
+        SelfLinkedSpriteConfig_Init(record + 0x28 + index * 0x24);
     *(u16 *)(record + 0) = 0;
     *(u16 *)(record + 2) = 0;
     *(u32 *)(record + 0x100) = 0;
@@ -107,9 +107,9 @@ static void CopyPhaseRecord(u8 *destination, const u8 *source)
 
     *(u16 *)(destination + 0) = *(const u16 *)(source + 0);
     *(u16 *)(destination + 2) = *(const u16 *)(source + 2);
-    func_02062728(destination + 4, source + 4);
+    InventoryRecord_Assign(destination + 4, source + 4);
     for (index = 0; index < 6; ++index)
-        func_02062728(destination + 0x28 + index * 0x24,
+        InventoryRecord_Assign(destination + 0x28 + index * 0x24,
                       source + 0x28 + index * 0x24);
     *(u32 *)(destination + 0x100) = *(const u32 *)(source + 0x100);
     *(u32 *)(destination + 0x104) = *(const u32 *)(source + 0x104);
@@ -117,7 +117,7 @@ static void CopyPhaseRecord(u8 *destination, const u8 *source)
 }
 
 /* Load, filter, and sort 0x10c-byte phase records at retail 0x0206F3A4. */
-void func_0206f3a4(void *database_pointer)
+void RetailPhaseDatabase_LoadRecords(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile file;
@@ -194,7 +194,7 @@ void func_0206f3a4(void *database_pointer)
 }
 
 /* Construct the fixed 15-entry phase runtime pool at 0x0206FC00. */
-void func_0206fc00(void *container_pointer)
+void RetailPhaseSelection_InitPool(void *container_pointer)
 {
     u8 *container = (u8 *)container_pointer;
     u32 index;
@@ -213,15 +213,15 @@ void func_0206fc00(void *container_pointer)
 #ifndef MATCHING
 /* Reset the phase-selection collection and its embedded result descriptor.
  * Allocated collection storage remains owned by the container. */
-void func_0206fc20(void *container)
+void RetailPhaseSelection_Reset(void *container)
 {
-    func_02064e28(container);
-    func_02062808((u8 *)container + 0x1c);
+    InventoryRecordCollection_Clear(container);
+    ActorDescriptor_ClearRuntime((u8 *)container + 0x1c);
 }
 
 /* Add one actor ID to the phase-selection collection using a temporary,
  * self-linked descriptor. Retail halts when the fixed collection is full. */
-void func_0206fc38(void *container, u16 actor_id, s32 quantity)
+void RetailPhaseSelection_AddActor(void *container, u16 actor_id, s32 quantity)
 {
     u8 descriptor[0x24];
 
@@ -229,8 +229,8 @@ void func_0206fc38(void *container, u16 actor_id, s32 quantity)
     *(void **)(descriptor + 0x14) = descriptor;
     *(u32 *)(descriptor + 0x18) = 1;
     *(void **)(descriptor + 0x1c) = descriptor;
-    func_020627a0(descriptor, actor_id, (u16)quantity);
-    if (func_02064a18(container, descriptor) == 0)
+    ActorDescriptor_InitRange(descriptor, actor_id, (u16)quantity);
+    if (InventoryRecordCollection_MergeOrInsert(container, descriptor) == 0)
         OS_Halt();
 }
 
@@ -258,7 +258,7 @@ static u8 *FindMatchingPhase(void *database_pointer, void *container_pointer,
              ++ingredient) {
             u8 *required = phase + 0x28 + ingredient * 0x24;
             u8 *definition = *(u8 **)(required + 8);
-            s32 selected_index = func_0206492c(
+            s32 selected_index = InventoryRecordCollection_FindId(
                 container, *(u16 *)definition);
             u16 available;
             u16 needed;
@@ -296,38 +296,38 @@ static s32 BuildMatchingPhaseResult(void *container, void *output)
 
     if (phase == 0)
         return 0;
-    func_02062744(output, phase + 4);
-    func_02062874(output, (u16)multiplier);
+    InventoryRecord_CopyForInsertion(output, phase + 4);
+    ActorDescriptor_SetQuantity(output, (u16)multiplier);
     return 1;
 }
 
 /* Build the embedded phase result and scale its quantity by category. */
-s32 func_0206fca0(void *container, s32 category)
+s32 RetailPhaseSelection_BuildScaledResult(void *container, s32 category)
 {
     u8 *result = (u8 *)container + 0x1c;
 
     if (!BuildMatchingPhaseResult(container, result))
         return 0;
-    func_02062874(result, (u16)(category * *(u16 *)(result + 4)));
+    ActorDescriptor_SetQuantity(result, (u16)(category * *(u16 *)(result + 4)));
     return 1;
 }
 
 /* Retain and return the phase record matching the current ingredient set.
  * The borrowed record pointer is stored in the container's slot at +0x40. */
-void *func_0206fd30(void *container)
+void *RetailPhaseSelection_SelectMatchingRecord(void *container)
 {
     s32 multiplier = 0;
     void *phase = FindMatchingPhase(data_021e9de8, container, &multiplier);
 
     if (phase == 0)
         return 0;
-    func_0206fa94((u8 *)container + 0x40, phase);
+    RetailPhaseResult_SetRecord((u8 *)container + 0x40, phase);
     return (u8 *)container + 0x40;
 }
 #endif
 
 /* Build the phase-record pointer view at retail 0x0206F7BC. */
-void func_0206f7bc(void *manager_pointer)
+void RetailPhaseDatabase_BuildPointerView(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     u8 *records = *(u8 **)data_021e9de8;
@@ -353,7 +353,7 @@ void func_0206f7bc(void *manager_pointer)
  * (retail 0x0206FAD8). The slot and record remain manager-owned. The record's
  * signed bit index at +0x104 selects one bit in GameWork +0xEE0; retail does
  * not validate that index because every canonical phase record supplies one. */
-void func_0206fad8(void *slot_pointer)
+void RetailPhaseRecord_Unlock(void *slot_pointer)
 {
     u8 *record = *(u8 **)slot_pointer;
     s32 bit = *(s32 *)(record + 0x104);
@@ -367,7 +367,7 @@ void func_0206fad8(void *slot_pointer)
  * matching pointer index. After the first unlock, retail sets game flag 0x15
  * once every phase record is unlocked. Unknown identifiers leave the table
  * unchanged apart from the same completion scan used by retail. */
-void func_0206f914(void *manager_pointer, u16 id)
+void RetailPhaseDatabase_UnlockById(void *manager_pointer, u16 id)
 {
     u8 *manager = (u8 *)manager_pointer;
     u32 count = *(u32 *)manager;
@@ -377,7 +377,7 @@ void func_0206f914(void *manager_pointer, u16 id)
 
     for (index = 0; index < count; ++index) {
         if (*(u16 *)slots[index] == id) {
-            func_0206fad8(&slots[index]);
+            RetailPhaseRecord_Unlock(&slots[index]);
             high_water = index + 1;
             break;
         }
@@ -400,9 +400,9 @@ void func_0206f914(void *manager_pointer, u16 id)
 /* Execute the exact retail phase database aggregate order at 0x0206F780. */
 void func_0206f780(void)
 {
-    func_0206f3a4(data_021e9de8);
-    func_0206fc00(data_021e9e1c);
-    func_0206f7bc(data_021e9e00);
+    RetailPhaseDatabase_LoadRecords(data_021e9de8);
+    RetailPhaseSelection_InitPool(data_021e9e1c);
+    RetailPhaseDatabase_BuildPointerView(data_021e9e00);
     func_020634b0(*(void **)data_021e9ac0);
 }
 

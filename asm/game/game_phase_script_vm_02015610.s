@@ -4,7 +4,7 @@
 .extern DebugHudState_RefreshRectangle
 .extern DebugHudState_GetGlobal
 .extern GamePhaseScriptVm_Pop
-.extern func_0201d9e4
+.extern DisplayRouting_MatchesRequest
 .extern func_0201da20
 .extern func_0201da34
 .extern Actor_GetCollection
@@ -32,7 +32,7 @@ GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode: ; 0x02015610
     bl func_0201da20
     mov r5, r0
     mov r0, r6
-    bl func_0201d9e4
+    bl DisplayRouting_MatchesRequest
     mov r4, r0
     bl DebugHudState_GetGlobal
     bl DebugHudState_RefreshRectangle

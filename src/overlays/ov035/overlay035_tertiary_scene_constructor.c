@@ -26,13 +26,13 @@ extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *allocation, void *spriteRecord);
+extern void *AlternateSpritePresentation_Init(void *allocation, void *spriteRecord);
 extern void PresentationList_Append(void *collection, void *object);
 extern void func_ov035_021fdd70(void *record, s32 x, s32 y, s32 z);
 extern void func_ov035_021fdd78(void *record, s32 x, s32 y, s32 z);
 extern void func_020b0300(s32 first, s32 second, s32 third, s32 fourth,
                          s32 fifth);
-extern void func_02092850(s32 value);
+extern void TitlePalette_SetMainBackdrop(s32 value);
 extern void func_02091d24(void *state, s32 first, s32 second, s32 third,
                          s32 fourth);
 #ifdef __cplusplus
@@ -58,7 +58,7 @@ static void *create_scene_sprite(void *scene, s32 resourceOffset,
     func_ov035_021fdd28(record, identifier, 0, 0, 0, value5a, flags);
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (object != 0)
-        object = func_020955d8(object, record);
+        object = AlternateSpritePresentation_Init(object, record);
     PresentationList_Append((u8 *)scene + 0x174, object);
     return object;
 }
@@ -121,7 +121,7 @@ extern "C" void *func_ov035_021ff478(void *scene, void *resourceOwner,
     func_ov035_021fdd70((u8 *)scene + 0x0c, 0, 0, 0x2800);
     func_ov035_021fdd78((u8 *)scene + 0x0c, 0, 0, 0);
     func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     func_02091d24((u8 *)scene + 0x15c, 0, 0, 1, 1);
     return scene;
 }

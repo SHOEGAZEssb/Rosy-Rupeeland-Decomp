@@ -16,18 +16,18 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_02003e20(u32, const void *, s32, void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, u32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
 extern void func_020c0c24(void *, s32, s32, void (*)(void *));
 extern void func_ov016_021fce00(void *);
@@ -52,9 +52,9 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
     s32 capacity;
     void *object;
 
-    func_02071ea4((u8 *)state + 0xc);
-    func_02071ea4((u8 *)state + 0x18);
-    func_02092798((u8 *)state + 0x28);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xc);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x18);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x28);
     FIELD(u32, state, 0x60) = data_ov016_02201394[tableIndex];
     FIELD(void *, state, 0) = owner;
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(owner);
@@ -93,7 +93,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
         FIELD(void *, state, 0x58) = object;
         FIELD(void *, state, 0x24) = 0;
     }
-    func_02094574(FIELD(void *, state, 0x58));
+    InventoryScroll_UpdatePresentation(FIELD(void *, state, 0x58));
     func_ov016_021fd1e0(state);
     func_02092814((u8 *)state + 0x28, 0x7000);
     func_02092814((u8 *)state + 0x28, 0x7005);
@@ -122,7 +122,7 @@ extern "C" void *func_ov016_021fd06c(void *state)
         func_020c0c24(FIELD(void *, state, 0x4c), 0x14, 8, func_ov016_021fd0dc);
     }
     func_020927b8((u8 *)state + 0x28);
-    func_02071eb8((u8 *)state + 0x18);
-    func_02071eb8((u8 *)state + 0xc);
+    AnimationResourceState_Destroy((u8 *)state + 0x18);
+    AnimationResourceState_Destroy((u8 *)state + 0xc);
     return state;
 }

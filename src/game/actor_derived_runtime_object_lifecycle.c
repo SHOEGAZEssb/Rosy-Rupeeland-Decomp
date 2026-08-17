@@ -7,7 +7,7 @@ extern void *data_020df510[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02030f98(void *self, const void *descriptor);
+extern void *ActorRuntimeBase_Init(void *self, const void *descriptor);
 extern void *func_0203130c(void *self);
 extern void func_02031488(void *self);
 extern void *AnimationResource_InitEmpty(void *embedded);
@@ -19,7 +19,7 @@ extern void *AnimationResource_Destroy(void *embedded);
 /* Shared portable construction equivalent for the two retail constructor entry points. */
 static void *initializeDerivedRuntimeObject(void *self, const void *descriptor)
 {
-    u8 *object = (u8 *)func_02030f98(self, descriptor);
+    u8 *object = (u8 *)ActorRuntimeBase_Init(self, descriptor);
     *(void **)object = data_020df510;
     AnimationResource_InitEmpty(object + 0x1ec);
     *(s32 *)(object + 0x1fc) = -1;

@@ -21,11 +21,11 @@ extern s32 GraphicsSpriteRenderer_DrawText(void *, const u16 *, s32, s32, s32, s
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, const u16 *, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern const u16 *func_020791e0(void *, u16);
-extern void *func_02092790(void *, s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
 extern void func_02095bec(void *);
-extern void func_02095c30(void *, s32);
-extern void func_02095f48(void *, void *);
+extern void ModalState_InitResources(void *, s32);
+extern void ModalState_CopyAttachmentText(void *, void *);
 extern void *func_02095f8c(void *, void *, s32, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -69,16 +69,16 @@ extern "C" void func_ov016_021ff908(void *state, s32 setting, s32 variant,
     } else {
         handleIndex = variant == 0 ? 0 : 1;
     }
-    func_02070e0c(func_02092790((u8 *)state + 0x84, handleIndex), 1, 0);
+    func_02070e0c(TitleScreenResourceCollection_Get((u8 *)state + 0x84, handleIndex), 1, 0);
     object = Heap_Alloc(0x2d0, data_ov016_022015b0, 4, gHeapContext);
     if (object != 0) {
         object = func_020959d4(object, 0, 0);
     }
     FIELD(void *, state, 0x460) = object;
     if (optional != 0) {
-        func_02095f48(object, optional);
+        ModalState_CopyAttachmentText(object, optional);
     }
-    func_02095c30(object, setting);
+    ModalState_InitResources(object, setting);
     FIELD(u32, state, 0x48) |= 2;
 }
 
@@ -126,7 +126,7 @@ extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
     width = GraphicsSpriteRenderer_MeasureText(data_020f4e14, text, 4, 0);
     text = func_020791e0(data_021f3ecc, messageId);
     GraphicsSpriteRenderer_DrawText(data_020f4e14, text, 0x80 - width / 2, 0x20, 0xe, 4, 0);
-    func_02070e0c(func_02092790((u8 *)state + 0x84, 4), 1, 0);
+    func_02070e0c(TitleScreenResourceCollection_Get((u8 *)state + 0x84, 4), 1, 0);
     FIELD(u32, state, 0x48) |= 2;
 }
 

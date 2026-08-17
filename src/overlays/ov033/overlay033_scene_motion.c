@@ -18,7 +18,7 @@ extern s32 GamePhaseState_GetBoundaryDirection(void *state);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void *func_ov074_0220fda8(void *object, s32 selection);
-extern s32 func_02093360(void *dialog, const void *inputState);
+extern s32 TitleDialog_UpdateTextPage(void *dialog, const void *inputState);
 extern s32 Presentation_InterpolateQuadraticPulse(s32 first, s32 second, s32 third, s32 selector);
 extern s32 GamePhaseState_QueryTerrainHeight(void *state, s32 x, s32 y);
 extern void func_ov033_021fd4cc(void *scene, s32 delta);
@@ -57,7 +57,7 @@ extern "C" s32 func_ov033_021fd37c(void *owner)
  * Polls dialog/input acceptance. It snapshots 11 pad-state halfwords, returns
  * 1 immediately when dialog state +0x38 has bit 0 set, and otherwise injects
  * an A/B-style bit into the snapshot when the touch manager reports a fresh
- * touch before calling func_02093360. Returns the low result bit sign-extended
+ * touch before calling TitleDialog_UpdateTextPage. Returns the low result bit sign-extended
  * to 0/1. Dialog/input state may change; no direct hardware register is read.
  */
 extern "C" s32 func_ov033_021fd418(void *scene)
@@ -78,7 +78,7 @@ extern "C" s32 func_ov033_021fd418(void *scene)
         else
             input[1] |= 2;
     }
-    return func_02093360(dialog, input) & 1;
+    return TitleDialog_UpdateTextPage(dialog, input) & 1;
 }
 
 /* Divides a signed value by 16 with C/truncation-toward-zero semantics. */

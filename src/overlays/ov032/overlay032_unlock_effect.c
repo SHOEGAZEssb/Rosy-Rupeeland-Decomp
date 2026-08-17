@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern s32 GraphicsSpriteState_SetAnimationIndex(...);
-extern void func_ov032_02201450(...);
+extern void Overlay032Controller_CreateObject(...);
 extern u32 genrand_int32(void);
 extern s32 func_020bf1f8(...);
 extern void func_ov032_022014c0(...);
@@ -55,7 +55,7 @@ extern "C" void func_ov032_022001c0(void *scene)
     }
     for (s32 i = 0; i < 0x28; ++i) {
         u8 *entry = (u8 *)scene + 0x334 + i * 0x30;
-        func_ov032_02201450(entry, FIELD(void *, scene, 0), (u8 *)scene + 0x4c);
+        Overlay032Controller_CreateObject(entry, FIELD(void *, scene, 0), (u8 *)scene + 0x4c);
         void *object = FIELD(void *, entry, 0);
         FIELD(u16, object, 0x24) |= 4;
         FIELD(s32, entry, 0x28) = func_020bf1f8(genrand_int32(), 0x28) + 1;

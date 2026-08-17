@@ -25,13 +25,13 @@ extern void func_02026588(void *object, s32 value);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
 extern void VecFx32Object_Destroy(void *value);
 extern void *VecFx32Object_Assign(void *destination, const void *source);
-extern s32 func_0206cd10(void *resource);
-extern void func_0206c978(void *resource);
+extern s32 AuxiliaryInteraction_RunSelectedSequence(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_02032370(void *actor, const void *target, s32 scale);
 extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void Actor_UpdateGroundContactProbe(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
 extern void Type7Actor_UpdateAttachmentControllerAnimation(void *actor);
@@ -179,10 +179,10 @@ void Type7Actor_UpdateFrame(void *self)
         VecFx32Object_Destroy(temporary);
     }
     if (*(void **)(actor + 0x234) != 0
-        && func_0206cd10(*(void **)(actor + 0x234)) == 2) {
+        && AuxiliaryInteraction_RunSelectedSequence(*(void **)(actor + 0x234)) == 2) {
         void *resource = *(void **)(actor + 0x234);
         if (resource != 0) {
-            func_0206c978(resource);
+            AuxiliaryInteraction_Destroy(resource);
             Heap_Free(resource);
         }
         *(void **)(actor + 0x234) = 0;
@@ -233,7 +233,7 @@ void Type7Actor_UpdateFrame(void *self)
     }
     target = *(u8 **)(actor + 0x280);
     if (target != 0) {
-        s32 separation = func_020be328(
+        s32 separation = SignedAbsoluteValueVariant(
             Actor_GetCachedTerrainHeight(actor) - Actor_GetCachedTerrainHeight(target));
         if (separation >= 0x20000)
             *(u32 *)(actor + 0x268) |= 0x800000;

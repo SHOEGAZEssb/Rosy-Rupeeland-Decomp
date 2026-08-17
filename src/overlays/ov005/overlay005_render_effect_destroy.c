@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void func_ov005_021fb6e0(void *object);
 #ifdef __cplusplus
 }
@@ -24,7 +24,7 @@ extern "C"
 #endif
 void *func_ov005_021fc890(void *state)
 {
-    func_02071eb8((u8 *)state + 0x9c);
+    AnimationResourceState_Destroy((u8 *)state + 0x9c);
     func_ov005_021fb6e0(state);
     return state;
 }

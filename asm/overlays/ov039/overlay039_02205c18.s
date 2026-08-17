@@ -14,7 +14,7 @@
     .extern func_ov007_021fc19c
     .extern Sound_Play
     .extern genrand_int32
-    .extern func_02058d40
+    .extern Sound_StopAllDirectSequences
     .extern func_0205940c
     .extern gActorRuntimeFlags
     .extern gSoundContext
@@ -217,7 +217,7 @@ L_02205ed4:
     ldr r0, L_02205f5c
     str r3, [r2, #0x74]
     ldr r0, [r0, #0x0]
-    bl func_02058d40
+    bl Sound_StopAllDirectSequences
     ldr r0, L_02205f5c
     mov r1, #0x0
     ldr r0, [r0, #0x0]

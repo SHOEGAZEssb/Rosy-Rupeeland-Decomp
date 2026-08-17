@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_palette_ramp.c. */
     .extern Presentation_InterpolateLinear
-.global func_ov017_02200064
-func_ov017_02200064:
+.global Overlay017_UpdatePaletteRamp
+Overlay017_UpdatePaletteRamp:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r7, r0
     ldr r3, [r7, #0x3cc]
@@ -76,4 +76,4 @@ func_ov017_02200064:
     add r0, r7, #0x400
     strh r1, [r0, #0x3c]
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_ov017_02200064, . - func_ov017_02200064
+    .size Overlay017_UpdatePaletteRamp, . - Overlay017_UpdatePaletteRamp

@@ -5,7 +5,7 @@
 .extern GX_SetGraphicsMode
 .extern data_020f4e14
 .extern data_021052fc
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseAreaScene_SetEnabled
 .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -14,8 +14,8 @@
 .extern func_ov032_021fde1c
 .extern gDebugFont
 
-    .global func_ov032_021fde38
-func_ov032_021fde38:
+    .global Overlay032Scene_ShutdownGraphics
+Overlay032Scene_ShutdownGraphics:
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r0, #0x0
@@ -67,7 +67,7 @@ func_ov032_021fde38:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_021fdf2c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -78,5 +78,5 @@ L_021fdf20: .word 0x4001000
 L_021fdf24: .word data_020f4e14
 L_021fdf28: .word gDebugFont
 L_021fdf2c: .word data_021052fc
-.size func_ov032_021fde38, .-func_ov032_021fde38
+.size Overlay032Scene_ShutdownGraphics, .-Overlay032Scene_ShutdownGraphics
 

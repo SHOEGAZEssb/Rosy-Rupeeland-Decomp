@@ -43,8 +43,8 @@
 .extern Type7Actor_SetMotionTargetWithTimer
 .extern Type7Actor_SetFlag40StateEnabled
 .extern func_0204d308
-.extern func_02058d40
-.extern func_02059278
+.extern Sound_StopAllDirectSequences
+.extern Sound_PlayDirectSequence
 .extern func_020593ac
 .extern func_0205940c
 .extern func_02059484
@@ -2020,7 +2020,7 @@ func_ov090_02217d70:
     orr r2, r2, #0x4
     strb r2, [r4, #0x222]
     ldr r0, [r0, #0x0]
-    bl func_02058d40
+    bl Sound_StopAllDirectSequences
     ldr r0, .L_02218d14
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -2046,7 +2046,7 @@ func_ov090_02217d70:
     ldr r0, .L_02218d14
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02058d40
+    bl Sound_StopAllDirectSequences
     add r0, r4, #0x100
     ldrh r0, [r0, #0xf0]
     cmp r0, #0xa
@@ -2354,7 +2354,7 @@ func_ov090_02217d70:
     mov r1, #0x56
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     b .L_0221a284
 .L_02219fa0:
     ldr r2, .L_0221a3bc

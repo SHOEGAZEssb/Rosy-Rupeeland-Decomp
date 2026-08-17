@@ -20,7 +20,7 @@ extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
 extern void Graphics3DResourceOwner_RemoveManager(void *, void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void func_02091b6c(void *);
 extern void func_ov017_021fe3c4(void *, u32, u32, u32, u32, u8, u32);
 #ifdef __cplusplus
@@ -65,7 +65,7 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
         coordinateZ = radius * data_020c9670[tableIndex * 2 + 1] / 0x100;
         coordinateX = radius * data_020c9670[tableIndex * 2] / 0x100;
         func_ov017_021fe3c4(sprite,
-                           (u8)func_020918f4((u8 *)pool + 0x54, 3),
+                           (u8)TitleRandom_NextBounded((u8 *)pool + 0x54, 3),
                            (u32)coordinateX, (u32)-0x666, (u32)coordinateZ,
                            0x20, 0x42);
         FIELD(s32, sprite, 0x34) = 0;

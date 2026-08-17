@@ -9,12 +9,12 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" {
-s32 func_020be334(s32);
+s32 SignedAbsoluteValue(s32);
 u32 genrand_int32(void);
 void VecFx32Object_InitCopy(void *, const void *);
 s32 func_020a6990(void *, s32, s32);
 void func_020a6aa8(void *, void *, s32);
-void func_02059278(void *, s32, s32);
+void Sound_PlayDirectSequence(void *, s32, s32);
 void func_ov041_021fffc8(void *, void *);
 void func_ov070_02211dcc(void *, void *);
 void func_ov041_02203434(void *, void *);
@@ -32,9 +32,9 @@ static s32 mul_fixed(s32 a, s32 b)
 
 static s32 clamp_axis(s32 value, s32 limit)
 {
-    if (func_020be334(value) > limit)
+    if (SignedAbsoluteValue(value) > limit)
         return value < 0 ? -limit : limit;
-    if (func_020be334(value) <= 0x19a)
+    if (SignedAbsoluteValue(value) <= 0x19a)
         return 0;
     return value;
 }
@@ -90,7 +90,7 @@ extern "C" void func_ov041_021feec8(void *owner)
         FIELD(s32, owner, 0x1d0) > 0x2d) {
         if (func_020a6990((u8 *)owner + 0x1c, 0, 6) != 0) {
             FIELD(s32, owner, 0x1cc) = 2;
-            func_02059278(gSoundContext, 0x5f, 0x7f);
+            Sound_PlayDirectSequence(gSoundContext, 0x5f, 0x7f);
         }
         if (FIELD(s32, owner, 0x1ec) != 0)
             func_020a6aa8((u8 *)owner + 0x1c, transform, 4);

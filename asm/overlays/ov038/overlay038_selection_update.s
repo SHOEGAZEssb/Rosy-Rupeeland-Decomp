@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov038/overlay038_selection_update.c for documented portable C. */
 
     .extern func_020958d8
-    .extern func_02094574
+    .extern InventoryScroll_UpdatePresentation
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_ov046_0220c1a4
     .extern func_02091c7c
@@ -28,7 +28,7 @@ func_ov038_021fd37c:
     ldr r0, [r4, #0x314]
     cmp r0, #0x0
     beq L_021fd39c
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
 L_021fd39c:
     ldr r0, [r4, #0x60]
     bl GraphicsSpriteGroup_AdvanceAnimations

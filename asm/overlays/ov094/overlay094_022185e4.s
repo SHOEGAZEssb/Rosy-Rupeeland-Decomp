@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091b6c
@@ -18,7 +18,7 @@ func_ov094_022185e4:
     mov r4, r0
     add r0, r4, #0x8
     mov r5, r1
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x1c
     bl func_ov094_02217c34
     mov r0, #0x0

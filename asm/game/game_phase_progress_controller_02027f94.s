@@ -7,9 +7,9 @@
 .extern func_02027604
 .extern func_02027650
 
-    .global func_02027f94
-    .type func_02027f94, @function
-func_02027f94: ; 0x02027f94
+    .global GamePhaseProgress_GetOrCreateGlobal
+    .type GamePhaseProgress_GetOrCreateGlobal, @function
+GamePhaseProgress_GetOrCreateGlobal: ; 0x02027f94
     stmdb sp!, {r3, lr}
     ldr r0, .L_02027fd8
     ldr r0, [r0, #0x0]
@@ -32,5 +32,5 @@ func_02027f94: ; 0x02027f94
 .L_02027fdc: .word data_02105644
 .L_02027fe0: .word func_02027650
 .L_02027fe4: .word data_02105638
-    .size func_02027f94, . - func_02027f94
+    .size GamePhaseProgress_GetOrCreateGlobal, . - GamePhaseProgress_GetOrCreateGlobal
 

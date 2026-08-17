@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
     .extern func_ov021_021fd2b4
 
-.global func_ov021_021fd254
-func_ov021_021fd254:
+.global Overlay021List_SyncFirstVisibleRow
+Overlay021List_SyncFirstVisibleRow:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x58]
@@ -30,5 +30,5 @@ L_021fd294:
     cmp r5, r0
     ble L_021fd284
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov021_021fd254, . - func_ov021_021fd254
+    .size Overlay021List_SyncFirstVisibleRow, . - Overlay021List_SyncFirstVisibleRow
 

@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_input_runtime.c for documented portable C. */
 .extern GraphicsSpriteState_SetFrameIndex
-.extern func_02093360
-.extern func_020939d8
+.extern TitleDialog_UpdateTextPage
+.extern TitleDialog_ClearTextRect
 .extern func_ov032_021fe0c4
 .extern func_ov032_021fe0e8
 
@@ -44,7 +44,7 @@ L_021fe150:
 L_021fe1b0:
     ldr r0, [r5, #0x10]
     add r1, sp, #0x18
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x1f
     str r0, [sp, #0x0]
     str r0, [sp, #0xc]
@@ -53,7 +53,7 @@ L_021fe1b0:
     cmp r4, #0x0
     beq L_021fe1e0
     ldr r0, [r5, #0x10]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
 L_021fe1e0:
     add r0, r5, #0xc4
     bl func_ov032_021fe0c4

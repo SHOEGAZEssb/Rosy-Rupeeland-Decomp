@@ -18,7 +18,7 @@ extern "C" void func_ov043_0220b744(void *object, u32 first, u32 second);
 extern "C" s32 func_02095860(void *canvas, const void *input,
                               s32 first, s32 second);
 extern "C" void func_02092260(void *object, s32 mode);
-extern "C" void func_ov043_0220bd24(void *object);
+extern "C" void Overlay043_UpdatePresentationResources(void *object);
 
 /*
  * Enter the initial menu state. On state counter +0x04 zero, activate both
@@ -42,7 +42,7 @@ extern "C" s32 func_ov043_0220bd58(void *object)
  * controller flag 0x20 is set, test canvases +0x13C, +0x1E8, and +0x90 against
  * input +0x30. A hit selects mode 2/2/3, stores page index zero/one at +0x58,
  * and installs the corresponding callback pair. Always flush presentation
- * resources through func_ov043_0220bd24 and return zero.
+ * resources through Overlay043_UpdatePresentationResources and return zero.
  */
 extern "C" s32 func_ov043_0220bdb8(void *object)
 {
@@ -71,6 +71,6 @@ extern "C" s32 func_ov043_0220bdb8(void *object)
                                  data_ov043_0220c458[1]);
         }
     }
-    func_ov043_0220bd24(object);
+    Overlay043_UpdatePresentationResources(object);
     return 0;
 }

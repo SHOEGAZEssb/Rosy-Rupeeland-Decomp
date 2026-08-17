@@ -11,16 +11,16 @@ extern "C" {
 #endif
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_02093de4(void *);
-extern s32 func_02093ffc(void *);
-extern void func_020946a8(void *, s32);
-extern s32 func_020946c8(void *, void *);
-extern void func_02094738(void *, s32);
+extern void InventoryScroll_SaveOrigins(void *);
+extern s32 InventoryScroll_UpdateInterpolation(void *);
+extern void InventoryScroll_BeginMarkerDrag(void *, s32);
+extern s32 InventoryScroll_UpdateMarkerDrag(void *, void *);
+extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 func_ov016_021fd640(void *);
-extern void func_ov016_021fe754(void *, u32, u32);
+extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ffba4(void *);
-extern void func_ov016_021ffbd8(void *);
+extern void Overlay016_SyncSelectedPanel(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -42,15 +42,15 @@ extern "C" s32 func_ov016_02200488(void *state)
 
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020946a8(presentation, 4);
+        InventoryScroll_BeginMarkerDrag(presentation, 4);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through while the opening sequence begins. */
     case 1:
-        if (func_02093ffc(presentation) != 0) {
+        if (InventoryScroll_UpdateInterpolation(presentation) != 0) {
             if (FIELD(s32, presentation, 0xc) !=
                 FIELD(s32, presentation, 0x10)) {
-                func_ov016_021ffbd8(state);
+                Overlay016_SyncSelectedPanel(state);
                 func_02092288(state, 8);
             }
             FIELD(s32, state, 4)++;
@@ -63,16 +63,16 @@ extern "C" s32 func_ov016_02200488(void *state)
         }
         /* Completed opening continues directly into input state 2. */
     case 2:
-        func_02093de4(presentation);
+        InventoryScroll_SaveOrigins(presentation);
         if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
-            if (func_020946c8(presentation, (u8 *)state + 0x30) != 0) {
+            if (InventoryScroll_UpdateMarkerDrag(presentation, (u8 *)state + 0x30) != 0) {
                 func_02092260(state, 8);
                 FIELD(s32, state, 4)--;
                 FIELD(s32, state, 8) = 0;
             }
         } else {
-            func_02094738(presentation, 6);
-            func_ov016_021fe754(state, data_ov016_02201480[0],
+            InventoryScroll_EndMarkerDrag(presentation, 6);
+            Overlay016ActorValue_Init(state, data_ov016_02201480[0],
                                 data_ov016_02201480[1]);
         }
         break;

@@ -20,7 +20,7 @@ extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *positio
                           s32 mode);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 extern s32 GridEffectActorModeAllocator_Reserve(void);
-extern void func_02064a18(void *context, void *subobject);
+extern void InventoryRecordCollection_MergeOrInsert(void *context, void *subobject);
 #ifdef __cplusplus
 }
 #endif
@@ -66,5 +66,5 @@ void GridEffectActor_BeginDeparture(void *actor, const void *trigger)
         (FIELD(u32, actor, 0x5c) & 0xffff0000) | 0xff00;
     FIELD(u8, actor, 0x21a) = (u8)GridEffectActorModeAllocator_Reserve();
     Sound_Play(gSoundContext, 0, 0x11);
-    func_02064a18(data_021e9ac0, (u8 *)actor + 0x1f4);
+    InventoryRecordCollection_MergeOrInsert(data_021e9ac0, (u8 *)actor + 0x1f4);
 }

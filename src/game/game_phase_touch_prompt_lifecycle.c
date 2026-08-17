@@ -12,8 +12,8 @@ extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *func_02006108(void *self);
 extern void *func_02006138(void *self);
-extern void func_02071ea4(void *state);
-extern void func_02071eb8(void *state);
+extern void AnimationResourceState_InitEmbedded(void *state);
+extern void AnimationResourceState_Destroy(void *state);
 extern void func_02071ee0(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
 extern void *SpritePresentation_Init(void *self, GraphicsSpriteState *sprite);
@@ -40,7 +40,7 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
     func_02006108(self);
     self->vtable = data_020d5604;
     self->owner = owner;
-    func_02071ea4(&self->resources);
+    AnimationResourceState_InitEmbedded(&self->resources);
     self->enabled = 1;
     self->state = 3;
     self->savedState = 3;
@@ -74,7 +74,7 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Destroy(GamePhaseTouchPrompt *self)
     if (self->actor)
         ((void (*)(void *))(*(void ***)self->actor)[1])(self->actor);
     GraphicsSpriteGroup_Destroy(self->spriteGroup);
-    func_02071eb8(&self->resources);
+    AnimationResourceState_Destroy(&self->resources);
     func_02006138(self);
     return self;
 }

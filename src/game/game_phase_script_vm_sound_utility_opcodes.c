@@ -9,7 +9,7 @@ extern "C" {
 extern void *gSoundContext;
 extern s32 func_020570b0(u16 value);
 extern void func_02099114(s32 value);
-extern void func_02058ce0(void *context);
+extern void Sound_StopAllManagedPlayers(void *context);
 extern void func_02059218(void *context);
 extern void func_02059a00(void *context);
 #ifdef __cplusplus
@@ -46,7 +46,7 @@ s32 GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand(GamePhaseActorScri
         break;
     case 16: func_020595d4(gSoundContext); break;
     case 17: func_020595ec(gSoundContext); break;
-    case 18: func_02058ce0(gSoundContext); break;
+    case 18: Sound_StopAllManagedPlayers(gSoundContext); break;
     case 19: func_02059218(gSoundContext); break;
     case 20: func_02059a00(gSoundContext); break;
     }

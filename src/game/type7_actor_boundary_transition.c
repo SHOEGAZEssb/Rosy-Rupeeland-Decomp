@@ -21,10 +21,10 @@ extern s32 func_02034568(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_02034718(void *actor, s32 x, s32 y, s32 height);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 value);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 value0, u32 value1, s32 index);
-extern void func_0206c978(void *object);
+extern void AuxiliaryInteraction_Destroy(void *object);
 extern void func_0206e590(void *object, s32 value);
 extern s32 func_020adae4(s32 value, s32 divisor);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -61,7 +61,7 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
         func_0206e590(attachment, 0);
         attachment = *(void **)(actor + 0x234);
         if (attachment != 0) {
-            func_0206c978(attachment);
+            AuxiliaryInteraction_Destroy(attachment);
             Heap_Free(attachment);
         }
         *(void **)(actor + 0x234) = 0;
@@ -112,7 +112,7 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
                 edgeClear = clearCount == 3;
             }
         } else if (direction == 2) {
-            s32 extent = func_020be328(*(s16 *)(actor + 0x6a));
+            s32 extent = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6a));
             if (gridY - extent < 0x40) {
                 for (offset = -1; offset <= 1; ++offset) {
                     s32 x = (*(s32 *)(actor + 0x1c) + offset * 0xdfd7) >> 16;
@@ -126,7 +126,7 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
                 edgeClear = clearCount == 3;
             }
         } else {
-            s32 extent = func_020be328(*(s16 *)(actor + 0x6e));
+            s32 extent = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6e));
             if (gridY + extent > bottomEdge - 0x40) {
                 s32 y = func_020adae4(bottomEdge, 0x10) - 2;
                 for (offset = -1; offset <= 1; ++offset) {
@@ -187,10 +187,10 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
             } else if (direction == 1) {
                 position.value.x -= (halfWidth + 0x30) * 0x1000;
             } else if (direction == 2) {
-                s32 extent = func_020be328(*(s16 *)(actor + 0x6a));
+                s32 extent = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6a));
                 position.value.y += (extent + 0x30) * 0x1000;
             } else {
-                s32 extent = func_020be328(*(s16 *)(actor + 0x6e));
+                s32 extent = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6e));
                 position.value.y -= (extent + 0x30) * 0x1000;
             }
             VecFx32Object_Assign((VecFx32Object *)(actor + 0x28), &position);

@@ -7,8 +7,8 @@
 .extern VecFx32Triple_Init
 .extern gHeapContext
 
-.global func_ov065_0220fd20
-func_ov065_0220fd20:
+.global Overlay065Particle_Init
+Overlay065Particle_Init:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     mov r2, #0x0
@@ -45,4 +45,4 @@ func_ov065_0220fd20:
 .L_0220fda0: .word data_ov065_02210c00
 .L_0220fda4: .word data_ov065_02210be4
 .L_0220fda8: .word gHeapContext
-.size func_ov065_0220fd20, . - func_ov065_0220fd20
+.size Overlay065Particle_Init, . - Overlay065Particle_Init

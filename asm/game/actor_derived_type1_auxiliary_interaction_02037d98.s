@@ -10,7 +10,7 @@
 .extern gActorRuntimeFlags
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorRuntimeCollection_GetBusyState
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_HasBlockingStateFlags
 .extern ActorDerivedType1_IsTargetStateEligible
@@ -18,10 +18,10 @@
 .extern ActorDerivedType1_ApplyWeightedCollisionDisplacement
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern Type7Actor_HandleResourceInteraction
-.extern func_0206c68c
-.extern func_0206c978
-.extern func_0206cb04
-.extern func_0206e3a4
+.extern AuxiliaryInteraction_Init
+.extern AuxiliaryInteraction_Destroy
+.extern AuxiliaryInteraction_AdmitTarget
+.extern AuxiliaryInteraction_IsCoreHidden
 .extern ActorRuntimeFlags_Test
 .extern gGameWork
 .extern gHeapContext
@@ -33,7 +33,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
     mov r4, r1
-    bl func_02032a94
+    bl ActorContactState_AddContact
     ldr r0, .L_02038088
     ldr r0, [r0, #0x0]
     bl SceneManager_GetCurrent
@@ -106,7 +106,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     cmp r6, #0x0
     beq .L_02037ed0
     mov r0, r6
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r6
     bl Heap_Free
 .L_02037ed0:
@@ -118,7 +118,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     cmp r0, #0x0
     beq .L_02037ef4
     mov r1, r5
-    bl func_0206c68c
+    bl AuxiliaryInteraction_Init
 .L_02037ef4:
     ldr r1, .L_0203809c
     str r0, [r5, #0x26c]
@@ -129,7 +129,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     ldr r0, [r5, #0x26c]
     mov r1, r4
     mov r2, #0x1
-    bl func_0206cb04
+    bl AuxiliaryInteraction_AdmitTarget
     cmp r0, #0x0
     beq .L_02038080
     ldr r1, [r5, #0x10]
@@ -185,7 +185,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     cmp r6, #0x0
     beq .L_02037ff4
     mov r0, r6
-    bl func_0206e3a4
+    bl AuxiliaryInteraction_IsCoreHidden
     cmp r0, #0x0
     moveq r7, #0x1
     beq .L_02037ff8
@@ -207,7 +207,7 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
     cmp r0, #0x0
     beq .L_02038038
     mov r1, r5
-    bl func_0206c68c
+    bl AuxiliaryInteraction_Init
 .L_02038038:
     ldr r1, .L_0203809c
     str r0, [r5, #0x26c]

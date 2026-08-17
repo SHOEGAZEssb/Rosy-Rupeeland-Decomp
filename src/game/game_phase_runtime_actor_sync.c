@@ -11,7 +11,7 @@ extern "C" {
 extern void func_02008354(void *output, const void *input);
 extern void ActorMotionAreaFollower_Update(void *object, const void *value);
 extern void func_020086f8(void *state, GamePhaseRuntime *self);
-extern void func_0200875c(void *state, GamePhaseRuntime *self);
+extern void GamePhaseRuntime_BuildSecondaryTransform(void *state, GamePhaseRuntime *self);
 extern void GamePhaseState_ApplyPlacementState(void *object, const void *state);
 extern void VecFx32Object_Destroy(void *state);
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
@@ -84,7 +84,7 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
             ActorMotionGameWork_Update(b + 0x3044, compact);
             if (*(void **)(b + 0x30fc) != 0 &&
                 *(void **)(b + 0x2fb8) != 0) {
-                func_0200875c(full0, self);
+                GamePhaseRuntime_BuildSecondaryTransform(full0, self);
                 GamePhaseAreaScene_ApplyPlacementState(*(void **)(b + 0x2fb8), full0);
                 VecFx32Object_Destroy(full0);
             }

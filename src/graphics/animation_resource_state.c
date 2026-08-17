@@ -10,7 +10,7 @@ typedef struct AnimationResourceState {
     void *screen;
 } AnimationResourceState;
 
-void func_02071f38(AnimationResourceState *state);
+void AnimationResourceState_ReleaseResources(AnimationResourceState *state);
 
 /* Initialize all three borrowed-resource slots to null and return state. */
 void *func_02071e90(AnimationResourceState *state)
@@ -22,7 +22,7 @@ void *func_02071e90(AnimationResourceState *state)
 }
 
 /* Initialize the equivalent embedded-state variant and return state. */
-void *func_02071ea4(AnimationResourceState *state)
+void *AnimationResourceState_InitEmbedded(AnimationResourceState *state)
 {
     state->character = 0;
     state->palette = 0;
@@ -31,15 +31,15 @@ void *func_02071ea4(AnimationResourceState *state)
 }
 
 /* Release a resource triplet without freeing caller-owned state storage. */
-void *func_02071eb8(AnimationResourceState *state)
+void *AnimationResourceState_Destroy(AnimationResourceState *state)
 {
-    func_02071f38(state);
+    AnimationResourceState_ReleaseResources(state);
     return state;
 }
 
 /* Release the equivalent embedded-state variant and return its storage. */
 void *func_02071ecc(AnimationResourceState *state)
 {
-    func_02071f38(state);
+    AnimationResourceState_ReleaseResources(state);
     return state;
 }

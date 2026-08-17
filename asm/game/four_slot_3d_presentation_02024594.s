@@ -4,7 +4,7 @@
 .extern __construct_array
 .extern data_020d6780
 .extern data_020d6934
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern DisplayControlElement_NoOp
 .extern func_02091b6c
 .extern func_02091bac
@@ -17,7 +17,7 @@ FourSlot3DPresentation_Init: ; 0x02024594
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r5, r1
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_0202465c
     ldr r4, .L_02024660
     str r0, [r10, #0x0]

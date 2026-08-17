@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_periodic_spawn.c. */
 .extern data_020c9670
 .extern data_ov026_02204ad4
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationList_Append
 .extern func_ov026_021fe5d8
 .extern gHeapContext
@@ -25,7 +25,7 @@ func_ov026_0220112c:
     add r0, r0, #0x400
     mov r1, #0x1000
     str r2, [r10, #0x324]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r0, r0, lsl #0x14
     mov r0, r0, lsr #0x10
     mov r0, r0, asr #0x4
@@ -67,12 +67,12 @@ func_ov026_0220112c:
     mov r1, #0x1000
     ldr r8, [r2, #0x20]
     ldr r9, [r2, #0x13c]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     add r1, r10, #0x3a4
     mov r4, r0
     add r0, r1, #0x400
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r5, [sp, #0x0]
     mov r1, r4, lsl #0x4
     str r1, [sp, #0x4]

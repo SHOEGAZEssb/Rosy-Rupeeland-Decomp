@@ -6,7 +6,7 @@
 .extern func_02070eac
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_020706c4
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern MIi_CpuCopy16
 .extern DualLayerTileRenderer_UploadPalette
 .extern GraphicsResourceSet_Destroy
@@ -103,7 +103,7 @@ SubDualLayerResourceRenderer_LoadBgResources: ; 0x0202bc98
     bl func_02070eac
     ldr r5, [r4, #0x14]
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r1, r5, #0x140
     add r0, r0, #0x80
     mov r2, #0xc0

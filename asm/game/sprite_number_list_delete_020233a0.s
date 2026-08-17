@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020d660c
-.extern func_02022ac8
+.extern SpriteNodeList_Clear
 .global func_020233a0
     .type func_020233a0, @function
 func_020233a0:
@@ -10,7 +10,7 @@ func_020233a0:
     ldr r1, .L_020233c4
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02022ac8
+    bl SpriteNodeList_Clear
     mov r0, r4
     bl Heap_Free
     mov r0, r4

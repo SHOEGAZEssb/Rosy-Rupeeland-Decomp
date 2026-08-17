@@ -3,7 +3,7 @@
 /* Overlay 50 deleting hooks for effect and list-element storage. */
 
 extern "C" u8 data_ov050_0220e384[];
-extern "C" void func_ov050_0220d8b4(void *effect);
+extern "C" void Overlay050Effect_Destroy(void *effect);
 extern "C" void Heap_Free(void *allocation);
 
 /*
@@ -13,7 +13,7 @@ extern "C" void Heap_Free(void *allocation);
 extern "C" void *func_ov050_0220e2d8(void *effect)
 {
     *(void **)effect = data_ov050_0220e384;
-    func_ov050_0220d8b4(effect);
+    Overlay050Effect_Destroy(effect);
     Heap_Free(effect);
     return effect;
 }

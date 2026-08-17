@@ -36,22 +36,22 @@ extern void *GraphicsSpriteGroup_CreateState(O64_ARGS);
 extern void GraphicsSpriteState_SetAnimationIndex(O64_ARGS);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(O64_ARGS);
 extern void ActorCollection_UnregisterAndDestroyAllActors(O64_ARGS);
-extern void ActorCollection_SetEnabled(O64_ARGS), func_0202d3cc(O64_ARGS);
+extern void ActorCollection_SetEnabled(O64_ARGS), ActorCollectionActivation_DestroyReservedSlot(O64_ARGS);
 extern void Actor_ReplaceAttachmentSlotResource(O64_ARGS);
 extern void Type7Actor_EnterSpecialPresentationState(O64_ARGS);
 extern void GamePhaseTouchPrompt_SetEnabled(O64_ARGS);
 extern void GamePhaseCurrencyHud_SetVisible(O64_ARGS);
-extern void func_0201ded4(O64_ARGS), func_0201e14c(O64_ARGS);
+extern void PresentationList_AppendObject(O64_ARGS), RuntimePresentationManager_BroadcastSlot1C(O64_ARGS);
 extern void *func_02025300(O64_ARGS);
-extern void func_02058de0(O64_ARGS), func_0205974c(O64_ARGS);
-extern void func_0206c978(O64_ARGS);
+extern void Sound_SetCaptureEnabled(O64_ARGS), Sound_LoadGroup(O64_ARGS);
+extern void AuxiliaryInteraction_Destroy(O64_ARGS);
 extern s32 ActorDirection_GetPresentationGroup(O64_ARGS), func_020ae1fc(O64_ARGS);
 extern void GamePhaseRuntime_SynchronizeActorPlacement(O64_ARGS);
 extern void ActorFeedback_UpdatePresentations(O64_ARGS);
 extern void *ActorMotionAreaFollower_GetPosition(O64_ARGS);
 extern void ActorCollection_DispatchEventToActors(O64_ARGS);
 extern void GraphicsSpriteGroup_AdvanceAnimations(O64_ARGS);
-extern void func_0200875c(O64_ARGS), func_0201dcec(O64_ARGS);
+extern void GamePhaseRuntime_BuildSecondaryTransform(O64_ARGS), RuntimePresentationManager_Update(O64_ARGS);
 extern void GamePhaseCurrencyHud_Update(O64_ARGS);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(O64_ARGS);
 extern void func_020afce8(O64_ARGS);
@@ -86,13 +86,13 @@ extern void func_020adff0(O64_ARGS), VecFx32Triple_Set(O64_ARGS);
 extern u32 genrand_int32(O64_ARGS);
 extern u64 func_020bf1f8(O64_ARGS);
 extern s32 GameWork_TestFlag(O64_ARGS);
-extern void GameWork_SetFlag(O64_ARGS), func_020627a0(O64_ARGS);
+extern void GameWork_SetFlag(O64_ARGS), ActorDescriptor_InitRange(O64_ARGS);
 extern void *GridEffectActor_Spawn(O64_ARGS);
 extern void GraphicsSpriteState_ReleaseFromGroup(O64_ARGS);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(O64_ARGS);
 extern void VecFx32Triple_Destroy(O64_ARGS);
 extern void ActorDerivedType1_ResetRuntimeState(O64_ARGS);
-extern void func_020084b8(O64_ARGS), func_020597fc(O64_ARGS);
+extern void GamePhaseRuntime_RequestPrimaryWarp(O64_ARGS), Sound_ReleaseGroup(O64_ARGS);
 extern void GamePhaseRuntime_StageAreaRequest(O64_ARGS);
 extern void Type7Actor_LeaveSpecialPresentationState(O64_ARGS);
 extern void *OverlayManager_GetGlobal(O64_ARGS);
@@ -101,12 +101,12 @@ extern void func_020adfbc(O64_ARGS);
 extern s32 func_020adc90(O64_ARGS);
 extern void *gDisplayBrightnessPair;
 extern void ActorDerivedType1_ApplyResourceIndex(O64_ARGS);
-extern void func_02058d40(O64_ARGS), func_02059278(O64_ARGS);
+extern void Sound_StopAllDirectSequences(O64_ARGS), Sound_PlayDirectSequence(O64_ARGS);
 extern void *DisplayBrightnessPair_GetScreen(O64_ARGS);
 extern void DisplayBrightness_StartTransition(O64_ARGS);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(O64_ARGS);
-extern void func_02058ce0(O64_ARGS), func_02059604(O64_ARGS);
-extern void func_020a7c4c(O64_ARGS);
+extern void Sound_StopAllManagedPlayers(O64_ARGS), func_02059604(O64_ARGS);
+extern void Sound_SetMasterVolume(O64_ARGS);
 #ifdef __cplusplus
 }
 #endif
@@ -229,10 +229,10 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         F(u8, scene, 0x76) = 0;
         F(s16, presentation, 0x2c) = actorX;
         F(s16, presentation, 0x2e) = actorY;
-        func_0205974c(gSoundContext, 0x52);
+        Sound_LoadGroup(gSoundContext, 0x52);
         replacement = F(void *, actor, 0x26c);
         if (replacement != 0) {
-            func_0206c978(replacement);
+            AuxiliaryInteraction_Destroy(replacement);
             Heap_Free(replacement);
             GameWork_ClearFlag(gGameWork, 0x3ee);
             F(void *, actor, 0x26c) = 0;
@@ -246,7 +246,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
                     ActorCollection_GetSpriteOwner(actorCollection), 0x1e,
                     1, 0);
             }
-            func_0201ded4((u8 *)data_021052fc + 0x2f7c, replacement);
+            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, replacement);
         }
     } else if (mode == 2) {
         s32 direction;
@@ -272,12 +272,12 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
             actorY -= 0x12;
         F(s16, presentation, 0x2c) = actorX;
         F(s16, presentation, 0x2e) = actorY;
-        func_0205974c(gSoundContext, 0x53);
+        Sound_LoadGroup(gSoundContext, 0x53);
     } else if (mode == 3) {
         s32 i;
 
-        func_0201e14c((u8 *)data_021052fc + 0x2f7c, 1);
-        func_02058de0(gSoundContext, 0);
+        RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 1);
+        Sound_SetCaptureEnabled(gSoundContext, 0);
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
         ActorCollection_UnregisterAndDestroyAllActors(actorCollection);
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
@@ -288,7 +288,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         if (target != 0 && F(void *, target, 0x234) != 0)
             F(u32, F(void *, target, 0x234), 0x20) |= 0x40000;
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
-        func_0202d3cc(actorCollection);
+        ActorCollectionActivation_DestroyReservedSlot(actorCollection);
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         ActorCollection_SetEnabled(actorCollection, 0);
         call_method2_void(F(void *, data_021052fc, 0x30e8), 0xc, 0, 0x1f);
@@ -409,10 +409,10 @@ static void *destroy_scene(void *scene, s32 freeScene)
     ActorDerivedType1_ResetRuntimeState(actor);
     mode = F(u8, scene, 0x77);
     if (mode == 0) {
-        func_020084b8(data_021052fc, F(s16, scene, 0x78) << 16,
+        GamePhaseRuntime_RequestPrimaryWarp(data_021052fc, F(s16, scene, 0x78) << 16,
                       F(s16, scene, 0x7a) << 16);
     } else if (mode == 1 || mode == 2) {
-        func_020597fc(gSoundContext, mode == 1 ? 0x52 : 0x53);
+        Sound_ReleaseGroup(gSoundContext, mode == 1 ? 0x52 : 0x53);
         GamePhaseRuntime_StageAreaRequest(
             data_021052fc, F(s16, gGameWork, 0x188),
             F(s16, gGameWork, 0x18a), F(s16, gGameWork, 0x18c), 0, 0);
@@ -520,7 +520,7 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
                     motion, position, actor, -F(s32, scene, 0x80),
                     0x2000, -0xc0);
             }
-            func_0201ded4((u8 *)data_021052fc + 0x2f7c, motion);
+            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, motion);
             Overlay064Scene_SpawnRewardEffect(scene, &savedPosition);
             VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x18),
                                  &destination);
@@ -610,9 +610,9 @@ s32 Overlay064Scene_UpdateMode1(void *scene)
                         (u8 *)data_021052fc + 0x2fbc),
                     actor, -F(s32, scene, 0x80), 0x2000, -0xc0);
             }
-            func_0201ded4((u8 *)data_021052fc + 0x2f7c, effect);
-            func_02058d40(gSoundContext, 0);
-            func_02059278(gSoundContext, 0x27, 0x7f);
+            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, effect);
+            Sound_StopAllDirectSequences(gSoundContext, 0);
+            Sound_PlayDirectSequence(gSoundContext, 0x27, 0x7f);
         }
     } else if (state == 2) {
         F(s16, scene, 0x74)++;
@@ -675,15 +675,15 @@ s32 Overlay064Scene_UpdateMode2(void *scene)
                         (u8 *)data_021052fc + 0x2fbc),
                     actor, -F(s32, scene, 0x80), 0x2000, -0xc0);
             }
-            func_0201ded4((u8 *)data_021052fc + 0x2f7c, effect);
+            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, effect);
             DisplayBrightness_StartTransition(
                 DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0),
                 0, -0x10, 0x3c);
             DisplayBrightness_StartTransition(
                 DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1),
                 0, -0x10, 0x3c);
-            func_02058d40(gSoundContext, 0);
-            func_02059278(gSoundContext, 0x27, 0x7f);
+            Sound_StopAllDirectSequences(gSoundContext, 0);
+            Sound_PlayDirectSequence(gSoundContext, 0x27, 0x7f);
         }
     } else if (state == 2) {
         F(s16, scene, 0x74)++;
@@ -719,7 +719,7 @@ s32 Overlay064Scene_UpdateMode3(void *scene)
         if (volume >= 0x7f)
             volume = 0x7f;
         F(s32, sound, 0xa4) = volume;
-        func_020a7c4c();
+        Sound_SetMasterVolume();
         if (F(s16, scene, 0x74) <= 0x78) {
             VecFx32Object start;
             VecFx32Object end;
@@ -802,11 +802,11 @@ s32 Overlay064Scene_UpdateMode3(void *scene)
                     (u16)~0x10;
             F(u16, F(void *, scene, 0x44), 0x24) &= (u16)~0x10;
             F(s16, scene, 0x74) = 0;
-            func_02058ce0(gSoundContext, 0);
+            Sound_StopAllManagedPlayers(gSoundContext, 0);
             func_02059604(gSoundContext, 0xfff, 0x20a,
                           -1, -1, -1, -1);
             F(s32, gSoundContext, 0xa4) = 0x7f;
-            func_020a7c4c();
+            Sound_SetMasterVolume();
             Sound_Play(gSoundContext, 0, 0x44);
             Sound_Play(gSoundContext, 0x167, 0);
             Sound_Play(gSoundContext, 0x167, 1);
@@ -876,7 +876,7 @@ void Overlay064Scene_SpawnRewardEffect(void *scene, const VecFx32Object *positio
         *(void **)(descriptor + 0x14) = descriptor;
         *(s32 *)(descriptor + 0x18) = 1;
         *(void **)(descriptor + 0x1c) = descriptor;
-        func_020627a0(descriptor, id, 1);
+        ActorDescriptor_InitRange(descriptor, id, 1);
         VecFx32Object_InitComponents(&offset, 0, 0, 0x20000);
         Overlay064VecFx32_Add(&spawnPosition, position, &offset);
         VecFx32Object_Destroy(&offset);
@@ -973,14 +973,14 @@ s32 Overlay064Scene_Update(void *scene)
         collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         GraphicsSpriteGroup_AdvanceAnimations(
             ActorCollection_GetSpriteOwner(collection));
-        func_0200875c(&position, data_021052fc);
+        GamePhaseRuntime_BuildSecondaryTransform(&position, data_021052fc);
         collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
         ActorCollection_DispatchEventToActors(collection, &position);
         VecFx32Object_Destroy(&position);
         collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
         GraphicsSpriteGroup_AdvanceAnimations(
             ActorCollection_GetSpriteOwner(collection));
-        func_0201dcec((u8 *)data_021052fc + 0x2f7c, 1);
+        RuntimePresentationManager_Update((u8 *)data_021052fc + 0x2f7c, 1);
         GamePhaseCurrencyHud_Update(gLupyContext);
         GamePhaseRuntime_UpdateDualScreenUiPresentation(data_021052fc);
     } else {

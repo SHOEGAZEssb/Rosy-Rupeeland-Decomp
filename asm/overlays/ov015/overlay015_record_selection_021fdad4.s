@@ -1,7 +1,7 @@
     .text
     .extern GameWork_TestFlag
-    .extern func_02062a08
-    .extern func_02062e00
+    .extern ActorDescriptor_GetSubtype
+    .extern InventoryRecord_GetMetadata
     .extern func_ov001_021fc7e4
     .extern func_ov015_021fd8a8
     .extern func_ov015_021fd8ec
@@ -28,7 +28,7 @@ func_ov015_021fdad4:
     ldr r0, [r6, #0xc]
     cmp r0, #0x0
     beq L_021fdd0c
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrb r0, [r0, #0x2]
     cmp r0, #0x1
     beq L_021fdb28
@@ -65,7 +65,7 @@ L_021fdb50:
     bl func_ov015_021fd8ec
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdb98:
-    bl func_02062a08
+    bl ActorDescriptor_GetSubtype
     cmp r0, #0x1
     ldmneia sp!, {r4, r5, r6, pc}
     mov r1, #0x0
@@ -88,7 +88,7 @@ L_021fdbcc:
     bl func_ov015_021fda50
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdbec:
-    bl func_02062a08
+    bl ActorDescriptor_GetSubtype
     cmp r0, #0x1
     ldmneia sp!, {r4, r5, r6, pc}
     mov r1, #0x0
@@ -123,7 +123,7 @@ L_021fdc58:
 L_021fdc64:
     cmp r4, #0x0
     beq L_021fdc90
-    bl func_02062a08
+    bl ActorDescriptor_GetSubtype
     cmp r0, #0x1
     ldmneia sp!, {r4, r5, r6, pc}
     mov r2, #0x11
@@ -133,7 +133,7 @@ L_021fdc64:
     bl func_ov015_021fd9f0
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdc90:
-    bl func_02062a08
+    bl ActorDescriptor_GetSubtype
     cmp r0, #0x1
     ldmneia sp!, {r4, r5, r6, pc}
     mov r1, #0x0

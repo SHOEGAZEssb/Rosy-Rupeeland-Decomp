@@ -1,4 +1,4 @@
-func_ov107_0221d6c0 kind:function(arm,size=0x50) addr:0x0221d6c0
+Overlay107_RegisterCategory1Actors kind:function(arm,size=0x50) addr:0x0221d6c0
 data_ov107_0221d720 kind:data(any) addr:0x0221d720
 data_ov107_0221d734 kind:data(any) addr:0x0221d734
 data_ov107_0221f024 kind:data(any) addr:0x0221f024 ambiguous

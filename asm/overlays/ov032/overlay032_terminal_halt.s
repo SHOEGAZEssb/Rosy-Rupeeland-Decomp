@@ -8,8 +8,8 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern data_ov032_02202348
-.extern func_02058ce0
-.extern func_0207042c
+.extern Sound_StopAllManagedPlayers
+.extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_02070b50
 .extern func_02070e0c
@@ -17,7 +17,7 @@
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020959d4
-.extern func_02095c30
+.extern ModalState_InitResources
 .extern func_020b44e8
 .extern gDebugFont
 .extern gHeapContext
@@ -40,7 +40,7 @@ L_02200dc0: ; jump table
 L_02200dd0:
     ldr r0, L_02200f68
     ldr r0, [r0, #0x0]
-    bl func_02058ce0
+    bl Sound_StopAllManagedPlayers
     ldr r0, [r4, #0x10]
     cmp r0, #0x0
     beq L_02200df4
@@ -92,7 +92,7 @@ L_02200e64:
     mov r2, #0x0
     bl func_02070638
     ldr r0, [r4, #0xf18]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [r4, #0xf1c]
@@ -121,7 +121,7 @@ L_02200e64:
 L_02200f08:
     mov r1, #0x1f
     str r0, [r4, #0xf24]
-    bl func_02095c30
+    bl ModalState_InitResources
     mov r0, #0x0
     str r0, [r4, #0xb74]
     ldr r0, [r4, #0xb64]

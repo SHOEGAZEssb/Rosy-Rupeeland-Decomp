@@ -3,7 +3,7 @@
 .extern data_ov054_0220f160
 .extern VecFx32Object_Destroy
 .extern func_0201e28c
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 
 .global func_ov054_0220ed0c
 func_ov054_0220ed0c:
@@ -17,7 +17,7 @@ func_ov054_0220ed0c:
     add r0, r4, #0x30
     bl VecFx32Object_Destroy
     add r0, r4, #0x24
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x8
     bl VecFx32Object_Destroy
     mov r0, r4

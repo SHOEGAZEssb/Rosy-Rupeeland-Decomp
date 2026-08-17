@@ -11,7 +11,7 @@
     .extern Presentation_IsScriptSuspended
     .extern func_02095860
     .extern func_020958d8
-    .extern func_020958f0
+    .extern SpriteMotionController_PublishCoordinates
     .extern func_02095988
     .extern func_ov013_021fdfbc
     .extern gLupyContext
@@ -91,7 +91,7 @@ L_021fdc88:
     ldr r1, [r1, #0x8]
     blx r1
     add r0, r7, r5
-    bl func_020958f0
+    bl SpriteMotionController_PublishCoordinates
     add r8, r8, #0x1
     cmp r8, #0x7
     blt L_021fdc88
@@ -128,7 +128,7 @@ L_021fdd0c:
     ldr r1, [r1, #0x8]
     blx r1
     add r0, r7, r5
-    bl func_020958f0
+    bl SpriteMotionController_PublishCoordinates
     add r8, r8, #0x1
     cmp r8, #0x5
     blt L_021fdd0c
@@ -139,7 +139,7 @@ L_021fdd0c:
     blx r1
     add r0, r6, #0x9c
     add r0, r0, #0x800
-    bl func_020958f0
+    bl SpriteMotionController_PublishCoordinates
     ldr r0, [r6, #0x84]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r6, #0x88]

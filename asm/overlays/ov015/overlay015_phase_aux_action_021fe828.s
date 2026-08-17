@@ -3,14 +3,14 @@
     .extern GameWork_TestFlag
     .extern data_ov015_021febb8
     .extern data_ov015_021fec20
-    .extern func_020628c8
+    .extern ActorDescriptor_GetPrimaryLabel
     .extern func_02092260
     .extern func_02095dd4
     .extern func_ov001_021fc39c
     .extern func_ov001_021fc7e4
     .extern func_ov001_021fc964
     .extern func_ov015_021fce30
-    .extern func_ov015_021fd68c
+    .extern Overlay015_UpdateRecords
     .extern func_ov015_021fdad4
     .extern func_ov015_021fde00
     .extern func_ov015_021fe548
@@ -88,7 +88,7 @@ L_021fe904:
     ldr r0, [r4, #0xdc]
     bl func_ov001_021fc39c
     ldr r0, [r4, #0xec]
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r3, r0
     mov r0, r4
     mov r1, #0x10
@@ -119,7 +119,7 @@ L_021fe954:
     bl func_ov015_021fce30
 L_021fe994:
     mov r0, r4
-    bl func_ov015_021fd68c
+    bl Overlay015_UpdateRecords
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fe9a4: .word 0x4104

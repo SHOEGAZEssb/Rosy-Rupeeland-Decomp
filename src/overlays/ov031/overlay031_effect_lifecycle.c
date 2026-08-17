@@ -14,8 +14,8 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *);
-extern void func_02071ea4(void *);
+extern void SceneInputBase_Init(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void Presentation_InitVariant(void *);
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -30,7 +30,7 @@ extern void SpritePresentation_SyncPosition(void *);
 extern void *func_ov031_021fd1c0(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov031_021fd254(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -61,7 +61,7 @@ static void teardown_effect(void *effect)
     GraphicsSpriteGroup_Destroy(FIELD(void *, effect, 0x54));
     GraphicsSpriteGroup_Destroy(FIELD(void *, effect, 0x58));
     func_ov031_021fd254((u8 *)effect + 0xb4);
-    func_02071eb8((u8 *)effect + 0x5c);
+    AnimationResourceState_Destroy((u8 *)effect + 0x5c);
 }
 
 /*
@@ -77,9 +77,9 @@ static void teardown_effect(void *effect)
  */
 extern "C" void *func_ov031_021fd258(void *effect)
 {
-    func_02091e28(effect);
+    SceneInputBase_Init(effect);
     FIELD(const void *, effect, 0) = data_ov031_021fe758;
-    func_02071ea4((u8 *)effect + 0x5c);
+    AnimationResourceState_InitEmbedded((u8 *)effect + 0x5c);
     Presentation_InitVariant((u8 *)effect + 0xb4);
     FIELD(u32, effect, 0x150) = 0;
     FIELD(u32, effect, 0x150) = genrand_int32();

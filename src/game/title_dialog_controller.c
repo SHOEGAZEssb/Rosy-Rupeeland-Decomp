@@ -11,20 +11,20 @@ extern void *gGameWork;
 extern void *gSoundContext;
 extern u8 data_021f3d68[];
 extern u8 data_021f3ecc[];
-extern void *func_02071ea4(void *state);
+extern void *AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *archive, u32 character_id,
                          u32 palette_id, u32 screen_id);
-extern void *func_020742cc(void *owner);
-extern void func_02074110(void *group);
+extern void *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner);
+extern void GraphicsSpriteGroup_ClearStates(void *group);
 extern void GraphicsSpriteGroup_Clear(void *group);
 extern void *func_02073ffc(void *group, const void *source, s32 attach);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
-extern void func_02072b68(void *sprite, u32 animation);
-extern void func_02071f38(void *resource_set);
+extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
+extern void AnimationResourceState_ReleaseResources(void *resource_set);
 extern void Sound_Play(void *context, s32 archive, s32 member);
 extern void func_0207419c(void *group);
-extern void func_02071eb8(void *resource_set);
+extern void AnimationResourceState_Destroy(void *resource_set);
 extern void Heap_Free(void *allocation);
 extern void *GraphicsSpriteRenderer_SetFontResource(void *renderer,
                                                      void *replacement);
@@ -38,20 +38,20 @@ extern s32 GraphicsSpriteRenderer_DrawCharacter(void *renderer,
                                                 u32 characterCode,
                                                 u32 destinationX,
                                                 u32 destinationY, u32 mode);
-extern s32 func_02062de4(u16 id);
-extern void func_020627a0(void *descriptor, u16 id, u16 last_index);
-extern void func_020627d0(void *descriptor, u16 id, u16 kind, u16 quantity);
-extern void *func_02062918(void *descriptor, s32 index);
-extern void *func_020628c8(void *descriptor);
-extern u32 func_02063064(void *component);
-extern u32 func_02063074(void *component);
-extern u32 func_02063084(void *component);
-extern s32 func_02063190(void *component);
-extern u8 *func_02079a7c(void *table, u32 key);
-extern const u16 *func_0207a00c(void *text_table, s32 identifier);
-extern void func_0206fa70(void **destination, u16 id);
+extern s32 ActorDatabase_GetDefinitionKind(u16 id);
+extern void ActorDescriptor_InitRange(void *descriptor, u16 id, u16 last_index);
+extern void ActorDescriptor_Init(void *descriptor, u16 id, u16 kind, u16 quantity);
+extern void *ActorDescriptor_GetComponent(void *descriptor, s32 index);
+extern void *ActorDescriptor_GetPrimaryLabel(void *descriptor);
+extern u32 ActorDescriptorComponent_GetCharacterResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetPaletteResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetCellResourceId(void *component);
+extern s32 ActorDescriptorComponent_GetAnimation(void *component);
+extern u8 *RuntimeRecordTable_FindByKey(void *table, u32 key);
+extern const u16 *RetailTextTable_FindAuxiliaryText(void *text_table, s32 identifier);
+extern void RetailPhaseDatabase_SelectById(void **destination, u16 id);
 
-void *func_02092cc0(void *object, void *font, void *text_resource)
+void *TitleDialog_Init(void *object, void *font, void *text_resource)
 {
     u8 *bytes = (u8 *)object;
     void *primary_group;
@@ -60,17 +60,17 @@ void *func_02092cc0(void *object, void *font, void *text_resource)
 
     memset(bytes, 0, 0xec);
     *(void **)bytes = data_020f25c4;
-    func_02071ea4(bytes + 0x14);
-    func_02071ea4(bytes + 0x20);
+    AnimationResourceState_InitEmbedded(bytes + 0x14);
+    AnimationResourceState_InitEmbedded(bytes + 0x20);
     *(void **)(bytes + 0x04) = font;
-    primary_group = func_020742cc(font);
+    primary_group = GraphicsSpriteGroupOwner_CreateGroupWrapper(font);
     *(void **)(bytes + 0x08) = primary_group;
-    *(void **)(bytes + 0x0c) = func_020742cc(font);
-    func_02074110(primary_group);
+    *(void **)(bytes + 0x0c) = GraphicsSpriteGroupOwner_CreateGroupWrapper(font);
+    GraphicsSpriteGroup_ClearStates(primary_group);
     func_02071ee0(bytes + 0x14, data_020f4e18, 0x3298, 0x3299, 0x329a);
     sprite = func_02073ffc(primary_group, bytes + 0x14, 2);
     *(void **)(bytes + 0x10) = sprite;
-    func_02072b68(sprite, 0x18);
+    GraphicsSpriteState_SetAnimation(sprite, 0x18);
     *(u16 *)((u8 *)sprite + 0x24) |= 2u;
     *(void **)(bytes + 0x2c) = text_resource;
     for (index = 0; index < 8; ++index) {
@@ -97,7 +97,7 @@ void func_02092f88(void *object, s32 row, void *text)
 }
 
 /* Recompute the retail horizontal text origin (0x02092F28). */
-void func_02092f28(void *object)
+void TitleDialog_RecomputeTextOrigin(void *object)
 {
     u8 *bytes = (u8 *)object;
     s32 origin;
@@ -127,7 +127,7 @@ void func_02092f28(void *object)
  * font resources remain borrowed; the controller resets its own cursor and
  * timing state and refreshes the recovered sprite renderer immediately.
  */
-void func_02092e9c(void *object, const void *text, s32 mode)
+void TitleDialog_SetText(void *object, const void *text, s32 mode)
 {
     u8 *bytes = (u8 *)object;
 
@@ -138,7 +138,7 @@ void func_02092e9c(void *object, const void *text, s32 mode)
     *(u32 *)(bytes + 0xd8) = 0;
     *(u32 *)(bytes + 0x34) = 1;
     *(u32 *)(bytes + 0x38) = 0;
-    func_02074110(*(void **)(bytes + 0x08));
+    GraphicsSpriteGroup_ClearStates(*(void **)(bytes + 0x08));
     if ((mode & 1) != 0)
         *(u32 *)(bytes + 0x38) |= 0x80;
     if ((mode & 2) != 0)
@@ -147,7 +147,7 @@ void func_02092e9c(void *object, const void *text, s32 mode)
         *(u32 *)(bytes + 0x38) |= 0x1000;
     GraphicsSpriteRenderer_SetFontResource(*(void **)(bytes + 0x04),
                                             *(void **)(bytes + 0x2c));
-    func_02092f28(object);
+    TitleDialog_RecomputeTextOrigin(object);
 }
 
 /*
@@ -158,7 +158,7 @@ void func_02092e9c(void *object, const void *text, s32 mode)
  * and the VM cursor is redirected there until its terminating zero returns to
  * the saved resource-string cursor.
  */
-void func_02092fa4(void *object)
+void TitleDialog_ExpandActorDescriptor(void *object)
 {
     u8 *bytes = (u8 *)object;
     u8 descriptor[0x24];
@@ -169,31 +169,31 @@ void func_02092fa4(void *object)
     s32 index = 0;
 
     GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
-    func_02071f38(bytes + 0x20);
+    AnimationResourceState_ReleaseResources(bytes + 0x20);
     memset(descriptor, 0, sizeof(descriptor));
     *(void **)(descriptor + 0x14) = descriptor;
     *(u32 *)(descriptor + 0x18) = 1;
     *(void **)(descriptor + 0x1c) = descriptor;
 
-    if (func_02062de4((u16)*(u32 *)(bytes + 0xe4)) == 1)
-        func_020627d0(descriptor, (u16)*(u32 *)(bytes + 0xe4), 1, 1);
+    if (ActorDatabase_GetDefinitionKind((u16)*(u32 *)(bytes + 0xe4)) == 1)
+        ActorDescriptor_Init(descriptor, (u16)*(u32 *)(bytes + 0xe4), 1, 1);
     else
-        func_020627a0(descriptor, (u16)*(u32 *)(bytes + 0xe4), 1);
+        ActorDescriptor_InitRange(descriptor, (u16)*(u32 *)(bytes + 0xe4), 1);
 
-    component = func_02062918(descriptor, 0);
+    component = ActorDescriptor_GetComponent(descriptor, 0);
     func_02071ee0(bytes + 0x20, data_020f4e18,
-                  func_02063064(component), func_02063074(component),
-                  func_02063084(component));
+                  ActorDescriptorComponent_GetCharacterResourceId(component), ActorDescriptorComponent_GetPaletteResourceId(component),
+                  ActorDescriptorComponent_GetCellResourceId(component));
     *(s32 *)(bytes + 0xdc) += 0x10;
     sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
-    func_02073e48(sprite, func_02063190(component),
+    func_02073e48(sprite, ActorDescriptorComponent_GetAnimation(component),
                   *(s32 *)(bytes + 0xdc), *(s32 *)(bytes + 0xe0), 0, 0, 0);
     sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
     func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 1, 0, 0);
     *(s32 *)(bytes + 0xdc) += 0x10;
 
-    label = (const u16 *)func_020628c8(descriptor);
+    label = (const u16 *)ActorDescriptor_GetPrimaryLabel(descriptor);
     while (index < 0x1f && label[index] != 0) {
         destination[index] = label[index];
         ++index;
@@ -222,11 +222,11 @@ static void CopyInlineDialogLabel(u8 *bytes, const u16 *source)
  * the controller redirects its cursor to the bounded, terminated copy until
  * the saved resource-string cursor at +0x40 resumes the surrounding text.
  */
-void func_0209317c(void *object)
+void TitleDialog_ExpandRuntimeRecord(void *object)
 {
     u8 *bytes = (u8 *)object;
     const u16 *source = (const u16 *)(
-        func_02079a7c(data_021f3d68, (u16)*(u32 *)(bytes + 0xe4)) + 0x18);
+        RuntimeRecordTable_FindByKey(data_021f3d68, (u16)*(u32 *)(bytes + 0xe4)) + 0x18);
 
     CopyInlineDialogLabel(bytes, source);
 }
@@ -234,10 +234,10 @@ void func_0209317c(void *object)
 /* Expand the localized auxiliary-record label selected by controller +0xE4
  * into the inline dialog buffer (retail 0x020931E4). The lookup and source
  * remain game-owned; the copied text is bounded to 31 UTF-16 code units. */
-void func_020931e4(void *object)
+void TitleDialog_ExpandAuxiliaryRecord(void *object)
 {
     u8 *bytes = (u8 *)object;
-    const u16 *source = func_0207a00c(data_021f3ecc,
+    const u16 *source = RetailTextTable_FindAuxiliaryText(data_021f3ecc,
                                       *(s32 *)(bytes + 0xe4));
 
     CopyInlineDialogLabel(bytes, source);
@@ -250,7 +250,7 @@ void func_020931e4(void *object)
  * borrowed. Cursor X advances by 32 pixels before the bounded label stream is
  * installed, preserving the visible text and icon layout.
  */
-void func_02093248(void *object)
+void TitleDialog_ExpandPhaseLabel(void *object)
 {
     u8 *bytes = (u8 *)object;
     void *record;
@@ -258,8 +258,8 @@ void func_02093248(void *object)
     const u16 *label;
 
     GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
-    func_02071f38(bytes + 0x20);
-    func_0206fa70(&record, (u16)*(u32 *)(bytes + 0xe4));
+    AnimationResourceState_ReleaseResources(bytes + 0x20);
+    RetailPhaseDatabase_SelectById(&record, (u16)*(u32 *)(bytes + 0xe4));
     func_02071ee0(bytes + 0x20, data_020f4e18,
                   0xd084, 0xd081, 0xd082);
     *(s32 *)(bytes + 0xdc) += 0x10;
@@ -270,7 +270,7 @@ void func_02093248(void *object)
     func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 1, 0, 0);
     *(s32 *)(bytes + 0xdc) += 0x10;
-    label = (const u16 *)func_020628c8((u8 *)record + 4);
+    label = (const u16 *)ActorDescriptor_GetPrimaryLabel((u8 *)record + 4);
     CopyInlineDialogLabel(bytes, label);
 }
 
@@ -284,7 +284,7 @@ void func_02093248(void *object)
  * stack, including row 7's player-name pointer at object offset 0x60 and
  * runtime-record label expansion through EE0C/EE0D.
  */
-s32 func_02093360(void *object, const void *input)
+s32 TitleDialog_UpdateTextPage(void *object, const void *input)
 {
     u8 *bytes = (u8 *)object;
     u32 *flags = (u32 *)(bytes + 0x38);
@@ -316,7 +316,7 @@ s32 func_02093360(void *object, const void *input)
             *(s32 *)((u8 *)*(void **)(bytes + 0x08) + 0x20) = 1;
             if (inputState == 0 || (inputState[1] & 1U) != 0) {
                 *flags &= ~2U;
-                func_02074110(*(void **)(bytes + 0x08));
+                GraphicsSpriteGroup_ClearStates(*(void **)(bytes + 0x08));
                 *(s32 *)(bytes + 0x34) = 2;
                 continue;
             }
@@ -354,7 +354,7 @@ s32 func_02093360(void *object, const void *input)
         }
 
         if (character == 0xee00) {
-            func_02092f28(object);
+            TitleDialog_RecomputeTextOrigin(object);
             *(s32 *)(bytes + 0xe0) += *(s32 *)(bytes + 0xc0) + 0x10;
             *(s32 *)(bytes + 0xd8) = *(s32 *)(bytes + 0xc8);
             continue;
@@ -364,14 +364,14 @@ s32 func_02093360(void *object, const void *input)
             switch (character) {
             case 0xee01:
                 GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
-                func_02071f38(bytes + 0x20);
+                AnimationResourceState_ReleaseResources(bytes + 0x20);
                 GraphicsSpriteCanvas_FillRect(
                     *(void **)(bytes + 0x04),
                     *(s32 *)(bytes + 0xa4), *(s32 *)(bytes + 0xa8),
                     *(s32 *)(bytes + 0xa4) + *(s32 *)(bytes + 0xac),
                     *(s32 *)(bytes + 0xa8) + *(s32 *)(bytes + 0xb0),
                     *(s32 *)(bytes + 0xd4));
-                func_02092e9c(object, cursor, *(s32 *)(bytes + 0x30));
+                TitleDialog_SetText(object, cursor, *(s32 *)(bytes + 0x30));
                 *(s32 *)(bytes + 0xd8) = *(s32 *)(bytes + 0xcc);
                 *flags |= 0x100U;
                 break;
@@ -387,7 +387,7 @@ s32 func_02093360(void *object, const void *input)
                     (u16)(*(s32 *)(bytes + 0xa8) +
                           *(s32 *)(bytes + 0xb0) - 8);
                 *(s32 *)(bytes + 0x34) = 3;
-                func_02072b68(*(void **)(bytes + 0x10), 0x18);
+                GraphicsSpriteState_SetAnimation(*(void **)(bytes + 0x10), 0x18);
                 if (character != 0xee02)
                     *flags |= 4U;
                 break;
@@ -422,36 +422,36 @@ s32 func_02093360(void *object, const void *input)
             case 0xee09:
                 *(const u16 **)(bytes + 0x40) = cursor + 1;
                 *(u32 *)(bytes + 0xe4) = *cursor;
-                func_02092fa4(object);
+                TitleDialog_ExpandActorDescriptor(object);
                 break;
             case 0xee0a:
                 *(const u16 **)(bytes + 0x40) = cursor + 1;
                 *(s32 *)(bytes + 0xe4) =
                     *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
-                func_02092fa4(object);
+                TitleDialog_ExpandActorDescriptor(object);
                 break;
             case 0xee0c:
                 *(const u16 **)(bytes + 0x40) = cursor + 1;
                 *(u32 *)(bytes + 0xe4) = *cursor;
-                func_0209317c(object);
+                TitleDialog_ExpandRuntimeRecord(object);
                 break;
             case 0xee0d:
                 *(const u16 **)(bytes + 0x40) = cursor + 1;
                 *(s32 *)(bytes + 0xe4) =
                     *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
-                func_0209317c(object);
+                TitleDialog_ExpandRuntimeRecord(object);
                 break;
             case 0xee0f:
                 *(const u16 **)(bytes + 0x40) = cursor + 1;
                 *(s32 *)(bytes + 0xe4) =
                     *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
-                func_020931e4(object);
+                TitleDialog_ExpandAuxiliaryRecord(object);
                 break;
             case 0xee12:
                 *(const u16 **)(bytes + 0x40) = cursor + 1;
                 *(s32 *)(bytes + 0xe4) =
                     *(s16 *)((u8 *)gGameWork + 0x4c + (u32)*cursor * 2);
-                func_02093248(object);
+                TitleDialog_ExpandPhaseLabel(object);
                 break;
             case 0xee0e:
                 *(u32 *)(bytes + 0xe8) = *cursor++;
@@ -517,13 +517,13 @@ s32 func_02093360(void *object, const void *input)
  * owned sprite groups and the secondary resource triplet are cleared, while
  * the controller and its borrowed renderer remain alive for reuse.
  */
-void func_02093998(void *object)
+void TitleDialog_ResetAfterClose(void *object)
 {
     u8 *bytes = (u8 *)object;
 
     GraphicsSpriteGroup_Clear(*(void **)(bytes + 0x0c));
-    func_02071f38(bytes + 0x20);
-    func_02074110(*(void **)(bytes + 0x08));
+    AnimationResourceState_ReleaseResources(bytes + 0x20);
+    GraphicsSpriteGroup_ClearStates(*(void **)(bytes + 0x08));
     *(s32 *)(bytes + 0xd8) = 0;
     *(s32 *)(bytes + 0x34) = 0;
 }
@@ -534,7 +534,7 @@ void func_02093998(void *object)
  * formed from the stored origin and extent, and the configured fill mode is
  * forwarded unchanged to the sprite canvas.
  */
-void func_020939d8(void *object)
+void TitleDialog_ClearTextRect(void *object)
 {
     u8 *bytes = (u8 *)object;
 
@@ -555,8 +555,8 @@ void *func_02092e1c(void *object)
     *(void **)bytes = data_020f25c4;
     func_0207419c(*(void **)(bytes + 0x08));
     func_0207419c(*(void **)(bytes + 0x0c));
-    func_02071eb8(bytes + 0x20);
-    func_02071eb8(bytes + 0x14);
+    AnimationResourceState_Destroy(bytes + 0x20);
+    AnimationResourceState_Destroy(bytes + 0x14);
     return object;
 }
 

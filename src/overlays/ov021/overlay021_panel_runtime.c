@@ -22,7 +22,7 @@ extern void func_02064d90(void *, s32);
 extern void func_0206563c(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void Presentation_BlendPalette16(void *, void *, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void func_020958d8(void *);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(const void *, s32, s32);
@@ -179,7 +179,7 @@ extern "C" void func_ov021_021feea4(void *state)
 
     void *list = FIELD(void *, state, 0x2c0);
     if (list != 0) {
-        func_02094574(FIELD(void *, list, 0x58));
+        InventoryScroll_UpdatePresentation(FIELD(void *, list, 0x58));
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, list, 0x1c));
     }
     if (FIELD(void *, state, 0x38c) != 0)

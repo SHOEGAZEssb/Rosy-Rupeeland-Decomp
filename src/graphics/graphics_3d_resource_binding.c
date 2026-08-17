@@ -12,7 +12,7 @@ extern "C" {
 
 extern void *func_02071568(void *archive, u32 resourceId);
 extern void *func_020716bc(void *archive, u16 resourceId);
-extern void func_020703d8(void *resource);
+extern void GraphicsSpriteResource_ReleaseTexture(void *resource);
 extern void func_02071bdc(void *archive, void *resource);
 extern void func_02071c38(void *archive, void *resource);
 
@@ -39,7 +39,7 @@ Graphics3DResourceBinding *Graphics3DResourceBinding_Init(
         Graphics3DResourceOwner_AcquireTextureRegion(owner, binding->textureResource);
     binding->paletteRegion =
         Graphics3DResourceOwner_AcquirePaletteRegion(owner, binding->paletteResource);
-    func_020703d8(binding->textureResource);
+    GraphicsSpriteResource_ReleaseTexture(binding->textureResource);
     return binding;
 }
 

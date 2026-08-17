@@ -5,8 +5,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 
-.global func_ov050_0220d6e8
-func_ov050_0220d6e8:
+.global Overlay050PairedEffect_Update
+Overlay050PairedEffect_Update:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     mov r4, r1
@@ -56,4 +56,4 @@ func_ov050_0220d6e8:
     strh r4, [r1, #0x2e]
     ldmia sp!, {r4, r5, r6, pc}
 .L_0220d7a8: .word gGameWork
-.size func_ov050_0220d6e8, . - func_ov050_0220d6e8
+.size Overlay050PairedEffect_Update, . - Overlay050PairedEffect_Update

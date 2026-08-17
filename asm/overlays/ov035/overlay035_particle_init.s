@@ -4,7 +4,7 @@
 
     .extern Presentation_Init
     .extern genrand_int32
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_02094bf0
     .extern func_0209189c
     .extern Presentation_SetPosition
@@ -28,7 +28,7 @@ func_ov035_021fd7f0:
     add r0, r6, #0x9c
     mov r1, #0x1000
     str r2, [r6, #0x88]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r1, r0, lsl #0x4
     mov r0, r6
     mov r2, r1
@@ -57,7 +57,7 @@ func_ov035_021fd7f0:
     bl PresentationScalar_TransitionTo
     add r0, r6, #0x9c
     mov r1, #0x1e
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     add r1, r0, #0x78
     mov r0, r6
     bl func_ov035_021fd274
@@ -67,7 +67,7 @@ func_ov035_021fd7f0:
     str r4, [r6, #0xa0]
     mov r7, r4
     mov r5, r4
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     cmp r0, #0x6
     addls pc, pc, r0, lsl #0x2
     b L_021fd9a0

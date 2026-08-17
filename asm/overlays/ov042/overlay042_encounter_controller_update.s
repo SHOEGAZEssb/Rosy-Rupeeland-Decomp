@@ -20,7 +20,7 @@
 .extern func_ov071_02211a10
 .extern func_ov071_02210440
 .extern func_ov042_02201ea0
-.extern func_0205929c
+.extern Sound_StopDirectSequence
 .extern func_020594ec
 .extern func_ov071_02210540
 .extern func_0205940c
@@ -517,7 +517,7 @@ func_ov042_02201f30:
     str r2, [r4, #0x1c4]
     ldr r0, [r0, #0x0]
     mov r1, #0xe1
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     b .L_022027d0
 .L_02202634:
     add r1, r0, #0x1

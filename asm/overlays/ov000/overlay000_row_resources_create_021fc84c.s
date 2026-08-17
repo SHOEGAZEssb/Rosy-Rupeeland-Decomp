@@ -1,11 +1,11 @@
     .text
-    .extern func_02062918
-    .extern func_02063064
-    .extern func_02063074
-    .extern func_02063084
+    .extern ActorDescriptor_GetComponent
+    .extern ActorDescriptorComponent_GetCharacterResourceId
+    .extern ActorDescriptorComponent_GetPaletteResourceId
+    .extern ActorDescriptorComponent_GetCellResourceId
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_02063190
+    .extern ActorDescriptorComponent_GetAnimation
     .extern func_02073e48
     .extern func_ov000_021fc834
     .extern data_020f4e18
@@ -33,18 +33,18 @@ L_021fc868:
     bne L_021fc954
     mov r0, r9
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063064
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCharacterResourceId
     mov r5, r0
     mov r0, r9
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063074
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetPaletteResourceId
     mov r4, r0
     mov r0, r9
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063084
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCellResourceId
     str r0, [sp, #0x0]
     ldr r1, L_021fc968
     mov r2, r5
@@ -59,8 +59,8 @@ L_021fc868:
     mov r4, r0
     mov r0, r9
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     str r11, [sp, #0x0]
     mov r1, #0x3000
     str r1, [sp, #0x4]

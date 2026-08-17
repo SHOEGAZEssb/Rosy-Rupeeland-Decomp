@@ -31,7 +31,7 @@ extern "C" {
 extern void *data_020d62b0[];
 extern const char data_020d62d0[];
 extern u8 *data_021052fc;
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern void *func_0201e28c(void *self);
 extern u8 *GamePhaseGraphicsMetadata_GetByIndex(s32 index);
 extern void GamePhaseVisualEffect_Configure(void *runtime, u32 field00, u32 field02,
@@ -40,7 +40,7 @@ extern void GamePhaseVisualEffect_Configure(void *runtime, u32 field00, u32 fiel
 extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void GamePhaseVisualEffect_SetBaseOffset(void *runtime, PresentationValue *value);
-extern void func_0201ded4(void *manager, void *entry);
+extern void PresentationList_AppendObject(void *manager, void *entry);
 #ifdef __cplusplus
 }
 #endif
@@ -59,7 +59,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
     PresentationValue position;
     void *runtime;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = data_020d62b0;
     self->field08 = field08;
     self->record10 = GamePhaseGraphicsMetadata_GetByIndex(*(const s16 *)(config + 0x12));
@@ -122,5 +122,5 @@ void func_02020060(s32 field08, const u8 *config)
     if (self != 0) {
         func_0201ff2c(self, field08, config);
     }
-    func_0201ded4(data_021052fc + 0x2f7c, self);
+    PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
 }

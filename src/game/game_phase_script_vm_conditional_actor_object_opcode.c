@@ -16,7 +16,7 @@ extern void *RisingSpriteSwarmPresentation_Init(void *object,
                                                  void *referencePosition,
                                                  void *actorConfig,
                                                  s32 trackZ);
-extern void func_0201ded4(void *list, void *object);
+extern void PresentationList_AppendObject(void *list, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *s
                 object,
                 ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc), actor,
                 trackZ);
-        func_0201ded4(runtime + 0x2f7c, object);
+        PresentationList_AppendObject(runtime + 0x2f7c, object);
     } else {
         GameWork_SetFlag(gGameWork, 0x408);
     }

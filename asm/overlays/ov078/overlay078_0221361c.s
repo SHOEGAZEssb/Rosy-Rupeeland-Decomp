@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern func_0204cfa4
 .extern func_020adc90
 .extern func_ov078_02213838
@@ -145,7 +145,7 @@ func_ov078_0221361c:
     mov r1, r6
     mov r2, r5
     str r6, [r7, #0x2ac]
-    bl func_02032a94
+    bl ActorContactState_AddContact
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .size func_ov078_0221361c, . - func_ov078_0221361c

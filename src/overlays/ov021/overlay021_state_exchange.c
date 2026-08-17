@@ -40,7 +40,7 @@ extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordDescriptor_SetValue(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void func_02095940(void *);
 extern u32 genrand_int32(void);
 extern s32 func_ov002_021fbb68(void *, void *);
@@ -53,12 +53,12 @@ extern void func_ov021_021fd1cc(void *);
 extern void func_ov021_021fd39c(void *);
 extern void func_ov021_021fd490(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
-extern void func_ov021_021fe144(void *);
+extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe390(void *);
 extern void func_ov021_021fe6b0(void *);
 extern void func_ov021_021fe8e8(void *);
 extern void func_ov021_021feea4(void *);
-extern void func_ov021_021fee14(void *);
+extern void Overlay021_DestroyAuxiliaryPanel(void *);
 extern void func_ov021_021fee54(void *);
 extern void func_ov021_021ff050(void *, s32);
 extern void func_ov021_021ff0e0(void *, s32);
@@ -138,7 +138,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
                 FIELD(s32, state, 4) = 10;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_020939d8(FIELD(void *, state, 0x388));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 GraphicsSpriteText_FormatDecimal((u8 *)state + 0x398,
                               FIELD(s32, state, 0x394), 0xff676980, 0);
                 change_state(state, data_ov021_02202e90);
@@ -147,14 +147,14 @@ extern "C" s32 func_ov021_022009e0(void *state)
             func_02092260(state, 3);
             if (FIELD(s32, state, 0x3e0) != 0) {
                 func_02092c8c(1, -8);
-                func_020939d8(FIELD(void *, state, 0x388));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 func_ov021_021ff1d0(
                     state, RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 2));
                 func_ov045_0220c028(FIELD(void *, state, 0x38c));
                 FIELD(s32, state, 4) = 20;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_020939d8(FIELD(void *, state, 0x388));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 change_state(state, data_ov021_02202e88);
             }
         }
@@ -175,7 +175,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
         break;
     case 20:
         if (func_ov021_021ff274(state) != 0) {
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             change_state(state, data_ov021_02202e80);
         }
         break;
@@ -252,7 +252,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
         break;
     case 4:
         if (++FIELD(s32, state, 8) > 60) {
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             change_state(state, data_ov021_02202e60);
         }
         break;
@@ -279,7 +279,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
         break;
     case 30:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov021_021fee14(state);
+            Overlay021_DestroyAuxiliaryPanel(state);
             func_ov021_021fe6b0(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             if (FIELD(void *, state, 0x37c) != 0) {
@@ -293,7 +293,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
                 func_02062ca8(FIELD(void *, state, 0x380));
                 change_state(state, data_ov021_02202e48);
             } else {
-                func_ov021_021fe144(state);
+                Overlay021_SetupMainBackground(state);
                 func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
                 func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
                 func_ov021_021fd490(FIELD(void *, state, 0x2c0));
@@ -335,7 +335,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
         /* Deliberate fall-through. */
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov021_021fee14(state);
+            Overlay021_DestroyAuxiliaryPanel(state);
             func_ov021_021fe6b0(state);
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
             if (FIELD(void *, state, 0x37c) != 0) {
@@ -345,7 +345,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
                 FIELD(void *, state, 0x380) = 0;
                 change_state(state, data_ov021_02202e28);
             } else {
-                func_ov021_021fe144(state);
+                Overlay021_SetupMainBackground(state);
                 func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
                 func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
                 func_ov021_021fd490(FIELD(void *, state, 0x2c0));

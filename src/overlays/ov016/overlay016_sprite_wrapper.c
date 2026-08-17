@@ -12,8 +12,8 @@ extern void *data_020f4e18;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void PresentationList_DeleteAll(void *);
@@ -34,7 +34,7 @@ extern "C" void *func_ov016_021fe004(void *state, void *descriptor, void *owner)
 {
     SpritePresentation_InitVariant(state, 0);
     FIELD(const u32 *, state, 0) = data_ov016_0220155c;
-    func_02071ea4((u8 *)state + 0xa0);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xa0);
     FIELD(void *, state, 0xac) = descriptor;
     func_02071ee0((u8 *)state + 0xa0, data_020f4e18,
                   FIELD(s32, FIELD(void *, descriptor, 0), 0x10),
@@ -52,7 +52,7 @@ extern "C" void *func_ov016_021fe004(void *state, void *descriptor, void *owner)
  */
 extern "C" void *func_ov016_021fe08c(void *state)
 {
-    func_02071eb8((u8 *)state + 0xa0);
+    AnimationResourceState_Destroy((u8 *)state + 0xa0);
     SpritePresentation_Destroy(state);
     return state;
 }
@@ -63,7 +63,7 @@ extern "C" void *func_ov016_021fe08c(void *state)
  */
 extern "C" void *func_ov016_021fe0ac(void *state)
 {
-    func_02071eb8((u8 *)state + 0xa0);
+    AnimationResourceState_Destroy((u8 *)state + 0xa0);
     SpritePresentation_Destroy(state);
     Heap_Free(state);
     return state;
@@ -79,7 +79,7 @@ extern "C" void func_ov016_021fe0d4(void *state)
  * Install vtable 0x02201520 and clear words +4/+8/+0xC. Return void; the small
  * base state is initialized without SDK or hardware effects.
  */
-extern "C" void func_ov016_021fe0d8(void *state)
+extern "C" void Overlay016SmallBase_Init(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov016_02201520;
     FIELD(u32, state, 4) = 0;

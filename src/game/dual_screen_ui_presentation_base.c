@@ -35,8 +35,8 @@ extern u8 gSubBgExtendedPaletteBuffer[];
 extern void func_020264c4(void *embedded);
 extern void func_02026514(void *embedded);
 extern void func_020269f8(void *embedded);
-extern void func_02071ea4(void *resource);
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *spriteOwner);
@@ -50,7 +50,7 @@ extern void GraphicsResourceSet_Load(GraphicsResourceSet *, void *, s32, s32,
 extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
 extern void func_020706c4(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void ExtendedPaletteBuffer_Write(void *, const void *, s32, s32);
 #ifdef __cplusplus
 }
@@ -64,7 +64,7 @@ static DualScreenUiPresentationBase *initialize_base(
     self->vtable00 = (void **)data_020d6b3c;
     func_020264c4(self->embedded04);
     self->sourceac = source;
-    func_02071ea4(self->resourceb8);
+    AnimationResourceState_InitEmbedded(self->resourceb8);
     self->flagsc4 &= ~3u;
     self->spriteOwnera8 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     *(u32 *)(self->spriteOwnera8 + 0x20) = 1;
@@ -99,7 +99,7 @@ static DualScreenUiPresentationBase *teardown_base(
 {
     self->vtable00 = (void **)data_020d6b3c;
     GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwnera8);
-    func_02071eb8(self->resourceb8);
+    AnimationResourceState_Destroy(self->resourceb8);
     func_02026514(self->embedded04);
     return self;
 }
@@ -206,7 +206,7 @@ void func_02025d1c(DualScreenUiPresentationBase *self)
     func_020706c4(set.first00, 1, 0);
     func_02070eac(set.third08, 1, 0);
     ExtendedPaletteBuffer_Write(gSubBgExtendedPaletteBuffer,
-                                func_02070874(set.second04), 0x2000, 0x200);
+                                GraphicsBgResourceData_GetDecoded(set.second04), 0x2000, 0x200);
     *(volatile u32 *)0x04001014 = 0;
     GraphicsResourceSet_Destroy(&set);
 }
@@ -228,7 +228,7 @@ void func_02025dd8(DualScreenUiPresentationBase *self)
     *control = (u16)((*control & ~3) | 3);
     func_02070eac(set.third08, 2, 0);
     ExtendedPaletteBuffer_Write(gSubBgExtendedPaletteBuffer,
-                                func_02070874(set.second04), 0x4000, 0x200);
+                                GraphicsBgResourceData_GetDecoded(set.second04), 0x4000, 0x200);
     *(volatile u32 *)0x04001018 = 0;
     GraphicsResourceSet_Destroy(&set);
 }

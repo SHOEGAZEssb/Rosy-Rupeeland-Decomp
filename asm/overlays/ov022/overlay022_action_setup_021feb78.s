@@ -9,9 +9,9 @@
 .extern data_020d7a48
 .extern data_021f3ecc
 .extern GraphicsSpriteText_FormatDecimal
-.extern func_02079f3c
+.extern RetailTextTable_FindRecordById
 .extern func_020922f0
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern func_020befec
 .extern func_ov022_021ff2c4
 .extern GameWork_SetFlag
@@ -57,7 +57,7 @@ L_021febdc:
     ldr r1, L_021fed54
     ldr r0, L_021fed58
     ldrh r1, [r1, r2]
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r2, r0, #0x2
     mov r3, #0x0
     b L_021fec2c
@@ -75,7 +75,7 @@ L_021fec2c:
     blt L_021fec0c
 L_021fec34:
     ldr r0, [r6, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     cmp r4, r5
     bne L_021fed0c
     mov r0, #0x1

@@ -8,7 +8,7 @@
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .extern GridEffectActorModeAllocator_Reserve
-.extern func_02064a18
+.extern InventoryRecordCollection_MergeOrInsert
 .text
 
     .global GridEffectActor_BeginDeparture
@@ -87,7 +87,7 @@ GridEffectActor_BeginDeparture: ; 0x0204f4d4
     add r1, r4, #0x1f4
     ldr r0, .L_0204f608
     ldr r0, [r0, #0x0]
-    bl func_02064a18
+    bl InventoryRecordCollection_MergeOrInsert
     ldmia sp!, {r4, pc}
 .L_0204f600: .word data_021052fc
 .L_0204f604: .word gSoundContext

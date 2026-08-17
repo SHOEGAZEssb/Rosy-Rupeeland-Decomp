@@ -32,12 +32,12 @@ extern void *gDirectSpriteTrackPresentationVtable;
 extern const char gDirectSpriteTrackPresentationAllocationTag[];
 extern void *data_020f4e18;
 extern u8 *data_021052fc;
-extern void *func_0201e250(void *self);
-extern void func_02071ea4(void *state);
+extern void *TimedSpritePresentation_InitBase(void *self);
+extern void AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *table, s32 field0c, s32 field10,
                           s32 field08);
-extern void func_02071f38(void *state);
-extern void func_02071eb8(void *state);
+extern void AnimationResourceState_ReleaseResources(void *state);
+extern void AnimationResourceState_Destroy(void *state);
 extern void VecFx32Object_InitComponents(PresentationValue *track, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void VecFx32_Subtract(PresentationValue *destination,
@@ -71,9 +71,9 @@ DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_Init(
     void *resource;
     s16 signedValue;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)gDirectSpriteTrackPresentationVtable;
-    func_02071ea4(&self->resource08);
+    AnimationResourceState_InitEmbedded(&self->resource08);
     self->sampleArgument18 = sampleArgument;
     VecFx32Object_InitComponents(&self->track1c, x << 12, y << 12, 0);
     func_02071ee0(&self->resource08, data_020f4e18, field0c, field10, field08);
@@ -104,9 +104,9 @@ DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_Destroy(
 {
     self->vtable = (void **)gDirectSpriteTrackPresentationVtable;
     GraphicsSpriteGroup_ReleaseState(*(void **)self->sprite14);
-    func_02071f38(&self->resource08);
+    AnimationResourceState_ReleaseResources(&self->resource08);
     VecFx32Object_Destroy(&self->track1c);
-    func_02071eb8(&self->resource08);
+    AnimationResourceState_Destroy(&self->resource08);
     return self;
 }
 

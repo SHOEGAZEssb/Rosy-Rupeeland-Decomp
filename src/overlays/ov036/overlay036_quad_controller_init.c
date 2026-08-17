@@ -20,7 +20,7 @@ extern void Graphics3DLightSet_Init(void *records);
 extern void GraphicsResourceSetVariant_Load(void *resourceSet, void *archive,
                           s32 firstId, s32 secondId, s32 thirdId);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resourceSet);
-extern void *func_02071adc(void *archive, s32 id);
+extern void *GraphicsArchive_AcquireOwlvResource(void *archive, s32 id);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
@@ -32,7 +32,7 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *object, void *handle);
+extern void *AlternateSpritePresentation_Init(void *object, void *handle);
 extern void PresentationList_Append(void *list, void *object);
 extern void Presentation_SetScript(void *object, const void *data, s32 mode);
 extern void func_020b0300(s32, s32, s32, s32, s32);
@@ -90,7 +90,7 @@ extern "C" void *func_ov036_022021b0(void *controller, void *owner,
     Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + 0xe8);
     Graphics3DResourceOwner_PrepareResources(owner, (u8 *)controller + 0xcc);
 
-    FIELD(void *, controller, 0xf4) = func_02071adc(data_020f4e18, 0x500d);
+    FIELD(void *, controller, 0xf4) = GraphicsArchive_AcquireOwlvResource(data_020f4e18, 0x500d);
     FIELD(void *, controller, 0xf8) = Graphics3DResourceOwner_CreateManager(owner);
     func_ov036_021fe9fc((u8 *)controller + 0xc, 0, 0, 0x2980);
     func_ov036_021fea04((u8 *)controller + 0xc, 0, 0, 0);
@@ -108,7 +108,7 @@ extern "C" void *func_ov036_022021b0(void *controller, void *owner,
     func_ov036_021ff050(handle, 0, 0, 0, 0, 1, 0x46);
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     FIELD(void *, controller, 0xd8) = child;
     PresentationList_Append((u8 *)controller + 0xfc, child);
     Presentation_SetScript(child, data_ov036_022056c8, 1);

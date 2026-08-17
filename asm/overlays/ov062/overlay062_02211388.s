@@ -18,7 +18,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_020adcac
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_ov062_0220fd50
 .extern func_ov062_0220fdbc
 .extern func_ov062_02210674
@@ -263,7 +263,7 @@ func_ov062_02211388:
     add r1, r1, #0x2000
     sub r0, r7, r0
     ldr r6, [r1, #0xea8]
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x10000
     ble .L_02211768
     cmp r6, #0x0

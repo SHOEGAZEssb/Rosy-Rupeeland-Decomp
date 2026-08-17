@@ -14,8 +14,8 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059278(void *context, s32 id, s32 value);
-extern void func_0205929c(void *context, s32 id, s32 value);
+extern void Sound_PlayDirectSequence(void *context, s32 id, s32 value);
+extern void Sound_StopDirectSequence(void *context, s32 id, s32 value);
 extern s32 func_020594a4(void *context, s32 id, s32 mode);
 extern void func_0205940c(void *context, s32 id, s32 value);
 extern void Sound_Play(void *context, s32 id, s32 variant);
@@ -33,7 +33,7 @@ extern void func_ov036_021ff7cc(void *controller, s32 range);
 extern s32 Presentation_IsScriptSuspended(void *object);
 extern s32 Presentation_IsScriptComplete(void *object);
 extern s32 func_0209189c(void *random, s32 minimum, s32 maximum);
-extern s32 func_020918f4(void *random, s32 maximum);
+extern s32 TitleRandom_NextBounded(void *random, s32 maximum);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fd2a4(void *object, s16 type,
                                  s16 secondDuration, u16 colorA,
@@ -62,7 +62,7 @@ extern "C" s32 func_ov036_021ff9d0(void *controller)
 {
     switch (FIELD(s32, controller, 0xa0)) {
     case 0:
-        func_02059278(gSoundContext, 0xae, 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, 0xae, 0x7f);
         func_02091b98((u8 *)controller + 0xa4, 0x3c);
         FIELD(s32, controller, 0xa0)++;
         /* Fall through to the opening timer ramp. */
@@ -163,7 +163,7 @@ extern "C" s32 func_ov036_021ff9d0(void *controller)
                     func_0209189c((u8 *)controller + 0xc0,
                                    0x4000, 0x8000), 0);
                 PresentationScalar_SetImmediate((u8 *)particle + 0x5c,
-                              func_020918f4((u8 *)controller + 0xc0,
+                              TitleRandom_NextBounded((u8 *)controller + 0xc0,
                                             0x1000) << 4);
                 PresentationList_Append((u8 *)controller + 0x128, particle);
             }
@@ -186,7 +186,7 @@ extern "C" s32 func_ov036_021ff9d0(void *controller)
 
     case 8:
         if (Presentation_IsScriptComplete(FIELD(void *, controller, 0xec)) != 0) {
-            func_0205929c(gSoundContext, 0xae, 0x10);
+            Sound_StopDirectSequence(gSoundContext, 0xae, 0x10);
             FIELD(s32, controller, 0xa0)++;
         } else {
             func_ov036_021ff7cc(controller, 0x100);

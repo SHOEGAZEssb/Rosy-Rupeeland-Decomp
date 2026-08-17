@@ -18,7 +18,7 @@
 .extern func_ov042_02205d74
 .extern func_0205943c
 .extern VecFx32Object_Destroy
-.extern func_0205929c
+.extern Sound_StopDirectSequence
 .extern func_020a1f04
 .extern genrand_int32
 .extern func_ov042_022051a8
@@ -969,17 +969,17 @@ func_ov042_02205d80:
     str r2, [r9, #0x22c]
     ldr r0, [r0, #0x0]
     mov r1, #0xa4
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02206da0
     mov r1, #0xa5
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02206da0
     mov r1, #0xcd
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
 .L_02206b84:
     ldr r0, [r9, #0x234]
     cmp r0, #0x0
@@ -1176,17 +1176,17 @@ func_ov042_02205d80:
     str r2, [r9, #0x234]
     ldr r0, [r0, #0x0]
     mov r1, #0xa4
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02206da0
     mov r1, #0xa5
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02206da0
     mov r1, #0xcd
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
 .L_02206e9c:
     mov r4, #0x0
     mov r0, #0x4
@@ -1221,7 +1221,7 @@ func_ov042_02205d80:
     mov r1, #0xea
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, [r9, #0x1ec]
     bic r0, r0, #0x1
     str r0, [r9, #0x1ec]
@@ -1247,7 +1247,7 @@ func_ov042_02205d80:
     mov r1, #0xf0
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, [r9, #0x1ec]
     bic r0, r0, #0x2
     str r0, [r9, #0x1ec]

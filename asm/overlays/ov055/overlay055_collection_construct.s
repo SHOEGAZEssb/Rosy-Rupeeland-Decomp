@@ -4,8 +4,8 @@
 .extern __construct_array
 .extern data_020f4e18
 .extern data_ov055_0220f078
-.extern func_02071ea4
-.extern func_02071eb8
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -159,8 +159,8 @@ func_ov055_0220e574:
     str r0, [r6, #0x44]
     mov r0, r6
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_0220e7ac: .word func_02071eb8
-.L_0220e7b0: .word func_02071ea4
+.L_0220e7ac: .word AnimationResourceState_Destroy
+.L_0220e7b0: .word AnimationResourceState_InitEmbedded
 .L_0220e7b4: .word 0x223b
 .L_0220e7b8: .word data_020f4e18
 .L_0220e7bc: .word 0x2241

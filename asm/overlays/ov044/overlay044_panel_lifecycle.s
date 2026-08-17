@@ -2,13 +2,13 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern func_020c0c24
 .extern func_020927b8
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_ov044_0220baa0
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_ov044_0220bb48
 .extern func_02073e48
-.extern func_020683f4
+.extern InventoryCell_Destroy
 
     .global func_ov044_0220b8e4
 func_ov044_0220b8e4:
@@ -34,10 +34,10 @@ func_ov044_0220b8e4:
     add r0, r4, #0x14
     bl func_020927b8
     add r0, r4, #0x8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0220b940: .word func_020683f4
+.L_0220b940: .word InventoryCell_Destroy
 .size func_ov044_0220b8e4, . - func_ov044_0220b8e4
 
     .global func_ov044_0220b944

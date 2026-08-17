@@ -24,7 +24,7 @@ s32 func_0209189c(u32 *state, s32 first, s32 second)
 }
 
 /* Advance state and return a zero-based sample below upperBound. */
-s32 func_020918f4(u32 *state, s32 upperBound)
+s32 TitleRandom_NextBounded(u32 *state, s32 upperBound)
 {
     *state = *state * 0x41c64e6d + 0x3039;
     return (s32)(func_020bf1f8((*state >> 16) & 0x7fff,

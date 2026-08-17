@@ -19,24 +19,24 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
-extern void func_02093d50(void *, s32);
-extern void func_02093de4(void *);
-extern void func_02093e0c(void *);
-extern void func_02093e20(void *);
-extern s32 func_02093e3c(void *);
-extern s32 func_02093e58(void *);
-extern s32 func_02093ffc(void *);
-extern s32 func_020945c8(void *, void *);
-extern s32 func_02094600(void *, void *);
-extern s32 func_02094638(void *, void *);
-extern s32 func_02094668(void *, void *);
-extern s32 func_02094698(void *, void *);
-extern void func_020946a8(void *, s32);
-extern s32 func_020946c8(void *, void *);
-extern void func_02094738(void *, s32);
-extern s32 func_02094758(void *);
-extern void func_02094874(void *);
+extern void TitleDialog_ClearTextRect(void *);
+extern void InventoryScroll_SetSelectedRow(void *, s32);
+extern void InventoryScroll_SaveOrigins(void *);
+extern void InventoryScroll_MoveSelectionUp(void *);
+extern void InventoryScroll_MoveSelectionDown(void *);
+extern s32 InventoryScroll_PageUp(void *);
+extern s32 InventoryScroll_PageDown(void *);
+extern s32 InventoryScroll_UpdateInterpolation(void *);
+extern s32 InventoryScroll_TestUpperArrowPress(void *, void *);
+extern s32 InventoryScroll_TestLowerArrowPress(void *, void *);
+extern s32 InventoryScroll_TestUpperArrowHold(void *, void *);
+extern s32 InventoryScroll_TestLowerArrowHold(void *, void *);
+extern s32 InventoryScroll_TestMarkerHit(void *, void *);
+extern void InventoryScroll_BeginMarkerDrag(void *, s32);
+extern s32 InventoryScroll_UpdateMarkerDrag(void *, void *);
+extern void InventoryScroll_EndMarkerDrag(void *, s32);
+extern s32 InventoryScroll_UpdateSelectionMovement(void *);
+extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern s32 func_ov000_021fc460(void *);
 extern s32 func_ov000_021fc560(void *, void *);
@@ -75,12 +75,12 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
     func_ov021_021ff274(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02094874(controller);
+        InventoryScroll_ResetPresentationState(controller);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through into opening wait. */
     case 1:
-        if (func_02093ffc(controller) != 0) {
+        if (InventoryScroll_UpdateInterpolation(controller) != 0) {
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
@@ -90,30 +90,30 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
         }
         /* Completed opening deliberately continues into interaction. */
     case 2: {
-        func_02093de4(controller);
+        InventoryScroll_SaveOrigins(controller);
         u16 keys = FIELD(u16, FIELD(void *, state, 0x2c), 0);
         if ((keys & 0x40) != 0) {
-            func_02093e0c(controller);
+            InventoryScroll_MoveSelectionUp(controller);
         } else if ((keys & 0x80) != 0) {
-            func_02093e20(controller);
+            InventoryScroll_MoveSelectionDown(controller);
         } else if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
             s32 selected = func_ov021_021fd678(list,
                                                (u8 *)state + 0x30);
-            if (func_02094638(controller, (u8 *)state + 0x30) != 0) {
-                func_02093e3c(controller);
-            } else if (func_02094668(controller,
+            if (InventoryScroll_TestUpperArrowHold(controller, (u8 *)state + 0x30) != 0) {
+                InventoryScroll_PageUp(controller);
+            } else if (InventoryScroll_TestLowerArrowHold(controller,
                                      (u8 *)state + 0x30) != 0) {
-                func_02093e58(controller);
+                InventoryScroll_PageDown(controller);
             } else if ((FIELD(u32, state, 0x20) & 0x20) != 0) {
-                if (func_020945c8(controller,
+                if (InventoryScroll_TestUpperArrowPress(controller,
                                   (u8 *)state + 0x30) != 0) {
-                    if (func_02093e3c(controller) == 0)
+                    if (InventoryScroll_PageUp(controller) == 0)
                         func_02092260(state, 0x16);
-                } else if (func_02094600(controller,
+                } else if (InventoryScroll_TestLowerArrowPress(controller,
                                          (u8 *)state + 0x30) != 0) {
-                    if (func_02093e58(controller) == 0)
+                    if (InventoryScroll_PageDown(controller) == 0)
                         func_02092260(state, 0x16);
-                } else if (func_02094698(controller,
+                } else if (InventoryScroll_TestMarkerHit(controller,
                                          (u8 *)state + 0x30) != 0) {
                     func_ov021_021fd7c0(state,
                                         data_ov021_02202ef8[0],
@@ -122,7 +122,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                 } else if (selected >= 0) {
                     if (selected != FIELD(s32, controller, 0x14)) {
                         func_02092260(state, 0);
-                        func_02093d50(controller, selected);
+                        InventoryScroll_SetSelectedRow(controller, selected);
                         func_ov021_021fd490(list);
                         func_ov021_021fee54(state);
                         FIELD(s32, state, 4) = 10;
@@ -150,7 +150,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                 }
             }
         }
-        if (func_02094758(controller) != 0) {
+        if (InventoryScroll_UpdateSelectionMovement(controller) != 0) {
             func_02092260(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;
@@ -159,7 +159,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
     }
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             FIELD(u32, state, 0x48) &= ~2U;
             FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
@@ -208,12 +208,12 @@ extern "C" s32 func_ov021_022000f0(void *state)
     func_ov021_021ff274(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020946a8(controller, 4);
+        InventoryScroll_BeginMarkerDrag(controller, 4);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through into opening wait. */
     case 1:
-        if (func_02093ffc(controller) != 0) {
+        if (InventoryScroll_UpdateInterpolation(controller) != 0) {
             if (FIELD(s32, controller, 0xc) !=
                 FIELD(s32, controller, 0x10))
                 func_02092288(state, 8);
@@ -243,8 +243,8 @@ extern "C" s32 func_ov021_022000f0(void *state)
                 accepted = func_ov001_021fc348(secondary,
                                                (u8 *)state + 0x30);
             else {
-                func_02093de4(controller);
-                accepted = func_020946c8(controller,
+                InventoryScroll_SaveOrigins(controller);
+                accepted = InventoryScroll_UpdateMarkerDrag(controller,
                                          (u8 *)state + 0x30);
             }
             if (accepted != 0) {
@@ -253,7 +253,7 @@ extern "C" s32 func_ov021_022000f0(void *state)
                 FIELD(s32, state, 8) = 0;
             }
         } else {
-            func_02094738(controller, 6);
+            InventoryScroll_EndMarkerDrag(controller, 6);
             if (primary != 0)
                 func_ov021_021fd7c0(state, data_ov021_02202ee8[0],
                                     data_ov021_02202ee8[1]);

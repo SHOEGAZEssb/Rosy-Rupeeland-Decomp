@@ -34,9 +34,9 @@ extern u8 data_020c6d18[];
 
 extern void func_02078dd4(void *manager, u16 id, void *destination,
                           u32 destination_size);
-extern void *func_02078e98(void *manager, u32 identifier);
-extern void *func_02079408(void *manager, u16 identifier);
-extern void func_02097eec(void *entry, u16 identifier);
+extern void *LanguageResourceManager_FindById(void *manager, u32 identifier);
+extern void *RetailSelectionDatabase_FindResource(void *manager, u16 identifier);
+extern void RetailSelectionHistoryEntry_Init(void *entry, u16 identifier);
 extern void OS_Halt(void);
 
 typedef struct RetailSelectionGroup {
@@ -86,16 +86,16 @@ void func_02097f94(void *manager_pointer)
 
 /* Resolve the borrowed message record selected by an eight-byte history
  * entry's leading identifier. The database retains ownership. */
-void *func_02097f18(void *entry_pointer)
+void *RetailSelectionHistory_GetMessageRecord(void *entry_pointer)
 {
     RetailSelectionEntry *entry = (RetailSelectionEntry *)entry_pointer;
 
-    return func_02079408(data_021f4020, entry->identifier);
+    return RetailSelectionDatabase_FindResource(data_021f4020, entry->identifier);
 }
 
 /* Return the borrowed text field at +6 in the database record referenced by
  * an eight-byte selection-history entry. Neither object is modified. */
-void *func_02097f30(void *entry_pointer)
+void *RetailSelectionHistory_GetText(void *entry_pointer)
 {
     RetailSelectionEntry *entry = (RetailSelectionEntry *)entry_pointer;
 
@@ -107,7 +107,7 @@ void *func_02097f30(void *entry_pointer)
  * The group storage remains owned by the selection manager. Retail callers
  * ensure at least one eligible identifier exists.
  */
-s32 func_02097f3c(void *group_pointer, s32 previous_identifier)
+s32 RetailSelectionGroup_ChooseDifferentId(void *group_pointer, s32 previous_identifier)
 {
     RetailSelectionGroup *group = (RetailSelectionGroup *)group_pointer;
     u32 eligible[20];
@@ -140,7 +140,7 @@ static void CopySelectionEntry(RetailSelectionEntry *destination,
  * down by one slot and a new head is inserted. The manager owns all history
  * slots, while the referenced database records remain database-owned.
  */
-void func_020980f8(void *manager_pointer)
+void RetailSelectionManager_AdvanceHistory(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     RetailSelectionGroup *group = (RetailSelectionGroup *)(
@@ -150,15 +150,15 @@ void func_020980f8(void *manager_pointer)
     s32 identifier;
 
     if (count == 0) {
-        identifier = func_02097f3c(group, -1);
-        func_02097eec(history, (u16)identifier);
+        identifier = RetailSelectionGroup_ChooseDifferentId(group, -1);
+        RetailSelectionHistoryEntry_Init(history, (u16)identifier);
         *(s32 *)(manager + 0x460) = count + 1;
         return;
     }
 
     if ((s8)history[0].record[3] >= 0) {
-        identifier = func_02097f3c(group, history[0].identifier);
-        func_02097eec(history, (u16)identifier);
+        identifier = RetailSelectionGroup_ChooseDifferentId(group, history[0].identifier);
+        RetailSelectionHistoryEntry_Init(history, (u16)identifier);
         return;
     }
 
@@ -166,8 +166,8 @@ void func_020980f8(void *manager_pointer)
         CopySelectionEntry(&history[count], &history[count - 1]);
         --count;
     }
-    identifier = func_02097f3c(group, -1);
-    func_02097eec(history, (u16)identifier);
+    identifier = RetailSelectionGroup_ChooseDifferentId(group, -1);
+    RetailSelectionHistoryEntry_Init(history, (u16)identifier);
     ++*(s32 *)(manager + 0x460);
 }
 
@@ -176,7 +176,7 @@ void func_020980f8(void *manager_pointer)
  * negative group. Record pointers are borrowed from the loaded selection
  * database; this query does not mutate either owner.
  */
-s32 func_02098348(void *manager_pointer)
+s32 RetailSelectionManager_HasInactiveSpecialRecord(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     RetailSelectionEntry *history = (RetailSelectionEntry *)(manager + 0x370);
@@ -203,7 +203,7 @@ static void ReleaseArray(void *manager_pointer)
 }
 
 /* Load the five-bucket four-byte lookup database at retail 0x02078FFC. */
-void func_02078ffc(void *manager_pointer)
+void RetailLookupDatabase_Load(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     FSFile *file = (FSFile *)(manager + 0x38);
@@ -288,7 +288,7 @@ void func_02079264(void *manager_pointer)
  * `manager_pointer` borrows the loaded 0x66-byte record array and `id` selects
  * its leading ID. The returned descriptor remains owned by the language
  * database; retail halts when the requested selection record does not exist. */
-void *func_02079408(void *manager_pointer, u16 id)
+void *RetailSelectionDatabase_FindResource(void *manager_pointer, u16 id)
 {
     u8 *manager = (u8 *)manager_pointer;
     u8 *records = *(u8 **)manager;
@@ -299,7 +299,7 @@ void *func_02079408(void *manager_pointer, u16 id)
         u8 *record = records + index * 0x66;
 
         if (*(u16 *)record == id)
-            return func_02078e98(data_021f4090, *(u16 *)(record + 4));
+            return LanguageResourceManager_FindById(data_021f4090, *(u16 *)(record + 4));
     }
     OS_Halt();
     return 0;
@@ -386,7 +386,7 @@ void func_02079d78(void *manager_pointer)
     *(u32 *)(manager + 0x1bc) = count / 2;
     *(u16 *)(manager + 0x1c0) =
         *(u16 *)(records + (count / 2) * 0x62);
-    func_02078ffc(manager);
+    RetailLookupDatabase_Load(manager);
     func_020794a4(manager + 0x88);
     func_02079264(manager + 0x154);
     GameFile_Destroy(&file);

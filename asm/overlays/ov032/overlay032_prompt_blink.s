@@ -7,8 +7,8 @@
 .extern func_ov032_021fe0e8
 .extern genrand_int32
 
-    .global func_ov032_021fe024
-func_ov032_021fe024:
+    .global Overlay032_UpdatePromptBlink
+Overlay032_UpdatePromptBlink:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xbdc]
@@ -50,5 +50,5 @@ L_021fe084:
     add r0, r4, #0x94
     bl func_ov032_021fe0e8
     ldmia sp!, {r4, pc}
-.size func_ov032_021fe024, .-func_ov032_021fe024
+.size Overlay032_UpdatePromptBlink, .-Overlay032_UpdatePromptBlink
 

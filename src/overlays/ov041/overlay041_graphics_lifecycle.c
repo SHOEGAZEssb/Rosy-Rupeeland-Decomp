@@ -26,7 +26,7 @@ extern void func_02071fa8(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_ReleaseHandles(void *);
 extern void func_020b44e8(void);
 extern void *func_0207043c(void);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void *func_02070888(void *);
 extern void func_020b1924(void *, s32, void *);
 extern void func_020b2058(void *, s32, void *);
@@ -117,14 +117,14 @@ extern "C" void func_ov041_021fd01c(void *owner)
     func_020b44e8();
     func_020b1924((u8 *)FIELD(void *, owner, 0x48) + 0x24, 0, func_0207043c());
     func_020b44e8();
-    func_020b2058(func_02070874(FIELD(void *, owner, 0x4c)), 0,
+    func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, owner, 0x4c)), 0,
                   func_02070888(FIELD(void *, owner, 0x4c)));
     func_020b44e8();
     load_set((u8 *)owner + 0x54, secondaryLast);
     func_020b44e8();
     func_020b1924((u8 *)FIELD(void *, owner, 0x54) + 0x24, 0x8000, func_0207043c());
     func_020b44e8();
-    func_020b2058(func_02070874(FIELD(void *, owner, 0x58)), 0x100,
+    func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, owner, 0x58)), 0x100,
                   func_02070888(FIELD(void *, owner, 0x58)));
     func_020b44e8();
     func_02070f80(FIELD(void *, owner, 0x5c), 8);
@@ -135,7 +135,7 @@ extern "C" void func_ov041_021fd01c(void *owner)
         func_ov041_021fe088(owner, 2, mode == 0 ? 0x78 : 0x5a);
         load_set(temporary, baseLast);
         func_020b44e8();
-        func_020b2058(func_02070874((void *)temporary[1]), 0,
+        func_020b2058(GraphicsBgResourceData_GetDecoded((void *)temporary[1]), 0,
                       func_02070888((void *)temporary[1]));
         func_020b44e8();
         GraphicsResourceSet_ReleaseHandles(temporary);

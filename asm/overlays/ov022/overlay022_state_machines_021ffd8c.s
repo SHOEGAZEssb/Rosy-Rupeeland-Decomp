@@ -11,21 +11,21 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092260
 .extern func_02092c8c
-.extern func_020939d8
-.extern func_02093d50
-.extern func_02093de4
-.extern func_02093e0c
-.extern func_02093e20
-.extern func_02093e3c
-.extern func_02093e58
-.extern func_02093ffc
-.extern func_020945c8
-.extern func_02094600
-.extern func_02094638
-.extern func_02094668
-.extern func_02094698
-.extern func_02094758
-.extern func_02094874
+.extern TitleDialog_ClearTextRect
+.extern InventoryScroll_SetSelectedRow
+.extern InventoryScroll_SaveOrigins
+.extern InventoryScroll_MoveSelectionUp
+.extern InventoryScroll_MoveSelectionDown
+.extern InventoryScroll_PageUp
+.extern InventoryScroll_PageDown
+.extern InventoryScroll_UpdateInterpolation
+.extern InventoryScroll_TestUpperArrowPress
+.extern InventoryScroll_TestLowerArrowPress
+.extern InventoryScroll_TestUpperArrowHold
+.extern InventoryScroll_TestLowerArrowHold
+.extern InventoryScroll_TestMarkerHit
+.extern InventoryScroll_UpdateSelectionMovement
+.extern InventoryScroll_ResetPresentationState
 .extern func_02095860
 .extern func_ov022_021fdc30
 .extern func_ov022_021fdca0
@@ -62,7 +62,7 @@ L_021ffdb0: ; jump table
     b L_02200160 ; case 10
 L_021ffddc:
     mov r0, r4
-    bl func_02094874
+    bl InventoryScroll_ResetPresentationState
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -70,7 +70,7 @@ L_021ffddc:
     str r0, [r5, #0x8]
 L_021ffdf8:
     mov r0, r4
-    bl func_02093ffc
+    bl InventoryScroll_UpdateInterpolation
     cmp r0, #0x0
     beq L_021ffe20
     ldr r1, [r5, #0x4]
@@ -91,19 +91,19 @@ L_021ffe20:
     b L_0220017c
 L_021ffe44:
     mov r0, r4
-    bl func_02093de4
+    bl InventoryScroll_SaveOrigins
     ldr r0, [r5, #0x2c]
     ldrh r0, [r0, #0x0]
     tst r0, #0x40
     beq L_021ffe68
     mov r0, r4
-    bl func_02093e0c
+    bl InventoryScroll_MoveSelectionUp
     b L_022000c0
 L_021ffe68:
     tst r0, #0x80
     beq L_021ffe7c
     mov r0, r4
-    bl func_02093e20
+    bl InventoryScroll_MoveSelectionDown
     b L_022000c0
 L_021ffe7c:
     ldr r0, [r5, #0x20]
@@ -116,19 +116,19 @@ L_021ffe7c:
     mov r6, r0
     mov r0, r4
     add r1, r5, #0x30
-    bl func_02094638
+    bl InventoryScroll_TestUpperArrowHold
     cmp r0, #0x0
     mov r0, r4
     beq L_021ffebc
-    bl func_02093e3c
+    bl InventoryScroll_PageUp
     b L_022000c0
 L_021ffebc:
     add r1, r5, #0x30
-    bl func_02094668
+    bl InventoryScroll_TestLowerArrowHold
     cmp r0, #0x0
     beq L_021ffed8
     mov r0, r4
-    bl func_02093e58
+    bl InventoryScroll_PageDown
     b L_022000c0
 L_021ffed8:
     ldr r0, [r5, #0x20]
@@ -137,11 +137,11 @@ L_021ffed8:
     beq L_022000c0
     mov r0, r4
     add r1, r5, #0x30
-    bl func_020945c8
+    bl InventoryScroll_TestUpperArrowPress
     cmp r0, #0x0
     mov r0, r4
     beq L_021fff1c
-    bl func_02093e3c
+    bl InventoryScroll_PageUp
     cmp r0, #0x0
     bne L_022000c0
     mov r0, r5
@@ -150,11 +150,11 @@ L_021ffed8:
     b L_022000c0
 L_021fff1c:
     add r1, r5, #0x30
-    bl func_02094600
+    bl InventoryScroll_TestLowerArrowPress
     cmp r0, #0x0
     mov r0, r4
     beq L_021fff4c
-    bl func_02093e58
+    bl InventoryScroll_PageDown
     cmp r0, #0x0
     bne L_022000c0
     mov r0, r5
@@ -163,7 +163,7 @@ L_021fff1c:
     b L_022000c0
 L_021fff4c:
     add r1, r5, #0x30
-    bl func_02094698
+    bl InventoryScroll_TestMarkerHit
     cmp r0, #0x0
     beq L_021fff70
     ldr r1, L_0220018c
@@ -182,7 +182,7 @@ L_021fff70:
     bl func_02092260
     mov r0, r4
     mov r1, r6
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     mov r0, r5
     bl func_ov022_021fefe0
     mov r0, r5
@@ -204,7 +204,7 @@ L_021fffc0:
     b L_0220017c
 L_021fffe4:
     ldr r0, [r5, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r5
     mov r1, #0x2
     bl func_02092260
@@ -232,7 +232,7 @@ L_0220000c:
     b L_0220017c
 L_0220004c:
     ldr r0, [r5, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r5
     mov r1, #0x2
     bl func_02092260
@@ -263,7 +263,7 @@ L_02200074:
     b L_0220017c
 L_022000c0:
     mov r0, r4
-    bl func_02094758
+    bl InventoryScroll_UpdateSelectionMovement
     cmp r0, #0x0
     beq L_0220017c
     mov r0, r5
@@ -280,7 +280,7 @@ L_022000f4:
     cmp r0, #0x0
     beq L_0220017c
     ldr r0, [r5, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, L_02200198
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer

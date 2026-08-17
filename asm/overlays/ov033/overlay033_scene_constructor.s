@@ -4,13 +4,13 @@
 
     .extern VecFx32Object_Init
     .extern func_02091b6c
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern Type7Actor_EnterFlag40000State
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern Heap_Alloc
     .extern func_ov033_021fce1c
     .extern func_02092814
-    .extern func_02092cc0
+    .extern TitleDialog_Init
     .extern func_ov033_021fd034
     .extern func_ov033_021fd04c
     .extern data_021052fc
@@ -36,7 +36,7 @@ func_ov033_021fd070:
     add r0, r4, #0x84
     bl func_02091b6c
     add r0, r4, #0xa0
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     mov r1, #0x0
     ldr r2, L_021fd244
     str r1, [r4, #0x10]
@@ -117,7 +117,7 @@ L_021fd194:
     ldr r1, L_021fd248
     ldr r2, [r4, #0xa0]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fd1e8:
     str r0, [r4, #0xc4]
     mov r0, #0x40

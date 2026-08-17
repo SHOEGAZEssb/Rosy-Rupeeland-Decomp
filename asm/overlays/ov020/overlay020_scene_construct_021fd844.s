@@ -10,13 +10,13 @@
     .extern data_ov020_021fe504
     .extern data_ov020_021fe530
     .extern data_ov020_021fe538
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091e28
-    .extern func_02092798
+    .extern SceneInputBase_Init
+    .extern TitleCharacterResourceCollection_Init
     .extern func_020957bc
     .extern func_020957f0
     .extern func_02095820
@@ -36,17 +36,17 @@ func_ov020_021fd844:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fdb5c
     add r0, r4, #0x54
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x60
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x70
     bl func_020957bc
     add r0, r4, #0x1b8
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     mov r0, #0x0
     str r0, [r4, #0x1e4]
     mov r0, #0x39

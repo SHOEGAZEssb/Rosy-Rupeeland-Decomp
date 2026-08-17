@@ -14,7 +14,7 @@ extern "C" {
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *manager, void *resourceSet);
 extern void GraphicsAnimationInstance_SetAnimation(void *handle, s32 selector);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *object, void *handle);
+extern void *AlternateSpritePresentation_Init(void *object, void *handle);
 extern void PresentationList_Append(void *list, void *object);
 extern void PresentationScalar_SetImmediate(void *field, s32 value);
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ extern "C" void func_ov036_02201710(void *controller)
     FIELD(u8, handle, 0x5a) = 0x17;
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     FIELD(void *, controller, 0x120) = child;
     PresentationList_Append((u8 *)controller + 0x148, child);
     PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0x19a);
@@ -49,7 +49,7 @@ extern "C" void func_ov036_02201710(void *controller)
     FIELD(u8, handle, 0x5a) = 0x17;
     child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     FIELD(void *, controller, 0x124) = child;
     PresentationList_Append((u8 *)controller + 0x148, child);
     PresentationScalar_SetImmediate((u8 *)child + 0x5c, 0x8000);
@@ -62,7 +62,7 @@ extern "C" void func_ov036_02201710(void *controller)
         FIELD(u16, handle, 0x50) |= 0x44;
         child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
         if (child != 0)
-            child = func_020955d8(child, handle);
+            child = AlternateSpritePresentation_Init(child, handle);
         FIELD(void *, controller, 0x128 + i * 4) = child;
         PresentationList_Append((u8 *)controller + 0x148, child);
         PresentationScalar_SetImmediate((u8 *)child + 0x5c,

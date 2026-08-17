@@ -3,14 +3,14 @@
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02031758
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .text
     .global PresentationBackedActor_ForwardPairInteraction
 
 PresentationBackedActor_ForwardPairInteraction: ; 0x0204ded4
     ldr ip, .L_0204dedc
     bx ip
-.L_0204dedc: .word func_02032a94
+.L_0204dedc: .word ActorContactState_AddContact
 .size PresentationBackedActor_ForwardPairInteraction, . - PresentationBackedActor_ForwardPairInteraction
 
     .global PresentationBackedActor_BuildTargetTransform

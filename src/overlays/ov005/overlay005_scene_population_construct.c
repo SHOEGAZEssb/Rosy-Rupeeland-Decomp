@@ -20,8 +20,8 @@ extern void *gGameWork;
 extern const u16 data_ov005_021fca28[];
 extern const u8 data_020d780c[];
 extern const s32 data_ov005_021fc8d8[];
-extern void func_02071ea4(void *resource);
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void *__construct_array(void *array, s32 count, s32 elementSize,
                                void (*constructor)(void *),
                                void (*destructor)(void *));
@@ -76,12 +76,12 @@ func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
     s32 index;
     void *context;
 
-    func_02071ea4((u8 *)state + 0x08);
-    func_02071ea4((u8 *)state + 0x14);
-    __construct_array((u8 *)state + 0x20, 11, 0x0c, func_02071ea4,
-                      func_02071eb8);
-    __construct_array((u8 *)state + 0xa4, 3, 0x0c, func_02071ea4,
-                      func_02071eb8);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x08);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x14);
+    __construct_array((u8 *)state + 0x20, 11, 0x0c, AnimationResourceState_InitEmbedded,
+                      AnimationResourceState_Destroy);
+    __construct_array((u8 *)state + 0xa4, 3, 0x0c, AnimationResourceState_InitEmbedded,
+                      AnimationResourceState_Destroy);
     FIELD(u32, state, 0x10c) = 0;
     func_02091b6c((u8 *)state + 0x110);
     func_02091b6c((u8 *)state + 0x12c);

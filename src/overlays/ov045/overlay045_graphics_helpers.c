@@ -21,7 +21,7 @@ extern "C" void func_02074dc8(void *font, void *sprite);
  * call, then associate sprite +0x20 with the global debug font. Resource,
  * sprite, and font presentation state change; no value is returned.
  */
-extern "C" void func_ov045_0220c2a0(void *object, s32 value)
+extern "C" void Overlay045Graphics_SetUniformValue(void *object, s32 value)
 {
     func_020708c4(FIELD(void *, object, 8));
     func_02070958(FIELD(void *, object, 8), value, value, value);

@@ -5,11 +5,11 @@
     .extern data_ov022_022006cc
     .extern func_02003e20
     .extern GraphicsSpriteGroup_ReleaseIndexedEntries
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_02094154
-    .extern func_02094550
-    .extern func_02094574
+    .extern InventoryScroll_SetSpritePriority
+    .extern InventoryScroll_UpdatePresentation
     .extern func_020c09cc
     .extern func_ov022_021fd894
     .extern gHeapContext
@@ -22,7 +22,7 @@ func_ov022_021fd8a4:
     sub sp, sp, #0xc
     mov r4, r0
     mov r5, r1
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     str r5, [r4, #0x28]
     mov ip, #0x0
     str ip, [r4, #0x2c]
@@ -92,9 +92,9 @@ L_021fd9ac:
 L_021fd9b0:
     ldr r0, [r4, #0x30]
     mov r1, #0x0
-    bl func_02094550
+    bl InventoryScroll_SetSpritePriority
     ldr r0, [r4, #0x30]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     ldr r0, [r4, #0x30]
     ldr r0, [r0, #0x50]
     bl GraphicsSpriteGroup_ReleaseIndexedEntries

@@ -3,7 +3,7 @@
     .extern Sound_Play
     .extern VecFx32Object_InitCopy
     .extern VecFx32Object_Destroy
-    .extern func_02059278
+    .extern Sound_PlayDirectSequence
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209a07c
     .extern func_0209a0d8
@@ -487,7 +487,7 @@ func_ov040_021ff900: ; 0x021ff900
     ldr r3, [r3, #0xc]
     str ip, [r3, #0x78]
     ldr r0, [r0, #0x0]
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     b .L_02200088
 .L_02200014:
     ble .L_02200088

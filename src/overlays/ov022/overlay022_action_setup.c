@@ -22,12 +22,12 @@ extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
-extern void *func_02079f3c(const void *, u16);
+extern void *RetailTextTable_FindRecordById(const void *, u16);
 extern void func_0207c460(void *, u16);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_020922f0(void *, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_020befec(s32, s32);
 extern void GameWork_SetFlag(void *, u16);
 extern s32 GameWork_TestFlag(void *, u16);
@@ -62,7 +62,7 @@ extern "C" void func_ov022_021fe9e8(void *scene)
           + ((x_term + ((x_term >> 11) >> 20)) >> 12);
     s32 y = func_ov046_0220b77c(descriptor_id) + FIELD(s16, subrecord, 8)
           + ((y_term + ((y_term >> 11) >> 20)) >> 12);
-    s32 frame = func_020918f4((u8 *)scene + 0x390, 4);
+    s32 frame = TitleRandom_NextBounded((u8 *)scene + 0x390, 4);
     func_02073e48(sprite, frame, x, y, 0, 0, 0x100);
 }
 
@@ -90,7 +90,7 @@ extern "C" void func_ov022_021feac8(void *scene)
     }
     GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x310,
                   FIELD(u16, descriptor, 0x18), 0xff676980, 0);
-    func_020939d8(FIELD(void *, scene, 0x2cc));
+    TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
     func_ov022_021ff2c4(scene, 0x203);
 }
 
@@ -126,7 +126,7 @@ extern "C" void func_ov022_021feb78(void *scene)
     }
 
     s32 table_offset = FIELD(s32, scene, 0x358) * 0x34;
-    const u8 *message = (const u8 *)func_02079f3c(
+    const u8 *message = (const u8 *)RetailTextTable_FindRecordById(
         data_021f3ecc, FIELD(u16, data_020d780c, table_offset));
     const u16 *text = (const u16 *)(message + 2);
     for (s32 i = 0; i < 0x20; ++i) {
@@ -134,7 +134,7 @@ extern "C" void func_ov022_021feb78(void *scene)
         if (text[i] == 0)
             break;
     }
-    func_020939d8(FIELD(void *, scene, 0x2cc));
+    TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
 
     if (matching == completed) {
         FIELD(s32, scene, 0x2ac) = 1;

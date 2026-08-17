@@ -20,11 +20,11 @@ typedef struct Overlay001RowResourcesState {
 extern "C" {
 #endif
 extern void *data_020f4e18;
-extern void *func_02062918(void *cell, s32 index);
-extern s32 func_02063064(void *component);
-extern s32 func_02063074(void *component);
-extern s32 func_02063084(void *component);
-extern s32 func_02063190(void *component);
+extern void *ActorDescriptor_GetComponent(void *cell, s32 index);
+extern s32 ActorDescriptorComponent_GetCharacterResourceId(void *component);
+extern s32 ActorDescriptorComponent_GetPaletteResourceId(void *component);
+extern s32 ActorDescriptorComponent_GetCellResourceId(void *component);
+extern s32 ActorDescriptorComponent_GetAnimation(void *component);
 extern void func_02071ee0(void *metadata, void *config, s32 first, s32 second,
                           s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *metadata, s32 kind);
@@ -68,14 +68,14 @@ void func_ov001_021fc4b4(Overlay001RowResourcesState *state, s32 row)
         if (cell == 0 || FIELD(void *, metadata, 0x10) != 0) {
             continue;
         }
-        first = func_02063064(func_02062918(cell, 0));
-        second = func_02063074(func_02062918(cell, 0));
-        third = func_02063084(func_02062918(cell, 0));
+        first = ActorDescriptorComponent_GetCharacterResourceId(ActorDescriptor_GetComponent(cell, 0));
+        second = ActorDescriptorComponent_GetPaletteResourceId(ActorDescriptor_GetComponent(cell, 0));
+        third = ActorDescriptorComponent_GetCellResourceId(ActorDescriptor_GetComponent(cell, 0));
         func_02071ee0(metadata, data_020f4e18, first, second, third);
         resource = GraphicsSpriteGroup_CreateStateFromSource(
             state->spriteGroup_008, metadata, 2);
         FIELD(void *, metadata, 0x10) = resource;
-        value = func_02063190(func_02062918(cell, 0));
+        value = ActorDescriptorComponent_GetAnimation(ActorDescriptor_GetComponent(cell, 0));
         func_02073e48(resource, value, FIELD(s32, metadata, 0x14),
                       FIELD(s32, metadata, 0x18), 2, 0x3000, 0);
         if ((FIELD(u32, cell, 0x20) & 1) != 0) {

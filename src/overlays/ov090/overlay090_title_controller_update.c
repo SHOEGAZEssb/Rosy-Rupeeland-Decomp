@@ -37,8 +37,8 @@ extern void GX_VBlankIntr();
 extern void *func_0201e0ec();
 extern void func_020349b8();
 extern void func_0204d308();
-extern void func_02058d40();
-extern void func_02059278();
+extern void Sound_StopAllDirectSequences();
+extern void Sound_PlayDirectSequence();
 extern void func_020593ac();
 extern void func_0205940c();
 extern void func_02059484();
@@ -898,7 +898,7 @@ void func_ov090_02217d70(void *self)
         TITLE_TIMER(self) = 0;
         TITLE_STATE(self) = 0x19;
         FIELD(u8, self, 0x222) |= 4;
-        func_02058d40(gSoundContext);
+        Sound_StopAllDirectSequences(gSoundContext);
         Sound_Play(gSoundContext, 0, 0x2d);
         break;
     }
@@ -920,7 +920,7 @@ void func_ov090_02217d70(void *self)
         VecFx32Triple curve;
         s32 scale;
 
-        func_02058d40(gSoundContext, 0);
+        Sound_StopAllDirectSequences(gSoundContext, 0);
         if (TITLE_TIMER(self) == 10)
             func_020349b8(self, 0xa10c, 0);
         else if (TITLE_TIMER(self) == 0x14)
@@ -1034,7 +1034,7 @@ void func_ov090_02217d70(void *self)
             if (secondaryActor != 0)
                 FIELD(u32, secondaryActor, 0x268) |= 0x20000;
             func_0205958c(gSoundContext, 10);
-            func_02059278(gSoundContext, 0x56, 0x7f);
+            Sound_PlayDirectSequence(gSoundContext, 0x56, 0x7f);
         }
         break;
     case 0x1e: {

@@ -9,15 +9,15 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" u32 data_ov044_0220d2b0[2];
-extern "C" void func_020946a8(void *child, s32 mode);
-extern "C" s32 func_02093ffc(void *child);
+extern "C" void InventoryScroll_BeginMarkerDrag(void *child, s32 mode);
+extern "C" s32 InventoryScroll_UpdateInterpolation(void *child);
 extern "C" void func_02092288(void *object, s32 state);
 extern "C" s32 func_ov044_0220bdac(void *panel);
 extern "C" void func_ov044_0220c700(void *object);
-extern "C" void func_02093de4(void *child);
-extern "C" s32 func_020946c8(void *child, void *touch);
+extern "C" void InventoryScroll_SaveOrigins(void *child);
+extern "C" s32 InventoryScroll_UpdateMarkerDrag(void *child, void *touch);
 extern "C" void func_02092260(void *object, s32 state);
-extern "C" void func_02094738(void *child, s32 mode);
+extern "C" void InventoryScroll_EndMarkerDrag(void *child, s32 mode);
 extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
 extern "C" void func_ov044_0220c880(void *object);
 
@@ -43,12 +43,12 @@ extern "C" s32 func_ov044_0220ce28(void *object)
     void *child = FIELD(void *, panel, 0x44);
     s32 state = FIELD(s32, object, 4);
     if (state == 0) {
-        func_020946a8(child, 4);
+        InventoryScroll_BeginMarkerDrag(child, 4);
         advance_transition(object);
         state = 1;
     }
     if (state == 1) {
-        if (func_02093ffc(child)) {
+        if (InventoryScroll_UpdateInterpolation(child)) {
             if (FIELD(s32, child, 0xc) != FIELD(s32, child, 0x10))
                 func_02092288(object, 8);
             advance_transition(object);
@@ -61,15 +61,15 @@ extern "C" s32 func_ov044_0220ce28(void *object)
         }
     }
     if (state == 2) {
-        func_02093de4(child);
+        InventoryScroll_SaveOrigins(child);
         if (FIELD(u32, object, 0x20) & 0x10) {
-            if (func_020946c8(child, (u8 *)object + 0x30)) {
+            if (InventoryScroll_UpdateMarkerDrag(child, (u8 *)object + 0x30)) {
                 func_02092260(object, 8);
                 --FIELD(s32, object, 4);
                 FIELD(s32, object, 8) = 0;
             }
         } else {
-            func_02094738(child, 6);
+            InventoryScroll_EndMarkerDrag(child, 6);
             func_ov044_0220be38(object, data_ov044_0220d2b0[0],
                                 data_ov044_0220d2b0[1]);
         }

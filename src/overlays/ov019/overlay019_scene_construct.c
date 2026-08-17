@@ -18,10 +18,10 @@ extern "C" {
 extern void GameWork_ClearFlag(void *, u32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02091e28(void *);
+extern void SceneInputBase_Init(void *);
 extern void *func_ov002_021fb6e0(void *, void *, s32);
 extern void func_ov019_021fce00(void *, s32, s32, s32);
-extern void func_ov019_021fcfbc(void *);
+extern void Overlay019_SetupGraphics(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -38,13 +38,13 @@ extern void func_ov019_021fcfbc(void *);
  */
 extern "C" void *func_ov019_021fce28(void *state, void *context, void *mode)
 {
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const u32 *, state, 0) = data_ov019_021fd638;
     FIELD(void *, state, 0x54) = context;
     FIELD(void *, state, 0x58) = mode;
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    func_ov019_021fcfbc(state);
+    Overlay019_SetupGraphics(state);
     FIELD(s32, state, 0x60) = 0;
 
     void *presentation =

@@ -4,9 +4,9 @@
     .extern func_02091bac
     .extern func_02091c7c
     .extern func_02091cf0
-    .extern func_02091fb0
+    .extern SceneInputBase_Update
     .extern func_02092260
-    .extern func_02092910
+    .extern GraphicsSpriteState_TestTouchPoint
     .extern func_ov013_021fce04
     .extern func_ov013_021fdbb0
     .extern func_ov013_021fdd8c
@@ -23,7 +23,7 @@ func_ov013_021fe880:
     cmp r0, #0x0
     beq L_021fe8a0
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
 L_021fe8a0:
     ldr r0, [r4, #0x4]
     cmp r0, #0x0
@@ -57,7 +57,7 @@ L_021fe900:
     ldr r0, [r4, #0x948]
     add r1, r4, #0x30
     ldr r0, [r0, #0x9c]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_021fe9ac
     mov r0, r4

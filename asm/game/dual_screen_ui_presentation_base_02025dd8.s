@@ -6,7 +6,7 @@
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
 .extern gSubBgExtendedPaletteBuffer
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070eac
 
     .global func_02025dd8
@@ -38,7 +38,7 @@ func_02025dd8: ; 0x02025dd8
     ldr r0, [sp, #0xc]
     bl func_02070eac
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
     ldr r0, .L_02025e80
     mov r2, #0x4000

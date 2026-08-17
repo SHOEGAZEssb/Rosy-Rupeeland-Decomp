@@ -11,7 +11,7 @@
 .extern SplineMover_Assign
 .extern SplineMover_Evaluate2D
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0200875c
+.extern GamePhaseRuntime_BuildSecondaryTransform
 .extern ActorMotion_GetActor
 .extern ActorMotion_SetPosition
 .extern ActorMotionAreaFollower_GetPosition
@@ -178,7 +178,7 @@ func_ov074_02210b90:
     add r0, sp, #0x400
     ldr r1, [r1, #0x0]
     add r0, r0, #0x68
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     add r0, sp, #0x500
     add r1, sp, #0x400
     add r0, r0, #0x24
@@ -317,7 +317,7 @@ func_ov074_02210b90:
     ldr r1, .L_02211640
     add r0, sp, #0x370
     ldr r1, [r1, #0x0]
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     add r0, sp, #0x500
     add r0, r0, #0x24
     add r1, sp, #0x370
@@ -445,7 +445,7 @@ func_ov074_02210b90:
     ldr r1, .L_02211640
     add r0, sp, #0x278
     ldr r1, [r1, #0x0]
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     add r0, sp, #0x500
     add r0, r0, #0x24
     add r1, sp, #0x278
@@ -572,7 +572,7 @@ func_ov074_02210b90:
     ldr r1, .L_02211640
     add r0, sp, #0x180
     ldr r1, [r1, #0x0]
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     add r0, sp, #0x500
     add r0, r0, #0x24
     add r1, sp, #0x180

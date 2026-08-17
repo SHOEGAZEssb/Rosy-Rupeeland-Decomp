@@ -16,7 +16,7 @@ extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void func_02070638(void *, s32, s32);
 extern void func_020706c4(void *, s32, s32);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02070f34(void *, s32);
@@ -28,11 +28,11 @@ extern void func_020925f8(void);
 extern void func_02092618(void);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_02092688(s32, s32, s32, s32);
-extern void func_020926d8(void *);
+extern void TitleScreenResourceCollection_Init(void *);
 extern void func_020926f8(void *);
 extern void func_02092754(void *, s32);
-extern void *func_02092790(void *, s32);
-extern void func_02092850(s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
+extern void TitlePalette_SetMainBackdrop(s32);
 extern void func_020929f4(void *);
 extern void func_02092a34(void *, s32);
 extern void Presentation_BlendPalette16(void *, void *, s32);
@@ -122,7 +122,7 @@ extern "C" void func_ov021_021fdf88(void *state)
  */
 extern "C" void func_ov021_021fe098(void *state)
 {
-    void *buffer = (u8 *)func_02070874(FIELD(void *, state, 0x400)) + 0x20;
+    void *buffer = (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0x400)) + 0x20;
     FIELD(void *, state, 0x3f0) = buffer;
     FIELD(void *, state, 0x3f4) = buffer;
     FIELD(s32, state, 0x3f8) = 0x10;
@@ -147,7 +147,7 @@ extern "C" void func_ov021_021fe098(void *state)
  * from data_021F5EE8 at scale 0x100, and destroy the temporary set. Graphics
  * MMIO/resource state changes; returns void.
  */
-extern "C" void func_ov021_021fe144(void *state)
+extern "C" void Overlay021_SetupMainBackground(void *state)
 {
     func_02092638(0, 1, 2, 3);
     func_ov021_021fe268(0, 0, 0, 0x1c, 1);
@@ -189,16 +189,16 @@ extern "C" void func_ov021_021fe29c(void *state)
     u8 resources[12];
     u8 manager[0x44];
     GraphicsResourceSet_Init(resources);
-    func_020926d8(manager);
+    TitleScreenResourceCollection_Init(manager);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xa06d, 0xa06e, 0xa06f);
     func_02092754(manager, 0xa070);
     func_020b44e8();
     func_02072048(resources, 0, 0);
-    func_02070e0c(func_02092790(manager, 0), 1, 0);
+    func_02070e0c(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
     FIELD(s32, state, 0x3fc) = 0;
     FIELD(s32, state, 0x48) = 0x13;
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     func_020926f8(manager);
     GraphicsResourceSet_Destroy(resources);
 }
@@ -232,7 +232,7 @@ extern "C" void func_ov021_021fe390(void *state)
  * the overlay-1 selection display through 0x021FF644. Graphics MMIO/resource
  * state changes; returns void.
  */
-extern "C" void func_ov021_021fe458(void *state)
+extern "C" void Overlay021_RefreshSelectionBackground(void *state)
 {
     func_02092638(0, 3, 3, 3);
     func_ov021_021fe268(0, 0, 0x1c, 0, 1);

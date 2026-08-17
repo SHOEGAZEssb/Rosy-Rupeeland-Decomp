@@ -12,7 +12,7 @@ extern const u8 data_ov028_021ff29c[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_ReplaceStateResources(void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -71,9 +71,9 @@ extern "C" void *func_ov028_021fdfa8(void *state)
     func_020927b8((u8 *)state + 0x1fc);
     func_ov028_021fda94((u8 *)state + 0x144);
     func_ov028_021fda94((u8 *)state + 0x98);
-    func_02071eb8((u8 *)state + 0x74);
-    func_02071eb8((u8 *)state + 0x68);
-    func_02071eb8((u8 *)state + 0x5c);
+    AnimationResourceState_Destroy((u8 *)state + 0x74);
+    AnimationResourceState_Destroy((u8 *)state + 0x68);
+    AnimationResourceState_Destroy((u8 *)state + 0x5c);
     return state;
 }
 

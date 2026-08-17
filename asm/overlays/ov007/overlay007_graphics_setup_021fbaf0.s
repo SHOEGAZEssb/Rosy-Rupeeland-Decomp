@@ -7,7 +7,7 @@
     .extern func_020b44e8
     .extern func_0207043c
     .extern func_020b198c
-    .extern func_02070874
+    .extern GraphicsBgResourceData_GetDecoded
     .extern func_02070888
     .extern func_020b1ff0
     .extern func_02070eac
@@ -69,7 +69,7 @@ func_ov007_021fbaf0: ; 0x021fbaf0
     bl func_020b44e8
     ldr r6, [sp, #0x1c]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888

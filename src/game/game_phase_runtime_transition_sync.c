@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern s32 func_02030b58(void *actor, s32 value);
 extern void ActorCollection_UpdateFlag800Actors(void *actor);
-extern void func_0201dcec(void *object, s32 enabled);
+extern void RuntimePresentationManager_Update(void *object, s32 enabled);
 extern void GamePhaseCurrencyHud_Update(void *context);
 #ifdef __cplusplus
 }
@@ -35,7 +35,7 @@ void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 m
         GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
     GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
     func_02030b58(GamePhaseRuntime_GetActorCollection(self, 1), previous);
-    func_0201dcec(b + 0x2f7c, 1);
+    RuntimePresentationManager_Update(b + 0x2f7c, 1);
     GamePhaseCurrencyHud_Update(gLupyContext);
     {
         void *object = *(void **)(b + 0x30e8);

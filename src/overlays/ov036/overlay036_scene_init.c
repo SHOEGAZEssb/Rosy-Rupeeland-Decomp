@@ -15,7 +15,7 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *scene);
+extern void SceneInputBase_Init(void *scene);
 extern void func_02092364(void *state);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
@@ -26,7 +26,7 @@ extern void func_020ae6dc(void);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *Graphics3DResourceOwner_Init(void *object, s32 first, s32 second);
 extern void func_ov048_0220b7b8(void *state);
-extern void func_02092850(s32 value);
+extern void TitlePalette_SetMainBackdrop(s32 value);
 extern void func_020b0300(s32, s32, s32, s32, s32);
 extern void *func_ov036_021fea14(void *, void *, s32);
 extern void *func_ov036_021ff214(void *, void *, s32);
@@ -60,7 +60,7 @@ extern void func_ov036_022045ac(void *state, s32 value24, s32 value28);
  */
 extern "C" void *func_ov036_022045d4(void *scene, s32 selector)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov036_02206124;
     func_02092364((u8 *)scene + 0x64);
     func_ov043_0220b740((u8 *)scene + 0x98);
@@ -85,7 +85,7 @@ extern "C" void *func_ov036_022045d4(void *scene, s32 selector)
     FIELD(void *, scene, 0x5c) = owner;
     func_ov048_0220b7b8((u8 *)scene + 0x98);
     FIELD(s32, scene, 0x48) = 0x11;
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
     FIELD(void *, scene, 0x60) = 0;
 

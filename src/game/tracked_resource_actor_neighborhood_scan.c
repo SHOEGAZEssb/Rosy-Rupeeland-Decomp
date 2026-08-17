@@ -17,7 +17,7 @@ extern void func_020328d0(void *vector, s32 angle);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -89,7 +89,7 @@ void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, u32 
                  virtual_function(candidate, 8)(candidate) == 0))
                 continue;
         }
-        if (func_020be334(FIELD(s32, candidate, 0x24) -
+        if (SignedAbsoluteValue(FIELD(s32, candidate, 0x24) -
                           FIELD(s32, actor, 0x24)) > 0x20000)
             continue;
 

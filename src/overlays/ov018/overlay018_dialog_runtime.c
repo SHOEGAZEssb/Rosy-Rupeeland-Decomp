@@ -21,9 +21,9 @@ extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern void *ActorCollection_FindActorByDescriptorValue(void *, void *);
 extern u32 LanguageLookup_GetResourceSize(void *, u16);
 extern void *func_020791e0(void *, u16);
-extern void *func_02092cc0(void *, void *, void *);
-extern void func_02092e9c(void *, void *, s32);
-extern s32 func_02093360(void *, void *);
+extern void *TitleDialog_Init(void *, void *, void *);
+extern void TitleDialog_SetText(void *, void *, s32);
+extern s32 TitleDialog_UpdateTextPage(void *, void *);
 extern void func_ov018_021fd9f8(void *, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -47,7 +47,7 @@ extern "C" void func_ov018_021fd90c(void *state)
     FIELD(s32, state, 0x41c) = 0;
     dialog = Heap_Alloc(0xec, data_ov018_021ffd60, 4, gHeapContext);
     if (dialog != 0)
-        dialog = func_02092cc0(dialog, data_020f4e14,
+        dialog = TitleDialog_Init(dialog, data_020f4e14,
                                (u8 *)state + 0x70);
     FIELD(void *, state, 0x418) = dialog;
     if (FIELD(u8, gSystemState, 0x5f) == 0)
@@ -86,7 +86,7 @@ extern "C" void func_ov018_021fda10(void *state, u16 messageId)
     u32 length = LanguageLookup_GetResourceSize(data_021f3ecc, messageId);
     void *text = func_020791e0(data_021f3ecc, messageId);
     MIi_CpuCopy16(text, (u8 *)state + 0x1c8, length);
-    func_02092e9c(FIELD(void *, state, 0x418),
+    TitleDialog_SetText(FIELD(void *, state, 0x418),
                   (u8 *)state + 0x1c8, 4);
 }
 
@@ -125,7 +125,7 @@ extern "C" s32 func_ov018_021fda60(void *state)
         }
     }
 
-    if ((func_02093360(dialog, input) & 1) == 0)
+    if ((TitleDialog_UpdateTextPage(dialog, input) & 1) == 0)
         return 0;
     FIELD(u16, FIELD(void *, FIELD(void *, state, 0x18c), 0x54), 0x24) &= ~2;
     return 1;

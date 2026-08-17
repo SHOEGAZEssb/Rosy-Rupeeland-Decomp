@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov037/overlay037_actor_controller.c for documented portable C. */
 
-    .extern func_020956f0
+    .extern AlternateSpritePresentation_SyncTransformVariant
     .extern func_ov037_021fd6c0
     .extern GraphicsAnimationInstance_SetAnimation
 
@@ -10,7 +10,7 @@
 func_ov037_021fd600:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020956f0
+    bl AlternateSpritePresentation_SyncTransformVariant
     ldr r2, [r4, #0x9c]
     ldr r0, [r4, #0xac]
     ldr r3, [r2, #0x28]

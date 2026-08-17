@@ -6,9 +6,9 @@
 .extern data_020d6a98
 .extern VecFx32Object_InitCopy
 .extern AnimationResource_Init
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0206b628
-.extern func_0206c028
+.extern AuxiliaryCoreSprite_SetVisible
 .extern gHeapContext
 
     .global func_02025300
@@ -20,7 +20,7 @@ func_02025300: ; 0x02025300
     mov r7, r1
     mov r5, r2
     mov r4, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r2, .L_02025484
     mov r1, r7
     add r0, r6, #0x18
@@ -111,7 +111,7 @@ func_02025300: ; 0x02025300
 .L_0202546c:
     mov r1, #0x1
     str r0, [r6, #0x8]
-    bl func_0206c028
+    bl AuxiliaryCoreSprite_SetVisible
     mov r0, r6
     add sp, sp, #0x24
     ldmia sp!, {r4, r5, r6, r7, pc}

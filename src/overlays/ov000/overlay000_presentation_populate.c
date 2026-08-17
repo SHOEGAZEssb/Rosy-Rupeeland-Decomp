@@ -27,15 +27,15 @@ extern u8 gSystemState[];
 extern void *data_020f4e18;
 extern u8 data_021f3ecc[];
 extern const u8 data_020d780c[];
-extern const u16 *func_020628c8(void *record);
-extern void *func_02062918(void *record, s32 index);
-extern void *func_02062928(void *record);
-extern s32 func_02062ae4(void *record);
-extern u8 *func_02062e00(void *record);
-extern u32 func_02063064(void *component);
-extern u32 func_02063074(void *component);
-extern u32 func_02063084(void *component);
-extern u32 func_02063190(void *component);
+extern const u16 *ActorDescriptor_GetPrimaryLabel(void *record);
+extern void *ActorDescriptor_GetComponent(void *record, s32 index);
+extern void *ActorDescriptor_LoadDetailResource(void *record);
+extern s32 ActorDescriptor_GetKind0Animation(void *record);
+extern u8 *InventoryRecord_GetMetadata(void *record);
+extern u32 ActorDescriptorComponent_GetCharacterResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetPaletteResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetCellResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetAnimation(void *component);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
@@ -44,10 +44,10 @@ extern s32 GraphicsSpriteRenderer_DrawText(void *renderer, const u16 *text, s32 
                          s32 mode, s32 advance, s32 spacing);
 extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 x, s32 y, s32 width,
                           s32 height, s32 mode);
-extern u8 *func_02079f3c(void *table, u16 resourceId);
-extern void func_02092e9c(void *presentation, void *record, s32 mode);
-extern void func_02093360(void *presentation, s32 value);
-extern void func_020939d8(void *presentation);
+extern u8 *RetailTextTable_FindRecordById(void *table, u16 resourceId);
+extern void TitleDialog_SetText(void *presentation, void *record, s32 mode);
+extern void TitleDialog_UpdateTextPage(void *presentation, s32 value);
+extern void TitleDialog_ClearTextRect(void *presentation);
 extern void func_02071ee0(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern void func_ov000_021fb890(void *state, s32 startAnimation);
@@ -69,7 +69,7 @@ extern void func_ov000_021fb890(void *state, s32 startAnimation);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
+void Overlay000_PopulatePresentation(Overlay000PresentationState *state, void *record)
 {
     const u16 *text;
     void *sprite;
@@ -87,9 +87,9 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
     }
 
     func_ov000_021fb890(state, 0);
-    func_02092e9c(state->presentation_44, func_02062928(record), 1);
-    func_020939d8(state->presentation_44);
-    func_02093360(state->presentation_44, 0);
+    TitleDialog_SetText(state->presentation_44, ActorDescriptor_LoadDetailResource(record), 1);
+    TitleDialog_ClearTextRect(state->presentation_44);
+    TitleDialog_UpdateTextPage(state->presentation_44, 0);
 
     firstHeight = 0x54;
     textOffset = 0;
@@ -98,11 +98,11 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
         textOffset = 4;
     }
 
-    if (func_02062e00(record)[2] == 3) {
+    if (InventoryRecord_GetMetadata(record)[2] == 3) {
         GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_24);
         GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x70, 0x48, 0xc0,
                       firstHeight, 0);
-        text = (const u16 *)(func_02079f3c(data_021f3ecc, 0x1b8) + 2);
+        text = (const u16 *)(RetailTextTable_FindRecordById(data_021f3ecc, 0x1b8) + 2);
         GraphicsSpriteRenderer_DrawText(state->renderer_00, text, 0x70, 0x48, 0xe, 4, 0);
 
         GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_20);
@@ -113,16 +113,16 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
         GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_24);
         GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x70, 0x48, 0xc0,
                       firstHeight, 0);
-        text = (const u16 *)(func_02079f3c(data_021f3ecc, 0x1b7) + 2);
+        text = (const u16 *)(RetailTextTable_FindRecordById(data_021f3ecc, 0x1b7) + 2);
         GraphicsSpriteRenderer_DrawText(state->renderer_00, text, 0x70, 0x48, 0xe, 4, 0);
 
         GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_20);
         GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x38, 0x8a, 0xd8, 0x9a, 0);
         textOffset += GraphicsSpriteRenderer_DrawText(state->renderer_00, state->label_48,
                                    0x38, 0x8a, 0xe, 4, 0);
-        text = (const u16 *)(func_02079f3c(
+        text = (const u16 *)(RetailTextTable_FindRecordById(
             data_021f3ecc,
-            *(const u16 *)(data_020d780c + func_02062ae4(record) * 0x34)) +
+            *(const u16 *)(data_020d780c + ActorDescriptor_GetKind0Animation(record) * 0x34)) +
             2);
         GraphicsSpriteRenderer_DrawText(state->renderer_00, text, textOffset + 0x38,
                       0x8a, 0xe, 4, 0);
@@ -133,19 +133,19 @@ void func_ov000_021fb8f0(Overlay000PresentationState *state, void *record)
 
     GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_28);
     GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x5c, 0x34, 0xe8, 0x44, 0);
-    GraphicsSpriteRenderer_DrawText(state->renderer_00, func_020628c8(record),
+    GraphicsSpriteRenderer_DrawText(state->renderer_00, ActorDescriptor_GetPrimaryLabel(record),
                   0x5c, 0x34, 0xe, 6, 0);
 
-    component = func_02062918(record, 0);
-    resource0 = func_02063064(component);
-    component = func_02062918(record, 0);
-    resource1 = func_02063074(component);
-    component = func_02062918(record, 0);
-    resource2 = func_02063084(component);
+    component = ActorDescriptor_GetComponent(record, 0);
+    resource0 = ActorDescriptorComponent_GetCharacterResourceId(component);
+    component = ActorDescriptor_GetComponent(record, 0);
+    resource1 = ActorDescriptorComponent_GetPaletteResourceId(component);
+    component = ActorDescriptor_GetComponent(record, 0);
+    resource2 = ActorDescriptorComponent_GetCellResourceId(component);
     func_02071ee0(state->resource_14, data_020f4e18,
                   resource0, resource1, resource2);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_14, 2);
-    component = func_02062918(record, 0);
-    resource3 = func_02063190(component);
+    component = ActorDescriptor_GetComponent(record, 0);
+    resource3 = ActorDescriptorComponent_GetAnimation(component);
     func_02073e48(sprite, resource3, 0x48, 0x44, 1, 0, 0);
 }

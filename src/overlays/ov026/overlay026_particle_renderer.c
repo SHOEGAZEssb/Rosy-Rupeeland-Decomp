@@ -18,7 +18,7 @@ extern void Heap_Free(void *);
 extern void *Graphics3DResourceBinding_Init(void *, void *, s32, s32, s32);
 extern void Graphics3DResourceBinding_Destroy(void *);
 extern s32 func_0209189c(void *, s32, ...);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void Presentation_Init(void *);
 extern void func_ov026_021fce50(void *);
 extern void func_ov026_021fd900(u32, u32, u32, u32, u32, u32, u32, u32);
@@ -52,7 +52,7 @@ extern "C" void func_ov026_021fe72c(void *object)
         s32 radius = func_0209189c((u8 *)object + 0xc0,
                                    FIELD(s32, object, 0x9c),
                                    FIELD(s32, object, 0xa0));
-        s32 angle = func_020918f4((u8 *)object + 0xc0, 0x1000);
+        s32 angle = TitleRandom_NextBounded((u8 *)object + 0xc0, 0x1000);
         s32 table_index = (angle << 4) >> 4;
         s32 y0 = FIELD(s32, object, 0xac) +
                  func_0209189c((u8 *)object + 0xc0,

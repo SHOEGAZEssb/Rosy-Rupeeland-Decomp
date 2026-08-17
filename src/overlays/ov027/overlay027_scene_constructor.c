@@ -21,7 +21,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void func_02091e28(void *);
+extern void SceneInputBase_Init(void *);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void func_02092364(void *);
@@ -62,9 +62,9 @@ extern void func_ov027_021fda08(void *, s32, s32);
  * the compact state helper. Heap allocations use heap 4 and preserve null on
  * failure; G3X_Init resets the Nintendo DS 3D engine.
  */
-extern "C" void *func_ov027_021fda30(void *scene)
+extern "C" void *Overlay027Scene_Init(void *scene)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov027_021feeb4;
     GraphicsResourceSetVariant_Init((u8 *)scene + 0x5c);
     GraphicsResourceSetVariant_Init((u8 *)scene + 0x68);

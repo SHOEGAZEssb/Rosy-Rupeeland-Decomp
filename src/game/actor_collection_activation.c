@@ -53,7 +53,7 @@ extern void ActorCollection_NotifyPairEnded(ActorCollectionActivation *, Collect
  * flags_0d0 bit 0x100000 is clear. Reserved slot zero is never examined.
  * Removal updates relationships before the actor's vtable destructor runs.
  */
-void func_0202d3cc(ActorCollectionActivation *self)
+void ActorCollectionActivation_DestroyReservedSlot(ActorCollectionActivation *self)
 {
     CollectionActor *actor;
     s32 i;

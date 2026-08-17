@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_update.c. */
 .extern GraphicsAnimationInstanceManager_Update
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationScalar_TransitionTo
 .extern PresentationList_UpdateAndDeleteCompleted
 .extern func_ov026_021fe5c0
@@ -28,14 +28,14 @@ func_ov026_022009dc:
     add r0, r4, #0x3a4
     add r0, r0, #0x400
     mov r1, #0x4
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     cmp r0, #0x0
     bne L_02200a40
     ldr r1, [r4, #0x160]
     add r0, r4, #0x3a4
     ldr r1, [r1, #0x13c]
     add r0, r0, #0x400
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, [r4, #0x160]
     mov r2, r0
     ldr r1, [r1, #0x20]

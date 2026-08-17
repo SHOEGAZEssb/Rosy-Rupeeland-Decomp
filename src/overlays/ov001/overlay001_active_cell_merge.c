@@ -20,10 +20,10 @@ typedef struct Overlay001ActiveCellMergeState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u8 *func_02062e00(void *cell);
-extern void func_02062874(void *cell, s32 value);
-extern s32 func_02062a08(void *cell);
-extern void func_020627d0(void *cell, u16 key, u16 property, u16 quantity);
+extern u8 *InventoryRecord_GetMetadata(void *cell);
+extern void ActorDescriptor_SetQuantity(void *cell, s32 value);
+extern s32 ActorDescriptor_GetSubtype(void *cell);
+extern void ActorDescriptor_Init(void *cell, u16 key, u16 property, u16 quantity);
 extern void func_ov001_021fc460(Overlay001ActiveCellMergeState *state,
                                 s32 index);
 extern void func_ov001_021fc404(Overlay001ActiveCellMergeState *state,
@@ -36,9 +36,9 @@ extern void func_ov001_021fc068(Overlay001ActiveCellMergeState *state);
 /*
  * Inputs are state, an amount, and a source record. Continue only when the
  * active linked cell's descriptor type byte is one. Subtract amount from the
- * source +4 quantity (with 16-bit truncation), then call func_020627d0 on the
+ * source +4 quantity (with 16-bit truncation), then call ActorDescriptor_Init on the
  * active cell using the source +0 key, the active cell property returned by
- * func_02062a08, and active quantity plus amount. Retire the transient,
+ * ActorDescriptor_GetSubtype, and active quantity plus amount. Retire the transient,
  * reset/clear the active binding, refresh the grid, and attach metadata+0x10.
  * Returns no value; record and presentation state are mutated by writes/calls.
  */
@@ -55,14 +55,14 @@ void func_ov001_021fc964(Overlay001ActiveCellMergeState *state, s32 amount,
     u16 property;
     u16 quantity;
 
-    if (func_02062e00(cell)[2] != 1) {
+    if (InventoryRecord_GetMetadata(cell)[2] != 1) {
         return;
     }
-    func_02062874(source, (u16)(FIELD(u16, source, 0x04) - amount));
+    ActorDescriptor_SetQuantity(source, (u16)(FIELD(u16, source, 0x04) - amount));
     key = FIELD(u16, source, 0x00);
-    property = (u16)func_02062a08(cell);
+    property = (u16)ActorDescriptor_GetSubtype(cell);
     quantity = (u16)(FIELD(u16, cell, 0x04) + amount);
-    func_020627d0(cell, key, property, quantity);
+    ActorDescriptor_Init(cell, key, property, quantity);
     if (state->transient_01c != 0) {
         FIELD(u16, state->transient_01c, 0x32) = 0x100;
         state->transient_01c = 0;

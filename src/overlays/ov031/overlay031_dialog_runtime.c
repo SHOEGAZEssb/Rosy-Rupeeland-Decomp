@@ -11,11 +11,11 @@ extern const u8 data_ov031_021fe6e4[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020939d8(void *);
-extern void func_02093998(void *);
-extern void *func_02079408(const void *, u16);
-extern void func_02092e9c(void *, void *, s32);
-extern u32 func_02093360(void *, const void *);
+extern void TitleDialog_ClearTextRect(void *);
+extern void TitleDialog_ResetAfterClose(void *);
+extern void *RetailSelectionDatabase_FindResource(const void *, u16);
+extern void TitleDialog_SetText(void *, void *, s32);
+extern u32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_ov031_021fdf20(void *, s32);
 #ifdef __cplusplus
@@ -35,13 +35,13 @@ extern "C" void func_ov031_021fdd04(void *scene, s32 messageId)
 {
     void *dialog = FIELD(void *, scene, 0x98);
     if (messageId < 0) {
-        func_02093998(dialog);
+        TitleDialog_ResetAfterClose(dialog);
         return;
     }
-    func_020939d8(dialog);
-    void *message = func_02079408(data_021f4020, (u16)messageId);
-    func_02092e9c(dialog, message, 0);
-    u32 result = func_02093360(dialog, data_021f5ed0);
+    TitleDialog_ClearTextRect(dialog);
+    void *message = RetailSelectionDatabase_FindResource(data_021f4020, (u16)messageId);
+    TitleDialog_SetText(dialog, message, 0);
+    u32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     s32 selection = (result & 0x200) != 0 ? FIELD(s32, dialog, 0xe8) : 0;
     FIELD(s32, scene, 0x9c) = selection;
     void *sprite = FIELD(void *, scene, 0x68);
@@ -89,7 +89,7 @@ extern "C" s32 func_ov031_021fddbc(void *scene)
     } else if ((status & 2) != 0) {
         FIELD(u16, sprite, 0x24) &= (u16)~2;
     }
-    u32 result = func_02093360(dialog, input);
+    u32 result = TitleDialog_UpdateTextPage(dialog, input);
     if ((result & 0x200) != 0) {
         s32 selection = FIELD(s32, dialog, 0xe8);
         FIELD(s32, scene, 0x9c) = selection;

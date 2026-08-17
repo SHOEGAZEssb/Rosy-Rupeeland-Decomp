@@ -10,14 +10,14 @@
     .extern data_ov018_021ffd50
     .extern data_ov018_021ffd58
     .extern GamePhaseState_GetConfiguration
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
-    .extern func_02091e28
-    .extern func_02092798
+    .extern SceneInputBase_Init
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_020957bc
     .extern func_020957f0
@@ -43,21 +43,21 @@ func_ov018_021fcf68:
     sub sp, sp, #0xc
     mov r4, r0
     mov r5, r1
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fd31c
     add r0, r4, #0x64
     str r1, [r4, #0x0]
     bl func_ov018_021fd36c
     add r0, r4, #0x70
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x94
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xa0
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xac
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xb8
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xd8
     bl func_020957bc
     add r0, r4, #0x1a8

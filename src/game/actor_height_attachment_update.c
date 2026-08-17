@@ -8,7 +8,7 @@ extern void *gActorTargetSelectionCandidates[];
 extern "C" {
 #endif
 extern s32 func_020adae4(s32 numerator, s32 denominator);
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ void Actor_UpdateAttachmentHeight(void *self)
     *(s32 *)(actor + 0x24) =
         func_020adae4(*(s32 *)(actor + 0x24) * 17 + lower, 18);
     if ((object == 0 || (object[0x10] & 2) != 0) &&
-        func_020be334(*(s32 *)(actor + 0x24) - upper) < 0x4000) {
+        SignedAbsoluteValue(*(s32 *)(actor + 0x24) - upper) < 0x4000) {
         *(u32 *)(actor + 0xd0) |= 0x20;
         return;
     }

@@ -13,7 +13,7 @@
 .extern func_02091c7c
 .extern func_02091cf0
 .extern func_02092260
-.extern func_02092910
+.extern GraphicsSpriteState_TestTouchPoint
 .extern func_02095820
 .extern func_02095860
 .extern func_02095928
@@ -129,7 +129,7 @@ L_022015bc:
     ldr r0, [r0, #0xe4]
     add r1, r5, #0x30
     ldr r0, [r0, #0x10]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     ldrne r0, [r5, #0x54]
     cmpne r6, r0

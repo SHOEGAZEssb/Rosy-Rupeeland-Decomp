@@ -12,20 +12,20 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern VecFx32_Subtract
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
-.extern func_02022fbc
+.extern SelfLinkedSpriteConfig_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02056f00
-.extern func_020627a0
-.extern func_020627d0
-.extern func_02062918
-.extern func_02063014
-.extern func_02063190
-.extern func_02063658
-.extern func_02071ea4
-.extern func_02071eb8
+.extern ActorDescriptor_InitRange
+.extern ActorDescriptor_Init
+.extern ActorDescriptor_GetComponent
+.extern ActorDescriptorComponent_LoadResources
+.extern ActorDescriptorComponent_GetAnimation
+.extern ActorDatabase_QueryDefinitionKind
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseState
@@ -41,7 +41,7 @@ func_020232b0: ; 0x020232b0
     ldr r1, [r4, #0x3c]
     bl GraphicsSpriteGroup_ReleaseState
     add r0, r4, #0x48
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x2c
     bl VecFx32Object_Destroy
     add r0, r4, #0x1c

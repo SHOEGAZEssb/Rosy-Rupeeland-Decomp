@@ -34,7 +34,7 @@ extern void GraphicsResourceSet_Load(Overlay007GraphicsResourceSet *set,
 extern void func_020b44e8(void);
 extern void *func_0207043c(void *resource);
 extern void func_020b198c(void *destination, s32 offset, void *source);
-extern void *func_02070874(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void *func_02070888(void *resource);
 extern void func_020b1ff0(void *destination, s32 offset, void *source);
 extern void func_02070eac(void *resource, s32 first, s32 second);
@@ -56,7 +56,7 @@ extern void GraphicsResourceSet_Destroy(Overlay007GraphicsResourceSet *set);
  * 3, then clear word 0x04001010. Initialize a temporary resource set and load
  * IDs 0x9061..0x9063 through data_020f4e18. Synchronize; copy the first
  * resource's +0x24 destination from func_0207043c via func_020b198c; synchronize
- * and copy the second resource's func_02070888 data to its func_02070874
+ * and copy the second resource's func_02070888 data to its GraphicsBgResourceData_GetDecoded
  * destination via func_020b1ff0; synchronize, apply 0/0 to the third resource,
  * and finalize through GraphicsResourceSet_ReleaseHandles.
  *
@@ -95,7 +95,7 @@ void func_ov007_021fbaf0(void *state)
     source = func_0207043c(set.first);
     func_020b198c(destination, 0, source);
     func_020b44e8();
-    destination = func_02070874(set.second);
+    destination = GraphicsBgResourceData_GetDecoded(set.second);
     source = func_02070888(set.second);
     func_020b1ff0(destination, 0, source);
     func_020b44e8();

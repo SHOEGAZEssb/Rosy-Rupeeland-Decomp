@@ -16,14 +16,14 @@ typedef struct Overlay001CellResetState {
 extern "C" {
 #endif
 extern void GraphicsSpriteState_ReleaseFromGroup(void *resource);
-extern void func_02071f38(void *metadata);
+extern void AnimationResourceState_ReleaseResources(void *metadata);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * For metadata[index], release non-null field +0x10 with GraphicsSpriteState_ReleaseFromGroup, clear
- * it, and pass the record to func_02071f38. Always clear linkage field +0x0C;
+ * it, and pass the record to AnimationResourceState_ReleaseResources. Always clear linkage field +0x0C;
  * unlike overlay 0's counterpart, value field +0x1C is preserved. Resource
  * effects occur through callees, with no direct hardware access.
  */
@@ -36,7 +36,7 @@ void func_ov001_021fc460(Overlay001CellResetState *state, s32 index)
         GraphicsSpriteState_ReleaseFromGroup(
             FIELD(void *, (u8 *)state->metadata_20c + index * 0x20, 0x10));
         FIELD(void *, (u8 *)state->metadata_20c + index * 0x20, 0x10) = 0;
-        func_02071f38((u8 *)state->metadata_20c + index * 0x20);
+        AnimationResourceState_ReleaseResources((u8 *)state->metadata_20c + index * 0x20);
     }
     FIELD(void *, (u8 *)state->metadata_20c + index * 0x20, 0x0c) = 0;
 }

@@ -11,9 +11,9 @@
 .extern ActorMotion_GetPosition
 .extern OS_Halt
 
-    .global func_0200875c
-.type func_0200875c, @function
-func_0200875c:
+    .global GamePhaseRuntime_BuildSecondaryTransform
+.type GamePhaseRuntime_BuildSecondaryTransform, @function
+GamePhaseRuntime_BuildSecondaryTransform:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x50
     mov r5, r0
@@ -110,5 +110,5 @@ L_02008880:
     bl VecFx32Object_Destroy
     add sp, sp, #0x50
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_0200875c, .-func_0200875c
+    .size GamePhaseRuntime_BuildSecondaryTransform, .-GamePhaseRuntime_BuildSecondaryTransform
 

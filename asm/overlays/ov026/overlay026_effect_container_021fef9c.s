@@ -11,7 +11,7 @@
 .extern data_ov026_02204a58
 .extern data_ov026_02204a60
 .extern data_ov026_02204a68
-.extern func_02071adc
+.extern GraphicsArchive_AcquireOwlvResource
 .extern Graphics3DResourceBinding_Init
 .extern PresentationScalar_SetImmediate
 .extern Presentation_Init
@@ -139,7 +139,7 @@ L_021ff130:
     str r0, [r10, #0xe4]
     ldr r0, [r1, #0x0]
     mov r1, #0x5000
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r10, #0x11c]
     ldr r1, L_021ff2bc
     ldr r3, L_021ff2a8

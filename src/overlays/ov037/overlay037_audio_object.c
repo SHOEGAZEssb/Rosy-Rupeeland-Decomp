@@ -11,7 +11,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Presentation_Init(void *object);
-extern void func_02059278(void *soundContext, u16 soundId, s32 volume);
+extern void Sound_PlayDirectSequence(void *soundContext, u16 soundId, s32 volume);
 #ifdef __cplusplus
 }
 #endif
@@ -38,7 +38,7 @@ extern "C" s32 func_ov037_021fd1ec(void *unused, const s32 *command)
 {
     (void)unused;
     if (command[0] == 0) {
-        func_02059278(gSoundContext, (u16)command[1], 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, (u16)command[1], 0x7f);
         return 2;
     }
     return 1;

@@ -9,7 +9,7 @@
 .extern Heap_Alloc
 .extern func_ov015_021fce58
 .extern func_ov044_0220c880
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern func_020925f8
 .extern func_ov044_0220c3e4
 .extern func_ov044_0220c610
@@ -94,7 +94,7 @@ func_ov044_0220cf60:
 .L_0220d04c:
     ldr r0, [r4, #0x23c]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220d1ec
@@ -107,7 +107,7 @@ func_ov044_0220cf60:
 .L_0220d07c:
     ldr r0, [r4, #0x23c]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq .L_0220d1ec
     mov r0, #0x1
@@ -122,7 +122,7 @@ func_ov044_0220cf60:
 .L_0220d0b4:
     ldr r0, [r4, #0x23c]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220d1ec

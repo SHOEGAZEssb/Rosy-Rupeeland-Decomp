@@ -25,10 +25,10 @@ extern "C" s32 DisplayController_GetSubScreenVerticalOffset(void);
 extern "C" u32 genrand_int32(void);
 extern "C" void Heap_Free(void *allocation);
 
-extern "C" void func_ov050_0220d7c4(void *effect, s32 scale);
-extern "C" void func_ov050_0220d7ac(void *pair, u32 alpha);
-extern "C" void func_ov050_0220d874(void *effect);
-extern "C" void *func_ov050_0220d8b4(void *effect);
+extern "C" void Overlay050PairedEffect_ResetMotion(void *effect, s32 scale);
+extern "C" void Overlay050SpritePair_SetAlpha(void *pair, u32 alpha);
+extern "C" void Overlay050EffectBase_Init(void *effect);
+extern "C" void *Overlay050Effect_Destroy(void *effect);
 
 /*
  * Construct caller-owned `effect`: copy origin, initialize velocity, create
@@ -61,7 +61,7 @@ extern "C" void *func_ov050_0220d600(void *effect, void *primaryGroup,
     GraphicsSpriteState_SetAnimationIndex(secondary, 0);
     FIELD(s16, secondary, 0x2c) = 0x80;
     FIELD(s16, secondary, 0x2e) = 0x60;
-    func_ov050_0220d7c4(effect, 0x1000);
+    Overlay050PairedEffect_ResetMotion(effect, 0x1000);
     return effect;
 }
 
@@ -70,7 +70,7 @@ extern "C" void *func_ov050_0220d600(void *effect, void *primaryGroup,
  * return the unchanged effect pointer. SDK sprite and object-owned state
  * change; storage is not freed and no direct hardware access occurs.
  */
-extern "C" void *func_ov050_0220d6b0(void *effect)
+extern "C" void *Overlay050PairedEffect_Destroy(void *effect)
 {
     void *primary = FIELD(void *, effect, 0);
     void *secondary = FIELD(void *, effect, 4);
@@ -88,7 +88,7 @@ extern "C" void *func_ov050_0220d6b0(void *effect)
  * the shared feedback helper when its timer gate fires. Effect, sprite, and
  * SDK state change; the recovered status is returned and no direct MMIO occurs.
  */
-extern "C" s32 func_ov050_0220d6e8(void *effect, const void *transform)
+extern "C" s32 Overlay050PairedEffect_Update(void *effect, const void *transform)
 {
     s32 remaining;
     s32 frame;
@@ -126,7 +126,7 @@ extern "C" s32 func_ov050_0220d6e8(void *effect, const void *transform)
  * the recovered order. Effect and RNG/SDK animation state change; nothing is
  * returned and no direct MMIO occurs.
  */
-extern "C" void func_ov050_0220d7c4(void *effect, s32 scale)
+extern "C" void Overlay050PairedEffect_ResetMotion(void *effect, s32 scale)
 {
     s32 velocity[4];
     s32 sample = (s32)((genrand_int32() & 1) << 8) - 0x4000;
@@ -148,7 +148,7 @@ extern "C" void *func_ov050_0220d824(void *effect, void *primaryGroup,
                                       const void *resources,
                                       const void *origin)
 {
-    func_ov050_0220d874(effect);
+    Overlay050EffectBase_Init(effect);
     FIELD(s32, effect, 0x10) = 0;
     FIELD(void *, effect, 0x14) = primaryGroup;
     FIELD(void *, effect, 0x18) = secondaryGroup;
@@ -160,13 +160,13 @@ extern "C" void *func_ov050_0220d824(void *effect, void *primaryGroup,
 }
 
 /*
- * Run the base-effect teardown through func_ov050_0220d8b4 and return the
+ * Run the base-effect teardown through Overlay050Effect_Destroy and return the
  * unchanged pointer. Owned effect state changes; storage is not freed.
  */
-extern "C" void *func_ov050_0220d894(void *effect)
+extern "C" void *Overlay050Effect_Delete(void *effect)
 {
     FIELD(void *, effect, 0) = data_ov050_0220e384;
-    func_ov050_0220d8b4(effect);
+    Overlay050Effect_Destroy(effect);
     return effect;
 }
 
@@ -175,7 +175,7 @@ extern "C" void *func_ov050_0220d894(void *effect)
  * freeing that nested allocation through Heap_Free when present. Return the
  * unchanged effect pointer; heap/owned state changes and no MMIO occurs.
  */
-extern "C" void *func_ov050_0220d8b4(void *effect)
+extern "C" void *Overlay050Effect_Destroy(void *effect)
 {
     void *node = FIELD(void *, effect, 4);
 
@@ -192,10 +192,10 @@ extern "C" void *func_ov050_0220d8b4(void *effect)
 
 /*
  * Apply byte-truncated `alpha` to the effect's paired sprites by forwarding to
- * func_ov050_0220d7ac. Sprite/OAM-visible memory changes, nothing is returned,
+ * Overlay050SpritePair_SetAlpha. Sprite/OAM-visible memory changes, nothing is returned,
  * and no direct hardware access occurs.
  */
-extern "C" void func_ov050_0220db40(void *effect, u32 alpha)
+extern "C" void Overlay050Effect_SetAlpha(void *effect, u32 alpha)
 {
     void *node;
 
@@ -203,5 +203,5 @@ extern "C" void func_ov050_0220db40(void *effect, u32 alpha)
         return;
     for (node = FIELD(void *, effect, 4); node != 0;
          node = FIELD(void *, node, 0))
-        func_ov050_0220d7ac(FIELD(void *, node, 8), alpha);
+        Overlay050SpritePair_SetAlpha(FIELD(void *, node, 8), alpha);
 }

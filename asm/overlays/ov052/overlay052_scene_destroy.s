@@ -6,14 +6,14 @@
 .extern data_ov052_0220e200
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_02071d4c
+.extern GraphicsArchive_ReleaseResourceE4
 .extern GraphicsSpriteGroup_Destroy
 .extern gLupyContext
 
-.global func_ov052_0220d884
-func_ov052_0220d884:
+.global Overlay052Scene_Destroy
+Overlay052Scene_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, .L_0220d954
     mov r4, r0
@@ -28,7 +28,7 @@ func_ov052_0220d884:
     ldr r0, .L_0220d958
     ldr r1, [r4, #0xc]
     ldr r0, [r0, #0x0]
-    bl func_02071d4c
+    bl GraphicsArchive_ReleaseResourceE4
     ldr r0, [r4, #0x1c]
     bl GraphicsSpriteGroup_Destroy
     ldr r0, [r4, #0x20]
@@ -46,7 +46,7 @@ func_ov052_0220d884:
     beq .L_0220d900
     mov r1, #0x1
     mov r2, r1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
 .L_0220d900:
     ldr r0, [r4, #0x2c]
     mov r0, r0, lsl #0x10
@@ -76,4 +76,4 @@ func_ov052_0220d884:
 .L_0220d95c: .word data_021052fc
 .L_0220d960: .word gDisplayBrightnessPair
 .L_0220d964: .word gLupyContext
-.size func_ov052_0220d884, . - func_ov052_0220d884
+.size Overlay052Scene_Destroy, . - Overlay052Scene_Destroy

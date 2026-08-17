@@ -9,7 +9,7 @@
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern func_ov073_022100b4
@@ -25,7 +25,7 @@ func_ov073_02210710:
     mov r7, r3
     ldr r6, [sp, #0x48]
     ldr r5, [sp, #0x60]
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_022108e8
     ldrsh r0, [sp, #0x58]
     str r1, [r9, #0x0]

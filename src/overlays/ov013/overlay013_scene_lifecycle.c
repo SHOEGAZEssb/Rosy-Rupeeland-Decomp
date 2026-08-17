@@ -20,13 +20,13 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *);
-extern void func_02071ea4(void *);
+extern void SceneInputBase_Init(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_020957bc(void *);
 extern void func_02091b6c(void *);
-extern void func_0201e14c(void *, s32);
+extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -77,12 +77,12 @@ void *func_ov013_021fce2c(void *state)
     void *selected;
     void *controller;
 
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const void *, state, 0) = data_ov013_021fed6c;
-    func_02071ea4((u8 *)state + 0x54);
-    func_02071ea4((u8 *)state + 0x60);
-    func_02071ea4((u8 *)state + 0x6c);
-    func_02071ea4((u8 *)state + 0x78);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x54);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x60);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x6c);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x78);
     for (i = 0; i < 7; ++i)
         func_020957bc((u8 *)state + 0x8c + i * 0xac);
     for (i = 0; i < 5; ++i)
@@ -91,7 +91,7 @@ void *func_ov013_021fce2c(void *state)
     FIELD(s32, state, 0x978) = 0;
     func_02091b6c((u8 *)state + 0x988);
 
-    func_0201e14c((u8 *)data_021052fc + 0x2f7c, 1);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 1);
     func_02071ee0((u8 *)state + 0x54, data_020f4e18,
                   0x3298, 0x3299, 0x329a);
     func_02071ee0((u8 *)state + 0x60, data_020f4e18,
@@ -154,16 +154,16 @@ void *func_ov013_021fd09c(void *state)
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x84));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x88));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
-    func_0201e14c((u8 *)data_021052fc + 0x2f7c, 0);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 0);
     func_ov013_021fce00((u8 *)state + 0x89c);
     for (i = 4; i >= 0; --i)
         func_ov013_021fce00((u8 *)state + 0x540 + i * 0xac);
     for (i = 6; i >= 0; --i)
         func_ov013_021fce00((u8 *)state + 0x8c + i * 0xac);
-    func_02071eb8((u8 *)state + 0x78);
-    func_02071eb8((u8 *)state + 0x6c);
-    func_02071eb8((u8 *)state + 0x60);
-    func_02071eb8((u8 *)state + 0x54);
+    AnimationResourceState_Destroy((u8 *)state + 0x78);
+    AnimationResourceState_Destroy((u8 *)state + 0x6c);
+    AnimationResourceState_Destroy((u8 *)state + 0x60);
+    AnimationResourceState_Destroy((u8 *)state + 0x54);
     return state;
 }
 

@@ -6,11 +6,11 @@
     .extern data_ov016_02201458
     .extern func_02092260
     .extern func_ov000_021fc714
-    .extern func_ov000_021fcad8
+    .extern Overlay000_GetActiveMetadata
     .extern func_ov016_021fe390
     .extern func_ov016_021fe4d0
     .extern func_ov016_021fe6f4
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
 .global func_ov016_02200e88
 func_ov016_02200e88:
@@ -27,7 +27,7 @@ L_02200ea8:
     cmp r0, #0x1
     ldr r0, [r4, #0x44c]
     bne L_02200f2c
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     mov r1, r0
     ldr r0, [r4, #0x470]
     bl func_ov016_021fe4d0
@@ -37,7 +37,7 @@ L_02200ea8:
     mov r1, #0x2
     bl func_02092260
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     ldr r1, [r0, #0x1c]
     sub r1, r1, #0x1
     str r1, [r0, #0x1c]
@@ -55,10 +55,10 @@ L_02200f10:
     ldr r1, L_02200fd8
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200fc8
 L_02200f2c:
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     mov r2, r0
     ldr r0, [r4, #0x470]
     ldr r1, [r4, #0x468]
@@ -69,7 +69,7 @@ L_02200f2c:
     mov r1, #0x2
     bl func_02092260
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     ldr r2, [r0, #0x1c]
     mov r1, r5, lsl #0x10
     sub r1, r2, r1, lsr #0x10
@@ -88,7 +88,7 @@ L_02200f8c:
     ldr r1, L_02200fdc
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200fc8
 L_02200fa8:
     ldr r0, [r4, #0x470]
@@ -98,7 +98,7 @@ L_02200fa8:
     ldr r1, L_02200fe0
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_02200fc8:
     mov r0, r4
     bl func_ov016_021ff7bc

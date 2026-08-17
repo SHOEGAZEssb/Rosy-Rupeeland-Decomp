@@ -14,13 +14,13 @@ extern const u8 data_ov032_02202340[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02071980(...);
-extern void *func_02092cc0(...);
+extern void *GraphicsArchive_AcquireVfdResource(...);
+extern void *TitleDialog_Init(...);
 extern void func_ov032_021fce08(...);
-extern void func_020939d8(void *);
-extern void func_02071d4c(...);
+extern void TitleDialog_ClearTextRect(void *);
+extern void GraphicsArchive_ReleaseResourceE4(...);
 extern void Sound_Play(...);
-extern void func_02071f38(void *);
+extern void AnimationResourceState_ReleaseResources(void *);
 extern void func_ov032_0220147c(void *);
 extern void func_ov032_02201020(...);
 extern void func_ov032_02201188(...);
@@ -47,11 +47,11 @@ static void destroy_owned(void *object)
  */
 extern "C" void func_ov032_021fe6b0(void *scene)
 {
-    FIELD(void *, scene, 0xc) = func_02071980(data_020f4e18[0], 0x7006);
+    FIELD(void *, scene, 0xc) = GraphicsArchive_AcquireVfdResource(data_020f4e18[0], 0x7006);
 
     void *upper = Heap_Alloc(0xec, (const char *)data_ov032_02202340, 4,
                              &gHeapContext);
-    if (upper != 0) upper = func_02092cc0(upper, data_020f4e14[0], FIELD(void *, scene, 0xc));
+    if (upper != 0) upper = TitleDialog_Init(upper, data_020f4e14[0], FIELD(void *, scene, 0xc));
     FIELD(void *, scene, 0x18) = upper;
     func_ov032_021fce08(upper, 0x40, 0x1a, 0xa0, 0x1e);
     FIELD(s32, upper, 0xb4) = 0;
@@ -61,7 +61,7 @@ extern "C" void func_ov032_021fe6b0(void *scene)
 
     void *lower = Heap_Alloc(0xec, (const char *)data_ov032_02202340, 4,
                              &gHeapContext);
-    if (lower != 0) lower = func_02092cc0(lower, data_020f4e14[0], FIELD(void *, scene, 8));
+    if (lower != 0) lower = TitleDialog_Init(lower, data_020f4e14[0], FIELD(void *, scene, 8));
     FIELD(void *, scene, 0x14) = lower;
     func_ov032_021fce08(lower, 0x5c, 0x98, 0x8c, 0x1e);
     FIELD(s32, lower, 0xb4) = 0;
@@ -78,11 +78,11 @@ extern "C" void func_ov032_021fe6b0(void *scene)
  */
 extern "C" void func_ov032_021fe7d0(void *scene)
 {
-    func_020939d8(FIELD(void *, scene, 0x14));
-    func_020939d8(FIELD(void *, scene, 0x18));
+    TitleDialog_ClearTextRect(FIELD(void *, scene, 0x14));
+    TitleDialog_ClearTextRect(FIELD(void *, scene, 0x18));
     destroy_owned(FIELD(void *, scene, 0x14));
     destroy_owned(FIELD(void *, scene, 0x18));
-    func_02071d4c(data_020f4e18[0], FIELD(void *, scene, 0xc));
+    GraphicsArchive_ReleaseResourceE4(data_020f4e18[0], FIELD(void *, scene, 0xc));
     Sound_Play(gSoundContext, 0x81, 5);
 }
 
@@ -108,7 +108,7 @@ extern "C" void func_ov032_021fe8a0(void *scene)
 {
     for (s32 i = 0; i < 5; ++i) {
         u8 *child = (u8 *)scene + 0xc44 + i * 0x6c;
-        func_02071f38(child + 0xc);
+        AnimationResourceState_ReleaseResources(child + 0xc);
         func_ov032_0220147c(child + 0x18);
     }
 }

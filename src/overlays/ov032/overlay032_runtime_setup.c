@@ -22,13 +22,13 @@ extern void *data_021052fc[];
 extern "C" {
 #endif
 extern void func_02058eb8(...);
-extern void func_020597fc(...);
+extern void Sound_ReleaseGroup(...);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(...);
-extern void func_02071d4c(...);
+extern void GraphicsArchive_ReleaseResourceE4(...);
 extern void GraphicsResourceSet_Init(GraphicsResourceSet *);
 extern void GraphicsResourceSet_Load(...);
 extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_020923a0(void *);
 extern void func_020923a4(void *);
 extern void __destroy_arr(...);
@@ -48,7 +48,7 @@ extern void func_02092688(...);
 extern void func_020b44e8(void);
 extern void func_02070638(...);
 extern void func_020706c4(...);
-extern s32 func_0207042c(void *);
+extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
 extern void func_02070bc4(...);
 extern void func_02070e0c(...);
@@ -56,7 +56,7 @@ extern void func_02070eac(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void func_020afd0c(...);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(...);
-extern void *func_ov032_021fd7e0(void *);
+extern void *Overlay032Child_Destroy(void *);
 extern void func_ov032_021fce00(void *);
 extern void func_ov032_021fd938(void *);
 extern void func_ov032_021fde1c(s32);
@@ -74,7 +74,7 @@ extern "C" void *func_ov032_021fd7f8(void *scene)
     typedef void (*VirtualDestructor)(void *);
 
     func_02058eb8(gSoundContext, 0, 0, 0x14, 0x1e);
-    func_020597fc(gSoundContext, 0x81);
+    Sound_ReleaseGroup(gSoundContext, 0x81);
 
     void *owned = FIELD(void *, scene, 0x10);
     if (owned != 0) {
@@ -84,15 +84,15 @@ extern "C" void *func_ov032_021fd7f8(void *scene)
 
     GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, FIELD(void *, scene, 4));
     GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14[0], FIELD(void *, scene, 0));
-    func_02071d4c(data_020f4e18[0], FIELD(void *, scene, 8));
+    GraphicsArchive_ReleaseResourceE4(data_020f4e18[0], FIELD(void *, scene, 8));
     GraphicsResourceSet_Destroy((GraphicsResourceSet *)((u8 *)scene + 0xf18));
-    __destroy_arr((u8 *)scene + 0xc44, 5, 0x6c, func_ov032_021fd7e0);
+    __destroy_arr((u8 *)scene + 0xc44, 5, 0x6c, Overlay032Child_Destroy);
     func_020923a0((u8 *)scene + 0xbe8);
     GraphicsResourceSet_Destroy((GraphicsResourceSet *)((u8 *)scene + 0xb44));
     __destroy_arr((u8 *)scene + 0x334, 0x28, 0x30, func_ov032_021fce00);
 
     for (s32 offset = 0x58; offset >= 0x1c; offset -= 0xc) {
-        func_02071eb8((u8 *)scene + offset);
+        AnimationResourceState_Destroy((u8 *)scene + offset);
     }
     return scene;
 }
@@ -124,7 +124,7 @@ static void load_text_resources(GraphicsResourceSet *set, u32 tilesId, u32 mapId
     GraphicsResourceSet_Load(set, data_020f4e18[0], tilesId, mapId, paletteId);
     func_020b44e8();
     func_02070638(set->tiles, layer, 0);
-    func_02070b50(set->map, func_0207042c(set->tiles) ? mapBase : 0);
+    func_02070b50(set->map, GraphicsResource_GetFormat(set->tiles) ? mapBase : 0);
     func_02070e0c(set->palette, layer, 0);
     GraphicsResourceSet_ReleaseHandles(set);
 }
@@ -135,7 +135,7 @@ static void load_affine_resources(GraphicsResourceSet *set, u32 tilesId, u32 map
     GraphicsResourceSet_Load(set, data_020f4e18[0], tilesId, mapId, paletteId);
     func_020b44e8();
     func_020706c4(set->tiles, layer, 0);
-    func_02070bc4(set->map, func_0207042c(set->tiles) ? mapBase : 0);
+    func_02070bc4(set->map, GraphicsResource_GetFormat(set->tiles) ? mapBase : 0);
     func_02070eac(set->palette, layer, 0);
     GraphicsResourceSet_ReleaseHandles(set);
 }
@@ -147,7 +147,7 @@ static void load_affine_resources(GraphicsResourceSet *set, u32 tilesId, u32 map
  * that bit; the numeric resource IDs are confirmed, while their asset names are
  * not yet known.
  */
-extern "C" void func_ov032_021fd994(void *scene)
+extern "C" void Overlay032Scene_SetupGraphics(void *scene)
 {
     GraphicsResourceSet set;
     u8 *context = (u8 *)data_021052fc[0];

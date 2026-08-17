@@ -32,7 +32,7 @@ extern void VecFx32Object_Init(void *object);
 extern void VecFx32Object_Destroy(void *object);
 extern void *VecFx32Object_InitCopy(void *destination, const void *source);
 extern void func_ov040_02200118(void *object, const void *position);
-extern void func_02059278(void *sound, s32 parameter, s32 id);
+extern void Sound_PlayDirectSequence(void *sound, s32 parameter, s32 id);
 extern void GraphicsResourceSet_Init(void *set);
 extern void GraphicsResourceSet_Load(void *set, void *archive, s32 first,
                                      s32 second, s32 third);
@@ -40,7 +40,7 @@ extern void GraphicsResourceSet_Destroy(void *set);
 extern void func_020b44e8(void);
 extern void *func_0207043c(void);
 extern void func_020b198c(void *destination, s32 slot, void *source);
-extern void *func_02070874(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void *func_02070888(void *resource);
 extern void func_020b1ff0(void *destination, s32 slot, void *source);
 extern void func_02070eac(void *resource, s32 first, s32 second);
@@ -351,7 +351,7 @@ extern "C" void func_ov040_02202640(void *scene, void *argument)
     func_020b198c(FIELD(void *, (void *)resources[0], 0x24), 0,
                   func_0207043c());
     func_020b44e8();
-    func_020b1ff0(func_02070874((void *)resources[1]), 0,
+    func_020b1ff0(GraphicsBgResourceData_GetDecoded((void *)resources[1]), 0,
                   func_02070888((void *)resources[1]));
     func_020b44e8();
     func_02070eac((void *)resources[2], 0, 0);
@@ -601,7 +601,7 @@ extern "C" void func_ov040_021ff900(void *scene, s32 unused1, s32 unused2,
             if (timer == 0x78) {
                 set_presentation_state(scene, 0x103b, 4, 1, true);
                 FIELD(s32, FIELD(void *, FIELD(void *, scene, 0x48), 0x0c), 0x78) = 7;
-                func_02059278(gSoundContext, 0x32, 0x7f);
+                Sound_PlayDirectSequence(gSoundContext, 0x32, 0x7f);
             } else if (timer > 0x78 && (FIELD(u16, renderer, 0x24) & 1)) {
                 GraphicsSpriteState_SetAnimationIndex(renderer, 5); FIELD(u16, renderer, 0x24) |= 2;
                 FIELD(s32, scene, 0xb7c) = 6; FIELD(s32, scene, 0xb80) = 0;

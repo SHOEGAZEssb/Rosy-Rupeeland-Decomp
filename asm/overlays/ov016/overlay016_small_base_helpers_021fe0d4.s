@@ -4,14 +4,14 @@
 
 /* Exact fallbacks for small base-state helpers; see src/overlays/ov016/overlay016_sprite_wrapper.c. */
     .global func_ov016_021fe0d4
-    .global func_ov016_021fe0d8
+    .global Overlay016SmallBase_Init
     .global func_ov016_021fe0f8
 
 func_ov016_021fe0d4:
     bx lr
 
-    .global func_ov016_021fe0d8
-func_ov016_021fe0d8:
+    .global Overlay016SmallBase_Init
+Overlay016SmallBase_Init:
     ldr r2, L_021fe0f4
     mov r1, #0x0
     str r2, [r0, #0x0]
@@ -32,6 +32,6 @@ func_ov016_021fe0f8:
     ldmia sp!, {r4, pc}
 L_021fe114: .word data_ov016_02201520
 
-    .size func_ov016_021fe0d4, func_ov016_021fe0d8 - func_ov016_021fe0d4
-    .size func_ov016_021fe0d8, func_ov016_021fe0f8 - func_ov016_021fe0d8
+    .size func_ov016_021fe0d4, Overlay016SmallBase_Init - func_ov016_021fe0d4
+    .size Overlay016SmallBase_Init, func_ov016_021fe0f8 - Overlay016SmallBase_Init
     .size func_ov016_021fe0f8, . - func_ov016_021fe0f8

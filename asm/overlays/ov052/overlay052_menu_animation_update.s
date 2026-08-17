@@ -1,14 +1,14 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov052/overlay052_recovery.c.
 .extern data_ov052_0220e240
-.extern func_02092e9c
-.extern func_02093360
-.extern func_02093998
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
+.extern TitleDialog_ResetAfterClose
 .extern func_020939c8
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 
-.global func_ov052_0220e064
-func_ov052_0220e064:
+.global Overlay052Scene_SetMessage
+Overlay052Scene_SetMessage:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x8
     movs r6, r1
@@ -19,7 +19,7 @@ func_ov052_0220e064:
     cmp r0, #0x2
     bne .L_0220e094
     ldr r0, [r5, #0x10]
-    bl func_02093998
+    bl TitleDialog_ResetAfterClose
     b .L_0220e0a4
 .L_0220e094:
     cmp r0, #0x1
@@ -28,14 +28,14 @@ func_ov052_0220e064:
     streqh r0, [r5, #0x4]
 .L_0220e0a4:
     ldr r0, [r5, #0x10]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r5, #0x10]
     mov r1, r6
     mov r2, #0x0
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r5, #0x10]
     ldr r1, .L_0220e148
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]
@@ -58,7 +58,7 @@ func_ov052_0220e064:
     b .L_0220e140
 .L_0220e114:
     ldr r0, [r5, #0x10]
-    bl func_02093998
+    bl TitleDialog_ResetAfterClose
     ldrsh r0, [r5, #0x4]
     cmp r0, #0x2
     moveq r0, #0x1
@@ -72,4 +72,4 @@ func_ov052_0220e064:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
 .L_0220e148: .word data_ov052_0220e240
-.size func_ov052_0220e064, . - func_ov052_0220e064
+.size Overlay052Scene_SetMessage, . - Overlay052Scene_SetMessage

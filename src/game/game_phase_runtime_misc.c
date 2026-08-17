@@ -56,7 +56,7 @@ s32 FrameCounter_Tick31(void *counter)
 }
 
 /* Store value at offset 0x30f8 of the global active runtime; returns no value. */
-void func_02008f58(void *value)
+void GamePhaseRuntime_SetGlobalValue30F8(void *value)
 {
     *(void **)((u8 *)data_021052fc + 0x30f8) = value;
 }

@@ -13,17 +13,17 @@
 .extern GraphicsSpriteState_Create
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_02071980
+.extern GraphicsArchive_AcquireVfdResource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02092cc0
+.extern TitleDialog_Init
 .extern func_ov052_0220d600
 .extern gDebugFont
 .extern gHeapContext
 .extern gLupyContext
 
-.global func_ov052_0220d618
-func_ov052_0220d618:
+.global Overlay052Scene_Init
+Overlay052Scene_Init:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     ldr r3, .L_0220d858
@@ -51,7 +51,7 @@ func_ov052_0220d618:
     ldr r0, .L_0220d85c
     ldr r1, .L_0220d860
     ldr r0, [r0, #0x0]
-    bl func_02071980
+    bl GraphicsArchive_AcquireVfdResource
     str r0, [r4, #0xc]
     ldr r1, .L_0220d864
     ldr r3, .L_0220d868
@@ -63,7 +63,7 @@ func_ov052_0220d618:
     ldr r1, .L_0220d86c
     ldr r2, [r4, #0xc]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 .L_0220d6b8:
     str r0, [r4, #0x10]
     mov r0, #0x50
@@ -182,4 +182,4 @@ func_ov052_0220d618:
 .L_0220d878: .word gDisplayBrightnessPair
 .L_0220d87c: .word gLupyContext
 .L_0220d880: .word data_021052fc
-.size func_ov052_0220d618, . - func_ov052_0220d618
+.size Overlay052Scene_Init, . - Overlay052Scene_Init

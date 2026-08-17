@@ -15,13 +15,13 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void *func_ov027_021fd408(void *, void *, const s32 *, s32);
 extern void PresentationList_Append(void *, void *);
 extern void func_ov027_021fda08(void *, s32, s32);
 extern void func_ov027_021fe1c8(void *);
-extern void func_02059278(void *, s32, s32);
-extern void func_0205929c(void *, s32, s32);
+extern void Sound_PlayDirectSequence(void *, s32, s32);
+extern void Sound_StopDirectSequence(void *, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 #ifdef __cplusplus
@@ -60,7 +60,7 @@ extern "C" void func_ov027_021fe4d4(void *scene)
                                     (u8 *)scene + 0x74);
     void *child = Heap_Alloc(0xbc, data_ov027_021fef4c, 4, gHeapContext);
     if (child) {
-        s32 index = func_020918f4((u8 *)scene + 0x5bc, 58);
+        s32 index = TitleRandom_NextBounded((u8 *)scene + 0x5bc, 58);
         child = func_ov027_021fd408(child, resource,
                                     data_ov027_021feb54 + index * 3,
                                     FIELD(s32, scene, 0x5c0));
@@ -106,7 +106,7 @@ extern "C" s32 func_ov027_021fe5c4(void *scene)
 {
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02059278(gSoundContext, 0xfe, 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, 0xfe, 0x7f);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Fall through to count the setup frame. */
@@ -158,7 +158,7 @@ extern "C" s32 func_ov027_021fe5c4(void *scene)
         break;
     case 6:
         if (func_02091c7c((u8 *)scene + 0x5c4, 2)) {
-            func_0205929c(gSoundContext, 0xfe, 0x1e);
+            Sound_StopDirectSequence(gSoundContext, 0xfe, 0x1e);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }

@@ -15,35 +15,35 @@
     .extern data_ov017_022016a4
     .extern data_ov017_022016ac
     .extern data_ov017_022016e0
-    .extern func_0205974c
+    .extern Sound_LoadGroup
     .extern func_02062a50
-    .extern func_02062b0c
-    .extern func_0206492c
-    .extern func_02064e7c
-    .extern func_0206fc20
-    .extern func_0206fc38
-    .extern func_0206fca0
-    .extern func_0206fd30
-    .extern func_02071ea4
+    .extern ActorDescriptor_GetKind0Value
+    .extern InventoryRecordCollection_FindId
+    .extern InventoryRecordCollection_RemoveQuantity
+    .extern RetailPhaseSelection_Reset
+    .extern RetailPhaseSelection_AddActor
+    .extern RetailPhaseSelection_BuildScaledResult
+    .extern RetailPhaseSelection_SelectMatchingRecord
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsResourceSetVariant_Init
     .extern GraphicsResourceSetVariant_Load
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02075358
+    .extern GraphicsSpriteRenderer_ReleaseExtendedPalette
     .extern Graphics3DResourceOwner_Init
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DResourceOwner_PrepareResources
     .extern Graphics3DLightSet_Init
     .extern Graphics3DSceneState_Init
     .extern Graphics3DRenderObject_Init
-    .extern func_020918f4
-    .extern func_02091e28
+    .extern TitleRandom_NextBounded
+    .extern SceneInputBase_Init
     .extern func_02092364
     .extern func_020923a4
-    .extern func_020926d8
+    .extern TitleScreenResourceCollection_Init
     .extern func_02092754
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern Presentation_SetPosition
     .extern SpritePresentation_Init
@@ -57,19 +57,19 @@
     .extern func_020ae7b0
     .extern func_ov017_021fce00
     .extern func_ov017_021fd744
-    .extern func_ov017_021fd7f8
+    .extern Overlay017Transform_ReplaceResource
     .extern func_ov017_021fe40c
-    .extern func_ov017_021fe75c
+    .extern Overlay017UiSpriteGroup_Init
     .extern func_ov017_021fe9c0
     .extern func_ov017_021fea00
-    .extern func_ov017_021fea08
+    .extern Overlay017Record_SetSecondaryVector
     .extern func_ov017_021fea18
     .extern func_ov017_021fea8c
     .extern func_ov017_021ff150
     .extern func_ov017_021ff58c
     .extern func_ov017_021ff75c
     .extern func_ov017_021ff8a8
-    .extern func_ov017_02200064
+    .extern Overlay017_UpdatePaletteRamp
     .extern genrand_int32
     .extern gHeapContext
     .extern gSoundContext
@@ -82,23 +82,23 @@ func_ov017_021feab4:
     mov r7, r1
     mov r9, r2
     mov r4, r3
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021ff0e4
     add r0, r10, #0x5c
     str r1, [r10, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x68
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x74
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x80
     bl func_020957bc
     add r0, r10, #0x12c
     bl func_020957bc
     add r0, r10, #0x1d8
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x1fc
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     add r0, r10, #0x248
     bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x264
@@ -137,7 +137,7 @@ func_ov017_021feab4:
     str r2, [r1, #0x8]
     str r3, [r10, #0x440]
     ldr r0, [r0, #0x0]
-    bl func_02075358
+    bl GraphicsSpriteRenderer_ReleaseExtendedPalette
     add r0, r10, #0x4
     add r0, r0, #0x400
     bl func_020923a4
@@ -279,7 +279,7 @@ L_021fed74:
     add r0, r10, #0x310
     mov r2, r1
     mov r3, r1
-    bl func_ov017_021fea08
+    bl Overlay017Record_SetSecondaryVector
     mov r3, #0x1000
     rsb r3, r3, #0x0
     str r3, [sp, #0x0]
@@ -303,7 +303,7 @@ L_021fed74:
     sub r3, r2, #0x1800
     bl func_ov017_021fea18
     ldr r0, L_021ff118
-    bl func_0206fc20
+    bl RetailPhaseSelection_Reset
     ldr r0, L_021ff11c
     mov r6, #0x0
     ldr r5, [r0, #0x0]
@@ -322,23 +322,23 @@ L_021fee68:
     mov r7, r1, lsr #0x10
     mov r1, r7
     mov r2, #0x1
-    bl func_0206fc38
+    bl RetailPhaseSelection_AddActor
     mov r0, r5
     mov r1, r7
-    bl func_0206492c
+    bl InventoryRecordCollection_FindId
     mov r4, r0
     ldr r1, [r5, #0x8]
     mov r0, #0x24
     mla r0, r4, r0, r1
-    bl func_02062b0c
+    bl ActorDescriptor_GetKind0Value
     mov r1, r4
     mov r4, r0
     mov r0, r5
     mov r2, r11
-    bl func_02064e7c
+    bl InventoryRecordCollection_RemoveQuantity
     add r0, r10, #0x3fc
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, L_021ff0e8
     mov r8, r0, lsl #0x4
     ldr r2, [r1, #0xc]
@@ -346,7 +346,7 @@ L_021fee68:
     add r0, r10, #0x3fc
     ldr r1, [r1, r2, lsl #0x2]
     sub r1, r1, #0xc
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r3, r8, asr #0x3
     mov r1, r7
     mov r7, r0
@@ -373,10 +373,10 @@ L_021fef2c:
     str r0, [r10, #0x3b8]
     ldr r1, [r10, #0x3c4]
     ldr r0, L_021ff118
-    bl func_0206fca0
+    bl RetailPhaseSelection_BuildScaledResult
     str r0, [r10, #0x3bc]
     ldr r0, L_021ff118
-    bl func_0206fd30
+    bl RetailPhaseSelection_SelectMatchingRecord
     str r0, [r10, #0x258]
     cmp r0, #0x0
     moveq r0, #0xc
@@ -398,21 +398,21 @@ L_021fef2c:
 L_021fefa0:
     str r0, [r10, #0x2cc]
     mov r0, r10
-    bl func_ov017_02200064
+    bl Overlay017_UpdatePaletteRamp
     mov r0, r10
     bl func_ov017_021ff58c
     mov r0, r10
     bl func_ov017_021ff75c
     ldr r1, L_021ff128
     add r0, r10, #0x264
-    bl func_ov017_021fd7f8
+    bl Overlay017Transform_ReplaceResource
     mov r0, #0x400
     str r0, [r10, #0x280]
     str r0, [r10, #0x27c]
     str r0, [r10, #0x278]
     ldr r1, L_021ff12c
     add r0, r10, #0x290
-    bl func_ov017_021fd7f8
+    bl Overlay017Transform_ReplaceResource
     ldr r1, L_021ff130
     ldr r3, L_021ff0fc
     mov r0, #0x58
@@ -433,7 +433,7 @@ L_021ff008:
     beq L_021ff034
     ldr r1, [r10, #0x3c0]
     ldr r2, [r10, #0x3c8]
-    bl func_ov017_021fe75c
+    bl Overlay017UiSpriteGroup_Init
 L_021ff034:
     ldr r1, L_021ff138
     str r0, [r10, #0x25c]
@@ -470,7 +470,7 @@ L_021ff0a8:
     str r0, [r10, #0x2c0]
     ldr r0, [r1, #0x0]
     mov r1, #0x82
-    bl func_0205974c
+    bl Sound_LoadGroup
     ldr r0, [r10, #0x20]
     ldr r1, L_021ff14c
     orr r0, r0, #0x400

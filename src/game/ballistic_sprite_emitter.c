@@ -55,9 +55,9 @@ extern const char gBallisticSpriteEmitterAllocationTag[];
 extern void *gDebugFont;
 extern void *gSoundContext;
 extern u8 *data_021052fc;
-extern void func_0201e250(void *self);
+extern void TimedSpritePresentation_InitBase(void *self);
 extern void func_0201e28c(void *self);
-extern void func_0201ded4(void *list, void *value);
+extern void PresentationList_AppendObject(void *list, void *value);
 extern void VecFx32Object_InitComponents(EmitterVector *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(EmitterVector *destination,
                           const EmitterVector *source);
@@ -103,7 +103,7 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
     SpriteResourceDescriptor temporary;
     s32 index;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)data_020d6718;
     VecFx32Object_InitCopy(&self->position08, position);
     AnimationResource_Init(&self->resources18[0], 0, 0, 0);
@@ -284,7 +284,7 @@ void func_02023ed4(s32 x, s32 y, s32 remaining, s32 direction)
     if (emitter != 0) {
         emitter = func_02023a8c(emitter, &position, remaining, direction);
     }
-    func_0201ded4(data_021052fc + 0x2f7c, emitter);
+    PresentationList_AppendObject(data_021052fc + 0x2f7c, emitter);
     VecFx32Object_Destroy(&position);
 }
 

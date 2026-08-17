@@ -1,12 +1,12 @@
     .text
     .extern data_021e9ac0
     .extern data_021f3ecc
-    .extern func_020628c8
-    .extern func_020651a4
+    .extern ActorDescriptor_GetPrimaryLabel
+    .extern ActorDescriptorState_FindInactiveQuantity
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_02079f3c
+    .extern RetailTextTable_FindRecordById
     .extern func_02092960
     .extern gSystemState
 
@@ -59,7 +59,7 @@ L_021fd444:
     movs r0, r0, lsr #0x10
     movne r5, #0x5
     add r0, r9, #0x4
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     stmia sp, {r5, r8}
     add r5, r10, #0x1
     mov r3, #0x18
@@ -81,7 +81,7 @@ L_021fd444:
     movne r5, #0x3
     ldr r0, [r0, #0x0]
     add r0, r0, #0x1c
-    bl func_020651a4
+    bl ActorDescriptorState_FindInactiveQuantity
     mov r4, r0
     mov r0, #0x18
     mul r0, r10, r0
@@ -106,7 +106,7 @@ L_021fd444:
 L_021fd558:
     ldr r0, L_021fd5b4
     mov r1, #0x188
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r1, #0x4

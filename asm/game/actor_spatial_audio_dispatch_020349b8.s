@@ -4,7 +4,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern func_020593ac
 .extern func_020adae4
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern gSoundContext
 
     .global func_020349b8
@@ -38,7 +38,7 @@ func_020349b8: ; 0x020349b8
     movgt r6, #0x60
 .L_02034a20:
     mov r0, r6
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r1, #0x3
     bl func_020adae4
     str r6, [sp, #0x0]

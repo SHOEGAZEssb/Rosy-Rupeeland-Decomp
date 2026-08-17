@@ -34,8 +34,8 @@ typedef struct Overlay000Controller {
 extern "C" {
 #endif
 extern void *data_ov000_021fcd30;
-extern void func_020683f4(void *cell);
-extern void func_02071eb8(void *resource);
+extern void InventoryCell_Destroy(void *cell);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void func_020927b8(void *state);
 extern void func_020c0c24(void *array, s32 elementSize, s32 alignment,
@@ -59,7 +59,7 @@ Overlay000GridState *func_ov000_021fc0d8(Overlay000GridState *state)
     Overlay000Controller *controller;
 
     state->vtable_000 = &data_ov000_021fcd30;
-    func_020c0c24(state->cells_250, 0x20, 8, func_020683f4);
+    func_020c0c24(state->cells_250, 0x20, 8, InventoryCell_Destroy);
     controller = (Overlay000Controller *)state->controller_26c;
     if (controller != 0) {
         controller->vtable->destroy_04(controller);
@@ -70,7 +70,7 @@ Overlay000GridState *func_ov000_021fc0d8(Overlay000GridState *state)
     func_ov000_021fbcc0(state->element_17c);
     func_ov000_021fbcc0(state->element_0d0);
     func_ov000_021fbcc0(state->element_024);
-    func_02071eb8(state->resource_010);
+    AnimationResourceState_Destroy(state->resource_010);
     Heap_Free(state);
     return state;
 }

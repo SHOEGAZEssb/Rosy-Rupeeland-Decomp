@@ -41,10 +41,10 @@ extern void __construct_array(void *, s32, s32, void *, void *);
 extern void __destroy_arr(void *, s32, s32, void *);
 extern u32 genrand_int32(void);
 extern void GameWork_ClearFlag(void *, s32);
-extern void func_0205974c(void *, s32);
-extern void func_020597fc(void *, s32);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void Sound_LoadGroup(void *, s32);
+extern void Sound_ReleaseGroup(void *, s32);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -53,13 +53,13 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_02091b6c(void *);
-extern void func_02091e28(void *);
-extern void *func_02092cc0(void *, void *, void *);
+extern void SceneInputBase_Init(void *);
+extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
-extern void func_020926d8(void *);
+extern void TitleScreenResourceCollection_Init(void *);
 extern void func_020926f8(void *);
 extern void func_02092754(void *, s32);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void func_020929b0(void *);
@@ -104,15 +104,15 @@ extern void func_ov094_022196a4(void *);
  */
 extern "C" void *func_ov025_021ff27c(void *scene)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov025_02203370;
-    func_02071ea4((u8 *)scene + 0x5c);
-    func_02071ea4((u8 *)scene + 0x68);
-    func_02071ea4((u8 *)scene + 0x74);
-    func_02071ea4((u8 *)scene + 0x80);
-    func_02071ea4((u8 *)scene + 0x8c);
-    func_02071ea4((u8 *)scene + 0x98);
-    func_02071ea4((u8 *)scene + 0xa4);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x5c);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x68);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x74);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x80);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x8c);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x98);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0xa4);
     func_020957bc((u8 *)scene + 0xf0);
     func_020957bc((u8 *)scene + 0x19c);
     func_020957bc((u8 *)scene + 0x248);
@@ -120,8 +120,8 @@ extern "C" void *func_ov025_021ff27c(void *scene)
                       (void *)func_020957bc,
                       (void *)func_ov025_021ff1c8);
     func_ov025_021ff1dc((u8 *)scene + 0x4f8);
-    func_020926d8((u8 *)scene + 0x530);
-    func_02092798((u8 *)scene + 0x574);
+    TitleScreenResourceCollection_Init((u8 *)scene + 0x530);
+    TitleCharacterResourceCollection_Init((u8 *)scene + 0x574);
     func_020929b0((u8 *)scene + 0x5a0);
     func_02091b6c((u8 *)scene + 0x5c4);
     func_02091b6c((u8 *)scene + 0x5e0);
@@ -240,7 +240,7 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     if (overlay94) overlay94 = func_ov094_02219568(overlay94, 0xd8, 0xd8);
     FIELD(void *, scene, 0x5c0) = overlay94;
     void *dialog = Heap_Alloc(0xec, data_ov025_022033a4, 4, gHeapContext);
-    if (dialog) dialog = func_02092cc0(dialog, gDebugFont,
+    if (dialog) dialog = TitleDialog_Init(dialog, gDebugFont,
                                       FIELD(void *, scene, 0x57c));
     FIELD(void *, scene, 0x50c) = dialog;
     func_ov025_021ff23c(FIELD(void *, scene, 0x50c),
@@ -255,7 +255,7 @@ extern "C" void *func_ov025_021ff27c(void *scene)
     FIELD(void *, scene, 0x59c) = 0;
     GameWork_ClearFlag(gGameWork, 0x3d3);
     GameWork_ClearFlag(gGameWork, 0x3d6);
-    func_0205974c(gSoundContext, 0x16f);
+    Sound_LoadGroup(gSoundContext, 0x16f);
     FIELD(u32, scene, 0x20) |= 0x400;
     func_ov025_021ff254(scene,
         *(const TransitionPair *)data_ov025_02202ea8);

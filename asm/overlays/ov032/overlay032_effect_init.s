@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_unlock_effect.c for documented portable C. */
 .extern func_020bf1f8
-.extern func_ov032_02201450
+.extern Overlay032Controller_CreateObject
 .extern genrand_int32
 
     .global func_ov032_022001c0
@@ -46,7 +46,7 @@ L_02200238:
     ldr r1, [r7, #0x0]
     add r0, r4, r6
     add r2, r7, #0x4c
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     add r6, r7, r6
     ldr r1, [r6, #0x334]
     ldrh r0, [r1, #0x24]

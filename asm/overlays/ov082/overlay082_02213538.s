@@ -12,16 +12,16 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_0201e0ec
 .extern func_02022cb0
 .extern func_02032228
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern ActorDerivedType1_StartRecord
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
-.extern func_020a2894
+.extern EffectManager_SubmitPointEffect
 .extern func_020adc90
 .extern func_ov082_0221391c
 .extern func_ov082_02213974
@@ -218,7 +218,7 @@ func_ov082_02213538:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
 .L_02213804:
     ldrh r2, [r5, #0x4e]
     ldr r1, .L_02213910
@@ -272,7 +272,7 @@ func_ov082_02213538:
     ldr r2, [sp, #0x2c]
     ldr r3, [sp, #0x30]
     mov r1, #0x1
-    bl func_020a2894
+    bl EffectManager_SubmitPointEffect
     add r0, sp, #0x28
     bl VecFx32Object_Destroy
     add r0, sp, #0x38
@@ -281,7 +281,7 @@ func_ov082_02213538:
     mov r0, r5
     mov r1, r4
     mov r2, r11
-    bl func_02032a94
+    bl ActorContactState_AddContact
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022138f8: .word gActorRuntimeCollection

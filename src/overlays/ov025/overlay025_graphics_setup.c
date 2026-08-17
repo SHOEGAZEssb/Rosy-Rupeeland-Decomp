@@ -15,7 +15,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Apply(void *, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void func_020706c4(void *, s32, s32);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02070f80(void *, s32);
 extern void func_02072048(void *, s32, s32);
@@ -74,7 +74,7 @@ extern "C" void func_ov025_021ffdfc(void *scene)
     func_020b44e8();
     func_020706c4(set[0], 2, 0);
     func_02070eac(set[2], 2, 0);
-    func_020b1ff0((u8 *)func_02070874(set[1]) + 0xa0, 0, 0x20);
+    func_020b1ff0((u8 *)GraphicsBgResourceData_GetDecoded(set[1]) + 0xa0, 0, 0x20);
     u8 *font = (u8 *)GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
     FIELD(u16, font, 6) = FIELD(u16, font, 0x1c);
     FIELD(u16, font, 8) = 0x31f;

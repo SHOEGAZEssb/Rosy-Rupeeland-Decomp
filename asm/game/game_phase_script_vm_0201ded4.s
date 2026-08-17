@@ -16,11 +16,11 @@
 .extern gRuntimePresentationAuxiliaryAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global func_0201ded4
-func_0201ded4: ; 0x0201ded4
+.global PresentationList_AppendObject
+PresentationList_AppendObject: ; 0x0201ded4
     ldr ip, L_0201dedc
     bx ip
 L_0201dedc: .word func_0201dee0
 
 
-.size func_0201ded4, . - func_0201ded4
+.size PresentationList_AppendObject, . - PresentationList_AppendObject

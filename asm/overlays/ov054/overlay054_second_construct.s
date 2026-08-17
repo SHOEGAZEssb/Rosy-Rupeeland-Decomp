@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern data_ov054_0220f108
 .extern VecFx32Object_Init
-.extern func_0201e250
-.extern func_02071ea4
+.extern TimedSpritePresentation_InitBase
+.extern AnimationResourceState_InitEmbedded
 .extern gGameWork
 .extern genrand_int32
 
@@ -12,14 +12,14 @@ func_ov054_0220ec6c:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_0220ed04
     add r0, r4, #0x8
     str r1, [r4, #0x0]
     bl VecFx32Object_Init
     add r0, r4, #0x24
     str r5, [r4, #0x18]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x30
     bl VecFx32Object_Init
     add r0, r4, #0x40

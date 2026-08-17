@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
-.extern func_02094574
+.extern InventoryScroll_UpdatePresentation
 .extern func_020958d8
 .extern func_ov045_0220c18c
 
@@ -27,13 +27,13 @@ L_021fe7b4:
     cmp r0, #0x0
     beq L_021fe7c8
     ldr r0, [r0, #0x38]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
 L_021fe7c8:
     ldr r0, [r5, #0x478]
     cmp r0, #0x0
     beq L_021fe7dc
     ldr r0, [r0, #0x48]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
 L_021fe7dc:
     mov r4, #0x0
 L_021fe7e0:

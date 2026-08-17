@@ -10,7 +10,7 @@ extern const char data_020df4a4[];
 extern "C" {
 #endif
 extern void func_0206e590(void *resource, s32 value);
-extern void func_0206c978(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -39,7 +39,7 @@ void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *self)
         func_0206e590(resource, 0);
         resource = *(void **)(actor + 0x26c);
         if (resource != 0) {
-            func_0206c978(resource);
+            AuxiliaryInteraction_Destroy(resource);
             Heap_Free(resource);
         }
         *(void **)(actor + 0x26c) = 0;

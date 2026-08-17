@@ -4,7 +4,7 @@
     .extern Presentation_InterpolateLinear
     .extern PresentationScalar_SetImmediate
     .extern func_020adc90
-    .extern func_ov017_021fd3f0
+    .extern Overlay017_WaitForSquareRoot
     .extern func_ov017_021fda64
     .extern func_ov017_021fe0b4
     .extern func_ov017_021fe160
@@ -154,7 +154,7 @@ L_021fdfdc:
     str r0, [r1, #0x8]
     mov r0, r0, asr #0x1f
     str r0, [r1, #0xc]
-    bl func_ov017_021fd3f0
+    bl Overlay017_WaitForSquareRoot
     mov r1, r0
     cmp r1, #0x0
     ble L_021fe078

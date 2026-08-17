@@ -22,9 +22,9 @@
 .extern GamePhaseState_TryStartBoundaryTransition
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_Update
-.extern func_0201dcec
+.extern RuntimePresentationManager_Update
 .extern func_02027654
-.extern func_02027f94
+.extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_020338e4
 .extern Actor_TrySpawnTerrainGateObject
 .extern Type7Actor_ClearTarget
@@ -119,7 +119,7 @@ L_02007508:
     beq L_02007540
     mov r1, #0x3
     mov r2, #0x0
-    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
+    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, Overlay065Particle_Init, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
 L_02007540:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
@@ -149,7 +149,7 @@ L_02007548:
     bl GameWork_TestFlag
     cmp r0, #0x0
     bne L_020075b4
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027654
 L_020075b4:
     add r0, r4, #0xf0
@@ -241,7 +241,7 @@ L_020076a0:
     add r0, r4, #0x37c
     add r0, r0, #0x2c00
     mov r1, #0x1
-    bl func_0201dcec
+    bl RuntimePresentationManager_Update
     ldr r1, [r4, #0x4]
     mov r0, r4
     mov r2, #0x3
@@ -285,7 +285,7 @@ L_0200776c:
     beq L_020077a4
     mov r1, #0x3
     mov r2, #0x0
-    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
+    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, Overlay065Particle_Init, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
 L_020077a4:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

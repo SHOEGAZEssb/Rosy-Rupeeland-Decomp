@@ -4,12 +4,12 @@
 .extern data_020f4e18
 .extern data_ov031_021fe758
 .extern data_ov031_021fe788
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02091e28
+.extern SceneInputBase_Init
 .extern Presentation_InitVariant
 .extern Presentation_SetPosition
 .extern SpritePresentation_Init
@@ -26,11 +26,11 @@ func_ov031_021fd258:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fd494
     add r0, r4, #0x5c
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xb4
     bl Presentation_InitVariant
     mov r0, #0x0

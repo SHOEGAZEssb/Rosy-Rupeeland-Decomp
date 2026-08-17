@@ -26,11 +26,11 @@ extern "C" {
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void *data_020f4e18;
-extern void *func_02071ea4(void *state);
+extern void *AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *archive, u32 characterId,
                           u32 paletteId, u32 screenId);
-extern void *func_02071eb8(void *state);
-extern void func_02071f38(void *state);
+extern void *AnimationResourceState_Destroy(void *state);
+extern void AnimationResourceState_ReleaseResources(void *state);
 extern void *func_02073ffc(void *group, const void *source, s32 attach);
 extern void GraphicsSpriteState_SetAnimationIndex(void *state, s32 index);
 extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
@@ -52,7 +52,7 @@ ActorAuxiliaryCollisionResource *func_020570c4(
     ActorAuxiliaryCollisionResource *self, void *group)
 {
     self->group = group;
-    func_02071ea4(&self->resources);
+    AnimationResourceState_InitEmbedded(&self->resources);
     VecFx32Object_Init(&self->position);
     self->flags = (self->flags & ~0x1fu) | 1u;
     self->field28 = 0;
@@ -72,9 +72,9 @@ ActorAuxiliaryCollisionResource *func_02057184(
     ActorAuxiliaryCollisionResource *self)
 {
     GraphicsSpriteGroup_ReleaseState(self->group, self->sprite);
-    func_02071f38(&self->resources);
+    AnimationResourceState_ReleaseResources(&self->resources);
     VecFx32Object_Destroy(&self->position);
-    func_02071eb8(&self->resources);
+    AnimationResourceState_Destroy(&self->resources);
     return self;
 }
 

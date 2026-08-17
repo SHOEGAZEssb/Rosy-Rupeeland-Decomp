@@ -16,7 +16,7 @@ extern void *data_020f4e18;
 extern void func_02071e90(void *state);
 extern void func_02071ee0(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
-extern void func_02071f38(void *state);
+extern void AnimationResourceState_ReleaseResources(void *state);
 extern void func_02071ecc(void *state);
 
 #ifdef __cplusplus
@@ -45,7 +45,7 @@ AnimationResource *AnimationResource_Init(AnimationResource *self, void *resourc
 AnimationResource *AnimationResource_Destroy(AnimationResource *self)
 {
     self->vtable = &gAnimationResourceVTable;
-    func_02071f38(&self->entries[0]);
+    AnimationResourceState_ReleaseResources(&self->entries[0]);
     func_02071ecc(&self->entries[0]);
     return self;
 }
@@ -57,7 +57,7 @@ AnimationResource *AnimationResource_Destroy(AnimationResource *self)
 AnimationResource *AnimationResource_DestroyAndFree(AnimationResource *self)
 {
     self->vtable = &gAnimationResourceVTable;
-    func_02071f38(&self->entries[0]);
+    AnimationResourceState_ReleaseResources(&self->entries[0]);
     func_02071ecc(&self->entries[0]);
     Heap_Free(self);
     return self;
@@ -75,7 +75,7 @@ void AnimationResource_RebindFrom(AnimationResource *self,
     void *resource1 = source->entries[1]->payload10;
     void *resource2 = source->entries[2]->payload10;
 
-    func_02071f38(&self->entries[0]);
+    AnimationResourceState_ReleaseResources(&self->entries[0]);
     func_02071ee0(&self->entries[0], data_020f4e18, resource0, resource1,
                   resource2);
 }

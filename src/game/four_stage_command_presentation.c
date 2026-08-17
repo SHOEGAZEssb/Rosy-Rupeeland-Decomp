@@ -22,7 +22,7 @@ typedef struct FourStageCommandPresentation {
 extern "C" {
 #endif
 extern void *gFourStageCommandPresentationVtable;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void DualLayerTileRenderer_FillTileRectangle(void *context, s32 mode, s32 argument08,
                           s32 argument0c, s32 argument10, s32 argument14,
@@ -40,7 +40,7 @@ FourStageCommandPresentation *FourStageCommandPresentation_Init(
     FourStageCommandPresentation *self, void *context,
     s32 argument08, s32 argument0c, s32 argument10, s32 argument14)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)gFourStageCommandPresentationVtable;
     self->argument08 = argument08;
     self->argument0c = argument0c;

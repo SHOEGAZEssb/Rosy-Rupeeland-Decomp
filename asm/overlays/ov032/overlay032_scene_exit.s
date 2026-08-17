@@ -10,7 +10,7 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern func_0205958c
 .extern func_020595ec
-.extern func_ov032_021fde38
+.extern Overlay032Scene_ShutdownGraphics
 .extern gGameWork
 .extern gSoundContext
 
@@ -62,7 +62,7 @@ L_021fee18:
     cmp r0, #0x0
     beq L_021fee8c
     mov r0, r4
-    bl func_ov032_021fde38
+    bl Overlay032Scene_ShutdownGraphics
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]

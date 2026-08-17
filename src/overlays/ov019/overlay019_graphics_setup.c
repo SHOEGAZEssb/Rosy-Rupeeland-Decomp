@@ -22,12 +22,12 @@ extern void func_020925f8(void);
 extern void func_02092618(void);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_02092688(s32, s32, s32, s32);
-extern void func_020926d8(void *);
+extern void TitleScreenResourceCollection_Init(void *);
 extern void func_020926f8(void *);
 extern void func_02092754(void *, s32);
-extern void *func_02092790(void *, s32);
-extern void func_02092850(s32);
-extern void func_0209285c(s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
+extern void TitlePalette_SetMainBackdrop(s32);
+extern void TitlePalette_SetSubBackdrop(s32);
 extern void func_020aea7c(s32);
 extern void func_020b44e8(void);
 extern void func_ov019_021fd154(s32);
@@ -45,13 +45,13 @@ extern void func_ov019_021fd154(s32);
  * both temporary resource objects and return void. Graphics/SDK state changes;
  * POWCNT1 and main/sub BG control MMIO are directly modified.
  */
-extern "C" void func_ov019_021fcfbc(void *state)
+extern "C" void Overlay019_SetupGraphics(void *state)
 {
     u8 resources[12];
     u8 manager[0x44];
 
     GraphicsResourceSet_Init(resources);
-    func_020926d8(manager);
+    TitleScreenResourceCollection_Init(manager);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xa06d, 0xa06e, 0xa06f);
     func_02092754(manager, 0xa070);
@@ -67,8 +67,8 @@ extern "C" void func_ov019_021fcfbc(void *state)
         func_020925f8();
         func_02092638(0, 1, 2, 3);
         func_02072048(resources, 0, 0);
-        func_02070e0c(func_02092790(manager, 0), 1, 0);
-        func_02092850(0);
+        func_02070e0c(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
+        TitlePalette_SetMainBackdrop(0);
     } else {
         volatile u16 *background = (volatile u16 *)0x04001008;
         func_ov019_021fd154(1);
@@ -80,8 +80,8 @@ extern "C" void func_ov019_021fcfbc(void *state)
         func_02092618();
         func_02092688(0, 1, 2, 3);
         GraphicsResourceSet_Apply(resources, 0, 0);
-        func_02070eac(func_02092790(manager, 0), 1, 0);
-        func_0209285c(0);
+        func_02070eac(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
+        TitlePalette_SetSubBackdrop(0);
     }
     func_020926f8(manager);
     GraphicsResourceSet_Destroy(resources);

@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_final_update.c for portable C. */
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02059278
+    .extern Sound_PlayDirectSequence
     .extern VecFx32Object_Assign
     .extern func_020befec
     .extern GXx_SetMasterBrightness_
@@ -40,7 +40,7 @@ func_ov039_022074b0:
     bic r3, r3, #0x2
     strh r3, [r4, #0x24]
     ldr r0, [r0, #0x0]
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldrsh r0, [r5, #0xbc]
     add r0, r0, #0x1
     strh r0, [r5, #0xbc]

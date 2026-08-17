@@ -5,7 +5,7 @@
 .extern data_ov027_021fef44
 .extern GraphicsAnimationInstanceManager_Update
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationScalar_SetImmediate
 .extern PresentationList_Append
 .extern PresentationList_UpdateAndDeleteCompleted
@@ -85,7 +85,7 @@ L_021fe244:
     str r0, [r9, #0xac]
     add r0, r5, #0x400
     mov r1, #0x1e
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r0, [r9, #0xa8]
     tst r8, #0x1
     beq L_021fe2f4

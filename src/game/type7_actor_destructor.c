@@ -15,7 +15,7 @@ extern void *gGameWork;
 extern "C" {
 #endif
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 enabled);
-extern void func_0206c978(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Type7MarkerPresentation_Destroy(void *helper);
 extern void VecFx32Object_Destroy(void *value);
@@ -28,7 +28,7 @@ extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
  * Restore vtable data_020e1c38. If world object *data_021052fc+0x2ea4 is
  * nonnull, pass it with zero to ActorDerivedType1_SetSpecialModeEnabled. Remove
  * self from the first matching gType7ActorRegistry slot. If owned pointer +0x234
- * exists, release it via func_0206c978 and Heap_Free. Clear GameWork flag
+ * exists, release it via AuxiliaryInteraction_Destroy and Heap_Free. Clear GameWork flag
  * 0x3fd. For actor layer byte
  * +0x48 equal to one, write terminal state into data_020e16b0: +0x268 bit
  * 0x10000 selects +0x2b4=-1, +0x2b8=0, +0x2d0=0; otherwise copy +0x1fc to
@@ -57,7 +57,7 @@ void *Type7Actor_Destroy(void *self)
     }
     resource = *(void **)(actor + 0x234);
     if (resource != 0) {
-        func_0206c978(resource);
+        AuxiliaryInteraction_Destroy(resource);
         Heap_Free(resource);
     }
     GameWork_ClearFlag(gGameWork, 0x3fd);

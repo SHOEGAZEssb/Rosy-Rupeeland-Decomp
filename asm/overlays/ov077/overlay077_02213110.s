@@ -6,7 +6,7 @@
 .extern data_ov077_022172f4
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern func_020541d4
-.extern func_0206899c
+.extern ActorExtendedType2Record_FindByIndex
 .extern func_020befec
 .extern func_ov077_02212ae0
 .extern gGameWork
@@ -154,7 +154,7 @@ func_ov077_02213110:
     ldr r1, .L_02213384
     mul r0, r2, r0
     ldrsh r0, [r1, r0]
-    bl func_0206899c
+    bl ActorExtendedType2Record_FindByIndex
     add r6, sp, #0x0
     mov ip, r0
     mov r5, #0x4

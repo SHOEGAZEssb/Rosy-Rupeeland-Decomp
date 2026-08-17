@@ -29,14 +29,14 @@ extern void *data_021055dc;
 extern void *gGameWork;
 extern u8 gSystemState[];
 extern const s16 data_020c36c4[];
-extern void *func_0201e250(void *);
+extern void *TimedSpritePresentation_InitBase(void *);
 extern void *func_0201e28c(void *);
 extern void Presentation_InitVariant(void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern u32 genrand_int32(void);
-extern s32 func_020918f4(u32 *, s32);
+extern s32 TitleRandom_NextBounded(u32 *, s32);
 extern s32 func_0209189c(u32 *, s32, s32);
 extern void func_02092418(void *);
 extern void func_020afd0c(volatile void *, s32, s32, s32, s32);
@@ -68,7 +68,7 @@ DualArrayBlendPresentation *DualArrayBlendPresentation_Init(
     DualArrayBlendPresentation *self, s32 engine)
 {
     s32 i;
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)gDualArrayBlendPresentationVtable;
     for (i = 0; i < 3; i++) {
         Presentation_InitVariant(&self->first20[i]);
@@ -198,13 +198,13 @@ void DualArrayBlendPresentation_RetargetCompletedRandomly(
     for (i = 0; i < 3; i++) {
         if (((ElementMethod)(*(void ***)(&self->first20[i]))[2])(&self->first20[i])) {
             PresentationScalar_TransitionTo(self->first20[i].bytes + 0x0c, 2,
-                          func_020918f4(&self->random3c8, 16) << 12);
+                          TitleRandom_NextBounded(&self->random3c8, 16) << 12);
             BlendElement_StartDuration(&self->first20[i],
                           func_0209189c(&self->random3c8, 60, 120));
         }
         if (((ElementMethod)(*(void ***)(&self->second1f4[i]))[2])(&self->second1f4[i])) {
             PresentationScalar_TransitionTo(self->second1f4[i].bytes + 0x0c, 2,
-                          (0x100 - func_020918f4(&self->random3c8, 16)) << 12);
+                          (0x100 - TitleRandom_NextBounded(&self->random3c8, 16)) << 12);
             BlendElement_StartDuration(&self->second1f4[i],
                           func_0209189c(&self->random3c8, 60, 120));
         }

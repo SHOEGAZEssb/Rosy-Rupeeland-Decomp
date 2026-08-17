@@ -45,7 +45,7 @@ extern const s16 data_020c9670[];
 extern OrbitTimedSprite *func_0201e6e4(OrbitTimedSprite *self, u8 *owner,
                                        u8 *config, s32 spriteValue);
 extern OrbitTimedSprite *func_0201e380(OrbitTimedSprite *self);
-extern void func_0201e3b8(OrbitTimedSprite *self, s32 enabled);
+extern void TimedSpritePresentation_SetVisible(OrbitTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Add(PresentationTrack *first,
                           PresentationTrack *second);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
@@ -113,13 +113,13 @@ OrbitTimedSprite *func_0201ea7c(OrbitTimedSprite *self)
  * of owner bounds 0x68, call vtable slot 5 with owner position 0x18, advance
  * both tracks, add angleStep3a to the wrapping angle, and return zero.
  */
-s32 func_0201ea98(OrbitTimedSprite *self)
+s32 OrbitTimedSprite_Update(OrbitTimedSprite *self)
 {
     BoundsCenter center;
 
     self->remaining28--;
     if (self->remaining28 < 0) {
-        func_0201e3b8(self, 0);
+        TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
     S16BoundsCenter_Init(&center, self->owner2c + 0x68);

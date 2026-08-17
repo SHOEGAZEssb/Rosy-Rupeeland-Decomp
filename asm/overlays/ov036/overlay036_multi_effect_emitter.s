@@ -5,7 +5,7 @@
     .extern func_ov036_021fd28c
     .extern func_0209189c
     .extern func_ov036_021ff778
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern Heap_Alloc
     .extern func_ov036_021fd2a4
     .extern Presentation_SetPosition
@@ -55,7 +55,7 @@ func_ov036_021ff7cc:
 L_021ff858:
     add r0, r9, #0xc0
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r4, r0, lsl #0x4
     add r0, r9, #0xc0
     mov r1, #0x600
@@ -130,7 +130,7 @@ L_021ff96c:
     bl Presentation_SetPosition
     add r0, r9, #0xc0
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r1, r0, lsl #0x4
     add r0, r8, #0x5c
     bl PresentationScalar_SetImmediate

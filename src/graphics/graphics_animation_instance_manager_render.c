@@ -14,7 +14,7 @@
 extern "C" {
 #endif
 
-extern void func_02076db0(GraphicsAnimationInstance *instance,
+extern void GraphicsAnimationInstance_Render(GraphicsAnimationInstance *instance,
                           void *renderContext);
 
 #ifndef MATCHING
@@ -51,7 +51,7 @@ extern void TingleNativeG3_End(void);
  * patched and synchronously submitted. Flags control matrix load, mirroring,
  * polygon attributes, position testing, and post-submit resets exactly as in
  * retail. Position-test results update instance fields +0x3C/+0x40. */
-void func_02076db0(GraphicsAnimationInstance *instance, void *render_context)
+void GraphicsAnimationInstance_Render(GraphicsAnimationInstance *instance, void *render_context)
 {
     u8 *resource = (u8 *)instance->resource;
     u8 *sequence_table = *(u8 **)(resource + 0x24);
@@ -215,7 +215,7 @@ void GraphicsAnimationInstanceManager_Render(GraphicsAnimationInstanceManager *m
             Graphics3DResourceOwner_DestroyAnimationInstance((struct Graphics3DResourceOwner *)manager->owner,
                            instance);
         } else if ((flags & 0x0c) == 0) {
-            func_02076db0(instance, renderContext);
+            GraphicsAnimationInstance_Render(instance, renderContext);
         }
         instance = next;
     }
@@ -271,7 +271,7 @@ animation_manager_render_visible:
     bne animation_manager_render_next
     mov r0, r4
     mov r1, r6
-    bl func_02076db0
+    bl GraphicsAnimationInstance_Render
 animation_manager_render_next:
     mov r4, r5
 animation_manager_render_check:

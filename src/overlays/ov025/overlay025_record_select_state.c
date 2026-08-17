@@ -26,7 +26,7 @@ extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
-extern s32 func_02092910(void *, void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_ov025_021fd9e4(void *, s32);
 extern s32 func_ov025_021fdc4c(void *);
@@ -47,7 +47,7 @@ extern void func_ov025_02200824(void *, s32);
  * the three rows and three +0x2F4 action controllers, and either update the
  * selected row or dispatch a callback pair. State 2 waits for a chosen action;
  * states 10/11 animate a repeated row selection and branch by record status.
- * Shared base update func_02091fb0 supplies scene flag bit 5 for an active
+ * Shared base update SceneInputBase_Update supplies scene flag bit 5 for an active
  * stylus/touch sample before the row/controller hit tests. Touch/input,
  * controller, row-owner, audio/UI, and scene state may change. Scene
  * maintenance always runs and the function returns zero.
@@ -70,7 +70,7 @@ extern "C" s32 func_ov025_02200fe4(void *scene)
         s32 handled = 0;
         for (s32 i = 0; i < 3; ++i) {
             void *row = FIELD(void *, (u8 *)scene + i * 4, 0xe4);
-            if (!func_02092910(FIELD(void *, row, 0x10),
+            if (!GraphicsSpriteState_TestTouchPoint(FIELD(void *, row, 0x10),
                                (u8 *)scene + 0x30))
                 continue;
             handled = 1;

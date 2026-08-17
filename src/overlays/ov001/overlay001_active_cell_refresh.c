@@ -19,8 +19,8 @@ typedef struct Overlay001ActiveCellRefreshState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u8 *func_02062e00(void *cell);
-extern void func_02062874(void *cell, s32 index);
+extern u8 *InventoryRecord_GetMetadata(void *cell);
+extern void ActorDescriptor_SetQuantity(void *cell, s32 index);
 extern void func_ov001_021fc460(Overlay001ActiveCellRefreshState *state,
                                 s32 index);
 extern void func_ov001_021fc404(Overlay001ActiveCellRefreshState *state,
@@ -32,8 +32,8 @@ extern void func_ov001_021fc068(Overlay001ActiveCellRefreshState *state);
 
 /*
  * Resolve the active metadata record and inspect its linked cell. Continue
- * only when func_02062e00(cell)[2] is one and the cell halfword at +4 is
- * nonzero. Apply func_02062874(cell, 0), retire any transient by setting its
+ * only when InventoryRecord_GetMetadata(cell)[2] is one and the cell halfword at +4 is
+ * nonzero. Apply ActorDescriptor_SetQuantity(cell, 0), retire any transient by setting its
  * +0x32 halfword to 0x0100, reset and clear the active metadata binding,
  * refresh the grid, then attach metadata+0x10 as the new transient. Returns no
  * value; the callees and direct writes mutate presentation and cell state.
@@ -47,10 +47,10 @@ void func_ov001_021fc7f4(Overlay001ActiveCellRefreshState *state)
         (u8 *)state->metadata_20c + state->activeIndex_1ac * 0x20;
     void *cell = FIELD(void *, metadata, 0x0c);
 
-    if (func_02062e00(cell)[2] != 1 || FIELD(u16, cell, 0x04) == 0) {
+    if (InventoryRecord_GetMetadata(cell)[2] != 1 || FIELD(u16, cell, 0x04) == 0) {
         return;
     }
-    func_02062874(cell, 0);
+    ActorDescriptor_SetQuantity(cell, 0);
     if (state->transient_01c != 0) {
         FIELD(u16, state->transient_01c, 0x32) = 0x100;
         state->transient_01c = 0;

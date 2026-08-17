@@ -42,7 +42,7 @@ extern ActorSpawnDescriptor data_ov378_022342c8[];
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov378_02233c60(void)
+void Overlay378_RegisterCategory2Actors(void)
 {
     ActorDescriptorBatch_RegisterAndSpawnCategory2(
         data_ov378_022342c0, 3, data_ov378_022342c8);

@@ -24,7 +24,7 @@ extern void DualLayerTileRenderer_ActivateLayers(void *, s32);
 extern void func_020b44e8(void);
 extern void func_02070638(void *, s32, s32);
 extern void func_02070e0c(void *, s32, s32);
-extern u8 *func_02070874(void *);
+extern u8 *GraphicsBgResourceData_GetDecoded(void *);
 void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *);
 #ifdef __cplusplus
 }
@@ -94,7 +94,7 @@ void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *self)
     func_020b44e8();
     func_02070638(set.resource0, 0, 0);
     func_02070e0c(set.resource2, 0, 0);
-    PaletteBuffer_Write(&gMainBgPaletteBuffer, func_02070874(set.resource1) + 0x180,
+    PaletteBuffer_Write(&gMainBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1) + 0x180,
                         0x180, 0x80);
     GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);

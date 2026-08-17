@@ -3,12 +3,12 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_child_setup.c for documented portable C. */
 .extern data_020f4e18
 .extern func_02071ee0
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern func_ov032_021fe0c4
-.extern func_ov032_02201450
+.extern Overlay032Controller_CreateObject
 .extern func_ov032_0220147c
 .extern func_ov032_022014c0
-.extern func_ov032_0220150c
+.extern Overlay032Controller_SetScaleTarget
 
     .global func_ov032_02201020
 func_ov032_02201020:
@@ -19,7 +19,7 @@ func_ov032_02201020:
     mov r7, r1
     mov r4, r2
     mov r5, r3
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     add r0, r6, #0x18
     bl func_ov032_0220147c
     ldr r0, [sp, #0x28]
@@ -78,7 +78,7 @@ L_022010a8:
     add r0, r6, #0x18
     str r1, [r6, #0x54]
     ldr r1, [r6, #0x8]
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     ldr r1, [r6, #0x54]
     mov r0, #0x3
     str r1, [sp, #0x0]
@@ -100,11 +100,11 @@ L_022010a8:
     add r0, r6, #0x18
     bne L_02201174
     mov r1, #0x100
-    bl func_ov032_0220150c
+    bl Overlay032Controller_SetScaleTarget
     b L_0220117c
 L_02201174:
     mov r1, #0x80
-    bl func_ov032_0220150c
+    bl Overlay032Controller_SetScaleTarget
 L_0220117c:
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, pc}

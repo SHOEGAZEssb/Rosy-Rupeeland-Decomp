@@ -8,12 +8,12 @@
 .extern data_ov046_0220cf3c
 .extern data_ov046_0220cf44
 .extern func_02027fe8
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02091e28
+.extern SceneInputBase_Init
 .extern func_ov046_0220b740
 .extern func_ov046_0220b77c
 .extern func_ov046_0220b7bc
@@ -27,11 +27,11 @@ func_ov046_0220c7d8:
     sub sp, sp, #0xc
     mov r5, r0
     mov r4, r1
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, .L_0220ca0c
     add r0, r5, #0x54
     str r1, [r5, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     str r4, [r5, #0x68]
     mvn r0, #0x0
     str r0, [r5, #0x6c]

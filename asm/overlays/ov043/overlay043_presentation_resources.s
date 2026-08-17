@@ -4,7 +4,7 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_020957f0
 .extern GraphicsSpriteGroup_Destroy
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern func_020958d8
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern data_020f4e18
@@ -76,12 +76,12 @@ func_ov043_0220bcf4:
     str r1, [r4, #0x284]
     add r0, r4, #0x80
     str r1, [r4, #0x12c]
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     ldmia sp!, {r4, pc}
 .size func_ov043_0220bcf4, . - func_ov043_0220bcf4
 
-    .global func_ov043_0220bd24
-func_ov043_0220bd24:
+    .global Overlay043_UpdatePresentationResources
+Overlay043_UpdatePresentationResources:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x13c
@@ -95,5 +95,5 @@ func_ov043_0220bd24:
     ldmeqia sp!, {r4, pc}
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
-.size func_ov043_0220bd24, . - func_ov043_0220bd24
+.size Overlay043_UpdatePresentationResources, . - Overlay043_UpdatePresentationResources
 

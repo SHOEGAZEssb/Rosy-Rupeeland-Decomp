@@ -29,11 +29,11 @@ extern void *data_021052fc;
 extern void *gLupyContext;
 extern void *gDebugFont;
 extern void func_02092c8c(s32 screen, s32 brightness);
-extern s32 func_02091fb0(void *object, s32 mode);
+extern s32 SceneInputBase_Update(void *object, s32 mode);
 extern void GamePhaseAreaScene_SetEnabled(void *object, s32 value);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
 extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 first, s32 second);
-extern void func_02008570(void *runtime, s32 first, s32 second);
+extern void GamePhaseRuntime_ApplyScreenMode(void *runtime, s32 first, s32 second);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
 extern void GamePhaseRuntime_UpdateActorPresentationState(void *runtime, s32 mode);
 extern OverlayTransitionObject *func_ov029_021fd95c(
@@ -142,18 +142,18 @@ s32 func_0201d358(OverlayTransitionScene *self)
         self->state40++;
         break;
     case 2:
-        func_02091fb0(self->object24, 0);
+        SceneInputBase_Update(self->object24, 0);
         if (DisplayBrightness_IsSubTransitionComplete() != 0)
             self->state40++;
         break;
     case 3:
-        if (func_02091fb0(self->object24, 1) != 0) {
+        if (SceneInputBase_Update(self->object24, 1) != 0) {
             func_02092c8c(2, -16);
             self->state40++;
         }
         break;
     case 4:
-        func_02091fb0(self->object24, 0);
+        SceneInputBase_Update(self->object24, 0);
         if (DisplayBrightness_IsSubTransitionComplete() == 0)
             break;
         if (self->object24 != 0)
@@ -163,7 +163,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         runtimeObject = *(void **)((u8 *)runtime + 0x2fb8);
         if (runtimeObject != 0) {
-            func_02008570(runtime, 1, 1);
+            GamePhaseRuntime_ApplyScreenMode(runtime, 1, 1);
             GamePhaseRuntime_SetPlacementMode(runtime, 1, 1);
         }
         if (self->restoreLupy28 != 0)

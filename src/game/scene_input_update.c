@@ -65,7 +65,7 @@ extern void ActorQuery_CopyCoordinates(TouchPointValue *destination,
                                        const TouchPointValue *source);
 
 /* Sample touch state, update one-frame events, and dispatch the scene update. */
-s32 func_02091fb0(SceneInputBase *scene, s32 active)
+s32 SceneInputBase_Update(SceneInputBase *scene, s32 active)
 {
     TouchPointValue point;
     s32 touching;

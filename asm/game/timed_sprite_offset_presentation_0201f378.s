@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e584
 .extern TimedSpriteConfig_InitTracks
 .extern TimedSpriteOffsetPresentation_CreateSprite
@@ -23,7 +23,7 @@ TimedSpriteOffsetPresentation_Init: ; 0x0201f378
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_0201f3e4
     ldr r1, [sp, #0x28]
     str r0, [r7, #0x0]

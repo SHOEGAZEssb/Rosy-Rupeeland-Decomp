@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern func_0201e290
 .extern func_0201e380
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern func_020ae024
@@ -21,7 +21,7 @@ func_0201e500: ; 0x0201e500
     str r1, [r5, #0x28]
     bpl L_0201e530
     mov r1, #0x0
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     mov r0, #0x1
     b L_0201e57c
 L_0201e530:

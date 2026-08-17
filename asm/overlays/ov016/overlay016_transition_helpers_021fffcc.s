@@ -4,7 +4,7 @@
     .extern data_ov016_022013d0
     .extern func_02092260
     .extern func_ov016_021fd628
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
 .global func_ov016_021fffcc
 func_ov016_021fffcc:
     stmdb sp!, {r3, r4, r5, lr}
@@ -50,7 +50,7 @@ L_02200054:
     str r0, [r5, #0x468]
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     ldmia sp!, {r3, r4, r5, pc}
 L_02200078: .word data_ov016_022013d0
     .size func_ov016_021fffcc, . - func_ov016_021fffcc

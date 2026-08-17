@@ -14,7 +14,7 @@
 .extern func_02008378
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_0201e0ec
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02022cb0
@@ -24,13 +24,13 @@
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern Type1Actor_TryEnterFailureState
 .extern Actor_UpdateGroundContactProbe
-.extern func_02058d40
-.extern func_02059278
+.extern Sound_StopAllDirectSequences
+.extern Sound_PlayDirectSequence
 .extern func_0205958c
 .extern func_020a28e0
 .extern func_020ada8c
 .extern func_020adae4
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern gGameWork
 .extern gHeapContext
 .extern gLupyContext
@@ -141,7 +141,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     ldr r0, [r7, #0x27c]
     ldrh r2, [r0, #0x1a]
     cmp r2, #0x0
@@ -268,7 +268,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     str r1, [r7, #0x10]
     ldr r0, [r0, #0x0]
     mov r1, #0x14
-    bl func_02058d40
+    bl Sound_StopAllDirectSequences
     ldr r0, .L_02037a6c
     mov r1, #0x14
     ldr r0, [r0, #0x0]
@@ -277,7 +277,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     mov r1, #0x39
     ldr r0, [r0, #0x0]
     mov r2, #0x78
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     b .L_020376a8
 .L_02037674:
     ldr r1, [r7, #0x230]
@@ -507,7 +507,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     add r4, r1, r0
     mov r0, r4
     str r4, [r7, #0x8c]
-    bl func_020be334
+    bl SignedAbsoluteValue
     ldr r1, .L_02037a90
     cmp r0, r1
     ble .L_020379f0

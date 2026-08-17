@@ -17,7 +17,7 @@ extern void *data_021052fc;
 
 extern void func_02004fe0(void *vector);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
 extern void __construct_array(void *array, u32 count, u32 element_size,
                               void (*constructor)(void *),
@@ -33,7 +33,7 @@ extern u32 func_0207043c(const void *resource);
 extern u32 func_02070474(const void *resource);
 extern u32 func_020704c8(const void *resource);
 extern u32 func_02070580(const void *resource);
-extern void *func_02070874(const void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(const void *resource);
 extern u32 func_02070888(const void *resource);
 extern void func_020b44e8(void);
 extern void func_020b239c(void);
@@ -77,7 +77,7 @@ static void ReleaseResource(void *resource)
 
 /* Exact scalar queries at 0x0207042C, 0x0207043C, 0x02070474, 0x020704C8,
  * 0x02070580, 0x02070874 and 0x02070888. */
-u32 func_0207042c(const void *resource)
+u32 GraphicsResource_GetFormat(const void *resource)
 {
     return *(const u32 *)((const u8 *)resource + 0x28) & 0xf;
 }
@@ -155,7 +155,7 @@ void func_0209a5fc(void *object, u32 slot, u32 texture_id, u32 palette_id)
                   func_0207043c(texture));
     func_020b21c8();
     func_020b2180();
-    func_020b210c(func_02070874(palette), palette_offset,
+    func_020b210c(GraphicsBgResourceData_GetDecoded(palette), palette_offset,
                   func_02070888(palette));
     func_020b20b4();
 
@@ -374,7 +374,7 @@ void func_0209b7a0(void *object, const void *position)
 /* Finish a presentation frame. A nonzero argument requests a geometry-buffer
  * swap through the DS command register; all calls clear the per-frame guard so
  * the next update can install a new position. */
-void func_0209b7cc(void *object, s32 swap_buffers)
+void Graphics3dPresentation_FinishFrame(void *object, s32 swap_buffers)
 {
     if (swap_buffers != 0)
         *(volatile u32 *)0x04000540 = 1;
@@ -508,7 +508,7 @@ void *func_020a1f80(void *object, s32 mode)
     bytes[0x50a] = 1;
     func_0200500c(vector, 0, 0x1800, -0x5800);
     func_020050a4(bytes + 0x4ec, vector);
-    func_02005058(vector);
+    VecFx32_TerminateNoOp(vector);
     *(u32 *)(bytes + 0x4fc) = 0;
     *(u32 *)(bytes + 0x500) = 0;
     return object;
@@ -520,8 +520,8 @@ void *func_0209a484(void *object)
 {
     u8 *bytes = (u8 *)object;
     *(u32 *)bytes = 0;
-    func_02005058(bytes + 0x1c);
-    func_02005058(bytes + 0x0c);
+    VecFx32_TerminateNoOp(bytes + 0x1c);
+    VecFx32_TerminateNoOp(bytes + 0x0c);
     return object;
 }
 
@@ -537,6 +537,6 @@ void *func_020a2b28(void *object)
 {
     u8 *bytes = (u8 *)object;
     func_020c0bc8(bytes + 0x1c, 15, 0x0c, TouchPoint_Destroy);
-    func_02005058(bytes + 0x0c);
+    VecFx32_TerminateNoOp(bytes + 0x0c);
     return object;
 }

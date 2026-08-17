@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/area_info_panel_presentation.c.
 .text
 .extern data_020f4e18
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02092798
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 
     .global func_02027fe8
@@ -17,9 +17,9 @@ func_02027fe8: ; 0x02027fe8
     sub sp, sp, #0xc
     mov r5, r0
     mov r4, r1
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r5, #0x24
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r0, r4
     str r4, [r5, #0x30]
     bl GraphicsSpriteGroupOwner_CreateGroup

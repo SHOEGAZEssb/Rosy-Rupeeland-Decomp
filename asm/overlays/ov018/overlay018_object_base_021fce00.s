@@ -4,8 +4,8 @@
     .extern data_020f4e18
     .extern data_ov018_021ffd00
     .extern data_ov018_021ffd20
-    .extern func_02071ea4
-    .extern func_02071eb8
+    .extern AnimationResourceState_InitEmbedded
+    .extern AnimationResourceState_Destroy
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -25,7 +25,7 @@ func_ov018_021fce00:
     ldr r1, L_021fcea8
     add r0, r5, #0xa0
     str r1, [r5, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldrh r2, [r4, #0x8]
     add r0, r5, #0xa0
     ldr r1, L_021fceac
@@ -65,7 +65,7 @@ func_ov018_021fceb0:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xa0
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl SpritePresentation_Destroy
     mov r0, r4
@@ -77,7 +77,7 @@ func_ov018_021fced0:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0xa0
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl SpritePresentation_Destroy
     mov r0, r4

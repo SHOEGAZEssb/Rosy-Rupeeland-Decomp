@@ -21,7 +21,7 @@ extern "C" s32 func_020ae024(s32 x, s32 y);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index);
 extern "C" void func_020a1ec0(void *owner, u32 effect);
 extern "C" void func_020a1f04(void *owner, u32 sequence);
-extern "C" void func_0205929c(void *sound, s32 sequence, s32 value);
+extern "C" void Sound_StopDirectSequence(void *sound, s32 sequence, s32 value);
 extern "C" void func_0205943c(void *sound, s32 sequence, s32 parameter,
                                s32 value, s32 arg0, s32 arg1);
 extern "C" void func_020a1794(void *owner, const void *position,
@@ -258,9 +258,9 @@ extern "C" void func_ov042_02205d80(void *scene)
         FIELD(s32, scene, 0x238) = FIELD(s32, scene, 0x230);
         FIELD(s32, scene, 0x234) = 1;
         FIELD(s32, scene, 0x22c) = 0;
-        func_0205929c(gSoundContext, 0xa4, 0);
-        func_0205929c(gSoundContext, 0xa5, 0);
-        func_0205929c(gSoundContext, 0xcd, 0);
+        Sound_StopDirectSequence(gSoundContext, 0xa4, 0);
+        Sound_StopDirectSequence(gSoundContext, 0xa5, 0);
+        Sound_StopDirectSequence(gSoundContext, 0xcd, 0);
     }
     if (FIELD(s32, scene, 0x234)) {
         s32 tick = ++FIELD(s32, scene, 0x234);
@@ -276,9 +276,9 @@ extern "C" void func_ov042_02205d80(void *scene)
         }
         if (tick >= 240) {
             FIELD(s32, scene, 0x234) = 0;
-            func_0205929c(gSoundContext, 0xa4, 0);
-            func_0205929c(gSoundContext, 0xa5, 0);
-            func_0205929c(gSoundContext, 0xcd, 0);
+            Sound_StopDirectSequence(gSoundContext, 0xa4, 0);
+            Sound_StopDirectSequence(gSoundContext, 0xa5, 0);
+            Sound_StopDirectSequence(gSoundContext, 0xcd, 0);
         }
     }
 
@@ -287,7 +287,7 @@ extern "C" void func_ov042_02205d80(void *scene)
     for (s32 i = 0; i < 4; ++i)
         active += FIELD(s32, FIELD(void *, scene, 0x8c + i * 4), 0x74) == 2;
     if (active == 0 && (FIELD(u32, scene, 0x1ec) & 1)) {
-        func_0205929c(gSoundContext, 0xea, 0);
+        Sound_StopDirectSequence(gSoundContext, 0xea, 0);
         FIELD(u32, scene, 0x1ec) &= ~1;
     } else if (active > 0 && !(FIELD(u32, scene, 0x1ec) & 1)) {
         func_020a1f04(FIELD(void *, scene, 0x48), 0xea);
@@ -295,7 +295,7 @@ extern "C" void func_ov042_02205d80(void *scene)
     }
     active = FIELD(s32, FIELD(void *, scene, 0x9c), 0x74) == 2;
     if (!active && (FIELD(u32, scene, 0x1ec) & 2)) {
-        func_0205929c(gSoundContext, 0xf0, 0);
+        Sound_StopDirectSequence(gSoundContext, 0xf0, 0);
         FIELD(u32, scene, 0x1ec) &= ~2;
     } else if (active && !(FIELD(u32, scene, 0x1ec) & 2)) {
         func_020a1f04(FIELD(void *, scene, 0x48), 0xf0);

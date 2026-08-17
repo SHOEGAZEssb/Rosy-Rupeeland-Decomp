@@ -1,14 +1,14 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov051/overlay051_shared_recovery.c.
 .extern data_ov051_0220df70
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_020ad250
 
 .global func_ov051_0220d600
 func_ov051_0220d600:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_0220d654
     mov r6, #0x0
     str r0, [r7, #0x0]

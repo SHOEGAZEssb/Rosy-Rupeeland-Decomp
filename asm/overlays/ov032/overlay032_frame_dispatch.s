@@ -4,7 +4,7 @@
 .extern TouchPanelManager_GetPoint
 .extern GamePhaseCurrencyHud_Update
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_ov032_021fe024
+.extern Overlay032_UpdatePromptBlink
 .extern gLupyContext
 .extern gPadState1
 .extern gTouchPanelManager
@@ -67,7 +67,7 @@ L_021fdfb8:
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_Update
     mov r0, r4
-    bl func_ov032_021fe024
+    bl Overlay032_UpdatePromptBlink
 L_021fe00c:
     mov r0, r5
     add sp, sp, #0xc

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_effect_recovery.c.
 .extern VecFx32Object_InitCopy
-.extern func_ov050_0220d874
+.extern Overlay050EffectBase_Init
 
 .global func_ov050_0220d824
 func_ov050_0220d824:
@@ -10,7 +10,7 @@ func_ov050_0220d824:
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_ov050_0220d874
+    bl Overlay050EffectBase_Init
     mov r0, #0x0
     str r0, [r7, #0x10]
     str r6, [r7, #0x14]

@@ -15,7 +15,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void func_02070638(void *, s32, s32);
 extern void func_020706c4(void *, s32, s32);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
@@ -80,7 +80,7 @@ extern "C" void func_ov029_021fd578(void *state)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xc006, 0xc007, 0xc008);
     func_020b44e8();
-    void *palette = (u8 *)func_02070874(FIELD(void *, state, 0xe8)) + 0x20;
+    void *palette = (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0xe8)) + 0x20;
     FIELD(void *, state, 0xd4) = palette;
     FIELD(void *, state, 0xd8) = palette;
     FIELD(s32, state, 0xdc) = 0x10;

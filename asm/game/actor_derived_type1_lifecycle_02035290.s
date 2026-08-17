@@ -7,7 +7,7 @@
 .extern func_02031488
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Type7MarkerPresentation_Destroy
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern gGameWork
 
     .global ActorDerivedType1_DestroyAndFree
@@ -22,7 +22,7 @@ ActorDerivedType1_DestroyAndFree: ; 0x02035290
     beq .L_020352d0
     beq .L_020352c0
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_020352c0:

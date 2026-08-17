@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_020f4e18
 .extern data_ov094_02219e80
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern PresentationScalar_SetImmediate
@@ -24,7 +24,7 @@ func_ov094_02217ec8:
     str r1, [r6, #0x0]
     mov r1, #0x0
     str r1, [r6, #0xac]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldr r0, [sp, #0x20]
     str r0, [r6, #0xa0]
     bl genrand_int32

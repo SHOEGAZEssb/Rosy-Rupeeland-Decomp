@@ -7,8 +7,8 @@ typedef struct TitleCharacterResourceCollection {
 } TitleCharacterResourceCollection;
 
 extern void *data_020f4e18;
-extern void func_02071d4c(void *archive, void *resource);
-extern void *func_02071980(void *archive, u32 resourceId);
+extern void GraphicsArchive_ReleaseResourceE4(void *archive, void *resource);
+extern void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resourceId);
 
 /* Release every live character resource and reset the collection. */
 void func_020927cc(TitleCharacterResourceCollection *collection)
@@ -16,7 +16,7 @@ void func_020927cc(TitleCharacterResourceCollection *collection)
     s32 index;
 
     for (index = 0; index < collection->count; ++index) {
-        func_02071d4c(data_020f4e18, collection->entries[index]);
+        GraphicsArchive_ReleaseResourceE4(data_020f4e18, collection->entries[index]);
         collection->entries[index] = 0;
     }
     collection->count = 0;
@@ -29,6 +29,6 @@ void func_02092814(TitleCharacterResourceCollection *collection,
     if (collection->count >= 8)
         return;
     collection->entries[collection->count] =
-        func_02071980(data_020f4e18, resourceId);
+        GraphicsArchive_AcquireVfdResource(data_020f4e18, resourceId);
     ++collection->count;
 }

@@ -42,8 +42,8 @@ typedef struct ResourceFileManager {
 extern u8 data_021f4090[];
 extern u8 data_021f5138[];
 extern void OS_Halt(void);
-extern u32 func_02078d54(void *manager, u16 identifier);
-void *func_02078e98(ResourceFileManager *manager, u32 identifier);
+extern u32 LanguageDatabase_GetRecordLength(void *manager, u16 identifier);
+void *LanguageResourceManager_FindById(ResourceFileManager *manager, u32 identifier);
 
 typedef struct DescriptorMessageRecord {
     u16 identifier;
@@ -80,7 +80,7 @@ u32 LanguageLookup_GetResourceSize(const LookupIndexPrefix *table, s32 identifie
     for (recordIndex = table->starts[group];
          recordIndex < table->count; ++recordIndex) {
         if (records[recordIndex].identifier == identifier) {
-            return func_02078d54(data_021f4090,
+            return LanguageDatabase_GetRecordLength(data_021f4090,
                                  records[recordIndex].resource);
         }
     }
@@ -93,7 +93,7 @@ const void *RecordMessageTable_GetGroupMessage(const void *table, s32 group, s32
     const u8 *record = (const u8 *)table + group * 0x9c +
                        index * 4 + 0x1d0;
 
-    return func_02078e98((ResourceFileManager *)data_021f4090,
+    return LanguageResourceManager_FindById((ResourceFileManager *)data_021f4090,
                          *(const u16 *)record);
 }
 
@@ -124,7 +124,7 @@ const void *DescriptorMessageTable_GetMessage(const void *table_pointer, s32 ide
     identifier = (u16)identifier;
     for (index = 0; index < count; ++index) {
         if (records[index].identifier == identifier) {
-            return func_02078e98((ResourceFileManager *)data_021f4090,
+            return LanguageResourceManager_FindById((ResourceFileManager *)data_021f4090,
                                  records[index].resources[slot]);
         }
     }
@@ -195,7 +195,7 @@ s32 func_02078f3c(ResourceFileManager *manager, s32 recordIndex)
 
 /* Resolves an identifier through the five-way record index, returning cached
  * data on success or the confirmed retail missing/empty fallback pointers. */
-void *func_02078e98(ResourceFileManager *manager, u32 identifier)
+void *LanguageResourceManager_FindById(ResourceFileManager *manager, u32 identifier)
 {
     s32 group = 0;
     s32 recordIndex;
@@ -247,7 +247,7 @@ void *func_020791e0(const LookupIndexPrefix *table, s32 identifier)
     for (recordIndex = table->starts[group];
          recordIndex < table->count; ++recordIndex) {
         if (records[recordIndex].identifier == identifier) {
-            return func_02078e98((ResourceFileManager *)data_021f4090,
+            return LanguageResourceManager_FindById((ResourceFileManager *)data_021f4090,
                                  records[recordIndex].resource);
         }
     }

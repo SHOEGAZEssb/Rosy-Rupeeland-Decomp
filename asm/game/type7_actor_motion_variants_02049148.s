@@ -12,7 +12,7 @@
 .extern Type7Actor_AdjustDestinationForCollisions
 .extern func_020ada8c
 .extern func_020adcac
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern genrand_int32
     .text
     .global Type7Actor_UpdateRandomOffsetMotion
@@ -244,7 +244,7 @@ Type7Actor_UpdateRelatedTargetMotion: ; 0x020493f8
     mov r0, r4
     bl Actor_GetCachedTerrainHeight
     sub r0, r6, r0
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     cmp r0, #0x20000
     blt .L_020494a0
     mov r0, r5

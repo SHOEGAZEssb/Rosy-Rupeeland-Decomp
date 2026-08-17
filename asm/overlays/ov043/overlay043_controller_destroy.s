@@ -3,7 +3,7 @@
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern OverlaySlot_Destroy
 .extern func_ov043_0220b740
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern func_020927b8
 .extern Heap_Free
 .extern data_ov043_0220c4bc
@@ -48,7 +48,7 @@ func_ov043_0220b864:
     add r0, r4, #0x90
     bl func_ov043_0220b740
     add r0, r4, #0x80
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x5c
     bl func_020927b8
     mov r0, r4
@@ -96,7 +96,7 @@ func_ov043_0220b90c:
     add r0, r4, #0x90
     bl func_ov043_0220b740
     add r0, r4, #0x80
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x5c
     bl func_020927b8
     mov r0, r4

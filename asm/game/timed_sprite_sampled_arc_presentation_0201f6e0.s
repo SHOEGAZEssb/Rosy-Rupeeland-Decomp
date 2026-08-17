@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201edd0
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext

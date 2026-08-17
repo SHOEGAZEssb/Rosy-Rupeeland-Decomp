@@ -11,7 +11,7 @@
     .extern GraphicsSpriteRenderer_MeasureText
     .extern GraphicsSpriteCanvas_FillRect
     .extern func_020791e0
-    .extern func_02092790
+    .extern TitleScreenResourceCollection_Get
     .extern func_02095f8c
     .extern gHeapContext
 .global func_ov016_021ff9f8
@@ -85,7 +85,7 @@ L_021ffa50:
     bl GraphicsSpriteRenderer_DrawText
     add r0, r5, #0x84
     mov r1, #0x4
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c

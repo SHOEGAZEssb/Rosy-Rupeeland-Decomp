@@ -6,8 +6,8 @@
  * transfer queue used by later frame-building and upload paths.
  */
 
-extern void func_02070860(void *resource);
-extern void *func_02070874(void *resource);
+extern void GraphicsSpriteResource_Prepare(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern u32 GX_VBlankIntr(u32 enabled);
 
 typedef struct GraphicsSpriteStatePoolPrefix {
@@ -67,7 +67,7 @@ GraphicsSpriteRenderer *GraphicsSpriteRenderer_Init(GraphicsSpriteRenderer *rend
  * queue borrows source buffers until VBlank consumption. IRQ state is restored
  * after each resource, byte destinations are derived from chain indices, and
  * field_34 records completion. Repeated calls or disabled renderers are inert. */
-void func_02075290(GraphicsSpriteRenderer *renderer)
+void GraphicsSpriteRenderer_QueuePendingBlocks(GraphicsSpriteRenderer *renderer)
 {
     GraphicsIndexedChainEntry *root;
 
@@ -83,14 +83,14 @@ void func_02075290(GraphicsSpriteRenderer *renderer)
         u32 index;
 
         if (*(void **)(resource + 0x14) == 0)
-            func_02070860(resource);
+            GraphicsSpriteResource_Prepare(resource);
         interrupt_state = GX_VBlankIntr(0);
         gGraphicsSpriteStatePool.interrupt_state = interrupt_state;
         count = *(u16 *)(*(u8 **)(resource + 0x20) + 6);
         for (index = 0; index < count; ++index) {
             GraphicsTransferQueue_Enqueue(
                 &renderer->transferQueue, 3,
-                (u8 *)func_02070874(resource) + index * 0x200,
+                (u8 *)GraphicsBgResourceData_GetDecoded(resource) + index * 0x200,
                 (u32)entry->index << 9, 0x200);
             entry = entry->chainNext;
         }

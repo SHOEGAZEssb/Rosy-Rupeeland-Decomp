@@ -1,12 +1,12 @@
 .text
 .extern GameWork_TestFlag
 .extern GameWork_ClearFlag
-.extern func_02062c00
+.extern InventoryRecord_HasStatusBit1
 .extern Heap_Alloc
 .extern func_ov044_0220b740
 .extern func_ov044_0220b944
-.extern func_02093d7c
-.extern func_02093d50
+.extern InventoryScroll_SetFirstVisibleRow
+.extern InventoryScroll_SetSelectedRow
 .extern func_ov044_0220ba40
 .extern func_ov044_0220b9c8
 .extern gGameWork
@@ -47,7 +47,7 @@ func_ov044_0220c440:
     mul r9, r8, r0
     ldr r0, [r4, #0x20]
     add r0, r0, r9
-    bl func_02062c00
+    bl InventoryRecord_HasStatusBit1
     cmp r0, #0x0
     beq .L_0220c4e0
     cmp r5, #0x0
@@ -88,7 +88,7 @@ func_ov044_0220c440:
     mla r9, r8, r5, r0
     mov r0, r9
     str r6, [r9, #0x20]
-    bl func_02062c00
+    bl InventoryRecord_HasStatusBit1
     cmp r0, #0x0
     ldr r0, [r10, #0x228]
     mov r1, r9
@@ -107,11 +107,11 @@ func_ov044_0220c440:
     ldr r0, [r10, #0x228]
     ldr r1, [r10, #0x230]
     ldr r0, [r0, #0x44]
-    bl func_02093d7c
+    bl InventoryScroll_SetFirstVisibleRow
     ldr r0, [r10, #0x228]
     ldr r1, [r10, #0x234]
     ldr r0, [r0, #0x44]
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     ldr r0, [r10, #0x228]
     bl func_ov044_0220ba40
     ldr r0, [r10, #0x228]

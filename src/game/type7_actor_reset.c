@@ -16,7 +16,7 @@ extern void Type7Actor_ResetInteractionState(void *actor);
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
 extern void func_0206e590(void *resource, s32 mode);
-extern void func_0206c978(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void Heap_Free(void *allocation);
 extern void GraphicsSpriteState_SetAnimationIndex(void *object, u32 value);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
@@ -78,7 +78,7 @@ void Type7Actor_ResetInteractionState(void *self)
     resource = *(void **)(actor + 0x234);
     if (resource != 0) {
         func_0206e590(resource, 0);
-        func_0206c978(resource);
+        AuxiliaryInteraction_Destroy(resource);
         Heap_Free(resource);
         *(void **)(actor + 0x234) = 0;
         GameWork_ClearFlag(gGameWork, 0x3fd);

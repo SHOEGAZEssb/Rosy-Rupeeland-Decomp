@@ -15,14 +15,14 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *);
-extern void func_02071ea4(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_ov031_021fce00(void *, s32, s32);
 extern u32 genrand_int32(void);
 extern void func_02092814(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void *func_02092cc0(void *, void *, void *);
+extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_ov031_021fd91c(void *, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -62,11 +62,11 @@ extern "C" void func_ov031_021fd934(void *record, s32 x, s32 y)
  */
 extern "C" void *func_ov031_021fd95c(void *scene, void *owner)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov031_021fe774;
     FIELD(void *, scene, 0x54) = owner;
-    func_02071ea4((u8 *)scene + 0x5c);
-    func_02092798((u8 *)scene + 0x70);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x5c);
+    TitleCharacterResourceCollection_Init((u8 *)scene + 0x70);
     FIELD(s32, scene, 0xa0) = 0;
     func_ov031_021fce00((u8 *)scene + 0xa4, 0, 8);
     FIELD(u32, scene, 0x54c) = 0;
@@ -75,7 +75,7 @@ extern "C" void *func_ov031_021fd95c(void *scene, void *owner)
 
     void *dialog = Heap_Alloc(0xec, data_ov031_021fe798, 4, gHeapContext);
     if (dialog != 0)
-        dialog = func_02092cc0(dialog, gDebugFont,
+        dialog = TitleDialog_Init(dialog, gDebugFont,
                                FIELD(void *, scene, 0x70));
     FIELD(void *, scene, 0x98) = dialog;
     func_ov031_021fd91c(dialog, 0x47, 0x2f, 0x86, 0x50);

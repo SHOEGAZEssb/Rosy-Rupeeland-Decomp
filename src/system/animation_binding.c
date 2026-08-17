@@ -11,10 +11,10 @@ extern "C" {
 #endif
 
 extern void *data_020f4e18;
-extern void func_02071ea4(void *state);
+extern void AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
-extern void func_02071eb8(void *state);
+extern void AnimationResourceState_Destroy(void *state);
 extern AnimationBindingHandle *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *state,
                                              u8 variant);
 extern void GraphicsSpriteGroup_ReleaseState(void *owner, AnimationBindingHandle *handle);
@@ -33,7 +33,7 @@ AnimationBinding *AnimationBinding_Init(AnimationBinding *self, void *owner,
                                 void *resource0, void *resource1,
                                 void *resource2, u8 variant)
 {
-    func_02071ea4(&self->resources[0]);
+    AnimationResourceState_InitEmbedded(&self->resources[0]);
     self->owner = owner;
     func_02071ee0(&self->resources[0], data_020f4e18, resource0, resource1,
                   resource2);
@@ -49,6 +49,6 @@ AnimationBinding *AnimationBinding_Init(AnimationBinding *self, void *owner,
 AnimationBinding *AnimationBinding_Destroy(AnimationBinding *self)
 {
     GraphicsSpriteGroup_ReleaseState(self->owner, self->handle);
-    func_02071eb8(&self->resources[0]);
+    AnimationResourceState_Destroy(&self->resources[0]);
     return self;
 }

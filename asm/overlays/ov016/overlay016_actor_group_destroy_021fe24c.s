@@ -1,6 +1,6 @@
     .text
     .extern data_ov016_02201520
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern PresentationList_DeleteAll
     .extern func_ov016_021fe0d4
@@ -29,9 +29,9 @@ L_021fe274:
     add r0, r4, #0x20
     bl func_ov016_021fe0d4
     add r0, r4, #0xc
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fe2ac: .word data_ov016_02201520

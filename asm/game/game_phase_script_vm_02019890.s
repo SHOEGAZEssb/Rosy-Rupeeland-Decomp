@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_effect_dispatch_opcode.c.
 .text
-.extern func_020627a0
+.extern ActorDescriptor_InitRange
 .global func_02019890
 func_02019890:
     stmdb sp!, {r4, lr}
@@ -16,7 +16,7 @@ func_02019890:
     str r3, [r4, #0x18]
     str r4, [r4, #0x1c]
     str ip, [r4, #0x20]
-    bl func_020627a0
+    bl ActorDescriptor_InitRange
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_02019890, . - func_02019890

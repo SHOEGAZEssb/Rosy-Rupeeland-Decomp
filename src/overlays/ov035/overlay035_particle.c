@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void Presentation_Init(void *object);
 extern u32 genrand_int32(void);
-extern s32 func_020918f4(void *randomState, s32 maximum);
+extern s32 TitleRandom_NextBounded(void *randomState, s32 maximum);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
 extern void func_02094bf0(void *object, s32 x, s32 y, s32 z);
 extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
@@ -42,20 +42,20 @@ extern "C" void *func_ov035_021fd7f0(void *particle)
     FIELD(u32, particle, 0x9c) = 0;
     FIELD(u32, particle, 0x9c) = genrand_int32();
 
-    s32 scale = func_020918f4((u8 *)particle + 0x9c, 0x1000) << 4;
+    s32 scale = TitleRandom_NextBounded((u8 *)particle + 0x9c, 0x1000) << 4;
     func_02094bf0(particle, scale, scale, scale);
     s32 x = func_0209189c((u8 *)particle + 0x9c, -0x800, 0x800);
     s32 z = func_0209189c((u8 *)particle + 0x9c, -0x400, 0x400);
     Presentation_SetPosition(particle, x, 0x1200, z);
     PresentationScalar_TransitionTo((u8 *)particle + 0x1c, 1, -0x800);
     func_ov035_021fd274(
-        particle, (s16)(func_020918f4((u8 *)particle + 0x9c, 30) + 120));
+        particle, (s16)(TitleRandom_NextBounded((u8 *)particle + 0x9c, 30) + 120));
     FIELD(s32, particle, 0xa0) = 0;
 
     s32 red = 0;
     s32 green = 0;
     s32 blue = 0;
-    switch (func_020918f4((u8 *)particle + 0x9c, 7)) {
+    switch (TitleRandom_NextBounded((u8 *)particle + 0x9c, 7)) {
     case 0:
         red = 31;
         blue = func_0209189c((u8 *)particle + 0x9c, 0, 31);

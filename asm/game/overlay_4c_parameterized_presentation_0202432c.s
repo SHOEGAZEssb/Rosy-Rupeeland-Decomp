@@ -5,7 +5,7 @@
 .extern gOverlay4cParameterizedComponentAllocationTag
 .extern OverlaySlot_Init
 .extern OverlaySlot_LoadOverlay
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_ov094_02219568
 .extern gHeapContext
 
@@ -16,7 +16,7 @@ func_0202432c: ; 0x0202432c
     mov r6, r0
     mov r5, r1
     mov r4, r2
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_02024390
     add r0, r6, #0xc
     str r1, [r6, #0x0]

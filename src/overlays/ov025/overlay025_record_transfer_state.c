@@ -26,7 +26,7 @@ extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
-extern s32 func_02092910(void *, void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095928(void *);
@@ -96,7 +96,7 @@ extern "C" s32 func_ov025_02201494(void *scene)
         s32 handled = 0;
         for (s32 i = 0; i < 3; ++i) {
             void *row = FIELD(void *, (u8 *)scene + i * 4, 0xe4);
-            if (func_02092910(FIELD(void *, row, 0x10),
+            if (GraphicsSpriteState_TestTouchPoint(FIELD(void *, row, 0x10),
                               (u8 *)scene + 0x30) &&
                 i != FIELD(s32, scene, 0x54)) {
                 FIELD(s32, scene, 0x58) = i;

@@ -5,8 +5,8 @@
 .extern VecFx32Object_Assign
 .extern genrand_int32
 
-.global func_ov050_0220d7c4
-func_ov050_0220d7c4:
+.global Overlay050PairedEffect_ResetMotion
+Overlay050PairedEffect_ResetMotion:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -31,4 +31,4 @@ func_ov050_0220d7c4:
     bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
-.size func_ov050_0220d7c4, . - func_ov050_0220d7c4
+.size Overlay050PairedEffect_ResetMotion, . - Overlay050PairedEffect_ResetMotion

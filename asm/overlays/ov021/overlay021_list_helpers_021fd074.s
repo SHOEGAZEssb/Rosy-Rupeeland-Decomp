@@ -1,10 +1,10 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_020c0c24
-    .extern func_ov021_021fd0e4
+    .extern Overlay021Row_DestroyNoOp
 
 .global func_ov021_021fd074
 func_ov021_021fd074:
@@ -32,11 +32,11 @@ L_021fd0c0:
     add r0, r4, #0x28
     bl func_020927b8
     add r0, r4, #0x10
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_021fd0e0: .word func_ov021_021fd0e4
+L_021fd0e0: .word Overlay021Row_DestroyNoOp
     .size func_ov021_021fd074, . - func_ov021_021fd074
 

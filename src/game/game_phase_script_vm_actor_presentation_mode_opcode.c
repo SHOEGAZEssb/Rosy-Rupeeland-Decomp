@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *data_020f4e14;
 extern void func_020708c4(void *state);
-extern void func_02070934(void *state);
+extern void GraphicsArchiveResource_ReleaseAlternateBuffer(void *state);
 extern void func_02070958(void *state, s32 first, s32 second, s32 third);
 extern void func_02070a78(void *state, s32 first, s32 second, s32 third);
 extern void func_02074dc8(void *type, void *object);
@@ -56,10 +56,10 @@ s32 func_02017ac8(GamePhaseActorScriptVm *self)
         }
         break;
     case 1:
-        func_02070934(*(void **)(primary + 0x18));
+        GraphicsArchiveResource_ReleaseAlternateBuffer(*(void **)(primary + 0x18));
         refreshPresentationObject(primary);
         if (secondary) {
-            func_02070934(*(void **)(secondary + 0x18));
+            GraphicsArchiveResource_ReleaseAlternateBuffer(*(void **)(secondary + 0x18));
             refreshPresentationObject(secondary);
         }
         break;

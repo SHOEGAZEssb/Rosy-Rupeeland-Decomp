@@ -4,11 +4,11 @@
     .extern data_021e9ac0
     .extern data_ov016_022013f0
     .extern data_ov016_02201428
-    .extern func_020651a4
+    .extern ActorDescriptorState_FindInactiveQuantity
     .extern func_0206fb18
     .extern func_02096450
     .extern func_ov000_021fc714
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
     .extern func_ov016_021ff9f8
     .extern func_ov016_021ffb3c
@@ -33,7 +33,7 @@ L_022011e4:
     ldr r0, [r0, #0x0]
     ldrh r1, [r1, #0x4]
     add r0, r0, #0x1c
-    bl func_020651a4
+    bl ActorDescriptorState_FindInactiveQuantity
     ldr r1, [r4, #0x484]
     add r1, r0, r1
     cmp r1, #0x63
@@ -81,7 +81,7 @@ L_0220125c:
     str r0, [r4, #0x478]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_022012e4
 L_022012c4:
     mov r0, r4
@@ -91,7 +91,7 @@ L_022012c4:
     ldr r1, L_02201300
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_022012e4:
     mov r0, r4
     bl func_ov016_021ff7bc

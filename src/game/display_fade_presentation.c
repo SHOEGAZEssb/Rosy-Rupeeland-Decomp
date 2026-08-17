@@ -34,7 +34,7 @@ extern "C" {
 extern void *data_020d6564;
 extern void *data_020f4e18;
 extern void *gGameWork;
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern void func_02091b6c(void *fade);
 extern void func_02091b98(void *fade, s32 duration);
 extern s32 func_02091c7c(void *fade, s32 channel);
@@ -65,7 +65,7 @@ extern void func_02070638(void *resource);
 extern void func_020706c4(void *resource, s32 first, s32 second);
 extern void func_02070e0c(void *resource, s32 first, s32 second);
 extern void func_02070eac(void *resource, s32 first, s32 second);
-extern void *func_02070874(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void func_020b2058(void *destination, s32 value, s32 size);
 extern void func_020b1ff0(void *destination, s32 value, s32 size);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
@@ -92,7 +92,7 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
     GraphicsResourceSet resources;
     void *palette;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)data_020d6564;
     func_02091b6c(self->fade14);
     func_020929b0(self->scroll3c);
@@ -117,7 +117,7 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
         func_02070638(resources.first);
         func_02070e0c(resources.third, 1, 0);
         func_02070e0c(resources.third, 2, 0);
-        palette = (u8 *)func_02070874(resources.second) + paletteIndex * 0x20;
+        palette = (u8 *)GraphicsBgResourceData_GetDecoded(resources.second) + paletteIndex * 0x20;
         func_020b2058(palette, 0, 0x20);
     } else {
         func_020afd0c((void *)0x04001050, 2, 4, 0, 0);
@@ -133,7 +133,7 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
         func_020706c4(resources.first, 1, 0);
         func_02070eac(resources.third, 1, 0);
         func_02070eac(resources.third, 2, 0);
-        palette = (u8 *)func_02070874(resources.second) + paletteIndex * 0x20;
+        palette = (u8 *)GraphicsBgResourceData_GetDecoded(resources.second) + paletteIndex * 0x20;
         func_020b1ff0(palette, 0, 0x20);
     }
     self->flags04 = (self->flags04 | 2) & ~1;

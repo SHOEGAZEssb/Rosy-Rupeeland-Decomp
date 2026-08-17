@@ -8,12 +8,12 @@
     .extern func_02091d08
     .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
-    .extern func_02071adc
+    .extern GraphicsArchive_AcquireOwlvResource
     .extern Graphics3DResourceOwner_CreateManager
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov036_021ff050
     .extern Heap_Alloc
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern PresentationList_Append
     .extern Presentation_SetPosition
     .extern PresentationScalar_SetImmediate
@@ -22,7 +22,7 @@
     .extern func_ov036_021fe9fc
     .extern func_ov036_021fea04
     .extern func_020b0300
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern func_02091d24
     .extern data_ov036_02205f48
     .extern data_020f4e18
@@ -80,7 +80,7 @@ L_02203e3c:
     ldr r0, L_022040e4
     ldr r1, L_022040ec
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r5, #0xec]
     b L_02203ee0
 L_02203e74:
@@ -95,7 +95,7 @@ L_02203e74:
     ldr r0, L_022040e4
     ldr r1, L_022040f4
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r5, #0xec]
     b L_02203ee0
 L_02203eac:
@@ -110,7 +110,7 @@ L_02203eac:
     ldr r0, L_022040e4
     ldr r1, L_022040fc
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r5, #0xec]
 L_02203ee0:
     mov r0, r4
@@ -136,7 +136,7 @@ L_02203ee0:
     cmp r0, #0x0
     beq L_02203f40
     mov r1, r6
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_02203f40:
     str r0, [r5, #0xf8]
     mov r1, r0
@@ -162,7 +162,7 @@ L_02203f40:
     cmp r0, #0x0
     beq L_02203fa4
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_02203fa4:
     str r0, [r5, #0xd8]
     mov r1, r0
@@ -234,7 +234,7 @@ L_0220403c:
     str r0, [sp, #0x0]
     bl func_020b0300
     mov r0, #0x0
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     mov r1, #0x0
     mov r3, #0x1
     add r0, r5, #0x11c

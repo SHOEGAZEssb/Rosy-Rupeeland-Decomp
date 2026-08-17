@@ -20,10 +20,10 @@ extern void func_ov032_0220173c(...);
 extern s32 func_ov032_02201960(void *);
 extern void func_ov032_022018ac(void *);
 extern void func_ov032_021fe23c(void *, s32);
-extern void *func_02097f18(void *);
-extern void func_02092e9c(...);
+extern void *RetailSelectionHistory_GetMessageRecord(void *);
+extern void TitleDialog_SetText(...);
 extern s32 func_ov032_021fe134(void *, s32);
-extern s32 func_02098348(void *);
+extern s32 RetailSelectionManager_HasInactiveSpecialRecord(void *);
 extern void func_ov032_021fe0e8(void *);
 extern s32 GameWork_TestFlag(...);
 extern void func_ov032_021fe2bc(void *, u32);
@@ -80,8 +80,8 @@ extern "C" s32 func_ov032_021ff308(void *scene)
         break;
     case 20: {
         func_ov032_021fe23c(scene, 1);
-        void *text = func_02097f18((void *)(data_021f6288 + FIELD(s32, scene, 0xf14) * 8));
-        func_02092e9c(FIELD(void *, scene, 0x10), text, 0);
+        void *text = RetailSelectionHistory_GetMessageRecord((void *)(data_021f6288 + FIELD(s32, scene, 0xf14) * 8));
+        TitleDialog_SetText(FIELD(void *, scene, 0x10), text, 0);
         ++FIELD(s32, scene, 0xb64);
         break;
     }
@@ -104,7 +104,7 @@ extern "C" s32 func_ov032_021ff308(void *scene)
         func_ov032_022018ac((u8 *)scene + 0xec4);
         set_flag4(scene, 0xb14, 1);
         set_flag4(scene, 0x184, 0);
-        if (func_02098348(data_021f5f18)) {
+        if (RetailSelectionManager_HasInactiveSpecialRecord(data_021f5f18)) {
             set_flag4(scene, 0x1b4, 0);
             func_ov032_021fe0e8((u8 *)scene + 0x1b4);
         }

@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_sound_fade.c.
-.extern func_02059278
-.extern func_02059320
+.extern Sound_PlayDirectSequence
+.extern Sound_SetDirectSequenceVariable
 .extern func_02059344
 .extern gSoundContext
 
@@ -27,7 +27,7 @@ func_ov090_0221b7f8:
     mov r1, #0x54
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
 .L_0221b848:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0x44]
@@ -48,7 +48,7 @@ func_ov090_0221b7f8:
     ldr r0, [r1, #0x0]
     ldr r2, .L_0221b8c4
     mov r1, #0x54
-    bl func_02059320
+    bl Sound_SetDirectSequenceVariable
     add r0, r4, #0x200
     ldrsh r2, [r0, #0x44]
     ldr r0, .L_0221b8c0
@@ -58,7 +58,7 @@ func_ov090_0221b7f8:
     ldr r0, [r0, #0x0]
     mov r3, r2, lsr #0x10
     mov r2, #0x7200
-    bl func_02059320
+    bl Sound_SetDirectSequenceVariable
     ldmia sp!, {r3, r4, r5, pc}
 .L_0221b8c0: .word gSoundContext
 .L_0221b8c4: .word 0x2330

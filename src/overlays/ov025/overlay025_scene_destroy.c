@@ -14,8 +14,8 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void __destroy_arr(void *, s32, s32, void *);
-extern void func_020597fc(void *, s32);
-extern void func_02071eb8(void *);
+extern void Sound_ReleaseGroup(void *, s32);
+extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020926f8(void *);
@@ -47,7 +47,7 @@ extern void func_ov094_022196a4(void *);
     do {                                                                       \
         FIELD(const void *, scene, 0) = data_ov025_02203370;                   \
         FIELD(u32, scene, 0x20) &= ~0x400u;                                    \
-        func_020597fc(gSoundContext, 0x16f);                                   \
+        Sound_ReleaseGroup(gSoundContext, 0x16f);                                   \
         PresentationList_DeleteAll((u8 *)scene + 0x4f8);                                    \
         VIRTUAL_DESTROY(FIELD(void *, scene, 0x50c));                          \
         void *overlay94 = FIELD(void *, scene, 0x5c0);                         \
@@ -62,13 +62,13 @@ extern void func_ov094_022196a4(void *);
             if (widget == 0) continue;                                         \
             GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0xc));           \
             func_020927b8((u8 *)widget + 0x30);                                \
-            func_02071eb8(widget);                                             \
+            AnimationResourceState_Destroy(widget);                                             \
             Heap_Free(widget);                                                 \
         }                                                                      \
         void *name_entry = FIELD(void *, scene, 0x598);                        \
         if (name_entry != 0) {                                                 \
             GraphicsSpriteGroup_Destroy(FIELD(void *, name_entry, 0));         \
-            func_02071eb8((u8 *)name_entry + 4);                               \
+            AnimationResourceState_Destroy((u8 *)name_entry + 4);                               \
             Heap_Free(name_entry);                                             \
         }                                                                      \
         VIRTUAL_DESTROY(FIELD(void *, scene, 0x59c));                          \
@@ -84,13 +84,13 @@ extern void func_ov094_022196a4(void *);
         func_ov025_021fdec8((u8 *)scene + 0x248);                              \
         func_ov025_021fdec8((u8 *)scene + 0x19c);                              \
         func_ov025_021fdec8((u8 *)scene + 0xf0);                               \
-        func_02071eb8((u8 *)scene + 0xa4);                                     \
-        func_02071eb8((u8 *)scene + 0x98);                                     \
-        func_02071eb8((u8 *)scene + 0x8c);                                     \
-        func_02071eb8((u8 *)scene + 0x80);                                     \
-        func_02071eb8((u8 *)scene + 0x74);                                     \
-        func_02071eb8((u8 *)scene + 0x68);                                     \
-        func_02071eb8((u8 *)scene + 0x5c);                                     \
+        AnimationResourceState_Destroy((u8 *)scene + 0xa4);                                     \
+        AnimationResourceState_Destroy((u8 *)scene + 0x98);                                     \
+        AnimationResourceState_Destroy((u8 *)scene + 0x8c);                                     \
+        AnimationResourceState_Destroy((u8 *)scene + 0x80);                                     \
+        AnimationResourceState_Destroy((u8 *)scene + 0x74);                                     \
+        AnimationResourceState_Destroy((u8 *)scene + 0x68);                                     \
+        AnimationResourceState_Destroy((u8 *)scene + 0x5c);                                     \
     } while (0)
 
 /*

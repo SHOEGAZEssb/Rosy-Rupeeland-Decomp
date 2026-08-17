@@ -6,12 +6,12 @@
 .extern data_020f4e18
 .extern data_ov025_02202c84
 .extern data_ov025_02203354
-.extern func_02071ea4
-.extern func_02071eb8
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern Presentation_Init
 .extern func_ov025_021fe4cc
 .extern gDebugFont
@@ -33,7 +33,7 @@ func_ov025_021fdecc:
     str r4, [sp, #0x0]
     bl __construct_array
     add r0, r6, #0xd4
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r5, #0x0
     ldr r4, L_021fe0b0
     ldr r8, L_021fe0b4
@@ -131,7 +131,7 @@ L_021fdf1c:
     orr r3, r3, #0x6
     strh r3, [r4, #0x24]
     str r2, [r6, #0xa8]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r0, [r6, #0xa4]
     mov r0, r6
     mov r1, #0x2
@@ -140,8 +140,8 @@ L_021fdf1c:
     mov r0, r6
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_021fe0a4: .word data_ov025_02203354
-L_021fe0a8: .word func_02071eb8
-L_021fe0ac: .word func_02071ea4
+L_021fe0a8: .word AnimationResourceState_Destroy
+L_021fe0ac: .word AnimationResourceState_InitEmbedded
 L_021fe0b0: .word data_ov025_02202c84
 L_021fe0b4: .word data_020f4e18
 L_021fe0b8: .word data_020f4e14

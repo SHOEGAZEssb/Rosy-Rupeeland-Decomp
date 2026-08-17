@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern DisplayController_GetVerticalOffset
 .extern func_02071ee0
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseState
@@ -57,7 +57,7 @@ func_02024e24: ; 0x02024e24
     bl GraphicsSpriteGroup_ReleaseState
 .L_02024eb4:
     add r0, r4, #0x3c
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     ldr r3, .L_02025114
     ldr r0, .L_02025118
     str r3, [sp, #0x0]

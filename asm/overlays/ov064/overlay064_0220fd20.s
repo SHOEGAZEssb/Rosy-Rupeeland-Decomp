@@ -20,18 +20,18 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_0201ded4
-.extern func_0201e14c
+.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_BroadcastSlot1C
 .extern func_02025300
 .extern ActorCollection_UnregisterAndDestroyAllActors
-.extern func_0202d3cc
+.extern ActorCollectionActivation_DestroyReservedSlot
 .extern ActorCollection_SetEnabled
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_ReplaceAttachmentSlotResource
 .extern Type7Actor_EnterSpecialPresentationState
-.extern func_02058de0
-.extern func_0205974c
-.extern func_0206c978
+.extern Sound_SetCaptureEnabled
+.extern Sound_LoadGroup
+.extern AuxiliaryInteraction_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -218,13 +218,13 @@ Overlay064Scene_Construct:
     strh r9, [r1, #0x2e]
     ldr r0, [r0, #0x0]
     mov r1, #0x52
-    bl func_0205974c
+    bl Sound_LoadGroup
     ldr r6, [r5, #0x26c]
     cmp r6, #0x0
     beq .L_022105c4
     beq .L_0220ffe0
     mov r0, r6
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r6
     bl Heap_Free
 .L_0220ffe0:
@@ -262,7 +262,7 @@ Overlay064Scene_Construct:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     b .L_022105c4
 .L_0221006c:
     ldr r1, .L_02210604
@@ -329,7 +329,7 @@ Overlay064Scene_Construct:
     ldr r0, .L_0221061c
     mov r1, #0x53
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     b .L_022105c4
 .L_0221016c:
     ldr r0, .L_022105f8
@@ -337,11 +337,11 @@ Overlay064Scene_Construct:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e14c
+    bl RuntimePresentationManager_BroadcastSlot1C
     ldr r0, .L_0221061c
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02058de0
+    bl Sound_SetCaptureEnabled
     ldr r0, .L_022105f8
     mov r1, #0x2
     ldr r0, [r0, #0x0]
@@ -370,7 +370,7 @@ Overlay064Scene_Construct:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl func_0202d3cc
+    bl ActorCollectionActivation_DestroyReservedSlot
     ldr r0, .L_022105f8
     mov r1, #0x1
     ldr r0, [r0, #0x0]

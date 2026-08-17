@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern func_020349b8
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_ov077_02213c08
 .extern func_ov077_022142c8
 .extern func_ov077_022142e0
@@ -104,7 +104,7 @@ func_ov077_02215240:
     ldr r0, [r4, #0x1dc]
     add r0, r0, #0x20000
     sub r0, r1, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x1000
     bge .L_02215430
     ldrb r2, [r4, #0x2e4]

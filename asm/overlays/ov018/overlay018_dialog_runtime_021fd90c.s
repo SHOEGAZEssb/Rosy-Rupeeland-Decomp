@@ -6,7 +6,7 @@
     .extern data_ov018_021ffd60
     .extern GamePhaseRuntime_GetActorCollection
     .extern ActorCollection_FindActorByDescriptorValue
-    .extern func_02092cc0
+    .extern TitleDialog_Init
     .extern func_ov018_021fd9f8
     .extern gGameWork
     .extern gHeapContext
@@ -29,7 +29,7 @@ func_ov018_021fd90c:
     ldr r1, L_021fd9e8
     ldr r2, [r4, #0x70]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fd950:
     ldr r1, L_021fd9ec
     str r0, [r4, #0x418]

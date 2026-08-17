@@ -19,10 +19,10 @@ typedef struct Overlay000DirectionInput {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02093de4(void *controller);
+extern void InventoryScroll_SaveOrigins(void *controller);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *embeddedState);
-extern void func_02093e0c(void *controller);
-extern void func_02093e20(void *controller);
+extern void InventoryScroll_MoveSelectionUp(void *controller);
+extern void InventoryScroll_MoveSelectionDown(void *controller);
 extern void IndexedSelectionController_DecrementWrap(void *embeddedState);
 extern void IndexedSelectionController_IncrementWrap(void *embeddedState);
 #ifdef __cplusplus
@@ -42,12 +42,12 @@ extern "C"
 s32 func_ov000_021fcb98(Overlay000DirectionState *state,
                          const Overlay000DirectionInput *input)
 {
-    func_02093de4(state->controller_26c);
+    InventoryScroll_SaveOrigins(state->controller_26c);
     IndexedSelectionController_SnapTransitionOrigin(state->embedded_270);
     if ((input->buttons_00 & 0x40) != 0) {
-        func_02093e0c(state->controller_26c);
+        InventoryScroll_MoveSelectionUp(state->controller_26c);
     } else if ((input->buttons_00 & 0x80) != 0) {
-        func_02093e20(state->controller_26c);
+        InventoryScroll_MoveSelectionDown(state->controller_26c);
     } else if ((input->buttons_00 & 0x20) != 0) {
         IndexedSelectionController_DecrementWrap(state->embedded_270);
     } else if ((input->buttons_00 & 0x10) != 0) {

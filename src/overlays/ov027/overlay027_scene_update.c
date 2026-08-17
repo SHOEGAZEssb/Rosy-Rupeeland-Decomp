@@ -15,7 +15,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void *func_ov027_021fd718(void *);
 extern s32 func_0209189c(void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationList_Append(void *, void *);
 extern void GraphicsAnimationInstanceManager_Update(void *);
@@ -76,7 +76,7 @@ extern "C" void func_ov027_021fe1c8(void *scene)
             FIELD(s32, motion, 0xa0) = func_0209189c(rng, 0x80, 0x100);
             FIELD(s32, motion, 0xa4) = 0x10;
             FIELD(s32, motion, 0xac) = 0x1e;
-            FIELD(s32, motion, 0xa8) = func_020918f4(rng, 0x1e);
+            FIELD(s32, motion, 0xa8) = TitleRandom_NextBounded(rng, 0x1e);
             if (i & 1) {
                 const s32 *descriptor = FIELD(const s32 *, node, 0xa0);
                 FIELD(u16, motion, 0xb4) =

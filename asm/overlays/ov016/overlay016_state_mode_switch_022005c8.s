@@ -11,10 +11,10 @@
     .extern func_02092c8c
     .extern func_02095dd4
     .extern func_ov000_021fc9d4
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff17c
     .extern func_ov016_021ff4ec
-    .extern func_ov016_021ff510
+    .extern Overlay016_PopulateAuxiliaryList
     .extern func_ov016_021ff7bc
     .extern func_ov016_021ff908
     .extern func_ov016_021ff9b8
@@ -59,7 +59,7 @@ L_0220062c:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
-    bl func_ov016_021ff510
+    bl Overlay016_PopulateAuxiliaryList
     mov r0, r4
     bl func_ov016_021ff17c
     mov r0, r4
@@ -118,7 +118,7 @@ L_022006fc:
     ldr r1, L_02200770
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200754
 L_02200738:
     bl DisplayBrightness_IsMainTransitionComplete
@@ -127,7 +127,7 @@ L_02200738:
     ldr r1, L_02200774
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_02200754:
     mov r0, r4
     bl func_ov016_021ff7bc

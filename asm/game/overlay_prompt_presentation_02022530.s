@@ -12,10 +12,10 @@
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern func_02092c8c
 .extern func_ov001_021fbe6c
 .extern gDebugFont

@@ -27,7 +27,7 @@ extern const char *data_020c45a4[];
 extern u8 data_021f3ecc[];
 extern u8 data_021f4090[];
 extern void OS_Halt(void);
-extern void func_02022fbc(void *descriptor);
+extern void SelfLinkedSpriteConfig_Init(void *descriptor);
 extern void func_02078dd4(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *func_02079fc4(void *manager, u16 id);
@@ -86,14 +86,14 @@ static void *FindActorRecord(u8 *database, u16 id)
 }
 
 /* Resolve one actor descriptor by retail ID at 0x02063B90. */
-void *func_02063b90(void *database, u16 id)
+void *ActorDatabase_FindDescriptorById(void *database, u16 id)
 {
     return FindActorRecord((u8 *)database, id);
 }
 
 static void InitializeRuntimeEntry(u8 *entry)
 {
-    func_02022fbc(entry);
+    SelfLinkedSpriteConfig_Init(entry);
 }
 
 /* Initialize the first 0x1c-byte retail runtime-entry container. */
@@ -459,7 +459,7 @@ void func_02063cd0(void *database_pointer)
 }
 
 /* Construct the aggregate in the exact retail loader order at 0x02063B14. */
-void func_02063b14(void *database)
+void ActorDatabase_Init(void *database)
 {
     func_02063f30(database);
     func_020640a4(database);
@@ -476,7 +476,7 @@ void func_0206328c(void)
 {
     void *manager;
 
-    func_02063b14(data_021e9ad0);
+    ActorDatabase_Init(data_021e9ad0);
     manager = Heap_Alloc(0x4c, data_020e4f80, 4, &gHeapContext);
     if (manager != 0)
         func_0206330c(manager);

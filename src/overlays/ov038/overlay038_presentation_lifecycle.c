@@ -16,7 +16,7 @@ extern void func_ov046_0220ba80(void *panel);
 extern void GraphicsSpriteGroup_Destroy(void *resourceOwner);
 extern void func_020927b8(void *transform);
 extern void func_ov038_021fce00(void *list);
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
@@ -43,7 +43,7 @@ static void releasePresentationContents(void *presentation)
     }
     func_020927b8((u8 *)presentation + 0x318);
     func_ov038_021fce00((u8 *)presentation + 0x64);
-    func_02071eb8((u8 *)presentation + 0x54);
+    AnimationResourceState_Destroy((u8 *)presentation + 0x54);
 }
 
 /*

@@ -14,7 +14,7 @@
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov036_021ff050
     .extern Heap_Alloc
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern PresentationList_Append
     .extern PresentationScalar_SetImmediate
     .extern func_ov036_021fffa4
@@ -122,7 +122,7 @@ func_ov036_0220059c:
     cmp r0, #0x0
     beq L_0220071c
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_0220071c:
     str r0, [r10, #0x104]
     mov r1, r0
@@ -158,7 +158,7 @@ L_02200750:
     cmp r0, #0x0
     beq L_022007a4
     mov r1, r7
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_022007a4:
     add r1, r10, r8, lsl #0x2
     str r0, [r1, #0x108]
@@ -215,7 +215,7 @@ L_022007fc:
     cmp r0, #0x0
     beq L_02200880
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_02200880:
     str r0, [r10, #0xd8]
     mov r1, r0

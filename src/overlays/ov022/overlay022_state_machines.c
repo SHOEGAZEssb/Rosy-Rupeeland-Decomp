@@ -33,30 +33,30 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void IndexedSelectionController_ResetTransition(void *);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *);
 extern void IndexedSelectionController_Increment(void *);
 extern s32 IndexedSelectionController_AdvanceTransition(void *);
 extern s32 IndexedSelectionController_AdvancePacing(void *);
-extern void func_02093d50(void *, s32);
-extern void func_02093de4(void *);
-extern s32 func_02093e0c(void *);
-extern s32 func_02093e20(void *);
-extern s32 func_02093e3c(void *);
-extern s32 func_02093e58(void *);
-extern s32 func_02093ffc(void *);
-extern void func_02094574(void *);
-extern s32 func_020945c8(void *, void *);
-extern s32 func_02094600(void *, void *);
-extern s32 func_02094638(void *, void *);
-extern s32 func_02094668(void *, void *);
-extern s32 func_02094698(void *, void *);
-extern void func_020946a8(void *, s32);
-extern s32 func_020946c8(void *, void *);
-extern void func_02094738(void *, s32);
-extern s32 func_02094758(void *);
-extern void func_02094874(void *);
+extern void InventoryScroll_SetSelectedRow(void *, s32);
+extern void InventoryScroll_SaveOrigins(void *);
+extern s32 InventoryScroll_MoveSelectionUp(void *);
+extern s32 InventoryScroll_MoveSelectionDown(void *);
+extern s32 InventoryScroll_PageUp(void *);
+extern s32 InventoryScroll_PageDown(void *);
+extern s32 InventoryScroll_UpdateInterpolation(void *);
+extern void InventoryScroll_UpdatePresentation(void *);
+extern s32 InventoryScroll_TestUpperArrowPress(void *, void *);
+extern s32 InventoryScroll_TestLowerArrowPress(void *, void *);
+extern s32 InventoryScroll_TestUpperArrowHold(void *, void *);
+extern s32 InventoryScroll_TestLowerArrowHold(void *, void *);
+extern s32 InventoryScroll_TestMarkerHit(void *, void *);
+extern void InventoryScroll_BeginMarkerDrag(void *, s32);
+extern s32 InventoryScroll_UpdateMarkerDrag(void *, void *);
+extern void InventoryScroll_EndMarkerDrag(void *, s32);
+extern s32 InventoryScroll_UpdateSelectionMovement(void *);
+extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern void PresentationList_DeleteAll(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
@@ -131,13 +131,13 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         if (!(FIELD(u32, scene, 0x20) & 0x20))
             break;
         if (func_02095860((u8 *)scene + 0xa8, (u8 *)scene + 0x30, 0, 4)) {
-            func_020939d8(FIELD(void *, scene, 0x2cc));
+            TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
             func_02092260(scene, 3);
             CALLBACK(scene, data_ov022_02200530);
         } else if (func_02095860((u8 *)scene + 0x154,
                                  (u8 *)scene + 0x30, 0, 4)) {
             if (FIELD(void *, scene, 0x2b4)) {
-                func_020939d8(FIELD(void *, scene, 0x2cc));
+                TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
                 func_02092260(scene, 2);
                 FIELD(s32, scene, 0x2c0) = 0;
                 func_02092c8c(1, -16);
@@ -148,7 +148,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         } else if (func_02095860((u8 *)scene + 0x200,
                                  (u8 *)scene + 0x30, 0, 4)) {
             if (FIELD(void *, scene, 0x2b8)) {
-                func_020939d8(FIELD(void *, scene, 0x2cc));
+                TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
                 func_02092260(scene, 2);
                 FIELD(s32, scene, 0x2c0) = 1;
                 func_02092c8c(1, -16);
@@ -291,7 +291,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         break;
     case 6:
         if (FIELD(s32, FIELD(void *, scene, 0x354), 0x54) == 0) {
-            func_020939d8(FIELD(void *, scene, 0x2cc));
+            TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
             void *collection = FIELD(void *, scene, 0x2b4);
             IndexedSelectionController_SnapTransitionOrigin(collection);
             IndexedSelectionController_Increment(collection);
@@ -342,11 +342,11 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
     func_ov022_021ff368(scene);
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02094874(ui);
+        InventoryScroll_ResetPresentationState(ui);
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02093ffc(ui)) {
+        if (InventoryScroll_UpdateInterpolation(ui)) {
             ADVANCE(scene);
         } else if (func_ov022_021fdcb4(menu)) {
             func_ov022_021fefe0(scene);
@@ -354,30 +354,30 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
         }
         break;
     case 2: {
-        func_02093de4(ui);
+        InventoryScroll_SaveOrigins(ui);
         u16 keys = FIELD(u16, FIELD(void *, scene, 0x2c), 0);
         if (keys & 0x40) {
-            func_02093e0c(ui);
+            InventoryScroll_MoveSelectionUp(ui);
         } else if (keys & 0x80) {
-            func_02093e20(ui);
+            InventoryScroll_MoveSelectionDown(ui);
         } else if (FIELD(u32, scene, 0x20) & 0x10) {
             s32 hit = func_ov022_021fdc30(menu, (u8 *)scene + 0x30);
-            if (func_02094638(ui, (u8 *)scene + 0x30)) {
-                func_02093e3c(ui);
-            } else if (func_02094668(ui, (u8 *)scene + 0x30)) {
-                func_02093e58(ui);
+            if (InventoryScroll_TestUpperArrowHold(ui, (u8 *)scene + 0x30)) {
+                InventoryScroll_PageUp(ui);
+            } else if (InventoryScroll_TestLowerArrowHold(ui, (u8 *)scene + 0x30)) {
+                InventoryScroll_PageDown(ui);
             } else if (FIELD(u32, scene, 0x20) & 0x20) {
-                if (func_020945c8(ui, (u8 *)scene + 0x30)) {
-                    if (!func_02093e3c(ui)) func_02092260(scene, 0x16);
-                } else if (func_02094600(ui, (u8 *)scene + 0x30)) {
-                    if (!func_02093e58(ui)) func_02092260(scene, 0x16);
-                } else if (func_02094698(ui, (u8 *)scene + 0x30)) {
+                if (InventoryScroll_TestUpperArrowPress(ui, (u8 *)scene + 0x30)) {
+                    if (!InventoryScroll_PageUp(ui)) func_02092260(scene, 0x16);
+                } else if (InventoryScroll_TestLowerArrowPress(ui, (u8 *)scene + 0x30)) {
+                    if (!InventoryScroll_PageDown(ui)) func_02092260(scene, 0x16);
+                } else if (InventoryScroll_TestMarkerHit(ui, (u8 *)scene + 0x30)) {
                     CALLBACK(scene, data_ov022_02200548);
                     break;
                 } else if (hit >= 0) {
                     if (hit != FIELD(s32, ui, 0x14)) {
                         func_02092260(scene, 0);
-                        func_02093d50(ui, hit);
+                        InventoryScroll_SetSelectedRow(ui, hit);
                         func_ov022_021fefe0(scene);
                         func_ov022_021ff048(scene);
                         FIELD(s32, scene, 4) = 10;
@@ -388,7 +388,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
                     if (FIELD(s32, entry, 4)) {
                         func_02092260(scene, 9);
                     } else {
-                        func_020939d8(FIELD(void *, scene, 0x2cc));
+                        TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
                         func_02092260(scene, 2);
                         CALLBACK(scene, data_ov022_022004e8);
                     }
@@ -401,7 +401,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
             void *entry = func_ov022_021fdca0(menu);
             if (FIELD(s32, entry, 4)) func_02092260(scene, 9);
             else {
-                func_020939d8(FIELD(void *, scene, 0x2cc));
+                TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
                 func_02092260(scene, 2);
                 CALLBACK(scene, data_ov022_02200560);
             }
@@ -410,7 +410,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
             func_02092260(scene, 3);
             func_02092c8c(1, -16);
             ADVANCE(scene);
-        } else if (func_02094758(ui)) {
+        } else if (InventoryScroll_UpdateSelectionMovement(ui)) {
             func_02092260(scene, 0);
             --FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
@@ -419,7 +419,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
     }
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete()) {
-            func_020939d8(FIELD(void *, scene, 0x2cc));
+            TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             FIELD(u32, scene, 0x48) &= ~2u;
             FIELD(u16, FIELD(void *, scene, 0xa4), 0x24) |= 4;
@@ -452,11 +452,11 @@ extern "C" s32 func_ov022_022001a0(void *scene)
     func_ov022_021ff368(scene);
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_020946a8(ui, 4);
+        InventoryScroll_BeginMarkerDrag(ui, 4);
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02093ffc(ui)) {
+        if (InventoryScroll_UpdateInterpolation(ui)) {
             if (FIELD(s32, ui, 0xc) != FIELD(s32, ui, 0x10))
                 func_02092288(scene, 8);
             ADVANCE(scene);
@@ -466,15 +466,15 @@ extern "C" s32 func_ov022_022001a0(void *scene)
         break;
     case 2:
         if (FIELD(u32, scene, 0x20) & 0x10) {
-            func_02093de4(ui);
-            if (func_020946c8(ui, (u8 *)scene + 0x30)) {
+            InventoryScroll_SaveOrigins(ui);
+            if (InventoryScroll_UpdateMarkerDrag(ui, (u8 *)scene + 0x30)) {
                 func_02092260(scene, 8);
                 --FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
                 break;
             }
         } else {
-            func_02094738(ui, 6);
+            InventoryScroll_EndMarkerDrag(ui, 6);
             func_ov022_021ff048(scene);
             CALLBACK(scene, data_ov022_02200520);
         }

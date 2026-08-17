@@ -13,7 +13,7 @@ extern "C" {
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment, void *heap);
 extern void *gHeapContext;
 
-extern void func_0207139c(void);
+extern void GraphicsScratchHeap_Init(void);
 extern void *func_02071294(void *manager);
 extern void GraphicsSpriteState_InitGlobalPool(void);
 extern void *GraphicsSpriteRenderer_Init(void *state, int engine, int arg2, int arg3);
@@ -64,7 +64,7 @@ void GraphicsSystem_Init(void)
     volatile u32 *mainDispCnt = (volatile u32 *)0x04000000;
     volatile u32 *subDispCnt = (volatile u32 *)0x04001000;
 
-    func_0207139c();
+    GraphicsScratchHeap_Init();
     manager = Heap_Alloc(GRAPHICS_RESOURCE_MANAGER_SIZE,
                          gGraphicsSystemTags.resourceManager, 4,
                          gHeapContext);
@@ -135,7 +135,7 @@ void GraphicsSystem_CreateEngine(int engine)
 asm void GraphicsSystem_Init(void)
 {
     stmdb sp!, {r3, lr}
-    bl func_0207139c
+    bl GraphicsScratchHeap_Init
     ldr r1, =gGraphicsSystemTags
     ldr r3, =gHeapContext
     mov r0, #0x108

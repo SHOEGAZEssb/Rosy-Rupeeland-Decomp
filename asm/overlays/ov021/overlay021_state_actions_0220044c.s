@@ -8,7 +8,7 @@
     .extern RecordCategory_PublishById
     .extern RecordDescriptor_GetMessage
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd7c0
     .extern func_ov021_021feea4
     .extern func_ov021_021ff1d0
@@ -60,7 +60,7 @@ L_022004c8:
     sub r1, r0, #0x11
     bl func_02092c8c
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, L_02200614
     ldr r1, L_02200618
     ldr r0, [r0, #0x0]

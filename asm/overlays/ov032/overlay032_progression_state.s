@@ -8,12 +8,12 @@
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02098348
+.extern RetailSelectionManager_HasInactiveSpecialRecord
 .extern func_ov032_021fe0e8
 .extern func_ov032_021fe134
 .extern func_ov032_021fe23c
 .extern func_ov032_021fe2bc
-.extern func_ov032_021fe2f0
+.extern Overlay032Scene_SetNumericDialogText
 .extern func_ov032_021fe440
 .extern func_ov032_021fe55c
 .extern func_ov032_021fe6b0
@@ -24,7 +24,7 @@
 .extern func_ov032_021fe92c
 .extern func_ov032_021fe9e8
 .extern func_ov032_021fead4
-.extern func_ov032_021ff288
+.extern Overlay032SpriteWrapper_HitTest
 .extern func_ov032_02200180
 .extern func_ov032_022001a0
 .extern func_ov032_022001c0
@@ -158,7 +158,7 @@ L_021ff88c:
     mov r0, r4
     bl func_ov032_021fe6b0
     mov r0, r4
-    bl func_ov032_021fe2f0
+    bl Overlay032Scene_SetNumericDialogText
     mov r0, r4
     bl func_ov032_021fe440
     mov r0, r4
@@ -231,7 +231,7 @@ L_021ff984:
     mov r3, r2
     add r0, r4, #0x154
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     movne r0, #0x5a
     strne r0, [r4, #0xb64]
@@ -241,7 +241,7 @@ L_021ff984:
     mov r3, r2
     add r0, r4, #0x274
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     movne r0, #0x1e
     strne r0, [r4, #0xb64]
@@ -251,7 +251,7 @@ L_021ff984:
     mov r3, r2
     add r0, r4, #0x2a4
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     movne r0, #0x14
     strne r0, [r4, #0xb64]
@@ -325,7 +325,7 @@ L_021ffad0:
     mov r3, r2
     add r0, r4, #0x274
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     movne r0, #0x1e
     strne r0, [r4, #0xb64]
@@ -341,7 +341,7 @@ L_021ffb0c:
     mov r3, r2
     add r0, r4, #0x2a4
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     movne r0, #0x14
     strne r0, [r4, #0xb64]
@@ -404,7 +404,7 @@ L_021ffbfc:
     mov r0, r4
     bl func_ov032_021fe6b0
     mov r0, r4
-    bl func_ov032_021fe2f0
+    bl Overlay032Scene_SetNumericDialogText
     mov r0, r4
     bl func_ov032_021fe440
     mov r0, r4
@@ -461,7 +461,7 @@ L_021ffca4:
 L_021ffcd8:
     bl func_ov032_021fe6b0
     mov r0, r4
-    bl func_ov032_021fe2f0
+    bl Overlay032Scene_SetNumericDialogText
     mov r0, r4
     bl func_ov032_021fe440
     mov r0, r4
@@ -647,7 +647,7 @@ L_021fff5c:
     mov r0, r4
     bl func_ov032_021fe6b0
     mov r0, r4
-    bl func_ov032_021fe2f0
+    bl Overlay032Scene_SetNumericDialogText
     mov r0, r4
     bl func_ov032_021fe440
     mov r0, r4
@@ -715,7 +715,7 @@ L_0220001c:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_02098348
+    bl RetailSelectionManager_HasInactiveSpecialRecord
     cmp r0, #0x0
     beq L_022000b0
     ldr r2, [r4, #0x1b4]

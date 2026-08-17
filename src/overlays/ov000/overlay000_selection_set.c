@@ -24,7 +24,7 @@ extern "C" {
 #endif
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void IndexedSelectionController_SetValue(void *embeddedState, s32 row);
-extern void func_02093d50(void *controller, s32 row);
+extern void InventoryScroll_SetSelectedRow(void *controller, s32 row);
 #ifdef __cplusplus
 }
 #endif
@@ -42,7 +42,7 @@ void func_ov000_021fca4c(Overlay000SelectionSetState *state, s32 index)
 {
     state->activeIndex_25c = index;
     IndexedSelectionController_SetValue(state->embedded_270, index % 5);
-    func_02093d50(state->controller_26c, func_020befec(index, 5));
+    InventoryScroll_SetSelectedRow(state->controller_26c, func_020befec(index, 5));
     if (state->transient_01c != 0 &&
         state->transient_01c !=
             FIELD(void *, (u8 *)state->metadata_250 + index * 0x20, 0x10)) {

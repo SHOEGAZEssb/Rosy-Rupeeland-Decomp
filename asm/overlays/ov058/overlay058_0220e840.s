@@ -10,11 +10,11 @@
 .extern data_ov058_0220fcec
 .extern data_ov058_0220fcf4
 .extern data_ov058_0220fd0c
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
-.extern func_02092798
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 .extern func_ov058_0220e400
 .extern func_ov058_0220e5fc
@@ -28,7 +28,7 @@ func_ov058_0220e840:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_0220ea2c
     ldr ip, .L_0220ea30
     str r0, [r4, #0x0]
@@ -41,7 +41,7 @@ func_ov058_0220e840:
     mov r1, #0x0
     add r0, r4, #0x84
     str r1, [r4, #0x50]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     ldr r1, .L_0220ea38
     add r0, r4, #0x84
     bl func_02092814

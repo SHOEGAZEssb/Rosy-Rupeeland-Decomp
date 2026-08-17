@@ -16,10 +16,10 @@ extern "C" u32 data_ov044_0220d2e0[2];
 extern "C" u8 gHeapContext[];
 extern "C" void *gDebugFont;
 extern "C" void *gGameWork;
-extern "C" void func_02091e28(void *object);
-extern "C" void func_02092798(void *object);
-extern "C" void func_020926d8(void *object);
-extern "C" void func_02071ea4(void *object);
+extern "C" void SceneInputBase_Init(void *object);
+extern "C" void TitleCharacterResourceCollection_Init(void *object);
+extern "C" void TitleScreenResourceCollection_Init(void *object);
+extern "C" void AnimationResourceState_InitEmbedded(void *object);
 extern "C" void func_020957bc(void *object);
 extern "C" void func_02092814(void *object, u32 id);
 extern "C" void func_02092754(void *object, u32 id);
@@ -46,11 +46,11 @@ extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
  */
 extern "C" void *func_ov044_0220be60(void *object)
 {
-    func_02091e28(object);
+    SceneInputBase_Init(object);
     FIELD(void *, object, 0) = data_ov044_0220d31c;
-    func_02092798((u8 *)object + 0x54);
-    func_020926d8((u8 *)object + 0x78);
-    func_02071ea4((u8 *)object + 0xc0);
+    TitleCharacterResourceCollection_Init((u8 *)object + 0x54);
+    TitleScreenResourceCollection_Init((u8 *)object + 0x78);
+    AnimationResourceState_InitEmbedded((u8 *)object + 0xc0);
     func_020957bc((u8 *)object + 0xd0);
     func_020957bc((u8 *)object + 0x17c);
     FIELD(u32, object, 0x23c) = 0;

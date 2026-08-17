@@ -17,7 +17,7 @@ extern void OS_Halt(void);
 extern void *ActorMotionAreaFollower_GetPosition(...);
 extern void *ActorCollection_FindActorByDescriptorValue(...);
 extern void *Actor_GetCollection(...);
-extern void *func_02098490(...);
+extern void *Overlay032Scene_Init(...);
 extern void *func_0209d774(...);
 extern void *func_0209f2f8(...);
 extern void *func_0209fd50(...);
@@ -26,8 +26,8 @@ extern void *func_020200bc(...);
 extern void *func_0201cfd0(...);
 extern void *func_0206ec68(...);
 extern void *GamePhaseLoadScene_Init(...);
-extern void func_0201ded4(...);
-extern u8 *func_02079a7c(...);
+extern void PresentationList_AppendObject(...);
+extern u8 *RuntimeRecordTable_FindByKey(...);
 #ifdef __cplusplus
 }
 #endif
@@ -81,7 +81,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
     case 21:
         object = allocCommandObject(0x30, data_020d5b3c);
         if (object != 0)
-            func_02098490(object);
+            Overlay032Scene_Init(object);
         return 0;
     case 60:
     case 64:
@@ -124,7 +124,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         object = allocCommandObject(0x1c, data_020d5b74);
         if (object != 0)
             object = func_020200bc(object, parameter, x, y, 30);
-        func_0201ded4(runtime + 0x2f7c, object);
+        PresentationList_AppendObject(runtime + 0x2f7c, object);
         VecFx32Object_Destroy(&position);
         return 0;
     }
@@ -162,7 +162,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
     case 35:
     case 36:
     case 37: {
-        u8 *record = func_02079a7c(data_021f3d68, parameter);
+        u8 *record = RuntimeRecordTable_FindByKey(data_021f3d68, parameter);
         if (selector == 35)
             GamePhaseScriptVm_SetResult(&self->base, *(u16 *)(record + 0x12));
         else if (selector == 36)

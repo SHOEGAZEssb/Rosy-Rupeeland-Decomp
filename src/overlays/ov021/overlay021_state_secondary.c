@@ -29,7 +29,7 @@ extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095928(void *);
 extern void func_ov001_021fc1f0(void *);
@@ -50,9 +50,9 @@ extern s32 func_ov001_021fc0ac(void *, void *);
 extern s32 func_ov001_021fcb60(void *, void *);
 extern s32 func_ov001_021fcc44(void *, void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
-extern void func_ov021_021fe144(void *);
+extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe390(void *);
-extern void func_ov021_021fe458(void *);
+extern void Overlay021_RefreshSelectionBackground(void *);
 extern void func_ov021_021fe8e8(void *);
 extern void func_ov021_021fea68(void *);
 extern s32 func_ov021_021feae4(void *);
@@ -62,7 +62,7 @@ extern void func_ov021_021feea4(void *);
 extern void func_ov021_021fefcc(void *);
 extern void func_ov021_021ff0e0(void *, s32);
 extern s32 func_ov021_021ff274(void *);
-extern u32 func_ov021_021ff4f0(const void *);
+extern u32 Overlay021Descriptor_GetFlags16_19(const void *);
 extern s32 func_ov021_021ff62c(void *, s32);
 extern void func_ov021_021ff644(void *);
 extern s32 func_ov021_021ffa10(const void *);
@@ -126,14 +126,14 @@ extern "C" s32 func_ov021_02201ba8(void *state)
                     break;
                 }
                 if (func_ov001_021fc3c4(widget, input) != 0) {
-                    func_020939d8(FIELD(void *, state, 0x388));
+                    TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                     func_02092260(state, 3);
                     change_state(state, data_ov021_02202dc0);
                     break;
                 }
                 if (func_ov001_021fc3ec(widget, input) != 0) {
                     if (func_ov021_021feae4(state) != 0) {
-                        func_020939d8(FIELD(void *, state, 0x388));
+                        TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                         func_02092260(state, 11);
                         change_state(state, data_ov021_02202db8);
                     } else {
@@ -149,10 +149,10 @@ extern "C" s32 func_ov021_02201ba8(void *state)
                         FIELD(void *, state, 0x380) = FIELD(void *, entry, 0xc);
                         void *selected = FIELD(void *, state, 0x380);
                         if (selected != 0 && FIELD(void *, selected, 0xc) != 0) {
-                            func_020939d8(FIELD(void *, state, 0x388));
+                            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                             func_02092260(state, 2);
                             FIELD(void *, state, 0x2bc) = FIELD(void *, selected, 0xc);
-                            u32 category = func_ov021_021ff4f0(
+                            u32 category = Overlay021Descriptor_GetFlags16_19(
                                 FIELD(void *, state, 0x2bc));
                             if (category == 1) {
                                 FIELD(s32, state, 0x374) = FIELD(s32, widget, 0x1ac);
@@ -250,7 +250,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
         break;
     case 4:
         if (++FIELD(s32, state, 8) > 60) {
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             func_02092c8c(1, -16);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -287,7 +287,7 @@ extern "C" s32 func_ov021_02202194(void *state)
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021fea68(state);
             func_ov021_021fecd0(state);
-            func_ov021_021fe144(state);
+            Overlay021_SetupMainBackground(state);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             FIELD(u32, state, 0x48) &= ~2U;
             FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
@@ -342,7 +342,7 @@ extern "C" s32 func_ov021_022022a4(void *state)
         if (FIELD(void *, state, 0x354) != 0)
             func_ov021_021fe390(state);
         else
-            func_ov021_021fe458(state);
+            Overlay021_RefreshSelectionBackground(state);
         func_ov021_021ff0e0(state, 2);
         func_02092c8c(1, 0);
         FIELD(s32, state, 4)++;

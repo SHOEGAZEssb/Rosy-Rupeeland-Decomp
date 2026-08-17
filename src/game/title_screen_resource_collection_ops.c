@@ -33,7 +33,7 @@ void func_02092754(TitleScreenResourceCollection *collection, u32 resourceId)
 }
 
 /* Return one entry; callers provide a retail-valid index. */
-void *func_02092790(TitleScreenResourceCollection *collection, s32 index)
+void *TitleScreenResourceCollection_Get(TitleScreenResourceCollection *collection, s32 index)
 {
     return collection->entries[index];
 }

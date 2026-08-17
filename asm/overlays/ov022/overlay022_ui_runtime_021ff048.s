@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
 .extern data_021f3ecc
 .extern GraphicsSpriteText_FormatDecimal
-.extern func_02079f3c
-.extern func_020939d8
+.extern RetailTextTable_FindRecordById
+.extern TitleDialog_ClearTextRect
 .extern func_ov022_021ff2c4
 
 
@@ -15,7 +15,7 @@ func_ov022_021ff048:
     ldr r1, [r4, #0x2bc]
     ldr r0, L_021ff0c4
     ldrh r1, [r1, #0x0]
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r2, r0, #0x2
     mov r3, #0x0
     b L_021ff08c
@@ -39,7 +39,7 @@ L_021ff094:
     mov r3, #0x0
     bl GraphicsSpriteText_FormatDecimal
     ldr r0, [r4, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, L_021ff0cc
     mov r0, r4
     bl func_ov022_021ff2c4

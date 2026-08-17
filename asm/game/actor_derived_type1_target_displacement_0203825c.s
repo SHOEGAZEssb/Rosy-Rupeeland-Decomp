@@ -13,7 +13,7 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_0201e0ec
 .extern func_02022cb0
 .extern func_020349b8
@@ -22,7 +22,7 @@
 .extern Type1Actor_TryEnterFailureState
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern func_0204cff4
-.extern func_020a2894
+.extern EffectManager_SubmitPointEffect
 .extern func_020ada8c
 .extern func_020adae4
 .extern func_020ae024
@@ -235,7 +235,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r2, [sp, #0x4c]
     ldr r3, [sp, #0x50]
     mov r1, #0x1
-    bl func_020a2894
+    bl EffectManager_SubmitPointEffect
     mov r0, r6
     mov r4, #0x0
     bl ActorDerivedType1_IsTargetStateEligible
@@ -334,7 +334,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     ldr r0, .L_02038774
     mov r1, #0x14
     ldr r0, [r0, #0x0]

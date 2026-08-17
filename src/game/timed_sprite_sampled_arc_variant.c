@@ -26,7 +26,7 @@ extern void *data_020d60ac;
 extern SampledArcTimedSprite *func_0201e290(SampledArcTimedSprite *self,
                                             u8 *config);
 extern SampledArcTimedSprite *func_0201e380(SampledArcTimedSprite *self);
-extern void func_0201e3b8(SampledArcTimedSprite *self, s32 enabled);
+extern void TimedSpritePresentation_SetVisible(SampledArcTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void GraphicsSpriteState_SetScreenPositionCulled(void *sprite, s32 x, s32 y, s32 constant8);
@@ -78,7 +78,7 @@ s32 func_0201ee48(SampledArcTimedSprite *self, s32 argument)
 
     self->remaining28--;
     if (self->remaining28 < 0 || (*(u16 *)(self->sprite + 0x24) & 1) != 0) {
-        func_0201e3b8(self, 0);
+        TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
     *(u16 *)(self->sprite + 0x24) &= (u16)~4;

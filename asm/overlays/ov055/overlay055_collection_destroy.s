@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov055/overlay055_recovery.c.
 .extern Heap_Free
 .extern __destroy_arr
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 
 .global func_ov055_0220e7cc
 func_ov055_0220e7cc:
@@ -20,5 +20,5 @@ func_ov055_0220e7cc:
     bl __destroy_arr
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_0220e800: .word func_02071eb8
+.L_0220e800: .word AnimationResourceState_Destroy
 .size func_ov055_0220e7cc, . - func_ov055_0220e7cc

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_lifecycle.c.
 .extern Heap_Free
 .extern data_020e2560
-.extern func_02030f98
+.extern ActorRuntimeBase_Init
 .extern func_0203130c
 .extern func_02031488
 .text
@@ -10,7 +10,7 @@
 func_0204e944: ; 0x0204e944
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r0, .L_0204e96c
     add r1, r4, #0x100
     str r0, [r4, #0x0]

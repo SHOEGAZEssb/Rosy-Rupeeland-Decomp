@@ -18,7 +18,7 @@ extern void func_ov045_0220b908(void *);
 extern void Presentation_BlendPalette16(void *, void *, s32);
 extern void func_020b2058(const void *, s32, s32);
 extern void func_020b1ff0(const void *, s32, s32);
-extern s32 func_0206492c(void *, s32);
+extern s32 InventoryRecordCollection_FindId(void *, s32);
 extern void func_02095988(void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #ifdef __cplusplus
@@ -68,9 +68,9 @@ extern "C" void func_ov030_021fe768(void *scene)
 extern "C" void func_ov030_021fe808(void *scene)
 {
     void *catalog = FIELD(void *, scene, 0x37c);
-    s32 firstIndex = func_0206492c(catalog, 0x164);
+    s32 firstIndex = InventoryRecordCollection_FindId(catalog, 0x164);
     FIELD(s32, scene, 0x380) = firstIndex;
-    s32 secondIndex = func_0206492c(catalog, 0x165);
+    s32 secondIndex = InventoryRecordCollection_FindId(catalog, 0x165);
     FIELD(s32, scene, 0x388) = secondIndex;
     s32 firstCount = 0;
     s32 secondCount = 0;

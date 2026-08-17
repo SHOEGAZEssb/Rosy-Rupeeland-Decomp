@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_020086f8(void *state, GamePhaseRuntime *self);
-extern void func_0200875c(void *state, GamePhaseRuntime *self);
+extern void GamePhaseRuntime_BuildSecondaryTransform(void *state, GamePhaseRuntime *self);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *state);
 extern void VecFx32Object_Destroy(void *state);
 extern void ActorCollection_GetSpriteOwner(void *actor);
@@ -44,7 +44,7 @@ void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value
     if ((u32)(mode - 2) <= 1) {
         actor = *(void **)(b + 0x2fb8);
         if (actor != 0) {
-            func_0200875c(secondaryState, self);
+            GamePhaseRuntime_BuildSecondaryTransform(secondaryState, self);
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
             ActorCollection_DispatchEventToActors(actor, secondaryState);
             VecFx32Object_Destroy(secondaryState);

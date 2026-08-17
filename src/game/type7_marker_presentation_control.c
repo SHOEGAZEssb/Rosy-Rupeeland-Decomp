@@ -26,7 +26,7 @@ typedef struct Type7PositionObject {
 extern "C" {
 #endif
 extern void *func_02071e60(void *resources, u32 id);
-extern void *func_02071e70(void *resources, u32 id);
+extern void *GraphicsArchive_FindPaletteResource(void *resources, u32 id);
 extern void *func_02071e80(void *resources, u32 id);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
 extern void GraphicsSpriteGroup_ReplaceStateResources(const void *presentationVtable, void *presentation,
@@ -102,7 +102,7 @@ void Type7MarkerPresentation_SelectAnimation(Type7MarkerPresentation *self, u32 
 void Type7MarkerPresentation_ReloadResources(Type7MarkerPresentation *self)
 {
     void *first = func_02071e60(data_020f4e18, 0x138a);
-    void *second = func_02071e70(data_020f4e18, 0x1078);
+    void *second = GraphicsArchive_FindPaletteResource(data_020f4e18, 0x1078);
     void *third = func_02071e80(data_020f4e18, 0x138b);
     GraphicsSpriteGroup_ReplaceStateResources(*(const void **)self->presentation, self->presentation,
                   first, second, third);

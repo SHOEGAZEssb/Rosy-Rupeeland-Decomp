@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/runtime_actor_variant_callbacks.c.
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Destroy
@@ -28,7 +28,7 @@ func_0204d3e4: ; 0x0204d3e4
     mov r6, r0
     mov r5, r1
     mov r4, r2
-    bl func_02032a94
+    bl ActorContactState_AddContact
     mov r1, #0x0
     add r0, sp, #0x0
     mov r2, r1

@@ -19,11 +19,11 @@ extern s32 func_02095dd4(void *, void *, s32);
 extern void func_02095940(void *);
 extern void func_ov016_021fd3f8(void *);
 extern void *func_ov016_021fd628(void *);
-extern void func_ov016_021fe754(void *, u32, u32);
+extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff848(void *, u16);
 extern void func_ov016_021ff908(void *, s32, s32, void *);
 extern void func_ov016_021ffba4(void *);
-extern void func_ov016_021ffbd8(void *);
+extern void Overlay016_SyncSelectedPanel(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -50,8 +50,8 @@ extern "C" s32 func_ov016_021ffe90(void *state)
         if (FIELD(s32, FIELD(void *, state, 0x444), 0x50) != 0) {
             func_ov016_021fd3f8(FIELD(void *, state, 0x444));
             func_ov016_021ffba4(state);
-            func_ov016_021ffbd8(state);
-            func_ov016_021fe754(state, data_ov016_022013d8[0],
+            Overlay016_SyncSelectedPanel(state);
+            Overlay016ActorValue_Init(state, data_ov016_022013d8[0],
                                 data_ov016_022013d8[1]);
         } else {
             func_02095940((u8 *)state + 0x194);
@@ -67,7 +67,7 @@ extern "C" s32 func_ov016_021ffe90(void *state)
     case 1:
         if (func_02095dd4(FIELD(void *, state, 0x460), (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
-            func_ov016_021fe754(state, data_ov016_02201440[0],
+            Overlay016ActorValue_Init(state, data_ov016_02201440[0],
                                 data_ov016_02201440[1]);
         }
         break;
@@ -107,6 +107,6 @@ extern "C" void func_ov016_021fffcc(void *state)
     }
     func_02092260(state, 2);
     FIELD(void *, state, 0x468) = FIELD(void *, descriptor, 0);
-    func_ov016_021fe754(state, data_ov016_022013d0[0],
+    Overlay016ActorValue_Init(state, data_ov016_022013d0[0],
                         data_ov016_022013d0[1]);
 }

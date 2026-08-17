@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_status_text.c. */
     .extern data_021f3ecc
     .extern data_ov017_022016e0
-    .extern func_020628c8
+    .extern ActorDescriptor_GetPrimaryLabel
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteText_FormatDecimal
@@ -104,7 +104,7 @@ L_021ffef8:
     mov r3, #0x0
     bl GraphicsSpriteText_FormatDecimal
     mov r0, r5
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     ldr r3, L_02200050
     mov r1, r0
     mov r2, #0x6
@@ -137,7 +137,7 @@ L_021ffef8:
     rsbgt r0, r0, #0x38
     addgt r4, r4, r0
     mov r0, r5
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r2, #0xe
     str r2, [sp, #0x0]
     mov r1, #0x6

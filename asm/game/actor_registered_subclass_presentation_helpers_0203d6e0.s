@@ -9,8 +9,8 @@
 .extern func_020593ac
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
-.extern func_020be328
-.extern func_020be334
+.extern SignedAbsoluteValueVariant
+.extern SignedAbsoluteValue
 .extern gHeapContext
 .extern gSoundContext
     .global ActorRegisteredSubclass_EmitImpactFeedback
@@ -20,7 +20,7 @@ ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
     sub sp, sp, #0x18
     mov r5, r0
     ldr r0, [r5, #0x44]
-    bl func_020be334
+    bl SignedAbsoluteValue
     mov r4, r0
     cmp r4, #0x1000
     ble .L_0203d7e8
@@ -42,7 +42,7 @@ ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
     movgt r6, #0x7f
 .L_0203d740:
     mov r0, r6
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r1, #0x3
     bl func_020adae4
     rsb r3, r0, r4, asr #0x7

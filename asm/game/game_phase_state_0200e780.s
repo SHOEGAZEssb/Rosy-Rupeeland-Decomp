@@ -9,7 +9,7 @@
 .extern func_0202751c
 .extern func_020275b0
 .extern func_02027f2c
-.extern func_02027f94
+.extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_020598a0
 .extern gGameWork
 .extern gLupyContext
@@ -136,13 +136,13 @@ GamePhaseState_ApplyConfiguration: ; 0x0200e780
     ldr r1, L_0200e9d8
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027f2c
     bl GamePhase_ResetTransientState
     ldr r0, [r4, #0x40]
     mov r0, r0, lsl #0x6
     mov r4, r0, asr #0x1f
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     str r4, [r0, #0x8]
     ldr r0, L_0200e9dc
     mov r1, #0xb4

@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern void *data_020d69ac;
 extern const char gOverlay50ComponentAllocationTag[];
-extern void func_0201e250(void *self);
+extern void TimedSpritePresentation_InitBase(void *self);
 extern void func_0201e28c(void *self);
 extern void OverlaySlot_Init(void *helper);
 extern void OverlaySlot_Destroy(void *helper);
@@ -41,7 +41,7 @@ extern s32 data_ov087_022189f8(void *component);
 Overlay50ComponentPresentation *func_020240cc(
     Overlay50ComponentPresentation *self, void *argument)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)data_020d69ac;
     OverlaySlot_Init(self->helper0c);
     OverlaySlot_LoadOverlay(self->helper0c, 0x5e);

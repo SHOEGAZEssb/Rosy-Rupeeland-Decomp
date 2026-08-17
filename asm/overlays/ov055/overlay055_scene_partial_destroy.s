@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov055/overlay055_recovery.c.
-.extern func_02027f94
+.extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_ov055_0220e860
 .extern func_ov055_0220e8a0
 .extern func_ov055_0220ebec
@@ -55,7 +55,7 @@ func_ov055_0220e96c:
 .L_0220ea20:
     mov r0, r4
     bl func_ov055_0220ebec
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     ldr r0, [r4, #0x24]
     bl func_ov055_0220e8a0
     ldr r0, [r4, #0x24]

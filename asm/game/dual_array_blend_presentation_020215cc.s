@@ -11,7 +11,7 @@
 .extern data_020d63e0
 .extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern BlendElement_DestroyNoOp
 .extern ExtendedCallbackState_SetReferencesAndReset
@@ -21,7 +21,7 @@
 .extern DualArrayBlendPresentation_UpdateTransition
 .extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_02092418
 .extern PresentationScalar_TransitionTo
 .extern Presentation_InitVariant
@@ -38,7 +38,7 @@ DualArrayBlendPresentation_Init: ; 0x020215cc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     mov r5, r1
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_020216c8
     ldr r4, .L_020216cc
     str r0, [r10, #0x0]

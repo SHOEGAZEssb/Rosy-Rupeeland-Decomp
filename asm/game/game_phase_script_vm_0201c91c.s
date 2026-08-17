@@ -6,7 +6,7 @@
 .extern func_02070f80
 .extern func_020b44e8
 .extern func_02070638
-.extern func_0207042c
+.extern GraphicsResource_GetFormat
 .extern func_02070b50
 .extern func_02070e0c
 .extern data_020f4e18
@@ -68,7 +68,7 @@ L_0201c9d0:
     mov r2, #0x0
     bl func_02070638
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x2000
     ldr r0, [sp, #0x8]
@@ -89,7 +89,7 @@ L_0201ca18:
     bl func_02070638
 L_0201ca30:
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x4000
     ldr r0, [sp, #0x8]
@@ -108,7 +108,7 @@ L_0201ca60:
     mov r2, #0x0
     bl func_02070638
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]

@@ -3,7 +3,7 @@
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
 .extern func_0207ac84
-.extern func_0207b334
+.extern RetailRecord_GetCategoryBank
 .extern RecordDescriptor_SetValue
 .global func_02017818
 func_02017818:
@@ -20,7 +20,7 @@ func_02017818:
     ldr r1, [r1]
     ldr r6, [r1, r0, lsl #2]
     mov r0, r4
-    bl func_0207b334
+    bl RetailRecord_GetCategoryBank
     mov r2, r4
     mov r1, r0
     mov r0, r6

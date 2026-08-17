@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_grid_deform.c. */
     .extern func_020b5880
     .extern func_020befec
-    .extern func_ov017_021fd3f0
+    .extern Overlay017_WaitForSquareRoot
     .global func_ov017_021fcf6c
 func_ov017_021fcf6c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -260,7 +260,7 @@ L_021fd320:
     str r1, [r0, #0x8]
     mov r1, r1, asr #0x1f
     str r1, [r0, #0xc]
-    bl func_ov017_021fd3f0
+    bl Overlay017_WaitForSquareRoot
     str r0, [sp, #0x40]
     ldr r2, [sp, #0xc]
     ldr r1, [sp, #0x4]

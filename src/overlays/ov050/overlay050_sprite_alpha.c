@@ -7,7 +7,7 @@
  * records referenced at pair +0/+4. Sprite/OAM-visible state changes in memory;
  * nothing is returned and no SDK or direct hardware call occurs.
  */
-extern "C" void func_ov050_0220d7ac(void *pair, u32 alpha)
+extern "C" void Overlay050SpritePair_SetAlpha(void *pair, u32 alpha)
 {
     u8 value = (u8)alpha;
     u8 *bytes = (u8 *)pair;

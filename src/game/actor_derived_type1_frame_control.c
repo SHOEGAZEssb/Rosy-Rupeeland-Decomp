@@ -23,7 +23,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *actor,
                            s32 value, s32 first, s32 second);
-extern void func_0201ded4(void *manager, void *object);
+extern void PresentationList_AppendObject(void *manager, void *object);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 extern u32 genrand_int32(void);
@@ -35,15 +35,15 @@ extern void *func_0201e0ec(void *manager);
 extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_02058d40(void *context, s32 value);
+extern void Sound_StopAllDirectSequences(void *context, s32 value);
 extern void func_0205958c(void *context, s32 value);
-extern void func_02059278(void *context, s32 first, s32 second);
+extern void Sound_PlayDirectSequence(void *context, s32 first, s32 second);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern void Actor_TryInitializeHeightBandFromPoint(void *actor,
                                                   const void *record);
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 extern void Actor_UpdateGroundContactProbe(void *actor);
 #ifdef __cplusplus
 }
@@ -144,7 +144,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
                 object = func_02022cb0(object, resource, actor, value,
                                       0x2000, -0xc0);
             }
-            func_0201ded4(data_021052fc + 0x2f7c, object);
+            PresentationList_AppendObject(data_021052fc + 0x2f7c, object);
             if (*(u16 *)(descriptor + 0x1a) != 0)
                 Sound_Play(gSoundContext, *(u16 *)(descriptor + 0x1a) >> 7,
                            *(u16 *)(descriptor + 0x1a) & 0x7f);
@@ -186,9 +186,9 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             *(u32 *)(actor + 0x230) |= 0x10;
             *(s16 *)(actor + 0x234) = 60;
             *(u32 *)(actor + 0x10) |= 0x1f0000;
-            func_02058d40(gSoundContext, 0x14);
+            Sound_StopAllDirectSequences(gSoundContext, 0x14);
             func_0205958c(gSoundContext, 0x14);
-            func_02059278(gSoundContext, 0x39, 0x78);
+            Sound_PlayDirectSequence(gSoundContext, 0x39, 0x78);
         }
     } else {
         *(u32 *)(actor + 0x230) &= ~0x10;
@@ -262,7 +262,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
                 s32 value = *(s32 *)(actor + 0x8c) +
                             func_020adae4(*(s32 *)(actor + 0x3c), 8);
                 *(s32 *)(actor + 0x8c) = value;
-                if (func_020be334(value) > 0x4cd)
+                if (SignedAbsoluteValue(value) > 0x4cd)
                     *(s32 *)(actor + 0x8c) = value > 0 ? 0x4cd : -0x4cd;
             }
         }

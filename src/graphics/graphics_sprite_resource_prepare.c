@@ -7,7 +7,7 @@
  */
 #include "tingle/types.h"
 
-extern void *func_0207142c(void *archive, u32 resource_id, u32 *size);
+extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resource_id, u32 *size);
 
 void func_02070418(void *resource)
 {
@@ -17,14 +17,14 @@ void func_02070418(void *resource)
 
     if (*(void **)(bytes + 0x14) != 0)
         return;
-    source = func_0207142c(*(void **)(bytes + 0x04),
+    source = GraphicsArchive_LoadIndexedPayload(*(void **)(bytes + 0x04),
                            *(u32 *)(bytes + 0x10), &size);
     *(void **)(bytes + 0x14) = source;
     *(void **)(bytes + 0x20) = source;
     *(u8 **)(bytes + 0x24) = (u8 *)source + 0x0c;
 }
 
-void func_02070860(void *resource)
+void GraphicsSpriteResource_Prepare(void *resource)
 {
     u8 *bytes = (u8 *)resource;
     u32 size;
@@ -32,7 +32,7 @@ void func_02070860(void *resource)
 
     if (*(void **)(bytes + 0x14) != 0)
         return;
-    source = func_0207142c(*(void **)(bytes + 0x04),
+    source = GraphicsArchive_LoadIndexedPayload(*(void **)(bytes + 0x04),
                            *(u32 *)(bytes + 0x10), &size);
     *(void **)(bytes + 0x14) = source;
     *(void **)(bytes + 0x20) = source;
@@ -47,7 +47,7 @@ void func_02070d74(void *resource)
 
     if (*(void **)(bytes + 0x14) != 0)
         return;
-    source = (u8 *)func_0207142c(*(void **)(bytes + 0x04),
+    source = (u8 *)GraphicsArchive_LoadIndexedPayload(*(void **)(bytes + 0x04),
                                   *(u32 *)(bytes + 0x10), &size);
     *(u8 **)(bytes + 0x14) = source;
     *(u8 **)(bytes + 0x20) = source;

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_height_attachment_update.c.
 .text
 .extern func_020adae4
-.extern func_020be334
+.extern SignedAbsoluteValue
     .global Actor_UpdateAttachmentHeight
     .type Actor_UpdateAttachmentHeight, @function
 Actor_UpdateAttachmentHeight: ; 0x02039c7c
@@ -33,7 +33,7 @@ Actor_UpdateAttachmentHeight: ; 0x02039c7c
 .L_02039cdc:
     ldr r0, [r5, #0x24]
     sub r0, r0, r4
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x4000
     ldrlt r0, [r5, #0xd0]
     orrlt r0, r0, #0x20

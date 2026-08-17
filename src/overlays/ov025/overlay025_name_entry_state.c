@@ -48,7 +48,7 @@ extern void GameWork_SetFlag(void *, s32);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -59,10 +59,10 @@ extern void func_02092260(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void func_02092314(void *, s32, s32);
 extern void func_020927b8(void *);
-extern s32 func_02092910(void *, void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void func_02092c8c(s32, s32);
-extern void func_02092e9c(void *, void *, s32);
-extern s32 func_02093360(void *, const void *);
+extern void TitleDialog_SetText(void *, void *, s32);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
@@ -145,8 +145,8 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             void *font = func_020791e0(data_021f3ecc, 0x6b);
-            func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
-            func_02093360(FIELD(void *, scene, 0x50c), 0);
+            TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
+            TitleDialog_UpdateTextPage(FIELD(void *, scene, 0x50c), 0);
             void *editor = Heap_Alloc(
                 0x1a0, data_ov025_022033bc, 4, gHeapContext);
             if (editor)
@@ -178,7 +178,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                     func_02092260(scene, 9);
                     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
                     void *font = func_020791e0(data_021f3ecc, 0x28);
-                    func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
+                    TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
                     func_02092c8c(1, -8);
                     FIELD(s32, scene, 4) = 30;
                     FIELD(s32, scene, 8) = 0;
@@ -203,7 +203,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             FIELD(s32, scene, 4) = 20;
             FIELD(s32, scene, 8) = 0;
             goto maintained_return;
-        } else if (func_02092910(
+        } else if (GraphicsSpriteState_TestTouchPoint(
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x34),
                        (u8 *)scene + 0x30)) {
             func_02092260(scene, 0xb);
@@ -217,7 +217,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_ov025_021fd160(FIELD(void *, scene, 0x598),
                                 FIELD(void *, scene, 0x574));
             func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 1);
-        } else if (func_02092910(
+        } else if (GraphicsSpriteState_TestTouchPoint(
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x38),
                        (u8 *)scene + 0x30)) {
             func_02092260(scene, 0xb);
@@ -231,7 +231,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_ov025_021fd160(FIELD(void *, scene, 0x598),
                                 FIELD(void *, scene, 0x574));
             func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 2);
-        } else if (func_02092910(
+        } else if (GraphicsSpriteState_TestTouchPoint(
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x3c),
                        (u8 *)scene + 0x30)) {
             func_02092260(scene, 0xb);
@@ -242,7 +242,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_ov025_021fd160(FIELD(void *, scene, 0x598),
                                 FIELD(void *, scene, 0x574));
             func_ov025_021fd2e8(FIELD(void *, scene, 0x598), 3);
-        } else if (func_02092910(
+        } else if (GraphicsSpriteState_TestTouchPoint(
                        FIELD(void *, FIELD(void *, scene, 0x598), 0x30),
                        (u8 *)scene + 0x30)) {
             if (FIELD(s32, FIELD(void *, scene, 0x598), 0x17c)) {
@@ -265,7 +265,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             } else {
                 for (i = 0; i < 77; ++i) {
                     editor = FIELD(void *, scene, 0x598);
-                    if (!func_02092910(
+                    if (!GraphicsSpriteState_TestTouchPoint(
                             FIELD(void *, (u8 *)editor + i * 4, 0x40),
                             (u8 *)scene + 0x30)) {
                         continue;
@@ -462,7 +462,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                 if (row) {
                     GraphicsSpriteGroup_Destroy(FIELD(void *, row, 0xc));
                     func_020927b8((u8 *)row + 0x30);
-                    func_02071eb8(row);
+                    AnimationResourceState_Destroy(row);
                     Heap_Free(row);
                 }
                 row = Heap_Alloc(
@@ -493,7 +493,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             void *editor = FIELD(void *, scene, 0x598);
             if (editor) {
                 GraphicsSpriteGroup_Destroy(FIELD(void *, editor, 0));
-                func_02071eb8((u8 *)editor + 4);
+                AnimationResourceState_Destroy((u8 *)editor + 4);
                 Heap_Free(editor);
             }
             FIELD(void *, scene, 0x598) = 0;
@@ -530,8 +530,8 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_02092c8c(3, 0);
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             void *font = func_020791e0(data_021f3ecc, 0x6b);
-            func_02092e9c(FIELD(void *, scene, 0x50c), font, 3);
-            func_02093360(FIELD(void *, scene, 0x50c), 0);
+            TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
+            TitleDialog_UpdateTextPage(FIELD(void *, scene, 0x50c), 0);
             FIELD(s32, scene, 4) = 2;
             FIELD(s32, scene, 8) = 0;
         }

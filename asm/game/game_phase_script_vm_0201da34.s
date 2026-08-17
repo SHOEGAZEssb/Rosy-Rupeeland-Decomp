@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/overlay60_object_spawn.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020791e0
 .extern Actor_GetCollection
-.extern func_02078e98
-.extern func_0201d9e4
+.extern LanguageResourceManager_FindById
+.extern DisplayRouting_MatchesRequest
 .extern func_0201da34
 .extern OverlayManager_GetGlobal
 .extern OverlayManager_LoadOverlay
@@ -30,7 +30,7 @@ func_0201da34: ; 0x0201da34
     mvnne r1, #0x7f
     cmpne r0, r1
     ldmeqia sp!, {r3, r4, r5, pc}
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r1, r0
     mov r0, r4
     and r1, r1, #0xff

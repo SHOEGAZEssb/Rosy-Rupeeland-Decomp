@@ -11,14 +11,14 @@
 extern "C" {
 #endif
 extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *object);
-extern void func_02071f38(void *member);
+extern void AnimationResourceState_ReleaseResources(void *member);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Pass +0x84 and +0x88 to GraphicsSpriteGroup_ReleaseState, clear +0x88, then reset embedded
- * member +0x78 through func_02071f38. Return no value. Resource effects are
+ * member +0x78 through AnimationResourceState_ReleaseResources. Return no value. Resource effects are
  * delegated and no direct hardware access occurs.
  */
 #ifdef __cplusplus
@@ -28,5 +28,5 @@ void func_ov009_021fd338(void *state)
 {
     GraphicsSpriteGroup_ReleaseState(FIELD(void *, state, 0x84), FIELD(void *, state, 0x88));
     FIELD(void *, state, 0x88) = 0;
-    func_02071f38((u8 *)state + 0x78);
+    AnimationResourceState_ReleaseResources((u8 *)state + 0x78);
 }

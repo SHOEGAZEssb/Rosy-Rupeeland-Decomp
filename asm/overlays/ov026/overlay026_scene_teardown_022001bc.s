@@ -6,7 +6,7 @@
 .extern data_ov026_022048b8
 .extern data_ov026_02204944
 .extern func_0205940c
-.extern func_02071e04
+.extern GraphicsArchive_ReleaseOwlvResource
 .extern GraphicsResourceSetVariant_Destroy
 .extern func_02075020
 .extern Graphics3DResourceOwner_Destroy
@@ -48,7 +48,7 @@ func_ov026_022001bc:
     ldr r0, L_02200308
     ldr r1, [r4, #0x15c]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     ldr r5, [r4, #0x68]
     cmp r5, #0x0
     beq L_0220023c

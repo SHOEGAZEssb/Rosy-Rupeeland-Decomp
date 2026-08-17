@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
@@ -21,7 +21,7 @@ func_ov059_02210114:
     str r0, [r4, #0x0]
 .L_02210144:
     add r0, r4, #0x44
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     mov r0, #0x0
     str r0, [r4, #0x50]
     str r0, [r4, #0x54]

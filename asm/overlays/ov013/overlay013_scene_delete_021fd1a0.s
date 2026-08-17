@@ -4,8 +4,8 @@
     .extern data_020f4e14
     .extern data_021052fc
     .extern data_ov013_021fed6c
-    .extern func_0201e14c
-    .extern func_02071eb8
+    .extern RuntimePresentationManager_BroadcastSlot1C
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_ov013_021fce00
@@ -55,7 +55,7 @@ L_021fd204:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e14c
+    bl RuntimePresentationManager_BroadcastSlot1C
     add r0, r4, #0x9c
     add r0, r0, #0x800
     bl func_ov013_021fce00
@@ -70,13 +70,13 @@ L_021fd204:
     ldr r3, L_021fd2a8
     bl __destroy_arr
     add r0, r4, #0x78
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x6c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x60
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x54
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

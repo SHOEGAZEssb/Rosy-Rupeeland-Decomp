@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_quad_controller_lifecycle.c for documented portable C. */
 
     .extern PresentationList_DeleteAll
-    .extern func_02071e04
+    .extern GraphicsArchive_ReleaseOwlvResource
     .extern Graphics3DResourceOwner_RemoveManager
     .extern Graphics3DLightSet_Destroy
     .extern GraphicsResourceSetVariant_Destroy
@@ -25,7 +25,7 @@ func_ov036_02202590:
     ldr r0, L_02202620
     ldr r1, [r4, #0xf4]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     ldr r1, [r4, #0xf8]
     ldr r0, [r1, #0x0]
     bl Graphics3DResourceOwner_RemoveManager

@@ -42,7 +42,7 @@ extern void func_02059a64(void *);
 extern void func_02059a68(void *);
 extern void func_020645d8(void *);
 extern void func_020646cc(void *);
-extern void func_02022fbc(void *);
+extern void SelfLinkedSpriteConfig_Init(void *);
 extern void func_0206f750(void *);
 extern void func_0206f760(void *);
 extern void func_0206fbb0(void *);
@@ -248,13 +248,13 @@ void __sinit_020c15c0(void)
 }
 
 /*
- * No inputs. Initialize data_021e9db8 by calling func_02022fbc. The retail body
+ * No inputs. Initialize data_021e9db8 by calling SelfLinkedSpriteConfig_Init. The retail body
  * is a tail call. Global configuration state changes; no value is returned and
  * no direct SDK or hardware effect is introduced here.
  */
 void __sinit_020c15ec(void)
 {
-    func_02022fbc(data_021e9db8);
+    SelfLinkedSpriteConfig_Init(data_021e9db8);
 }
 
 /*

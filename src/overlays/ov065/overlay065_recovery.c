@@ -52,7 +52,7 @@ extern void func_020593ac(O65_ARGS);
 #endif
 #undef O65_ARGS
 
-void func_ov065_02210a04(void *self, s32 amount);
+void Overlay065Scene_LaunchAmountParticles(void *self, s32 amount);
 
 static s32 fxmul(s32 a, s32 b) { return (s32)(((s64)a * b + 0x800) >> 12); }
 static void call_method(void *o, u32 offset, s32 arg)
@@ -63,7 +63,7 @@ static void call_method(void *o, u32 offset, s32 arg)
 static void delete_resource(void *o) { if (o != 0) call_method(o, 4, 0); }
 
 /* Initialize one reusable particle, sprite, and heap-owned path. */
-O65Particle *func_ov065_0220fd20(O65Particle *p, s32 animation)
+O65Particle *Overlay065Particle_Init(O65Particle *p, s32 animation)
 {
     p->frame = p->duration = 0; p->state = 3; p->rotation = 0;
     p->animation = (s16)animation; p->padding = 0;
@@ -75,14 +75,14 @@ O65Particle *func_ov065_0220fd20(O65Particle *p, s32 animation)
 }
 
 /* Initialize an fx32 vector with a scaled copy of the input components. */
-void func_ov065_0220fe7c(O65Vec *out, const O65Vec *in, s32 scale)
+void Overlay065Vector_InitScaled(O65Vec *out, const O65Vec *in, s32 scale)
 {
     VecFx32Object_Init(out); out->x = fxmul(in->x, scale);
     out->y = fxmul(in->y, scale); out->z = fxmul(in->z, scale);
 }
 
 /* Initialize the output and derive the curve control point between two vectors. */
-void func_ov065_0220fee8(O65Vec *out, O65Vec *a, O65Vec *b)
+void Overlay065Vector_DeriveControlPoint(O65Vec *out, O65Vec *a, O65Vec *b)
 {
     VecFx32Object_Init(out);
     func_020adff0(a != 0 ? &a->x : 0, b != 0 ? &b->x : 0, &out->x);
@@ -93,8 +93,8 @@ void func_ov065_0220fdac(O65Particle *p, O65Vec *start, O65Vec *end,
                          s32 animation, s32 rotation, s32 duration)
 {
     O65Vec a, b, control; void *r = F(void *, data_ov065_02210c00, 0x14c);
-    func_ov065_0220fe7c(&a, start, 0x4cd); func_ov065_0220fe7c(&b, end, 0xb33);
-    func_ov065_0220fee8(&control, &a, &b);
+    Overlay065Vector_InitScaled(&a, start, 0x4cd); Overlay065Vector_InitScaled(&b, end, 0xb33);
+    Overlay065Vector_DeriveControlPoint(&control, &a, &b);
     VecFx32Object_Destroy(&b); VecFx32Object_Destroy(&a);
     VecFx32Triple_Set(p->path, start, end, &control);
     p->frame = 0; p->duration = (s16)duration; p->state = 0;
@@ -107,7 +107,7 @@ void func_ov065_0220fdac(O65Particle *p, O65Vec *start, O65Vec *end,
 }
 
 /* Advance one particle and return one while it remains active. */
-s32 func_ov065_0220ff20(O65Particle *p, void *scene)
+s32 Overlay065Particle_Update(O65Particle *p, void *scene)
 {
     if (p->state == 0) {
         O65Vec pos; s32 i; VecFx32Object_Init(&pos);
@@ -184,7 +184,7 @@ void *func_ov065_022101bc(void *self, s32 value, O65Vec *position,
         r, 12, 0, 6, 0, 0);
     for (group = 0; group < 2; ++group) for (index = 0; index < 30; ++index) {
         O65Particle *p = (O65Particle *)Heap_Alloc(0x14, data_ov065_02210be4, 4, &gHeapContext);
-        if (p != 0) func_ov065_0220fd20(p, 0x10);
+        if (p != 0) Overlay065Particle_Init(p, 0x10);
         F(O65Particle *, self, 0x28 + group * 0x78 + index * 4) = p;
     }
     F(s32, self, 0x15c) = func_020befec(value, value < 1000 ? 3 : value < 2000 ? 4 : 5);
@@ -193,7 +193,7 @@ void *func_ov065_022101bc(void *self, s32 value, O65Vec *position,
 }
 
 /* Tear down particles, presentation resources, the overlay slot, and base. */
-void *func_ov065_022103c8(void *self)
+void *Overlay065Scene_Destroy(void *self)
 {
     s32 g, i; F(void *, self, 0) = data_ov065_02210bb8;
     Scene_ClearFlags03((Scene *)self);
@@ -213,11 +213,11 @@ void *func_ov065_022103c8(void *self)
 }
 
 /* Perform ordinary teardown and release the scene allocation. */
-void *func_ov065_022104e0(void *self)
-{ func_ov065_022103c8(self); Heap_Free(self); return self; }
+void *Overlay065Scene_Delete(void *self)
+{ Overlay065Scene_Destroy(self); Heap_Free(self); return self; }
 
 /* Advance the scene state machine, HUD, particles, and animations. */
-s32 func_ov065_02210600(void *self)
+s32 Overlay065Scene_Update(void *self)
 {
     void *actor; s32 offset = 0, active = 0, g, i;
     if (SceneManager_GetCurrent(gSceneManager) != self) return 0;
@@ -232,7 +232,7 @@ s32 func_ov065_02210600(void *self)
             F(s32, self, 8) = 2; GraphicsSpriteState_SetAnimationIndex(F(void *, self, 0x158), 20);
             F(u16, self, 0x120) = 0; if (amount > F(s32, self, 0x11c)) amount = F(s32, self, 0x11c);
             F(s32, self, 0x11c) -= amount; GamePhaseCurrencyHud_AddCurrency(gLupyContext, -amount, 0);
-            func_ov065_02210a04(self, amount); } break;
+            Overlay065Scene_LaunchAmountParticles(self, amount); } break;
     case 2:
         if (++F(u16, self, 0x120) > 30) {
             if (F(s32, self, 0x11c) > 0) { GraphicsSpriteState_SetAnimationIndex(F(void *, self, 0x158), 12);
@@ -247,7 +247,7 @@ s32 func_ov065_02210600(void *self)
         break;
     }
     for (g = 0; g < 2; ++g) for (i = 0; i < 30; ++i)
-        active += func_ov065_0220ff20(F(O65Particle *, self, 0x28 + g * 0x78 + i * 4), self);
+        active += Overlay065Particle_Update(F(O65Particle *, self, 0x28 + g * 0x78 + i * 4), self);
     if (F(s32, self, 8) == 3 && active == 0) { call_method(self, 4, 0); return 1; }
     GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
     GraphicsSpriteState_SetDepthOrderedWorldPosition(F(void *, self, 0x158),
@@ -259,7 +259,7 @@ s32 func_ov065_02210600(void *self)
 s32 func_ov065_022108f8(void) { call_method(data_021052fc, 12, 0); return 0; }
 
 /* Generate a randomized target around the scene's source vector. */
-void func_ov065_0221091c(void *self, O65Vec *out)
+void Overlay065Scene_GenerateRandomTarget(void *self, O65Vec *out)
 {
     s32 i, x, y, radius; F(u16, self, 0x122) += (u16)((genrand_int32() & 0x7ff) + 0x1000);
     i = F(u16, self, 0x122) >> 4;
@@ -270,7 +270,7 @@ void func_ov065_0221091c(void *self, O65Vec *out)
 }
 
 /* Split an amount into randomized denominations and launch its particles. */
-void func_ov065_02210a04(void *self, s32 amount)
+void Overlay065Scene_LaunchAmountParticles(void *self, s32 amount)
 {
     u16 values[7]; O65Vec start, target; s32 denomination = 0, i, quotient;
     for (i = 0; i < 7; ++i) values[i] = data_ov065_02210b5c[i];
@@ -282,7 +282,7 @@ void func_ov065_02210a04(void *self, s32 amount)
     for (i = 0; i < 30 && amount > 0; ++i) { s32 chosen = denomination;
         while (chosen >= 0) { s32 value = (s16)values[chosen];
             if (amount >= value) { O65Particle *p; amount -= value;
-                func_ov065_0221091c(self, &target);
+                Overlay065Scene_GenerateRandomTarget(self, &target);
                 if (chosen > 0 && (genrand_int32() & 7) == 0) --chosen;
                 p = F(O65Particle *, self, 0x28 + F(s16, self, 0x118) * 0x78 + i * 4);
                 /* Retail consumes the unsigned-division remainder in r1. */

@@ -40,10 +40,10 @@ extern char data_ov060_0221064c[], data_ov060_02210654[];
 extern void *data_020f4e18, *data_020f4e14, *gSoundContext;
 extern GamePhaseRuntime* data_021052fc;
 extern GameWork* gGameWork;
-extern void *func_02071ea4(void*), *func_02071eb8(void*);
+extern void *AnimationResourceState_InitEmbedded(void*), *AnimationResourceState_Destroy(void*);
 extern void func_02071ee0(void*, void*, s32, s32, s32);
-extern void func_02059278(void*, s32, s32);
-extern void func_020592d8(void*, s32, s32, s32);
+extern void Sound_PlayDirectSequence(void*, s32, s32);
+extern void Sound_FadeDirectSequence(void*, s32, s32, s32);
 extern void Sound_Play(void*, s32, s32);
 #ifdef __cplusplus
 }
@@ -158,7 +158,7 @@ Overlay60Resources* func_ov060_0220ff1c(Overlay60Resources* self, Scene* scene,
     RectS16 bounds;
     Overlay60TouchRegion* region;
     GraphicsSpriteSource3 source;
-    func_02071ea4(self->resource);
+    AnimationResourceState_InitEmbedded(self->resource);
     func_ov060_0220ff00(0);
     func_02071ee0(self->resource, data_020f4e18, first, second, third);
     self->group = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
@@ -195,7 +195,7 @@ Overlay60Resources* func_ov060_022100b0(Overlay60Resources* self)
 {
     GraphicsSpriteGroup_Clear(self->group);
     GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, self->group);
-    func_02071eb8(self->resource);
+    AnimationResourceState_Destroy(self->resource);
     return self;
 }
 /* Translate every edge of a borrowed HUD rectangle. */
@@ -310,15 +310,15 @@ s32 func_ov060_02210470(Overlay60Scene* self, s32 selection)
 {
     s32 packed;
     if (selection == 100) {
-        func_02059278(gSoundContext, 0xbc, 0x7f);
-        func_020592d8(gSoundContext, 0xbc, 60, 0);
+        Sound_PlayDirectSequence(gSoundContext, 0xbc, 0x7f);
+        Sound_FadeDirectSequence(gSoundContext, 0xbc, 60, 0);
         packed = self->firstSound;
         if (packed != -1)
             Sound_Play(gSoundContext, (u16)packed >> 7, (u16)packed & 0x7f);
         GameWork_SetFlag(gGameWork, 0x3ea);
     } else {
-        func_02059278(gSoundContext, 0xbd, 0x7f);
-        func_020592d8(gSoundContext, 0xbd, 60, 0);
+        Sound_PlayDirectSequence(gSoundContext, 0xbd, 0x7f);
+        Sound_FadeDirectSequence(gSoundContext, 0xbd, 60, 0);
         packed = self->secondSound;
         if (packed != -1)
             Sound_Play(gSoundContext, (u16)packed >> 7, (u16)packed & 0x7f);

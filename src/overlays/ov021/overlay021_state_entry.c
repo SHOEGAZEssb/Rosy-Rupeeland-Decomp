@@ -31,10 +31,10 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordCategory_PublishById(void *, u16);
 extern void func_02092260(void *, s32);
-extern void func_02092850(s32);
+extern void TitlePalette_SetMainBackdrop(s32);
 extern void func_02092c8c(s32, s32);
-extern s32 func_02093360(void *, const void *);
-extern void func_020939d8(void *);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
@@ -45,7 +45,7 @@ extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void func_ov021_021fe520(void *);
 extern void func_ov021_021fe63c(void *);
 extern void func_ov021_021fe84c(void *);
-extern s32 func_ov021_021fed30(void *);
+extern s32 Overlay021_IsAuxiliaryRecordAvailable(void *);
 extern void func_ov021_021feea4(void *);
 extern void func_ov021_021fee54(void *);
 extern void func_ov021_021fefcc(void *);
@@ -57,7 +57,7 @@ extern s32 func_ov021_021ffa10(const void *);
 extern void func_ov045_0220c028(void *);
 extern void func_ov045_0220c128(void *, s32);
 extern s32 func_ov045_0220c9e8(s32, s32);
-extern void func_ov045_0220d2f8(s32, s32);
+extern void Overlay045_DrawSelectorPreview(s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -103,7 +103,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
                 GameWork_ClearFlag(gGameWork, 0x3b2);
                 GraphicsSpriteRenderer_SetFontResource(
                     gDebugFont, FIELD(void *, state, 0x58));
-                func_ov045_0220d2f8(FIELD(s32, state, 0x54), 0);
+                Overlay045_DrawSelectorPreview(FIELD(s32, state, 0x54), 0);
             } else {
                 func_ov021_021ff0e0(state, 0);
             }
@@ -140,7 +140,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
             const void *content =
                 RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 0);
             func_ov021_021ff1d0(state, content);
-            s32 result = func_02093360(FIELD(void *, state, 0x388),
+            s32 result = TitleDialog_UpdateTextPage(FIELD(void *, state, 0x388),
                                        data_021f5ed0);
             if ((result & 0x200) == 0)
                 func_ov045_0220c028(FIELD(void *, state, 0x38c));
@@ -164,7 +164,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
         break;
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021fe63c(state);
             FIELD(s32, state, 4)++;
@@ -176,7 +176,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
         func_ov021_021fe84c(state);
         if (FIELD(s32, state, 0x3d8) != 0) {
             FIELD(s32, state, 0x48) = 0;
-            func_02092850(0);
+            TitlePalette_SetMainBackdrop(0);
             func_ov021_021fd7c0(state, data_ov021_02202f38[0],
                                 data_ov021_02202f38[1]);
         } else {
@@ -226,7 +226,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
         if ((FIELD(u32, state, 0x20) & 0x20) != 0) {
             if (func_02095860((u8 *)state + 0xa0,
                               (u8 *)state + 0x30, 0, 4) != 0) {
-                func_020939d8(FIELD(void *, state, 0x388));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 func_02092260(state, 3);
                 func_ov021_021fd7c0(state, data_ov021_02202f28[0],
                                     data_ov021_02202f28[1]);
@@ -241,12 +241,12 @@ extern "C" s32 func_ov021_021ffa38(void *state)
                     func_02092260(state, 9);
                     continue;
                 }
-                func_020939d8(FIELD(void *, state, 0x388));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 func_02092260(state, 2);
                 FIELD(s32, state, 0x2c4) = channel;
                 func_02092c8c(1, -16);
                 if (channel == 1) {
-                    if (func_ov021_021fed30(state) != 0)
+                    if (Overlay021_IsAuxiliaryRecordAvailable(state) != 0)
                         func_ov021_021fd7c0(
                             state, data_ov021_02202f20[0],
                             data_ov021_02202f20[1]);

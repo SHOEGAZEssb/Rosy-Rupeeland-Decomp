@@ -21,7 +21,7 @@ extern "C" void func_020594bc(void *sound, s32 sequence, s32 parameter, s32 valu
 extern "C" void func_020594d4(void *sound, s32 sequence, s32 parameter, s32 value);
 extern "C" void func_0205946c(void *sound, s32 sequence, s32 parameter, s32 value);
 extern "C" void func_020595b0(void *sound, s32 sequence, s32 value);
-extern "C" void func_0205929c(void *sound, s32 sequence, s32 value);
+extern "C" void Sound_StopDirectSequence(void *sound, s32 sequence, s32 value);
 extern "C" void func_0205958c(void *sound, s32 value);
 extern "C" void func_020a1ec0(void *owner, u32 effect);
 extern "C" void func_020a1e10(void *owner);
@@ -220,7 +220,7 @@ extern "C" void func_ov042_02207114(void *scene)
                 func_020595b0(gSoundContext, 0, 60);
                 const s32 channels[5] = {0xa4, 0xa5, 0xcd, 0xea, 0xf0};
                 for (s32 i = 0; i < 5; ++i)
-                    func_0205929c(gSoundContext, channels[i], 0);
+                    Sound_StopDirectSequence(gSoundContext, channels[i], 0);
                 func_020a1ec0(owner, 0xb500);
                 FIELD(s32, scene, 0x1c4) = FIELD(s32, scene, 0x20c) = 0;
                 func_ov042_02205180(FIELD(void *, scene, 0xa0));
@@ -275,7 +275,7 @@ extern "C" void func_ov042_02207114(void *scene)
         if (tick == 210) {
             DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0), 0, 16, 17);
             DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1), 0, 16, 17);
-            func_0205929c(gSoundContext, 0x16, 0);
+            Sound_StopDirectSequence(gSoundContext, 0x16, 0);
         }
         if (tick > 210 && tick < 234 &&
             DisplayBrightness_GetCurrent(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0)) == 16 &&

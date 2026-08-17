@@ -9,7 +9,7 @@
     .extern func_02091d08
     .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
-    .extern func_02071adc
+    .extern GraphicsArchive_AcquireOwlvResource
     .extern Graphics3DResourceOwner_CreateManager
     .extern Heap_Alloc
     .extern func_ov035_021fcf34
@@ -20,14 +20,14 @@
     .extern func_ov035_021fdd78
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov035_021fdd28
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern Presentation_SetScript
     .extern Presentation_InterpolateLinear
     .extern func_ov035_022016ac
     .extern func_020b035c
     .extern func_020b0374
     .extern func_020b0300
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern func_02091d24
     .extern data_ov035_02203bd0
     .extern data_020f4e18
@@ -85,7 +85,7 @@ func_ov035_022016e8:
     ldr r0, L_02201b90
     ldr r1, L_02201b98
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r5, #0xfc]
     ldr r1, [r5, #0x4]
     ldr r0, L_02201b9c
@@ -101,7 +101,7 @@ L_022017cc:
     ldr r0, L_02201b90
     ldr r1, L_02201ba0
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     ldr r3, L_02201ba4
     str r0, [r5, #0x100]
     ldr r0, L_02201b90
@@ -116,7 +116,7 @@ L_02201804:
     ldr r0, L_02201b90
     ldr r1, L_02201ba0
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     ldr r3, L_02201ba8
     str r0, [r5, #0x100]
     ldr r0, L_02201b90
@@ -131,7 +131,7 @@ L_0220183c:
     ldr r0, L_02201b90
     ldr r1, L_02201bac
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     ldr r3, L_02201bb0
     str r0, [r5, #0x100]
     ldr r0, L_02201b90
@@ -240,7 +240,7 @@ L_02201930:
     cmp r0, #0x0
     beq L_022019f4
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_022019f4:
     str r0, [r5, #0xd8]
     mov r1, r0
@@ -295,7 +295,7 @@ L_02201a28:
     movs r8, r0
     beq L_02201acc
     mov r1, r10
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
     mov r8, r0
 L_02201acc:
     mla r1, r4, r6, r7
@@ -332,7 +332,7 @@ L_02201acc:
     str r0, [sp, #0x0]
     bl func_020b0300
     mov r0, #0x0
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     mov r1, #0x0
     mov r3, #0x1
     add r0, r5, #0x148

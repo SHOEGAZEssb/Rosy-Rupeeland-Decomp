@@ -1,10 +1,10 @@
 .text
 /* Exact fallback; see overlay039_mode_score.c for portable C. */
-    .extern func_020c10d4
+    .extern Memory_ClearBytes
     .extern VecFx32Object_Init
     .extern VecFx32Object_Assign
     .extern VecFx32Object_Destroy
-    .extern func_020be334
+    .extern SignedAbsoluteValue
     .extern func_020adc90
 
     .global func_ov039_021ff458
@@ -15,7 +15,7 @@ func_ov039_021ff458:
     mov r9, r1
     add r0, sp, #0x10
     mov r1, #0xc
-    bl func_020c10d4
+    bl Memory_ClearBytes
     add r0, sp, #0x0
     bl VecFx32Object_Init
     mov r7, #0x0
@@ -33,13 +33,13 @@ L_021ff48c:
     sub r0, r1, r0
     ldr r1, [sp, #0x8]
     sub r6, r2, r1
-    bl func_020be334
+    bl SignedAbsoluteValue
     rsb r0, r0, #0x48000
     mov r1, #0x48000
     bl func_020adc90
     mov r8, r0
     mov r0, r6
-    bl func_020be334
+    bl SignedAbsoluteValue
     rsb r0, r0, #0x30000
     mov r1, #0x30000
     bl func_020adc90
@@ -78,13 +78,13 @@ L_021ff48c:
     ldr r1, [sp, #0x8]
     sub r0, r3, r0
     sub r5, r2, r1
-    bl func_020be334
+    bl SignedAbsoluteValue
     rsb r0, r0, #0x48000
     mov r1, #0x48000
     bl func_020adc90
     mov r4, r0
     mov r0, r5
-    bl func_020be334
+    bl SignedAbsoluteValue
     rsb r0, r0, #0x50000
     mov r1, #0x50000
     bl func_020adc90

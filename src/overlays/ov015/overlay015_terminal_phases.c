@@ -21,10 +21,10 @@ extern void GameWork_ClearFlag(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void ActorDerivedType1_StartRecord(void *, s32);
-extern s32 func_020628c8(void *);
+extern s32 ActorDescriptor_GetPrimaryLabel(void *);
 extern s32 func_02062a10(void *);
 extern void func_02062db0(void *);
-extern void *func_02062e00(void *);
+extern void *InventoryRecord_GetMetadata(void *);
 extern void func_02092260(void *, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov001_021fc39c(void *);
@@ -33,7 +33,7 @@ extern void func_ov001_021fc7f4(void *);
 extern void func_ov001_021fc88c(void *);
 extern void func_ov001_021fc964(void *, s32, void *);
 extern void func_ov015_021fce30(void *, u32, u32);
-extern void func_ov015_021fd68c(void *);
+extern void Overlay015_UpdateRecords(void *);
 extern void func_ov015_021fdad4(void *);
 extern void func_ov015_021fde00(void *, s32, s32, void *);
 extern void func_ov015_021fdeac(void *);
@@ -85,7 +85,7 @@ extern "C" s32 func_ov015_021fe588(void *state)
         break;
     case 1: {
         void *item = FIELD(void *, status, 0xc);
-        void *text = (void *)func_020628c8(item);
+        void *text = (void *)ActorDescriptor_GetPrimaryLabel(item);
         if (func_ov015_021fe560(state, FIELD(u16, item, 0)) != 0) {
             func_ov015_021fde00(state, 0x26, 0, text);
             FIELD(s32, state, 4) = 10;
@@ -137,7 +137,7 @@ extern "C" s32 func_ov015_021fe588(void *state)
         overlay015_terminal_transition(state, data_ov015_021febc8);
         break;
     }
-    func_ov015_021fd68c(state);
+    Overlay015_UpdateRecords(state);
     return 0;
 }
 
@@ -171,7 +171,7 @@ extern "C" s32 func_ov015_021fe828(void *state)
         if (++FIELD(s32, state, 8) > 30) {
             func_ov001_021fc39c(FIELD(void *, state, 0xdc));
             func_ov015_021fde00(state, 0x10, 1,
-                                (void *)func_020628c8(FIELD(void *, state, 0xec)));
+                                (void *)ActorDescriptor_GetPrimaryLabel(FIELD(void *, state, 0xec)));
             overlay015_terminal_step(state, 1);
         }
         break;
@@ -182,7 +182,7 @@ extern "C" s32 func_ov015_021fe828(void *state)
         }
         break;
     }
-    func_ov015_021fd68c(state);
+    Overlay015_UpdateRecords(state);
     return 0;
 }
 
@@ -206,7 +206,7 @@ extern "C" s32 func_ov015_021fe9b8(void *state)
     } else if (FIELD(s32, state, 4) == 1 && ++FIELD(s32, state, 8) > 10) {
         void *status = func_ov001_021fc7e4(FIELD(void *, state, 0xdc));
         void *item = FIELD(void *, status, 0xc);
-        void *metadata = func_02062e00(item);
+        void *metadata = InventoryRecord_GetMetadata(item);
 
         if (FIELD(u8, metadata, 2) == 2 &&
             (FIELD(u16, metadata, 4) == 1 || FIELD(u16, metadata, 4) == 2)) {
@@ -219,7 +219,7 @@ extern "C" s32 func_ov015_021fe9b8(void *state)
         GameWork_ClearFlag(gGameWork, 0x389);
         overlay015_terminal_transition(state, data_ov015_021feba8);
     }
-    func_ov015_021fd68c(state);
+    Overlay015_UpdateRecords(state);
     return 0;
 }
 
@@ -229,7 +229,7 @@ extern "C" s32 func_ov015_021fe9b8(void *state)
  */
 extern "C" s32 func_ov015_021feb20(void *state)
 {
-    func_ov015_021fd68c(state);
+    Overlay015_UpdateRecords(state);
     return 1;
 }
 

@@ -12,10 +12,10 @@
 .extern func_02034718
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern Type7Actor_SetCallbackPair
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern func_0206e590
 .extern func_020adae4
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern gGameWork
 .text
     .global Type7Actor_ProcessBoundaryTransition
@@ -34,7 +34,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     cmp r4, #0x0
     beq .L_0204a9cc
     mov r0, r4
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r4
     bl Heap_Free
 .L_0204a9cc:
@@ -174,7 +174,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     cmp r6, #0x2
     bne .L_0204ac4c
     ldrsh r0, [r8, #0x6a]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     sub r0, r5, r0
     cmp r0, #0x40
     bge .L_0204acec
@@ -212,7 +212,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     b .L_0204acec
 .L_0204ac4c:
     ldrsh r0, [r8, #0x6e]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     add r1, r5, r0
     ldr r0, [sp, #0x10]
     sub r0, r0, #0x40
@@ -387,7 +387,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     cmp r6, #0x2
     bne .L_0204aef0
     ldrsh r0, [r8, #0x6a]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     ldr r1, [sp, #0x24]
     add r0, r0, #0x30
     add r0, r1, r0, lsl #0xc
@@ -395,7 +395,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     b .L_0204af08
 .L_0204aef0:
     ldrsh r0, [r8, #0x6e]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     ldr r1, [sp, #0x24]
     add r0, r0, #0x30
     sub r0, r1, r0, lsl #0xc

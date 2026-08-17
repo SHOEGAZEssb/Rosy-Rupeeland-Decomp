@@ -4,7 +4,7 @@
 .extern data_020d6a70
 .extern VecFx32Object_Destroy
 .extern func_0201e28c
-.extern func_0206ba50
+.extern AuxiliaryCore_Destroy
 
     .global func_020254a4
     .type func_020254a4, @function
@@ -31,7 +31,7 @@ func_020254a4: ; 0x020254a4
     cmp r5, #0x0
     beq .L_02025500
     mov r0, r5
-    bl func_0206ba50
+    bl AuxiliaryCore_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02025500:

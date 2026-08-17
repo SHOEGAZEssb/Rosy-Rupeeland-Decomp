@@ -1,5 +1,5 @@
     .text
-    .extern func_ov015_021fd68c
+    .extern Overlay015_UpdateRecords
 
 /* Exact fallbacks for completion and display hooks; see src/overlays/ov015/overlay015_terminal_phases.c. */
     .global func_ov015_021feb20
@@ -7,7 +7,7 @@
 
 func_ov015_021feb20:
     stmdb sp!, {r3, lr}
-    bl func_ov015_021fd68c
+    bl Overlay015_UpdateRecords
     mov r0, #0x1
     ldmia sp!, {r3, pc}
 

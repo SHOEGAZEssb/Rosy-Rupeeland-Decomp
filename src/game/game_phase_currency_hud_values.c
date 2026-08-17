@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern const s32 data_020c368c[];
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value);
 #ifdef __cplusplus
 }
@@ -121,7 +121,7 @@ void GamePhaseCurrencyHud_AddCurrency(GamePhaseCurrencyHud *self, s32 delta,
                    newValue < (s32)self->transitionStartValue ? 79 : 78);
         self->soundCooldown = 2;
     }
-    magnitudeClass = func_020be328(actualDelta);
+    magnitudeClass = SignedAbsoluteValueVariant(actualDelta);
     self->flags &= ~0x1e0;
     if (forcedDuration > 0) {
         self->flags |= 0x100;

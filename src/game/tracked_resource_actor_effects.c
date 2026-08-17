@@ -25,7 +25,7 @@ extern void func_020a2614(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
 extern void func_020a2844(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
-extern void func_020a2894(void *manager, s32 subtype, s32 x, s32 y,
+extern void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
 extern void func_020a291c(void *manager, s32 subtype, s32 x, s32 y);
 #ifdef __cplusplus
@@ -37,7 +37,7 @@ extern void func_020a291c(void *manager, s32 subtype, s32 x, s32 y);
 /*
  * Input is an actor whose record pointer is at 0x1FC. Convert actor position to
  * pixels (Y is reduced by actor height) and dispatch signed record byte 0x12:
- * 0 selects func_020a2894; 1,5,6 select func_020a2614 variants 1,2,3 with value
+ * 0 selects EffectManager_SubmitPointEffect; 1,5,6 select func_020a2614 variants 1,2,3 with value
  * 5; 2/3 select func_020a291c variants 0/1; 10..15 select func_020a2844 subtype
  * selector-10 with value 4; 20..24 select func_020a2614 subtype 1 with value
  * selector-13; 25 uses value 15; and 30 selects func_020a2844 subtype 0 with
@@ -58,7 +58,7 @@ void TrackedResourceActor_EmitRecordEffects(void *actor)
 
     switch (selector) {
     case 0:
-        func_020a2894(manager, 0, x, y, 0);
+        EffectManager_SubmitPointEffect(manager, 0, x, y, 0);
         break;
     case 1:
         func_020a2614(manager, 1, x, y, 5);

@@ -20,14 +20,14 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GameWork_ClearFlag(void *, s32);
 extern u32 genrand_int32(void);
-extern void func_0201e14c(void *, s32);
+extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
 extern void *func_020716bc(void *, s32);
 extern void *RecordDescriptor_GetMessage(void *);
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 extern void func_020929b0(void *);
-extern void *func_02092cc0(void *, void *, void *);
+extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
 extern void func_020afd0c(void *, s32, s32, s32);
 extern void func_ov029_021fce00(void *, void *);
@@ -57,12 +57,12 @@ extern void *func_ov045_0220c48c(s32, s32, s32);
  */
 extern "C" void *func_ov029_021fce74(void *state, void *argument)
 {
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const void *, state, 0) = data_ov029_021fecfc;
-    func_02092798((u8 *)state + 0x78);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x78);
     FIELD(u32, state, 0xe4) = 0;
     func_020929b0((u8 *)state + 0xec);
-    func_0201e14c((u8 *)data_021052fc + 0x2f7c, 1);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 1);
     FIELD(u32, state, 0xe4) = genrand_int32();
     GameWork_ClearFlag(gGameWork, 0x38a);
     FIELD(void *, state, 0x68) = argument;
@@ -116,7 +116,7 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
     void *controller = Heap_Alloc(0xec, data_ov029_021fed10,
                                   4, gHeapContext);
     if (controller != 0)
-        controller = func_02092cc0(controller, gDebugFont,
+        controller = TitleDialog_Init(controller, gDebugFont,
                                    FIELD(void *, state, 0x78));
     FIELD(void *, state, 0x9c) = controller;
     func_ov029_021fce34(controller, 0x50, 0x28, 0xa8, 0x84);

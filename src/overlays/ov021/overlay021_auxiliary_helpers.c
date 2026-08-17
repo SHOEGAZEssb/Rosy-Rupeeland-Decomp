@@ -16,7 +16,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
 extern void OverlaySlot_UnloadOverlay(void *, s32);
-extern s32 func_02062b28(void *);
+extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_0206563c(void *, s32);
 extern void func_02095820(void *, s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
@@ -54,14 +54,14 @@ extern "C" void func_ov021_021fecd0(void *state)
  * record rejected by func_02062B28 has a nonnull +0x0C member; otherwise zero.
  * Global/scene data are read; SDK selection state may change, with no MMIO.
  */
-extern "C" s32 func_ov021_021fed30(void *state)
+extern "C" s32 Overlay021_IsAuxiliaryRecordAvailable(void *state)
 {
     u8 *collection = (u8 *)data_021e9ac0;
     func_0206563c(collection + 0x34, FIELD(s32, state, 0x54));
     s32 i;
     for (i = 0; i < FIELD(s32, collection, 0x40); i++) {
         void *record = FIELD(u8 *, collection, 0x38) + i * 0x24;
-        if (func_02062b28(record) == 0 &&
+        if (ActorDescriptor_IsInvalid(record) == 0 &&
             FIELD(void *, record, 0xc) != 0)
             return 1;
     }
@@ -97,7 +97,7 @@ extern "C" void func_ov021_021fedac(void *state)
  * pointer, and disable associated object +0x41C. Heap/panel/UI ownership
  * changes; returns void and performs no direct hardware access.
  */
-extern "C" void func_ov021_021fee14(void *state)
+extern "C" void Overlay021_DestroyAuxiliaryPanel(void *state)
 {
     void *panel = FIELD(void *, state, 0x390);
     if (panel == 0)

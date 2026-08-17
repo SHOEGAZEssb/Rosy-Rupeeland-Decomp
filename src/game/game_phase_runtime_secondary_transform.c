@@ -29,7 +29,7 @@ extern void OS_Halt(void);
  * halt. Finally add runtime offset fields 0x30a0/0x30a4. All temporary value
  * objects are explicitly destroyed; returns no value.
  */
-void func_0200875c(void *destination, GamePhaseRuntime *self)
+void GamePhaseRuntime_BuildSecondaryTransform(void *destination, GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
     u8 runtimeOffset[16];

@@ -5,8 +5,8 @@
 .extern data_020f4e14
 .extern data_ov025_02203318
 .extern data_ov025_02203370
-.extern func_020597fc
-.extern func_02071eb8
+.extern Sound_ReleaseGroup
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020926f8
@@ -31,7 +31,7 @@ func_ov025_021ffa6c:
     str r1, [r4, #0x20]
     ldr r0, [r0, #0x0]
     ldr r1, L_021ffc1c
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     add r0, r4, #0xf8
     add r0, r0, #0x400
     bl PresentationList_DeleteAll
@@ -65,7 +65,7 @@ L_021ffaec:
     add r0, r6, #0x30
     bl func_020927b8
     mov r0, r6
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r6
     bl Heap_Free
 L_021ffb1c:
@@ -78,7 +78,7 @@ L_021ffb1c:
     ldr r0, [r5, #0x0]
     bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r5
     bl Heap_Free
 L_021ffb4c:
@@ -118,19 +118,19 @@ L_021ffb64:
     add r0, r4, #0xf0
     bl func_ov025_021fdec8
     add r0, r4, #0xa4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x98
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x8c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x80
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x74
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x68
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x5c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, r5, r6, pc}
 L_021ffc14: .word data_ov025_02203370

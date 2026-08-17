@@ -15,7 +15,7 @@
 .extern data_ov041_02205960
 .extern VecFx32Object_Assign
 .extern func_0207043c
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070888
 .extern func_02070f80
 .extern GraphicsResourceSet_ReleaseHandles
@@ -117,7 +117,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [r4, #0x4c]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888
@@ -163,7 +163,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [r4, #0x58]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888
@@ -222,7 +222,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [r4, #0x4c]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888
@@ -250,7 +250,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [r4, #0x58]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888
@@ -283,7 +283,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [r4, #0x4c]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888
@@ -311,7 +311,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [r4, #0x58]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888
@@ -350,7 +350,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [sp, #0x8]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888
@@ -388,7 +388,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r6, [sp, #0x8]
     mov r0, r6
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
     bl func_02070888

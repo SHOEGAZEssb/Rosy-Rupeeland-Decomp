@@ -13,7 +13,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetBusyState
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_IsSpecialRecordActive
@@ -25,9 +25,9 @@
 .extern Type7Actor_IsInteractionSceneActive
 .extern func_0204cfa4
 .extern func_020593dc
-.extern func_0206c68c
-.extern func_0206c978
-.extern func_0206cb04
+.extern AuxiliaryInteraction_Init
+.extern AuxiliaryInteraction_Destroy
+.extern AuxiliaryInteraction_AdmitTarget
 .extern func_0206e590
 .extern ActorRuntimeFlags_Test
 .extern func_020adae4
@@ -91,7 +91,7 @@ Type7Actor_HandleContact: ; 0x02046660
     bne .L_0204678c
     beq .L_02046740
     mov r0, r7
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r7
     bl Heap_Free
 .L_02046740:
@@ -103,7 +103,7 @@ Type7Actor_HandleContact: ; 0x02046660
     cmp r0, #0x0
     beq .L_02046764
     mov r1, r6
-    bl func_0206c68c
+    bl AuxiliaryInteraction_Init
 .L_02046764:
     ldr r1, .L_02046d70
     str r0, [r6, #0x234]
@@ -119,7 +119,7 @@ Type7Actor_HandleContact: ; 0x02046660
     ldr r0, [r6, #0x234]
     mov r1, r5
     mov r2, #0x1
-    bl func_0206cb04
+    bl AuxiliaryInteraction_AdmitTarget
     b .L_02046d48
 .L_020467a0:
     ldr r0, [r5, #0x14]
@@ -195,7 +195,7 @@ Type7Actor_HandleContact: ; 0x02046660
     cmp r7, #0x0
     beq .L_020468c4
     mov r0, r7
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r7
     bl Heap_Free
 .L_020468c4:
@@ -502,7 +502,7 @@ Type7Actor_HandleContact: ; 0x02046660
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_02032a94
+    bl ActorContactState_AddContact
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02046d60: .word gActorRuntimeCollection

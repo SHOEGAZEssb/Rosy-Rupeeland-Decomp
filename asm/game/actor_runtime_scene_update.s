@@ -7,7 +7,7 @@
 .extern func_0200866c
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseRuntime_FinalizeActorCollections
-.extern func_0201dcec
+.extern RuntimePresentationManager_Update
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern GamePhaseCurrencyHud_Update
 .extern data_021052fc
@@ -67,7 +67,7 @@ L_0200b774:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201dcec
+    bl RuntimePresentationManager_Update
     ldr r0, L_0200b7ac
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_UpdateDualScreenUiPresentation

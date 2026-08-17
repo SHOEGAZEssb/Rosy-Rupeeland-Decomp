@@ -21,18 +21,18 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_02003e20(u32, const void *, s32, void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
-extern void func_02094550(void *, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_SetSpritePriority(void *, s32);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
 extern void func_020c0c24(void *, s32, s32, void (*)(void *));
 extern void func_ov028_021fcff4(void *);
@@ -52,8 +52,8 @@ extern void func_ov028_021fd208(void *);
  */
 extern "C" void *func_ov028_021fd00c(void *state, void *font, s32 capacity)
 {
-    func_02071ea4((u8 *)state + 8);
-    func_02092798((u8 *)state + 0x14);
+    AnimationResourceState_InitEmbedded((u8 *)state + 8);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x14);
     FIELD(void *, state, 0) = font;
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, state, 4), 0x18) = 0x2f;
@@ -80,8 +80,8 @@ extern "C" void *func_ov028_021fd00c(void *state, void *font, s32 capacity)
                                    capacity != 0 ? 5 : 1,
                                    0xda, 0x18, 0x0c);
     FIELD(void *, state, 0x44) = controller;
-    func_02094550(controller, 0);
-    func_02094574(controller);
+    InventoryScroll_SetSpritePriority(controller, 0);
+    InventoryScroll_UpdatePresentation(controller);
     func_02092814((u8 *)state + 0x14, 0x7006);
     return state;
 }
@@ -103,7 +103,7 @@ extern "C" void *func_ov028_021fd1a8(void *state)
         func_020c0c24(FIELD(void *, state, 0x38), 12, 8,
                       func_ov028_021fd208);
     func_020927b8((u8 *)state + 0x14);
-    func_02071eb8((u8 *)state + 8);
+    AnimationResourceState_Destroy((u8 *)state + 8);
     return state;
 }
 

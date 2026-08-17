@@ -9,15 +9,15 @@
 .extern func_02072048
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern RecordDescriptor_GetMessage
-.extern func_020926d8
+.extern TitleScreenResourceCollection_Init
 .extern func_020926f8
 .extern func_02092754
-.extern func_02092790
-.extern func_02092850
+.extern TitleScreenResourceCollection_Get
+.extern TitlePalette_SetMainBackdrop
 .extern Presentation_BlendPalette16
-.extern func_02092e9c
-.extern func_02093360
-.extern func_020939d8
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
+.extern TitleDialog_ClearTextRect
 .extern func_020b1ff0
 .extern func_020b2058
 .extern func_020b44e8
@@ -27,7 +27,7 @@
 .extern func_ov045_0220c028
 .extern func_ov045_0220c128
 .extern func_ov045_0220c18c
-.extern func_ov045_0220d2f8
+.extern Overlay045_DrawSelectorPreview
 .extern gDebugFont
 .extern gLupyContext
 .extern GraphicsResourceSet_Destroy
@@ -43,7 +43,7 @@ func_ov029_021fd644:
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     add r0, sp, #0x10
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     ldr r3, L_021fd6ec
     ldr r0, L_021fd6f0
     str r3, [sp, #0x0]
@@ -62,12 +62,12 @@ func_ov029_021fd644:
     bl func_02072048
     add r0, sp, #0x10
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c
     mov r0, #0x0
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     ldr r1, L_021fd6f8
     mov r2, #0x0
     mov r0, #0x13
@@ -143,17 +143,17 @@ func_ov029_021fd7a8:
     add r0, sp, #0x8
     bl func_ov029_021fce00
     ldr r0, [r5, #0x9c]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     add r0, sp, #0x8
     mov r1, r4
     bl RecordDescriptor_GetMessage
     mov r1, r0
     ldr r0, [r5, #0x9c]
     mov r2, #0x4
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r5, #0x9c]
     ldr r1, L_021fd848
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]
     mov r0, r0, lsl #0x16
@@ -174,7 +174,7 @@ L_021fd824:
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r5, #0x54]
     ldr r1, [r5, #0x58]
-    bl func_ov045_0220d2f8
+    bl Overlay045_DrawSelectorPreview
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd848: .word data_021f5ed0

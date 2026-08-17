@@ -2,10 +2,10 @@
 
 /* Exact fallback; see src/overlays/ov038/overlay038_presentation_construct.c for documented portable C. */
 
-    .extern func_02091e28
-    .extern func_02071ea4
+    .extern SceneInputBase_Init
+    .extern AnimationResourceState_InitEmbedded
     .extern func_020957bc
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02091b6c
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -15,8 +15,8 @@
     .extern GameWork_TestFlag
     .extern Heap_Alloc
     .extern func_02094154
-    .extern func_02094550
-    .extern func_02094574
+    .extern InventoryScroll_SetSpritePriority
+    .extern InventoryScroll_UpdatePresentation
     .extern func_02092814
     .extern func_ov038_021fd210
     .extern func_ov038_021fd28c
@@ -45,15 +45,15 @@ func_ov038_021fce2c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     mov r7, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fd0a0
     add r0, r7, #0x54
     str r1, [r7, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r7, #0x64
     bl func_020957bc
     add r0, r7, #0x318
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r7, #0x348
     bl func_02091b6c
     mov r0, #0x0
@@ -134,9 +134,9 @@ L_021fcf28:
 L_021fcf84:
     str r0, [r7, #0x314]
     mov r1, #0x1
-    bl func_02094550
+    bl InventoryScroll_SetSpritePriority
     ldr r0, [r7, #0x314]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     add r0, r7, #0x318
     mov r1, #0x7000
     bl func_02092814

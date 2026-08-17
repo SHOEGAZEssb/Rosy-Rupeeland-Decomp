@@ -1,6 +1,6 @@
 func_ov045_0220b740 kind:function(arm,size=0x30) addr:0x0220b740
 func_ov045_0220b770 kind:function(arm,size=0x14) addr:0x0220b770
-func_ov045_0220b784 kind:function(arm,size=0x1c) addr:0x0220b784
+Overlay045TransientEffect_Delete kind:function(arm,size=0x1c) addr:0x0220b784
 func_ov045_0220b7a0 kind:function(arm,size=0x5c) addr:0x0220b7a0
 func_ov045_0220b7fc kind:function(arm,size=0x20) addr:0x0220b7fc
 func_ov045_0220b81c kind:function(arm,size=0x20) addr:0x0220b81c
@@ -13,7 +13,7 @@ func_ov045_0220bc34 kind:function(arm,size=0x8) addr:0x0220bc34
 func_ov045_0220bc3c kind:function(arm,size=0x4) addr:0x0220bc3c
 func_ov045_0220bc40 kind:function(arm,size=0xbc) addr:0x0220bc40
 func_ov045_0220bcfc kind:function(arm,size=0x34) addr:0x0220bcfc
-func_ov045_0220bd30 kind:function(arm,size=0x3c) addr:0x0220bd30
+Overlay045DisplayObject_Delete kind:function(arm,size=0x3c) addr:0x0220bd30
 func_ov045_0220bd6c kind:function(arm,size=0x24) addr:0x0220bd6c
 func_ov045_0220bd90 kind:function(arm,size=0x20) addr:0x0220bd90
 func_ov045_0220bdb0 kind:function(arm,size=0x20) addr:0x0220bdb0
@@ -35,7 +35,7 @@ func_ov045_0220c18c kind:function(arm,size=0x20) addr:0x0220c18c
 func_ov045_0220c1ac kind:function(arm,size=0xc8) addr:0x0220c1ac
 func_ov045_0220c274 kind:function(arm,size=0xc) addr:0x0220c274
 func_ov045_0220c280 kind:function(arm,size=0x20) addr:0x0220c280
-func_ov045_0220c2a0 kind:function(arm,size=0x40) addr:0x0220c2a0
+Overlay045Graphics_SetUniformValue kind:function(arm,size=0x40) addr:0x0220c2a0
 func_ov045_0220c2e0 kind:function(arm,size=0x34) addr:0x0220c2e0
 func_ov045_0220c314 kind:function(arm,size=0x148) addr:0x0220c314
 func_ov045_0220c45c kind:function(arm,size=0x14) addr:0x0220c45c
@@ -43,7 +43,7 @@ func_ov045_0220c470 kind:function(arm,size=0x1c) addr:0x0220c470
 func_ov045_0220c48c kind:function(arm,size=0x55c) addr:0x0220c48c
 func_ov045_0220c9e8 kind:function(arm,size=0x8f0) addr:0x0220c9e8
 func_ov045_0220d2d8 kind:function(arm,size=0x20) addr:0x0220d2d8
-func_ov045_0220d2f8 kind:function(arm,size=0x15c) addr:0x0220d2f8
+Overlay045_DrawSelectorPreview kind:function(arm,size=0x15c) addr:0x0220d2f8
 func_ov045_0220d454 kind:function(arm,size=0x28) addr:0x0220d454
 data_ov045_0220d47c kind:data(any) addr:0x0220d47c
 data_ov045_0220d4a0 kind:data(any) addr:0x0220d4a0

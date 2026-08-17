@@ -13,7 +13,7 @@ extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void func_020b44e8(void);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070638(void *, s32, s32);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_020b2058(void *, s32, s32);
@@ -42,7 +42,7 @@ extern "C" void func_ov030_021fe448(void *scene)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xc006, 0xc007, 0xc008);
     func_020b44e8();
-    void *buffer = (u8 *)func_02070874(FIELD(void *, scene, 0x360)) + 0x20;
+    void *buffer = (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x360)) + 0x20;
     FIELD(void *, scene, 0x330) = buffer;
     FIELD(void *, scene, 0x32c) = buffer;
     FIELD(s32, scene, 0x334) = 0x10;

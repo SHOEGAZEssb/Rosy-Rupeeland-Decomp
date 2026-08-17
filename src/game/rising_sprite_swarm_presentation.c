@@ -52,7 +52,7 @@ extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern void *func_0201e28c(void *self);
 extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(PresentationValue *destination, const void *source);
@@ -62,8 +62,8 @@ extern void VecFx32Object_Add(PresentationValue *destination,
 extern void func_02008378(PresentationValue *destination,
                           const PresentationValue *left,
                           const PresentationValue *right);
-extern void func_02071ea4(void *state);
-extern void func_02071eb8(void *state);
+extern void AnimationResourceState_InitEmbedded(void *state);
+extern void AnimationResourceState_Destroy(void *state);
 extern void func_02071ee0(void *state, void *table, s32 first, s32 second,
                           s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *resource);
@@ -107,7 +107,7 @@ RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Init(
 {
     PresentationValue offset;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)data_020d6398;
     self->referencePosition08 = referencePosition;
     RisingSpriteControllerList_Init(&self->controllers0c);
@@ -115,7 +115,7 @@ RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Init(
     self->timer20 = 0;
     self->resource24 = 0;
     self->resource28 = 0;
-    func_02071ea4(self->spriteConfig2c);
+    AnimationResourceState_InitEmbedded(self->spriteConfig2c);
     VecFx32Object_InitCopy(&self->track38, config + 0x18);
     self->nextPathArgument48 = 0;
     VecFx32Object_InitComponents(&offset, 0, 0, trackZ << 12);
@@ -186,7 +186,7 @@ static RisingSpriteSwarmPresentation *teardown_swarm(
     GraphicsSpriteGroup_Clear(self->resource24);
     GraphicsSpriteGroup_Clear(self->resource28);
     VecFx32Object_Destroy(&self->track38);
-    func_02071eb8(self->spriteConfig2c);
+    AnimationResourceState_Destroy(self->spriteConfig2c);
     self->controllers0c.vtable = (void **)data_020d6358;
     RisingSpriteControllerList_Clear(&self->controllers0c);
     func_0201e28c(self);

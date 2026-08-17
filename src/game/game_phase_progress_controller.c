@@ -68,7 +68,7 @@ void func_020278b4(GamePhaseProgressController *, s32);
 void func_020278d4(GamePhaseProgressController *);
 void func_02027d7c(GamePhaseProgressController *);
 void func_02027f38(GamePhaseProgressController *);
-GamePhaseProgressController *func_02027f94(void);
+GamePhaseProgressController *GamePhaseProgress_GetOrCreateGlobal(void);
 #ifdef __cplusplus
 }
 #endif
@@ -165,7 +165,7 @@ s32 func_02027828(GamePhaseProgressController *self, s32 index)
 }
 
 /* Return the adjusted threshold for the controller's current stage. */
-s32 func_02027854(GamePhaseProgressController *self)
+s32 GamePhaseProgress_GetCurrentAdjustedThreshold(GamePhaseProgressController *self)
 {
     return func_02027828(self, self->stage_14);
 }
@@ -425,7 +425,7 @@ void func_02027f38(GamePhaseProgressController *self)
 }
 
 /* Lazily construct/register the global progress controller and return it. */
-GamePhaseProgressController *func_02027f94(void)
+GamePhaseProgressController *GamePhaseProgress_GetOrCreateGlobal(void)
 {
     if (!(data_02105634 & 1)) {
         func_02027604(&data_02105644);

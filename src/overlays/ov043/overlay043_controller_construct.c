@@ -10,9 +10,9 @@
 extern "C" void *gGameWork;
 extern "C" u8 data_ov043_0220c4bc[];
 extern "C" u32 data_ov043_0220c480[];
-extern "C" void func_02091e28(void *object);
-extern "C" void func_02092798(void *object);
-extern "C" void func_02071ea4(void *object);
+extern "C" void SceneInputBase_Init(void *object);
+extern "C" void TitleCharacterResourceCollection_Init(void *object);
+extern "C" void AnimationResourceState_InitEmbedded(void *object);
 extern "C" void func_020957bc(void *canvas);
 extern "C" void OverlaySlot_Init(void *object);
 extern "C" void func_02095820(void *canvas, s32 width, s32 height);
@@ -31,10 +31,10 @@ extern "C" void func_ov043_0220b744(void *object, u32 first, u32 second);
  */
 extern "C" void *func_ov043_0220b76c(void *object)
 {
-    func_02091e28(object);
+    SceneInputBase_Init(object);
     FIELD(void *, object, 0) = data_ov043_0220c4bc;
-    func_02092798((u8 *)object + 0x5c);
-    func_02071ea4((u8 *)object + 0x80);
+    TitleCharacterResourceCollection_Init((u8 *)object + 0x5c);
+    AnimationResourceState_InitEmbedded((u8 *)object + 0x80);
     func_020957bc((u8 *)object + 0x90);
     func_020957bc((u8 *)object + 0x13c);
     func_020957bc((u8 *)object + 0x1e8);

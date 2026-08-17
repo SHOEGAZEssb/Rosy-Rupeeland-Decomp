@@ -4,13 +4,13 @@
 .extern data_ov023_021ffbe0
 .extern data_ov023_021ffbe8
 .extern func_02003e20
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02092798
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 .extern func_02094154
-.extern func_02094550
-.extern func_02094574
+.extern InventoryScroll_SetSpritePriority
+.extern InventoryScroll_UpdatePresentation
 .extern func_020c09cc
 .extern func_ov023_021fd438
 .extern func_ov023_021fd780
@@ -26,9 +26,9 @@ func_ov023_021fd444:
     add r0, r5, #0x8
     mov r4, r1
     mov r6, r2
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0x18
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     mov r0, r4
     str r4, [r5, #0x0]
     bl GraphicsSpriteGroupOwner_CreateGroup
@@ -101,9 +101,9 @@ L_021fd568:
 L_021fd56c:
     ldr r0, [r5, #0x48]
     mov r1, #0x0
-    bl func_02094550
+    bl InventoryScroll_SetSpritePriority
     ldr r0, [r5, #0x48]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     mov r0, r5
     bl func_ov023_021fd780
     ldr r1, L_021fd5c8

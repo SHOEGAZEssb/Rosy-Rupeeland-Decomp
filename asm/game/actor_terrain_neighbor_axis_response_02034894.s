@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/actor_terrain_neighbor_axis_response.c.
 .text
 .extern func_02034568
-.extern func_020c10d4
+.extern Memory_ClearBytes
 
-    .global func_02034894
-    .type func_02034894, @function
-func_02034894: ; 0x02034894
+    .global ActorTerrain_ApplyNeighborAxisBias
+    .type ActorTerrain_ApplyNeighborAxisBias, @function
+ActorTerrain_ApplyNeighborAxisBias: ; 0x02034894
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x20
     mov r10, r1
@@ -16,10 +16,10 @@ func_02034894: ; 0x02034894
     mov r11, r2, asr #0x10
     ldr r6, [r10, #0x4]
     ldr r5, [r10, #0x8]
-    bl func_020c10d4
+    bl Memory_ClearBytes
     add r0, sp, #0x8
     mov r1, #0xc
-    bl func_020c10d4
+    bl Memory_ClearBytes
     mvn r7, #0x0
     str r7, [sp, #0x4]
 .L_020348d4:
@@ -84,7 +84,7 @@ func_02034894: ; 0x02034894
 .L_020349b0:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_02034894, . - func_02034894
+    .size ActorTerrain_ApplyNeighborAxisBias, . - ActorTerrain_ApplyNeighborAxisBias
 
     .global func_020349b8
 

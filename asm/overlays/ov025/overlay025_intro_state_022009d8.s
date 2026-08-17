@@ -6,7 +6,7 @@
 .extern data_ov025_02202e50
 .extern data_ov025_022033b4
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_0207f248
 .extern func_0207f2e0
@@ -266,7 +266,7 @@ L_02200d00:
     add r0, r5, #0x30
     bl func_020927b8
     mov r0, r5
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r5
     bl Heap_Free
 L_02200d40:

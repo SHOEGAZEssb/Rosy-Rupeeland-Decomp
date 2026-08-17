@@ -19,7 +19,7 @@
     .extern func_02092260
     .extern func_02092288
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern PresentationScalar_TransitionTo
     .extern Presentation_SetScript
     .extern Presentation_IsScriptComplete
@@ -28,9 +28,9 @@
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fe144
+    .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe6b0
-    .extern func_ov021_021fee14
+    .extern Overlay021_DestroyAuxiliaryPanel
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
     .extern func_ov021_021ff050
@@ -40,7 +40,7 @@
     .extern func_ov021_021ff274
     .extern func_ov021_021ff380
     .extern func_ov021_021ff3ac
-    .extern func_ov021_021ff3d8
+    .extern Overlay021_UpdateTileTransitionOffset20
     .extern func_ov021_021ffa10
     .extern func_ov045_0220b924
     .extern func_ov045_0220b9b8
@@ -409,7 +409,7 @@ L_022028e0:
     cmp r0, #0x0
     bne L_02202ba8
     mov r0, r4
-    bl func_ov021_021ff3d8
+    bl Overlay021_UpdateTileTransitionOffset20
     ldr r0, [r4, #0x384]
     mov r1, #0x2
     add r0, r0, #0xc
@@ -439,7 +439,7 @@ L_02202968:
     mov r0, #0x0
     str r0, [r4, #0x384]
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, #0x1
     sub r1, r0, #0x11
     bl func_02092c8c
@@ -453,7 +453,7 @@ L_02202998:
     cmp r0, #0x0
     beq L_02202ba8
     mov r0, r4
-    bl func_ov021_021fee14
+    bl Overlay021_DestroyAuxiliaryPanel
     mov r0, r4
     bl func_ov021_021fe6b0
     ldr r1, [r4, #0x2c4]
@@ -492,7 +492,7 @@ L_022029fc:
     b L_02202ba8
 L_02202a38:
     mov r0, r4
-    bl func_ov021_021fe144
+    bl Overlay021_SetupMainBackground
     ldr r0, [r4, #0x2c0]
     bl func_ov021_021fd1cc
     ldr r0, [r4, #0x2c0]
@@ -529,7 +529,7 @@ L_02202aa8:
     cmp r0, #0x0
     bne L_02202ba8
     mov r0, r4
-    bl func_ov021_021ff3d8
+    bl Overlay021_UpdateTileTransitionOffset20
     ldr r0, [r4, #0x384]
     mov r1, #0x2
     add r0, r0, #0xc

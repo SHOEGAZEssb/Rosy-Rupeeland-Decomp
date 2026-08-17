@@ -43,17 +43,17 @@ extern void *data_021e9ac0;
 extern void *data_ov001_021fcc80;
 extern char data_ov001_021fcc90[];
 extern char data_ov001_021fcc98[];
-extern void func_020683c8(void *value);
-extern void func_020683f4(void *value);
-extern s32 func_02062b28(void *record);
-extern void func_02071ea4(void *resource);
+extern void InventoryCell_Init(void *value);
+extern void InventoryCell_Destroy(void *value);
+extern s32 ActorDescriptor_IsInvalid(void *record);
+extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
-extern void func_02092798(void *state);
+extern void TitleCharacterResourceCollection_Init(void *state);
 extern void func_02092814(void *state, s32 resourceId);
 extern void IndexedSelectionController_Init(void *state);
 extern void IndexedSelectionController_ConfigureRange(void *state, s32 first, s32 second, s32 third);
@@ -95,10 +95,10 @@ Overlay001GridState *func_ov001_021fbabc(Overlay001GridState *state,
     void *controller;
 
     state->vtable_000 = &data_ov001_021fcc80;
-    func_02071ea4(state->resource_010);
+    AnimationResourceState_InitEmbedded(state->resource_010);
     func_020957bc(state->element_028);
     func_020957bc(state->element_0d4);
-    func_02092798(state->rendererState_180);
+    TitleCharacterResourceCollection_Init(state->rendererState_180);
     IndexedSelectionController_Init(state->controllerState_1c0);
     state->owner_004 = owner;
     state->field_1ac = 0;
@@ -134,7 +134,7 @@ Overlay001GridState *func_ov001_021fbabc(Overlay001GridState *state,
     rawCount = 0;
     for (index = 0; index < FIELD(s32, state->recordTable_204, 0x0c);
          index++) {
-        if (func_02062b28((u8 *)FIELD(void *, state->recordTable_204, 0x04) +
+        if (ActorDescriptor_IsInvalid((u8 *)FIELD(void *, state->recordTable_204, 0x04) +
                           index * 0x24) == 0) {
             rawCount = index + 1;
         }
@@ -150,7 +150,7 @@ Overlay001GridState *func_ov001_021fbabc(Overlay001GridState *state,
     if (state->cells_20c != 0) {
         state->cells_20c = (u8 *)func_020c09cc(
             state->cells_20c, roundedCount, 0x20, 8,
-            func_020683c8, func_020683f4);
+            InventoryCell_Init, InventoryCell_Destroy);
     }
     for (index = 0; index < state->cellCount_1a4; index++) {
         u8 *cell = state->cells_20c + index * 0x20;

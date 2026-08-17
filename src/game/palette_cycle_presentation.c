@@ -19,12 +19,12 @@ extern "C" {
 extern void *gPaletteCyclePresentationVtable;
 extern void *data_020f4e18;
 extern void *gGameWork;
-extern void *func_0201e250(void *);
+extern void *TimedSpritePresentation_InitBase(void *);
 extern void *func_0201e28c(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void MIi_CpuCopy16(const void *, void *, s32);
 extern void func_02091d08(void *);
 extern void func_02091d24(void *, s32, s32, s32, s32);
@@ -55,12 +55,12 @@ void PaletteCyclePresentation_AdvancePalette(PaletteCyclePresentation *self);
 PaletteCyclePresentation *PaletteCyclePresentation_Init(PaletteCyclePresentation *self)
 {
     void *resources[3]; s32 i;
-    func_0201e250(self); self->vtable=(void **)gPaletteCyclePresentationVtable;
+    TimedSpritePresentation_InitBase(self); self->vtable=(void **)gPaletteCyclePresentationVtable;
     func_02091d08(self->generator410); func_02091b6c(self->fade428);
     self->uploadEnabled444=0; self->firstIndex08=1; self->lastIndex0c=120;
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources,data_020f4e18,0x904b,0x904c,0x904f,0x904f);
-    MIi_CpuCopy16(func_02070874(resources[1]),self->palette10,0x200);
+    MIi_CpuCopy16(GraphicsBgResourceData_GetDecoded(resources[1]),self->palette10,0x200);
     func_02091d24(self->generator410,1,0,0,5);
     for(i=self->firstIndex08;i<self->lastIndex0c;i++) PaletteCyclePresentation_AdvancePalette(self);
     GameWork_ClearFlag(gGameWork,0x408); self->flags04|=2;

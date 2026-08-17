@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_composite_controller_sequence.c for documented portable C. */
 
-    .extern func_02059278
+    .extern Sound_PlayDirectSequence
     .extern func_02091b98
     .extern func_02091c7c
     .extern Presentation_SetScript
@@ -12,7 +12,7 @@
     .extern GraphicsAnimationInstance_SetAnimation
     .extern Presentation_IsScriptSuspended
     .extern func_ov036_021fdc1c
-    .extern func_0205929c
+    .extern Sound_StopDirectSequence
     .extern func_ov036_02202fb8
     .extern gSoundContext
     .extern data_ov036_02204f8c
@@ -46,7 +46,7 @@ L_022032f0:
     mov r1, #0xb2
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     add r0, r4, #0xa4
     mov r1, #0x3c
     bl func_02091b98
@@ -321,7 +321,7 @@ L_022036e0:
     mov r1, #0xb2
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, [r4, #0x1a0]
     bl func_ov036_021fdc1c
     ldr r0, [r4, #0xa0]

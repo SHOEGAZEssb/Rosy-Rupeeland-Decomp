@@ -41,7 +41,7 @@ typedef char Overlay032SceneSizeCheck[
  * `self`; scene, overlay, heap, and overlay-owned UI state change. Allocation
  * failure publishes null exactly as retail does.
  */
-Overlay032Scene *func_02098490(Overlay032Scene *self)
+Overlay032Scene *Overlay032Scene_Init(Overlay032Scene *self)
 {
     void *object;
 
@@ -62,7 +62,7 @@ Overlay032Scene *func_02098490(Overlay032Scene *self)
  * Unload the owned overlay slot and destroy the Scene base without freeing
  * `self`. Returns `self`; overlay and scene-owned state are released.
  */
-Overlay032Scene *func_0209850c(Overlay032Scene *self)
+Overlay032Scene *Overlay032Scene_Destroy(Overlay032Scene *self)
 {
     OverlaySlot_Destroy(&self->overlaySlot);
     Scene_Destroy(&self->base);
@@ -73,9 +73,9 @@ Overlay032Scene *func_0209850c(Overlay032Scene *self)
  * Perform the complete overlay-32 scene teardown, free `self`, and return its
  * former address. The returned value must not be dereferenced.
  */
-Overlay032Scene *func_0209852c(Overlay032Scene *self)
+Overlay032Scene *Overlay032Scene_Delete(Overlay032Scene *self)
 {
-    func_0209850c(self);
+    Overlay032Scene_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -86,7 +86,7 @@ Overlay032Scene *func_0209852c(Overlay032Scene *self)
  * global publication, unload overlay 32, delete this scene through virtual
  * slot 1, and return one.
  */
-s32 func_02098554(Overlay032Scene *self)
+s32 Overlay032Scene_UpdateLifecycle(Overlay032Scene *self)
 {
     void *object = data_021f6380;
 
@@ -107,7 +107,7 @@ s32 func_02098554(Overlay032Scene *self)
  * Run overlay 32's auxiliary per-frame update when its composite allocation
  * exists. Return zero in both the present and absent cases.
  */
-s32 func_020985d0(Overlay032Scene *self)
+s32 Overlay032Scene_UpdateAuxiliary(Overlay032Scene *self)
 {
     (void)self;
     if (data_021f6380 != 0)

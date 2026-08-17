@@ -1,5 +1,5 @@
     .text
-    .extern func_02091fb0
+    .extern SceneInputBase_Update
     .extern func_02092c8c
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02092314
@@ -41,7 +41,7 @@ L_021fcae8:
 L_021fcb0c:
     ldr r0, [r4, #0x54]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq L_021fcce0
     ldr r0, [r4, #0x58]
@@ -68,7 +68,7 @@ L_021fcb50:
 L_021fcb68:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021fcce0
@@ -127,7 +127,7 @@ L_021fcc18:
 L_021fcc40:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021fcce0
@@ -140,7 +140,7 @@ L_021fcc40:
 L_021fcc70:
     ldr r0, [r4, #0x54]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq L_021fcce0
     mov r0, #0x3
@@ -155,7 +155,7 @@ L_021fcc70:
 L_021fcca8:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_021fcce0

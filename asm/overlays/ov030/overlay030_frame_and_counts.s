@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov030/overlay030_frame_and_counts.c for documented portable C. */
 .extern data_021f5ee8
 .extern GamePhaseCurrencyHud_Update
-.extern func_0206492c
+.extern InventoryRecordCollection_FindId
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Presentation_BlendPalette16
 .extern func_020958d8
@@ -68,11 +68,11 @@ func_ov030_021fe808:
     mov r4, r0
     ldr r0, [r4, #0x37c]
     mov r1, #0x164
-    bl func_0206492c
+    bl InventoryRecordCollection_FindId
     str r0, [r4, #0x380]
     ldr r0, [r4, #0x37c]
     ldr r1, L_021fe950
-    bl func_0206492c
+    bl InventoryRecordCollection_FindId
     str r0, [r4, #0x388]
     mov r0, #0x0
     str r0, [r4, #0x384]

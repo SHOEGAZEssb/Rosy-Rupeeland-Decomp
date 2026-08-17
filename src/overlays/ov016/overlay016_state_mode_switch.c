@@ -19,10 +19,10 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov000_021fc9d4(void *);
-extern void func_ov016_021fe754(void *, u32, u32);
+extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff17c(void *);
 extern void func_ov016_021ff4ec(void *);
-extern void func_ov016_021ff510(void *);
+extern void Overlay016_PopulateAuxiliaryList(void *);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ff908(void *, s32, s32, void *);
 extern void func_ov016_021ff9b8(void *);
@@ -55,7 +55,7 @@ extern "C" s32 func_ov016_022005c8(void *state)
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov016_021ff4ec(state);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
-            func_ov016_021ff510(state);
+            Overlay016_PopulateAuxiliaryList(state);
             func_ov016_021ff17c(state);
             func_ov016_021ffc2c(state);
             func_ov000_021fc9d4(FIELD(void *, state, 0x44c));
@@ -81,13 +81,13 @@ extern "C" s32 func_ov016_022005c8(void *state)
                           (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
             func_ov016_021ff9b8(state);
-            func_ov016_021fe754(state, data_ov016_022014b8[0],
+            Overlay016ActorValue_Init(state, data_ov016_022014b8[0],
                                 data_ov016_022014b8[1]);
         }
         break;
     case 10:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov016_021fe754(state, data_ov016_022014b0[0],
+            Overlay016ActorValue_Init(state, data_ov016_022014b0[0],
                                 data_ov016_022014b0[1]);
         }
         break;

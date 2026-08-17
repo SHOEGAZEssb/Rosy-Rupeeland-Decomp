@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
 extern void func_02031758(void *output, void *actor, const void *transform);
-extern void func_02032a94(void *actor, void *other, s32 mode);
+extern void ActorContactState_AddContact(void *actor, void *other, s32 mode);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 PresentationBackedActor_CanAcquireTarget(void *actor);
 extern void PresentationBackedActor_HandleInteraction(void *actor, void *target);
@@ -56,12 +56,12 @@ void PresentationBackedActor_AcquireNearbyTarget(void *actor)
 }
 
 /*
- * Forward all register inputs to func_02032a94 and propagate its return value.
+ * Forward all register inputs to ActorContactState_AddContact and propagate its return value.
  * This recovered tail-call thunk has only the callee's engine-side effects.
  */
 void PresentationBackedActor_ForwardPairInteraction(void *actor, void *other, s32 mode)
 {
-    func_02032a94(actor, other, mode);
+    ActorContactState_AddContact(actor, other, mode);
 }
 
 /*

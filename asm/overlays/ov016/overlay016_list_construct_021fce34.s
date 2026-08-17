@@ -6,15 +6,15 @@
     .extern data_ov016_02201570
     .extern data_ov016_02201578
     .extern func_02003e20
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_02094154
-    .extern func_02094574
+    .extern InventoryScroll_UpdatePresentation
     .extern func_020c09cc
     .extern func_ov016_021fce00
     .extern func_ov016_021fd1e0
@@ -30,11 +30,11 @@ func_ov016_021fce34:
     add r0, r5, #0xc
     mov r4, r1
     mov r6, r2
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0x18
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0x28
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     ldr r1, L_021fd04c
     mov r0, r4
     ldr r1, [r1, r6, lsl #0x2]
@@ -151,7 +151,7 @@ L_021fd00c:
     str r0, [r5, #0x24]
 L_021fd018:
     ldr r0, [r5, #0x58]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     mov r0, r5
     bl func_ov016_021fd1e0
     add r0, r5, #0x28

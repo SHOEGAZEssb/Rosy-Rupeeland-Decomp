@@ -19,13 +19,13 @@ typedef struct Overlay005DisplayModeState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0209285c(u16 value);
+extern void TitlePalette_SetSubBackdrop(u16 value);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * If the signed one-bit flag at +0x20 bit 10 is set, call func_0209285c with
+ * If the signed one-bit flag at +0x20 bit 10 is set, call TitlePalette_SetSubBackdrop with
  * cachedValue_084, then replace bits 8..12 of sub DISPCNT 0x04001000 with
  * subMode_04c shifted left eight bits. Return zero in all cases. The original
  * assumes subMode_04c fits five bits and does not mask it before shifting;
@@ -39,7 +39,7 @@ s32 func_ov005_021fc794(Overlay005DisplayModeState *state)
     if (state->applyDisplayMode_020_10) {
         volatile u32 *subDispcnt = (volatile u32 *)0x04001000;
 
-        func_0209285c(state->cachedValue_084);
+        TitlePalette_SetSubBackdrop(state->cachedValue_084);
         *subDispcnt = (*subDispcnt & ~0x1f00) | (state->subMode_04c << 8);
     }
     return 0;

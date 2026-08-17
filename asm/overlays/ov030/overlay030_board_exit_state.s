@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_ov030_021ff790
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02064e7c
+.extern InventoryRecordCollection_RemoveQuantity
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092c8c
 .extern func_ov030_021fd27c
@@ -52,7 +52,7 @@ L_021ff5e8:
     mov r2, r1, lsl #0x10
     ldr r1, [r4, #0x380]
     mov r2, r2, lsr #0x10
-    bl func_02064e7c
+    bl InventoryRecordCollection_RemoveQuantity
     b L_021ff648
 L_021ff628:
     ldr r1, [r0, #0x1b4]
@@ -62,7 +62,7 @@ L_021ff628:
     mov r2, r1, lsl #0x10
     ldr r1, [r4, #0x388]
     mov r2, r2, lsr #0x10
-    bl func_02064e7c
+    bl InventoryRecordCollection_RemoveQuantity
 L_021ff648:
     ldr r5, [r4, #0x2c4]
     cmp r5, #0x0

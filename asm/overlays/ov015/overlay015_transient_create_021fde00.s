@@ -2,10 +2,10 @@
     .extern Heap_Alloc
     .extern data_ov015_021fec98
     .extern func_02070e0c
-    .extern func_02092790
+    .extern TitleScreenResourceCollection_Get
     .extern func_020959d4
-    .extern func_02095c30
-    .extern func_02095f48
+    .extern ModalState_InitResources
+    .extern ModalState_CopyAttachmentText
     .extern gHeapContext
 
 /* Exact fallback for transient presentation creation; see src/overlays/ov015/overlay015_selection_runtime.c. */
@@ -20,14 +20,14 @@ func_ov015_021fde00:
     add r0, r6, #0x98
     bne L_021fde34
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c
     b L_021fde48
 L_021fde34:
     mov r1, #0x1
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c
@@ -48,11 +48,11 @@ L_021fde70:
     beq L_021fde88
     ldr r0, [r6, #0xf8]
     mov r1, r4
-    bl func_02095f48
+    bl ModalState_CopyAttachmentText
 L_021fde88:
     ldr r0, [r6, #0xf8]
     mov r1, r5
-    bl func_02095c30
+    bl ModalState_InitResources
     ldr r0, [r6, #0x48]
     orr r0, r0, #0x2
     str r0, [r6, #0x48]

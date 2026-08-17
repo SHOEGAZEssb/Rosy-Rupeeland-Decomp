@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void func_020955b0(void *controller, void *argument);
 extern void GraphicsResourceSetVariant_Init(void *state);
-extern void func_020956f0(void *controller);
+extern void AlternateSpritePresentation_SyncTransformVariant(void *controller);
 extern void GraphicsAnimationInstance_SetAnimation(void *actor, s32 mode);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ extern "C" void *func_ov037_021fd5ac(void *controller, void *argument,
  */
 extern "C" void func_ov037_021fd600(void *controller)
 {
-    func_020956f0(controller);
+    AlternateSpritePresentation_SyncTransformVariant(controller);
     void *source = FIELD(void *, controller, 0x9c);
     void *actor = FIELD(void *, controller, 0xac);
     func_ov037_021fd6c0(actor, FIELD(s32, source, 0x20),

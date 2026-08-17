@@ -2,14 +2,14 @@
 ; Matching fallback for the portable implementation in src/overlays/ov057/overlay057_recovery.c.
 .extern GraphicsResourceSet_Init
 .extern data_ov057_0220e7d4
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_ov057_0220e658
 
 .global func_ov057_0220e400
 func_ov057_0220e400:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_0220e4d4
     add r0, r4, #0x8
     str r1, [r4, #0x0]

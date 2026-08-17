@@ -17,7 +17,7 @@ extern "C" {
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void Heap_Free(void *);
 extern void func_0205940c(void *, s32, s32);
-extern void func_02071e04(void *, void *);
+extern void GraphicsArchive_ReleaseOwlvResource(void *, void *);
 extern void GraphicsResourceSetVariant_Destroy(void *);
 extern void func_02075020(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
@@ -46,7 +46,7 @@ static void teardown_scene(void *scene)
     PresentationList_DeleteAll((u8 *)scene + 0x2f4);
     PresentationList_DeleteAll((u8 *)scene + 0x304);
     PresentationList_DeleteAll((u8 *)scene + 0x314);
-    func_02071e04(data_020f4e18, FIELD(void *, scene, 0x15c));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, scene, 0x15c));
     void *manager = FIELD(void *, scene, 0x68);
     if (manager != 0) {
         Graphics3DResourceOwner_Destroy(manager);

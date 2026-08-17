@@ -17,7 +17,7 @@ extern void func_020b0558(void);
 extern void func_ov017_021fd414(void *);
 extern void func_ov017_021fd60c(s32, s32, s32, s32, s32, s32);
 extern void func_ov017_021fd638(void);
-extern void func_ov017_021fd838(void *);
+extern void Overlay017Transform_SubmitGeometry(void *);
 extern s32 func_ov017_021fd918(void *, s32);
 extern void func_ov017_021fe33c(void *, void *);
 extern void func_ov017_02200a8c(u16, u16, s32);
@@ -58,7 +58,7 @@ extern "C" void func_ov017_022008ac(void *state)
 #ifndef MATCHING
     TingleNativeG3_Push();
 #endif
-    func_ov017_021fd838((u8 *)state + 0x264);
+    Overlay017Transform_SubmitGeometry((u8 *)state + 0x264);
     func_ov017_021fd918((u8 *)state + 0x264,
                         FIELD(s32, data_ov017_022016e0, 0xc));
     *(volatile u32 *)0x04000448 = 1;
@@ -74,7 +74,7 @@ extern "C" void func_ov017_022008ac(void *state)
 #ifndef MATCHING
         TingleNativeG3_Push();
 #endif
-        func_ov017_021fd838((u8 *)node + 0xbc);
+        Overlay017Transform_SubmitGeometry((u8 *)node + 0xbc);
         func_ov017_021fd918((u8 *)node + 0xbc, 0);
         *(volatile u32 *)0x04000448 = 1;
 #ifndef MATCHING

@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void *func_02062e00(void *);
+extern void *InventoryRecord_GetMetadata(void *);
 extern void *func_ov000_021fb728(void *, void *);
 extern void func_ov000_021fb848(void *);
 extern void *func_ov000_021fbcc4(void *, void *);
@@ -45,7 +45,7 @@ extern void func_ov016_021ff700(void *, u32);
  * the list with stride 0x18, and refresh it. Return void. Heap and UI/actor state
  * change; no direct hardware access occurs.
  */
-extern "C" void func_ov016_021ff510(void *state)
+extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
 {
     void *object;
     s32 chooseFirst = 1;
@@ -95,7 +95,7 @@ extern "C" void func_ov016_021ff510(void *state)
                     break;
                 }
             }
-        } else if (FIELD(u8, func_02062e00(child), 2) == 0) {
+        } else if (FIELD(u8, InventoryRecord_GetMetadata(child), 2) == 0) {
             FIELD(s32, state, 0x46c)++;
             func_ov016_021ff700(entry, 1);
             if (chooseFirst != 0) {

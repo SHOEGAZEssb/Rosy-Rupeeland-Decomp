@@ -21,14 +21,14 @@ extern s32 func_02059344(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void func_02091b98(void *, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_020922f0(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationList_Append(void *, void *);
 extern void SpritePresentation_Show(void *);
 extern void func_020afd0c(volatile u16 *, s32, s32, s32, s32);
@@ -151,7 +151,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
                 void *sprite = GraphicsSpriteGroup_CreateStateFromSource(
                     FIELD(void *, state, 0xcc), (u8 *)state + 0xac, 1);
                 func_02073e48(sprite,
-                    func_020918f4((u8 *)state + 0x3dc, 4),
+                    TitleRandom_NextBounded((u8 *)state + 0x3dc, 4),
                     x, y, 0, 0, 0x100);
             }
         }
@@ -195,7 +195,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
     case 7:
         if (func_ov018_021fda60(state)) {
             void *dialog = FIELD(void *, state, 0x418);
-            func_020939d8(dialog);
+            TitleDialog_ClearTextRect(dialog);
             func_02092c8c(2, 0);
             destroyVirtual(dialog);
             FIELD(void *, state, 0x418) = 0;

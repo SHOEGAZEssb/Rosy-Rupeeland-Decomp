@@ -10,7 +10,7 @@
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DResourceOwner_PrepareResources
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_02091b6c
     .extern func_ov017_021fe3c4
     .extern genrand_int32
@@ -66,7 +66,7 @@ L_021fe484:
     str r0, [r1, #0x10]
     add r0, r10, #0x54
     mov r1, #0x3
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     and r1, r0, #0xff
     add r0, r5, r8, lsl #0x1
     mov r2, r8, lsl #0x1

@@ -1,6 +1,6 @@
     .text
     .extern data_021e9ac0
-    .extern func_020651a4
+    .extern ActorDescriptorState_FindInactiveQuantity
 
 /* Exact fallbacks for phase predicates; see src/overlays/ov015/overlay015_phase_runtime.c. */
     .global func_ov015_021fe548
@@ -20,7 +20,7 @@ func_ov015_021fe560:
     ldr r0, L_021fe584
     ldr r0, [r0, #0x0]
     add r0, r0, #0x1c
-    bl func_020651a4
+    bl ActorDescriptorState_FindInactiveQuantity
     cmp r0, #0x63
     movge r0, #0x1
     movlt r0, #0x0

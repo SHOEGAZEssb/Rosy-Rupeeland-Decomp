@@ -11,7 +11,7 @@ extern u16 data_ov028_021ff300[];
 extern "C" {
 #endif
 extern u32 genrand_int32(void);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_020b4554(void *, s32);
 extern void func_020b44e8(void);
@@ -37,12 +37,12 @@ extern "C" void *func_ov028_021fce00(void *object)
 extern "C" void func_ov028_021fce28(void *object)
 {
     FIELD(s32, object, 0) = 0;
-    FIELD(s32, object, 4) = func_020918f4((u8 *)object + 0x18, 0x100);
+    FIELD(s32, object, 4) = TitleRandom_NextBounded((u8 *)object + 0x18, 0x100);
     FIELD(s32, object, 8) = FIELD(s32, object, 4) + 0x60 +
-                            func_020918f4((u8 *)object + 0x18, 0x40);
-    FIELD(s32, object, 0x10) = func_020918f4((u8 *)object + 0x18, 0x100);
+                            TitleRandom_NextBounded((u8 *)object + 0x18, 0x40);
+    FIELD(s32, object, 0x10) = TitleRandom_NextBounded((u8 *)object + 0x18, 0x100);
     FIELD(s32, object, 0x14) = FIELD(s32, object, 0x10) + 0x60 +
-                               func_020918f4((u8 *)object + 0x18, 0x40);
+                               TitleRandom_NextBounded((u8 *)object + 0x18, 0x40);
 }
 
 /*

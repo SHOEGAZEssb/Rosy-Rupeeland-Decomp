@@ -9,14 +9,14 @@
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_02091b98
     .extern func_02091bac
     .extern func_02091c7c
     .extern func_02091cf0
     .extern func_020922f0
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern PresentationList_Append
     .extern SpritePresentation_Show
     .extern func_020afd0c
@@ -233,7 +233,7 @@ L_021fec50:
     mov r11, r0
     add r0, r4, #0x3dc
     mov r1, #0x4
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r1, #0x0
     str r1, [sp, #0x0]
     str r1, [sp, #0x4]
@@ -334,7 +334,7 @@ L_021fee78:
     cmp r0, #0x0
     beq L_021feef4
     ldr r0, [r4, #0x418]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, #0x2
     mov r1, #0x0
     bl func_02092c8c

@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern func_02031cac
+.extern ActorAttachment_CopyTouchState
 .extern ActorExtendedType2_RunRenderCallback
 .extern func_ov077_02212f18
 .extern func_ov090_0221c318
@@ -46,7 +46,7 @@ func_ov077_02212e60:
     bl func_ov077_02212f18
     add r1, sp, #0x0
     mov r0, r5
-    bl func_02031cac
+    bl ActorAttachment_CopyTouchState
     ldr r0, [r5, #0x298]
     mov r1, r4
     bl func_ov090_0221c318

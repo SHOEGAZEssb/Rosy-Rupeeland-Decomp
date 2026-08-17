@@ -10,7 +10,7 @@
 .extern func_02058ffc
 .extern func_020594ec
 .extern func_020595d4
-.extern func_ov032_021fd994
+.extern Overlay032Scene_SetupGraphics
 .extern gGameWork
 .extern gSoundContext
 
@@ -45,7 +45,7 @@ L_021fec3c:
     cmp r0, #0x0
     beq L_021fed74
     mov r0, r4
-    bl func_ov032_021fd994
+    bl Overlay032Scene_SetupGraphics
     ldr r0, L_021fed7c
     ldr r0, [r0, #0x0]
     bl func_020595d4

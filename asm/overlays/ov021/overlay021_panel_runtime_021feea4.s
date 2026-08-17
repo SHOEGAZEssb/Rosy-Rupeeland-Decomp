@@ -4,7 +4,7 @@
     .extern GamePhaseCurrencyHud_Update
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern Presentation_BlendPalette16
-    .extern func_02094574
+    .extern InventoryScroll_UpdatePresentation
     .extern func_020958d8
     .extern func_020b1ff0
     .extern func_020b2058
@@ -37,7 +37,7 @@ L_021feecc:
     cmp r5, #0x0
     beq L_021feefc
     ldr r0, [r5, #0x58]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     ldr r0, [r5, #0x1c]
     bl GraphicsSpriteGroup_AdvanceAnimations
 L_021feefc:

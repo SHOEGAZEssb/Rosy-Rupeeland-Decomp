@@ -35,7 +35,7 @@ extern void func_020706c4(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02070bc4(void *, s32);
 extern void func_02070f80(void *, s32);
-extern u8 *func_02070874(void *);
+extern u8 *GraphicsBgResourceData_GetDecoded(void *);
 void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer *);
 #ifdef __cplusplus
 }
@@ -119,7 +119,7 @@ void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer
     func_020706c4(set.resource0, 2, 0);
     func_02070eac(set.resource2, 2, 0);
     func_02070bc4(set.resource1, 0);
-    PaletteBuffer_Write(&gSubBgPaletteBuffer, func_02070874(set.resource1), 0, 0xc0);
+    PaletteBuffer_Write(&gSubBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1), 0, 0xc0);
     GraphicsResourceSet_ReleaseHandles(&set);
 
     *bg1 = (*bg1 & 0x43) | 0x1a00;
@@ -132,7 +132,7 @@ void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer
     func_020b44e8();
     func_02070eac(set.resource2, 1, 0);
     func_02070bc4(set.resource1, 0xc0);
-    PaletteBuffer_Write(&gSubBgPaletteBuffer, func_02070874(set.resource1),
+    PaletteBuffer_Write(&gSubBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1),
                         0xc0, 0xc0);
     GraphicsResourceSet_ReleaseHandles(&set);
 
@@ -147,7 +147,7 @@ void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer
     func_020b44e8();
     func_02070eac(set.resource2, 3, 0);
     func_02070bc4(set.resource1, 0x180);
-    PaletteBuffer_Write(&gSubBgPaletteBuffer, func_02070874(set.resource1),
+    PaletteBuffer_Write(&gSubBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1),
                         0x180, 0x80);
     GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);

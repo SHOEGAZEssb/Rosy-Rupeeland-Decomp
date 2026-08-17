@@ -64,10 +64,10 @@ extern void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void VecFx32Object_InitCopy(void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
-extern void *func_0201ded4(void *, void *);
-extern void func_02071f38(void *);
+extern void *PresentationList_AppendObject(void *, void *);
+extern void AnimationResourceState_ReleaseResources(void *);
 extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
@@ -99,7 +99,7 @@ RandomizedSpriteParticleEmitter *func_02028b98(
     const EmitterVector *position, const EmitterVector *target, s32 frame)
 {
     u8 temporary[0x10];
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable_00 = (void **)data_020de8cc;
     self->projection_08 = projection;
     VecFx32Object_InitCopy(&self->position_0c, position);
@@ -167,8 +167,8 @@ RandomizedSpriteParticleEmitter *func_02028d14(
         node = next;
     }
     GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, self->spriteOwner_4c);
-    func_02071f38(self->resources_2c + 4);
-    func_02071f38(self->resources_2c + 0x14);
+    AnimationResourceState_ReleaseResources(self->resources_2c + 4);
+    AnimationResourceState_ReleaseResources(self->resources_2c + 0x14);
     self->particles_5c.vtable_00 = (void **)data_020de89c;
     func_02028cd4(&self->particles_5c);
     __destroy_arr(self->resources_2c, 2, 0x10, AnimationResource_Destroy);
@@ -286,7 +286,7 @@ void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
         &gHeapContext);
     if (self)
         self = func_02028b98(self, projection, &position, &target, frame);
-    result = func_0201ded4(data_021052fc + 0x2f7c, self);
+    result = PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
     VecFx32Object_Destroy(&target);
     VecFx32Object_Destroy(&position);
     return result;

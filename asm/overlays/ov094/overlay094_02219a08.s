@@ -4,7 +4,7 @@
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern gGameWork
 
 .global func_ov094_02219a08
@@ -14,7 +14,7 @@ func_ov094_02219a08:
     mov r7, r0
     add r0, r7, #0x14
     mov r1, #0x100
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, .L_02219acc
     mov r5, r0
     ldr r0, [r1, #0x0]
@@ -24,11 +24,11 @@ func_ov094_02219a08:
     add r0, r7, #0x14
     beq .L_02219a4c
     mov r1, #0xc0
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     b .L_02219a54
 .L_02219a4c:
     mov r1, #0x180
-    bl func_020918f4
+    bl TitleRandom_NextBounded
 .L_02219a54:
     mov r6, r0
     cmp r6, #0xc0

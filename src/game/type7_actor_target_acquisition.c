@@ -20,7 +20,7 @@ extern s32 ActorDerivedType1_IsSpecialRecordActive(void *object);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 extern s32 func_020adcac(const void *first, const void *second);
 #ifdef __cplusplus
 }
@@ -111,7 +111,7 @@ s32 Type7Actor_TryAcquireTarget(void *self, s32 finiteMode)
             continue;
         if (Actor_GetCachedTerrainHeight(candidate) != Actor_GetCachedTerrainHeight(actor))
             continue;
-        if (func_020be334(*(s32 *)(candidate + 0x24)
+        if (SignedAbsoluteValue(*(s32 *)(candidate + 0x24)
                           - Actor_GetCachedTerrainHeight(actor)) > 0x20000)
             continue;
         distance = func_020adcac(actor + 0x1c, candidate + 0x1c);

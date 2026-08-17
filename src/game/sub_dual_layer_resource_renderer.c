@@ -42,7 +42,7 @@ extern void DualLayerTileRenderer_SetLayersEnabled(void *self, s32 enabled);
 extern void func_020b44e8(void);
 extern void func_020706c4(void *resource, s32 background, s32 value);
 extern void func_02070eac(void *resource, s32 background, s32 value);
-extern u8 *func_02070874(void *resource);
+extern u8 *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void MIi_CpuCopy16(const void *source, void *destination, u32 size);
 void SubDualLayerResourceRenderer_LoadBgResources(SubDualLayerResourceRenderer *self);
 #ifdef __cplusplus
@@ -132,7 +132,7 @@ void SubDualLayerResourceRenderer_LoadBgResources(SubDualLayerResourceRenderer *
     func_020b44e8();
     func_020706c4(resources.resource0, 1, 0);
     func_02070eac(resources.resource2, 1, 0);
-    palette = func_02070874(resources.resource1);
+    palette = GraphicsBgResourceData_GetDecoded(resources.resource1);
     MIi_CpuCopy16(palette + 0x80, self->paletteBuffer_14 + 0x140, 0xc0);
     DualLayerTileRenderer_UploadPalette(self);
     *bg1cnt = (*bg1cnt & ~3u) | 3;

@@ -17,12 +17,12 @@ typedef struct Overlay001PresentationCloseState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071f38(void *resource);
+extern void AnimationResourceState_ReleaseResources(void *resource);
 extern void GraphicsSpriteGroup_Clear(void *owner);
 extern void GraphicsSpriteCanvas_FillRect(void *owner, s32 first, s32 second, s32 third,
                           s32 fourth, s32 fifth);
-extern void func_02093998(void *presentation);
-extern void func_020939d8(void *presentation);
+extern void TitleDialog_ResetAfterClose(void *presentation);
+extern void TitleDialog_ClearTextRect(void *presentation);
 #ifdef __cplusplus
 }
 #endif
@@ -40,10 +40,10 @@ void func_ov001_021fb81c(Overlay001PresentationCloseState *state,
                          s32 startAnimation)
 {
     if (startAnimation != 0) {
-        func_020939d8(state->presentation_44);
+        TitleDialog_ClearTextRect(state->presentation_44);
         GraphicsSpriteCanvas_FillRect(state->owner_00, 0x5c, 0x38, 0xdc, 0x58, 0);
     }
-    func_02093998(state->presentation_44);
+    TitleDialog_ResetAfterClose(state->presentation_44);
     GraphicsSpriteGroup_Clear(state->spriteOwner_04);
-    func_02071f38(state->resource_14);
+    AnimationResourceState_ReleaseResources(state->resource_14);
 }

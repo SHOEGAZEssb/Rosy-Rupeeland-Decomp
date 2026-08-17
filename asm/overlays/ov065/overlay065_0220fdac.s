@@ -5,8 +5,8 @@
 .extern VecFx32Triple_Set
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
-.extern func_ov065_0220fe7c
-.extern func_ov065_0220fee8
+.extern Overlay065Vector_InitScaled
+.extern Overlay065Vector_DeriveControlPoint
 
 .global func_ov065_0220fdac
 func_ov065_0220fdac:
@@ -18,15 +18,15 @@ func_ov065_0220fdac:
     add r0, sp, #0x14
     mov r7, r1
     mov r4, r3
-    bl func_ov065_0220fe7c
+    bl Overlay065Vector_InitScaled
     ldr r2, .L_0220fe74
     add r0, sp, #0x4
     mov r1, r6
-    bl func_ov065_0220fe7c
+    bl Overlay065Vector_InitScaled
     add r0, sp, #0x24
     add r1, sp, #0x14
     add r2, sp, #0x4
-    bl func_ov065_0220fee8
+    bl Overlay065Vector_DeriveControlPoint
     add r0, sp, #0x4
     bl VecFx32Object_Destroy
     add r0, sp, #0x14

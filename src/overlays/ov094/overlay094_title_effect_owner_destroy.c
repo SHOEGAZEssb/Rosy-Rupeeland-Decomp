@@ -7,7 +7,7 @@ extern const u8 data_ov094_02219e70[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071eb8(void *resourceSet);
+extern void AnimationResourceState_Destroy(void *resourceSet);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void PresentationList_DeleteAll(void *effectList);
 #ifdef __cplusplus
@@ -27,6 +27,6 @@ extern "C" void *func_ov094_022196a4(void *object)
     GraphicsSpriteGroup_Destroy(*(void **)((u8 *)object + 0x10));
     *(const void **)((u8 *)object + 0x34) = data_ov094_02219e70;
     PresentationList_DeleteAll((u8 *)object + 0x34);
-    func_02071eb8(object);
+    AnimationResourceState_Destroy(object);
     return object;
 }

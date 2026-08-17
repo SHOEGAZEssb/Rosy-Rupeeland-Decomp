@@ -8,11 +8,11 @@
     .extern func_02095940
     .extern func_02095dd4
     .extern func_ov016_021fd3f8
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff848
     .extern func_ov016_021ff908
     .extern func_ov016_021ffba4
-    .extern func_ov016_021ffbd8
+    .extern Overlay016_SyncSelectedPanel
     .extern gDebugFont
 .global func_ov016_021ffe90
 func_ov016_021ffe90:
@@ -46,11 +46,11 @@ L_021ffee0:
     mov r0, r4
     bl func_ov016_021ffba4
     mov r0, r4
-    bl func_ov016_021ffbd8
+    bl Overlay016_SyncSelectedPanel
     ldr r1, L_021fffc4
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_021fff70
 L_021fff18:
     add r0, r4, #0x194
@@ -93,7 +93,7 @@ L_021fff84:
     ldr r1, L_021fffc8
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_021fffb4:
     mov r0, #0x0
     ldmia sp!, {r4, pc}

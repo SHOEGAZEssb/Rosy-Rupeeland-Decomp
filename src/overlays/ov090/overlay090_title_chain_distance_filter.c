@@ -5,7 +5,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 extern void func_ov090_0221b3d0(VecFx32Object *vector, fx32 scale);
 
 /*
@@ -16,7 +16,7 @@ extern void func_ov090_0221b3d0(VecFx32Object *vector, fx32 scale);
 s32 func_ov090_0221c350(void *self, VecFx32Object *difference)
 {
     fx32 magnitude = VecFx32Object_GetMagnitude(difference);
-    fx32 delta = func_020be334(magnitude - FIELD(fx32, self, 0x0c));
+    fx32 delta = SignedAbsoluteValue(magnitude - FIELD(fx32, self, 0x0c));
 
     if (delta > 0x1000 &&
         (difference->value.x != 0 || difference->value.y != 0 ||

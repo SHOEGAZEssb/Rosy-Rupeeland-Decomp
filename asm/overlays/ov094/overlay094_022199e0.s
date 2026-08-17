@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 
 .global func_ov094_022199e0
@@ -12,7 +12,7 @@ func_ov094_022199e0:
     ldr r0, [r4, #0x10]
     bl GraphicsSpriteGroup_Destroy
     mov r0, r4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_ov094_022199e0, . - func_ov094_022199e0

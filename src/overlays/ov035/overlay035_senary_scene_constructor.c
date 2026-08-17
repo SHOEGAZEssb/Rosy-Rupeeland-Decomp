@@ -24,7 +24,7 @@ extern void func_02091d08(void *state);
 extern void GraphicsResourceSetVariant_Load(void *state, void *resourceContext, s32 first,
                          s32 second, s32 third);
 extern void Graphics3DResourceOwner_PrepareResources(void *owner, void *resource);
-extern void *func_02071adc(void *resourceContext, s32 resourceId);
+extern void *GraphicsArchive_AcquireOwlvResource(void *resourceContext, s32 resourceId);
 extern void *Graphics3DResourceOwner_CreateManager(void *owner);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fcf34(void *object, void *resource, s32 index,
@@ -38,7 +38,7 @@ extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, 
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
                                u16 flags);
-extern void *func_020955d8(void *allocation, void *spriteRecord);
+extern void *AlternateSpritePresentation_Init(void *allocation, void *spriteRecord);
 extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
 extern s32 Presentation_InterpolateLinear(s32 first, s32 second, s32 third, s32 fourth);
 extern void func_ov035_022016ac(s32 enabled);
@@ -46,7 +46,7 @@ extern void func_020b035c(const void *configuration);
 extern void func_020b0374(s32 first, s32 second, s32 third, s32 fourth);
 extern void func_020b0300(s32 first, s32 second, s32 third, s32 fourth,
                          s32 fifth);
-extern void func_02092850(s32 value);
+extern void TitlePalette_SetMainBackdrop(s32 value);
 extern void func_02091d24(void *state, s32 first, s32 second, s32 third,
                          s32 fourth);
 #ifdef __cplusplus
@@ -69,7 +69,7 @@ static void *allocate_sprite(void *scene, void *record)
 {
     void *object = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (object != 0)
-        object = func_020955d8(object, record);
+        object = AlternateSpritePresentation_Init(object, record);
     PresentationList_Append((u8 *)scene + 0x10c, object);
     return object;
 }
@@ -99,22 +99,22 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
     func_02091d08((u8 *)scene + 0x148);
     load_group((u8 *)scene + 0xdc, 0x6011, resourceOwner);
     load_group((u8 *)scene + 0xe8, 0x6014, resourceOwner);
-    FIELD(void *, scene, 0xfc) = func_02071adc(data_020f4e18[0], 0x5004);
+    FIELD(void *, scene, 0xfc) = GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5004);
 
     s32 variant = FIELD(s32, scene, 4);
     if (variant == 0x12e) {
         FIELD(void *, scene, 0x100) =
-            func_02071adc(data_020f4e18[0], 0x5005);
+            GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5005);
         GraphicsResourceSetVariant_Load((u8 *)scene + 0xcc, data_020f4e18[0],
                       0x60c9, 0x60ca, 0x60cb);
     } else if (variant == 0x131) {
         FIELD(void *, scene, 0x100) =
-            func_02071adc(data_020f4e18[0], 0x5005);
+            GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5005);
         GraphicsResourceSetVariant_Load((u8 *)scene + 0xcc, data_020f4e18[0],
                       0x60cc, 0x60cd, 0x60ce);
     } else if (variant == 0x134) {
         FIELD(void *, scene, 0x100) =
-            func_02071adc(data_020f4e18[0], 0x5006);
+            GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5006);
         GraphicsResourceSetVariant_Load((u8 *)scene + 0xcc, data_020f4e18[0],
                       0x60cf, 0x60d0, 0x60d1);
     }
@@ -169,7 +169,7 @@ extern "C" void *func_ov035_022016e8(void *scene, void *resourceOwner,
     func_020b0374(1, 0, 4, 0x6400);
     *(volatile u32 *)0x04000358 = 0;
     func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     func_02091d24((u8 *)scene + 0x148, 0, 0, 1, 1);
     FIELD(s32, scene, 0x164) = 0;
     FIELD(s32, scene, 0x160) = 0;

@@ -5,7 +5,7 @@
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
     .extern func_020706c4
-    .extern func_02070874
+    .extern GraphicsBgResourceData_GetDecoded
     .extern func_02070eac
     .extern Presentation_BlendPalette16
     .extern func_020b1ff0
@@ -17,7 +17,7 @@ func_ov021_021fe098:
     sub sp, sp, #0x10
     mov r4, r0
     ldr r0, [r4, #0x400]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x20
     str r0, [r4, #0x3f4]
     str r0, [r4, #0x3f0]

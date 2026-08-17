@@ -17,8 +17,8 @@ extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
-extern void func_0206dcac(void *object);
-extern void func_02031cac(void *actor, const void *snapshot);
+extern void AuxiliaryInteraction_UpdateResourceFrame(void *object);
+extern void ActorAttachment_CopyTouchState(void *actor, const void *snapshot);
 #ifdef __cplusplus
 }
 #endif
@@ -48,7 +48,7 @@ static void decaySteering(u8 *actor)
  * bounded desired vector into accumulators +0x23c/+0x240 over a 600-frame ramp,
  * or decay both by 0xf48/0x1000 when no target contributes. Update optional
  * object +0x26c, copy output X/Y into a gSceneTouchInitialData snapshot for
- * func_02031cac, and destroy temporaries. Returns no value; presentation,
+ * ActorAttachment_CopyTouchState, and destroy temporaries. Returns no value; presentation,
  * scene, owner, and value helpers may modify SDK-managed state.
  */
 void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, const void *position)
@@ -153,13 +153,13 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
     }
 
     object = *(void **)(actor + 0x26c);
-    if (object != 0) func_0206dcac(object);
+    if (object != 0) AuxiliaryInteraction_UpdateResourceFrame(object);
     {
         u8 snapshot[12];
         *(void **)snapshot = gSceneTouchInitialData;
         *(s32 *)(snapshot + 4) = *(s32 *)((u8 *)output + 4);
         *(s32 *)(snapshot + 8) = *(s32 *)((u8 *)output + 8);
-        func_02031cac(actor, snapshot);
+        ActorAttachment_CopyTouchState(actor, snapshot);
     }
     VecFx32Object_Destroy(adjusted);
 }

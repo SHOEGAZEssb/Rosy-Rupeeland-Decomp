@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
-extern void func_02032a94(void *actor, void *context, s32 condition);
+extern void ActorContactState_AddContact(void *actor, void *context, s32 condition);
 extern void Actor_SetInteractionFlag2000(void *actor, void *context);
 extern void func_02034a60(void *actor, u16 value, s32 mode,
                           s32 top, s32 left, s32 right, s32 bottom);
@@ -28,7 +28,7 @@ typedef void (*ActorStateCallback)(void *actor, void *context, s32 condition);
 /*
  * Inputs are an actor, context, and condition. When condition is zero, invoke
  * virtual slot 0xC4 with the original arguments, then always call inherited
- * func_02032a94 with all three inputs. Returns nothing; callback engine state
+ * ActorContactState_AddContact with all three inputs. Returns nothing; callback engine state
  * may change and no hardware is accessed directly.
  */
 void TrackedResourceActor_HandleInteractionCallback(void *actor, void *context, s32 condition)
@@ -38,7 +38,7 @@ void TrackedResourceActor_HandleInteractionCallback(void *actor, void *context, 
             *(ActorStateCallback *)((u8 *)FIELD(void *, actor, 0) + 0xc4);
         callback(actor, context, condition);
     }
-    func_02032a94(actor, context, condition);
+    ActorContactState_AddContact(actor, context, condition);
 }
 
 /*

@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov022/overlay022_state_transitions.c. */
-.extern func_02093360
+.extern TitleDialog_UpdateTextPage
 .extern func_ov022_021fd4d4
 .extern func_ov022_021fd514
 .extern func_ov022_021fd5d4
@@ -65,7 +65,7 @@ L_021ff408:
 L_021ff428:
     ldr r0, [r4, #0x2cc]
     add r1, sp, #0x18
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x14]

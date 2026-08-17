@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/overlay60_object_spawn.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020791e0
 .extern Actor_GetCollection
-.extern func_02078e98
-.extern func_0201d9e4
+.extern LanguageResourceManager_FindById
+.extern DisplayRouting_MatchesRequest
 .extern func_0201da34
 .extern OverlayManager_GetGlobal
 .extern OverlayManager_LoadOverlay
@@ -21,7 +21,7 @@ func_0201da20: ; 0x0201da20
     ldr ip, L_0201da2c
     ldr r0, L_0201da30
     bx ip
-L_0201da2c: .word func_02078e98
+L_0201da2c: .word LanguageResourceManager_FindById
 L_0201da30: .word data_021f4090
 
 

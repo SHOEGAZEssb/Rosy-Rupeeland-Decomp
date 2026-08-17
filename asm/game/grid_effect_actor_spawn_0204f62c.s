@@ -5,12 +5,12 @@
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
 .extern GridEffectActorRegistry_AcquireSlot
-.extern func_02062728
-.extern func_02062918
-.extern func_02063064
-.extern func_02063074
-.extern func_02063084
-.extern func_02063190
+.extern InventoryRecord_Assign
+.extern ActorDescriptor_GetComponent
+.extern ActorDescriptorComponent_GetCharacterResourceId
+.extern ActorDescriptorComponent_GetPaletteResourceId
+.extern ActorDescriptorComponent_GetCellResourceId
+.extern ActorDescriptorComponent_GetAnimation
 .text
 
     .global GridEffectActor_SpawnCore
@@ -26,23 +26,23 @@ GridEffectActor_SpawnCore: ; 0x0204f62c
     beq .L_0204f7d4
     mov r0, r6
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063064
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCharacterResourceId
     mov r10, r0
     mov r0, r6
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063074
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetPaletteResourceId
     mov r9, r0
     mov r0, r6
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063084
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCellResourceId
     mov r8, r0
     mov r0, r6
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     str r9, [sp, #0x0]
     str r8, [sp, #0x4]
     mov r1, #0x2
@@ -101,7 +101,7 @@ GridEffectActor_SpawnCore: ; 0x0204f62c
     mov r1, r6
     strh r5, [r2, #0x18]
     add r0, r0, #0x1f4
-    bl func_02062728
+    bl InventoryRecord_Assign
     ldr r3, [r4, #0x0]
     mvn r2, #0xf
     ldr r0, [r3, #0x10]

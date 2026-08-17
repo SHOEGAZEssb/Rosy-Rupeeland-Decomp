@@ -14,9 +14,9 @@
     .extern func_ov034_021fd9e8
     .extern func_ov034_021fd3f4
     .extern func_ov034_021fda00
-    .extern func_0205929c
+    .extern Sound_StopDirectSequence
     .extern Sound_Play
-    .extern func_02059278
+    .extern Sound_PlayDirectSequence
     .extern func_ov034_021fd978
     .extern genrand_int32
     .extern func_020bf1f8

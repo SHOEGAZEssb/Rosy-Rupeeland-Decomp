@@ -1,8 +1,8 @@
     .text
-    .extern func_02062e00
-    .extern func_02062874
-    .extern func_02062a08
-    .extern func_020627d0
+    .extern InventoryRecord_GetMetadata
+    .extern ActorDescriptor_SetQuantity
+    .extern ActorDescriptor_GetSubtype
+    .extern ActorDescriptor_Init
     .extern func_ov001_021fc460
     .extern func_ov001_021fc404
     .extern func_ov001_021fc068
@@ -17,7 +17,7 @@ func_ov001_021fc964: ; 0x021fc964
     ldr r4, [r0, #0xc]
     mov r5, r2
     mov r0, r4
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrb r0, [r0, #0x2]
     cmp r0, #0x1
     ldmneia sp!, {r4, r5, r6, r7, r8, pc}
@@ -26,10 +26,10 @@ func_ov001_021fc964: ; 0x021fc964
     sub r1, r1, r6
     mov r1, r1, lsl #0x10
     mov r1, r1, lsr #0x10
-    bl func_02062874
+    bl ActorDescriptor_SetQuantity
     mov r0, r4
     ldrh r8, [r5, #0x0]
-    bl func_02062a08
+    bl ActorDescriptor_GetSubtype
     ldrh r2, [r4, #0x4]
     mov r5, r0
     mov r0, r4
@@ -39,7 +39,7 @@ func_ov001_021fc964: ; 0x021fc964
     mov r1, r8
     mov r2, r2, lsr #0x10
     mov r3, r3, lsr #0x10
-    bl func_020627d0
+    bl ActorDescriptor_Init
     ldr r1, [r7, #0x1c]
     cmp r1, #0x0
     movne r0, #0x100

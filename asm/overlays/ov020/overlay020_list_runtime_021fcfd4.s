@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_020c0c24
@@ -30,7 +30,7 @@ L_021fd018:
     add r0, r4, #0x14
     bl func_020927b8
     add r0, r4, #0x8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fd030: .word func_ov020_021fd034

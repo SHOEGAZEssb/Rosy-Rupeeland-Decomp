@@ -19,7 +19,7 @@ extern "C" {
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
-extern const void *func_02079f3c(const void *, u16);
+extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern s32 func_020befec(s32, s32);
 extern void func_ov028_021fd390(void *, s32);
 extern void func_ov028_021fd420(void *, s32);
@@ -52,7 +52,7 @@ extern "C" void func_ov028_021fd468(void *state)
             GraphicsSpriteRenderer_DrawText(font, (u8 *)rows[index].descriptor + 0x18,
                           0x42, 0x15 + visible * 0x18, 14, 6, 0);
         } else {
-            const void *text = func_02079f3c(data_021f3ecc, 0x188);
+            const void *text = RetailTextTable_FindRecordById(data_021f3ecc, 0x188);
             GraphicsSpriteRenderer_DrawText(font, (u8 *)text + 2,
                           0x42, 0x15 + visible * 0x18, 1, 6, 0);
         }

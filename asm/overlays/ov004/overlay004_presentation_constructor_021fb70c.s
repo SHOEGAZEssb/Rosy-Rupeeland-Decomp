@@ -1,7 +1,7 @@
     .text
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern data_ov004_021fcda0
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern Presentation_InitVariant
     .extern func_02091b6c
     .extern data_020f4e18
@@ -24,11 +24,11 @@ func_ov004_021fb70c: ; 0x021fb70c
     mov r4, r0
     mov r6, r1
     mov r5, r2
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fb848
     add r0, r4, #0x54
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x6c
     bl Presentation_InitVariant
     add r0, r4, #0x114

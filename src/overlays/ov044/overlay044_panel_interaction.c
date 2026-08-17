@@ -14,14 +14,14 @@ extern "C" void GraphicsSpriteState_ReleaseFromGroup(void *binding);
 extern "C" void GraphicsSpriteCanvas_FillRect(void *font, s32 x, s32 y, s32 color,
                                s32 width, s32 flags);
 extern "C" void *GraphicsSpriteRenderer_SetFontResource(void *font, void *presentation);
-extern "C" void *func_02079f3c(const void *table, s32 index);
+extern "C" void *RetailTextTable_FindRecordById(const void *table, s32 index);
 extern "C" void GraphicsSpriteRenderer_DrawText(void *font, const void *text, s32 x, s32 y,
                                s32 color, s32 mode, s32 flags);
-extern "C" const void *func_020628c8(void *item);
+extern "C" const void *ActorDescriptor_GetPrimaryLabel(void *item);
 extern "C" void func_02092960(void *font, u32 value, s32 width, s32 y,
                                s32 color, s32 digits, s32 spacing, s32 flags);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
-extern "C" void func_ov044_0220bb60(void *object, s32 index);
+extern "C" void Overlay044Panel_ReleaseRow(void *object, s32 index);
 extern "C" void func_ov044_0220baa0(void *object, s32 index);
 extern "C" void func_ov044_0220bba4(void *object);
 
@@ -40,7 +40,7 @@ extern "C" u32 func_ov044_0220bb48(void *record, u32 mask)
  * clear the pointer. Invalid or unbound indices are ignored. Resource state
  * changes through GraphicsSpriteState_ReleaseFromGroup; no value is returned.
  */
-extern "C" void func_ov044_0220bb60(void *object, s32 index)
+extern "C" void Overlay044Panel_ReleaseRow(void *object, s32 index)
 {
     if (index >= FIELD(s32, object, 0x40))
         return;
@@ -76,11 +76,11 @@ extern "C" void func_ov044_0220bba4(void *object)
         void *record = (u8 *)FIELD(void *, object, 0x38) + index * 0x20;
         s32 y = (visible + 1) * 24;
         if (func_ov044_0220bb48(record, 1)) {
-            const void *marker = (u8 *)func_02079f3c(data_021f3ecc, 0x188) + 2;
+            const void *marker = (u8 *)RetailTextTable_FindRecordById(data_021f3ecc, 0x188) + 2;
             GraphicsSpriteRenderer_DrawText(font, marker, 0x44, y, 1, 4, 0);
         } else {
             void *item = FIELD(void *, record, 0xc);
-            GraphicsSpriteRenderer_DrawText(font, func_020628c8(item), 0x44, y, 14, 4, 0);
+            GraphicsSpriteRenderer_DrawText(font, ActorDescriptor_GetPrimaryLabel(item), 0x44, y, 14, 4, 0);
             s32 numberY = visible * 24 + 0x20;
             if (FIELD(u8, gSystemState, 0x5f))
                 numberY -= 2;
@@ -136,7 +136,7 @@ extern "C" s32 func_ov044_0220bdac(void *object)
     if (FIELD(s32, child, 0xc) != FIELD(s32, child, 0x10)) {
         FIELD(s32, FIELD(void *, object, 4), 0x1c) =
             0x20 - FIELD(s32, child, 0xc) * 24;
-        func_ov044_0220bb60(object, FIELD(s32, child, 0x74));
+        Overlay044Panel_ReleaseRow(object, FIELD(s32, child, 0x74));
         func_ov044_0220baa0(object, FIELD(s32, child, 0x70));
         func_ov044_0220bba4(object);
     }

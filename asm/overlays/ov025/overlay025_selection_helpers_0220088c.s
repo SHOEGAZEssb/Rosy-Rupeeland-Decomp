@@ -4,7 +4,7 @@
 .extern data_ov025_02202c78
 .extern func_020593ac
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_02091b98
 .extern func_02091c7c
 .extern gSoundContext
@@ -32,7 +32,7 @@ L_022008bc:
     add r0, r4, #0x234
     add r0, r0, #0x400
     mov r1, #0x6
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     add r1, sp, #0x8
     mov r0, r0, lsl #0x1
     ldrh r2, [r1, r0]

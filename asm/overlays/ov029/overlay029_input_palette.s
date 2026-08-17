@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov029/overlay029_input_palette.c. */
-.extern func_02070874
-.extern func_02093360
+.extern GraphicsBgResourceData_GetDecoded
+.extern TitleDialog_UpdateTextPage
 .extern func_ov045_0220c028
 .extern func_ov045_0220c128
 .extern func_ov045_0220c174
@@ -63,7 +63,7 @@ L_021fd8f0:
 L_021fd904:
     ldr r0, [r4, #0x9c]
     add r1, sp, #0x18
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x14]
@@ -93,7 +93,7 @@ func_ov029_021fd95c:
     ldr r0, [r4, #0xd8]
     str r0, [r4, #0xd4]
     ldr r0, [r4, #0xe8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x80
     str r0, [r4, #0xd8]
     mov r0, #0x0
@@ -107,7 +107,7 @@ func_ov029_021fd988:
     ldr r0, [r4, #0xd8]
     str r0, [r4, #0xd4]
     ldr r0, [r4, #0xe8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x60
     str r0, [r4, #0xd8]
     mov r0, #0x0
@@ -121,7 +121,7 @@ func_ov029_021fd9b4:
     ldr r0, [r4, #0xd8]
     str r0, [r4, #0xd4]
     ldr r0, [r4, #0xe8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x20
     str r0, [r4, #0xd8]
     mov r0, #0x0

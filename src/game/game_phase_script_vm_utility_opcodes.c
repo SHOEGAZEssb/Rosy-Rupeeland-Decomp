@@ -14,7 +14,7 @@ extern s32 func_020adc40(s32 value);
 extern void *GamePhaseMetadata_GetByIndex(s32 phaseIndex);
 extern void *GamePhaseApplyScene_Init(void *self, void *area, u32 field28, u32 field2c,
                            u32 extra);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern u32 func_02063670(void *table, u16 value);
 #ifdef __cplusplus
 }
@@ -70,11 +70,11 @@ s32 GamePhaseActorScriptVm_CreateApplyScene(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a signed value, push its func_020be328 classification, and return zero. */
+/* Pop a signed value, push its SignedAbsoluteValueVariant classification, and return zero. */
 s32 func_02015e40(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)func_020be328(value));
+    GamePhaseScriptVm_SetResult(&self->base, (u32)SignedAbsoluteValueVariant(value));
     return 0;
 }
 

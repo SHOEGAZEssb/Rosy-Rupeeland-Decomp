@@ -1,6 +1,6 @@
     .text
     .extern Presentation_Init
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02091b6c
     .extern genrand_int32
     .extern func_02071ee0
@@ -18,7 +18,7 @@ func_ov005_021fb6e4: ; 0x021fb6e4
     ldr r1, L_021fb750
     add r0, r5, #0x9c
     str r1, [r5, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r1, #0x0
     add r0, r5, #0xb0
     str r1, [r5, #0xac]

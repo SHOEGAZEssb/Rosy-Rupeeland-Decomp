@@ -16,7 +16,7 @@
 .extern func_02056f34
 .extern ActorRuntimeFlags_Test
 .extern func_020adc90
-.extern func_020be334
+.extern SignedAbsoluteValue
 
     .global ActorCollection_ProcessCategory1And2Pairs
     .type ActorCollection_ProcessCategory1And2Pairs, @function
@@ -99,7 +99,7 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     ldr r1, [r4, #0x24]
     ldr r0, [r5, #0x24]
     sub r0, r1, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x1000
     movge r0, #0x0
     strge r0, [sp, #0x8]
@@ -164,10 +164,10 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     ldr r1, [sp, #0x58]
     mov r0, r7
     sub r9, r2, r1
-    bl func_020be334
+    bl SignedAbsoluteValue
     str r0, [sp, #0x28]
     mov r0, r11
-    bl func_020be334
+    bl SignedAbsoluteValue
     ldr r1, [sp, #0x28]
     add r1, r0, r1
     cmp r9, r1
@@ -221,7 +221,7 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     orr r0, r0, r2, lsl #0x14
     bl func_020adc90
     mov r7, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r11, #0x0
     movgt r2, #0x1
     ldrle r2, [sp, #0x2c]
@@ -263,10 +263,10 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     ldr r1, [sp, #0x5c]
     mov r0, r8
     sub r7, r2, r1
-    bl func_020be334
+    bl SignedAbsoluteValue
     mov r9, r0
     mov r0, r6
-    bl func_020be334
+    bl SignedAbsoluteValue
     add r1, r0, r9
     cmp r7, r1
     bgt .L_0202e63c
@@ -319,7 +319,7 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     orr r0, r0, r2, lsl #0x14
     bl func_020adc90
     mov r8, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r6, #0x0
     movgt r2, #0x1
     ldrle r2, [sp, #0x2c]

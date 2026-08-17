@@ -19,14 +19,14 @@ extern void GameWork_SetFlag(...);
 extern void func_ov032_021fe55c(void *);
 extern void func_ov032_021fe6b0(void *);
 extern void func_ov032_021fe7d0(void *);
-extern void func_ov032_021fe2f0(void *);
+extern void Overlay032Scene_SetNumericDialogText(void *);
 extern void func_ov032_021fe440(void *);
 extern void func_ov032_021fe848(void *, s32);
 extern void func_ov032_021fe8a0(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(...);
 extern void func_ov032_02200180(void *);
 extern void func_ov032_022001a0(void *);
-extern s32 func_ov032_021ff288(...);
+extern s32 Overlay032SpriteWrapper_HitTest(...);
 extern void func_ov032_021fe8d8(void *, s32);
 extern s32 func_ov032_021fe92c(void *);
 extern void func_ov032_021fe9e8(void *, s32);
@@ -36,7 +36,7 @@ extern void func_ov032_02200284(void *);
 extern void func_ov032_022003e4(void *);
 extern void func_ov032_021fe23c(void *, s32);
 extern void func_ov032_021fe0e8(void *);
-extern s32 func_02098348(void *);
+extern s32 RetailSelectionManager_HasInactiveSpecialRecord(void *);
 extern void func_ov032_021fe2bc(void *, u32);
 extern s32 func_ov032_021fe134(void *, s32);
 #ifdef __cplusplus
@@ -76,7 +76,7 @@ static void reveal_menu(void *scene)
 {
     if (FIELD(s32, data_021f5f18, 0x460) > 0) {
         flag4(scene, 0x184, 0);
-        if (func_02098348(data_021f5f18)) {
+        if (RetailSelectionManager_HasInactiveSpecialRecord(data_021f5f18)) {
             flag4(scene, 0x1b4, 0);
             func_ov032_021fe0e8((u8 *)scene + 0x1b4);
         }
@@ -112,7 +112,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
     case 2:
         func_ov032_021fe55c(scene);
         func_ov032_021fe6b0(scene);
-        func_ov032_021fe2f0(scene);
+        Overlay032Scene_SetNumericDialogText(scene);
         func_ov032_021fe440(scene);
         func_ov032_021fe848(scene, 0);
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, scene, 0x304),
@@ -135,11 +135,11 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         break;
     case 10:
         if (!FIELD(s32, scene, 0xb84)) break;
-        if (func_ov032_021ff288((u8 *)scene + 0x154, (u8 *)scene + 0xb54, -1, -1))
+        if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x154, (u8 *)scene + 0xb54, -1, -1))
             FIELD(s32, scene, 0xb64) = 90;
-        else if (func_ov032_021ff288((u8 *)scene + 0x274, (u8 *)scene + 0xb54, 20, 20))
+        else if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x274, (u8 *)scene + 0xb54, 20, 20))
             FIELD(s32, scene, 0xb64) = 30;
-        else if (func_ov032_021ff288((u8 *)scene + 0x2a4, (u8 *)scene + 0xb54, 20, 20))
+        else if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x2a4, (u8 *)scene + 0xb54, 20, 20))
             FIELD(s32, scene, 0xb64) = 20;
         break;
     case 20:
@@ -167,10 +167,10 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         func_ov032_021fe848(scene, 0);
         update_arrows(scene);
         if (FIELD(s32, scene, 0xb80) && FIELD(void *, scene, 0x280) &&
-            func_ov032_021ff288((u8 *)scene + 0x274, (u8 *)scene + 0xb54, 20, 20)) {
+            Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x274, (u8 *)scene + 0xb54, 20, 20)) {
             FIELD(s32, scene, 0xb64) = 30;
         } else if (FIELD(s32, scene, 0xb80) && FIELD(void *, scene, 0x2b0) &&
-                   func_ov032_021ff288((u8 *)scene + 0x2a4, (u8 *)scene + 0xb54, 20, 20)) {
+                   Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x2a4, (u8 *)scene + 0xb54, 20, 20)) {
             FIELD(s32, scene, 0xb64) = 20;
         } else {
             FIELD(s32, scene, 0xb64) = 10;
@@ -195,7 +195,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         }
         func_ov032_021fe55c(scene);
         func_ov032_021fe6b0(scene);
-        func_ov032_021fe2f0(scene);
+        Overlay032Scene_SetNumericDialogText(scene);
         func_ov032_021fe440(scene);
         func_ov032_021fe848(scene, 0);
         ++FIELD(s32, scene, 0xb64);
@@ -225,7 +225,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         break;
     case 66:
         func_ov032_021fe6b0(scene);
-        func_ov032_021fe2f0(scene);
+        Overlay032Scene_SetNumericDialogText(scene);
         func_ov032_021fe440(scene);
         func_ov032_021fe848(scene, 1);
         func_ov032_021fe9e8(scene, 1);
@@ -270,7 +270,7 @@ extern "C" s32 func_ov032_021ff6e0(void *scene)
         flag4(scene, 0x304, 0);
         func_ov032_021fe55c(scene);
         func_ov032_021fe6b0(scene);
-        func_ov032_021fe2f0(scene);
+        Overlay032Scene_SetNumericDialogText(scene);
         func_ov032_021fe440(scene);
         func_ov032_021fe848(scene, 1);
         DisplayBrightness_StartMainTransition(1, 0x10);

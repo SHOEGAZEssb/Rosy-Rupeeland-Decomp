@@ -7,8 +7,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -21,7 +21,7 @@ extern void func_02071eb8(void *);
  */
 extern "C" void *func_ov023_021fce00(void *entry)
 {
-    func_02071ea4((u8 *)entry + 4);
+    AnimationResourceState_InitEmbedded((u8 *)entry + 4);
     FIELD(void *, entry, 0) = 0;
     FIELD(void *, entry, 0x10) = 0;
     FIELD(u16, entry, 0x14) = 0;
@@ -36,6 +36,6 @@ extern "C" void *func_ov023_021fce00(void *entry)
  */
 extern "C" void *func_ov023_021fce2c(void *entry)
 {
-    func_02071eb8((u8 *)entry + 4);
+    AnimationResourceState_Destroy((u8 *)entry + 4);
     return entry;
 }

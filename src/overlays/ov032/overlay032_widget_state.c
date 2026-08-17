@@ -13,29 +13,29 @@ extern "C" {
 #endif
 extern void func_ov032_02201ea4(void *);
 extern void func_ov032_02201930(void *);
-extern void func_02094874(void *);
-extern s32 func_02093ffc(void *);
+extern void InventoryScroll_ResetPresentationState(void *);
+extern s32 InventoryScroll_UpdateInterpolation(void *);
 extern s32 func_ov032_02201e58(void *);
-extern void func_02093de4(void *);
-extern void func_02093e0c(void *);
-extern void func_02093e20(void *);
-extern s32 func_02094638(...);
-extern s32 func_02093e3c(void *);
-extern s32 func_02094668(...);
-extern s32 func_02093e58(void *);
-extern s32 func_ov032_02201de4(void *, void *);
-extern s32 func_020945c8(...);
-extern s32 func_02094600(...);
-extern s32 func_02094698(...);
+extern void InventoryScroll_SaveOrigins(void *);
+extern void InventoryScroll_MoveSelectionUp(void *);
+extern void InventoryScroll_MoveSelectionDown(void *);
+extern s32 InventoryScroll_TestUpperArrowHold(...);
+extern s32 InventoryScroll_PageUp(void *);
+extern s32 InventoryScroll_TestLowerArrowHold(...);
+extern s32 InventoryScroll_PageDown(void *);
+extern s32 Overlay032Widget_HitTestRow(void *, void *);
+extern s32 InventoryScroll_TestUpperArrowPress(...);
+extern s32 InventoryScroll_TestLowerArrowPress(...);
+extern s32 InventoryScroll_TestMarkerHit(...);
 extern void Sound_Play(...);
-extern void func_02093d50(...);
-extern s32 func_ov032_021ff288(...);
-extern s32 func_02094758(void *);
-extern void func_020946a8(...);
+extern void InventoryScroll_SetSelectedRow(...);
+extern s32 Overlay032SpriteWrapper_HitTest(...);
+extern s32 InventoryScroll_UpdateSelectionMovement(void *);
+extern void InventoryScroll_BeginMarkerDrag(...);
 extern void func_0205940c(...);
-extern s32 func_020946c8(...);
-extern void func_02094738(...);
-extern void func_02094574(void *);
+extern s32 InventoryScroll_UpdateMarkerDrag(...);
+extern void InventoryScroll_EndMarkerDrag(...);
+extern void InventoryScroll_UpdatePresentation(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -69,73 +69,73 @@ extern "C" s32 func_ov032_02201960(void *widget)
     case 0:
         func_ov032_02201ea4(widget);
         func_ov032_02201930(widget);
-        func_02094874(list);
+        InventoryScroll_ResetPresentationState(list);
         ++FIELD(s32, widget, 4);
         /* Confirmed fallthrough: initialization immediately polls state 1. */
     case 1:
-        if (func_02093ffc(list)) {
+        if (InventoryScroll_UpdateInterpolation(list)) {
             ++FIELD(s32, widget, 4);
         } else if (func_ov032_02201e58(widget)) {
             func_ov032_02201930(widget);
         }
         break;
     case 2: {
-        func_02093de4(list);
+        InventoryScroll_SaveOrigins(list);
         u16 pad = FIELD(u16, gSystemState, 0xa);
         if (pad & 0x40) {
-            func_02093e0c(list);
+            InventoryScroll_MoveSelectionUp(list);
         } else if (pad & 0x80) {
-            func_02093e20(list);
+            InventoryScroll_MoveSelectionDown(list);
         } else {
             if (FIELD(s32, scene, 0xb80)) {
-                if (func_02094638(list, touch)) {
-                    func_02093e3c(list);
+                if (InventoryScroll_TestUpperArrowHold(list, touch)) {
+                    InventoryScroll_PageUp(list);
                     break;
                 }
-                if (func_02094668(list, touch)) {
-                    func_02093e58(list);
+                if (InventoryScroll_TestLowerArrowHold(list, touch)) {
+                    InventoryScroll_PageDown(list);
                     break;
                 }
             }
             if (FIELD(s32, scene, 0xb84)) {
-                s32 row = func_ov032_02201de4(widget, touch);
-                if (func_020945c8(list, touch)) {
-                    if (!func_02093e3c(list)) Sound_Play(gSoundContext, 0, 0x16);
-                } else if (func_02094600(list, touch)) {
-                    if (!func_02093e58(list)) Sound_Play(gSoundContext, 0, 0x16);
-                } else if (func_02094698(list, touch)) {
+                s32 row = Overlay032Widget_HitTestRow(widget, touch);
+                if (InventoryScroll_TestUpperArrowPress(list, touch)) {
+                    if (!InventoryScroll_PageUp(list)) Sound_Play(gSoundContext, 0, 0x16);
+                } else if (InventoryScroll_TestLowerArrowPress(list, touch)) {
+                    if (!InventoryScroll_PageDown(list)) Sound_Play(gSoundContext, 0, 0x16);
+                } else if (InventoryScroll_TestMarkerHit(list, touch)) {
                     FIELD(s32, widget, 4) = 10;
                 } else if (row >= 0) {
                     s32 current = FIELD(s32, list, 0x14);
                     if (row != current) {
                         Sound_Play(gSoundContext, 0, 0);
-                        func_02093d50(list, row);
+                        InventoryScroll_SetSelectedRow(list, row);
                         func_ov032_02201930(widget);
                     } else {
                         mark_selected_record(widget);
                         return 1;
                     }
-                } else if (func_ov032_021ff288((u8 *)scene + 0xb14, touch, -1, -1)) {
+                } else if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0xb14, touch, -1, -1)) {
                     mark_selected_record(widget);
                     return 1;
-                } else if (func_ov032_021ff288((u8 *)scene + 0x154, touch, -1, -1)) {
+                } else if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x154, touch, -1, -1)) {
                     FIELD(s32, scene, 0xf14) = -1;
                     return 1;
                 }
             }
         }
-        if (func_02094758(list)) {
+        if (InventoryScroll_UpdateSelectionMovement(list)) {
             Sound_Play(gSoundContext, 0, 0);
             --FIELD(s32, widget, 4);
         }
         break;
     }
     case 10:
-        func_020946a8(list, 4);
+        InventoryScroll_BeginMarkerDrag(list, 4);
         ++FIELD(s32, widget, 4);
         break;
     case 11:
-        if (func_02093ffc(list)) {
+        if (InventoryScroll_UpdateInterpolation(list)) {
             if (FIELD(s32, list, 0xc) != FIELD(s32, list, 0x10))
                 func_0205940c(gSoundContext, 0, 8);
             ++FIELD(s32, widget, 4);
@@ -144,18 +144,18 @@ extern "C" s32 func_ov032_02201960(void *widget)
         }
         break;
     case 12:
-        func_02093de4(list);
+        InventoryScroll_SaveOrigins(list);
         if (FIELD(s32, scene, 0xb80)) {
-            if (func_020946c8(list, touch)) {
+            if (InventoryScroll_UpdateMarkerDrag(list, touch)) {
                 Sound_Play(gSoundContext, 0, 8);
                 --FIELD(s32, widget, 4);
             }
         } else {
-            func_02094738(list, 6);
+            InventoryScroll_EndMarkerDrag(list, 6);
             FIELD(s32, widget, 4) = 0;
         }
         break;
     }
-    func_02094574(list);
+    InventoryScroll_UpdatePresentation(list);
     return 0;
 }

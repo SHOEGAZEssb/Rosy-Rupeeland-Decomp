@@ -36,8 +36,8 @@ extern void *gGameWork;
 extern u32 GameWork_Serialize(void *work, void *buffer, u32 bufferSize);
 extern void GameWork_Deserialize(void *work, const void *buffer, u32 bufferSize);
 extern void func_0207f0c0(void);
-extern void *func_02027f94(void);
-extern s32 func_02027854(void *state);
+extern void *GamePhaseProgress_GetOrCreateGlobal(void);
+extern s32 GamePhaseProgress_GetCurrentAdjustedThreshold(void *state);
 extern s32 func_02027e8c(void *state);
 extern s32 func_02027e9c(void *state);
 extern void func_0206392c(void *state, s32 mode);
@@ -55,7 +55,7 @@ extern void func_02063a00(void *state);
 extern void func_0207a6e0(void *state);
 extern void func_02078730(void *state);
 extern void func_02098298(void *state);
-extern void func_02079ca8(void *state);
+extern void SaveGameState_ResetLanguageRecords(void *state);
 extern void func_0206f8c8(void *state);
 extern void Type7Actor_LoadPersistentState(void);
 extern void *PackedTimerArray_GetGlobal(void);
@@ -82,11 +82,11 @@ void func_0207f0c0(void)
     func_0207a6e0(data_021f5128);
     func_02078730(data_021f38fc);
     func_02098298(data_021f5f18);
-    func_02079ca8(data_021f3d68);
+    SaveGameState_ResetLanguageRecords(data_021f3d68);
     func_0206f8c8(data_021e9e00);
     Type7Actor_LoadPersistentState();
     PackedTimerArray_LoadFromGameWork(PackedTimerArray_GetGlobal());
-    progress = func_02027f94();
+    progress = GamePhaseProgress_GetOrCreateGlobal();
     func_02027930(progress);
 }
 
@@ -792,11 +792,11 @@ s32 func_0207f8a4(void *context_pointer)
         *(u16 *)(work + 8) = 0x3d;
         work[0x0a] = (u8)*(u32 *)(context + 0x14);
         work[0x0b] = 1;
-        progress = func_02027f94();
-        *(u16 *)(work + 0x0c) = (u16)func_02027854(progress);
-        progress = func_02027f94();
+        progress = GamePhaseProgress_GetOrCreateGlobal();
+        *(u16 *)(work + 0x0c) = (u16)GamePhaseProgress_GetCurrentAdjustedThreshold(progress);
+        progress = GamePhaseProgress_GetOrCreateGlobal();
         work[0x0e] = (u8)func_02027e8c(progress);
-        progress = func_02027f94();
+        progress = GamePhaseProgress_GetOrCreateGlobal();
         work[0x0f] = (u8)func_02027e9c(progress);
         *(u32 *)(work + 0x3c) = *(u32 *)(work + 0x40);
         if (*(u32 *)(context + 0x20) == 1) {

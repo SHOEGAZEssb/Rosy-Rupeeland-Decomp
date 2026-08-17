@@ -14,7 +14,7 @@ extern "C" {
 extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern s32 func_ov036_021fd28c(void *object);
 extern s32 func_0209189c(void *random, s32 minimum, s32 maximum);
-extern s32 func_020918f4(void *random, s32 maximum);
+extern s32 TitleRandom_NextBounded(void *random, s32 maximum);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fd2a4(void *object, s16 type,
                                  s16 secondDuration, u16 colorA,
@@ -72,7 +72,7 @@ extern "C" void func_ov036_021ff7cc(void *controller, s32 range)
         func_ov036_021ff778(controller, child, x, y, z, duration);
     }
 
-    u16 angle = (u16)(func_020918f4((u8 *)controller + 0xc0, 0x1000) << 4);
+    u16 angle = (u16)(TitleRandom_NextBounded((u8 *)controller + 0xc0, 0x1000) << 4);
     s32 radius = func_0209189c((u8 *)controller + 0xc0, 0x600, 0xc00);
     s32 index = (angle >> 4) * 2;
     s32 x = mul_q12_trunc(radius, data_020c9670[index]);
@@ -94,7 +94,7 @@ extern "C" void func_ov036_021ff7cc(void *controller, s32 range)
     }
     Presentation_SetPosition(particle, x, 0, z);
     PresentationScalar_SetImmediate((u8 *)particle + 0x5c,
-                  func_020918f4((u8 *)controller + 0xc0, 0x1000) << 4);
+                  TitleRandom_NextBounded((u8 *)controller + 0xc0, 0x1000) << 4);
     PresentationScalar_SetImmediate((u8 *)particle + 0x6c, 0x333);
     PresentationList_Append((u8 *)controller + 0x128, particle);
 }

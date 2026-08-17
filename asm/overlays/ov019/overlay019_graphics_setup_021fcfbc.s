@@ -14,25 +14,25 @@
     .extern func_02092618
     .extern func_02092638
     .extern func_02092688
-    .extern func_020926d8
+    .extern TitleScreenResourceCollection_Init
     .extern func_020926f8
     .extern func_02092754
-    .extern func_02092790
-    .extern func_02092850
-    .extern func_0209285c
+    .extern TitleScreenResourceCollection_Get
+    .extern TitlePalette_SetMainBackdrop
+    .extern TitlePalette_SetSubBackdrop
     .extern func_020aea7c
     .extern func_020b44e8
     .extern func_ov019_021fd154
 
-.global func_ov019_021fcfbc
-func_ov019_021fcfbc:
+.global Overlay019_SetupGraphics
+Overlay019_SetupGraphics:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x54
     mov r4, r0
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     add r0, sp, #0x10
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     ldr r3, L_021fd140
     ldr r0, L_021fd144
     str r3, [sp, #0x0]
@@ -75,12 +75,12 @@ func_ov019_021fcfbc:
     bl func_02072048
     add r0, sp, #0x10
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c
     mov r0, #0x0
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     b L_021fd128
 L_021fd09c:
     mov r0, #0x1
@@ -112,12 +112,12 @@ L_021fd09c:
     bl GraphicsResourceSet_Apply
     add r0, sp, #0x10
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070eac
     mov r0, #0x0
-    bl func_0209285c
+    bl TitlePalette_SetSubBackdrop
 L_021fd128:
     add r0, sp, #0x10
     bl func_020926f8
@@ -130,4 +130,4 @@ L_021fd144: .word data_020f4e18
 L_021fd148: .word 0xa070
 L_021fd14c: .word 0x4000008
 L_021fd150: .word 0x4001008
-    .size func_ov019_021fcfbc, . - func_ov019_021fcfbc
+    .size Overlay019_SetupGraphics, . - Overlay019_SetupGraphics

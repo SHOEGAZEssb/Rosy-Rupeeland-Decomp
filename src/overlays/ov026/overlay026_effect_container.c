@@ -21,8 +21,8 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
-extern void func_02071e04(void *, void *);
-extern void *func_02071adc(void *, s32);
+extern void GraphicsArchive_ReleaseOwlvResource(void *, void *);
+extern void *GraphicsArchive_AcquireOwlvResource(void *, s32);
 extern void *Graphics3DResourceBinding_Init(void *, void *, void *, u16, u16);
 extern void Graphics3DResourceBinding_Destroy(void *);
 extern void PresentationScalar_SetImmediate(void *, s32);
@@ -97,7 +97,7 @@ extern "C" void *func_ov026_021fef9c(void *object, void *resource_arg)
         fan = func_ov026_021fe2c8(fan, -(FIELD(s32, object, 0x13c) << 10));
     FIELD(void *, object, 0xe4) = fan;
 
-    void *model_resource = func_02071adc(data_020f4e18, 0x5000);
+    void *model_resource = GraphicsArchive_AcquireOwlvResource(data_020f4e18, 0x5000);
     FIELD(void *, object, 0x11c) = model_resource;
     void *panel = Heap_Alloc(0xb0, data_ov026_02204a50, 4, gHeapContext);
     if (panel != 0)
@@ -145,7 +145,7 @@ static void teardown_effect_container(void *object)
     destroy_child(FIELD(void *, object, 0xe8));
     for (s32 i = 0; i < 4; ++i)
         destroy_child(FIELD(void *, object, 0xec + i * 4));
-    func_02071e04(data_020f4e18, FIELD(void *, object, 0x11c));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, object, 0x11c));
     func_ov026_021fce50(object);
 }
 

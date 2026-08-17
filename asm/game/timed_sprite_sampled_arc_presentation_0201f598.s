@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201edd0
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
@@ -22,7 +22,7 @@ TimedSpriteSampledArcPresentation_Init: ; 0x0201f598
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_0201f664
     add r0, sp, #0x0
     str r1, [r4, #0x0]

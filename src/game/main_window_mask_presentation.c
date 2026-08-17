@@ -17,7 +17,7 @@ extern "C" {
 extern void *data_020de838;
 extern const char data_020de858[];
 extern u8 *data_021052fc;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void func_0201df44(void *, void *);
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ extern void func_0201df44(void *, void *);
 /* Initialize the presentation, install its vtable, and set base flag bit one. */
 MainWindowMaskPresentation *func_02028778(MainWindowMaskPresentation *self)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable_00 = (void **)data_020de838;
     self->baseFlags_04 |= 2;
     return self;

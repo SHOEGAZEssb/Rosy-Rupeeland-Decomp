@@ -2,8 +2,8 @@
     .extern Heap_Free
     .extern __destroy_arr
     .extern data_ov015_021fec74
-    .extern func_020597fc
-    .extern func_02071eb8
+    .extern Sound_ReleaseGroup
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020926f8
     .extern func_020927b8
@@ -28,7 +28,7 @@ func_ov015_021fd330:
     ldr r0, L_021fd410
     mov r1, #0x82
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
 L_021fd368:
     ldr r0, L_021fd414
     mov r1, #0x0
@@ -67,9 +67,9 @@ L_021fd3c0:
     add r0, r4, #0x74
     bl func_020927b8
     add r0, r4, #0x64
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x58
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

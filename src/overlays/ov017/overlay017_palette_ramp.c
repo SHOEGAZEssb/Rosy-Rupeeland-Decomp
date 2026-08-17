@@ -20,7 +20,7 @@ extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
  * State palette words change; the interpolation helper has no known external
  * effects, the function returns void, and no direct hardware access occurs.
  */
-extern "C" void func_ov017_02200064(void *state)
+extern "C" void Overlay017_UpdatePaletteRamp(void *state)
 {
     s32 progress = FIELD(s32, state, 0x3cc) + FIELD(s32, state, 0x3d0);
     s32 duration = FIELD(s32, state, 0x3c8);

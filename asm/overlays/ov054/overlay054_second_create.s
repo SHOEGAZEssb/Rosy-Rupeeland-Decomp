@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov054_0220f150
 .extern data_ov054_0220f160
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_ov054_0220ec6c
 .extern gHeapContext
 
@@ -29,7 +29,7 @@ func_ov054_0220ef80:
     str r1, [r2, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     ldmia sp!, {r4, pc}
 .L_0220efd0: .word data_ov054_0220f150
 .L_0220efd4: .word gHeapContext

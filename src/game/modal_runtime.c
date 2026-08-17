@@ -10,14 +10,14 @@ extern const char data_020f276c[];
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 
-extern void func_02071ea4(void *state);
+extern void AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *resource, s32 first,
                           s32 second, s32 third);
 extern void func_020957bc(void *state);
-extern void func_02092798(void *state);
+extern void TitleCharacterResourceCollection_Init(void *state);
 extern void func_02092814(void *state, u32 value);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
-extern void *func_02092cc0(void *storage, void *owner, void *value);
+extern void *TitleDialog_Init(void *storage, void *owner, void *value);
 extern void func_02091080(void *state, void *first, void *second,
                           s32 third, s32 fourth);
 extern void func_02092f88(void *state, s32 value, void *destination);
@@ -36,8 +36,8 @@ extern void func_02075598(void *owner, void *resource);
 extern void GraphicsSpriteRenderer_DrawText(void *owner, void *text,
                                             s32 x, s32 y, s32 palette,
                                             s32 spacing, s32 flags);
-extern void func_02092e9c(void *state, void *text, s32 mode);
-extern s32 func_02093360(void *state, s32 mode);
+extern void TitleDialog_SetText(void *state, void *text, s32 mode);
+extern s32 TitleDialog_UpdateTextPage(void *state, s32 mode);
 extern void func_02076428(void *owner, s32 left, s32 top, s32 right,
                           s32 bottom, s32 first, s32 second);
 extern s32 func_02095860(void *state, void *input, s32 first, s32 second);
@@ -46,7 +46,7 @@ extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 channel, s32 sound_id);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void func_020927b8(void *state);
-extern void func_02071eb8(void *state);
+extern void AnimationResourceState_Destroy(void *state);
 extern void Presentation_DestroyNoOp(void *state);
 
 /* Exact field assignment helper selected at retail 0x02091080. */
@@ -71,7 +71,7 @@ void func_02095bec(void *state)
 }
 
 /* Exact shared modal resource/layout initialization at retail 0x02095C30. */
-void func_02095c30(void *state, s32 message_id)
+void ModalState_InitResources(void *state, s32 message_id)
 {
     u8 *self = (u8 *)state;
     u8 *message = (u8 *)func_020795e8(data_021f3f54, message_id);
@@ -105,8 +105,8 @@ void func_02095c30(void *state, s32 message_id)
         data_020f4e14, *(void **)(message + 8),
         *(s32 *)(self + 0x218) + 0x50,
         *(s32 *)(self + 0x21c) + 0x20, 0x0e, 8, 0);
-    func_02092e9c(*(void **)(self + 0x24c), *(void **)(message + 0x0c), 1);
-    (void)func_02093360(*(void **)(self + 0x24c), 0);
+    TitleDialog_SetText(*(void **)(self + 0x24c), *(void **)(message + 0x0c), 1);
+    (void)TitleDialog_UpdateTextPage(*(void **)(self + 0x24c), 0);
 }
 
 /* Return whether one modal choice has completed its motion, retail 0x02095F30. */
@@ -121,7 +121,7 @@ s32 func_02095f30(void *choice)
  * +0x250. At most 63 code units are retained and the destination is always
  * terminated; the source remains owned by the caller.
  */
-void func_02095f48(void *state, const u16 *attachment)
+void ModalState_CopyAttachmentText(void *state, const u16 *attachment)
 {
     u16 *destination = (u16 *)((u8 *)state + 0x250);
     s32 index = 0;
@@ -187,7 +187,7 @@ static void ModalDestroyOwnedState(u8 *self)
     func_020927b8(self + 0x228);
     for (index = 0; index < 3; ++index)
         Presentation_DestroyNoOp(self + 0x14 + index * 0xac);
-    func_02071eb8(self + 8);
+    AnimationResourceState_Destroy(self + 8);
 }
 
 /* Retaining and freeing modal destructors at retail 0x02095B1C/0x02095B80. */
@@ -197,7 +197,7 @@ void *func_02095b1c(void *state)
     return state;
 }
 
-void *func_02095b80(void *state)
+void *ModalState_Delete(void *state)
 {
     ModalDestroyOwnedState((u8 *)state);
     Heap_Free(state);
@@ -212,10 +212,10 @@ void *func_020959d4(void *storage, s32 first, s32 second)
     u32 index;
 
     *(void **)self = data_020f2754;
-    func_02071ea4(self + 8);
+    AnimationResourceState_InitEmbedded(self + 8);
     for (index = 0; index < 3; ++index)
         func_020957bc(self + 0x14 + index * 0xac);
-    func_02092798(self + 0x228);
+    TitleCharacterResourceCollection_Init(self + 0x228);
     *(s32 *)(self + 0x218) = first;
     *(s32 *)(self + 0x21c) = second;
     *(u32 *)(self + 0x220) = 0;
@@ -231,7 +231,7 @@ void *func_020959d4(void *storage, s32 first, s32 second)
 
     dialog = Heap_Alloc(0xec, data_020f276c, 4, &gHeapContext);
     if (dialog != 0)
-        dialog = func_02092cc0(dialog, data_020f4e14,
+        dialog = TitleDialog_Init(dialog, data_020f4e14,
                                *(void **)(self + 0x228));
     *(void **)(self + 0x24c) = dialog;
     func_02091080(dialog, (u8 *)(u32)first + 0x50,

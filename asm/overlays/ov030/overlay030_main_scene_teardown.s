@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern data_ov030_021ff8b0
 .extern func_02071c38
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern GraphicsSpriteRenderer_SetTextGridObjectMode
@@ -94,11 +94,11 @@ L_021fe018:
     add r0, r4, #0xb8
     bl func_ov030_021fcf18
     add r0, r4, #0x94
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x88
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x7c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x54
     bl func_020927b8
     mov r0, r4
@@ -185,11 +185,11 @@ L_021fe164:
     add r0, r4, #0xb8
     bl func_ov030_021fcf18
     add r0, r4, #0x94
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x88
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x7c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x54
     bl func_020927b8
     mov r0, r4

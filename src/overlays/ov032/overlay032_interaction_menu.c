@@ -16,9 +16,9 @@ extern void func_ov032_021fe23c(void *, s32);
 extern void func_ov032_021fe0e8(void *);
 extern void func_ov032_021fe2bc(void *, u32);
 extern s32 func_ov032_021fe134(void *, s32);
-extern s32 func_ov032_021ff288(...);
+extern s32 Overlay032SpriteWrapper_HitTest(...);
 extern void func_ov032_021fe10c(void *);
-extern s32 func_02098348(void *);
+extern s32 RetailSelectionManager_HasInactiveSpecialRecord(void *);
 extern s32 GameWork_TestFlag(...);
 extern void Sound_Play(...);
 #ifdef __cplusplus
@@ -55,7 +55,7 @@ extern "C" s32 func_ov032_021feea0(void *scene)
         func_ov032_021fe23c(scene, 1);
         if (FIELD(s32, data_021f5f18, 0x460) > 0) {
             set_object_flag4(scene, 0x184, 0);
-            if (func_02098348(data_021f5f18)) {
+            if (RetailSelectionManager_HasInactiveSpecialRecord(data_021f5f18)) {
                 set_object_flag4(scene, 0x1b4, 0);
                 func_ov032_021fe0e8((u8 *)scene + 0x1b4);
             }
@@ -93,19 +93,19 @@ extern "C" s32 func_ov032_021feea0(void *scene)
         if (FIELD(s32, scene, 0xb84)) {
             s32 selected = 0;
             void *touch = (u8 *)scene + 0xb54;
-            if (func_ov032_021ff288((u8 *)scene + 0x154, touch, -1, -1)) {
+            if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x154, touch, -1, -1)) {
                 Sound_Play(gSoundContext, 0x81, 5);
                 FIELD(s32, scene, 0xb64) = 20;
                 selected = 1;
-            } else if (func_ov032_021ff288((u8 *)scene + 0xf4, touch, -1, -1)) {
+            } else if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0xf4, touch, -1, -1)) {
                 Sound_Play(gSoundContext, 0x81, 2);
                 install_menu_callback(scene, 0x10);
                 selected = 1;
-            } else if (func_ov032_021ff288((u8 *)scene + 0x124, touch, -1, -1)) {
+            } else if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x124, touch, -1, -1)) {
                 Sound_Play(gSoundContext, 0x81, 3);
                 install_menu_callback(scene, 0x00);
                 selected = 1;
-            } else if (func_ov032_021ff288((u8 *)scene + 0x184, touch, -1, -1)) {
+            } else if (Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x184, touch, -1, -1)) {
                 Sound_Play(gSoundContext, 0x81, 3);
                 install_menu_callback(scene, 0x08);
                 selected = 1;

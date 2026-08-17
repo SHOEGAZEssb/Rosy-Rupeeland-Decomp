@@ -32,8 +32,8 @@ typedef struct Overlay001DeleteController {
 extern "C" {
 #endif
 extern void *data_ov001_021fcc80;
-extern void func_020683f4(void *cell);
-extern void func_02071eb8(void *resource);
+extern void InventoryCell_Destroy(void *cell);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void GraphicsSpriteRenderer_ClearFontResource(void *owner);
 extern void func_020927b8(void *state);
@@ -59,7 +59,7 @@ Overlay001GridDeleteState *func_ov001_021fbef0(
     Overlay001DeleteController *controller;
 
     state->vtable_000 = &data_ov001_021fcc80;
-    func_020c0c24(state->cells_20c, 0x20, 8, func_020683f4);
+    func_020c0c24(state->cells_20c, 0x20, 8, InventoryCell_Destroy);
     controller = (Overlay001DeleteController *)state->controller_1bc;
     if (controller != 0) {
         controller->vtable->destroy_04(controller);
@@ -70,7 +70,7 @@ Overlay001GridDeleteState *func_ov001_021fbef0(
     func_020927b8(state->rendererState_180);
     func_ov001_021fbab8(state->element_0d4);
     func_ov001_021fbab8(state->element_028);
-    func_02071eb8(state->resource_010);
+    AnimationResourceState_Destroy(state->resource_010);
     Heap_Free(state);
     return state;
 }

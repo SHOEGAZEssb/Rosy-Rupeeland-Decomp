@@ -14,9 +14,9 @@ extern u8 data_021f3ecc[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02071980(void *manager, u32 id);
-extern void func_02071d4c(void *manager, void *entry);
-extern u8 *func_02079f3c(void *table, u16 resourceId);
+extern void *GraphicsArchive_AcquireVfdResource(void *manager, u32 id);
+extern void GraphicsArchive_ReleaseResourceE4(void *manager, void *entry);
+extern u8 *RetailTextTable_FindRecordById(void *table, u16 resourceId);
 #ifdef __cplusplus
 }
 #endif
@@ -31,7 +31,7 @@ DebugSpriteText *DebugSpriteText_Init(DebugSpriteText *self)
 {
     self->text = 0;
     self->renderEntry = 0;
-    self->renderEntry = func_02071980(data_020f4e18, 0x7001);
+    self->renderEntry = GraphicsArchive_AcquireVfdResource(data_020f4e18, 0x7001);
     return self;
 }
 
@@ -41,18 +41,18 @@ DebugSpriteText *DebugSpriteText_Init(DebugSpriteText *self)
  */
 DebugSpriteText *DebugSpriteText_Destroy(DebugSpriteText *self)
 {
-    func_02071d4c(data_020f4e18, self->renderEntry);
+    GraphicsArchive_ReleaseResourceE4(data_020f4e18, self->renderEntry);
     return self;
 }
 
 /*
  * Resolve resourceId in data_021f3ecc and retain the UTF-16 payload beginning
  * two bytes into the returned record. Only self->text changes; no value is
- * returned, and lookup failure behavior belongs to func_02079f3c.
+ * returned, and lookup failure behavior belongs to RetailTextTable_FindRecordById.
  */
 void DebugSpriteText_SetTextResource(DebugSpriteText *self, u16 resourceId)
 {
-    self->text = (const u16 *)(func_02079f3c(data_021f3ecc, resourceId) + 2);
+    self->text = (const u16 *)(RetailTextTable_FindRecordById(data_021f3ecc, resourceId) + 2);
 }
 
 /*
@@ -81,7 +81,7 @@ asm DebugSpriteText *DebugSpriteText_Init(DebugSpriteText *)
     str r1, [r4, #4]
     ldr r0, [r0]
     ldr r1, =0x7001
-    bl func_02071980
+    bl GraphicsArchive_AcquireVfdResource
     str r0, [r4, #4]
     mov r0, r4
     ldmia sp!, {r4, pc}
@@ -94,7 +94,7 @@ asm DebugSpriteText *DebugSpriteText_Destroy(DebugSpriteText *)
     mov r4, r0
     ldr r0, [r1]
     ldr r1, [r4, #4]
-    bl func_02071d4c
+    bl GraphicsArchive_ReleaseResourceE4
     mov r0, r4
     ldmia sp!, {r4, pc}
 }
@@ -104,7 +104,7 @@ asm void DebugSpriteText_SetTextResource(DebugSpriteText *, u16)
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, =data_021f3ecc
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r0, r0, #2
     str r0, [r4]
     ldmia sp!, {r4, pc}

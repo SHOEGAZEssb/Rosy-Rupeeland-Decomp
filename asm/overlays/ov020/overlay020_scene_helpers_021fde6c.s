@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_helpers.c. */
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_02094574
+    .extern InventoryScroll_UpdatePresentation
     .extern func_020958d8
     .extern func_ov020_021fd44c
 
@@ -17,7 +17,7 @@ func_ov020_021fde6c:
     cmp r0, #0x0
     beq L_021fde90
     ldr r0, [r0, #0x44]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
 L_021fde90:
     ldr r0, [r4, #0x6c]
     bl GraphicsSpriteGroup_AdvanceAnimations

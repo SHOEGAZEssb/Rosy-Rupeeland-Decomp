@@ -2,11 +2,11 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_02092e9c
-.extern func_02093360
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
 .extern func_ov045_0220c028
 .extern func_ov045_0220c128
-.extern func_ov045_0220d2f8
+.extern Overlay045_DrawSelectorPreview
 .extern gDebugFont
 
 
@@ -18,10 +18,10 @@ func_ov023_021fe804:
     ldr r0, [r5, #0x4b8]
     mov r4, r2
     mov r2, #0x4
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r5, #0x4b8]
     ldr r1, [r5, #0x2c]
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]
@@ -44,7 +44,7 @@ L_021fe85c:
     ldr r0, [r1, #0xc]
     ldrh r1, [r1, #0x4]
     and r0, r0, #0xff
-    bl func_ov045_0220d2f8
+    bl Overlay045_DrawSelectorPreview
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe888: .word gDebugFont

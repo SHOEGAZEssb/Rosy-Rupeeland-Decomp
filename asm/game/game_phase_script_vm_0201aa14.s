@@ -3,7 +3,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern func_020593dc
 .extern func_02059484
-.extern func_020592d8
+.extern Sound_FadeDirectSequence
 .extern func_02059200
 .extern func_0205936c
 .extern func_020592fc
@@ -67,7 +67,7 @@ L_0201aac8:
     mov r1, r1, lsr #0x10
     mov r2, r2, lsr #0x10
     mov r3, r3, lsr #0x10
-    bl func_020592d8
+    bl Sound_FadeDirectSequence
     b L_0201ab50
 L_0201aaf0:
     ldr r0, L_0201ab5c

@@ -66,7 +66,7 @@ extern "C" void func_ov017_021fea00(void *state, s32 x, s32 y, s32 z)
  * Store three caller words at +0x10/+0x14/+0x18. The object changes in place;
  * the function returns void and has no SDK or hardware effects.
  */
-extern "C" void func_ov017_021fea08(void *state, s32 x, s32 y, s32 z)
+extern "C" void Overlay017Record_SetSecondaryVector(void *state, s32 x, s32 y, s32 z)
 {
     FIELD(s32, state, 0x10) = x;
     FIELD(s32, state, 0x14) = y;

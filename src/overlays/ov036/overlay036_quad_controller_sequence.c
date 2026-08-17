@@ -10,8 +10,8 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059278(void *sound, s32 id, s32 value);
-extern void func_0205929c(void *sound, s32 id, s32 value);
+extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
+extern void Sound_StopDirectSequence(void *sound, s32 id, s32 value);
 extern s32 func_02091c7c(void *timer, s32 mode);
 extern void func_02091b98(void *timer, s32 duration);
 extern void func_ov036_02202628(void *controller);
@@ -36,7 +36,7 @@ extern "C" s32 func_ov036_02202790(void *controller)
 {
     switch (FIELD(s32, controller, 0xa0)) {
     case 0:
-        func_02059278(gSoundContext, 0xb1, 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, 0xb1, 0x7f);
         ++FIELD(s32, controller, 0xa0);
         /* The recovered jump table intentionally continues into state 1. */
     case 1:
@@ -74,7 +74,7 @@ extern "C" s32 func_ov036_02202790(void *controller)
         break;
     case 4:
         if (func_02091c7c((u8 *)controller + 0xa4, 2) != 0) {
-            func_0205929c(gSoundContext, 0xb1, 0x10);
+            Sound_StopDirectSequence(gSoundContext, 0xb1, 0x10);
             ++FIELD(s32, controller, 0xa0);
         }
         break;

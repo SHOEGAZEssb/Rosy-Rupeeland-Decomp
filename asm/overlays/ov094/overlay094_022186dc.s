@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern data_ov094_02219e70
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern PresentationList_DeleteAll
 
@@ -20,7 +20,7 @@ func_ov094_022186dc:
     str r1, [r4, #0x1c]
     bl PresentationList_DeleteAll
     add r0, r4, #0x8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0221871c: .word data_ov094_02219e70

@@ -141,7 +141,7 @@ void func_ov061_022101dc(Overlay61Scene *self)
         *displayControl = (*displayControl & ~0x1f00u) |
                           ((u32)self->savedDisplayMode << 8);
     } else {
-        func_02008570(data_021052fc, 1, 1);
+        GamePhaseRuntime_ApplyScreenMode(data_021052fc, 1, 1);
         GamePhaseRuntime_SetPlacementMode(data_021052fc, 1, 1);
     }
     GamePhaseCurrencyHud_SetVisible((GamePhaseCurrencyHud *)gLupyContext,

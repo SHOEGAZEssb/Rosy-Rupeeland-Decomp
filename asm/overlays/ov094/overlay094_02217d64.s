@@ -5,7 +5,7 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationList_Append
 .extern PresentationList_UpdateAndDeleteCompleted
 .extern func_ov094_022177e0
@@ -50,7 +50,7 @@ func_ov094_02217d64:
     beq .L_02217e58
     add r0, r8, #0x28
     mov r1, #0x4
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r4, r0
     add r0, r8, #0x28
     mov r1, #0x80
@@ -59,7 +59,7 @@ func_ov094_02217d64:
     mov r10, r0
     add r0, r8, #0x28
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r9, r0
     add r0, r8, #0x28
     mov r1, #0x1a4

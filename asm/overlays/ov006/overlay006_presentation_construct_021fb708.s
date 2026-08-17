@@ -1,5 +1,5 @@
     .text
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern IndexedSelectionController_Init
     .extern func_02091b6c
     .extern IndexedSelectionController_ConfigureRange
@@ -26,7 +26,7 @@
 func_ov006_021fb708: ; 0x021fb708
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fb82c
     add r0, r4, #0x58
     str r1, [r4, #0x0]

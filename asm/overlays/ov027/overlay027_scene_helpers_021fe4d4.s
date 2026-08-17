@@ -4,7 +4,7 @@
 .extern data_ov027_021feb54
 .extern data_ov027_021fef4c
 .extern GraphicsAnimationInstanceManager_CreateInstance
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationList_Append
 .extern func_ov027_021fd408
 .extern gHeapContext
@@ -29,7 +29,7 @@ func_ov027_021fe4d4:
     add r0, r4, #0x1bc
     add r0, r0, #0x400
     mov r1, #0x3a
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r2, L_021fe55c
     mov r1, #0xc
     mla r2, r0, r1, r2

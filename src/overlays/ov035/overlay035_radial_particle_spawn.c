@@ -11,7 +11,7 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020918f4(void *randomState, s32 limit);
+extern s32 TitleRandom_NextBounded(void *randomState, s32 limit);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov035_021fd2bc(void *object, s32 identifier,
@@ -44,7 +44,7 @@ static s32 q15_product(s32 product)
 extern "C" void func_ov035_02200ec0(void *scene, s32 red, s32 green,
                                       s32 blue)
 {
-    s32 angle = func_020918f4((u8 *)scene + 0xc0, 0x1000) << 4;
+    s32 angle = TitleRandom_NextBounded((u8 *)scene + 0xc0, 0x1000) << 4;
     s32 magnitude = func_0209189c((u8 *)scene + 0xc0, 0x100, 0x200);
 
     s32 forwardIndex = angle >> 3;

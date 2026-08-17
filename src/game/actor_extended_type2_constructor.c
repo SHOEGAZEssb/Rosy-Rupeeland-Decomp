@@ -26,7 +26,7 @@ extern s32 *InteractionWaypointCursor_GetCurrentRecord(void *object);
 extern s32 *InteractionWaypointCursor_GetCurrentYPointer(void *object);
 extern u16 InteractionWaypointCursor_GetCurrentDurationFrames(void *object);
 extern void *ActorExtendedRecordArray_Init(void *allocation, u32 value);
-extern u8 *func_0206899c(s32 index);
+extern u8 *ActorExtendedType2Record_FindByIndex(s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -43,7 +43,7 @@ extern u8 *func_0206899c(s32 index);
  * copied to +0x27c.
  *
  * After virtual +0xc4, use actor index +0x4e to query the table rooted at
- * data_020e83a0 and func_0206899c, copying returned word +0x0c to +0x200/+0x1fc.
+ * data_020e83a0 and ActorExtendedType2Record_FindByIndex, copying returned word +0x0c to +0x200/+0x1fc.
  * Virtual +0xc8 fills a temporary 0x30-byte record; copy byte +0x24 to +0x27e,
  * halfword +0x22 to byte +0x27f, always set +0x260 bit eight, and set bit
  * 0x8000 when temporary halfword +0x1a has bit 0x40. A non-minus-one +0x1cc
@@ -124,7 +124,7 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
     (*(void (**)(void *))(*(u8 **)actor + 0xc4))(actor);
     {
         s32 tableIndex = data_020e83a0[*(u16 *)(actor + 0x4e) * 0x18];
-        u8 *record = func_0206899c(tableIndex);
+        u8 *record = ActorExtendedType2Record_FindByIndex(tableIndex);
         *(u32 *)(actor + 0x200) = *(u32 *)(record + 0x0c);
         *(u32 *)(actor + 0x1fc) = *(u32 *)(record + 0x0c);
     }

@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void func_02031758(const void *source, void *actor,
                           const void *transform);
-extern void func_02031cac(void *actor, const void *touch_data);
+extern void ActorAttachment_CopyTouchState(void *actor, const void *touch_data);
 #ifdef __cplusplus
 }
 #endif
@@ -31,7 +31,7 @@ typedef struct RecoveredTouchData {
  * the inherited func_02031758 callback with all three original inputs. If
  * actor pointer 0x58 is non-null, build
  * a three-word record containing gSceneTouchInitialData and source words 1..2,
- * then pass it to func_02031cac. Returns nothing; actor touch state may change
+ * then pass it to ActorAttachment_CopyTouchState. Returns nothing; actor touch state may change
  * and no hardware is accessed directly.
  */
 void GridEffectActor_ApplyTouchData(const void *source, void *actor,
@@ -43,6 +43,6 @@ void GridEffectActor_ApplyTouchData(const void *source, void *actor,
         data.initial_data = gSceneTouchInitialData;
         data.source_value_04 = FIELD(u32, source, 4);
         data.source_value_08 = FIELD(u32, source, 8);
-        func_02031cac(actor, &data);
+        ActorAttachment_CopyTouchState(actor, &data);
     }
 }

@@ -6,7 +6,7 @@
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteCanvas_FillRect
-.extern func_02092790
+.extern TitleScreenResourceCollection_Get
 
 
     .global func_ov025_022002f8
@@ -16,7 +16,7 @@ func_ov025_022002f8:
     mov r4, r0
     add r0, r4, #0x530
     mov r1, #0x1
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c

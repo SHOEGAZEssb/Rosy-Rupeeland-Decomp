@@ -8,7 +8,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern func_0201e28c
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
@@ -41,9 +41,9 @@ func_ov058_0220eb50:
     cmp r5, #0x0
     beq .L_0220ebc4
     add r0, r5, #0xc
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r5
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r5
     bl Heap_Free
 .L_0220ebc4:

@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_scene_helpers.c.
 
-.global func_ov050_0220e204
-func_ov050_0220e204:
+.global Overlay050Scene_SetChildValue30
+Overlay050Scene_SetChildValue30:
     mov r3, #0x0
 .L_0220e208:
     add r2, r0, r3, lsl #0x2
@@ -12,4 +12,4 @@ func_ov050_0220e204:
     cmp r3, #0x4
     blt .L_0220e208
     bx lr
-.size func_ov050_0220e204, . - func_ov050_0220e204
+.size Overlay050Scene_SetChildValue30, . - Overlay050Scene_SetChildValue30

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_callbacks.c.
 .extern Actor_SetRuntimeFlag80
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern func_02032abc
 .extern Actor_TryDispatchActivationMode2
 .extern Actor_UpdateTimedResourceState
@@ -24,7 +24,7 @@ func_0204eac8: ; 0x0204eac8
     mov r6, r0
     mov r5, r1
     mov r4, r2
-    bl func_02032a94
+    bl ActorContactState_AddContact
     ldr r0, [r6, #0x188]
     cmp r0, #0x0
     moveq r0, #0x1

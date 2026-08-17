@@ -11,28 +11,28 @@
 
 extern "C" u32 data_ov044_0220d2b8[2];
 extern "C" u32 data_ov044_0220d2d8[2];
-extern "C" void func_02094874(void *child);
-extern "C" s32 func_02093ffc(void *child);
+extern "C" void InventoryScroll_ResetPresentationState(void *child);
+extern "C" s32 InventoryScroll_UpdateInterpolation(void *child);
 extern "C" s32 func_ov044_0220bdac(void *panel);
 extern "C" void func_ov044_0220c700(void *object);
-extern "C" void func_02093de4(void *child);
-extern "C" void func_02093e0c(void *child);
-extern "C" void func_02093e20(void *child);
+extern "C" void InventoryScroll_SaveOrigins(void *child);
+extern "C" void InventoryScroll_MoveSelectionUp(void *child);
+extern "C" void InventoryScroll_MoveSelectionDown(void *child);
 extern "C" s32 func_ov044_0220bd28(void *panel, void *touch);
-extern "C" s32 func_02094638(void *child, void *touch);
-extern "C" s32 func_02093e3c(void *child);
-extern "C" s32 func_02094668(void *child, void *touch);
-extern "C" s32 func_02093e58(void *child);
-extern "C" s32 func_020945c8(void *child, void *touch);
-extern "C" s32 func_02094600(void *child, void *touch);
-extern "C" s32 func_02094698(void *child, void *touch);
+extern "C" s32 InventoryScroll_TestUpperArrowHold(void *child, void *touch);
+extern "C" s32 InventoryScroll_PageUp(void *child);
+extern "C" s32 InventoryScroll_TestLowerArrowHold(void *child, void *touch);
+extern "C" s32 InventoryScroll_PageDown(void *child);
+extern "C" s32 InventoryScroll_TestUpperArrowPress(void *child, void *touch);
+extern "C" s32 InventoryScroll_TestLowerArrowPress(void *child, void *touch);
+extern "C" s32 InventoryScroll_TestMarkerHit(void *child, void *touch);
 extern "C" void func_ov044_0220be38(void *object, u32 first, u32 second);
 extern "C" void func_02092260(void *object, s32 state);
-extern "C" void func_02093d50(void *child, s32 index);
+extern "C" void InventoryScroll_SetSelectedRow(void *child, s32 index);
 extern "C" void func_ov044_0220caa4(void *object);
 extern "C" s32 func_02095860(void *presentation, void *touch,
                               s32 first, s32 second);
-extern "C" s32 func_02094758(void *child);
+extern "C" s32 InventoryScroll_UpdateSelectionMovement(void *child);
 extern "C" void func_ov044_0220c880(void *object);
 
 static void advance_substate(void *object)
@@ -60,12 +60,12 @@ extern "C" s32 func_ov044_0220cb04(void *object)
     s32 state = FIELD(s32, object, 4);
 
     if (state == 0) {
-        func_02094874(child);
+        InventoryScroll_ResetPresentationState(child);
         advance_substate(object);
         state = 1;
     }
     if (state == 1) {
-        if (func_02093ffc(child)) {
+        if (InventoryScroll_UpdateInterpolation(child)) {
             advance_substate(object);
             state = 2;
         } else {
@@ -76,27 +76,27 @@ extern "C" s32 func_ov044_0220cb04(void *object)
         }
     }
     if (state == 2) {
-        func_02093de4(child);
+        InventoryScroll_SaveOrigins(child);
         u16 keys = FIELD(u16, FIELD(void *, object, 0x2c), 0);
         if (keys & 0x40) {
-            func_02093e0c(child);
+            InventoryScroll_MoveSelectionUp(child);
         } else if (keys & 0x80) {
-            func_02093e20(child);
+            InventoryScroll_MoveSelectionDown(child);
         } else if (FIELD(u32, object, 0x20) & 0x10) {
             void *touch = (u8 *)object + 0x30;
             s32 hit = func_ov044_0220bd28(panel, touch);
-            if (func_02094638(child, touch)) {
-                func_02093e3c(child);
-            } else if (func_02094668(child, touch)) {
-                func_02093e58(child);
+            if (InventoryScroll_TestUpperArrowHold(child, touch)) {
+                InventoryScroll_PageUp(child);
+            } else if (InventoryScroll_TestLowerArrowHold(child, touch)) {
+                InventoryScroll_PageDown(child);
             } else if (FIELD(u32, object, 0x20) & 0x20) {
-                if (func_020945c8(child, touch)) {
-                    if (!func_02093e3c(child))
+                if (InventoryScroll_TestUpperArrowPress(child, touch)) {
+                    if (!InventoryScroll_PageUp(child))
                         func_02092260(object, 0x16);
-                } else if (func_02094600(child, touch)) {
-                    if (!func_02093e58(child))
+                } else if (InventoryScroll_TestLowerArrowPress(child, touch)) {
+                    if (!InventoryScroll_PageDown(child))
                         func_02092260(object, 0x16);
-                } else if (func_02094698(child, touch)) {
+                } else if (InventoryScroll_TestMarkerHit(child, touch)) {
                     func_ov044_0220be38(object,
                                         data_ov044_0220d2b8[0],
                                         data_ov044_0220d2b8[1]);
@@ -105,7 +105,7 @@ extern "C" s32 func_ov044_0220cb04(void *object)
                 } else if (hit >= 0) {
                     if (hit != FIELD(s32, child, 0x14)) {
                         func_02092260(object, 0);
-                        func_02093d50(child, hit);
+                        InventoryScroll_SetSelectedRow(child, hit);
                         func_ov044_0220c700(object);
                         FIELD(s32, object, 4) = 0x14;
                         FIELD(s32, object, 8) = 0;
@@ -131,7 +131,7 @@ extern "C" s32 func_ov044_0220cb04(void *object)
                 }
             }
         }
-        if (func_02094758(child)) {
+        if (InventoryScroll_UpdateSelectionMovement(child)) {
             func_02092260(object, 0);
             --FIELD(s32, object, 4);
             FIELD(s32, object, 8) = 0;

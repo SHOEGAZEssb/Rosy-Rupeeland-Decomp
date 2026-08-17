@@ -5,7 +5,7 @@
     .extern data_021f3ecc
     .extern data_ov020_021fe48c
     .extern func_02071ee0
-    .extern func_02071f38
+    .extern AnimationResourceState_ReleaseResources
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroup_Clear
@@ -14,10 +14,10 @@
     .extern GraphicsSpriteRenderer_DrawGlyph
     .extern GraphicsSpriteRenderer_DrawText
     .extern func_020791e0
-    .extern func_02079f3c
+    .extern RetailTextTable_FindRecordById
     .extern func_02092960
-    .extern func_02092e9c
-    .extern func_02093360
+    .extern TitleDialog_SetText
+    .extern TitleDialog_UpdateTextPage
     .extern gSystemState
 
 .global func_ov020_021fd44c
@@ -34,7 +34,7 @@ func_ov020_021fd44c:
     mvn r0, #0x0
     str r0, [r6, #0x0]
     add r0, r6, #0x10
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     ldr r0, [r6, #0xc]
     bl GraphicsSpriteGroup_Clear
     ldr r1, L_021fd804
@@ -188,7 +188,7 @@ L_021fd654:
     bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r8, #0xc]
     ldr r0, L_021fd810
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r1, r0, #0x2
     mov r0, #0xd
     str r0, [sp, #0x0]
@@ -263,10 +263,10 @@ L_021fd654:
     mov r1, r0
     ldr r0, [r6, #0x4c]
     mov r2, #0x1
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r6, #0x4c]
     mov r1, #0x0
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     add sp, sp, #0x1c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fd804: .word data_020ea650

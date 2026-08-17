@@ -9,8 +9,8 @@
 .extern GX_SetGraphicsMode
 .extern gRuntimePresentationListVTable
 .extern data_021052fc
-.global func_0201e14c
-func_0201e14c: ; 0x0201e14c
+.global RuntimePresentationManager_BroadcastSlot1C
+RuntimePresentationManager_BroadcastSlot1C: ; 0x0201e14c
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -41,4 +41,4 @@ L_0201e1a0:
     ldmia sp!, {r4, r5, r6, pc}
 
 
-.size func_0201e14c, . - func_0201e14c
+.size RuntimePresentationManager_BroadcastSlot1C, . - RuntimePresentationManager_BroadcastSlot1C

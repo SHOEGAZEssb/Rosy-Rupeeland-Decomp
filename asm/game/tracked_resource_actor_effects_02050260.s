@@ -10,7 +10,7 @@
 .extern func_02034a60
 .extern func_020a2614
 .extern func_020a2844
-.extern func_020a2894
+.extern EffectManager_SubmitPointEffect
 .extern func_020a291c
 .text
 
@@ -70,7 +70,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r3, r2, asr #0xc
     mov r2, r5, asr #0xc
     rsb r3, r3, r4, asr #0xc
-    bl func_020a2894
+    bl EffectManager_SubmitPointEffect
     b .L_020504b0
 .L_02050338:
     mov r1, #0x5

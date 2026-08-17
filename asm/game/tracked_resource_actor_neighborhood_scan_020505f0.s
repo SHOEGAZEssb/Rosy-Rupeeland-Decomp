@@ -11,7 +11,7 @@
 .extern ActorDerivedType1_StartRecord
 .extern func_0204cfa4
 .extern TrackedResourceActor_DispatchTargetInteraction
-.extern func_020be334
+.extern SignedAbsoluteValue
 .text
     .global TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
 TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect:
@@ -89,7 +89,7 @@ TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect:
     ldr r1, [r6, #0x24]
     ldr r0, [r9, #0x24]
     sub r0, r1, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x20000
     bgt .L_020509cc
     mov r0, r6

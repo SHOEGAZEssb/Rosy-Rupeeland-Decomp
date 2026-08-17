@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov079/overlay079_recovery.c.
 .extern Sound_Play
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern func_0204cfa4
 .extern func_020adc90
 .extern gSoundContext
@@ -70,7 +70,7 @@ func_ov079_02212f68:
     mov r0, r7
     mov r1, r6
     mov r2, r5
-    bl func_02032a94
+    bl ActorContactState_AddContact
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02213060: .word gSoundContext
 .size func_ov079_02212f68, . - func_ov079_02212f68

@@ -16,9 +16,9 @@ extern u8 gSystemState[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02071f38(void *);
+extern void AnimationResourceState_ReleaseResources(void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Clear(void *);
@@ -28,13 +28,13 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern const void *func_020791e0(const void *, u16);
-extern const void *func_02079f3c(const void *, u16);
-extern void func_02092798(void *);
+extern const void *RetailTextTable_FindRecordById(const void *, u16);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 extern void func_02092960(void *, s32, s32, s32, s32, s32, s32, s32);
-extern void *func_02092cc0(void *, void *, void *);
-extern void func_02092e9c(void *, const void *, s32);
-extern s32 func_02093360(void *, const void *);
+extern void *TitleDialog_Init(void *, void *, void *);
+extern void TitleDialog_SetText(void *, const void *, s32);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void func_ov020_021fd308(void *, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -50,9 +50,9 @@ extern void func_ov020_021fd308(void *, s32, s32, s32, s32);
  */
 extern "C" void *func_ov020_021fd320(void *state, void *font)
 {
-    func_02071ea4((u8 *)state + 0x10);
-    func_02071ea4((u8 *)state + 0x1c);
-    func_02092798((u8 *)state + 0x28);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x10);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x1c);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x28);
     FIELD(s32, state, 0) = -1;
     FIELD(void *, state, 8) = font;
     FIELD(void *, state, 0xc) = GraphicsSpriteGroupOwner_CreateGroup(font);
@@ -62,7 +62,7 @@ extern "C" void *func_ov020_021fd320(void *state, void *font)
 
     void *dialog = Heap_Alloc(0xec, data_ov020_021fe528, 4, gHeapContext);
     if (dialog != 0)
-        dialog = func_02092cc0(dialog, font, FIELD(void *, state, 0x28));
+        dialog = TitleDialog_Init(dialog, font, FIELD(void *, state, 0x28));
     FIELD(void *, state, 0x4c) = dialog;
     func_ov020_021fd308(dialog, 0x22, 0x87, 0xc0, 0x30);
     func_02071ee0((u8 *)state + 0x1c, data_020f4e18[0],
@@ -98,7 +98,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
     const u8 *entry;
     if (FIELD(s32, state, 0) != selection) {
         FIELD(s32, state, 0) = -1;
-        func_02071f38((u8 *)state + 0x10);
+        AnimationResourceState_ReleaseResources((u8 *)state + 0x10);
         GraphicsSpriteGroup_Clear(FIELD(void *, state, 0xc));
         entry = data_020ea650 + selection * 0x18;
         FIELD(s32, state, 0) = selection;
@@ -145,7 +145,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
                   14, firstSpacing, 0);
 
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x30);
-    text = func_02079f3c(data_021f3ecc, FIELD(u16, entry, 0xc));
+    text = RetailTextTable_FindRecordById(data_021f3ecc, FIELD(u16, entry, 0xc));
     GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 8), (u8 *)text + 2,
                   0x60, 0x28, 13, 8, -1);
 
@@ -166,6 +166,6 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
 
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x28);
     text = func_020791e0(data_021f3ecc, FIELD(u16, entry, 0x10));
-    func_02092e9c(FIELD(void *, state, 0x4c), text, 1);
-    return func_02093360(FIELD(void *, state, 0x4c), 0);
+    TitleDialog_SetText(FIELD(void *, state, 0x4c), text, 1);
+    return TitleDialog_UpdateTextPage(FIELD(void *, state, 0x4c), 0);
 }

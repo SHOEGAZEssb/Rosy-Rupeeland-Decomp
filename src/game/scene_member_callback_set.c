@@ -15,7 +15,7 @@ typedef struct SceneCallbackPrefix {
 } SceneCallbackPrefix;
 
 /* Store callback ownership in the scene and reset its two base state words. */
-void func_0206841c(SceneCallbackPrefix *scene, MemberFunctionPointer callback)
+void SceneInputBase_SetMemberCallback(SceneCallbackPrefix *scene, MemberFunctionPointer callback)
 {
     scene->callback = callback;
     scene->field04 = 0;

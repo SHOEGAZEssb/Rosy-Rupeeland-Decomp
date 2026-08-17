@@ -4,8 +4,8 @@
 
     .extern Presentation_Init
     .extern __construct_array
-    .extern func_02071ea4
-    .extern func_02071eb8
+    .extern AnimationResourceState_InitEmbedded
+    .extern AnimationResourceState_Destroy
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_02073e48
@@ -121,8 +121,8 @@ L_021fcee8:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fcf74: .word data_ov033_021fde9c
-L_021fcf78: .word func_02071eb8
-L_021fcf7c: .word func_02071ea4
+L_021fcf78: .word AnimationResourceState_Destroy
+L_021fcf7c: .word AnimationResourceState_InitEmbedded
 L_021fcf80: .word data_021052fc
 L_021fcf84: .word data_ov033_021fdda8
 L_021fcf88: .word data_020f4e18

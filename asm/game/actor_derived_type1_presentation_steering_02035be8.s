@@ -6,10 +6,10 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern func_02031758
-.extern func_02031cac
+.extern ActorAttachment_CopyTouchState
 .extern AttachmentController_SetEnabled
 .extern func_0204cfa4
-.extern func_0206dcac
+.extern AuxiliaryInteraction_UpdateResourceFrame
 .extern func_020adae4
 .extern func_020adc90
 .extern gSceneManager
@@ -284,7 +284,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     ldr r0, [r9, #0x26c]
     cmp r0, #0x0
     beq .L_02035fe4
-    bl func_0206dcac
+    bl AuxiliaryInteraction_UpdateResourceFrame
 .L_02035fe4:
     ldr r0, .L_0203602c
     add r1, sp, #0x0
@@ -294,7 +294,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     str r2, [sp, #0x4]
     ldr r2, [r10, #0x8]
     str r2, [sp, #0x8]
-    bl func_02031cac
+    bl ActorAttachment_CopyTouchState
     add r0, sp, #0x1c
     bl VecFx32Object_Destroy
     add sp, sp, #0x2c

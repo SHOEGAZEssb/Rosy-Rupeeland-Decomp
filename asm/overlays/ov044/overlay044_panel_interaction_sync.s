@@ -1,5 +1,5 @@
 .text
-.extern func_ov044_0220bb60
+.extern Overlay044Panel_ReleaseRow
 .extern func_ov044_0220baa0
 .extern func_ov044_0220bba4
 
@@ -28,7 +28,7 @@ func_ov044_0220bdac:
     ldr r1, [r4, #0x44]
     mov r0, r4
     ldr r1, [r1, #0x74]
-    bl func_ov044_0220bb60
+    bl Overlay044Panel_ReleaseRow
     ldr r1, [r4, #0x44]
     mov r0, r4
     ldr r1, [r1, #0x70]

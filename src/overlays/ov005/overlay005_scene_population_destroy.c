@@ -17,7 +17,7 @@ extern void PresentationList_DeleteAll(void *state);
 extern void GraphicsSpriteGroup_Destroy(void *context);
 extern void __destroy_arr(void *array, s32 count, s32 elementSize,
                           void (*destructor)(void *));
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 #ifdef __cplusplus
 }
 #endif
@@ -41,9 +41,9 @@ func_ov005_021fbb78(Overlay005ScenePopulation *state)
     GraphicsSpriteGroup_Destroy(*(void **)((u8 *)state + 0x04));
     *(const void **)((u8 *)state + 0x148) = data_ov005_021fcab0;
     PresentationList_DeleteAll((u8 *)state + 0x148);
-    __destroy_arr((u8 *)state + 0xa4, 3, 0x0c, func_02071eb8);
-    __destroy_arr((u8 *)state + 0x20, 11, 0x0c, func_02071eb8);
-    func_02071eb8((u8 *)state + 0x14);
-    func_02071eb8((u8 *)state + 0x08);
+    __destroy_arr((u8 *)state + 0xa4, 3, 0x0c, AnimationResourceState_Destroy);
+    __destroy_arr((u8 *)state + 0x20, 11, 0x0c, AnimationResourceState_Destroy);
+    AnimationResourceState_Destroy((u8 *)state + 0x14);
+    AnimationResourceState_Destroy((u8 *)state + 0x08);
     return state;
 }

@@ -7,7 +7,7 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071e04(void *);
+extern void GraphicsArchive_ReleaseOwlvResource(void *);
 extern void Heap_Free(void *);
 #ifdef __cplusplus
 }
@@ -21,7 +21,7 @@ void *func_ov012_021fce74(void *object)
 {
     *(u32 **)object = data_ov012_021fe5f4;
     if (*(void **)((u8 *)object + 4) != 0) {
-        func_02071e04(data_020f4e18);
+        GraphicsArchive_ReleaseOwlvResource(data_020f4e18);
     }
     Heap_Free(object);
     return object;

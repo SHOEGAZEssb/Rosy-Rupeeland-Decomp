@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/main_bg1_follow_presentation.c.
 .text
 .extern data_020de7e4
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_02028684
 
     .global func_02028544
@@ -10,7 +10,7 @@ func_02028544: ; 0x02028544
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_02028570
     mov r0, r5
     str r1, [r5, #0x0]

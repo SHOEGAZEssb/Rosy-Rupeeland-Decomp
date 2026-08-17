@@ -18,7 +18,7 @@
 .extern InteractionWaypointCursor_GetCurrentYPointer
 .extern InteractionWaypointCursor_GetCurrentDurationFrames
 .extern Type7MarkerPresentation_Init
-.extern func_0206899c
+.extern ActorExtendedType2Record_FindByIndex
 .extern gHeapContext
     .global ActorExtendedType2_Init
     .type ActorExtendedType2_Init, @function
@@ -156,7 +156,7 @@ ActorExtendedType2_Init: ; 0x0203db80
     ldr r1, .L_0203de44
     mul r0, r2, r0
     ldrsh r0, [r1, r0]
-    bl func_0206899c
+    bl ActorExtendedType2Record_FindByIndex
     ldr r1, [r0, #0xc]
     mov r0, r5
     str r1, [r5, #0x200]

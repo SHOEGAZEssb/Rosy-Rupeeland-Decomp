@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern void func_020703d8(void *resource);
+extern void GraphicsSpriteResource_ReleaseTexture(void *resource);
 
 #ifdef __cplusplus
 }
@@ -29,7 +29,7 @@ void Graphics3DResourceOwner_PrepareResources(Graphics3DResourceOwner *owner,
         owner, (void *)params->textureResource);
     Graphics3DResourceOwner_AcquirePaletteRegion(
         owner, (void *)params->paletteResource);
-    func_020703d8((void *)params->textureResource);
+    GraphicsSpriteResource_ReleaseTexture((void *)params->textureResource);
 }
 
 /*

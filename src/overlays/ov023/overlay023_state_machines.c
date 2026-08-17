@@ -38,23 +38,23 @@ extern void IndexedSelectionController_DecrementWrap(void *);
 extern s32 IndexedSelectionController_GetLastDirection(void *);
 extern s32 IndexedSelectionController_AdvanceTransition(void *);
 extern s32 IndexedSelectionController_AdvancePacing(void *);
-extern void func_02093d50(void *, s32);
-extern void func_02093de4(void *);
-extern s32 func_02093e0c(void *);
-extern s32 func_02093e20(void *);
-extern s32 func_02093e3c(void *);
-extern s32 func_02093e58(void *);
-extern s32 func_02093ffc(void *);
-extern s32 func_020945c8(void *, void *);
-extern s32 func_02094600(void *, void *);
-extern s32 func_02094638(void *, void *);
-extern s32 func_02094668(void *, void *);
-extern s32 func_02094698(void *, void *);
-extern void func_020946a8(void *, s32);
-extern s32 func_020946c8(void *, void *);
-extern void func_02094738(void *, s32);
-extern s32 func_02094758(void *);
-extern void func_02094874(void *);
+extern void InventoryScroll_SetSelectedRow(void *, s32);
+extern void InventoryScroll_SaveOrigins(void *);
+extern s32 InventoryScroll_MoveSelectionUp(void *);
+extern s32 InventoryScroll_MoveSelectionDown(void *);
+extern s32 InventoryScroll_PageUp(void *);
+extern s32 InventoryScroll_PageDown(void *);
+extern s32 InventoryScroll_UpdateInterpolation(void *);
+extern s32 InventoryScroll_TestUpperArrowPress(void *, void *);
+extern s32 InventoryScroll_TestLowerArrowPress(void *, void *);
+extern s32 InventoryScroll_TestUpperArrowHold(void *, void *);
+extern s32 InventoryScroll_TestLowerArrowHold(void *, void *);
+extern s32 InventoryScroll_TestMarkerHit(void *, void *);
+extern void InventoryScroll_BeginMarkerDrag(void *, s32);
+extern s32 InventoryScroll_UpdateMarkerDrag(void *, void *);
+extern void InventoryScroll_EndMarkerDrag(void *, s32);
+extern s32 InventoryScroll_UpdateSelectionMovement(void *);
+extern void InventoryScroll_ResetPresentationState(void *);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern s32 func_02095860(void *, void *, s32, s32);
@@ -86,7 +86,7 @@ extern void func_ov023_021feb60(void *);
 extern s32 func_ov023_021fef54(void *);
 extern void func_ov023_021ff2a0(void *);
 extern void func_ov045_0220c274(void *, s32);
-extern void func_ov045_0220c2a0(void *, s32);
+extern void Overlay045Graphics_SetUniformValue(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -94,7 +94,7 @@ extern void func_ov045_0220c2a0(void *, s32);
 static void select_row(void *scene, void *ui, s32 row)
 {
     func_02092260(scene, 0);
-    func_02093d50(ui, row);
+    InventoryScroll_SetSelectedRow(ui, row);
     func_ov023_021fe6e4(scene);
     FIELD(s32, scene, 4) = 20;
     FIELD(s32, scene, 8) = 0;
@@ -117,24 +117,24 @@ extern "C" s32 func_ov023_021febbc(void *scene)
         func_ov023_021fd268(list);
         func_ov023_021fd08c(list);
         func_ov023_021fe6e4(scene);
-        func_02094874(ui);
+        InventoryScroll_ResetPresentationState(ui);
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02093ffc(ui)) ADVANCE(scene);
+        if (InventoryScroll_UpdateInterpolation(ui)) ADVANCE(scene);
         else if (func_ov023_021fd3b0(list)) func_ov023_021fe6e4(scene);
         break;
     case 2: {
-        func_02093de4(ui);
+        InventoryScroll_SaveOrigins(ui);
         u16 keys = FIELD(u16, FIELD(void *, scene, 0x2c), 0);
-        if (keys & 0x40) func_02093e0c(ui);
-        else if (keys & 0x80) func_02093e20(ui);
+        if (keys & 0x40) InventoryScroll_MoveSelectionUp(ui);
+        else if (keys & 0x80) InventoryScroll_MoveSelectionDown(ui);
         else if (FIELD(u32, scene, 0x20) & 0x10) {
             s32 hit = func_ov023_021fd328(list, (u8 *)scene + 0x30);
-            if (func_02094638(ui, (u8 *)scene + 0x30)) func_02093e3c(ui);
-            else if (func_02094668(ui, (u8 *)scene + 0x30)) func_02093e58(ui);
+            if (InventoryScroll_TestUpperArrowHold(ui, (u8 *)scene + 0x30)) InventoryScroll_PageUp(ui);
+            else if (InventoryScroll_TestLowerArrowHold(ui, (u8 *)scene + 0x30)) InventoryScroll_PageDown(ui);
             else if ((FIELD(u32, scene, 0x20) & 0x20) &&
-                     func_02094698(ui, (u8 *)scene + 0x30)) {
+                     InventoryScroll_TestMarkerHit(ui, (u8 *)scene + 0x30)) {
                 CALLBACK(scene, data_ov023_021ffb90);
                 break;
             } else if (hit >= 0) {
@@ -158,7 +158,7 @@ extern "C" s32 func_ov023_021febbc(void *scene)
                 FIELD(s32, scene, 8) = 0;
             }
         }
-        if (func_02094758(ui)) {
+        if (InventoryScroll_UpdateSelectionMovement(ui)) {
             func_02092260(scene, 0);
             --FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
@@ -200,11 +200,11 @@ static s32 recenter_machine(void *scene, void *collection, void **next)
                      collection == FIELD(void *, scene, 0x390) ? 0x38 : 0x48);
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_020946a8(ui, 4);
+        InventoryScroll_BeginMarkerDrag(ui, 4);
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02093ffc(ui)) {
+        if (InventoryScroll_UpdateInterpolation(ui)) {
             if (FIELD(s32, ui, 0xc) != FIELD(s32, ui, 0x10))
                 func_02092288(scene, 8);
             ADVANCE(scene);
@@ -216,15 +216,15 @@ static s32 recenter_machine(void *scene, void *collection, void **next)
         }
         break;
     case 2:
-        func_02093de4(ui);
+        InventoryScroll_SaveOrigins(ui);
         if (FIELD(u32, scene, 0x20) & 0x10) {
-            if (func_020946c8(ui, (u8 *)scene + 0x30)) {
+            if (InventoryScroll_UpdateMarkerDrag(ui, (u8 *)scene + 0x30)) {
                 func_02092260(scene, 8);
                 --FIELD(s32, scene, 4);
                 FIELD(s32, scene, 8) = 0;
             }
         } else {
-            func_02094738(ui, 6);
+            InventoryScroll_EndMarkerDrag(ui, 6);
             CALLBACK(scene, next);
         }
         break;
@@ -252,7 +252,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
     case 1: {
         func_ov045_0220c274(FIELD(void *, scene, 0x4bc),
                             func_02091c7c(transition, 1));
-        func_ov045_0220c2a0(FIELD(void *, scene, 0x4bc),
+        Overlay045Graphics_SetUniformValue(FIELD(void *, scene, 0x4bc),
                             func_02091bd0(transition, 1, 0x200, 0x180));
         if (func_02091cf0(transition) && DisplayBrightness_IsMainTransitionComplete()) {
             void *record = FIELD(void *, entry, 0);
@@ -274,7 +274,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
     case 3:
         func_ov045_0220c274(FIELD(void *, scene, 0x4bc),
                             func_02091c7c(transition, 1));
-        func_ov045_0220c2a0(FIELD(void *, scene, 0x4bc),
+        Overlay045Graphics_SetUniformValue(FIELD(void *, scene, 0x4bc),
                             func_02091bd0(transition, 1, 0x180, 0x200));
         if (func_02091cf0(transition)) {
             void *detail = FIELD(void *, scene, 0x4bc);
@@ -335,27 +335,27 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
         func_ov023_021fd7a8(list);
         func_ov023_021fd730(list);
         func_ov023_021fe6e4(scene);
-        func_02094874(ui);
+        InventoryScroll_ResetPresentationState(ui);
         ADVANCE(scene);
         /* fall through */
     case 1:
-        if (func_02093ffc(ui)) ADVANCE(scene);
+        if (InventoryScroll_UpdateInterpolation(ui)) ADVANCE(scene);
         else if (func_ov023_021fd968(list)) func_ov023_021fe6e4(scene);
         break;
     case 2: {
-        func_02093de4(ui);
+        InventoryScroll_SaveOrigins(ui);
         IndexedSelectionController_SnapTransitionOrigin((u8 *)scene + 0x480);
         u16 keys = FIELD(u16, FIELD(void *, scene, 0x2c), 0);
-        if (keys & 0x40) func_02093e0c(ui);
-        else if (keys & 0x80) func_02093e20(ui);
+        if (keys & 0x40) InventoryScroll_MoveSelectionUp(ui);
+        else if (keys & 0x80) InventoryScroll_MoveSelectionDown(ui);
         else if (FIELD(u32, scene, 0x20) & 0x10) {
             s32 hit = func_ov023_021fd8e4(list, (u8 *)scene + 0x30);
-            if (func_02094638(ui, (u8 *)scene + 0x30)) func_02093e3c(ui);
-            else if (func_02094668(ui, (u8 *)scene + 0x30)) func_02093e58(ui);
+            if (InventoryScroll_TestUpperArrowHold(ui, (u8 *)scene + 0x30)) InventoryScroll_PageUp(ui);
+            else if (InventoryScroll_TestLowerArrowHold(ui, (u8 *)scene + 0x30)) InventoryScroll_PageDown(ui);
             else if (func_ov023_021fe694(scene)) IndexedSelectionController_IncrementWrap((u8 *)scene + 0x480);
             else if (func_ov023_021fe6bc(scene)) IndexedSelectionController_DecrementWrap((u8 *)scene + 0x480);
             else if ((FIELD(u32, scene, 0x20) & 0x20) &&
-                     func_02094698(ui, (u8 *)scene + 0x30)) {
+                     InventoryScroll_TestMarkerHit(ui, (u8 *)scene + 0x30)) {
                 CALLBACK(scene, data_ov023_021ffb38);
                 break;
             } else if (hit >= 0) {
@@ -379,7 +379,7 @@ extern "C" s32 func_ov023_021ff2fc(void *scene)
                 FIELD(s32, scene, 8) = 0;
             }
         }
-        if (func_02094758(ui)) { func_02092260(scene, 0); --FIELD(s32, scene, 4); }
+        if (InventoryScroll_UpdateSelectionMovement(ui)) { func_02092260(scene, 0); --FIELD(s32, scene, 4); }
         if (IndexedSelectionController_AdvanceTransition((u8 *)scene + 0x480)) {
             func_02092260(scene, 0);
             void *effect = IndexedSelectionController_GetLastDirection((u8 *)scene + 0x480) ?

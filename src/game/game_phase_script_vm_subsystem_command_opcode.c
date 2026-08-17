@@ -1,11 +1,11 @@
 #include "tingle/game_phase_script_vm.h"
 
-/* Dispatch commands and queries against the singleton returned by func_02027f94. */
+/* Dispatch commands and queries against the singleton returned by GamePhaseProgress_GetOrCreateGlobal. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02027f94(void);
+extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern s32 func_02027818(void *state, s32 value);
 extern s32 func_02027828(void *state, s32 value);
 extern void func_02027864(void *state, s32 value);
@@ -35,44 +35,44 @@ s32 func_02019dd4(GamePhaseActorScriptVm *self)
     void *state;
     switch (command) {
     case 1:
-        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027818(func_02027f94(), value));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027818(GamePhaseProgress_GetOrCreateGlobal(), value));
         break;
     case 2:
-        func_02027864(func_02027f94(), value);
+        func_02027864(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 3:
-        func_020278b4(func_02027f94(), value);
+        func_020278b4(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 4:
-        func_02027e94(func_02027f94(), value);
+        func_02027e94(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 5:
-        state = func_02027f94();
+        state = GamePhaseProgress_GetOrCreateGlobal();
         GamePhaseScriptVm_SetResult(&self->base, *(u32 *)state);
         break;
     case 6:
-        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027828(func_02027f94(), value));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027828(GamePhaseProgress_GetOrCreateGlobal(), value));
         break;
     case 7:
-        func_02027e08(func_02027f94(), value);
+        func_02027e08(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 8:
-        GamePhaseScriptVm_SetResult(&self->base, func_02027d14(func_02027f94()) != 0);
+        GamePhaseScriptVm_SetResult(&self->base, func_02027d14(GamePhaseProgress_GetOrCreateGlobal()) != 0);
         break;
     case 9:
-        func_02027c34(func_02027f94());
+        func_02027c34(GamePhaseProgress_GetOrCreateGlobal());
         break;
     case 10:
-        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027e8c(func_02027f94()));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027e8c(GamePhaseProgress_GetOrCreateGlobal()));
         break;
     case 11:
-        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027eac(func_02027f94()));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02027eac(GamePhaseProgress_GetOrCreateGlobal()));
         break;
     case 12:
-        func_02027ea4(func_02027f94(), value);
+        func_02027ea4(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 13:
-        GamePhaseScriptVm_SetResult(&self->base, func_02027df0(func_02027f94()) != 0);
+        GamePhaseScriptVm_SetResult(&self->base, func_02027df0(GamePhaseProgress_GetOrCreateGlobal()) != 0);
         break;
     }
     return 0;

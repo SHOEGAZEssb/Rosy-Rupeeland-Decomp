@@ -11,12 +11,12 @@ extern u8 gSystemState[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020628c8(void *);
-extern s32 func_020651a4(void *, u16);
+extern s32 ActorDescriptor_GetPrimaryLabel(void *);
+extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-extern void *func_02079f3c(void *, s32);
+extern void *RetailTextTable_FindRecordById(void *, s32);
 extern void func_02092960(void *, s32, s32, s32, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -59,9 +59,9 @@ extern "C" void func_ov016_021fd3f8(void *state)
             s32 value;
             s32 baseline = slot * 0x18 + 0x20;
 
-            GraphicsSpriteRenderer_DrawText(font, func_020628c8((u8 *)metadata + 4), 0x44,
+            GraphicsSpriteRenderer_DrawText(font, ActorDescriptor_GetPrimaryLabel((u8 *)metadata + 4), 0x44,
                           (slot + 1) * 0x18, textColor, 4, 0);
-            value = func_020651a4((u8 *)data_021e9ac0 + 0x1c,
+            value = ActorDescriptorState_FindInactiveQuantity((u8 *)data_021e9ac0 + 0x1c,
                                   FIELD(u16, metadata, 4));
             if (gSystemState[0x5f] != 0) {
                 baseline -= 2;
@@ -70,7 +70,7 @@ extern "C" void func_ov016_021fd3f8(void *state)
                 font, FIELD(void *, state, 0x2c));
             func_02092960(font, value, 10, 0xb0, baseline, numberColor, 8, 1);
         } else {
-            void *message = func_02079f3c(data_021f3ecc, 0x188);
+            void *message = RetailTextTable_FindRecordById(data_021f3ecc, 0x188);
             GraphicsSpriteRenderer_DrawText(font, (s32)((u8 *)message + 2), 0x44,
                           (slot + 1) * 0x18, 1, 4, 0);
         }

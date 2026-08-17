@@ -12,11 +12,11 @@ extern void func_0205940c(void *context, s32 soundId, s32 variant);
 extern void func_020593dc(void *context, s32 soundId, s32 variant,
                          void *actor, s32 value, s32 scale);
 extern s32 func_020594a4(void *context, s32 soundId, s32 variant);
-extern void func_02058d40(void *context, s32 value);
+extern void Sound_StopAllDirectSequences(void *context, s32 value);
 extern s32 func_02059344(void *context, u16 value);
-extern void func_0205974c(void *context, s32 value);
-extern void func_020597fc(void *context, s32 value);
-extern void func_02058de0(void *context, s32 enabled);
+extern void Sound_LoadGroup(void *context, s32 value);
+extern void Sound_ReleaseGroup(void *context, s32 value);
+extern void Sound_SetCaptureEnabled(void *context, s32 enabled);
 extern void func_02058ffc(void *context, s32 enabled, s32 attack, s32 release);
 extern void func_02059068(void *context, s32 enabled, s32 attack, s32 release);
 extern void func_02059104(void *context, s32 enabled, s32 attack, s32 release);
@@ -66,15 +66,15 @@ s32 func_0201a614(GamePhaseActorScriptVm *self)
         GamePhaseScriptVm_SetResult(&self->base,
                       (u32)func_020594a4(gSoundContext, soundId, variant));
         break;
-    case 4: func_02058d40(gSoundContext, value); break;
+    case 4: Sound_StopAllDirectSequences(gSoundContext, value); break;
     case 5:
         GamePhaseScriptVm_SetResult(&self->base, (u32)func_02059344(gSoundContext, (u16)value));
         break;
     case 6: func_020594ec(gSoundContext, (u16)value); break;
     case 7: func_0205958c(gSoundContext, value); break;
-    case 8: func_0205974c(gSoundContext, value); break;
-    case 9: func_020597fc(gSoundContext, value); break;
-    case 10: func_02058de0(gSoundContext, value == 1); break;
+    case 8: Sound_LoadGroup(gSoundContext, value); break;
+    case 9: Sound_ReleaseGroup(gSoundContext, value); break;
+    case 10: Sound_SetCaptureEnabled(gSoundContext, value == 1); break;
     case 11: func_02058ffc(gSoundContext, value == 1, 20, 30); break;
     case 12: func_02059068(gSoundContext, value == 1, 20, 30); break;
     case 13: func_02059104(gSoundContext, value == 1, 20, 30); break;

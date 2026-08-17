@@ -2,14 +2,14 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_text_helpers.c for documented portable C. */
 .extern GraphicsSpriteText_FormatDecimal
-.extern func_02092e9c
-.extern func_02093360
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
 .extern func_020939c8
 .extern func_020befec
 .extern gSystemState
 
-    .global func_ov032_021fe2f0
-func_ov032_021fe2f0:
+    .global Overlay032Scene_SetNumericDialogText
+Overlay032Scene_SetNumericDialogText:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x40
     mov r8, #0xa
@@ -94,14 +94,14 @@ L_021fe3f8:
     mov r2, #0x0
     strh r2, [r1, r0]
     ldr r0, [r6, #0x14]
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r6, #0x14]
     bl func_020939c8
     ldr r0, [r6, #0x14]
     mov r1, #0x0
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     add sp, sp, #0x40
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fe43c: .word gSystemState
-.size func_ov032_021fe2f0, .-func_ov032_021fe2f0
+.size Overlay032Scene_SetNumericDialogText, .-Overlay032Scene_SetNumericDialogText
 

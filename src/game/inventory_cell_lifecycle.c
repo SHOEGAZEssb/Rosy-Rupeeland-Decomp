@@ -6,13 +6,13 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void func_02071ea4(void *resource);
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 
 /* Initialize the embedded resource and clear every cell-owned pointer/value. */
-void *func_020683c8(void *cell)
+void *InventoryCell_Init(void *cell)
 {
-    func_02071ea4(cell);
+    AnimationResourceState_InitEmbedded(cell);
     FIELD(u32, cell, 0x0c) = 0;
     FIELD(u32, cell, 0x10) = 0;
     FIELD(u32, cell, 0x14) = 0;
@@ -22,8 +22,8 @@ void *func_020683c8(void *cell)
 }
 
 /* Release the embedded resource without freeing caller-owned cell storage. */
-void *func_020683f4(void *cell)
+void *InventoryCell_Destroy(void *cell)
 {
-    func_02071eb8(cell);
+    AnimationResourceState_Destroy(cell);
     return cell;
 }

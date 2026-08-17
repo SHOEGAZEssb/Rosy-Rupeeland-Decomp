@@ -5,11 +5,11 @@
 .extern data_021f5ed0
 .extern data_ov031_021fe6e4
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02079408
-.extern func_02092e9c
-.extern func_02093360
-.extern func_02093998
-.extern func_020939d8
+.extern RetailSelectionDatabase_FindResource
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
+.extern TitleDialog_ResetAfterClose
+.extern TitleDialog_ClearTextRect
 .extern func_ov031_021fdf20
 
 
@@ -21,18 +21,18 @@ func_ov031_021fdd04:
     movs r5, r1
     ldr r0, [r4, #0x98]
     bmi L_021fdda4
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r1, r5, lsl #0x10
     ldr r0, L_021fddb0
     mov r1, r1, lsr #0x10
-    bl func_02079408
+    bl RetailSelectionDatabase_FindResource
     mov r1, r0
     ldr r0, [r4, #0x98]
     mov r2, #0x0
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r4, #0x98]
     ldr r1, L_021fddb4
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]
@@ -56,7 +56,7 @@ func_ov031_021fdd04:
     bl func_ov031_021fdf20
     b L_021fdda8
 L_021fdda4:
-    bl func_02093998
+    bl TitleDialog_ResetAfterClose
 L_021fdda8:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}

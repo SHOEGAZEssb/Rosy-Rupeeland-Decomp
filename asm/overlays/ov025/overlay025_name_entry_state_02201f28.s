@@ -17,7 +17,7 @@
 .extern data_ov025_022033b4
 .extern data_ov025_022033bc
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -28,10 +28,10 @@
 .extern func_020922f0
 .extern func_02092314
 .extern func_020927b8
-.extern func_02092910
+.extern GraphicsSpriteState_TestTouchPoint
 .extern func_02092c8c
-.extern func_02092e9c
-.extern func_02093360
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
 .extern func_02095860
 .extern func_02095928
 .extern func_02095940
@@ -164,10 +164,10 @@ L_02202018:
     mov r1, r0
     ldr r0, [r5, #0x50c]
     mov r2, #0x3
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r5, #0x50c]
     mov r1, #0x0
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r0, #0x1a0
     ldr r1, L_02202af0
     mov r2, #0x4
@@ -239,7 +239,7 @@ L_02202104:
     mov r1, r0
     ldr r0, [r5, #0x50c]
     mov r2, #0x3
-    bl func_02092e9c
+    bl TitleDialog_SetText
     mov r0, #0x1
     sub r1, r0, #0x9
     bl func_02092c8c
@@ -295,7 +295,7 @@ L_02202248:
     ldr r0, [r5, #0x598]
     add r1, r5, #0x30
     ldr r0, [r0, #0x34]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_022022a4
     mov r0, r5
@@ -319,7 +319,7 @@ L_022022a4:
     ldr r0, [r5, #0x598]
     add r1, r5, #0x30
     ldr r0, [r0, #0x38]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_02202300
     mov r0, r5
@@ -343,7 +343,7 @@ L_02202300:
     ldr r0, [r5, #0x598]
     add r1, r5, #0x30
     ldr r0, [r0, #0x3c]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_02202358
     mov r0, r5
@@ -366,7 +366,7 @@ L_02202358:
     ldr r0, [r5, #0x598]
     add r1, r5, #0x30
     ldr r0, [r0, #0x30]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     ldr r0, [r5, #0x598]
     beq L_022023c8
@@ -417,7 +417,7 @@ L_0220240c:
     add r1, r5, #0x30
     add r0, r0, r4, lsl #0x2
     ldr r0, [r0, #0x40]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_02202658
     ldr r10, [r5, #0x598]
@@ -746,7 +746,7 @@ L_02202888:
     add r0, r4, #0x30
     bl func_020927b8
     mov r0, r4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
 L_022028e0:
@@ -796,7 +796,7 @@ L_02202964:
     ldr r0, [r4, #0x0]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
 L_02202994:
@@ -875,10 +875,10 @@ L_02202a68:
     mov r1, r0
     ldr r0, [r5, #0x50c]
     mov r2, #0x3
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r5, #0x50c]
     mov r1, #0x0
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r0, #0x2
     str r0, [r5, #0x4]
     mov r0, #0x0

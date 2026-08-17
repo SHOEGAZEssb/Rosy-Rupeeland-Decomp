@@ -3,7 +3,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071e60
-.extern func_02071e70
+.extern GraphicsArchive_FindPaletteResource
 .extern func_02071e80
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -22,7 +22,7 @@ PresentationBackedActor_InitPresentation:
     mov r8, r0
     ldr r0, [r1, #0x0]
     ldr r1, [r4, #0x8]
-    bl func_02071e70
+    bl GraphicsArchive_FindPaletteResource
     ldr r1, .L_0204d828
     mov r7, r0
     ldr r0, [r1, #0x0]

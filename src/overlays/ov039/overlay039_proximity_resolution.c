@@ -19,7 +19,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 orienta
 extern void func_ov039_021fdb78(void *scene);
 extern void func_ov049_0220c67c(void *system);
 extern void func_020a63d0(void *object, s32 mode);
-extern void func_0205929c(void *context, s32 soundId, s32 parameter);
+extern void Sound_StopDirectSequence(void *context, s32 soundId, s32 parameter);
 extern void func_020594ec(void *context, s32 parameter);
 extern void func_0205940c(void *context, s32 soundId, s32 parameter);
 extern void Sound_Play(void *context, s32 soundId, s32 parameter);
@@ -101,7 +101,7 @@ extern "C" s32 func_ov039_021fee00(void *scene, void *input)
         }
         FIELD(s32, owner, 0x44) = 30;
         FIELD(s32, owner, 0x48) = 5;
-        func_0205929c(gSoundContext, 0x60, 0);
+        Sound_StopDirectSequence(gSoundContext, 0x60, 0);
         func_020594ec(gSoundContext, 8);
     }
 

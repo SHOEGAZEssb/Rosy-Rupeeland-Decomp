@@ -12,15 +12,15 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern Actor_GetCollectionBySlot
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
-.extern func_02079a7c
+.extern RuntimeRecordTable_FindByKey
 .extern gGameWork
 
     .global func_02024b04
@@ -32,7 +32,7 @@ func_02024b04: ; 0x02024b04
     mov r7, r1
     mov r5, r2
     mov r4, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_02024d20
     add r0, r6, #0xc
     str r1, [r6, #0x0]
@@ -42,14 +42,14 @@ func_02024b04: ; 0x02024b04
     add r0, r6, #0x1c
     bl VecFx32Object_Init
     add r0, r6, #0x3c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r0, r5
     bl Actor_GetCollection
     bl ActorCollection_GetSpriteOwner
     str r0, [r6, #0x48]
     ldr r0, .L_02024d24
     mov r1, r4
-    bl func_02079a7c
+    bl RuntimeRecordTable_FindByKey
     ldr r3, .L_02024d28
     mov r4, r0
     ldr r1, .L_02024d2c

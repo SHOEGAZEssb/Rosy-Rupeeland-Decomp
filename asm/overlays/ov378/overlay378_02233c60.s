@@ -8,8 +8,8 @@
 .extern ActorDescriptorBatch_RegisterAndSpawnCategory2
 .extern ActorDescriptorBatch_SetCategory2Callback
 
-.global func_ov378_02233c60
-func_ov378_02233c60:
+.global Overlay378_RegisterCategory2Actors
+Overlay378_RegisterCategory2Actors:
     stmdb sp!, {r3, lr}
     ldr r0, .L_02233c88
     ldr r2, .L_02233c8c
@@ -24,7 +24,7 @@ func_ov378_02233c60:
 .L_02233c8c: .word data_ov378_022342c8
 .L_02233c90: .word data_ov378_022342a2
 .L_02233c94: .word data_ov378_022342c4
-.size func_ov378_02233c60, . - func_ov378_02233c60
+.size Overlay378_RegisterCategory2Actors, . - Overlay378_RegisterCategory2Actors
 
 ; Matching fallback for initialized records and BSS documented in
 ; src/overlays/ov378/overlay378_recovery.c.

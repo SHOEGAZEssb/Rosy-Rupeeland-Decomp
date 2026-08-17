@@ -14,7 +14,7 @@ extern "C" {
 extern void func_ov030_021fea00(void *);
 extern void func_02092c8c(s32, s32, ...);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void func_02064e7c(void *, s32, u16);
+extern void InventoryRecordCollection_RemoveQuantity(void *, s32, u16);
 extern void *func_ov030_021fd27c(void *);
 extern void Heap_Free(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -55,7 +55,7 @@ extern "C" s32 func_ov030_021ff5a4(void *scene)
             s32 index = mode == 1 ? FIELD(s32, scene, 0x380)
                                   : FIELD(s32, scene, 0x388);
             u16 remaining = (u16)(count - FIELD(s32, board, 0x1b4));
-            func_02064e7c(FIELD(void *, scene, 0x37c), index, remaining);
+            InventoryRecordCollection_RemoveQuantity(FIELD(void *, scene, 0x37c), index, remaining);
             if (board != 0) {
                 func_ov030_021fd27c(board);
                 Heap_Free(board);

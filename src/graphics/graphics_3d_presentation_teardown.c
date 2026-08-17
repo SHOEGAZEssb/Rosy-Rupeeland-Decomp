@@ -6,7 +6,7 @@
 
 typedef void (*ElementDestructor)(void *element);
 
-extern void func_02005058(void *vector);
+extern void VecFx32_TerminateNoOp(void *vector);
 extern s32 func_020a3c78(void *object);
 extern void func_020a3fc4(void *object);
 
@@ -39,9 +39,9 @@ void func_020a3790(void *object)
     for (offset = 0x28; offset >= 0x10; offset -= 4)
         Heap_Free(*(void **)((u8 *)object + offset));
     func_020c0c24(*(void **)((u8 *)object + 0x0c), 0x10, 8,
-                   func_02005058);
+                   VecFx32_TerminateNoOp);
     func_020c0c24(*(void **)((u8 *)object + 0x08), 0x10, 8,
-                   func_02005058);
+                   VecFx32_TerminateNoOp);
 }
 
 /* Destroy all thirty presentation slots in reverse retail order. */

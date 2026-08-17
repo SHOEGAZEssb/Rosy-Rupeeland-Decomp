@@ -7,7 +7,7 @@
 .extern VecFx32Object_Add
 .extern VecFx32_Subtract
 .extern func_02031758
-.extern func_02031cac
+.extern ActorAttachment_CopyTouchState
 .extern func_020befec
 .extern func_020bf1f8
 .extern gSceneTouchInitialData
@@ -128,7 +128,7 @@ ActorMotionProbe_UpdateTouchMotion: ; 0x0203c240
     str r2, [sp, #0x4]
     ldr r2, [r9, #0x8]
     str r2, [sp, #0x8]
-    bl func_02031cac
+    bl ActorAttachment_CopyTouchState
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 .L_0203c408: .word data_020c9670

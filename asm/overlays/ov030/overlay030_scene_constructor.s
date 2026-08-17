@@ -3,13 +3,13 @@
 /* Exact fallback; see src/overlays/ov030/overlay030_scene_constructor.c. */
 .extern data_020f4e18
 .extern data_ov030_021ff708
-.extern func_02062918
-.extern func_02063064
-.extern func_02063074
-.extern func_02063084
-.extern func_02063190
+.extern ActorDescriptor_GetComponent
+.extern ActorDescriptorComponent_GetCharacterResourceId
+.extern ActorDescriptorComponent_GetPaletteResourceId
+.extern ActorDescriptorComponent_GetCellResourceId
+.extern ActorDescriptorComponent_GetAnimation
 .extern func_020708c4
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -32,11 +32,11 @@ func_ov030_021fcf20:
     mov r6, r1
     mov r4, r2
     mov r5, r3
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x10
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x1c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x58
     bl func_020957bc
     add r0, r10, #0x104
@@ -87,18 +87,18 @@ L_021fcfe8:
 L_021fd008:
     mov r0, r4
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063064
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCharacterResourceId
     mov r6, r0
     mov r0, r4
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063074
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetPaletteResourceId
     mov r5, r0
     mov r0, r4
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063084
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCellResourceId
     str r0, [sp, #0x0]
     ldr r1, L_021fd254
     mov r2, r6
@@ -128,8 +128,8 @@ L_021fd008:
     str r0, [r10, #0x30]
     mov r0, r4
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     mov r2, #0x0
     mov r1, r0
     str r2, [sp, #0x0]

@@ -18,12 +18,12 @@
     .extern data_ov011_021fe610
     .extern Heap_AllocCore
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern func_02092364
     .extern func_020923a4
     .extern func_02092618
     .extern func_02092688
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern func_020aea7c
     .extern func_020b4554
     .extern func_ov011_021fce00
@@ -41,7 +41,7 @@ func_ov011_021fce78: ; 0x021fce78
     mov r10, r0
     bl Scene_Init
     add r0, r10, #0x24
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r0, L_021fd06c
     ldr r1, L_021fd070
     str r0, [r10, #0x0]
@@ -147,7 +147,7 @@ L_021fcf6c:
     mov r0, r10
     bl func_ov011_021fd188
     mov r0, #0x0
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     mov r0, r10
     bl Scene_SetFlags03
     ldr r1, L_021fd088

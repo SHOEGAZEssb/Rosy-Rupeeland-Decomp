@@ -7,8 +7,8 @@
 .extern __construct_array
 .extern data_020f4e18
 .extern data_ov059_02211ba8
-.extern func_02071ea4
-.extern func_02071eb8
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -167,8 +167,8 @@ func_ov059_022106fc:
     mov r0, r8
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-.L_02210938: .word func_02071eb8
-.L_0221093c: .word func_02071ea4
+.L_02210938: .word AnimationResourceState_Destroy
+.L_0221093c: .word AnimationResourceState_InitEmbedded
 .L_02210940: .word data_020f4e18
 .L_02210944: .word gDebugFont
 .L_02210948: .word data_ov059_02211ba8

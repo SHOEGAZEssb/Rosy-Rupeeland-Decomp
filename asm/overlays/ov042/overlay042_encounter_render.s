@@ -1,6 +1,6 @@
 .text
 .extern func_0209a2ac
-.extern func_020c10d4
+.extern Memory_ClearBytes
 .extern VecFx32Object_InitComponents
 .extern func_020befec
 .extern VecFx32Object_Assign
@@ -253,7 +253,7 @@ func_ov042_022036c4:
     mov r2, #0x20
     add r0, sp, #0xd8
     stmia r3, {r2, r4}
-    bl func_020c10d4
+    bl Memory_ClearBytes
     add r0, sp, #0xc8
     mov r1, #0xc0
     mov r2, #0xa0

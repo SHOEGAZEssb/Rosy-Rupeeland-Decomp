@@ -18,7 +18,7 @@ extern void Position_AdjustForTerrainHeight(void *vector);
 extern u32 genrand_int32(void);
 extern void *ActorFeedbackResources_GetResource(u32 index);
 extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
-extern void func_0201ded4(void *manager, void *presentation);
+extern void PresentationList_AppendObject(void *manager, void *presentation);
 extern void func_020593ac(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
 #ifdef __cplusplus
@@ -99,7 +99,7 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
                 *(s32 *)(resource + 0x0c), 0, -1);
         }
     }
-    func_0201ded4(data_021052fc + 0x2f7c, presentation);
+    PresentationList_AppendObject(data_021052fc + 0x2f7c, presentation);
     VecFx32Object_Destroy(position);
     return 1;
 }

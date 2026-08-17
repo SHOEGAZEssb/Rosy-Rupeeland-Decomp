@@ -6,8 +6,8 @@
 .extern func_ov012_021fce3c
 .extern gHeapContext
 
-.global func_02068630
-func_02068630:
+.global InventoryScene_LoadPrimaryView
+InventoryScene_LoadPrimaryView:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, .L_02068688
@@ -35,4 +35,4 @@ func_02068630:
 .L_0206868c: .word 0xe
 .L_02068690: .word data_020e55ec
 .L_02068694: .word gHeapContext
-.size func_02068630, . - func_02068630
+.size InventoryScene_LoadPrimaryView, . - InventoryScene_LoadPrimaryView

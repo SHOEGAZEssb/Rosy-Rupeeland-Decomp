@@ -26,14 +26,14 @@ extern void func_020925f8(void);
 extern void func_02092618(void);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_02092688(s32, s32, s32, s32);
-extern void func_020926d8(void *);
+extern void TitleScreenResourceCollection_Init(void *);
 extern void func_020926f8(void *);
 extern void func_02092754(void *, s32);
-extern void *func_02092790(void *, s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b44e8(void);
 extern void func_ov016_021ff04c(s32);
-extern void func_ov016_021ff068(s32, s32, s32, s32);
+extern void Overlay016_ConfigureMainBg3(s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -65,7 +65,7 @@ extern "C" void func_ov016_021fedc4(void *state)
     mainBg[0] = (mainBg[0] & 0x43) | 0x3800;
     mainBg[1] = (mainBg[1] & 0x43) | 0x3a00;
     mainBg[2] = (mainBg[2] & 0x43) | 0x1c00;
-    func_ov016_021ff068(0, 0, 0x1e, 4);
+    Overlay016_ConfigureMainBg3(0, 0, 0x1e, 4);
     func_020925f8();
     func_02092638(0, 1, 2, 3);
 
@@ -79,7 +79,7 @@ extern "C" void func_ov016_021fedc4(void *state)
     func_02092688(0, 1, 2, 3);
 
     GraphicsResourceSet_Init(&resources);
-    func_020926d8(&manager);
+    TitleScreenResourceCollection_Init(&manager);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8004, 0x8005, 0x8006);
     func_02070f80((void *)resources.words[2], 8);
     func_020b44e8();
@@ -89,9 +89,9 @@ extern "C" void func_ov016_021fedc4(void *state)
     func_02092754(&manager, 0x8015);
     func_020b44e8();
     GraphicsResourceSet_Apply(&resources, 2, 0);
-    handle = func_02092790(&manager, 0);
+    handle = TitleScreenResourceCollection_Get(&manager, 0);
     func_02070eac(handle, 0, 0);
-    handle = func_02092790(&manager, 1);
+    handle = TitleScreenResourceCollection_Get(&manager, 1);
     func_02070eac(handle, 1, 0);
 
     mainFont = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);

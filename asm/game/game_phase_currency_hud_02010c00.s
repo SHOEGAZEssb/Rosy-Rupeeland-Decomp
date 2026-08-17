@@ -4,7 +4,7 @@
 .extern data_020c368c
 .extern data_021052fc
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern gGameWork
 .extern gSoundContext
 
@@ -140,7 +140,7 @@ L_02010d5c:
     strh r0, [r10, #0xba]
 L_02010df0:
     mov r0, r9
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     ldrh r1, [r10, #0xb0]
     cmp r8, #0x0
     bic r1, r1, #0x1e0

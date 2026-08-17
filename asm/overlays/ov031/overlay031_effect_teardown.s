@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov031/overlay031_effect_lifecycle.c for documented portable C. */
 .extern data_ov031_021fe758
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_ov031_021fd1c0
 .extern func_ov031_021fd254
@@ -43,7 +43,7 @@ L_021fd4fc:
     add r0, r6, #0xb4
     bl func_ov031_021fd254
     add r0, r6, #0x5c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r6
     ldmia sp!, {r4, r5, r6, pc}
 L_021fd530: .word data_ov031_021fe758
@@ -82,7 +82,7 @@ L_021fd580:
     add r0, r6, #0xb4
     bl func_ov031_021fd254
     add r0, r6, #0x5c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r6
     bl Heap_Free
     mov r0, r6

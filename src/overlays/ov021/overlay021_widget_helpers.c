@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void OverlaySlot_UnloadOverlay(void *, s32);
-extern s32 func_02062b28(void *);
+extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_02064d90(void *, s32);
 extern void GraphicsSpriteGroup_Clear(void *);
 extern void func_02095988(void *, s32);
@@ -133,7 +133,7 @@ extern "C" s32 func_ov021_021feae4(void *state)
     s32 i;
     for (i = 0; i < FIELD(s32, collection, 0x10); i++) {
         void *record = FIELD(u8 *, collection, 8) + i * 0x24;
-        if (func_02062b28(record) == 0 &&
+        if (ActorDescriptor_IsInvalid(record) == 0 &&
             FIELD(void *, record, 0xc) != 0)
             return 1;
     }

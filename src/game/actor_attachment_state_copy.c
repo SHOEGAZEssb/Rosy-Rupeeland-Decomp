@@ -32,7 +32,7 @@ static void copyFlag(u8 *destination, const u8 *source, u16 mask)
  * destination bit 0x20, rather than 0x200, when source bit 0x200 is absent.
  * Returns no value; animation helpers may affect presentation state.
  */
-void func_02031cac(void *self, const void *pointPointer)
+void ActorAttachment_CopyTouchState(void *self, const void *pointPointer)
 {
     u8 *actor = (u8 *)self;
     const u8 *point = (const u8 *)pointPointer;

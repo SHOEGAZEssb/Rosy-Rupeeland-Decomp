@@ -4,7 +4,7 @@
     .extern GraphicsSpriteState_ReleaseFromGroup
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_02094574
+    .extern InventoryScroll_UpdatePresentation
     .extern func_ov016_021fd628
 
 /* Exact fallbacks for row sprite and selection refresh; see src/overlays/ov016/overlay016_list_runtime.c. */
@@ -81,7 +81,7 @@ func_ov016_021fd358:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x58]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     ldr r0, [r4, #0x50]
     cmp r0, #0x0
     beq L_021fd3e4

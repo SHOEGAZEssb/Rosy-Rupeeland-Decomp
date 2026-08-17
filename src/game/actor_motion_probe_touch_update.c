@@ -17,7 +17,7 @@ extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Object_Add(void *destination, const void *delta);
 extern s32 func_020befec(s32 numerator, s32 denominator);
-extern void func_02031cac(void *actor, const TouchPoint *point);
+extern void ActorAttachment_CopyTouchState(void *actor, const TouchPoint *point);
 #ifdef __cplusplus
 }
 #endif
@@ -50,7 +50,7 @@ static s32 centeredRandom(s32 range)
  * oscillation to current vector. Apply current X/Y offsets to attachment
  * halfwords +0x2c/+0x2e and source words +0x04/+0x08. Build a TouchPoint using
  * gSceneTouchInitialData's point vtable and forward it to actor through
- * func_02031cac. Returns no value; RNG, vector lifecycles, attachment writes,
+ * ActorAttachment_CopyTouchState. Returns no value; RNG, vector lifecycles, attachment writes,
  * and touch dispatch mutate global/actor/presentation state.
  */
 void ActorMotionProbe_UpdateTouchMotion(void *source, void *self,
@@ -108,6 +108,6 @@ void ActorMotionProbe_UpdateTouchMotion(void *source, void *self,
         point.vtable = &gSceneTouchInitialData.pointVTable;
         point.x = *(u32 *)(output + 4);
         point.y = *(u32 *)(output + 8);
-        func_02031cac(actor, &point);
+        ActorAttachment_CopyTouchState(actor, &point);
     }
 }

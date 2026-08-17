@@ -11,7 +11,7 @@ typedef struct SelfLinkedSpriteConfig {
 } SelfLinkedSpriteConfig;
 
 /* Zero all recovered values, link offsets 0x14/0x1c to self, set field18 to one, and return no value. */
-void func_02022fbc(SelfLinkedSpriteConfig *self)
+void SelfLinkedSpriteConfig_Init(SelfLinkedSpriteConfig *self)
 {
     self->field00=self->field02=self->field04=self->field06=0;
     self->field08=self->field0c=self->field10=0;self->self14=self;

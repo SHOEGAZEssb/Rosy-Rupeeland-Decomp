@@ -22,7 +22,7 @@ extern const u8 data_ov006_021fbc88[];
 extern const u8 data_ov006_021fbc9c[];
 extern const u8 data_ov006_021fbca4[];
 extern const s32 data_ov006_021fbc58[2];
-extern void func_02091e28(void *state);
+extern void SceneInputBase_Init(void *state);
 extern void IndexedSelectionController_Init(void *controller);
 extern void func_02091b6c(void *animation);
 extern void IndexedSelectionController_ConfigureRange(void *controller, s32 first, s32 index, s32 third);
@@ -63,7 +63,7 @@ Overlay006Presentation *func_ov006_021fb708(Overlay006Presentation *state)
     void *auxiliary;
     s32 index;
 
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const void *, state, 0x000) = data_ov006_021fbc88;
     IndexedSelectionController_Init((u8 *)state + 0x58);
     func_02091b6c((u8 *)state + 0x98);

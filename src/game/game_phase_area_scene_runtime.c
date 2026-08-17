@@ -11,7 +11,7 @@ extern const char gGamePhaseAreaRegionEffectAllocationTag[];
 extern void *data_021052fc;
 extern void *FourStageCommandPresentation_Init(void *self, void *renderer, s32 left, s32 top,
                            s32 right, s32 bottom);
-extern void *func_0201ded4(void *list, void *effect);
+extern void *PresentationList_AppendObject(void *list, void *effect);
 extern void func_ov056_0220ef34(void *object);
 extern void func_ov056_0220ed9c(void *object);
 #ifdef __cplusplus
@@ -64,7 +64,7 @@ s32 GamePhaseAreaScene_UpdateRegionAtPosition(
                     halfTowardZero(region->bottom));
             *(u32 *)((u8 *)effect + 4) =
                 (*(u32 *)((u8 *)effect + 4) & ~0x3fc) | 0xdc;
-            self->regionEffectHandle = func_0201ded4(
+            self->regionEffectHandle = PresentationList_AppendObject(
                 (u8 *)data_021052fc + 0x2f7c, effect);
         }
         GamePhaseRegionTable_SetRegionEnabled(table, index, 1);

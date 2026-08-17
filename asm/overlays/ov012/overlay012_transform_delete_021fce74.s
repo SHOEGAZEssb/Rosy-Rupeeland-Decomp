@@ -1,7 +1,7 @@
     .text
     .extern data_ov012_021fe5f4
     .extern data_020f4e18
-    .extern func_02071e04
+    .extern GraphicsArchive_ReleaseOwlvResource
     .extern Heap_Free
 /* Exact register-allocation fallback; see src/overlays/ov012/overlay012_transform_delete.c. */
     .global func_ov012_021fce74
@@ -15,7 +15,7 @@ func_ov012_021fce74:
     beq L_021fce9c
     ldr r0, L_021fceb0
     ldr r0, [r0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
 L_021fce9c:
     mov r0, r4
     bl Heap_Free

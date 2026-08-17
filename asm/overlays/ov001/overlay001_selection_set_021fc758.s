@@ -1,7 +1,7 @@
     .text
     .extern func_020befec
     .extern IndexedSelectionController_SetValue
-    .extern func_02093d50
+    .extern InventoryScroll_SetSelectedRow
     .global func_ov001_021fc758
 func_ov001_021fc758: ; 0x021fc758
     stmdb sp!, {r3, r4, r5, lr}
@@ -18,7 +18,7 @@ func_ov001_021fc758: ; 0x021fc758
     bl func_020befec
     mov r1, r0
     ldr r0, [r4, #0x1bc]
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     ldr r1, [r4, #0x1c]
     cmp r1, #0x0
     ldrne r0, [r4, #0x20c]

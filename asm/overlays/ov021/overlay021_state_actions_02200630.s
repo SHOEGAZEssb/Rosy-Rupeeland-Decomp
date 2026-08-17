@@ -8,13 +8,13 @@
     .extern data_ov021_02202ec0
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern func_02092c8c
     .extern func_ov021_021fd1cc
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fe144
+    .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe520
     .extern func_ov021_021fe63c
     .extern func_ov021_021fe84c
@@ -63,7 +63,7 @@ L_022006a0:
     beq L_022006d8
     mov r0, #0x0
     str r0, [r4, #0x48]
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     ldr r1, L_0220082c
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -81,7 +81,7 @@ L_022006d8:
     cmpeq r0, #0x0
     beq L_02200714
     mov r0, r4
-    bl func_ov021_021fe144
+    bl Overlay021_SetupMainBackground
     mov r0, #0x0
     str r0, [r4, #0x37c]
     str r0, [r4, #0x380]

@@ -17,7 +17,7 @@ extern "C" {
 
 extern void *func_020702d4(void *cache, u32 resourceId);
 extern void func_02070244(void *cache, void *resource);
-extern void *func_0207142c(void *archive, u32 resourceId, u32 *size);
+extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resourceId, u32 *size);
 extern void *func_020713e4(u32 size);
 extern void *func_02070750(void *resource, void *archive, void *source,
                            u32 size, u32 resourceId);
@@ -45,7 +45,7 @@ void *func_020716bc(void *archive, u32 resourceId)
     if (resource != 0) {
         resource->referenceCount++;
     } else {
-        source = (GraphicsArchiveResourceHeader *)func_0207142c(
+        source = (GraphicsArchiveResourceHeader *)GraphicsArchive_LoadIndexedPayload(
             archive, resourceId, &sourceSize);
         if (source != 0 && source->magic == 0x56434c20) {
             resource = (GraphicsArchiveCachedResource *)func_020713e4(0x2c);

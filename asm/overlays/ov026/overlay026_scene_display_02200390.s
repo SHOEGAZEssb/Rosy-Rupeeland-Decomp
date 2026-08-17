@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_display.c. */
 .extern data_ov026_02204300
 .extern data_ov026_02204302
-.extern func_02092850
+.extern TitlePalette_SetMainBackdrop
 .extern func_020add34
 .extern func_020b0300
 .extern func_020b0374
@@ -60,7 +60,7 @@ func_ov026_02200390:
     mov r1, #0x2
     str r1, [r4, #0x1c0]
     str r2, [r4, #0x254]
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
 L_0220045c: .word data_ov026_02204300

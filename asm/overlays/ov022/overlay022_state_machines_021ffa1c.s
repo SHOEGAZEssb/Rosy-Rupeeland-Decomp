@@ -10,7 +10,7 @@
 .extern func_02092260
 .extern func_020922f0
 .extern func_02092c8c
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern IndexedSelectionController_ResetTransition
 .extern IndexedSelectionController_SnapTransitionOrigin
 .extern IndexedSelectionController_Increment
@@ -207,7 +207,7 @@ L_021ffc84:
     cmp r0, #0x0
     bne L_021ffd70
     ldr r0, [r4, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r4, #0x2b4]
     bl IndexedSelectionController_SnapTransitionOrigin
     ldr r0, [r4, #0x2b4]

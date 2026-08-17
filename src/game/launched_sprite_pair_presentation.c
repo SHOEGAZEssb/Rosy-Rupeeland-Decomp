@@ -41,21 +41,21 @@ extern void *data_020f4e18;
 extern u8 *data_021052fc;
 extern void *gGameWork;
 extern const s16 data_020c9670[];
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void VecFx32Object_Init(PresentationVector *);
 extern void VecFx32Object_InitComponents(PresentationVector *, s32, s32, s32);
 extern void VecFx32Object_InitCopy(PresentationVector *, const PresentationVector *);
 extern void VecFx32Object_Destroy(PresentationVector *);
 extern void VecFx32Object_Assign(PresentationVector *, const PresentationVector *);
-extern void func_02071ea4(void *resource);
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
-extern void func_02071f38(void *resource);
+extern void AnimationResourceState_ReleaseResources(void *resource);
 extern void *Actor_GetCollection(void *actor);
 extern void *Actor_GetCollectionBySlot(void *actor, s32 index);
 extern void *ActorCollection_GetSpriteOwner(void *resource);
-extern u8 *func_02079a7c(void *table, s32 index);
+extern u8 *RuntimeRecordTable_FindByKey(void *table, s32 index);
 extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
 extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *sprite);
@@ -93,15 +93,15 @@ LaunchedSpritePairPresentation *func_02024b04(
     s32 mode;
     s32 kind;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)data_020d68e4;
     self->anchor08 = anchor;
     VecFx32Object_InitCopy(&self->position0c,
                   (const PresentationVector *)((u8 *)actor + 0x18));
     VecFx32Object_Init(&self->velocity1c);
-    func_02071ea4(self->resource3c);
+    AnimationResourceState_InitEmbedded(self->resource3c);
     self->primaryOwner48 = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
-    record = func_02079a7c(data_021f3d68, recordIndex);
+    record = RuntimeRecordTable_FindByKey(data_021f3d68, recordIndex);
     func_02071ee0(self->resource3c, data_020f4e18, 0x300a, 0x300b, 0x300c);
     self->primarySprite50 =
         GraphicsSpriteGroup_CreateStateFromSource(self->primaryOwner48, self->resource3c, 2);
@@ -157,7 +157,7 @@ LaunchedSpritePairPresentation *func_02024d3c(
     if (self->secondaryOwner4c != 0) {
         GraphicsSpriteGroup_ReleaseState(self->secondaryOwner4c, self->secondarySprite54);
     }
-    func_02071eb8(self->resource3c);
+    AnimationResourceState_Destroy(self->resource3c);
     VecFx32Object_Destroy(&self->velocity1c);
     VecFx32Object_Destroy(&self->position0c);
     func_0201e28c(self);
@@ -202,7 +202,7 @@ s32 func_02024e24(LaunchedSpritePairPresentation *self)
             GraphicsSpriteGroup_ReleaseState(self->primaryOwner48, self->primarySprite50);
             if (self->secondaryOwner4c != 0)
                 GraphicsSpriteGroup_ReleaseState(self->secondaryOwner4c, self->secondarySprite54);
-            func_02071f38(self->resource3c);
+            AnimationResourceState_ReleaseResources(self->resource3c);
             func_02071ee0(self->resource3c, data_020f4e18,
                           0x115a, 0x115b, 0x115c);
             self->primarySprite50 =

@@ -24,10 +24,10 @@ extern "C" {
 
 extern GraphicsSpriteStatePool gGraphicsSpriteStatePool;
 extern GraphicsSpriteState gGraphicsSpriteStates[];
-extern void func_020703d8(void *resource);
+extern void GraphicsSpriteResource_ReleaseTexture(void *resource);
 extern void func_02070418(void *resource);
 extern void func_02070830(void *resource);
-extern void func_02070860(void *resource);
+extern void GraphicsSpriteResource_Prepare(void *resource);
 extern void func_02070d38(void *resource);
 extern void func_02070d74(void *resource);
 extern GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
@@ -56,7 +56,7 @@ extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *owner,
  */
 void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state)
 {
-    func_020703d8(state->field_14);
+    GraphicsSpriteResource_ReleaseTexture(state->field_14);
     if (((GraphicsSpriteResource14 *)state->field_14)->field_24 != 0) {
         return;
     }
@@ -75,7 +75,7 @@ void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state)
 void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state)
 {
     func_02070418(state->field_14);
-    func_02070860(state->field_18);
+    GraphicsSpriteResource_Prepare(state->field_18);
     func_02070d74(state->animationResource);
 }
 

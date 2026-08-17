@@ -5,7 +5,7 @@
     .extern Presentation_Init
     .extern Presentation_SetPosition
     .extern func_ov017_021fd744
-    .extern func_ov017_021fd7f8
+    .extern Overlay017Transform_ReplaceResource
     .extern func_ov017_021fe0b4
     .extern genrand_int32
 .global func_ov017_021fd94c
@@ -44,7 +44,7 @@ func_ov017_021fd94c:
     str r0, [r4, #0xb4]
     ldrh r1, [sp, #0x20]
     add r0, r4, #0xbc
-    bl func_ov017_021fd7f8
+    bl Overlay017Transform_ReplaceResource
     bl genrand_int32
     mov r0, r0, lsl #0x10
     mov r0, r0, lsr #0x10

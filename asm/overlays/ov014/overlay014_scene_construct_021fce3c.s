@@ -6,9 +6,9 @@
     .extern data_ov014_021fd994
     .extern data_ov014_021fd9a8
     .extern data_ov014_021fd9b0
-    .extern func_02064be0
-    .extern func_02091e28
-    .extern func_02092798
+    .extern InventoryRecordCollection_Sort
+    .extern SceneInputBase_Init
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_ov000_021fb728
     .extern func_ov000_021fbcc4
@@ -28,11 +28,11 @@ func_ov014_021fce3c:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fcf2c
     add r0, r4, #0x54
     str r1, [r4, #0x0]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x7c
     bl func_ov014_021fce00
     mov r0, r4
@@ -61,7 +61,7 @@ L_021fceb8:
     ldr r0, L_021fcf40
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02064be0
+    bl InventoryRecordCollection_Sort
     ldr r1, L_021fcf44
     ldr r3, L_021fcf38
     mov r0, #0x2b0

@@ -1,5 +1,5 @@
     .text
-    .extern func_02092910
+    .extern GraphicsSpriteState_TestTouchPoint
     .extern PresentationScalar_TransitionBy
     .extern PresentationList_Remove
     .extern func_02095940
@@ -18,7 +18,7 @@ func_ov016_021fe584:
 L_021fe59c:
     ldr r0, [r5, #0x9c]
     mov r1, r7
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_021fe60c
     cmp r6, #0x0

@@ -83,7 +83,7 @@
 .extern DisplayBrightnessPair_Destroy
 .extern NoOpDestructor
 .extern ActorRuntimeCollection_Destroy
-.extern func_02022fbc
+.extern SelfLinkedSpriteConfig_Init
 .extern func_02059a64
 .extern func_02059a68
 .extern func_020646cc
@@ -321,7 +321,7 @@ __sinit_020c15ec: ; 0x020c15ec
     ldr ip, .L_020c15f8
     ldr r0, .L_020c15fc
     bx ip
-.L_020c15f8: .word func_02022fbc
+.L_020c15f8: .word SelfLinkedSpriteConfig_Init
 .L_020c15fc: .word data_021e9db8
 
 __sinit_020c1600: ; 0x020c1600

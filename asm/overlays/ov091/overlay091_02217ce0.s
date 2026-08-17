@@ -22,8 +22,8 @@
 .extern func_0201e0ec
 .extern Actor_SetActive
 .extern func_0204d308
-.extern func_02059278
-.extern func_0205929c
+.extern Sound_PlayDirectSequence
+.extern Sound_StopDirectSequence
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a27a0
 .extern func_020a2844
@@ -173,7 +173,7 @@ func_ov091_02217ce0:
     mov r1, #0x57
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     add r0, r4, #0x100
     mov r1, #0x0
     strh r1, [r0, #0xee]
@@ -367,7 +367,7 @@ func_ov091_02217ce0:
     mov r1, #0x57
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_0221882c
     mov r1, #0x1c4
     ldr r0, [r0, #0x0]

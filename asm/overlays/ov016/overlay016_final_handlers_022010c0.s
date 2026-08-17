@@ -7,9 +7,9 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02092c8c
     .extern func_ov016_021fd3f8
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff094
-    .extern func_ov016_021ff404
+    .extern Overlay016_CreateSceneSprite
     .extern func_ov016_021ff71c
     .extern func_ov016_021ff7bc
     .extern func_ov016_021ff848
@@ -48,7 +48,7 @@ L_02201108:
     mov r1, #0x18
     bl func_ov016_021ff848
     mov r0, r4
-    bl func_ov016_021ff404
+    bl Overlay016_CreateSceneSprite
     mov r0, r4
     bl func_ov016_021ff094
     ldr r0, [r4, #0x444]
@@ -71,7 +71,7 @@ L_02201178:
     ldr r1, L_022011bc
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

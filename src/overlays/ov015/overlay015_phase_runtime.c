@@ -19,13 +19,13 @@ extern const u32 data_ov015_021fec18[];
 extern "C" {
 #endif
 extern void GameWork_SetFlag(void *, s32);
-extern s32 func_020628c8(void *);
-extern s32 func_020651a4(void *, u16);
-extern s32 func_02065468(void *);
+extern s32 ActorDescriptor_GetPrimaryLabel(void *);
+extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
+extern s32 InventoryRecordCollection_HasInactiveKind1Subtype1(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_020946a8(void *, s32);
-extern void func_02094738(void *, s32);
+extern void InventoryScroll_BeginMarkerDrag(void *, s32);
+extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern s32 func_ov001_021fc0ac(void *, void *);
 extern void func_ov001_021fc1f0(void *);
@@ -51,7 +51,7 @@ extern s32 func_ov001_021fcb60(void *, void *);
 extern s32 func_ov001_021fcbf0(void *, void *);
 extern s32 func_ov001_021fcc44(void *, void *);
 extern void func_ov015_021fce30(void *, u32, u32);
-extern void func_ov015_021fd68c(void *);
+extern void Overlay015_UpdateRecords(void *);
 extern void func_ov015_021fd6c8(void *);
 extern void func_ov015_021fdad4(void *);
 extern s32 func_ov015_021fdd1c(void *);
@@ -83,7 +83,7 @@ static void overlay015_step_phase(void *state, s32 delta)
  * Return zero on every call; state, records, and presentation/audio subsystems
  * may change, but this handler performs no direct MMIO.
  */
-extern "C" s32 func_ov015_021fdeec(void *state)
+extern "C" s32 Overlay015_UpdateTransientConfirmation(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         if (FIELD(void *, state, 0xec) == 0) {
@@ -92,7 +92,7 @@ extern "C" s32 func_ov015_021fdeec(void *state)
         func_ov001_021fc3b4(FIELD(void *, state, 0xdc));
         func_ov015_021fdad4(state);
         if (FIELD(void *, state, 0xec) != 0 &&
-            func_02065468(FIELD(void *, FIELD(void *, state, 0xdc), 0x204)) == 0) {
+            InventoryRecordCollection_HasInactiveKind1Subtype1(FIELD(void *, FIELD(void *, state, 0xdc), 0x204)) == 0) {
             func_ov001_021fc39c(FIELD(void *, state, 0xdc));
             func_ov015_021fde00(state, 0xf, 1, 0);
             overlay015_step_phase(state, 1);
@@ -192,7 +192,7 @@ extern "C" s32 func_ov015_021fdfe8(void *state)
         }
         break;
     }
-    func_ov015_021fd68c(state);
+    Overlay015_UpdateRecords(state);
     return 0;
 }
 
@@ -210,7 +210,7 @@ extern "C" s32 func_ov015_021fe2b0(void *state)
 
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020946a8(auxiliary, 4);
+        InventoryScroll_BeginMarkerDrag(auxiliary, 4);
         overlay015_step_phase(state, 1);
         /* Intentional fallthrough into readiness polling. */
     case 1:
@@ -232,12 +232,12 @@ extern "C" s32 func_ov015_021fe2b0(void *state)
                 overlay015_step_phase(state, -1);
             }
         } else {
-            func_02094738(auxiliary, 6);
+            InventoryScroll_EndMarkerDrag(auxiliary, 6);
             overlay015_transition(state, data_ov015_021febf8);
         }
         break;
     }
-    func_ov015_021fd68c(state);
+    Overlay015_UpdateRecords(state);
     return 0;
 }
 
@@ -262,7 +262,7 @@ extern "C" s32 func_ov015_021fe3e4(void *state)
     }
     case 1:
         func_ov015_021fde00(state, 0x12, 0,
-                            (void *)func_020628c8(FIELD(void *, status, 0xc)));
+                            (void *)ActorDescriptor_GetPrimaryLabel(FIELD(void *, status, 0xc)));
         overlay015_step_phase(state, 1);
         break;
     case 2: {
@@ -287,7 +287,7 @@ extern "C" s32 func_ov015_021fe3e4(void *state)
         overlay015_transition(state, data_ov015_021febe8);
         break;
     }
-    func_ov015_021fd68c(state);
+    Overlay015_UpdateRecords(state);
     return 0;
 }
 
@@ -309,5 +309,5 @@ extern "C" s32 func_ov015_021fe548(void *record)
 extern "C" s32 func_ov015_021fe560(void *unused, u16 selector)
 {
     (void)unused;
-    return func_020651a4((u8 *)FIELD(void *, data_021e9ac0, 0) + 0x1c, selector) >= 99;
+    return ActorDescriptorState_FindInactiveQuantity((u8 *)FIELD(void *, data_021e9ac0, 0) + 0x1c, selector) >= 99;
 }

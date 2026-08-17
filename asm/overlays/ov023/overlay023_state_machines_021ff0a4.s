@@ -15,7 +15,7 @@
 .extern func_ov023_021fe804
 .extern func_ov023_021fe88c
 .extern func_ov045_0220c274
-.extern func_ov045_0220c2a0
+.extern Overlay045Graphics_SetUniformValue
 .extern gDebugFont
 
 
@@ -65,7 +65,7 @@ L_021ff10c:
     bl func_02091bd0
     mov r1, r0
     ldr r0, [r4, #0x4bc]
-    bl func_ov045_0220c2a0
+    bl Overlay045Graphics_SetUniformValue
     add r0, r4, #0xdc
     add r0, r0, #0x400
     bl func_02091cf0
@@ -129,7 +129,7 @@ L_021ff204:
     bl func_02091bd0
     mov r1, r0
     ldr r0, [r4, #0x4bc]
-    bl func_ov045_0220c2a0
+    bl Overlay045Graphics_SetUniformValue
     add r0, r4, #0xdc
     add r0, r0, #0x400
     bl func_02091cf0

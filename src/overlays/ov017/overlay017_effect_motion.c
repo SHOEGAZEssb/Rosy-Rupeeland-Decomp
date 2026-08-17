@@ -15,7 +15,7 @@ extern void PresentationScalar_SetImmediate(void *, s32);
 extern s32 func_020adc90(s32, s32);
 extern u16 func_020ae024(s32, s32);
 extern s32 func_020befec(s32, s32);
-extern s32 func_ov017_021fd3f0(void);
+extern s32 Overlay017_WaitForSquareRoot(void);
 #ifdef __cplusplus
 }
 #endif
@@ -33,7 +33,7 @@ static s32 hardwareSqrt(s32 squared)
     *(volatile u16 *)regs = 1;
     *(volatile s32 *)(regs + 8) = squared;
     *(volatile s32 *)(regs + 0xc) = squared >> 31;
-    return func_ov017_021fd3f0();
+    return Overlay017_WaitForSquareRoot();
 }
 
 /*

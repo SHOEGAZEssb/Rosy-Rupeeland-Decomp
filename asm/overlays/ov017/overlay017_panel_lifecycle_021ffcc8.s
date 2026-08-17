@@ -3,10 +3,10 @@
     .extern Heap_Alloc
     .extern data_ov017_022016bc
     .extern func_02070e0c
-    .extern func_02092790
+    .extern TitleScreenResourceCollection_Get
     .extern func_020959d4
-    .extern func_02095c30
-    .extern func_02095f48
+    .extern ModalState_InitResources
+    .extern ModalState_CopyAttachmentText
     .extern gHeapContext
 .global func_ov017_021ffcc8
 func_ov017_021ffcc8:
@@ -18,14 +18,14 @@ func_ov017_021ffcc8:
     add r0, r6, #0x1fc
     bne L_021ffcfc
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x2
     mov r2, #0x0
     bl func_02070e0c
     b L_021ffd10
 L_021ffcfc:
     mov r1, #0x1
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x2
     mov r2, #0x0
     bl func_02070e0c
@@ -46,11 +46,11 @@ L_021ffd38:
     beq L_021ffd50
     ldr r0, [r6, #0x400]
     mov r1, r4
-    bl func_02095f48
+    bl ModalState_CopyAttachmentText
 L_021ffd50:
     ldr r0, [r6, #0x400]
     mov r1, r5
-    bl func_02095c30
+    bl ModalState_InitResources
     ldr r0, [r6, #0x48]
     orr r0, r0, #0x4
     str r0, [r6, #0x48]

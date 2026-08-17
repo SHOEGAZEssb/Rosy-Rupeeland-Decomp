@@ -33,7 +33,7 @@ extern void func_ov029_021fd6fc(void *);
 extern void func_ov029_021fd7a8(void *, s32);
 extern s32 func_ov029_021fd850(void *);
 extern s32 func_ov045_0220c9e8(s32, s32);
-extern void func_ov045_0220d2f8(s32, s32);
+extern void Overlay045_DrawSelectorPreview(s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -69,7 +69,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
         FIELD(u16, gLupyContext, 0xbe) = 0x1e;
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x78));
-        func_ov045_0220d2f8(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
+        Overlay045_DrawSelectorPreview(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
         FIELD(u32, state, 0x20) = (FIELD(u32, state, 0x20) & ~1u) | 1;
         Overlay029_NextPhase(state);
         break;

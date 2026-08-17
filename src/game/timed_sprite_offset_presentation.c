@@ -41,7 +41,7 @@ extern "C" {
 extern void *gTimedSpriteOffsetPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern OffsetSpriteConfig *TimedSpriteConfig_InitTracks(OffsetSpriteConfig *config);
 extern void *func_0201e584(void *self, OffsetSpriteConfig *config,
                            s32 spriteValue, s32 offset);
@@ -66,7 +66,7 @@ TimedSpriteOffsetPresentation *TimedSpriteOffsetPresentation_Init(
     const PresentationTrack *trackSource, s32 spriteValue, void *spriteGroup,
     s32 field04, s32 field08, s32 field0c, s32 offset, s32 spriteByte)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)gTimedSpriteOffsetPresentationVtable;
     TimedSpriteOffsetPresentation_CreateSprite(
         self, trackSource, spriteValue, spriteGroup, field04, field08, field0c,

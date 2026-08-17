@@ -32,8 +32,8 @@ typedef struct Overlay001Controller {
 extern "C" {
 #endif
 extern void *data_ov001_021fcc80;
-extern void func_020683f4(void *cell);
-extern void func_02071eb8(void *resource);
+extern void InventoryCell_Destroy(void *cell);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void GraphicsSpriteRenderer_ClearFontResource(void *owner);
 extern void func_020927b8(void *state);
@@ -46,7 +46,7 @@ extern void func_ov001_021fbab8(void *element);
 
 /*
  * Restore the retail vtable, destroy cells_20c with 0x20-byte stride/alignment
- * 8 and func_020683f4, and conditionally destroy controller_1BC through virtual
+ * 8 and InventoryCell_Destroy, and conditionally destroy controller_1BC through virtual
  * slot +4. Then release owner_004 state, sprite groups +0x0C/+8, renderer +0x180,
  * invoke the interface no-op for elements +0xD4/+0x28, and destroy resource
  * +0x10. Return state for destructor chaining; callees own heap/graphics effects.
@@ -60,7 +60,7 @@ Overlay001GridDestroyState *func_ov001_021fbe6c(
     Overlay001Controller *controller;
 
     state->vtable_000 = &data_ov001_021fcc80;
-    func_020c0c24(state->cells_20c, 0x20, 8, func_020683f4);
+    func_020c0c24(state->cells_20c, 0x20, 8, InventoryCell_Destroy);
     controller = (Overlay001Controller *)state->controller_1bc;
     if (controller != 0) {
         controller->vtable->destroy_04(controller);
@@ -71,6 +71,6 @@ Overlay001GridDestroyState *func_ov001_021fbe6c(
     func_020927b8(state->rendererState_180);
     func_ov001_021fbab8(state->element_0d4);
     func_ov001_021fbab8(state->element_028);
-    func_02071eb8(state->resource_010);
+    AnimationResourceState_Destroy(state->resource_010);
     return state;
 }

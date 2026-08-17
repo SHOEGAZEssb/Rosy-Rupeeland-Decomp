@@ -13,15 +13,15 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteCanvas_FillRect
-.extern func_02093360
-.extern func_ov052_0220ddb4
-.extern func_ov052_0220df9c
+.extern TitleDialog_UpdateTextPage
+.extern Overlay052Scene_LoadSubScreenResources
+.extern Overlay052Scene_RestartDecoration
 .extern gDebugFont
 .extern gPadState1
 .extern gTouchPanelManager
 
-.global func_ov052_0220da54
-func_ov052_0220da54:
+.global Overlay052Scene_UpdateMessageMenu
+Overlay052Scene_UpdateMessageMenu:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x30
     ldr r3, .L_0220dd90
@@ -54,7 +54,7 @@ func_ov052_0220da54:
     bl GamePhaseAreaScene_SetEnabled
 .L_0220dac0:
     mov r0, r4
-    bl func_ov052_0220ddb4
+    bl Overlay052Scene_LoadSubScreenResources
     ldr r0, [r4, #0x2c]
     movs r0, r0, asr #0x10
     bne .L_0220daf0
@@ -77,7 +77,7 @@ func_ov052_0220da54:
 .L_0220db10:
     mov r0, r4
     mov r1, #0x0
-    bl func_ov052_0220df9c
+    bl Overlay052Scene_RestartDecoration
     ldr r2, [r4, #0x28]
     ldr r1, .L_0220dd9c
     ldr r0, [r4, #0x14]
@@ -104,7 +104,7 @@ func_ov052_0220da54:
 .L_0220db74:
     ldr r0, [r4, #0x10]
     add r1, sp, #0x18
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x8]
     str r0, [sp, #0xc]
@@ -120,7 +120,7 @@ func_ov052_0220da54:
     bl GraphicsSpriteState_SetAnimationIndex
     mov r0, r4
     mov r1, #0x1
-    bl func_ov052_0220df9c
+    bl Overlay052Scene_RestartDecoration
 .L_0220dbc0:
     ldr r0, [sp, #0x14]
     mov r0, r0, lsl #0x1f
@@ -128,7 +128,7 @@ func_ov052_0220da54:
     bne .L_0220dbdc
     mov r0, r4
     mov r1, #0x0
-    bl func_ov052_0220df9c
+    bl Overlay052Scene_RestartDecoration
 .L_0220dbdc:
     ldr r0, [sp, #0x14]
     mov r0, r0, lsl #0x1e
@@ -257,4 +257,4 @@ func_ov052_0220da54:
 .L_0220dda8: .word gDebugFont
 .L_0220ddac: .word data_ov052_0220e1e8
 .L_0220ddb0: .word data_ov052_0220e1e4
-.size func_ov052_0220da54, . - func_ov052_0220da54
+.size Overlay052Scene_UpdateMessageMenu, . - Overlay052Scene_UpdateMessageMenu

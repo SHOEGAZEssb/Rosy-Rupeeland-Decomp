@@ -13,7 +13,7 @@ extern void *gRuntimeContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern s64 func_020befec(s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -21,7 +21,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 #ifdef __cplusplus
 }
@@ -58,8 +58,8 @@ extern void func_02092814(void *, s32);
  */
 extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
 {
-    func_02071ea4(widget);
-    func_02092798((u8 *)widget + 0x30);
+    AnimationResourceState_InitEmbedded(widget);
+    TitleCharacterResourceCollection_Init((u8 *)widget + 0x30);
     u8 *record = (u8 *)gRuntimeContext + 0x38 + index * 0x34;
     FIELD(s32, widget, 0x78) = index;
     for (s32 i = 0; i < 16; ++i)

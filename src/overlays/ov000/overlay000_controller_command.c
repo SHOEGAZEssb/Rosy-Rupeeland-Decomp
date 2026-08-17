@@ -14,15 +14,15 @@ typedef struct Overlay000ControllerCommandState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02093de4(void *controller);
-extern s32 func_020946c8(void *controller, s32 command);
+extern void InventoryScroll_SaveOrigins(void *controller);
+extern s32 InventoryScroll_UpdateMarkerDrag(void *controller, s32 command);
 extern void func_ov000_021fc3c0(Overlay000ControllerCommandState *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Prepare controller_26c with func_02093de4, submit command to func_020946c8,
+ * Prepare controller_26c with InventoryScroll_SaveOrigins, submit command to InventoryScroll_UpdateMarkerDrag,
  * and return 0 if it is rejected. On acceptance, validate the owner's attached
  * transient record and return 1. The controller callees own any presentation
  * or input-state effects; this wrapper does not directly access hardware.
@@ -32,8 +32,8 @@ extern "C"
 #endif
 s32 func_ov000_021fc560(Overlay000ControllerCommandState *state, s32 command)
 {
-    func_02093de4(state->controller_26c);
-    if (!func_020946c8(state->controller_26c, command)) {
+    InventoryScroll_SaveOrigins(state->controller_26c);
+    if (!InventoryScroll_UpdateMarkerDrag(state->controller_26c, command)) {
         return 0;
     }
     func_ov000_021fc3c0(state);

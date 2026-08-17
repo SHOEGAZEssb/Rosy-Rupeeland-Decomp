@@ -60,7 +60,7 @@ extern void Actor_BuildCollisionRect(CollisionWords *, PairActor *,
 extern s32 func_02056f34(CollisionWords *, const CollisionWords *,
                          const CollisionWords *, u32 *);
 extern s32 func_020adc90(s32, s32);
-extern s32 func_020be334(s32);
+extern s32 SignedAbsoluteValue(s32);
 extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
 extern void ActorPairMatrix_Clear(u8 *, s32, s32);
 extern s32 ActorCollection_NotifyPairActive(ActorPairCollection *, PairActor *, PairActor *, s32);
@@ -88,7 +88,7 @@ static void resolvePairAxis(s32 overlap, s32 deltaA, s32 deltaB,
                             s32 *positionA, s32 *positionB, u8 edgesA,
                             u8 edgesB, u8 negativeEdge, u8 positiveEdge)
 {
-    s32 total = func_020be334(deltaA) + func_020be334(deltaB);
+    s32 total = SignedAbsoluteValue(deltaA) + SignedAbsoluteValue(deltaB);
     s32 correctionA;
     s32 correctionB;
 
@@ -110,7 +110,7 @@ static void resolvePairAxis(s32 overlap, s32 deltaA, s32 deltaB,
     }
 
     correctionB = func_020adc90(multiplyFx(overlap, deltaB), total);
-    correctionA = overlap - func_020be334(correctionB);
+    correctionA = overlap - SignedAbsoluteValue(correctionB);
     if (deltaA <= 0)
         correctionA = -correctionA;
     if ((correctionA > 0 && (edgesA & positiveEdge)) ||
@@ -133,7 +133,7 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
     if (!(actorA->flags_14 & 0x800000) &&
         !((actorA->flags_14 | actorB->flags_14) & 0x10) &&
         !(actorB->flags_14 & 0x800000) &&
-        func_020be334(actorA->positionZ_24 - actorB->positionZ_24) >=
+        SignedAbsoluteValue(actorA->positionZ_24 - actorB->positionZ_24) >=
             0x1000)
         return 0;
 

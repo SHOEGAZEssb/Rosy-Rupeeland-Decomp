@@ -21,14 +21,14 @@
     .extern func_ov000_021fc5ac
     .extern func_ov000_021fc9d4
     .extern func_ov000_021fca4c
-    .extern func_ov000_021fcad8
+    .extern Overlay000_GetActiveMetadata
     .extern func_ov000_021fcb98
     .extern func_ov000_021fcc18
     .extern func_ov000_021fcca8
     .extern func_ov000_021fccfc
     .extern func_ov016_021fe584
     .extern func_ov016_021fe728
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
     .extern func_ov016_021ffc2c
     .extern func_ov016_021ffd84
@@ -117,7 +117,7 @@ L_022009a8:
     ldr r1, L_02200d40
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200d30
 L_02200a3c:
     cmp r5, #0x0
@@ -126,7 +126,7 @@ L_02200a3c:
     ldr r1, [r0, #0x25c]
     cmp r5, r1
     bne L_02200aa8
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     ldr r1, [r0, #0xc]
     cmp r1, #0x0
     ldrne r0, [r0, #0x1c]
@@ -141,7 +141,7 @@ L_02200a3c:
     ldr r1, L_02200d44
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200c60
 L_02200a98:
     mov r0, r4
@@ -174,13 +174,13 @@ L_02200ad4:
     ldr r1, L_02200d48
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200d30
 L_02200b10:
     ldr r1, L_02200d4c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200d30
 L_02200b24:
     ldr r0, [r4, #0x470]
@@ -202,7 +202,7 @@ L_02200b24:
     ldr r1, L_02200d50
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_02200d30
 L_02200b78:
     bl func_02092260
@@ -266,7 +266,7 @@ L_02200c34:
     ldr r1, L_02200d54
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_02200c60:
     ldr r0, [r4, #0x44c]
     bl func_ov000_021fc424
@@ -323,7 +323,7 @@ L_02200d0c:
     ldr r1, L_02200d58
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_02200d30:
     mov r0, r4
     bl func_ov016_021ff7bc

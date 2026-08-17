@@ -5,7 +5,7 @@
     .extern data_ov018_021ffcf0
     .extern data_ov018_021ffd00
     .extern data_ov018_021ffd3c
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
     .extern func_020927b8
@@ -86,13 +86,13 @@ L_021fd430:
     add r0, r4, #0xd8
     bl func_ov018_021fcefc
     add r0, r4, #0xb8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xac
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xa0
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x94
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x70
     bl func_020927b8
     mov r0, r4
@@ -164,13 +164,13 @@ L_021fd550:
     add r0, r4, #0xd8
     bl func_ov018_021fcefc
     add r0, r4, #0xb8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xac
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xa0
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x94
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x70
     bl func_020927b8
     mov r0, r4

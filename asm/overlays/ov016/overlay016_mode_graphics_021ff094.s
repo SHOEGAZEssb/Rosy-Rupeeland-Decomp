@@ -12,7 +12,7 @@
     .extern func_020b44e8
     .extern func_ov016_021fd188
     .extern func_ov016_021ff04c
-    .extern func_ov016_021ff068
+    .extern Overlay016_ConfigureMainBg3
 .global func_ov016_021ff094
 func_ov016_021ff094:
     stmdb sp!, {r4, lr}
@@ -26,7 +26,7 @@ func_ov016_021ff094:
     mov r2, #0x1e
     mov r3, #0x4
     str ip, [r4, #0x48]
-    bl func_ov016_021ff068
+    bl Overlay016_ConfigureMainBg3
     bl func_020925f8
     mov r0, #0x0
     mov r1, r0

@@ -13,7 +13,7 @@
 .extern GamePhaseVisualEffect_SetBlendCoefficients
 .extern GamePhaseCurrencyHud_Update
 .extern GamePhaseAreaScene_SetEnabled
-.extern func_0201dcec
+.extern RuntimePresentationManager_Update
 .extern func_0201e0ec
 .extern Type7Actor_ClearBoundaryTransitionFlags
 .extern func_020a23a8
@@ -273,7 +273,7 @@ func_ov074_022101dc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201dcec
+    bl RuntimePresentationManager_Update
     ldr r0, [r4, #0x128]
     cmp r0, #0x0
     beq .L_02210590

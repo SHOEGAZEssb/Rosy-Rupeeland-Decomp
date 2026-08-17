@@ -35,7 +35,7 @@ extern void GridEffectActor_SpawnWithVelocity(const VecFx32Object *first,
                           const void *descriptor, s32 duration);
 extern void TrackedResourceActor_SpawnFromKey(s32 effect, const VecFx32Object *first,
                           const VecFx32Object *second);
-extern void func_020627a0(void *descriptor, u16 type, s32 enabled);
+extern void ActorDescriptor_InitRange(void *descriptor, u16 type, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -228,6 +228,6 @@ void *func_02019890(void *descriptor, u16 type, s32 enabled)
     *(u32 *)(raw + 0x18) = 1;
     *(void **)(raw + 0x1c) = descriptor;
     *(u32 *)(raw + 0x20) = 0;
-    func_020627a0(descriptor, type, enabled);
+    ActorDescriptor_InitRange(descriptor, type, enabled);
     return descriptor;
 }

@@ -10,19 +10,19 @@
     .extern data_ov021_02202f88
     .extern data_ov021_02202f90
     .extern OverlaySlot_Init
-    .extern func_02064be0
-    .extern func_0206550c
+    .extern InventoryRecordCollection_Sort
+    .extern InventoryRecordCollection_SortAlternate
     .extern func_020716bc
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern LanguageLookup_GetResourceSize
     .extern func_020791e0
-    .extern func_02091e28
-    .extern func_02092798
+    .extern SceneInputBase_Init
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_020929b0
-    .extern func_02092cc0
+    .extern TitleDialog_Init
     .extern func_02092f88
     .extern func_020957bc
     .extern func_ov021_021fd150
@@ -32,7 +32,7 @@
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fdf88
     .extern func_ov021_021fe098
-    .extern func_ov021_021fe144
+    .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe520
     .extern func_ov021_021fe6b0
     .extern func_ov045_0220b83c
@@ -48,15 +48,15 @@ func_ov021_021fd7e8:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fdb38
     add r0, r5, #0x58
     str r1, [r5, #0x0]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r5, #0x7c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0x88
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0xa0
     bl func_020957bc
     ldr r1, L_021fdb3c
@@ -113,11 +113,11 @@ L_021fd8c4:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     add r0, r0, #0x34
-    bl func_0206550c
+    bl InventoryRecordCollection_SortAlternate
     ldr r0, L_021fdb44
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02064be0
+    bl InventoryRecordCollection_Sort
     ldr r0, L_021fdb48
     ldr r1, L_021fdb4c
     bl LanguageLookup_GetResourceSize
@@ -185,7 +185,7 @@ L_021fd8c4:
     mov r0, r5
     bl func_ov021_021fe098
     mov r0, r5
-    bl func_ov021_021fe144
+    bl Overlay021_SetupMainBackground
     mov r0, r5
     bl func_ov021_021fe520
     mov r0, r5
@@ -217,7 +217,7 @@ L_021fda44:
     ldr r1, L_021fdb74
     ldr r2, [r5, #0x58]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fda90:
     str r0, [r5, #0x388]
     mov r0, #0x84

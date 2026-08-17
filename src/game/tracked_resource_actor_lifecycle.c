@@ -12,7 +12,7 @@ extern const u8 gTrackedResourceActorVtable[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *func_02030f98(void *actor);
+extern void *ActorRuntimeBase_Init(void *actor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
@@ -31,7 +31,7 @@ extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
  */
 void *TrackedResourceActor_Init(void *self)
 {
-    func_02030f98(self);
+    ActorRuntimeBase_Init(self);
     FIELD(const void *, self, 0) = gTrackedResourceActorVtable;
     FIELD(void *, self, 0x1ec) = 0;
     FIELD(u16, self, 0x1f0) &= 0x8000;

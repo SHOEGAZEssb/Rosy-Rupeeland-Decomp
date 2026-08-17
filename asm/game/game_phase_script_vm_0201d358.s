@@ -13,10 +13,10 @@
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern Heap_Alloc
 .extern func_ov029_021fd95c
 .extern func_ov046_0220c7d8
@@ -128,7 +128,7 @@ L_0201d494:
 L_0201d4b0:
     ldr r0, [r4, #0x24]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     ldrne r0, [r4, #0x40]
@@ -138,7 +138,7 @@ L_0201d4b0:
 L_0201d4d4:
     ldr r0, [r4, #0x24]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq L_0201d5ec
     mov r0, #0x2
@@ -151,7 +151,7 @@ L_0201d4d4:
 L_0201d504:
     ldr r0, [r4, #0x24]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsSubTransitionComplete
     cmp r0, #0x0
     beq L_0201d5ec
@@ -177,7 +177,7 @@ L_0201d534:
     beq L_0201d588
     mov r1, #0x1
     mov r2, r1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_0201d604
     mov r1, #0x1
     ldr r0, [r0, #0x0]

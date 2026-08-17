@@ -3,7 +3,7 @@
 .extern data_020f4e14
 .extern GamePhaseScriptVm_Pop
 .extern func_020708c4
-.extern func_02070934
+.extern GraphicsArchiveResource_ReleaseAlternateBuffer
 .extern func_02070958
 .extern func_02070a78
 .extern func_02074dc8
@@ -56,7 +56,7 @@ L_02017b38:
     b L_02017d04
 L_02017b74:
     ldr r0, [r8, #0x18]
-    bl func_02070934
+    bl GraphicsArchiveResource_ReleaseAlternateBuffer
     ldr r0, [r8]
     mov r1, r8
     ldr r0, [r0]
@@ -64,7 +64,7 @@ L_02017b74:
     cmp r7, #0
     beq L_02017d04
     ldr r0, [r7, #0x18]
-    bl func_02070934
+    bl GraphicsArchiveResource_ReleaseAlternateBuffer
     ldr r0, [r7]
     mov r1, r7
     ldr r0, [r0]

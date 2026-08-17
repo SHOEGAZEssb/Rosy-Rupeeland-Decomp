@@ -4,28 +4,28 @@
 .extern data_020f4e18
 .extern data_021f3ecc
 .extern gSystemState
-.extern func_020628c8
-.extern func_02062918
-.extern func_02062928
-.extern func_02062ae4
-.extern func_02062e00
-.extern func_02063064
-.extern func_02063074
-.extern func_02063084
-.extern func_02063190
+.extern ActorDescriptor_GetPrimaryLabel
+.extern ActorDescriptor_GetComponent
+.extern ActorDescriptor_LoadDetailResource
+.extern ActorDescriptor_GetKind0Animation
+.extern InventoryRecord_GetMetadata
+.extern ActorDescriptorComponent_GetCharacterResourceId
+.extern ActorDescriptorComponent_GetPaletteResourceId
+.extern ActorDescriptorComponent_GetCellResourceId
+.extern ActorDescriptorComponent_GetAnimation
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
 .extern GraphicsSpriteCanvas_FillRect
-.extern func_02079f3c
-.extern func_02092e9c
-.extern func_02093360
-.extern func_020939d8
+.extern RetailTextTable_FindRecordById
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
+.extern TitleDialog_ClearTextRect
 .extern func_ov000_021fb890
-.global func_ov000_021fb8f0
-func_ov000_021fb8f0: ; 0x021fb8f0
+.global Overlay000_PopulatePresentation
+Overlay000_PopulatePresentation: ; 0x021fb8f0
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0xc
     movs r5, r1
@@ -34,16 +34,16 @@ func_ov000_021fb8f0: ; 0x021fb8f0
     mov r1, #0x0
     bl func_ov000_021fb890
     mov r0, r5
-    bl func_02062928
+    bl ActorDescriptor_LoadDetailResource
     mov r1, r0
     ldr r0, [r6, #0x44]
     mov r2, #0x1
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r6, #0x44]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r6, #0x44]
     mov r1, #0x0
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     ldr r0, L_021fbcac
     mov r7, #0x54
     ldrb r0, [r0, #0x5f]
@@ -52,7 +52,7 @@ func_ov000_021fb8f0: ; 0x021fb8f0
     mov r0, r5
     subne r7, r7, #0x2
     movne r4, #0x4
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrb r0, [r0, #0x2]
     ldr r1, [r6, #0x24]
     cmp r0, #0x3
@@ -69,7 +69,7 @@ func_ov000_021fb8f0: ; 0x021fb8f0
     bl GraphicsSpriteCanvas_FillRect
     ldr r0, L_021fbcb0
     mov r1, #0x1b8
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r1, r0, #0x2
     mov r0, #0xe
     str r0, [sp, #0x0]
@@ -129,7 +129,7 @@ L_021fba5c:
     bl GraphicsSpriteCanvas_FillRect
     ldr r0, L_021fbcb0
     ldr r1, L_021fbcb4
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r1, r0, #0x2
     mov r0, #0xe
     str r0, [sp, #0x0]
@@ -166,13 +166,13 @@ L_021fba5c:
     bl GraphicsSpriteRenderer_DrawText
     add r4, r4, r0
     mov r0, r5
-    bl func_02062ae4
+    bl ActorDescriptor_GetKind0Animation
     mov r1, #0x34
     mul r2, r0, r1
     ldr r1, L_021fbcb8
     ldr r0, L_021fbcb0
     ldrh r1, [r1, r2]
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r1, r0, #0x2
     mov r0, #0xe
     str r0, [sp, #0x0]
@@ -210,7 +210,7 @@ L_021fbb94:
     mov r3, #0xe8
     bl GraphicsSpriteCanvas_FillRect
     mov r0, r5
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r1, r0
     mov r0, #0xe
     str r0, [sp, #0x0]
@@ -224,18 +224,18 @@ L_021fbb94:
     bl GraphicsSpriteRenderer_DrawText
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063064
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCharacterResourceId
     mov r7, r0
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063074
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetPaletteResourceId
     mov r4, r0
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063084
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCellResourceId
     mov r2, r7
     mov r3, r4
     str r0, [sp, #0x0]
@@ -250,8 +250,8 @@ L_021fbb94:
     mov r4, r0
     mov r0, r5
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     mov r1, r0
     mov r0, r4
     mov r2, #0x1
@@ -274,5 +274,5 @@ L_021fbcb0: .word data_021f3ecc
 L_021fbcb4: .word 0x1b7
 L_021fbcb8: .word data_020d780c
 L_021fbcbc: .word data_020f4e18
-.size func_ov000_021fb8f0, . - func_ov000_021fb8f0
+.size Overlay000_PopulatePresentation, . - Overlay000_PopulatePresentation
 

@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" s32 func_02092910(void *, void *);
+extern "C" s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 
 /*
  * Test each entered-glyph sprite against input and return the first matching
@@ -15,7 +15,7 @@ extern "C" s32 func_ov025_021fd340(void *widget, void *input)
 {
     for (s32 i = 0; i < FIELD(s32, widget, 0x17c); ++i) {
         u8 *entry = (u8 *)widget + i * 4;
-        if (func_02092910(FIELD(void *, entry, 0x10), input))
+        if (GraphicsSpriteState_TestTouchPoint(FIELD(void *, entry, 0x10), input))
             return i;
     }
     return -1;

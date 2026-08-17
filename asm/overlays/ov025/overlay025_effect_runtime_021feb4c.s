@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_frame_update.c. */
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationScalar_TransitionTo
 .extern Presentation_UpdateScript
 .extern Presentation_IsScriptComplete
@@ -297,7 +297,7 @@ L_021fef30:
     beq L_021ff098
     add r0, r4, #0xf8
     mov r1, #0x2
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r0, [r4, #0xa4]
     mov r0, r4
     mov r1, #0xa

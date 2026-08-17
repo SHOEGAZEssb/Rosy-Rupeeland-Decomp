@@ -40,7 +40,7 @@ extern "C" {
 extern void *gAuxiliaryTimedSpritePresentationVtable;
 extern const char gTimedSpriteAuxiliaryAllocationTag[];
 extern u8 *data_021052fc;
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern AuxiliarySpriteConfig *TimedSpriteConfig_InitTracks(AuxiliarySpriteConfig *config);
 extern void *AnimationResource_Init(void *self, s32 first, s32 second, s32 third);
 extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
@@ -48,7 +48,7 @@ extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
-extern void func_0201ded4(void *manager, void *entry);
+extern void PresentationList_AppendObject(void *manager, void *entry);
 #ifdef __cplusplus
 }
 #endif
@@ -62,7 +62,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     AuxiliarySpriteConfig config;
     void *child;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)gAuxiliaryTimedSpritePresentationVtable;
     self->auxiliary0c =
         (u8 *)Heap_Alloc(0x10, gTimedSpriteAuxiliaryAllocationTag, 4, &gHeapContext);
@@ -88,7 +88,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     self->timer10 = 120;
     self->spriteByte12 = (s16)spriteByte;
     if (registerWithManager != 0) {
-        func_0201ded4(data_021052fc + 0x2f7c, self);
+        PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
     }
     VecFx32Object_Destroy(&config.second20);
     VecFx32Object_Destroy(&config.first10);

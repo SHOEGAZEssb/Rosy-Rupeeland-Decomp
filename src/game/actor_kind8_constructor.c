@@ -17,22 +17,22 @@ extern void *data_021f38fc[];
 extern void *gGameWork;
 extern void *gLupyContext;
 extern void *data_020f4e14;
-extern void *func_02030f98(void *actor, const void *descriptor);
-extern void *func_02071ea4(void *state);
-extern void func_02071f38(void *state);
-extern void func_02071eb8(void *state);
+extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
+extern void *AnimationResourceState_InitEmbedded(void *state);
+extern void AnimationResourceState_ReleaseResources(void *state);
+extern void AnimationResourceState_Destroy(void *state);
 extern void __construct_array(void *array, u32 count, u32 elementSize,
                               ObjectLifecycle constructor,
                               ObjectLifecycle destructor);
 extern void func_02057570(void *record);
 extern void func_020575a0(void *record);
 extern void func_02057ca4(void *state);
-extern void *func_02078418(void **tables, s32 tableIndex, s32 recordIndex);
-extern void func_0207811c(void *record, s32 enabled);
+extern void *ActorDescriptorTable_GetRecord(void **tables, s32 tableIndex, s32 recordIndex);
+extern void ActorDescriptor_SetActive(void *record, s32 enabled);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
-extern void *func_020742cc(void *owner);
+extern void *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner);
 extern void S16Rectangle_Translate(void *rectangle, s32 x, s32 y);
-extern void func_020587d8(void *actor, s32 playSound);
+extern void ActorKind8_PopulateInteractionPresentations(void *actor, s32 playSound);
 extern s32 func_020783f0(void **tables, s32 tableIndex);
 extern void func_020575bc(void *state, const void *record, void *owner,
                           s32 valueA, s32 valueB);
@@ -44,10 +44,10 @@ extern s32 data_020e4020[];
 extern void func_020593dc(void *soundContext, s32 archive, s32 member,
                           const void *owner, s32 pan, s32 volume);
 extern void *data_020f4e18;
-extern void *func_02062918(void *record, s32 index);
-extern u32 func_02063064(void *component);
-extern u32 func_02063074(void *component);
-extern u32 func_02063084(void *component);
+extern void *ActorDescriptor_GetComponent(void *record, s32 index);
+extern u32 ActorDescriptorComponent_GetCharacterResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetPaletteResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetCellResourceId(void *component);
 extern void func_02071ee0(void *state, void *manager, u32 resource0,
                           u32 resource1, u32 resource2);
 extern void *GraphicsSpriteGroup_CreateState(void *group, void *resource0,
@@ -57,7 +57,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *state, s32 index);
 extern u32 genrand_int32(void);
 extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
-extern void func_02072b68(void *sprite, u32 animation);
+extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern void OS_Halt(void);
 extern void func_02033a6c(void *actor, s32 enabled);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *group);
@@ -69,11 +69,11 @@ extern void GraphicsSpriteGroup_Clear(void *group);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *group);
 extern void *func_0203130c(void *actor);
 extern void Heap_Free(void *allocation);
-extern s32 func_02057834(void *object);
-extern void func_020576c4(void *state);
-extern s32 func_020580d4(const void *counter);
-extern void func_02057e7c(void *list, void *node);
-extern void func_02062864(void *descriptor, u16 index);
+extern s32 ActorKind8_UpdateDelayedGridEffect(void *object);
+extern void ActorKind8_UpdateIdlePresentation(void *state);
+extern s32 ActorKind8_GetMotionSample(const void *counter);
+extern void ActorKind8_RemovePayloadNode(void *list, void *node);
+extern void ActorDescriptor_SetRangeEnd(void *descriptor, u16 index);
 extern ActorRuntimeCollection gActorRuntimeCollection;
 extern const char data_020d36f8[];
 extern const char data_020d3b3b[];
@@ -88,7 +88,7 @@ extern void Actor_BuildWorldInteractionBounds(void *output, const void *actor,
 extern s32 func_02056f34(void *intersection, const void *first,
                          const void *second, void *contact);
 extern void Actor_SetActive(void *actor, s32 enabled);
-extern void func_020627a0(void *descriptor, u16 id, u16 lastIndex);
+extern void ActorDescriptor_InitRange(void *descriptor, u16 id, u16 lastIndex);
 extern void *GridEffectActor_Spawn(const void *position, void *source,
                                    s16 timer);
 
@@ -100,7 +100,7 @@ typedef s32 (*ActorAvailabilityQuery)(void *actor);
  * two three-frame phases, then choose the next 0..59-frame delay. The sprite
  * and descriptor remain borrowed and no status is returned.
  */
-void func_020576c4(void *self)
+void ActorKind8_UpdateIdlePresentation(void *self)
 {
     u8 *state = (u8 *)self;
 
@@ -144,7 +144,7 @@ void func_020576c4(void *self)
  * are borrowed; the owned sprite state is returned to its group. Returns one
  * when a live record was released and zero when it was already inactive.
  */
-s32 func_02057794(void *self)
+s32 ActorKind8_ReleaseInteractionPresentation(void *self)
 {
     u8 *state = (u8 *)self;
     u8 *descriptor;
@@ -155,7 +155,7 @@ s32 func_02057794(void *self)
     descriptor = *(u8 **)(state + 0x14);
     count = *(u16 *)(descriptor + 4);
     if (count >= 1)
-        func_02062864(descriptor, (u16)(count - 1));
+        ActorDescriptor_SetRangeEnd(descriptor, (u16)(count - 1));
     GraphicsSpriteGroup_ReleaseState(*(void **)(state + 0x10),
                                      *(void **)(state + 0x0c));
     *(u16 *)(state + 0x1c) = 0;
@@ -189,7 +189,7 @@ void *func_020577ec(void *self, s32 mode, void *presentation,
  * The request retains ownership of its VecFx32Object until the caller sees a
  * return value of one and destroys the request.
  */
-s32 func_02057834(void *self)
+s32 ActorKind8_UpdateDelayedGridEffect(void *self)
 {
     u8 *request = (u8 *)self;
     u8 descriptor[0x24];
@@ -204,7 +204,7 @@ s32 func_02057834(void *self)
         return 0;
     }
 
-    func_02057794(*(void **)request);
+    ActorKind8_ReleaseInteractionPresentation(*(void **)request);
     *(u16 *)(descriptor + 2) = 0;
     *(u16 *)(descriptor + 4) = 0;
     *(u16 *)(descriptor + 6) = 0;
@@ -214,7 +214,7 @@ s32 func_02057834(void *self)
     *(u32 *)(descriptor + 0x18) = 1;
     *(void **)(descriptor + 0x1c) = descriptor;
     *(u32 *)(descriptor + 0x20) = 0;
-    func_020627a0(
+    ActorDescriptor_InitRange(
         descriptor,
         *(u16 *)*(u8 **)(*(u8 **)(request + 0) + 0x14), 1);
 
@@ -252,7 +252,7 @@ s32 func_02057834(void *self)
  * the node and subsequently owns payload; allocation uses the retail tag,
  * four-byte alignment, and root heap. No status is returned.
  */
-void func_02058728(void *self, void *payload)
+void ActorKind8_AppendPayloadNode(void *self, void *payload)
 {
     u8 *list = (u8 *)self;
     u8 *node = (u8 *)Heap_Alloc(0x0c, data_020e3f60, 4, &gHeapContext);
@@ -278,7 +278,7 @@ void func_02057570(void *self)
 {
     u8 *record = (u8 *)self;
 
-    func_02071ea4(record);
+    AnimationResourceState_InitEmbedded(record);
     *(u32 *)(record + 0x0c) = 0;
     *(u32 *)(record + 0x10) = 0;
     *(u32 *)(record + 0x14) = 0;
@@ -290,8 +290,8 @@ void func_02057570(void *self)
 /* Release one interaction-presentation record in reverse ownership order. */
 void func_020575a0(void *self)
 {
-    func_02071f38(self);
-    func_02071eb8(self);
+    AnimationResourceState_ReleaseResources(self);
+    AnimationResourceState_Destroy(self);
 }
 
 /* Initialize the kind-eight actor's embedded four-word state object. */
@@ -321,9 +321,9 @@ void *func_020579b0(void *self, const void *descriptor)
     s32 mode;
     s32 index;
 
-    func_02030f98(actor, config);
+    ActorRuntimeBase_Init(actor, config);
     *(const void ***)actor = data_020e408c;
-    func_02071ea4(actor + 0x1f0);
+    AnimationResourceState_InitEmbedded(actor + 0x1f0);
     __construct_array(actor + 0x1fc, 12, 0x24,
                       func_02057570, func_020575a0);
     *(u32 *)(actor + 0x3bc) |= 0x80000000u;
@@ -336,17 +336,17 @@ void *func_020579b0(void *self, const void *descriptor)
 
     runtime = *(u8 **)data_021052fc;
     tableIndex = **(s32 **)(runtime + 0x30bc);
-    record = (u8 *)func_02078418(data_021f38fc, tableIndex,
+    record = (u8 *)ActorDescriptorTable_GetRecord(data_021f38fc, tableIndex,
                                 *(s32 *)(actor + 0x3ac));
     if (*(s32 *)(actor + 0x3c0) == -1) {
-        func_0207811c(record, 1);
+        ActorDescriptor_SetActive(record, 1);
     } else if (GameWork_TestFlag(gGameWork, *(s32 *)(actor + 0x3c0))) {
-        func_0207811c(record, 1);
+        ActorDescriptor_SetActive(record, 1);
     } else {
-        func_0207811c(record, 0);
+        ActorDescriptor_SetActive(record, 0);
     }
 
-    *(void **)(actor + 0x1ec) = func_020742cc(data_020f4e14);
+    *(void **)(actor + 0x1ec) = GraphicsSpriteGroupOwner_CreateGroupWrapper(data_020f4e14);
     mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
     if (mode == 2) {
         *(s16 *)(actor + 0x60) -= 0x18;
@@ -391,7 +391,7 @@ void *func_020579b0(void *self, const void *descriptor)
     }
     for (index = 0; index < 3; ++index)
         *(u32 *)(actor + 0x3b0 + index * 4) = 0;
-    func_020587d8(actor, 0);
+    ActorKind8_PopulateInteractionPresentations(actor, 0);
     return actor;
 }
 
@@ -400,12 +400,12 @@ void *func_020579b0(void *self, const void *descriptor)
  * triplet selected by its grouped descriptor mode. The sprite is owned by the
  * actor collection and is positioned at the retail lower-screen origin.
  */
-void func_020580f8(void *self)
+void ActorKind8_CreatePrimaryPresentation(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *runtime = *(u8 **)data_021052fc;
     s32 tableIndex = **(s32 **)(runtime + 0x30bc);
-    u8 *record = (u8 *)func_02078418(
+    u8 *record = (u8 *)ActorDescriptorTable_GetRecord(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
     u32 mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
     u32 lastResource;
@@ -441,7 +441,7 @@ void func_020580f8(void *self)
         owner, *(void **)(actor + 0x1f0), *(void **)(actor + 0x1f4),
         *(void **)(actor + 0x1f8), 2);
     *(void **)(actor + 0x54) = sprite;
-    func_02072b68(sprite, 0);
+    GraphicsSpriteState_SetAnimation(sprite, 0);
     *(s16 *)((u8 *)sprite + 0x2c) = 0x80;
     *(s16 *)((u8 *)sprite + 0x2e) = 0x60;
     *(u16 *)((u8 *)sprite + 0x24) |= 2;
@@ -453,7 +453,7 @@ void func_020580f8(void *self)
  * embedded group is borrowed; disabling releases its indexed entries while
  * enabling marks it active for subsequent presentation updates.
  */
-void func_0205878c(void *self, s32 enabled)
+void ActorKind8_SetVisible(void *self, s32 enabled)
 {
     u8 *actor = (u8 *)self;
     u8 *group;
@@ -477,7 +477,7 @@ void func_0205878c(void *self, s32 enabled)
  * selects one or all twelve embedded idle-animation states. The frame counters
  * use retail frame units and descriptor/GameWork storage remains borrowed.
  */
-void func_02057ee4(void *self)
+void ActorKind8_UpdateInteractionPresentations(void *self)
 {
     u8 *actor = (u8 *)self;
 
@@ -488,42 +488,42 @@ void func_02057ee4(void *self)
             u8 *next = *(u8 **)node;
             u8 *payload = *(u8 **)(node + 8);
 
-            if (func_02057834(payload) != 0) {
+            if (ActorKind8_UpdateDelayedGridEffect(payload) != 0) {
                 if (payload != 0) {
                     VecFx32Object_Destroy((VecFx32Object *)(payload + 4));
                     Heap_Free(payload);
                 }
-                func_02057e7c(actor + 0x3d0, node);
+                ActorKind8_RemovePayloadNode(actor + 0x3d0, node);
             }
             node = next;
         }
     } else {
         u8 *runtime = *(u8 **)data_021052fc;
         s32 tableIndex = **(s32 **)(runtime + 0x30bc);
-        u8 *record = (u8 *)func_02078418(
+        u8 *record = (u8 *)ActorDescriptorTable_GetRecord(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
         s32 enabled = *(s32 *)(actor + 0x3c0) == -1 ||
             GameWork_TestFlag(gGameWork, *(s32 *)(actor + 0x3c0));
 
-        func_0207811c(record, enabled);
-        func_0205878c(actor, enabled);
-        func_020587d8(actor, 1);
+        ActorDescriptor_SetActive(record, enabled);
+        ActorKind8_SetVisible(actor, enabled);
+        ActorKind8_PopulateInteractionPresentations(actor, 1);
     }
 
     {
         u8 *runtime = *(u8 **)data_021052fc;
         s32 tableIndex = **(s32 **)(runtime + 0x30bc);
-        u8 *record = (u8 *)func_02078418(
+        u8 *record = (u8 *)ActorDescriptorTable_GetRecord(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
         u32 mode;
         s32 index;
 
         mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
         if (mode == 4 || mode == 5) {
-            func_020576c4(actor + 0x1fc);
+            ActorKind8_UpdateIdlePresentation(actor + 0x1fc);
         } else {
             for (index = 0; index < 12; ++index)
-                func_020576c4(actor + 0x1fc + index * 0x24);
+                ActorKind8_UpdateIdlePresentation(actor + 0x1fc + index * 0x24);
         }
     }
 
@@ -531,14 +531,14 @@ void func_02057ee4(void *self)
     if ((*(s32 *)(actor + 0x3bc) & 0x7fffffff) != 1)
         return;
 
-    (void)func_020580d4(actor + 0x3c8);
+    (void)ActorKind8_GetMotionSample(actor + 0x3c8);
     *(s32 *)(actor + 0x3c8) += *(s32 *)(actor + 0x3cc);
     if (*(s32 *)(actor + 0x3c4) > 15)
         *(u32 *)(actor + 0x3bc) &= 0x80000000u;
 }
 
 /* Return the signed motion sample selected by the high 12 bits of a counter. */
-s32 func_020580d4(const void *counter)
+s32 ActorKind8_GetMotionSample(const void *counter)
 {
     u32 index = (u16)*(const u32 *)counter;
 
@@ -546,7 +546,7 @@ s32 func_020580d4(const void *counter)
 }
 
 /* Mirror one active auxiliary sprite's priority and display plane. */
-void func_02057698(void *self, const void *primarySprite)
+void ActorKind8_SyncAuxiliarySpriteLayer(void *self, const void *primarySprite)
 {
     u8 *state = (u8 *)self;
     const u8 *primary = (const u8 *)primarySprite;
@@ -578,7 +578,7 @@ void func_020582b8(void *output, void *self, const void *transform)
     func_02031758(output, actor, transform);
     sprite = *(u8 **)(actor + 0x54);
     *(s16 *)(sprite + 0x2c) = (s16)(
-        *(s16 *)(sprite + 0x2c) + (func_020580d4(actor + 0x3c8) * 2 >> 12));
+        *(s16 *)(sprite + 0x2c) + (ActorKind8_GetMotionSample(actor + 0x3c8) * 2 >> 12));
     group = *(u8 **)(actor + 0x1ec);
     *(s32 *)(group + 0x18) = *(s16 *)(sprite + 0x2c);
     *(s32 *)(group + 0x1c) = *(s16 *)(sprite + 0x2e);
@@ -591,14 +591,14 @@ void func_020582b8(void *output, void *self, const void *transform)
 
     runtime = *(u8 **)data_021052fc;
     tableIndex = **(s32 **)(runtime + 0x30bc);
-    record = (u8 *)func_02078418(
+    record = (u8 *)ActorDescriptorTable_GetRecord(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
     mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
     if (mode == 4 || mode == 5) {
-        func_02057698(actor + 0x1fc, sprite);
+        ActorKind8_SyncAuxiliarySpriteLayer(actor + 0x1fc, sprite);
     } else {
         for (index = 0; index < 12; ++index)
-            func_02057698(actor + 0x1fc + index * 0x24, sprite);
+            ActorKind8_SyncAuxiliarySpriteLayer(actor + 0x1fc + index * 0x24, sprite);
     }
     GraphicsSpriteGroup_AdvanceAnimations(group);
 }
@@ -611,7 +611,7 @@ void func_020582b8(void *output, void *self, const void *transform)
  * effects for active presentation records. All scene/database pointers are
  * borrowed. Retail returns zero for both handled and unhandled frames.
  */
-s32 func_020583a8(void *self)
+s32 ActorKind8_HandlePlayerContact(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *runtime;
@@ -668,7 +668,7 @@ s32 func_020583a8(void *self)
 
     if (*(u32 *)(actor + 0x3dc) == 0) {
         tableIndex = **(s32 **)(runtime + 0x30bc);
-        record = (u8 *)func_02078418(
+        record = (u8 *)ActorDescriptorTable_GetRecord(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
         mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
         if (mode == 4 || mode == 5) {
@@ -679,7 +679,7 @@ s32 func_020583a8(void *self)
                 if (request != 0)
                     func_020577ec(request, mode, actor + 0x1fc,
                                   actor + 0x18);
-                func_02058728(actor + 0x3d0, request);
+                ActorKind8_AppendPayloadNode(actor + 0x3d0, request);
             }
         } else {
             for (index = 0; index < 12; ++index) {
@@ -691,7 +691,7 @@ s32 func_020583a8(void *self)
 
                     if (request != 0)
                         func_020577ec(request, mode, state, actor + 0x18);
-                    func_02058728(actor + 0x3d0, request);
+                    ActorKind8_AppendPayloadNode(actor + 0x3d0, request);
                 }
             }
         }
@@ -699,7 +699,7 @@ s32 func_020583a8(void *self)
 
     Actor_SetActive(actor, 1);
     tableIndex = **(s32 **)(runtime + 0x30bc);
-    record = (u8 *)func_02078418(
+    record = (u8 *)ActorDescriptorTable_GetRecord(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
     mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
     if (mode != 2) {
@@ -734,7 +734,7 @@ void func_02057ce4(void *self)
 }
 
 /* Unlink and free one node, clearing the list when its count reaches zero. */
-void func_02057e7c(void *self, void *nodePointer)
+void ActorKind8_RemovePayloadNode(void *self, void *nodePointer)
 {
     u8 *list = (u8 *)self;
     u8 *node = (u8 *)nodePointer;
@@ -765,7 +765,7 @@ static void *destroyKind8Actor(void *self, s32 releaseAllocation)
     *(const void ***)actor = data_020e408c;
     cleanup = (void (*)(void *))data_020e408c[0xbc / 4];
     cleanup(actor);
-    func_02071f38(actor + 0x1f0);
+    AnimationResourceState_ReleaseResources(actor + 0x1f0);
     GraphicsSpriteGroup_Clear(*(void **)(actor + 0x1ec));
     GraphicsSpriteGroupOwner_DestroyGroup(
         data_020f4e14, *(void **)(actor + 0x1ec));
@@ -773,7 +773,7 @@ static void *destroyKind8Actor(void *self, s32 releaseAllocation)
     while (node != 0) {
         u8 *next = *(u8 **)node;
 
-        func_02057e7c(actor + 0x3d0, node);
+        ActorKind8_RemovePayloadNode(actor + 0x3d0, node);
         node = next;
     }
     *(const void ***)(actor + 0x3d0) = data_020e4064;
@@ -784,7 +784,7 @@ static void *destroyKind8Actor(void *self, s32 releaseAllocation)
         for (index = 11; index >= 0; --index)
             func_020575a0(actor + 0x1fc + index * 0x24);
     }
-    func_02071eb8(actor + 0x1f0);
+    AnimationResourceState_Destroy(actor + 0x1f0);
     func_0203130c(actor);
     if (releaseAllocation != 0)
         Heap_Free(actor);
@@ -809,7 +809,7 @@ void *func_02057dcc(void *self)
  * later callers may request the retail archive/member cue for each populated
  * non-mode-2 record. No allocations are performed directly here.
  */
-void func_020587d8(void *self, s32 playSound)
+void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
 {
     u8 *actor = (u8 *)self;
     u8 *runtime = *(u8 **)data_021052fc;
@@ -825,7 +825,7 @@ void func_020587d8(void *self, s32 playSound)
 
         if (group != *(s32 *)(actor + 0x3ac))
             continue;
-        record = (u8 *)func_02078418(data_021f38fc, tableIndex, group);
+        record = (u8 *)ActorDescriptorTable_GetRecord(data_021f38fc, tableIndex, group);
         mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
         entryCount = *(u16 *)(record + 0x0c);
         if ((mode == 4 || mode == 5) && entryCount != 0) {
@@ -870,15 +870,15 @@ void func_020575bc(void *self, const void *descriptor, void *owner,
                    s32 x, s32 y)
 {
     u8 *state = (u8 *)self;
-    void *component = func_02062918((void *)descriptor, 0);
+    void *component = ActorDescriptor_GetComponent((void *)descriptor, 0);
     void *sprite;
 
     *(const void **)(state + 0x14) = descriptor;
     *(void **)(state + 0x10) = owner;
     func_02071ee0(state, data_020f4e18,
-                  func_02063064(component),
-                  func_02063074(component),
-                  func_02063084(component));
+                  ActorDescriptorComponent_GetCharacterResourceId(component),
+                  ActorDescriptorComponent_GetPaletteResourceId(component),
+                  ActorDescriptorComponent_GetCellResourceId(component));
     sprite = GraphicsSpriteGroup_CreateState(
         owner, *(void **)(state + 0), *(void **)(state + 4),
         *(void **)(state + 8), 1);

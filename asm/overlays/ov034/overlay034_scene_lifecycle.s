@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov034/overlay034_scene_lifecycle.c for documented portable C. */
 
-    .extern func_02071e04
-    .extern func_020597fc
+    .extern GraphicsArchive_ReleaseOwlvResource
+    .extern Sound_ReleaseGroup
     .extern Graphics3DLightSet_Destroy
     .extern func_ov034_021fce00
     .extern Heap_Free
@@ -47,7 +47,7 @@ L_021fddec:
     ldr r0, L_021fde3c
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     ldr ip, L_021fde40
     ldr r0, L_021fde44
     ldrh r3, [ip, #0x0]
@@ -56,7 +56,7 @@ L_021fddec:
     and r0, r3, r0
     strh r0, [ip, #0x0]
     ldr r0, [r2, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     add r0, r4, #0x170
     bl Graphics3DLightSet_Destroy
     mov r0, r4

@@ -9,9 +9,9 @@
 .extern GameWork_SetFlag
 .extern gGameWork
 
-    .global func_02008570
-.type func_02008570, @function
-func_02008570:
+    .global GamePhaseRuntime_ApplyScreenMode
+.type GamePhaseRuntime_ApplyScreenMode, @function
+GamePhaseRuntime_ApplyScreenMode:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     cmp r4, #0x2
@@ -77,5 +77,5 @@ L_0200865c: .word gGameWork
 L_02008660: .word 0x395
 L_02008664: .word 0x4001000
 L_02008668: .word 0x5000400
-    .size func_02008570, .-func_02008570
+    .size GamePhaseRuntime_ApplyScreenMode, .-GamePhaseRuntime_ApplyScreenMode
 

@@ -4,11 +4,11 @@
  * src/overlays/ov041/overlay041_camera_interaction.c. */
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_02059278
+.extern Sound_PlayDirectSequence
 .extern func_020a214c
 .extern func_020a6990
 .extern func_020a6aa8
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_020bf1f8
 .extern func_ov041_021fe56c
 .extern func_ov041_021fffc8
@@ -59,7 +59,7 @@ func_ov041_021feec8: ; 0x021feec8
     adc r1, r1, #0x0
     mov r4, r2, lsr #0xc
     orr r4, r4, r1, lsl #0x14
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, r6
     ble .L_021fef88
     cmp r5, #0x0
@@ -71,7 +71,7 @@ func_ov041_021feec8: ; 0x021feec8
     mul r5, r6, r0
 .L_021fef88:
     mov r0, r4
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, r6
     ble .L_021fefb0
     cmp r4, #0x0
@@ -83,12 +83,12 @@ func_ov041_021feec8: ; 0x021feec8
     mul r4, r6, r0
 .L_021fefb0:
     mov r0, r5
-    bl func_020be334
+    bl SignedAbsoluteValue
     ldr r1, .L_021ff1c4
     cmp r0, r1
     mov r0, r4
     movle r5, #0x0
-    bl func_020be334
+    bl SignedAbsoluteValue
     ldr r1, .L_021ff1c4
     cmp r0, r1
     ldr r0, [r7, #0x190]
@@ -177,7 +177,7 @@ func_ov041_021feec8: ; 0x021feec8
     ldr r0, [r0, #0x0]
     mov r1, #0x5f
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
 .L_021ff128:
     ldr r0, [r7, #0x1ec]
     cmp r0, #0x0

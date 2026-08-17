@@ -18,7 +18,7 @@
     .extern func_ov021_021ff0e0
     .extern func_ov045_0220c128
     .extern func_ov045_0220c9e8
-    .extern func_ov045_0220d2f8
+    .extern Overlay045_DrawSelectorPreview
 
 .global func_ov021_021ff6b8
 func_ov021_021ff6b8:
@@ -95,7 +95,7 @@ L_021ff790:
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_ov045_0220d2f8
+    bl Overlay045_DrawSelectorPreview
     b L_021ff7e4
 L_021ff7d8:
     mov r0, r4

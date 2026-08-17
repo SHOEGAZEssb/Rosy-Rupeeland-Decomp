@@ -4,12 +4,12 @@
     .extern data_021f5ed0
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern RecordMode_GetMessage
-    .extern func_02092e9c
-    .extern func_02093360
-    .extern func_020939d8
+    .extern TitleDialog_SetText
+    .extern TitleDialog_UpdateTextPage
+    .extern TitleDialog_ClearTextRect
     .extern func_ov045_0220c028
     .extern func_ov045_0220c128
-    .extern func_ov045_0220d2f8
+    .extern Overlay045_DrawSelectorPreview
     .extern gDebugFont
 
 .global func_ov021_021ff0e0
@@ -23,7 +23,7 @@ func_ov021_021ff0e0:
     ldr r0, [r5, #0x388]
     mov r4, r1
     ldr r6, [r3, r2, lsl #0x2]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r3, [r5, #0x388]
     mov r0, #0xd
     str r0, [r3, #0xd0]
@@ -35,10 +35,10 @@ func_ov021_021ff0e0:
     mov r1, r0
     ldr r0, [r5, #0x388]
     mov r2, #0x4
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r5, #0x388]
     ldr r1, L_021ff1c8
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     movs r1, r1, asr #0x1f
     str r0, [sp, #0x0]
@@ -72,7 +72,7 @@ L_021ff1a0:
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r5, #0x54]
     mov r1, #0x0
-    bl func_ov045_0220d2f8
+    bl Overlay045_DrawSelectorPreview
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
 L_021ff1c4: .word data_021f5128

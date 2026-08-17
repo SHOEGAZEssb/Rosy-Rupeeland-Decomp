@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_child_controller_base.c for documented portable C. */
 .extern GraphicsSpriteGroup_CreateStateFromSource
 
-    .global func_ov032_02201450
-func_ov032_02201450:
+    .global Overlay032Controller_CreateObject
+Overlay032Controller_CreateObject:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -16,5 +16,5 @@ func_ov032_02201450:
     str r0, [r5, #0x0]
     str r4, [r5, #0x8]
     ldmia sp!, {r3, r4, r5, pc}
-.size func_ov032_02201450, .-func_ov032_02201450
+.size Overlay032Controller_CreateObject, .-Overlay032Controller_CreateObject
 

@@ -13,7 +13,7 @@
 .extern Type7Actor_GetStateCode
 .extern GridEffectActor_CanBeginDeparture
 .extern GridEffectActor_BeginDeparture
-.extern func_020628c8
+.extern ActorDescriptor_GetPrimaryLabel
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
 .extern GraphicsSpriteRenderer_MeasureText
@@ -246,7 +246,7 @@ GridEffectActor_Update: ; 0x0204ee24
     movge r4, #0x1
     bl GraphicsSpriteRenderer_SetFontResource
     add r0, r5, #0x1f4
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     ldr r2, .L_0204f470
     mov r1, r0
     ldr r0, [r2, #0x0]
@@ -335,7 +335,7 @@ GridEffectActor_Update: ; 0x0204ee24
     ldr r1, [r1, #0x8]
     bl GraphicsSpriteRenderer_SetFontResource
     add r0, r5, #0x1f4
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r1, #0xd
     str r1, [sp, #0x0]
     mov r1, #0x8

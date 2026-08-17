@@ -2,9 +2,9 @@
 .extern GraphicsSpriteCanvas_FillRect
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern func_ov044_0220bb48
-.extern func_02079f3c
+.extern RetailTextTable_FindRecordById
 .extern GraphicsSpriteRenderer_DrawText
-.extern func_020628c8
+.extern ActorDescriptor_GetPrimaryLabel
 .extern func_02092960
 .extern func_020befec
 .extern data_021f3ecc
@@ -50,7 +50,7 @@ func_ov044_0220bba4:
     beq .L_0220bc68
     ldr r0, .L_0220bd20
     mov r1, #0x188
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     str r6, [sp, #0x0]
     str r5, [sp, #0x4]
     add r8, r7, #0x1
@@ -67,7 +67,7 @@ func_ov044_0220bba4:
     add r0, r0, r8, lsl #0x5
     ldr r9, [r0, #0xc]
     mov r0, r9
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     add r8, r7, #0x1
     mov r3, #0x18
     mul r3, r8, r3

@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/game/inventory_scroll_controller.c.
 .extern data_020f260c
 
-.global func_02093cb4
-func_02093cb4:
+.global InventoryScroll_InitBase
+InventoryScroll_InitBase:
     ldr r1, .L_02093d1c
     mov r2, #0x0
     str r1, [r0, #0x0]
@@ -31,4 +31,4 @@ func_02093cb4:
     str r2, [r0, #0x48]
     bx lr
 .L_02093d1c: .word data_020f260c
-.size func_02093cb4, . - func_02093cb4
+.size InventoryScroll_InitBase, . - InventoryScroll_InitBase

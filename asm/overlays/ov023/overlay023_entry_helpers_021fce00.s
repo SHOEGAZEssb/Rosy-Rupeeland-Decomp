@@ -1,14 +1,14 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_entry_helpers.c. */
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 
     .global func_ov023_021fce00
 func_ov023_021fce00:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x4
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r1, #0x0
     str r1, [r4, #0x0]
     str r1, [r4, #0x10]

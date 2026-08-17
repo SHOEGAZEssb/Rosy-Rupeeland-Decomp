@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_senary_scene_lifecycle.c for documented portable C. */
 
     .extern PresentationList_DeleteAll
-    .extern func_02071e04
+    .extern GraphicsArchive_ReleaseOwlvResource
     .extern Graphics3DResourceOwner_RemoveManager
     .extern GraphicsResourceSetVariant_Destroy
     .extern Heap_Free
@@ -24,11 +24,11 @@ func_ov035_02201bd8:
     ldr r0, L_02201c68
     ldr r1, [r4, #0xfc]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     ldr r0, L_02201c68
     ldr r1, [r4, #0x100]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     ldr r1, [r4, #0xf4]
     ldr r0, [r1, #0x0]
     bl Graphics3DResourceOwner_RemoveManager
@@ -66,11 +66,11 @@ func_ov035_02201c70:
     ldr r0, L_02201d08
     ldr r1, [r4, #0xfc]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     ldr r0, L_02201d08
     ldr r1, [r4, #0x100]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     ldr r1, [r4, #0xf4]
     ldr r0, [r1, #0x0]
     bl Graphics3DResourceOwner_RemoveManager

@@ -3,16 +3,16 @@
 /* Exact fallback; see src/overlays/ov033/overlay033_final_state.c for documented portable C. */
 
     .extern func_020791e0
-    .extern func_02092e9c
+    .extern TitleDialog_SetText
     .extern func_ov033_021fd418
-    .extern func_0205929c
+    .extern Sound_StopDirectSequence
     .extern func_02091b98
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov033_021fd4cc
     .extern VecFx32Object_Add
     .extern func_02091c7c
-    .extern func_0205974c
-    .extern func_02059278
+    .extern Sound_LoadGroup
+    .extern Sound_PlayDirectSequence
     .extern func_02091bac
     .extern func_02091cf0
     .extern func_ov033_021fce04
@@ -20,7 +20,7 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern Sound_Play
     .extern Type7Actor_ResetMotionAndCooldown
-    .extern func_020597fc
+    .extern Sound_ReleaseGroup
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern data_021f3ecc
     .extern gSoundContext
@@ -48,7 +48,7 @@ L_021fd9d0:
     mov r1, r0
     ldr r0, [r5, #0xc4]
     mov r2, #0x2
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r5, #0xd0]
     add r0, r0, #0x1
     str r0, [r5, #0xd0]
@@ -61,12 +61,12 @@ L_021fd9f8:
     mov r1, #0x68
     ldr r0, [r0, #0x0]
     mov r2, #0xc
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     add r0, r5, #0x84
     mov r1, #0xc
     bl func_02091b98
     ldr r0, [r5, #0xc4]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r5, #0xd0]
     add r0, r0, #0x1
     str r0, [r5, #0xd0]
@@ -92,12 +92,12 @@ L_021fda6c:
     ldr r0, L_021fdcd4
     mov r1, #0x1f4
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     ldr r0, L_021fdcd4
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     mov r4, #0x78
     add r0, r5, #0x84
     mov r1, #0x1
@@ -227,12 +227,12 @@ L_021fdc84:
     ldr r0, L_021fdcd4
     mov r1, #0x1f4
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     ldr r0, L_021fdcd4
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x1e
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, [r5, #0xd0]
     add r0, r0, #0x1
     str r0, [r5, #0xd0]

@@ -7,7 +7,7 @@
     .extern func_02092c8c
     .extern func_02095940
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fe458
+    .extern Overlay021_RefreshSelectionBackground
     .extern func_ov021_021feb60
     .extern func_ov021_021feea4
     .extern func_ov021_021ff050
@@ -66,7 +66,7 @@ L_02201ae8:
     b L_02201b88
 L_02201b34:
     mov r0, r4
-    bl func_ov021_021fe458
+    bl Overlay021_RefreshSelectionBackground
     mov r0, r4
     mov r1, #0x2
     bl func_ov021_021ff0e0

@@ -21,7 +21,7 @@
 .extern Graphics3DResourceOwner_PrepareResources
 .extern Graphics3DSceneState_Init
 .extern func_02091b6c
-.extern func_02091e28
+.extern SceneInputBase_Init
 .extern func_02092364
 .extern func_020923a4
 .extern Presentation_InitVariant
@@ -41,12 +41,12 @@
 .extern Heap_Alloc
 
 
-    .global func_ov027_021fda30
-func_ov027_021fda30:
+    .global Overlay027Scene_Init
+Overlay027Scene_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xf4
     mov r10, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fdde4
     add r0, r10, #0x5c
     str r1, [r10, #0x0]
@@ -311,5 +311,5 @@ L_021fde14: .word data_ov027_021feb54
 L_021fde18: .word data_ov027_021fef3c
 L_021fde1c: .word data_ov027_021fea04
 L_021fde20: .word data_ov027_021fe928
-.size func_ov027_021fda30, .-func_ov027_021fda30
+.size Overlay027Scene_Init, .-Overlay027Scene_Init
 

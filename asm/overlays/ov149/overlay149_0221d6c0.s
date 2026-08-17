@@ -5,7 +5,7 @@
 .extern data_ov149_0221ec72
 .extern data_ov149_02225aa0
 .extern data_ov149_02225aa4
-.extern func_02008f58
+.extern GamePhaseRuntime_SetGlobalValue30F8
 .extern ActorInteractionRuntime_Init
 .extern ActorInteractionRuntime_NoOp
 .extern ActorDescriptorBatch_RegisterAndSpawnCategory1
@@ -24,7 +24,7 @@ func_ov149_0221d6c0:
     ldr r0, .L_0221d704
     bl ActorInteractionRuntime_NoOp
     ldr r0, .L_0221d708
-    bl func_02008f58
+    bl GamePhaseRuntime_SetGlobalValue30F8
     ldr r0, .L_0221d70c
     bl ActorDescriptorBatch_SetCategory1Callback
     ldmia sp!, {r3, pc}

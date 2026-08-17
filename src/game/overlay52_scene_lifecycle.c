@@ -27,12 +27,12 @@ extern void *gSoundContext;
 extern HeapContext gHeapContext;
 extern void *data_021052fc;
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
-extern Overlay52Child *func_ov052_0220d618(Overlay52Child *self, s32 first,
+extern Overlay52Child *Overlay052Scene_Init(Overlay52Child *self, s32 first,
                                            s32 second);
-extern void func_ov052_0220e14c(Overlay52Child *self, u16 parameter,
+extern void Overlay052Scene_SetMessageById(Overlay52Child *self, u16 parameter,
                                 s32 value);
-extern s32 func_ov052_0220da54(Overlay52Child *self);
-extern void func_ov052_0220e178(Overlay52Child *self);
+extern s32 Overlay052Scene_UpdateMessageMenu(Overlay52Child *self);
+extern void Overlay052Scene_BeginConfirmationFade(Overlay52Child *self);
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern void GamePhaseRuntime_UpdateActorPresentationState(void *runtime, s32 mode);
 extern void GamePhaseState_UpdateRenderHelpers(void *value);
@@ -109,21 +109,21 @@ s32 func_0201d0f4(Overlay52Scene *self)
             child = (Overlay52Child *)Heap_Alloc(
                 0x34, data_020d5d84, 4, &gHeapContext);
             if (child != 0)
-                child = func_ov052_0220d618(child, 1, 1);
+                child = Overlay052Scene_Init(child, 1, 1);
             self->child28 = child;
-            func_ov052_0220e14c(child, (u16)self->parameter24, 0);
+            Overlay052Scene_SetMessageById(child, (u16)self->parameter24, 0);
             Sound_Play(gSoundContext, 0, 0x6f);
             brightness = DisplayBrightnessPair_GetScreen(&gDisplayBrightnessPair, 1);
             DisplayBrightness_StartTransition(brightness, -16, 0, 4);
         }
     } else {
-        if (func_ov052_0220da54(self->child28) != 0) {
+        if (Overlay052Scene_UpdateMessageMenu(self->child28) != 0) {
             if (self != 0)
                 self->base.vtable->destroyAndFree(&self->base);
             return 1;
         }
         if (self->child28->state04 == 1)
-            func_ov052_0220e178(self->child28);
+            Overlay052Scene_BeginConfirmationFade(self->child28);
     }
     GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
     return 0;

@@ -19,13 +19,13 @@ extern "C" {
 #endif
 extern void *data_020f4e18;
 extern char data_ov001_021fcc88[];
-extern void func_02071ea4(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
-extern void func_02092798(void *state);
+extern void TitleCharacterResourceCollection_Init(void *state);
 extern void func_02092814(void *state, s32 resourceId);
-extern void *func_02092cc0(void *object, void *owner, void *resource);
+extern void *TitleDialog_Init(void *object, void *owner, void *resource);
 extern void func_ov001_021fb6e0(void *owner, s32 first, s32 second,
                                 s32 third, s32 fourth);
 #ifdef __cplusplus
@@ -49,9 +49,9 @@ Overlay001PresentationState *func_ov001_021fb6f8(
 {
     void *presentation;
 
-    func_02071ea4(state->resource_08);
-    func_02071ea4(state->resource_14);
-    func_02092798(state->rendererState_20);
+    AnimationResourceState_InitEmbedded(state->resource_08);
+    AnimationResourceState_InitEmbedded(state->resource_14);
+    TitleCharacterResourceCollection_Init(state->rendererState_20);
     state->owner_00 = owner;
     state->spriteOwner_04 = GraphicsSpriteGroupOwner_CreateGroup(owner);
     func_02092814(state->rendererState_20, 0x7000);
@@ -59,7 +59,7 @@ Overlay001PresentationState *func_ov001_021fb6f8(
     func_02092814(state->rendererState_20, 0x7001);
     presentation = Heap_Alloc(0xec, data_ov001_021fcc88, 4, &gHeapContext);
     if (presentation != 0) {
-        presentation = func_02092cc0(
+        presentation = TitleDialog_Init(
             presentation, state->owner_00,
             *(void **)&state->rendererState_20[0]);
     }

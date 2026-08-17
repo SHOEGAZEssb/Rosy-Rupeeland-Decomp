@@ -57,7 +57,7 @@ extern const char data_020d6a98[];
 extern const char data_020d6aa0[];
 extern const s16 data_020c9670[];
 extern u8 *data_021052fc;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void VecFx32Object_Init(ControllerVector *);
 extern void VecFx32Object_InitComponents(ControllerVector *, s32, s32, s32);
@@ -70,12 +70,12 @@ extern void *AnimationResource_Init(ResourceDescriptor *, s32, s32, s32);
 extern void *func_0206b628(void *, void *, ResourceDescriptor *,
                            ResourceDescriptor *, ResourceDescriptor *, s32,
                            s32, s32, s32, s32, s32, s32, s32);
-extern void func_0206ba50(void *);
-extern void func_0206c028(void *, s32);
-extern void func_0206c0b0(void *, s32, s32);
-extern void func_0206bb18(void *, const ControllerVector *);
+extern void AuxiliaryCore_Destroy(void *);
+extern void AuxiliaryCoreSprite_SetVisible(void *, s32);
+extern void AuxiliaryCore_ApplyScale(void *, s32, s32);
+extern void AuxiliaryCore_UpdateMotion(void *, const ControllerVector *);
 extern void *func_0201ebac(void *, const void *, u8 *, s32, s16, s16);
-extern void func_0201e3b8(void *, s32);
+extern void TimedSpritePresentation_SetVisible(void *, s32);
 extern const void *ActorMotionAreaFollower_GetPosition(void *);
 extern u32 genrand_int32(void);
 extern u64 func_020bf1f8(u32, u32);
@@ -97,13 +97,13 @@ static void destroy_polymorphic(void *object)
  * (0x1367,0x1140,0x1368), (0x1357,0x1001,0x1358), and
  * (0x1359,0x1001,0x135a).  Allocate/construct the 0x308-byte core with those
  * descriptors, position coordinates, fixed values 0,0,-0x18000, and the two
- * stack arguments; enable it through func_0206c028 and return self.
+ * stack arguments; enable it through AuxiliaryCoreSprite_SetVisible and return self.
  */
 RotatingCoreEffectController *func_02025300(
     RotatingCoreEffectController *self, const ControllerVector *position,
     void *owner, s32 countdown, s32 argument5, s32 argument6)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)data_020d6a70;
     VecFx32Object_InitCopy(&self->position18, position);
     self->effect28 = 0;
@@ -134,7 +134,7 @@ RotatingCoreEffectController *func_02025300(
             self->position18.x04, self->position18.y08,
             self->position18.z0c, 0, 0, -0x18000, argument5, argument6);
     }
-    func_0206c028(self->core08, 1);
+    AuxiliaryCoreSprite_SetVisible(self->core08, 1);
     return self;
 }
 
@@ -150,7 +150,7 @@ RotatingCoreEffectController *func_020254a4(
     destroy_polymorphic(self->effect28);
     destroy_polymorphic(self->optionalDescriptor2c);
     if (self->core08) {
-        func_0206ba50(self->core08);
+        AuxiliaryCore_Destroy(self->core08);
         Heap_Free(self->core08);
     }
     destroy_polymorphic(self->firstDescriptor0c);
@@ -209,9 +209,9 @@ void func_0202564c(RotatingCoreEffectController *self,
  * when core halfword 0x2de becomes zero.
  *
  * Independently update/destroy the effect through vtable slots 3/1 or pass the
- * camera to slot 4, apply value30 through func_0206c0b0, advance core angle
+ * camera to slot 4, apply value30 through AuxiliaryCore_ApplyScale, advance core angle
  * 0x2d8 by 0x180 with 16-bit wrapping, copy position18, add random +/-4-pixel
- * x/y jitter while jitterFrames32 remains, publish it through func_0206bb18,
+ * x/y jitter while jitterFrames32 remains, publish it through AuxiliaryCore_UpdateMotion,
  * and otherwise return zero.
  */
 s32 func_020256b4(RotatingCoreEffectController *self)
@@ -258,7 +258,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
                 randomFlags = genrand_int32();
                 if (randomFlags & 1) *(u16 *)(self->effect28->sprite04 + 0x24) |= 0x80;
                 if (randomFlags & 2) *(u16 *)(self->effect28->sprite04 + 0x24) |= 0x40;
-                func_0201e3b8(self->effect28, 1);
+                TimedSpritePresentation_SetVisible(self->effect28, 1);
                 VecFx32Object_Destroy(&combined);
                 VecFx32Object_Destroy(&position);
                 VecFx32Object_Destroy(&first);
@@ -283,7 +283,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
                 self->effect28, ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc));
         }
     }
-    func_0206c0b0(self->core08, self->value30, -1);
+    AuxiliaryCore_ApplyScale(self->core08, self->value30, -1);
     *(s32 *)(self->core08 + 0x2d8) =
         (s16)(*(s32 *)(self->core08 + 0x2d8) + 0x180);
     VecFx32Object_InitCopy(&position, &self->position18);
@@ -292,7 +292,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
         position.y08 += (4 - (s32)(func_020bf1f8(genrand_int32(), 9) >> 32)) << 12;
         self->jitterFrames32--;
     }
-    func_0206bb18(self->core08, &position);
+    AuxiliaryCore_UpdateMotion(self->core08, &position);
     VecFx32Object_Destroy(&position);
     return 0;
 }

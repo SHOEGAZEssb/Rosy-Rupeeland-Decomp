@@ -5,8 +5,8 @@
 .extern Scene_GetEmbedded10
 .extern Sound_Play
 .extern TouchRegionManager_SetEnabled
-.extern func_02059278
-.extern func_020592d8
+.extern Sound_PlayDirectSequence
+.extern Sound_FadeDirectSequence
 .extern gGameWork
 .extern gSoundContext
 
@@ -21,13 +21,13 @@ func_ov060_02210470:
     ldr r0, .L_02210578
     mov r1, #0xbc
     ldr r0, [r0, #0x0]
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldr r0, .L_02210578
     mov r1, #0xbc
     ldr r0, [r0, #0x0]
     mov r2, #0x3c
     mov r3, #0x0
-    bl func_020592d8
+    bl Sound_FadeDirectSequence
     ldr r2, [r5, #0x38]
     mvn r0, #0x0
     cmp r2, r0
@@ -49,13 +49,13 @@ func_ov060_02210470:
     ldr r0, .L_02210578
     mov r1, #0xbd
     ldr r0, [r0, #0x0]
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldr r0, .L_02210578
     mov r1, #0xbd
     ldr r0, [r0, #0x0]
     mov r2, #0x3c
     mov r3, #0x0
-    bl func_020592d8
+    bl Sound_FadeDirectSequence
     ldr r2, [r5, #0x3c]
     mvn r0, #0x0
     cmp r2, r0

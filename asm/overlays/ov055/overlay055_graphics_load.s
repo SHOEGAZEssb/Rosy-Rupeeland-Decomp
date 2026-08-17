@@ -10,7 +10,7 @@
 .extern data_020f4e18
 .extern gMainBgPaletteBuffer
 .extern gSubBgPaletteBuffer
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070f34
 .extern func_02071568
 .extern func_020716bc
@@ -96,7 +96,7 @@ func_ov055_0220ebec:
     ldr r2, [r10, #0x10]
     bl func_020b1924
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     ldr r2, [r10, #0x14]
     ldr r3, [r10, #0x18]
     mov r1, r0
@@ -189,7 +189,7 @@ func_ov055_0220ebec:
     ldr r2, [r9, #0x10]
     bl func_020b17ec
     ldr r0, [sp, #0x4]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     ldr r2, [r9, #0x14]
     ldr r3, [r9, #0x18]
     mov r1, r0

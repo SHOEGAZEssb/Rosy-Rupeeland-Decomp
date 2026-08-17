@@ -6,14 +6,14 @@
 .extern func_02092618
 .extern func_02092688
 .extern GraphicsResourceSet_Init
-.extern func_020926d8
+.extern TitleScreenResourceCollection_Init
 .extern GraphicsResourceSet_Load
 .extern func_02070f80
 .extern func_020b44e8
 .extern func_02072048
 .extern GraphicsResourceSet_Apply
 .extern func_02092754
-.extern func_02092790
+.extern TitleScreenResourceCollection_Get
 .extern func_02070eac
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_020926f8
@@ -74,7 +74,7 @@ func_ov043_0220ba28:
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     add r0, sp, #0x10
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     ldr r3, .L_0220bc10
     ldr r1, .L_0220bc14
     str r3, [sp, #0x0]
@@ -113,7 +113,7 @@ func_ov043_0220ba28:
     bl GraphicsResourceSet_Apply
     add r0, sp, #0x10
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x2
     mov r2, #0x0
     bl func_02070eac

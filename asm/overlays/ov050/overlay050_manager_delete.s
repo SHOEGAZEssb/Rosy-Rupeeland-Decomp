@@ -1,10 +1,10 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_manager_recovery.c.
 .extern Heap_Free
-.extern func_ov050_0220d8b4
+.extern Overlay050Effect_Destroy
 
-.global func_ov050_0220d95c
-func_ov050_0220d95c:
+.global Overlay050EffectManager_RemoveNode
+Overlay050EffectManager_RemoveNode:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -30,6 +30,6 @@ func_ov050_0220d95c:
     str r0, [r4, #0xc]
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_ov050_0220d8b4
+    bl Overlay050Effect_Destroy
     ldmia sp!, {r4, pc}
-.size func_ov050_0220d95c, . - func_ov050_0220d95c
+.size Overlay050EffectManager_RemoveNode, . - Overlay050EffectManager_RemoveNode

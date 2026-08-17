@@ -12,7 +12,7 @@ extern const u8 data_ov035_02203af8[];
 extern "C" {
 #endif
 extern void PresentationList_DeleteAll(void *collection);
-extern void func_02071e04(void *resourceContext, void *resource);
+extern void GraphicsArchive_ReleaseOwlvResource(void *resourceContext, void *resource);
 extern void Graphics3DResourceOwner_RemoveManager(void *resourceSetRoot);
 extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void Heap_Free(void *allocation);
@@ -32,8 +32,8 @@ static void *teardown_scene(void *scene)
     FIELD(const void *, scene, 0) = data_ov035_02203bd0;
     PresentationList_DeleteAll((u8 *)scene + 0x10c);
     PresentationList_DeleteAll((u8 *)scene + 0x11c);
-    func_02071e04(data_020f4e18[0], FIELD(void *, scene, 0xfc));
-    func_02071e04(data_020f4e18[0], FIELD(void *, scene, 0x100));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18[0], FIELD(void *, scene, 0xfc));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18[0], FIELD(void *, scene, 0x100));
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, scene, 0xf4), 0));
     FIELD(const void *, scene, 0x11c) = data_ov035_02203af8;
     PresentationList_DeleteAll((u8 *)scene + 0x11c);

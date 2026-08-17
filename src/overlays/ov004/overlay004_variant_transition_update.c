@@ -28,7 +28,7 @@ extern void *gHeapContext;
 extern const u8 data_ov004_021fcde4[];
 extern const s32 data_ov004_021fcd28[2];
 extern const s32 data_ov004_021fcd58[2];
-extern s32 func_02091fb0(void *object, s32 active);
+extern s32 SceneInputBase_Update(void *object, s32 active);
 extern void func_02092c8c(s32 channel, s32 value);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02092314(void *state, s32 callbackId, s32 value);
@@ -85,7 +85,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
         overlay004_advance_transition(state);
         /* The original intentionally processes phase one in the same frame. */
     case 1:
-        if (func_02091fb0(state->helper_054, 1)) {
+        if (SceneInputBase_Update(state->helper_054, 1)) {
             if (state->variant_058 < 1 || state->variant_058 > 10) {
                 func_02092c8c(3, -16);
             } else {
@@ -96,7 +96,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
         break;
 
     case 2:
-        func_02091fb0(state->helper_054, 0);
+        SceneInputBase_Update(state->helper_054, 0);
         if (!DisplayBrightness_IsMainTransitionComplete()) {
             break;
         }
@@ -127,21 +127,21 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
         break;
 
     case 3:
-        func_02091fb0(state->helper_054, 0);
+        SceneInputBase_Update(state->helper_054, 0);
         if (DisplayBrightness_IsMainTransitionComplete()) {
             overlay004_advance_transition(state);
         }
         break;
 
     case 4:
-        if (func_02091fb0(state->helper_054, 1)) {
+        if (SceneInputBase_Update(state->helper_054, 1)) {
             func_02092c8c(3, -16);
             overlay004_advance_transition(state);
         }
         break;
 
     case 5:
-        func_02091fb0(state->helper_054, 0);
+        SceneInputBase_Update(state->helper_054, 0);
         if (DisplayBrightness_IsMainTransitionComplete()) {
             func_02092314(state, 0x3d, 0x10);
             func_ov004_021fb6e4(state, data_ov004_021fcd58[0],

@@ -11,20 +11,20 @@
 .extern IndexedSelectionController_GetLastDirection
 .extern IndexedSelectionController_AdvanceTransition
 .extern IndexedSelectionController_AdvancePacing
-.extern func_02093d50
-.extern func_02093de4
-.extern func_02093e0c
-.extern func_02093e20
-.extern func_02093e3c
-.extern func_02093e58
-.extern func_02093ffc
-.extern func_020945c8
-.extern func_02094600
-.extern func_02094638
-.extern func_02094668
-.extern func_02094698
-.extern func_02094758
-.extern func_02094874
+.extern InventoryScroll_SetSelectedRow
+.extern InventoryScroll_SaveOrigins
+.extern InventoryScroll_MoveSelectionUp
+.extern InventoryScroll_MoveSelectionDown
+.extern InventoryScroll_PageUp
+.extern InventoryScroll_PageDown
+.extern InventoryScroll_UpdateInterpolation
+.extern InventoryScroll_TestUpperArrowPress
+.extern InventoryScroll_TestLowerArrowPress
+.extern InventoryScroll_TestUpperArrowHold
+.extern InventoryScroll_TestLowerArrowHold
+.extern InventoryScroll_TestMarkerHit
+.extern InventoryScroll_UpdateSelectionMovement
+.extern InventoryScroll_ResetPresentationState
 .extern PresentationScalar_SetImmediate
 .extern PresentationScalar_TransitionTo
 .extern func_02095860
@@ -79,7 +79,7 @@ L_021ff35c:
     mov r0, r5
     bl func_ov023_021fe6e4
     mov r0, r4
-    bl func_02094874
+    bl InventoryScroll_ResetPresentationState
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -87,7 +87,7 @@ L_021ff35c:
     str r0, [r5, #0x8]
 L_021ff38c:
     mov r0, r4
-    bl func_02093ffc
+    bl InventoryScroll_UpdateInterpolation
     cmp r0, #0x0
     beq L_021ff3b4
     ldr r1, [r5, #0x4]
@@ -106,7 +106,7 @@ L_021ff3b4:
     b L_021ff7bc
 L_021ff3d0:
     mov r0, r4
-    bl func_02093de4
+    bl InventoryScroll_SaveOrigins
     add r0, r5, #0x480
     bl IndexedSelectionController_SnapTransitionOrigin
     ldr r0, [r5, #0x2c]
@@ -114,13 +114,13 @@ L_021ff3d0:
     tst r0, #0x40
     beq L_021ff3fc
     mov r0, r4
-    bl func_02093e0c
+    bl InventoryScroll_MoveSelectionUp
     b L_021ff61c
 L_021ff3fc:
     tst r0, #0x80
     beq L_021ff410
     mov r0, r4
-    bl func_02093e20
+    bl InventoryScroll_MoveSelectionDown
     b L_021ff61c
 L_021ff410:
     ldr r0, [r5, #0x20]
@@ -133,19 +133,19 @@ L_021ff410:
     mov r6, r0
     mov r0, r4
     add r1, r5, #0x30
-    bl func_02094638
+    bl InventoryScroll_TestUpperArrowHold
     cmp r0, #0x0
     mov r0, r4
     beq L_021ff450
-    bl func_02093e3c
+    bl InventoryScroll_PageUp
     b L_021ff61c
 L_021ff450:
     add r1, r5, #0x30
-    bl func_02094668
+    bl InventoryScroll_TestLowerArrowHold
     cmp r0, #0x0
     beq L_021ff46c
     mov r0, r4
-    bl func_02093e58
+    bl InventoryScroll_PageDown
     b L_021ff61c
 L_021ff46c:
     mov r0, r5
@@ -170,11 +170,11 @@ L_021ff4a4:
     beq L_021ff61c
     mov r0, r4
     add r1, r5, #0x30
-    bl func_020945c8
+    bl InventoryScroll_TestUpperArrowPress
     cmp r0, #0x0
     mov r0, r4
     beq L_021ff4e8
-    bl func_02093e3c
+    bl InventoryScroll_PageUp
     cmp r0, #0x0
     bne L_021ff61c
     mov r0, r5
@@ -183,11 +183,11 @@ L_021ff4a4:
     b L_021ff61c
 L_021ff4e8:
     add r1, r5, #0x30
-    bl func_02094600
+    bl InventoryScroll_TestLowerArrowPress
     cmp r0, #0x0
     mov r0, r4
     beq L_021ff518
-    bl func_02093e58
+    bl InventoryScroll_PageDown
     cmp r0, #0x0
     bne L_021ff61c
     mov r0, r5
@@ -196,7 +196,7 @@ L_021ff4e8:
     b L_021ff61c
 L_021ff518:
     add r1, r5, #0x30
-    bl func_02094698
+    bl InventoryScroll_TestMarkerHit
     cmp r0, #0x0
     beq L_021ff53c
     ldr r1, L_021ff7cc
@@ -215,7 +215,7 @@ L_021ff53c:
     bl func_02092260
     mov r0, r4
     mov r1, r6
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     mov r0, r5
     bl func_ov023_021fe6e4
     mov r0, #0x14
@@ -267,7 +267,7 @@ L_021ff5f0:
     str r0, [r5, #0x8]
 L_021ff61c:
     mov r0, r4
-    bl func_02094758
+    bl InventoryScroll_UpdateSelectionMovement
     cmp r0, #0x0
     beq L_021ff650
     mov r0, r5

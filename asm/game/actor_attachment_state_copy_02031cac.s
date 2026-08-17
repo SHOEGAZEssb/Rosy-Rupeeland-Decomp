@@ -6,9 +6,9 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteState_SetFrameIndex
 
-    .global func_02031cac
-    .type func_02031cac, @function
-func_02031cac: ; 0x02031cac
+    .global ActorAttachment_CopyTouchState
+    .type ActorAttachment_CopyTouchState, @function
+ActorAttachment_CopyTouchState: ; 0x02031cac
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r5, r0
@@ -178,5 +178,5 @@ func_02031cac: ; 0x02031cac
 .L_02031f3c:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
-    .size func_02031cac, . - func_02031cac
+    .size ActorAttachment_CopyTouchState, . - ActorAttachment_CopyTouchState
 

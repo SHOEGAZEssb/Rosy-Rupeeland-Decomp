@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/game/inventory_scroll_controller.c.
 
-.global func_02093d20
-func_02093d20:
+.global InventoryScroll_ConfigureRange
+InventoryScroll_ConfigureRange:
     stmib r0, {r1, r2}
     ldr r1, [r0, #0x4]
     cmp r2, r1
@@ -15,4 +15,4 @@ func_02093d20:
     str r1, [r0, #0x20]
     str r1, [r0, #0x1c]
     bx lr
-.size func_02093d20, . - func_02093d20
+.size InventoryScroll_ConfigureRange, . - InventoryScroll_ConfigureRange

@@ -9,7 +9,7 @@
 
 extern void *func_020702d4(void *cache, u32 resource_id);
 extern void func_02070244(void *cache, void *resource);
-extern void *func_0207142c(void *archive, u32 resource_id, u32 *size);
+extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resource_id, u32 *size);
 extern void *func_020713e4(u32 size);
 extern void func_02070164(void *self, void *archive, const void *source,
                           u32 source_size, u32 resource_id,
@@ -79,12 +79,12 @@ void *func_0207121c(void *self, void *archive, const u32 *source,
 }
 
 /*
- * Portable transcription of retail func_02071980 (0x02071980..0x02071A23).
+ * Portable transcription of retail GraphicsArchive_AcquireVfdResource (0x02071980..0x02071A23).
  * It acquires a VFD resource from archive cache +0xE4, constructing it from
  * an archive payload with magic " VFD" on a miss. The archive owns both the
  * cached allocation and source payload; callers own one reference.
  */
-void *func_02071980(void *archive, u32 resource_id)
+void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resource_id)
 {
     GraphicsArchiveCachedResource *resource;
     u32 source_size;
@@ -97,7 +97,7 @@ void *func_02071980(void *archive, u32 resource_id)
         return resource;
     }
 
-    source = (u32 *)func_0207142c(archive, resource_id, &source_size);
+    source = (u32 *)GraphicsArchive_LoadIndexedPayload(archive, resource_id, &source_size);
     if (source != 0 && *source == 0x56464420) {
         resource = (GraphicsArchiveCachedResource *)func_020713e4(0x2c);
         if (resource != 0) {
@@ -112,7 +112,7 @@ void *func_02071980(void *archive, u32 resource_id)
 
 /* Acquire a VPO resource from archive cache +0xF0, constructing and retaining
  * one cache-owned 0x34-byte handle on a miss. Invalid IDs/formats return null. */
-void *func_02071a24(void *archive, u32 resource_id)
+void *GraphicsArchive_AcquireVpoResource(void *archive, u32 resource_id)
 {
     GraphicsArchiveCachedResource *resource;
     u32 source_size;
@@ -124,7 +124,7 @@ void *func_02071a24(void *archive, u32 resource_id)
         ++resource->reference_count;
         return resource;
     }
-    source = (u32 *)func_0207142c(archive, resource_id, &source_size);
+    source = (u32 *)GraphicsArchive_LoadIndexedPayload(archive, resource_id, &source_size);
     if (source != 0 && *source == 0x56504f20) {
         resource = (GraphicsArchiveCachedResource *)Heap_Alloc(
             0x34, data_020e6908, 4, &gHeapContext);
@@ -139,7 +139,7 @@ void *func_02071a24(void *archive, u32 resource_id)
 
 /* Acquire an OWLV resource from archive cache +0xFC, constructing and
  * retaining one cache-owned 0x28-byte handle on a miss. */
-void *func_02071adc(void *archive, u32 resource_id)
+void *GraphicsArchive_AcquireOwlvResource(void *archive, u32 resource_id)
 {
     GraphicsArchiveCachedResource *resource;
     u32 source_size;
@@ -151,7 +151,7 @@ void *func_02071adc(void *archive, u32 resource_id)
         ++resource->reference_count;
         return resource;
     }
-    source = (u32 *)func_0207142c(archive, resource_id, &source_size);
+    source = (u32 *)GraphicsArchive_LoadIndexedPayload(archive, resource_id, &source_size);
     if (source != 0 && *source == 0x564c574f) {
         resource = (GraphicsArchiveCachedResource *)Heap_Alloc(
             0x28, data_020e6910, 4, &gHeapContext);
@@ -171,7 +171,7 @@ void *func_02071e60(void *archive, u32 resource_id)
 }
 
 /* Look up a palette resource in archive cache +0xC0 without retaining it. */
-void *func_02071e70(void *archive, u32 resource_id)
+void *GraphicsArchive_FindPaletteResource(void *archive, u32 resource_id)
 {
     return func_020702d4((u8 *)archive + 0xc0, resource_id);
 }

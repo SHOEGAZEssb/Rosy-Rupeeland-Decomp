@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov031/overlay031_scene_teardown.c for documented portable C. */
 .extern data_ov031_021fe774
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
 .extern Heap_Free
@@ -36,7 +36,7 @@ L_021fdbac:
     add r0, r4, #0x70
     bl func_020927b8
     add r0, r4, #0x5c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fdbcc: .word data_ov031_021fe774
@@ -69,7 +69,7 @@ L_021fdc1c:
     add r0, r4, #0x70
     bl func_020927b8
     add r0, r4, #0x5c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

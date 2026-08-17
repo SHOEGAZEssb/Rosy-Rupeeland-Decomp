@@ -10,7 +10,7 @@
     .extern DisplayBrightness_StartTransition
     .extern DisplayBrightnessPair_GetScreen
     .extern func_0207043c
-    .extern func_02070874
+    .extern GraphicsBgResourceData_GetDecoded
     .extern func_02070888
     .extern func_02070eac
     .extern GraphicsResourceSet_ReleaseHandles
@@ -77,7 +77,7 @@ func_ov040_02202640: ; 0x02202640
     bl func_020b44e8
     ldr r7, [sp, #0x1c]
     mov r0, r7
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r6, r0
     mov r0, r7
     bl func_02070888

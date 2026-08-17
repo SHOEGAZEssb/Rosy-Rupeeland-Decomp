@@ -11,7 +11,7 @@ extern const u8 data_ov030_021ff88c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_020708c4(void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
@@ -22,11 +22,11 @@ extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095940(void *);
-extern void *func_02062918(void *, s32);
-extern s32 func_02063064(void *);
-extern s32 func_02063074(void *);
-extern s32 func_02063084(void *);
-extern s32 func_02063190(void *);
+extern void *ActorDescriptor_GetComponent(void *, s32);
+extern s32 ActorDescriptorComponent_GetCharacterResourceId(void *);
+extern s32 ActorDescriptorComponent_GetPaletteResourceId(void *);
+extern s32 ActorDescriptorComponent_GetCellResourceId(void *);
+extern s32 ActorDescriptorComponent_GetAnimation(void *);
 extern void func_ov030_021fd260(void *);
 extern void func_ov030_021fd434(void *);
 #ifdef __cplusplus
@@ -49,9 +49,9 @@ extern void func_ov030_021fd434(void *);
 extern "C" void *func_ov030_021fcf20(void *widget, void *font,
                                       void *source, s32 variant)
 {
-    func_02071ea4((u8 *)widget + 4);
-    func_02071ea4((u8 *)widget + 0x10);
-    func_02071ea4((u8 *)widget + 0x1c);
+    AnimationResourceState_InitEmbedded((u8 *)widget + 4);
+    AnimationResourceState_InitEmbedded((u8 *)widget + 0x10);
+    AnimationResourceState_InitEmbedded((u8 *)widget + 0x1c);
     func_020957bc((u8 *)widget + 0x58);
     func_020957bc((u8 *)widget + 0x104);
     func_ov030_021fd260((u8 *)widget + 0x1b8);
@@ -72,12 +72,12 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
         func_02071ee0((u8 *)widget + 4, data_020f4e18[0],
                       0x32a4, 0x32a5, 0x32a6);
 
-    void *sourceObject = func_02062918(source, 0);
-    s32 id0 = func_02063064(sourceObject);
-    sourceObject = func_02062918(source, 0);
-    s32 id1 = func_02063074(sourceObject);
-    sourceObject = func_02062918(source, 0);
-    s32 id2 = func_02063084(sourceObject);
+    void *sourceObject = ActorDescriptor_GetComponent(source, 0);
+    s32 id0 = ActorDescriptorComponent_GetCharacterResourceId(sourceObject);
+    sourceObject = ActorDescriptor_GetComponent(source, 0);
+    s32 id1 = ActorDescriptorComponent_GetPaletteResourceId(sourceObject);
+    sourceObject = ActorDescriptor_GetComponent(source, 0);
+    s32 id2 = ActorDescriptorComponent_GetCellResourceId(sourceObject);
     func_02071ee0((u8 *)widget + 0x1c, data_020f4e18[0], id0, id1, id2);
     func_020708c4(FIELD(void *, widget, 8));
     func_02071ee0((u8 *)widget + 0x10, data_020f4e18[0], 0x42, 1, 0x43);
@@ -86,9 +86,9 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
     FIELD(void *, widget, 0x2c) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(void *, widget, 0x30) = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, widget, 0x2c), (u8 *)widget + 0x1c, 2);
-    sourceObject = func_02062918(source, 0);
+    sourceObject = ActorDescriptor_GetComponent(source, 0);
     func_02073e48(FIELD(void *, widget, 0x30),
-                  func_02063190(sourceObject), 0x20, 0xb0, 0, 0x100, 0);
+                  ActorDescriptorComponent_GetAnimation(sourceObject), 0x20, 0xb0, 0, 0x100, 0);
 
     for (s32 i = 0; i < 7; ++i) {
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x28),

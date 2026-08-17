@@ -16,14 +16,14 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 RecordSelection_HasAvailableEntry(void *, s32);
-extern void func_02093d50(void *, s32);
-extern void func_02093d7c(void *, s32);
+extern void InventoryScroll_SetSelectedRow(void *, s32);
+extern void InventoryScroll_SetFirstVisibleRow(void *, s32);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
 extern void func_02095940(void *);
 extern void *func_ov021_021fce18(void *, void *, s32, s32);
 extern void *func_ov021_021fd0e8(void *, const void *);
-extern void func_ov021_021fd254(void *);
+extern void Overlay021List_SyncFirstVisibleRow(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -57,9 +57,9 @@ extern "C" void func_ov021_021fe520(void *state)
                                            capacity, channel);
             FIELD(void *, state, 0x2a4 + channel * 4) = list;
             void *controller = FIELD(void *, list, 0x58);
-            func_02093d7c(controller,
+            InventoryScroll_SetFirstVisibleRow(controller,
                           FIELD(s32, state, 0x2ac + channel * 4));
-            func_02093d50(controller,
+            InventoryScroll_SetSelectedRow(controller,
                           FIELD(s32, state, 0x2b4 + channel * 4));
 
             const u8 *descriptors =
@@ -71,7 +71,7 @@ extern "C" void func_ov021_021fe520(void *state)
                 FIELD(s16, row, 8) = 0;
                 FIELD(s16, row, 0xa) = (s16)(i * 0x18);
             }
-            func_ov021_021fd254(list);
+            Overlay021List_SyncFirstVisibleRow(list);
         } else {
             FIELD(void *, state, 0x2a4 + channel * 4) = 0;
         }

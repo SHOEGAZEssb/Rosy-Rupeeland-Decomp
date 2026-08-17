@@ -4,7 +4,7 @@
 
     .extern PresentationScalar_SetImmediate
     .extern Presentation_UpdateScript
-    .extern func_020956a4
+    .extern AlternateSpritePresentation_SyncTransform
     .extern data_020c9670
 
 
@@ -75,7 +75,7 @@ L_021fdcc8:
     bl Presentation_UpdateScript
     mov r5, r0
     mov r0, r4
-    bl func_020956a4
+    bl AlternateSpritePresentation_SyncTransform
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdce4: .word data_020c9670

@@ -21,9 +21,9 @@ typedef struct Overlay001ActiveCellTransferState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u8 *func_02062e00(void *cell);
-extern s32 func_0206514c(void *table, u16 key);
-extern void func_02062874(void *cell, s32 value);
+extern u8 *InventoryRecord_GetMetadata(void *cell);
+extern s32 InventoryRecordCollection_FindIdAlternate(void *table, u16 key);
+extern void ActorDescriptor_SetQuantity(void *cell, s32 value);
 extern void func_ov001_021fc460(Overlay001ActiveCellTransferState *state,
                                 s32 index);
 extern void func_ov001_021fc404(Overlay001ActiveCellTransferState *state,
@@ -54,10 +54,10 @@ void func_ov001_021fc88c(Overlay001ActiveCellTransferState *state)
     void *secondary;
     u16 quantity;
 
-    if (func_02062e00(cell)[2] != 1 || FIELD(u16, cell, 0x04) == 0) {
+    if (InventoryRecord_GetMetadata(cell)[2] != 1 || FIELD(u16, cell, 0x04) == 0) {
         return;
     }
-    tableIndex = func_0206514c(state->secondaryTable_208,
+    tableIndex = InventoryRecordCollection_FindIdAlternate(state->secondaryTable_208,
                               FIELD(u16, cell, 0x00));
     if (tableIndex < 0) {
         return;
@@ -65,8 +65,8 @@ void func_ov001_021fc88c(Overlay001ActiveCellTransferState *state)
     quantity = FIELD(u16, cell, 0x04);
     secondary = (u8 *)FIELD(void *, state->secondaryTable_208, 0x04) +
                 tableIndex * 0x24;
-    func_02062874(cell, quantity);
-    func_02062874(secondary,
+    ActorDescriptor_SetQuantity(cell, quantity);
+    ActorDescriptor_SetQuantity(secondary,
                   (u16)(quantity + FIELD(u16, secondary, 0x04)));
     if (state->transient_01c != 0) {
         FIELD(u16, state->transient_01c, 0x32) = 0x100;

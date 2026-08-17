@@ -9,7 +9,7 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092260
 .extern func_02092c8c
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern Presentation_InterpolateScalar
 .extern func_02095820
 .extern func_02095860
@@ -101,7 +101,7 @@ L_021ff6bc:
     cmp r0, #0x0
     beq L_021ff710
     ldr r0, [r4, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
     bl func_02092260
@@ -122,7 +122,7 @@ L_021ff710:
     cmp r0, #0x0
     beq L_021ff778
     ldr r0, [r4, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
     bl func_02092260
@@ -154,7 +154,7 @@ L_021ff788:
     cmp r0, #0x0
     beq L_021ff7ec
     ldr r0, [r4, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
     bl func_02092260

@@ -5,11 +5,11 @@
     .extern data_ov021_02202ee8
     .extern func_02092260
     .extern func_02092288
-    .extern func_02093de4
-    .extern func_02093ffc
-    .extern func_020946a8
-    .extern func_020946c8
-    .extern func_02094738
+    .extern InventoryScroll_SaveOrigins
+    .extern InventoryScroll_UpdateInterpolation
+    .extern InventoryScroll_BeginMarkerDrag
+    .extern InventoryScroll_UpdateMarkerDrag
+    .extern InventoryScroll_EndMarkerDrag
     .extern func_ov000_021fc460
     .extern func_ov000_021fc560
     .extern func_ov001_021fc250
@@ -49,7 +49,7 @@ L_0220011c:
 L_02200144:
     mov r0, r4
     mov r1, #0x4
-    bl func_020946a8
+    bl InventoryScroll_BeginMarkerDrag
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -57,7 +57,7 @@ L_02200144:
     str r0, [r5, #0x8]
 L_02200164:
     mov r0, r4
-    bl func_02093ffc
+    bl InventoryScroll_UpdateInterpolation
     cmp r0, #0x0
     beq L_022001b4
     ldr r1, [r4, #0xc]
@@ -145,10 +145,10 @@ L_02200268:
     b L_02200344
 L_022002a8:
     mov r0, r4
-    bl func_02093de4
+    bl InventoryScroll_SaveOrigins
     mov r0, r4
     add r1, r5, #0x30
-    bl func_020946c8
+    bl InventoryScroll_UpdateMarkerDrag
     cmp r0, #0x0
     beq L_02200344
     mov r0, r5
@@ -163,7 +163,7 @@ L_022002a8:
 L_022002e8:
     mov r0, r4
     mov r1, #0x6
-    bl func_02094738
+    bl InventoryScroll_EndMarkerDrag
     ldr r0, [r5, #0x354]
     cmp r0, #0x0
     beq L_02200314

@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_020be334
+.extern SignedAbsoluteValue
 
     .global func_02031564
     .type func_02031564, @function
@@ -57,7 +57,7 @@ func_02031564: ; 0x02031564
     add r1, r0, #0x2000
     mov r0, #0x0
     ldr r7, [r1, #0xe7c]
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x2000
     bge .L_020316dc
     ldr r2, [r7, #0x54]
@@ -76,7 +76,7 @@ func_02031564: ; 0x02031564
     ldrsh r2, [r4, #0x2e]
     sub r0, r1, r0
     sub r6, r3, r2
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x1e
     bge .L_020316dc
     cmp r6, #0x0
@@ -96,7 +96,7 @@ func_02031564: ; 0x02031564
     ldrsh r2, [r4, #0x2e]
     sub r0, r1, r0
     sub r6, r3, r2
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x1e
     cmplt r6, #0x0
     bge .L_020316dc

@@ -17,8 +17,8 @@ extern "C" {
 #endif
 extern void *gSoundContext;
 extern void GraphicsSpriteGroup_Destroy(void *resource);
-extern void func_020597fc(void *context, s32 value);
-extern void func_02071eb8(void *resource);
+extern void Sound_ReleaseGroup(void *context, s32 value);
+extern void AnimationResourceState_Destroy(void *resource);
 #ifdef __cplusplus
 }
 #endif
@@ -36,7 +36,7 @@ Overlay002PresentationDestroyState *func_ov002_021fb9c4(
 {
     GraphicsSpriteGroup_Destroy(state->resourceA_010);
     GraphicsSpriteGroup_Destroy(state->resourceB_014);
-    func_020597fc(gSoundContext, 0x79);
-    func_02071eb8(state->resource_004);
+    Sound_ReleaseGroup(gSoundContext, 0x79);
+    AnimationResourceState_Destroy(state->resource_004);
     return state;
 }

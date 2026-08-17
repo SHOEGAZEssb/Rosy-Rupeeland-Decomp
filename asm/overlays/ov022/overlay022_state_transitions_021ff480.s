@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_ov022_02200508
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_0205974c
+.extern Sound_LoadGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02095940
 .extern func_ov022_021fdd1c
@@ -26,7 +26,7 @@ func_ov022_021ff480:
     ldr r0, L_021ff524
     ldr r1, L_021ff528
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     ldr r0, L_021ff524
     ldr r1, L_021ff528
     ldr r0, [r0, #0x0]

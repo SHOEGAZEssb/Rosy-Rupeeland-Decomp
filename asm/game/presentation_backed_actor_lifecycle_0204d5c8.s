@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/presentation_backed_actor_lifecycle.c.
-.extern func_02030f98
+.extern ActorRuntimeBase_Init
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .extern func_02031488
 .extern func_0203130c
@@ -11,7 +11,7 @@
 PresentationBackedActor_InitBase:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r0, .L_0204d618
     mov r1, #0x0
     str r0, [r4, #0x0]
@@ -37,7 +37,7 @@ PresentationBackedActor_InitBase:
 PresentationBackedActor_Init:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r0, .L_0204d670
     mov r1, #0x0
     str r0, [r4, #0x0]

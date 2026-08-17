@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_selection_display.c. */
     .extern data_020f4e14
-    .extern func_020628c8
+    .extern ActorDescriptor_GetPrimaryLabel
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
@@ -37,7 +37,7 @@ func_ov021_021ff504:
     ldr r1, [r5, #0x64]
     bl GraphicsSpriteRenderer_SetFontResource
     mov r0, r4
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r1, #0xe
     str r1, [sp, #0x0]
     mov r1, #0x4

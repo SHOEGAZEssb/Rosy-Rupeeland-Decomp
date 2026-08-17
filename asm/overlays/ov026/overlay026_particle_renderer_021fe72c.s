@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_particle_renderer.c. */
 .extern data_020c9670
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_ov026_021fd900
 .extern func_ov026_021fd964
 
@@ -56,7 +56,7 @@ L_021fe7c4:
     mov r5, r0
     mov r1, #0x1000
     add r0, r10, #0xc0
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r0, r0, lsl #0x14
     mov r0, r0, lsr #0x10
     ldr r2, [r10, #0xa8]

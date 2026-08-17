@@ -10,7 +10,7 @@ extern void *data_021e9ac0;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020651a4(void *);
+extern s32 ActorDescriptorState_FindInactiveQuantity(void *);
 #ifndef MATCHING
 extern void TingleNativeG3_SetMaterial(u32 value);
 #endif
@@ -55,7 +55,7 @@ extern "C" s32 func_ov017_021ff544(void *state)
  * decrement it; return one only when its pre-decrement value equaled +4. The
  * timer changes in place and no SDK or hardware state is touched.
  */
-extern "C" s32 func_ov017_0220087c(void *timer)
+extern "C" s32 Overlay017Timer_Tick(void *timer)
 {
     u32 current = FIELD(u32, timer, 0);
     if (current == 0) {
@@ -87,5 +87,5 @@ extern "C" void func_ov017_02200a8c(u32 low, u32 high, s32 enabled)
  */
 extern "C" s32 func_ov017_02200bf8(void)
 {
-    return func_020651a4((u8 *)data_021e9ac0 + 0x1c) >= 0x63;
+    return ActorDescriptorState_FindInactiveQuantity((u8 *)data_021e9ac0 + 0x1c) >= 0x63;
 }

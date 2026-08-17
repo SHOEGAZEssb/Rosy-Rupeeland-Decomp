@@ -6,10 +6,10 @@
     .extern ActorDerivedType1_StartRecord
     .extern func_02062a10
     .extern func_02062db0
-    .extern func_02062e00
+    .extern InventoryRecord_GetMetadata
     .extern func_ov001_021fc7e4
     .extern func_ov015_021fce30
-    .extern func_ov015_021fd68c
+    .extern Overlay015_UpdateRecords
     .extern func_ov015_021fe548
     .extern gGameWork
 
@@ -52,23 +52,23 @@ L_021fea18:
     bl func_ov001_021fc7e4
     ldr r4, [r0, #0xc]
     mov r0, r4
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrb r0, [r0, #0x2]
     cmp r0, #0x2
     bne L_021feab0
     mov r0, r4
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrh r0, [r0, #0x4]
     cmp r0, #0x1
     beq L_021fea74
     mov r0, r4
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrh r0, [r0, #0x4]
     cmp r0, #0x2
     bne L_021feab0
 L_021fea74:
     mov r0, r4
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrh r0, [r0, #0x4]
     cmp r0, #0x1
     bne L_021fea9c
@@ -106,7 +106,7 @@ L_021feadc:
     bl func_ov015_021fce30
 L_021feafc:
     mov r0, r5
-    bl func_ov015_021fd68c
+    bl Overlay015_UpdateRecords
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_021feb0c: .word gGameWork

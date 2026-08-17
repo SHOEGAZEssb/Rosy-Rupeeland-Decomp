@@ -9,9 +9,9 @@
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fe144
+    .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe6b0
-    .extern func_ov021_021fee14
+    .extern Overlay021_DestroyAuxiliaryPanel
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
     .extern func_ov021_021ff050
@@ -42,7 +42,7 @@ L_022011ec:
     cmp r0, #0x0
     beq L_022012d4
     mov r0, r4
-    bl func_ov021_021fee14
+    bl Overlay021_DestroyAuxiliaryPanel
     mov r0, r4
     bl func_ov021_021fe6b0
     ldr r1, [r4, #0x2c4]
@@ -71,7 +71,7 @@ L_0220123c:
     b L_022012d4
 L_02201264:
     mov r0, r4
-    bl func_ov021_021fe144
+    bl Overlay021_SetupMainBackground
     ldr r0, [r4, #0x2c0]
     bl func_ov021_021fd1cc
     ldr r0, [r4, #0x2c0]

@@ -9,10 +9,10 @@
 .extern MIi_CpuCopy16
 .extern gPaletteCyclePresentationVtable
 .extern data_020f4e18
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern PaletteCyclePresentation_AdvancePalette
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02091b6c
 .extern func_02091b98
 .extern func_02091bd0

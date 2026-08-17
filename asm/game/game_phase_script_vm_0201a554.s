@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_02058ce0
+.extern Sound_StopAllManagedPlayers
 .extern func_02059218
 .extern func_02059510
 .extern func_020595d4
@@ -53,7 +53,7 @@ L_0201a5cc:
 L_0201a5dc:
     ldr r0, L_0201a610
     ldr r0, [r0, #0x0]
-    bl func_02058ce0
+    bl Sound_StopAllManagedPlayers
     b L_0201a608
 L_0201a5ec:
     ldr r0, L_0201a610

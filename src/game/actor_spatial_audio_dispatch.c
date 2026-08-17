@@ -8,7 +8,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void *ActorMotionAreaFollower_GetPosition(void *state);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern s32 func_020adc40(s32 value);
 extern void func_020593ac(void *soundContext, u32 soundId, u32 variant,
@@ -40,7 +40,7 @@ void func_020349b8(void *self, u32 sound, s32 extra)
     pan = (*(s32 *)(actor + 0x1c) - *(s32 *)(reference + 4) - 0x80000) >> 12;
     if (pan < -96) pan = -96;
     if (pan > 96) pan = 96;
-    volume = 96 - func_020adae4(func_020be328(pan), 3);
+    volume = 96 - func_020adae4(SignedAbsoluteValueVariant(pan), 3);
     func_020593ac(gSoundContext, sound >> 7, sound & 0x7f,
                   volume, pan, extra);
 }
@@ -68,7 +68,7 @@ void func_02034a60(void *self, u32 sound, s32 extra)
     if (y < -255 || y > 255) return;
 
     distance = func_020adc40((x * x + y * y) << 12) >> 12;
-    volume = 96 - func_020adae4(func_020be328(distance), 3);
+    volume = 96 - func_020adae4(SignedAbsoluteValueVariant(distance), 3);
     func_020593ac(gSoundContext, sound >> 7, sound & 0x7f,
                   volume, x / 2, extra);
 }

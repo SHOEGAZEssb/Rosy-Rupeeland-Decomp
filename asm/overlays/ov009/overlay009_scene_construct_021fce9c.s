@@ -20,16 +20,16 @@
     .extern data_ov009_021feec0
     .extern data_ov009_021feed4
     .extern Heap_AllocCore
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02072048
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern func_02092364
     .extern func_020923a4
     .extern func_02092638
-    .extern func_02092850
-    .extern func_0209285c
+    .extern TitlePalette_SetMainBackdrop
+    .extern TitlePalette_SetSubBackdrop
     .extern func_020b44e8
     .extern func_020b4554
     .extern func_ov009_021fce00
@@ -49,13 +49,13 @@ func_ov009_021fce9c: ; 0x021fce9c
     mov r10, r0
     bl Scene_Init
     add r0, r10, #0x24
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r0, L_021fd168
     ldr r1, L_021fd16c
     str r0, [r10, #0x0]
     add r0, r10, #0x78
     str r1, [r10, #0x24]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x13c
     bl func_02092364
     add r0, r10, #0x13c
@@ -205,9 +205,9 @@ L_021fcf84:
     orr r0, r0, r1, lsl #0xa
     mov r0, r0, lsl #0x10
     mov r0, r0, lsr #0x10
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     mov r0, #0x0
-    bl func_0209285c
+    bl TitlePalette_SetSubBackdrop
     mov r0, r10
     bl Scene_SetFlags03
     ldr r1, L_021fd194

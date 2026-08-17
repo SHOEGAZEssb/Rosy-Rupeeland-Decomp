@@ -19,7 +19,7 @@ extern "C" {
 
 extern void *func_02071568(void *archive, u32 resourceId);
 extern void *func_020716bc(void *archive, u32 resourceId);
-extern void *func_02071a24(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireVpoResource(void *archive, u32 resourceId);
 extern void func_02071bdc(void *archive, void *resource);
 extern void func_02071c38(void *archive, void *resource);
 extern void func_02071da8(void *archive, void *resource);
@@ -54,7 +54,7 @@ GraphicsResourceSet *GraphicsResourceSetVariant_Destroy(
 /*
  * Replace set's handles with the three IDs loaded from archive. Existing
  * resources are released first when resource0 is non-null. The third handle
- * uses the distinct func_02071a24 family; the function returns no value.
+ * uses the distinct GraphicsArchive_AcquireVpoResource family; the function returns no value.
  */
 void GraphicsResourceSetVariant_Load(GraphicsResourceSet *set, void *archive,
                                      u32 resource0Id, u32 resource1Id,
@@ -66,7 +66,7 @@ void GraphicsResourceSetVariant_Load(GraphicsResourceSet *set, void *archive,
 
     set->resource0 = func_02071568(archive, resource0Id);
     set->resource1 = func_020716bc(archive, resource1Id);
-    set->resource2 = func_02071a24(archive, resource2Id);
+    set->resource2 = GraphicsArchive_AcquireVpoResource(archive, resource2Id);
 }
 
 /*

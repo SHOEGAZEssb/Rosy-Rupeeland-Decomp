@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_ov028_021ff29c
 .extern data_ov028_021ff2ac
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern GraphicsSpriteGroup_Destroy
@@ -84,11 +84,11 @@ L_021fe030:
     add r0, r4, #0x98
     bl func_ov028_021fda94
     add r0, r4, #0x74
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x68
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x5c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe09c: .word data_ov028_021ff2ac
@@ -154,11 +154,11 @@ L_021fe130:
     add r0, r4, #0x98
     bl func_ov028_021fda94
     add r0, r4, #0x74
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x68
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x5c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

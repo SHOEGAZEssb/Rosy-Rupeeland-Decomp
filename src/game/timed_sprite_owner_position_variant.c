@@ -31,7 +31,7 @@ extern OwnerPositionTimedSprite *func_0201e6e4(
     OwnerPositionTimedSprite *self, u8 *owner, u8 *config, s32 spriteValue);
 extern OwnerPositionTimedSprite *func_0201e380(
     OwnerPositionTimedSprite *self);
-extern void func_0201e3b8(OwnerPositionTimedSprite *self, s32 enabled);
+extern void TimedSpritePresentation_SetVisible(OwnerPositionTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
@@ -79,7 +79,7 @@ s32 func_0201ed1c(OwnerPositionTimedSprite *self)
 {
     self->remaining28--;
     if (self->remaining28 < 0 || (*(u16 *)(self->sprite + 0x24) & 1) != 0) {
-        func_0201e3b8(self, 0);
+        TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
     VecFx32Object_Assign(&self->first08, self->owner2c + 0x18);

@@ -4,8 +4,8 @@
     .extern OverlaySlot_UnloadOverlay
     .extern func_ov002_021fb9c4
 
-.global func_ov021_021fee14
-func_ov021_021fee14:
+.global Overlay021_DestroyAuxiliaryPanel
+Overlay021_DestroyAuxiliaryPanel:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r4, [r5, #0x390]
@@ -23,5 +23,5 @@ L_021fee3c:
     str r1, [r5, #0x390]
     bl OverlaySlot_UnloadOverlay
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov021_021fee14, . - func_ov021_021fee14
+    .size Overlay021_DestroyAuxiliaryPanel, . - Overlay021_DestroyAuxiliaryPanel
 

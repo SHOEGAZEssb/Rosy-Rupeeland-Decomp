@@ -28,14 +28,14 @@ extern s32 func_ov000_021fc538(void *);
 extern s32 func_ov000_021fc5ac(void *, void *);
 extern void func_ov000_021fc9d4(void *);
 extern void func_ov000_021fca4c(void *, s32);
-extern void *func_ov000_021fcad8(void *);
+extern void *Overlay000_GetActiveMetadata(void *);
 extern s32 func_ov000_021fcb98(void *, void *);
 extern s32 func_ov000_021fcc18(void *, void *);
 extern s32 func_ov000_021fcca8(void *, void *);
 extern s32 func_ov000_021fccfc(void *, void *);
 extern void *func_ov016_021fe584(void *, void *, s32);
 extern s32 func_ov016_021fe728(void *);
-extern void func_ov016_021fe754(void *, u32, u32);
+extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ffc2c(void *);
 extern void func_ov016_021ffd84(void *);
@@ -86,17 +86,17 @@ extern "C" s32 func_ov016_02200900(void *state)
             selected = func_ov000_021fc298(list, (u8 *)state + 0x30);
             if (func_ov000_021fcc18(list, (u8 *)state + 0x30) == 0) {
                 if (func_ov000_021fccfc(list, (u8 *)state + 0x30) != 0) {
-                    func_ov016_021fe754(state, data_ov016_02201498[0],
+                    Overlay016ActorValue_Init(state, data_ov016_02201498[0],
                                         data_ov016_02201498[1]);
                     break;
                 }
                 if (selected >= 0) {
                     if (selected == FIELD(s32, list, 0x25c)) {
-                        void *entry = func_ov000_021fcad8(list);
+                        void *entry = Overlay000_GetActiveMetadata(list);
                         void *child = FIELD(void *, entry, 0xc);
                         if (child != 0 && FIELD(void *, entry, 0x1c) != 0 &&
                             (FIELD(u32, child, 0x20) & 1) == 0) {
-                            func_ov016_021fe754(state,
+                            Overlay016ActorValue_Init(state,
                                                 data_ov016_02201490[0],
                                                 data_ov016_02201490[1]);
                         } else {
@@ -112,11 +112,11 @@ extern "C" s32 func_ov016_02200900(void *state)
                                                (u8 *)state + 0x30) != 0) {
                     func_02092260(state, 3);
                     if (FIELD(s32, state, 0x54) == 1) {
-                        func_ov016_021fe754(state,
+                        Overlay016ActorValue_Init(state,
                                             data_ov016_02201488[0],
                                             data_ov016_02201488[1]);
                     } else {
-                        func_ov016_021fe754(state,
+                        Overlay016ActorValue_Init(state,
                                             data_ov016_02201418[0],
                                             data_ov016_02201418[1]);
                     }
@@ -127,7 +127,7 @@ extern "C" s32 func_ov016_02200900(void *state)
                     func_02092260(state, 2);
                     if (FIELD(s32, state, 0x54) == 1) {
                         FIELD(s32, state, 0x478) = 1;
-                        func_ov016_021fe754(state,
+                        Overlay016ActorValue_Init(state,
                                             data_ov016_02201478[0],
                                             data_ov016_02201478[1]);
                     } else {
@@ -153,7 +153,7 @@ extern "C" s32 func_ov016_02200900(void *state)
                                             (u8 *)state + 0x30,
                                             FIELD(s32, state, 0x54));
                     if (FIELD(void *, state, 0x474) != 0) {
-                        func_ov016_021fe754(state,
+                        Overlay016ActorValue_Init(state,
                                             data_ov016_02201470[0],
                                             data_ov016_02201470[1]);
                     }
@@ -180,7 +180,7 @@ extern "C" s32 func_ov016_02200900(void *state)
         break;
     case 10:
         if (func_ov016_021fe728((u8 *)FIELD(void *, state, 0x470) + 0x20) != 0) {
-            func_ov016_021fe754(state, data_ov016_02201468[0],
+            Overlay016ActorValue_Init(state, data_ov016_02201468[0],
                                 data_ov016_02201468[1]);
         }
         break;

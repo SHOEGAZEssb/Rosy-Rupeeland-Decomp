@@ -14,7 +14,7 @@
 .extern func_020573e4
 .extern func_020593ac
 .extern func_020adae4
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern func_ov081_02212de0
 .extern func_ov081_02214524
 .extern gSoundContext
@@ -78,7 +78,7 @@ func_ov081_02214104:
     movgt r4, #0x60
 .L_022141e0:
     mov r0, r4
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r1, #0x3
     bl func_020adae4
     mov r2, #0x100
@@ -277,7 +277,7 @@ func_ov081_02214104:
     movgt r4, #0x60
 .L_022144bc:
     mov r0, r4
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r1, #0x3
     bl func_020adae4
     mov r1, #0x5

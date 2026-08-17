@@ -6,12 +6,12 @@
 .extern data_020f4e18
 .extern data_021f5f18
 .extern data_ov032_02202350
-.extern func_02071980
+.extern GraphicsArchive_AcquireVfdResource
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
-.extern func_02094550
-.extern func_02094574
-.extern func_ov032_02201450
+.extern InventoryScroll_SetSpritePriority
+.extern InventoryScroll_UpdatePresentation
+.extern Overlay032Controller_CreateObject
 .extern func_ov032_022014c0
 .extern func_ov032_02201f80
 .extern gHeapContext
@@ -36,7 +36,7 @@ func_ov032_0220173c:
     ldr r2, [r4, #0x0]
     add r0, r4, #0x18
     ldr r1, [r2], #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x24
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -60,7 +60,7 @@ func_ov032_0220173c:
     strh r3, [r5, #0x24]
     str r2, [r4, #0x4]
     ldr r0, [r0, #0x0]
-    bl func_02071980
+    bl GraphicsArchive_AcquireVfdResource
     str r0, [r4, #0x48]
     ldr r0, L_02201894
     ldr r1, [r4, #0x48]
@@ -97,9 +97,9 @@ func_ov032_0220173c:
 L_0220186c:
     str r0, [r4, #0x4c]
     mov r1, #0x2
-    bl func_02094550
+    bl InventoryScroll_SetSpritePriority
     ldr r0, [r4, #0x4c]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, pc}
 L_02201888: .word data_021f5f18

@@ -1,10 +1,10 @@
     .text
     .extern data_ov004_021fcda0
     .extern gSoundContext
-    .extern func_020597fc
+    .extern Sound_ReleaseGroup
     .extern GraphicsSpriteGroup_Destroy
     .extern func_ov004_021fb6e0
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern Heap_Free
     .global func_ov004_021fb8e4
 func_ov004_021fb8e4: ; 0x021fb8e4
@@ -20,7 +20,7 @@ func_ov004_021fb8e4: ; 0x021fb8e4
     blt L_021fb918
     ldr r0, L_021fb964
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
 L_021fb918:
     ldr r0, [r4, #0x68]
     cmp r0, #0x0
@@ -36,7 +36,7 @@ L_021fb930:
     add r0, r4, #0x6c
     bl func_ov004_021fb6e0
     add r0, r4, #0x54
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

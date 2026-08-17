@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_widget_helpers.c for documented portable C. */
 .extern func_020befec
 
-    .global func_ov032_02201de4
-func_ov032_02201de4:
+    .global Overlay032Widget_HitTestRow
+Overlay032Widget_HitTestRow:
     stmdb sp!, {r4, lr}
     ldr r2, [r1, #0x4]
     ldr r1, [r1, #0x8]
@@ -34,5 +34,5 @@ func_ov032_02201de4:
     cmp r0, r1
     mvnge r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_ov032_02201de4, .-func_ov032_02201de4
+.size Overlay032Widget_HitTestRow, .-Overlay032Widget_HitTestRow
 

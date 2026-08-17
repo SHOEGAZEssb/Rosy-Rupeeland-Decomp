@@ -16,7 +16,7 @@
     .extern Graphics3DLightSet_Init
     .extern Graphics3DSceneState_Init
     .extern Graphics3DResourceBinding_Init
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern func_02092364
     .extern func_020923a4
     .extern func_02092638
@@ -52,7 +52,7 @@ func_ov012_021fd170:
     mov r4, r0
     bl Scene_Init
     add r0, r4, #0x24
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r0, L_021fd424
     ldr r1, L_021fd428
     str r0, [r4]

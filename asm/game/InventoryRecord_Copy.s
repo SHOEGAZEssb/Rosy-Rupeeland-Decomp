@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/game/inventory_record_sort.c.
-.extern func_020635f4
+.extern ActorAttachmentDescriptor_CopyPayload
 
-.global func_02064b7c
-func_02064b7c:
+.global InventoryRecord_Copy
+InventoryRecord_Copy:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     ldrh r1, [r4, #0x0]
@@ -21,12 +21,12 @@ func_02064b7c:
     str r2, [r5, #0x8]
     ldr r2, [r4, #0xc]
     str r2, [r5, #0xc]
-    bl func_020635f4
+    bl ActorAttachmentDescriptor_CopyPayload
     add r0, r5, #0x18
     add r1, r4, #0x18
-    bl func_020635f4
+    bl ActorAttachmentDescriptor_CopyPayload
     ldr r1, [r4, #0x20]
     mov r0, r5
     str r1, [r5, #0x20]
     ldmia sp!, {r3, r4, r5, pc}
-.size func_02064b7c, . - func_02064b7c
+.size InventoryRecord_Copy, . - InventoryRecord_Copy

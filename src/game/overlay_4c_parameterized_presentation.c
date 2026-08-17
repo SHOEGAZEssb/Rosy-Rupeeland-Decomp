@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void *data_020d68bc;
 extern const char gOverlay4cParameterizedComponentAllocationTag[];
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
@@ -39,7 +39,7 @@ extern s32 data_ov089_022198e8(void *);
 Overlay4cParameterizedPresentation *func_0202432c(
     Overlay4cParameterizedPresentation *self, void *first, void *second)
 {
-    func_0201e250(self);self->vtable00=(void **)data_020d68bc;
+    TimedSpritePresentation_InitBase(self);self->vtable00=(void **)data_020d68bc;
     OverlaySlot_Init(self->helper0c);OverlaySlot_LoadOverlay(self->helper0c,0x5e);
     self->component08=Heap_Alloc(0x4c,gOverlay4cParameterizedComponentAllocationTag,4,&gHeapContext);
     if(self->component08)self->component08=func_ov094_02219568(self->component08,first,second);

@@ -12,10 +12,10 @@
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
 .extern GamePhaseCurrencyHud_SetVisible
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern func_02092c8c
 .extern func_ov001_021fbe6c
 .extern gDebugFont
@@ -77,7 +77,7 @@ func_020223d4: ; 0x020223d4
 .L_02022484:
     ldr r0, [r4, #0xc]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     ldr r0, .L_02022524
     ldr r1, .L_02022528
     ldr r0, [r0, #0x0]

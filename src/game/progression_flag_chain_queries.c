@@ -16,14 +16,14 @@ extern s32 GameWork_TestFlag(void *work, s32 flag);
 extern void GameWork_SetFlag(void *work, s32 flag);
 extern void GameWork_ClearFlag(void *work, s32 flag);
 
-extern s32 func_02085668(void);
-extern s32 func_020859e8(void);
-extern s32 func_02086054(void);
-extern s32 func_02086264(void);
-extern s32 func_02087ddc(void);
-extern s32 func_0208821c(void);
-extern s32 func_0208514c(void);
-extern s32 func_02085f38(void);
+extern s32 ProgressionFlags_TestGateBE5_7DC_7F3_8B5_7A8(void);
+extern s32 ProgressionFlags_TestGateBE6_7EB_7FB_8D1_8B3(void);
+extern s32 ProgressionFlags_TestGate800_801(void);
+extern s32 ProgressionFlags_TestGateBE8_815_82F_817_827_829_8D3_825(void);
+extern s32 ProgressionFlags_TestGate8B8_7B9_7F7(void);
+extern s32 ProgressionFlags_TestGate8CE_80B(void);
+extern s32 ProgressionFlags_TestMilestoneBE4(void);
+extern s32 ProgressionFlags_TestGate7FA_7FC(void);
 
 static s32 AllFlags(const u16 *flags, u32 count)
 {
@@ -40,7 +40,7 @@ static s32 AllFlags(const u16 *flags, u32 count)
  * callback tables.  The call borrows gGameWork, sets flags 0x25a, 0x75f,
  * 0x73b, and 0x746, and clears the mutually exclusive flag 0x25d.
  */
-void func_0208b590(void)
+void ProgressionFlags_SetInitialMilestone(void)
 {
     GameWork_SetFlag(gGameWork, 0x25a);
     GameWork_SetFlag(gGameWork, 0x75f);
@@ -53,9 +53,9 @@ void func_0208b590(void)
  * Complete the rupee-pond progression callback by establishing the shared
  * initial milestone, then set its two scene-specific completion flags.
  */
-void func_0208b600(void)
+void ProgressionFlags_SetRupeePondCompletion(void)
 {
-    func_0208b590();
+    ProgressionFlags_SetInitialMilestone();
     GameWork_SetFlag(gGameWork, 0x25e);
     GameWork_SetFlag(gGameWork, 0x760);
 }
@@ -64,11 +64,11 @@ void func_0208b600(void)
  * Complete the related progression callback by establishing the shared
  * milestone and setting its three retail completion flags. The only borrowed
  * object is gGameWork; the observable effect is the four set/clear operations
- * performed by func_0208b590 followed by flags 0x398, 0x76b, and 0x1f0.
+ * performed by ProgressionFlags_SetInitialMilestone followed by flags 0x398, 0x76b, and 0x1f0.
  */
-void func_0208bb0c(void)
+void ProgressionFlags_SetRelatedCompletion398_76B_1F0(void)
 {
-    func_0208b590();
+    ProgressionFlags_SetInitialMilestone();
     GameWork_SetFlag(gGameWork, 0x398);
     GameWork_SetFlag(gGameWork, 0x76b);
     GameWork_SetFlag(gGameWork, 0x1f0);
@@ -89,7 +89,7 @@ void ProgressionFlags_SetGate756And794(void)
 }
 
 /* Require both retail flags used by the bedroom-to-field availability gate. */
-s32 func_02083d84(void)
+s32 ProgressionFlags_TestGate396_765(void)
 {
     static const u16 flags[] = {0x396, 0x765};
     return AllFlags(flags, 2);
@@ -103,7 +103,7 @@ s32 func_02083d38(void)
 }
 
 /* Require the three retail progression flags 0x2c8, 0x767, and 0x74b. */
-s32 func_02084018(void)
+s32 ProgressionFlags_TestGate2C8_767_74B(void)
 {
     static const u16 flags[] = {0x2c8, 0x767, 0x74b};
     return AllFlags(flags, 3);
@@ -149,7 +149,7 @@ s32 func_02083ba4(void)
 }
 
 /* Extend the chain through the eight area/progression flags used at 0x840dc. */
-s32 func_020840dc(void)
+s32 ProgressionFlags_TestMilestoneBE1(void)
 {
     static const u16 flags[] = {
         0xbe1, 0x769, 0x078, 0x079, 0x399, 0x770, 0x78c, 0x749
@@ -158,129 +158,129 @@ s32 func_020840dc(void)
 }
 
 /* Extend the chain through the eight flags used at 0x845a0. */
-s32 func_020845a0(void)
+s32 ProgressionFlags_TestMilestoneBE2(void)
 {
     static const u16 flags[] = {
         0xbe2, 0x774, 0x78e, 0x77a, 0x78a, 0x7f9, 0x74e, 0x7ae
     };
-    return func_020840dc() && AllFlags(flags, 8);
+    return ProgressionFlags_TestMilestoneBE1() && AllFlags(flags, 8);
 }
 
 /* Extend the chain through the eight flags used at 0x849f4. */
-s32 func_020849f4(void)
+s32 ProgressionFlags_TestMilestoneBE3(void)
 {
     static const u16 flags[] = {
         0xbe3, 0x786, 0x796, 0x79a, 0x7c7, 0x79e, 0x794, 0x7ca
     };
-    return func_020845a0() && AllFlags(flags, 8);
+    return ProgressionFlags_TestMilestoneBE2() && AllFlags(flags, 8);
 }
 
 /* Return the final indexed-handler milestone state. */
 s32 func_020857ac(void)
 {
     static const u16 flags[] = {0x7cb, 0x80d};
-    return func_020849f4() && AllFlags(flags, 2);
+    return ProgressionFlags_TestMilestoneBE3() && AllFlags(flags, 2);
 }
 
 /* Require the paired flags used by the shared 0x84e10 prerequisite. */
-s32 func_02084b58(void)
+s32 ProgressionFlags_TestGate756_794(void)
 {
     static const u16 flags[] = {0x756, 0x794};
     return AllFlags(flags, 2);
 }
 
 /* Join 0x84b58 and 0x849f4, then require its three ordered flags. */
-s32 func_02084e10(void)
+s32 ProgressionFlags_TestGate795_8B7_7CC(void)
 {
     static const u16 flags[] = {0x795, 0x8b7, 0x7cc};
-    return func_02084b58() && func_020849f4() && AllFlags(flags, 3);
+    return ProgressionFlags_TestGate756_794() && ProgressionFlags_TestMilestoneBE3() && AllFlags(flags, 3);
 }
 
 /* Extend the 0x8514c milestone with the five flags preceding 0x859e8. */
-s32 func_02085668(void)
+s32 ProgressionFlags_TestGateBE5_7DC_7F3_8B5_7A8(void)
 {
     static const u16 flags[] = {0xbe5, 0x7dc, 0x7f3, 0x8b5, 0x7a8};
-    return func_0208514c() && AllFlags(flags, 5);
+    return ProgressionFlags_TestMilestoneBE4() && AllFlags(flags, 5);
 }
 
 /* Extend 0x85668 with the five ordered flags used by 0x859e8. */
-s32 func_020859e8(void)
+s32 ProgressionFlags_TestGateBE6_7EB_7FB_8D1_8B3(void)
 {
     static const u16 flags[] = {0xbe6, 0x7eb, 0x7fb, 0x8d1, 0x8b3};
-    return func_02085668() && AllFlags(flags, 5);
+    return ProgressionFlags_TestGateBE5_7DC_7F3_8B5_7A8() && AllFlags(flags, 5);
 }
 
 /* Extend 0x85f38 through progression flags 0x800 and 0x801. */
-s32 func_02086054(void)
+s32 ProgressionFlags_TestGate800_801(void)
 {
     static const u16 flags[] = {0x800, 0x801};
-    return func_02085f38() && AllFlags(flags, 2);
+    return ProgressionFlags_TestGate7FA_7FC() && AllFlags(flags, 2);
 }
 
 /* Extend 0x85f38 through the eight flags used by 0x86264. */
-s32 func_02086264(void)
+s32 ProgressionFlags_TestGateBE8_815_82F_817_827_829_8D3_825(void)
 {
     static const u16 flags[] = {
         0xbe8, 0x815, 0x82f, 0x817, 0x827, 0x829, 0x8d3, 0x825
     };
-    return func_02085f38() && AllFlags(flags, 8);
+    return ProgressionFlags_TestGate7FA_7FC() && AllFlags(flags, 8);
 }
 
 /* Extend 0x84e10 with progression flags 0x8b8, 0x7b9, and 0x7f7. */
-s32 func_02087ddc(void)
+s32 ProgressionFlags_TestGate8B8_7B9_7F7(void)
 {
     static const u16 flags[] = {0x8b8, 0x7b9, 0x7f7};
-    return func_02084e10() && AllFlags(flags, 3);
+    return ProgressionFlags_TestGate795_8B7_7CC() && AllFlags(flags, 3);
 }
 
 /* Extend 0x87ddc with progression flags 0x7c0, 0x8cd, and 0x7d2. */
-s32 func_0208552c(void)
+s32 ProgressionFlags_TestGate7C0_8CD_7D2(void)
 {
     static const u16 flags[] = {0x7c0, 0x8cd, 0x7d2};
-    return func_02087ddc() && AllFlags(flags, 3);
+    return ProgressionFlags_TestGate8B8_7B9_7F7() && AllFlags(flags, 3);
 }
 
 /* Extend 0x8552c with progression flags 0x8ce and 0x80b. */
-s32 func_0208821c(void)
+s32 ProgressionFlags_TestGate8CE_80B(void)
 {
     static const u16 flags[] = {0x8ce, 0x80b};
-    return func_0208552c() && AllFlags(flags, 2);
+    return ProgressionFlags_TestGate7C0_8CD_7D2() && AllFlags(flags, 2);
 }
 
 /* Extend the shared 0x84b58/0x849f4 prerequisites with flag 0x794. */
 s32 ProgressionFlags_TestGate794(void)
 {
-    return func_02084b58() && func_020849f4() &&
+    return ProgressionFlags_TestGate756_794() && ProgressionFlags_TestMilestoneBE3() &&
            GameWork_TestFlag(gGameWork, 0x794);
 }
 
 /* Extend the shared 0x87ddc prerequisite with flag 0x7b9. */
 s32 ProgressionFlags_TestGate7B9(void)
 {
-    return func_02087ddc() && GameWork_TestFlag(gGameWork, 0x7b9);
+    return ProgressionFlags_TestGate8B8_7B9_7F7() && GameWork_TestFlag(gGameWork, 0x7b9);
 }
 
 /* Extend the shared 0x84e10 prerequisite with flag 0x8b7. */
 s32 ProgressionFlags_TestGate8B7(void)
 {
-    return func_02084e10() && GameWork_TestFlag(gGameWork, 0x8b7);
+    return ProgressionFlags_TestGate795_8B7_7CC() && GameWork_TestFlag(gGameWork, 0x8b7);
 }
 
 /* Extend the shared 0x8552c prerequisite with flag 0x8cd. */
 s32 ProgressionFlags_TestGate8CD(void)
 {
-    return func_0208552c() && GameWork_TestFlag(gGameWork, 0x8cd);
+    return ProgressionFlags_TestGate7C0_8CD_7D2() && GameWork_TestFlag(gGameWork, 0x8cd);
 }
 
 /* Extend the 0x840dc milestone with flags 0x1ff and 0x76f. */
-s32 func_020843a8(void)
+s32 ProgressionFlags_TestGate1FF_76F(void)
 {
     static const u16 flags[] = {0x1ff, 0x76f};
-    return func_020840dc() && AllFlags(flags, 2);
+    return ProgressionFlags_TestMilestoneBE1() && AllFlags(flags, 2);
 }
 
 /* Require the paired flags used by the shared 0x84b10 prerequisite. */
-s32 func_02084b10(void)
+s32 ProgressionFlags_TestGate755_770(void)
 {
     static const u16 flags[] = {0x755, 0x770};
     return AllFlags(flags, 2);
@@ -293,215 +293,215 @@ s32 ProgressionFlags_TestFlag757(void)
 }
 
 /* Extend the 0x840dc branch through its shared gate and five flags. */
-s32 func_02084404(void)
+s32 ProgressionFlags_TestGate065_771_805_8CB_7AD(void)
 {
     static const u16 flags[] = {0x065, 0x771, 0x805, 0x8cb, 0x7ad};
-    return func_020840dc() && func_02084b10() && AllFlags(flags, 5);
+    return ProgressionFlags_TestMilestoneBE1() && ProgressionFlags_TestGate755_770() && AllFlags(flags, 5);
 }
 
 /* Require progression flags 0x78f and 0x778. */
-s32 func_02084bfc(void)
+s32 ProgressionFlags_TestGate78F_778(void)
 {
     static const u16 flags[] = {0x78f, 0x778};
     return AllFlags(flags, 2);
 }
 
 /* Return the normalized state of progression flag 0x78d. */
-s32 func_02084de4(void)
+s32 ProgressionFlags_TestFlag78D(void)
 {
     return GameWork_TestFlag(gGameWork, 0x78d) != 0;
 }
 
 /* Extend the 0x849f4 milestone with flags 0x797, 0x7e0, and 0x7a8. */
-s32 func_02084e9c(void)
+s32 ProgressionFlags_TestGate797_7E0_7A8(void)
 {
     static const u16 flags[] = {0x797, 0x7e0, 0x7a8};
-    return func_020849f4() && AllFlags(flags, 3);
+    return ProgressionFlags_TestMilestoneBE3() && AllFlags(flags, 3);
 }
 
 /* Extend the 0x84404 branch with progression flag 0x7af. */
-s32 func_02085224(void)
+s32 ProgressionFlags_TestGate7AF_From84404(void)
 {
-    return func_02084404() && GameWork_TestFlag(gGameWork, 0x7af);
+    return ProgressionFlags_TestGate065_771_805_8CB_7AD() && GameWork_TestFlag(gGameWork, 0x7af);
 }
 
 /* Extend the 0x845a0 branch with progression flag 0x7af. */
-s32 func_02085260(void)
+s32 ProgressionFlags_TestGate7AF_From845A0(void)
 {
-    return func_020845a0() && GameWork_TestFlag(gGameWork, 0x7af);
+    return ProgressionFlags_TestMilestoneBE2() && GameWork_TestFlag(gGameWork, 0x7af);
 }
 
 /* Return the normalized state of progression flag 0x7c9. */
-s32 func_02085780(void)
+s32 ProgressionFlags_TestFlag7C9(void)
 {
     return GameWork_TestFlag(gGameWork, 0x7c9) != 0;
 }
 
 /* Extend the 0x8514c milestone with progression flag 0x7d1. */
-s32 func_02085870(void)
+s32 ProgressionFlags_TestGate7D1(void)
 {
-    return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7d1);
+    return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7d1);
 }
 
 /* Extend two shared prerequisites with progression flag 0x7a9. */
-s32 func_02085aa4(void)
+s32 ProgressionFlags_TestGate7A9(void)
 {
-    return func_02084e9c() && func_02085668() &&
+    return ProgressionFlags_TestGate797_7E0_7A8() && ProgressionFlags_TestGateBE5_7DC_7F3_8B5_7A8() &&
            GameWork_TestFlag(gGameWork, 0x7a9);
 }
 
 /* Extend the shared 0x87ddc prerequisite with progression flag 0x7f8. */
-s32 func_02085d00(void)
+s32 ProgressionFlags_TestGate7F8(void)
 {
-    return func_02087ddc() && GameWork_TestFlag(gGameWork, 0x7f8);
+    return ProgressionFlags_TestGate8B8_7B9_7F7() && GameWork_TestFlag(gGameWork, 0x7f8);
 }
 
 /* Extend the shared 0x859e8 prerequisite with its eight ordered flags. */
-s32 func_02085f38(void)
+s32 ProgressionFlags_TestGate7FA_7FC(void)
 {
     static const u16 flags[] = {
         0xbe7, 0x80d, 0x7ff, 0x803, 0x805, 0x80f, 0x811, 0x829
     };
-    return func_020859e8() && AllFlags(flags, 8);
+    return ProgressionFlags_TestGateBE6_7EB_7FB_8D1_8B3() && AllFlags(flags, 8);
 }
 
 /* Join the 0x85f38 and 0x84404 branches, then require flag 0x806. */
-s32 func_02086104(void)
+s32 ProgressionFlags_TestGate806(void)
 {
-    return func_02085f38() && func_02084404() &&
+    return ProgressionFlags_TestGate7FA_7FC() && ProgressionFlags_TestGate065_771_805_8CB_7AD() &&
            GameWork_TestFlag(gGameWork, 0x806);
 }
 
 /* Require the standalone ordered progression flags 0x808, 0xc8, and 0x81. */
-s32 func_02086150(void)
+s32 ProgressionFlags_TestGate808_0C8_081(void)
 {
     static const u16 flags[] = {0x808, 0x0c8, 0x081};
     return AllFlags(flags, 3);
 }
 
 /* Extend the shared 0x86054 prerequisite with progression flag 0x802. */
-s32 func_020861b4(void)
+s32 ProgressionFlags_TestGate802(void)
 {
-    return func_02086054() && GameWork_TestFlag(gGameWork, 0x802);
+    return ProgressionFlags_TestGate800_801() && GameWork_TestFlag(gGameWork, 0x802);
 }
 
 /* Extend the shared 0x8821c prerequisite with progression flag 0x80c. */
-s32 func_020861f0(void)
+s32 ProgressionFlags_TestGate80C(void)
 {
-    return func_0208821c() && GameWork_TestFlag(gGameWork, 0x80c);
+    return ProgressionFlags_TestGate8CE_80B() && GameWork_TestFlag(gGameWork, 0x80c);
 }
 
 /* Extend the shared 0x86264 prerequisite with progression flag 0x826. */
-s32 func_02086418(void)
+s32 ProgressionFlags_TestGate826(void)
 {
-    return func_02086264() && GameWork_TestFlag(gGameWork, 0x826);
+    return ProgressionFlags_TestGateBE8_815_82F_817_827_829_8D3_825() && GameWork_TestFlag(gGameWork, 0x826);
 }
 
 /* Join the 0x85f38/final chains and require progression flag 0x80e. */
-s32 func_02086564(void)
+s32 ProgressionFlags_TestGate80E(void)
 {
-    return func_02085f38() && func_020857ac() &&
+    return ProgressionFlags_TestGate7FA_7FC() && func_020857ac() &&
            GameWork_TestFlag(gGameWork, 0x80e);
 }
 
 /* Extend the shared 0x859e8 prerequisite with progression flag 0x8b4. */
-s32 func_02087da0(void)
+s32 ProgressionFlags_TestGate8B4(void)
 {
-    return func_020859e8() && GameWork_TestFlag(gGameWork, 0x8b4);
+    return ProgressionFlags_TestGateBE6_7EB_7FB_8D1_8B3() && GameWork_TestFlag(gGameWork, 0x8b4);
 }
 
 /* Preserve the retail repeated 0x770 gate after the shared prerequisites. */
-s32 func_02088b9c(void)
+s32 ProgressionFlags_TestGate770(void)
 {
-    return func_020840dc() && func_02084b10() &&
+    return ProgressionFlags_TestMilestoneBE1() && ProgressionFlags_TestGate755_770() &&
            GameWork_TestFlag(gGameWork, 0x770);
 }
 
 /* Return the normalized state of progression flag 0x78c. */
-s32 func_02088ff4(void)
+s32 ProgressionFlags_TestFlag78C(void)
 {
     return GameWork_TestFlag(gGameWork, 0x78c) != 0;
 }
 
 /* Extend the 0x84404 branch with progression flag 0x7ad. */
-s32 func_0208921c(void)
+s32 ProgressionFlags_TestGate7AD(void)
 {
-    return func_02084404() && GameWork_TestFlag(gGameWork, 0x7ad);
+    return ProgressionFlags_TestGate065_771_805_8CB_7AD() && GameWork_TestFlag(gGameWork, 0x7ad);
 }
 
 /* Extend two shared prerequisites with progression flag 0x7a8. */
-s32 func_02089780(void)
+s32 ProgressionFlags_TestGate7A8(void)
 {
-    return func_02084e9c() && func_02085668() &&
+    return ProgressionFlags_TestGate797_7E0_7A8() && ProgressionFlags_TestGateBE5_7DC_7F3_8B5_7A8() &&
            GameWork_TestFlag(gGameWork, 0x7a8);
 }
 
 /* Extend the shared 0x87ddc prerequisite with progression flag 0x7f7. */
-s32 func_020898e8(void)
+s32 ProgressionFlags_TestGate7F7(void)
 {
-    return func_02087ddc() && GameWork_TestFlag(gGameWork, 0x7f7);
+    return ProgressionFlags_TestGate8B8_7B9_7F7() && GameWork_TestFlag(gGameWork, 0x7f7);
 }
 
 /* Extend the shared 0x859e8 prerequisite with progression flag 0x7fd. */
-s32 func_02089b20(void)
+s32 ProgressionFlags_TestGate7FD(void)
 {
-    return func_020859e8() && GameWork_TestFlag(gGameWork, 0x7fd);
+    return ProgressionFlags_TestGateBE6_7EB_7FB_8D1_8B3() && GameWork_TestFlag(gGameWork, 0x7fd);
 }
 
 /* Extend the shared 0x85f38 prerequisite with progression flag 0x7ff. */
-s32 func_02089b5c(void)
+s32 ProgressionFlags_TestGate7FF(void)
 {
-    return func_02085f38() && GameWork_TestFlag(gGameWork, 0x7ff);
+    return ProgressionFlags_TestGate7FA_7FC() && GameWork_TestFlag(gGameWork, 0x7ff);
 }
 
 /* Join the 0x85f38 and 0x84404 branches, then require flag 0x805. */
-s32 func_02089bd4(void)
+s32 ProgressionFlags_TestGate805(void)
 {
-    return func_02085f38() && func_02084404() &&
+    return ProgressionFlags_TestGate7FA_7FC() && ProgressionFlags_TestGate065_771_805_8CB_7AD() &&
            GameWork_TestFlag(gGameWork, 0x805);
 }
 
 /* Return the normalized state of progression flag 0x807. */
-s32 func_02089c20(void)
+s32 ProgressionFlags_TestFlag807(void)
 {
     return GameWork_TestFlag(gGameWork, 0x807) != 0;
 }
 
 /* Extend the shared 0x86054 prerequisite with progression flag 0x801. */
-s32 func_02089c4c(void)
+s32 ProgressionFlags_TestGate801(void)
 {
-    return func_02086054() && GameWork_TestFlag(gGameWork, 0x801);
+    return ProgressionFlags_TestGate800_801() && GameWork_TestFlag(gGameWork, 0x801);
 }
 
 /* Extend the shared 0x8821c prerequisite with progression flag 0x80b. */
-s32 func_02089c88(void)
+s32 ProgressionFlags_TestGate80B(void)
 {
-    return func_0208821c() && GameWork_TestFlag(gGameWork, 0x80b);
+    return ProgressionFlags_TestGate8CE_80B() && GameWork_TestFlag(gGameWork, 0x80b);
 }
 
 /* Extend the shared 0x86264 prerequisite with progression flag 0x825. */
-s32 func_02089db4(void)
+s32 ProgressionFlags_TestGate825(void)
 {
-    return func_02086264() && GameWork_TestFlag(gGameWork, 0x825);
+    return ProgressionFlags_TestGateBE8_815_82F_817_827_829_8D3_825() && GameWork_TestFlag(gGameWork, 0x825);
 }
 
 /* Join the 0x85f38/final chains and require progression flag 0x80d. */
-s32 func_02089ec4(void)
+s32 ProgressionFlags_TestGate80D(void)
 {
-    return func_02085f38() && func_020857ac() &&
+    return ProgressionFlags_TestGate7FA_7FC() && func_020857ac() &&
            GameWork_TestFlag(gGameWork, 0x80d);
 }
 
 /* Extend the shared 0x859e8 prerequisite with progression flag 0x8b3. */
-s32 func_0208ad20(void)
+s32 ProgressionFlags_TestGate8B3(void)
 {
-    return func_020859e8() && GameWork_TestFlag(gGameWork, 0x8b3);
+    return ProgressionFlags_TestGateBE6_7EB_7FB_8D1_8B3() && GameWork_TestFlag(gGameWork, 0x8b3);
 }
 
 /* Secondary-table classification paired with the 0x857ac query. */
 s32 func_020895a8(void)
 {
-    return func_020849f4() && GameWork_TestFlag(gGameWork, 0x7ca);
+    return ProgressionFlags_TestMilestoneBE3() && GameWork_TestFlag(gGameWork, 0x7ca);
 }
 
 /* Return the normalized state of the bedroom-exit progression flag. */
@@ -564,29 +564,29 @@ s32 func_02088f24(void) { return GameWork_TestFlag(gGameWork, 0x78e) != 0; }
 s32 func_02088f8c(void) { return GameWork_TestFlag(gGameWork, 0x75c) != 0; }
 
 /* Extend the shared chain through the six flags used at 0x8514c. */
-s32 func_0208514c(void)
+s32 ProgressionFlags_TestMilestoneBE4(void)
 {
     static const u16 flags[] = {0xbe4, 0x7ac, 0x7b2, 0x7bd, 0x7d0, 0x8cf};
-    return func_020849f4() && AllFlags(flags, 6);
+    return ProgressionFlags_TestMilestoneBE3() && AllFlags(flags, 6);
 }
 
 /* Primary-table classification for indexed runtime entry 80. */
 s32 func_02085834(void)
 {
-    return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7cf);
+    return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7cf);
 }
 
 /* Secondary-table classification for indexed runtime entry 80. */
 s32 func_02089610(void)
 {
-    return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7ce);
+    return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7ce);
 }
 
 /* Establish the shared branch leading to indexed runtime entry 41. */
 s32 func_02084754(void)
 {
     static const u16 flags[] = {0x1f4, 0x77b, 0x788, 0x8aa, 0x8cf};
-    return func_020845a0() && AllFlags(flags, 5);
+    return ProgressionFlags_TestMilestoneBE2() && AllFlags(flags, 5);
 }
 
 /* Extend the branch through the three flags used at 0x87c6c. */
@@ -607,7 +607,7 @@ s32 func_0208480c(void)
 s32 func_02084d88(void)
 {
     static const u16 flags[] = {0x78b, 0x77e};
-    return func_020845a0() && AllFlags(flags, 2);
+    return ProgressionFlags_TestMilestoneBE2() && AllFlags(flags, 2);
 }
 
 /* Extend the parallel prerequisite through three additional flags. */
@@ -634,55 +634,55 @@ s32 func_02088dc4(void)
 /* Extend the initial chain with flag 0x73b. */
 s32 func_020886c8(void) { return func_02083af8() && GameWork_TestFlag(gGameWork, 0x73b); }
 /* Extend the 0x83d84 gate with flag 0x741. */
-s32 func_020889b0(void) { return func_02083d84() && GameWork_TestFlag(gGameWork, 0x741); }
+s32 func_020889b0(void) { return ProgressionFlags_TestGate396_765() && GameWork_TestFlag(gGameWork, 0x741); }
 /* Extend the 0x83d38 gate with flag 0x743. */
 s32 func_02088a18(void) { return func_02083d38() && GameWork_TestFlag(gGameWork, 0x743); }
 /* Extend the 0x83ba4 chain with flag 0x744. */
 s32 func_02088a54(void) { return func_02083ba4() && GameWork_TestFlag(gGameWork, 0x744); }
 /* Extend the 0x840dc chain with flag 0x745. */
-s32 func_02088a90(void) { return func_020840dc() && GameWork_TestFlag(gGameWork, 0x745); }
+s32 func_02088a90(void) { return ProgressionFlags_TestMilestoneBE1() && GameWork_TestFlag(gGameWork, 0x745); }
 /* Extend the initial chain with flag 0x746. */
 s32 func_02088acc(void) { return func_02083af8() && GameWork_TestFlag(gGameWork, 0x746); }
 /* Extend the 0x840dc chain with flag 0x749. */
-s32 func_02088b60(void) { return func_020840dc() && GameWork_TestFlag(gGameWork, 0x749); }
+s32 func_02088b60(void) { return ProgressionFlags_TestMilestoneBE1() && GameWork_TestFlag(gGameWork, 0x749); }
 /* Extend the 0x840dc chain with flag 0x74a. */
-s32 func_02088be4(void) { return func_020840dc() && GameWork_TestFlag(gGameWork, 0x74a); }
+s32 func_02088be4(void) { return ProgressionFlags_TestMilestoneBE1() && GameWork_TestFlag(gGameWork, 0x74a); }
 /* Extend the 0x840dc chain with flag 0x759. */
-s32 func_02088c5c(void) { return func_020840dc() && GameWork_TestFlag(gGameWork, 0x759); }
+s32 func_02088c5c(void) { return ProgressionFlags_TestMilestoneBE1() && GameWork_TestFlag(gGameWork, 0x759); }
 /* Extend the 0x845a0 chain with flag 0x74e. */
-s32 func_02088c98(void) { return func_020845a0() && GameWork_TestFlag(gGameWork, 0x74e); }
+s32 func_02088c98(void) { return ProgressionFlags_TestMilestoneBE2() && GameWork_TestFlag(gGameWork, 0x74e); }
 /* Extend the 0x845a0 chain with flag 0x77a. */
-s32 func_02088d10(void) { return func_020845a0() && GameWork_TestFlag(gGameWork, 0x77a); }
+s32 func_02088d10(void) { return ProgressionFlags_TestMilestoneBE2() && GameWork_TestFlag(gGameWork, 0x77a); }
 /* Extend the 0x87c6c chain with flag 0x77c. */
 s32 func_02088d4c(void) { return func_02087c6c() && GameWork_TestFlag(gGameWork, 0x77c); }
 /* Extend the 0x84d88 chain with flag 0x77e. */
 s32 func_02088d88(void) { return func_02084d88() && GameWork_TestFlag(gGameWork, 0x77e); }
 /* Extend the 0x845a0 chain with flag 0x785. */
-s32 func_02088e3c(void) { return func_020845a0() && GameWork_TestFlag(gGameWork, 0x785); }
+s32 func_02088e3c(void) { return ProgressionFlags_TestMilestoneBE2() && GameWork_TestFlag(gGameWork, 0x785); }
 /* Extend the 0x84754 chain with flag 0x787. */
 s32 func_02088f50(void) { return func_02084754() && GameWork_TestFlag(gGameWork, 0x787); }
 /* Extend the 0x845a0 chain with flag 0x78a. */
-s32 func_02088fb8(void) { return func_020845a0() && GameWork_TestFlag(gGameWork, 0x78a); }
+s32 func_02088fb8(void) { return ProgressionFlags_TestMilestoneBE2() && GameWork_TestFlag(gGameWork, 0x78a); }
 /* Extend the 0x849f4 chain with flag 0x796. */
-s32 func_0208906c(void) { return func_020849f4() && GameWork_TestFlag(gGameWork, 0x796); }
+s32 func_0208906c(void) { return ProgressionFlags_TestMilestoneBE3() && GameWork_TestFlag(gGameWork, 0x796); }
 /* Extend the 0x849f4 chain with flag 0x79a. */
-s32 func_020890d4(void) { return func_020849f4() && GameWork_TestFlag(gGameWork, 0x79a); }
+s32 func_020890d4(void) { return ProgressionFlags_TestMilestoneBE3() && GameWork_TestFlag(gGameWork, 0x79a); }
 /* Extend the 0x849f4 chain with flag 0x79e. */
-s32 func_0208913c(void) { return func_020849f4() && GameWork_TestFlag(gGameWork, 0x79e); }
+s32 func_0208913c(void) { return ProgressionFlags_TestMilestoneBE3() && GameWork_TestFlag(gGameWork, 0x79e); }
 /* Extend the 0x849f4 chain with flag 0x7aa. */
-s32 func_020891e0(void) { return func_020849f4() && GameWork_TestFlag(gGameWork, 0x7aa); }
+s32 func_020891e0(void) { return ProgressionFlags_TestMilestoneBE3() && GameWork_TestFlag(gGameWork, 0x7aa); }
 /* Extend the 0x845a0 chain with flag 0x7ae. */
-s32 func_02089258(void) { return func_020845a0() && GameWork_TestFlag(gGameWork, 0x7ae); }
+s32 func_02089258(void) { return ProgressionFlags_TestMilestoneBE2() && GameWork_TestFlag(gGameWork, 0x7ae); }
 /* Extend the 0x8514c chain with flag 0x7b2. */
-s32 func_020892bc(void) { return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7b2); }
+s32 func_020892bc(void) { return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7b2); }
 /* Extend the 0x8514c chain with flag 0x7bd. */
-s32 func_0208948c(void) { return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7bd); }
+s32 func_0208948c(void) { return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7bd); }
 /* Extend the 0x8514c chain with flag 0x7bf. */
-s32 func_02089504(void) { return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7bf); }
+s32 func_02089504(void) { return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7bf); }
 /* Extend the 0x849f4 chain with flag 0x7c7. */
-s32 func_02089540(void) { return func_020849f4() && GameWork_TestFlag(gGameWork, 0x7c7); }
+s32 func_02089540(void) { return ProgressionFlags_TestMilestoneBE3() && GameWork_TestFlag(gGameWork, 0x7c7); }
 /* Extend the 0x8514c chain with flag 0x7d0. */
-s32 func_0208964c(void) { return func_0208514c() && GameWork_TestFlag(gGameWork, 0x7d0); }
+s32 func_0208964c(void) { return ProgressionFlags_TestMilestoneBE4() && GameWork_TestFlag(gGameWork, 0x7d0); }
 
 /* Test flag 0x748 and return a normalized result. */
 s32 func_02088b34(void) { return GameWork_TestFlag(gGameWork, 0x748) != 0; }

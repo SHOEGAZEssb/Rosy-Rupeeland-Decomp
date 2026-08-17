@@ -1,14 +1,14 @@
 .text
 ; Matching fallback for the portable implementation in src/game/inventory_record_sort.c.
-.extern func_02062b28
-.extern func_02062c20
+.extern ActorDescriptor_IsInvalid
+.extern InventoryRecord_IsEmptyKind1Subtype1
 
-.global func_02062f18
-func_02062f18:
+.global InventoryRecord_GetSortKey
+InventoryRecord_GetSortKey:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     ldrne r0, .L_0206300c
     ldmneia sp!, {r4, r5, r6, pc}
@@ -58,7 +58,7 @@ func_02062f18:
     b .L_02063004
 .L_02062fd4:
     mov r0, r6
-    bl func_02062c20
+    bl InventoryRecord_IsEmptyKind1Subtype1
     cmp r0, #0x0
     ldrne r4, .L_02063010
     bne .L_02063004
@@ -74,4 +74,4 @@ func_02062f18:
     ldmia sp!, {r4, r5, r6, pc}
 .L_0206300c: .word 0xffff
 .L_02063010: .word 0x27d0
-.size func_02062f18, . - func_02062f18
+.size InventoryRecord_GetSortKey, . - InventoryRecord_GetSortKey

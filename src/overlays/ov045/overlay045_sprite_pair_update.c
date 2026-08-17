@@ -12,7 +12,7 @@
 
 extern "C" void *GraphicsSpriteGroup_AdvanceAnimations(void *resource);
 extern "C" s32 func_0209189c(void *seed, s32 minimum, s32 maximum);
-extern "C" s32 func_020918f4(void *seed, s32 modulus);
+extern "C" s32 TitleRandom_NextBounded(void *seed, s32 modulus);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
 extern "C" void func_ov045_0220c068(void *object);
 
@@ -64,7 +64,7 @@ extern "C" void func_ov045_0220c1ac(void *object)
             --FIELD(s32, object, 0x2c);
             if (FIELD(s32, object, 0x2c) != 0)
                 return;
-            if (func_020918f4((u8 *)object + 0x34, 3) != 0)
+            if (TitleRandom_NextBounded((u8 *)object + 0x34, 3) != 0)
                 GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 4);
             else
                 GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0x20), 5);

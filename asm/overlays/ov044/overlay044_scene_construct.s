@@ -1,8 +1,8 @@
 .text
-.extern func_02091e28
-.extern func_02092798
-.extern func_020926d8
-.extern func_02071ea4
+.extern SceneInputBase_Init
+.extern TitleCharacterResourceCollection_Init
+.extern TitleScreenResourceCollection_Init
+.extern AnimationResourceState_InitEmbedded
 .extern func_020957bc
 .extern func_02092814
 .extern func_02092754
@@ -30,15 +30,15 @@ func_ov044_0220be60:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, .L_0220bfa4
     add r0, r4, #0x54
     str r1, [r4, #0x0]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x78
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     add r0, r4, #0xc0
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xd0
     bl func_020957bc
     add r0, r4, #0x17c

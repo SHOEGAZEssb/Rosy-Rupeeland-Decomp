@@ -12,27 +12,27 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032a94(void *actor);
+extern void ActorContactState_AddContact(void *actor);
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 ActorRuntimeFlags_Test(void *state, s32 mask);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
-extern void *func_0206c978(void *resource);
-extern void func_0206ba50(void *core);
+extern void *AuxiliaryInteraction_Destroy(void *resource);
+extern void AuxiliaryCore_Destroy(void *core);
 extern void func_02074058(void *group);
 extern void func_02074330(void *manager, void *group);
 extern void func_02074038(void *group, void *state);
-extern void func_02068b04(void *manager);
-extern void func_0206e5c8(void *destination, void *object);
+extern void ActorAttachmentManager_Destroy(void *manager);
+extern void AuxiliaryInteraction_BuildTerminalVector(void *destination, void *object);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
 extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
 extern void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
     void *actor, void *target, s32 distance, s32 offset);
-extern s32 func_0206e3a4(void *resource);
+extern s32 AuxiliaryInteraction_IsCoreHidden(void *resource);
 extern void Type7Actor_HandleResourceInteraction(void *target, void *resource);
 extern void *data_020f4e14;
 extern const char data_020e5810[];
@@ -46,12 +46,12 @@ extern void *func_0206b628(void *allocation, void *owner, void *first,
                            void *second, void *third, s32 x, s32 y, s32 z,
                            s32 argument8, s32 argument9, s32 argument10,
                            s32 argument11, s32 argument12);
-extern void func_0206c028(void *object, s32 enabled);
+extern void AuxiliaryCoreSprite_SetVisible(void *object, s32 enabled);
 extern u32 genrand_int32(void);
-extern void *func_02068a40(void *allocation);
-extern s32 func_020691c8(void *manager, void *actor, s32 index);
-extern void func_0206cc3c(void *resource);
-extern void func_0206e4c4(void *resource, s32 state);
+extern void *ActorAttachmentManager_Init(void *allocation);
+extern s32 ActorAttachmentManager_AdmitActor(void *manager, void *actor, s32 index);
+extern void AuxiliaryInteraction_SelectPresentationVariant(void *resource);
+extern void AuxiliaryInteraction_PlaySpatialSound(void *resource, s32 state);
 extern const char data_020e55fc[];
 extern const char data_020e5604[];
 extern const char data_020e560c[];
@@ -65,7 +65,7 @@ extern const char data_020e5730[];
 extern const u32 data_020c46c8[];
 extern u8 data_020e8380[];
 extern const s16 data_020e83a0[];
-extern void func_02022fbc(void *configuration);
+extern void SelfLinkedSpriteConfig_Init(void *configuration);
 extern u8 data_020e57a4[];
 extern u8 data_020e57c4[];
 extern u8 data_020e57e4[];
@@ -76,7 +76,7 @@ extern void VecFx32Object_InitCopy(void *vector, const void *source);
 extern void *GraphicsSpriteGroup_CreateState(void *group, void *resource0,
                                              void *resource1, void *resource2,
                                              u8 attach);
-extern void func_02072b68(void *sprite, u32 animation);
+extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern u32 func_020ada8c(u32 numerator, u32 denominator);
 extern void *gLupyContext;
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
@@ -88,41 +88,41 @@ extern void VecFx32_Subtract(void *destination, const void *left,
                              const void *right);
 extern const void *ActorMotionAreaFollower_GetPosition(void *follower);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
-extern void func_0206bb18(void *core, const void *position);
+extern void AuxiliaryCore_UpdateMotion(void *core, const void *position);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern void *gSoundContext;
 extern void func_020593ac(void *context, s32 archive, s32 member, s32 volume,
                           s32 pan, s32 flags);
-extern s32 func_0206ab5c(const void *vector);
+extern s32 VecFx32_HorizontalMagnitude(const void *vector);
 extern s32 func_020ae024(s32 y, s32 x);
-extern s32 func_020be334(s32 value);
-extern void func_0206c0f8(void *core, s32 kind);
-extern s32 func_0206c4b0(void *record);
-extern void func_0206c48c(void *record);
-extern void func_0206c5b8(void *record);
+extern s32 SignedAbsoluteValue(s32 value);
+extern void AuxiliaryCore_AllocateHistorySprite(void *core, s32 kind);
+extern s32 AuxiliaryCoreHistoryRecord_Advance(void *record);
+extern void AuxiliaryCoreHistoryRecord_ReleaseSprite(void *record);
+extern void AuxiliaryCoreHistoryRecord_ProjectSprite(void *record);
 extern s32 func_020adc40(s32 value);
 extern const s16 data_020c9670[];
 extern void *gTouchPanelManager;
 extern void *gSceneTouchInitialData;
 extern void TouchPanelManager_GetPoint(void *point, void *initialData);
-extern void func_0206ad6c(void *sprite, void *parent);
-extern void func_0206b278(void *sprite);
-extern s32 func_0206bfc4(void *core, void *sprite);
+extern void AuxiliaryCoreSprite_TrackParent(void *sprite, void *parent);
+extern void AuxiliaryCoreSprite_UpdatePresentation(void *sprite);
+extern s32 AuxiliaryCoreSprite_SelectAnimation(void *core, void *sprite);
 extern const s32 data_020c46ec[];
 extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
-extern s32 func_02068bbc(void *manager);
-extern void *func_02069550(void *manager);
-extern void func_0206deac(void *resource, s32 index);
+extern s32 ActorAttachmentManager_Update(void *manager);
+extern void *ActorAttachmentManager_GetEventQueue(void *manager);
+extern void AuxiliaryInteraction_FinalizeResult(void *resource, s32 index);
 extern void *func_02022cb0(void *allocation, const void *camera, void *owner,
                            s32 velocity, s32 scale, s32 offset);
-extern void func_0201ded4(void *manager, void *entry);
-extern void func_0206c0b0(void *core, s32 value, s32 index);
+extern void PresentationList_AppendObject(void *manager, void *entry);
+extern void AuxiliaryCore_ApplyScale(void *core, s32 value, s32 index);
 extern void *TimedSpriteConfig_InitTracks(void *config);
 extern void *func_0201ea20(void *allocation, void *owner, void *config,
                            s32 spriteValue, s16 offset, s16 spriteByte);
 extern void *func_0201ecbc(void *allocation, void *owner, void *config,
                            s32 spriteValue, s16 offset, s16 spriteByte);
-extern void func_0201e3b8(void *effect, s32 enabled);
+extern void TimedSpritePresentation_SetVisible(void *effect, s32 enabled);
 extern void *AuxiliaryTimedSpritePresentation_Init(
     void *allocation, const void *position, void *group, s32 first,
     s32 second, s32 third, s32 spriteValue, s32 offset, s32 spriteByte,
@@ -133,38 +133,38 @@ extern void func_020a2a4c(void *manager, s32 first, s32 x, s32 y,
 extern void func_020a27a0(void *manager, s32 first, s32 x, s32 y);
 extern void TrackedResourceActor_SpawnFromKey(s32 key, const void *first,
                                                const void *second);
-extern void func_0206e644(void *resource, const void *touch);
+extern void AuxiliaryInteraction_ProcessTouchSamples(void *resource, const void *touch);
 extern void func_0206e7f4(void *resource, const void *touch);
 extern void func_0206e9e0(void *resource, const void *touch);
 extern void func_0206ea6c(void *resource, const void *touch);
-extern void func_0206ebac(void *resource);
-extern void *func_02069408(void *manager, s32 index);
-extern s32 func_0206aab8(void *queue);
-extern void *func_0206ab38(void *queue);
-extern s32 func_020690d4(void *manager);
-extern void func_02068d0c(void *manager);
-extern s32 func_02069414(void *manager);
-extern void func_020627a0(void *descriptor, u16 value, s32 count);
+extern void AuxiliaryInteraction_FlagSecondaryTouch(void *resource);
+extern void *ActorAttachmentManager_GetRecord(void *manager, s32 index);
+extern s32 ActorAttachmentCounter_Advance(void *queue);
+extern void *ActorAttachmentEventQueue_GetList(void *queue);
+extern s32 ActorAttachmentManager_ProcessPendingEvents(void *manager);
+extern void ActorAttachmentManager_FinalizeRewards(void *manager);
+extern s32 ActorAttachmentManager_CountType0Records(void *manager);
+extern void ActorDescriptor_InitRange(void *descriptor, u16 value, s32 count);
 extern void func_02005030(void *destination, const void *source);
-extern void func_02034894(void *actor, void *vector);
-extern void func_020635f4(void *destination, const void *source);
-extern void func_02062864(void *descriptor, s32 enabled);
+extern void ActorTerrain_ApplyNeighborAxisBias(void *actor, void *vector);
+extern void ActorAttachmentDescriptor_CopyPayload(void *destination, const void *source);
+extern void ActorDescriptor_SetRangeEnd(void *descriptor, s32 enabled);
 extern void func_0204f894(void *position, void *descriptor, s32 duration);
 extern s32 func_0203adc4(void);
 extern void func_0204e3f4(s32 kind, s32 amount, void *position);
 extern void func_0204e628(s32 kind, s32 amount, void *position);
 extern void *func_02007f0c(void *scene, s32 value);
 extern void func_0202de90(void *actorCollection);
-extern void func_0206a6d4(void *queue, const void *event);
-extern void func_020693f8(void *manager, const void *event);
-extern void func_020696c0(void *record, s32 first, s32 second);
+extern void ActorAttachmentEventList_InsertByPriority(void *queue, const void *event);
+extern void ActorAttachmentManager_QueueEvent(void *manager, const void *event);
+extern void ActorAttachmentRecord_ConfigureHitInterval(void *record, s32 first, s32 second);
 extern void *func_02025120(void *effect, void *actor, s32 amount,
                            s32 variant, s32 duration);
 extern const char data_020e5828[];
 extern const char data_020e5830[];
 extern const u16 data_020e5804;
-extern u8 *func_0206899c(s32 index);
-extern void func_020a2894(void *manager, s32 subtype, s32 x, s32 y,
+extern u8 *ActorExtendedType2Record_FindByIndex(s32 index);
+extern void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y,
                           s32 kind);
 extern u32 func_020a4df0(void *manager, s32 kind, const void *bounds,
                          s32 lifetime);
@@ -173,14 +173,14 @@ extern u32 func_020a4df0(void *manager, s32 kind, const void *bounds,
 #endif
 
 /* Copy the two-word descriptor payload from source to caller-owned storage. */
-void func_020635f4(void *destination, const void *source)
+void ActorAttachmentDescriptor_CopyPayload(void *destination, const void *source)
 {
     *(u32 *)destination = *(const u32 *)source;
     *(u32 *)((u8 *)destination + 4) = *(const u32 *)((const u8 *)source + 4);
 }
 
 /* Set the three game-progress flags selected by retail callback 0x0208B96C. */
-void func_0208b96c(void)
+void ProgressionFlags_SetGate2C8_767_74B(void)
 {
     GameWork_SetFlag(gGameWork, 0x2c8);
     GameWork_SetFlag(gGameWork, 0x767);
@@ -188,7 +188,7 @@ void func_0208b96c(void)
 }
 
 /* Submit the point-sized effect rectangle used by retail 0x020A2894. */
-void func_020a2894(void *manager, s32 subtype, s32 x, s32 y, s32 kind)
+void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y, s32 kind)
 {
     s32 bounds[4];
 
@@ -201,7 +201,7 @@ void func_020a2894(void *manager, s32 subtype, s32 x, s32 y, s32 kind)
 }
 
 /* Initialize a two-word counter pair to the supplied capacity. */
-void *func_020693ec(void *object, s32 capacity)
+void *ActorAttachmentCounter_Init(void *object, s32 capacity)
 {
     *(s32 *)((u8 *)object + 0) = capacity;
     *(s32 *)((u8 *)object + 4) = capacity;
@@ -209,10 +209,10 @@ void *func_020693ec(void *object, s32 capacity)
 }
 
 /* Reset the actor-attachment manager's counters, indices, and timers. */
-void func_02069390(void *object)
+void ActorAttachmentManager_Reset(void *object)
 {
     u8 *self = (u8 *)object;
-    func_020693ec(self + 0x98, 0x10);
+    ActorAttachmentCounter_Init(self + 0x98, 0x10);
     *(s32 *)(self + 0x84) = 0;
     *(s32 *)(self + 0x88) = 0;
     *(s32 *)(self + 0x8c) = -1;
@@ -228,7 +228,7 @@ void func_02069390(void *object)
 }
 
 /* Clear one 12-byte manager entry. */
-void *func_02068a28(void *object)
+void *ActorAttachmentSubtableEntry_Init(void *object)
 {
     u8 *entry = (u8 *)object;
     *(u32 *)(entry + 0) = 0;
@@ -238,24 +238,24 @@ void *func_02068a28(void *object)
 }
 
 /* Retail no-op destructor for a manager entry. */
-void *func_02068a3c(void *object)
+void *ActorAttachmentSubtableEntry_DeleteNoOp(void *object)
 {
     return object;
 }
 
 /* Construct the ten-entry manager subtable and clear its active count. */
-void *func_020689e8(void *object)
+void *ActorAttachmentSubtable_Init(void *object)
 {
     u8 *self = (u8 *)object;
     s32 i;
     for (i = 0; i < 10; i++)
-        func_02068a28(self + i * 12);
+        ActorAttachmentSubtableEntry_Init(self + i * 12);
     *(s32 *)(self + 0x78) = 0;
     return self;
 }
 
 /* Clear a four-word auxiliary descriptor. */
-void *func_0206a688(void *object)
+void *ActorAttachmentAuxDescriptor_Init(void *object)
 {
     u8 *self = (u8 *)object;
     *(u32 *)(self + 0) = 0;
@@ -266,14 +266,14 @@ void *func_0206a688(void *object)
 }
 
 /* Construct the 0x20-byte manager-owned auxiliary descriptor. */
-void *func_0206a644(void *object)
+void *ActorAttachmentEventQueue_Init(void *object)
 {
     u8 *self = (u8 *)object;
     void *descriptor;
     *(u32 *)(self + 4) = 0;
     descriptor = Heap_Alloc(0x10, data_020e5728, -4, &gHeapContext);
     if (descriptor != 0)
-        descriptor = func_0206a688(descriptor);
+        descriptor = ActorAttachmentAuxDescriptor_Init(descriptor);
     *(void **)(self + 0) = descriptor;
     return self;
 }
@@ -283,26 +283,26 @@ void *func_0206a644(void *object)
  * records. Each allocation remains independently nullable exactly as in the
  * retail constructor; callers own the returned 0x11c-byte object.
  */
-void *func_02068a40(void *object)
+void *ActorAttachmentManager_Init(void *object)
 {
     u8 *self = (u8 *)object;
     void *entry;
     s32 i;
 
     *(void **)(self + 0xc4) = 0;
-    func_02069390(self);
+    ActorAttachmentManager_Reset(self);
     entry = Heap_Alloc(0x20, data_020e55fc, -4, &gHeapContext);
     if (entry != 0)
-        entry = func_0206a644(entry);
+        entry = ActorAttachmentEventQueue_Init(entry);
     *(void **)(self + 0x94) = entry;
     entry = Heap_Alloc(0x7c, data_020e5604, -4, &gHeapContext);
     if (entry != 0)
-        entry = func_020689e8(entry);
+        entry = ActorAttachmentSubtable_Init(entry);
     *(void **)(self + 0xc4) = entry;
     for (i = 0; i < 20; i++) {
         entry = Heap_Alloc(0x24, data_020e560c, 4, &gHeapContext);
         if (entry != 0)
-            func_02022fbc(entry);
+            SelfLinkedSpriteConfig_Init(entry);
         *(void **)(self + 0xcc + i * 4) = entry;
     }
     *(s32 *)(self + 0xa0) = 0;
@@ -310,7 +310,7 @@ void *func_02068a40(void *object)
 }
 
 /* Initialize the common header shared by manager attachment records. */
-void *func_0206996c(void *object, void *manager, void *actor, s32 index)
+void *ActorAttachmentRecord_InitBase(void *object, void *manager, void *actor, s32 index)
 {
     u8 *self = (u8 *)object;
     *(void **)(self + 0) = data_020e56b0;
@@ -322,12 +322,12 @@ void *func_0206996c(void *object, void *manager, void *actor, s32 index)
 }
 
 /* Construct a type-two attachment record and invoke its initialization slot. */
-void *func_02069994(void *object, void *manager, void *actor, s32 index)
+void *ActorAttachmentRecord_InitType2(void *object, void *manager, void *actor, s32 index)
 {
     u8 *self = (u8 *)object;
-    func_0206996c(self, manager, actor, index);
+    ActorAttachmentRecord_InitBase(self, manager, actor, index);
     *(void **)(self + 0) = data_020e5688;
-    func_02022fbc(self + 0x21c);
+    SelfLinkedSpriteConfig_Init(self + 0x21c);
     *(s32 *)(self + 0x1d8) = data_020e83a0[(*(u16 *)((u8 *)actor + 0x4e) * 0x30) / 2];
     *(u32 *)(self + 8) = 0;
     (*(void (**)(void *))(*(u8 **)self + 0))(self);
@@ -339,18 +339,18 @@ void *func_02069994(void *object, void *manager, void *actor, s32 index)
  * health fields and the record's pacing/reward state are synchronized; all
  * counts and probabilities retain their retail integer units.
  */
-void func_020699f4(void *object)
+void ActorAttachmentRecord_InitializeType2State(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *actor = *(u8 **)(self + 0x1d0);
-    const u8 *source = func_0206899c(*(s32 *)(self + 0x1d8));
+    const u8 *source = ActorExtendedType2Record_FindByIndex(*(s32 *)(self + 0x1d8));
     s32 i;
 
     for (i = 0; i < 10; i++)
         *(u32 *)(self + 0x1dc + i * 4) = *(const u32 *)(source + i * 4);
     for (i = 0; i < 6; i++)
         *(u32 *)(self + 0x204 + i * 4) = *(const u32 *)(source + 0x28 + i * 4);
-    func_020696c0(self, 0, 0);
+    ActorAttachmentRecord_ConfigureHitInterval(self, 0, 0);
     if (*(s32 *)(actor + 0x200) < 0 || *(s32 *)(actor + 0x1fc) == 0) {
         *(s32 *)(self + 0x14) = *(s32 *)(self + 0x1e8);
         *(s32 *)(self + 0x18) = *(s32 *)(self + 0x1e8);
@@ -365,7 +365,7 @@ void func_020699f4(void *object)
     *(s32 *)(self + 0x20) = *(s32 *)(self + 0x1f0);
     *(s32 *)(self + 0x1c4) = *(s32 *)(self + 0x1ec);
     *(s32 *)(self + 0x244) = *(s32 *)(self + 0x1fc);
-    func_020693ec(self + 0x1c8, *(s32 *)(self + 0x20));
+    ActorAttachmentCounter_Init(self + 0x1c8, *(s32 *)(self + 0x20));
 }
 
 /*
@@ -373,7 +373,7 @@ void func_020699f4(void *object)
  * count positions are selected without replacement from the second count;
  * one RNG sample is consumed per selected position, matching retail.
  */
-void func_020696f4(void *object)
+void ActorAttachmentRecord_RandomizeHitSchedule(void *object)
 {
     u8 *self = (u8 *)object;
     s32 selectedCount = *(s32 *)(self + 0x24);
@@ -401,7 +401,7 @@ void func_020696f4(void *object)
 }
 
 /* Return whether one interpolated type-two attachment step consumed a hit. */
-s32 func_02069914(void *object)
+s32 ActorAttachmentRecord_ConsumeScheduledHit(void *object)
 {
     u8 *self = (u8 *)object;
     s32 hit = 0;
@@ -415,12 +415,12 @@ s32 func_02069914(void *object)
     if (*(void **)(self + 0x2c + index * 4) != 0)
         hit = 1;
     if (*(s32 *)(self + 0x1c0) >= *(s32 *)(self + 0x28))
-        func_020696f4(self);
+        ActorAttachmentRecord_RandomizeHitSchedule(self);
     return hit;
 }
 
 /* Clamp a type-two actor's health after applying a signed damage delta. */
-void func_02069d80(void *object, s32 delta)
+void ActorAttachmentRecord_ApplyHealthDelta(void *object, s32 delta)
 {
     u8 *self = (u8 *)object;
     u8 *actor = *(u8 **)(self + 0x1d0);
@@ -441,25 +441,25 @@ void func_02069d80(void *object, s32 delta)
 }
 
 /* Consume a type-two damage event and report when its health reaches zero. */
-s32 func_02069b28(void *object, const void *eventObject)
+s32 ActorAttachmentRecord_ConsumeDamageEvent(void *object, const void *eventObject)
 {
     u8 *self = (u8 *)object;
     const s32 *event = (const s32 *)eventObject;
     if ((*(u32 *)(self + 0x10) & 4) != 0)
         return 0;
-    if (event[0] == 1 && !func_02069914(self))
-        func_02069d80(self, -event[5]);
+    if (event[0] == 1 && !ActorAttachmentRecord_ConsumeScheduledHit(self))
+        ActorAttachmentRecord_ApplyHealthDelta(self, -event[5]);
     return *(s32 *)(self + 0x18) == 0;
 }
 
 /* Return the embedded reward descriptor owned by a type-two record. */
-void *func_02068f9c(void *object)
+void *ActorAttachmentRecord_GetRewardDescriptor(void *object)
 {
     return (u8 *)object + 0x21c;
 }
 
 /* Queue paced type-two attack events against the manager's selected records. */
-void func_02069b8c(void *object)
+void ActorAttachmentRecord_QueuePacedAttacks(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *manager = *(u8 **)(self + 4);
@@ -469,7 +469,7 @@ void func_02069b8c(void *object)
         (*(u32 *)(*(u8 **)(self + 0x1d0) + 0xd0) & 0x20000) != 0)
         return;
     for (;;) {
-        s32 cursor = func_0206aab8(self + 0x1c8);
+        s32 cursor = ActorAttachmentCounter_Advance(self + 0x1c8);
         u32 event[6];
         u32 mask = 0;
         if (cursor < 0)
@@ -484,12 +484,12 @@ void func_02069b8c(void *object)
         event[3] = (u32)self;
         event[4] = mask;
         event[5] = *(u32 *)(self + 0x1c);
-        func_020693f8(manager, event);
+        ActorAttachmentManager_QueueEvent(manager, event);
     }
 }
 
 /* Select a type-two reward descriptor when its actor reaches zero health. */
-void func_02069c60(void *object)
+void ActorAttachmentRecord_SelectDefeatReward(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *actor = *(u8 **)(self + 0x1d0);
@@ -501,11 +501,11 @@ void func_02069c60(void *object)
         } else {
             random = genrand_int32() % 100;
             if (random < *(u32 *)(self + 0x20c)) {
-                func_020627a0(self + 0x21c, *(u16 *)(self + 0x204), 1);
+                ActorDescriptor_InitRange(self + 0x21c, *(u16 *)(self + 0x204), 1);
                 *(s32 *)(self + 0x244) = 0;
             } else if (random < *(u32 *)(self + 0x20c) +
                                 *(u32 *)(self + 0x218)) {
-                func_020627a0(self + 0x21c, *(u16 *)(self + 0x210), 1);
+                ActorDescriptor_InitRange(self + 0x21c, *(u16 *)(self + 0x210), 1);
                 *(s32 *)(self + 0x244) = 0;
             }
         }
@@ -514,7 +514,7 @@ void func_02069c60(void *object)
 }
 
 /* Publish the retained health for resident type 0x3e6 into GameWork. */
-void func_02069de0(void *object)
+void ActorAttachmentRecord_PublishRetainedHealth(void *object)
 {
     u8 *self = (u8 *)object;
     if (*(s32 *)(self + 0x1e0) == 0x3e6)
@@ -522,7 +522,7 @@ void func_02069de0(void *object)
 }
 
 /* Accumulate currency loss from an incoming type-two attack event. */
-s32 func_02069edc(void *object, const void *eventObject)
+s32 ActorAttachmentRecord_AccumulateCurrencyLoss(void *object, const void *eventObject)
 {
     u8 *self = (u8 *)object;
     const u32 *event = (const u32 *)eventObject;
@@ -538,7 +538,7 @@ s32 func_02069edc(void *object, const void *eventObject)
             if (*(s32 *)(manager + 0x90) >= 0)
                 amount /= 2;
             amount = func_020befec(amount * *(s32 *)(attacker + 0x1f8), 100);
-            if (!func_02069914(self))
+            if (!ActorAttachmentRecord_ConsumeScheduledHit(self))
                 *(s32 *)(self + 0x1d8) += amount;
         }
     }
@@ -546,10 +546,10 @@ s32 func_02069edc(void *object, const void *eventObject)
 }
 
 /* Construct a type-one attachment record and invoke its initialization slot. */
-void *func_02069e44(void *object, void *manager, void *actor, s32 index)
+void *ActorAttachmentRecord_InitType1(void *object, void *manager, void *actor, s32 index)
 {
     u8 *self = (u8 *)object;
-    func_0206996c(self, manager, actor, index);
+    ActorAttachmentRecord_InitBase(self, manager, actor, index);
     *(void **)(self + 0) = data_020e5700;
     *(s32 *)(self + 8) = 1;
     (*(void (**)(void *))(*(u8 **)self + 0))(self);
@@ -557,7 +557,7 @@ void *func_02069e44(void *object, void *manager, void *actor, s32 index)
 }
 
 /* Configure the optional attachment-record interpolation interval. */
-void func_020696c0(void *object, s32 first, s32 second)
+void ActorAttachmentRecord_ConfigureHitInterval(void *object, s32 first, s32 second)
 {
     u8 *self = (u8 *)object;
     if (first == 0) {
@@ -571,7 +571,7 @@ void func_020696c0(void *object, s32 first, s32 second)
 }
 
 /* Initialize type-one attachment dimensions from the current currency tier. */
-void func_02069e7c(void *object)
+void ActorAttachmentRecord_InitializeType1State(void *object)
 {
     u8 *self = (u8 *)object;
     s32 extent = GamePhaseCurrencyHud_GetCurrency(gLupyContext) * 10;
@@ -581,15 +581,15 @@ void func_02069e7c(void *object)
     *(u32 *)(self + 0x1dc) = 0;
     *(s32 *)(self + 0x1c) = 0xa0;
     *(s32 *)(self + 0x20) = 0x1e0;
-    func_020693ec(self + 0x1c8, 0x1e0);
-    func_020696c0(self, 0, 0);
+    ActorAttachmentCounter_Init(self + 0x1c8, 0x1e0);
+    ActorAttachmentRecord_ConfigureHitInterval(self, 0, 0);
 }
 
 /* Construct a type-seven attachment record and invoke its initialization slot. */
-void *func_0206a178(void *object, void *manager, void *actor, s32 index)
+void *ActorAttachmentRecord_InitType7(void *object, void *manager, void *actor, s32 index)
 {
     u8 *self = (u8 *)object;
-    func_0206996c(self, manager, actor, index);
+    ActorAttachmentRecord_InitBase(self, manager, actor, index);
     *(void **)(self + 0) = data_020e56d8;
     *(s32 *)(self + 8) = 2;
     (*(void (**)(void *))(*(u8 **)self + 0))(self);
@@ -601,7 +601,7 @@ void *func_0206a178(void *object, void *manager, void *actor, s32 index)
  * records own their allocations and initialize through their retail vtables.
  * Returns zero while locked/full, otherwise one even for unclassified actors.
  */
-s32 func_020691c8(void *object, void *actorObject, s32 index)
+s32 ActorAttachmentManager_AdmitActor(void *object, void *actorObject, s32 index)
 {
     u8 *self = (u8 *)object;
     u8 *actor = (u8 *)actorObject;
@@ -614,7 +614,7 @@ s32 func_020691c8(void *object, void *actorObject, s32 index)
     if (actor[0x4d] == 2) {
         record = Heap_Alloc(0x248, data_020e5614, -4, &gHeapContext);
         if (record != 0)
-            record = func_02069994(record, self, actor, slot);
+            record = ActorAttachmentRecord_InitType2(record, self, actor, slot);
         if (index >= 0)
             *(s32 *)((u8 *)record + 0x244) += index;
         *(s32 *)(self + 0xac) = 30;
@@ -622,12 +622,12 @@ s32 func_020691c8(void *object, void *actorObject, s32 index)
     } else if (actor[0x4d] == 7) {
         record = Heap_Alloc(0x1e8, data_020e5614, -4, &gHeapContext);
         if (record != 0)
-            record = func_0206a178(record, self, actor, slot);
+            record = ActorAttachmentRecord_InitType7(record, self, actor, slot);
         *(s32 *)(self + 0x90) = slot;
     } else if (actor[0x4d] == 1) {
         record = Heap_Alloc(0x1e0, data_020e5614, -4, &gHeapContext);
         if (record != 0)
-            record = func_02069e44(record, self, actor, slot);
+            record = ActorAttachmentRecord_InitType1(record, self, actor, slot);
         *(s32 *)(self + 0x8c) = slot;
     }
     *(void **)(self + slot * 4) = record;
@@ -655,7 +655,7 @@ typedef struct CoreSpriteConfig {
 } CoreSpriteConfig;
 
 /* Construct the common 0x50-byte sprite wrapper from a core sprite record. */
-void *func_0206abb4(void *object, const CoreSpriteConfig *config)
+void *AuxiliaryCoreSprite_InitBase(void *object, const CoreSpriteConfig *config)
 {
     u8 *self = (u8 *)object;
     void *sprite;
@@ -675,7 +675,7 @@ void *func_0206abb4(void *object, const CoreSpriteConfig *config)
         config->group, config->resource0, config->resource1,
         config->resource2, (u8)config->attach);
     *(void **)(self + 0x34) = sprite;
-    func_02072b68(sprite, (u8)config->animation);
+    GraphicsSpriteState_SetAnimation(sprite, (u8)config->animation);
     if (config->priority >= 0)
         *(s16 *)((u8 *)sprite + 0x28) = (s16)config->priority;
     *((u8 *)sprite + 0x3a) = (u8)config->byte34;
@@ -686,9 +686,9 @@ void *func_0206abb4(void *object, const CoreSpriteConfig *config)
 }
 
 /* Add the intermediate core-sprite vtable and retain its control word. */
-void *func_0206b44c(void *object, const CoreSpriteConfig *config, s32 control)
+void *AuxiliaryCoreSprite_InitControlled(void *object, const CoreSpriteConfig *config, s32 control)
 {
-    u8 *self = (u8 *)func_0206abb4(object, config);
+    u8 *self = (u8 *)AuxiliaryCoreSprite_InitBase(object, config);
     *(void **)(self + 0) = data_020e57a4;
     *(s32 *)(self + 0x40) = control;
     return self;
@@ -698,7 +698,7 @@ void *func_0206b44c(void *object, const CoreSpriteConfig *config, s32 control)
 void *func_0206b4b0(void *object, const CoreSpriteConfig *config, s32 control,
                     s32 extent, s32 phase)
 {
-    u8 *self = (u8 *)func_0206b44c(object, config, 0);
+    u8 *self = (u8 *)AuxiliaryCoreSprite_InitControlled(object, config, 0);
     *(void **)(self + 0) = data_020e57e4;
     *(s32 *)(self + 0x44) = phase;
     *(s32 *)(self + 0x48) = control;
@@ -707,7 +707,7 @@ void *func_0206b4b0(void *object, const CoreSpriteConfig *config, s32 control,
 }
 
 /* Initialize one of the core object's sixteen transform/history records. */
-void *func_0206c16c(void *object)
+void *AuxiliaryCoreHistoryRecord_Init(void *object)
 {
     u8 *self = (u8 *)object;
     VecFx32Object_Init(self + 4);
@@ -760,7 +760,7 @@ void *func_0206b628(void *object, void *owner, void *firstDescriptor,
     s32 i;
 
     for (i = 0; i < 16; i++)
-        func_0206c16c(self + 0x24 + i * 0x28);
+        AuxiliaryCoreHistoryRecord_Init(self + 0x24 + i * 0x28);
     *(void **)(self + 0x2a4) = owner;
     VecFx32Object_InitComponents(self + 0x2b4, x, y, z);
     VecFx32Object_InitComponents(self + 0x2c4, x, y, z);
@@ -826,7 +826,7 @@ void *func_0206b628(void *object, void *owner, void *firstDescriptor,
         (u16)(func_020ada8c(genrand_int32() & 0x7fff, 0x28) + 0x14);
     if (flagged != 0)
         *(u16 *)(self + 0x2ee) |= 1;
-    func_0206c028(self, 1);
+    AuxiliaryCoreSprite_SetVisible(self, 1);
     return self;
 }
 
@@ -837,7 +837,7 @@ void *func_0206b628(void *object, void *owner, void *firstDescriptor,
  * position is Q12; timers are frames and angle fields use the retail 16-bit
  * turn representation.
  */
-void func_0206bb18(void *object, const void *requestedPosition)
+void AuxiliaryCore_UpdateMotion(void *object, const void *requestedPosition)
 {
     u8 *self = (u8 *)object;
     s32 delta[4];
@@ -850,7 +850,7 @@ void func_0206bb18(void *object, const void *requestedPosition)
     VecFx32_Subtract(delta, requestedPosition, self + 0x2c4);
     delta[2] += *(s32 *)(self + 0x2f0);
     delta[3] = 0;
-    if (func_0206ab5c(delta) > 0x1000) {
+    if (VecFx32_HorizontalMagnitude(delta) > 0x1000) {
         *(s32 *)(self + 0x2d8) = func_020ae024(delta[2], delta[1]);
         VecFx32Object_Assign(self + 0x2b4, requestedPosition);
         *(s32 *)(self + 0x2bc) += *(s32 *)(self + 0x2f0);
@@ -883,7 +883,7 @@ void func_0206bb18(void *object, const void *requestedPosition)
             *(s32 *)(self + 0x300) = 0x8000;
         }
         *(s32 *)(self + 0x2fc) =
-            func_020adae4(func_020be334(*(s32 *)(self + 0x2f4)), 8);
+            func_020adae4(SignedAbsoluteValue(*(s32 *)(self + 0x2f4)), 8);
         *(s32 *)(self + 0x2c0) =
             *(s32 *)((const u8 *)requestedPosition + 12) + *(s32 *)(self + 0x2f8);
     }
@@ -910,25 +910,25 @@ void func_0206bb18(void *object, const void *requestedPosition)
                 *(s16 *)(self + 0x2ea) = 0;
             if (*(s16 *)(self + 0x2ea) == 0 && *(s16 *)(self + 0x2de) != 0) {
                 *(s16 *)(self + 0x2ea) = 15;
-                func_0206c0f8(self, 2);
+                AuxiliaryCore_AllocateHistorySprite(self, 2);
             }
         }
         if (--*(s16 *)(self + 0x2e6) == 0) {
             *(u16 *)(self + 0x2e6) =
                 (u16)((func_020ada8c(genrand_int32() & 0x7ff, 20) + 10) & 0xff);
-            func_0206c0f8(self, 1);
+            AuxiliaryCore_AllocateHistorySprite(self, 1);
         }
         if (--*(s16 *)(self + 0x2e8) < 1) {
-            func_0206c0f8(self, 3);
+            AuxiliaryCore_AllocateHistorySprite(self, 3);
             *(s16 *)(self + 0x2e8) = 6;
         }
     }
     for (i = 0; i < 16; i++) {
         u8 *record = self + 0x24 + i * 0x28;
-        if (record[0x27] != 0 && func_0206c4b0(record) != 0) {
+        if (record[0x27] != 0 && AuxiliaryCoreHistoryRecord_Advance(record) != 0) {
             if (record[0x27] == 2 && *(s16 *)(self + 0x2ec) > 0)
                 --*(s16 *)(self + 0x2ec);
-            func_0206c48c(record);
+            AuxiliaryCoreHistoryRecord_ReleaseSprite(record);
         }
     }
     *(u16 *)(self + 0x2e4) =
@@ -936,9 +936,9 @@ void func_0206bb18(void *object, const void *requestedPosition)
     for (i = 0; i < 16; i++) {
         u8 *record = self + 0x24 + i * 0x28;
         if (record[0x27] != 0)
-            func_0206c5b8(record);
+            AuxiliaryCoreHistoryRecord_ProjectSprite(record);
     }
-    func_0206c028(self, *(s16 *)(self + 0x2e2) > 0x40);
+    AuxiliaryCoreSprite_SetVisible(self, *(s16 *)(self + 0x2e2) > 0x40);
     *(u16 *)(self + 0x2ee) &= (u16)~8;
 
     if (*(s16 *)(self + 0x2de) != 0 &&
@@ -972,7 +972,7 @@ static u32 integerSquareRoot(u64 value)
 }
 
 /* Return the integer magnitude of the two Q12 horizontal vector components. */
-s32 func_0206ab5c(const void *vector)
+s32 VecFx32_HorizontalMagnitude(const void *vector)
 {
     const s32 *value = (const s32 *)vector;
     s64 x = value[1];
@@ -981,7 +981,7 @@ s32 func_0206ab5c(const void *vector)
 }
 
 /* Copy parent transform state into a sprite wrapper and run its update slot. */
-void func_0206ad38(void *object, const void *position, s32 angle)
+void AuxiliaryCoreSprite_SetTransform(void *object, const void *position, s32 angle)
 {
     u8 *self = (u8 *)object;
     VecFx32Object_Assign(self + 8, position);
@@ -991,13 +991,13 @@ void func_0206ad38(void *object, const void *position, s32 angle)
 }
 
 /* The concrete wrapper's slot forwards to its shared presentation update. */
-void func_0206c680(void *object, void *parent)
+void AuxiliaryCoreSprite_UpdateFromParent(void *object, void *parent)
 {
-    func_0206ad6c(object, parent);
+    AuxiliaryCoreSprite_TrackParent(object, parent);
 }
 
 /* Create a sprite state from descriptor zero or one with retail attach mode. */
-void *func_0206c0c8(void *object, s32 descriptorIndex)
+void *AuxiliaryCore_GetDescriptor(void *object, s32 descriptorIndex)
 {
     u8 *self = (u8 *)object;
     u8 *descriptor = *(u8 **)(self + 0x2a8 + descriptorIndex * 4);
@@ -1008,7 +1008,7 @@ void *func_0206c0c8(void *object, s32 descriptorIndex)
 }
 
 /* Find the first inactive one of the core's sixteen 0x28-byte records. */
-void *func_0206c130(void *object)
+void *AuxiliaryCore_GetSpriteGroup(void *object)
 {
     u8 *self = (u8 *)object;
     s32 i;
@@ -1035,8 +1035,8 @@ void func_0206c1b4(void *recordObject, void *coreObject, const void *position,
     if (kind == 1) {
         s32 scale;
         s32 direction;
-        *(void **)(record + 0) = func_0206c0c8(core, (*(u16 *)(core + 0x2ee) & 4) ? 2 : 1);
-        func_02072b68(*(void **)(record + 0),
+        *(void **)(record + 0) = AuxiliaryCore_GetDescriptor(core, (*(u16 *)(core + 0x2ee) & 4) ? 2 : 1);
+        GraphicsSpriteState_SetAnimation(*(void **)(record + 0),
                       (u8)func_020ada8c((u16)genrand_int32(), 19));
         scale = (*(s16 *)(core + 0x2e2) *
                  ((s32)func_020ada8c((u16)genrand_int32(), 10) + 6)) >> 8;
@@ -1052,8 +1052,8 @@ void func_0206c1b4(void *recordObject, void *coreObject, const void *position,
         *(s32 *)(record + 8) += *(s32 *)(record + 0x18) * scale;
         *(s32 *)(record + 12) += *(s32 *)(record + 0x1c) * scale;
     } else if (kind == 2) {
-        *(void **)(record + 0) = func_0206c0c8(core, 0);
-        func_02072b68(*(void **)(record + 0), 2);
+        *(void **)(record + 0) = AuxiliaryCore_GetDescriptor(core, 0);
+        GraphicsSpriteState_SetAnimation(*(void **)(record + 0), 2);
         *(u16 *)((u8 *)*(void **)(record + 0) + 0x24) &= (u16)~2;
         *(s16 *)((u8 *)*(void **)(record + 0) + 0x28) =
             (s16)(0xdd - *(s16 *)(core + 0x2ec));
@@ -1067,8 +1067,8 @@ void func_0206c1b4(void *recordObject, void *coreObject, const void *position,
         s32 scale;
         s32 direction = (angle >> 4) * 2;
         s32 offset[4] = {0, 0, 0, 0};
-        *(void **)(record + 0) = func_0206c0c8(core, 0);
-        func_02072b68(*(void **)(record + 0), (genrand_int32() & 3) + 13);
+        *(void **)(record + 0) = AuxiliaryCore_GetDescriptor(core, 0);
+        GraphicsSpriteState_SetAnimation(*(void **)(record + 0), (genrand_int32() & 3) + 13);
         *(s16 *)((u8 *)*(void **)(record + 0) + 0x28) =
             (s16)(func_020ada8c((u16)genrand_int32(), 4) + 0x44);
         scale = (*(s16 *)(core + 0x2e2) *
@@ -1091,10 +1091,10 @@ void func_0206c1b4(void *recordObject, void *coreObject, const void *position,
 }
 
 /* Allocate and initialize a new core history sprite when capacity permits. */
-void func_0206c0f8(void *object, s32 kind)
+void AuxiliaryCore_AllocateHistorySprite(void *object, s32 kind)
 {
     u8 *self = (u8 *)object;
-    void *record = func_0206c130(self);
+    void *record = AuxiliaryCore_GetSpriteGroup(self);
     if (record != 0)
         func_0206c1b4(record, self, self + 0x2b4, kind,
                       *(s16 *)(self + 0x304));
@@ -1110,7 +1110,7 @@ static s32 multiplyFx32(s32 left, s32 right)
  * blend its Q12 position toward that target, refresh direction/distance, and
  * invoke the concrete presentation slot.
  */
-void func_0206ad6c(void *object, void *parentObject)
+void AuxiliaryCoreSprite_TrackParent(void *object, void *parentObject)
 {
     u8 *self = (u8 *)object;
     u8 *parent = (u8 *)parentObject;
@@ -1136,7 +1136,7 @@ void func_0206ad6c(void *object, void *parentObject)
             multiplyFx32(((s32 *)self)[i + 2], 0x1000 - blend) +
             multiplyFx32(target[i], blend);
     VecFx32_Subtract(delta, target, self + 8);
-    *(s32 *)(self + 0x28) = func_0206ab5c(delta);
+    *(s32 *)(self + 0x28) = VecFx32_HorizontalMagnitude(delta);
     *(s32 *)(self + 0x24) = *(s32 *)(self + 0x20);
     if (*(s32 *)(self + 0x28) > 0x1000)
         *(s32 *)(self + 0x20) = func_020ae024(delta[2], delta[1]);
@@ -1144,14 +1144,14 @@ void func_0206ad6c(void *object, void *parentObject)
 }
 
 /* Update the concrete core sprite's pulse scale after its shared base update. */
-void func_0206b51c(void *object)
+void AuxiliaryCoreSprite_UpdatePulseScale(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *core = *(u8 **)(self + 0x38);
     u8 *sprite = *(u8 **)(self + 0x34);
     s32 scale;
 
-    func_0206b278(self);
+    AuxiliaryCoreSprite_UpdatePresentation(self);
     if (*(s16 *)(core + 0x306) != 0) {
         if (*(s32 *)(self + 0x28) <= 0x1000) {
             scale = 0x100;
@@ -1182,7 +1182,7 @@ void func_0206b51c(void *object)
  * 64-frame pixel jitter, hide it outside the DS viewport, and advance or
  * release a completed sprite animation through the owning core.
  */
-void func_0206b278(void *object)
+void AuxiliaryCoreSprite_UpdatePresentation(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *sprite = *(u8 **)(self + 0x34);
@@ -1212,18 +1212,18 @@ void func_0206b278(void *object)
         *(u16 *)(sprite + 0x24) |= 8;
     }
     if ((*(u16 *)(sprite + 0x24) & 1) != 0 && *(void **)(self + 0x38) != 0) {
-        s32 animation = func_0206bfc4(*(void **)(self + 0x38), self);
+        s32 animation = AuxiliaryCoreSprite_SelectAnimation(*(void **)(self + 0x38), self);
         if (animation == -2) {
-            func_02072b68(sprite, sprite[0x38]);
+            GraphicsSpriteState_SetAnimation(sprite, sprite[0x38]);
             *(u16 *)(sprite + 0x24) &= (u16)~1;
         } else if (animation != -1) {
-            func_02072b68(sprite, (u8)animation);
+            GraphicsSpriteState_SetAnimation(sprite, (u8)animation);
         }
     }
 }
 
 /* Choose the next animation for one core wrapper from its signed kind. */
-s32 func_0206bfc4(void *core, void *wrapperObject)
+s32 AuxiliaryCoreSprite_SelectAnimation(void *core, void *wrapperObject)
 {
     const u8 *wrapper = (const u8 *)wrapperObject;
     s32 animation = (s32)func_020ada8c(genrand_int32() & 0x7ff, 6);
@@ -1236,7 +1236,7 @@ s32 func_0206bfc4(void *core, void *wrapperObject)
 }
 
 /* Advance one active core history record and report when it should be freed. */
-s32 func_0206c4b0(void *object)
+s32 AuxiliaryCoreHistoryRecord_Advance(void *object)
 {
     u8 *record = (u8 *)object;
     if (record[0x27] == 1 || record[0x27] == 3) {
@@ -1259,7 +1259,7 @@ s32 func_0206c4b0(void *object)
 }
 
 /* Release a completed history sprite back to its owning group and clear it. */
-void func_0206c48c(void *object)
+void AuxiliaryCoreHistoryRecord_ReleaseSprite(void *object)
 {
     u8 *record = (u8 *)object;
     void *sprite = *(void **)record;
@@ -1269,7 +1269,7 @@ void func_0206c48c(void *object)
 }
 
 /* Project a history sprite into camera space and hide it outside DS bounds. */
-void func_0206c5b8(void *object)
+void AuxiliaryCoreHistoryRecord_ProjectSprite(void *object)
 {
     u8 *record = (u8 *)object;
     u8 *sprite = *(u8 **)record;
@@ -1289,7 +1289,7 @@ void func_0206c5b8(void *object)
 }
 
 /* Toggle visibility for every sprite owned by a 0x308-byte core object. */
-void func_0206b42c(void *object, s32 visible)
+void AuxiliaryCore_SetAllSpritesVisible(void *object, s32 visible)
 {
     u8 *sprite = *(u8 **)((u8 *)object + 0x34);
     if (visible != 0)
@@ -1299,22 +1299,22 @@ void func_0206b42c(void *object, s32 visible)
 }
 
 /* Apply visibility to all eight core sprites and retain the requested state. */
-void func_0206c028(void *object, s32 visible)
+void AuxiliaryCoreSprite_SetVisible(void *object, s32 visible)
 {
     u8 *self = (u8 *)object;
     s32 group;
     s32 item;
-    func_0206b42c(*(void **)(self + 0), visible);
-    func_0206b42c(*(void **)(self + 4), visible);
+    AuxiliaryCore_SetAllSpritesVisible(*(void **)(self + 0), visible);
+    AuxiliaryCore_SetAllSpritesVisible(*(void **)(self + 4), visible);
     for (group = 0; group < 2; group++)
         for (item = 0; item < 3; item++)
-            func_0206b42c(*(void **)(self + 8 + group * 12 + item * 4), visible);
-    func_0206b42c(*(void **)(self + 0x20), visible);
+            AuxiliaryCore_SetAllSpritesVisible(*(void **)(self + 8 + group * 12 + item * 4), visible);
+    AuxiliaryCore_SetAllSpritesVisible(*(void **)(self + 0x20), visible);
     *(s16 *)(self + 0x2de) = (s16)visible;
 }
 
 /* Select auxiliary presentation variant 30 and palette band five. */
-void func_0206cc3c(void *object)
+void AuxiliaryInteraction_SelectPresentationVariant(void *object)
 {
     u8 *self = (u8 *)object;
     *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0x03c0) | 0x141e;
@@ -1360,20 +1360,20 @@ static void updateOwnedEffect(void **field, s32 height)
 }
 
 /* Return the actor owned by one type-specific manager attachment record. */
-void *func_02069408(void *object, s32 index)
+void *ActorAttachmentManager_GetRecord(void *object, s32 index)
 {
     u8 *self = (u8 *)object;
     return *(void **)(*(u8 **)(self + index * 4) + 0x1d0);
 }
 
 /* Pop the next queued manager event from its fixed subtable. */
-void *func_02069550(void *object)
+void *ActorAttachmentManager_GetEventQueue(void *object)
 {
-    return func_0206ab38(*(void **)((u8 *)object + 0xc4));
+    return ActorAttachmentEventQueue_GetList(*(void **)((u8 *)object + 0xc4));
 }
 
 /* Advance the packed four-bit manager queue cursor, returning -1 between ticks. */
-s32 func_0206aab8(void *object)
+s32 ActorAttachmentCounter_Advance(void *object)
 {
     u8 *queue = (u8 *)object;
     u32 state = *(u32 *)(queue + 0);
@@ -1386,7 +1386,7 @@ s32 func_0206aab8(void *object)
 }
 
 /* Pop the last event from a ten-entry, 12-byte event stack. */
-void *func_0206ab38(void *object)
+void *ActorAttachmentEventQueue_GetList(void *object)
 {
     u8 *queue = (u8 *)object;
     s32 count = *(s32 *)(queue + 0x78);
@@ -1398,7 +1398,7 @@ void *func_0206ab38(void *object)
 }
 
 /* Count active type-zero manager records that currently own runtime state. */
-s32 func_02069414(void *object)
+s32 ActorAttachmentManager_CountType0Records(void *object)
 {
     u8 *self = (u8 *)object;
     s32 count = 0;
@@ -1412,7 +1412,7 @@ s32 func_02069414(void *object)
 }
 
 /* Copy one six-word attachment event between queue storage and stack storage. */
-void func_0206a8c0(void *destination, const void *source)
+void ActorAttachmentEvent_Copy(void *destination, const void *source)
 {
     u32 *out = (u32 *)destination;
     const u32 *in = (const u32 *)source;
@@ -1422,7 +1422,7 @@ void func_0206a8c0(void *destination, const void *source)
 }
 
 /* Report whether an intrusive event list has an item and reset its cursor. */
-s32 func_0206a8f4(void *object)
+s32 ActorAttachmentEventList_HasCurrent(void *object)
 {
     u8 *list = (u8 *)object;
     if (*(void **)(list + 4) == 0)
@@ -1432,7 +1432,7 @@ s32 func_0206a8f4(void *object)
 }
 
 /* Return the event at the intrusive list's current cursor. */
-void *func_0206a91c(void *object)
+void *ActorAttachmentEventList_GetCurrent(void *object)
 {
     return *(void **)((u8 *)object + 4);
 }
@@ -1441,7 +1441,7 @@ void *func_0206a91c(void *object)
  * Insert a new event node after the intrusive list cursor and return it. The
  * list owns the 0x20-byte node; its first 24 bytes remain caller-populated.
  */
-void *func_0206a938(void *object)
+void *ActorAttachmentEventList_GetCurrentNode(void *object)
 {
     u8 *list = (u8 *)object;
     u8 *current = *(u8 **)(list + 4);
@@ -1469,18 +1469,18 @@ void *func_0206a938(void *object)
 }
 
 /* Insert a six-word manager event in ascending priority order. */
-void func_0206a6d4(void *object, const void *eventObject)
+void ActorAttachmentEventList_InsertByPriority(void *object, const void *eventObject)
 {
     u8 *queue = (u8 *)object;
     u8 *list = *(u8 **)queue;
     const u32 *event = (const u32 *)eventObject;
     u8 *node = 0;
 
-    if (!func_0206a8f4(list)) {
-        node = (u8 *)func_0206a938(list);
+    if (!ActorAttachmentEventList_HasCurrent(list)) {
+        node = (u8 *)ActorAttachmentEventList_GetCurrentNode(list);
     } else {
         for (;;) {
-            u8 *current = (u8 *)func_0206a91c(list);
+            u8 *current = (u8 *)ActorAttachmentEventList_GetCurrent(list);
             if (*(u32 *)(current + 8) > event[2]) {
                 u8 *previous = *(u8 **)(current + 0x18);
                 node = (u8 *)Heap_Alloc(0x20, data_020e5730, 4, &gHeapContext);
@@ -1496,19 +1496,19 @@ void func_0206a6d4(void *object, const void *eventObject)
                 break;
             }
             if (*(void **)(current + 0x1c) == 0) {
-                node = (u8 *)func_0206a938(list);
+                node = (u8 *)ActorAttachmentEventList_GetCurrentNode(list);
                 break;
             }
             *(void **)(list + 4) = *(void **)(current + 0x1c);
         }
     }
     if (node != 0)
-        func_0206a8c0(node, event);
+        ActorAttachmentEvent_Copy(node, event);
     ++*(s32 *)(queue + 4);
 }
 
 /* Remove and free the current intrusive-list event, preserving its cursor. */
-s32 func_0206aa10(void *object)
+s32 ActorAttachmentEventList_RemoveCurrent(void *object)
 {
     u8 *list = (u8 *)object;
     u8 *node = *(u8 **)(list + 4);
@@ -1547,22 +1547,22 @@ s32 func_0206aa10(void *object)
 }
 
 /* Pop the oldest priority event into caller-owned six-word storage. */
-s32 func_0206a870(void *object, void *event)
+s32 ActorAttachmentEventList_PopOldest(void *object, void *event)
 {
     u8 *queue = (u8 *)object;
     void *list = *(void **)(queue + 0);
     void *node;
-    if (!func_0206a8f4(list))
+    if (!ActorAttachmentEventList_HasCurrent(list))
         return 0;
-    node = func_0206a91c(list);
-    func_0206a8c0(event, node);
-    func_0206aa10(list);
+    node = ActorAttachmentEventList_GetCurrent(list);
+    ActorAttachmentEvent_Copy(event, node);
+    ActorAttachmentEventList_RemoveCurrent(list);
     --*(s32 *)(queue + 4);
     return 1;
 }
 
 /* Append a three-word presentation event to the manager's fixed stack. */
-void func_0206aaf8(void *object, const void *event)
+void ActorAttachmentEventQueue_Append(void *object, const void *event)
 {
     u8 *queue = (u8 *)object;
     s32 count = *(s32 *)(queue + 0x78);
@@ -1575,7 +1575,7 @@ void func_0206aaf8(void *object, const void *event)
 }
 
 /* Return whether a type-zero record's owner uses a reward-bearing subtype. */
-s32 func_02069e08(void *object)
+s32 ActorAttachmentRecord_HasRewardSubtype(void *object)
 {
     u8 subtype = *(u8 *)(*(u8 **)((u8 *)object + 0x1d0) + 0x27e);
     u32 index = (u32)(u8)(subtype - 1);
@@ -1583,30 +1583,30 @@ s32 func_02069e08(void *object)
 }
 
 /* Count reward-bearing live type-zero attachments. */
-s32 func_02068fa4(void *object)
+s32 ActorAttachmentManager_CountRewardRecords(void *object)
 {
     u8 *manager = (u8 *)object;
     s32 count = 0;
     s32 i;
     for (i = 0; i < *(s32 *)(manager + 0x84); i++) {
         u8 *record = *(u8 **)(manager + i * 4);
-        if (*(s32 *)(record + 8) == 0 && func_02069e08(record))
+        if (*(s32 *)(record + 8) == 0 && ActorAttachmentRecord_HasRewardSubtype(record))
             count++;
     }
     return count;
 }
 
 /* Initialize and retain one manager reward descriptor. */
-void func_02069000(void *object, u16 value)
+void ActorAttachmentReward_Init(void *object, u16 value)
 {
     u8 *manager = (u8 *)object;
     s32 count = *(s32 *)(manager + 0xc8);
-    func_020627a0(*(void **)(manager + 0xcc + count * 4), value, 1);
+    ActorDescriptor_InitRange(*(void **)(manager + 0xcc + count * 4), value, 1);
     *(s32 *)(manager + 0xc8) = count + 1;
 }
 
 /* Choose one record reward using its two weighted descriptor alternatives. */
-s32 func_02069d28(void *object, s32 *fallback)
+s32 ActorAttachmentRecord_SelectWeightedReward(void *object, s32 *fallback)
 {
     u8 *record = (u8 *)object;
     u32 random = genrand_int32() % 100;
@@ -1623,7 +1623,7 @@ s32 func_02069d28(void *object, s32 *fallback)
 }
 
 /* Return the selected attachment count across the manager's two indices. */
-s32 func_02069034(void *object)
+s32 ActorAttachmentManager_CountSelectedRecords(void *object)
 {
     u8 *manager = (u8 *)object;
     s32 total = 0;
@@ -1637,7 +1637,7 @@ s32 func_02069034(void *object)
 }
 
 /* Sum the live quantities held by every type-zero attachment. */
-s32 func_02069068(void *object)
+s32 ActorAttachmentManager_SumLiveQuantities(void *object)
 {
     u8 *manager = (u8 *)object;
     s32 total = 0;
@@ -1651,14 +1651,14 @@ s32 func_02069068(void *object)
 }
 
 /* Consume pending record events and select terminal manager phases. */
-s32 func_020690d4(void *object)
+s32 ActorAttachmentManager_ProcessPendingEvents(void *object)
 {
     u8 *manager = (u8 *)object;
     u32 event[6];
     s32 i;
     if (*(s32 *)(manager + 0xa0) != 0)
         return *(s32 *)(manager + 0xa0);
-    while (func_0206a870(*(void **)(manager + 0x94), event)) {
+    while (ActorAttachmentEventList_PopOldest(*(void **)(manager + 0x94), event)) {
         for (i = 0; i < *(s32 *)(manager + 0x84); i++) {
             u8 *record = *(u8 **)(manager + i * 4);
             if ((event[4] & (1u << (i & 0xff))) != 0 &&
@@ -1676,7 +1676,7 @@ s32 func_020690d4(void *object)
 }
 
 /* Finalize records and select weighted rewards for the teardown presentation. */
-void func_02068d0c(void *object)
+void ActorAttachmentManager_FinalizeRewards(void *object)
 {
     u8 *manager = (u8 *)object;
     u8 *candidates[20];
@@ -1702,13 +1702,13 @@ void func_02068d0c(void *object)
             descriptor = (u8 *)(*(void *(**)(void *))
                 (*(u8 **)record + 0x14))(record);
             if (*(s16 *)(descriptor + 4) != 0)
-                func_02069000(manager, *(u16 *)descriptor);
+                ActorAttachmentReward_Init(manager, *(u16 *)descriptor);
         } else {
             occupied++;
         }
     }
     *(s16 *)((u8 *)gGameWork + 0x94) = occupied;
-    if (func_02068fa4(manager) != 0 || candidateCount == 0)
+    if (ActorAttachmentManager_CountRewardRecords(manager) != 0 || candidateCount == 0)
         return;
 
     selectionCount = candidateCount;
@@ -1720,20 +1720,20 @@ void func_02068d0c(void *object)
     if (selectionCount == 2 || selectionCount == 3) {
         for (i = 0; i < selectionCount - 1; i++) {
             s32 fallback;
-            s32 value = func_02069d28(candidates[genrand_int32() % candidateCount],
+            s32 value = ActorAttachmentRecord_SelectWeightedReward(candidates[genrand_int32() % candidateCount],
                                       &fallback);
             if (!fallback)
-                func_02069000(manager, (u16)value);
+                ActorAttachmentReward_Init(manager, (u16)value);
             else
                 *(s32 *)(manager + 0xb0) += value;
         }
     } else if (selectionCount > 3) {
         for (i = 0; i < 2; i++) {
             s32 fallback;
-            s32 value = func_02069d28(candidates[genrand_int32() % candidateCount],
+            s32 value = ActorAttachmentRecord_SelectWeightedReward(candidates[genrand_int32() % candidateCount],
                                       &fallback);
             if (!fallback)
-                func_02069000(manager, (u16)value);
+                ActorAttachmentReward_Init(manager, (u16)value);
             else
                 *(s32 *)(manager + 0xb0) += value;
         }
@@ -1744,7 +1744,7 @@ void func_02068d0c(void *object)
 }
 
 /* Drain one tenth of a record's pending amount every thirty frames. */
-void func_0206a078(void *object)
+void ActorAttachmentRecord_DrainPendingAmount(void *object)
 {
     u8 *record = (u8 *)object;
     s32 currency;
@@ -1760,7 +1760,7 @@ void func_0206a078(void *object)
             if (currency < 0)
                 currency = 0;
             GamePhaseCurrencyHud_SetCurrency(gLupyContext, currency);
-            func_0206aaf8(*(void **)(*(u8 **)(record + 4) + 0xc4), event);
+            ActorAttachmentEventQueue_Append(*(void **)(*(u8 **)(record + 4) + 0xc4), event);
         }
         *(s32 *)(record + 0x1d8) = amount % 10;
         *(s32 *)(record + 0x1dc) = 0;
@@ -1773,13 +1773,13 @@ void func_0206a078(void *object)
 }
 
 /* Insert an attachment event into the manager's priority queue. */
-void func_020693f8(void *object, const void *event)
+void ActorAttachmentManager_QueueEvent(void *object, const void *event)
 {
-    func_0206a6d4(*(void **)((u8 *)object + 0x94), event);
+    ActorAttachmentEventList_InsertByPriority(*(void **)((u8 *)object + 0x94), event);
 }
 
 /* Emit each paced type-two record event while its attachment remains live. */
-void func_02069fb8(void *object)
+void ActorAttachmentRecord_EmitPacedEvents(void *object)
 {
     u8 *record = (u8 *)object;
     if ((*(u32 *)(record + 0x10) & 2) != 0 ||
@@ -1788,7 +1788,7 @@ void func_02069fb8(void *object)
         return;
     for (;;) {
         u32 event[6];
-        s32 cursor = func_0206aab8(record + 0x1c8);
+        s32 cursor = ActorAttachmentCounter_Advance(record + 0x1c8);
         u32 mask = ~(1u << (*(u32 *)(record + 0x0c) & 0xff));
         s32 selected = *(s32 *)(*(u8 **)(record + 4) + 0x90);
         if (cursor < 0)
@@ -1801,18 +1801,18 @@ void func_02069fb8(void *object)
         event[3] = (u32)record;
         event[4] = mask;
         event[5] = *(u32 *)(record + 0x1c);
-        func_020693f8(*(void **)(record + 4), event);
+        ActorAttachmentManager_QueueEvent(*(void **)(record + 4), event);
     }
 }
 
 /* Retail type-two attachment post-update hook; this variant is intentionally empty. */
-void func_0206a174(void *object)
+void ActorAttachmentRecord_PostUpdateType2NoOp(void *object)
 {
     (void)object;
 }
 
 /* Clear a caller-owned byte range, matching the SDK-local zero-fill helper. */
-void func_020c10d4(void *destination, u32 size)
+void Memory_ClearBytes(void *destination, u32 size)
 {
     u8 *bytes = (u8 *)destination;
     u32 i;
@@ -1823,7 +1823,7 @@ void func_020c10d4(void *destination, u32 size)
 }
 
 /* Retail VecFx32 terminal hook; vectors own no resources. */
-void func_02005058(void *vector)
+void VecFx32_TerminateNoOp(void *vector)
 {
     (void)vector;
 }
@@ -1835,7 +1835,7 @@ void func_02005058(void *vector)
  * before the manager storage is released. The returned pointer remains valid
  * only for the caller to free the outer allocation.
  */
-void *func_0206c978(void *object)
+void *AuxiliaryInteraction_Destroy(void *object)
 {
     u8 *self = (u8 *)object;
     s32 terminalVector[4];
@@ -1853,7 +1853,7 @@ void *func_0206c978(void *object)
             (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
     }
     if (*(void **)(self + 0x14) != 0) {
-        func_0206ba50(*(void **)(self + 0x14));
+        AuxiliaryCore_Destroy(*(void **)(self + 0x14));
         Heap_Free(*(void **)(self + 0x14));
     }
     func_02074058(*(void **)(self + 0x0c));
@@ -1866,18 +1866,18 @@ void *func_0206c978(void *object)
     if ((*(u32 *)(self + 0x20) & 0x40000) == 0) {
         u8 *manager = *(u8 **)(self + 0x44);
         s32 count;
-        func_0206e5c8(terminalVector, self);
+        AuxiliaryInteraction_BuildTerminalVector(terminalVector, self);
         count = *(s32 *)(manager + 0x84);
         for (i = 0; i < count; i++) {
-            u8 *actor = (u8 *)func_02069408(manager, i);
+            u8 *actor = (u8 *)ActorAttachmentManager_GetRecord(manager, i);
             if ((*(s32 (**)(void *))(*(u8 **)actor + 0xa8))(actor) != 0)
                 (*(void (**)(void *, void *, s32))(*(u8 **)actor + 0x80))(
                     actor, terminalVector, 0);
         }
-        func_02005058(terminalVector);
+        VecFx32_TerminateNoOp(terminalVector);
     }
     if (*(void **)(self + 0x44) != 0) {
-        func_02068b04(*(void **)(self + 0x44));
+        ActorAttachmentManager_Destroy(*(void **)(self + 0x44));
         Heap_Free(*(void **)(self + 0x44));
     }
     return self;
@@ -1888,7 +1888,7 @@ void *func_0206c978(void *object)
  * vector and particle records contain no separately owned storage, so their
  * retail terminal hooks have no observable effect beyond orderly teardown.
  */
-void func_0206ba50(void *object)
+void AuxiliaryCore_Destroy(void *object)
 {
     u8 *core = (u8 *)object;
     s32 row;
@@ -1911,8 +1911,8 @@ void func_0206ba50(void *object)
     presentation = *(void **)(core + 0x20);
     if (presentation != 0)
         (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
-    func_02005058(core + 0x2c4);
-    func_02005058(core + 0x2b4);
+    VecFx32_TerminateNoOp(core + 0x2c4);
+    VecFx32_TerminateNoOp(core + 0x2b4);
 }
 
 /*
@@ -1920,7 +1920,7 @@ void func_0206ba50(void *object)
  * the manager; queued event nodes are drained before their list and wrapper
  * allocations are freed. No actor-owned storage is released here.
  */
-void func_02068b04(void *object)
+void ActorAttachmentManager_Destroy(void *object)
 {
     u8 *manager = (u8 *)object;
     s32 i;
@@ -1933,7 +1933,7 @@ void func_02068b04(void *object)
         u8 *queue = *(u8 **)(manager + 0x94);
         void *list = *(void **)(queue + 0);
         if (list != 0) {
-            while (func_0206aa10(list) != 0) {
+            while (ActorAttachmentEventList_RemoveCurrent(list) != 0) {
             }
             Heap_Free(list);
         }
@@ -1946,34 +1946,34 @@ void func_02068b04(void *object)
 }
 
 /* Delete a plain attachment record whose subtype owns no child resources. */
-void *func_0206a560(void *object)
+void *ActorAttachmentRecord_DeletePlain(void *object)
 {
     Heap_Free(object);
     return object;
 }
 
 /* Delete a plain manager queue node and return its former address. */
-void *func_0206a580(void *object)
+void *ActorAttachmentRecord_DeleteType2(void *object)
 {
     Heap_Free(object);
     return object;
 }
 
 /* Retail type-one record update hook; this variant has no per-frame work. */
-void func_0206a57c(void *object)
+void ActorAttachmentRecord_UpdateType1NoOp(void *object)
 {
     (void)object;
 }
 
 /* Retail type-one reward accessor; this record never owns a descriptor. */
-void *func_0206a574(void *object)
+void *ActorAttachmentRecord_DeleteType1(void *object)
 {
     (void)object;
     return 0;
 }
 
 /* Retail type-two record update hook; this variant has no per-frame work. */
-void func_0206a594(void *object)
+void ActorAttachmentRecord_UpdateType2NoOp(void *object)
 {
     (void)object;
 }
@@ -1983,23 +1983,23 @@ void func_0206a594(void *object)
  * borrowed from its group; teardown releases that state, terminates the
  * embedded vector, and then frees the record allocation.
  */
-void *func_0206b500(void *object)
+void *AuxiliaryCoreSprite_Delete(void *object)
 {
     u8 *record = (u8 *)object;
     void *state = *(void **)(record + 0x34);
     *(const void **)(record + 0) = data_020e57c4;
     func_02074038(*(void **)state, state);
-    func_02005058(record + 8);
+    VecFx32_TerminateNoOp(record + 8);
     Heap_Free(record);
     return object;
 }
 
 /* Build the world-space vector passed to each attachment's terminal callback. */
-void func_0206e5c8(void *destination, void *object)
+void AuxiliaryInteraction_BuildTerminalVector(void *destination, void *object)
 {
     u8 *self = (u8 *)object;
     func_02005030(destination, *(u8 **)(self + 0x10) + 0x28);
-    func_02034894(*(void **)(self + 0x10), destination);
+    ActorTerrain_ApplyNeighborAxisBias(*(void **)(self + 0x10), destination);
 }
 
 static void releaseOwnedPresentation(void **field)
@@ -2015,7 +2015,7 @@ static void releaseOwnedPresentation(void **field)
  * actor, spawn its recovered reward presentation, and publish the resulting
  * counters. All positions remain Q12 and all counts retain retail ownership.
  */
-void func_0206deac(void *object, s32 requestedResult)
+void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
 {
     u8 *self = (u8 *)object;
     u8 *manager = *(u8 **)(self + 0x44);
@@ -2040,13 +2040,13 @@ void func_0206deac(void *object, s32 requestedResult)
         releaseOwnedPresentation((void **)(self + 0x28 + i * 4));
 
     if (requestedResult == -1)
-        result = func_02069034(manager) > 0 && func_02069068(manager) != 0;
+        result = ActorAttachmentManager_CountSelectedRecords(manager) > 0 && ActorAttachmentManager_SumLiveQuantities(manager) != 0;
     else
         result = requestedResult == 1;
 
-    func_0206e5c8(terminalVector, self);
+    AuxiliaryInteraction_BuildTerminalVector(terminalVector, self);
     for (i = 0; i < attachmentCount; i++) {
-        u8 *actor = (u8 *)func_02069408(manager, i);
+        u8 *actor = (u8 *)ActorAttachmentManager_GetRecord(manager, i);
         if (actor[0x4d] == 1) {
             typeOneEmpty = GamePhaseCurrencyHud_GetCurrency(gLupyContext) == 0;
         } else if (actor[0x4d] == 2) {
@@ -2073,14 +2073,14 @@ void func_0206deac(void *object, s32 requestedResult)
     if (!GameWork_TestFlag(gGameWork, 0x417)) {
         if (typeOneEmpty >= 0) {
             if (typeOneEmpty) {
-                func_0206e4c4(self, 0x2d);
+                AuxiliaryInteraction_PlaySpatialSound(self, 0x2d);
             } else if (!result) {
-                func_0206e4c4(self, 0x18);
+                AuxiliaryInteraction_PlaySpatialSound(self, 0x18);
             }
         }
         if (typeSevenState) {
             u16 base = (u16)*(s16 *)((u8 *)gGameWork + 0x1d0);
-            func_0206e4c4(self, (u16)(base | (typeSevenEmpty ? 5 : 2)));
+            AuxiliaryInteraction_PlaySpatialSound(self, (u16)(base | (typeSevenEmpty ? 5 : 2)));
         }
     }
     func_02005030(rewardPosition, owner + 0x18);
@@ -2091,10 +2091,10 @@ void func_0206deac(void *object, s32 requestedResult)
         s32 j;
         for (j = 0; j < 0x10; j++)
             descriptor[j] = source[j];
-        func_020635f4(descriptor + 0x10, source + 0x10);
-        func_020635f4(descriptor + 0x18, source + 0x18);
+        ActorAttachmentDescriptor_CopyPayload(descriptor + 0x10, source + 0x10);
+        ActorAttachmentDescriptor_CopyPayload(descriptor + 0x18, source + 0x18);
         *(u32 *)(descriptor + 0x20) = *(u32 *)(source + 0x20);
-        func_02062864(descriptor, 1);
+        ActorDescriptor_SetRangeEnd(descriptor, 1);
         for (j = 0; j < *(u16 *)(descriptor + 4); j++)
             func_0204f894(rewardPosition, descriptor, 300);
     }
@@ -2116,12 +2116,12 @@ void func_0206deac(void *object, s32 requestedResult)
         *(s16 *)((u8 *)gGameWork + 0x186) = emptyTypeTwoCount;
     func_0202de90(func_02007f0c(data_021052fc, 1));
     *(u32 *)(self + 0x20) |= 0x40000;
-    func_02005058(rewardPosition);
-    func_02005058(terminalVector);
+    VecFx32_TerminateNoOp(rewardPosition);
+    VecFx32_TerminateNoOp(terminalVector);
 }
 
 /* Apply the core scale and optional secondary scale to its two halfwords. */
-void func_0206c0b0(void *object, s32 scale, s32 secondary)
+void AuxiliaryCore_ApplyScale(void *object, s32 scale, s32 secondary)
 {
     u8 *core = (u8 *)object;
     *(s16 *)(core + 0x2e0) = (s16)scale;
@@ -2133,7 +2133,7 @@ void func_0206c0b0(void *object, s32 scale, s32 secondary)
  * Advance every live manager attachment, consume queued pair work, maintain
  * its idle timeout, run post-update slots, and return the manager phase.
  */
-s32 func_02068bbc(void *object)
+s32 ActorAttachmentManager_Update(void *object)
 {
     u8 *self = (u8 *)object;
     s32 i;
@@ -2141,22 +2141,22 @@ s32 func_02068bbc(void *object)
     if (*(s32 *)(self + 0xa0) != 0)
         return *(s32 *)(self + 0xa0);
     if ((*(u32 *)(self + 0x80) & 1) == 0) {
-        while (func_0206aab8(self + 0x98) >= 0) {
+        while (ActorAttachmentCounter_Advance(self + 0x98) >= 0) {
             for (i = 0; i < *(s32 *)(self + 0x84); i++) {
                 u8 *record = *(u8 **)(self + i * 4);
                 if (*(void **)(record + 0x18) != 0)
                     (*(void (**)(void *))(*(u8 **)record + 0x0c))(record);
             }
-            if (func_020690d4(self) != 0) {
-                func_02068d0c(self);
+            if (ActorAttachmentManager_ProcessPendingEvents(self) != 0) {
+                ActorAttachmentManager_FinalizeRewards(self);
                 break;
             }
         }
     }
-    if (*(s32 *)(self + 0xa0) == 0 && func_02069414(self) == 0) {
+    if (*(s32 *)(self + 0xa0) == 0 && ActorAttachmentManager_CountType0Records(self) == 0) {
         if (--*(s32 *)(self + 0xac) == 0) {
             *(s32 *)(self + 0xa0) = 1;
-            func_02068d0c(self);
+            ActorAttachmentManager_FinalizeRewards(self);
         }
     }
     for (i = 0; i < *(s32 *)(self + 0x84); i++) {
@@ -2167,7 +2167,7 @@ s32 func_02068bbc(void *object)
     ++*(s32 *)(self + 0xa4);
     if (*(s32 *)(self + 0xa4) >= *(s32 *)(self + 0xa8)) {
         *(s32 *)(self + 0xa0) = 2;
-        func_02068d0c(self);
+        ActorAttachmentManager_FinalizeRewards(self);
     }
     return *(s32 *)(self + 0xa0);
 }
@@ -2180,7 +2180,7 @@ s32 func_02068bbc(void *object)
  * frames, positions are Q12, and all allocation/manager/audio calls retain
  * their retail ownership and observable effects.
  */
-s32 func_0206cd10(void *object, s32 selectedIndex)
+s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
 {
     u8 *self = (u8 *)object;
     u8 *owner = *(u8 **)(self + 0x10);
@@ -2224,18 +2224,18 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
         break;
     case 3:
         *(s16 *)(self + 0x18) = 8;
-        func_0206c028(core, 0);
+        AuxiliaryCoreSprite_SetVisible(core, 0);
         break;
     }
 
     *(u16 *)(self + 0x1e) =
         (u16)(*(u16 *)(self + 0x1e) + (genrand_int32() & 0x2fff) + 0x4000);
     if (*(s16 *)(self + 0x1a) == 1 && *(s16 *)(self + 0xb2) == 0) {
-        s32 eventState = func_02068bbc(manager);
+        s32 eventState = ActorAttachmentManager_Update(manager);
         if (eventState == 1 || eventState == 2 || eventState == 3 || eventState == 4)
-            func_0206deac(self, -1);
+            AuxiliaryInteraction_FinalizeResult(self, -1);
         for (;;) {
-            s32 *event = (s32 *)func_02069550(manager);
+            s32 *event = (s32 *)ActorAttachmentManager_GetEventQueue(manager);
             if (event == 0)
                 break;
             if (event[0] == 1 && event[1] != 0) {
@@ -2245,19 +2245,19 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
                         effect,
                         ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc),
                         owner, -event[1], 0x2000, -0xc0);
-                func_0201ded4(data_021052fc + 0x2f7c, effect);
+                PresentationList_AppendObject(data_021052fc + 0x2f7c, effect);
                 switch (genrand_int32() & 3) {
-                case 0: func_0206e4c4(self, 0x42); break;
-                case 1: func_0206e4c4(self, 0x43); break;
-                default: func_0206e4c4(self, 0x44); break;
+                case 0: AuxiliaryInteraction_PlaySpatialSound(self, 0x42); break;
+                case 1: AuxiliaryInteraction_PlaySpatialSound(self, 0x43); break;
+                default: AuxiliaryInteraction_PlaySpatialSound(self, 0x44); break;
                 }
             } else if (event[0] == 5 && event[1] != 0 && owner[0x4d] == 7) {
-                func_0206e4c4(self, 0x34);
+                AuxiliaryInteraction_PlaySpatialSound(self, 0x34);
             }
         }
     }
 
-    func_0206c0b0(core, *(s16 *)(self + 0x1a) < 2
+    AuxiliaryCore_ApplyScale(core, *(s16 *)(self + 0x1a) < 2
                               ? *(s16 *)(self + 0x18) : 0x20, -1);
     coreHeight = *(s32 *)(core + 0x2f8);
 
@@ -2288,7 +2288,7 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
             *(void **)(self + 0x28 + freeSlot * 4) = effect;
             if ((genrand_int32() & 0x20) != 0)
                 *(u16 *)(*(u8 **)((u8 *)effect + 4) + 0x24) |= 0x80;
-            func_0201e3b8(effect, 1);
+            TimedSpritePresentation_SetVisible(effect, 1);
             *(s16 *)(self + 0x40) = 20;
             if (++*(s16 *)(self + 0x42) >= *(s16 *)(self + 0xa4))
                 *(s16 *)(self + 0x42) = 0;
@@ -2322,7 +2322,7 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
             *(u16 *)(*(u8 **)((u8 *)effect + 4) + 0x24) |= 0x80;
         if ((random & 2) != 0)
             *(u16 *)(*(u8 **)((u8 *)effect + 4) + 0x24) |= 0x40;
-        func_0201e3b8(effect, 1);
+        TimedSpritePresentation_SetVisible(effect, 1);
         *(s16 *)(self + 0xa8) = 30;
         if (++*(s16 *)(self + 0xaa) >= *(s16 *)(self + 0xa6))
             *(s16 *)(self + 0xaa) = 0;
@@ -2398,7 +2398,7 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
             if ((random & 2) != 0)
                 *(u16 *)(*(u8 **)((u8 *)effect + 4) + 0x24) |= 0x40;
         }
-        func_0201e3b8(effect, 1);
+        TimedSpritePresentation_SetVisible(effect, 1);
     }
     if (*(void **)(self + 0x38) != 0) {
         u8 *effect = *(u8 **)(self + 0x38);
@@ -2422,14 +2422,14 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
                          data_021052fc + 0x2fbc))[2] >> 12;
         if (owner[0x4d] == 7) {
             switch (*(s16 *)(*(u8 **)(owner + 0x29c) + 0x3c)) {
-            case 0: func_0206e644(self, touch); break;
+            case 0: AuxiliaryInteraction_ProcessTouchSamples(self, touch); break;
             case 1: func_0206e7f4(self, touch); break;
             case 2: func_0206e9e0(self, touch); break;
             case 3: func_0206ea6c(self, touch); break;
             }
         } else {
-            func_0206e644(self, touch);
-            func_0206ebac(self);
+            AuxiliaryInteraction_ProcessTouchSamples(self, touch);
+            AuxiliaryInteraction_FlagSecondaryTouch(self);
         }
     }
 
@@ -2495,7 +2495,7 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
         }
     }
 
-    if (func_0206e3a4(self) != 0)
+    if (AuxiliaryInteraction_IsCoreHidden(self) != 0)
         return 2;
     if (*(s16 *)(self + 0x1a) >= 2)
         return 1;
@@ -2504,14 +2504,14 @@ s32 func_0206cd10(void *object, s32 selectedIndex)
         s32 count = *(s32 *)(manager + 0x84);
         VecFx32Object_InitCopy(position, owner + 0x18);
         for (i = 0; i < count; i++)
-            VecFx32Object_Assign((u8 *)func_02069408(manager, i) + 0x18,
+            VecFx32Object_Assign((u8 *)ActorAttachmentManager_GetRecord(manager, i) + 0x18,
                                  position);
     }
     return 0;
 }
 
 /* Return whether a hidden core has reached terminal auxiliary state three. */
-s32 func_0206e3a4(void *object)
+s32 AuxiliaryInteraction_IsCoreHidden(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *core = *(u8 **)(self + 0x14);
@@ -2521,14 +2521,14 @@ s32 func_0206e3a4(void *object)
 }
 
 /* Play the common touch response sound at one of its two retail pan values. */
-void func_0206e5f0(void *object, s32 centered)
+void AuxiliaryInteraction_PlayTouchSound(void *object, s32 centered)
 {
     (void)object;
     func_020593ac(gSoundContext, 0, 0x60, centered ? 0x7f : 0x50, 0, 0);
 }
 
 /* Select the stronger touch-response presentation band. */
-void func_0206e79c(void *object)
+void AuxiliaryInteraction_ApplyStrongResponse(void *object)
 {
     u8 *self = (u8 *)object;
     *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0xfc00) | 0x1e;
@@ -2536,7 +2536,7 @@ void func_0206e79c(void *object)
 }
 
 /* Select the weaker touch-response presentation band. */
-void func_0206e7c8(void *object)
+void AuxiliaryInteraction_ApplyWeakResponse(void *object)
 {
     u8 *self = (u8 *)object;
     *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0xfc00) | 0x0a;
@@ -2549,7 +2549,7 @@ void func_0206e7c8(void *object)
  * intervening samples emit only the weak response. Touch coordinates are DS
  * pixels and the counter is measured in accepted samples.
  */
-void func_0206e644(void *object, const void *touchObject)
+void AuxiliaryInteraction_ProcessTouchSamples(void *object, const void *touchObject)
 {
     u8 *self = (u8 *)object;
     const s32 *touch = (const s32 *)touchObject;
@@ -2560,8 +2560,8 @@ void func_0206e644(void *object, const void *touchObject)
         s32 quotient;
         s32 amount;
         func_020593ac(gSoundContext, 0, 0x60, 0x7f, 0, 0);
-        func_0206e79c(self);
-        func_020a2894(effectManager, 1, touch[1], touch[2], 8);
+        AuxiliaryInteraction_ApplyStrongResponse(self);
+        EffectManager_SubmitPointEffect(effectManager, 1, touch[1], touch[2], 8);
         if (*(s16 *)(self + 0xac) >= 40)
             *(s16 *)(self + 0xac) = 40;
         quotient = func_020adae4(*(s16 *)(self + 0xac), 5);
@@ -2578,15 +2578,15 @@ void func_0206e644(void *object, const void *touchObject)
                 *(s32 *)(*(u8 **)(manager + index * 4) + 0x1c) += amount;
         }
     } else {
-        func_020a2894(effectManager, 0, touch[1], touch[2], 5);
-        func_0206e5f0(self, 0);
-        func_0206e7c8(self);
+        EffectManager_SubmitPointEffect(effectManager, 0, touch[1], touch[2], 5);
+        AuxiliaryInteraction_PlayTouchSound(self, 0);
+        AuxiliaryInteraction_ApplyWeakResponse(self);
     }
     ++*(s16 *)(self + 0xac);
 }
 
 /* Occasionally flag the current secondary actor for a standard touch event. */
-void func_0206ebac(void *object)
+void AuxiliaryInteraction_FlagSecondaryTouch(void *object)
 {
     u8 *self = (u8 *)object;
     u8 *secondary;
@@ -2607,7 +2607,7 @@ void func_0206ebac(void *object)
 }
 
 /* Play a spatial auxiliary sound using distance attenuation and signed pan. */
-void func_0206e4c4(void *object, s32 sound)
+void AuxiliaryInteraction_PlaySpatialSound(void *object, s32 sound)
 {
     u8 *self = (u8 *)object;
     s32 delta[4];
@@ -2635,7 +2635,7 @@ void func_0206e4c4(void *object, s32 sound)
  * the resource's bounded random jitter, publish the core transform, and
  * advance the owned sprite group once per frame.
  */
-void func_0206dcac(void *object)
+void AuxiliaryInteraction_UpdateResourceFrame(void *object)
 {
     u8 *self = (u8 *)object;
     s32 position[4];
@@ -2675,7 +2675,7 @@ void func_0206dcac(void *object)
             (*(u16 *)(self + 0x24) & 0xfc00) |
             ((*(u16 *)(self + 0x24) - 1) & 0x03ff);
     }
-    func_0206bb18(*(void **)(self + 0x14), position);
+    AuxiliaryCore_UpdateMotion(*(void **)(self + 0x14), position);
     GraphicsSpriteGroup_AdvanceAnimations(*(void **)(self + 0x0c));
 }
 
@@ -2688,7 +2688,7 @@ void func_0206dcac(void *object)
  * null fields; the retail constructor assumes the final manager allocation
  * succeeds before configuring it.
  */
-void *func_0206c68c(void *allocation, void *owner)
+void *AuxiliaryInteraction_Init(void *allocation, void *owner)
 {
     u8 *self = (u8 *)allocation;
     u8 *actor = (u8 *)owner;
@@ -2730,7 +2730,7 @@ void *func_0206c68c(void *allocation, void *owner)
             *(s32 *)(actor + 0x24), 0, mirrored, vertical, 1, 1);
     }
     *(void **)(self + 0x14) = object;
-    func_0206c028(object, 0);
+    AuxiliaryCoreSprite_SetVisible(object, 0);
     *(s16 *)(self + 0x18) = 0x100;
     *(s16 *)(self + 0x1a) = 0;
     *(s16 *)(self + 0x1c) = 0;
@@ -2751,10 +2751,10 @@ void *func_0206c68c(void *allocation, void *owner)
 
     manager = Heap_Alloc(0x11c, data_020e5820, -4, &gHeapContext);
     if (manager != 0)
-        manager = func_02068a40(manager);
+        manager = ActorAttachmentManager_Init(manager);
     *(void **)(self + 0x44) = manager;
     *(u32 *)((u8 *)manager + 0x80) &= ~1u;
-    func_020691c8(manager, actor, -1);
+    ActorAttachmentManager_AdmitActor(manager, actor, -1);
     (*(void (**)(void *))(*(u8 **)actor + 0x7c))(actor);
     return self;
 }
@@ -2768,7 +2768,7 @@ void *func_0206c68c(void *allocation, void *owner)
  * actor types, and advances the resource to state 0x19. Returns one on success
  * and zero on rejection/full.
  */
-s32 func_0206cb04(void *allocation, void *targetObject, s32 admitTarget)
+s32 AuxiliaryInteraction_AdmitTarget(void *allocation, void *targetObject, s32 admitTarget)
 {
     u8 *self = (u8 *)allocation;
     u8 *target = (u8 *)targetObject;
@@ -2782,7 +2782,7 @@ s32 func_0206cb04(void *allocation, void *targetObject, s32 admitTarget)
             s32 index = -1;
             if (type == 7)
                 index = *(s32 *)(target + 0x298);
-            if (func_020691c8(*(void **)(self + 0x44), target, index) == 0)
+            if (ActorAttachmentManager_AdmitActor(*(void **)(self + 0x44), target, index) == 0)
                 return 0;
         }
 
@@ -2803,8 +2803,8 @@ s32 func_0206cb04(void *allocation, void *targetObject, s32 admitTarget)
         break;
     }
 
-    func_0206cc3c(self);
-    func_0206e4c4(self, 0x19);
+    AuxiliaryInteraction_SelectPresentationVariant(self);
+    AuxiliaryInteraction_PlaySpatialSound(self, 0x19);
     return 1;
 }
 
@@ -2812,17 +2812,17 @@ s32 func_0206cb04(void *allocation, void *targetObject, s32 admitTarget)
 static void *createAuxiliary(u8 *actor)
 {
     void *resource = Heap_Alloc(0xb4, data_020df48c, 4, &gHeapContext);
-    if (resource != 0) resource = func_0206c68c(resource, actor);
+    if (resource != 0) resource = AuxiliaryInteraction_Init(resource, actor);
     *(void **)(actor + 0x26c) = resource;
     GameWork_SetFlag(gGameWork, 0x3ee);
     return resource;
 }
 
 /*
- * Notify func_02032a94, then consume the interaction by returning one through
+ * Notify ActorContactState_AddContact, then consume the interaction by returning one through
  * all paths. Scene mode 2, global state, actor state/flag, disabled target,
  * and height gates suppress further work. Target type 2 can reset the actor,
- * recreate +0x26c, attach it with func_0206cb04, play a manager event, or use
+ * recreate +0x26c, attach it with AuxiliaryInteraction_AdmitTarget, play a manager event, or use
  * target +0x260/+0x27f/+0x29e to dispatch
  * ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect or
  * ActorDerivedType1_ApplyWeightedCollisionDisplacement.
@@ -2837,7 +2837,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
     u8 *target = (u8 *)other;
     void *scene;
 
-    func_02032a94(actor);
+    ActorContactState_AddContact(actor);
     scene = SceneManager_GetCurrent(gSceneManager);
     if (*(s32 *)((u8 *)scene + 4) == 2 || ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection) != 0 ||
         ActorDerivedType1_HasBlockingStateFlags(actor) != 0 || *(s16 *)(actor + 0xd6) == 0x0d ||
@@ -2857,12 +2857,12 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
             if ((*(s32 (**)(void *))(*(u8 **)actor + 0xa8))(actor) == 0) {
                 void *resource = *(void **)(actor + 0x26c);
                 if (resource != 0) {
-                    func_0206c978(resource);
+                    AuxiliaryInteraction_Destroy(resource);
                     Heap_Free(resource);
                 }
                 createAuxiliary(actor);
             }
-            if (func_0206cb04(*(void **)(actor + 0x26c), target, 1) != 0) {
+            if (AuxiliaryInteraction_AdmitTarget(*(void **)(actor + 0x26c), target, 1) != 0) {
                 *(u32 *)(actor + 0x10) &= ~0x1f0000;
                 ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 2);
             }
@@ -2879,7 +2879,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
         s32 eligible = 0;
         if (ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x40) != 0) return 1;
         targetResource = *(void **)(target + 0x234);
-        if (targetResource != 0 && func_0206e3a4(targetResource) == 0)
+        if (targetResource != 0 && AuxiliaryInteraction_IsCoreHidden(targetResource) == 0)
             eligible = 1;
         if (*(void **)(actor + 0x26c) == 0 && eligible) {
             ActorDerivedType1_TeardownActiveRecord(actor);

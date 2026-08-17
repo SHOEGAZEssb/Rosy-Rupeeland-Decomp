@@ -13,8 +13,8 @@ extern void *gDebugFont;
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -129,7 +129,7 @@ extern "C" void *func_ov022_021fcee8(void *controller)
  */
 extern "C" void *func_ov022_021fcf08(void *emitter)
 {
-    func_02071ea4((u8 *)emitter + 4);
+    AnimationResourceState_InitEmbedded((u8 *)emitter + 4);
     func_02091b6c((u8 *)emitter + 0x10);
     func_02091b6c((u8 *)emitter + 0x2c);
     func_ov022_021fcec8((u8 *)emitter + 0x48);
@@ -154,6 +154,6 @@ extern "C" void *func_ov022_021fcf98(void *emitter)
     GraphicsSpriteGroup_Destroy(FIELD(void *, emitter, 0));
     FIELD(const void *, emitter, 0x48) = data_ov022_02200654;
     PresentationList_DeleteAll((u8 *)emitter + 0x48);
-    func_02071eb8((u8 *)emitter + 4);
+    AnimationResourceState_Destroy((u8 *)emitter + 4);
     return emitter;
 }

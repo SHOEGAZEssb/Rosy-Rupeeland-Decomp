@@ -18,26 +18,26 @@ extern s32 func_020be8c0(...);
 extern s32 func_020beb6c(...);
 extern s32 func_020beae4(...);
 extern s32 func_020adc90(...);
-extern void func_02070934(void *);
+extern void GraphicsArchiveResource_ReleaseAlternateBuffer(void *);
 extern void func_020708c4(void *);
 extern void func_02070958(...);
 extern void func_02074dc8(...);
-extern void func_ov032_02201450(...);
+extern void Overlay032Controller_CreateObject(...);
 extern void func_ov032_0220147c(void *);
 extern void func_ov032_022014c0(...);
 extern void func_ov032_021fe0c4(void *);
-extern void *func_02071980(...);
+extern void *GraphicsArchive_AcquireVfdResource(...);
 extern void GraphicsSpriteRenderer_SetFontResource(...);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_02071d4c(...);
+extern void GraphicsArchive_ReleaseResourceE4(...);
 extern void GraphicsSpriteRenderer_ClearFontResource(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void Heap_Free(void *);
 extern void *func_ov032_02201f80(...);
-extern void func_02094550(...);
-extern void func_02094574(void *);
-extern void func_02094494(void *);
+extern void InventoryScroll_SetSpritePriority(...);
+extern void InventoryScroll_UpdatePresentation(void *);
+extern void InventoryScroll_DestroyAlternate(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -64,14 +64,14 @@ static void apply_scale(void *controller)
  * per-frame fixed-point delta +0x1C from current scale +0x18. A null object at
  * +0x00 makes this a no-op. Returns void.
  */
-extern "C" void func_ov032_0220150c(void *controller, s32 value, s32 frames)
+extern "C" void Overlay032Controller_SetScaleTarget(void *controller, s32 value, s32 frames)
 {
     if (FIELD(void *, controller, 0) == 0) return;
     if (frames == 0) {
         FIELD(s32, controller, 0x20) = 0;
         FIELD(s32, controller, 0x18) = scale_from_value(value);
         void *map = FIELD(void *, FIELD(void *, controller, 4), 4);
-        func_02070934(map);
+        GraphicsArchiveResource_ReleaseAlternateBuffer(map);
         func_020708c4(map);
         apply_scale(controller);
         return;
@@ -81,7 +81,7 @@ extern "C" void func_ov032_0220150c(void *controller, s32 value, s32 frames)
     FIELD(s32, controller, 0x1c) = func_020adc90(
         scale_from_value(value) - FIELD(s32, controller, 0x18), scale_from_value(frames));
     void *map = FIELD(void *, FIELD(void *, controller, 4), 4);
-    func_02070934(map);
+    GraphicsArchiveResource_ReleaseAlternateBuffer(map);
     func_020708c4(map);
     apply_scale(controller);
 }
@@ -92,7 +92,7 @@ extern "C" void func_ov032_0220150c(void *controller, s32 value, s32 frames)
  * final frame snaps to the transformed target +0x24. Returns one when idle or
  * newly complete, zero while frames remain.
  */
-extern "C" s32 func_ov032_02201670(void *controller)
+extern "C" s32 Overlay032Controller_UpdateScale(void *controller)
 {
     s32 frames = FIELD(s32, controller, 0x20);
     if (frames == 0) return 1;
@@ -120,11 +120,11 @@ extern "C" void func_ov032_0220173c(void *widget, void *scene)
     s32 visibleLast = last + 1 >= 5 ? 4 : last;
     FIELD(s32, widget, 0xc) = last;
     FIELD(s32, widget, 0x14) = visibleLast;
-    func_ov032_02201450((u8 *)widget + 0x18, FIELD(void *, scene, 0), (u8 *)scene + 0x28);
+    Overlay032Controller_CreateObject((u8 *)widget + 0x18, FIELD(void *, scene, 0), (u8 *)scene + 0x28);
     func_ov032_022014c0((u8 *)widget + 0x18, 0x15, 0x15, 0x78, 0x24, 2, 0, 4, 0);
     FIELD(u16, FIELD(void *, widget, 0x18), 0x24) &= ~4;
     FIELD(s32, widget, 4) = 0;
-    FIELD(void *, widget, 0x48) = func_02071980(data_020f4e18[0], 0x7006);
+    FIELD(void *, widget, 0x48) = GraphicsArchive_AcquireVfdResource(data_020f4e18[0], 0x7006);
     GraphicsSpriteRenderer_SetFontResource(data_020f4e14[0], FIELD(void *, widget, 0x48));
     u8 *map = (u8 *)GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14[0]);
     FIELD(u16, map, 4) = 0x4210;
@@ -134,8 +134,8 @@ extern "C" void func_ov032_0220173c(void *widget, void *scene)
                             &gHeapContext);
     if (list != 0) list = func_ov032_02201f80(list, data_020f4e14[0], last + 1, 5, 0xd4, 0x28, 0);
     FIELD(void *, widget, 0x4c) = list;
-    func_02094550(list, 2);
-    func_02094574(list);
+    InventoryScroll_SetSpritePriority(list, 2);
+    InventoryScroll_UpdatePresentation(list);
 }
 
 /*
@@ -147,7 +147,7 @@ extern "C" void func_ov032_022018ac(void *widget)
 {
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     func_ov032_0220147c((u8 *)widget + 0x18);
-    func_02071d4c(data_020f4e18[0], FIELD(void *, widget, 0x48));
+    GraphicsArchive_ReleaseResourceE4(data_020f4e18[0], FIELD(void *, widget, 0x48));
     GraphicsSpriteRenderer_ClearFontResource(data_020f4e14[0]);
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
     void *list = FIELD(void *, widget, 0x4c);
@@ -161,7 +161,7 @@ extern "C" void func_ov032_022018ac(void *widget)
 /* Runs SDK destructor 0x02094494, frees `object` from the heap, and returns the original pointer. */
 extern "C" void *func_ov032_02201914(void *object)
 {
-    func_02094494(object);
+    InventoryScroll_DestroyAlternate(object);
     Heap_Free(object);
     return object;
 }

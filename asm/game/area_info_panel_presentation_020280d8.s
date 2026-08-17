@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/area_info_panel_presentation.c.
 .text
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
 
@@ -12,7 +12,7 @@ func_020280d8: ; 0x020280d8
     ldr r0, [r4, #0x34]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x24
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl func_020927b8
     mov r0, r4

@@ -24,14 +24,14 @@ extern s32 GraphicsAnimationInstance_GetSequenceDuration(void *);
 extern void GraphicsAnimationInstanceManager_Update(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern s32 func_0209189c(void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void func_02092260(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationList_Append(void *, void *);
 extern void PresentationList_Remove(void *, void *);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
-extern void *func_020955d8(void *, void *);
+extern void *AlternateSpritePresentation_Init(void *, void *);
 extern void func_020958d8(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_ov017_021fcf6c(void *);
@@ -39,8 +39,8 @@ extern void func_ov017_021fd6b0(void *, s32, s32, s32);
 extern void *func_ov017_021fe190(void *, s32, s32, s32, s32, s16, s32);
 extern void func_ov017_021fe5b0(void *);
 extern void func_ov017_021fe894(void *);
-extern void func_ov017_02200064(void *);
-extern s32 func_ov017_0220087c(void *);
+extern void Overlay017_UpdatePaletteRamp(void *);
+extern s32 Overlay017Timer_Tick(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -126,7 +126,7 @@ extern "C" void func_ov017_02200188(void *state)
                             effect, 0, currentX << 4, currentZ << 4, -0x80,
                             (s16)func_0209189c((u8 *)state + 0x3fc,
                                                0x20, 0x30),
-                            func_020918f4((u8 *)state + 0x3fc, 0x1000) << 4);
+                            TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000) << 4);
                     }
                     PresentationList_Append((u8 *)state + 0x3ec, effect);
                 }
@@ -162,7 +162,7 @@ extern "C" void func_ov017_02200188(void *state)
                 effect = func_ov017_021fe190(
                     effect, 2, x, z, y,
                     (s16)func_0209189c((u8 *)state + 0x3fc, 0x10, 0x18),
-                    func_020918f4((u8 *)state + 0x3fc, 0x1000) << 4);
+                    TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000) << 4);
             }
             PresentationList_Append((u8 *)state + 0x3ec, effect);
             FIELD(s32, state, 0x3cc) += FIELD(u16, node, 0x9c);
@@ -179,7 +179,7 @@ extern "C" void func_ov017_02200188(void *state)
 
     FIELD(s32, FIELD(void *, state, 0x25c), 0x64) =
         FIELD(s32, state, 0x3cc) + FIELD(s32, state, 0x3d0);
-    func_ov017_02200064(state);
+    Overlay017_UpdatePaletteRamp(state);
     PresentationList_UpdateAndDeleteCompleted((u8 *)state + 0x3ec);
 
     if (FIELD(s32, data_ov017_022016e0, 0) >=
@@ -197,15 +197,15 @@ extern "C" void func_ov017_02200188(void *state)
             void *actor;
 
             FIELD(s32, state, 0x3d4) = 0;
-            angleIndex = func_020918f4((u8 *)state + 0x3fc, 0x1000);
-            distance = func_020918f4((u8 *)state + 0x3fc, radius);
+            angleIndex = TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000);
+            distance = TitleRandom_NextBounded((u8 *)state + 0x3fc, radius);
             x = coordinateToGrid(distance * data_020c9670[angleIndex * 2]);
             z = coordinateToGrid(distance * data_020c9670[angleIndex * 2 + 1]);
             sprite = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, state, 0x244),
                                    (u8 *)state + 0x248);
             actor = Heap_Alloc(0xa0, data_ov017_022016cc, 4, &gHeapContext);
             if (actor != 0)
-                actor = func_020955d8(actor, sprite);
+                actor = AlternateSpritePresentation_Init(actor, sprite);
             PresentationList_Append((u8 *)state + 0x3d8, actor);
             Presentation_SetPosition(actor, x, 0, z);
             PresentationScalar_TransitionTo((u8 *)actor + 0x1c, 2,
@@ -228,8 +228,8 @@ extern "C" void func_ov017_02200188(void *state)
             s32 z;
 
             FIELD(s32, state, 0x3e8) = 0;
-            angleIndex = func_020918f4((u8 *)state + 0x3fc, 0x1000);
-            distance = func_020918f4((u8 *)state + 0x3fc, radius);
+            angleIndex = TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000);
+            distance = TitleRandom_NextBounded((u8 *)state + 0x3fc, radius);
             x = coordinateToGrid(distance * data_020c9670[angleIndex * 2]);
             z = coordinateToGrid(distance * data_020c9670[angleIndex * 2 + 1]);
             if (FIELD(s32, state, 0x3f8) < 0x20) {
@@ -255,8 +255,8 @@ extern "C" void func_ov017_02200188(void *state)
     GraphicsAnimationInstanceManager_Update(FIELD(void *, state, 0x244));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
     func_ov017_021fcf6c(FIELD(void *, state, 0x2c0));
-    if (func_ov017_0220087c(data_ov017_022016f0))
+    if (Overlay017Timer_Tick(data_ov017_022016f0))
         func_02092260(state, 0x21);
-    if (func_ov017_0220087c(data_ov017_022016f8))
+    if (Overlay017Timer_Tick(data_ov017_022016f8))
         func_02092260(state, 0x2a);
 }

@@ -7,18 +7,18 @@
     .extern data_ov021_02202f78
     .extern data_ov021_02202f80
     .extern func_02003e20
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern LanguageLookup_GetResourceSize
     .extern func_020791e0
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_02094154
-    .extern func_02094550
-    .extern func_02094574
+    .extern InventoryScroll_SetSpritePriority
+    .extern InventoryScroll_UpdatePresentation
     .extern func_020c09cc
     .extern func_ov021_021fce00
     .extern func_ov021_021fd224
@@ -33,11 +33,11 @@ func_ov021_021fce18:
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r7, #0x10
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r7, #0x28
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     str r6, [r7, #0x0]
     mov r0, r6
     bl GraphicsSpriteGroupOwner_CreateGroup
@@ -159,9 +159,9 @@ L_021fd00c:
 L_021fd010:
     ldr r0, [r7, #0x58]
     mov r1, #0x0
-    bl func_02094550
+    bl InventoryScroll_SetSpritePriority
     ldr r0, [r7, #0x58]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     mov r0, r7
     bl func_ov021_021fd224
     ldr r1, L_021fd070

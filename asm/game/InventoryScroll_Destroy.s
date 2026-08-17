@@ -2,10 +2,10 @@
 ; Matching fallback for the portable implementation in src/game/inventory_scroll_controller.c.
 .extern GraphicsSpriteGroup_Destroy
 .extern data_020f263c
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 
-.global func_020943d4
-func_020943d4:
+.global InventoryScroll_Destroy
+InventoryScroll_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, .L_0209442c
     mov r4, r0
@@ -27,8 +27,8 @@ func_020943d4:
     ldr r0, [r4, #0x50]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x54
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0209442c: .word data_020f263c
-.size func_020943d4, . - func_020943d4
+.size InventoryScroll_Destroy, . - InventoryScroll_Destroy

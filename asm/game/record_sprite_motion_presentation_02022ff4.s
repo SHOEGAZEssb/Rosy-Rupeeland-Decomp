@@ -12,20 +12,20 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern VecFx32_Subtract
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
-.extern func_02022fbc
+.extern SelfLinkedSpriteConfig_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02056f00
-.extern func_020627a0
-.extern func_020627d0
-.extern func_02062918
-.extern func_02063014
-.extern func_02063190
-.extern func_02063658
-.extern func_02071ea4
-.extern func_02071eb8
+.extern ActorDescriptor_InitRange
+.extern ActorDescriptor_Init
+.extern ActorDescriptor_GetComponent
+.extern ActorDescriptorComponent_LoadResources
+.extern ActorDescriptorComponent_GetAnimation
+.extern ActorDatabase_QueryDefinitionKind
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseState
@@ -39,7 +39,7 @@ func_02022ff4: ; 0x02022ff4
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_02023254
     add r0, r4, #0xc
     str r1, [r4, #0x0]
@@ -55,7 +55,7 @@ func_02022ff4: ; 0x02022ff4
     bl ActorCollection_GetSpriteOwner
     str r0, [r4, #0x44]
     add r0, r4, #0x48
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldr r0, [r4, #0x18]
     cmp r5, #0x2
     add r0, r0, #0x10000
@@ -67,10 +67,10 @@ func_02022ff4: ; 0x02022ff4
     mov r1, r1, lsl #0x10
     ldr r0, [r0, #0x0]
     mov r1, r1, lsr #0x10
-    bl func_02063658
+    bl ActorDatabase_QueryDefinitionKind
     mov r5, r0
     add r0, sp, #0x60
-    bl func_02022fbc
+    bl SelfLinkedSpriteConfig_Init
     cmp r5, #0x1
     bne .L_020230b4
     ldr r0, [sp, #0x98]
@@ -79,7 +79,7 @@ func_02022ff4: ; 0x02022ff4
     add r0, sp, #0x60
     mov r3, r2
     mov r1, r1, lsr #0x10
-    bl func_020627d0
+    bl ActorDescriptor_Init
     b .L_020230d4
 .L_020230b4:
     ldr r1, [sp, #0x98]
@@ -89,15 +89,15 @@ func_02022ff4: ; 0x02022ff4
     add r0, sp, #0x60
     mov r1, r1, lsr #0x10
     mov r2, r2, lsr #0x10
-    bl func_020627a0
+    bl ActorDescriptor_InitRange
 .L_020230d4:
     add r0, sp, #0x60
     mov r1, #0x0
-    bl func_02062918
+    bl ActorDescriptor_GetComponent
     ldr r1, .L_0202325c
     add r2, r4, #0x48
     ldr r1, [r1, #0x0]
-    bl func_02063014
+    bl ActorDescriptorComponent_LoadResources
     ldr r0, [r4, #0x44]
     add r1, r4, #0x48
     mov r2, #0x2
@@ -105,8 +105,8 @@ func_02022ff4: ; 0x02022ff4
     str r0, [r4, #0x3c]
     add r0, sp, #0x60
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     mov r1, r0
     ldr r0, [r4, #0x3c]
     bl GraphicsSpriteState_SetAnimationIndex

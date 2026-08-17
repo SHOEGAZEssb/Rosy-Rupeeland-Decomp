@@ -4,8 +4,8 @@
     .extern func_ov016_021fd628
     .extern func_ov016_021fd9dc
     .extern func_ov016_021fdaa0
-.global func_ov016_021ffbd8
-func_ov016_021ffbd8:
+.global Overlay016_SyncSelectedPanel
+Overlay016_SyncSelectedPanel:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x444]
@@ -28,5 +28,5 @@ L_021ffc1c:
     mov r1, #0x1
     bl func_ov016_021fd9dc
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov016_021ffbd8, . - func_ov016_021ffbd8
+    .size Overlay016_SyncSelectedPanel, . - Overlay016_SyncSelectedPanel
 

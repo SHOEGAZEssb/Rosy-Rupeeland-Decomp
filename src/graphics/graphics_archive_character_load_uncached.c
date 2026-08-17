@@ -10,7 +10,7 @@ typedef struct GraphicsArchiveResourceHeader {
 extern "C" {
 #endif
 
-extern void *func_0207142c(void *archive, u32 resourceId, u32 *size);
+extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resourceId, u32 *size);
 extern void *func_020713e4(u32 size);
 extern void *func_020702f4(void *resource, void *archive, void *source,
                            u32 size, u32 resourceId);
@@ -38,7 +38,7 @@ void *func_0207164c(void *archive, u32 resourceId)
         ;
     u32 sourceSize;
 
-    source = (GraphicsArchiveResourceHeader *)func_0207142c(
+    source = (GraphicsArchiveResourceHeader *)GraphicsArchive_LoadIndexedPayload(
         archive, resourceId, &sourceSize);
     if (source != 0 &&
         (source->magic == 0x56434720 || source->magic == 0x56434754)) {

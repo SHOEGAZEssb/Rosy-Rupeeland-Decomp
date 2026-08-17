@@ -13,14 +13,14 @@
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov035_021fdd28
     .extern Heap_Alloc
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern PresentationList_Append
     .extern Presentation_SetPosition
     .extern PresentationScalar_SetImmediate
     .extern func_ov035_021fdd70
     .extern func_ov035_021fdd78
     .extern func_020b0300
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern func_02091d24
     .extern data_ov035_02203b98
     .extern data_020f4e18
@@ -159,7 +159,7 @@ L_021fdee8:
     cmp r0, #0x0
     beq L_021fdf80
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_021fdf80:
     str r0, [r5, #0x104]
     mov r1, r0
@@ -191,7 +191,7 @@ L_021fdf80:
     cmp r0, #0x0
     beq L_021fdffc
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_021fdffc:
     str r0, [r5, #0x108]
     mov r1, r0
@@ -219,7 +219,7 @@ L_021fdffc:
     cmp r0, #0x0
     beq L_021fe068
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_021fe068:
     str r0, [r5, #0xd8]
     mov r1, r0
@@ -252,7 +252,7 @@ L_021fe068:
     mov r3, #0x3f
     bl func_020b0300
     ldr r0, L_021fe138
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     mov r1, #0x0
     mov r3, #0x1
     add r0, r5, #0x138

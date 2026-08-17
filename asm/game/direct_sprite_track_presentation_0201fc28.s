@@ -5,9 +5,9 @@
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern ActorCollection_GetSpriteOwner
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -20,11 +20,11 @@ DirectSpriteTrackPresentation_Init: ; 0x0201fc28
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_0201fd58
     add r0, r7, #0x8
     str r1, [r7, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldr r1, [sp, #0x34]
     add r0, r7, #0x1c
     str r1, [r7, #0x18]

@@ -12,7 +12,7 @@
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_PlayStateSound
 .extern func_0204cff4
-.extern func_020a2894
+.extern EffectManager_SubmitPointEffect
 .extern func_020adae4
 .extern func_020ae024
 .global Type7Actor_ApplyType2InteractionResponse
@@ -212,7 +212,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     ldr r2, [sp, #0x28]
     ldr r3, [sp, #0x2c]
     mov r1, #0x1
-    bl func_020a2894
+    bl EffectManager_SubmitPointEffect
     mov r0, r6
     bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0

@@ -26,8 +26,8 @@ extern void *gHeapContext;
 extern const u8 data_ov004_021fcdbc[];
 extern const u8 data_ov004_021fcddc[];
 extern const s32 data_ov004_021fcd48[2];
-extern void func_02091e28(void *state);
-extern void *func_02027f94(void);
+extern void SceneInputBase_Init(void *state);
+extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern void *func_02027828(void *context, s32 index);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
@@ -40,10 +40,10 @@ extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
 #endif
 
 /*
- * Initialize state through func_02091e28, install the vtable at
+ * Initialize state through SceneInputBase_Init, install the vtable at
  * data_ov004_021fcdbc, clamp variant to a minimum of one, and retain it at
  * +0x58. Variants 1..10 resolve indices variant-1 and variant through the
- * shared func_02027f94 context; values above 10 use null for both resources.
+ * shared GamePhaseProgress_GetOrCreateGlobal context; values above 10 use null for both resources.
  * Allocate 0x7C4 bytes tagged by data_ov004_021fcddc with alignment 4 and, on
  * success, construct an overlay-26 helper in that memory. Store the resulting
  * helper (or null) at +0x54, set the signed display-update flag at +0x20 bit
@@ -59,7 +59,7 @@ func_ov004_021fc944(Overlay004VariantController *state, s32 variant)
 {
     void *memory;
 
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     if (variant < 1) {
         variant = 1;
     }
@@ -71,9 +71,9 @@ func_ov004_021fc944(Overlay004VariantController *state, s32 variant)
         state->currentResource_060 = 0;
     } else {
         state->previousResource_05c =
-            func_02027828(func_02027f94(), variant - 1);
+            func_02027828(GamePhaseProgress_GetOrCreateGlobal(), variant - 1);
         state->currentResource_060 =
-            func_02027828(func_02027f94(), variant);
+            func_02027828(GamePhaseProgress_GetOrCreateGlobal(), variant);
     }
 
     memory = Heap_Alloc(0x7c4, data_ov004_021fcddc, 4, gHeapContext);

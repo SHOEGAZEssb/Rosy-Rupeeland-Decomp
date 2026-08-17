@@ -1,5 +1,5 @@
     .text
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_020c0c24
@@ -33,9 +33,9 @@ L_021fd0b8:
     add r0, r4, #0x28
     bl func_020927b8
     add r0, r4, #0x18
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xc
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fd0d8: .word func_ov016_021fd0dc

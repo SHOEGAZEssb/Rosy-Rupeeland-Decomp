@@ -5,7 +5,7 @@
 .extern data_020e1930
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_SetCallbackPair
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern func_0206e590
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
@@ -46,7 +46,7 @@ Type7Actor_ResetInteractionState: ; 0x02047dd8
     cmp r5, #0x0
     beq .L_02047e58
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02047e58:

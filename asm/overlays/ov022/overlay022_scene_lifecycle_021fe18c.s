@@ -4,9 +4,9 @@
     .extern data_020f4e14
     .extern data_020f4e18
     .extern data_ov022_022006a0
-    .extern func_020597fc
+    .extern Sound_ReleaseGroup
     .extern func_02071c38
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_020927b8
@@ -31,7 +31,7 @@ func_ov022_021fe18c:
     str r1, [r4, #0x20]
     ldr r0, [r0, #0x0]
     ldr r1, L_021fe2f8
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     ldr r5, [r4, #0x354]
     cmp r5, #0x0
     beq L_021fe1d4
@@ -105,11 +105,11 @@ L_021fe258:
     add r0, r4, #0xa8
     bl func_ov022_021fdd00
     add r0, r4, #0x90
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x84
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x78
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x54
     bl func_020927b8
     mov r0, r4

@@ -10,7 +10,7 @@
 .extern Actor_RefreshTerrainHeight
 .extern Actor_ApplyMotionImpulse
 .extern ActorVector_DivideByScalar
-.extern func_0206dcac
+.extern AuxiliaryInteraction_UpdateResourceFrame
 .global Type7Actor_ResetBaseTransformAndMotion
 .type Type7Actor_ResetBaseTransformAndMotion, @function
 .global Type7Actor_ForwardHelperEvent
@@ -64,7 +64,7 @@ Type7Actor_ForwardHelperEvent: ; 0x02046544
     ldr r0, [r5, #0x234]
     cmp r0, #0x0
     beq .L_020465a4
-    bl func_0206dcac
+    bl AuxiliaryInteraction_UpdateResourceFrame
 .L_020465a4:
     add r0, sp, #0x0
     bl VecFx32Object_Destroy

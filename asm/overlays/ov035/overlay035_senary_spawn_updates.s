@@ -3,12 +3,12 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_senary_spawn_updates.c for documented portable C. */
 
     .extern func_0209189c
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_ov035_02201d10
     .extern PresentationScalar_TransitionTo
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Heap_Alloc
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern PresentationList_Append
     .extern func_ov035_021fdd28
     .extern Presentation_SetPosition
@@ -97,7 +97,7 @@ L_02201ea8:
     movs r5, r0
     beq L_02201f28
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
     mov r5, r0
 L_02201f28:
     mov r1, r5
@@ -105,7 +105,7 @@ L_02201f28:
     bl PresentationList_Append
     add r0, r7, #0xc0
     mov r1, #0x8
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r2, #0x0
     mov r1, r0
     str r2, [sp, #0x0]
@@ -173,7 +173,7 @@ func_ov035_02201fe4:
     movs r4, r0
     beq L_02202044
     mov r1, r6
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
     mov r4, r0
 L_02202044:
     mov r1, r4
@@ -181,7 +181,7 @@ L_02202044:
     bl PresentationList_Append
     add r0, r5, #0xc0
     mov r1, #0x2
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r2, #0x0
     mov r1, r0
     str r2, [sp, #0x0]
@@ -194,7 +194,7 @@ L_02202044:
     bl func_ov035_021fdd28
     add r0, r5, #0xc0
     mov r1, #0x2
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     cmp r0, #0x0
     beq L_022020e0
     add r0, r4, #0x5c

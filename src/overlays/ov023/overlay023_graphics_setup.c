@@ -15,7 +15,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void func_02070638(void *, s32, s32);
 extern void func_020706c4(void *, s32, s32);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02070eac(void *, s32, s32);
 extern void func_02070f34(void *, s32);
@@ -132,7 +132,7 @@ extern "C" void func_ov023_021fe2cc(void *scene)
     func_020b44e8();
     func_02070638(set[0], 2, 0);
     func_02070e0c(set[2], 2, 0);
-    u8 *palette = (u8 *)func_02070874(FIELD(void *, scene, 0x4c0)) + 0x40;
+    u8 *palette = (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x4c0)) + 0x40;
     func_020b1ff0(palette, 0, 0x20);
     func_020b2058(palette, 0x100, 0x20);
     GraphicsResourceSet_Destroy(set);

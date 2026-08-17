@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern s32 func_0209189c(void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void GraphicsAnimationInstanceManager_Update(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
@@ -46,8 +46,8 @@ extern "C" void func_ov026_022009dc(void *scene)
     void *rng = (u8 *)scene + 0x7a4;
 
     if ((flags & 1) && !(flags & 0x400) &&
-        func_020918f4(rng, 4) == 0) {
-        s32 offset = func_020918f4(rng, FIELD(s32, effect, 0x13c));
+        TitleRandom_NextBounded(rng, 4) == 0) {
+        s32 offset = TitleRandom_NextBounded(rng, FIELD(s32, effect, 0x13c));
         func_ov026_02200e0c(scene,
             FIELD(s32, effect, 0x20) - (offset << 10));
     }

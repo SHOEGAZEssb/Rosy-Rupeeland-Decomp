@@ -22,7 +22,7 @@ extern void func_020925f8(void);
 extern void func_02092618(void);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_02092688(s32, s32, s32, s32);
-extern void func_0209285c(s32);
+extern void TitlePalette_SetSubBackdrop(s32);
 extern void func_020af1f8(s32);
 extern void func_020b0300(s32, s32, s32, s32, s32);
 extern void func_020b44e8(void);
@@ -80,6 +80,6 @@ extern "C" void func_ov017_021ff58c(void *state)
                              0x8019);
     func_020b44e8();
     GraphicsResourceSet_Apply(resourceSet, 3, 0);
-    func_0209285c(0);
+    TitlePalette_SetSubBackdrop(0);
     GraphicsResourceSet_Destroy(resourceSet);
 }

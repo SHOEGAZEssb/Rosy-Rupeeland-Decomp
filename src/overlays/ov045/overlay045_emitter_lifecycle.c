@@ -15,8 +15,8 @@ extern "C" void *gDebugFont;
 extern "C" void *data_020f4e18;
 extern "C" void PresentationList_DeleteAll(void *object);
 extern "C" void PresentationList_UpdateAndDeleteCompleted(void *object);
-extern "C" void func_02071ea4(void *owner);
-extern "C" void func_02071eb8(void *owner);
+extern "C" void AnimationResourceState_InitEmbedded(void *owner);
+extern "C" void AnimationResourceState_Destroy(void *owner);
 extern "C" void func_02091b6c(void *track);
 extern "C" u32 genrand_int32(void);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
@@ -63,7 +63,7 @@ extern "C" void *func_ov045_0220b81c(void *object)
  */
 extern "C" void *func_ov045_0220b83c(void *object)
 {
-    func_02071ea4((u8 *)object + 4);
+    AnimationResourceState_InitEmbedded((u8 *)object + 4);
     func_02091b6c((u8 *)object + 0x10);
     func_02091b6c((u8 *)object + 0x2c);
     func_ov045_0220b7fc((u8 *)object + 0x48);
@@ -88,7 +88,7 @@ extern "C" void *func_ov045_0220b8cc(void *object)
     GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0));
     FIELD(void *, object, 0x48) = data_ov045_0220d570;
     PresentationList_DeleteAll((u8 *)object + 0x48);
-    func_02071eb8((u8 *)object + 4);
+    AnimationResourceState_Destroy((u8 *)object + 4);
     return object;
 }
 

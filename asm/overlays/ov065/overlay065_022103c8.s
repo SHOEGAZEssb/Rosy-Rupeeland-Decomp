@@ -13,8 +13,8 @@
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 
-.global func_ov065_022103c8
-func_ov065_022103c8:
+.global Overlay065Scene_Destroy
+Overlay065Scene_Destroy:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r1, .L_022104d4
     mov r10, r0
@@ -92,4 +92,4 @@ func_ov065_022103c8:
 .L_022104d4: .word data_ov065_02210bb8
 .L_022104d8: .word data_020f4e14
 .L_022104dc: .word data_ov065_02210c00
-.size func_ov065_022103c8, . - func_ov065_022103c8
+.size Overlay065Scene_Destroy, . - Overlay065Scene_Destroy

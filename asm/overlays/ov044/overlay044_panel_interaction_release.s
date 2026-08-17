@@ -1,8 +1,8 @@
 .text
 .extern GraphicsSpriteState_ReleaseFromGroup
 
-    .global func_ov044_0220bb60
-func_ov044_0220bb60:
+    .global Overlay044Panel_ReleaseRow
+Overlay044Panel_ReleaseRow:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x40]
@@ -20,4 +20,4 @@ func_ov044_0220bb60:
     add r0, r0, r4, lsl #0x5
     str r1, [r0, #0x10]
     ldmia sp!, {r3, r4, r5, pc}
-.size func_ov044_0220bb60, . - func_ov044_0220bb60
+.size Overlay044Panel_ReleaseRow, . - Overlay044Panel_ReleaseRow

@@ -25,10 +25,10 @@ extern const u16 gPadState1[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *); extern void Heap_Free(void *);
-extern void *func_02071980(void *, u32); extern void func_02071d4c(void *, void *);
-extern void *func_02092cc0(void *, void *, void *);
-extern void func_02092e9c(void *, const void *, s32); extern s32 func_02093360(void *, const void *);
-extern void func_02093998(void *); extern void func_020939c8(void *); extern void func_020939d8(void *);
+extern void *GraphicsArchive_AcquireVfdResource(void *, u32); extern void GraphicsArchive_ReleaseResourceE4(void *, void *);
+extern void *TitleDialog_Init(void *, void *, void *);
+extern void TitleDialog_SetText(void *, const void *, s32); extern s32 TitleDialog_UpdateTextPage(void *, const void *);
+extern void TitleDialog_ResetAfterClose(void *); extern void func_020939c8(void *); extern void TitleDialog_ClearTextRect(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *); extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *); extern void *AnimationResource_Init(void *, u32, u32, u32);
 extern void *GraphicsSpriteState_Create(void *, const void *, u8, u8, u16, u16, u16);
@@ -39,7 +39,7 @@ extern u32 genrand_int32(void); extern void *DisplayBrightnessPair_GetScreen(voi
 extern void DisplayBrightness_StartTransition(void *, s32, s32, s32); extern s32 DisplayBrightness_GetCurrent(void *);
 extern void Sound_Play(void *, s32, s32); extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GamePhaseRuntime_SetPlacementMode(void *, s32, s32); extern void GamePhaseAreaScene_SetEnabled(void *, s32);
-extern void func_02008570(void *, s32, s32); extern void *func_02079408(void *, u16);
+extern void GamePhaseRuntime_ApplyScreenMode(void *, s32, s32); extern void *RetailSelectionDatabase_FindResource(void *, u16);
 extern void *SceneManager_GetCurrent(void *); extern s32 Scene_HasFlags03(void *);
 extern void Scene_ClearFlags03(void *); extern void Scene_SetFlags03(void *);
 extern void GXS_SetGraphicsMode(u32); extern void GX_SetBankForSubBG(u32); extern void func_020aea7c(u32);
@@ -52,15 +52,15 @@ extern void func_020afd28(volatile void *, const void *, s32, s32, s32, s32);
 void func_ov052_0220d600(void *, u32, u32, u32, u32);
 
 /* Construct all owned dialog and sprite resources; borrowed archives persist. */
-void *func_ov052_0220d618(void *scene, u32 mode, u32 variant)
+void *Overlay052Scene_Init(void *scene, u32 mode, u32 variant)
 {
     u8 *s=(u8 *)scene; void *dialog,*resource,*sprite;
     FIELD(void *,s,0)=data_ov052_0220e200; FIELD(s16,s,4)=0; FIELD(u16,s,8)=0;
     FIELD(void *,s,0xc)=0; FIELD(void *,s,0x10)=0; FIELD(s32,s,0x28)=0;
     FIELD(u16,s,0x2c)=(u16)mode; FIELD(u16,s,0x2e)=(u16)variant;
-    FIELD(void *,s,0xc)=func_02071980(data_020f4e18,0x7007);
+    FIELD(void *,s,0xc)=GraphicsArchive_AcquireVfdResource(data_020f4e18,0x7007);
     dialog=Heap_Alloc(0xec,data_ov052_0220e21c,4,gHeapContext);
-    if(dialog) dialog=func_02092cc0(dialog,gDebugFont,FIELD(void *,s,0xc));
+    if(dialog) dialog=TitleDialog_Init(dialog,gDebugFont,FIELD(void *,s,0xc));
     FIELD(void *,s,0x10)=dialog; func_ov052_0220d600(dialog,0x47,0x2f,0x86,0x50);
     FIELD(s32,dialog,0xc0)=0; FIELD(s32,dialog,0xd0)=9; FIELD(s32,dialog,0xd4)=0; FIELD(s32,dialog,0xbc)=-2;
     FIELD(void *,s,0x1c)=GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
@@ -80,23 +80,23 @@ void *func_ov052_0220d618(void *scene, u32 mode, u32 variant)
 }
 
 /* Release all owned resources while retaining caller-owned scene storage. */
-void *func_ov052_0220d884(void *scene)
+void *Overlay052Scene_Destroy(void *scene)
 {
     u8 *s=(u8 *)scene; void *o; FIELD(void *,s,0)=data_ov052_0220e200;
     o=FIELD(void *,s,0x10); if(o) ((DeletingDestructor *)FIELD(void *,o,0))[1](o);
-    func_02071d4c(data_020f4e18,FIELD(void *,s,0xc)); GraphicsSpriteGroup_Destroy(FIELD(void *,s,0x1c));
+    GraphicsArchive_ReleaseResourceE4(data_020f4e18,FIELD(void *,s,0xc)); GraphicsSpriteGroup_Destroy(FIELD(void *,s,0x1c));
     o=FIELD(void *,s,0x20); if(o) ((DeletingDestructor *)FIELD(void *,o,0))[1](o);
-    if(FIELD(void *,data_021052fc,0x2fb8)) func_02008570(data_021052fc,1,1);
+    if(FIELD(void *,data_021052fc,0x2fb8)) GamePhaseRuntime_ApplyScreenMode(data_021052fc,1,1);
     if(FIELD(s16,s,0x2c)) DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),-16,0,4);
     if(FIELD(s16,s,0x30)) GamePhaseCurrencyHud_SetVisible(gLupyContext,1);
     return scene;
 }
 
 /* Release resources and heap-owned scene storage, returning its old identity. */
-void *func_ov052_0220d968(void *scene){func_ov052_0220d884(scene);Heap_Free(scene);return scene;}
+void *func_ov052_0220d968(void *scene){Overlay052Scene_Destroy(scene);Heap_Free(scene);return scene;}
 
 /* Randomize or restart a decoration and return the resulting sprite flags. */
-s32 func_ov052_0220df9c(void *scene, void *restart)
+s32 Overlay052Scene_RestartDecoration(void *scene, void *restart)
 {
     u8 *s=(u8 *)scene; void *sprite=FIELD(void *,s,0x18); u32 i=(u32)FIELD(s32,s,0x28); u16 flags;
     if(restart){FIELD(s32,s,0x24)=0xc8;GraphicsSpriteState_SetAnimationIndex(sprite,data_ov052_0220e1e4[i]);}
@@ -107,7 +107,7 @@ s32 func_ov052_0220df9c(void *scene, void *restart)
 }
 
 /* Load sub-screen resources, preserving the enclosing scene's flag state. */
-void func_ov052_0220ddb4(void *scene)
+void Overlay052Scene_LoadSubScreenResources(void *scene)
 {
     Overlay052ResourceSet r; s32 transform[4]={0x1000,0,0,0x1000};
     void *current=SceneManager_GetCurrent(gSceneManager); s32 restore=Scene_HasFlags03(current);
@@ -127,26 +127,26 @@ void func_ov052_0220ddb4(void *scene)
 }
 
 /* Advance the five-state message-menu VM; one means fade-out completed. */
-s32 func_ov052_0220da54(void *scene)
+s32 Overlay052Scene_UpdateMessageMenu(void *scene)
 {
     u8 *s=(u8 *)scene; u16 input[11]; s32 state,index,result,i;
     for(i=0;i<11;++i) input[i]=gPadState1[i]; state=FIELD(s16,s,4);
     switch(state){
     case 0:
         if(FIELD(void *,data_021052fc,0x2fb8)) GamePhaseAreaScene_SetEnabled(FIELD(void *,data_021052fc,0x2fb8),0);
-        func_ov052_0220ddb4(s);
+        Overlay052Scene_LoadSubScreenResources(s);
         if(FIELD(s16,s,0x2e)==0) DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),0,0,0);
         FIELD(s16,s,4)=FIELD(s16,s,8)!=0?2:1; break;
     case 1:
-        (void)func_ov052_0220df9c(s,0); index=FIELD(s32,s,0x28);
+        (void)Overlay052Scene_RestartDecoration(s,0); index=FIELD(s32,s,0x28);
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *,s,0x14),data_ov052_0220e1ec[index]); break;
     case 2:{
         void *dialog=FIELD(void *,s,0x10),*choice=FIELD(void *,s,0x14),*decoration=FIELD(void *,s,0x18); u32 flags;
         if(FIELD(s32,gTouchPanelManager,4)==1){flags=FIELD(u32,dialog,0x38);input[1]|=(flags&2u)?1u:2u;}
-        result=func_02093360(dialog,input);
+        result=TitleDialog_UpdateTextPage(dialog,input);
         if(result&0x200){index=FIELD(s32,dialog,0xe8);FIELD(s32,s,0x28)=index;
-            GraphicsSpriteState_SetAnimationIndex(choice,data_ov052_0220e1ec[index]);(void)func_ov052_0220df9c(s,(void *)1);}
-        if((result&1)==0)(void)func_ov052_0220df9c(s,0);
+            GraphicsSpriteState_SetAnimationIndex(choice,data_ov052_0220e1ec[index]);(void)Overlay052Scene_RestartDecoration(s,(void *)1);}
+        if((result&1)==0)(void)Overlay052Scene_RestartDecoration(s,0);
         if(result&2){if(FIELD(u16,choice,0x24)&1u)GraphicsSpriteState_SetAnimationIndex(choice,data_ov052_0220e1e0[FIELD(s32,s,0x28)]);}
         else if(result&1){GraphicsSpriteCanvas_FillRect(gDebugFont,0,0,0xff,0xbf,0);FIELD(s16,s,4)=1;FIELD(u16,s,8)=0;}
         else{u8 desired;FIELD(u16,choice,0x24)&=0xfffdu;index=FIELD(s32,s,0x28);desired=data_ov052_0220e1ec[index];
@@ -164,21 +164,21 @@ s32 func_ov052_0220da54(void *scene)
 }
 
 /* Install or close a message and update the retained selection/active flag. */
-void func_ov052_0220e064(void *scene, void *message, u32 reveal)
+void Overlay052Scene_SetMessage(void *scene, void *message, u32 reveal)
 {
     u8 *s=(u8 *)scene;void *dialog=FIELD(void *,s,0x10);
-    if(message){s32 state=FIELD(s16,s,4),result;if(state==2)func_02093998(dialog);else if(state==1||state==3)FIELD(s16,s,4)=2;
-        func_020939d8(dialog);func_02092e9c(dialog,message,0);result=func_02093360(dialog,data_ov052_0220e240);
+    if(message){s32 state=FIELD(s16,s,4),result;if(state==2)TitleDialog_ResetAfterClose(dialog);else if(state==1||state==3)FIELD(s16,s,4)=2;
+        TitleDialog_ClearTextRect(dialog);TitleDialog_SetText(dialog,message,0);result=TitleDialog_UpdateTextPage(dialog,data_ov052_0220e240);
         FIELD(s32,s,0x28)=(result&0x200)?FIELD(s32,dialog,0xe8):0;if(reveal)func_020939c8(dialog);FIELD(u16,s,8)=1;}
-    else{func_02093998(dialog);if(FIELD(s16,s,4)==2)FIELD(s16,s,4)=1;FIELD(u16,s,8)=0;}
+    else{TitleDialog_ResetAfterClose(dialog);if(FIELD(s16,s,4)==2)FIELD(s16,s,4)=1;FIELD(u16,s,8)=0;}
 }
 
 /* Resolve a borrowed message-table entry and forward it to the menu VM. */
-void func_ov052_0220e14c(void *scene,u16 messageId,u32 reveal)
-{func_ov052_0220e064(scene,func_02079408(data_021f4020,messageId),reveal);}
+void Overlay052Scene_SetMessageById(void *scene,u16 messageId,u32 reveal)
+{Overlay052Scene_SetMessage(scene,RetailSelectionDatabase_FindResource(data_021f4020,messageId),reveal);}
 
 /* Enter state four, play the confirmation cue, and start the fade. */
-void func_ov052_0220e178(void *scene)
+void Overlay052Scene_BeginConfirmationFade(void *scene)
 {FIELD(s16,scene,4)=4;Sound_Play(gSoundContext,0,0x3a);DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),0,-16,4);}
 
 #ifdef __cplusplus

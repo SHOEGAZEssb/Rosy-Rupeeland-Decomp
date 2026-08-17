@@ -9,8 +9,8 @@
 .extern VecFx32Object_Assign
 .extern AnimationResource_Init
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201ded4
-.extern func_0201e250
+.extern PresentationList_AppendObject
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e584
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
@@ -24,7 +24,7 @@ AuxiliaryTimedSpritePresentation_Init: ; 0x0201f864
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_0201f994
     ldr r1, .L_0201f998
     ldr r3, .L_0201f99c
@@ -88,7 +88,7 @@ AuxiliaryTimedSpritePresentation_Init: ; 0x0201f864
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
 .L_0201f978:
     add r0, sp, #0x20
     bl VecFx32Object_Destroy

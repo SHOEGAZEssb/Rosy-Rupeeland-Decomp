@@ -22,7 +22,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_ov030_021fcf20(void *, void *, void *, s32);
 extern void func_ov030_021fe554(void *);
 extern void func_02092c8c(s32, s32, ...);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
 extern void func_ov030_021fe954(void *, u16);
@@ -72,7 +72,7 @@ extern "C" s32 func_ov030_021fee6c(void *scene)
         break;
     case 2:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_020939d8(FIELD(void *, scene, 0x2bc));
+            TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
             if (GameWork_TestFlag(gGameWork, 0x3e1) != 0) {
                 GameWork_ClearFlag(gGameWork, 0x3e1);
                 func_ov030_021fe954(scene,

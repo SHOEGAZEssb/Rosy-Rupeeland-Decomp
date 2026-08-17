@@ -19,11 +19,11 @@ extern u8 data_021f3ecc[];
 extern u8 data_021f4090[];
 extern char gOverlay60ScriptObjectAllocationTag[];
 extern s32 GamePhaseScriptVm_Pop(void *script);
-extern s32 func_020be328(s32 value);
+extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 value);
 extern void *func_020791e0(void *table, u16 index);
 extern void Actor_GetCollection(void *owner);
-extern void *func_02078e98(void *table, u32 index);
+extern void *LanguageResourceManager_FindById(void *table, u32 index);
 extern void *func_ov060_022100e4(void *self, s32 routedDisplay,
                                 void *resource, s32 thirdOperand,
                                 s32 secondOperand, void *sprite,
@@ -39,7 +39,7 @@ extern void *func_ov060_022100e4(void *self, s32 routedDisplay,
  * main/sub display routing.  Returns one when they agree and zero otherwise;
  * only the hardware register is read.
  */
-s32 func_0201d9e4(s32 input)
+s32 DisplayRouting_MatchesRequest(s32 input)
 {
     s32 routed = (*(volatile u16 *)0x04000304 & 0x8000) >> 15;
     if (routed == 1)
@@ -50,13 +50,13 @@ s32 func_0201d9e4(s32 input)
 /*
  * Resolve the resource identifier passed in r1 through the fixed language
  * manager. Retail replaces r0 with data_021f4090 before tail-calling
- * func_02078e98, so the collection mode originally passed in r0 is ignored
+ * LanguageResourceManager_FindById, so the collection mode originally passed in r0 is ignored
  * while the second argument remains the lookup identifier.
  */
 void *func_0201da20(u32 unusedMode, u32 resourceIdentifier)
 {
     (void)unusedMode;
-    return func_02078e98(data_021f4090, resourceIdentifier);
+    return LanguageResourceManager_FindById(data_021f4090, resourceIdentifier);
 }
 
 /*
@@ -74,7 +74,7 @@ void func_0201da34(Overlay60ScriptContext *context)
 
     if (enabled == 0 || sprite == 0 || context->displayValue90 == -128)
         return;
-    value = (u32)func_020be328(context->displayValue90);
+    value = (u32)SignedAbsoluteValueVariant(context->displayValue90);
     GraphicsSpriteState_SetAnimationIndex(sprite, value & 0xff);
     if (context->displayValue90 < 0)
         *(u32 *)((u8 *)sprite + 0x24) |= 0x40;
@@ -107,9 +107,9 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
         resource = func_020791e0(data_021f3ecc, (u16)resourceIndex);
     else {
         Actor_GetCollection(context->owner84);
-        resource = func_02078e98(data_021f4090, resourceIndex);
+        resource = LanguageResourceManager_FindById(data_021f4090, resourceIndex);
     }
-    requestedDisplay = func_0201d9e4(requestedDisplay);
+    requestedDisplay = DisplayRouting_MatchesRequest(requestedDisplay);
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3c);
     allocation = Heap_Alloc(0x40, gOverlay60ScriptObjectAllocationTag, 4, &gHeapContext);
     if (allocation == 0)

@@ -6,14 +6,14 @@
 .extern data_ov050_0220e394
 .extern data_ov050_0220e3e0
 .extern func_ov050_0220d600
-.extern func_ov050_0220d6b0
-.extern func_ov050_0220d6e8
-.extern func_ov050_0220d7c4
-.extern func_ov050_0220d95c
+.extern Overlay050PairedEffect_Destroy
+.extern Overlay050PairedEffect_Update
+.extern Overlay050PairedEffect_ResetMotion
+.extern Overlay050EffectManager_RemoveNode
 .extern gHeapContext
 
-.global func_ov050_0220d9c4
-func_ov050_0220d9c4:
+.global Overlay050EffectManager_Update
+Overlay050EffectManager_Update:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x10
     mov r7, r0
@@ -48,7 +48,7 @@ func_ov050_0220d9c4:
 .L_0220da40:
     ldr r1, [r7, #0x30]
     mov r0, r4
-    bl func_ov050_0220d7c4
+    bl Overlay050PairedEffect_ResetMotion
     ldr r1, .L_0220db34
     ldr r3, .L_0220db30
     mov r0, #0xc
@@ -89,16 +89,16 @@ func_ov050_0220d9c4:
     str r9, [sp, #0x4]
     str r2, [sp, #0x8]
     str r3, [sp, #0xc]
-    bl func_ov050_0220d6e8
+    bl Overlay050PairedEffect_Update
     cmp r0, #0x0
     beq .L_0220db14
     mov r0, r7
     mov r1, r4
-    bl func_ov050_0220d95c
+    bl Overlay050EffectManager_RemoveNode
     cmp r5, #0x0
     beq .L_0220db14
     mov r0, r5
-    bl func_ov050_0220d6b0
+    bl Overlay050PairedEffect_Destroy
     mov r0, r5
     bl Heap_Free
 .L_0220db14:
@@ -114,4 +114,4 @@ func_ov050_0220d9c4:
 .L_0220db30: .word gHeapContext
 .L_0220db34: .word data_ov050_0220e320
 .L_0220db38: .word data_ov050_0220e394
-.size func_ov050_0220d9c4, . - func_ov050_0220d9c4
+.size Overlay050EffectManager_Update, . - Overlay050EffectManager_Update

@@ -11,8 +11,8 @@
 .extern func_020a257c
 .text
 
-    .global func_0204e740
-func_0204e740: ; 0x0204e740
+    .global EffectHandleActor_Init
+EffectHandleActor_Init: ; 0x0204e740
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl PresentationBackedActor_InitBase
@@ -26,7 +26,7 @@ func_0204e740: ; 0x0204e740
     strh r2, [r1, #0xfe]
     ldmia sp!, {r4, pc}
 .L_0204e770: .word data_020e2458
-.size func_0204e740, . - func_0204e740
+.size EffectHandleActor_Init, . - EffectHandleActor_Init
 
     .global func_0204e774
 
@@ -56,9 +56,9 @@ func_0204e774: ; 0x0204e774
 .L_0204e7c8: .word data_021052fc
 .size func_0204e774, . - func_0204e774
 
-    .global func_0204e7cc
+    .global EffectHandleActor_Delete
 
-func_0204e7cc: ; 0x0204e7cc
+EffectHandleActor_Delete: ; 0x0204e7cc
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, .L_0204e824
     mov r4, r0
@@ -84,7 +84,7 @@ func_0204e7cc: ; 0x0204e7cc
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204e824: .word data_020e2458
 .L_0204e828: .word data_021052fc
-.size func_0204e7cc, . - func_0204e7cc
+.size EffectHandleActor_Delete, . - EffectHandleActor_Delete
 
     .global func_0204e82c
 

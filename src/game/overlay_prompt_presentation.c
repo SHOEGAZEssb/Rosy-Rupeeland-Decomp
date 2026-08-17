@@ -21,7 +21,7 @@ extern const char gOverlayPromptWorkerAllocationTag[];
 extern u8 *gLupyContext;
 extern void *gGameWork;
 extern void *gDebugFont;
-extern void *func_0201e250(void *);
+extern void *TimedSpritePresentation_InitBase(void *);
 extern void *func_0201e28c(void *);
 extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
@@ -31,7 +31,7 @@ extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void *func_ov001_021fbe6c(void *);
-extern void func_02091fb0(void *, s32);
+extern void SceneInputBase_Update(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GameWork_ClearFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
@@ -46,7 +46,7 @@ extern s32 GameWork_TestFlag(void *, s32);
  */
 OverlayPromptPresentation *func_0202225c(OverlayPromptPresentation *self)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)data_020d653c;
     OverlaySlot_Init(self->sharedResource10);
     self->worker0c = 0; self->callbacksActive20 = 0; self->state08 = 0;
@@ -104,7 +104,7 @@ s32 func_020223d4(OverlayPromptPresentation *self)
         self->state08++;
         return 0;
     case 2:
-        func_02091fb0(self->worker0c, 1);
+        SceneInputBase_Update(self->worker0c, 1);
         if (!GameWork_TestFlag(gGameWork, 0x408)) return 0;
         GameWork_ClearFlag(gGameWork, 0x408);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);

@@ -14,19 +14,19 @@ typedef struct Overlay000ControllerActionState {
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern s32 func_020945c8(void *controller);
-extern s32 func_02093e3c(void *controller);
-extern s32 func_02094600(void *controller, s32 argument);
-extern s32 func_02093e58(void *controller);
+extern s32 InventoryScroll_TestUpperArrowPress(void *controller);
+extern s32 InventoryScroll_PageUp(void *controller);
+extern s32 InventoryScroll_TestLowerArrowPress(void *controller, s32 argument);
+extern s32 InventoryScroll_PageDown(void *controller);
 extern void Sound_Play(void *context, s32 channel, s32 soundId);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Try func_020945c8 first. On success, run func_02093e3c and play sound 0x16
+ * Try InventoryScroll_TestUpperArrowPress first. On success, run InventoryScroll_PageUp and play sound 0x16
  * on channel 0 only when it returns zero. If the primary action fails, try
- * func_02094600(controller, argument), using func_02093e58 for the equivalent
+ * InventoryScroll_TestLowerArrowPress(controller, argument), using InventoryScroll_PageDown for the equivalent
  * sound gate. Return 1 for either accepted action and 0 when both fail. Sound
  * playback is the only confirmed external effect beyond controller state.
  */
@@ -35,12 +35,12 @@ extern "C"
 #endif
 s32 func_ov000_021fcc18(Overlay000ControllerActionState *state, s32 argument)
 {
-    if (func_020945c8(state->controller_26c) != 0) {
-        if (func_02093e3c(state->controller_26c) == 0) {
+    if (InventoryScroll_TestUpperArrowPress(state->controller_26c) != 0) {
+        if (InventoryScroll_PageUp(state->controller_26c) == 0) {
             Sound_Play(gSoundContext, 0, 0x16);
         }
-    } else if (func_02094600(state->controller_26c, argument) != 0) {
-        if (func_02093e58(state->controller_26c) == 0) {
+    } else if (InventoryScroll_TestLowerArrowPress(state->controller_26c, argument) != 0) {
+        if (InventoryScroll_PageDown(state->controller_26c) == 0) {
             Sound_Play(gSoundContext, 0, 0x16);
         }
     } else {

@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern s32 Presentation_AdvanceTransitions(void *object);
 extern s32 func_0209189c(void *random, s32 minimum, s32 maximum);
-extern s32 func_020918f4(void *random, s32 maximum);
+extern s32 TitleRandom_NextBounded(void *random, s32 maximum);
 extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_ov036_021fd2a4(void *object, s16 type,
@@ -93,7 +93,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
                 func_0209189c((u8 *)object + 0xc8, -0x1000, 0);
             FIELD(s32, particle, 0xac) = 0;
             PresentationScalar_SetImmediate((u8 *)particle + 0x5c,
-                          func_020918f4((u8 *)object + 0xc8, 0x1000) << 4);
+                          TitleRandom_NextBounded((u8 *)object + 0xc8, 0x1000) << 4);
             PresentationScalar_SetImmediate((u8 *)particle + 0x6c, 0x333);
             PresentationList_Append((u8 *)object + 0x9c, particle);
         }
@@ -125,7 +125,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
             break;
         }
 
-        (void)func_020918f4((u8 *)object + 0xc8, 0x1000);
+        (void)TitleRandom_NextBounded((u8 *)object + 0xc8, 0x1000);
         s32 speed = Presentation_InterpolateScalar(object, 1, 0xc000, 0x2000);
         s32 duration = Presentation_InterpolateScalar(object, 1, 0, 0x1e);
         s32 red = Presentation_InterpolateScalar(object, 1,

@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/self_linked_sprite_config.c.
 .text
-.global func_02022fbc
-    .type func_02022fbc, @function
-func_02022fbc:
+.global SelfLinkedSpriteConfig_Init
+    .type SelfLinkedSpriteConfig_Init, @function
+SelfLinkedSpriteConfig_Init:
     mov r2, #0x0
     strh r2, [r0, #0x0]
     strh r2, [r0, #0x2]
@@ -17,4 +17,4 @@ func_02022fbc:
     str r0, [r0, #0x1c]
     str r2, [r0, #0x20]
     bx lr
-    .size func_02022fbc, .-func_02022fbc
+    .size SelfLinkedSpriteConfig_Init, .-SelfLinkedSpriteConfig_Init

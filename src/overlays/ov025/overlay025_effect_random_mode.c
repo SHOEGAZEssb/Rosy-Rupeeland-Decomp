@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern s32 func_0209189c(u32 *, s32, s32);
-extern s32 func_020918f4(u32 *, s32);
+extern s32 TitleRandom_NextBounded(u32 *, s32);
 extern void func_ov025_021fe4cc(void *, s32, s32);
 #ifdef __cplusplus
 }
@@ -22,7 +22,7 @@ extern void func_ov025_021fe4cc(void *, s32, s32);
 extern "C" void func_ov025_021fe3f8(void *object)
 {
     s32 mode;
-    do mode = func_020918f4((u32 *)object + 0x3e, 9);
+    do mode = TitleRandom_NextBounded((u32 *)object + 0x3e, 9);
     while (mode == FIELD(s32, object, 0x9c));
     func_ov025_021fe4cc(object, mode,
                         func_0209189c((u32 *)object + 0x3e, 0, 3));

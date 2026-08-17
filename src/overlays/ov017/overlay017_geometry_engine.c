@@ -29,7 +29,7 @@ extern void TingleNativeG3_Normal(u32 normal);
  * 0x040002B0 clears, then return the 32-bit result at 0x040002B4. No input or
  * memory state is used; this synchronously observes math-unit hardware.
  */
-extern "C" u32 func_ov017_021fd3f0(void)
+extern "C" u32 Overlay017_WaitForSquareRoot(void)
 {
     while ((*(volatile u16 *)0x040002b0 & 0x8000) != 0) {
     }

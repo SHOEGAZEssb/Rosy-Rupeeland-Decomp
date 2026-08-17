@@ -2,7 +2,7 @@
 .text
 .extern GameWork_SetFlag
 .extern func_020338e4
-.extern func_02058ce0
+.extern Sound_StopAllManagedPlayers
 .extern gGameWork
 .extern gSoundContext
 
@@ -20,7 +20,7 @@ Type1Actor_EnterFailureState: ; 0x02039bfc
     bl GameWork_SetFlag
     ldr r0, .L_02039c38
     ldr r0, [r0, #0x0]
-    bl func_02058ce0
+    bl Sound_StopAllManagedPlayers
     ldmia sp!, {r4, pc}
 .L_02039c30: .word gGameWork
 .L_02039c34: .word 0x3f5

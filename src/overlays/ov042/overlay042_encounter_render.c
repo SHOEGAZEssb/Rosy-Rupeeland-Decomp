@@ -31,7 +31,7 @@ extern "C" void func_020a1794(void *owner, const void *position,
 extern "C" void func_020a227c(void *graphics, const void *position, s32 angle);
 extern "C" void *DisplayBrightnessPair_GetScreen(void *controller, s32 screen);
 extern "C" void DisplayBrightness_StartTransition(void *brightness, s32 start, s32 end, s32 duration);
-extern "C" void func_020c10d4(void *object);
+extern "C" void Memory_ClearBytes(void *object);
 extern "C" void func_ov042_02204e74(s32 polygon, s32 texture,
                                      s32 palette, s32 alpha,
                                      s32 arg0, s32 arg1);
@@ -79,7 +79,7 @@ static void draw_mode2_ribbon(void *scene)
     s32 base[4];
     s32 actor[4];
     s32 scale[4];
-    func_020c10d4(base);
+    Memory_ClearBytes(base);
     VecFx32Object_InitComponents(base, 192, 160, 112);
     VecFx32Object_InitComponents(actor, FIELD(s32, scene, 0xa8) >> 12,
                    FIELD(s32, scene, 0xac) >> 12, 210);

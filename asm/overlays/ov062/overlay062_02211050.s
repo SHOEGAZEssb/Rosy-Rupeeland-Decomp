@@ -10,7 +10,7 @@
 .extern VecFx32Object_Assign
 .extern ActorDerivedType1_ResetToBaseState
 .extern Type7Actor_LeaveSpecialPresentationState
-.extern func_020597fc
+.extern Sound_ReleaseGroup
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov062_0220fd20
 .extern gSoundContext
@@ -25,7 +25,7 @@ func_ov062_02211050:
     ldr r0, .L_022111e0
     mov r1, #0x1b8
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     ldr r0, [r4, #0x64]
     bl GraphicsSpriteState_ReleaseFromGroup
     ldr r0, [r4, #0x6c]

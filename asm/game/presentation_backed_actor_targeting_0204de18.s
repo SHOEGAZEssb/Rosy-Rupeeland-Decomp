@@ -3,7 +3,7 @@
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_02031758
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern Type7Actor_GetStateCode
 .extern PresentationBackedActor_CanAcquireTarget
 .extern PresentationBackedActor_HandleInteraction

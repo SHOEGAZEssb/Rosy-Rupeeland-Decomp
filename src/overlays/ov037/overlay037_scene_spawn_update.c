@@ -11,10 +11,10 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern s32 func_02091c7c(void *timer, s32 mode);
-extern s32 func_020918f4(void *randomState, s32 bound);
+extern s32 TitleRandom_NextBounded(void *randomState, s32 bound);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceOwner, void *slot);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *object, void *actor);
+extern void *AlternateSpritePresentation_Init(void *object, void *actor);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
 extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void PresentationScalar_SetImmediate(void *field, s32 value, ...);
@@ -54,13 +54,13 @@ extern "C" void func_ov037_021fdd08(void *scene)
 
     if (func_02091c7c((u8 *)scene + 0x1a8, 2)) {
         void *slot = (u8 *)scene +
-            (func_020918f4(randomState, 2) ? 0xec : 0xf8);
+            (TitleRandom_NextBounded(randomState, 2) ? 0xec : 0xf8);
         void *actor = GraphicsAnimationInstanceManager_CreateInstance(resourceOwner, slot);
         FIELD(u16, actor, 0x50) |= 0x40;
 
         void *object = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);
         if (object != 0)
-            object = func_020955d8(object, actor);
+            object = AlternateSpritePresentation_Init(object, actor);
         s32 x = func_0209189c(randomState, -0x800, 0x800);
         s32 z = func_0209189c(randomState, 0x80, 0x100);
         Presentation_SetPosition(object, x, 0x1200, z);
@@ -85,7 +85,7 @@ extern "C" void func_ov037_021fdd08(void *scene)
 
     void *object = Heap_Alloc(0xa0, data_ov037_021feeb0, 4, gHeapContext);
     if (object != 0)
-        object = func_020955d8(object, actor);
+        object = AlternateSpritePresentation_Init(object, actor);
     s32 offset = func_0209189c(randomState, -0x200, 0x200);
     void *primary = FIELD(void *, scene, 0x118);
     Presentation_SetPosition(object, FIELD(s32, primary, 0x10) + offset,

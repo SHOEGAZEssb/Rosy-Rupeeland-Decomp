@@ -14,8 +14,8 @@ extern "C" {
 #endif
 extern void *func_02073e48(void *, s32, s32, s32, ...);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -24,7 +24,7 @@ extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, ...);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, s32, s32, s32);
 extern s32 RecordMode_GetMessageGroup(void *);
 extern s32 func_0209189c(void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
 }
@@ -62,8 +62,8 @@ extern "C" void func_ov022_021fd2f4(void)
 extern "C" void *func_ov022_021fd370(void *widget)
 {
     FIELD(const void *, widget, 0) = data_ov022_02200608;
-    func_02071ea4((u8 *)widget + 4);
-    func_02071ea4((u8 *)widget + 0x10);
+    AnimationResourceState_InitEmbedded((u8 *)widget + 4);
+    AnimationResourceState_InitEmbedded((u8 *)widget + 0x10);
     FIELD(u32, widget, 0x30) = 0;
     func_ov022_021fd48c(widget);
     func_02071ee0((u8 *)widget + 4, data_020f4e18,
@@ -91,8 +91,8 @@ extern "C" void *func_ov022_021fd458(void *widget)
 {
     FIELD(const void *, widget, 0) = data_ov022_02200608;
     GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0x1c));
-    func_02071eb8((u8 *)widget + 0x10);
-    func_02071eb8((u8 *)widget + 4);
+    AnimationResourceState_Destroy((u8 *)widget + 0x10);
+    AnimationResourceState_Destroy((u8 *)widget + 4);
     return widget;
 }
 
@@ -197,7 +197,7 @@ extern "C" void func_ov022_021fd614(void *widget)
                 break;
             void *sprite = FIELD(void *, widget, 0x20);
             GraphicsSpriteState_SetAnimationIndex(sprite,
-                         func_020918f4((u8 *)widget + 0x30, 3) != 0 ? 4 : 5);
+                         TitleRandom_NextBounded((u8 *)widget + 0x30, 3) != 0 ? 4 : 5);
             FIELD(u16, sprite, 0x24) &= (u16)~3;
         } else if ((FIELD(u16, FIELD(void *, widget, 0x20), 0x24) & 1) != 0) {
             func_ov022_021fd514(widget);

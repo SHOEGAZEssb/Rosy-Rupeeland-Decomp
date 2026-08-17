@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern func_02070638
 .extern func_020706c4
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070e0c
 .extern func_02070eac
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
@@ -112,7 +112,7 @@ func_ov029_021fd578:
     bl GraphicsResourceSet_Load
     bl func_020b44e8
     ldr r0, [r4, #0xe8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x20
     str r0, [r4, #0xd8]
     str r0, [r4, #0xd4]

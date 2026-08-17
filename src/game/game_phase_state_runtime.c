@@ -14,7 +14,7 @@ extern void func_0201de4c(void *object);
 extern void func_0201de8c(void *object, u16 vcount);
 extern void *func_0201e0ec(void *object);
 extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
-extern void func_0202d3cc(void *object);
+extern void ActorCollectionActivation_DestroyReservedSlot(void *object);
 extern void ActorDerivedType1_ClearFailureCounter(void *object);
 extern void ActorFeedback_DestroyPresentations(void);
 extern void func_020a2324(void);
@@ -76,7 +76,7 @@ void GamePhaseState_ResetActivePhase(GamePhaseState *self)
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x24))(self->phaseObject, 0);
     if (self->phaseObject)
         ((PhaseVirtualMethod)phaseVirtual(self, 4))(self->phaseObject);
-    func_0202d3cc(self->actorCollectionStorage);
+    ActorCollectionActivation_DestroyReservedSlot(self->actorCollectionStorage);
     ActorDerivedType1_ClearFailureCounter(self->actorCollectionStorage + 0x2e7c);
     DebugText_BeginFrame();
 }

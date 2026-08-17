@@ -3,8 +3,8 @@
     .extern data_020d780c
     .extern data_ov022_022006ec
     .extern data_ov022_022006f4
-    .extern func_02093d50
-    .extern func_02093d7c
+    .extern InventoryScroll_SetSelectedRow
+    .extern InventoryScroll_SetFirstVisibleRow
     .extern func_ov022_021fd708
     .extern func_ov022_021fd848
     .extern func_ov022_021fd8a4
@@ -95,11 +95,11 @@ L_021fe798:
     str r0, [r4, #0x2b8]
     ldr r0, [r0, #0x30]
     ldr r1, [r4, #0x2c4]
-    bl func_02093d7c
+    bl InventoryScroll_SetFirstVisibleRow
     ldr r0, [r4, #0x2b8]
     ldr r1, [r4, #0x2c8]
     ldr r0, [r0, #0x30]
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     ldr r7, L_021fe814
     ldr r6, L_021fe808
     mov r8, #0x0

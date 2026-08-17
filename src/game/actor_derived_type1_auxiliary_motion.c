@@ -12,14 +12,14 @@ extern void *data_021e9abc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0206cd10(void *resource);
+extern s32 AuxiliaryInteraction_RunSelectedSequence(void *resource);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
-extern void func_0206c978(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern s32 func_0206e3a4(void *resource);
+extern s32 AuxiliaryInteraction_IsCoreHidden(void *resource);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
-extern void func_0205e1c0(void *manager);
+extern void SoundPhaseManager_StopSequence(void *manager);
 #ifdef __cplusplus
 }
 #endif
@@ -45,7 +45,7 @@ static s32 directionWord(const s32 *table, s32 direction)
 }
 
 /*
- * Set actor movement bits 1/2, query resource +0x26c with func_0206cd10, and
+ * Set actor movement bits 1/2, query resource +0x26c with AuxiliaryInteraction_RunSelectedSequence, and
  * expose nonzero modes through actor +0x10 mask 0x0a0000 and virtual setter
  * +0x54. Mode 2 optionally clears that mask, destroys/frees the resource,
  * nulls +0x26c, clears GameWork flag 0x3ee, and advances the retail phase-sound
@@ -65,7 +65,7 @@ void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *self)
 
     *(u32 *)(actor + 0x230) = (*(u32 *)(actor + 0x230) & ~1) | 2;
     resource = *(void **)(actor + 0x26c);
-    mode = func_0206cd10(resource);
+    mode = AuxiliaryInteraction_RunSelectedSequence(resource);
     flags = *(u32 *)(actor + 0x10);
     if (mode != 0) {
         *(u32 *)(actor + 0x10) = flags | 0x0a0000;
@@ -80,16 +80,16 @@ void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *self)
             *(u32 *)(actor + 0x10) &= ~0x1f0000;
         resource = *(void **)(actor + 0x26c);
         if (resource != 0) {
-            func_0206c978(resource);
+            AuxiliaryInteraction_Destroy(resource);
             Heap_Free(resource);
         }
         *(void **)(actor + 0x26c) = 0;
         GameWork_ClearFlag(gGameWork, 0x3ee);
         /* Fight-cloud release advances the retail phase-sound manager. */
-        func_0205e1c0(data_021e9abc);
+        SoundPhaseManager_StopSequence(data_021e9abc);
     }
     if (mode != 0 || (*(u32 *)(actor + 0xd0) & 0x100) != 0 ||
-        func_0206e3a4(*(void **)(actor + 0x26c)) != 0 ||
+        AuxiliaryInteraction_IsCoreHidden(*(void **)(actor + 0x26c)) != 0 ||
         Actor_IsAtCachedTerrainHeight(actor) == 0)
         return;
 

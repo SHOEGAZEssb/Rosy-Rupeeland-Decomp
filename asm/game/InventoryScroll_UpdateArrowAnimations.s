@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/game/inventory_scroll_controller.c.
 .extern SpritePresentation_SetAnimation
 
-.global func_020944f0
-func_020944f0:
+.global InventoryScroll_UpdateArrowAnimations
+InventoryScroll_UpdateArrowAnimations:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xc]
@@ -31,4 +31,4 @@ func_020944f0:
     mov r1, #0x3
     bl SpritePresentation_SetAnimation
     ldmia sp!, {r4, pc}
-.size func_020944f0, . - func_020944f0
+.size InventoryScroll_UpdateArrowAnimations, . - InventoryScroll_UpdateArrowAnimations

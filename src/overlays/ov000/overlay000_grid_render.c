@@ -28,7 +28,7 @@ extern void GraphicsSpriteCanvas_FillRect(void *surface, s32 left, s32 top, s32 
                           s32 bottom, s32 value);
 extern void GraphicsSpriteRenderer_SetFontResource(void *surface, void *resource);
 extern s32 func_ov000_021fc834(void *metadata, s32 mode);
-extern s32 func_02062ba4(void *cell);
+extern s32 InventoryRecord_CanMergeQuantity(void *cell);
 extern void func_ov000_021fb6e0(void *surface, s32 value, s32 x, s32 y,
                                 s32 offset);
 #ifdef __cplusplus
@@ -40,7 +40,7 @@ extern void func_ov000_021fb6e0(void *surface, s32 value, s32 x, s32 y,
  * (0xEF, 0xA9-scrollY), then attach resource_228. Visit up to three rows and
  * five columns beginning at controller field 0x0C. For each allocated metadata
  * record with a linked cell, draw its value from +0x1C only when the local
- * eligibility helper returns zero and func_02062ba4 returns nonzero. Labels use
+ * eligibility helper returns zero and InventoryRecord_CanMergeQuantity returns nonzero. Labels use
  * an X offset of 13 below 99 and 7 otherwise. Rendering effects are delegated
  * to the graphics callees; this routine does not directly access hardware.
  */
@@ -75,7 +75,7 @@ void func_ov000_021fc714(Overlay000GridRenderState *state)
                 continue;
             }
             value = FIELD(s32, metadata, 0x1c);
-            if (func_02062ba4(cell) != 0) {
+            if (InventoryRecord_CanMergeQuantity(cell) != 0) {
                 func_ov000_021fb6e0(state->surface_004, value,
                                     column * 0x24 + 0x3b,
                                     row * 0x24 - state->scrollY_264 + 0x3d,

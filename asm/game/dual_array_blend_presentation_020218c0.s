@@ -11,7 +11,7 @@
 .extern data_020d63e0
 .extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern BlendElement_DestroyNoOp
 .extern ExtendedCallbackState_SetReferencesAndReset
@@ -21,7 +21,7 @@
 .extern DualArrayBlendPresentation_UpdateTransition
 .extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_02092418
 .extern PresentationScalar_TransitionTo
 .extern Presentation_InitVariant

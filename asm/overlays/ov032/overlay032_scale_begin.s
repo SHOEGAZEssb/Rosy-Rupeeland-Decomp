@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_widget_controller.c for documented portable C. */
 .extern func_020708c4
-.extern func_02070934
+.extern GraphicsArchiveResource_ReleaseAlternateBuffer
 .extern func_02070958
 .extern func_020adc90
 .extern func_020be8c0
@@ -10,8 +10,8 @@
 .extern func_020beb18
 .extern func_020beb6c
 
-    .global func_ov032_0220150c
-func_ov032_0220150c:
+    .global Overlay032Controller_SetScaleTarget
+Overlay032Controller_SetScaleTarget:
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     ldr r0, [r4, #0x0]
@@ -43,7 +43,7 @@ L_0220156c:
     ldr r1, [r4, #0x4]
     mov r5, r0, asr #0xc
     ldr r0, [r1, #0x4]
-    bl func_02070934
+    bl GraphicsArchiveResource_ReleaseAlternateBuffer
     ldr r0, [r4, #0x4]
     ldr r0, [r0, #0x4]
     bl func_020708c4
@@ -97,7 +97,7 @@ L_02201610:
     ldr r1, [r4, #0x18]
     ldr r0, [r0, #0x4]
     mov r5, r1, asr #0xc
-    bl func_02070934
+    bl GraphicsArchiveResource_ReleaseAlternateBuffer
     ldr r0, [r4, #0x4]
     ldr r0, [r0, #0x4]
     bl func_020708c4
@@ -108,5 +108,5 @@ L_02201610:
     mov r3, r5
     bl func_02070958
     ldmia sp!, {r4, r5, r6, pc}
-.size func_ov032_0220150c, .-func_ov032_0220150c
+.size Overlay032Controller_SetScaleTarget, .-Overlay032Controller_SetScaleTarget
 

@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void GXS_SetGraphicsMode(s32);
 extern void VecFx32Object_Destroy(void *);
-extern void func_0200875c(void *, void *);
+extern void GamePhaseRuntime_BuildSecondaryTransform(void *, void *);
 extern void *GamePhaseRuntime_GetAuxiliaryOverlayObject(void *);
 extern void GamePhaseMetadata_WriteAdjustedCoordinates(void *, void *);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
@@ -93,7 +93,7 @@ extern "C" void func_ov018_021fd6c0(void *state)
 extern "C" void func_ov018_021fd740(void *state)
 {
     s32 transform[4];
-    func_0200875c(transform, data_021052fc);
+    GamePhaseRuntime_BuildSecondaryTransform(transform, data_021052fc);
     FIELD(s32, state, 0x5c) = transform[1] >> 12;
     FIELD(s32, state, 0x60) = transform[2] >> 12;
     VecFx32Object_Destroy(transform);

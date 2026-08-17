@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02092260(void *, s32);
-extern s32 func_02092910(void *, const void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, const void *);
 extern void func_02092c8c(s32, s32);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void IndexedSelectionController_ResetTransition(void *);
@@ -29,9 +29,9 @@ extern s32 IndexedSelectionController_GetLastDirection(void *);
 extern s32 IndexedSelectionController_AdvanceTransition(void *);
 extern s32 IndexedSelectionController_IsTransitionIdle(void *);
 extern s32 IndexedSelectionController_AdvancePacing(void *);
-extern void func_02093d50(void *, s32);
-extern void func_02093d7c(void *, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_SetSelectedRow(void *, s32);
+extern void InventoryScroll_SetFirstVisibleRow(void *, s32);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void SpritePresentation_Show(void *);
@@ -129,12 +129,12 @@ extern "C" s32 func_ov028_021febd0(void *state)
         } else if (keys & 0x10) {
             IndexedSelectionController_IncrementWrap(choice);
         } else if (FIELD(u32, state, 0x20) & 0x10) {
-            s32 leftHit = func_02092910(
+            s32 leftHit = GraphicsSpriteState_TestTouchPoint(
                 FIELD(void *, FIELD(void *, state, 0x1f0), 0x9c), point);
             if (leftHit && FIELD(s32, state, 0x1f8)) {
                 IndexedSelectionController_DecrementWrap(choice);
             } else {
-                s32 rightHit = func_02092910(
+                s32 rightHit = GraphicsSpriteState_TestTouchPoint(
                     FIELD(void *, FIELD(void *, state, 0x1f4), 0x9c), point);
                 if (rightHit && FIELD(s32, state, 0x1f8)) {
                     IndexedSelectionController_IncrementWrap(choice);
@@ -199,10 +199,10 @@ extern "C" s32 func_ov028_021febd0(void *state)
         func_ov028_021fd86c(FIELD(void *, state, 0x224));
         {
             s32 selected = FIELD(s32, state, 0x234);
-            func_02093d7c(listController, selected);
-            func_02093d50(listController, selected);
+            InventoryScroll_SetFirstVisibleRow(listController, selected);
+            InventoryScroll_SetSelectedRow(listController, selected);
         }
-        func_02094574(listController);
+        InventoryScroll_UpdatePresentation(listController);
         func_ov028_021fd2ec(list);
         func_ov028_021fd274(list);
         func_ov028_021fd468(list);

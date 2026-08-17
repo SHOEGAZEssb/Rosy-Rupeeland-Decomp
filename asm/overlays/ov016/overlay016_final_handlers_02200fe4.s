@@ -6,7 +6,7 @@
     .extern func_02092260
     .extern func_ov000_021fc714
     .extern func_ov016_021fe6f4
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
 .global func_ov016_02200fe4
 func_ov016_02200fe4:
@@ -38,7 +38,7 @@ L_02201030:
     str r0, [r4, #0x474]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_022010a8
 L_02201054:
     ldr r0, [r4, #0x470]
@@ -61,7 +61,7 @@ L_02201054:
     str r0, [r4, #0x8]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_022010a8:
     mov r0, r4
     bl func_ov016_021ff7bc

@@ -22,10 +22,10 @@
 .extern Type7Actor_SetTarget
 .extern Type7Actor_UpdateAttachmentControllerAnimation
 .extern Type7Actor_PlayStateSound
-.extern func_0206c978
-.extern func_0206cd10
+.extern AuxiliaryInteraction_Destroy
+.extern AuxiliaryInteraction_RunSelectedSequence
 .extern func_020adcac
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern gGameWork
 .global Type7Actor_UpdateFrame
 .type Type7Actor_UpdateFrame, @function
@@ -237,14 +237,14 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     ldr r0, [r4, #0x234]
     cmp r0, #0x0
     beq .L_02045db4
-    bl func_0206cd10
+    bl AuxiliaryInteraction_RunSelectedSequence
     cmp r0, #0x2
     bne .L_02045db4
     ldr r5, [r4, #0x234]
     cmp r5, #0x0
     beq .L_02045d9c
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02045d9c:
@@ -370,7 +370,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     mov r0, r6
     bl Actor_GetCachedTerrainHeight
     sub r0, r5, r0
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     cmp r0, #0x20000
     ldr r0, [r4, #0x268]
     orrge r0, r0, #0x800000

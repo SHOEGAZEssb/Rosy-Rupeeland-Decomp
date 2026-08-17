@@ -6,11 +6,11 @@
 .extern data_020d660c
 .extern data_020f4e18
 .extern func_02022a88
-.extern func_02022ac8
+.extern SpriteNodeList_Clear
 .extern func_02022b08
-.extern func_02022bc8
-.extern func_02071ea4
-.extern func_02071eb8
+.extern SpriteNodeList_RemoveNode
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -25,7 +25,7 @@ func_02022aa8: ; 0x02022aa8
     ldr r1, .L_02022ac4
     mov r4, r0
     str r1, [r4, #0x0]
-    bl func_02022ac8
+    bl SpriteNodeList_Clear
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02022ac4: .word data_020d660c

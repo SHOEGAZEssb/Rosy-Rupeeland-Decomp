@@ -28,7 +28,7 @@ extern void func_02070bc4(void *resource, s32 destination);
 extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
                            void *heapContext);
 extern void func_020b1bfc(void *source, s32 destination, s32 size);
-extern u16 *func_02070874(void *resource);
+extern u16 *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void func_ov011_021fd374(s32 priority, s32 charBase, s32 screenBase,
                                 s32 size, s32 overflow);
 extern void func_ov011_021fd3a8(void *state);
@@ -104,7 +104,7 @@ void func_ov011_021fd188(void *state)
         func_ov011_021fd374(quadrant, layout == 0x10 ? 0 : 1,
                             0x12, 4, 0);
         GraphicsResourceSet_Apply(set, 1, layout == 0x100 ? 0x2000 : 0);
-        *(volatile u16 *)0x05000400 = *func_02070874(set->resource1);
+        *(volatile u16 *)0x05000400 = *GraphicsBgResourceData_GetDecoded(set->resource1);
     }
     func_ov011_021fd3a8(state);
 }

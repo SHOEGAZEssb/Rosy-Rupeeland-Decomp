@@ -9,7 +9,7 @@
     .extern func_ov017_021fd414
     .extern func_ov017_021fd60c
     .extern func_ov017_021fd638
-    .extern func_ov017_021fd838
+    .extern Overlay017Transform_SubmitGeometry
     .extern func_ov017_021fd918
     .extern func_ov017_021fe33c
     .extern func_ov017_02200a8c
@@ -47,7 +47,7 @@ L_022008d4:
     mov r2, #0x0
     add r0, r5, #0x264
     str r2, [r1, #0x0]
-    bl func_ov017_021fd838
+    bl Overlay017Transform_SubmitGeometry
     ldr r1, L_02200a7c
     add r0, r5, #0x264
     ldr r1, [r1, #0xc]
@@ -77,7 +77,7 @@ L_022008d4:
 L_02200994:
     add r0, r4, #0xbc
     str r10, [r9, #0x0]
-    bl func_ov017_021fd838
+    bl Overlay017Transform_SubmitGeometry
     mov r1, r8
     add r0, r4, #0xbc
     bl func_ov017_021fd918

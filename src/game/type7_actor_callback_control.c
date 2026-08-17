@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Heap_Free(void *allocation);
-extern void func_0206c978(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GraphicsSpriteState_SetAnimationIndex(void *object, u32 value);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern u32 genrand_int32(void);
@@ -56,7 +56,7 @@ void Type7Actor_ResetCallbackState(void *self)
     *(u32 *)(actor + 0x268) &= ~0xa0;
     resource = *(void **)(actor + 0x234);
     if (resource != 0) {
-        func_0206c978(resource);
+        AuxiliaryInteraction_Destroy(resource);
         Heap_Free(resource);
         *(void **)(actor + 0x234) = 0;
         GameWork_ClearFlag(gGameWork, 0x3fd);

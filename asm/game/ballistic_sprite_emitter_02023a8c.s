@@ -9,7 +9,7 @@
 .extern AnimationResource_Destroy
 .extern AnimationResource_Assign
 .extern AnimationResource_InitEmpty
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_02023890
 .extern func_02023bcc
 .extern func_02023c4c
@@ -26,7 +26,7 @@ func_02023a8c: ; 0x02023a8c
     mov r4, r1
     mov r9, r2
     mov r8, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r2, .L_02023bac
     mov r1, r4
     add r0, r10, #0x8

@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/grid_effect_actor_lifecycle.c.
 .extern Heap_Free
 .extern gGridEffectActorVtable
-.extern func_02022fbc
-.extern func_02030f98
+.extern SelfLinkedSpriteConfig_Init
+.extern ActorRuntimeBase_Init
 .extern func_0203130c
 .extern func_02031488
 .extern Type7Actor_ClearGlobalRelationshipToActor
@@ -13,7 +13,7 @@
 GridEffectActor_Init: ; 0x0204ec0c
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r0, .L_0204ec6c
     mov ip, #0x0
     str r0, [r4, #0x0]
@@ -28,7 +28,7 @@ GridEffectActor_Init: ; 0x0204ec0c
     and r1, r3, r1
     strh r1, [r2, #0xf0]
     strh ip, [r2, #0xf2]
-    bl func_02022fbc
+    bl SelfLinkedSpriteConfig_Init
     mvn r0, #0x0
     strb r0, [r4, #0x21a]
     mov r1, #0x0

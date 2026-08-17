@@ -5,7 +5,7 @@
 .extern OverlayManager_GetGlobal
 .extern AnimationResource_Destroy
 .extern func_0201e28c
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
@@ -20,7 +20,7 @@ func_ov053_0220d7fc:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_DestroyGroup
     add r0, r4, #0x28
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     bl OverlayManager_GetGlobal
     mov r1, #0x0
     bl OverlayManager_UnloadOverlay

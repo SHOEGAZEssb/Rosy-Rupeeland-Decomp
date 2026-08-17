@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov027/overlay027_scene_helpers.c. */
-.extern func_02059278
-.extern func_0205929c
+.extern Sound_PlayDirectSequence
+.extern Sound_StopDirectSequence
 .extern func_02091b98
 .extern func_02091c7c
 .extern func_ov027_021fe1c8
@@ -34,7 +34,7 @@ L_021fe5fc:
     mov r1, #0xfe
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -148,7 +148,7 @@ L_021fe78c:
     mov r1, #0xfe
     ldr r0, [r0, #0x0]
     mov r2, #0x1e
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

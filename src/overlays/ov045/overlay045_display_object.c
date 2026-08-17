@@ -12,8 +12,8 @@ extern "C" u8 data_ov045_0220d5a8[];
 extern "C" void *data_020f4e18;
 extern "C" void *gDebugFont;
 extern "C" void Presentation_Init(void *object);
-extern "C" void func_02071ea4(void *owner);
-extern "C" void func_02071eb8(void *owner);
+extern "C" void AnimationResourceState_InitEmbedded(void *owner);
+extern "C" void AnimationResourceState_Destroy(void *owner);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
@@ -56,7 +56,7 @@ extern "C" void *func_ov045_0220bc40(void *object)
 {
     Presentation_Init(object);
     FIELD(void *, object, 0) = data_ov045_0220d5a8;
-    func_02071ea4((u8 *)object + 0x9c);
+    AnimationResourceState_InitEmbedded((u8 *)object + 0x9c);
     func_02071ee0((u8 *)object + 0x9c, data_020f4e18,
                    0x1560, 0x1561, 0x1562);
     FIELD(void *, object, 0xa8) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
@@ -78,7 +78,7 @@ extern "C" void *func_ov045_0220bcfc(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d5a8;
     GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xa8));
-    func_02071eb8((u8 *)object + 0x9c);
+    AnimationResourceState_Destroy((u8 *)object + 0x9c);
     func_ov045_0220bc3c(object);
     return object;
 }
@@ -87,11 +87,11 @@ extern "C" void *func_ov045_0220bcfc(void *object)
  * Destroy owned display resources, free object storage, and return its former
  * address. The returned address must not be dereferenced after Heap_Free.
  */
-extern "C" void *func_ov045_0220bd30(void *object)
+extern "C" void *Overlay045DisplayObject_Delete(void *object)
 {
     FIELD(void *, object, 0) = data_ov045_0220d5a8;
     GraphicsSpriteGroup_Destroy(FIELD(void *, object, 0xa8));
-    func_02071eb8((u8 *)object + 0x9c);
+    AnimationResourceState_Destroy((u8 *)object + 0x9c);
     func_ov045_0220bc3c(object);
     Heap_Free(object);
     return object;

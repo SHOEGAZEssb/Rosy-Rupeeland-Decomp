@@ -12,8 +12,8 @@ extern const u8 gGridEffectActorVtable[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void func_02022fbc(void *subobject);
-extern void *func_02030f98(void *actor, const void *descriptor);
+extern void SelfLinkedSpriteConfig_Init(void *subobject);
+extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
@@ -34,12 +34,12 @@ extern void GridEffectActorRegistry_Unregister(void *actor);
  */
 void *GridEffectActor_Init(void *self, const void *descriptor)
 {
-    func_02030f98(self, descriptor);
+    ActorRuntimeBase_Init(self, descriptor);
     FIELD(const void *, self, 0) = gGridEffectActorVtable;
     FIELD(void *, self, 0x1ec) = 0;
     FIELD(u16, self, 0x1f0) = 0;
     FIELD(u16, self, 0x1f2) = 0;
-    func_02022fbc((u8 *)self + 0x1f4);
+    SelfLinkedSpriteConfig_Init((u8 *)self + 0x1f4);
     FIELD(s8, self, 0x21a) = -1;
     FIELD(u8, self, 0x21b) = 0;
     return self;

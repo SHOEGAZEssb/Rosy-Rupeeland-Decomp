@@ -6,7 +6,7 @@
     .extern func_ov039_021fdb78
     .extern func_ov049_0220c67c
     .extern func_020a63d0
-    .extern func_0205929c
+    .extern Sound_StopDirectSequence
     .extern func_020594ec
     .extern func_0205940c
     .extern Sound_Play
@@ -108,7 +108,7 @@ L_021fef48:
     ldr r0, [r0, #0x0]
     mov r1, #0x60
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, L_021fefec
     mov r1, #0x8
     ldr r0, [r0, #0x0]

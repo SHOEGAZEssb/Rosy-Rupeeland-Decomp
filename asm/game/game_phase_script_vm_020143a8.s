@@ -20,7 +20,7 @@
 .extern GamePhaseScriptVm_SetResult
 .extern RectS32_Set
 .extern func_0201d240
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_0201df54
 .extern func_0201df5c
 .extern func_0201e0ec
@@ -188,7 +188,7 @@ L_02014558:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     b L_0201553c
 L_02014570:
     ldr r1, L_020154c8
@@ -220,7 +220,7 @@ L_020145cc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     b L_0201553c
 L_020145e8:
     ldr r1, L_020154c8
@@ -254,7 +254,7 @@ L_0201464c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     b L_0201553c
 L_02014668:
     bl OverlayManager_GetGlobal
@@ -500,7 +500,7 @@ L_020149c0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     add r0, sp, #0x80
     bl VecFx32Object_Destroy
     b L_0201553c
@@ -643,7 +643,7 @@ L_02014bc4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     add r0, sp, #0x60
     bl VecFx32Object_Destroy
     add r0, sp, #0x70
@@ -788,7 +788,7 @@ L_02014dd0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     add r0, sp, #0x40
     bl VecFx32Object_Destroy
     add r0, sp, #0x50
@@ -976,7 +976,7 @@ L_02015088:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     b L_0201553c
 L_020150a4:
     bl OverlayManager_GetGlobal
@@ -1222,7 +1222,7 @@ L_0201542c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     b L_0201553c
 L_02015444:
     bl OverlayManager_GetGlobal

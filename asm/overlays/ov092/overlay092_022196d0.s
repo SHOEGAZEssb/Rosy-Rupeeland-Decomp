@@ -13,7 +13,7 @@
 .extern VecFx32Object_Destroy
 .extern Actor_SetActive
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_02059278
+.extern Sound_PlayDirectSequence
 .extern func_02059344
 .extern func_0205940c
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -268,7 +268,7 @@ func_ov092_022196d0:
     ldr r0, [r0, #0x0]
     mov r1, #0x99
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     b .L_02219e08
 .L_02219a38:
     add r0, r6, #0x268
@@ -313,7 +313,7 @@ func_ov092_022196d0:
     ldr r0, [r0, #0x0]
     mov r1, #0x96
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     mov r0, r5
     mov r1, #0x2
     bl GraphicsSpriteState_SetAnimationIndex
@@ -456,7 +456,7 @@ func_ov092_022196d0:
     mov r1, #0x95
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     mov r1, #0x5a
     mov r2, #0x3
     ldr r0, .L_02219e40

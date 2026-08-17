@@ -12,14 +12,14 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020befec
-.extern func_ov065_0220ff20
-.extern func_ov065_02210a04
+.extern Overlay065Particle_Update
+.extern Overlay065Scene_LaunchAmountParticles
 .extern gDebugFont
 .extern gLupyContext
 .extern gSceneManager
 
-.global func_ov065_02210600
-func_ov065_02210600:
+.global Overlay065Scene_Update
+Overlay065Scene_Update:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r1, .L_022108e0
     mov r4, r0
@@ -92,7 +92,7 @@ func_ov065_02210600:
     bl GamePhaseCurrencyHud_AddCurrency
     mov r0, r4
     mov r1, r5
-    bl func_ov065_02210a04
+    bl Overlay065Scene_LaunchAmountParticles
     b .L_0221082c
 .L_0221071c:
     add r0, r4, #0x100
@@ -178,7 +178,7 @@ func_ov065_02210600:
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0x28]
     mov r1, r4
-    bl func_ov065_0220ff20
+    bl Overlay065Particle_Update
     add r9, r9, #0x1
     cmp r9, #0x1e
     add r7, r7, r0
@@ -222,4 +222,4 @@ func_ov065_02210600:
 .L_022108ec: .word data_021052fc
 .L_022108f0: .word gLupyContext
 .L_022108f4: .word data_020c9670
-.size func_ov065_02210600, . - func_ov065_02210600
+.size Overlay065Scene_Update, . - Overlay065Scene_Update

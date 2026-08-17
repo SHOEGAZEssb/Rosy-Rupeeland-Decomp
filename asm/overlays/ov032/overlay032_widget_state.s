@@ -4,27 +4,27 @@
 .extern Sound_Play
 .extern data_021f6288
 .extern func_0205940c
-.extern func_02093d50
-.extern func_02093de4
-.extern func_02093e0c
-.extern func_02093e20
-.extern func_02093e3c
-.extern func_02093e58
-.extern func_02093ffc
-.extern func_02094574
-.extern func_020945c8
-.extern func_02094600
-.extern func_02094638
-.extern func_02094668
-.extern func_02094698
-.extern func_020946a8
-.extern func_020946c8
-.extern func_02094738
-.extern func_02094758
-.extern func_02094874
-.extern func_ov032_021ff288
+.extern InventoryScroll_SetSelectedRow
+.extern InventoryScroll_SaveOrigins
+.extern InventoryScroll_MoveSelectionUp
+.extern InventoryScroll_MoveSelectionDown
+.extern InventoryScroll_PageUp
+.extern InventoryScroll_PageDown
+.extern InventoryScroll_UpdateInterpolation
+.extern InventoryScroll_UpdatePresentation
+.extern InventoryScroll_TestUpperArrowPress
+.extern InventoryScroll_TestLowerArrowPress
+.extern InventoryScroll_TestUpperArrowHold
+.extern InventoryScroll_TestLowerArrowHold
+.extern InventoryScroll_TestMarkerHit
+.extern InventoryScroll_BeginMarkerDrag
+.extern InventoryScroll_UpdateMarkerDrag
+.extern InventoryScroll_EndMarkerDrag
+.extern InventoryScroll_UpdateSelectionMovement
+.extern InventoryScroll_ResetPresentationState
+.extern Overlay032SpriteWrapper_HitTest
 .extern func_ov032_02201930
-.extern func_ov032_02201de4
+.extern Overlay032Widget_HitTestRow
 .extern func_ov032_02201e58
 .extern func_ov032_02201ea4
 .extern gSoundContext
@@ -57,13 +57,13 @@ L_022019ac:
     mov r0, r5
     bl func_ov032_02201930
     ldr r0, [r5, #0x4c]
-    bl func_02094874
+    bl InventoryScroll_ResetPresentationState
     ldr r0, [r5, #0x4]
     add r0, r0, #0x1
     str r0, [r5, #0x4]
 L_022019cc:
     ldr r0, [r5, #0x4c]
-    bl func_02093ffc
+    bl InventoryScroll_UpdateInterpolation
     cmp r0, #0x0
     ldrne r0, [r5, #0x4]
     addne r0, r0, #0x1
@@ -78,19 +78,19 @@ L_022019cc:
     b L_02201dc8
 L_02201a04:
     ldr r0, [r5, #0x4c]
-    bl func_02093de4
+    bl InventoryScroll_SaveOrigins
     ldr r0, L_02201dd8
     ldrh r0, [r0, #0xa]
     tst r0, #0x40
     beq L_02201a28
     ldr r0, [r5, #0x4c]
-    bl func_02093e0c
+    bl InventoryScroll_MoveSelectionUp
     b L_02201ca0
 L_02201a28:
     tst r0, #0x80
     beq L_02201a3c
     ldr r0, [r5, #0x4c]
-    bl func_02093e20
+    bl InventoryScroll_MoveSelectionDown
     b L_02201ca0
 L_02201a3c:
     ldr r1, [r5, #0x0]
@@ -100,22 +100,22 @@ L_02201a3c:
     add r1, r1, #0x354
     ldr r0, [r5, #0x4c]
     add r1, r1, #0x800
-    bl func_02094638
+    bl InventoryScroll_TestUpperArrowHold
     cmp r0, #0x0
     beq L_02201a70
     ldr r0, [r5, #0x4c]
-    bl func_02093e3c
+    bl InventoryScroll_PageUp
     b L_02201ca0
 L_02201a70:
     ldr r1, [r5, #0x0]
     ldr r0, [r5, #0x4c]
     add r1, r1, #0x354
     add r1, r1, #0x800
-    bl func_02094668
+    bl InventoryScroll_TestLowerArrowHold
     cmp r0, #0x0
     beq L_02201a98
     ldr r0, [r5, #0x4c]
-    bl func_02093e58
+    bl InventoryScroll_PageDown
     b L_02201ca0
 L_02201a98:
     ldr r1, [r5, #0x0]
@@ -125,17 +125,17 @@ L_02201a98:
     add r1, r1, #0x354
     mov r0, r5
     add r1, r1, #0x800
-    bl func_ov032_02201de4
+    bl Overlay032Widget_HitTestRow
     ldr r1, [r5, #0x0]
     mov r4, r0
     add r1, r1, #0x354
     ldr r0, [r5, #0x4c]
     add r1, r1, #0x800
-    bl func_020945c8
+    bl InventoryScroll_TestUpperArrowPress
     cmp r0, #0x0
     beq L_02201b00
     ldr r0, [r5, #0x4c]
-    bl func_02093e3c
+    bl InventoryScroll_PageUp
     cmp r0, #0x0
     bne L_02201ca0
     ldr r0, L_02201ddc
@@ -149,11 +149,11 @@ L_02201b00:
     ldr r0, [r5, #0x4c]
     add r1, r1, #0x354
     add r1, r1, #0x800
-    bl func_02094600
+    bl InventoryScroll_TestLowerArrowPress
     cmp r0, #0x0
     beq L_02201b44
     ldr r0, [r5, #0x4c]
-    bl func_02093e58
+    bl InventoryScroll_PageDown
     cmp r0, #0x0
     bne L_02201ca0
     ldr r0, L_02201ddc
@@ -167,7 +167,7 @@ L_02201b44:
     ldr r0, [r5, #0x4c]
     add r1, r1, #0x354
     add r1, r1, #0x800
-    bl func_02094698
+    bl InventoryScroll_TestMarkerHit
     cmp r0, #0x0
     movne r0, #0xa
     strne r0, [r5, #0x4]
@@ -185,7 +185,7 @@ L_02201b44:
     bl Sound_Play
     ldr r0, [r5, #0x4c]
     mov r1, r4
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     mov r0, r5
     bl func_ov032_02201930
     b L_02201ca0
@@ -217,7 +217,7 @@ L_02201bf4:
     mov r3, r2
     add r0, r0, #0x800
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_02201c6c
     ldr r1, [r5, #0x4c]
@@ -248,7 +248,7 @@ L_02201c6c:
     mov r3, r2
     add r0, r0, #0x154
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     ldrne r0, [r5, #0x0]
     mvnne r1, #0x0
@@ -257,7 +257,7 @@ L_02201c6c:
     ldmneia sp!, {r3, r4, r5, pc}
 L_02201ca0:
     ldr r0, [r5, #0x4c]
-    bl func_02094758
+    bl InventoryScroll_UpdateSelectionMovement
     cmp r0, #0x0
     beq L_02201dc8
     ldr r0, L_02201ddc
@@ -272,14 +272,14 @@ L_02201ca0:
 L_02201cd4:
     ldr r0, [r5, #0x4c]
     mov r1, #0x4
-    bl func_020946a8
+    bl InventoryScroll_BeginMarkerDrag
     ldr r0, [r5, #0x4]
     add r0, r0, #0x1
     str r0, [r5, #0x4]
     b L_02201dc8
 L_02201cf0:
     ldr r0, [r5, #0x4c]
-    bl func_02093ffc
+    bl InventoryScroll_UpdateInterpolation
     cmp r0, #0x0
     beq L_02201d44
     ldr r0, [r5, #0x4c]
@@ -310,7 +310,7 @@ L_02201d44:
     b L_02201dc8
 L_02201d60:
     ldr r0, [r5, #0x4c]
-    bl func_02093de4
+    bl InventoryScroll_SaveOrigins
     ldr r1, [r5, #0x0]
     ldr r0, [r1, #0xb80]
     cmp r0, #0x0
@@ -318,7 +318,7 @@ L_02201d60:
     add r1, r1, #0x354
     ldr r0, [r5, #0x4c]
     add r1, r1, #0x800
-    bl func_020946c8
+    bl InventoryScroll_UpdateMarkerDrag
     cmp r0, #0x0
     beq L_02201dc8
     ldr r0, L_02201ddc
@@ -333,12 +333,12 @@ L_02201d60:
 L_02201db4:
     ldr r0, [r5, #0x4c]
     mov r1, #0x6
-    bl func_02094738
+    bl InventoryScroll_EndMarkerDrag
     mov r0, #0x0
     str r0, [r5, #0x4]
 L_02201dc8:
     ldr r0, [r5, #0x4c]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_02201dd8: .word gSystemState

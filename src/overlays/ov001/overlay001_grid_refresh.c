@@ -14,7 +14,7 @@ typedef struct Overlay001GridRefreshState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02094874(void *controller);
+extern void InventoryScroll_ResetPresentationState(void *controller);
 extern void IndexedSelectionController_ResetTransition(void *embeddedState);
 extern void func_ov001_021fc068(Overlay001GridRefreshState *state);
 #ifdef __cplusplus
@@ -31,7 +31,7 @@ extern "C"
 #endif
 void func_ov001_021fc1f0(Overlay001GridRefreshState *state)
 {
-    func_02094874(state->controller_1bc);
+    InventoryScroll_ResetPresentationState(state->controller_1bc);
     IndexedSelectionController_ResetTransition(state->embedded_1c0);
     func_ov001_021fc068(state);
 }

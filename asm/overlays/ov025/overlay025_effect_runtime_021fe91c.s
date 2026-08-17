@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_return_config.c. */
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern PresentationScalar_TransitionTo
 .extern func_ov025_021fe174
 .extern func_ov025_021fe248
@@ -14,7 +14,7 @@ func_ov025_021fe91c:
     mov r4, r0
     add r0, r4, #0xf8
     mov r1, #0x2
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r0, [r4, #0xa4]
     ldr r1, [r4, #0xec]
     ldrh r0, [r1, #0x24]

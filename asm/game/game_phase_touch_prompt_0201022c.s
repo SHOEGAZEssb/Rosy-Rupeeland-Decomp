@@ -6,7 +6,7 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_02006108
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -25,7 +25,7 @@ GamePhaseTouchPrompt_Init:
     add r0, r4, #0xc
     str r1, [r4, #0x0]
     str r5, [r4, #0x8]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r0, #0x1
     str r0, [r4, #0x20]
     mov r0, #0x3

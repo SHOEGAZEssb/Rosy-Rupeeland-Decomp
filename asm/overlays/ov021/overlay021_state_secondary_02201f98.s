@@ -7,7 +7,7 @@
     .extern GamePhaseCurrencyHud_AddCurrency
     .extern func_02062ca8
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov001_021fc7e4
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fecd0
@@ -130,7 +130,7 @@ L_02202114:
     cmp r0, #0x3c
     ble L_02202178
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, #0x1
     sub r1, r0, #0x11
     bl func_02092c8c

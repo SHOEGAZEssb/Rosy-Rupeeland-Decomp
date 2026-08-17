@@ -10,7 +10,7 @@
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Type7MarkerPresentation_Destroy
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern gGameWork
 .global Type7Actor_Destroy
 .type Type7Actor_Destroy, @function
@@ -46,7 +46,7 @@ Type7Actor_Destroy: ; 0x02045724
     cmp r5, #0x0
     beq .L_0204579c
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_0204579c:

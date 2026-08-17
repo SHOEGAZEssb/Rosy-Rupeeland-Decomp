@@ -134,7 +134,7 @@ extern s32 func_020adcac(const void *, const void *);
 extern void func_020adfbc(const void *, const void *, void *);
 extern void func_020adff0(const void *, const void *, void *);
 extern s32 func_020ae024(s32, s32);
-extern u32 func_020be328(s32);
+extern u32 SignedAbsoluteValueVariant(s32);
 extern s32 func_020befec(s32, s32);
 extern u64 func_020bf1f8(u32, u32);
 extern u32 genrand_int32(void);
@@ -1001,7 +1001,7 @@ void func_ov081_02214104(void *actor)
         FIELD(s32, actor, 0x3c) = 0;
         FIELD(s32, actor, 0x40) = 0;
         offset = Overlay081_GetSoundOffset(actor);
-        pan = 0x40 - func_020adae4(func_020be328(offset), 3);
+        pan = 0x40 - func_020adae4(SignedAbsoluteValueVariant(offset), 3);
         func_020593ac(gSoundContext, 0x133, 1, pan, offset, 0x100);
     }
 
@@ -1053,7 +1053,7 @@ void func_ov081_02214104(void *actor)
                 FIELD(s16, sprite, 0x36) > 0 &&
                 FIELD(void *, sprite, 0x20) == 0) {
                 offset = Overlay081_GetSoundOffset(actor);
-                pan = 0x40 - func_020adae4(func_020be328(offset), 3);
+                pan = 0x40 - func_020adae4(SignedAbsoluteValueVariant(offset), 3);
                 func_020593ac(gSoundContext, 5, 5, pan, offset, 0);
                 FIELD(u8, actor, 0x256) = 10;
             }

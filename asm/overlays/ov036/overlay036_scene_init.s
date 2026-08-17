@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_scene_init.c for documented portable C. */
 
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern func_02092364
     .extern func_ov043_0220b740
     .extern G3X_Init
@@ -13,7 +13,7 @@
     .extern Heap_Alloc
     .extern Graphics3DResourceOwner_Init
     .extern func_ov048_0220b7b8
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern func_020b0300
     .extern func_ov036_021fea14
     .extern func_ov036_021ff214
@@ -36,7 +36,7 @@ func_ov036_022045d4:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_022048b0
     add r0, r4, #0x64
     str r1, [r4, #0x0]
@@ -87,7 +87,7 @@ L_02204690:
     mov r1, #0x11
     mov r0, #0x0
     str r1, [r4, #0x48]
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     mov r0, #0x0
     ldr r2, L_022048c8
     mov r1, #0x1f

@@ -19,7 +19,7 @@ extern "C" {
 extern s32 Presentation_IsScriptSuspended(void *);
 extern s32 Presentation_IsScriptComplete(void *);
 extern void Presentation_SetScript(void *, const void *, s32);
-extern void func_020958f0(void *);
+extern void SpriteMotionController_PublishCoordinates(void *);
 extern void func_020958d8(void *);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
@@ -86,7 +86,7 @@ void func_ov013_021fdbb0(void *state)
             for (i = 0; i < 7; ++i) {
                 u8 *record = (u8 *)state + 0x8c + i * 0xac;
                 overlay013_virtual_update(record);
-                func_020958f0(record);
+                SpriteMotionController_PublishCoordinates(record);
             }
         } else {
             for (i = 0; i < 7; ++i) {
@@ -104,10 +104,10 @@ void func_ov013_021fdbb0(void *state)
         for (i = 0; i < 5; ++i) {
             u8 *record = (u8 *)state + 0x540 + i * 0xac;
             overlay013_virtual_update(record);
-            func_020958f0(record);
+            SpriteMotionController_PublishCoordinates(record);
         }
         overlay013_virtual_update((u8 *)state + 0x89c);
-        func_020958f0((u8 *)state + 0x89c);
+        SpriteMotionController_PublishCoordinates((u8 *)state + 0x89c);
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x84));
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x88));
     }

@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
-extern s32 func_020918f4(u32 *, s32);
+extern s32 TitleRandom_NextBounded(u32 *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void Presentation_UpdateScript(void *);
 extern s32 Presentation_IsScriptComplete(void *);
@@ -174,7 +174,7 @@ extern "C" s32 func_ov025_021feb4c(void *object)
         case 1:
             if (func_ov025_021ff0b0(object) != 0) {
                 FIELD(s32, object, 0xa4) =
-                    func_020918f4((u32 *)object + 0x3e, 2);
+                    TitleRandom_NextBounded((u32 *)object + 0x3e, 2);
                 func_ov025_021fe4cc(object, 10, 0);
             }
             break;

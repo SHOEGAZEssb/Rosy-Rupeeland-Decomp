@@ -7,7 +7,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern S16BoundsCenter_Init
 .extern func_0201e380
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 .extern func_0201e6e4
 .extern genrand_int32
 
@@ -79,9 +79,9 @@ func_0201ea7c: ; 0x0201ea7c
     ldmia sp!, {r4, pc}
     .size func_0201ea7c, .-func_0201ea7c
 
-.global func_0201ea98
-.type func_0201ea98, @function
-func_0201ea98: ; 0x0201ea98
+.global OrbitTimedSprite_Update
+.type OrbitTimedSprite_Update, @function
+OrbitTimedSprite_Update: ; 0x0201ea98
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -90,7 +90,7 @@ func_0201ea98: ; 0x0201ea98
     str r1, [r4, #0x28]
     bpl .L_0201eac4
     mov r1, #0x0
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     mov r0, #0x1
     b .L_0201eb10
 .L_0201eac4:
@@ -116,7 +116,7 @@ func_0201ea98: ; 0x0201ea98
 .L_0201eb10:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-    .size func_0201ea98, .-func_0201ea98
+    .size OrbitTimedSprite_Update, .-OrbitTimedSprite_Update
 
 .global func_0201eb18
 .type func_0201eb18, @function

@@ -8,14 +8,14 @@
     .extern data_ov013_021fecf0
     .extern data_ov013_021fed6c
     .extern data_ov013_021fed80
-    .extern func_0201e14c
-    .extern func_02071ea4
+    .extern RuntimePresentationManager_BroadcastSlot1C
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern Presentation_SetScript
     .extern SpritePresentation_Init
     .extern SpritePresentation_SyncPosition
@@ -32,17 +32,17 @@
 func_ov013_021fce2c:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fd064
     add r0, r4, #0x54
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x60
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x6c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x78
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldr r1, L_021fd068
     add r0, r4, #0x8c
     str r1, [sp, #0x0]
@@ -70,7 +70,7 @@ func_ov013_021fce2c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e14c
+    bl RuntimePresentationManager_BroadcastSlot1C
     ldr r3, L_021fd074
     add r0, r4, #0x54
     str r3, [sp, #0x0]

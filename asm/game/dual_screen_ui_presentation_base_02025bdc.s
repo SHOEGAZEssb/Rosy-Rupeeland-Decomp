@@ -2,7 +2,7 @@
 .text
 .extern data_020d6b3c
 .extern func_02026514
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
@@ -18,7 +18,7 @@ func_02025bdc: ; 0x02025bdc
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_DestroyGroup
     add r0, r4, #0xb8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x4
     bl func_02026514
     mov r0, r4

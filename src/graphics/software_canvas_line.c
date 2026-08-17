@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 extern s32 func_020befec(s32 dividend, s32 divisor);
 #ifdef __cplusplus
 }
@@ -37,10 +37,10 @@ void SoftwareCanvas_DrawLine(SoftwareCanvas *self, s32 x0, s32 y0,
     s32 i;
     u16 opaqueColor = color | 0x8000;
 
-    if (func_020be334(dyFx) < func_020be334(dxFx))
-        steps = func_020be334(dx);
+    if (SignedAbsoluteValue(dyFx) < SignedAbsoluteValue(dxFx))
+        steps = SignedAbsoluteValue(dx);
     else
-        steps = func_020be334(dy);
+        steps = SignedAbsoluteValue(dy);
 
     xStep = func_020befec(dxFx, steps);
     yStep = func_020befec(dyFx, steps);
@@ -69,18 +69,18 @@ asm void SoftwareCanvas_DrawLine(SoftwareCanvas *, s32, s32, s32, s32, u16)
     mov r10, r3, lsr #16
     mov r6, r1, lsl #12
     mov r7, r2, lsl #12
-    bl func_020be334
+    bl SignedAbsoluteValue
     mov r8, r0
     mov r0, r4
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, r8
     ble use_y
     mov r0, r4, asr #12
-    bl func_020be334
+    bl SignedAbsoluteValue
     b have_steps
 use_y:
     mov r0, r5, asr #12
-    bl func_020be334
+    bl SignedAbsoluteValue
 have_steps:
     mov r8, r0
     mov r0, r4

@@ -25,24 +25,24 @@ extern void __construct_array(void *, s32, s32, void (*)(void *), void (*)(void 
 extern void __destroy_arr(void *, s32, s32, void (*)(void *));
 extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
-extern void func_02064be0(void *, s32);
-extern void func_0206550c(void *, s32);
+extern void InventoryRecordCollection_Sort(void *, s32);
+extern void InventoryRecordCollection_SortAlternate(void *, s32);
 extern void *func_020716bc(void *, s32);
 extern void func_02071c38(void *, void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern u32 LanguageLookup_GetResourceSize(const void *, s32);
 extern const void *func_020791e0(const void *, s32);
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void func_020929b0(void *);
-extern void *func_02092cc0(void *, void *, void *);
+extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
 extern void func_020957bc(void *);
 extern u32 genrand_int32(void);
@@ -55,7 +55,7 @@ extern void func_ov021_021fd7a8(void *, s32, s32, s32, s32);
 extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void func_ov021_021fdf88(void *);
 extern void func_ov021_021fe098(void *);
-extern void func_ov021_021fe144(void *);
+extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe520(void *);
 extern void func_ov021_021fe6b0(void *);
 extern void func_ov045_0220b83c(void *);
@@ -113,8 +113,8 @@ static void destroy_scene_members(void *state)
     OverlaySlot_Destroy((u8 *)state + 0x41c);
     __destroy_arr((u8 *)state + 0x14c, 2, 0xac, func_ov021_021fd790);
     func_ov021_021fd790((u8 *)state + 0xa0);
-    func_02071eb8((u8 *)state + 0x88);
-    func_02071eb8((u8 *)state + 0x7c);
+    AnimationResourceState_Destroy((u8 *)state + 0x88);
+    AnimationResourceState_Destroy((u8 *)state + 0x7c);
     func_020927b8((u8 *)state + 0x58);
 }
 
@@ -129,11 +129,11 @@ static void destroy_scene_members(void *state)
  */
 extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
 {
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const void *, state, 0) = data_ov021_02202f64;
-    func_02092798((u8 *)state + 0x58);
-    func_02071ea4((u8 *)state + 0x7c);
-    func_02071ea4((u8 *)state + 0x88);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x58);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x7c);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x88);
     func_020957bc((u8 *)state + 0xa0);
     __construct_array((u8 *)state + 0x14c, 2, 0xac,
                       func_020957bc, func_ov021_021fd790);
@@ -168,8 +168,8 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     }
 
     FIELD(u32, state, 0x2cc) = genrand_int32();
-    func_0206550c((u8 *)data_021e9ac0 + 0x34, 1);
-    func_02064be0(data_021e9ac0, 0);
+    InventoryRecordCollection_SortAlternate((u8 *)data_021e9ac0 + 0x34, 1);
+    InventoryRecordCollection_Sort(data_021e9ac0, 0);
     u32 size = LanguageLookup_GetResourceSize(data_021f3ecc, 0x2e2);
     MIi_CpuCopy16(func_020791e0(data_021f3ecc, 0x2e2),
                   (u8 *)state + 0x2d4, size);
@@ -189,7 +189,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
 
     func_ov021_021fdf88(state);
     func_ov021_021fe098(state);
-    func_ov021_021fe144(state);
+    Overlay021_SetupMainBackground(state);
     func_ov021_021fe520(state);
     func_ov021_021fe6b0(state);
     if (FIELD(void *, state, 0x2a4) != 0)
@@ -202,7 +202,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
 
     void *dialog = Heap_Alloc(0xec, data_ov021_02202f88, 4, gHeapContext);
     if (dialog != 0)
-        func_02092cc0(dialog, data_020f4e14,
+        TitleDialog_Init(dialog, data_020f4e14,
                       FIELD(void *, state, 0x58));
     FIELD(void *, state, 0x388) = dialog;
     func_ov021_021fd7a8(dialog, 0x50, 0x28, 0xa8, 0x84);

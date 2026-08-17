@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
@@ -14,7 +14,7 @@ func_ov094_0221991c:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r0, #0x0
     mov r2, #0x4000
     ldr r1, .L_022199c0

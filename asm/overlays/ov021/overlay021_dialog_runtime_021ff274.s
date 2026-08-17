@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_dialog_runtime.c. */
-    .extern func_02093360
+    .extern TitleDialog_UpdateTextPage
     .extern func_ov045_0220c028
     .extern func_ov045_0220c068
     .extern func_ov045_0220c128
@@ -61,7 +61,7 @@ L_021ff314:
 L_021ff328:
     ldr r0, [r4, #0x388]
     add r1, sp, #0x18
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x14]

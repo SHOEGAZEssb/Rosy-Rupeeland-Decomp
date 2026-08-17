@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
 .extern func_020593ac
@@ -132,7 +132,7 @@ func_ov088_02219a2c:
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_02032a94
+    bl ActorContactState_AddContact
 .L_02219bf0:
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}

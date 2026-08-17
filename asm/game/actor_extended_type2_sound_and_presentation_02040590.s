@@ -4,7 +4,7 @@
 .extern gActorExtendedType2SpritePresentationAllocationTag
 .extern data_020e7444
 .extern data_021052fc
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern TimedSpriteOffsetPresentation_Init
 .extern func_020349b8
 .extern gHeapContext
@@ -70,7 +70,7 @@ ActorExtendedType2_SpawnOptionalPresentation: ; 0x020405c8
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
 .L_02040668:
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, pc}

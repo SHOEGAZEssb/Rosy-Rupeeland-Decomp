@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
-.extern func_02093360
+.extern TitleDialog_UpdateTextPage
 .extern gGameWork
 .extern gPadState1
 .extern gTouchPanelManager
@@ -49,7 +49,7 @@ L_0200f630:
     str r3, [ip, #0xd0]
     str r2, [ip, #0xd4]
     ldr r0, [r0, #0x8]
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]
     str r0, [sp, #0xc]

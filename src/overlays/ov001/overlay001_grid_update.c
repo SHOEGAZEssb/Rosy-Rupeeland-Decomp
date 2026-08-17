@@ -28,7 +28,7 @@ extern "C" {
 #endif
 extern const s16 data_020c9670[];
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
-extern void func_02094574(void *controller);
+extern void InventoryScroll_UpdatePresentation(void *controller);
 extern void func_020958d8(void *element);
 #ifdef __cplusplus
 }
@@ -56,7 +56,7 @@ void func_ov001_021fbf7c(Overlay001GridUpdateState *state)
     func_020958d8(state->element_0d4);
     GraphicsSpriteGroup_AdvanceAnimations(state->spriteGroup_008);
     GraphicsSpriteGroup_AdvanceAnimations(state->spriteGroup_00c);
-    func_02094574(state->controller_1bc);
+    InventoryScroll_UpdatePresentation(state->controller_1bc);
     if (state->animatedTarget_01c == 0) {
         return;
     }

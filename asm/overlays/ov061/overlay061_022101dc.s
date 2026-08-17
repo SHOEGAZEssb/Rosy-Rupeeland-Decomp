@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov061/overlay061_recovery.c.
 .extern data_021052fc
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
@@ -30,7 +30,7 @@ func_ov061_022101dc:
     ldr r0, .L_02210258
     mov r2, r1
     ldr r0, [r0, #0x0]
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, .L_02210258
     mov r1, #0x1
     ldr r0, [r0, #0x0]

@@ -47,5 +47,5 @@ func_02034800: ; 0x02034800
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     .size func_02034800, . - func_02034800
 
-    .global func_02034894
+    .global ActorTerrain_ApplyNeighborAxisBias
 

@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_effect_recovery.c.
 .extern Heap_Free
 
-.global func_ov050_0220d8b4
-func_ov050_0220d8b4:
+.global Overlay050Effect_Destroy
+Overlay050Effect_Destroy:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x4]
@@ -23,4 +23,4 @@ func_ov050_0220d8b4:
     str r0, [r5, #0x8]
     str r0, [r5, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-.size func_ov050_0220d8b4, . - func_ov050_0220d8b4
+.size Overlay050Effect_Destroy, . - Overlay050Effect_Destroy

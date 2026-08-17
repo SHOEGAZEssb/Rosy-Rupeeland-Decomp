@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 
 .global func_ov059_0220fd20
 func_ov059_0220fd20:
@@ -9,7 +9,7 @@ func_ov059_0220fd20:
     mov r1, #0x0
     add r0, r4, #0x44
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r1, #0x0
     str r1, [r4, #0x50]
     str r1, [r4, #0x54]

@@ -17,8 +17,8 @@ extern const char data_020e69ec[];
 extern const char data_020e69f4[];
 extern HeapContext gHeapContext;
 
-extern void *func_02070874(void *resource);
-extern void func_02070860(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
+extern void GraphicsSpriteResource_Prepare(void *resource);
 extern u16 func_020ae754(void);
 extern u16 func_020ae678(void);
 extern u32 GX_VBlankIntr(u32 state);
@@ -79,7 +79,7 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
 
     if (entry == 0) {
         if (*(void **)(resource_bytes + 0x14) == 0)
-            func_02070860(resource);
+            GraphicsSpriteResource_Prepare(resource);
         header = *(u8 **)(resource_bytes + 0x20);
         mode = *(u16 *)(header + 4);
         count = *(u16 *)(header + 6);
@@ -97,7 +97,7 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
             GraphicsIndexedChainEntry *current = entry;
             u32 record_size = mode == 0x10 ? 0x20 : 0x200;
             u32 transfer_type = mode == 0x10 ? 2 : 3;
-            u8 *source = (u8 *)func_02070874(resource);
+            u8 *source = (u8 *)GraphicsBgResourceData_GetDecoded(resource);
 
             for (index = 0; index < count; ++index) {
                 GraphicsTransferQueue_Enqueue(
@@ -119,7 +119,7 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
  * bank and every other engine selects the sub bank. Clear +0x34 after the SDK
  * bank transition; inactive renderers are unchanged. The second retail
  * argument is unused and the function returns no value. */
-void func_02075358(GraphicsSpriteRenderer *renderer, s32 unused)
+void GraphicsSpriteRenderer_ReleaseExtendedPalette(GraphicsSpriteRenderer *renderer, s32 unused)
 {
     (void)unused;
     if (renderer->field_30 == 0 || renderer->field_34 == 0)

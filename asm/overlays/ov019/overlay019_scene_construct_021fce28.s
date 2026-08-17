@@ -7,10 +7,10 @@
     .extern data_ov019_021fd638
     .extern data_ov019_021fd64c
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern func_ov000_021fb6e0
     .extern func_ov019_021fce00
-    .extern func_ov019_021fcfbc
+    .extern Overlay019_SetupGraphics
     .extern gDebugFont
     .extern gGameWork
     .extern gHeapContext
@@ -21,7 +21,7 @@ func_ov019_021fce28:
     mov r4, r0
     mov r6, r1
     mov r5, r2
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fcf10
     ldr r0, L_021fcf14
     str r1, [r4, #0x0]
@@ -33,7 +33,7 @@ func_ov019_021fce28:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, r4
-    bl func_ov019_021fcfbc
+    bl Overlay019_SetupGraphics
     mov r0, #0x0
     str r0, [r4, #0x60]
     ldr r0, [r4, #0x58]

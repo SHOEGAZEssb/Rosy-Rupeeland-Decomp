@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov073/overlay073_recovery.c.
 .extern VecFx32Object_Add
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 
 .global func_ov073_0220fe08
 func_ov073_0220fe08:
@@ -27,7 +27,7 @@ func_ov073_0220fe08:
     bne .L_0220fe64
     mov r0, r4
     mov r1, #0x1
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
 .L_0220fe64:
     ldr r0, [r4, #0x4]
     ldrh r0, [r0, #0x24]

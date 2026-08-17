@@ -15,8 +15,8 @@
     .extern func_020b44e8
     .extern func_ov021_021fe268
 
-.global func_ov021_021fe144
-func_ov021_021fe144:
+.global Overlay021_SetupMainBackground
+Overlay021_SetupMainBackground:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -90,5 +90,5 @@ L_021fe258: .word data_020f4e18
 L_021fe25c: .word 0x4000050
 L_021fe260: .word 0xc008
 L_021fe264: .word data_021f5ee8
-    .size func_ov021_021fe144, . - func_ov021_021fe144
+    .size Overlay021_SetupMainBackground, . - Overlay021_SetupMainBackground
 

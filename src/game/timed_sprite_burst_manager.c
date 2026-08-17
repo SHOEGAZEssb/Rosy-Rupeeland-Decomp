@@ -75,9 +75,9 @@ extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
                            HeapContext *heap);
 extern void func_02003e38(void *allocation);
 extern void *ActorMotion_GetPosition(void *source);
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern void *func_0201e454(void *self, BurstSpriteConfig *config);
-extern void func_0201e3b8(void *sprite, s32 enabled);
+extern void TimedSpritePresentation_SetVisible(void *sprite, s32 enabled);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *font, void *spriteGroup);
 extern void func_02071bdc(void *owner, void *resource);
@@ -109,7 +109,7 @@ TimedSpriteBurstManager *TimedSpriteBurstManager_Init(
     TouchPointValue center;
     s32 index;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)gTimedSpriteBurstManagerVtable;
     self->sprites08.items = 0;
     self->sprites08.count = 0;
@@ -149,7 +149,7 @@ TimedSpriteBurstManager *TimedSpriteBurstManager_Init(
             func_0201e454(sprite, &config);
         }
         self->sprites08.items[index] = sprite;
-        func_0201e3b8(sprite, 1);
+        TimedSpritePresentation_SetVisible(sprite, 1);
     }
     self->timer24 = 300;
     VecFx32Object_Destroy(&config.second20);

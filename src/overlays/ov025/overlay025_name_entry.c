@@ -20,7 +20,7 @@ extern u8 gSystemState[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
@@ -32,7 +32,7 @@ extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
 extern u8 GraphicsSpriteRenderer_GetGlyphMetric(void *, s32);
 extern u16 GraphicsSpriteFont_MapCharacterToGlyph(u32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-extern s32 func_02092910(void *, void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void func_ov025_021fd03c(void *, void *, s32);
 #ifdef __cplusplus
 }
@@ -53,7 +53,7 @@ static bool alternate_locale(void)
  */
 extern "C" void *func_ov025_021fce00(void *widget)
 {
-    func_02071ea4((u8 *)widget + 4);
+    AnimationResourceState_InitEmbedded((u8 *)widget + 4);
     s32 locale = 0;
     FIELD(s32, widget, 0x17c) = 0;
     FIELD(const u16 *, widget, 0x178) = data_ov025_022030f4;

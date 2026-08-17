@@ -25,7 +25,7 @@
 .extern GridEffectActorRegistry_UnloadSharedResource
 .extern func_020534cc
 .extern func_0205355c
-.extern func_0205929c
+.extern Sound_StopDirectSequence
 .extern func_02059344
 .extern gGameWork
 .extern gHeapContext
@@ -146,7 +146,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     mov r1, #0x1f
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
 .L_0203ac24:
     ldr r0, .L_0203ac94
     mov r1, #0x20
@@ -158,7 +158,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     mov r1, #0x20
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
 .L_0203ac50:
     bl func_0205355c
     bl GridEffectActorRegistry_UnloadSharedResource

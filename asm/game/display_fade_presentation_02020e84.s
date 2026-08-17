@@ -9,7 +9,7 @@
 .extern data_020d63d8
 .extern data_020d6564
 .extern data_020f4e18
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern MainBg1_SetControl
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl
@@ -17,7 +17,7 @@
 .extern PairedReferenceState_SetReferencesAndReset
 .extern func_02070638
 .extern func_020706c4
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070e0c
 .extern func_02070eac
 .extern func_02091b6c
@@ -45,7 +45,7 @@ DisplayFadePresentation_Init: ; 0x02020e84
     mov r5, r1
     mov r4, r2
     mov r7, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_020210f0
     add r0, r6, #0x14
     str r1, [r6, #0x0]
@@ -118,7 +118,7 @@ DisplayFadePresentation_Init: ; 0x02020e84
     mov r2, #0x0
     bl func_02070e0c
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, r4, lsl #0x5
     mov r1, #0x0
     mov r2, #0x20
@@ -172,7 +172,7 @@ DisplayFadePresentation_Init: ; 0x02020e84
     mov r2, #0x0
     bl func_02070eac
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, r4, lsl #0x5
     mov r1, #0x0
     mov r2, #0x20

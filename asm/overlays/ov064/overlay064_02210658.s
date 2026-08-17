@@ -10,10 +10,10 @@
 .extern OverlayManager_GetGlobal
 .extern VecFx32Triple_Destroy
 .extern GamePhaseRuntime_StageAreaRequest
-.extern func_020084b8
+.extern GamePhaseRuntime_RequestPrimaryWarp
 .extern ActorDerivedType1_ResetRuntimeState
 .extern Type7Actor_LeaveSpecialPresentationState
-.extern func_020597fc
+.extern Sound_ReleaseGroup
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
@@ -97,13 +97,13 @@ Overlay064Scene_Destroy:
     mov r1, r1, lsl #0x10
     ldr r0, [r0, #0x0]
     mov r2, r2, lsl #0x10
-    bl func_020084b8
+    bl GamePhaseRuntime_RequestPrimaryWarp
     b .L_02210848
 .L_0221076c:
     ldr r0, .L_02210894
     mov r1, #0x52
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     ldr r0, .L_02210898
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -125,7 +125,7 @@ Overlay064Scene_Destroy:
     ldr r0, .L_02210894
     mov r1, #0x53
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     ldr r0, .L_02210898
     mov r1, #0x0
     ldr r0, [r0, #0x0]

@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern data_ov026_0220497c
 .extern data_ov026_02204a50
-.extern func_02071adc
+.extern GraphicsArchive_AcquireOwlvResource
 .extern PresentationScalar_SetImmediate
 .extern Presentation_Init
 .extern Presentation_SetPosition
@@ -23,7 +23,7 @@ func_ov026_021fec6c:
     str r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
     mov r1, #0x5000
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r4, #0x9c]
     ldr r1, L_021fed94
     ldr r3, L_021fed98

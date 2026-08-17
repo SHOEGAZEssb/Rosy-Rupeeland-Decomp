@@ -28,7 +28,7 @@
 .extern func_020adae4
 .extern func_020adc90
 .extern func_020ae024
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_020befec
 .extern func_020bf1f8
 .extern func_ov088_022179f4
@@ -922,7 +922,7 @@ func_ov088_02218328:
     bne .L_02219060
     ldr r0, [r4, #0x23c]
     sub r0, r0, r6
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x2000
     bge .L_02219060
     cmp r5, #0x1

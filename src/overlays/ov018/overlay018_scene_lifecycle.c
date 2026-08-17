@@ -26,8 +26,8 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern u32 genrand_int32(void);
 extern void *GamePhaseState_GetConfiguration(void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -35,8 +35,8 @@ extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(void *, s32, s32);
 extern void func_02091b6c(void *);
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void PresentationList_DeleteAll(void *);
@@ -93,14 +93,14 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
     void *actor;
     void *actorData;
 
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const u32 *, state, 0) = data_ov018_021ffd3c;
     func_ov018_021fd36c((u8 *)state + 0x64);
-    func_02092798((u8 *)state + 0x70);
-    func_02071ea4((u8 *)state + 0x94);
-    func_02071ea4((u8 *)state + 0xa0);
-    func_02071ea4((u8 *)state + 0xac);
-    func_02071ea4((u8 *)state + 0xb8);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x70);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x94);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xa0);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xac);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xb8);
     func_020957bc((u8 *)state + 0xd8);
     func_02091b6c((u8 *)state + 0x1a8);
     func_ov018_021fcf00((u8 *)state + 0x3cc);
@@ -243,10 +243,10 @@ static void destroyScene(void *state)
     FIELD(const u32 *, state, 0x3cc) = data_ov018_021ffd00;
     PresentationList_DeleteAll((u8 *)state + 0x3cc);
     func_ov018_021fcefc((u8 *)state + 0xd8);
-    func_02071eb8((u8 *)state + 0xb8);
-    func_02071eb8((u8 *)state + 0xac);
-    func_02071eb8((u8 *)state + 0xa0);
-    func_02071eb8((u8 *)state + 0x94);
+    AnimationResourceState_Destroy((u8 *)state + 0xb8);
+    AnimationResourceState_Destroy((u8 *)state + 0xac);
+    AnimationResourceState_Destroy((u8 *)state + 0xa0);
+    AnimationResourceState_Destroy((u8 *)state + 0x94);
     func_020927b8((u8 *)state + 0x70);
 }
 

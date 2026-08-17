@@ -14,8 +14,8 @@ extern "C" u8 data_020d77fc[];
 extern "C" u8 data_020d780c[];
 extern "C" void *gGameWork;
 extern "C" void *data_020f4e18;
-extern "C" void func_02071ea4(void *owner);
-extern "C" void func_02071eb8(void *owner);
+extern "C" void AnimationResourceState_InitEmbedded(void *owner);
+extern "C" void AnimationResourceState_Destroy(void *owner);
 extern "C" void func_02071ee0(void *owner, void *font, u32 character,
                                u32 palette, u32 cell);
 extern "C" void *__construct_array(void *array, s32 count, s32 stride,
@@ -44,10 +44,10 @@ extern "C" void func_ov046_0220bac0(void *object);
  */
 extern "C" void *func_ov046_0220b7bc(void *object, void *font, s32 mode)
 {
-    func_02071ea4((u8 *)object + 8);
-    __construct_array((u8 *)object + 0x14, 2, 0x0c, func_02071ea4,
-                      func_02071eb8);
-    func_02071ea4((u8 *)object + 0x2c);
+    AnimationResourceState_InitEmbedded((u8 *)object + 8);
+    __construct_array((u8 *)object + 0x14, 2, 0x0c, AnimationResourceState_InitEmbedded,
+                      AnimationResourceState_Destroy);
+    AnimationResourceState_InitEmbedded((u8 *)object + 0x2c);
 
     FIELD(void *, object, 0) = font;
     FIELD(void *, object, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);

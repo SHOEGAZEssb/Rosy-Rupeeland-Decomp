@@ -1,7 +1,7 @@
 .text
-.extern func_02091e28
-.extern func_02092798
-.extern func_02071ea4
+.extern SceneInputBase_Init
+.extern TitleCharacterResourceCollection_Init
+.extern AnimationResourceState_InitEmbedded
 .extern func_020957bc
 .extern OverlaySlot_Init
 .extern func_02095820
@@ -17,13 +17,13 @@
 func_ov043_0220b76c:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, .L_0220b854
     add r0, r4, #0x5c
     str r1, [r4, #0x0]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x80
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x90
     bl func_020957bc
     add r0, r4, #0x13c

@@ -10,7 +10,7 @@ extern const u8 data_ov033_021fdd00[];
 extern "C" {
 #endif
 extern void __destroy_arr(void *base, s32 count, s32 size, void *destructor);
-extern void func_02071eb8(void *descriptor);
+extern void AnimationResourceState_Destroy(void *descriptor);
 extern void func_ov033_021fce00(void *group);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
@@ -24,7 +24,7 @@ extern void Heap_Free(void *allocation);
  */
 extern "C" void *func_ov033_021fcf8c(void *group)
 {
-    __destroy_arr((u8 *)group + 0x9c, 9, 0xc, (void *)func_02071eb8);
+    __destroy_arr((u8 *)group + 0x9c, 9, 0xc, (void *)AnimationResourceState_Destroy);
     func_ov033_021fce00(group);
     return group;
 }
@@ -36,7 +36,7 @@ extern "C" void *func_ov033_021fcf8c(void *group)
  */
 extern "C" void *func_ov033_021fcfbc(void *group)
 {
-    __destroy_arr((u8 *)group + 0x9c, 9, 0xc, (void *)func_02071eb8);
+    __destroy_arr((u8 *)group + 0x9c, 9, 0xc, (void *)AnimationResourceState_Destroy);
     func_ov033_021fce00(group);
     Heap_Free(group);
     return group;

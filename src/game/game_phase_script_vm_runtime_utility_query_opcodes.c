@@ -13,8 +13,8 @@ extern void *data_021e9ac0;
 extern void *data_02105300;
 extern void *gRuntimeContext;
 extern void *gGameWork;
-extern void func_0206f914(void *state, u16 value);
-extern void func_02065270(void *state);
+extern void RetailPhaseDatabase_UnlockById(void *state, u16 value);
+extern void ActorDescriptorState_ActivateFirstEligible(void *state);
 extern void GamePhaseTouchPrompt_SetEnabled(void *state, s32 value);
 extern s32 func_0207f80c(void *context, s32 zero0, s32 zero1, s32 enabled);
 extern s32 func_020befec(s32 numerator, s32 denominator);
@@ -26,7 +26,7 @@ extern s32 func_020befec(s32 numerator, s32 denominator);
 s32 func_02019104(GamePhaseActorScriptVm *self)
 {
     u16 value = (u16)GamePhaseScriptVm_Pop(&self->base);
-    func_0206f914(&data_021e9e00, value);
+    RetailPhaseDatabase_UnlockById(&data_021e9e00, value);
     return 0;
 }
 
@@ -39,7 +39,7 @@ s32 GamePhaseActorScriptVm_RepeatGlobalState34Operation(GamePhaseActorScriptVm *
     u16 count = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 index;
     for (index = 0; index < count; index++)
-        func_02065270((u8 *)data_021e9ac0 + 0x34);
+        ActorDescriptorState_ActivateFirstEligible((u8 *)data_021e9ac0 + 0x34);
     return 0;
 }
 

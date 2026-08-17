@@ -7,7 +7,7 @@
     .extern func_020adc90
     .extern func_020ae024
     .extern func_020befec
-    .extern func_ov017_021fd3f0
+    .extern Overlay017_WaitForSquareRoot
 .global func_ov017_021fda64
 func_ov017_021fda64:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -160,7 +160,7 @@ L_021fdc54:
     str r2, [r4, #0x8]
     mov r0, r2, asr #0x1f
     str r0, [r4, #0xc]
-    bl func_ov017_021fd3f0
+    bl Overlay017_WaitForSquareRoot
     str r0, [sp, #0x0]
     mov r1, r0
     mov r0, r6, lsl #0xc
@@ -203,7 +203,7 @@ L_021fdd00:
     strh r4, [r1, #0x0]
     str r2, [r1, #0x8]
     str r0, [r1, #0xc]
-    bl func_ov017_021fd3f0
+    bl Overlay017_WaitForSquareRoot
     mov r4, r0
 L_021fdd60:
     ldr r0, L_021fde30
@@ -237,7 +237,7 @@ L_021fddb0:
     str r0, [r1, #0x8]
     mov r0, r0, asr #0x1f
     str r0, [r1, #0xc]
-    bl func_ov017_021fd3f0
+    bl Overlay017_WaitForSquareRoot
     mov r1, r0
     cmp r1, #0x2000
     ldmleia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

@@ -15,7 +15,7 @@ extern void *gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *presentation, void *argument);
+extern void SceneInputBase_Init(void *presentation, void *argument);
 extern void func_02092364(void *camera);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
@@ -27,7 +27,7 @@ extern void func_020ae6dc(void);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *Graphics3DResourceOwner_Init(void *owner, s32 capacity, s32 mode);
 extern void func_ov048_0220b7b8(void *state);
-extern void func_02092850(s32 mode);
+extern void TitlePalette_SetMainBackdrop(s32 mode);
 extern void func_020b0300(s32 a, s32 b, s32 c, s32 d, s32 e);
 extern void *func_ov037_021fd7e4(void *scene, void *owner);
 extern void func_ov037_021fe4d4(void *node, void *value24, void *value28);
@@ -47,7 +47,7 @@ extern void func_ov037_021fe4d4(void *node, void *value24, void *value28);
  */
 extern "C" void *func_ov037_021fe4fc(void *presentation, void *argument)
 {
-    func_02091e28(presentation, argument);
+    SceneInputBase_Init(presentation, argument);
     FIELD(const void *, presentation, 0) = data_ov037_021fee94;
     func_02092364((u8 *)presentation + 0x60);
     func_ov043_0220b740((u8 *)presentation + 0x94);
@@ -69,7 +69,7 @@ extern "C" void *func_ov037_021fe4fc(void *presentation, void *argument)
     FIELD(void *, presentation, 0x58) = owner;
     func_ov048_0220b7b8((u8 *)presentation + 0x94);
     FIELD(s32, presentation, 0x48) = 0x11;
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     func_020b0300(0, 31, 0x7fff, 0x3f, 0);
 
     FIELD(void *, presentation, 0x5c) = 0;

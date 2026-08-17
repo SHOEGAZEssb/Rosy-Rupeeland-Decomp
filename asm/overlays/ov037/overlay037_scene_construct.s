@@ -9,21 +9,21 @@
     .extern func_02091b6c
     .extern GraphicsResourceSetVariant_Load
     .extern Graphics3DResourceOwner_PrepareResources
-    .extern func_02071adc
+    .extern GraphicsArchive_AcquireOwlvResource
     .extern Graphics3DResourceOwner_CreateManager
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern func_ov037_021fd710
     .extern Heap_Alloc
     .extern func_ov037_021fd5ac
     .extern PresentationList_Append
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern func_ov037_021fd22c
     .extern func_ov037_021fd1cc
     .extern func_ov037_021fd758
     .extern func_ov037_021fd760
     .extern func_ov037_021fd770
     .extern func_020b0300
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern data_ov037_021fedd0
     .extern data_020f4e18
     .extern data_ov037_021feeb0
@@ -132,7 +132,7 @@ func_ov037_021fd7e4:
     ldr r0, L_021fdb80
     ldr r1, L_021fdb98
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r5, #0x110]
     mov r0, r4
     bl Graphics3DResourceOwner_CreateManager
@@ -180,7 +180,7 @@ L_021fd9f0:
     cmp r0, #0x0
     beq L_021fda34
     mov r1, r6
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_021fda34:
     str r0, [r5, #0x11c]
     mov r1, r0
@@ -201,7 +201,7 @@ L_021fda34:
     cmp r0, #0x0
     beq L_021fda84
     mov r1, r6
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
 L_021fda84:
     str r0, [r5, #0x120]
     mov r1, r0
@@ -262,7 +262,7 @@ L_021fdae8:
     str r0, [sp, #0x0]
     bl func_020b0300
     mov r0, #0x0
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     mov r0, r5
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

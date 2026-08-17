@@ -5,7 +5,7 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_ov044_0220be34
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern func_020926f8
 .extern func_020927b8
 .extern data_ov044_0220d31c
@@ -64,7 +64,7 @@ func_ov044_0220bfd4:
     add r0, r4, #0xd0
     bl func_ov044_0220be34
     add r0, r4, #0xc0
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x78
     bl func_020926f8
     add r0, r4, #0x54
@@ -128,7 +128,7 @@ func_ov044_0220c0b4:
     add r0, r4, #0xd0
     bl func_ov044_0220be34
     add r0, r4, #0xc0
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x78
     bl func_020926f8
     add r0, r4, #0x54

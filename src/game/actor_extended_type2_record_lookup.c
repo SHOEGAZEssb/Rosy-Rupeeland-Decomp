@@ -11,7 +11,7 @@ extern void func_020b5294(void);
  * one-past-end cursor; valid database indices therefore return borrowed
  * immutable resident storage without allocating or changing game state.
  */
-u8 *func_0206899c(s32 index)
+u8 *ActorExtendedType2Record_FindByIndex(s32 index)
 {
     s32 recordIndex;
     u8 *record = data_020c477c;

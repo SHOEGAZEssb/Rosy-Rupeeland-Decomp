@@ -15,7 +15,7 @@ extern void func_ov030_021fd694(void *, const void *);
 extern void func_ov030_021fd720(void *, const void *);
 extern s32 func_ov030_021ff574(void *);
 extern void func_02092260(void *, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov030_021fe954(void *, u16);
 extern void func_020922f0(void *, s32);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
@@ -101,7 +101,7 @@ extern "C" s32 func_ov030_021ff038(void *scene)
         void *slots = FIELD(void *, board, 0x1b0);
         if (FIELD(s32, slots, 0) < 3)
             break;
-        func_020939d8(FIELD(void *, scene, 0x2bc));
+        TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
         s32 successes = FIELD(s32, slots, 4);
         s32 mode = FIELD(s32, scene, 0x390);
         s32 reward = 0;
@@ -158,7 +158,7 @@ extern "C" s32 func_ov030_021ff038(void *scene)
             if (func_02095860((u8 *)board + 0x58,
                               (u8 *)scene + 0x30, 0, 4) != 0) {
                 func_02092260(scene, 0xb);
-                func_020939d8(FIELD(void *, scene, 0x2bc));
+                TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
                 func_ov030_021fe954(scene, 0x1fa);
                 func_02091bac((u8 *)scene + 0x340, 2, 0, 0xa8, 0x10);
                 ++FIELD(s32, scene, 4);

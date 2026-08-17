@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov016/overlay016_selection_helpers.c. */
     .extern data_021e9ac0
-    .extern func_02062b28
+    .extern ActorDescriptor_IsInvalid
 .global func_ov016_021ffcb0
 func_ov016_021ffcb0:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -32,7 +32,7 @@ L_021ffd00:
     mul r9, r7, r0
     ldr r0, [r5, #0x8]
     add r0, r0, r9
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     ldreq r0, [r5, #0x8]
     ldreqh r1, [r8, #0x0]

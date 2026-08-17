@@ -27,7 +27,7 @@ extern const char data_020d5bcc[];
 extern const char data_020d5bd4[];
 extern const char data_020d5bdc[];
 extern const char data_020d5be4[];
-extern void func_0201ded4(void *list, void *object);
+extern void PresentationList_AppendObject(void *list, void *object);
 extern void func_0201df44(void *list, void *object);
 extern void *func_0201d240(void *object, s32 enabled, s32 value);
 extern void *func_0201d688(void *object, s32 value);
@@ -89,7 +89,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5b94);
         if (object)
             object = func_02024468(object);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 19:
         GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
@@ -105,7 +105,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5b9c);
         if (object)
             object = func_0202432c(object, value, parameter);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 16: {
         void *state = OverlayManager_GetGlobal();
@@ -117,25 +117,25 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5ba4);
         if (object)
             object = func_02024200(object);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 14:
         object = allocateObject(0x1c, data_020d5bac);
         if (object)
             object = IndexedSpriteOverlayPresentation_Init(object, value);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 13:
         object = allocateObject(0x18, data_020d5bb4);
         if (object)
             object = func_020240cc(object, value);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 12:
         object = allocateObject(0x1c, data_020d5bbc);
         if (object)
             object = ReversedFrameSpriteOverlayPresentation_Init(object, value);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 11:
         /* 0x448 is a confirmed allocation size; the object type is unknown. */
@@ -148,13 +148,13 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x1c, data_020d5b74);
         if (object)
             object = func_020200bc(object, value, 0, 0, parameter);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 9:
         object = allocateObject(0x90, data_020d5bcc);
         if (object)
             object = FourSlot3DPresentation_Init(object, value);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 8:
         object = allocateObject(0x40, data_020d5bd4);
@@ -167,7 +167,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5bb4);
         if (object)
             object = func_02023fa0(object);
-        func_0201ded4(runtimeObjectList(), object);
+        PresentationList_AppendObject(runtimeObjectList(), object);
         break;
     case 5:
         object = allocateObject(0x44, data_020d5bdc);

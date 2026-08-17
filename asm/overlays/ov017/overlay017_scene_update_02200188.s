@@ -14,14 +14,14 @@
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern GraphicsAnimationInstanceManager_Update
     .extern func_0209189c
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_02092260
     .extern PresentationScalar_TransitionTo
     .extern Presentation_SetPosition
     .extern PresentationList_Append
     .extern PresentationList_Remove
     .extern PresentationList_UpdateAndDeleteCompleted
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern func_020958d8
     .extern func_020befec
     .extern func_ov017_021fcf6c
@@ -29,8 +29,8 @@
     .extern func_ov017_021fe190
     .extern func_ov017_021fe5b0
     .extern func_ov017_021fe894
-    .extern func_ov017_02200064
-    .extern func_ov017_0220087c
+    .extern Overlay017_UpdatePaletteRamp
+    .extern Overlay017Timer_Tick
     .extern gHeapContext
     .extern Heap_Alloc
     .global func_ov017_02200188
@@ -152,7 +152,7 @@ L_0220025c:
     mov r5, r0
     add r0, r10, #0x3fc
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mvn r1, #0x7f
     str r1, [sp, #0x0]
     mov r1, r0, lsl #0x4
@@ -236,7 +236,7 @@ L_02200448:
     str r0, [sp, #0xc]
     add r0, r10, #0x3fc
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, [sp, #0xc]
     str r7, [sp, #0x0]
     str r1, [sp, #0x4]
@@ -282,7 +282,7 @@ L_02200514:
     add r2, r2, r0
     mov r0, r10
     str r2, [r1, #0x64]
-    bl func_ov017_02200064
+    bl Overlay017_UpdatePaletteRamp
     add r0, r10, #0x3ec
     bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, L_02200850
@@ -309,14 +309,14 @@ L_02200578:
     add r0, r10, #0x3fc
     mov r1, #0x1000
     str r2, [r10, #0x3d4]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, L_02200850
     mov r4, r0, lsl #0x4
     ldr r2, [r1, #0xc]
     ldr r1, L_02200854
     add r0, r10, #0x3fc
     ldr r1, [r1, r2, lsl #0x2]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r3, r4, asr #0x3
     add r1, r3, #0x1
     ldr r2, L_0220086c
@@ -344,7 +344,7 @@ L_02200578:
     movs r7, r0
     beq L_02200630
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
     mov r7, r0
 L_02200630:
     mov r1, r7
@@ -402,14 +402,14 @@ L_022006c8:
     add r0, r10, #0x3fc
     mov r1, #0x1000
     str r2, [r10, #0x3e8]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, L_02200850
     mov r4, r0, lsl #0x4
     ldr r2, [r1, #0xc]
     ldr r1, L_02200854
     add r0, r10, #0x3fc
     ldr r1, [r1, r2, lsl #0x2]
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r3, r4, asr #0x3
     add r2, r3, #0x1
     ldr r1, [r10, #0x3f8]
@@ -471,7 +471,7 @@ L_022007d0:
     ldr r0, [r10, #0x2c0]
     bl func_ov017_021fcf6c
     ldr r0, L_02200874
-    bl func_ov017_0220087c
+    bl Overlay017Timer_Tick
     cmp r0, #0x0
     beq L_0220082c
     mov r0, r10
@@ -479,7 +479,7 @@ L_022007d0:
     bl func_02092260
 L_0220082c:
     ldr r0, L_02200878
-    bl func_ov017_0220087c
+    bl Overlay017Timer_Tick
     cmp r0, #0x0
     beq L_02200848
     mov r0, r10

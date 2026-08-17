@@ -22,7 +22,7 @@
 .extern func_ov029_021fd7a8
 .extern func_ov029_021fd850
 .extern func_ov045_0220c9e8
-.extern func_ov045_0220d2f8
+.extern Overlay045_DrawSelectorPreview
 .extern gDebugFont
 .extern gHeapContext
 .extern gLupyContext
@@ -65,7 +65,7 @@ L_021fda0c:
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r4, #0x54]
     ldr r1, [r4, #0x58]
-    bl func_ov045_0220d2f8
+    bl Overlay045_DrawSelectorPreview
     ldr r1, [r4, #0x20]
     mov r0, #0x0
     bic r1, r1, #0x1

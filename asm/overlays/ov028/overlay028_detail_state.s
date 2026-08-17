@@ -4,7 +4,7 @@
 .extern data_ov028_021ff218
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_02092260
-.extern func_02092910
+.extern GraphicsSpriteState_TestTouchPoint
 .extern func_02092c8c
 .extern IndexedSelectionController_ConfigureRange
 .extern IndexedSelectionController_ResetTransition
@@ -15,9 +15,9 @@
 .extern IndexedSelectionController_AdvanceTransition
 .extern IndexedSelectionController_IsTransitionIdle
 .extern IndexedSelectionController_AdvancePacing
-.extern func_02093d50
-.extern func_02093d7c
-.extern func_02094574
+.extern InventoryScroll_SetSelectedRow
+.extern InventoryScroll_SetFirstVisibleRow
+.extern InventoryScroll_UpdatePresentation
 .extern PresentationScalar_SetImmediate
 .extern PresentationScalar_TransitionTo
 .extern SpritePresentation_Show
@@ -167,7 +167,7 @@ L_021fed84:
     ldr r0, [r4, #0x1f0]
     add r1, r4, #0x30
     ldr r0, [r0, #0x9c]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     ldrne r0, [r4, #0x1f8]
     cmpne r0, #0x0
@@ -179,7 +179,7 @@ L_021fedc0:
     ldr r0, [r4, #0x1f4]
     add r1, r4, #0x30
     ldr r0, [r0, #0x9c]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     ldrne r0, [r4, #0x1f8]
     cmpne r0, #0x0
@@ -195,7 +195,7 @@ L_021fedec:
     ldr r0, [r4, #0x1f0]
     add r1, r4, #0x30
     ldr r0, [r0, #0x9c]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_021fee28
     add r0, r4, #0x228
@@ -207,7 +207,7 @@ L_021fee28:
     ldr r0, [r4, #0x1f4]
     add r1, r4, #0x30
     ldr r0, [r0, #0x9c]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_021fee54
     add r0, r4, #0x228
@@ -332,14 +332,14 @@ L_021fefd4:
     ldr r0, [r4, #0x220]
     ldr r1, [r4, #0x234]
     ldr r0, [r0, #0x44]
-    bl func_02093d7c
+    bl InventoryScroll_SetFirstVisibleRow
     ldr r0, [r4, #0x220]
     ldr r1, [r4, #0x234]
     ldr r0, [r0, #0x44]
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     ldr r0, [r4, #0x220]
     ldr r0, [r0, #0x44]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     ldr r0, [r4, #0x220]
     bl func_ov028_021fd2ec
     ldr r0, [r4, #0x220]

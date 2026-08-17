@@ -19,14 +19,14 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
-extern void func_02071ea4(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_020957bc(void *);
 extern void func_02091b6c(void *);
 extern void func_020929b0(void *);
 extern void *func_020716bc(void *, s32);
-extern s32 func_0206492c(void *, s32);
+extern s32 InventoryRecordCollection_FindId(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void func_02092814(void *, s32);
@@ -35,7 +35,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_ov045_0220c48c(s32, s32, s32);
-extern void *func_02092cc0(void *, void *, void *);
+extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -64,12 +64,12 @@ extern void func_ov030_021fda14(void *, s32, s32);
  */
 extern "C" void *func_ov030_021fda3c(void *scene)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov030_021ff8b0;
-    func_02092798((u8 *)scene + 0x54);
-    func_02071ea4((u8 *)scene + 0x7c);
-    func_02071ea4((u8 *)scene + 0x88);
-    func_02071ea4((u8 *)scene + 0x94);
+    TitleCharacterResourceCollection_Init((u8 *)scene + 0x54);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x7c);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x88);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x94);
     func_020957bc((u8 *)scene + 0xb8);
     func_020957bc((u8 *)scene + 0x164);
     func_020957bc((u8 *)scene + 0x210);
@@ -85,8 +85,8 @@ extern "C" void *func_ov030_021fda3c(void *scene)
     func_ov030_021fe448(scene);
 
     FIELD(void *, scene, 0x37c) = data_021e9ac0[0];
-    FIELD(s32, scene, 0x380) = func_0206492c(FIELD(void *, scene, 0x37c), 0x164);
-    FIELD(s32, scene, 0x388) = func_0206492c(FIELD(void *, scene, 0x37c), 0x165);
+    FIELD(s32, scene, 0x380) = InventoryRecordCollection_FindId(FIELD(void *, scene, 0x37c), 0x164);
+    FIELD(s32, scene, 0x388) = InventoryRecordCollection_FindId(FIELD(void *, scene, 0x37c), 0x165);
     if (FIELD(s32, scene, 0x388) >= 0)
         GameWork_SetFlag(gGameWork, 0x3b9);
 
@@ -116,7 +116,7 @@ extern "C" void *func_ov030_021fda3c(void *scene)
 
     void *dialog = Heap_Alloc(0xec, data_ov030_021ff8cc, 4, gHeapContext);
     if (dialog != 0)
-        dialog = func_02092cc0(dialog, gDebugFont, FIELD(void *, scene, 0x54));
+        dialog = TitleDialog_Init(dialog, gDebugFont, FIELD(void *, scene, 0x54));
     FIELD(void *, scene, 0x2bc) = dialog;
     func_ov030_021fd9fc(dialog, 0x50, 0x28, 0xa8, 0x84);
     FIELD(s32, dialog, 0xbc) = -2;

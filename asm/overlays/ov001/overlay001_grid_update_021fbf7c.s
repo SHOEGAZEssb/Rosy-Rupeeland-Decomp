@@ -1,7 +1,7 @@
     .text
     .extern data_020c9670
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_02094574
+    .extern InventoryScroll_UpdatePresentation
     .extern func_020958d8
     .global func_ov001_021fbf7c
 func_ov001_021fbf7c: ; 0x021fbf7c
@@ -16,7 +16,7 @@ func_ov001_021fbf7c: ; 0x021fbf7c
     ldr r0, [r4, #0xc]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r4, #0x1bc]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     ldr r0, [r4, #0x1c]
     cmp r0, #0x0
     ldmeqia sp!, {r3, r4, r5, pc}

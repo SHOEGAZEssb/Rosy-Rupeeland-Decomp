@@ -6,7 +6,7 @@
     .extern data_ov021_02202f64
     .extern OverlaySlot_Destroy
     .extern func_02071c38
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_020927b8
@@ -126,9 +126,9 @@ L_021fde38:
     add r0, r4, #0xa0
     bl func_ov021_021fd790
     add r0, r4, #0x88
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x7c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x58
     bl func_020927b8
     mov r0, r4

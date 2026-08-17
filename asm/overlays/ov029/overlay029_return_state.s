@@ -11,7 +11,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern func_02092260
 .extern func_02092c8c
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern PresentationScalar_TransitionTo
 .extern func_ov002_021fbe68
 .extern func_ov029_021fce4c
@@ -53,7 +53,7 @@ L_021fe898:
     bl func_ov045_0220bdd0
 L_021fe8c0:
     ldr r0, [r4, #0x9c]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, L_021feaf0
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_GetCurrency

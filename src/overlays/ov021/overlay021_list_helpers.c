@@ -14,7 +14,7 @@ typedef struct Overlay021Row {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
@@ -24,7 +24,7 @@ extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_020927b8(void *);
 extern void func_020c0c24(void *, s32, s32, void (*)(void *));
-extern void func_ov021_021fd0e4(void *);
+extern void Overlay021Row_DestroyNoOp(void *);
 extern void func_ov021_021fd2b4(void *, s32);
 extern void func_ov021_021fd354(void *, s32);
 extern void func_ov021_021fd39c(void *);
@@ -63,15 +63,15 @@ extern "C" void *func_ov021_021fd074(void *state)
     }
     if (FIELD(void *, state, 0x4c) != 0)
         func_020c0c24(FIELD(void *, state, 0x4c), 12, 8,
-                      func_ov021_021fd0e4);
+                      Overlay021Row_DestroyNoOp);
     func_020927b8((u8 *)state + 0x28);
-    func_02071eb8((u8 *)state + 0x10);
-    func_02071eb8((u8 *)state + 4);
+    AnimationResourceState_Destroy((u8 *)state + 0x10);
+    AnimationResourceState_Destroy((u8 *)state + 4);
     return state;
 }
 
 /* Empty row destructor callback; reads no input, changes no state, and returns void. */
-extern "C" void func_ov021_021fd0e4(void *row)
+extern "C" void Overlay021Row_DestroyNoOp(void *row)
 {
     (void)row;
 }
@@ -166,7 +166,7 @@ extern "C" void func_ov021_021fd224(void *state)
  * index through index+visibleCount(+8)-1. Sprite/UI state may change; returns
  * void and performs no direct MMIO.
  */
-extern "C" void func_ov021_021fd254(void *state)
+extern "C" void Overlay021List_SyncFirstVisibleRow(void *state)
 {
     void *controller = FIELD(void *, state, 0x58);
     s32 first = FIELD(s32, controller, 0xc);

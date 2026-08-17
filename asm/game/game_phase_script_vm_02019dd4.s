@@ -14,7 +14,7 @@
 .extern func_02027e94
 .extern func_02027ea4
 .extern func_02027eac
-.extern func_02027f94
+.extern GamePhaseProgress_GetOrCreateGlobal
 .global func_02019dd4
 func_02019dd4:
     stmdb sp!, {r3, r4, r5, lr}
@@ -42,7 +42,7 @@ L_02019df8: ; jump table
     b L_02019f18 ; case 12
     b L_02019f28 ; case 13
 L_02019e30:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
     bl func_02027818
     mov r1, r0
@@ -50,28 +50,28 @@ L_02019e30:
     bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019e4c:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
     bl func_02027864
     b L_02019f44
 L_02019e5c:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
     bl func_020278b4
     b L_02019f44
 L_02019e6c:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     ldr r1, [r0, #0x0]
     mov r0, r5
     bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019e80:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
     bl func_02027e94
     b L_02019f44
 L_02019e90:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
     bl func_02027828
     mov r1, r0
@@ -79,12 +79,12 @@ L_02019e90:
     bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019eac:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
     bl func_02027e08
     b L_02019f44
 L_02019ebc:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027d14
     cmp r0, #0x0
     movne r1, #0x1
@@ -93,30 +93,30 @@ L_02019ebc:
     bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019edc:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027c34
     b L_02019f44
 L_02019ee8:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027e8c
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019f00:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027eac
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_SetResult
     b L_02019f44
 L_02019f18:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     mov r1, r4
     bl func_02027ea4
     b L_02019f44
 L_02019f28:
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027df0
     cmp r0, #0x0
     movne r1, #0x1

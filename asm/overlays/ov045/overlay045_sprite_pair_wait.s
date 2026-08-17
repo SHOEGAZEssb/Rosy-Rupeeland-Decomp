@@ -1,6 +1,6 @@
 .text
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov045_0220c068
 
@@ -36,7 +36,7 @@ func_ov045_0220c1ac:
     ldmneia sp!, {r4, pc}
     add r0, r4, #0x34
     mov r1, #0x3
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     cmp r0, #0x0
     ldr r0, [r4, #0x20]
     beq .L_animation5

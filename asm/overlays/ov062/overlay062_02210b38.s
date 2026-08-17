@@ -13,7 +13,7 @@
 .extern Actor_SetDirectionFromVector
 .extern Type7Actor_EnterSpecialPresentationState
 .extern func_020593ac
-.extern func_0205974c
+.extern Sound_LoadGroup
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov062_0220fd20
 .extern gHeapContext
@@ -334,7 +334,7 @@ func_ov062_02210b38:
     str r0, [r4, #0x6c]
     ldr r0, [r1, #0x0]
     mov r1, #0x1b8
-    bl func_0205974c
+    bl Sound_LoadGroup
     mov r1, #0x0
     str r1, [sp, #0x0]
     sub r2, r1, #0x100

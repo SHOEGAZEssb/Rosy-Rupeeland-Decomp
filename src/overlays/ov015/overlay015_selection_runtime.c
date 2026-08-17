@@ -17,15 +17,15 @@ extern "C" {
 #endif
 extern s32 GameWork_TestFlag(void *, s32);
 extern void *Heap_Alloc(s32, const void *, s32, void *);
-extern s32 func_02062a08(void *);
-extern void *func_02062e00(void *);
+extern s32 ActorDescriptor_GetSubtype(void *);
+extern void *InventoryRecord_GetMetadata(void *);
 extern void *func_02070e0c(void *, s32, s32);
 extern void func_02092260(void *, s32);
-extern void *func_02092790(void *, s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
 extern void func_02095bec(void *);
-extern void func_02095c30(void *, s32);
-extern void func_02095f48(void *, void *);
+extern void ModalState_InitResources(void *, s32);
+extern void ModalState_CopyAttachmentText(void *, void *);
 extern void *func_ov001_021fc7e4(void *);
 extern void func_ov015_021fce30(void *, u32, u32);
 extern void func_ov015_021fd8a8(void *, s32);
@@ -64,7 +64,7 @@ extern "C" void func_ov015_021fdad4(void *state)
         func_ov015_021fda50(state);
         return;
     }
-    type = FIELD(u8, func_02062e00(item), 2);
+    type = FIELD(u8, InventoryRecord_GetMetadata(item), 2);
     if (type != 1) {
         if (FIELD(void *, state, 0xec) != 0 || !allowFlag) {
             func_ov015_021fda50(state);
@@ -82,7 +82,7 @@ extern "C" void func_ov015_021fdad4(void *state)
         FIELD(u16, FIELD(void *, state, 0xec), 4) != 0) {
         if (FIELD(u16, item, 4) == 0) {
             overlay015_replace_one(state, 0x24);
-        } else if (func_02062a08(item) == 1) {
+        } else if (ActorDescriptor_GetSubtype(item) == 1) {
             overlay015_replace_one(state, 0x2c);
         }
         return;
@@ -90,7 +90,7 @@ extern "C" void func_ov015_021fdad4(void *state)
     if (FIELD(void *, state, 0xec) != 0) {
         if (FIELD(u16, item, 4) == 0) {
             func_ov015_021fda50(state);
-        } else if (func_02062a08(item) == 1) {
+        } else if (ActorDescriptor_GetSubtype(item) == 1) {
             overlay015_replace_one(state, 0x2c);
         }
         return;
@@ -101,7 +101,7 @@ extern "C" void func_ov015_021fdad4(void *state)
         } else {
             func_ov015_021fda50(state);
         }
-    } else if (func_02062a08(item) == 1) {
+    } else if (ActorDescriptor_GetSubtype(item) == 1) {
         if (allowFlag) {
             func_ov015_021fd9f0(state, 0xd, 0x11, -1);
         } else {
@@ -153,7 +153,7 @@ extern "C" s32 func_ov015_021fdd1c(void *state)
  */
 extern "C" void func_ov015_021fde00(void *state, s32 value, s32 alternate, void *attachment)
 {
-    void *handle = func_02092790((u8 *)state + 0x98, alternate != 0);
+    void *handle = TitleScreenResourceCollection_Get((u8 *)state + 0x98, alternate != 0);
     void *object;
 
     func_02070e0c(handle, 1, 0);
@@ -163,9 +163,9 @@ extern "C" void func_ov015_021fde00(void *state, s32 value, s32 alternate, void 
     }
     FIELD(void *, state, 0xf8) = object;
     if (attachment != 0) {
-        func_02095f48(object, attachment);
+        ModalState_CopyAttachmentText(object, attachment);
     }
-    func_02095c30(object, value);
+    ModalState_InitResources(object, value);
     FIELD(u32, state, 0x48) |= 2;
 }
 

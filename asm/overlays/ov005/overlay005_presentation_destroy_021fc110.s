@@ -4,7 +4,7 @@
     .extern Heap_Free
     .extern func_ov005_021fbb78
     .extern func_020925dc
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern data_ov005_021fcad4
 
     /* Exact fallback; see the documented portable reconstruction in
@@ -53,7 +53,7 @@ L_021fc184:
     add r0, r4, #0x54
     bic r1, r1, #0xe000
     str r1, [r2, #0x0]
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fc1b8: .word data_ov005_021fcad4

@@ -8,7 +8,7 @@
 .extern func_02008378
 .extern func_020083b0
 .extern func_020086f8
-.extern func_0200875c
+.extern GamePhaseRuntime_BuildSecondaryTransform
 .extern ActorMotionGameWork_Update
 .extern ActorMotionAreaFollower_Update
 .extern GamePhaseState_ApplyPlacementState
@@ -145,7 +145,7 @@ L_020082f8:
     beq L_02008348
     add r0, sp, #0x24
     mov r1, r4
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     add r0, r4, #0x2000
     ldr r0, [r0, #0xfb8]
     add r1, sp, #0x24

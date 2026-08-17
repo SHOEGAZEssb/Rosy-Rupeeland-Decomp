@@ -7,8 +7,8 @@
 extern "C" {
 #endif
 extern void func_02031758(void *output, void *actor, const void *transform);
-extern void func_02031cac(void *actor, const TouchPoint *point);
-extern void func_02032a94(void *actor, void *other, s32 mode);
+extern void ActorAttachment_CopyTouchState(void *actor, const TouchPoint *point);
+extern void ActorContactState_AddContact(void *actor, void *other, s32 mode);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
@@ -21,7 +21,7 @@ extern s32 Actor_TryDispatchActivationMode2(void *actor);
 /*
  * Pass source, actor, and transform through func_02031758, copy source words
  * +0x04/+0x08 into a stack TouchPoint using gSceneTouchInitialData's point
- * vtable, and forward that point to actor through func_02031cac. Returns no
+ * vtable, and forward that point to actor through ActorAttachment_CopyTouchState. Returns no
  * value; both helpers can mutate source/actor interaction state.
  */
 void ActorDerivedRuntime_ForwardTouchPoint(void *source, void *actor,
@@ -33,11 +33,11 @@ void ActorDerivedRuntime_ForwardTouchPoint(void *source, void *actor,
     point.vtable = &gSceneTouchInitialData.pointVTable;
     point.x = *(u32 *)(input + 4);
     point.y = *(u32 *)(input + 8);
-    func_02031cac(actor, &point);
+    ActorAttachment_CopyTouchState(actor, &point);
 }
 
 /*
- * Invoke func_02032a94(self,other,mode). For mode zero, clear self motion
+ * Invoke ActorContactState_AddContact(self,other,mode). For mode zero, clear self motion
  * +0x38; if self +0x10 bit 0x40 and +0x14 bit 0x40000000 are set while other
  * +0x14 bit 0x10 is clear, also clear bit 0x40 and cancel track +0x198.
  * Finally, when other subtype byte +0x4d is one, its virtual +0xa8 returns
@@ -49,7 +49,7 @@ s32 ActorDerivedRuntime_HandlePairActive(void *self, void *other, s32 mode)
 {
     u8 *actor = (u8 *)self;
     u8 *target = (u8 *)other;
-    func_02032a94(actor, target, mode);
+    ActorContactState_AddContact(actor, target, mode);
     if (mode == 0) {
         s32 zero[4];
         VecFx32Object_InitComponents(zero, 0, 0, 0);

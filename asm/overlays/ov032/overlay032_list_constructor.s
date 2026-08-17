@@ -10,12 +10,12 @@
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02093d20
-.extern func_020944f0
+.extern InventoryScroll_ConfigureRange
+.extern InventoryScroll_UpdateArrowAnimations
 .extern Presentation_SetPosition
 .extern SpritePresentation_Init
 .extern SpritePresentation_SyncPosition
-.extern func_ov032_02201f58
+.extern Overlay032ListBase_Init
 .extern gHeapContext
 
     .global func_ov032_02201f80
@@ -27,7 +27,7 @@ func_ov032_02201f80:
     mov r9, r2
     mov r8, r3
     ldr r7, [sp, #0x38]
-    bl func_ov032_02201f58
+    bl Overlay032ListBase_Init
     ldr r0, L_022021dc
     mov r1, #0x9
     str r0, [r10, #0x0]
@@ -155,7 +155,7 @@ L_02202128:
     mov r1, r9
     mov r2, r8
     mov r3, #0x0
-    bl func_02093d20
+    bl InventoryScroll_ConfigureRange
     mov r0, #0x0
     str r0, [r10, #0x3c]
     mov r0, #0x10
@@ -163,7 +163,7 @@ L_02202128:
     add r1, r7, #0x3c
     mov r0, r10
     str r1, [r10, #0x44]
-    bl func_020944f0
+    bl InventoryScroll_UpdateArrowAnimations
     ldmib r10, {r0, r1}
     cmp r1, r0
     blt L_022021d0

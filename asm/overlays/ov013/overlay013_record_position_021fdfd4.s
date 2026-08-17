@@ -2,7 +2,7 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
 
 /* Exact fallback; see src/overlays/ov013/overlay013_record_position.c. */
     .global func_ov013_021fdfd4
@@ -21,7 +21,7 @@ func_ov013_021fdfd4:
     mov r5, r0
     add r0, r1, #0x800
     mov r1, #0x4
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     and r1, r0, #0xff
     mov r0, r5
     bl GraphicsSpriteState_SetAnimationIndex

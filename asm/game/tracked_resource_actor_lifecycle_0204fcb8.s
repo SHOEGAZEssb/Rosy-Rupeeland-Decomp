@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_lifecycle.c.
 .extern Heap_Free
 .extern gTrackedResourceActorVtable
-.extern func_02030f98
+.extern ActorRuntimeBase_Init
 .extern func_0203130c
 .extern func_02031488
 .extern Type7Actor_ClearGlobalRelationshipToActor
@@ -11,7 +11,7 @@
 TrackedResourceActor_Init: ; 0x0204fcb8
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r0, .L_0204fd04
     mov ip, #0x0
     str r0, [r4, #0x0]

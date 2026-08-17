@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov037/overlay037_scene_sound_update.c for documented portable C. */
 
     .extern func_02091c7c
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern Sound_Play
     .extern func_0209189c
     .extern func_02091b98
@@ -30,7 +30,7 @@ L_021fe21c:
     bne L_021fe21c
     add r0, r4, #0xbc
     mov r1, #0x6
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     add r1, sp, #0x0
     mov r0, r0, lsl #0x1
     ldrh r2, [r1, r0]

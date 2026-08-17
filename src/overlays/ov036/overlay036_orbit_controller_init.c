@@ -28,7 +28,7 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *object, void *handle);
+extern void *AlternateSpritePresentation_Init(void *object, void *handle);
 extern void PresentationList_Append(void *list, void *object);
 extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern void *func_ov036_021fffa4(void *object, void *owner);
@@ -81,7 +81,7 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
     func_ov036_021ff050(handle, 0, 0, 0, 0, 2, 0x46);
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     FIELD(void *, controller, 0x104) = child;
     PresentationList_Append((u8 *)controller + 0x11c, child);
     PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0xccd);
@@ -92,7 +92,7 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
         func_ov036_021ff050(handle, 0, 0, 0, 0, i + 3, 0x46);
         child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
         if (child != 0)
-            child = func_020955d8(child, handle);
+            child = AlternateSpritePresentation_Init(child, handle);
         FIELD(void *, controller, 0x108 + i * 4) = child;
         PresentationList_Append((u8 *)controller + 0x11c, child);
         PresentationScalar_SetImmediate((u8 *)child + 0x6c, 0xccd);
@@ -111,7 +111,7 @@ extern "C" void *func_ov036_0220059c(void *controller, void *owner,
     FIELD(u8, handle, 0x5b) = 1;
     child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     FIELD(void *, controller, 0xd8) = child;
     PresentationList_Append((u8 *)controller + 0x11c, child);
     Presentation_SetPosition(child, 0, 0xba0, 0);

@@ -12,13 +12,13 @@ extern void *gGameWork;
 extern u8 data_021f5138[];
 extern u8 data_021e9ad0[];
 extern u8 data_021f4020[];
-extern void *func_0207acd0(void *category, u16 actor_id);
+extern void *RetailRecordCategory_InsertById(void *category, u16 actor_id);
 extern s32 func_02062e70(void *entry, const void *packed);
 extern void func_020780ec(void *entry, const void *packed);
 extern void func_0207c4a4(void *entry, const void *packed);
-extern void func_02097eec(void *entry, u16 identifier);
+extern void RetailSelectionHistoryEntry_Init(void *entry, u16 identifier);
 extern s32 func_0206fa9c(void *entry_slot);
-extern void *func_02063b90(void *manager, u16 actor_id);
+extern void *ActorDatabase_FindDescriptorById(void *manager, u16 actor_id);
 extern void OS_Halt(void);
 extern void func_0207ec6c(void *category);
 s32 func_0207aec8(void *category, u16 actor_id);
@@ -100,7 +100,7 @@ static void WriteU32(u8 *bytes, u32 offset, u32 value)
     memcpy(bytes + offset, &value, sizeof(value));
 }
 
-s32 func_02062b28(void *entry_pointer)
+s32 ActorDescriptor_IsInvalid(void *entry_pointer)
 {
     u8 *entry = (u8 *)entry_pointer;
     u8 *metadata = *(u8 **)(entry + 8);
@@ -121,13 +121,13 @@ s32 func_02062e70(void *entry_pointer, const void *packed_pointer)
     u8 *metadata;
 
     WriteU16(entry, 0, (u16)(packed & 0x3ff));
-    metadata = (u8 *)func_02063b90(data_021e9ad0,
+    metadata = (u8 *)ActorDatabase_FindDescriptorById(data_021e9ad0,
                                    (u16)(packed & 0x3ff));
     *(u8 **)(entry + 8) = metadata;
     WriteU16(entry, 2, (u16)((packed >> 10) & 0x1f));
     WriteU16(entry, 4, (u16)((packed >> 15) & 0x3ff));
     WriteU16(entry, 6, (u16)(packed >> 25));
-    if (func_02062b28(entry))
+    if (ActorDescriptor_IsInvalid(entry))
         return 0;
     if (metadata[2] == 1 && ReadU16(entry, 6) >= 2)
         WriteU16(entry, 6, 2);
@@ -183,7 +183,7 @@ void func_0207c4a4(void *entry_pointer, const void *packed_pointer)
     WriteU32(entry, 0x0c, ReadU16(packed, 2));
 }
 
-void func_02097eec(void *entry_pointer, u16 identifier)
+void RetailSelectionHistoryEntry_Init(void *entry_pointer, u16 identifier)
 {
     u8 *entry = (u8 *)entry_pointer;
     u8 *record = (u8 *)LookupActorRecord(data_021f4020, identifier,
@@ -198,7 +198,7 @@ void func_02097eec(void *entry_pointer, u16 identifier)
  * allocation occurs; the identifier, state halfword, and record pointer are
  * copied exactly as stored by retail.
  */
-void func_020980dc(void *destination_pointer, const void *source_pointer)
+void RetailSelectionHistory_CopyEntry(void *destination_pointer, const void *source_pointer)
 {
     u8 *destination = (u8 *)destination_pointer;
     const u8 *source = (const u8 *)source_pointer;
@@ -213,7 +213,7 @@ void func_020980dc(void *destination_pointer, const void *source_pointer)
  * at state +0x370, otherwise zero. The signed count at +0x460 is the retail
  * loop bound, and this query has no side effects.
  */
-s32 func_02098310(void *state_pointer, u16 identifier)
+s32 RetailSelectionHistory_ContainsId(void *state_pointer, u16 identifier)
 {
     u8 *state = (u8 *)state_pointer;
     s32 count = *(s32 *)(state + 0x460);
@@ -232,29 +232,29 @@ s32 func_02098310(void *state_pointer, u16 identifier)
  * record is initialized through the borrowed retail database, and the count
  * at +0x460 is incremented. Duplicate identifiers leave state unchanged.
  */
-void func_02098020(void *state_pointer, u16 identifier)
+void RetailSelectionHistory_InsertUniqueId(void *state_pointer, u16 identifier)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *entries = state + 0x370;
     s32 count;
     s32 index;
 
-    if (func_02098310(state, identifier) != 0)
+    if (RetailSelectionHistory_ContainsId(state, identifier) != 0)
         return;
 
     count = *(s32 *)(state + 0x460);
     if (count == 0) {
-        func_02097eec(entries, identifier);
+        RetailSelectionHistoryEntry_Init(entries, identifier);
     } else if (*(s8 *)(*(u8 **)(entries + 4) + 3) >= 0) {
         for (index = count; index > 1; --index)
-            func_020980dc(entries + index * 8,
+            RetailSelectionHistory_CopyEntry(entries + index * 8,
                           entries + (index - 1) * 8);
-        func_02097eec(entries + 8, identifier);
+        RetailSelectionHistoryEntry_Init(entries + 8, identifier);
     } else {
         for (index = count; index > 0; --index)
-            func_020980dc(entries + index * 8,
+            RetailSelectionHistory_CopyEntry(entries + index * 8,
                           entries + (index - 1) * 8);
-        func_02097eec(entries, identifier);
+        RetailSelectionHistoryEntry_Init(entries, identifier);
     }
     *(s32 *)(state + 0x460) = count + 1;
 }
@@ -486,7 +486,7 @@ void func_0207e45c(void *category_pointer)
         u16 actor_id = *(u16 *)actor;
         if ((packed & 0xffu) == *(u32 *)(category + 4) &&
             (packed & 0xf00u) == 0 && actor_id != 0x98)
-            (void)func_0207acd0(category, actor_id);
+            (void)RetailRecordCategory_InsertById(category, actor_id);
     }
 }
 
@@ -573,14 +573,14 @@ void func_02098298(void *state_pointer)
     WriteU32(state, 0x460, ReadU32(work, 0x5e10));
     for (index = 0; index < ReadU32(state, 0x460); ++index) {
         u8 *entry = state + 0x370 + index * 8;
-        func_02097eec(entry, ReadU16(work, 0x5e14 + index * 4));
+        RetailSelectionHistoryEntry_Init(entry, ReadU16(work, 0x5e14 + index * 4));
         if (ReadU16(work, 0x5e16 + index * 4) == 1)
             WriteU16(entry, 2, 1);
     }
 }
 
 /* Exact portable behavior of assembly-selected retail 0x02079CA8. */
-void func_02079ca8(void *state_pointer)
+void SaveGameState_ResetLanguageRecords(void *state_pointer)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;

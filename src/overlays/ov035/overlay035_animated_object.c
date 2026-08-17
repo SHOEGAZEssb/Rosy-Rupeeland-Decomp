@@ -15,7 +15,7 @@ extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void PresentationScalar_SetImmediate(void *field, s32 value);
 extern s32 Presentation_UpdateScript(void *object);
-extern void func_020956a4(void *object);
+extern void AlternateSpritePresentation_SyncTransform(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -78,6 +78,6 @@ extern "C" s32 func_ov035_021fdbe0(void *object)
                       FIELD(s32, object, 0xa8) + sine / 8);
     }
     s32 complete = Presentation_UpdateScript(object);
-    func_020956a4(object);
+    AlternateSpritePresentation_SyncTransform(object);
     return complete;
 }

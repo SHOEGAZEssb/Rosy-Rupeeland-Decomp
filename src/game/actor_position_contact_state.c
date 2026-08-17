@@ -30,7 +30,7 @@ void Actor_SetPosition(void *self, const void *source)
  * When third is zero, increment byte 0x4c and set actor flag one at 0x10.
  * Other inputs are otherwise ignored. Always return one; no helpers run.
  */
-s32 func_02032a94(void *self, void *other, s32 third)
+s32 ActorContactState_AddContact(void *self, void *other, s32 third)
 {
     u8 *actor = (u8 *)self;
     (void)other;

@@ -38,7 +38,7 @@
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
@@ -47,13 +47,13 @@
 .extern ActorCollection_GetSpriteOwner
 .extern GridEffectActorRegistry_FinalizeDepartingActors
 .extern func_02058eb8
-.extern func_02068444
+.extern InventoryScene_Init
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_ReleaseResources
 .extern GraphicsSpriteGroup_PrepareResources
 .extern func_020745c4
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern func_020923a4
 .extern func_02092418
 .extern func_02092c8c
@@ -69,7 +69,7 @@
 .extern func_ov021_021fd7e8
 .extern func_ov022_021fdd44
 .extern func_ov025_021ff27c
-.extern func_ov027_021fda30
+.extern Overlay027Scene_Init
 .extern func_ov028_021fdb00
 .extern func_ov035_02202378
 .extern func_ov036_022045d4
@@ -336,7 +336,7 @@ L_0200d408:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d428
-    bl func_02068444
+    bl InventoryScene_Init
 L_0200d428:
     str r0, [r5, #0x24]
     b L_0200dbd4
@@ -356,7 +356,7 @@ L_0200d430:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d470
-    bl func_02068444
+    bl InventoryScene_Init
 L_0200d470:
     str r0, [r5, #0x24]
     b L_0200dbd4
@@ -376,7 +376,7 @@ L_0200d478:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d4b8
-    bl func_02068444
+    bl InventoryScene_Init
 L_0200d4b8:
     str r0, [r5, #0x24]
     b L_0200dbd4
@@ -427,7 +427,7 @@ L_0200d540:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_0200e0e4
     mov r1, #0x2
     ldr r0, [r0, #0x0]
@@ -702,7 +702,7 @@ L_0200d918:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d950
-    bl func_ov027_021fda30
+    bl Overlay027Scene_Init
 L_0200d950:
     str r0, [r5, #0x24]
     b L_0200dbd4
@@ -908,7 +908,7 @@ L_0200dbf4:
 L_0200dc10:
     ldr r0, [r5, #0x24]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     ldr r0, [r5, #0x24]
     ldr r0, [r0, #0x20]
     mov r0, r0, lsl #0x1f
@@ -924,7 +924,7 @@ L_0200dc10:
 L_0200dc4c:
     ldr r0, [r5, #0x24]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0200e3bc
@@ -937,7 +937,7 @@ L_0200dc4c:
 L_0200dc7c:
     ldr r0, [r5, #0x24]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq L_0200e3bc
     ldr r0, [r5, #0x2c]
@@ -997,7 +997,7 @@ L_0200dd3c:
 L_0200dd4c:
     ldr r0, [r5, #0x24]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq L_0200e3bc
@@ -1093,7 +1093,7 @@ L_0200de94:
     bne L_0200dedc
     mov r1, #0x1
     mov r2, r1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -1141,7 +1141,7 @@ L_0200df58:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_0200e0e4
     mov r1, #0x3
     ldr r0, [r0, #0x0]
@@ -1205,7 +1205,7 @@ L_0200e038:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -1232,7 +1232,7 @@ L_0200e07c:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -1331,7 +1331,7 @@ L_0200e21c:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     ldr r0, L_0200e0e4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -1402,7 +1402,7 @@ L_0200e2f8:
     cmp r0, #0x0
     beq L_0200e3b4
     mov r1, #0x0
-    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
+    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, Overlay065Particle_Init, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
     b L_0200e3b4
 L_0200e358:
     ldr r0, L_0200e11c
@@ -1427,7 +1427,7 @@ L_0200e358:
     cmp r0, #0x0
     beq L_0200e3b4
     mov r1, #0x1
-    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
+    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, Overlay065Particle_Init, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
 L_0200e3b4:
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}

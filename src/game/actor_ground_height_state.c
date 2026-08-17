@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern s32 func_020adae4(s32, s32);
-extern s32 func_020be334(s32);
+extern s32 SignedAbsoluteValue(s32);
 #ifdef __cplusplus
 }
 #endif
@@ -31,7 +31,7 @@ void Actor_ConvergeToTargetHeight(void *self)
 
     current = func_020adae4(current * 17 + target, 18);
     *(s32 *)(actor + 0x24) = current;
-    if (func_020be334(current - target) < 0x4000)
+    if (SignedAbsoluteValue(current - target) < 0x4000)
         *(u32 *)(actor + 0xd0) |= 0x20;
     else
         *(u32 *)(actor + 0xd0) &= ~0x20;

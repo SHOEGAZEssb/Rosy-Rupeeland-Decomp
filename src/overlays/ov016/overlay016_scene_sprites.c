@@ -25,7 +25,7 @@ extern void func_02095940(void *);
  * mode +0x54 is zero and the list at +0x444 has nonzero capacity +0x50. Return
  * void. SDK sprite/actor state changes; no direct hardware access occurs.
  */
-extern "C" void func_ov016_021ff404(void *state)
+extern "C" void Overlay016_CreateSceneSprite(void *state)
 {
     void *child;
 

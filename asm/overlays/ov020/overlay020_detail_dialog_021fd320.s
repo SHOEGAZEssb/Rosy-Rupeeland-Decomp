@@ -3,12 +3,12 @@
     .extern Heap_Alloc
     .extern data_020f4e18
     .extern data_ov020_021fe528
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
-    .extern func_02092cc0
+    .extern TitleDialog_Init
     .extern func_ov020_021fd308
     .extern gHeapContext
 
@@ -18,11 +18,11 @@ func_ov020_021fd320:
     mov r5, r0
     add r0, r5, #0x10
     mov r4, r1
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0x1c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0x28
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     mvn r0, #0x0
     str r0, [r5, #0x0]
     str r4, [r5, #0x8]
@@ -47,7 +47,7 @@ func_ov020_021fd320:
     beq L_021fd3a8
     ldr r1, [r5, #0x8]
     ldr r2, [r5, #0x28]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fd3a8:
     str r0, [r5, #0x4c]
     mov r0, #0x30

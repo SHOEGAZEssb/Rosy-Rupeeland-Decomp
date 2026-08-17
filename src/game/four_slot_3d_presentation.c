@@ -40,7 +40,7 @@ extern const ScreenSegment data_020d67fc[4];
 extern const s16 data_020c9670[];
 extern void *gGameWork;
 extern u8 *data_021052fc;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void DisplayControlElement_NoOp(DisplayControlElement *);
 extern void func_02091b6c(DisplayControlElement *);
@@ -69,7 +69,7 @@ FourSlot3DPresentation *FourSlot3DPresentation_Init(
     FourSlot3DPresentation *self, s32 selection)
 {
     s32 index;
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)data_020d6934;
     for (index = 0; index < 4; index++) {
         func_02091b6c(&self->elements1c[index]);

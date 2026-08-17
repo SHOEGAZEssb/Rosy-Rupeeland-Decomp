@@ -5,7 +5,7 @@
     .extern func_0207c518
     .extern func_02092260
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd1b8
     .extern func_ov021_021fd6e8
     .extern func_ov021_021fd7c0
@@ -15,7 +15,7 @@ func_ov021_021ffcb4:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
     bl func_02092260

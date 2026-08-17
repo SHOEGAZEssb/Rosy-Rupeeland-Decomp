@@ -10,7 +10,7 @@
 
 extern "C" void func_020958d8(void *presentation);
 extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *resource);
-extern "C" void func_02094574(void *viewport);
+extern "C" void InventoryScroll_UpdatePresentation(void *viewport);
 extern "C" void func_ov001_021fbaa8(void *preview);
 
 /*
@@ -26,7 +26,7 @@ extern "C" void func_ov044_0220c880(void *object)
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0xbc));
     void *panel = FIELD(void *, object, 0x228);
     if (panel) {
-        func_02094574(FIELD(void *, panel, 0x44));
+        InventoryScroll_UpdatePresentation(FIELD(void *, panel, 0x44));
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, panel, 4));
     }
     void *preview = FIELD(void *, object, 0x22c);

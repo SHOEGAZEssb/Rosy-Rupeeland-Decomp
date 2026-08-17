@@ -9,14 +9,14 @@
     .extern data_ov022_022006dc
     .extern data_ov022_022006e4
     .extern func_020716bc
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091e28
-    .extern func_02092798
+    .extern SceneInputBase_Init
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_020929b0
-    .extern func_02092cc0
+    .extern TitleDialog_Init
     .extern func_02092f88
     .extern func_020957bc
     .extern func_ov022_021fcf08
@@ -40,17 +40,17 @@ func_ov022_021fdd44:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fdfcc
     add r0, r4, #0x54
     str r1, [r4, #0x0]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x78
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x84
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x90
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xa8
     bl func_020957bc
     ldr r1, L_021fdfd0
@@ -151,7 +151,7 @@ L_021fde94:
     ldr r1, L_021fe000
     ldr r2, [r4, #0x54]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fdf0c:
     str r0, [r4, #0x2cc]
     mov r0, #0x84

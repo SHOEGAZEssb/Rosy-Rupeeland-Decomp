@@ -16,8 +16,8 @@
     .extern func_02025644
     .extern func_0202564c
     .extern func_02025a3c
-    .extern func_02059278
-    .extern func_020592d8
+    .extern Sound_PlayDirectSequence
+    .extern Sound_FadeDirectSequence
     .extern func_020593ac
     .extern func_0205940c
     .extern func_020594a4
@@ -33,7 +33,7 @@
     .extern func_020a68fc
     .extern func_020a6990
     .extern func_020adc40
-    .extern func_020be328
+    .extern SignedAbsoluteValueVariant
     .extern func_020befec
     .extern func_ov040_021fd724
     .extern func_ov040_021ff3f4
@@ -143,7 +143,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     mov r1, r1, asr #0x4
     mov r1, r1, lsl #0x2
     ldrsh r0, [r0, r1]
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r8, r0
     b .L_021fe384
 .L_021fe310:
@@ -391,7 +391,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     mov r1, #0x18
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldr r0, .L_021ff13c
     mov r1, #0x3c
     ldr r0, [r0, #0x0]
@@ -772,7 +772,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     ldr r0, [r0, #0x0]
     mov r2, #0x0
     mov r3, #0x28
-    bl func_020592d8
+    bl Sound_FadeDirectSequence
     ldr r0, .L_021ff13c
     mov r1, #0xa
     ldr r0, [r0, #0x0]
@@ -938,7 +938,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
     mov r3, #0x3c
-    bl func_020592d8
+    bl Sound_FadeDirectSequence
     ldr r0, [r10, #0xb2c]
     mov r1, #0x0
     cmp r0, #0x25

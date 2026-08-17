@@ -43,7 +43,7 @@ extern const s16 data_020c9670[];
 extern AttachedTimedSprite *func_0201e290(AttachedTimedSprite *self,
                                           u8 *config);
 extern AttachedTimedSprite *func_0201e380(AttachedTimedSprite *self);
-extern void func_0201e3b8(AttachedTimedSprite *self, s32 enabled);
+extern void TimedSpritePresentation_SetVisible(AttachedTimedSprite *self, s32 enabled);
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void VecFx32Object_Add(PresentationTrack *first,
@@ -121,7 +121,7 @@ s32 func_0201e7d0(AttachedTimedSprite *self)
 
     self->remaining28--;
     if (self->remaining28 < 0) {
-        func_0201e3b8(self, 0);
+        TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
     S16BoundsCenter_Init(&center, self->owner2c + 0x68);

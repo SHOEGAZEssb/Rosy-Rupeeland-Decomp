@@ -5,11 +5,11 @@
     .extern data_021f5128
     .extern data_ov021_02202f98
     .extern RecordSelection_HasAvailableEntry
-    .extern func_02093d50
-    .extern func_02093d7c
+    .extern InventoryScroll_SetSelectedRow
+    .extern InventoryScroll_SetFirstVisibleRow
     .extern func_ov021_021fce18
     .extern func_ov021_021fd0e8
-    .extern func_ov021_021fd254
+    .extern Overlay021List_SyncFirstVisibleRow
     .extern gHeapContext
 
 .global func_ov021_021fe520
@@ -50,12 +50,12 @@ L_021fe598:
     str r0, [r1, #0x2a4]
     ldr r0, [r0, #0x58]
     ldr r1, [r1, #0x2ac]
-    bl func_02093d7c
+    bl InventoryScroll_SetFirstVisibleRow
     add r1, r10, r8, lsl #0x2
     ldr r0, [r1, #0x2a4]
     ldr r1, [r1, #0x2b4]
     ldr r0, [r0, #0x58]
-    bl func_02093d50
+    bl InventoryScroll_SetSelectedRow
     mov r6, #0x0
     add r5, r10, r8, lsl #0x2
     add r4, r7, r8, lsl #0x2
@@ -76,7 +76,7 @@ L_021fe5f8:
     blt L_021fe5d4
     add r0, r10, r8, lsl #0x2
     ldr r0, [r0, #0x2a4]
-    bl func_ov021_021fd254
+    bl Overlay021List_SyncFirstVisibleRow
     b L_021fe61c
 L_021fe610:
     add r0, r10, r8, lsl #0x2

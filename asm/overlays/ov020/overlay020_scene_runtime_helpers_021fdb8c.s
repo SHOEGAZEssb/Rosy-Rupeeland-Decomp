@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov020/overlay020_scene_runtime_helpers.c. */
     .extern Heap_Free
     .extern data_ov020_021fe504
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
     .extern func_ov020_021fcfd4
@@ -41,9 +41,9 @@ L_021fdbe8:
     add r0, r5, #0x70
     bl func_ov020_021fd818
     add r0, r5, #0x60
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r5, #0x54
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdc10: .word data_ov020_021fe504

@@ -22,14 +22,14 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern const void *func_020791e0(const void *, u16);
-extern const void *func_02079f3c(const void *, u16);
+extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern const void *RecordMode_GetMessage(void *, s32);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern void Presentation_BlendPalette16(void *, void *);
-extern void func_02092e9c(void *, const void *, s32);
-extern s32 func_02093360(void *, const void *);
-extern void func_020939d8(void *);
-extern void func_02094574(void *);
+extern void TitleDialog_SetText(void *, const void *, s32);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
+extern void TitleDialog_ClearTextRect(void *);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -128,7 +128,7 @@ extern "C" void func_ov022_021fefe0(void *scene)
 extern "C" void func_ov022_021ff048(void *scene)
 {
     const u8 *descriptor = FIELD(const u8 *, scene, 0x2bc);
-    const u8 *message = (const u8 *)func_02079f3c(
+    const u8 *message = (const u8 *)RetailTextTable_FindRecordById(
         data_021f3ecc, FIELD(u16, descriptor, 0));
     const u16 *text = (const u16 *)(message + 2);
     for (s32 i = 0; i < 0x20; ++i) {
@@ -138,7 +138,7 @@ extern "C" void func_ov022_021ff048(void *scene)
     }
     GraphicsSpriteText_FormatDecimal((u8 *)scene + 0x310,
                   FIELD(s32, descriptor, 0x24), 0xff676980, 0);
-    func_020939d8(FIELD(void *, scene, 0x2cc));
+    TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
     func_ov022_021ff2c4(scene, 0x206);
 }
 
@@ -164,7 +164,7 @@ extern "C" void func_ov022_021ff0d0(void *scene)
     }
     void *menu = FIELD(void *, scene, 0x2b8);
     if (menu != 0)
-        func_02094574(FIELD(void *, menu, 0x30));
+        InventoryScroll_UpdatePresentation(FIELD(void *, menu, 0x30));
     void *effect = FIELD(void *, scene, 0x35c);
     if (effect != 0) {
         func_ov046_0220c1a4(effect);
@@ -211,8 +211,8 @@ extern "C" void func_ov022_021ff220(void *scene, s32 key)
     FIELD(s32, dialog, 0xd0) = 0xd;
     FIELD(s32, dialog, 0xd4) = 0;
     const void *text = RecordMode_GetMessage(FIELD(void *, data_021f5128, 0x1c), key);
-    func_02092e9c(dialog, text, 4);
-    s32 result = func_02093360(dialog, data_021f5ed0);
+    TitleDialog_SetText(dialog, text, 4);
+    s32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     if (result & 0x200)
         func_ov022_021fd5d4(FIELD(void *, scene, 0x350),
                             FIELD(void *, dialog, 0xe8));
@@ -234,8 +234,8 @@ extern "C" void func_ov022_021ff2c4(void *scene, s32 message_id)
     FIELD(s32, dialog, 0xd0) = 0xd;
     FIELD(s32, dialog, 0xd4) = 0;
     const void *text = func_020791e0(data_021f3ecc, (u16)message_id);
-    func_02092e9c(dialog, text, 4);
-    s32 result = func_02093360(dialog, data_021f5ed0);
+    TitleDialog_SetText(dialog, text, 4);
+    s32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     if (result & 0x200)
         func_ov022_021fd5d4(FIELD(void *, scene, 0x350),
                             FIELD(void *, dialog, 0xe8));

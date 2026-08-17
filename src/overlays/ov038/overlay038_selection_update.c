@@ -22,7 +22,7 @@ extern void *data_020f4e14;
 extern const u8 data_020d7a48[];
 extern const void *data_ov038_021fdd08;
 extern void func_020958d8(void *list);
-extern void func_02094574(void *model);
+extern void InventoryScroll_UpdatePresentation(void *model);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *owner);
 extern void func_ov046_0220c1a4(void *panel);
 extern s32 func_02091c7c(void *timer, s32 event);
@@ -52,7 +52,7 @@ extern "C" void func_ov038_021fd37c(void *presentation)
 {
     func_020958d8((u8 *)presentation + 0x64);
     if (FIELD(void *, presentation, 0x314) != 0) {
-        func_02094574(FIELD(void *, presentation, 0x314));
+        InventoryScroll_UpdatePresentation(FIELD(void *, presentation, 0x314));
     }
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, presentation, 0x60));
     func_ov046_0220c1a4(FIELD(void *, presentation, 0x340));

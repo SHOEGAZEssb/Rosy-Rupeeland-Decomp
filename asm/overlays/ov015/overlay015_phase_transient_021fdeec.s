@@ -1,7 +1,7 @@
     .text
     .extern data_ov015_021febd0
     .extern data_ov015_021fec18
-    .extern func_02065468
+    .extern InventoryRecordCollection_HasInactiveKind1Subtype1
     .extern func_02095dd4
     .extern func_ov001_021fc384
     .extern func_ov001_021fc39c
@@ -13,9 +13,9 @@
     .extern func_ov015_021fdeac
 
 /* Exact fallbacks for transient-confirmation phase; see src/overlays/ov015/overlay015_phase_runtime.c. */
-    .global func_ov015_021fdeec
+    .global Overlay015_UpdateTransientConfirmation
 
-func_ov015_021fdeec:
+Overlay015_UpdateTransientConfirmation:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -40,7 +40,7 @@ L_021fdf20:
     beq L_021fdf84
     ldr r0, [r4, #0xdc]
     ldr r0, [r0, #0x204]
-    bl func_02065468
+    bl InventoryRecordCollection_HasInactiveKind1Subtype1
     cmp r0, #0x0
     bne L_021fdf84
     ldr r0, [r4, #0xdc]
@@ -85,4 +85,4 @@ L_021fdfd8:
 L_021fdfe0: .word data_ov015_021febd0
 L_021fdfe4: .word data_ov015_021fec18
 
-    .size func_ov015_021fdeec, . - func_ov015_021fdeec
+    .size Overlay015_UpdateTransientConfirmation, . - Overlay015_UpdateTransientConfirmation

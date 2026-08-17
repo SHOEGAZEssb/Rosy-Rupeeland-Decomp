@@ -12,7 +12,7 @@
     .extern func_020adc40
     .extern func_020ae024
     .extern func_ov069_02211594
-    .extern func_ov065_0220ff20
+    .extern Overlay065Particle_Update
     .extern func_ov069_022119dc
     .extern func_ov069_022119bc
     .extern func_ov069_02210a44
@@ -367,7 +367,7 @@ L_021ffabc:
     bne L_021ffb40
     add r0, r10, #0x118
     mvn r1, #0x0
-    bl func_ov065_0220ff20 ; func_ov069_0220ff20
+    bl Overlay065Particle_Update ; func_ov069_0220ff20
     ldr r1, [r10, #0x98]
     add r0, r10, #0xda0
     add r0, r0, #0x1000
@@ -495,7 +495,7 @@ L_021ffca4:
     add r3, r1, #0x1
     mov r1, #0x1
     str r3, [r2, #0xdb0]
-    bl func_ov065_0220ff20 ; func_ov069_0220ff20
+    bl Overlay065Particle_Update ; func_ov069_0220ff20
     b L_0220002c
 L_021ffce8:
     ldr r1, L_022003f4

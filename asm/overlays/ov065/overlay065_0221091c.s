@@ -4,8 +4,8 @@
 .extern VecFx32Object_Assign
 .extern genrand_int32
 
-.global func_ov065_0221091c
-func_ov065_0221091c:
+.global Overlay065Scene_GenerateRandomTarget
+Overlay065Scene_GenerateRandomTarget:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov r6, r1
@@ -64,4 +64,4 @@ func_ov065_0221091c:
 .L_022109f8: .word 0x7ff
 .L_022109fc: .word data_020c9670
 .L_02210a00: .word 0xfff
-.size func_ov065_0221091c, . - func_ov065_0221091c
+.size Overlay065Scene_GenerateRandomTarget, . - Overlay065Scene_GenerateRandomTarget

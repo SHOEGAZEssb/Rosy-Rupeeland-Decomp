@@ -23,7 +23,7 @@ extern "C" {
 extern void *data_020f4e18;
 extern const u8 data_ov005_021fcaf0[];
 extern void Presentation_Init(void *state);
-extern void func_02071ea4(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02091b6c(void *animation);
 extern u32 genrand_int32(void);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
@@ -48,7 +48,7 @@ Overlay005RenderEffect *func_ov005_021fb6e4(Overlay005RenderEffect *state,
 {
     Presentation_Init(state);
     state->vtable_000 = data_ov005_021fcaf0;
-    func_02071ea4(state->resource_09c);
+    AnimationResourceState_InitEmbedded(state->resource_09c);
     state->random_0ac = 0;
     func_02091b6c(state->animation_0b0);
     state->random_0ac = genrand_int32();

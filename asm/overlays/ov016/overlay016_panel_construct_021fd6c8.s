@@ -1,14 +1,14 @@
     .text
     .extern __construct_array
     .extern data_020f4e18
-    .extern func_02071ea4
-    .extern func_02071eb8
+    .extern AnimationResourceState_InitEmbedded
+    .extern AnimationResourceState_Destroy
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern gSystemState
 
@@ -21,9 +21,9 @@ func_ov016_021fd6c8:
     mov r10, r0
     add r0, r10, #0xc
     mov r4, r1
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x18
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldr r0, L_021fd964
     ldr r3, L_021fd968
     str r0, [sp, #0x0]
@@ -32,11 +32,11 @@ func_ov016_021fd6c8:
     mov r2, #0xc
     bl __construct_array
     add r0, r10, #0x6c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x78
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0xd4
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r10, #0xf8
     bl func_02091b6c
     str r4, [r10, #0x0]
@@ -185,8 +185,8 @@ L_021fd94c:
     mov r0, r10
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_021fd964: .word func_02071eb8
-L_021fd968: .word func_02071ea4
+L_021fd964: .word AnimationResourceState_Destroy
+L_021fd968: .word AnimationResourceState_InitEmbedded
 L_021fd96c: .word 0x7005
 L_021fd970: .word 0x7006
 L_021fd974: .word data_020f4e18

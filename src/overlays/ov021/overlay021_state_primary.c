@@ -26,12 +26,12 @@ extern s32 GameWork_TestFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
-extern s32 func_02062b28(void *);
+extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095940(void *);
 extern void func_ov000_021fc3f8(void *);
@@ -46,22 +46,22 @@ extern s32 func_ov000_021fc5fc(void *, void *);
 extern void func_ov000_021fc714(void *);
 extern void func_ov000_021fc9d4(void *);
 extern void func_ov000_021fca4c(void *, s32);
-extern void *func_ov000_021fcad8(void *);
+extern void *Overlay000_GetActiveMetadata(void *);
 extern s32 func_ov000_021fcb98(void *, s32);
 extern s32 func_ov000_021fc298(void *, void *);
 extern s32 func_ov000_021fcca8(void *, void *);
 extern s32 func_ov000_021fcc18(void *, void *);
 extern s32 func_ov000_021fccfc(void *, void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
-extern void func_ov021_021fe458(void *);
+extern void Overlay021_RefreshSelectionBackground(void *);
 extern void func_ov021_021fea68(void *);
-extern s32 func_ov021_021fed30(void *);
+extern s32 Overlay021_IsAuxiliaryRecordAvailable(void *);
 extern void func_ov021_021feea4(void *);
 extern void func_ov021_021feb60(void *);
 extern void func_ov021_021ff050(void *, s32);
 extern void func_ov021_021ff0e0(void *, s32);
 extern s32 func_ov021_021ff274(void *);
-extern u32 func_ov021_021ff4f0(const void *);
+extern u32 Overlay021Descriptor_GetFlags16_19(const void *);
 extern void func_ov021_021ff5b8(void *);
 extern s32 func_ov021_021ff62c(void *, s32);
 extern s32 func_ov021_021ffa10(const void *);
@@ -126,14 +126,14 @@ extern "C" s32 func_ov021_02201410(void *state)
                     break;
                 }
                 if (func_ov000_021fc5ac(widget, input) != 0) {
-                    func_020939d8(FIELD(void *, state, 0x388));
+                    TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                     func_02092260(state, 3);
                     change_state(state, data_ov021_02202e08);
                     break;
                 }
                 if (func_ov000_021fc5fc(widget, input) != 0) {
-                    if (func_ov021_021fed30(state) != 0) {
-                        func_020939d8(FIELD(void *, state, 0x388));
+                    if (Overlay021_IsAuxiliaryRecordAvailable(state) != 0) {
+                        TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                         func_02092260(state, 11);
                         change_state(state, data_ov021_02202e00);
                     } else {
@@ -144,15 +144,15 @@ extern "C" s32 func_ov021_02201410(void *state)
                 void *controller = (u8 *)state + 0x14c +
                                    FIELD(s32, state, 0x2c4) * 0xac;
                 if (func_02095860(controller, input, 0, 4) != 0) {
-                    void *entry = func_ov000_021fcad8(widget);
+                    void *entry = Overlay000_GetActiveMetadata(widget);
                     if (func_ov021_021ff62c(entry, 1) == 0) {
                         FIELD(void *, state, 0x37c) = FIELD(void *, entry, 0xc);
                         void *selected = FIELD(void *, state, 0x37c);
                         if (selected != 0 && FIELD(void *, selected, 0xc) != 0) {
-                            func_020939d8(FIELD(void *, state, 0x388));
+                            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                             func_02092260(state, 2);
                             FIELD(void *, state, 0x2bc) = FIELD(void *, selected, 0xc);
-                            u32 category = func_ov021_021ff4f0(
+                            u32 category = Overlay021Descriptor_GetFlags16_19(
                                 FIELD(void *, state, 0x2bc));
                             if (category == 1) {
                                 FIELD(s32, state, 0x374) = FIELD(s32, widget, 0x25c);
@@ -208,7 +208,7 @@ extern "C" s32 func_ov021_02201800(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0: {
-        void *entry = func_ov000_021fcad8(FIELD(void *, state, 0x354));
+        void *entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x354));
         FIELD(s32, entry, 0x1c)--;
         func_ov000_021fc714(FIELD(void *, state, 0x354));
         if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
@@ -231,7 +231,7 @@ extern "C" s32 func_ov021_02201800(void *state)
                 FIELD(s32, state, 0x3d8) = 1;
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
-            } else if (func_02062b28(FIELD(void *, state, 0x37c)) != 0 ||
+            } else if (ActorDescriptor_IsInvalid(FIELD(void *, state, 0x37c)) != 0 ||
                        FIELD(s32, state, 0x3d8) != 0) {
                 func_02092c8c(1, -8);
                 FIELD(s32, state, 4)++;
@@ -258,7 +258,7 @@ extern "C" s32 func_ov021_02201800(void *state)
         break;
     case 4:
         if (++FIELD(s32, state, 8) > 60) {
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             func_02092c8c(1, -16);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -305,7 +305,7 @@ extern "C" s32 func_ov021_02201a88(void *state)
         }
         break;
     case 2:
-        func_ov021_021fe458(state);
+        Overlay021_RefreshSelectionBackground(state);
         func_ov021_021ff0e0(state, 2);
         func_02092c8c(1, 0);
         FIELD(s32, state, 4)++;

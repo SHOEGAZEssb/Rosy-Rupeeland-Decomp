@@ -17,15 +17,15 @@
     .extern RecordCategory_PublishById
     .extern RecordDescriptor_SetValue
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd1b8
     .extern func_ov021_021fd1cc
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fe144
+    .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe6b0
-    .extern func_ov021_021fee14
+    .extern Overlay021_DestroyAuxiliaryPanel
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
     .extern func_ov021_021ff050
@@ -199,7 +199,7 @@ L_02200f48:
     cmp r0, #0x3c
     ble L_02201168
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, L_02201188
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -256,7 +256,7 @@ L_02201024:
     cmp r0, #0x0
     beq L_02201168
     mov r0, r4
-    bl func_ov021_021fee14
+    bl Overlay021_DestroyAuxiliaryPanel
     mov r0, r4
     bl func_ov021_021fe6b0
     ldr r1, [r4, #0x2c4]
@@ -295,7 +295,7 @@ L_02201088:
     b L_02201168
 L_022010c4:
     mov r0, r4
-    bl func_ov021_021fe144
+    bl Overlay021_SetupMainBackground
     ldr r0, [r4, #0x2c0]
     bl func_ov021_021fd1cc
     ldr r0, [r4, #0x2c0]

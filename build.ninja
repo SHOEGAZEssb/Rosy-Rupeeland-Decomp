@@ -4190,7 +4190,7 @@ build build/reports/graphics_bg_resource_data.json: objdiff build/decomp/delinks
 
 build build/reports/graphics_bg_resource_data.txt: match_report build/reports/graphics_bg_resource_data.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_resource_data.json
-  report_args = --section .text --function func_02070874 --require-exact
+  report_args = --section .text --function GraphicsBgResourceData_GetDecoded --require-exact
 
 build build/reports/graphics_bg_map_upload.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_map_upload.o | build/decomp/src/graphics/graphics_bg_map_upload.o
   target_object = build/decomp/delinks/src/graphics/graphics_bg_map_upload.o
@@ -4313,7 +4313,7 @@ build build/reports/graphics_archive_loader_0207142c.json: objdiff build/decomp/
   base_object = build/decomp/asm/graphics/graphics_archive_loader_0207142c.o
 build build/reports/graphics_archive_loader_0207142c.txt: match_report build/reports/graphics_archive_loader_0207142c.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_loader_0207142c.json
-  report_args = --section .text --function func_0207142c --require-exact
+  report_args = --section .text --function GraphicsArchive_LoadIndexedPayload --require-exact
 
 build build/decomp/src/graphics/graphics_archive_loader_portable.o: mwccarm src/graphics/graphics_archive_loader.c | include/tingle/checked_fs.h include/tingle/heap.h include/tingle/types.h
   source = src/graphics/graphics_archive_loader.c
@@ -4323,7 +4323,7 @@ build build/reports/graphics_archive_loader_0207142c_source.json: objdiff build/
   base_object = build/decomp/src/graphics/graphics_archive_loader_portable.o
 build build/reports/graphics_archive_loader_0207142c_source.txt: match_report build/reports/graphics_archive_loader_0207142c_source.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_loader_0207142c_source.json
-  report_args = --section .text --function func_0207142c
+  report_args = --section .text --function GraphicsArchive_LoadIndexedPayload
 
 build build/reports/graphics_archive_character_palette_release.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_character_palette_release.o | build/decomp/src/graphics/graphics_archive_character_palette_release.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_character_palette_release.o
@@ -7665,7 +7665,7 @@ build build/reports/game_phase_script_vm_0201d9e4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201d9e4.o
 build build/reports/game_phase_script_vm_0201d9e4.txt: match_report build/reports/game_phase_script_vm_0201d9e4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201d9e4.json
-  report_args = --section .text --function func_0201d9e4 --require-exact
+  report_args = --section .text --function DisplayRouting_MatchesRequest --require-exact
 
 build build/reports/game_phase_script_vm_0201da20.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201da20.o | build/decomp/asm/game/game_phase_script_vm_0201da20.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201da20.o
@@ -7729,7 +7729,7 @@ build build/reports/game_phase_script_vm_0201dcec.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201dcec.o
 build build/reports/game_phase_script_vm_0201dcec.txt: match_report build/reports/game_phase_script_vm_0201dcec.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201dcec.json
-  report_args = --section .text --function func_0201dcec --require-exact
+  report_args = --section .text --function RuntimePresentationManager_Update --require-exact
 
 build build/reports/game_phase_script_vm_0201dde4.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201dde4.o | build/decomp/asm/game/game_phase_script_vm_0201dde4.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201dde4.o
@@ -7771,7 +7771,7 @@ build build/reports/game_phase_script_vm_0201ded4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201ded4.o
 build build/reports/game_phase_script_vm_0201ded4.txt: match_report build/reports/game_phase_script_vm_0201ded4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201ded4.json
-  report_args = --section .text --function func_0201ded4 --require-exact
+  report_args = --section .text --function PresentationList_AppendObject --require-exact
 
 build build/reports/game_phase_script_vm_0201dee0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201dee0.o | build/decomp/asm/game/game_phase_script_vm_0201dee0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201dee0.o
@@ -7856,7 +7856,7 @@ build build/reports/game_phase_script_vm_0201e14c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e14c.o
 build build/reports/game_phase_script_vm_0201e14c.txt: match_report build/reports/game_phase_script_vm_0201e14c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e14c.json
-  report_args = --section .text --function func_0201e14c --require-exact
+  report_args = --section .text --function RuntimePresentationManager_BroadcastSlot1C --require-exact
 
 build build/reports/game_phase_script_vm_0201e1ac.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e1ac.o | build/decomp/asm/game/game_phase_script_vm_0201e1ac.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e1ac.o
@@ -7885,7 +7885,7 @@ build build/reports/game_phase_script_vm_0201e250.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e250.o
 build build/reports/game_phase_script_vm_0201e250.txt: match_report build/reports/game_phase_script_vm_0201e250.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e250.json
-  report_args = --section .text --function func_0201e250 --require-exact
+  report_args = --section .text --function TimedSpritePresentation_InitBase --require-exact
 
 build build/reports/game_phase_script_vm_0201e274.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e274.o | build/decomp/asm/game/game_phase_script_vm_0201e274.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e274.o
@@ -7941,7 +7941,7 @@ build build/reports/game_phase_script_vm_0201e3b8.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e3b8.o
 build build/reports/game_phase_script_vm_0201e3b8.txt: match_report build/reports/game_phase_script_vm_0201e3b8.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e3b8.json
-  report_args = --section .text --function func_0201e3b8 --require-exact
+  report_args = --section .text --function TimedSpritePresentation_SetVisible --require-exact
 
 build build/reports/game_phase_script_vm_0201e3d8.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e3d8.o | build/decomp/asm/game/game_phase_script_vm_0201e3d8.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e3d8.o
@@ -8020,7 +8020,7 @@ build build/reports/timed_sprite_orbit_variant.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/game/timed_sprite_orbit_variant.o
 build build/reports/timed_sprite_orbit_variant.txt: match_report build/reports/timed_sprite_orbit_variant.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_orbit_variant.json
-  report_args = --section .text --function func_0201e9d8 --function func_0201ea20 --function func_0201ea68 --function func_0201ea7c --function func_0201ea98 --function func_0201eb18 --require-exact
+  report_args = --section .text --function func_0201e9d8 --function func_0201ea20 --function func_0201ea68 --function func_0201ea7c --function OrbitTimedSprite_Update --function func_0201eb18 --require-exact
 build build/reports/timed_sprite_free_orbit_variant.json: objdiff build/decomp/delinks/asm/game/timed_sprite_free_orbit_variant.o | build/decomp/asm/game/timed_sprite_free_orbit_variant.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_free_orbit_variant.o
   base_object = build/decomp/asm/game/timed_sprite_free_orbit_variant.o
@@ -8694,7 +8694,7 @@ build build/reports/sprite_number_group_02022ac8.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/sprite_number_group_02022ac8.o
 build build/reports/sprite_number_group_02022ac8.txt: match_report build/reports/sprite_number_group_02022ac8.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022ac8.json
-  report_args = --section .text --function func_02022ac8 --require-exact
+  report_args = --section .text --function SpriteNodeList_Clear --require-exact
 build build/reports/sprite_number_group_02022b08.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022b08.o | build/decomp/asm/game/sprite_number_group_02022b08.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022b08.o
   base_object = build/decomp/asm/game/sprite_number_group_02022b08.o
@@ -8712,7 +8712,7 @@ build build/reports/sprite_number_group_02022bc8.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/sprite_number_group_02022bc8.o
 build build/reports/sprite_number_group_02022bc8.txt: match_report build/reports/sprite_number_group_02022bc8.json | tools/report_objdiff.py
   report_json = build/reports/sprite_number_group_02022bc8.json
-  report_args = --section .text --function func_02022bc8 --require-exact
+  report_args = --section .text --function SpriteNodeList_RemoveNode --require-exact
 build build/reports/sprite_number_group_02022c30.json: objdiff build/decomp/delinks/asm/game/sprite_number_group_02022c30.o | build/decomp/asm/game/sprite_number_group_02022c30.o
   target_object = build/decomp/delinks/asm/game/sprite_number_group_02022c30.o
   base_object = build/decomp/asm/game/sprite_number_group_02022c30.o
@@ -8756,7 +8756,7 @@ build build/reports/self_linked_sprite_config_02022fbc.json: objdiff build/decom
   base_object = build/decomp/asm/game/self_linked_sprite_config_02022fbc.o
 build build/reports/self_linked_sprite_config_02022fbc.txt: match_report build/reports/self_linked_sprite_config_02022fbc.json | tools/report_objdiff.py
   report_json = build/reports/self_linked_sprite_config_02022fbc.json
-  report_args = --section .text --function func_02022fbc --require-exact
+  report_args = --section .text --function SelfLinkedSpriteConfig_Init --require-exact
 build build/reports/self_linked_sprite_config.txt: phony build/reports/self_linked_sprite_config_02022fbc.txt
 build build/reports/record_sprite_motion_presentation_02022ff4.json: objdiff build/decomp/delinks/asm/game/record_sprite_motion_presentation_02022ff4.o | build/decomp/asm/game/record_sprite_motion_presentation_02022ff4.o
   target_object = build/decomp/delinks/asm/game/record_sprite_motion_presentation_02022ff4.o
@@ -9572,7 +9572,7 @@ build build/reports/game_phase_progress_controller_02027854.json: objdiff build/
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027854.o
 build build/reports/game_phase_progress_controller_02027854.txt: match_report build/reports/game_phase_progress_controller_02027854.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027854.json
-  report_args = --section .text --function func_02027854 --require-exact
+  report_args = --section .text --function GamePhaseProgress_GetCurrentAdjustedThreshold --require-exact
 build build/reports/game_phase_progress_controller_02027864.json: objdiff build/decomp/delinks/asm/game/game_phase_progress_controller_02027864.o | build/decomp/asm/game/game_phase_progress_controller_02027864.o
   target_object = build/decomp/delinks/asm/game/game_phase_progress_controller_02027864.o
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027864.o
@@ -9686,7 +9686,7 @@ build build/reports/game_phase_progress_controller_02027f94.json: objdiff build/
   base_object = build/decomp/asm/game/game_phase_progress_controller_02027f94.o
 build build/reports/game_phase_progress_controller_02027f94.txt: match_report build/reports/game_phase_progress_controller_02027f94.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_progress_controller_02027f94.json
-  report_args = --section .text --function func_02027f94 --require-exact
+  report_args = --section .text --function GamePhaseProgress_GetOrCreateGlobal --require-exact
 build build/reports/game_phase_progress_controller.txt: phony build/reports/game_phase_progress_controller_02027604.txt build/reports/game_phase_progress_controller_02027650.txt build/reports/game_phase_progress_controller_02027654.txt build/reports/game_phase_progress_controller_02027788.txt build/reports/game_phase_progress_controller_02027818.txt build/reports/game_phase_progress_controller_02027828.txt build/reports/game_phase_progress_controller_02027854.txt build/reports/game_phase_progress_controller_02027864.txt build/reports/game_phase_progress_controller_020278b4.txt build/reports/game_phase_progress_controller_020278d4.txt build/reports/game_phase_progress_controller_02027930.txt build/reports/game_phase_progress_controller_02027a7c.txt build/reports/game_phase_progress_controller_02027bd4.txt build/reports/game_phase_progress_controller_02027c34.txt build/reports/game_phase_progress_controller_02027d14.txt build/reports/game_phase_progress_controller_02027d7c.txt build/reports/game_phase_progress_controller_02027df0.txt build/reports/game_phase_progress_controller_02027e08.txt build/reports/game_phase_progress_controller_02027e8c.txt build/reports/game_phase_progress_controller_02027e94.txt build/reports/game_phase_progress_controller_02027e9c.txt build/reports/game_phase_progress_controller_02027ea4.txt build/reports/game_phase_progress_controller_02027eac.txt build/reports/game_phase_progress_controller_02027f2c.txt build/reports/game_phase_progress_controller_02027f38.txt build/reports/game_phase_progress_controller_02027f94.txt
 build build/reports/area_info_panel_presentation_02027fe8.json: objdiff build/decomp/delinks/asm/game/area_info_panel_presentation_02027fe8.o | build/decomp/asm/game/area_info_panel_presentation_02027fe8.o
   target_object = build/decomp/delinks/asm/game/area_info_panel_presentation_02027fe8.o
@@ -10621,7 +10621,7 @@ build build/reports/game_phase_runtime_warp_request.json: objdiff build/decomp/d
 
 build build/reports/game_phase_runtime_warp_request.txt: match_report build/reports/game_phase_runtime_warp_request.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_warp_request.json
-  report_args = --section .text --function func_020084b8 --function func_02008514 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_RequestPrimaryWarp --function func_02008514 --require-exact
 
 build build/reports/game_phase_runtime_screen_mode.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_screen_mode.o | build/decomp/asm/game/game_phase_runtime_screen_mode.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_screen_mode.o
@@ -10629,7 +10629,7 @@ build build/reports/game_phase_runtime_screen_mode.json: objdiff build/decomp/de
 
 build build/reports/game_phase_runtime_screen_mode.txt: match_report build/reports/game_phase_runtime_screen_mode.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_screen_mode.json
-  report_args = --section .text --function func_02008570 --require-exact
+  report_args = --section .text --function GamePhaseRuntime_ApplyScreenMode --require-exact
 
 build build/reports/game_phase_runtime_secondary_position.json: objdiff build/decomp/delinks/src/game/game_phase_runtime_secondary_position.o | build/decomp/src/game/game_phase_runtime_secondary_position.o
   target_object = build/decomp/delinks/src/game/game_phase_runtime_secondary_position.o
@@ -10653,7 +10653,7 @@ build build/reports/game_phase_runtime_secondary_transform.json: objdiff build/d
 
 build build/reports/game_phase_runtime_secondary_transform.txt: match_report build/reports/game_phase_runtime_secondary_transform.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_secondary_transform.json
-  report_args = --section .text --function func_0200875c --require-exact
+  report_args = --section .text --function GamePhaseRuntime_BuildSecondaryTransform --require-exact
 
 build build/reports/game_phase_runtime_placement_mode.json: objdiff build/decomp/delinks/asm/game/game_phase_runtime_placement_mode.o | build/decomp/asm/game/game_phase_runtime_placement_mode.o
   target_object = build/decomp/delinks/asm/game/game_phase_runtime_placement_mode.o
@@ -10701,7 +10701,7 @@ build build/reports/game_phase_runtime_misc.json: objdiff build/decomp/delinks/s
 
 build build/reports/game_phase_runtime_misc.txt: match_report build/reports/game_phase_runtime_misc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_runtime_misc.json
-  report_args = --section .text --function GamePhaseRuntime_ProcessPendingPresentationRefreshes --function func_02008f2c --function FrameCounter_Tick31 --function func_02008f58 --function GamePhaseRuntime_GetAuxiliaryOverlayObject --function Heap_FreeAndReturnPointer --require-exact
+  report_args = --section .text --function GamePhaseRuntime_ProcessPendingPresentationRefreshes --function func_02008f2c --function FrameCounter_Tick31 --function GamePhaseRuntime_SetGlobalValue30F8 --function GamePhaseRuntime_GetAuxiliaryOverlayObject --function Heap_FreeAndReturnPointer --require-exact
 
 build build/reports/actor_motion_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_motion_lifecycle.o | build/decomp/src/game/actor_motion_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_motion_lifecycle.o
@@ -11507,7 +11507,7 @@ build build/reports/animation_resource_state.json: objdiff build/decomp/delinks/
   base_object = build/decomp/src/graphics/animation_resource_state.o
 build build/reports/animation_resource_state.txt: match_report build/reports/animation_resource_state.json | tools/report_objdiff.py
   report_json = build/reports/animation_resource_state.json
-  report_args = --section .text --function func_02071e90 --function func_02071ea4 --function func_02071eb8 --function func_02071ecc --require-exact
+  report_args = --section .text --function func_02071e90 --function AnimationResourceState_InitEmbedded --function AnimationResourceState_Destroy --function func_02071ecc --require-exact
 
 build animation_resource_state: phony build/reports/animation_resource_state.txt
 build build/reports/animation_resource_state_replace.json: objdiff build/decomp/delinks/src/graphics/animation_resource_state_replace.o | build/decomp/src/graphics/animation_resource_state_replace.o
@@ -11523,7 +11523,7 @@ build build/reports/animation_resource_state_release.json: objdiff build/decomp/
   base_object = build/decomp/src/graphics/animation_resource_state_release.o
 build build/reports/animation_resource_state_release.txt: match_report build/reports/animation_resource_state_release.json | tools/report_objdiff.py
   report_json = build/reports/animation_resource_state_release.json
-  report_args = --section .text --function func_02071f38 --require-exact
+  report_args = --section .text --function AnimationResourceState_ReleaseResources --require-exact
 
 build animation_resource_state_release: phony build/reports/animation_resource_state_release.txt
 build build/reports/graphics_bg_character_upload_sub.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_character_upload_sub.o | build/decomp/src/graphics/graphics_bg_character_upload_sub.o
@@ -11555,7 +11555,7 @@ build build/reports/signed_absolute.json: objdiff build/decomp/delinks/src/math/
   base_object = build/decomp/src/math/signed_absolute.o
 build build/reports/signed_absolute.txt: match_report build/reports/signed_absolute.json | tools/report_objdiff.py
   report_json = build/reports/signed_absolute.json
-  report_args = --section .text --function func_020be328 --function func_020be334 --require-exact
+  report_args = --section .text --function SignedAbsoluteValueVariant --function SignedAbsoluteValue --require-exact
 
 build signed_absolute: phony build/reports/signed_absolute.txt
 build build/reports/title_random_value.json: objdiff build/decomp/delinks/src/game/title_random_value.o | build/decomp/src/game/title_random_value.o
@@ -11563,7 +11563,7 @@ build build/reports/title_random_value.json: objdiff build/decomp/delinks/src/ga
   base_object = build/decomp/src/game/title_random_value.o
 build build/reports/title_random_value.txt: match_report build/reports/title_random_value.json | tools/report_objdiff.py
   report_json = build/reports/title_random_value.json
-  report_args = --section .text --function func_0209189c --function func_020918f4 --require-exact
+  report_args = --section .text --function func_0209189c --function TitleRandom_NextBounded --require-exact
 
 build title_random_value: phony build/reports/title_random_value.txt
 build build/reports/title_interpolated_value.json: objdiff build/decomp/delinks/src/game/title_interpolated_value.o | build/decomp/src/game/title_interpolated_value.o
@@ -11595,7 +11595,7 @@ build build/reports/title_screen_resource_collection.json: objdiff build/decomp/
   base_object = build/decomp/src/game/title_screen_resource_collection.o
 build build/reports/title_screen_resource_collection.txt: match_report build/reports/title_screen_resource_collection.json | tools/report_objdiff.py
   report_json = build/reports/title_screen_resource_collection.json
-  report_args = --section .text --function func_020926d8 --require-exact
+  report_args = --section .text --function TitleScreenResourceCollection_Init --require-exact
 
 build title_screen_resource_collection: phony build/reports/title_screen_resource_collection.txt
 build build/reports/title_screen_resource_collection_destructor.json: objdiff build/decomp/delinks/src/game/title_screen_resource_collection_destructor.o | build/decomp/src/game/title_screen_resource_collection_destructor.o
@@ -11611,7 +11611,7 @@ build build/reports/title_screen_resource_collection_ops.json: objdiff build/dec
   base_object = build/decomp/src/game/title_screen_resource_collection_ops.o
 build build/reports/title_screen_resource_collection_ops.txt: match_report build/reports/title_screen_resource_collection_ops.json | tools/report_objdiff.py
   report_json = build/reports/title_screen_resource_collection_ops.json
-  report_args = --section .text --function func_0209270c --function func_02092754 --function func_02092790 --require-exact
+  report_args = --section .text --function func_0209270c --function func_02092754 --function TitleScreenResourceCollection_Get --require-exact
 
 build title_screen_resource_collection_ops: phony build/reports/title_screen_resource_collection_ops.txt
 build build/reports/title_character_resource_collection.json: objdiff build/decomp/delinks/src/game/title_character_resource_collection.o | build/decomp/src/game/title_character_resource_collection.o
@@ -11619,7 +11619,7 @@ build build/reports/title_character_resource_collection.json: objdiff build/deco
   base_object = build/decomp/src/game/title_character_resource_collection.o
 build build/reports/title_character_resource_collection.txt: match_report build/reports/title_character_resource_collection.json | tools/report_objdiff.py
   report_json = build/reports/title_character_resource_collection.json
-  report_args = --section .text --function func_02092798 --require-exact
+  report_args = --section .text --function TitleCharacterResourceCollection_Init --require-exact
 
 build title_character_resource_collection: phony build/reports/title_character_resource_collection.txt
 build build/reports/title_character_resource_collection_destructor.json: objdiff build/decomp/delinks/src/game/title_character_resource_collection_destructor.o | build/decomp/src/game/title_character_resource_collection_destructor.o
@@ -11643,7 +11643,7 @@ build build/reports/title_palette_backdrop.json: objdiff build/decomp/delinks/sr
   base_object = build/decomp/src/graphics/title_palette_backdrop.o
 build build/reports/title_palette_backdrop.txt: match_report build/reports/title_palette_backdrop.json | tools/report_objdiff.py
   report_json = build/reports/title_palette_backdrop.json
-  report_args = --section .text --function func_02092850 --function func_0209285c --require-exact
+  report_args = --section .text --function TitlePalette_SetMainBackdrop --function TitlePalette_SetSubBackdrop --require-exact
 
 build title_palette_backdrop: phony build/reports/title_palette_backdrop.txt
 build build/reports/title_scroll_value.json: objdiff build/decomp/delinks/src/game/title_scroll_value.o | build/decomp/src/game/title_scroll_value.o
@@ -13835,7 +13835,7 @@ build build/reports/actor_collection_activation_0202d3cc.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_collection_activation_0202d3cc.o
 build build/reports/actor_collection_activation_0202d3cc.txt: match_report build/reports/actor_collection_activation_0202d3cc.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_activation_0202d3cc.json
-  report_args = --section .text --function func_0202d3cc --require-exact
+  report_args = --section .text --function ActorCollectionActivation_DestroyReservedSlot --require-exact
 build build/reports/actor_collection_activation_0202d494.json: objdiff build/decomp/delinks/asm/game/actor_collection_activation_0202d494.o | build/decomp/asm/game/actor_collection_activation_0202d494.o
   target_object = build/decomp/delinks/asm/game/actor_collection_activation_0202d494.o
   base_object = build/decomp/asm/game/actor_collection_activation_0202d494.o
@@ -14363,7 +14363,7 @@ build build/reports/actor_runtime_base_init_02030f98.json: objdiff build/decomp/
   base_object = build/decomp/asm/game/actor_runtime_base_init_02030f98.o
 build build/reports/actor_runtime_base_init_02030f98.txt: match_report build/reports/actor_runtime_base_init_02030f98.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_base_init_02030f98.json
-  report_args = --section .text --function func_02030f98 --require-exact
+  report_args = --section .text --function ActorRuntimeBase_Init --require-exact
 build build/reports/actor_runtime_base_init.txt: phony build/reports/actor_runtime_base_init_02030f98.txt
 
 build actor_runtime_base_init: phony build/decomp/src/game/actor_runtime_base_init.o build/decomp/asm/game/actor_runtime_base_init_02030f98.o build/reports/actor_runtime_base_init.txt
@@ -14538,7 +14538,7 @@ build build/reports/actor_attachment_state_copy_02031cac.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_attachment_state_copy_02031cac.o
 build build/reports/actor_attachment_state_copy_02031cac.txt: match_report build/reports/actor_attachment_state_copy_02031cac.json | tools/report_objdiff.py
   report_json = build/reports/actor_attachment_state_copy_02031cac.json
-  report_args = --section .text --function func_02031cac --require-exact
+  report_args = --section .text --function ActorAttachment_CopyTouchState --require-exact
 build build/reports/actor_attachment_state_copy.txt: phony build/reports/actor_attachment_state_copy_02031cac.txt
 
 build actor_attachment_state_copy: phony build/decomp/src/game/actor_attachment_state_copy.o build/decomp/asm/game/actor_attachment_state_copy_02031cac.o build/reports/actor_attachment_state_copy.txt
@@ -14808,7 +14808,7 @@ build build/reports/actor_position_contact_state_02032a94.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_position_contact_state_02032a94.o
 build build/reports/actor_position_contact_state_02032a94.txt: match_report build/reports/actor_position_contact_state_02032a94.json | tools/report_objdiff.py
   report_json = build/reports/actor_position_contact_state_02032a94.json
-  report_args = --section .text --function func_02032a94 --require-exact
+  report_args = --section .text --function ActorContactState_AddContact --require-exact
 build build/reports/actor_position_contact_state_02032abc.json: objdiff build/decomp/delinks/asm/game/actor_position_contact_state_02032abc.o | build/decomp/asm/game/actor_position_contact_state_02032abc.o
   target_object = build/decomp/delinks/asm/game/actor_position_contact_state_02032abc.o
   base_object = build/decomp/asm/game/actor_position_contact_state_02032abc.o
@@ -15477,7 +15477,7 @@ build build/reports/actor_terrain_neighbor_axis_response_02034894.json: objdiff 
   base_object = build/decomp/asm/game/actor_terrain_neighbor_axis_response_02034894.o
 build build/reports/actor_terrain_neighbor_axis_response_02034894.txt: match_report build/reports/actor_terrain_neighbor_axis_response_02034894.json | tools/report_objdiff.py
   report_json = build/reports/actor_terrain_neighbor_axis_response_02034894.json
-  report_args = --section .text --function func_02034894 --require-exact
+  report_args = --section .text --function ActorTerrain_ApplyNeighborAxisBias --require-exact
 build build/reports/actor_terrain_neighbor_axis_response.txt: phony build/reports/actor_terrain_neighbor_axis_response_02034894.txt
 
 build actor_terrain_neighbor_axis_response: phony build/decomp/src/game/actor_terrain_neighbor_axis_response.o build/decomp/asm/game/actor_terrain_neighbor_axis_response_02034894.o build/reports/actor_terrain_neighbor_axis_response.txt
@@ -19760,7 +19760,7 @@ build build/reports/effect_handle_actor_0204e740.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/effect_handle_actor_0204e740.o
 build build/reports/effect_handle_actor_0204e740.txt: match_report build/reports/effect_handle_actor_0204e740.json | tools/report_objdiff.py
   report_json = build/reports/effect_handle_actor_0204e740.json
-  report_args = --section .text --function func_0204e740 --function func_0204e774 --function func_0204e7cc --function func_0204e82c --require-exact
+  report_args = --section .text --function EffectHandleActor_Init --function func_0204e774 --function EffectHandleActor_Delete --function func_0204e82c --require-exact
 build effect_handle_actor: phony build/decomp/src/game/effect_handle_actor.o build/decomp/asm/game/effect_handle_actor_0204e740.o build/reports/effect_handle_actor_0204e740.txt
 
 effect_handle_actor_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -20851,7 +20851,7 @@ build build/reports/overlay000_presentation_populate.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o
 build build/reports/overlay000_presentation_populate.txt: match_report build/reports/overlay000_presentation_populate.json | tools/report_objdiff.py
   report_json = build/reports/overlay000_presentation_populate.json
-  report_args = --section .text --function func_ov000_021fb8f0 --require-exact
+  report_args = --section .text --function Overlay000_PopulatePresentation --require-exact
 
 build overlay000_presentation_populate: phony build/decomp/src/overlays/ov000/overlay000_presentation_populate.o build/decomp/asm/overlays/ov000/overlay000_presentation_populate_021fb8f0.o build/reports/overlay000_presentation_populate.txt
 
@@ -21350,7 +21350,7 @@ build build/reports/overlay000_active_metadata_get.json: objdiff build/decomp/de
   base_object = build/decomp/src/overlays/ov000/overlay000_active_metadata_get.o
 build build/reports/overlay000_active_metadata_get.txt: match_report build/reports/overlay000_active_metadata_get.json | tools/report_objdiff.py
   report_json = build/reports/overlay000_active_metadata_get.json
-  report_args = --section .text --function func_ov000_021fcad8 --require-exact
+  report_args = --section .text --function Overlay000_GetActiveMetadata --require-exact
 
 build overlay000_active_metadata_get: phony build/decomp/src/overlays/ov000/overlay000_active_metadata_get.o build/reports/overlay000_active_metadata_get.txt
 
@@ -24953,7 +24953,7 @@ build build/reports/overlay015_record_runtime.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov015/overlay015_record_runtime_021fd68c.o
 build build/reports/overlay015_record_runtime.txt: match_report build/reports/overlay015_record_runtime.json | tools/report_objdiff.py
   report_json = build/reports/overlay015_record_runtime.json
-  report_args = --section .text --function func_ov015_021fd68c --function func_ov015_021fd6c8 --function func_ov015_021fd8a8 --require-exact
+  report_args = --section .text --function Overlay015_UpdateRecords --function func_ov015_021fd6c8 --function func_ov015_021fd8a8 --require-exact
 build overlay015_record_runtime: phony build/decomp/src/overlays/ov015/overlay015_record_runtime.o build/decomp/asm/overlays/ov015/overlay015_record_runtime_021fd68c.o build/reports/overlay015_record_runtime.txt
 
 overlay015_record_layout_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -25043,7 +25043,7 @@ build build/reports/overlay015_phase_transient.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/overlays/ov015/overlay015_phase_transient_021fdeec.o
 build build/reports/overlay015_phase_transient.txt: match_report build/reports/overlay015_phase_transient.json | tools/report_objdiff.py
   report_json = build/reports/overlay015_phase_transient.json
-  report_args = --section .text --function func_ov015_021fdeec --require-exact
+  report_args = --section .text --function Overlay015_UpdateTransientConfirmation --require-exact
 build build/reports/overlay015_phase_primary.json: objdiff build/decomp/delinks/asm/overlays/ov015/overlay015_phase_primary_021fdfe8.o | build/decomp/asm/overlays/ov015/overlay015_phase_primary_021fdfe8.o
   target_object = build/decomp/delinks/asm/overlays/ov015/overlay015_phase_primary_021fdfe8.o
   base_object = build/decomp/asm/overlays/ov015/overlay015_phase_primary_021fdfe8.o
@@ -25296,7 +25296,7 @@ build build/reports/overlay016_small_base_helpers.json: objdiff build/decomp/del
   base_object = build/decomp/asm/overlays/ov016/overlay016_small_base_helpers_021fe0d4.o
 build build/reports/overlay016_small_base_helpers.txt: match_report build/reports/overlay016_small_base_helpers.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_small_base_helpers.json
-  report_args = --section .text --function func_ov016_021fe0d4 --function func_ov016_021fe0d8 --function func_ov016_021fe0f8 --require-exact
+  report_args = --section .text --function func_ov016_021fe0d4 --function Overlay016SmallBase_Init --function func_ov016_021fe0f8 --require-exact
 build overlay016_sprite_wrapper: phony build/decomp/src/overlays/ov016/overlay016_sprite_wrapper.o build/decomp/asm/overlays/ov016/overlay016_sprite_wrapper_construct_021fe004.o build/decomp/asm/overlays/ov016/overlay016_sprite_wrapper_destroy_021fe08c.o build/decomp/asm/overlays/ov016/overlay016_sprite_wrapper_delete_021fe0ac.o build/decomp/asm/overlays/ov016/overlay016_small_base_helpers_021fe0d4.o build/reports/overlay016_sprite_wrapper_construct.txt build/reports/overlay016_sprite_wrapper_destroy.txt build/reports/overlay016_sprite_wrapper_delete.txt build/reports/overlay016_small_base_helpers.txt
 
 overlay016_actor_group_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -25386,7 +25386,7 @@ build build/reports/overlay016_actor_value_helpers.json: objdiff build/decomp/de
   base_object = build/decomp/asm/overlays/ov016/overlay016_actor_value_helpers_021fe728.o
 build build/reports/overlay016_actor_value_helpers.txt: match_report build/reports/overlay016_actor_value_helpers.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_actor_value_helpers.json
-  report_args = --section .text --function func_ov016_021fe728 --function func_ov016_021fe740 --function func_ov016_021fe754 --require-exact
+  report_args = --section .text --function func_ov016_021fe728 --function func_ov016_021fe740 --function Overlay016ActorValue_Init --require-exact
 build overlay016_actor_runtime: phony build/decomp/src/overlays/ov016/overlay016_actor_runtime.o build/decomp/asm/overlays/ov016/overlay016_actor_add_021fe4d0.o build/decomp/asm/overlays/ov016/overlay016_actor_select_021fe584.o build/decomp/asm/overlays/ov016/overlay016_actor_update_021fe63c.o build/decomp/asm/overlays/ov016/overlay016_actor_completion_021fe6f4.o build/decomp/asm/overlays/ov016/overlay016_actor_value_helpers_021fe728.o build/reports/overlay016_actor_add.txt build/reports/overlay016_actor_select.txt build/reports/overlay016_actor_update.txt build/reports/overlay016_actor_completion.txt build/reports/overlay016_actor_value_helpers.txt
 
 overlay016_scene_construct_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -25444,7 +25444,7 @@ build build/reports/overlay016_display_registers.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/overlays/ov016/overlay016_display_registers_021ff04c.o
 build build/reports/overlay016_display_registers.txt: match_report build/reports/overlay016_display_registers.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_display_registers.json
-  report_args = --section .text --function func_ov016_021ff04c --function func_ov016_021ff068 --require-exact
+  report_args = --section .text --function func_ov016_021ff04c --function Overlay016_ConfigureMainBg3 --require-exact
 build overlay016_display_helpers: phony build/decomp/src/overlays/ov016/overlay016_display_helpers.o build/decomp/asm/overlays/ov016/overlay016_display_commit_021fed7c.o build/decomp/asm/overlays/ov016/overlay016_display_registers_021ff04c.o build/reports/overlay016_display_commit.txt build/reports/overlay016_display_registers.txt
 
 overlay016_graphics_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -25510,7 +25510,7 @@ build build/reports/overlay016_scene_sprites_init.json: objdiff build/decomp/del
   base_object = build/decomp/asm/overlays/ov016/overlay016_scene_sprites_021ff404.o
 build build/reports/overlay016_scene_sprites_init.txt: match_report build/reports/overlay016_scene_sprites_init.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_scene_sprites_init.json
-  report_args = --section .text --function func_ov016_021ff404 --require-exact
+  report_args = --section .text --function Overlay016_CreateSceneSprite --require-exact
 build build/reports/overlay016_scene_sprites_destroy.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_scene_sprites_021ff4ec.o | build/decomp/asm/overlays/ov016/overlay016_scene_sprites_021ff4ec.o
   target_object = build/decomp/delinks/asm/overlays/ov016/overlay016_scene_sprites_021ff4ec.o
   base_object = build/decomp/asm/overlays/ov016/overlay016_scene_sprites_021ff4ec.o
@@ -25536,7 +25536,7 @@ build build/reports/overlay016_scene_auxiliary_setup.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov016/overlay016_scene_auxiliary_021ff510.o
 build build/reports/overlay016_scene_auxiliary_setup.txt: match_report build/reports/overlay016_scene_auxiliary_setup.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_scene_auxiliary_setup.json
-  report_args = --section .text --function func_ov016_021ff510 --require-exact
+  report_args = --section .text --function Overlay016_PopulateAuxiliaryList --require-exact
 build build/reports/overlay016_scene_auxiliary_flags.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_scene_auxiliary_021ff6e8.o | build/decomp/asm/overlays/ov016/overlay016_scene_auxiliary_021ff6e8.o
   target_object = build/decomp/delinks/asm/overlays/ov016/overlay016_scene_auxiliary_021ff6e8.o
   base_object = build/decomp/asm/overlays/ov016/overlay016_scene_auxiliary_021ff6e8.o
@@ -25636,7 +25636,7 @@ build build/reports/overlay016_selection_helpers_021ffbd8.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffbd8.o
 build build/reports/overlay016_selection_helpers_021ffbd8.txt: match_report build/reports/overlay016_selection_helpers_021ffbd8.json | tools/report_objdiff.py
   report_json = build/reports/overlay016_selection_helpers_021ffbd8.json
-  report_args = --section .text --function func_ov016_021ffbd8 --require-exact
+  report_args = --section .text --function Overlay016_SyncSelectedPanel --require-exact
 build build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffc2c.o: mwasmarm asm/overlays/ov016/overlay016_selection_helpers_021ffc2c.s
 build build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffc2c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov016/delinks.txt config/arm9/overlays/ov016/symbols.txt config/arm9/overlays/ov016/relocs.txt
 build build/reports/overlay016_selection_helpers_021ffc2c.json: objdiff build/decomp/delinks/asm/overlays/ov016/overlay016_selection_helpers_021ffc2c.o | build/decomp/asm/overlays/ov016/overlay016_selection_helpers_021ffc2c.o
@@ -25858,7 +25858,7 @@ build build/reports/overlay017_geometry_engine_021fd3f0.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd3f0.o
 build build/reports/overlay017_geometry_engine_021fd3f0.txt: match_report build/reports/overlay017_geometry_engine_021fd3f0.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_geometry_engine_021fd3f0.json
-  report_args = --section .text --function func_ov017_021fd3f0 --require-exact
+  report_args = --section .text --function Overlay017_WaitForSquareRoot --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o: mwasmarm asm/overlays/ov017/overlay017_geometry_engine_021fd414.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_geometry_engine_021fd414.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o | build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o
@@ -25944,7 +25944,7 @@ build build/reports/overlay017_grid_runtime_021fd7f8.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o
 build build/reports/overlay017_grid_runtime_021fd7f8.txt: match_report build/reports/overlay017_grid_runtime_021fd7f8.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_runtime_021fd7f8.json
-  report_args = --section .text --function func_ov017_021fd7f8 --require-exact
+  report_args = --section .text --function Overlay017Transform_ReplaceResource --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o: mwasmarm asm/overlays/ov017/overlay017_grid_runtime_021fd838.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_grid_runtime_021fd838.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o | build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o
@@ -25952,7 +25952,7 @@ build build/reports/overlay017_grid_runtime_021fd838.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o
 build build/reports/overlay017_grid_runtime_021fd838.txt: match_report build/reports/overlay017_grid_runtime_021fd838.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_runtime_021fd838.json
-  report_args = --section .text --function func_ov017_021fd838 --require-exact
+  report_args = --section .text --function Overlay017Transform_SubmitGeometry --require-exact
 build overlay017_grid_runtime: phony build/decomp/src/overlays/ov017/overlay017_grid_runtime.o build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd6b0.o build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd838.o build/reports/overlay017_grid_runtime_021fd6b0.txt build/reports/overlay017_grid_runtime_021fd744.txt build/reports/overlay017_grid_runtime_021fd780.txt build/reports/overlay017_grid_runtime_021fd7b8.txt build/reports/overlay017_grid_runtime_021fd7f8.txt build/reports/overlay017_grid_runtime_021fd838.txt
 
 overlay017_effect_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26164,7 +26164,7 @@ build build/reports/overlay017_record_base_021fea08.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov017/overlay017_record_base_021fea08.o
 build build/reports/overlay017_record_base_021fea08.txt: match_report build/reports/overlay017_record_base_021fea08.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_record_base_021fea08.json
-  report_args = --section .text --function func_ov017_021fea08 --require-exact
+  report_args = --section .text --function Overlay017Record_SetSecondaryVector --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_record_base_021fea18.o: mwasmarm asm/overlays/ov017/overlay017_record_base_021fea18.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fea18.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_record_base_021fea18.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_record_base_021fea18.o | build/decomp/asm/overlays/ov017/overlay017_record_base_021fea18.o
@@ -26280,7 +26280,7 @@ build build/reports/overlay017_scene_helpers_0220087c.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov017/overlay017_scene_helpers_0220087c.o
 build build/reports/overlay017_scene_helpers_0220087c.txt: match_report build/reports/overlay017_scene_helpers_0220087c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_scene_helpers_0220087c.json
-  report_args = --section .text --function func_ov017_0220087c --require-exact
+  report_args = --section .text --function Overlay017Timer_Tick --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_scene_helpers_02200a8c.o: mwasmarm asm/overlays/ov017/overlay017_scene_helpers_02200a8c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_scene_helpers_02200a8c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_scene_helpers_02200a8c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_scene_helpers_02200a8c.o | build/decomp/asm/overlays/ov017/overlay017_scene_helpers_02200a8c.o
@@ -26332,7 +26332,7 @@ build build/reports/overlay017_ui_sprite_group_021fe75c.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_ui_sprite_group_021fe75c.o
 build build/reports/overlay017_ui_sprite_group_021fe75c.txt: match_report build/reports/overlay017_ui_sprite_group_021fe75c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_ui_sprite_group_021fe75c.json
-  report_args = --section .text --function func_ov017_021fe75c --require-exact
+  report_args = --section .text --function Overlay017UiSpriteGroup_Init --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_ui_sprite_group_021fe894.o: mwasmarm asm/overlays/ov017/overlay017_ui_sprite_group_021fe894.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_ui_sprite_group_021fe894.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_ui_sprite_group_021fe894.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_ui_sprite_group_021fe894.o | build/decomp/asm/overlays/ov017/overlay017_ui_sprite_group_021fe894.o
@@ -26376,7 +26376,7 @@ build build/reports/overlay017_palette_ramp_02200064.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_palette_ramp_02200064.o
 build build/reports/overlay017_palette_ramp_02200064.txt: match_report build/reports/overlay017_palette_ramp_02200064.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_palette_ramp_02200064.json
-  report_args = --section .text --function func_ov017_02200064 --require-exact
+  report_args = --section .text --function Overlay017_UpdatePaletteRamp --require-exact
 build overlay017_palette_ramp: phony build/decomp/src/overlays/ov017/overlay017_palette_ramp.o build/decomp/asm/overlays/ov017/overlay017_palette_ramp_02200064.o build/reports/overlay017_palette_ramp_02200064.txt
 
 overlay017_projection_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27065,7 +27065,7 @@ build build/reports/overlay019_graphics_setup_021fcfbc.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov019/overlay019_graphics_setup_021fcfbc.o
 build build/reports/overlay019_graphics_setup_021fcfbc.txt: match_report build/reports/overlay019_graphics_setup_021fcfbc.json | tools/report_objdiff.py
   report_json = build/reports/overlay019_graphics_setup_021fcfbc.json
-  report_args = --section .text --function func_ov019_021fcfbc --require-exact
+  report_args = --section .text --function Overlay019_SetupGraphics --require-exact
 build overlay019_graphics_setup: phony build/decomp/src/overlays/ov019/overlay019_graphics_setup.o build/decomp/asm/overlays/ov019/overlay019_graphics_setup_021fcfbc.o build/reports/overlay019_graphics_setup_021fcfbc.txt
 
 overlay019_opening_transition_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27458,7 +27458,7 @@ build build/reports/overlay021_list_helpers_021fd074.txt: match_report build/rep
   report_args = --section .text --function func_ov021_021fd074 --require-exact
 build build/reports/overlay021_list_helpers_021fd0e4.txt: match_report build/reports/overlay021_list_helpers_021fd0e4.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd0e4.json
-  report_args = --section .text --function func_ov021_021fd0e4 --require-exact
+  report_args = --section .text --function Overlay021Row_DestroyNoOp --require-exact
 build build/reports/overlay021_list_helpers_021fd0e8.txt: match_report build/reports/overlay021_list_helpers_021fd0e8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd0e8.json
   report_args = --section .text --function func_ov021_021fd0e8 --require-exact
@@ -27476,7 +27476,7 @@ build build/reports/overlay021_list_helpers_021fd224.txt: match_report build/rep
   report_args = --section .text --function func_ov021_021fd224 --require-exact
 build build/reports/overlay021_list_helpers_021fd254.txt: match_report build/reports/overlay021_list_helpers_021fd254.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd254.json
-  report_args = --section .text --function func_ov021_021fd254 --require-exact
+  report_args = --section .text --function Overlay021List_SyncFirstVisibleRow --require-exact
 build build/reports/overlay021_list_helpers_021fd2b4.txt: match_report build/reports/overlay021_list_helpers_021fd2b4.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd2b4.json
   report_args = --section .text --function func_ov021_021fd2b4 --require-exact
@@ -27606,7 +27606,7 @@ build build/reports/overlay021_graphics_setup_021fe144.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe144.o
 build build/reports/overlay021_graphics_setup_021fe144.txt: match_report build/reports/overlay021_graphics_setup_021fe144.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_graphics_setup_021fe144.json
-  report_args = --section .text --function func_ov021_021fe144 --require-exact
+  report_args = --section .text --function Overlay021_SetupMainBackground --require-exact
 build build/reports/overlay021_graphics_setup_021fe268.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_graphics_setup_021fe268.o | build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe268.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_graphics_setup_021fe268.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe268.o
@@ -27636,7 +27636,7 @@ build build/reports/overlay021_graphics_setup_021fe458.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe458.o
 build build/reports/overlay021_graphics_setup_021fe458.txt: match_report build/reports/overlay021_graphics_setup_021fe458.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_graphics_setup_021fe458.json
-  report_args = --section .text --function func_ov021_021fe458 --require-exact
+  report_args = --section .text --function Overlay021_RefreshSelectionBackground --require-exact
 
 build overlay021_graphics_setup: phony build/decomp/src/overlays/ov021/overlay021_graphics_setup.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fdef0.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fdf5c.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fdf88.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe098.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe144.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe268.o build/reports/overlay021_graphics_setup_021fdef0.txt build/reports/overlay021_graphics_setup_021fdf5c.txt build/reports/overlay021_graphics_setup_021fdf88.txt build/reports/overlay021_graphics_setup_021fe098.txt build/reports/overlay021_graphics_setup_021fe144.txt build/reports/overlay021_graphics_setup_021fe268.txt build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe29c.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe390.o build/decomp/asm/overlays/ov021/overlay021_graphics_setup_021fe458.o build/reports/overlay021_graphics_setup_021fe29c.txt build/reports/overlay021_graphics_setup_021fe390.txt build/reports/overlay021_graphics_setup_021fe458.txt
 overlay021_widget_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27731,7 +27731,7 @@ build build/reports/overlay021_auxiliary_helpers_021fed30.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fed30.o
 build build/reports/overlay021_auxiliary_helpers_021fed30.txt: match_report build/reports/overlay021_auxiliary_helpers_021fed30.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021fed30.json
-  report_args = --section .text --function func_ov021_021fed30 --require-exact
+  report_args = --section .text --function Overlay021_IsAuxiliaryRecordAvailable --require-exact
 build build/reports/overlay021_auxiliary_helpers_021fedac.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fedac.o | build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fedac.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fedac.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fedac.o
@@ -27743,7 +27743,7 @@ build build/reports/overlay021_auxiliary_helpers_021fee14.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee14.o
 build build/reports/overlay021_auxiliary_helpers_021fee14.txt: match_report build/reports/overlay021_auxiliary_helpers_021fee14.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_auxiliary_helpers_021fee14.json
-  report_args = --section .text --function func_ov021_021fee14 --require-exact
+  report_args = --section .text --function Overlay021_DestroyAuxiliaryPanel --require-exact
 build build/reports/overlay021_auxiliary_helpers_021fee54.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee54.o | build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee54.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee54.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_auxiliary_helpers_021fee54.o
@@ -27808,7 +27808,7 @@ build build/reports/overlay021_selection_display_021ff3d8.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff3d8.o
 build build/reports/overlay021_selection_display_021ff3d8.txt: match_report build/reports/overlay021_selection_display_021ff3d8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff3d8.json
-  report_args = --section .text --function func_ov021_021ff3d8 --require-exact
+  report_args = --section .text --function Overlay021_UpdateTileTransitionOffset20 --require-exact
 build build/reports/overlay021_selection_display_021ff404.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff404.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff404.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff404.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff404.o
@@ -27820,7 +27820,7 @@ build build/reports/overlay021_selection_display_021ff4f0.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff4f0.o
 build build/reports/overlay021_selection_display_021ff4f0.txt: match_report build/reports/overlay021_selection_display_021ff4f0.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_selection_display_021ff4f0.json
-  report_args = --section .text --function func_ov021_021ff4f0 --require-exact
+  report_args = --section .text --function Overlay021Descriptor_GetFlags16_19 --require-exact
 build build/reports/overlay021_selection_display_021ff504.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff504.o | build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff504.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_selection_display_021ff504.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_selection_display_021ff504.o
@@ -31804,7 +31804,7 @@ build build/reports/overlay027_scene_constructor_021fda30.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov027/overlay027_scene_constructor_021fda30.o
 build build/reports/overlay027_scene_constructor_021fda30.txt: match_report build/reports/overlay027_scene_constructor_021fda30.json | tools/report_objdiff.py
   report_json = build/reports/overlay027_scene_constructor_021fda30.json
-  report_args = --section .text --function func_ov027_021fda30 --require-exact
+  report_args = --section .text --function Overlay027Scene_Init --require-exact
 build overlay027_scene_constructor: phony build/decomp/src/overlays/ov027/overlay027_scene_constructor.o build/decomp/asm/overlays/ov027/overlay027_scene_constructor_021fda30.o build/reports/overlay027_scene_constructor_021fda30.txt
 overlay027_scene_teardown_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov027/overlay027_scene_teardown.o: mwccarm src/overlays/ov027/overlay027_scene_teardown.c | include/tingle/types.h
@@ -32933,7 +32933,7 @@ build build/reports/overlay032_graphics_setup.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov032/overlay032_graphics_setup.o
 build build/reports/overlay032_graphics_setup.txt: match_report build/reports/overlay032_graphics_setup.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_graphics_setup.json
-  report_args = --section .text --function func_ov032_021fd994 --require-exact
+  report_args = --section .text --function Overlay032Scene_SetupGraphics --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_power_control.o: mwasmarm asm/overlays/ov032/overlay032_power_control.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_power_control.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_power_control.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_power_control.o | build/decomp/asm/overlays/ov032/overlay032_power_control.o
@@ -32954,7 +32954,7 @@ build build/reports/overlay032_display_shutdown.json: objdiff build/decomp/delin
   base_object = build/decomp/asm/overlays/ov032/overlay032_display_shutdown.o
 build build/reports/overlay032_display_shutdown.txt: match_report build/reports/overlay032_display_shutdown.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_display_shutdown.json
-  report_args = --section .text --function func_ov032_021fde38 --require-exact
+  report_args = --section .text --function Overlay032Scene_ShutdownGraphics --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_frame_dispatch.o: mwasmarm asm/overlays/ov032/overlay032_frame_dispatch.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_frame_dispatch.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_frame_dispatch.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_frame_dispatch.o | build/decomp/asm/overlays/ov032/overlay032_frame_dispatch.o
@@ -32970,7 +32970,7 @@ build build/reports/overlay032_prompt_blink.json: objdiff build/decomp/delinks/a
   base_object = build/decomp/asm/overlays/ov032/overlay032_prompt_blink.o
 build build/reports/overlay032_prompt_blink.txt: match_report build/reports/overlay032_prompt_blink.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_prompt_blink.json
-  report_args = --section .text --function func_ov032_021fe024 --require-exact
+  report_args = --section .text --function Overlay032_UpdatePromptBlink --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_sprite_disable.o: mwasmarm asm/overlays/ov032/overlay032_sprite_disable.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_sprite_disable.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_sprite_disable.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_sprite_disable.o | build/decomp/asm/overlays/ov032/overlay032_sprite_disable.o
@@ -33031,7 +33031,7 @@ build build/reports/overlay032_value_format.json: objdiff build/decomp/delinks/a
   base_object = build/decomp/asm/overlays/ov032/overlay032_value_format.o
 build build/reports/overlay032_value_format.txt: match_report build/reports/overlay032_value_format.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_value_format.json
-  report_args = --section .text --function func_ov032_021fe2f0 --require-exact
+  report_args = --section .text --function Overlay032Scene_SetNumericDialogText --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_indexed_message.o: mwasmarm asm/overlays/ov032/overlay032_indexed_message.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_indexed_message.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_indexed_message.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_indexed_message.o | build/decomp/asm/overlays/ov032/overlay032_indexed_message.o
@@ -33181,7 +33181,7 @@ build build/reports/overlay032_hit_test.json: objdiff build/decomp/delinks/asm/o
   base_object = build/decomp/asm/overlays/ov032/overlay032_hit_test.o
 build build/reports/overlay032_hit_test.txt: match_report build/reports/overlay032_hit_test.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_hit_test.json
-  report_args = --section .text --function func_ov032_021ff288 --require-exact
+  report_args = --section .text --function Overlay032SpriteWrapper_HitTest --require-exact
 build overlay032_hit_test: phony build/decomp/src/overlays/ov032/overlay032_hit_test.o build/decomp/asm/overlays/ov032/overlay032_hit_test.o build/reports/overlay032_hit_test.txt
 overlay032_detail_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov032/overlay032_detail_state.o: mwccarm src/overlays/ov032/overlay032_detail_state.c | include/tingle/types.h
@@ -33328,7 +33328,7 @@ build build/reports/overlay032_controller_attach.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/overlays/ov032/overlay032_controller_attach.o
 build build/reports/overlay032_controller_attach.txt: match_report build/reports/overlay032_controller_attach.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_controller_attach.json
-  report_args = --section .text --function func_ov032_02201450 --require-exact
+  report_args = --section .text --function Overlay032Controller_CreateObject --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_controller_detach.o: mwasmarm asm/overlays/ov032/overlay032_controller_detach.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_controller_detach.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_controller_detach.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_controller_detach.o | build/decomp/asm/overlays/ov032/overlay032_controller_detach.o
@@ -33357,7 +33357,7 @@ build build/reports/overlay032_scale_begin.json: objdiff build/decomp/delinks/as
   base_object = build/decomp/asm/overlays/ov032/overlay032_scale_begin.o
 build build/reports/overlay032_scale_begin.txt: match_report build/reports/overlay032_scale_begin.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_scale_begin.json
-  report_args = --section .text --function func_ov032_0220150c --require-exact
+  report_args = --section .text --function Overlay032Controller_SetScaleTarget --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_scale_update.o: mwasmarm asm/overlays/ov032/overlay032_scale_update.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_scale_update.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_scale_update.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_scale_update.o | build/decomp/asm/overlays/ov032/overlay032_scale_update.o
@@ -33365,7 +33365,7 @@ build build/reports/overlay032_scale_update.json: objdiff build/decomp/delinks/a
   base_object = build/decomp/asm/overlays/ov032/overlay032_scale_update.o
 build build/reports/overlay032_scale_update.txt: match_report build/reports/overlay032_scale_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_scale_update.json
-  report_args = --section .text --function func_ov032_02201670 --require-exact
+  report_args = --section .text --function Overlay032Controller_UpdateScale --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_widget_init.o: mwasmarm asm/overlays/ov032/overlay032_widget_init.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_widget_init.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_widget_init.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_widget_init.o | build/decomp/asm/overlays/ov032/overlay032_widget_init.o
@@ -33410,7 +33410,7 @@ build build/reports/overlay032_widget_hit_row.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov032/overlay032_widget_hit_row.o
 build build/reports/overlay032_widget_hit_row.txt: match_report build/reports/overlay032_widget_hit_row.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_widget_hit_row.json
-  report_args = --section .text --function func_ov032_02201de4 --require-exact
+  report_args = --section .text --function Overlay032Widget_HitTestRow --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_widget_midpoint.o: mwasmarm asm/overlays/ov032/overlay032_widget_midpoint.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_widget_midpoint.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_widget_midpoint.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_widget_midpoint.o | build/decomp/asm/overlays/ov032/overlay032_widget_midpoint.o
@@ -33434,7 +33434,7 @@ build build/reports/overlay032_list_base_init.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov032/overlay032_list_base_init.o
 build build/reports/overlay032_list_base_init.txt: match_report build/reports/overlay032_list_base_init.json | tools/report_objdiff.py
   report_json = build/reports/overlay032_list_base_init.json
-  report_args = --section .text --function func_ov032_02201f58 --require-exact
+  report_args = --section .text --function Overlay032ListBase_Init --require-exact
 build build/decomp/asm/overlays/ov032/overlay032_list_constructor.o: mwasmarm asm/overlays/ov032/overlay032_list_constructor.s
 build build/decomp/delinks/asm/overlays/ov032/overlay032_list_constructor.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov032/delinks.txt config/arm9/overlays/ov032/symbols.txt config/arm9/overlays/ov032/relocs.txt
 build build/reports/overlay032_list_constructor.json: objdiff build/decomp/delinks/asm/overlays/ov032/overlay032_list_constructor.o | build/decomp/asm/overlays/ov032/overlay032_list_constructor.o
@@ -40834,7 +40834,7 @@ build build/reports/overlay043_presentation_resources_reset.txt: match_report bu
   report_args = --section .text --function func_ov043_0220bcf4 --require-exact
 build build/reports/overlay043_presentation_resources_update.txt: match_report build/reports/overlay043_presentation_resources.json | tools/report_objdiff.py
   report_json = build/reports/overlay043_presentation_resources.json
-  report_args = --section .text --function func_ov043_0220bd24 --require-exact
+  report_args = --section .text --function Overlay043_UpdatePresentationResources --require-exact
 
 build overlay043_presentation_resources: phony build/decomp/src/overlays/ov043/overlay043_presentation_resources.o build/reports/overlay043_presentation_resources_construct.txt build/reports/overlay043_presentation_resources_reset.txt build/reports/overlay043_presentation_resources_update.txt
 build overlay043_partial6: phony overlay043_partial5 overlay043_presentation_resources
@@ -40952,7 +40952,7 @@ build build/reports/overlay044_panel_interaction_release.json: objdiff build/dec
   base_object = build/decomp/delinks/asm/overlays/ov044/overlay044_panel_interaction_release.o
 build build/reports/overlay044_panel_interaction_release.txt: match_report build/reports/overlay044_panel_interaction_release.json | tools/report_objdiff.py
   report_json = build/reports/overlay044_panel_interaction_release.json
-  report_args = --section .text --function func_ov044_0220bb60 --require-exact
+  report_args = --section .text --function Overlay044Panel_ReleaseRow --require-exact
 build build/decomp/asm/overlays/ov044/overlay044_panel_interaction_display.o: mwasmarm asm/overlays/ov044/overlay044_panel_interaction_display.s
 build build/decomp/delinks/asm/overlays/ov044/overlay044_panel_interaction_display.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov044/delinks.txt config/arm9/overlays/ov044/symbols.txt config/arm9/overlays/ov044/relocs.txt
   object = asm/overlays/ov044/overlay044_panel_interaction_display.s
@@ -41304,7 +41304,7 @@ build build/reports/overlay045_effect_lifecycle_destroy.txt: match_report build/
   report_args = --section .text --function func_ov045_0220b770 --require-exact
 build build/reports/overlay045_effect_lifecycle_delete.txt: match_report build/reports/overlay045_effect_lifecycle.json | tools/report_objdiff.py
   report_json = build/reports/overlay045_effect_lifecycle.json
-  report_args = --section .text --function func_ov045_0220b784 --require-exact
+  report_args = --section .text --function Overlay045TransientEffect_Delete --require-exact
 build build/decomp/asm/overlays/ov045/overlay045_effect_update.o: mwasmarm asm/overlays/ov045/overlay045_effect_update.s
 build build/decomp/delinks/asm/overlays/ov045/overlay045_effect_update.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov045/delinks.txt config/arm9/overlays/ov045/symbols.txt config/arm9/overlays/ov045/relocs.txt
   object = asm/overlays/ov045/overlay045_effect_update.s
@@ -41370,7 +41370,7 @@ build build/reports/overlay045_display_destroy.txt: match_report build/reports/o
   report_args = --section .text --function func_ov045_0220bcfc --require-exact
 build build/reports/overlay045_display_delete.txt: match_report build/reports/overlay045_display_object.json | tools/report_objdiff.py
   report_json = build/reports/overlay045_display_object.json
-  report_args = --section .text --function func_ov045_0220bd30 --require-exact
+  report_args = --section .text --function Overlay045DisplayObject_Delete --require-exact
 build build/reports/overlay045_display_update.txt: match_report build/reports/overlay045_display_object.json | tools/report_objdiff.py
   report_json = build/reports/overlay045_display_object.json
   report_args = --section .text --function func_ov045_0220bd6c --require-exact
@@ -41499,7 +41499,7 @@ build build/reports/overlay045_graphics_helpers.json: objdiff build/decomp/src/o
   base_object = build/decomp/delinks/src/overlays/ov045/overlay045_graphics_helpers.o
 build build/reports/overlay045_graphics_apply.txt: match_report build/reports/overlay045_graphics_helpers.json | tools/report_objdiff.py
   report_json = build/reports/overlay045_graphics_helpers.json
-  report_args = --section .text --function func_ov045_0220c2a0 --require-exact
+  report_args = --section .text --function Overlay045Graphics_SetUniformValue --require-exact
 build build/decomp/asm/overlays/ov045/overlay045_sub_display_control.o: mwasmarm asm/overlays/ov045/overlay045_sub_display_control.s
 build build/decomp/delinks/asm/overlays/ov045/overlay045_sub_display_control.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov045/delinks.txt config/arm9/overlays/ov045/symbols.txt config/arm9/overlays/ov045/relocs.txt
   object = asm/overlays/ov045/overlay045_sub_display_control.s
@@ -41579,7 +41579,7 @@ build build/generated/overlays/ov045/overlay045_sound_stop.s: extract_matching_f
   function = func_ov045_0220d2d8
   portable = src/overlays/ov045/overlay045_tail_callbacks.c
 build build/generated/overlays/ov045/overlay045_preview_draw.s: extract_matching_function build/analysis/_dsd_gap@ov045_2.s | tools/extract_matching_function.py
-  function = func_ov045_0220d2f8
+  function = Overlay045_DrawSelectorPreview
   portable = src/overlays/ov045/overlay045_tail_callbacks.c
 build build/generated/overlays/ov045/overlay045_effect_delete.s: extract_matching_function build/analysis/_dsd_gap@ov045_2.s | tools/extract_matching_function.py
   function = func_ov045_0220d454
@@ -41607,7 +41607,7 @@ build build/reports/overlay045_sound_stop.txt: match_report build/reports/overla
   report_args = --section .text --function func_ov045_0220d2d8 --require-exact
 build build/reports/overlay045_preview_draw.txt: match_report build/reports/overlay045_preview_draw.json | tools/report_objdiff.py
   report_json = build/reports/overlay045_preview_draw.json
-  report_args = --section .text --function func_ov045_0220d2f8 --require-exact
+  report_args = --section .text --function Overlay045_DrawSelectorPreview --require-exact
 build build/reports/overlay045_effect_delete.txt: match_report build/reports/overlay045_effect_delete.json | tools/report_objdiff.py
   report_json = build/reports/overlay045_effect_delete.json
   report_args = --section .text --function func_ov045_0220d454 --require-exact
@@ -41892,7 +41892,7 @@ build build/reports/overlay050_sprite_alpha.json: objdiff build/decomp/src/overl
   base_object = build/decomp/delinks/src/overlays/ov050/overlay050_sprite_alpha.o
 build build/reports/overlay050_sprite_alpha.txt: match_report build/reports/overlay050_sprite_alpha.json | tools/report_objdiff.py
   report_json = build/reports/overlay050_sprite_alpha.json
-  report_args = --section .text --function func_ov050_0220d7ac --require-exact
+  report_args = --section .text --function Overlay050SpritePair_SetAlpha --require-exact
 build build/decomp/src/overlays/ov050/overlay050_effect_base.o: mwccarm src/overlays/ov050/overlay050_effect_base.c | include/tingle/types.h
   source = src/overlays/ov050/overlay050_effect_base.c
   cflags = $overlay050_small_cflags
@@ -41903,7 +41903,7 @@ build build/reports/overlay050_effect_base.json: objdiff build/decomp/src/overla
   base_object = build/decomp/delinks/src/overlays/ov050/overlay050_effect_base.o
 build build/reports/overlay050_effect_base.txt: match_report build/reports/overlay050_effect_base.json | tools/report_objdiff.py
   report_json = build/reports/overlay050_effect_base.json
-  report_args = --section .text --function func_ov050_0220d874 --require-exact
+  report_args = --section .text --function Overlay050EffectBase_Init --require-exact
 build build/decomp/src/overlays/ov050/overlay050_list_noop.o: mwccarm src/overlays/ov050/overlay050_list_noop.c | include/tingle/types.h
   source = src/overlays/ov050/overlay050_list_noop.c
   cflags = $overlay050_small_cflags
@@ -43860,7 +43860,7 @@ build overlay645: phony overlay645_matching
 build link_replacement_objects_623: phony build/decomp/asm/overlays/ov645/overlay645_02233c60.o link_replacement_objects_624
 subninja config/arm9/overlays/ov646/matching.ninja
 build overlay646: phony overlay646_matching
-build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/asm/game/func_02062728.o build/decomp/asm/game/func_02062828.o build/decomp/asm/game/func_02062c20.o build/decomp/asm/game/func_02062f18.o build/decomp/asm/game/func_02064b7c.o build/decomp/asm/game/func_02065468.o build/decomp/asm/game/func_020654ac.o build/decomp/asm/game/func_0206550c.o build/decomp/asm/game/func_020683c8.o build/decomp/asm/game/func_020683f4.o build/decomp/asm/game/func_02068408.o build/decomp/asm/game/func_02068444.o build/decomp/asm/game/func_02068538.o build/decomp/asm/game/func_020685b0.o build/decomp/asm/game/func_02068630.o build/decomp/asm/game/func_02068698.o build/decomp/asm/game/func_02068704.o build/decomp/asm/game/func_02068938.o build/decomp/asm/game/func_02068954.o build/decomp/asm/game/func_0206896c.o build/decomp/asm/game/func_02093cb4.o build/decomp/asm/game/func_02093d20.o build/decomp/asm/game/func_02094154.o build/decomp/asm/game/func_020943d4.o build/decomp/asm/game/func_02094430.o build/decomp/asm/game/func_020944f0.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
+build link_replacement_objects_624: phony build/decomp/asm/overlays/ov646/overlay646_02233c60.o build/decomp/asm/game/InventoryRecord_Assign.o build/decomp/asm/game/InventoryRecord_AssignPersistentFields.o build/decomp/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o build/decomp/asm/game/InventoryRecord_GetSortKey.o build/decomp/asm/game/InventoryRecord_Copy.o build/decomp/asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.o build/decomp/asm/game/func_020654ac.o build/decomp/asm/game/InventoryRecordCollection_SortAlternate.o build/decomp/asm/game/InventoryCell_Init.o build/decomp/asm/game/InventoryCell_Destroy.o build/decomp/asm/game/InventoryViewState_Init.o build/decomp/asm/game/InventoryScene_Init.o build/decomp/asm/game/InventoryScene_Destroy.o build/decomp/asm/game/InventoryScene_Delete.o build/decomp/asm/game/InventoryScene_LoadPrimaryView.o build/decomp/asm/game/InventoryScene_LoadSecondaryView.o build/decomp/asm/game/InventoryScene_UpdateInput.o build/decomp/asm/game/func_02068938.o build/decomp/asm/game/InventoryScene_UpdateTerminal.o build/decomp/asm/game/InventoryScene_UpdateChild.o build/decomp/asm/game/InventoryScroll_InitBase.o build/decomp/asm/game/InventoryScroll_ConfigureRange.o build/decomp/asm/game/func_02094154.o build/decomp/asm/game/InventoryScroll_Destroy.o build/decomp/asm/game/InventoryScroll_Delete.o build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o build/decomp/src/game/sound_context_phase_selection.o build/decomp/src/game/sound_context_stream_facade.o build/decomp/src/game/actor_interaction_candidate_runtime.o build/decomp/src/game/actor_rectangle_geometry.o build/decomp/src/graphics/graphics_bank_state_snapshot.o build/decomp/src/graphics/title_display_setup_helpers.o build/decomp/src/graphics/display_brightness_helpers.o build/decomp/src/graphics/animation_resource_state.o build/decomp/src/graphics/animation_resource_state_replace.o build/decomp/src/graphics/animation_resource_state_release.o build/decomp/src/graphics/graphics_bg_character_upload_sub.o build/decomp/src/graphics/graphics_bg_palette_upload_sub.o build/decomp/src/graphics/graphics_bg_map_upload_sub.o build/decomp/src/math/signed_absolute.o $
   build/decomp/src/game/title_random_value.o build/decomp/src/game/title_interpolated_value.o build/decomp/src/game/title_interpolated_value_advance.o build/decomp/src/game/title_interpolated_value_complete.o build/decomp/src/game/title_screen_resource_collection.o build/decomp/src/game/title_screen_resource_collection_destructor.o build/decomp/src/game/title_screen_resource_collection_ops.o build/decomp/src/game/title_character_resource_collection.o build/decomp/src/game/title_character_resource_collection_destructor.o build/decomp/src/game/title_character_resource_collection_ops.o build/decomp/src/graphics/title_palette_backdrop.o build/decomp/src/game/title_scroll_value.o build/decomp/src/game/actor_interaction_registry_update.o build/decomp/src/game/actor_direction_category.o
 build build/decomp/src/overlays/ov025/overlay025_effect_base_noop.o: mwccarm src/overlays/ov025/overlay025_effect_base_noop.c | include/tingle/types.h
   source = src/overlays/ov025/overlay025_effect_base_noop.c
@@ -44498,29 +44498,29 @@ build build/reports/overlay090_title_chain_curve_update.txt: match_report build/
   report_json = build/reports/overlay090_title_chain_curve_update.json
   report_args = --section .text --function func_ov090_0221c184 --require-exact
 build overlay090_title_chain_curve_update: phony build/reports/overlay090_title_chain_curve_update.txt
-build build/decomp/asm/game/func_02062728.o: mwasmarm asm/game/func_02062728.s
-build build/decomp/asm/game/func_02062828.o: mwasmarm asm/game/func_02062828.s
-build build/decomp/asm/game/func_02062c20.o: mwasmarm asm/game/func_02062c20.s
-build build/decomp/asm/game/func_02062f18.o: mwasmarm asm/game/func_02062f18.s
-build build/decomp/asm/game/func_02064b7c.o: mwasmarm asm/game/func_02064b7c.s
-build build/decomp/asm/game/func_02065468.o: mwasmarm asm/game/func_02065468.s
+build build/decomp/asm/game/InventoryRecord_Assign.o: mwasmarm asm/game/InventoryRecord_Assign.s
+build build/decomp/asm/game/InventoryRecord_AssignPersistentFields.o: mwasmarm asm/game/InventoryRecord_AssignPersistentFields.s
+build build/decomp/asm/game/InventoryRecord_IsEmptyKind1Subtype1.o: mwasmarm asm/game/InventoryRecord_IsEmptyKind1Subtype1.s
+build build/decomp/asm/game/InventoryRecord_GetSortKey.o: mwasmarm asm/game/InventoryRecord_GetSortKey.s
+build build/decomp/asm/game/InventoryRecord_Copy.o: mwasmarm asm/game/InventoryRecord_Copy.s
+build build/decomp/asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.o: mwasmarm asm/game/InventoryRecordCollection_HasInactiveKind1Subtype1.s
 build build/decomp/asm/game/func_020654ac.o: mwasmarm asm/game/func_020654ac.s
-build build/decomp/asm/game/func_0206550c.o: mwasmarm asm/game/func_0206550c.s
-build build/decomp/asm/game/func_020683c8.o: mwasmarm asm/game/func_020683c8.s
-build build/decomp/asm/game/func_020683f4.o: mwasmarm asm/game/func_020683f4.s
-build build/decomp/asm/game/func_02068408.o: mwasmarm asm/game/func_02068408.s
-build build/decomp/asm/game/func_02068444.o: mwasmarm asm/game/func_02068444.s
-build build/decomp/asm/game/func_02068538.o: mwasmarm asm/game/func_02068538.s
-build build/decomp/asm/game/func_020685b0.o: mwasmarm asm/game/func_020685b0.s
-build build/decomp/asm/game/func_02068630.o: mwasmarm asm/game/func_02068630.s
-build build/decomp/asm/game/func_02068698.o: mwasmarm asm/game/func_02068698.s
-build build/decomp/asm/game/func_02068704.o: mwasmarm asm/game/func_02068704.s
+build build/decomp/asm/game/InventoryRecordCollection_SortAlternate.o: mwasmarm asm/game/InventoryRecordCollection_SortAlternate.s
+build build/decomp/asm/game/InventoryCell_Init.o: mwasmarm asm/game/InventoryCell_Init.s
+build build/decomp/asm/game/InventoryCell_Destroy.o: mwasmarm asm/game/InventoryCell_Destroy.s
+build build/decomp/asm/game/InventoryViewState_Init.o: mwasmarm asm/game/InventoryViewState_Init.s
+build build/decomp/asm/game/InventoryScene_Init.o: mwasmarm asm/game/InventoryScene_Init.s
+build build/decomp/asm/game/InventoryScene_Destroy.o: mwasmarm asm/game/InventoryScene_Destroy.s
+build build/decomp/asm/game/InventoryScene_Delete.o: mwasmarm asm/game/InventoryScene_Delete.s
+build build/decomp/asm/game/InventoryScene_LoadPrimaryView.o: mwasmarm asm/game/InventoryScene_LoadPrimaryView.s
+build build/decomp/asm/game/InventoryScene_LoadSecondaryView.o: mwasmarm asm/game/InventoryScene_LoadSecondaryView.s
+build build/decomp/asm/game/InventoryScene_UpdateInput.o: mwasmarm asm/game/InventoryScene_UpdateInput.s
 build build/decomp/asm/game/func_02068938.o: mwasmarm asm/game/func_02068938.s
-build build/decomp/asm/game/func_02068954.o: mwasmarm asm/game/func_02068954.s
-build build/decomp/asm/game/func_0206896c.o: mwasmarm asm/game/func_0206896c.s
-build build/decomp/asm/game/func_02093cb4.o: mwasmarm asm/game/func_02093cb4.s
-build build/decomp/asm/game/func_02093d20.o: mwasmarm asm/game/func_02093d20.s
+build build/decomp/asm/game/InventoryScene_UpdateTerminal.o: mwasmarm asm/game/InventoryScene_UpdateTerminal.s
+build build/decomp/asm/game/InventoryScene_UpdateChild.o: mwasmarm asm/game/InventoryScene_UpdateChild.s
+build build/decomp/asm/game/InventoryScroll_InitBase.o: mwasmarm asm/game/InventoryScroll_InitBase.s
+build build/decomp/asm/game/InventoryScroll_ConfigureRange.o: mwasmarm asm/game/InventoryScroll_ConfigureRange.s
 build build/decomp/asm/game/func_02094154.o: mwasmarm asm/game/func_02094154.s
-build build/decomp/asm/game/func_020943d4.o: mwasmarm asm/game/func_020943d4.s
-build build/decomp/asm/game/func_02094430.o: mwasmarm asm/game/func_02094430.s
-build build/decomp/asm/game/func_020944f0.o: mwasmarm asm/game/func_020944f0.s
+build build/decomp/asm/game/InventoryScroll_Destroy.o: mwasmarm asm/game/InventoryScroll_Destroy.s
+build build/decomp/asm/game/InventoryScroll_Delete.o: mwasmarm asm/game/InventoryScroll_Delete.s
+build build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o: mwasmarm asm/game/InventoryScroll_UpdateArrowAnimations.s

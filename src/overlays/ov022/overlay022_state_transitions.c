@@ -16,9 +16,9 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
-extern void func_0205974c(void *, s32);
+extern void Sound_LoadGroup(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern s32 func_02093360(void *, const void *);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void func_02095940(void *);
 extern void Sound_Play(void *, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
@@ -66,7 +66,7 @@ extern "C" s32 func_ov022_021ff368(void *scene)
         func_ov022_021fd514(status);
     }
 
-    s32 result = func_02093360(dialog, layout);
+    s32 result = TitleDialog_UpdateTextPage(dialog, layout);
     if (result & 0x200)
         func_ov022_021fd5d4(status, FIELD(void *, dialog, 0xe8));
     if (!(result & 1))
@@ -86,7 +86,7 @@ extern "C" s32 func_ov022_021ff368(void *scene)
 extern "C" s32 func_ov022_021ff480(void *scene)
 {
     if (FIELD(s32, scene, 4) == 0) {
-        func_0205974c(gSoundContext, 0x122);
+        Sound_LoadGroup(gSoundContext, 0x122);
         Sound_Play(gSoundContext, 0x122, 0);
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);

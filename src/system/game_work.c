@@ -8,7 +8,7 @@
 
 extern void *Heap_Alloc(u32 size, const char *tag, u32 alignment, void *heap);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
-extern void *func_02027f94(void);
+extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern void func_02027bd4(void *context, void *state);
 
 extern void *gHeapContext;
@@ -221,7 +221,7 @@ asm void GameWork_Init(register GameWork *work)
     add r1, r4, #0x10
     mov r2, #0x20
     bl MI_CpuCopy8
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     add r1, r4, #0xdf0
     add r1, r1, #0x5000
     bl func_02027bd4
@@ -350,7 +350,7 @@ void GameWork_Init(GameWork *work)
     /* Copy the default name and initialize the still-unidentified subobject. */
     MI_CpuCopy8(gGameWorkInitialData.defaultName, work->playerName,
                 sizeof(work->playerName));
-    func_02027bd4(func_02027f94(), work->unknown5DF0);
+    func_02027bd4(GamePhaseProgress_GetOrCreateGlobal(), work->unknown5DF0);
 
     work->unknown5E10 = 0;
     for (i = 0; i < 30; i++) {

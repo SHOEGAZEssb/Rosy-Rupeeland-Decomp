@@ -5,7 +5,7 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
-.extern func_0207042c
+.extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_02070b50
 .extern func_02070e0c
@@ -37,7 +37,7 @@ func_ov032_021fe4a8:
     mov r2, #0x0
     bl func_02070638
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]

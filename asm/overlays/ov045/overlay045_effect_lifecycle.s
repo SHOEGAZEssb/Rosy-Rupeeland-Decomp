@@ -28,8 +28,8 @@ func_ov045_0220b770:
     mov r0, r4
     ldmia sp!, {r4, pc}
 
-.global func_ov045_0220b784
-func_ov045_0220b784:
+.global Overlay045TransientEffect_Delete
+Overlay045TransientEffect_Delete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl SpritePresentation_Destroy

@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_widget_controller.c for documented portable C. */
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02071d4c
+.extern GraphicsArchive_ReleaseResourceE4
 .extern GraphicsSpriteRenderer_ClearFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
@@ -21,7 +21,7 @@ func_ov032_022018ac:
     ldr r0, L_02201910
     ldr r1, [r4, #0x48]
     ldr r0, [r0, #0x0]
-    bl func_02071d4c
+    bl GraphicsArchive_ReleaseResourceE4
     ldr r0, L_0220190c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearFontResource

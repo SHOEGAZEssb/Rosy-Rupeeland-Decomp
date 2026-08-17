@@ -12,8 +12,8 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071e04(void *resourceContext, void *resource);
-extern void func_020597fc(void *sound, s32 id);
+extern void GraphicsArchive_ReleaseOwlvResource(void *resourceContext, void *resource);
+extern void Sound_ReleaseGroup(void *sound, s32 id);
 extern void Graphics3DLightSet_Destroy(void *descriptorArray);
 extern void func_ov034_021fce00(void *object);
 extern void Heap_Free(void *allocation);
@@ -50,9 +50,9 @@ extern "C" void *func_ov034_021fdda4(void *scene)
     destroy_owned(FIELD(void *, scene, 0));
     for (s32 i = 0; i < FIELD(s32, scene, 0x1b0); ++i)
         destroy_owned(FIELD(void *, scene, 8 + i * 4));
-    func_02071e04(data_020f4e18[0], FIELD(void *, scene, 4));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18[0], FIELD(void *, scene, 4));
     REG16(0x04000060) &= 0xcfef;
-    func_020597fc(gSoundContext, 0x1cd);
+    Sound_ReleaseGroup(gSoundContext, 0x1cd);
     Graphics3DLightSet_Destroy((u8 *)scene + 0x170);
     return scene;
 }

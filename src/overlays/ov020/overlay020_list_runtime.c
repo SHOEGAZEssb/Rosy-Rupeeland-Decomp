@@ -22,8 +22,8 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_02003e20(u32, const void *, s32, void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
@@ -33,13 +33,13 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
-extern const void *func_02079f3c(const void *, u16);
-extern void func_02092798(void *);
+extern const void *RetailTextTable_FindRecordById(const void *, u16);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
-extern void func_02094550(void *, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_SetSpritePriority(void *, s32);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
 extern void func_020c0c24(void *, s32, s32, void (*)(void *));
 extern void func_ov020_021fce00(void *);
@@ -63,8 +63,8 @@ extern void func_ov020_021fd1cc(void *);
  */
 extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
 {
-    func_02071ea4((u8 *)state + 8);
-    func_02092798((u8 *)state + 0x14);
+    AnimationResourceState_InitEmbedded((u8 *)state + 8);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x14);
     FIELD(void *, state, 0) = font;
     FIELD(void *, state, 4) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, state, 4), 0x18) = 0x2f;
@@ -92,8 +92,8 @@ extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
                                    capacity != 0 ? 5 : 1,
                                    0xda, 0x18, 0x0c);
     FIELD(void *, state, 0x44) = controller;
-    func_02094550(controller, 0);
-    func_02094574(controller);
+    InventoryScroll_SetSpritePriority(controller, 0);
+    InventoryScroll_UpdatePresentation(controller);
     func_02092814((u8 *)state + 0x14, 0x7000);
     func_02092814((u8 *)state + 0x14, 0x7006);
     func_02092814((u8 *)state + 0x14, 0x7005);
@@ -118,7 +118,7 @@ extern "C" void *func_ov020_021fcfd4(void *state)
         func_020c0c24(FIELD(void *, state, 0x38), 12, 8,
                       func_ov020_021fd034);
     func_020927b8((u8 *)state + 0x14);
-    func_02071eb8((u8 *)state + 8);
+    AnimationResourceState_Destroy((u8 *)state + 8);
     return state;
 }
 
@@ -213,7 +213,7 @@ extern "C" void func_ov020_021fd1cc(void *state)
         const void *descriptor =
             FIELD(Overlay020Row *, state, 0x38)[index].descriptor;
         GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 0), (u8 *)state + 0x18);
-        const void *text = func_02079f3c(
+        const void *text = RetailTextTable_FindRecordById(
             data_021f3ecc, FIELD(u16, descriptor, 0xc));
         GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 0), (u8 *)text + 2,
                       0x42, 0x15 + rowIndex * 0x18, 14, 8, 0);

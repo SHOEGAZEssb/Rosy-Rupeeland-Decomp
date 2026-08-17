@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_tertiary_scene_lifecycle.c for documented portable C. */
 
     .extern GraphicsAnimationInstanceManager_CreateInstance
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_ov035_021fdd28
     .extern Heap_Alloc
     .extern func_0209189c
@@ -25,7 +25,7 @@ func_ov035_021ffb74:
     mov r8, r0
     add r0, r5, #0xc0
     mov r1, #0x2
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r2, #0x0
     mov r1, r0
     str r2, [sp, #0x0]
@@ -56,7 +56,7 @@ func_ov035_021ffb74:
     mov r6, r0
     add r0, r5, #0xc0
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r7, [sp, #0x0]
     str r6, [sp, #0x4]
     mov r2, r8

@@ -6,7 +6,7 @@
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_02091b98
     .extern func_02091c7c
     .extern func_02091cf0
@@ -170,7 +170,7 @@ L_021fd274:
 L_021fd28c:
     add r0, r6, #0x64
     mov r1, #0x4
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r1, r0
     mov r0, r4
     add r1, r1, #0x18

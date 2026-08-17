@@ -21,15 +21,15 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_ReplaceStateResources(void *, s32, s32, s32);
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 extern void IndexedSelectionController_Init(void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
@@ -65,14 +65,14 @@ extern void func_ov028_021fe3a4(void *);
  */
 extern "C" void *func_ov028_021fdb00(void *state)
 {
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const void *, state, 0) = data_ov028_021ff2ac;
-    func_02071ea4((u8 *)state + 0x5c);
-    func_02071ea4((u8 *)state + 0x68);
-    func_02071ea4((u8 *)state + 0x74);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x5c);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x68);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x74);
     func_020957bc((u8 *)state + 0x98);
     func_020957bc((u8 *)state + 0x144);
-    func_02092798((u8 *)state + 0x1fc);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x1fc);
     IndexedSelectionController_Init((u8 *)state + 0x228);
     func_ov028_021fda98((u8 *)state + 0x264);
     FIELD(u32, state, 0x27c) = 0;

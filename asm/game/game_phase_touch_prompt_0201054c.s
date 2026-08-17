@@ -10,7 +10,7 @@
 .extern ActorDerivedType1_IsActiveRecordType69
 .extern ActorDerivedType1_IsActiveRecordType6A
 .extern ActorDerivedType1_IsIdleEligible
-.extern func_02092910
+.extern GraphicsSpriteState_TestTouchPoint
 .extern Presentation_SetScript
 .extern Presentation_IsScriptComplete
 .extern Presentation_IsScriptSuspended
@@ -69,7 +69,7 @@ L_020105c4:
     ldr r0, [r4, #0x1c]
     add r1, sp, #0x0
     ldr r0, [r0, #0x9c]
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     cmp r0, #0x0
     beq L_020106f8
     ldr r0, [r5, #0x230]

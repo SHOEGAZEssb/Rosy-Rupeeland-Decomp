@@ -22,9 +22,9 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *object, void *handle);
+extern void *AlternateSpritePresentation_Init(void *object, void *handle);
 extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
-extern void func_020956a4(void *object);
+extern void AlternateSpritePresentation_SyncTransform(void *object);
 extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void PresentationList_Append(void *list, void *object);
 extern void func_02091b98(void *timer, s32 duration);
@@ -94,7 +94,7 @@ extern "C" void func_ov036_02201470(void *controller)
     func_ov036_021ff050(handle, 0, 0, 0, 0, 2, 0x42);
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     if (FIELD(s32, controller, 0x1a0) != 0) {
         FIELD(s32, controller, 0x1a0) = 0;
         Presentation_SetPosition(child, -0x700, -0x800, 0);
@@ -102,7 +102,7 @@ extern "C" void func_ov036_02201470(void *controller)
         FIELD(s32, controller, 0x1a0) = 1;
         Presentation_SetPosition(child, 0x700, -0x800, 0);
     }
-    func_020956a4(child);
+    AlternateSpritePresentation_SyncTransform(child);
     PresentationScalar_TransitionTo((u8 *)child + 0x1c, 1, 0x1200);
     FIELD(s32, child, 0x7c) = 0x78;
     FIELD(s32, child, 0x80) = 0;

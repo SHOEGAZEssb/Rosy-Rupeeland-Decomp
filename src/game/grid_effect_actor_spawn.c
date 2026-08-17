@@ -16,12 +16,12 @@ extern void *GamePhaseMetadata_GetByIndex(s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *manager, const void *descriptor);
 extern void ActorSpawnDescriptor_Init(void *destination, ...);
 extern void **GridEffectActorRegistry_AcquireSlot(void);
-extern void func_02062728(void *subobject, void *source);
-extern void *func_02062918(void *source, s32 index);
-extern u32 func_02063064(void *component);
-extern u32 func_02063074(void *component);
-extern u32 func_02063084(void *component);
-extern u32 func_02063190(void *component);
+extern void InventoryRecord_Assign(void *subobject, void *source);
+extern void *ActorDescriptor_GetComponent(void *source, s32 index);
+extern u32 ActorDescriptorComponent_GetCharacterResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetPaletteResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetCellResourceId(void *component);
+extern u32 ActorDescriptorComponent_GetAnimation(void *component);
 #ifdef __cplusplus
 }
 #endif
@@ -53,14 +53,14 @@ void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer)
         return 0;
 
 
-    component = func_02062918(source, 0);
-    resource0 = func_02063064(component);
-    component = func_02062918(source, 0);
-    resource1 = func_02063074(component);
-    component = func_02062918(source, 0);
-    resource2 = func_02063084(component);
-    component = func_02062918(source, 0);
-    resource3 = func_02063190(component);
+    component = ActorDescriptor_GetComponent(source, 0);
+    resource0 = ActorDescriptorComponent_GetCharacterResourceId(component);
+    component = ActorDescriptor_GetComponent(source, 0);
+    resource1 = ActorDescriptorComponent_GetPaletteResourceId(component);
+    component = ActorDescriptor_GetComponent(source, 0);
+    resource2 = ActorDescriptorComponent_GetCellResourceId(component);
+    component = ActorDescriptor_GetComponent(source, 0);
+    resource3 = ActorDescriptorComponent_GetAnimation(component);
 
     ActorSpawnDescriptor_Init(descriptor, 4, 20,
                   resource0, resource1, resource2, 2, resource3,
@@ -79,7 +79,7 @@ void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer)
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     *slot = actor;
     FIELD(s16, actor, 0x218) = timer;
-    func_02062728((u8 *)actor + 0x1f4, source);
+    InventoryRecord_Assign((u8 *)actor + 0x1f4, source);
     FIELD(u32, actor, 0x10) |= 0x1f0100;
     FIELD(s16, actor, 0x60) = -16;
     FIELD(s16, actor, 0x62) = -16;

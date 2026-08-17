@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern data_020e1938
 .extern Type7Actor_SetCallbackPair
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 .global Type7Actor_ResetCallbackState
@@ -42,7 +42,7 @@ Type7Actor_ResetCallbackState: ; 0x02047f38
     beq .L_02047fe4
     beq .L_02047fc0
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02047fc0:

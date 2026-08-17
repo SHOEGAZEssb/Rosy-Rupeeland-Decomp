@@ -18,12 +18,12 @@ extern DebugHudState data_02105468;
 extern void *data_0210545c;
 extern const u16 gPadState1[11];
 extern void *gTouchPanelManager;
-extern void *func_02071980(void *manager, u32 id);
-extern void func_02071d4c(void *manager, void *resource);
-extern void *func_02092cc0(void *object, void *font, void *resource);
-extern void func_02092e9c(void *object, u32 parameter, s32 mode);
+extern void *GraphicsArchive_AcquireVfdResource(void *manager, u32 id);
+extern void GraphicsArchive_ReleaseResourceE4(void *manager, void *resource);
+extern void *TitleDialog_Init(void *object, void *font, void *resource);
+extern void TitleDialog_SetText(void *object, u32 parameter, s32 mode);
 extern void func_02092f88(void *object, s32 row, const u16 *text);
-extern u32 func_02093360(void *object, const u16 *mapping, s32 value);
+extern u32 TitleDialog_UpdateTextPage(void *object, const u16 *mapping, s32 value);
 extern void GraphicsSpriteText_FormatDecimal(u16 *destination, s32 value, s32 firstPower,
                           s32 mode);
 extern void OS_Halt(void);
@@ -45,11 +45,11 @@ void DebugHudState_Open(DebugHudState *self, s32 fontSelect, u32 parameter,
     void *renderer;
     self->resetFontOnClose = resetFontOnClose;
     self->fontSelect = fontSelect;
-    self->resourceHandle = (u32)func_02071980(data_020f4e18, 0x7007);
+    self->resourceHandle = (u32)GraphicsArchive_AcquireVfdResource(data_020f4e18, 0x7007);
     renderer = Heap_Alloc(0xec, (const char *)gDebugHudRendererAllocationTag, 4,
                           &gHeapContext);
     if (renderer)
-        renderer = func_02092cc0(renderer,
+        renderer = TitleDialog_Init(renderer,
             fontSelect == 0 ? data_020f4e14 : gDebugFont,
             (void *)self->resourceHandle);
     self->rendererHandle = (u32)renderer;
@@ -62,7 +62,7 @@ void DebugHudState_Open(DebugHudState *self, s32 fontSelect, u32 parameter,
     *(s32 *)((u8 *)renderer + 0xd4) = 0;
     *(s32 *)((u8 *)renderer + 0xb4) = 0;
     *(s32 *)((u8 *)renderer + 0xbc) = -2;
-    func_02092e9c(renderer, parameter, 4);
+    TitleDialog_SetText(renderer, parameter, 4);
     *(u16 *)((u8 *)gGameWork + 0x1d2) = 12;
 }
 
@@ -78,7 +78,7 @@ void DebugHudState_Close(DebugHudState *self)
         self->rendererHandle = 0;
     }
     if (self->resourceHandle) {
-        func_02071d4c(data_020f4e18, (void *)self->resourceHandle);
+        GraphicsArchive_ReleaseResourceE4(data_020f4e18, (void *)self->resourceHandle);
         self->resourceHandle = 0;
     }
     for (row = 0; row < 8; row++)
@@ -101,7 +101,7 @@ u32 DebugHudState_PollInput(DebugHudState *self, s32 forceButtons)
     *(s32 *)((u8 *)self->rendererHandle + 0xd0) =
         *(s16 *)((u8 *)gGameWork + 0x1d2);
     *(s32 *)((u8 *)self->rendererHandle + 0xd4) = 0;
-    return func_02093360((void *)self->rendererHandle, mapping, 0);
+    return TitleDialog_UpdateTextPage((void *)self->rendererHandle, mapping, 0);
 }
 
 /* Format value right-aligned into one shared row and upload all rows if active. */

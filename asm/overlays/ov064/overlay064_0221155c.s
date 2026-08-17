@@ -11,11 +11,11 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02058ce0
+.extern Sound_StopAllManagedPlayers
 .extern func_02059604
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_020a7c4c
+.extern Sound_SetMasterVolume
 .extern func_020befec
 .extern Overlay064VecFx32_Add
 .extern Overlay064VecFx32Path_Init
@@ -64,7 +64,7 @@ Overlay064Scene_UpdateMode3:
     cmp r0, #0x7f
     movge r0, #0x7f
     str r0, [r1, #0xa4]
-    bl func_020a7c4c
+    bl Sound_SetMasterVolume
     ldrsh r0, [r5, #0x74]
     cmp r0, #0x78
     bgt .L_02211840
@@ -272,7 +272,7 @@ Overlay064Scene_UpdateMode3:
     strh r2, [r3, #0x24]
     strh r1, [r5, #0x74]
     ldr r0, [r0, #0x0]
-    bl func_02058ce0
+    bl Sound_StopAllManagedPlayers
     mvn r3, #0x0
     str r3, [sp, #0x0]
     str r3, [sp, #0x4]
@@ -287,7 +287,7 @@ Overlay064Scene_UpdateMode3:
     mov r0, #0x7f
     ldr r1, [r1, #0x0]
     str r0, [r1, #0xa4]
-    bl func_020a7c4c
+    bl Sound_SetMasterVolume
     ldr r0, .L_02211aac
     mov r1, #0x0
     ldr r0, [r0, #0x0]

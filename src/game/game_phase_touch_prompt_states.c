@@ -11,7 +11,7 @@ extern "C" {
 extern void *data_021052fc;
 extern const u32 data_020c3618[];
 extern const u32 data_020c3630[];
-extern s32 func_02092910(void *spriteState, const TouchPoint *point);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *spriteState, const TouchPoint *point);
 extern s32 Presentation_IsScriptComplete(void *actor);
 extern s32 Presentation_IsScriptSuspended(void *actor);
 extern void Presentation_SetScript(void *actor, const void *sequence, s32 value);
@@ -48,7 +48,7 @@ void GamePhaseTouchPrompt_UpdateInteraction(GamePhaseTouchPrompt *self)
                 TouchPoint point;
                 u8 *phaseActor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
                 TouchPanelManager_GetPoint(&point, gTouchPanelManager);
-                if (func_02092910(*(void **)((u8 *)self->actor + 0x9c),
+                if (GraphicsSpriteState_TestTouchPoint(*(void **)((u8 *)self->actor + 0x9c),
                                   &point)) {
                     u32 flags = *(u32 *)(phaseActor + 0x230);
                     if (flags & 0x800) {

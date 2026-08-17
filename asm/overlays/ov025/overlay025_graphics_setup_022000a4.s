@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_graphics_setup.c. */
 .extern data_020f4e18
 .extern func_02070638
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070e0c
 .extern func_02070f34
 .extern func_020afd0c
@@ -44,7 +44,7 @@ func_ov025_022000a4:
     mov r2, #0x0
     bl func_02070e0c
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0xa0
     mov r1, #0x100
     mov r2, #0x20

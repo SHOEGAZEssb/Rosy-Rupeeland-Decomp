@@ -12,9 +12,9 @@
 .extern ActorBaseGeometry_Init
 .extern func_02032228
 
-    .global func_02030f98
-    .type func_02030f98, @function
-func_02030f98: ; 0x02030f98
+    .global ActorRuntimeBase_Init
+    .type ActorRuntimeBase_Init, @function
+ActorRuntimeBase_Init: ; 0x02030f98
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -154,4 +154,4 @@ func_02030f98: ; 0x02030f98
     ldmia sp!, {r3, r4, r5, pc}
 .L_020311b4: .word data_020df040
 .L_020311b8: .word data_021052fc
-    .size func_02030f98, . - func_02030f98
+    .size ActorRuntimeBase_Init, . - ActorRuntimeBase_Init

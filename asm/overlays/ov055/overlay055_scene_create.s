@@ -3,9 +3,9 @@
 .extern Heap_Alloc
 .extern data_021052fc
 .extern data_ov055_0220f088
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_02027e8c
-.extern func_02027f94
+.extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_ov055_0220e8b8
 .extern gHeapContext
 
@@ -22,7 +22,7 @@ func_ov055_0220ef6c:
     ldr r0, .L_0220efdc
     ldr r0, [r0, #0x0]
     add r4, r0, #0x3bc
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027e8c
     mov r2, r0
     mov r0, r5
@@ -35,7 +35,7 @@ func_ov055_0220ef6c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220efd4: .word data_ov055_0220f088

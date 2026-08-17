@@ -14,7 +14,7 @@ extern u8 gPresentationBackedActorRuntimeState[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *func_02030f98(void *actor, const void *descriptor);
+extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
@@ -35,7 +35,7 @@ extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
  */
 void *PresentationBackedActor_InitBase(void *self, const void *descriptor)
 {
-    func_02030f98(self, descriptor);
+    ActorRuntimeBase_Init(self, descriptor);
     FIELD(const void *, self, 0x000) = data_020e238c;
     FIELD(u16, self, 0x1ec) = 0;
     FIELD(u16, self, 0x1f0) = 0;

@@ -30,7 +30,7 @@ extern void ActorInteractionRuntime_NoOp(void *work);
 extern void ActorDescriptorBatch_RegisterAndSpawnCategory1(
     void *work, s32 count, const void *descriptors);
 extern void ActorDescriptorBatch_SetCategory1Callback(const void *callback);
-extern void func_02008f58(void *value);
+extern void GamePhaseRuntime_SetGlobalValue30F8(void *value);
 
 extern u8 data_ov330_0221d720[];
 extern u8 data_ov330_0221d734[];
@@ -58,7 +58,7 @@ void func_ov330_0221d6c0(s32 mode)
     ActorDescriptorBatch_RegisterAndSpawnCategory1(
         data_ov330_0221e5a4, 3, data_ov330_0221d734);
     ActorInteractionRuntime_NoOp(data_ov330_0221e5a0);
-    func_02008f58(data_ov330_0221d720);
+    GamePhaseRuntime_SetGlobalValue30F8(data_ov330_0221d720);
     ActorDescriptorBatch_SetCategory1Callback(data_ov330_0221e351);
 }
 

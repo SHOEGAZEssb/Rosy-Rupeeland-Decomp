@@ -47,7 +47,7 @@ extern "C" void *func_ov045_0220b770(void *object)
  * address. The returned value is only an address identity and is no longer
  * safe to dereference after Heap_Free.
  */
-extern "C" void *func_ov045_0220b784(void *object)
+extern "C" void *Overlay045TransientEffect_Delete(void *object)
 {
     SpritePresentation_Destroy(object);
     Heap_Free(object);

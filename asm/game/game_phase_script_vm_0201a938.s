@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_parameter_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_02059278
-.extern func_0205929c
+.extern Sound_PlayDirectSequence
+.extern Sound_StopDirectSequence
 .extern func_020592c0
 .extern func_020595b0
 .extern func_020596e8
@@ -35,7 +35,7 @@ L_0201a980:
     ldr r0, [r0, #0x0]
     mov r1, r1, lsr #0x10
     mov r2, r2, lsr #0x10
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     b L_0201aa08
 L_0201a9a0:
     ldr r0, L_0201aa10
@@ -44,7 +44,7 @@ L_0201a9a0:
     ldr r0, [r0, #0x0]
     mov r1, r1, lsr #0x10
     mov r2, r2, lsr #0x10
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     b L_0201aa08
 L_0201a9c0:
     ldr r0, L_0201aa10

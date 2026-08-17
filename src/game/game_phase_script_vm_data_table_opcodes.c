@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern u8 data_021f3d68[];
-extern u8 *func_02079a7c(void *table, u32 index);
+extern u8 *RuntimeRecordTable_FindByKey(void *table, u32 index);
 extern void *func_02079ba4(void *table, u32 value);
 extern void func_02079ac0(void *table, u32 value);
 #ifdef __cplusplus
@@ -15,13 +15,13 @@ extern void func_02079ac0(void *table, u32 value);
 
 /*
  * Pop a byte offset and table index, resolve the indexed record through
- * func_02079a7c, push the byte at resolved+offset+0xc, and return zero.
+ * RuntimeRecordTable_FindByKey, push the byte at resolved+offset+0xc, and return zero.
  */
 s32 GamePhaseActorScriptVm_GetDataTableRecordByte(GamePhaseActorScriptVm *self)
 {
     u32 offset = GamePhaseScriptVm_Pop(&self->base);
     u32 index = GamePhaseScriptVm_Pop(&self->base);
-    u8 *record = func_02079a7c(data_021f3d68, index);
+    u8 *record = RuntimeRecordTable_FindByKey(data_021f3d68, index);
     GamePhaseScriptVm_SetResult(&self->base, record[offset + 0xc]);
     return 0;
 }

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
 .extern data_ov025_022033b4
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
 .extern func_ov025_021fd5dc
@@ -33,7 +33,7 @@ func_ov025_022006c4:
     add r0, r4, #0x30
     bl func_020927b8
     mov r0, r4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
 L_02200714:

@@ -13,13 +13,13 @@ typedef struct Overlay001ControllerQueryState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02093ffc(void *controller);
+extern s32 InventoryScroll_UpdateInterpolation(void *controller);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pass controller_1BC to func_02093ffc and return its result unchanged. The
+ * Pass controller_1BC to InventoryScroll_UpdateInterpolation and return its result unchanged. The
  * query meaning and callee effects remain unconfirmed; this wrapper changes no
  * other state and performs no direct hardware access.
  */
@@ -28,5 +28,5 @@ extern "C"
 #endif
 s32 func_ov001_021fc240(Overlay001ControllerQueryState *state)
 {
-    return func_02093ffc(state->controller_1bc);
+    return InventoryScroll_UpdateInterpolation(state->controller_1bc);
 }

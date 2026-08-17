@@ -12,7 +12,7 @@ extern "C" {
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern s32 func_020adc90(s32, s32);
-extern s32 func_ov017_021fd3f0(void);
+extern s32 Overlay017_WaitForSquareRoot(void);
 extern void func_ov017_021fda64(void *);
 extern void func_ov017_021fe0b4(void *);
 extern void func_ov017_021fe160(void *);
@@ -103,7 +103,7 @@ extern "C" s32 func_ov017_021fde40(void *state)
                     *(volatile s32 *)(sqrtRegs + 8) = distanceSquared << 24;
                     *(volatile s32 *)(sqrtRegs + 0xc) =
                         (distanceSquared << 24) >> 31;
-                    length = func_ov017_021fd3f0();
+                    length = Overlay017_WaitForSquareRoot();
                     if (length > 0) {
                         s32 scale = func_020adc90(0x2000, length);
                         FIELD(s32, state, 0xa8) = dx * scale;

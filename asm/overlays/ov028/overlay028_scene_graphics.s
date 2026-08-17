@@ -8,7 +8,7 @@
 .extern data_ov028_021ff300
 .extern GamePhaseCurrencyHud_Update
 .extern func_02070638
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070e0c
 .extern func_02070f34
 .extern func_02072048
@@ -18,8 +18,8 @@
 .extern func_020925a4
 .extern func_020925f8
 .extern func_02092638
-.extern func_02092850
-.extern func_02094574
+.extern TitlePalette_SetMainBackdrop
+.extern InventoryScroll_UpdatePresentation
 .extern PresentationScalar_TransitionTo
 .extern PresentationList_UpdateAndDeleteCompleted
 .extern func_020958d8
@@ -140,10 +140,10 @@ func_ov028_021fe1b0:
     bl func_02070e0c
     ldr r5, [sp, #0x8]
     mov r0, r5
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r5
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
     mov r0, r4
     mov r2, #0x0
@@ -153,7 +153,7 @@ func_ov028_021fe1b0:
     mov r2, #0x20
     bl func_020b2058
     mov r0, #0x0
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x28
@@ -273,7 +273,7 @@ L_021fe4e8:
     cmp r0, #0x0
     beq L_021fe528
     ldr r0, [r0, #0x44]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
 L_021fe528:
     ldr r0, [r4, #0x224]
     cmp r0, #0x0

@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov055/overlay055_recovery.c.
 .extern data_020f4e18
-.extern func_02027f94
-.extern func_02071ea4
-.extern func_02071eb8
+.extern GamePhaseProgress_GetOrCreateGlobal
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -19,8 +19,8 @@ func_ov055_0220e400:
     add r0, sp, #0x4
     str r2, [r5, #0x8]
     mov r4, r1
-    bl func_02071ea4
-    bl func_02027f94
+    bl AnimationResourceState_InitEmbedded
+    bl GamePhaseProgress_GetOrCreateGlobal
     ldr r0, [r0, #0x10]
     str r0, [r5, #0x8]
     cmp r0, #0x2
@@ -75,7 +75,7 @@ func_ov055_0220e400:
     ldr r1, [r5, #0x0]
     add r0, sp, #0x4
     strb r2, [r1, #0x3a]
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r5
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}

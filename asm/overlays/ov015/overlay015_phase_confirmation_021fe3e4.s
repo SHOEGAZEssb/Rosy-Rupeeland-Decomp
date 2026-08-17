@@ -1,12 +1,12 @@
     .text
     .extern data_ov015_021febe8
     .extern data_ov015_021febf0
-    .extern func_020628c8
+    .extern ActorDescriptor_GetPrimaryLabel
     .extern func_02095dd4
     .extern func_ov001_021fc7e4
     .extern func_ov001_021fc7f4
     .extern func_ov015_021fce30
-    .extern func_ov015_021fd68c
+    .extern Overlay015_UpdateRecords
     .extern func_ov015_021fdad4
     .extern func_ov015_021fde00
     .extern func_ov015_021fdeac
@@ -46,7 +46,7 @@ L_021fe418:
     b L_021fe530
 L_021fe44c:
     ldr r0, [r0, #0xc]
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r3, r0
     mov r0, r4
     mov r1, #0x12
@@ -109,7 +109,7 @@ L_021fe510:
     bl func_ov015_021fce30
 L_021fe530:
     mov r0, r4
-    bl func_ov015_021fd68c
+    bl Overlay015_UpdateRecords
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fe540: .word data_ov015_021febf0

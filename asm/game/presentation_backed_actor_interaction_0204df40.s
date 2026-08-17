@@ -9,7 +9,7 @@
 .extern gSoundContext
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_0201e0ec
 .extern func_02022cb0
 .extern ActorCollection_QueueActorForRemoval
@@ -124,7 +124,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     ldrh r0, [r6, #0x4e]
     cmp r0, #0x13
     bne .L_0204e12c

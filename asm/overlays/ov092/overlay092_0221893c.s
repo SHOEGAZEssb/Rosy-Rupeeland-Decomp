@@ -14,8 +14,8 @@
 .extern RisingAuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_RebuildPrimaryAttachment
-.extern func_02059278
-.extern func_0205929c
+.extern Sound_PlayDirectSequence
+.extern Sound_StopDirectSequence
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_020bf1f8
@@ -354,7 +354,7 @@ func_ov092_0221893c:
     strh r0, [r5, #0x86]
     ldr r0, .L_022191dc
     ldr r0, [r0, #0x0]
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     mov r0, #0x0
     strh r0, [r5, #0x88]
     mov r0, #0x78
@@ -404,7 +404,7 @@ func_ov092_0221893c:
     mov r1, #0x95
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     mov r0, r5
     mov r1, #0x5
     strh r1, [r0, #0x86]
@@ -430,7 +430,7 @@ func_ov092_0221893c:
     mov r1, #0x98
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
 .L_02218f10:
     add r0, r4, #0x200
     mov r2, #0x6
@@ -566,7 +566,7 @@ func_ov092_0221893c:
     strh r2, [r5, #0x88]
     ldr r0, [r0, #0x0]
     mov r1, #0x98
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     mov r0, r5
     ldrsb r1, [r0, #0xa0]
     cmp r1, #0x0

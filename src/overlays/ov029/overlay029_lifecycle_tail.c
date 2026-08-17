@@ -23,7 +23,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void func_ov002_021fbe68(void *);
 extern void func_ov029_021fce4c(void *, s32, s32);
@@ -121,7 +121,7 @@ extern "C" s32 func_ov029_021fe870(void *state)
             FIELD(s32, state, 0x74) = 0;
             func_ov045_0220bdd0(result);
         }
-        func_020939d8(FIELD(void *, state, 0x9c));
+        TitleDialog_ClearTextRect(FIELD(void *, state, 0x9c));
         {
             s32 count = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
             s32 delta = func_ov045_0220b924(

@@ -23,12 +23,12 @@ extern "C" {
 #endif
 extern void __construct_array(void *, s32, s32, void *, void *);
 extern u32 genrand_int32(void);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern s32 func_020918f4(u32 *, s32);
+extern s32 TitleRandom_NextBounded(u32 *, s32);
 extern void Presentation_Init(void *);
 extern void func_ov025_021fe4cc(void *, s32, s32);
 #ifdef __cplusplus
@@ -48,8 +48,8 @@ extern "C" void *func_ov025_021fdecc(void *object)
     Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov025_02203354;
     __construct_array((u8 *)object + 0xb0, 3, 0xc,
-                      (void *)func_02071ea4, (void *)func_02071eb8);
-    func_02071ea4((u8 *)object + 0xd4);
+                      (void *)AnimationResourceState_InitEmbedded, (void *)AnimationResourceState_Destroy);
+    AnimationResourceState_InitEmbedded((u8 *)object + 0xd4);
 
     FIELD(u32, object, 0xf8) = 0;
     for (s32 i = 0; i < 3; ++i) {
@@ -98,7 +98,7 @@ extern "C" void *func_ov025_021fdecc(void *object)
     FIELD(u16, FIELD(void *, object, 0xf4), 0x24) |= 6;
 
     FIELD(s32, object, 0xa8) = 0;
-    FIELD(s32, object, 0xa4) = func_020918f4((u32 *)object + 0x3e, 2);
+    FIELD(s32, object, 0xa4) = TitleRandom_NextBounded((u32 *)object + 0x3e, 2);
     func_ov025_021fe4cc(object, 2, 0);
     return object;
 }

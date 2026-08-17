@@ -38,7 +38,7 @@ extern void *data_020f4e18;
 extern const s32 data_ov002_021fbe80[7];
 extern const Overlay002SpriteTriple data_ov002_021fbea0[14];
 extern void *gSoundContext;
-extern void func_02071ea4(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02091b6c(void *animation);
 extern void func_02071ee0(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
@@ -47,7 +47,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *reso
 extern void func_02073e48(void *sprite, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
 extern void func_ov002_021fba1c(Overlay002PresentationState *state, s32 value);
-extern void func_0205974c(void *context, s32 value);
+extern void Sound_LoadGroup(void *context, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -71,7 +71,7 @@ Overlay002PresentationState *func_ov002_021fb6e0(
 {
     s32 i;
 
-    func_02071ea4(state->resource_004);
+    AnimationResourceState_InitEmbedded(state->resource_004);
     func_02091b6c(state->animation_098);
     state->owner_000 = owner;
     state->descriptor_084 = 0x98967f;
@@ -116,6 +116,6 @@ Overlay002PresentationState *func_ov002_021fb6e0(
         func_02073e48(state->footer_07c[i], i + 0x1f,
                       i == 0 ? 0xec : 0x15, 0x20, 1, 0, 2);
     }
-    func_0205974c(gSoundContext, 0x79);
+    Sound_LoadGroup(gSoundContext, 0x79);
     return state;
 }

@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov026/overlay026_effect_container.c. */
 .extern data_020f4e18
 .extern data_ov026_02204960
-.extern func_02071e04
+.extern GraphicsArchive_ReleaseOwlvResource
 .extern Graphics3DResourceBinding_Destroy
 .extern func_ov026_021fce50
 .extern Heap_Free
@@ -82,7 +82,7 @@ L_021ff3ac:
     ldr r0, L_021ff3dc
     ldr r1, [r4, #0x11c]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     mov r0, r4
     bl func_ov026_021fce50
     mov r0, r4

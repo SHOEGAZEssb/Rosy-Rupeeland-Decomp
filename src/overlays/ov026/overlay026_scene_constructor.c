@@ -28,7 +28,7 @@ extern "C" {
 #endif
 extern void G3X_Init(void);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *func_02071adc(void *, s32);
+extern void *GraphicsArchive_AcquireOwlvResource(void *, s32);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
@@ -41,8 +41,8 @@ extern void Graphics3DLightSet_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void func_02091b6c(void *);
 extern s32 func_0209189c(void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
-extern void func_02091e28(void *);
+extern s32 TitleRandom_NextBounded(void *, s32);
+extern void SceneInputBase_Init(void *);
 extern void func_02092364(void *);
 extern void func_020923a4(void *);
 extern void *Presentation_InitVariant(void *);
@@ -94,7 +94,7 @@ static void register_child(void *scene, s32 field_offset, u32 size,
 extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
                                       s32 range_start, s32 range_end)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov026_02204944;
     FIELD(s32, scene, 0x54) = scene_id;
     FIELD(s32, scene, 0x60) = range_start;
@@ -143,7 +143,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
         Graphics3DResourceOwner_PrepareResources(manager, descriptor);
     }
 
-    void *model_resource = func_02071adc(data_020f4e18, 0x5000);
+    void *model_resource = GraphicsArchive_AcquireOwlvResource(data_020f4e18, 0x5000);
     FIELD(void *, scene, 0x15c) = model_resource;
     for (s32 i = 0; i < 3; ++i) {
         void *child = Heap_Alloc(0x9c, data_ov026_02204a78, 4, gHeapContext);
@@ -207,7 +207,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     }
 
     for (s32 i = 0; i < 16; ++i) {
-        u32 angle = (u32)func_020918f4((u8 *)scene + 0x7a4, 0x1000);
+        u32 angle = (u32)TitleRandom_NextBounded((u8 *)scene + 0x7a4, 0x1000);
         s32 index = (angle >> 4) & 0xfff;
         s32 x = (data_020c9670[index * 2 + 1] * 0x800 + 0x800) >> 12;
         s32 z = (data_020c9670[index * 2] * 0x800 + 0x800) >> 12;

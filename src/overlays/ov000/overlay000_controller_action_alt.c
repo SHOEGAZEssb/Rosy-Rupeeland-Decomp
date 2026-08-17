@@ -13,17 +13,17 @@ typedef struct Overlay000ControllerActionAltState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02094638(void *controller);
-extern s32 func_02093e3c(void *controller);
-extern s32 func_02094668(void *controller, s32 argument);
-extern s32 func_02093e58(void *controller);
+extern s32 InventoryScroll_TestUpperArrowHold(void *controller);
+extern s32 InventoryScroll_PageUp(void *controller);
+extern s32 InventoryScroll_TestLowerArrowHold(void *controller, s32 argument);
+extern s32 InventoryScroll_PageDown(void *controller);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Try func_02094638 first and, on success, run func_02093e3c. Otherwise try
- * func_02094668(controller, argument) and run func_02093e58 on success. Return
+ * Try InventoryScroll_TestUpperArrowHold first and, on success, run InventoryScroll_PageUp. Otherwise try
+ * InventoryScroll_TestLowerArrowHold(controller, argument) and run InventoryScroll_PageDown on success. Return
  * 1 for either accepted action and 0 when both fail; follow-up return values are
  * ignored. All state effects occur through the controller callees.
  */
@@ -33,10 +33,10 @@ extern "C"
 s32 func_ov000_021fcca8(Overlay000ControllerActionAltState *state,
                          s32 argument)
 {
-    if (func_02094638(state->controller_26c) != 0) {
-        func_02093e3c(state->controller_26c);
-    } else if (func_02094668(state->controller_26c, argument) != 0) {
-        func_02093e58(state->controller_26c);
+    if (InventoryScroll_TestUpperArrowHold(state->controller_26c) != 0) {
+        InventoryScroll_PageUp(state->controller_26c);
+    } else if (InventoryScroll_TestLowerArrowHold(state->controller_26c, argument) != 0) {
+        InventoryScroll_PageDown(state->controller_26c);
     } else {
         return 0;
     }

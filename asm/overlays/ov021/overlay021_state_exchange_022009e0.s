@@ -8,7 +8,7 @@
     .extern RecordDescriptor_GetMessage
     .extern func_02092260
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov002_021fbb68
     .extern func_ov002_021fbc54
     .extern func_ov002_021fbd64
@@ -153,7 +153,7 @@ L_02200b68:
     b L_02200ce8
 L_02200bb0:
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, [r4, #0x394]
     ldr r2, L_02200d00
     add r0, r4, #0x398
@@ -183,7 +183,7 @@ L_02200bfc:
     sub r1, r0, #0x9
     bl func_02092c8c
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r4, #0x2bc]
     mov r1, #0x2
     bl RecordDescriptor_GetMessage
@@ -199,7 +199,7 @@ L_02200bfc:
     b L_02200ce8
 L_02200c5c:
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, L_02200d08
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -231,7 +231,7 @@ L_02200cc0:
     cmp r0, #0x0
     beq L_02200ce8
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, L_02200d0c
     mov r0, r4
     ldmia r1, {r1, r2}

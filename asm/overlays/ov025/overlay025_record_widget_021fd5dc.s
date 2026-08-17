@@ -5,14 +5,14 @@
 .extern data_020f4e18
 .extern data_ov025_02202de8
 .extern data_ov025_02202f28
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02092798
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 .extern func_020befec
 .extern gRuntimeContext
@@ -24,9 +24,9 @@ func_ov025_021fd5dc:
     sub sp, sp, #0xc
     mov r10, r0
     mov r9, r1
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x30
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     ldr r1, L_021fd9c0
     mov r0, #0x34
     ldr r1, [r1, #0x0]

@@ -4,7 +4,7 @@
 .extern data_020df510
 .extern AnimationResource_Destroy
 .extern AnimationResource_InitEmpty
-.extern func_02030f98
+.extern ActorRuntimeBase_Init
 .extern func_0203130c
 .extern func_02031488
     .global ActorDerivedRuntime_Init
@@ -12,7 +12,7 @@
 ActorDerivedRuntime_Init: ; 0x0203b514
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r1, .L_0203b550
     add r0, r4, #0x1ec
     str r1, [r4, #0x0]
@@ -33,7 +33,7 @@ ActorDerivedRuntime_Init: ; 0x0203b514
 ActorDerivedRuntime_InitAlternate: ; 0x0203b554
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r1, .L_0203b590
     add r0, r4, #0x1ec
     str r1, [r4, #0x0]

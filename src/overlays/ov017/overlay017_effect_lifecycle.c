@@ -16,7 +16,7 @@ extern void Presentation_Init(void *);
 extern void Presentation_SetPosition(void *, u32, u32, u32);
 extern void *func_ov017_021fd744(void *);
 extern void *func_ov017_021fd780(void *);
-extern void func_ov017_021fd7f8(void *, s32);
+extern void Overlay017Transform_ReplaceResource(void *, s32);
 extern void func_ov017_021fd948(void *);
 extern void func_ov017_021fe0b4(void *);
 #ifdef __cplusplus
@@ -78,7 +78,7 @@ extern "C" void *func_ov017_021fd94c(void *state, u16 value9a,
     FIELD(s32, state, 0xb0) = 0;
     FIELD(s32, state, 0xb8) = 0;
     FIELD(s32, state, 0xb4) = 0;
-    func_ov017_021fd7f8((u8 *)state + 0xbc, resourceId);
+    Overlay017Transform_ReplaceResource((u8 *)state + 0xbc, resourceId);
     FIELD(u32, state, 0xdc) = (u16)genrand_int32();
     FIELD(u32, state, 0xe0) = (u16)genrand_int32();
     FIELD(u32, state, 0xe4) = (u16)genrand_int32();

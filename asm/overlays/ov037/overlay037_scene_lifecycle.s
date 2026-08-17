@@ -4,7 +4,7 @@
 
     .extern PresentationList_DeleteAll
     .extern Graphics3DResourceOwner_RemoveManager
-    .extern func_02071e04
+    .extern GraphicsArchive_ReleaseOwlvResource
     .extern Graphics3DLightSet_Destroy
     .extern GraphicsResourceSetVariant_Destroy
     .extern Heap_Free
@@ -28,7 +28,7 @@ func_ov037_021fdbb0:
     ldr r0, L_021fdc50
     ldr r1, [r4, #0x110]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     add r0, r4, #0x14c
     bl Graphics3DLightSet_Destroy
     ldr r1, L_021fdc54
@@ -74,7 +74,7 @@ func_ov037_021fdc58:
     ldr r0, L_021fdd00
     ldr r1, [r4, #0x110]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     add r0, r4, #0x14c
     bl Graphics3DLightSet_Destroy
     ldr r1, L_021fdd04

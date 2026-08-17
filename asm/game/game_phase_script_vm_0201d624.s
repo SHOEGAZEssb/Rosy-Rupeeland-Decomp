@@ -13,10 +13,10 @@
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseRuntime_SetPlacementMode
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GamePhaseRuntime_UpdateActorPresentationState
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern Heap_Alloc
 .extern func_ov029_021fd95c
 .extern func_ov046_0220c7d8

@@ -12,8 +12,8 @@
 .extern gSoundContext
 .extern genrand_int32
 
-.global func_ov065_0220ff20
-func_ov065_0220ff20:
+.global Overlay065Particle_Update
+Overlay065Particle_Update:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x18
     mov r7, r0
@@ -188,4 +188,4 @@ func_ov065_0220ff20:
 .L_022101b0: .word data_020c9670
 .L_022101b4: .word data_ov065_02210c00
 .L_022101b8: .word gSoundContext
-.size func_ov065_0220ff20, . - func_ov065_0220ff20
+.size Overlay065Particle_Update, . - Overlay065Particle_Update

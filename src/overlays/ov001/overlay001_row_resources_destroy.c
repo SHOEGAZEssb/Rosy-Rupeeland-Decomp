@@ -18,7 +18,7 @@ typedef struct Overlay001RowResourcesDestroyState {
 extern "C" {
 #endif
 extern void GraphicsSpriteState_ReleaseFromGroup(void *resource);
-extern void func_02071f38(void *metadata);
+extern void AnimationResourceState_ReleaseResources(void *metadata);
 #ifdef __cplusplus
 }
 #endif
@@ -26,7 +26,7 @@ extern void func_02071f38(void *metadata);
 /*
  * Visit the five metadata records beginning at row*5, returning when the next
  * index reaches cellCount_1a4. For every non-null resource at metadata+0x10,
- * call GraphicsSpriteState_ReleaseFromGroup, clear the pointer, and pass the record to func_02071f38.
+ * call GraphicsSpriteState_ReleaseFromGroup, clear the pointer, and pass the record to AnimationResourceState_ReleaseResources.
  * Resource/SDK effects occur in those callees; no hardware is touched directly.
  */
 #ifdef __cplusplus
@@ -49,7 +49,7 @@ void func_ov001_021fc5dc(Overlay001RowResourcesDestroyState *state, s32 row)
                                 (u8 *)state->metadata_20c + index * 0x20,
                                 0x10));
             FIELD(void *, (u8 *)state->metadata_20c + index * 0x20, 0x10) = 0;
-            func_02071f38((u8 *)state->metadata_20c + index * 0x20);
+            AnimationResourceState_ReleaseResources((u8 *)state->metadata_20c + index * 0x20);
         }
     }
 }

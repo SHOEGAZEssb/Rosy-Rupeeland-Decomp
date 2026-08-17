@@ -11,8 +11,8 @@
     .extern func_020706c4
     .extern func_02070bc4
     .extern func_02070eac
-    .extern func_02070874
-    .extern func_0209285c
+    .extern GraphicsBgResourceData_GetDecoded
+    .extern TitlePalette_SetSubBackdrop
     .extern GraphicsResourceSet_Destroy
     .extern data_020f4e18
 
@@ -231,10 +231,10 @@ L_021fc514:
     mov r2, #0x0
     bl func_02070eac
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     ldrh r0, [r0, #0x0]
     strh r0, [r4, #0x84]
-    bl func_0209285c
+    bl TitlePalette_SetSubBackdrop
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

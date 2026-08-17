@@ -36,13 +36,13 @@ extern s32 func_ov013_021fdee4(void *);
 extern s32 func_ov013_021fdfbc(void *);
 extern void func_ov013_021fda9c(void *, s32, void *);
 extern void func_ov013_021fdb10(void *);
-extern void func_02091fb0(void *, s32);
+extern void SceneInputBase_Update(void *, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
 extern void func_02092260(void *, s32);
-extern s32 func_02092910(void *, void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
@@ -88,7 +88,7 @@ s32 func_ov013_021fe148(void *state)
         break;
     case 1:
         if (FIELD(void *, state, 0x9a8) != 0)
-            func_02091fb0(FIELD(void *, state, 0x9a8), 0);
+            SceneInputBase_Update(FIELD(void *, state, 0x9a8), 0);
         if (DisplayBrightness_IsMainTransitionComplete() && DisplayBrightness_IsSubTransitionComplete()) {
             if (FIELD(s32, state, 0x974) != 0) {
                 overlay013_set_callback(state, data_ov013_021fece8);
@@ -123,7 +123,7 @@ s32 func_ov013_021fe28c(void *state)
     s32 i;
 
     if (FIELD(void *, state, 0x9a8) != 0)
-        func_02091fb0(FIELD(void *, state, 0x9a8), 0);
+        SceneInputBase_Update(FIELD(void *, state, 0x9a8), 0);
     switch (FIELD(s32, state, 4)) {
     case 0:
         ++FIELD(s32, state, 4);
@@ -198,7 +198,7 @@ s32 func_ov013_021fe454(void *state)
     void *timer = (u8 *)state + 0x988;
 
     if (FIELD(void *, state, 0x9a8) != 0)
-        func_02091fb0(FIELD(void *, state, 0x9a8), 1);
+        SceneInputBase_Update(FIELD(void *, state, 0x9a8), 1);
     phase = FIELD(s32, state, 4);
     switch (phase) {
     case 0:
@@ -232,7 +232,7 @@ s32 func_ov013_021fe454(void *state)
             FIELD(s32, state, 4) = 20;
             FIELD(s32, state, 8) = 0;
         } else if (FIELD(s32, state, 0x984) == 1 &&
-                   func_02092910(FIELD(void *,
+                   GraphicsSpriteState_TestTouchPoint(FIELD(void *,
                        FIELD(void *, state, 0x948), 0x9c),
                        (u8 *)state + 0x30)) {
             func_02092260(state, 0x7c);
@@ -338,7 +338,7 @@ s32 func_ov013_021fe880(void *state)
     void *timer = (u8 *)state + 0x988;
 
     if (FIELD(void *, state, 0x9a8) != 0)
-        func_02091fb0(FIELD(void *, state, 0x9a8), 1);
+        SceneInputBase_Update(FIELD(void *, state, 0x9a8), 1);
     if (FIELD(s32, state, 4) == 0) {
         if (FIELD(u32, state, 0x20) & 0x20) {
             if (func_ov013_021fdd8c(state)) {
@@ -346,7 +346,7 @@ s32 func_ov013_021fe880(void *state)
                 FIELD(s32, state, 0x984) = 4;
                 overlay013_set_callback(state, data_ov013_021fed08);
             } else if (FIELD(s32, state, 0x984) == 1 &&
-                       func_02092910(FIELD(void *,
+                       GraphicsSpriteState_TestTouchPoint(FIELD(void *,
                            FIELD(void *, state, 0x948), 0x9c),
                            (u8 *)state + 0x30)) {
                 func_02092260(state, 0x0b);

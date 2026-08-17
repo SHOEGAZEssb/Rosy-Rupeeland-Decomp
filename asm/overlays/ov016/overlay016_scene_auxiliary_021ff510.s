@@ -6,7 +6,7 @@
     .extern data_ov016_02201598
     .extern data_ov016_022015a0
     .extern data_ov016_022015a8
-    .extern func_02062e00
+    .extern InventoryRecord_GetMetadata
     .extern func_ov000_021fb728
     .extern func_ov000_021fbcc4
     .extern func_ov000_021fc59c
@@ -18,8 +18,8 @@
     .extern func_ov016_021ff700
     .extern gDebugFont
     .extern gHeapContext
-.global func_ov016_021ff510
-func_ov016_021ff510:
+.global Overlay016_PopulateAuxiliaryList
+Overlay016_PopulateAuxiliaryList:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldr r1, L_021ff6d0
     mov r8, r0
@@ -106,7 +106,7 @@ L_021ff638:
     b L_021ff6a0
 L_021ff644:
     mov r0, r7
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrb r0, [r0, #0x2]
     cmp r0, #0x0
     bne L_021ff694
@@ -149,5 +149,5 @@ L_021ff6d8: .word gDebugFont
 L_021ff6dc: .word data_ov016_022015a0
 L_021ff6e0: .word data_ov016_022015a8
 L_021ff6e4: .word data_020f4e14
-    .size func_ov016_021ff510, . - func_ov016_021ff510
+    .size Overlay016_PopulateAuxiliaryList, . - Overlay016_PopulateAuxiliaryList
 

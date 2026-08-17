@@ -14,7 +14,7 @@ extern void func_02071cf0(void *archive, void *resource);
 extern void *func_020718dc(void *archive, u32 resourceId);
 
 /* Initialize an empty 16-entry screen-resource collection. */
-void *func_020926d8(TitleScreenResourceCollection *collection)
+void *TitleScreenResourceCollection_Init(TitleScreenResourceCollection *collection)
 {
     s32 index;
     void *empty = 0;

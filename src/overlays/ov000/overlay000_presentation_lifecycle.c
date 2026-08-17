@@ -22,14 +22,14 @@ extern "C" {
 extern void *data_020f4e18;
 extern u8 data_021f3ecc[];
 extern char data_ov000_021fcd4c[];
-extern void func_02071ea4(void *resource);
+extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
-extern u8 *func_02079f3c(void *table, u16 resourceId);
-extern void func_02092798(void *state);
+extern u8 *RetailTextTable_FindRecordById(void *table, u16 resourceId);
+extern void TitleCharacterResourceCollection_Init(void *state);
 extern void func_02092814(void *state, s32 resourceId);
-extern void *func_02092cc0(void *object, void *owner, void *resource);
+extern void *TitleDialog_Init(void *object, void *owner, void *resource);
 extern void func_ov000_021fb710(void *owner, s32 valueA, s32 valueB,
                                 s32 valueC, s32 valueD);
 #ifdef __cplusplus
@@ -56,9 +56,9 @@ Overlay000PresentationState *func_ov000_021fb728(
     s32 index;
     void *presentation;
 
-    func_02071ea4(state->resource_08);
-    func_02071ea4(state->resource_14);
-    func_02092798(state->rendererState_20);
+    AnimationResourceState_InitEmbedded(state->resource_08);
+    AnimationResourceState_InitEmbedded(state->resource_14);
+    TitleCharacterResourceCollection_Init(state->rendererState_20);
     state->owner_00 = owner;
     state->spriteOwner_04 = GraphicsSpriteGroupOwner_CreateGroup(owner);
     func_02092814(state->rendererState_20, 0x7000);
@@ -67,7 +67,7 @@ Overlay000PresentationState *func_ov000_021fb728(
 
     presentation = Heap_Alloc(0xec, data_ov000_021fcd4c, 4, &gHeapContext);
     if (presentation != 0) {
-        presentation = func_02092cc0(
+        presentation = TitleDialog_Init(
             presentation, state->owner_00,
             *(void **)&state->rendererState_20[0]);
     }
@@ -76,7 +76,7 @@ Overlay000PresentationState *func_ov000_021fb728(
                         0x38, 0x58, 0x98, 0x40);
 
     func_02071ee0(state->resource_08, data_020f4e18, 0x24, 0x22, 0x25);
-    source = (u16 *)(func_02079f3c(data_021f3ecc, 0x1ba) + 2);
+    source = (u16 *)(RetailTextTable_FindRecordById(data_021f3ecc, 0x1ba) + 2);
     for (index = 0; index < 0x10; index++) {
         character = source[index];
         state->label_48[index] = character;

@@ -3,14 +3,14 @@
 /* Exact fallback; see src/overlays/ov024/overlay024_graphics_setup.c. */
 .extern data_020f4e18
 .extern func_02070638
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070b50
 .extern func_02070e0c
 .extern func_02072048
 .extern func_020925a4
 .extern func_020925f8
 .extern func_02092638
-.extern func_02092850
+.extern TitlePalette_SetMainBackdrop
 .extern func_020afce8
 .extern func_020b44e8
 .extern GraphicsResourceSet_Destroy
@@ -366,9 +366,9 @@ L_021fd7bc:
     mov r2, #0x0
     bl func_02070e0c
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     ldrh r0, [r0, #0x0]
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

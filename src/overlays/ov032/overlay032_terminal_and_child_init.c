@@ -18,22 +18,22 @@ extern const u8 data_ov032_02202348[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02058ce0(void *);
+extern void Sound_StopAllManagedPlayers(void *);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(...);
 extern void func_020b44e8(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsResourceSet_Load(...);
 extern void func_02070638(...);
-extern s32 func_0207042c(void *);
+extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
 extern void func_02070e0c(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void *func_020959d4(...);
-extern void func_02095c30(...);
+extern void ModalState_InitResources(...);
 extern void Sound_Reset(void *);
 extern void OS_Halt(void);
 extern void func_ov032_0220147c(void *);
-extern void *func_02071f38(void *);
+extern void *AnimationResourceState_ReleaseResources(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ extern "C" s32 func_ov032_02200da4(void *scene)
 {
     switch (FIELD(s32, scene, 0xb64)) {
     case 0: {
-        func_02058ce0(gSoundContext);
+        Sound_StopAllManagedPlayers(gSoundContext);
         void *owned = FIELD(void *, scene, 0x10);
         if (owned != 0) {
             void **vtable = FIELD(void **, owned, 0);
@@ -74,7 +74,7 @@ extern "C" s32 func_ov032_02200da4(void *scene)
         GraphicsResourceSet_Load(set, data_020f4e18[0], 0x8030, 0x8031, 0x8032);
         func_020b44e8();
         func_02070638(set->tiles, 2, 0);
-        func_02070b50(set->map, func_0207042c(set->tiles) ? 0x6000 : 0);
+        func_02070b50(set->map, GraphicsResource_GetFormat(set->tiles) ? 0x6000 : 0);
         func_02070e0c(set->palette, 2, 0);
         GraphicsResourceSet_ReleaseHandles(set);
         REG16(0x05000000) = 0x24a3;
@@ -82,7 +82,7 @@ extern "C" s32 func_ov032_02200da4(void *scene)
                                   &gHeapContext);
         if (object != 0) object = func_020959d4(object, 0, 0);
         FIELD(void *, scene, 0xf24) = object;
-        func_02095c30(object, 0x1f);
+        ModalState_InitResources(object, 0x1f);
         FIELD(s32, scene, 0xb74) = 0;
         ++FIELD(s32, scene, 0xb64);
         break;
@@ -121,5 +121,5 @@ extern "C" void *func_ov032_02200f88(void *child, void *arg1, u32 arg2, void *ar
     FIELD(s32, child, 0x4c) = 0x90;
     FIELD(s32, child, 0x64) = 0;
     func_ov032_0220147c((u8 *)child + 0x18);
-    return func_02071f38((u8 *)child + 0xc);
+    return AnimationResourceState_ReleaseResources((u8 *)child + 0xc);
 }

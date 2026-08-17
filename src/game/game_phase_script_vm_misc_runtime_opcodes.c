@@ -8,7 +8,7 @@ extern "C" {
 extern u8 data_021f5f18[];
 extern void *data_021052fc;
 extern const void *data_020d430c;
-extern void func_02098020(void *state, s32 value);
+extern void RetailSelectionHistory_InsertUniqueId(void *state, s32 value);
 extern void func_020983c0(void *state, s32 value);
 extern void *GamePhaseRuntime_GetAuxiliaryOverlayObject(void *runtime);
 extern void func_ov056_0220f054(void *state, const void *configuration);
@@ -19,7 +19,7 @@ extern void func_ov056_0220f054(void *state, const void *configuration);
 /* Pop a value, pass it to the first recovered global-state operation, return zero. */
 s32 func_02019f4c(GamePhaseActorScriptVm *self)
 {
-    func_02098020(data_021f5f18, (s32)GamePhaseScriptVm_Pop(&self->base));
+    RetailSelectionHistory_InsertUniqueId(data_021f5f18, (s32)GamePhaseScriptVm_Pop(&self->base));
     return 0;
 }
 

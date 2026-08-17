@@ -4,7 +4,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_02071e60
-.extern func_02071e70
+.extern GraphicsArchive_FindPaletteResource
 .extern func_02071e80
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -27,7 +27,7 @@ func_020314b8: ; 0x020314b8
     mov r7, r0
     ldr r0, [r1, #0x0]
     ldr r1, .L_0203155c
-    bl func_02071e70
+    bl GraphicsArchive_FindPaletteResource
     ldr r1, .L_02031554
     mov r6, r0
     ldr r0, [r1, #0x0]

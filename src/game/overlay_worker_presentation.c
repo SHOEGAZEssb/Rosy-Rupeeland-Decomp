@@ -23,7 +23,7 @@ extern void *data_020d6304;
 extern const char gOverlayWorkerAllocationTag[];
 extern void *gGameWork;
 extern s32 data_021055cc;
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern void *func_0201e28c(void *self);
 extern void OverlaySlot_Init(void *resource);
 extern void OverlaySlot_LoadOverlay(void *resource, s32 id);
@@ -55,7 +55,7 @@ OverlayWorkerPresentation *func_020200bc(
 {
     u8 *worker;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)data_020d6304;
     OverlaySlot_Init(self->sharedResource10);
     GameWork_ClearFlag(gGameWork, 0x3bb);

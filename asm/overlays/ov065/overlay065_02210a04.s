@@ -7,11 +7,11 @@
 .extern func_020befec
 .extern func_020bf1f8
 .extern func_ov065_0220fdac
-.extern func_ov065_0221091c
+.extern Overlay065Scene_GenerateRandomTarget
 .extern genrand_int32
 
-.global func_ov065_02210a04
-func_ov065_02210a04:
+.global Overlay065Scene_LaunchAmountParticles
+Overlay065Scene_LaunchAmountParticles:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x38
     ldr r3, .L_02210b58
@@ -66,7 +66,7 @@ func_ov065_02210a04:
     mov r0, r10
     mov r1, r11
     sub r9, r9, r2
-    bl func_ov065_0221091c
+    bl Overlay065Scene_GenerateRandomTarget
     cmp r8, #0x0
     ble .L_02210adc
     bl genrand_int32
@@ -110,4 +110,4 @@ func_ov065_02210a04:
     add sp, sp, #0x38
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02210b58: .word data_ov065_02210b5c
-.size func_ov065_02210a04, . - func_ov065_02210a04
+.size Overlay065Scene_LaunchAmountParticles, . - Overlay065Scene_LaunchAmountParticles

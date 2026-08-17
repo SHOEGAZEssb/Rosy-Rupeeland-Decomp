@@ -36,7 +36,7 @@ extern s32 func_020a257c(void *manager, s32 mode, s32 x, s32 y,
  * Parent construction changes engine state; this wrapper has no direct
  * hardware effects.
  */
-void *func_0204e740(void *self, const void *descriptor)
+void *EffectHandleActor_Init(void *self, const void *descriptor)
 {
     PresentationBackedActor_InitBase(self, descriptor);
     FIELD(const void *, self, 0) = data_020e2458;
@@ -68,7 +68,7 @@ void *func_0204e774(void *self)
  * func_0204e774, free the actor allocation, and return its former address.
  * Effect, inherited, and heap state change; there are no direct hardware effects.
  */
-void *func_0204e7cc(void *self)
+void *EffectHandleActor_Delete(void *self)
 {
     func_0204e774(self);
     Heap_Free(self);

@@ -5,7 +5,7 @@
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_02079f3c
+    .extern RetailTextTable_FindRecordById
     .extern gSystemState
 
 .global func_ov022_021fdb38
@@ -56,7 +56,7 @@ L_021fdbb0:
     cmp r0, #0x0
     ldr r0, L_021fdc2c
     movne r9, #0x5
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     mul r3, r8, r4
     str r9, [sp, #0x0]
     stmib sp, {r6, r7}

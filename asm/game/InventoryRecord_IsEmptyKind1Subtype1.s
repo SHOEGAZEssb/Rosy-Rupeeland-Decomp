@@ -1,12 +1,12 @@
 .text
 ; Matching fallback for the portable implementation in src/game/inventory_record_sort.c.
-.extern func_02062b28
+.extern ActorDescriptor_IsInvalid
 
-.global func_02062c20
-func_02062c20:
+.global InventoryRecord_IsEmptyKind1Subtype1
+InventoryRecord_IsEmptyKind1Subtype1:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     movne r0, #0x0
     ldmneia sp!, {r4, pc}
@@ -22,4 +22,4 @@ func_02062c20:
     moveq r0, #0x1
     movne r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_02062c20, . - func_02062c20
+.size InventoryRecord_IsEmptyKind1Subtype1, . - InventoryRecord_IsEmptyKind1Subtype1

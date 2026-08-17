@@ -13,20 +13,20 @@ extern const s32 data_ov028_021ff248[];
 extern "C" {
 #endif
 extern void func_02092260(void *, s32);
-extern void func_02093d50(void *, s32);
-extern void func_02093de4(void *);
-extern void func_02093e0c(void *);
-extern void func_02093e20(void *);
-extern s32 func_02093e3c(void *);
-extern s32 func_02093e58(void *);
-extern s32 func_02093ffc(void *);
-extern s32 func_020945c8(void *, const void *);
-extern s32 func_02094600(void *, const void *);
-extern s32 func_02094638(void *, const void *);
-extern s32 func_02094668(void *, const void *);
-extern s32 func_02094698(void *, const void *);
-extern s32 func_02094758(void *);
-extern void func_02094874(void *);
+extern void InventoryScroll_SetSelectedRow(void *, s32);
+extern void InventoryScroll_SaveOrigins(void *);
+extern void InventoryScroll_MoveSelectionUp(void *);
+extern void InventoryScroll_MoveSelectionDown(void *);
+extern s32 InventoryScroll_PageUp(void *);
+extern s32 InventoryScroll_PageDown(void *);
+extern s32 InventoryScroll_UpdateInterpolation(void *);
+extern s32 InventoryScroll_TestUpperArrowPress(void *, const void *);
+extern s32 InventoryScroll_TestLowerArrowPress(void *, const void *);
+extern s32 InventoryScroll_TestUpperArrowHold(void *, const void *);
+extern s32 InventoryScroll_TestLowerArrowHold(void *, const void *);
+extern s32 InventoryScroll_TestMarkerHit(void *, const void *);
+extern s32 InventoryScroll_UpdateSelectionMovement(void *);
+extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 func_02095860(void *, const void *, s32, s32);
 extern s32 func_ov028_021fd558(void *, const void *);
 extern s32 func_ov028_021fd5e0(void *);
@@ -61,13 +61,13 @@ extern "C" s32 func_ov028_021fe77c(void *state)
     s32 phase = FIELD(s32, state, 4);
 
     if (phase == 0) {
-        func_02094874(controller);
+        InventoryScroll_ResetPresentationState(controller);
         FIELD(s32, state, 4) = 1;
         FIELD(s32, state, 8) = 0;
         phase = 1;
     }
     if (phase == 1) {
-        if (func_02093ffc(controller) != 0) {
+        if (InventoryScroll_UpdateInterpolation(controller) != 0) {
             FIELD(s32, state, 4) = 2;
             FIELD(s32, state, 8) = 0;
             phase = 2;
@@ -79,34 +79,34 @@ extern "C" s32 func_ov028_021fe77c(void *state)
         }
     }
     if (phase == 2) {
-        func_02093de4(controller);
+        InventoryScroll_SaveOrigins(controller);
         u16 keys = FIELD(u16, FIELD(void *, state, 0x2c), 0);
         if (keys & 0x40) {
-            func_02093e0c(controller);
+            InventoryScroll_MoveSelectionUp(controller);
         } else if (keys & 0x80) {
-            func_02093e20(controller);
+            InventoryScroll_MoveSelectionDown(controller);
         } else if (FIELD(u32, state, 0x20) & 0x10) {
             const void *point = (u8 *)state + 0x30;
             s32 hit = func_ov028_021fd558(list, point);
-            if (func_02094638(controller, point) != 0) {
-                func_02093e3c(controller);
-            } else if (func_02094668(controller, point) != 0) {
-                func_02093e58(controller);
+            if (InventoryScroll_TestUpperArrowHold(controller, point) != 0) {
+                InventoryScroll_PageUp(controller);
+            } else if (InventoryScroll_TestLowerArrowHold(controller, point) != 0) {
+                InventoryScroll_PageDown(controller);
             } else if (FIELD(u32, state, 0x20) & 0x20) {
-                if (func_020945c8(controller, point) != 0) {
-                    if (func_02093e3c(controller) == 0)
+                if (InventoryScroll_TestUpperArrowPress(controller, point) != 0) {
+                    if (InventoryScroll_PageUp(controller) == 0)
                         func_02092260(state, 0x16);
-                } else if (func_02094600(controller, point) != 0) {
-                    if (func_02093e58(controller) == 0)
+                } else if (InventoryScroll_TestLowerArrowPress(controller, point) != 0) {
+                    if (InventoryScroll_PageDown(controller) == 0)
                         func_02092260(state, 0x16);
-                } else if (func_02094698(controller, point) != 0) {
+                } else if (InventoryScroll_TestMarkerHit(controller, point) != 0) {
                     Overlay028_SetPair(state, data_ov028_021ff260);
                     func_ov028_021fe438(state);
                     return 0;
                 } else if (hit >= 0) {
                     if (hit != FIELD(s32, controller, 0x14)) {
                         func_02092260(state, 0);
-                        func_02093d50(controller, hit);
+                        InventoryScroll_SetSelectedRow(controller, hit);
                         func_ov028_021fe6bc(state);
                         FIELD(s32, state, 4) = 10;
                         FIELD(s32, state, 8) = 0;
@@ -125,7 +125,7 @@ extern "C" s32 func_ov028_021fe77c(void *state)
                 }
             }
         }
-        if (func_02094758(controller) != 0) {
+        if (InventoryScroll_UpdateSelectionMovement(controller) != 0) {
             func_02092260(state, 0);
             FIELD(s32, state, 4)--;
             FIELD(s32, state, 8) = 0;

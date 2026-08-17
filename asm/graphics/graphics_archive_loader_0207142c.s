@@ -16,8 +16,8 @@
 .extern data_020e6900
 .extern gHeapContext
 
-.global func_0207142c
-func_0207142c:
+.global GraphicsArchive_LoadIndexedPayload
+GraphicsArchive_LoadIndexedPayload:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x48
     mov r8, r1
@@ -102,4 +102,4 @@ func_0207142c:
 .L_heap: .word gHeapContext
 .L_plain_tag: .word data_020e68f8
 .L_expanded_tag: .word data_020e6900
-.size func_0207142c, . - func_0207142c
+.size GraphicsArchive_LoadIndexedPayload, . - GraphicsArchive_LoadIndexedPayload

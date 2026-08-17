@@ -4,7 +4,7 @@
     .extern Heap_Free
     .extern data_020f4e18
     .extern data_ov017_02201608
-    .extern func_02071e04
+    .extern GraphicsArchive_ReleaseOwlvResource
 .global func_ov017_021fd7b8
 func_ov017_021fd7b8:
     stmdb sp!, {r4, lr}
@@ -16,7 +16,7 @@ func_ov017_021fd7b8:
     beq L_021fd7e0
     ldr r0, L_021fd7f4
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
 L_021fd7e0:
     mov r0, r4
     bl Heap_Free

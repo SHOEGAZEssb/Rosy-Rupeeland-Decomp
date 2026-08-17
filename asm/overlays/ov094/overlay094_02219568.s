@@ -5,7 +5,7 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern data_021052fc
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091b6c
@@ -20,7 +20,7 @@ func_ov094_02219568:
     mov r4, r0
     mov r6, r1
     mov r5, r2
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r1, #0x0
     add r0, r4, #0x18
     str r1, [r4, #0x14]

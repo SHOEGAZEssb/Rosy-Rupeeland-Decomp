@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_delete.c. */
 .extern __destroy_arr
 .extern data_ov025_02203354
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_ov025_021fdec8
 .extern Heap_Free
@@ -20,7 +20,7 @@ func_ov025_021fe118:
     ldr r0, [r4, #0xe4]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xd4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xb0
     mov r1, #0x3
     mov r2, #0xc
@@ -33,6 +33,6 @@ func_ov025_021fe118:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fe16c: .word data_ov025_02203354
-L_021fe170: .word func_02071eb8
+L_021fe170: .word AnimationResourceState_Destroy
 .size func_ov025_021fe118, .-func_ov025_021fe118
 

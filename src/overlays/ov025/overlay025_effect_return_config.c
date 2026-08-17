@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" s32 func_020918f4(u32 *, s32);
+extern "C" s32 TitleRandom_NextBounded(u32 *, s32);
 extern "C" void PresentationScalar_TransitionTo(void *, s32, s32);
 extern "C" void func_ov025_021fe174(void *, s32, s32, s32);
 extern "C" void func_ov025_021fe248(void *);
@@ -17,7 +17,7 @@ extern "C" void func_ov025_021fe2c4(void *);
  */
 extern "C" void func_ov025_021fe91c(void *object)
 {
-    FIELD(s32, object, 0xa4) = func_020918f4((u32 *)object + 0x3e, 2);
+    FIELD(s32, object, 0xa4) = TitleRandom_NextBounded((u32 *)object + 0x3e, 2);
     FIELD(u16, FIELD(void *, object, 0xec), 0x24) |= 4;
     FIELD(u16, FIELD(void *, object, 0xf4), 0x24) |= 4;
 

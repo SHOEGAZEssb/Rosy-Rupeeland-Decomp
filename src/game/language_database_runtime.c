@@ -19,7 +19,7 @@ extern u8 data_020ed6e0[];
 
 extern void func_02079d78(void *manager);
 extern void func_02079694(void *manager);
-extern void *func_02078e98(void *manager, u32 identifier);
+extern void *LanguageResourceManager_FindById(void *manager, u32 identifier);
 extern void OS_Halt(void);
 void func_02078dd4(void *manager_pointer, u16 id, void *destination,
                    u32 destination_size);
@@ -42,7 +42,7 @@ static u16 ReadU16(const u8 *bytes)
 }
 
 /* Return the byte length for one language record, retail 0x02078D54. */
-u32 func_02078d54(void *manager_pointer, u16 id)
+u32 LanguageDatabase_GetRecordLength(void *manager_pointer, u16 id)
 {
     u8 *manager = (u8 *)manager_pointer;
     LanguageDatabaseEntry *entries = *(LanguageDatabaseEntry **)manager;
@@ -80,11 +80,11 @@ void *func_020795e8(void *manager_pointer, s32 message_id)
             u16 resource_id = *(const u16 *)(record + 6);
             *(u16 *)(manager + 0xbc) = *(const u16 *)(record + 2);
             *(u32 *)(manager + 0xc0) =
-                func_02078d54(data_021f4090, resource_id);
+                LanguageDatabase_GetRecordLength(data_021f4090, resource_id);
             func_02078dd4(data_021f4090, text_id, manager + 0x5c, 0x60);
             *(void **)(manager + 0xc4) = manager + 0x5c;
             *(void **)(manager + 0xc8) =
-                func_02078e98(data_021f4090, resource_id);
+                LanguageResourceManager_FindById(data_021f4090, resource_id);
             return manager + 0xbc;
         }
     }

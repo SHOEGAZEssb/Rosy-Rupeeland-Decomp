@@ -21,13 +21,13 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 GameWork_TestFlag(void *, u32);
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020957bc(void *);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
@@ -57,12 +57,12 @@ extern "C" void *func_ov020_021fd844(void *state)
 {
     s32 i;
     s32 count;
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const u32 *, state, 0) = data_ov020_021fe504;
-    func_02071ea4((u8 *)state + 0x54);
-    func_02071ea4((u8 *)state + 0x60);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x54);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x60);
     func_020957bc((u8 *)state + 0x70);
-    func_02092798((u8 *)state + 0x1b8);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x1b8);
     FIELD(s32, state, 0x1e4) = 0;
     func_02071ee0((u8 *)state + 0x60, data_020f4e18[0], 0x38, 1, 0x39);
     func_02071ee0((u8 *)state + 0x54, data_020f4e18[0], 0x1f, 1, 0x20);

@@ -3,7 +3,7 @@
 .extern data_020df9e8
 .extern ActorExtendedRecordArray_ContainsPoint
 .extern ActorExtendedType2_IsDirectionToActorAccepted
-.extern func_020be334
+.extern SignedAbsoluteValue
 .global ActorExtendedType2_AccumulateProximityInteraction
 .type ActorExtendedType2_AccumulateProximityInteraction, @function
 ActorExtendedType2_AccumulateProximityInteraction: ; 0x0203fea0
@@ -29,7 +29,7 @@ ActorExtendedType2_AccumulateProximityInteraction: ; 0x0203fea0
     ldr r1, [r7, #0x24]
     ldr r0, [r6, #0x24]
     sub r0, r1, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x28000
     movge r0, #0x0
     ldmgeia sp!, {r3, r4, r5, r6, r7, pc}

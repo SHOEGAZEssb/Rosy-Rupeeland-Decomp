@@ -19,8 +19,8 @@
 .extern func_020b44e8
 .extern gSceneManager
 
-.global func_ov052_0220ddb4
-func_ov052_0220ddb4:
+.global Overlay052Scene_LoadSubScreenResources
+Overlay052Scene_LoadSubScreenResources:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x24
     ldr r0, .L_0220df7c
@@ -144,4 +144,4 @@ func_ov052_0220ddb4:
 .L_0220df90: .word 0x9009
 .L_0220df94: .word 0x4001020
 .L_0220df98: .word 0x4001030
-.size func_ov052_0220ddb4, . - func_ov052_0220ddb4
+.size Overlay052Scene_LoadSubScreenResources, . - Overlay052Scene_LoadSubScreenResources

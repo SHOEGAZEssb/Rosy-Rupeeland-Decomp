@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
 .extern VecFx32Object_Init
 
-.global func_ov065_0220fe7c
-func_ov065_0220fe7c:
+.global Overlay065Vector_InitScaled
+Overlay065Vector_InitScaled:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r1
     mov r6, r0
@@ -31,4 +31,4 @@ func_ov065_0220fe7c:
     orr r1, r1, r0, lsl #0x14
     str r1, [r6, #0xc]
     ldmia sp!, {r4, r5, r6, pc}
-.size func_ov065_0220fe7c, . - func_ov065_0220fe7c
+.size Overlay065Vector_InitScaled, . - Overlay065Vector_InitScaled

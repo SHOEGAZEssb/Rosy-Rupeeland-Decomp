@@ -8,7 +8,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0206c978(void *object);
+extern void AuxiliaryInteraction_Destroy(void *object);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void func_02031488(void *actor);
 extern void Type7MarkerPresentation_Destroy(void *state);
@@ -37,7 +37,7 @@ static void cleanupDerivedType1(u8 *actor)
 
     *(void **)actor = data_020df3c8;
     if (object != 0) {
-        func_0206c978(object);
+        AuxiliaryInteraction_Destroy(object);
         Heap_Free(object);
         GameWork_ClearFlag(gGameWork, 0x3ee);
     }

@@ -1,6 +1,6 @@
     .text
     .extern GraphicsSpriteState_ReleaseFromGroup
-    .extern func_02071f38
+    .extern AnimationResourceState_ReleaseResources
     .global func_ov001_021fc5dc
 func_ov001_021fc5dc: ; 0x021fc5dc
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
@@ -25,7 +25,7 @@ L_021fc5f4:
     str r4, [r0, #0x10]
     ldr r0, [r8, #0x20c]
     add r0, r0, r7, lsl #0x5
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
 L_021fc634:
     add r6, r6, #0x1
 L_021fc638:

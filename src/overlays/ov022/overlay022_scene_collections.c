@@ -16,8 +16,8 @@ extern "C" {
 extern s32 GameWork_TestFlag(void *, u32);
 extern void Heap_Free(void *);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void func_02093d50(void *, s32);
-extern void func_02093d7c(void *, s32);
+extern void InventoryScroll_SetSelectedRow(void *, s32);
+extern void InventoryScroll_SetFirstVisibleRow(void *, s32);
 extern void *func_ov022_021fd708(void *, s32);
 extern void func_ov022_021fd848(void *, s32);
 extern void *func_ov022_021fd8a4(void *, s32);
@@ -77,9 +77,9 @@ extern "C" void func_ov022_021fe688(void *scene)
         if (menu != 0)
             menu = func_ov022_021fd8a4(menu, count);
         FIELD(void *, scene, 0x2b8) = menu;
-        func_02093d7c(FIELD(void *, menu, 0x30),
+        InventoryScroll_SetFirstVisibleRow(FIELD(void *, menu, 0x30),
                       FIELD(s32, scene, 0x2c4));
-        func_02093d50(FIELD(void *, menu, 0x30),
+        InventoryScroll_SetSelectedRow(FIELD(void *, menu, 0x30),
                       FIELD(s32, scene, 0x2c8));
         for (s32 i = 0; i < 11; ++i) {
             const u8 *descriptor = data_020d780c + i * 0x34;

@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
     .extern data_020f4e18
     .extern data_ov022_02200608
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -16,9 +16,9 @@ func_ov022_021fd370:
     ldr r1, L_021fd44c
     add r0, r4, #0x4
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x10
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r1, #0x0
     mov r0, r4
     str r1, [r4, #0x30]

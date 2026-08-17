@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern func_0204cfa4
 .extern func_020adc90
 
@@ -65,7 +65,7 @@ func_ov077_0221378c:
     mov r0, r7
     mov r1, r6
     mov r2, r5
-    bl func_02032a94
+    bl ActorContactState_AddContact
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02213870: .word gActorRuntimeCollection
 .size func_ov077_0221378c, . - func_ov077_0221378c

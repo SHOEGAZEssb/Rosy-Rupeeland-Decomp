@@ -14,7 +14,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_02022cb0
 .extern func_020befec
 .extern func_ov084_02212cbc
@@ -178,7 +178,7 @@ func_ov084_02212e6c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     ldr r1, [r7, #0x298]
     ldr r0, .L_022131f4
     add r1, r1, r6

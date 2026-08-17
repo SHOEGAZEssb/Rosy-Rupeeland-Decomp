@@ -14,7 +14,7 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteRenderer_DrawGlyph
 .extern GraphicsSpriteRenderer_DrawText
-.extern func_02079f3c
+.extern RetailTextTable_FindRecordById
 .extern func_02092960
 .extern func_020befec
 .extern gGameWork
@@ -52,7 +52,7 @@ func_02028100: ; 0x02028100
     subne r6, r6, #0x2
     ldrh r1, [r0, r1]
     ldr r0, .L_0202834c
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     mov r1, #0xd
     mov r2, r0
     str r1, [sp, #0x0]
@@ -73,7 +73,7 @@ func_02028100: ; 0x02028100
     ldr r1, .L_02028350
     ldr r0, .L_0202834c
     ldrh r1, [r1, r6]
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     add r1, r0, #0x2
     mov r0, #0xd
     str r0, [sp, #0x0]

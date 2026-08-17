@@ -5,8 +5,8 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Stepper_Reset
 .extern func_02031758
-.extern func_02031cac
-.extern func_02032a94
+.extern ActorAttachment_CopyTouchState
+.extern ActorContactState_AddContact
 .extern Actor_TryDispatchActivationMode2
 .extern gSceneTouchInitialData
     .global ActorDerivedRuntime_ForwardTouchPoint
@@ -25,7 +25,7 @@ ActorDerivedRuntime_ForwardTouchPoint: ; 0x0203b998
     str r2, [sp, #0x4]
     ldr r2, [r5, #0x8]
     str r2, [sp, #0x8]
-    bl func_02031cac
+    bl ActorAttachment_CopyTouchState
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
 .L_0203b9d8: .word gSceneTouchInitialData
@@ -39,7 +39,7 @@ ActorDerivedRuntime_HandlePairActive: ; 0x0203b9dc
     mov r4, r2
     mov r6, r0
     mov r5, r1
-    bl func_02032a94
+    bl ActorContactState_AddContact
     cmp r4, #0x0
     bne .L_0203ba58
     mov r1, #0x0

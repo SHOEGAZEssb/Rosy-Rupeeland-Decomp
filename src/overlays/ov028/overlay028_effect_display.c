@@ -18,11 +18,11 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern u32 func_02079d60(const void *);
-extern const void *func_02079f3c(const void *, u16);
+extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern s32 func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
-extern void func_02092e9c(void *, u32, s32);
-extern void func_02093360(void *, s32);
+extern void TitleDialog_SetText(void *, u32, s32);
+extern void TitleDialog_UpdateTextPage(void *, s32);
 extern void PresentationList_DeleteAll(void *);
 extern void func_ov028_021fd7e0(void *);
 extern void func_ov028_021fd86c(void *);
@@ -45,9 +45,9 @@ extern "C" void func_ov028_021fd8b8(void *state, const void *descriptor,
     func_ov028_021fd86c(state);
     void *font = FIELD(void *, state, 0);
     if (descriptor != 0) {
-        func_02092e9c(FIELD(void *, state, 0x50),
+        TitleDialog_SetText(FIELD(void *, state, 0x50),
                       func_02079d60(descriptor), 1);
-        func_02093360(FIELD(void *, state, 0x50), 0);
+        TitleDialog_UpdateTextPage(FIELD(void *, state, 0x50), 0);
         GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, state, 0x30));
         GraphicsSpriteRenderer_DrawText(font, (u8 *)descriptor + 0x18,
                       0x60, 0x1d, 14, 6, 0);
@@ -63,7 +63,7 @@ extern "C" void func_ov028_021fd8b8(void *state, const void *descriptor,
         func_02073e48(sprite, variant + 0x32, 0x3a, 0x5e, 1, 0, 0);
     } else {
         GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, state, 0x30));
-        const void *text = func_02079f3c(data_021f3ecc, 0x188);
+        const void *text = RetailTextTable_FindRecordById(data_021f3ecc, 0x188);
         GraphicsSpriteRenderer_DrawText(font, (u8 *)text + 2, 0x60, 0x1d, 1, 6, 0);
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                      (u8 *)state + 0x14, 2);

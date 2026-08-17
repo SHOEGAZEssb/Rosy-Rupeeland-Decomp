@@ -21,7 +21,7 @@ typedef struct GraphicsBgPaletteResource {
 extern "C" {
 #endif
 
-extern void *func_02070874(GraphicsBgPaletteResource *resource);
+extern void *GraphicsBgResourceData_GetDecoded(GraphicsBgPaletteResource *resource);
 extern void func_020b2058(const void *source, s32 destination, u32 size);
 extern void func_020b1618(void);
 extern void func_020b1598(const void *source, s32 destination, u32 size);
@@ -48,12 +48,12 @@ void func_02070b50(GraphicsBgPaletteResource *resource, s32 destination)
     descriptor = resource->descriptor;
     switch (descriptor->format) {
     case 0x10:
-        func_020b2058(func_02070874(resource), destination,
+        func_020b2058(GraphicsBgResourceData_GetDecoded(resource), destination,
                       (u32)descriptor->count << 5);
         break;
     case 0x100:
         func_020b1618();
-        func_020b1598(func_02070874(resource), destination,
+        func_020b1598(GraphicsBgResourceData_GetDecoded(resource), destination,
                       (u32)resource->descriptor->count << 9);
         func_020b1534();
         break;

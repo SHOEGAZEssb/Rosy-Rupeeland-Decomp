@@ -20,7 +20,7 @@ extern "C" {
 extern void Heap_Free(void *);
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 func_020651a4(void *, u16);
+extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
 extern s32 func_0206fb18(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
@@ -30,9 +30,9 @@ extern s32 func_02096450(void *, void *, void *, s32, s32);
 extern void func_ov000_021fc714(void *);
 extern void func_ov016_021fd3f8(void *);
 extern s32 func_ov016_021fe6f4(void *);
-extern void func_ov016_021fe754(void *, u32, u32);
+extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff094(void *);
-extern void func_ov016_021ff404(void *);
+extern void Overlay016_CreateSceneSprite(void *);
 extern void func_ov016_021ff71c(void *);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ff848(void *, u16);
@@ -62,7 +62,7 @@ extern "C" s32 func_ov016_02200fe4(void *state)
         } else {
             func_02092260(state, 9);
             FIELD(void *, state, 0x474) = 0;
-            func_ov016_021fe754(state, data_ov016_022013f8[0],
+            Overlay016ActorValue_Init(state, data_ov016_022013f8[0],
                                 data_ov016_022013f8[1]);
             break;
         }
@@ -75,7 +75,7 @@ extern "C" s32 func_ov016_02200fe4(void *state)
             func_ov000_021fc714(FIELD(void *, state, 0x44c));
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
-            func_ov016_021fe754(state, data_ov016_02201438[0],
+            Overlay016ActorValue_Init(state, data_ov016_02201438[0],
                                 data_ov016_02201438[1]);
         }
         break;
@@ -105,7 +105,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
             func_ov016_021ff71c(state);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov016_021ff848(state, 0x18);
-            func_ov016_021ff404(state);
+            Overlay016_CreateSceneSprite(state);
             func_ov016_021ff094(state);
             func_ov016_021fd3f8(FIELD(void *, state, 0x444));
             func_ov016_021ffba4(state);
@@ -116,7 +116,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
         break;
     case 2:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
-            func_ov016_021fe754(state, data_ov016_02201430[0],
+            Overlay016ActorValue_Init(state, data_ov016_02201430[0],
                                 data_ov016_02201430[1]);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -145,7 +145,7 @@ extern "C" s32 func_ov016_022011c0(void *state)
         s32 current;
 
         FIELD(s32, state, 0x484) = func_0206fb18(FIELD(void *, state, 0x468));
-        current = func_020651a4((u8 *)data_021e9ac0 + 0x1c,
+        current = ActorDescriptorState_FindInactiveQuantity((u8 *)data_021e9ac0 + 0x1c,
                                FIELD(u16, record, 4));
         if (FIELD(s32, state, 0x484) + current >= 99) {
             FIELD(s32, state, 0x484) = 99 - current;
@@ -168,12 +168,12 @@ extern "C" s32 func_ov016_022011c0(void *state)
             if (FIELD(s32, object, 0x1b8) != 0) {
                 FIELD(s32, state, 0x484) = FIELD(s32, object, 0xc);
                 FIELD(s32, state, 0x478) = 1;
-                func_ov016_021fe754(state, data_ov016_022013f0[0],
+                Overlay016ActorValue_Init(state, data_ov016_022013f0[0],
                                     data_ov016_022013f0[1]);
             } else {
                 func_ov016_021ffb3c(state);
                 func_ov000_021fc714(FIELD(void *, state, 0x44c));
-                func_ov016_021fe754(state, data_ov016_02201428[0],
+                Overlay016ActorValue_Init(state, data_ov016_02201428[0],
                                     data_ov016_02201428[1]);
             }
         }

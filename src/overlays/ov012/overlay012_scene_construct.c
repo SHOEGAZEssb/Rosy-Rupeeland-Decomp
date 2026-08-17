@@ -20,7 +20,7 @@ extern "C" {
 #endif
 extern void Scene_Init(void *);
 extern void Scene_SetFlags03(void *);
-extern void func_02091e28(void *);
+extern void SceneInputBase_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void Graphics3DLightSet_Init(void *);
 extern void func_02092364(void *);
@@ -72,7 +72,7 @@ void *func_ov012_021fd170(void *state)
     u32 intensity;
 
     Scene_Init(state);
-    func_02091e28((u8 *)state + 0x24);
+    SceneInputBase_Init((u8 *)state + 0x24);
     FIELD(const void *, state, 0x00) = data_ov012_021fe670;
     FIELD(const void *, state, 0x24) = data_ov012_021fe6a4;
     Graphics3DSceneState_Init((u8 *)state + 0x80);

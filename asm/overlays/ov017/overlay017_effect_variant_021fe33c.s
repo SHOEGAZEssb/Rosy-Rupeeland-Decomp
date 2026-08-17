@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_variant.c. */
     .extern data_ov017_02201408
-    .extern func_ov017_021fd838
+    .extern Overlay017Transform_SubmitGeometry
     .extern func_ov017_021fd918
 .global func_ov017_021fe33c
 func_ov017_021fe33c:
@@ -31,7 +31,7 @@ func_ov017_021fe33c:
     str r1, [r4, #0xc]
     ldr r1, [r5, #0x30]
     str r1, [r4, #0x10]
-    bl func_ov017_021fd838
+    bl Overlay017Transform_SubmitGeometry
     ldr r2, [r5, #0x9c]
     add r1, sp, #0x0
     ldr r1, [r1, r2, lsl #0x2]

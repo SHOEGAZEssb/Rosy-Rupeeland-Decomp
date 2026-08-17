@@ -14,8 +14,8 @@ extern u8 data_ov017_022016e0[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void *func_02071adc(void *, s32);
-extern void func_02071e04(void *, void *);
+extern void *GraphicsArchive_AcquireOwlvResource(void *, s32);
+extern void GraphicsArchive_ReleaseOwlvResource(void *, void *);
 extern void func_020b0808(s32, s32);
 extern void func_020b0844(s32, s32);
 extern void func_020b0880(s32, s32);
@@ -88,7 +88,7 @@ extern "C" void *func_ov017_021fd780(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201608;
     if (FIELD(void *, state, 4) != 0) {
-        func_02071e04(data_020f4e18, FIELD(void *, state, 4));
+        GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, state, 4));
     }
     return state;
 }
@@ -102,7 +102,7 @@ extern "C" void *func_ov017_021fd7b8(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201608;
     if (FIELD(void *, state, 4) != 0) {
-        func_02071e04(data_020f4e18, FIELD(void *, state, 4));
+        GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, state, 4));
     }
     Heap_Free(state);
     return state;
@@ -114,12 +114,12 @@ extern "C" void *func_ov017_021fd7b8(void *state)
  * through 0x02071ADC, and store the result. Return void. SDK resource ownership
  * changes; no direct hardware access occurs.
  */
-extern "C" void func_ov017_021fd7f8(void *state, s32 resourceId)
+extern "C" void Overlay017Transform_ReplaceResource(void *state, s32 resourceId)
 {
     if (FIELD(void *, state, 4) != 0) {
-        func_02071e04(data_020f4e18, FIELD(void *, state, 4));
+        GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, state, 4));
     }
-    FIELD(void *, state, 4) = func_02071adc(data_020f4e18, resourceId);
+    FIELD(void *, state, 4) = GraphicsArchive_AcquireOwlvResource(data_020f4e18, resourceId);
 }
 
 /*
@@ -130,7 +130,7 @@ extern "C" void func_ov017_021fd7f8(void *state, s32 resourceId)
  * +0x14/+0x18/+0x1C to 0x0400046C. Return void. This directly mutates geometry
  * matrix hardware and invokes SDK matrix commands.
  */
-extern "C" void func_ov017_021fd838(void *state)
+extern "C" void Overlay017Transform_SubmitGeometry(void *state)
 {
     volatile u32 *translation = (volatile u32 *)0x04000470;
     volatile u32 *scale = (volatile u32 *)0x0400046c;

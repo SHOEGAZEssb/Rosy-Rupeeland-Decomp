@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov058/overlay058_recovery.c.
 .extern GameWork_TestFlag
 .extern data_020f4e18
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -15,9 +15,9 @@ func_ov058_0220e400:
     mov r4, r0
     mov r6, r1
     mov r5, r2
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xc
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     str r6, [r4, #0x18]
     ldr r2, .L_0220e588
     str r5, [r4, #0x1c]

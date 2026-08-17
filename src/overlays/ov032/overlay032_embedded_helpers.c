@@ -9,8 +9,8 @@ extern const u8 data_ov032_022022f8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_ov032_0220142c(void *);
 #ifdef __cplusplus
 }
@@ -34,7 +34,7 @@ extern "C" void func_ov032_021fd7a4(void *state)
  */
 extern "C" void *func_ov032_021fd7c0(void *child)
 {
-    func_02071ea4((u8 *)child + 0xc);
+    AnimationResourceState_InitEmbedded((u8 *)child + 0xc);
     func_ov032_0220142c((u8 *)child + 0x18);
     return child;
 }
@@ -43,8 +43,8 @@ extern "C" void *func_ov032_021fd7c0(void *child)
  * Releases resource set +0x0C and returns `child` without freeing its storage.
  * Resource SDK state changes; the controller has no recovered teardown call.
  */
-extern "C" void *func_ov032_021fd7e0(void *child)
+extern "C" void *Overlay032Child_Destroy(void *child)
 {
-    func_02071eb8((u8 *)child + 0xc);
+    AnimationResourceState_Destroy((u8 *)child + 0xc);
     return child;
 }

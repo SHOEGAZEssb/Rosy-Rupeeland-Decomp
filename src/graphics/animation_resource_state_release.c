@@ -16,7 +16,7 @@ extern void func_02071c94(void *archive, void *resource);
 
 /* Return a live triplet to its three owning archive managers and null every
  * slot. A state with no character resource is treated as wholly empty. */
-void func_02071f38(AnimationResourceState *state)
+void AnimationResourceState_ReleaseResources(AnimationResourceState *state)
 {
     if (state->character == 0)
         return;

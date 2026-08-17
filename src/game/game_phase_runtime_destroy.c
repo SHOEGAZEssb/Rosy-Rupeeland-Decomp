@@ -29,7 +29,7 @@ extern void func_ov056_0220e79c(void *object);
 extern void GamePhaseState_UnloadPhase(void *object);
 extern void DebugHudState_GetGlobal(void);
 extern void DebugHudState_Destroy(void);
-extern void func_02058ce0(void *soundContext);
+extern void Sound_StopAllManagedPlayers(void *soundContext);
 extern void ActorMotionGameWork_Destroy(void *object);
 extern void ActorMotionAreaFollower_Destroy(void *object);
 extern void GamePhaseState_Destroy(void *object);
@@ -89,7 +89,7 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
         (*(volatile u32 *)0x04001000 & ~0x1f00) | 0x1000;
 
     FrameTaskList_DestroyNode(data_021052fc.taskNode);
-    func_02058ce0(gSoundContext);
+    Sound_StopAllManagedPlayers(gSoundContext);
     OverlaySlot_Destroy((OverlaySlot *)(bytes + 0x30c0));
     ActorMotionGameWork_Destroy(bytes + 0x3044);
     ActorMotionAreaFollower_Destroy(bytes + 0x2fbc);

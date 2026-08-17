@@ -14,20 +14,20 @@ typedef struct Overlay001ControllerActionState {
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern s32 func_020945c8(void *controller, const void *point);
-extern s32 func_02093e3c(void *controller);
-extern s32 func_02094600(void *controller, const void *point);
-extern s32 func_02093e58(void *controller);
+extern s32 InventoryScroll_TestUpperArrowPress(void *controller, const void *point);
+extern s32 InventoryScroll_PageUp(void *controller);
+extern s32 InventoryScroll_TestLowerArrowPress(void *controller, const void *point);
+extern s32 InventoryScroll_PageDown(void *controller);
 extern void Sound_Play(void *context, s32 channel, s32 soundId);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Try func_020945c8 with the borrowed touch point first. On success, run
- * func_02093e3c and play sound 0x16 on channel zero only when it returns zero.
- * If the primary action fails, try func_02094600 with the same touch point,
- * using func_02093e58 for the equivalent
+ * Try InventoryScroll_TestUpperArrowPress with the borrowed touch point first. On success, run
+ * InventoryScroll_PageUp and play sound 0x16 on channel zero only when it returns zero.
+ * If the primary action fails, try InventoryScroll_TestLowerArrowPress with the same touch point,
+ * using InventoryScroll_PageDown for the equivalent
  * sound gate. Return one for either accepted action and zero when both fail.
  * Sound playback is the only confirmed external effect beyond controller state.
  */
@@ -37,12 +37,12 @@ extern "C"
 s32 func_ov001_021fcb60(Overlay001ControllerActionState *state,
                          const void *point)
 {
-    if (func_020945c8(state->controller_1bc, point) != 0) {
-        if (func_02093e3c(state->controller_1bc) == 0) {
+    if (InventoryScroll_TestUpperArrowPress(state->controller_1bc, point) != 0) {
+        if (InventoryScroll_PageUp(state->controller_1bc) == 0) {
             Sound_Play(gSoundContext, 0, 0x16);
         }
-    } else if (func_02094600(state->controller_1bc, point) != 0) {
-        if (func_02093e58(state->controller_1bc) == 0) {
+    } else if (InventoryScroll_TestLowerArrowPress(state->controller_1bc, point) != 0) {
+        if (InventoryScroll_PageDown(state->controller_1bc) == 0) {
             Sound_Play(gSoundContext, 0, 0x16);
         }
     } else {

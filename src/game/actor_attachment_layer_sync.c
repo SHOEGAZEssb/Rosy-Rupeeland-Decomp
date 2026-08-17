@@ -16,7 +16,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
-extern s32 func_020be334(s32);
+extern s32 SignedAbsoluteValue(s32);
 #ifdef __cplusplus
 }
 #endif
@@ -58,7 +58,7 @@ void func_02031564(void *self)
         return;
 
     peer = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1) + 0x2e7c);
-    if (func_020be334(0) >= 0x2000)
+    if (SignedAbsoluteValue(0) >= 0x2000)
         return;
     peerConfig = *(u8 **)(peer + 0x54);
     if (config[0x3a] < peerConfig[0x3a]) {
@@ -66,14 +66,14 @@ void func_02031564(void *self)
             return;
         dx = *(s16 *)(peerConfig + 0x2c) - *(s16 *)(config + 0x2c);
         dy = *(s16 *)(peerConfig + 0x2e) - *(s16 *)(config + 0x2e);
-        if (func_020be334(dx) < 30 && dy > 0 && dy < 60)
+        if (SignedAbsoluteValue(dx) < 30 && dy > 0 && dy < 60)
             config[0x3a] = peerConfig[0x3a];
     } else if (config[0x3a] > peerConfig[0x3a]) {
         if (*(s32 *)(peer + 0x24) > *(s32 *)(actor + 0x24))
             return;
         dx = *(s16 *)(peerConfig + 0x2c) - *(s16 *)(config + 0x2c);
         dy = *(s16 *)(peerConfig + 0x2e) - *(s16 *)(config + 0x2e);
-        if (func_020be334(dx) < 30 && dy < 0 && dy > -40)
+        if (SignedAbsoluteValue(dx) < 30 && dy < 0 && dy > -40)
             config[0x3a] = peerConfig[0x3a];
     }
 }

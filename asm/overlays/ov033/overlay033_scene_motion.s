@@ -5,7 +5,7 @@
     .extern GamePhaseState_GetBoundaryDirection
     .extern Heap_Alloc
     .extern func_ov074_0220fda8
-    .extern func_02093360
+    .extern TitleDialog_UpdateTextPage
     .extern Presentation_InterpolateQuadraticPulse
     .extern GamePhaseState_QueryTerrainHeight
     .extern data_021052fc
@@ -100,7 +100,7 @@ L_021fd42c:
 L_021fd4a0:
     ldr r0, [r0, #0xc4]
     add r1, sp, #0x14
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x1f
     str r0, [sp, #0x0]
     str r0, [sp, #0x10]

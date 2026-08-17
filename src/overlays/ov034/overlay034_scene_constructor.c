@@ -22,7 +22,7 @@ extern void Graphics3DLightSet_Init(void *object);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void *func_ov034_021fd544(void *owner);
-extern void *func_02071adc(void *resourceContext, s32 resourceId);
+extern void *GraphicsArchive_AcquireOwlvResource(void *resourceContext, s32 resourceId);
 extern void *func_ov034_021fce04(void *object, void *owner,
                                 s32 entryIndex, u16 mode);
 extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 mode);
@@ -32,8 +32,8 @@ extern void func_ov034_021fda34(void *object, s32 x, s32 y, s32 z);
 extern void func_ov034_021fda3c(void *object, s32 x, s32 y, s32 z);
 extern void func_ov034_021fda4c(void *base, s32 index, s32 first, s32 second,
                                s32 third, s32 field0, s32 field1, s32 field2);
-extern void func_02059278(void *sound, s32 id, s32 value);
-extern void func_0205974c(void *sound, s32 id);
+extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
+extern void Sound_LoadGroup(void *sound, s32 id);
 extern void func_ov034_021fdac0(void *scene, s32 firstWord,
                                s32 secondWord, s32 thirdWord);
 #ifdef __cplusplus
@@ -79,7 +79,7 @@ extern "C" void *func_ov034_021fdae8(void *scene)
     if (owner != 0)
         owner = func_ov034_021fd544(owner);
     FIELD(void *, scene, 0) = owner;
-    FIELD(void *, scene, 4) = func_02071adc(data_020f4e18[0], 0x5002);
+    FIELD(void *, scene, 4) = GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5002);
     for (s32 i = 0; i < 16; ++i)
         FIELD(void *, scene, 8 + i * 4) = 0;
 
@@ -119,8 +119,8 @@ extern "C" void *func_ov034_021fdae8(void *scene)
     func_ov034_021fda3c((u8 *)scene + 0xdc, 0, 0, 0);
     func_ov034_021fda4c((u8 *)scene + 0x170, 0, 0x800, -0x1000,
                         -0x1000, 0x1f, 0x1f, 0x1f);
-    func_02059278(gSoundContext, 0xba, 0x7f);
-    func_0205974c(gSoundContext, 0x1cd);
+    Sound_PlayDirectSequence(gSoundContext, 0xba, 0x7f);
+    Sound_LoadGroup(gSoundContext, 0x1cd);
     FIELD(s32, scene, 0x1b4) = -1;
     func_ov034_021fdac0(scene, data_ov034_021fe748[0],
                        data_ov034_021fe748[1], 1);

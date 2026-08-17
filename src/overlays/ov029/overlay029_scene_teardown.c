@@ -14,7 +14,7 @@ extern const u8 data_ov029_021fecfc[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_0201e14c(void *, s32);
+extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
 extern void func_02071c38(void *, void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020927b8(void *);
@@ -57,7 +57,7 @@ static void Overlay029_TearDown(void *state)
     *(volatile u16 *)0x04001050 = 0;
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
-    func_0201e14c((u8 *)data_021052fc + 0x2f7c, 0);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 0);
     func_020927b8((u8 *)state + 0x78);
 }
 

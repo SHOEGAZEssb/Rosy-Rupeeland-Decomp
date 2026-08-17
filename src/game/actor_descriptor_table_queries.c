@@ -7,12 +7,12 @@
  */
 #include "tingle/types.h"
 
-extern void func_02062864(void *records, u16 index);
-extern s32 func_02062b28(void *record);
-extern s32 func_02062b74(void *record, u16 selector);
-extern void *func_02062e00(void *record);
-extern s32 func_02065034(void *state);
-extern void *func_02063b90(void *database, u16 id);
+extern void ActorDescriptor_SetRangeEnd(void *records, u16 index);
+extern s32 ActorDescriptor_IsInvalid(void *record);
+extern s32 InventoryRecord_HasId(void *record, u16 selector);
+extern void *InventoryRecord_GetMetadata(void *record);
+extern s32 ActorDescriptorState_FindEligibleEntry(void *state);
+extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
 extern void func_02071ee0(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern void func_02078dd4(void *manager, u16 id, void *destination,
@@ -27,7 +27,7 @@ extern u8 gSystemState[];
 #ifndef MATCHING
 /* Clear one 0x24-byte runtime descriptor while retaining its leading ID.
  * All subordinate pointers are borrowed and are simply detached. */
-void func_02062808(void *self)
+void ActorDescriptor_ClearRuntime(void *self)
 {
     u8 *record = (u8 *)self;
 
@@ -41,7 +41,7 @@ void func_02062808(void *self)
 
 /* Return the kind-zero descriptor's value field at resource offset +0x10.
  * Other actor-definition kinds have no value and return zero. */
-s32 func_02062b0c(void *self)
+s32 ActorDescriptor_GetKind0Value(void *self)
 {
     u8 *definition = *(u8 **)((u8 *)self + 8);
 
@@ -52,9 +52,9 @@ s32 func_02062b0c(void *self)
 #endif
 
 /* Return the actor-database definition type for one actor ID (0x02062DE4). */
-s32 func_02062de4(u16 id)
+s32 ActorDatabase_GetDefinitionKind(u16 id)
 {
-    u8 *record = (u8 *)func_02063b90(data_021e9ad0, id);
+    u8 *record = (u8 *)ActorDatabase_FindDescriptorById(data_021e9ad0, id);
     u8 *definition = *(u8 **)(record + 8);
 
     return definition[2];
@@ -63,22 +63,22 @@ s32 func_02062de4(u16 id)
 /*
  * Initialize a range descriptor for actor `id`. The database definition at
  * +8 is borrowed, and `lastIndex` is clamped to retail's inclusive limit by
- * func_02062864. The caller retains ownership of the descriptor.
+ * ActorDescriptor_SetRangeEnd. The caller retains ownership of the descriptor.
  */
-void func_020627a0(void *self, u16 id, u16 lastIndex)
+void ActorDescriptor_InitRange(void *self, u16 id, u16 lastIndex)
 {
     u8 *record = (u8 *)self;
 
     *(u16 *)record = id;
-    *(void **)(record + 8) = func_02063b90(data_021e9ad0, id);
-    func_02062864(record, lastIndex);
+    *(void **)(record + 8) = ActorDatabase_FindDescriptorById(data_021e9ad0, id);
+    ActorDescriptor_SetRangeEnd(record, lastIndex);
 }
 
 /*
  * Clamp the descriptor quantity at +4 to 99. For kind two, a nonzero quantity
  * also sets status bit 1 in the halfword at +2. No storage is allocated.
  */
-void func_02062874(void *self, u16 quantity)
+void ActorDescriptor_SetQuantity(void *self, u16 quantity)
 {
     u8 *record = (u8 *)self;
 
@@ -92,20 +92,20 @@ void func_02062874(void *self, u16 quantity)
 /*
  * Initialize a single actor descriptor. The actor database definition stored
  * at +8 is borrowed. `kind` is retained at +6 and `quantity` is clamped and
- * applied by func_02062874, including its kind-two status effect.
+ * applied by ActorDescriptor_SetQuantity, including its kind-two status effect.
  */
-void func_020627d0(void *self, u16 id, u16 kind, u16 quantity)
+void ActorDescriptor_Init(void *self, u16 id, u16 kind, u16 quantity)
 {
     u8 *record = (u8 *)self;
 
     *(u16 *)record = id;
-    *(void **)(record + 8) = func_02063b90(data_021e9ad0, id);
+    *(void **)(record + 8) = ActorDatabase_FindDescriptorById(data_021e9ad0, id);
     *(u16 *)(record + 6) = kind;
-    func_02062874(record, quantity);
+    ActorDescriptor_SetQuantity(record, quantity);
 }
 
 /* Clamp a descriptor record count/index to retail's inclusive maximum 99. */
-void func_02062864(void *self, u16 index)
+void ActorDescriptor_SetRangeEnd(void *self, u16 index)
 {
     if (index > 99)
         index = 99;
@@ -117,7 +117,7 @@ void func_02062864(void *self, u16 index)
  * lazily prepares the record array at +8 and marks bit 0x1000; deactivation
  * only clears active state one and retains the prepared array.
  */
-void func_0207811c(void *self, s32 enabled)
+void ActorDescriptor_SetActive(void *self, s32 enabled)
 {
     u8 *record = (u8 *)self;
     u16 flags = *(u16 *)(record + 4);
@@ -126,7 +126,7 @@ void func_0207811c(void *self, s32 enabled)
         if ((flags & 0x0f) == 1)
             return;
         if ((flags & 0x1000) == 0) {
-            func_02062864(record + 8,
+            ActorDescriptor_SetRangeEnd(record + 8,
                          (u16)(*(u16 *)(record + 0x0c) +
                                *(s8 *)(record + 1)));
             flags = (u16)(flags | 0x1000);
@@ -138,7 +138,7 @@ void func_0207811c(void *self, s32 enabled)
 }
 
 /* Select one of the two fixed descriptor components stored at +0x10/+0x18. */
-void *func_02062918(void *self, s32 index)
+void *ActorDescriptor_GetComponent(void *self, s32 index)
 {
     return (u8 *)self + (index == 0 ? 0x10 : 0x18);
 }
@@ -149,7 +149,7 @@ void *func_02062918(void *self, s32 index)
  * borrowed buffer. Kind-one empty subtype records use the database default
  * actor's resource ID; all other valid records use their own metadata ID.
  */
-void *func_02062928(void *self)
+void *ActorDescriptor_LoadDetailResource(void *self)
 {
     u8 *record = (u8 *)self;
     u8 *metadata = *(u8 **)(record + 8);
@@ -171,7 +171,7 @@ void *func_02062928(void *self)
  * borrows the database default definition. Other kinds use definition +0x10.
  * Returned strings remain owned by the database.
  */
-void *func_020628c8(void *self)
+void *ActorDescriptor_GetPrimaryLabel(void *self)
 {
     u8 *record = (u8 *)self;
     u8 *definition = *(u8 **)(record + 8);
@@ -189,7 +189,7 @@ void *func_020628c8(void *self)
  * ordinary kind-one records read resource byte +4, while the zero-quantity
  * subtype-one record uses image two. Unsupported retail states halt.
  */
-s32 func_020629a0(void *self)
+s32 ActorDescriptor_GetPanelImage(void *self)
 {
     u8 *record = (u8 *)self;
     u8 *definition = *(u8 **)(record + 8);
@@ -209,7 +209,7 @@ s32 func_020629a0(void *self)
 #ifndef MATCHING
 /* Return the descriptor subtype halfword at +6. The borrowed descriptor is
  * not modified, and retail performs no validation. */
-s32 func_02062a08(void *self)
+s32 ActorDescriptor_GetSubtype(void *self)
 {
     return *(u16 *)((u8 *)self + 6);
 }
@@ -220,13 +220,13 @@ s32 func_02062a08(void *self)
  * definitions always use animation seven. Other supported kinds map panel
  * image two to animation nine and every remaining image to animation six.
  * The descriptor and its definition remain borrowed and are not modified. */
-s32 func_02062ab0(void *self)
+s32 ActorDescriptor_GetPresentationAnimation(void *self)
 {
     u8 *definition = *(u8 **)((u8 *)self + 8);
 
     if (definition[2] == 2)
         return 7;
-    if (func_020629a0(self) == 2)
+    if (ActorDescriptor_GetPanelImage(self) == 2)
         return 9;
     return 6;
 }
@@ -238,7 +238,7 @@ s32 func_02062ab0(void *self)
  * subtype one. Other kinds select one of the 0x40-byte language records at
  * 0x020C4424. Returned strings are borrowed.
  */
-void *func_02062a60(void *self)
+void *ActorDescriptor_GetSecondaryLabel(void *self)
 {
     u8 *record = (u8 *)self;
     u8 *definition = *(u8 **)(record + 8);
@@ -252,7 +252,7 @@ void *func_02062a60(void *self)
 }
 
 /* Return the kind-zero resource animation byte +6, or zero for other kinds. */
-s32 func_02062ae4(void *self)
+s32 ActorDescriptor_GetKind0Animation(void *self)
 {
     u8 *definition = *(u8 **)((u8 *)self + 8);
 
@@ -262,7 +262,7 @@ s32 func_02062ae4(void *self)
 }
 
 /* Resolve the backing resource record selected by one descriptor component. */
-void *func_02063094(void *self)
+void *ActorDescriptorComponent_ResolveResource(void *self)
 {
     u8 *component = (u8 *)self;
     u8 *selection = *(u8 **)(component + 4);
@@ -304,9 +304,9 @@ void *func_02063094(void *self)
  * into caller-owned `resource`. The manager and resolved database storage are
  * borrowed; allocation and renderer effects belong to func_02071ee0.
  */
-void func_02063014(void *self, void *manager, void *resource)
+void ActorDescriptorComponent_LoadResources(void *self, void *manager, void *resource)
 {
-    u8 *resolved = (u8 *)func_02063094(self);
+    u8 *resolved = (u8 *)ActorDescriptorComponent_ResolveResource(self);
 
     func_02071ee0(resource, manager, *(u32 *)(resolved + 4),
                   *(u32 *)(resolved + 8), *(u32 *)(resolved + 0x0c));
@@ -319,7 +319,7 @@ void func_02063014(void *self, void *manager, void *resource)
  * database default at +0x254 used by the zero-valued subtype-one case. Types
  * two and three use byte +2. Unsupported combinations halt as retail does.
  */
-s32 func_02063190(void *self)
+s32 ActorDescriptorComponent_GetAnimation(void *self)
 {
     u8 *component = (u8 *)self;
     u8 *selection = *(u8 **)(component + 4);
@@ -368,13 +368,13 @@ s32 func_02063190(void *self)
  * Retail ignores the apparent database argument while preserving the incoming
  * ID register across its global-address load.
  */
-s32 func_02063658(void *database, u16 id)
+s32 ActorDatabase_QueryDefinitionKind(void *database, u16 id)
 {
     u8 *record;
     u8 *definition;
 
     (void)database;
-    record = (u8 *)func_02063b90(data_021e9ad0, id);
+    record = (u8 *)ActorDatabase_FindDescriptorById(data_021e9ad0, id);
     definition = *(u8 **)(record + 8);
     return definition[2];
 }
@@ -382,9 +382,9 @@ s32 func_02063658(void *database, u16 id)
 /*
  * Return the index of the first eligible 0x24-byte entry in `state`, or -1
  * when none exists. The entry array at +4 is borrowed, +0x0c is its count,
- * and func_02062b28 supplies retail's eligibility predicate.
+ * and ActorDescriptor_IsInvalid supplies retail's eligibility predicate.
  */
-s32 func_02065034(void *state)
+s32 ActorDescriptorState_FindEligibleEntry(void *state)
 {
     u8 *bytes = (u8 *)state;
     u8 *entries = *(u8 **)(bytes + 4);
@@ -392,7 +392,7 @@ s32 func_02065034(void *state)
     s32 index;
 
     for (index = 0; index < count; ++index) {
-        if (func_02062b28(entries + index * 0x24) != 0)
+        if (ActorDescriptor_IsInvalid(entries + index * 0x24) != 0)
             return index;
     }
     return -1;
@@ -404,7 +404,7 @@ s32 func_02065034(void *state)
  * borrowed. Retail returns zero when no matching entry exists and makes no
  * changes to either object.
  */
-s32 func_020651a4(void *state, u16 selector)
+s32 ActorDescriptorState_FindInactiveQuantity(void *state, u16 selector)
 {
     u8 *bytes = (u8 *)state;
     u8 *entries = *(u8 **)(bytes + 4);
@@ -415,12 +415,12 @@ s32 func_020651a4(void *state, u16 selector)
         u8 *entry = entries + index * 0x24;
         u8 *definition;
 
-        if (func_02062b28(entry) != 0)
+        if (ActorDescriptor_IsInvalid(entry) != 0)
             continue;
-        definition = (u8 *)func_02062e00(entry);
+        definition = (u8 *)InventoryRecord_GetMetadata(entry);
         if (definition[2] != 1)
             continue;
-        if (func_02062b74(entry, selector) != 0)
+        if (InventoryRecord_HasId(entry, selector) != 0)
             return *(u16 *)(entry + 4);
     }
     return 0;
@@ -431,12 +431,12 @@ s32 func_020651a4(void *state, u16 selector)
  * one. The descriptor and its database definition are borrowed; this query
  * has no side effects.
  */
-s32 func_02062c68(void *record)
+s32 ActorDescriptor_IsInactiveKind1Subtype1(void *record)
 {
     u8 *bytes = (u8 *)record;
     u8 *definition;
 
-    if (func_02062b28(record) != 0)
+    if (ActorDescriptor_IsInvalid(record) != 0)
         return 0;
     definition = *(u8 **)(bytes + 8);
     if (definition[2] != 1)
@@ -449,7 +449,7 @@ s32 func_02062c68(void *record)
  * entry array at +4. The signed count at +0x0c bounds the scan, matching the
  * retail loop; no state or ownership changes occur.
  */
-s32 func_0206522c(void *state)
+s32 ActorDescriptorState_CountInactiveKind1Subtype1(void *state)
 {
     u8 *bytes = (u8 *)state;
     u8 *entries = *(u8 **)(bytes + 4);
@@ -458,7 +458,7 @@ s32 func_0206522c(void *state)
     s32 index;
 
     for (index = 0; index < count; ++index) {
-        if (func_02062c68(entries + index * 0x24) != 0)
+        if (ActorDescriptor_IsInactiveKind1Subtype1(entries + index * 0x24) != 0)
             ++matches;
     }
     return matches;
@@ -469,32 +469,32 @@ s32 func_0206522c(void *state)
  * changes when none is eligible. Otherwise initialize it for actor ID 0x3e,
  * increment the active count at +0x10, and return one.
  */
-s32 func_02065270(void *state)
+s32 ActorDescriptorState_ActivateFirstEligible(void *state)
 {
     u8 *bytes = (u8 *)state;
-    s32 index = func_02065034(state);
+    s32 index = ActorDescriptorState_FindEligibleEntry(state);
 
     if (index < 0)
         return 0;
-    func_020627d0(*(u8 **)(bytes + 4) + index * 0x24, 0x3e, 1, 0);
+    ActorDescriptor_Init(*(u8 **)(bytes + 4) + index * 0x24, 0x3e, 1, 0);
     ++*(u32 *)(bytes + 0x10);
     return 1;
 }
 
 /* Return the three resource identifiers stored after a resolved record key. */
-u32 func_02063064(void *self)
+u32 ActorDescriptorComponent_GetCharacterResourceId(void *self)
 {
-    return *(u32 *)((u8 *)func_02063094(self) + 4);
+    return *(u32 *)((u8 *)ActorDescriptorComponent_ResolveResource(self) + 4);
 }
 
-u32 func_02063074(void *self)
+u32 ActorDescriptorComponent_GetPaletteResourceId(void *self)
 {
-    return *(u32 *)((u8 *)func_02063094(self) + 8);
+    return *(u32 *)((u8 *)ActorDescriptorComponent_ResolveResource(self) + 8);
 }
 
-u32 func_02063084(void *self)
+u32 ActorDescriptorComponent_GetCellResourceId(void *self)
 {
-    return *(u32 *)((u8 *)func_02063094(self) + 0x0c);
+    return *(u32 *)((u8 *)ActorDescriptorComponent_ResolveResource(self) + 0x0c);
 }
 
 /*
@@ -502,7 +502,7 @@ u32 func_02063084(void *self)
  * All returned storage is borrowed and the retail routine performs no bounds
  * checks, so callers must supply validated table and record indices.
  */
-void *func_02078418(void **tables, s32 tableIndex, s32 recordIndex)
+void *ActorDescriptorTable_GetRecord(void **tables, s32 tableIndex, s32 recordIndex)
 {
     void **table = *(void ***)tables[tableIndex];
 

@@ -8,7 +8,7 @@
     .extern data_ov021_02202e08
     .extern func_02092260
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_02095860
     .extern func_ov000_021fc298
     .extern func_ov000_021fc3f8
@@ -22,16 +22,16 @@
     .extern func_ov000_021fc5fc
     .extern func_ov000_021fc9d4
     .extern func_ov000_021fca4c
-    .extern func_ov000_021fcad8
+    .extern Overlay000_GetActiveMetadata
     .extern func_ov000_021fcb98
     .extern func_ov000_021fcc18
     .extern func_ov000_021fcca8
     .extern func_ov000_021fccfc
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fed30
+    .extern Overlay021_IsAuxiliaryRecordAvailable
     .extern func_ov021_021feea4
     .extern func_ov021_021ff274
-    .extern func_ov021_021ff4f0
+    .extern Overlay021Descriptor_GetFlags16_19
     .extern func_ov021_021ff5b8
     .extern func_ov021_021ff62c
 
@@ -141,7 +141,7 @@ L_0220157c:
     cmp r0, #0x0
     beq L_022015b8
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
     bl func_02092260
@@ -157,11 +157,11 @@ L_022015b8:
     cmp r0, #0x0
     beq L_02201614
     mov r0, r4
-    bl func_ov021_021fed30
+    bl Overlay021_IsAuxiliaryRecordAvailable
     cmp r0, #0x0
     beq L_02201604
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0xb
     bl func_02092260
@@ -187,13 +187,13 @@ L_02201614:
     cmp r0, #0x0
     beq L_02201730
     ldr r0, [r4, #0x354]
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     mov r1, #0x1
     bl func_ov021_021ff62c
     cmp r0, #0x0
     bne L_02201720
     ldr r0, [r4, #0x354]
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     ldr r0, [r0, #0xc]
     str r0, [r4, #0x37c]
     cmp r0, #0x0
@@ -205,14 +205,14 @@ L_02201614:
     cmp r0, #0x0
     beq L_02201720
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
     bl func_02092260
     ldr r0, [r4, #0x37c]
     ldr r0, [r0, #0xc]
     str r0, [r4, #0x2bc]
-    bl func_ov021_021ff4f0
+    bl Overlay021Descriptor_GetFlags16_19
     cmp r0, #0x1
     bne L_022016e8
     ldr r1, [r4, #0x354]
@@ -231,7 +231,7 @@ L_02201614:
     b L_022017d8
 L_022016e8:
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ff4f0
+    bl Overlay021Descriptor_GetFlags16_19
     cmp r0, #0x0
     bne L_0220170c
     ldr r1, L_022017f8

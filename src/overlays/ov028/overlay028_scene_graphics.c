@@ -21,7 +21,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02070638(void *, s32, s32);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02070f34(void *, s32);
 extern void func_02072048(void *, s32, s32);
@@ -31,8 +31,8 @@ extern s32 func_0209189c(void *, s32, s32);
 extern void func_020925a4(s32, s32);
 extern void func_020925f8(void);
 extern void func_02092638(s32, s32, s32, s32);
-extern void func_02092850(s32);
-extern void func_02094574(void *);
+extern void TitlePalette_SetMainBackdrop(s32);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void func_020958d8(void *);
@@ -91,11 +91,11 @@ extern "C" void func_ov028_021fe1b0(void *state)
     func_02070638((void *)setC[0], 2, 0);
     func_02070e0c((void *)setC[2], 2, 0);
     void *paletteResource = (void *)setC[1];
-    const u16 *from = (const u16 *)func_02070874(paletteResource);
-    const u16 *to = (const u16 *)func_02070874(paletteResource);
+    const u16 *from = (const u16 *)GraphicsBgResourceData_GetDecoded(paletteResource);
+    const u16 *to = (const u16 *)GraphicsBgResourceData_GetDecoded(paletteResource);
     func_ov028_021fcf2c(from, to, 0);
     func_020b2058(data_ov028_021ff300, 0x100, 0x20);
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     GraphicsResourceSet_Destroy(setC);
 }
 
@@ -151,7 +151,7 @@ extern "C" void func_ov028_021fe438(void *state)
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x54));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
     if (FIELD(void *, state, 0x220) != 0)
-        func_02094574(FIELD(void *, FIELD(void *, state, 0x220), 0x44));
+        InventoryScroll_UpdatePresentation(FIELD(void *, FIELD(void *, state, 0x220), 0x44));
     if (FIELD(void *, state, 0x224) != 0)
         func_ov028_021fda4c(FIELD(void *, state, 0x224));
 }

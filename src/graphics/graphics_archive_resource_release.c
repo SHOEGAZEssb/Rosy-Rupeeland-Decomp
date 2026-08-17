@@ -17,7 +17,7 @@ extern void func_02002728(void *allocation);
  * Retail retains resources marked by flags bit 24; otherwise it clears the
  * derived pointer before freeing and nulling the allocation owner field.
  */
-void func_020703d8(void *resource)
+void GraphicsSpriteResource_ReleaseTexture(void *resource)
 {
     u8 *bytes = (u8 *)resource;
     void **allocation = (void **)(bytes + 0x14);
@@ -44,7 +44,7 @@ void func_02070830(void *resource)
 
 /* Release the optional alternate decoded buffer at +0x28 and clear its owner
  * field. The resource remains caller-owned; a null buffer is a no-op. */
-void func_02070934(void *resource)
+void GraphicsArchiveResource_ReleaseAlternateBuffer(void *resource)
 {
     void **allocation = (void **)((u8 *)resource + 0x28);
 
@@ -101,7 +101,7 @@ void func_02071c94(void *archive, void *resource)
 }
 
 /* Releases the resource family stored in archive cache +0xe4. */
-void func_02071d4c(void *archive, void *resource)
+void GraphicsArchive_ReleaseResourceE4(void *archive, void *resource)
 {
     ReleaseCachedResource(archive, resource, 0xe4);
 }
@@ -113,7 +113,7 @@ void func_02071da8(void *archive, void *resource)
 }
 
 /* Releases the resource family stored in archive cache +0xfc. */
-void func_02071e04(void *archive, void *resource)
+void GraphicsArchive_ReleaseOwlvResource(void *archive, void *resource)
 {
     ReleaseCachedResource(archive, resource, 0xfc);
 }

@@ -17,7 +17,7 @@
 .extern data_ov026_02204aa8
 .extern data_ov026_02204ab0
 .extern data_ov026_02204ab8
-.extern func_02071adc
+.extern GraphicsArchive_AcquireOwlvResource
 .extern GraphicsResourceSetVariant_Init
 .extern GraphicsResourceSetVariant_Load
 .extern GraphicsSpriteRenderer_HideAllSprites
@@ -29,9 +29,9 @@
 .extern Graphics3DLightSet_Init
 .extern Graphics3DSceneState_Init
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_02091b6c
-.extern func_02091e28
+.extern SceneInputBase_Init
 .extern func_02092364
 .extern func_020923a4
 .extern PresentationScalar_SetImmediate
@@ -69,7 +69,7 @@ func_ov026_021ff8a0:
     mov r4, r1
     mov r6, r2
     mov r5, r3
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021ffff0
     add r0, r7, #0x7c
     str r1, [r7, #0x0]
@@ -224,7 +224,7 @@ L_021ffa04:
     ldr r0, L_02200010
     mov r1, #0x5000
     ldr r0, [r0, #0x0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r7, #0x15c]
     ldr r1, L_02200024
     ldr r3, L_02200008
@@ -458,7 +458,7 @@ L_021ffdb4:
 L_021ffe88:
     add r0, r8, #0x400
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r0, r0, lsl #0x14
     mov r0, r0, lsr #0x10
     mov r0, r0, asr #0x4

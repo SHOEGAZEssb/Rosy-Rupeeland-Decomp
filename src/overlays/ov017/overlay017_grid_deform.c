@@ -11,7 +11,7 @@ extern "C" {
 #endif
 extern void func_020b5880(void *, void *, u32);
 extern s32 func_020befec(s32, s32);
-extern s32 func_ov017_021fd3f0(void);
+extern s32 Overlay017_WaitForSquareRoot(void);
 #ifndef MATCHING
 extern u32 TingleNativeMath_Sqrt64(u64 value);
 #endif
@@ -35,7 +35,7 @@ static s32 hardwareSqrt(s32 squared)
     *(volatile u16 *)regs = 1;
     *(volatile s32 *)(regs + 8) = squared;
     *(volatile s32 *)(regs + 0xc) = squared >> 31;
-    return func_ov017_021fd3f0();
+    return Overlay017_WaitForSquareRoot();
 #endif
 }
 

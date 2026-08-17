@@ -26,9 +26,9 @@ extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordCategory_PublishById(void *, u16);
 extern void func_02092260(void *, s32);
-extern void func_02092850(s32);
+extern void TitlePalette_SetMainBackdrop(s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov002_021fbdc0(void *);
 extern s32 func_ov002_021fbe08(void *);
 extern s32 func_ov002_021fbe60(void *);
@@ -38,7 +38,7 @@ extern void func_ov021_021fd224(void *);
 extern void func_ov021_021fd39c(void *);
 extern void func_ov021_021fd490(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
-extern void func_ov021_021fe144(void *);
+extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe29c(void *);
 extern void func_ov021_021fe520(void *);
 extern void func_ov021_021fe63c(void *);
@@ -52,7 +52,7 @@ extern void func_ov021_021fee54(void *);
 extern void func_ov021_021ff0e0(void *, s32);
 extern void func_ov021_021ff1d0(void *, const void *);
 extern s32 func_ov021_021ff274(void *);
-extern u32 func_ov021_021ff4f0(const void *);
+extern u32 Overlay021Descriptor_GetFlags16_19(const void *);
 extern s32 func_ov021_021ffa10(const void *);
 extern void func_ov045_0220c028(void *);
 #ifdef __cplusplus
@@ -133,7 +133,7 @@ extern "C" s32 func_ov021_0220044c(void *state)
     case 2:
         if (func_ov021_021ff274(state) != 0) {
             func_02092c8c(1, -16);
-            func_020939d8(FIELD(void *, state, 0x388));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
             if (GameWork_TestFlag(gGameWork, 0x39a) == 0) {
                 GameWork_SetFlag(gGameWork, 0x39a);
                 GameWork_SetFlag(gGameWork, 0x3b7);
@@ -199,7 +199,7 @@ extern "C" s32 func_ov021_02200630(void *state)
         func_ov021_021fe84c(state);
         if (FIELD(s32, state, 0x3d8) != 0) {
             FIELD(s32, state, 0x48) = 0;
-            func_02092850(0);
+            TitlePalette_SetMainBackdrop(0);
             func_ov021_021fd7c0(state, data_ov021_02202ec0[0],
                                 data_ov021_02202ec0[1]);
             break;
@@ -209,7 +209,7 @@ extern "C" s32 func_ov021_02200630(void *state)
         if (list == 0) {
             if (FIELD(s32, state, 0x37c) != 0 ||
                 FIELD(s32, state, 0x380) != 0) {
-                func_ov021_021fe144(state);
+                Overlay021_SetupMainBackground(state);
                 FIELD(s32, state, 0x37c) = 0;
                 FIELD(s32, state, 0x380) = 0;
             }
@@ -289,7 +289,7 @@ extern "C" s32 func_ov021_02200840(void *state)
             const void *descriptor = FIELD(void *, state, 0x2bc);
             if (func_ov021_021fd1b8(descriptor) == 1)
                 func_ov021_021ff0e0(state, 4);
-            else if (func_ov021_021ff4f0(descriptor) == 1)
+            else if (Overlay021Descriptor_GetFlags16_19(descriptor) == 1)
                 func_ov021_021ff0e0(state, 5);
         }
         func_02092c8c(1, 0);

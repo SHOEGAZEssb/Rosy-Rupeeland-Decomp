@@ -9,7 +9,7 @@ extern void *data_020f4e18;
 extern void func_02070f80(void *resource, u16 value);
 extern void func_020b44e8(void);
 extern void func_020706c4(void *resource, s32 background, s32 value);
-extern s32 func_0207042c(void *resource);
+extern s32 GraphicsResource_GetFormat(void *resource);
 extern void func_02070bc4(void *resource, s32 destination);
 extern void func_02070eac(void *resource, s32 background, s32 value);
 #ifdef __cplusplus
@@ -48,7 +48,7 @@ s32 GraphicsSubBackground_LoadResources(s32 background, u32 resource0Id,
     case 1:
         if (uploadGraphics) {
             func_020706c4(resources.resource0, 1, 0);
-            destination = func_0207042c(resources.resource0)
+            destination = GraphicsResource_GetFormat(resources.resource0)
                         ? 0x2000 : parameter << 5;
             func_02070bc4(resources.resource1, destination);
         }
@@ -57,7 +57,7 @@ s32 GraphicsSubBackground_LoadResources(s32 background, u32 resource0Id,
     case 2:
         if (uploadGraphics) {
             func_020706c4(resources.resource0, 2, 0);
-            destination = func_0207042c(resources.resource0)
+            destination = GraphicsResource_GetFormat(resources.resource0)
                         ? 0x4000 : parameter << 5;
             func_02070bc4(resources.resource1, destination);
         }
@@ -66,7 +66,7 @@ s32 GraphicsSubBackground_LoadResources(s32 background, u32 resource0Id,
     case 3:
         if (uploadGraphics) {
             func_020706c4(resources.resource0, 3, 0);
-            destination = func_0207042c(resources.resource0)
+            destination = GraphicsResource_GetFormat(resources.resource0)
                         ? 0x6000 : parameter << 5;
             func_02070bc4(resources.resource1, destination);
         }

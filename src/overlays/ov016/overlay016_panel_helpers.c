@@ -8,8 +8,8 @@
 extern "C" {
 #endif
 extern void __destroy_arr(void *, s32, s32, void (*)(void *));
-extern void func_02071eb8(void *);
-extern void func_02071f38(void *);
+extern void AnimationResourceState_Destroy(void *);
+extern void AnimationResourceState_ReleaseResources(void *);
 extern void GraphicsSpriteGroup_Clear(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -29,11 +29,11 @@ extern "C" void *func_ov016_021fd97c(void *state)
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 8));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 4));
     func_020927b8((u8 *)state + 0xd4);
-    func_02071eb8((u8 *)state + 0x78);
-    func_02071eb8((u8 *)state + 0x6c);
-    __destroy_arr((u8 *)state + 0x24, 6, 0xc, func_02071eb8);
-    func_02071eb8((u8 *)state + 0x18);
-    func_02071eb8((u8 *)state + 0xc);
+    AnimationResourceState_Destroy((u8 *)state + 0x78);
+    AnimationResourceState_Destroy((u8 *)state + 0x6c);
+    __destroy_arr((u8 *)state + 0x24, 6, 0xc, AnimationResourceState_Destroy);
+    AnimationResourceState_Destroy((u8 *)state + 0x18);
+    AnimationResourceState_Destroy((u8 *)state + 0xc);
     return state;
 }
 
@@ -53,9 +53,9 @@ extern "C" void func_ov016_021fd9dc(void *state, s32 clearText)
         GraphicsSpriteCanvas_FillRect(FIELD(void *, state, 0), 0x20, 0x28, 0xf8, 0xb8, 0);
     }
     GraphicsSpriteGroup_Clear(FIELD(void *, state, 4));
-    func_02071f38((u8 *)state + 0x18);
+    AnimationResourceState_ReleaseResources((u8 *)state + 0x18);
     for (i = 0; i < 6; i++) {
-        func_02071f38((u8 *)state + 0x24 + i * 0xc);
+        AnimationResourceState_ReleaseResources((u8 *)state + 0x24 + i * 0xc);
         FIELD(u16, FIELD(void *, state, 0x8c + i * 4), 0x24) |= 4;
         FIELD(u16, FIELD(void *, state, 0xa4 + i * 4), 0x24) |= 4;
         FIELD(u16, FIELD(void *, state, 0xbc + i * 4), 0x24) |= 4;

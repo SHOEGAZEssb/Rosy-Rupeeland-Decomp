@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov033/overlay033_sprite_group_helpers.c for documented portable C. */
 
     .extern __destroy_arr
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern func_ov033_021fce00
     .extern Heap_Free
     .extern data_ov033_021fdd00
@@ -21,7 +21,7 @@ func_ov033_021fcf8c:
     bl func_ov033_021fce00
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_021fcfb8: .word func_02071eb8
+L_021fcfb8: .word AnimationResourceState_Destroy
 .size func_ov033_021fcf8c, .-func_ov033_021fcf8c
 
     .global func_ov033_021fcfbc
@@ -39,7 +39,7 @@ func_ov033_021fcfbc:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_021fcff0: .word func_02071eb8
+L_021fcff0: .word AnimationResourceState_Destroy
 .size func_ov033_021fcfbc, .-func_ov033_021fcfbc
 
     .global func_ov033_021fcff4

@@ -4,7 +4,7 @@
 .extern data_ov022_02200664
 .extern GraphicsSpriteText_FormatDecimal
 .extern func_0207c460
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern func_ov022_021ff2c4
 
 
@@ -47,7 +47,7 @@ L_021feb34:
     mov r3, #0x0
     bl GraphicsSpriteText_FormatDecimal
     ldr r0, [r4, #0x2cc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, L_021feb70
     mov r0, r4
     bl func_ov022_021ff2c4

@@ -11,11 +11,11 @@
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
 .extern func_02079d60
-.extern func_02079f3c
+.extern RetailTextTable_FindRecordById
 .extern func_02091b98
 .extern func_02091c7c
-.extern func_02092e9c
-.extern func_02093360
+.extern TitleDialog_SetText
+.extern TitleDialog_UpdateTextPage
 .extern PresentationList_DeleteAll
 .extern func_ov028_021fd7e0
 .extern func_ov028_021fd86c
@@ -35,10 +35,10 @@ func_ov028_021fd8b8:
     mov r1, r0
     ldr r0, [r6, #0x50]
     mov r2, #0x1
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r6, #0x50]
     mov r1, #0x0
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     ldr r0, [r6, #0x0]
     ldr r1, [r6, #0x30]
     bl GraphicsSpriteRenderer_SetFontResource
@@ -94,7 +94,7 @@ L_021fd9c0:
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, L_021fda48
     mov r1, #0x188
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     mov r1, #0x1
     mov r2, r0
     str r1, [sp, #0x0]

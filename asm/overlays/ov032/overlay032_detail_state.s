@@ -7,9 +7,9 @@
 .extern data_ov032_02202220
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_IsMainTransitionComplete
-.extern func_02092e9c
-.extern func_02097f18
-.extern func_02098348
+.extern TitleDialog_SetText
+.extern RetailSelectionHistory_GetMessageRecord
+.extern RetailSelectionManager_HasInactiveSpecialRecord
 .extern func_ov032_021fe0e8
 .extern func_ov032_021fe134
 .extern func_ov032_021fe23c
@@ -152,11 +152,11 @@ L_021ff4c4:
     ldr r0, [r4, #0xf14]
     ldr r1, L_021ff6d0
     add r0, r1, r0, lsl #0x3
-    bl func_02097f18
+    bl RetailSelectionHistory_GetMessageRecord
     mov r1, r0
     ldr r0, [r4, #0x10]
     mov r2, #0x0
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
@@ -210,7 +210,7 @@ L_021ff568:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_02098348
+    bl RetailSelectionManager_HasInactiveSpecialRecord
     cmp r0, #0x0
     beq L_021ff5d0
     ldr r2, [r4, #0x1b4]

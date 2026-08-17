@@ -15,9 +15,9 @@ extern "C" u8 data_021f3ecc[];
 extern "C" void **data_021f5128;
 extern "C" u8 data_020ed6e0[];
 extern "C" u8 data_ov045_0220d570[];
-extern "C" void func_020597fc(void *context, s32 handle);
+extern "C" void Sound_ReleaseGroup(void *context, s32 handle);
 extern "C" s32 GameWork_TestFlag(void *work, s32 flag);
-extern "C" s32 func_02079f3c(void *table, s32 id);
+extern "C" s32 RetailTextTable_FindRecordById(void *table, s32 id);
 extern "C" void *RecordMode_GetMessageGroup(void *entry);
 extern "C" s32 GraphicsSpriteRenderer_MeasureText(void *font, void *entry, s32 mode, s32 spacing);
 extern "C" void GraphicsSpriteRenderer_DrawText(void *font, void *entry, s32 x, s32 y,
@@ -29,7 +29,7 @@ extern "C" void Heap_Free(void *allocation);
 extern "C" void func_ov045_0220d2d8(s32 handle)
 {
     if (handle >= 0)
-        func_020597fc(gSoundContext, handle);
+        Sound_ReleaseGroup(gSoundContext, handle);
 }
 
 /*
@@ -40,14 +40,14 @@ extern "C" void func_ov045_0220d2d8(s32 handle)
  * stride 0x68. Measure with mode 8/spacing -2, halve width toward zero, then
  * draw with color 13 and the same mode/spacing. Font/display state changes.
  */
-extern "C" void func_ov045_0220d2f8(u32 selector, u32 subtype)
+extern "C" void Overlay045_DrawSelectorPreview(u32 selector, u32 subtype)
 {
     void *entry;
     if (selector == 9 && GameWork_TestFlag(gGameWork, 0x3a5)) {
-        entry = (u8 *)data_021f3ecc + func_02079f3c(data_021f3ecc, 0x1b6) + 2;
+        entry = (u8 *)data_021f3ecc + RetailTextTable_FindRecordById(data_021f3ecc, 0x1b6) + 2;
     } else if (selector == 8) {
         if (subtype == 0x2c && GameWork_TestFlag(gGameWork, 0x3a5))
-            entry = (u8 *)data_021f3ecc + func_02079f3c(data_021f3ecc, 0x1b6) + 2;
+            entry = (u8 *)data_021f3ecc + RetailTextTable_FindRecordById(data_021f3ecc, 0x1b6) + 2;
         else
             entry = data_020ed6e0 + subtype * 0x68;
     } else {

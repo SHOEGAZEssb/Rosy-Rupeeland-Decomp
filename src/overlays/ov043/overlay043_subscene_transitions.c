@@ -21,7 +21,7 @@ extern "C" u32 data_ov043_0220c478[];
 extern "C" void func_02092c8c(s32 screen, s32 brightness);
 extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void func_ov043_0220bcf4(void *object);
-extern "C" void func_ov043_0220bd24(void *object);
+extern "C" void Overlay043_UpdatePresentationResources(void *object);
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void OverlaySlot_LoadOverlay(void *object, s32 value);
 extern "C" void OverlaySlot_UnloadOverlay(void *object);
@@ -29,7 +29,7 @@ extern "C" void *func_ov016_021fe77c(void *storage, s32 page, s32 gameValue);
 extern "C" void *func_ov017_021feab4(void *storage, s32 count,
                                       const u32 *values, s32 selected,
                                       s32 gameValue);
-extern "C" s32 func_02091fb0(void *child, s32 command);
+extern "C" s32 SceneInputBase_Update(void *child, s32 command);
 extern "C" void func_ov043_0220b744(void *object, u32 first, u32 second);
 extern "C" void func_ov043_0220ba28(void *object);
 extern "C" void func_ov043_0220bc2c(void *object);
@@ -84,7 +84,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         /* fall through */
     case 1:
         if (!DisplayBrightness_IsMainTransitionComplete()) {
-            func_ov043_0220bd24(object);
+            Overlay043_UpdatePresentationResources(object);
             break;
         }
         func_ov043_0220bcf4(object);
@@ -105,18 +105,18 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         advance_state(object);
         break;
     case 2:
-        func_02091fb0(FIELD(void *, object, 0x2f4), 0);
+        SceneInputBase_Update(FIELD(void *, object, 0x2f4), 0);
         if (DisplayBrightness_IsMainTransitionComplete())
             advance_state(object);
         break;
     case 3:
-        if (func_02091fb0(FIELD(void *, object, 0x2f4), 1)) {
+        if (SceneInputBase_Update(FIELD(void *, object, 0x2f4), 1)) {
             func_02092c8c(3, -16);
             advance_state(object);
         }
         break;
     case 4:
-        func_02091fb0(FIELD(void *, object, 0x2f4), 0);
+        SceneInputBase_Update(FIELD(void *, object, 0x2f4), 0);
         if (!DisplayBrightness_IsMainTransitionComplete())
             break;
         {
@@ -153,7 +153,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
             func_ov043_0220b744(object, data_ov043_0220c450[0],
                                  data_ov043_0220c450[1]);
         else
-            func_ov043_0220bd24(object);
+            Overlay043_UpdatePresentationResources(object);
         break;
     }
     return 0;
@@ -177,7 +177,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         /* fall through */
     case 1:
         if (!DisplayBrightness_IsMainTransitionComplete()) {
-            func_ov043_0220bd24(object);
+            Overlay043_UpdatePresentationResources(object);
             break;
         }
         OverlaySlot_LoadOverlay((u8 *)object + 0x2e8, 17);
@@ -196,18 +196,18 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         advance_state(object);
         break;
     case 2:
-        func_02091fb0(FIELD(void *, object, 0x2f4), 0);
+        SceneInputBase_Update(FIELD(void *, object, 0x2f4), 0);
         if (DisplayBrightness_IsMainTransitionComplete())
             advance_state(object);
         break;
     case 3:
-        if (func_02091fb0(FIELD(void *, object, 0x2f4), 1)) {
+        if (SceneInputBase_Update(FIELD(void *, object, 0x2f4), 1)) {
             func_02092c8c(3, -16);
             advance_state(object);
         }
         break;
     case 4:
-        func_02091fb0(FIELD(void *, object, 0x2f4), 0);
+        SceneInputBase_Update(FIELD(void *, object, 0x2f4), 0);
         if (!DisplayBrightness_IsMainTransitionComplete())
             break;
         FIELD(u32, object, 0x20) &= ~0x400;
@@ -226,7 +226,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
             func_ov043_0220b744(object, data_ov043_0220c460[0],
                                  data_ov043_0220c460[1]);
         else
-            func_ov043_0220bd24(object);
+            Overlay043_UpdatePresentationResources(object);
         break;
     }
     return 0;
@@ -238,6 +238,6 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
  */
 extern "C" s32 func_ov043_0220c418(void *object)
 {
-    func_ov043_0220bd24(object);
+    Overlay043_UpdatePresentationResources(object);
     return 1;
 }

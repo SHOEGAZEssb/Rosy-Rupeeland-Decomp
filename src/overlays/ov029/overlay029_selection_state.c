@@ -20,7 +20,7 @@ extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_ov002_021fbb68(void *, const void *);
 extern s32 func_ov002_021fbc54(void *);
 extern void func_ov002_021fbd64(void *);
@@ -102,7 +102,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
                 break;
             }
             if (mode == 7 && FIELD(s32, state, 0xac) == 0) {
-                func_020939d8(FIELD(void *, state, 0x9c));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x9c));
                 FIELD(s32, state, 0x6c) = 3;
                 GameWork_SetFlag(gGameWork, 0x38a);
                 Overlay029_SetPair(state, data_ov029_021feca0);
@@ -110,7 +110,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
                 func_02092260(state, 9);
                 Overlay029_ResetPhase(state, 20);
             } else {
-                func_020939d8(FIELD(void *, state, 0x9c));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x9c));
                 GraphicsSpriteText_FormatDecimal((u8 *)state + 0xb0,
                               FIELD(s32, state, 0xac), 0xff676980, 0);
                 Overlay029_SetPair(state, data_ov029_021fec08);
@@ -125,7 +125,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
                 func_02092260(state, 9);
                 Overlay029_ResetPhase(state, 0);
             } else if (mode == 7) {
-                func_020939d8(FIELD(void *, state, 0x9c));
+                TitleDialog_ClearTextRect(FIELD(void *, state, 0x9c));
                 func_02092260(state, 3);
                 FIELD(s32, state, 0xac) = 0;
                 FIELD(s32, state, 0x6c) = 0;

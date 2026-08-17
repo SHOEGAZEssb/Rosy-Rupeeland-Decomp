@@ -20,10 +20,10 @@ extern "C" {
 extern s32 Type7Actor_IsInteractionSceneActive(void *actor, void *other, s32 context);
 extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 ActorRuntimeFlags_Test(void *state, s32 mask);
-extern void *func_0206c68c(void *resource, void *actor);
-extern void func_0206cb04(void *resource, void *other, s32 mode);
+extern void *AuxiliaryInteraction_Init(void *resource, void *actor);
+extern void AuxiliaryInteraction_AdmitTarget(void *resource, void *other, s32 mode);
 extern void func_0206e590(void *resource, s32 mode);
-extern void func_0206c978(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 third);
@@ -42,7 +42,7 @@ extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 extern void func_020593dc(void *soundContext, s32 group, s32 sound,
                           void *actor, s32 extra, s32 volume);
-extern s32 func_02032a94(void *actor, void *other, s32 context);
+extern s32 ActorContactState_AddContact(void *actor, void *other, s32 context);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
  * ActorRuntimeFlags_Test, nonnull actor target +0x280, and clear actor +0x10 bit
  * 0x01000000. A qualifying type-two object can allocate/construct the 0xb4-byte
  * owned resource at +0x234, install data_020e16d8 through Type7Actor_SetCallbackPair, set
- * GameWork flag 0x3fd, and submit the object to func_0206cb04. Other type-two
+ * GameWork flag 0x3fd, and submit the object to AuxiliaryInteraction_AdmitTarget. Other type-two
  * contacts derive signed extra from +0x27f/+0x29e and optional vtable +0x200;
  * an active resource completion bit releases the resource and clears the flag,
  * otherwise Type7Actor_ApplyType2InteractionResponse receives record +0x38
@@ -67,7 +67,7 @@ extern s32 func_02032a94(void *actor, void *other, s32 context);
  * actor +0x9c/+0xa0 and other +0x8c/+0x90. Objects with +0x14 bit 0x10 instead
  * use a type-three/subtype-0x18 triple-x separation path, or a constrained
  * type-four subtype range that installs data_020e1708. Every path finally calls
- * func_02032a94(actor,other,context) and returns its result. Actor, other,
+ * ActorContactState_AddContact(actor,other,context) and returns its result. Actor, other,
  * resource, heap, GameWork, sound, callback, and motion state may change.
  */
 s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
@@ -82,7 +82,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
         || *(void **)(actor + 0x280) == 0
         || ActorRuntimeFlags_Test(gActorRuntimeFlags, 0x40) != 0
         || (*(u32 *)(actor + 0x10) & 0x01000000) != 0) {
-        return func_02032a94(actor, other, context);
+        return ActorContactState_AddContact(actor, other, context);
     }
 
     if (*(void **)(actor + 0x280) != 0
@@ -94,23 +94,23 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
         if (*(void **)(actor + 0x234) == 0) {
             void *resource = Heap_Alloc(0xb4, gType7ActorContactResourceAllocationTag, 4, &gHeapContext);
             if (resource != 0)
-                resource = func_0206c68c(resource, actor);
+                resource = AuxiliaryInteraction_Init(resource, actor);
             *(void **)(actor + 0x234) = resource;
             Type7Actor_SetCallbackPair(actor, data_020e16d8[0], data_020e16d8[1], -1);
             GameWork_SetFlag(gGameWork, 0x3fd);
         }
-        func_0206cb04(*(void **)(actor + 0x234), other, 1);
-        return func_02032a94(actor, other, context);
+        AuxiliaryInteraction_AdmitTarget(*(void **)(actor + 0x234), other, 1);
+        return ActorContactState_AddContact(actor, other, context);
     }
 
     if ((*(u32 *)(other + 0x14) & 0x10) == 0) {
         type = other[0x4d];
         if (type != 2 && type != 1 && type != 7)
-            return func_02032a94(actor, other, context);
+            return ActorContactState_AddContact(actor, other, context);
         if (type == 2) {
             s32 extra;
             if (*(s16 *)(actor + 0x246) != 0)
-                return func_02032a94(actor, other, context);
+                return ActorContactState_AddContact(actor, other, context);
             extra = *(s8 *)(other + 0x27f);
             if (ActorDerivedType1_IsTargetStateEligible(other) != 0) {
                 extra += *(s16 *)(other + 0x29e);
@@ -122,25 +122,25 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                 if (resource != 0
                     && (*(u32 *)((u8 *)resource + 0x20) & 0x10000) != 0) {
                     func_0206e590(resource, 0);
-                    func_0206c978(resource);
+                    AuxiliaryInteraction_Destroy(resource);
                     Heap_Free(resource);
                     GameWork_ClearFlag(gGameWork, 0x3fd);
                     *(void **)(actor + 0x234) = 0;
                     *(u16 *)(actor + 0x246) = 0;
-                    return func_02032a94(actor, other, context);
+                    return ActorContactState_AddContact(actor, other, context);
                 }
             }
             record = *(u8 **)(actor + 0x29c);
             Type7Actor_ApplyType2InteractionResponse(
                 actor, other, *(u16 *)(record + 0x38) >> 7, extra);
-            return func_02032a94(actor, other, context);
+            return ActorContactState_AddContact(actor, other, context);
         }
         {
             s32 dx = *(s32 *)(other + 0x1c) - *(s32 *)(actor + 0x1c);
             s32 dy = *(s32 *)(other + 0x20) - *(s32 *)(actor + 0x20);
             s32 magnitude = func_0204cfa4(dx, dy);
             if (magnitude <= 0x1000)
-                return func_02032a94(actor, other, context);
+                return ActorContactState_AddContact(actor, other, context);
             dx = func_020adc90(dx, magnitude);
             dy = func_020adc90(dy, magnitude);
             if ((*(u32 *)(actor + 0xd0) & 0x10) != 0) {
@@ -196,7 +196,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
                           actor, 0, 0x100);
             *(u16 *)(actor + 0x254) = 10;
         }
-        return func_02032a94(actor, other, context);
+        return ActorContactState_AddContact(actor, other, context);
     }
 
     type = other[0x4d];
@@ -205,7 +205,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
         s32 dy;
         s32 magnitude;
         if (*(u16 *)(other + 0x4e) != 0x18)
-            return func_02032a94(actor, other, context);
+            return ActorContactState_AddContact(actor, other, context);
         dx = *(s32 *)(other + 0x1c) - *(s32 *)(actor + 0x1c);
         dy = *(s32 *)(other + 0x20) - *(s32 *)(actor + 0x20);
         magnitude = func_0204cfa4(dx, dy);
@@ -228,5 +228,5 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
         if (*(s16 *)(actor + 0xd6) != 18)
             Type7Actor_PlayStateSound(actor, 2);
     }
-    return func_02032a94(actor, other, context);
+    return ActorContactState_AddContact(actor, other, context);
 }

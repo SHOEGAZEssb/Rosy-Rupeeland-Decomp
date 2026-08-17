@@ -18,8 +18,8 @@ extern s32 func_ov034_021fd9e8(void *owner);
 extern s32 func_ov034_021fe2c4(void *object);
 extern s32 func_ov034_021fd3f4(void *state, s32 input);
 extern s32 func_ov034_021fda00(void *owner, s32 index);
-extern void func_0205929c(void *sound, s32 id, s32 duration);
-extern void func_02059278(void *sound, s32 id, s32 value);
+extern void Sound_StopDirectSequence(void *sound, s32 id, s32 duration);
+extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
 extern s32 Presentation_InterpolateScalar(void *object, s32 mode, s32 start, s32 end);
 extern void func_ov034_021fdf98(void *scene);
 extern void func_ov034_021fd978(void *owner);
@@ -108,10 +108,10 @@ extern "C" s32 func_ov034_021fe2dc(void *scene)
         if (func_ov034_021fda00(owner, 2)) {
             FIELD(s32, owner, 0x7c) = 0x1e;
             FIELD(s32, owner, 0x80) = 0;
-            func_0205929c(gSoundContext, 0xba, 0x1e);
+            Sound_StopDirectSequence(gSoundContext, 0xba, 0x1e);
             Sound_Play(gSoundContext, 0x1cd, 3);
             if (FIELD(s32, scene, 0x1b4) < 2)
-                func_02059278(gSoundContext, 0xbb, 0x7f);
+                Sound_PlayDirectSequence(gSoundContext, 0xbb, 0x7f);
             FIELD(s32, scene, 0x1b8) = 9;
         }
     } else if (state == 9) {

@@ -9,13 +9,13 @@ extern void *data_020f4e18[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071f38(void *);
+extern void AnimationResourceState_ReleaseResources(void *);
 extern void func_ov032_0220147c(void *);
 extern void func_02071ee0(...);
-extern void func_ov032_02201450(...);
+extern void Overlay032Controller_CreateObject(...);
 extern void func_ov032_022014c0(...);
 extern void func_ov032_021fe0c4(void *);
-extern void func_ov032_0220150c(...);
+extern void Overlay032Controller_SetScaleTarget(...);
 extern s32 func_020beb18(...);
 extern s32 func_020be8c0(...);
 extern s32 func_020beb6c(...);
@@ -44,7 +44,7 @@ static s32 motion_step(s32 distance)
 extern "C" void func_ov032_02201020(void *child, s32 recordIndex, s32 selection,
                                      const u8 *records, s32 mode)
 {
-    func_02071f38((u8 *)child + 0xc);
+    AnimationResourceState_ReleaseResources((u8 *)child + 0xc);
     func_ov032_0220147c((u8 *)child + 0x18);
     s32 index = FIELD(s32, child, 4);
     if ((mode != 0 && index == 3) ||
@@ -61,11 +61,11 @@ extern "C" void func_ov032_02201020(void *child, s32 recordIndex, s32 selection,
     s32 frame = FIELD(s32, record, 0x1c);
     FIELD(s32, child, 0x50) = x;
     FIELD(s32, child, 0x54) = FIELD(s32, child, 0x4c);
-    func_ov032_02201450((u8 *)child + 0x18, FIELD(void *, child, 8), (u8 *)child + 0xc);
+    Overlay032Controller_CreateObject((u8 *)child + 0x18, FIELD(void *, child, 8), (u8 *)child + 0xc);
     func_ov032_022014c0((u8 *)child + 0x18, frame, frame, x,
                         FIELD(s32, child, 0x54), 3, 0, 0, 0);
     func_ov032_021fe0c4((u8 *)child + 0x18);
-    func_ov032_0220150c((u8 *)child + 0x18, index == 3 ? 0x100 : 0x80, 0);
+    Overlay032Controller_SetScaleTarget((u8 *)child + 0x18, index == 3 ? 0x100 : 0x80, 0);
 }
 
 /*

@@ -25,7 +25,7 @@ extern "C" s32 func_02091c7c(void *track, s32 mode);
 extern "C" void func_02091cf0(void *track);
 extern "C" void func_02091b98(void *track, s32 value);
 extern "C" s32 func_0209189c(void *seed, s32 minimum, s32 maximum);
-extern "C" s32 func_020918f4(void *seed, s32 modulus);
+extern "C" s32 TitleRandom_NextBounded(void *seed, s32 modulus);
 extern "C" void func_020593ac(void *context, s32 first, s32 second,
                                s32 third, s32 fourth, s32 fifth);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
@@ -122,7 +122,7 @@ extern "C" void func_ov045_0220b9b8(void *object)
             PresentationScalar_TransitionTo((u8 *)effect + 0x1c, 1, targetY << 12);
         }
         FIELD(s32, effect, 0x7c) =
-            (s16)(func_020918f4((u8 *)object + 0x64, 4) + 24);
+            (s16)(TitleRandom_NextBounded((u8 *)object + 0x64, 4) + 24);
         FIELD(s32, effect, 0x80) = 0;
         PresentationList_Append((u8 *)object + 0x48, effect, 0);
     }

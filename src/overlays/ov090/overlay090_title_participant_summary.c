@@ -21,8 +21,8 @@ typedef struct TitleParticipantSummaryState {
 } TitleParticipantSummaryState;
 
 extern void *gSoundContext;
-extern void func_02059278(void *sound, s32 id, s32 value);
-extern void func_0205929c(void *sound, s32 id, s32 duration);
+extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
+extern void Sound_StopDirectSequence(void *sound, s32 id, s32 duration);
 
 /*
  * Copy the participant position, total the three +0xda states with each value
@@ -73,7 +73,7 @@ void func_ov090_0221b03c(TitleParticipantSummaryState *self, void *caller)
     }
 
     if (self->state_1ec == 0x10 && FIELD(s16, caller, 0xda) >= 3) {
-        func_0205929c(gSoundContext, 0x54, 0);
-        func_02059278(gSoundContext, 0x55, 0x7f);
+        Sound_StopDirectSequence(gSoundContext, 0x54, 0);
+        Sound_PlayDirectSequence(gSoundContext, 0x55, 0x7f);
     }
 }

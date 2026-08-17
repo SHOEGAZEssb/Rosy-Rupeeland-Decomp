@@ -8,20 +8,20 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_ov050_0220d9c4
-.extern func_ov050_0220db40
+.extern Overlay050EffectManager_Update
+.extern Overlay050Effect_SetAlpha
 .extern func_ov050_0220e168
-.extern func_ov050_0220e204
-.extern func_ov050_0220e224
-.extern func_ov050_0220e26c
+.extern Overlay050Scene_SetChildValue30
+.extern Overlay050Scene_AreChildrenIdle
+.extern Overlay050Scene_SetChildValue34
 .extern gGameWork
 
-.global func_ov050_0220ddf0
-func_ov050_0220ddf0:
+.global Overlay050Scene_Update
+Overlay050Scene_Update:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x20
     mov r6, r0
-    bl func_ov050_0220e224
+    bl Overlay050Scene_AreChildrenIdle
     cmp r0, #0x0
     ldr r1, .L_0220e158
     beq .L_0220de1c
@@ -50,12 +50,12 @@ func_ov050_0220ddf0:
     mov r1, #0x0
     mov r0, r6
     str r1, [r6, #0x40]
-    bl func_ov050_0220e26c
+    bl Overlay050Scene_SetChildValue34
     b .L_0220e054
 .L_0220de70:
     mov r0, r6
     mov r1, #0x1
-    bl func_ov050_0220e26c
+    bl Overlay050Scene_SetChildValue34
     ldr r0, .L_0220e15c
     ldr r0, [r0, #0x0]
     ldrsh r0, [r0, #0x78]
@@ -69,7 +69,7 @@ func_ov050_0220ddf0:
 .L_0220dea4:
     mov r0, r6
     mov r1, #0xc00
-    bl func_ov050_0220e204
+    bl Overlay050Scene_SetChildValue30
     ldr r0, [r6, #0x40]
     add r0, r0, #0x1
     str r0, [r6, #0x40]
@@ -87,7 +87,7 @@ func_ov050_0220ddf0:
     mov r0, r6
     str r1, [r6, #0x44]
     mov r1, #0x1400
-    bl func_ov050_0220e204
+    bl Overlay050Scene_SetChildValue30
     ldr r0, [r6, #0x40]
     add r0, r0, #0x1
     str r0, [r6, #0x40]
@@ -106,7 +106,7 @@ func_ov050_0220ddf0:
 .L_0220df28:
     mov r0, r6
     mov r1, #0x1000
-    bl func_ov050_0220e204
+    bl Overlay050Scene_SetChildValue30
     mov r1, #0x100
     mov r0, #0x0
     str r1, [r6, #0x44]
@@ -137,7 +137,7 @@ func_ov050_0220ddf0:
     bgt .L_0220e054
     mov r0, r6
     mov r1, #0x1000
-    bl func_ov050_0220e204
+    bl Overlay050Scene_SetChildValue30
     mov r0, #0x1e
     str r0, [r6, #0x4c]
     ldr r0, [r6, #0x40]
@@ -230,17 +230,17 @@ func_ov050_0220ddf0:
     add r0, r6, r4, lsl #0x2
     ldr r0, [r0, #0x1c]
     ldr r1, [r6, #0x2c]
-    bl func_ov050_0220d9c4
+    bl Overlay050EffectManager_Update
     add r0, r6, r4, lsl #0x2
     cmp r5, #0x8000
     ldr r0, [r0, #0x1c]
     bge .L_0220e128
     mov r1, #0x2
-    bl func_ov050_0220db40
+    bl Overlay050Effect_SetAlpha
     b .L_0220e130
 .L_0220e128:
     mov r1, #0x3
-    bl func_ov050_0220db40
+    bl Overlay050Effect_SetAlpha
 .L_0220e130:
     add r4, r4, #0x1
     cmp r4, #0x4
@@ -257,4 +257,4 @@ func_ov050_0220ddf0:
 .L_0220e15c: .word gGameWork
 .L_0220e160: .word 0x21b
 .L_0220e164: .word data_020c9670
-.size func_ov050_0220ddf0, . - func_ov050_0220ddf0
+.size Overlay050Scene_Update, . - Overlay050Scene_Update

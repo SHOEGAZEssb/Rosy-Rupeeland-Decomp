@@ -2,7 +2,7 @@
     .extern data_020f4e14
     .extern data_020f4e18
     .extern data_ov016_02201394
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -11,7 +11,7 @@
     .extern func_020957f0
     .extern func_02095820
     .extern func_02095940
-    .extern func_ov016_021fe0d8
+    .extern Overlay016SmallBase_Init
 
 /* Exact fallbacks for actor-group construction; see src/overlays/ov016/overlay016_actor_group.c. */
     .global func_ov016_021fe118
@@ -21,13 +21,13 @@ func_ov016_021fe118:
     sub sp, sp, #0xc
     mov r4, r0
     mov r5, r1
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xc
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x20
     bl func_020957bc
     add r0, r4, #0xd0
-    bl func_ov016_021fe0d8
+    bl Overlay016SmallBase_Init
     add r0, r5, #0x1
     add r0, r0, r0, lsl #0x2
     str r0, [r4, #0xe0]

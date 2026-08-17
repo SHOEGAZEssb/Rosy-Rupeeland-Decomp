@@ -6,13 +6,13 @@
 .extern func_0205940c
 .extern func_020593dc
 .extern func_020594a4
-.extern func_02058d40
+.extern Sound_StopAllDirectSequences
 .extern func_02059344
 .extern func_020594ec
 .extern func_0205958c
-.extern func_0205974c
-.extern func_020597fc
-.extern func_02058de0
+.extern Sound_LoadGroup
+.extern Sound_ReleaseGroup
+.extern Sound_SetCaptureEnabled
 .extern func_02058ffc
 .extern func_02059068
 .extern func_02059104
@@ -115,7 +115,7 @@ L_0201a768:
     ldr r0, L_0201a934
     mov r1, r4
     ldr r0, [r0, #0x0]
-    bl func_02058d40
+    bl Sound_StopAllDirectSequences
     b L_0201a928
 L_0201a77c:
     ldr r0, L_0201a934
@@ -144,13 +144,13 @@ L_0201a7cc:
     ldr r0, L_0201a934
     mov r1, r4
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     b L_0201a928
 L_0201a7e0:
     ldr r0, L_0201a934
     mov r1, r4
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     b L_0201a928
 L_0201a7f4:
     cmp r4, #0x1
@@ -158,13 +158,13 @@ L_0201a7f4:
     ldr r0, L_0201a934
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02058de0
+    bl Sound_SetCaptureEnabled
     b L_0201a928
 L_0201a810:
     ldr r0, L_0201a934
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02058de0
+    bl Sound_SetCaptureEnabled
     b L_0201a928
 L_0201a824:
     cmp r4, #0x1

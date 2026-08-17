@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_core_helpers.c. */
     .extern data_020f4e18
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
@@ -15,7 +15,7 @@ func_ov022_021fcf08:
     sub sp, sp, #0x4
     mov r4, r0
     add r0, r4, #0x4
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x10
     bl func_02091b6c
     add r0, r4, #0x2c

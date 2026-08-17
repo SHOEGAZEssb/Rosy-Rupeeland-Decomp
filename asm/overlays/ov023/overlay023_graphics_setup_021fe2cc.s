@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern func_02070638
 .extern func_020706c4
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070e0c
 .extern func_02070eac
 .extern func_02070f34
@@ -53,13 +53,13 @@ func_ov023_021fe2cc:
     mov r2, #0x0
     bl func_02070e0c
     ldr r0, [r4, #0x4c0]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x40
     mov r1, #0x0
     mov r2, #0x20
     bl func_020b1ff0
     ldr r0, [r4, #0x4c0]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x40
     mov r1, #0x100
     mov r2, #0x20

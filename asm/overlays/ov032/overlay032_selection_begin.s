@@ -1,13 +1,13 @@
 .text
 
 /* Exact fallback; see src/overlays/ov032/overlay032_selection_motion.c for documented portable C. */
-.extern func_0207042c
+.extern GraphicsResource_GetFormat
 .extern func_020708c4
-.extern func_02070934
+.extern GraphicsArchiveResource_ReleaseAlternateBuffer
 .extern func_02070958
 .extern func_02070b50
 .extern func_020b44e8
-.extern func_ov032_0220150c
+.extern Overlay032Controller_SetScaleTarget
 
     .global func_ov032_021fe9e8
 func_ov032_021fe9e8:
@@ -18,7 +18,7 @@ func_ov032_021fe9e8:
     mov r0, #0x3c
     str r0, [r10, #0xb7c]
     ldr r0, [r10, #0xb48]
-    bl func_02070934
+    bl GraphicsArchiveResource_ReleaseAlternateBuffer
     ldr r0, [r10, #0xb48]
     bl func_020708c4
     mvn r0, #0x0
@@ -34,7 +34,7 @@ func_ov032_021fe9e8:
     bl func_02070958
     bl func_020b44e8
     ldr r0, [r10, #0xb44]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [r10, #0xb48]
@@ -61,13 +61,13 @@ L_021fea78:
     add r0, r6, r2
     mov r1, #0x0
     mov r2, #0x3c
-    bl func_ov032_0220150c
+    bl Overlay032Controller_SetScaleTarget
     b L_021feac4
 L_021feab4:
     add r0, r6, r2
     mov r1, #0x80
     mov r2, #0x3c
-    bl func_ov032_0220150c
+    bl Overlay032Controller_SetScaleTarget
 L_021feac4:
     add r8, r8, #0x1
     cmp r8, #0x3

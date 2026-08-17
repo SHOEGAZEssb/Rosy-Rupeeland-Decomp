@@ -12,11 +12,11 @@ extern void func_020a6280(void *manager);
 extern void func_020a62e4(void *manager);
 extern void func_0209b7a0(void *presentation, const void *position);
 extern void func_020a219c(void *presentation);
-extern void func_0209b7cc(void *presentation, s32 argument);
+extern void Graphics3dPresentation_FinishFrame(void *presentation, s32 argument);
 extern u32 func_0209a4dc(void *manager);
 extern void func_0209a4c4(void *manager);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
-extern void func_02005058(void *vector);
+extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_0209cdd0(void *presentation, void *manager);
 extern void func_0209c9d4(void *presentation);
@@ -48,7 +48,7 @@ void func_020a214c(void *presentation, const void *position, s32 argument)
     func_020a6280(*(void **)(bytes + 0x4e8));
     func_0209b7a0(presentation, position);
     func_020a219c(presentation);
-    func_0209b7cc(presentation, argument);
+    Graphics3dPresentation_FinishFrame(presentation, argument);
 }
 
 /* The remaining recovered functions occupy non-contiguous retail objects.
@@ -93,7 +93,7 @@ void func_020a219c(void *presentation)
     func_020050a4((u8 *)manager + 0x0c, bytes + 0x4ec);
     func_0200500c(vector, scale, scale, scale);
     func_020050a4((u8 *)manager + 0x1c, vector);
-    func_02005058(vector);
+    VecFx32_TerminateNoOp(vector);
     func_0209cdd0(presentation, manager);
 }
 

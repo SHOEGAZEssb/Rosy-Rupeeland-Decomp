@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov034/overlay034_owner_lifecycle.c for documented portable C. */
 
     .extern Heap_Free
-    .extern func_02071e04
+    .extern GraphicsArchive_ReleaseOwlvResource
     .extern func_ov034_021fce00
     .extern data_ov034_021ff194
     .extern data_020f4e18
@@ -28,7 +28,7 @@ L_021fd65c:
     ldr r0, L_021fd68c
     ldr r1, [r5, #0x9c]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     mov r0, r5
     bl func_ov034_021fce00
     mov r0, r5
@@ -57,7 +57,7 @@ L_021fd6b8:
     ldr r0, L_021fd6f0
     ldr r1, [r5, #0x9c]
     ldr r0, [r0, #0x0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
     mov r0, r5
     bl func_ov034_021fce00
     mov r0, r5

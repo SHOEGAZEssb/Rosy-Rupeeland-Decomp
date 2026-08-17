@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern data_021052fc
 .extern data_ov029_021fecfc
-.extern func_0201e14c
+.extern RuntimePresentationManager_BroadcastSlot1C
 .extern func_02071c38
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020927b8
@@ -88,7 +88,7 @@ L_021fd224:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e14c
+    bl RuntimePresentationManager_BroadcastSlot1C
     add r0, r4, #0x78
     bl func_020927b8
     mov r0, r4
@@ -172,7 +172,7 @@ L_021fd350:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e14c
+    bl RuntimePresentationManager_BroadcastSlot1C
     add r0, r4, #0x78
     bl func_020927b8
     mov r0, r4

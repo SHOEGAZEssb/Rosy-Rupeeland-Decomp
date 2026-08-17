@@ -50,9 +50,13 @@ def main() -> int:
     parser.add_argument("--portable", required=True)
     args = parser.parse_args()
 
+    aliases = load_address_aliases(Path(__file__).resolve().parents[1])
+    source_names = {current: original for original, current in aliases.items()}
+    source_function = source_names.get(args.function, args.function)
+
     lines = args.input.read_text(encoding="utf-8").splitlines()
-    start_marker = f"    arm_func_start {args.function}"
-    end_marker = f"    arm_func_end {args.function}"
+    start_marker = f"    arm_func_start {source_function}"
+    end_marker = f"    arm_func_end {source_function}"
     try:
         start = lines.index(start_marker)
         end = lines.index(end_marker, start + 1)
@@ -61,9 +65,12 @@ def main() -> int:
 
     body = lines[start + 1 : end]
     body = [line.split(";", 1)[0].rstrip() for line in body]
-    aliases = load_address_aliases(Path(__file__).resolve().parents[1])
     body = [
         SYMBOL_RE.sub(lambda match: aliases.get(match.group(0), match.group(0)), line)
+        for line in body
+    ]
+    body = [
+        line.replace(source_function, args.function)
         for line in body
     ]
     defined = {

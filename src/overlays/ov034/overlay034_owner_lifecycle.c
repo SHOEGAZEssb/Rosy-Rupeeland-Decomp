@@ -14,14 +14,14 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void Presentation_Init(void *object);
-extern void *func_02071adc(void *resourceContext, s32 resourceId);
+extern void *GraphicsArchive_AcquireOwlvResource(void *resourceContext, s32 resourceId);
 extern void *func_0201e0ec(void *globalRecord);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void func_ov034_021fcff0(void *state, s32 side);
 extern void PresentationScalar_SetImmediate(void *embedded, s32 capacity);
 extern void Heap_Free(void *allocation);
-extern void func_02071e04(void *resourceContext, void *resource);
+extern void GraphicsArchive_ReleaseOwlvResource(void *resourceContext, void *resource);
 extern void func_ov034_021fce00(void *object);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ extern "C" void *func_ov034_021fd544(void *owner)
 {
     Presentation_Init(owner);
     FIELD(const void *, owner, 0) = data_ov034_021ff194;
-    FIELD(void *, owner, 0x9c) = func_02071adc(data_020f4e18[0], 0x5001);
+    FIELD(void *, owner, 0x9c) = GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5001);
 
     void *record = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
     FIELD(void *, owner, 0xac) = FIELD(void *, record, 0x35c);
@@ -73,7 +73,7 @@ static void release_owned_state(void *owner)
         if (state != 0)
             Heap_Free(state);
     }
-    func_02071e04(data_020f4e18[0], FIELD(void *, owner, 0x9c));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18[0], FIELD(void *, owner, 0x9c));
     func_ov034_021fce00(owner);
 }
 

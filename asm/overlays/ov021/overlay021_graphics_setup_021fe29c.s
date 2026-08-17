@@ -7,11 +7,11 @@
     .extern func_02070e0c
     .extern func_02072048
     .extern func_02092638
-    .extern func_020926d8
+    .extern TitleScreenResourceCollection_Init
     .extern func_020926f8
     .extern func_02092754
-    .extern func_02092790
-    .extern func_02092850
+    .extern TitleScreenResourceCollection_Get
+    .extern TitlePalette_SetMainBackdrop
     .extern func_020b44e8
     .extern func_ov021_021fe268
 
@@ -40,7 +40,7 @@ func_ov021_021fe29c:
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     add r0, sp, #0x10
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     ldr r3, L_021fe384
     ldr r1, L_021fe388
     str r3, [sp, #0x0]
@@ -59,7 +59,7 @@ func_ov021_021fe29c:
     bl func_02072048
     add r0, sp, #0x10
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c
@@ -67,7 +67,7 @@ func_ov021_021fe29c:
     str r0, [r4, #0x3fc]
     mov r1, #0x13
     str r1, [r4, #0x48]
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     add r0, sp, #0x10
     bl func_020926f8
     add r0, sp, #0x4

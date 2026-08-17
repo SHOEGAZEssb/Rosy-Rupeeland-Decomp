@@ -5,7 +5,7 @@
 .extern data_021f6288
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteRenderer_DrawText
-.extern func_02097f30
+.extern RetailSelectionHistory_GetText
 
     .global func_ov032_02201ea4
 func_ov032_02201ea4:
@@ -38,7 +38,7 @@ L_02201ed8:
     cmp r1, #0x0
     movne r9, #0x3
     moveq r9, #0x1
-    bl func_02097f30
+    bl RetailSelectionHistory_GetText
     mul r3, r8, r11
     str r9, [sp, #0x0]
     str r6, [sp, #0x4]

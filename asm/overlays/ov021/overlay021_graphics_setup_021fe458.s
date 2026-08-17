@@ -11,8 +11,8 @@
     .extern func_ov021_021fe268
     .extern func_ov021_021ff644
 
-.global func_ov021_021fe458
-func_ov021_021fe458:
+.global Overlay021_RefreshSelectionBackground
+Overlay021_RefreshSelectionBackground:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r1, #0x3
@@ -63,5 +63,5 @@ func_ov021_021fe458:
 L_021fe514: .word 0x800a
 L_021fe518: .word data_020f4e18
 L_021fe51c: .word 0x4000050
-    .size func_ov021_021fe458, . - func_ov021_021fe458
+    .size Overlay021_RefreshSelectionBackground, . - Overlay021_RefreshSelectionBackground
 

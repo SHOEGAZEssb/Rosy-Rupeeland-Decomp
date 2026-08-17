@@ -8,7 +8,7 @@
     .extern Heap_AllocCore
     .extern func_020b1bfc
     .extern GraphicsResourceSet_Apply
-    .extern func_02070874
+    .extern GraphicsBgResourceData_GetDecoded
     .extern func_ov011_021fd3a8
     .extern data_020f4e18
     .extern data_ov011_021fe618
@@ -136,7 +136,7 @@ L_021fd2f0:
     add r0, r4, #0x78
     bl GraphicsResourceSet_Apply
     ldr r0, [r4, #0x7c]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     ldrh r1, [r0, #0x0]
     ldr r0, L_021fd370
     strh r1, [r0, #0x0]

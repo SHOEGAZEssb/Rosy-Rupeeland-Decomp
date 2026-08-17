@@ -16,8 +16,8 @@ extern "C" {
 #endif
 extern void *gSoundContext;
 extern s32 func_02059344(void *sound, s32 id);
-extern void func_02059278(void *sound, s32 id, s32 value);
-extern void func_02059320(void *sound, s32 id, s32 parameter, u16 value);
+extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
+extern void Sound_SetDirectSequenceVariable(void *sound, s32 id, s32 parameter, u16 value);
 #ifdef __cplusplus
 }
 #endif
@@ -42,7 +42,7 @@ extern "C" void func_ov090_0221b7f8(void *self, s16 amount)
     if (!func_02059344(gSoundContext, 0x54)) {
         if (func_02059344(gSoundContext, 0x55))
             return;
-        func_02059278(gSoundContext, 0x54, 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, 0x54, 0x7f);
     }
 
     FIELD(s16, self, 0x244) += amount;
@@ -50,7 +50,7 @@ extern "C" void func_ov090_0221b7f8(void *self, s16 amount)
         FIELD(s16, self, 0x244) = 0;
     else if (FIELD(s16, self, 0x244) > 0x7f)
         FIELD(s16, self, 0x244) = 0x7f;
-    func_02059320(gSoundContext, 0x54, 0x2330, FIELD(u16, self, 0x244));
-    func_02059320(gSoundContext, 0x54, 0x7200,
+    Sound_SetDirectSequenceVariable(gSoundContext, 0x54, 0x2330, FIELD(u16, self, 0x244));
+    Sound_SetDirectSequenceVariable(gSoundContext, 0x54, 0x7200,
                   (u16)(0x7f - FIELD(s16, self, 0x244)));
 }

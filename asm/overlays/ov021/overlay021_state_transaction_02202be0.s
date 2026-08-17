@@ -4,12 +4,12 @@
     .extern data_ov021_02202d70
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd7c0
     .extern func_ov021_021feea4
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
-    .extern func_ov021_021ff4f0
+    .extern Overlay021Descriptor_GetFlags16_19
 
 .global func_ov021_02202be0
 func_ov021_02202be0:
@@ -37,7 +37,7 @@ L_02202c28:
     cmp r0, #0x0
     beq L_02202cb8
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ff4f0
+    bl Overlay021Descriptor_GetFlags16_19
     cmp r0, #0x2
     mov r0, r4
     bne L_02202c54
@@ -59,7 +59,7 @@ L_02202c74:
     cmp r0, #0x0
     beq L_02202cb8
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r4, #0x354]
     cmp r0, #0x0
     beq L_02202ca8

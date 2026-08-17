@@ -9,10 +9,10 @@
 .extern MIi_CpuCopy16
 .extern gPaletteCyclePresentationVtable
 .extern data_020f4e18
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern PaletteCyclePresentation_AdvancePalette
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02091b6c
 .extern func_02091b98
 .extern func_02091bd0
@@ -33,7 +33,7 @@ PaletteCyclePresentation_Init: ; 0x02022580
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r4, r0
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r1, .L_0202266c
     add r0, r4, #0x410
     str r1, [r4, #0x0]
@@ -58,7 +58,7 @@ PaletteCyclePresentation_Init: ; 0x02022580
     sub r3, r3, #0x3
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0x8]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r1, r4, #0x10
     mov r2, #0x200
     bl MIi_CpuCopy16

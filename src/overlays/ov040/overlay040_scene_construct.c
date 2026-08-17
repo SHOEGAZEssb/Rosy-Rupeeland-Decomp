@@ -36,7 +36,7 @@ extern void GraphicsResourceSet_Destroy(void *set);
 extern void GraphicsResourceSet_ReleaseHandles(void *set);
 extern void func_020b44e8(void);
 extern void *func_0207043c(void);
-extern void *func_02070874(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void *func_02070888(void *resource);
 extern void func_020708c4(void *resource);
 extern void func_020b1924(void *destination, s32 slot, void *source);
@@ -118,7 +118,7 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
     func_020b44e8();
     func_020b1924(FIELD(void *, (void *)temporarySet[0], 0x24), 0, func_0207043c());
     func_020b44e8();
-    func_020b2058(func_02070874((void *)temporarySet[1]), 0x80,
+    func_020b2058(GraphicsBgResourceData_GetDecoded((void *)temporarySet[1]), 0x80,
                   func_02070888((void *)temporarySet[1]));
     func_020b44e8();
     func_02070f80((void *)temporarySet[2], 4);
@@ -131,7 +131,7 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
     func_020b44e8();
     func_020b1784(FIELD(void *, FIELD(void *, scene, 0x1b7c), 0x24), 0, func_0207043c());
     func_020b44e8();
-    func_020b2058(func_02070874(FIELD(void *, scene, 0x1b80)), 0,
+    func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x1b80)), 0,
                   func_02070888(FIELD(void *, scene, 0x1b80)));
     func_020b44e8();
     func_02070e0c(FIELD(void *, scene, 0x1b84), 3, 0);

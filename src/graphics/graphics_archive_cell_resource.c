@@ -21,8 +21,8 @@ extern void func_02070164(void *self, void *archive, const void *source,
 extern void *func_020702d4(void *cache, u32 resource_id);
 extern void func_02070244(void *cache, void *resource);
 extern void *func_020713e4(u32 size);
-extern void *func_0207142c(void *archive, u32 resource_id, u32 *size);
-extern void *func_02070204(void *self);
+extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resource_id, u32 *size);
+extern void *GraphicsArchiveResource_DestroyVariant(void *self);
 extern void func_020a7298(void *heap, void *allocation);
 
 void *func_02070c38(void *self, void *archive, const void *source,
@@ -45,13 +45,13 @@ void *func_02070c38(void *self, void *archive, const void *source,
  * 0x02070CC8, used by the retail cell-resource vtable. */
 void *func_02070cb4(void *self)
 {
-    func_02070204(self);
+    GraphicsArchiveResource_DestroyVariant(self);
     return self;
 }
 
 void *func_02070cc8(void *self)
 {
-    func_02070204(self);
+    GraphicsArchiveResource_DestroyVariant(self);
     func_020a7298(*(void **)(data_021e9e60 + 4), self);
     return self;
 }
@@ -67,7 +67,7 @@ void *func_02071800(void *archive, u32 resource_id)
     if (resource != 0) {
         resource->reference_count++;
     } else {
-        source = (const u32 *)func_0207142c(archive, resource_id,
+        source = (const u32 *)GraphicsArchive_LoadIndexedPayload(archive, resource_id,
                                             &source_size);
         if (source != 0 && source[0] == 0x56434520) {
             resource = (GraphicsArchiveCachedResource *)func_020713e4(0x34);

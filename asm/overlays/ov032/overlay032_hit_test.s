@@ -3,11 +3,11 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_hit_test.c for documented portable C. */
 .extern Sound_Play
 .extern func_0209286c
-.extern func_02092910
+.extern GraphicsSpriteState_TestTouchPoint
 .extern gSoundContext
 
-    .global func_ov032_021ff288
-func_ov032_021ff288:
+    .global Overlay032SpriteWrapper_HitTest
+Overlay032SpriteWrapper_HitTest:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0xc]
@@ -21,7 +21,7 @@ func_ov032_021ff288:
     mov r4, r0
     b L_021ff2c0
 L_021ff2b8:
-    bl func_02092910
+    bl GraphicsSpriteState_TestTouchPoint
     mov r4, r0
 L_021ff2c0:
     cmp r4, #0x0
@@ -44,5 +44,5 @@ L_021ff2fc:
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021ff304: .word gSoundContext
-.size func_ov032_021ff288, .-func_ov032_021ff288
+.size Overlay032SpriteWrapper_HitTest, .-Overlay032SpriteWrapper_HitTest
 

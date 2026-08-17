@@ -5,8 +5,8 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern data_ov032_02202340
-.extern func_02071980
-.extern func_02092cc0
+.extern GraphicsArchive_AcquireVfdResource
+.extern TitleDialog_Init
 .extern func_ov032_021fce08
 .extern gHeapContext
 
@@ -18,7 +18,7 @@ func_ov032_021fe6b0:
     mov r4, r0
     ldr r0, [r1, #0x0]
     ldr r1, L_021fe7c0
-    bl func_02071980
+    bl GraphicsArchive_AcquireVfdResource
     str r0, [r4, #0xc]
     ldr r1, L_021fe7c4
     ldr r3, L_021fe7c8
@@ -30,7 +30,7 @@ func_ov032_021fe6b0:
     ldr r1, L_021fe7cc
     ldr r2, [r4, #0xc]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fe6fc:
     str r0, [r4, #0x18]
     mov r0, #0x1e
@@ -59,7 +59,7 @@ L_021fe6fc:
     ldr r1, L_021fe7cc
     ldr r2, [r4, #0x8]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fe76c:
     str r0, [r4, #0x14]
     mov r0, #0x1e

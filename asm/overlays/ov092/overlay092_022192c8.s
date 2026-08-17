@@ -7,8 +7,8 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02059278
-.extern func_0205929c
+.extern Sound_PlayDirectSequence
+.extern Sound_StopDirectSequence
 .extern func_02059344
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
@@ -123,7 +123,7 @@ func_ov092_022192c8:
     ldr r0, [r1, #0x0]
     mov r1, #0x94
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     b .L_022196b4
 .L_02219440:
     ldr r0, [r6, #0x254]
@@ -165,7 +165,7 @@ func_ov092_022192c8:
     ldr r0, .L_022196c4
     mov r1, #0x94
     ldr r0, [r0, #0x0]
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r2, [r4, #0x1c]
     ldr r1, .L_022196cc
     mov r0, r6
@@ -188,7 +188,7 @@ func_ov092_022192c8:
     mov r1, #0x94
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     b .L_022196b4
 .L_0221953c:
     cmp r0, #0x24
@@ -203,7 +203,7 @@ func_ov092_022192c8:
     mov r1, #0x94
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     b .L_022196b4
 .L_02219574:
     ldrh r2, [r5, #0x24]
@@ -220,7 +220,7 @@ func_ov092_022192c8:
     mov r1, #0x94
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     add r0, r6, #0x200
     mov r1, #0x33
     strh r1, [r0, #0x9c]

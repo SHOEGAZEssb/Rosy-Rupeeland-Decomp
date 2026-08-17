@@ -12,7 +12,7 @@
 .extern Heap_AllocCore
 .extern Heap_FreeCore
 .extern func_0207043c
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_020b18bc
 .extern func_020b1924
 .extern func_020b1bfc
@@ -86,14 +86,14 @@ func_ov058_0220f308:
     rsb r0, r9, #0xf
     mov r10, r0, lsl #0x5
     ldr r0, [r4, #0x1c]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
     mov r0, r7
     mov r2, r10
     mov r3, r11
     bl PaletteBuffer_Write
     ldr r0, [r4, #0x1c]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
     ldr r0, .L_0220f480
     mov r2, r10

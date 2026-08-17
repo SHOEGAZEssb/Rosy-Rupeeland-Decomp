@@ -20,16 +20,16 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *); extern void func_02071ea4(void *); extern void func_02071eb8(void *);
-extern void func_02092798(void *); extern void func_020927b8(void *); extern void func_020926d8(void *); extern void func_020926f8(void *);
+extern void SceneInputBase_Init(void *); extern void AnimationResourceState_InitEmbedded(void *); extern void AnimationResourceState_Destroy(void *);
+extern void TitleCharacterResourceCollection_Init(void *); extern void func_020927b8(void *); extern void TitleScreenResourceCollection_Init(void *); extern void func_020926f8(void *);
 extern void func_020957bc(void *); extern void func_02092754(void *,s32); extern void func_02092814(void *,s32);
 extern void *Heap_Alloc(u32,const char *,s32,void *); extern void Heap_Free(void *);
 extern void *func_ov001_021fb6f8(void *,void *); extern void func_ov001_021fb7d4(void *);
-extern void *func_ov001_021fbabc(void *,void *); extern void func_0206550c(void *,s32);
+extern void *func_ov001_021fbabc(void *,void *); extern void InventoryRecordCollection_SortAlternate(void *,s32);
 extern void func_02071ee0(void *,void *,s32,s32,s32); extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32); extern void func_020957f0(void *,void *,s32,s32,s32);
 extern void func_02073e48(void *,s32,s32,s32,s32,s32,s32); extern void func_020afd0c(void *,s32,s32,s32,s32);
-extern void func_0205974c(void *,s32); extern void func_020597fc(void *,s32); extern void GraphicsSpriteGroup_Destroy(void *);
+extern void Sound_LoadGroup(void *,s32); extern void Sound_ReleaseGroup(void *,s32); extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov015_021fce00(void *); extern void func_ov015_021fce14(void *); extern void func_ov015_021fce30(void *,s32,s32,s32);
 extern void func_ov015_021fd230(void *,const void *); extern void func_ov015_021fd41c(void *);
 extern void func_ov015_021fda50(void *); extern void func_ov015_021fd8a8(void *,s32); extern void func_ov015_021fd8ec(void *);
@@ -56,9 +56,9 @@ typedef void (*Overlay015Destructor)(void *);
 extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soundMode)
 {
     s32 i; void *object; void *selected;
-    func_02091e28(state); FIELD(const void *,state,0)=data_ov015_021fec74;
-    func_02071ea4((u8 *)state+0x58); func_02071ea4((u8 *)state+0x64);
-    func_02092798((u8 *)state+0x74); func_020926d8((u8 *)state+0x98);
+    SceneInputBase_Init(state); FIELD(const void *,state,0)=data_ov015_021fec74;
+    AnimationResourceState_InitEmbedded((u8 *)state+0x58); AnimationResourceState_InitEmbedded((u8 *)state+0x64);
+    TitleCharacterResourceCollection_Init((u8 *)state+0x74); TitleScreenResourceCollection_Init((u8 *)state+0x98);
     func_ov015_021fce00((u8 *)state+0xe0);
     for(i=0;i<3;i++)func_020957bc((u8 *)state+0xfc+i*0xac);
     FIELD(s32,state,0xec)=soundMode; func_ov015_021fd41c(state);
@@ -66,9 +66,9 @@ extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soun
     func_02092814((u8 *)state+0x74,0x7001); func_02092814((u8 *)state+0x74,0x7005); func_02092814((u8 *)state+0x74,0x7000);
     object=Heap_Alloc(0x48,data_ov015_021fec88,4,gHeapContext);if(object)object=func_ov001_021fb6f8(object,gDebugFont);FIELD(void *,state,0xf4)=object;FIELD(void *,state,0xf8)=0;
     if(parameters)func_ov015_021fd230((u8 *)state+0xe0,parameters);
-    func_0206550c((u8 *)data_021e9ac0+0x34,1);
+    InventoryRecordCollection_SortAlternate((u8 *)data_021e9ac0+0x34,1);
     object=Heap_Alloc(0x210,data_ov015_021fec90,4,gHeapContext);if(object)object=func_ov001_021fbabc(object,data_020f4e14);FIELD(void *,state,0xdc)=object;
-    if(soundMode)func_0205974c(gSoundContext,0x82);
+    if(soundMode)Sound_LoadGroup(gSoundContext,0x82);
     func_02071ee0((u8 *)state+0x58,data_020f4e18,0,1,2);
     func_02071ee0((u8 *)state+0x64,data_020f4e18,0x47,0x45,0x48);
     FIELD(void *,state,0x54)=GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
@@ -83,11 +83,11 @@ extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soun
 extern "C" void *func_ov015_021fd24c(void *state)
 {
     s32 i;void *o;FIELD(const void *,state,0)=data_ov015_021fec74;FIELD(u32,state,0x20)&=~0x400u;
-    if(FIELD(s32,state,0xec))func_020597fc(gSoundContext,0x82);*(volatile u16 *)0x04000050=0;
+    if(FIELD(s32,state,0xec))Sound_ReleaseGroup(gSoundContext,0x82);*(volatile u16 *)0x04000050=0;
     o=FIELD(void *,state,0xf8);if(o){void **v=FIELD(void **,o,0);((Overlay015Destructor)v[1])(o);}
     o=FIELD(void *,state,0xf4);if(o){func_ov001_021fb7d4(o);Heap_Free(o);}o=FIELD(void *,state,0xdc);if(o){void **v=FIELD(void **,o,0);((Overlay015Destructor)v[1])(o);}
     GraphicsSpriteGroup_Destroy(FIELD(void *,state,0x54));for(i=2;i>=0;i--)func_ov015_021fce14((u8 *)state+0xfc+i*0xac);
-    func_020926f8((u8 *)state+0x98);func_020927b8((u8 *)state+0x74);func_02071eb8((u8 *)state+0x64);func_02071eb8((u8 *)state+0x58);return state;
+    func_020926f8((u8 *)state+0x98);func_020927b8((u8 *)state+0x74);AnimationResourceState_Destroy((u8 *)state+0x64);AnimationResourceState_Destroy((u8 *)state+0x58);return state;
 }
 
 /* Call the non-freeing destructor, free state, and return its former address; heap state changes are observable. */

@@ -3,10 +3,10 @@
 /* Exact fallback; see src/overlays/ov037/overlay037_scene_spawn_update.c for documented portable C. */
 
     .extern func_02091c7c
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern GraphicsAnimationInstanceManager_CreateInstance
     .extern Heap_Alloc
-    .extern func_020955d8
+    .extern AlternateSpritePresentation_Init
     .extern func_0209189c
     .extern Presentation_SetPosition
     .extern PresentationScalar_SetImmediate
@@ -31,7 +31,7 @@ func_ov037_021fdd08:
     beq L_021fde34
     add r0, r6, #0xbc
     mov r1, #0x2
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     cmp r0, #0x0
     ldr r0, [r6, #0x114]
     beq L_021fdd48
@@ -54,7 +54,7 @@ L_021fdd50:
     movs r5, r0
     beq L_021fdd88
     mov r1, r7
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
     mov r5, r0
 L_021fdd88:
     mov r1, #0x800
@@ -133,7 +133,7 @@ L_021fde34:
     movs r5, r0
     beq L_021fdebc
     mov r1, r4
-    bl func_020955d8
+    bl AlternateSpritePresentation_Init
     mov r5, r0
 L_021fdebc:
     mov r1, #0x200

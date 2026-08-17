@@ -7,28 +7,28 @@
     .extern data_ov016_022013e8
     .extern data_ov016_02201410
     .extern data_ov016_02201540
-    .extern func_02064be0
-    .extern func_02071ea4
+    .extern InventoryRecordCollection_Sort
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091e28
-    .extern func_020926d8
+    .extern SceneInputBase_Init
+    .extern TitleScreenResourceCollection_Init
     .extern func_02092754
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_020957bc
     .extern func_020957f0
     .extern func_02095820
     .extern func_02095940
     .extern func_ov016_021fe740
-    .extern func_ov016_021fe754
+    .extern Overlay016ActorValue_Init
     .extern func_ov016_021fedc4
     .extern func_ov016_021ff094
     .extern func_ov016_021ff17c
     .extern func_ov016_021ff288
-    .extern func_ov016_021ff404
-    .extern func_ov016_021ff510
+    .extern Overlay016_CreateSceneSprite
+    .extern Overlay016_PopulateAuxiliaryList
     .extern gGameWork
 
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_construct.c. */
@@ -40,17 +40,17 @@ func_ov016_021fe77c:
     mov r4, r0
     mov r6, r1
     mov r5, r2
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fea64
     add r0, r4, #0x60
     str r1, [r4, #0x0]
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r4, #0x84
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     add r0, r4, #0xc8
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xd4
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0xe8
     bl func_020957bc
     add r0, r4, #0x194
@@ -86,7 +86,7 @@ func_ov016_021fe77c:
     str r0, [r4, #0x484]
     ldr r0, L_021fea68
     ldr r0, [r0, #0x0]
-    bl func_02064be0
+    bl InventoryRecordCollection_Sort
     ldr r1, L_021fea6c
     add r0, r4, #0x84
     bl func_02092754
@@ -143,17 +143,17 @@ L_021fe91c:
     mov r0, r4
     bl func_ov016_021ff094
     mov r0, r4
-    bl func_ov016_021ff404
+    bl Overlay016_CreateSceneSprite
     ldr r1, L_021fea90
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
     b L_021fea3c
 L_021fe940:
     mov r0, r4
     bl func_ov016_021ff17c
     mov r0, r4
-    bl func_ov016_021ff510
+    bl Overlay016_PopulateAuxiliaryList
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xd4
     mov r2, #0x1
@@ -213,7 +213,7 @@ L_021fe9a4:
     mov r0, r4
     ldr r1, L_021fea98
     ldmia r1, {r1, r2}
-    bl func_ov016_021fe754
+    bl Overlay016ActorValue_Init
 L_021fea3c:
     ldr r0, L_021fea9c
     ldr r1, L_021feaa0

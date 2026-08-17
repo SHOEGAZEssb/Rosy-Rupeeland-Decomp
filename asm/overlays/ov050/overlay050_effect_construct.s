@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitCopy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
-.extern func_ov050_0220d7c4
+.extern Overlay050PairedEffect_ResetMotion
 
 .global func_ov050_0220d600
 func_ov050_0220d600:
@@ -49,7 +49,7 @@ func_ov050_0220d600:
     strh r0, [r1, #0x2e]
     mov r0, r5
     mov r1, #0x1000
-    bl func_ov050_0220d7c4
+    bl Overlay050PairedEffect_ResetMotion
     mov r0, r5
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .size func_ov050_0220d600, . - func_ov050_0220d600

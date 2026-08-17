@@ -19,7 +19,7 @@ extern void VecFx32Object_Destroy(void *vector);
 extern void ActorVector_DivideByScalar(void *output, const void *direction, s32 scale);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void *func_0201e0ec(void *manager);
-extern void func_020a2894(void *effect, s32 kind, s32 x, s32 y, s32 extra);
+extern void EffectManager_SubmitPointEffect(void *effect, s32 kind, s32 x, s32 y, s32 extra);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
 extern s32 ActorExtendedType2_GetDescriptorValue28(void *target);
 extern u32 genrand_int32(void);
@@ -30,7 +30,7 @@ extern void VecFx32Object_Init(void *vector);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
-extern void func_0201ded4(void *manager, void *object);
+extern void PresentationList_AppendObject(void *manager, void *object);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Type1Actor_TryEnterFailureState(void *actor);
@@ -139,7 +139,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
         VecFx32Object_Destroy(separation);
         effectPosition[2] += 0x18000 - effectPosition[3];
         effect = func_0201e0ec(data_021052fc + 0x2f7c);
-        func_020a2894(effect, 1, effectPosition[1], effectPosition[2], 0);
+        EffectManager_SubmitPointEffect(effect, 1, effectPosition[1], effectPosition[2], 0);
 
         if (ActorDerivedType1_IsTargetStateEligible(target) != 0) {
             s32 relative;
@@ -185,7 +185,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
                                       *(void **)(data_021052fc + 0x2ea4),
                                       negative, 0x2000, -0xc0);
             }
-            func_0201ded4(data_021052fc + 0x2f7c, object);
+            PresentationList_AppendObject(data_021052fc + 0x2f7c, object);
             ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 7);
             func_020349b8(actor, 0x26, 0);
             func_020349b8(actor, 0x0e, 0);

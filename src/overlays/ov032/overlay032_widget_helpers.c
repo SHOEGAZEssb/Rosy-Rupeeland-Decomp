@@ -18,10 +18,10 @@ extern "C" {
 extern s32 func_020befec(...);
 extern void func_ov032_02201ea4(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void *func_02097f30(void *);
+extern void *RetailSelectionHistory_GetText(void *);
 extern void GraphicsSpriteRenderer_DrawText(...);
-extern void *func_02093cb4(void *);
-extern void func_02071ea4(void *);
+extern void *InventoryScroll_InitBase(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(...);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
@@ -30,10 +30,10 @@ extern void Heap_Free(void *);
 extern void *SpritePresentation_Init(...);
 extern void Presentation_SetPosition(...);
 extern void SpritePresentation_SyncPosition(void *);
-extern void func_02093d20(...);
-extern void func_020944f0(void *);
+extern void InventoryScroll_ConfigureRange(...);
+extern void InventoryScroll_UpdateArrowAnimations(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
-extern void func_02094494(void *);
+extern void InventoryScroll_DestroyAlternate(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ extern void func_02094494(void *);
  * row four. It adds the list's scroll index at [+0x4C]+0x0C and rejects indices
  * beyond widget count +0x0C. Returns the selected index or -1.
  */
-extern "C" s32 func_ov032_02201de4(void *widget, void *point)
+extern "C" s32 Overlay032Widget_HitTestRow(void *widget, void *point)
 {
     s32 x = FIELD(s32, point, 4) - 0x28;
     s32 y = FIELD(s32, point, 8) - 0x1a;
@@ -83,17 +83,17 @@ extern "C" void func_ov032_02201ea4(void *widget)
     for (s32 row = 0; row < 5 && row + base < FIELD(s32, widget, 0xc) + 1; ++row) {
         u8 *record = (u8 *)data_021f6288 + (row + base) * 8;
         s32 style = FIELD(u16, record, 2) == 1 ? 3 : 1;
-        GraphicsSpriteRenderer_DrawText(data_020f4e14[0], func_02097f30(record), 0x28,
+        GraphicsSpriteRenderer_DrawText(data_020f4e14[0], RetailSelectionHistory_GetText(record), 0x28,
                       row * 0x18 + 0x1c, style, 8, 0);
     }
 }
 
 /* Constructs the SDK list base, installs vtable 0x020F263C, initializes resource set +0x54, and returns `object`. */
-extern "C" void *func_ov032_02201f58(void *object)
+extern "C" void *Overlay032ListBase_Init(void *object)
 {
-    func_02093cb4(object);
+    InventoryScroll_InitBase(object);
     FIELD(const void *, object, 0) = data_020f263c;
-    func_02071ea4((u8 *)object + 0x54);
+    AnimationResourceState_InitEmbedded((u8 *)object + 0x54);
     return object;
 }
 
@@ -107,7 +107,7 @@ extern "C" void *func_ov032_02201f58(void *object)
 extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 arg3,
                                       s32 arg4, s32 arg5, s32 height)
 {
-    func_ov032_02201f58(object);
+    Overlay032ListBase_Init(object);
     FIELD(const void *, object, 0) = data_ov032_02202308;
     FIELD(void *, object, 0x4c) = canvas;
     FIELD(s32, object, 0x6c) = height;
@@ -141,11 +141,11 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
     }
     FIELD(void *, object, 0x60) = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
     func_02073e48(FIELD(void *, object, 0x60), 4, 0, 0, 2, 0x2000, 0);
-    func_02093d20(object, arg2, arg3, 0);
+    InventoryScroll_ConfigureRange(object, arg2, arg3, 0);
     FIELD(s32, object, 0x3c) = 0;
     FIELD(s32, object, 0x40) = 0x10;
     FIELD(s32, object, 0x44) = height + 0x3c;
-    func_020944f0(object);
+    InventoryScroll_UpdateArrowAnimations(object);
     if (FIELD(s32, object, 8) >= FIELD(s32, object, 4)) {
         FIELD(u16, FIELD(void *, object, 0x60), 0x24) |= 4;
         GraphicsSpriteGroup_ReleaseIndexedEntries(resource);
@@ -156,7 +156,7 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
 /* Runs the SDK list destructor for `object` and returns the same pointer without freeing it. */
 extern "C" void *func_ov032_022021f0(void *object)
 {
-    func_02094494(object);
+    InventoryScroll_DestroyAlternate(object);
     return object;
 }
 

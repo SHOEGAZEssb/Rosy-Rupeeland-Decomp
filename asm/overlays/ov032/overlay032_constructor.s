@@ -8,27 +8,27 @@
 .extern data_ov032_02202220
 .extern data_ov032_02202340
 .extern DisplayBrightnessPair_GetScreen
-.extern func_02027854
-.extern func_02027f94
+.extern GamePhaseProgress_GetCurrentAdjustedThreshold
+.extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_02058eb8
-.extern func_0205974c
-.extern func_02071980
-.extern func_02071ea4
+.extern Sound_LoadGroup
+.extern GraphicsArchive_AcquireVfdResource
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02092364
-.extern func_02092cc0
+.extern TitleDialog_Init
 .extern func_020adc90
 .extern func_020bf1f8
 .extern func_ov032_021fce00
 .extern func_ov032_021fce08
 .extern func_ov032_021fd7a4
 .extern func_ov032_021fd7c0
-.extern func_ov032_021fd7e0
+.extern Overlay032Child_Destroy
 .extern func_ov032_02200f88
 .extern func_ov032_0220142c
-.extern func_ov032_02201450
+.extern Overlay032Controller_CreateObject
 .extern func_ov032_022014c0
 .extern GameWork_ClearFlag
 .extern gDebugFont
@@ -46,17 +46,17 @@ func_ov032_021fce20:
     sub sp, sp, #0x14
     mov r4, r0
     add r0, r4, #0x1c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x28
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x34
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x40
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x4c
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x58
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x64
     bl func_ov032_0220142c
     add r0, r4, #0x94
@@ -149,7 +149,7 @@ L_021fcf84:
     str r0, [r4, #0xc38]
     ldr r0, [r1, #0x0]
     mov r1, #0x81
-    bl func_0205974c
+    bl Sound_LoadGroup
     mov r0, #0x1e
     str r0, [sp, #0x0]
     ldr r0, L_021fd768
@@ -163,8 +163,8 @@ L_021fcf84:
     add r0, r0, #0x100
     ldrsh r0, [r0, #0xce]
     str r0, [r4, #0xc1c]
-    bl func_02027f94
-    bl func_02027854
+    bl GamePhaseProgress_GetOrCreateGlobal
+    bl GamePhaseProgress_GetCurrentAdjustedThreshold
     str r0, [r4, #0xc20]
     ldr r1, [r4, #0xc1c]
     mov r0, #0x0
@@ -189,7 +189,7 @@ L_021fcf84:
     ldr r0, L_021fd774
     ldr r1, L_021fd778
     ldr r0, [r0, #0x0]
-    bl func_02071980
+    bl GraphicsArchive_AcquireVfdResource
     str r0, [r4, #0x8]
     mov r0, #0xec
     ldr r1, L_021fd77c
@@ -201,7 +201,7 @@ L_021fcf84:
     ldr r1, L_021fd784
     ldr r2, [r4, #0x8]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fd09c:
     str r0, [r4, #0x10]
     mov r0, #0x32
@@ -295,7 +295,7 @@ L_021fd11c:
     add r0, r4, #0x64
     ldr r1, [r4, #0x4]
     add r2, r4, #0x1c
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x4c
     str r0, [sp, #0x0]
     mov r0, #0x3
@@ -311,7 +311,7 @@ L_021fd11c:
     add r0, r4, #0x94
     ldr r1, [r4, #0x4]
     add r2, r4, #0x1c
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x4c
     str r0, [sp, #0x0]
     mov r0, #0x3
@@ -328,7 +328,7 @@ L_021fd11c:
     ldr r1, [r4, #0x4]
     add r0, r4, #0xc4
     add r2, r4, #0x1c
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x67
     mov r1, #0x2
     str r0, [sp, #0x0]
@@ -345,7 +345,7 @@ L_021fd11c:
     ldr r1, [r4, #0x0]
     add r0, r4, #0x184
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x38
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -363,7 +363,7 @@ L_021fd11c:
     add r0, r4, #0x1b4
     ldr r1, [r4, #0x0]
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x2e
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -381,7 +381,7 @@ L_021fd11c:
     add r0, r4, #0xf4
     ldr r1, [r4, #0x0]
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x58
     str r0, [sp, #0x0]
     mov r1, #0x2
@@ -398,7 +398,7 @@ L_021fd11c:
     ldr r1, [r4, #0x0]
     add r0, r4, #0x124
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x78
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -416,7 +416,7 @@ L_021fd11c:
     ldr r1, [r4, #0x0]
     add r0, r4, #0x1e4
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x6e
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -434,7 +434,7 @@ L_021fd11c:
     add r0, r4, #0x154
     ldr r1, [r4, #0x0]
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0xa0
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -453,7 +453,7 @@ L_021fd11c:
     add r0, r4, #0x214
     ldr r1, [r4, #0x0]
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x60
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -471,7 +471,7 @@ L_021fd11c:
     ldr r1, [r4, #0x0]
     add r0, r4, #0x244
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x60
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -489,7 +489,7 @@ L_021fd11c:
     ldr r1, [r4, #0x0]
     add r0, r4, #0x2d4
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x3c
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -508,7 +508,7 @@ L_021fd11c:
     add r0, r0, #0x800
     ldr r1, [r4, #0x0]
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x6c
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -528,7 +528,7 @@ L_021fd11c:
     add r0, r0, #0x800
     ldr r1, [r4, #0x0]
     add r2, r4, #0x40
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r3, #0x64
     str r3, [sp, #0x0]
     mov r0, #0x2
@@ -546,7 +546,7 @@ L_021fd11c:
     ldr r1, [r4, #0x0]
     add r0, r0, #0x800
     add r2, r4, #0x40
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r1, #0x64
     add r0, r4, #0x2e4
     str r1, [sp, #0x0]
@@ -564,7 +564,7 @@ L_021fd11c:
     ldr r1, [r4, #0x0]
     add r0, r4, #0x274
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x84
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -582,7 +582,7 @@ L_021fd11c:
     add r0, r4, #0x2a4
     ldr r1, [r4, #0x0]
     add r2, r4, #0x28
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x84
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -600,7 +600,7 @@ L_021fd11c:
     add r0, r4, #0x304
     ldr r1, [r4, #0x0]
     add r2, r4, #0x58
-    bl func_ov032_02201450
+    bl Overlay032Controller_CreateObject
     mov r0, #0x90
     str r0, [sp, #0x0]
     mov r1, #0x2
@@ -637,7 +637,7 @@ L_021fd11c:
     ldmia sp!, {r4, r5, r6, r7, pc}
 L_021fd758: .word func_ov032_021fce00
 L_021fd75c: .word func_ov032_0220142c
-L_021fd760: .word func_ov032_021fd7e0
+L_021fd760: .word Overlay032Child_Destroy
 L_021fd764: .word func_ov032_021fd7c0
 L_021fd768: .word gSoundContext
 L_021fd76c: .word gGameWork

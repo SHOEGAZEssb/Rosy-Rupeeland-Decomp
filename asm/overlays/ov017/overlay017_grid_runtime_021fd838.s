@@ -5,8 +5,8 @@
     .extern func_020b0808
     .extern func_020b0844
     .extern func_020b0880
-.global func_ov017_021fd838
-func_ov017_021fd838:
+.global Overlay017Transform_SubmitGeometry
+Overlay017Transform_SubmitGeometry:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr ip, [r4, #0x10]
@@ -63,5 +63,5 @@ func_ov017_021fd838:
 L_021fd90c: .word 0x4000470
 L_021fd910: .word data_020c9670
 L_021fd914: .word 0x400046c
-    .size func_ov017_021fd838, . - func_ov017_021fd838
+    .size Overlay017Transform_SubmitGeometry, . - Overlay017Transform_SubmitGeometry
 

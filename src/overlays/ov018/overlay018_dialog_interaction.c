@@ -14,7 +14,7 @@ extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_020922b0(void *, s32, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov003_021fb7ec(void *);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
 extern void func_ov018_021fd788(void *);
@@ -52,7 +52,7 @@ extern "C" s32 func_ov018_021fef2c(void *state)
         /* Confirmed fallthrough into the dialog update. */
     case 1:
         if (func_ov018_021fda60(state)) {
-            func_020939d8(FIELD(void *, state, 0x418));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x418));
             func_02092c8c(2, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -93,7 +93,7 @@ extern "C" s32 func_ov018_021fef2c(void *state)
         break;
     case 5:
         if (func_ov018_021fda60(state)) {
-            func_020939d8(FIELD(void *, state, 0x418));
+            TitleDialog_ClearTextRect(FIELD(void *, state, 0x418));
             func_02092c8c(2, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

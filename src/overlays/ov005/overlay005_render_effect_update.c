@@ -23,7 +23,7 @@ extern "C" {
 extern s32 Presentation_AdvanceTransitions(void *state);
 extern s32 func_02091c7c(void *animation, s32 channel);
 extern void func_02091b98(void *animation, s32 value);
-extern s32 func_020918f4(u32 *randomState, s32 selector);
+extern s32 TitleRandom_NextBounded(u32 *randomState, s32 selector);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern s32 func_0209189c(u32 *randomState, s32 minimum, s32 maximum);
 extern void func_02073e48(void *drawObject, s32 mode, s32 x, s32 y,
@@ -42,7 +42,7 @@ static s32 overlay005_fixed_to_integer(s32 value)
  * Advance the inherited object through Presentation_AdvanceTransitions and retain its return
  * value. Advance animation_0b0 channel 2; if inactive, return immediately.
  * Otherwise derive integer X/Y from +0x10/+0x20, submit value 8 to the
- * animation, choose scale 0x140 when func_020918f4(random_0ac,2) is nonzero
+ * animation, choose scale 0x140 when TitleRandom_NextBounded(random_0ac,2) is nonzero
  * and 0x100 otherwise, acquire a draw object from owner_0a8/resource_09c, and
  * add func_0209189c(random_0ac,-32,32) to X. Submit mode 0, adjusted X, Y,
  * layer 3, companion Y `0x7FFF-Y`, and the 16-bit scale through
@@ -63,7 +63,7 @@ s32 func_ov005_021fb75c(Overlay005RenderEffect *state)
         void *drawObject;
 
         func_02091b98(state->animation_0b0, 8);
-        scale = func_020918f4(&state->random_0ac, 2) ? 0x140 : 0x100;
+        scale = TitleRandom_NextBounded(&state->random_0ac, 2) ? 0x140 : 0x100;
         drawObject = GraphicsSpriteGroup_CreateStateFromSource(state->owner_0a8, state->resource_09c, 1);
         x += func_0209189c(&state->random_0ac, -32, 32);
         func_02073e48(drawObject, 0, x, y, 3, 0x7fff - y, scale);

@@ -8,8 +8,8 @@
 .extern func_020beb18
 .extern func_020beb6c
 
-    .global func_ov032_02201670
-func_ov032_02201670:
+    .global Overlay032Controller_UpdateScale
+Overlay032Controller_UpdateScale:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x20]
@@ -64,5 +64,5 @@ L_022016fc:
     bl func_02074dc8
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_ov032_02201670, .-func_ov032_02201670
+.size Overlay032Controller_UpdateScale, .-Overlay032Controller_UpdateScale
 

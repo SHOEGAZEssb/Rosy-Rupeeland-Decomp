@@ -26,7 +26,7 @@ extern "C" void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                               void *heap);
 extern "C" void *func_ov015_021fce58(void *storage, s32 mode, void *item);
 extern "C" void func_ov044_0220c880(void *object);
-extern "C" s32 func_02091fb0(void *scene, s32 phase);
+extern "C" s32 SceneInputBase_Update(void *scene, s32 phase);
 extern "C" void func_020925f8(void);
 extern "C" void func_ov044_0220c3e4(void *object);
 extern "C" void func_ov044_0220c610(void *object);
@@ -86,18 +86,18 @@ extern "C" s32 func_ov044_0220cf60(void *object)
         }
         break;
     case 2:
-        func_02091fb0(FIELD(void *, object, 0x23c), 0);
+        SceneInputBase_Update(FIELD(void *, object, 0x23c), 0);
         if (DisplayBrightness_IsMainTransitionComplete())
             advance_handoff(object);
         break;
     case 3:
-        if (func_02091fb0(FIELD(void *, object, 0x23c), 1)) {
+        if (SceneInputBase_Update(FIELD(void *, object, 0x23c), 1)) {
             func_02092c8c(1, -16);
             advance_handoff(object);
         }
         break;
     case 4:
-        func_02091fb0(FIELD(void *, object, 0x23c), 0);
+        SceneInputBase_Update(FIELD(void *, object, 0x23c), 0);
         if (DisplayBrightness_IsMainTransitionComplete()) {
             FIELD(u32, object, 0x20) &= ~0x400;
             void *scene = FIELD(void *, object, 0x23c);

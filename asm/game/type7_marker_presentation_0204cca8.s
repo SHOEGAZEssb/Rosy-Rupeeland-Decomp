@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_marker_presentation.c.
 .extern func_02071e60
-.extern func_02071e70
+.extern GraphicsArchive_FindPaletteResource
 .extern func_02071e80
 .extern Actor_GetCollection
 .extern ActorCollection_GetSpriteOwner
@@ -28,7 +28,7 @@ Type7MarkerPresentation_Init: ; 0x0204cca8
     mov r7, r0
     ldr r0, [r1, #0x0]
     ldr r1, .L_0204cd74
-    bl func_02071e70
+    bl GraphicsArchive_FindPaletteResource
     ldr r1, .L_0204cd6c
     mov r6, r0
     ldr r0, [r1, #0x0]

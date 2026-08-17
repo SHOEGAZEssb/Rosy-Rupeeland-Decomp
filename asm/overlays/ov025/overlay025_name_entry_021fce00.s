@@ -6,7 +6,7 @@
 .extern data_ov025_02202f40
 .extern data_ov025_02202fc0
 .extern data_ov025_022030f4
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -19,7 +19,7 @@ func_ov025_021fce00:
     sub sp, sp, #0xc
     mov r10, r0
     add r0, r10, #0x4
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     mov r8, #0x0
     ldr r1, L_021fd020
     str r8, [r10, #0x17c]

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
 .extern func_02070e0c
-.extern func_02092790
+.extern TitleScreenResourceCollection_Get
 .extern func_02095988
 .extern func_ov023_021fe640
 
@@ -26,7 +26,7 @@ L_021fe9b4:
     bl func_02095988
     add r0, r4, #0x78
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c
@@ -43,7 +43,7 @@ L_021fe9f4:
     bl func_02095988
     add r0, r4, #0x78
     mov r1, #0x1
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c

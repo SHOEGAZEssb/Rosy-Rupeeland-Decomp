@@ -23,7 +23,7 @@ extern void *data_020f4e18;
 extern u8 gHeapContext[];
 extern void Scene_Init(void *);
 extern void Scene_SetFlags03(void *);
-extern void func_02091e28(void *);
+extern void SceneInputBase_Init(void *);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void func_02092364(void *);
@@ -50,7 +50,7 @@ extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_020b0300(u16 color, s32 alpha, s32 depth, s32 polygonId,
                           s32 fog);
-extern void func_0209285c(s32);
+extern void TitlePalette_SetSubBackdrop(s32);
 #ifdef __cplusplus
 }
 #endif
@@ -86,7 +86,7 @@ void *func_ov010_021fcebc(void *state)
     void *allocation;
 
     Scene_Init(state);
-    func_02091e28((u8 *)state + 0x24);
+    SceneInputBase_Init((u8 *)state + 0x24);
     FIELD(const void *, state, 0) = data_ov010_021fec34;
     FIELD(const void *, state, 0x24) = data_ov010_021fec68;
     GraphicsResourceSetVariant_Init((u8 *)state + 0x7c);
@@ -147,7 +147,7 @@ void *func_ov010_021fcebc(void *state)
     FIELD(s32, state, 0x98) = 1;
     func_ov010_021fce7c((u8 *)state + 0x98, 0, 0, 0x2000);
     func_ov010_021fce84((u8 *)state + 0x98, 0, 0, 0);
-    func_0209285c(0);
+    TitlePalette_SetSubBackdrop(0);
     Scene_SetFlags03(state);
     func_ov010_021fce94((u8 *)state + 0x24,
                          (s32)data_ov010_021fea38[8],

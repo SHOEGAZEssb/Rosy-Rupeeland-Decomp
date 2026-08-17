@@ -7,17 +7,17 @@
 .extern GameWork_TestFlag
 .extern OverlaySlot_UnloadOverlay
 .extern data_020e55a4
-.extern func_0206841c
-.extern func_02068630
-.extern func_02068698
+.extern SceneInputBase_SetMemberCallback
+.extern InventoryScene_LoadPrimaryView
+.extern InventoryScene_LoadSecondaryView
 .extern func_02068938
-.extern func_02091fb0
+.extern SceneInputBase_Update
 .extern func_ov000_021fcb4c
 .extern func_ov001_021fca94
 .extern gGameWork
 
-.global func_02068704
-func_02068704:
+.global InventoryScene_UpdateInput
+InventoryScene_UpdateInput:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x18
     mov r4, r0
@@ -45,7 +45,7 @@ func_02068704:
     ldr r0, [r4, #0x54]
     mov r1, r1, lsl #0x1e
     mov r1, r1, asr #0x1f
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq .L_02068920
     ldr r0, .L_0206892c
@@ -77,12 +77,12 @@ func_02068704:
     ldr r1, .L_02068934
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_0206841c
+    bl SceneInputBase_SetMemberCallback
     b .L_02068920
 .L_020687e4:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_02068920
@@ -131,10 +131,10 @@ func_02068704:
     cmp r0, #0x0
     mov r0, r4
     beq .L_020688ac
-    bl func_02068630
+    bl InventoryScene_LoadPrimaryView
     b .L_020688b0
 .L_020688ac:
-    bl func_02068698
+    bl InventoryScene_LoadSecondaryView
 .L_020688b0:
     ldr r0, .L_0206892c
     ldr r1, .L_02068930
@@ -159,7 +159,7 @@ func_02068704:
 .L_02068900:
     ldr r0, [r4, #0x54]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     movne r0, #0x0
@@ -172,4 +172,4 @@ func_02068704:
 .L_0206892c: .word gGameWork
 .L_02068930: .word 0x387
 .L_02068934: .word data_020e55a4
-.size func_02068704, . - func_02068704
+.size InventoryScene_UpdateInput, . - InventoryScene_UpdateInput

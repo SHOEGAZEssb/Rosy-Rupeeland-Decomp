@@ -9,7 +9,7 @@
 .extern func_0204cff4
 .extern func_020adae4
 .extern func_020adc90
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_020befec
 .extern func_ov092_02217930
 .extern func_ov092_02219e54
@@ -40,7 +40,7 @@ func_ov092_0221ada4:
     cmp r0, #0x0
     ldrgt r4, .L_0221b0d8
     ldrle r4, .L_0221b0dc
-    bl func_020be334
+    bl SignedAbsoluteValue
     mov r8, r0
     cmp r8, #0xd000
     bge .L_0221ae50

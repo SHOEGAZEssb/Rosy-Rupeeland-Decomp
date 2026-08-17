@@ -20,15 +20,15 @@ extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02070e0c(void *, s32, s32);
 extern void func_02072048(void *, s32, s32);
 extern void *RecordDescriptor_GetMessage(void *, s32);
-extern void func_020926d8(void *);
+extern void TitleScreenResourceCollection_Init(void *);
 extern void func_020926f8(void *);
 extern void func_02092754(void *, s32);
-extern void *func_02092790(void *, s32);
-extern void func_02092850(s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
+extern void TitlePalette_SetMainBackdrop(s32);
 extern void Presentation_BlendPalette16(void *, void *, s32);
-extern void func_02092e9c(void *, void *, s32);
-extern s32 func_02093360(void *, const void *);
-extern void func_020939d8(void *);
+extern void TitleDialog_SetText(void *, void *, s32);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(void *, s32, s32);
@@ -39,7 +39,7 @@ extern void func_ov045_0220b908(void *);
 extern void func_ov045_0220c028(void *);
 extern void func_ov045_0220c128(void *, s32);
 extern void func_ov045_0220c18c(void *);
-extern void func_ov045_0220d2f8(s32, s32);
+extern void Overlay045_DrawSelectorPreview(s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -56,15 +56,15 @@ extern "C" void func_ov029_021fd644(void *state)
     u32 graphics[3];
     u8 auxiliary[0x40];
     GraphicsResourceSet_Init(graphics);
-    func_020926d8(auxiliary);
+    TitleScreenResourceCollection_Init(auxiliary);
     GraphicsResourceSet_Load(graphics, data_020f4e18[0],
                              0xa06d, 0xa06e, 0xa06f);
     func_02092754(auxiliary, 0xa070);
     func_020b44e8();
     func_02072048(graphics, 0, 0);
-    void *resource = func_02092790(auxiliary, 0);
+    void *resource = TitleScreenResourceCollection_Get(auxiliary, 0);
     func_02070e0c(resource, 1, 0);
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     *(volatile u16 *)0x04000050 = 0;
     FIELD(s32, state, 0x48) = 0x13;
     func_020926f8(auxiliary);
@@ -116,15 +116,15 @@ extern "C" void func_ov029_021fd7a8(void *state, s32 index)
 {
     u8 temporary[16];
     func_ov029_021fce00(temporary, FIELD(void *, state, 0x68));
-    func_020939d8(FIELD(void *, state, 0x9c));
+    TitleDialog_ClearTextRect(FIELD(void *, state, 0x9c));
     void *entry = RecordDescriptor_GetMessage(temporary, index);
-    func_02092e9c(FIELD(void *, state, 0x9c), entry, 4);
-    s32 flags = func_02093360(FIELD(void *, state, 0x9c), data_021f5ed0);
+    TitleDialog_SetText(FIELD(void *, state, 0x9c), entry, 4);
+    s32 flags = TitleDialog_UpdateTextPage(FIELD(void *, state, 0x9c), data_021f5ed0);
     if (flags & 0x200)
         func_ov045_0220c128(FIELD(void *, state, 0xa4),
                             FIELD(s32, FIELD(void *, state, 0x9c), 0xe8));
     else
         func_ov045_0220c028(FIELD(void *, state, 0xa4));
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x78));
-    func_ov045_0220d2f8(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
+    Overlay045_DrawSelectorPreview(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
 }

@@ -8,7 +8,7 @@ extern "C" {
 extern void func_0201da34(GamePhaseActorScriptVm *self);
 extern void *Actor_GetCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
-extern void *func_0201d9e4(u32 value);
+extern void *DisplayRouting_MatchesRequest(u32 value);
 extern void *DebugHudState_GetGlobal(void *value);
 extern void *DebugHudState_RefreshRectangle(void *value);
 extern void DebugHudState_Open(void *state, void *first, void *second, u32 enabled);
@@ -22,7 +22,7 @@ extern void func_0201da9c(GamePhaseActorScriptVm *self,
 /*
  * Pop and discard two operands, then pop lookup and value operands. Let
  * func_0201da34 consume/update VM-side state, resolve the value through the
- * bound collection's mode at 0x2e84 and the lookup through func_0201d9e4,
+ * bound collection's mode at 0x2e84 and the lookup through DisplayRouting_MatchesRequest,
  * refresh the global debug-HUD rectangle, and open the HUD with font reset
  * enabled. Returns one to stop the VM loop.
  */
@@ -40,7 +40,7 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm
         func_0201da34(self);
         collection = (u8 *)Actor_GetCollection(self->actor);
         second = func_0201da20(*(u32 *)(collection + 0x2e84), value);
-        first = func_0201d9e4(lookup);
+        first = DisplayRouting_MatchesRequest(lookup);
     }
     state = DebugHudState_GetGlobal(first);
     state = DebugHudState_RefreshRectangle(state);

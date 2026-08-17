@@ -16,7 +16,7 @@ extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontObject, voi
 extern "C" void func_020957f0(void *canvas, void *fontBinding,
                                s32 engine, s32 mode, s32 flags);
 extern "C" void GraphicsSpriteGroup_Destroy(void *object);
-extern "C" void func_02071f38(void *owner);
+extern "C" void AnimationResourceState_ReleaseResources(void *owner);
 extern "C" void func_020958d8(void *canvas);
 extern "C" void GraphicsSpriteGroup_AdvanceAnimations(void *object);
 
@@ -55,7 +55,7 @@ extern "C" void func_ov043_0220bcf4(void *object)
     FIELD(u32, object, 0x1d8) = 0;
     FIELD(u32, object, 0x284) = 0;
     FIELD(u32, object, 0x12c) = 0;
-    func_02071f38((u8 *)object + 0x80);
+    AnimationResourceState_ReleaseResources((u8 *)object + 0x80);
 }
 
 /*
@@ -63,7 +63,7 @@ extern "C" void func_ov043_0220bcf4(void *object)
  * that object as well. Canvas/VRAM transfer state may change. There is no
  * return value and no controller fields are directly written.
  */
-extern "C" void func_ov043_0220bd24(void *object)
+extern "C" void Overlay043_UpdatePresentationResources(void *object)
 {
     func_020958d8((u8 *)object + 0x13c);
     func_020958d8((u8 *)object + 0x1e8);

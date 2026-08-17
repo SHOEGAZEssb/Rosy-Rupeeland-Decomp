@@ -2,7 +2,7 @@
     .extern Presentation_AdvanceTransitions
     .extern func_02091c7c
     .extern func_02091b98
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
     .extern func_02073e48
@@ -30,7 +30,7 @@ func_ov005_021fb75c: ; 0x021fb75c
     bl func_02091b98
     add r0, r8, #0xac
     mov r1, #0x2
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     cmp r0, #0x0
     movne r9, #0x140
     ldr r0, [r8, #0xa8]

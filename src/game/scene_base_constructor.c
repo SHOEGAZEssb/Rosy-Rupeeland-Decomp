@@ -56,7 +56,7 @@ extern u8 data_020f2590[];
 extern u8 data_021f5ed0[];
 extern const MemberFunctionPointer data_020f2564;
 extern void TouchPoint_InitZero(TouchPointValue *point);
-extern void func_0206841c(SceneInputBase *scene,
+extern void SceneInputBase_SetMemberCallback(SceneInputBase *scene,
                          MemberFunctionPointer callback);
 #ifdef __cplusplus
 }
@@ -66,14 +66,14 @@ extern void func_0206841c(SceneInputBase *scene,
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_02091e28(SceneInputBase *scene)
+void *SceneInputBase_Init(SceneInputBase *scene)
 {
     scene->vtable = data_020f2590;
     TouchPoint_InitZero(&scene->previousPoint);
     TouchPoint_InitZero(&scene->currentPoint);
     scene->padIndex = 1;
     scene->padState = data_021f5ed0;
-    func_0206841c(scene, data_020f2564);
+    SceneInputBase_SetMemberCallback(scene, data_020f2564);
     scene->deltaX = 0;
     scene->deltaY = 0;
     scene->flags.bit0 = scene->flags.bit1 = scene->flags.bit2 =

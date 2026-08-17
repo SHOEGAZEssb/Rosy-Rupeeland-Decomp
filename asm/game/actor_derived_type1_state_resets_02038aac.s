@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern Actor_RefreshTerrainHeight
 .extern Type7AuxiliaryPresentation_Reset
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern gGameWork
 
     .global ActorDerivedType1_ResetToBaseState
@@ -17,7 +17,7 @@ ActorDerivedType1_ResetToBaseState: ; 0x02038aac
     beq .L_02038aec
     beq .L_02038ad4
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02038ad4:

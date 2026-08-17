@@ -4,7 +4,7 @@
 .extern data_020c9670
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_ov043_0220b740
 .extern func_ov046_0220b77c
 .extern genrand_int32
@@ -54,7 +54,7 @@ func_ov022_021fe9e8:
     add r1, r2, r1, lsr #0x14
     add r6, r3, r1, asr #0xc
     mov r1, #0x4
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r2, r5
     mov r3, r6
     mov r1, r0

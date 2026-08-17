@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Free
 .extern Type7AuxiliaryPresentation_EnterRaisedState
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern gGameWork
 
     .global ActorDerivedType1_ResetToDisabledState
@@ -16,7 +16,7 @@ ActorDerivedType1_ResetToDisabledState: ; 0x02038b64
     beq .L_02038ba4
     beq .L_02038b8c
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02038b8c:

@@ -1,6 +1,6 @@
     .text
     .extern data_ov014_021fd940
-    .extern func_02064be0
+    .extern InventoryRecordCollection_Sort
     .extern func_ov000_021fc164
     .extern func_ov000_021fc254
     .extern func_ov000_021fc3a4
@@ -39,7 +39,7 @@ L_021fd7d4:
     str r1, [r4, #0x8c]
     ldr r0, [r4, #0x78]
     ldr r0, [r0, #0x24c]
-    bl func_02064be0
+    bl InventoryRecordCollection_Sort
     b L_021fd834
 L_021fd81c:
     mov r0, #0x0
@@ -47,7 +47,7 @@ L_021fd81c:
     ldr r0, [r4, #0x78]
     mov r1, #0x2
     ldr r0, [r0, #0x24c]
-    bl func_02064be0
+    bl InventoryRecordCollection_Sort
 L_021fd834:
     ldr r1, [r4, #0x4]
     mov r0, #0x0

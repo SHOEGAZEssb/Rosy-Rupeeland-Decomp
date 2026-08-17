@@ -2,8 +2,8 @@
 .text
 .extern gDirectSpriteTrackPresentationVtable
 .extern VecFx32Object_Destroy
-.extern func_02071eb8
-.extern func_02071f38
+.extern AnimationResourceState_Destroy
+.extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroup_ReleaseState
 
 .global DirectSpriteTrackPresentation_Destroy
@@ -17,11 +17,11 @@ DirectSpriteTrackPresentation_Destroy: ; 0x0201fd64
     ldr r0, [r1, #0x0]
     bl GraphicsSpriteGroup_ReleaseState
     add r0, r4, #0x8
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     add r0, r4, #0x1c
     bl VecFx32Object_Destroy
     add r0, r4, #0x8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0201fda0: .word gDirectSpriteTrackPresentationVtable

@@ -8,7 +8,7 @@
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_020be334
+.extern SignedAbsoluteValue
 
 .global func_ov082_02212d90
 func_ov082_02212d90:
@@ -82,7 +82,7 @@ func_ov082_02212d90:
     ble .L_02212ee4
     ldr r0, [r5, #0x24]
     sub r0, r0, r4
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x4000
     bge .L_02212ee4
     mov r0, r5

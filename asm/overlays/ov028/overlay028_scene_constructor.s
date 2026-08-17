@@ -10,15 +10,15 @@
 .extern data_ov028_021ff2ac
 .extern data_ov028_021ff2d8
 .extern data_ov028_021ff2e0
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02091e28
-.extern func_02092798
+.extern SceneInputBase_Init
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 .extern IndexedSelectionController_Init
 .extern Presentation_SetPosition
@@ -46,21 +46,21 @@ func_ov028_021fdb00:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fdf58
     add r0, r10, #0x5c
     str r1, [r10, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x68
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x74
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x98
     bl func_020957bc
     add r0, r10, #0x144
     bl func_020957bc
     add r0, r10, #0x1fc
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x228
     bl IndexedSelectionController_Init
     add r0, r10, #0x264

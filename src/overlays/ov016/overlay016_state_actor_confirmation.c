@@ -14,17 +14,17 @@ extern "C" {
 #endif
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_020946a8(void *, s32);
-extern void func_02094738(void *, s32);
+extern void InventoryScroll_BeginMarkerDrag(void *, s32);
+extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 func_ov000_021fc450(void *);
 extern void func_ov000_021fc460(void *);
 extern s32 func_ov000_021fc560(void *, void *);
 extern void func_ov000_021fc714(void *);
-extern void *func_ov000_021fcad8(void *);
+extern void *Overlay000_GetActiveMetadata(void *);
 extern u32 func_ov016_021fe390(void *, void *, void *);
 extern s32 func_ov016_021fe4d0(void *, void *);
 extern s32 func_ov016_021fe6f4(void *);
-extern void func_ov016_021fe754(void *, u32, u32);
+extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ffc2c(void *);
 #ifdef __cplusplus
@@ -48,7 +48,7 @@ extern "C" s32 func_ov016_02200d5c(void *state)
 
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020946a8(presentation, 4);
+        InventoryScroll_BeginMarkerDrag(presentation, 4);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through into the opening wait. */
@@ -74,8 +74,8 @@ extern "C" s32 func_ov016_02200d5c(void *state)
                 FIELD(s32, state, 8) = 0;
             }
         } else {
-            func_02094738(presentation, 6);
-            func_ov016_021fe754(state, data_ov016_02201460[0],
+            InventoryScroll_EndMarkerDrag(presentation, 6);
+            Overlay016ActorValue_Init(state, data_ov016_02201460[0],
                                 data_ov016_02201460[1]);
         }
         break;
@@ -100,7 +100,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
     switch (FIELD(s32, state, 4)) {
     case 0:
         if (FIELD(s32, state, 0x54) == 1) {
-            void *entry = func_ov000_021fcad8(list);
+            void *entry = Overlay000_GetActiveMetadata(list);
             if (func_ov016_021fe4d0(FIELD(void *, state, 0x470), entry) != 0) {
                 func_02092260(state, 2);
                 FIELD(s32, entry, 0x1c)--;
@@ -109,12 +109,12 @@ extern "C" s32 func_ov016_02200e88(void *state)
                 FIELD(s32, state, 8) = 0;
             } else {
                 func_02092260(state, 9);
-                func_ov016_021fe754(state, data_ov016_02201458[0],
+                Overlay016ActorValue_Init(state, data_ov016_02201458[0],
                                     data_ov016_02201458[1]);
                 break;
             }
         } else {
-            void *entry = func_ov000_021fcad8(list);
+            void *entry = Overlay000_GetActiveMetadata(list);
             u32 consumed = func_ov016_021fe390(FIELD(void *, state, 0x470),
                                                FIELD(void *, state, 0x468),
                                                entry);
@@ -126,7 +126,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
                 FIELD(s32, state, 8) = 0;
             } else {
                 func_02092260(state, 9);
-                func_ov016_021fe754(state, data_ov016_02201420[0],
+                Overlay016ActorValue_Init(state, data_ov016_02201420[0],
                                     data_ov016_02201420[1]);
                 break;
             }
@@ -134,7 +134,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
         /* Successful consumption continues into the completion check. */
     case 1:
         if (func_ov016_021fe6f4(FIELD(void *, state, 0x470)) != 0) {
-            func_ov016_021fe754(state, data_ov016_02201448[0],
+            Overlay016ActorValue_Init(state, data_ov016_02201448[0],
                                 data_ov016_02201448[1]);
         }
         break;

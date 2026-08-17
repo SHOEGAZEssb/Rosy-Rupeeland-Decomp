@@ -20,11 +20,11 @@ extern "C" {
 #endif
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 mode);
 extern void GraphicsSpriteState_SetFrameIndex(void *renderObject, s32 value);
-extern void func_020c10d4(void *destination, s32 size);
+extern void Memory_ClearBytes(void *destination, s32 size);
 extern void VecFx32Object_Init(void *object);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *object);
-extern s32 func_020be334(s32 value);
+extern s32 SignedAbsoluteValue(s32 value);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 #ifdef __cplusplus
 }
@@ -76,8 +76,8 @@ static s32 objectScore(void *object, const void *point, s32 verticalRadius)
     VecFx32Object_Assign(&position, (u8 *)object + 0x1c);
     s32 dx = FIELD(s32, point, 4) - position.x_04;
     s32 dy = FIELD(s32, point, 8) - position.y_08;
-    s32 horizontal = func_020adc90(0x48000 - func_020be334(dx), 0x48000);
-    s32 vertical = func_020adc90(verticalRadius - func_020be334(dy),
+    s32 horizontal = func_020adc90(0x48000 - SignedAbsoluteValue(dx), 0x48000);
+    s32 vertical = func_020adc90(verticalRadius - SignedAbsoluteValue(dy),
                                   verticalRadius);
     if (horizontal < 0) horizontal = 0;
     if (vertical < 0) vertical = 0;
@@ -97,7 +97,7 @@ static s32 objectScore(void *object, const void *point, s32 verticalRadius)
 extern "C" s32 func_ov039_021ff458(void *scene, const void *point)
 {
     s32 scores[3];
-    func_020c10d4(scores, sizeof(scores));
+    Memory_ClearBytes(scores, sizeof(scores));
     scores[0] = objectScore(FIELD(void *, scene, 0x74), point, 0x30000);
     scores[1] = objectScore(FIELD(void *, scene, 0x78), point, 0x30000);
     scores[2] = objectScore(FIELD(void *, scene, 0x7c), point, 0x50000);

@@ -211,7 +211,7 @@ s32 func_0209286c(GraphicsSpriteState *state, const SpriteTouchPoint *point,
 }
 
 /* Apply the shared hidden/inactive guards used by scene touch callers. */
-s32 func_02092910(GraphicsSpriteState *state, const SpriteTouchPoint *point)
+s32 GraphicsSpriteState_TestTouchPoint(GraphicsSpriteState *state, const SpriteTouchPoint *point)
 {
     SpriteOwnerState *owner;
 

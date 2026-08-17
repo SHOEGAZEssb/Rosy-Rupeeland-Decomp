@@ -12,7 +12,7 @@
 .extern GraphicsSpriteState_Create
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_020befec
-.extern func_ov065_0220fd20
+.extern Overlay065Particle_Init
 .extern gHeapContext
 
 .global func_ov065_022101bc
@@ -119,7 +119,7 @@ func_ov065_022101bc:
     cmp r0, #0x0
     beq .L_02210344
     mov r1, #0x10
-    bl func_ov065_0220fd20
+    bl Overlay065Particle_Init
 .L_02210344:
     add r1, r5, r9, lsl #0x2
     add r9, r9, #0x1

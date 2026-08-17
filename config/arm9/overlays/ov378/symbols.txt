@@ -1,4 +1,4 @@
-func_ov378_02233c60 kind:function(arm,size=0x38) addr:0x02233c60
+Overlay378_RegisterCategory2Actors kind:function(arm,size=0x38) addr:0x02233c60
 data_ov378_02233ed6 kind:data(any) addr:0x02233ed6
 data_ov378_02233f19 kind:data(any) addr:0x02233f19
 data_ov378_02233f30 kind:data(any) addr:0x02233f30

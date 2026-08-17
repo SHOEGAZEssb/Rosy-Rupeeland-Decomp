@@ -25,7 +25,7 @@ extern void GraphicsResourceSet_Load(...);
 extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
 extern void func_020b44e8(void);
 extern void func_02070638(...);
-extern s32 func_0207042c(void *);
+extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
 extern void func_02070e0c(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
@@ -37,7 +37,7 @@ static void upload_text_background(GraphicsResourceSet *set, s32 layer, u32 mapB
 {
     func_020b44e8();
     func_02070638(set->tiles, layer, 0);
-    func_02070b50(set->map, func_0207042c(set->tiles) ? mapBase : 0);
+    func_02070b50(set->map, GraphicsResource_GetFormat(set->tiles) ? mapBase : 0);
     func_02070e0c(set->palette, layer, 0);
     GraphicsResourceSet_ReleaseHandles(set);
 }
@@ -83,7 +83,7 @@ extern "C" void func_ov032_021fe55c(void *scene)
                              FIELD(u32, data_020c7bb4, tableOffset));
     func_020b44e8();
     func_02070638(persistent->tiles, 3, 0);
-    func_02070b50(persistent->map, func_0207042c(persistent->tiles) ? 0x6000 : 0);
+    func_02070b50(persistent->map, GraphicsResource_GetFormat(persistent->tiles) ? 0x6000 : 0);
     func_02070e0c(persistent->palette, 3, 0);
     FIELD(s32, scene, 0xc34) = 0;
     REG16(0x05000000) = 0x24a3;

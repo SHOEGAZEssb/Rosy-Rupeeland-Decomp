@@ -6,7 +6,7 @@
 .extern VecFx32Object_Destroy
 .extern GamePhaseVisualEffect_Configure
 .extern GamePhaseVisualEffect_SetBaseOffset
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern GamePhaseGraphicsMetadata_GetByIndex
 
 .global func_0201ff2c
@@ -17,7 +17,7 @@ func_0201ff2c: ; 0x0201ff2c
     mov r5, r0
     mov r6, r1
     mov r4, r2
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_02020010
     str r0, [r5, #0x0]
     str r6, [r5, #0x8]

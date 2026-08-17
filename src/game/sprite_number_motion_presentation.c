@@ -19,7 +19,7 @@ extern "C" {
 #endif
 extern void *data_020d6658[];
 extern const char gSpriteNumberGroupAllocationTag[];
-extern void *func_0201e250(void *);
+extern void *TimedSpritePresentation_InitBase(void *);
 extern void *func_0201e28c(void *);
 extern void VecFx32Object_InitCopy(void *,const void *);
 extern void VecFx32Object_Init(void *);
@@ -53,7 +53,7 @@ SpriteNumberMotionPresentation *func_02022cb0(
 {
     TrackValue sampled,position,temp;
     void *group=0,*owner;
-    func_0201e250(self);self->vtable=(void **)data_020d6658;
+    TimedSpritePresentation_InitBase(self);self->vtable=(void **)data_020d6658;
     self->sampleArgument08=sampleArgument;VecFx32Object_InitCopy(&self->track0c,config+0x18);
     VecFx32Object_Init(&self->firstOffset1c);VecFx32Object_Init(&self->secondOffset2c);
     *(s32 *)&self->track0c.bytes[0x0c]+=0x10000;

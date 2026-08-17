@@ -10,7 +10,7 @@ extern "C" {
 extern u8 data_020d6084[];
 extern OffsetTimedSprite *func_0201e290(OffsetTimedSprite *,u8 *);
 extern OffsetTimedSprite *func_0201e380(OffsetTimedSprite *);
-extern void func_0201e3b8(OffsetTimedSprite *,s32);
+extern void TimedSpritePresentation_SetVisible(OffsetTimedSprite *,s32);
 extern void VecFx32Object_Assign(Track *,const void *);
 extern void VecFx32Object_Add(Track *,Track *);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *,s32,s32,s32,s32,s32);
@@ -38,7 +38,7 @@ OffsetTimedSprite *func_0201e604(OffsetTimedSprite *self){func_0201e380(self);He
 /* Decrement lifetime; hide/finish on expiry or sprite flag 1. Otherwise update motion, add offset to sprite halfword 0x28, and return flag 1. */
 s32 func_0201e620(OffsetTimedSprite *self,s32 argument)
 {
-    self->remaining28--;if(self->remaining28<0||(*(u16 *)(self->sprite+0x24)&1)){func_0201e3b8(self,0);return 1;}
+    self->remaining28--;if(self->remaining28<0||(*(u16 *)(self->sprite+0x24)&1)){TimedSpritePresentation_SetVisible(self,0);return 1;}
     VecFx32Object_Add(&self->first08,&self->second18);*(u16 *)(self->sprite+0x24)&=~4;
     GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite,argument,*(s32 *)&self->first08.bytes[4],*(s32 *)&self->first08.bytes[8],*(s32 *)&self->first08.bytes[0xc],8);
     *(u16 *)(self->sprite+0x28)=(u16)(self->offset2c+*(u16 *)(self->sprite+0x28));

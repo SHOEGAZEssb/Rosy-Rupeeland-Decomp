@@ -12,7 +12,7 @@
 extern void OS_Halt(void);
 
 /* Return the record whose leading halfword equals key. */
-u8 *func_02079a7c(void *table, u32 key)
+u8 *RuntimeRecordTable_FindByKey(void *table, u32 key)
 {
     u8 *records = *(u8 **)table;
     s32 count = *(s32 *)((u8 *)table + 0x108);

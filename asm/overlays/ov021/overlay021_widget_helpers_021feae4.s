@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
     .extern data_021e9ac0
-    .extern func_02062b28
+    .extern ActorDescriptor_IsInvalid
     .extern func_02064d90
 
 .global func_ov021_021feae4
@@ -22,7 +22,7 @@ L_021feb14:
     ldr r0, [r5, #0x8]
     mla r10, r4, r7, r0
     mov r0, r10
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     bne L_021feb48
     ldr r0, [r10, #0xc]

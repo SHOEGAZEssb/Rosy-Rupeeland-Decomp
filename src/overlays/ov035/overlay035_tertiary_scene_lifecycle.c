@@ -17,7 +17,7 @@ extern void Graphics3DResourceOwner_RemoveManager(void *resource);
 extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void Heap_Free(void *allocation);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
-extern s32 func_020918f4(void *randomState, s32 maximum);
+extern s32 TitleRandom_NextBounded(void *randomState, s32 maximum);
 extern s32 func_0209189c(void *randomState, s32 minimum, s32 maximum);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
@@ -84,7 +84,7 @@ extern "C" void func_ov035_021ffb74(void *scene, s32 direction)
     void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x124),
                                   (u8 *)scene + 0x118);
     func_ov035_021fdd28(
-        record, func_020918f4((u8 *)scene + 0xc0, 2),
+        record, TitleRandom_NextBounded((u8 *)scene + 0xc0, 2),
         0, 0, 0, 0x12, 0x40);
     void *object = Heap_Alloc(0xb0, data_ov035_02203d28, 4, gHeapContext);
     if (object != 0) {
@@ -92,7 +92,7 @@ extern "C" void func_ov035_021ffb74(void *scene, s32 direction)
             func_0209189c((u8 *)scene + 0xc0, -0x600, 0x1200);
         s32 positionZ =
             func_0209189c((u8 *)scene + 0xc0, 0, 0x400);
-        s32 angle = func_020918f4((u8 *)scene + 0xc0, 0x1000) << 4;
+        s32 angle = TitleRandom_NextBounded((u8 *)scene + 0xc0, 0x1000) << 4;
         object = func_ov035_021fdb54(object, 3, (s32)record, direction,
                                     baseline, positionZ, angle);
     }

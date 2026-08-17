@@ -9,13 +9,13 @@ extern void *data_020f4e14;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const void *func_020628c8(void *);
-extern void *func_02070874(void *);
+extern const void *ActorDescriptor_GetPrimaryLabel(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern s32 func_02092960(void *, s32, u32, s32, s32, s32, s32, s32);
-extern void *func_ov000_021fcad8(void *);
+extern void *Overlay000_GetActiveMetadata(void *);
 extern void *func_ov001_021fc7e4(void *);
 extern void func_ov021_021ff404(void *, const void *);
 extern void func_ov021_021ff504(void *, const void *);
@@ -33,7 +33,7 @@ extern "C" void func_ov021_021ff380(void *state)
 {
     FIELD(void *, state, 0x3f0) = FIELD(void *, state, 0x3f4);
     FIELD(void *, state, 0x3f4) =
-        (u8 *)func_02070874(FIELD(void *, state, 0x400)) + 0x80;
+        (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0x400)) + 0x80;
     FIELD(s32, state, 0x3f8) = 0;
 }
 
@@ -45,7 +45,7 @@ extern "C" void func_ov021_021ff3ac(void *state)
 {
     FIELD(void *, state, 0x3f0) = FIELD(void *, state, 0x3f4);
     FIELD(void *, state, 0x3f4) =
-        (u8 *)func_02070874(FIELD(void *, state, 0x400)) + 0x60;
+        (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0x400)) + 0x60;
     FIELD(s32, state, 0x3f8) = 0;
 }
 
@@ -53,11 +53,11 @@ extern "C" void func_ov021_021ff3ac(void *state)
  * As 0x021FF380, but select resource buffer offset +0x20. Graphics buffer
  * state changes; returns void and performs no direct hardware access.
  */
-extern "C" void func_ov021_021ff3d8(void *state)
+extern "C" void Overlay021_UpdateTileTransitionOffset20(void *state)
 {
     FIELD(void *, state, 0x3f0) = FIELD(void *, state, 0x3f4);
     FIELD(void *, state, 0x3f4) =
-        (u8 *)func_02070874(FIELD(void *, state, 0x400)) + 0x20;
+        (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0x400)) + 0x20;
     FIELD(s32, state, 0x3f8) = 0;
 }
 
@@ -92,7 +92,7 @@ extern "C" void func_ov021_021ff404(void *state, const void *descriptor)
  * Return nested descriptor record +4 flags bits 16..19. Inputs are read only,
  * the result is in range 0..15, and no SDK/hardware effects occur.
  */
-extern "C" u32 func_ov021_021ff4f0(const void *descriptor)
+extern "C" u32 Overlay021Descriptor_GetFlags16_19(const void *descriptor)
 {
     const u8 *record = FIELD(const u8 *, descriptor, 4);
     return (FIELD(u32, record, 0xc) >> 16) & 0xf;
@@ -116,7 +116,7 @@ extern "C" void func_ov021_021ff504(void *state, const void *item)
     FIELD(u16, sprite, 0x24) &= (u16)~4;
     GraphicsSpriteRenderer_SetFontResource(
         font, FIELD(void *, state, 0x64));
-    GraphicsSpriteRenderer_DrawText(font, func_020628c8((void *)item), 0x10, 6,
+    GraphicsSpriteRenderer_DrawText(font, ActorDescriptor_GetPrimaryLabel((void *)item), 0x10, 6,
                   0xe, 4, 0);
 }
 
@@ -138,10 +138,10 @@ extern "C" u32 func_ov021_021ff62c(const void *object, u32 mask)
  */
 extern "C" void func_ov021_021ff5b8(void *state)
 {
-    void *entry = func_ov000_021fcad8(FIELD(void *, state, 0x354));
+    void *entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x354));
     void *item = FIELD(void *, entry, 0xc);
     func_ov021_021ff504(state, item);
-    entry = func_ov000_021fcad8(FIELD(void *, state, 0x354));
+    entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x354));
     if (func_ov021_021ff62c(entry, 1) != 0) {
         func_ov021_021ff404(state, 0);
     } else if (item != 0 && FIELD(void *, item, 0xc) != 0) {

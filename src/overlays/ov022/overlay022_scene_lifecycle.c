@@ -23,21 +23,21 @@ extern void Heap_Free(void *);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void __construct_array(void *, s32, s32, void (*)(void *), void (*)(void *));
 extern void __destroy_arr(void *, s32, s32, void (*)(void *));
-extern void func_020597fc(void *, s32);
+extern void Sound_ReleaseGroup(void *, s32);
 extern void *func_020716bc(void *, s32);
 extern void func_02071c38(void *, void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void func_020929b0(void *);
-extern void *func_02092cc0(void *, void *, s32);
+extern void *TitleDialog_Init(void *, void *, s32);
 extern void func_02092f88(void *, s32, void *);
 extern void func_020957bc(void *);
 extern u32 genrand_int32(void);
@@ -69,7 +69,7 @@ static void destroy_polymorphic(void *object)
 
 static void destroy_scene_members(void *scene)
 {
-    func_020597fc(gSoundContext, 0x122);
+    Sound_ReleaseGroup(gSoundContext, 0x122);
 
     void *emitter = FIELD(void *, scene, 0x354);
     if (emitter != 0) {
@@ -103,9 +103,9 @@ static void destroy_scene_members(void *scene)
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
     __destroy_arr((u8 *)scene + 0x154, 2, 0xac, func_ov022_021fdd00);
     func_ov022_021fdd00((u8 *)scene + 0xa8);
-    func_02071eb8((u8 *)scene + 0x90);
-    func_02071eb8((u8 *)scene + 0x84);
-    func_02071eb8((u8 *)scene + 0x78);
+    AnimationResourceState_Destroy((u8 *)scene + 0x90);
+    AnimationResourceState_Destroy((u8 *)scene + 0x84);
+    AnimationResourceState_Destroy((u8 *)scene + 0x78);
     func_020927b8((u8 *)scene + 0x54);
 }
 
@@ -122,12 +122,12 @@ static void destroy_scene_members(void *scene)
  */
 extern "C" void *func_ov022_021fdd44(void *scene)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov022_022006a0;
-    func_02092798((u8 *)scene + 0x54);
-    func_02071ea4((u8 *)scene + 0x78);
-    func_02071ea4((u8 *)scene + 0x84);
-    func_02071ea4((u8 *)scene + 0x90);
+    TitleCharacterResourceCollection_Init((u8 *)scene + 0x54);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x78);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x84);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x90);
     func_020957bc((u8 *)scene + 0xa8);
     __construct_array((u8 *)scene + 0x154, 2, 0xac,
                       func_020957bc, func_ov022_021fdd00);
@@ -168,7 +168,7 @@ extern "C" void *func_ov022_021fdd44(void *scene)
 
     void *dialog = Heap_Alloc(0xec, data_ov022_022006dc, 4, gHeapContext);
     if (dialog != 0)
-        dialog = func_02092cc0(dialog, gDebugFont, FIELD(s32, scene, 0x54));
+        dialog = TitleDialog_Init(dialog, gDebugFont, FIELD(s32, scene, 0x54));
     FIELD(void *, scene, 0x2cc) = dialog;
     func_ov022_021fdd04(dialog, 0x50, 0x28, 0xa8, 0x84);
     FIELD(s32, dialog, 0xbc) = -2;

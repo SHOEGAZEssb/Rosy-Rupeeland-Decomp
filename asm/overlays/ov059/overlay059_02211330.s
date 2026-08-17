@@ -20,7 +20,7 @@
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
-.extern func_02008570
+.extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02008f2c
 .extern GamePhaseAreaScene_GetConfig
@@ -351,7 +351,7 @@ func_ov059_02211330:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, r1
-    bl func_02008570
+    bl GamePhaseRuntime_ApplyScreenMode
     mov r0, #0x1
     mov r1, #0x10
     bl DisplayBrightness_StartSubTransition

@@ -15,11 +15,11 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void GX_SetGraphicsMode(s32, s32, s32);
-extern void func_020597fc(void *, s32);
-extern void func_02071eb8(void *);
+extern void Sound_ReleaseGroup(void *, s32);
+extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsResourceSetVariant_Destroy(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
-extern void func_02075290(void *);
+extern void GraphicsSpriteRenderer_QueuePendingBlocks(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
 extern void Graphics3DRenderObject_Destroy(void *);
@@ -63,7 +63,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
     FIELD(const u32 *, state, 0) = data_ov017_02201638;
     FIELD(u32, state, 0x20) &= ~0x400U;
     destroyVirtual(FIELD(void *, state, 0x260));
-    func_020597fc(gSoundContext, 0x82);
+    Sound_ReleaseGroup(gSoundContext, 0x82);
     PresentationList_DeleteAll(data_ov017_02201754);
     PresentationList_DeleteAll((u8 *)state + 0x3d8);
     PresentationList_DeleteAll((u8 *)state + 0x3ec);
@@ -79,8 +79,8 @@ extern "C" void *func_ov017_021ff16c(void *state)
     owned = FIELD(void *, state, 0x25c);
     if (owned != 0) {
         GraphicsSpriteGroup_Destroy(FIELD(void *, owned, 0));
-        func_02071eb8((u8 *)owned + 0x10);
-        func_02071eb8((u8 *)owned + 4);
+        AnimationResourceState_Destroy((u8 *)owned + 0x10);
+        AnimationResourceState_Destroy((u8 *)owned + 4);
         Heap_Free(owned);
     }
     owned = FIELD(void *, state, 0x2bc);
@@ -96,7 +96,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
 
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x58));
     func_02092418((u8 *)state + 0x404);
-    func_02075290(data_020f4e14);
+    GraphicsSpriteRenderer_QueuePendingBlocks(data_020f4e14);
     GX_SetGraphicsMode(1, 0, 0);
     func_02092638(0, 1, 2, 3);
     func_020923a0((u8 *)state + 0x404);
@@ -112,9 +112,9 @@ extern "C" void *func_ov017_021ff16c(void *state)
     func_020927b8((u8 *)state + 0x1d8);
     func_ov017_021fd948((u8 *)state + 0x12c);
     func_ov017_021fd948((u8 *)state + 0x80);
-    func_02071eb8((u8 *)state + 0x74);
-    func_02071eb8((u8 *)state + 0x68);
-    func_02071eb8((u8 *)state + 0x5c);
+    AnimationResourceState_Destroy((u8 *)state + 0x74);
+    AnimationResourceState_Destroy((u8 *)state + 0x68);
+    AnimationResourceState_Destroy((u8 *)state + 0x5c);
     return state;
 }
 

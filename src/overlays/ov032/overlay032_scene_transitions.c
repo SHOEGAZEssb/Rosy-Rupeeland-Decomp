@@ -15,8 +15,8 @@ extern void DisplayBrightness_StartMainTransition(...);
 extern void DisplayBrightness_StartSubTransition(...);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
-extern void func_ov032_021fd994(void *);
-extern void func_ov032_021fde38(void *);
+extern void Overlay032Scene_SetupGraphics(void *);
+extern void Overlay032Scene_ShutdownGraphics(void *);
 extern void func_020595d4(void *);
 extern void func_0205958c(...);
 extern void func_020595ec(void *);
@@ -54,7 +54,7 @@ extern "C" s32 func_ov032_021febec(void *scene)
         break;
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() && DisplayBrightness_IsSubTransitionComplete()) {
-            func_ov032_021fd994(scene);
+            Overlay032Scene_SetupGraphics(scene);
             func_020595d4(gSoundContext);
             FIELD(s32, FIELD(void *, scene, 4), 0x20) = 1;
             FIELD(s32, FIELD(void *, scene, 0), 0x20) = 1;
@@ -103,7 +103,7 @@ extern "C" s32 func_ov032_021fed8c(void *scene)
         break;
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() && DisplayBrightness_IsSubTransitionComplete()) {
-            func_ov032_021fde38(scene);
+            Overlay032Scene_ShutdownGraphics(scene);
             ++FIELD(s32, scene, 0xb64);
         }
         break;

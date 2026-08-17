@@ -28,7 +28,7 @@ extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner, void *sprite);
 #endif
 
 /* Install the base vtable and clear recovered flag bits 0..9; return self. */
-void *func_0201e250(void *self)
+void *TimedSpritePresentation_InitBase(void *self)
 {
     u32 *words=(u32 *)self;
     words[0]=(u32)data_020d6248;
@@ -94,14 +94,14 @@ TimedSpritePresentation *func_0201e380(TimedSpritePresentation *self)
 }
 
 /* Clear sprite flag 4 when enabled is nonzero, otherwise set it. */
-void func_0201e3b8(TimedSpritePresentation *self,s32 enabled)
+void TimedSpritePresentation_SetVisible(TimedSpritePresentation *self,s32 enabled)
 {
     if(enabled) *(u16 *)(self->sprite+0x24)&=~4;
     else *(u16 *)(self->sprite+0x24)|=4;
 }
 
 /*
- * Decrement the lifetime; once negative, hide via func_0201e3b8 and return one.
+ * Decrement the lifetime; once negative, hide via TimedSpritePresentation_SetVisible and return one.
  * Otherwise advance the tracks, sample a fixed-point position, copy its X/Y
  * integer parts to sprite offsets 0x2c/0x2e, destroy the sample, and return zero.
  */
@@ -109,7 +109,7 @@ s32 func_0201e3d8(TimedSpritePresentation *self,s32 argument)
 {
     s32 sample[4];
     self->remaining28--;
-    if(self->remaining28<0){func_0201e3b8(self,0);return 1;}
+    if(self->remaining28<0){TimedSpritePresentation_SetVisible(self,0);return 1;}
     VecFx32Object_Add(&self->first08,&self->second18);
     VecFx32_Subtract(sample,&self->first08,argument);
     *(u16 *)(self->sprite+0x2c)=(u16)(sample[1]>>12);

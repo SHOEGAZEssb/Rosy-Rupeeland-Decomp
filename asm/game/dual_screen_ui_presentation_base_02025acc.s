@@ -3,7 +3,7 @@
 .extern data_020d6b3c
 .extern data_020f4e18
 .extern func_020264c4
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
@@ -20,7 +20,7 @@ func_02025acc: ; 0x02025acc
     bl func_020264c4
     str r5, [r4, #0xac]
     add r0, r4, #0xb8
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     ldr r1, [r4, #0xc4]
     ldr r0, .L_02025b48
     bic r1, r1, #0x1

@@ -19,7 +19,7 @@ extern void func_0204cff4(s32 *x, s32 *y, s32 limit);
 extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
 extern void func_02008378(void *output, const void *first, const void *second);
 extern void *func_0201e0ec(void *world, s32 first, s32 second);
-extern void func_020a2894(void *effect, s32 mode, s32 x, s32 y, s32 extra);
+extern void EffectManager_SubmitPointEffect(void *effect, s32 mode, s32 x, s32 y, s32 extra);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
@@ -55,7 +55,7 @@ static s32 scale_shift_round(s32 value, s32 shift)
  *
  * Build a transform from other +0x18 relative to actor +0x18 at scale 0x2000,
  * combine it with actor +0x18, adjust word +8 by 0x18000 minus word +0x0c,
- * create an effect through world +0x2f7c and func_0201e0ec/func_020a2894, then
+ * create an effect through world +0x2f7c and func_0201e0ec/EffectManager_SubmitPointEffect, then
  * when ActorDerivedType1_IsTargetStateEligible(other) succeeds or other byte
  * +0x24c is three, invoke Type7Actor_ResetInteractionState, ensure actor response mode one below
  * timer 60, and set signed halfword +0x246 to 90. Finalize all three
@@ -128,7 +128,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
             originalY + 0x18000 - *(s32 *)(effectTransform + 3);
         effect = func_0201e0ec(data_021052fc + 0x2f7c,
                                *(s32 *)(effectTransform + 2), originalY);
-        func_020a2894(effect, 1, *(s32 *)(effectTransform + 1),
+        EffectManager_SubmitPointEffect(effect, 1, *(s32 *)(effectTransform + 1),
                       *(s32 *)(effectTransform + 2), 0);
     }
     if (ActorDerivedType1_IsTargetStateEligible(other) != 0 || other[0x24c] == 3) {

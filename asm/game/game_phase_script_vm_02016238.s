@@ -22,13 +22,13 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern func_0201cfd0
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_020200bc
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
 .extern func_0206ec68
-.extern func_02079a7c
-.extern func_02098490
+.extern RuntimeRecordTable_FindByKey
+.extern Overlay032Scene_Init
 .extern func_0209d774
 .extern func_0209f2f8
 .extern func_0209fd50
@@ -151,7 +151,7 @@ L_020163d0:
     bl Heap_Alloc
     cmp r0, #0
     beq L_020163f0
-    bl func_02098490
+    bl Overlay032Scene_Init
 L_020163f0:
     mov r0, #0
     b L_020167d4
@@ -277,7 +277,7 @@ L_02016594:
     ldr r0, [r0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     add r0, sp, #4
     bl VecFx32Object_Destroy
     mov r0, #0
@@ -404,7 +404,7 @@ L_0201672c:
 L_02016734:
     ldr r0, L_0201680c
     mov r1, r4
-    bl func_02079a7c
+    bl RuntimeRecordTable_FindByKey
     cmp r6, #0x23
     beq L_0201675c
     cmp r6, #0x24

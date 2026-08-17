@@ -13,15 +13,15 @@ typedef struct Overlay001ControllerCommandState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02093de4(void *controller);
-extern s32 func_020946c8(void *controller, s32 command);
+extern void InventoryScroll_SaveOrigins(void *controller);
+extern s32 InventoryScroll_UpdateMarkerDrag(void *controller, s32 command);
 extern void func_ov001_021fc1b8(Overlay001ControllerCommandState *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Prepare controller_1BC, submit command with func_020946c8, and return 0 if it
+ * Prepare controller_1BC, submit command with InventoryScroll_UpdateMarkerDrag, and return 0 if it
  * is rejected. On acceptance, validate transient state and return 1. Controller
  * effects occur through callees; no hardware is accessed directly.
  */
@@ -30,8 +30,8 @@ extern "C"
 #endif
 s32 func_ov001_021fc348(Overlay001ControllerCommandState *state, s32 command)
 {
-    func_02093de4(state->controller_1bc);
-    if (!func_020946c8(state->controller_1bc, command)) {
+    InventoryScroll_SaveOrigins(state->controller_1bc);
+    if (!InventoryScroll_UpdateMarkerDrag(state->controller_1bc, command)) {
         return 0;
     }
     func_ov001_021fc1b8(state);

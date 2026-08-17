@@ -6,8 +6,8 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern GridEffectActorRegistry_Reset
-.extern func_02071980
-.extern func_02071d4c
+.extern GraphicsArchive_AcquireVfdResource
+.extern GraphicsArchive_ReleaseResourceE4
 .text
 
     .global GridEffectActorRegistry_LoadSharedResource
@@ -16,7 +16,7 @@ GridEffectActorRegistry_LoadSharedResource: ; 0x0204fafc
     ldr r0, .L_0204fb20
     ldr r1, .L_0204fb24
     ldr r0, [r0, #0x0]
-    bl func_02071980
+    bl GraphicsArchive_AcquireVfdResource
     ldr r1, .L_0204fb28
     str r0, [r1, #0x8]
     bl GridEffectActorRegistry_Reset
@@ -36,7 +36,7 @@ GridEffectActorRegistry_UnloadSharedResource: ; 0x0204fb2c
     ldmeqia sp!, {r3, pc}
     ldr r0, .L_0204fb60
     ldr r0, [r0, #0x0]
-    bl func_02071d4c
+    bl GraphicsArchive_ReleaseResourceE4
     ldr r0, .L_0204fb5c
     mov r1, #0x0
     str r1, [r0, #0x8]

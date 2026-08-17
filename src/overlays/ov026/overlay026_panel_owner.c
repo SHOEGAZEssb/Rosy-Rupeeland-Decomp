@@ -11,7 +11,7 @@ extern const u8 data_ov026_0220497c[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02071e04(void *, void *);
+extern void GraphicsArchive_ReleaseOwlvResource(void *, void *);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void *func_ov026_021fce50(void *);
 extern void func_ov026_021fd900(u32, u32, u32, u32, u32, u32, u32, u32);
@@ -43,7 +43,7 @@ static void submit_child(void *child)
 extern "C" void *func_ov026_021feda4(void *object)
 {
     FIELD(const void *, object, 0) = data_ov026_0220497c;
-    func_02071e04(data_020f4e18, FIELD(void *, object, 0x9c));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, object, 0x9c));
     destroy_child(FIELD(void *, object, 0xa0));
     destroy_child(FIELD(void *, object, 0xa4));
     destroy_child(FIELD(void *, object, 0xa8));
@@ -66,7 +66,7 @@ extern "C" void *func_ov026_021fee24(void *object)
 extern "C" void *func_ov026_021fee40(void *object)
 {
     FIELD(const void *, object, 0) = data_ov026_0220497c;
-    func_02071e04(data_020f4e18, FIELD(void *, object, 0x9c));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, object, 0x9c));
     destroy_child(FIELD(void *, object, 0xa0));
     destroy_child(FIELD(void *, object, 0xa4));
     destroy_child(FIELD(void *, object, 0xa8));

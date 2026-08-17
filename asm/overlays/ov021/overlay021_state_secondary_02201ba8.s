@@ -8,7 +8,7 @@
     .extern data_ov021_02202dc8
     .extern func_02092260
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_02095860
     .extern func_ov001_021fc0ac
     .extern func_ov001_021fc1f0
@@ -31,7 +31,7 @@
     .extern func_ov021_021feae4
     .extern func_ov021_021feea4
     .extern func_ov021_021ff274
-    .extern func_ov021_021ff4f0
+    .extern Overlay021Descriptor_GetFlags16_19
     .extern func_ov021_021ff62c
     .extern func_ov021_021ff644
 
@@ -141,7 +141,7 @@ L_02201d14:
     cmp r0, #0x0
     beq L_02201d50
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
     bl func_02092260
@@ -161,7 +161,7 @@ L_02201d50:
     cmp r0, #0x0
     beq L_02201d9c
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0xb
     bl func_02092260
@@ -205,14 +205,14 @@ L_02201dac:
     cmp r0, #0x0
     beq L_02201eb8
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x2
     bl func_02092260
     ldr r0, [r4, #0x380]
     ldr r0, [r0, #0xc]
     str r0, [r4, #0x2bc]
-    bl func_ov021_021ff4f0
+    bl Overlay021Descriptor_GetFlags16_19
     cmp r0, #0x1
     bne L_02201e80
     ldr r1, [r4, #0x358]
@@ -231,7 +231,7 @@ L_02201dac:
     b L_02201f70
 L_02201e80:
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ff4f0
+    bl Overlay021Descriptor_GetFlags16_19
     cmp r0, #0x0
     bne L_02201ea4
     ldr r1, L_02201f90

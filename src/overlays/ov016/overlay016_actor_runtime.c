@@ -13,7 +13,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
-extern s32 func_02092910(void *, void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void PresentationScalar_TransitionBy(void *, s32, s32);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
@@ -64,7 +64,7 @@ extern "C" s32 func_ov016_021fe4d0(void *state, void *target)
 }
 
 /*
- * Find the first actor whose sprite +0x9C passes func_02092910 for key. If
+ * Find the first actor whose sprite +0x9C passes GraphicsSpriteState_TestTouchPoint for key. If
  * remove is zero, return that actor's target +0xAC immediately. Otherwise unlink
  * it from +0xD0, store it at +0xCC, start a -0x20000 transition on component
  * +0x1C, reset counters +0x7C/+0x80, stop record +0x20 when the list becomes
@@ -77,7 +77,7 @@ extern "C" void *func_ov016_021fe584(void *state, void *key, s32 remove)
 
     for (actor = FIELD(void *, state, 0xd4); actor != 0;
          actor = FIELD(void *, actor, 8)) {
-        if (func_02092910(FIELD(void *, actor, 0x9c), key) != 0) {
+        if (GraphicsSpriteState_TestTouchPoint(FIELD(void *, actor, 0x9c), key) != 0) {
             if (remove == 0) {
                 return FIELD(void *, actor, 0xac);
             }
@@ -170,7 +170,7 @@ extern "C" void func_ov016_021fe740(void *value)
  * Store arguments two and three at +0x24/+0x28, clear words +4/+8, and return
  * void. Word +0 is intentionally preserved; there are no SDK or hardware effects.
  */
-extern "C" void func_ov016_021fe754(void *value, u32 first, u32 second)
+extern "C" void Overlay016ActorValue_Init(void *value, u32 first, u32 second)
 {
     FIELD(u32, value, 0x24) = first;
     FIELD(u32, value, 0x28) = second;

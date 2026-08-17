@@ -12,8 +12,8 @@ extern "C" void GraphicsSpriteGroup_Destroy(void *object);
 extern "C" void func_020c0c24(void *records, s32 stride, s32 alignment,
                                void (*destroy)(void *));
 extern "C" void func_020927b8(void *presentation);
-extern "C" void func_02071eb8(void *owner);
-extern "C" void func_020683f4(void *record);
+extern "C" void AnimationResourceState_Destroy(void *owner);
+extern "C" void InventoryCell_Destroy(void *record);
 extern "C" void GraphicsSpriteGroup_ReleaseIndexedEntries(void *object);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *font, void *owner, s32 value);
 extern "C" s32 func_ov044_0220bb48(void *record, s32 mode);
@@ -24,7 +24,7 @@ extern "C" void func_ov044_0220baa0(void *object, s32 index);
 /*
  * Destroy panel-owned resources and return the original pointer. Release font
  * object +0x04, invoke virtual destructor slot +0x04 on optional child +0x44,
- * destroy the optional 32-byte record array +0x38 with func_020683f4, and
+ * destroy the optional 32-byte record array +0x38 with InventoryCell_Destroy, and
  * destroy presentation +0x14 and owner +0x08. Heap/resource state changes;
  * caller-owned panel storage is not freed.
  */
@@ -37,9 +37,9 @@ extern "C" void *func_ov044_0220b8e4(void *object)
         ((void (*)(void *))vtable[1])(child);
     }
     if (FIELD(void *, object, 0x38))
-        func_020c0c24(FIELD(void *, object, 0x38), 0x20, 8, func_020683f4);
+        func_020c0c24(FIELD(void *, object, 0x38), 0x20, 8, InventoryCell_Destroy);
     func_020927b8((u8 *)object + 0x14);
-    func_02071eb8((u8 *)object + 8);
+    AnimationResourceState_Destroy((u8 *)object + 8);
     return object;
 }
 

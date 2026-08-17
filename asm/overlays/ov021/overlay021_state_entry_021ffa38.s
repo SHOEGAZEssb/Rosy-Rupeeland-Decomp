@@ -7,14 +7,14 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02092260
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_02095860
     .extern func_02095928
     .extern func_ov021_021fd1cc
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
     .extern func_ov021_021fd7c0
-    .extern func_ov021_021fed30
+    .extern Overlay021_IsAuxiliaryRecordAvailable
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
     .extern func_ov021_021fefcc
@@ -81,7 +81,7 @@ L_021ffadc:
     cmp r0, #0x0
     beq L_021ffb30
     ldr r0, [r8, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r8
     mov r1, #0x3
     bl func_02092260
@@ -111,7 +111,7 @@ L_021ffb4c:
     cmp r0, #0x0
     beq L_021ffc00
     ldr r0, [r8, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r8
     mov r1, #0x2
     bl func_02092260
@@ -123,7 +123,7 @@ L_021ffb4c:
     cmp r0, #0x1
     mov r0, r8
     bne L_021ffbe0
-    bl func_ov021_021fed30
+    bl Overlay021_IsAuxiliaryRecordAvailable
     cmp r0, #0x0
     beq L_021ffbcc
     ldr r1, L_021ffca8

@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020de804
 .extern data_021052fc
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_02028544
 .extern gHeapContext
 
@@ -27,7 +27,7 @@ func_02028630: ; 0x02028630
     mov r1, r0
 .L_0202866c:
     add r0, r4, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     ldmia sp!, {r3, r4, r5, pc}
 .L_02028678: .word data_021052fc
 .L_0202867c: .word data_020de804

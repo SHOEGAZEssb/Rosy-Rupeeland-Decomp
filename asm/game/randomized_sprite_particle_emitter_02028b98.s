@@ -8,7 +8,7 @@
 .extern AnimationResource_Destroy
 .extern AnimationResource_Assign
 .extern AnimationResource_InitEmpty
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_02028c94
 .extern GraphicsSpriteGroupOwner_CreateGroup
 
@@ -21,7 +21,7 @@ func_02028b98: ; 0x02028b98
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_02028c78
     mov r1, r6
     str r0, [r4, #0x0]

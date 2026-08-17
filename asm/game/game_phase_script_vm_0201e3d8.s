@@ -7,7 +7,7 @@
 .extern VecFx32_Subtract
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 .extern data_020d6248
 .extern data_020d6098
 .global func_0201e3d8
@@ -21,7 +21,7 @@ func_0201e3d8: ; 0x0201e3d8
     str r1, [r5, #0x28]
     bpl L_0201e408
     mov r1, #0x0
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     mov r0, #0x1
     b L_0201e44c
 L_0201e408:

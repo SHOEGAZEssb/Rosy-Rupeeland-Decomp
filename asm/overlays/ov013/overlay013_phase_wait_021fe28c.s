@@ -3,7 +3,7 @@
     .extern data_ov013_021febb4
     .extern data_ov013_021fec18
     .extern data_ov013_021fed30
-    .extern func_02091fb0
+    .extern SceneInputBase_Update
     .extern func_02092260
     .extern func_ov013_021fce04
     .extern func_ov013_021fdbb0
@@ -22,7 +22,7 @@ func_ov013_021fe28c:
     cmp r0, #0x0
     beq L_021fe2a8
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
 L_021fe2a8:
     ldr r0, [r4, #0x4]
     cmp r0, #0x3

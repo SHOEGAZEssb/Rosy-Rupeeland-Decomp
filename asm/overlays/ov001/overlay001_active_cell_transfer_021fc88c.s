@@ -1,7 +1,7 @@
     .text
-    .extern func_02062e00
-    .extern func_0206514c
-    .extern func_02062874
+    .extern InventoryRecord_GetMetadata
+    .extern InventoryRecordCollection_FindIdAlternate
+    .extern ActorDescriptor_SetQuantity
     .extern func_ov001_021fc460
     .extern func_ov001_021fc404
     .extern func_ov001_021fc068
@@ -14,7 +14,7 @@ func_ov001_021fc88c: ; 0x021fc88c
     add r0, r1, r0, lsl #0x5
     ldr r4, [r0, #0xc]
     mov r0, r4
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrb r0, [r0, #0x2]
     cmp r0, #0x1
     ldmneia sp!, {r3, r4, r5, r6, r7, pc}
@@ -23,7 +23,7 @@ func_ov001_021fc88c: ; 0x021fc88c
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
     ldrh r1, [r4, #0x0]
     ldr r0, [r5, #0x208]
-    bl func_0206514c
+    bl InventoryRecordCollection_FindIdAlternate
     cmp r0, #0x0
     ldmltia sp!, {r3, r4, r5, r6, r7, pc}
     ldr r1, [r5, #0x208]
@@ -33,13 +33,13 @@ func_ov001_021fc88c: ; 0x021fc88c
     mla r7, r0, r1, r2
     mov r0, r4
     mov r1, r6
-    bl func_02062874
+    bl ActorDescriptor_SetQuantity
     ldrh r1, [r7, #0x4]
     mov r0, r7
     add r1, r6, r1
     mov r1, r1, lsl #0x10
     mov r1, r1, lsr #0x10
-    bl func_02062874
+    bl ActorDescriptor_SetQuantity
     ldr r1, [r5, #0x1c]
     cmp r1, #0x0
     movne r0, #0x100

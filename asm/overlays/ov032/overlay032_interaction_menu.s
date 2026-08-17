@@ -5,13 +5,13 @@
 .extern Sound_Play
 .extern data_021f5f18
 .extern data_ov032_02202220
-.extern func_02098348
+.extern RetailSelectionManager_HasInactiveSpecialRecord
 .extern func_ov032_021fe0e8
 .extern func_ov032_021fe10c
 .extern func_ov032_021fe134
 .extern func_ov032_021fe23c
 .extern func_ov032_021fe2bc
-.extern func_ov032_021ff288
+.extern Overlay032SpriteWrapper_HitTest
 .extern gGameWork
 .extern gSoundContext
 
@@ -54,7 +54,7 @@ L_021fef00:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_02098348
+    bl RetailSelectionManager_HasInactiveSpecialRecord
     cmp r0, #0x0
     beq L_021fef4c
     ldr r2, [r5, #0x1b4]
@@ -145,7 +145,7 @@ L_021ff050:
     mov r3, r2
     add r0, r5, #0x154
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_021ff0a4
     ldr r0, L_021ff280
@@ -163,7 +163,7 @@ L_021ff0a4:
     mov r3, r2
     add r0, r5, #0xf4
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_021ff0fc
     ldr r0, L_021ff280
@@ -186,7 +186,7 @@ L_021ff0fc:
     mov r3, r2
     add r0, r5, #0x124
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_021ff154
     ldr r0, L_021ff280
@@ -209,7 +209,7 @@ L_021ff154:
     mov r3, r2
     add r0, r5, #0x184
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_021ff1a8
     ldr r0, L_021ff280

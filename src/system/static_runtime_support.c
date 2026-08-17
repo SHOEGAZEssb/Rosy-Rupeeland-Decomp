@@ -186,7 +186,7 @@ extern u8 data_021e9e60[];
 extern void *func_020a7310(void *start, u32 size, int options);
 
 /* Create the fixed 0x4000-byte graphics scratch heap at 0x0207139C. */
-void func_0207139c(void)
+void GraphicsScratchHeap_Init(void)
 {
     *(void **)(data_021e9e60 + 4) =
         func_020a7310(data_021e9e68, 0x4000, 0);
@@ -310,7 +310,7 @@ void *SpritePresentation_Init(void *object, void *sprite)
  * Caller storage remains owned by the caller and the sprite pointer at +0x9C
  * is borrowed. The distinct vtable selects this subtype's recovered update
  * and destruction behavior; construction returns the original object. */
-void *func_020955d8(void *object, void *sprite)
+void *AlternateSpritePresentation_Init(void *object, void *sprite)
 {
     u8 *bytes = (u8 *)Presentation_Init(object);
 
@@ -322,7 +322,7 @@ void *func_020955d8(void *object, void *sprite)
 /* Synchronize an alternate sprite presentation's position, rotation, and
  * scale fields at retail 0x020956A4. The presentation and its borrowed sprite
  * remain caller-owned; only the sprite's render-state fields are updated. */
-void func_020956a4(void *object)
+void AlternateSpritePresentation_SyncTransform(void *object)
 {
     u8 *bytes = (u8 *)object;
     u8 *sprite = *(u8 **)(bytes + 0x9c);
@@ -339,9 +339,9 @@ void func_020956a4(void *object)
 }
 
 /* Preserve the distinct retail 0x020956F0 entry point used by one subtype. */
-void func_020956f0(void *object)
+void AlternateSpritePresentation_SyncTransformVariant(void *object)
 {
-    func_020956a4(object);
+    AlternateSpritePresentation_SyncTransform(object);
 }
 
 extern void GraphicsAnimationInstance_Destroy(void *instance);
@@ -350,7 +350,7 @@ extern void GraphicsAnimationInstance_Destroy(void *instance);
  * The borrowed animation instance is unlinked and destroyed by its graphics
  * owner, the inert presentation base is finalized, and caller storage returns
  * to the heap. The former object address is returned as required by retail. */
-void *func_02095634(void *object)
+void *AlternateSpritePresentation_Delete(void *object)
 {
     u8 *bytes = (u8 *)object;
 

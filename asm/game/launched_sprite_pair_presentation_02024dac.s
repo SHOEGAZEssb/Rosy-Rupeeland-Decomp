@@ -5,7 +5,7 @@
 .extern data_020d68e4
 .extern VecFx32Object_Destroy
 .extern func_0201e28c
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_ReleaseState
 .extern gGameWork
 
@@ -30,7 +30,7 @@ func_02024dac: ; 0x02024dac
     bl GraphicsSpriteGroup_ReleaseState
 .L_02024dec:
     add r0, r4, #0x3c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x1c
     bl VecFx32Object_Destroy
     add r0, r4, #0xc

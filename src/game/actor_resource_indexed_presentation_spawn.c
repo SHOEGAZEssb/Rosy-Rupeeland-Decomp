@@ -14,7 +14,7 @@ extern void *ActorFeedbackResources_GetResource(u32 index);
 extern u32 genrand_int32(void);
 extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
 extern void Sound_Play(void *context, s32 channel, s32 sound);
-extern void func_0201ded4(void *manager, void *object);
+extern void PresentationList_AppendObject(void *manager, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -74,6 +74,6 @@ void ActorFeedback_SpawnIndexedPresentation(void *self, u32 index, u16 value)
         if (sound != 0)
             Sound_Play(gSoundContext, sound >> 7, sound & 0x7f);
     }
-    func_0201ded4(data_021052fc + 0x2f7c, presentation);
+    PresentationList_AppendObject(data_021052fc + 0x2f7c, presentation);
     *(u16 *)(*(u8 **)(*(u8 **)((u8 *)presentation + 8) + 4) + 0x36) = value;
 }

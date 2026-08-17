@@ -18,7 +18,7 @@ extern void VecFx32Object_Destroy(void *value);
 extern s32 func_02008514(void *runtime, s32 x, s32 y);
 extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
 extern void *TimedSpriteSampledArcPresentation_Init(void *allocation, ...);
-extern void func_0201ded4(void *manager, void *presentation);
+extern void PresentationList_AppendObject(void *manager, void *presentation);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void *ActorFeedbackResources_GetResource(u32 index);
 extern void GraphicsSpriteState_SetFrameIndex(void *sprite, u32 animation);
@@ -39,7 +39,7 @@ static void spawnOffsetFeedback(const s32 *position, const u8 *resource)
             allocation, position, 0, group, *(s32 *)(resource + 4),
             *(s32 *)(resource + 8), *(s32 *)(resource + 0x0c), -4, 0);
     }
-    func_0201ded4(data_021052fc + 0x2f7c, presentation);
+    PresentationList_AppendObject(data_021052fc + 0x2f7c, presentation);
 }
 
 /* Play a packed table sound, whose high bits select the channel and low seven bits the cue. */

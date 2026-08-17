@@ -10,7 +10,7 @@
 .extern func_020349b8
 .extern func_0204cfa4
 .extern TrackedResourceActor_DispatchTargetInteraction
-.extern func_020a2894
+.extern EffectManager_SubmitPointEffect
 .extern func_020adc90
 .extern func_ov095_02217d58
 .extern func_ov095_0221a208
@@ -113,7 +113,7 @@ func_ov095_0221c4a4:
     rsb r3, r3, r4, asr #0xc
     mov r2, r2, asr #0xc
     sub r3, r3, #0x1c
-    bl func_020a2894
+    bl EffectManager_SubmitPointEffect
     ldr r0, [r6, #0x1fc]
     ldrh r1, [r0, #0x1c]
     cmp r1, #0x0

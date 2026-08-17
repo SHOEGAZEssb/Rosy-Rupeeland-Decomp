@@ -10,11 +10,11 @@ typedef struct TitleCharacterResourceCollection {
 } TitleCharacterResourceCollection;
 
 extern void *data_020f4e18;
-extern void func_02071d4c(void *archive, void *resource);
-extern void *func_02071980(void *archive, u32 resourceId);
+extern void GraphicsArchive_ReleaseResourceE4(void *archive, void *resource);
+extern void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resourceId);
 
 /* Initialize an empty eight-entry character-resource collection. */
-void *func_02092798(TitleCharacterResourceCollection *collection)
+void *TitleCharacterResourceCollection_Init(TitleCharacterResourceCollection *collection)
 {
     s32 index;
     void *empty = 0;

@@ -5,7 +5,7 @@
 .extern data_ov108_0221f0fd
 .extern data_ov108_022268a0
 .extern data_ov108_022268a4
-.extern func_02008f58
+.extern GamePhaseRuntime_SetGlobalValue30F8
 .extern ActorInteractionRuntime_Init
 .extern ActorInteractionRuntime_NoOp
 .extern ActorDescriptorBatch_RegisterAndSpawnCategory1
@@ -24,7 +24,7 @@ Overlay108_RegisterActorDescriptors:
     ldr r0, .L_0221d704
     bl ActorInteractionRuntime_NoOp
     ldr r0, .L_0221d708
-    bl func_02008f58
+    bl GamePhaseRuntime_SetGlobalValue30F8
     ldr r0, .L_0221d70c
     bl ActorDescriptorBatch_SetCategory1Callback
     ldmia sp!, {r3, pc}

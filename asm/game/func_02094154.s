@@ -7,12 +7,12 @@
 .extern data_020f263c
 .extern data_020f2644
 .extern data_020f4e18
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
-.extern func_02093cb4
-.extern func_02093d20
-.extern func_020944f0
+.extern InventoryScroll_InitBase
+.extern InventoryScroll_ConfigureRange
+.extern InventoryScroll_UpdateArrowAnimations
 .extern PresentationScalar_SetImmediate
 .extern SpritePresentation_Init
 .extern SpritePresentation_SyncPosition
@@ -27,11 +27,11 @@ func_02094154:
     mov r9, r2
     mov r8, r3
     ldr r7, [sp, #0x38]
-    bl func_02093cb4
+    bl InventoryScroll_InitBase
     ldr r1, .L_020943c0
     add r0, r10, #0x54
     str r1, [r10, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     str r4, [r10, #0x4c]
     str r7, [r10, #0x6c]
     mov r0, #0x6
@@ -159,7 +159,7 @@ func_02094154:
     mov r1, r9
     mov r2, r8
     mov r3, #0x0
-    bl func_02093d20
+    bl InventoryScroll_ConfigureRange
     mov r0, #0x0
     str r0, [r10, #0x3c]
     mov r0, #0x10
@@ -167,7 +167,7 @@ func_02094154:
     add r1, r7, #0x3c
     mov r0, r10
     str r1, [r10, #0x44]
-    bl func_020944f0
+    bl InventoryScroll_UpdateArrowAnimations
     ldmib r10, {r0, r1}
     cmp r1, r0
     blt .L_020943b4

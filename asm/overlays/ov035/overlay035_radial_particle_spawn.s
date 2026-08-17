@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_radial_particle_spawn.c for documented portable C. */
 
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_0209189c
     .extern Heap_Alloc
     .extern func_ov035_021fd2bc
@@ -23,7 +23,7 @@ func_ov035_02200ec0:
     mov r1, #0x1000
     mov r8, r2
     mov r7, r3
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r4, r0, lsl #0x4
     add r0, r10, #0xc0
     mov r1, #0x100

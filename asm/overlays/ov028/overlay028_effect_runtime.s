@@ -3,10 +3,10 @@
 /* Exact fallback; see src/overlays/ov028/overlay028_effect_runtime.c. */
 .extern data_020f4e18
 .extern data_ov028_021ff2d0
-.extern func_02071ea4
-.extern func_02071eb8
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_Clear
@@ -14,13 +14,13 @@
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_02091b6c
-.extern func_02092798
+.extern TitleCharacterResourceCollection_Init
 .extern func_020927b8
 .extern func_02092814
-.extern func_02092cc0
-.extern func_02093998
+.extern TitleDialog_Init
+.extern TitleDialog_ResetAfterClose
 .extern func_ov028_021fd668
 .extern genrand_int32
 .extern gHeapContext
@@ -32,13 +32,13 @@ func_ov028_021fd680:
     mov r4, r0
     add r0, r4, #0x8
     mov r5, r1
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x14
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x20
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x2c
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     mov r0, #0x0
     str r0, [r4, #0x54]
     add r0, r4, #0x58
@@ -80,7 +80,7 @@ func_ov028_021fd680:
     beq L_021fd754
     ldr r1, [r4, #0x0]
     ldr r2, [r4, #0x2c]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_021fd754:
     str r0, [r4, #0x50]
     mov r0, #0x40
@@ -115,11 +115,11 @@ L_021fd7b0:
     add r0, r4, #0x2c
     bl func_020927b8
     add r0, r4, #0x20
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x14
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
 .size func_ov028_021fd790, .-func_ov028_021fd790
@@ -136,7 +136,7 @@ func_ov028_021fd7e0:
     mov r6, r0
     add r0, r7, #0x54
     mov r1, #0x5
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r5, r0
     add r0, r7, #0x54
     mov r1, #0x20
@@ -177,11 +177,11 @@ func_ov028_021fd86c:
     mov r3, #0xff
     bl GraphicsSpriteCanvas_FillRect
     ldr r0, [r4, #0x50]
-    bl func_02093998
+    bl TitleDialog_ResetAfterClose
     ldr r0, [r4, #0x4]
     bl GraphicsSpriteGroup_Clear
     add r0, r4, #0x8
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 .size func_ov028_021fd86c, .-func_ov028_021fd86c

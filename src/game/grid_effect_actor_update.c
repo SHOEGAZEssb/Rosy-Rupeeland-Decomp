@@ -24,7 +24,7 @@ extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 GridEffectActor_CanBeginDeparture(void *actor);
 extern void GridEffectActor_BeginDeparture(void *actor, void *target);
-extern u32 func_020628c8(void *subobject);
+extern u32 ActorDescriptor_GetPrimaryLabel(void *subobject);
 extern void GraphicsSpriteRenderer_SetFontResource(void *context, u32 resource);
 extern void GraphicsSpriteRenderer_DrawText(void *context, u32 value, s32 x, s32 y,
                           s32 width, s32 height, s32 mode);
@@ -150,7 +150,7 @@ void GridEffectActor_Update(void *actor)
         s8 mode = FIELD(s8, actor, 0x21a);
         void *grid_context = data_020f4e14;
         GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, gGridEffectActorRuntimeState, 8));
-        u32 value = func_020628c8((u8 *)actor + 0x1f4);
+        u32 value = ActorDescriptor_GetPrimaryLabel((u8 *)actor + 0x1f4);
         s32 grid_x = GraphicsSpriteRenderer_MeasureText(grid_context, value, 8, 0);
         s32 target_x = mode < 6 ? 0x12000 : 0xe8000 - grid_x * 0x1000;
         s32 target_y = mode == -1 ? 0 : func_020ada8c(mode, 6) * 0x18000;
@@ -166,7 +166,7 @@ void GridEffectActor_Update(void *actor)
             s32 pixel_y = FIELD(s32, actor, 0x20) >> 12;
             if (pixel_x > 8 && pixel_x < 230 && pixel_y > 12 && pixel_y < 180) {
                 GraphicsSpriteRenderer_SetFontResource(grid_context, FIELD(u32, gGridEffectActorRuntimeState, 8));
-                value = func_020628c8((u8 *)actor + 0x1f4);
+                value = ActorDescriptor_GetPrimaryLabel((u8 *)actor + 0x1f4);
                 GraphicsSpriteRenderer_DrawText(grid_context, value, pixel_x, pixel_y, 13, 8, 0);
             }
             FIELD(u32, data_021052fc, 0x30b8) |= 0x10;

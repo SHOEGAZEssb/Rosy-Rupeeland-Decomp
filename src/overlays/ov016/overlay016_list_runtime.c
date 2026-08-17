@@ -12,7 +12,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
-extern void func_02094574(void *);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void func_ov016_021fd270(void *, s32);
 extern void *func_ov016_021fd628(void *);
 #ifdef __cplusplus
@@ -95,7 +95,7 @@ extern "C" void func_ov016_021fd310(void *state, s32 index)
  */
 extern "C" void func_ov016_021fd358(void *state)
 {
-    func_02094574(FIELD(void *, state, 0x58));
+    InventoryScroll_UpdatePresentation(FIELD(void *, state, 0x58));
     if (FIELD(s32, state, 0x50) != 0) {
         void *descriptor = func_ov016_021fd628(state);
         void *linked = FIELD(void *, descriptor, 0);

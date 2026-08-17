@@ -14,7 +14,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
-extern void func_0201ded4(void *manager, void *object);
+extern void PresentationList_AppendObject(void *manager, void *object);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 extern void *SceneManager_GetCurrent(void *manager);
 #ifdef __cplusplus
@@ -58,7 +58,7 @@ s32 ActorDerivedType1_TryApplyInteractionAmount(void *self, s32 amount, void *so
             effect = func_02022cb0(allocation, resource, actor, negative,
                                    0x2000, -0xc0);
         }
-        func_0201ded4(data_021052fc + 0x2f7c, effect);
+        PresentationList_AppendObject(data_021052fc + 0x2f7c, effect);
         Type1Actor_TryEnterFailureState(actor);
         return 1;
     }

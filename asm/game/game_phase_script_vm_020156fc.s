@@ -5,7 +5,7 @@
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern GamePhaseScriptVm_Pop
-.extern func_0201d9e4
+.extern DisplayRouting_MatchesRequest
 .extern func_0201da20
 .extern Actor_GetCollection
 .extern func_ov059_0220fd20
@@ -31,7 +31,7 @@ GamePhaseActorScriptVm_CreateOverlay61DebugObject: ; 0x020156fc
     bl func_0201da20
     mov r5, r0
     mov r0, r6
-    bl func_0201d9e4
+    bl DisplayRouting_MatchesRequest
     mov r4, r0
     bl OverlayManager_GetGlobal
     mov r1, #0x2
@@ -47,7 +47,7 @@ GamePhaseActorScriptVm_CreateOverlay61DebugObject: ; 0x020156fc
     mov r1, r4
     mov r2, r5
     mov r3, r7
-    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, func_ov065_0220fd20, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
+    bl func_ov059_0220fd20 ; func_ov060_0220fd20, func_ov061_0220fd20, func_ov062_0220fd20, func_ov063_0220fd20, Overlay064Scene_Construct, Overlay065Particle_Init, func_ov066_0220fd20, func_ov068_0220fd20, func_ov069_0220fd20, func_ov070_0220fd20, func_ov071_0220fd20, func_ov072_0220fd20, func_ov073_0220fd20, func_ov074_0220fd20
 L_02015788:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

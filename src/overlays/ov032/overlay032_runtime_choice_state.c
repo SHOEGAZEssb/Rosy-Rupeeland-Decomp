@@ -23,28 +23,28 @@ extern "C" {
 extern void GraphicsResourceSet_Load(...);
 extern void func_020b44e8(void);
 extern void func_02070638(...);
-extern s32 func_0207042c(void *);
+extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
 extern void func_02070e0c(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
-extern void func_020980f8(void *);
+extern void RetailSelectionManager_AdvanceHistory(void *);
 extern void GameWork_ClearFlag(...);
 extern void GameWork_SetFlag(...);
 extern s32 GameWork_TestFlag(...);
-extern void func_0206f914(...);
-extern void func_02098020(...);
+extern void RetailPhaseDatabase_UnlockById(...);
+extern void RetailSelectionHistory_InsertUniqueId(...);
 extern void func_ov032_021fe0e8(void *);
 extern void func_0205958c(...);
 extern void func_020594ec(...);
 extern void func_0207f80c(...);
 extern s32 func_0207f248(void *);
-extern s32 func_ov032_021ff288(...);
+extern s32 Overlay032SpriteWrapper_HitTest(...);
 extern void func_ov032_021fe2bc(void *, u32);
 extern void Sound_Play(...);
 extern void func_ov032_021fe10c(void *);
 extern void func_ov032_021fe23c(void *, s32);
 extern s32 func_ov032_021fe134(void *, s32);
-extern s32 func_02098348(void *);
+extern s32 RetailSelectionManager_HasInactiveSpecialRecord(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -67,7 +67,7 @@ static void upload_background(void *scene)
 {
     GraphicsResourceSet *set = (GraphicsResourceSet *)((u8 *)scene + 0xf18);
     func_02070638(set->tiles, 2, 0);
-    func_02070b50(set->map, func_0207042c(set->tiles) ? 0x6000 : 0);
+    func_02070b50(set->map, GraphicsResource_GetFormat(set->tiles) ? 0x6000 : 0);
     func_02070e0c(set->palette, 2, 0);
     GraphicsResourceSet_ReleaseHandles(set);
     REG16(0x05000000) = 0x24a3;
@@ -85,7 +85,7 @@ static void reveal_menu(void *scene)
 {
     if (FIELD(s32, data_021f5f18, 0x460) > 0) {
         set_flag4(scene, 0x184, 0);
-        if (func_02098348(data_021f5f18)) {
+        if (RetailSelectionManager_HasInactiveSpecialRecord(data_021f5f18)) {
             set_flag4(scene, 0x1b4, 0);
             func_ov032_021fe0e8((u8 *)scene + 0x1b4);
         }
@@ -122,17 +122,17 @@ extern "C" s32 func_ov032_02200618(void *scene)
         ++FIELD(s32, scene, 0xb64);
         break;
     case 2:
-        func_020980f8(data_021f5f18);
+        RetailSelectionManager_AdvanceHistory(data_021f5f18);
         if (FIELD(s32, scene, 0xf28)) {
             GameWork_ClearFlag(gGameWork, 0x15a);
             GameWork_SetFlag(gGameWork, 0x18);
             GameWork_SetFlag(gGameWork, 0x1f0);
             GameWork_SetFlag(gGameWork, 0x398);
-            func_0206f914(data_021e9e00, 10);
+            RetailPhaseDatabase_UnlockById(data_021e9e00, 10);
             typedef void (*Callback)(void);
             ((Callback)FIELD(void *, FIELD(void *, data_020f1678, 0x70), 4))();
             const u32 ids[] = {0x68, 0x36, 0x35, 0x34, 0x2e};
-            for (u32 i = 0; i < 5; ++i) func_02098020(data_021f5f18, ids[i]);
+            for (u32 i = 0; i < 5; ++i) RetailSelectionHistory_InsertUniqueId(data_021f5f18, ids[i]);
         }
         set_flag4(scene, 0x2d4, 0);
         func_ov032_021fe0e8((u8 *)scene + 0x2d4);
@@ -170,7 +170,7 @@ extern "C" s32 func_ov032_02200618(void *scene)
         break;
     case 14:
         if (FIELD(s32, scene, 0xb84) &&
-            func_ov032_021ff288((u8 *)scene + 0xb14, (u8 *)scene + 0xb54, -1, -1))
+            Overlay032SpriteWrapper_HitTest((u8 *)scene + 0xb14, (u8 *)scene + 0xb54, -1, -1))
             FIELD(s32, scene, 0xb64) = FIELD(s32, scene, 0xf28) ? 80 : 15;
         break;
     case 15:
@@ -183,14 +183,14 @@ extern "C" s32 func_ov032_02200618(void *scene)
         break;
     case 16:
         if (FIELD(s32, scene, 0xb84) &&
-            func_ov032_021ff288((u8 *)scene + 0x214, (u8 *)scene + 0xb54, -1, -1)) {
+            Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x214, (u8 *)scene + 0xb54, -1, -1)) {
             Sound_Play(gSoundContext, 0x81, 0);
             set_flag4(scene, 0x214, 1); set_flag4(scene, 0x244, 1);
             func_ov032_021fe10c(scene);
             func_ov032_021fe23c(scene, 1);
             FIELD(s32, scene, 0xb64) = 90;
         } else if (FIELD(s32, scene, 0xb84) &&
-                   func_ov032_021ff288((u8 *)scene + 0x244, (u8 *)scene + 0xb54, -1, -1)) {
+                   Overlay032SpriteWrapper_HitTest((u8 *)scene + 0x244, (u8 *)scene + 0xb54, -1, -1)) {
             Sound_Play(gSoundContext, 0x81, 1);
             set_flag4(scene, 0x214, 1); set_flag4(scene, 0x244, 1);
             func_ov032_021fe10c(scene);

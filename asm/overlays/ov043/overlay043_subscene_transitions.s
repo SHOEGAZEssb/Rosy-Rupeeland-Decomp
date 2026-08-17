@@ -6,8 +6,8 @@
 .extern OverlaySlot_LoadOverlay
 .extern Heap_Alloc
 .extern func_ov016_021fe77c
-.extern func_ov043_0220bd24
-.extern func_02091fb0
+.extern Overlay043_UpdatePresentationResources
+.extern SceneInputBase_Update
 .extern OverlaySlot_UnloadOverlay
 .extern func_ov043_0220b744
 .extern func_ov043_0220ba28
@@ -91,12 +91,12 @@ func_ov043_0220bed4:
     str r0, [r4, #0x8]
     b .L_0220c184
 .L_0220bfc0:
-    bl func_ov043_0220bd24
+    bl Overlay043_UpdatePresentationResources
     b .L_0220c184
 .L_0220bfc8:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c184
@@ -109,7 +109,7 @@ func_ov043_0220bed4:
 .L_0220bff8:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq .L_0220c184
     mov r0, #0x3
@@ -124,7 +124,7 @@ func_ov043_0220bed4:
 .L_0220c030:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c184
@@ -213,7 +213,7 @@ func_ov043_0220bed4:
     b .L_0220c184
 .L_0220c17c:
     mov r0, r4
-    bl func_ov043_0220bd24
+    bl Overlay043_UpdatePresentationResources
 .L_0220c184:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
@@ -286,12 +286,12 @@ func_ov043_0220c1b0:
     b .L_0220c3e4
 .L_0220c278:
     mov r0, r4
-    bl func_ov043_0220bd24
+    bl Overlay043_UpdatePresentationResources
     b .L_0220c3e4
 .L_0220c284:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c3e4
@@ -304,7 +304,7 @@ func_ov043_0220c1b0:
 .L_0220c2b4:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x1
-    bl func_02091fb0
+    bl SceneInputBase_Update
     cmp r0, #0x0
     beq .L_0220c3e4
     mov r0, #0x3
@@ -319,7 +319,7 @@ func_ov043_0220c1b0:
 .L_0220c2ec:
     ldr r0, [r4, #0x2f4]
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
     beq .L_0220c3e4
@@ -382,7 +382,7 @@ func_ov043_0220c1b0:
     b .L_0220c3e4
 .L_0220c3dc:
     mov r0, r4
-    bl func_ov043_0220bd24
+    bl Overlay043_UpdatePresentationResources
 .L_0220c3e4:
     mov r0, #0x0
     add sp, sp, #0x4
@@ -402,7 +402,7 @@ func_ov043_0220c1b0:
     .global func_ov043_0220c418
 func_ov043_0220c418:
     stmdb sp!, {r3, lr}
-    bl func_ov043_0220bd24
+    bl Overlay043_UpdatePresentationResources
     mov r0, #0x1
     ldmia sp!, {r3, pc}
 .size func_ov043_0220c418, . - func_ov043_0220c418

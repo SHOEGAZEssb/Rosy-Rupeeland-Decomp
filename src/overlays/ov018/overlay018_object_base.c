@@ -12,8 +12,8 @@ extern const u32 data_ov018_021ffd20[];
 extern "C" {
 #endif
 extern void Heap_Free(void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -39,7 +39,7 @@ extern "C" void *func_ov018_021fce00(void *state, void *renderer,
 
     SpritePresentation_InitVariant(state, 0);
     FIELD(const u32 *, state, 0) = data_ov018_021ffd20;
-    func_02071ea4((u8 *)state + 0xa0);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xa0);
     func_02071ee0((u8 *)state + 0xa0, data_020f4e18[0],
                   FIELD(u16, descriptor, 4), FIELD(u16, descriptor, 6),
                   FIELD(u16, descriptor, 8));
@@ -57,7 +57,7 @@ extern "C" void *func_ov018_021fce00(void *state, void *renderer,
  */
 extern "C" void *func_ov018_021fceb0(void *state)
 {
-    func_02071eb8((u8 *)state + 0xa0);
+    AnimationResourceState_Destroy((u8 *)state + 0xa0);
     SpritePresentation_Destroy(state);
     return state;
 }
@@ -69,7 +69,7 @@ extern "C" void *func_ov018_021fceb0(void *state)
  */
 extern "C" void *func_ov018_021fced0(void *state)
 {
-    func_02071eb8((u8 *)state + 0xa0);
+    AnimationResourceState_Destroy((u8 *)state + 0xa0);
     SpritePresentation_Destroy(state);
     Heap_Free(state);
     return state;

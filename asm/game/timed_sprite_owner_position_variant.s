@@ -5,7 +5,7 @@
 .extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern func_0201e380
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 .extern func_0201e6e4
 
 .global func_0201ecbc
@@ -63,7 +63,7 @@ func_0201ed1c: ; 0x0201ed1c
     beq .L_0201ed58
 .L_0201ed48:
     mov r1, #0x0
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     mov r0, #0x1
     ldmia sp!, {r3, pc}
 .L_0201ed58:

@@ -10,7 +10,7 @@ extern HeapContext gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern void PresentationList_Append(void *, void *);
 extern void *func_ov017_021fd94c(void *, u16, u32, u32, u16, u16, u16);
 #ifdef __cplusplus
@@ -63,7 +63,7 @@ extern "C" void *func_ov017_021ff8a8(void *context, s32 eventCode, u32 baseArg1,
     if (effect != 0) {
         effect = func_ov017_021fd94c(
             effect, (u16)eventCode, baseArg1, baseArg3, value9c,
-            (u16)func_020918f4((u8 *)context + 0x3fc, 0x3c), resourceId);
+            (u16)TitleRandom_NextBounded((u8 *)context + 0x3fc, 0x3c), resourceId);
     }
     PresentationList_Append(data_ov017_02201754, effect);
     return effect;

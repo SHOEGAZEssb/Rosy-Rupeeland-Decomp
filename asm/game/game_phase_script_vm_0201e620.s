@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern func_0201e290
 .extern func_0201e380
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
@@ -28,7 +28,7 @@ func_0201e620: ; 0x0201e620
 L_0201e658:
     mov r0, r5
     mov r1, #0x0
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     mov r0, #0x1
     b L_0201e6dc
 L_0201e66c:

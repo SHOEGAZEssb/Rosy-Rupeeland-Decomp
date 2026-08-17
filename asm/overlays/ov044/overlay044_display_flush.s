@@ -1,7 +1,7 @@
 .text
 .extern func_020958d8
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern func_02094574
+.extern InventoryScroll_UpdatePresentation
 .extern func_ov001_021fbaa8
 
     .global func_ov044_0220c880
@@ -18,7 +18,7 @@ func_ov044_0220c880:
     cmp r4, #0x0
     beq .L_0220c8bc
     ldr r0, [r4, #0x44]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     ldr r0, [r4, #0x4]
     bl GraphicsSpriteGroup_AdvanceAnimations
 .L_0220c8bc:

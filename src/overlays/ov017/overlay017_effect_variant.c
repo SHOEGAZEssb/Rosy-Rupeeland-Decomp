@@ -18,7 +18,7 @@ extern void PresentationScalar_TransitionBy(void *, s32, s32);
 extern void Presentation_Init(void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern s32 Presentation_AdvanceTransitions(void *);
-extern void func_ov017_021fd838(void *);
+extern void Overlay017Transform_SubmitGeometry(void *);
 extern s32 func_ov017_021fd918(void *, s32);
 #ifdef __cplusplus
 }
@@ -107,7 +107,7 @@ extern "C" void func_ov017_021fe33c(void *state, void *transform)
     FIELD(s32, transform, 8) = FIELD(s32, state, 0x10);
     FIELD(s32, transform, 0xc) = FIELD(s32, state, 0x20);
     FIELD(s32, transform, 0x10) = FIELD(s32, state, 0x30);
-    func_ov017_021fd838(transform);
+    Overlay017Transform_SubmitGeometry(transform);
     func_ov017_021fd918(transform, resourceIds[FIELD(s32, state, 0x9c)]);
 }
 

@@ -13,10 +13,10 @@
 .extern OverlayManager_UnloadOverlay
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern Heap_Alloc
-.extern func_ov052_0220d618
-.extern func_ov052_0220e14c
-.extern func_ov052_0220da54
-.extern func_ov052_0220e178
+.extern Overlay052Scene_Init
+.extern Overlay052Scene_SetMessageById
+.extern Overlay052Scene_UpdateMessageMenu
+.extern Overlay052Scene_BeginConfirmationFade
 .extern Sound_Play
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseState_UpdateRenderHelpers

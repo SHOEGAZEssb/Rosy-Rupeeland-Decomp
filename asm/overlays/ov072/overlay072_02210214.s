@@ -6,8 +6,8 @@
 .extern data_021052fc
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
-.extern func_0205974c
-.extern func_020597fc
+.extern Sound_LoadGroup
+.extern Sound_ReleaseGroup
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov072_02210818
@@ -277,7 +277,7 @@ func_ov072_02210214:
     bic r2, r2, #0x1
     strh r2, [r3, #0x24]
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     b .L_02210708
 .L_022105ec:
     ldr r0, [r10, #0x70]
@@ -319,7 +319,7 @@ func_ov072_02210214:
     ldr r0, .L_022107cc
     mov r1, #0x5e
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0221068c:

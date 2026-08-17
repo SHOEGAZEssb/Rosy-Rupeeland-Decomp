@@ -24,7 +24,7 @@
 .extern func_0204d284
 .extern func_0204d488
 .extern PresentationBackedActor_Init
-.extern func_0204e740
+.extern EffectHandleActor_Init
 .extern func_0204e944
 .extern GridEffectActor_Init
 .extern TrackedResourceActorType21_Init
@@ -1632,7 +1632,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_020307bc
     mov r1, r5
-    bl func_0204e740
+    bl EffectHandleActor_Init
     mov r4, r0
     b .L_020307bc
 .L_020302dc:

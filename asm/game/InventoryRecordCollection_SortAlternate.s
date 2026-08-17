@@ -1,11 +1,11 @@
 .text
 ; Matching fallback for the portable implementation in src/game/inventory_record_sort.c.
-.extern func_02062b28
-.extern func_02062f18
+.extern ActorDescriptor_IsInvalid
+.extern InventoryRecord_GetSortKey
 .extern func_020654ac
 
-.global func_0206550c
-func_0206550c:
+.global InventoryRecordCollection_SortAlternate
+InventoryRecordCollection_SortAlternate:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     ldr r0, [r10, #0xc]
@@ -22,7 +22,7 @@ func_0206550c:
 .L_02065540:
     ldr r0, [r10, #0x4]
     mla r0, r7, r5, r0
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     beq .L_020655a4
     mov r8, r6
@@ -31,7 +31,7 @@ func_0206550c:
 .L_02065560:
     ldr r0, [r10, #0x4]
     mla r0, r9, r4, r0
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     bne .L_0206558c
     mov r0, r10
@@ -72,12 +72,12 @@ func_0206550c:
     ldr r9, [r10, #0x4]
     mov r1, r11
     mla r0, r8, r4, r9
-    bl func_02062f18
+    bl InventoryRecord_GetSortKey
     sub r1, r8, #0x1
     mov r6, r0
     mla r0, r1, r5, r9
     mov r1, #0x0
-    bl func_02062f18
+    bl InventoryRecord_GetSortKey
     cmp r6, r0
     bhs .L_0206561c
     mov r0, r10
@@ -95,4 +95,4 @@ func_0206550c:
     cmp r7, r0
     blt .L_020655d8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.size func_0206550c, . - func_0206550c
+.size InventoryRecordCollection_SortAlternate, . - InventoryRecordCollection_SortAlternate

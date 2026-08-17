@@ -15,11 +15,11 @@ extern "C" {
 extern void func_02070e0c(s32, s32, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092790(void *, s32);
-extern void func_02092e9c(void *, const void *, s32);
-extern s32 func_02093360(void *, const void *);
-extern void func_020939d8(void *);
-extern void func_02094574(void *);
+extern void TitleScreenResourceCollection_Get(void *, s32);
+extern void TitleDialog_SetText(void *, const void *, s32);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
+extern void TitleDialog_ClearTextRect(void *);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_020958d8(void *);
 extern void func_02095928(void *);
@@ -37,7 +37,7 @@ extern void func_ov045_0220c174(void *);
 extern void func_ov045_0220c18c(void *);
 extern void *func_ov045_0220c48c(s32, u16, s32);
 extern void func_ov045_0220c274(void *, s32);
-extern void func_ov045_0220d2f8(s32, u16);
+extern void Overlay045_DrawSelectorPreview(s32, u16);
 #ifdef __cplusplus
 }
 #endif
@@ -82,9 +82,9 @@ extern "C" void func_ov023_021fe77c(void *scene)
     if (FIELD(void *, scene, 0x4bc))
         func_ov045_0220c18c(FIELD(void *, scene, 0x4bc));
     if (FIELD(void *, scene, 0x390))
-        func_02094574(FIELD(void *, FIELD(void *, scene, 0x390), 0x38));
+        InventoryScroll_UpdatePresentation(FIELD(void *, FIELD(void *, scene, 0x390), 0x38));
     if (FIELD(void *, scene, 0x478))
-        func_02094574(FIELD(void *, FIELD(void *, scene, 0x478), 0x48));
+        InventoryScroll_UpdatePresentation(FIELD(void *, FIELD(void *, scene, 0x478), 0x48));
     for (s32 i = 0; i < 2; ++i) {
         void *effect = FIELD(void *, scene, 0x380 + i * 4);
         typedef void (*Update)(void *);
@@ -101,15 +101,15 @@ extern "C" void func_ov023_021fe77c(void *scene)
 extern "C" void func_ov023_021fe804(void *scene, const void *text, void *record)
 {
     void *dialog = FIELD(void *, scene, 0x4b8);
-    func_02092e9c(dialog, text, 4);
-    s32 result = func_02093360(dialog, FIELD(void *, scene, 0x2c));
+    TitleDialog_SetText(dialog, text, 4);
+    s32 result = TitleDialog_UpdateTextPage(dialog, FIELD(void *, scene, 0x2c));
     if (result & 0x200)
         func_ov045_0220c128(FIELD(void *, scene, 0x4bc),
                             FIELD(void *, dialog, 0xe8));
     else func_ov045_0220c028(FIELD(void *, scene, 0x4bc));
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
     void *descriptor = FIELD(void *, record, 4);
-    func_ov045_0220d2f8(FIELD(u32, descriptor, 0xc) & 0xff,
+    Overlay045_DrawSelectorPreview(FIELD(u32, descriptor, 0xc) & 0xff,
                          FIELD(u16, descriptor, 4));
 }
 
@@ -134,10 +134,10 @@ extern "C" s32 func_ov023_021fe88c(void *scene)
     } else if (flags & 2) {
         func_ov045_0220c174(FIELD(void *, scene, 0x4bc));
     }
-    s32 result = func_02093360(dialog, layout);
+    s32 result = TitleDialog_UpdateTextPage(dialog, layout);
     if (result & 1) {
         func_ov045_0220c068(FIELD(void *, scene, 0x4bc));
-        func_020939d8(dialog);
+        TitleDialog_ClearTextRect(dialog);
         return 1;
     }
     if (FIELD(u32, dialog, 0x38) & 0x200)
@@ -158,13 +158,13 @@ extern "C" void func_ov023_021fe994(void *scene, s32 mode)
     if (mode == 0) {
         func_02095988((u8 *)scene + 0x228, 12);
         func_02095988((u8 *)scene + 0x2d4, 16);
-        func_02092790((u8 *)scene + 0x78, 0);
+        TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 0);
         func_02070e0c(1, 0, 0);
         func_ov023_021fe640(scene, 0);
     } else if (mode == 1) {
         func_02095988((u8 *)scene + 0x228, 14);
         func_02095988((u8 *)scene + 0x2d4, 13);
-        func_02092790((u8 *)scene + 0x78, 1);
+        TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 1);
         func_02070e0c(1, 0, 0);
         func_ov023_021fe640(scene, 1);
     }

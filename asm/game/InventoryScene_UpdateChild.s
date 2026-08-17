@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/game/inventory_scene_controller.c.
 
-.global func_0206896c
-func_0206896c:
+.global InventoryScene_UpdateChild
+InventoryScene_UpdateChild:
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x20]
     mov r1, r1, lsl #0x15
@@ -16,4 +16,4 @@ func_0206896c:
 .L_02068994:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.size func_0206896c, . - func_0206896c
+.size InventoryScene_UpdateChild, . - InventoryScene_UpdateChild

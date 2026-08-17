@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov032/overlay032_terminal_and_child_init.c for documented portable C. */
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern func_ov032_0220147c
 
     .global func_ov032_02200f88
@@ -47,7 +47,7 @@ L_02200ff8:
     str r1, [r4, #0x64]
     bl func_ov032_0220147c
     add r0, r4, #0xc
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     ldmia sp!, {r4, pc}
 L_0220101c: .word 0x11a
 .size func_ov032_02200f88, .-func_ov032_02200f88

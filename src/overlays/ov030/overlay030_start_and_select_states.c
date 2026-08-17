@@ -18,7 +18,7 @@ extern "C" {
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
-extern void func_ov045_0220d2f8(s32, s32);
+extern void Overlay045_DrawSelectorPreview(s32, s32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_ov045_0220c9e8(s32, s32);
 extern void func_ov030_021feb0c(void *);
@@ -26,7 +26,7 @@ extern void func_ov030_021fda14(void *, s32, s32);
 extern void func_ov030_021fe768(void *);
 extern s32 func_ov030_021fea00(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32, void *);
 #ifdef __cplusplus
@@ -51,7 +51,7 @@ extern "C" s32 func_ov030_021feb64(void *scene)
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
         GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
-        func_ov045_0220d2f8(8, 0x21);
+        Overlay045_DrawSelectorPreview(8, 0x21);
         FIELD(u32, scene, 0x20) |= 1;
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
@@ -102,7 +102,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
             break;
         if (func_02095860((u8 *)scene + 0x210,
                           (u8 *)scene + 0x30, 0, 4) != 0) {
-            func_020939d8(FIELD(void *, scene, 0x2bc));
+            TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2bc));
             func_02092260(scene, 3);
             func_ov030_021fda14(scene, data_ov030_021ff7a0[0],
                                 data_ov030_021ff7a0[1]);

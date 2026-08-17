@@ -1,7 +1,7 @@
     .text
     .extern data_020f4e18
     .extern data_ov016_0220155c
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern SpritePresentation_InitVariant
@@ -20,7 +20,7 @@ func_ov016_021fe004:
     ldr r1, L_021fe084
     add r0, r6, #0xa0
     str r1, [r6, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     str r5, [r6, #0xac]
     ldr r1, [r5, #0x8]
     add r0, r6, #0xa0

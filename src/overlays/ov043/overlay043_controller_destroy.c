@@ -14,7 +14,7 @@ extern "C" void GraphicsSpriteGroup_Destroy(void *object);
 extern "C" void GraphicsSpriteRenderer_QueuePaletteUploads(void *font);
 extern "C" void OverlaySlot_Destroy(void *object);
 extern "C" void func_ov043_0220b740(void *component);
-extern "C" void func_02071eb8(void *object);
+extern "C" void AnimationResourceState_Destroy(void *object);
 extern "C" void func_020927b8(void *object);
 extern "C" void Heap_Free(void *allocation);
 
@@ -38,7 +38,7 @@ static void destroy_members(void *object)
     func_ov043_0220b740((u8 *)object + 0x1e8);
     func_ov043_0220b740((u8 *)object + 0x13c);
     func_ov043_0220b740((u8 *)object + 0x90);
-    func_02071eb8((u8 *)object + 0x80);
+    AnimationResourceState_Destroy((u8 *)object + 0x80);
     func_020927b8((u8 *)object + 0x5c);
 }
 

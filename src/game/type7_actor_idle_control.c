@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void Type7Actor_ClearTarget(void *actor);
 extern s32 func_0206e3d0(void *object, void *resource);
-extern void func_0206c978(void *resource);
+extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *gameWork, u32 flag);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 duration);
 extern s32 func_0206cc68(void *object, void *actor, s32 mode);
@@ -70,7 +70,7 @@ void Type7Actor_HandleResourceInteraction(void *self, void *object)
     if (resource != 0) {
         if (func_0206e3d0(object, resource) == 0)
             return;
-        func_0206c978(resource);
+        AuxiliaryInteraction_Destroy(resource);
         Heap_Free(resource);
         GameWork_ClearFlag(gGameWork, 0x3fd);
         *(void **)(actor + 0x234) = 0;

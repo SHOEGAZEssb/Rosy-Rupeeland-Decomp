@@ -6,7 +6,7 @@
     .extern Graphics3DLightSet_Init
     .extern Heap_Alloc
     .extern func_ov034_021fd544
-    .extern func_02071adc
+    .extern GraphicsArchive_AcquireOwlvResource
     .extern func_ov034_021fce04
     .extern Presentation_SetPosition
     .extern func_02094bf0
@@ -14,8 +14,8 @@
     .extern func_ov034_021fda34
     .extern func_ov034_021fda3c
     .extern func_ov034_021fda4c
-    .extern func_02059278
-    .extern func_0205974c
+    .extern Sound_PlayDirectSequence
+    .extern Sound_LoadGroup
     .extern func_ov034_021fdac0
     .extern data_ov034_021ff1b0
     .extern gHeapContext
@@ -51,7 +51,7 @@ L_021fdb2c:
     str r0, [r10, #0x0]
     ldr r0, [r1, #0x0]
     ldr r1, L_021fdd7c
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     mov r2, #0x0
     str r0, [r10, #0x4]
     mov r1, r2
@@ -181,11 +181,11 @@ L_021fdc94:
     mov r1, #0xba
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldr r0, L_021fdd98
     ldr r1, L_021fdd9c
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     mvn r0, #0x0
     str r0, [r10, #0x1b4]
     mov r0, r10

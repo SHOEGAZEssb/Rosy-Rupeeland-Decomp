@@ -11,10 +11,10 @@
 .extern VecFx32Object_Assign
 .extern func_02008378
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 .extern func_0201ebac
-.extern func_0206bb18
-.extern func_0206c0b0
+.extern AuxiliaryCore_UpdateMotion
+.extern AuxiliaryCore_ApplyScale
 .extern func_020bf1f8
 .extern gHeapContext
 .extern genrand_int32
@@ -141,7 +141,7 @@ func_020256b4: ; 0x020256b4
     strneh r0, [r1, #0x24]
     ldr r0, [r5, #0x28]
     mov r1, #0x1
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     add r0, sp, #0x28
     bl VecFx32Object_Destroy
     add r0, sp, #0x58
@@ -214,7 +214,7 @@ func_020256b4: ; 0x020256b4
     ldrsh r1, [r5, #0x30]
     ldr r0, [r5, #0x8]
     mvn r2, #0x0
-    bl func_0206c0b0
+    bl AuxiliaryCore_ApplyScale
     ldr r4, [r5, #0x8]
     add r0, sp, #0x18
     ldr r2, [r4, #0x2d8]
@@ -248,7 +248,7 @@ func_020256b4: ; 0x020256b4
 .L_02025a0c:
     ldr r0, [r5, #0x8]
     add r1, sp, #0x18
-    bl func_0206bb18
+    bl AuxiliaryCore_UpdateMotion
     add r0, sp, #0x18
     bl VecFx32Object_Destroy
     mov r0, #0x0

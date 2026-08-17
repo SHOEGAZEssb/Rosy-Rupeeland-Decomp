@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 extern u32 func_0207043c(void *resource);
-extern void *func_02070874(void *resource);
+extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern u32 func_02070888(void *resource);
 extern void func_020b239c(void);
 extern void func_020b2238(const void *source, u32 destination, u32 size);
@@ -152,7 +152,7 @@ GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(
 
         region = GraphicsSpriteSmallRegionAllocator_Allocate(&owner->paletteRegions, size, resource, 1);
         func_020b2180();
-        func_020b210c(func_02070874(resource), region->offset, region->size);
+        func_020b210c(GraphicsBgResourceData_GetDecoded(resource), region->offset, region->size);
         func_020b20b4();
     } else {
         region->references++;
@@ -195,7 +195,7 @@ graphics_3d_palette_region_found:
     mov r0, r4
     ldr r7, [r5, #0x10]
     ldr r6, [r5, #0xc]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     bl func_020b2180
     mov r0, r4

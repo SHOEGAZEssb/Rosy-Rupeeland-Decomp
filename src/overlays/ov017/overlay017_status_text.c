@@ -11,7 +11,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char *func_020628c8(s32);
+extern const char *ActorDescriptor_GetPrimaryLabel(s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteText_FormatDecimal(char *, s32, s32, s32);
@@ -52,7 +52,7 @@ extern "C" void func_ov017_021ffdb4(void *state, s32 textValue,
     GraphicsSpriteRenderer_DrawText(gDebugFont, label, 0x90, 0x51, 0xe, 4, 0);
 
     GraphicsSpriteText_FormatDecimal(numberText, numericValue, -1000, 0);
-    valueText = func_020628c8(textValue);
+    valueText = ActorDescriptor_GetPrimaryLabel(textValue);
     width = GraphicsSpriteRenderer_MeasureText(gDebugFont, valueText, 6, -1) + 2;
     separator = func_020791e0(data_021f3ecc, 0x2d6);
     width += GraphicsSpriteRenderer_MeasureText(gDebugFont, separator, 6, 0) + 2;
@@ -60,7 +60,7 @@ extern "C" void func_ov017_021ffdb4(void *state, s32 textValue,
     if (width > 0x70) {
         x += 0x38 - width / 2;
     }
-    width = GraphicsSpriteRenderer_DrawText(gDebugFont, func_020628c8(textValue), x, 0x68,
+    width = GraphicsSpriteRenderer_DrawText(gDebugFont, ActorDescriptor_GetPrimaryLabel(textValue), x, 0x68,
                           0xe, 6, -1);
     x += width + 2;
     width = GraphicsSpriteRenderer_DrawText(gDebugFont,

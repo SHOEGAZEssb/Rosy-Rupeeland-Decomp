@@ -30,7 +30,7 @@ extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
 extern s32 GameWork_TestFlag(void *work, s32 flag);
 extern void *PackedTimerArray_GetGlobal(void);
 extern void PackedTimerArray_Update(void *array);
-extern void func_02027f94(void);
+extern void GamePhaseProgress_GetOrCreateGlobal(void);
 extern void func_02027654(void);
 extern s32 FrameCounter_Tick31(void *object);
 extern void func_020783cc(void *object);
@@ -41,7 +41,7 @@ extern void GamePhaseCurrencyHud_Update(void *context);
 extern s32 GamePhaseState_TryStartBoundaryTransition(void *object);
 extern void func_0200866c(GamePhaseRuntime *self);
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 index);
-extern void func_0201dcec(void *object, s32 enabled);
+extern void RuntimePresentationManager_Update(void *object, s32 enabled);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 extern void func_020338e4(void *object);
 extern void Type7Actor_ClearTarget(void *object);
@@ -112,7 +112,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         (s32)(*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 7) < 0) {
         PackedTimerArray_Update(PackedTimerArray_GetGlobal());
         if (!GameWork_TestFlag(gGameWork, 0x40f)) {
-            func_02027f94();
+            GamePhaseProgress_GetOrCreateGlobal();
             func_02027654();
         }
         if (FrameCounter_Tick31(b + 0x30f0))
@@ -152,7 +152,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         func_0200866c(self);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 0);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
-        func_0201dcec(b + 0x2f7c, 1);
+        RuntimePresentationManager_Update(b + 0x2f7c, 1);
         GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
         if (GamePhaseRuntime_DispatchActorQueryRequest(self))
             return 0;

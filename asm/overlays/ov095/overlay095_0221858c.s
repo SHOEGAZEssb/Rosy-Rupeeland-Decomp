@@ -20,7 +20,7 @@
 .extern ActorExtendedType2_InitializeTransformAndMotion
 .extern func_0204cfa4
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_020592d8
+.extern Sound_FadeDirectSequence
 .extern func_020593dc
 .extern func_0205940c
 .extern func_0205946c
@@ -686,7 +686,7 @@ func_ov095_0221858c:
     mov r1, #0xd0
     mov r2, #0x28
     mov r3, #0x50
-    bl func_020592d8
+    bl Sound_FadeDirectSequence
     b .L_022196bc
 .L_02218f14:
     add r0, r4, #0x200
@@ -1048,7 +1048,7 @@ func_ov095_0221858c:
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
     mov r3, #0x5a
-    bl func_020592d8
+    bl Sound_FadeDirectSequence
     b .L_022196bc
 .L_02219494: .word 0xfffffbf5
 .L_02219498: .word data_021052fc

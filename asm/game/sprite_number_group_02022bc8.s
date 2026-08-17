@@ -6,11 +6,11 @@
 .extern data_020d660c
 .extern data_020f4e18
 .extern func_02022a88
-.extern func_02022ac8
+.extern SpriteNodeList_Clear
 .extern func_02022b08
-.extern func_02022bc8
-.extern func_02071ea4
-.extern func_02071eb8
+.extern SpriteNodeList_RemoveNode
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -18,9 +18,9 @@
 .extern func_020befec
 .extern gHeapContext
 
-.global func_02022bc8
-    .type func_02022bc8, @function
-func_02022bc8: ; 0x02022bc8
+.global SpriteNodeList_RemoveNode
+    .type SpriteNodeList_RemoveNode, @function
+SpriteNodeList_RemoveNode: ; 0x02022bc8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -46,7 +46,7 @@ func_02022bc8: ; 0x02022bc8
     str r0, [r4, #0xc]
     ldmneia sp!, {r4, pc}
     mov r0, r4
-    bl func_02022ac8
+    bl SpriteNodeList_Clear
     ldmia sp!, {r4, pc}
-    .size func_02022bc8, .-func_02022bc8
+    .size SpriteNodeList_RemoveNode, .-SpriteNodeList_RemoveNode
 

@@ -26,7 +26,7 @@ extern void func_ov040_02203678(void *owner, const void *position);
 extern void func_0209b5e8(void *renderer, const void *first,
                           const void *second, s32 interpolation,
                           void *destination);
-extern s32 func_020be328(s32 angle);
+extern s32 SignedAbsoluteValueVariant(s32 angle);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern s32 func_020594a4(void *sound, s32 parameter, s32 id);
 extern void Sound_Play(void *sound, s32 parameter, s32 id);
@@ -80,7 +80,7 @@ extern "C" void func_ov040_021fe1b0(void *scene, s32 unused1, s32 unused2,
     s32 interpolation = 0;
     if (FIELD(s32, scene, 0x84c) == 0) interpolation = FIELD(s32, scene, 0x840) >> 3;
     else if (FIELD(s32, scene, 0x84c) == 1)
-        interpolation = func_020be328(data_020c9670[(FIELD(s32, scene, 0x840) >> 4) * 2]);
+        interpolation = SignedAbsoluteValueVariant(data_020c9670[(FIELD(s32, scene, 0x840) >> 4) * 2]);
     else if (FIELD(s32, scene, 0x84c) == 2)
         interpolation = 0x800 - ((data_020c9670[(FIELD(s32, scene, 0x840) >> 4) * 2 + 1] * 0x800) >> 12);
 

@@ -4,11 +4,11 @@
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_SynchronizeActorPlacement
-.extern func_0200875c
+.extern GamePhaseRuntime_BuildSecondaryTransform
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_Update
-.extern func_0201dcec
+.extern RuntimePresentationManager_Update
 .extern ActorCollection_DispatchEventToActors
 .extern ActorCollection_GetSpriteOwner
 .extern ActorFeedback_UpdatePresentations
@@ -63,7 +63,7 @@ Overlay064Scene_Update:
     ldr r1, .L_02210c54
     add r0, sp, #0x0
     ldr r1, [r1, #0x0]
-    bl func_0200875c
+    bl GamePhaseRuntime_BuildSecondaryTransform
     ldr r0, .L_02210c54
     mov r1, #0x2
     ldr r0, [r0, #0x0]
@@ -83,7 +83,7 @@ Overlay064Scene_Update:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201dcec
+    bl RuntimePresentationManager_Update
     ldr r0, .L_02210c58
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_Update

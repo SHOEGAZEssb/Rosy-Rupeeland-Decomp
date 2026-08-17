@@ -3,7 +3,7 @@
 .extern data_020f4e18
 .extern data_0210548c
 .extern DebugHudState_ResetSelectedFont
-.extern func_02071d4c
+.extern GraphicsArchive_ReleaseResourceE4
 
     .global DebugHudState_Close
 DebugHudState_Close: ; 0x0200f52c
@@ -30,7 +30,7 @@ L_0200f568:
     beq L_0200f588
     ldr r0, L_0200f5b0
     ldr r0, [r0, #0x0]
-    bl func_02071d4c
+    bl GraphicsArchive_ReleaseResourceE4
     mov r0, #0x0
     str r0, [r4, #0x4]
 L_0200f588:

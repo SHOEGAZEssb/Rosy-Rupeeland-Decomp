@@ -17,8 +17,8 @@ extern "C" {
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
 extern void *Actor_GetCollection(void *actor);
 extern void GridEffectActorRegistry_Reset(void);
-extern void func_02071d4c(void *archive, void *resource);
-extern void *func_02071980(void *archive, u32 resource_id);
+extern void GraphicsArchive_ReleaseResourceE4(void *archive, void *resource);
+extern void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resource_id);
 #ifdef __cplusplus
 }
 #endif
@@ -36,20 +36,20 @@ typedef void (*ActorStateCallback)(void *actor, s32 value);
  */
 void GridEffectActorRegistry_LoadSharedResource(void)
 {
-    FIELD(void *, gGridEffectActorRuntimeState, 8) = func_02071980(data_020f4e18, 0x7005);
+    FIELD(void *, gGridEffectActorRuntimeState, 8) = GraphicsArchive_AcquireVfdResource(data_020f4e18, 0x7005);
     GridEffectActorRegistry_Reset();
 }
 
 /*
  * Ignore all register inputs. If the shared resource at gGridEffectActorRuntimeState+8 exists,
- * release it through func_02071d4c using data_020f4e18 and clear the pointer.
+ * release it through GraphicsArchive_ReleaseResourceE4 using data_020f4e18 and clear the pointer.
  * Returns nothing; resource state changes and hardware is not touched directly.
  */
 void GridEffectActorRegistry_UnloadSharedResource(void)
 {
     void *resource = FIELD(void *, gGridEffectActorRuntimeState, 8);
     if (resource != 0) {
-        func_02071d4c(data_020f4e18, resource);
+        GraphicsArchive_ReleaseResourceE4(data_020f4e18, resource);
         FIELD(void *, gGridEffectActorRuntimeState, 8) = 0;
     }
 }

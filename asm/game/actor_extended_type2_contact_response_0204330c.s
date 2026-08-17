@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_contact_response.c.
 .text
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern func_020349b8
 .extern ActorExtendedType2_SpawnOptionalPresentation
 .extern func_0204cfa4
@@ -95,6 +95,6 @@ ActorExtendedType2_ApplyContactResponse: ; 0x02043340
     mov r0, r8
     mov r1, r7
     mov r2, r6
-    bl func_02032a94
+    bl ActorContactState_AddContact
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .size ActorExtendedType2_ApplyContactResponse, . - ActorExtendedType2_ApplyContactResponse

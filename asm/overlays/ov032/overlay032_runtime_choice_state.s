@@ -13,24 +13,24 @@
 .extern data_ov032_02202220
 .extern func_020594ec
 .extern func_0205958c
-.extern func_0206f914
-.extern func_0207042c
+.extern RetailPhaseDatabase_UnlockById
+.extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_02070b50
 .extern func_02070e0c
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_0207f248
 .extern func_0207f80c
-.extern func_02098020
-.extern func_020980f8
-.extern func_02098348
+.extern RetailSelectionHistory_InsertUniqueId
+.extern RetailSelectionManager_AdvanceHistory
+.extern RetailSelectionManager_HasInactiveSpecialRecord
 .extern func_020b44e8
 .extern func_ov032_021fe0e8
 .extern func_ov032_021fe10c
 .extern func_ov032_021fe134
 .extern func_ov032_021fe23c
 .extern func_ov032_021fe2bc
-.extern func_ov032_021ff288
+.extern Overlay032SpriteWrapper_HitTest
 .extern gGameWork
 .extern gRuntimeContext
 .extern gSoundContext
@@ -109,7 +109,7 @@ L_0220070c:
     mov r2, #0x0
     bl func_02070638
     ldr r0, [r4, #0xf18]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [r4, #0xf1c]
@@ -136,7 +136,7 @@ L_0220070c:
     b L_02200d64
 L_02200784:
     ldr r0, L_02200d7c
-    bl func_020980f8
+    bl RetailSelectionManager_AdvanceHistory
     ldr r0, [r4, #0xf28]
     cmp r0, #0x0
     beq L_02200830
@@ -158,26 +158,26 @@ L_02200784:
     bl GameWork_SetFlag
     ldr r0, L_02200d88
     mov r1, #0xa
-    bl func_0206f914
+    bl RetailPhaseDatabase_UnlockById
     ldr r0, L_02200d8c
     ldr r0, [r0, #0x70]
     ldr r0, [r0, #0x4]
     blx r0
     ldr r0, L_02200d7c
     mov r1, #0x68
-    bl func_02098020
+    bl RetailSelectionHistory_InsertUniqueId
     ldr r0, L_02200d7c
     mov r1, #0x36
-    bl func_02098020
+    bl RetailSelectionHistory_InsertUniqueId
     ldr r0, L_02200d7c
     mov r1, #0x35
-    bl func_02098020
+    bl RetailSelectionHistory_InsertUniqueId
     ldr r0, L_02200d7c
     mov r1, #0x34
-    bl func_02098020
+    bl RetailSelectionHistory_InsertUniqueId
     ldr r0, L_02200d7c
     mov r1, #0x2e
-    bl func_02098020
+    bl RetailSelectionHistory_InsertUniqueId
 L_02200830:
     ldr r2, [r4, #0x2d4]
     add r0, r4, #0x2d4
@@ -260,7 +260,7 @@ L_0220094c:
     mov r2, #0x0
     bl func_02070638
     ldr r0, [r4, #0xf18]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [r4, #0xf1c]
@@ -313,7 +313,7 @@ L_02200a08:
     mov r3, r2
     add r0, r0, #0x800
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_02200d64
     ldr r0, [r4, #0xf28]
@@ -357,7 +357,7 @@ L_02200ab4:
     mov r3, r2
     add r0, r4, #0x214
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_02200b34
     ldr r0, L_02200d90
@@ -387,7 +387,7 @@ L_02200b34:
     mov r3, r2
     add r0, r4, #0x244
     add r1, r1, #0x800
-    bl func_ov032_021ff288
+    bl Overlay032SpriteWrapper_HitTest
     cmp r0, #0x0
     beq L_02200b9c
     ldr r0, L_02200d90
@@ -444,7 +444,7 @@ L_02200bfc:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_02098348
+    bl RetailSelectionManager_HasInactiveSpecialRecord
     cmp r0, #0x0
     beq L_02200c40
     ldr r2, [r4, #0x1b4]

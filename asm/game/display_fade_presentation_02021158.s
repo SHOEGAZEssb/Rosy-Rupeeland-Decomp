@@ -9,7 +9,7 @@
 .extern data_020d63d8
 .extern data_020d6564
 .extern data_020f4e18
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern MainBg1_SetControl
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl
@@ -17,7 +17,7 @@
 .extern PairedReferenceState_SetReferencesAndReset
 .extern func_02070638
 .extern func_020706c4
-.extern func_02070874
+.extern GraphicsBgResourceData_GetDecoded
 .extern func_02070e0c
 .extern func_02070eac
 .extern func_02091b6c

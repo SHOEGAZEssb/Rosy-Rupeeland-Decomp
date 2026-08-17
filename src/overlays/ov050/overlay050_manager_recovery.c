@@ -17,11 +17,11 @@ extern "C" void *func_ov050_0220d600(void *effect, void *primaryGroup,
                                       void *secondaryGroup,
                                       const void *resources,
                                       const void *origin);
-extern "C" void *func_ov050_0220d6b0(void *effect);
-extern "C" s32 func_ov050_0220d6e8(void *effect, const void *transform);
-extern "C" void func_ov050_0220d7c4(void *effect, s32 scale);
-extern "C" void *func_ov050_0220d8b4(void *manager);
-extern "C" void func_ov050_0220d95c(void *manager, void *node);
+extern "C" void *Overlay050PairedEffect_Destroy(void *effect);
+extern "C" s32 Overlay050PairedEffect_Update(void *effect, const void *transform);
+extern "C" void Overlay050PairedEffect_ResetMotion(void *effect, s32 scale);
+extern "C" void *Overlay050Effect_Destroy(void *manager);
+extern "C" void Overlay050EffectManager_RemoveNode(void *manager, void *node);
 
 /*
  * Unlink and destroy every owned effect/list node, destroy the manager's
@@ -29,7 +29,7 @@ extern "C" void func_ov050_0220d95c(void *manager, void *node);
  * unchanged manager pointer. Heap and SDK resource state change; manager
  * storage remains caller-owned.
  */
-extern "C" void *func_ov050_0220d8f4(void *manager)
+extern "C" void *Overlay050EffectManager_Destroy(void *manager)
 {
     void *node = FIELD(void *, manager, 4);
 
@@ -37,16 +37,16 @@ extern "C" void *func_ov050_0220d8f4(void *manager)
         void *next = FIELD(void *, node, 0);
         void *effect = FIELD(void *, node, 8);
 
-        func_ov050_0220d95c(manager, node);
+        Overlay050EffectManager_RemoveNode(manager, node);
         if (effect != 0) {
-            func_ov050_0220d6b0(effect);
+            Overlay050PairedEffect_Destroy(effect);
             Heap_Free(effect);
         }
         node = next;
     }
     VecFx32Object_Destroy((u8 *)manager + 0x20);
     FIELD(void *, manager, 0) = data_ov050_0220e384;
-    func_ov050_0220d8b4(manager);
+    Overlay050Effect_Destroy(manager);
     return manager;
 }
 
@@ -56,7 +56,7 @@ extern "C" void *func_ov050_0220d8f4(void *manager)
  * manager base state is torn down when the list becomes empty. Heap and manager
  * state change; no value is returned and no direct MMIO occurs.
  */
-extern "C" void func_ov050_0220d95c(void *manager, void *node)
+extern "C" void Overlay050EffectManager_RemoveNode(void *manager, void *node)
 {
     void *next = FIELD(void *, node, 0);
     void *previous = FIELD(void *, node, 4);
@@ -71,7 +71,7 @@ extern "C" void func_ov050_0220d95c(void *manager, void *node)
         FIELD(void *, next, 4) = previous;
     Heap_Free(node);
     if (--FIELD(s32, manager, 0x0c) == 0)
-        func_ov050_0220d8b4(manager);
+        Overlay050Effect_Destroy(manager);
 }
 
 /*
@@ -80,7 +80,7 @@ extern "C" void func_ov050_0220d95c(void *manager, void *node)
  * against `transform` and unlink/free completed entries. Return zero. Heap,
  * RNG, manager-list, and SDK sprite/resource state can change.
  */
-extern "C" s32 func_ov050_0220d9c4(void *manager, const void *transform)
+extern "C" s32 Overlay050EffectManager_Update(void *manager, const void *transform)
 {
     void *node;
 
@@ -98,7 +98,7 @@ extern "C" s32 func_ov050_0220d9c4(void *manager, const void *transform)
                     FIELD(void *, manager, 0x18),
                     FIELD(void *, manager, 0x1c),
                     (u8 *)manager + 0x20);
-            func_ov050_0220d7c4(effect, FIELD(s32, manager, 0x30));
+            Overlay050PairedEffect_ResetMotion(effect, FIELD(s32, manager, 0x30));
             newNode = Heap_Alloc(0x0c, data_ov050_0220e320, 4,
                                  gHeapContext);
             if (newNode != 0) {
@@ -126,10 +126,10 @@ extern "C" s32 func_ov050_0220d9c4(void *manager, const void *transform)
         FIELD(void *, point, 0) = data_ov050_0220e394;
         FIELD(s32, point, 4) = FIELD(s32, transform, 4) >> 12;
         FIELD(s32, point, 8) = FIELD(s32, transform, 8) >> 12;
-        if (func_ov050_0220d6e8(effect, point) != 0) {
-            func_ov050_0220d95c(manager, node);
+        if (Overlay050PairedEffect_Update(effect, point) != 0) {
+            Overlay050EffectManager_RemoveNode(manager, node);
             if (effect != 0) {
-                func_ov050_0220d6b0(effect);
+                Overlay050PairedEffect_Destroy(effect);
                 Heap_Free(effect);
             }
         }

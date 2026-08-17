@@ -13,14 +13,14 @@ extern s32 func_020be8c0(...);
 extern s32 func_020beb6c(...);
 extern s32 func_020beae4(...);
 extern s32 func_ov032_02201390(void *);
-extern void func_02070934(void *);
+extern void GraphicsArchiveResource_ReleaseAlternateBuffer(void *);
 extern void func_020708c4(void *);
 extern void func_02070958(...);
 extern void func_020b44e8(void);
-extern s32 func_0207042c(void *);
+extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
-extern void func_ov032_0220150c(...);
-extern void func_ov032_02201670(void *);
+extern void Overlay032Controller_SetScaleTarget(...);
+extern void Overlay032Controller_UpdateScale(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -29,7 +29,7 @@ static void upload_selected_map(void *scene)
 {
     func_020b44e8();
     void *tiles = FIELD(void *, scene, 0xb44);
-    func_02070b50(FIELD(void *, scene, 0xb48), func_0207042c(tiles) ? 0x6000 : 0);
+    func_02070b50(FIELD(void *, scene, 0xb48), GraphicsResource_GetFormat(tiles) ? 0x6000 : 0);
 }
 
 static void set_map_scalar(void *scene, s32 fixedValue)
@@ -73,14 +73,14 @@ extern "C" void func_ov032_021fe9e8(void *scene, s32 selection)
 {
     FIELD(s32, scene, 0xc40) = selection;
     FIELD(s32, scene, 0xb7c) = 0x3c;
-    func_02070934(FIELD(void *, scene, 0xb48));
+    GraphicsArchiveResource_ReleaseAlternateBuffer(FIELD(void *, scene, 0xb48));
     func_020708c4(FIELD(void *, scene, 0xb48));
     FIELD(s32, scene, 0xc3c) = selection == -1 ? 0x100000 : 0;
     set_map_scalar(scene, FIELD(s32, scene, 0xc3c));
 
     for (s32 i = 1; i <= 3; ++i) {
         void *controller = FIELD(void *, scene, 0xc5c + i * 0x6c);
-        if (controller != 0) func_ov032_0220150c((u8 *)scene + 0xc5c + i * 0x6c,
+        if (controller != 0) Overlay032Controller_SetScaleTarget((u8 *)scene + 0xc5c + i * 0x6c,
                                                 selection == -1 ? 0 : 0x80, 0x3c);
     }
 }
@@ -95,7 +95,7 @@ extern "C" s32 func_ov032_021fead4(void *scene)
 {
     for (s32 i = 1; i <= 3; ++i) {
         void *controller = FIELD(void *, scene, 0xc5c + i * 0x6c);
-        if (controller != 0) func_ov032_02201670((u8 *)scene + 0xc5c + i * 0x6c);
+        if (controller != 0) Overlay032Controller_UpdateScale((u8 *)scene + 0xc5c + i * 0x6c);
     }
     s32 frames = FIELD(s32, scene, 0xb7c);
     if (frames == 0) return 1;

@@ -11,7 +11,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern func_020adae4
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_020befec
 .extern func_020bf1f8
 .extern func_ov073_0220fe08
@@ -142,7 +142,7 @@ func_ov073_02210338:
     sub r0, r3, r2
     str r0, [r4, #0x34]
     ldr r0, [r4, #0x24]
-    bl func_020be334
+    bl SignedAbsoluteValue
     mov r1, r7, asr #0x5
     add r1, r7, r1, lsr #0x1a
     sub r2, r8, r1, asr #0x6

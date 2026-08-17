@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_controller.c. */
 .extern func_0209189c
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern func_ov025_021fe4cc
 
 
@@ -14,7 +14,7 @@ func_ov025_021fe3f8:
 L_021fe404:
     mov r1, r5
     add r0, r6, #0xf8
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, [r6, #0x9c]
     mov r4, r0
     cmp r4, r1

@@ -34,10 +34,10 @@ extern const IndexedResourceRecord data_020c370c[];
 extern const u8 data_020c3734[];
 extern void *data_020f4e18;
 extern void *data_020f4e14;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -61,9 +61,9 @@ IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Init(
 {
     const IndexedResourceRecord *record = &data_020c370c[index];
     u8 *sprite;
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)gIndexedSpriteOverlayPresentationVtable;
-    func_02071ea4(self->resource08);
+    AnimationResourceState_InitEmbedded(self->resource08);
     func_02071ee0(self->resource08, data_020f4e18,
                   record->resource00, record->palette02,
                   record->animation04);
@@ -89,7 +89,7 @@ IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Destroy(
         ((ControllerDestructor)(*(void ***)self->controller18)[1])(
             self->controller18);
     GraphicsSpriteGroup_Destroy(self->spriteOwner14);
-    func_02071eb8(self->resource08);
+    AnimationResourceState_Destroy(self->resource08);
     func_0201e28c(self);
     return self;
 }

@@ -4,7 +4,7 @@
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_DrawText
-    .extern func_02079f3c
+    .extern RetailTextTable_FindRecordById
 
 .global func_ov020_021fd1cc
 func_ov020_021fd1cc:
@@ -38,7 +38,7 @@ L_021fd208:
     bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r9, #0xc]
     ldr r0, L_021fd27c
-    bl func_02079f3c
+    bl RetailTextTable_FindRecordById
     mul r3, r8, r4
     str r7, [sp, #0x0]
     str r6, [sp, #0x4]

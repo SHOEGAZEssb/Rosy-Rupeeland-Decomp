@@ -12,11 +12,11 @@ extern HeapContext gHeapContext;
 extern "C" {
 #endif
 extern void func_02070e0c(void *, s32, s32);
-extern void *func_02092790(void *, s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
 extern void func_02095bec(void *);
-extern void func_02095c30(void *, s32);
-extern void func_02095f48(void *, void *);
+extern void ModalState_InitResources(void *, s32);
+extern void ModalState_CopyAttachmentText(void *, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -32,7 +32,7 @@ extern "C" void func_ov017_021ffcc8(void *state, s32 setting, s32 alternate,
                                      void *attachment)
 {
     void *object;
-    void *handle = func_02092790((u8 *)state + 0x1fc, alternate != 0);
+    void *handle = TitleScreenResourceCollection_Get((u8 *)state + 0x1fc, alternate != 0);
 
     func_02070e0c(handle, 2, 0);
     object = Heap_Alloc(0x2d0, data_ov017_022016bc, 4, &gHeapContext);
@@ -41,9 +41,9 @@ extern "C" void func_ov017_021ffcc8(void *state, s32 setting, s32 alternate,
     }
     FIELD(void *, state, 0x400) = object;
     if (attachment != 0) {
-        func_02095f48(object, attachment);
+        ModalState_CopyAttachmentText(object, attachment);
     }
-    func_02095c30(object, setting);
+    ModalState_InitResources(object, setting);
     FIELD(u32, state, 0x48) |= 4;
 }
 

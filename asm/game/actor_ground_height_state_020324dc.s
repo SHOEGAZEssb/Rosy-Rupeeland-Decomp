@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_ground_height_state.c.
 .text
 .extern func_020adae4
-.extern func_020be334
+.extern SignedAbsoluteValue
 
     .global Actor_ConvergeToTargetHeight
     .type Actor_ConvergeToTargetHeight, @function
@@ -16,7 +16,7 @@ Actor_ConvergeToTargetHeight: ; 0x020324dc
     bl func_020adae4
     str r0, [r4, #0x24]
     sub r0, r0, r5
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x4000
     ldr r0, [r4, #0xd0]
     orrlt r0, r0, #0x20

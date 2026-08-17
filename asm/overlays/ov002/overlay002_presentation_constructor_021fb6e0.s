@@ -1,5 +1,5 @@
     .text
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02091b6c
     .extern data_020f4e18
     .extern func_02071ee0
@@ -10,7 +10,7 @@
     .extern data_ov002_021fbe80
     .extern data_ov002_021fbea0
     .extern gSoundContext
-    .extern func_0205974c
+    .extern Sound_LoadGroup
     .global func_ov002_021fb6e0
 func_ov002_021fb6e0: ; 0x021fb6e0
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -19,7 +19,7 @@ func_ov002_021fb6e0: ; 0x021fb6e0
     add r0, r10, #0x4
     mov r5, r1
     mov r4, r2
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x98
     bl func_02091b6c
     mov r3, #0x21c0
@@ -192,7 +192,7 @@ L_021fb944:
     ldr r0, L_021fb9c0
     mov r1, #0x79
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     mov r0, r10
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}

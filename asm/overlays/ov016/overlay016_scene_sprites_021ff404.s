@@ -6,8 +6,8 @@
     .extern func_020957f0
     .extern func_02095820
     .extern func_02095940
-.global func_ov016_021ff404
-func_ov016_021ff404:
+.global Overlay016_CreateSceneSprite
+Overlay016_CreateSceneSprite:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -68,5 +68,5 @@ L_021ff4a8:
     bl func_02095820
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
-    .size func_ov016_021ff404, . - func_ov016_021ff404
+    .size Overlay016_CreateSceneSprite, . - Overlay016_CreateSceneSprite
 

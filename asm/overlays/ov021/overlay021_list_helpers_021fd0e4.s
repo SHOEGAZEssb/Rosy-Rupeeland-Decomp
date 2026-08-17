@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
 
-.global func_ov021_021fd0e4
-func_ov021_021fd0e4:
+.global Overlay021Row_DestroyNoOp
+Overlay021Row_DestroyNoOp:
     bx lr
-    .size func_ov021_021fd0e4, . - func_ov021_021fd0e4
+    .size Overlay021Row_DestroyNoOp, . - Overlay021Row_DestroyNoOp
 

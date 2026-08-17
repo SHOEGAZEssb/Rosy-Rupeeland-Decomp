@@ -5,7 +5,7 @@
 .extern func_020593ac
 .extern func_020adae4
 .extern func_020adc40
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .extern gSoundContext
 
     .global func_02034a60
@@ -49,7 +49,7 @@ func_02034a60: ; 0x02034a60
     mov r0, r0, lsl #0xc
     bl func_020adc40
     mov r0, r0, asr #0xc
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r1, #0x3
     bl func_020adae4
     add r1, r4, r4, lsr #0x1f

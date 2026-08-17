@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
-.extern func_02093360
+.extern TitleDialog_UpdateTextPage
 
 
     .global func_ov025_02200940
@@ -37,7 +37,7 @@ L_02200954:
 L_022009ac:
     ldr r0, [r0, #0x50c]
     add r1, sp, #0x14
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x1f
     str r0, [sp, #0x0]
     str r0, [sp, #0x10]

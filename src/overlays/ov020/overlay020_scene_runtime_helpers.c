@@ -20,7 +20,7 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void func_02070f80(void *, s32);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02072048(void *, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -62,8 +62,8 @@ static void destroySceneContents(void *state)
     }
     func_020927b8((u8 *)state + 0x1b8);
     func_ov020_021fd818((u8 *)state + 0x70);
-    func_02071eb8((u8 *)state + 0x60);
-    func_02071eb8((u8 *)state + 0x54);
+    AnimationResourceState_Destroy((u8 *)state + 0x60);
+    AnimationResourceState_Destroy((u8 *)state + 0x54);
 }
 
 /*

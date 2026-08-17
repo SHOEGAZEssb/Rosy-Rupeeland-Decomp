@@ -1,11 +1,11 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_auxiliary_helpers.c. */
     .extern data_021e9ac0
-    .extern func_02062b28
+    .extern ActorDescriptor_IsInvalid
     .extern func_0206563c
 
-.global func_ov021_021fed30
-func_ov021_021fed30:
+.global Overlay021_IsAuxiliaryRecordAvailable
+Overlay021_IsAuxiliaryRecordAvailable:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     ldr r1, L_021feda8
     ldr r4, [r1, #0x0]
@@ -22,7 +22,7 @@ L_021fed60:
     ldr r0, [r4, #0x38]
     mla r10, r5, r7, r0
     mov r0, r10
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     bne L_021fed94
     ldr r0, [r10, #0xc]
@@ -40,5 +40,5 @@ L_021fed98:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_021feda8: .word data_021e9ac0
-    .size func_ov021_021fed30, . - func_ov021_021fed30
+    .size Overlay021_IsAuxiliaryRecordAvailable, . - Overlay021_IsAuxiliaryRecordAvailable
 

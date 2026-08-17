@@ -10,13 +10,13 @@
 .extern data_ov024_021fe354
 .extern data_ov024_021fe35c
 .extern func_02027fe8
-.extern func_02071ea4
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091b6c
 .extern func_02091b98
-.extern func_02091e28
+.extern SceneInputBase_Init
 .extern func_020922f0
 .extern IndexedSelectionController_Init
 .extern IndexedSelectionController_ConfigureRange
@@ -43,13 +43,13 @@ func_ov024_021fce2c:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fd108
     add r0, r4, #0x64
     str r1, [r4, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x70
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r4, #0x80
     bl func_020957bc
     ldr r1, L_021fd10c

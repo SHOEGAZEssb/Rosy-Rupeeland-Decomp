@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern data_ov078_02215c88
 .extern ActorExtendedType2_IsDirectionToActorAccepted
-.extern func_020be334
+.extern SignedAbsoluteValue
 .extern func_ov078_022134d0
 
 .global func_ov078_02213368
@@ -29,7 +29,7 @@ func_ov078_02213368:
     ldr r1, [r7, #0x24]
     ldr r0, [r6, #0x24]
     sub r0, r1, r0
-    bl func_020be334
+    bl SignedAbsoluteValue
     cmp r0, #0x28000
     movge r0, #0x0
     ldmgeia sp!, {r3, r4, r5, r6, r7, pc}

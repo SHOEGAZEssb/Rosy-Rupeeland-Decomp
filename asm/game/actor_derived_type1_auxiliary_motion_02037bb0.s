@@ -6,9 +6,9 @@
 .extern data_020df258
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern Actor_IsAtCachedTerrainHeight
-.extern func_0206c978
-.extern func_0206cd10
-.extern func_0206e3a4
+.extern AuxiliaryInteraction_Destroy
+.extern AuxiliaryInteraction_RunSelectedSequence
+.extern AuxiliaryInteraction_IsCoreHidden
 .extern func_020adae4
 .extern gGameWork
 .extern gLupyContext
@@ -24,7 +24,7 @@ ActorDerivedType1_UpdateAuxiliaryResourceMotion: ; 0x02037bb0
     orr r0, r0, #0x2
     str r0, [r5, #0x230]
     ldr r0, [r5, #0x26c]
-    bl func_0206cd10
+    bl AuxiliaryInteraction_RunSelectedSequence
     movs r4, r0
     ldr r1, [r5, #0x10]
     mov r0, r5
@@ -57,7 +57,7 @@ ActorDerivedType1_UpdateAuxiliaryResourceMotion: ; 0x02037bb0
     cmp r6, #0x0
     beq .L_02037c54
     mov r0, r6
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r6
     bl Heap_Free
 .L_02037c54:
@@ -74,7 +74,7 @@ ActorDerivedType1_UpdateAuxiliaryResourceMotion: ; 0x02037bb0
     tst r0, #0x100
     ldmneia sp!, {r4, r5, r6, pc}
     ldr r0, [r5, #0x26c]
-    bl func_0206e3a4
+    bl AuxiliaryInteraction_IsCoreHidden
     cmp r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}
     mov r0, r5

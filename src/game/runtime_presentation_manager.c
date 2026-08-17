@@ -107,7 +107,7 @@ RuntimePresentationManager *func_0201dc98(RuntimePresentationManager *self)
  * through virtual 0x04 and their nodes removed.  If the auxiliary's byte 0x50a
  * is set, refresh it from runtime field 0x2fbc with argument.  Returns zero.
  */
-s32 func_0201dcec(RuntimePresentationManager *self, s32 argument)
+s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argument)
 {
     PresentationNode *node;
     PresentationNode *next;
@@ -178,7 +178,7 @@ void func_0201de8c(RuntimePresentationManager *self, s32 argument)
 void func_0201ded0(void) {}
 
 /* Append object to list via func_0201dee0 and return the new node. */
-PresentationNode *func_0201ded4(PresentationList *list, PresentationObject *object)
+PresentationNode *PresentationList_AppendObject(PresentationList *list, PresentationObject *object)
 {
     return func_0201dee0(list, object);
 }

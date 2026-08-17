@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021e9ac0;
-extern s32 func_0206522c(void *state);
+extern s32 ActorDescriptorState_CountInactiveKind1Subtype1(void *state);
 extern void *GamePhaseMetadata_GetByIndex(s32 index);
 #ifdef __cplusplus
 }
@@ -16,7 +16,7 @@ extern void *GamePhaseMetadata_GetByIndex(s32 index);
 s32 func_0201b040(GamePhaseActorScriptVm *self)
 {
     GamePhaseScriptVm_SetResult(&self->base,
-                  (u32)func_0206522c((u8 *)data_021e9ac0 + 0x34));
+                  (u32)ActorDescriptorState_CountInactiveKind1Subtype1((u8 *)data_021e9ac0 + 0x34));
     return 0;
 }
 

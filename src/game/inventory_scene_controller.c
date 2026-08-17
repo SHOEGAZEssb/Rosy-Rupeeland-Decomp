@@ -35,9 +35,9 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02091e28(void *scene);
-extern void func_0206841c(void *scene, MemberFunctionPointer callback);
-extern s32 func_02091fb0(void *scene, s32 active);
+extern void *SceneInputBase_Init(void *scene);
+extern void SceneInputBase_SetMemberCallback(void *scene, MemberFunctionPointer callback);
+extern s32 SceneInputBase_Update(void *scene, s32 active);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
@@ -59,7 +59,7 @@ extern void func_ov001_021fca94(InventoryViewState *output,
 #endif
 
 /* Clear a caller-owned three-word inventory view-state record. */
-void *func_02068408(InventoryViewState *state)
+void *InventoryViewState_Init(InventoryViewState *state)
 {
     state->field00 = 0;
     state->field04 = 0;
@@ -76,7 +76,7 @@ InventoryViewState *func_02068938(InventoryViewState *output,
 }
 
 /* Load and construct the overlay-0/14 inventory view from saved state +0x70. */
-void func_02068630(void *scene)
+void InventoryScene_LoadPrimaryView(void *scene)
 {
     void *child;
 
@@ -91,7 +91,7 @@ void func_02068630(void *scene)
 }
 
 /* Load and construct the overlay-1/15 inventory view from saved state +0x7C. */
-void func_02068698(void *scene)
+void InventoryScene_LoadSecondaryView(void *scene)
 {
     void *child;
 
@@ -110,24 +110,24 @@ void func_02068698(void *scene)
  * Flag 0x387 selects overlays 0/14, flag 0x388 selects overlays 1/15, and no
  * selection installs the terminal callback. Both request flags are consumed.
  */
-void *func_02068444(void *scene)
+void *InventoryScene_Init(void *scene)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_020e55d8;
     OverlaySlot_Init((OverlaySlot *)((u8 *)scene + 0x58));
     OverlaySlot_Init((OverlaySlot *)((u8 *)scene + 0x64));
-    func_02068408((InventoryViewState *)((u8 *)scene + 0x70));
-    func_02068408((InventoryViewState *)((u8 *)scene + 0x7c));
+    InventoryViewState_Init((InventoryViewState *)((u8 *)scene + 0x70));
+    InventoryViewState_Init((InventoryViewState *)((u8 *)scene + 0x7c));
 
     if (GameWork_TestFlag(gGameWork, 0x387)) {
-        func_02068630(scene);
-        func_0206841c(scene, data_020e559c);
+        InventoryScene_LoadPrimaryView(scene);
+        SceneInputBase_SetMemberCallback(scene, data_020e559c);
     } else if (GameWork_TestFlag(gGameWork, 0x388)) {
-        func_02068698(scene);
-        func_0206841c(scene, data_020e558c);
+        InventoryScene_LoadSecondaryView(scene);
+        SceneInputBase_SetMemberCallback(scene, data_020e558c);
     } else {
         FIELD(void *, scene, 0x54) = 0;
-        func_0206841c(scene, data_020e55ac);
+        SceneInputBase_SetMemberCallback(scene, data_020e55ac);
     }
 
     GameWork_ClearFlag(gGameWork, 0x387);
@@ -139,7 +139,7 @@ void *func_02068444(void *scene)
  * Destroy the active inventory child and both overlay slots without freeing
  * the controller. Child ownership is released through virtual slot two.
  */
-void *func_02068538(void *scene)
+void *InventoryScene_Destroy(void *scene)
 {
     void *child;
 
@@ -158,22 +158,22 @@ void *func_02068538(void *scene)
 }
 
 /* Destroy the inventory controller, free its storage, and return its address. */
-void *func_020685b0(void *scene)
+void *InventoryScene_Delete(void *scene)
 {
-    func_02068538(scene);
+    InventoryScene_Destroy(scene);
     Heap_Free(scene);
     return scene;
 }
 
 /* Terminal callback: keep any child inactive and report completion. */
-s32 func_02068954(void *scene)
+s32 InventoryScene_UpdateTerminal(void *scene)
 {
-    func_02091fb0(FIELD(void *, scene, 0x54), 0);
+    SceneInputBase_Update(FIELD(void *, scene, 0x54), 0);
     return 1;
 }
 
 /* Forward the per-frame callback through child virtual slot three when live. */
-s32 func_0206896c(void *scene)
+s32 InventoryScene_UpdateChild(void *scene)
 {
     void *child = FIELD(void *, scene, 0x54);
 
@@ -190,7 +190,7 @@ s32 func_0206896c(void *scene)
  * destroys and unloads it, constructs the requested peer, then fades in.
  * Returns zero on every frame while state changes remain observable in scene.
  */
-s32 func_02068704(void *scene)
+s32 InventoryScene_UpdateInput(void *scene)
 {
     s32 state = FIELD(s32, scene, 4);
 
@@ -201,7 +201,7 @@ s32 func_02068704(void *scene)
         FIELD(s32, scene, 8) = 0;
         /* Retail advances into state one on the construction frame. */
     case 1:
-        if (func_02091fb0(FIELD(void *, scene, 0x54),
+        if (SceneInputBase_Update(FIELD(void *, scene, 0x54),
                           (s32)(FIELD(u32, scene, 0x20) << 30) >> 31)) {
             if (GameWork_TestFlag(gGameWork, 0x387) ||
                 GameWork_TestFlag(gGameWork, 0x388)) {
@@ -210,12 +210,12 @@ s32 func_02068704(void *scene)
                 FIELD(s32, scene, 4) = 2;
                 FIELD(s32, scene, 8) = 0;
             } else {
-                func_0206841c(scene, data_020e55a4);
+                SceneInputBase_SetMemberCallback(scene, data_020e55a4);
             }
         }
         break;
     case 2:
-        func_02091fb0(FIELD(void *, scene, 0x54), 0);
+        SceneInputBase_Update(FIELD(void *, scene, 0x54), 0);
         if (DisplayBrightness_IsMainTransitionComplete()) {
             void *child = FIELD(void *, scene, 0x54);
 
@@ -245,9 +245,9 @@ s32 func_02068704(void *scene)
                 (OverlaySlot *)((u8 *)scene + 0x64));
 
             if (GameWork_TestFlag(gGameWork, 0x387))
-                func_02068630(scene);
+                InventoryScene_LoadPrimaryView(scene);
             else
-                func_02068698(scene);
+                InventoryScene_LoadSecondaryView(scene);
             GameWork_ClearFlag(gGameWork, 0x387);
             GameWork_ClearFlag(gGameWork, 0x388);
             DisplayBrightness_StartMainTransition(1, 0x10);
@@ -257,7 +257,7 @@ s32 func_02068704(void *scene)
         }
         break;
     case 3:
-        func_02091fb0(FIELD(void *, scene, 0x54), 0);
+        SceneInputBase_Update(FIELD(void *, scene, 0x54), 0);
         if (DisplayBrightness_IsMainTransitionComplete()) {
             FIELD(s32, scene, 4) = 0;
             FIELD(s32, scene, 8) = 0;

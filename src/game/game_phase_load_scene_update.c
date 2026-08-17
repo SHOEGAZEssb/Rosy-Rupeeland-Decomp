@@ -67,7 +67,7 @@ extern u8 data_020d552c[];
 extern u8 data_020d54d4[];
 extern void func_02092c8c(s32 screens, s32 brightness);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteOwner(void *collection);
-extern s32 func_02091fb0(void *object, s32 mode);
+extern s32 SceneInputBase_Update(void *object, s32 mode);
 extern void func_02058eb8(void *sound, s32 a, s32 b, s32 c, s32 d);
 extern void func_02092418(void *object);
 extern void *func_ov059_0220fd20(void *object, s32 mode);
@@ -78,7 +78,7 @@ extern void func_020923a4(void *object);
 extern void func_0201e0f4(void *object);
 extern void func_020745c4(GraphicsSpriteRenderer *renderer, s32 mode);
 extern void *func_ov013_021fce2c(void *object);
-extern void *func_02068444(void *object);
+extern void *InventoryScene_Init(void *object);
 extern void *func_ov044_0220be60(void *object);
 extern void *func_ov043_0220b76c(void *object);
 extern void *func_ov018_021fcf68(void *object, s32 argument);
@@ -91,7 +91,7 @@ extern void *func_ov025_021ff27c(void *scene);
 extern void *func_ov004_021fc944(void *object, s32 argument);
 extern void *func_ov028_021fdb00(void *object);
 extern void *func_ov009_021fce74(void *object, s32 argument);
-extern void *func_ov027_021fda30(void *object);
+extern void *Overlay027Scene_Init(void *object);
 extern void *func_ov017_021fda3c(void *object);
 extern void *func_ov036_022045d4(void *object, s32 argument);
 extern void *func_ov035_02202378(void *object, s32 argument);
@@ -270,7 +270,7 @@ code_r0x0200d17c:
   case 1:
     goto code_r0x0200d17c;
   case 2:
-    func_02091fb0(self->ownedObject, 0);
+    SceneInputBase_Update(self->ownedObject, 0);
     if (-1 < *(int *)((u8 *)self->ownedObject + 0x20) << 0x1f) {
       return 0;
     }
@@ -278,7 +278,7 @@ code_r0x0200d17c:
     self->loadState++;
     return 0;
   case 3:
-    func_02091fb0(self->ownedObject, 0);
+    SceneInputBase_Update(self->ownedObject, 0);
     iVar5 = DisplayBrightness_IsMainTransitionComplete();
     if (iVar5 == 0) {
       return 0;
@@ -290,7 +290,7 @@ code_r0x0200d17c:
     self->loadState++;
     return 0;
   case 4:
-    iVar5 = func_02091fb0(self->ownedObject, 1);
+    iVar5 = SceneInputBase_Update(self->ownedObject, 1);
     if (iVar5 == 0) {
       return 0;
     }
@@ -335,7 +335,7 @@ code_r0x0200dd3c:
     self->loadState++;
     return 0;
   case 5:
-    func_02091fb0(self->ownedObject, 0);
+    SceneInputBase_Update(self->ownedObject, 0);
     iVar5 = DisplayBrightness_IsMainTransitionComplete();
     if (iVar5 == 0) {
       return 0;
@@ -379,7 +379,7 @@ code_r0x0200dd3c:
         if ((iVar5 == 1) &&
            (GamePhaseRuntime_GetPhaseObjectMode(data_021052fc) == 2)) {
           GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
-          func_02008570(data_021052fc,0,1);
+          GamePhaseRuntime_ApplyScreenMode(data_021052fc,0,1);
           GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
           func_02092c8c(1,0);
           goto code_r0x0200e2ac;
@@ -404,7 +404,7 @@ code_r0x0200dd3c:
       case 0x17:
 code_r0x0200e038:
         GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
-        func_02008570(data_021052fc,0,1);
+        GamePhaseRuntime_ApplyScreenMode(data_021052fc,0,1);
         GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
         func_02092c8c(1,0);
         goto code_r0x0200e2ac;
@@ -412,7 +412,7 @@ code_r0x0200e038:
 code_r0x0200e21c:
       GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
       GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0fc);
-      func_02008570(data_021052fc,2,1);
+      GamePhaseRuntime_ApplyScreenMode(data_021052fc,2,1);
       GamePhaseAreaScene_SetEnabled(
           GamePhaseRuntime_GetAreaScene(data_021052fc), 1);
       GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
@@ -457,7 +457,7 @@ code_r0x0200e2ac:
       return 1;
     case 1:
       if (GamePhaseRuntime_GetPhaseObjectMode(data_021052fc) == 2) {
-        func_02008570(data_021052fc,1,1);
+        GamePhaseRuntime_ApplyScreenMode(data_021052fc,1,1);
         GamePhaseAreaScene_SetEnabled(
             GamePhaseRuntime_GetAreaScene(data_021052fc), 1);
       }
@@ -480,7 +480,7 @@ code_r0x0200e2ac:
       if (self != 0) {
         self->base.vtable->destroyAndFree(&self->base);
       }
-      func_02008570(data_021052fc,2,1);
+      GamePhaseRuntime_ApplyScreenMode(data_021052fc,2,1);
       GamePhaseRuntime_SetPlacementMode(data_021052fc, 3, 1);
       GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
       GamePhaseAreaScene_SetEnabled(
@@ -592,7 +592,7 @@ code_r0x0200d3bc:
   case 2:
     object = Heap_Alloc(0x88,UNK_0200e118,4,UNK_0200e114);
     if (object != 0) {
-      object = func_02068444(object);
+      object = InventoryScene_Init(object);
     }
     self->ownedObject = object;
     break;
@@ -601,7 +601,7 @@ code_r0x0200d3bc:
     GameWork_ClearFlag(gGameWork,0x388);
     object = Heap_Alloc(0x88,UNK_0200e118,4,UNK_0200e114);
     if (object != 0) {
-      object = func_02068444(object);
+      object = InventoryScene_Init(object);
     }
     self->ownedObject = object;
     break;
@@ -610,7 +610,7 @@ code_r0x0200d3bc:
     GameWork_SetFlag(gGameWork,0x388);
     object = Heap_Alloc(0x88,UNK_0200e118,4,UNK_0200e114);
     if (object != 0) {
-      object = func_02068444(object);
+      object = InventoryScene_Init(object);
     }
     self->ownedObject = object;
     break;
@@ -637,7 +637,7 @@ code_r0x0200d3bc:
   case 8:
     OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e13c);
     OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e140);
-    func_02008570(data_021052fc,0,1);
+    GamePhaseRuntime_ApplyScreenMode(data_021052fc,0,1);
     GamePhaseRuntime_SetPlacementMode(data_021052fc, 2, 0);
     GamePhaseAreaScene_SetEnabled(
         GamePhaseRuntime_GetAreaScene(data_021052fc), 1);
@@ -756,7 +756,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e1d4);
     object = Heap_Alloc(0x5e0,UNK_0200e1d8,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov027_021fda30(object);
+      object = Overlay027Scene_Init(object);
     }
     self->ownedObject = object;
     break;

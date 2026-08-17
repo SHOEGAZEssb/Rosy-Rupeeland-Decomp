@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *data_020d6740;extern const char gArcingSpriteEffectAllocationTag[];
 extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
-extern void *func_0201e250(void *);extern void *func_0201e28c(void *);
+extern void *TimedSpritePresentation_InitBase(void *);extern void *func_0201e28c(void *);
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_Destroy(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
@@ -41,7 +41,7 @@ ArcingSpriteEffectPresentation *func_02023434(
     const VecValue *second,s32 duration,s32 switchResource)
 {
     VecValue a,b,combined;
-    func_0201e250(self);self->vtable=(void **)data_020d6740;
+    TimedSpritePresentation_InitBase(self);self->vtable=(void **)data_020d6740;
     self->frame14=0;self->duration16=(s16)duration;self->state18=0;
     self->amplitude1a=0x30;self->switchResource20=(u8)switchResource;
     self->firstDescriptor08=(u8 *)Heap_Alloc(0x10,gArcingSpriteEffectAllocationTag,4,&gHeapContext);

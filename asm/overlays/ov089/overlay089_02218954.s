@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern ActorDerivedRuntime_HandlePairActive
 .extern func_020adc40
 .extern func_020adc90
@@ -73,6 +73,6 @@ func_ov089_02218954:
     mov r0, r8
     mov r1, r7
     mov r2, r6
-    bl func_02032a94
+    bl ActorContactState_AddContact
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .size func_ov089_02218954, . - func_ov089_02218954

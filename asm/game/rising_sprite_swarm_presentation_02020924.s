@@ -16,7 +16,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
 .extern func_02008378
-.extern func_0201e250
+.extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern RisingSpriteMotionController_Init
 .extern RisingSpriteMotionController_Destroy
@@ -27,8 +27,8 @@
 .extern RisingSpriteControllerList_RemoveNode
 .extern RisingSpriteSwarmPresentation_SpawnController
 .extern RisingSpriteSwarmPresentation_SetControllerState
-.extern func_02071ea4
-.extern func_02071eb8
+.extern AnimationResourceState_InitEmbedded
+.extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroup_AdvanceAnimations
@@ -69,7 +69,7 @@ RisingSpriteSwarmPresentation_Destroy: ; 0x02020924
     add r0, r6, #0x38
     bl VecFx32Object_Destroy
     add r0, r6, #0x2c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     ldr r1, .L_020209b4
     add r0, r6, #0xc
     str r1, [r6, #0xc]

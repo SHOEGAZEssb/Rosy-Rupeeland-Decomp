@@ -14,7 +14,7 @@ extern "C" {
 extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void *Actor_GetCollection(void *actor);
 extern void *func_02071e60(void *archive, u32 resource_id);
-extern void *func_02071e70(void *archive, u32 resource_id);
+extern void *GraphicsArchive_FindPaletteResource(void *archive, u32 resource_id);
 extern void *func_02071e80(void *archive, u32 resource_id);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, void *resource1,
@@ -37,7 +37,7 @@ void PresentationBackedActor_InitPresentation(void *actor, const void *descripto
 {
     void *resource0 = func_02071e60(data_020f4e18,
                                     FIELD(u32, descriptor, 0x04));
-    void *resource1 = func_02071e70(data_020f4e18,
+    void *resource1 = GraphicsArchive_FindPaletteResource(data_020f4e18,
                                     FIELD(u32, descriptor, 0x08));
     void *resource2 = func_02071e80(data_020f4e18,
                                     FIELD(u32, descriptor, 0x0c));

@@ -17,10 +17,10 @@ extern u8 data_021f38d8[];
 extern u8 data_021f38e8[];
 extern u8 data_021f38fc[];
 extern void OS_Halt(void);
-extern void *func_02063b90(void *database, u16 id);
-extern void func_02022fbc(void *configuration);
+extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
+extern void SelfLinkedSpriteConfig_Init(void *configuration);
 extern u32 genrand_int32(void);
-extern void func_02062864(void *records, u16 index);
+extern void ActorDescriptor_SetRangeEnd(void *records, u16 index);
 
 static u16 ReadU16(const u8 *bytes)
 {
@@ -77,7 +77,7 @@ void func_020782f0(void *group_pointer, u32 slot, s32 value8, u32 actor_id,
     u8 *entry = AllocateDescriptor();
     u8 *runtime = entry + 8;
 
-    func_02022fbc(runtime);
+    SelfLinkedSpriteConfig_Init(runtime);
     *(u16 *)(entry + 2) = 0;
     *(u16 *)(entry + 6) = 0;
     entry[0] = (u8)value6;
@@ -85,7 +85,7 @@ void func_020782f0(void *group_pointer, u32 slot, s32 value8, u32 actor_id,
     *(u16 *)(entry + 4) = (u16)(value8 << 4);
     *(u16 *)(runtime + 0) = (u16)actor_id;
     *(u16 *)(runtime + 4) = 0;
-    *(void **)(runtime + 8) = func_02063b90(data_021e9ad0, (u16)actor_id);
+    *(void **)(runtime + 8) = ActorDatabase_FindDescriptorById(data_021e9ad0, (u16)actor_id);
     *(u32 *)(runtime + 0x0c) = 0;
     *(u32 *)(runtime + 0x20) = 0;
     (*(u8 ***)group)[slot] = entry;
@@ -194,7 +194,7 @@ void func_020781bc(void *descriptor_pointer, u16 frame)
         u16 count = *(u16 *)(descriptor + 0x0c);
 
         if (count < descriptor[1] && genrand_int32() % 100 < descriptor[0])
-            func_02062864(descriptor + 8, (u16)(count + 1));
+            ActorDescriptor_SetRangeEnd(descriptor + 8, (u16)(count + 1));
         elapsed = (u16)(elapsed - 50);
         *(u16 *)(descriptor + 2) = elapsed;
     }

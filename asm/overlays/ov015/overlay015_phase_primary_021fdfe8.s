@@ -21,7 +21,7 @@
     .extern func_ov001_021fcbf0
     .extern func_ov001_021fcc44
     .extern func_ov015_021fce30
-    .extern func_ov015_021fd68c
+    .extern Overlay015_UpdateRecords
     .extern func_ov015_021fd6c8
     .extern func_ov015_021fdad4
     .extern func_ov015_021fdd1c
@@ -215,7 +215,7 @@ L_021fe26c:
     bl func_ov015_021fdad4
 L_021fe28c:
     mov r0, r4
-    bl func_ov015_021fd68c
+    bl Overlay015_UpdateRecords
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe29c: .word data_ov015_021fec10

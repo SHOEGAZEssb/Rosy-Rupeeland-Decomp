@@ -24,7 +24,7 @@
 extern "C" {
 #endif
 
-extern void func_020a7c4c(s32 volume);
+extern void Sound_SetMasterVolume(s32 volume);
 extern void GXx_SetMasterBrightness_(volatile u16 *reg, s32 brightness);
 extern void GX_SetGraphicsMode(u32 displayMode, u32 bgMode, u32 bg0Mode);
 extern void GXS_SetGraphicsMode(u32 bgMode);
@@ -52,7 +52,7 @@ void GraphicsDisplay_SetupSubBg0(void *unused, s32 resourceSetIndex)
     REG_DISPCNT &= ~DISPLAY_PLANE_MASK;
     REG_DISPCNT_SUB &= ~DISPLAY_PLANE_MASK;
     *(u32 *)((u8 *)gSoundContext + 0xa4) = 0;
-    func_020a7c4c(0);
+    Sound_SetMasterVolume(0);
 
     REG_BG_PLTT0 = 0;
     REG_BG_PLTT0_SUB = 0;
@@ -92,7 +92,7 @@ asm void GraphicsDisplay_SetupSubBg0(void *unused, s32 resourceSetIndex)
     mov r0, #0
     mov r4, r1
     str r0, [r2, #0xa4]
-    bl func_020a7c4c
+    bl Sound_SetMasterVolume
     mov r2, #0x05000000
     mov r1, #0
     strh r1, [r2]

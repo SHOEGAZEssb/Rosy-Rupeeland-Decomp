@@ -15,8 +15,8 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorMotion_GetPosition
-.extern func_0201e250
-.extern func_0201e3b8
+.extern TimedSpritePresentation_InitBase
+.extern TimedSpritePresentation_SetVisible
 .extern func_0201e454
 .extern TimedSpriteBurstManager_Init
 .extern OwnedPointerArray_Destroy
@@ -45,7 +45,7 @@ TimedSpriteBurstManager_Init: ; 0x0201eefc
     mov r10, r0
     mov r4, r1
     mov r5, r2
-    bl func_0201e250
+    bl TimedSpritePresentation_InitBase
     ldr r0, .L_0201f09c
     mov r1, #0x0
     str r0, [r10, #0x0]
@@ -132,7 +132,7 @@ TimedSpriteBurstManager_Init: ; 0x0201eefc
     str r0, [r2, r9, lsl #0x2]
     ldr r0, [r10, #0x8]
     ldr r0, [r0, r9, lsl #0x2]
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     add r9, r9, #0x1
 .L_0201f06c:
     ldr r0, [r10, #0xc]

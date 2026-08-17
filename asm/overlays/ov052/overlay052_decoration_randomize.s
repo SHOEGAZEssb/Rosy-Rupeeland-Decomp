@@ -6,8 +6,8 @@
 .extern func_020bf1f8
 .extern genrand_int32
 
-.global func_ov052_0220df9c
-func_ov052_0220df9c:
+.global Overlay052Scene_RestartDecoration
+Overlay052Scene_RestartDecoration:
     stmdb sp!, {r4, lr}
     mov r4, r0
     cmp r1, #0x0
@@ -61,4 +61,4 @@ func_ov052_0220df9c:
     ldmia sp!, {r4, pc}
 .L_0220e05c: .word data_ov052_0220e1e4
 .L_0220e060: .word data_ov052_0220e1e8
-.size func_ov052_0220df9c, . - func_ov052_0220df9c
+.size Overlay052Scene_RestartDecoration, . - Overlay052Scene_RestartDecoration

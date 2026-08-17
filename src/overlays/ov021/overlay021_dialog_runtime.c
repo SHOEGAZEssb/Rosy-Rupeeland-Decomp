@@ -13,15 +13,15 @@ extern "C" {
 #endif
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern const void *RecordMode_GetMessage(void *, s32);
-extern void func_02092e9c(void *, const void *, s32);
-extern s32 func_02093360(void *, const void *);
-extern void func_020939d8(void *);
+extern void TitleDialog_SetText(void *, const void *, s32);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov045_0220c028(void *);
 extern void func_ov045_0220c068(void *);
 extern void func_ov045_0220c128(void *, s32);
 extern void func_ov045_0220c174(void *);
 extern s32 func_ov045_0220c280(void *);
-extern void func_ov045_0220d2f8(s32, s32);
+extern void Overlay045_DrawSelectorPreview(s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -39,11 +39,11 @@ extern "C" void func_ov021_021ff0e0(void *state, s32 messageId)
 {
     void *modeRecord = data_021f5128[FIELD(s32, state, 0x54)];
     void *dialog = FIELD(void *, state, 0x388);
-    func_020939d8(dialog);
+    TitleDialog_ClearTextRect(dialog);
     FIELD(s32, dialog, 0xd0) = 0xd;
     FIELD(s32, dialog, 0xd4) = 0;
-    func_02092e9c(dialog, RecordMode_GetMessage(modeRecord, messageId), 4);
-    s32 result = func_02093360(dialog, data_021f5ed0);
+    TitleDialog_SetText(dialog, RecordMode_GetMessage(modeRecord, messageId), 4);
+    s32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     void *external = FIELD(void *, state, 0x38c);
     if ((result & 0x200) != 0) {
         func_ov045_0220c128(external,
@@ -56,7 +56,7 @@ extern "C" void func_ov021_021ff0e0(void *state, s32 messageId)
     }
     GraphicsSpriteRenderer_SetFontResource(
         gDebugFont, FIELD(void *, state, 0x58));
-    func_ov045_0220d2f8(FIELD(s32, state, 0x54), 0);
+    Overlay045_DrawSelectorPreview(FIELD(s32, state, 0x54), 0);
 }
 
 /*
@@ -69,11 +69,11 @@ extern "C" void func_ov021_021ff0e0(void *state, s32 messageId)
 extern "C" void func_ov021_021ff1d0(void *state, const void *content)
 {
     void *dialog = FIELD(void *, state, 0x388);
-    func_020939d8(dialog);
+    TitleDialog_ClearTextRect(dialog);
     FIELD(s32, dialog, 0xd0) = 0xd;
     FIELD(s32, dialog, 0xd4) = 0;
-    func_02092e9c(dialog, content, 4);
-    s32 result = func_02093360(dialog, data_021f5ed0);
+    TitleDialog_SetText(dialog, content, 4);
+    s32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     void *external = FIELD(void *, state, 0x38c);
     if ((result & 0x200) != 0)
         func_ov045_0220c128(external, FIELD(s32, dialog, 0xe8));
@@ -81,7 +81,7 @@ extern "C" void func_ov021_021ff1d0(void *state, const void *content)
         func_ov045_0220c028(external);
     GraphicsSpriteRenderer_SetFontResource(
         gDebugFont, FIELD(void *, state, 0x58));
-    func_ov045_0220d2f8(FIELD(s32, state, 0x54), 0);
+    Overlay045_DrawSelectorPreview(FIELD(s32, state, 0x54), 0);
 }
 
 /*
@@ -119,7 +119,7 @@ extern "C" s32 func_ov021_021ff274(void *state)
         func_ov045_0220c174(external);
     }
 
-    s32 result = func_02093360(dialog, templateCopy);
+    s32 result = TitleDialog_UpdateTextPage(dialog, templateCopy);
     if ((result & 0x200) != 0)
         func_ov045_0220c128(external, FIELD(s32, dialog, 0xe8));
     if ((result & 1) == 0)

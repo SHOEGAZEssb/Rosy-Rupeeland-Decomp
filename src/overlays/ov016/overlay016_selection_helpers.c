@@ -9,10 +9,10 @@ extern void *data_021e9ac0;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02062b28(void *);
-extern void *func_ov000_021fcad8(void *);
+extern s32 ActorDescriptor_IsInvalid(void *);
+extern void *Overlay000_GetActiveMetadata(void *);
 extern void func_ov000_021fb890(void *, s32);
-extern void func_ov000_021fb8f0(void *, void *);
+extern void Overlay000_PopulatePresentation(void *, void *);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
 extern void func_02095988(void *, s32);
@@ -47,7 +47,7 @@ extern "C" void func_ov016_021ffba4(void *state)
  * absent, switch the panel to fallback index 1. Return void. Panel rendering
  * state changes through overlay helpers; no direct hardware access occurs.
  */
-extern "C" void func_ov016_021ffbd8(void *state)
+extern "C" void Overlay016_SyncSelectedPanel(void *state)
 {
     void *list = FIELD(void *, state, 0x444);
 
@@ -70,10 +70,10 @@ extern "C" void func_ov016_021ffbd8(void *state)
 extern "C" void func_ov016_021ffc2c(void *state)
 {
     if (FIELD(s32, state, 0x54) == 1 && FIELD(s32, state, 0x47c) == 0) {
-        void *entry = func_ov000_021fcad8(FIELD(void *, state, 0x44c));
+        void *entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x44c));
         void *record = FIELD(void *, entry, 0xc);
         if (record != 0) {
-            func_ov000_021fb8f0(FIELD(void *, state, 0x450), record);
+            Overlay000_PopulatePresentation(FIELD(void *, state, 0x450), record);
             FIELD(u32, state, 0x4c) |= 2;
         } else {
             func_ov000_021fb890(FIELD(void *, state, 0x450), 1);
@@ -112,7 +112,7 @@ extern "C" s32 func_ov016_021ffcb0(void *state, void *slot, u8 *result)
              globalIndex++) {
             void *globalEntry = (u8 *)FIELD(void *, global, 8) +
                                 globalIndex * 0x24;
-            if (func_02062b28(globalEntry) == 0 &&
+            if (ActorDescriptor_IsInvalid(globalEntry) == 0 &&
                 FIELD(u16, recordEntry, 0) == FIELD(u16, globalEntry, 0) &&
                 FIELD(u16, recordEntry, 4) <= FIELD(u16, globalEntry, 4)) {
                 result[recordIndex] = 1;

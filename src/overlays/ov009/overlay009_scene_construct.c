@@ -23,8 +23,8 @@ extern u8 gHeapContext[];
 
 extern void Scene_Init(void *state);
 extern void Scene_SetFlags03(void *state);
-extern void func_02091e28(void *member);
-extern void func_02071ea4(void *member);
+extern void SceneInputBase_Init(void *member);
+extern void AnimationResourceState_InitEmbedded(void *member);
 extern void func_02092364(void *member);
 extern void func_020923a4(void *member);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *manager);
@@ -43,8 +43,8 @@ extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As);
 extern void GX_SetBankForBG(s32 bank);
 extern void func_02092638(s32 first, s32 second, s32 third, s32 fourth);
 extern void func_020b44e8(void);
-extern void func_02092850(u16 color);
-extern void func_0209285c(s32 value);
+extern void TitlePalette_SetMainBackdrop(u16 color);
+extern void TitlePalette_SetSubBackdrop(s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -87,10 +87,10 @@ void *func_ov009_021fce9c(void *state)
     volatile u32 *mainBgScroll = (volatile u32 *)0x04000018;
 
     Scene_Init(state);
-    func_02091e28((u8 *)state + 0x24);
+    SceneInputBase_Init((u8 *)state + 0x24);
     FIELD(const void *, state, 0x00) = data_ov009_021fee8c;
     FIELD(const void *, state, 0x24) = data_ov009_021feec0;
-    func_02071ea4((u8 *)state + 0x78);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x78);
     func_02092364((u8 *)state + 0x13c);
     func_020923a4((u8 *)state + 0x13c);
     FIELD(s32, state, 0x74) = 0;
@@ -150,9 +150,9 @@ void *func_ov009_021fce9c(void *state)
     func_02072048(&resources, 3, 0);
     {
         u32 component = FIELD(u32, state, 0xe8);
-        func_02092850((u16)(component | (component << 5) | (component << 10)));
+        TitlePalette_SetMainBackdrop((u16)(component | (component << 5) | (component << 10)));
     }
-    func_0209285c(0);
+    TitlePalette_SetSubBackdrop(0);
     Scene_SetFlags03(state);
     func_ov009_021fce74((u8 *)state + 0x24,
                          (s32)data_ov009_021feb80[4],

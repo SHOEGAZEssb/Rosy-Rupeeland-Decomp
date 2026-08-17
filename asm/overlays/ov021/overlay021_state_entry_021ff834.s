@@ -9,10 +9,10 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern RecordCategory_PublishById
     .extern RecordDescriptor_GetMessage
-    .extern func_02092850
+    .extern TitlePalette_SetMainBackdrop
     .extern func_02092c8c
-    .extern func_02093360
-    .extern func_020939d8
+    .extern TitleDialog_UpdateTextPage
+    .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fe520
     .extern func_ov021_021fe63c
@@ -59,7 +59,7 @@ L_021ff884:
     bl func_ov021_021ff1d0
     ldr r0, [r4, #0x388]
     ldr r1, L_021ff9fc
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]
@@ -105,7 +105,7 @@ L_021ff94c:
     cmp r0, #0x0
     beq L_021ff9e8
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, L_021ffa04
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
@@ -126,7 +126,7 @@ L_021ff98c:
     beq L_021ff9c4
     mov r0, #0x0
     str r0, [r4, #0x48]
-    bl func_02092850
+    bl TitlePalette_SetMainBackdrop
     ldr r1, L_021ffa08
     mov r0, r4
     ldmia r1, {r1, r2}

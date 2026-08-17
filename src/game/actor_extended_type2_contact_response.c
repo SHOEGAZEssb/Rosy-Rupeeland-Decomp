@@ -14,7 +14,7 @@ extern s32 ActorExtendedType2_SpawnOptionalPresentation(
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 shift);
-extern s32 func_02032a94(void *actor, void *other, s32 context);
+extern s32 ActorContactState_AddContact(void *actor, void *other, s32 context);
 #ifdef __cplusplus
 }
 #endif
@@ -40,7 +40,7 @@ s32 ActorExtendedType2_TriggerContactFeedback(void *self)
  * optionally halve both through func_020adae4 when actor +0xd0 bit 0x10 is set,
  * and subtract them from actor +0x9c/+0xa0. At shorter distance, compare signed
  * layer bytes +0x48 and add +0x1000 or -0x1000 to +0x9c. Always finish by
- * invoking func_02032a94(actor,other,context) and return its result. Actor motion
+ * invoking ActorContactState_AddContact(actor,other,context) and return its result. Actor motion
  * and base contact state may change; no direct SDK or hardware access occurs.
  */
 s32 ActorExtendedType2_ApplyContactResponse(void *self, void *otherObject, s32 context)
@@ -67,5 +67,5 @@ s32 ActorExtendedType2_ApplyContactResponse(void *self, void *otherObject, s32 c
                 (*(s8 *)(actor + 0x48) < *(s8 *)(other + 0x48)) ? -0x1000 : 0x1000;
         }
     }
-    return func_02032a94(actor, other, context);
+    return ActorContactState_AddContact(actor, other, context);
 }

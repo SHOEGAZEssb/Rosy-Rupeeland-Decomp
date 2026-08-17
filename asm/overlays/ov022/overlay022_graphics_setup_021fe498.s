@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_graphics_setup.c. */
     .extern data_020f4e18
     .extern func_020706c4
-    .extern func_02070874
+    .extern GraphicsBgResourceData_GetDecoded
     .extern func_02070eac
     .extern Presentation_BlendPalette16
     .extern func_020b1ff0
@@ -17,7 +17,7 @@ func_ov022_021fe498:
     sub sp, sp, #0x10
     mov r4, r0
     ldr r0, [r4, #0x374]
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0x20
     str r0, [r4, #0x36c]
     str r0, [r4, #0x368]

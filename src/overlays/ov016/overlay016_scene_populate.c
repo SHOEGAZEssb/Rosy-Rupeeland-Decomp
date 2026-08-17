@@ -16,7 +16,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern s32 func_020651a4(void *, u16);
+extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
 extern s32 func_0206fa9c(void *);
 extern void *func_ov016_021fce34(void *, void *, s32);
 extern void func_ov016_021fd0e0(void *, void *, const u8 *, u32);
@@ -69,7 +69,7 @@ extern "C" void func_ov016_021ff288(void *state)
             if (func_ov016_021ffcb0(state, slot, payload) == 0) {
                 flags |= 1;
             }
-            if (func_020651a4((u8 *)data_021e9ac0 + 0x1c,
+            if (ActorDescriptorState_FindInactiveQuantity((u8 *)data_021e9ac0 + 0x1c,
                               FIELD(u16, record, 4)) >= 99) {
                 flags |= 2;
             }

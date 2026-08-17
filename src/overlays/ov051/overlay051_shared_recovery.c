@@ -6,7 +6,7 @@
  * Portable bodies mirror the exact assembly fallbacks' fixed-point operations.
  */
 
-extern "C" void *func_0201e250(void *scene);
+extern "C" void *TimedSpritePresentation_InitBase(void *scene);
 extern "C" void func_020ad250(void *record);
 extern "C" void func_020ad268(void *record, s32 first, s32 second);
 extern "C" void func_020ad274(const void *source, void *destination,
@@ -21,7 +21,7 @@ extern "C" u8 gSystemState[];
  * Embedded SDK/object state changes; no allocation or direct MMIO occurs. */
 extern "C" void *func_ov051_0220d600(void *scene)
 {
-    u8 *bytes = (u8 *)func_0201e250(scene);
+    u8 *bytes = (u8 *)TimedSpritePresentation_InitBase(scene);
     s32 index;
 
     *(void **)bytes = data_ov051_0220df70;

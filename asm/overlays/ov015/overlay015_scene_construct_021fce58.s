@@ -8,20 +8,20 @@
     .extern data_ov015_021fec74
     .extern data_ov015_021fec88
     .extern data_ov015_021fec90
-    .extern func_0205974c
-    .extern func_020629a0
-    .extern func_02062c20
-    .extern func_02062e00
-    .extern func_0206550c
-    .extern func_02071ea4
+    .extern Sound_LoadGroup
+    .extern ActorDescriptor_GetPanelImage
+    .extern InventoryRecord_IsEmptyKind1Subtype1
+    .extern InventoryRecord_GetMetadata
+    .extern InventoryRecordCollection_SortAlternate
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_02091e28
-    .extern func_020926d8
+    .extern SceneInputBase_Init
+    .extern TitleScreenResourceCollection_Init
     .extern func_02092754
-    .extern func_02092798
+    .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_020957bc
     .extern func_020957f0
@@ -53,17 +53,17 @@ func_ov015_021fce58:
     mov r10, r0
     mov r5, r1
     mov r4, r2
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r1, L_021fd1e8
     add r0, r10, #0x58
     str r1, [r10, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x64
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x74
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x98
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     add r0, r10, #0xe0
     bl func_ov015_021fce00
     ldr r1, L_021fd1ec
@@ -118,7 +118,7 @@ L_021fcf58:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     add r0, r0, #0x34
-    bl func_0206550c
+    bl InventoryRecordCollection_SortAlternate
     ldr r1, L_021fd218
     ldr r3, L_021fd20c
     mov r0, #0x210
@@ -137,7 +137,7 @@ L_021fcf94:
     ldr r0, L_021fd220
     mov r1, #0x82
     ldr r0, [r0, #0x0]
-    bl func_0205974c
+    bl Sound_LoadGroup
     mvn r6, #0x0
     mov r11, #0x1
     mov r7, r6
@@ -152,7 +152,7 @@ L_021fcfcc:
     cmp r9, #0x0
     beq L_021fd060
     mov r0, r9
-    bl func_02062e00
+    bl InventoryRecord_GetMetadata
     ldrb r0, [r0, #0x2]
     cmp r0, #0x1
     beq L_021fd008
@@ -162,7 +162,7 @@ L_021fcfcc:
     b L_021fd060
 L_021fd008:
     mov r0, r9
-    bl func_02062c20
+    bl InventoryRecord_IsEmptyKind1Subtype1
     cmp r0, #0x0
     beq L_021fd038
     cmp r6, #0x0
@@ -175,7 +175,7 @@ L_021fd008:
     b L_021fd060
 L_021fd038:
     mov r0, r9
-    bl func_020629a0
+    bl ActorDescriptor_GetPanelImage
     cmp r0, #0x1
     bne L_021fd058
     mov r0, r5

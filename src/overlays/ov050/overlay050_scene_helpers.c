@@ -14,7 +14,7 @@ extern "C" void GraphicsSpriteGroup_ReleaseIndexedEntries(void *state);
  * Write `value` to +0x30 of each of four child pointers at scene +0x1C..+0x28.
  * Child state changes; nothing is returned and no SDK/hardware effect occurs.
  */
-extern "C" void func_ov050_0220e204(void *scene, s32 value)
+extern "C" void Overlay050Scene_SetChildValue30(void *scene, s32 value)
 {
     for (s32 i = 0; i < 4; ++i) {
         FIELD(s32, FIELD(void *, scene, 0x1c + i * 4), 0x30) = value;
@@ -25,7 +25,7 @@ extern "C" void func_ov050_0220e204(void *scene, s32 value)
  * Return true only when field +0xC is zero in all four children at scene
  * +0x1C..+0x28. No state, SDK, or hardware state changes.
  */
-extern "C" bool func_ov050_0220e224(void *scene)
+extern "C" bool Overlay050Scene_AreChildrenIdle(void *scene)
 {
     for (s32 i = 0; i < 4; ++i) {
         if (FIELD(s32, FIELD(void *, scene, 0x1c + i * 4), 0x0c) != 0) {
@@ -39,7 +39,7 @@ extern "C" bool func_ov050_0220e224(void *scene)
  * Write `value` to +0x34 of all four children and clear scene field +0x40.
  * Scene/child state changes; nothing is returned and no SDK/MMIO is used.
  */
-extern "C" void func_ov050_0220e26c(void *scene, s32 value)
+extern "C" void Overlay050Scene_SetChildValue34(void *scene, s32 value)
 {
     for (s32 i = 0; i < 4; ++i) {
         FIELD(s32, FIELD(void *, scene, 0x1c + i * 4), 0x34) = value;

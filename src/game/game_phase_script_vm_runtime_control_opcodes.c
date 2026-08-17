@@ -47,7 +47,7 @@ s32 GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9(GamePhaseActorScriptVm *se
 s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode1(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    func_02008570((GamePhaseRuntime *)data_021052fc, 1, 1);
+    GamePhaseRuntime_ApplyScreenMode((GamePhaseRuntime *)data_021052fc, 1, 1);
     return 0;
 }
 
@@ -55,7 +55,7 @@ s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode1(GamePhaseActorScriptVm *self
 s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode0(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    func_02008570((GamePhaseRuntime *)data_021052fc, 0, 1);
+    GamePhaseRuntime_ApplyScreenMode((GamePhaseRuntime *)data_021052fc, 0, 1);
     return 0;
 }
 

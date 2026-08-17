@@ -6,13 +6,13 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern func_02058eb8
-.extern func_020597fc
-.extern func_02071d4c
-.extern func_02071eb8
+.extern Sound_ReleaseGroup
+.extern GraphicsArchive_ReleaseResourceE4
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_020923a0
 .extern func_ov032_021fce00
-.extern func_ov032_021fd7e0
+.extern Overlay032Child_Destroy
 .extern gDebugFont
 .extern gSoundContext
 
@@ -32,7 +32,7 @@ func_ov032_021fd7f8:
     ldr r0, L_021fd908
     mov r1, #0x81
     ldr r0, [r0, #0x0]
-    bl func_020597fc
+    bl Sound_ReleaseGroup
     ldr r0, [r4, #0x10]
     cmp r0, #0x0
     beq L_021fd84c
@@ -51,7 +51,7 @@ L_021fd84c:
     ldr r0, L_021fd914
     ldr r1, [r4, #0x8]
     ldr r0, [r0, #0x0]
-    bl func_02071d4c
+    bl GraphicsArchive_ReleaseResourceE4
     add r0, r4, #0x318
     add r0, r0, #0xc00
     bl GraphicsResourceSet_Destroy
@@ -73,17 +73,17 @@ L_021fd84c:
     ldr r3, L_021fd91c
     bl __destroy_arr
     add r0, r4, #0x58
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x4c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x40
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x34
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x28
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x1c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
@@ -91,7 +91,7 @@ L_021fd908: .word gSoundContext
 L_021fd90c: .word gDebugFont
 L_021fd910: .word data_020f4e14
 L_021fd914: .word data_020f4e18
-L_021fd918: .word func_ov032_021fd7e0
+L_021fd918: .word Overlay032Child_Destroy
 L_021fd91c: .word func_ov032_021fce00
 .size func_ov032_021fd7f8, .-func_ov032_021fd7f8
 

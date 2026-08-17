@@ -2,7 +2,7 @@
     .extern Heap_Free
     .extern data_020f4e14
     .extern data_ov016_02201540
-    .extern func_02071eb8
+    .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern func_020926f8
@@ -102,9 +102,9 @@ L_021fece0:
     add r0, r4, #0xe8
     bl func_ov016_021fe0d4
     add r0, r4, #0xd4
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xc8
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x84
     bl func_020926f8
     add r0, r4, #0x60

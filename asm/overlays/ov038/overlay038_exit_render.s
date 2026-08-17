@@ -2,14 +2,14 @@
 
 /* Exact fallback; see src/overlays/ov038/overlay038_exit_render.c for documented portable C. */
 
-    .extern func_020946a8
-    .extern func_02093ffc
+    .extern InventoryScroll_BeginMarkerDrag
+    .extern InventoryScroll_UpdateInterpolation
     .extern func_02092288
     .extern func_ov038_021fd578
-    .extern func_02093de4
-    .extern func_020946c8
+    .extern InventoryScroll_SaveOrigins
+    .extern InventoryScroll_UpdateMarkerDrag
     .extern func_02092260
-    .extern func_02094738
+    .extern InventoryScroll_EndMarkerDrag
     .extern func_ov038_021fce04
     .extern func_ov038_021fd37c
     .extern func_ov046_0220c1d8
@@ -32,7 +32,7 @@ func_ov038_021fdacc:
 L_021fdaf4:
     ldr r0, [r4, #0x314]
     mov r1, #0x4
-    bl func_020946a8
+    bl InventoryScroll_BeginMarkerDrag
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -40,7 +40,7 @@ L_021fdaf4:
     str r0, [r4, #0x8]
 L_021fdb14:
     ldr r0, [r4, #0x314]
-    bl func_02093ffc
+    bl InventoryScroll_UpdateInterpolation
     cmp r0, #0x0
     beq L_021fdb68
     ldr r0, [r4, #0x314]
@@ -67,14 +67,14 @@ L_021fdb68:
     b L_021fdbdc
 L_021fdb74:
     ldr r0, [r4, #0x314]
-    bl func_02093de4
+    bl InventoryScroll_SaveOrigins
     ldr r0, [r4, #0x20]
     mov r0, r0, lsl #0x1b
     movs r0, r0, asr #0x1f
     ldr r0, [r4, #0x314]
     beq L_021fdbc4
     add r1, r4, #0x30
-    bl func_020946c8
+    bl InventoryScroll_UpdateMarkerDrag
     cmp r0, #0x0
     beq L_021fdbdc
     mov r0, r4
@@ -88,7 +88,7 @@ L_021fdb74:
     b L_021fdbdc
 L_021fdbc4:
     mov r1, #0x6
-    bl func_02094738
+    bl InventoryScroll_EndMarkerDrag
     ldr r1, L_021fdbec
     mov r0, r4
     ldmia r1, {r1, r2}

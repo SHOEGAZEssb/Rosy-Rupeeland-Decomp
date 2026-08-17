@@ -1,8 +1,8 @@
     .text
     .extern data_020f4e14
     .extern data_021e9ac0
-    .extern func_020628c8
-    .extern func_020651a4
+    .extern ActorDescriptor_GetPrimaryLabel
+    .extern ActorDescriptorState_FindInactiveQuantity
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_MeasureText
@@ -18,11 +18,11 @@
     .extern gSystemState
 
 /* Exact fallbacks; see src/overlays/ov015/overlay015_record_runtime.c. */
-    .global func_ov015_021fd68c
+    .global Overlay015_UpdateRecords
     .global func_ov015_021fd6c8
     .global func_ov015_021fd8a8
 
-func_ov015_021fd68c:
+Overlay015_UpdateRecords:
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     ldr r0, [r4, #0xdc]
@@ -56,7 +56,7 @@ func_ov015_021fd6c8:
     ldrh r1, [r1, #0x0]
     ldr r0, [r0, #0x0]
     add r0, r0, #0x1c
-    bl func_020651a4
+    bl ActorDescriptorState_FindInactiveQuantity
     ldr r1, L_021fd89c
     mov r5, r0
     ldrb r0, [r1, #0x5f]
@@ -117,7 +117,7 @@ func_ov015_021fd6c8:
     ldr r1, [r6, #0x7c]
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [r4, #0xc]
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     ldr r2, L_021fd8a4
     mov r1, r0
     ldr r0, [r2, #0x0]
@@ -126,7 +126,7 @@ func_ov015_021fd6c8:
     bl GraphicsSpriteRenderer_MeasureText
     mov r5, r0
     ldr r0, [r4, #0xc]
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     add r1, r5, r5, lsr #0x1f
     mov r1, r1, asr #0x1
     rsb r2, r1, #0x80
@@ -187,6 +187,6 @@ func_ov015_021fd8a8:
     str r0, [r4, #0x300]
     ldmia sp!, {r4, pc}
 
-    .size func_ov015_021fd68c, func_ov015_021fd6c8 - func_ov015_021fd68c
+    .size Overlay015_UpdateRecords, func_ov015_021fd6c8 - Overlay015_UpdateRecords
     .size func_ov015_021fd6c8, func_ov015_021fd8a8 - func_ov015_021fd6c8
     .size func_ov015_021fd8a8, . - func_ov015_021fd8a8

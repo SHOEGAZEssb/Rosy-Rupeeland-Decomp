@@ -11,7 +11,7 @@
 .extern func_0202895c
 .extern func_02028cd4
 .extern func_02028e9c
-.extern func_02071f38
+.extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 
     .global func_02028dd4
@@ -44,9 +44,9 @@ func_02028dd4: ; 0x02028dd4
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteGroupOwner_DestroyGroup
     add r0, r6, #0x30
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     add r0, r6, #0x40
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     ldr r1, .L_02028e94
     add r0, r6, #0x5c
     str r1, [r6, #0x5c]

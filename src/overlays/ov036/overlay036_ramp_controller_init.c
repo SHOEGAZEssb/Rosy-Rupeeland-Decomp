@@ -25,7 +25,7 @@ extern void func_ov036_021ff050(void *handle, s32 mode,
                                 s32 x, s32 y, s32 z,
                                 s32 byte5A, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *object, void *handle);
+extern void *AlternateSpritePresentation_Init(void *object, void *handle);
 extern void PresentationList_Append(void *list, void *object);
 extern void Presentation_SetPosition(void *object, s32 x, s32 y, s32 z);
 extern void PresentationScalar_SetImmediate(void *field, s32 value);
@@ -33,7 +33,7 @@ extern void func_ov036_02201710(void *controller);
 extern void func_ov036_021fe9fc(void *record, s32 x, s32 y, s32 z);
 extern void func_ov036_021fea04(void *record, s32 x, s32 y, s32 z);
 extern void func_020b0300(s32, s32, s32, s32, s32);
-extern void func_02092850(s32 value);
+extern void TitlePalette_SetMainBackdrop(s32 value);
 extern void func_02091bac(void *timer, s32 mode, s32 first,
                           s32 second, s32 duration);
 extern void func_02091b98(void *timer, s32 duration);
@@ -87,7 +87,7 @@ extern "C" void *func_ov036_0220102c(void *controller, void *owner,
     func_ov036_021ff050(handle, 0, 0, 0, 0, 9, 0x42);
     void *child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     FIELD(void *, controller, 0x11c) = child;
     PresentationList_Append((u8 *)controller + 0x148, child);
 
@@ -95,7 +95,7 @@ extern "C" void *func_ov036_0220102c(void *controller, void *owner,
     func_ov036_021ff050(handle, 0, 0, 0, 0, 1, 0x46);
     child = Heap_Alloc(0xa0, data_ov036_02206160, 4, gHeapContext);
     if (child != 0)
-        child = func_020955d8(child, handle);
+        child = AlternateSpritePresentation_Init(child, handle);
     FIELD(void *, controller, 0xd8) = child;
     PresentationList_Append((u8 *)controller + 0x148, child);
     Presentation_SetPosition(child, 0, 0, 0);
@@ -105,7 +105,7 @@ extern "C" void *func_ov036_0220102c(void *controller, void *owner,
     func_ov036_021fe9fc((u8 *)controller + 0xc, 0, 0, 0x2800);
     func_ov036_021fea04((u8 *)controller + 0xc, 0, 0, 0);
     func_020b0300(0, 0x1f, 0x7fff, 0x3f, 0);
-    func_02092850(0);
+    TitlePalette_SetMainBackdrop(0);
     func_02091bac((u8 *)controller + 0x168,
                   1, 0, 0x1000, 0xf0);
     func_02091b98((u8 *)controller + 0x184, 0x78);

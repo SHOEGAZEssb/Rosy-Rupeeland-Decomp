@@ -20,12 +20,12 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02003e20(u32, const void *, u32, void *);
 extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, ...);
-extern void func_02094550(void *, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_SetSpritePriority(void *, s32);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void func_020c09cc(void *, s32, s32, s32, void (*)(void *), void *);
 extern void func_020c0c24(void *, s32, s32, void (*)(void *));
 #ifdef __cplusplus
@@ -65,7 +65,7 @@ extern "C" void func_ov022_021fd894(void *entry)
  */
 extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
 {
-    func_02092798(menu);
+    TitleCharacterResourceCollection_Init(menu);
     FIELD(s32, menu, 0x28) = capacity;
     FIELD(s32, menu, 0x2c) = 0;
     if (capacity != 0) {
@@ -88,8 +88,8 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
                               0xda, 0x18, 12);
         FIELD(void *, menu, 0x30) = ui;
     }
-    func_02094550(FIELD(void *, menu, 0x30), 0);
-    func_02094574(FIELD(void *, menu, 0x30));
+    InventoryScroll_SetSpritePriority(FIELD(void *, menu, 0x30), 0);
+    InventoryScroll_UpdatePresentation(FIELD(void *, menu, 0x30));
     GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, menu, 0x30), 0x50));
     func_02092814(menu, gSystemState[0x5f] != 0 ? 0x7006 : 0x7007);
     return menu;

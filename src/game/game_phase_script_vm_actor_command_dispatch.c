@@ -34,7 +34,7 @@ extern void *func_0201df54(...);
 extern void *func_0201df5c(...);
 extern void *func_ov054_0220ef78(...);
 extern void *func_ov073_02210710(...);
-extern void func_0201ded4(...);
+extern void PresentationList_AppendObject(...);
 extern void *func_0201e0ec(...);
 extern u32 func_020a257c(...);
 extern u32 func_020a25c8(...);
@@ -105,7 +105,7 @@ static s32 convertEffectOperand(s32 value)
 /* Add an allocated or null object to the global manager, matching retail behavior. */
 static void addScriptObject(void *object)
 {
-    func_0201ded4(getScriptObjectManager(), object);
+    PresentationList_AppendObject(getScriptObjectManager(), object);
 }
 
 /*

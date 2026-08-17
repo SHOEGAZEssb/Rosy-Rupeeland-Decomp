@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 extern void Actor_SetRuntimeFlag80(void *actor);
-extern void func_02032a94(void *actor);
+extern void ActorContactState_AddContact(void *actor);
 extern void func_02032abc(void);
 extern void Actor_TryDispatchActivationMode2(void *actor);
 extern s32 Actor_UpdateTimedResourceState(void *actor);
@@ -32,13 +32,13 @@ void func_0204eaac(void *actor)
 
 /*
  * Inputs are an actor, another actor, and a condition value. Run the inherited
- * callback func_02032a94. If pointer 0x188 is non-null, the other actor's byte
+ * callback ActorContactState_AddContact. If pointer 0x188 is non-null, the other actor's byte
  * 0x4D equals one, and the condition is zero, invoke Actor_TryDispatchActivationMode2 on the first
  * actor. Always return one. Engine state may change; no direct hardware effects.
  */
 s32 func_0204eac8(void *actor, const void *other, s32 condition)
 {
-    func_02032a94(actor);
+    ActorContactState_AddContact(actor);
     if (FIELD(void *, actor, 0x188) != 0 &&
         FIELD(u8, other, 0x4d) == 1 && condition == 0) {
         Actor_TryDispatchActivationMode2(actor);

@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_scene_helpers.c.
 
-.global func_ov050_0220e224
-func_ov050_0220e224:
+.global Overlay050Scene_AreChildrenIdle
+Overlay050Scene_AreChildrenIdle:
     mov ip, #0x0
     mov r1, ip
     mov r2, #0x1
@@ -23,4 +23,4 @@ func_ov050_0220e224:
     blt .L_0220e234
     mov r0, #0x1
     bx lr
-.size func_ov050_0220e224, . - func_ov050_0220e224
+.size Overlay050Scene_AreChildrenIdle, . - Overlay050Scene_AreChildrenIdle

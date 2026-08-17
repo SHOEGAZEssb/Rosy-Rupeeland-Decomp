@@ -13,7 +13,7 @@ extern void *func_0201e0ec(void *object);
 extern void *func_0202751c(void *object, void *phaseObject);
 extern void *func_020275b0(void);
 extern void func_02027f2c(void);
-extern void *func_02027f94(void);
+extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern void ActorCollection_SetSpriteMode(void *object, s32 value);
 extern void ActorCollection_SetEnabled(void *object, s32 value);
 extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *object, s32 enabled);
@@ -133,10 +133,10 @@ void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configu
         GameWork_ClearFlag(gGameWork, flags[i]);
     *(u16 *)(work + 0x19e) = 0x10;
     *(u16 *)(work + 0x218) = 0;
-    func_02027f94();
+    GamePhaseProgress_GetOrCreateGlobal();
     func_02027f2c();
     GamePhase_ResetTransientState();
-    *(s32 *)((u8 *)func_02027f94() + 8) =
+    *(s32 *)((u8 *)GamePhaseProgress_GetOrCreateGlobal() + 8) =
         (s32)(config->flags40 << 6) >> 31;
     *(u16 *)(lupy + 0xcc) = 0xb4;
     *(u16 *)(lupy + 0xce) = 3;

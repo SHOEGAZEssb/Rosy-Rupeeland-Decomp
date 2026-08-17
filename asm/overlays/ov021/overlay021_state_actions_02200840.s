@@ -20,7 +20,7 @@
     .extern func_ov021_021feea4
     .extern func_ov021_021ff0e0
     .extern func_ov021_021ff274
-    .extern func_ov021_021ff4f0
+    .extern Overlay021Descriptor_GetFlags16_19
 
 .global func_ov021_02200840
 func_ov021_02200840:
@@ -91,7 +91,7 @@ L_022008f4:
     b L_02200944
 L_02200928:
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021ff4f0
+    bl Overlay021Descriptor_GetFlags16_19
     cmp r0, #0x1
     bne L_02200944
     mov r0, r4

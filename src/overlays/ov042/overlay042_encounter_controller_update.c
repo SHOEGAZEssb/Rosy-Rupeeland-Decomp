@@ -17,7 +17,7 @@ extern "C" s32 data_ov042_0220aca8[];
 extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
-extern "C" void func_0205929c(void *sound, s32 sequence, s32 value);
+extern "C" void Sound_StopDirectSequence(void *sound, s32 sequence, s32 value);
 extern "C" void func_020593ac(void *sound, s32 sequence, s32 channel,
                                s32 value, s32 arg0, s32 arg1);
 extern "C" void func_0205940c(void *sound, s32 sequence, s32 value);
@@ -251,7 +251,7 @@ extern "C" void func_ov042_02201f30(void *scene)
                 FIELD(s32, owner, 0x1ec) = 2;
                 func_ov042_021fda0c((u8 *)scene + 0x154, (u8 *)scene + 0xa4);
                 FIELD(s32, scene, 0x1c4) = 0;
-                func_0205929c(gSoundContext, 0xe1, 0);
+                Sound_StopDirectSequence(gSoundContext, 0xe1, 0);
             }
         } else {
             s32 tick = ++FIELD(s32, scene, 0x1bc);

@@ -27,8 +27,8 @@ extern const u8 data_ov005_021fc95c[];
 extern const s32 data_ov005_021fc8f0[];
 extern const s32 data_ov005_021fc9e8[2];
 extern const u8 data_020d780c[];
-extern void func_02091e28(void *state);
-extern void func_02071ea4(void *resource);
+extern void SceneInputBase_Init(void *state);
+extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
@@ -93,9 +93,9 @@ Overlay005Presentation *func_ov005_021fbe6c(Overlay005Presentation *state)
     void *auxiliary;
     s32 selected;
 
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const void *, state, 0x000) = data_ov005_021fcad4;
-    func_02071ea4((u8 *)state + 0x54);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x54);
     func_02071ee0((u8 *)state + 0x54, data_020f4e18, 0x1023, 0x1024,
                   0x1025);
     FIELD(void *, state, 0x060) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);

@@ -11,7 +11,7 @@ extern "C" {
 extern void *func_020695f4(void *actor, s32 *count);
 extern void VecFx32Object_InitCopy(void *temporary, const void *source);
 extern void VecFx32Object_Destroy(void *temporary);
-extern void func_02062864(void *object, s32 enabled);
+extern void ActorDescriptor_SetRangeEnd(void *object, s32 enabled);
 extern void GridEffectActor_SpawnWithRandomVelocity(void *temporary, void *object, s32 kind);
 extern void PresentationBackedActor_SpawnSplitAmount(s32 kind, s32 count, void *temporary);
 extern void PresentationBackedActor_SpawnTripleVariant(s32 kind, s32 count, void *temporary);
@@ -66,7 +66,7 @@ s32 ActorExtendedType2_UpdateTerminalState18(void *self)
             if (object != 0) {
                 s32 i;
                 u16 entries = *(u16 *)((u8 *)object + 4);
-                func_02062864(object, 1);
+                ActorDescriptor_SetRangeEnd(object, 1);
                 for (i = 0; i < entries; ++i)
                     GridEffectActor_SpawnWithRandomVelocity(temporary, object, 300);
             } else if (count > 0) {

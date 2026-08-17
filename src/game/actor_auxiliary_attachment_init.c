@@ -14,7 +14,7 @@ extern void *data_020f4e18;
 extern "C" {
 #endif
 extern u32 func_02071e60(void *, u32);
-extern u32 func_02071e70(void *, u32);
+extern u32 GraphicsArchive_FindPaletteResource(void *, u32);
 extern u32 func_02071e80(void *, u32);
 extern void *Actor_GetCollection(ActorAuxiliaryAttachmentOwner *);
 extern void *ActorCollection_GetSpriteOwner(void *);
@@ -43,7 +43,7 @@ void func_020314b8(ActorAuxiliaryAttachmentOwner *self)
         return;
     }
     first = func_02071e60(data_020f4e18, 0x1386);
-    second = func_02071e70(data_020f4e18, 0x1001);
+    second = GraphicsArchive_FindPaletteResource(data_020f4e18, 0x1001);
     third = func_02071e80(data_020f4e18, 0x1387);
     self->attachment_a8 = GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), first, second, third, 2);

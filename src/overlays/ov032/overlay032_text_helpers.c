@@ -13,10 +13,10 @@ extern "C" {
 #endif
 extern s32 func_020befec(...);
 extern void GraphicsSpriteText_FormatDecimal(...);
-extern void func_02092e9c(...);
+extern void TitleDialog_SetText(...);
 extern void func_020939c8(void *);
-extern void func_020939d8(void *);
-extern void func_02093360(...);
+extern void TitleDialog_ClearTextRect(void *);
+extern void TitleDialog_UpdateTextPage(...);
 extern void *func_020791e0(...);
 #ifdef __cplusplus
 }
@@ -28,7 +28,7 @@ extern void *func_020791e0(...);
  * opens and advances the dialog. Returns void. Locale byte +0x5F is confirmed;
  * the language enumeration names are not yet known.
  */
-extern "C" void func_ov032_021fe2f0(void *scene)
+extern "C" void Overlay032Scene_SetNumericDialogText(void *scene)
 {
     u16 text[32];
     u32 value = FIELD(u32, scene, 0xc20);
@@ -73,9 +73,9 @@ extern "C" void func_ov032_021fe2f0(void *scene)
     text[length + 1] = 0;
 
     void *dialog = FIELD(void *, scene, 0x14);
-    func_02092e9c(dialog, text, 0);
+    TitleDialog_SetText(dialog, text, 0);
     func_020939c8(dialog);
-    func_02093360(dialog, 0);
+    TitleDialog_UpdateTextPage(dialog, 0);
 }
 
 /*
@@ -88,8 +88,8 @@ extern "C" void func_ov032_021fe440(void *scene)
     u32 index = FIELD(u32, scene, 0xc24);
     u16 messageId = (u16)FIELD(u32, data_020c7ba8, index * 0x208);
     void *dialog = FIELD(void *, scene, 0x18);
-    func_020939d8(dialog);
-    func_02092e9c(dialog, func_020791e0(data_021f3ecc, messageId), 0);
+    TitleDialog_ClearTextRect(dialog);
+    TitleDialog_SetText(dialog, func_020791e0(data_021f3ecc, messageId), 0);
     func_020939c8(dialog);
-    func_02093360(dialog, 0);
+    TitleDialog_UpdateTextPage(dialog, 0);
 }

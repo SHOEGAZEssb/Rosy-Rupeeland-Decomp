@@ -15,7 +15,7 @@ extern void *ActorCollection_GetSpriteOwner(void);
 extern void Actor_GetCollection(void *actor);
 extern void func_02034260(void *actor, const void *descriptor);
 extern void *func_02071e60(void *archive, u32 resource_id);
-extern void *func_02071e70(void *archive, u32 resource_id);
+extern void *GraphicsArchive_FindPaletteResource(void *archive, u32 resource_id);
 extern void *func_02071e80(void *archive, u32 resource_id);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, void *resource1,
@@ -37,7 +37,7 @@ void func_0204e9e8(void *actor, const void *descriptor)
 {
     void *resource0 = func_02071e60(data_020f4e18,
                                     FIELD(u32, descriptor, 4));
-    void *resource1 = func_02071e70(data_020f4e18,
+    void *resource1 = GraphicsArchive_FindPaletteResource(data_020f4e18,
                                     FIELD(u32, descriptor, 8));
     void *resource2 = func_02071e80(data_020f4e18,
                                     FIELD(u32, descriptor, 12));

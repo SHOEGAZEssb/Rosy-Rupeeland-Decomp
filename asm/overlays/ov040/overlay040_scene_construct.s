@@ -14,7 +14,7 @@
     .extern VecFx32Object_Destroy
     .extern VecFx32Object_Assign
     .extern func_0207043c
-    .extern func_02070874
+    .extern GraphicsBgResourceData_GetDecoded
     .extern func_02070888
     .extern func_020708c4
     .extern func_02070e0c
@@ -170,7 +170,7 @@ func_ov040_021fcebc: ; 0x021fcebc
     bl func_020b44e8
     ldr r5, [sp, #0x1c]
     mov r0, r5
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r5
     bl func_02070888
@@ -212,7 +212,7 @@ func_ov040_021fcebc: ; 0x021fcebc
     add r0, r10, #0x1000
     ldr r5, [r0, #0xb80]
     mov r0, r5
-    bl func_02070874
+    bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r5
     bl func_02070888

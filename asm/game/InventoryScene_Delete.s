@@ -1,14 +1,15 @@
 .text
 ; Matching fallback for the portable implementation in src/game/inventory_scene_controller.c.
 .extern GameWork_ClearFlag
+.extern Heap_Free
 .extern OverlaySlot_Destroy
 .extern data_020e55d8
 .extern gGameWork
 
-.global func_02068538
-func_02068538:
+.global InventoryScene_Delete
+InventoryScene_Delete:
     stmdb sp!, {r4, lr}
-    ldr r1, .L_020685a4
+    ldr r1, .L_02068624
     mov r4, r0
     str r1, [r4, #0x0]
     ldr r0, [r4, #0x20]
@@ -16,16 +17,16 @@ func_02068538:
     str r0, [r4, #0x20]
     ldr r0, [r4, #0x54]
     cmp r0, #0x0
-    beq .L_0206856c
+    beq .L_020685e4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x8]
     blx r1
-.L_0206856c:
-    ldr r0, .L_020685a8
-    ldr r1, .L_020685ac
+.L_020685e4:
+    ldr r0, .L_02068628
+    ldr r1, .L_0206862c
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
-    ldr r0, .L_020685a8
+    ldr r0, .L_02068628
     mov r1, #0x388
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
@@ -34,8 +35,10 @@ func_02068538:
     add r0, r4, #0x58
     bl OverlaySlot_Destroy
     mov r0, r4
+    bl Heap_Free
+    mov r0, r4
     ldmia sp!, {r4, pc}
-.L_020685a4: .word data_020e55d8
-.L_020685a8: .word gGameWork
-.L_020685ac: .word 0x387
-.size func_02068538, . - func_02068538
+.L_02068624: .word data_020e55d8
+.L_02068628: .word gGameWork
+.L_0206862c: .word 0x387
+.size InventoryScene_Delete, . - InventoryScene_Delete

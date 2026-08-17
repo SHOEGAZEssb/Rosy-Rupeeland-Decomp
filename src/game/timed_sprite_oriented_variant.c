@@ -12,7 +12,7 @@ extern "C" {
 extern void *data_020d605c;
 extern TimedSprite *func_0201e290(TimedSprite *self,u8 *config);
 extern TimedSprite *func_0201e380(TimedSprite *self);
-extern void func_0201e3b8(TimedSprite *self,s32 enabled);
+extern void TimedSpritePresentation_SetVisible(TimedSprite *self,s32 enabled);
 extern void VecFx32Object_Assign(Track *destination,const void *source);
 extern void VecFx32Object_Add(Track *first,Track *second);
 extern u16 func_020ae024(s32 x,s32 y);
@@ -58,7 +58,7 @@ TimedSprite *func_0201e4e4(TimedSprite *self){func_0201e380(self);Heap_Free(self
 s32 func_0201e500(TimedSprite *self,s32 argument)
 {
     self->remaining28--;
-    if(self->remaining28<0){func_0201e3b8(self,0);return 1;}
+    if(self->remaining28<0){TimedSpritePresentation_SetVisible(self,0);return 1;}
     VecFx32Object_Add(&self->first08,&self->second18);
     GraphicsSpriteState_SetWorldPositionFromOrigin(self->sprite,argument,*(s32 *)&self->first08.bytes[4],
         *(s32 *)&self->first08.bytes[8],*(s32 *)&self->first08.bytes[0xc],8);

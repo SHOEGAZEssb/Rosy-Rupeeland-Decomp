@@ -6,8 +6,8 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071e04(void *);
-extern void *func_02071adc(void *, void *);
+extern void GraphicsArchive_ReleaseOwlvResource(void *);
+extern void *GraphicsArchive_AcquireOwlvResource(void *, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -19,7 +19,7 @@ extern "C"
 void func_ov012_021fceb4(void *object, void *descriptor)
 {
     if (*(void **)((u8 *)object + 4) != 0) {
-        func_02071e04(data_020f4e18);
+        GraphicsArchive_ReleaseOwlvResource(data_020f4e18);
     }
-    *(void **)((u8 *)object + 4) = func_02071adc(data_020f4e18, descriptor);
+    *(void **)((u8 *)object + 4) = GraphicsArchive_AcquireOwlvResource(data_020f4e18, descriptor);
 }

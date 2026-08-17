@@ -13,8 +13,8 @@ extern const u8 data_ov035_02202e60[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059278(void *soundContext, s32 id, s32 value);
-extern void func_0205929c(void *soundContext, s32 id, s32 value);
+extern void Sound_PlayDirectSequence(void *soundContext, s32 id, s32 value);
+extern void Sound_StopDirectSequence(void *soundContext, s32 id, s32 value);
 extern void Sound_Play(void *soundContext, s32 id);
 extern void Presentation_SetScript(void *object, const void *animation, s32 loop);
 extern s32 Presentation_IsScriptSuspended(void *object);
@@ -55,7 +55,7 @@ extern "C" s32 func_ov035_022005b0(void *scene)
 {
     switch (FIELD(s32, scene, 0xa0)) {
     case 0:
-        func_02059278(gSoundContext, 0xb7, 0x7f);
+        Sound_PlayDirectSequence(gSoundContext, 0xb7, 0x7f);
         Presentation_SetScript(FIELD(void *, scene, 0x114),
                       data_ov035_02202eb8, 1);
         Presentation_SetScript(FIELD(void *, scene, 0x118),
@@ -93,7 +93,7 @@ extern "C" s32 func_ov035_022005b0(void *scene)
         break;
     case 3:
         if (Presentation_IsScriptComplete(FIELD(void *, scene, 0x108)) != 0) {
-            func_0205929c(gSoundContext, 0xb7, 0x10);
+            Sound_StopDirectSequence(gSoundContext, 0xb7, 0x10);
             ++FIELD(s32, scene, 0xa0);
         }
         break;

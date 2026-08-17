@@ -6,7 +6,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_0201ded4
+.extern PresentationList_AppendObject
 .extern func_02028b98
 .extern gHeapContext
 
@@ -59,7 +59,7 @@ func_0202906c: ; 0x0202906c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201ded4
+    bl PresentationList_AppendObject
     mov r4, r0
     cmp r6, #0x0
     beq .L_02029138

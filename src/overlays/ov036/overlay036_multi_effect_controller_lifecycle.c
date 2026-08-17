@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void func_0205940c(void *context, s32 id, s32 value);
 extern void PresentationList_DeleteAll(void *list);
-extern void func_02071e04(void *archive, void *resource);
+extern void GraphicsArchive_ReleaseOwlvResource(void *archive, void *resource);
 extern void Graphics3DResourceOwner_RemoveManager(void *manager);
 extern void GraphicsResourceSetVariant_Destroy(void *resourceSet);
 extern void Heap_Free(void *allocation);
@@ -38,8 +38,8 @@ extern "C" void *func_ov036_021ff5bc(void *controller)
     PresentationList_DeleteAll((u8 *)controller + 0x108);
     PresentationList_DeleteAll((u8 *)controller + 0x118);
     PresentationList_DeleteAll((u8 *)controller + 0x128);
-    func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf0));
-    func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf4));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, controller, 0xf0));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, controller, 0xf4));
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
     FIELD(const void *, controller, 0x128) = data_ov036_02205eac;
     PresentationList_DeleteAll((u8 *)controller + 0x128);
@@ -64,8 +64,8 @@ extern "C" void *func_ov036_021ff680(void *controller)
     PresentationList_DeleteAll((u8 *)controller + 0x108);
     PresentationList_DeleteAll((u8 *)controller + 0x118);
     PresentationList_DeleteAll((u8 *)controller + 0x128);
-    func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf0));
-    func_02071e04(data_020f4e18, FIELD(void *, controller, 0xf4));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, controller, 0xf0));
+    GraphicsArchive_ReleaseOwlvResource(data_020f4e18, FIELD(void *, controller, 0xf4));
     Graphics3DResourceOwner_RemoveManager(FIELD(void *, FIELD(void *, controller, 0xe8), 0));
     FIELD(const void *, controller, 0x128) = data_ov036_02205eac;
     PresentationList_DeleteAll((u8 *)controller + 0x128);

@@ -37,7 +37,7 @@ extern "C" {
 extern void *gTimedSpriteSampledArcPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
-extern void *func_0201e250(void *self);
+extern void *TimedSpritePresentation_InitBase(void *self);
 extern SampledArcSpriteConfig *TimedSpriteConfig_InitTracks(
     SampledArcSpriteConfig *config);
 extern void *func_0201edd0(void *self, SampledArcSpriteConfig *config);
@@ -67,7 +67,7 @@ TimedSpriteSampledArcPresentation *TimedSpriteSampledArcPresentation_Init(
     void *presentation;
     u8 *sprite;
 
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable = (void **)gTimedSpriteSampledArcPresentationVtable;
     TimedSpriteConfig_InitTracks(&config);
     config.spriteGroup = spriteGroup;

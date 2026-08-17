@@ -2,7 +2,7 @@
 .text
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_Pop
-.extern func_02065270
+.extern ActorDescriptorState_ActivateFirstEligible
 .global GamePhaseActorScriptVm_RepeatGlobalState34Operation
 GamePhaseActorScriptVm_RepeatGlobalState34Operation:
     stmdb sp!, {r4, r5, r6, lr}
@@ -14,7 +14,7 @@ GamePhaseActorScriptVm_RepeatGlobalState34Operation:
 L_02019140:
     ldr r0, [r5, #0x0]
     add r0, r0, #0x34
-    bl func_02065270
+    bl ActorDescriptorState_ActivateFirstEligible
     add r6, r6, #0x1
 L_02019150:
     cmp r6, r4, lsr #0x10

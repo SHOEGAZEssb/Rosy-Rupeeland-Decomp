@@ -37,7 +37,7 @@ extern void func_020706c4(void *resource, s32 layer, s32 value);
 extern void func_02070bc4(void *resource, s32 offset);
 extern void func_02070eac(void *resource, s32 layer, s32 value);
 extern void GraphicsResourceSet_ReleaseHandles(Overlay004GraphicsResourceSet *set);
-extern void func_0205974c(void *context, s32 soundId);
+extern void Sound_LoadGroup(void *context, s32 soundId);
 #ifdef __cplusplus
 }
 #endif
@@ -113,6 +113,6 @@ void func_ov004_021fba28(Overlay004VariantResourceState *state)
     case 10: state->soundId_154 = 0x21e; state->soundParameter_158 = 0x6900; break;
     default: state->soundId_154 = 0xf6; state->soundParameter_158 = 0x7b00; break;
     }
-    func_0205974c(gSoundContext, state->soundId_154);
+    Sound_LoadGroup(gSoundContext, state->soundId_154);
     GraphicsResourceSet_Destroy(&set);
 }

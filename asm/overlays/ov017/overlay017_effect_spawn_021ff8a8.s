@@ -3,7 +3,7 @@
     .extern Heap_Alloc
     .extern data_ov017_022016b4
     .extern data_ov017_02201754
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern PresentationList_Append
     .extern func_ov017_021fd94c
     .extern gHeapContext
@@ -322,7 +322,7 @@ L_021ffc48:
     beq L_021ffc98
     add r0, r8, #0x3fc
     mov r1, #0x3c
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r2, [sp, #0x28]
     mov r1, r7
     str r2, [sp, #0x0]

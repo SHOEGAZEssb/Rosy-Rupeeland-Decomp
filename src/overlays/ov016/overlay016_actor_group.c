@@ -12,8 +12,8 @@ extern const u32 data_ov016_02201520[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
@@ -28,7 +28,7 @@ extern void func_02095820(void *, s32, s32);
 extern void func_02095928(void *);
 extern void func_02095940(void *);
 extern void func_ov016_021fe0d4(void *);
-extern void func_ov016_021fe0d8(void *);
+extern void Overlay016SmallBase_Init(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -46,10 +46,10 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
 {
     void *sprite;
 
-    func_02071ea4(state);
-    func_02071ea4((u8 *)state + 0xc);
+    AnimationResourceState_InitEmbedded(state);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0xc);
     func_020957bc((u8 *)state + 0x20);
-    func_ov016_021fe0d8((u8 *)state + 0xd0);
+    Overlay016SmallBase_Init((u8 *)state + 0xd0);
     FIELD(s32, state, 0xe0) = (index + 1) * 5;
     FIELD(u32, state, 0xe4) = data_ov016_02201394[index];
     FIELD(void *, state, 0xcc) = 0;
@@ -89,8 +89,8 @@ extern "C" void *func_ov016_021fe24c(void *state)
     FIELD(const u32 *, state, 0xd0) = data_ov016_02201520;
     PresentationList_DeleteAll((u8 *)state + 0xd0);
     func_ov016_021fe0d4((u8 *)state + 0x20);
-    func_02071eb8((u8 *)state + 0xc);
-    func_02071eb8(state);
+    AnimationResourceState_Destroy((u8 *)state + 0xc);
+    AnimationResourceState_Destroy(state);
     return state;
 }
 

@@ -7,8 +7,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02070874(void *);
-extern s32 func_02093360(void *, const void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
+extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void func_ov045_0220c028(void *);
 extern void func_ov045_0220c128(void *, s32);
 extern void func_ov045_0220c174(void *);
@@ -49,7 +49,7 @@ extern "C" s32 func_ov029_021fd850(void *state)
     } else if (controllerFlags & 2) {
         func_ov045_0220c174(FIELD(void *, state, 0xa4));
     }
-    u32 result = (u32)func_02093360(controller, packet);
+    u32 result = (u32)TitleDialog_UpdateTextPage(controller, packet);
     if (result & 0x200)
         func_ov045_0220c128(FIELD(void *, state, 0xa4),
                             FIELD(s32, controller, 0xe8));
@@ -69,7 +69,7 @@ extern "C" void func_ov029_021fd95c(void *state)
 {
     FIELD(void *, state, 0xd4) = FIELD(void *, state, 0xd8);
     FIELD(void *, state, 0xd8) =
-        (u8 *)func_02070874(FIELD(void *, state, 0xe8)) + 0x80;
+        (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0xe8)) + 0x80;
     FIELD(s32, state, 0xdc) = 0;
 }
 
@@ -78,7 +78,7 @@ extern "C" void func_ov029_021fd988(void *state)
 {
     FIELD(void *, state, 0xd4) = FIELD(void *, state, 0xd8);
     FIELD(void *, state, 0xd8) =
-        (u8 *)func_02070874(FIELD(void *, state, 0xe8)) + 0x60;
+        (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0xe8)) + 0x60;
     FIELD(s32, state, 0xdc) = 0;
 }
 
@@ -87,6 +87,6 @@ extern "C" void func_ov029_021fd9b4(void *state)
 {
     FIELD(void *, state, 0xd4) = FIELD(void *, state, 0xd8);
     FIELD(void *, state, 0xd8) =
-        (u8 *)func_02070874(FIELD(void *, state, 0xe8)) + 0x20;
+        (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, state, 0xe8)) + 0x20;
     FIELD(s32, state, 0xdc) = 0;
 }

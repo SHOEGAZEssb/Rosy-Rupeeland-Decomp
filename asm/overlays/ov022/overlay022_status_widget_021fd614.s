@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209189c
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern func_ov022_021fd514
 
 .global func_ov022_021fd614
@@ -38,7 +38,7 @@ L_021fd664:
     ldmneia sp!, {r4, pc}
     add r0, r4, #0x30
     mov r1, #0x3
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     cmp r0, #0x0
     ldr r0, [r4, #0x20]
     beq L_021fd6a0

@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void func_02070958(void *, s32, s32, s32);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -46,9 +46,9 @@ extern "C" void *func_ov030_021fd27c(void *widget)
     func_02091e1c((u8 *)widget + 0x1d0);
     func_ov030_021fcf18((u8 *)widget + 0x104);
     func_ov030_021fcf18((u8 *)widget + 0x58);
-    func_02071eb8((u8 *)widget + 0x1c);
-    func_02071eb8((u8 *)widget + 0x10);
-    func_02071eb8((u8 *)widget + 4);
+    AnimationResourceState_Destroy((u8 *)widget + 0x1c);
+    AnimationResourceState_Destroy((u8 *)widget + 0x10);
+    AnimationResourceState_Destroy((u8 *)widget + 4);
     return widget;
 }
 

@@ -20,10 +20,10 @@ extern void *gDebugFont[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *presentation, void *argument);
-extern void func_02071ea4(void *resource);
+extern void SceneInputBase_Init(void *presentation, void *argument);
+extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_020957bc(void *list);
-extern void func_02092798(void *transform);
+extern void TitleCharacterResourceCollection_Init(void *transform);
 extern void func_02091b6c(void *timer);
 extern void func_02071ee0(void *resource, void *archive, s32 firstId,
                           s32 mode, s32 lastId);
@@ -36,8 +36,8 @@ extern s32 GameWork_TestFlag(void *gameWork, u16 flag);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void *func_02094154(void *object, void *resource, s32 count, s32 mode,
                            s32 width, s32 rowHeight, s32 columns);
-extern void func_02094550(void *object, s32 enabled);
-extern void func_02094574(void *object);
+extern void InventoryScroll_SetSpritePriority(void *object, s32 enabled);
+extern void InventoryScroll_UpdatePresentation(void *object);
 extern void func_02092814(void *transform, s32 command);
 extern void func_ov038_021fd210(void *presentation);
 extern void func_ov038_021fd28c(void *presentation);
@@ -67,11 +67,11 @@ extern void func_ov038_021fce04(void *node, void *value24, void *value28);
  */
 extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
 {
-    func_02091e28(presentation, argument);
+    SceneInputBase_Init(presentation, argument);
     FIELD(const void *, presentation, 0) = data_ov038_021fdd28;
-    func_02071ea4((u8 *)presentation + 0x54);
+    AnimationResourceState_InitEmbedded((u8 *)presentation + 0x54);
     func_020957bc((u8 *)presentation + 0x64);
-    func_02092798((u8 *)presentation + 0x318);
+    TitleCharacterResourceCollection_Init((u8 *)presentation + 0x318);
     func_02091b6c((u8 *)presentation + 0x348);
     FIELD(s32, presentation, 0x33c) = 0;
 
@@ -100,8 +100,8 @@ extern "C" void *func_ov038_021fce2c(void *presentation, void *argument)
             model = func_02094154(model, data_020f4e14[0], count, 5,
                                   0xe8, 0x20, 4);
         FIELD(void *, presentation, 0x314) = model;
-        func_02094550(model, 1);
-        func_02094574(model);
+        InventoryScroll_SetSpritePriority(model, 1);
+        InventoryScroll_UpdatePresentation(model);
         func_02092814((u8 *)presentation + 0x318, 0x7000);
         func_02092814((u8 *)presentation + 0x318, 0x7006);
         func_02092814((u8 *)presentation + 0x318, 0x7005);

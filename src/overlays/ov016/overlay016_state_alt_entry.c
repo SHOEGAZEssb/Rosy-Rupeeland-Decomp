@@ -18,7 +18,7 @@ extern s32 GameWork_TestFlag(void *, u32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov000_021fc9d4(void *);
-extern void func_ov016_021fe754(void *, u32, u32);
+extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ff908(void *, s32, s32, void *);
 extern void func_ov016_021ff9b8(void *);
@@ -53,7 +53,7 @@ extern "C" s32 func_ov016_02200778(void *state)
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_ov016_021fe754(state, data_ov016_022014a8[0],
+                Overlay016ActorValue_Init(state, data_ov016_022014a8[0],
                                     data_ov016_022014a8[1]);
             }
         } else {
@@ -71,7 +71,7 @@ extern "C" s32 func_ov016_02200778(void *state)
                           (u8 *)state + 0x30,
                           (FIELD(u32, state, 0x20) & 0x20) != 0 ? -1 : 0) >= 0) {
             func_ov016_021ff9b8(state);
-            func_ov016_021fe754(state, data_ov016_022014a0[0],
+            Overlay016ActorValue_Init(state, data_ov016_022014a0[0],
                                 data_ov016_022014a0[1]);
         }
         break;

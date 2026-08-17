@@ -3,10 +3,10 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_scene_runtime.c. */
 .extern data_ov025_022033ac
 .extern func_02070e0c
-.extern func_02092790
+.extern TitleScreenResourceCollection_Get
 .extern func_020959d4
-.extern func_02095c30
-.extern func_02095f48
+.extern ModalState_InitResources
+.extern ModalState_CopyAttachmentText
 .extern gHeapContext
 .extern Heap_Alloc
 
@@ -19,7 +19,7 @@ func_ov025_02200224:
     add r0, r6, #0x530
     mov r1, #0x0
     mov r4, r2
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070e0c
@@ -39,11 +39,11 @@ L_02200274:
     beq L_0220028c
     ldr r0, [r6, #0x59c]
     mov r1, r4
-    bl func_02095f48
+    bl ModalState_CopyAttachmentText
 L_0220028c:
     ldr r0, [r6, #0x59c]
     mov r1, r5
-    bl func_02095c30
+    bl ModalState_InitResources
     ldr r0, [r6, #0x48]
     orr r0, r0, #0x2
     str r0, [r6, #0x48]

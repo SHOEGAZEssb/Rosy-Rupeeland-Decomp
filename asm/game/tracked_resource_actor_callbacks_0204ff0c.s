@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_callbacks.c.
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_02032a94
+.extern ActorContactState_AddContact
 .extern Actor_SetInteractionFlag2000
 .extern func_02034a60
 .extern ActorDerivedType1_ScanActiveRecordCollisions
@@ -21,7 +21,7 @@ TrackedResourceActor_HandleInteractionCallback: ; 0x0204ff0c
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_02032a94
+    bl ActorContactState_AddContact
     ldmia sp!, {r4, r5, r6, pc}
 .size TrackedResourceActor_HandleInteractionCallback, . - TrackedResourceActor_HandleInteractionCallback
 

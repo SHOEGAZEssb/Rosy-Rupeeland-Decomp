@@ -5,7 +5,7 @@
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_HasFlag4Target
 .extern Type7Actor_PlayStateSound
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .global Type7Actor_UpdateAnimation3ByHeight
 .global Type7Actor_UpdateTargetProximityState
 .global Type7Actor_SelectAnimation6Or7
@@ -73,7 +73,7 @@ Type7Actor_UpdateTargetProximityState: ; 0x02048e98
     ldr r0, [r4, #0x280]
     bl Actor_GetCachedTerrainHeight
     sub r0, r5, r0
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     cmp r0, #0x20000
     bge .L_02048f60
     mov r0, r4

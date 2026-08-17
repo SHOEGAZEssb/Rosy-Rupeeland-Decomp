@@ -16,14 +16,14 @@
     .extern func_02092618
     .extern func_02092638
     .extern func_02092688
-    .extern func_020926d8
+    .extern TitleScreenResourceCollection_Init
     .extern func_020926f8
     .extern func_02092754
-    .extern func_02092790
+    .extern TitleScreenResourceCollection_Get
     .extern func_020afd0c
     .extern func_020b44e8
     .extern func_ov016_021ff04c
-    .extern func_ov016_021ff068
+    .extern Overlay016_ConfigureMainBg3
     .extern gDebugFont
 .global func_ov016_021fedc4
 func_ov016_021fedc4:
@@ -53,7 +53,7 @@ func_ov016_021fedc4:
     and r5, r5, #0x43
     orr r5, r5, #0x1c00
     strh r5, [ip, #0x4]
-    bl func_ov016_021ff068
+    bl Overlay016_ConfigureMainBg3
     bl func_020925f8
     mov r0, #0x0
     mov r1, #0x1
@@ -91,7 +91,7 @@ func_ov016_021fedc4:
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     add r0, sp, #0x10
-    bl func_020926d8
+    bl TitleScreenResourceCollection_Init
     ldr r3, L_021ff024
     ldr r1, L_021ff028
     str r3, [sp, #0x0]
@@ -137,13 +137,13 @@ L_021fef4c:
     bl GraphicsResourceSet_Apply
     add r0, sp, #0x10
     mov r1, #0x0
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x0
     mov r2, r1
     bl func_02070eac
     add r0, sp, #0x10
     mov r1, #0x1
-    bl func_02092790
+    bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
     bl func_02070eac

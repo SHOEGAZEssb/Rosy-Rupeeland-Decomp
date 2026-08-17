@@ -27,11 +27,11 @@
     .extern Graphics3DResourceOwner_CreateManager
     .extern Graphics3DSceneState_Init
     .extern Graphics3DResourceBinding_Init
-    .extern func_02091e28
+    .extern SceneInputBase_Init
     .extern func_02092364
     .extern func_020923a4
     .extern func_02092638
-    .extern func_0209285c
+    .extern TitlePalette_SetSubBackdrop
     .extern func_020b0300
     .extern func_020b4554
     .extern func_ov010_021fce00
@@ -53,7 +53,7 @@ func_ov010_021fcebc: ; 0x021fcebc
     mov r10, r0
     bl Scene_Init
     add r0, r10, #0x24
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r0, L_021fd19c
     ldr r1, L_021fd1a0
     str r0, [r10, #0x0]
@@ -220,7 +220,7 @@ L_021fd044:
     mov r3, r1
     bl func_ov010_021fce84
     mov r0, #0x0
-    bl func_0209285c
+    bl TitlePalette_SetSubBackdrop
     mov r0, r10
     bl Scene_SetFlags03
     ldr r0, L_021fd1e4

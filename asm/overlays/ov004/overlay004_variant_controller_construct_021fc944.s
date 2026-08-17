@@ -1,6 +1,6 @@
     .text
-    .extern func_02091e28
-    .extern func_02027f94
+    .extern SceneInputBase_Init
+    .extern GamePhaseProgress_GetOrCreateGlobal
     .extern func_02027828
     .extern Heap_Alloc
     .extern func_ov026_021ff8a0
@@ -17,7 +17,7 @@ func_ov004_021fc944: ; 0x021fc944
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_02091e28
+    bl SceneInputBase_Init
     ldr r0, L_021fc9ec
     cmp r4, #0x1
     movlt r4, #0x1
@@ -27,11 +27,11 @@ func_ov004_021fc944: ; 0x021fc944
     movgt r0, #0x0
     strgt r0, [r5, #0x5c]
     bgt L_021fc994
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     sub r1, r4, #0x1
     bl func_02027828
     str r0, [r5, #0x5c]
-    bl func_02027f94
+    bl GamePhaseProgress_GetOrCreateGlobal
     ldr r1, [r5, #0x58]
     bl func_02027828
 L_021fc994:

@@ -29,9 +29,9 @@ extern const char data_020de804[];
 extern u8 *data_021052fc;
 extern void *data_020f4e18;
 extern void *gMainBgPaletteBuffer;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
-extern void func_0201ded4(void *, void *);
+extern void PresentationList_AppendObject(void *, void *);
 extern const u8 *GamePhaseGraphicsMetadata_GetByIndex(s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern void VecFx32Object_InitCopy(void *, const void *);
@@ -41,7 +41,7 @@ extern void VecFx32Object_Destroy(void *);
 extern void BgScroll_SetMainBg1(s32, s32);
 extern void func_02070f80(void *, s32);
 extern void func_020b44e8(void);
-extern void *func_02070874(void *);
+extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void PaletteBuffer_Write(void *, const void *, s32, s32);
 void func_02028684(MainBg1FollowPresentation *);
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void func_02028684(MainBg1FollowPresentation *);
 MainBg1FollowPresentation *func_02028544(MainBg1FollowPresentation *self,
                                          void *target)
 {
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable_00 = (void **)data_020de7e4;
     self->target_08 = (u8 *)target;
     func_02028684(self);
@@ -104,7 +104,7 @@ void func_02028630(void *target)
             &gHeapContext);
     if (self)
         self = func_02028544(self, target);
-    func_0201ded4(manager, self);
+    PresentationList_AppendObject(manager, self);
 }
 
 /*
@@ -130,7 +130,7 @@ void func_02028684(MainBg1FollowPresentation *self)
     control = (control & ~3) | 3;
     *(volatile u16 *)0x0400000a = control;
     func_02072048(&resources, 1, 0x1e0);
-    PaletteBuffer_Write(gMainBgPaletteBuffer, func_02070874(resources.resource1),
+    PaletteBuffer_Write(gMainBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(resources.resource1),
                         0x1e0, 0x20);
     display = *(volatile u32 *)0x04000000;
     display = (display & ~0x1f00u) |

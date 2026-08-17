@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov031/overlay031_dialog_runtime.c for documented portable C. */
 .extern data_ov031_021fe6e4
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02093360
+.extern TitleDialog_UpdateTextPage
 .extern func_ov031_021fdf20
 
 
@@ -74,7 +74,7 @@ L_021fde8c:
 L_021fdea4:
     ldr r0, [r4, #0x98]
     add r1, sp, #0x18
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x16
     str r0, [sp, #0x0]
     str r0, [sp, #0x14]

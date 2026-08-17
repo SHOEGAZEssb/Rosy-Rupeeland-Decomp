@@ -1,8 +1,8 @@
 .text
 
 /* Exact fallback; see src/overlays/ov023/overlay023_scene_runtime.c. */
-.extern func_02093360
-.extern func_020939d8
+.extern TitleDialog_UpdateTextPage
+.extern TitleDialog_ClearTextRect
 .extern func_ov045_0220c028
 .extern func_ov045_0220c068
 .extern func_ov045_0220c128
@@ -56,7 +56,7 @@ L_021fe918:
 L_021fe92c:
     ldr r0, [r4, #0x4b8]
     add r1, sp, #0x1c
-    bl func_02093360
+    bl TitleDialog_UpdateTextPage
     mov r1, r0, lsl #0x1f
     str r0, [sp, #0x0]
     str r0, [sp, #0xc]
@@ -65,7 +65,7 @@ L_021fe92c:
     ldr r0, [r4, #0x4bc]
     bl func_ov045_0220c068
     ldr r0, [r4, #0x4b8]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, #0x1
     b L_021fe98c
 L_021fe964:

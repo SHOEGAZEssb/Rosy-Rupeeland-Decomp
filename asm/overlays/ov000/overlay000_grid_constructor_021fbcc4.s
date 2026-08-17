@@ -5,18 +5,18 @@
 .extern data_021e9ac0
 .extern data_ov000_021fcd54
 .extern gHeapContext
-.extern func_020683c8
-.extern func_020683f4
+.extern InventoryCell_Init
+.extern InventoryCell_Destroy
 .extern data_ov000_021fcd5c
 .extern func_02003e20
 .extern Heap_Alloc
-.extern func_02062b28
-.extern func_02071ea4
+.extern ActorDescriptor_IsInvalid
+.extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern func_02073e48
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02092798
+.extern TitleCharacterResourceCollection_Init
 .extern func_02092814
 .extern IndexedSelectionController_Init
 .extern IndexedSelectionController_ConfigureRange
@@ -37,7 +37,7 @@ func_ov000_021fbcc4: ; 0x021fbcc4
     add r0, r10, #0x10
     mov r4, r1
     str r2, [r10, #0x0]
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x24
     bl func_020957bc
     add r0, r10, #0xd0
@@ -45,7 +45,7 @@ func_ov000_021fbcc4: ; 0x021fbcc4
     add r0, r10, #0x17c
     bl func_020957bc
     add r0, r10, #0x228
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     add r0, r10, #0x270
     bl IndexedSelectionController_Init
     str r4, [r10, #0x4]
@@ -154,7 +154,7 @@ func_ov000_021fbcc4: ; 0x021fbcc4
 L_021fbea8:
     ldr r0, [r1, #0x8]
     mla r0, r5, r4, r0
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     addeq r0, r5, #0x1
     streq r0, [r10, #0x254]
@@ -261,8 +261,8 @@ L_021fc038: .word 0x7004
 L_021fc03c: .word data_021e9ac0
 L_021fc040: .word data_ov000_021fcd54
 L_021fc044: .word gHeapContext
-L_021fc048: .word func_020683c8
-L_021fc04c: .word func_020683f4
+L_021fc048: .word InventoryCell_Init
+L_021fc04c: .word InventoryCell_Destroy
 L_021fc050: .word data_ov000_021fcd5c
 .size func_ov000_021fbcc4, . - func_ov000_021fbcc4
 

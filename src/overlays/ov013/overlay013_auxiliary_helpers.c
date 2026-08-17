@@ -18,8 +18,8 @@ extern void GamePhaseRuntime_SetPlacementMode(void *, s32, s32);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void *func_ov006_021fb708(void *);
 extern void *func_020959d4(void *, s32, s32);
-extern void func_02095f48(void *, void *);
-extern void func_02095c30(void *, s32);
+extern void ModalState_CopyAttachmentText(void *, void *);
+extern void ModalState_InitResources(void *, s32);
 extern void func_02095bec(void *);
 extern s32 func_02095958(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -75,8 +75,8 @@ void func_ov013_021fda9c(void *state, s32 setting, void *optional)
         object = func_020959d4(object, 0, 0);
     FIELD(void *, state, 0x9a4) = object;
     if (optional != 0)
-        func_02095f48(object, optional);
-    func_02095c30(object, setting);
+        ModalState_CopyAttachmentText(object, optional);
+    ModalState_InitResources(object, setting);
     FIELD(u32, state, 0x48) |= 2;
 }
 

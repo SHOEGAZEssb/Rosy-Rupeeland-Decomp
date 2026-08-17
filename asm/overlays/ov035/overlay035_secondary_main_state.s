@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_secondary_main_state.c for documented portable C. */
 
-    .extern func_02059278
+    .extern Sound_PlayDirectSequence
     .extern Presentation_SetScript
     .extern Presentation_IsScriptSuspended
     .extern Sound_Play
@@ -10,7 +10,7 @@
     .extern func_ov035_021fd7f0
     .extern PresentationList_Append
     .extern Presentation_IsScriptComplete
-    .extern func_0205929c
+    .extern Sound_StopDirectSequence
     .extern func_ov035_021ff164
     .extern gSoundContext
     .extern data_ov035_02203344
@@ -43,7 +43,7 @@ L_021ff1c0:
     mov r1, #0xb5
     ldr r0, [r0, #0x0]
     mov r2, #0x7f
-    bl func_02059278
+    bl Sound_PlayDirectSequence
     ldr r0, [r4, #0x100]
     ldr r1, L_021ff398
     mov r2, #0x1
@@ -150,7 +150,7 @@ L_021ff33c:
     mov r1, #0xb5
     ldr r0, [r0, #0x0]
     mov r2, #0x10
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, [r4, #0xa0]
     add r0, r0, #0x1
     str r0, [r4, #0xa0]

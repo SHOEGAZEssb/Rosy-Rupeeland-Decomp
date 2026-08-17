@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020d5604
 .extern func_02006138
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .global GamePhaseTouchPrompt_DestroyAndFree
 GamePhaseTouchPrompt_DestroyAndFree:
@@ -21,7 +21,7 @@ L_020103ac:
     ldr r0, [r4, #0x18]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0xc
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl func_02006138
     mov r0, r4

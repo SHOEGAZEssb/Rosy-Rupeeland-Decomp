@@ -8,7 +8,7 @@
     .extern Heap_Alloc
     .extern func_ov036_021fd2a4
     .extern Presentation_SetPosition
-    .extern func_020918f4
+    .extern TitleRandom_NextBounded
     .extern PresentationList_Append
     .extern func_ov036_021fe978
     .extern Presentation_InterpolateScalar
@@ -120,7 +120,7 @@ L_021fe4d8:
     add r0, r9, #0xc8
     str r1, [r5, #0xac]
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r1, r0, lsl #0x4
     add r0, r5, #0x5c
     bl PresentationScalar_SetImmediate
@@ -174,7 +174,7 @@ L_021fe5d0:
 L_021fe5f0:
     add r0, r9, #0xc8
     mov r1, #0x1000
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     mov r0, r9
     mov r1, #0x1
     mov r2, #0xc000

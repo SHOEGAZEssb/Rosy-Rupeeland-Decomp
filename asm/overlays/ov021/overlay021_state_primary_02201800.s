@@ -5,12 +5,12 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GamePhaseCurrencyHud_GetCurrency
     .extern GamePhaseCurrencyHud_AddCurrency
-    .extern func_02062b28
+    .extern ActorDescriptor_IsInvalid
     .extern func_02062ca8
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov000_021fc714
-    .extern func_ov000_021fcad8
+    .extern Overlay000_GetActiveMetadata
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fea68
     .extern func_ov021_021feea4
@@ -41,7 +41,7 @@ L_02201818: ; jump table
     b L_02201a2c ; case 5
 L_02201830:
     ldr r0, [r4, #0x354]
-    bl func_ov000_021fcad8
+    bl Overlay000_GetActiveMetadata
     ldr r1, [r0, #0x1c]
     sub r1, r1, #0x1
     str r1, [r0, #0x1c]
@@ -108,7 +108,7 @@ L_022018b8:
     b L_02201a64
 L_02201934:
     ldr r0, [r4, #0x37c]
-    bl func_02062b28
+    bl ActorDescriptor_IsInvalid
     cmp r0, #0x0
     ldreq r0, [r4, #0x3d8]
     cmpeq r0, #0x0
@@ -163,7 +163,7 @@ L_022019ec:
     cmp r0, #0x3c
     ble L_02201a64
     ldr r0, [r4, #0x388]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, #0x1
     sub r1, r0, #0x11
     bl func_02092c8c

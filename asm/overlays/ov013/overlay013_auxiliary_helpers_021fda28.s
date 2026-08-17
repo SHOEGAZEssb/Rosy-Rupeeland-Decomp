@@ -8,8 +8,8 @@
     .extern func_02095958
     .extern func_020959d4
     .extern func_02095bec
-    .extern func_02095c30
-    .extern func_02095f48
+    .extern ModalState_InitResources
+    .extern ModalState_CopyAttachmentText
     .extern func_ov006_021fb708
     .extern gHeapContext
 
@@ -79,11 +79,11 @@ L_021fdad4:
     beq L_021fdaec
     ldr r0, [r6, #0x9a4]
     mov r1, r4
-    bl func_02095f48
+    bl ModalState_CopyAttachmentText
 L_021fdaec:
     ldr r0, [r6, #0x9a4]
     mov r1, r5
-    bl func_02095c30
+    bl ModalState_InitResources
     ldr r0, [r6, #0x48]
     orr r0, r0, #0x2
     str r0, [r6, #0x48]

@@ -12,7 +12,7 @@
 .extern Type7Actor_TryAcquireTarget
 .extern Type7Actor_TryInteractWithNearbyType4Object
 .extern Type7Actor_ClearTarget
-.extern func_0206c978
+.extern AuxiliaryInteraction_Destroy
 .extern func_0206cc68
 .extern func_0206e3d0
 .extern gGameWork
@@ -51,7 +51,7 @@ Type7Actor_HandleResourceInteraction: ; 0x02048c2c
     cmp r5, #0x0
     beq .L_02048c78
     mov r0, r5
-    bl func_0206c978
+    bl AuxiliaryInteraction_Destroy
     mov r0, r5
     bl Heap_Free
 .L_02048c78:

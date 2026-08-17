@@ -12,14 +12,14 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern s32 func_0209189c(void *randomState, s32 first, s32 second);
-extern s32 func_020918f4(void *randomState, s32 limit);
+extern s32 TitleRandom_NextBounded(void *randomState, s32 limit);
 extern void func_ov035_02201d10(void *scene, s32 x, s32 y, s32 z,
                                s32 targetX, s32 targetY, s32 targetZ,
                                s32 targetScale, s32 resourceIndex);
 extern void PresentationScalar_TransitionTo(void *field, s32 mode, s32 value);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *resourceSet, void *resource);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
-extern void *func_020955d8(void *allocation, void *spriteRecord);
+extern void *AlternateSpritePresentation_Init(void *allocation, void *spriteRecord);
 extern void PresentationList_Append(void *collection, void *object);
 extern void func_ov035_021fdd28(void *record, s32 identifier, s32 value20,
                                s32 value24, s32 value28, u8 value5a,
@@ -36,7 +36,7 @@ static void *allocate_sprite(void *scene, void *record)
 {
     void *sprite = Heap_Alloc(0xa0, data_ov035_02203d20, 4, gHeapContext);
     if (sprite != 0)
-        sprite = func_020955d8(sprite, record);
+        sprite = AlternateSpritePresentation_Init(sprite, record);
     PresentationList_Append((u8 *)scene + 0x10c, sprite);
     return sprite;
 }
@@ -92,7 +92,7 @@ extern "C" void func_ov035_02201df8(void *scene, s32 side)
                                   (u8 *)scene + 0xe8);
     void *sprite = allocate_sprite(scene, record);
     func_ov035_021fdd28(record,
-                        func_020918f4((u8 *)scene + 0xc0, 8),
+                        TitleRandom_NextBounded((u8 *)scene + 0xc0, 8),
                         0, 0, 0, 7, 0x40);
     s32 x = func_0209189c((u8 *)scene + 0xc0, -0x1000, 0x1000);
     s32 y = func_0209189c((u8 *)scene + 0xc0, -0x1800, 0x1800);
@@ -120,10 +120,10 @@ extern "C" void func_ov035_02201fe4(void *scene)
                                   (u8 *)scene + 0xdc);
     void *sprite = allocate_sprite(scene, record);
     func_ov035_021fdd28(record,
-                        func_020918f4((u8 *)scene + 0xc0, 2),
+                        TitleRandom_NextBounded((u8 *)scene + 0xc0, 2),
                         0, 0, 0, 7, 0x40);
     s32 x = func_0209189c((u8 *)scene + 0xc0, -0x800, 0x800);
-    if (func_020918f4((u8 *)scene + 0xc0, 2) != 0) {
+    if (TitleRandom_NextBounded((u8 *)scene + 0xc0, 2) != 0) {
         PresentationScalar_SetImmediate((u8 *)sprite + 0x5c, 0x8000);
         Presentation_SetPosition(sprite, x, 0xe00, 0);
         PresentationScalar_TransitionTo((u8 *)sprite + 0x1c, 3, 0xa00);

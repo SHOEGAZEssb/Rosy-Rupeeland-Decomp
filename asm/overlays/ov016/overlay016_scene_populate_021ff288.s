@@ -7,7 +7,7 @@
     .extern data_021e9e00
     .extern data_ov016_02201588
     .extern data_ov016_02201590
-    .extern func_020651a4
+    .extern ActorDescriptorState_FindInactiveQuantity
     .extern func_0206fa9c
     .extern func_ov016_021fce34
     .extern func_ov016_021fd0e0
@@ -70,7 +70,7 @@ L_021ff2f8:
     ldr r0, [r0, #0x0]
     orreq r5, r5, #0x1
     add r0, r0, #0x1c
-    bl func_020651a4
+    bl ActorDescriptorState_FindInactiveQuantity
     cmp r0, #0x63
     ldr r0, [r6, #0x0]
     mov r2, #0x0

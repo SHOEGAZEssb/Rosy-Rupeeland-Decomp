@@ -19,7 +19,7 @@ extern void func_020593ac(void *, s32, s32, s32, ...);
 extern void *func_02073e48(void *, s32, s32, s32, ...);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
-extern s32 func_020918f4(void *, s32);
+extern s32 TitleRandom_NextBounded(void *, s32);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_02091b98(void *, s32);
 extern void func_02091bac(void *, s32, s32, s32, s32);
@@ -128,7 +128,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
             PresentationScalar_TransitionTo((u8 *)object + 0x1c, 1, end_y << 12);
         }
         func_ov022_021fd2dc(
-            object, func_020918f4((u8 *)emitter + 0x64, 4) + 24);
+            object, TitleRandom_NextBounded((u8 *)emitter + 0x64, 4) + 24);
         PresentationList_Append((u8 *)emitter + 0x48, object);
     }
 

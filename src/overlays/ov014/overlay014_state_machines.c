@@ -23,9 +23,9 @@ extern void func_ov014_021fd2f8(void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void GameWork_SetFlag(void *, s32);
-extern void func_020946a8(void *, s32);
-extern void func_02094738(void *, s32);
-extern void func_02064be0(void *, s32);
+extern void InventoryScroll_BeginMarkerDrag(void *, s32);
+extern void InventoryScroll_EndMarkerDrag(void *, s32);
+extern void InventoryRecordCollection_Sort(void *, s32);
 extern void func_ov000_021fc3f8(void *);
 extern s32 func_ov000_021fc450(void *);
 extern void func_ov000_021fc460(void *);
@@ -177,7 +177,7 @@ s32 func_ov014_021fd67c(void *state)
 
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_020946a8(member, 4);
+        InventoryScroll_BeginMarkerDrag(member, 4);
         ++FIELD(s32, state, 4);
         FIELD(s32, state, 8) = 0;
         /* Fall through and poll readiness in the same frame. */
@@ -201,7 +201,7 @@ s32 func_ov014_021fd67c(void *state)
                 FIELD(s32, state, 8) = 0;
             }
         } else {
-            func_02094738(member, 6);
+            InventoryScroll_EndMarkerDrag(member, 6);
             overlay014_set_callback(state, data_ov014_021fd948);
         }
         break;
@@ -229,7 +229,7 @@ s32 func_ov014_021fd7b4(void *state)
         if (FIELD(s32, subordinate, 0x150) >= FIELD(s32, subordinate, 0x14c)) {
             func_ov000_021fc3a4(subordinate);
             FIELD(s32, state, 0x8c) ^= 1;
-            func_02064be0(FIELD(void *, subordinate, 0x24c),
+            InventoryRecordCollection_Sort(FIELD(void *, subordinate, 0x24c),
                           FIELD(s32, state, 0x8c) ? 1 : 2);
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;

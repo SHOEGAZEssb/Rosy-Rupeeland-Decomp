@@ -8,7 +8,7 @@
 .extern VecFx32_Subtract
 .extern func_0201e290
 .extern func_0201e380
-.extern func_0201e3b8
+.extern TimedSpritePresentation_SetVisible
 
 .global func_0201edd0
 .type func_0201edd0, @function
@@ -75,7 +75,7 @@ func_0201ee48: ; 0x0201ee48
 .L_0201ee80:
     mov r0, r4
     mov r1, #0x0
-    bl func_0201e3b8
+    bl TimedSpritePresentation_SetVisible
     mov r0, #0x1
     b .L_0201eef4
 .L_0201ee94:

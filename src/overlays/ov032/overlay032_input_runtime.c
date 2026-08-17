@@ -30,23 +30,23 @@ extern void GXS_SetGraphicsMode(...);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(...);
 extern void GamePhaseAreaScene_SetEnabled(...);
-extern void func_02008570(...);
+extern void GamePhaseRuntime_ApplyScreenMode(...);
 extern void GamePhaseState_SetEnabled(...);
 extern void TouchPanelManager_GetPoint(...);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
-extern void func_ov032_021fe024(void *);
+extern void Overlay032_UpdatePromptBlink(void *);
 extern void func_ov032_021fe0c4(void *);
 extern void func_ov032_021fe0e8(void *);
 extern void GraphicsSpriteState_SetFrameIndex(...);
 extern u32 genrand_int32(void);
 extern s32 func_020bf1f8(...);
-extern void func_020939d8(void *);
-extern u32 func_02093360(...);
+extern void TitleDialog_ClearTextRect(void *);
+extern u32 TitleDialog_UpdateTextPage(...);
 extern s32 DisplayBrightness_GetCurrent(void *);
 extern void DisplayBrightness_StartTransition(...);
-extern void *func_02079408(...);
-extern void func_02092e9c(...);
+extern void *RetailSelectionDatabase_FindResource(...);
+extern void TitleDialog_SetText(...);
 #ifdef __cplusplus
 }
 #endif
@@ -56,7 +56,7 @@ extern void func_02092e9c(...);
  * saved POWCNT bit, resets both engines and text canvases, restores shared UI
  * contexts, and returns void.
  */
-extern "C" void func_ov032_021fde38(void *scene)
+extern "C" void Overlay032Scene_ShutdownGraphics(void *scene)
 {
     u8 *context = (u8 *)data_021052fc[0];
     FIELD(s32, scene, 0xf2c) = 0;
@@ -71,7 +71,7 @@ extern "C" void func_ov032_021fde38(void *scene)
     GraphicsSpriteRenderer_ConfigureTextGridPriority(data_020f4e14[0], 0, 0x10);
     GraphicsSpriteRenderer_ConfigureTextGridPriority(gDebugFont, 0, 0x10);
     GamePhaseAreaScene_SetEnabled(FIELD(void *, context, 0x2fb8), 0);
-    func_02008570(context, 2, 1);
+    GamePhaseRuntime_ApplyScreenMode(context, 2, 1);
     GamePhaseState_SetEnabled(context + 0x24, 1);
 }
 
@@ -110,7 +110,7 @@ extern "C" s32 func_ov032_021fdf30(void *scene)
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 4));
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0));
         GamePhaseCurrencyHud_Update(gLupyContext);
-        func_ov032_021fe024(scene);
+        Overlay032_UpdatePromptBlink(scene);
     }
     return result;
 }
@@ -120,7 +120,7 @@ extern "C" s32 func_ov032_021fdf30(void *scene)
  * 180..475-frame idle interval, enables both sprites for 30..89 frames, then
  * disables and hides them. Counters at +0xBDC/+0xBD8 are updated; returns void.
  */
-extern "C" void func_ov032_021fe024(void *scene)
+extern "C" void Overlay032_UpdatePromptBlink(void *scene)
 {
     s32 idle = FIELD(s32, scene, 0xbdc);
     if (idle <= 0) {
@@ -160,7 +160,7 @@ extern "C" void func_ov032_021fe0e8(void *wrapper)
 /* Closes the object at +0x10, disables the +0xC4 prompt sprite, and hides it; returns void. */
 extern "C" void func_ov032_021fe10c(void *scene)
 {
-    func_020939d8(FIELD(void *, scene, 0x10));
+    TitleDialog_ClearTextRect(FIELD(void *, scene, 0x10));
     func_ov032_021fe0c4((u8 *)scene + 0xc4);
     GraphicsSpriteState_SetFrameIndex(FIELD(void *, scene, 0xc4), 0);
 }
@@ -180,8 +180,8 @@ extern "C" s32 func_ov032_021fe134(void *scene, s32 closeOnComplete)
     if (flags & 1) return 1;
     if (FIELD(s32, scene, 0xb84)) input[1] |= (flags & 2) ? 1 : 2;
 
-    if (func_02093360(dialog, input) & 1) {
-        if (closeOnComplete) func_020939d8(dialog);
+    if (TitleDialog_UpdateTextPage(dialog, input) & 1) {
+        if (closeOnComplete) TitleDialog_ClearTextRect(dialog);
         func_ov032_021fe0c4((u8 *)scene + 0xc4);
         GraphicsSpriteState_SetFrameIndex(FIELD(void *, scene, 0xc4), 0);
         return 1;
@@ -217,5 +217,5 @@ extern "C" void func_ov032_021fe23c(void *scene, s32 enabled)
 extern "C" void func_ov032_021fe2bc(void *scene, u32 messageId)
 {
     FIELD(u32, scene, 0xbd4) = messageId;
-    func_02092e9c(FIELD(void *, scene, 0x10), func_02079408(data_021f4020, (u16)messageId), 0);
+    TitleDialog_SetText(FIELD(void *, scene, 0x10), RetailSelectionDatabase_FindResource(data_021f4020, (u16)messageId), 0);
 }

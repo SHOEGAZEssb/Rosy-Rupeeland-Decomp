@@ -10,7 +10,7 @@ extern const u16 data_ov026_02204302[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092850(s32);
+extern void TitlePalette_SetMainBackdrop(s32);
 extern void func_020add34(void *, void *);
 extern void func_020b0300(u16, s32, s32, s32, s32);
 extern void func_020b0374(s32, s32, s32, s32);
@@ -75,5 +75,5 @@ extern "C" void func_ov026_02200390(void *scene)
     FIELD(u16, scene, 0x18c) = 0x7fff;
     FIELD(s32, scene, 0x1c0) = 2;
     FIELD(s32, scene, 0x254) = 1;
-    func_02092850(0x7fff);
+    TitlePalette_SetMainBackdrop(0x7fff);
 }

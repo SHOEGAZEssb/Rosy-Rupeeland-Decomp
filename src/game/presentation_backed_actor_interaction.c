@@ -20,7 +20,7 @@ extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
 extern void Sound_Play(void *context, s32 bank, s32 sound);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 mode);
-extern void func_0201ded4(void *manager, void *effect);
+extern void PresentationList_AppendObject(void *manager, void *effect);
 extern void *func_0201e0ec(void *manager);
 extern void *func_02022cb0(void *storage, void *point, void *actor, s32 value,
                            s32 scale, s32 vertical_offset);
@@ -87,7 +87,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
             effect = func_02022cb0(effect, point, actor,
                                    FIELD(s16, actor, 0x1f2), 0x2000, -0xc0);
         }
-        func_0201ded4((u8 *)data_021052fc + 0x2f7c, effect);
+        PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, effect);
 
         if (type == 19) {
             void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);

@@ -14,7 +14,7 @@
     .extern func_02092618
     .extern func_02092638
     .extern func_02092688
-    .extern func_0209285c
+    .extern TitlePalette_SetSubBackdrop
     .extern func_020af1f8
     .extern func_020b0300
     .extern func_020b44e8
@@ -120,7 +120,7 @@ func_ov017_021ff58c:
     mov r2, #0x0
     bl GraphicsResourceSet_Apply
     mov r0, #0x0
-    bl func_0209285c
+    bl TitlePalette_SetSubBackdrop
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

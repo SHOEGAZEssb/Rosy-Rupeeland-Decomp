@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/runtime_actor_variant_lifecycle.c.
-.extern func_02030f98
+.extern ActorRuntimeBase_Init
 .extern func_0203130c
 .extern Heap_Free
 .extern data_020e2028
@@ -9,7 +9,7 @@ func_0204d244: ; 0x0204d244
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r0, .L_0204d280
     str r0, [r5, #0x0]
     ldr r1, [r4, #0x2c]
@@ -30,7 +30,7 @@ func_0204d284: ; 0x0204d284
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl func_02030f98
+    bl ActorRuntimeBase_Init
     ldr r0, .L_0204d2c0
     str r0, [r5, #0x0]
     ldr r1, [r4, #0x2c]

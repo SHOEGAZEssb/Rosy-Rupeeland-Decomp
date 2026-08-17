@@ -5,9 +5,9 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern DebugHudState_UploadRows
-.extern func_02071980
-.extern func_02092cc0
-.extern func_02092e9c
+.extern GraphicsArchive_AcquireVfdResource
+.extern TitleDialog_Init
+.extern TitleDialog_SetText
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext
@@ -22,7 +22,7 @@ DebugHudState_Open: ; 0x0200f404
     ldr r1, L_0200f514
     ldr r0, [r0, #0x0]
     mov r4, r2
-    bl func_02071980
+    bl GraphicsArchive_AcquireVfdResource
     str r0, [r5, #0x4]
     ldr r0, [r5, #0x0]
     mov r2, #0x4
@@ -37,7 +37,7 @@ DebugHudState_Open: ; 0x0200f404
     ldr r1, L_0200f520
     ldr r2, [r5, #0x4]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_0200f464:
     str r0, [r5, #0x8]
     b L_0200f494
@@ -50,7 +50,7 @@ L_0200f46c:
     ldr r1, L_0200f524
     ldr r2, [r5, #0x4]
     ldr r1, [r1, #0x0]
-    bl func_02092cc0
+    bl TitleDialog_Init
 L_0200f490:
     str r0, [r5, #0x8]
 L_0200f494:
@@ -78,7 +78,7 @@ L_0200f494:
     str r2, [r0, #0xbc]
     ldr r0, [r5, #0x8]
     mov r2, #0x4
-    bl func_02092e9c
+    bl TitleDialog_SetText
     ldr r0, L_0200f528
     mov r1, #0xc
     ldr r0, [r0, #0x0]

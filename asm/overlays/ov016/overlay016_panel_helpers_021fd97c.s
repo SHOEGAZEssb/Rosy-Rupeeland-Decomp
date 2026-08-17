@@ -1,7 +1,7 @@
     .text
     .extern __destroy_arr
-    .extern func_02071eb8
-    .extern func_02071f38
+    .extern AnimationResourceState_Destroy
+    .extern AnimationResourceState_ReleaseResources
     .extern GraphicsSpriteGroup_Clear
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteCanvas_FillRect
@@ -21,21 +21,21 @@ func_ov016_021fd97c:
     add r0, r4, #0xd4
     bl func_020927b8
     add r0, r4, #0x78
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x6c
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x24
     mov r1, #0x6
     mov r2, #0xc
     ldr r3, L_021fd9d8
     bl __destroy_arr
     add r0, r4, #0x18
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0xc
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_021fd9d8: .word func_02071eb8
+L_021fd9d8: .word AnimationResourceState_Destroy
 
     .global func_ov016_021fd9dc
 func_ov016_021fd9dc:
@@ -57,13 +57,13 @@ L_021fda14:
     ldr r0, [r6, #0x4]
     bl GraphicsSpriteGroup_Clear
     add r0, r6, #0x18
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     mov r5, #0x0
     add r4, r6, #0x24
     mov r7, #0xc
 L_021fda30:
     mla r0, r5, r7, r4
-    bl func_02071f38
+    bl AnimationResourceState_ReleaseResources
     add r2, r6, r5, lsl #0x2
     ldr r1, [r2, #0x8c]
     add r5, r5, #0x1

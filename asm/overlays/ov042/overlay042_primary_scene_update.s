@@ -20,7 +20,7 @@
 .extern func_ov042_02203658
 .extern func_ov071_02211a10
 .extern func_020595b0
-.extern func_0205929c
+.extern Sound_StopDirectSequence
 .extern func_ov042_02205180
 .extern func_ov042_02209cbc
 .extern func_ov042_02206ff8
@@ -414,27 +414,27 @@ func_ov042_02207114:
     mov r1, #0xa4
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02207dd8
     mov r1, #0xa5
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02207dd8
     mov r1, #0xcd
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02207dd8
     mov r1, #0xea
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, .L_02207dd8
     mov r1, #0xf0
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
     ldr r0, [r6, #0x48]
     mov r1, #0xb500
     bl func_020a1ec0
@@ -619,7 +619,7 @@ func_ov042_02207114:
     mov r1, #0x16
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205929c
+    bl Sound_StopDirectSequence
 .L_022079b4:
     ldr r0, [r6, #0x1bc]
     cmp r0, #0xd2

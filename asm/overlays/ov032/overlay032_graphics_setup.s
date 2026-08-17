@@ -13,7 +13,7 @@
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseAreaScene_SetEnabled
 .extern func_0201e0f4
-.extern func_0207042c
+.extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_020706c4
 .extern func_02070b50
@@ -35,8 +35,8 @@
 .extern func_ov032_021fde1c
 .extern gDebugFont
 
-    .global func_ov032_021fd994
-func_ov032_021fd994:
+    .global Overlay032Scene_SetupGraphics
+Overlay032Scene_SetupGraphics:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     ldr r1, L_021fdddc
@@ -160,7 +160,7 @@ func_ov032_021fd994:
     mov r2, r1
     bl func_02070638
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]
@@ -186,7 +186,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_02070638
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x4000
     ldr r0, [sp, #0x8]
@@ -212,7 +212,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_020706c4
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     moveq r1, #0x0
@@ -238,7 +238,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_020706c4
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x4000
     ldr r0, [sp, #0x8]
@@ -264,7 +264,7 @@ func_ov032_021fd994:
     mov r2, #0x0
     bl func_020706c4
     ldr r0, [sp, #0x4]
-    bl func_0207042c
+    bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]
@@ -327,5 +327,5 @@ L_021fde0c: .word 0xa063
 L_021fde10: .word 0x9013
 L_021fde14: .word 0x24a3
 L_021fde18: .word 0x4000050
-.size func_ov032_021fd994, .-func_ov032_021fd994
+.size Overlay032Scene_SetupGraphics, .-Overlay032Scene_SetupGraphics
 

@@ -24,15 +24,15 @@ extern void __construct_array(void *, s32, s32, void *);
 extern void __destroy_arr(void *, s32, s32, void *);
 extern void *func_02027fe8(void *, void *);
 extern void func_020280d8(void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091b6c(void *);
 extern void func_02091b98(void *, s32);
-extern void func_02091e28(void *);
+extern void SceneInputBase_Init(void *);
 extern void func_020922f0(void *, s32);
 extern void IndexedSelectionController_Init(void *);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
@@ -65,10 +65,10 @@ extern void func_ov046_0220c478(void *, s32);
  */
 extern "C" void *func_ov024_021fce2c(void *scene)
 {
-    func_02091e28(scene);
+    SceneInputBase_Init(scene);
     FIELD(const void *, scene, 0) = data_ov024_021fe338;
-    func_02071ea4((u8 *)scene + 0x64);
-    func_02071ea4((u8 *)scene + 0x70);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x64);
+    AnimationResourceState_InitEmbedded((u8 *)scene + 0x70);
     func_020957bc((u8 *)scene + 0x80);
     __construct_array((u8 *)scene + 0x12c, 2, 0xac,
                       (void *)func_020957bc);
@@ -149,8 +149,8 @@ static void cleanup_scene(void *scene)
     __destroy_arr((u8 *)scene + 0x12c, 2, 0xac,
                   (void *)func_ov024_021fce00);
     func_ov024_021fce00((u8 *)scene + 0x80);
-    func_02071eb8((u8 *)scene + 0x70);
-    func_02071eb8((u8 *)scene + 0x64);
+    AnimationResourceState_Destroy((u8 *)scene + 0x70);
+    AnimationResourceState_Destroy((u8 *)scene + 0x64);
 }
 
 /*

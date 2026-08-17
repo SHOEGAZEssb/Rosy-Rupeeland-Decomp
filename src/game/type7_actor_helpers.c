@@ -13,7 +13,7 @@ extern void VecFx32Object_Destroy(void *value);
 extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 extern void Actor_RefreshTerrainHeight(void *actor);
 extern void func_02031758(void *context, void *actor, void *value);
-extern void func_0206dcac(void *resource);
+extern void AuxiliaryInteraction_UpdateResourceFrame(void *resource);
 extern void Actor_ApplyMotionImpulse(void *actor, const void *value, s32 mode);
 extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ void Type7Actor_ResetBaseTransformAndMotion(void *self)
  * Forward the three inputs to func_02031758, copy actor transform +0x18 to a
  * temporary, and add signed actor halfword +0x6a times 0xb33 to temporary word
  * +8. Invoke helper +0x2a8 vtable +0x0c with value, the adjusted temporary, and
- * zero. If resource +0x234 exists, pass it to func_0206dcac. Finalize the
+ * zero. If resource +0x234 exists, pass it to AuxiliaryInteraction_UpdateResourceFrame. Finalize the
  * temporary and return no value; actor/helper/resource state may change.
  */
 void Type7Actor_ForwardHelperEvent(void *context, void *self, void *value)
@@ -53,7 +53,7 @@ void Type7Actor_ForwardHelperEvent(void *context, void *self, void *value)
         *(u8 **)(actor + 0x2a8) + 0x0c))(
         actor + 0x2a8, value, temporary, 0);
     if (*(void **)(actor + 0x234) != 0)
-        func_0206dcac(*(void **)(actor + 0x234));
+        AuxiliaryInteraction_UpdateResourceFrame(*(void **)(actor + 0x234));
     VecFx32Object_Destroy(temporary);
 }
 

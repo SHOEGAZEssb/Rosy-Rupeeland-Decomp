@@ -19,7 +19,7 @@ extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern s32 func_0207b464(void *);
 extern s32 func_0207b490(void *);
 extern s32 func_0207b4bc(void *);
-extern s32 func_02092910(void *, void *);
+extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void SpritePresentation_SetAnimation(void *, s32);
 extern void SpritePresentation_Show(void *);
@@ -147,7 +147,7 @@ extern "C" void func_ov023_021fe640(void *scene, s32 enabled)
 extern "C" s32 func_ov023_021fe694(void *scene)
 {
     if (FIELD(s32, scene, 0x398) <= 1) return 0;
-    return func_02092910(FIELD(void *, FIELD(void *, scene, 0x380), 0x9c),
+    return GraphicsSpriteState_TestTouchPoint(FIELD(void *, FIELD(void *, scene, 0x380), 0x9c),
                          (u8 *)scene + 0x30);
 }
 
@@ -158,6 +158,6 @@ extern "C" s32 func_ov023_021fe694(void *scene)
 extern "C" s32 func_ov023_021fe6bc(void *scene)
 {
     if (FIELD(s32, scene, 0x398) <= 1) return 0;
-    return func_02092910(FIELD(void *, FIELD(void *, scene, 0x384), 0x9c),
+    return GraphicsSpriteState_TestTouchPoint(FIELD(void *, FIELD(void *, scene, 0x384), 0x9c),
                          (u8 *)scene + 0x30);
 }

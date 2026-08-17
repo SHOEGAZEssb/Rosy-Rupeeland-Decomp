@@ -26,7 +26,7 @@ typedef struct Overlay001Presentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02071eb8(void *resource);
+extern void AnimationResourceState_Destroy(void *resource);
 extern void GraphicsSpriteGroup_Destroy(void *owner);
 extern void func_020927b8(void *state);
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ Overlay001PresentationState *func_ov001_021fb7d4(
     }
     GraphicsSpriteGroup_Destroy(state->spriteOwner_04);
     func_020927b8(state->rendererState_20);
-    func_02071eb8(state->resource_14);
-    func_02071eb8(state->resource_08);
+    AnimationResourceState_Destroy(state->resource_14);
+    AnimationResourceState_Destroy(state->resource_08);
     return state;
 }

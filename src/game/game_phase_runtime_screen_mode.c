@@ -22,7 +22,7 @@ extern void func_0201dff0(void *object, s32 mode);
  * flag 0x3f4. Returns no value; volatile display and palette writes are
  * observable hardware effects.
  */
-void func_02008570(GamePhaseRuntime *self, s32 mode, s32 use3dMode)
+void GamePhaseRuntime_ApplyScreenMode(GamePhaseRuntime *self, s32 mode, s32 use3dMode)
 {
     u8 *b = (u8 *)self;
     volatile u32 *mainDisplay = (volatile u32 *)0x04000000;

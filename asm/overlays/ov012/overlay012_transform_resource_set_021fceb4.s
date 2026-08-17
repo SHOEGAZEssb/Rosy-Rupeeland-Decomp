@@ -1,7 +1,7 @@
     .text
     .extern data_020f4e18
-    .extern func_02071e04
-    .extern func_02071adc
+    .extern GraphicsArchive_ReleaseOwlvResource
+    .extern GraphicsArchive_AcquireOwlvResource
 /* Exact register-order fallback; see src/overlays/ov012/overlay012_transform_resource_set.c. */
     .global func_ov012_021fceb4
 func_ov012_021fceb4:
@@ -13,12 +13,12 @@ func_ov012_021fceb4:
     beq L_021fced8
     ldr r0, L_021fcef0
     ldr r0, [r0]
-    bl func_02071e04
+    bl GraphicsArchive_ReleaseOwlvResource
 L_021fced8:
     ldr r0, L_021fcef0
     mov r1, r4
     ldr r0, [r0]
-    bl func_02071adc
+    bl GraphicsArchive_AcquireOwlvResource
     str r0, [r5, #4]
     ldmia sp!, {r3, r4, r5, pc}
 L_021fcef0:

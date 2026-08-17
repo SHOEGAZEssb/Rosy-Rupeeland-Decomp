@@ -9,7 +9,7 @@
 .extern GraphicsSpriteText_FormatDecimal
 .extern func_02092260
 .extern func_02092c8c
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern func_ov002_021fbb68
 .extern func_ov002_021fbc54
 .extern func_ov002_021fbd64
@@ -156,7 +156,7 @@ L_021fde1c:
     cmpeq r5, #0x0
     bne L_021fde60
     ldr r0, [r4, #0x9c]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r1, #0x3
     ldr r0, L_021fe0b0
     str r1, [r4, #0x6c]
@@ -182,7 +182,7 @@ L_021fde60:
     b L_021fe098
 L_021fde8c:
     ldr r0, [r4, #0x9c]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, [r4, #0xac]
     ldr r2, L_021fe0bc
     add r0, r4, #0xb0
@@ -264,7 +264,7 @@ L_021fdf78:
     b L_021fe098
 L_021fdfb0:
     ldr r0, [r4, #0x9c]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, r4
     mov r1, #0x3
     bl func_02092260

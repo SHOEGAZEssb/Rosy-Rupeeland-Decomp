@@ -9,7 +9,7 @@
 .extern func_02091cf0
 .extern func_02092260
 .extern func_020922f0
-.extern func_020939d8
+.extern TitleDialog_ClearTextRect
 .extern func_02095860
 .extern func_02095928
 .extern func_ov030_021fd434
@@ -105,7 +105,7 @@ L_021ff130:
     blt L_021ff548
     ldr r0, [r4, #0x2bc]
     mov r5, #0x0
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r0, [r4, #0x2c4]
     ldr r0, [r0, #0x1b0]
     ldr r0, [r0, #0x4]
@@ -268,7 +268,7 @@ L_021ff354:
     mov r1, #0xb
     bl func_02092260
     ldr r0, [r4, #0x2bc]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     ldr r1, L_021ff56c
     mov r0, r4
     bl func_ov030_021fe954

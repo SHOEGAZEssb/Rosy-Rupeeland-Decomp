@@ -26,10 +26,10 @@ extern const char gSpriteOverlayControllerAllocationTag[];
 extern const u8 data_020c378c[];
 extern void *data_020f4e18;
 extern void *data_020f4e14;
-extern void func_0201e250(void *);
+extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -54,9 +54,9 @@ ReversedFrameSpriteOverlayPresentation *ReversedFrameSpriteOverlayPresentation_I
 {
     u8 *sprite;
     s32 frame;
-    func_0201e250(self);
+    TimedSpritePresentation_InitBase(self);
     self->vtable00 = (void **)gReversedFrameSpriteOverlayPresentationVtable;
-    func_02071ea4(self->resource08);
+    AnimationResourceState_InitEmbedded(self->resource08);
     func_02071ee0(self->resource08, data_020f4e18, 0x3a, 0x3b, 0x3c);
     self->spriteOwner14 = (u8 *)GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner14, self->resource08, 2);
@@ -78,7 +78,7 @@ ReversedFrameSpriteOverlayPresentation *ReversedFrameSpriteOverlayPresentation_D
         ((ControllerDestructor)(*(void ***)self->controller18)[1])(
             self->controller18);
     GraphicsSpriteGroup_Destroy(self->spriteOwner14);
-    func_02071eb8(self->resource08);
+    AnimationResourceState_Destroy(self->resource08);
     func_0201e28c(self);
     return self;
 }

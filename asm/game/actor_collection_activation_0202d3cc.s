@@ -2,9 +2,9 @@
 .text
 .extern ActorCollection_UnregisterActor
 
-    .global func_0202d3cc
-    .type func_0202d3cc, @function
-func_0202d3cc: ; 0x0202d3cc
+    .global ActorCollectionActivation_DestroyReservedSlot
+    .type ActorCollectionActivation_DestroyReservedSlot, @function
+ActorCollectionActivation_DestroyReservedSlot: ; 0x0202d3cc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r5, r0
     add r0, r5, #0x2000
@@ -59,4 +59,4 @@ func_0202d3cc: ; 0x0202d3cc
     cmp r4, r0
     blt .L_0202d438
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_0202d3cc, . - func_0202d3cc
+    .size ActorCollectionActivation_DestroyReservedSlot, . - ActorCollectionActivation_DestroyReservedSlot

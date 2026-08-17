@@ -6,7 +6,7 @@
     .extern data_ov013_021fed40
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern DisplayBrightness_IsSubTransitionComplete
-    .extern func_02091fb0
+    .extern SceneInputBase_Update
     .extern func_ov013_021fce04
     .extern func_ov013_021fd310
     .extern func_ov013_021fda40
@@ -59,7 +59,7 @@ L_021fe1d0:
     cmp r0, #0x0
     beq L_021fe1e4
     mov r1, #0x0
-    bl func_02091fb0
+    bl SceneInputBase_Update
 L_021fe1e4:
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0

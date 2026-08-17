@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov028/overlay028_scanline_palette.c. */
 .extern data_ov028_021ff174
 .extern data_ov028_021ff300
-.extern func_020918f4
+.extern TitleRandom_NextBounded
 .extern Presentation_InterpolateLinear
 .extern func_020b44e8
 .extern func_020b4554
@@ -31,22 +31,22 @@ func_ov028_021fce28:
     str r0, [r4, #0x0]
     add r0, r4, #0x18
     mov r1, #0x100
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r0, [r4, #0x4]
     add r0, r4, #0x18
     mov r1, #0x40
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r2, [r4, #0x4]
     mov r1, #0x100
     add r2, r2, #0x60
     add r0, r2, r0
     str r0, [r4, #0x8]
     add r0, r4, #0x18
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     str r0, [r4, #0x10]
     add r0, r4, #0x18
     mov r1, #0x40
-    bl func_020918f4
+    bl TitleRandom_NextBounded
     ldr r1, [r4, #0x10]
     add r1, r1, #0x60
     add r0, r1, r0

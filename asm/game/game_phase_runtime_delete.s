@@ -11,7 +11,7 @@
 .extern GamePhaseState_ResetRuntime
 .extern DebugHudState_Destroy
 .extern DebugHudState_GetGlobal
-.extern func_02058ce0
+.extern Sound_StopAllManagedPlayers
 .extern func_020ae90c
 .extern func_020ae9a4
 .extern func_ov056_0220e79c
@@ -88,7 +88,7 @@ L_02007238:
     bl FrameTaskList_DestroyNode
     ldr r0, L_020072d8
     ldr r0, [r0, #0x0]
-    bl func_02058ce0
+    bl Sound_StopAllManagedPlayers
     add r0, r4, #0x30c0
     bl OverlaySlot_Destroy
     add r0, r4, #0x44

@@ -13,7 +13,7 @@ extern "C" {
 extern s32 func_0207c518(const void *);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
-extern void func_020939d8(void *);
+extern void TitleDialog_ClearTextRect(void *);
 extern u32 func_ov021_021fd1b8(const void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void *func_ov021_021fd6e8(void *);
@@ -52,7 +52,7 @@ extern "C" s32 func_ov021_021ffa28(void *state)
  */
 extern "C" void func_ov021_021ffcb4(void *state)
 {
-    func_020939d8(FIELD(void *, state, 0x388));
+    TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
     func_02092260(state, 2);
     void *row = func_ov021_021fd6e8(FIELD(void *, state, 0x2c0));
     const void *descriptor = FIELD(const void *, row, 0);

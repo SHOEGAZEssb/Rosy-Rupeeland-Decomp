@@ -19,15 +19,15 @@ extern u8 gHeapContext[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02091e28(void *);
-extern void func_02092798(void *);
+extern void SceneInputBase_Init(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 extern void func_020927b8(void *);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
 extern void Heap_Free(void *);
 extern void *func_ov000_021fb728(void *, void *);
 extern void func_ov000_021fb848(void *);
-extern void func_02064be0(void *, s32);
+extern void InventoryRecordCollection_Sort(void *, s32);
 extern void *func_ov000_021fbcc4(void *, void *);
 extern void func_ov000_021fcae8(void *, void *, s32);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
@@ -58,9 +58,9 @@ void *func_ov014_021fce3c(void *state, const void *parameters)
 {
     void *object;
 
-    func_02091e28(state);
+    SceneInputBase_Init(state);
     FIELD(const void *, state, 0) = data_ov014_021fd994;
-    func_02092798((u8 *)state + 0x54);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x54);
     func_ov014_021fce00((u8 *)state + 0x7c);
     func_ov014_021fd07c(state);
     func_02092814((u8 *)state + 0x54, 0x7005);
@@ -71,7 +71,7 @@ void *func_ov014_021fce3c(void *state, const void *parameters)
     if (parameters != 0)
         func_ov014_021fcf50((u8 *)state + 0x7c, parameters);
 
-    func_02064be0(data_021e9ac0, 0);
+    InventoryRecordCollection_Sort(data_021e9ac0, 0);
     object = Heap_Alloc(0x2b0, data_ov014_021fd9b0, 4, gHeapContext);
     if (object != 0)
         object = func_ov000_021fbcc4(object, data_020f4e14);

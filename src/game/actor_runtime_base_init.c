@@ -34,7 +34,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *);
  * vector at 0x78 is copied from global context offset 0x2fbc. Returns self;
  * helper calls may allocate or initialize SDK-managed value/resource state.
  */
-void *func_02030f98(void *self, const void *descriptor)
+void *ActorRuntimeBase_Init(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     const u8 *desc = (const u8 *)descriptor;

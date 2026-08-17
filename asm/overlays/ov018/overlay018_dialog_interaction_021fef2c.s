@@ -6,7 +6,7 @@
     .extern func_02091cf0
     .extern func_020922b0
     .extern func_02092c8c
-    .extern func_020939d8
+    .extern TitleDialog_ClearTextRect
     .extern func_ov003_021fb7ec
     .extern func_ov018_021fcf40
     .extern func_ov018_021fd788
@@ -52,7 +52,7 @@ L_021fef90:
     cmp r0, #0x0
     beq L_021ff194
     ldr r0, [r4, #0x418]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, #0x2
     mov r1, #0x0
     bl func_02092c8c
@@ -142,7 +142,7 @@ L_021ff0dc:
     cmp r0, #0x0
     beq L_021ff194
     ldr r0, [r4, #0x418]
-    bl func_020939d8
+    bl TitleDialog_ClearTextRect
     mov r0, #0x2
     mov r1, #0x0
     bl func_02092c8c

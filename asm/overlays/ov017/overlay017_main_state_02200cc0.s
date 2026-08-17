@@ -9,9 +9,9 @@
     .extern data_ov017_02201538
     .extern data_ov017_02201560
     .extern data_ov017_022016e0
-    .extern func_02062874
-    .extern func_020628c8
-    .extern func_0206514c
+    .extern ActorDescriptor_SetQuantity
+    .extern ActorDescriptor_GetPrimaryLabel
+    .extern InventoryRecordCollection_FindIdAlternate
     .extern func_0206fcec
     .extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource
     .extern func_02092260
@@ -183,7 +183,7 @@ L_02200eb4:
     ldr r5, [r1, #0x0]
     mov r1, #0xec
     add r0, r5, #0x1c
-    bl func_0206514c
+    bl InventoryRecordCollection_FindIdAlternate
     ldr r2, [r5, #0x20]
     mov r1, #0x24
     mla r5, r0, r1, r2
@@ -197,7 +197,7 @@ L_02200eb4:
     cmp r0, #0x0
     beq L_02200f50
     mov r0, r5
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r3, r0
     mov r0, r4
     mov r1, #0x25
@@ -214,7 +214,7 @@ L_02200f50:
     add r1, r6, r1
     mov r1, r1, lsl #0x10
     mov r1, r1, lsr #0x10
-    bl func_02062874
+    bl ActorDescriptor_SetQuantity
     ldr r0, [r4, #0x3bc]
     cmp r0, #0x0
     bne L_02200fc4

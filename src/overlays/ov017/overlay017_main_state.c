@@ -18,9 +18,9 @@ extern "C" {
 extern void GameWork_ClearFlag(void *, u32);
 extern void GameWork_SetFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
-extern void *func_020628c8(void *);
-extern void func_02062874(void *, u16);
-extern s32 func_0206514c(void *, s32);
+extern void *ActorDescriptor_GetPrimaryLabel(void *);
+extern void ActorDescriptor_SetQuantity(void *, u16);
+extern s32 InventoryRecordCollection_FindIdAlternate(void *, s32);
 extern void func_0206fcec(void *);
 extern void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(void *, s32, void *);
 extern void func_02092260(void *, s32);
@@ -116,16 +116,16 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                     5);
                 global = data_021e9ac0;
                 record = (u8 *)FIELD(void *, global, 0x20) +
-                         func_0206514c((u8 *)global + 0x1c, 0xec) * 0x24;
+                         InventoryRecordCollection_FindIdAlternate((u8 *)global + 0x1c, 0xec) * 0x24;
                 func_ov017_021ffdb4(state, record, amount);
                 if (func_ov017_02200bf8()) {
                     func_ov017_021ffcc8(state, 0x25, 0,
-                                        func_020628c8(record));
+                                        ActorDescriptor_GetPrimaryLabel(record));
                     FIELD(s32, state, 4) = 0x23;
                     FIELD(s32, state, 8) = 0;
                     break;
                 }
-                func_02062874(record,
+                ActorDescriptor_SetQuantity(record,
                               (u16)(FIELD(u16, record, 4) + amount));
 
                 if (FIELD(s32, state, 0x3bc) == 0 &&

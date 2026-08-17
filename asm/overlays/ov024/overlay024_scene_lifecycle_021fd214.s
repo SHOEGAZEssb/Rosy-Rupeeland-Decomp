@@ -4,7 +4,7 @@
 .extern __destroy_arr
 .extern data_ov024_021fe338
 .extern func_020280d8
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern func_ov005_021fbb78
 .extern func_ov024_021fce00
@@ -64,9 +64,9 @@ L_021fd284:
     add r0, r4, #0x80
     bl func_ov024_021fce00
     add r0, r4, #0x70
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     add r0, r4, #0x64
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4

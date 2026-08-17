@@ -13,7 +13,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void *func_02071adc(void *, s32);
+extern void *GraphicsArchive_AcquireOwlvResource(void *, s32);
 extern s32 func_02070454(void *);
 extern s32 func_02070464(void *);
 extern s32 Graphics3DResourceBinding_GetTextureFormat(void *);
@@ -101,7 +101,7 @@ extern "C" void *func_ov026_021fec6c(void *object)
 {
     Presentation_Init(object);
     FIELD(const void *, object, 0) = data_ov026_0220497c;
-    void *resource = func_02071adc(data_020f4e18, 0x5000);
+    void *resource = GraphicsArchive_AcquireOwlvResource(data_020f4e18, 0x5000);
     FIELD(void *, object, 0x9c) = resource;
     for (s32 i = 0; i < 3; ++i) {
         void *panel = Heap_Alloc(0xb0, data_ov026_02204a50, 4, gHeapContext);

@@ -1,14 +1,14 @@
     .text
     .extern data_020f4e18
-    .extern func_020628c8
-    .extern func_02062918
-    .extern func_020629a0
-    .extern func_02062a60
-    .extern func_02062ae4
-    .extern func_02063064
-    .extern func_02063074
-    .extern func_02063084
-    .extern func_02063190
+    .extern ActorDescriptor_GetPrimaryLabel
+    .extern ActorDescriptor_GetComponent
+    .extern ActorDescriptor_GetPanelImage
+    .extern ActorDescriptor_GetSecondaryLabel
+    .extern ActorDescriptor_GetKind0Animation
+    .extern ActorDescriptorComponent_GetCharacterResourceId
+    .extern ActorDescriptorComponent_GetPaletteResourceId
+    .extern ActorDescriptorComponent_GetCellResourceId
+    .extern ActorDescriptorComponent_GetAnimation
     .extern func_02071ee0
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_02073e48
@@ -48,7 +48,7 @@ func_ov016_021fdaa0:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_020629a0
+    bl ActorDescriptor_GetPanelImage
     add r0, r0, #0x6
     and r1, r0, #0xff
     ldr r0, [r10, #0x88]
@@ -59,18 +59,18 @@ func_ov016_021fdaa0:
     mov r1, #0x0
     bic r2, r2, #0x4
     strh r2, [r3, #0x24]
-    bl func_02062918
-    bl func_02063064
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCharacterResourceId
     mov r6, r0
     add r0, r4, #0x4
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063074
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetPaletteResourceId
     mov r5, r0
     add r0, r4, #0x4
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063084
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCellResourceId
     str r0, [sp, #0x0]
     ldr r1, L_021fdf48
     mov r2, r6
@@ -85,8 +85,8 @@ func_ov016_021fdaa0:
     mov r5, r0
     add r0, r4, #0x4
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     mov r2, #0x1
     str r2, [sp, #0x0]
     mov r2, #0x0
@@ -120,18 +120,18 @@ L_021fdbf0:
     mla r8, r9, r0, r1
     mov r0, r8
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063064
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCharacterResourceId
     str r0, [sp, #0x1c]
     mov r0, r8
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063074
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetPaletteResourceId
     str r0, [sp, #0x20]
     mov r0, r8
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063084
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetCellResourceId
     str r0, [sp, #0x0]
     ldr r1, [sp, #0x14]
     ldr r0, [sp, #0x18]
@@ -150,8 +150,8 @@ L_021fdbf0:
     str r0, [sp, #0x24]
     mov r0, r8
     mov r1, #0x0
-    bl func_02062918
-    bl func_02063190
+    bl ActorDescriptor_GetComponent
+    bl ActorDescriptorComponent_GetAnimation
     mov r1, #0x1
     str r1, [sp, #0x0]
     mov r1, #0x0
@@ -185,7 +185,7 @@ L_021fdbf0:
     ldrh r1, [r2, #0x24]
     bic r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl func_02062ae4
+    bl ActorDescriptor_GetKind0Animation
     add r0, r0, #0x12
     and r1, r0, #0xff
     add r0, r10, r9, lsl #0x2
@@ -218,7 +218,7 @@ L_021fdd5c:
     ldr r1, [r10, #0xdc]
     bl GraphicsSpriteRenderer_SetFontResource
     add r0, r4, #0x4
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     mov r1, r0
     mov r0, #0xe
     str r0, [sp, #0x0]
@@ -239,7 +239,7 @@ L_021fdd5c:
     subne r5, r5, #0x2
     bl GraphicsSpriteRenderer_SetFontResource
     add r0, r4, #0x4
-    bl func_02062a60
+    bl ActorDescriptor_GetSecondaryLabel
     mov r1, #0xe
     str r1, [sp, #0x0]
     mov r1, #0x4
@@ -290,7 +290,7 @@ L_021fde44:
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, [sp, #0x28]
     add r0, r9, r0
-    bl func_020628c8
+    bl ActorDescriptor_GetPrimaryLabel
     ldr r1, [sp, #0x10]
     add r2, r6, #0x3a
     str r1, [sp, #0x0]

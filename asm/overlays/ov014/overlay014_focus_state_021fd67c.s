@@ -2,8 +2,8 @@
     .extern data_ov014_021fd948
     .extern func_02092260
     .extern func_02092288
-    .extern func_020946a8
-    .extern func_02094738
+    .extern InventoryScroll_BeginMarkerDrag
+    .extern InventoryScroll_EndMarkerDrag
     .extern func_ov000_021fc164
     .extern func_ov000_021fc450
     .extern func_ov000_021fc460
@@ -31,7 +31,7 @@ func_ov014_021fd67c:
 L_021fd6ac:
     mov r0, r4
     mov r1, #0x4
-    bl func_020946a8
+    bl InventoryScroll_BeginMarkerDrag
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -88,7 +88,7 @@ L_021fd734:
 L_021fd77c:
     mov r0, r4
     mov r1, #0x6
-    bl func_02094738
+    bl InventoryScroll_EndMarkerDrag
     ldr r1, L_021fd7b0
     mov r0, r5
     ldmia r1, {r1, r2}

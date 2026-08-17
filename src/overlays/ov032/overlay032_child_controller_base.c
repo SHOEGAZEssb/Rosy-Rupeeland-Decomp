@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
 extern void GraphicsSpriteGroup_ReleaseState(...);
-extern void func_02070934(void *);
+extern void GraphicsArchiveResource_ReleaseAlternateBuffer(void *);
 extern void func_02073e48(void *, u8, s16, s16, u8, u16, u16);
 #ifdef __cplusplus
 }
@@ -57,7 +57,7 @@ extern "C" void func_ov032_0220142c(void *controller)
  * and mode 2 at +0x00, and stores `renderer` at +0x08. Returns the created SDK
  * object.
  */
-extern "C" void *func_ov032_02201450(void *controller, void *renderer, void *resource)
+extern "C" void *Overlay032Controller_CreateObject(void *controller, void *renderer, void *resource)
 {
     FIELD(void *, controller, 4) = resource;
     void *object = GraphicsSpriteGroup_CreateStateFromSource(renderer, resource, 2);
@@ -79,7 +79,7 @@ extern "C" void func_ov032_0220147c(void *controller)
     FIELD(void *, controller, 0) = 0;
     void *resource = FIELD(void *, controller, 4);
     if (resource != 0 && FIELD(void *, resource, 4) != 0)
-        func_02070934(FIELD(void *, resource, 4));
+        GraphicsArchiveResource_ReleaseAlternateBuffer(FIELD(void *, resource, 4));
 }
 
 /*

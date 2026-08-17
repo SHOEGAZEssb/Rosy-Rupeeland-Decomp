@@ -23,7 +23,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
 extern void *func_02003e20(u32, const void *, s32, void *);
-extern void func_02071ea4(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
@@ -33,12 +33,12 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern u32 LanguageLookup_GetResourceSize(const void *, s32);
 extern const void *func_020791e0(const void *, s32);
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
 extern s32 func_02092960(void *, s32, u32, s32, s32, s32, s32, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
-extern void func_02094550(void *, s32);
-extern void func_02094574(void *);
+extern void InventoryScroll_SetSpritePriority(void *, s32);
+extern void InventoryScroll_UpdatePresentation(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
 extern void func_ov021_021fce00(void *);
@@ -61,9 +61,9 @@ extern Overlay021Row *func_ov021_021fd6e8(void *);
 extern "C" void *func_ov021_021fce18(void *state, void *font,
                                       s32 capacity, s32 mode)
 {
-    func_02071ea4((u8 *)state + 4);
-    func_02071ea4((u8 *)state + 0x10);
-    func_02092798((u8 *)state + 0x28);
+    AnimationResourceState_InitEmbedded((u8 *)state + 4);
+    AnimationResourceState_InitEmbedded((u8 *)state + 0x10);
+    TitleCharacterResourceCollection_Init((u8 *)state + 0x28);
     FIELD(void *, state, 0) = font;
     FIELD(void *, state, 0x1c) = GraphicsSpriteGroupOwner_CreateGroup(font);
     FIELD(s32, FIELD(void *, state, 0x1c), 0x18) = 0x2c;
@@ -102,8 +102,8 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
                                    0xda, 0x18, capacity != 0 ? -12 : 12);
     }
     FIELD(void *, state, 0x58) = controller;
-    func_02094550(controller, 0);
-    func_02094574(controller);
+    InventoryScroll_SetSpritePriority(controller, 0);
+    InventoryScroll_UpdatePresentation(controller);
     func_ov021_021fd224(state);
     func_02092814((u8 *)state + 0x28, 0x7007);
     func_02092814((u8 *)state + 0x28, 0x7000);

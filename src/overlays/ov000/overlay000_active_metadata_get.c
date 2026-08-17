@@ -19,7 +19,7 @@ typedef struct Overlay000ActiveMetadataState {
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov000_021fcad8(Overlay000ActiveMetadataState *state)
+void *Overlay000_GetActiveMetadata(Overlay000ActiveMetadataState *state)
 {
     return (u8 *)state->metadata_250 + state->activeIndex_25c * 0x20;
 }

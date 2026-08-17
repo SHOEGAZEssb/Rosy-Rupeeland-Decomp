@@ -3,10 +3,10 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern Heap_Free
 .extern data_020f263c
-.extern func_02071eb8
+.extern AnimationResourceState_Destroy
 
-.global func_02094430
-func_02094430:
+.global InventoryScroll_Delete
+InventoryScroll_Delete:
     stmdb sp!, {r4, lr}
     ldr r1, .L_02094490
     mov r4, r0
@@ -28,10 +28,10 @@ func_02094430:
     ldr r0, [r4, #0x50]
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x54
-    bl func_02071eb8
+    bl AnimationResourceState_Destroy
     mov r0, r4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02094490: .word data_020f263c
-.size func_02094430, . - func_02094430
+.size InventoryScroll_Delete, . - InventoryScroll_Delete

@@ -2,13 +2,13 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern func_020be328
+.extern SignedAbsoluteValueVariant
 .global func_02015e40
 func_02015e40:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
-    bl func_020be328
+    bl SignedAbsoluteValueVariant
     mov r1, r0
     mov r0, r4
     bl GamePhaseScriptVm_SetResult

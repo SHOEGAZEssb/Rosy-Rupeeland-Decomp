@@ -2,7 +2,7 @@
 
 /* Exact fallbacks; see src/overlays/ov016/overlay016_display_helpers.c. */
     .global func_ov016_021ff04c
-    .global func_ov016_021ff068
+    .global Overlay016_ConfigureMainBg3
 
 func_ov016_021ff04c:
     ldr r2, L_021ff064
@@ -13,8 +13,8 @@ func_ov016_021ff04c:
     bx lr
 L_021ff064: .word 0x4000304
 
-    .global func_ov016_021ff068
-func_ov016_021ff068:
+    .global Overlay016_ConfigureMainBg3
+Overlay016_ConfigureMainBg3:
     stmdb sp!, {r3, lr}
     ldr lr, L_021ff090
     ldrh ip, [lr, #0x0]
@@ -27,5 +27,5 @@ func_ov016_021ff068:
     ldmia sp!, {r3, pc}
 L_021ff090: .word 0x400000e
 
-    .size func_ov016_021ff04c, func_ov016_021ff068 - func_ov016_021ff04c
-    .size func_ov016_021ff068, . - func_ov016_021ff068
+    .size func_ov016_021ff04c, Overlay016_ConfigureMainBg3 - func_ov016_021ff04c
+    .size Overlay016_ConfigureMainBg3, . - Overlay016_ConfigureMainBg3

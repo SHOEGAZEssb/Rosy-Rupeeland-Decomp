@@ -45,12 +45,12 @@ extern void OS_Halt(void);
 extern void func_02078dd4(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *func_02079fc4(void *manager, u16 id);
-extern void *func_02063b90(void *database, u16 id);
+extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
 extern u8 data_021e9ad0[];
 extern void func_0207b944(void *database);
-extern void func_0207bb94(void *database);
-extern void func_0207be20(void *database);
-extern void func_0207c084(void *database);
+extern void RetailRecordDatabase_AppendLocalizedRecords(void *database);
+extern void RetailRecordDatabase_AppendAuxiliaryRecords(void *database);
+extern void RetailRecordDatabase_AppendFinalRecord(void *database);
 extern void *func_0207a2cc(void *manager);
 extern void *gGameWork;
 extern void GameWork_SetFlag(void *work, s32 flag);
@@ -162,7 +162,7 @@ static u16 ReadU16(const u8 *bytes)
 }
 
 /* Resolve a menu record by retail ID at 0x0207B5DC. */
-void *func_0207b5dc(void *database_pointer, u16 id)
+void *RetailRecordDatabase_FindById(void *database_pointer, u16 id)
 {
     u8 *database = (u8 *)database_pointer;
     u8 *records = *(u8 **)database;
@@ -185,22 +185,22 @@ void *func_0207b5dc(void *database_pointer, u16 id)
  * retail; selector selects the borrowed record. Returns normalized zero/one
  * and does not modify either database or save state.
  */
-s32 func_0207a450(void *context, s32 selector)
+s32 RetailRecordManager_IsSelectorAvailable(void *context, s32 selector)
 {
     u8 *record;
     u32 index;
 
     (void)context;
-    record = (u8 *)func_0207b5dc(data_021f5138, (u16)selector);
+    record = (u8 *)RetailRecordDatabase_FindById(data_021f5138, (u16)selector);
     index = *(u16 *)(record + 2);
     return (((u8 *)gGameWork)[0xf68 + index / 8] &
             (u8)(1u << (index % 8))) != 0;
 }
 
 /* Return the retail record bank selected by packed flag bits 8..11. */
-u32 func_0207b334(u16 id)
+u32 RetailRecord_GetCategoryBank(u16 id)
 {
-    u8 *record = func_0207b5dc(data_021f5138, id);
+    u8 *record = RetailRecordDatabase_FindById(data_021f5138, id);
     return ((*(u32 *)(record + 0x0c) >> 8) & 0x0f) == 1 ? 0 : 1;
 }
 
@@ -232,7 +232,7 @@ void RecordCategory_PublishSlot(void *category_pointer, u32 bank, u32 index)
 void RecordCategory_PublishById(void *category_pointer, u16 id)
 {
     u8 *category = (u8 *)category_pointer;
-    u32 bank = func_0207b334(id);
+    u32 bank = RetailRecord_GetCategoryBank(id);
     u32 count = *(u32 *)(category + 8 + bank * 4);
     u8 *slots = *(u8 **)(category + 0x18 + bank * 4);
     u32 index;
@@ -251,7 +251,7 @@ void RecordCategory_PublishById(void *category_pointer, u16 id)
 void RecordCategory_RemoveById(void *category_pointer, u16 id)
 {
     u8 *category = (u8 *)category_pointer;
-    u32 bank = func_0207b334(id);
+    u32 bank = RetailRecord_GetCategoryBank(id);
     u32 *count = (u32 *)(category + 8 + bank * 4);
     u8 *slots = *(u8 **)(category + 0x18 + bank * 4);
     u32 index;
@@ -308,11 +308,11 @@ void RecordCategory_CompleteTerminalType1Slot(void *category_pointer, void *slot
 }
 
 /* Insert one menu record into a category's original two-bank slot arrays. */
-void *func_0207acd0(void *category_pointer, u16 id)
+void *RetailRecordCategory_InsertById(void *category_pointer, u16 id)
 {
     u8 *category = (u8 *)category_pointer;
-    u8 *record = func_0207b5dc(data_021f5138, id);
-    u32 bank = func_0207b334(id);
+    u8 *record = RetailRecordDatabase_FindById(data_021f5138, id);
+    u32 bank = RetailRecord_GetCategoryBank(id);
     u32 count = *(u32 *)(category + 8 + bank * 4);
     u8 *slots = *(u8 **)(category + 0x18 + bank * 4);
     u32 index;
@@ -348,11 +348,11 @@ void RecordCategory_ApplyCategory5Completion(void *category_pointer, void *slot_
             GameWork_SetFlag(gGameWork, 0x6c);
     } else if (id == 0x3b) {
         RecordCategory_RemoveById(category_pointer, 0x3b);
-        func_0207acd0(category_pointer, 0x48);
+        RetailRecordCategory_InsertById(category_pointer, 0x48);
         GameWork_SetFlag(gGameWork, 0xaf);
     } else if (id == 0x3c) {
         RecordCategory_RemoveById(category_pointer, 0x3c);
-        func_0207acd0(category_pointer, 0x4a);
+        RetailRecordCategory_InsertById(category_pointer, 0x4a);
         GameWork_SetFlag(gGameWork, 0xb0);
     }
     RecordCategory_CompleteTerminalType1Slot(category_pointer, slot_pointer);
@@ -373,7 +373,7 @@ static void PopulateRecordCategory(u8 *category, u16 excluded0,
         if ((flags & 0xff) == *(u32 *)(category + 4) &&
             ((flags >> 8) & 0x0f) == 0 && id != excluded0 &&
             id != excluded1)
-            func_0207acd0(category, id);
+            RetailRecordCategory_InsertById(category, id);
     }
 }
 
@@ -526,7 +526,7 @@ void func_0207b944(void *database_pointer)
         if (CheckedFS_ReadFile(&file, input, sizeof(input)) < sizeof(input))
             OS_Halt();
         actor_id = ReadU16(input + 6);
-        actor = func_02063b90(data_021e9ad0, actor_id);
+        actor = ActorDatabase_FindDescriptorById(data_021e9ad0, actor_id);
         memset(record, 0, 0x8c);
         *(u16 *)(record + 0) = ReadU16(input + 0);
         *(u16 *)(record + 2) = (u16)index;
@@ -550,7 +550,7 @@ void func_0207b944(void *database_pointer)
 }
 
 /* Append localized 0x8c-byte menu records at retail 0x0207BB94. */
-void func_0207bb94(void *database_pointer)
+void RetailRecordDatabase_AppendLocalizedRecords(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile *file = (FSFile *)(database + 0x78);
@@ -619,7 +619,7 @@ void func_0207bb94(void *database_pointer)
 }
 
 /* Append the second auxiliary record family at retail 0x0207BE20. */
-void func_0207be20(void *database_pointer)
+void RetailRecordDatabase_AppendAuxiliaryRecords(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile *file = (FSFile *)(database + 0xc0);
@@ -685,7 +685,7 @@ void func_0207be20(void *database_pointer)
 }
 
 /* Append the final one-item localized record family at 0x0207C084. */
-void func_0207c084(void *database_pointer)
+void RetailRecordDatabase_AppendFinalRecord(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile *file = (FSFile *)(database + 0x108);
@@ -816,16 +816,16 @@ void *func_0207a2cc(void *manager_pointer)
 }
 
 /* Load all eight record/menu databases in retail order at 0x0207B620. */
-void func_0207b620(void *database)
+void RetailRecordDatabase_LoadAll(void *database)
 {
     func_0207b7f4(database);
     func_0207b668(database);
     func_0207b6ec(database);
     func_0207b770(database);
     func_0207b944(database);
-    func_0207bb94(database);
-    func_0207be20(database);
-    func_0207c084(database);
+    RetailRecordDatabase_AppendLocalizedRecords(database);
+    RetailRecordDatabase_AppendAuxiliaryRecords(database);
+    RetailRecordDatabase_AppendFinalRecord(database);
 }
 
 /* Load record data, allocate 0xccc bytes, and publish its runtime manager. */
@@ -833,7 +833,7 @@ void func_0207a268(void)
 {
     void *manager;
 
-    func_0207b620(data_021f5138);
+    RetailRecordDatabase_LoadAll(data_021f5138);
     manager = Heap_Alloc(0xccc, data_020eeb54, 4, &gHeapContext);
     if (manager != 0)
         func_0207a2cc(manager);

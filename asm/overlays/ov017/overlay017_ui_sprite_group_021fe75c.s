@@ -1,23 +1,23 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_ui_sprite_group.c. */
     .extern data_020f4e18
-    .extern func_02071ea4
+    .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern gDebugFont
-.global func_ov017_021fe75c
-func_ov017_021fe75c:
+.global Overlay017UiSpriteGroup_Init
+Overlay017UiSpriteGroup_Init:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0xc
     mov r9, r0
     add r0, r9, #0x4
     mov r5, r1
     mov r4, r2
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r9, #0x10
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     str r5, [r9, #0x5c]
     str r4, [r9, #0x60]
     mov r1, #0x0
@@ -88,4 +88,4 @@ L_021fe884: .word gDebugFont
 L_021fe888: .word 0x3295
 L_021fe88c: .word data_020f4e18
 L_021fe890: .word 0x3297
-    .size func_ov017_021fe75c, . - func_ov017_021fe75c
+    .size Overlay017UiSpriteGroup_Init, . - Overlay017UiSpriteGroup_Init

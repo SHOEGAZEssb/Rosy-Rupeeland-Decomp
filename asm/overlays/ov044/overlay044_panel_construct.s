@@ -1,20 +1,20 @@
 .text
-.extern func_02071ea4
-.extern func_02092798
+.extern AnimationResourceState_InitEmbedded
+.extern TitleCharacterResourceCollection_Init
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02071ee0
 .extern func_02003e20
 .extern func_020c09cc
 .extern Heap_Alloc
 .extern func_02094154
-.extern func_02094574
+.extern InventoryScroll_UpdatePresentation
 .extern func_ov044_0220ba18
 .extern func_02092814
 .extern data_020f4e18
 .extern data_ov044_0220d330
 .extern gHeapContext
-.extern func_020683c8
-.extern func_020683f4
+.extern InventoryCell_Init
+.extern InventoryCell_Destroy
 .extern data_ov044_0220d338
 
     .global func_ov044_0220b740
@@ -25,9 +25,9 @@ func_ov044_0220b740:
     add r0, r5, #0x8
     mov r4, r1
     mov r6, r2
-    bl func_02071ea4
+    bl AnimationResourceState_InitEmbedded
     add r0, r5, #0x14
-    bl func_02092798
+    bl TitleCharacterResourceCollection_Init
     str r4, [r5, #0x0]
     mov r0, r4
     bl GraphicsSpriteGroupOwner_CreateGroup
@@ -110,7 +110,7 @@ func_ov044_0220b740:
     str r0, [r5, #0x44]
 .L_0220b894:
     ldr r0, [r5, #0x44]
-    bl func_02094574
+    bl InventoryScroll_UpdatePresentation
     mov r0, r5
     bl func_ov044_0220ba18
     add r0, r5, #0x14
@@ -125,8 +125,8 @@ func_ov044_0220b740:
 .L_0220b8c8: .word data_020f4e18
 .L_0220b8cc: .word data_ov044_0220d330
 .L_0220b8d0: .word gHeapContext
-.L_0220b8d4: .word func_020683c8
-.L_0220b8d8: .word func_020683f4
+.L_0220b8d4: .word InventoryCell_Init
+.L_0220b8d8: .word InventoryCell_Destroy
 .L_0220b8dc: .word data_ov044_0220d338
 .L_0220b8e0: .word 0x7005
 .size func_ov044_0220b740, . - func_ov044_0220b740

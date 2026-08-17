@@ -30,11 +30,11 @@ extern u8 data_021f3ecc[];
 extern u8 gSystemState[];
 extern u8 *data_021052fc;
 extern void *data_020f4e18;
-extern void func_02092798(void *);
+extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
-extern void func_02071ea4(void *);
-extern void func_02071eb8(void *);
+extern void AnimationResourceState_InitEmbedded(void *);
+extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -44,7 +44,7 @@ extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, const void *);
-extern const u16 *func_02079f3c(void *, u16);
+extern const u16 *RetailTextTable_FindRecordById(void *, u16);
 extern void GraphicsSpriteRenderer_DrawText(void *, const u16 *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
 extern s32 func_02092960(void *, s32, s32, s32, s32, s32, s32, s32, s32);
@@ -62,8 +62,8 @@ AreaInfoPanelPresentation *func_02027fe8(AreaInfoPanelPresentation *self,
                                          void *uiContext)
 {
     u8 *secondary;
-    func_02092798(self);
-    func_02071ea4(self->resources_24);
+    TitleCharacterResourceCollection_Init(self);
+    AnimationResourceState_InitEmbedded(self->resources_24);
     self->uiContext_30 = uiContext;
     self->spriteOwner_34 = GraphicsSpriteGroupOwner_CreateGroup(uiContext);
     func_02092814(self, 0x7005);
@@ -83,7 +83,7 @@ AreaInfoPanelPresentation *func_02027fe8(AreaInfoPanelPresentation *self,
 AreaInfoPanelPresentation *func_020280d8(AreaInfoPanelPresentation *self)
 {
     GraphicsSpriteGroup_Destroy(self->spriteOwner_34);
-    func_02071eb8(self->resources_24);
+    AnimationResourceState_Destroy(self->resources_24);
     func_020927b8(self);
     return self;
 }
@@ -108,12 +108,12 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
     GraphicsSpriteState_SetAnimationIndex(self->primarySprite_38, data_020c3a1c[index]);
 
     GraphicsSpriteRenderer_SetFontResource(self->uiContext_30, *(void **)(self->base_00 + 0));
-    text = func_02079f3c(data_021f3ecc, data_020c3a28[index]);
+    text = RetailTextTable_FindRecordById(data_021f3ecc, data_020c3a28[index]);
     GraphicsSpriteRenderer_DrawText(self->uiContext_30, text + 1, 6,
                   gSystemState[0x5f] ? 0x9b : 0x9d, 13, 4, 0);
 
     GraphicsSpriteRenderer_SetFontResource(self->uiContext_30, *(void **)(self->base_00 + 4));
-    text = func_02079f3c(data_021f3ecc,
+    text = RetailTextTable_FindRecordById(data_021f3ecc,
                         *(const u16 *)(data_020d780c + stride34));
     GraphicsSpriteRenderer_DrawText(self->uiContext_30, text + 1, 5, 0xa7, 13, 6, -1);
 
