@@ -37,6 +37,9 @@ typedef char PresentationScriptLayoutCheck[
     sizeof(PresentationScriptObject) == 0x9c ? 1 : -1];
 
 extern void PresentationScalar_SetImmediate(void *component, s32 value);
+extern u16 data_021f5ee8[];
+extern void func_020b4554(void *address, u32 size);
+extern void func_020b44e8(void);
 
 static s32 WrapMultiply(s32 left, s32 right)
 {
@@ -91,6 +94,28 @@ s32 Presentation_InterpolateLinear(s32 start, s32 end, s32 duration, s32 elapsed
         elapsed = duration;
     difference = DivideSigned(WrapMultiply(elapsed, end - start), duration);
     return (s32)((u32)start + (u32)difference);
+}
+
+/* Blend the first sixteen BGR555 colors into the shared transient palette.
+ * The resulting 32 bytes are cache-cleaned before the graphics queue flush. */
+void func_02092b70(const u16 *from, const u16 *to, s32 elapsed)
+{
+    s32 index;
+
+    for (index = 0; index < 16; ++index) {
+        u16 first = from[index];
+        u16 second = to[index];
+        s32 red = Presentation_InterpolateLinear(
+            first & 0x1f, second & 0x1f, 16, elapsed);
+        s32 green = Presentation_InterpolateLinear(
+            (first >> 5) & 0x1f, (second >> 5) & 0x1f, 16, elapsed);
+        s32 blue = Presentation_InterpolateLinear(
+            (first >> 10) & 0x1f, (second >> 10) & 0x1f, 16, elapsed);
+
+        data_021f5ee8[index] = (u16)(red | (green << 5) | (blue << 10));
+    }
+    func_020b4554(data_021f5ee8, 0x20);
+    func_020b44e8();
 }
 
 /* Centered quadratic interpolation (retail 0x02091AA8). */
@@ -371,4 +396,3 @@ s32 Presentation_UpdateScript(PresentationScriptObject *object)
         }
     }
 }
-

@@ -13,7 +13,7 @@ extern const u8 data_ov021_02202f64[];
 extern const u8 data_ov021_02202f88[];
 extern const u8 data_ov021_02202f90[];
 extern void *gDebugFont;
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -42,7 +42,7 @@ extern void func_02092798(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void func_020929b0(void *);
-extern void *func_02092cc0(void *, s32);
+extern void *func_02092cc0(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
 extern void func_020957bc(void *);
 extern u32 genrand_int32(void);
@@ -202,7 +202,8 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
 
     void *dialog = Heap_Alloc(0xec, data_ov021_02202f88, 4, gHeapContext);
     if (dialog != 0)
-        func_02092cc0(dialog, FIELD(s32, state, 0x58));
+        func_02092cc0(dialog, data_020f4e14,
+                      FIELD(void *, state, 0x58));
     FIELD(void *, state, 0x388) = dialog;
     func_ov021_021fd7a8(dialog, 0x50, 0x28, 0xa8, 0x84);
     FIELD(s32, dialog, 0xbc) = -2;

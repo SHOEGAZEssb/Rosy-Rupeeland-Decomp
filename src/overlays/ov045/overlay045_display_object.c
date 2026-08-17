@@ -106,8 +106,8 @@ extern "C" void *func_ov045_0220bd6c(void *object)
 {
     s32 y = FIELD(s32, object, 0x20);
     void *sprite = FIELD(void *, object, 0xac);
-    FIELD(s16, sprite, 0x2c) = FIELD(s32, object, 0x10);
-    FIELD(s16, sprite, 0x2e) = y;
+    FIELD(s16, sprite, 0x2c) = (s16)FIELD(s32, object, 0x10);
+    FIELD(s16, sprite, 0x2e) = (s16)y;
     return GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0xa8));
 }
 

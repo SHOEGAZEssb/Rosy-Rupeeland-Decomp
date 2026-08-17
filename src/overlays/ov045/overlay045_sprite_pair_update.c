@@ -16,12 +16,14 @@ extern "C" s32 func_020918f4(void *seed, s32 modulus);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 animation);
 extern "C" void func_ov045_0220c068(void *object);
 
+#ifdef MATCHING_BUILD
 class SpritePairVirtual {
 public:
     virtual void slot0();
     virtual void slot1();
     virtual void slot2();
 };
+#endif
 
 /*
  * Invoke virtual slot 2 for the object, then update font resource +0x1C.
@@ -29,7 +31,13 @@ public:
  */
 extern "C" void func_ov045_0220c18c(void *object)
 {
+#ifdef MATCHING_BUILD
     ((SpritePairVirtual *)object)->slot2();
+#else
+    void (**vtable)(void *) = *(void (***)(void *))object;
+
+    vtable[2](object);
+#endif
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, object, 0x1c));
 }
 

@@ -5,9 +5,9 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_020f4e14;
-extern void *data_021f5128[];
+extern void **data_021f5128;
 extern const u8 data_ov021_02202f98[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,7 +69,7 @@ extern "C" void func_ov021_021fe520(void *state)
                 void *row = func_ov021_021fd0e8(
                     list, descriptors + i * 0x10);
                 FIELD(s16, row, 8) = 0;
-                FIELD(s16, row, 0xa) = i * 0x18;
+                FIELD(s16, row, 0xa) = (s16)(i * 0x18);
             }
             func_ov021_021fd254(list);
         } else {

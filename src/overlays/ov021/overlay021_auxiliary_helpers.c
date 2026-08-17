@@ -7,7 +7,7 @@
 extern void *data_020f4e14;
 extern void *data_021e9ac0;
 extern const u8 data_ov021_02202fb0[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -115,7 +115,7 @@ extern "C" void func_ov021_021fee54(void *state)
     s32 relative = FIELD(s32, controller, 0x14) -
                    FIELD(s32, controller, 0xc);
     FIELD(u16, sprite, 0x2c) = 0x86;
-    FIELD(u16, sprite, 0x2e) = relative * 0x18 + 0x1c;
+    FIELD(u16, sprite, 0x2e) = (u16)(relative * 0x18 + 0x1c);
 }
 
 /*

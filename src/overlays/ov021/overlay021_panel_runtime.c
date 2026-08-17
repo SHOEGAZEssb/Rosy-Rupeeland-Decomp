@@ -9,7 +9,7 @@ extern void *data_021e9ac0;
 extern const u8 data_021f5ee8[];
 extern const u8 data_ov021_02202fa0[];
 extern const u8 data_ov021_02202fa8[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern void *gLupyContext;
 
 #ifdef __cplusplus

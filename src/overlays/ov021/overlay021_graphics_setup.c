@@ -257,6 +257,6 @@ extern "C" void func_ov021_021fe458(void *state)
 extern "C" void func_ov021_021fe268(s32 a, s32 b, s32 c, s32 d, s32 e)
 {
     volatile u16 *bg1cnt = (volatile u16 *)0x0400000a;
-    *bg1cnt = (*bg1cnt & 0x43) | (a << 14) | (b << 7) | (c << 8) |
-              (d << 2) | (e << 13);
+    *bg1cnt = (u16)((*bg1cnt & 0x43) | (a << 14) | (b << 7) | (c << 8) |
+                    (d << 2) | (e << 13));
 }

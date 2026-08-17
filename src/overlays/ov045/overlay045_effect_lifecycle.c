@@ -70,8 +70,8 @@ extern "C" bool func_ov045_0220b7a0(void *object)
     s32 roundedX = x + ((u32)(x >> 11) >> 20);
     s32 roundedY = y + ((u32)(y >> 11) >> 20);
     void *record = FIELD(void *, object, 0x9c);
-    FIELD(s16, record, 0x2c) = roundedX >> 12;
-    FIELD(s16, record, 0x2e) = roundedY >> 12;
+    FIELD(s16, record, 0x2c) = (s16)(roundedX >> 12);
+    FIELD(s16, record, 0x2e) = (s16)(roundedY >> 12);
 
     return FIELD(s32, object, 0x80) >= FIELD(s32, object, 0x7c);
 }

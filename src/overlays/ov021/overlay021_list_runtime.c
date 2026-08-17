@@ -15,7 +15,7 @@ extern const u8 data_021f3ecc[];
 extern void *data_020f4e18[];
 extern const u8 data_ov021_02202f78[];
 extern const u8 data_ov021_02202f80[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 
 #ifdef __cplusplus
 extern "C" {

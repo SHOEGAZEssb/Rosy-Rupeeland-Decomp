@@ -20,7 +20,7 @@ struct EmitterCoordinateRange {
 extern "C" s16 data_ov045_0220d47c[];
 extern "C" u8 data_ov045_0220d5d8[];
 extern "C" void *gSoundContext;
-extern "C" void *gHeapContext;
+extern "C" u8 gHeapContext[];
 extern "C" s32 func_02091c7c(void *track, s32 mode);
 extern "C" void func_02091cf0(void *track);
 extern "C" void func_02091b98(void *track, s32 value);

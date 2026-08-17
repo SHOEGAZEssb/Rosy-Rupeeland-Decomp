@@ -91,7 +91,7 @@ extern "C" Overlay021Row *func_ov021_021fd0e8(void *state,
         rows[index].descriptor = descriptor;
         rows[index].sprite = 0;
         rows[index].x = 0;
-        rows[index].y = index * 0x18;
+        rows[index].y = (s16)(index * 0x18);
         FIELD(s32, state, 0x54) = index + 1;
         return &rows[index];
     }

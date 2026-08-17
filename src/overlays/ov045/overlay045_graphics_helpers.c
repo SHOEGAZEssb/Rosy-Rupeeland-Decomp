@@ -43,6 +43,6 @@ extern "C" void func_ov045_0220c2e0(u32 bit14, u32 bit7, u32 bit8,
     value |= bit8 << 8;
     value |= bits2 << 2;
     value |= bit13 << 13;
-    *(volatile u16 *)0x0400100a = value;
+    *(volatile u16 *)0x0400100a = (u16)value;
 }
 #endif

@@ -40,6 +40,61 @@ typedef struct ResourceFileManager {
 } ResourceFileManager;
 
 extern u8 data_021f4090[];
+extern u8 data_021f5138[];
+extern u32 func_02078d54(void *manager, u16 identifier);
+void *func_02078e98(ResourceFileManager *manager, u32 identifier);
+
+/* Maps a language message identifier to the byte length of its resource via
+ * the global resource manager. A missing record has length zero. */
+u32 func_02079160(const LookupIndexPrefix *table, s32 identifier)
+{
+    const LanguageLookupRecord *records =
+        (const LanguageLookupRecord *)table->records;
+    s32 group = 0;
+    s32 recordIndex;
+
+    for (group = 4; group >= 0; --group) {
+        if (identifier >= table->thresholds[group]) {
+            break;
+        }
+    }
+    if (group < 0) {
+        group = 0;
+    }
+    for (recordIndex = table->starts[group];
+         recordIndex < table->count; ++recordIndex) {
+        if (records[recordIndex].identifier == identifier) {
+            return func_02078d54(data_021f4090,
+                                 records[recordIndex].resource);
+        }
+    }
+    return 0;
+}
+
+/* Resolve one resource ID from the selected 0x9C-byte message group. */
+const void *func_0207c278(const void *table, s32 group, s32 index)
+{
+    const u8 *record = (const u8 *)table + group * 0x9c +
+                       index * 4 + 0x1d0;
+
+    return func_02078e98((ResourceFileManager *)data_021f4090,
+                         *(const u16 *)record);
+}
+
+/* Resolve a mode-owned message key through the global message-group table. */
+const void *func_0207b388(const void *mode_record, s32 key)
+{
+    return func_0207c278(data_021f5138,
+                         *(const s32 *)((const u8 *)mode_record + 4), key);
+}
+
+/* Return the borrowed 0x9C-byte global group selected by a mode record. */
+void *func_0207b44c(const void *mode_record)
+{
+    s32 group = *(const s32 *)((const u8 *)mode_record + 4);
+
+    return data_021f5138 + group * 0x9c;
+}
 
 /* Loads one indexed blob into the manager cache and returns the bytes read, or
  * zero after closing the file where possible on any filesystem failure. */

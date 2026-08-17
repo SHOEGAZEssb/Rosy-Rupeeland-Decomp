@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021f5128[];
+extern void **data_021f5128;
 extern const u8 data_ov021_02202cd0[];
 extern const u32 data_ov021_02202d38[];
 extern const u32 data_ov021_02202d48[];
@@ -13,7 +13,7 @@ extern const u32 data_ov021_02202d68[];
 extern const u32 data_ov021_02202d70[];
 extern const u32 data_ov021_02202d90[];
 extern const u32 data_ov021_02202fb8[];
-extern void *gHeapContext;
+extern u8 gHeapContext[];
 extern void *gLupyContext;
 
 #ifdef __cplusplus
