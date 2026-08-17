@@ -187,7 +187,7 @@ extern "C" void func_ov021_021fe29c(void *state)
     func_ov021_021fe268(0, 0, 0, 0x1e, 1);
 
     u8 resources[12];
-    u8 manager[64];
+    u8 manager[0x44];
     GraphicsResourceSet_Init(resources);
     func_020926d8(manager);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],

@@ -21,6 +21,7 @@ extern void func_0206563c(void *, s32);
 extern void func_02095820(void *, s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
 extern void func_ov001_021fca94(void *, void *);
+extern void *func_ov002_021fb6e0(void *, void *, s32);
 extern void func_ov002_021fb9c4(void *);
 extern void func_ov021_021feac8(void *, const void *);
 #ifdef __cplusplus
@@ -79,8 +80,15 @@ extern "C" void func_ov021_021fedac(void *state)
         return;
     OverlaySlot_LoadOverlay((u8 *)state + 0x41c, 2);
     void *panel = Heap_Alloc(0xb4, data_ov021_02202fb0, 4, gHeapContext);
-    if (panel != 0)
+    if (panel != 0) {
+#ifdef MATCHING_BUILD
+        /* Retail resolves the shared overlay address through the loaded slot. */
         panel = func_ov000_021fb6e0(panel, data_020f4e14, 0);
+#else
+        /* Host symbols must name the overlay that owns the loaded address. */
+        panel = func_ov002_021fb6e0(panel, data_020f4e14, 0);
+#endif
+    }
     FIELD(void *, state, 0x390) = panel;
 }
 
