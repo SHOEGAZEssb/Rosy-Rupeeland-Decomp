@@ -68,10 +68,9 @@ s32 ActorExtendedType3_ForwardInteractionGateB(void *self, void *record)
 
 /*
  * Copy sourceTransform into a temporary transform, then call
- * ActorExtendedType2_UpdateTargetMotion with actor; the matching call leaves
- * the otherwise-unused temporary pointer in r1. Next inspect signed mode
- * +0x298. Mode zero divides actor +0x40 by three; mode one divides +0x3c by
- * three. Finalize the temporary transform.
+ * ActorExtendedType2_UpdateTargetMotion with actor and that temporary. Next
+ * inspect signed mode +0x298. Mode zero divides actor +0x40 by three; mode one
+ * divides +0x3c by three. Finalize the temporary transform.
  * The routine has no meaningful return value and may change actor/motion state;
  * no direct hardware operation occurs.
  */
