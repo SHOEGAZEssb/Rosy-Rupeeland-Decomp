@@ -112,6 +112,8 @@ s32 func_02062b28(void *entry_pointer)
     return ReadU16(entry, 4) == 0;
 }
 
+/* Restore one packed inventory entry. The word stores a 10-bit ID, five-bit
+ * status, 10-bit quantity, and seven-bit subtype without overlapping fields. */
 s32 func_02062e70(void *entry_pointer, const void *packed_pointer)
 {
     u8 *entry = (u8 *)entry_pointer;
@@ -123,7 +125,7 @@ s32 func_02062e70(void *entry_pointer, const void *packed_pointer)
                                    (u16)(packed & 0x3ff));
     *(u8 **)(entry + 8) = metadata;
     WriteU16(entry, 2, (u16)((packed >> 10) & 0x1f));
-    WriteU16(entry, 4, (u16)((packed >> 15) & 0xfff));
+    WriteU16(entry, 4, (u16)((packed >> 15) & 0x3ff));
     WriteU16(entry, 6, (u16)(packed >> 25));
     if (func_02062b28(entry))
         return 0;
@@ -278,12 +280,13 @@ static void ResetPackedEntry(u8 *entry)
     WriteU32(entry, 0x20, 0);
 }
 
+/* Serialize the inverse 10/5/10/7-bit inventory-entry layout. */
 static void PackEntry(const u8 *entry, u32 *packed)
 {
     u32 word = *packed;
     word = (word & 0xfffffc00u) | (ReadU16(entry, 0) & 0x3ffu);
     word = (word & ~0x7c00u) | ((ReadU16(entry, 2) & 0x1fu) << 10);
-    word = (word & 0xfe007fffu) | ((ReadU16(entry, 4) & 0xfffu) << 15);
+    word = (word & 0xfe007fffu) | ((ReadU16(entry, 4) & 0x3ffu) << 15);
     word = (word & ~0xfe000000u) | ((u32)(ReadU16(entry, 6) & 0x7fu) << 25);
     *packed = word;
 }
@@ -617,7 +620,6 @@ void func_0206f8c8(void *state_pointer)
     }
     WriteU32(state, 4, (u32)(highest + 1));
 }
-
 
 
 
