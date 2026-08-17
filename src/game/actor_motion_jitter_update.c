@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 extern u32 genrand_int32(void);
-extern s32 func_020bf1f8(u32 value, s32 modulus);
+extern u64 func_020bf1f8(u32 value, u32 modulus);
 #ifdef __cplusplus
 }
 #endif
@@ -71,9 +71,9 @@ void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds)
 
                 --self->remainingFrames;
                 span = self->radius * 2;
-                random = func_020bf1f8(genrand_int32(), span);
+                random = (s32)(func_020bf1f8(genrand_int32(), (u32)span) >> 32);
                 position.value.x += (self->radius - random) << 12;
-                random = func_020bf1f8(genrand_int32(), span);
+                random = (s32)(func_020bf1f8(genrand_int32(), (u32)span) >> 32);
                 position.value.y += (self->radius - random) << 12;
             }
             VecFx32Object_Assign(&motion->position, &position);

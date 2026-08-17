@@ -419,11 +419,11 @@ void func_020592c0(void *context, u16 sequence, s32 volume)
     TingleNativeSound_SetSequenceVolume(sequence, volume, 0);
 }
 
-/* Apply the recovered masked track value to a direct SSEQ. */
-void func_020592d8(void *context, u16 sequence, u16 track_mask, s32 value)
+/* Fade one direct SSEQ to the requested 0..127 volume. */
+void func_020592d8(void *context, u16 sequence, u16 volume, s32 fade_frames)
 {
     if (sound_requests_enabled(context))
-        TingleNativeSound_SetSequenceTrackValue(sequence, track_mask, value, 0);
+        TingleNativeSound_SetSequenceVolume(sequence, volume, fade_frames);
 }
 
 /* Make the selected direct-sequence tracks audible and mute the complement. */
