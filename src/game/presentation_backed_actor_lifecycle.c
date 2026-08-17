@@ -14,7 +14,7 @@ extern u8 gPresentationBackedActorRuntimeState[];
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *func_02030f98(void *actor);
+extern void *func_02030f98(void *actor, const void *descriptor);
 extern void func_0203130c(void *actor);
 extern void func_02031488(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
@@ -26,15 +26,16 @@ extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
 /*
- * Input is actor storage. Construct the inherited actor, install the recovered
- * vtable, clear private halfwords at 0x1EC/0x1F0, word 0x1F8, and bytes
+ * Inputs are actor storage and its borrowed spawn descriptor. Construct the
+ * inherited actor, install the recovered vtable, clear private halfwords at
+ * 0x1EC/0x1F0, word 0x1F8, and bytes
  * 0x1EE/0x1EF, then increment gPresentationBackedActorRuntimeState+4 when actor type 10 is observed.
  * Return self. The inherited constructor may change engine state; no hardware
  * is accessed directly.
  */
-void *PresentationBackedActor_InitBase(void *self)
+void *PresentationBackedActor_InitBase(void *self, const void *descriptor)
 {
-    func_02030f98(self);
+    func_02030f98(self, descriptor);
     FIELD(const void *, self, 0x000) = data_020e238c;
     FIELD(u16, self, 0x1ec) = 0;
     FIELD(u16, self, 0x1f0) = 0;
@@ -48,13 +49,14 @@ void *PresentationBackedActor_InitBase(void *self)
 }
 
 /*
- * Input is actor storage. Perform the same construction, field initialization,
- * type-10 accounting, and return behavior as PresentationBackedActor_InitBase. This distinct
- * entry point is retained because recovered callers may depend on its address.
+ * Inputs are actor storage and its borrowed spawn descriptor. Perform the same
+ * construction, field initialization, type-10 accounting, and return behavior
+ * as PresentationBackedActor_InitBase. This distinct entry point is retained
+ * because recovered callers may depend on its address.
  */
-void *PresentationBackedActor_Init(void *self)
+void *PresentationBackedActor_Init(void *self, const void *descriptor)
 {
-    return PresentationBackedActor_InitBase(self);
+    return PresentationBackedActor_InitBase(self, descriptor);
 }
 
 /*
@@ -98,4 +100,3 @@ void *PresentationBackedActor_Destroy(void *self)
 {
     return PresentationBackedActor_DestroyComplete(self);
 }
-

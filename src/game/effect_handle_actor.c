@@ -14,7 +14,8 @@ extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
 extern void *func_0201e0ec(void *manager);
-extern void *PresentationBackedActor_InitBase(void *actor);
+extern void *PresentationBackedActor_InitBase(void *actor,
+                                              const void *descriptor);
 extern void *PresentationBackedActor_Destroy(void *actor);
 extern void func_0204d858(void *actor);
 extern void func_020a2310(void *manager, s32 handle);
@@ -29,14 +30,15 @@ extern s32 func_020a257c(void *manager, s32 mode, s32 x, s32 y,
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
 /*
- * Input is actor storage. Construct the presentation-backed parent, install
- * data_020e2458, clear the private frame counter at 0x1FC, set the effect
- * handle at 0x1FE to -1, and return self. Parent construction changes engine
- * state; this wrapper has no direct hardware effects.
+ * Inputs are actor storage and its borrowed spawn descriptor. Construct the
+ * presentation-backed parent, install data_020e2458, clear the private frame
+ * counter at 0x1FC, set the effect handle at 0x1FE to -1, and return self.
+ * Parent construction changes engine state; this wrapper has no direct
+ * hardware effects.
  */
-void *func_0204e740(void *self)
+void *func_0204e740(void *self, const void *descriptor)
 {
-    PresentationBackedActor_InitBase(self);
+    PresentationBackedActor_InitBase(self, descriptor);
     FIELD(const void *, self, 0) = data_020e2458;
     FIELD(s16, self, 0x1fc) = 0;
     FIELD(s16, self, 0x1fe) = -1;
@@ -100,4 +102,3 @@ void func_0204e82c(void *actor)
     }
     func_0204d858(actor);
 }
-
