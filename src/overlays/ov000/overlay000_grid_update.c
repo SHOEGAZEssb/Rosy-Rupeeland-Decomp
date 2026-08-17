@@ -39,7 +39,7 @@ extern void func_020958d8(void *element);
  * If animatedTarget_01c is null, return. While delay_2ac is positive, decrement
  * it and return. Otherwise add 0x200 to phase_2a8, sample the odd sine-table
  * component selected by the phase, scale it by 0x1052 with fixed-point
- * rounding, divide by 128, clamp to +/-0x100, replace zero with 0x10, and
+ * rounding, divide by 16, clamp to +/-0x100, replace zero with 0x10, and
  * write target halfword 0x32. UI state changes; helpers may update sprite
  * presentation, but this wrapper accesses no hardware registers directly.
  */
@@ -72,7 +72,7 @@ void func_ov000_021fc164(Overlay000GridState *state)
     tableIndex = ((u16)phase >> 4) * 2 + 1;
     product = (s64)data_020c9670[tableIndex] * 0x1052 + 0x800;
     value = (s32)(product >> 12);
-    value /= 0x80;
+    value /= 0x10;
     if (value < -0x100) {
         value = -0x100;
     } else if (value > 0x100) {

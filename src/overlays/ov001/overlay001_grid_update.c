@@ -39,7 +39,7 @@ extern void func_020958d8(void *element);
  * Return if animatedTarget_01C is null. While delay_1FC is positive, decrement
  * it and return. Otherwise advance phase_1F8 by phaseStep_200, sample the odd
  * sine-table component, scale by 0x1052 with fixed-point rounding, divide by
- * 128, clamp to +/-0x100, replace zero with 0x10, and store target halfword
+ * 16, clamp to +/-0x100, replace zero with 0x10, and store target halfword
  * +0x32. Helpers may update graphics state; no hardware register is touched.
  */
 #ifdef __cplusplus
@@ -69,7 +69,7 @@ void func_ov001_021fbf7c(Overlay001GridUpdateState *state)
     tableIndex = ((u16)phase >> 4) * 2 + 1;
     product = (s64)data_020c9670[tableIndex] * 0x1052 + 0x800;
     value = (s32)(product >> 12);
-    value /= 0x80;
+    value /= 0x10;
     if (value < -0x100) {
         value = -0x100;
     } else if (value > 0x100) {
