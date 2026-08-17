@@ -15,6 +15,7 @@ typedef struct InventoryRecordCollection {
 } InventoryRecordCollection;
 
 extern s32 func_02062b28(void *record);
+extern s32 func_02062c68(void *record);
 extern void func_02062864(void *record, u16 count);
 extern void func_020627d0(void *record, u16 id, u16 subtype, u16 count);
 extern void *func_02063b90(void *database, u16 id);
@@ -395,6 +396,22 @@ void func_02064be0(void *collection, s32 mode)
             }
         }
     }
+}
+
+/*
+ * Return one when any borrowed record in the collection is an inactive
+ * kind-one/subtype-one descriptor, otherwise zero. The collection is not
+ * modified and its signed count is retail's scan bound.
+ */
+s32 func_02065468(InventoryRecordCollection *collection)
+{
+    s32 index;
+
+    for (index = 0; index < collection->count0c; ++index) {
+        if (func_02062c68(collection->records04 + index * 0x24) != 0)
+            return 1;
+    }
+    return 0;
 }
 
 /* Swap the assignable fields of two indexed collection records in place. */

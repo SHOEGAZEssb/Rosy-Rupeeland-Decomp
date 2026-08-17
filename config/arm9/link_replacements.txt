@@ -5,6 +5,7 @@ build/decomp/delinks/asm/game/func_02062828.o = build/decomp/asm/game/func_02062
 build/decomp/delinks/asm/game/func_02062c20.o = build/decomp/asm/game/func_02062c20.o
 build/decomp/delinks/asm/game/func_02062f18.o = build/decomp/asm/game/func_02062f18.o
 build/decomp/delinks/asm/game/func_02064b7c.o = build/decomp/asm/game/func_02064b7c.o
+build/decomp/delinks/asm/game/func_02065468.o = build/decomp/asm/game/func_02065468.o
 build/decomp/delinks/asm/game/func_020654ac.o = build/decomp/asm/game/func_020654ac.o
 build/decomp/delinks/asm/game/func_0206550c.o = build/decomp/asm/game/func_0206550c.o
 build/decomp/delinks/asm/game/func_020683c8.o = build/decomp/asm/game/func_020683c8.o
