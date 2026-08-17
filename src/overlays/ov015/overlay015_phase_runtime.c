@@ -138,7 +138,7 @@ extern "C" s32 func_ov015_021fdfe8(void *state)
         }
         /* The original intentionally continues into stage two after readiness. */
     case 2:
-        if (func_ov001_021fcae0(controller, (u8 *)state + 0x2c) == 0 &&
+        if (func_ov001_021fcae0(controller, FIELD(void *, state, 0x2c)) == 0 &&
             (FIELD(u32, state, 0x20) & 0x10) != 0 &&
             func_ov001_021fcbf0(controller, (u8 *)state + 0x30) == 0 &&
             (FIELD(u32, state, 0x20) & 0x20) != 0) {

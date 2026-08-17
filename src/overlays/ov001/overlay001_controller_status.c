@@ -13,20 +13,22 @@ typedef struct Overlay001ControllerStatusState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02094698(void *controller);
+extern s32 func_02094698(void *controller, const void *point);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pass controller_1bc to func_02094698 and return its result unchanged. The
- * exact status meaning and callee side effects remain unconfirmed; this wrapper
- * changes no other state and performs no direct hardware access.
+ * Pass controller_1bc and the borrowed touch point to func_02094698 and return
+ * its result unchanged. The exact status meaning and callee side effects remain
+ * unconfirmed; this wrapper changes no other state and performs no direct
+ * hardware access.
  */
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov001_021fcc44(Overlay001ControllerStatusState *state)
+s32 func_ov001_021fcc44(Overlay001ControllerStatusState *state,
+                         const void *point)
 {
-    return func_02094698(state->controller_1bc);
+    return func_02094698(state->controller_1bc, point);
 }
