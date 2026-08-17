@@ -61,6 +61,7 @@ extern u8 data_020e5688[];
 extern u8 data_020e56b0[];
 extern u8 data_020e56d8[];
 extern u8 data_020e5700[];
+extern const char data_020e5730[];
 extern const u32 data_020c46c8[];
 extern u8 data_020e8380[];
 extern const s16 data_020e83a0[];
@@ -155,10 +156,16 @@ extern void func_0204e628(s32 kind, s32 amount, void *position);
 extern void *func_02007f0c(void *scene, s32 value);
 extern void func_0202de90(void *actorCollection);
 extern void func_0206a6d4(void *queue, const void *event);
+extern void func_020693f8(void *manager, const void *event);
+extern void func_020696c0(void *record, s32 first, s32 second);
 extern void *func_02025120(void *effect, void *actor, s32 amount,
                            s32 variant, s32 duration);
 extern const char data_020e5828[];
 extern const char data_020e5830[];
+extern const u16 data_020e5804;
+extern u8 *func_0206899c(s32 index);
+extern void func_020a2894(void *manager, s32 subtype, s32 x, s32 y,
+                          s32 kind);
 #ifdef __cplusplus
 }
 #endif
@@ -295,6 +302,217 @@ void *func_02069994(void *object, void *manager, void *actor, s32 index)
     *(u32 *)(self + 8) = 0;
     (*(void (**)(void *))(*(u8 **)self + 0))(self);
     return self;
+}
+
+/*
+ * Initialize a type-two attachment from its resident actor-type record. Actor
+ * health fields and the record's pacing/reward state are synchronized; all
+ * counts and probabilities retain their retail integer units.
+ */
+void func_020699f4(void *object)
+{
+    u8 *self = (u8 *)object;
+    u8 *actor = *(u8 **)(self + 0x1d0);
+    const u8 *source = func_0206899c(*(s32 *)(self + 0x1d8));
+    s32 i;
+
+    for (i = 0; i < 10; i++)
+        *(u32 *)(self + 0x1dc + i * 4) = *(const u32 *)(source + i * 4);
+    for (i = 0; i < 6; i++)
+        *(u32 *)(self + 0x204 + i * 4) = *(const u32 *)(source + 0x28 + i * 4);
+    func_020696c0(self, 0, 0);
+    if (*(s32 *)(actor + 0x200) < 0 || *(s32 *)(actor + 0x1fc) == 0) {
+        *(s32 *)(self + 0x14) = *(s32 *)(self + 0x1e8);
+        *(s32 *)(self + 0x18) = *(s32 *)(self + 0x1e8);
+        *(s32 *)(actor + 0x200) = *(s32 *)(self + 0x1e8);
+        *(s32 *)(actor + 0x1fc) = *(s32 *)(self + 0x18);
+    } else {
+        *(s32 *)(self + 0x14) = *(s32 *)(actor + 0x200);
+        *(s32 *)(self + 0x18) = *(s32 *)(actor + 0x1fc);
+    }
+    *(s32 *)(actor + 0x1fc) = *(s32 *)(self + 0x18);
+    *(s32 *)(self + 0x1c) = *(s32 *)(self + 0x1f4);
+    *(s32 *)(self + 0x20) = *(s32 *)(self + 0x1f0);
+    *(s32 *)(self + 0x1c4) = *(s32 *)(self + 0x1ec);
+    *(s32 *)(self + 0x244) = *(s32 *)(self + 0x1fc);
+    func_020693ec(self + 0x1c8, *(s32 *)(self + 0x20));
+}
+
+/*
+ * Regenerate the randomized hit schedule for a type-two attachment. The first
+ * count positions are selected without replacement from the second count;
+ * one RNG sample is consumed per selected position, matching retail.
+ */
+void func_020696f4(void *object)
+{
+    u8 *self = (u8 *)object;
+    s32 selectedCount = *(s32 *)(self + 0x24);
+    s32 positionCount = *(s32 *)(self + 0x28);
+    s32 selected;
+    s32 position;
+
+    if (selectedCount != 0) {
+        for (position = 0; position < positionCount; position++)
+            *(u32 *)(self + 0x2c + position * 4) = 0;
+        for (selected = 0; selected < selectedCount; selected++) {
+            u32 rank = genrand_int32() % (u32)(positionCount - selected);
+            for (position = 0; position < positionCount; position++) {
+                if (*(u32 *)(self + 0x2c + position * 4) == 0) {
+                    if (rank == 0) {
+                        *(u32 *)(self + 0x2c + position * 4) = 1;
+                        break;
+                    }
+                    rank--;
+                }
+            }
+        }
+    }
+    *(s32 *)(self + 0x1c0) = 0;
+}
+
+/* Return whether one interpolated type-two attachment step consumed a hit. */
+s32 func_02069914(void *object)
+{
+    u8 *self = (u8 *)object;
+    s32 hit = 0;
+    s32 index;
+
+    if (*(s32 *)(self + 0x24) == 0)
+        return 0;
+    if (*(s32 *)(self + 0x24) == 100)
+        return 1;
+    index = (*(s32 *)(self + 0x1c0))++;
+    if (*(void **)(self + 0x2c + index * 4) != 0)
+        hit = 1;
+    if (*(s32 *)(self + 0x1c0) >= *(s32 *)(self + 0x28))
+        func_020696f4(self);
+    return hit;
+}
+
+/* Clamp a type-two actor's health after applying a signed damage delta. */
+void func_02069d80(void *object, s32 delta)
+{
+    u8 *self = (u8 *)object;
+    u8 *actor = *(u8 **)(self + 0x1d0);
+    s32 current = *(s32 *)(actor + 0x1fc);
+    s32 updated = current + delta;
+
+    *(s32 *)(self + 0x18) = current;
+    if (updated <= 0)
+        *(s32 *)(self + 0x18) = 0;
+    else if (updated >= *(s32 *)(self + 0x14))
+        *(s32 *)(self + 0x18) = *(s32 *)(self + 0x14);
+    else
+        *(s32 *)(self + 0x18) = updated;
+    if ((*(u32 *)(actor + 0xd0) & 0x20000) != 0 &&
+        *(s32 *)(self + 0x18) == 0)
+        *(s32 *)(self + 0x18) = 1;
+    *(s32 *)(actor + 0x1fc) = *(s32 *)(self + 0x18);
+}
+
+/* Consume a type-two damage event and report when its health reaches zero. */
+s32 func_02069b28(void *object, const void *eventObject)
+{
+    u8 *self = (u8 *)object;
+    const s32 *event = (const s32 *)eventObject;
+    if ((*(u32 *)(self + 0x10) & 4) != 0)
+        return 0;
+    if (event[0] == 1 && !func_02069914(self))
+        func_02069d80(self, -event[5]);
+    return *(s32 *)(self + 0x18) == 0;
+}
+
+/* Return the embedded reward descriptor owned by a type-two record. */
+void *func_02068f9c(void *object)
+{
+    return (u8 *)object + 0x21c;
+}
+
+/* Queue paced type-two attack events against the manager's selected records. */
+void func_02069b8c(void *object)
+{
+    u8 *self = (u8 *)object;
+    u8 *manager = *(u8 **)(self + 4);
+    if ((*(u32 *)(self + 0x10) & 2) != 0 ||
+        (*(s32 *)(manager + 0x8c) < 0 && *(s32 *)(manager + 0x90) < 0) ||
+        *(void **)(self + 0x18) == 0 ||
+        (*(u32 *)(*(u8 **)(self + 0x1d0) + 0xd0) & 0x20000) != 0)
+        return;
+    for (;;) {
+        s32 cursor = func_0206aab8(self + 0x1c8);
+        u32 event[6];
+        u32 mask = 0;
+        if (cursor < 0)
+            break;
+        if (*(s32 *)(manager + 0x8c) >= 0)
+            mask |= 1u << (*(u32 *)(manager + 0x8c) & 0xff);
+        if (*(s32 *)(manager + 0x90) >= 0)
+            mask |= 1u << (*(u32 *)(manager + 0x90) & 0xff);
+        event[0] = 1;
+        event[1] = 0;
+        event[2] = (u32)cursor;
+        event[3] = (u32)self;
+        event[4] = mask;
+        event[5] = *(u32 *)(self + 0x1c);
+        func_020693f8(manager, event);
+    }
+}
+
+/* Select a type-two reward descriptor when its actor reaches zero health. */
+void func_02069c60(void *object)
+{
+    u8 *self = (u8 *)object;
+    u8 *actor = *(u8 **)(self + 0x1d0);
+    u32 random;
+    *(s32 *)(self + 0x18) = *(s32 *)(actor + 0x1fc);
+    if (*(s32 *)(self + 0x18) == 0) {
+        if ((*(u32 *)(actor + 0x260) & 0x2000) != 0) {
+            *(s32 *)(self + 0x244) = 0;
+        } else {
+            random = genrand_int32() % 100;
+            if (random < *(u32 *)(self + 0x20c)) {
+                func_020627a0(self + 0x21c, *(u16 *)(self + 0x204), 1);
+                *(s32 *)(self + 0x244) = 0;
+            } else if (random < *(u32 *)(self + 0x20c) +
+                                *(u32 *)(self + 0x218)) {
+                func_020627a0(self + 0x21c, *(u16 *)(self + 0x210), 1);
+                *(s32 *)(self + 0x244) = 0;
+            }
+        }
+    }
+    *(s32 *)(actor + 0x1fc) = *(s32 *)(self + 0x18);
+}
+
+/* Publish the retained health for resident type 0x3e6 into GameWork. */
+void func_02069de0(void *object)
+{
+    u8 *self = (u8 *)object;
+    if (*(s32 *)(self + 0x1e0) == 0x3e6)
+        *(u16 *)((u8 *)gGameWork + 0x80) = (u16)*(s32 *)(self + 0x18);
+}
+
+/* Accumulate currency loss from an incoming type-two attack event. */
+s32 func_02069edc(void *object, const void *eventObject)
+{
+    u8 *self = (u8 *)object;
+    const u32 *event = (const u32 *)eventObject;
+    u8 *manager = *(u8 **)(self + 4);
+
+    if ((*(u32 *)(self + 0x10) & 4) != 0)
+        return 0;
+    if (event[0] == 1) {
+        u8 *attacker = (u8 *)event[3];
+        if (*(s32 *)(manager + 0x90) < 0 || (genrand_int32() & 1) == 0) {
+            s32 amount = func_020befec((s32)event[5] *
+                                      *(s32 *)(attacker + 0x1c4) * 65, 100);
+            if (*(s32 *)(manager + 0x90) >= 0)
+                amount /= 2;
+            amount = func_020befec(amount * *(s32 *)(attacker + 0x1f8), 100);
+            if (!func_02069914(self))
+                *(s32 *)(self + 0x1d8) += amount;
+        }
+    }
+    return *(s32 *)(self + 0x18) == 0;
 }
 
 /* Construct a type-one attachment record and invoke its initialization slot. */
@@ -974,6 +1192,19 @@ void func_0206b278(void *object)
     }
 }
 
+/* Choose the next animation for one core wrapper from its signed kind. */
+s32 func_0206bfc4(void *core, void *wrapperObject)
+{
+    const u8 *wrapper = (const u8 *)wrapperObject;
+    s32 animation = (s32)func_020ada8c(genrand_int32() & 0x7ff, 6);
+    (void)core;
+    if (*(s16 *)(wrapper + 4) == 0)
+        return -1;
+    if (*(s16 *)(wrapper + 4) >= 1 && *(s16 *)(wrapper + 4) <= 8)
+        return animation;
+    return animation + 6;
+}
+
 /* Advance one active core history record and report when it should be freed. */
 s32 func_0206c4b0(void *object)
 {
@@ -1176,6 +1407,76 @@ void *func_0206a91c(void *object)
     return *(void **)((u8 *)object + 4);
 }
 
+/*
+ * Insert a new event node after the intrusive list cursor and return it. The
+ * list owns the 0x20-byte node; its first 24 bytes remain caller-populated.
+ */
+void *func_0206a938(void *object)
+{
+    u8 *list = (u8 *)object;
+    u8 *current = *(u8 **)(list + 4);
+    u8 *next = current != 0 ? *(u8 **)(current + 0x1c) : 0;
+    u8 *node = (u8 *)Heap_Alloc(0x20, data_020e5730, 4, &gHeapContext);
+
+    if (current == 0) {
+        *(void **)(node + 0x18) = 0;
+        *(void **)(node + 0x1c) = 0;
+        *(void **)(list + 4) = node;
+        *(void **)(list + 8) = node;
+        *(void **)(list + 12) = node;
+    } else {
+        *(void **)(node + 0x18) = current;
+        *(void **)(node + 0x1c) = next;
+        *(void **)(list + 4) = node;
+        *(void **)(current + 0x1c) = node;
+        if (next != 0)
+            *(void **)(next + 0x18) = node;
+        else
+            *(void **)(list + 12) = node;
+    }
+    ++*(s32 *)(list + 0);
+    return node;
+}
+
+/* Insert a six-word manager event in ascending priority order. */
+void func_0206a6d4(void *object, const void *eventObject)
+{
+    u8 *queue = (u8 *)object;
+    u8 *list = *(u8 **)queue;
+    const u32 *event = (const u32 *)eventObject;
+    u8 *node = 0;
+
+    if (!func_0206a8f4(list)) {
+        node = (u8 *)func_0206a938(list);
+    } else {
+        for (;;) {
+            u8 *current = (u8 *)func_0206a91c(list);
+            if (*(u32 *)(current + 8) > event[2]) {
+                u8 *previous = *(u8 **)(current + 0x18);
+                node = (u8 *)Heap_Alloc(0x20, data_020e5730, 4, &gHeapContext);
+                *(void **)(node + 0x18) = previous;
+                *(void **)(node + 0x1c) = current;
+                *(void **)(list + 4) = node;
+                *(void **)(current + 0x18) = node;
+                if (previous != 0)
+                    *(void **)(previous + 0x1c) = node;
+                else
+                    *(void **)(list + 8) = node;
+                ++*(s32 *)(list + 0);
+                break;
+            }
+            if (*(void **)(current + 0x1c) == 0) {
+                node = (u8 *)func_0206a938(list);
+                break;
+            }
+            *(void **)(list + 4) = *(void **)(current + 0x1c);
+        }
+    }
+    if (node != 0)
+        func_0206a8c0(node, event);
+    ++*(s32 *)(queue + 4);
+}
+
 /* Remove and free the current intrusive-list event, preserving its cursor. */
 s32 func_0206aa10(void *object)
 {
@@ -1367,7 +1668,8 @@ void func_02068d0c(void *object)
             u8 *descriptor;
             *(s32 *)(manager + 0xb0) += *(s32 *)(record + 0x244);
             candidates[candidateCount++] = record;
-            descriptor = (u8 *)(*(void *(*)(void *))(*(u8 **)record + 0x14))(record);
+            descriptor = (u8 *)(*(void *(**)(void *))
+                (*(u8 **)record + 0x14))(record);
             if (*(s16 *)(descriptor + 4) != 0)
                 func_02069000(manager, *(u16 *)descriptor);
         } else {
@@ -1442,7 +1744,7 @@ void func_0206a078(void *object)
 /* Insert an attachment event into the manager's priority queue. */
 void func_020693f8(void *object, const void *event)
 {
-    func_0206a6d4((u8 *)object + 0x94, event);
+    func_0206a6d4(*(void **)((u8 *)object + 0x94), event);
 }
 
 /* Emit each paced type-two record event while its attachment remains live. */
@@ -1617,6 +1919,32 @@ void *func_0206a560(void *object)
 {
     Heap_Free(object);
     return object;
+}
+
+/* Delete a plain manager queue node and return its former address. */
+void *func_0206a580(void *object)
+{
+    Heap_Free(object);
+    return object;
+}
+
+/* Retail type-one record update hook; this variant has no per-frame work. */
+void func_0206a57c(void *object)
+{
+    (void)object;
+}
+
+/* Retail type-one reward accessor; this record never owns a descriptor. */
+void *func_0206a574(void *object)
+{
+    (void)object;
+    return 0;
+}
+
+/* Retail type-two record update hook; this variant has no per-frame work. */
+void func_0206a594(void *object)
+{
+    (void)object;
 }
 
 /*
@@ -2161,6 +2489,92 @@ s32 func_0206e3a4(void *object)
     return *(s16 *)(self + 0x1a) == 3;
 }
 
+/* Play the common touch response sound at one of its two retail pan values. */
+void func_0206e5f0(void *object, s32 centered)
+{
+    (void)object;
+    func_020593ac(gSoundContext, 0, 0x60, centered ? 0x7f : 0x50, 0, 0);
+}
+
+/* Select the stronger touch-response presentation band. */
+void func_0206e79c(void *object)
+{
+    u8 *self = (u8 *)object;
+    *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0xfc00) | 0x1e;
+    *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0x03ff) | 0x2000;
+}
+
+/* Select the weaker touch-response presentation band. */
+void func_0206e7c8(void *object)
+{
+    u8 *self = (u8 *)object;
+    *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0xfc00) | 0x0a;
+    *(u16 *)(self + 0x24) = (*(u16 *)(self + 0x24) & 0x03ff) | 0x1000;
+}
+
+/*
+ * Handle the standard fight-cloud touch. Every fifth accumulated sample adds
+ * bounded damage pressure to selected records and emits the strong response;
+ * intervening samples emit only the weak response. Touch coordinates are DS
+ * pixels and the counter is measured in accepted samples.
+ */
+void func_0206e644(void *object, const void *touchObject)
+{
+    u8 *self = (u8 *)object;
+    const s32 *touch = (const s32 *)touchObject;
+    u8 *manager = *(u8 **)(self + 0x44);
+    void *effectManager = func_0201e0ec(data_021052fc + 0x2f7c);
+
+    if (func_020ada8c((u32)*(s16 *)(self + 0xac), 5) == 0) {
+        s32 quotient;
+        s32 amount;
+        func_020593ac(gSoundContext, 0, 0x60, 0x7f, 0, 0);
+        func_0206e79c(self);
+        func_020a2894(effectManager, 1, touch[1], touch[2], 8);
+        if (*(s16 *)(self + 0xac) >= 40)
+            *(s16 *)(self + 0xac) = 40;
+        quotient = func_020adae4(*(s16 *)(self + 0xac), 5);
+        if (quotient < 4) {
+            s32 index;
+            amount = 40 - quotient * 10;
+            if ((s32)(*(u32 *)(self + 0x20) << 16) < 0)
+                amount = func_020adae4(amount, 2);
+            index = *(s32 *)(manager + 0x8c);
+            if (index >= 0)
+                *(s32 *)(*(u8 **)(manager + index * 4) + 0x1c) += amount;
+            index = *(s32 *)(manager + 0x90);
+            if (index >= 0)
+                *(s32 *)(*(u8 **)(manager + index * 4) + 0x1c) += amount;
+        }
+    } else {
+        func_020a2894(effectManager, 0, touch[1], touch[2], 5);
+        func_0206e5f0(self, 0);
+        func_0206e7c8(self);
+    }
+    ++*(s16 *)(self + 0xac);
+}
+
+/* Occasionally flag the current secondary actor for a standard touch event. */
+void func_0206ebac(void *object)
+{
+    u8 *self = (u8 *)object;
+    u8 *secondary;
+    s32 i;
+
+    if (data_020e5804 == 0 || GameWork_TestFlag(gGameWork, 0x16) ||
+        func_020ada8c((u32)*(s16 *)(self + 0xac), 10) != 0 ||
+        func_020ada8c(genrand_int32() & 0x7fffffff,
+                      data_020e5804) != 0)
+        return;
+    secondary = *(u8 **)(data_021052fc + 0x2ea8);
+    if (secondary == 0 || *(s32 *)(secondary + 0x1fc) <= 0)
+        return;
+    for (i = 0; i < 3; i++) {
+        if (*(void **)(self + 0x48 + i * 4) == secondary)
+            *(u32 *)(self + 0x20) |= 2;
+    }
+}
+
 /* Play a spatial auxiliary sound using distance attenuation and signed pan. */
 void func_0206e4c4(void *object, s32 sound)
 {
@@ -2316,12 +2730,14 @@ void *func_0206c68c(void *allocation, void *owner)
 
 /*
  * Attach an actor (and, for linked type-five actors, its active successors) to
- * an auxiliary resource. The manager admission check can reject the request;
- * successful attachment records at most 20 actors, notifies each actor, sets
- * the resource classification flag for selected actor types, and advances the
- * resource to state 0x19. Returns one on success and zero on rejection/full.
+ * an auxiliary resource. A nonzero admitTarget registers each actor with the
+ * fight manager; zero retains actors only for presentation. The manager can
+ * reject admission, and successful attachment records at most 20 actors,
+ * notifies each actor, sets the resource classification flag for selected
+ * actor types, and advances the resource to state 0x19. Returns one on success
+ * and zero on rejection/full.
  */
-s32 func_0206cb04(void *allocation, void *targetObject, s32 skipAdmission)
+s32 func_0206cb04(void *allocation, void *targetObject, s32 admitTarget)
 {
     u8 *self = (u8 *)allocation;
     u8 *target = (u8 *)targetObject;
@@ -2331,7 +2747,7 @@ s32 func_0206cb04(void *allocation, void *targetObject, s32 skipAdmission)
 
     for (;;) {
         s8 type = *(s8 *)(target + 0x27e);
-        if (skipAdmission == 0) {
+        if (admitTarget != 0) {
             s32 index = -1;
             if (type == 7)
                 index = *(s32 *)(target + 0x298);
