@@ -53,6 +53,7 @@ extern void func_0207be20(void *database);
 extern void func_0207c084(void *database);
 extern void *func_0207a2cc(void *manager);
 extern void *gGameWork;
+extern void GameWork_SetFlag(void *work, s32 flag);
 
 /* Copy the mutable descriptor fields retained by the manager's ordered list.
  * Both records are borrowed 16-byte slots; identity storage at +0 is retained. */
@@ -203,6 +204,109 @@ u32 func_0207b334(u16 id)
     return ((*(u32 *)(record + 0x0c) >> 8) & 0x0f) == 1 ? 0 : 1;
 }
 
+/* Mark the save-owned discovery bit for a borrowed category slot. The bit
+ * index is record halfword +0x02; the slot and GameWork remain caller-owned. */
+void func_0207c550(void *slot_pointer)
+{
+    u8 *slot = (u8 *)slot_pointer;
+    u8 *record = *(u8 **)(slot + 4);
+    u32 index = *(u16 *)(record + 2);
+
+    ((u8 *)gGameWork)[0xee8 + index / 8] |= (u8)(1u << (index % 8));
+}
+
+/* Publish one borrowed category slot: persist its discovery flag first, then
+ * invoke the category's primary virtual callback synchronously. */
+void func_0207aba4(void *category_pointer, u32 bank, u32 index)
+{
+    u8 *category = (u8 *)category_pointer;
+    u8 *slot = *(u8 **)(category + 0x18 + bank * 4) + index * 0x10;
+    void (**vtable)(void *, void *) = *(void (***)(void *, void *))category;
+
+    func_0207c550(slot);
+    (*vtable)(category, slot);
+}
+
+/* Find a retail record ID in its type-selected category bank and publish the
+ * matching borrowed slot. Missing IDs are a no-op and no ownership changes. */
+void func_0207ab48(void *category_pointer, u16 id)
+{
+    u8 *category = (u8 *)category_pointer;
+    u32 bank = func_0207b334(id);
+    u32 count = *(u32 *)(category + 8 + bank * 4);
+    u8 *slots = *(u8 **)(category + 0x18 + bank * 4);
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *slot = slots + index * 0x10;
+        if (*(u16 *)(*(u8 **)(slot + 4)) == id) {
+            func_0207aba4(category, bank, index);
+            return;
+        }
+    }
+}
+
+/* Remove the first slot matching a retail ID from its selected category bank,
+ * compacting the manager-owned slots in place. Missing IDs are a no-op. */
+void func_0207ae34(void *category_pointer, u16 id)
+{
+    u8 *category = (u8 *)category_pointer;
+    u32 bank = func_0207b334(id);
+    u32 *count = (u32 *)(category + 8 + bank * 4);
+    u8 *slots = *(u8 **)(category + 0x18 + bank * 4);
+    u32 index;
+
+    for (index = 0; index < *count; ++index) {
+        u8 *slot = slots + index * 0x10;
+        u32 move_index;
+
+        if (*(u16 *)(*(u8 **)(slot + 4)) != id)
+            continue;
+        for (move_index = index; move_index + 1 < *count; ++move_index)
+            func_0207a904(slots + move_index * 0x10,
+                          slots + (move_index + 1) * 0x10);
+        --*count;
+        return;
+    }
+}
+
+/* Mark the save-owned completion bit for a borrowed category slot. */
+void func_0207c58c(void *slot_pointer)
+{
+    u8 *slot = (u8 *)slot_pointer;
+    u8 *record = *(u8 **)(slot + 4);
+    u32 index = *(u16 *)(record + 2);
+
+    ((u8 *)gGameWork)[0xf68 + index / 8] |= (u8)(1u << (index % 8));
+}
+
+/* Report whether a nonempty type-one descriptor reached its last tier. */
+s32 func_0207e024(const void *slot_pointer)
+{
+    const u8 *slot = (const u8 *)slot_pointer;
+    const u8 *record = *(const u8 *const *)(slot + 4);
+    u32 tier_count = (*(const u32 *)(record + 0x0c) >> 12) & 0x0f;
+
+    return *(const s32 *)(slot + 8) != 0 &&
+           *(const s32 *)(slot + 0x0c) >= (s32)tier_count - 1;
+}
+
+/* Complete and remove a type-one descriptor when its record-specific terminal
+ * condition is met. Save bits and category slots retain their original owners. */
+void func_0207b3a4(void *category_pointer, void *slot_pointer)
+{
+    u8 *slot = (u8 *)slot_pointer;
+    u8 *record = *(u8 **)(slot + 4);
+    u32 type = (*(u32 *)(record + 0x0c) >> 8) & 0x0f;
+
+    if (type != 1)
+        return;
+    if (*(u16 *)(record + 4) == 1 || func_0207e024(slot)) {
+        func_0207c58c(slot);
+        func_0207ae34(category_pointer, *(u16 *)record);
+    }
+}
+
 /* Insert one menu record into a category's original two-bank slot arrays. */
 void *func_0207acd0(void *category_pointer, u16 id)
 {
@@ -227,6 +331,31 @@ void *func_0207acd0(void *category_pointer, u16 id)
     *(u32 *)(slot + 8) = *(u32 *)(record + 8);
     *(u32 *)(category + 8 + bank * 4) = count + 1;
     return slot;
+}
+
+/* Apply category-five's special completion transitions, publish the matching
+ * GameWork milestone flags, then perform the common terminal-slot removal. */
+void func_0207df24(void *category_pointer, void *slot_pointer)
+{
+    u8 *slot = (u8 *)slot_pointer;
+    u16 id = *(u16 *)(*(u8 **)(slot + 4));
+
+    if (id == 0x402) {
+        if (func_0207e024(slot))
+            GameWork_SetFlag(gGameWork, 0x63);
+    } else if (id == 0x451) {
+        if (func_0207e024(slot))
+            GameWork_SetFlag(gGameWork, 0x6c);
+    } else if (id == 0x3b) {
+        func_0207ae34(category_pointer, 0x3b);
+        func_0207acd0(category_pointer, 0x48);
+        GameWork_SetFlag(gGameWork, 0xaf);
+    } else if (id == 0x3c) {
+        func_0207ae34(category_pointer, 0x3c);
+        func_0207acd0(category_pointer, 0x4a);
+        GameWork_SetFlag(gGameWork, 0xb0);
+    }
+    func_0207b3a4(category_pointer, slot_pointer);
 }
 
 static void PopulateRecordCategory(u8 *category, u16 excluded0,
