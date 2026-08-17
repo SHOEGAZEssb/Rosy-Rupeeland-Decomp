@@ -10,7 +10,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
+extern void *func_02007f0c(void *context, s32 index);
 extern void VecFx32Object_InitCopy(void *temporary, const void *source);
 extern void VecFx32Object_Destroy(void *temporary);
 #ifdef __cplusplus
@@ -47,8 +47,8 @@ s32 ActorExtendedType2_UpdateTargetApproach(void *self, const void *descriptorRe
     }
 
     {
-        u8 *context = *(u8 **)data_021052fc;
-        u8 *primary = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(context, 1) + 0x2e7c);
+        u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
+        u8 *primary = *(u8 **)(collection + 0x2e7c);
         if ((*(u32 *)(primary + 0xd0) & 0x100) != 0) {
             (*(void (**)(void *))(vtable + 0xe8))(actor);
             return 0;

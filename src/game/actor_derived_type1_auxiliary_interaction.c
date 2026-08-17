@@ -19,7 +19,13 @@ extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 ActorRuntimeFlags_Test(void *state, s32 mask);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
-extern void func_0206c978(void *resource);
+extern void *func_0206c978(void *resource);
+extern void func_0206ba50(void *core);
+extern void func_02074058(void *group);
+extern void func_02074330(void *manager, void *group);
+extern void func_02074038(void *group, void *state);
+extern void func_02068b04(void *manager);
+extern void func_0206e5c8(void *destination, void *object);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
@@ -146,8 +152,8 @@ extern void func_0204f894(void *position, void *descriptor, s32 duration);
 extern s32 func_0203adc4(void);
 extern void func_0204e3f4(s32 kind, s32 amount, void *position);
 extern void func_0204e628(s32 kind, s32 amount, void *position);
-extern void func_02007f0c(void *scene, s32 value);
-extern void func_0202de90(void);
+extern void *func_02007f0c(void *scene, s32 value);
+extern void func_0202de90(void *actorCollection);
 extern void func_0206a6d4(void *queue, const void *event);
 extern void *func_02025120(void *effect, void *actor, s32 amount,
                            s32 variant, s32 duration);
@@ -1489,6 +1495,146 @@ void func_02005058(void *vector)
     (void)vector;
 }
 
+/*
+ * Destroy an auxiliary interaction and every object it owns. Presentation
+ * pointers, the rotating core, sprite group, and attachment manager are
+ * exclusively owned by this resource; callbacks observe terminal actor state
+ * before the manager storage is released. The returned pointer remains valid
+ * only for the caller to free the outer allocation.
+ */
+void *func_0206c978(void *object)
+{
+    u8 *self = (u8 *)object;
+    s32 terminalVector[4];
+    s32 i;
+
+
+    for (i = 0; i < 3; i++) {
+        void *presentation = *(void **)(self + 0x28 + i * 4);
+        if (presentation != 0)
+            (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
+    }
+    for (i = 0; i < 3; i++) {
+        void *presentation = *(void **)(self + 0x34 + i * 4);
+        if (presentation != 0)
+            (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
+    }
+    if (*(void **)(self + 0x14) != 0) {
+        func_0206ba50(*(void **)(self + 0x14));
+        Heap_Free(*(void **)(self + 0x14));
+    }
+    func_02074058(*(void **)(self + 0x0c));
+    func_02074330(data_020f4e14, *(void **)(self + 0x0c));
+    for (i = 0; i < 3; i++) {
+        void *presentation = *(void **)(self + i * 4);
+        if (presentation != 0)
+            (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
+    }
+    if ((*(u32 *)(self + 0x20) & 0x40000) == 0) {
+        u8 *manager = *(u8 **)(self + 0x44);
+        s32 count;
+        func_0206e5c8(terminalVector, self);
+        count = *(s32 *)(manager + 0x84);
+        for (i = 0; i < count; i++) {
+            u8 *actor = (u8 *)func_02069408(manager, i);
+            if ((*(s32 (**)(void *))(*(u8 **)actor + 0xa8))(actor) != 0)
+                (*(void (**)(void *, void *, s32))(*(u8 **)actor + 0x80))(
+                    actor, terminalVector, 0);
+        }
+        func_02005058(terminalVector);
+    }
+    if (*(void **)(self + 0x44) != 0) {
+        func_02068b04(*(void **)(self + 0x44));
+        Heap_Free(*(void **)(self + 0x44));
+    }
+    return self;
+}
+
+/*
+ * Release the rotating core's owned sprite presentations. Its embedded
+ * vector and particle records contain no separately owned storage, so their
+ * retail terminal hooks have no observable effect beyond orderly teardown.
+ */
+void func_0206ba50(void *object)
+{
+    u8 *core = (u8 *)object;
+    s32 row;
+    s32 column;
+    void *presentation;
+
+    presentation = *(void **)(core + 0);
+    if (presentation != 0)
+        (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
+    presentation = *(void **)(core + 4);
+    if (presentation != 0)
+        (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
+    for (row = 0; row < 2; row++) {
+        for (column = 0; column < 3; column++) {
+            presentation = *(void **)(core + 8 + row * 12 + column * 4);
+            if (presentation != 0)
+                (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
+        }
+    }
+    presentation = *(void **)(core + 0x20);
+    if (presentation != 0)
+        (*(void (**)(void *))(*(u8 **)presentation + 4))(presentation);
+    func_02005058(core + 0x2c4);
+    func_02005058(core + 0x2b4);
+}
+
+/*
+ * Destroy an attachment manager. Records and reward descriptors are owned by
+ * the manager; queued event nodes are drained before their list and wrapper
+ * allocations are freed. No actor-owned storage is released here.
+ */
+void func_02068b04(void *object)
+{
+    u8 *manager = (u8 *)object;
+    s32 i;
+    for (i = 0; i < *(s32 *)(manager + 0x84); i++) {
+        void *record = *(void **)(manager + i * 4);
+        if (record != 0)
+            (*(void (**)(void *))(*(u8 **)record + 8))(record);
+    }
+    if (*(void **)(manager + 0x94) != 0) {
+        u8 *queue = *(u8 **)(manager + 0x94);
+        void *list = *(void **)(queue + 0);
+        if (list != 0) {
+            while (func_0206aa10(list) != 0) {
+            }
+            Heap_Free(list);
+        }
+        Heap_Free(queue);
+    }
+    if (*(void **)(manager + 0xc4) != 0)
+        Heap_Free(*(void **)(manager + 0xc4));
+    for (i = 0; i < 20; i++)
+        Heap_Free(*(void **)(manager + 0xcc + i * 4));
+}
+
+/* Delete a plain attachment record whose subtype owns no child resources. */
+void *func_0206a560(void *object)
+{
+    Heap_Free(object);
+    return object;
+}
+
+/*
+ * Delete a sprite-backed attachment record. The sprite state at +0x34 is
+ * borrowed from its group; teardown releases that state, terminates the
+ * embedded vector, and then frees the record allocation.
+ */
+void *func_0206b500(void *object)
+{
+    u8 *record = (u8 *)object;
+    void *state = *(void **)(record + 0x34);
+    *(const void **)(record + 0) = data_020e57c4;
+    func_02074038(*(void **)state, state);
+    func_02005058(record + 8);
+    Heap_Free(record);
+    return object;
+}
+
 /* Build the world-space vector passed to each attachment's terminal callback. */
 void func_0206e5c8(void *destination, void *object)
 {
@@ -1609,8 +1755,7 @@ void func_0206deac(void *object, s32 requestedResult)
         *(s16 *)((u8 *)gGameWork + 0x184) = emptyTypeTwoCount;
     else if (owner == *(u8 **)(data_021052fc + 0x2ea8))
         *(s16 *)((u8 *)gGameWork + 0x186) = emptyTypeTwoCount;
-    func_02007f0c(data_021052fc, 1);
-    func_0202de90();
+    func_0202de90(func_02007f0c(data_021052fc, 1));
     *(u32 *)(self + 0x20) |= 0x40000;
     func_02005058(rewardPosition);
     func_02005058(terminalVector);
