@@ -147,12 +147,12 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             void *font = func_020791e0(data_021f3ecc, 0x6b);
             TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
             TitleDialog_UpdateTextPage(FIELD(void *, scene, 0x50c), 0);
-            void *editor = Heap_Alloc(
+            void *new_editor = Heap_Alloc(
                 0x1a0, data_ov025_022033bc, 4, gHeapContext);
-            if (editor)
-                editor = func_ov025_021fce00(editor);
-            FIELD(void *, scene, 0x598) = editor;
-            func_ov025_021fd160(editor, FIELD(void *, scene, 0x574));
+            if (new_editor)
+                new_editor = func_ov025_021fce00(new_editor);
+            FIELD(void *, scene, 0x598) = new_editor;
+            func_ov025_021fd160(new_editor, FIELD(void *, scene, 0x574));
             func_02095988((u8 *)scene + 0xf0, 0x2d);
             func_02095928((u8 *)scene + 0xf0);
             func_02095928((u8 *)scene + 0x248);
@@ -360,7 +360,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                         if (glyph == 0x40) {
                             FIELD(u16,
                                   (u8 *)editor + length * 2 + 0x100,
-                                  0x80) = changed;
+                                  0x80) = (u16)changed;
                         } else {
                             FIELD(u16,
                                   (u8 *)editor + length * 2 + 0x100,
@@ -387,11 +387,11 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         }
         break;
     case 4: {
-        void *editor = FIELD(void *, scene, 0x598);
-        void *completion = FIELD(void *, editor, 0x174);
+        void *active_editor = FIELD(void *, scene, 0x598);
+        void *completion = FIELD(void *, active_editor, 0x174);
         u16 completed = FIELD(u16, completion, 0x24) & 1;
         if (completed) {
-            if (func_ov025_021fd450(editor)) {
+            if (func_ov025_021fd450(active_editor)) {
                 func_02095988((u8 *)scene + 0xf0, 0x2c);
             } else {
                 func_02095988((u8 *)scene + 0xf0, 0x2d);
@@ -483,18 +483,18 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                       0x20) = 1;
                 func_ov025_02200648(scene, FIELD(s32, scene, 0x54));
             } else {
-                for (s32 i = 0; i < 3; ++i) {
+                for (s32 row_index = 0; row_index < 3; ++row_index) {
                     func_ov025_021fd9e4(
-                        FIELD(void *, (u8 *)scene + i * 4, 0xe4), 0);
+                        FIELD(void *, (u8 *)scene + row_index * 4, 0xe4), 0);
                 }
                 FIELD(s32, scene, 0x54) = -1;
             }
             FIELD(u32, scene, 0x20) &= ~0x400;
-            void *editor = FIELD(void *, scene, 0x598);
-            if (editor) {
-                GraphicsSpriteGroup_Destroy(FIELD(void *, editor, 0));
-                AnimationResourceState_Destroy((u8 *)editor + 4);
-                Heap_Free(editor);
+            void *retired_editor = FIELD(void *, scene, 0x598);
+            if (retired_editor) {
+                GraphicsSpriteGroup_Destroy(FIELD(void *, retired_editor, 0));
+                AnimationResourceState_Destroy((u8 *)retired_editor + 4);
+                Heap_Free(retired_editor);
             }
             FIELD(void *, scene, 0x598) = 0;
             FIELD(u32, scene, 0x20) |= 0x400;
@@ -502,10 +502,10 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_ov025_0220058c(scene);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-            for (s32 i = 0; i < 3; ++i) {
+            for (s32 row_index = 0; row_index < 3; ++row_index) {
                 FIELD(s32,
                       FIELD(void *,
-                            FIELD(void *, (u8 *)scene + i * 4, 0xe4),
+                            FIELD(void *, (u8 *)scene + row_index * 4, 0xe4),
                             0xc),
                       0x20) = 1;
             }

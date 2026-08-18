@@ -38,11 +38,6 @@ extern void func_ov025_021fd03c(void *, void *, s32);
 }
 #endif
 
-static bool alternate_locale(void)
-{
-    return FIELD(u8, gSystemState, 0x5f) != 0;
-}
-
 /*
  * Constructs a name-entry widget. It loads resource triplet 0x4006..0x4008,
  * clones its sprite owner, clears sixteen UTF-16 input slots +0x180, creates
