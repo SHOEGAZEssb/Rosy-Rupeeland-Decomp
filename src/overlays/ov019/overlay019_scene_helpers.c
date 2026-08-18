@@ -79,7 +79,7 @@ extern "C" void *func_ov019_021fcf70(void *state)
 extern "C" void func_ov019_021fd154(s32 value)
 {
     volatile u16 *powerControl = (volatile u16 *)0x04000304;
-    *powerControl = (*powerControl & ~0x8000U) | (value << 15);
+    *powerControl = (u16)((*powerControl & ~0x8000U) | (value << 15));
 }
 
 /*
