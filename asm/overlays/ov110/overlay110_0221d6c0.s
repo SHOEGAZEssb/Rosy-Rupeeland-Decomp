@@ -11,8 +11,8 @@
 .extern ActorDescriptorBatch_RegisterAndSpawnCategory1
 .extern ActorDescriptorBatch_SetCategory1Callback
 
-.global func_ov110_0221d6c0
-func_ov110_0221d6c0:
+.global Overlay110_RegisterCategory1Actors
+Overlay110_RegisterCategory1Actors:
     stmdb sp!, {r3, lr}
     cmp r0, #0x0
     ldmneia sp!, {r3, pc}
@@ -33,4 +33,4 @@ func_ov110_0221d6c0:
 .L_0221d704: .word data_ov110_02222140
 .L_0221d708: .word data_ov110_0221d720
 .L_0221d70c: .word data_ov110_0221ed15
-.size func_ov110_0221d6c0, . - func_ov110_0221d6c0
+.size Overlay110_RegisterCategory1Actors, . - Overlay110_RegisterCategory1Actors

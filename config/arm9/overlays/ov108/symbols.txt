@@ -1,4 +1,4 @@
-Overlay108_RegisterActorDescriptors kind:function(arm,size=0x50) addr:0x0221d6c0
+Overlay108_RegisterCategory1Actors kind:function(arm,size=0x50) addr:0x0221d6c0
 data_ov108_0221d720 kind:data(any) addr:0x0221d720
 data_ov108_0221d734 kind:data(any) addr:0x0221d734
 data_ov108_0221e5a8 kind:data(any) addr:0x0221e5a8
