@@ -1,5 +1,7 @@
 include build/config.ninja
 
+inventory_scene_controller_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c
+
 mt_cflags = -proc arm946e -O4 -inline on,noauto -ipa file -interworking -Cpp_exceptions off -lang c
 input_cflags = -proc arm946e -O3 -inline on,noauto -ipa file -interworking -DMATCHING -lang c
 debug_menu_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -lang c++
@@ -44526,3 +44528,90 @@ build build/decomp/asm/game/func_02094154.o: mwasmarm asm/game/func_02094154.s
 build build/decomp/asm/game/InventoryScroll_Destroy.o: mwasmarm asm/game/InventoryScroll_Destroy.s
 build build/decomp/asm/game/InventoryScroll_Delete.o: mwasmarm asm/game/InventoryScroll_Delete.s
 build build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o: mwasmarm asm/game/InventoryScroll_UpdateArrowAnimations.s
+
+build build/decomp/src/game/inventory_scene_controller.o: mwccarm src/game/inventory_scene_controller.c | include/tingle/overlay_manager.h include/tingle/types.h
+  source = src/game/inventory_scene_controller.c
+  cflags = $inventory_scene_controller_cflags
+
+build build/decomp/delinks/asm/game/InventoryViewState_Init.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_view_state_init.json: objdiff build/decomp/delinks/asm/game/InventoryViewState_Init.o | build/decomp/asm/game/InventoryViewState_Init.o
+  target_object = build/decomp/delinks/asm/game/InventoryViewState_Init.o
+  base_object = build/decomp/asm/game/InventoryViewState_Init.o
+build build/reports/inventory_scene_view_state_init.txt: match_report build/reports/inventory_scene_view_state_init.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_view_state_init.json
+  report_args = --section .text --function InventoryViewState_Init --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_Init.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_init.json: objdiff build/decomp/delinks/asm/game/InventoryScene_Init.o | build/decomp/asm/game/InventoryScene_Init.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_Init.o
+  base_object = build/decomp/asm/game/InventoryScene_Init.o
+build build/reports/inventory_scene_init.txt: match_report build/reports/inventory_scene_init.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_init.json
+  report_args = --section .text --function InventoryScene_Init --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_Destroy.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_destroy.json: objdiff build/decomp/delinks/asm/game/InventoryScene_Destroy.o | build/decomp/asm/game/InventoryScene_Destroy.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_Destroy.o
+  base_object = build/decomp/asm/game/InventoryScene_Destroy.o
+build build/reports/inventory_scene_destroy.txt: match_report build/reports/inventory_scene_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_destroy.json
+  report_args = --section .text --function InventoryScene_Destroy --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_Delete.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_delete.json: objdiff build/decomp/delinks/asm/game/InventoryScene_Delete.o | build/decomp/asm/game/InventoryScene_Delete.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_Delete.o
+  base_object = build/decomp/asm/game/InventoryScene_Delete.o
+build build/reports/inventory_scene_delete.txt: match_report build/reports/inventory_scene_delete.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_delete.json
+  report_args = --section .text --function InventoryScene_Delete --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_LoadPrimaryView.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_load_primary_view.json: objdiff build/decomp/delinks/asm/game/InventoryScene_LoadPrimaryView.o | build/decomp/asm/game/InventoryScene_LoadPrimaryView.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_LoadPrimaryView.o
+  base_object = build/decomp/asm/game/InventoryScene_LoadPrimaryView.o
+build build/reports/inventory_scene_load_primary_view.txt: match_report build/reports/inventory_scene_load_primary_view.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_load_primary_view.json
+  report_args = --section .text --function InventoryScene_LoadPrimaryView --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_LoadSecondaryView.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_load_secondary_view.json: objdiff build/decomp/delinks/asm/game/InventoryScene_LoadSecondaryView.o | build/decomp/asm/game/InventoryScene_LoadSecondaryView.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_LoadSecondaryView.o
+  base_object = build/decomp/asm/game/InventoryScene_LoadSecondaryView.o
+build build/reports/inventory_scene_load_secondary_view.txt: match_report build/reports/inventory_scene_load_secondary_view.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_load_secondary_view.json
+  report_args = --section .text --function InventoryScene_LoadSecondaryView --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_UpdateInput.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_update_input.json: objdiff build/decomp/delinks/asm/game/InventoryScene_UpdateInput.o | build/decomp/asm/game/InventoryScene_UpdateInput.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_UpdateInput.o
+  base_object = build/decomp/asm/game/InventoryScene_UpdateInput.o
+build build/reports/inventory_scene_update_input.txt: match_report build/reports/inventory_scene_update_input.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_update_input.json
+  report_args = --section .text --function InventoryScene_UpdateInput --require-exact
+
+build build/decomp/delinks/asm/game/func_02068938.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_view_state_copy.json: objdiff build/decomp/delinks/asm/game/func_02068938.o | build/decomp/asm/game/func_02068938.o
+  target_object = build/decomp/delinks/asm/game/func_02068938.o
+  base_object = build/decomp/asm/game/func_02068938.o
+build build/reports/inventory_scene_view_state_copy.txt: match_report build/reports/inventory_scene_view_state_copy.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_view_state_copy.json
+  report_args = --section .text --function func_02068938 --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_UpdateTerminal.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_update_terminal.json: objdiff build/decomp/delinks/asm/game/InventoryScene_UpdateTerminal.o | build/decomp/asm/game/InventoryScene_UpdateTerminal.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_UpdateTerminal.o
+  base_object = build/decomp/asm/game/InventoryScene_UpdateTerminal.o
+build build/reports/inventory_scene_update_terminal.txt: match_report build/reports/inventory_scene_update_terminal.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_update_terminal.json
+  report_args = --section .text --function InventoryScene_UpdateTerminal --require-exact
+
+build build/decomp/delinks/asm/game/InventoryScene_UpdateChild.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/reports/inventory_scene_update_child.json: objdiff build/decomp/delinks/asm/game/InventoryScene_UpdateChild.o | build/decomp/asm/game/InventoryScene_UpdateChild.o
+  target_object = build/decomp/delinks/asm/game/InventoryScene_UpdateChild.o
+  base_object = build/decomp/asm/game/InventoryScene_UpdateChild.o
+build build/reports/inventory_scene_update_child.txt: match_report build/reports/inventory_scene_update_child.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scene_update_child.json
+  report_args = --section .text --function InventoryScene_UpdateChild --require-exact
+
+build build/reports/inventory_scene_controller.txt: phony build/reports/inventory_scene_view_state_init.txt build/reports/inventory_scene_init.txt build/reports/inventory_scene_destroy.txt build/reports/inventory_scene_delete.txt build/reports/inventory_scene_load_primary_view.txt build/reports/inventory_scene_load_secondary_view.txt build/reports/inventory_scene_update_input.txt build/reports/inventory_scene_view_state_copy.txt build/reports/inventory_scene_update_terminal.txt build/reports/inventory_scene_update_child.txt
+build inventory_scene_controller: phony build/decomp/src/game/inventory_scene_controller.o build/reports/inventory_scene_controller.txt
