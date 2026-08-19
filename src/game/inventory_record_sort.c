@@ -24,6 +24,7 @@ void InventoryRecordCollection_Swap(void *collection, s32 first, s32 second);
 extern void OS_Halt(void);
 extern u8 data_021e9ad0[];
 extern u8 data_021e9ac0[];
+extern void **data_021f5128;
 
 #ifndef MATCHING
 extern void ActorDescriptor_ClearRuntime(void *record);
@@ -462,6 +463,38 @@ void InventoryRecordCollection_Sort(void *collection, s32 mode)
 }
 
 /*
+ * Rebind each valid primary inventory record's +0x0C selection descriptor to
+ * the last entry in mode table +0x1C whose nested identifier occurs in that
+ * record. The collection and mode table are borrowed; only record link fields
+ * change, and no allocation or hardware access occurs.
+ */
+void func_02064d90(void *collection, s32 mode)
+{
+    u8 *mode_record = (u8 *)data_021f5128[mode];
+    u8 *records = FIELD(u8 *, collection, 8);
+    s32 record_count = FIELD(s32, collection, 0x10);
+    s32 entry_count = FIELD(s32, mode_record, 0xc);
+    s32 record_index;
+
+    for (record_index = 0; record_index < record_count; ++record_index) {
+        u8 *record = records + record_index * 0x24;
+        s32 entry_index;
+
+        FIELD(void *, record, 0xc) = 0;
+        if (ActorDescriptor_IsInvalid(record) != 0)
+            continue;
+        for (entry_index = 0; entry_index < entry_count; ++entry_index) {
+            u8 *entry = FIELD(u8 *, mode_record, 0x1c) + entry_index * 0x10;
+            u8 *entry_record = FIELD(u8 *, entry, 4);
+            u16 identifier = FIELD(u16, entry_record, 0x10);
+
+            if (InventoryRecord_HasId(record, identifier) != 0)
+                FIELD(void *, record, 0xc) = entry;
+        }
+    }
+}
+
+/*
  * Return one when any borrowed record in the collection is an inactive
  * kind-one/subtype-one descriptor, otherwise zero. The collection is not
  * modified and its signed count is retail's scan bound.
@@ -535,6 +568,43 @@ void InventoryRecordCollection_SortAlternate(InventoryRecordCollection *collecti
                 if (current < previous)
                     func_020654ac(collection, inner, inner - 1);
             }
+        }
+    }
+}
+
+/*
+ * Rebind valid secondary collection records to the last compatible mode-table
+ * entry. Inactive kind-one records are excluded; remaining records require the
+ * same actor metadata subtype and a matching nested identifier. The borrowed
+ * collection is updated in place without allocation or hardware access.
+ */
+void func_0206563c(InventoryRecordCollection *collection, s32 mode)
+{
+    u8 *mode_record = (u8 *)data_021f5128[mode];
+    s32 entry_count = FIELD(s32, mode_record, 0xc);
+    s32 record_index;
+
+    for (record_index = 0; record_index < collection->count0c; ++record_index) {
+        u8 *record = collection->records04 + record_index * 0x24;
+        u8 *metadata;
+        s32 entry_index;
+
+        FIELD(void *, record, 0xc) = 0;
+        if (ActorDescriptor_IsInvalid(record) != 0)
+            continue;
+        metadata = (u8 *)InventoryRecord_GetMetadata(record);
+        if (metadata[2] == 1 && FIELD(u16, record, 4) == 0)
+            continue;
+        for (entry_index = 0; entry_index < entry_count; ++entry_index) {
+            u8 *entry = FIELD(u8 *, mode_record, 0x1c) + entry_index * 0x10;
+            u8 *entry_record = FIELD(u8 *, entry, 4);
+            u16 identifier = FIELD(u16, entry_record, 0x10);
+            u8 *actor = (u8 *)ActorDatabase_FindDescriptorById(
+                data_021e9ad0, identifier);
+
+            if (actor[2] == metadata[2] &&
+                InventoryRecord_HasId(record, identifier) != 0)
+                FIELD(void *, record, 0xc) = entry;
         }
     }
 }
