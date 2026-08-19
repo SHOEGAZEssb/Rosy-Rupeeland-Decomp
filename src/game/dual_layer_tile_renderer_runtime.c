@@ -97,7 +97,7 @@ extern void func_020b1534(void);
 extern void func_020b13d4(void);
 extern void func_020b1360(void *, s32, s32);
 extern void func_020b1314(void);
-extern void TileLayer_GetMetatileIndex(void *, s32, s32);
+extern u16 TileLayer_GetMetatileIndex(void *, s32, s32);
 extern void TileLayer_SetMetatileIndex(void *, s32, s32, s32);
 extern u16 TileLayer_GetSourceCell(void *, ...);
 extern void TileLayer_SetSourceCellUpperBits(void *, s32, s32, s32);
@@ -304,10 +304,11 @@ void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *self)
     }
 }
 
-/* Forward two values to TileLayer_GetMetatileIndex on the indexed layer. */
-void DualLayerTileRenderer_ForwardLayerPair(DualLayerTileRenderer *self, s32 layer, s32 a, s32 b)
+/* Forward two values to TileLayer_GetMetatileIndex on the indexed layer and
+ * return its metatile index; no other renderer state changes directly. */
+u16 DualLayerTileRenderer_ForwardLayerPair(DualLayerTileRenderer *self, s32 layer, s32 a, s32 b)
 {
-    TileLayer_GetMetatileIndex(self->layers_28[layer], a, b);
+    return TileLayer_GetMetatileIndex(self->layers_28[layer], a, b);
 }
 
 /* Forward three values to TileLayer_SetMetatileIndex on the indexed layer. */

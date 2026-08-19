@@ -9,7 +9,8 @@ extern "C" {
 extern void *data_021052fc;
 extern const s8 data_020d5af8[];
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern u32 DualLayerTileRenderer_ForwardLayerPair(void *object, u32 first, u32 second, u32 third);
+extern u16 DualLayerTileRenderer_ForwardLayerPair(void *object, u32 first,
+                                                  u32 second, u32 third);
 extern s32 func_020ae024(fx32 first, fx32 second);
 #ifdef __cplusplus
 }
