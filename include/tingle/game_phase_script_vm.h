@@ -125,6 +125,9 @@ s32 GamePhaseActorScriptVm_StartBrightnessTransition(GamePhaseActorScriptVm *sel
 s32 GamePhaseActorScriptVm_IsBrightnessTransitionPending(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetCollectionPendingValue(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_PresentationNoOp(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetAttachmentAngle(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetAttachmentAngleFromByte(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetAttachmentScale(GamePhaseActorScriptVm *self);
 s32 func_020142f4(GamePhaseActorScriptVm *self);
 s32 func_02014314(GamePhaseActorScriptVm *self);
 s32 func_0201433c(GamePhaseActorScriptVm *self);
