@@ -41812,6 +41812,12 @@ build overlay047: phony overlay047_small overlay047_matching overlay047_portable
 subninja config/arm9/overlays/ov048/matching.ninja
 
 overlay048_small_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov048/overlay048_display_recovery.o: mwccarm src/overlays/ov048/overlay048_display_recovery.c | include/tingle/types.h
+  source = src/overlays/ov048/overlay048_display_recovery.c
+  cflags = $overlay048_small_cflags
+build build/decomp/src/overlays/ov048/overlay048_geometry_recovery.o: mwccarm src/overlays/ov048/overlay048_geometry_recovery.c | include/tingle/types.h
+  source = src/overlays/ov048/overlay048_geometry_recovery.c
+  cflags = $overlay048_small_cflags
 build build/decomp/src/overlays/ov048/overlay048_oam_buffer.o: mwccarm src/overlays/ov048/overlay048_oam_buffer.c | include/tingle/types.h
   source = src/overlays/ov048/overlay048_oam_buffer.c
   cflags = $overlay048_small_cflags
@@ -41838,7 +41844,8 @@ build build/reports/overlay048_display_toggle.txt: match_report build/reports/ov
   report_json = build/reports/overlay048_display_toggle.json
   report_args = --section .text --function func_ov048_0220bad4 --require-exact
 build overlay048_small: phony build/reports/overlay048_oam_buffer_init.txt build/reports/overlay048_oam_buffer_noop.txt build/reports/overlay048_display_toggle.txt
-build overlay048: phony overlay048_small overlay048_matching
+build overlay048_portable: phony build/decomp/src/overlays/ov048/overlay048_display_recovery.o build/decomp/src/overlays/ov048/overlay048_geometry_recovery.o
+build overlay048: phony overlay048_small overlay048_matching overlay048_portable
 
 subninja config/arm9/overlays/ov049/matching.ninja
 
