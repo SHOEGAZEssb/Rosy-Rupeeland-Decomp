@@ -41771,6 +41771,18 @@ build overlay046: phony overlay046_partial4 overlay046_remaining
 subninja config/arm9/overlays/ov047/matching.ninja
 
 overlay047_small_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov047/overlay047_controller_recovery.o: mwccarm src/overlays/ov047/overlay047_controller_recovery.c | include/tingle/types.h
+  source = src/overlays/ov047/overlay047_controller_recovery.c
+  cflags = $overlay047_small_cflags
+build build/decomp/src/overlays/ov047/overlay047_matrix_recovery.o: mwccarm src/overlays/ov047/overlay047_matrix_recovery.c | include/tingle/types.h
+  source = src/overlays/ov047/overlay047_matrix_recovery.c
+  cflags = $overlay047_small_cflags
+build build/decomp/src/overlays/ov047/overlay047_render_recovery.o: mwccarm src/overlays/ov047/overlay047_render_recovery.c | include/tingle/types.h
+  source = src/overlays/ov047/overlay047_render_recovery.c
+  cflags = $overlay047_small_cflags
+build build/decomp/src/overlays/ov047/overlay047_register_recovery.o: mwccarm src/overlays/ov047/overlay047_register_recovery.c | include/tingle/types.h
+  source = src/overlays/ov047/overlay047_register_recovery.c
+  cflags = $overlay047_small_cflags
 build build/decomp/src/overlays/ov047/overlay047_resource_release.o: mwccarm src/overlays/ov047/overlay047_resource_release.c | include/tingle/types.h
   source = src/overlays/ov047/overlay047_resource_release.c
   cflags = $overlay047_small_cflags
@@ -41794,7 +41806,8 @@ build build/reports/overlay047_completion_query.txt: match_report build/reports/
   report_json = build/reports/overlay047_completion_query.json
   report_args = --section .text --function func_ov047_0220c338 --require-exact
 build overlay047_small: phony build/reports/overlay047_resource_release.txt build/reports/overlay047_completion_query.txt
-build overlay047: phony overlay047_small overlay047_matching
+build overlay047_portable: phony build/decomp/src/overlays/ov047/overlay047_controller_recovery.o build/decomp/src/overlays/ov047/overlay047_matrix_recovery.o build/decomp/src/overlays/ov047/overlay047_render_recovery.o build/decomp/src/overlays/ov047/overlay047_register_recovery.o
+build overlay047: phony overlay047_small overlay047_matching overlay047_portable
 
 subninja config/arm9/overlays/ov048/matching.ninja
 
