@@ -41853,6 +41853,21 @@ overlay049_small_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_excep
 build build/decomp/src/overlays/ov049/overlay049_particle_recovery.o: mwccarm src/overlays/ov049/overlay049_particle_recovery.c | include/tingle/types.h
   source = src/overlays/ov049/overlay049_particle_recovery.c
   cflags = $overlay049_small_cflags
+build build/decomp/src/overlays/ov049/overlay049_object_recovery.o: mwccarm src/overlays/ov049/overlay049_object_recovery.c | include/tingle/types.h
+  source = src/overlays/ov049/overlay049_object_recovery.c
+  cflags = $overlay049_small_cflags
+build build/decomp/src/overlays/ov049/overlay049_resource_recovery.o: mwccarm src/overlays/ov049/overlay049_resource_recovery.c | include/tingle/types.h
+  source = src/overlays/ov049/overlay049_resource_recovery.c
+  cflags = $overlay049_small_cflags
+build build/decomp/src/overlays/ov049/overlay049_sprite_recovery.o: mwccarm src/overlays/ov049/overlay049_sprite_recovery.c | include/tingle/types.h
+  source = src/overlays/ov049/overlay049_sprite_recovery.c
+  cflags = $overlay049_small_cflags
+build build/decomp/src/overlays/ov049/overlay049_controller_recovery.o: mwccarm src/overlays/ov049/overlay049_controller_recovery.c | include/tingle/types.h
+  source = src/overlays/ov049/overlay049_controller_recovery.c
+  cflags = $overlay049_small_cflags
+build build/decomp/src/overlays/ov049/overlay049_scene_recovery.o: mwccarm src/overlays/ov049/overlay049_scene_recovery.c | include/tingle/types.h
+  source = src/overlays/ov049/overlay049_scene_recovery.c
+  cflags = $overlay049_small_cflags
 build build/decomp/src/overlays/ov049/overlay049_base_construct.o: mwccarm src/overlays/ov049/overlay049_base_construct.c | include/tingle/types.h
   source = src/overlays/ov049/overlay049_base_construct.c
   cflags = $overlay049_small_cflags
@@ -41904,7 +41919,7 @@ build build/reports/overlay049_heap_delete.txt: match_report build/reports/overl
   report_json = build/reports/overlay049_heap_delete.json
   report_args = --section .text --function func_ov049_0220d304 --require-exact
 build overlay049_small: phony build/reports/overlay049_base_construct.txt build/reports/overlay049_object_destroy.txt build/reports/overlay049_point_construct.txt build/reports/overlay049_point_noop.txt build/reports/overlay049_point_copy.txt build/reports/overlay049_heap_delete.txt
-build overlay049_portable: phony build/decomp/src/overlays/ov049/overlay049_particle_recovery.o
+build overlay049_portable: phony build/decomp/src/overlays/ov049/overlay049_particle_recovery.o build/decomp/src/overlays/ov049/overlay049_object_recovery.o build/decomp/src/overlays/ov049/overlay049_resource_recovery.o build/decomp/src/overlays/ov049/overlay049_sprite_recovery.o build/decomp/src/overlays/ov049/overlay049_controller_recovery.o build/decomp/src/overlays/ov049/overlay049_scene_recovery.o
 build overlay049: phony overlay049_small overlay049_matching overlay049_portable
 
 subninja config/arm9/overlays/ov050/matching.ninja
