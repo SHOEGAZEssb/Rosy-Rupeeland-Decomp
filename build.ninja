@@ -44683,3 +44683,71 @@ build build/reports/inventory_record_collection_sort_alternate.txt: match_report
 
 build build/reports/inventory_record_sort.txt: phony build/reports/inventory_record_assign.txt build/reports/inventory_record_assign_persistent_fields.txt build/reports/inventory_record_is_empty_kind1_subtype1.txt build/reports/inventory_record_get_sort_key.txt build/reports/inventory_record_copy.txt build/reports/inventory_record_collection_has_inactive_kind1_subtype1.txt build/reports/inventory_record_collection_swap_alternate.txt build/reports/inventory_record_collection_sort_alternate.txt
 build inventory_record_sort: phony build/reports/inventory_record_sort.txt
+
+build build/decomp/delinks/asm/game/InventoryCell_Init.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
+build build/decomp/delinks/asm/game/InventoryCell_Destroy.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+build build/decomp/delinks/asm/game/InventoryScroll_InitBase.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+build build/decomp/delinks/asm/game/InventoryScroll_ConfigureRange.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+build build/decomp/delinks/asm/game/func_02094154.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+build build/decomp/delinks/asm/game/InventoryScroll_Destroy.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+build build/decomp/delinks/asm/game/InventoryScroll_Delete.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+build build/decomp/delinks/asm/game/InventoryScroll_UpdateArrowAnimations.o: phony build/decomp/delinks/asm/game/InventoryCell_Init.o
+
+build build/reports/inventory_cell_init.json: objdiff build/decomp/delinks/asm/game/InventoryCell_Init.o | build/decomp/asm/game/InventoryCell_Init.o
+  target_object = build/decomp/delinks/asm/game/InventoryCell_Init.o
+  base_object = build/decomp/asm/game/InventoryCell_Init.o
+build build/reports/inventory_cell_init.txt: match_report build/reports/inventory_cell_init.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_cell_init.json
+  report_args = --section .text --function InventoryCell_Init --require-exact
+
+build build/reports/inventory_cell_destroy.json: objdiff build/decomp/delinks/asm/game/InventoryCell_Destroy.o | build/decomp/asm/game/InventoryCell_Destroy.o
+  target_object = build/decomp/delinks/asm/game/InventoryCell_Destroy.o
+  base_object = build/decomp/asm/game/InventoryCell_Destroy.o
+build build/reports/inventory_cell_destroy.txt: match_report build/reports/inventory_cell_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_cell_destroy.json
+  report_args = --section .text --function InventoryCell_Destroy --require-exact
+
+build build/reports/inventory_scroll_init_base.json: objdiff build/decomp/delinks/asm/game/InventoryScroll_InitBase.o | build/decomp/asm/game/InventoryScroll_InitBase.o
+  target_object = build/decomp/delinks/asm/game/InventoryScroll_InitBase.o
+  base_object = build/decomp/asm/game/InventoryScroll_InitBase.o
+build build/reports/inventory_scroll_init_base.txt: match_report build/reports/inventory_scroll_init_base.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scroll_init_base.json
+  report_args = --section .text --function InventoryScroll_InitBase --require-exact
+
+build build/reports/inventory_scroll_configure_range.json: objdiff build/decomp/delinks/asm/game/InventoryScroll_ConfigureRange.o | build/decomp/asm/game/InventoryScroll_ConfigureRange.o
+  target_object = build/decomp/delinks/asm/game/InventoryScroll_ConfigureRange.o
+  base_object = build/decomp/asm/game/InventoryScroll_ConfigureRange.o
+build build/reports/inventory_scroll_configure_range.txt: match_report build/reports/inventory_scroll_configure_range.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scroll_configure_range.json
+  report_args = --section .text --function InventoryScroll_ConfigureRange --require-exact
+
+build build/reports/inventory_scroll_construct.json: objdiff build/decomp/delinks/asm/game/func_02094154.o | build/decomp/asm/game/func_02094154.o
+  target_object = build/decomp/delinks/asm/game/func_02094154.o
+  base_object = build/decomp/asm/game/func_02094154.o
+build build/reports/inventory_scroll_construct.txt: match_report build/reports/inventory_scroll_construct.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scroll_construct.json
+  report_args = --section .text --function func_02094154 --require-exact
+
+build build/reports/inventory_scroll_destroy.json: objdiff build/decomp/delinks/asm/game/InventoryScroll_Destroy.o | build/decomp/asm/game/InventoryScroll_Destroy.o
+  target_object = build/decomp/delinks/asm/game/InventoryScroll_Destroy.o
+  base_object = build/decomp/asm/game/InventoryScroll_Destroy.o
+build build/reports/inventory_scroll_destroy.txt: match_report build/reports/inventory_scroll_destroy.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scroll_destroy.json
+  report_args = --section .text --function InventoryScroll_Destroy --require-exact
+
+build build/reports/inventory_scroll_delete.json: objdiff build/decomp/delinks/asm/game/InventoryScroll_Delete.o | build/decomp/asm/game/InventoryScroll_Delete.o
+  target_object = build/decomp/delinks/asm/game/InventoryScroll_Delete.o
+  base_object = build/decomp/asm/game/InventoryScroll_Delete.o
+build build/reports/inventory_scroll_delete.txt: match_report build/reports/inventory_scroll_delete.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scroll_delete.json
+  report_args = --section .text --function InventoryScroll_Delete --require-exact
+
+build build/reports/inventory_scroll_update_arrow_animations.json: objdiff build/decomp/delinks/asm/game/InventoryScroll_UpdateArrowAnimations.o | build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o
+  target_object = build/decomp/delinks/asm/game/InventoryScroll_UpdateArrowAnimations.o
+  base_object = build/decomp/asm/game/InventoryScroll_UpdateArrowAnimations.o
+build build/reports/inventory_scroll_update_arrow_animations.txt: match_report build/reports/inventory_scroll_update_arrow_animations.json | tools/report_objdiff.py
+  report_json = build/reports/inventory_scroll_update_arrow_animations.json
+  report_args = --section .text --function InventoryScroll_UpdateArrowAnimations --require-exact
+
+build build/reports/inventory_cell_scroll_lifecycle.txt: phony build/reports/inventory_cell_init.txt build/reports/inventory_cell_destroy.txt build/reports/inventory_scroll_init_base.txt build/reports/inventory_scroll_configure_range.txt build/reports/inventory_scroll_construct.txt build/reports/inventory_scroll_destroy.txt build/reports/inventory_scroll_delete.txt build/reports/inventory_scroll_update_arrow_animations.txt
+build inventory_cell_scroll_lifecycle: phony build/reports/inventory_cell_scroll_lifecycle.txt
