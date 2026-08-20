@@ -42069,6 +42069,9 @@ build overlay052: phony overlay052_small overlay052_matching
 subninja config/arm9/overlays/ov053/matching.ninja
 
 overlay053_small_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov053/overlay053_recovery.o: mwccarm src/overlays/ov053/overlay053_recovery.c | include/tingle/types.h
+  source = src/overlays/ov053/overlay053_recovery.c
+  cflags = $overlay053_small_cflags
 build build/decomp/src/overlays/ov053/overlay053_embedded_record.o: mwccarm src/overlays/ov053/overlay053_embedded_record.c | include/tingle/types.h
   source = src/overlays/ov053/overlay053_embedded_record.c
   cflags = $overlay053_small_cflags
@@ -42113,7 +42116,8 @@ build build/reports/overlay053_heap_delete.txt: match_report build/reports/overl
   report_json = build/reports/overlay053_small_helpers.json
   report_args = --section .text --function func_ov053_0220dba0 --require-exact
 build overlay053_small: phony build/reports/overlay053_embedded_record.txt build/reports/overlay053_noop_70.txt build/reports/overlay053_noop_74.txt build/reports/overlay053_noop_78.txt build/reports/overlay053_noop_7c.txt build/reports/overlay053_noop_80.txt build/reports/overlay053_coordinate_init.txt build/reports/overlay053_noop_9c.txt build/reports/overlay053_heap_delete.txt
-build overlay053: phony overlay053_small overlay053_matching
+build overlay053_portable: phony build/decomp/src/overlays/ov053/overlay053_recovery.o
+build overlay053: phony overlay053_small overlay053_matching overlay053_portable
 
 subninja config/arm9/overlays/ov054/matching.ninja
 build overlay054: phony overlay054_matching
