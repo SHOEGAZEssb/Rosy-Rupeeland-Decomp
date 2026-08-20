@@ -42129,7 +42129,12 @@ subninja config/arm9/overlays/ov056/matching.ninja
 build overlay056: phony overlay056_matching
 
 subninja config/arm9/overlays/ov057/matching.ninja
-build overlay057: phony overlay057_matching
+overlay057_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov057/overlay057_recovery.o: mwccarm src/overlays/ov057/overlay057_recovery.c | include/tingle/types.h
+  source = src/overlays/ov057/overlay057_recovery.c
+  cflags = $overlay057_portable_cflags
+build overlay057_portable: phony build/decomp/src/overlays/ov057/overlay057_recovery.o
+build overlay057: phony overlay057_matching overlay057_portable
 
 subninja config/arm9/overlays/ov058/matching.ninja
 build overlay058: phony overlay058_matching
