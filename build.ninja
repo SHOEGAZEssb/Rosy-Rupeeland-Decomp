@@ -42207,7 +42207,12 @@ build overlay068_portable: phony build/decomp/src/overlays/ov068/overlay068_reco
 build overlay068: phony overlay068_matching overlay068_portable
 
 subninja config/arm9/overlays/ov069/matching.ninja
-build overlay069: phony overlay069_matching
+overlay069_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
+build build/decomp/src/overlays/ov069/overlay069_recovery.o: mwccarm src/overlays/ov069/overlay069_recovery.c | include/tingle/types.h
+  source = src/overlays/ov069/overlay069_recovery.c
+  cflags = $overlay069_portable_cflags
+build overlay069_portable: phony build/decomp/src/overlays/ov069/overlay069_recovery.o
+build overlay069: phony overlay069_matching overlay069_portable
 
 subninja config/arm9/overlays/ov070/matching.ninja
 overlay070_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
