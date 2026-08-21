@@ -34,22 +34,27 @@ void func_ov090_0221a8bc(void *self)
     secondWidth = func_020befec((FIELD(s16, self, 0x23a) - lower) * 0xb0,
                                 2000);
     if (firstWidth > 0)
-        GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x30, 9,
-                                      firstWidth + 0x30, 0x0f, 3);
+        GraphicsSpriteCanvas_FillRect(
+            (GraphicsSpriteCanvas *)data_020f4e14, 0x30, 9,
+            firstWidth + 0x30, 0x0f, 3);
     if (secondWidth > 0) {
         s32 secondStart = firstWidth + 0x30;
 
-        GraphicsSpriteCanvas_FillRect(data_020f4e14, secondStart, 9,
-                                      secondStart + secondWidth, 0x0f, 7);
+        GraphicsSpriteCanvas_FillRect(
+            (GraphicsSpriteCanvas *)data_020f4e14, secondStart, 9,
+            secondStart + secondWidth, 0x0f, 7);
     }
     if (0xb0 - (firstWidth + secondWidth) > 0)
-        GraphicsSpriteCanvas_FillRect(data_020f4e14,
-                                      firstWidth + secondWidth + 0x30, 9,
-                                      0xe0, 0x0f, 6);
-    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x30, 8, 0xe0, 9, 6);
-    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x30, 0x0f, 0xe0, 0x10, 6);
-    GraphicsSpriteCanvas_FillRect(data_020f4e14, 0xe0, 9, 0xe1, 0x0f, 6);
+        GraphicsSpriteCanvas_FillRect(
+            (GraphicsSpriteCanvas *)data_020f4e14,
+            firstWidth + secondWidth + 0x30, 9, 0xe0, 0x0f, 6);
+    GraphicsSpriteCanvas_FillRect((GraphicsSpriteCanvas *)data_020f4e14,
+                                  0x30, 8, 0xe0, 9, 6);
+    GraphicsSpriteCanvas_FillRect((GraphicsSpriteCanvas *)data_020f4e14,
+                                  0x30, 0x0f, 0xe0, 0x10, 6);
+    GraphicsSpriteCanvas_FillRect((GraphicsSpriteCanvas *)data_020f4e14,
+                                  0xe0, 9, 0xe1, 0x0f, 6);
     if (FIELD(s16, self, 0x238) > 0)
-        GraphicsSpriteCanvas_DrawLine(data_020f4e14, 0x2f, 0x0a, 0x2f, 0x0e,
-                                      3);
+        GraphicsSpriteCanvas_DrawLine(
+            (GraphicsSpriteCanvas *)data_020f4e14, 0x2f, 0x0a, 0x2f, 0x0e, 3);
 }

@@ -39,7 +39,7 @@ void func_ov090_0221c780(TitleSpriteEffect *self, s32 x, s32 y,
                          s32 targetX, s32 targetY, s32 animation,
                          s32 palette, s32 frame)
 {
-    TouchPoint template;
+    TouchPoint positionTemplate;
     TouchPoint position;
     TouchPoint secondaryPosition;
     GraphicsSpriteState *sprite;
@@ -140,13 +140,13 @@ void func_ov090_0221c780(TitleSpriteEffect *self, s32 x, s32 y,
     }
 
     paletteValue = DisplayController_GetVerticalOffset();
-    template.y = -0xc0 - paletteValue;
-    template.vtable = (TouchPointVTable *)data_ov090_0221cc88;
-    template.x = 0;
-    func_ov090_0221ca14(&position, &template);
+    positionTemplate.y = -0xc0 - paletteValue;
+    positionTemplate.vtable = (TouchPointVTable *)data_ov090_0221cc88;
+    positionTemplate.x = 0;
+    func_ov090_0221ca14(&position, &positionTemplate);
     UtilAnimationResource_UpdatePosition(self->primary, &position);
     if (self->secondary != 0) {
-        func_ov090_0221ca14(&secondaryPosition, &template);
+        func_ov090_0221ca14(&secondaryPosition, &positionTemplate);
         UtilAnimationResource_UpdatePosition(self->secondary,
                                              &secondaryPosition);
     }
