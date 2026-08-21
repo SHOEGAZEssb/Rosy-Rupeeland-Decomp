@@ -44361,28 +44361,52 @@ build build/decomp/src/overlays/ov421/overlay421_recovery.o: mwccarm src/overlay
 build overlay421: phony overlay421_matching build/decomp/src/overlays/ov421/overlay421_recovery.o
 build link_replacement_objects_412: phony build/decomp/asm/overlays/ov421/overlay421_02233c60.o link_replacement_objects_413
 subninja config/arm9/overlays/ov422/matching.ninja
-build overlay422: phony overlay422_matching
+build build/decomp/src/overlays/ov422/overlay422_recovery.o: mwccarm src/overlays/ov422/overlay422_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov422/overlay422_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay422: phony overlay422_matching build/decomp/src/overlays/ov422/overlay422_recovery.o
 build link_replacement_objects_413: phony build/decomp/asm/overlays/ov422/overlay422_02233c60.o link_replacement_objects_414
 subninja config/arm9/overlays/ov423/matching.ninja
-build overlay423: phony overlay423_matching
+build build/decomp/src/overlays/ov423/overlay423_recovery.o: mwccarm src/overlays/ov423/overlay423_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov423/overlay423_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay423: phony overlay423_matching build/decomp/src/overlays/ov423/overlay423_recovery.o
 build link_replacement_objects_414: phony build/decomp/asm/overlays/ov423/overlay423_02233c60.o link_replacement_objects_415
 subninja config/arm9/overlays/ov424/matching.ninja
-build overlay424: phony overlay424_matching
+build build/decomp/src/overlays/ov424/overlay424_recovery.o: mwccarm src/overlays/ov424/overlay424_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov424/overlay424_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay424: phony overlay424_matching build/decomp/src/overlays/ov424/overlay424_recovery.o
 build link_replacement_objects_415: phony build/decomp/asm/overlays/ov424/overlay424_02233c60.o link_replacement_objects_416
 subninja config/arm9/overlays/ov425/matching.ninja
-build overlay425: phony overlay425_matching
+build build/decomp/src/overlays/ov425/overlay425_recovery.o: mwccarm src/overlays/ov425/overlay425_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov425/overlay425_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay425: phony overlay425_matching build/decomp/src/overlays/ov425/overlay425_recovery.o
 build link_replacement_objects_416: phony build/decomp/asm/overlays/ov425/overlay425_02233c60.o link_replacement_objects_417
 subninja config/arm9/overlays/ov426/matching.ninja
-build overlay426: phony overlay426_matching
+build build/decomp/src/overlays/ov426/overlay426_recovery.o: mwccarm src/overlays/ov426/overlay426_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov426/overlay426_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay426: phony overlay426_matching build/decomp/src/overlays/ov426/overlay426_recovery.o
 build link_replacement_objects_417: phony build/decomp/asm/overlays/ov426/overlay426_02233c60.o link_replacement_objects_418
 subninja config/arm9/overlays/ov427/matching.ninja
-build overlay427: phony overlay427_matching
+build build/decomp/src/overlays/ov427/overlay427_recovery.o: mwccarm src/overlays/ov427/overlay427_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov427/overlay427_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay427: phony overlay427_matching build/decomp/src/overlays/ov427/overlay427_recovery.o
 build link_replacement_objects_418: phony build/decomp/asm/overlays/ov427/overlay427_02233c60.o link_replacement_objects_419
 subninja config/arm9/overlays/ov428/matching.ninja
-build overlay428: phony overlay428_matching
+build build/decomp/src/overlays/ov428/overlay428_recovery.o: mwccarm src/overlays/ov428/overlay428_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov428/overlay428_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay428: phony overlay428_matching build/decomp/src/overlays/ov428/overlay428_recovery.o
 build link_replacement_objects_419: phony build/decomp/asm/overlays/ov428/overlay428_02233c60.o link_replacement_objects_420
 subninja config/arm9/overlays/ov429/matching.ninja
-build overlay429: phony overlay429_matching
+build build/decomp/src/overlays/ov429/overlay429_recovery.o: mwccarm src/overlays/ov429/overlay429_recovery.c | include/tingle/game_phase_region_table.h include/tingle/types.h
+  source = src/overlays/ov429/overlay429_recovery.c
+  cflags = $actor_registration_portable_cflags
+build overlay429: phony overlay429_matching build/decomp/src/overlays/ov429/overlay429_recovery.o
 build link_replacement_objects_420: phony build/decomp/asm/overlays/ov429/overlay429_02233c60.o link_replacement_objects_421
 subninja config/arm9/overlays/ov430/matching.ninja
 build overlay430: phony overlay430_matching
