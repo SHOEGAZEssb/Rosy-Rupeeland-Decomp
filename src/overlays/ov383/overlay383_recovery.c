@@ -1,13 +1,31 @@
-/*
- * Recovered overlay 383 interpreter-data subsystem.
- *
- * This module is byte-identical to the compact payload used by overlays 377
- * through 380 and 382. It registers runtime and interpreter work records whose
- * detailed semantics remain unconfirmed.
- */
+#include "tingle/game_phase_region_table.h"
+#include "tingle/types.h"
 
-/* Initializes engine registration state, returns no value, and has no direct hardware effects. */
-void func_ov383_02233c60(void);
+/* Recovered overlay 383 category-two actor-registration subsystem. */
+typedef struct ActorSpawnDescriptor {
+    u8 bytes[0x64];
+} ActorSpawnDescriptor;
+typedef u8 ActorScriptBytecode;
+
+extern void ActorDescriptorBatch_RegisterAndSpawnCategory2(
+    void *work, s32 unusedCount, ActorSpawnDescriptor *descriptors);
+extern void ActorDescriptorBatch_SetCategory2Callback(
+    const ActorScriptBytecode *callback);
+extern u8 data_ov383_022342c0[];
+extern GamePhaseRegionTable data_ov383_022342c4;
+extern ActorScriptBytecode data_ov383_022342a2[];
+extern ActorSpawnDescriptor data_ov383_022342c8[];
+
+/* Register the sentinel-driven descriptor array with retail's literal count
+ * of three, install its bytecode callback, and publish the region table.
+ * Returns no value and performs no direct hardware or SDK operation. */
+void func_ov383_02233c60(void)
+{
+    ActorDescriptorBatch_RegisterAndSpawnCategory2(
+        data_ov383_022342c0, 3, data_ov383_022342c8);
+    ActorDescriptorBatch_SetCategory2Callback(data_ov383_022342a2);
+    GamePhaseRegionTable_PublishActive(&data_ov383_022342c4);
+}
 
 /* Exact command-stream records and zero-initialized engine work storage. */
 extern unsigned char data_ov383_02233ed6[];
@@ -20,7 +38,3 @@ extern unsigned char data_ov383_02234098[];
 extern unsigned char data_ov383_022340be[];
 extern unsigned char data_ov383_02234141[];
 extern unsigned char data_ov383_02234142[];
-extern unsigned char data_ov383_022342a2[];
-extern unsigned char data_ov383_022342c0[];
-extern unsigned char data_ov383_022342c4[];
-extern unsigned char data_ov383_022342c8[];
