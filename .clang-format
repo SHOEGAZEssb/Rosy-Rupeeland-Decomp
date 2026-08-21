@@ -2,6 +2,7 @@ BasedOnStyle: LLVM
 IndentWidth: 4
 ColumnLimit: 80
 SortIncludes: Never
+BreakBeforeBraces: Allman
 AllowShortBlocksOnASingleLine: Never
 AllowShortCaseExpressionOnASingleLine: false
 AllowShortFunctionsOnASingleLine: None
