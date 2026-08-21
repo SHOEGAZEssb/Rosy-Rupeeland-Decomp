@@ -6,8 +6,27 @@
  * remain unconfirmed, so address-derived names are retained.
  */
 
-/* Registers records when r0 is zero; updates engine registration state, returns no value, and has no direct hardware effects. */
-void func_ov114_0221d6c0(void);
+#include "tingle/types.h"
+
+extern void ActorInteractionRuntime_Init(void);
+extern void ActorInteractionRuntime_NoOp(void);
+extern void ActorDescriptorBatch_RegisterAndSpawnCategory1(void *, s32, void *);
+extern void ActorDescriptorBatch_SetCategory1Callback(void *);
+extern void GamePhaseRuntime_SetGlobalValue30F8(void *);
+extern unsigned char data_ov114_0221d728[], data_ov114_0221d7a4[];
+extern unsigned char data_ov114_0221eb91[], data_ov114_022203a0[];
+
+/* Register this overlay's category-one descriptors only for load phase zero. */
+void func_ov114_0221d6c0(s32 phase)
+{
+    if (phase != 0) return;
+    ActorInteractionRuntime_Init();
+    ActorDescriptorBatch_RegisterAndSpawnCategory1(data_ov114_022203a0,
+        3, data_ov114_0221d7a4);
+    ActorInteractionRuntime_NoOp();
+    GamePhaseRuntime_SetGlobalValue30F8(data_ov114_0221d728);
+    ActorDescriptorBatch_SetCategory1Callback(data_ov114_0221eb91);
+}
 
 /* Exact initialized records and zero-initialized work fields used by the overlay. */
 extern unsigned char data_ov114_0221d720[];
