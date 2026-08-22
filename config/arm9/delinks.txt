@@ -4627,6 +4627,10 @@ src/game/sprite_effect_particle_render.c:
     categories: Game code
     .text       start:0x020a3fc4 end:0x020a4df0
 
+src/game/sprite_effect_factory.c:
+    categories: Game code
+    .text       start:0x020a4df0 end:0x020a6280
+
 src/graphics/graphics_3d_light.c:
     categories: Game code
     .text       start:0x02077a04 end:0x02077a8c
