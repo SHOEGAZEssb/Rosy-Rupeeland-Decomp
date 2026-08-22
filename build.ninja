@@ -61,6 +61,7 @@ actor_motion_angle_cflags = -proc arm946e -O4 -inline off -ipa function -interwo
 actor_motion_actor_target_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_extract_target_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+actor_motion_oscillation_interval_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_sample_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_jitter_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -1091,6 +1092,12 @@ build build/decomp/src/game/actor_motion_oscillation_setup.o: mwccarm src/game/a
   cflags = $actor_motion_oscillation_setup_cflags
 
 build build/decomp/asm/game/actor_motion_oscillation_setup.o: mwasmarm asm/game/actor_motion_oscillation_setup.s
+
+build build/decomp/src/game/actor_motion_oscillation_interval.o: mwccarm src/game/actor_motion_oscillation_interval.c | include/tingle/actor_motion.h include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/game/actor_motion_oscillation_interval.c
+  cflags = $actor_motion_oscillation_interval_cflags
+
+build build/decomp/delinks/src/game/actor_motion_oscillation_interval.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/game/actor_motion_oscillation_control.o: mwccarm src/game/actor_motion_oscillation_control.c | include/tingle/actor_motion.h include/tingle/types.h
   source = src/game/actor_motion_oscillation_control.c
@@ -10745,13 +10752,21 @@ build build/reports/actor_motion_extract_target.txt: match_report build/reports/
   report_json = build/reports/actor_motion_extract_target.json
   report_args = --section .text --function ActorMotion_GetBoundActorTargetPosition --require-exact
 
-build build/reports/actor_motion_oscillation_setup.json: objdiff build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o | build/decomp/asm/game/actor_motion_oscillation_setup.o
+build build/reports/actor_motion_oscillation_setup.json: objdiff build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o | build/decomp/src/game/actor_motion_oscillation_setup.o
   target_object = build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o
-  base_object = build/decomp/asm/game/actor_motion_oscillation_setup.o
+  base_object = build/decomp/src/game/actor_motion_oscillation_setup.o
 
 build build/reports/actor_motion_oscillation_setup.txt: match_report build/reports/actor_motion_oscillation_setup.json | tools/report_objdiff.py
   report_json = build/reports/actor_motion_oscillation_setup.json
-  report_args = --section .text --function ActorMotion_SetOscillation --function ActorMotionOscillation_InitInterval
+  report_args = --section .text --function ActorMotion_SetOscillation --require-exact
+
+build build/reports/actor_motion_oscillation_interval.json: objdiff build/decomp/delinks/src/game/actor_motion_oscillation_interval.o | build/decomp/src/game/actor_motion_oscillation_interval.o
+  target_object = build/decomp/delinks/src/game/actor_motion_oscillation_interval.o
+  base_object = build/decomp/src/game/actor_motion_oscillation_interval.o
+
+build build/reports/actor_motion_oscillation_interval.txt: match_report build/reports/actor_motion_oscillation_interval.json | tools/report_objdiff.py
+  report_json = build/reports/actor_motion_oscillation_interval.json
+  report_args = --section .text --function ActorMotionOscillation_InitInterval --require-exact
 
 build build/reports/actor_motion_oscillation_control.json: objdiff build/decomp/delinks/src/game/actor_motion_oscillation_control.o | build/decomp/src/game/actor_motion_oscillation_control.o
   target_object = build/decomp/delinks/src/game/actor_motion_oscillation_control.o
@@ -12385,7 +12400,7 @@ build actor_motion_grid_target: phony build/decomp/delinks/asm/game/actor_motion
 build actor_motion_angle: phony build/decomp/delinks/src/game/actor_motion_angle.o build/decomp/src/game/actor_motion_angle.o build/reports/actor_motion_angle.txt
 build actor_motion_actor_target: phony build/decomp/delinks/asm/game/actor_motion_actor_target.o build/decomp/asm/game/actor_motion_actor_target.o build/decomp/src/game/actor_motion_actor_target.o build/reports/actor_motion_actor_target.txt
 build actor_motion_extract_target: phony build/decomp/delinks/asm/game/actor_motion_extract_target.o build/decomp/asm/game/actor_motion_extract_target.o build/decomp/src/game/actor_motion_extract_target.o build/reports/actor_motion_extract_target.txt
-build actor_motion_oscillation_setup: phony build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o build/decomp/asm/game/actor_motion_oscillation_setup.o build/decomp/src/game/actor_motion_oscillation_setup.o build/reports/actor_motion_oscillation_setup.txt
+build actor_motion_oscillation_setup: phony build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o build/decomp/asm/game/actor_motion_oscillation_setup.o build/decomp/src/game/actor_motion_oscillation_setup.o build/decomp/delinks/src/game/actor_motion_oscillation_interval.o build/decomp/src/game/actor_motion_oscillation_interval.o build/reports/actor_motion_oscillation_setup.txt build/reports/actor_motion_oscillation_interval.txt
 build actor_motion_oscillation_control: phony build/decomp/delinks/src/game/actor_motion_oscillation_control.o build/decomp/src/game/actor_motion_oscillation_control.o build/reports/actor_motion_oscillation_control.txt
 build actor_motion_oscillation_sample: phony build/decomp/delinks/asm/game/actor_motion_oscillation_sample.o build/decomp/asm/game/actor_motion_oscillation_sample.o build/decomp/src/game/actor_motion_oscillation_sample.o build/reports/actor_motion_oscillation_sample.txt
 build actor_motion_jitter_lifecycle: phony build/decomp/delinks/src/game/actor_motion_jitter_lifecycle.o build/decomp/src/game/actor_motion_jitter_lifecycle.o build/reports/actor_motion_jitter_lifecycle.txt
@@ -42727,7 +42742,7 @@ build build/decomp/src/overlays/ov141/overlay141_recovery.o: mwccarm src/overlay
   source = src/overlays/ov141/overlay141_recovery.c
   cflags = $actor_registration_portable_cflags
 build overlay141: phony overlay141_matching build/decomp/src/overlays/ov141/overlay141_recovery.o
-build link_replacement_objects_134: phony build/decomp/asm/overlays/ov141/overlay141_0221d6c0.o build/decomp/src/game/game_phase_script_vm_actor_visibility_flags.o build/decomp/src/game/game_phase_script_vm_actor_type_field.o build/decomp/src/game/game_phase_script_vm_gamework_flag_opcodes.o link_replacement_objects_135
+build link_replacement_objects_134: phony build/decomp/asm/overlays/ov141/overlay141_0221d6c0.o build/decomp/src/game/game_phase_script_vm_actor_visibility_flags.o build/decomp/src/game/game_phase_script_vm_actor_type_field.o build/decomp/src/game/game_phase_script_vm_gamework_flag_opcodes.o build/decomp/src/game/actor_motion_oscillation_interval.o link_replacement_objects_135
 subninja config/arm9/overlays/ov142/matching.ninja
 build build/decomp/src/overlays/ov142/overlay142_recovery.o: mwccarm src/overlays/ov142/overlay142_recovery.c | include/tingle/types.h
   source = src/overlays/ov142/overlay142_recovery.c

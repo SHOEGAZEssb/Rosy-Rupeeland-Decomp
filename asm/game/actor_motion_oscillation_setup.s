@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern ActorMotionTriple_Assign
-.extern func_020befec
+.extern ActorMotionOscillation_InitInterval
 .global ActorMotion_SetOscillation
 ActorMotion_SetOscillation: ; 0x020095cc
     stmdb sp!, {r3, r4, r5, lr}
@@ -41,25 +41,3 @@ ActorMotion_SetOscillation: ; 0x020095cc
     ldmia sp!, {r3, r4, r5, pc}
 
     .size ActorMotion_SetOscillation, .-ActorMotion_SetOscillation
-
-    .global ActorMotionOscillation_InitInterval
-ActorMotionOscillation_InitInterval: ; 0x0200964c
-    stmdb sp!, {r4, lr}
-    mov r4, r0
-    sub r0, r1, r2
-    cmp r1, r2
-    movle ip, r1
-    add r0, r0, r0, lsr #0x1f
-    movgt ip, r2
-    movs r0, r0, asr #0x1
-    str r0, [r4, #0x0]
-    rsbmi r0, r0, #0x0
-    add r2, ip, r0
-    mov r1, r3
-    mov r0, #0x10000
-    str r2, [r4, #0x4]
-    bl func_020befec
-    str r0, [r4, #0x8]
-    mov r0, r4
-    ldmia sp!, {r4, pc}
-    .size ActorMotionOscillation_InitInterval, .-ActorMotionOscillation_InitInterval

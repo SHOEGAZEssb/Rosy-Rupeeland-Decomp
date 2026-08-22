@@ -216,6 +216,7 @@ build/decomp/delinks/src/game/actor_motion_angle.o = build/decomp/src/game/actor
 build/decomp/delinks/asm/game/actor_motion_actor_target.o = build/decomp/asm/game/actor_motion_actor_target.o
 build/decomp/delinks/asm/game/actor_motion_extract_target.o = build/decomp/asm/game/actor_motion_extract_target.o
 build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o = build/decomp/asm/game/actor_motion_oscillation_setup.o
+build/decomp/delinks/src/game/actor_motion_oscillation_interval.o = build/decomp/src/game/actor_motion_oscillation_interval.o
 build/decomp/delinks/src/game/actor_motion_oscillation_control.o = build/decomp/src/game/actor_motion_oscillation_control.o
 build/decomp/delinks/asm/game/actor_motion_oscillation_sample.o = build/decomp/asm/game/actor_motion_oscillation_sample.o
 build/decomp/delinks/src/game/actor_motion_jitter_lifecycle.o = build/decomp/src/game/actor_motion_jitter_lifecycle.o
