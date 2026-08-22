@@ -5,6 +5,10 @@
  * a continuation marker, and a time-like scalar.
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 s32 InteractionWaypointCursor_CountRecords(const void *self);
 
 /*
@@ -119,3 +123,7 @@ s32 InteractionWaypointCursor_CountRecords(const void *self)
         ++count;
     return count;
 }
+
+#ifdef __cplusplus
+}
+#endif

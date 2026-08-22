@@ -14,9 +14,6 @@ extern void *func_02003e20(u32 size, const char *label, u32 alignment,
                            void *heapContext);
 extern void func_02003e38(void *allocation);
 extern u32 genrand_int32(void);
-#ifdef __cplusplus
-}
-#endif
 
 /*
  * Store the four-byte record table at object +0, count records until a signed
@@ -89,3 +86,7 @@ void InteractionRecordAllocator_ReleaseOwner(void *self, void *owner)
             owners[i] = 0;
     }
 }
+
+#ifdef __cplusplus
+}
+#endif

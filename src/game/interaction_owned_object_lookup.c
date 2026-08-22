@@ -9,9 +9,6 @@ extern "C" {
 #endif
 extern void *InteractionRecordAllocator_Init(void *object,
                                              const void *recordTable);
-#ifdef __cplusplus
-}
-#endif
 
 /*
  * Scan 16 pool slots. Return an existing object whose +0 table pointer equals
@@ -41,3 +38,7 @@ void *InteractionRecordAllocatorPool_GetOrCreate(
     }
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif

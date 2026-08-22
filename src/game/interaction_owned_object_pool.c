@@ -7,9 +7,6 @@
 extern "C" {
 #endif
 extern void func_02003e38(void *allocation);
-#ifdef __cplusplus
-}
-#endif
 
 /*
  * Clear all 16 pointer slots in the supplied 0x40-byte pool and return the pool
@@ -44,3 +41,7 @@ void *InteractionRecordAllocatorPool_DestroyContents(void *self)
     }
     return self;
 }
+
+#ifdef __cplusplus
+}
+#endif

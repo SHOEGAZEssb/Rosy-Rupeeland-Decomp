@@ -18605,9 +18605,9 @@ build build/decomp/src/game/interaction_owned_object_pool.o: mwccarm src/game/in
   cflags = $interaction_owned_object_pool_cflags
 build build/decomp/asm/game/interaction_owned_object_pool_020451b8.o: mwasmarm asm/game/interaction_owned_object_pool_020451b8.s
 build build/decomp/delinks/asm/game/interaction_owned_object_pool_020451b8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/reports/interaction_owned_object_pool_020451b8.json: objdiff build/decomp/delinks/asm/game/interaction_owned_object_pool_020451b8.o | build/decomp/asm/game/interaction_owned_object_pool_020451b8.o
+build build/reports/interaction_owned_object_pool_020451b8.json: objdiff build/decomp/delinks/asm/game/interaction_owned_object_pool_020451b8.o | build/decomp/src/game/interaction_owned_object_pool.o
   target_object = build/decomp/delinks/asm/game/interaction_owned_object_pool_020451b8.o
-  base_object = build/decomp/asm/game/interaction_owned_object_pool_020451b8.o
+  base_object = build/decomp/src/game/interaction_owned_object_pool.o
 build build/reports/interaction_owned_object_pool_020451b8.txt: match_report build/reports/interaction_owned_object_pool_020451b8.json | tools/report_objdiff.py
   report_json = build/reports/interaction_owned_object_pool_020451b8.json
   report_args = --section .text --function InteractionRecordAllocatorPool_Init --function InteractionRecordAllocatorPool_DestroyContents --require-exact
@@ -18663,9 +18663,9 @@ build build/decomp/src/game/interaction_forwarding_wrappers.o: mwccarm src/game/
   cflags = $interaction_forwarding_wrappers_cflags
 build build/decomp/asm/game/interaction_forwarding_wrappers_02045410.o: mwasmarm asm/game/interaction_forwarding_wrappers_02045410.s
 build build/decomp/delinks/asm/game/interaction_forwarding_wrappers_02045410.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/reports/interaction_forwarding_wrappers_02045410.json: objdiff build/decomp/delinks/asm/game/interaction_forwarding_wrappers_02045410.o | build/decomp/asm/game/interaction_forwarding_wrappers_02045410.o
+build build/reports/interaction_forwarding_wrappers_02045410.json: objdiff build/decomp/delinks/asm/game/interaction_forwarding_wrappers_02045410.o | build/decomp/src/game/interaction_forwarding_wrappers.o
   target_object = build/decomp/delinks/asm/game/interaction_forwarding_wrappers_02045410.o
-  base_object = build/decomp/asm/game/interaction_forwarding_wrappers_02045410.o
+  base_object = build/decomp/src/game/interaction_forwarding_wrappers.o
 build build/reports/interaction_forwarding_wrappers_02045410.txt: match_report build/reports/interaction_forwarding_wrappers_02045410.json | tools/report_objdiff.py
   report_json = build/reports/interaction_forwarding_wrappers_02045410.json
   report_args = --section .text --function func_02045410 --function func_0204541c --function func_02045428 --function func_02045434 --function func_02045440 --function func_0204544c --function func_02045458 --function func_02045464 --function func_02045470 --function func_0204547c --function func_02045488 --function func_02045494 --function func_020454a0 --function func_020454ac --function func_020454b8 --function func_020454d4 --function func_020454e0 --function func_020454ec --require-exact

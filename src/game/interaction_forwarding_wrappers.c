@@ -4,17 +4,19 @@
  * Recovered forwarding layer for interaction handlers. Most entry points are
  * address-distinct aliases of one of two shared implementations.
  */
-extern u32 data_020e1738[];
+typedef struct InteractionCallbackPair {
+    u32 first;
+    u32 second;
+} InteractionCallbackPair;
+
+extern InteractionCallbackPair data_020e1738;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern u32 Type7Actor_SelectRandomCallback(u32 first, u32 second, u32 third, u32 fourth);
 extern u32 Type7Actor_SelectRandomCallbackPair01(u32 first, u32 second, u32 third, u32 fourth);
-extern u32 Type7Actor_SetCallbackPair(u32 first, u32 second, u32 third, s32 fourth);
-#ifdef __cplusplus
-}
-#endif
+extern u32 Type7Actor_SetCallbackPair(u32 first, InteractionCallbackPair pair, s32 fourth);
 
 /* Forward four register inputs to Type7Actor_SelectRandomCallback and return its result/state effects. */
 u32 func_02045410(u32 a, u32 b, u32 c, u32 d) { return Type7Actor_SelectRandomCallback(a, b, c, d); }
@@ -51,7 +53,7 @@ u32 func_020454ac(u32 a, u32 b, u32 c, u32 d) { return Type7Actor_SelectRandomCa
  */
 u32 func_020454b8(u32 first)
 {
-    return Type7Actor_SetCallbackPair(first, data_020e1738[0], data_020e1738[1], -1);
+    return Type7Actor_SetCallbackPair(first, data_020e1738, -1);
 }
 
 /* Forward four register inputs to Type7Actor_SelectRandomCallback and return its result/state effects. */
@@ -60,3 +62,7 @@ u32 func_020454d4(u32 a, u32 b, u32 c, u32 d) { return Type7Actor_SelectRandomCa
 u32 func_020454e0(u32 a, u32 b, u32 c, u32 d) { return Type7Actor_SelectRandomCallbackPair01(a, b, c, d); }
 /* Forward four register inputs to Type7Actor_SelectRandomCallbackPair01 and return its result/state effects. */
 u32 func_020454ec(u32 a, u32 b, u32 c, u32 d) { return Type7Actor_SelectRandomCallbackPair01(a, b, c, d); }
+
+#ifdef __cplusplus
+}
+#endif

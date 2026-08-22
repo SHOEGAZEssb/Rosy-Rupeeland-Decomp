@@ -3,6 +3,10 @@
 /* Recovered reset and tick operations for a six-byte shared interaction timing state. */
 extern u8 data_0210576c[];
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Clear state bytes +0, +1, +2, and +3 plus halfword +4. Returns no value;
  * only the shared timing state changes and no SDK or hardware access occurs.
@@ -27,3 +31,7 @@ void InteractionTimingState_Tick(void)
     if (data_0210576c[2] != 0)
         --data_0210576c[2];
 }
+
+#ifdef __cplusplus
+}
+#endif
