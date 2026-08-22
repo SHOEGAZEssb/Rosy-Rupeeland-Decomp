@@ -42046,8 +42046,15 @@ build build/reports/overlay051_virtual_noop_bc.txt: match_report build/reports/o
 build build/reports/overlay051_virtual_noop_c0.txt: match_report build/reports/overlay051_virtual_noops.json | tools/report_objdiff.py
   report_json = build/reports/overlay051_virtual_noops.json
   report_args = --section .text --function func_ov051_0220dec0 --require-exact
+build build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_sub_scene_recovery.c | include/tingle/types.h
+  source = src/overlays/ov051/overlay051_sub_scene_recovery.c
+  cflags = $overlay051_small_cflags
+build build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_main_scene_recovery.c | include/tingle/types.h
+  source = src/overlays/ov051/overlay051_main_scene_recovery.c
+  cflags = $overlay051_small_cflags
+build overlay051_portable: phony build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o
 build overlay051_small: phony build/reports/overlay051_scene_destroy.txt build/reports/overlay051_scene_delete.txt build/reports/overlay051_update_wrapper.txt build/reports/overlay051_virtual_noop_b0.txt build/reports/overlay051_virtual_noop_b4.txt build/reports/overlay051_virtual_noop_b8.txt build/reports/overlay051_virtual_noop_bc.txt build/reports/overlay051_virtual_noop_c0.txt
-build overlay051: phony overlay051_small overlay051_matching
+build overlay051: phony overlay051_small overlay051_matching overlay051_portable
 
 subninja config/arm9/overlays/ov052/matching.ninja
 

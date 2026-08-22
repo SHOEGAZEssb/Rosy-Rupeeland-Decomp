@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-#include <string.h>
+extern "C" void MI_CpuCopy8(const void *source, void *destination, u32 size);
 
 /*
  * Overlay 51 main-engine dream-scene lifecycle. It configures main BG display,
@@ -140,8 +140,8 @@ extern "C" void func_ov051_0220ddf8(void *scene)
     s32 index;
 
     for (index = 0; index < 0xc0; ++index)
-        memcpy(bytes + 0xc10 + index * 0x10,
-               bytes + 0x10 + index * 0x10, 0x10);
+        MI_CpuCopy8(bytes + 0x10 + index * 0x10,
+                    bytes + 0xc10 + index * 0x10, 0x10);
     func_020afd28((volatile void *)0x04000020, bytes + 0xc10,
                   0x100, 0x100, *(s32 *)(bytes + 8),
                   *(s32 *)(bytes + 0xc));
