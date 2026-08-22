@@ -4595,6 +4595,22 @@ asm/graphics/graphics_3d_runtime_manager_update.s:
     categories: Game code
     .text       start:0x020a2da8 end:0x020a2fd0
 
+src/game/sprite_effect_config.c:
+    categories: Game code
+    .text       start:0x020a32e0 end:0x020a3360
+
+src/game/sprite_effect_manager_slot.c:
+    categories: Game code
+    .text       start:0x020a338c end:0x020a33cc
+
+src/game/sprite_effect_manager_controls.c:
+    categories: Game code
+    .text       start:0x020a3418 end:0x020a3480
+
+src/game/sprite_effect_bounds_copy.c:
+    categories: Game code
+    .text       start:0x020a376c end:0x020a3790
+
 src/graphics/graphics_3d_light.c:
     categories: Game code
     .text       start:0x02077a04 end:0x02077a8c
