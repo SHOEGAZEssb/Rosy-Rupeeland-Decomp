@@ -70,7 +70,7 @@ s32 func_ov010_021fd638(void *state)
         case 3:if((obj=FIELD(void *,state,0x8c))&&FIELD(s32,state,0x174)==0&&(held&0x30)){void *t=FIELD(void *,FIELD(void *,state,0x84),0x24);u8 *e=(u8 *)t+FIELD(s32,state,0x144)*8;FIELD(s32,state,0x148)=func_ov010_021fd5a8(state,FIELD(s32,state,0x148),0,FIELD(u16,e,2)-1,1);GraphicsAnimationInstance_SetFrame(obj,(u8)FIELD(s32,state,0x148));}break;
         case 4:if(held&0x30)FIELD(s32,state,0x174)^=1;break;
         case 5:if(held&0x30)FIELD(s32,state,0x178)^=1;break;
-        case 6:if(obj=FIELD(void *,state,0x8c)){if(repeat&0x20)FIELD(s16,state,0x170)-=0x100;else if(repeat&0x10)FIELD(s16,state,0x170)+=0x100;}break;
+        case 6:if((obj=FIELD(void *,state,0x8c))){if(repeat&0x20)FIELD(s16,state,0x170)-=0x100;else if(repeat&0x10)FIELD(s16,state,0x170)+=0x100;}break;
         case 7:if(FIELD(void *,state,0x8c))FIELD(s32,state,0x164)=func_ov010_021fd520(state,FIELD(s32,state,0x164),-0x4000,0x4000,0x80);break;
         case 8:if(FIELD(void *,state,0x8c))FIELD(s32,state,0x168)=func_ov010_021fd520(state,FIELD(s32,state,0x168),-0x4000,0x4000,0x80);break;
         case 9:if(FIELD(void *,state,0x8c))FIELD(s32,state,0x16c)=func_ov010_021fd564(state,FIELD(s32,state,0x16c),-0x800,0x800,0x10);break;
