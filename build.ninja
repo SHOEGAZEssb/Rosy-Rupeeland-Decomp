@@ -9850,9 +9850,9 @@ build build/reports/randomized_sprite_particle_02028860.json: objdiff build/deco
 build build/reports/randomized_sprite_particle_02028860.txt: match_report build/reports/randomized_sprite_particle_02028860.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_02028860.json
   report_args = --section .text --function func_02028860 --require-exact
-build build/reports/randomized_sprite_particle_0202895c.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_0202895c.o | build/decomp/asm/game/randomized_sprite_particle_0202895c.o
+build build/reports/randomized_sprite_particle_0202895c.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_0202895c.o | build/decomp/src/game/randomized_sprite_particle.o
   target_object = build/decomp/delinks/asm/game/randomized_sprite_particle_0202895c.o
-  base_object = build/decomp/asm/game/randomized_sprite_particle_0202895c.o
+  base_object = build/decomp/src/game/randomized_sprite_particle.o
 build build/reports/randomized_sprite_particle_0202895c.txt: match_report build/reports/randomized_sprite_particle_0202895c.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_0202895c.json
   report_args = --section .text --function func_0202895c --require-exact
@@ -9869,21 +9869,21 @@ build build/reports/randomized_sprite_particle_emitter_02028b98.json: objdiff bu
 build build/reports/randomized_sprite_particle_emitter_02028b98.txt: match_report build/reports/randomized_sprite_particle_emitter_02028b98.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02028b98.json
   report_args = --section .text --function func_02028b98 --require-exact
-build build/reports/randomized_sprite_particle_emitter_02028c94.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028c94.o | build/decomp/asm/game/randomized_sprite_particle_emitter_02028c94.o
+build build/reports/randomized_sprite_particle_emitter_02028c94.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028c94.o | build/decomp/src/game/randomized_sprite_particle_emitter.o
   target_object = build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028c94.o
-  base_object = build/decomp/asm/game/randomized_sprite_particle_emitter_02028c94.o
+  base_object = build/decomp/src/game/randomized_sprite_particle_emitter.o
 build build/reports/randomized_sprite_particle_emitter_02028c94.txt: match_report build/reports/randomized_sprite_particle_emitter_02028c94.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02028c94.json
   report_args = --section .text --function func_02028c94 --require-exact
-build build/reports/randomized_sprite_particle_emitter_02028cb4.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028cb4.o | build/decomp/asm/game/randomized_sprite_particle_emitter_02028cb4.o
+build build/reports/randomized_sprite_particle_emitter_02028cb4.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028cb4.o | build/decomp/src/game/randomized_sprite_particle_emitter.o
   target_object = build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028cb4.o
-  base_object = build/decomp/asm/game/randomized_sprite_particle_emitter_02028cb4.o
+  base_object = build/decomp/src/game/randomized_sprite_particle_emitter.o
 build build/reports/randomized_sprite_particle_emitter_02028cb4.txt: match_report build/reports/randomized_sprite_particle_emitter_02028cb4.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02028cb4.json
   report_args = --section .text --function func_02028cb4 --require-exact
-build build/reports/randomized_sprite_particle_emitter_02028cd4.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028cd4.o | build/decomp/asm/game/randomized_sprite_particle_emitter_02028cd4.o
+build build/reports/randomized_sprite_particle_emitter_02028cd4.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028cd4.o | build/decomp/src/game/randomized_sprite_particle_emitter.o
   target_object = build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028cd4.o
-  base_object = build/decomp/asm/game/randomized_sprite_particle_emitter_02028cd4.o
+  base_object = build/decomp/src/game/randomized_sprite_particle_emitter.o
 build build/reports/randomized_sprite_particle_emitter_02028cd4.txt: match_report build/reports/randomized_sprite_particle_emitter_02028cd4.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02028cd4.json
   report_args = --section .text --function func_02028cd4 --require-exact
@@ -9899,9 +9899,9 @@ build build/reports/randomized_sprite_particle_emitter_02028dd4.json: objdiff bu
 build build/reports/randomized_sprite_particle_emitter_02028dd4.txt: match_report build/reports/randomized_sprite_particle_emitter_02028dd4.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02028dd4.json
   report_args = --section .text --function func_02028dd4 --require-exact
-build build/reports/randomized_sprite_particle_emitter_02028e9c.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028e9c.o | build/decomp/asm/game/randomized_sprite_particle_emitter_02028e9c.o
+build build/reports/randomized_sprite_particle_emitter_02028e9c.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028e9c.o | build/decomp/src/game/randomized_sprite_particle_emitter.o
   target_object = build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02028e9c.o
-  base_object = build/decomp/asm/game/randomized_sprite_particle_emitter_02028e9c.o
+  base_object = build/decomp/src/game/randomized_sprite_particle_emitter.o
 build build/reports/randomized_sprite_particle_emitter_02028e9c.txt: match_report build/reports/randomized_sprite_particle_emitter_02028e9c.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02028e9c.json
   report_args = --section .text --function func_02028e9c --require-exact
@@ -9917,15 +9917,15 @@ build build/reports/randomized_sprite_particle_emitter_0202906c.json: objdiff bu
 build build/reports/randomized_sprite_particle_emitter_0202906c.txt: match_report build/reports/randomized_sprite_particle_emitter_0202906c.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_0202906c.json
   report_args = --section .text --function func_0202906c --require-exact
-build build/reports/randomized_sprite_particle_emitter_02029170.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02029170.o | build/decomp/asm/game/randomized_sprite_particle_emitter_02029170.o
+build build/reports/randomized_sprite_particle_emitter_02029170.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02029170.o | build/decomp/src/game/randomized_sprite_particle_emitter.o
   target_object = build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02029170.o
-  base_object = build/decomp/asm/game/randomized_sprite_particle_emitter_02029170.o
+  base_object = build/decomp/src/game/randomized_sprite_particle_emitter.o
 build build/reports/randomized_sprite_particle_emitter_02029170.txt: match_report build/reports/randomized_sprite_particle_emitter_02029170.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02029170.json
   report_args = --section .text --function func_02029170 --require-exact
-build build/reports/randomized_sprite_particle_emitter_02029190.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02029190.o | build/decomp/asm/game/randomized_sprite_particle_emitter_02029190.o
+build build/reports/randomized_sprite_particle_emitter_02029190.json: objdiff build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02029190.o | build/decomp/src/game/randomized_sprite_particle_emitter.o
   target_object = build/decomp/delinks/asm/game/randomized_sprite_particle_emitter_02029190.o
-  base_object = build/decomp/asm/game/randomized_sprite_particle_emitter_02029190.o
+  base_object = build/decomp/src/game/randomized_sprite_particle_emitter.o
 build build/reports/randomized_sprite_particle_emitter_02029190.txt: match_report build/reports/randomized_sprite_particle_emitter_02029190.json | tools/report_objdiff.py
   report_json = build/reports/randomized_sprite_particle_emitter_02029190.json
   report_args = --section .text --function func_02029190 --require-exact

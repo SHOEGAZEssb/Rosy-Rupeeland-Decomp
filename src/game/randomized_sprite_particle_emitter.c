@@ -45,8 +45,8 @@ typedef struct RandomizedSpriteParticleEmitter {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020de89c;
-extern void *data_020de8cc;
+extern void *data_020de89c[];
+extern void *data_020de8cc[];
 extern const char gRandomizedSpriteParticleListNodeAllocationTag[];
 extern const char gRandomizedSpriteParticleAllocationTag[];
 extern const char gRandomizedSpriteParticleEmitterAllocationTag[];
@@ -84,9 +84,6 @@ RandomizedSpriteParticleEmitter *func_02028b98(
     const EmitterVector *, s32);
 RandomizedSpriteParticleEmitter *func_02028d14(
     RandomizedSpriteParticleEmitter *);
-#ifdef __cplusplus
-}
-#endif
 
 /*
  * Initialize the presentation and endpoints, construct two 0x10-byte resource
@@ -142,7 +139,8 @@ void func_02028cd4(ParticleList *self)
     ParticleListNode *node = self->head_04;
     while (node) {
         ParticleListNode *next = node->next_00;
-        Heap_Free(node);
+        if (node)
+            Heap_Free(node);
         node = next;
     }
     self->head_04 = 0;
@@ -309,3 +307,7 @@ ParticleList *func_02029190(ParticleList *self)
     Heap_Free(self);
     return self;
 }
+
+#ifdef __cplusplus
+}
+#endif

@@ -41,9 +41,6 @@ extern s32 func_020ae024(s32, s32);
 extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
-#ifdef __cplusplus
-}
-#endif
 
 /*
  * Copy the two input positions, clear velocity/steering, jitter position Y by
@@ -139,3 +136,7 @@ s32 func_02028998(RandomizedSpriteParticle *self, const void *projection)
     VecFx32Object_Destroy(&difference);
     return self->lifetime_48 < 0;
 }
+
+#ifdef __cplusplus
+}
+#endif
