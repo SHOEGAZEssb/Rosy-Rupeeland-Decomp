@@ -71,6 +71,11 @@ sprite_effect_particle_spawn_cflags = -proc arm946e -O4 -inline off -ipa functio
 sprite_effect_particle_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 sprite_effect_particle_render_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 sprite_effect_factory_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+graphics_immediate_effect_renderer_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+graphics_texture_palette_command_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+graphics_immediate_resource_bind_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+graphics_texcoord_command_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+graphics_vertex16_command_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_sample_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_jitter_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -1161,6 +1166,36 @@ build build/decomp/src/game/sprite_effect_factory.o: mwccarm src/game/sprite_eff
   cflags = $sprite_effect_factory_cflags
 
 build build/decomp/delinks/src/game/sprite_effect_factory.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/graphics/graphics_immediate_effect_renderer.o: mwccarm src/graphics/graphics_immediate_effect_renderer.c | include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/graphics/graphics_immediate_effect_renderer.c
+  cflags = $graphics_immediate_effect_renderer_cflags
+
+build build/decomp/delinks/src/graphics/graphics_immediate_effect_renderer.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/graphics/graphics_texture_palette_command.o: mwccarm src/graphics/graphics_texture_palette_command.c | include/tingle/types.h
+  source = src/graphics/graphics_texture_palette_command.c
+  cflags = $graphics_texture_palette_command_cflags
+
+build build/decomp/delinks/src/graphics/graphics_texture_palette_command.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/graphics/graphics_immediate_resource_bind.o: mwccarm src/graphics/graphics_immediate_resource_bind.c | include/tingle/types.h
+  source = src/graphics/graphics_immediate_resource_bind.c
+  cflags = $graphics_immediate_resource_bind_cflags
+
+build build/decomp/delinks/src/graphics/graphics_immediate_resource_bind.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/graphics/graphics_texcoord_command.o: mwccarm src/graphics/graphics_texcoord_command.c | include/tingle/types.h
+  source = src/graphics/graphics_texcoord_command.c
+  cflags = $graphics_texcoord_command_cflags
+
+build build/decomp/delinks/src/graphics/graphics_texcoord_command.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/graphics/graphics_vertex16_command.o: mwccarm src/graphics/graphics_vertex16_command.c | include/tingle/types.h
+  source = src/graphics/graphics_vertex16_command.c
+  cflags = $graphics_vertex16_command_cflags
+
+build build/decomp/delinks/src/graphics/graphics_vertex16_command.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/game/actor_motion_oscillation_control.o: mwccarm src/game/actor_motion_oscillation_control.c | include/tingle/actor_motion.h include/tingle/types.h
   source = src/game/actor_motion_oscillation_control.c
@@ -10894,6 +10929,41 @@ build build/reports/sprite_effect_factory.txt: match_report build/reports/sprite
   report_json = build/reports/sprite_effect_factory.json
   report_args = --section .text --function func_020a4df0
 
+build build/reports/graphics_immediate_effect_renderer.json: objdiff build/decomp/delinks/src/graphics/graphics_immediate_effect_renderer.o | build/decomp/src/graphics/graphics_immediate_effect_renderer.o
+  target_object = build/decomp/delinks/src/graphics/graphics_immediate_effect_renderer.o
+  base_object = build/decomp/src/graphics/graphics_immediate_effect_renderer.o
+build build/reports/graphics_immediate_effect_renderer.txt: match_report build/reports/graphics_immediate_effect_renderer.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_immediate_effect_renderer.json
+  report_args = --section .text --function func_0209c3b4 --function func_0209c430 --function func_0209c614
+
+build build/reports/graphics_texture_palette_command.json: objdiff build/decomp/delinks/src/graphics/graphics_texture_palette_command.o | build/decomp/src/graphics/graphics_texture_palette_command.o
+  target_object = build/decomp/delinks/src/graphics/graphics_texture_palette_command.o
+  base_object = build/decomp/src/graphics/graphics_texture_palette_command.o
+build build/reports/graphics_texture_palette_command.txt: match_report build/reports/graphics_texture_palette_command.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_texture_palette_command.json
+  report_args = --section .text --function func_0209b454
+
+build build/reports/graphics_immediate_resource_bind.json: objdiff build/decomp/delinks/src/graphics/graphics_immediate_resource_bind.o | build/decomp/src/graphics/graphics_immediate_resource_bind.o
+  target_object = build/decomp/delinks/src/graphics/graphics_immediate_resource_bind.o
+  base_object = build/decomp/src/graphics/graphics_immediate_resource_bind.o
+build build/reports/graphics_immediate_resource_bind.txt: match_report build/reports/graphics_immediate_resource_bind.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_immediate_resource_bind.json
+  report_args = --section .text --function func_0209b494
+
+build build/reports/graphics_texcoord_command.json: objdiff build/decomp/delinks/src/graphics/graphics_texcoord_command.o | build/decomp/src/graphics/graphics_texcoord_command.o
+  target_object = build/decomp/delinks/src/graphics/graphics_texcoord_command.o
+  base_object = build/decomp/src/graphics/graphics_texcoord_command.o
+build build/reports/graphics_texcoord_command.txt: match_report build/reports/graphics_texcoord_command.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_texcoord_command.json
+  report_args = --section .text --function func_0209bcb0
+
+build build/reports/graphics_vertex16_command.json: objdiff build/decomp/delinks/src/graphics/graphics_vertex16_command.o | build/decomp/src/graphics/graphics_vertex16_command.o
+  target_object = build/decomp/delinks/src/graphics/graphics_vertex16_command.o
+  base_object = build/decomp/src/graphics/graphics_vertex16_command.o
+build build/reports/graphics_vertex16_command.txt: match_report build/reports/graphics_vertex16_command.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_vertex16_command.json
+  report_args = --section .text --function func_0209bce4
+
 build build/reports/actor_motion_oscillation_control.json: objdiff build/decomp/delinks/src/game/actor_motion_oscillation_control.o | build/decomp/src/game/actor_motion_oscillation_control.o
   target_object = build/decomp/delinks/src/game/actor_motion_oscillation_control.o
   base_object = build/decomp/src/game/actor_motion_oscillation_control.o
@@ -12527,7 +12597,7 @@ build actor_motion_angle: phony build/decomp/delinks/src/game/actor_motion_angle
 build actor_motion_actor_target: phony build/decomp/delinks/asm/game/actor_motion_actor_target.o build/decomp/asm/game/actor_motion_actor_target.o build/decomp/src/game/actor_motion_actor_target.o build/reports/actor_motion_actor_target.txt
 build actor_motion_extract_target: phony build/decomp/delinks/asm/game/actor_motion_extract_target.o build/decomp/asm/game/actor_motion_extract_target.o build/decomp/src/game/actor_motion_extract_target.o build/reports/actor_motion_extract_target.txt
 build actor_motion_oscillation_setup: phony build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o build/decomp/asm/game/actor_motion_oscillation_setup.o build/decomp/src/game/actor_motion_oscillation_setup.o build/decomp/delinks/src/game/actor_motion_oscillation_interval.o build/decomp/src/game/actor_motion_oscillation_interval.o build/reports/actor_motion_oscillation_setup.txt build/reports/actor_motion_oscillation_interval.txt
-build sprite_effect_manager_foundation: phony build/reports/sprite_effect_config.txt build/reports/sprite_effect_manager_slot.txt build/reports/sprite_effect_manager_controls.txt build/reports/sprite_effect_instance_construct.txt build/reports/sprite_effect_bounds_copy.txt build/reports/sprite_effect_particle_spawn.txt build/reports/sprite_effect_particle_update.txt build/reports/sprite_effect_particle_render.txt build/reports/sprite_effect_factory.txt
+build sprite_effect_manager_foundation: phony build/reports/sprite_effect_config.txt build/reports/sprite_effect_manager_slot.txt build/reports/sprite_effect_manager_controls.txt build/reports/sprite_effect_instance_construct.txt build/reports/sprite_effect_bounds_copy.txt build/reports/sprite_effect_particle_spawn.txt build/reports/sprite_effect_particle_update.txt build/reports/sprite_effect_particle_render.txt build/reports/sprite_effect_factory.txt build/reports/graphics_immediate_effect_renderer.txt build/reports/graphics_texture_palette_command.txt build/reports/graphics_immediate_resource_bind.txt build/reports/graphics_texcoord_command.txt build/reports/graphics_vertex16_command.txt
 build actor_motion_oscillation_control: phony build/decomp/delinks/src/game/actor_motion_oscillation_control.o build/decomp/src/game/actor_motion_oscillation_control.o build/reports/actor_motion_oscillation_control.txt
 build actor_motion_oscillation_sample: phony build/decomp/delinks/asm/game/actor_motion_oscillation_sample.o build/decomp/asm/game/actor_motion_oscillation_sample.o build/decomp/src/game/actor_motion_oscillation_sample.o build/reports/actor_motion_oscillation_sample.txt
 build actor_motion_jitter_lifecycle: phony build/decomp/delinks/src/game/actor_motion_jitter_lifecycle.o build/decomp/src/game/actor_motion_jitter_lifecycle.o build/reports/actor_motion_jitter_lifecycle.txt

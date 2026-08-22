@@ -10,8 +10,30 @@ extern void func_0209c430(void *context, const VecFx32Object *position,
                           const s32 *region, u16 color, s32 parameter);
 extern void func_0209c614(void *context, const VecFx32Object *position,
                           const VecFx32Object *scale, u16 angle,
-                          const s32 *bounds, u32 kind, u16 color,
+                          const s32 *triangles, u32 lastTriangle, u16 color,
                           s32 parameter);
+
+/* Six signed coordinates describe the three vertices of one triangle. */
+static const s32 sMode1Triangles[7][6] = {
+    {13, 0, 0, -2, 0, 2},
+    {-13, 0, 0, 2, 0, -2},
+    {7, 11, -2, 0, 2, 0},
+    {-7, 11, -2, 0, 2, 0},
+    {-7, -11, 2, 0, -2, 0},
+    {7, -11, 2, 0, -2, 0},
+    {0, -8, 2, 0, -2, 0},
+};
+
+static const s32 sMode9Triangles[3][6] = {
+    {-1, 1, -1, -1, 1, -1},
+    {1, -1, 1, 1, -1, 1},
+    {-4, -4, 4, 4, -8, -8},
+};
+
+static const s32 sMode10Triangles[2][6] = {
+    {0, 8, 0, -8, 1, 1},
+    {-1, 1, -1, -1, 1, -1},
+};
 
 /*
  * Submit every active particle through the retail sprite renderer. Modes
@@ -61,29 +83,26 @@ void func_020a3fc4(SpriteEffectInstance *effect)
         }
 
         if (mode == 1 || mode == 9 || mode == 10) {
-            s32 bounds[2];
-            u32 kind;
+            const s32 *triangles;
+            u32 lastTriangle;
             u16 color;
 
             if (mode == 1) {
-                bounds[0] = 13;
-                bounds[1] = 0;
-                kind = 6;
+                triangles = &sMode1Triangles[0][0];
+                lastTriangle = 6;
                 color = 0x7fff;
             } else if (mode == 9) {
-                bounds[0] = -1;
-                bounds[1] = 1;
-                kind = 2;
+                triangles = &sMode9Triangles[0][0];
+                lastTriangle = 2;
                 color = effect->alpha52;
             } else {
-                bounds[0] = 0;
-                bounds[1] = 8;
-                kind = 1;
+                triangles = &sMode10Triangles[0][0];
+                lastTriangle = 1;
                 color = 0x7fff;
             }
             func_0209c614(effect->owner00, &position, &scale,
-                          (u16)effect->state10[index], bounds, kind, color,
-                          (s16)effect->field50);
+                          (u16)effect->state10[index], triangles,
+                          lastTriangle, color, (s16)effect->field50);
         } else {
             s32 bounds[2];
             s32 region[4];
