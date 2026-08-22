@@ -7,6 +7,10 @@
  * sub display engine.
  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* Recovered no-op hook; it accepts no confirmed inputs and changes no state. */
 void DisplayControlElement_NoOp(void)
 {
@@ -62,3 +66,7 @@ void SubBg2_SetControl(u32 screenSize, u32 colorMode, u32 screenBaseBlock,
     *reg = (u16)((*reg & 0x43) | (screenSize << 14) | (colorMode << 7) |
                  (screenBaseBlock << 8) | (charBaseBlock << 2));
 }
+
+#ifdef __cplusplus
+}
+#endif

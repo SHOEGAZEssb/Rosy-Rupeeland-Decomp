@@ -8412,33 +8412,33 @@ build build/reports/rising_sprite_swarm_presentation_02020d74.txt: match_report 
   report_json = build/reports/rising_sprite_swarm_presentation_02020d74.json
   report_args = --section .text --function RisingSpriteControllerList_DestroyAndFree --require-exact
 build build/reports/rising_sprite_swarm_presentation.txt: phony build/reports/rising_sprite_swarm_presentation_02020794.txt build/reports/rising_sprite_swarm_presentation_020208a4.txt build/reports/rising_sprite_swarm_presentation_020208c4.txt build/reports/rising_sprite_swarm_presentation_020208e4.txt build/reports/rising_sprite_swarm_presentation_02020924.txt build/reports/rising_sprite_swarm_presentation_020209b8.txt build/reports/rising_sprite_swarm_presentation_02020a54.txt build/reports/rising_sprite_swarm_presentation_02020abc.txt build/reports/rising_sprite_swarm_presentation_02020c38.txt build/reports/rising_sprite_swarm_presentation_02020d48.txt build/reports/rising_sprite_swarm_presentation_02020d74.txt
-build build/reports/display_blend_control_02020d9c.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020d9c.o | build/decomp/asm/graphics/display_blend_control_02020d9c.o
+build build/reports/display_blend_control_02020d9c.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020d9c.o | build/decomp/src/graphics/display_blend_control.o
   target_object = build/decomp/delinks/asm/graphics/display_blend_control_02020d9c.o
-  base_object = build/decomp/asm/graphics/display_blend_control_02020d9c.o
+  base_object = build/decomp/src/graphics/display_blend_control.o
 build build/reports/display_blend_control_02020d9c.txt: match_report build/reports/display_blend_control_02020d9c.json | tools/report_objdiff.py
   report_json = build/reports/display_blend_control_02020d9c.json
   report_args = --section .text --function DisplayControlElement_NoOp --require-exact
-build build/reports/display_blend_control_02020da0.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020da0.o | build/decomp/asm/graphics/display_blend_control_02020da0.o
+build build/reports/display_blend_control_02020da0.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020da0.o | build/decomp/src/graphics/display_blend_control.o
   target_object = build/decomp/delinks/asm/graphics/display_blend_control_02020da0.o
-  base_object = build/decomp/asm/graphics/display_blend_control_02020da0.o
+  base_object = build/decomp/src/graphics/display_blend_control.o
 build build/reports/display_blend_control_02020da0.txt: match_report build/reports/display_blend_control_02020da0.json | tools/report_objdiff.py
   report_json = build/reports/display_blend_control_02020da0.json
   report_args = --section .text --function MainBg1_SetControl --require-exact
-build build/reports/display_blend_control_02020dd4.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020dd4.o | build/decomp/asm/graphics/display_blend_control_02020dd4.o
+build build/reports/display_blend_control_02020dd4.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020dd4.o | build/decomp/src/graphics/display_blend_control.o
   target_object = build/decomp/delinks/asm/graphics/display_blend_control_02020dd4.o
-  base_object = build/decomp/asm/graphics/display_blend_control_02020dd4.o
+  base_object = build/decomp/src/graphics/display_blend_control.o
 build build/reports/display_blend_control_02020dd4.txt: match_report build/reports/display_blend_control_02020dd4.json | tools/report_objdiff.py
   report_json = build/reports/display_blend_control_02020dd4.json
   report_args = --section .text --function MainBg2_SetControl --require-exact
-build build/reports/display_blend_control_02020e00.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020e00.o | build/decomp/asm/graphics/display_blend_control_02020e00.o
+build build/reports/display_blend_control_02020e00.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020e00.o | build/decomp/src/graphics/display_blend_control.o
   target_object = build/decomp/delinks/asm/graphics/display_blend_control_02020e00.o
-  base_object = build/decomp/asm/graphics/display_blend_control_02020e00.o
+  base_object = build/decomp/src/graphics/display_blend_control.o
 build build/reports/display_blend_control_02020e00.txt: match_report build/reports/display_blend_control_02020e00.json | tools/report_objdiff.py
   report_json = build/reports/display_blend_control_02020e00.json
   report_args = --section .text --function SubBg1_SetControl --require-exact
-build build/reports/display_blend_control_02020e34.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020e34.o | build/decomp/asm/graphics/display_blend_control_02020e34.o
+build build/reports/display_blend_control_02020e34.json: objdiff build/decomp/delinks/asm/graphics/display_blend_control_02020e34.o | build/decomp/src/graphics/display_blend_control.o
   target_object = build/decomp/delinks/asm/graphics/display_blend_control_02020e34.o
-  base_object = build/decomp/asm/graphics/display_blend_control_02020e34.o
+  base_object = build/decomp/src/graphics/display_blend_control.o
 build build/reports/display_blend_control_02020e34.txt: match_report build/reports/display_blend_control_02020e34.json | tools/report_objdiff.py
   report_json = build/reports/display_blend_control_02020e34.json
   report_args = --section .text --function SubBg2_SetControl --require-exact
