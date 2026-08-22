@@ -1,46 +1,48 @@
-#include "tingle/types.h"
+/* Scalar mutation helpers for occupied resident sprite-effect slots. */
 
-/* Scalar controls for occupied entries in the resident sprite-effect pool. */
+#include "tingle/sprite_effect.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Update the occupied slot's field at byte 0x46. */
-void func_020a3418(void *manager, s32 index, u16 value)
+void func_020a3418(SpriteEffectManager *manager, s32 index, u16 value)
 {
-    u8 *effect = (u8 *)*(void **)((u8 *)manager + 4 + index * 4);
+    u8 *effect = (u8 *)manager->slots04[index];
     if (effect != 0)
         *(u16 *)(effect + 0x46) = value;
 }
 
 /* Update the occupied slot's field at byte 0x56. */
-void func_020a342c(void *manager, s32 index, u16 value)
+void func_020a342c(SpriteEffectManager *manager, s32 index, u16 value)
 {
-    u8 *effect = (u8 *)*(void **)((u8 *)manager + 4 + index * 4);
+    u8 *effect = (u8 *)manager->slots04[index];
     if (effect != 0)
         *(u16 *)(effect + 0x56) = value;
 }
 
 /* Update the occupied slot's field at byte 0x58. */
-void func_020a3440(void *manager, s32 index, u16 value)
+void func_020a3440(SpriteEffectManager *manager, s32 index, u16 value)
 {
-    u8 *effect = (u8 *)*(void **)((u8 *)manager + 4 + index * 4);
+    u8 *effect = (u8 *)manager->slots04[index];
     if (effect != 0)
         *(u16 *)(effect + 0x58) = value;
 }
 
 /* Update the occupied slot's field at byte 0x50. */
-void func_020a3454(void *manager, s32 index, u16 value)
+void func_020a3454(SpriteEffectManager *manager, s32 index, u16 value)
 {
-    u8 *effect = (u8 *)*(void **)((u8 *)manager + 4 + index * 4);
+    u8 *effect = (u8 *)manager->slots04[index];
     if (effect != 0)
         *(u16 *)(effect + 0x50) = value;
 }
 
 /* Replace the occupied slot's paired Q12 bounds at bytes 0x3c and 0x40. */
-void func_020a3468(void *manager, s32 index, s32 first, s32 second)
+void func_020a3468(SpriteEffectManager *manager, s32 index, s32 first,
+                   s32 second)
 {
-    u8 *effect = (u8 *)*(void **)((u8 *)manager + 4 + index * 4);
+    u8 *effect = (u8 *)manager->slots04[index];
     if (effect != 0) {
         *(s32 *)(effect + 0x3c) = first;
         *(s32 *)(effect + 0x40) = second;

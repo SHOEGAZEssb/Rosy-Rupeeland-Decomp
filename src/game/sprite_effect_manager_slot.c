@@ -1,12 +1,7 @@
-#include "tingle/heap.h"
-#include "tingle/types.h"
+/* Owned-slot teardown for the resident 30-entry sprite-effect manager. */
 
-/* Destroy one entry in the resident 30-slot sprite-effect manager. */
-typedef struct SpriteEffectManager {
-    void *owner00;
-    void *slots04[30];
-    u32 field7c;
-} SpriteEffectManager;
+#include "tingle/heap.h"
+#include "tingle/sprite_effect.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,7 +11,7 @@ extern void *func_020a3790(void *effect);
 /* The manager owns non-null slots; empty slots are accepted unchanged. */
 void func_020a338c(SpriteEffectManager *manager, s32 index)
 {
-    void *effect = manager->slots04[index];
+    SpriteEffectInstance *effect = manager->slots04[index];
 
     if (effect == 0)
         return;

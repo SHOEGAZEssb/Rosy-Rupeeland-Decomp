@@ -65,6 +65,7 @@ actor_motion_oscillation_interval_cflags = -proc arm946e -O4 -inline off -ipa fu
 sprite_effect_config_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 sprite_effect_manager_slot_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 sprite_effect_manager_controls_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+sprite_effect_instance_construct_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 sprite_effect_bounds_copy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_sample_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -1103,25 +1104,31 @@ build build/decomp/src/game/actor_motion_oscillation_interval.o: mwccarm src/gam
 
 build build/decomp/delinks/src/game/actor_motion_oscillation_interval.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
-build build/decomp/src/game/sprite_effect_config.o: mwccarm src/game/sprite_effect_config.c | include/tingle/types.h
+build build/decomp/src/game/sprite_effect_config.o: mwccarm src/game/sprite_effect_config.c | include/tingle/sprite_effect.h include/tingle/types.h
   source = src/game/sprite_effect_config.c
   cflags = $sprite_effect_config_cflags
 
 build build/decomp/delinks/src/game/sprite_effect_config.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
-build build/decomp/src/game/sprite_effect_manager_slot.o: mwccarm src/game/sprite_effect_manager_slot.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/sprite_effect_manager_slot.o: mwccarm src/game/sprite_effect_manager_slot.c | include/tingle/heap.h include/tingle/sprite_effect.h include/tingle/types.h
   source = src/game/sprite_effect_manager_slot.c
   cflags = $sprite_effect_manager_slot_cflags
 
 build build/decomp/delinks/src/game/sprite_effect_manager_slot.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
-build build/decomp/src/game/sprite_effect_manager_controls.o: mwccarm src/game/sprite_effect_manager_controls.c | include/tingle/types.h
+build build/decomp/src/game/sprite_effect_manager_controls.o: mwccarm src/game/sprite_effect_manager_controls.c | include/tingle/sprite_effect.h include/tingle/types.h
   source = src/game/sprite_effect_manager_controls.c
   cflags = $sprite_effect_manager_controls_cflags
 
 build build/decomp/delinks/src/game/sprite_effect_manager_controls.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
-build build/decomp/src/game/sprite_effect_bounds_copy.o: mwccarm src/game/sprite_effect_bounds_copy.c | include/tingle/types.h
+build build/decomp/src/game/sprite_effect_instance_construct.o: mwccarm src/game/sprite_effect_instance_construct.c | include/tingle/heap.h include/tingle/sprite_effect.h include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/game/sprite_effect_instance_construct.c
+  cflags = $sprite_effect_instance_construct_cflags
+
+build build/decomp/delinks/src/game/sprite_effect_instance_construct.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/game/sprite_effect_bounds_copy.o: mwccarm src/game/sprite_effect_bounds_copy.c | include/tingle/sprite_effect.h include/tingle/types.h
   source = src/game/sprite_effect_bounds_copy.c
   cflags = $sprite_effect_bounds_copy_cflags
 
@@ -10817,6 +10824,13 @@ build build/reports/sprite_effect_manager_controls.txt: match_report build/repor
   report_json = build/reports/sprite_effect_manager_controls.json
   report_args = --section .text --function func_020a3418 --function func_020a342c --function func_020a3440 --function func_020a3454 --function func_020a3468 --require-exact
 
+build build/reports/sprite_effect_instance_construct.json: objdiff build/decomp/delinks/src/game/sprite_effect_instance_construct.o | build/decomp/src/game/sprite_effect_instance_construct.o
+  target_object = build/decomp/delinks/src/game/sprite_effect_instance_construct.o
+  base_object = build/decomp/src/game/sprite_effect_instance_construct.o
+build build/reports/sprite_effect_instance_construct.txt: match_report build/reports/sprite_effect_instance_construct.json | tools/report_objdiff.py
+  report_json = build/reports/sprite_effect_instance_construct.json
+  report_args = --section .text --function func_020a3480
+
 build build/reports/sprite_effect_bounds_copy.json: objdiff build/decomp/delinks/src/game/sprite_effect_bounds_copy.o | build/decomp/src/game/sprite_effect_bounds_copy.o
   target_object = build/decomp/delinks/src/game/sprite_effect_bounds_copy.o
   base_object = build/decomp/src/game/sprite_effect_bounds_copy.o
@@ -12457,7 +12471,7 @@ build actor_motion_angle: phony build/decomp/delinks/src/game/actor_motion_angle
 build actor_motion_actor_target: phony build/decomp/delinks/asm/game/actor_motion_actor_target.o build/decomp/asm/game/actor_motion_actor_target.o build/decomp/src/game/actor_motion_actor_target.o build/reports/actor_motion_actor_target.txt
 build actor_motion_extract_target: phony build/decomp/delinks/asm/game/actor_motion_extract_target.o build/decomp/asm/game/actor_motion_extract_target.o build/decomp/src/game/actor_motion_extract_target.o build/reports/actor_motion_extract_target.txt
 build actor_motion_oscillation_setup: phony build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o build/decomp/asm/game/actor_motion_oscillation_setup.o build/decomp/src/game/actor_motion_oscillation_setup.o build/decomp/delinks/src/game/actor_motion_oscillation_interval.o build/decomp/src/game/actor_motion_oscillation_interval.o build/reports/actor_motion_oscillation_setup.txt build/reports/actor_motion_oscillation_interval.txt
-build sprite_effect_manager_foundation: phony build/reports/sprite_effect_config.txt build/reports/sprite_effect_manager_slot.txt build/reports/sprite_effect_manager_controls.txt build/reports/sprite_effect_bounds_copy.txt
+build sprite_effect_manager_foundation: phony build/reports/sprite_effect_config.txt build/reports/sprite_effect_manager_slot.txt build/reports/sprite_effect_manager_controls.txt build/reports/sprite_effect_instance_construct.txt build/reports/sprite_effect_bounds_copy.txt
 build actor_motion_oscillation_control: phony build/decomp/delinks/src/game/actor_motion_oscillation_control.o build/decomp/src/game/actor_motion_oscillation_control.o build/reports/actor_motion_oscillation_control.txt
 build actor_motion_oscillation_sample: phony build/decomp/delinks/asm/game/actor_motion_oscillation_sample.o build/decomp/asm/game/actor_motion_oscillation_sample.o build/decomp/src/game/actor_motion_oscillation_sample.o build/reports/actor_motion_oscillation_sample.txt
 build actor_motion_jitter_lifecycle: phony build/decomp/delinks/src/game/actor_motion_jitter_lifecycle.o build/decomp/src/game/actor_motion_jitter_lifecycle.o build/reports/actor_motion_jitter_lifecycle.txt

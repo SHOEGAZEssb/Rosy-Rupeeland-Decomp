@@ -1,37 +1,6 @@
-#include "tingle/types.h"
+/* Default configuration state for resident sprite effects. */
 
-/* Caller-owned configuration used to construct one resident sprite effect. */
-typedef struct SpriteEffectConfig {
-    s16 mode00;
-    u16 count02;
-    s32 bounds04[4];
-    s32 velocity14;
-    s32 velocity18;
-    u32 descriptor1c;
-    s32 acceleration20;
-    s16 angle24;
-    s16 angleRange26;
-    s16 lifetime28;
-    s16 lifetimeRange2a;
-    s16 start2c;
-    s16 startRange2e;
-    s16 scale30;
-    s16 scaleRange32;
-    u16 flags34;
-    u16 color36;
-    u16 field38;
-    u16 field3a;
-    u16 alpha3c;
-    u16 initialCount3e;
-    u8 distribution40;
-    u8 animation41;
-    u8 tiles42;
-    u8 palettes43;
-} SpriteEffectConfig;
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "tingle/sprite_effect.h"
 
 /* Fill a caller-owned configuration with the retail defaults. */
 void func_020a32e0(SpriteEffectConfig *config)
@@ -61,7 +30,3 @@ void func_020a32e0(SpriteEffectConfig *config)
     config->field3a = 0;
     config->alpha3c = 0x7fff;
 }
-
-#ifdef __cplusplus
-}
-#endif

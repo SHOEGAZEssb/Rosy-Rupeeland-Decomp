@@ -1,4 +1,6 @@
-#include "tingle/types.h"
+/* Fixed-size bounds transfer used by resident sprite effects. */
+
+#include "tingle/sprite_effect.h"
 
 #ifdef __cplusplus
 extern "C" {
