@@ -67,6 +67,7 @@ sprite_effect_manager_slot_cflags = -proc arm946e -O4 -inline off -ipa function 
 sprite_effect_manager_controls_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 sprite_effect_instance_construct_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 sprite_effect_bounds_copy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+sprite_effect_particle_spawn_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_control_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_oscillation_sample_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 actor_motion_jitter_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -1133,6 +1134,12 @@ build build/decomp/src/game/sprite_effect_bounds_copy.o: mwccarm src/game/sprite
   cflags = $sprite_effect_bounds_copy_cflags
 
 build build/decomp/delinks/src/game/sprite_effect_bounds_copy.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
+
+build build/decomp/src/game/sprite_effect_particle_spawn.o: mwccarm src/game/sprite_effect_particle_spawn.c | include/tingle/random.h include/tingle/sprite_effect.h include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/game/sprite_effect_particle_spawn.c
+  cflags = $sprite_effect_particle_spawn_cflags
+
+build build/decomp/delinks/src/game/sprite_effect_particle_spawn.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt | build/rom/arm9/arm9.bin
 
 build build/decomp/src/game/actor_motion_oscillation_control.o: mwccarm src/game/actor_motion_oscillation_control.c | include/tingle/actor_motion.h include/tingle/types.h
   source = src/game/actor_motion_oscillation_control.c
@@ -10838,6 +10845,13 @@ build build/reports/sprite_effect_bounds_copy.txt: match_report build/reports/sp
   report_json = build/reports/sprite_effect_bounds_copy.json
   report_args = --section .text --function func_020a376c --require-exact
 
+build build/reports/sprite_effect_particle_spawn.json: objdiff build/decomp/delinks/src/game/sprite_effect_particle_spawn.o | build/decomp/src/game/sprite_effect_particle_spawn.o
+  target_object = build/decomp/delinks/src/game/sprite_effect_particle_spawn.o
+  base_object = build/decomp/src/game/sprite_effect_particle_spawn.o
+build build/reports/sprite_effect_particle_spawn.txt: match_report build/reports/sprite_effect_particle_spawn.json | tools/report_objdiff.py
+  report_json = build/reports/sprite_effect_particle_spawn.json
+  report_args = --section .text --function func_020a3804
+
 build build/reports/actor_motion_oscillation_control.json: objdiff build/decomp/delinks/src/game/actor_motion_oscillation_control.o | build/decomp/src/game/actor_motion_oscillation_control.o
   target_object = build/decomp/delinks/src/game/actor_motion_oscillation_control.o
   base_object = build/decomp/src/game/actor_motion_oscillation_control.o
@@ -12471,7 +12485,7 @@ build actor_motion_angle: phony build/decomp/delinks/src/game/actor_motion_angle
 build actor_motion_actor_target: phony build/decomp/delinks/asm/game/actor_motion_actor_target.o build/decomp/asm/game/actor_motion_actor_target.o build/decomp/src/game/actor_motion_actor_target.o build/reports/actor_motion_actor_target.txt
 build actor_motion_extract_target: phony build/decomp/delinks/asm/game/actor_motion_extract_target.o build/decomp/asm/game/actor_motion_extract_target.o build/decomp/src/game/actor_motion_extract_target.o build/reports/actor_motion_extract_target.txt
 build actor_motion_oscillation_setup: phony build/decomp/delinks/asm/game/actor_motion_oscillation_setup.o build/decomp/asm/game/actor_motion_oscillation_setup.o build/decomp/src/game/actor_motion_oscillation_setup.o build/decomp/delinks/src/game/actor_motion_oscillation_interval.o build/decomp/src/game/actor_motion_oscillation_interval.o build/reports/actor_motion_oscillation_setup.txt build/reports/actor_motion_oscillation_interval.txt
-build sprite_effect_manager_foundation: phony build/reports/sprite_effect_config.txt build/reports/sprite_effect_manager_slot.txt build/reports/sprite_effect_manager_controls.txt build/reports/sprite_effect_instance_construct.txt build/reports/sprite_effect_bounds_copy.txt
+build sprite_effect_manager_foundation: phony build/reports/sprite_effect_config.txt build/reports/sprite_effect_manager_slot.txt build/reports/sprite_effect_manager_controls.txt build/reports/sprite_effect_instance_construct.txt build/reports/sprite_effect_bounds_copy.txt build/reports/sprite_effect_particle_spawn.txt
 build actor_motion_oscillation_control: phony build/decomp/delinks/src/game/actor_motion_oscillation_control.o build/decomp/src/game/actor_motion_oscillation_control.o build/reports/actor_motion_oscillation_control.txt
 build actor_motion_oscillation_sample: phony build/decomp/delinks/asm/game/actor_motion_oscillation_sample.o build/decomp/asm/game/actor_motion_oscillation_sample.o build/decomp/src/game/actor_motion_oscillation_sample.o build/reports/actor_motion_oscillation_sample.txt
 build actor_motion_jitter_lifecycle: phony build/decomp/delinks/src/game/actor_motion_jitter_lifecycle.o build/decomp/src/game/actor_motion_jitter_lifecycle.o build/reports/actor_motion_jitter_lifecycle.txt

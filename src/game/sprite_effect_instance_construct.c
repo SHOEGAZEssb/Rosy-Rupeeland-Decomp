@@ -19,8 +19,6 @@ extern "C" {
 extern void *func_020c09cc(void *allocation, u32 count, u32 elementSize,
                            u32 headerSize, void *constructor,
                            void *destructor);
-extern void func_020a3804(SpriteEffectInstance *effect, u32 count);
-
 SpriteEffectInstance *func_020a3480(SpriteEffectInstance *effect, void *owner,
                                     const SpriteEffectConfig *config)
 {
