@@ -113,6 +113,7 @@ SpriteEffectInstance *func_020a3480(SpriteEffectInstance *effect, void *owner,
 void *func_020a376c(void *destination, const void *source);
 void func_020a3804(SpriteEffectInstance *effect, u32 count);
 s32 func_020a3c78(SpriteEffectInstance *effect);
+void func_020a3fc4(SpriteEffectInstance *effect);
 
 #ifdef __cplusplus
 }
