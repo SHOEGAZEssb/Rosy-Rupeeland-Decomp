@@ -174,9 +174,9 @@ build build/reports/overlay055_resource_submit.txt: match_report build/reports/o
 build build/decomp/asm/overlays/ov055/overlay055_noop_10.o: mwasmarm asm/overlays/ov055/overlay055_noop_10.s
 build build/decomp/delinks/asm/overlays/ov055/overlay055_noop_10.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov055/delinks.txt config/arm9/overlays/ov055/symbols.txt config/arm9/overlays/ov055/relocs.txt
   object = asm/overlays/ov055/overlay055_noop_10.s
-build build/reports/overlay055_noop_10.json: objdiff build/decomp/asm/overlays/ov055/overlay055_noop_10.o build/decomp/delinks/asm/overlays/ov055/overlay055_noop_10.o
-  target_object = build/decomp/asm/overlays/ov055/overlay055_noop_10.o
-  base_object = build/decomp/delinks/asm/overlays/ov055/overlay055_noop_10.o
+build build/reports/overlay055_noop_10.json: objdiff build/decomp/delinks/asm/overlays/ov055/overlay055_noop_10.o build/decomp/src/overlays/ov055/overlay055_recovery.o
+  target_object = build/decomp/delinks/asm/overlays/ov055/overlay055_noop_10.o
+  base_object = build/decomp/src/overlays/ov055/overlay055_recovery.o
 build build/reports/overlay055_noop_10.txt: match_report build/reports/overlay055_noop_10.json | tools/report_objdiff.py
   report_json = build/reports/overlay055_noop_10.json
   report_args = --section .text --function func_ov055_0220f010 --require-exact
@@ -184,9 +184,9 @@ build build/reports/overlay055_noop_10.txt: match_report build/reports/overlay05
 build build/decomp/asm/overlays/ov055/overlay055_noop_14.o: mwasmarm asm/overlays/ov055/overlay055_noop_14.s
 build build/decomp/delinks/asm/overlays/ov055/overlay055_noop_14.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov055/delinks.txt config/arm9/overlays/ov055/symbols.txt config/arm9/overlays/ov055/relocs.txt
   object = asm/overlays/ov055/overlay055_noop_14.s
-build build/reports/overlay055_noop_14.json: objdiff build/decomp/asm/overlays/ov055/overlay055_noop_14.o build/decomp/delinks/asm/overlays/ov055/overlay055_noop_14.o
-  target_object = build/decomp/asm/overlays/ov055/overlay055_noop_14.o
-  base_object = build/decomp/delinks/asm/overlays/ov055/overlay055_noop_14.o
+build build/reports/overlay055_noop_14.json: objdiff build/decomp/delinks/asm/overlays/ov055/overlay055_noop_14.o build/decomp/src/overlays/ov055/overlay055_recovery.o
+  target_object = build/decomp/delinks/asm/overlays/ov055/overlay055_noop_14.o
+  base_object = build/decomp/src/overlays/ov055/overlay055_recovery.o
 build build/reports/overlay055_noop_14.txt: match_report build/reports/overlay055_noop_14.json | tools/report_objdiff.py
   report_json = build/reports/overlay055_noop_14.json
   report_args = --section .text --function func_ov055_0220f014 --require-exact
@@ -194,9 +194,9 @@ build build/reports/overlay055_noop_14.txt: match_report build/reports/overlay05
 build build/decomp/asm/overlays/ov055/overlay055_noop_18.o: mwasmarm asm/overlays/ov055/overlay055_noop_18.s
 build build/decomp/delinks/asm/overlays/ov055/overlay055_noop_18.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov055/delinks.txt config/arm9/overlays/ov055/symbols.txt config/arm9/overlays/ov055/relocs.txt
   object = asm/overlays/ov055/overlay055_noop_18.s
-build build/reports/overlay055_noop_18.json: objdiff build/decomp/asm/overlays/ov055/overlay055_noop_18.o build/decomp/delinks/asm/overlays/ov055/overlay055_noop_18.o
-  target_object = build/decomp/asm/overlays/ov055/overlay055_noop_18.o
-  base_object = build/decomp/delinks/asm/overlays/ov055/overlay055_noop_18.o
+build build/reports/overlay055_noop_18.json: objdiff build/decomp/delinks/asm/overlays/ov055/overlay055_noop_18.o build/decomp/src/overlays/ov055/overlay055_recovery.o
+  target_object = build/decomp/delinks/asm/overlays/ov055/overlay055_noop_18.o
+  base_object = build/decomp/src/overlays/ov055/overlay055_recovery.o
 build build/reports/overlay055_noop_18.txt: match_report build/reports/overlay055_noop_18.json | tools/report_objdiff.py
   report_json = build/reports/overlay055_noop_18.json
   report_args = --section .text --function func_ov055_0220f018 --require-exact
