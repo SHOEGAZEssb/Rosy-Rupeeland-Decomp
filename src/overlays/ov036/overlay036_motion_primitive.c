@@ -98,11 +98,11 @@ extern "C" s32 func_ov036_021fd31c(void *object)
             s32 vz = FIELD(s32, object, 0xac);
             Presentation_SetPosition(object,
                           FIELD(s32, object, 0x10) +
-                              (vx + ((u32)(vx >> 7) >> 24) >> 8),
+                              ((vx + ((u32)(vx >> 7) >> 24)) >> 8),
                           FIELD(s32, object, 0x20) +
-                              (vy + ((u32)(vy >> 7) >> 24) >> 8),
+                              ((vy + ((u32)(vy >> 7) >> 24)) >> 8),
                           FIELD(s32, object, 0x30) +
-                              (vz + ((u32)(vz >> 7) >> 24) >> 8));
+                              ((vz + ((u32)(vz >> 7) >> 24)) >> 8));
             FIELD(s32, object, 0xa4) = decay_component(vx);
             FIELD(s32, object, 0xa8) = decay_component(vy) +
                                       FIELD(s32, object, 0xb0);

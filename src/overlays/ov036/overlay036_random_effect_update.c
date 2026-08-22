@@ -107,7 +107,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
         }
         break;
 
-    case 3:
+    case 3: {
         if (Presentation_AdvanceTransitions(object)) {
             void *handle = FIELD(void *, object, 0xcc);
             if (handle != 0) {
@@ -162,6 +162,7 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
             PresentationList_Append((u8 *)object + 0x9c, particle);
         }
         break;
+    }
 
     case 4:
         if (Presentation_AdvanceTransitions(object)) {

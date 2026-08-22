@@ -10,7 +10,7 @@ typedef struct Overlay004VariantController {
     const void *vtable_000;
     u8 field_004[0x1c];
     u32 field_020_0_9 : 10;
-    s32 applyDisplayMode_020_10 : 1;
+    u32 applyDisplayMode_020_10 : 1;
     u32 field_020_11_31 : 21;
     u8 field_024[0x30];
     void *helper_054;
@@ -46,7 +46,7 @@ extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
  * shared GamePhaseProgress_GetOrCreateGlobal context; values above 10 use null for both resources.
  * Allocate 0x7C4 bytes tagged by data_ov004_021fcddc with alignment 4 and, on
  * success, construct an overlay-26 helper in that memory. Store the resulting
- * helper (or null) at +0x54, set the signed display-update flag at +0x20 bit
+ * helper (or null) at +0x54, set the display-update flag at +0x20 bit
  * 10, apply the coordinate pair at data_ov004_021fcd48, and return state.
  * Allocation and resource ownership remain with their respective callees; no
  * direct hardware access occurs here.

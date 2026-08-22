@@ -44,7 +44,13 @@ extern "C" void func_ov036_02202628(void *controller)
 {
     s32 index = FIELD(s32, controller, 0x15c);
     s32 variant = *(const s32 *)(data_ov036_022054e0 + index * 0x10);
+#ifdef MATCHING
     void *handle;
+#else
+    /* Retail tables only contain variants zero and one. Keep malformed host
+     * data from exposing an indeterminate pointer at this data boundary. */
+    void *handle = 0;
+#endif
     if (variant == 0) {
         handle = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, controller, 0xf8),
                                (u8 *)controller + 0xdc);
