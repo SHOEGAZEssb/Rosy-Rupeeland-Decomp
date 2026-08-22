@@ -17,7 +17,18 @@
 #define TITLE_STATE(self) FIELD(u8, self, 0x1ec)
 #define TITLE_TIMER(self) FIELD(u16, self, 0x1f0)
 #define TITLE_PARTICIPANT(self, index) FIELD(void *, self, 0x1f4 + (index) * 4)
-#define TITLE_SPRITE(self) FIELD(void *, self, 0x200)
+#define TITLE_SPRITE(self) FIELD(GraphicsSpriteState *, self, 0x200)
+
+/*
+ * Retail C uses an empty parameter list for calls whose types have not yet
+ * been recovered. The host wrapper compiles this unit as C++, where the same
+ * spelling incorrectly means that the function accepts no arguments.
+ */
+#ifdef __cplusplus
+#define UNKNOWN_PARAMETERS ...
+#else
+#define UNKNOWN_PARAMETERS
+#endif
 
 typedef void (*TitleActorModeMethod)(void *actor, s32 mode);
 typedef void (*TitleActorNoArgMethod)(void);
@@ -32,43 +43,43 @@ extern const char data_ov090_0221cc08[];
 extern const char data_ov090_0221cc10[];
 extern DisplayBrightnessPair gDisplayBrightnessPair;
 
-extern void GX_HBlankIntr();
-extern void GX_VBlankIntr();
-extern void *func_0201e0ec();
-extern void func_020349b8();
-extern void func_0204d308();
-extern void Sound_StopAllDirectSequences();
-extern void Sound_PlayDirectSequence();
-extern void func_020593ac();
-extern void func_0205940c();
-extern void func_02059484();
-extern void func_0205958c();
-extern void func_0209a748();
-extern void func_020a2844();
-extern void func_020a28e0();
-extern void func_020a29ac();
-extern void func_020a63d0();
-extern void func_020a6404();
-extern void func_020a6548();
-extern void func_020a68fc();
+extern void GX_HBlankIntr(UNKNOWN_PARAMETERS);
+extern void GX_VBlankIntr(UNKNOWN_PARAMETERS);
+extern void *func_0201e0ec(UNKNOWN_PARAMETERS);
+extern void func_020349b8(UNKNOWN_PARAMETERS);
+extern void func_0204d308(UNKNOWN_PARAMETERS);
+extern void Sound_StopAllDirectSequences(UNKNOWN_PARAMETERS);
+extern void Sound_PlayDirectSequence(UNKNOWN_PARAMETERS);
+extern void func_020593ac(UNKNOWN_PARAMETERS);
+extern void func_0205940c(UNKNOWN_PARAMETERS);
+extern void func_02059484(UNKNOWN_PARAMETERS);
+extern void func_0205958c(UNKNOWN_PARAMETERS);
+extern void func_0209a748(UNKNOWN_PARAMETERS);
+extern void func_020a2844(UNKNOWN_PARAMETERS);
+extern void func_020a28e0(UNKNOWN_PARAMETERS);
+extern void func_020a29ac(UNKNOWN_PARAMETERS);
+extern void func_020a63d0(UNKNOWN_PARAMETERS);
+extern void func_020a6404(UNKNOWN_PARAMETERS);
+extern void func_020a6548(UNKNOWN_PARAMETERS);
+extern void func_020a68fc(UNKNOWN_PARAMETERS);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern u64 func_020bf1f8(u32 value, u32 divisor);
-extern void func_ov060_0220fd54();
-extern void func_ov063_02210314();
-extern void func_ov077_02215444();
-extern void func_ov090_0221a3cc();
-extern void func_ov090_0221a3dc();
-extern void func_ov090_0221a420();
-extern void func_ov090_0221a460();
-extern void func_ov090_0221a498();
-extern void func_ov090_0221a8bc();
-extern u32 func_ov090_0221aab8();
-extern void func_ov090_0221ab4c();
-extern void func_ov090_0221ad64();
-extern void func_ov090_0221ae1c();
-extern void func_ov090_0221b280();
-extern void func_ov090_0221b428();
-extern void func_ov090_0221b7f8();
+extern void func_ov060_0220fd54(UNKNOWN_PARAMETERS);
+extern void func_ov063_02210314(UNKNOWN_PARAMETERS);
+extern void func_ov077_02215444(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221a3cc(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221a3dc(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221a420(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221a460(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221a498(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221a8bc(UNKNOWN_PARAMETERS);
+extern u32 func_ov090_0221aab8(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221ab4c(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221ad64(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221ae1c(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221b280(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221b428(UNKNOWN_PARAMETERS);
+extern void func_ov090_0221b7f8(UNKNOWN_PARAMETERS);
 extern u32 genrand_int32(void);
 extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 record);
@@ -364,12 +375,13 @@ void func_ov090_02217d70(void *self)
             GX_VBlankIntr(0);
             GX_HBlankIntr(0);
             func_ov063_02210314(scene);
-            Scene_ClearFlag02(scene);
+            Scene_ClearFlag02((Scene *)scene);
             GX_VBlankIntr(1);
             GX_HBlankIntr(1);
             FIELD(s32, gDebugFont, 0x38) = 0;
             GraphicsSpriteRenderer_SetTextGridPosition(
-                FIELD(void *, data_020f4e14, 0), 0, 0xaa);
+                (GraphicsSpriteRenderer *)FIELD(void *, data_020f4e14, 0), 0,
+                0xaa);
             for (i = 0; i < 3; i++)
                 FIELD(u16, TITLE_PARTICIPANT(self, i), 0x2f2) |= 2;
             for (i = 0; i < 3; i++) {
