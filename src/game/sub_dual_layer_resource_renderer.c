@@ -45,9 +45,6 @@ extern void func_02070eac(void *resource, s32 background, s32 value);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void MIi_CpuCopy16(const void *source, void *destination, u32 size);
 void SubDualLayerResourceRenderer_LoadBgResources(SubDualLayerResourceRenderer *self);
-#ifdef __cplusplus
-}
-#endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
 SubDualLayerResourceRenderer *SubDualLayerResourceRenderer_Init(SubDualLayerResourceRenderer *self)
@@ -157,3 +154,7 @@ void SubDualLayerResourceRenderer_SetVisible(SubDualLayerResourceRenderer *self,
         planes &= ~3u;
     *dispcnt = (*dispcnt & ~0x1f00u) | (planes << 8);
 }
+
+#ifdef __cplusplus
+}
+#endif

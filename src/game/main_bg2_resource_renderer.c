@@ -26,9 +26,6 @@ extern void func_02070638(void *, s32, s32);
 extern void func_02070e0c(void *, s32, s32);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *);
 void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *);
-#ifdef __cplusplus
-}
-#endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
 MainBg0ResourceRenderer *MainBg0ResourceRenderer_Init(MainBg0ResourceRenderer *self)
@@ -99,3 +96,7 @@ void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *self)
     GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);
 }
+
+#ifdef __cplusplus
+}
+#endif

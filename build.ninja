@@ -13276,27 +13276,27 @@ build build/reports/sub_dual_layer_resource_renderer_0202bc18.json: objdiff buil
 build build/reports/sub_dual_layer_resource_renderer_0202bc18.txt: match_report build/reports/sub_dual_layer_resource_renderer_0202bc18.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_0202bc18.json
   report_args = --section .text --function SubDualLayerResourceRenderer_Init --require-exact
-build build/reports/sub_dual_layer_resource_renderer_0202bc38.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc38.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc38.o
+build build/reports/sub_dual_layer_resource_renderer_0202bc38.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc38.o | build/decomp/src/game/sub_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc38.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc38.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer.o
 build build/reports/sub_dual_layer_resource_renderer_0202bc38.txt: match_report build/reports/sub_dual_layer_resource_renderer_0202bc38.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_0202bc38.json
   report_args = --section .text --function SubDualLayerResourceRenderer_DestroyComplete --require-exact
-build build/reports/sub_dual_layer_resource_renderer_0202bc4c.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc4c.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc4c.o
+build build/reports/sub_dual_layer_resource_renderer_0202bc4c.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc4c.o | build/decomp/src/game/sub_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc4c.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc4c.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer.o
 build build/reports/sub_dual_layer_resource_renderer_0202bc4c.txt: match_report build/reports/sub_dual_layer_resource_renderer_0202bc4c.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_0202bc4c.json
   report_args = --section .text --function SubDualLayerResourceRenderer_DestroyAndFree --require-exact
-build build/reports/sub_dual_layer_resource_renderer_0202bc68.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc68.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc68.o
+build build/reports/sub_dual_layer_resource_renderer_0202bc68.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc68.o | build/decomp/src/game/sub_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc68.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc68.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer.o
 build build/reports/sub_dual_layer_resource_renderer_0202bc68.txt: match_report build/reports/sub_dual_layer_resource_renderer_0202bc68.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_0202bc68.json
   report_args = --section .text --function SubDualLayerResourceRenderer_ActivatePrimary --require-exact
-build build/reports/sub_dual_layer_resource_renderer_0202bc80.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc80.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc80.o
+build build/reports/sub_dual_layer_resource_renderer_0202bc80.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc80.o | build/decomp/src/game/sub_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_0202bc80.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_0202bc80.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer.o
 build build/reports/sub_dual_layer_resource_renderer_0202bc80.txt: match_report build/reports/sub_dual_layer_resource_renderer_0202bc80.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_0202bc80.json
   report_args = --section .text --function SubDualLayerResourceRenderer_ActivateSecondary --require-exact
@@ -13339,27 +13339,27 @@ build build/reports/main_dual_layer_resource_renderer_0202becc.json: objdiff bui
 build build/reports/main_dual_layer_resource_renderer_0202becc.txt: match_report build/reports/main_dual_layer_resource_renderer_0202becc.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_0202becc.json
   report_args = --section .text --function MainDualLayerResourceRenderer_Init --require-exact
-build build/reports/main_dual_layer_resource_renderer_0202beec.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202beec.o | build/decomp/asm/game/main_dual_layer_resource_renderer_0202beec.o
+build build/reports/main_dual_layer_resource_renderer_0202beec.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202beec.o | build/decomp/src/game/main_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202beec.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_0202beec.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer.o
 build build/reports/main_dual_layer_resource_renderer_0202beec.txt: match_report build/reports/main_dual_layer_resource_renderer_0202beec.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_0202beec.json
   report_args = --section .text --function MainDualLayerResourceRenderer_DestroyComplete --require-exact
-build build/reports/main_dual_layer_resource_renderer_0202bf00.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf00.o | build/decomp/asm/game/main_dual_layer_resource_renderer_0202bf00.o
+build build/reports/main_dual_layer_resource_renderer_0202bf00.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf00.o | build/decomp/src/game/main_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf00.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_0202bf00.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer.o
 build build/reports/main_dual_layer_resource_renderer_0202bf00.txt: match_report build/reports/main_dual_layer_resource_renderer_0202bf00.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_0202bf00.json
   report_args = --section .text --function MainDualLayerResourceRenderer_DestroyAndFree --require-exact
-build build/reports/main_dual_layer_resource_renderer_0202bf1c.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf1c.o | build/decomp/asm/game/main_dual_layer_resource_renderer_0202bf1c.o
+build build/reports/main_dual_layer_resource_renderer_0202bf1c.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf1c.o | build/decomp/src/game/main_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf1c.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_0202bf1c.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer.o
 build build/reports/main_dual_layer_resource_renderer_0202bf1c.txt: match_report build/reports/main_dual_layer_resource_renderer_0202bf1c.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_0202bf1c.json
   report_args = --section .text --function MainDualLayerResourceRenderer_ActivatePrimary --require-exact
-build build/reports/main_dual_layer_resource_renderer_0202bf34.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf34.o | build/decomp/asm/game/main_dual_layer_resource_renderer_0202bf34.o
+build build/reports/main_dual_layer_resource_renderer_0202bf34.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf34.o | build/decomp/src/game/main_dual_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_0202bf34.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_0202bf34.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer.o
 build build/reports/main_dual_layer_resource_renderer_0202bf34.txt: match_report build/reports/main_dual_layer_resource_renderer_0202bf34.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_0202bf34.json
   report_args = --section .text --function MainDualLayerResourceRenderer_ActivateSecondary --require-exact
@@ -13396,27 +13396,27 @@ build build/reports/sub_dual_layer_resource_renderer_alt_0202c0b8.json: objdiff 
 build build/reports/sub_dual_layer_resource_renderer_alt_0202c0b8.txt: match_report build/reports/sub_dual_layer_resource_renderer_alt_0202c0b8.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_alt_0202c0b8.json
   report_args = --section .text --function SubDualLayerResourceRendererAlt_Init --require-exact
-build build/reports/sub_dual_layer_resource_renderer_alt_0202c0d8.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c0d8.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c0d8.o
+build build/reports/sub_dual_layer_resource_renderer_alt_0202c0d8.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c0d8.o | build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c0d8.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c0d8.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
 build build/reports/sub_dual_layer_resource_renderer_alt_0202c0d8.txt: match_report build/reports/sub_dual_layer_resource_renderer_alt_0202c0d8.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_alt_0202c0d8.json
   report_args = --section .text --function SubDualLayerResourceRendererAlt_DestroyComplete --require-exact
-build build/reports/sub_dual_layer_resource_renderer_alt_0202c0ec.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c0ec.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c0ec.o
+build build/reports/sub_dual_layer_resource_renderer_alt_0202c0ec.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c0ec.o | build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c0ec.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c0ec.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
 build build/reports/sub_dual_layer_resource_renderer_alt_0202c0ec.txt: match_report build/reports/sub_dual_layer_resource_renderer_alt_0202c0ec.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_alt_0202c0ec.json
   report_args = --section .text --function SubDualLayerResourceRendererAlt_DestroyAndFree --require-exact
-build build/reports/sub_dual_layer_resource_renderer_alt_0202c108.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c108.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c108.o
+build build/reports/sub_dual_layer_resource_renderer_alt_0202c108.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c108.o | build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c108.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c108.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
 build build/reports/sub_dual_layer_resource_renderer_alt_0202c108.txt: match_report build/reports/sub_dual_layer_resource_renderer_alt_0202c108.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_alt_0202c108.json
   report_args = --section .text --function SubDualLayerResourceRendererAlt_ActivatePrimary --require-exact
-build build/reports/sub_dual_layer_resource_renderer_alt_0202c120.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c120.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c120.o
+build build/reports/sub_dual_layer_resource_renderer_alt_0202c120.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c120.o | build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_alt_0202c120.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_alt_0202c120.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_alt.o
 build build/reports/sub_dual_layer_resource_renderer_alt_0202c120.txt: match_report build/reports/sub_dual_layer_resource_renderer_alt_0202c120.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_alt_0202c120.json
   report_args = --section .text --function SubDualLayerResourceRendererAlt_ActivateSecondary --require-exact
@@ -13453,27 +13453,27 @@ build build/reports/main_dual_layer_resource_renderer_alt_0202c308.json: objdiff
 build build/reports/main_dual_layer_resource_renderer_alt_0202c308.txt: match_report build/reports/main_dual_layer_resource_renderer_alt_0202c308.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_alt_0202c308.json
   report_args = --section .text --function MainDualLayerResourceRendererAlt_Init --require-exact
-build build/reports/main_dual_layer_resource_renderer_alt_0202c328.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c328.o | build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c328.o
+build build/reports/main_dual_layer_resource_renderer_alt_0202c328.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c328.o | build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c328.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c328.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
 build build/reports/main_dual_layer_resource_renderer_alt_0202c328.txt: match_report build/reports/main_dual_layer_resource_renderer_alt_0202c328.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_alt_0202c328.json
   report_args = --section .text --function MainDualLayerResourceRendererAlt_DestroyComplete --require-exact
-build build/reports/main_dual_layer_resource_renderer_alt_0202c33c.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c33c.o | build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c33c.o
+build build/reports/main_dual_layer_resource_renderer_alt_0202c33c.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c33c.o | build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c33c.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c33c.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
 build build/reports/main_dual_layer_resource_renderer_alt_0202c33c.txt: match_report build/reports/main_dual_layer_resource_renderer_alt_0202c33c.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_alt_0202c33c.json
   report_args = --section .text --function MainDualLayerResourceRendererAlt_DestroyAndFree --require-exact
-build build/reports/main_dual_layer_resource_renderer_alt_0202c358.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c358.o | build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c358.o
+build build/reports/main_dual_layer_resource_renderer_alt_0202c358.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c358.o | build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c358.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c358.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
 build build/reports/main_dual_layer_resource_renderer_alt_0202c358.txt: match_report build/reports/main_dual_layer_resource_renderer_alt_0202c358.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_alt_0202c358.json
   report_args = --section .text --function MainDualLayerResourceRendererAlt_ActivatePrimary --require-exact
-build build/reports/main_dual_layer_resource_renderer_alt_0202c370.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c370.o | build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c370.o
+build build/reports/main_dual_layer_resource_renderer_alt_0202c370.json: objdiff build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c370.o | build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
   target_object = build/decomp/delinks/asm/game/main_dual_layer_resource_renderer_alt_0202c370.o
-  base_object = build/decomp/asm/game/main_dual_layer_resource_renderer_alt_0202c370.o
+  base_object = build/decomp/src/game/main_dual_layer_resource_renderer_alt.o
 build build/reports/main_dual_layer_resource_renderer_alt_0202c370.txt: match_report build/reports/main_dual_layer_resource_renderer_alt_0202c370.json | tools/report_objdiff.py
   report_json = build/reports/main_dual_layer_resource_renderer_alt_0202c370.json
   report_args = --section .text --function MainDualLayerResourceRendererAlt_ActivateSecondary --require-exact
@@ -13510,27 +13510,27 @@ build build/reports/sub_dual_layer_resource_renderer_swapped_0202c4f4.json: objd
 build build/reports/sub_dual_layer_resource_renderer_swapped_0202c4f4.txt: match_report build/reports/sub_dual_layer_resource_renderer_swapped_0202c4f4.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_swapped_0202c4f4.json
   report_args = --section .text --function SubDualLayerResourceRendererSwapped_Init --require-exact
-build build/reports/sub_dual_layer_resource_renderer_swapped_0202c514.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c514.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c514.o
+build build/reports/sub_dual_layer_resource_renderer_swapped_0202c514.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c514.o | build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c514.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c514.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
 build build/reports/sub_dual_layer_resource_renderer_swapped_0202c514.txt: match_report build/reports/sub_dual_layer_resource_renderer_swapped_0202c514.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_swapped_0202c514.json
   report_args = --section .text --function SubDualLayerResourceRendererSwapped_DestroyComplete --require-exact
-build build/reports/sub_dual_layer_resource_renderer_swapped_0202c528.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c528.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c528.o
+build build/reports/sub_dual_layer_resource_renderer_swapped_0202c528.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c528.o | build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c528.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c528.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
 build build/reports/sub_dual_layer_resource_renderer_swapped_0202c528.txt: match_report build/reports/sub_dual_layer_resource_renderer_swapped_0202c528.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_swapped_0202c528.json
   report_args = --section .text --function SubDualLayerResourceRendererSwapped_DestroyAndFree --require-exact
-build build/reports/sub_dual_layer_resource_renderer_swapped_0202c544.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c544.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c544.o
+build build/reports/sub_dual_layer_resource_renderer_swapped_0202c544.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c544.o | build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c544.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c544.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
 build build/reports/sub_dual_layer_resource_renderer_swapped_0202c544.txt: match_report build/reports/sub_dual_layer_resource_renderer_swapped_0202c544.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_swapped_0202c544.json
   report_args = --section .text --function SubDualLayerResourceRendererSwapped_ActivatePrimary --require-exact
-build build/reports/sub_dual_layer_resource_renderer_swapped_0202c55c.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c55c.o | build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c55c.o
+build build/reports/sub_dual_layer_resource_renderer_swapped_0202c55c.json: objdiff build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c55c.o | build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
   target_object = build/decomp/delinks/asm/game/sub_dual_layer_resource_renderer_swapped_0202c55c.o
-  base_object = build/decomp/asm/game/sub_dual_layer_resource_renderer_swapped_0202c55c.o
+  base_object = build/decomp/src/game/sub_dual_layer_resource_renderer_swapped.o
 build build/reports/sub_dual_layer_resource_renderer_swapped_0202c55c.txt: match_report build/reports/sub_dual_layer_resource_renderer_swapped_0202c55c.json | tools/report_objdiff.py
   report_json = build/reports/sub_dual_layer_resource_renderer_swapped_0202c55c.json
   report_args = --section .text --function SubDualLayerResourceRendererSwapped_ActivateSecondary --require-exact
@@ -13567,27 +13567,27 @@ build build/reports/main_bg2_resource_renderer_0202c744.json: objdiff build/deco
 build build/reports/main_bg2_resource_renderer_0202c744.txt: match_report build/reports/main_bg2_resource_renderer_0202c744.json | tools/report_objdiff.py
   report_json = build/reports/main_bg2_resource_renderer_0202c744.json
   report_args = --section .text --function MainBg0ResourceRenderer_Init --require-exact
-build build/reports/main_bg2_resource_renderer_0202c764.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c764.o | build/decomp/asm/game/main_bg2_resource_renderer_0202c764.o
+build build/reports/main_bg2_resource_renderer_0202c764.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c764.o | build/decomp/src/game/main_bg2_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c764.o
-  base_object = build/decomp/asm/game/main_bg2_resource_renderer_0202c764.o
+  base_object = build/decomp/src/game/main_bg2_resource_renderer.o
 build build/reports/main_bg2_resource_renderer_0202c764.txt: match_report build/reports/main_bg2_resource_renderer_0202c764.json | tools/report_objdiff.py
   report_json = build/reports/main_bg2_resource_renderer_0202c764.json
   report_args = --section .text --function MainBg0ResourceRenderer_DestroyComplete --require-exact
-build build/reports/main_bg2_resource_renderer_0202c778.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c778.o | build/decomp/asm/game/main_bg2_resource_renderer_0202c778.o
+build build/reports/main_bg2_resource_renderer_0202c778.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c778.o | build/decomp/src/game/main_bg2_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c778.o
-  base_object = build/decomp/asm/game/main_bg2_resource_renderer_0202c778.o
+  base_object = build/decomp/src/game/main_bg2_resource_renderer.o
 build build/reports/main_bg2_resource_renderer_0202c778.txt: match_report build/reports/main_bg2_resource_renderer_0202c778.json | tools/report_objdiff.py
   report_json = build/reports/main_bg2_resource_renderer_0202c778.json
   report_args = --section .text --function MainBg0ResourceRenderer_DestroyAndFree --require-exact
-build build/reports/main_bg2_resource_renderer_0202c794.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c794.o | build/decomp/asm/game/main_bg2_resource_renderer_0202c794.o
+build build/reports/main_bg2_resource_renderer_0202c794.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c794.o | build/decomp/src/game/main_bg2_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c794.o
-  base_object = build/decomp/asm/game/main_bg2_resource_renderer_0202c794.o
+  base_object = build/decomp/src/game/main_bg2_resource_renderer.o
 build build/reports/main_bg2_resource_renderer_0202c794.txt: match_report build/reports/main_bg2_resource_renderer_0202c794.json | tools/report_objdiff.py
   report_json = build/reports/main_bg2_resource_renderer_0202c794.json
   report_args = --section .text --function MainBg0ResourceRenderer_ActivatePrimary --require-exact
-build build/reports/main_bg2_resource_renderer_0202c7ac.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c7ac.o | build/decomp/asm/game/main_bg2_resource_renderer_0202c7ac.o
+build build/reports/main_bg2_resource_renderer_0202c7ac.json: objdiff build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c7ac.o | build/decomp/src/game/main_bg2_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_bg2_resource_renderer_0202c7ac.o
-  base_object = build/decomp/asm/game/main_bg2_resource_renderer_0202c7ac.o
+  base_object = build/decomp/src/game/main_bg2_resource_renderer.o
 build build/reports/main_bg2_resource_renderer_0202c7ac.txt: match_report build/reports/main_bg2_resource_renderer_0202c7ac.json | tools/report_objdiff.py
   report_json = build/reports/main_bg2_resource_renderer_0202c7ac.json
   report_args = --section .text --function MainBg0ResourceRenderer_ActivateSecondary --require-exact
@@ -13624,27 +13624,27 @@ build build/reports/sub_three_layer_resource_renderer_0202c8a8.json: objdiff bui
 build build/reports/sub_three_layer_resource_renderer_0202c8a8.txt: match_report build/reports/sub_three_layer_resource_renderer_0202c8a8.json | tools/report_objdiff.py
   report_json = build/reports/sub_three_layer_resource_renderer_0202c8a8.json
   report_args = --section .text --function SubThreeLayerResourceRenderer_Init --require-exact
-build build/reports/sub_three_layer_resource_renderer_0202c8c8.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8c8.o | build/decomp/asm/game/sub_three_layer_resource_renderer_0202c8c8.o
+build build/reports/sub_three_layer_resource_renderer_0202c8c8.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8c8.o | build/decomp/src/game/sub_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8c8.o
-  base_object = build/decomp/asm/game/sub_three_layer_resource_renderer_0202c8c8.o
+  base_object = build/decomp/src/game/sub_three_layer_resource_renderer.o
 build build/reports/sub_three_layer_resource_renderer_0202c8c8.txt: match_report build/reports/sub_three_layer_resource_renderer_0202c8c8.json | tools/report_objdiff.py
   report_json = build/reports/sub_three_layer_resource_renderer_0202c8c8.json
   report_args = --section .text --function SubThreeLayerResourceRenderer_DestroyComplete --require-exact
-build build/reports/sub_three_layer_resource_renderer_0202c8dc.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8dc.o | build/decomp/asm/game/sub_three_layer_resource_renderer_0202c8dc.o
+build build/reports/sub_three_layer_resource_renderer_0202c8dc.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8dc.o | build/decomp/src/game/sub_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8dc.o
-  base_object = build/decomp/asm/game/sub_three_layer_resource_renderer_0202c8dc.o
+  base_object = build/decomp/src/game/sub_three_layer_resource_renderer.o
 build build/reports/sub_three_layer_resource_renderer_0202c8dc.txt: match_report build/reports/sub_three_layer_resource_renderer_0202c8dc.json | tools/report_objdiff.py
   report_json = build/reports/sub_three_layer_resource_renderer_0202c8dc.json
   report_args = --section .text --function SubThreeLayerResourceRenderer_DestroyAndFree --require-exact
-build build/reports/sub_three_layer_resource_renderer_0202c8f8.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8f8.o | build/decomp/asm/game/sub_three_layer_resource_renderer_0202c8f8.o
+build build/reports/sub_three_layer_resource_renderer_0202c8f8.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8f8.o | build/decomp/src/game/sub_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c8f8.o
-  base_object = build/decomp/asm/game/sub_three_layer_resource_renderer_0202c8f8.o
+  base_object = build/decomp/src/game/sub_three_layer_resource_renderer.o
 build build/reports/sub_three_layer_resource_renderer_0202c8f8.txt: match_report build/reports/sub_three_layer_resource_renderer_0202c8f8.json | tools/report_objdiff.py
   report_json = build/reports/sub_three_layer_resource_renderer_0202c8f8.json
   report_args = --section .text --function SubThreeLayerResourceRenderer_ActivatePrimary --require-exact
-build build/reports/sub_three_layer_resource_renderer_0202c938.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c938.o | build/decomp/asm/game/sub_three_layer_resource_renderer_0202c938.o
+build build/reports/sub_three_layer_resource_renderer_0202c938.json: objdiff build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c938.o | build/decomp/src/game/sub_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/sub_three_layer_resource_renderer_0202c938.o
-  base_object = build/decomp/asm/game/sub_three_layer_resource_renderer_0202c938.o
+  base_object = build/decomp/src/game/sub_three_layer_resource_renderer.o
 build build/reports/sub_three_layer_resource_renderer_0202c938.txt: match_report build/reports/sub_three_layer_resource_renderer_0202c938.json | tools/report_objdiff.py
   report_json = build/reports/sub_three_layer_resource_renderer_0202c938.json
   report_args = --section .text --function SubThreeLayerResourceRenderer_ActivateSecondary --require-exact
@@ -13681,27 +13681,27 @@ build build/reports/main_three_layer_resource_renderer_0202cbe0.json: objdiff bu
 build build/reports/main_three_layer_resource_renderer_0202cbe0.txt: match_report build/reports/main_three_layer_resource_renderer_0202cbe0.json | tools/report_objdiff.py
   report_json = build/reports/main_three_layer_resource_renderer_0202cbe0.json
   report_args = --section .text --function MainThreeLayerResourceRenderer_Init --require-exact
-build build/reports/main_three_layer_resource_renderer_0202cc00.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc00.o | build/decomp/asm/game/main_three_layer_resource_renderer_0202cc00.o
+build build/reports/main_three_layer_resource_renderer_0202cc00.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc00.o | build/decomp/src/game/main_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc00.o
-  base_object = build/decomp/asm/game/main_three_layer_resource_renderer_0202cc00.o
+  base_object = build/decomp/src/game/main_three_layer_resource_renderer.o
 build build/reports/main_three_layer_resource_renderer_0202cc00.txt: match_report build/reports/main_three_layer_resource_renderer_0202cc00.json | tools/report_objdiff.py
   report_json = build/reports/main_three_layer_resource_renderer_0202cc00.json
   report_args = --section .text --function MainThreeLayerResourceRenderer_DestroyComplete --require-exact
-build build/reports/main_three_layer_resource_renderer_0202cc14.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc14.o | build/decomp/asm/game/main_three_layer_resource_renderer_0202cc14.o
+build build/reports/main_three_layer_resource_renderer_0202cc14.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc14.o | build/decomp/src/game/main_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc14.o
-  base_object = build/decomp/asm/game/main_three_layer_resource_renderer_0202cc14.o
+  base_object = build/decomp/src/game/main_three_layer_resource_renderer.o
 build build/reports/main_three_layer_resource_renderer_0202cc14.txt: match_report build/reports/main_three_layer_resource_renderer_0202cc14.json | tools/report_objdiff.py
   report_json = build/reports/main_three_layer_resource_renderer_0202cc14.json
   report_args = --section .text --function MainThreeLayerResourceRenderer_DestroyAndFree --require-exact
-build build/reports/main_three_layer_resource_renderer_0202cc30.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc30.o | build/decomp/asm/game/main_three_layer_resource_renderer_0202cc30.o
+build build/reports/main_three_layer_resource_renderer_0202cc30.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc30.o | build/decomp/src/game/main_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc30.o
-  base_object = build/decomp/asm/game/main_three_layer_resource_renderer_0202cc30.o
+  base_object = build/decomp/src/game/main_three_layer_resource_renderer.o
 build build/reports/main_three_layer_resource_renderer_0202cc30.txt: match_report build/reports/main_three_layer_resource_renderer_0202cc30.json | tools/report_objdiff.py
   report_json = build/reports/main_three_layer_resource_renderer_0202cc30.json
   report_args = --section .text --function MainThreeLayerResourceRenderer_ActivatePrimary --require-exact
-build build/reports/main_three_layer_resource_renderer_0202cc70.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc70.o | build/decomp/asm/game/main_three_layer_resource_renderer_0202cc70.o
+build build/reports/main_three_layer_resource_renderer_0202cc70.json: objdiff build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc70.o | build/decomp/src/game/main_three_layer_resource_renderer.o
   target_object = build/decomp/delinks/asm/game/main_three_layer_resource_renderer_0202cc70.o
-  base_object = build/decomp/asm/game/main_three_layer_resource_renderer_0202cc70.o
+  base_object = build/decomp/src/game/main_three_layer_resource_renderer.o
 build build/reports/main_three_layer_resource_renderer_0202cc70.txt: match_report build/reports/main_three_layer_resource_renderer_0202cc70.json | tools/report_objdiff.py
   report_json = build/reports/main_three_layer_resource_renderer_0202cc70.json
   report_args = --section .text --function MainThreeLayerResourceRenderer_ActivateSecondary --require-exact

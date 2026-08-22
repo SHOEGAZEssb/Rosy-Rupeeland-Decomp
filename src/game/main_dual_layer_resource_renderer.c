@@ -30,9 +30,6 @@ extern void func_02070638(void *resource, s32 background, s32 value);
 extern void func_02070e0c(void *resource, s32 background, s32 value);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *resource);
 void MainDualLayerResourceRenderer_LoadBgResources(MainDualLayerResourceRenderer *self);
-#ifdef __cplusplus
-}
-#endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
 MainDualLayerResourceRenderer *MainDualLayerResourceRenderer_Init(MainDualLayerResourceRenderer *self)
@@ -118,3 +115,7 @@ void MainDualLayerResourceRenderer_LoadBgResources(MainDualLayerResourceRenderer
     func_02070e0c(resources.resource2, 1, 0);
     GraphicsResourceSet_Destroy(&resources);
 }
+
+#ifdef __cplusplus
+}
+#endif

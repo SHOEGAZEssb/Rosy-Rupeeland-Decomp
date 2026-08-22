@@ -37,9 +37,6 @@ extern void func_02070bc4(void *, s32);
 extern void func_02070f80(void *, s32);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *);
 void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer *);
-#ifdef __cplusplus
-}
-#endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
 SubThreeLayerResourceRenderer *SubThreeLayerResourceRenderer_Init(SubThreeLayerResourceRenderer *self)
@@ -152,3 +149,7 @@ void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer
     GraphicsResourceSet_ReleaseHandles(&set);
     GraphicsResourceSet_Destroy(&set);
 }
+
+#ifdef __cplusplus
+}
+#endif

@@ -22,9 +22,6 @@ extern void DualLayerTileRenderer_LoadFromConfig(void *self,
 extern void DualLayerTileRenderer_ActivateLayers(void *self, s32 notify);
 extern void MainDualLayerResourceRenderer_LoadBgResources(void *self);
 void MainDualLayerResourceRendererAlt_LoadBgResources(MainDualLayerResourceRendererAlt *self);
-#ifdef __cplusplus
-}
-#endif
 
 /* Construct the common renderer, install this variant's vtable, and return self. */
 MainDualLayerResourceRendererAlt *MainDualLayerResourceRendererAlt_Init(MainDualLayerResourceRendererAlt *self)
@@ -79,3 +76,7 @@ void MainDualLayerResourceRendererAlt_LoadBgResources(MainDualLayerResourceRende
 {
     MainDualLayerResourceRenderer_LoadBgResources(self);
 }
+
+#ifdef __cplusplus
+}
+#endif
