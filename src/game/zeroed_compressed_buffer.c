@@ -23,10 +23,6 @@ extern void func_020b58f0(void *destination, s32 value, u32 size);
 extern void func_020b4554(void *address, u32 size);
 extern void func_020b44e8(void);
 void ZeroedCompressedBuffer_Clear(ZeroedCompressedBuffer *self);
-#ifdef __cplusplus
-}
-#endif
-
 /* Initialize an empty buffer and zero its recorded expanded size. */
 void ZeroedCompressedBuffer_Init(ZeroedCompressedBuffer *self)
 {
@@ -91,3 +87,7 @@ u8 *ZeroedCompressedBuffer_GetData(ZeroedCompressedBuffer *self)
 {
     return self->bytes_00;
 }
+
+#ifdef __cplusplus
+}
+#endif

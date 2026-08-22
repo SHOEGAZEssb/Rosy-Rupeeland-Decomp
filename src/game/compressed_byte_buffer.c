@@ -20,10 +20,6 @@ extern void MI_UncompressLZ8(const void *source, void *destination);
 extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void func_020b4554(void *address, u32 size);
 extern void func_020b44e8(void);
-#ifdef __cplusplus
-}
-#endif
-
 /* Initialize an empty buffer; no allocation or SDK state is changed. */
 void CompressedByteBuffer_Init(CompressedByteBuffer *self)
 {
@@ -92,3 +88,7 @@ s32 CompressedByteBuffer_IsEmpty(const CompressedByteBuffer *self)
 {
     return self->bytes_00 == 0;
 }
+
+#ifdef __cplusplus
+}
+#endif

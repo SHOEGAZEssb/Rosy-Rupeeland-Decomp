@@ -12873,45 +12873,45 @@ build build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3f0.o: phony bui
 build build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3fc.o: phony build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3bc.o
 build build/decomp/delinks/asm/game/compressed_byte_buffer_0202b408.o: phony build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3bc.o
 build build/decomp/delinks/asm/game/compressed_byte_buffer_0202b4c0.o: phony build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3bc.o
-build build/reports/compressed_byte_buffer_0202b3bc.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3bc.o | build/decomp/asm/game/compressed_byte_buffer_0202b3bc.o
+build build/reports/compressed_byte_buffer_0202b3bc.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3bc.o | build/decomp/src/game/compressed_byte_buffer.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3bc.o
-  base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3bc.o
+  base_object = build/decomp/src/game/compressed_byte_buffer.o
 build build/reports/compressed_byte_buffer_0202b3bc.txt: match_report build/reports/compressed_byte_buffer_0202b3bc.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3bc.json
   report_args = --section .text --function CompressedByteBuffer_Init --require-exact
-build build/reports/compressed_byte_buffer_0202b3c8.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3c8.o | build/decomp/asm/game/compressed_byte_buffer_0202b3c8.o
+build build/reports/compressed_byte_buffer_0202b3c8.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3c8.o | build/decomp/src/game/compressed_byte_buffer.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3c8.o
-  base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3c8.o
+  base_object = build/decomp/src/game/compressed_byte_buffer.o
 build build/reports/compressed_byte_buffer_0202b3c8.txt: match_report build/reports/compressed_byte_buffer_0202b3c8.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3c8.json
   report_args = --section .text --function CompressedByteBuffer_Destroy --require-exact
-build build/reports/compressed_byte_buffer_0202b3e8.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3e8.o | build/decomp/asm/game/compressed_byte_buffer_0202b3e8.o
+build build/reports/compressed_byte_buffer_0202b3e8.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3e8.o | build/decomp/src/game/compressed_byte_buffer.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3e8.o
-  base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3e8.o
+  base_object = build/decomp/src/game/compressed_byte_buffer.o
 build build/reports/compressed_byte_buffer_0202b3e8.txt: match_report build/reports/compressed_byte_buffer_0202b3e8.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3e8.json
   report_args = --section .text --function CompressedByteBuffer_GetData --require-exact
-build build/reports/compressed_byte_buffer_0202b3f0.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3f0.o | build/decomp/asm/game/compressed_byte_buffer_0202b3f0.o
+build build/reports/compressed_byte_buffer_0202b3f0.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3f0.o | build/decomp/src/game/compressed_byte_buffer.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3f0.o
-  base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3f0.o
+  base_object = build/decomp/src/game/compressed_byte_buffer.o
 build build/reports/compressed_byte_buffer_0202b3f0.txt: match_report build/reports/compressed_byte_buffer_0202b3f0.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3f0.json
   report_args = --section .text --function CompressedByteBuffer_GetByte --require-exact
-build build/reports/compressed_byte_buffer_0202b3fc.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3fc.o | build/decomp/asm/game/compressed_byte_buffer_0202b3fc.o
+build build/reports/compressed_byte_buffer_0202b3fc.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3fc.o | build/decomp/src/game/compressed_byte_buffer.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b3fc.o
-  base_object = build/decomp/asm/game/compressed_byte_buffer_0202b3fc.o
+  base_object = build/decomp/src/game/compressed_byte_buffer.o
 build build/reports/compressed_byte_buffer_0202b3fc.txt: match_report build/reports/compressed_byte_buffer_0202b3fc.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b3fc.json
   report_args = --section .text --function CompressedByteBuffer_SetByte --require-exact
-build build/reports/compressed_byte_buffer_0202b408.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b408.o | build/decomp/asm/game/compressed_byte_buffer_0202b408.o
+build build/reports/compressed_byte_buffer_0202b408.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b408.o | build/decomp/src/game/compressed_byte_buffer.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b408.o
-  base_object = build/decomp/asm/game/compressed_byte_buffer_0202b408.o
+  base_object = build/decomp/src/game/compressed_byte_buffer.o
 build build/reports/compressed_byte_buffer_0202b408.txt: match_report build/reports/compressed_byte_buffer_0202b408.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b408.json
   report_args = --section .text --function CompressedByteBuffer_LoadLz8Payload --require-exact
-build build/reports/compressed_byte_buffer_0202b4c0.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b4c0.o | build/decomp/asm/game/compressed_byte_buffer_0202b4c0.o
+build build/reports/compressed_byte_buffer_0202b4c0.json: objdiff build/decomp/delinks/asm/game/compressed_byte_buffer_0202b4c0.o | build/decomp/src/game/compressed_byte_buffer.o
   target_object = build/decomp/delinks/asm/game/compressed_byte_buffer_0202b4c0.o
-  base_object = build/decomp/asm/game/compressed_byte_buffer_0202b4c0.o
+  base_object = build/decomp/src/game/compressed_byte_buffer.o
 build build/reports/compressed_byte_buffer_0202b4c0.txt: match_report build/reports/compressed_byte_buffer_0202b4c0.json | tools/report_objdiff.py
   report_json = build/reports/compressed_byte_buffer_0202b4c0.json
   report_args = --section .text --function CompressedByteBuffer_IsEmpty --require-exact
@@ -12934,21 +12934,21 @@ build build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4e4.o: phony bu
 build build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4f8.o: phony build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4d4.o
 build build/decomp/delinks/asm/game/sized_compressed_buffer_0202b520.o: phony build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4d4.o
 build build/decomp/delinks/asm/game/sized_compressed_buffer_0202b5f4.o: phony build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4d4.o
-build build/reports/sized_compressed_buffer_0202b4d4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4d4.o | build/decomp/asm/game/sized_compressed_buffer_0202b4d4.o
+build build/reports/sized_compressed_buffer_0202b4d4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4d4.o | build/decomp/src/game/sized_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4d4.o
-  base_object = build/decomp/asm/game/sized_compressed_buffer_0202b4d4.o
+  base_object = build/decomp/src/game/sized_compressed_buffer.o
 build build/reports/sized_compressed_buffer_0202b4d4.txt: match_report build/reports/sized_compressed_buffer_0202b4d4.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b4d4.json
   report_args = --section .text --function SizedCompressedBuffer_Init --require-exact
-build build/reports/sized_compressed_buffer_0202b4e4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4e4.o | build/decomp/asm/game/sized_compressed_buffer_0202b4e4.o
+build build/reports/sized_compressed_buffer_0202b4e4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4e4.o | build/decomp/src/game/sized_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4e4.o
-  base_object = build/decomp/asm/game/sized_compressed_buffer_0202b4e4.o
+  base_object = build/decomp/src/game/sized_compressed_buffer.o
 build build/reports/sized_compressed_buffer_0202b4e4.txt: match_report build/reports/sized_compressed_buffer_0202b4e4.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b4e4.json
   report_args = --section .text --function SizedCompressedBuffer_Destroy --require-exact
-build build/reports/sized_compressed_buffer_0202b4f8.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4f8.o | build/decomp/asm/game/sized_compressed_buffer_0202b4f8.o
+build build/reports/sized_compressed_buffer_0202b4f8.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4f8.o | build/decomp/src/game/sized_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b4f8.o
-  base_object = build/decomp/asm/game/sized_compressed_buffer_0202b4f8.o
+  base_object = build/decomp/src/game/sized_compressed_buffer.o
 build build/reports/sized_compressed_buffer_0202b4f8.txt: match_report build/reports/sized_compressed_buffer_0202b4f8.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b4f8.json
   report_args = --section .text --function SizedCompressedBuffer_Clear --require-exact
@@ -12958,9 +12958,9 @@ build build/reports/sized_compressed_buffer_0202b520.json: objdiff build/decomp/
 build build/reports/sized_compressed_buffer_0202b520.txt: match_report build/reports/sized_compressed_buffer_0202b520.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b520.json
   report_args = --section .text --function SizedCompressedBuffer_LoadLz8Section --require-exact
-build build/reports/sized_compressed_buffer_0202b5f4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b5f4.o | build/decomp/asm/game/sized_compressed_buffer_0202b5f4.o
+build build/reports/sized_compressed_buffer_0202b5f4.json: objdiff build/decomp/delinks/asm/game/sized_compressed_buffer_0202b5f4.o | build/decomp/src/game/sized_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/sized_compressed_buffer_0202b5f4.o
-  base_object = build/decomp/asm/game/sized_compressed_buffer_0202b5f4.o
+  base_object = build/decomp/src/game/sized_compressed_buffer.o
 build build/reports/sized_compressed_buffer_0202b5f4.txt: match_report build/reports/sized_compressed_buffer_0202b5f4.json | tools/report_objdiff.py
   report_json = build/reports/sized_compressed_buffer_0202b5f4.json
   report_args = --section .text --function SizedCompressedBuffer_GetData --require-exact
@@ -12983,21 +12983,21 @@ build build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b60c.o: phony b
 build build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b620.o: phony build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b5fc.o
 build build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b648.o: phony build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b5fc.o
 build build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b728.o: phony build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b5fc.o
-build build/reports/zeroed_compressed_buffer_0202b5fc.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b5fc.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b5fc.o
+build build/reports/zeroed_compressed_buffer_0202b5fc.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b5fc.o | build/decomp/src/game/zeroed_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b5fc.o
-  base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b5fc.o
+  base_object = build/decomp/src/game/zeroed_compressed_buffer.o
 build build/reports/zeroed_compressed_buffer_0202b5fc.txt: match_report build/reports/zeroed_compressed_buffer_0202b5fc.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b5fc.json
   report_args = --section .text --function ZeroedCompressedBuffer_Init --require-exact
-build build/reports/zeroed_compressed_buffer_0202b60c.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b60c.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b60c.o
+build build/reports/zeroed_compressed_buffer_0202b60c.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b60c.o | build/decomp/src/game/zeroed_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b60c.o
-  base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b60c.o
+  base_object = build/decomp/src/game/zeroed_compressed_buffer.o
 build build/reports/zeroed_compressed_buffer_0202b60c.txt: match_report build/reports/zeroed_compressed_buffer_0202b60c.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b60c.json
   report_args = --section .text --function ZeroedCompressedBuffer_Destroy --require-exact
-build build/reports/zeroed_compressed_buffer_0202b620.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b620.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b620.o
+build build/reports/zeroed_compressed_buffer_0202b620.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b620.o | build/decomp/src/game/zeroed_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b620.o
-  base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b620.o
+  base_object = build/decomp/src/game/zeroed_compressed_buffer.o
 build build/reports/zeroed_compressed_buffer_0202b620.txt: match_report build/reports/zeroed_compressed_buffer_0202b620.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b620.json
   report_args = --section .text --function ZeroedCompressedBuffer_Clear --require-exact
@@ -13007,9 +13007,9 @@ build build/reports/zeroed_compressed_buffer_0202b648.json: objdiff build/decomp
 build build/reports/zeroed_compressed_buffer_0202b648.txt: match_report build/reports/zeroed_compressed_buffer_0202b648.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b648.json
   report_args = --section .text --function ZeroedCompressedBuffer_LoadLz8Section --require-exact
-build build/reports/zeroed_compressed_buffer_0202b728.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b728.o | build/decomp/asm/game/zeroed_compressed_buffer_0202b728.o
+build build/reports/zeroed_compressed_buffer_0202b728.json: objdiff build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b728.o | build/decomp/src/game/zeroed_compressed_buffer.o
   target_object = build/decomp/delinks/asm/game/zeroed_compressed_buffer_0202b728.o
-  base_object = build/decomp/asm/game/zeroed_compressed_buffer_0202b728.o
+  base_object = build/decomp/src/game/zeroed_compressed_buffer.o
 build build/reports/zeroed_compressed_buffer_0202b728.txt: match_report build/reports/zeroed_compressed_buffer_0202b728.json | tools/report_objdiff.py
   report_json = build/reports/zeroed_compressed_buffer_0202b728.json
   report_args = --section .text --function ZeroedCompressedBuffer_GetData --require-exact
@@ -13133,69 +13133,69 @@ build build/reports/byte_tile_map_owner_0202b9dc.json: objdiff build/decomp/deli
 build build/reports/byte_tile_map_owner_0202b9dc.txt: match_report build/reports/byte_tile_map_owner_0202b9dc.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202b9dc.json
   report_args = --section .text --function ByteTileMapOwner_Init --require-exact
-build build/reports/byte_tile_map_owner_0202ba4c.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202ba4c.o | build/decomp/asm/game/byte_tile_map_owner_0202ba4c.o
+build build/reports/byte_tile_map_owner_0202ba4c.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202ba4c.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202ba4c.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202ba4c.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202ba4c.txt: match_report build/reports/byte_tile_map_owner_0202ba4c.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202ba4c.json
   report_args = --section .text --function ByteTileMapOwner_DestroyComplete --require-exact
-build build/reports/byte_tile_map_owner_0202ba74.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202ba74.o | build/decomp/asm/game/byte_tile_map_owner_0202ba74.o
+build build/reports/byte_tile_map_owner_0202ba74.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202ba74.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202ba74.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202ba74.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202ba74.txt: match_report build/reports/byte_tile_map_owner_0202ba74.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202ba74.json
   report_args = --section .text --function ByteTileMapOwner_DestroyAndFree --require-exact
-build build/reports/byte_tile_map_owner_0202baa4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202baa4.o | build/decomp/asm/game/byte_tile_map_owner_0202baa4.o
+build build/reports/byte_tile_map_owner_0202baa4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202baa4.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202baa4.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202baa4.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202baa4.txt: match_report build/reports/byte_tile_map_owner_0202baa4.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202baa4.json
   report_args = --section .text --function ByteTileMapOwner_Destroy --require-exact
-build build/reports/byte_tile_map_owner_0202bacc.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bacc.o | build/decomp/asm/game/byte_tile_map_owner_0202bacc.o
+build build/reports/byte_tile_map_owner_0202bacc.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bacc.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bacc.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bacc.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bacc.txt: match_report build/reports/byte_tile_map_owner_0202bacc.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bacc.json
   report_args = --section .text --function func_0202bacc --require-exact
-build build/reports/byte_tile_map_owner_0202bad0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad0.o | build/decomp/asm/game/byte_tile_map_owner_0202bad0.o
+build build/reports/byte_tile_map_owner_0202bad0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad0.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad0.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bad0.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bad0.txt: match_report build/reports/byte_tile_map_owner_0202bad0.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bad0.json
   report_args = --section .text --function func_0202bad0 --require-exact
-build build/reports/byte_tile_map_owner_0202bad4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad4.o | build/decomp/asm/game/byte_tile_map_owner_0202bad4.o
+build build/reports/byte_tile_map_owner_0202bad4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad4.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad4.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bad4.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bad4.txt: match_report build/reports/byte_tile_map_owner_0202bad4.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bad4.json
   report_args = --section .text --function func_0202bad4 --require-exact
-build build/reports/byte_tile_map_owner_0202bad8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad8.o | build/decomp/asm/game/byte_tile_map_owner_0202bad8.o
+build build/reports/byte_tile_map_owner_0202bad8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad8.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bad8.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bad8.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bad8.txt: match_report build/reports/byte_tile_map_owner_0202bad8.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bad8.json
   report_args = --section .text --function func_0202bad8 --require-exact
-build build/reports/byte_tile_map_owner_0202badc.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202badc.o | build/decomp/asm/game/byte_tile_map_owner_0202badc.o
+build build/reports/byte_tile_map_owner_0202badc.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202badc.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202badc.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202badc.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202badc.txt: match_report build/reports/byte_tile_map_owner_0202badc.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202badc.json
   report_args = --section .text --function func_0202badc --require-exact
-build build/reports/byte_tile_map_owner_0202bae0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae0.o | build/decomp/asm/game/byte_tile_map_owner_0202bae0.o
+build build/reports/byte_tile_map_owner_0202bae0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae0.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae0.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bae0.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bae0.txt: match_report build/reports/byte_tile_map_owner_0202bae0.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bae0.json
   report_args = --section .text --function func_0202bae0 --require-exact
-build build/reports/byte_tile_map_owner_0202bae4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae4.o | build/decomp/asm/game/byte_tile_map_owner_0202bae4.o
+build build/reports/byte_tile_map_owner_0202bae4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae4.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae4.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bae4.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bae4.txt: match_report build/reports/byte_tile_map_owner_0202bae4.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bae4.json
   report_args = --section .text --function func_0202bae4 --require-exact
-build build/reports/byte_tile_map_owner_0202bae8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae8.o | build/decomp/asm/game/byte_tile_map_owner_0202bae8.o
+build build/reports/byte_tile_map_owner_0202bae8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae8.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bae8.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bae8.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bae8.txt: match_report build/reports/byte_tile_map_owner_0202bae8.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bae8.json
   report_args = --section .text --function func_0202bae8 --require-exact
@@ -13211,9 +13211,9 @@ build build/reports/byte_tile_map_owner_0202bb60.json: objdiff build/decomp/deli
 build build/reports/byte_tile_map_owner_0202bb60.txt: match_report build/reports/byte_tile_map_owner_0202bb60.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bb60.json
   report_args = --section .text --function ByteTileMapOwner_SetCell --require-exact
-build build/reports/byte_tile_map_owner_0202bbd0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbd0.o | build/decomp/asm/game/byte_tile_map_owner_0202bbd0.o
+build build/reports/byte_tile_map_owner_0202bbd0.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbd0.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbd0.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bbd0.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bbd0.txt: match_report build/reports/byte_tile_map_owner_0202bbd0.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bbd0.json
   report_args = --section .text --function ByteTileMapOwner_ReturnOne --require-exact
@@ -13223,27 +13223,27 @@ build build/reports/byte_tile_map_owner_0202bbd8.json: objdiff build/decomp/deli
 build build/reports/byte_tile_map_owner_0202bbd8.txt: match_report build/reports/byte_tile_map_owner_0202bbd8.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bbd8.json
   report_args = --section .text --function ByteTileMapOwner_ReturnZero --require-exact
-build build/reports/byte_tile_map_owner_0202bbf4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf4.o | build/decomp/asm/game/byte_tile_map_owner_0202bbf4.o
+build build/reports/byte_tile_map_owner_0202bbf4.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf4.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf4.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bbf4.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bbf4.txt: match_report build/reports/byte_tile_map_owner_0202bbf4.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bbf4.json
   report_args = --section .text --function func_0202bbf4 --require-exact
-build build/reports/byte_tile_map_owner_0202bbf8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf8.o | build/decomp/asm/game/byte_tile_map_owner_0202bbf8.o
+build build/reports/byte_tile_map_owner_0202bbf8.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf8.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bbf8.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bbf8.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bbf8.txt: match_report build/reports/byte_tile_map_owner_0202bbf8.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bbf8.json
   report_args = --section .text --function ByteTileMapOwner_SetFlag2Enabled --require-exact
-build build/reports/byte_tile_map_owner_0202bc10.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc10.o | build/decomp/asm/game/byte_tile_map_owner_0202bc10.o
+build build/reports/byte_tile_map_owner_0202bc10.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc10.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc10.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bc10.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bc10.txt: match_report build/reports/byte_tile_map_owner_0202bc10.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bc10.json
   report_args = --section .text --function func_0202bc10 --require-exact
-build build/reports/byte_tile_map_owner_0202bc14.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc14.o | build/decomp/asm/game/byte_tile_map_owner_0202bc14.o
+build build/reports/byte_tile_map_owner_0202bc14.json: objdiff build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc14.o | build/decomp/src/game/byte_tile_map_owner.o
   target_object = build/decomp/delinks/asm/game/byte_tile_map_owner_0202bc14.o
-  base_object = build/decomp/asm/game/byte_tile_map_owner_0202bc14.o
+  base_object = build/decomp/src/game/byte_tile_map_owner.o
 build build/reports/byte_tile_map_owner_0202bc14.txt: match_report build/reports/byte_tile_map_owner_0202bc14.json | tools/report_objdiff.py
   report_json = build/reports/byte_tile_map_owner_0202bc14.json
   report_args = --section .text --function func_0202bc14 --require-exact

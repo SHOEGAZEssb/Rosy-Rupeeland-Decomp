@@ -19,7 +19,7 @@ typedef struct ByteTileMapOwner {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *gByteTileMapOwnerVtable;
+extern void *gByteTileMapOwnerVtable[];
 extern void SizedCompressedBuffer_Init(void *self);
 extern void *SizedCompressedBuffer_Destroy(void *self);
 extern void CompressedByteBuffer_Init(void *self);
@@ -29,10 +29,6 @@ extern u8 CompressedByteBuffer_GetByte(void *self, s32 index);
 extern void CompressedByteBuffer_SetByte(void *self, s32 index, u8 value);
 extern void NclFile_Init(void *self);
 extern void NclFile_Destroy(void *self);
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Install the recovered vtable, initialize both buffer owners and metadata,
  * clear flag bit zero, set flag bit one, preserve only dimensions_20's low
@@ -40,7 +36,7 @@ extern void NclFile_Destroy(void *self);
  */
 ByteTileMapOwner *ByteTileMapOwner_Init(ByteTileMapOwner *self)
 {
-    self->vtable_00 = (void **)gByteTileMapOwnerVtable;
+    self->vtable_00 = gByteTileMapOwnerVtable;
     SizedCompressedBuffer_Init(self->sizedBuffer_04);
     CompressedByteBuffer_Init(self->tileBytes_0c);
     NclFile_Init(self->metadata_10);
@@ -165,3 +161,7 @@ void func_0202bc10(ByteTileMapOwner *self) { (void)self; }
 
 /* Intentionally empty virtual hook; it has no observable effects. */
 void func_0202bc14(ByteTileMapOwner *self) { (void)self; }
+
+#ifdef __cplusplus
+}
+#endif
