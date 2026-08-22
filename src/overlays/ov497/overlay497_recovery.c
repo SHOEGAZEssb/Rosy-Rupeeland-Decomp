@@ -1,16 +1,28 @@
-/*
- * Recovered overlay 497 interpreter-data subsystem.
- *
- * The overlay installs an embedded interpreter program and initializes engine
- * state held in two zero-initialized work areas. Address-derived names remain
- * because the record semantics are not yet confirmed.
- */
+#include "tingle/game_phase_region_table.h"
+#include "tingle/types.h"
 
-/* Initializes engine registration state, returns no value, and has no direct hardware effects. */
-void func_ov497_02233c60(void);
+/* Recovered overlay 497 category-two actor-registration subsystem. */
+typedef struct ActorSpawnDescriptor {
+    u8 bytes[0x64];
+} ActorSpawnDescriptor;
+typedef u8 ActorScriptBytecode;
 
-/* Interpreter records and zero-initialized work areas used by the initializer. */
-extern unsigned char data_ov497_02233ca0[];
-extern unsigned char data_ov497_02234626[];
-extern unsigned char data_ov497_02234720[];
-extern unsigned char data_ov497_02234724[];
+extern void ActorDescriptorBatch_RegisterAndSpawnCategory2(
+    void *work, s32 unusedCount, ActorSpawnDescriptor *descriptors);
+extern void ActorDescriptorBatch_SetCategory2Callback(
+    const ActorScriptBytecode *callback);
+extern u8 data_ov497_02234720[];
+extern GamePhaseRegionTable data_ov497_02234724;
+extern ActorScriptBytecode data_ov497_02234626[];
+extern ActorSpawnDescriptor data_ov497_02233ca0[];
+
+/* Register the sentinel-driven descriptor array with retail's literal count
+ * of three, install its bytecode callback, and publish the region table.
+ * Returns no value and performs no direct hardware or SDK operation. */
+void func_ov497_02233c60(void)
+{
+    ActorDescriptorBatch_RegisterAndSpawnCategory2(
+        data_ov497_02234720, 3, data_ov497_02233ca0);
+    ActorDescriptorBatch_SetCategory2Callback(data_ov497_02234626);
+    GamePhaseRegionTable_PublishActive(&data_ov497_02234724);
+}
