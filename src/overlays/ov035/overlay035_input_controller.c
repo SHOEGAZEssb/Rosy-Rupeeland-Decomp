@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/system.h"
 
 /* Overlay 35 input-controller construction and per-frame edge detection. */
 
@@ -8,7 +9,7 @@ typedef void (*Overlay035UpdateFn)(void *controller);
 
 extern const u8 data_ov035_02203c5c[];
 extern void *gTouchPanelManager;
-extern void *gPadStates;
+extern volatile u16 gPadStates;
 
 #ifdef __cplusplus
 extern "C" {
@@ -54,7 +55,11 @@ extern "C" void func_ov035_021fce5c(void *controller)
     if (pressed && FIELD(s32, controller, 0xc4) == 0)
         FIELD(s32, controller, 0xc8) = 1;
     FIELD(s32, controller, 0xc4) = pressed;
-    FIELD(void *, controller, 8) = gPadStates;
+#ifdef MATCHING
+    FIELD(void *, controller, 8) = (void *)&gPadStates;
+#else
+    FIELD(void *, controller, 8) = (void *)&gSystemState.pads[0].held;
+#endif
     Overlay035UpdateFn *vtable = FIELD(Overlay035UpdateFn *, controller, 0);
     vtable[2](controller);
 }
