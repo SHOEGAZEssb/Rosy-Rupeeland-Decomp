@@ -2,7 +2,7 @@
 
 /*
  * Overlay 41 effect-controller construction. This recovered constructor builds
- * a 91-record pool, owns an overlay-7 helper object, creates seven render
+ * a 91-record pool, owns an overlay-8 helper object, creates seven render
  * children with three resource modes, and initializes extensive effect state.
  */
 
@@ -14,7 +14,7 @@ void __construct_array(void *, s32, s32, void *, void *);
 void func_ov041_021fd000(void *);
 void func_ov041_021fce00(void *);
 void *Heap_Alloc(s32, const void *, s32, void *);
-void *func_ov007_021fb720(void *, void *, void *);
+void *func_ov008_021fb720(void *, void *, s32);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern u8 data_ov041_022059b8;
@@ -39,7 +39,7 @@ static void create_effect_render(void *object, s32 slot, void *context,
 /*
  * Initialize object and its 91 embedded 12-byte records, then initialize an
  * additional coordinate record at 0x4AC. Allocate 0x8BC bytes and construct
- * the overlay-7 helper when allocation succeeds. Create render slot zero with
+ * the overlay-8 helper when allocation succeeds. Create render slot zero with
  * resource mode zero, slots one through five with mode one, and slot six with
  * mode two; every child starts hidden. Object placement defaults to
  * (0x80000,0xA000,0), scales to 0x100, and all counters/pointers from 0x6C and
@@ -59,7 +59,7 @@ extern "C" void *func_ov041_0220106c(void *object, void *owner, void *context)
     void *helperMemory = Heap_Alloc(0x8bc, &data_ov041_022059d0, 4,
                                     &gHeapContext);
     if (helperMemory != 0)
-        helperMemory = func_ov007_021fb720(helperMemory, owner, context);
+        helperMemory = func_ov008_021fb720(helperMemory, owner, (s32)context);
     FIELD(void *, object, 0x958) = helperMemory;
 
     create_effect_render(object, 0, context, 0);
