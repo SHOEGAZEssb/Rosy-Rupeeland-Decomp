@@ -31,10 +31,6 @@ extern void VecFx32Object_Destroy(void *);
 extern void AnimatedTileStagingBuffer_Init(void *);
 extern void AnimatedTileStagingBuffer_Destroy(void *);
 void DualLayerTileRendererBase_DestroyOwnedLayers(DualLayerTileRendererBase *);
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Initialize the renderer base, vector, and offset-0x60 subobject; clear both
  * layer pointers and field 0x44; set default dimensions 28 by 30; return self.
@@ -121,3 +117,7 @@ void DualLayerTileRendererBase_SetLayoutParameters(DualLayerTileRendererBase *se
     self->width_48 = width;
     self->height_4c = height;
 }
+
+#ifdef __cplusplus
+}
+#endif

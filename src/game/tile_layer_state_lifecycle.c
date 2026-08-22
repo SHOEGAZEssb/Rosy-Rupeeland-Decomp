@@ -43,10 +43,6 @@ extern void *gTileLayerStateVtable;
 extern void MIi_CpuClearFast(void *, u32, u32);
 extern void *OwnedTileBuffer_Destroy(void *);
 void TileLayerState_Reset(TileLayerState *, s32);
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Install the base vtable, clear the owned-buffer pointer/count, reset all
  * cache/metadata through TileLayerState_Reset, store the two trailing parameters,
@@ -106,3 +102,7 @@ void TileLayerState_Reset(TileLayerState *self, s32 mode)
     self->field_1034 = 0;
     self->status_1030 |= 1;
 }
+
+#ifdef __cplusplus
+}
+#endif

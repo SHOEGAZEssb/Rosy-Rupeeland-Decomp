@@ -22,10 +22,6 @@ typedef void (*DrawCommandMethod)(void *, s32, s32, const TileDrawCommand *);
 extern "C" {
 #endif
 extern void ByteTileMapOwner_SetCell(void *, s32, s32, s32);
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Expand one command row-major. Source tiles use a fixed stride of 16; vtable
  * slot 12 receives layer bits 0..1 and each source/destination coordinate,
@@ -50,6 +46,10 @@ void func_02029d40(void *renderer, s32 x, s32 y,
         }
     }
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 /* Walk 0x1c-byte commands until both dimensions are zero, dispatching vtable slot 14. */
 void func_02029df4(void *renderer, s32 x, s32 y,

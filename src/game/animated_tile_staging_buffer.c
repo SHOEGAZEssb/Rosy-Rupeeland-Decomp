@@ -33,10 +33,6 @@ extern void func_020b4554(void *address, u32 size);
 extern void func_020b581c(const void *source, void *destination, u32 size);
 void AnimatedTileStagingBuffer_CopyFrom(AnimatedTileStagingBuffer *self,
                                         const AnimatedTileStagingBuffer *source);
-#ifdef __cplusplus
-}
-#endif
-
 /* Initialize the animation cursor to entry three and clear timing, selection, and flags. */
 void AnimatedTileStagingBuffer_Init(AnimatedTileStagingBuffer *self)
 {
@@ -154,3 +150,7 @@ void AnimatedTileStagingBuffer_SetPaused(AnimatedTileStagingBuffer *self, s32 pa
     else
         self->flags_1818 &= ~2u;
 }
+
+#ifdef __cplusplus
+}
+#endif

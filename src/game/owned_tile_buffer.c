@@ -11,10 +11,6 @@ typedef struct OwnedTileBuffer {
 extern "C" {
 #endif
 void OwnedTileBuffer_Clear(OwnedTileBuffer *);
-#ifdef __cplusplus
-}
-#endif
-
 /* Release storage when present and return the buffer object. */
 OwnedTileBuffer *OwnedTileBuffer_Destroy(OwnedTileBuffer *self)
 {
@@ -32,3 +28,7 @@ void OwnedTileBuffer_Clear(OwnedTileBuffer *self)
     }
     self->count_04 = 0;
 }
+
+#ifdef __cplusplus
+}
+#endif

@@ -108,10 +108,6 @@ extern void AnimatedTileStagingBuffer_Assign(void *, const void *);
 extern void AnimatedTileStagingBuffer_Destroy(void *);
 extern void DualLayerTileRenderer_UploadGraphics(DualLayerTileRenderer *);
 extern void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *);
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Open the fixed renderer archive, load the common resource/map and optional
  * resource, create layer zero/one when their config sizes are nonzero using
@@ -421,3 +417,7 @@ void DualLayerTileRenderer_LoadEmbeddedRendererEntry(DualLayerTileRenderer *self
 void func_02029d3c(void)
 {
 }
+
+#ifdef __cplusplus
+}
+#endif

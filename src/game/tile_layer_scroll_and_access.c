@@ -45,10 +45,6 @@ extern void MI_CpuCopy8(const void *, void *, u32);
 void TileLayer_WriteMetatileToCache(TileLayerAccessState *, s32, s32, u16);
 void OwnedTileBuffer_Resize(void *, u32);
 void TileLayer_LoadSourceTileSection(TileLayerAccessState *, void *, u32, u32);
-#ifdef __cplusplus
-}
-#endif
-
 static s32 PixelToTile(s32 value)
 {
     return (value + (value < 0 ? 15 : 0)) >> 4;
@@ -226,3 +222,7 @@ void TileLayer_SetScrollPositionDirect(TileLayerAccessState *self, s32 pixelX, s
     self->sourceOffsetX_1028 = (s16)PixelToTile(pixelX);
     self->sourceOffsetY_102a = (s16)PixelToTile(pixelY);
 }
+
+#ifdef __cplusplus
+}
+#endif

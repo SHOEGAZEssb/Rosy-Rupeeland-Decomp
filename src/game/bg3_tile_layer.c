@@ -34,10 +34,6 @@ extern void OS_Halt(void);
 void Bg3TileLayer_ConfigureControl(Bg3TileLayer *);
 void Bg3TileLayer_SetMainControl(s32, s32, s32, s32);
 void Bg3TileLayer_SetSubControl(s32, s32, s32, s32);
-#ifdef __cplusplus
-}
-#endif
-
 /* Construct the common layer, install the BG3 vtable, configure BG3CNT, and return self. */
 Bg3TileLayer *Bg3TileLayer_Init(Bg3TileLayer *self, s32 engineMode,
                             s32 characterBase, s32 screenBase)
@@ -145,3 +141,7 @@ s32 Bg3TileLayer_IsVisible(Bg3TileLayer *self)
     OS_Halt();
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif

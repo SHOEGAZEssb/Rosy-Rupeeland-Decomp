@@ -34,10 +34,6 @@ extern void OS_Halt(void);
 void Bg2TileLayer_ConfigureControl(Bg2TileLayer *);
 void Bg2TileLayer_SetMainControl(s32, s32, s32, s32);
 void Bg2TileLayer_SetSubControl(s32, s32, s32, s32);
-#ifdef __cplusplus
-}
-#endif
-
 /* Construct the common layer, install the BG2 vtable, configure BG2CNT, and return self. */
 Bg2TileLayer *Bg2TileLayer_Init(Bg2TileLayer *self, s32 engineMode,
                             s32 characterBase, s32 screenBase)
@@ -147,3 +143,7 @@ s32 Bg2TileLayer_IsVisible(Bg2TileLayer *self)
     OS_Halt();
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif

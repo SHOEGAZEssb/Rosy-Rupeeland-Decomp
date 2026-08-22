@@ -34,10 +34,6 @@ extern void func_020b1b94(const void *, s32, u32);
 extern void func_020b1b2c(const void *, s32, u32);
 extern void OS_Halt(void);
 void Bg2ExtendedTileLayer_ConfigureControl(Bg2ExtendedTileLayer *);
-#ifdef __cplusplus
-}
-#endif
-
 /* Construct the common layer, install this variant's vtable, configure BG2CNT, and return self. */
 Bg2ExtendedTileLayer *Bg2ExtendedTileLayer_Init(Bg2ExtendedTileLayer *self,
                                     s32 engineMode, s32 characterBase,
@@ -121,3 +117,7 @@ s32 Bg2ExtendedTileLayer_IsVisible(Bg2ExtendedTileLayer *self)
     OS_Halt();
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif

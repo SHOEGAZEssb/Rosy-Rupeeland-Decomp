@@ -26,10 +26,6 @@ extern "C" {
 extern void RectS32_Init(void *, s32, s32, s32, s32);
 extern s32 RectS32_ContainsPoint(void *, s32, s32);
 extern void TileLayer_WriteMetatileToCache(void *, s32, s32, u16);
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Rebuild all 32x16 cache cells, starting at the layer's packed cursor and
  * wrapping its low five/four coordinate bits after every column/row.
@@ -57,6 +53,10 @@ void TileLayer_RebuildCache(TileLayerCacheState *self)
         cursorY = (cursorY & (u8)~0x0f) | ((cursorY + 1) & 0x0f);
     }
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 /*
  * Refresh a 16-tile vertical source run at fixed X. The caller's two-byte
