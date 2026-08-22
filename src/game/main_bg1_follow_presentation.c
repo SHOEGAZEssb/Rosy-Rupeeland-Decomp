@@ -24,11 +24,11 @@ typedef struct BgResourceRecord {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020de7e4;
+extern void *data_020de7e4[];
 extern const char data_020de804[];
 extern u8 *data_021052fc;
 extern void *data_020f4e18;
-extern void *gMainBgPaletteBuffer;
+extern u8 gMainBgPaletteBuffer[];
 extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void PresentationList_AppendObject(void *, void *);
@@ -44,9 +44,6 @@ extern void func_020b44e8(void);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void PaletteBuffer_Write(void *, const void *, s32, s32);
 void func_02028684(MainBg1FollowPresentation *);
-#ifdef __cplusplus
-}
-#endif
 
 /* Initialize the presentation base, retain the target, install its vtable, and set up BG1. */
 MainBg1FollowPresentation *func_02028544(MainBg1FollowPresentation *self,
@@ -145,3 +142,7 @@ void func_02028764(MainBg1FollowPresentation *self, s32 mode)
     if (mode != 1)
         func_02028684(self);
 }
+
+#ifdef __cplusplus
+}
+#endif

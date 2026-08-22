@@ -9764,21 +9764,21 @@ build build/reports/game_phase_metadata_queries_0202852c.txt: match_report build
   report_json = build/reports/game_phase_metadata_queries_0202852c.json
   report_args = --section .text --function GamePhaseVariant_GetPointerTableEntry --require-exact
 build build/reports/game_phase_metadata_queries.txt: phony build/reports/game_phase_metadata_queries_02028388.txt build/reports/game_phase_metadata_queries_0202839c.txt build/reports/game_phase_metadata_queries_02028404.txt build/reports/game_phase_metadata_queries_0202844c.txt build/reports/game_phase_metadata_queries_020284e0.txt build/reports/game_phase_metadata_queries_020284f0.txt build/reports/game_phase_metadata_queries_02028508.txt build/reports/game_phase_metadata_queries_0202852c.txt
-build build/reports/main_bg1_follow_presentation_02028544.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028544.o | build/decomp/asm/game/main_bg1_follow_presentation_02028544.o
+build build/reports/main_bg1_follow_presentation_02028544.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028544.o | build/decomp/src/game/main_bg1_follow_presentation.o
   target_object = build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028544.o
-  base_object = build/decomp/asm/game/main_bg1_follow_presentation_02028544.o
+  base_object = build/decomp/src/game/main_bg1_follow_presentation.o
 build build/reports/main_bg1_follow_presentation_02028544.txt: match_report build/reports/main_bg1_follow_presentation_02028544.json | tools/report_objdiff.py
   report_json = build/reports/main_bg1_follow_presentation_02028544.json
   report_args = --section .text --function func_02028544 --require-exact
-build build/reports/main_bg1_follow_presentation_02028574.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028574.o | build/decomp/asm/game/main_bg1_follow_presentation_02028574.o
+build build/reports/main_bg1_follow_presentation_02028574.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028574.o | build/decomp/src/game/main_bg1_follow_presentation.o
   target_object = build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028574.o
-  base_object = build/decomp/asm/game/main_bg1_follow_presentation_02028574.o
+  base_object = build/decomp/src/game/main_bg1_follow_presentation.o
 build build/reports/main_bg1_follow_presentation_02028574.txt: match_report build/reports/main_bg1_follow_presentation_02028574.json | tools/report_objdiff.py
   report_json = build/reports/main_bg1_follow_presentation_02028574.json
   report_args = --section .text --function func_02028574 --require-exact
-build build/reports/main_bg1_follow_presentation_02028588.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028588.o | build/decomp/asm/game/main_bg1_follow_presentation_02028588.o
+build build/reports/main_bg1_follow_presentation_02028588.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028588.o | build/decomp/src/game/main_bg1_follow_presentation.o
   target_object = build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028588.o
-  base_object = build/decomp/asm/game/main_bg1_follow_presentation_02028588.o
+  base_object = build/decomp/src/game/main_bg1_follow_presentation.o
 build build/reports/main_bg1_follow_presentation_02028588.txt: match_report build/reports/main_bg1_follow_presentation_02028588.json | tools/report_objdiff.py
   report_json = build/reports/main_bg1_follow_presentation_02028588.json
   report_args = --section .text --function func_02028588 --require-exact
@@ -9788,9 +9788,9 @@ build build/reports/main_bg1_follow_presentation_020285a4.json: objdiff build/de
 build build/reports/main_bg1_follow_presentation_020285a4.txt: match_report build/reports/main_bg1_follow_presentation_020285a4.json | tools/report_objdiff.py
   report_json = build/reports/main_bg1_follow_presentation_020285a4.json
   report_args = --section .text --function func_020285a4 --require-exact
-build build/reports/main_bg1_follow_presentation_02028630.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028630.o | build/decomp/asm/game/main_bg1_follow_presentation_02028630.o
+build build/reports/main_bg1_follow_presentation_02028630.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028630.o | build/decomp/src/game/main_bg1_follow_presentation.o
   target_object = build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028630.o
-  base_object = build/decomp/asm/game/main_bg1_follow_presentation_02028630.o
+  base_object = build/decomp/src/game/main_bg1_follow_presentation.o
 build build/reports/main_bg1_follow_presentation_02028630.txt: match_report build/reports/main_bg1_follow_presentation_02028630.json | tools/report_objdiff.py
   report_json = build/reports/main_bg1_follow_presentation_02028630.json
   report_args = --section .text --function func_02028630 --require-exact
@@ -9800,34 +9800,34 @@ build build/reports/main_bg1_follow_presentation_02028684.json: objdiff build/de
 build build/reports/main_bg1_follow_presentation_02028684.txt: match_report build/reports/main_bg1_follow_presentation_02028684.json | tools/report_objdiff.py
   report_json = build/reports/main_bg1_follow_presentation_02028684.json
   report_args = --section .text --function func_02028684 --require-exact
-build build/reports/main_bg1_follow_presentation_02028764.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028764.o | build/decomp/asm/game/main_bg1_follow_presentation_02028764.o
+build build/reports/main_bg1_follow_presentation_02028764.json: objdiff build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028764.o | build/decomp/src/game/main_bg1_follow_presentation.o
   target_object = build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028764.o
-  base_object = build/decomp/asm/game/main_bg1_follow_presentation_02028764.o
+  base_object = build/decomp/src/game/main_bg1_follow_presentation.o
 build build/reports/main_bg1_follow_presentation_02028764.txt: match_report build/reports/main_bg1_follow_presentation_02028764.json | tools/report_objdiff.py
   report_json = build/reports/main_bg1_follow_presentation_02028764.json
   report_args = --section .text --function func_02028764 --require-exact
 build build/reports/main_bg1_follow_presentation.txt: phony build/reports/main_bg1_follow_presentation_02028544.txt build/reports/main_bg1_follow_presentation_02028574.txt build/reports/main_bg1_follow_presentation_02028588.txt build/reports/main_bg1_follow_presentation_020285a4.txt build/reports/main_bg1_follow_presentation_02028630.txt build/reports/main_bg1_follow_presentation_02028684.txt build/reports/main_bg1_follow_presentation_02028764.txt
-build build/reports/main_window_mask_presentation_02028778.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_02028778.o | build/decomp/asm/game/main_window_mask_presentation_02028778.o
+build build/reports/main_window_mask_presentation_02028778.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_02028778.o | build/decomp/src/game/main_window_mask_presentation.o
   target_object = build/decomp/delinks/asm/game/main_window_mask_presentation_02028778.o
-  base_object = build/decomp/asm/game/main_window_mask_presentation_02028778.o
+  base_object = build/decomp/src/game/main_window_mask_presentation.o
 build build/reports/main_window_mask_presentation_02028778.txt: match_report build/reports/main_window_mask_presentation_02028778.json | tools/report_objdiff.py
   report_json = build/reports/main_window_mask_presentation_02028778.json
   report_args = --section .text --function func_02028778 --require-exact
-build build/reports/main_window_mask_presentation_020287a4.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_020287a4.o | build/decomp/asm/game/main_window_mask_presentation_020287a4.o
+build build/reports/main_window_mask_presentation_020287a4.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_020287a4.o | build/decomp/src/game/main_window_mask_presentation.o
   target_object = build/decomp/delinks/asm/game/main_window_mask_presentation_020287a4.o
-  base_object = build/decomp/asm/game/main_window_mask_presentation_020287a4.o
+  base_object = build/decomp/src/game/main_window_mask_presentation.o
 build build/reports/main_window_mask_presentation_020287a4.txt: match_report build/reports/main_window_mask_presentation_020287a4.json | tools/report_objdiff.py
   report_json = build/reports/main_window_mask_presentation_020287a4.json
   report_args = --section .text --function func_020287a4 --require-exact
-build build/reports/main_window_mask_presentation_020287b8.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_020287b8.o | build/decomp/asm/game/main_window_mask_presentation_020287b8.o
+build build/reports/main_window_mask_presentation_020287b8.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_020287b8.o | build/decomp/src/game/main_window_mask_presentation.o
   target_object = build/decomp/delinks/asm/game/main_window_mask_presentation_020287b8.o
-  base_object = build/decomp/asm/game/main_window_mask_presentation_020287b8.o
+  base_object = build/decomp/src/game/main_window_mask_presentation.o
 build build/reports/main_window_mask_presentation_020287b8.txt: match_report build/reports/main_window_mask_presentation_020287b8.json | tools/report_objdiff.py
   report_json = build/reports/main_window_mask_presentation_020287b8.json
   report_args = --section .text --function func_020287b8 --require-exact
-build build/reports/main_window_mask_presentation_020287d4.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_020287d4.o | build/decomp/asm/game/main_window_mask_presentation_020287d4.o
+build build/reports/main_window_mask_presentation_020287d4.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_020287d4.o | build/decomp/src/game/main_window_mask_presentation.o
   target_object = build/decomp/delinks/asm/game/main_window_mask_presentation_020287d4.o
-  base_object = build/decomp/asm/game/main_window_mask_presentation_020287d4.o
+  base_object = build/decomp/src/game/main_window_mask_presentation.o
 build build/reports/main_window_mask_presentation_020287d4.txt: match_report build/reports/main_window_mask_presentation_020287d4.json | tools/report_objdiff.py
   report_json = build/reports/main_window_mask_presentation_020287d4.json
   report_args = --section .text --function func_020287d4 --require-exact
@@ -9837,9 +9837,9 @@ build build/reports/main_window_mask_presentation_020287dc.json: objdiff build/d
 build build/reports/main_window_mask_presentation_020287dc.txt: match_report build/reports/main_window_mask_presentation_020287dc.json | tools/report_objdiff.py
   report_json = build/reports/main_window_mask_presentation_020287dc.json
   report_args = --section .text --function func_020287dc --require-exact
-build build/reports/main_window_mask_presentation_02028814.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_02028814.o | build/decomp/asm/game/main_window_mask_presentation_02028814.o
+build build/reports/main_window_mask_presentation_02028814.json: objdiff build/decomp/delinks/asm/game/main_window_mask_presentation_02028814.o | build/decomp/src/game/main_window_mask_presentation.o
   target_object = build/decomp/delinks/asm/game/main_window_mask_presentation_02028814.o
-  base_object = build/decomp/asm/game/main_window_mask_presentation_02028814.o
+  base_object = build/decomp/src/game/main_window_mask_presentation.o
 build build/reports/main_window_mask_presentation_02028814.txt: match_report build/reports/main_window_mask_presentation_02028814.json | tools/report_objdiff.py
   report_json = build/reports/main_window_mask_presentation_02028814.json
   report_args = --section .text --function func_02028814 --require-exact

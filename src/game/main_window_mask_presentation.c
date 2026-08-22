@@ -14,15 +14,12 @@ typedef struct MainWindowMaskPresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020de838;
+extern void *data_020de838[];
 extern const char data_020de858[];
 extern u8 *data_021052fc;
 extern void TimedSpritePresentation_InitBase(void *);
 extern void func_0201e28c(void *);
 extern void func_0201df44(void *, void *);
-#ifdef __cplusplus
-}
-#endif
 
 /* Initialize the presentation, install its vtable, and set base flag bit one. */
 MainWindowMaskPresentation *func_02028778(MainWindowMaskPresentation *self)
@@ -83,3 +80,7 @@ void func_02028814(void)
         self = func_02028778(self);
     func_0201df44(manager, self);
 }
+
+#ifdef __cplusplus
+}
+#endif
