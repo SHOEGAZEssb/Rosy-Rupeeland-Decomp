@@ -1,0 +1,7 @@
+{
+  "func_02034e1c": "Actor_BuildContactPosition",
+  "func_02034e2c": "Actor_GetInteractionRadiusOffset",
+  "func_02034e34": "Actor_PrepareForAuxiliaryInteraction",
+  "func_02034e4c": "Actor_IsCurrentState9Or10",
+  "func_02034e54": "Actor_UpdateFrameControl"
+}

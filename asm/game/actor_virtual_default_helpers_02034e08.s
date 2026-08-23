@@ -12,5 +12,4 @@ func_02034e08: ; 0x02034e08
     ldmia sp!, {r4, pc}
     .size func_02034e08, . - func_02034e08
 
-    .global func_02034e1c
-
+    .global Actor_BuildContactPosition

@@ -15791,7 +15791,7 @@ build build/reports/actor_virtual_default_helpers_02034e1c.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_virtual_default_helpers_02034e1c.o
 build build/reports/actor_virtual_default_helpers_02034e1c.txt: match_report build/reports/actor_virtual_default_helpers_02034e1c.json | tools/report_objdiff.py
   report_json = build/reports/actor_virtual_default_helpers_02034e1c.json
-  report_args = --section .text --function func_02034e1c --require-exact
+  report_args = --section .text --function Actor_BuildContactPosition --require-exact
 build build/decomp/asm/game/actor_virtual_default_helpers_02034e2c.o: mwasmarm asm/game/actor_virtual_default_helpers_02034e2c.s
 build build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e2c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_virtual_default_helpers_02034e2c.json: objdiff build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e2c.o | build/decomp/asm/game/actor_virtual_default_helpers_02034e2c.o
@@ -15799,7 +15799,7 @@ build build/reports/actor_virtual_default_helpers_02034e2c.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_virtual_default_helpers_02034e2c.o
 build build/reports/actor_virtual_default_helpers_02034e2c.txt: match_report build/reports/actor_virtual_default_helpers_02034e2c.json | tools/report_objdiff.py
   report_json = build/reports/actor_virtual_default_helpers_02034e2c.json
-  report_args = --section .text --function func_02034e2c --require-exact
+  report_args = --section .text --function Actor_GetInteractionRadiusOffset --require-exact
 build build/decomp/asm/game/actor_virtual_default_helpers_02034e34.o: mwasmarm asm/game/actor_virtual_default_helpers_02034e34.s
 build build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e34.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_virtual_default_helpers_02034e34.json: objdiff build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e34.o | build/decomp/asm/game/actor_virtual_default_helpers_02034e34.o
@@ -15807,7 +15807,7 @@ build build/reports/actor_virtual_default_helpers_02034e34.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_virtual_default_helpers_02034e34.o
 build build/reports/actor_virtual_default_helpers_02034e34.txt: match_report build/reports/actor_virtual_default_helpers_02034e34.json | tools/report_objdiff.py
   report_json = build/reports/actor_virtual_default_helpers_02034e34.json
-  report_args = --section .text --function func_02034e34 --require-exact
+  report_args = --section .text --function Actor_PrepareForAuxiliaryInteraction --require-exact
 build build/decomp/asm/game/actor_virtual_default_helpers_02034e44.o: mwasmarm asm/game/actor_virtual_default_helpers_02034e44.s
 build build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e44.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_virtual_default_helpers_02034e44.json: objdiff build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e44.o | build/decomp/asm/game/actor_virtual_default_helpers_02034e44.o
@@ -15823,7 +15823,7 @@ build build/reports/actor_virtual_default_helpers_02034e4c.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_virtual_default_helpers_02034e4c.o
 build build/reports/actor_virtual_default_helpers_02034e4c.txt: match_report build/reports/actor_virtual_default_helpers_02034e4c.json | tools/report_objdiff.py
   report_json = build/reports/actor_virtual_default_helpers_02034e4c.json
-  report_args = --section .text --function func_02034e4c --require-exact
+  report_args = --section .text --function Actor_IsCurrentState9Or10 --require-exact
 build build/decomp/asm/game/actor_virtual_default_helpers_02034e54.o: mwasmarm asm/game/actor_virtual_default_helpers_02034e54.s
 build build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e54.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_virtual_default_helpers_02034e54.json: objdiff build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e54.o | build/decomp/asm/game/actor_virtual_default_helpers_02034e54.o
@@ -15831,7 +15831,7 @@ build build/reports/actor_virtual_default_helpers_02034e54.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_virtual_default_helpers_02034e54.o
 build build/reports/actor_virtual_default_helpers_02034e54.txt: match_report build/reports/actor_virtual_default_helpers_02034e54.json | tools/report_objdiff.py
   report_json = build/reports/actor_virtual_default_helpers_02034e54.json
-  report_args = --section .text --function func_02034e54 --require-exact
+  report_args = --section .text --function Actor_UpdateFrameControl --require-exact
 build build/reports/actor_virtual_default_helpers.txt: phony build/reports/actor_virtual_default_helpers_02034e08.txt build/reports/actor_virtual_default_helpers_02034e1c.txt build/reports/actor_virtual_default_helpers_02034e2c.txt build/reports/actor_virtual_default_helpers_02034e34.txt build/reports/actor_virtual_default_helpers_02034e44.txt build/reports/actor_virtual_default_helpers_02034e4c.txt build/reports/actor_virtual_default_helpers_02034e54.txt
 
 build actor_virtual_default_helpers: phony build/decomp/src/game/actor_virtual_default_helpers.o build/decomp/asm/game/actor_virtual_default_helpers_02034e08.o build/decomp/asm/game/actor_virtual_default_helpers_02034e1c.o build/decomp/asm/game/actor_virtual_default_helpers_02034e2c.o build/decomp/asm/game/actor_virtual_default_helpers_02034e34.o build/decomp/asm/game/actor_virtual_default_helpers_02034e44.o build/decomp/asm/game/actor_virtual_default_helpers_02034e4c.o build/decomp/asm/game/actor_virtual_default_helpers_02034e54.o build/reports/actor_virtual_default_helpers.txt

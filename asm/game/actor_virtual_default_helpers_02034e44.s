@@ -8,5 +8,4 @@ func_02034e44: ; 0x02034e44
     bx lr
     .size func_02034e44, . - func_02034e44
 
-    .global func_02034e4c
-
+    .global Actor_IsCurrentState9Or10

@@ -1,7 +1,7 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Supply default lifecycle, position-copy, flag, and constant virtual hooks. */
+/* Supply snapshot deletion and shared actor-family virtual defaults. */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,25 +22,28 @@ void *func_02034e08(void *self)
 }
 
 /*
- * Construct/copy the vector at source+0x18 into destination through
- * VecFx32Object_InitCopy. Returns no explicit value; the helper may manage SDK value state.
+ * Copy the actor transform at +0x18 into output through VecFx32Object_InitCopy.
+ * The auxiliary-interaction context is unused by the base implementation.
+ * Returns no value; the vector helper may manage SDK object state.
  */
-void func_02034e1c(void *destination, const void *source)
+void Actor_BuildContactPosition(void *output, void *actor,
+                                const void *interactionContext)
 {
-    VecFx32Object_InitCopy(destination, (const u8 *)source + 0x18);
+    (void)interactionContext;
+    VecFx32Object_InitCopy(output, (const u8 *)actor + 0x18);
 }
 
-/* Ignore self and return zero as the default query result. */
-s32 func_02034e2c(void *self)
+/* Return no integer-world-unit adjustment to an interaction record's radius. */
+s32 Actor_GetInteractionRadiusOffset(void *actor)
 {
-    (void)self;
+    (void)actor;
     return 0;
 }
 
-/* Set actor flag 0x80 at offset 0xd0 and return no value. */
-void func_02034e34(void *self)
+/* Mark actor-local state as an AuxiliaryInteraction attaches the actor. */
+void Actor_PrepareForAuxiliaryInteraction(void *actor)
 {
-    *(u32 *)((u8 *)self + 0xd0) |= 0x80;
+    *(u32 *)((u8 *)actor + 0xd0) |= 0x80;
 }
 
 /* Ignore self and return zero as a second default query result. */
@@ -50,15 +53,15 @@ s32 func_02034e44(void *self)
     return 0;
 }
 
-/* Ignore self and return zero as a third default query result. */
-s32 func_02034e4c(void *self)
+/* Base actors are never in the subtype-defined current states nine or ten. */
+s32 Actor_IsCurrentState9Or10(void *actor)
 {
-    (void)self;
+    (void)actor;
     return 0;
 }
 
-/* Empty recovered callback; ignores self and returns no value. */
-void func_02034e54(void *self)
+/* Base actor frame control has no subtype-specific work. */
+void Actor_UpdateFrameControl(void *actor)
 {
-    (void)self;
+    (void)actor;
 }
