@@ -7,7 +7,7 @@
 .extern VecFx32Object_Add
 .extern ActorRuntimeTriple_Assign
 .extern Actor_UpdateTerrainMotionFeedback
-.extern func_020328d0
+.extern VecFx32Object_ScaleInPlaceRounded
 .extern func_020adae4
 .extern func_020adc90
 
@@ -158,12 +158,12 @@ Actor_IntegrateMotion: ; 0x02032520
     ldreq r1, .L_020328c0
     add r0, r4, #0x88
     ldrne r1, .L_020328c4
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     b .L_02032754
 .L_02032748:
     ldr r1, .L_020328c8
     add r0, r4, #0x88
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
 .L_02032754:
     ldr r0, [r4, #0x9c]
     cmp r0, #0x0
@@ -198,7 +198,7 @@ Actor_IntegrateMotion: ; 0x02032520
     ldreq r1, .L_020328cc
     add r0, r4, #0x98
     ldrne r1, .L_020328c0
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     b .L_02032808
 .L_020327e0:
     mov r1, #0x0

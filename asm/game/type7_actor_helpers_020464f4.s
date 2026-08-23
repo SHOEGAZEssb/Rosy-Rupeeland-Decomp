@@ -9,7 +9,7 @@
 .extern Actor_UpdatePresentation
 .extern Actor_RefreshCachedTerrainHeight
 .extern Actor_ApplyMotionImpulse
-.extern ActorVector_DivideByScalar
+.extern VecFx32Object_DivideByScalar
 .extern AuxiliaryInteraction_UpdateResourceFrame
 .global Type7Actor_ResetBaseTransformAndMotion
 .type Type7Actor_ResetBaseTransformAndMotion, @function
@@ -108,7 +108,7 @@ Type7Actor_ApplyCallbackAdjustedMotionImpulse: ; 0x020465b8
 .L_0204662c:
     add r0, sp, #0x0
     mov r2, #0x2000
-    bl ActorVector_DivideByScalar
+    bl VecFx32Object_DivideByScalar
     add r1, sp, #0x0
     mov r0, r4
     mov r2, #0x0

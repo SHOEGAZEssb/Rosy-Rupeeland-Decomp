@@ -8,7 +8,7 @@
 .extern func_02008378
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorDerivedType1_IsTargetStateEligible
-.extern ActorVector_DivideByScalar
+.extern VecFx32Object_DivideByScalar
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_PlayStateSound
 .extern Fx32Vector2_LimitMagnitude
@@ -188,7 +188,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r0, sp, #0x4
     add r1, sp, #0x14
     mov r2, #0x2000
-    bl ActorVector_DivideByScalar
+    bl VecFx32Object_DivideByScalar
     add r0, sp, #0x24
     add r2, sp, #0x4
     add r1, r7, #0x18

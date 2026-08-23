@@ -1,26 +1,23 @@
-#include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
-/* Recovered fixed-point scaling helper used by the tracked-resource subclass. */
+/* Divide a fixed-point vector in place by a Q20.12 scalar. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_020adc90(s32 value, s32 scale);
+extern s32 func_020adc90(s32 numerator, s32 denominator);
 #ifdef __cplusplus
 }
 #endif
 
-#define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
-
 /*
- * Inputs are a vector-like object and a fixed-point scale. Replaces the three
- * components at offsets 4, 8, and 0x0C with func_020adc90(component, scale).
- * The leading word is preserved. Returns nothing and has no direct SDK or
- * hardware effects; the exact fixed-point format remains unconfirmed.
+ * Replace X/Y/Z with func_020adc90(component, divisor), preserving the vtable.
+ * Returns nothing and has no direct SDK or hardware effects. The operation
+ * inherits the shared signed Q20.12 divider's zero-divisor behavior.
  */
-void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 scale)
+void VecFx32Object_DivideInPlaceByScalar(VecFx32Object *vector, fx32 divisor)
 {
-    FIELD(s32, vector, 4) = func_020adc90(FIELD(s32, vector, 4), scale);
-    FIELD(s32, vector, 8) = func_020adc90(FIELD(s32, vector, 8), scale);
-    FIELD(s32, vector, 0x0c) = func_020adc90(FIELD(s32, vector, 0x0c), scale);
+    vector->value.x = func_020adc90(vector->value.x, divisor);
+    vector->value.y = func_020adc90(vector->value.y, divisor);
+    vector->value.z = func_020adc90(vector->value.z, divisor);
 }

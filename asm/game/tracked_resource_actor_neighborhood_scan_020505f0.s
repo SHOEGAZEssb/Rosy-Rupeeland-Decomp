@@ -7,7 +7,7 @@
 .extern VecFx32Object_Normalize
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_020328d0
+.extern VecFx32Object_ScaleInPlaceRounded
 .extern ActorDerivedType1_StartRecord
 .extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_DispatchTargetInteraction
@@ -128,7 +128,7 @@ TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect:
     add r0, sp, #0x8
     ldrsh r1, [r1, #0x2a]
     mov r1, r1, lsl #0x4
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     mov r0, r6
     ldr r3, [r0, #0x0]
     add r1, sp, #0x8

@@ -47,6 +47,11 @@ void VecFx32Object_Add(VecFx32Object *self, const VecFx32Object *other);
 void VecFx32Object_Subtract(VecFx32Object *self, const VecFx32Object *other);
 void VecFx32Object_ScaleRounded(VecFx32Object *destination,
                                 const VecFx32Object *source, fx32 scale);
+void VecFx32Object_ScaleInPlaceRounded(VecFx32Object *vector, fx32 scale);
+void VecFx32Object_DivideByScalar(VecFx32Object *destination,
+                                  const VecFx32Object *source, fx32 divisor);
+void VecFx32Object_DivideInPlaceByScalar(VecFx32Object *vector,
+                                         fx32 divisor);
 
 #ifdef __cplusplus
 }

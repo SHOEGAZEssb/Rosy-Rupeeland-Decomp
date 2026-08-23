@@ -1,33 +1,26 @@
-#include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
-/* Divide the three spatial components of an actor vector into initialized output storage. */
-typedef struct ActorVectorValue {
-    u32 field_00;
-    s32 x_04;
-    s32 y_08;
-    s32 z_0c;
-} ActorVectorValue;
+/* Divide a fixed-point vector into initialized output storage. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void VecFx32Object_Init(void *value);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Initialize destination, then fixed-point-divide source components +0x04,
- * +0x08, and +0x0c by divisor. Returns no value. VecFx32Object_Init establishes
- * the vector's runtime metadata, while func_020adc90 supplies SDK-style
- * signed fixed-point division and therefore inherits its zero-divisor rules.
+ * Initialize destination, then fixed-point-divide source X/Y/Z by divisor.
+ * Returns no value. VecFx32Object_Init establishes the vector's runtime
+ * metadata, while func_020adc90 supplies signed Q20.12 division and therefore
+ * inherits its zero-divisor rules.
  */
-void ActorVector_DivideByScalar(ActorVectorValue *destination,
-                   const ActorVectorValue *source, s32 divisor)
+void VecFx32Object_DivideByScalar(VecFx32Object *destination,
+                                  const VecFx32Object *source, fx32 divisor)
 {
     VecFx32Object_Init(destination);
-    destination->x_04 = func_020adc90(source->x_04, divisor);
-    destination->y_08 = func_020adc90(source->y_08, divisor);
-    destination->z_0c = func_020adc90(source->z_0c, divisor);
+    destination->value.x = func_020adc90(source->value.x, divisor);
+    destination->value.y = func_020adc90(source->value.y, divisor);
+    destination->value.z = func_020adc90(source->value.z, divisor);
 }

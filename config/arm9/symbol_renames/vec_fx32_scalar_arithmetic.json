@@ -1,0 +1,6 @@
+{
+  "func_020233c8": "VecFx32Object_ScaleRounded",
+  "func_020328d0": "VecFx32Object_ScaleInPlaceRounded",
+  "func_02038784": "VecFx32Object_DivideByScalar",
+  "func_02050b34": "VecFx32Object_DivideInPlaceByScalar"
+}

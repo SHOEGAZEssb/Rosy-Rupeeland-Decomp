@@ -3,8 +3,8 @@
 .extern VecFx32Object_GetMagnitude
 .extern VecFx32Object_Assign
 .extern VecFx32_Subtract
-.extern func_020328d0
-.extern TrackedResourceActor_ScaleVectorComponents
+.extern VecFx32Object_ScaleInPlaceRounded
+.extern VecFx32Object_DivideInPlaceByScalar
 .text
     .global TrackedResourceActorType28_SetupFromRecord
 TrackedResourceActorType28_SetupFromRecord:
@@ -28,11 +28,11 @@ TrackedResourceActorType28_SetupFromRecord:
     cmp r1, #0x4
     movlt r1, #0x4
     add r0, r4, #0x38
-    bl TrackedResourceActor_ScaleVectorComponents
+    bl VecFx32Object_DivideInPlaceByScalar
     ldrsh r1, [r5, #0xa]
     add r0, r4, #0x38
     mov r1, r1, lsl #0x4
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     mov r0, #0x10000
     ldrsh r2, [r5, #0xa]
     ldr r1, [r4, #0x54]

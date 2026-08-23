@@ -18,7 +18,7 @@
 .extern func_02022cb0
 .extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_IsTargetStateEligible
-.extern ActorVector_DivideByScalar
+.extern VecFx32Object_DivideByScalar
 .extern Type1Actor_TryEnterFailureState
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern Fx32Vector2_LimitMagnitude
@@ -211,7 +211,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add r0, sp, #0x8
     add r1, sp, #0x18
     mov r2, #0x2000
-    bl ActorVector_DivideByScalar
+    bl VecFx32Object_DivideByScalar
     add r0, sp, #0x48
     add r2, sp, #0x8
     add r1, r7, #0x18

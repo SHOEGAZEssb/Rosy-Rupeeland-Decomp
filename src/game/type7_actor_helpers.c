@@ -16,7 +16,8 @@ extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
                                      const void *viewPosition);
 extern void AuxiliaryInteraction_UpdateResourceFrame(void *resource);
 extern void Actor_ApplyMotionImpulse(void *actor, const void *value, s32 mode);
-extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
+extern void VecFx32Object_DivideByScalar(void *output, const void *input,
+                                         s32 divisor);
 #ifdef __cplusplus
 }
 #endif
@@ -65,8 +66,8 @@ void Type7Actor_ForwardHelperEvent(void *screenPosition, void *self,
  * when record +0x29c halfword +0x40 is zero. Otherwise compare callback pair
  * +0x208/+0x20c against data_020e16b0+0x20/data_020e16d0+4. Nonmatching pairs
  * forward actor/value/condition to Actor_ApplyMotionImpulse. A matching pair
- * first derives a temporary from value with ActorVector_DivideByScalar scale
- * 0x2000, then calls Actor_ApplyMotionImpulse(actor,temporary,0) and finalizes
+ * first divides value into a temporary with divisor 0x2000, then calls
+ * Actor_ApplyMotionImpulse(actor,temporary,0) and finalizes
  * it. Actor/transform state may change; no direct SDK or hardware access
  * occurs.
  */
@@ -88,7 +89,7 @@ void Type7Actor_ApplyCallbackAdjustedMotionImpulse(void *self,
         Actor_ApplyMotionImpulse(actor, value, condition);
         return;
     }
-    ActorVector_DivideByScalar(temporary, value, 0x2000);
+    VecFx32Object_DivideByScalar(temporary, value, 0x2000);
     Actor_ApplyMotionImpulse(actor, temporary, 0);
     VecFx32Object_Destroy(temporary);
 }

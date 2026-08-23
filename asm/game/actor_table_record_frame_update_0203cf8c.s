@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern VecFx32Object_GetMagnitude
 .extern Actor_TurnTowardVector
-.extern func_020328d0
+.extern VecFx32Object_ScaleInPlaceRounded
 .extern Actor_UpdateAnimationState
 .extern Actor_UpdateTimedResourceState
 .extern Actor_QueryTerrainHeight
@@ -61,7 +61,7 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     mov r1, r2, asr #0x7
     add r1, r2, r1, lsr #0x18
     mov r1, r1, asr #0x8
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     b .L_0203d0ac
 .L_0203d054:
     ldr r1, [r4, #0x214]
@@ -71,7 +71,7 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     mov r1, r2, asr #0x7
     add r1, r2, r1, lsr #0x18
     mov r1, r1, asr #0x8
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     ldr r1, [r4, #0xd0]
     add r0, r4, #0x88
     bic r1, r1, #0x40

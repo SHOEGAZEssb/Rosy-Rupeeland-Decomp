@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 Actor_UpdateTimedResourceState(void *actor);
-extern void func_020328d0(void *vector, s32 scale);
+extern void VecFx32Object_ScaleInPlaceRounded(void *vector, s32 scale);
 extern s32 VecFx32Object_GetMagnitude(void *vector);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void ActorFeedback_SpawnIndexedPresentation(void *actor, u32 resource, u16 value);
@@ -68,9 +68,11 @@ void ActorTableRecord_UpdateFrame(void *self)
     record = *(u8 **)(actor + 0x214);
     if (actor[0x210] != 0) {
         --actor[0x210];
-        func_020328d0(actor + 0x88, *(s16 *)(record + 6) * 16);
+        VecFx32Object_ScaleInPlaceRounded(
+            actor + 0x88, *(s16 *)(record + 6) * 16);
     } else {
-        func_020328d0(actor + 0x88, *(s16 *)(record + 8) * 16);
+        VecFx32Object_ScaleInPlaceRounded(
+            actor + 0x88, *(s16 *)(record + 8) * 16);
         *(u32 *)(actor + 0xd0) &= ~0x40;
         if (VecFx32Object_GetMagnitude(actor + 0x88) < 410) {
             *(s32 *)(actor + 0x8c) = 0;

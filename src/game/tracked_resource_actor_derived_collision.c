@@ -11,7 +11,7 @@ extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
-extern void func_020328d0(void *vector, s32 angle);
+extern void VecFx32Object_ScaleInPlaceRounded(void *vector, s32 scale);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
@@ -30,7 +30,8 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
 /*
  * Inputs are a subclass actor, an optional target, and two unused callback
  * arguments. If global state permits and the target is below the actor, copy
- * and record-rotate the actor vector at 0x38 and pass it to target virtual slot
+ * and scale the actor vector at 0x38 by the record coefficient before passing
+ * it to target virtual slot
  * 0xB8. Then zero that actor vector, enter low state 2 while preserving state
  * bit 15, enable flags 0x1F0000, reset timer 0x1F8, and clear actor flag mask
  * 0x00800040. It notifies ActorCollection_QueueActorForRemoval and, for a lower target, invokes the
@@ -50,7 +51,7 @@ void TrackedResourceActorType21_HandleCollision(void *actor, void *target, u32 u
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(&gActorRuntimeCollection) == 0 && lower) {
         VecFx32Object_InitCopy(vector, (u8 *)actor + 0x38);
         FIELD(s32, vector, 0x0c) = 0;
-        func_020328d0(vector,
+        VecFx32Object_ScaleInPlaceRounded(vector,
                       (s32)FIELD(s16, FIELD(void *, actor, 0x1fc), 0x2a) << 4);
         virtual_function(target, 0xb8)(target, vector, 1);
         VecFx32Object_Destroy(vector);

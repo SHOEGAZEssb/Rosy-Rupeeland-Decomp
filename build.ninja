@@ -14982,7 +14982,7 @@ build actor_motion_integration: phony build/decomp/src/game/actor_motion_integra
 
 actor_vector_damping_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_vector_damping.o: mwccarm src/game/actor_vector_damping.c | include/tingle/types.h
+build build/decomp/src/game/actor_vector_damping.o: mwccarm src/game/actor_vector_damping.c | include/tingle/vec_fx32.h include/tingle/types.h
   source = src/game/actor_vector_damping.c
   cflags = $actor_vector_damping_cflags
 build build/decomp/asm/game/actor_vector_damping_020328d0.o: mwasmarm asm/game/actor_vector_damping_020328d0.s
@@ -14992,7 +14992,7 @@ build build/reports/actor_vector_damping_020328d0.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/actor_vector_damping_020328d0.o
 build build/reports/actor_vector_damping_020328d0.txt: match_report build/reports/actor_vector_damping_020328d0.json | tools/report_objdiff.py
   report_json = build/reports/actor_vector_damping_020328d0.json
-  report_args = --section .text --function func_020328d0 --require-exact
+  report_args = --section .text --function VecFx32Object_ScaleInPlaceRounded --require-exact
 build build/reports/actor_vector_damping.txt: phony build/reports/actor_vector_damping_020328d0.txt
 
 build actor_vector_damping: phony build/decomp/src/game/actor_vector_damping.o build/decomp/asm/game/actor_vector_damping_020328d0.o build/reports/actor_vector_damping.txt
@@ -16331,7 +16331,7 @@ build actor_derived_type1_target_displacement: phony build/decomp/src/game/actor
 
 actor_vector_component_divide_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_vector_component_divide.o: mwccarm src/game/actor_vector_component_divide.c | include/tingle/types.h
+build build/decomp/src/game/actor_vector_component_divide.o: mwccarm src/game/actor_vector_component_divide.c | include/tingle/vec_fx32.h include/tingle/types.h
   source = src/game/actor_vector_component_divide.c
   cflags = $actor_vector_component_divide_cflags
 build build/decomp/asm/game/actor_vector_component_divide_02038784.o: mwasmarm asm/game/actor_vector_component_divide_02038784.s
@@ -16341,7 +16341,7 @@ build build/reports/actor_vector_component_divide_02038784.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_vector_component_divide_02038784.o
 build build/reports/actor_vector_component_divide_02038784.txt: match_report build/reports/actor_vector_component_divide_02038784.json | tools/report_objdiff.py
   report_json = build/reports/actor_vector_component_divide_02038784.json
-  report_args = --section .text --function ActorVector_DivideByScalar --require-exact
+  report_args = --section .text --function VecFx32Object_DivideByScalar --require-exact
 build build/reports/actor_vector_component_divide.txt: phony build/reports/actor_vector_component_divide_02038784.txt
 
 build actor_vector_component_divide: phony build/decomp/src/game/actor_vector_component_divide.o build/decomp/asm/game/actor_vector_component_divide_02038784.o build/reports/actor_vector_component_divide.txt
@@ -20479,7 +20479,7 @@ build build/reports/tracked_resource_actor_derived_setup_02050a8c.txt: match_rep
 build tracked_resource_actor_derived_setup: phony build/decomp/src/game/tracked_resource_actor_derived_setup.o build/decomp/asm/game/tracked_resource_actor_derived_setup_02050a8c.o build/reports/tracked_resource_actor_derived_setup_02050a8c.txt
 
 tracked_resource_actor_vector_scale_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/tracked_resource_actor_vector_scale.o: mwccarm src/game/tracked_resource_actor_vector_scale.c | include/tingle/types.h
+build build/decomp/src/game/tracked_resource_actor_vector_scale.o: mwccarm src/game/tracked_resource_actor_vector_scale.c | include/tingle/vec_fx32.h include/tingle/types.h
   source = src/game/tracked_resource_actor_vector_scale.c
   cflags = $tracked_resource_actor_vector_scale_cflags
 build build/decomp/asm/game/tracked_resource_actor_vector_scale_02050b34.o: mwasmarm asm/game/tracked_resource_actor_vector_scale_02050b34.s
@@ -20489,7 +20489,7 @@ build build/reports/tracked_resource_actor_vector_scale_02050b34.json: objdiff b
   base_object = build/decomp/asm/game/tracked_resource_actor_vector_scale_02050b34.o
 build build/reports/tracked_resource_actor_vector_scale_02050b34.txt: match_report build/reports/tracked_resource_actor_vector_scale_02050b34.json | tools/report_objdiff.py
   report_json = build/reports/tracked_resource_actor_vector_scale_02050b34.json
-  report_args = --section .text --function TrackedResourceActor_ScaleVectorComponents --require-exact
+  report_args = --section .text --function VecFx32Object_DivideInPlaceByScalar --require-exact
 
 build tracked_resource_actor_vector_scale: phony build/decomp/src/game/tracked_resource_actor_vector_scale.o build/decomp/asm/game/tracked_resource_actor_vector_scale_02050b34.o build/reports/tracked_resource_actor_vector_scale_02050b34.txt
 

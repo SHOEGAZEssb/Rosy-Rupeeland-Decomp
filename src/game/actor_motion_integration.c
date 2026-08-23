@@ -21,7 +21,7 @@ extern void ActorRuntimeTriple_Assign(void *, s32, s32, s32);
 extern s32 func_020adae4(s32, s32);
 extern s32 func_020adc90(s32, s32);
 extern void Actor_UpdateTerrainMotionFeedback(void *);
-extern void func_020328d0(void *, s32);
+extern void VecFx32Object_ScaleInPlaceRounded(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -98,11 +98,11 @@ void Actor_IntegrateMotion(void *self)
 
     VecFx32Object_Add(actor + 0x18, actor + 0x88);
     if (*(u32 *)(actor + 0xd0) & 0x10)
-        func_020328d0(actor + 0x88, 0xfae);
+        VecFx32Object_ScaleInPlaceRounded(actor + 0x88, 0xfae);
     else if (*(s32 *)(actor + 0x24) == *(s32 *)(actor + 0x1dc))
-        func_020328d0(actor + 0x88, 0xee1);
+        VecFx32Object_ScaleInPlaceRounded(actor + 0x88, 0xee1);
     else
-        func_020328d0(actor + 0x88, 0xf5c);
+        VecFx32Object_ScaleInPlaceRounded(actor + 0x88, 0xf5c);
 
     if (*(s32 *)(actor + 0x9c) || *(s32 *)(actor + 0xa0) ||
         *(s32 *)(actor + 0xa4)) {
@@ -115,7 +115,7 @@ void Actor_IntegrateMotion(void *self)
             *(s32 *)(actor + 0xa4) =
                 func_020adc90(*(s32 *)(actor + 0xa4), magnitude);
             VecFx32Object_Add(actor + 0x18, actor + 0x98);
-            func_020328d0(actor + 0x98,
+            VecFx32Object_ScaleInPlaceRounded(actor + 0x98,
                           *(s32 *)(actor + 0x24) ==
                                   *(s32 *)(actor + 0x1dc)
                               ? 0x99a

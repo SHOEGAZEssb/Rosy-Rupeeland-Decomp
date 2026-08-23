@@ -13,7 +13,7 @@ extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Object_Normalize(void *vector);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, s32 group);
-extern void func_020328d0(void *vector, s32 angle);
+extern void VecFx32Object_ScaleInPlaceRounded(void *vector, s32 scale);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
@@ -36,7 +36,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * Unless global state gActorRuntimeCollection disables processing, scan group 1 of the
  * actor manager at data_021052fc. Candidates must pass type, state-bit, height,
  * and record-radius checks. Nearby candidates can receive a normalized and
- * record-rotated direction vector, followed by one of five behaviors selected
+ * record-scaled direction vector, followed by one of five behaviors selected
  * by signed record byte 0x2C. Modes dispatch damage-like values, the recovered
  * interaction helper, or virtual collision callbacks; mode 4 can also set bit
  * 0x100000 on type-7 candidates. Returns nothing. It mutates candidate engine
@@ -104,7 +104,8 @@ void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, u32 
         if (distance > 0x1000 && virtual_function(candidate, 8)(candidate) == 0) {
             VecFx32Object_InitComponents(direction, dx, dy, 0);
             VecFx32Object_Normalize(direction);
-            func_020328d0(direction, (s32)FIELD(s16, record, 0x2a) << 4);
+            VecFx32Object_ScaleInPlaceRounded(
+                direction, (s32)FIELD(s16, record, 0x2a) << 4);
             virtual_function(candidate, 0xb8)(candidate, direction,
                                                mode != 1 && mode != 3);
             VecFx32Object_Destroy(direction);

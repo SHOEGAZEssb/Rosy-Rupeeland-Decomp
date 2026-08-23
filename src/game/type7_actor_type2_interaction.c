@@ -16,7 +16,8 @@ extern void VecFx32Object_Subtract(void *first, const void *second);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
 extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 limit);
-extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
+extern void VecFx32Object_DivideByScalar(void *output, const void *input,
+                                         s32 divisor);
 extern void func_02008378(void *output, const void *first, const void *second);
 /*
  * The extra arguments are ignored by the one-argument accessor but preserve
@@ -122,7 +123,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
     }
 
     VecFx32_Subtract(displacement, other + 0x18, actor + 0x18);
-    ActorVector_DivideByScalar(scaled, displacement, 0x2000);
+    VecFx32Object_DivideByScalar(scaled, displacement, 0x2000);
     func_02008378(effectTransform, actor + 0x18, scaled);
     VecFx32Object_Destroy(scaled);
     VecFx32Object_Destroy(displacement);

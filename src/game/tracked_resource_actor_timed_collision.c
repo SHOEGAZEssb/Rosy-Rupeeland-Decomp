@@ -13,11 +13,11 @@ extern s32 VecFx32Object_GetMagnitude(const void *vector);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *destination, const void *target,
                           const void *source);
-extern void func_020328d0(void *vector, s32 angle);
+extern void VecFx32Object_ScaleInPlaceRounded(void *vector, s32 scale);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
-extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length);
+extern void VecFx32Object_DivideInPlaceByScalar(void *vector, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
 }
@@ -36,8 +36,9 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * A positive halfword cooldown at 0x200 suppresses all work. Otherwise, when
  * global state permits and a target exists, copy vector 0x88, divide its two
  * recovered components by -8, clear its fourth word, and send it to target slot
- * 0xB8. Rebuild vector 0x88 from actor and target positions, clamp its length to
- * at least 4, rotate by record halfword 0x0A, and set field 0x44 to 0x2000 when
+ * 0xB8. Rebuild vector 0x88 from actor and target positions, clamp a divisor
+ * derived from its magnitude to at least 4, divide the vector by it, scale by
+ * record halfword 0x0A, and set field 0x44 to 0x2000 when
  * field 0x24 is within 0x8000 of Actor_GetCachedTerrainHeight. Finally zero fields 0x3C/0x40,
  * enter low state 0 while preserving state bit 15, reset timer 0x1F8, set flag
  * 0x800000, and invoke effect and interaction helpers. Returns nothing; engine
@@ -65,8 +66,8 @@ void TrackedResourceActorType26_HandleCollision(void *actor, void *target, u32 u
         length = VecFx32Object_GetMagnitude((u8 *)actor + 0x88);
         if (length < 4)
             length = 4;
-        TrackedResourceActor_ScaleVectorComponents((u8 *)actor + 0x88, length);
-        func_020328d0((u8 *)actor + 0x88,
+        VecFx32Object_DivideInPlaceByScalar((u8 *)actor + 0x88, length);
+        VecFx32Object_ScaleInPlaceRounded((u8 *)actor + 0x88,
                       (s32)FIELD(s16, FIELD(void *, actor, 0x1fc), 0x0a) << 4);
         if (FIELD(s32, actor, 0x24) <= Actor_GetCachedTerrainHeight(actor) + 0x8000)
             FIELD(s32, actor, 0x44) = 0x2000;

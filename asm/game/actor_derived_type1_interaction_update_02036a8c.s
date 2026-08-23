@@ -22,7 +22,7 @@
 .extern ActorRuntimeCollection_IsQueuedValueMissing
 .extern ActorRuntimeCollection_GetBusyState
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_020328d0
+.extern VecFx32Object_ScaleInPlaceRounded
 .extern Actor_QueryTerrainHeight
 .extern Actor_PlayHorizontalSpatialSound
 .extern Actor_IsAtCachedTerrainHeight
@@ -211,7 +211,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     bl VecFx32Object_Normalize
     mov r0, r6
     mov r1, r5
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     ldr r0, [r8, r9, lsl #0x2]
     mov r1, r6
     mov r2, r11
@@ -276,7 +276,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     bl VecFx32Object_Normalize
     add r0, sp, #0x30
     mov r1, #0x3000
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     add r0, r8, #0x38
     add r1, sp, #0x30
     bl VecFx32Object_Assign

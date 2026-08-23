@@ -28,7 +28,7 @@ extern void VecFx32Object_Assign(void *destination, const void *source);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void VecFx32Object_Normalize(void *value);
-extern void func_020328d0(void *value, s32 scale);
+extern void VecFx32Object_ScaleInPlaceRounded(void *value, s32 scale);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
@@ -165,7 +165,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                 func_020adcac(target + 0x1c, actorPosition + 1) < 0x20000) {
                 VecFx32_Subtract(displacement, target + 0x18, actor + 0x18);
                 VecFx32Object_Normalize(displacement);
-                func_020328d0(displacement, 0x1800);
+                VecFx32Object_ScaleInPlaceRounded(displacement, 0x1800);
                 (*(void (**)(void *, const void *, s32))
                     (*(u8 **)target + 0xb8))(target, displacement, 1);
                 VecFx32Object_Destroy(displacement);
@@ -185,7 +185,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                 (*(void (**)(void *, s32))(*(u8 **)target + 0xc4))(target, 0);
                 VecFx32_Subtract(displacement, target + 0x18, actor + 0x18);
                 VecFx32Object_Normalize(displacement);
-                func_020328d0(displacement, 0x3000);
+                VecFx32Object_ScaleInPlaceRounded(displacement, 0x3000);
                 VecFx32Object_Assign(target + 0x38, displacement);
                 VecFx32Object_Destroy(displacement);
             }

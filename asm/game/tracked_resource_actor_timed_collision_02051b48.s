@@ -6,11 +6,11 @@
 .extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_020328d0
+.extern VecFx32Object_ScaleInPlaceRounded
 .extern Actor_GetCachedTerrainHeight
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
-.extern TrackedResourceActor_ScaleVectorComponents
+.extern VecFx32Object_DivideInPlaceByScalar
 .extern func_020adae4
 .text
     .global TrackedResourceActorType26_HandleCollision
@@ -62,12 +62,12 @@ TrackedResourceActorType26_HandleCollision:
     cmp r1, #0x4
     movlt r1, #0x4
     add r0, r5, #0x88
-    bl TrackedResourceActor_ScaleVectorComponents
+    bl VecFx32Object_DivideInPlaceByScalar
     ldr r1, [r5, #0x1fc]
     add r0, r5, #0x88
     ldrsh r1, [r1, #0xa]
     mov r1, r1, lsl #0x4
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     mov r0, r5
     bl Actor_GetCachedTerrainHeight
     ldr r1, [r5, #0x24]

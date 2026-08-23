@@ -1,19 +1,18 @@
-#include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
-/* Scale an actor motion vector by a 20.12 damping coefficient. */
+/* Scale a fixed-point vector in place by a Q20.12 coefficient. */
 
 /*
- * Multiply signed 20.12 components at vector offsets 0x04, 0x08, and 0x0c by
- * coefficient, round each product with 0x800, and store the shifted results.
- * Offset 0x00 is preserved. Returns no value and touches no hardware or SDK.
+ * Multiply the signed Q20.12 X/Y/Z components by scale, add 0x800 before each
+ * arithmetic right shift by 12, and store the results in place. The vtable is
+ * preserved. Returns no value and touches no hardware or SDK.
  */
-void func_020328d0(void *vectorPointer, s32 coefficient)
+void VecFx32Object_ScaleInPlaceRounded(VecFx32Object *vector, fx32 scale)
 {
-    u8 *vector = (u8 *)vectorPointer;
-    *(s32 *)(vector + 0x04) =
-        (s32)(((s64)*(s32 *)(vector + 0x04) * coefficient + 0x800) >> 12);
-    *(s32 *)(vector + 0x08) =
-        (s32)(((s64)*(s32 *)(vector + 0x08) * coefficient + 0x800) >> 12);
-    *(s32 *)(vector + 0x0c) =
-        (s32)(((s64)*(s32 *)(vector + 0x0c) * coefficient + 0x800) >> 12);
+    vector->value.x =
+        (s32)(((s64)vector->value.x * scale + 0x800) >> 12);
+    vector->value.y =
+        (s32)(((s64)vector->value.y * scale + 0x800) >> 12);
+    vector->value.z =
+        (s32)(((s64)vector->value.z * scale + 0x800) >> 12);
 }

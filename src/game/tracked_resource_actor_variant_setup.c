@@ -9,8 +9,8 @@ extern void VecFx32Object_Destroy(void *vector);
 extern s32 VecFx32Object_GetMagnitude(const void *vector);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *destination, u32 argument, const void *position);
-extern void func_020328d0(void *vector, s32 angle);
-extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length);
+extern void VecFx32Object_ScaleInPlaceRounded(void *vector, s32 scale);
+extern void VecFx32Object_DivideInPlaceByScalar(void *vector, s32 divisor);
 #ifdef __cplusplus
 }
 #endif
@@ -20,8 +20,9 @@ extern void TrackedResourceActor_ScaleVectorComponents(void *vector, s32 length)
 /*
  * Inputs are a variant actor, its record, a transform-related argument, and an
  * unused fourth value. Stores the record, derives and copies a vector into
- * field 0x38, applies signed record byte 0x15, clamps its recovered length to
- * at least 4, and rotates by record halfword 0x0A shifted four bits. It then
+ * field 0x38, applies signed record byte 0x15, clamps a magnitude-derived
+ * divisor to at least 4, divides the vector by it, and scales by record halfword
+ * 0x0A shifted four bits. It then
  * forces field 0x44 to 0x1800, sets flag 0x800000 at 0x14 and flag 0x2000 at
  * 0xD0, and replaces the low half of 0x5C with 8. Returns nothing; engine state
  * changes without direct hardware access. Record-field meanings are inferred.
@@ -39,8 +40,8 @@ void TrackedResourceActorType22And25_SetupFromRecord(void *actor, const void *re
     length = VecFx32Object_GetMagnitude((u8 *)actor + 0x38);
     if (length < 4)
         length = 4;
-    TrackedResourceActor_ScaleVectorComponents((u8 *)actor + 0x38, length);
-    func_020328d0((u8 *)actor + 0x38,
+    VecFx32Object_DivideInPlaceByScalar((u8 *)actor + 0x38, length);
+    VecFx32Object_ScaleInPlaceRounded((u8 *)actor + 0x38,
                   (s32)FIELD(s16, record, 0x0a) << 4);
     FIELD(s32, actor, 0x44) = 0x1800;
     FIELD(u32, actor, 0x14) |= 0x800000;

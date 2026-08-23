@@ -17,7 +17,7 @@
 .extern Actor_ClearTransientContactState
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
-.extern func_020328d0
+.extern VecFx32Object_ScaleInPlaceRounded
 .extern Actor_UpdateAnimationState
 .extern Actor_PlayHorizontalSpatialSound
 .extern Actor_IsAtCachedTerrainHeight
@@ -389,7 +389,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     bl func_020adc90
     mov r1, r0
     add r0, r5, #0x88
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
 .L_02035a54:
     mov r0, r5
     bl Actor_UpdateAnimationState

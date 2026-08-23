@@ -5,7 +5,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeTriple_Assign
 .extern ActorCollection_QueueActorForRemoval
-.extern func_020328d0
+.extern VecFx32Object_ScaleInPlaceRounded
 .extern Actor_GetOwningCollection
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
@@ -31,7 +31,7 @@ TrackedResourceActorType28_HandleCollision:
     add r0, sp, #0x0
     ldrsh r1, [r1, #0x2a]
     mov r1, r1, lsl #0x4
-    bl func_020328d0
+    bl VecFx32Object_ScaleInPlaceRounded
     ldrb r0, [r4, #0x4d]
     mov r2, #0x0
     cmp r0, #0x1
