@@ -119,5 +119,4 @@ ActorTargetSelection_Populate: ; 0x02034ecc
 .L_0203504c: .word gActorTargetSelectionPriorities
     .size ActorTargetSelection_Populate, . - ActorTargetSelection_Populate
 
-    .global func_02035050
-
+    .global Actor_GetTargetSelectionPosition

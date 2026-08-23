@@ -2,15 +2,15 @@
 
 /* Provide default target-position and distance-threshold virtual results. */
 
-/* Return a pointer to the actor position object at self+0x18 without changes. */
-void *func_02035050(void *self)
+/* Return a pointer to the actor position object at actor+0x18 without changes. */
+void *Actor_GetTargetSelectionPosition(void *actor)
 {
-    return (u8 *)self + 0x18;
+    return (u8 *)actor + 0x18;
 }
 
-/* Ignore self and return the confirmed fixed-point threshold 0xc0000. */
-s32 func_02035058(void *self)
+/* Ignore actor and return the Q20.12 selection threshold 0xc0000 (192 units). */
+s32 Actor_GetTargetSelectionDistanceThreshold(void *actor)
 {
-    (void)self;
+    (void)actor;
     return 0xc0000;
 }
