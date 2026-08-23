@@ -7,7 +7,7 @@
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_020a28e0
+.extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .extern func_020befec
 .extern func_020bf1f8
 .extern genrand_int32
@@ -98,7 +98,7 @@ func_ov082_02213f64:
     mov ip, ip, asr #0xc
     rsb ip, ip, lr, asr #0xc
     sub r3, ip, r3
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .L_022140b4:
     add r0, r4, #0x200
     ldrh r0, [r0, #0x9a]

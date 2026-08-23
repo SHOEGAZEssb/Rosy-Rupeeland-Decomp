@@ -65,7 +65,7 @@ EXT(OS_Halt);
 EXT(AuxiliaryTimedSpritePresentation_Init);
 EXT(TrackedResourceActor_SpawnFromKey);
 EXT(func_020099c0);
-EXT(RuntimePresentationManager_GetGraphics3dPresentation);
+extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 EXT(func_0200634c);
 EXT(func_0200637c);
 EXT(func_020064b8);
@@ -80,8 +80,8 @@ EXT(Sound_StopEffect);
 EXT(Sound_IsEffectPlaying);
 EXT(func_020740c8);
 EXT(func_0206e590);
-EXT(func_020a2844);
-EXT(func_020a291c);
+EXT(Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt);
+EXT(Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt);
 EXT(func_020adc90);
 EXT(func_020adff0);
 EXT(func_020adae4);
@@ -336,7 +336,7 @@ extern "C" void func_ov097_02217d44(void *actor)
 
     void *effectOwner =
         (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
-    func_020a2844(effectOwner, 0, F(s32, actor, 0x1c) >> 12,
+    Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(effectOwner, 0, F(s32, actor, 0x1c) >> 12,
                   (F(s32, actor, 0x20) >> 12) -
                       (F(s32, actor, 0x24) >> 12) - 24,
                   8);
@@ -375,7 +375,7 @@ extern "C" void func_ov097_02217d44(void *actor)
             if (func_ov097_02217fec(linked) == 0)
             {
                 ((Method)F(void *, F(void *, linked, 0), 0x100))(linked);
-                func_020a2844(effectOwner, 0,
+                Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(effectOwner, 0,
                               F(s32, linked, 0x1c) >> 12,
                               (F(s32, linked, 0x20) >> 12) -
                                   (F(s32, linked, 0x24) >> 12) - 24,
@@ -708,7 +708,7 @@ extern "C" void func_ov097_02218940(void *actor)
                 (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
             s32 height = func_ov097_02217afc(P(actor, 0x68));
             s32 randomX = (s32)(random % 36) - 18;
-            func_020a291c(effectOwner, 1,
+            Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(effectOwner, 1,
                           randomX + (F(s32, actor, 0x1c) >> 12),
                           (F(s32, actor, 0x20) >> 12) -
                               (F(s32, actor, 0x24) >> 12) -

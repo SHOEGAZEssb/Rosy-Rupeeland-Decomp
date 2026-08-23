@@ -59,8 +59,8 @@ extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
 extern "C" void Sound_PlayDirectSequence(void *, s32, s32);
 extern "C" void Sound_StopDirectSequence(void *, s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
-extern "C" void func_020a27a0(void *, ...);
-extern "C" void func_020a2844(void *, ...);
+extern "C" void Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(void *, ...);
+extern "C" void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(void *, ...);
 extern "C" s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern "C" void *func_02022cb0(void *, ...);
@@ -349,7 +349,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
         if (F(s32, source, 0x2b4) < F(s32, source, 0x24))
             F(s32, source, 0x2b4) = F(s32, source, 0x24);
         if ((F(u16, actor, 0x1ee) % 3) == 0)
-            func_020a27a0(effects, 1, F(s32, source, 0x1c) >> 12,
+            Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(effects, 1, F(s32, source, 0x1c) >> 12,
                           (F(s32, source, 0x20) >> 12) -
                               (F(s32, source, 0x24) >> 12));
         clamp_blend(actor, 0x52);
@@ -358,7 +358,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
             F(u16, actor, 0x1ee) = 0;
             F(u8, actor, 0x1ec) = 6;
             VecFx32Object_Assign((u8 *)actor + 0x224, (u8 *)source + 0x18);
-            func_020a2844(effects, 0, F(s32, actor, 0x228) >> 12,
+            Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(effects, 0, F(s32, actor, 0x228) >> 12,
                           (F(s32, actor, 0x22c) >> 12) -
                               (F(s32, actor, 0x230) >> 12) + 0x14,
                           10);
@@ -380,7 +380,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
         void *source = F(void *, actor, 0x1f0);
         F(s32, source, 0x2b4) = F(s32, source, 0x24) + 0x20000;
         if ((F(u16, actor, 0x1ee) % 3) == 0)
-            func_020a27a0(effects, 1, F(s32, source, 0x1c) >> 12,
+            Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(effects, 1, F(s32, source, 0x1c) >> 12,
                           (F(s32, source, 0x20) >> 12) -
                               (F(s32, source, 0x24) >> 12));
         clamp_blend(actor, 0x52);

@@ -5,7 +5,7 @@
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern Sound_PlayOwnedEffect
-.extern func_020a291c
+.extern Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt
 .extern func_020befec
 .extern func_020bf1f8
 .extern func_ov097_022177e0
@@ -100,7 +100,7 @@ func_ov097_02218940:
     sub r3, r3, r2, asr #0x1
     add r2, r1, r4
     mov r1, #0x1
-    bl func_020a291c
+    bl Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt
 .L_02218a88:
     add r0, r8, #0x200
     ldrsh r2, [r0, #0x98]

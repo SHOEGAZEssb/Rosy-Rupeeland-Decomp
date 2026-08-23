@@ -21,13 +21,13 @@ extern void AuxiliaryTimedSpritePresentation_Init(void *storage, const void *pos
 extern void *ActorCollection_GetSpriteGroup(void);
 extern void Actor_GetOwningCollection(void *actor);
 extern void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
-extern void func_020a2614(void *manager, s32 subtype, s32 x, s32 y,
+extern void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
-extern void func_020a2844(void *manager, s32 subtype, s32 x, s32 y,
+extern void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
-extern void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y,
+extern void Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
-extern void func_020a291c(void *manager, s32 subtype, s32 x, s32 y);
+extern void Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(void *manager, s32 subtype, s32 x, s32 y);
 #ifdef __cplusplus
 }
 #endif
@@ -37,10 +37,10 @@ extern void func_020a291c(void *manager, s32 subtype, s32 x, s32 y);
 /*
  * Input is an actor whose record pointer is at 0x1FC. Convert actor position to
  * pixels (Y is reduced by actor height) and dispatch signed record byte 0x12:
- * 0 selects EffectManager_SubmitPointEffect; 1,5,6 select func_020a2614 variants 1,2,3 with value
- * 5; 2/3 select func_020a291c variants 0/1; 10..15 select func_020a2844 subtype
- * selector-10 with value 4; 20..24 select func_020a2614 subtype 1 with value
- * selector-13; 25 uses value 15; and 30 selects func_020a2844 subtype 0 with
+ * 0 selects Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt; 1,5,6 select Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt variants 1,2,3 with value
+ * 5; 2/3 select Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt variants 0/1; 10..15 select Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt subtype
+ * selector-10 with value 4; 20..24 select Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt subtype 1 with value
+ * selector-13; 25 uses value 15; and 30 selects Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt subtype 0 with
  * value 12. Other selectors have no primary effect. If record halfword 0x16 is
  * nonzero, allocate a 20-byte auxiliary object and initialize it from record
  * halfwords 0x16..0x1A. If packed-sound halfword 0x1C is nonzero, invoke
@@ -58,34 +58,34 @@ void TrackedResourceActor_EmitRecordEffects(void *actor)
 
     switch (selector) {
     case 0:
-        EffectManager_SubmitPointEffect(manager, 0, x, y, 0);
+        Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(manager, 0, x, y, 0);
         break;
     case 1:
-        func_020a2614(manager, 1, x, y, 5);
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 1, x, y, 5);
         break;
     case 2:
-        func_020a291c(manager, 0, x, y);
+        Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(manager, 0, x, y);
         break;
     case 3:
-        func_020a291c(manager, 1, x, y);
+        Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(manager, 1, x, y);
         break;
     case 5:
-        func_020a2614(manager, 2, x, y, 5);
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 2, x, y, 5);
         break;
     case 6:
-        func_020a2614(manager, 3, x, y, 5);
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 3, x, y, 5);
         break;
     case 10: case 11: case 12: case 13: case 14: case 15:
-        func_020a2844(manager, selector - 10, x, y, 4);
+        Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(manager, selector - 10, x, y, 4);
         break;
     case 20: case 21: case 22: case 23: case 24:
-        func_020a2614(manager, 1, x, y, selector - 13);
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 1, x, y, selector - 13);
         break;
     case 25:
-        func_020a2614(manager, 1, x, y, 15);
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 1, x, y, 15);
         break;
     case 30:
-        func_020a2844(manager, 0, x, y, 12);
+        Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(manager, 0, x, y, 12);
         break;
     }
 

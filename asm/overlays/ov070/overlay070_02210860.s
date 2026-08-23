@@ -15,8 +15,8 @@
 .extern Sound_PlayEffectWithParameters
 .extern func_020594ec
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020a28e0
-.extern func_020a2960
+.extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
 .extern func_020adc40
 .extern func_020adc90
 .extern func_020befec
@@ -293,7 +293,7 @@ func_ov070_02210860:
     ldr r0, [r0, #0x18]
     mov r2, r2, asr #0xc
     mov r3, r3, asr #0xc
-    bl func_020a2960
+    bl Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
     b .L_02210c50
 .L_02210c48:
     mov r0, #0x0
@@ -568,7 +568,7 @@ func_ov070_02210860:
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x1
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .L_0221106c:
     ldr r0, [r4, #0x138]
     add r0, r0, #0x1
@@ -658,7 +658,7 @@ func_ov070_02210860:
     ldr r0, [r0, #0x18]
     mov r2, r2, asr #0xc
     mov r3, r3, asr #0xc
-    bl func_020a2960
+    bl Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
 .L_022111c0:
     ldr r0, [r4, #0xf0]
     cmp r0, #0x0

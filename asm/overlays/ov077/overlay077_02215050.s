@@ -5,7 +5,7 @@
 .extern VecFx32Object_Assign
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_PlayHorizontalSpatialSound
-.extern func_020a2844
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .extern func_ov077_02213768
 .extern func_ov090_0221c3dc
 
@@ -88,7 +88,7 @@ func_ov077_02215050:
     mov r2, r2, asr #0xc
     rsb r3, r3, ip, asr #0xc
     mov r4, r0
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     mov r0, #0x5
     str r0, [sp, #0x0]
     ldr r0, [r5, #0x24]
@@ -99,7 +99,7 @@ func_ov077_02215050:
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x2
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}
 .L_022151b4: .word data_ov077_02216fc8

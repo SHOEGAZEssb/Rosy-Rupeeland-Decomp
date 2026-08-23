@@ -58,9 +58,9 @@ extern "C" void func_020a68fc(void *, s32, s32);
 extern "C" s32 func_020befec(s32, s32);
 extern "C" u32 genrand_int32(void);
 extern "C" void *AuxiliaryTimedSpritePresentation_Init(void *, const void *, void *, s32, s32, s32, s32, s32, s32, s32);
-extern "C" void func_020a28e0(void *, s32, s32, s32, s32);
-extern "C" void func_020a2960(void *, s32, s32, s32, s32);
-extern "C" void func_020a29ac(void *, s32, s32, s32);
+extern "C" void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(void *, s32, s32, s32, s32);
+extern "C" void Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(void *, s32, s32, s32, s32);
+extern "C" void Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(void *, s32, s32, s32);
 extern "C" void *func_ov060_0220fd54(void *, void *, s32);
 extern "C" void func_ov063_02210314(void *);
 
@@ -425,7 +425,7 @@ extern "C" void func_ov093_02217c50(void *actor)
                 s32 pan;
                 FIELD(u16, sprite, 0x24) |= 0x10;
                 for (burst = 0; burst < 6; ++burst) {
-                    func_020a28e0(particleSystem, 1,
+                    Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(particleSystem, 1,
                                   (sourceX >> 12) - 12 + random_below(24),
                                   0x240 - (s32)(genrand_int32() & 7), 0xf0);
                 }
@@ -475,7 +475,7 @@ extern "C" void func_ov093_02218514(void *unused, void *actor)
     particleSystem = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
     if (FIELD(u8, FIELD(void *, actor, 0x210), 0x38) == 1 &&
         FIELD(u16, actor, 0x1fe) % 4 == 0) {
-        func_020a29ac(particleSystem, 0, 0x180, (y >> 12) - 12);
+        Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(particleSystem, 0, 0x180, (y >> 12) - 12);
     }
     for (i = 0; i < 5; ++i) {
         void *sprite = FIELD(void *, actor, 0x214 + i * 4);
@@ -487,7 +487,7 @@ extern "C" void func_ov093_02218514(void *unused, void *actor)
             GraphicsSpriteState_SetDepthOrderedWorldPosition(
                 sprite, FIELD(s32, record, 0), debrisY, 0, 4);
             if (FIELD(u16, actor, 0x1fe) % 8 == 0) {
-                func_020a29ac(particleSystem, 0, FIELD(s32, record, 0) >> 12,
+                Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(particleSystem, 0, FIELD(s32, record, 0) >> 12,
                               (debrisY >> 12) - 12);
             }
         }

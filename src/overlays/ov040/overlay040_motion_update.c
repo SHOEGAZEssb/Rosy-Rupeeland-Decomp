@@ -17,8 +17,6 @@ extern void func_02070958(void *object, s32 x, s32 y, s32 z);
 extern void func_02074dc8(void *context, void *renderer);
 extern void *data_020f4e14;
 extern s32 func_020adc40(s32 squaredDistance);
-extern s32 func_020a25c8(void *object, s32 kind, s32 x, s32 y, s32 width,
-                         s32 height, s32 priority);
 extern void Sound_Play(void *sound, s32 parameter, s32 id);
 extern const s32 data_ov040_0220386c[];
 extern const s32 data_ov040_02207d2c[];
@@ -118,8 +116,8 @@ extern "C" s32 func_ov040_02203678(void *slots, const void *target)
             Graphics3dPresentation_RemoveSpriteEffect(
                 (Graphics3dPresentation *)FIELD(void *, owner, 0x10),
                 FIELD(s32, slots, 0x964 + index * 4));
-        s32 handle = func_020a25c8(
-            FIELD(void *, owner, 0x10), 0,
+        s32 handle = Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(
+            (Graphics3dPresentation *)FIELD(void *, owner, 0x10), 0,
             (FIELD(s32, slots, 0xaa8 + index * 0x10) >> 12) - 14,
             (FIELD(s32, slots, 0xaac + index * 0x10) >> 12) - 19,
             28, 28, 2);

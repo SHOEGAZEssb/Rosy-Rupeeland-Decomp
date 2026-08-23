@@ -10,7 +10,7 @@
 .extern ActorExtendedType2_InitializeReentryState
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0206e590
-.extern func_020a2844
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .extern func_ov097_022177e0
 .extern func_ov097_02217fd8
 .extern func_ov097_02217fec
@@ -68,7 +68,7 @@ func_ov097_02217d44:
     sub r3, r1, #0x18
     mov r1, #0x0
     mov r5, r0
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     mov r0, r7
     bl ActorExtendedType2_GetDescriptorValue25
     cmp r0, #0x0
@@ -167,7 +167,7 @@ func_ov097_02217d44:
     mov r1, #0x0
     mov r2, r2, asr #0xc
     sub r3, r3, #0x18
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .L_02217f84:
     add r6, r6, #0x1
     cmp r6, #0x3

@@ -4,7 +4,7 @@
     .extern func_020adc40
     .extern func_020adc90
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_020a27a0
+    .extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     .extern data_ov039_022082e4
     .extern data_ov039_02208324
     .extern data_ov039_022082d4
@@ -227,7 +227,7 @@ L_022073c4:
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x1
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 L_02207484:
     add sp, sp, #0x90
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

@@ -9,19 +9,19 @@
     .extern VecFx32Object_Assign
     .extern VecFx32Object_Destroy
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_020a2844
+    .extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     .extern Sound_Play
     .extern func_020594ec
-    .extern func_020a2960
+    .extern Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
     .extern func_ov069_02210a24
     .extern func_ov007_021fc200
     .extern func_ov039_02201b1c
     .extern func_ov039_0220159c
     .extern func_ov069_02211594
-    .extern func_020a28e0
+    .extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     .extern func_020a63d0
     .extern func_ov069_022119dc
-    .extern func_020a2614
+    .extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     .extern func_ov069_02210a44
     .extern func_ov069_022119bc
     .extern genrand_int32
@@ -119,7 +119,7 @@ L_022020ac:
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x3
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     ldr r2, [r5, #0x48]
     mov r0, #0xc
     str r0, [r2, #0x44]
@@ -176,7 +176,7 @@ L_022021dc:
     mov r3, r2, asr #0xc
     mov r2, r4, asr #0xc
     sub r3, r3, #0x19
-    bl func_020a2960
+    bl Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
     b L_022029c0
 L_0220222c:
     cmp r0, #0x5
@@ -330,7 +330,7 @@ L_02202410:
     sub r2, r2, #0x50
     add r3, r1, #0x4b
     mov r1, #0x2
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r2, [r5, #0x4c]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -342,7 +342,7 @@ L_02202410:
     add r2, r2, #0x41
     add r3, r1, #0x3c
     mov r1, #0x2
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r2, [r5, #0x4c]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -354,7 +354,7 @@ L_02202410:
     sub r2, r2, #0x41
     sub r3, r1, #0x41
     mov r1, #0x2
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r3, [r5, #0x4c]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -366,7 +366,7 @@ L_02202410:
     add r2, r2, #0x50
     mov r3, r3, asr #0xc
     sub r3, r3, #0x55
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r3, [r5, #0x4c]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -378,7 +378,7 @@ L_02202410:
     sub r2, r2, #0x1e
     mov r3, r3, asr #0xc
     add r3, r3, #0x1e
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r3, [r5, #0x4c]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -390,7 +390,7 @@ L_02202410:
     add r2, r2, #0x24
     mov r3, r3, asr #0xc
     sub r3, r3, #0x24
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 L_02202564:
     add r0, r5, #0x1c00
     ldrh r1, [r0, #0xaa]
@@ -429,7 +429,7 @@ L_022025b0:
     sub r2, r2, #0x1e
     add r3, r1, #0x1e
     mov r1, #0x2
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r5, #0x50]
     add r0, r5, #0x30c
     ldrh r2, [r3, #0x42]
@@ -480,7 +480,7 @@ L_02202680:
     add r2, r2, #0x1e
     add r3, r1, #0x1e
     mov r1, #0x2
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r5, #0x54]
     add r0, r5, #0x30c
     ldrh r2, [r3, #0x42]
@@ -531,7 +531,7 @@ L_02202748:
     sub r2, r2, #0x1e
     sub r3, r1, #0x1e
     mov r1, #0x2
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r5, #0x58]
     add r0, r5, #0x30c
     ldrh r2, [r3, #0x42]
@@ -582,7 +582,7 @@ L_02202810:
     add r2, r2, #0x1e
     sub r3, r1, #0x1e
     mov r1, #0x2
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r5, #0x5c]
     add r0, r5, #0x30c
     ldrh r2, [r3, #0x42]
@@ -631,7 +631,7 @@ L_022028d8:
     mov r2, r2, asr #0xc
     add r3, r1, #0x1e
     mov r1, #0x0
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r5, #0x4c]
     add r0, r5, #0x30c
     ldrh r2, [r3, #0x42]
@@ -882,7 +882,7 @@ L_02202c94:
     mov r3, r2, asr #0xc
     mov r2, r4, asr #0xc
     sub r3, r3, #0x19
-    bl func_020a2960
+    bl Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
 L_02202cd4:
     add r0, sp, #0x3c
     bl VecFx32Object_Destroy

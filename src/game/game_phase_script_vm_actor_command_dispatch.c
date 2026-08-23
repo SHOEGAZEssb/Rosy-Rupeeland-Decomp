@@ -37,15 +37,6 @@ extern void *func_ov054_0220ef78(...);
 extern void *func_ov073_02210710(...);
 extern void RuntimePresentationManager_AppendFirstListEffect(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
-extern u32 func_020a257c(...);
-extern u32 func_020a25c8(...);
-extern void func_020a2530(...);
-extern void func_020a2614(...);
-extern void func_020a27a0(...);
-extern void func_020a2844(...);
-extern void func_020a28e0(...);
-extern void func_020a29f8(...);
-extern void func_020a2a4c(...);
 extern void func_02028630(...);
 extern u32 DirectSpriteTrackPresentation_SpawnAndRegister(...);
 extern void func_02023ed4(...);
@@ -243,12 +234,12 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     }
     case 11:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
-                      func_020a257c(getScriptGraphics3dPresentation(), a1, a2, a3,
+                      Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(getScriptGraphics3dPresentation(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
     case 12:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
-                      func_020a25c8(getScriptGraphics3dPresentation(), a1, a2, a3,
+                      Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(getScriptGraphics3dPresentation(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
     case 13:
@@ -256,13 +247,13 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 14:
-        func_020a2530(getScriptGraphics3dPresentation(), a1, a6, a2, a3, a4, a5);
+        Graphics3dPresentation_CreatePresetSpriteEffectInBounds(getScriptGraphics3dPresentation(), a1, a6, a2, a3, a4, a5);
         break;
     case 15:
-        func_020a2614(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
         break;
     case 16:
-        func_020a27a0(getScriptGraphics3dPresentation(), a1, a2, a3);
+        Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 17:
         Graphics3dPresentation_SetRupeeVisibleAt(getScriptGraphics3dPresentation(), a1, a2, a3);
@@ -336,19 +327,19 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         }
         break;
     case 24:
-        func_020a28e0(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
+        Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
         break;
     case 25:
-        func_020a29f8(getScriptGraphics3dPresentation(), a1, a2, a3, a4, a5);
+        Graphics3dPresentation_CreatePreset32CenteredAreaSpriteEffect(getScriptGraphics3dPresentation(), a1, a2, a3, a4, a5);
         break;
     case 26:
         func_02028630(getScriptEffectContext());
         break;
     case 27:
-        func_020a2844(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
+        Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
         break;
     case 29:
-        func_020a2a4c(getScriptGraphics3dPresentation(), a1, a2, a3,
+        Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt(getScriptGraphics3dPresentation(), a1, a2, a3,
                       a4, a5, a6);
         break;
     case 30:

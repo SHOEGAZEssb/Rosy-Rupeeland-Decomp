@@ -60,7 +60,7 @@ EXT(PresentationBackedActor_SpawnAmountVariant);
 EXT(SignedAbsoluteValue);
 EXT(Sound_Play);
 EXT(UtilAnimationResource_UpdatePosition);
-EXT(RuntimePresentationManager_GetGraphics3dPresentation);
+extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 EXT(func_02003e2c);
 EXT(func_02004fe0);
 EXT(func_02005030);
@@ -73,8 +73,8 @@ EXT(Actor_PlayHorizontalSpatialSound);
 EXT(Fx32Vector2_Magnitude);
 EXT(func_020538a4);
 EXT(func_020541d4);
-EXT(func_020a27a0);
-EXT(func_020a2844);
+EXT(Graphics3dPresentation_CreatePreset11To13SpriteEffectAt);
+EXT(Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt);
 EXT(func_020ada8c);
 EXT(func_020adc90);
 EXT(func_020adff0);
@@ -1129,9 +1129,9 @@ extern "C" s32 func_ov077_02215050(void *actor)
                           : (F(s16, actor, 0x4e) == 0x82 ? 1 : 0);
         void *context =
             (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, data_021052fc, 0), 0x2f7c));
-        func_020a2844(context, variant, F(s32, actor, 0x1c) >> 12,
+        Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(context, variant, F(s32, actor, 0x1c) >> 12,
                       (F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12, 3);
-        func_020a2844(context, 2, F(s32, actor, 0x1c) >> 12,
+        Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(context, 2, F(s32, actor, 0x1c) >> 12,
                       (F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12, 5);
         return 1;
     }
@@ -1342,7 +1342,7 @@ extern "C" void func_ov077_02215494(void *actor)
                 Actor_PlayHorizontalSpatialSound(actor, 0x9f83, 0);
                 void *context = (void *)RuntimePresentationManager_GetGraphics3dPresentation(
                     P(F(void *, data_021052fc, 0), 0x2f7c));
-                func_020a27a0(context, 2,
+                Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(context, 2,
                               F(s32, F(void *, actor, 0x29c), 0x1c) >> 12,
                               ((F(s32, F(void *, actor, 0x29c), 0x20) -
                                 F(s32, F(void *, actor, 0x29c), 0x24)) >>
@@ -1560,7 +1560,7 @@ extern "C" s32 func_ov077_022169bc(void *actor)
         {
             --F(s16, actor, 0x2ec);
             if ((F(s16, actor, 0x2ec) & 7) == 0)
-                func_020a27a0(effects, 1, F(s32, actor, 0x1c) >> 12,
+                Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(effects, 1, F(s32, actor, 0x1c) >> 12,
                               (F(s32, actor, 0x20) - F(s32, actor, 0x24)) >>
                                   12);
         }
@@ -1589,7 +1589,7 @@ extern "C" s32 func_ov077_022169bc(void *actor)
             static const s16 dustX[6] = {0, -0x18, 0x18, -0xc, 0xc, 0};
             static const s16 dustY[6] = {0x18, -8, -8, -0x14, -0x14, -0x18};
             for (s32 i = 0; i < 6; ++i)
-                func_020a27a0(
+                Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(
                     effects, i == 0 ? 0 : 1,
                     (F(s32, actor, 0x1c) >> 12) + dustX[i],
                     ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) +

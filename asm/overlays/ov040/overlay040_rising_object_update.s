@@ -3,8 +3,8 @@
     .extern gActorRuntimeFlags
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern ActorRuntimeFlags_Test
-    .extern func_020a2614
-    .extern func_020a27a0
+    .extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
+    .extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     .extern func_ov040_021fcea0
     .extern func_ov040_021fceb0
     .extern func_ov040_021ff42c
@@ -47,7 +47,7 @@ func_ov040_02200bf4: ; 0x02200bf4
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x1
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     b .L_02200d78
 .L_02200c8c:
     ldr r1, [r4, #0x848]
@@ -83,7 +83,7 @@ func_ov040_02200bf4: ; 0x02200bf4
     mov r2, r2, asr #0xc
     add r3, r1, #0xc
     mov r1, #0x2
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     ldr r1, [r4, #0xac0]
     mov r2, #0xb7000
     ldrh r0, [r1, #0x42]

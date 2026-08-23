@@ -437,6 +437,7 @@ graphics_3d_resource_owner_ops_cflags = -proc arm946e -O4 -inline off -ipa funct
 graphics_3d_presentation_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 graphics_3d_runtime_manager_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 graphics_3d_paired_entry_portable_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
+graphics_3d_sprite_effect_presets_portable_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 graphics_3d_light_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 graphics_3d_light_set_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
 graphics_3d_scene_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -DMATCHING -lang c++
@@ -3793,8 +3794,8 @@ build build/decomp/asm/graphics/graphics_3d_runtime_manager_update.o: mwasmarm a
 # dsd emits every configured ARM9 slice through its primary output edge.
 build build/decomp/delinks/asm/graphics/graphics_3d_runtime_manager_update.o: phony build/decomp/delinks/src/system/mt19937.o
 
-# Host-portable recovery units for the paired-entry family remain outside the
-# exact ARM9 link. Compile them with retail flags so objdiff can report their
+# Host-portable recovery units for presentation helper families remain outside
+# the exact ARM9 link. Compile them with retail flags so objdiff can report their
 # instruction-level correspondence without replacing the guarded gap slices.
 build build/decomp/delinks/_dsd_gap@main_70.o: phony build/decomp/delinks/src/system/mt19937.o
 build build/decomp/delinks/_dsd_gap@main_71.o: phony build/decomp/delinks/src/system/mt19937.o
@@ -3810,6 +3811,10 @@ build build/decomp/src/graphics/graphics_3d_presentation_teardown_portable.o: mw
 build build/decomp/src/graphics/graphics_3d_presentation_update_portable.o: mwccarm src/graphics/graphics_3d_presentation_update.c | include/tingle/graphics_3d_presentation.h include/tingle/paired_entry_manager.h include/tingle/scene.h include/tingle/scene_touch.h include/tingle/sprite_effect.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/graphics/graphics_3d_presentation_update.c
   cflags = $graphics_3d_paired_entry_portable_cflags
+
+build build/decomp/src/graphics/graphics_3d_presentation_sprite_effect_presets_portable.o: mwccarm src/graphics/graphics_3d_presentation_sprite_effect_presets.c | include/tingle/graphics_3d_presentation.h include/tingle/sprite_effect.h include/tingle/types.h include/tingle/vec_fx32.h
+  source = src/graphics/graphics_3d_presentation_sprite_effect_presets.c
+  cflags = $graphics_3d_sprite_effect_presets_portable_cflags
 
 build build/decomp/src/graphics/graphics_3d_light.o: mwccarm src/graphics/graphics_3d_light.c | include/tingle/graphics_3d_light.h include/tingle/types.h
   source = src/graphics/graphics_3d_light.c
@@ -12398,6 +12403,15 @@ build build/reports/paired_entry_render_source.txt: match_report build/reports/p
   report_args = --section .text --function PairedEntryManager_Render --function PairedEntryManager_SubmitColoredQuad
 
 build paired_entry_manager: phony build/reports/game_phase_script_vm_020143a8.txt build/reports/graphics_3d_presentation_update.txt build/reports/graphics_3d_runtime_manager_update.txt build/reports/paired_entry_runtime_source.txt build/reports/paired_entry_teardown_source.txt build/reports/paired_entry_update_source.txt build/reports/paired_entry_render_source.txt
+
+build build/reports/graphics_3d_sprite_effect_presets_source.json: objdiff build/decomp/delinks/_dsd_gap@main_70.o | build/decomp/src/graphics/graphics_3d_presentation_sprite_effect_presets_portable.o
+  target_object = build/decomp/delinks/_dsd_gap@main_70.o
+  base_object = build/decomp/src/graphics/graphics_3d_presentation_sprite_effect_presets_portable.o
+build build/reports/graphics_3d_sprite_effect_presets_source.txt: match_report build/reports/graphics_3d_sprite_effect_presets_source.json | tools/report_objdiff.py
+  report_json = build/reports/graphics_3d_sprite_effect_presets_source.json
+  report_args = --section .text --function Graphics3dPresentation_CreatePresetSpriteEffectInBounds --function Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds --function Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds --function Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt --function Graphics3dPresentation_CreatePreset11To13SpriteEffectAt --function Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt --function Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt --function Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt --function Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt --function Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt --function Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt --function Graphics3dPresentation_CreatePreset32CenteredAreaSpriteEffect --function Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt
+
+build graphics_3d_sprite_effect_presets: phony build/reports/graphics_3d_sprite_effect_presets_source.txt build/reports/actor_collection_threshold_effect_dispatch_0203da28.txt build/reports/actor_derived_type1_frame_control_020372e4.txt build/reports/actor_derived_type1_interaction_update_02036a8c.txt build/reports/actor_derived_type1_target_displacement_0203825c.txt build/reports/actor_extended_type2_render_callback_0203efac.txt build/reports/actor_registered_subclass_frame_update_0203d540.txt build/reports/effect_handle_actor_0204e740.txt build/reports/game_phase_script_vm_020143a8.txt build/reports/presentation_backed_actor_interaction_0204df40.txt build/reports/tracked_resource_actor_effects_02050260.txt build/reports/type7_actor_type2_interaction_02046e60.txt build/reports/overlay039_02201fec.txt build/reports/overlay039_0220431c.txt build/reports/overlay039_0220713c.txt build/reports/overlay039_022077b4.txt build/reports/overlay039_main_update.txt build/reports/overlay040_collectible_proximity_scan.txt build/reports/overlay040_rising_object_update.txt build/reports/overlay041_descriptor_hit_test.txt build/reports/overlay041_scene_object_update.txt build/reports/overlay069_0221100c.txt build/reports/overlay069_022115c0.txt build/reports/overlay069_022119f8.txt build/reports/overlay070_022103d8.txt build/reports/overlay070_02210860.txt build/reports/overlay070_022118b4.txt build/reports/overlay076_02212ee0.txt build/reports/overlay077_02215050.txt build/reports/overlay077_02215494.txt build/reports/overlay077_022169bc.txt build/reports/overlay078_02215508.txt build/reports/overlay082_022132e8.txt build/reports/overlay082_02213538.txt build/reports/overlay082_02213f64.txt build/reports/overlay090_02217d70.txt build/reports/overlay090_0221b428.txt build/reports/overlay091_02217ce0.txt build/reports/overlay093_02217c50.txt build/reports/overlay093_02218514.txt build/reports/overlay095_0221858c.txt build/reports/overlay095_0221a2b4.txt build/reports/overlay095_0221ac6c.txt build/reports/overlay095_0221b7c8.txt build/reports/overlay095_0221c4a4.txt build/reports/overlay097_02217d44.txt build/reports/overlay097_02218940.txt
 
 build build/reports/graphics_3d_light.json: objdiff build/decomp/delinks/src/graphics/graphics_3d_light.o | build/decomp/src/graphics/graphics_3d_light.o
   target_object = build/decomp/delinks/src/graphics/graphics_3d_light.o

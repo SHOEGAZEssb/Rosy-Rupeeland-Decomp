@@ -50,7 +50,7 @@ EXT(func_02059394);
 EXT(Sound_PlayOwnedEffect);
 EXT(func_02072b68);
 EXT(func_020740c8);
-EXT(func_020a25c8);
+EXT(Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds);
 EXT(func_020adae4);
 EXT(func_020adc90);
 EXT(func_020adfbc);

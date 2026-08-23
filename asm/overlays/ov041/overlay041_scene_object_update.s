@@ -12,7 +12,7 @@
 .extern VecFx32Object_Destroy
 .extern Sound_StopEffect
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020a29ac
+.extern Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .extern func_020bf1f8
 .extern func_ov041_021fd000
 .extern func_ov041_021ff5a8
@@ -477,7 +477,7 @@ func_ov041_021ff868: ; 0x021ff868
     mov r3, r0, asr #0xc
     ldr r0, [r10, #0x48]
     ldr r0, [r0, #0x18]
-    bl func_020a29ac
+    bl Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .L_021fff2c:
     ldr r1, [r10, #0x84]
     ldr r0, [r10, #0x48]

@@ -1,0 +1,15 @@
+{
+  "func_020a2530": "Graphics3dPresentation_CreatePresetSpriteEffectInBounds",
+  "func_020a257c": "Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds",
+  "func_020a25c8": "Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds",
+  "func_020a2614": "Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt",
+  "func_020a27a0": "Graphics3dPresentation_CreatePreset11To13SpriteEffectAt",
+  "func_020a2844": "Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt",
+  "EffectManager_SubmitPointEffect": "Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt",
+  "func_020a28e0": "Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt",
+  "func_020a291c": "Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt",
+  "func_020a2960": "Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt",
+  "func_020a29ac": "Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt",
+  "func_020a29f8": "Graphics3dPresentation_CreatePreset32CenteredAreaSpriteEffect",
+  "func_020a2a4c": "Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt"
+}

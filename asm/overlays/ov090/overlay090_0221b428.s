@@ -14,7 +14,7 @@
 .extern Actor_PlayHorizontalSpatialSound
 .extern PresentationBackedActor_Spawn
 .extern func_020594ec
-.extern func_020a2614
+.extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
 .extern func_020befec
 .extern func_ov077_02216960
 .extern func_ov090_0221b7e0
@@ -89,7 +89,7 @@ func_ov090_0221b428:
     mov r1, #0x0
     add r2, r6, #0x100
     str r8, [sp, #0x0]
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     add r10, r10, #0x1
     cmp r10, #0x2
     blt .L_0221b4f0

@@ -52,8 +52,8 @@ extern void func_ov069_022119bc(void *object);
 extern void func_ov069_02210a44(void *system, s32 index, s32 x, s32 y,
                                 s32 ownerX, s32 ownerY);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
-extern void func_020a28e0(void *context, s32 type, s32 x, s32 y, s32 value);
-extern void func_020a2614(void *context, s32 type, s32 x, s32 y, s32 value);
+extern void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(void *context, s32 type, s32 x, s32 y, s32 value);
+extern void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(void *context, s32 type, s32 x, s32 y, s32 value);
 extern void func_0209f158(void *system, const void *position);
 extern void Sound_Play(void *context, s32 soundId, s32 parameter);
 extern void *DisplayBrightnessPair_GetScreen(void *object, s32 mode);
@@ -182,13 +182,13 @@ static void updateTimedSequence(void *scene, s32 variant)
         void *a = FIELD(void *, scene, 0x74);
         void *b = FIELD(void *, scene, 0x78);
         void *c = FIELD(void *, scene, 0x7c);
-        func_020a28e0(effectContext, 2, (FIELD(s32, a, 0x20) >> 12) - 40,
+        Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(effectContext, 2, (FIELD(s32, a, 0x20) >> 12) - 40,
                       (FIELD(s32, a, 0x24) >> 12) + 20, 0x8c);
-        func_020a28e0(effectContext, 2, (FIELD(s32, b, 0x20) >> 12) + 50,
+        Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(effectContext, 2, (FIELD(s32, b, 0x20) >> 12) + 50,
                       (FIELD(s32, b, 0x24) >> 12) + 10, 0x8c);
-        func_020a28e0(effectContext, 2, (FIELD(s32, c, 0x20) >> 12) - 60,
+        Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(effectContext, 2, (FIELD(s32, c, 0x20) >> 12) - 60,
                       (FIELD(s32, c, 0x24) >> 12) + 20, 0x8c);
-        func_020a28e0(effectContext, 2, (FIELD(s32, c, 0x20) >> 12) + 25,
+        Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(effectContext, 2, (FIELD(s32, c, 0x20) >> 12) + 25,
                       (FIELD(s32, c, 0x24) >> 12) + 50, 0x8c);
         func_ov039_021ff330(scene, 4);
     }
@@ -212,7 +212,7 @@ static void updateTimedSequence(void *scene, s32 variant)
         s32 which = time == trigger ? 0 : (time == trigger + 0x28 ? 1 : 2);
         void *anchor = FIELD(void *, scene, 0x74 + which * 4);
         s32 yAdjust = which == 2 ? -20 : 30;
-        func_020a2614(effectContext, 0, FIELD(s32, anchor, 0x20) >> 12,
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(effectContext, 0, FIELD(s32, anchor, 0x20) >> 12,
                       (FIELD(s32, anchor, 0x24) >> 12) + yAdjust, 100);
         enableObject(scene, 0x74 + which * 4);
         if (which == 0) {

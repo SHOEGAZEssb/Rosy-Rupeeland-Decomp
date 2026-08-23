@@ -15,7 +15,6 @@ void Sound_Play(void *, s32, s32);
 void func_ov041_021fec84(void *, s32, s32);
 void func_ov070_02212908(void *, s32, s32, s32);
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-s32 func_020a25c8(void *, s32, s32, s32, s32, s32, s32);
 extern void *gSoundContext;
 extern const u8 data_ov041_02204d00[];
 extern const s32 data_ov041_02204c7c[];
@@ -80,8 +79,8 @@ extern "C" s32 func_ov041_02200348(void *object, const void *point)
                               data_ov041_02204d00[typeArray[i]]);
             }
         } else {
-            s32 effect = func_020a25c8(
-                FIELD(void *, owner, 0x18), 0,
+            s32 effect = Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(
+                (Graphics3dPresentation *)FIELD(void *, owner, 0x18), 0,
                 (FIELD(s32, position, 4) >> 12) - 14,
                 (FIELD(s32, position, 8) >> 12) - 19,
                 28, 28, 4);

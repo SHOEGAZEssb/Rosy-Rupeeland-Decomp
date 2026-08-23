@@ -55,9 +55,9 @@ extern void Sound_StopEffect(UNKNOWN_PARAMETERS);
 extern void Sound_FadeEffectVolume(UNKNOWN_PARAMETERS);
 extern void Sound_StopStream(UNKNOWN_PARAMETERS);
 extern void func_0209a748(UNKNOWN_PARAMETERS);
-extern void func_020a2844(UNKNOWN_PARAMETERS);
-extern void func_020a28e0(UNKNOWN_PARAMETERS);
-extern void func_020a29ac(UNKNOWN_PARAMETERS);
+extern void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(UNKNOWN_PARAMETERS);
+extern void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(UNKNOWN_PARAMETERS);
+extern void Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(UNKNOWN_PARAMETERS);
 extern void func_020a63d0(UNKNOWN_PARAMETERS);
 extern void func_020a6404(UNKNOWN_PARAMETERS);
 extern void func_020a6548(UNKNOWN_PARAMETERS);
@@ -588,7 +588,7 @@ void func_ov090_02217d70(void *self)
         VecFx32Object_Assign((VecFx32Object *)((u8 *)self + 0x20c),
                              (VecFx32Object *)((u8 *)primaryActor + 0x18));
         if ((TITLE_TIMER(self) & 3) == 0)
-            func_020a29ac(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
+            Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
                           FIELD(s32, primaryActor, 0x1c) >> 12,
                           ((FIELD(s32, primaryActor, 0x20) >> 12) -
                            (FIELD(s32, primaryActor, 0x24) >> 12)) - 0x3c);
@@ -626,7 +626,7 @@ void func_ov090_02217d70(void *self)
                 FIELD(u16, TITLE_SPRITE(self), 0x24) |= 4;
             }
         } else if ((TITLE_TIMER(self) % 10) == 0) {
-            func_020a28e0(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 1,
+            Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 1,
                           FIELD(s32, primaryActor, 0x1c) >> 12,
                           ((FIELD(s32, primaryActor, 0x20) >> 12) -
                            (FIELD(s32, primaryActor, 0x24) >> 12)) - 0x1c,
@@ -649,7 +649,7 @@ void func_ov090_02217d70(void *self)
                 if ((FIELD(u8, self, 0x222) & 2) == 0) {
                     TITLE_STATE(self) = 0x12;
                     for (i = 0; i < 3; i++)
-                        func_020a2844(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
+                        Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
                                       FIELD(s32, self, 0x228) >> 12,
                                       (FIELD(s32, self, 0x22c) >> 12) -
                                           (FIELD(s32, self, 0x230) >> 12),
@@ -660,7 +660,7 @@ void func_ov090_02217d70(void *self)
                     for (i = 0; i < 3; i++) {
                         void *actor = TITLE_PARTICIPANT(self, i);
                         FIELD(u16, actor, 0x2f2) |= 0x40;
-                        func_020a2844(
+                        Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(
                             RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
                             FIELD(s32, actor, 0x1c) >> 12,
                             (FIELD(s32, actor, 0x20) >> 12) -

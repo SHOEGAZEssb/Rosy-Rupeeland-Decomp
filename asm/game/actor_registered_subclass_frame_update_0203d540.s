@@ -5,7 +5,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern ActorTableRecord_UpdateFrame
 .extern ActorRegisteredSubclass_EnterState2
-.extern func_020a28e0
+.extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .extern func_020befec
 .extern genrand_int32
     .global ActorRegisteredSubclass_UpdateFrame
@@ -93,7 +93,7 @@ ActorRegisteredSubclass_UpdateFrame: ; 0x0203d540
     add r3, r3, r1
     add r2, r4, r2
     mov r1, #0x1
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d67c:
     mov r0, r5

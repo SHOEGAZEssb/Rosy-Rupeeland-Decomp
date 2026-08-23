@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_020a2614
+.extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     .global ActorCollection_DispatchType2ThresholdEffects
     .type ActorCollection_DispatchType2ThresholdEffects, @function
 ActorCollection_DispatchType2ThresholdEffects: ; 0x0203da28
@@ -84,7 +84,7 @@ ActorCollection_DispatchType2ThresholdEffects: ; 0x0203da28
     mov r8, r8, asr #0xc
     mov r2, r2, asr #0xc
     rsb r3, r8, r3, asr #0xc
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
 .L_0203db4c:
     add r9, r9, #0x1
 .L_0203db50:

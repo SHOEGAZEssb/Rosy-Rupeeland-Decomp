@@ -7,8 +7,8 @@
 .extern PresentationBackedActor_Destroy
 .extern func_0204d858
 .extern Graphics3dPresentation_RemoveSpriteEffect
-.extern func_020a25c8
-.extern func_020a257c
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
+.extern Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds
 .text
 
     .global EffectHandleActor_Init
@@ -125,7 +125,7 @@ func_0204e82c: ; 0x0204e82c
     sub r2, r3, #0x14
     sub r3, r1, #0x14
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     b .L_0204e928
 .L_0204e8c4:
     ldrsh r2, [r1, #0xfe]
@@ -150,7 +150,7 @@ func_0204e82c: ; 0x0204e82c
     mov r2, r1, asr #0x10
     mov r3, r3, asr #0x10
     mov r1, #0x0
-    bl func_020a257c
+    bl Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds
     add r1, r4, #0x100
     strh r0, [r1, #0xfe]
 .L_0204e928:

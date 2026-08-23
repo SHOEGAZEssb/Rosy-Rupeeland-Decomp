@@ -24,7 +24,7 @@ extern void func_02008378(void *output, const void *first, const void *second);
  */
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(
     void *manager, s32 preparedY, s32 originalY);
-extern void EffectManager_SubmitPointEffect(void *effect, s32 mode, s32 x, s32 y, s32 extra);
+extern void Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(void *effect, s32 mode, s32 x, s32 y, s32 extra);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
@@ -134,7 +134,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
         graphics3dPresentation = RuntimePresentationManager_GetGraphics3dPresentation(
             data_021052fc + 0x2f7c,
             *(s32 *)(effectTransform + 2), originalY);
-        EffectManager_SubmitPointEffect(graphics3dPresentation, 1,
+        Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(graphics3dPresentation, 1,
                       *(s32 *)(effectTransform + 1),
                       *(s32 *)(effectTransform + 2), 0);
     }

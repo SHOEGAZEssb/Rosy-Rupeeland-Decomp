@@ -24,11 +24,11 @@
 .extern Sound_PlayOwnedEffect
 .extern Sound_StopEffect
 .extern Sound_SetEffectPitch
-.extern func_020a25c8
-.extern func_020a2844
-.extern func_020a291c
-.extern func_020a29ac
-.extern func_020a2a4c
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
+.extern Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt
 .extern func_020ada8c
 .extern func_020adae4
 .extern func_020adc90
@@ -522,7 +522,7 @@ func_ov095_0221858c:
     sub r2, r2, #0x18
     sub r3, r1, #0xc
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .L_02218c94:
     cmp r8, #0x10
     bge .L_022196bc
@@ -591,7 +591,7 @@ func_ov095_0221858c:
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x0
-    bl func_020a29ac
+    bl Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .L_02218d9c:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0xdc]
@@ -760,7 +760,7 @@ func_ov095_0221858c:
     sub r2, r2, #0x18
     sub r3, r1, #0xc
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .L_0221902c:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0xdc]
@@ -839,7 +839,7 @@ func_ov095_0221858c:
     mov r1, #0x2
     mov r2, r2, asr #0xc
     rsb r3, r3, r5, asr #0xc
-    bl func_020a2a4c
+    bl Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt
     add r0, sp, #0x228
     bl VecFx32Object_Destroy
 .L_02219168:
@@ -955,7 +955,7 @@ func_ov095_0221858c:
     rsb r1, r1, r3, asr #0xc
     sub r3, r1, #0x18
     mov r1, #0x5
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     ldr r1, [r4, #0x314]
     mov r0, #0x0
     bic r1, r1, #0x2
@@ -1115,7 +1115,7 @@ func_ov095_0221858c:
     sub r3, r1, r0
     mov r0, r11
     mov r1, #0x1
-    bl func_020a291c
+    bl Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt
 .L_02219598:
     ldrsh r0, [r4, #0xda]
     cmp r0, #0x9
@@ -1464,7 +1464,7 @@ func_ov095_0221858c:
     sub r2, r2, #0x18
     sub r3, r1, #0xc
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .L_02219ad8:
     cmp r8, #0xa
     bne .L_02219b88
@@ -1687,7 +1687,7 @@ func_ov095_0221858c:
     sub r2, r2, #0x18
     sub r3, r1, #0xc
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .L_02219e38:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0xdc]

@@ -6,7 +6,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_UpdatePresentation
-.extern func_020a29ac
+.extern Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 
 .global func_ov093_02218514
 func_ov093_02218514:
@@ -72,7 +72,7 @@ func_ov093_02218514:
     sub r3, r1, #0xc
     mov r1, #0x0
     mov r2, #0x180
-    bl func_020a29ac
+    bl Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .L_02218610:
     ldr r5, .L_022186b8
     mov r7, #0x0
@@ -110,7 +110,7 @@ func_ov093_02218514:
     mov r1, #0x0
     mov r2, r8, asr #0xc
     sub r3, r3, #0xc
-    bl func_020a29ac
+    bl Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .L_022186a0:
     add r7, r7, #0x1
     cmp r7, #0x5

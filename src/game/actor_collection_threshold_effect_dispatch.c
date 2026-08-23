@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void **GamePhaseRuntime_GetActorCollection(void *runtime, s32 collection);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
-extern void func_020a2614(void *effect, s32 kind, s32 x, s32 y, s32 variant);
+extern void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(void *effect, s32 kind, s32 x, s32 y, s32 variant);
 #ifdef __cplusplus
 }
 #endif
@@ -72,7 +72,7 @@ void ActorCollection_DispatchType2ThresholdEffects(s32 threshold)
         (*(void (**)(void *))(*(u8 **)actor + 0x104))(actor);
         {
             void *effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
-            func_020a2614(effect, 1,
+            Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(effect, 1,
                           *(s32 *)(actor + 0x1c) >> 12,
                           (*(s32 *)(actor + 0x20) >> 12) -
                               (*(s32 *)(actor + 0x24) >> 12),

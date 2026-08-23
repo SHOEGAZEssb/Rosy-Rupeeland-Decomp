@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay040_motion_update.c for portable C. */
     .extern func_020adc40
     .extern Graphics3dPresentation_RemoveSpriteEffect
-    .extern func_020a25c8
+    .extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     .extern Graphics3dPresentation_SetSpriteEffectVertexDepth
     .extern Sound_Play
     .extern data_ov040_0220386c
@@ -94,7 +94,7 @@ func_ov040_02203678:
     sub r2, r2, #0xe
     sub r3, r1, #0x13
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     ldr r2, [r10, #0x0]
     mov r1, r0
     ldr r0, [r2, #0x10]

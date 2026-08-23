@@ -21,7 +21,7 @@
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern Fx32Vector2_Magnitude
-.extern EffectManager_SubmitPointEffect
+.extern Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
 .extern func_020adc90
 .extern func_ov082_0221391c
 .extern func_ov082_02213974
@@ -272,7 +272,7 @@ func_ov082_02213538:
     ldr r2, [sp, #0x2c]
     ldr r3, [sp, #0x30]
     mov r1, #0x1
-    bl EffectManager_SubmitPointEffect
+    bl Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
     add r0, sp, #0x28
     bl VecFx32Object_Destroy
     add r0, sp, #0x38

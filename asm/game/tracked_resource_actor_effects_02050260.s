@@ -8,10 +8,10 @@
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
 .extern Actor_PlayRadialSpatialSound
-.extern func_020a2614
-.extern func_020a2844
-.extern EffectManager_SubmitPointEffect
-.extern func_020a291c
+.extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
+.extern Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt
 .text
 
     .global TrackedResourceActor_EmitRecordEffects
@@ -70,7 +70,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r3, r2, asr #0xc
     mov r2, r5, asr #0xc
     rsb r3, r3, r4, asr #0xc
-    bl EffectManager_SubmitPointEffect
+    bl Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
     b .L_020504b0
 .L_02050338:
     mov r1, #0x5
@@ -82,7 +82,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x1
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     b .L_020504b0
 .L_02050364:
     ldr r1, [r6, #0x24]
@@ -92,7 +92,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x0
-    bl func_020a291c
+    bl Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt
     b .L_020504b0
 .L_02050388:
     ldr r1, [r6, #0x24]
@@ -102,7 +102,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x1
-    bl func_020a291c
+    bl Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt
     b .L_020504b0
 .L_020503ac:
     mov r1, #0x5
@@ -114,7 +114,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x2
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     b .L_020504b0
 .L_020503d8:
     mov r1, #0x5
@@ -126,7 +126,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x3
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     b .L_020504b0
 .L_02050404:
     mov r1, #0x4
@@ -138,7 +138,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     sub r1, r5, #0xa
     mov r2, r2, asr #0xc
     rsb r3, r3, r4, asr #0xc
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     b .L_020504b0
 .L_02050430:
     sub r1, r5, #0xd
@@ -150,7 +150,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x1
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     b .L_020504b0
 .L_0205045c:
     mov r1, #0xf
@@ -162,7 +162,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x1
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     b .L_020504b0
 .L_02050488:
     mov r1, #0xc
@@ -174,7 +174,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x0
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .L_020504b0:
     ldr r0, [r6, #0x1fc]
     ldrh r0, [r0, #0x16]

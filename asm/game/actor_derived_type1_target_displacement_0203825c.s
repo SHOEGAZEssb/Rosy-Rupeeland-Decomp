@@ -22,7 +22,7 @@
 .extern Type1Actor_TryEnterFailureState
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern Fx32Vector2_LimitMagnitude
-.extern EffectManager_SubmitPointEffect
+.extern Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
 .extern func_020ada8c
 .extern func_020adae4
 .extern func_020ae024
@@ -235,7 +235,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r2, [sp, #0x4c]
     ldr r3, [sp, #0x50]
     mov r1, #0x1
-    bl EffectManager_SubmitPointEffect
+    bl Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
     mov r0, r6
     mov r4, #0x0
     bl ActorDerivedType1_IsTargetStateEligible

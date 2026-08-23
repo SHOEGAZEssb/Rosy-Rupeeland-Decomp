@@ -5,7 +5,7 @@
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern Sound_PlayOwnedEffect
-.extern func_020a28e0
+.extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .extern func_020bf1f8
 .extern func_ov082_0221340c
 .extern gSoundContext
@@ -51,7 +51,7 @@ func_ov082_022132e8:
     mov r0, r6
     mov r1, #0x1
     str r4, [sp, #0x0]
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     add r7, r7, #0x1
     cmp r7, #0x5
     blt .L_02213350

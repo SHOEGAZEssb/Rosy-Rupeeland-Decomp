@@ -7,7 +7,7 @@
 .extern data_ov041_02204d00
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Graphics3dPresentation_SetSpriteEffectVertexDepth
-.extern func_020a25c8
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .extern func_020adc40
 .extern func_ov041_021fec84
 .extern func_ov070_02212908
@@ -166,7 +166,7 @@ func_ov041_02200348: ; 0x02200348
     ldr r0, [r0, #0x18]
     sub r2, r2, #0xe
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     ldr r2, [r10, #0x48]
     mov r1, r0
     ldr r0, [r2, #0x18]

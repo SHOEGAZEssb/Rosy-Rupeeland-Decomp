@@ -32,17 +32,24 @@ extern u32 genrand_int32(...);
 extern s32 SignedAbsoluteValueVariant(...), func_020befec(...);
 extern s32 func_020bf1f8(...), func_020adc40(...), func_020adc90(...);
 extern s32 func_020ae024(...);
-extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
+extern Graphics3dPresentation *
+RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern void func_0209b58c(...), func_0209b7ec(...), func_0209b880(...);
 extern void func_0209c430(...), func_020adff0(...);
-extern void *func_020a257c(...), *func_0209a208(...);
-extern u32 func_020a25c8(...);
+extern u32 Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(
+    Graphics3dPresentation *, s32, s32, s32, s32, s32, s32);
+extern void *func_0209a208(...);
+extern u32 Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(
+    Graphics3dPresentation *, s32, s32, s32, s32, s32, s32);
 extern void Graphics3dPresentation_RemoveSpriteEffect(
     Graphics3dPresentation *, u32);
 extern void Graphics3dPresentation_SetSpriteEffectVertexDepth(
     Graphics3dPresentation *, u32, s16);
-extern void func_020a2614(...);
-extern void func_020a27a0(...), func_0209a2ac(...), func_02099fb0(...);
+extern void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(
+    Graphics3dPresentation *, s32, s32, s32, s32);
+extern u32 Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(
+    Graphics3dPresentation *, s32, s32, s32);
+extern void func_0209a2ac(...), func_02099fb0(...);
 extern s32 func_0209e330(...);
 extern void func_0209e328(...), GraphicsSpriteState_SetAnimationIndex(...);
 extern void Sound_Play(...);
@@ -341,7 +348,7 @@ void func_ov069_02210a44(void *owner, s32 pattern, s32 x, s32 y,
         F(s32, owner, 0x7c0 + slot * 4) = (s32)(genrand_int32() & 3) + 7;
       }
       F(s32, owner, 0x1030 + slot * 4) = 0;
-      F(s32, owner, 0x928 + slot * 4) = 0xff;
+      F(u32, owner, 0x928 + slot * 4) = 0xff;
     }
   }
 }
@@ -395,8 +402,8 @@ void func_ov069_0221100c(void *owner, s32 submit_only) {
         if (active < 7) {
           *age = -1;
           if (active == 1)
-            F(void *, owner, 0x928 + i * 4) =
-                func_020a257c(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
+            F(u32, owner, 0x928 + i * 4) =
+                Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
                               (F(s32, velocity, 0xa94) >> 12) - 20,
                               (F(s32, velocity, 0xa9c) >> 12) - 20,
                               40, 40, 0x46);
@@ -490,9 +497,9 @@ s32 func_ov069_022115c0(void *owner, const void *position) {
         renderer = (Graphics3dPresentation *)
             RuntimePresentationManager_GetGraphics3dPresentation(
                 (u8 *)data_021052fc + 0x2f7c);
-        if (F(s32, owner, 0x928 + i * 4) != 0xff)
-          Graphics3dPresentation_RemoveSpriteEffect(renderer, F(s32, owner, 0x928 + i * 4));
-        effect = func_020a25c8(renderer, 0,
+        if (F(u32, owner, 0x928 + i * 4) != 0xff)
+          Graphics3dPresentation_RemoveSpriteEffect(renderer, F(u32, owner, 0x928 + i * 4));
+        effect = Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(renderer, 0,
             (F(s32, owner, 0xa94 + i * 0x10) >> 12) - 14,
             (F(s32, owner, 0xa9c + i * 0x10) >> 12) - 19,
             28, 28, 4);
@@ -675,7 +682,7 @@ void func_ov069_022119f8(void *object) {
       if ((paired == 0
            ? func_ov039_02203964(F(void *, context, 0x18), (u8 *)sprite_record + 0x2c)
            : func_ov069_02210970(paired, (u8 *)sprite_record + 0x2c)) != 0) {
-        func_020a2614(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 4,
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 4,
                        F(s32, sprite_record, 0x30) >> 12,
                        F(s32, sprite_record, 0x34) >> 12, 8);
       }
@@ -732,7 +739,7 @@ void func_ov069_022119f8(void *object) {
       F(s32, sprite_record, 0x38) = 0;
       ++F(s32, object, 0x60);
       F(s32, object, 0x64) = 0;
-      func_020a27a0(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
+      Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
                      F(s32, sprite_record, 0x30) >> 12,
                      (F(s32, sprite_record, 0x34) >> 12) + 8);
       F(s32, context, 0x44) = 0x19;

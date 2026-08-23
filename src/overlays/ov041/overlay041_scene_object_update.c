@@ -18,7 +18,7 @@ void VecFx32Object_Destroy(void *);
 s32 func_ov041_021ff5a8(void *, s32, const void *);
 u32 genrand_int32(void);
 void func_ov041_021fd000(void *);
-void func_020a29ac(void *, s32, s32, s32);
+void Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(void *, s32, s32, s32);
 extern void *gSoundContext;
 extern const s32 data_ov041_02204c38[8];
 extern const s32 data_ov041_02204c28[4];
@@ -191,7 +191,7 @@ static void update_alternate_mode(void *object)
             func_ov041_021fd000(particle);
             particle[1] = FIELD(s32, position, 4);
             particle[2] = FIELD(s32, position, 8);
-            func_020a29ac(FIELD(void *, owner, 0x18), 0,
+            Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(FIELD(void *, owner, 0x18), 0,
                           particle[1] >> 12, particle[2] >> 12);
         }
         if (FIELD(s32, position, 8) - FIELD(s32, owner, 0x194) < -0xd2000)

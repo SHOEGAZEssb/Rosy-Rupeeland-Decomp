@@ -73,8 +73,8 @@ extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, ...);
 extern "C" void Sound_StopEffect(void *, s32, ...);
 extern "C" void Sound_SetEffectPitch(void *, s32, ...);
 extern "C" s32 Sound_IsEffectPlaying(void *, s32, ...);
-extern "C" void func_020a2614(void *, ...);
-extern "C" void func_020a2960(void *, ...);
+extern "C" void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(void *, ...);
+extern "C" void Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(void *, ...);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" void func_020adfbc(const void *, const void *, void *);
 extern "C" s32 func_020ae024(s32, s32);
@@ -328,7 +328,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
             if (state > 4)
                 state = 4;
             void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
-            func_020a2960(manager, 0, F(s32, actor, 0x1c) >> 12,
+            Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(manager, 0, F(s32, actor, 0x1c) >> 12,
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) -
                               0x20 - state * 9,
                           0x7fff);
@@ -338,7 +338,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
         for (s32 i = 0; i < 4; ++i) {
             s32 angle = (((i - 1) * 0x2710 - 0xdac) & 0xffff) >> 4;
             void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
-            func_020a2614(manager, 1,
+            Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 1,
                           (F(s32, actor, 0x1c) >> 12) +
                               ((data_020c9670[angle * 2] * 0x14) >> 12),
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) +

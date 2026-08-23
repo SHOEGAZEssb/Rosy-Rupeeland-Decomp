@@ -4,7 +4,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_020a257c
+.extern Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds
 .extern func_ov069_0221123c
 
 .global func_ov069_0221100c
@@ -81,7 +81,7 @@ func_ov069_0221100c:
     mov r1, #0x0
     sub r2, r2, #0x14
     sub r3, r3, #0x14
-    bl func_020a257c
+    bl Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds
     add r1, r10, r9, lsl #0x2
     str r0, [r1, #0x928]
 .L_02211130:

@@ -15,8 +15,8 @@
 .extern Sound_StopEffect
 .extern Sound_SetEffectPitch
 .extern Sound_IsEffectPlaying
-.extern func_020a2614
-.extern func_020a2960
+.extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
+.extern Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
 .extern func_ov076_02212e18
 .extern func_ov076_022135d0
 .extern func_ov076_022135e0
@@ -284,7 +284,7 @@ func_ov076_02212ee0:
     mov r2, r2, asr #0xc
     add r2, r2, r4, asr #0xc
     add r3, r7, r3, asr #0xc
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     add r8, r8, #0x1
     cmp r8, #0x4
     blt .L_02213248
@@ -346,7 +346,7 @@ func_ov076_02212ee0:
     sub r3, r3, r1
     mov r2, r4, asr #0xc
     mov r1, #0x0
-    bl func_020a2960
+    bl Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
 .L_022133a8:
     add r0, r10, #0x200
     ldrsh r1, [r0, #0x5a]

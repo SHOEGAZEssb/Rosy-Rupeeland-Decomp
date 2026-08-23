@@ -14,7 +14,7 @@ extern void ActorTableRecord_UpdateFrame(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void ActorRegisteredSubclass_EnterState2(void *actor);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
-extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
+extern void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 #ifdef __cplusplus
 }
 #endif
@@ -76,7 +76,7 @@ void ActorRegisteredSubclass_UpdateFrame(void *self)
                     (*(s32 *)(actor + 0x24) >> 12) - 18 +
                     (s32)((random >> 4) & 3);
 
-            func_020a28e0(effect, 1, x, y, 60);
+            Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(effect, 1, x, y, 60);
         }
         return;
     }

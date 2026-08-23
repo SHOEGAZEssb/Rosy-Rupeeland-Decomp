@@ -12,7 +12,7 @@
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_PlayStateSound
 .extern Fx32Vector2_LimitMagnitude
-.extern EffectManager_SubmitPointEffect
+.extern Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
 .extern func_020adae4
 .extern func_020ae024
 .global Type7Actor_ApplyType2InteractionResponse
@@ -212,7 +212,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     ldr r2, [sp, #0x28]
     ldr r3, [sp, #0x2c]
     mov r1, #0x1
-    bl EffectManager_SubmitPointEffect
+    bl Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt
     mov r0, r6
     bl ActorDerivedType1_IsTargetStateEligible
     cmp r0, #0x0

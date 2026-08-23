@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_secondary_effects.c for portable C. */
     .extern func_020ae024
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_020a2844
+    .extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     .extern func_ov039_02203770
     .extern func_ov039_02204180
     .extern data_020c9670
@@ -90,7 +90,7 @@ L_022043f0:
     ldr r3, [r3, #0x14]
     mov r2, r2, asr #0xc
     mov r3, r3, asr #0xc
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 L_0220445c:
     add r0, r10, r9, lsl #0x2
     ldr r3, [r0, #0x9c]

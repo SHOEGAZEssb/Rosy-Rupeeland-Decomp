@@ -8,7 +8,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_020a2960
+.extern Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
 .extern func_020befec
 .extern func_ov095_0221b6d8
 .extern func_ov095_0221bed0
@@ -88,7 +88,7 @@ func_ov095_0221b7c8:
     rsb r3, r2, r3, asr #0xc
     mov r2, ip, asr #0xc
     sub r3, r3, #0x20
-    bl func_020a2960
+    bl Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt
     b .L_0221b910
 .L_0221b8ec:
     ldr r1, [r4, #0x2a4]

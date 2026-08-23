@@ -20,10 +20,6 @@ extern void *PresentationBackedActor_InitBase(void *actor,
                                               const void *descriptor);
 extern void *PresentationBackedActor_Destroy(void *actor);
 extern void func_0204d858(void *actor);
-extern void func_020a25c8(void *manager, s32 mode, s32 x, s32 y,
-                          s32 width, s32 height, s32 kind);
-extern s32 func_020a257c(void *manager, s32 mode, s32 x, s32 y,
-                         s32 width, s32 height, s32 kind);
 #ifdef __cplusplus
 }
 #endif
@@ -90,16 +86,18 @@ void *EffectHandleActor_Delete(void *self)
 void func_0204e82c(void *actor)
 {
     if (FIELD(u8, FIELD(void *, actor, 0x54), 0x38) >= 6) {
-        void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+        Graphics3dPresentation *manager =
+            RuntimePresentationManager_GetGraphics3dPresentation(
+                (u8 *)data_021052fc + 0x2f7c);
         s32 x = FIELD(s32, actor, 0x1c) >> 12;
         s32 y = (FIELD(s32, actor, 0x20) >> 12) -
                 (FIELD(s32, actor, 0x24) >> 12);
         if (FIELD(u16, actor, 0x1ec) == 0) {
             FIELD(s16, actor, 0x1fc)++;
             if ((FIELD(s16, actor, 0x1fc) & 0x1f) == 0)
-                func_020a25c8(manager, 0, x - 20, y - 20, 40, 40, 15);
+                Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(manager, 0, x - 20, y - 20, 40, 40, 15);
         } else if (FIELD(s16, actor, 0x1fe) == -1) {
-            FIELD(s16, actor, 0x1fe) = (s16)func_020a257c(
+            FIELD(s16, actor, 0x1fe) = (s16)Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(
                 manager, 0, (s16)(x - 20), (s16)(y - 20), 40, 40, 0x46);
         }
     }

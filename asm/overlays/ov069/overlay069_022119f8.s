@@ -13,8 +13,8 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209e328
 .extern func_0209e330
-.extern func_020a2614
-.extern func_020a27a0
+.extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
+.extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 .extern func_020adc40
 .extern func_020adc90
 .extern func_020ae024
@@ -213,7 +213,7 @@ func_ov069_022119f8:
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x4
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
 .L_02211c7c:
     add r0, sp, #0xa8
     bl VecFx32Object_Destroy
@@ -470,7 +470,7 @@ func_ov069_022119f8:
     mov r3, r2, asr #0xc
     mov r2, r4, asr #0xc
     add r3, r3, #0x8
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     ldr r2, [r10, #0x4c]
     mov r0, #0x19
     str r0, [r2, #0x44]

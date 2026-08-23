@@ -33,7 +33,7 @@
 .extern ActorFeedback_ProcessSnapshotCell
 .extern func_02063820
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020a25c8
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .extern func_020adcac
 .extern gGameWork
 .extern gSceneTouchInitialData
@@ -459,7 +459,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     mov r1, #0x0
     mov r2, r2, asr #0x10
     mov r3, r3, asr #0x10
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     add r9, r9, #0x1
     cmp r9, #0x4
     blt .L_0203707c

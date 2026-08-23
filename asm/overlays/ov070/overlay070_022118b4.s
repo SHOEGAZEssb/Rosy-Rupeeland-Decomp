@@ -5,7 +5,7 @@
 .extern VecFx32Object_Assign
 .extern Sound_PlayDirectSequence
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020a29ac
+.extern Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .extern func_020befec
 .extern func_ov041_021fff80
 .extern func_ov041_02200348
@@ -243,7 +243,7 @@ func_ov070_022118b4:
     ldr r0, [r4, #0x48]
     mov r3, r3, asr #0xc
     ldr r0, [r0, #0x18]
-    bl func_020a29ac
+    bl Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .L_02211c2c:
     ldr r0, [r4, #0x48]
     ldr r0, [r0, #0x10]

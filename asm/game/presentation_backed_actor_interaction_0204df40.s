@@ -16,7 +16,7 @@
 .extern Actor_GetOwningCollection
 .extern ActorDerivedType1_TrySetStateVector
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020a25c8
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .text
 
     .global PresentationBackedActor_HandleInteraction
@@ -147,7 +147,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     sub r2, r3, #0x14
     sub r3, r1, #0x14
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .L_0204e12c:
     ldr r2, [r6, #0x54]
     mov r0, r6
@@ -189,7 +189,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     mov r2, r3, asr #0xc
     sub r3, r1, #0x14
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     ldr r2, [r6, #0x54]
     mov r0, r6
     ldrh r1, [r2, #0x24]

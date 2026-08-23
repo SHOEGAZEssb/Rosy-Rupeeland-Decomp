@@ -33,8 +33,8 @@ extern u32 genrand_int32(void);
 extern s32 func_020bf1f8(u32 value, s32 modulus);
 extern void func_ov040_021fcea0(void *object, s32 x, s32 y, s32 z);
 extern void func_ov040_021fceb0(void *object, s32 first, s32 second);
-extern void func_020a2614(void *context, s32 type, s32 x, s32 y, s32 value);
-extern void func_020a27a0(void *context, s32 type, s32 x, s32 y);
+extern void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(void *context, s32 type, s32 x, s32 y, s32 value);
+extern void Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(void *context, s32 type, s32 x, s32 y);
 extern s32 ActorRuntimeFlags_Test(const void *input, s32 mask);
 extern void func_0209c3b4(void *context);
 extern void func_0209c430(void *context, const void *position,
@@ -316,7 +316,7 @@ extern "C" void func_ov040_02200bf4(void *scene)
             FIELD(s32, scene, 0xad0) = FIELD(s32, scene, 0x688) + 0x30000;
             FIELD(u16, rising, 0x42) &= (u16)~4;
             func_ov040_021fceb0(rising, 0x50, 0x50);
-            func_020a2614(FIELD(void *, FIELD(void *, scene, 0x48), 0x10),
+            Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(FIELD(void *, FIELD(void *, scene, 0x48), 0x10),
                           1, FIELD(s32, scene, 0xacc) >> 12,
                           FIELD(s32, scene, 0xad0) >> 12, 6);
         } else {
@@ -332,7 +332,7 @@ extern "C" void func_ov040_02200bf4(void *scene)
                 void *owner = FIELD(void *, scene, 0x48);
                 FIELD(s32, owner, 0x34) = 0x0f;
                 FIELD(s32, owner, 0x38) = 3;
-                func_020a27a0(FIELD(void *, owner, 0x10), 2,
+                Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(FIELD(void *, owner, 0x10), 2,
                               FIELD(s32, scene, 0xacc) >> 12,
                               (FIELD(s32, scene, 0xad0) >> 12) + 0x0c);
                 FIELD(u16, rising, 0x42) |= 4;

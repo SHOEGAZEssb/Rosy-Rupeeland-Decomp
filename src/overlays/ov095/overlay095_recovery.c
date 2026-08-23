@@ -70,7 +70,7 @@ EXT(Actor_SetDirectionFromVector);
 EXT(Actor_SnapshotTransientState);
 EXT(ActorRuntimeCollection_GetPendingAttachmentFlag);
 EXT(AuxiliaryTimedSpritePresentation_Init);
-EXT(EffectManager_SubmitPointEffect);
+EXT(Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt);
 EXT(TrackedResourceActorImpulse_InitBase);
 EXT(TrackedResourceActorImpulse_Destroy);
 EXT(TrackedResourceActorImpulse_QueueRemovalAndEmitEffects);
@@ -87,15 +87,15 @@ EXT(TrackedResourceActor_PostUpdate);
 EXT(Actor_UpdatePrimaryRenderAttachmentPriority);
 EXT(Actor_TurnTowardVector);
 EXT(Actor_PlayRadialSpatialSound);
-EXT(RuntimePresentationManager_GetGraphics3dPresentation);
+extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 EXT(Fx32Vector2_Magnitude);
 EXT(func_0206e590);
-EXT(func_020a2844);
-EXT(func_020a25c8);
-EXT(func_020a291c);
-EXT(func_020a2960);
-EXT(func_020a29ac);
-EXT(func_020a2a4c);
+EXT(Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt);
+EXT(Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds);
+EXT(Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt);
+EXT(Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt);
+EXT(Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt);
+EXT(Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt);
 EXT(func_020ada8c);
 EXT(func_020adae4);
 EXT(func_020adc90);
@@ -608,7 +608,7 @@ extern "C" void func_ov095_0221a2b4(void *actor)
         u32 random = (u32)genrand_int32();
         void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
         s32 width = func_ov095_02217d90(P(actor, 0x68));
-        func_020a291c(effects, 1,
+        Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(effects, 1,
                       (F(s32, actor, 0x1c) >> 12) - 12 + random % 24,
                       ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) -
                           (s32)((random >> 4) & 15) - width / 2);
@@ -670,7 +670,7 @@ extern "C" void func_ov095_0221ac6c(void *actor)
     }
 
     void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
-    func_020a2844(effects, 0, F(s32, actor, 0x1c) >> 12,
+    Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(effects, 0, F(s32, actor, 0x1c) >> 12,
                   ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) - 24,
                   8);
     void *primary = F(void *, data_021052fc, 0x2ea4);
@@ -689,7 +689,7 @@ extern "C" void func_ov095_0221ac6c(void *actor)
         if (func_ov095_0221ae14(linked) == 0)
         {
             F(Method, F(void *, linked, 0), 0x100)(linked);
-            func_020a2844(effects, 0, F(s32, linked, 0x1c) >> 12,
+            Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(effects, 0, F(s32, linked, 0x1c) >> 12,
                           ((F(s32, linked, 0x20) - F(s32, linked, 0x24)) >> 12) - 24,
                           3);
         }
@@ -1415,7 +1415,7 @@ extern "C" void func_ov095_0221c4a4(void *actor, void *target)
             func_ov095_0221a208(scaled, direction, 0x2000);
             VecFx32Object_Destroy(direction);
             void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
-            EffectManager_SubmitPointEffect(
+            Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
                 effects, 0, F(s32, scaled, 4) >> 12,
                 ((F(s32, scaled, 8) - F(s32, scaled, 0xc)) >> 12) - 28, 0);
             void *descriptor = F(void *, actor, 0x1fc);
@@ -1847,7 +1847,7 @@ extern "C" s32 func_ov095_0221b7c8(void *actor)
         if (F(s16, actor, 0xae) > 26 && (F(s16, actor, 0xae) & 1) == 0)
         {
             void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
-            func_020a2960(effects, 0, F(s32, actor, 0x1c) >> 12,
+            Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(effects, 0, F(s32, actor, 0x1c) >> 12,
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) - 32,
                           0x7fff);
         }

@@ -17,8 +17,8 @@
     .extern func_ov069_022119bc
     .extern func_ov069_02210a44
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_020a28e0
-    .extern func_020a2614
+    .extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
+    .extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     .extern func_0209f158
     .extern Sound_Play
     .extern DisplayBrightnessPair_GetScreen
@@ -420,7 +420,7 @@ L_021ffb70:
     sub r2, r2, #0x28
     add r3, r1, #0x14
     mov r1, #0x2
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r2, [r10, #0x78]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -432,7 +432,7 @@ L_021ffb70:
     add r2, r2, #0x32
     add r3, r1, #0xa
     mov r1, #0x2
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r2, [r10, #0x7c]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -444,7 +444,7 @@ L_021ffb70:
     sub r2, r2, #0x3c
     add r3, r1, #0x14
     mov r1, #0x2
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     ldr r3, [r10, #0x7c]
     mov r0, #0x8c
     str r0, [sp, #0x0]
@@ -456,7 +456,7 @@ L_021ffb70:
     add r2, r2, #0x19
     mov r3, r3, asr #0xc
     add r3, r3, #0x32
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     mov r0, r10
     mov r1, #0x4
     bl func_ov039_021ff330
@@ -511,7 +511,7 @@ L_021ffce8:
     mov r2, r2, asr #0xc
     add r3, r1, #0x1e
     mov r1, #0x0
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r10, #0x74]
     add r0, r10, #0x2fc
     ldrh r2, [r3, #0x42]
@@ -573,7 +573,7 @@ L_021ffddc:
     mov r2, r2, asr #0xc
     add r3, r1, #0x1e
     mov r1, #0x0
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r10, #0x78]
     add r0, r10, #0x2fc
     ldrh r2, [r3, #0x42]
@@ -627,7 +627,7 @@ L_021ffeb0:
     mov r2, r2, asr #0xc
     sub r3, r1, #0x14
     mov r1, #0x0
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     ldr r3, [r10, #0x7c]
     add r0, r10, #0x2fc
     ldrh r2, [r3, #0x42]

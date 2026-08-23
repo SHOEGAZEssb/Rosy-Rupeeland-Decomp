@@ -11,6 +11,8 @@ extern const char data_020df48c[];
 extern void *gGameWork;
 extern u8 *data_021052fc;
 
+typedef struct Graphics3dPresentation Graphics3dPresentation;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -130,9 +132,16 @@ extern void *AuxiliaryTimedSpritePresentation_Init(
     s32 second, s32 third, s32 spriteValue, s32 offset, s32 spriteByte,
     s32 registerWithManager);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
-extern void func_020a2a4c(void *manager, s32 first, s32 x, s32 y,
-                          s32 velocityX, s32 velocityY, s32 kind);
-extern void func_020a27a0(void *manager, s32 first, s32 x, s32 y);
+extern u32 Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z);
+extern u32 Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z,
+    s32 scaleStep);
+extern void
+Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z,
+    s32 horizontalVelocityX, s32 horizontalVelocityZ,
+    s32 particleLifetime);
 extern void TrackedResourceActor_SpawnFromKey(s32 key, const void *first,
                                                const void *second);
 extern void AuxiliaryInteraction_ProcessTouchSamples(void *resource, const void *touch);
@@ -165,8 +174,6 @@ extern const char data_020e5828[];
 extern const char data_020e5830[];
 extern const u16 data_020e5804;
 extern u8 *ActorExtendedType2Record_FindByIndex(s32 index);
-extern void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y,
-                          s32 kind);
 #ifdef __cplusplus
 }
 #endif
@@ -184,20 +191,6 @@ void ProgressionFlags_SetGate2C8_767_74B(void)
     GameWork_SetFlag(gGameWork, 0x2c8);
     GameWork_SetFlag(gGameWork, 0x767);
     GameWork_SetFlag(gGameWork, 0x74b);
-}
-
-/* Submit the point-sized effect rectangle used by retail 0x020A2894. */
-void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y, s32 kind)
-{
-    SpriteEffectBounds bounds;
-
-    bounds.minimumX = x << 12;
-    bounds.minimumZ = y << 12;
-    bounds.maximumX = bounds.minimumX;
-    bounds.maximumZ = bounds.minimumZ;
-    SpriteEffectManager_CreatePresetEffect(
-        *(SpriteEffectManager **)((u8 *)manager + 0x4e8), subtype + 0x14,
-        &bounds, kind * 0x19a + 0x1000);
 }
 
 /* Initialize a two-word counter pair to the supplied capacity. */
@@ -2437,7 +2430,9 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
 
     *(u32 *)(self + 0x20) |= 0x10000;
     {
-        void *effectManager = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+        Graphics3dPresentation *presentation =
+            (Graphics3dPresentation *)RuntimePresentationManager_GetGraphics3dPresentation(
+                data_021052fc + 0x2f7c);
         if (owner[0x4d] == 7) {
             u8 *state = *(u8 **)(owner + 0x29c);
             switch (*(s16 *)(state + 0x3c)) {
@@ -2464,7 +2459,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
                         cosine = data_020c9670[angle * 2];
                         position[1] += multiplyFx32(sine, 0x50000);
                         position[2] += multiplyFx32(cosine, 0x50000);
-                        func_020a2a4c(effectManager, 0, position[1] >> 12,
+                        Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt(presentation, 0, position[1] >> 12,
                                       (position[2] >> 12) - (position[3] >> 12),
                                       sine * -4, cosine * -4, 0x12);
                     }
@@ -2482,7 +2477,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
                                                           owner + 0x18);
                         ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc,
                                                        0x14, 3);
-                        func_020a27a0(effectManager, 2,
+                        Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(presentation, 2,
                                       *(s32 *)(owner + 0x1c) >> 12,
                                       ((*(s32 *)(owner + 0x20) >> 12) -
                                        (*(s32 *)(owner + 0x24) >> 12)) + 6);
@@ -2556,14 +2551,17 @@ void AuxiliaryInteraction_ProcessTouchSamples(void *object, const void *touchObj
     u8 *self = (u8 *)object;
     const s32 *touch = (const s32 *)touchObject;
     u8 *manager = *(u8 **)(self + 0x44);
-    void *effectManager = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+    Graphics3dPresentation *presentation =
+        (Graphics3dPresentation *)RuntimePresentationManager_GetGraphics3dPresentation(
+            data_021052fc + 0x2f7c);
 
     if (func_020ada8c((u32)*(s16 *)(self + 0xac), 5) == 0) {
         s32 quotient;
         s32 amount;
         Sound_PlayEffectWithParameters(gSoundContext, 0, 0x60, 0x7f, 0, 0);
         AuxiliaryInteraction_ApplyStrongResponse(self);
-        EffectManager_SubmitPointEffect(effectManager, 1, touch[1], touch[2], 8);
+        Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
+            presentation, 1, touch[1], touch[2], 8);
         if (*(s16 *)(self + 0xac) >= 40)
             *(s16 *)(self + 0xac) = 40;
         quotient = func_020adae4(*(s16 *)(self + 0xac), 5);
@@ -2580,7 +2578,8 @@ void AuxiliaryInteraction_ProcessTouchSamples(void *object, const void *touchObj
                 *(s32 *)(*(u8 **)(manager + index * 4) + 0x1c) += amount;
         }
     } else {
-        EffectManager_SubmitPointEffect(effectManager, 0, touch[1], touch[2], 5);
+        Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
+            presentation, 0, touch[1], touch[2], 5);
         AuxiliaryInteraction_PlayTouchSound(self, 0);
         AuxiliaryInteraction_ApplyWeakResponse(self);
     }

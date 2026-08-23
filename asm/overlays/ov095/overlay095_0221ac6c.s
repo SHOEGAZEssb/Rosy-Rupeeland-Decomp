@@ -5,7 +5,7 @@
 .extern ActorExtendedType2_InitializeReentryState
 .extern Sound_PlayOwnedEffect
 .extern func_0206e590
-.extern func_020a2844
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .extern func_ov095_0221ae14
 .extern gSoundContext
 
@@ -55,7 +55,7 @@ func_ov095_0221ac6c:
     sub r3, r1, #0x18
     mov r1, #0x0
     mov r6, r0
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     ldr r0, .L_0221ae0c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000
@@ -103,7 +103,7 @@ func_ov095_0221ac6c:
     rsb r3, r1, r3, asr #0xc
     mov r1, r4
     sub r3, r3, #0x18
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .L_0221add0:
     add r7, r7, #0x1
     cmp r7, #0x4

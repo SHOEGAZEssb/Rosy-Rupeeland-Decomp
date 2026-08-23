@@ -7,7 +7,7 @@
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Graphics3dPresentation_RemoveSpriteEffect
 .extern Graphics3dPresentation_SetSpriteEffectVertexDepth
-.extern func_020a25c8
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .extern func_020adc40
 .extern gSoundContext
 
@@ -104,7 +104,7 @@ func_ov069_022115c0:
     sub r2, r2, #0xe
     sub r3, r1, #0x13
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     mov r1, r0
     mov r0, r4
     mvn r2, #0x13

@@ -52,9 +52,9 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_0209a748
-.extern func_020a2844
-.extern func_020a28e0
-.extern func_020a29ac
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
+.extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .extern func_020a63d0
 .extern func_020a6404
 .extern func_020a6548
@@ -1285,7 +1285,7 @@ func_ov090_02217d70:
     mov r2, r3, asr #0xc
     sub r3, r1, #0x3c
     mov r1, #0x0
-    bl func_020a29ac
+    bl Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 .L_02218f7c:
     ldr r0, [r4, #0x21c]
     add r0, r0, #0x29
@@ -1376,7 +1376,7 @@ func_ov090_02217d70:
     mov r2, r3, asr #0xc
     sub r3, r1, #0x1c
     mov r1, #0x1
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .L_022190d4:
     ldrb r0, [r4, #0x222]
     tst r0, #0x1
@@ -1438,7 +1438,7 @@ func_ov090_02217d70:
     mov r1, r7
     mov r2, r2, asr #0xc
     rsb r3, r3, r9, asr #0xc
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     add r5, r5, #0x1
     cmp r5, #0x3
     blt .L_02219178
@@ -1462,7 +1462,7 @@ func_ov090_02217d70:
     mov r1, r6
     mov r2, r2, asr #0xc
     rsb r3, r3, r9, asr #0xc
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     add r5, r5, #0x1
     cmp r5, #0x3
     blt .L_022191e8

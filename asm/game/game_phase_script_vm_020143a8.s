@@ -42,15 +42,15 @@
 .extern Graphics3dPresentation_RemoveSpriteEffect
 .extern Graphics3dPresentation_SetPairedEntryModeAt
 .extern Graphics3dPresentation_SetRupeeVisibleAt
-.extern func_020a2530
-.extern func_020a257c
-.extern func_020a25c8
-.extern func_020a2614
-.extern func_020a27a0
-.extern func_020a2844
-.extern func_020a28e0
-.extern func_020a29f8
-.extern func_020a2a4c
+.extern Graphics3dPresentation_CreatePresetSpriteEffectInBounds
+.extern Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
+.extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
+.extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
+.extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset32CenteredAreaSpriteEffect
+.extern Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt
 .extern func_020be8c0
 .extern func_020beae4
 .extern func_020beb18
@@ -807,7 +807,7 @@ L_02014dfc:
     str r5, [sp, #0x4]
     mov r4, #0x46
     str r4, [sp, #0x8]
-    bl func_020a257c
+    bl Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds
     mov r1, r0
     mov r0, r11
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
@@ -825,7 +825,7 @@ L_02014e40:
     str r5, [sp, #0x4]
     mov r4, #0x46
     str r4, [sp, #0x8]
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     mov r1, r0
     mov r0, r11
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
@@ -853,7 +853,7 @@ L_02014eac:
     mov r2, r4
     mov r3, r8
     str r5, [sp, #0x8]
-    bl func_020a2530
+    bl Graphics3dPresentation_CreatePresetSpriteEffectInBounds
     b L_0201553c
 L_02014ee0:
     ldr r0, L_020154d0
@@ -865,7 +865,7 @@ L_02014ee0:
     mov r2, r8
     mov r3, r7
     str r6, [sp, #0x0]
-    bl func_020a2614
+    bl Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
     b L_0201553c
 L_02014f0c:
     ldr r0, L_020154d0
@@ -876,7 +876,7 @@ L_02014f0c:
     mov r1, r9
     mov r2, r8
     mov r3, r7
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     b L_0201553c
 L_02014f34:
     ldr r0, L_020154d0
@@ -888,7 +888,7 @@ L_02014f34:
     mov r2, r8
     mov r3, r7
     str r6, [sp, #0x0]
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     b L_0201553c
 L_02014f60:
     ldr r0, L_020154d0
@@ -911,7 +911,7 @@ L_02014f88:
     mov r2, r8
     mov r3, r7
     str r6, [sp, #0x0]
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     b L_0201553c
 L_02014fb4:
     ldr r0, L_020154d0
@@ -924,7 +924,7 @@ L_02014fb4:
     mov r2, r8
     mov r3, r7
     str r5, [sp, #0x4]
-    bl func_020a29f8
+    bl Graphics3dPresentation_CreatePreset32CenteredAreaSpriteEffect
     b L_0201553c
 L_02014fe4:
     ldr r0, L_020154d0
@@ -938,7 +938,7 @@ L_02014fe4:
     mov r2, r8
     mov r3, r7
     str r4, [sp, #0x8]
-    bl func_020a2a4c
+    bl Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt
     b L_0201553c
 L_02015018:
     ldr r0, L_020154d0

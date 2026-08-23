@@ -39,7 +39,7 @@ extern s32 func_020adc40(s32 value);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void *func_0209c3b4(void);
 extern void func_0209c430(void *renderer, ...);
-extern void func_020a2844(void *resource, s32 type, s32 x, s32 y, s32 mode);
+extern void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(void *resource, s32 type, s32 x, s32 y, s32 mode);
 extern void func_ov039_02203770(void *position, const void *velocity);
 extern void func_ov039_02203794(void *scene);
 extern void func_ov039_02203064(void *scene);

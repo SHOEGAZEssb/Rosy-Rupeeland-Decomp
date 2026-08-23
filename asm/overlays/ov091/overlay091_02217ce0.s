@@ -25,8 +25,8 @@
 .extern Sound_PlayDirectSequence
 .extern Sound_StopDirectSequence
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020a27a0
-.extern func_020a2844
+.extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
+.extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .extern func_020adcac
 .extern func_020befec
 .extern func_ov060_0220fd54
@@ -467,7 +467,7 @@ func_ov091_02217ce0:
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x1
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 .L_0221833c:
     ldr r0, [r4, #0x220]
     add r1, r5, #0x18
@@ -500,7 +500,7 @@ func_ov091_02217ce0:
     mov r2, r2, asr #0xc
     add r3, r1, #0x14
     mov r1, #0x0
-    bl func_020a2844
+    bl Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     ldr r0, [r4, #0x1f0]
     mov r1, #0x14
     bl func_ov076_02214034
@@ -581,7 +581,7 @@ func_ov091_02217ce0:
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x1
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 .L_022184f8:
     ldr r0, [r4, #0x220]
     add r1, r5, #0x18

@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_020a27a0
+.extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 .extern func_ov077_02213768
 .extern func_ov090_0221c3dc
 
@@ -55,7 +55,7 @@ func_ov077_022169bc:
     mov r2, r2, asr #0xc
     rsb r3, r1, r3, asr #0xc
     mov r1, #0x1
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     b .L_02216c9c
 .L_02216a74:
     bic r0, r3, #0x70
@@ -112,7 +112,7 @@ func_ov077_022169bc:
     rsb r3, r2, r3, asr #0xc
     mov r2, ip, asr #0xc
     add r3, r3, #0x18
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     ldr r0, [r5, #0x24]
     ldr r2, [r5, #0x1c]
     ldr r1, [r5, #0x20]
@@ -123,7 +123,7 @@ func_ov077_022169bc:
     sub r2, r2, #0x18
     sub r3, r1, #0x8
     mov r1, #0x1
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     ldr r0, [r5, #0x24]
     ldr r2, [r5, #0x1c]
     ldr r1, [r5, #0x20]
@@ -134,7 +134,7 @@ func_ov077_022169bc:
     add r2, r2, #0x18
     sub r3, r1, #0x8
     mov r1, #0x1
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     mov r0, r4
     mov r1, #0x1
     ldr r2, [r5, #0x1c]
@@ -145,7 +145,7 @@ func_ov077_022169bc:
     mov r3, r3, asr #0xc
     rsb r3, r3, ip, asr #0xc
     sub r3, r3, #0x14
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     mov r0, r4
     mov r1, #0x1
     ldr r2, [r5, #0x1c]
@@ -156,7 +156,7 @@ func_ov077_022169bc:
     mov r3, r3, asr #0xc
     rsb r3, r3, ip, asr #0xc
     sub r3, r3, #0x14
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     mov r0, r4
     mov r1, #0x1
     ldr r2, [r5, #0x1c]
@@ -166,7 +166,7 @@ func_ov077_022169bc:
     mov r3, r3, asr #0xc
     rsb r3, r3, r4, asr #0xc
     sub r3, r3, #0x18
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 .L_02216c1c:
     add r0, sp, #0x0
     bl VecFx32Object_Destroy

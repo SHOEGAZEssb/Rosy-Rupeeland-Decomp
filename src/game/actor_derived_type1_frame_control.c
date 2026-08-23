@@ -32,7 +32,7 @@ extern void func_02008378(void *output, const void *left, const void *right);
 extern void VecFx32Object_Destroy(void *vector);
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
-extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
+extern void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Sound_StopAllDirectSequences(void *context, s32 value);
@@ -169,7 +169,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
                               0x1075, 0x1001, 0x1076, 0, 16, -1, 1);
             }
             effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
-            func_020a28e0(effect, 1, position[1] >> 12,
+            Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(effect, 1, position[1] >> 12,
                           (position[2] >> 12) - (position[3] >> 12), 30);
             VecFx32Object_Destroy(position);
         }

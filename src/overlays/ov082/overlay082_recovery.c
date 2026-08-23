@@ -65,7 +65,7 @@ extern "C" s32 Actor_GetGravityAcceleration(void *);
 extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32);
-extern "C" void func_020a28e0(void *, s32, s32, s32, s32);
+extern "C" void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(void *, s32, s32, s32, s32);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" void func_020adfbc(const void *, const void *, void *);
 extern "C" void func_020adff0(const void *, const void *, void *);
@@ -74,7 +74,7 @@ extern "C" u64 func_020bf1f8(u32, u32);
 extern "C" u32 genrand_int32(void);
 extern "C" s32 SignedAbsoluteValue(s32);
 extern "C" void Sound_Play(void *, s32, s32);
-extern "C" void EffectManager_SubmitPointEffect(void *, s32, s32, s32, s32);
+extern "C" void Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(void *, s32, s32, s32, s32);
 
 extern "C" s32 func_ov082_0221340c(void *);
 extern "C" void func_ov082_0221391c(void *, s32);
@@ -421,7 +421,7 @@ extern "C" void func_ov082_022132e8(void *a) {
         y = (F(s32, a, 0x20) >> 12) - (F(s32, a, 0x24) >> 12);
     for (s32 i = 0; i < 5; i++) {
         u32 r = genrand_int32();
-        func_020a28e0(e, 1, x + (s32)(func_020bf1f8(r, 24) >> 32),
+        Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(e, 1, x + (s32)(func_020bf1f8(r, 24) >> 32),
                       y - (s32)((r >> 4) & 15), 60);
     }
     s32 mode = ActorExtendedType2_GetDescriptorValue2C(a);
@@ -516,7 +516,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
             func_ov082_022139ac(scaled, delta, 0x2000);
             func_ov082_022139f4(pos, (u8 *)a + 0x18, scaled);
             F(s32, pos, 8) += 0x18000 - F(s32, pos, 12);
-            EffectManager_SubmitPointEffect(
+            Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
                 RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 1, F(s32, pos, 4),
                 F(s32, pos, 8), 0);
             VecFx32Object_Destroy(pos);
@@ -648,7 +648,7 @@ extern "C" void func_ov082_02213f64(void *a) {
             ActorExtendedType2_GetDescriptorValue25(a) == 1 &&
             F(s16, a, 0x29a) % 3 == 0) {
             u32 r = genrand_int32();
-            func_020a28e0(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 1,
+            Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 1,
                           (F(s32, a, 0x1c) >> 12) - 12 +
                               (s32)(func_020bf1f8(r, 24) >> 32),
                           (F(s32, a, 0x20) >> 12) - (F(s32, a, 0x24) >> 12) -

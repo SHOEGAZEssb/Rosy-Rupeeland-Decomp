@@ -14,7 +14,7 @@
     .extern func_ov039_02205c18
     .extern VecFx32Object_Destroy
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_020a27a0
+    .extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     .extern func_ov039_02206ae0
     .extern VecFx32Object_Add
     .extern func_ov039_021ff458
@@ -314,7 +314,7 @@ L_02207bc0:
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x1
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 L_02207bfc:
     mov r0, r7
     bl func_ov039_02206ae0

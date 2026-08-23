@@ -101,6 +101,43 @@ void Graphics3dPresentation_DrawRupeeWithEffects(
     const VecFx32Object *scale, u32 appearanceFlags);
 void Graphics3dPresentation_SetRupeeVisibleAt(
     Graphics3dPresentation *self, s32 visible, s32 x, s32 y);
+u32 Graphics3dPresentation_CreatePresetSpriteEffectInBounds(
+    Graphics3dPresentation *self, s32 presetKind, s32 presetParameter,
+    s32 originX, s32 originZ, s32 extentX, s32 extentZ);
+u32 Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(
+    Graphics3dPresentation *self, s32 presetOffset, s32 originX, s32 originZ,
+    s32 extentX, s32 extentZ, s32 presetParameter);
+u32 Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(
+    Graphics3dPresentation *self, s32 presetOffset, s32 originX, s32 originZ,
+    s32 extentX, s32 extentZ, s32 presetParameter);
+void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(
+    Graphics3dPresentation *self, s32 variant, s32 x, s32 z,
+    s32 presetParameter);
+u32 Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z);
+u32 Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z,
+    s32 horizontalVelocityMagnitude);
+u32 Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z,
+    s32 scaleStep);
+u32 Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z,
+    s32 particleLifetime);
+u32 Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z);
+u32 Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z,
+    u16 primitiveColor);
+u32 Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z);
+u32 Graphics3dPresentation_CreatePreset32CenteredAreaSpriteEffect(
+    Graphics3dPresentation *self, s32 presetOffset, s32 centerX, s32 centerZ,
+    s32 extentX, s32 extentZ);
+void Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z,
+    s32 horizontalVelocityX, s32 horizontalVelocityZ,
+    s32 particleLifetime);
 void Graphics3dPresentation_EndFrame(Graphics3dPresentation *self,
                                      s32 swapBuffers);
 void Graphics3dPresentation_ReloadResources(Graphics3dPresentation *self);

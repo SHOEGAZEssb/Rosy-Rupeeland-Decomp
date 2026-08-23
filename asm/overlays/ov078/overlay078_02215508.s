@@ -10,7 +10,7 @@
 .extern VecFx32Object_Destroy
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_020a25c8
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .extern func_020adae4
 .extern func_020ae024
 .extern func_ov078_02213ba8
@@ -125,7 +125,7 @@ func_ov078_02215508:
     mov r2, r3, asr #0xc
     sub r3, r1, #0x1e
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
 .L_022156b8:
     mov r1, #0x2
     strb r1, [r6, #0x24c]

@@ -29,7 +29,7 @@ extern void *Actor_GetOwningCollection(void *actor);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *position, s32 value,
                           s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
-extern void func_020a25c8(void *manager, s32 mode, s32 x, s32 y,
+extern void Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(void *manager, s32 mode, s32 x, s32 y,
                           s32 width, s32 height, s32 kind);
 #ifdef __cplusplus
 }
@@ -94,7 +94,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
             s32 x = (FIELD(s32, actor, 0x1c) >> 12) - 20;
             s32 y = (FIELD(s32, actor, 0x20) >> 12) -
                     (FIELD(s32, actor, 0x24) >> 12) - 20;
-            func_020a25c8(manager, 0, x, y, 40, 40, 15);
+            Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(manager, 0, x, y, 40, 40, 15);
         }
         complete_interaction(actor);
         sound = 15;
@@ -108,7 +108,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
         s32 x = FIELD(s32, actor, 0x1c) >> 12;
         s32 y = (FIELD(s32, actor, 0x20) >> 12) -
                 (FIELD(s32, actor, 0x24) >> 12) - 20;
-        func_020a25c8(manager, 0, x, y, 32, 24, 0x46);
+        Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(manager, 0, x, y, 32, 24, 0x46);
         complete_interaction(actor);
         sound = 15;
     }

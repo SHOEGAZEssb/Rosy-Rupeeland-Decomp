@@ -7,7 +7,7 @@ extern u8 *data_021052fc;
 extern "C" {
 #endif
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
-extern void func_020a25c8(void *effect, s32 kind, s32 x, s32 y,
+extern void Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(void *effect, s32 kind, s32 x, s32 y,
                           s32 width, s32 height, s32 duration);
 extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
                                      const void *viewPosition);
@@ -40,7 +40,7 @@ void ActorExtendedType2_RunRenderCallback(void *screenPosition, void *self,
         ++actor[0x294];
         if (actor[0x294] > 20) {
             void *effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
-            func_020a25c8(effect, 0,
+            Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(effect, 0,
                           (*(s32 *)(actor + 0x1c) >> 12) - 16,
                           (*(s32 *)(actor + 0x20) >> 12) -
                               (*(s32 *)(actor + 0x24) >> 12) - 24,

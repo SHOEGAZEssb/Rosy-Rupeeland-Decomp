@@ -15,6 +15,8 @@ typedef struct Overlay039FinalVector {
     s32 z_0c;
 } Overlay039FinalVector;
 
+typedef struct Graphics3dPresentation Graphics3dPresentation;
+
 extern void *gSoundContext;
 extern void *gSystemState;
 extern void *data_021052fc;
@@ -40,8 +42,10 @@ extern void func_0209a2a4(void *object, void *parent);
 extern void func_0209a2ac(void *object, void *context, s32 enabled);
 extern void func_0209e384(void *object);
 extern void func_0209e35c(void *object);
-extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
-extern void func_020a27a0(void *resource, ...);
+extern Graphics3dPresentation *
+RuntimePresentationManager_GetGraphics3dPresentation(void *object);
+extern u32 Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(
+    Graphics3dPresentation *self, s32 presetOffset, s32 x, s32 z);
 extern void func_020a68fc(void *object);
 extern s32 ActorRuntimeFlags_Test(void *object, s32 mode);
 extern void func_ov049_0220bbdc(void *system, const void *position,
@@ -196,15 +200,20 @@ extern "C" void func_ov039_02206ae0(void *scene)
 /*
  * Update the final phase's resource burst. It selects one of three confirmed
  * resource/position tables from script state, steers a normalized vector toward
- * its target, submits resource +0x2F7C through func_020a27a0, and advances the
- * associated timers and positions. Resource and scene effect state change.
+ * its target, and creates preset 12 at the principal model's integer X/Z
+ * position through presentation +0x2F7C. The associated timers and positions
+ * also advance; presentation and scene effect state change.
  */
 extern "C" void func_ov039_0220713c(void *scene)
 {
     if (FIELD(s32, scene, 0xd4) == 0) return;
-    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
-                                   0x2f7c);
-    func_020a27a0(resource, scene, FIELD(s32, scene, 0xd4));
+    void *principal = FIELD(void *, scene, 0x48);
+    Graphics3dPresentation *presentation =
+        RuntimePresentationManager_GetGraphics3dPresentation(
+            (u8 *)FIELD(void *, data_021052fc, 0) + 0x2f7c);
+    Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(
+        presentation, 1, FIELD(s32, principal, 0x30) >> 12,
+        FIELD(s32, principal, 0x34) >> 12);
     FIELD(s32, scene, 0xd0)++;
 }
 

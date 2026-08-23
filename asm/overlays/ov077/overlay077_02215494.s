@@ -18,7 +18,7 @@
 .extern ActorExtendedType2_IncrementSavedProgressCounter
 .extern PresentationBackedActor_SpawnAmountVariant
 .extern func_020538a4
-.extern func_020a27a0
+.extern Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
 .extern func_020ada8c
 .extern func_020befec
 .extern func_020bf1f8
@@ -462,7 +462,7 @@ func_ov077_02215494:
     mov r2, r3, asr #0xc
     add r3, r1, #0x18
     mov r1, #0x2
-    bl func_020a27a0
+    bl Graphics3dPresentation_CreatePreset11To13SpriteEffectAt
     ldr r0, .L_02215ee8
     mov r1, #0x2d
     ldr r0, [r0, #0x0]

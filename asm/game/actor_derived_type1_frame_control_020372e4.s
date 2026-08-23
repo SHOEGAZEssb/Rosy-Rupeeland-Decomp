@@ -27,7 +27,7 @@
 .extern Sound_StopAllDirectSequences
 .extern Sound_PlayDirectSequence
 .extern Sound_StopStream
-.extern func_020a28e0
+.extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .extern func_020ada8c
 .extern func_020adae4
 .extern SignedAbsoluteValue
@@ -224,7 +224,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     rsb r3, r1, r3, asr #0xc
     mov r2, r2, asr #0xc
     mov r1, #0x1
-    bl func_020a28e0
+    bl Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
     add r0, sp, #0x34
     bl VecFx32Object_Destroy
 .L_020375ac:

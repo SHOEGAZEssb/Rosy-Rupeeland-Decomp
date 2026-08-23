@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_UpdatePresentation
-.extern func_020a25c8
+.extern Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     .global ActorExtendedType2_RunRenderCallback
     .type ActorExtendedType2_RunRenderCallback, @function
 ActorExtendedType2_RunRenderCallback: ; 0x0203efac
@@ -49,7 +49,7 @@ ActorExtendedType2_RunRenderCallback: ; 0x0203efac
     sub r2, r3, #0x10
     sub r3, r1, #0x18
     mov r1, #0x0
-    bl func_020a25c8
+    bl Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds
     mov r0, #0x0
     strb r0, [r5, #0x294]
 .L_0203f058:
