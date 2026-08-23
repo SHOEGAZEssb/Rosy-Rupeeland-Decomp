@@ -11,8 +11,8 @@
 .extern GamePhaseRegionTable_SetRevealFlagBase
 .extern func_020706c4
 .extern func_02070bc4
-.extern func_02070eac
-.extern func_02070f34
+.extern GraphicsBgMapResource_UploadToSubBg
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -148,7 +148,7 @@ func_ov059_0220fd80:
 .L_0220ff3c:
     ldr r0, [sp, #0x1c]
     ldr r1, [sp, #0x4c]
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     ldr r0, [sp, #0x14]
     ldr r1, [r10, #0x54]
@@ -157,7 +157,7 @@ func_ov059_0220fd80:
     ldr r0, [sp, #0x1c]
     ldr r1, [r10, #0x54]
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r1, [sp, #0x4c]
     ldr r0, [sp, #0x18]
     mov r1, r1, lsl #0x5

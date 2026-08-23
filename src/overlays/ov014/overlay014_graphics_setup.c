@@ -24,12 +24,12 @@ extern void GraphicsResourceSet_Init(Overlay014ResourceSet *);
 extern void GraphicsResourceSet_Load(Overlay014ResourceSet *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Apply(Overlay014ResourceSet *, s32, s32);
 extern void GraphicsResourceSet_Destroy(Overlay014ResourceSet *);
-extern void func_02070f80(void *, s32);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void func_020b44e8(void);
 extern void func_02072048(Overlay014ResourceSet *, s32, s32);
 extern void func_020706c4(void *, s32, s32);
 extern void func_02070bc4(void *, s32);
-extern void func_02070eac(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -80,7 +80,7 @@ void func_ov014_021fd07c(void *state)
     GraphicsResourceSet_Init(&second);
     GraphicsResourceSet_Init(&third);
     GraphicsResourceSet_Load(&first, data_020f4e18, 0xb003, 0xb004, 0xb006);
-    func_02070f80((void *)first.words[2], 8);
+    GraphicsBgMapResource_AddPaletteBankOffset((void *)first.words[2], 8);
     func_020b44e8();
     GraphicsResourceSet_Apply(&first, 3, 0x100);
     GraphicsResourceSet_Load(&first, data_020f4e18, 0x8008, 0x8009, 0x800a);
@@ -90,8 +90,8 @@ void func_ov014_021fd07c(void *state)
     func_02072048(&first, 2, 0);
     func_020706c4((void *)first.words[0], 0, 0);
     func_02070bc4((void *)first.words[1], 0);
-    func_02070eac((void *)second.words[2], 0, 0);
-    func_02070eac((void *)third.words[2], 1, 0);
+    GraphicsBgMapResource_UploadToSubBg((void *)second.words[2], 0, 0);
+    GraphicsBgMapResource_UploadToSubBg((void *)third.words[2], 1, 0);
 
     mainManager = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
     debugManager = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);

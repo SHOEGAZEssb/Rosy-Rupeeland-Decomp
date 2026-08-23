@@ -17,7 +17,7 @@
 .extern func_0207043c
 .extern GraphicsBgResourceData_GetDecoded
 .extern func_02070888
-.extern func_02070f80
+.extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteRenderer_HideAllSprites
 .extern func_02075238
@@ -174,7 +174,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x5c]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     ldr r3, .L_021fdc48
     add r0, r4, #0x6c
     str r3, [sp, #0x0]
@@ -186,7 +186,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x74]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     ldr r3, .L_021fdc4c
     add r0, r4, #0x84
     str r3, [sp, #0x0]
@@ -198,7 +198,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x8c]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     b .L_021fd48c
 .L_021fd2a8:
     cmp r0, #0x1
@@ -261,7 +261,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x5c]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     b .L_021fd48c
 .L_021fd3a0:
     ldr r3, .L_021fdc58
@@ -322,7 +322,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x5c]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
 .L_021fd48c:
     ldr r0, [r4, #0x1f4]
     cmp r0, #0x0

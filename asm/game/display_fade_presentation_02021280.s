@@ -18,8 +18,8 @@
 .extern func_02070638
 .extern func_020706c4
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070e0c
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToMainBg
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern func_02091b6c
 .extern func_02091b98
 .extern func_02091bac

@@ -1,3 +1,4 @@
+#include "tingle/graphics_bg_map_resource.h"
 #include "tingle/types.h"
 
 /*
@@ -8,7 +9,7 @@
 typedef struct Overlay004GraphicsResourceSet {
     void *first;
     void *second;
-    void *third;
+    GraphicsBgMapResource *bgMapResource;
 } Overlay004GraphicsResourceSet;
 
 typedef struct Overlay004VariantResourceState {
@@ -28,14 +29,11 @@ extern void GraphicsResourceSet_Load(Overlay004GraphicsResourceSet *set,
                                      void *manager, s32 first, s32 second,
                                      s32 third);
 extern void GraphicsResourceSet_Destroy(Overlay004GraphicsResourceSet *set);
-extern void *func_02070fd4(void *resource);
-extern void func_020b44e8(void *resourceData);
+extern void func_020b44e8(void);
 extern void func_02070638(void *resource, s32 layer, s32 value);
 extern void func_02070b50(void *resource, s32 offset);
-extern void func_02070e0c(void *resource, s32 layer, s32 value);
 extern void func_020706c4(void *resource, s32 layer, s32 value);
 extern void func_02070bc4(void *resource, s32 offset);
-extern void func_02070eac(void *resource, s32 layer, s32 value);
 extern void GraphicsResourceSet_ReleaseHandles(Overlay004GraphicsResourceSet *set);
 extern void Sound_LoadGroup(void *context, s32 soundId);
 #ifdef __cplusplus
@@ -45,13 +43,15 @@ extern void Sound_LoadGroup(void *context, s32 soundId);
 static void overlay004_upload_resource_set(Overlay004GraphicsResourceSet *set,
                                             s32 layer, s32 offset)
 {
-    func_020b44e8(func_02070fd4(set->third));
+    GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor(
+        set->bgMapResource);
+    func_020b44e8();
     func_02070638(set->first, layer, 0);
     func_02070b50(set->second, offset);
-    func_02070e0c(set->third, layer, 0);
+    GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, layer, 0);
     func_020706c4(set->first, layer, 0);
     func_02070bc4(set->second, offset);
-    func_02070eac(set->third, layer, 0);
+    GraphicsBgMapResource_UploadToSubBg(set->bgMapResource, layer, 0);
 }
 
 /*

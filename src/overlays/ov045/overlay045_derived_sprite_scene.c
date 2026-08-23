@@ -36,7 +36,7 @@ extern "C" void GraphicsResourceSet_Apply(GraphicsResourceSet *set,
                                             s32 engine, s32 size);
 extern "C" void GraphicsResourceSet_Destroy(GraphicsResourceSet *set);
 extern "C" void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set);
-extern "C" void func_02070f34(void *resource, s32 value);
+extern "C" void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 value);
 extern "C" void func_020b44e8(void);
 extern "C" void func_02071ee0(void *owner, void *archive, s32 first,
                                s32 second, s32 third);
@@ -65,7 +65,7 @@ extern "C" void *func_ov045_0220c314(void *object)
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18,
                               0x9000, 0x9001, 0x9002);
-    func_02070f34(resources.field8, 8);
+    GraphicsBgMapResource_SetPaletteBank(resources.field8, 8);
     func_020b44e8();
     GraphicsResourceSet_Apply(&resources, 1, 0x100);
     GraphicsResourceSet_ReleaseHandles(&resources);

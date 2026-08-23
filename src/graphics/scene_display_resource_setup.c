@@ -29,8 +29,8 @@ extern void func_02070638(void *);
 extern void func_020706c4(void *, s32, s32);
 extern void func_02070b50(void *, s32);
 extern void func_02070bc4(void *, s32);
-extern void func_02070e0c(void *, s32, s32);
-extern void func_02070eac(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -79,14 +79,14 @@ void SceneDisplayResources_Setup(s32 index)
         func_02070638(first.a);
         func_02070b50(first.b, 0x4000);
         func_02070b50(first.b, 0x6000);
-        func_02070e0c(first.c, 0, 0);
-        func_02070e0c(second.c, 1, 0);
+        GraphicsBgMapResource_UploadToMainBg(first.c, 0, 0);
+        GraphicsBgMapResource_UploadToMainBg(second.c, 1, 0);
     } else {
         func_020706c4(first.a, 2, 0);
         func_02070bc4(first.b, 0x4000);
         func_02070bc4(first.b, 0x6000);
-        func_02070eac(first.c, 2, 0);
-        func_02070eac(second.c, 3, 0);
+        GraphicsBgMapResource_UploadToSubBg(first.c, 2, 0);
+        GraphicsBgMapResource_UploadToSubBg(second.c, 3, 0);
     }
     GraphicsResourceSet_Destroy(&second);
     GraphicsResourceSet_Destroy(&first);

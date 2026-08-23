@@ -1,18 +1,6 @@
-#include "tingle/types.h"
+#include "tingle/graphics_bg_map_resource.h"
 
-/* Palette-bank mutation for decoded background screen-map resources. */
-
-typedef struct GraphicsBgMapDescriptor {
-    u8 field_00[0xc];
-    s32 width;
-    s32 height;
-} GraphicsBgMapDescriptor;
-
-typedef struct GraphicsBgMapResource {
-    u8 field_00[0x20];
-    GraphicsBgMapDescriptor *descriptor;
-    void *data;
-} GraphicsBgMapResource;
+/* Palette-bank mutation for loaded background screen-map resources. */
 
 /*
  * Add value to the palette-bank nibble of every map entry, preserving its
@@ -22,20 +10,23 @@ typedef struct GraphicsBgMapResource {
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02070f80(GraphicsBgMapResource *resource, s32 value)
+void GraphicsBgMapResource_AddPaletteBankOffset(
+    GraphicsBgMapResource *resource, s32 paletteBankOffset)
 {
-    u16 *entry = (u16 *)resource->data;
-    s32 index;
+    u16 *entry = resource->entries;
+    s32 entryIndex;
 
-    for (index = 0;
-         index < resource->descriptor->width * resource->descriptor->height;
-         index++) {
-        u16 current = *entry;
-        u16 palette = (u16)(value + ((u32)current >> 12));
+    for (entryIndex = 0;
+         entryIndex < resource->descriptor->entryColumnCount *
+                          resource->descriptor->entryRowCount;
+         entryIndex++) {
+        u16 currentEntry = *entry;
+        u16 adjustedPaletteBank =
+            (u16)(paletteBankOffset + ((u32)currentEntry >> 12));
 
-        current &= ~0xf000;
-        current |= (u16)((palette & 0xf) << 12);
-        *entry = current;
+        currentEntry &= ~0xf000;
+        currentEntry |= (u16)((adjustedPaletteBank & 0xf) << 12);
+        *entry = currentEntry;
         entry++;
     }
 }

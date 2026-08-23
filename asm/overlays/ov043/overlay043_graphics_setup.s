@@ -8,13 +8,13 @@
 .extern GraphicsResourceSet_Init
 .extern TitleScreenResourceCollection_Init
 .extern GraphicsResourceSet_Load
-.extern func_02070f80
+.extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_020b44e8
 .extern func_02072048
 .extern GraphicsResourceSet_Apply
 .extern func_02092754
 .extern TitleScreenResourceCollection_Get
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_020926f8
 .extern GraphicsResourceSet_Destroy
@@ -85,7 +85,7 @@ func_ov043_0220ba28:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     add r0, sp, #0x4
     mov r1, #0x3
@@ -116,7 +116,7 @@ func_ov043_0220ba28:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, .L_0220bc20
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_GetObjectPaletteAddress

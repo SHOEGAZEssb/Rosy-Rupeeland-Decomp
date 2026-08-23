@@ -49,7 +49,7 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Apply(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void func_02070f34(void *, s32);
+extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 extern u32 func_0207043c(void *);
 extern void func_020b44e8(void);
 extern void func_020b57d4(s32, void *, u32);
@@ -441,7 +441,7 @@ void func_ov058_0220f11c(void *scene)
         for (color = 0; color < colorCount; ++color)
             colors[color] = (u16)((colors[color] & 0xfc00) |
                 ((colors[color] & 0x03ff) + i * 0x100));
-        func_02070f34(map, 15 - i);
+        GraphicsBgMapResource_SetPaletteBank(map, 15 - i);
         func_020b44e8();
     }
 }

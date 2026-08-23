@@ -12,7 +12,7 @@
 .extern data_020f4e18
 .extern func_020706c4
 .extern func_02070bc4
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_020aea7c
 .extern func_020afd28
@@ -84,7 +84,7 @@ Overlay052Scene_LoadSubScreenResources:
     ldr r0, [sp, #0x20]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     add r0, sp, #0x18
     bl GraphicsResourceSet_ReleaseHandles
     ldr r3, .L_0220df90
@@ -103,7 +103,7 @@ Overlay052Scene_LoadSubScreenResources:
     mov r1, #0x0
     ldr r0, [sp, #0x20]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     add r0, sp, #0x18
     bl GraphicsResourceSet_ReleaseHandles
     mov r2, #0x0

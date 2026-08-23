@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_panel_lifecycle.c. */
     .extern Heap_Alloc
     .extern data_ov017_022016bc
-    .extern func_02070e0c
+    .extern GraphicsBgMapResource_UploadToMainBg
     .extern TitleScreenResourceCollection_Get
     .extern func_020959d4
     .extern ModalState_InitResources
@@ -21,14 +21,14 @@ func_ov017_021ffcc8:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     b L_021ffd10
 L_021ffcfc:
     mov r1, #0x1
     bl TitleScreenResourceCollection_Get
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
 L_021ffd10:
     ldr r1, L_021ffd6c
     ldr r3, L_021ffd70

@@ -5,8 +5,8 @@
     .extern GraphicsResourceSet_Init
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
-    .extern func_02070e0c
-    .extern func_02070eac
+    .extern GraphicsBgMapResource_UploadToMainBg
+    .extern GraphicsBgMapResource_UploadToSubBg
     .extern func_02072048
     .extern func_020925a4
     .extern func_020925dc
@@ -78,7 +78,7 @@ Overlay019_SetupGraphics:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     mov r0, #0x0
     bl TitlePalette_SetMainBackdrop
     b L_021fd128
@@ -115,7 +115,7 @@ L_021fd09c:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     mov r0, #0x0
     bl TitlePalette_SetSubBackdrop
 L_021fd128:

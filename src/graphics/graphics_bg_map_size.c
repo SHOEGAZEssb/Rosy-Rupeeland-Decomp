@@ -1,23 +1,13 @@
-#include "tingle/types.h"
+#include "tingle/graphics_bg_map_resource.h"
 
-/* Byte-size calculation for decoded background screen-map resources. */
-
-typedef struct GraphicsBgMapDescriptor {
-    u8 field_00[0xc];
-    s32 width;
-    s32 height;
-} GraphicsBgMapDescriptor;
-
-typedef struct GraphicsBgMapResource {
-    u8 field_00[0x20];
-    GraphicsBgMapDescriptor *descriptor;
-} GraphicsBgMapResource;
+/* Entry-payload byte-size calculation for background screen-map resources. */
 
 /* Return width times height times the two-byte map-entry size. */
 #ifdef __cplusplus
 extern "C"
 #endif
-u32 func_02070e94(const GraphicsBgMapResource *resource)
+u32 GraphicsBgMapResource_GetDataSizeBytes(const GraphicsBgMapResource *resource)
 {
-    return resource->descriptor->width * resource->descriptor->height * 2;
+    return resource->descriptor->entryColumnCount *
+           resource->descriptor->entryRowCount * sizeof(*resource->entries);
 }

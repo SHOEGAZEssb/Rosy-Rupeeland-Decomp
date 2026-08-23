@@ -4,7 +4,7 @@
 .extern GraphicsResourceSet_Load
 .extern func_020b44e8
 .extern func_02070638
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern PaletteBuffer_Write
 .extern GraphicsResourceSet_ReleaseHandles
@@ -55,7 +55,7 @@ MainDualLayerResourceRendererAlt_LoadBgResources: ; 0x0202c388
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     add r1, r0, #0x180
@@ -94,7 +94,7 @@ MainDualLayerResourceRendererAlt_LoadBgResources: ; 0x0202c388
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

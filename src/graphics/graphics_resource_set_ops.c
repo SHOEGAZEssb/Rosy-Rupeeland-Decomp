@@ -23,10 +23,10 @@ extern void func_02071c38(void *archive, void *resource);
 extern void func_02071cf0(void *archive, void *resource);
 extern void func_02070638(void *resource, s32 value, s32 zero);
 extern void func_02070b50(void *resource, s32 value);
-extern void func_02070e0c(void *resource, s32 value, s32 zero);
+extern void GraphicsBgMapResource_UploadToMainBg(void *resource, s32 value, s32 zero);
 extern void func_020706c4(void *resource, s32 value, s32 zero);
 extern void func_02070bc4(void *resource, s32 value);
-extern void func_02070eac(void *resource, s32 value, s32 zero);
+extern void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 value, s32 zero);
 
 #ifdef __cplusplus
 }
@@ -67,7 +67,7 @@ void func_02072048(GraphicsResourceSet *set, s32 value0, s32 value1)
 {
     func_02070638(set->resource0, value0, 0);
     func_02070b50(set->resource1, value1);
-    func_02070e0c(set->resource2, value0, 0);
+    GraphicsBgMapResource_UploadToMainBg(set->resource2, value0, 0);
 }
 
 /*
@@ -80,5 +80,5 @@ void GraphicsResourceSet_Apply(GraphicsResourceSet *set, s32 value0,
 {
     func_020706c4(set->resource0, value0, 0);
     func_02070bc4(set->resource1, value1);
-    func_02070eac(set->resource2, value0, 0);
+    GraphicsBgMapResource_UploadToSubBg(set->resource2, value0, 0);
 }

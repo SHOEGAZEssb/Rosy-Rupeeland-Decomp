@@ -1,14 +1,14 @@
     .text
     .extern GraphicsResourceSet_Init
     .extern GraphicsResourceSet_Load
-    .extern func_02070fd4
+    .extern GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor
     .extern func_020b44e8
     .extern func_02070638
     .extern func_02070b50
-    .extern func_02070e0c
+    .extern GraphicsBgMapResource_UploadToMainBg
     .extern func_020706c4
     .extern func_02070bc4
-    .extern func_02070eac
+    .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsResourceSet_ReleaseHandles
     .extern Sound_LoadGroup
     .extern GraphicsResourceSet_Destroy
@@ -138,7 +138,7 @@ L_021fbbbc:
     bl GraphicsResourceSet_Load
 L_021fbbdc:
     ldr r0, [sp, #0xc]
-    bl func_02070fd4
+    bl GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor
     bl func_020b44e8
     ldr r0, [sp, #0x4]
     mov r1, #0x2
@@ -150,7 +150,7 @@ L_021fbbdc:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
@@ -161,7 +161,7 @@ L_021fbbdc:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [r4, #0x150]
     cmp r0, #0xa
     addls pc, pc, r0, lsl #0x2
@@ -229,7 +229,7 @@ L_021fbd0c:
     bl GraphicsResourceSet_Load
 L_021fbd2c:
     ldr r0, [sp, #0xc]
-    bl func_02070fd4
+    bl GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor
     bl func_020b44e8
     ldr r0, [sp, #0x4]
     mov r1, #0x3
@@ -241,7 +241,7 @@ L_021fbd2c:
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x0
@@ -252,7 +252,7 @@ L_021fbd2c:
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_ReleaseHandles
     ldr r0, [r4, #0x150]

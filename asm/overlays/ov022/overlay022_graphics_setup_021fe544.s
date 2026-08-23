@@ -3,8 +3,8 @@
     .extern data_020f4e18
     .extern data_021f5ee8
     .extern func_02070638
-    .extern func_02070e0c
-    .extern func_02070f34
+    .extern GraphicsBgMapResource_UploadToMainBg
+    .extern GraphicsBgMapResource_SetPaletteBank
     .extern func_02072048
     .extern func_020925f8
     .extern func_02092638
@@ -74,7 +74,7 @@ func_ov022_021fe544:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0x8
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     ldr r0, [sp, #0x4]
     mov r1, #0x2
@@ -83,7 +83,7 @@ func_ov022_021fe544:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, L_021fe684
     mov r1, #0x100
     mov r2, #0x20

@@ -9,7 +9,7 @@ extern void *data_020f4e18;
 extern u32 func_020af958(void);
 extern void func_020afd0c(volatile u16 *registerAddress, s32 mode,
                          u32 planeMask, u16 first, u16 second);
-extern void func_02070f34(void *resource, s32 value);
+extern void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 value);
 extern void func_020b44e8(void);
 #ifdef __cplusplus
 }
@@ -67,7 +67,7 @@ void GamePhaseVisualEffect_LoadResources(GamePhaseVisualEffect *self, u32 resour
     GraphicsResourceSet_ReleaseHandles(&self->resources);
     GraphicsResourceSet_Load(&self->resources, data_020f4e18,
                              resource0Id, resource1Id, resource2Id);
-    func_02070f34(self->resources.resource2, 0xf);
+    GraphicsBgMapResource_SetPaletteBank(self->resources.resource2, 0xf);
     func_020b44e8();
 }
 

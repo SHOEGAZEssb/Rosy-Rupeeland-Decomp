@@ -22,8 +22,8 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern void func_02070638(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void func_02070e0c(void *, s32, s32);
-extern void func_02070f34(void *, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 extern void func_02072048(void *, s32, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
@@ -86,10 +86,10 @@ extern "C" void func_ov028_021fe1b0(void *state)
 
     GraphicsResourceSet_Init(setC);
     GraphicsResourceSet_Load(setC, data_020f4e18[0], 0xc009, 0xc00a, 0xc00b);
-    func_02070f34((void *)setC[2], 8);
+    GraphicsBgMapResource_SetPaletteBank((void *)setC[2], 8);
     func_020b44e8();
     func_02070638((void *)setC[0], 2, 0);
-    func_02070e0c((void *)setC[2], 2, 0);
+    GraphicsBgMapResource_UploadToMainBg((void *)setC[2], 2, 0);
     void *paletteResource = (void *)setC[1];
     const u16 *from = (const u16 *)GraphicsBgResourceData_GetDecoded(paletteResource);
     const u16 *to = (const u16 *)GraphicsBgResourceData_GetDecoded(paletteResource);

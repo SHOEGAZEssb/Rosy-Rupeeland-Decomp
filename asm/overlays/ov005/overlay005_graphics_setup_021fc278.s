@@ -7,10 +7,10 @@
     .extern GraphicsResourceSet_Load
     .extern func_020b44e8
     .extern GraphicsResourceSet_Apply
-    .extern func_02070f34
+    .extern GraphicsBgMapResource_SetPaletteBank
     .extern func_020706c4
     .extern func_02070bc4
-    .extern func_02070eac
+    .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsBgResourceData_GetDecoded
     .extern TitlePalette_SetSubBackdrop
     .extern GraphicsResourceSet_Destroy
@@ -217,7 +217,7 @@ L_021fc514:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0xf
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     ldr r0, [sp, #0x4]
     mov r1, #0x3
@@ -229,7 +229,7 @@ L_021fc514:
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     ldrh r0, [r0, #0x0]

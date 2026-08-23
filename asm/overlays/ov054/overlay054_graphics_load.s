@@ -8,8 +8,8 @@
 .extern gMainBgPaletteBuffer
 .extern func_02070638
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070e0c
-.extern func_02070f34
+.extern GraphicsBgMapResource_UploadToMainBg
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern func_020b44e8
 .extern func_ov054_0220eb1c
 
@@ -29,7 +29,7 @@ func_ov054_0220ea34:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0xf
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     mov r0, #0x0
     mov r1, r0
     str r0, [sp, #0x0]
@@ -44,7 +44,7 @@ func_ov054_0220ea34:
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     mov r1, r0

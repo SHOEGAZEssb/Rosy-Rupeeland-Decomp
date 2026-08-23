@@ -17,7 +17,7 @@
 .extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_02070b50
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern RetailSaveContext_PollOperation
 .extern RetailSaveContext_BeginRecordOperation
@@ -118,7 +118,7 @@ L_0220070c:
     ldr r0, [r4, #0xf20]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     add r0, r4, #0x318
     add r0, r0, #0xc00
     bl GraphicsResourceSet_ReleaseHandles
@@ -269,7 +269,7 @@ L_0220094c:
     ldr r0, [r4, #0xf20]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     add r0, r4, #0x318
     add r0, r0, #0xc00
     bl GraphicsResourceSet_ReleaseHandles

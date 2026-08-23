@@ -7,7 +7,7 @@
 .extern data_020f4e18
 .extern gSubBgExtendedPaletteBuffer
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToSubBg
 
     .global func_02025dd8
     .type func_02025dd8, @function
@@ -36,7 +36,7 @@ func_02025dd8: ; 0x02025dd8
     orr r0, r0, #0x3
     strh r0, [r3, #0x0]
     ldr r0, [sp, #0xc]
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     mov r1, r0

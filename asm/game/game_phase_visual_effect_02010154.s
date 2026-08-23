@@ -2,7 +2,7 @@
 .text
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
-.extern func_02070f34
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_020b44e8
 .global GamePhaseVisualEffect_LoadResources
@@ -23,7 +23,7 @@ GamePhaseVisualEffect_LoadResources:
     bl GraphicsResourceSet_Load
     ldr r0, [r7, #0xc]
     mov r1, #0xf
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_020101a0: .word data_020f4e18

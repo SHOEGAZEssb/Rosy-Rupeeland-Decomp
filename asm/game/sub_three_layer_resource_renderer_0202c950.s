@@ -3,12 +3,12 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern func_020706c4
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern func_02070bc4
 .extern GraphicsBgResourceData_GetDecoded
 .extern PaletteBuffer_Write
 .extern GraphicsResourceSet_ReleaseHandles
-.extern func_02070f80
+.extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_020b44e8
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
@@ -56,7 +56,7 @@ SubThreeLayerResourceRenderer_LoadBgResources: ; 0x0202c950
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, r4
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, r4
     bl func_02070bc4
@@ -99,12 +99,12 @@ SubThreeLayerResourceRenderer_LoadBgResources: ; 0x0202c950
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0x6
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0xc0
     bl func_02070bc4
@@ -152,12 +152,12 @@ SubThreeLayerResourceRenderer_LoadBgResources: ; 0x0202c950
     bl func_020706c4
     ldr r0, [sp, #0xc]
     mov r1, #0xc
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x180
     bl func_02070bc4

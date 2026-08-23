@@ -6,8 +6,8 @@
 .extern data_020f4e18
 .extern func_020706c4
 .extern func_02070bc4
-.extern func_02070eac
-.extern func_02070f34
+.extern GraphicsBgMapResource_UploadToSubBg
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern func_020b44e8
 
 .global func_ov059_02211870
@@ -36,7 +36,7 @@ func_ov059_02211870:
     orr r0, r0, #0x3
     strh r0, [r2, #0x0]
     ldr r0, [sp, #0xc]
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     mov r1, #0x0
     ldr r0, [sp, #0x4]
@@ -45,7 +45,7 @@ func_ov059_02211870:
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x1e0
     bl func_02070bc4

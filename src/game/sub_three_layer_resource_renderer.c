@@ -32,9 +32,9 @@ extern void DualLayerTileRenderer_LoadFromConfig(void *, const void *, s32,
 extern void DualLayerTileRenderer_ActivateLayers(void *, s32);
 extern void func_020b44e8(void);
 extern void func_020706c4(void *, s32, s32);
-extern void func_02070eac(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void func_02070bc4(void *, s32);
-extern void func_02070f80(void *, s32);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *);
 void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer *);
 
@@ -114,7 +114,7 @@ void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer
     *(volatile u32 *)0x04001018 = 0;
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xa103, 0xa104, 0xa105);
     func_020706c4(set.resource0, 2, 0);
-    func_02070eac(set.resource2, 2, 0);
+    GraphicsBgMapResource_UploadToSubBg(set.resource2, 2, 0);
     func_02070bc4(set.resource1, 0);
     PaletteBuffer_Write(&gSubBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1), 0, 0xc0);
     GraphicsResourceSet_ReleaseHandles(&set);
@@ -125,9 +125,9 @@ void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer
     *disp = (*disp & ~0x1f00u) | (planes << 8);
     *(volatile u32 *)0x04001014 = 0;
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xa103, 0xa106, 0xa105);
-    func_02070f80(set.resource2, 6);
+    GraphicsBgMapResource_AddPaletteBankOffset(set.resource2, 6);
     func_020b44e8();
-    func_02070eac(set.resource2, 1, 0);
+    GraphicsBgMapResource_UploadToSubBg(set.resource2, 1, 0);
     func_02070bc4(set.resource1, 0xc0);
     PaletteBuffer_Write(&gSubBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1),
                         0xc0, 0xc0);
@@ -140,9 +140,9 @@ void SubThreeLayerResourceRenderer_LoadBgResources(SubThreeLayerResourceRenderer
     *(volatile u32 *)0x0400101c = 0;
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xa10b, 0xa10c, 0xa10d);
     func_020706c4(set.resource0, 3, 0);
-    func_02070f80(set.resource2, 12);
+    GraphicsBgMapResource_AddPaletteBankOffset(set.resource2, 12);
     func_020b44e8();
-    func_02070eac(set.resource2, 3, 0);
+    GraphicsBgMapResource_UploadToSubBg(set.resource2, 3, 0);
     func_02070bc4(set.resource1, 0x180);
     PaletteBuffer_Write(&gSubBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1),
                         0x180, 0x80);

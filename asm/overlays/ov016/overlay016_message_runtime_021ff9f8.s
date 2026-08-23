@@ -5,7 +5,7 @@
     .extern data_020f4e14
     .extern data_021f3ecc
     .extern data_ov016_022015b8
-    .extern func_02070e0c
+    .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_MeasureText
@@ -88,7 +88,7 @@ L_021ffa50:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [r5, #0x48]
     orr r0, r0, #0x2
     str r0, [r5, #0x48]

@@ -8,7 +8,7 @@
 .extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_02070b50
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_020b44e8
 
@@ -46,7 +46,7 @@ func_ov032_021fe4a8:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_ReleaseHandles
     ldr r2, L_021fe558

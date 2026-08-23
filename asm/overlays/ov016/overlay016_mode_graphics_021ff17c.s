@@ -5,7 +5,7 @@
     .extern GraphicsResourceSet_Init
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
-    .extern func_02070f80
+    .extern GraphicsBgMapResource_AddPaletteBankOffset
     .extern func_02072048
     .extern func_020925f8
     .extern func_02092638
@@ -59,7 +59,7 @@ func_ov016_021ff17c:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     add r0, sp, #0x4
     mov r1, #0x3

@@ -47,9 +47,9 @@ extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
-extern void func_02070f34(void *, s32);
+extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 extern void func_02070638(void *, s32, s32);
-extern void func_02070e0c(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void PaletteBuffer_Write(void *, const void *, u32, u32);
 extern void func_020b44e8(void);
@@ -274,11 +274,11 @@ void func_ov054_0220ea34(void *object)
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0], 0x8023, 0x8024,
                              0x8025);
-    func_02070f34(FIELD(void *, resources, 8), 0xf);
+    GraphicsBgMapResource_SetPaletteBank(FIELD(void *, resources, 8), 0xf);
     func_ov054_0220eb1c(0, 0, 0x1a, 2, 0);
     func_020b44e8();
     func_02070638(FIELD(void *, resources, 0), 1, 0);
-    func_02070e0c(FIELD(void *, resources, 8), 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(FIELD(void *, resources, 8), 1, 0);
     PaletteBuffer_Write(gMainBgPaletteBuffer,
         GraphicsBgResourceData_GetDecoded(FIELD(void *, resources, 4)),
         0x1e0, 0x20);

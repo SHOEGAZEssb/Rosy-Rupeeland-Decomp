@@ -1,3 +1,4 @@
+#include "tingle/graphics_bg_map_resource.h"
 #include "tingle/graphics_resources.h"
 
 /* Load a three-part background resource set, upload selected pieces, then release it. */
@@ -6,12 +7,10 @@
 extern "C" {
 #endif
 extern void *data_020f4e18;
-extern void func_02070f80(void *resource, u16 value);
 extern void func_020b44e8(void);
 extern void func_02070638(void *resource, s32 background, s32 value);
 extern s32 GraphicsResource_GetFormat(void *resource);
 extern void func_02070b50(void *resource, s32 destination);
-extern void func_02070e0c(void *resource, s32 background, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -33,7 +32,8 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18,
                              resource0Id, resource1Id, resource2Id);
-    func_02070f80(resources.resource2, parameter);
+    GraphicsBgMapResource_AddPaletteBankOffset(
+        (GraphicsBgMapResource *)resources.resource2, (s32)parameter);
     *(volatile u16 *)0x05000000 = 0;
     func_020b44e8();
 
@@ -43,7 +43,8 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
             func_02070638(resources.resource0, 0, 0);
             func_02070b50(resources.resource1, parameter << 5);
         }
-        func_02070e0c(resources.resource2, 0, 0);
+        GraphicsBgMapResource_UploadToMainBg(
+            (GraphicsBgMapResource *)resources.resource2, 0, 0U);
         break;
     case 1:
         if (uploadGraphics) {
@@ -52,7 +53,8 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
                         ? 0x2000 : parameter << 5;
             func_02070b50(resources.resource1, destination);
         }
-        func_02070e0c(resources.resource2, 1, 0);
+        GraphicsBgMapResource_UploadToMainBg(
+            (GraphicsBgMapResource *)resources.resource2, 1, 0U);
         break;
     case 2:
         if (uploadGraphics)
@@ -60,7 +62,8 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
         destination = GraphicsResource_GetFormat(resources.resource0)
                     ? 0x4000 : parameter << 5;
         func_02070b50(resources.resource1, destination);
-        func_02070e0c(resources.resource2, 2, 0);
+        GraphicsBgMapResource_UploadToMainBg(
+            (GraphicsBgMapResource *)resources.resource2, 2, 0U);
         break;
     case 3:
         if (uploadGraphics) {
@@ -69,7 +72,8 @@ s32 GraphicsMainBackground_LoadResources(s32 background, u32 resource0Id,
                         ? 0x6000 : parameter << 5;
             func_02070b50(resources.resource1, destination);
         }
-        func_02070e0c(resources.resource2, 3, 0);
+        GraphicsBgMapResource_UploadToMainBg(
+            (GraphicsBgMapResource *)resources.resource2, 3, 0U);
         break;
     }
     GraphicsResourceSet_Destroy(&resources);

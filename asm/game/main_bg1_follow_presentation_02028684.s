@@ -8,7 +8,7 @@
 .extern gMainBgPaletteBuffer
 .extern GamePhaseGraphicsMetadata_GetByIndex
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070f80
+.extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_02072048
 .extern func_020b44e8
 
@@ -32,7 +32,7 @@ func_02028684: ; 0x02028684
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0xf
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     ldr ip, .L_0202875c
     add r0, sp, #0x4

@@ -42,8 +42,8 @@ extern void func_020708c4(void *resource);
 extern void func_020b1924(void *destination, s32 slot, void *source);
 extern void func_020b1784(void *destination, s32 slot, void *source);
 extern void func_020b2058(void *destination, s32 slot, void *source);
-extern void func_02070f80(void *resource, s32 value);
-extern void func_02070e0c(void *resource, s32 first, s32 second);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *resource, s32 value);
+extern void GraphicsBgMapResource_UploadToMainBg(void *resource, s32 first, s32 second);
 extern void *func_0209a208(void *scene, s32 first, s32 second, s32 third,
                            void *argument, s32 value);
 extern void GX_SetGraphicsMode(s32 mode);
@@ -121,9 +121,9 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
     func_020b2058(GraphicsBgResourceData_GetDecoded((void *)temporarySet[1]), 0x80,
                   func_02070888((void *)temporarySet[1]));
     func_020b44e8();
-    func_02070f80((void *)temporarySet[2], 4);
+    GraphicsBgMapResource_AddPaletteBankOffset((void *)temporarySet[2], 4);
     func_020b44e8();
-    func_02070e0c((void *)temporarySet[2], 1, 0);
+    GraphicsBgMapResource_UploadToMainBg((void *)temporarySet[2], 1, 0);
     func_020b44e8();
     GraphicsResourceSet_ReleaseHandles(temporarySet);
 
@@ -134,7 +134,7 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
     func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x1b80)), 0,
                   func_02070888(FIELD(void *, scene, 0x1b80)));
     func_020b44e8();
-    func_02070e0c(FIELD(void *, scene, 0x1b84), 3, 0);
+    GraphicsBgMapResource_UploadToMainBg(FIELD(void *, scene, 0x1b84), 3, 0);
     func_020b44e8();
 
     FIELD(s32, scene, 0x30) = 0;

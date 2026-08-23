@@ -18,8 +18,8 @@
 .extern func_02070638
 .extern func_020706c4
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070e0c
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToMainBg
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern func_02091b6c
 .extern func_02091b98
 .extern func_02091bac
@@ -112,11 +112,11 @@ DisplayFadePresentation_Init: ; 0x02020e84
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     add r0, r0, r4, lsl #0x5
@@ -166,11 +166,11 @@ DisplayFadePresentation_Init: ; 0x02020e84
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     add r0, r0, r4, lsl #0x5

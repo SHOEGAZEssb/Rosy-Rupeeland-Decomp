@@ -10,7 +10,7 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02070f80(void *, s32);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void func_020925f8(void);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
@@ -43,7 +43,7 @@ extern "C" void func_ov016_021ff094(void *state)
 
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8004, 0x8005, 0x8006);
-    func_02070f80(resources.resource2, 8);
+    GraphicsBgMapResource_AddPaletteBankOffset(resources.resource2, 8);
     func_020b44e8();
     func_02072048(&resources, 3, 0x100);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8012, 0x8013, 0x8017);
@@ -76,7 +76,7 @@ extern "C" void func_ov016_021ff17c(void *state)
     func_020b44e8();
     func_02072048(&resources, 2, 0);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8012, 0x8013, 0x801d);
-    func_02070f80(resources.resource2, 8);
+    GraphicsBgMapResource_AddPaletteBankOffset(resources.resource2, 8);
     func_020b44e8();
     func_02072048(&resources, 3, 0x100);
     func_020afd0c((void *)0x04000050, 0, 0xc, 4, 0xc);

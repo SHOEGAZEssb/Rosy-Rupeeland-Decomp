@@ -39,7 +39,7 @@ extern void func_02008740(void *, const void *);
 extern void VecFx32Object_Add(void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void BgScroll_SetMainBg1(s32, s32);
-extern void func_02070f80(void *, s32);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void func_020b44e8(void);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void PaletteBuffer_Write(void *, const void *, s32, s32);
@@ -120,7 +120,7 @@ void func_02028684(MainBg1FollowPresentation *self)
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18, record->resource0,
                              record->resource1, record->resource2);
-    func_02070f80(resources.resource2, 15);
+    GraphicsBgMapResource_AddPaletteBankOffset(resources.resource2, 15);
     func_020b44e8();
     control = *(volatile u16 *)0x0400000a;
     control = (control & 0x43) | 0x1a08;

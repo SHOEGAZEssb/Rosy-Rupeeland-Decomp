@@ -4,8 +4,8 @@
 .extern data_020f4e18
 .extern func_02070638
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070e0c
-.extern func_02070f34
+.extern GraphicsBgMapResource_UploadToMainBg
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern func_020afd0c
 .extern func_020b2058
 .extern func_020b44e8
@@ -33,7 +33,7 @@ func_ov025_022000a4:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0x8
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     ldr r0, [sp, #0x4]
     mov r1, #0x2
@@ -42,7 +42,7 @@ func_ov025_022000a4:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0xa0

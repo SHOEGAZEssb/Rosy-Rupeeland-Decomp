@@ -37,7 +37,7 @@ extern void func_020b198c(void *destination, s32 offset, void *source);
 extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void *func_02070888(void *resource);
 extern void func_020b1ff0(void *destination, s32 offset, void *source);
-extern void func_02070eac(void *resource, s32 first, s32 second);
+extern void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 first, s32 second);
 extern void GraphicsResourceSet_ReleaseHandles(Overlay007GraphicsResourceSet *set);
 extern void func_020afd28(volatile void *registers,
                           const Overlay007AffineMatrix *matrix, s32 width,
@@ -99,7 +99,7 @@ void func_ov007_021fbaf0(void *state)
     source = func_02070888(set.second);
     func_020b1ff0(destination, 0, source);
     func_020b44e8();
-    func_02070eac(set.third, 0, 0);
+    GraphicsBgMapResource_UploadToSubBg(set.third, 0, 0);
     GraphicsResourceSet_ReleaseHandles(&set);
     func_020afd28((volatile void *)0x04001020, &matrix, 0, 0, 0, 0);
     func_020afd28((volatile void *)0x04001030, &matrix, 0, 0, 0, 0);

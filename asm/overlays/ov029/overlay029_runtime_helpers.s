@@ -5,7 +5,7 @@
 .extern data_021f5ed0
 .extern data_021f5ee8
 .extern GamePhaseCurrencyHud_Update
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern func_02072048
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern RecordDescriptor_GetMessage
@@ -65,7 +65,7 @@ func_ov029_021fd644:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     mov r0, #0x0
     bl TitlePalette_SetMainBackdrop
     ldr r1, L_021fd6f8

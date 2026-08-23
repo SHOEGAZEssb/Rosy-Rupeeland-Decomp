@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/graphics_bg_map_resource.h"
 
 /* Overlay 32 runtime handoff and two-choice confirmation state machine. */
 
@@ -6,7 +6,11 @@
 #define REG16(address) (*(volatile u16 *)(address))
 #define REG32(address) (*(volatile u32 *)(address))
 
-typedef struct GraphicsResourceSet { void *tiles; void *map; void *palette; } GraphicsResourceSet;
+typedef struct GraphicsResourceSet {
+    void *characterResource;
+    void *paletteResource;
+    GraphicsBgMapResource *bgMapResource;
+} GraphicsResourceSet;
 
 extern void *data_020f4e18[];
 extern void *gGameWork;
@@ -25,7 +29,6 @@ extern void func_020b44e8(void);
 extern void func_02070638(...);
 extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
-extern void func_02070e0c(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void RetailSelectionManager_AdvanceHistory(void *);
 extern void GameWork_ClearFlag(...);
@@ -66,9 +69,11 @@ static void load_background(void *scene, u32 paletteId)
 static void upload_background(void *scene)
 {
     GraphicsResourceSet *set = (GraphicsResourceSet *)((u8 *)scene + 0xf18);
-    func_02070638(set->tiles, 2, 0);
-    func_02070b50(set->map, GraphicsResource_GetFormat(set->tiles) ? 0x6000 : 0);
-    func_02070e0c(set->palette, 2, 0);
+    func_02070638(set->characterResource, 2, 0);
+    func_02070b50(set->paletteResource,
+                  GraphicsResource_GetFormat(set->characterResource)
+                      ? 0x6000 : 0);
+    GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, 2, 0);
     GraphicsResourceSet_ReleaseHandles(set);
     REG16(0x05000000) = 0x24a3;
     REG32(0x04000000) = (REG32(0x04000000) & ~0x1f00) | 0x1700;

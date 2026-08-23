@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_scene_runtime.c. */
 .extern data_ov025_022033ac
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern TitleScreenResourceCollection_Get
 .extern func_020959d4
 .extern ModalState_InitResources
@@ -22,7 +22,7 @@ func_ov025_02200224:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r1, L_022002a8
     mov r0, #0x2d0
     mov r2, #0x4

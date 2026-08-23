@@ -6,7 +6,7 @@
 .extern GraphicsResourceSet_Load
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02070f34
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_02072048
 .extern func_020925a4
@@ -49,7 +49,7 @@ func_ov046_0220bac0:
 .L_0220bb24:
     ldr r0, [sp, #0xc]
     mov r1, #0xf
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     ldr r0, .L_0220bc74
     ldr r1, [r4, #0x0]

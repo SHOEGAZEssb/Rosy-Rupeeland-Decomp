@@ -3,7 +3,7 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern func_020b44e8
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_020706c4
 .extern GraphicsBgResourceData_GetDecoded
@@ -37,7 +37,7 @@ SubDualLayerResourceRendererAlt_LoadBgResources: ; 0x0202c138
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     mov r2, r5
     ldrh r1, [r2, #0x0]
     sub r3, r2, #0x8
@@ -100,7 +100,7 @@ SubDualLayerResourceRendererAlt_LoadBgResources: ; 0x0202c138
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r5, [r4, #0x14]
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded

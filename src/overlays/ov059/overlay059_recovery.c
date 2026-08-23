@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/graphics_bg_map_resource.h"
 
 /* Overlay 59 owns the dungeon-map floor selector: its tiled floor previews,
  * touch regions, scroll transition, actor-backed map display, and scene state.
@@ -68,7 +68,6 @@ extern void *ActorCollection_GetSpriteGroup(...);
 extern void ActorCollection_SetActorScale(...);
 extern void *Actor_RebuildPrimaryAttachment(...);
 extern void Sound_Play(...), func_020706c4(...), func_02070bc4(...);
-extern void func_02070eac(...), func_02070f34(...);
 extern void AnimationResourceState_InitEmbedded(...);
 extern void AnimationResourceState_Destroy(...);
 extern void AnimationResourceState_ReleaseResources(...);
@@ -238,10 +237,12 @@ void func_ov059_0220fd80(void *p, void *cfg, s32 bg, s32 priority,
     *(volatile u32 *)(0x04001010 + bg * 4) = 0x01d301e8;
     func_020b57d4(0, vram, 0x1000);
   }
-  func_02070f34(F(void *, resources, 8), regionId);
+  GraphicsBgMapResource_SetPaletteBank(
+      F(GraphicsBgMapResource *, resources, 8), regionId);
   func_020b44e8();
   func_020706c4(F(void *, resources, 0), bg, 0);
-  func_02070eac(F(void *, resources, 8), bg, 0);
+  GraphicsBgMapResource_UploadToSubBg(
+      F(GraphicsBgMapResource *, resources, 8), bg, 0);
   func_02070bc4(F(void *, resources, 4), regionId << 5);
   func_02071ee0((u8 *)p + 0x44, data_020f4e18, 0x30c0, 0x30c1, 0x30c2);
   F(void *, p, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
@@ -668,10 +669,12 @@ void func_ov059_02211870(void) {
   GraphicsResourceSet_Init(resources);
   GraphicsResourceSet_Load(resources, data_020f4e18, 0x16, 0x17, 0x18);
   *cnt = (((*cnt & 0x43) | 0x1804) & 0xfffc) | 3;
-  func_02070f34(F(void *, resources, 8), 0x0f);
+  GraphicsBgMapResource_SetPaletteBank(
+      F(GraphicsBgMapResource *, resources, 8), 0x0f);
   func_020b44e8();
   func_020706c4(F(void *, resources, 0), 0, 0);
-  func_02070eac(F(void *, resources, 8), 0, 0);
+  GraphicsBgMapResource_UploadToSubBg(
+      F(GraphicsBgMapResource *, resources, 8), 0, 0);
   func_02070bc4(F(void *, resources, 4), 0x1e0);
   GraphicsResourceSet_Destroy(resources);
 }

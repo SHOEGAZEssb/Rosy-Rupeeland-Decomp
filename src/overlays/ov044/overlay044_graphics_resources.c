@@ -18,11 +18,11 @@ extern "C" void GraphicsResourceSet_Load(GraphicsResourceSet *set,
 extern "C" void GraphicsResourceSet_Apply(GraphicsResourceSet *set,
                                             s32 destination, s32 offset);
 extern "C" void GraphicsResourceSet_Destroy(GraphicsResourceSet *set);
-extern "C" void func_02070f80(void *resource, s32 value);
+extern "C" void GraphicsBgMapResource_AddPaletteBankOffset(void *resource, s32 value);
 extern "C" void func_020b44e8(void);
 extern "C" void func_02072048(GraphicsResourceSet *set, s32 destination,
                                 s32 offset);
-extern "C" void func_02070eac(void *resource, s32 destination, s32 offset);
+extern "C" void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 destination, s32 offset);
 extern "C" void func_ov044_0220c3e4(void *object);
 
 /*
@@ -42,7 +42,7 @@ extern "C" void func_ov044_0220c2e4(void *object)
     GraphicsResourceSet_Init(&second);
     GraphicsResourceSet_Load(&first, data_020f4e18,
                              0x8004, 0x8005, 0x8006);
-    func_02070f80((void *)first.fields[2], 8);
+    GraphicsBgMapResource_AddPaletteBankOffset((void *)first.fields[2], 8);
     func_020b44e8();
     func_02072048(&first, 3, 0x100);
     GraphicsResourceSet_Apply(&first, 3, 0x100);
@@ -52,7 +52,7 @@ extern "C" void func_ov044_0220c2e4(void *object)
                              0x8012, 0x8013, 0x801a);
     func_020b44e8();
     GraphicsResourceSet_Apply(&first, 0, 0);
-    func_02070eac((void *)second.fields[2], 2, 0);
+    GraphicsBgMapResource_UploadToSubBg((void *)second.fields[2], 2, 0);
     func_ov044_0220c3e4(object);
     GraphicsResourceSet_Destroy(&second);
     GraphicsResourceSet_Destroy(&first);

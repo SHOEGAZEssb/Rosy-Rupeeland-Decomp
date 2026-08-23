@@ -28,7 +28,7 @@ extern "C" const u8 data_020d7834[];
 extern "C" void *gGameWork;
 extern "C" u8 gSystemState[];
 extern "C" s32 GameWork_TestFlag(void *gameWork, u16 flag);
-extern "C" void func_02070f34(void *resource, s32 paletteBank);
+extern "C" void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 paletteBank);
 extern "C" void func_020b44e8(void);
 extern "C" void func_020925a4(s32 backgroundMode);
 extern "C" void func_020925dc(s32 backgroundMode);
@@ -51,7 +51,7 @@ extern "C" void func_ov046_0220bac0(void *panel)
         GraphicsResourceSet_Load(&resources, data_020f4e18,
                                  0xc00f, 0xc010, 0xc011);
     }
-    func_02070f34(resources.resource2, 0x0f);
+    GraphicsBgMapResource_SetPaletteBank(resources.resource2, 0x0f);
     func_020b44e8();
 
     if (FIELD(void *, panel, 0) == data_020f4e14) {

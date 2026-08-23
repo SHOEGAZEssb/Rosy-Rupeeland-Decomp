@@ -43,7 +43,7 @@ extern void func_020b198c(void *destination, s32 slot, void *source);
 extern void *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void *func_02070888(void *resource);
 extern void func_020b1ff0(void *destination, s32 slot, void *source);
-extern void func_02070eac(void *resource, s32 first, s32 second);
+extern void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 first, s32 second);
 extern void GraphicsResourceSet_ReleaseHandles(void *set);
 extern void func_020afd28(volatile void *reg, const void *transform,
                           s32 a2, s32 a3, s32 a4, s32 a5);
@@ -354,7 +354,7 @@ extern "C" void func_ov040_02202640(void *scene, void *argument)
     func_020b1ff0(GraphicsBgResourceData_GetDecoded((void *)resources[1]), 0,
                   func_02070888((void *)resources[1]));
     func_020b44e8();
-    func_02070eac((void *)resources[2], 0, 0);
+    GraphicsBgMapResource_UploadToSubBg((void *)resources[2], 0, 0);
     func_020b44e8();
     GraphicsResourceSet_ReleaseHandles(resources);
 

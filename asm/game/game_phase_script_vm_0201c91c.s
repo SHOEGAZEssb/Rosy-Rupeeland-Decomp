@@ -3,12 +3,12 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern GraphicsResourceSet_Destroy
-.extern func_02070f80
+.extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_020b44e8
 .extern func_02070638
 .extern GraphicsResource_GetFormat
 .extern func_02070b50
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern data_020f4e18
 .global GraphicsMainBackground_LoadResources
 GraphicsMainBackground_LoadResources: ; 0x0201c91c
@@ -31,7 +31,7 @@ GraphicsMainBackground_LoadResources: ; 0x0201c91c
     ldrh r5, [sp, #0x28]
     ldr r0, [sp, #0xc]
     mov r1, r5
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     mov r1, #0x0
     mov r0, #0x5000000
     strh r1, [r0, #0x0]
@@ -58,7 +58,7 @@ L_0201c9bc:
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     b L_0201caa4
 L_0201c9d0:
     cmp r6, #0x0
@@ -78,7 +78,7 @@ L_0201ca04:
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     b L_0201caa4
 L_0201ca18:
     cmp r6, #0x0
@@ -98,7 +98,7 @@ L_0201ca30:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     b L_0201caa4
 L_0201ca60:
     cmp r6, #0x0
@@ -118,7 +118,7 @@ L_0201ca94:
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
 L_0201caa4:
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy

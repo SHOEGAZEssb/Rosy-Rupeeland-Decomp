@@ -11,7 +11,7 @@ extern HeapContext gHeapContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02070e0c(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
 extern void func_02095bec(void *);
@@ -34,7 +34,7 @@ extern "C" void func_ov017_021ffcc8(void *state, s32 setting, s32 alternate,
     void *object;
     void *handle = TitleScreenResourceCollection_Get((u8 *)state + 0x1fc, alternate != 0);
 
-    func_02070e0c(handle, 2, 0);
+    GraphicsBgMapResource_UploadToMainBg(handle, 2, 0);
     object = Heap_Alloc(0x2d0, data_ov017_022016bc, 4, &gHeapContext);
     if (object != 0) {
         object = func_020959d4(object, 0, 0);

@@ -12,7 +12,7 @@
     .extern func_0207043c
     .extern GraphicsBgResourceData_GetDecoded
     .extern func_02070888
-    .extern func_02070eac
+    .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsResourceSet_ReleaseHandles
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
@@ -89,7 +89,7 @@ func_ov040_02202640: ; 0x02202640
     mov r1, #0x0
     ldr r0, [sp, #0x20]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     bl func_020b44e8
     add r0, sp, #0x18
     bl GraphicsResourceSet_ReleaseHandles

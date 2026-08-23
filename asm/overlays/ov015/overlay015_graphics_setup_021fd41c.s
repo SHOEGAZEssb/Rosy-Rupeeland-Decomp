@@ -7,8 +7,8 @@
     .extern data_020f4e18
     .extern func_020706c4
     .extern func_02070bc4
-    .extern func_02070eac
-    .extern func_02070f80
+    .extern GraphicsBgMapResource_UploadToSubBg
+    .extern GraphicsBgMapResource_AddPaletteBankOffset
     .extern func_02072048
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_020925a4
@@ -107,7 +107,7 @@ L_021fd520:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0x24]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     ldr r0, [r4, #0xec]
     cmp r0, #0x0
@@ -159,11 +159,11 @@ L_021fd584:
     mov r1, #0x0
     ldr r0, [sp, #0x18]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
 L_021fd640:
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy

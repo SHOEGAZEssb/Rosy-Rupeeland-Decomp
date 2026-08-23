@@ -19,7 +19,7 @@ extern s32 GameWork_TestFlag(void *, s32);
 extern void *Heap_Alloc(s32, const void *, s32, void *);
 extern s32 ActorDescriptor_GetSubtype(void *);
 extern void *InventoryRecord_GetMetadata(void *);
-extern void *func_02070e0c(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, u32);
 extern void func_02092260(void *, s32);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
@@ -156,7 +156,7 @@ extern "C" void func_ov015_021fde00(void *state, s32 value, s32 alternate, void 
     void *handle = TitleScreenResourceCollection_Get((u8 *)state + 0x98, alternate != 0);
     void *object;
 
-    func_02070e0c(handle, 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(handle, 1, 0);
     object = Heap_Alloc(0x2d0, data_ov015_021fec98, 4, gHeapContext);
     if (object != 0) {
         object = func_020959d4(object, 0, 0);

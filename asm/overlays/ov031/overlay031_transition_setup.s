@@ -7,7 +7,7 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern func_020706c4
 .extern func_02070bc4
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern func_020b44e8
 .extern func_ov031_021fe148
 .extern GraphicsResourceSet_Destroy
@@ -53,7 +53,7 @@ func_ov031_021fe1a8:
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [r4, #0x58]
     mov r1, #0x1
     str r1, [r0, #0x20]

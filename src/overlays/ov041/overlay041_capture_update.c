@@ -15,7 +15,7 @@ s32 func_020befec(s32, s32);
 void func_020b1784(void *, s32, s32);
 void func_020b1ac4(void *, s32, s32);
 void func_020b1b94(void *, s32, s32);
-void func_02070e0c(void *, s32, s32);
+void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 void func_ov041_021fdd04(s32, s32, s32, s32, s32);
 void func_ov041_021fdd38(s32, s32, s32, s32);
 void func_ov041_021fe110(void *);
@@ -98,7 +98,7 @@ extern "C" void func_ov041_021fe824(void *owner)
         func_ov041_021fdd04(0, 0, 0x1c, bank, 0);
         s32 resourceIndex = FIELD(s32, owner, 0x180) +
                             (FIELD(s32, owner, 0x1ec) != 0);
-        func_02070e0c(FIELD(void *, owner, 0x50 + resourceIndex * 12), 1, 0);
+        GraphicsBgMapResource_UploadToMainBg(FIELD(void *, owner, 0x50 + resourceIndex * 12), 1, 0);
     }
 }
 

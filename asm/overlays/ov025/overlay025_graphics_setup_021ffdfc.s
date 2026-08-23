@@ -5,8 +5,8 @@
 .extern data_020f4e18
 .extern func_020706c4
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070eac
-.extern func_02070f80
+.extern GraphicsBgMapResource_UploadToSubBg
+.extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_02072048
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_020925a4
@@ -105,7 +105,7 @@ func_ov025_021ffdfc:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0xc]
     mov r1, #0x8
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     add r0, sp, #0x4
     mov r1, #0x1
@@ -127,7 +127,7 @@ func_ov025_021ffdfc:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     add r0, r0, #0xa0

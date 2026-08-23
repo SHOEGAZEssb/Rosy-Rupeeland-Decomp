@@ -15,7 +15,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void func_02070e0c(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 GraphicsSpriteRenderer_DrawText(void *, const u16 *, s32, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, const u16 *, s32, s32);
@@ -69,7 +69,7 @@ extern "C" void func_ov016_021ff908(void *state, s32 setting, s32 variant,
     } else {
         handleIndex = variant == 0 ? 0 : 1;
     }
-    func_02070e0c(TitleScreenResourceCollection_Get((u8 *)state + 0x84, handleIndex), 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get((u8 *)state + 0x84, handleIndex), 1, 0);
     object = Heap_Alloc(0x2d0, data_ov016_022015b0, 4, gHeapContext);
     if (object != 0) {
         object = func_020959d4(object, 0, 0);
@@ -126,7 +126,7 @@ extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
     width = GraphicsSpriteRenderer_MeasureText(data_020f4e14, text, 4, 0);
     text = func_020791e0(data_021f3ecc, messageId);
     GraphicsSpriteRenderer_DrawText(data_020f4e14, text, 0x80 - width / 2, 0x20, 0xe, 4, 0);
-    func_02070e0c(TitleScreenResourceCollection_Get((u8 *)state + 0x84, 4), 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get((u8 *)state + 0x84, 4), 1, 0);
     FIELD(u32, state, 0x48) |= 2;
 }
 

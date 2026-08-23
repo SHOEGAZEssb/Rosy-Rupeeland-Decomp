@@ -1,6 +1,6 @@
 .text
 .extern TitleScreenResourceCollection_Get
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern Heap_Alloc
 .extern func_020959d4
 .extern ModalState_CopyAttachmentText
@@ -21,14 +21,14 @@ func_ov044_0220c8d0:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x0
     mov r2, r1
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     b .L_0220c918
 .L_0220c904:
     mov r1, #0x1
     bl TitleScreenResourceCollection_Get
     mov r1, #0x0
     mov r2, r1
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
 .L_0220c918:
     ldr r1, .L_0220c974
     ldr r3, .L_0220c978

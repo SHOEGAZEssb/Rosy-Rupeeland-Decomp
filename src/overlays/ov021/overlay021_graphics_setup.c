@@ -17,9 +17,9 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void func_02070638(void *, s32, s32);
 extern void func_020706c4(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void func_02070e0c(void *, s32, s32);
-extern void func_02070eac(void *, s32, s32);
-extern void func_02070f34(void *, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
+extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 extern void func_02072048(void *, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_020925a4(s32);
@@ -134,7 +134,7 @@ extern "C" void func_ov021_021fe098(void *state)
                              0xc006, 0xc007, 0xc008);
     func_020b44e8();
     func_020706c4(FIELD(void *, resources, 0), 2, 0);
-    func_02070eac(FIELD(void *, resources, 8), 2, 0);
+    GraphicsBgMapResource_UploadToSubBg(FIELD(void *, resources, 8), 2, 0);
     func_020b1ff0(FIELD(void *, state, 0x3f0), 0, 0x20);
     GraphicsResourceSet_Destroy(resources);
 }
@@ -163,10 +163,10 @@ extern "C" void Overlay021_SetupMainBackground(void *state)
 
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xc006, 0xc007, 0xc008);
-    func_02070f34(FIELD(void *, resources, 8), 8);
+    GraphicsBgMapResource_SetPaletteBank(FIELD(void *, resources, 8), 8);
     func_020b44e8();
     func_02070638(FIELD(void *, resources, 0), 2, 0);
-    func_02070e0c(FIELD(void *, resources, 8), 2, 0);
+    GraphicsBgMapResource_UploadToMainBg(FIELD(void *, resources, 8), 2, 0);
     func_020b2058(data_021f5ee8, 0x100, 0x20);
     GraphicsResourceSet_Destroy(resources);
 }
@@ -195,7 +195,7 @@ extern "C" void func_ov021_021fe29c(void *state)
     func_02092754(manager, 0xa070);
     func_020b44e8();
     func_02072048(resources, 0, 0);
-    func_02070e0c(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
     FIELD(s32, state, 0x3fc) = 0;
     FIELD(s32, state, 0x48) = 0x13;
     TitlePalette_SetMainBackdrop(0);

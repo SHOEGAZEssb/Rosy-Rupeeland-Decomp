@@ -765,7 +765,7 @@ build build/decomp/src/graphics/graphics_bg_palette_upload.o: mwccarm src/graphi
   source = src/graphics/graphics_bg_palette_upload.c
   cflags = $graphics_resource_set_cflags
 
-build build/decomp/src/graphics/graphics_bg_map_size.o: mwccarm src/graphics/graphics_bg_map_size.c | include/tingle/types.h
+build build/decomp/src/graphics/graphics_bg_map_size.o: mwccarm src/graphics/graphics_bg_map_size.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/graphics/graphics_bg_map_size.c
   cflags = $graphics_resource_set_cflags
 
@@ -777,11 +777,11 @@ build build/decomp/src/graphics/graphics_bg_resource_data.o: mwccarm src/graphic
   source = src/graphics/graphics_bg_resource_data.c
   cflags = $graphics_resource_set_cflags
 
-build build/decomp/src/graphics/graphics_bg_map_upload.o: mwccarm src/graphics/graphics_bg_map_upload.c | include/tingle/types.h
+build build/decomp/src/graphics/graphics_bg_map_upload.o: mwccarm src/graphics/graphics_bg_map_upload.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/graphics/graphics_bg_map_upload.c
   cflags = $graphics_resource_set_cflags
 
-build build/decomp/src/graphics/graphics_bg_map_palette.o: mwccarm src/graphics/graphics_bg_map_palette.c | include/tingle/types.h
+build build/decomp/src/graphics/graphics_bg_map_palette.o: mwccarm src/graphics/graphics_bg_map_palette.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/graphics/graphics_bg_map_palette.c
   cflags = $graphics_resource_set_cflags
 
@@ -1580,7 +1580,7 @@ build build/decomp/src/graphics/graphics_bg_character_upload_sub.o: mwccarm src/
 build build/decomp/src/graphics/graphics_bg_palette_upload_sub.o: mwccarm src/graphics/graphics_bg_palette_upload_sub.c | include/tingle/types.h
   source = src/graphics/graphics_bg_palette_upload_sub.c
   cflags = $graphics_bg_palette_upload_sub_cflags
-build build/decomp/src/graphics/graphics_bg_map_upload_sub.o: mwccarm src/graphics/graphics_bg_map_upload_sub.c | include/tingle/types.h
+build build/decomp/src/graphics/graphics_bg_map_upload_sub.o: mwccarm src/graphics/graphics_bg_map_upload_sub.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/graphics/graphics_bg_map_upload_sub.c
   cflags = $graphics_bg_map_upload_sub_cflags
 build build/decomp/src/math/signed_absolute.o: mwccarm src/math/signed_absolute.c | include/tingle/types.h
@@ -2554,7 +2554,7 @@ build build/decomp/src/graphics/main_bg_control.o: mwccarm src/graphics/main_bg_
   source = src/graphics/main_bg_control.c
   cflags = $main_bg_control_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201c798.o: mwasmarm asm/game/game_phase_script_vm_0201c798.s
-build build/decomp/src/graphics/bg_resource_upload.o: mwccarm src/graphics/bg_resource_upload.c | include/tingle/graphics_resources.h include/tingle/types.h
+build build/decomp/src/graphics/bg_resource_upload.o: mwccarm src/graphics/bg_resource_upload.c | include/tingle/graphics_bg_map_resource.h include/tingle/graphics_resources.h include/tingle/types.h
   source = src/graphics/bg_resource_upload.c
   cflags = $bg_resource_upload_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201c91c.o: mwasmarm asm/game/game_phase_script_vm_0201c91c.s
@@ -2563,7 +2563,7 @@ build build/decomp/src/graphics/main_bg_runtime_control.o: mwccarm src/graphics/
   cflags = $main_bg_runtime_control_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201cabc.o: mwasmarm asm/game/game_phase_script_vm_0201cabc.s
 build build/decomp/asm/game/game_phase_script_vm_0201cb70.o: mwasmarm asm/game/game_phase_script_vm_0201cb70.s
-build build/decomp/src/graphics/sub_bg_resource_upload.o: mwccarm src/graphics/sub_bg_resource_upload.c | include/tingle/graphics_resources.h include/tingle/types.h
+build build/decomp/src/graphics/sub_bg_resource_upload.o: mwccarm src/graphics/sub_bg_resource_upload.c | include/tingle/graphics_bg_map_resource.h include/tingle/graphics_resources.h include/tingle/types.h
   source = src/graphics/sub_bg_resource_upload.c
   cflags = $sub_bg_resource_upload_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201ccf4.o: mwasmarm asm/game/game_phase_script_vm_0201ccf4.s
@@ -4329,7 +4329,7 @@ build build/reports/graphics_bg_map_upload.json: objdiff build/decomp/delinks/sr
 
 build build/reports/graphics_bg_map_upload.txt: match_report build/reports/graphics_bg_map_upload.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_map_upload.json
-  report_args = --section .text --function func_02070e0c --require-exact
+  report_args = --section .text --function GraphicsBgMapResource_UploadToMainBg --require-exact
 
 build build/reports/graphics_bg_map_palette.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_map_palette.o | build/decomp/asm/graphics/graphics_bg_map_palette.o
   target_object = build/decomp/delinks/src/graphics/graphics_bg_map_palette.o
@@ -4337,7 +4337,7 @@ build build/reports/graphics_bg_map_palette.json: objdiff build/decomp/delinks/s
 
 build build/reports/graphics_bg_map_palette.txt: match_report build/reports/graphics_bg_map_palette.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_map_palette.json
-  report_args = --section .text --function func_02070f80 --require-exact
+  report_args = --section .text --function GraphicsBgMapResource_AddPaletteBankOffset --require-exact
 
 build build/reports/graphics_archive_character_load.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_character_load.o | build/decomp/src/graphics/graphics_archive_character_load.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_character_load.o
@@ -4484,7 +4484,7 @@ build build/reports/graphics_bg_map_size.json: objdiff build/decomp/delinks/src/
 
 build build/reports/graphics_bg_map_size.txt: match_report build/reports/graphics_bg_map_size.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_map_size.json
-  report_args = --section .text --function func_02070e94 --require-exact
+  report_args = --section .text --function GraphicsBgMapResource_GetDataSizeBytes --require-exact
 
 build graphics_bg_match: phony build/reports/graphics_bg_resource.txt build/reports/graphics_bg_resource_data.txt build/reports/graphics_bg_map_upload.txt build/reports/graphics_bg_map_palette.txt build/decomp/src/graphics/graphics_bg_map_palette.o build/reports/graphics_archive_character_load.txt build/reports/graphics_archive_character_load_uncached.txt build/reports/graphics_archive_palette_load.txt build/reports/graphics_archive_palette_load_uncached.txt build/reports/graphics_archive_screen_load.txt build/reports/graphics_resource_cache.txt build/reports/graphics_bg_palette_upload.txt build/reports/graphics_bg_map_size.txt
 
@@ -11784,7 +11784,7 @@ build build/reports/graphics_bg_map_upload_sub.json: objdiff build/decomp/delink
   base_object = build/decomp/src/graphics/graphics_bg_map_upload_sub.o
 build build/reports/graphics_bg_map_upload_sub.txt: match_report build/reports/graphics_bg_map_upload_sub.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_map_upload_sub.json
-  report_args = --section .text --function func_02070eac --require-exact
+  report_args = --section .text --function GraphicsBgMapResource_UploadToSubBg --require-exact
 
 build graphics_bg_map_upload_sub: phony build/reports/graphics_bg_map_upload_sub.txt
 build build/reports/signed_absolute.json: objdiff build/decomp/delinks/src/math/signed_absolute.o | build/decomp/src/math/signed_absolute.o
@@ -22765,7 +22765,7 @@ build build/reports/overlay004_background_hardware_setup.txt: match_report build
 build overlay004_background_hardware_setup: phony build/decomp/src/overlays/ov004/overlay004_background_hardware_setup.o build/decomp/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o build/reports/overlay004_background_hardware_setup.txt
 
 overlay004_variant_resources_load_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov004/overlay004_variant_resources_load.o: mwccarm src/overlays/ov004/overlay004_variant_resources_load.c | include/tingle/types.h
+build build/decomp/src/overlays/ov004/overlay004_variant_resources_load.o: mwccarm src/overlays/ov004/overlay004_variant_resources_load.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov004/overlay004_variant_resources_load.c
   cflags = $overlay004_variant_resources_load_cflags
 build build/decomp/asm/overlays/ov004/overlay004_variant_resources_load_021fba28.o: mwasmarm asm/overlays/ov004/overlay004_variant_resources_load_021fba28.s
@@ -33178,7 +33178,7 @@ build build/reports/overlay032_embedded_helpers.txt: match_report build/reports/
   report_args = --section .text --function func_ov032_021fd7a4 --require-exact
 build overlay032_embedded_helpers: phony build/decomp/src/overlays/ov032/overlay032_embedded_helpers.o build/decomp/asm/overlays/ov032/overlay032_embedded_helpers.o build/reports/overlay032_embedded_helpers.txt
 overlay032_runtime_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov032/overlay032_runtime_setup.o: mwccarm src/overlays/ov032/overlay032_runtime_setup.c | include/tingle/types.h
+build build/decomp/src/overlays/ov032/overlay032_runtime_setup.o: mwccarm src/overlays/ov032/overlay032_runtime_setup.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov032/overlay032_runtime_setup.c
   cflags = $overlay032_runtime_setup_cflags
 build build/decomp/asm/overlays/ov032/overlay032_teardown.o: mwasmarm asm/overlays/ov032/overlay032_teardown.s
@@ -33321,7 +33321,7 @@ build build/reports/overlay032_indexed_message.txt: match_report build/reports/o
   report_args = --section .text --function func_ov032_021fe440 --require-exact
 build overlay032_text_helpers: phony build/decomp/src/overlays/ov032/overlay032_text_helpers.o build/decomp/asm/overlays/ov032/overlay032_value_format.o build/reports/overlay032_value_format.txt build/decomp/asm/overlays/ov032/overlay032_indexed_message.o build/reports/overlay032_indexed_message.txt
 overlay032_background_loaders_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov032/overlay032_background_loaders.o: mwccarm src/overlays/ov032/overlay032_background_loaders.c | include/tingle/types.h
+build build/decomp/src/overlays/ov032/overlay032_background_loaders.o: mwccarm src/overlays/ov032/overlay032_background_loaders.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov032/overlay032_background_loaders.c
   cflags = $overlay032_background_loaders_cflags
 build build/decomp/asm/overlays/ov032/overlay032_background_common.o: mwasmarm asm/overlays/ov032/overlay032_background_common.s
@@ -33547,7 +33547,7 @@ build build/reports/overlay032_flag_dialog_state.txt: match_report build/reports
   report_args = --section .text --function func_ov032_0220040c --require-exact
 build overlay032_flag_dialog_state: phony build/decomp/src/overlays/ov032/overlay032_flag_dialog_state.o build/decomp/asm/overlays/ov032/overlay032_flag_dialog_state.o build/reports/overlay032_flag_dialog_state.txt
 overlay032_runtime_choice_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov032/overlay032_runtime_choice_state.o: mwccarm src/overlays/ov032/overlay032_runtime_choice_state.c | include/tingle/types.h
+build build/decomp/src/overlays/ov032/overlay032_runtime_choice_state.o: mwccarm src/overlays/ov032/overlay032_runtime_choice_state.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov032/overlay032_runtime_choice_state.c
   cflags = $overlay032_runtime_choice_state_cflags
 build build/decomp/asm/overlays/ov032/overlay032_runtime_choice_state.o: mwasmarm asm/overlays/ov032/overlay032_runtime_choice_state.s
@@ -33560,7 +33560,7 @@ build build/reports/overlay032_runtime_choice_state.txt: match_report build/repo
   report_args = --section .text --function func_ov032_02200618 --require-exact
 build overlay032_runtime_choice_state: phony build/decomp/src/overlays/ov032/overlay032_runtime_choice_state.o build/decomp/asm/overlays/ov032/overlay032_runtime_choice_state.o build/reports/overlay032_runtime_choice_state.txt
 overlay032_terminal_and_child_init_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov032/overlay032_terminal_and_child_init.o: mwccarm src/overlays/ov032/overlay032_terminal_and_child_init.c | include/tingle/types.h
+build build/decomp/src/overlays/ov032/overlay032_terminal_and_child_init.o: mwccarm src/overlays/ov032/overlay032_terminal_and_child_init.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov032/overlay032_terminal_and_child_init.c
   cflags = $overlay032_terminal_and_child_init_cflags
 build build/decomp/asm/overlays/ov032/overlay032_terminal_halt.o: mwasmarm asm/overlays/ov032/overlay032_terminal_halt.s
@@ -42321,10 +42321,10 @@ build build/reports/overlay051_virtual_noop_bc.txt: match_report build/reports/o
 build build/reports/overlay051_virtual_noop_c0.txt: match_report build/reports/overlay051_virtual_noops.json | tools/report_objdiff.py
   report_json = build/reports/overlay051_virtual_noops.json
   report_args = --section .text --function func_ov051_0220dec0 --require-exact
-build build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_sub_scene_recovery.c | include/tingle/field_effect.h include/tingle/types.h
+build build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_sub_scene_recovery.c | include/tingle/field_effect.h include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov051/overlay051_sub_scene_recovery.c
   cflags = $overlay051_small_cflags
-build build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_main_scene_recovery.c | include/tingle/field_effect.h include/tingle/types.h
+build build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_main_scene_recovery.c | include/tingle/field_effect.h include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov051/overlay051_main_scene_recovery.c
   cflags = $overlay051_small_cflags
 build overlay051_portable: phony build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o
@@ -42443,7 +42443,7 @@ build overlay058: phony overlay058_matching overlay058_portable
 
 subninja config/arm9/overlays/ov059/matching.ninja
 overlay059_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov059/overlay059_recovery.o: mwccarm src/overlays/ov059/overlay059_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov059/overlay059_recovery.o: mwccarm src/overlays/ov059/overlay059_recovery.c | include/tingle/graphics_bg_map_resource.h include/tingle/types.h
   source = src/overlays/ov059/overlay059_recovery.c
   cflags = $overlay059_portable_cflags
 build overlay059_portable: phony build/decomp/src/overlays/ov059/overlay059_recovery.o

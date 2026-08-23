@@ -10,7 +10,7 @@
     .extern data_ov013_021febb4
     .extern data_ov013_021fec18
     .extern GamePhaseMetadata_IsAreaBehaviorPermitted
-    .extern func_02070f34
+    .extern GraphicsBgMapResource_SetPaletteBank
     .extern func_02072048
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -487,7 +487,7 @@ L_021fd918:
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0x18]
     mov r1, #0x8
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     add r0, sp, #0x10
     mov r1, #0x1

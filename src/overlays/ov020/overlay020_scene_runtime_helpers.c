@@ -19,7 +19,7 @@ extern void GraphicsResourceSet_Apply(void *, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
-extern void func_02070f80(void *, s32);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02072048(void *, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -123,7 +123,7 @@ extern "C" void func_ov020_021fdd88(void)
     u8 resources[12];
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0], 0x803d, 0x803e, 0x803f);
-    func_02070f80(FIELD(void *, resources, 8), 8);
+    GraphicsBgMapResource_AddPaletteBankOffset(FIELD(void *, resources, 8), 8);
     func_020b44e8();
     GraphicsResourceSet_Apply(resources, 1, 0x100);
     GraphicsResourceSet_Load(resources, data_020f4e18[0], 0x802e, 0x802c, 0x802f);

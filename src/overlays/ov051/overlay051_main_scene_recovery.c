@@ -1,4 +1,5 @@
 #include "tingle/field_effect.h"
+#include "tingle/graphics_bg_map_resource.h"
 #include "tingle/types.h"
 
 extern "C" void MI_CpuCopy8(const void *source, void *destination, u32 size);
@@ -28,9 +29,9 @@ extern "C" void func_ov051_0220dbc4(u32 first, u32 second, u32 third,
  * `scene`. VRAM, display MMIO, and SDK graphics state change.
  */
 typedef struct Overlay051ResourceSet {
-    void *tiles;
-    void *map;
-    void *palette;
+    void *characterResource;
+    void *paletteResource;
+    GraphicsBgMapResource *bgMapResource;
 } Overlay051ResourceSet;
 
 extern "C" void *data_020f4e18;
@@ -44,13 +45,11 @@ extern "C" void GraphicsResourceSet_Load(Overlay051ResourceSet *set,
                                            void *archive, s32 first,
                                            s32 second, s32 third);
 extern "C" void GraphicsResourceSet_Destroy(Overlay051ResourceSet *set);
-extern "C" void func_02070fd4(void *palette);
 extern "C" void func_020b44e8(void);
 extern "C" void func_020af1f8(u32 banks);
 extern "C" void GX_SetGraphicsMode(u32 first, u32 second, u32 third);
-extern "C" void func_02070638(void *tiles, s32 layer, s32 offset);
-extern "C" void func_02070b50(void *map, s32 offset);
-extern "C" void func_02070e0c(void *palette, s32 layer, s32 offset);
+extern "C" void func_02070638(void *characterResource, s32 layer, s32 offset);
+extern "C" void func_02070b50(void *paletteResource, s32 offset);
 extern "C" void func_020afd28(volatile void *registers,
                                const void *transform, s32 width, s32 height,
                                s32 x, s32 y);
@@ -72,16 +71,17 @@ extern "C" void *func_ov051_0220dbf0(void *scene, s32 first, s32 second,
     *(void **)bytes = data_ov051_0220df48;
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18, first, second, third);
-    func_02070fd4(resources.palette);
+    GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor(
+        resources.bgMapResource);
     func_020b44e8();
     func_020af1f8(0x10);
     GX_SetGraphicsMode(1, 5, 1);
     func_ov051_0220dbc4(2, 1, 0, 4);
     *(volatile u32 *)0x04000000 =
         (*(volatile u32 *)0x04000000 & ~0x1f00u) | 0x1400u;
-    func_02070638(resources.tiles, 2, 0);
-    func_02070b50(resources.map, 0x4000);
-    func_02070e0c(resources.palette, 2, 0);
+    func_02070638(resources.characterResource, 2, 0);
+    func_02070b50(resources.paletteResource, 0x4000);
+    GraphicsBgMapResource_UploadToMainBg(resources.bgMapResource, 2, 0);
     func_020afd28((volatile void *)0x04000020, bytes + 0xc10,
                   0x80, 0x60, 0, 0);
     *(u32 *)(bytes + 4) = (*(u32 *)(bytes + 4) & ~1u) | 3u;

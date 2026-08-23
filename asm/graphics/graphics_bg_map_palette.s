@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for src/graphics/graphics_bg_map_palette.c.
 
-.global func_02070f80
-func_02070f80:
+.global GraphicsBgMapResource_AddPaletteBankOffset
+GraphicsBgMapResource_AddPaletteBankOffset:
     stmdb sp!, {r3, lr}
     ldr r2, [r0, #0x24]
     mov r3, #0
@@ -26,5 +26,5 @@ func_02070f80:
     cmp r3, r12
     blt .L_02070f90
     ldmia sp!, {r3, pc}
-.size func_02070f80, . - func_02070f80
+.size GraphicsBgMapResource_AddPaletteBankOffset, . - GraphicsBgMapResource_AddPaletteBankOffset
 

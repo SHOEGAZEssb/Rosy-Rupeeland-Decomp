@@ -30,7 +30,7 @@ extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void *func_02070888(void *);
 extern void func_020b1924(void *, s32, void *);
 extern void func_020b2058(void *, s32, void *);
-extern void func_02070f80(void *, s32);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void VecFx32Object_Assign(void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void func_02099fb0(void *);
@@ -127,7 +127,7 @@ extern "C" void func_ov041_021fd01c(void *owner)
     func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, owner, 0x58)), 0x100,
                   func_02070888(FIELD(void *, owner, 0x58)));
     func_020b44e8();
-    func_02070f80(FIELD(void *, owner, 0x5c), 8);
+    GraphicsBgMapResource_AddPaletteBankOffset(FIELD(void *, owner, 0x5c), 8);
 
     if (mode == 0 || mode == 2) {
         FIELD(s32, owner, 0x168) = FIELD(s32, FIELD(void *, owner, 0x48), 0x24) - 0x24;

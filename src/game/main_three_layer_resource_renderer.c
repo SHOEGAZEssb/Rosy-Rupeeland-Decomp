@@ -32,9 +32,9 @@ extern void DualLayerTileRenderer_LoadFromConfig(void *, const void *, s32,
 extern void DualLayerTileRenderer_ActivateLayers(void *, s32);
 extern void func_020b44e8(void);
 extern void func_02070638(void *, s32, s32);
-extern void func_02070e0c(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void func_02070b50(void *, s32);
-extern void func_02070f80(void *, s32);
+extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *);
 void MainThreeLayerResourceRenderer_LoadBgResources(MainThreeLayerResourceRenderer *);
 
@@ -108,7 +108,7 @@ void MainThreeLayerResourceRenderer_LoadBgResources(MainThreeLayerResourceRender
     *disp = (*disp & ~0x1f00u) | (planes << 8);
     *(volatile u32 *)0x04000018 = 0;
     func_02070638(set.resource0, 2, 0);
-    func_02070e0c(set.resource2, 2, 0);
+    GraphicsBgMapResource_UploadToMainBg(set.resource2, 2, 0);
     func_02070b50(set.resource1, 0);
     PaletteBuffer_Write(&gMainBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1), 0, 0xc0);
     GraphicsResourceSet_ReleaseHandles(&set);
@@ -119,9 +119,9 @@ void MainThreeLayerResourceRenderer_LoadBgResources(MainThreeLayerResourceRender
     planes = ((*disp >> 8) & 0x1f) | 2;
     *disp = (*disp & ~0x1f00u) | (planes << 8);
     *(volatile u32 *)0x04000014 = 0;
-    func_02070f80(set.resource2, 6);
+    GraphicsBgMapResource_AddPaletteBankOffset(set.resource2, 6);
     func_020b44e8();
-    func_02070e0c(set.resource2, 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(set.resource2, 1, 0);
     func_02070b50(set.resource1, 0xc0);
     PaletteBuffer_Write(&gMainBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1),
                         0xc0, 0xc0);
@@ -134,9 +134,9 @@ void MainThreeLayerResourceRenderer_LoadBgResources(MainThreeLayerResourceRender
     *disp = (*disp & ~0x1f00u) | (planes << 8);
     *(volatile u32 *)0x0400001c = 0;
     func_02070638(set.resource0, 3, 0);
-    func_02070f80(set.resource2, 15);
+    GraphicsBgMapResource_AddPaletteBankOffset(set.resource2, 15);
     func_020b44e8();
-    func_02070e0c(set.resource2, 3, 0);
+    GraphicsBgMapResource_UploadToMainBg(set.resource2, 3, 0);
     func_02070b50(set.resource1, 0x1e0);
     PaletteBuffer_Write(&gMainBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1),
                         0x1e0, 0x20);

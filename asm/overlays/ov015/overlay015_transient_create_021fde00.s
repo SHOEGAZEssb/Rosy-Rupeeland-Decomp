@@ -1,7 +1,7 @@
     .text
     .extern Heap_Alloc
     .extern data_ov015_021fec98
-    .extern func_02070e0c
+    .extern GraphicsBgMapResource_UploadToMainBg
     .extern TitleScreenResourceCollection_Get
     .extern func_020959d4
     .extern ModalState_InitResources
@@ -23,14 +23,14 @@ func_ov015_021fde00:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     b L_021fde48
 L_021fde34:
     mov r1, #0x1
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
 L_021fde48:
     ldr r1, L_021fdea4
     ldr r3, L_021fdea8

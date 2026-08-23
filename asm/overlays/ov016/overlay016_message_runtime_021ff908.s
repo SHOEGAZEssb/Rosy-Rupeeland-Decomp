@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_message_runtime.c. */
     .extern Heap_Alloc
     .extern data_ov016_022015b0
-    .extern func_02070e0c
+    .extern GraphicsBgMapResource_UploadToMainBg
     .extern TitleScreenResourceCollection_Get
     .extern func_020959d4
     .extern ModalState_InitResources
@@ -31,7 +31,7 @@ L_021ff940:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r1, L_021ff9b0
     ldr r3, L_021ff9b4
     mov r0, #0x2d0

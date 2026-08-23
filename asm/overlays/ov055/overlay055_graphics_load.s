@@ -11,7 +11,7 @@
 .extern gMainBgPaletteBuffer
 .extern gSubBgPaletteBuffer
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070f34
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern func_02071568
 .extern func_020716bc
 .extern func_020718dc
@@ -84,7 +84,7 @@ func_ov055_0220ebec:
     blt .L_0220ec78
     ldr r1, [r10, #0x14]
     mov r0, r7
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     add r1, r6, r6, lsl #0x1
     ldr r0, [r7, #0x24]
@@ -177,7 +177,7 @@ func_ov055_0220ebec:
     blt .L_0220ede0
     ldr r1, [r9, #0x14]
     mov r0, r6
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     add r1, r5, r5, lsl #0x1
     ldr r0, [r6, #0x24]

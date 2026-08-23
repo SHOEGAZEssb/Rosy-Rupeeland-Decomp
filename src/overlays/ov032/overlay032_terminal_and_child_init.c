@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/graphics_bg_map_resource.h"
 #include "tingle/heap.h"
 
 /* Overlay 32 terminal halt sequence and initialization of 0x6C-byte display children. */
@@ -7,7 +7,11 @@
 #define REG16(address) (*(volatile u16 *)(address))
 #define REG32(address) (*(volatile u32 *)(address))
 
-typedef struct GraphicsResourceSet { void *tiles; void *map; void *palette; } GraphicsResourceSet;
+typedef struct GraphicsResourceSet {
+    void *characterResource;
+    void *paletteResource;
+    GraphicsBgMapResource *bgMapResource;
+} GraphicsResourceSet;
 
 extern void *gSoundContext;
 extern void *gDebugFont;
@@ -26,7 +30,6 @@ extern void GraphicsResourceSet_Load(...);
 extern void func_02070638(...);
 extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
-extern void func_02070e0c(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void *func_020959d4(...);
 extern void ModalState_InitResources(...);
@@ -73,9 +76,11 @@ extern "C" s32 func_ov032_02200da4(void *scene)
         GraphicsResourceSet *set = (GraphicsResourceSet *)((u8 *)scene + 0xf18);
         GraphicsResourceSet_Load(set, data_020f4e18[0], 0x8030, 0x8031, 0x8032);
         func_020b44e8();
-        func_02070638(set->tiles, 2, 0);
-        func_02070b50(set->map, GraphicsResource_GetFormat(set->tiles) ? 0x6000 : 0);
-        func_02070e0c(set->palette, 2, 0);
+        func_02070638(set->characterResource, 2, 0);
+        func_02070b50(set->paletteResource,
+                      GraphicsResource_GetFormat(set->characterResource)
+                          ? 0x6000 : 0);
+        GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, 2, 0);
         GraphicsResourceSet_ReleaseHandles(set);
         REG16(0x05000000) = 0x24a3;
         void *object = Heap_Alloc(0x2d0, (const char *)data_ov032_02202348, 4,

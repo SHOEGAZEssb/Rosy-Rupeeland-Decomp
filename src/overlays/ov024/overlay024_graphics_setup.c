@@ -15,7 +15,7 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void func_02070638(void *, s32, s32);
 extern void func_02070b50(void *, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void func_02070e0c(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void func_02072048(void *, s32, s32);
 extern void func_020925a4(s32);
 extern void func_020925f8(void);
@@ -98,7 +98,7 @@ extern "C" void func_ov024_021fd2f8(void *scene)
     func_020b44e8();
     func_02070638(set[0], 3, 0x2000);
     func_02070b50(set[1], 0x1e0);
-    func_02070e0c(set[2], 3, 0);
+    GraphicsBgMapResource_UploadToMainBg(set[2], 3, 0);
     TitlePalette_SetMainBackdrop(*(u16 *)GraphicsBgResourceData_GetDecoded(set[1]));
     GraphicsResourceSet_Destroy(set);
 }

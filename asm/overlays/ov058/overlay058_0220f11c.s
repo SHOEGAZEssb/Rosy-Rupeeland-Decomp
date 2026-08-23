@@ -3,7 +3,7 @@
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
 .extern data_ov058_0220f524
-.extern func_02070f34
+.extern GraphicsBgMapResource_SetPaletteBank
 .extern func_020b44e8
 
 .global func_ov058_0220f11c
@@ -69,7 +69,7 @@ func_ov058_0220f11c:
     cmp r1, r7, asr #0x1
     blt .L_0220f1ac
     rsb r1, r6, #0xf
-    bl func_02070f34
+    bl GraphicsBgMapResource_SetPaletteBank
     bl func_020b44e8
     add r6, r6, #0x1
     cmp r6, #0x4

@@ -5,7 +5,7 @@
 .extern func_02070638
 .extern GraphicsBgResourceData_GetDecoded
 .extern func_02070b50
-.extern func_02070e0c
+.extern GraphicsBgMapResource_UploadToMainBg
 .extern func_02072048
 .extern func_020925a4
 .extern func_020925f8
@@ -364,7 +364,7 @@ L_021fd7bc:
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     ldrh r0, [r0, #0x0]

@@ -1,0 +1,8 @@
+{
+  "func_02070e0c": "GraphicsBgMapResource_UploadToMainBg",
+  "func_02070e94": "GraphicsBgMapResource_GetDataSizeBytes",
+  "func_02070eac": "GraphicsBgMapResource_UploadToSubBg",
+  "func_02070f34": "GraphicsBgMapResource_SetPaletteBank",
+  "func_02070f80": "GraphicsBgMapResource_AddPaletteBankOffset",
+  "func_02070fd4": "GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor"
+}

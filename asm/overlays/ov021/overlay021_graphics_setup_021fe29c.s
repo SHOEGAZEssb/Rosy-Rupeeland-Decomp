@@ -4,7 +4,7 @@
     .extern GraphicsResourceSet_Init
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
-    .extern func_02070e0c
+    .extern GraphicsBgMapResource_UploadToMainBg
     .extern func_02072048
     .extern func_02092638
     .extern TitleScreenResourceCollection_Init
@@ -62,7 +62,7 @@ func_ov021_021fe29c:
     bl TitleScreenResourceCollection_Get
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     mov r0, #0x0
     str r0, [r4, #0x3fc]
     mov r1, #0x13

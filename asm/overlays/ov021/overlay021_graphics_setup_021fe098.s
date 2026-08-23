@@ -6,7 +6,7 @@
     .extern data_020f4e18
     .extern func_020706c4
     .extern GraphicsBgResourceData_GetDecoded
-    .extern func_02070eac
+    .extern GraphicsBgMapResource_UploadToSubBg
     .extern Presentation_BlendPalette16
     .extern func_020b1ff0
     .extern func_020b44e8
@@ -45,7 +45,7 @@ func_ov021_021fe098:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [r4, #0x3f0]
     mov r1, #0x0
     mov r2, #0x20

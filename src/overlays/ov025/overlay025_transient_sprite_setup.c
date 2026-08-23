@@ -9,7 +9,7 @@ extern void *data_020f4e14;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02070e0c(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -25,7 +25,7 @@ extern void *TitleScreenResourceCollection_Get(void *, s32);
  */
 extern "C" void func_ov025_022002f8(void *scene)
 {
-    func_02070e0c(TitleScreenResourceCollection_Get((u8 *)scene + 0x530, 1), 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get((u8 *)scene + 0x530, 1), 1, 0);
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                   (u8 *)scene + 0x68, 2);
     FIELD(void *, scene, 0xb8) = sprite;
@@ -41,7 +41,7 @@ extern "C" void func_ov025_022002f8(void *scene)
  */
 extern "C" void func_ov025_02200398(void *scene, s32 mode, s32 animation)
 {
-    func_02070e0c(TitleScreenResourceCollection_Get((u8 *)scene + 0x530, mode), 1, 0);
+    GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get((u8 *)scene + 0x530, mode), 1, 0);
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xb0),
                                   (u8 *)scene + 0x68, 2);
     FIELD(void *, scene, 0xb8) = sprite;

@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/graphics_bg_map_resource.h"
 
 /* Overlay 32 scene teardown, scrolling, display initialization, and graphics-resource upload. */
 
@@ -7,9 +7,9 @@
 #define REG32(address) (*(volatile u32 *)(address))
 
 typedef struct GraphicsResourceSet {
-    void *tiles;
-    void *map;
-    void *palette;
+    void *characterResource;
+    void *paletteResource;
+    GraphicsBgMapResource *bgMapResource;
 } GraphicsResourceSet;
 
 extern void *gSoundContext;
@@ -52,8 +52,6 @@ extern void func_020706c4(...);
 extern s32 GraphicsResource_GetFormat(void *);
 extern void func_02070b50(...);
 extern void func_02070bc4(...);
-extern void func_02070e0c(...);
-extern void func_02070eac(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void func_020afd0c(...);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(...);
@@ -119,25 +117,35 @@ extern "C" void func_ov032_021fd938(void *scene)
     FIELD(s32, scene, 0xb78) = counter + 1;
 }
 
-static void load_text_resources(GraphicsResourceSet *set, u32 tilesId, u32 mapId,
-                                u32 paletteId, s32 layer, u32 mapBase)
+static void load_text_resources(GraphicsResourceSet *set,
+                                u32 characterResourceId,
+                                u32 paletteResourceId, u32 bgMapResourceId,
+                                s32 layer, u32 mapBase)
 {
-    GraphicsResourceSet_Load(set, data_020f4e18[0], tilesId, mapId, paletteId);
+    GraphicsResourceSet_Load(set, data_020f4e18[0], characterResourceId,
+                             paletteResourceId, bgMapResourceId);
     func_020b44e8();
-    func_02070638(set->tiles, layer, 0);
-    func_02070b50(set->map, GraphicsResource_GetFormat(set->tiles) ? mapBase : 0);
-    func_02070e0c(set->palette, layer, 0);
+    func_02070638(set->characterResource, layer, 0);
+    func_02070b50(set->paletteResource,
+                  GraphicsResource_GetFormat(set->characterResource)
+                      ? mapBase : 0);
+    GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, layer, 0);
     GraphicsResourceSet_ReleaseHandles(set);
 }
 
-static void load_affine_resources(GraphicsResourceSet *set, u32 tilesId, u32 mapId,
-                                  u32 paletteId, s32 layer, u32 mapBase)
+static void load_affine_resources(GraphicsResourceSet *set,
+                                  u32 characterResourceId,
+                                  u32 paletteResourceId, u32 bgMapResourceId,
+                                  s32 layer, u32 mapBase)
 {
-    GraphicsResourceSet_Load(set, data_020f4e18[0], tilesId, mapId, paletteId);
+    GraphicsResourceSet_Load(set, data_020f4e18[0], characterResourceId,
+                             paletteResourceId, bgMapResourceId);
     func_020b44e8();
-    func_020706c4(set->tiles, layer, 0);
-    func_02070bc4(set->map, GraphicsResource_GetFormat(set->tiles) ? mapBase : 0);
-    func_02070eac(set->palette, layer, 0);
+    func_020706c4(set->characterResource, layer, 0);
+    func_02070bc4(set->paletteResource,
+                  GraphicsResource_GetFormat(set->characterResource)
+                      ? mapBase : 0);
+    GraphicsBgMapResource_UploadToSubBg(set->bgMapResource, layer, 0);
     GraphicsResourceSet_ReleaseHandles(set);
 }
 

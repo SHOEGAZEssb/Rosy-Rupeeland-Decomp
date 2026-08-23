@@ -39,7 +39,7 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern void *OverlayManager_GetGlobal(void); extern void OverlayManager_UnloadOverlay(void *, s32);
 extern void *func_02071568(void *, u32); extern void *func_020716bc(void *, u32);
 extern void *func_020718dc(void *, u32); extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void func_02070f34(void *, s32); extern void func_02071bdc(void *, void *);
+extern void GraphicsBgMapResource_SetPaletteBank(void *, s32); extern void func_02071bdc(void *, void *);
 extern void func_02071c38(void *, void *); extern void func_02071cf0(void *, void *);
 extern void func_020b44e8(void); extern void func_020b1c64(const void *, u32, u32);
 extern void func_020b1924(const void *, u32, u32); extern void func_020b1b2c(const void *, u32, u32);
@@ -158,7 +158,7 @@ static void Overlay055_LoadBgPair(const Overlay055BgConfig *config, s32 sub)
         void *character=func_02071568(archive,data_020c38ac[e->character_index]); void *palette=func_020716bc(archive,data_020c3850[e->palette_index]);
         void *map=func_020718dc(archive,data_020c3908[e->map_index]); u16 *tiles=FIELD(u16*,map,0x24); s32 count=func_ov055_0220eee4(map)/2,t;
         for(t=0;t<count;++t)tiles[t]=(u16)((tiles[t]&0xfc00u)|((tiles[t]&0x3ffu)+(e->character_destination>>5)));
-        func_02070f34(map,(s32)e->palette_bank); func_020b44e8();
+        GraphicsBgMapResource_SetPaletteBank(map,(s32)e->palette_bank); func_020b44e8();
         if(sub){func_020b1b2c(FIELD(void*,map,0x24),(u32)(i*3)<<8,0x300); func_020b17ec(FIELD(void*,character,0x24),e->character_destination,e->character_size);
             PaletteBuffer_Write(gSubBgPaletteBuffer,GraphicsBgResourceData_GetDecoded(palette),e->palette_bank<<5,e->palette_count<<5);}
         else{func_020b1c64(FIELD(void*,map,0x24),(u32)(i*3)<<8,0x300); func_020b1924(FIELD(void*,character,0x24),e->character_destination,e->character_size);

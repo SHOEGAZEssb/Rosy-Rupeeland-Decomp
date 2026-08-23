@@ -8,9 +8,9 @@
 .extern func_02070638
 .extern func_020706c4
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070e0c
-.extern func_02070eac
-.extern func_02070f80
+.extern GraphicsBgMapResource_UploadToMainBg
+.extern GraphicsBgMapResource_UploadToSubBg
+.extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_020b44e8
 
 .global func_ov057_0220e658
@@ -47,7 +47,7 @@ func_ov057_0220e658:
     orr r0, r0, #0x3
     strh r0, [r2, #0x0]
     ldr r0, [r4, #0x10]
-    bl func_02070f80
+    bl GraphicsBgMapResource_AddPaletteBankOffset
     bl func_020b44e8
     ldr r0, [r4, #0x8]
     mov r1, #0x1
@@ -56,7 +56,7 @@ func_ov057_0220e658:
     ldr r0, [r4, #0x10]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [r4, #0xc]
     bl GraphicsBgResourceData_GetDecoded
     mov r1, r0
@@ -71,7 +71,7 @@ func_ov057_0220e658:
     ldr r0, [r4, #0x10]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070e0c
+    bl GraphicsBgMapResource_UploadToMainBg
     ldr r0, [r4, #0xc]
     bl GraphicsBgResourceData_GetDecoded
     mov r1, r0

@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern void *data_020f4e18;
-extern void func_02070f34(void *resource, s32 value);
+extern void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 value);
 extern void func_020b44e8(void);
 #ifdef __cplusplus
 }
@@ -29,7 +29,7 @@ void func_ov011_021fd3a8(void *state)
     (void)state;
     GraphicsResourceSet_Init(&set);
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xc003, 0xc004, 0xc005);
-    func_02070f34(set.resource2, 0x0f);
+    GraphicsBgMapResource_SetPaletteBank(set.resource2, 0x0f);
     func_020b44e8();
     GraphicsResourceSet_Apply(&set, 0, 0x1e0);
     GraphicsResourceSet_Destroy(&set);

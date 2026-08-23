@@ -9,8 +9,8 @@
 .extern data_ov051_0220df98
 .extern func_020706c4
 .extern func_02070bc4
-.extern func_02070eac
-.extern func_02070fd4
+.extern GraphicsBgMapResource_UploadToSubBg
+.extern GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor
 .extern func_020aea7c
 .extern func_020afd28
 .extern func_020b44e8
@@ -38,7 +38,7 @@ func_ov051_0220d878:
     add r0, sp, #0x8
     bl GraphicsResourceSet_Load
     ldr r0, [sp, #0x10]
-    bl func_02070fd4
+    bl GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor
     bl func_020b44e8
     mov r0, #0x4
     bl GX_SetBankForSubBG
@@ -66,7 +66,7 @@ func_ov051_0220d878:
     ldr r0, [sp, #0x10]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     mov r0, #0x0
     str r0, [sp, #0x0]
     str r0, [sp, #0x4]

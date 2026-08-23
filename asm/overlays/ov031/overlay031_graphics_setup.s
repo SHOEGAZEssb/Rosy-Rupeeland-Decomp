@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern func_020706c4
 .extern func_02070bc4
-.extern func_02070eac
+.extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_020925dc
 .extern func_02092618
@@ -69,7 +69,7 @@ func_ov031_021fdfa8:
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fe140
@@ -91,7 +91,7 @@ func_ov031_021fdfa8:
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_ReleaseHandles
     ldr r3, L_021fe144
@@ -110,7 +110,7 @@ func_ov031_021fdfa8:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_ReleaseHandles
     add r0, sp, #0x4

@@ -10,7 +10,7 @@
     .extern GraphicsBgResourceData_GetDecoded
     .extern func_02070888
     .extern func_020b1ff0
-    .extern func_02070eac
+    .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsResourceSet_ReleaseHandles
     .extern func_020afd28
     .extern DisplayBrightnessPair_GetScreen
@@ -81,7 +81,7 @@ func_ov007_021fbaf0: ; 0x021fbaf0
     mov r1, #0x0
     ldr r0, [sp, #0x20]
     mov r2, r1
-    bl func_02070eac
+    bl GraphicsBgMapResource_UploadToSubBg
     add r0, sp, #0x18
     bl GraphicsResourceSet_ReleaseHandles
     mov r2, #0x0

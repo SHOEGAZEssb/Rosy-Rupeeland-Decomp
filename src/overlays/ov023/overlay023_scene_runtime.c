@@ -12,10 +12,10 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02070e0c(s32, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, u32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void TitleScreenResourceCollection_Get(void *, s32);
+extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void TitleDialog_SetText(void *, const void *, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void TitleDialog_ClearTextRect(void *);
@@ -158,14 +158,14 @@ extern "C" void func_ov023_021fe994(void *scene, s32 mode)
     if (mode == 0) {
         func_02095988((u8 *)scene + 0x228, 12);
         func_02095988((u8 *)scene + 0x2d4, 16);
-        TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 0);
-        func_02070e0c(1, 0, 0);
+        GraphicsBgMapResource_UploadToMainBg(
+            TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 0), 1, 0);
         func_ov023_021fe640(scene, 0);
     } else if (mode == 1) {
         func_02095988((u8 *)scene + 0x228, 14);
         func_02095988((u8 *)scene + 0x2d4, 13);
-        TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 1);
-        func_02070e0c(1, 0, 0);
+        GraphicsBgMapResource_UploadToMainBg(
+            TitleScreenResourceCollection_Get((u8 *)scene + 0x78, 1), 1, 0);
         func_ov023_021fe640(scene, 1);
     }
 }

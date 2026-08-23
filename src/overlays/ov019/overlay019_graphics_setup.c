@@ -13,8 +13,8 @@ extern void GraphicsResourceSet_Apply(void *, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
-extern void func_02070e0c(void *, s32, s32);
-extern void func_02070eac(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void func_02072048(void *, s32, s32);
 extern void func_020925a4(s32);
 extern void func_020925dc(s32);
@@ -67,7 +67,7 @@ extern "C" void Overlay019_SetupGraphics(void *state)
         func_020925f8();
         func_02092638(0, 1, 2, 3);
         func_02072048(resources, 0, 0);
-        func_02070e0c(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
+        GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
         TitlePalette_SetMainBackdrop(0);
     } else {
         volatile u16 *background = (volatile u16 *)0x04001008;
@@ -80,7 +80,7 @@ extern "C" void Overlay019_SetupGraphics(void *state)
         func_02092618();
         func_02092688(0, 1, 2, 3);
         GraphicsResourceSet_Apply(resources, 0, 0);
-        func_02070eac(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
+        GraphicsBgMapResource_UploadToSubBg(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
         TitlePalette_SetSubBackdrop(0);
     }
     func_020926f8(manager);

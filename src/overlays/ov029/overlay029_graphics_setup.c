@@ -16,8 +16,8 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void func_02070638(void *, s32, s32);
 extern void func_020706c4(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void func_02070e0c(void *, s32, s32);
-extern void func_02070eac(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_020925a4(s32, s32);
 extern void func_020925dc(s32);
@@ -85,10 +85,10 @@ extern "C" void func_ov029_021fd578(void *state)
     FIELD(void *, state, 0xd8) = palette;
     FIELD(s32, state, 0xdc) = 0x10;
     func_02070638((void *)resources[0], 2, 0);
-    func_02070e0c((void *)resources[2], 2, 0);
+    GraphicsBgMapResource_UploadToMainBg((void *)resources[2], 2, 0);
     func_020b2058(palette, 0, 0x20);
     func_020706c4((void *)resources[0], 2, 0);
-    func_02070eac((void *)resources[2], 2, 0);
+    GraphicsBgMapResource_UploadToSubBg((void *)resources[2], 2, 0);
     func_020b1ff0(palette, 0, 0x20);
     GraphicsResourceSet_Destroy(resources);
 }
