@@ -3,8 +3,8 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 .extern func_ov087_022184b0
 .extern func_ov087_022186a8
 .extern func_ov089_02218f28
@@ -32,9 +32,9 @@ func_02018208:
     bl GamePhaseScriptVm_Pop
     mov r10, r0
     ldr r0, [r9, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r10
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r9, r0
     ldrh r1, [r9, #0x4e]
     cmp r1, #0x9

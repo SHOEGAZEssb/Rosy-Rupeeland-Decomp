@@ -3,7 +3,7 @@
 .extern OS_Halt
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_DispatchCollectionModeCommand
 GamePhaseActorScriptVm_DispatchCollectionModeCommand: ; 0x02012f64
@@ -22,7 +22,7 @@ GamePhaseActorScriptVm_DispatchCollectionModeCommand: ; 0x02012f64
     bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, [r8, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1
@@ -42,7 +42,7 @@ GamePhaseActorScriptVm_DispatchCollectionModeCommand: ; 0x02012f64
     b L_02013004
 L_02012fe8:
     ldr r0, [r8, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x2

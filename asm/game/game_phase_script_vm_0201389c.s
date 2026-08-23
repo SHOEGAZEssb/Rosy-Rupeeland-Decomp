@@ -2,9 +2,9 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern Actor_UpdateAttachmentDirectionFromVector
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38
 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38: ; 0x0201389c
@@ -13,9 +13,9 @@ GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38: ; 0x0201389c
     bl GamePhaseScriptVm_Pop
     mov r5, r0
     ldr r0, [r4, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r2, r0
     ldr r0, [r4, #0x84]
     ldr ip, [r2, #0x1c]

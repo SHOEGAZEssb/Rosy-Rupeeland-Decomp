@@ -6,7 +6,7 @@
 .extern VecFx32Object_Add
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_QueryTerrainHeight
 .extern Fx32Vector2_Magnitude
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -152,7 +152,7 @@ func_0204d858: ; 0x0204d858
     cmp r0, r1, asr #0xc
     blt .L_0204dad0
     mov r0, r6
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100
@@ -173,7 +173,7 @@ func_0204d858: ; 0x0204d858
     cmp r0, r1, asr #0xc
     blt .L_0204dad0
     mov r0, r6
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100
@@ -214,7 +214,7 @@ func_0204d858: ; 0x0204d858
     b .L_0204dce0
 .L_0204db50:
     mov r0, r6
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100
@@ -311,7 +311,7 @@ func_0204d858: ; 0x0204d858
     ldrh r1, [r2, #0x24]
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100

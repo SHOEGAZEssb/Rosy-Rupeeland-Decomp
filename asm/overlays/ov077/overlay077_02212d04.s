@@ -5,7 +5,7 @@
 .extern data_ov077_022174c8
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseMetadata_GetByIndex
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern ActorExtendedType2_InitializePresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern func_020b57d4
@@ -40,13 +40,13 @@ func_ov077_02212d04:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldr r1, .L_02212e40
     mov r7, r0
     ldr r0, [r1, #0x0]
     mov r1, #0x2
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     mov r2, r0
     add r0, r6, #0x18
     str r0, [sp, #0x0]

@@ -17,8 +17,8 @@ extern "C" {
 extern u8 data_ov090_0221cb10[];
 extern u8 data_020f4e14[];
 extern void *gDebugFont;
-extern void *Actor_GetCollection(void *actor);
-extern GraphicsSpriteGroup *ActorCollection_GetSpriteOwner(void *collection);
+extern void *Actor_GetOwningCollection(void *actor);
+extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 extern void *func_0204d570(void *self);
 #ifdef __cplusplus
 }
@@ -35,7 +35,7 @@ extern "C" void *func_ov090_02217b70(void *self)
 
     FIELD(void *, self, 0) = data_ov090_0221cb10;
     GraphicsSpriteGroup_ReleaseIndexedEntries(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(self)));
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(self)));
     if (FIELD(GraphicsSpriteState *, self, 0x200) != 0)
         GraphicsSpriteState_ReleaseFromGroup(FIELD(GraphicsSpriteState *, self, 0x200));
     if (FIELD(GraphicsSpriteState *, self, 0x23c) != 0)
@@ -73,7 +73,7 @@ extern "C" void *func_ov090_02217c6c(void *self)
 
     FIELD(void *, self, 0) = data_ov090_0221cb10;
     GraphicsSpriteGroup_ReleaseIndexedEntries(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(self)));
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(self)));
     if (FIELD(GraphicsSpriteState *, self, 0x200) != 0)
         GraphicsSpriteState_ReleaseFromGroup(FIELD(GraphicsSpriteState *, self, 0x200));
     if (FIELD(GraphicsSpriteState *, self, 0x23c) != 0)

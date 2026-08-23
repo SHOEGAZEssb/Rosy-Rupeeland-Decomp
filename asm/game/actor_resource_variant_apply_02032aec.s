@@ -7,7 +7,7 @@
 .extern GamePhaseActorScriptVm_Destroy
 .extern GamePhaseActorScriptVm_Activate
 .extern Actor_SavePrimaryAttachmentState
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern gGameWork
 
     .global Actor_SelectScriptVariant
@@ -33,7 +33,7 @@ Actor_SelectScriptVariant: ; 0x02032aec
     bl ActorRuntimeCollection_AttachObject
 .L_02032b30:
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1

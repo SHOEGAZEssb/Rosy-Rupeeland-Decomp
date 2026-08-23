@@ -3,8 +3,8 @@
 .extern GamePhaseActorScriptVm_IsActive
 .extern GamePhaseScriptVm_Execute
 .extern ActorRuntimeCollection_TryCompleteAttachment
-.extern Actor_GetCollectionBySlot
-.extern Actor_GetCollection
+.extern Actor_GetGlobalCollectionBySlot
+.extern Actor_GetOwningCollection
 .extern ActorCollection_EndTrackedPair
 .extern ActorRuntimeCollection_GetPrimaryContainer
 .extern GamePhaseActorScriptVm_Assign
@@ -40,10 +40,10 @@ func_0204d308: ; 0x0204d308
     beq .L_0204d390
     mov r0, r4
     mov r1, #0x1
-    bl Actor_GetCollectionBySlot
+    bl Actor_GetGlobalCollectionBySlot
     mov r5, r0
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r1, r5, #0x2000
     ldr r1, [r1, #0xe7c]
     mov r2, r4
@@ -63,7 +63,7 @@ func_0204d308: ; 0x0204d308
     tst r0, #0x20
     ldmeqia sp!, {r3, r4, r5, pc}
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     ldmia sp!, {r3, r4, r5, pc}

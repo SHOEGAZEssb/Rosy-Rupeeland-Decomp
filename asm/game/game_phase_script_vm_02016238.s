@@ -24,8 +24,8 @@
 .extern func_0201cfd0
 .extern PresentationList_AppendObject
 .extern func_020200bc
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 .extern func_0206ec68
 .extern RuntimeRecordTable_FindByKey
 .extern Overlay032Scene_Init
@@ -355,9 +355,9 @@ L_02016688:
     b L_020167a8
 L_02016690:
     ldr r0, [r5, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     cmp r0, #0
     ldrne r0, [r0, #0x54]
     cmpne r0, #0

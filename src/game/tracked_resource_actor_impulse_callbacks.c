@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 #ifdef __cplusplus
 }
@@ -15,14 +15,14 @@ extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
 /*
- * Input is an impulse actor. Obtains its recovered handle through Actor_GetCollection,
+ * Input is an impulse actor. Obtains its recovered handle through Actor_GetOwningCollection,
  * notifies ActorCollection_QueueActorForRemoval with the handle and actor, then invokes the recovered
  * effect helper TrackedResourceActor_EmitRecordEffects. Returns nothing; engine resources and effects
  * may change, but hardware is not accessed directly.
  */
 void TrackedResourceActorImpulse_QueueRemovalAndEmitEffects(void *actor)
 {
-    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
     TrackedResourceActor_EmitRecordEffects(actor);
 }
 

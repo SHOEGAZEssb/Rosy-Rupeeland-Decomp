@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void ActorMotionJitter_EnsureMinimum(void *manager_field, s32 event, s32 argument);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 extern void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, ...);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ extern void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *acto
  */
 void TrackedResourceActorType27_Complete(void *actor)
 {
-    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
     TrackedResourceActor_EmitRecordEffects(actor);
     if ((FIELD(u32, actor, 0x10) & 4) != 0)
         ActorMotionJitter_EnsureMinimum((u8 *)data_021052fc + 0x2fbc, 0x14, 3);

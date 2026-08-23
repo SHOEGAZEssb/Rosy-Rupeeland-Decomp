@@ -8,8 +8,8 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern u8 gActorRuntimeCollection[];
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
@@ -61,8 +61,8 @@ s32 GamePhaseActorScriptVm_DispatchIndexedActorValueCommand(GamePhaseActorScript
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *collection = Actor_GetCollection(self->actor);
-    void *target = ActorCollection_FindActorByDescriptorValue(collection, index);
+    void *collection = Actor_GetOwningCollection(self->actor);
+    void *target = ActorCollection_FindActorByRuntimeId(collection, index);
 
     if (*((u8 *)target + 0x4d) == 1) {
         u8 *runtimeCollection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);

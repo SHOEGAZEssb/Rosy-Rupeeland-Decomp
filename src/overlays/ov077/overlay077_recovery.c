@@ -33,9 +33,9 @@ extern "C" s16 ActorExtendedType2_GetDescriptorValue2A(void *);
 extern "C" s16 ActorExtendedType2_GetDescriptorValue2C(void *);
 extern "C" void *ActorExtendedType2Record_FindByIndex(s32);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_FindActorByDescriptorValue(void *, s32);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_FindActorByRuntimeId(void *, s32);
 extern "C" void *GamePhaseMetadata_GetByIndex(s32);
 extern "C" void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern "C" void VecFx32Object_InitCopy(void *, const void *);
@@ -193,9 +193,9 @@ extern "C" void func_ov077_02212d04(void *actor)
     void *resource = Heap_Alloc(0x48, data_ov077_022174c8, 4, gHeapContext);
     if (resource != 0)
     {
-        void *owner1 = ActorCollection_GetSpriteOwner(
+        void *owner1 = ActorCollection_GetSpriteGroup(
             GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
-        void *owner2 = ActorCollection_GetSpriteOwner(
+        void *owner2 = ActorCollection_GetSpriteGroup(
             GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
         resource = func_ov090_0221bc84(resource, owner1, owner2,
                                        F(void *, actor, 0x210), P(actor, 0x18),
@@ -314,9 +314,9 @@ extern "C" void func_ov077_022130b8(void *out, const void *from, const void *to)
 /* Finds and stores the actor selected by the inherited collection helper. */
 extern "C" void func_ov077_022130f0(void *actor, s32 selector)
 {
-    void *collection = Actor_GetCollection(actor);
+    void *collection = Actor_GetOwningCollection(actor);
     F(void *, actor, 0x29c) =
-        ActorCollection_FindActorByDescriptorValue(collection, selector);
+        ActorCollection_FindActorByRuntimeId(collection, selector);
 }
 
 /* Constructs the full overlay-77 actor and initializes its mode fields. */
@@ -410,9 +410,9 @@ extern "C" void func_ov077_02213490(void *actor)
     void *body = Heap_Alloc(0x20, data_ov077_022174c8, 4, gHeapContext);
     if (body != 0)
     {
-        void *owner1 = ActorCollection_GetSpriteOwner(
+        void *owner1 = ActorCollection_GetSpriteGroup(
             GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
-        void *owner2 = ActorCollection_GetSpriteOwner(
+        void *owner2 = ActorCollection_GetSpriteGroup(
             GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
         body = UtilAnimationResource_Init(
             body, owner1, owner2, 2, F(s32, F(void *, actor, 0x20c), 4),
@@ -438,9 +438,9 @@ extern "C" void func_ov077_02213490(void *actor)
                 Heap_Alloc(0x14, data_ov077_022174d0, 4, gHeapContext);
             if (effect != 0)
             {
-                void *owner1 = ActorCollection_GetSpriteOwner(
+                void *owner1 = ActorCollection_GetSpriteGroup(
                     GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
-                void *owner2 = ActorCollection_GetSpriteOwner(
+                void *owner2 = ActorCollection_GetSpriteGroup(
                     GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
                 effect = func_ov090_0221c468(effect, owner1, owner2, animation,
                                              0, 0, -1);

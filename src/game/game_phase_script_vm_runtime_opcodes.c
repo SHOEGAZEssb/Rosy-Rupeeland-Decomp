@@ -8,7 +8,7 @@ extern "C" {
 extern void *data_021052fc;
 extern void OS_Halt(void);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern u32 ActorMotion_ConfigureGridTarget(void *collection, u32 a, u32 b, u32 c, u32 d);
 extern u32 ActorMotion_ConfigureBoundActorTarget(void *collection, u32 a, u32 b);
 extern void ActorMotion_SetMode2(void *collection);
@@ -53,7 +53,7 @@ s32 func_02012814(GamePhaseScriptVm *self)
         break;
     case 5: {
         void *collection = GamePhaseRuntime_GetActorCollection(runtime, 1);
-        void *object = ActorCollection_FindActorByDescriptorValue(collection, a);
+        void *object = ActorCollection_FindActorByRuntimeId(collection, a);
         ActorMotionAreaFollower_BindActor(runtime + 0x2fbc, object);
         break;
     }

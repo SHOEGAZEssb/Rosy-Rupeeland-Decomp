@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern const char data_020d5b2c[];
 extern u8 data_021f3ecc[];
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
 extern void *DisplayRouting_MatchesRequest(u32 value);
 extern void func_0201da34(GamePhaseActorScriptVm *self);
@@ -34,7 +34,7 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 secondValue = GamePhaseScriptVm_Pop(&self->base);
     u32 firstValue = GamePhaseScriptVm_Pop(&self->base);
-    u8 *collection = (u8 *)Actor_GetCollection(self->actor);
+    u8 *collection = (u8 *)Actor_GetOwningCollection(self->actor);
     void *second = func_0201da20(*(u32 *)(collection + 0x2e84), firstValue);
     void *first = DisplayRouting_MatchesRequest(secondValue);
     void *allocation;

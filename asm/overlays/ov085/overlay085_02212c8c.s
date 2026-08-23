@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov085/overlay085_recovery.c.
 .extern data_020f4e18
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateState
 
@@ -19,8 +19,8 @@ func_ov085_02212c8c:
     ldmib r4, {r2, r3}
     bl func_02071ee0
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldrb r1, [r4, #0x10]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x1f0]

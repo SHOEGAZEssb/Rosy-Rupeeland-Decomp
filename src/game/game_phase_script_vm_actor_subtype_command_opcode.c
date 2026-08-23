@@ -10,8 +10,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
-extern void *Actor_GetCollection(void *actor);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void func_ov087_022184b0(void *object, s32 value);
 extern void func_ov087_022186a8(void *object, const VecFx32Object *position,
                                s32 value);
@@ -59,7 +59,7 @@ s32 func_02018208(GamePhaseActorScriptVm *self)
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 targetIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *object = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor),
+    u8 *object = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor),
                                      targetIndex);
     u16 subtype = *(u16 *)(object + 0x4e);
 

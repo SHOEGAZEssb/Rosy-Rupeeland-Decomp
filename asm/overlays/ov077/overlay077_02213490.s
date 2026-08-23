@@ -11,7 +11,7 @@
 .extern UtilAnimationResource_Init
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseMetadata_GetByIndex
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern func_ov077_02212d04
 .extern func_ov077_02213768
 .extern func_ov090_0221c3dc
@@ -52,13 +52,13 @@ func_ov077_02213490:
     ldr r7, [r2, #0x8]
     ldr r8, [r2, #0x4]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldr r1, .L_0221374c
     mov r4, r0
     ldr r0, [r1, #0x0]
     mov r1, #0x2
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     mov r11, r0
     bl DisplayController_GetVerticalOffset
     mov r1, #0x2
@@ -113,12 +113,12 @@ func_ov077_02213490:
     ldr r0, [r4, #0x0]
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     mov r6, r0
     ldr r0, [r4, #0x0]
     mov r1, #0x2
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     str r11, [sp, #0x0]
     str r11, [sp, #0x4]
     str r5, [sp, #0x8]

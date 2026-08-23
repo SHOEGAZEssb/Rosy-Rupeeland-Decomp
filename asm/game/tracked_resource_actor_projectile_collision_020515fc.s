@@ -5,7 +5,7 @@
 .extern VecFx32Object_Assign
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_020ada8c
@@ -70,7 +70,7 @@ TrackedResourceActorType24_HandleCollision:
     ldr r1, [r5, #0x14]
     bic r1, r1, #0x800000
     str r1, [r5, #0x14]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     mov r0, r5

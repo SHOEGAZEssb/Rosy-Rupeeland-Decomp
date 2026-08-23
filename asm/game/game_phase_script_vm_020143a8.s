@@ -36,9 +36,9 @@
 .extern func_02028630
 .extern func_02028814
 .extern func_0202906c
-.extern ActorCollection_GetSpriteOwner
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 .extern func_020a2310
 .extern func_020a245c
 .extern func_020a2480
@@ -289,8 +289,8 @@ L_020146bc:
     movs r4, r0
     beq L_02014718
     mov r0, r10
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     str r8, [sp, #0x0]
     str r7, [sp, #0x4]
     str r6, [sp, #0x8]
@@ -481,8 +481,8 @@ L_0201493c:
     movs r5, r0
     beq L_020149c0
     mov r0, r10
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r3, r6, lsl #0x10
     mov r4, #0x1
     mov r2, r0
@@ -619,8 +619,8 @@ L_02014b2c:
     movs r4, r0
     beq L_02014bc4
     mov r0, r10
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r5, r0
     bl genrand_int32
     mov r1, #0x3
@@ -764,8 +764,8 @@ L_02014d38:
     movs r4, r0
     beq L_02014dd0
     mov r0, r10
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r5, r0
     bl genrand_int32
     mov r1, #0x3
@@ -1056,7 +1056,7 @@ L_02015144:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r8
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r1, r4
     add r0, r0, #0x18
     str r0, [r5, #0x8]
@@ -1076,7 +1076,7 @@ L_020151e4:
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r7
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     add r0, r0, #0x18
     str r0, [r4, #0x8]
     b L_0201553c
@@ -1185,7 +1185,7 @@ L_02015398:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r5
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r5, r0
     bl OverlayManager_GetGlobal
     ldr r2, L_020154f8

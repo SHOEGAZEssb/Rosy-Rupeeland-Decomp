@@ -11,7 +11,7 @@ extern s32 GamePhaseActorScriptVm_IsActive(void *state);
 extern void GamePhaseScriptVm_Execute(void *state, s32 value);
 extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *effectState, void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void ActorCollection_EndTrackedPair(void *collection, void *reference, void *actor);
 extern void *ActorRuntimeCollection_GetPrimaryContainer(void *effectState, s32 index);
 extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
@@ -54,7 +54,7 @@ s32 Actor_UpdateTimedResourceState(void *self)
         }
         if (actor[0xe8] != 2) {
             slotOne = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
-            collection = Actor_GetCollection(actor);
+            collection = Actor_GetOwningCollection(actor);
             ActorCollection_EndTrackedPair(collection,
                           *(void **)((u8 *)slotOne + 0x2e7c), actor);
         }
@@ -68,7 +68,7 @@ s32 Actor_UpdateTimedResourceState(void *self)
     }
 
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0) {
-        ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+        ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
         return 0;
     }
     return 1;

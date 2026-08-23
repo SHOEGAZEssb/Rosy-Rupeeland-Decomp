@@ -55,8 +55,8 @@ extern void *GraphicsSpriteGroup_CreateState(void *group, void *resource0,
                                              u8 attach);
 extern void GraphicsSpriteState_SetAnimationIndex(void *state, s32 index);
 extern u32 genrand_int32(void);
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_GetSpriteOwner(void *collection);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern void OS_Halt(void);
 extern void Actor_RequestAttachmentActivation(void *actor, s32 enabled);
@@ -437,7 +437,7 @@ void ActorKind8_CreatePrimaryPresentation(void *self)
 
     func_02071ee0(actor + 0x1f0, data_020f4e18,
                   lastResource - 2, lastResource - 1, lastResource);
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     sprite = GraphicsSpriteGroup_CreateState(
         owner, *(void **)(actor + 0x1f0), *(void **)(actor + 0x1f4),
         *(void **)(actor + 0x1f8), 2);

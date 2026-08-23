@@ -16,9 +16,9 @@ extern void *data_ov054_0220f160;
 extern void OS_Halt(void);
 extern void *ActorMotionAreaFollower_GetPosition(...);
 extern void *GamePhaseRuntime_GetActorCollection(...);
-extern void *ActorCollection_FindActorByDescriptorValue(...);
-extern void *Actor_GetCollection(...);
-extern void *ActorCollection_GetSpriteOwner(...);
+extern void *ActorCollection_FindActorByRuntimeId(...);
+extern void *Actor_GetOwningCollection(...);
+extern void *ActorCollection_GetSpriteGroup(...);
 extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
 extern void *TimedSpriteBurstManager_Init(...);
 extern void *func_02022cb0(...);
@@ -180,7 +180,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         object = Heap_Alloc(0x14, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             AuxiliaryTimedSpritePresentation_Init(object, &position,
-                          ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), a1,
+                          ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)), a1,
                           a2, a3, a4, a5, -1, 1);
         VecFx32Object_Destroy(&position);
         break;
@@ -211,7 +211,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         object = Heap_Alloc(0x38, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = func_02025300(
-                object, &vector, ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+                object, &vector, ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
                 (s16)a4, 1, 0);
         addScriptObject(object);
         VecFx32Object_Destroy(&vector);
@@ -232,7 +232,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         if (object != 0) {
             s16 variant = (s16)(func_020bf1f8(genrand_int32(), 3) + 0x28);
             object = func_02023434(
-                object, ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+                object, ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
                 &firstVector, &secondVector, variant, selector == 10);
         }
         addScriptObject(object);
@@ -302,12 +302,12 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                 (u8 *)*(void **)((u8 *)data_021052fc + 0x2ea4) + 0x18,
                 getScriptEffectContext());
             node = (u8 *)func_0201df5c(getScriptObjectManager(), handle);
-            target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a2);
+            target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a2);
             *(void **)(node + 8) = (u8 *)target + 0x18;
             GamePhaseScriptVm_SetResult(&self->base, (u32)handle);
         } else if (a1 == 2) {
             u8 *node = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
-            void *target = ActorCollection_FindActorByDescriptorValue(
+            void *target = ActorCollection_FindActorByRuntimeId(
                 GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a3);
             *(void **)(node + 8) = (u8 *)target + 0x18;
         }
@@ -354,7 +354,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                           *(u32 *)(actor + 0x114)));
         break;
     case 31: {
-        void *target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a5);
+        void *target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a5);
         void *object;
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x49);
         object = Heap_Alloc(0x1c, data_020d5b34, 4, &gHeapContext);

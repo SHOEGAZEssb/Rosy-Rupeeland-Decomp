@@ -25,8 +25,8 @@ typedef struct S16BoundsCenter {
 extern "C" {
 #endif
 extern const void *data_020d5b10;
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
-extern void *Actor_GetCollection(void *actor);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void Actor_BuildWorldInteractionBounds(void *destination, void *actor,
                                               void *actorField18);
 extern void Actor_SetInteractionBounds(void *actor, const ActorBounds *bounds);
@@ -114,8 +114,8 @@ s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *se
         u32 secondState[4];
         u32 result[4];
         u32 scratch[7];
-        u8 *firstActor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(actor), first);
-        u8 *secondActor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(actor), second);
+        u8 *firstActor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(actor), first);
+        u8 *secondActor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(actor), second);
         Actor_BuildWorldInteractionBounds(secondState, secondActor,
                                           secondActor + 0x18);
         Actor_BuildWorldInteractionBounds(firstState, firstActor,

@@ -34,8 +34,8 @@ extern void *Heap_Alloc(u32 size, const char *source, u32 line,
                         void *heapContext);
 extern void Heap_Free(void *allocation);
 extern void *AnimationResource_Init(void *storage, u32 first, u32 second, u32 third);
-extern void Actor_GetCollection(void *owner);
-extern void *ActorCollection_GetSpriteOwner(void);
+extern void Actor_GetOwningCollection(void *owner);
+extern void *ActorCollection_GetSpriteGroup(void);
 extern void *GraphicsSpriteGroup_CreateState(void *context, u32 first, u32 second, u32 third,
                            u32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
@@ -66,9 +66,9 @@ Type7AuxiliaryPresentation *Type7AuxiliaryPresentation_Init(
     if (resource != 0)
         resource = (u32 *)AnimationResource_Init(resource, 0x1157, 0x1158, 0x1159);
     self->resource = resource;
-    Actor_GetCollection(owner);
+    Actor_GetOwningCollection(owner);
     self->presentation = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(), resource[1], resource[2], resource[3], 2);
+        ActorCollection_GetSpriteGroup(), resource[1], resource[2], resource[3], 2);
     GraphicsSpriteState_SetAnimationIndex(self->presentation, 0);
     *(u16 *)((u8 *)self->presentation + 0x2c) = 0;
     *(u16 *)((u8 *)self->presentation + 0x2e) = 0;

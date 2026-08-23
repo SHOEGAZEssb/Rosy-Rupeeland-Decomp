@@ -7,8 +7,8 @@ extern u8 data_020e1720[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_GetSpriteOwner(void *value);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void *value);
 extern void GraphicsSpriteGroup_ReplaceStateResources(void *context, void *resource, void *first,
                           void *second, void *third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *resource, u32 animation);
@@ -18,7 +18,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *resource, u32 animation)
 
 /*
  * Refresh actor resource +0x54 through GraphicsSpriteGroup_ReplaceStateResources using the transformed
- * Actor_GetCollection context and actor fields +0x1f0/+0x1f4/+0x1f8. Select animation
+ * Actor_GetOwningCollection context and actor fields +0x1f0/+0x1f4/+0x1f8. Select animation
  * from signed state +0xd6: states 1,2,3,6,7,11 use actor byte +0xd4 plus eight;
  * 4,5,17 use 0x21; 12 uses 0x12; 13 uses 0x11; 15 uses 0x10; state 16 ensures
  * 0x24; and state 18 ensures 0x1a. The ordinary/default path ensures animation
@@ -34,7 +34,7 @@ void Type7Actor_UpdateAnimationState(void *self)
 {
     u8 *actor = (u8 *)self;
     u8 *resource = *(u8 **)(actor + 0x54);
-    void *context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    void *context = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     s32 state;
     u16 scale = 0x100;
     u32 animation;

@@ -4,8 +4,8 @@
 .extern data_021052fc
 .extern data_ov097_0221a4c8
 .extern func_0201e0ec
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 .extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_InitializeReentryState
 .extern ActorExtendedType2_GetDescriptorValue25
@@ -140,7 +140,7 @@ func_ov097_02217d44:
     cmp r0, #0x0
     beq .L_02217f84
     mov r0, r7
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r10, r0
     ldr r0, [r8, #0x0]
     mov r1, r11
@@ -148,7 +148,7 @@ func_ov097_02217d44:
     bl func_ov097_02217fd8
     mov r1, r0
     mov r0, r10
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r10, r0
     bl func_ov097_02217fec
     cmp r0, #0x0

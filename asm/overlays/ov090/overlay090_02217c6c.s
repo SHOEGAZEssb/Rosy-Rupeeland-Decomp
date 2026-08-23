@@ -5,8 +5,8 @@
 .extern data_020f4e14
 .extern data_ov090_0221cb10
 .extern VecFx32Object_Destroy
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_0204d570
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
@@ -19,8 +19,8 @@ func_ov090_02217c6c:
     ldr r1, .L_02217d64
     mov r4, r0
     str r1, [r4, #0x0]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     ldr r0, [r4, #0x200]
     cmp r0, #0x0

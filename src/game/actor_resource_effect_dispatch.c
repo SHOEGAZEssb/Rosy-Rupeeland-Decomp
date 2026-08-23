@@ -8,7 +8,7 @@ extern u8 gActorRuntimeCollection[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(void *);
+extern void *Actor_GetOwningCollection(void *);
 extern void ActorRuntimeCollection_CopyPrimaryContainerState(void *, const void *);
 #ifdef __cplusplus
 }
@@ -30,7 +30,7 @@ void Actor_AssignPrimaryScriptToCollection(void *self, const s8 *script)
     void *gameData;
 
     *(const s8 **)(actor + 0x180) = script;
-    collection = Actor_GetCollection(actor);
+    collection = Actor_GetOwningCollection(actor);
     gameData = (u8 *)gGameWork +
                (*(s32 *)((u8 *)collection + 0x2e84) == 1 ? 0x3cc : 0x5cc);
     GamePhaseActorScriptVm_InitWithScript(

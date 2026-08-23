@@ -10,8 +10,8 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern s32 data_020e1964;
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
-extern void *Actor_GetCollection(void *actor);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
+extern void *Actor_GetOwningCollection(void *actor);
 extern s32 Type7Actor_GetStateCode(void *entity);
 extern u8 *Type7Actor_FindSpawnRecord(s32 index);
 extern s32 Type7Actor_SelectRandomEligibleRecordId(s32 mode, s32 index);
@@ -85,7 +85,7 @@ s32 GamePhaseActorScriptVm_DispatchType7ActorQuery(GamePhaseActorScriptVm *self)
         result = *(s32 *)(Type7Actor_FindSpawnRecord(index) + 0x64);
         break;
     case 15: {
-        u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
+        u8 *actor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), index);
         result = *(s32 *)(actor + 0x1fc);
         break;
     }

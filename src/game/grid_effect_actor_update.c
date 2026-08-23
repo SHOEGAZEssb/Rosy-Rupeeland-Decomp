@@ -19,7 +19,7 @@ extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Add(void *destination, const void *source);
 extern void GraphicsSpriteState_SetScreenPositionCulled(void *presentation, s32 x, s32 y, s32 mode);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 GridEffectActor_CanBeginDeparture(void *actor);
@@ -54,7 +54,7 @@ static void GridEffectActor_SetState(void *actor, u16 state)
 
 static void GridEffectActor_Finish(void *actor)
 {
-    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
     FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
     GridEffectActor_SetState(actor, 3);
 }

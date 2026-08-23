@@ -10,8 +10,8 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern const char data_020d5b2c[];
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void func_ov062_0220fe78(void *allocation, const VecFx32Object *position,
                                u32 first, u32 second, u32 zero,
                                void *runtimeObject, u32 one);
@@ -60,8 +60,8 @@ s32 GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect(GamePhaseActorScriptV
                                     0, runtimeObject, 1);
             }
         } else {
-            u8 *target = (u8 *)ActorCollection_FindActorByDescriptorValue(
-                Actor_GetCollection(boundActor), selector);
+            u8 *target = (u8 *)ActorCollection_FindActorByRuntimeId(
+                Actor_GetOwningCollection(boundActor), selector);
             void *allocation = Heap_Alloc(0x40, data_020d5b2c, 4,
                                           &gHeapContext);
             if (allocation != 0)

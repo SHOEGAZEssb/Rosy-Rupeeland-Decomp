@@ -22,7 +22,7 @@ extern void ActorDerivedRuntime_UpdateFrame(...), ActorDerivedRuntime_HandlePair
 extern void Actor_UpdateAnimationState(...), Actor_SnapshotTransientState(...);
 extern void ActorContactState_AddContact(...), Actor_SetDirectionFromVector(...);
 extern void ActorDerivedType1_ResetToBaseState(...);
-extern void *Actor_GetCollection(...), *GraphicsSpriteGroup_CreateState(...);
+extern void *Actor_GetOwningCollection(...), *GraphicsSpriteGroup_CreateState(...);
 extern void GraphicsSpriteGroup_ReplaceStateResources(...);
 extern void GraphicsSpriteState_SetAnimationIndex(...);
 extern void func_02071ee0(...);
@@ -106,7 +106,7 @@ void func_ov087_02217934(void *actor, const void *descriptor) {
   func_02071ee0((u8 *)actor + 0x1f0, data_020f4e18,
                 F(s32, descriptor, 4), F(s32, descriptor, 8),
                 F(s32, descriptor, 0xc));
-  collection = Actor_GetCollection(actor);
+  collection = Actor_GetOwningCollection(actor);
   F(void *, actor, 0x54) = GraphicsSpriteGroup_CreateState(
       collection, F(void *, actor, 0x1f0), F(void *, actor, 0x1f4),
       F(void *, actor, 0x1f8), F(u8, descriptor, 0x10));

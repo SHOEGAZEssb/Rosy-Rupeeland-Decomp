@@ -4,8 +4,8 @@
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_FindSpawnRecord
 .extern Type7Actor_SelectRandomEligibleRecordId
@@ -148,9 +148,9 @@ L_020190c8:
     b L_020190ec
 L_020190d8:
     ldr r0, [r4, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     ldr r1, [r0, #0x1fc]
 L_020190ec:
     mov r0, r4

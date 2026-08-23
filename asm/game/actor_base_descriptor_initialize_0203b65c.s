@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_base_descriptor_initialize.c.
 .text
 .extern data_020f4e18
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern Actor_CreateSecondaryRenderAttachment
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_ApplySpawnDescriptorScript
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -36,8 +36,8 @@ Actor_InitializeFromDescriptor: ; 0x0203b65c
     add r0, r5, #0x1f0
     bl func_02071ee0
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldrb r1, [r4, #0x10]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x1f0]

@@ -18,7 +18,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void MIi_CpuCopy16(const void *, void *, u32);
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
-extern void *ActorCollection_FindActorByDescriptorValue(void *, void *);
+extern void *ActorCollection_FindActorByRuntimeId(void *, s32);
 extern u32 LanguageLookup_GetResourceSize(void *, u16);
 extern void *func_020791e0(void *, u16);
 extern void *TitleDialog_Init(void *, void *, void *);
@@ -59,7 +59,7 @@ extern "C" void func_ov018_021fd90c(void *state)
     FIELD(s32, dialog, 0xbc) = -2;
     handle = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     FIELD(void *, state, 0x18c) =
-        ActorCollection_FindActorByDescriptorValue(handle, FIELD(void *, gGameWork, 0x3f4));
+        ActorCollection_FindActorByRuntimeId(handle, FIELD(s32, gGameWork, 0x3f4));
 }
 
 /*

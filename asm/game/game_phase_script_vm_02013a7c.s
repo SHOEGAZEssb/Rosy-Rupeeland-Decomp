@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_interaction_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern Actor_SetRuntimeProperty
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_SetIndexedActorProperty
 GamePhaseActorScriptVm_SetIndexedActorProperty: ; 0x02013a7c
@@ -18,9 +18,9 @@ GamePhaseActorScriptVm_SetIndexedActorProperty: ; 0x02013a7c
     bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, [r7, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r1, r5
     mov r2, r6
     bl Actor_SetRuntimeProperty

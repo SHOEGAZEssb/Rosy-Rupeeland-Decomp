@@ -15,8 +15,8 @@ extern "C" void func_0204d520(void *);
 extern "C" void func_0204d570(void *);
 extern "C" void func_0204d3d8(void *);
 extern "C" void func_0204d308(void *);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
 extern "C" void *AnimationResource_Init(void *, s32, s32, s32);
@@ -158,7 +158,7 @@ extern "C" void func_ov093_02217908(void *actor)
     func_0204d3d8(actor);
     resource = allocate_animation(0x23a8, 0x23a9, 0x23aa);
     FIELD(void *, actor, 0x200) = resource;
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     FIELD(void *, actor, 0x204) = GraphicsSpriteGroup_CreateState(
         owner, FIELD(void *, resource, 4), FIELD(void *, resource, 8),
         FIELD(void *, resource, 0xc), 1);
@@ -166,11 +166,11 @@ extern "C" void func_ov093_02217908(void *actor)
 
     resource = allocate_animation(0x10a6, 0x10a7, 0x10a8);
     FIELD(void *, actor, 0x20c) = resource;
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     FIELD(void *, actor, 0x210) = GraphicsSpriteState_Create(owner, resource, 1, 0, 0, 6, 0);
 
     resource = FIELD(void *, actor, 0x200);
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     FIELD(void *, actor, 0x208) = GraphicsSpriteGroup_CreateState(
         owner, FIELD(void *, resource, 4), FIELD(void *, resource, 8),
         FIELD(void *, resource, 0xc), 1);
@@ -181,7 +181,7 @@ extern "C" void func_ov093_02217908(void *actor)
     }
     for (i = 0; i < 5; ++i) {
         const u8 *record = data_ov093_022187f0 + i * 0x14;
-        owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+        owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
         FIELD(void *, actor, 0x214 + i * 4) = GraphicsSpriteGroup_CreateState(
             owner, FIELD(void *, resource, 4), FIELD(void *, resource, 8),
             FIELD(void *, resource, 0xc), 1);
@@ -311,7 +311,7 @@ extern "C" void func_ov093_02217c50(void *actor)
                 if (auxiliary != 0) {
                     AuxiliaryTimedSpritePresentation_Init(
                         auxiliary, vector,
-                        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+                        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
                         0x163c, 0x163d, 0x163e, 0, 0, 0, 1);
                 }
                 Sound_Play(gSoundContext, 0x12d, 7);

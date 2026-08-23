@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 
@@ -17,8 +17,8 @@ func_ov078_02213280:
     b .L_0221334c
 .L_022132a0:
     ldr r5, [r4, #0x208]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
@@ -40,8 +40,8 @@ func_ov078_02213280:
     b .L_0221334c
 .L_022132f8:
     ldr r5, [r4, #0x208]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r5, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]

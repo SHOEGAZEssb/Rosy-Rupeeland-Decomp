@@ -5,7 +5,7 @@
 .extern data_ov095_0221cbf8
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Fx32Vector2_Magnitude
 
 .global func_ov095_0221af0c
@@ -84,7 +84,7 @@ func_ov095_0221af0c:
     cmp r0, r7, lsl #0xc
     bge .L_0221b030
     mov r0, r10
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
 .L_0221b030:

@@ -2,8 +2,8 @@
 .text
 .extern data_020e16b0
 .extern data_020e1720
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .global Type7Actor_UpdateAnimationState
@@ -11,8 +11,8 @@
 Type7Actor_UpdateAnimationState: ; 0x02046208
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r5, #0x1f8]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]

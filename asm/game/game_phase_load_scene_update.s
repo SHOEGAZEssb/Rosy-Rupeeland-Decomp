@@ -44,7 +44,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseAreaScene_SetEnabled
 .extern func_0201e0f4
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern GridEffectActorRegistry_FinalizeDepartingActors
 .extern Sound_SetModalEnvelopeEnabled
 .extern InventoryScene_Init
@@ -224,7 +224,7 @@ L_0200d23c:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     bl GraphicsSpriteGroup_ReleaseResources
     ldr r0, L_0200e0f0
     mov r1, #0x0
@@ -902,7 +902,7 @@ L_0200dbf4:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     bl GraphicsSpriteGroup_AdvanceAnimations
     b L_0200e3bc
 L_0200dc10:
@@ -1371,7 +1371,7 @@ L_0200e2c8:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     bl GraphicsSpriteGroup_PrepareResources
     cmp r5, #0x0
     beq L_0200e2f8

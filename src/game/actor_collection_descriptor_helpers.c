@@ -1,3 +1,4 @@
+#include "tingle/graphics_sprite_group.h"
 #include "tingle/types.h"
 
 /*
@@ -15,13 +16,13 @@ typedef struct CollectionDescriptor {
 
 typedef struct DescriptorActor {
     u8 field_00[0xe4];
-    s16 descriptorValue_e4;
+    s16 runtimeId_e4;
 } DescriptorActor;
 
 typedef struct DescriptorActorCollection {
     DescriptorActor *actors_0000[128];
     u8 field_0200[0xc00];
-    void *spriteOwner_0e00;
+    GraphicsSpriteGroup *spriteGroup_0e00;
     u8 field_0e04[0x2070];
     s32 slotLimit_2e74;
     u32 flags_2e78;
@@ -56,25 +57,28 @@ void ActorCollection_SpawnDescriptorsBySelector(
     }
 }
 
-/* Return the collection's sprite-owner handle without changing state. */
-void *ActorCollection_GetSpriteOwner(DescriptorActorCollection *self)
+/* Return the collection-owned sprite group without transferring ownership. */
+GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(
+    DescriptorActorCollection *collection)
 {
-    return self->spriteOwner_0e00;
+    return collection->spriteGroup_0e00;
 }
 
 /*
  * Scan registered slots up to offset 0x2e74 and return the first actor whose
- * signed halfword at 0xe4 equals value. Null slots are ignored; return null if
- * no actor matches. No callbacks or hardware effects occur.
+ * signed runtime identifier at +0xe4 equals runtimeId. Spawn copies this value
+ * from descriptor halfword +0x52, while later actor code may replace it. Null
+ * slots are ignored; the returned actor is borrowed, and null means no match.
  */
-DescriptorActor *ActorCollection_FindActorByDescriptorValue(DescriptorActorCollection *self, s32 value)
+DescriptorActor *ActorCollection_FindActorByRuntimeId(
+    DescriptorActorCollection *collection, s32 runtimeId)
 {
-    s32 count = self->slotLimit_2e74;
+    s32 slotLimit = collection->slotLimit_2e74;
     s32 i;
 
-    for (i = 0; i < count; i++) {
-        DescriptorActor *actor = self->actors_0000[i];
-        if (actor && actor->descriptorValue_e4 == value)
+    for (i = 0; i < slotLimit; i++) {
+        DescriptorActor *actor = collection->actors_0000[i];
+        if (actor && actor->runtimeId_e4 == runtimeId)
             return actor;
     }
     return 0;

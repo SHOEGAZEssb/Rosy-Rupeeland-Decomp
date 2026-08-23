@@ -3,8 +3,8 @@
 .extern data_021052fc
 .extern data_ov096_02218b08
 .extern VecFx32Object_Assign
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
@@ -92,8 +92,8 @@ func_ov096_02217f6c:
     bic r1, r1, #0x3
     strh r1, [r2, #0x24]
     ldr r4, [r5, #0x208]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]

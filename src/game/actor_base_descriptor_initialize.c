@@ -8,8 +8,8 @@ extern "C" {
 #endif
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_GetSpriteOwner(void *collection);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void *GraphicsSpriteGroup_CreateState(void *collectionData, s32 first, s32 second,
                            s32 third, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
@@ -49,7 +49,7 @@ void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
                       *(s32 *)(record + 4), *(s32 *)(record + 8),
                       *(s32 *)(record + 0x0c));
         attachment = (u8 *)GraphicsSpriteGroup_CreateState(
-            ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+            ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
             *(s32 *)(actor + 0x1f0), *(s32 *)(actor + 0x1f4),
             *(s32 *)(actor + 0x1f8), record[0x10]);
         *(u8 **)(actor + 0x54) = attachment;

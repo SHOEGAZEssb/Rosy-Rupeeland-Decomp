@@ -14,9 +14,9 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(ActorRenderAttachmentOwner *);
+extern void *Actor_GetOwningCollection(ActorRenderAttachmentOwner *);
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
-extern void *ActorCollection_GetSpriteOwner(void *);
+extern void *ActorCollection_GetSpriteGroup(void *);
 extern void *GraphicsSpriteGroup_CreateState(void *, u32, u32, u32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
@@ -45,12 +45,12 @@ void Actor_CreateSecondaryRenderAttachment(ActorRenderAttachmentOwner *actor,
     (void)unusedAnimationResources;
     if (!(actor->flags_14 & 1))
         return;
-    actorCollection = Actor_GetCollection(actor);
+    actorCollection = Actor_GetOwningCollection(actor);
     if (*(s32 *)((u8 *)actorCollection + 0x2e84) != 1)
         return;
     primaryAttachment = (u8 *)actor->primaryAttachment_54;
     actor->secondaryAttachment_58 = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(GamePhaseRuntime_GetActorCollection(data_021052fc, 2)),
+        ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 2)),
         *(u32 *)(primaryAttachment + 0x14), *(u32 *)(primaryAttachment + 0x18),
         *(u32 *)(primaryAttachment + 0x1c), attachPolicy);
     secondaryAttachment = (u8 *)actor->secondaryAttachment_58;

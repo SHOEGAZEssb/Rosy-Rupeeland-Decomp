@@ -9,8 +9,8 @@
 .extern S16Bounds_MoveTo
 .extern S16Bounds_GetWidth
 .extern S16Bounds_Expand
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_SetInteractionBounds
 .extern func_02056f34
@@ -168,14 +168,14 @@ L_02018850:
 L_02018868:
     ldr r5, [r8, #0x84]
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r7
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r4, r0
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r1, r0
     add r0, sp, #0x58
     add r2, r1, #0x18

@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern func_020befec
 .extern func_020bf1f8
 .extern func_ov073_0220fd20
@@ -59,7 +59,7 @@ func_ov073_022100b4:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     str r0, [sp, #0x4]
     ldr r0, [r4, #0x4]
     mov r7, #0x0

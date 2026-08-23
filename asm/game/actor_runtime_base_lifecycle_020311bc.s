@@ -5,10 +5,10 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Stepper_Destroy
 .extern GamePhaseActorScriptVm_Destroy
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern func_02030e08
 .extern Actor_ReleaseSecondaryRenderAttachment
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern ActorInteractionIcon_Destroy
 .extern GraphicsSpriteGroup_ReleaseState
 
@@ -28,8 +28,8 @@ func_020311bc: ; 0x020311bc
     cmp r4, #0x0
     beq .L_02031200
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, r4
     bl GraphicsSpriteGroup_ReleaseState
 .L_02031200:

@@ -11,8 +11,8 @@ extern void *data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *ActorCollection_GetSpriteOwner(void);
-extern void Actor_GetCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void);
+extern void Actor_GetOwningCollection(void *actor);
 extern void Actor_ApplySpawnDescriptorScript(void *actor, const void *descriptor);
 extern void *func_02071e60(void *archive, u32 resource_id);
 extern void *GraphicsArchive_FindPaletteResource(void *archive, u32 resource_id);
@@ -43,9 +43,9 @@ void func_0204e9e8(void *actor, const void *descriptor)
                                     FIELD(u32, descriptor, 8));
     void *resource2 = func_02071e80(data_020f4e18,
                                     FIELD(u32, descriptor, 12));
-    Actor_GetCollection(actor);
+    Actor_GetOwningCollection(actor);
     void *presentation = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(), resource0, resource1, resource2,
+        ActorCollection_GetSpriteGroup(), resource0, resource1, resource2,
         FIELD(u8, descriptor, 0x10));
     FIELD(void *, actor, 0x54) = presentation;
     GraphicsSpriteState_SetAnimationIndex(presentation, FIELD(u8, descriptor, 0x11));

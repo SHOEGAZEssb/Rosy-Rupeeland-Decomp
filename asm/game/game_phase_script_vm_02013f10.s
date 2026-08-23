@@ -8,8 +8,8 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 .extern func_ov062_0220fe78
 .extern func_ov062_02210674
 .extern gHeapContext
@@ -82,9 +82,9 @@ L_02013f8c:
     b L_02014078
 L_0201400c:
     ldr r0, [r10, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r5, r0
     bl OverlayManager_GetGlobal
     mov r1, #0x2

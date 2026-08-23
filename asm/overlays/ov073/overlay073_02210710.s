@@ -11,7 +11,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern TimedSpritePresentation_InitBase
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern func_ov073_022100b4
 .extern gHeapContext
 
@@ -51,7 +51,7 @@ func_ov073_02210710:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldr r3, .L_022108f8
     mov r2, r0
     str r3, [sp, #0x0]

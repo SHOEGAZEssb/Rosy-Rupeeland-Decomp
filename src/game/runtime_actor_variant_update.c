@@ -19,8 +19,8 @@ extern s32 GamePhaseActorScriptVm_IsActive(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *runtime, void *actor);
 extern void ActorCollection_EndTrackedPair(void *runtime, void *anchor, void *actor);
 extern void Actor_SetRuntimeFlag80(void *actor);
-extern void *Actor_GetCollection(void *actor);
-extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *Actor_GetGlobalCollectionBySlot(void *actor, u32 slot);
 #ifdef __cplusplus
 }
 #endif
@@ -32,8 +32,8 @@ extern u8 *Actor_GetCollectionBySlot(void *actor, s32 category);
  *
  * When byte +0xe8 is nonzero, require ActorRuntimeCollection_TryCompleteAttachment to accept the actor in
  * registry gActorRuntimeCollection. Values other than two additionally obtain category
- * one through Actor_GetCollectionBySlot and call ActorCollection_EndTrackedPair with its
- * +0x2e7c anchor, runtime from Actor_GetCollection, and the actor. Then clear +0xe8,
+ * one through Actor_GetGlobalCollectionBySlot and call ActorCollection_EndTrackedPair with its
+ * +0x2e7c anchor, runtime from Actor_GetOwningCollection, and the actor. Then clear +0xe8,
  * copy the registry
  * value from ActorRuntimeCollection_GetPrimaryContainer into embedded state +0xec, and activate that state.
  * Finally, actor +0x14 bit 0x20 removes the actor through ActorCollection_QueueActorForRemoval.
@@ -55,14 +55,14 @@ void func_0204d308(void *self)
         if (ActorRuntimeCollection_TryCompleteAttachment(gActorRuntimeCollection, actor) == 0)
             return;
         if (actor[0xe8] != 2) {
-            u8 *category = Actor_GetCollectionBySlot(actor, 1);
-            void *runtime = Actor_GetCollection(actor);
-            ActorCollection_EndTrackedPair(runtime, *(void **)(category + 0x2e7c), actor);
+            u8 *collection = (u8 *)Actor_GetGlobalCollectionBySlot(actor, 1);
+            void *runtime = Actor_GetOwningCollection(actor);
+            ActorCollection_EndTrackedPair(runtime, *(void **)(collection + 0x2e7c), actor);
         }
         actor[0xe8] = 0;
         GamePhaseActorScriptVm_Assign(state, ActorRuntimeCollection_GetPrimaryContainer(gActorRuntimeCollection));
         GamePhaseActorScriptVm_Activate(state);
     }
     if ((*(u32 *)(actor + 0x14) & 0x20) != 0)
-        ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+        ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
 }

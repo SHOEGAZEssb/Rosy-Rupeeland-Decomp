@@ -12,7 +12,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern ActorCollection_EndTrackedPair
 .extern Actor_UpdateAttachmentDirectionFromVector
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 
     .global Actor_UpdateTimedResourceState
     .type Actor_UpdateTimedResourceState, @function
@@ -47,7 +47,7 @@ Actor_UpdateTimedResourceState: ; 0x02034164
     bl GamePhaseRuntime_GetActorCollection
     mov r5, r0
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r1, r5, #0x2000
     ldr r1, [r1, #0xe7c]
     mov r2, r4
@@ -73,7 +73,7 @@ Actor_UpdateTimedResourceState: ; 0x02034164
     tst r0, #0x20
     beq .L_02034250
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     mov r0, #0x0

@@ -15,8 +15,8 @@
 .extern TimedSpritePresentation_InitBase
 .extern func_0201e28c
 .extern SelfLinkedSpriteConfig_Init
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_02056f00
 .extern ActorDescriptor_InitRange
 .extern ActorDescriptor_Init
@@ -51,8 +51,8 @@ func_02022ff4: ; 0x02022ff4
     add r0, r4, #0x2c
     bl VecFx32Object_Init
     mov r0, r6
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     str r0, [r4, #0x44]
     add r0, r4, #0x48
     bl AnimationResourceState_InitEmbedded

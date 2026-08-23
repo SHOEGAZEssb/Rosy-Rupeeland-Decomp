@@ -35,7 +35,7 @@ EXT(ActorExtendedType2_UpdateTimedAttachmentTransition);
 EXT(ActorExtendedType2_InitializeTransformAndMotion);
 EXT(ActorExtendedType2_LaunchRandomMotion);
 EXT(Actor_GetCachedTerrainHeight);
-EXT(ActorCollection_FindActorByDescriptorValue);
+EXT(ActorCollection_FindActorByRuntimeId);
 EXT(GameWork_TestFlag);
 EXT(GameWork_SetFlag);
 EXT(VecFx32Object_Init);
@@ -44,8 +44,8 @@ EXT(VecFx32Object_Assign);
 EXT(VecFx32Object_InitComponents);
 EXT(VecFx32Object_InitCopy);
 EXT(VecFx32Object_GetMagnitude);
-EXT(Actor_GetCollection);
-EXT(ActorCollection_GetSpriteOwner);
+EXT(Actor_GetOwningCollection);
+EXT(ActorCollection_GetSpriteGroup);
 EXT(GamePhaseRuntime_GetActorCollection);
 EXT(ActorCollection_QueueActorForRemoval);
 EXT(ActorRuntimeCollection_GetPendingAttachmentFlag);
@@ -250,8 +250,8 @@ extern "C" void func_ov097_02217b4c(void *actor)
     if (F(s16, actor, 0xd6) == 26)
     {
         void *record = F(void *, actor, 0x208);
-        void *collection = (void *)Actor_GetCollection(actor);
-        void *owner = (void *)ActorCollection_GetSpriteOwner(collection);
+        void *collection = (void *)Actor_GetOwningCollection(actor);
+        void *owner = (void *)ActorCollection_GetSpriteGroup(collection);
         GraphicsSpriteGroup_ReplaceStateResources(
             owner, sprite, F(void *, record, 4), F(void *, record, 8),
             F(void *, record, 12));
@@ -262,8 +262,8 @@ extern "C" void func_ov097_02217b4c(void *actor)
     else if (F(s16, actor, 0xd6) == 27)
     {
         void *record = F(void *, actor, 0x208);
-        void *collection = (void *)Actor_GetCollection(actor);
-        void *owner = (void *)ActorCollection_GetSpriteOwner(collection);
+        void *collection = (void *)Actor_GetOwningCollection(actor);
+        void *owner = (void *)ActorCollection_GetSpriteGroup(collection);
         GraphicsSpriteGroup_ReplaceStateResources(
             owner, sprite, F(void *, record, 4), F(void *, record, 8),
             F(void *, record, 12));
@@ -368,9 +368,9 @@ extern "C" void func_ov097_02217d44(void *actor)
             {
                 continue;
             }
-            void *collection = (void *)Actor_GetCollection(actor);
+            void *collection = (void *)Actor_GetOwningCollection(actor);
             s32 descriptor = func_ov097_02217fd8(gGameWork, 0, i + 9);
-            void *linked = (void *)ActorCollection_FindActorByDescriptorValue(
+            void *linked = (void *)ActorCollection_FindActorByRuntimeId(
                 collection, descriptor);
             if (func_ov097_02217fec(linked) == 0)
             {
@@ -413,9 +413,9 @@ extern "C" void func_ov097_02218034(void *actor)
         s32 variant = ActorExtendedType2_GetDescriptorValue25(actor);
         s32 descriptor = func_ov097_02217fd8(gGameWork, 0,
                                              variant != 0 ? 1 : 0);
-        void *collection = (void *)Actor_GetCollection(actor);
+        void *collection = (void *)Actor_GetOwningCollection(actor);
         F(void *, actor, 0x2c4) =
-            (void *)ActorCollection_FindActorByDescriptorValue(collection,
+            (void *)ActorCollection_FindActorByRuntimeId(collection,
                                                                 descriptor);
         F(u8, actor, 0x2bd) = 0;
     }
@@ -1499,9 +1499,9 @@ extern "C" void *func_ov097_02219d20(void *actor, void *descriptor,
         {
             if (func_ov097_02217fd8(gGameWork, 0, index + 6) == 0)
             {
-                void *collection = (void *)Actor_GetCollection(actor);
+                void *collection = (void *)Actor_GetOwningCollection(actor);
                 s32 key = func_ov097_02217fd8(gGameWork, 0, index + 9);
-                void *partner = (void *)ActorCollection_FindActorByDescriptorValue(
+                void *partner = (void *)ActorCollection_FindActorByRuntimeId(
                     collection, key);
                 F(void *, actor, 0x204) = partner;
                 func_ov097_02219970(partner, actor, 0x19000);
@@ -1688,7 +1688,7 @@ extern "C" void func_ov097_0221a1c8(void *actor, void *target)
         F(u32, actor, 0x10) |= 0x1f0000;
         F(s16, actor, 0x1f8) = 0;
         F(u32, actor, 0x14) &= 0xff7fffbf;
-        void *collection = (void *)Actor_GetCollection(actor);
+        void *collection = (void *)Actor_GetOwningCollection(actor);
         ActorCollection_QueueActorForRemoval(collection, actor);
         TrackedResourceActor_EmitRecordEffects(actor);
     }

@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_descriptor_helpers.c.
 .text
 
-    .global ActorCollection_FindActorByDescriptorValue
-    .type ActorCollection_FindActorByDescriptorValue, @function
-ActorCollection_FindActorByDescriptorValue: ; 0x02030ad4
+    .global ActorCollection_FindActorByRuntimeId
+    .type ActorCollection_FindActorByRuntimeId, @function
+ActorCollection_FindActorByRuntimeId: ; 0x02030ad4
     stmdb sp!, {r3, lr}
     add r2, r0, #0x2000
     ldr ip, [r2, #0xe74]
@@ -24,5 +24,5 @@ ActorCollection_FindActorByDescriptorValue: ; 0x02030ad4
     blt .L_02030ae8
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-    .size ActorCollection_FindActorByDescriptorValue, . - ActorCollection_FindActorByDescriptorValue
+    .size ActorCollection_FindActorByRuntimeId, . - ActorCollection_FindActorByRuntimeId
 

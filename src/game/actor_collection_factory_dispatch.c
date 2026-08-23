@@ -22,7 +22,7 @@ typedef struct FactoryActor {
     u8 field_04[0x10];
     u32 flags_14;
     u8 field_18[0xcc];
-    s16 descriptorValue_e4;
+    s16 runtimeId_e4;
 } FactoryActor;
 
 typedef struct FactoryCollection {
@@ -36,7 +36,7 @@ typedef struct ActorSpawnDescriptor {
     u16 kind_00;
     u16 subtype_02;
     u8 field_04[0x4e];
-    s16 value_52;
+    s16 runtimeId_52;
     u8 field_54[0x10];
 } ActorSpawnDescriptor;
 
@@ -250,8 +250,9 @@ static ActorFactorySpec selectFactorySpec(const ActorSpawnDescriptor *descriptor
  * Select an allocation size and constructor from descriptor kind 0x00 and
  * subtype 0x02, allocate from gHeapContext with tag data_020def5c/alignment
  * four, run the constructor and vtable-offset-0x10 initializer, apply the
- * collection mode flag, copy descriptor halfword 0x52 to actor offset 0xe4,
- * and register the actor through ActorCollection_RegisterActor. Invalid selector values halt.
+ * collection mode flag, copy descriptor runtime ID +0x52 to actor +0xe4, and
+ * register the actor through ActorCollection_RegisterActor. Invalid selector
+ * values halt.
  * The exact assembly additionally preserves per-case resource loads, overlay
  * aliases, and flag mutations whose scheduling is not represented by this
  * compact portable matrix. Returns the constructed actor.
@@ -293,7 +294,7 @@ void *ActorCollection_SpawnActorFromDescriptor(FactoryCollection *self,
         actor->flags_14 |= 0x04000000;
     else
         Actor_RefreshCachedTerrainHeight(actor);
-    actor->descriptorValue_e4 = descriptor->value_52;
+    actor->runtimeId_e4 = descriptor->runtimeId_52;
     ActorCollection_RegisterActor(self, actor);
     return actor;
 }

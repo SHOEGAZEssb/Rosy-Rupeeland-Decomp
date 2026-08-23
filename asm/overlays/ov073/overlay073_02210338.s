@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern func_020adae4
 .extern SignedAbsoluteValue
 .extern func_020befec
@@ -220,7 +220,7 @@ func_ov073_02210338:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     mov r3, #0x1640
     mov r2, r0
     mov r1, #0x0

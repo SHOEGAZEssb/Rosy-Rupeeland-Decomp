@@ -9,7 +9,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern PresentationList_AppendObject
 .extern RisingSpriteSwarmPresentation_Init
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern gGameWork
 .extern gHeapContext
 .global GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled
@@ -30,7 +30,7 @@ GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled:
     ldr r0, [r0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r4, r0
     ldr r1, L_02017a44
     ldr r3, L_02017a48

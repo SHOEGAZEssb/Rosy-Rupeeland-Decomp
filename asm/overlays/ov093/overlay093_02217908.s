@@ -7,8 +7,8 @@
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Configure
 .extern GraphicsSpriteState_Create
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Type7Actor_SetActorEnabled
 .extern func_0204d3d8
 .extern GraphicsSpriteGroup_CreateState
@@ -35,8 +35,8 @@ func_ov093_02217908:
     mov r5, r0
     str r0, [r4, #0x200]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x1
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
@@ -63,8 +63,8 @@ func_ov093_02217908:
 .L_022179b4:
     str r0, [r4, #0x20c]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r3, #0x0
     str r3, [sp, #0x0]
     mov r1, #0x6
@@ -75,8 +75,8 @@ func_ov093_02217908:
     str r0, [r4, #0x210]
     mov r0, r4
     ldr r5, [r4, #0x200]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x1
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}
@@ -108,8 +108,8 @@ func_ov093_02217908:
 .L_02217a60:
     ldr r10, [r4, #0x200]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     str r8, [sp, #0x0]
     ldmib r10, {r1, r2, r3}
     bl GraphicsSpriteGroup_CreateState

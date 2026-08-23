@@ -15,10 +15,10 @@ extern "C" {
 extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
 extern void *AnimationResource_Init(void *storage, u32 resource0, u32 resource1,
                            u32 resource2);
-extern void *ActorCollection_GetSpriteOwner(void);
+extern void *ActorCollection_GetSpriteGroup(void);
 extern void Actor_CreateSecondaryRenderAttachment(
     void *actor, void *unusedAnimationResources, u32 attachPolicy);
-extern void Actor_GetCollection(void *actor);
+extern void Actor_GetOwningCollection(void *actor);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
@@ -50,9 +50,9 @@ void TrackedResourceActor_SetupPresentationResources(void *actor, const void *de
                               FIELD(u32, descriptor, 12));
     }
     FIELD(void *, actor, 0x1ec) = bundle;
-    Actor_GetCollection(actor);
+    Actor_GetOwningCollection(actor);
     void *presentation = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(), FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
+        ActorCollection_GetSpriteGroup(), FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
         FIELD(void *, bundle, 12), FIELD(u8, descriptor, 0x10));
     FIELD(void *, actor, 0x54) = presentation;
     GraphicsSpriteState_SetAnimationIndex(presentation, FIELD(u8, descriptor, 0x11));

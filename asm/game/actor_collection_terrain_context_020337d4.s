@@ -3,9 +3,9 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 
-    .global Actor_GetCollection
-    .type Actor_GetCollection, @function
-Actor_GetCollection: ; 0x020337d4
+    .global Actor_GetOwningCollection
+    .type Actor_GetOwningCollection, @function
+Actor_GetOwningCollection: ; 0x020337d4
     stmdb sp!, {r3, lr}
     ldr r0, [r0, #0x14]
     tst r0, #0x4000000
@@ -22,6 +22,6 @@ Actor_GetCollection: ; 0x020337d4
     bl GamePhaseRuntime_GetActorCollection
     ldmia sp!, {r3, pc}
 .L_0203380c: .word data_021052fc
-    .size Actor_GetCollection, . - Actor_GetCollection
+    .size Actor_GetOwningCollection, . - Actor_GetOwningCollection
 
-    .global Actor_GetCollectionBySlot
+    .global Actor_GetGlobalCollectionBySlot

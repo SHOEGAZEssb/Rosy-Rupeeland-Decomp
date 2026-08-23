@@ -1,10 +1,12 @@
+#include "tingle/graphics_sprite_group.h"
 #include "tingle/types.h"
 
 /*
  * Initialize and tear down the large actor collection used by subsequent
  * registration, relationship, and update routines. The object contains 128
  * actor slots, five parallel pointer arrays, a triangular relationship matrix,
- * two embedded owners, and an optional sprite selected from one of two pools.
+ * two embedded owners, and an optional sprite group selected from one of two
+ * group owners.
  */
 typedef struct ActorCollectionOwner {
     u8 bytes[12];
@@ -14,7 +16,7 @@ typedef struct ActorCollection {
     void *actors_0000[128];
     void *relations_0200[5][128];
     void *field_0c00[128];
-    void *spriteOwner_0e00;
+    GraphicsSpriteGroup *spriteGroup_0e00;
     ActorCollectionOwner owner_0e04;
     ActorCollectionOwner owner_0e10;
     s32 actorCount_0e1c;
@@ -38,8 +40,6 @@ extern void *gDebugFont;
 extern void OverlaySlot_Init(void *owner);
 extern void OverlaySlot_Destroy(void *owner);
 extern void OverlaySlot_UnloadOverlay(void *owner);
-extern void *GraphicsSpriteGroupOwner_CreateGroup(void *pool);
-extern void GraphicsSpriteGroupOwner_DestroyGroup(void *pool, void *sprite);
 extern void ActorCollection_UnregisterAndDestroyAllActors(ActorCollection *self);
 extern void ActorCollection_Deinit(ActorCollection *self);
 #ifdef __cplusplus
@@ -68,7 +68,7 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
     s32 i;
     s32 j;
 
-    self->spriteOwner_0e00 = 0;
+    self->spriteGroup_0e00 = 0;
     OverlaySlot_Init(&self->owner_0e04);
     OverlaySlot_Init(&self->owner_0e10);
     ActorPairMatrix_ClearAll(self->relationshipMatrix_0e34);
@@ -94,16 +94,16 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
 }
 
 /*
- * Select optional sprite ownership: mode one acquires from data_020f4e14,
- * mode two acquires from gDebugFont, and other modes acquire nothing. Record
- * the requested mode regardless of whether a sprite was acquired.
+ * Select an optional sprite group: mode one creates it through data_020f4e14,
+ * mode two creates it through gDebugFont, and other modes create nothing.
+ * Record the requested mode regardless of whether a group was created.
  */
 void ActorCollection_SetSpriteMode(ActorCollection *self, s32 mode)
 {
     if (mode == 1)
-        self->spriteOwner_0e00 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
+        self->spriteGroup_0e00 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     else if (mode == 2)
-        self->spriteOwner_0e00 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
+        self->spriteGroup_0e00 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     self->spriteMode_2e84 = mode;
 }
 
@@ -117,19 +117,19 @@ ActorCollection *ActorCollection_Destructor(ActorCollection *self)
 }
 
 /*
- * Remove all registered actors, return the optional sprite to the pool chosen
- * by spriteMode_2e84, clear its pointer, and finalize both embedded owners.
- * Modes other than one and two do not release spriteOwner_0e00.
+ * Remove all registered actors, return the optional sprite group to the owner
+ * selected by spriteMode_2e84, clear its pointer, and finalize both embedded
+ * owners. Modes other than one and two do not release spriteGroup_0e00.
  */
 void ActorCollection_Deinit(ActorCollection *self)
 {
     ActorCollection_UnregisterAndDestroyAllActors(self);
     if (self->spriteMode_2e84 == 1) {
-        GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, self->spriteOwner_0e00);
-        self->spriteOwner_0e00 = 0;
+        GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, self->spriteGroup_0e00);
+        self->spriteGroup_0e00 = 0;
     } else if (self->spriteMode_2e84 == 2) {
-        GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwner_0e00);
-        self->spriteOwner_0e00 = 0;
+        GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteGroup_0e00);
+        self->spriteGroup_0e00 = 0;
     }
     OverlaySlot_UnloadOverlay(&self->owner_0e04);
     OverlaySlot_UnloadOverlay(&self->owner_0e10);

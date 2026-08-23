@@ -15,9 +15,9 @@
 .extern ActorCollection_QueueGroupForRemoval
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorCollection_SpawnDescriptorsBySelector
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetCollisionCenter
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_IsIdleEligible
 .extern PresentationBackedActor_SpawnSplitAmount
@@ -65,9 +65,9 @@ L_0201940c: ; jump table
     b L_02019818 ; case 7
 L_0201942c:
     ldr r0, [r9, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r8, #0x1000
     mov r4, r0
     ldr r6, [r4, #0x54]
@@ -181,7 +181,7 @@ L_0201948c:
     str r1, [sp, #0x140]
     str r2, [sp, #0x144]
     ldr r0, [r9, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r1, sp, #0xec
     bl ActorCollection_SpawnActorFromDescriptor
     mov r0, r9
@@ -321,14 +321,14 @@ L_020197d8:
     ldrne r1, L_02019888
     ldreq r1, L_0201988c
     ldr r4, [r1, #0x0]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     mov r2, r6
     bl ActorCollection_SpawnDescriptorsBySelector
     b L_02019878
 L_02019804:
     ldr r0, [r9, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueGroupForRemoval
     b L_02019878

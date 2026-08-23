@@ -10,7 +10,7 @@
 .extern ActorMotionAreaFollower_BindActor
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 
     .global func_02012814
 func_02012814: ; 0x02012814
@@ -105,7 +105,7 @@ L_02012950:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     ldr r2, L_02012a5c
     mov r1, r0
     ldr r0, [r2, #0x0]

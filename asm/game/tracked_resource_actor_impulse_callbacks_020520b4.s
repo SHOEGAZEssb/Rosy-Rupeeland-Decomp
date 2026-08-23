@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/tracked_resource_actor_impulse_callbacks.c.
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern TrackedResourceActor_EmitRecordEffects
 .text
     .global TrackedResourceActorImpulse_QueueRemovalAndEmitEffects
 TrackedResourceActorImpulse_QueueRemovalAndEmitEffects:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     mov r0, r4

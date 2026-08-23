@@ -14,10 +14,10 @@ extern "C" {
 #endif
 extern void *AnimationResource_Init(void *storage, u32 resource0, u32 resource1,
                            u32 resource2);
-extern void *ActorCollection_GetSpriteOwner(void *collection);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void Actor_CreateSecondaryRenderAttachment(
     void *actor, void *unusedAnimationResources, u32 attachPolicy);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, void *resource1,
                            void *resource2, u32 mode);
@@ -52,8 +52,8 @@ void GridEffectActor_SetupPresentationResources(void *actor, const void *descrip
                               FIELD(u32, descriptor, 12));
     }
     FIELD(void *, actor, 0x1ec) = bundle;
-    collection = Actor_GetCollection(actor);
-    owner = ActorCollection_GetSpriteOwner(collection);
+    collection = Actor_GetOwningCollection(actor);
+    owner = ActorCollection_GetSpriteGroup(collection);
     void *presentation = GraphicsSpriteGroup_CreateState(
         owner, FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
         FIELD(void *, bundle, 12), FIELD(u8, descriptor, 0x10));

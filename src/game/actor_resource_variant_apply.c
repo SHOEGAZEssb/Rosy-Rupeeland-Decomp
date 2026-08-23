@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void Actor_SavePrimaryAttachmentState(void *);
 extern void ActorRuntimeCollection_AttachObject(void *, void *);
-extern void *Actor_GetCollection(void *);
+extern void *Actor_GetOwningCollection(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -39,7 +39,7 @@ void Actor_SelectScriptVariant(void *self, s32 variant)
         *(u32 *)(actor + 0x10) |= 0x100;
         ActorRuntimeCollection_AttachObject(gActorRuntimeCollection, actor);
     }
-    collection = Actor_GetCollection(actor);
+    collection = Actor_GetOwningCollection(actor);
     gameData = (u8 *)gGameWork +
                (*(s32 *)((u8 *)collection + 0x2e84) == 1 ? 0x3cc : 0x5cc);
     GamePhaseActorScriptVm_InitWithScript(

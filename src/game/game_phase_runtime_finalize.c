@@ -9,7 +9,7 @@ extern void func_020086f8(void *state, GamePhaseRuntime *self);
 extern void GamePhaseRuntime_BuildSecondaryTransform(void *state, GamePhaseRuntime *self);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *state);
 extern void VecFx32Object_Destroy(void *state);
-extern void ActorCollection_GetSpriteOwner(void *actor);
+extern void ActorCollection_GetSpriteGroup(void *actor);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void);
 extern void ActorCollection_DrainRemovalQueue(void *actor);
 extern void ActorFeedback_UpdatePresentations(void);
@@ -36,7 +36,7 @@ void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value
         actor = b + 0x28;
         ActorCollection_DispatchEventToActors(actor, primaryState);
         VecFx32Object_Destroy(primaryState);
-        ActorCollection_GetSpriteOwner(actor);
+        ActorCollection_GetSpriteGroup(actor);
         GraphicsSpriteGroup_AdvanceAnimations();
         ActorCollection_DrainRemovalQueue(actor);
     }
@@ -49,7 +49,7 @@ void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value
             ActorCollection_DispatchEventToActors(actor, secondaryState);
             VecFx32Object_Destroy(secondaryState);
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
-            ActorCollection_GetSpriteOwner(actor);
+            ActorCollection_GetSpriteGroup(actor);
             GraphicsSpriteGroup_AdvanceAnimations();
             actor = (u8 *)*(void **)(b + 0x2fb8) + 8;
             ActorCollection_DrainRemovalQueue(actor);

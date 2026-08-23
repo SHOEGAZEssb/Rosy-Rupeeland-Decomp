@@ -7,7 +7,7 @@
 .extern DisplayRouting_MatchesRequest
 .extern func_0201da20
 .extern func_0201da34
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode
 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode: ; 0x02015610
@@ -25,7 +25,7 @@ GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode: ; 0x02015610
     mov r0, r5
     bl func_0201da34
     ldr r0, [r5, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]

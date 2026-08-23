@@ -4,7 +4,7 @@
 .extern ActorRuntimeCollection_CopyPrimaryContainerState
 .extern GamePhaseActorScriptVm_InitWithScript
 .extern GamePhaseActorScriptVm_Destroy
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern gGameWork
 
     .global Actor_AssignPrimaryScriptToCollection
@@ -15,7 +15,7 @@ Actor_AssignPrimaryScriptToCollection: ; 0x02032cc4
     mov r5, r0
     mov r4, r1
     str r4, [r5, #0x180]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1

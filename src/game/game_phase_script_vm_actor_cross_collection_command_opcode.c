@@ -9,9 +9,9 @@ extern void *data_021052fc;
 extern u8 gActorRuntimeCollection[];
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -45,11 +45,11 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
     if (**(void ***)(runtime + 0x24) != **(void ***)(owner + 0x2eac))
         return 0;
 
-    mode = *(u32 *)((u8 *)Actor_GetCollection(self->actor) + 0x2e84);
+    mode = *(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84);
     if (mode == 1)
-        target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
+        target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
     else if (mode == 2)
-        target = ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(runtime, 1), index);
+        target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 1), index);
     else {
         OS_Halt();
         target = 0; /* OS_Halt does not return; this only makes the C flow explicit. */

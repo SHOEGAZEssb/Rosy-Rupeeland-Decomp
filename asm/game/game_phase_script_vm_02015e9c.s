@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_activation_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern Actor_SetActive
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .global GamePhaseActorScriptVm_SetIndexedActorActive
 GamePhaseActorScriptVm_SetIndexedActorActive:
     stmdb sp!, {r4, r5, r6, lr}
@@ -14,9 +14,9 @@ GamePhaseActorScriptVm_SetIndexedActorActive:
     bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, [r6, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     movs r4, r0
     beq L_02015f08
     cmp r5, #0

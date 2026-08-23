@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_primary_attachment_rebuild.c.
 .text
 .extern data_020f4e18
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern Actor_CreateSecondaryRenderAttachment
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern func_02071ee0
 .extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroup_CreateState
@@ -40,8 +40,8 @@ Actor_RebuildPrimaryAttachment: ; 0x0203bae4
     add r0, r4, #0x1f0
     bl func_02071ee0
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldrh r1, [sp, #0x18]
     and r1, r1, #0xff
     str r1, [sp, #0x0]

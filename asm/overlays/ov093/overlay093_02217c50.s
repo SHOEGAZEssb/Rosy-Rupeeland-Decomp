@@ -21,8 +21,8 @@
 .extern ActorMotionAreaFollower_BindActor
 .extern func_0201e0ec
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_0204d308
 .extern Sound_PlayEffectWithParameters
 .extern Sound_FadeEffectVolume
@@ -223,8 +223,8 @@ func_ov093_02217c50:
     movs r5, r0
     beq .L_02217f40
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r3, .L_022184ec
     mov r2, r0
     str r3, [sp, #0x0]

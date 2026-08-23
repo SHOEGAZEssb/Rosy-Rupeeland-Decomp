@@ -17,7 +17,7 @@ extern "C" {
 extern void *SceneManager_GetCurrent(void *manager);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Add(void *destination, const void *source);
@@ -41,7 +41,7 @@ static s32 fx_mul(s32 a, s32 b)
 
 static void finish_actor(void *actor)
 {
-    void *prepared = Actor_GetCollection(actor);
+    void *prepared = Actor_GetOwningCollection(actor);
     ActorCollection_QueueActorForRemoval(prepared, actor);
     FIELD(u16, actor, 0x1ec) = 3;
 }

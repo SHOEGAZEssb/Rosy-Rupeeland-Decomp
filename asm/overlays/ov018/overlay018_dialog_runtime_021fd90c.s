@@ -5,7 +5,7 @@
     .extern data_021052fc
     .extern data_ov018_021ffd60
     .extern GamePhaseRuntime_GetActorCollection
-    .extern ActorCollection_FindActorByDescriptorValue
+    .extern ActorCollection_FindActorByRuntimeId
     .extern TitleDialog_Init
     .extern func_ov018_021fd9f8
     .extern gGameWork
@@ -65,7 +65,7 @@ L_021fd994:
     ldr r1, L_021fd9f4
     ldr r1, [r1, #0x0]
     ldr r1, [r1, #0x3f4]
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     str r0, [r4, #0x18c]
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}

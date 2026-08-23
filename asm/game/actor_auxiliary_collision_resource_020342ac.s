@@ -2,8 +2,8 @@
 .text
 .extern Heap_Alloc
 .extern gActorInteractionIconAllocationTag
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern ActorInteractionIcon_Init
 .extern gHeapContext
 
@@ -23,8 +23,8 @@ Actor_EnsureInteractionIcon: ; 0x020342ac
     movs r4, r0
     beq .L_020342f8
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, r0
     mov r0, r4
     bl ActorInteractionIcon_Init

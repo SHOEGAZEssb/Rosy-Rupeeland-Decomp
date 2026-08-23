@@ -6,7 +6,7 @@
 .extern func_02030b7c
 .extern Actor_GetCollisionCenter
 .extern Actor_BuildCollisionRect
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_QueryTerrainCell
 .extern func_02056f34
@@ -187,7 +187,7 @@ Actor_UpdatePresentation: ; 0x02031758
     cmp r1, #0x0
     beq .L_02031b04
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe7c]
     ldr r1, [r0, #0x0]
@@ -196,7 +196,7 @@ Actor_UpdatePresentation: ; 0x02031758
     cmp r0, #0x0
     bne .L_02031af4
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     bl func_02030b7c
     cmp r0, #0x0
     beq .L_02031ad8
@@ -205,14 +205,14 @@ Actor_UpdatePresentation: ; 0x02031758
     add r2, r5, #0x18
     bl Actor_BuildWorldInteractionBounds
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     add r0, sp, #0x20
     add r1, r1, #0x18
     bl VecFx32Object_InitCopy
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r1, [r0, #0xe7c]
     add r0, sp, #0x40
@@ -243,7 +243,7 @@ Actor_UpdatePresentation: ; 0x02031758
     bne .L_02031b0c
 .L_02031aa8:
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     bl func_02030b7c
     mov r1, r0
     ldr r0, [r5, #0x1e0]

@@ -6,7 +6,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_PlayHorizontalSpatialSound
 .extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_DispatchTargetInteraction
@@ -138,7 +138,7 @@ func_ov095_0221c4a4:
     mov r0, r6
     bic r1, r1, #0x800000
     str r1, [r6, #0x14]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     add sp, sp, #0x24

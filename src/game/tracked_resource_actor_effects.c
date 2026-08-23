@@ -18,8 +18,8 @@ extern void *func_0201e0ec(void *manager);
 extern void AuxiliaryTimedSpritePresentation_Init(void *storage, const void *position, void *context,
                           u16 id, u16 value0, u16 value1, s32 arg0,
                           s32 arg1, s32 arg2, s32 arg3);
-extern void *ActorCollection_GetSpriteOwner(void);
-extern void Actor_GetCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void);
+extern void Actor_GetOwningCollection(void *actor);
 extern void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void func_020a2614(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
@@ -92,8 +92,8 @@ void TrackedResourceActor_EmitRecordEffects(void *actor)
     if (FIELD(u16, record, 0x16) != 0) {
         void *object = Heap_Alloc(0x14, gTrackedResourceActorSpriteEffectAllocationTag, 4, gHeapContext);
         if (object != 0) {
-            Actor_GetCollection(actor);
-            AuxiliaryTimedSpritePresentation_Init(object, (u8 *)actor + 0x18, ActorCollection_GetSpriteOwner(),
+            Actor_GetOwningCollection(actor);
+            AuxiliaryTimedSpritePresentation_Init(object, (u8 *)actor + 0x18, ActorCollection_GetSpriteGroup(),
                           FIELD(u16, record, 0x16),
                           FIELD(u16, record, 0x18),
                           FIELD(u16, record, 0x1a), 0, -4, -1, 1);

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_derived_update.c.
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_UpdateAnimationState
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .text
     .global TrackedResourceActorType21_Update
 TrackedResourceActorType21_Update:
@@ -82,7 +82,7 @@ TrackedResourceActorType21_Update:
     b .L_02050cd0
 .L_02050c8c:
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     add r1, r4, #0x100

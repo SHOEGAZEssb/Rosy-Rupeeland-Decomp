@@ -5,8 +5,8 @@
 .extern gHeapContext
 .extern func_0201e0ec
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Actor_PlayRadialSpatialSound
 .extern func_020a2614
 .extern func_020a2844
@@ -189,8 +189,8 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     beq .L_02050530
     ldr r5, [r6, #0x1fc]
     mov r0, r6
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldrh r1, [r5, #0x18]
     mov ip, #0x0
     sub r3, ip, #0x4

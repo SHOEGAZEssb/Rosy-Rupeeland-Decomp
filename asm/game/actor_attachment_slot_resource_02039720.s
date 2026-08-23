@@ -3,8 +3,8 @@
 .extern Heap_Alloc
 .extern data_020df48c
 .extern AnimationResource_Init
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern gHeapContext
 
@@ -39,8 +39,8 @@ Actor_ReplaceAttachmentSlotResource: ; 0x02039720
     cmp r1, r0
     bne .L_020397a8
     mov r0, r8
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r2, [r5, #0xc]
     mov r1, r6
     str r2, [sp, #0x0]

@@ -30,7 +30,7 @@ extern void *Heap_Alloc(O64_ARGS);
 extern void Heap_Free(O64_ARGS);
 extern void *AnimationResource_Init(O64_ARGS);
 extern void *GamePhaseRuntime_GetActorCollection(O64_ARGS);
-extern void *ActorCollection_GetSpriteOwner(void *collection);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void *GraphicsSpriteState_Create(O64_ARGS);
 extern void *GraphicsSpriteGroup_CreateState(O64_ARGS);
 extern void GraphicsSpriteState_SetAnimationIndex(O64_ARGS);
@@ -195,7 +195,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         F(void *, scene, 0x24) = make_animation(0x1092, 0x1001, 0x1093);
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         presentation = GraphicsSpriteState_Create(
-            ActorCollection_GetSpriteOwner(actorCollection),
+            ActorCollection_GetSpriteGroup(actorCollection),
             F(void *, scene, 0x24), 0, F(u8, actorResource, 0x3a),
             F(u16, actorResource, 0x28), 4, 2);
         F(void *, scene, 0x30) = presentation;
@@ -220,7 +220,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         F(void *, scene, 0x24) = make_animation(0x11ff, 0x1200, 0x1201);
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         presentation = GraphicsSpriteState_Create(
-            ActorCollection_GetSpriteOwner(actorCollection),
+            ActorCollection_GetSpriteGroup(actorCollection),
             F(void *, scene, 0x24), 0x10, F(u8, actorResource, 0x3a),
             F(u16, actorResource, 0x28) - 2, 0, 2);
         F(void *, scene, 0x30) = presentation;
@@ -243,7 +243,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
                     GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
                 replacement = func_02025300(
                     replacement, (u8 *)actor + 0x18,
-                    ActorCollection_GetSpriteOwner(actorCollection), 0x1e,
+                    ActorCollection_GetSpriteGroup(actorCollection), 0x1e,
                     1, 0);
             }
             PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, replacement);
@@ -256,7 +256,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         F(void *, scene, 0x24) = make_animation(0x1096, 0x1097, 0x1098);
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         presentation = GraphicsSpriteState_Create(
-            ActorCollection_GetSpriteOwner(actorCollection),
+            ActorCollection_GetSpriteGroup(actorCollection),
             F(void *, scene, 0x24), 2, F(u8, actorResource, 0x3a),
             F(u16, actorResource, 0x28), 4, 2);
         F(void *, scene, 0x30) = presentation;
@@ -972,14 +972,14 @@ s32 Overlay064Scene_Update(void *scene)
             ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc));
         collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         GraphicsSpriteGroup_AdvanceAnimations(
-            ActorCollection_GetSpriteOwner(collection));
+            ActorCollection_GetSpriteGroup(collection));
         GamePhaseRuntime_BuildSecondaryTransform(&position, data_021052fc);
         collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
         ActorCollection_DispatchEventToActors(collection, &position);
         VecFx32Object_Destroy(&position);
         collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
         GraphicsSpriteGroup_AdvanceAnimations(
-            ActorCollection_GetSpriteOwner(collection));
+            ActorCollection_GetSpriteGroup(collection));
         RuntimePresentationManager_Update((u8 *)data_021052fc + 0x2f7c, 1);
         GamePhaseCurrencyHud_Update(gLupyContext);
         GamePhaseRuntime_UpdateDualScreenUiPresentation(data_021052fc);

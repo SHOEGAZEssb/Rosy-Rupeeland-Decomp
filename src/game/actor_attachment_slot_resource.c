@@ -8,8 +8,8 @@ extern const char data_020df48c[];
 extern "C" {
 #endif
 extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16 third);
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_GetSpriteOwner(void *collection);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void GraphicsSpriteGroup_ReplaceStateResources(void *context, void *attachment, s32 first,
                           s32 second, s32 third);
 #ifdef __cplusplus
@@ -26,8 +26,8 @@ u32 Actor_GetStatusFlag80(void *self)
  * Allocate a tagged 0x10-byte resource and initialize it from first, second,
  * and third; store it in actor pointer slot +0x208 + index*4. Before replacing
  * a nonnull old slot, compare old +0x04 against attachment +0x54/+0x14. On a
- * match, obtain the actor collection context through Actor_GetCollection followed by
- * ActorCollection_GetSpriteOwner and call GraphicsSpriteGroup_ReplaceStateResources with attachment plus new resource words
+ * match, obtain the actor collection context through Actor_GetOwningCollection followed by
+ * ActorCollection_GetSpriteGroup and call GraphicsSpriteGroup_ReplaceStateResources with attachment plus new resource words
  * +0x04/+0x08/+0x0c. Then destroy the old object through virtual +0x04.
  * Returns no value. The retail matching path assumes allocation succeeds when
  * that old-resource comparison matches; heap and virtual calls change owned
@@ -45,7 +45,7 @@ void Actor_ReplaceAttachmentSlotResource(void *self, s32 index, u16 first,
     if (old != 0) {
         u8 *attachment = *(u8 **)(actor + 0x54);
         if (*(u32 *)(old + 4) == *(u32 *)(attachment + 0x14)) {
-            void *context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+            void *context = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
             GraphicsSpriteGroup_ReplaceStateResources(context, attachment, *(s32 *)(resource + 4),
                           *(s32 *)(resource + 8), *(s32 *)(resource + 0x0c));
         }

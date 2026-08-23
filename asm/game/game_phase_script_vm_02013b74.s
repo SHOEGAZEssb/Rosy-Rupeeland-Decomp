@@ -5,8 +5,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern ActorCollection_FindActorByDescriptorValue
-.extern Actor_GetCollection
+.extern ActorCollection_FindActorByRuntimeId
+.extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0
 GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0: ; 0x02013b74
@@ -27,7 +27,7 @@ GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0: ; 0x02013b74
     movne r0, #0x0
     ldmneia sp!, {r4, r5, r6, pc}
     ldr r0, [r6, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1
@@ -37,12 +37,12 @@ GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0: ; 0x02013b74
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r5, r0
     b L_02013c28
 L_02013bec:
     ldr r0, [r6, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x2
@@ -52,7 +52,7 @@ L_02013bec:
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r5, r0
     b L_02013c28
 L_02013c24:

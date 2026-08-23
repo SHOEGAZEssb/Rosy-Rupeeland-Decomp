@@ -26,8 +26,8 @@ extern "C" void *ActorExtendedType2_Init(void *, const void *);
 extern "C" void *ActorExtendedType2_Destroy(void *);
 extern "C" void ActorExtendedType2_InitializePresentation(void *, const void *);
 extern "C" void Heap_Free(void *);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, void *, void *, void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern "C" void ActorContactState_AddContact(void *, void *, s32);
@@ -82,7 +82,7 @@ static void install_presentation(void *actor, s32 animation, u16 setFlags,
                                  u16 clearFlags)
 {
     u8 *resource = FIELD(u8 *, actor, 0x208);
-    void *owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    void *owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     GraphicsSpriteGroup_ReplaceStateResources(
         owner, FIELD(void *, actor, 0x54), FIELD(void *, resource, 4),
         FIELD(void *, resource, 8), FIELD(void *, resource, 0xc));

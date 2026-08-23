@@ -26,8 +26,8 @@ typedef char ActorInteractionIconSizeCheck[
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_GetSpriteOwner(void *collection);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void *data_020f4e18;
 extern void *AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *archive, u32 characterId,
@@ -242,7 +242,7 @@ void Actor_EnsureInteractionIcon(void *self)
         if (icon != 0) {
             icon = ActorInteractionIcon_Init(
                 icon,
-                ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)));
+                ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)));
         }
         *(ActorInteractionIcon **)(actor + 0x1e0) = icon;
     }

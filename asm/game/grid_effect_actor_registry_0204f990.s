@@ -3,7 +3,7 @@
 .extern gGridEffectActorRuntimeState
 .extern gGridEffectActorRegistry
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .text
 
     .global GridEffectActorRegistry_Reset
@@ -49,7 +49,7 @@ GridEffectActorRegistry_AcquireSlot: ; 0x0204f9c0
     blt .L_0204f9d4
     ldr r5, [r4, #0x0]
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     ldr r1, .L_0204fa44

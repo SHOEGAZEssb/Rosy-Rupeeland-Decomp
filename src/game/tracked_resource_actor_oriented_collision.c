@@ -12,7 +12,7 @@ extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void func_020328d0(void *vector, s32 angle);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
 #ifdef __cplusplus
@@ -60,7 +60,7 @@ void TrackedResourceActorType28_HandleCollision(void *actor, void *target, u32 u
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u16, actor, 0x1f8) = 0;
     FIELD(u32, actor, 0x14) &= 0xff7fffff;
-    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
     TrackedResourceActor_EmitRecordEffects(actor);
     TrackedResourceActor_DispatchTargetInteraction(actor, target);
 }

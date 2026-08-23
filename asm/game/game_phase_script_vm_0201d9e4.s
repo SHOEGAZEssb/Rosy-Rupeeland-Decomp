@@ -4,7 +4,7 @@
 .extern SignedAbsoluteValueVariant
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020791e0
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern LanguageResourceManager_FindById
 .extern DisplayRouting_MatchesRequest
 .extern func_0201da34

@@ -2,9 +2,9 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern Actor_QueryRuntimeProperty
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_QueryIndexedActorProperty
 GamePhaseActorScriptVm_QueryIndexedActorProperty: ; 0x02013a34
@@ -16,9 +16,9 @@ GamePhaseActorScriptVm_QueryIndexedActorProperty: ; 0x02013a34
     bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, [r6, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r1, r5
     bl Actor_QueryRuntimeProperty
     mov r1, r0

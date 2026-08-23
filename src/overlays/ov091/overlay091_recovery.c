@@ -20,8 +20,8 @@ extern "C" void *func_0204d570(void *);
 extern "C" void func_0204d3d8(void);
 extern "C" void func_0204d308(void *);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void ActorCollection_SpawnDescriptorsBySelector(void *, void *, s32);
 extern "C" void Actor_SetActive(void *, s32);
 extern "C" void ActorMotionAreaFollower_BindActor(void *, void *);
@@ -130,7 +130,7 @@ extern "C" void func_ov091_02217910(void *actor) {
     if (resource)
         resource = AnimationResource_Init(resource, 0x137b, 0x137c, 0x137d);
     F(void *, actor, 0x234) = resource;
-    void *owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    void *owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     void *sprite = GraphicsSpriteState_Create(owner, resource, 0, 0, 0, 6, 0);
     F(void *, actor, 0x238) = sprite;
     F(u16, sprite, 0x2c) = 0x7d;
@@ -154,7 +154,7 @@ static void destroy_encounter(void *actor, bool release_allocation) {
             F(u16, F(void *, partner, 0x54), 0x24) |= 0x10;
             F(u32, partner, 0x14) |= 6;
             ActorCollection_SpawnDescriptorsBySelector(
-                Actor_GetCollection(actor), gActorCategory1DescriptorTable, -1);
+                Actor_GetOwningCollection(actor), gActorCategory1DescriptorTable, -1);
         }
         Actor_SetActive(primary, 0);
     }

@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void func_0201da34(GamePhaseActorScriptVm *self);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
 extern void *DisplayRouting_MatchesRequest(u32 value);
 extern void *DebugHudState_GetGlobal(void *value);
@@ -38,7 +38,7 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm
         u32 value = GamePhaseScriptVm_Pop(&self->base);
         u8 *collection;
         func_0201da34(self);
-        collection = (u8 *)Actor_GetCollection(self->actor);
+        collection = (u8 *)Actor_GetOwningCollection(self->actor);
         second = func_0201da20(*(u32 *)(collection + 0x2e84), value);
         first = DisplayRouting_MatchesRequest(lookup);
     }

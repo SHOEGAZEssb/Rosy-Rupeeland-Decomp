@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -37,7 +37,7 @@ s32 GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode(GamePhaseActorSc
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 row = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *collection = (u8 *)Actor_GetCollection(self->actor);
+    u8 *collection = (u8 *)Actor_GetOwningCollection(self->actor);
     const u16 *text = 0;
     switch (*(u32 *)(collection + 0x2e84)) {
     case 1:

@@ -5,8 +5,8 @@
 .extern data_ov092_0221c818
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Type7Actor_SetActorEnabled
 .extern func_0204d3d8
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -32,8 +32,8 @@ func_ov092_02217b7c:
 .L_02217bb8:
     str r0, [r4, #0x244]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r1, #0x6
@@ -63,8 +63,8 @@ func_ov092_02217b7c:
 .L_02217c30:
     str r0, [r4, #0x24c]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r1, #0x6

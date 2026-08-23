@@ -5,7 +5,7 @@
 .extern DebugHud_GetTextTableEntry
 .extern DebugHudState_GetGlobal
 .extern GamePhaseScriptVm_Pop
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .global GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode
 GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -16,7 +16,7 @@ GamePhaseActorScriptVm_SetDebugHudTextRowFromCollectionMode:
     bl GamePhaseScriptVm_Pop
     mov r5, r0
     ldr r0, [r7, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #1

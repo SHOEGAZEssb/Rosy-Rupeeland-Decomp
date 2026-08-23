@@ -36,8 +36,8 @@ extern "C" void *ActorExtendedTransform_Init(void *, const void *);
 extern "C" void *ActorExtendedTransform_Destroy(void *);
 extern "C" void ActorExtendedTransform_UpdateTargetMotion(void *);
 extern "C" void Heap_Free(void *);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, void *, void *, void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32);
@@ -65,7 +65,7 @@ static void install(void *actor, void *resource, s32 animation)
 {
     void *sprite = F(void *, actor, 0x54);
     GraphicsSpriteGroup_ReplaceStateResources(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), sprite,
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)), sprite,
         F(void *, resource, 4), F(void *, resource, 8), F(void *, resource, 0xc));
     GraphicsSpriteState_SetAnimationIndex(sprite, animation);
 }

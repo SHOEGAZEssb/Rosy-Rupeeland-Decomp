@@ -4,7 +4,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void Actor_BuildWorldInteractionBounds(void *output, void *actor,
                                               const void *position);
 extern void VecFx32Object_InitCopy(void *temporary, const void *source);
@@ -42,7 +42,7 @@ s32 Actor_IsInteractionEligible(void *self)
 
     if (*(s16 *)(actor + 0x70) != *(s16 *)(actor + 0x74) &&
         *(s16 *)(actor + 0x72) != *(s16 *)(actor + 0x76)) {
-        collection = (u8 *)Actor_GetCollection(actor);
+        collection = (u8 *)Actor_GetOwningCollection(actor);
         reference = *(u8 **)(collection + 0x2e7c);
         if (reference != 0) {
             Actor_BuildWorldInteractionBounds(actorGeometry, actor,

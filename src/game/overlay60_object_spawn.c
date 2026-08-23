@@ -22,7 +22,7 @@ extern s32 GamePhaseScriptVm_Pop(void *script);
 extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 value);
 extern void *func_020791e0(void *table, u16 index);
-extern void Actor_GetCollection(void *owner);
+extern void Actor_GetOwningCollection(void *owner);
 extern void *LanguageResourceManager_FindById(void *table, u32 index);
 extern void *func_ov060_022100e4(void *self, s32 routedDisplay,
                                 void *resource, s32 thirdOperand,
@@ -106,7 +106,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
     if (useIndexed != 0)
         resource = func_020791e0(data_021f3ecc, (u16)resourceIndex);
     else {
-        Actor_GetCollection(context->owner84);
+        Actor_GetOwningCollection(context->owner84);
         resource = LanguageResourceManager_FindById(data_021f4090, resourceIndex);
     }
     requestedDisplay = DisplayRouting_MatchesRequest(requestedDisplay);

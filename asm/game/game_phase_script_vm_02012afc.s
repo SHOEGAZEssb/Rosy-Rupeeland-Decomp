@@ -5,9 +5,9 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern GamePhaseScriptVm_Pop
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern Actor_SetActive
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_DispatchIndexedActorValueCommand
 GamePhaseActorScriptVm_DispatchIndexedActorValueCommand: ; 0x02012afc
@@ -19,9 +19,9 @@ GamePhaseActorScriptVm_DispatchIndexedActorValueCommand: ; 0x02012afc
     bl GamePhaseScriptVm_Pop
     mov r5, r0
     ldr r0, [r6, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r5, r0
     ldrb r1, [r5, #0x4d]
     cmp r1, #0x1

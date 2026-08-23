@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_auxiliary_attachment_init.c.
 .text
 .extern data_020f4e18
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_02071e60
 .extern GraphicsArchive_FindPaletteResource
 .extern func_02071e80
@@ -35,8 +35,8 @@ Actor_CreateAuxiliaryRenderAttachment: ; 0x020314b8
     bl func_02071e80
     mov r5, r0
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov ip, #0x2
     mov r1, r7
     mov r2, r6

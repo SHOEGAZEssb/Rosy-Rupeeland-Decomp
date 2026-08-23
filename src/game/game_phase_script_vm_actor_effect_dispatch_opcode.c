@@ -21,9 +21,9 @@ extern void *ActorCollection_QueueGroupForRemoval(void *collection, s32 index);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void ActorCollection_SpawnDescriptorsBySelector(
     void *collection, void *descriptors, s32 selector);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void *Actor_GetCollisionCenter(VecFx32Object *destination, void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void ActorDerivedType1_StartRecord(void *manager, s32 value);
 extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
 extern void PresentationBackedActor_SpawnSplitAmount(s32 duration, s16 amount,
@@ -59,7 +59,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     u8 descriptor[0x5c];
     VecFx32Object transform;
     VecFx32Object position;
-    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), actorIndex);
+    u8 *actor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), actorIndex);
     u8 *presentation = *(u8 **)(actor + 0x54);
     s32 resource0 = 0x1000;
     s32 resource1 = 0x1001;
@@ -118,7 +118,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s16 *)(descriptor + 0x52) = (s16)value;
     *(s32 *)(descriptor + 0x54) = -1;
     *(s32 *)(descriptor + 0x58) = 0;
-    ActorCollection_SpawnActorFromDescriptor(Actor_GetCollection(self->actor), descriptor);
+    ActorCollection_SpawnActorFromDescriptor(Actor_GetOwningCollection(self->actor), descriptor);
     GamePhaseScriptVm_SetResult(&self->base, (u32)value);
     VecFx32Object_Destroy(&transform);
 }
@@ -179,11 +179,11 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         s32 selection = (*(u32 *)((u8 *)self->actor + 0x14) & 0x04000000)
                             ? gActorCategory2DescriptorTable : gActorCategory1DescriptorTable;
         ActorCollection_SpawnDescriptorsBySelector(
-            Actor_GetCollection(self->actor), (void *)selection, p6);
+            Actor_GetOwningCollection(self->actor), (void *)selection, p6);
         break;
     }
     case 5:
-        ActorCollection_QueueGroupForRemoval(Actor_GetCollection(self->actor), p6);
+        ActorCollection_QueueGroupForRemoval(Actor_GetOwningCollection(self->actor), p6);
         break;
     case 6: {
         VecFx32Object first;

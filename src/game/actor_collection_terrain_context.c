@@ -14,26 +14,27 @@ extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
 #endif
 
 /*
- * Resolve the actor collection from the global manager. Actor flag 0x04000000
- * at +0x14 selects slot two; otherwise slot one is used. Returns the manager
- * lookup result and does not directly change actor or hardware state.
+ * Return the collection that owns the actor. Spawn sets actor flag 0x04000000
+ * at +0x14 for collection mode two; that flag selects global runtime slot two,
+ * while ordinary actors use slot one. The returned collection is borrowed and
+ * no actor, collection, or hardware state changes.
  */
-void *Actor_GetCollection(void *self)
+void *Actor_GetOwningCollection(void *actorPointer)
 {
-    u8 *actor = (u8 *)self;
+    u8 *actor = (u8 *)actorPointer;
     u32 slot = (*(u32 *)(actor + 0x14) & 0x04000000) != 0 ? 2 : 1;
 
     return GamePhaseRuntime_GetActorCollection(data_021052fc, slot);
 }
 
 /*
- * Resolve an explicitly supplied manager slot. The first argument is confirmed
- * unused by the retail forwarding stub; the second is passed to the global
- * manager lookup. Returns that lookup result with no direct state changes.
+ * Return the borrowed actor collection at an explicitly supplied global
+ * runtime slot. The first argument is confirmed unused by the retail forwarding
+ * stub; no actor, collection, or hardware state changes.
  */
-void *Actor_GetCollectionBySlot(void *unused, u32 slot)
+void *Actor_GetGlobalCollectionBySlot(void *unusedActor, u32 slot)
 {
-    (void)unused;
+    (void)unusedActor;
     return GamePhaseRuntime_GetActorCollection(data_021052fc, slot);
 }
 

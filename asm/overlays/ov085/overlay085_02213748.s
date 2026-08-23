@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov085/overlay085_recovery.c.
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Actor_GetCachedTerrainHeight
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
@@ -11,8 +11,8 @@ func_ov085_02213748:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r4, #0x1f8]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]

@@ -26,7 +26,7 @@
 .extern ActorCollection_UnregisterAndDestroyAllActors
 .extern ActorCollectionActivation_DestroyReservedSlot
 .extern ActorCollection_SetEnabled
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern Actor_ReplaceAttachmentSlotResource
 .extern Type7Actor_EnterSpecialPresentationState
 .extern Sound_SetCaptureEnabled
@@ -109,7 +109,7 @@ Overlay064Scene_Construct:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldrh r3, [r6, #0x28]
     mov r2, #0x4
     mov r1, #0x2
@@ -192,7 +192,7 @@ Overlay064Scene_Construct:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldrh r3, [r6, #0x28]
     mov r2, #0x0
     mov r1, #0x2
@@ -245,7 +245,7 @@ Overlay064Scene_Construct:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x1
     mov r2, r0
     mov r0, r6
@@ -282,7 +282,7 @@ Overlay064Scene_Construct:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldrh r3, [r6, #0x28]
     mov r1, #0x4
     mov r2, #0x2

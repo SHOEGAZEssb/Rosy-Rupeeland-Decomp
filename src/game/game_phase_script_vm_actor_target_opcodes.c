@@ -10,8 +10,8 @@ extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 t
 extern void ActorDerivedType1_ResetSpecialModeFlags(void *actor);
 extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
 extern void VecFx32Stepper_Reset(void *movement);
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 y);
 #ifdef __cplusplus
 }
@@ -49,7 +49,7 @@ s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActor
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
-    u8 *target = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(actor), index);
+    u8 *target = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(actor), index);
     fx32 dx = *(fx32 *)(target + 0x1c) - *(fx32 *)(actor + 0x1c);
     fx32 dy = *(fx32 *)(target + 0x20) - *(fx32 *)(actor + 0x20);
     u8 *object;

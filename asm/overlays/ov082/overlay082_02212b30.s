@@ -3,8 +3,8 @@
 .extern data_020e6adc
 .extern data_020e6b74
 .extern data_020e6c0c
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Actor_GetCachedTerrainHeight
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -146,8 +146,8 @@ func_ov082_02212b30:
 .L_02212cfc:
     ldr r8, [r7, #0x208]
     mov r0, r7
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r8, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]

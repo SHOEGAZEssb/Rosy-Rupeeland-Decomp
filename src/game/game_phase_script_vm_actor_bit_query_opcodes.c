@@ -6,9 +6,9 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -32,8 +32,8 @@ s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *s
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor;
     if (selector != 0) {
-        actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), selector);
-    } else if (*(u32 *)((u8 *)Actor_GetCollection(self->actor) + 0x2e84) == 1) {
+        actor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), selector);
+    } else if (*(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84) == 1) {
         u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         actor = *(u8 **)(collection + 0x2e7c);
     } else {
@@ -62,11 +62,11 @@ s32 GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0(GamePhaseActorScrip
     u8 *target;
     if (first != second)
         return 0;
-    mode = *(u32 *)((u8 *)Actor_GetCollection(self->actor) + 0x2e84);
+    mode = *(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84);
     if (mode == 1)
-        target = (u8 *)ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
+        target = (u8 *)ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
     else if (mode == 2)
-        target = (u8 *)ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(runtime, 1), index);
+        target = (u8 *)ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 1), index);
     else {
         OS_Halt();
         target = 0;

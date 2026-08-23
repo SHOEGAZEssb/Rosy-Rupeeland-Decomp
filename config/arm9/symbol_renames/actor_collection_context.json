@@ -1,0 +1,6 @@
+{
+  "ActorCollection_GetSpriteOwner": "ActorCollection_GetSpriteGroup",
+  "ActorCollection_FindActorByDescriptorValue": "ActorCollection_FindActorByRuntimeId",
+  "Actor_GetCollection": "Actor_GetOwningCollection",
+  "Actor_GetCollectionBySlot": "Actor_GetGlobalCollectionBySlot"
+}

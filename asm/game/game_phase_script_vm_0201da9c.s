@@ -4,7 +4,7 @@
 .extern SignedAbsoluteValueVariant
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020791e0
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern LanguageResourceManager_FindById
 .extern DisplayRouting_MatchesRequest
 .extern func_0201da34
@@ -49,7 +49,7 @@ func_0201da9c: ; 0x0201da9c
     b L_0201db24
 L_0201db10:
     ldr r0, [r10, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     ldr r0, L_0201dbb8
     mov r1, r4
     bl LanguageResourceManager_FindById

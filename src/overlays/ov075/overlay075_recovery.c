@@ -62,10 +62,10 @@ EXT(Actor_RandomizeValueByTenPercent);
 EXT(ActorMotionAreaFollower_GetPosition);
 EXT(ActorDerivedType1_GetSingletonObject);
 EXT(ActorDerivedType1_TeardownRecordAndApplyMotionImpulse);
-EXT(Actor_GetCollection);
+EXT(Actor_GetOwningCollection);
 EXT(Actor_QueryTerrainCell);
 EXT(Actor_QueryTerrainHeight);
-EXT(ActorCollection_GetSpriteOwner);
+EXT(ActorCollection_GetSpriteGroup);
 EXT(ActorRuntimeCollection_GetPendingAttachmentFlag);
 EXT(Actor_SetRuntimeFlag80);
 EXT(Actor_UpdateAnimationState);
@@ -967,8 +967,8 @@ extern "C" void func_ov075_022146ec(void *actor, const void *descriptor)
     func_02071ee0(P(actor, 0x1f0), data_020f4e18,
                   F(s32, descriptor, 4), F(s32, descriptor, 8),
                   F(s32, descriptor, 0xc));
-    void *collection = (void *)Actor_GetCollection(actor);
-    void *owner = (void *)ActorCollection_GetSpriteOwner(collection);
+    void *collection = (void *)Actor_GetOwningCollection(actor);
+    void *owner = (void *)ActorCollection_GetSpriteGroup(collection);
     F(void *, actor, 0x54) = (void *)GraphicsSpriteGroup_CreateState(
         owner, F(void *, actor, 0x1f0), F(void *, actor, 0x1f4),
         F(void *, actor, 0x1f8), F(u8, descriptor, 0x10));
@@ -1174,8 +1174,8 @@ extern "C" s32 func_ov075_02214d88(void *actor, s32 unused)
 /* Refreshes sprite resources and selects presentation for the actor state. */
 extern "C" void func_ov075_02214e28(void *actor)
 {
-    void *collection = (void *)Actor_GetCollection(actor);
-    void *owner = (void *)ActorCollection_GetSpriteOwner(collection);
+    void *collection = (void *)Actor_GetOwningCollection(actor);
+    void *owner = (void *)ActorCollection_GetSpriteGroup(collection);
     GraphicsSpriteGroup_ReplaceStateResources(
         owner, F(void *, actor, 0x54), F(void *, actor, 0x1f0),
         F(void *, actor, 0x1f4), F(void *, actor, 0x1f8));
@@ -1943,8 +1943,8 @@ extern "C" void func_ov075_02215a70(void *actor)
         }
     }
     void *resource = F(void *, actor, 0x208 + resourceIndex * 4);
-    void *collection = (void *)Actor_GetCollection(actor);
-    void *owner = (void *)ActorCollection_GetSpriteOwner(collection);
+    void *collection = (void *)Actor_GetOwningCollection(actor);
+    void *owner = (void *)ActorCollection_GetSpriteGroup(collection);
     GraphicsSpriteGroup_ReplaceStateResources(
         owner, F(void *, actor, 0x54), F(void *, resource, 4),
         F(void *, resource, 8), F(void *, resource, 0xc));

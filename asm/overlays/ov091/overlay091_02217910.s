@@ -4,8 +4,8 @@
 .extern data_ov091_02218dc0
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_0204d3d8
 .extern gHeapContext
 
@@ -29,8 +29,8 @@ func_ov091_02217910:
 .L_0221794c:
     str r0, [r4, #0x234]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r2, #0x0
     str r2, [sp, #0x0]
     mov r1, #0x6

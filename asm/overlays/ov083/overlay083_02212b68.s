@@ -2,8 +2,8 @@
 ; Matching fallback for the portable implementation in src/overlays/ov083/overlay083_recovery.c.
 .extern data_020e6adc
 .extern data_020e6b74
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 
@@ -15,8 +15,8 @@ func_ov083_02212b68:
     cmp r1, #0x1
     bne .L_02212bbc
     ldr r4, [r5, #0x208]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -77,8 +77,8 @@ func_ov083_02212b68:
     beq .L_02213150
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r2, [r6, #0xc]
     mov r1, r7
     str r2, [sp, #0x0]
@@ -97,8 +97,8 @@ func_ov083_02212b68:
     beq .L_02212ce0
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -111,8 +111,8 @@ func_ov083_02212b68:
 .L_02212ce0:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -134,8 +134,8 @@ func_ov083_02212b68:
 .L_02212d34:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -158,8 +158,8 @@ func_ov083_02212b68:
     beq .L_02212dcc
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -174,8 +174,8 @@ func_ov083_02212b68:
 .L_02212dcc:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -201,8 +201,8 @@ func_ov083_02212b68:
     beq .L_02212e58
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -212,8 +212,8 @@ func_ov083_02212b68:
 .L_02212e58:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -237,8 +237,8 @@ func_ov083_02212b68:
     beq .L_02212ef0
     ldr r4, [r5, #0x20c]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -253,8 +253,8 @@ func_ov083_02212b68:
 .L_02212ef0:
     ldr r4, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -279,8 +279,8 @@ func_ov083_02212b68:
 .L_02212f50:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -306,8 +306,8 @@ func_ov083_02212b68:
     beq .L_02213150
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -326,8 +326,8 @@ func_ov083_02212b68:
     beq .L_0221302c
     ldr r6, [r5, #0x20c]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -337,8 +337,8 @@ func_ov083_02212b68:
 .L_0221302c:
     ldr r6, [r5, #0x208]
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -365,8 +365,8 @@ func_ov083_02212b68:
     cmp r0, #0x0
     mov r0, r5
     beq .L_022130d8
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]
@@ -381,8 +381,8 @@ func_ov083_02212b68:
     strh r0, [r1, #0x24]
     b .L_02213150
 .L_022130d8:
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]

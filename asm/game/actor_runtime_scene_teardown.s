@@ -8,7 +8,7 @@
 .extern Type7Actor_LeaveSpecialPresentationState
 .extern ActorDerivedType1_ResetToBaseState
 .extern GameWork_ClearFlag
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern ActorCollection_UnregisterAndDestroyActor
 .extern func_02030b58
 .extern Scene_Destroy
@@ -85,7 +85,7 @@ L_0200b4e8:
     cmpeq r0, #0x2
     bne L_0200b530
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     bl ActorCollection_UnregisterAndDestroyActor
 L_0200b530:

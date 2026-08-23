@@ -28,8 +28,8 @@ extern u8 data_ov090_0221cb10[];
 extern void *func_0204d520(void *self);
 extern void func_0204d3d8(void);
 extern void *func_0204d570(void *self);
-extern void *Actor_GetCollection(void *actor);
-extern GraphicsSpriteGroup *ActorCollection_GetSpriteOwner(void *collection);
+extern void *Actor_GetOwningCollection(void *actor);
+extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 extern void GXx_SetMasterBrightness_(volatile u16 *reg, s32 brightness);
 extern void func_ov090_0221ad64(void *self, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
@@ -128,7 +128,7 @@ extern "C" void func_ov090_02217a3c(void *self)
                                           (void *)0x1078, (void *)0x138b);
     FIELD(AnimationResource *, self, 0x240) = resource;
     sprite = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(self)),
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(self)),
         resource->entries[0], resource->entries[1], resource->entries[2], 1);
     FIELD(GraphicsSpriteState *, self, 0x23c) = sprite;
     sprite->screenX = 0x31;
@@ -145,7 +145,7 @@ extern "C" void func_ov090_02217a3c(void *self)
                                           (void *)0x1078, (void *)0x1391);
     FIELD(AnimationResource *, self, 0x24c) = resource;
     sprite = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(self)),
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(self)),
         resource->entries[0], resource->entries[1], resource->entries[2], 2);
     FIELD(GraphicsSpriteState *, self, 0x248) = sprite;
     sprite->field_3a = 0;

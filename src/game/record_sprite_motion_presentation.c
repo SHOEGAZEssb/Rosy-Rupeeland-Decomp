@@ -23,7 +23,7 @@ extern void VecFx32Object_InitCopy(void *,const void *);extern void VecFx32Objec
 extern void VecFx32Object_InitComponents(void *,s32,s32,s32);extern void VecFx32Object_Assign(void *,const void *);
 extern void VecFx32Object_Destroy(void *);extern void VecFx32Object_Add(void *,const void *);
 extern void VecFx32_Subtract(void *,const void *,s32);extern void func_02056f00(void *,const void *);
-extern void *Actor_GetCollection(void *);extern void *ActorCollection_GetSpriteOwner(void *);
+extern void *Actor_GetOwningCollection(void *);extern void *ActorCollection_GetSpriteGroup(void *);
 extern void AnimationResourceState_InitEmbedded(void *);extern void AnimationResourceState_Destroy(void *);
 extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32);extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
 extern void GraphicsSpriteGroup_ReleaseState(void *,void *);extern void SelfLinkedSpriteConfig_Init(void *);
@@ -52,7 +52,7 @@ RecordSpriteMotionPresentation *func_02022ff4(
     TimedSpritePresentation_InitBase(self);self->vtable=(void **)data_020d6630;
     self->sampleArgument08=sampleArgument;VecFx32Object_InitCopy(&self->track0c,config+0x18);
     VecFx32Object_Init(&self->firstOffset1c);VecFx32Object_Init(&self->secondOffset2c);
-    self->spriteOwner44=ActorCollection_GetSpriteOwner(Actor_GetCollection((void *)config));
+    self->spriteOwner44=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection((void *)config));
     AnimationResourceState_InitEmbedded(self->resource48);*(s32 *)&self->track0c.bytes[0x0c]+=0x10000;
     if(mode!=2&&mode!=3)OS_Halt();
     kind=ActorDatabase_QueryDefinitionKind(data_021e9ac0,(u16)recordId);SelfLinkedSpriteConfig_Init(&record);

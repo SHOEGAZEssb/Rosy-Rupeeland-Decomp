@@ -11,8 +11,8 @@ extern u8 data_020dfab0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_GetSpriteOwner(void *value);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_GetSpriteGroup(void *value);
 extern void GraphicsSpriteGroup_ReplaceStateResources(void *context, void *attachment,
                           u32 first, u32 second, u32 third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
@@ -36,7 +36,7 @@ static s32 pairMatches(u32 first, u32 second)
  * ordinary flag mode. The 5/6 resource-one selection additionally requires
  * pair +0x218/+0x21c to match the recovered globals.
  *
- * Resolve context through Actor_GetCollection then ActorCollection_GetSpriteOwner, configure attachment
+ * Resolve context through Actor_GetOwningCollection then ActorCollection_GetSpriteGroup, configure attachment
  * +0x54 through GraphicsSpriteGroup_ReplaceStateResources using resource words +0x04/+0x08/+0x0c, select
  * the animation, store +0x36 and zero +0x30. Special flag mode clears bits
  * zero/one of attachment +0x24; ordinary mode clears bit zero and sets bit one.
@@ -118,7 +118,7 @@ void ActorExtendedType2_ApplyAttachmentState(void *self)
     }
 
     resource = *(u32 **)(actor + 0x208 + resourceIndex * 4);
-    context = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    context = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     attachment = *(u8 **)(actor + 0x54);
     GraphicsSpriteGroup_ReplaceStateResources(context, attachment, resource[1], resource[2], resource[3]);
     GraphicsSpriteState_SetAnimationIndex(attachment, animation & 0xff);

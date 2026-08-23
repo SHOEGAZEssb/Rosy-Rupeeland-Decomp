@@ -37,8 +37,8 @@ EXT(VecFx32Object_Destroy);
 EXT(Heap_Alloc);
 EXT(Heap_Free);
 EXT(AnimationResource_Init);
-EXT(ActorCollection_GetSpriteOwner);
-EXT(Actor_GetCollection);
+EXT(ActorCollection_GetSpriteGroup);
+EXT(Actor_GetOwningCollection);
 EXT(ActorExtendedType2_InitializePresentation);
 EXT(ActorExtendedType2_UpdateFrame);
 EXT(GraphicsSpriteGroup_ReplaceStateResources);
@@ -226,8 +226,8 @@ extern "C" void func_ov095_02217a38(void *actor)
                                                    0x1710);
     }
     F(void *, actor, 0x320) = resource;
-    void *collection = (void *)Actor_GetCollection(actor);
-    void *owner = (void *)ActorCollection_GetSpriteOwner(collection);
+    void *collection = (void *)Actor_GetOwningCollection(actor);
+    void *owner = (void *)ActorCollection_GetSpriteGroup(collection);
     GraphicsSpriteGroup_ReplaceStateResources(
         owner, F(void *, actor, 0xa8), F(void *, resource, 4),
         F(void *, resource, 8), F(void *, resource, 12));
@@ -338,8 +338,8 @@ extern "C" s32 func_ov095_02217da8(void *actor)
 static void ReplaceActorResource(void *actor)
 {
     void *resource = F(void *, actor, 0x208);
-    void *owner = (void *)ActorCollection_GetSpriteOwner(
-        (void *)Actor_GetCollection(actor));
+    void *owner = (void *)ActorCollection_GetSpriteGroup(
+        (void *)Actor_GetOwningCollection(actor));
     GraphicsSpriteGroup_ReplaceStateResources(
         owner, F(void *, actor, 0x54), F(void *, resource, 4),
         F(void *, resource, 8), F(void *, resource, 12));
@@ -765,7 +765,7 @@ extern "C" void func_ov095_0221af0c(void *actor, s32 x, s32 y, s32 radius)
             Fx32Vector2_Magnitude(F(s32, candidate, 0x1c) - x,
                           F(s32, candidate, 0x20) - y) < (radius << 12))
         {
-            ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor),
+            ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor),
                                                  candidate);
         }
     }
@@ -1428,7 +1428,7 @@ extern "C" void func_ov095_0221c4a4(void *actor, void *target)
     }
     F(Method, F(void *, actor, 0), 0xc8)(actor);
     F(u32, actor, 0x14) &= ~0x800000u;
-    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
 }
 
 /* Marks the impulse record as active. */
@@ -1647,7 +1647,7 @@ extern "C" s32 func_ov095_0221cb14(void *actor)
 static void ReplaceMinionResources(void *actor, void *resources)
 {
     GraphicsSpriteGroup_ReplaceStateResources(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
         F(void *, actor, 0x54), F(void *, resources, 4),
         F(void *, resources, 8), F(void *, resources, 0xc));
 }

@@ -10,7 +10,7 @@
 .extern ActorMotionAreaFollower_BindActor
 .extern ActorCollection_SpawnDescriptorsBySelector
 .extern Actor_SetActive
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern func_0204d570
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern gGameWork
@@ -78,7 +78,7 @@ func_ov091_02217b3c:
     ldr r1, [r2, #0x14]
     orr r1, r1, #0x4
     str r1, [r2, #0x14]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     ldr r1, .L_02217cdc
     mvn r2, #0x0
     ldr r1, [r1, #0x0]

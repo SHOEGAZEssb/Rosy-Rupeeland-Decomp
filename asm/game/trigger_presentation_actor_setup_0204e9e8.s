@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_setup.c.
 .extern data_020f4e18
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Actor_ApplySpawnDescriptorScript
 .extern func_02071e60
 .extern GraphicsArchive_FindPaletteResource
@@ -32,8 +32,8 @@ func_0204e9e8: ; 0x0204e9e8
     bl func_02071e80
     mov r6, r0
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldrb ip, [r4, #0x10]
     mov r1, r8
     mov r2, r7

@@ -14,7 +14,7 @@
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern GamePhaseRuntime_GetActorCollection
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReleaseState
 .extern GraphicsSpriteGroup_AdvanceAnimations
@@ -63,7 +63,7 @@ L_0200ca80:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldrh r3, [r4, #0x28]
     mov r2, #0x4
     mov r1, #0x2
@@ -99,7 +99,7 @@ L_0200cb08:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldrh r3, [r4, #0x28]
     mov r2, #0x4
     mov r1, #0x2
@@ -135,7 +135,7 @@ L_0200cb90:
     ldr r0, [r1, #0x0]
     mov r1, #0x1
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldrh r3, [r4, #0x28]
     mov r2, #0x4
     mov r1, #0x2

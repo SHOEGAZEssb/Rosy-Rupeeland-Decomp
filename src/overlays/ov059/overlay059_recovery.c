@@ -64,7 +64,7 @@ extern void *GamePhaseMetadata_GetByIndex(...);
 extern s32 GamePhaseMetadata_GetTextResourceId(...);
 extern void *GamePhaseVariantMetadata_GetForPhase(...);
 extern void ActorCollection_SetEnabled(...);
-extern void *ActorCollection_GetSpriteOwner(...);
+extern void *ActorCollection_GetSpriteGroup(...);
 extern void ActorCollection_SetActorScale(...);
 extern void *Actor_RebuildPrimaryAttachment(...);
 extern void Sound_Play(...), func_020706c4(...), func_02070bc4(...);
@@ -564,8 +564,8 @@ void func_ov059_02210dfc(void *c, s32 floor) {
   collection = GamePhaseRuntime_GetActorCollection(runtime, 2);
   ActorCollection_SetActorScale(collection,
                                 func_020adc90(0x1000, data_ov059_02211ac0));
-  F(s32, ActorCollection_GetSpriteOwner(collection), 0x18) = 8;
-  F(s32, ActorCollection_GetSpriteOwner(collection), 0x1c) = 0;
+  F(s32, ActorCollection_GetSpriteGroup(collection), 0x18) = 8;
+  F(s32, ActorCollection_GetSpriteGroup(collection), 0x1c) = 0;
   func_ov059_02210f34(c, 0);
   current = F(s32, F(void *, runtime, 0x30bc), 0);
   actor = Actor_RebuildPrimaryAttachment(

@@ -9,8 +9,8 @@
 .extern OverlayManager_GetGlobal
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Init
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern Actor_PlayRadialSpatialSound
 .extern Type7Actor_EnterFlag40000State
 .extern GraphicsSpriteGroup_CreateState
@@ -44,8 +44,8 @@ func_ov088_0221af2c:
     mov r7, r0
     str r0, [r6, #0x24c]
     mov r0, r6
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r7, {r1, r2, r3}

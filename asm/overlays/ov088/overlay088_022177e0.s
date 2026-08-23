@@ -5,7 +5,7 @@
 .extern data_ov088_0221b928
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollisionBounds
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern ActorDerivedRuntime_Init
 .extern func_020befec
 .extern func_ov088_022179e0
@@ -135,7 +135,7 @@ func_ov088_022177e0:
     streq r5, [r1, #0x0]
     beq .L_022179c8
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
 .L_022179c8:

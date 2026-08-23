@@ -20,8 +20,8 @@ typedef struct Type7MarkerPresentation {
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void Actor_GetCollection(void *owner);
-extern void *ActorCollection_GetSpriteOwner(void);
+extern void Actor_GetOwningCollection(void *owner);
+extern void *ActorCollection_GetSpriteGroup(void);
 extern void *func_02071e60(void *resources, u32 id);
 extern void *GraphicsArchive_FindPaletteResource(void *resources, u32 id);
 extern void *func_02071e80(void *resources, u32 id);
@@ -55,9 +55,9 @@ Type7MarkerPresentation *Type7MarkerPresentation_Init(Type7MarkerPresentation *s
     first = func_02071e60(data_020f4e18, 0x138a);
     second = GraphicsArchive_FindPaletteResource(data_020f4e18, 0x1078);
     third = func_02071e80(data_020f4e18, 0x138b);
-    Actor_GetCollection(owner);
+    Actor_GetOwningCollection(owner);
     self->presentation = (u8 *)GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(), first, second, third, 2);
+        ActorCollection_GetSpriteGroup(), first, second, third, 2);
     GraphicsSpriteState_SetAnimationIndex(self->presentation, 0);
     self->presentation[0x3a] = 1;
     *(u16 *)(self->presentation + 0x2c) = 0;

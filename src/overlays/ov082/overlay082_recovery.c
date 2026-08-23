@@ -41,9 +41,9 @@ extern "C" void VecFx32Object_Init(void *);
 extern "C" void VecFx32Object_InitCopy(void *, const void *);
 extern "C" void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern "C" void VecFx32Object_Destroy(void *);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
-extern "C" void *ActorCollection_FindActorByDescriptorValue(void *, s32);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
+extern "C" void *ActorCollection_FindActorByRuntimeId(void *, s32);
 extern "C" s32 Actor_GetCachedTerrainHeight(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *,
                                                           void *, void *,
@@ -200,7 +200,7 @@ extern "C" void func_ov082_02212b30(void *a) {
     }
     void *r = F(void *, a, 0x208), *s = F(void *, a, 0x54);
     GraphicsSpriteGroup_ReplaceStateResources(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(a)), s,
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a)), s,
         F(void *, r, 4), F(void *, r, 8), F(void *, r, 0xc));
     if (F(u8, s, 0x38) != (u8)n)
         GraphicsSpriteState_SetAnimationIndex(s, n);
@@ -620,7 +620,7 @@ extern "C" void func_ov082_02213a2c(void *a, s32, s32, s32) {
         }
     if (reload)
         GraphicsSpriteGroup_ReplaceStateResources(
-            ActorCollection_GetSpriteOwner(Actor_GetCollection(a)), s,
+            ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a)), s,
             F(void *, r, 4), F(void *, r, 8), F(void *, r, 0xc));
     if (n >= 0) {
         GraphicsSpriteState_SetAnimationIndex(s, n);
@@ -765,8 +765,8 @@ func_ov082_022143ec(void *a) {
 /* Resolve and store a partner by descriptor identity. */ extern "C" void
 func_ov082_02214408(void *a, s32 id) {
     F(void *, a, 0x298) = id < 0 ? 0
-                                 : ActorCollection_FindActorByDescriptorValue(
-                                       Actor_GetCollection(a), id);
+                                 : ActorCollection_FindActorByRuntimeId(
+                                       Actor_GetOwningCollection(a), id);
 }
 /* Configure follower from partner or fallback callbacks. */ extern "C" s32
 func_ov082_02214430(void *a, void *d) {

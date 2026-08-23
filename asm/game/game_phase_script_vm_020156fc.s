@@ -7,7 +7,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern DisplayRouting_MatchesRequest
 .extern func_0201da20
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern func_ov059_0220fd20
 .extern gHeapContext
 
@@ -24,7 +24,7 @@ GamePhaseActorScriptVm_CreateOverlay61DebugObject: ; 0x020156fc
     bl GamePhaseScriptVm_Pop
     mov r4, r0
     ldr r0, [r5, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]

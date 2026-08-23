@@ -5,9 +5,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void Actor_SetActive(void *actor, s32 active);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -21,7 +21,7 @@ s32 GamePhaseActorScriptVm_SetIndexedActorActive(GamePhaseActorScriptVm *self)
 {
     s32 active = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
+    u8 *actor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), index);
 
     if (actor != 0) {
         Actor_SetActive(actor, active != 0);
@@ -35,7 +35,7 @@ s32 GamePhaseActorScriptVm_SetIndexedActorActive(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_ActivateAllActors(GamePhaseActorScriptVm *self)
 {
     s32 index;
-    void **actors = (void **)Actor_GetCollection(self->actor);
+    void **actors = (void **)Actor_GetOwningCollection(self->actor);
     for (index = 0; index < 128; index++) {
         if (actors[index] != 0)
             Actor_SetActive(actors[index], 1);

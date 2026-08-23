@@ -54,11 +54,11 @@ extern "C" void *ActorDerivedRuntime_Init(void *, const void *);
 extern "C" void *ActorDerivedRuntime_DestroyAlternate(void *);
 extern "C" void ActorDerivedRuntime_UpdateFrame(void *);
 extern "C" void ActorDerivedRuntime_ForwardTouchPoint(void *, ...);
-extern "C" void *Actor_GetCollection(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
 extern "C" void *Actor_GetCollisionBounds(void *);
 extern "C" void ActorCollection_QueueActorForRemoval(void *, void *);
 extern "C" void GraphicsSpriteState_ReleaseFromGroup(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void *GraphicsSpriteGroup_CreateState(void *, s32, s32, s32, s32);
 extern "C" void *AnimationResource_Init(void *, s32, s32, s32);
 extern "C" void func_02071ee0(void *, void *, s32, s32, s32);
@@ -176,7 +176,7 @@ static void initialize_actor_members(void *a, const void *c) {
     if (!data_021056f0)
         data_021056f0 = a;
     else
-        ActorCollection_QueueActorForRemoval(Actor_GetCollection(a), a);
+        ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(a), a);
 }
 
 /* Construct the primary moving actor and initialize collision/presentation
@@ -267,7 +267,7 @@ extern "C" void func_ov088_02217f38(void *a, const void *config) {
     void *d = F(void *, a, 0x238);
     func_02071ee0((u8 *)a + 0x1f0, data_020f4e18, F(u16, d, 0xa),
                   F(u16, d, 0xc), F(u16, d, 0xe));
-    void *owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(a));
+    void *owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));
     F(void *, a, 0x54) = GraphicsSpriteGroup_CreateState(
         owner, F(s32, a, 0x1f0), F(s32, a, 0x1f4), F(s32, a, 0x1f8), 2);
     void *resource = Heap_Alloc(0x10, data_ov088_0221b9fc, 4, gHeapContext);
@@ -277,7 +277,7 @@ extern "C" void func_ov088_02217f38(void *a, const void *config) {
     F(void *, a, 0x220) = resource;
     const u32 slots[] = {0x224, 0x228, 0x22c};
     for (u32 i = 0; i < 3; i++) {
-        owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(a));
+        owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));
         void *s = GraphicsSpriteGroup_CreateState(owner, F(s32, resource, 4),
                                                   F(s32, resource, 8),
                                                   F(s32, resource, 12), 2);
@@ -288,7 +288,7 @@ extern "C" void func_ov088_02217f38(void *a, const void *config) {
     if (resource)
         AnimationResource_Init(resource, 0x32fa, 0x32fb, 0x32fc);
     F(void *, a, 0x254) = resource;
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(a));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));
     void *s = GraphicsSpriteGroup_CreateState(owner, F(s32, resource, 4),
                                               F(s32, resource, 8),
                                               F(s32, resource, 12), 2);
@@ -1079,7 +1079,7 @@ extern "C" void func_ov088_0221af2c(void *a, s32 duration) {
         AnimationResource_Init(resource, F(u16, d, 0x14), F(u16, d, 0x16),
                                F(u16, d, 0x18));
     F(void *, a, 0x24c) = resource;
-    void *owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(a));
+    void *owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));
     void *s = GraphicsSpriteGroup_CreateState(owner, F(s32, resource, 4),
                                               F(s32, resource, 8),
                                               F(s32, resource, 12), 2);

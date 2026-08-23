@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_PlayRadialSpatialSound
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
@@ -124,7 +124,7 @@ func_ov097_0221a1c8:
     ldr r1, [r6, #0x14]
     and r1, r1, r2
     str r1, [r6, #0x14]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     mov r0, r6

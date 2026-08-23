@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern const char data_020d5b34[];
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void *ActorMotionAreaFollower_GetPosition(void *motion);
 extern void *RisingSpriteSwarmPresentation_Init(void *object,
                                                  void *referencePosition,
@@ -36,7 +36,7 @@ s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *s
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)data_021052fc;
     if (enabled) {
-        void *actor = ActorCollection_FindActorByDescriptorValue(
+        void *actor = ActorCollection_FindActorByRuntimeId(
             GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)runtime, 1), actorIndex);
         void *object = Heap_Alloc(0x4c, data_020d5b34, 4, &gHeapContext);
         if (object)

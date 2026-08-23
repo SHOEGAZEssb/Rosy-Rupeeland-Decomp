@@ -4,7 +4,7 @@
 .extern gGridEffectActorRuntimeState
 .extern gGridEffectActorRegistry
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern GridEffectActorRegistry_Reset
 .extern GraphicsArchive_AcquireVfdResource
 .extern GraphicsArchive_ReleaseResourceE4
@@ -114,7 +114,7 @@ GridEffectActorRegistry_FinalizeDepartingActors: ; 0x0204fbdc
     bic r2, r2, #0x3
     orr r2, r2, #0x3
     strh r2, [r1, #0xf0]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
 .L_0204fc3c:

@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseRuntime_GetActorCollection
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .extern Actor_SetRuntimeProperty
 .extern data_021052fc
 .global GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0
@@ -15,7 +15,7 @@ GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0: ; 0x0201b098
     mov r1, #0x2
     bl GamePhaseRuntime_GetActorCollection
     mov r1, #0x0
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     mov r2, r4
     mov r1, #0x2a
     bl Actor_SetRuntimeProperty

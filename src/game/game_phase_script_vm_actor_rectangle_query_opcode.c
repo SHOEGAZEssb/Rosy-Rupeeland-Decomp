@@ -8,7 +8,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -51,7 +51,7 @@ s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm 
     s32 top = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 left = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)ActorCollection_FindActorByDescriptorValue(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), index);
+    u8 *actor = (u8 *)ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), index);
     VecFx32Object position;
     RectS32 rect;
 

@@ -4,7 +4,7 @@
 .extern VecFx32Object_Destroy
 .extern RectS32_Set
 .extern Actor_BuildCollisionRect
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_BuildWorldInteractionBounds
 .extern func_02056f34
 
@@ -27,7 +27,7 @@ Actor_IsInteractionEligible: ; 0x02034060
     orrs r0, r2, r0
     bne .L_02034120
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r5, [r0, #0xe7c]
     cmp r5, #0x0

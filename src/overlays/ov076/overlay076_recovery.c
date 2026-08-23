@@ -46,9 +46,9 @@ extern "C" void ActorDerivedType1_TrySetStateVector(void *, const void *, s32,
                                                     s32);
 extern "C" void Actor_ApplyMotionImpulse(void *, const void *, s32);
 extern "C" s32 Actor_GetCachedTerrainHeight(void *);
-extern "C" void *Actor_GetCollection(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
 extern "C" void Actor_SetInteractionFlag2000(void *, s32);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void Type7Actor_HandleObjectInteraction(void *, void *);
 extern "C" void *GraphicsSpriteGroup_CreateState(void *, s32, s32, s32, s32);
 extern "C" void GraphicsSpriteState_ReleaseFromGroup(void *);
@@ -522,7 +522,7 @@ extern "C" void func_ov076_022138e8(void *actor, const void *config) {
     for (u32 i = 0; i < 2; ++i) {
         void *resource = F(void *, actor, resources[i]);
         void *owner =
-            ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+            ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
         void *state = GraphicsSpriteGroup_CreateState(
             owner, F(s32, resource, 4), F(s32, resource, 8),
             F(s32, resource, 12), 2);

@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_derived_type1_animation_dispatch.c.
 .text
 .extern GameWork_TestFlag
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
@@ -21,8 +21,8 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     mov r5, #0x100
     cmp r6, #0x0
     beq .L_0203613c
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r6, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]
@@ -288,8 +288,8 @@ ActorDerivedType1_UpdateAttachmentPresentation: ; 0x02036030
     cmpne r10, #0x0
     beq .L_02036418
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r10, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x54]

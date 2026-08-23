@@ -15,7 +15,7 @@ extern void *gGridEffectActorRegistry[];
 extern "C" {
 #endif
 extern void *ActorCollection_QueueActorForRemoval(void *value, void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void GridEffectActorRegistry_Reset(void);
 extern void GraphicsArchive_ReleaseResourceE4(void *archive, void *resource);
 extern void *GraphicsArchive_AcquireVfdResource(void *archive, u32 resource_id);
@@ -93,7 +93,7 @@ void GridEffectActorRegistry_BroadcastStateValue0(void)
 /*
  * Ignore all register inputs. For each occupied actor whose low state bits at
  * 0x1F0 equal two, set presentation flags 0x14, change the state to three, and
- * finish it through Actor_GetCollection/ActorCollection_QueueActorForRemoval. Finally set global flag 0x10
+ * finish it through Actor_GetOwningCollection/ActorCollection_QueueActorForRemoval. Finally set global flag 0x10
  * at data_021052fc+0x30B8. Returns nothing; actor/global state changes without
  * direct hardware effects.
  */
@@ -106,7 +106,7 @@ void GridEffectActorRegistry_FinalizeDepartingActors(void)
             FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 0x14;
             FIELD(u16, actor, 0x1f0) =
                 (FIELD(u16, actor, 0x1f0) & (u16)~3) | 3;
-            ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+            ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
         }
     }
     FIELD(u32, data_021052fc, 0x30b8) |= 0x10;

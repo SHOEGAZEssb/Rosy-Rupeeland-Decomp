@@ -102,14 +102,14 @@ extern const char data_ov081_0221583c[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_GetCollection(void *);
+extern void *Actor_GetOwningCollection(void *);
 extern s32 Actor_GetCachedTerrainHeight(void *);
 extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
 extern void Actor_RefreshCachedTerrainHeight(void *);
 extern void Actor_SetRuntimeFlag80(void *);
 extern void Actor_UpdateAnimationState(void *);
 extern void Actor_UpdateTimedResourceState(void *);
-extern void *ActorCollection_GetSpriteOwner(void *);
+extern void *ActorCollection_GetSpriteGroup(void *);
 extern s32 ActorDerivedRuntime_AcceptInteractionQuery(void *);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *);
 extern void ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
@@ -323,7 +323,7 @@ void func_ov081_02212d64(void *actor, const void *descriptor)
     func_02071ee0((u8 *)actor + 0x1f0, data_020f4e18,
                   FIELD(s32, descriptor, 4), FIELD(s32, descriptor, 8),
                   FIELD(s32, descriptor, 0xc));
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     FIELD(void *, actor, 0x54) = GraphicsSpriteGroup_CreateState(
         owner, FIELD(u32, actor, 0x1f0), FIELD(u32, actor, 0x1f4),
         FIELD(u32, actor, 0x1f8), FIELD(u8, descriptor, 0x10));
@@ -414,7 +414,7 @@ void func_ov081_02212fe4(void *actor)
     u16 clearFlags = 1;
 
     GraphicsSpriteGroup_ReplaceStateResources(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), sprite,
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)), sprite,
         FIELD(u32, actor, 0x1f0), FIELD(u32, actor, 0x1f4),
         FIELD(u32, actor, 0x1f8));
 
@@ -1250,7 +1250,7 @@ void func_ov081_02214b50(void *actor)
     s32 grounded;
 
     GraphicsSpriteGroup_ReplaceStateResources(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), sprite,
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)), sprite,
         FIELD(u32, actor, 0x1f0), FIELD(u32, actor, 0x1f4),
         FIELD(u32, actor, 0x1f8));
     grounded = FIELD(s32, actor, 0x24) == Actor_GetCachedTerrainHeight(actor);

@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020adae4(s32 value, s32 shift);
 #ifdef __cplusplus
@@ -83,7 +83,7 @@ void TrackedResourceActorType22And25_Update(void *actor)
             else
                 FIELD(u16, presentation, 0x24) &= (u16)~4;
         } else {
-            ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+            ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
             FIELD(u16, actor, 0x1f0) =
                 (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;
         }

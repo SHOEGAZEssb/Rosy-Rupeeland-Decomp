@@ -39,7 +39,7 @@ extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
 extern void func_ov090_0221ad64(void *self, u32 first, u32 second, u32 third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 index);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 extern void Sound_Play(void *sound, s32 bank, s32 id);
 }
@@ -81,7 +81,7 @@ extern "C" void func_ov090_0221a784(void *self, void *event)
 
     GraphicsSpriteState_SetAnimationIndex(FIELD(void *, self, 0x200), 8);
     FIELD(u16, FIELD(void *, event, 0x54), 0x24) |= 0x10;
-    ActorCollection_QueueActorForRemoval(Actor_GetCollection(self), event);
+    ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(self), event);
     FIELD(u16, FIELD(void *, self, 0x200), 0x24) &= ~2;
     Sound_Play(gSoundContext, 0, 0x43);
 }

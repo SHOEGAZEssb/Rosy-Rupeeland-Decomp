@@ -66,7 +66,7 @@ extern u8 data_020d54b4[];
 extern u8 data_020d552c[];
 extern u8 data_020d54d4[];
 extern void func_02092c8c(s32 screens, s32 brightness);
-extern GraphicsSpriteGroup *ActorCollection_GetSpriteOwner(void *collection);
+extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 extern s32 SceneInputBase_Update(void *object, s32 mode);
 extern void Sound_SetModalEnvelopeEnabled(void *sound, s32 a, s32 b, s32 c, s32 d);
 extern void func_02092418(void *object);
@@ -262,7 +262,7 @@ code_r0x0200d170:
 code_r0x0200d17c:
     iVar5 = DisplayBrightness_IsMainTransitionComplete();
     if ((iVar5 == 0) || (iVar5 = DisplayBrightness_IsSubTransitionComplete(), iVar5 == 0)) {
-      GraphicsSpriteGroup_AdvanceAnimations(ActorCollection_GetSpriteOwner(
+      GraphicsSpriteGroup_AdvanceAnimations(ActorCollection_GetSpriteGroup(
           GamePhaseRuntime_GetActorCollection(data_021052fc, 1)));
       return 0;
     }
@@ -427,7 +427,7 @@ code_r0x0200e2ac:
       if (self->field_34 != 0) {
         GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 1);
       }
-      GraphicsSpriteGroup_PrepareResources(ActorCollection_GetSpriteOwner(
+      GraphicsSpriteGroup_PrepareResources(ActorCollection_GetSpriteGroup(
           GamePhaseRuntime_GetActorCollection(data_021052fc, 1)));
       if (self != 0) {
         self->base.vtable->destroyAndFree(&self->base);
@@ -555,7 +555,7 @@ code_r0x0200d224:
     func_020923a4(self->field_40);
     *UNK_0200e0ec = 0;
     GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 0);
-    GraphicsSpriteGroup_ReleaseResources(ActorCollection_GetSpriteOwner(
+    GraphicsSpriteGroup_ReleaseResources(ActorCollection_GetSpriteGroup(
         GamePhaseRuntime_GetActorCollection(data_021052fc, 1)));
     func_020745c4(*UNK_0200e0f0,0);
   }

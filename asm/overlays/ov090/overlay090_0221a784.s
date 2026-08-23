@@ -5,7 +5,7 @@
 .extern Sound_Play
 .extern data_021052fc
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern ActorDerivedType1_GetActiveRecordId
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -79,7 +79,7 @@ func_ov090_0221a784:
     ldrh r1, [r2, #0x24]
     orr r1, r1, #0x10
     strh r1, [r2, #0x24]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     ldr r4, [r6, #0x200]

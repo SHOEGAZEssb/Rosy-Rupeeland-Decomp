@@ -8,9 +8,9 @@
 .extern data_020e7ffc
 .extern data_020e8394
 .extern AnimationResource_Init
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern Actor_CreateSecondaryRenderAttachment
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .extern genrand_int32
@@ -104,8 +104,8 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
 .L_0203e69c:
     mov r0, r7
     ldr r4, [r7, #0x208]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r4, {r1, r2, r3}

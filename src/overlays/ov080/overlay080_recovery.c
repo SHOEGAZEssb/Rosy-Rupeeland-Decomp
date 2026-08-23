@@ -36,8 +36,8 @@ extern "C" u8 data_ov080_02213f44[];
 extern "C" void *ActorExtendedType2_Init(void *, const void *);
 extern "C" void *ActorExtendedType2_Destroy(void *);
 extern "C" void Heap_Free(void *);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, void *, void *, void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern "C" void Actor_SaveAndForceFlags(void *);
@@ -163,7 +163,7 @@ install:
     u8 *resource = FIELD(u8 *, actor, 0x208 + (FIELD(s16, actor, 0x2a0) != 0 ? 4 : 0));
     void *sprite = FIELD(void *, actor, 0x54);
     GraphicsSpriteGroup_ReplaceStateResources(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)), sprite,
+        ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)), sprite,
         FIELD(void *, resource, 4), FIELD(void *, resource, 8), FIELD(void *, resource, 0xc));
     if (animation != FIELD(u8, sprite, 0x38))
         GraphicsSpriteState_SetAnimationIndex(sprite, animation & 0xff);

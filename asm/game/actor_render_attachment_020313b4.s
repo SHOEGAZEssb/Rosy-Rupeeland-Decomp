@@ -2,8 +2,8 @@
 .text
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 
@@ -17,7 +17,7 @@ Actor_CreateSecondaryRenderAttachment: ; 0x020313b4
     mov r6, r2
     tst r1, #0x1
     beq .L_02031458
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
     cmp r0, #0x1
@@ -27,7 +27,7 @@ Actor_CreateSecondaryRenderAttachment: ; 0x020313b4
     ldr r0, [r0, #0x0]
     mov r1, #0x2
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     str r6, [sp, #0x0]
     ldr r1, [r5, #0x14]
     ldr r2, [r5, #0x18]

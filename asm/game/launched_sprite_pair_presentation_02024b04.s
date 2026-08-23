@@ -13,9 +13,9 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern TimedSpritePresentation_InitBase
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
-.extern Actor_GetCollectionBySlot
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
+.extern Actor_GetGlobalCollectionBySlot
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -44,8 +44,8 @@ func_02024b04: ; 0x02024b04
     add r0, r6, #0x3c
     bl AnimationResourceState_InitEmbedded
     mov r0, r5
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     str r0, [r6, #0x48]
     ldr r0, .L_02024d24
     mov r1, r4
@@ -86,8 +86,8 @@ func_02024b04: ; 0x02024b04
 .L_02024be8:
     mov r0, r5
     mov r1, #0x2
-    bl Actor_GetCollectionBySlot
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetGlobalCollectionBySlot
+    bl ActorCollection_GetSpriteGroup
     str r0, [r6, #0x4c]
     add r1, r6, #0x3c
     mov r2, #0x2

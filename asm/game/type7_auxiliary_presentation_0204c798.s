@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/type7_auxiliary_presentation.c.
 .extern Heap_Alloc
 .extern AnimationResource_Init
-.extern Actor_GetCollection
-.extern ActorCollection_GetSpriteOwner
+.extern Actor_GetOwningCollection
+.extern ActorCollection_GetSpriteGroup
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Type7AuxiliaryPresentation_Reset
@@ -37,8 +37,8 @@ Type7AuxiliaryPresentation_Init: ; 0x0204c798
     mov r5, r0
     str r0, [r4, #0xc]
     mov r0, r6
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}

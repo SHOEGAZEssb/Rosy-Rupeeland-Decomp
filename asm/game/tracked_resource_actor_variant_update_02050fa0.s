@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_variant_update.c.
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_UpdateAnimationState
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_GetCachedTerrainHeight
 .extern func_020adae4
 .text
@@ -111,7 +111,7 @@ TrackedResourceActorType22And25_Update:
     b .L_02051168
 .L_02051124:
     mov r0, r4
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r4
     bl ActorCollection_QueueActorForRemoval
     add r1, r4, #0x100

@@ -3,8 +3,8 @@
 .extern Heap_Alloc
 .extern data_021052fc
 .extern data_ov089_022199ec
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_ov089_02217b04
 .extern gHeapContext
 
@@ -24,8 +24,8 @@ func_ov089_022179dc:
     strne r1, [r0, #0x4]
     str r0, [r4, #0x240]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, .L_02217afc
     str r0, [sp, #0x0]
     mov r0, #0x2
@@ -65,8 +65,8 @@ func_ov089_022179dc:
     strne r1, [r0, #0x4]
     str r0, [r4, #0x244]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     str r0, [sp, #0x0]
     mov r0, #0x2
     str r0, [sp, #0x4]

@@ -32,7 +32,7 @@ extern "C" void Type7MarkerPresentation_ReloadResources(void*); extern "C" void 
 extern "C" void VecFx32Object_Init(void*); extern "C" void VecFx32Object_InitCopy(void*,const void*);
 extern "C" void VecFx32Object_Assign(void*,const void*); extern "C" void VecFx32Object_Destroy(void*);
 extern "C" s32 VecFx32Object_GetMagnitude(const void*); extern "C" void *Heap_Free(void*);
-extern "C" void *Actor_GetCollection(void*); extern "C" void *ActorCollection_GetSpriteOwner(void*);
+extern "C" void *Actor_GetOwningCollection(void*); extern "C" void *ActorCollection_GetSpriteGroup(void*);
 extern "C" void *GraphicsSpriteGroup_CreateState(void*,s32,s32,s32,u8);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void*,void*,void*,void*,void*);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void*,s32); extern "C" void Actor_SetRuntimeFlag80(void*);
@@ -74,7 +74,7 @@ extern "C" void *func_ov085_02212c2c(void*a){func_ov085_02212c04(a);Heap_Free(a)
 /* Reset to the home state and refresh terrain-relative vectors. */
 extern "C" void func_ov085_02212c5c(void*a){set_pair(a,data_ov085_02214390,120);F(s32,a,0x210)=0;func_ov085_022131b4(a);}
 /* Build the sprite state from a five-field resource descriptor. */
-extern "C" void func_ov085_02212c8c(void*a,const void*r){func_02071ee0((u8*)a+0x1f0,data_020f4e18,F(s32,r,4),F(s32,r,8),F(s32,r,0xc));void*o=ActorCollection_GetSpriteOwner(Actor_GetCollection(a));void*s=GraphicsSpriteGroup_CreateState(o,F(s32,a,0x1f0),F(s32,a,0x1f4),F(s32,a,0x1f8),F(u8,r,0x10));F(void*,a,0x54)=s;((M0)vm(a,0x14))(a);if(F(u32,a,0x14)&0x80)F(u8,s,0x3a)=(u8)F(u16,r,0x3c);}
+extern "C" void func_ov085_02212c8c(void*a,const void*r){func_02071ee0((u8*)a+0x1f0,data_020f4e18,F(s32,r,4),F(s32,r,8),F(s32,r,0xc));void*o=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a));void*s=GraphicsSpriteGroup_CreateState(o,F(s32,a,0x1f0),F(s32,a,0x1f4),F(s32,a,0x1f8),F(u8,r,0x10));F(void*,a,0x54)=s;((M0)vm(a,0x14))(a);if(F(u32,a,0x14)&0x80)F(u8,s,0x3a)=(u8)F(u16,r,0x3c);}
 /* Run one actor frame and dispatch its current state callback. */
 extern "C" void func_ov085_02212d08(void*a)
 {
@@ -111,7 +111,7 @@ extern "C" void func_ov085_02213484(void*a,void*q,s32,s32){if(!ActorRuntimeColle
 /* Render the marker 0x18000 fixed-point units above the actor. */
 extern "C" void func_ov085_022136c8(void*c,void*a,s32 q,s32){Actor_UpdatePresentation(c,a,q);if(!(F(u32,a,0x14)&0x10000000)){u8 p[16];VecFx32Object_InitCopy(p,(u8*)a+0x18);F(s32,p,8)-=0x18000;((V3)F(void*,F(void*,a,0x23c),0xc))((u8*)a+0x23c,q,p,0);VecFx32Object_Destroy(p);}else func_ov085_02213194((u8*)a+0x23c,0);}
 /* Replace resources and choose an animation from movement phase. */
-extern "C" void func_ov085_02213748(void*a,s32,s32,s32){void*s=F(void*,a,0x54);GraphicsSpriteGroup_ReplaceStateResources(ActorCollection_GetSpriteOwner(Actor_GetCollection(a)),s,F(void*,a,0x1f0),F(void*,a,0x1f4),F(void*,a,0x1f8));s32 n=-1;switch(F(u16,a,0xd6)){case 1:case 2:n=(F(s32,a,0x24)==Actor_GetCachedTerrainHeight(a)?8:0x1a)+F(u8,a,0xd4);break;case 3:n=0x11;break;case 4:n=0x38;break;case 5:case 6:n=(F(s32,a,0x24)==Actor_GetCachedTerrainHeight(a)?0:0x1a)+F(u8,a,0xd4);break;case 7:n=F(u8,a,0xd4);break;case 8:n=0x37;break;}if(n>=0){F(u16,s,0x24)=(F(u16,s,0x24)&~1u)|2;if(F(u8,s,0x38)!=(u8)n)GraphicsSpriteState_SetAnimationIndex(s,n);}}
+extern "C" void func_ov085_02213748(void*a,s32,s32,s32){void*s=F(void*,a,0x54);GraphicsSpriteGroup_ReplaceStateResources(ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(a)),s,F(void*,a,0x1f0),F(void*,a,0x1f4),F(void*,a,0x1f8));s32 n=-1;switch(F(u16,a,0xd6)){case 1:case 2:n=(F(s32,a,0x24)==Actor_GetCachedTerrainHeight(a)?8:0x1a)+F(u8,a,0xd4);break;case 3:n=0x11;break;case 4:n=0x38;break;case 5:case 6:n=(F(s32,a,0x24)==Actor_GetCachedTerrainHeight(a)?0:0x1a)+F(u8,a,0xd4);break;case 7:n=F(u8,a,0xd4);break;case 8:n=0x37;break;}if(n>=0){F(u16,s,0x24)=(F(u16,s,0x24)&~1u)|2;if(F(u8,s,0x38)!=(u8)n)GraphicsSpriteState_SetAnimationIndex(s,n);}}
 /* Derive horizontal velocity toward home and select the move phase. */
 extern "C" void func_ov085_022138dc(void*a,void*source,s32,s32){u8 d[16];VecFx32Object_Assign((u8*)a+0x78,source);func_ov085_02213a38(d,(u8*)a+0x78,(u8*)a+0x18);s32 x=F(s32,d,4),y=F(s32,d,8),m=Fx32Vector2_Magnitude(x,y);if(m<=0x4000){if(F(s16,a,0xd6)==6){F(s32,a,0x8c)=F(s32,a,0x3c)/2;F(s32,a,0x90)=F(s32,a,0x40)/2;}F(s32,a,0x3c)=F(s32,a,0x40)=0;F(s16,a,0xd6)=1;}else{s32 v=(F(u32,a,0xd0)&2)?F(s32,a,0x228):F(s32,a,0x224);F(s16,a,0xd6)=(F(u32,a,0xd0)&2)?6:5;if(F(u32,a,0x14)&0x40)v/=10;s32 angle=func_020ae024(y,x)>>4;F(s32,a,0x3c)=v*data_020c9670[angle*2+1]>>12;F(s32,a,0x40)=v*data_020c9670[angle*2]>>12;}if(!(F(u32,a,0x14)&0x40)&&F(s32,a,0x1dc)<F(s32,a,0x24))F(s16,a,0xd6)=7;if((F(u32,a,0xd0)&4)&&((M0)vm(a,0x30))(a))F(s32,a,0x8c)=F(s32,a,0x90)=F(s32,a,0x94)=0;VecFx32Object_Destroy(d);}
 /* Construct a vector holding lhs minus rhs. */

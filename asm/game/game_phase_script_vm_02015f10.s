@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_activation_opcodes.c.
 .text
 .extern Actor_SetActive
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .global GamePhaseActorScriptVm_ActivateAllActors
 GamePhaseActorScriptVm_ActivateAllActors:
     stmdb sp!, {r4, r5, r6, lr}
@@ -10,7 +10,7 @@ GamePhaseActorScriptVm_ActivateAllActors:
     mov r4, #1
 L_02015f20:
     ldr r0, [r6, #0x84]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     ldr r0, [r0, r5, lsl #2]
     cmp r0, #0
     beq L_02015f3c

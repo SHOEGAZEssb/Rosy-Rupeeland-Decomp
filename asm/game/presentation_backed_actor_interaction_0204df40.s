@@ -13,7 +13,7 @@
 .extern func_0201e0ec
 .extern func_02022cb0
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern ActorDerivedType1_TrySetStateVector
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a25c8
@@ -155,7 +155,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     mov r4, #0xf
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100
@@ -196,7 +196,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     mov r4, #0xf
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r6
     bl ActorCollection_QueueActorForRemoval
     add r0, r6, #0x100

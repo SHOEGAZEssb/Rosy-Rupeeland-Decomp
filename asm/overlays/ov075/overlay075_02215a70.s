@@ -5,8 +5,8 @@
 .extern data_020e6ca4
 .extern data_ov075_02217290
 .extern data_ov075_02217358
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 
@@ -129,8 +129,8 @@ func_ov075_02215a70:
     add r0, r7, r0, lsl #0x2
     ldr r8, [r0, #0x208]
     mov r0, r7
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r8, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x54]

@@ -5,7 +5,7 @@
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern GamePhaseMetadata_GetByIndex
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern ActorCollection_SetActorScale
 .extern Actor_RebuildPrimaryAttachment
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -43,7 +43,7 @@ func_ov059_02210dfc:
     mov r0, r6
     bl ActorCollection_SetActorScale
     mov r0, r6
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x8
     str r1, [r0, #0x18]
     mov r1, #0x0

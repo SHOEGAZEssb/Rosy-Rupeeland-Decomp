@@ -2,8 +2,8 @@
 .extern func_02071e60
 .extern GraphicsArchive_FindPaletteResource
 .extern func_02071e80
-.extern Actor_GetCollection
-.extern ActorCollection_GetSpriteOwner
+.extern Actor_GetOwningCollection
+.extern ActorCollection_GetSpriteGroup
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Type7MarkerPresentation_Reset
@@ -36,8 +36,8 @@ Type7MarkerPresentation_Init: ; 0x0204cca8
     bl func_02071e80
     mov r5, r0
     ldr r0, [r4, #0x8]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov ip, #0x2
     mov r1, r7
     mov r2, r6

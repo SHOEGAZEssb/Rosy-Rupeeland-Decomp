@@ -6,7 +6,7 @@
 .extern ActorRuntimeTriple_Assign
 .extern ActorCollection_QueueActorForRemoval
 .extern func_020328d0
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
 .text
@@ -66,7 +66,7 @@ TrackedResourceActorType22And25_HandleCollision:
     ldr r1, [r5, #0x14]
     bic r1, r1, #0x800000
     str r1, [r5, #0x14]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     mov r0, r5

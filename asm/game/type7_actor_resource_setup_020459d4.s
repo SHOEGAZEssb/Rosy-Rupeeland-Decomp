@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/type7_actor_resource_setup.c.
 .text
 .extern data_020f4e18
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateState
 .global Type7Actor_SetupResources
@@ -23,8 +23,8 @@ Type7Actor_SetupResources: ; 0x020459d4
     ldr r1, [r2, #0x28]
     orr r1, r1, #0x1000000
     str r1, [r2, #0x28]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldrb r1, [r4, #0x10]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x1f0]

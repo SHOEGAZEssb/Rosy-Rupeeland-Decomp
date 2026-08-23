@@ -23,8 +23,8 @@ extern u8 data_020df040[];
 extern "C" {
 #endif
 extern void Actor_ReleaseSecondaryRenderAttachment(RuntimeActorLifecycle *);
-extern void *Actor_GetCollection(RuntimeActorLifecycle *);
-extern void *ActorCollection_GetSpriteOwner(void *);
+extern void *Actor_GetOwningCollection(RuntimeActorLifecycle *);
+extern void *ActorCollection_GetSpriteGroup(void *);
 extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
 extern ActorInteractionIcon *ActorInteractionIcon_Destroy(ActorInteractionIcon *);
 extern void VecFx32Stepper_Destroy(void *);
@@ -46,7 +46,7 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
     auxiliaryAttachment = self->auxiliaryRenderAttachment_a8;
     if (auxiliaryAttachment)
         GraphicsSpriteGroup_ReleaseState(
-            ActorCollection_GetSpriteOwner(Actor_GetCollection(self)),
+            ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(self)),
             auxiliaryAttachment);
     interactionIcon = self->interactionIcon_1e0;
     if (interactionIcon) {

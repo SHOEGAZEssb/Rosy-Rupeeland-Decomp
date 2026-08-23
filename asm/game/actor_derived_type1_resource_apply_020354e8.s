@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_resource_apply.c.
 .text
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteGroup_ReplaceStateResources
 
     .global ActorDerivedType1_ApplyResourceIndex
@@ -11,8 +11,8 @@ ActorDerivedType1_ApplyResourceIndex: ; 0x020354e8
     mov r5, r0
     add r1, r5, r1, lsl #0x2
     ldr r4, [r1, #0x208]
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldr r1, [r4, #0xc]
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x54]

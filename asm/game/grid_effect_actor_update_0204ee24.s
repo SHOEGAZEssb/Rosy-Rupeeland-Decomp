@@ -8,7 +8,7 @@
 .extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern ActorCollection_QueueActorForRemoval
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern Actor_QueryTerrainHeight
 .extern Type7Actor_GetStateCode
 .extern GridEffectActor_CanBeginDeparture
@@ -130,7 +130,7 @@ GridEffectActor_Update: ; 0x0204ee24
     cmp r0, r1, asr #0xc
     blt .L_0204f064
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     add r0, r5, #0x100
@@ -159,7 +159,7 @@ GridEffectActor_Update: ; 0x0204ee24
     cmp r0, r1, asr #0xc
     blt .L_0204f064
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     ldr r0, .L_0204f464
@@ -208,7 +208,7 @@ GridEffectActor_Update: ; 0x0204ee24
     b .L_0204f3a8
 .L_0204f0e4:
     mov r0, r5
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     ldr r0, .L_0204f464
@@ -362,7 +362,7 @@ GridEffectActor_Update: ; 0x0204ee24
     ldrh r1, [r2, #0x24]
     orr r1, r1, #0x4
     strh r1, [r2, #0x24]
-    bl Actor_GetCollection
+    bl Actor_GetOwningCollection
     mov r1, r5
     bl ActorCollection_QueueActorForRemoval
     ldr r0, .L_0204f464

@@ -8,8 +8,8 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const char data_ov090_0221cc00[];
-extern void *Actor_GetCollection(void *actor);
-extern GraphicsSpriteGroup *ActorCollection_GetSpriteOwner(void *collection);
+extern void *Actor_GetOwningCollection(void *actor);
+extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 
 /*
  * Release the current sprite and destroy its animation-resource owner. When
@@ -39,7 +39,7 @@ void func_ov090_0221ad64(void *self, s32 resource0, void *resource1,
         FIELD(AnimationResource *, self, 0x204) = resources;
         FIELD(GraphicsSpriteState *, self, 0x200) =
             GraphicsSpriteGroup_CreateState(
-                ActorCollection_GetSpriteOwner(Actor_GetCollection(self)),
+                ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(self)),
                 resources->entries[0], resources->entries[1],
                 resources->entries[2], 2);
     } else {

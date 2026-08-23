@@ -10,7 +10,7 @@
 .extern GamePhaseCurrencyHud_Update
 .extern RuntimePresentationManager_Update
 .extern ActorCollection_DispatchEventToActors
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern ActorFeedback_UpdatePresentations
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern gLupyContext
@@ -58,7 +58,7 @@ Overlay064Scene_Update:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r1, .L_02210c54
     add r0, sp, #0x0
@@ -76,7 +76,7 @@ Overlay064Scene_Update:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, .L_02210c54
     mov r1, #0x1

@@ -14404,13 +14404,13 @@ build build/reports/actor_collection_descriptor_helpers_02030acc.json: objdiff b
   base_object = build/decomp/asm/game/actor_collection_descriptor_helpers_02030acc.o
 build build/reports/actor_collection_descriptor_helpers_02030acc.txt: match_report build/reports/actor_collection_descriptor_helpers_02030acc.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_descriptor_helpers_02030acc.json
-  report_args = --section .text --function ActorCollection_GetSpriteOwner --require-exact
+  report_args = --section .text --function ActorCollection_GetSpriteGroup --require-exact
 build build/reports/actor_collection_descriptor_helpers_02030ad4.json: objdiff build/decomp/delinks/asm/game/actor_collection_descriptor_helpers_02030ad4.o | build/decomp/asm/game/actor_collection_descriptor_helpers_02030ad4.o
   target_object = build/decomp/delinks/asm/game/actor_collection_descriptor_helpers_02030ad4.o
   base_object = build/decomp/asm/game/actor_collection_descriptor_helpers_02030ad4.o
 build build/reports/actor_collection_descriptor_helpers_02030ad4.txt: match_report build/reports/actor_collection_descriptor_helpers_02030ad4.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_descriptor_helpers_02030ad4.json
-  report_args = --section .text --function ActorCollection_FindActorByDescriptorValue --require-exact
+  report_args = --section .text --function ActorCollection_FindActorByRuntimeId --require-exact
 build build/reports/actor_collection_descriptor_helpers_02030b18.json: objdiff build/decomp/delinks/asm/game/actor_collection_descriptor_helpers_02030b18.o | build/decomp/asm/game/actor_collection_descriptor_helpers_02030b18.o
   target_object = build/decomp/delinks/asm/game/actor_collection_descriptor_helpers_02030b18.o
   base_object = build/decomp/asm/game/actor_collection_descriptor_helpers_02030b18.o
@@ -15252,7 +15252,7 @@ build build/reports/actor_collection_terrain_context_020337d4.json: objdiff buil
   base_object = build/decomp/asm/game/actor_collection_terrain_context_020337d4.o
 build build/reports/actor_collection_terrain_context_020337d4.txt: match_report build/reports/actor_collection_terrain_context_020337d4.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_terrain_context_020337d4.json
-  report_args = --section .text --function Actor_GetCollection --require-exact
+  report_args = --section .text --function Actor_GetOwningCollection --require-exact
 build build/decomp/asm/game/actor_collection_terrain_context_02033810.o: mwasmarm asm/game/actor_collection_terrain_context_02033810.s
 build build/decomp/delinks/asm/game/actor_collection_terrain_context_02033810.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_collection_terrain_context_02033810.json: objdiff build/decomp/delinks/asm/game/actor_collection_terrain_context_02033810.o | build/decomp/asm/game/actor_collection_terrain_context_02033810.o
@@ -15260,7 +15260,7 @@ build build/reports/actor_collection_terrain_context_02033810.json: objdiff buil
   base_object = build/decomp/asm/game/actor_collection_terrain_context_02033810.o
 build build/reports/actor_collection_terrain_context_02033810.txt: match_report build/reports/actor_collection_terrain_context_02033810.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_terrain_context_02033810.json
-  report_args = --section .text --function Actor_GetCollectionBySlot --require-exact
+  report_args = --section .text --function Actor_GetGlobalCollectionBySlot --require-exact
 build build/decomp/asm/game/actor_collection_terrain_context_02033828.o: mwasmarm asm/game/actor_collection_terrain_context_02033828.s
 build build/decomp/delinks/asm/game/actor_collection_terrain_context_02033828.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_collection_terrain_context_02033828.json: objdiff build/decomp/delinks/asm/game/actor_collection_terrain_context_02033828.o | build/decomp/asm/game/actor_collection_terrain_context_02033828.o

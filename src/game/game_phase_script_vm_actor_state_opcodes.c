@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *data_021052fc;
 extern u8 gActorRuntimeCollection[];
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void ActorRuntimeCollection_SelectObject(void *state, void *actor, u32 value);
 extern void OS_Halt(void);
@@ -60,7 +60,7 @@ s32 GamePhaseActorScriptVm_DispatchCollectionModeCommand(GamePhaseActorScriptVm 
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 fifth = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    u8 *collection = (u8 *)Actor_GetCollection(self->actor);
+    u8 *collection = (u8 *)Actor_GetOwningCollection(self->actor);
     u32 mode = *(u32 *)(collection + 0x2e84);
 
     if (mode == 1) {

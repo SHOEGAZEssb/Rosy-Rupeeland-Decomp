@@ -8,7 +8,7 @@
 .extern GamePhaseScriptVm_SetResult
 .extern RectS32_Init
 .extern RectS32_ContainsPoint
-.extern ActorCollection_FindActorByDescriptorValue
+.extern ActorCollection_FindActorByRuntimeId
 .global GamePhaseActorScriptVm_IsCollection1ActorInRectangle
 GamePhaseActorScriptVm_IsCollection1ActorInRectangle:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
@@ -33,7 +33,7 @@ GamePhaseActorScriptVm_IsCollection1ActorInRectangle:
     ldr r0, [r0]
     bl GamePhaseRuntime_GetActorCollection
     mov r1, r5
-    bl ActorCollection_FindActorByDescriptorValue
+    bl ActorCollection_FindActorByRuntimeId
     add r1, r0, #0x18
     add r0, sp, #0x14
     bl VecFx32Object_InitCopy

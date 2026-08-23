@@ -12,7 +12,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern GamePhaseRuntime_GetActorCollection
 .extern RisingAuxiliaryTimedSpritePresentation_Init
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern Actor_RebuildPrimaryAttachment
 .extern Sound_PlayDirectSequence
 .extern Sound_StopDirectSequence
@@ -370,7 +370,7 @@ func_ov092_0221893c:
     mov r1, #0x2
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollection_GetSpriteOwner
+    bl ActorCollection_GetSpriteGroup
     ldr r2, .L_022191d8
     add r1, r10, #0x18
     stmia sp, {r2, r8}

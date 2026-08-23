@@ -43,7 +43,7 @@ extern u64 func_020bf1f8(u32, u32);
 extern s32 SignedAbsoluteValue(s32);
 extern u32 genrand_int32(void);
 extern void *GamePhaseRuntime_GetActorCollection(void *, s32);
-extern void *ActorCollection_GetSpriteOwner(void *);
+extern void *ActorCollection_GetSpriteGroup(void *);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern void *AuxiliaryTimedSpritePresentation_Init(void *, const void *, void *,
     s32, s32, s32, s32, s32, s32, s32);
@@ -248,7 +248,7 @@ void *func_ov073_022100b4(void *controller, void *animation,
     FIELD(void *, controller, 0) = func_02003e20(count * 4,
         data_ov073_02210c04, 4, gHeapContext);
     func_ov073_022102bc(descriptor);
-    FIELD(void *, descriptor, 0) = ActorCollection_GetSpriteOwner(
+    FIELD(void *, descriptor, 0) = ActorCollection_GetSpriteGroup(
         GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
     FIELD(void *, descriptor, 4) = FIELD(void *, animation, 4);
     FIELD(void *, descriptor, 8) = FIELD(void *, animation, 8);
@@ -330,7 +330,7 @@ void func_ov073_02210338(void *controller, const void *origin)
         FIELD(s32, emission, 8) += dy * 4;
         child = Heap_Alloc(0x14, data_ov073_02210c0c, 4, gHeapContext);
         if (child) child = AuxiliaryTimedSpritePresentation_Init(child, emission,
-            ActorCollection_GetSpriteOwner(GamePhaseRuntime_GetActorCollection(data_021052fc, 1)),
+            ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 1)),
             0x1642, 0x1640, 0x1643, 0, -3, 1, 1);
         {
             void *payload = FIELD(void *, child, 8);
@@ -370,7 +370,7 @@ void *func_ov073_02210710(void *scene, void *owner, s32 x, s32 y, s32 z,
         VecFx32Object_InitComponents(position, x, y, z);
         aux = Heap_Alloc(0x14, data_ov073_02210c0c, 4, gHeapContext);
         if (aux) AuxiliaryTimedSpritePresentation_Init(aux, position,
-            ActorCollection_GetSpriteOwner(GamePhaseRuntime_GetActorCollection(data_021052fc, 1)),
+            ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 1)),
             0x1644, 0x1645, 0x1646, 0, -4, 1, 1);
         VecFx32Object_Destroy(position);
     }

@@ -12,7 +12,7 @@ extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
-extern void *Actor_GetCollection(void *actor);
+extern void *Actor_GetOwningCollection(void *actor);
 extern void TrackedResourceActor_EmitRecordEffects(void *actor);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
 extern s32 func_020ada8c(s32 value, s32 divisor);
@@ -58,7 +58,7 @@ void TrackedResourceActorType24_HandleCollision(void *actor, void *target)
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u16, actor, 0x1f8) = 0;
     FIELD(u32, actor, 0x14) &= 0xff7fffff;
-    ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor), actor);
+    ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
     TrackedResourceActor_EmitRecordEffects(actor);
     TrackedResourceActor_DispatchTargetInteraction(actor, target);
     VecFx32Object_Destroy(vector);

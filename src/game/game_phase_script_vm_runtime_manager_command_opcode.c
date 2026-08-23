@@ -15,7 +15,7 @@ extern void func_0201df64(void *list);
 extern void func_0201e0ec(void *list);
 extern void *func_02025d14(void *state);
 extern void func_02026514(void *state);
-extern void *ActorCollection_GetSpriteOwner(void *collection);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern void ActorDerivedType1_UpdateOrientationFlag(void *manager);
 extern void ActorDerivedType1_TeardownActiveRecord(void *manager);
 extern void func_02055688(void);
@@ -65,7 +65,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         if (entity)
             invokeModeZero(entity);
         GraphicsSpriteGroup_ReleaseResources(
-            ActorCollection_GetSpriteOwner(
+            ActorCollection_GetSpriteGroup(
                 GamePhaseRuntime_GetActorCollection(runtime, 1)));
         func_02026514(func_02025d14(*(void **)(runtime + 0x30e8)));
         break;

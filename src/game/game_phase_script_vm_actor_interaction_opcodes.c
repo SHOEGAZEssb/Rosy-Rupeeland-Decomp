@@ -9,8 +9,8 @@ extern void *data_021052fc;
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern u32 Actor_QueryRuntimeProperty(void *actor, u32 value);
 extern void Actor_SetRuntimeProperty(void *actor, u32 first, u32 second);
-extern void *Actor_GetCollection(void *actor);
-extern void *ActorCollection_FindActorByDescriptorValue(void *collection, s32 index);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 #ifdef __cplusplus
 }
 #endif
@@ -77,7 +77,7 @@ s32 GamePhaseActorScriptVm_QueryIndexedActorProperty(GamePhaseActorScriptVm *sel
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
+    void *target = ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), index);
     GamePhaseScriptVm_SetResult(&self->base, Actor_QueryRuntimeProperty(target, value));
     return 0;
 }
@@ -91,7 +91,7 @@ s32 GamePhaseActorScriptVm_SetIndexedActorProperty(GamePhaseActorScriptVm *self)
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *target = ActorCollection_FindActorByDescriptorValue(Actor_GetCollection(self->actor), index);
+    void *target = ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), index);
     Actor_SetRuntimeProperty(target, first, second);
     return 0;
 }

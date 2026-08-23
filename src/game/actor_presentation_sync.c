@@ -16,7 +16,7 @@ extern u8 gSceneTouchInitialData[];
 extern "C" {
 #endif
 extern s32 func_020adae4(s32, s32);
-extern void *Actor_GetCollection(void *);
+extern void *Actor_GetOwningCollection(void *);
 extern s32 func_02030b7c(void *);
 extern void ActorInteractionIcon_UpdateEnabledState(void *, s32);
 extern void Actor_GetCollisionCenter(void *, void *);
@@ -134,7 +134,7 @@ void Actor_UpdatePresentation(ActorScreenPoint *screenPosition,
         u8 actorCollisionCenter[0x10];
         s32 shouldShowInteractionIcon =
             *(void **)(actor + 0x184) &&
-            (func_02030b7c(Actor_GetCollection(actor)) & 1);
+            (func_02030b7c(Actor_GetOwningCollection(actor)) & 1);
         if (!*(void **)(actor + 0x184) &&
             !(*(u32 *)(actor + 0x14) & 0x1000))
             shouldShowInteractionIcon = 0;

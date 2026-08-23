@@ -89,8 +89,8 @@ extern "C" void ActorContactState_AddContact(void *, void *, s32);
 extern "C" void Actor_UpdateAnimationState(void *);
 extern "C" void Actor_SnapshotTransientState(void *);
 extern "C" void *Actor_GetCollisionBounds(void *);
-extern "C" void *Actor_GetCollection(void *);
-extern "C" void *ActorCollection_GetSpriteOwner(void *);
+extern "C" void *Actor_GetOwningCollection(void *);
+extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void Actor_SetDirectionFromVector(void *, s32, s32);
 extern "C" void ActorDerivedType1_ResetToBaseState(void *);
 extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
@@ -241,7 +241,7 @@ extern "C" void func_ov089_02217960(void *actor, const void *descriptor)
     func_02071ee0((u8 *)actor + 0x1f0, data_020f4e18,
                   FIELD(s32, descriptor, 4), FIELD(s32, descriptor, 8),
                   FIELD(s32, descriptor, 0xc));
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     FIELD(void *, actor, 0x54) = GraphicsSpriteGroup_CreateState(
         owner, FIELD(void *, actor, 0x1f0), FIELD(void *, actor, 0x1f4),
         FIELD(void *, actor, 0x1f8), FIELD(u8, descriptor, 0x10));
@@ -269,7 +269,7 @@ extern "C" void func_ov089_022179dc(void *actor)
     void *attachment = allocate_attachment();
     void *owner;
     FIELD(void *, actor, 0x240) = attachment;
-    owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     func_ov089_02217b04(attachment, 0x1629, 0x1611, 0x162a, owner, 2);
     FIELD(s16, attachment, 0x18) = -200;
     FIELD(u16, FIELD(void *, attachment, 4), 0x24) &= (u16)~2;
@@ -279,7 +279,7 @@ extern "C" void func_ov089_022179dc(void *actor)
         void *resource = FIELD(void *, secondary, 0x29c);
         attachment = allocate_attachment();
         FIELD(void *, actor, 0x244) = attachment;
-        owner = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+        owner = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
         func_ov089_02217b04(attachment, FIELD(u16, resource, 0x14),
                             FIELD(u16, resource, 0x16), FIELD(u16, resource, 0x18),
                             owner, 2);

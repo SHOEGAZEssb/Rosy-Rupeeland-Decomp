@@ -4,8 +4,8 @@
 .extern Heap_Alloc
 .extern data_ov090_0221cc00
 .extern AnimationResource_Init
-.extern ActorCollection_GetSpriteOwner
-.extern Actor_GetCollection
+.extern ActorCollection_GetSpriteGroup
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern GraphicsSpriteGroup_CreateState
 .extern gHeapContext
@@ -47,8 +47,8 @@ func_ov090_0221ad64:
     mov r5, r0
     str r0, [r4, #0x204]
     mov r0, r4
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     mov r1, #0x2
     str r1, [sp, #0x0]
     ldmib r5, {r1, r2, r3}

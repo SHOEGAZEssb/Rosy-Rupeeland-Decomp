@@ -3,9 +3,9 @@
 .extern gGridEffectActorAnimationResourceAllocationTag
 .extern gHeapContext
 .extern AnimationResource_Init
-.extern ActorCollection_GetSpriteOwner
+.extern ActorCollection_GetSpriteGroup
 .extern Actor_CreateSecondaryRenderAttachment
-.extern Actor_GetCollection
+.extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 .text
@@ -29,8 +29,8 @@ GridEffectActor_SetupPresentationResources: ; 0x0204ed3c
     mov r4, r0
     str r0, [r6, #0x1ec]
     mov r0, r6
-    bl Actor_GetCollection
-    bl ActorCollection_GetSpriteOwner
+    bl Actor_GetOwningCollection
+    bl ActorCollection_GetSpriteGroup
     ldrb r1, [r5, #0x10]
     str r1, [sp, #0x0]
     ldmib r4, {r1, r2, r3}

@@ -26,8 +26,8 @@ typedef struct LaunchedSpritePairPresentation {
     s32 frame34;
     s32 state38;
     u8 resource3c[0x0c];
-    void *primaryOwner48;
-    void *secondaryOwner4c;
+    void *primarySpriteGroup48;
+    void *secondarySpriteGroup4c;
     u8 *primarySprite50;
     u8 *secondarySprite54;
 } LaunchedSpritePairPresentation;
@@ -52,13 +52,13 @@ extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void AnimationResourceState_Destroy(void *resource);
 extern void func_02071ee0(void *resource, void *owner, s32, s32, s32);
 extern void AnimationResourceState_ReleaseResources(void *resource);
-extern void *Actor_GetCollection(void *actor);
-extern void *Actor_GetCollectionBySlot(void *actor, s32 index);
-extern void *ActorCollection_GetSpriteOwner(void *resource);
+extern void *Actor_GetOwningCollection(void *actor);
+extern void *Actor_GetGlobalCollectionBySlot(void *actor, u32 slot);
+extern void *ActorCollection_GetSpriteGroup(void *collection);
 extern u8 *RuntimeRecordTable_FindByKey(void *table, s32 index);
-extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
+extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *group, void *resource, s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 frame);
-extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *sprite);
+extern void GraphicsSpriteGroup_ReleaseState(void *group, void *sprite);
 extern s32 DisplayController_GetVerticalOffset(void);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
@@ -72,10 +72,10 @@ extern u32 genrand_int32(void);
 /*
  * Initialize base, copy actor position from actor offset 0x18, initialize
  * velocity and the 12-byte resource helper, and acquire the primary sprite
- * owner through Actor_GetCollection/ActorCollection_GetSpriteOwner.  Configure resources 0x300a..0x300c,
+ * group through Actor_GetOwningCollection/ActorCollection_GetSpriteGroup. Configure resources 0x300a..0x300c,
  * create the primary mode-2 sprite at frame zero, and set sprite flag bit 1.
  *
- * A secondary owner/sprite is created from actor subobject 2 when runtime object
+ * A secondary group/sprite is created from actor subobject 2 when runtime object
  * offset 0x30bc has mode bits 18..19 equal to 3 or its word at offset zero is
  * 2..4; its initial frame comes from byte 0x0d of the indexed data_021f3d68
  * record.  Add the two stack-provided integer offsets to position x/z, publish
@@ -100,11 +100,11 @@ LaunchedSpritePairPresentation *func_02024b04(
                   (const PresentationVector *)((u8 *)actor + 0x18));
     VecFx32Object_Init(&self->velocity1c);
     AnimationResourceState_InitEmbedded(self->resource3c);
-    self->primaryOwner48 = ActorCollection_GetSpriteOwner(Actor_GetCollection(actor));
+    self->primarySpriteGroup48 = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     record = RuntimeRecordTable_FindByKey(data_021f3d68, recordIndex);
     func_02071ee0(self->resource3c, data_020f4e18, 0x300a, 0x300b, 0x300c);
     self->primarySprite50 =
-        GraphicsSpriteGroup_CreateStateFromSource(self->primaryOwner48, self->resource3c, 2);
+        GraphicsSpriteGroup_CreateStateFromSource(self->primarySpriteGroup48, self->resource3c, 2);
     GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 0);
     *(u16 *)(self->primarySprite50 + 0x24) |= 2;
 
@@ -112,13 +112,13 @@ LaunchedSpritePairPresentation *func_02024b04(
     kind = *(s32 *)(runtimeObject + 0x00);
     mode = (*(u32 *)(runtimeObject + 0x40) >> 18) & 3;
     if (mode == 3 || (u32)(kind - 2) <= 2) {
-        self->secondaryOwner4c =
-            ActorCollection_GetSpriteOwner(Actor_GetCollectionBySlot(actor, 2));
+        self->secondarySpriteGroup4c =
+            ActorCollection_GetSpriteGroup(Actor_GetGlobalCollectionBySlot(actor, 2));
         self->secondarySprite54 =
-            GraphicsSpriteGroup_CreateStateFromSource(self->secondaryOwner4c, self->resource3c, 2);
+            GraphicsSpriteGroup_CreateStateFromSource(self->secondarySpriteGroup4c, self->resource3c, 2);
         GraphicsSpriteState_SetAnimationIndex(self->secondarySprite54, record[0x0d]);
     } else {
-        self->secondaryOwner4c = 0;
+        self->secondarySpriteGroup4c = 0;
         self->secondarySprite54 = 0;
     }
 
@@ -129,7 +129,7 @@ LaunchedSpritePairPresentation *func_02024b04(
                (self->position0c.z0c - anchor->z0c)) / 0x1000;
     *(u16 *)(self->primarySprite50 + 0x2c) = (u16)screenX;
     *(u16 *)(self->primarySprite50 + 0x2e) = (u16)screenY;
-    if (self->secondaryOwner4c != 0) {
+    if (self->secondarySpriteGroup4c != 0) {
         *(u16 *)(self->secondarySprite54 + 0x2c) = (u16)screenX;
         *(u16 *)(self->secondarySprite54 + 0x2e) =
             (u16)(screenY + 0xc0 + DisplayController_GetVerticalOffset());
@@ -153,9 +153,9 @@ LaunchedSpritePairPresentation *func_02024d3c(
 {
     self->vtable00 = (void **)data_020d68e4;
     GameWork_SetFlag(gGameWork, 0x3e0);
-    GraphicsSpriteGroup_ReleaseState(self->primaryOwner48, self->primarySprite50);
-    if (self->secondaryOwner4c != 0) {
-        GraphicsSpriteGroup_ReleaseState(self->secondaryOwner4c, self->secondarySprite54);
+    GraphicsSpriteGroup_ReleaseState(self->primarySpriteGroup48, self->primarySprite50);
+    if (self->secondarySpriteGroup4c != 0) {
+        GraphicsSpriteGroup_ReleaseState(self->secondarySpriteGroup4c, self->secondarySprite54);
     }
     AnimationResourceState_Destroy(self->resource3c);
     VecFx32Object_Destroy(&self->velocity1c);
@@ -199,18 +199,18 @@ s32 func_02024e24(LaunchedSpritePairPresentation *self)
     case 1:
         if (!GameWork_TestFlag(gGameWork, 0x385)) {
             self->position0c.z0c -= 0x8000;
-            GraphicsSpriteGroup_ReleaseState(self->primaryOwner48, self->primarySprite50);
-            if (self->secondaryOwner4c != 0)
-                GraphicsSpriteGroup_ReleaseState(self->secondaryOwner4c, self->secondarySprite54);
+            GraphicsSpriteGroup_ReleaseState(self->primarySpriteGroup48, self->primarySprite50);
+            if (self->secondarySpriteGroup4c != 0)
+                GraphicsSpriteGroup_ReleaseState(self->secondarySpriteGroup4c, self->secondarySprite54);
             AnimationResourceState_ReleaseResources(self->resource3c);
             func_02071ee0(self->resource3c, data_020f4e18,
                           0x115a, 0x115b, 0x115c);
             self->primarySprite50 =
-                GraphicsSpriteGroup_CreateStateFromSource(self->primaryOwner48, self->resource3c, 2);
+                GraphicsSpriteGroup_CreateStateFromSource(self->primarySpriteGroup48, self->resource3c, 2);
             GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 1);
             if (self->secondarySprite54 != 0) {
                 self->secondarySprite54 =
-                    GraphicsSpriteGroup_CreateStateFromSource(self->secondaryOwner4c, self->resource3c, 2);
+                    GraphicsSpriteGroup_CreateStateFromSource(self->secondarySpriteGroup4c, self->resource3c, 2);
                 GraphicsSpriteState_SetAnimationIndex(self->secondarySprite54, 1);
             }
             self->state38++;
