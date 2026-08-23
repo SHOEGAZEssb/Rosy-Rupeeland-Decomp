@@ -6,7 +6,7 @@
 .extern data_020e71ec
 .extern data_021052fc
 .extern Actor_AdjustPositionForTerrainHeight
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern InteractionRecordAllocator_ReserveRandomRecord
 .extern InteractionWaypointCursor_SelectNearest
 .extern InteractionWaypointCursor_GetCurrentRecord
@@ -264,7 +264,7 @@ ActorExtendedType2_UpdateTimedAttachmentTransition: ; 0x0204067c
     beq .L_02040a34
     mov r0, r5
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_02040a34:
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}

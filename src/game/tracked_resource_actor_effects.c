@@ -20,7 +20,7 @@ extern void AuxiliaryTimedSpritePresentation_Init(void *storage, const void *pos
                           s32 arg1, s32 arg2, s32 arg3);
 extern void *ActorCollection_GetSpriteOwner(void);
 extern void Actor_GetCollection(void *actor);
-extern void func_02034a60(void *actor, u16 value, s32 mode, ...);
+extern void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void func_020a2614(void *manager, s32 subtype, s32 x, s32 y,
                           s32 variant);
 extern void func_020a2844(void *manager, s32 subtype, s32 x, s32 y,
@@ -43,8 +43,8 @@ extern void func_020a291c(void *manager, s32 subtype, s32 x, s32 y);
  * selector-13; 25 uses value 15; and 30 selects func_020a2844 subtype 0 with
  * value 12. Other selectors have no primary effect. If record halfword 0x16 is
  * nonzero, allocate a 20-byte auxiliary object and initialize it from record
- * halfwords 0x16..0x1A. If record halfword 0x1C is nonzero, invoke
- * func_02034a60 with mode zero. Returns nothing; effect, heap, and actor state
+ * halfwords 0x16..0x1A. If packed-sound halfword 0x1C is nonzero, invoke
+ * Actor_PlayRadialSpatialSound at neutral pitch. Returns nothing; effect, heap, and actor state
  * may change, with no direct hardware access.
  */
 void TrackedResourceActor_EmitRecordEffects(void *actor)
@@ -101,6 +101,5 @@ void TrackedResourceActor_EmitRecordEffects(void *actor)
     }
 
     if (FIELD(u16, record, 0x1c) != 0)
-        func_02034a60(actor, FIELD(u16, record, 0x1c), 0);
+        Actor_PlayRadialSpatialSound(actor, FIELD(u16, record, 0x1c), 0);
 }
-

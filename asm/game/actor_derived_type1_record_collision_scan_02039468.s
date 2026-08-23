@@ -6,7 +6,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedType1_IsActiveRecordType6F
 .extern Fx32Vector2_Magnitude
@@ -100,7 +100,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     mov r0, r10
     mov r1, #0x54
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r0, [r10, #0x27c]
     ldrsh r0, [r0, #0x0]
     cmp r0, #0x67
@@ -186,7 +186,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     beq .L_020396f8
     mov r0, r10
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_020396f8:
     add r0, sp, #0x10
     bl VecFx32Object_Destroy

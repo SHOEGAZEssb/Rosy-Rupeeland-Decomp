@@ -32,7 +32,7 @@ extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void PresentationList_AppendObject(void *manager, void *object);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 #ifdef __cplusplus
 }
@@ -187,8 +187,8 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             }
             PresentationList_AppendObject(data_021052fc + 0x2f7c, object);
             ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 7);
-            func_020349b8(actor, 0x26, 0);
-            func_020349b8(actor, 0x0e, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x26, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x0e, 0);
             Type1Actor_TryEnterFailureState(actor);
             VecFx32Object_Destroy(temporary);
             VecFx32Object_Destroy(position);

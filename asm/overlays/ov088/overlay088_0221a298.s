@@ -9,7 +9,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Actor_ReplaceAttachmentSlotResource
 .extern Sound_PlayOwnedEffect
 .extern Sound_StopEffect
@@ -86,7 +86,7 @@ func_ov088_0221a298:
     ldr r1, .L_0221a570
     mov r0, r10
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     bl OverlayManager_GetGlobal
     ldr r2, .L_0221a574
     mov r1, #0x2

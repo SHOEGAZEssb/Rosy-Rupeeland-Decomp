@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Sound_StopEffect
 .extern gSoundContext
 
@@ -20,7 +20,7 @@ func_ov088_0221a930:
     ldr r1, .L_0221a988
     mov r0, r4
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     mov r0, #0x1
     strh r0, [r4, #0xda]
     add r0, r4, #0x200

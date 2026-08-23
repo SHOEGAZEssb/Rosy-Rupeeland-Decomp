@@ -5,7 +5,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern func_ov088_02218280
 .extern gHeapContext
 
@@ -36,7 +36,7 @@ func_ov088_0221a7c8:
     ldr r1, .L_0221a8b4
     mov r0, r4
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     add r0, sp, #0x18
     add r1, r4, #0x18
     bl VecFx32Object_InitCopy

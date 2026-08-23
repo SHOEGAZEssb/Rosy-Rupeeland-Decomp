@@ -69,7 +69,7 @@ EXT(func_020050a4);
 EXT(func_020099c0);
 EXT(Actor_TurnTowardVector);
 EXT(Actor_TurnTowardTargetPosition);
-EXT(func_020349b8);
+EXT(Actor_PlayHorizontalSpatialSound);
 EXT(Fx32Vector2_Magnitude);
 EXT(func_020538a4);
 EXT(func_020541d4);
@@ -1023,7 +1023,7 @@ extern "C" void func_ov077_02214ce4(void *actor, const void *target)
     F(s32, spawned, 0x44) = 0x2ccd;
     if (((s8)(F(u8, actor, 0x2e4) << 4) >> 4) == 0)
         func_ov077_02214c7c(P(spawned, 0x38), 0x2000);
-    func_020349b8(actor, 0x9f81, 0);
+    Actor_PlayHorizontalSpatialSound(actor, 0x9f81, 0);
     VecFx32Object_Destroy(position);
 }
 
@@ -1045,7 +1045,7 @@ extern "C" void func_ov077_02214e00(void *actor, void *other)
         {
             F(u16, actor, 0x2ea) = 1;
             ((Method)F(void *, F(void *, other, 0), 0xe8))(other, 0);
-            func_020349b8(actor, 0x9f80, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x9f80, 0);
         }
     }
     else
@@ -1070,7 +1070,7 @@ extern "C" s32 func_ov077_02214eec(void *actor, void *other)
             F(u16, actor, 0x2ec) = 0;
             F(u16, actor, 0x2e8) = 0;
             F(u16, actor, 0x2ea) = 1;
-            func_020349b8(actor, 0x9f80, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x9f80, 0);
             if (other == 0)
                 F(u16, actor, 0x2f2) &= 0xfff7;
             else
@@ -1122,7 +1122,7 @@ extern "C" s32 func_ov077_02215050(void *actor)
         F(u16, actor, 0xd6) = 0x13;
         F(u32, actor, 0x218) = F(u32, data_ov077_02216fc8, 0x78);
         F(u32, actor, 0x21c) = F(u32, data_ov077_02216fc8, 0x7c);
-        func_020349b8(actor, 0xa100, 0);
+        Actor_PlayHorizontalSpatialSound(actor, 0xa100, 0);
         F(u32, actor, 0x14) &= 0xefffffff;
         s32 variant = F(s16, actor, 0x4e) == 0x81
                           ? 2
@@ -1181,7 +1181,7 @@ extern "C" s32 func_ov077_02215240(void *actor)
             s32 sound = func_ov077_022142c8(actor)
                             ? 0xa102
                             : (func_ov077_022142e0(actor) ? 0xa103 : 0xa101);
-            func_020349b8(actor, sound, 0);
+            Actor_PlayHorizontalSpatialSound(actor, sound, 0);
         }
     }
     else if (phase == 1)
@@ -1309,14 +1309,14 @@ extern "C" void func_ov077_02215494(void *actor)
     {
         ++F(s16, actor, 0x25a);
         if (func_020befec(F(s16, actor, 0x25a), 10) == 0)
-            func_020349b8(actor, 0x9f84, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x9f84, 0);
         if (F(s16, actor, 0x2e6) < 0x41)
         {
             s32 sound = F(s16, actor, 0x4e) == 0x84
                             ? 0x9f8a
                             : (F(s16, actor, 0x4e) == 0x85 ? 0x9f8c : 0x9f88);
-            func_020349b8(actor, sound, 0);
-            func_020349b8(actor, 0x4281, 0);
+            Actor_PlayHorizontalSpatialSound(actor, sound, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x4281, 0);
             if (F(s16, actor, 0xda) < 2)
             {
                 F(u16, actor, 0x2ec) = 0x80;
@@ -1338,8 +1338,8 @@ extern "C" void func_ov077_02215494(void *actor)
                 func_ov077_02214cd4(P(actor, 0x88), 0, 0, 0);
                 func_ov077_02214cd4(P(actor, 0x98), 0, 0, 0);
                 F(u8, actor, 0x2e4) &= 0x8f;
-                func_020349b8(actor, 0x9f85, 0);
-                func_020349b8(actor, 0x9f83, 0);
+                Actor_PlayHorizontalSpatialSound(actor, 0x9f85, 0);
+                Actor_PlayHorizontalSpatialSound(actor, 0x9f83, 0);
                 void *context = (void *)func_0201e0ec(
                     P(F(void *, data_021052fc, 0), 0x2f7c));
                 func_020a27a0(context, 2,
@@ -1444,7 +1444,7 @@ extern "C" s32 func_ov077_02215f34(void *actor)
             F(u16, actor, 0x2ea) = (F(u16, actor, 0x2f2) & 8) != 0 ? 10 : 3;
             break;
         case 3:
-            func_020349b8(actor, 0x43, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x43, 0);
             F(u16, actor, 0x2ea) = 4;
             F(u16, actor, 0xd6) = 0xe;
             break;
@@ -1452,13 +1452,13 @@ extern "C" s32 func_ov077_02215f34(void *actor)
             F(u16, actor, 0xd6) = 0xe;
             ++F(u16, actor, 0x25a);
             if (func_020befec(F(s16, actor, 0x25a), 10) == 0)
-                func_020349b8(actor, 0x9f84, 0);
+                Actor_PlayHorizontalSpatialSound(actor, 0x9f84, 0);
             if (F(s8, actor, 0x2e5) == 0 || F(s16, actor, 0x2e6) < 0x31)
             {
                 F(u16, actor, 0x2ea) = 5;
                 F(u16, actor, 0x25a) = 0;
                 func_020099c0(P(F(void *, data_021052fc, 0), 0x2fbc), 0x1e, 2);
-                func_020349b8(actor, 0x9f86, 0);
+                Actor_PlayHorizontalSpatialSound(actor, 0x9f86, 0);
             }
             break;
         case 5:
@@ -1486,7 +1486,7 @@ extern "C" s32 func_ov077_02215f34(void *actor)
                 F(u16, actor, 0x2ea) = 0;
             break;
         case 10:
-            func_020349b8(actor, 0x26, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x26, 0);
             F(u16, actor, 0x2ea) = 11;
             F(u16, actor, 0xd6) = 0xe;
             F(u16, actor, 0x25a) = 0;
@@ -1495,12 +1495,12 @@ extern "C" s32 func_ov077_02215f34(void *actor)
             F(u16, actor, 0xd6) = 0xe;
             ++F(u16, actor, 0x25a);
             if (func_020befec(F(s16, actor, 0x25a), 10) == 0)
-                func_020349b8(actor, 0x9f84, 0);
+                Actor_PlayHorizontalSpatialSound(actor, 0x9f84, 0);
             if (F(s16, actor, 0x2e6) < 0x31)
             {
-                func_020349b8(actor,
+                Actor_PlayHorizontalSpatialSound(actor,
                               F(s16, actor, 0x4e) == 0x84 ? 0x9f8a : 0x9f88, 0);
-                func_020349b8(actor, 0x4281, 0);
+                Actor_PlayHorizontalSpatialSound(actor, 0x4281, 0);
                 ++F(s16, actor, 0xda);
                 func_ov090_0221b03c(F(void *, actor, 0x2f8), actor);
                 func_020099c0(P(F(void *, data_021052fc, 0), 0x2fbc), 0xf, 2);
@@ -1538,8 +1538,8 @@ extern "C" void func_ov077_02216960(void *actor)
     F(u32, actor, 0x21c) = F(u32, data_ov077_02216fc8, 0x74);
     func_ov077_02216cac(actor);
     ActorExtendedType2_IncrementSavedProgressCounter(actor);
-    func_020349b8(actor, 0x9f85, 0);
-    func_020349b8(actor, 0x9f83, 0);
+    Actor_PlayHorizontalSpatialSound(actor, 0x9f85, 0);
+    Actor_PlayHorizontalSpatialSound(actor, 0x9f83, 0);
 }
 
 /* Advances the alternate variant through its terminal dust-and-hide sequence.

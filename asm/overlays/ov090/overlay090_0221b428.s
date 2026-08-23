@@ -11,7 +11,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern PresentationBackedActor_Spawn
 .extern func_020594ec
 .extern func_020a2614
@@ -264,7 +264,7 @@ func_ov090_0221b428:
     ldr r1, .L_0221b7dc
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     add r0, sp, #0x50
     bl VecFx32Object_Destroy
     add sp, sp, #0x60

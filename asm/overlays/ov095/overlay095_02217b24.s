@@ -3,7 +3,7 @@
 .extern data_ov095_0221cba8
 .extern data_ov095_0221cbc8
 .extern data_ov095_0221cbd0
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 
 .global func_ov095_02217b24
 func_ov095_02217b24:
@@ -76,7 +76,7 @@ func_ov095_02217b24:
     ldmneia sp!, {r3, r4, r5, pc}
     ldr r1, .L_02217c3c
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldmia sp!, {r3, r4, r5, pc}
 .L_02217c2c: .word data_ov095_0221cba8
 .L_02217c30: .word data_ov095_0221cba8

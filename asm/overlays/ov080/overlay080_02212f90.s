@@ -15,7 +15,7 @@
 .extern VecFx32Object_Assign
 .extern Actor_QueryTerrainHeight
 .extern func_02034568
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern func_020befec
 .extern func_020bf1f8
 .extern func_ov080_02212ae0
@@ -258,7 +258,7 @@ func_ov080_02212f90:
     ldrh r1, [r0, r1]
     mov r0, r10
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r1, .L_02213380
     add r0, r10, #0x200
     mov r2, #0x1

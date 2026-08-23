@@ -20,7 +20,7 @@ extern "C" {
 #endif
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 ActorFeedback_DispatchEnvironment(void *actor);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void VecFx32Object_Init(void *value);
 extern void VecFx32Object_InitCopy(void *temporary, const void *source);
 extern void VecFx32Object_Destroy(void *temporary);
@@ -140,7 +140,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
 
         if (result != 0) {
             if (result == -1 && *(u16 *)(descriptor + 0x2e) != 0)
-                func_020349b8(actor, *(u16 *)(descriptor + 0x2e), 0);
+                Actor_PlayHorizontalSpatialSound(actor, *(u16 *)(descriptor + 0x2e), 0);
             directionPair(actor[0xd4], &first, &second);
             storeTarget(actor, *(s16 *)descriptor,
                         (*(s32 *)(actor + 0x1c) >> 12) +
@@ -252,7 +252,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
         }
 
         if (*(u16 *)(descriptor + 0x2e) != 0)
-            func_020349b8(actor, *(u16 *)(descriptor + 0x2e), 0);
+            Actor_PlayHorizontalSpatialSound(actor, *(u16 *)(descriptor + 0x2e), 0);
         storeTarget(actor, *(s16 *)descriptor, x << 4, y << 4);
         *(s32 *)(actor + 0x3c) = 0;
         *(s32 *)(actor + 0x40) = 0;

@@ -7,7 +7,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern Actor_GetCachedTerrainHeight
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern Fx32Vector2_Magnitude
 .extern Sound_PlayOwnedEffect
@@ -72,7 +72,7 @@ func_ov097_02218d3c:
     add r3, r3, #0x1
     strh r3, [r2, #0x98]
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     mov r0, r5
     mov r1, #0x0
     bl func_ov097_0221951c

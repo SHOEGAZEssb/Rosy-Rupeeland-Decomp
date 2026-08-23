@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 dividend, s32 divisor);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void *SceneManager_GetCurrent(void *manager);
 extern void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *actor);
 extern void Sound_StopEffect(void *sound, s32 first, s32 second);
@@ -94,7 +94,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
             *counter = 0x8c;
         else if (*counter < 0x1e)
             *counter = 0x1e;
-        func_020349b8(actor, 0x5f,
+        Actor_PlayHorizontalSpatialSound(actor, 0x5f,
             func_020ada8c((s32)(genrand_int32() & 0x7fffffff), 4) << 6);
     }
 

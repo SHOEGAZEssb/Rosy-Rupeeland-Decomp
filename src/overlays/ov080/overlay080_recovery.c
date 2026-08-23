@@ -60,7 +60,7 @@ extern "C" void VecFx32Object_Assign(void *, const void *);
 extern "C" void VecFx32Object_Destroy(void *);
 extern "C" void Actor_QueryTerrainHeight(void *, s32, s32);
 extern "C" s32 func_02034568(void *, s32, s32, s32);
-extern "C" void func_02034a60(void *, u16, s32);
+extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" s32 func_020adcac(const void *, const void *);
 extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
@@ -279,7 +279,7 @@ extern "C" s32 func_ov080_02212f90(void *actor)
         FIELD(u32, actor, 0x218) = FIELD(u32, data_ov080_02213e68, 0x18);
         FIELD(u32, actor, 0x21c) = FIELD(u32, data_ov080_02213e68, 0x1c);
         s32 animation = (s32)(func_020bf1f8(genrand_int32(), 9) >> 32);
-        func_02034a60(actor, data_ov080_02213ef0[animation], 0);
+        Actor_PlayRadialSpatialSound(actor, data_ov080_02213ef0[animation], 0);
         FIELD(u16, actor, 0x25a) = 1;
         FIELD(u16, actor, 0x2a0) = (u16)func_ov080_02212ae0(gGameWork, 0, 0x7d);
         VecFx32Object_Destroy(candidate);

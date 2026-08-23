@@ -6,7 +6,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_ov097_02219228
@@ -136,7 +136,7 @@ func_ov097_0221a1c8:
     ldr r1, .L_0221a3b4
     mov r0, r6
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_0221a398:
     mov r0, r6
     mov r1, r5

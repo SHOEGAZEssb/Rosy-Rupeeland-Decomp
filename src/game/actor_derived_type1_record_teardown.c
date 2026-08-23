@@ -9,7 +9,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void Sound_StopEffect(void *context, s32 channel, s32 sound);
 extern void ActorDerivedType1_ApplyResourceIndex(void *actor, s32 value);
 #ifdef __cplusplus
@@ -49,7 +49,7 @@ void ActorDerivedType1_TeardownActiveRecord(void *self)
                               *(u16 *)(descriptor + 0x18), 0, -4, -1, 1);
         }
         if (*(u16 *)(descriptor + 0x1a) != 0)
-            func_020349b8(actor, *(u16 *)(descriptor + 0x1a), 0);
+            Actor_PlayHorizontalSpatialSound(actor, *(u16 *)(descriptor + 0x1a), 0);
     }
     if (*(u16 *)(descriptor + 0x2e) != 0) {
         s32 sound = *(u16 *)(descriptor + 0x2e);

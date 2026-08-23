@@ -8,7 +8,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern PresentationList_AppendObject
 .extern func_02022cb0
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
 .extern ActorDerivedType1_StartRecord
 .extern Type1Actor_TryEnterFailureState
@@ -92,7 +92,7 @@ ActorDerivedType1_DispatchInteractionAmount: ; 0x020398a4
     mov r0, r7
     mov r1, #0x26
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldr r0, [r6, #0x1fc]
     ldrsb r0, [r0, #0x2c]
     cmp r0, #0x4

@@ -55,7 +55,7 @@ extern "C" s32 func_020befec(s32, s32);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" void Actor_TurnTowardTargetPosition(void *, void *, s32);
-extern "C" void func_020349b8(void *, s32, s32);
+extern "C" void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
 extern "C" s32 GamePhaseCurrencyHud_GetCurrency(void *);
@@ -349,7 +349,7 @@ extern "C" void func_ov084_022134f0(void *a) {
     F(void *, a, 0x21c) = F(void *, data_ov084_02214108, 0x1c);
     s16 s = data_020e6f94[F(u16, a, 0x4e)];
     if (s)
-        func_020349b8(a, s, 0);
+        Actor_PlayHorizontalSpatialSound(a, s, 0);
     F(u32, a, 0x14) |= 6;
     F(u32, a, 0x10) |= 0x1f0000;
     F(u16, a, 0x2a0) &= ~1u;
@@ -675,7 +675,7 @@ extern "C" void func_ov084_02213f38(void *a) {
             F(void *, a, 0x21c) = F(void *, data_ov084_022145d4, 0xc);
             s16 s = data_020e6f94[F(u16, a, 0x4e)];
             if (s)
-                func_020349b8(a, s, 0);
+                Actor_PlayHorizontalSpatialSound(a, s, 0);
             F(u32, a, 0x260) = (F(u32, a, 0x260) & ~3u) | 0x4000;
             F(s16, a, 0x298) = 0;
         }

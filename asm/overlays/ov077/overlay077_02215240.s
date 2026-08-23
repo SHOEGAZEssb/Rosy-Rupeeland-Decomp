@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern SignedAbsoluteValue
 .extern func_ov077_02213c08
 .extern func_ov077_022142c8
@@ -71,7 +71,7 @@ func_ov077_02215240:
 .L_0221532c:
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     b .L_02215430
 .L_0221533c:
     cmp r2, #0x1

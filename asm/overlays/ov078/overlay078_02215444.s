@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern data_ov078_02215c88
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern func_ov078_02213a74
 .extern func_ov078_02213c3c
 .extern genrand_int32
@@ -38,12 +38,12 @@ func_ov078_02215444:
     cmp r1, #0x0
     beq .L_022154c0
     mov r0, r4
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_022154c0:
     mov r0, r4
     mov r1, #0x5e
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldmia sp!, {r3, r4, r5, pc}
 .L_022154d4:
     bl func_ov078_02213a74

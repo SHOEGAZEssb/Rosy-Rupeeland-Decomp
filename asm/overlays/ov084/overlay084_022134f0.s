@@ -4,7 +4,7 @@
 .extern data_ov084_02214108
 .extern Actor_SaveAndForceFlags
 .extern Actor_GetCachedTerrainHeight
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern InteractionRecordAllocator_ReleaseOwner
 .extern func_ov084_022131fc
 
@@ -53,7 +53,7 @@ func_ov084_022134f0:
     beq .L_0221359c
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0221359c:
     ldr r0, [r4, #0x14]
     add r1, r4, #0x200

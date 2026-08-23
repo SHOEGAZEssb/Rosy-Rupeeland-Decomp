@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern PresentationList_AppendObject
 .extern TimedSpriteOffsetPresentation_Init
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern gHeapContext
 .global ActorExtendedType2_PlayDescriptorSoundIfEnabled
 .type ActorExtendedType2_PlayDescriptorSoundIfEnabled, @function
@@ -22,7 +22,7 @@ ActorExtendedType2_PlayDescriptorSoundIfEnabled: ; 0x02040590
     tst r2, #0x4
     ldmeqia sp!, {r3, pc}
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldmia sp!, {r3, pc}
 .L_020405c4: .word data_020e7444
 .size ActorExtendedType2_PlayDescriptorSoundIfEnabled, . - ActorExtendedType2_PlayDescriptorSoundIfEnabled

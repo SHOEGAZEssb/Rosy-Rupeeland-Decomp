@@ -6,7 +6,7 @@
 .extern func_0201e0ec
 .extern ActorCollection_FindActorByDescriptorValue
 .extern Actor_GetCollection
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_InitializeReentryState
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0206e590
@@ -184,7 +184,7 @@ func_ov097_02217d44:
     ldr r1, .L_02217fd4
     mov r0, r7
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02217fc0: .word data_ov097_0221a4c8
 .L_02217fc4: .word gGameWork

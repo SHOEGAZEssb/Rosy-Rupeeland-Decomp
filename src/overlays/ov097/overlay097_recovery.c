@@ -70,11 +70,11 @@ EXT(func_0200634c);
 EXT(func_0200637c);
 EXT(func_020064b8);
 EXT(func_02030ad4);
-EXT(func_02034a60);
+EXT(Actor_PlayRadialSpatialSound);
 EXT(Fx32Vector2_Magnitude);
 EXT(func_02033f4c);
 EXT(func_02033f7c);
-EXT(func_020349b8);
+EXT(Actor_PlayHorizontalSpatialSound);
 EXT(Sound_PlayOwnedEffect);
 EXT(Sound_StopEffect);
 EXT(Sound_IsEffectPlaying);
@@ -213,7 +213,7 @@ extern "C" void func_ov097_022179a4(void *actor, void *other)
     {
         return;
     }
-    func_020349b8(actor, 0x3089, 0);
+    Actor_PlayHorizontalSpatialSound(actor, 0x3089, 0);
 }
 
 /* Empty virtual hook retained by the primary actor vtable. */
@@ -389,7 +389,7 @@ extern "C" void func_ov097_02217d44(void *actor)
     {
         func_ov097_022177e0(gGameWork, 0, 12, 2);
     }
-    func_02034a60(actor, 0xf688, 0);
+    Actor_PlayRadialSpatialSound(actor, 0xf688, 0);
 }
 
 /* Reads an indexed signed value from one of the two GameWork actor tables. */
@@ -566,7 +566,7 @@ extern "C" void func_ov097_022181a0(void *actor, void *argument)
             else
             {
                 F(s16, actor, 0xda) = 1;
-                func_02034a60(actor, 0xf68c, 0);
+                Actor_PlayRadialSpatialSound(actor, 0xf68c, 0);
                 VecFx32Object_InitCopy(point, P(actor, 0x18));
                 void *effect = (void *)Heap_Alloc(0x14, data_ov097_0221aa1c,
                                                   4, gHeapContext);
@@ -836,7 +836,7 @@ extern "C" void func_ov097_02218d3c(void *actor)
             F(s32, actor, 0x2d0) - F(s32, actor, 0x2e0));
         F(s16, actor, 0x2c0) = (s16)(func_020befec(distance, 6) >> 12) + 30;
         ++F(s16, actor, 0x298);
-        func_020349b8(actor, 0x4281, 0);
+        Actor_PlayHorizontalSpatialSound(actor, 0x4281, 0);
         func_ov097_0221951c(actor, 0);
     }
     F(u8, actor, 0x24c) = 0;
@@ -1013,7 +1013,7 @@ extern "C" void func_ov097_02219228(void *actor, void *other)
         F(s32, other, 0x44) = 0x3000;
     }
     F(s32, other, 0x40) = vertical;
-    func_02034a60(actor, 0xf687, 0);
+    Actor_PlayRadialSpatialSound(actor, 0xf687, 0);
     u8 point[16];
     VecFx32Object_InitCopy(point, P(other, 0x18));
     void *effect = (void *)Heap_Alloc(0x14, data_ov097_0221aa1c, 4,
@@ -1048,7 +1048,7 @@ extern "C" void func_ov097_02219458(void *actor)
     {
         func_ov097_0221951c(actor, 0);
     }
-    func_02034a60(actor, 0xf684, 0);
+    Actor_PlayRadialSpatialSound(actor, 0xf684, 0);
 }
 
 /* Reports whether the unlinked actor is in terminal state six or seven. */
@@ -1631,7 +1631,7 @@ extern "C" void func_ov097_0221a07c(void *actor)
             F(u32, actor, 0x14) =
                 (F(u32, actor, 0x14) & ~2u) | 0x800000;
             F(u32, actor, 0x1f4) |= 1;
-            func_02034a60(actor, 0xf686, 0);
+            Actor_PlayRadialSpatialSound(actor, 0xf686, 0);
         }
         F(u32, actor, 0xd0) |= 0x2000;
     }
@@ -1702,7 +1702,7 @@ extern "C" void func_ov097_0221a1c8(void *actor, void *target)
     }
     else if (target != 0)
     {
-        func_02034a60(actor, 0xf686, 0);
+        Actor_PlayRadialSpatialSound(actor, 0xf686, 0);
     }
     TrackedResourceActor_DispatchTargetInteraction(actor, target);
 }

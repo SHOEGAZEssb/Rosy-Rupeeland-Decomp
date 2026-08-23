@@ -16,7 +16,7 @@
 .extern func_0201e0ec
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_GetCachedTerrainHeight
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_InitializeTransformAndMotion
 .extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_SpawnFromKey
@@ -1336,7 +1336,7 @@ func_ov095_0221858c:
     cmp r0, #0x2
     mov r0, r4
     bne .L_02219948
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r1, .L_022194ac
     ldr r3, .L_022194b0
     mov r0, #0x14
@@ -1362,7 +1362,7 @@ func_ov095_0221858c:
     bl AuxiliaryTimedSpritePresentation_Init
     b .L_022199a8
 .L_02219948:
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r1, .L_022194ac
     ldr r3, .L_022194b0
     mov r0, #0x14

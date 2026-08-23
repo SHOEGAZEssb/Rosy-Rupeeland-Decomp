@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_contact_response.c.
 .text
 .extern ActorContactState_AddContact
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorExtendedType2_SpawnOptionalPresentation
 .extern Fx32Vector2_Magnitude
 .extern func_020adae4
@@ -15,7 +15,7 @@ ActorExtendedType2_TriggerContactFeedback: ; 0x0204330c
     mov r2, #0x0
     mov r1, #0x57
     strh r2, [r3, #0x80]
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x100

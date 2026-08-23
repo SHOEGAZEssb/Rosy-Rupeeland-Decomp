@@ -46,7 +46,7 @@ extern DisplayBrightnessPair gDisplayBrightnessPair;
 extern void GX_HBlankIntr(UNKNOWN_PARAMETERS);
 extern void GX_VBlankIntr(UNKNOWN_PARAMETERS);
 extern void *func_0201e0ec(UNKNOWN_PARAMETERS);
-extern void func_020349b8(UNKNOWN_PARAMETERS);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void func_0204d308(UNKNOWN_PARAMETERS);
 extern void Sound_StopAllDirectSequences(UNKNOWN_PARAMETERS);
 extern void Sound_PlayDirectSequence(UNKNOWN_PARAMETERS);
@@ -934,7 +934,7 @@ void func_ov090_02217d70(void *self)
 
         Sound_StopAllDirectSequences(gSoundContext, 0);
         if (TITLE_TIMER(self) == 10)
-            func_020349b8(self, 0xa10c, 0);
+            Actor_PlayHorizontalSpatialSound(self, 0xa10c, 0);
         else if (TITLE_TIMER(self) == 0x14)
             func_ov090_0221b428(self);
         VecFx32Object_InitComponents(&first, 0x200000, 0x136000, 0x78000);

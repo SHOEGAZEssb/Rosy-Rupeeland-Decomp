@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern Sound_Play
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern func_ov077_02214fc0
 .extern gSoundContext
 
@@ -47,7 +47,7 @@ func_ov077_02214eec:
     strh r2, [r3, #0xe8]
     mov ip, #0x1
     strh ip, [r3, #0xea]
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     cmp r4, #0x0
     add r1, r5, #0x200
     ldreqh r2, [r1, #0xf2]

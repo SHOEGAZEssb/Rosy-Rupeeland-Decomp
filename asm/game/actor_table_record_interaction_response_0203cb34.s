@@ -3,7 +3,7 @@
 .extern data_020c9670
 .extern data_021052fc
 .extern func_02007868
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_StartRecordOrHandleType6D66
 .extern ActorTableRecord_ApplySeparationImpulse
 .extern Fx32Vector2_Magnitude
@@ -201,7 +201,7 @@ ActorTableRecord_ApplyCollisionResponse: ; 0x0203cb48
     beq .L_0203cdf4
     mov r0, r6
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0203cdf4:
     ldr r0, [r6, #0x214]
     ldrb r0, [r0, #0xc]

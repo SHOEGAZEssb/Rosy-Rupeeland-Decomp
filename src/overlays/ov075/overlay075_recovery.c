@@ -107,7 +107,7 @@ EXT(func_02022cb0);
 EXT(func_02033b38);
 EXT(func_02032a64);
 EXT(Actor_GetCachedTerrainHeight);
-EXT(func_020349b8);
+EXT(Actor_PlayHorizontalSpatialSound);
 EXT(func_0203e494);
 EXT(func_020405c8);
 EXT(func_020050a4);
@@ -324,7 +324,7 @@ extern "C" void func_ov075_02212f20(void *actor)
 /* Creates the paired interaction volumes for the falling actor state. */
 extern "C" void func_ov075_02212f98(void *actor)
 {
-    func_020349b8(actor, 0x57, 0);
+    Actor_PlayHorizontalSpatialSound(actor, 0x57, 0);
     func_020405c8(actor, 0, 0x100, -20);
     func_020405c8(actor, 1, 0x100, 20);
 }

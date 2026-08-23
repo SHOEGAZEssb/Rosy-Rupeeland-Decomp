@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern s32 ActorExtendedType2_SpawnOptionalPresentation(
     void *actor, s32 first, s32 second, s32 third);
 extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
@@ -20,7 +20,7 @@ extern s32 ActorContactState_AddContact(void *actor, void *other, s32 context);
 #endif
 
 /*
- * Clear signed halfword actor +0x280, play sound 0x57 with extra zero, and
+ * Clear signed halfword actor +0x280, request packed sound 0x57 at neutral pitch, and
  * invoke ActorExtendedType2_SpawnOptionalPresentation(actor, 0, 0x100, 20).
  * Its return value is forwarded. Actor, sound, and presentation state may
  * change; the two calls cross engine sound and presentation boundaries.
@@ -29,7 +29,7 @@ s32 ActorExtendedType2_TriggerContactFeedback(void *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x280) = 0;
-    func_020349b8(actor, 0x57, 0);
+    Actor_PlayHorizontalSpatialSound(actor, 0x57, 0);
     return ActorExtendedType2_SpawnOptionalPresentation(actor, 0, 0x100, 20);
 }
 

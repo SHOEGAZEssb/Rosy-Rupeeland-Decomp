@@ -11,7 +11,7 @@
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Type7Actor_EnterFlag40000State
 .extern GraphicsSpriteGroup_CreateState
 .extern func_ov062_02210674
@@ -59,7 +59,7 @@ func_ov088_0221af2c:
     ldr r1, .L_0221b088
     mov r0, r6
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     add r0, sp, #0xc
     mov r1, r6
     bl func_ov088_0221a98c

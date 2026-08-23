@@ -62,7 +62,7 @@ extern "C" void *func_0201e0ec(void *);
 extern "C" void *func_02022cb0(void *, const void *, void *, s32, s32, s32);
 extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" s32 func_02033f4c(void *);
-extern "C" void func_02034a60(void *, s32, s32);
+extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32);
 extern "C" void func_020a28e0(void *, s32, s32, s32, s32);
@@ -445,7 +445,7 @@ extern "C" s32 func_ov082_0221340c(void *a) {
     F(void *, a, 0x220) = F(void *, data_ov082_0221483c, 0x10);
     F(void *, a, 0x224) = F(void *, data_ov082_0221483c, 0x14);
     if (ActorExtendedType2_GetDescriptorValue25(a) == 0)
-        func_02034a60(a, 0xc882, 0);
+        Actor_PlayRadialSpatialSound(a, 0xc882, 0);
     return 1;
 }
 /* Copy an adjusted descriptor and mark an active accepted contact. */
@@ -665,7 +665,7 @@ extern "C" void func_ov082_02213f64(void *a) {
                 F(void *, a, 0x220) = F(void *, data_ov082_0221483c, 0x20);
                 F(void *, a, 0x224) = F(void *, data_ov082_0221483c, 0x24);
                 if (ActorExtendedType2_GetDescriptorValue25(a) == 0)
-                    func_02034a60(a, 0xc883, 0);
+                    Actor_PlayRadialSpatialSound(a, 0xc883, 0);
                 goto done;
             }
         }

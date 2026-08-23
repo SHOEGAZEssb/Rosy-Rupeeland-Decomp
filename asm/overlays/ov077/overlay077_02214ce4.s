@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern Fx32Vector2_Magnitude
 .extern func_02053f9c
 .extern func_020adc90
@@ -76,7 +76,7 @@ func_ov077_02214ce4:
     ldr r1, .L_02214dfc
     mov r0, r6
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
     add sp, sp, #0x10

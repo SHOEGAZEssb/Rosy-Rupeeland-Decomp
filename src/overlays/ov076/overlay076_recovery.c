@@ -65,8 +65,8 @@ extern "C" void VecFx32Object_Normalize(void *);
 extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
 extern "C" void *func_0201e0ec(void *);
-extern "C" void func_020349b8(void *, ...);
-extern "C" void func_02034a60(void *, s32, s32);
+extern "C" void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
+extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Sound_PlayEffectWithParameters(void *, s32, s32, ...);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, ...);
@@ -439,7 +439,7 @@ extern "C" void func_ov076_02213664(void *actor) {
     if (F(s16, actor, 0x2a4) > 360)
         F(s16, actor, 0x2a4) = 360;
     Sound_Play(gSoundContext, 0x1c4, 1);
-    func_02034a60(actor, 0xfd8d, F(u8, actor, 0x29d) * 60);
+    Actor_PlayRadialSpatialSound(actor, 0xfd8d, F(u8, actor, 0x29d) * 60);
 }
 
 /* Scale an impulse and pass it to the inherited linked-actor response. */
@@ -771,7 +771,7 @@ extern "C" void func_ov076_02214100(void *actor) {
     u8 animation = F(u8, F(void *, actor, 0x54), 0x38);
     u16 sound = data_020e7444[F(u16, actor, 0x4e)];
     if (animation != old_animation && sound)
-        func_02034a60(actor, sound, 0);
+        Actor_PlayRadialSpatialSound(actor, sound, 0);
 }
 
 /* Maintain the follower's looping sound only in states five and six. */
@@ -794,7 +794,7 @@ extern "C" s32 func_ov076_02214240(void *actor) {
         F(void *, actor, 0x298) = 0;
         s16 sound = data_020e6d3c[F(u16, actor, 0x4e)];
         if (sound)
-            func_020349b8(actor, sound, 0);
+            Actor_PlayHorizontalSpatialSound(actor, sound, 0);
     }
     return result;
 }

@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern Actor_TurnTowardVector
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern func_ov088_02218280
 .extern gSystemState
 
@@ -164,7 +164,7 @@ func_ov088_02219d9c:
     ldr r1, .L_02219ff0
     mov r0, r5
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_02219fdc:
     mov r0, #0x1
 .L_02219fe0:

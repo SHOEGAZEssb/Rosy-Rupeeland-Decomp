@@ -3,7 +3,7 @@
 .extern gHeapContext
 .extern Heap_Alloc
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Type7Actor_SelectRandomCallback
 .extern Type7Actor_SelectRandomCallbackPair01
 .extern Type7Actor_DispatchCurrentCallback
@@ -73,11 +73,11 @@ Type7Actor_UpdateTargetCompletion: ; 0x02049c20
     mov r0, r4
     mov r1, #0x36
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     mov r0, r4
     mov r1, #0x47
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r0, [r4, #0x210]
     mov r1, #0x0
     ldr r2, [r0, #0x0]
@@ -137,11 +137,11 @@ Type7Actor_FinishTargetCompletion: ; 0x02049d64
     mov r0, r4
     mov r1, #0x36
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     mov r0, r4
     mov r1, #0x47
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r0, [r4, #0x210]
     mov r1, #0x0
     ldr r2, [r0, #0x0]

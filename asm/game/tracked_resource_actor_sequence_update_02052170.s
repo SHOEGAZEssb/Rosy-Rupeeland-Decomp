@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_update.c.
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern TrackedResourceActorImpulse_Update
 .text
     .global TrackedResourceActorType27_Update
@@ -16,7 +16,7 @@ TrackedResourceActorType27_Update:
     beq .L_020521a4
     ldr r1, .L_020521dc
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_020521a4:
     mov r0, r4
     bl TrackedResourceActorImpulse_Update
@@ -30,7 +30,7 @@ TrackedResourceActorType27_Update:
     ldr r1, .L_020521e0
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldmia sp!, {r3, r4, r5, pc}
 .L_020521dc: .word 0x4283
 .L_020521e0: .word 0x4282

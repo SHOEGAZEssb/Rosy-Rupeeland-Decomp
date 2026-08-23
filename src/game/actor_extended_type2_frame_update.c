@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void **GamePhaseRuntime_GetActorCollection(void *runtime, s32 collection);
 extern void InteractionRecordAllocator_ReleaseOwner(void *handle, void *actor);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void Actor_SaveAndForceFlags(void *actor);
 extern s32 Actor_TurnTowardTargetPosition(void *actor, const void *target, s32 step);
 extern s32 Actor_TurnTowardVector(void *actor, s32 x, s32 y, s32 step);
@@ -101,7 +101,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
             *(u32 *)(actor + 0x21c) = *(u32 *)(data_020df9e8 + 0x11c);
             sound = data_020e6f94[*(u16 *)(actor + 0x4e)];
             if (sound != 0)
-                func_020349b8(actor, sound, 0);
+                Actor_PlayHorizontalSpatialSound(actor, sound, 0);
             *(s16 *)(actor + 0xd6) = 0x11;
             *(u32 *)(actor + 0x260) &= ~3;
             Actor_SaveAndForceFlags(actor);

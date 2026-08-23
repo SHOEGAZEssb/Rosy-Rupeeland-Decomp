@@ -7,7 +7,7 @@
 .extern func_0201e0ec
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_DispatchTargetInteraction
 .extern EffectManager_SubmitPointEffect
@@ -120,7 +120,7 @@ func_ov095_0221c4a4:
     beq .L_0221c63c
     mov r0, r6
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0221c63c:
     add r0, sp, #0x14
     bl VecFx32Object_Destroy

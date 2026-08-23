@@ -14,8 +14,7 @@ extern "C" {
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void ActorContactState_AddContact(void *actor, void *context, s32 condition);
 extern void Actor_SetInteractionFlag2000(void *actor, void *context);
-extern void func_02034a60(void *actor, u16 value, s32 mode,
-                          s32 top, s32 left, s32 right, s32 bottom);
+extern void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void ActorDerivedType1_ScanActiveRecordCollisions(void *actor);
 #ifdef __cplusplus
 }
@@ -57,12 +56,17 @@ void TrackedResourceActor_PostUpdate(void *actor, void *context)
 }
 
 /*
- * Input is an actor; remaining register inputs are unused. If the object at
- * 0x1FC supplies a nonzero halfword at 0x1E, calculate the actor's pixel offset
- * from the global point (subtracting actor height from Y). When it lies within
- * bounds [-right,256-left) and [-bottom,192-top), set actor flag 4 and call
- * func_02034a60 with that value and the four signed bounds at 0x68..0x6E.
- * Returns nothing; actor/action state may change and hardware is untouched directly.
+ * Input is an actor whose object pointer at +0x1FC is valid; remaining callback
+ * register inputs are unused. A zero packed-sound halfword at object +0x1E
+ * returns without querying the global point or changing state; this initial
+ * read only gates the work. Otherwise calculate the actor's pixel offset from
+ * that point, subtracting actor height from Y. When it lies within bounds
+ * [-right,256-left) and [-bottom,192-top), set actor flag 0x4, reread the
+ * object pointer and packed sound, and invoke Actor_PlayRadialSpatialSound at
+ * neutral pitch. The signed left/top/right/bottom fields at +0x68..+0x6E are
+ * caller-local viewport prefilters, not radial-audio arguments; the radial
+ * helper may still reject the request. Returns nothing; actor/action and sound
+ * state may change.
  */
 void TrackedResourceActor_ActivateBoundedAction(void *actor)
 {
@@ -82,8 +86,8 @@ void TrackedResourceActor_ActivateBoundedAction(void *actor)
         if (dx >= -right && dx < 256 - left &&
             dy >= -bottom && dy < 192 - top) {
             FIELD(u32, actor, 0x10) |= 4;
-            func_02034a60(actor, value, 0, top, left, right, bottom);
+            Actor_PlayRadialSpatialSound(
+                actor, FIELD(u16, FIELD(void *, actor, 0x1fc), 0x1e), 0);
         }
     }
 }
-

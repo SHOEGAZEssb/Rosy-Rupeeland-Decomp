@@ -13,7 +13,7 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_GetCachedTerrainHeight
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
@@ -171,7 +171,7 @@ func_ov097_022181a0:
     mov r0, r6
     mov r2, #0x0
     strh r3, [r6, #0xda]
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     add r0, sp, #0x58
     add r1, r6, #0x18
     bl VecFx32Object_InitCopy

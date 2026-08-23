@@ -14,7 +14,7 @@ extern "C" {
 extern void AuxiliaryTimedSpritePresentation_Init(void *allocation, const void *transform, u32 value,
                           s32 firstId, s32 centerId, s32 lastId, s32 zero,
                           s32 presentation, s32 variant, s32 enabled);
-extern void func_02034a60(void *actor, s32 event, s32 value);
+extern void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void Type7Actor_SelectRandomCallback(void *actor);
 extern void Type7Actor_SelectRandomCallbackPair01(void *actor);
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
@@ -25,11 +25,11 @@ extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
 
 /*
  * Input is a type-seven actor whose related object has completed the recovered
- * subtype-0x68 interaction. Send actor events 0x36 and 0x47 with value zero,
+ * subtype-0x68 interaction. Request radial packed sounds 0x36 and 0x47 at neutral pitch,
  * invoke related object +0x210 virtual callback +0xe8 in mode zero, then
  * allocate and initialize the 0x162b..0x162d presentation effect. If allocation
- * fails, retain the notifications without an effect. Actor, related-object,
- * event, and heap-owned presentation state may change; Heap_Alloc is the
+ * fails, retain the audio requests and callback without an effect. Actor,
+ * related-object, audio, and heap-owned presentation state may change; Heap_Alloc is the
  * SDK-facing allocator effect. No value is returned.
  */
 static void complete_related_interaction(u8 *actor)
@@ -39,8 +39,8 @@ static void complete_related_interaction(u8 *actor)
     typedef void (*RelatedModeCallback)(void *object, s32 mode);
     RelatedModeCallback callback;
 
-    func_02034a60(actor, 0x36, 0);
-    func_02034a60(actor, 0x47, 0);
+    Actor_PlayRadialSpatialSound(actor, 0x36, 0);
+    Actor_PlayRadialSpatialSound(actor, 0x47, 0);
     callback = *(RelatedModeCallback *)(*(u8 **)related + 0xe8);
     callback(related, 0);
     allocation = Heap_Alloc(20, gType7ActorPresentationEffectAllocationTag, 4, &gHeapContext);
@@ -74,7 +74,7 @@ void Type7Actor_StartTargetCompletion(void *self)
  * set, dispatch the installed callback. Otherwise increment signed elapsed
  * counter +0x248; after 15 ticks, if related object +0x210 has subtype byte
  * four and halfword ID 0x68, complete the related interaction and spawn its
- * effect. Always return zero. Actor, target, event, callback, and heap-owned
+ * effect. Always return zero. Actor, target, audio, callback, and heap-owned
  * presentation state may change; Heap_Alloc is the SDK-facing effect.
  */
 s32 Type7Actor_UpdateTargetCompletion(void *self)
@@ -99,9 +99,9 @@ s32 Type7Actor_UpdateTargetCompletion(void *self)
 
 /*
  * Input is a type-seven actor. If related object +0x210 has subtype byte four
- * and halfword ID 0x68, perform the same event, virtual callback, and effect
+ * and halfword ID 0x68, perform the same audio requests, virtual callback, and effect
  * creation as Type7Actor_UpdateTargetCompletion. Then always select a fresh randomized callback
- * through Type7Actor_SelectRandomCallback. Actor, target, event, random, callback, and heap-owned
+ * through Type7Actor_SelectRandomCallback. Actor, target, audio, random, callback, and heap-owned
  * presentation state may change; Heap_Alloc is the SDK-facing effect. No value
  * is returned.
  */

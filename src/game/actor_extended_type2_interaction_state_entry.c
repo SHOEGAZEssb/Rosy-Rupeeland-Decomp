@@ -7,7 +7,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 #ifdef __cplusplus
 }
@@ -15,24 +15,26 @@ extern void VecFx32Object_Assign(void *destination, const void *source);
 
 /*
  * Clear halfwords +0x25e/+0x25a. Play the descriptor-indexed packed sound from
- * data_020e7318 unless it is 0xffff, forwarding extra as the sound helper's
- * third argument. Clear +0x260 bit zero, store target at +0x228, copy global
+ * data_020e7318 unless it is 0xffff, always using neutral pitch; the incoming
+ * third callback register is unused. Clear +0x260 bit zero, store target at +0x228, copy global
  * pair +0x30/+0x34 to +0x218/+0x21c, and enter state seven. Invoke virtual
  * +0xd0 with target vector +0x18. Copy saved vector +0x22c to +0x23c when
  * optional object +0x26c is null, otherwise copy actor position +0x18, then
  * invoke virtual +0xd8. Returns no value; sound, target, state, vector, and
  * virtual callback state change.
  */
-void ActorExtendedType2_EnterTargetInteractionState7(void *self, void *target, s32 extra)
+void ActorExtendedType2_EnterTargetInteractionState7(void *self, void *target, s32 unused)
 {
     u8 *actor = (u8 *)self;
     u16 sound;
+
+    (void)unused;
 
     *(u16 *)(actor + 0x25e) = 0;
     *(u16 *)(actor + 0x25a) = 0;
     sound = data_020e7318[*(u16 *)(actor + 0x4e)];
     if (sound != 0xffff)
-        func_020349b8(actor, sound, extra);
+        Actor_PlayHorizontalSpatialSound(actor, sound, 0);
     *(u32 *)(actor + 0x260) &= ~1;
     *(void **)(actor + 0x228) = target;
     *(u32 *)(actor + 0x218) = *(u32 *)(data_020df9e8 + 0x30);

@@ -10,7 +10,7 @@ extern const char gActorRegisteredSubclassPresentationAllocationTag[];
 extern "C" {
 #endif
 extern s32 Actor_SetInteractionFlag2000(void *actor);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void Actor_SetDirectionFromVector(void *actor, s32 x, s32 y);
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
@@ -44,7 +44,7 @@ s32 ActorRegisteredSubclass_RegisterInteractionCandidate(void *self)
 /*
  * If actor state +0xd6 is zero, clear halfword +0x218, initiate state through
  * ActorRegisteredSubclass_StartTimedState(actor,120), and play packed sound
- * 0xe204 through func_020349b8. Then obtain the primary runtime actor at
+ * 0xe204 through Actor_PlayHorizontalSpatialSound. Then obtain the primary runtime actor at
  * +0x2ea4, invoke ActorDerivedType1_StartRecord(target,126), pass
  * self-minus-target X/Y displacement to Actor_SetDirectionFromVector, and
  * invoke target virtual +0x5c. Returns no value; sound, state, motion, and
@@ -57,7 +57,7 @@ void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *self)
     if (*(s16 *)(actor + 0xd6) == 0) {
         *(u16 *)(actor + 0x218) = 0;
         ActorRegisteredSubclass_StartTimedState(actor, 0x78);
-        func_020349b8(actor, 0xe204, 0);
+        Actor_PlayHorizontalSpatialSound(actor, 0xe204, 0);
     }
     target = *(u8 **)(data_021052fc + 0x2ea4);
     ActorDerivedType1_StartRecord(target, 0x7e);

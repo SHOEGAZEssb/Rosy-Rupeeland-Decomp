@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov095_0221d3cc
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gHeapContext
 
@@ -62,7 +62,7 @@ func_ov095_0221c7d4:
     mov r0, r4
     rsb r2, r2, #0x0
     mov r1, #0xa
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0221c8a4:
     ldrb r0, [r4, #0x201]
     add r1, r0, #0x1

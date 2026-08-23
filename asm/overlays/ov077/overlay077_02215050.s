@@ -4,7 +4,7 @@
 .extern data_ov077_02216fc8
 .extern VecFx32Object_Assign
 .extern func_0201e0ec
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern func_020a2844
 .extern func_ov077_02213768
 .extern func_ov090_0221c3dc
@@ -61,7 +61,7 @@ func_ov077_02215050:
     str r3, [r5, #0x218]
     str r1, [r5, #0x21c]
     mov r1, #0xa100
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldr r0, [r5, #0x14]
     bic r0, r0, #0x10000000
     str r0, [r5, #0x14]

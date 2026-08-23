@@ -5,7 +5,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern Actor_GetCachedTerrainHeight
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_SpawnOptionalPresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue2C
@@ -244,7 +244,7 @@ func_ov078_02214cb8:
     ldr r1, .L_02215238
     mov r0, r6
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     mov r0, #0x3000
     str r0, [r6, #0x44]
     b .L_02215224
@@ -269,7 +269,7 @@ func_ov078_02214cb8:
     ldr r1, .L_02215238
     mov r0, r6
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r2, [r6, #0x3c]
     ldr r1, [r6, #0x8c]
     mov r0, r6
@@ -340,7 +340,7 @@ func_ov078_02214cb8:
     ldr r1, .L_02215238
     mov r0, r6
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     mov r0, r4
     mov r1, r7
     bl func_020adc90

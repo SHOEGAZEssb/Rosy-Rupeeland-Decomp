@@ -78,7 +78,7 @@ extern "C" u8 data_ov088_0221ba04[];
 extern "C" void *AuxiliaryTimedSpritePresentation_Init(void *, void *, void *,
                                                        s32, s32, s32, s32, s32,
                                                        s32, s32);
-extern "C" void func_02034a60(void *, s32, s32);
+extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, ...);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -374,7 +374,7 @@ extern "C" void func_ov088_02218328(void *a) {
         Actor_ReplaceAttachmentSlotResource(player, 0, 0x1088, 0x1001, 0x1089);
         Actor_ReplaceAttachmentSlotResource(player, 1, 0x108a, 0x1001, 0x108b);
         func_ov088_02219154((u8 *)a + 0x25c, -0x666);
-        func_02034a60(a, 0xfd87, 0);
+        Actor_PlayRadialSpatialSound(a, 0xfd87, 0);
     }
     if (F(u16, a, 0x21a) & 0x2000) {
         F(s16, a, 0x21c) += 12;
@@ -813,7 +813,7 @@ extern "C" s32 func_ov088_02219d9c(void *a) {
         VecFx32Object_Destroy(old);
     }
     if ((keys & 0x300) == 0x300)
-        func_02034a60(a, 0xfd88, 0);
+        Actor_PlayRadialSpatialSound(a, 0xfd88, 0);
     return 1;
 }
 
@@ -822,7 +822,7 @@ extern "C" s32 func_ov088_02219d9c(void *a) {
 extern "C" void func_ov088_02219ff4(void *a, s32 effect_duration) {
     if (F(s16, a, 0x230) == 0) {
         F(u16, a, 0x21a) |= 2;
-        func_02034a60(a, 0xfd86, 0);
+        Actor_PlayRadialSpatialSound(a, 0xfd86, 0);
         void *player = F(void *, data_021052fc, 0x2ea4);
         if (effect_duration > 0) {
             OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3e);
@@ -935,7 +935,7 @@ extern "C" void func_ov088_0221aaac(void *a) {
 extern "C" void func_ov088_0221a7c8(void *a) {
     F(u16, a, 0x21a) |= 1;
     clear_motion(a);
-    func_02034a60(a, 0xfd89, 0);
+    Actor_PlayRadialSpatialSound(a, 0xfd89, 0);
     u8 p[16];
     VecFx32Object_InitCopy(p, (u8 *)a + 0x18);
     F(s32, p, 12) += F(s32, a, 0x23c);
@@ -950,13 +950,13 @@ extern "C" void func_ov088_0221a7c8(void *a) {
 extern "C" void func_ov088_0221a8c4(void *a) {
     F(u16, a, 0x21a) |= 0x2000;
     clear_motion(a);
-    func_02034a60(a, 0xfe04, 0);
+    Actor_PlayRadialSpatialSound(a, 0xfe04, 0);
 }
 /* Leave immobilization, stop its loop, and begin the presentation cooldown. */
 extern "C" void func_ov088_0221a930(void *a) {
     F(u16, a, 0x21a) &= ~0x2000u;
     Sound_StopEffect(gSoundContext, 0x1fc, 4);
-    func_02034a60(a, 0xfe05, 0);
+    Actor_PlayRadialSpatialSound(a, 0xfe05, 0);
     F(s16, a, 0xda) = 1;
     F(s16, a, 0x26c) = 60;
 }
@@ -974,7 +974,7 @@ static void leave_active_control(void *a) {
         if (s)
             Sound_StopEffect(gSoundContext, s >> 7, s & 0x7f);
         Sound_StopEffect(gSoundContext, 0x1fb, 4);
-        func_02034a60(a, 0xfd86, 0);
+        Actor_PlayRadialSpatialSound(a, 0xfd86, 0);
     }
     clear_motion(a);
     F(u16, a, 0x230) = 0;
@@ -1060,7 +1060,7 @@ extern "C" s32 func_ov088_0221add8(void *a, s32, s32, s32) {
     if (F(u16, a, 0x21a) & 0x40) {
         F(u16, a, 0x21a) &= ~0x40u;
         func_ov088_02219154((u8 *)a + 0x25c, -0x666);
-        func_02034a60(a, 0xfd87, 0);
+        Actor_PlayRadialSpatialSound(a, 0xfd87, 0);
         if (target)
             F(u32, target, 0x14) |= 0x10000000;
     }
@@ -1086,7 +1086,7 @@ extern "C" void func_ov088_0221af2c(void *a, s32 duration) {
     F(void *, a, 0x250) = s;
     F(u16, s, 0x24) |= 6;
     if (duration > 0) {
-        func_02034a60(a, 0xfd86, 0);
+        Actor_PlayRadialSpatialSound(a, 0xfd86, 0);
         u8 p[16];
         func_ov088_0221a98c(p, a);
         s32 dir = F(u8, a, 0xd4);
@@ -1111,7 +1111,7 @@ extern "C" void func_ov088_0221b098(void *a) {
     if (F(void *, a, 0x24c))
         ((V0)vm(F(void *, a, 0x24c), 4))(F(void *, a, 0x24c));
     F(void *, a, 0x24c) = 0;
-    func_02034a60(a, 0xfd86, 0);
+    Actor_PlayRadialSpatialSound(a, 0xfd86, 0);
     u8 p[16];
     func_ov088_0221a98c(p, a);
     s32 dir = F(u8, a, 0xd4);

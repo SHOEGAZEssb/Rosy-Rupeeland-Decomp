@@ -3,7 +3,7 @@
 .extern data_020df9e8
 .extern data_020e7318
 .extern VecFx32Object_Assign
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
     .global ActorExtendedType2_EnterTargetInteractionState7
     .type ActorExtendedType2_EnterTargetInteractionState7, @function
 ActorExtendedType2_EnterTargetInteractionState7: ; 0x0203f9ac
@@ -21,7 +21,7 @@ ActorExtendedType2_EnterTargetInteractionState7: ; 0x0203f9ac
     ldr r3, .L_0203fa64
     cmp r1, r3
     beq .L_0203f9e8
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0203f9e8:
     ldr r1, [r5, #0x260]
     ldr r0, .L_0203fa68

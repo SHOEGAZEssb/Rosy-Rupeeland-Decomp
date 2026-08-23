@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_registered_subclass_state_helpers.c.
 .text
 .extern data_021052fc
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_StartRecord
 .extern ActorRegisteredSubclass_StartTimedState
@@ -21,7 +21,7 @@ ActorRegisteredSubclass_TriggerPrimaryInteraction: ; 0x0203d3fc
     ldr r1, .L_0203d484
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0203d434:
     ldr r0, .L_0203d488
     mov r1, #0x7e

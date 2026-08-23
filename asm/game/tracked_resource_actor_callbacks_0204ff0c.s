@@ -3,7 +3,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorContactState_AddContact
 .extern Actor_SetInteractionFlag2000
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorDerivedType1_ScanActiveRecordCollisions
 .text
 
@@ -108,7 +108,7 @@ TrackedResourceActor_ActivateBoundedAction: ; 0x0204ff98
     ldr r1, [r4, #0x1fc]
     mov r2, #0x0
     ldrh r1, [r1, #0x1e]
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_0205006c:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

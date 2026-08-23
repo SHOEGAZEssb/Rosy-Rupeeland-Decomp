@@ -15,7 +15,7 @@ extern void VecFx32Object_Destroy(void *value);
 extern void VecFx32Object_Init(void *value);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
-extern void func_02034a60(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void func_ov092_0221ad80(void *target, void *actor, s32 amount,
                                 s32 scale);
 extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *vector, s32 value, s32 kind);
@@ -37,7 +37,7 @@ extern void ActorDerivedType1_TrySetStateVector(void *actor, const void *vector,
  * state vector kind -1/value 15. Eligible subtype-seven actors must lack
  * +0x10 bit 0x1000000 and lie from 0x1000 up to the radius; dispatch their
  * virtual +0xb8 with a normalized direction and mode one. After scanning,
- * dispatch descriptor sound +0x2e through func_02034a60 and destroy the copied
+ * dispatch descriptor sound +0x2e through Actor_PlayRadialSpatialSound and destroy the copied
  * center. Returns no value; collection, virtual, sound, overlay, and vector
  * helpers have observable engine state.
  */
@@ -88,7 +88,7 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
             distance = Fx32Vector2_Magnitude(dx, dy);
             if (distance >= radius)
                 continue;
-            func_02034a60(actor, 0x54, 0);
+            Actor_PlayRadialSpatialSound(actor, 0x54, 0);
             if (*(s16 *)descriptor == 0x67 || *(s16 *)descriptor == 0x68) {
                 amount = 0x14 - (func_020adc90(distance, radius) >> 10);
                 scale = 0x1ccd;
@@ -115,6 +115,6 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
         }
     }
     if (*(u16 *)(descriptor + 0x2e) != 0)
-        func_02034a60(actor, *(u16 *)(descriptor + 0x2e), 0);
+        Actor_PlayRadialSpatialSound(actor, *(u16 *)(descriptor + 0x2e), 0);
     VecFx32Object_Destroy(center);
 }

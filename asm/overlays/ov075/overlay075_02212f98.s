@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorExtendedType2_SpawnOptionalPresentation
 
 .global func_ov075_02212f98
@@ -9,7 +9,7 @@ func_ov075_02212f98:
     mov r1, #0x57
     mov r2, #0x0
     mov r4, r0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     mov r2, #0x100
     mov r0, r4
     sub r3, r2, #0x114

@@ -36,7 +36,7 @@
 .extern ActorMotionAreaFollower_BindActor
 .extern func_0201e0ec
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_StartRecord
 .extern ActorDerivedType1_TeardownActiveRecord
@@ -2054,7 +2054,7 @@ func_ov090_02217d70:
     ldr r1, .L_02219c44
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     b .L_02219b20
 .L_02219b10:
     cmp r0, #0x14

@@ -7,7 +7,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern ActorContactState_AddContact
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Fx32Vector2_Magnitude
 .extern func_020adc90
 .extern func_ov078_02213838
@@ -106,7 +106,7 @@ func_ov078_022142d4:
     ldr r1, .L_022146b8
     mov r0, r7
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     add r0, r7, #0x200
     mov r1, #0xf
     strh r1, [r0, #0xc4]

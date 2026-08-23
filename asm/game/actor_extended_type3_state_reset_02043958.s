@@ -3,7 +3,7 @@
 .extern data_020e0224
 .extern data_020e6f94
 .extern Actor_SaveAndForceFlags
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern InteractionRecordAllocator_ReleaseOwner
 .global ActorExtendedType3_ResetInteractionState
 .type ActorExtendedType3_ResetInteractionState, @function
@@ -36,7 +36,7 @@ ActorExtendedType3_ResetInteractionState: ; 0x02043958
     beq .L_020439c8
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_020439c8:
     ldr r1, [r4, #0x260]
     mov r0, #0x0

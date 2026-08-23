@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_countdown_update.c.
 .text
 .extern data_020e6d3c
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .global ActorExtendedType2_UpdateActiveCountdown
 .type ActorExtendedType2_UpdateActiveCountdown, @function
 ActorExtendedType2_UpdateActiveCountdown: ; 0x02042514
@@ -51,7 +51,7 @@ ActorExtendedType2_UpdateActiveCountdown: ; 0x02042514
     beq .L_020425c4
     mov r0, r5
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_020425c4:
     str r4, [r5, #0x1fc]
     ldmia sp!, {r3, r4, r5, pc}

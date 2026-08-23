@@ -5,7 +5,7 @@
 .extern data_ov078_02215cd8
 .extern data_ov078_02215cf8
 .extern data_ov078_02215d00
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 
 .global func_ov078_022138c0
 func_ov078_022138c0:
@@ -98,7 +98,7 @@ func_ov078_022138c0:
     ldr r1, .L_02213a38
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_02213a10:
     mov r0, r4
     ldr r1, [r0, #0x0]

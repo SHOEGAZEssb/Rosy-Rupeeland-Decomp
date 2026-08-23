@@ -24,7 +24,7 @@
 .extern func_0201e0ec
 .extern func_020328d0
 .extern Actor_QueryTerrainHeight
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_HasBlockingStateFlags
 .extern ActorDerivedType1_ScanActiveRecordCollisions
@@ -118,7 +118,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     beq .L_02036bb8
     mov r0, r10
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_02036bb8:
     ldrb r0, [r10, #0xd4]
     ldr r1, [r10, #0x27c]
@@ -483,7 +483,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     beq .L_0203712c
     mov r0, r10
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0203712c:
     ldr r0, [r10, #0x27c]
     mov r2, r7, lsl #0x4

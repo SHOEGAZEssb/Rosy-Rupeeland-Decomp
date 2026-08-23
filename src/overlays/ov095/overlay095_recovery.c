@@ -86,7 +86,7 @@ EXT(Type7Actor_ProcessGlobalInteractionTrigger);
 EXT(TrackedResourceActor_PostUpdate);
 EXT(func_02031564);
 EXT(Actor_TurnTowardVector);
-EXT(func_02034a60);
+EXT(Actor_PlayRadialSpatialSound);
 EXT(func_0201e0ec);
 EXT(Fx32Vector2_Magnitude);
 EXT(func_0206e590);
@@ -100,7 +100,7 @@ EXT(func_020ada8c);
 EXT(func_020adae4);
 EXT(func_020adc90);
 EXT(func_020bf1f8);
-EXT(func_020349b8);
+EXT(Actor_PlayHorizontalSpatialSound);
 EXT(func_02033f4c);
 EXT(func_020befec);
 EXT(func_020adfbc);
@@ -268,7 +268,7 @@ extern "C" void func_ov095_02217b24(void *actor, void *other)
     F(u32, actor, 0x260) |= 0x10;
     if ((F(u32, other, 0xd0) & 0x100) == 0 && F(s16, other, 0x268) <= 0)
     {
-        func_020349b8(actor, 0x3089, 0);
+        Actor_PlayHorizontalSpatialSound(actor, 0x3089, 0);
     }
 }
 
@@ -1424,7 +1424,7 @@ extern "C" void func_ov095_0221c4a4(void *actor, void *target)
             void *descriptor = F(void *, actor, 0x1fc);
             if (F(u16, descriptor, 0x1c) != 0)
             {
-                func_020349b8(actor, F(u16, descriptor, 0x1c), 0);
+                Actor_PlayHorizontalSpatialSound(actor, F(u16, descriptor, 0x1c), 0);
             }
             VecFx32Object_Destroy(scaled);
         }
@@ -1564,7 +1564,7 @@ extern "C" void func_ov095_0221c7d4(void *actor)
                 F(void *, F(void *, record, 8), 0x10),
                 F(void *, F(void *, record, 0xc), 0x10), 1, 12, -1, 1);
         }
-        func_020349b8(actor, 10, -0x200);
+        Actor_PlayHorizontalSpatialSound(actor, 10, -0x200);
     }
     if (++F(u8, actor, 0x201) > 20)
     {
@@ -2418,7 +2418,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
             {
                 F(s16, actor, 0xda) = 0xe;
                 F(s16, actor, 0x2dc) = 0;
-                func_02034a60(actor, 0x7a02, 0);
+                Actor_PlayRadialSpatialSound(actor, 0x7a02, 0);
             }
             break;
         case 0xe:

@@ -5,7 +5,7 @@
 .extern data_ov084_022145e4
 .extern data_ov084_022145ec
 .extern Actor_SaveAndForceFlags
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern InteractionRecordAllocator_ReleaseOwner
@@ -111,7 +111,7 @@ func_ov084_02213f38:
     beq .L_022140b0
     mov r0, r5
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_022140b0:
     ldr r1, [r5, #0x260]
     add r0, r5, #0x200

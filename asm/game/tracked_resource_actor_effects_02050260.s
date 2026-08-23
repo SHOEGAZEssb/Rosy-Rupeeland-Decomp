@@ -7,7 +7,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern func_020a2614
 .extern func_020a2844
 .extern EffectManager_SubmitPointEffect
@@ -215,7 +215,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     beq .L_0205054c
     mov r0, r6
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_0205054c:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}

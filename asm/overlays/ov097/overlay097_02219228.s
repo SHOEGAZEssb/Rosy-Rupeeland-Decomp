@@ -6,7 +6,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern Fx32Vector2_Magnitude
 .extern func_020adc90
@@ -121,7 +121,7 @@ func_ov097_02219228:
     mov r0, r8
     mov r2, #0x0
     str r4, [r7, #0x40]
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     add r0, sp, #0x18
     add r1, r7, #0x18
     bl VecFx32Object_InitCopy

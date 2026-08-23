@@ -11,7 +11,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern func_020befec
 .extern func_020bf1f8
 .extern func_ov077_022142c8
@@ -213,7 +213,7 @@ func_ov077_02215f34:
     mov r0, r8
     mov r1, #0x43
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     add r0, r8, #0x200
     mov r1, #0x4
     strh r1, [r0, #0xea]
@@ -234,7 +234,7 @@ func_ov077_02215f34:
     ldr r1, .L_02216938
     mov r0, r8
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_02216250:
     add r0, r8, #0x200
     ldrsb r1, [r0, #0xe5]
@@ -259,7 +259,7 @@ func_ov077_02215f34:
     ldr r1, .L_0221693c
     mov r0, r8
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     b .L_022168e8
 .L_022162b0:
     mov r0, #0xe
@@ -312,7 +312,7 @@ func_ov077_02215f34:
     mov r0, r8
     mov r1, #0x26
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     add r0, r8, #0x200
     mov r1, #0xb
     strh r1, [r0, #0xea]
@@ -333,7 +333,7 @@ func_ov077_02215f34:
     ldr r1, .L_02216938
     mov r0, r8
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_022163c0:
     mov r0, #0xe
     strh r0, [r8, #0xd6]
@@ -357,11 +357,11 @@ func_ov077_02215f34:
 .L_0221640c:
     mov r0, r8
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldr r1, .L_0221694c
     mov r0, r8
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldr r1, .L_02216950
     ldr r3, .L_02216954
     mov r0, #0x14

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern Sound_Play
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern func_ov076_02214034
 .extern gSoundContext
 .extern genrand_int32
@@ -41,7 +41,7 @@ func_ov076_02213664:
     ldr r1, .L_022136f4
     smulbb r2, r2, r0
     mov r0, r4
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldmia sp!, {r4, pc}
 .L_022136f0: .word gSoundContext
 .L_022136f4: .word 0xe202

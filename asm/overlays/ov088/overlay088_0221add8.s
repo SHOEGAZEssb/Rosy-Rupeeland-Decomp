@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern SceneManager_GetCurrent
 .extern data_021052fc
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Type7Actor_GetStateCode
 .extern Fx32Vector2_Magnitude
 .extern func_ov088_02219154
@@ -83,7 +83,7 @@ func_ov088_0221add8:
     ldr r1, .L_0221af28
     mov r0, r5
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     cmp r4, #0x0
     ldrne r0, [r4, #0x14]
     orrne r0, r0, #0x10000000

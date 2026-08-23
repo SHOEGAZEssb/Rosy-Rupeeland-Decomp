@@ -8,9 +8,9 @@
 .extern SignedAbsoluteValueVariant
 .extern gSoundContext
 
-    .global func_02034a60
-    .type func_02034a60, @function
-func_02034a60: ; 0x02034a60
+    .global Actor_PlayRadialSpatialSound
+    .type Actor_PlayRadialSpatialSound, @function
+Actor_PlayRadialSpatialSound: ; 0x02034a60
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     ldr r3, .L_02034b34
@@ -67,6 +67,6 @@ func_02034a60: ; 0x02034a60
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02034b34: .word data_021052fc
 .L_02034b38: .word gSoundContext
-    .size func_02034a60, . - func_02034a60
+    .size Actor_PlayRadialSpatialSound, . - Actor_PlayRadialSpatialSound
 
     .global Actor_SetInteractionBounds

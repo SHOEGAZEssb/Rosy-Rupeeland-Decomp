@@ -16,7 +16,7 @@
 .extern PresentationList_AppendObject
 .extern func_0201e0ec
 .extern func_02022cb0
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorVector_DivideByScalar
 .extern Type1Actor_TryEnterFailureState
@@ -345,11 +345,11 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     mov r0, r7
     mov r1, #0x26
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     mov r0, r7
     mov r1, #0xe
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     mov r0, r7
     bl Type1Actor_TryEnterFailureState
     add r0, sp, #0x28

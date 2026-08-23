@@ -86,5 +86,5 @@ ActorTerrain_ApplyNeighborAxisBias: ; 0x02034894
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     .size ActorTerrain_ApplyNeighborAxisBias, . - ActorTerrain_ApplyNeighborAxisBias
 
-    .global func_020349b8
+    .global Actor_PlayHorizontalSpatialSound
 

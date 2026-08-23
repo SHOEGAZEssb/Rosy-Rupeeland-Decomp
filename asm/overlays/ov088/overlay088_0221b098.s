@@ -9,7 +9,7 @@
 .extern OverlayManager_GetGlobal
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Type7Actor_ResetMotionAndCooldown
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov062_02210674
@@ -41,7 +41,7 @@ func_ov088_0221b098:
     mov r2, #0x0
     mov r0, r5
     str r2, [r5, #0x24c]
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     add r0, sp, #0x1c
     mov r1, r5
     bl func_ov088_0221a98c

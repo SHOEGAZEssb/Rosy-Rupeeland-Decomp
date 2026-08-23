@@ -14,7 +14,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCachedTerrainHeight
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern Actor_ReplaceAttachmentSlotResource
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Actor_UpdateGroundContactProbe
@@ -120,12 +120,12 @@ func_ov088_02218328:
     beq .L_02218444
     mov r0, r4
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_02218444:
     ldr r1, .L_02219118
     mov r0, r4
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_02218454:
     add r0, r4, #0x200
     ldrh r3, [r0, #0x1a]
@@ -445,7 +445,7 @@ func_ov088_02218328:
     str lr, [r0, #0x20]
     ldr r1, .L_02219138
     mov r0, r4
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     add r0, sp, #0x58
     bl VecFx32Object_Destroy
 .L_02218938:
@@ -557,7 +557,7 @@ func_ov088_02218328:
     ldr r1, .L_02219148
     mov r0, r4
     mov r2, r5
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_02218ad8:
     add r0, r4, #0x200
     ldrh r1, [r0, #0x1a]

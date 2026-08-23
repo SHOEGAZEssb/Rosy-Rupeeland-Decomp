@@ -16,7 +16,7 @@ extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
 extern void PresentationList_AppendObject(void *manager, void *object);
 extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 record);
 extern void *SceneManager_GetCurrent(void *manager);
@@ -77,7 +77,7 @@ void ActorDerivedType1_DispatchInteractionAmount(void *self, s32 amount, void *s
             *(s16 *)descriptor == 0x2e || *(s16 *)descriptor == 0x2f ||
             *(s16 *)descriptor == 0x40) {
             ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(actor);
-            func_020349b8(actor, 0x26, 0);
+            Actor_PlayHorizontalSpatialSound(actor, 0x26, 0);
             if (*(s8 *)(descriptor + 0x2c) == 4)
                 *(u32 *)(actor + 0x230) |= 0x400000;
             else

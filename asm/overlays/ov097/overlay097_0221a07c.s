@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCachedTerrainHeight
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 
 .global func_ov097_0221a07c
 func_ov097_0221a07c:
@@ -81,7 +81,7 @@ func_ov097_0221a07c:
     bic r3, r3, #0x1
     orr r3, r3, #0x1
     str r3, [r4, #0x1f4]
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
 .L_0221a1a4:
     ldr r0, [r4, #0xd0]
     orr r0, r0, #0x2000

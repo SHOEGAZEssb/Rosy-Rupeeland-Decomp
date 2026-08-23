@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020df4a4
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern Sound_StopEffect
 .extern gHeapContext
@@ -57,7 +57,7 @@ ActorDerivedType1_TeardownActiveRecord: ; 0x020390c8
     beq .L_0203917c
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0203917c:
     ldr r0, [r4, #0x27c]
     ldrh r2, [r0, #0x2e]

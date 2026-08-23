@@ -36,8 +36,8 @@ EXT(func_02030acc);
 EXT(func_02032a94);
 EXT(func_020337d4);
 EXT(Actor_GetCachedTerrainHeight);
-EXT(func_020349b8);
-EXT(func_02034a60);
+EXT(Actor_PlayHorizontalSpatialSound);
+EXT(Actor_PlayRadialSpatialSound);
 EXT(func_0203db80);
 EXT(func_0203e494);
 EXT(func_020405c8);
@@ -325,7 +325,7 @@ extern "C" s32 func_ov078_022138b8(void)
 extern "C" void func_ov078_022138c0(void *actor, void *other)
 {
     if ((F(u32, other, 0xd0) & 0x100) == 0 && F(s16, other, 0x268) < 1)
-        func_020349b8(actor, 0x3089, 0);
+        Actor_PlayHorizontalSpatialSound(actor, 0x3089, 0);
     F(u32, actor, 0x260) |= 0x10;
     Invoke(actor, 0x200);
 }
@@ -587,7 +587,7 @@ extern "C" void func_ov078_022146c4(void *actor)
     func_ov078_02213be0(actor);
     F(u32, actor, 0x260) |= 8;
     if (ActorExtendedType2_GetDescriptorValue2A(actor) >= 2)
-        func_02034a60(actor, 0x2a81, 0);
+        Actor_PlayRadialSpatialSound(actor, 0x2a81, 0);
 }
 
 /* Spawns the retail contact particle at the actor's vertically adjusted pose. */
@@ -766,7 +766,7 @@ extern "C" void func_ov078_02215444(void *actor, void *config)
         F(s32, actor, 0x2a8) = F(s32, data_ov078_02215c88, 0xa4);
         F(u16, actor, 0x298) = 0;
         F(u16, actor, 0xd6) = 14;
-        func_02034a60(actor, 0x5e, 0);
+        Actor_PlayRadialSpatialSound(actor, 0x5e, 0);
         return;
     }
     func_ov078_02213a74(actor, config, 0);

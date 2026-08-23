@@ -8,7 +8,7 @@
 .extern OverlayManager_GetGlobal
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern func_ov062_0220fe78
 .extern func_ov088_02218280
 .extern func_ov088_0221a98c
@@ -30,7 +30,7 @@ func_ov088_02219ff4:
     mov r2, #0x0
     orr r4, r4, #0x2
     strh r4, [r3, #0x1a]
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     ldr r0, .L_0221a280
     cmp r5, #0x0
     ldr r0, [r0, #0x0]

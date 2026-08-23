@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void Actor_SaveAndForceFlags(void *actor);
 extern void InteractionRecordAllocator_ReleaseOwner(void *handle, void *actor);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 #ifdef __cplusplus
 }
 #endif
@@ -21,10 +21,10 @@ extern void func_020349b8(void *actor, u32 sound, s32 extra);
  * Clear actor +0xd0 bit 0x200 and halfword +0x24e, invoke
  * Actor_SaveAndForceFlags, and release this actor's optional +0x274 record
  * reservations. Install callback pair data_020e0224+0x18/+0x1c at
- * +0x218/+0x21c. Play nonzero sound data_020e6f94[index +0x4e] with extra zero.
+ * +0x218/+0x21c. Request nonzero packed sound data_020e6f94[index +0x4e] at neutral pitch.
  * Finally clear +0x260 bits zero and one, set bit 0x4000, and clear target
  * +0x228. Always returns zero. Actor, allocator, bookkeeping, callback, and
- * sound state may change; func_020349b8 is the sound boundary.
+ * sound state may change; Actor_PlayHorizontalSpatialSound is the sound boundary.
  */
 s32 ActorExtendedType3_ResetInteractionState(void *self)
 {
@@ -39,7 +39,7 @@ s32 ActorExtendedType3_ResetInteractionState(void *self)
     *(u32 *)(actor + 0x21c) = *(u32 *)(data_020e0224 + 0x1c);
     sound = data_020e6f94[*(u16 *)(actor + 0x4e)];
     if (sound != 0)
-        func_020349b8(actor, sound, 0);
+        Actor_PlayHorizontalSpatialSound(actor, sound, 0);
     *(u32 *)(actor + 0x260) = (*(u32 *)(actor + 0x260) & ~3) | 0x4000;
     *(void **)(actor + 0x228) = 0;
     return 0;

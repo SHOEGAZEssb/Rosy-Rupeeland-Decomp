@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_ov082_0221483c
 .extern func_0201e0ec
-.extern func_02034a60
+.extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue25
@@ -144,7 +144,7 @@ func_ov082_02213f64:
     ldr r1, .L_02214244
     mov r0, r4
     mov r2, #0x0
-    bl func_02034a60
+    bl Actor_PlayRadialSpatialSound
     b .L_02214228
 .L_02214164:
     add r0, r4, #0x200

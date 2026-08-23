@@ -19,7 +19,7 @@
 .extern Actor_TurnTowardTargetPosition
 .extern func_020328d0
 .extern Actor_UpdateAnimationState
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_ClassifyState
 .extern ActorDerivedType1_UpdateHorizontalInputMotion
@@ -74,7 +74,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     mov r2, r0, lsl #0x6
     mov r0, r5
     mov r1, #0x5f
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_020355bc:
     ldr r1, [r5, #0x230]
     mov r0, r5

@@ -5,7 +5,7 @@
 .extern data_020e6d3c
 .extern Actor_SaveAndForceFlags
 .extern Actor_GetCachedTerrainHeight
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern genrand_int32
 .global ActorExtendedType2_PrepareRelease
 .type ActorExtendedType2_PrepareRelease, @function
@@ -93,7 +93,7 @@ ActorExtendedType2_LaunchRandomMotion: ; 0x02042408
     cmp r1, r0
     ldmeqia sp!, {r4, pc}
     mov r0, r4
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldmia sp!, {r4, pc}
 .L_02042504: .word data_020df9e8
 .L_02042508: .word data_020c9670

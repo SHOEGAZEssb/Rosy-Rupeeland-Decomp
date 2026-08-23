@@ -14,7 +14,7 @@ extern "C" {
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void Actor_SaveAndForceFlags(void *actor);
 extern u32 genrand_int32(void);
-extern void func_020349b8(void *actor, u32 sound, s32 extra);
+extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ void ActorExtendedType2_PrepareRelease(void *self)
  * actor +0x25a clear, +0xd0 bit 0x100 is set, and +0x260 bits zero and one clear.
  * Finally the descriptor-indexed data_020e6d3c sound is played unless 0xffff.
  * The routine has no meaningful return value. Actor, attachment, random,
- * virtual, bookkeeping, and sound state may change; func_020349b8 crosses the
+ * virtual, bookkeeping, and sound state may change; Actor_PlayHorizontalSpatialSound crosses the
  * sound boundary.
  */
 void ActorExtendedType2_LaunchRandomMotion(void *self)
@@ -77,5 +77,5 @@ void ActorExtendedType2_LaunchRandomMotion(void *self)
     *(u16 *)(actor + 0x25a) = 0;
     sound = data_020e6d3c[*(u16 *)(actor + 0x4e)];
     if (sound != 0xffff)
-        func_020349b8(actor, sound, 0);
+        Actor_PlayHorizontalSpatialSound(actor, sound, 0);
 }

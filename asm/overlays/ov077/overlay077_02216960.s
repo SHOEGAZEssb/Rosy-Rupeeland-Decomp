@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern data_ov077_02216fc8
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern ActorExtendedType2_IncrementSavedProgressCounter
 .extern func_ov077_02216cac
 
@@ -21,11 +21,11 @@ func_ov077_02216960:
     ldr r1, .L_022169b4
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldr r1, .L_022169b8
     mov r0, r4
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
     ldmia sp!, {r4, pc}
 .L_022169b0: .word data_ov077_02216fc8
 .L_022169b4: .word 0x9f85

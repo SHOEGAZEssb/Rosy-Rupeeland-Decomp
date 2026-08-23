@@ -18,7 +18,7 @@
 .extern Actor_TurnTowardTargetPosition
 .extern Actor_UpdateAnimationState
 .extern Actor_SaveAndForceFlags
-.extern func_020349b8
+.extern Actor_PlayHorizontalSpatialSound
 .extern AttachmentController_SetEnabled
 .extern Actor_UpdateGroundContactProbe
 .extern InteractionRecordAllocator_ReleaseOwner
@@ -119,7 +119,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     beq .L_0203e918
     mov r0, r6
     mov r2, #0x0
-    bl func_020349b8
+    bl Actor_PlayHorizontalSpatialSound
 .L_0203e918:
     mov r0, #0x11
     strh r0, [r6, #0xd6]
