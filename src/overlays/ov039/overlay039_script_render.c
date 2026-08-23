@@ -55,7 +55,7 @@ extern void func_ov069_02210a44(void *system, s32 index, s32 x, s32 y,
 extern void func_ov007_021fc200(void);
 extern void func_ov049_0220c6cc(void *system, const void *position);
 extern void func_020594ec(void *context, s32 mode);
-extern void func_0205940c(void *context, s32 soundId, s32 mode);
+extern void Sound_StopEffect(void *context, s32 soundId, s32 mode);
 extern void Sound_Play(void *context, s32 soundId, s32 mode);
 #ifdef __cplusplus
 }
@@ -188,7 +188,7 @@ extern "C" void func_ov039_02202d04(void *scene)
             angle += acceleration * direction;
         }
         if (FIELD(s32, scene, 0x1cd4) > 1) {
-            func_0205940c(FIELD(void *, gSoundContext, 0), 0x1c5, 2);
+            Sound_StopEffect(FIELD(void *, gSoundContext, 0), 0x1c5, 2);
             timer = 80;
             phase = 4;
         }

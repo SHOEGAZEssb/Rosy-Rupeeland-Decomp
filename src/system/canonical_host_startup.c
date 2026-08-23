@@ -45,15 +45,15 @@ extern void PXI_Init(void);
 extern s32 FS_Init(s32 default_dma);
 extern void MIC_Init(void);
 extern void func_01ff8000(void);
-extern void func_020589f4(void);
-extern void func_02058bf8(void *context);
+extern void SoundContext_Initialize(void);
+extern void SoundContext_Update(void *context);
 extern void func_02078ae4(void);
-extern void func_0207f12c(void);
+extern void RetailSaveContext_InitializeGlobal(void);
 extern void func_0206328c(void);
 extern void func_02078370(void);
 extern void func_0206f780(void);
 extern void func_0207a268(void);
-extern s32 func_0207f288(RuntimeContext *context);
+extern s32 RetailSaveContext_IdentifyBackupDevice(RuntimeContext *context);
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
                         HeapContext *context);
 extern u32 GX_HBlankIntr(u32 state);
@@ -130,12 +130,12 @@ s32 TingleRecoveredCanonicalStartup(void)
     gTouchPanelManager = touch;
 
     STARTUP_STEP("microphone", MIC_Init());
-    STARTUP_STEP("sound resources", func_020589f4());
+    STARTUP_STEP("sound resources", SoundContext_Initialize());
     sets = GraphicsResourceSets_Get();
     STARTUP_STEP("graphics resource sets", GraphicsResourceSets_Load(sets));
     STARTUP_STEP("game work", GameWork_Create());
     STARTUP_STEP("manager 02078ae4", func_02078ae4());
-    STARTUP_STEP("runtime context", func_0207f12c());
+    STARTUP_STEP("runtime context", RetailSaveContext_InitializeGlobal());
     STARTUP_STEP("manager 0206328c", func_0206328c());
     STARTUP_STEP("manager 02078370", func_02078370());
     STARTUP_STEP("manager 0206f780", func_0206f780());
@@ -162,7 +162,7 @@ s32 TingleRecoveredCanonicalStartup(void)
     if (scenes == NULL)
         return 0;
     STARTUP_STEP("save identification",
-                 save_identified = func_0207f288(gRuntimeContext));
+                 save_identified = RetailSaveContext_IdentifyBackupDevice(gRuntimeContext));
     if (!save_identified)
         return 0;
     STARTUP_STEP("game phase bootstrap", (void)0);
@@ -224,7 +224,7 @@ void TingleRecoveredCanonicalRunFrame(void)
         if (gDebugFont != NULL)
             func_020745c4(gDebugFont, 1);
     }
-    func_02058bf8(gSoundContext);
+    SoundContext_Update(gSoundContext);
 }
 
 /* Resolve the configured metadata record without adding state to game code. */

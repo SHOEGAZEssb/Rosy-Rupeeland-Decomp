@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
-extern "C" void func_0205940c(void *sound, s32 sequence, s32 value);
+extern "C" void Sound_StopEffect(void *sound, s32 sequence, s32 value);
 extern "C" void Sound_StopDirectSequence(void *sound, s32 sequence, s32 value);
 extern "C" void func_ov042_021fcf80(void *element);
 extern "C" void func_020a1794(void *owner, void *source, void *destination);
@@ -98,7 +98,7 @@ extern "C" void func_ov042_02200afc(void *destination, const void *source)
  */
 extern "C" void func_ov042_02200b38(void)
 {
-    func_0205940c(gSoundContext, 0x1d7, 7);
+    Sound_StopEffect(gSoundContext, 0x1d7, 7);
     Sound_StopDirectSequence(gSoundContext, 0xa4, 0);
     Sound_StopDirectSequence(gSoundContext, 0xa5, 0);
     Sound_StopDirectSequence(gSoundContext, 0xcd, 0);

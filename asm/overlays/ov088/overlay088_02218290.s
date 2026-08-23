@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern func_ov088_02219960
 .extern gSoundContext
 
@@ -21,18 +21,18 @@ func_ov088_02218290:
     mov r1, r2, asr #0x7
     ldr r0, [r0, #0x0]
     and r2, r2, #0x7f
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_022182d0:
     ldr r0, .L_02218320
     ldr r1, .L_02218324
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02218320
     mov r1, #0x1fc
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r4, #0x200
     ldrh r2, [r0, #0x1a]
     mov r1, #0x0

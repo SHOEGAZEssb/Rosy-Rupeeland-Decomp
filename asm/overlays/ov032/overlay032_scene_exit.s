@@ -8,8 +8,8 @@
 .extern DisplayBrightness_StartSubTransition
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_0205958c
-.extern func_020595ec
+.extern Sound_StopStream
+.extern Sound_ResumeStreamPosition
 .extern Overlay032Scene_ShutdownGraphics
 .extern gGameWork
 .extern gSoundContext
@@ -49,7 +49,7 @@ L_021fedec:
     ldr r0, L_021fee94
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0205958c
+    bl Sound_StopStream
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
@@ -83,7 +83,7 @@ L_021fee48:
 L_021fee78:
     ldr r0, L_021fee94
     ldr r0, [r0, #0x0]
-    bl func_020595ec
+    bl Sound_ResumeStreamPosition
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021fee8c:

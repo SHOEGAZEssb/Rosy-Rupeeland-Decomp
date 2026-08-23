@@ -25,9 +25,9 @@ extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
-extern s32 func_0207f248(void *);
-extern void func_0207f2e0(void *, s32);
-extern void func_020802f4(void *, s32, s32);
+extern s32 RetailSaveContext_PollOperation(void *);
+extern void RetailSaveContext_BeginDiscovery(void *, s32);
+extern void RetailSaveContext_BeginRecordDelete(void *, s32, s32);
 extern void func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
 extern void func_020922f0(void *, s32);
@@ -61,12 +61,12 @@ extern "C" s32 func_ov025_022009d8(void *scene)
     switch (FIELD(u32, scene, 4)) {
     case 0:
         GameWork_Reset();
-        func_0207f2e0(gRuntimeContext, 1);
+        RetailSaveContext_BeginDiscovery(gRuntimeContext, 1);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* State zero intentionally continues into the runtime-poll state. */
     case 1: {
-        s32 status = func_0207f248(gRuntimeContext);
+        s32 status = RetailSaveContext_PollOperation(gRuntimeContext);
         if (status == 0 || status == -1)
             break;
         for (s32 i = 0; i < 3; ++i) {
@@ -125,13 +125,13 @@ extern "C" s32 func_ov025_022009d8(void *scene)
                           (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
             func_ov025_02200398(scene, 5, 3);
-            func_020802f4(gRuntimeContext, FIELD(s32, scene, 0x638), 1);
+            RetailSaveContext_BeginRecordDelete(gRuntimeContext, FIELD(s32, scene, 0x638), 1);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
         break;
     case 6: {
-        s32 status = func_0207f248(gRuntimeContext);
+        s32 status = RetailSaveContext_PollOperation(gRuntimeContext);
         if (status == 0)
             break;
         if (status == -1) {

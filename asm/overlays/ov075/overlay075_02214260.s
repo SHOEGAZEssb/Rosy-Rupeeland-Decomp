@@ -3,7 +3,7 @@
 .extern GameWork_TestFlag
 .extern data_021052fc
 .extern data_ov075_02216cc8
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov075_02213cfc
 .extern gGameWork
@@ -148,7 +148,7 @@ func_ov075_02214260:
     str r1, [sp, #0x4]
     ldr r0, [r0, #0x0]
     add r1, r1, #0xe9
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add r0, r6, #0x200
     ldrsh r1, [r0, #0x50]
     cmp r1, #0x0

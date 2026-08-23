@@ -28,7 +28,7 @@ extern void func_0209b5e8(void *renderer, const void *first,
                           void *destination);
 extern s32 SignedAbsoluteValueVariant(s32 angle);
 extern s32 func_020befec(s32 numerator, s32 denominator);
-extern s32 func_020594a4(void *sound, s32 parameter, s32 id);
+extern s32 Sound_IsEffectPlaying(void *sound, s32 parameter, s32 id);
 extern void Sound_Play(void *sound, s32 parameter, s32 id);
 extern void *gSoundContext;
 extern const s32 data_ov040_022042f0[];
@@ -103,7 +103,7 @@ extern "C" void func_ov040_021fe1b0(void *scene, s32 unused1, s32 unused2,
     /* Confirmed opening phases before the later capture/sequence states. */
     if (FIELD(s32, scene, 0xb3c) == 0) {
         if (FIELD(s32, scene, 0xb40) == 0 &&
-            func_020594a4(gSoundContext, 300, 2) == 0)
+            Sound_IsEffectPlaying(gSoundContext, 300, 2) == 0)
             Sound_Play(gSoundContext, 300, 2);
         if (++FIELD(s32, scene, 0xb40) > 0x3c) {
             FIELD(s32, scene, 0xb40) = 0;

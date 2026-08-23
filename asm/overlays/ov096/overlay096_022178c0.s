@@ -7,7 +7,7 @@
 .extern Actor_GetCollection
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_ov096_02217e88
@@ -124,7 +124,7 @@ func_ov096_022178c0:
     mov r2, #0x2
     ldr r0, [r0, #0x0]
     mov r3, r4
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     ldr r0, [r4, #0x260]
     orr r0, r0, #0x8000
     str r0, [r4, #0x260]
@@ -247,7 +247,7 @@ func_ov096_022178c0:
     mov r2, #0x3
     ldr r0, [r0, #0x0]
     mov r3, r4
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02217dd4
 .L_02217c28:
     ldr r1, [r4, #0x54]

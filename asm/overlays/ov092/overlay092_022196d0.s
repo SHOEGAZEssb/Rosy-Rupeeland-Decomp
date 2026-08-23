@@ -14,8 +14,8 @@
 .extern Actor_SetActive
 .extern TrackedResourceActor_SpawnFromKey
 .extern Sound_PlayDirectSequence
-.extern func_02059344
-.extern func_0205940c
+.extern Sound_IsDirectSequencePlaying
+.extern Sound_StopEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov092_022177e0
 .extern func_ov092_02217810
@@ -87,7 +87,7 @@ func_ov092_022196d0:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     mov r0, r6
     bl func_ov092_022185c4
     mov r0, r6
@@ -293,7 +293,7 @@ func_ov092_022196d0:
     ldr r0, .L_02219e20
     mov r1, #0x99
     ldr r0, [r0, #0x0]
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     bne .L_02219e08
     mov r0, #0xb

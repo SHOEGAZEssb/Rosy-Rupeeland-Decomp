@@ -4,7 +4,7 @@
 .extern data_ov097_0221a4c8
 .extern func_0201e0ec
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020a291c
 .extern func_020befec
 .extern func_020bf1f8
@@ -37,7 +37,7 @@ func_ov097_02218940:
     mov r3, r8
     add r1, r1, #0xed
     mov r2, #0x9
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02218998:
     add r0, r8, #0x200
     ldrsh r1, [r0, #0x98]

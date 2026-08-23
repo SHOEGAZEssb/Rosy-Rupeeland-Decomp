@@ -8,20 +8,20 @@ extern "C" {
 #endif
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 soundId, s32 variant);
-extern void func_0205940c(void *context, s32 soundId, s32 variant);
-extern void func_020593dc(void *context, s32 soundId, s32 variant,
+extern void Sound_StopEffect(void *context, s32 soundId, s32 variant);
+extern void Sound_PlayOwnedEffect(void *context, s32 soundId, s32 variant,
                          void *actor, s32 value, s32 scale);
-extern s32 func_020594a4(void *context, s32 soundId, s32 variant);
+extern s32 Sound_IsEffectPlaying(void *context, s32 soundId, s32 variant);
 extern void Sound_StopAllDirectSequences(void *context, s32 value);
-extern s32 func_02059344(void *context, u16 value);
+extern s32 Sound_IsDirectSequencePlaying(void *context, u16 value);
 extern void Sound_LoadGroup(void *context, s32 value);
 extern void Sound_ReleaseGroup(void *context, s32 value);
 extern void Sound_SetCaptureEnabled(void *context, s32 enabled);
-extern void func_02058ffc(void *context, s32 enabled, s32 attack, s32 release);
-extern void func_02059068(void *context, s32 enabled, s32 attack, s32 release);
-extern void func_02059104(void *context, s32 enabled, s32 attack, s32 release);
-extern void func_02059260(void *context, s32 enabled);
-extern void func_02059248(void *context, s32 enabled);
+extern void Sound_SetCaptureRoute0Enabled(void *context, s32 enabled, s32 attack, s32 release);
+extern void Sound_SetCaptureRoute1Enabled(void *context, s32 enabled, s32 attack, s32 release);
+extern void Sound_SetDirectCaptureRoutesEnabled(void *context, s32 enabled, s32 attack, s32 release);
+extern void SoundPhaseDatabaseManager_Update(void *context, s32 enabled);
+extern void SoundPhaseManager_RequestAlternateTransition(void *context, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -51,35 +51,35 @@ s32 func_0201a614(GamePhaseActorScriptVm *self)
         packed = (u16)value;
         soundId = packed >> 7;
         variant = packed & 0x7f;
-        func_0205940c(gSoundContext, soundId, variant);
+        Sound_StopEffect(gSoundContext, soundId, variant);
         break;
     case 2:
         packed = (u16)value;
         soundId = packed >> 7;
         variant = packed & 0x7f;
-        func_020593dc(gSoundContext, soundId, variant, self->actor, 0, 0x100);
+        Sound_PlayOwnedEffect(gSoundContext, soundId, variant, self->actor, 0, 0x100);
         break;
     case 3:
         packed = (u16)value;
         soundId = packed >> 7;
         variant = packed & 0x7f;
         GamePhaseScriptVm_SetResult(&self->base,
-                      (u32)func_020594a4(gSoundContext, soundId, variant));
+                      (u32)Sound_IsEffectPlaying(gSoundContext, soundId, variant));
         break;
     case 4: Sound_StopAllDirectSequences(gSoundContext, value); break;
     case 5:
-        GamePhaseScriptVm_SetResult(&self->base, (u32)func_02059344(gSoundContext, (u16)value));
+        GamePhaseScriptVm_SetResult(&self->base, (u32)Sound_IsDirectSequencePlaying(gSoundContext, (u16)value));
         break;
     case 6: func_020594ec(gSoundContext, (u16)value); break;
-    case 7: func_0205958c(gSoundContext, value); break;
+    case 7: Sound_StopStream(gSoundContext, value); break;
     case 8: Sound_LoadGroup(gSoundContext, value); break;
     case 9: Sound_ReleaseGroup(gSoundContext, value); break;
     case 10: Sound_SetCaptureEnabled(gSoundContext, value == 1); break;
-    case 11: func_02058ffc(gSoundContext, value == 1, 20, 30); break;
-    case 12: func_02059068(gSoundContext, value == 1, 20, 30); break;
-    case 13: func_02059104(gSoundContext, value == 1, 20, 30); break;
-    case 14: func_02059260(gSoundContext, value == 1); break;
-    case 34: func_02059248(gSoundContext, value == 1); break;
+    case 11: Sound_SetCaptureRoute0Enabled(gSoundContext, value == 1, 20, 30); break;
+    case 12: Sound_SetCaptureRoute1Enabled(gSoundContext, value == 1, 20, 30); break;
+    case 13: Sound_SetDirectCaptureRoutesEnabled(gSoundContext, value == 1, 20, 30); break;
+    case 14: SoundPhaseDatabaseManager_Update(gSoundContext, value == 1); break;
+    case 34: SoundPhaseManager_RequestAlternateTransition(gSoundContext, value == 1); break;
     }
     return 0;
 }

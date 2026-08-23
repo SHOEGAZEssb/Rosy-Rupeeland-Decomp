@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern gSoundContext
 
 .global func_ov092_02218528
@@ -25,7 +25,7 @@ func_ov092_02218528:
     ldr r0, [r0, #0x0]
     mov r1, ip, asr #0x7
     and r2, ip, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     add sp, sp, #0x8
     ldmia sp!, {r3, pc}
 .L_02218580: .word gSoundContext

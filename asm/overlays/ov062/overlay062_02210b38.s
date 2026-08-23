@@ -12,7 +12,7 @@
 .extern GraphicsSpriteState_Create
 .extern Actor_SetDirectionFromVector
 .extern Type7Actor_EnterSpecialPresentationState
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern Sound_LoadGroup
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov062_0220fd20
@@ -343,7 +343,7 @@ func_ov062_02210b38:
     ldr r0, [r0, #0x0]
     mov r2, #0x28
     mov r3, #0x50
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     ldr r0, .L_02211034
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000

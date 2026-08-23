@@ -4,7 +4,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020adc90
 .extern gSoundContext
 
@@ -141,7 +141,7 @@ func_ov081_0221313c:
     mov r3, r6
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_0221333c:
     ldr r1, [r6, #0x234]
     mvn r0, #0x0

@@ -14,7 +14,7 @@
     .extern func_ov036_021ff7cc
     .extern func_ov036_021fd28c
     .extern Presentation_IsScriptSuspended
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern Presentation_IsScriptComplete
     .extern func_0209189c
     .extern Heap_Alloc
@@ -25,7 +25,7 @@
     .extern PresentationScalar_SetImmediate
     .extern PresentationList_Append
     .extern Sound_StopDirectSequence
-    .extern func_020594a4
+    .extern Sound_IsEffectPlaying
     .extern func_ov036_021ff74c
     .extern gSoundContext
     .extern data_ov036_02204e9c
@@ -186,7 +186,7 @@ L_021ffbd0:
     ldr r1, L_021ffee4
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, [r4, #0x100]
     mov r1, #0x0
     str r1, [r0, #0x90]
@@ -359,7 +359,7 @@ L_021ffe80:
     ldr r1, L_021ffee4
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     bne L_021ffecc
     ldr r0, L_021ffee0

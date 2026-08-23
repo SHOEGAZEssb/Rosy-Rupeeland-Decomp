@@ -137,7 +137,7 @@ GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner)
 
 /* Creates a state from a three-resource source and returns the resulting
  * state; attach is narrowed to the retail byte-sized flag. */
-void *func_02073ffc(GraphicsSpriteGroup *group,
+void *GraphicsSpriteGroup_CreateStateFromSourceWrapper(GraphicsSpriteGroup *group,
                    const GraphicsSpriteSource3 *source, s32 attach)
 {
     return GraphicsSpriteGroup_CreateStateFromSource(group, source,
@@ -151,7 +151,7 @@ void GraphicsSpriteGroup_ClearStates(GraphicsSpriteGroup *group)
 }
 
 /* Destroys a group through its stored owner; a null argument is ignored. */
-void func_0207419c(GraphicsSpriteGroup *group)
+void GraphicsSpriteGroup_DestroyWrapper(GraphicsSpriteGroup *group)
 {
     if (group != 0) {
         GraphicsSpriteGroupOwner_DestroyGroup(group->owner, group);
@@ -160,7 +160,7 @@ void func_0207419c(GraphicsSpriteGroup *group)
 
 /* Retail 0x02073EF8 unlinks one state from its containing group and returns it
  * to the renderer's fixed pool; the group itself remains owned by its owner. */
-void func_02073ef8(GraphicsSpriteState *state)
+void GraphicsSpriteState_ReleaseFromGroupWrapper(GraphicsSpriteState *state)
 {
     if (state != 0) {
         GraphicsSpriteState_ReleaseFromGroup(state);

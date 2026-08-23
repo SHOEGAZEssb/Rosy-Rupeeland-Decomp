@@ -12,7 +12,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern Sound_StopAllDirectSequences
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern func_020594ec
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a28e0
@@ -362,7 +362,7 @@ func_ov070_02210860:
     ldr r1, .L_02211840
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     add r0, r5, r5, lsr #0x1f
     add r1, r6, r6, lsr #0x1f
     ldr r2, [r4, #0x108]

@@ -41,7 +41,7 @@ extern s32 data_020e3f90[];
 extern s32 data_020e3fc0[];
 extern s32 data_020e3ff0[];
 extern s32 data_020e4020[];
-extern void func_020593dc(void *soundContext, s32 archive, s32 member,
+extern void Sound_PlayOwnedEffect(void *soundContext, s32 archive, s32 member,
                           const void *owner, s32 pan, s32 volume);
 extern void *data_020f4e18;
 extern void *ActorDescriptor_GetComponent(void *record, s32 index);
@@ -59,7 +59,7 @@ extern void *Actor_GetCollection(void *actor);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern void OS_Halt(void);
-extern void func_02033a6c(void *actor, s32 enabled);
+extern void Actor_RequestAttachmentActivation(void *actor, s32 enabled);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *group);
 extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
@@ -458,7 +458,7 @@ void ActorKind8_SetVisible(void *self, s32 enabled)
     u8 *actor = (u8 *)self;
     u8 *group;
 
-    func_02033a6c(actor, enabled);
+    Actor_RequestAttachmentActivation(actor, enabled);
     if (enabled != 0) {
         *(u32 *)(actor + 0x3bc) |= 0x80000000u;
         group = *(u8 **)(actor + 0x1ec);
@@ -833,7 +833,7 @@ void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
                 func_020575bc(actor + 0x1fc, record + 8,
                               *(void **)(actor + 0x1ec), 0, -0x10);
                 if (playSound != 0)
-                    func_020593dc(gSoundContext, 0xf5, 1,
+                    Sound_PlayOwnedEffect(gSoundContext, 0xf5, 1,
                                   actor, 0, 0x100);
             }
             continue;
@@ -854,7 +854,7 @@ void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
                               data_020e4020[entry],
                               data_020e3f90[entry]);
                 if (playSound != 0)
-                    func_020593dc(gSoundContext, 0xf5, 1,
+                    Sound_PlayOwnedEffect(gSoundContext, 0xf5, 1,
                                   actor, 0, 0x100);
             }
         }

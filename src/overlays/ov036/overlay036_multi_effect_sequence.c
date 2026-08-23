@@ -16,8 +16,8 @@ extern "C" {
 #endif
 extern void Sound_PlayDirectSequence(void *context, s32 id, s32 value);
 extern void Sound_StopDirectSequence(void *context, s32 id, s32 value);
-extern s32 func_020594a4(void *context, s32 id, s32 mode);
-extern void func_0205940c(void *context, s32 id, s32 value);
+extern s32 Sound_IsEffectPlaying(void *context, s32 id, s32 mode);
+extern void Sound_StopEffect(void *context, s32 id, s32 value);
 extern void Sound_Play(void *context, s32 id, s32 variant);
 extern void func_02091b98(void *timer, s32 duration);
 extern s32 func_02091c7c(void *timer, s32 mode);
@@ -118,7 +118,7 @@ extern "C" s32 func_ov036_021ff9d0(void *controller)
         s32 range = func_02091c7c((u8 *)controller + 0xa4, 1);
         func_ov036_021ff7cc(controller, range);
         if (Presentation_IsScriptSuspended(FIELD(void *, controller, 0x100)) != 0) {
-            func_0205940c(gSoundContext, 0x1ae, 0);
+            Sound_StopEffect(gSoundContext, 0x1ae, 0);
             FIELD(s32, FIELD(void *, controller, 0x100), 0x90) = 0;
             FIELD(s32, FIELD(void *, controller, 0xfc), 0x90) = 0;
             FIELD(s32, controller, 0xa0)++;
@@ -190,7 +190,7 @@ extern "C" s32 func_ov036_021ff9d0(void *controller)
             FIELD(s32, controller, 0xa0)++;
         } else {
             func_ov036_021ff7cc(controller, 0x100);
-            if (func_020594a4(gSoundContext, 0x1ae, 2) == 0)
+            if (Sound_IsEffectPlaying(gSoundContext, 0x1ae, 2) == 0)
                 Sound_Play(gSoundContext, 0x1ae, 2);
         }
         break;

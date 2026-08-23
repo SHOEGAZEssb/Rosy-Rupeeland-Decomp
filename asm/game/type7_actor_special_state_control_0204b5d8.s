@@ -5,7 +5,7 @@
 .extern Type7Actor_UpdateAttachmentControllerAnimation
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gGameWork
 .extern gSoundContext
@@ -170,7 +170,7 @@ Type7Actor_PlayStateSound: ; 0x0204b7bc
     ldr r0, [r2, #0x0]
     mov r1, ip, asr #0x7
     and r2, ip, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 .L_0204b810: .word gGameWork

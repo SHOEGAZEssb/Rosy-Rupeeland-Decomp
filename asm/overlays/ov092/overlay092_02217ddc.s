@@ -12,8 +12,8 @@
 .extern func_0201e0ec
 .extern ActorDerivedType1_GetActiveRecordId
 .extern func_0204d308
-.extern func_0205940c
-.extern func_0205943c
+.extern Sound_StopEffect
+.extern Sound_SetEffectParameters
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov060_0220fd54
 .extern func_ov092_02217930
@@ -244,7 +244,7 @@ func_ov092_02217ddc:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     mov r0, #0x6
     strb r0, [r5, #0x1ec]
     ldr r0, .L_02218364
@@ -271,7 +271,7 @@ func_ov092_02217ddc:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r3, #0x7f
-    bl func_0205943c
+    bl Sound_SetEffectParameters
     b .L_02218344
 .L_0221816c:
     mov r0, r5
@@ -304,7 +304,7 @@ func_ov092_02217ddc:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     mov r0, #0x6
     strb r0, [r5, #0x1ec]
     ldr r0, .L_02218364
@@ -331,7 +331,7 @@ func_ov092_02217ddc:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r3, #0x7f
-    bl func_0205943c
+    bl Sound_SetEffectParameters
     b .L_02218344
 .L_02218254:
     ldr r0, [r5, #0x250]

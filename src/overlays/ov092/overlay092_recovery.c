@@ -82,7 +82,7 @@ EXT(func_02004fe0);
 EXT(func_0200500c);
 EXT(func_02005030);
 EXT(func_02005058);
-EXT(func_02005070);
+EXT(VecFx32Object_GetMagnitude);
 EXT(func_020050a4);
 EXT(func_02005580);
 EXT(func_02005afc);
@@ -101,7 +101,7 @@ EXT(func_02032de4);
 EXT(func_02031758);
 EXT(func_020337d4);
 EXT(func_020390c8);
-EXT(func_020393f4);
+EXT(ActorDerivedType1_GetActiveRecordId);
 EXT(func_0203bae4);
 EXT(func_0203c660);
 EXT(func_0204b078);
@@ -121,11 +121,11 @@ EXT(func_02050b70);
 EXT(func_02050e2c);
 EXT(func_02059278);
 EXT(func_0205929c);
-EXT(func_02059344);
+EXT(Sound_IsDirectSequencePlaying);
 EXT(func_02059394);
-EXT(func_020593ac);
-EXT(func_0205940c);
-EXT(func_0205943c);
+EXT(Sound_PlayEffectWithParameters);
+EXT(Sound_StopEffect);
+EXT(Sound_SetEffectParameters);
 EXT(func_02072b68);
 EXT(func_02075858);
 EXT(func_020adae4);
@@ -431,7 +431,7 @@ extern "C" void func_ov092_02218528(void *, u32 command, s32 x, s32 volume)
         pan = -0x7f;
     else if (pan > 0x7f)
         pan = 0x7f;
-    func_020593ac(gSoundContext, command >> 7, command & 0x7f, volume, pan, 0,
+    Sound_PlayEffectWithParameters(gSoundContext, command >> 7, command & 0x7f, volume, pan, 0,
                   volume);
 }
 
@@ -493,7 +493,7 @@ extern "C" void func_ov092_022185c4(void *scene)
         F(s32, scene, 0x280) = 0x1c8000;
         F(u8, scene, 0x278) = 1;
         F(s16, scene, 0x27a) = 0;
-        func_020593ac(gSoundContext, 0x173, 9, 100, (1 - choice) * -0x30, 0);
+        Sound_PlayEffectWithParameters(gSoundContext, 0x173, 9, 100, (1 - choice) * -0x30, 0);
         break;
     }
     case 1:
@@ -846,10 +846,10 @@ extern "C" void func_ov092_022192c8(void *scene)
             if (F(s32, actor, 0x10c) == 0)
             {
                 if (F(s16, scene, 0x258) == 1 &&
-                    func_02059344(gSoundContext, 0x94) == 0)
+                    Sound_IsDirectSequencePlaying(gSoundContext, 0x94) == 0)
                     func_02059278(gSoundContext, 0x94, 0x7f);
                 else if (F(s16, scene, 0x258) > 0x23 &&
-                         func_02059344(gSoundContext, 0x94) != 0)
+                         Sound_IsDirectSequencePlaying(gSoundContext, 0x94) != 0)
                     func_0205929c(gSoundContext, 0x94, 0);
             }
             else
@@ -937,7 +937,7 @@ extern "C" s32 func_ov092_022196d0(void *scene)
     switch (state)
     {
     case 0:
-        func_0205940c(gSoundContext, 0x67, 4);
+        Sound_StopEffect(gSoundContext, 0x67, 4);
         func_ov092_022185c4(scene);
         func_ov092_022185a4(scene);
         func_ov092_0221893c(scene);
@@ -1004,7 +1004,7 @@ extern "C" s32 func_ov092_022196d0(void *scene)
         break;
     case 10:
         AdvanceActorPath(scene, actor);
-        if (func_02059344(gSoundContext, 0x99) == 0)
+        if (Sound_IsDirectSequencePlaying(gSoundContext, 0x99) == 0)
         {
             state = 0xb;
             timer = 0;
@@ -1334,7 +1334,7 @@ extern "C" void func_ov092_02217ddc(void *scene)
     func_0200323c(gSceneManager);
     func_0201e0ec(P(F(void *, data_021052fc, 0), 0x2f7c));
     func_ov092_02218394(gGameWork, 0, 0, F(s16, scene, 0x284));
-    if (func_020393f4(primary) == 0x68)
+    if (ActorDerivedType1_GetActiveRecordId(primary) == 0x68)
     {
         F(s32, primary, 0xa0) = F(s32, primary, 0x90) = 0;
         F(s32, primary, 0x40) = 0;
@@ -1388,7 +1388,7 @@ extern "C" void func_ov092_02217ddc(void *scene)
             func_ov092_02217930(P(primary, 0x38), 0, 0, 0);
             func_ov092_02217930(P(primary, 0x88), 0, 0, 0);
             func_ov092_02217930(P(primary, 0x98), 0, 0, 0);
-            func_0205940c(gSoundContext, 0x67, 4);
+            Sound_StopEffect(gSoundContext, 0x67, 4);
             F(u8, scene, 0x1ec) = 6;
             func_ov092_02218394(gGameWork, 0, 5, 0x78);
         }
@@ -1397,7 +1397,7 @@ extern "C" void func_ov092_02217ddc(void *scene)
             s32 fade = F(s16, scene, 0x284) < 0x12fb
                            ? 0
                            : -(F(s16, scene, 0x284) - 0x12fb);
-            func_0205943c(gSoundContext, 0x67, 4, 0x7f, 0, fade);
+            Sound_SetEffectParameters(gSoundContext, 0x67, 4, 0x7f, 0, fade);
         }
         break;
     case 5:
@@ -1408,7 +1408,7 @@ extern "C" void func_ov092_02217ddc(void *scene)
             func_ov092_02217930(P(primary, 0x38), 0, 0, 0);
             func_ov092_02217930(P(primary, 0x88), 0, 0, 0);
             func_ov092_02217930(P(primary, 0x98), 0, 0, 0);
-            func_0205940c(gSoundContext, 0x67, 4);
+            Sound_StopEffect(gSoundContext, 0x67, 4);
             F(u8, scene, 0x1ec) = 6;
             func_ov092_02218394(gGameWork, 0, 5, 0x78);
         }
@@ -1417,7 +1417,7 @@ extern "C" void func_ov092_02217ddc(void *scene)
             s32 fade = F(s16, scene, 0x284) < 0x12fb
                            ? 0
                            : -(F(s16, scene, 0x284) - 0x12fb);
-            func_0205943c(gSoundContext, 0x67, 4, 0x7f, 0, fade);
+            Sound_SetEffectParameters(gSoundContext, 0x67, 4, 0x7f, 0, fade);
         }
         break;
     case 6:
@@ -1726,7 +1726,7 @@ extern "C" void func_ov092_0221ab24(void *actor, void *other)
         else if (category == 3 &&
                  (F(s16, other, 0x4e) == 0x13 || F(s16, other, 0x4e) == 0x10))
         {
-            if (func_02005070(P(actor, 0x88)) > 0x2000 &&
+            if (VecFx32Object_GetMagnitude(P(actor, 0x88)) > 0x2000 &&
                 F(s16, other, 0xd6) != 1)
             {
                 func_0203c660(other, actor, 0);

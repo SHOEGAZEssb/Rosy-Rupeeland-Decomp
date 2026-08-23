@@ -1,9 +1,9 @@
 .text
 .extern func_ov042_02205d80
-.extern func_0205940c
-.extern func_020594bc
-.extern func_020594d4
-.extern func_0205946c
+.extern Sound_StopEffect
+.extern Sound_SetEffectModulationDepth
+.extern Sound_SetEffectModulationSpeed
+.extern Sound_SetEffectPitch
 .extern func_ov042_0220549c
 .extern func_ov042_02209cd8
 .extern func_ov042_021fdd48
@@ -19,7 +19,7 @@
 .extern func_ov042_021ff2f8
 .extern func_ov042_02203658
 .extern func_ov071_02211a10
-.extern func_020595b0
+.extern Sound_FadeStreamVolume
 .extern Sound_StopDirectSequence
 .extern func_ov042_02205180
 .extern func_ov042_02209cbc
@@ -30,7 +30,7 @@
 .extern DisplayBrightness_GetCurrent
 .extern func_020a1e50
 .extern func_ov042_022008f8
-.extern func_0205958c
+.extern Sound_StopStream
 .extern func_ov042_021fea78
 .extern func_020a1794
 .extern VecFx32Object_Assign
@@ -67,17 +67,17 @@ func_ov042_02207114:
     ldr r1, .L_02207ddc
     ldr r0, [r0, #0x0]
     mov r2, #0x6
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02207dd8
     ldr r1, .L_02207ddc
     ldr r0, [r0, #0x0]
     mov r2, #0xb
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02207dd8
     ldr r1, .L_02207ddc
     ldr r0, [r0, #0x0]
     mov r2, #0xa
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_0220719c:
     mvn r0, #0x0
     str r0, [r6, #0x224]
@@ -99,7 +99,7 @@ func_ov042_02207114:
     ldr r1, .L_02207ddc
     mov r3, r2, asr #0xc
     mov r2, #0x6
-    bl func_020594bc
+    bl Sound_SetEffectModulationDepth
     ldr r3, [r6, #0x228]
     mov r1, #0xef000
     umull r2, r4, r3, r1
@@ -117,7 +117,7 @@ func_ov042_02207114:
     ldr r1, .L_02207ddc
     add r3, r2, #0x10
     mov r2, #0x6
-    bl func_020594d4
+    bl Sound_SetEffectModulationSpeed
     ldr r0, .L_02207dd8
     ldr r1, .L_02207ddc
     ldr r0, [r0, #0x0]
@@ -134,7 +134,7 @@ func_ov042_02207114:
     mov r4, r4, lsr #0xc
     orr r4, r4, r3, lsl #0x14
     mov r3, r4, asr #0xc
-    bl func_0205946c
+    bl Sound_SetEffectPitch
 .L_0220727c:
     ldr r0, [r6, #0xa0]
     bl func_ov042_0220549c
@@ -409,7 +409,7 @@ func_ov042_02207114:
     ldr r0, .L_02207dd8
     mov r2, #0x3c
     ldr r0, [r0, #0x0]
-    bl func_020595b0
+    bl Sound_FadeStreamVolume
     ldr r0, .L_02207dd8
     mov r1, #0xa4
     ldr r0, [r0, #0x0]
@@ -737,7 +737,7 @@ func_ov042_02207114:
     ldr r0, .L_02207dd8
     mov r1, #0x19
     ldr r0, [r0, #0x0]
-    bl func_0205958c
+    bl Sound_StopStream
     mov r0, #0x3
     sub r3, r0, #0x1
 .L_02207b80:

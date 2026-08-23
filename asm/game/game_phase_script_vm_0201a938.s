@@ -3,9 +3,9 @@
 .extern GamePhaseScriptVm_Pop
 .extern Sound_PlayDirectSequence
 .extern Sound_StopDirectSequence
-.extern func_020592c0
-.extern func_020595b0
-.extern func_020596e8
+.extern Sound_SetDirectSequenceVolume
+.extern Sound_FadeStreamVolume
+.extern Sound_UpdateGroupSlot
 .extern gSoundContext
 .global func_0201a938
 func_0201a938: ; 0x0201a938
@@ -52,21 +52,21 @@ L_0201a9c0:
     ldr r0, [r0, #0x0]
     mov r2, r5
     mov r1, r1, lsr #0x10
-    bl func_020592c0
+    bl Sound_SetDirectSequenceVolume
     b L_0201aa08
 L_0201a9dc:
     ldr r0, L_0201aa10
     mov r1, r4
     ldr r0, [r0, #0x0]
     mov r2, r5
-    bl func_020595b0
+    bl Sound_FadeStreamVolume
     b L_0201aa08
 L_0201a9f4:
     ldr r0, L_0201aa10
     mov r1, r4
     ldr r0, [r0, #0x0]
     mov r2, r5
-    bl func_020596e8
+    bl Sound_UpdateGroupSlot
 L_0201aa08:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}

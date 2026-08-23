@@ -10,7 +10,7 @@
 .extern func_020275b0
 .extern func_02027f2c
 .extern GamePhaseProgress_GetOrCreateGlobal
-.extern func_020598a0
+.extern SoundPhaseManager_SetPhase
 .extern gGameWork
 .extern gLupyContext
 .extern gSoundContext
@@ -25,7 +25,7 @@ GamePhaseState_ApplyConfiguration: ; 0x0200e780
     mov r1, r1, lsl #0x10
     ldr r0, [r2, #0x0]
     mov r1, r1, lsr #0x10
-    bl func_020598a0
+    bl SoundPhaseManager_SetPhase
     mov r0, r5
     mov r1, r4
     bl GamePhaseState_CreatePhaseObject

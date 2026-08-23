@@ -10,7 +10,7 @@
 .extern data_ov041_02204d00
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a29ac
 .extern func_020bf1f8
@@ -157,7 +157,7 @@ func_ov041_021ff868: ; 0x021ff868
     ldr r0, [r0, #0x0]
     ldr r1, .L_021fff70
     mov r2, #0x5
-    bl func_0205940c
+    bl Sound_StopEffect
     b .L_021ffb04
 .L_021ffa7c:
     sub r0, r1, #0x59

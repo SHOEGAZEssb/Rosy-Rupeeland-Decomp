@@ -4,7 +4,7 @@
 .extern func_0201e0ec
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020a28e0
 .extern func_020bf1f8
 .extern func_ov082_0221340c
@@ -72,7 +72,7 @@ func_ov082_022132e8:
     mov r3, r10
     add r1, r1, #0xd6
     mov r2, #0x2
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_022133fc
 .L_022133d4:
     mov r0, #0x0
@@ -84,7 +84,7 @@ func_ov082_022132e8:
     mov r3, r10
     add r1, r1, #0xe3
     mov r2, #0x3
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_022133fc:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

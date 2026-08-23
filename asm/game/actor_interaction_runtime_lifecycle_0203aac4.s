@@ -26,7 +26,7 @@
 .extern func_020534cc
 .extern func_0205355c
 .extern Sound_StopDirectSequence
-.extern func_02059344
+.extern Sound_IsDirectSequencePlaying
 .extern gGameWork
 .extern gHeapContext
 .extern gSoundContext
@@ -139,7 +139,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     ldr r0, .L_0203ac94
     mov r1, #0x1f
     ldr r0, [r0, #0x0]
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     beq .L_0203ac24
     ldr r0, .L_0203ac94
@@ -151,7 +151,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     ldr r0, .L_0203ac94
     mov r1, #0x20
     ldr r0, [r0, #0x0]
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     beq .L_0203ac50
     ldr r0, .L_0203ac94

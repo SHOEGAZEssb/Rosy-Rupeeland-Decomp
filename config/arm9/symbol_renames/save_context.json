@@ -1,0 +1,18 @@
+{
+  "func_0207f0c0": "RetailSaveContext_RestoreGameSingletons",
+  "func_0207f12c": "RetailSaveContext_InitializeGlobal",
+  "func_0207f168": "RetailSaveContext_Construct",
+  "func_0207f248": "RetailSaveContext_PollOperation",
+  "func_0207f288": "RetailSaveContext_IdentifyBackupDevice",
+  "func_0207f2e0": "RetailSaveContext_BeginDiscovery",
+  "func_0207f348": "RetailSaveContext_DiscoverRecords",
+  "func_0207f80c": "RetailSaveContext_BeginRecordOperation",
+  "func_0207f86c": "RetailSaveContext_BeginNamedRecordWrite",
+  "func_0207f8a4": "RetailSaveContext_WriteRecord",
+  "func_0207ff90": "RetailSaveContext_BeginRecordLoad",
+  "func_0207ffe8": "RetailSaveContext_LoadRecord",
+  "func_020802f4": "RetailSaveContext_BeginRecordDelete",
+  "func_0208035c": "RetailSaveContext_DeleteRecord",
+  "func_020805d0": "RetailSaveContext_BeginRecordCopy",
+  "func_0208063c": "RetailSaveContext_CopyRecord"
+}

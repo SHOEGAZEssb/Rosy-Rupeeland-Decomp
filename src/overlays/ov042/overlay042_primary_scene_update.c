@@ -16,13 +16,13 @@ extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
-extern "C" void func_0205940c(void *sound, s32 sequence, s32 value);
-extern "C" void func_020594bc(void *sound, s32 sequence, s32 parameter, s32 value);
-extern "C" void func_020594d4(void *sound, s32 sequence, s32 parameter, s32 value);
-extern "C" void func_0205946c(void *sound, s32 sequence, s32 parameter, s32 value);
-extern "C" void func_020595b0(void *sound, s32 sequence, s32 value);
+extern "C" void Sound_StopEffect(void *sound, s32 sequence, s32 value);
+extern "C" void Sound_SetEffectModulationDepth(void *sound, s32 sequence, s32 parameter, s32 value);
+extern "C" void Sound_SetEffectModulationSpeed(void *sound, s32 sequence, s32 parameter, s32 value);
+extern "C" void Sound_SetEffectPitch(void *sound, s32 sequence, s32 parameter, s32 value);
+extern "C" void Sound_FadeStreamVolume(void *sound, s32 sequence, s32 value);
 extern "C" void Sound_StopDirectSequence(void *sound, s32 sequence, s32 value);
-extern "C" void func_0205958c(void *sound, s32 value);
+extern "C" void Sound_StopStream(void *sound, s32 value);
 extern "C" void func_020a1ec0(void *owner, u32 effect);
 extern "C" void func_020a1e10(void *owner);
 extern "C" void func_020a1e50(void *owner);
@@ -102,17 +102,17 @@ extern "C" void func_ov042_02207114(void *scene)
     if (request >= 0) {
         FIELD(s32, scene, 0x228) = request;
     } else if ((FIELD(s32, scene, 0x228) -= 0x4c) < 0) {
-        func_0205940c(gSoundContext, 0x16a, 6);
-        func_0205940c(gSoundContext, 0x16a, 11);
-        func_0205940c(gSoundContext, 0x16a, 10);
+        Sound_StopEffect(gSoundContext, 0x16a, 6);
+        Sound_StopEffect(gSoundContext, 0x16a, 11);
+        Sound_StopEffect(gSoundContext, 0x16a, 10);
     }
     FIELD(s32, scene, 0x224) = -1;
     if (FIELD(s32, scene, 0x228) >= 0) {
         s32 ramp = FIELD(s32, scene, 0x228);
-        func_020594bc(gSoundContext, 0x16a, 6, (ramp * 0xff000 + 0x800) >> 24);
-        func_020594d4(gSoundContext, 0x16a, 6,
+        Sound_SetEffectModulationDepth(gSoundContext, 0x16a, 6, (ramp * 0xff000 + 0x800) >> 24);
+        Sound_SetEffectModulationSpeed(gSoundContext, 0x16a, 6,
                      ((ramp * 0xef000 + 0x800) >> 24) + 0x10);
-        func_0205946c(gSoundContext, 0x16a, 6,
+        Sound_SetEffectPitch(gSoundContext, 0x16a, 6,
                      (ramp * 0xc00000 + 0x800) >> 24);
     }
 
@@ -217,7 +217,7 @@ extern "C" void func_ov042_02207114(void *scene)
             if (FIELD(s32, scene, 0xe0) <= 0) {
                 FIELD(s32, scene, 0xe0) = 0;
                 FIELD(s32, scene, 0x1c0) = FIELD(s32, scene, 0x1bc) = 1;
-                func_020595b0(gSoundContext, 0, 60);
+                Sound_FadeStreamVolume(gSoundContext, 0, 60);
                 const s32 channels[5] = {0xa4, 0xa5, 0xcd, 0xea, 0xf0};
                 for (s32 i = 0; i < 5; ++i)
                     Sound_StopDirectSequence(gSoundContext, channels[i], 0);
@@ -307,7 +307,7 @@ extern "C" void func_ov042_02207114(void *scene)
         if (FIELD(s32, scene, 0x1bc) > 746 &&
             (FIELD(u16, animation_of(secondaryDisplay), 0x24) & 1)) {
             func_ov042_022008f8(scene);
-            func_0205958c(gSoundContext, 25);
+            Sound_StopStream(gSoundContext, 25);
             for (s32 i = 2; i >= 0; --i) {
                 void *display = FIELD(void *, scene, 0x4c + i * 4);
                 set_display_bit4(display, 1);

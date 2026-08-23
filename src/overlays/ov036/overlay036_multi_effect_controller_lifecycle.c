@@ -12,7 +12,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0205940c(void *context, s32 id, s32 value);
+extern void Sound_StopEffect(void *context, s32 id, s32 value);
 extern void PresentationList_DeleteAll(void *list);
 extern void GraphicsArchive_ReleaseOwlvResource(void *archive, void *resource);
 extern void Graphics3DResourceOwner_RemoveManager(void *manager);
@@ -34,7 +34,7 @@ extern void GraphicsAnimationInstanceManager_Update(void *manager);
 extern "C" void *func_ov036_021ff5bc(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov036_022060ec;
-    func_0205940c(gSoundContext, 0x1ae, 0);
+    Sound_StopEffect(gSoundContext, 0x1ae, 0);
     PresentationList_DeleteAll((u8 *)controller + 0x108);
     PresentationList_DeleteAll((u8 *)controller + 0x118);
     PresentationList_DeleteAll((u8 *)controller + 0x128);
@@ -60,7 +60,7 @@ extern "C" void *func_ov036_021ff5bc(void *controller)
 extern "C" void *func_ov036_021ff680(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov036_022060ec;
-    func_0205940c(gSoundContext, 0x1ae, 0);
+    Sound_StopEffect(gSoundContext, 0x1ae, 0);
     PresentationList_DeleteAll((u8 *)controller + 0x108);
     PresentationList_DeleteAll((u8 *)controller + 0x118);
     PresentationList_DeleteAll((u8 *)controller + 0x128);

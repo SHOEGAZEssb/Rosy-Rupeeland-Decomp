@@ -22,8 +22,8 @@
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_020791e0
-.extern func_0207f248
-.extern func_0207f86c
+.extern RetailSaveContext_PollOperation
+.extern RetailSaveContext_BeginNamedRecordWrite
 .extern func_02092260
 .extern func_020922f0
 .extern func_02092314
@@ -651,7 +651,7 @@ L_022026fc:
     ldr r2, [r5, #0x598]
     mov r3, #0x1
     add r2, r2, #0x180
-    bl func_0207f86c
+    bl RetailSaveContext_BeginNamedRecordWrite
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -661,7 +661,7 @@ L_022026fc:
 L_02202788:
     ldr r0, L_02202b34
     ldr r0, [r0, #0x0]
-    bl func_0207f248
+    bl RetailSaveContext_PollOperation
     cmp r0, #0x0
     beq L_02202ad4
     mvn r1, #0x0

@@ -3,11 +3,11 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern Sound_StopAllManagedPlayers
-.extern func_02059218
-.extern func_02059510
-.extern func_020595d4
-.extern func_020595ec
-.extern func_02059a00
+.extern SoundPhaseManager_Reset
+.extern Sound_IsStreamPlaying
+.extern Sound_SaveStreamPosition
+.extern Sound_ResumeStreamPosition
+.extern Sound_ReapplyCurrentGroupSlots
 .extern gSoundContext
 .global GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand
 GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand:
@@ -29,7 +29,7 @@ L_0201a588:
     ldr r0, L_0201a610
     mvn r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02059510
+    bl Sound_IsStreamPlaying
     cmp r0, #0x0
     mov r0, r4
     beq L_0201a5b0
@@ -43,12 +43,12 @@ L_0201a5b0:
 L_0201a5bc:
     ldr r0, L_0201a610
     ldr r0, [r0, #0x0]
-    bl func_020595d4
+    bl Sound_SaveStreamPosition
     b L_0201a608
 L_0201a5cc:
     ldr r0, L_0201a610
     ldr r0, [r0, #0x0]
-    bl func_020595ec
+    bl Sound_ResumeStreamPosition
     b L_0201a608
 L_0201a5dc:
     ldr r0, L_0201a610
@@ -58,12 +58,12 @@ L_0201a5dc:
 L_0201a5ec:
     ldr r0, L_0201a610
     ldr r0, [r0, #0x0]
-    bl func_02059218
+    bl SoundPhaseManager_Reset
     b L_0201a608
 L_0201a5fc:
     ldr r0, L_0201a610
     ldr r0, [r0, #0x0]
-    bl func_02059a00
+    bl Sound_ReapplyCurrentGroupSlots
 L_0201a608:
     mov r0, #0x0
     ldmia sp!, {r4, pc}

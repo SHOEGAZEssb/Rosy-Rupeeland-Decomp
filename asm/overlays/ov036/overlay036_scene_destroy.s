@@ -7,7 +7,7 @@
     .extern func_02075020
     .extern func_02092418
     .extern GX_SetGraphicsMode
-    .extern func_02059230
+    .extern SoundPhaseManager_Update
     .extern func_ov048_0220b7b4
     .extern func_020923a0
     .extern data_ov036_02206124
@@ -59,7 +59,7 @@ L_02204928:
     ldr r0, L_022049a4
     mov r2, r1
     ldr r0, [r0, #0x0]
-    bl func_02059230
+    bl SoundPhaseManager_Update
     add r0, r4, #0x98
     bl func_ov048_0220b7b4
     add r0, r4, #0x64

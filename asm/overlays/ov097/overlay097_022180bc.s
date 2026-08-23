@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern data_ov097_0221a4c8
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov097_0221818c
 .extern gSoundContext
 
@@ -55,7 +55,7 @@ func_ov097_022180bc:
     ldr r0, .L_02218188
     mov r1, #0x61
     ldr r0, [r0, #0x0]
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_0221817c:
     add sp, sp, #0x8
     ldmia sp!, {r3, pc}

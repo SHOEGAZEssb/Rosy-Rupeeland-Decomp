@@ -75,9 +75,9 @@ EXT(func_0204cfa4);
 EXT(func_02033f4c);
 EXT(func_02033f7c);
 EXT(func_020349b8);
-EXT(func_020593dc);
-EXT(func_0205940c);
-EXT(func_020594a4);
+EXT(Sound_PlayOwnedEffect);
+EXT(Sound_StopEffect);
+EXT(Sound_IsEffectPlaying);
 EXT(func_020740c8);
 EXT(func_0206e590);
 EXT(func_020a2844);
@@ -311,9 +311,9 @@ extern "C" void func_ov097_02217cec(void)
 /* Stops the owned sound if active and prepares the actor for release. */
 extern "C" void func_ov097_02217cf8(void *actor)
 {
-    if (func_020594a4(gSoundContext, 0x1ed, 9) != 0)
+    if (Sound_IsEffectPlaying(gSoundContext, 0x1ed, 9) != 0)
     {
-        func_0205940c(gSoundContext, 0x1ed, 9);
+        Sound_StopEffect(gSoundContext, 0x1ed, 9);
     }
     ActorExtendedType2_PrepareRelease(actor);
 }
@@ -450,7 +450,7 @@ extern "C" void func_ov097_022180bc(void *actor)
     F(s16, actor, 0x2c2) = 0;
     F(s32, actor, 0x2b4) = 0;
     F(s32, actor, 0x2b0) = 0;
-    func_020593dc(gSoundContext, 0x61, 0, actor, -0x100, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, 0x61, 0, actor, -0x100, 0x100);
 }
 
 /* Writes a three-component vector after an optional object header. */
@@ -542,7 +542,7 @@ extern "C" void func_ov097_022181a0(void *actor, void *argument)
                         ++F(s16, actor, 0x2c2);
                         s32 pan = F(s16, actor, 0x2c2) == 4 ? -0x80
                                                             : -0x100;
-                        func_020593dc(gSoundContext, 0x61, 0, actor, pan,
+                        Sound_PlayOwnedEffect(gSoundContext, 0x61, 0, actor, pan,
                                       0x100);
                     }
                 }
@@ -688,7 +688,7 @@ extern "C" void func_ov097_02218940(void *actor)
     s16 timer = F(s16, actor, 0x298);
     if (timer == 0)
     {
-        func_020593dc(gSoundContext, 0x1ed, 9, actor, 0, 0x100);
+        Sound_PlayOwnedEffect(gSoundContext, 0x1ed, 9, actor, 0, 0x100);
     }
     if (timer < 240)
     {
@@ -797,7 +797,7 @@ extern "C" void func_ov097_02218b40(void *actor, void *other,
         u32 packed = data_020e6e68[F(u16, actor, 0x4e)];
         if (packed != 0)
         {
-            func_020593dc(gSoundContext, packed >> 7, packed & 0x7f,
+            Sound_PlayOwnedEffect(gSoundContext, packed >> 7, packed & 0x7f,
                           actor, 0, 0x100);
         }
     }
@@ -904,7 +904,7 @@ extern "C" void func_ov097_02218d3c(void *actor)
         if (F(s16, actor, 0x2be) == 120)
         {
             GraphicsSpriteState_SetAnimationIndex(F(void *, actor, 0x54), 59);
-            func_020593dc(gSoundContext, 0x1ed, 13, actor, 0, 0x200);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1ed, 13, actor, 0, 0x200);
         }
         if (++F(u16, actor, 0x2be) > 209)
         {
@@ -1260,7 +1260,7 @@ extern "C" void func_ov097_02219970(void *actor, void *linked,
     F(s32, actor, 0x24) += heightOffset;
     func_ov097_022177e0(gGameWork, 0, F(s32, actor, 0x2b8), 1);
     F(u32, actor, 0x5c) = (F(u32, actor, 0x5c) & 0xffff0000u) | 0xffe0;
-    func_020593dc(gSoundContext, 0x1ed, 10, actor, 0, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, 0x1ed, 10, actor, 0, 0x100);
 }
 
 /* Clears a completed link and restores the partner's ordinary actor flags. */

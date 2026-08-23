@@ -10,7 +10,7 @@
 .extern VecFx32Object_Assign
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern func_ov062_0220fe78
 .extern func_ov087_02218698
 .extern gGameWork
@@ -129,17 +129,17 @@ func_ov087_022186a8:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_022188d8
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_022188d8
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_022188dc
     ldr r1, .L_022188e0
     ldr r0, [r0, #0x0]

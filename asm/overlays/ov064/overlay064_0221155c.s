@@ -12,7 +12,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern Sound_StopAllManagedPlayers
-.extern func_02059604
+.extern Sound_ConfigureGroupSlots
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern Sound_SetMasterVolume
@@ -282,7 +282,7 @@ Overlay064Scene_UpdateMode3:
     ldr r0, [r0, #0x0]
     ldr r2, .L_02211ab0
     add r1, r3, #0x1000
-    bl func_02059604
+    bl Sound_ConfigureGroupSlots
     ldr r1, .L_02211aac
     mov r0, #0x7f
     ldr r1, [r1, #0x0]

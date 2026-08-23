@@ -16,7 +16,7 @@ extern s32 SignedAbsoluteValue(s32 value);
 extern s32 SignedAbsoluteValueVariant(s32 value);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
-extern void func_020593ac(void *context, s32 sound, s32 variant,
+extern void Sound_PlayEffectWithParameters(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
@@ -54,7 +54,7 @@ void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
             volume = 127;
         if (volume < 0)
             volume = 0;
-        func_020593ac(gSoundContext, 0x1c4, 7, volume, pan, 0);
+        Sound_PlayEffectWithParameters(gSoundContext, 0x1c4, 7, volume, pan, 0);
 
         allocation = Heap_Alloc(0x14, gActorRegisteredSubclassPresentationAllocationTag, 4, &gHeapContext);
         if (allocation != 0) {

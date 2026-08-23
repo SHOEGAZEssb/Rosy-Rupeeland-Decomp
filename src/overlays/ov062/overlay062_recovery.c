@@ -37,12 +37,12 @@ extern void func_0200634c(...), func_0200637c(...);
 extern s32 func_020befec(...), func_020adcac(...), func_020ae024(...);
 extern void *func_02005580(...), *func_02005c3c(...);
 extern void func_02005afc(...), func_020059ac(...), func_0201f864(...);
-extern void func_02072b68(...), func_02073ef8(...), func_020740c8(...);
+extern void func_02072b68(...), GraphicsSpriteState_ReleaseFromGroup(...), func_020740c8(...);
 extern void func_02032d64(...), func_02033828(...), func_02034b60(...);
 extern void func_02038aac(...), func_02008e10(...), func_020099c0(...);
 extern s32 func_02009d78(...), func_0202baec(...);
 extern void func_0204b5d8(...), func_0204b680(...);
-extern void func_02059394(...), func_020593ac(...), func_0205974c(...);
+extern void func_02059394(...), Sound_PlayEffectWithParameters(...), func_0205974c(...);
 extern void func_020597fc(...);
 extern void *func_020022dc(...);
 extern void func_02002290(...), func_020030c4(...), func_02003030(...);
@@ -174,7 +174,7 @@ static void *Ov62_DestroyOne(void *scene, s32 freeSelf) {
   void *actor = F(void *, scene, 0x24);
   F(void *, scene, 0) = data_ov062_02211b34;
   Scene_ClearFlags03(scene);
-  func_02073ef8(F(void *, scene, 0x28));
+  GraphicsSpriteState_ReleaseFromGroup(F(void *, scene, 0x28));
   Ov62_Call(F(void *, scene, 0x2c), 4);
   if (F(s32, scene, 0x3c) == 0) {
     F(u32, actor, 0x14) &= ~2u;
@@ -372,7 +372,7 @@ void *func_ov062_02210b38(void *scene) {
   F(void *, scene, 0x6c) = func_02005c3c(F(void *, F(void *, actor, 0x54), 0),
                                          F(void *, scene, 0x68), 0, 0, 0, 4, 2);
   func_0205974c(data_02105860, 0x1b8);
-  func_020593ac(data_02105860, 0, 0x28, 0x50, 0, -0x100);
+  Sound_PlayEffectWithParameters(data_02105860, 0, 0x28, 0x50, 0, -0x100);
   if (F(void *, F(void *, data_021052fc, 0), 0x2ea8) != 0)
     func_0204b5d8();
   Scene_SetFlags03(scene);
@@ -384,8 +384,8 @@ static void *Ov62_DestroyThree(void *scene, s32 freeSelf) {
   F(void *, scene, 0) = data_ov062_02211be8;
   Scene_ClearFlags03(scene);
   func_020597fc(data_02105860, 0x1b8);
-  func_02073ef8(F(void *, scene, 0x64));
-  func_02073ef8(F(void *, scene, 0x6c));
+  GraphicsSpriteState_ReleaseFromGroup(F(void *, scene, 0x64));
+  GraphicsSpriteState_ReleaseFromGroup(F(void *, scene, 0x6c));
   Ov62_Call(F(void *, scene, 0x5c), 4);
   Ov62_Call(F(void *, scene, 0x60), 4);
   Ov62_Call(F(void *, scene, 0x68), 4);

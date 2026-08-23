@@ -40,7 +40,7 @@ extern "C" void *Actor_GetCollection(void *);
 extern "C" void *ActorCollection_GetSpriteOwner(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, void *, void *, void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern "C" void func_020593dc(void *, s32, s32, void *, s32, s32);
+extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32);
 extern "C" void VecFx32Object_Assign(void *, const void *);
 extern "C" void VecFx32Object_InitCopy(void *, const void *);
 extern "C" void VecFx32Object_Destroy(void *);
@@ -109,7 +109,7 @@ extern "C" void func_ov096_022178c0(void *actor)
     void *sprite=F(void*,actor,0x54); u8 state=F(u8,actor,0x299); bool neutral=F(u8,actor,0x298)!=0;
     if(neutral) {
         switch(state) {
-        case 0: F(u8,actor,0x299)=1; F(u16,sprite,0x24)&=~3u; install(actor,F(void*,actor,0x208),0x14); func_020593dc(gSoundContext,0x143,3,actor,0,0x100); break;
+        case 0: F(u8,actor,0x299)=1; F(u16,sprite,0x24)&=~3u; install(actor,F(void*,actor,0x208),0x14); Sound_PlayOwnedEffect(gSoundContext,0x143,3,actor,0,0x100); break;
         case 1: F(u16,sprite,0x24)&=~2u; if(F(u16,sprite,0x24)&1){F(u16,sprite,0x24)=(F(u16,sprite,0x24)&~1u)|2;F(u8,actor,0x299)=2;install(actor,F(void*,actor,0x208),0x15);} F(u32,actor,0x260)|=0x8000; break;
         case 2: F(u32,actor,0x260)|=0x8000; break;
         case 3: F(u16,sprite,0x24)&=~2u; if(F(u16,sprite,0x24)&1)F(u8,actor,0x299)=0; F(u32,actor,0x260)|=0x8000; break;
@@ -119,7 +119,7 @@ extern "C" void func_ov096_022178c0(void *actor)
     } else {
         switch(state) {
         case 1: F(u16,sprite,0x24)&=~2u; if(!(F(u16,sprite,0x24)&1))break;
-        case 2: F(u8,actor,0x299)=3; F(u16,sprite,0x24)&=~3u; install(actor,F(void*,actor,0x208),0x13); func_020593dc(gSoundContext,0x143,2,actor,0,0x100); F(u32,actor,0x260)|=0x8000; break;
+        case 2: F(u8,actor,0x299)=3; F(u16,sprite,0x24)&=~3u; install(actor,F(void*,actor,0x208),0x13); Sound_PlayOwnedEffect(gSoundContext,0x143,2,actor,0,0x100); F(u32,actor,0x260)|=0x8000; break;
         case 3: F(u16,sprite,0x24)&=~2u; if(F(u16,sprite,0x24)&1){F(u8,actor,0x299)=0;F(u32,actor,0xd0)|=0x1000;F(u32,actor,0xc8)=0;} F(u32,actor,0x260)|=0x8000; break;
         case 4: F(u16,sprite,0x24)&=~2u; if(F(u16,sprite,0x24)&1){F(u8,actor,0x299)=5;GraphicsSpriteState_SetAnimationIndex(sprite,0x17);func_ov096_0221811c(actor);} F(u32,actor,0x260)|=0x8000; break;
         case 5: F(u16,sprite,0x24)&=~2u; if(F(u16,sprite,0x24)&1){F(u8,actor,0x299)=3;F(u16,sprite,0x24)&=~3u;install(actor,F(void*,actor,0x208),0x13);} F(u32,actor,0x260)|=0x8000; break;
@@ -158,7 +158,7 @@ extern "C" s32 func_ov096_02217f6c(void *actor)
         else {F(u8,actor,0x29a)=0x5a;F(u32,actor,0x220)=F(u32,data_ov096_02218b08,8);F(u32,actor,0x224)=F(u32,data_ov096_02218b08,0xc);}
     /* Retail tests the division helper's ARM r1 remainder; spell it out for the host ABI. */
     } else if(record && frame%delay==0 && F(u8,actor,0x298)==1&&F(u8,actor,0x299)==2) {
-        F(u8,actor,0x299)=4;F(u16,F(void*,actor,0x54),0x24)&=~3u;install(actor,F(void*,actor,0x208),0x16);func_020593dc(gSoundContext,0x143,4,actor,0,0x100);
+        F(u8,actor,0x299)=4;F(u16,F(void*,actor,0x54),0x24)&=~3u;install(actor,F(void*,actor,0x208),0x16);Sound_PlayOwnedEffect(gSoundContext,0x143,4,actor,0,0x100);
     }
     ++F(s16,actor,0x25a);return 0;
 }
@@ -258,7 +258,7 @@ extern "C" void func_ov096_02218668(void *actor,s32 *x,s32 *y)
 {
     if(!func_ov096_02218590(actor)){F(u16,actor,0xda)=0;func_ov096_0221880c((u8*)actor+0x29c,0,0,0);}
     else if(F(s16,actor,0xda)==0){if(func_ov096_0221881c(actor)){F(u16,actor,0xda)=1;F(u16,actor,0x2ac)=0;F(u16,actor,0x2ae)&=~1u;func_ov096_0221880c((u8*)actor+0x29c,*x,*y,0);F(s32,actor,0x44)=ActorExtendedType2_GetDescriptorValue2A(actor)<<4;}F(u16,actor,0x2ae)&=1;}
-    else {++F(s16,actor,0x2ac);*x=F(s32,actor,0x2a0);*y=F(s32,actor,0x2a4);if(func_ov096_0221881c(actor)){*x<<=2;*y<<=2;if((F(u16,actor,0x2ae)>>1)==0){F(u16,actor,0x2ae)=(F(u16,actor,0x2ae)&1)|2;u16 sound=data_020e6e68[F(u16,actor,0x4e)];if(sound!=0xffff)func_020593dc(gSoundContext,sound>>7,sound&0x7f,actor,0,0x100);}}if(VecFx32Object_GetMagnitude((u8*)actor+0x29c)<0x333){func_ov096_0221880c((u8*)actor+0x29c,0,0,0);F(u16,actor,0xda)=0;}}
+    else {++F(s16,actor,0x2ac);*x=F(s32,actor,0x2a0);*y=F(s32,actor,0x2a4);if(func_ov096_0221881c(actor)){*x<<=2;*y<<=2;if((F(u16,actor,0x2ae)>>1)==0){F(u16,actor,0x2ae)=(F(u16,actor,0x2ae)&1)|2;u16 sound=data_020e6e68[F(u16,actor,0x4e)];if(sound!=0xffff)Sound_PlayOwnedEffect(gSoundContext,sound>>7,sound&0x7f,actor,0,0x100);}}if(VecFx32Object_GetMagnitude((u8*)actor+0x29c)<0x333){func_ov096_0221880c((u8*)actor+0x29c,0,0,0);F(u16,actor,0xda)=0;}}
 }
 
 /* Store three vector components after the record's leading word. */
@@ -273,7 +273,7 @@ extern "C" s32 func_ov096_02218958(void *actor,void *event,s32 mode)
 {
     void *target=F(void*,actor,0x228);if(target)mode=F(s16,actor,0xda);if(!target||!mode)return ActorExtendedType2_UpdateTargetValidationMotion(actor,event,mode);
     ((V1)vm(actor,0xd0))(actor,(u8*)target+0x18);if(!(F(u32,actor,0x260)&8)){F(u32,actor,0x260)|=1;F(u8,actor,0x24c)=3;}
-    if(F(s8,actor,0x4b)){if(!(F(u16,actor,0x2ae)&1)&&F(s16,actor,0x2ac)>10&&VecFx32Object_GetMagnitude((u8*)actor+0x29c)>0x666){F(s32,actor,0x8c)=-(F(s32,actor,0x3c)+F(s32,actor,0x8c));F(s32,actor,0x90)=-(F(s32,actor,0x40)+F(s32,actor,0x90));((M0)vm(actor,0x10c))(actor);func_020593dc(gSoundContext,0x1c7,2,actor,0,0x100);if(func_ov096_0221881c(actor))F(s32,actor,0x44)=0x2000;F(u16,actor,0x298)=0;func_ov096_0221880c((u8*)actor+0x29c,0,0,0);}F(u16,actor,0x2ae)|=1;}
+    if(F(s8,actor,0x4b)){if(!(F(u16,actor,0x2ae)&1)&&F(s16,actor,0x2ac)>10&&VecFx32Object_GetMagnitude((u8*)actor+0x29c)>0x666){F(s32,actor,0x8c)=-(F(s32,actor,0x3c)+F(s32,actor,0x8c));F(s32,actor,0x90)=-(F(s32,actor,0x40)+F(s32,actor,0x90));((M0)vm(actor,0x10c))(actor);Sound_PlayOwnedEffect(gSoundContext,0x1c7,2,actor,0,0x100);if(func_ov096_0221881c(actor))F(s32,actor,0x44)=0x2000;F(u16,actor,0x298)=0;func_ov096_0221880c((u8*)actor+0x29c,0,0,0);}F(u16,actor,0x2ae)|=1;}
     return 0;
 }
 /* Follow an existing target or use the inherited special-target lookup. */

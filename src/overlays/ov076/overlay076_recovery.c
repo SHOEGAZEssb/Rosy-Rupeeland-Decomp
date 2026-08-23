@@ -68,11 +68,11 @@ extern "C" void *func_0201e0ec(void *);
 extern "C" void func_020349b8(void *, ...);
 extern "C" void func_02034a60(void *, s32, s32);
 extern "C" s32 func_0204cfa4(s32, s32);
-extern "C" void func_020593ac(void *, s32, s32, ...);
-extern "C" void func_020593dc(void *, s32, s32, ...);
-extern "C" void func_0205940c(void *, s32, ...);
-extern "C" void func_0205946c(void *, s32, ...);
-extern "C" s32 func_020594a4(void *, s32, ...);
+extern "C" void Sound_PlayEffectWithParameters(void *, s32, s32, ...);
+extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, ...);
+extern "C" void Sound_StopEffect(void *, s32, ...);
+extern "C" void Sound_SetEffectPitch(void *, s32, ...);
+extern "C" s32 Sound_IsEffectPlaying(void *, s32, ...);
 extern "C" void func_020a2614(void *, ...);
 extern "C" void func_020a2960(void *, ...);
 extern "C" s32 func_020adc90(s32, s32);
@@ -121,7 +121,7 @@ extern "C" void *func_ov076_02212ae0(void *actor, const void *config) {
 /* Destroy the linked actor while retaining its allocation. */
 extern "C" void *func_ov076_02212b60(void *actor) {
     F(void *, actor, 0) = data_ov076_02214950;
-    func_0205940c(gSoundContext, 0x1c4, 8);
+    Sound_StopEffect(gSoundContext, 0x1c4, 8);
     ActorExtendedLinked_Destroy(actor);
     return actor;
 }
@@ -243,7 +243,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
         func_ov076_022135d0((u8 *)actor + 0x38, 0, 0, 0);
         func_ov076_022135d0((u8 *)actor + 0x88, 0, 0, 0);
         func_ov076_022135d0((u8 *)actor + 0x98, 0, 0, 0);
-        func_0205940c(gSoundContext, 0x1c4, 8);
+        Sound_StopEffect(gSoundContext, 0x1c4, 8);
         return 0;
     }
 
@@ -349,7 +349,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
                                   ? F(u8, actor, 0x29d)
                                   : F(s16, actor, 0xda) + F(u8, actor, 0x29d);
         F(u8, actor, 0x29d) = 0;
-        func_020593ac(gSoundContext, 0, 0x5b, 0x7f, 0,
+        Sound_PlayEffectWithParameters(gSoundContext, 0, 0x5b, 0x7f, 0,
                       F(s16, actor, 0xda) * 0xc0 - 0x300);
     }
 
@@ -380,17 +380,17 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
         F(s16, actor, 0x2aa) += 0x10;
     else if (F(s16, actor, 0x2aa) > target_volume)
         F(s16, actor, 0x2aa) -= 0x10;
-    s32 playing = func_020594a4(gSoundContext, 0x1c4);
+    s32 playing = Sound_IsEffectPlaying(gSoundContext, 0x1c4);
     if (moving) {
         if (F(s16, actor, 0x2aa) == 0) {
             if (!playing)
-                func_020593dc(gSoundContext, 0x1c4, 8, actor, 0, 0x100);
-            func_0205946c(gSoundContext, 0x1c4, 8, F(s16, actor, 0x2a8));
+                Sound_PlayOwnedEffect(gSoundContext, 0x1c4, 8, actor, 0, 0x100);
+            Sound_SetEffectPitch(gSoundContext, 0x1c4, 8, F(s16, actor, 0x2a8));
         } else {
             --F(s16, actor, 0x2aa);
         }
     } else if (playing) {
-        func_0205940c(gSoundContext, 0x1c4, 8);
+        Sound_StopEffect(gSoundContext, 0x1c4, 8);
     }
 
     if (F(s16, actor, 0x2a0) > 0)
@@ -777,13 +777,13 @@ extern "C" void func_ov076_02214100(void *actor) {
 /* Maintain the follower's looping sound only in states five and six. */
 extern "C" void func_ov076_0221416c(void *actor) {
     ActorExtendedType2_UpdateFrame(actor);
-    s32 playing = func_020594a4(gSoundContext, 0x1c4, 8);
+    s32 playing = Sound_IsEffectPlaying(gSoundContext, 0x1c4, 8);
     if ((u16)(F(s16, actor, 0xd6) - 5) < 2) {
         if (!playing)
-            func_020593dc(gSoundContext, 0x1c4, 8, actor, 0, 0x100);
-        func_0205946c(gSoundContext, 0x1c4, 8);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1c4, 8, actor, 0, 0x100);
+        Sound_SetEffectPitch(gSoundContext, 0x1c4, 8);
     } else if (playing) {
-        func_0205940c(gSoundContext, 0x1c4, 8);
+        Sound_StopEffect(gSoundContext, 0x1c4, 8);
     }
 }
 

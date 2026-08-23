@@ -4,8 +4,8 @@
 .extern data_ov025_02202e58
 .extern data_ov025_02202e80
 .extern data_ov025_02202ed0
-.extern func_0207f248
-.extern func_0207ff90
+.extern RetailSaveContext_PollOperation
+.extern RetailSaveContext_BeginRecordLoad
 .extern func_02092260
 .extern func_ov025_021ff254
 .extern func_ov025_02200178
@@ -35,7 +35,7 @@ L_02201370:
     ldr r1, [r4, #0x54]
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_0207ff90
+    bl RetailSaveContext_BeginRecordLoad
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -44,7 +44,7 @@ L_02201370:
 L_0220139c:
     ldr r0, L_02201480
     ldr r0, [r0, #0x0]
-    bl func_0207f248
+    bl RetailSaveContext_PollOperation
     cmp r0, #0x0
     beq L_02201470
     mvn r1, #0x0

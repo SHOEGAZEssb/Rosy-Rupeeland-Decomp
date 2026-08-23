@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_widget_state.c for documented portable C. */
 .extern Sound_Play
 .extern data_021f6288
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern InventoryScroll_SetSelectedRow
 .extern InventoryScroll_SaveOrigins
 .extern InventoryScroll_MoveSelectionUp
@@ -294,7 +294,7 @@ L_02201cf0:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_0205940c
+    bl Sound_StopEffect
 L_02201d34:
     ldr r0, [r5, #0x4]
     add r0, r0, #0x1

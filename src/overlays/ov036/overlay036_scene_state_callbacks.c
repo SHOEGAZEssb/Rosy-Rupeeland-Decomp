@@ -11,7 +11,7 @@ extern u8 gSystemState;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059230(void *sound, s32 first, s32 second);
+extern void SoundPhaseManager_Update(void *sound, s32 first, s32 second);
 extern void func_ov036_022045ac(void *state, s32 value24, s32 value28);
 extern s32 func_ov036_021fce5c(void *controller);
 extern void func_ov036_02204ae0(void *scene);
@@ -29,7 +29,7 @@ extern "C" s32 func_ov036_02204b80(void *scene)
 {
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02059230(gSoundContext, 1, FIELD(s32, scene, 0x58));
+        SoundPhaseManager_Update(gSoundContext, 1, FIELD(s32, scene, 0x58));
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* The recovered branch intentionally continues into state one. */

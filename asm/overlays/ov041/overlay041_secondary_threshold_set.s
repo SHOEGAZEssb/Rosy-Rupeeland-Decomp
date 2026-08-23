@@ -3,7 +3,7 @@
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_secondary_object_helpers.c. */
 .extern Sound_Play
-.extern func_020594a4
+.extern Sound_IsEffectPlaying
 .extern gSoundContext
 
     .global func_ov041_02200970
@@ -22,7 +22,7 @@ func_ov041_02200970: ; 0x02200970
     ldr r0, [r1, #0x0]
     ldr r1, .L_022009e4
     mov r2, #0x8
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     ldmneia sp!, {r3, pc}
     ldr r0, .L_022009e0

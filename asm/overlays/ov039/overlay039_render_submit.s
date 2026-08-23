@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_render_submit.c for documented portable C. */
     .extern func_0209a2ac
-    .extern func_0205943c
+    .extern Sound_SetEffectParameters
     .extern func_0201e0ec
     .extern func_0209c3b4
     .extern VecFx32Object_InitComponents
@@ -103,7 +103,7 @@ L_02200814:
     ldr r0, [r0, #0x0]
     mov r2, #0x8
     mov r3, #0x64
-    bl func_0205943c
+    bl Sound_SetEffectParameters
     ldr r0, L_02200cbc
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c

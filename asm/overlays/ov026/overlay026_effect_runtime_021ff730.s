@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_effect_runtime.c. */
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern gSoundContext
 .extern Sound_Play
 
@@ -48,7 +48,7 @@ L_021ff79c:
     mov r1, #0x22
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205940c
+    bl Sound_StopEffect
 L_021ff7c8:
     ldr r0, [r4, #0x4]
     ldr r1, [r5, #0x12c]

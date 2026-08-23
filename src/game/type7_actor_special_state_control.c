@@ -17,7 +17,7 @@ extern s32 Type7Actor_GetStateCode(void *actor);
 extern void Type7Actor_UpdateAttachmentControllerAnimation(void *actor);
 extern void Type7MarkerPresentation_SelectAnimation(void *state, u32 index);
 extern void Type7MarkerPresentation_ReloadResources(void *state);
-extern void func_020593dc(void *soundContext, s32 group, s32 index,
+extern void Sound_PlayOwnedEffect(void *soundContext, s32 group, s32 index,
                           u32 argument, s32 zero, s32 volume);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 index);
 #ifdef __cplusplus
@@ -116,14 +116,14 @@ void Type7Actor_StartAnimation19Interaction(void *self, s32 value, s32 selector)
 /*
  * Inputs are an opaque sound argument and a 16-bit selector. OR the selector
  * with signed game-work halfword +0x1d0, split the result into a seven-bit
- * index and remaining group bits, and submit it through func_020593dc with
+ * index and remaining group bits, and submit it through Sound_PlayOwnedEffect with
  * zero auxiliary value and volume 0x100. Sound context is read and audio state
  * may change; no value is returned and no hardware is accessed directly.
  */
 void Type7Actor_PlayStateSound(u32 argument, u32 selector)
 {
     u32 sound = (u16)(selector | *(s16 *)(gGameWork + 0x1d0));
-    func_020593dc(gSoundContext, (s32)sound >> 7, sound & 0x7f,
+    Sound_PlayOwnedEffect(gSoundContext, (s32)sound >> 7, sound & 0x7f,
                   argument, 0, 0x100);
 }
 

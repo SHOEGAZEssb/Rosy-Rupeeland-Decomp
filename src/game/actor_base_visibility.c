@@ -5,7 +5,7 @@
  * the actor at +0x54. Enabling consults virtual +0xa8 before clearing the
  * hidden bit; disabling sets it and invokes virtual +0x94 with value zero.
  */
-void func_02033a6c(void *self, s32 enabled)
+void Actor_ApplyBaseSpriteVisibility(void *self, s32 enabled)
 {
     u8 *actor = (u8 *)self;
     u8 *sprite = *(u8 **)(actor + 0x54);

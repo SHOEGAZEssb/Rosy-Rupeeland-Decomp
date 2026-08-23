@@ -13,7 +13,7 @@ extern "C" {
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern s32 ActorExtendedType2_GetDescriptorValue25(void *actor);
-extern void func_020593dc(void *soundContext, s32 soundId, s32 mode,
+extern void Sound_PlayOwnedEffect(void *soundContext, s32 soundId, s32 mode,
                           void *actor, s32 zero, s32 scale);
 #ifdef __cplusplus
 }
@@ -28,7 +28,7 @@ extern void func_020593dc(void *soundContext, s32 soundId, s32 mode,
  * member pair +0xe8/+0xec at +0x220/+0x224, set +0x260 bit 0x400000, and, when
  * byte +0x27e is zero and classification returns zero, emit sound 0x90 in mode
  * three. Increment +0x25a and always return zero. Actor, random, classification,
- * callback, and sound state may change; func_020593dc crosses the sound boundary.
+ * callback, and sound state may change; Sound_PlayOwnedEffect crosses the sound boundary.
  */
 s32 ActorExtendedType2_UpdateLongDelayAudio(void *self)
 {
@@ -41,16 +41,16 @@ s32 ActorExtendedType2_UpdateLongDelayAudio(void *self)
         if (*(s8 *)(actor + 0x27e) == 0) {
             s32 variant = ActorExtendedType2_GetDescriptorValue25(actor);
             if (variant == 0)
-                func_020593dc(gSoundContext, 0x90, 2, actor, 0, 0x100);
+                Sound_PlayOwnedEffect(gSoundContext, 0x90, 2, actor, 0, 0x100);
             else if (variant == 1)
-                func_020593dc(gSoundContext, 0x1c6, 2, actor, 0, 0x100);
+                Sound_PlayOwnedEffect(gSoundContext, 0x1c6, 2, actor, 0, 0x100);
         }
     } else if (counter >= *(u16 *)(actor + 0x258)) {
         *(u32 *)(actor + 0x220) = *(u32 *)(data_020df9e8 + 0xe8);
         *(u32 *)(actor + 0x224) = *(u32 *)(data_020df9e8 + 0xec);
         *(u32 *)(actor + 0x260) |= 0x400000;
         if (*(s8 *)(actor + 0x27e) == 0 && ActorExtendedType2_GetDescriptorValue25(actor) == 0)
-            func_020593dc(gSoundContext, 0x90, 3, actor, 0, 0x100);
+            Sound_PlayOwnedEffect(gSoundContext, 0x90, 3, actor, 0, 0x100);
     } else {
         *(u32 *)(actor + 0x260) &= ~1;
         actor[0x24c] = 4;

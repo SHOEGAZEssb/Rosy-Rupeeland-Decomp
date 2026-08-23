@@ -3,7 +3,7 @@
 .extern data_020e6e68
 .extern VecFx32Object_GetMagnitude
 .extern ActorExtendedType2_GetDescriptorValue2A
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov096_02218590
 .extern func_ov096_0221880c
 .extern func_ov096_0221881c
@@ -100,7 +100,7 @@ func_ov096_02218668:
     mov r3, r6
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_022187c4:
     add r0, r6, #0x29c
     bl VecFx32Object_GetMagnitude

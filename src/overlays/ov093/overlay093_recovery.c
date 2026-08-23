@@ -49,9 +49,9 @@ extern "C" void func_020afce8(void *, s32, s32);
 extern "C" void *func_0201e0ec(void *);
 extern "C" void func_02031758(void *, void *);
 extern "C" void Sound_Play(void *, s32, s32);
-extern "C" s32 func_020594a4(void *, s32, s32);
-extern "C" void func_020593ac(void *, s32, s32, s32, s32, s32);
-extern "C" void func_02059484(void *, s32, s32, s32, s32);
+extern "C" s32 Sound_IsEffectPlaying(void *, s32, s32);
+extern "C" void Sound_PlayEffectWithParameters(void *, s32, s32, s32, s32, s32);
+extern "C" void Sound_FadeEffectVolume(void *, s32, s32, s32, s32);
 extern "C" void func_020a6404(void *);
 extern "C" void func_020a6548(void *);
 extern "C" void func_020a68fc(void *, s32, s32);
@@ -291,9 +291,9 @@ extern "C" void func_ov093_02217c50(void *actor)
             if (FIELD(s16, actor, 0x240) < 0) {
                 FIELD(s16, actor, 0x240)++;
             }
-            if (func_020594a4(gSoundContext, 0x12d, 8) == 0) {
-                func_020593ac(gSoundContext, 0x12d, 8, 0, 0, 0);
-                func_02059484(gSoundContext, 0x12d, 8, 100, 120);
+            if (Sound_IsEffectPlaying(gSoundContext, 0x12d, 8) == 0) {
+                Sound_PlayEffectWithParameters(gSoundContext, 0x12d, 8, 0, 0, 0);
+                Sound_FadeEffectVolume(gSoundContext, 0x12d, 8, 100, 120);
             }
         }
         animation = FIELD(u8, mainSprite, 0x38);
@@ -387,8 +387,8 @@ extern "C" void func_ov093_02217c50(void *actor)
             DisplayBrightness_StartTransition(screen, 0, 16, 119);
             screen = DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1);
             DisplayBrightness_StartTransition(screen, 0, 16, 119);
-            func_020593ac(gSoundContext, 0x12d, 12, 0, 0, 0);
-            func_02059484(gSoundContext, 0x12d, 12, 100, 119);
+            Sound_PlayEffectWithParameters(gSoundContext, 0x12d, 12, 0, 0, 0);
+            Sound_FadeEffectVolume(gSoundContext, 0x12d, 12, 100, 119);
         }
         break;
     case 8:
@@ -432,7 +432,7 @@ extern "C" void func_ov093_02217c50(void *actor)
                 pan = ((sourceX - 0x180000) >> 12) / 2;
                 if (pan > 127) pan = 127;
                 if (pan < -127) pan = -127;
-                func_020593ac(gSoundContext, 0x12d, 11, 100, pan, 0);
+                Sound_PlayEffectWithParameters(gSoundContext, 0x12d, 11, 100, pan, 0);
             } else {
                 FIELD(s16, sprite, 0x30) =
                     (s16)(FIELD(s16, sprite, 0x30) + FIELD(s32, record, 0xc));

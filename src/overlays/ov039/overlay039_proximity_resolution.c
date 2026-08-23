@@ -21,7 +21,7 @@ extern void func_ov049_0220c67c(void *system);
 extern void func_020a63d0(void *object, s32 mode);
 extern void Sound_StopDirectSequence(void *context, s32 soundId, s32 parameter);
 extern void func_020594ec(void *context, s32 parameter);
-extern void func_0205940c(void *context, s32 soundId, s32 parameter);
+extern void Sound_StopEffect(void *context, s32 soundId, s32 parameter);
 extern void Sound_Play(void *context, s32 soundId, s32 parameter);
 #ifdef __cplusplus
 }
@@ -109,8 +109,8 @@ extern "C" s32 func_ov039_021fee00(void *scene, void *input)
     FIELD(u16, scene, 0x1cb8) = 5;
     FIELD(u16, scene, 0x1cb6) = 0;
     FIELD(u16, scene, 0x1d9c) = 0;
-    func_0205940c(gSoundContext, 0x63, 7);
-    func_0205940c(gSoundContext, 0x63, 8);
+    Sound_StopEffect(gSoundContext, 0x63, 7);
+    Sound_StopEffect(gSoundContext, 0x63, 8);
     Sound_Play(gSoundContext, 0x63, 5);
     return 1;
 }

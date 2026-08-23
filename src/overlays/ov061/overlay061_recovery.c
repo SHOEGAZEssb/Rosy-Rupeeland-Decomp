@@ -37,7 +37,7 @@ extern GamePhaseRuntime *data_021052fc;
 extern void *gLupyContext;
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
-extern void func_0205940c(void *context, s32 bank, s32 soundId);
+extern void Sound_StopEffect(void *context, s32 bank, s32 soundId);
 extern void ActorCollection_SetEnabled(void *collection, s32 enabled);
 extern void GamePhaseState_SetEnabled(void *state, s32 enabled);
 #ifdef __cplusplus
@@ -85,7 +85,7 @@ Overlay61Scene *func_ov061_0220fe04(Overlay61Scene *self)
     DebugHudState_Close(DebugHudState_GetGlobal());
     DebugHudState_RefreshRectangle(DebugHudState_GetGlobal());
     if (self->playSound != 0)
-        func_0205940c(gSoundContext, 0x186, 0);
+        Sound_StopEffect(gSoundContext, 0x186, 0);
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 2);
     Scene_Destroy(&self->base);
     return self;

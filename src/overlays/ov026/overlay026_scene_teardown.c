@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void Heap_Free(void *);
-extern void func_0205940c(void *, s32, s32);
+extern void Sound_StopEffect(void *, s32, s32);
 extern void GraphicsArchive_ReleaseOwlvResource(void *, void *);
 extern void GraphicsResourceSetVariant_Destroy(void *);
 extern void func_02075020(void *);
@@ -41,7 +41,7 @@ extern void func_ov048_0220b7b4(void *);
 static void teardown_scene(void *scene)
 {
     func_02092314(scene, 0x3d, 8);
-    func_0205940c(gSoundContext, 0x22, 0);
+    Sound_StopEffect(gSoundContext, 0x22, 0);
     FIELD(u32, scene, 0x20) &= ~0x400;
     PresentationList_DeleteAll((u8 *)scene + 0x2f4);
     PresentationList_DeleteAll((u8 *)scene + 0x304);

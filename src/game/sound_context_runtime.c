@@ -57,7 +57,7 @@ extern s32 TingleNativeSound_IsStreamPlaying(s32 stream_or_minus_one);
 extern void TingleNativeSound_SaveStreamPosition(void);
 extern void TingleNativeSound_ResumeStreamPosition(void);
 void Sound_PlayDirectSequence(void *context, u16 sequence, s32 volume);
-void func_020592fc(void *context, u16 sequence, u16 track_mask);
+void Sound_SetDirectSequenceTrackMask(void *context, u16 sequence, u16 track_mask);
 void Sound_SetDirectSequenceVariable(void *context, u16 sequence, u16 variable, u16 value);
 void Sound_LoadGroup(void *context, s32 group);
 void Sound_ReleaseGroup(void *context, s32 group);
@@ -130,7 +130,7 @@ static void phase_sound_manager_start_sequence(void *context, u8 *manager)
 {
     Sound_LoadGroup(context, *(u16 *)(manager + 0x28));
     Sound_PlayDirectSequence(context, *(u16 *)(manager + 0x2a), 0x7f);
-    func_020592fc(context, *(u16 *)(manager + 0x2a), 0x200);
+    Sound_SetDirectSequenceTrackMask(context, *(u16 *)(manager + 0x2a), 0x200);
     *(s32 *)(manager + 0x1c) = 1;
     *(s32 *)(manager + 0x18) = 4;
 }
@@ -158,7 +158,7 @@ static void phase_sound_manager_update(void *context)
 }
 
 /* Allocate and initialize the retail 0xC0-byte facade, then attach SDAT. */
-void func_020589f4(void)
+void SoundContext_Initialize(void)
 {
     u8 *context = (u8 *)Heap_Alloc(0xc0, data_020e4154, 4, &gHeapContext);
 
@@ -175,28 +175,28 @@ void func_020589f4(void)
 }
 
 /* Advance fades, sequence tracks, voices, and stream state once per game tick. */
-void func_02058bf8(void *context)
+void SoundContext_Update(void *context)
 {
     phase_sound_manager_update(context);
     TingleNativeSound_Update();
 }
 
 /* Stop all players and clear the context's active configuration marker. */
-void Sound_Reset(void *context)
+static void Sound_ResetPlayers(void *context)
 {
     TingleNativeSound_StopAll(0);
     *(u32 *)((u8 *)context + 0xa4) = 0;
     TingleNativeSound_SetMasterVolume(0);
 }
 
-/* Address-derived alias of Sound_Reset retained by recovered callers. */
-void func_02058bdc(void *context)
+/* Reset the retail sound facade and all native players. */
+void Sound_Reset(void *context)
 {
-    Sound_Reset(context);
+    Sound_ResetPlayers(context);
 }
 
 /* Enable or suppress ordinary sound requests, mirroring context flag bit 2. */
-void func_02058d70(void *context, s32 disabled)
+void Sound_SetRequestsDisabled(void *context, s32 disabled)
 {
     if (disabled != 0 && sound_requests_enabled(context)) {
         TingleNativeSound_StopAllSequences(0);
@@ -215,7 +215,7 @@ void Sound_StopAllManagedPlayers(void *context)
 }
 
 /* Stop every sequence-archive effect synchronously. */
-void func_02058d28(void *context)
+void Sound_StopAllArchiveEffects(void *context)
 {
     (void)context;
     TingleNativeSound_StopAllArchives(0);
@@ -229,21 +229,21 @@ void Sound_StopAllDirectSequences(void *context, s32 fade_frames)
 }
 
 /* Stop the sole stream player over the caller's 60 Hz fade duration. */
-void func_02058d58(void *context, s32 fade_frames)
+void Sound_ForceStopStream(void *context, s32 fade_frames)
 {
     (void)context;
     TingleNativeSound_StopStream(fade_frames);
 }
 
 /* Clamp and apply the game-owned master-volume field (retail range 0..63). */
-void func_02058e3c(void *context, s32 volume)
+void SoundContext_SetMasterVolumeField(void *context, s32 volume)
 {
     if (volume > 0x3e) volume = 0x3f;
     *(s32 *)((u8 *)context + 0xa0) = volume;
 }
 
 /* Translate the game's four speaker modes to the native output boundary. */
-void func_02058e5c(void *context, s32 mode, s32 unused)
+void Sound_SetOutputMode(void *context, s32 mode, s32 unused)
 {
     static const u8 output_modes[4] = {0, 3, 1, 2};
     (void)context;
@@ -252,13 +252,13 @@ void func_02058e5c(void *context, s32 mode, s32 unused)
 }
 
 /* Flush pending host sound commands; rendering is synchronous at this boundary. */
-void func_02058eac(void)
+void Sound_FlushCommands(void)
 {
     TingleNativeSound_Update();
 }
 
 /* Apply the broad sound-enable envelope used during modal transitions. */
-void func_02058eb8(void *context, s32 enabled, s32 flags, s32 duration,
+void Sound_SetModalEnvelopeEnabled(void *context, s32 enabled, s32 flags, s32 duration,
                    s32 volume)
 {
     (void)flags;
@@ -281,7 +281,7 @@ void Sound_SetCaptureEnabled(void *context, s32 enabled)
 }
 
 /* Toggle capture route zero while retaining its retail facade bit. */
-void func_02058ffc(void *context, s32 enabled, s32 attack, s32 release)
+void Sound_SetCaptureRoute0Enabled(void *context, s32 enabled, s32 attack, s32 release)
 {
     (void)attack;
     (void)release;
@@ -290,7 +290,7 @@ void func_02058ffc(void *context, s32 enabled, s32 attack, s32 release)
 }
 
 /* Toggle capture route one while retaining its retail facade bit. */
-void func_02059068(void *context, s32 enabled, s32 attack, s32 release)
+void Sound_SetCaptureRoute1Enabled(void *context, s32 enabled, s32 attack, s32 release)
 {
     (void)attack;
     (void)release;
@@ -299,7 +299,7 @@ void func_02059068(void *context, s32 enabled, s32 attack, s32 release)
 }
 
 /* Toggle the three direct-player capture routes and their retained mask. */
-void func_02059104(void *context, s32 enabled, s32 attack, s32 release)
+void Sound_SetDirectCaptureRoutesEnabled(void *context, s32 enabled, s32 attack, s32 release)
 {
     (void)attack;
     (void)release;
@@ -309,7 +309,7 @@ void func_02059104(void *context, s32 enabled, s32 attack, s32 release)
 
 /* Configure or reset the three auxiliary sound managers. SDAT is resident on
  * the host, so their DS heap/load commands complete synchronously. */
-void func_02059200(void *context, s32 first, s32 second, s32 third)
+void Sound_ConfigureAuxiliaryManagers(void *context, s32 first, s32 second, s32 third)
 {
     (void)context;
     (void)first;
@@ -318,13 +318,13 @@ void func_02059200(void *context, s32 first, s32 second, s32 third)
 }
 
 /* Reset the phase-sound manager against its resident SDAT state. */
-void func_02059218(void *context)
+void SoundPhaseManager_Reset(void *context)
 {
     (void)context;
 }
 
 /* Advance the phase-sound manager; resident host loads complete immediately. */
-void func_02059230(void *context, s32 enabled, s32 value)
+void SoundPhaseManager_Update(void *context, s32 enabled, s32 value)
 {
     u8 *manager = (u8 *)data_021e9abc;
 
@@ -363,14 +363,14 @@ void func_02059230(void *context, s32 enabled, s32 value)
 }
 
 /* Submit the phase manager's alternate transition request synchronously. */
-void func_02059248(void *context, s32 enabled)
+void SoundPhaseManager_RequestAlternateTransition(void *context, s32 enabled)
 {
     (void)context;
     (void)enabled;
 }
 
 /* Advance the phase database manager without asynchronous NitroFS work. */
-void func_02059260(void *context, s32 enabled)
+void SoundPhaseDatabaseManager_Update(void *context, s32 enabled)
 {
     (void)context;
     (void)enabled;
@@ -391,7 +391,7 @@ void Sound_StopDirectSequence(void *context, u16 sequence, s32 fade_frames)
 }
 
 /* Apply an immediate 0..127 volume to the matching direct SSEQ. */
-void func_020592c0(void *context, u16 sequence, s32 volume)
+void Sound_SetDirectSequenceVolume(void *context, u16 sequence, s32 volume)
 {
     (void)context;
     TingleNativeSound_SetSequenceVolume(sequence, volume, 0);
@@ -405,7 +405,7 @@ void Sound_FadeDirectSequence(void *context, u16 sequence, u16 volume, s32 fade_
 }
 
 /* Make the selected direct-sequence tracks audible and mute the complement. */
-void func_020592fc(void *context, u16 sequence, u16 track_mask)
+void Sound_SetDirectSequenceTrackMask(void *context, u16 sequence, u16 track_mask)
 {
     if (sound_requests_enabled(context))
         TingleNativeSound_SetSequenceTrackValue(sequence, track_mask, 0, 1);
@@ -419,14 +419,14 @@ void Sound_SetDirectSequenceVariable(void *context, u16 sequence, u16 variable, 
 }
 
 /* Query whether the requested direct SSEQ is active. */
-s32 func_02059344(void *context, u16 sequence)
+s32 Sound_IsDirectSequencePlaying(void *context, u16 sequence)
 {
     return sound_requests_enabled(context) &&
            TingleNativeSound_IsSequencePlaying(sequence);
 }
 
 /* Return the requested direct SSEQ's audible 16-track mask. */
-u16 func_0205936c(void *context, u16 sequence)
+u16 Sound_GetDirectSequenceTrackMask(void *context, u16 sequence)
 {
     return sound_requests_enabled(context)
         ? TingleNativeSound_GetSequenceTrackMask(sequence) : 0;
@@ -440,7 +440,7 @@ void Sound_Play(void *context, s32 archive, s32 member)
 }
 
 /* Start an effect with explicit volume, pan, pitch, and no retained owner. */
-void func_020593ac(void *context, s32 archive, s32 member, s32 volume,
+void Sound_PlayEffectWithParameters(void *context, s32 archive, s32 member, s32 volume,
                    s32 pan, s32 pitch)
 {
     (void)context;
@@ -448,7 +448,7 @@ void func_020593ac(void *context, s32 archive, s32 member, s32 volume,
 }
 
 /* Start an effect retained against an owner with explicit track pitch. */
-void func_020593dc(void *context, s32 archive, s32 member, const void *owner,
+void Sound_PlayOwnedEffect(void *context, s32 archive, s32 member, const void *owner,
                    s32 pitch, s32 retained_flags)
 {
     (void)context;
@@ -457,21 +457,21 @@ void func_020593dc(void *context, s32 archive, s32 member, const void *owner,
 }
 
 /* Stop one matching sequence-archive member immediately. */
-void func_0205940c(void *context, s32 archive, s32 member)
+void Sound_StopEffect(void *context, s32 archive, s32 member)
 {
     (void)context;
     TingleNativeSound_StopArchive(archive, member, 0);
 }
 
 /* Detach and stop every effect retained against the destroyed owner. */
-void func_02059424(void *context, const void *owner)
+void Sound_StopOwnerEffects(void *context, const void *owner)
 {
     (void)context;
     TingleNativeSound_StopOwner(owner);
 }
 
 /* Update the effect's volume, signed pan, and signed 1/64-semitone pitch. */
-void func_0205943c(void *context, s32 archive, s32 member, s32 volume,
+void Sound_SetEffectParameters(void *context, s32 archive, s32 member, s32 volume,
                    s32 pan, s32 pitch)
 {
     (void)context;
@@ -481,14 +481,14 @@ void func_0205943c(void *context, s32 archive, s32 member, s32 volume,
 }
 
 /* Set one SSAR member's signed 1/64-semitone pitch immediately. */
-void func_0205946c(void *context, s32 archive, s32 member, s32 value)
+void Sound_SetEffectPitch(void *context, s32 archive, s32 member, s32 value)
 {
     (void)context;
     TingleNativeSound_SetArchiveValue(archive, member, value, 0, 1);
 }
 
 /* Fade one SSAR member to a clamped 0..127 volume. */
-void func_02059484(void *context, s32 archive, s32 member, s32 volume,
+void Sound_FadeEffectVolume(void *context, s32 archive, s32 member, s32 volume,
                    s32 fade_frames)
 {
     (void)context;
@@ -496,35 +496,35 @@ void func_02059484(void *context, s32 archive, s32 member, s32 volume,
 }
 
 /* Query whether the requested SSAR archive/member pair is active. */
-s32 func_020594a4(void *context, s32 archive, s32 member)
+s32 Sound_IsEffectPlaying(void *context, s32 archive, s32 member)
 {
     (void)context;
     return TingleNativeSound_IsArchivePlaying(archive, member);
 }
 
 /* Set the SSAR member's recovered modulation-depth control. */
-void func_020594bc(void *context, s32 archive, s32 member, s32 value)
+void Sound_SetEffectModulationDepth(void *context, s32 archive, s32 member, s32 value)
 {
     (void)context;
     TingleNativeSound_SetArchiveValue(archive, member, value, 0, 4);
 }
 
 /* Set the SSAR member's recovered modulation-speed control. */
-void func_020594d4(void *context, s32 archive, s32 member, s32 value)
+void Sound_SetEffectModulationSpeed(void *context, s32 archive, s32 member, s32 value)
 {
     (void)context;
     TingleNativeSound_SetArchiveValue(archive, member, value, 0, 5);
 }
 
 /* Query the sole stream player, optionally requiring a matching stream ID. */
-s32 func_02059510(void *context, s32 stream_or_minus_one)
+s32 Sound_IsStreamPlaying(void *context, s32 stream_or_minus_one)
 {
     (void)context;
     return TingleNativeSound_IsStreamPlaying(stream_or_minus_one);
 }
 
 /* Start a stream at a recovered 100 ms unit offset with optional fade-in. */
-void func_02059550(void *context, s32 stream, s32 start_units, s32 volume,
+void Sound_PlayStream(void *context, s32 stream, s32 start_units, s32 volume,
                    s32 fade_frames, s32 fade_in)
 {
     if (sound_requests_enabled(context))
@@ -533,14 +533,14 @@ void func_02059550(void *context, s32 stream, s32 start_units, s32 volume,
 }
 
 /* Stop the sole stream player over a duration measured in 60 Hz frames. */
-void func_0205958c(void *context, s32 fade_frames)
+void Sound_StopStream(void *context, s32 fade_frames)
 {
     if (sound_requests_enabled(context))
         TingleNativeSound_StopStream(fade_frames);
 }
 
 /* Start one stream with the default zero offset and full-volume parameters
- * used by retail func_0205adb4. */
+ * used by retail SoundManager_PlayDefaultStream. */
 void Sound_HostPlayDefaultStreamRequest(s32 stream)
 {
     if ((u32)stream <= 0xffffu)
@@ -548,21 +548,21 @@ void Sound_HostPlayDefaultStreamRequest(s32 stream)
 }
 
 /* Fade the sole stream player to a clamped 0..127 volume. */
-void func_020595b0(void *context, s32 volume, s32 fade_frames)
+void Sound_FadeStreamVolume(void *context, s32 volume, s32 fade_frames)
 {
     if (sound_requests_enabled(context))
         TingleNativeSound_SetStreamVolume(volume, fade_frames);
 }
 
 /* Save the current stream sample position for a later resume request. */
-void func_020595d4(void *context)
+void Sound_SaveStreamPosition(void *context)
 {
     (void)context;
     TingleNativeSound_SaveStreamPosition();
 }
 
 /* Restore the saved sample position of the still-active stream. */
-void func_020595ec(void *context)
+void Sound_ResumeStreamPosition(void *context)
 {
     (void)context;
     TingleNativeSound_ResumeStreamPosition();
@@ -570,7 +570,7 @@ void func_020595ec(void *context)
 
 /* Apply the recovered seven-slot sound-group configuration. The host archive
  * is fully resident, making group load/unload completion synchronous. */
-void func_02059604(void *context, s32 value0, s32 value1, s32 value2,
+void Sound_ConfigureGroupSlots(void *context, s32 value0, s32 value1, s32 value2,
                    s32 value3, s32 value4, s32 value5, s32 value6)
 {
     (void)context;
@@ -584,17 +584,17 @@ void func_02059604(void *context, s32 value0, s32 value1, s32 value2,
 }
 
 /* Update one of the seven group slots while leaving the others unchanged. */
-void func_020596e8(void *context, s32 index, s32 value)
+void Sound_UpdateGroupSlot(void *context, s32 index, s32 value)
 {
     s32 values[7] = {0xfff, 0xfff, 0xfff, 0xfff, 0xfff, 0xfff, 0xfff};
     if ((u32)index < 7u) values[index] = value;
-    func_02059604(context, values[0], values[1], values[2], values[3],
+    Sound_ConfigureGroupSlots(context, values[0], values[1], values[2], values[3],
                   values[4], values[5], values[6]);
 }
 
 /* Start one stream through the lower manager's full-volume convenience path.
  * The manager pointer remains game-owned; native playback needs only its ID. */
-void func_0205adb4(void *manager, s32 stream)
+void SoundManager_PlayDefaultStream(void *manager, s32 stream)
 {
     (void)manager;
     Sound_HostPlayDefaultStreamRequest(stream);
@@ -626,19 +626,19 @@ void Sound_SetMasterVolume(s32 volume)
 }
 
 /* Reapply the manager's current seven group slots to resident SDAT state. */
-void func_02059a00(void *context)
+void Sound_ReapplyCurrentGroupSlots(void *context)
 {
     (void)context;
 }
 
 /* Snapshot the manager's current seven group slots for later restoration. */
-void func_02059a18(void *context)
+void Sound_SaveGroupSlots(void *context)
 {
     (void)context;
 }
 
 /* Reapply the seven saved group slots to resident SDAT state. */
-void func_02059a30(void *context)
+void Sound_RestoreGroupSlots(void *context)
 {
     (void)context;
 }
@@ -659,7 +659,7 @@ void Sound_ReleaseGroup(void *context, s32 group)
 }
 
 /* Store the selected phase and clear its one-frame transition marker. */
-void func_020598a0(void *context, u16 phase_id)
+void SoundPhaseManager_SetPhase(void *context, u16 phase_id)
 {
     u8 *manager = (u8 *)data_021e9abc;
     if (manager != 0) {

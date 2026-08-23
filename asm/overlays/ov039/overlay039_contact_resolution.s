@@ -8,7 +8,7 @@
     .extern func_020a63d0
     .extern Sound_StopDirectSequence
     .extern func_020594ec
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern Sound_Play
     .extern gSoundContext
 
@@ -126,12 +126,12 @@ L_021fef80:
     mov r2, #0x7
     ldr r0, [r1, #0x0]
     mov r1, #0x63
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, L_021fefec
     mov r1, #0x63
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, L_021fefec
     mov r1, #0x63
     ldr r0, [r0, #0x0]

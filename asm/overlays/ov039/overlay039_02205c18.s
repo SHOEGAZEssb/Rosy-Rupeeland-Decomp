@@ -15,7 +15,7 @@
     .extern Sound_Play
     .extern genrand_int32
     .extern Sound_StopAllDirectSequences
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern gActorRuntimeFlags
     .extern gSoundContext
     .global func_ov039_02205c18
@@ -233,7 +233,7 @@ L_02205f28:
     mov r1, #0x63
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_0205940c
+    bl Sound_StopEffect
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_02205f58: .word gActorRuntimeFlags

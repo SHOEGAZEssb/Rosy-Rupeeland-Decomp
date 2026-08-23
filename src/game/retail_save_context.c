@@ -35,7 +35,7 @@ extern void MI_CpuCopy8(const void *source, void *destination, u32 size);
 extern void *gGameWork;
 extern u32 GameWork_Serialize(void *work, void *buffer, u32 bufferSize);
 extern void GameWork_Deserialize(void *work, const void *buffer, u32 bufferSize);
-extern void func_0207f0c0(void);
+extern void RetailSaveContext_RestoreGameSingletons(void);
 extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern s32 GamePhaseProgress_GetCurrentAdjustedThreshold(void *state);
 extern s32 func_02027e8c(void *state);
@@ -74,7 +74,7 @@ static void retail_save_begin_write(void *context_pointer, u32 offset,
                                     const void *source, u32 size);
 
 /* Restore every game-owned singleton mirrored in GameWork after a load. */
-void func_0207f0c0(void)
+void RetailSaveContext_RestoreGameSingletons(void)
 {
     void *progress;
 
@@ -91,7 +91,7 @@ void func_0207f0c0(void)
 }
 
 /* Construct the 0x1c0-byte retail save context at 0x0207F168. */
-void *func_0207f168(void *context_pointer)
+void *RetailSaveContext_Construct(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     u32 index;
@@ -120,7 +120,7 @@ void *func_0207f168(void *context_pointer)
 }
 
 /* Allocate and publish the retail save context at 0x0207F12C. */
-void func_0207f12c(void)
+void RetailSaveContext_InitializeGlobal(void)
 {
     void *context = Heap_Alloc(0x1c0, data_020ef368, 4, &gHeapContext);
 
@@ -129,13 +129,13 @@ void func_0207f12c(void)
          * initial zero bytes for fields the constructor intentionally leaves
          * untouched until an operation selects record indices. */
         memset(context, 0, 0x1c0);
-        context = func_0207f168(context);
+        context = RetailSaveContext_Construct(context);
     }
     *(void **)(data_021f5da0 + 0x10) = context;
 }
 
 /* Perform the retail backup-device identification transaction at 0x0207F288. */
-s32 func_0207f288(void *context_pointer)
+s32 RetailSaveContext_IdentifyBackupDevice(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     u32 result = 0;
@@ -149,7 +149,7 @@ s32 func_0207f288(void *context_pointer)
 
 /* Dispatch the active save-operation pointer-to-member and publish its status
  * exactly as retail 0x0207f248. */
-s32 func_0207f248(void *context_pointer)
+s32 RetailSaveContext_PollOperation(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     u32 function_word = *(u32 *)(context + 0x1b8);
@@ -172,7 +172,7 @@ s32 func_0207f248(void *context_pointer)
 }
 
 /* Begin the retail save-discovery operation at 0x0207f2e0. */
-s32 func_0207f2e0(void *context_pointer, s32 mode)
+s32 RetailSaveContext_BeginDiscovery(void *context_pointer, s32 mode)
 {
     u8 *context = (u8 *)context_pointer;
 
@@ -184,7 +184,7 @@ s32 func_0207f2e0(void *context_pointer, s32 mode)
     *(u32 *)(context + 0x1b4) = 0;
     if (mode == 0) {
         do {
-            *(s32 *)(context + 0x28) = func_0207f248(context);
+            *(s32 *)(context + 0x28) = RetailSaveContext_PollOperation(context);
         } while (*(s32 *)(context + 0x28) == 0);
     } else {
         *(u32 *)(context + 0x28) = 0;
@@ -198,7 +198,7 @@ s32 func_0207f2e0(void *context_pointer, s32 mode)
  * when the payload CRC fails, and reconstructs the three 0x34-byte title-menu
  * slot descriptions. Returns zero while an asynchronous read is pending and
  * one once all slots have been classified as occupied, empty, or corrupt. */
-s32 func_0207f348(void *context_pointer)
+s32 RetailSaveContext_DiscoverRecords(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     void **transfer_slot = (void **)(data_021f5da0 + 0x14);
@@ -324,7 +324,7 @@ s32 func_0207f348(void *context_pointer)
 }
 
 /* Select one retail save operation and its pointer-to-member callback. */
-s32 func_0207f80c(void *context_pointer, s32 recordIndex,
+s32 RetailSaveContext_BeginRecordOperation(void *context_pointer, s32 recordIndex,
                   s32 operation, s32 asynchronous)
 {
     u8 *context = (u8 *)context_pointer;
@@ -341,7 +341,7 @@ s32 func_0207f80c(void *context_pointer, s32 recordIndex,
     if (!asynchronous) {
         s32 result;
         do {
-            result = func_0207f248(context);
+            result = RetailSaveContext_PollOperation(context);
         } while (result == 0);
         return result;
     }
@@ -352,7 +352,7 @@ s32 func_0207f80c(void *context_pointer, s32 recordIndex,
  * owns the save context throughout the operation. In asynchronous mode this
  * only installs the recovered pointer-to-member state machine; synchronous
  * callers poll that same state machine until it produces a terminal result. */
-void func_0207ff90(void *context_pointer, s32 recordIndex, s32 asynchronous)
+void RetailSaveContext_BeginRecordLoad(void *context_pointer, s32 recordIndex, s32 asynchronous)
 {
     u8 *context = (u8 *)context_pointer;
 
@@ -364,7 +364,7 @@ void func_0207ff90(void *context_pointer, s32 recordIndex, s32 asynchronous)
     *(u32 *)(context + 0x1bc) = data_020ef330[11];
     *(u32 *)(context + 0x1b4) = 0;
     if (!asynchronous) {
-        while (func_0207f248(context) == 0) {
+        while (RetailSaveContext_PollOperation(context) == 0) {
         }
     }
 }
@@ -380,7 +380,7 @@ static s32 retail_save_record_valid(const u8 *record)
  * and validates the selected primary record, retries its mirror on failure,
  * restores GameWork, rebuilds persistent singleton state, and retains the
  * retail error codes and allocation/lock ownership at every terminal path. */
-s32 func_0207ffe8(void *context_pointer)
+s32 RetailSaveContext_LoadRecord(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     void **transfer_slot = (void **)(data_021f5da0 + 0x14);
@@ -427,7 +427,7 @@ s32 func_0207ffe8(void *context_pointer)
         *(u32 *)(context + 0x1b4) = 4;
         break;
     case 4:
-        func_0207f0c0();
+        RetailSaveContext_RestoreGameSingletons();
         retail_save_release_game_buffer();
         return 1;
     case 10:
@@ -454,7 +454,7 @@ s32 func_0207ffe8(void *context_pointer)
         *(u32 *)(context + 0x1b4) = 14;
         break;
     case 14:
-        func_0207f0c0();
+        RetailSaveContext_RestoreGameSingletons();
         retail_save_release_game_buffer();
         return 1;
     case 20:
@@ -469,10 +469,10 @@ s32 func_0207ffe8(void *context_pointer)
 
 /* Begin the retail selected-record delete operation at 0x020802F4. The
  * operation rewrites the selected primary and mirror directory headers through
- * func_0208035c. Asynchronous callers poll func_0207f248; synchronous callers
+ * RetailSaveContext_DeleteRecord. Asynchronous callers poll RetailSaveContext_PollOperation; synchronous callers
  * remain here until that same state machine returns a terminal status. */
-s32 func_0208035c(void *context_pointer);
-void func_020802f4(void *context_pointer, s32 recordIndex, s32 asynchronous)
+s32 RetailSaveContext_DeleteRecord(void *context_pointer);
+void RetailSaveContext_BeginRecordDelete(void *context_pointer, s32 recordIndex, s32 asynchronous)
 {
     u8 *context = (u8 *)context_pointer;
 
@@ -485,7 +485,7 @@ void func_020802f4(void *context_pointer, s32 recordIndex, s32 asynchronous)
     *(u32 *)(context + 0x1b4) = 0;
     if (!asynchronous) {
         do {
-            *(s32 *)(context + 0x28) = func_0207f248(context);
+            *(s32 *)(context + 0x28) = RetailSaveContext_PollOperation(context);
         } while (*(s32 *)(context + 0x28) == 0);
     } else {
         *(u32 *)(context + 0x28) = 0;
@@ -498,7 +498,7 @@ void func_020802f4(void *context_pointer, s32 recordIndex, s32 asynchronous)
  * corresponding 0x34-byte cached slot description. Returns zero while work is
  * pending, one after both copies are updated, or -1 with result code four when
  * a backup request fails. */
-s32 func_0208035c(void *context_pointer)
+s32 RetailSaveContext_DeleteRecord(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     u32 record_index = *(u32 *)(context + 0x14);
@@ -507,7 +507,7 @@ s32 func_0208035c(void *context_pointer)
 
     switch (*(u32 *)(context + 0x1b4)) {
     case 0:
-        if (!func_0207f288(context)) {
+        if (!RetailSaveContext_IdentifyBackupDevice(context)) {
             *(s32 *)(context + 0x28) = -1;
             *(u32 *)(context + 0x10) = 4;
             return -1;
@@ -566,9 +566,9 @@ s32 func_0208035c(void *context_pointer)
 
 /* Begin the retail whole-record copy operation at 0x020805D0. Source and
  * destination select the three primary/mirror block pairs. The installed
- * func_0208063c callback owns transfer-buffer allocation and both durable
- * writes; asynchronous callers poll it through func_0207f248. */
-s32 func_020805d0(void *context_pointer, s32 sourceIndex,
+ * RetailSaveContext_CopyRecord callback owns transfer-buffer allocation and both durable
+ * writes; asynchronous callers poll it through RetailSaveContext_PollOperation. */
+s32 RetailSaveContext_BeginRecordCopy(void *context_pointer, s32 sourceIndex,
                   s32 destinationIndex, s32 asynchronous)
 {
     u8 *context = (u8 *)context_pointer;
@@ -583,7 +583,7 @@ s32 func_020805d0(void *context_pointer, s32 sourceIndex,
     *(u32 *)(context + 0x1b4) = 0;
     if (!asynchronous) {
         do {
-            *(s32 *)(context + 0x28) = func_0207f248(context);
+            *(s32 *)(context + 0x28) = RetailSaveContext_PollOperation(context);
         } while (*(s32 *)(context + 0x28) == 0);
     } else {
         *(u32 *)(context + 0x28) = 0;
@@ -592,13 +592,13 @@ s32 func_020805d0(void *context_pointer, s32 sourceIndex,
 }
 
 /* Copy a 16-code-unit record name and begin its retail write operation. */
-void func_0207f86c(void *context_pointer, s32 recordIndex,
+void RetailSaveContext_BeginNamedRecordWrite(void *context_pointer, s32 recordIndex,
                    const void *name, s32 asynchronous)
 {
     u8 *context = (u8 *)context_pointer;
 
     MI_CpuCopy8(name, context + 0xd4, 0x20);
-    (void)func_0207f80c(context, recordIndex, 1, asynchronous);
+    (void)RetailSaveContext_BeginRecordOperation(context, recordIndex, 1, asynchronous);
 }
 
 /* Retail CRC-32 used for save-directory headers and serialized GameWork. */
@@ -683,7 +683,7 @@ static void retail_save_begin_write(void *context_pointer, u32 offset,
  * the complete directory discovery/repair, primary and mirror writes, poll
  * boundaries, record metadata, serialization, CRC, and ownership states.
  */
-s32 func_0207f8a4(void *context_pointer)
+s32 RetailSaveContext_WriteRecord(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     void **transfer_slot = (void **)(data_021f5da0 + 0x14);
@@ -904,7 +904,7 @@ static s32 retail_save_poll(void *context_pointer)
 /* Retail save-record transfer state machine selected by data_020ef330 for
  * title startup. The host backup boundary completes each SDK request at once,
  * while all retail states, block offsets, results, and ownership are retained. */
-s32 func_0208063c(void *context_pointer)
+s32 RetailSaveContext_CopyRecord(void *context_pointer)
 {
     u8 *context = (u8 *)context_pointer;
     void **transfer_slot = (void **)(data_021f5da0 + 0x14);

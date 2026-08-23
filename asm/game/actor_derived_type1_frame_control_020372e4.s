@@ -26,7 +26,7 @@
 .extern Actor_UpdateGroundContactProbe
 .extern Sound_StopAllDirectSequences
 .extern Sound_PlayDirectSequence
-.extern func_0205958c
+.extern Sound_StopStream
 .extern func_020a28e0
 .extern func_020ada8c
 .extern func_020adae4
@@ -272,7 +272,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     ldr r0, .L_02037a6c
     mov r1, #0x14
     ldr r0, [r0, #0x0]
-    bl func_0205958c
+    bl Sound_StopStream
     ldr r0, .L_02037a6c
     mov r1, #0x39
     ldr r0, [r0, #0x0]

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_utility_query_opcodes.c.
 .text
 .extern GamePhaseScriptVm_SetResult
-.extern func_0207f80c
+.extern RetailSaveContext_BeginRecordOperation
 .extern gRuntimeContext
 .global GamePhaseActorScriptVm_QueryRuntimeContextFixedMode
 GamePhaseActorScriptVm_QueryRuntimeContextFixedMode:
@@ -12,7 +12,7 @@ GamePhaseActorScriptVm_QueryRuntimeContextFixedMode:
     ldr r0, [r2, #0x0]
     mov r2, r1
     mov r3, #0x1
-    bl func_0207f80c
+    bl RetailSaveContext_BeginRecordOperation
     mov r1, r0
     mov r0, r4
     bl GamePhaseScriptVm_SetResult

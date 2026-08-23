@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gSoundContext
 
@@ -36,7 +36,7 @@ func_ov088_0221963c:
     mov r3, r5
     mov r1, r4, asr #0x7
     and r2, r4, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_022196b8:
     ldrsh r0, [r5, #0xd6]
     mvn r2, #0x0

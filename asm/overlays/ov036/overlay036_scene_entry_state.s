@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_scene_state_callbacks.c for documented portable C. */
 
-    .extern func_02059230
+    .extern SoundPhaseManager_Update
     .extern func_ov036_022045ac
     .extern gSoundContext
     .extern data_ov036_02205ad8
@@ -22,7 +22,7 @@ L_02204ba0:
     ldr r2, [r4, #0x58]
     ldr r0, [r0, #0x0]
     mov r1, #0x1
-    bl func_02059230
+    bl SoundPhaseManager_Update
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

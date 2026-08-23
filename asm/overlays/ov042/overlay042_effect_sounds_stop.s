@@ -1,5 +1,5 @@
 .text
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern Sound_StopDirectSequence
 .extern gSoundContext
 .global func_ov042_02200b38
@@ -9,7 +9,7 @@ func_ov042_02200b38:
     ldr r1, .L_02200bbc
     ldr r0, [r0, #0x0]
     mov r2, #0x7
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02200bb8
     mov r1, #0xa4
     ldr r0, [r0, #0x0]

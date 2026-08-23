@@ -15,7 +15,7 @@ typedef struct TitleBounds8 {
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern s32 func_02059344(void *sound, s32 id);
+extern s32 Sound_IsDirectSequencePlaying(void *sound, s32 id);
 extern void Sound_PlayDirectSequence(void *sound, s32 id, s32 value);
 extern void Sound_SetDirectSequenceVariable(void *sound, s32 id, s32 parameter, u16 value);
 #ifdef __cplusplus
@@ -39,8 +39,8 @@ extern "C" void func_ov090_0221b7e0(TitleBounds8 *bounds, s32 left, s32 top,
  */
 extern "C" void func_ov090_0221b7f8(void *self, s16 amount)
 {
-    if (!func_02059344(gSoundContext, 0x54)) {
-        if (func_02059344(gSoundContext, 0x55))
+    if (!Sound_IsDirectSequencePlaying(gSoundContext, 0x54)) {
+        if (Sound_IsDirectSequencePlaying(gSoundContext, 0x55))
             return;
         Sound_PlayDirectSequence(gSoundContext, 0x54, 0x7f);
     }

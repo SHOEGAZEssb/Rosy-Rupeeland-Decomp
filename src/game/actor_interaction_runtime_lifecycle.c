@@ -31,7 +31,7 @@ extern void GridEffectActorRegistry_UnloadSharedResource(void);
 extern void func_020534cc(void);
 extern void func_0205355c(void);
 extern void ActorDerivedType1_SetSingletonFieldE4To20E(void);
-extern s32 func_02059344(void *context, s32 channel);
+extern s32 Sound_IsDirectSequencePlaying(void *context, s32 channel);
 extern void Sound_StopDirectSequence(void *context, s32 channel, s32 value);
 #ifdef __cplusplus
 }
@@ -119,9 +119,9 @@ void ActorInteractionRuntime_Shutdown(void)
 {
     void *object;
 
-    if (func_02059344(gSoundContext, 0x1f) != 0)
+    if (Sound_IsDirectSequencePlaying(gSoundContext, 0x1f) != 0)
         Sound_StopDirectSequence(gSoundContext, 0x1f, 0);
-    if (func_02059344(gSoundContext, 0x20) != 0)
+    if (Sound_IsDirectSequencePlaying(gSoundContext, 0x20) != 0)
         Sound_StopDirectSequence(gSoundContext, 0x20, 0);
     func_0205355c();
     GridEffectActorRegistry_UnloadSharedResource();

@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern gSoundContext
 .extern Type7Actor_DispatchCurrentCallback
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .text
     .global Type7Actor_UpdatePresentation17UntilGlobalTargetClears
 .type Type7Actor_UpdatePresentation17UntilGlobalTargetClears, @function
@@ -48,7 +48,7 @@ Type7Actor_UpdatePresentation18WithInitialSound: ; 0x02049ea0
     ldr r0, [r0, #0x0]
     mov r3, r4
     mov r2, #0x7e
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02049ee0:
     ldr r0, [r4, #0x268]
     mov r1, #0x12

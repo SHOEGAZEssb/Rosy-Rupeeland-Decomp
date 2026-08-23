@@ -125,8 +125,8 @@ extern void func_02032370(void *, const void *, s32);
 extern void func_02033b38(void *);
 extern s32 func_0204cfa4(s32, s32);
 extern s32 func_020573e4(void);
-extern void func_020593ac(void *, s32, s32, s32, s32, s32);
-extern void func_020593dc(void *, s32, s32, void *, s32, s32, ...);
+extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, s32, s32);
+extern void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32, ...);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern s32 func_020adae4(s32, s32);
 extern s32 func_020adc90(s32, s32);
@@ -509,7 +509,7 @@ void func_ov081_0221313c(void *actor, void *other, s32 mode)
                 if (mode == 0 && (FIELD(u32, actor, 0xd0) & 0x10) == 0 &&
                     FIELD(u16, actor, 0x23a) != 0xffff) {
                     u16 sound = FIELD(u16, actor, 0x23a);
-                    func_020593dc(gSoundContext, sound >> 7, sound & 0x7f,
+                    Sound_PlayOwnedEffect(gSoundContext, sound >> 7, sound & 0x7f,
                                   actor, 0, 0x100);
                 }
                 if (FIELD(s32, actor, 0x234) != -1)
@@ -1002,7 +1002,7 @@ void func_ov081_02214104(void *actor)
         FIELD(s32, actor, 0x40) = 0;
         offset = Overlay081_GetSoundOffset(actor);
         pan = 0x40 - func_020adae4(SignedAbsoluteValueVariant(offset), 3);
-        func_020593ac(gSoundContext, 0x133, 1, pan, offset, 0x100);
+        Sound_PlayEffectWithParameters(gSoundContext, 0x133, 1, pan, offset, 0x100);
     }
 
     FIELD(s16, actor, 0xda) = 0;
@@ -1054,7 +1054,7 @@ void func_ov081_02214104(void *actor)
                 FIELD(void *, sprite, 0x20) == 0) {
                 offset = Overlay081_GetSoundOffset(actor);
                 pan = 0x40 - func_020adae4(SignedAbsoluteValueVariant(offset), 3);
-                func_020593ac(gSoundContext, 5, 5, pan, offset, 0);
+                Sound_PlayEffectWithParameters(gSoundContext, 5, 5, pan, offset, 0);
                 FIELD(u8, actor, 0x256) = 10;
             }
         }
@@ -1124,7 +1124,7 @@ void func_ov081_022145c8(void *actor, void *other, s32 mode)
                     FIELD(u8, actor, 0x257) = 1;
                     {
                         u16 sound = FIELD(u16, actor, 0x23a);
-                        func_020593dc(gSoundContext, sound >> 7,
+                        Sound_PlayOwnedEffect(gSoundContext, sound >> 7,
                                       sound & 0x7f, actor, 0, 0x100);
                     }
                 } else {
@@ -1170,7 +1170,7 @@ s32 func_ov081_02214874(void)
 static void Overlay081_PlayPackedSound(void *actor)
 {
     u16 sound = FIELD(u16, actor, 0x23a);
-    func_020593dc(gSoundContext, sound >> 7, sound & 0x7f, actor, 0, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, sound >> 7, sound & 0x7f, actor, 0, 0x100);
 }
 
 /*
@@ -1373,7 +1373,7 @@ s32 func_ov081_02214f58(void *actor)
         if (FIELD(u8, actor, 0x257) == 1) {
             GraphicsSpriteState_SetAnimationIndex(sprite, 0x37);
             FIELD(u16, sprite, 0x24) &= 0xfffc;
-            func_020593dc(gSoundContext, 0x133, 0, actor, 0, 0x100);
+            Sound_PlayOwnedEffect(gSoundContext, 0x133, 0, actor, 0, 0x100);
         } else {
             GraphicsSpriteState_SetAnimationIndex(sprite, 0x1a);
             FIELD(u16, sprite, 0x24) &= 0xfffe;
@@ -1385,7 +1385,7 @@ s32 func_ov081_02214f58(void *actor)
         FIELD(u8, actor, 0x257) = 1;
         GraphicsSpriteState_SetAnimationIndex(sprite, 0x37);
         FIELD(u16, sprite, 0x24) &= 0xfffc;
-        func_020593dc(gSoundContext, 0x133, 0, actor, 0, 0x100);
+        Sound_PlayOwnedEffect(gSoundContext, 0x133, 0, actor, 0, 0x100);
         FIELD(s32, actor, 0x230) = 0x32;
         FIELD(s32, actor, 0x234) = 0x5a;
     }

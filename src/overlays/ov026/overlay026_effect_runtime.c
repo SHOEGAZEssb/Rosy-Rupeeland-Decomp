@@ -10,7 +10,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Sound_Play(void *, s32, s32);
-extern void func_0205940c(void *, s32, s32);
+extern void Sound_StopEffect(void *, s32, s32);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern void func_ov026_021fdd28(void *);
@@ -127,7 +127,7 @@ extern "C" s32 func_ov026_021ff730(void *object, const u32 *event)
     }
     if (type == 1) {
         if ((mask & 1) && (FIELD(u32, object, 0x12c) & 1))
-            func_0205940c(gSoundContext, 0x22, 0);
+            Sound_StopEffect(gSoundContext, 0x22, 0);
         FIELD(u32, object, 0x12c) &= ~mask;
         return 2;
     }

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_selection_helpers.c. */
 .extern data_ov025_02202c78
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern func_0209189c
 .extern TitleRandom_NextBounded
 .extern func_02091b98
@@ -44,7 +44,7 @@ L_022008bc:
     ldr r0, [r0, #0x0]
     and r2, r2, #0x7f
     mov r3, #0x20
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     add r0, r4, #0x234
     add r0, r0, #0x400
     mov r1, #0xa

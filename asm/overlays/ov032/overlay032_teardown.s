@@ -5,7 +5,7 @@
 .extern __destroy_arr
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02058eb8
+.extern Sound_SetModalEnvelopeEnabled
 .extern Sound_ReleaseGroup
 .extern GraphicsArchive_ReleaseResourceE4
 .extern AnimationResourceState_Destroy
@@ -28,7 +28,7 @@ func_ov032_021fd7f8:
     ldr r0, [r2, #0x0]
     mov r2, r1
     mov r3, #0x14
-    bl func_02058eb8
+    bl Sound_SetModalEnvelopeEnabled
     ldr r0, L_021fd908
     mov r1, #0x81
     ldr r0, [r0, #0x0]

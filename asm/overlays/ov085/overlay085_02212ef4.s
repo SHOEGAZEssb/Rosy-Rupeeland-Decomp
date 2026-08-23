@@ -8,7 +8,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov085_02212d08
 .extern func_ov085_02213194
 .extern gSoundContext
@@ -52,7 +52,7 @@ func_ov085_02212ef4:
     add r1, r1, #0x33
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02212f8c:
     mov r0, r5
     bl func_ov085_02212d08

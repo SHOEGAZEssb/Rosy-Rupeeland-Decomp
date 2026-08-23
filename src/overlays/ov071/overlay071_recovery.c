@@ -49,7 +49,7 @@ extern void func_0209b494(...);
 extern void func_020b0808(...), func_020b0880(...);
 extern void func_ov071_02211e98(void *);
 extern void func_ov071_0221083c(void *);
-extern void func_020595b0(...), func_ov036_02200b38(...);
+extern void Sound_FadeStreamVolume(...), func_ov036_02200b38(...);
 extern void func_ov023_021fdf70(...), func_ov031_021fdc88(...);
 extern void func_ov042_021fdbc8(...), func_ov042_021fd924(...);
 extern void func_ov042_0220a93c(...);
@@ -609,7 +609,7 @@ void func_ov071_0221083c(void *scene) {
         F(void *, F(void *, scene, 0xec), 0xc), 0x18);
     func_ov036_02200b38(F(void *, owner, 0xc));
     Sound_Play(gSoundContext, 0, 0x2d);
-    func_020595b0(gSoundContext, 0, 0x3c);
+    Sound_FadeStreamVolume(gSoundContext, 0, 0x3c);
   }
   F(s32, F(void *, scene, 0xec), 0x30) += F(s32, scene, 0xb0);
   F(s32, F(void *, scene, 0xec), 0x34) += F(s32, scene, 0xb4);

@@ -14,7 +14,7 @@ void func_02003e38(void *);
 void __destroy_arr(void *, s32, s32, void *);
 void func_02099fb0(void *);
 void Heap_Free(void *);
-void func_02058d28(void *);
+void Sound_StopAllArchiveEffects(void *);
 void func_ov041_021ff6b8(void *);
 void func_ov041_021fd01c(void *);
 void func_ov041_021ff6f8(void *, void *);
@@ -77,7 +77,7 @@ extern "C" void func_ov041_021fdeb4(void *owner)
  */
 extern "C" void func_ov041_021fdfd0(void *owner)
 {
-    func_02058d28(gSoundContext);
+    Sound_StopAllArchiveEffects(gSoundContext);
     FIELD(s32, owner, 0x1f8) = 1;
     func_ov041_021ff6b8(FIELD(void *, owner, 0x10));
     func_ov041_021fdeb4(owner);

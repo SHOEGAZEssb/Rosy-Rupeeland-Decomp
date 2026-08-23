@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_five_operand_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_020593ac
-.extern func_0205943c
+.extern Sound_PlayEffectWithParameters
+.extern Sound_SetEffectParameters
 .extern gSoundContext
 .global func_0201ab60
 func_0201ab60: ; 0x0201ab60
@@ -37,7 +37,7 @@ L_0201abb4:
     mov r3, r4
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     b L_0201ac08
 L_0201abe0:
     str r7, [sp, #0x0]
@@ -49,7 +49,7 @@ L_0201abe0:
     mov r3, r4
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_0205943c
+    bl Sound_SetEffectParameters
 L_0201ac08:
     mov r0, #0x0
     add sp, sp, #0x8

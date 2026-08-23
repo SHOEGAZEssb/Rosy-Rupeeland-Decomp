@@ -19,8 +19,8 @@ typedef struct TransitionPair {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0207f248(void *);
-extern void func_020802f4(void *, s32, s32);
+extern s32 RetailSaveContext_PollOperation(void *);
+extern void RetailSaveContext_BeginRecordDelete(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov025_021ff254(void *, TransitionPair);
@@ -63,7 +63,7 @@ extern "C" s32 func_ov025_02201abc(void *scene)
         switch (choice) {
         case 1:
             func_ov025_02200398(scene, 5, 3);
-            func_020802f4(gRuntimeContext, FIELD(s32, scene, 0x54), 1);
+            RetailSaveContext_BeginRecordDelete(gRuntimeContext, FIELD(s32, scene, 0x54), 1);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
             break;
@@ -77,7 +77,7 @@ extern "C" s32 func_ov025_02201abc(void *scene)
     }
     case 2: {
         func_ov025_02200824(scene, 4);
-        s32 status = func_0207f248(gRuntimeContext);
+        s32 status = RetailSaveContext_PollOperation(gRuntimeContext);
         if (status == 0)
             break;
         if (status == -1) {
@@ -141,13 +141,13 @@ extern "C" s32 func_ov025_02201cfc(void *scene)
                 (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
             func_ov025_022002b0(scene);
             func_ov025_02200398(scene, 5, 3);
-            func_020802f4(gRuntimeContext, FIELD(s32, scene, 0x54), 1);
+            RetailSaveContext_BeginRecordDelete(gRuntimeContext, FIELD(s32, scene, 0x54), 1);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
         break;
     case 2: {
-        s32 status = func_0207f248(gRuntimeContext);
+        s32 status = RetailSaveContext_PollOperation(gRuntimeContext);
         if (status == 0)
             break;
         if (status == -1) {

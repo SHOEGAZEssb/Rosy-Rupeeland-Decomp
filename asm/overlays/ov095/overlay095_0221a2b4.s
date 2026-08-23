@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_021052fc
 .extern func_0201e0ec
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020a291c
 .extern func_020befec
 .extern func_020bf1f8
@@ -33,7 +33,7 @@ func_ov095_0221a2b4:
     mov r3, r8
     sub r1, r1, #0x12
     mov r2, #0x7
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_0221a30c:
     add r0, r8, #0x200
     ldrsh r1, [r0, #0x98]

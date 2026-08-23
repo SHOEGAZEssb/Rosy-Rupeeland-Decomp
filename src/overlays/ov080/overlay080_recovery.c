@@ -62,7 +62,7 @@ extern "C" void Actor_QueryTerrainHeight(void *, s32, s32);
 extern "C" s32 func_02034568(void *, s32, s32, s32);
 extern "C" void func_02034a60(void *, u16, s32);
 extern "C" s32 func_020adcac(const void *, const void *);
-extern "C" void func_0205940c(void *, s32, s32);
+extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
 extern "C" void *TrackedResourceActor_SpawnFromKey(s32, const void *, const void *);
 
@@ -436,7 +436,7 @@ extern "C" s32 func_ov080_02213960(void *actor)
     FIELD(u32, actor, 0x21c) = FIELD(u32, data_ov080_02213e68, 0x54);
     ((Ov80VoidMethod0)vmethod(actor, 0x160))(actor);
     u16 sound = data_020e7318[FIELD(u16, actor, 0x4e)];
-    if (sound != 0xffff) func_0205940c(gSoundContext, sound >> 7, sound & 0x7f);
+    if (sound != 0xffff) Sound_StopEffect(gSoundContext, sound >> 7, sound & 0x7f);
     return 1;
 }
 

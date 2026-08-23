@@ -11,7 +11,7 @@
 .extern data_ov085_022143c8
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedRuntime_AcceptInteractionQuery
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov085_02213bd0
 .extern gSoundContext
 
@@ -114,7 +114,7 @@ func_ov085_02213484:
     mov r3, r5
     add r1, r1, #0x33
     mov r2, #0x2
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_0221368c
 .L_022135fc:
     ldr r0, .L_022136a4

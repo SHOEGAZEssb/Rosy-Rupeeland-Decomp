@@ -7,7 +7,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_StageAreaRequest
 .extern ActorCollection_UnregisterAndDestroyActor
-.extern func_02058d28
+.extern Sound_StopAllArchiveEffects
 .extern Sound_StopAllDirectSequences
 .extern gGameWork
 .extern gSoundContext
@@ -92,7 +92,7 @@ func_ov063_02210414:
     beq .L_02210554
     ldr r0, .L_02210564
     ldr r0, [r0, #0x0]
-    bl func_02058d28
+    bl Sound_StopAllArchiveEffects
     ldr r0, .L_02210564
     mov r1, #0x0
     ldr r0, [r0, #0x0]

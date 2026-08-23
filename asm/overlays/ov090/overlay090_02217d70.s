@@ -45,10 +45,10 @@
 .extern func_0204d308
 .extern Sound_StopAllDirectSequences
 .extern Sound_PlayDirectSequence
-.extern func_020593ac
-.extern func_0205940c
-.extern func_02059484
-.extern func_0205958c
+.extern Sound_PlayEffectWithParameters
+.extern Sound_StopEffect
+.extern Sound_FadeEffectVolume
+.extern Sound_StopStream
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_0209a748
@@ -402,7 +402,7 @@ func_ov090_02217d70:
     ldr r1, .L_02218d18
     mov r2, #0xa
     mov r3, #0x40
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
 .L_02218244:
     add r0, sp, #0x2e8
     bl VecFx32Triple_Destroy
@@ -580,7 +580,7 @@ func_ov090_02217d70:
     ldr r1, .L_02218d18
     mov r2, #0xb
     mov r3, #0x30
-    bl func_02059484
+    bl Sound_FadeEffectVolume
     cmp r6, #0x0
     beq .L_022184f8
     mov r0, r6
@@ -651,7 +651,7 @@ func_ov090_02217d70:
     ldr r0, [r0, #0x0]
     mov r2, #0xb
     mov r3, #0x0
-    bl func_02059484
+    bl Sound_FadeEffectVolume
     mov r0, r4
     mov r1, #0x10
     bl func_ov090_0221b7f8
@@ -731,7 +731,7 @@ func_ov090_02217d70:
     ldr r1, .L_02218d18
     ldr r0, [r0, #0x0]
     mov r2, #0xb
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r4, #0x20c
     add r1, r9, #0x18
     bl VecFx32Object_Assign
@@ -2349,7 +2349,7 @@ func_ov090_02217d70:
     strne r0, [r6, #0x268]
     ldr r0, .L_0221a3ac
     ldr r0, [r0, #0x0]
-    bl func_0205958c
+    bl Sound_StopStream
     ldr r0, .L_0221a3ac
     mov r1, #0x56
     ldr r0, [r0, #0x0]

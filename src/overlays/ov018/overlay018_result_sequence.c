@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
-extern s32 func_02059344(void *, s32);
+extern s32 Sound_IsDirectSequencePlaying(void *, s32);
 extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -169,7 +169,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
         }
         break;
     case 5:
-        if (!func_02059344(gSoundContext, 0x8f)) {
+        if (!Sound_IsDirectSequencePlaying(gSoundContext, 0x8f)) {
             FIELD(u16, FIELD(void *, state, 0xd4), 0x24) &= ~4;
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;

@@ -34,7 +34,7 @@ extern void func_ov039_021fd93c(void *scene, s32 targetX, s32 targetY,
                                 s32 angleOffset);
 extern void GraphicsSpriteState_SetAnimationIndex(void *renderObject, u8 orientation);
 extern void Sound_Play(void *context, s32 soundId, s32 parameter);
-extern void func_0205940c(void *context, s32 soundId, s32 parameter);
+extern void Sound_StopEffect(void *context, s32 soundId, s32 parameter);
 extern void VecFx32Object_InitCopy(Overlay039Vector *destination, void *source);
 extern void VecFx32Object_Init(void *object);
 extern void VecFx32Object_Assign(void *destination, const void *source);
@@ -197,7 +197,7 @@ static void updateProjectilePattern(void *scene, s32 enableSpecial)
     if (patternTimer == 0) {
         timer = 0;
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object98, 0x0c), 3);
-        func_0205940c(gSoundContext, 0x63, 7);
+        Sound_StopEffect(gSoundContext, 0x63, 7);
         if (pattern == 10) {
             state = 4;
             timer = 0;
@@ -241,7 +241,7 @@ static void updateEffectSequence(void *scene)
         func_ov069_0220fe3c((u8 *)scene + 0x118, (u8 *)anchor + 0x1c,
                             (u8 *)FIELD(void *, ownerChild, 0x48) + 0x2c);
         counter = 0;
-        func_0205940c(gSoundContext, 0x63, 8);
+        Sound_StopEffect(gSoundContext, 0x63, 8);
         state++;
         break;
     }

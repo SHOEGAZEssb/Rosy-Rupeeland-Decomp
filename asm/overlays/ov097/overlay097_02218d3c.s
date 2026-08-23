@@ -10,7 +10,7 @@
 .extern func_020349b8
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov097_022177e0
@@ -264,7 +264,7 @@ func_ov097_02218d3c:
     mov r3, r5
     sub r1, r1, #0x13
     mov r2, #0xd
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_022190e0:
     add r0, r5, #0x200
     ldrh r1, [r0, #0xbe]

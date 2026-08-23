@@ -3,7 +3,7 @@
 .extern ActorContactState_AddContact
 .extern ActorDerivedRuntime_HandlePairActive
 .extern func_0204cfa4
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern func_020adc90
 .extern gSoundContext
 
@@ -78,7 +78,7 @@ func_ov087_02218110:
     ldr r0, [r0, #0x0]
     movle r3, #0x7f
     mov r1, #0x67
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     mov r0, #0xa
     str r0, [r7, #0x22c]
 .L_02218228:

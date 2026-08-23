@@ -6,7 +6,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .extern SignedAbsoluteValueVariant
@@ -59,7 +59,7 @@ ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
     ldr r0, [r0, #0x0]
     mov r1, #0x1c4
     mov r2, #0x7
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     ldr r1, .L_0203d7f8
     ldr r3, .L_0203d7fc
     mov r0, #0x14

@@ -40,7 +40,7 @@ extern "C" void Actor_UpdateAnimationState(void*); extern "C" void Actor_UpdateT
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshTerrainHeight(void*);
 extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void func_02031758(void*,void*,s32);
 extern "C" void func_02032228(void*,s32,s32,s32); extern "C" void func_02032370(void*,void*,s32);
-extern "C" void func_02033b38(void); extern "C" void func_020593dc(void*,s32,s32,void*,s32,s32);
+extern "C" void func_02033b38(void); extern "C" void Sound_PlayOwnedEffect(void*,s32,s32,void*,s32,s32);
 extern "C" void func_02071ee0(void*,const void*,s32,s32,s32); extern "C" s32 func_0209189c(void*,s32,s32);
 extern "C" s32 func_0204cfa4(s32,s32); extern "C" s32 func_020adc90(s32,s32);
 extern "C" s32 func_020adcac(const void*,const void*); extern "C" void func_020adfbc(const void*,const void*,void*);
@@ -94,7 +94,7 @@ extern "C" void func_ov085_02212d08(void*a)
  if((u16)(F(s16,a,0xd6)-5)<2){F(s16,a,0xd6)=1;((M0)vm(a,0x5c))(a);}((M0)vm(a,0x20))(a);
 }
 /* Update gameplay and select marker animation/resources. */
-extern "C" void func_ov085_02212ef4(void*a,s32,s32,s32){F(u32,a,0xd0)&=~0x10u;F(u32,a,0x14)&=~0x40u;if(!(F(u32,a,0x14)&0x10000000)&&F(s32,a,0x24c)>0&&!--F(s32,a,0x24c)){F(s32,a,0x44)=0x2666;F(s32,a,0x8c)=F(s32,a,0x3c);F(s32,a,0x90)=F(s32,a,0x40);F(s32,a,0x3c)=F(s32,a,0x40)=0;func_020593dc(gSoundContext,0x133,1,a,0,0x100);}func_ov085_02212d08(a);bool blocked=(F(u32,a,0x10)&0x1000000)||ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)||(F(u32,a,0x14)&0x10000000);s32 n=-1;if(!F(s32,a,0x114)){if(state_is(a,0x20,data_ov085_02214348))n=2;else if(!blocked&&(state_is(a,0,data_ov085_02214328)||state_is(a,0xa8,data_ov085_022143d0)))n=0xd;else if(!blocked&&state_is(a,8,data_ov085_02214330)&&F(u8,F(void*,a,0x54),0x38)==0x1a&&F(s32,a,0x22c)<150)n=4;}if(n<0)func_ov085_02213194((u8*)a+0x23c,0);else{if(F(s16,a,0x24a))Type7MarkerPresentation_ReloadResources((u8*)a+0x23c);Type7MarkerPresentation_SelectAnimation((u8*)a+0x23c,n);func_ov085_02213194((u8*)a+0x23c,1);}((M0)F(void*,F(void*,a,0x23c),8))((u8*)a+0x23c);}
+extern "C" void func_ov085_02212ef4(void*a,s32,s32,s32){F(u32,a,0xd0)&=~0x10u;F(u32,a,0x14)&=~0x40u;if(!(F(u32,a,0x14)&0x10000000)&&F(s32,a,0x24c)>0&&!--F(s32,a,0x24c)){F(s32,a,0x44)=0x2666;F(s32,a,0x8c)=F(s32,a,0x3c);F(s32,a,0x90)=F(s32,a,0x40);F(s32,a,0x3c)=F(s32,a,0x40)=0;Sound_PlayOwnedEffect(gSoundContext,0x133,1,a,0,0x100);}func_ov085_02212d08(a);bool blocked=(F(u32,a,0x10)&0x1000000)||ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)||(F(u32,a,0x14)&0x10000000);s32 n=-1;if(!F(s32,a,0x114)){if(state_is(a,0x20,data_ov085_02214348))n=2;else if(!blocked&&(state_is(a,0,data_ov085_02214328)||state_is(a,0xa8,data_ov085_022143d0)))n=0xd;else if(!blocked&&state_is(a,8,data_ov085_02214330)&&F(u8,F(void*,a,0x54),0x38)==0x1a&&F(s32,a,0x22c)<150)n=4;}if(n<0)func_ov085_02213194((u8*)a+0x23c,0);else{if(F(s16,a,0x24a))Type7MarkerPresentation_ReloadResources((u8*)a+0x23c);Type7MarkerPresentation_SelectAnimation((u8*)a+0x23c,n);func_ov085_02213194((u8*)a+0x23c,1);}((M0)F(void*,F(void*,a,0x23c),8))((u8*)a+0x23c);}
 /* Toggle marker visibility through its sprite's bit 2. */
 extern "C" void func_ov085_02213194(void*m,s32 v){void*s=F(void*,m,4);if(v)F(u16,s,0x24)&=~4u;else F(u16,s,0x24)|=4;}
 /* Copy position to the local vector and clear both impulses. */
@@ -106,7 +106,7 @@ extern "C" void func_ov085_02213214(void*a,void*o,s32 q){if(!(F(u32,a,0x10)&0x10
 /* Reject the optional interaction query. */
 extern "C" s32 func_ov085_0221347c(void){return 0;}
 /* Accept an interaction and schedule its marker/sound response. */
-extern "C" void func_ov085_02213484(void*a,void*q,s32,s32){if(!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)&&!(F(u32,a,0x14)&0x10000000)){bool impact=state_is(a,0x48,data_ov085_02214370)||state_is(a,0xa0,data_ov085_022143c8);if(impact){if(!(F(u32,a,0xd0)&0x10)&&F(s32,a,0x24)==F(s32,a,0x1dc)&&!F(s32,a,0x24c)){F(s32,a,0x24c)=4;F(u32,a,0xd0)|=0x1000;}}else if(state_is(a,0x98,data_ov085_022143c0)){set_pair(a,data_ov085_022143b8,200);F(s32,a,0x250)=0;func_020593dc(gSoundContext,0x133,2,a,0,0x100);}else if(!state_is(a,0x88,data_ov085_022143b0)&&!state_is(a,0x30,data_ov085_02214358))set_pair(a,data_ov085_022143a0,60);}ActorDerivedRuntime_AcceptInteractionQuery(a,q);}
+extern "C" void func_ov085_02213484(void*a,void*q,s32,s32){if(!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)&&!(F(u32,a,0x14)&0x10000000)){bool impact=state_is(a,0x48,data_ov085_02214370)||state_is(a,0xa0,data_ov085_022143c8);if(impact){if(!(F(u32,a,0xd0)&0x10)&&F(s32,a,0x24)==F(s32,a,0x1dc)&&!F(s32,a,0x24c)){F(s32,a,0x24c)=4;F(u32,a,0xd0)|=0x1000;}}else if(state_is(a,0x98,data_ov085_022143c0)){set_pair(a,data_ov085_022143b8,200);F(s32,a,0x250)=0;Sound_PlayOwnedEffect(gSoundContext,0x133,2,a,0,0x100);}else if(!state_is(a,0x88,data_ov085_022143b0)&&!state_is(a,0x30,data_ov085_02214358))set_pair(a,data_ov085_022143a0,60);}ActorDerivedRuntime_AcceptInteractionQuery(a,q);}
 
 /* Render the marker 0x18000 fixed-point units above the actor. */
 extern "C" void func_ov085_022136c8(void*c,void*a,s32 q,s32){func_02031758(c,a,q);if(!(F(u32,a,0x14)&0x10000000)){u8 p[16];VecFx32Object_InitCopy(p,(u8*)a+0x18);F(s32,p,8)-=0x18000;((V3)F(void*,F(void*,a,0x23c),0xc))((u8*)a+0x23c,q,p,0);VecFx32Object_Destroy(p);}else func_ov085_02213194((u8*)a+0x23c,0);}
@@ -162,7 +162,7 @@ extern "C" void func_ov085_02214154(void*out,const void*l,const void*r){VecFx32O
 /* Abandon pursuit and return to the home descriptor. */
 extern "C" void func_ov085_0221418c(void*a){F(void*,a,0x210)=0;((V1)vm(a,0xc8))(a,(u8*)a+0x214);set_pair(a,data_ov085_02214360,300);}
 /* Select phase eight near terrain and emit the arrival sound. */
-extern "C" s32 func_ov085_022141c8(void*a){if(!func_ov085_02213bf8(a)){F(s16,a,0xd6)=F(s32,a,0x24)<=F(s32,a,0x1dc)?8:7;void*s=F(void*,a,0x54);if(F(u8,s,0x38)==0x37&&!F(s32,s,0x20))func_020593dc(gSoundContext,0x133,0,a,0,0x100);}return 0;}
+extern "C" s32 func_ov085_022141c8(void*a){if(!func_ov085_02213bf8(a)){F(s16,a,0xd6)=F(s32,a,0x24)<=F(s32,a,0x1dc)?8:7;void*s=F(void*,a,0x54);if(F(u8,s,0x38)==0x37&&!F(s32,s,0x20))Sound_PlayOwnedEffect(gSoundContext,0x133,0,a,0,0x100);}return 0;}
 /* Report whether accumulated motion exceeds 0x800 units. */
 extern "C" bool func_ov085_02214248(void*a){return VecFx32Object_GetMagnitude((u8*)a+0x98)+VecFx32Object_GetMagnitude((u8*)a+0x38)+VecFx32Object_GetMagnitude((u8*)a+0x88)>0x800;}
 /* Return the fixed 64-unit interaction radius. */

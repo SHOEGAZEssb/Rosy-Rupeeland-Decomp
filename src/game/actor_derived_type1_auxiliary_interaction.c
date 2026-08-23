@@ -91,7 +91,7 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
 extern void AuxiliaryCore_UpdateMotion(void *core, const void *position);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern void *gSoundContext;
-extern void func_020593ac(void *context, s32 archive, s32 member, s32 volume,
+extern void Sound_PlayEffectWithParameters(void *context, s32 archive, s32 member, s32 volume,
                           s32 pan, s32 flags);
 extern s32 VecFx32_HorizontalMagnitude(const void *vector);
 extern s32 func_020ae024(s32 y, s32 x);
@@ -2524,7 +2524,7 @@ s32 AuxiliaryInteraction_IsCoreHidden(void *object)
 void AuxiliaryInteraction_PlayTouchSound(void *object, s32 centered)
 {
     (void)object;
-    func_020593ac(gSoundContext, 0, 0x60, centered ? 0x7f : 0x50, 0, 0);
+    Sound_PlayEffectWithParameters(gSoundContext, 0, 0x60, centered ? 0x7f : 0x50, 0, 0);
 }
 
 /* Select the stronger touch-response presentation band. */
@@ -2559,7 +2559,7 @@ void AuxiliaryInteraction_ProcessTouchSamples(void *object, const void *touchObj
     if (func_020ada8c((u32)*(s16 *)(self + 0xac), 5) == 0) {
         s32 quotient;
         s32 amount;
-        func_020593ac(gSoundContext, 0, 0x60, 0x7f, 0, 0);
+        Sound_PlayEffectWithParameters(gSoundContext, 0, 0x60, 0x7f, 0, 0);
         AuxiliaryInteraction_ApplyStrongResponse(self);
         EffectManager_SubmitPointEffect(effectManager, 1, touch[1], touch[2], 8);
         if (*(s16 *)(self + 0xac) >= 40)
@@ -2627,7 +2627,7 @@ void AuxiliaryInteraction_PlaySpatialSound(void *object, s32 sound)
     magnitude = VecFx32Object_GetMagnitude(delta) >> 12;
     if (magnitude <= 0x100)
         volume = 0x78 - func_020adae4(magnitude * 0x78, 0x100);
-    func_020593ac(gSoundContext, sound >> 7, sound & 0x7f, volume, pan, 0);
+    Sound_PlayEffectWithParameters(gSoundContext, sound >> 7, sound & 0x7f, volume, pan, 0);
 }
 
 /*

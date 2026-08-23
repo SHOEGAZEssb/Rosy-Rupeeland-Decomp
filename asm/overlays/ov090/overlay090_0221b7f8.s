@@ -3,7 +3,7 @@
 ; src/overlays/ov090/overlay090_title_sound_fade.c.
 .extern Sound_PlayDirectSequence
 .extern Sound_SetDirectSequenceVariable
-.extern func_02059344
+.extern Sound_IsDirectSequencePlaying
 .extern gSoundContext
 
 .global func_ov090_0221b7f8
@@ -14,13 +14,13 @@ func_ov090_0221b7f8:
     ldr r0, [r2, #0x0]
     mov r5, r1
     mov r1, #0x54
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     bne .L_0221b848
     ldr r0, .L_0221b8c0
     mov r1, #0x55
     ldr r0, [r0, #0x0]
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     ldmneia sp!, {r3, r4, r5, pc}
     ldr r0, .L_0221b8c0

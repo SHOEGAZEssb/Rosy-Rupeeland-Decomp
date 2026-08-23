@@ -7,7 +7,7 @@
     .extern VecFx32Object_InitCopy
     .extern func_ov049_0220bbdc
     .extern VecFx32Object_Destroy
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern func_020ae024
     .extern func_ov039_0220608c
     .extern VecFx32Object_Init
@@ -117,7 +117,7 @@ L_02206c28:
     mov r1, #0x63
     ldr r0, [r0, #0x0]
     mov r2, #0x3
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, L_02207120
     mov r1, #0x63
     ldr r0, [r0, #0x0]

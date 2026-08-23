@@ -29,7 +29,7 @@ extern void func_ov032_021fd7c0(void *);
 extern void Overlay032Child_Destroy(void *);
 extern s32 func_020adc90(s32, s32);
 extern void Sound_LoadGroup(void *, s32);
-extern void func_02058eb8(void *, s32, s32, s32, s32);
+extern void Sound_SetModalEnvelopeEnabled(void *, s32, s32, s32, s32);
 extern void *GamePhaseProgress_GetOrCreateGlobal(void);
 extern s32 GamePhaseProgress_GetCurrentAdjustedThreshold(void *);
 extern u32 genrand_int32(void);
@@ -143,7 +143,7 @@ extern "C" void *func_ov032_021fce20(void *object)
     FIELD(s32, object, 0xc30) = func_020adc90(0xf000, 0x28000);
     FIELD(s32, object, 0xc38) = func_020adc90(0x100000, 0x3c000);
     Sound_LoadGroup(gSoundContext, 0x81);
-    func_02058eb8(gSoundContext, 1, 0, 0x14, 0x1e);
+    Sound_SetModalEnvelopeEnabled(gSoundContext, 1, 0, 0x14, 0x1e);
     FIELD(s32, object, 0xc1c) = FIELD(s16, gGameWork, 0x1ce);
     FIELD(s32, object, 0xc20) = GamePhaseProgress_GetCurrentAdjustedThreshold(GamePhaseProgress_GetOrCreateGlobal());
     FIELD(s32, object, 0xc24) = FIELD(s32, object, 0xc1c);

@@ -10,7 +10,7 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern GamePhaseProgress_GetCurrentAdjustedThreshold
 .extern GamePhaseProgress_GetOrCreateGlobal
-.extern func_02058eb8
+.extern Sound_SetModalEnvelopeEnabled
 .extern Sound_LoadGroup
 .extern GraphicsArchive_AcquireVfdResource
 .extern AnimationResourceState_InitEmbedded
@@ -157,7 +157,7 @@ L_021fcf84:
     ldr r0, [r0, #0x0]
     mov r2, #0x0
     mov r3, #0x14
-    bl func_02058eb8
+    bl Sound_SetModalEnvelopeEnabled
     ldr r0, L_021fd76c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x100

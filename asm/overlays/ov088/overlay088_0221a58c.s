@@ -6,7 +6,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02034a60
 .extern Actor_ReplaceAttachmentSlotResource
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern func_ov088_02218280
 .extern func_ov088_0221a930
 .extern gGameWork
@@ -80,13 +80,13 @@ func_ov088_0221a58c:
     mov r1, r2, asr #0x7
     ldr r0, [r0, #0x0]
     and r2, r2, #0x7f
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_0221a694:
     ldr r0, .L_0221a7bc
     ldr r1, .L_0221a7c0
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r1, .L_0221a7c4
     mov r0, r10
     mov r2, #0x0

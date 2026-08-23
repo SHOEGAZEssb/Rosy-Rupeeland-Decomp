@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern ActorExtendedType2_ResetVerticalMotionCallbacks
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov075_022152ac
 .extern gSoundContext
 
@@ -29,7 +29,7 @@ func_ov075_02215c90:
     ldr r0, [r0, #0x0]
     mov r1, #0x1e8
     mov r2, #0x2
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 .L_02215cf4: .word gSoundContext

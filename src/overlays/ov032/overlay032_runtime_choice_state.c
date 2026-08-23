@@ -34,10 +34,10 @@ extern s32 GameWork_TestFlag(...);
 extern void RetailPhaseDatabase_UnlockById(...);
 extern void RetailSelectionHistory_InsertUniqueId(...);
 extern void func_ov032_021fe0e8(void *);
-extern void func_0205958c(...);
+extern void Sound_StopStream(...);
 extern void func_020594ec(...);
-extern void func_0207f80c(...);
-extern s32 func_0207f248(void *);
+extern void RetailSaveContext_BeginRecordOperation(...);
+extern s32 RetailSaveContext_PollOperation(void *);
 extern s32 Overlay032SpriteWrapper_HitTest(...);
 extern void func_ov032_021fe2bc(void *, u32);
 extern void Sound_Play(...);
@@ -136,12 +136,12 @@ extern "C" s32 func_ov032_02200618(void *scene)
         }
         set_flag4(scene, 0x2d4, 0);
         func_ov032_021fe0e8((u8 *)scene + 0x2d4);
-        func_0205958c(gSoundContext, 0);
-        func_0207f80c(gRuntimeContext, -1, 0, 1);
+        Sound_StopStream(gSoundContext, 0);
+        RetailSaveContext_BeginRecordOperation(gRuntimeContext, -1, 0, 1);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 3: {
-        s32 result = func_0207f248(gRuntimeContext);
+        s32 result = RetailSaveContext_PollOperation(gRuntimeContext);
         if (result == 1) {
             FIELD(s32, gGameWork, 0x44) = 0;
             FIELD(s32, gGameWork, 0x48) = 0;

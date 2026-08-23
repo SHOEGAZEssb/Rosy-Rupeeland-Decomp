@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
-extern void func_0205940c(void *context, s32 channel, s32 sound);
+extern void Sound_StopEffect(void *context, s32 channel, s32 sound);
 extern void ActorDerivedType1_ApplyResourceIndex(void *actor, s32 value);
 #ifdef __cplusplus
 }
@@ -21,7 +21,7 @@ extern void ActorDerivedType1_ApplyResourceIndex(void *actor, s32 value);
  * optionally allocate a 0x14-byte presentation from descriptor halfwords
  * +0x14/+0x16/+0x18 and actor position/attachment, then dispatch actor sound
  * +0x1a when present. For every type, dispatch packed sound +0x2e through
- * func_0205940c, clear resource variant state, destroy +0x274 by virtual +0x04,
+ * Sound_StopEffect, clear resource variant state, destroy +0x274 by virtual +0x04,
  * and clear +0x274/+0x27c plus +0x230 bits 0xf800. Notify optional +0x278 by
  * virtual +0xd0 using actor byte +0xd4 and constants 0x80/0x1000, then clear
  * +0x278, halfwords +0x264/+0x280/+0x282, byte +0x26b, and call actor virtual
@@ -53,7 +53,7 @@ void ActorDerivedType1_TeardownActiveRecord(void *self)
     }
     if (*(u16 *)(descriptor + 0x2e) != 0) {
         s32 sound = *(u16 *)(descriptor + 0x2e);
-        func_0205940c(gSoundContext, sound >> 7, sound & 0x7f);
+        Sound_StopEffect(gSoundContext, sound >> 7, sound & 0x7f);
     }
     ActorDerivedType1_ApplyResourceIndex(actor, 0);
     object = *(void **)(actor + 0x274);

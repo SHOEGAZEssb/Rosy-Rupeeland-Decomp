@@ -24,9 +24,9 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
 .extern func_0204d308
-.extern func_020593ac
-.extern func_02059484
-.extern func_020594a4
+.extern Sound_PlayEffectWithParameters
+.extern Sound_FadeEffectVolume
+.extern Sound_IsEffectPlaying
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a28e0
 .extern func_020a2960
@@ -163,7 +163,7 @@ func_ov093_02217c50:
     ldr r0, .L_022184dc
     ldr r1, .L_022184e0
     ldr r0, [r0, #0x0]
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     bne .L_02217e60
     mov r3, #0x0
@@ -173,7 +173,7 @@ func_ov093_02217c50:
     ldr r0, [r0, #0x0]
     ldr r1, .L_022184e0
     mov r2, #0x8
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     mov r1, #0x78
     ldr r0, .L_022184dc
     str r1, [sp, #0x0]
@@ -181,7 +181,7 @@ func_ov093_02217c50:
     add r1, r1, #0xb5
     mov r2, #0x8
     mov r3, #0x64
-    bl func_02059484
+    bl Sound_FadeEffectVolume
 .L_02217e60:
     ldr r2, [r4, #0x210]
     ldrb r7, [r2, #0x38]
@@ -443,7 +443,7 @@ func_ov093_02217c50:
     ldr r1, .L_022184e0
     ldr r0, [r0, #0x0]
     mov r2, #0xc
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     mov r0, #0x77
     str r0, [sp, #0x0]
     add r1, r0, #0xb6
@@ -451,7 +451,7 @@ func_ov093_02217c50:
     mov r2, #0xc
     ldr r0, [r0, #0x0]
     mov r3, #0x64
-    bl func_02059484
+    bl Sound_FadeEffectVolume
     b .L_02218360
 .L_0221826c:
     add r1, r4, #0x100
@@ -588,7 +588,7 @@ func_ov093_02217c50:
     ldr r1, .L_022184e0
     mov r2, #0xb
     mov r3, #0x64
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     b .L_0221848c
 .L_02218478:
     ldrsh r0, [r1, #0x30]

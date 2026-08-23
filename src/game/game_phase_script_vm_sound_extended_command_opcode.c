@@ -6,14 +6,14 @@
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern void func_020593dc(void *context, s32 soundId, s32 variant,
+extern void Sound_PlayOwnedEffect(void *context, s32 soundId, s32 variant,
                          void *actor, s32 first, s32 second);
-extern void func_02059484(void *context, s32 soundId, s32 variant,
+extern void Sound_FadeEffectVolume(void *context, s32 soundId, s32 variant,
                          s32 first, s32 second);
 extern void Sound_FadeDirectSequence(void *context, u16 first, u16 second, u16 third);
-extern void func_02059200(void *context, s32 first, s32 second, s32 third);
-extern u16 func_0205936c(void *context, u16 index);
-extern void func_020592fc(void *context, u16 index, u16 mask);
+extern void Sound_ConfigureAuxiliaryManagers(void *context, s32 first, s32 second, s32 third);
+extern u16 Sound_GetDirectSequenceTrackMask(void *context, u16 index);
+extern void Sound_SetDirectSequenceTrackMask(void *context, u16 index, u16 mask);
 #ifdef __cplusplus
 }
 #endif
@@ -37,27 +37,27 @@ s32 func_0201aa14(GamePhaseActorScriptVm *self)
     switch (command) {
     case 26:
         packed = (u16)first;
-        func_020593dc(gSoundContext, packed >> 7, packed & 0x7f,
+        Sound_PlayOwnedEffect(gSoundContext, packed >> 7, packed & 0x7f,
                       self->actor, second, third);
         break;
     case 27:
         packed = (u16)first;
-        func_02059484(gSoundContext, packed >> 7, packed & 0x7f, second, third);
+        Sound_FadeEffectVolume(gSoundContext, packed >> 7, packed & 0x7f, second, third);
         break;
     case 28:
         Sound_FadeDirectSequence(gSoundContext, (u16)first, (u16)second, (u16)third);
         break;
     case 29:
-        func_02059200(gSoundContext, first, second, third);
+        Sound_ConfigureAuxiliaryManagers(gSoundContext, first, second, third);
         break;
     case 33:
-        mask = func_0205936c(gSoundContext, (u16)first);
+        mask = Sound_GetDirectSequenceTrackMask(gSoundContext, (u16)first);
         if (third != 0) {
             mask |= (u16)(1 << second);
         } else {
             mask &= (u16)~(1 << second);
         }
-        func_020592fc(gSoundContext, (u16)first, mask);
+        Sound_SetDirectSequenceTrackMask(gSoundContext, (u16)first, mask);
         break;
     }
     return 0;

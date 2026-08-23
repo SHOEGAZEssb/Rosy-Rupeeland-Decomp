@@ -16,9 +16,9 @@
 .extern Actor_UpdateAnimationState
 .extern Actor_QueryTerrainCell
 .extern ActorDerivedRuntime_UpdateFrame
-.extern func_020593dc
-.extern func_0205940c
-.extern func_020594a4
+.extern Sound_PlayOwnedEffect
+.extern Sound_StopEffect
+.extern Sound_IsEffectPlaying
 .extern func_020befec
 .extern func_ov059_0220fd20
 .extern func_ov075_02214770
@@ -117,7 +117,7 @@ func_ov075_022148d0:
     ldr r0, [r0, #0x0]
     mov r3, r5
     mov r2, #0x78
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02214d30
 .L_02214a24:
     mov r1, #0x0
@@ -162,13 +162,13 @@ func_ov075_022148d0:
     ldr r0, .L_02214d68
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0205940c
+    bl Sound_StopEffect
     b .L_02214cf8
 .L_02214acc:
     ldr r0, .L_02214d68
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     bne .L_02214b08
     mov r1, #0x0
@@ -179,7 +179,7 @@ func_ov075_022148d0:
     ldr r0, [r0, #0x0]
     mov r3, r5
     mov r2, #0x78
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02214b08:
     ldr r1, [r5, #0x224]
     ldr r0, .L_02214d70
@@ -239,7 +239,7 @@ func_ov075_022148d0:
     orr r3, r3, #0x10
     strh r3, [r4, #0x24]
     ldr r0, [r0, #0x0]
-    bl func_0205940c
+    bl Sound_StopEffect
     bl OverlayManager_GetGlobal
     ldr r2, .L_02214d78
     mov r1, #0x2
@@ -325,7 +325,7 @@ func_ov075_022148d0:
     strh r1, [r5, #0xd6]
     ldr r0, [r0, #0x0]
     mov r2, #0x78
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_02214d30:
     mov r0, r5
     ldr r1, [r0, #0x0]

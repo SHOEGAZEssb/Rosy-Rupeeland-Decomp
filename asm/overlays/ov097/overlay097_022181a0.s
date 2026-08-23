@@ -19,7 +19,7 @@
 .extern ActorExtendedType2_GetDescriptorValue25
 .extern func_0204cfa4
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020adc90
 .extern func_020befec
 .extern func_ov078_02213a74
@@ -298,7 +298,7 @@ func_ov097_022181a0:
     mov r1, #0x61
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_022188c0
 .L_022185ac:
     ldrh r0, [r0, #0x9c]

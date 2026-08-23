@@ -3,21 +3,21 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_SetResult
 .extern Sound_Play
-.extern func_0205940c
-.extern func_020593dc
-.extern func_020594a4
+.extern Sound_StopEffect
+.extern Sound_PlayOwnedEffect
+.extern Sound_IsEffectPlaying
 .extern Sound_StopAllDirectSequences
-.extern func_02059344
+.extern Sound_IsDirectSequencePlaying
 .extern func_020594ec
-.extern func_0205958c
+.extern Sound_StopStream
 .extern Sound_LoadGroup
 .extern Sound_ReleaseGroup
 .extern Sound_SetCaptureEnabled
-.extern func_02058ffc
-.extern func_02059068
-.extern func_02059104
-.extern func_02059260
-.extern func_02059248
+.extern Sound_SetCaptureRoute0Enabled
+.extern Sound_SetCaptureRoute1Enabled
+.extern Sound_SetDirectCaptureRoutesEnabled
+.extern SoundPhaseDatabaseManager_Update
+.extern SoundPhaseManager_RequestAlternateTransition
 .extern gSoundContext
 .global func_0201a614
 func_0201a614: ; 0x0201a614
@@ -83,7 +83,7 @@ L_0201a6e8:
     ldr r0, [r1, #0x0]
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_0205940c
+    bl Sound_StopEffect
     b L_0201a928
 L_0201a708:
     mov r0, #0x0
@@ -97,7 +97,7 @@ L_0201a708:
     ldr r3, [r5, #0x84]
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b L_0201a928
 L_0201a73c:
     ldr r1, L_0201a934
@@ -106,7 +106,7 @@ L_0201a73c:
     ldr r0, [r1, #0x0]
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_SetResult
@@ -122,7 +122,7 @@ L_0201a77c:
     mov r1, r4, lsl #0x10
     ldr r0, [r0, #0x0]
     mov r1, r1, lsr #0x10
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     mov r1, r0
     mov r0, r5
     bl GamePhaseScriptVm_SetResult
@@ -138,7 +138,7 @@ L_0201a7b8:
     ldr r0, L_0201a934
     mov r1, r4
     ldr r0, [r0, #0x0]
-    bl func_0205958c
+    bl Sound_StopStream
     b L_0201a928
 L_0201a7cc:
     ldr r0, L_0201a934
@@ -174,13 +174,13 @@ L_0201a824:
     ldr r0, L_0201a934
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02058ffc
+    bl Sound_SetCaptureRoute0Enabled
     b L_0201a928
 L_0201a848:
     ldr r0, L_0201a934
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02058ffc
+    bl Sound_SetCaptureRoute0Enabled
     b L_0201a928
 L_0201a85c:
     cmp r4, #0x1
@@ -190,13 +190,13 @@ L_0201a85c:
     ldr r0, L_0201a934
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02059068
+    bl Sound_SetCaptureRoute1Enabled
     b L_0201a928
 L_0201a880:
     ldr r0, L_0201a934
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02059068
+    bl Sound_SetCaptureRoute1Enabled
     b L_0201a928
 L_0201a894:
     cmp r4, #0x1
@@ -206,13 +206,13 @@ L_0201a894:
     ldr r0, L_0201a934
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02059104
+    bl Sound_SetDirectCaptureRoutesEnabled
     b L_0201a928
 L_0201a8b8:
     ldr r0, L_0201a934
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02059104
+    bl Sound_SetDirectCaptureRoutesEnabled
     b L_0201a928
 L_0201a8cc:
     cmp r4, #0x1
@@ -220,13 +220,13 @@ L_0201a8cc:
     ldr r0, L_0201a934
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02059260
+    bl SoundPhaseDatabaseManager_Update
     b L_0201a928
 L_0201a8e8:
     ldr r0, L_0201a934
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02059260
+    bl SoundPhaseDatabaseManager_Update
     b L_0201a928
 L_0201a8fc:
     cmp r4, #0x1
@@ -234,13 +234,13 @@ L_0201a8fc:
     ldr r0, L_0201a934
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_02059248
+    bl SoundPhaseManager_RequestAlternateTransition
     b L_0201a928
 L_0201a918:
     ldr r0, L_0201a934
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_02059248
+    bl SoundPhaseManager_RequestAlternateTransition
 L_0201a928:
     mov r0, #0x0
     add sp, sp, #0x8

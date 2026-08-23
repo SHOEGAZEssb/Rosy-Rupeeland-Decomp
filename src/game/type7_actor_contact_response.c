@@ -40,7 +40,7 @@ extern void Type7Actor_SetMotionTargetWithTimer(void *actor, const void *transfo
 extern s32 ActorDerivedType1_IsSpecialRecordActive(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
 extern void Type7Actor_PlayStateSound(void *actor, s32 mode);
-extern void func_020593dc(void *soundContext, s32 group, s32 sound,
+extern void Sound_PlayOwnedEffect(void *soundContext, s32 group, s32 sound,
                           void *actor, s32 extra, s32 volume);
 extern s32 ActorContactState_AddContact(void *actor, void *other, s32 context);
 #ifdef __cplusplus
@@ -192,7 +192,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
             && (*(s32 (**)(void *))(*(u8 **)other + 0x68))(other) != 0
             && (u16)(*(s16 *)(actor + 0xd6) - 1) <= 1) {
             u16 encoded = *(u16 *)(actor + 0x252);
-            func_020593dc(gSoundContext, encoded >> 7, encoded & 0x7f,
+            Sound_PlayOwnedEffect(gSoundContext, encoded >> 7, encoded & 0x7f,
                           actor, 0, 0x100);
             *(u16 *)(actor + 0x254) = 10;
         }

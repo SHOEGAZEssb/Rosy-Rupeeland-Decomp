@@ -106,16 +106,16 @@ EXT(func_0201f864);
 EXT(func_02022cb0);
 EXT(func_02033b38);
 EXT(func_02032a64);
-EXT(func_02033f44);
+EXT(Actor_GetCachedTerrainHeight);
 EXT(func_020349b8);
 EXT(func_0203e494);
 EXT(func_020405c8);
 EXT(func_020050a4);
-EXT(func_020435f4);
+EXT(ActorExtendedType2_GetDescriptorValue2A);
 EXT(func_0204368c);
-EXT(func_020593dc);
-EXT(func_0205940c);
-EXT(func_020594a4);
+EXT(Sound_PlayOwnedEffect);
+EXT(Sound_StopEffect);
+EXT(Sound_IsEffectPlaying);
 EXT(func_0204cfa4);
 EXT(func_0204cff4);
 EXT(func_02071ee0);
@@ -229,7 +229,7 @@ extern "C" void func_ov075_02212c90(void *actor)
         void *candidate = F(void *, collection, i * 4);
         if (candidate != 0 && F(s8, candidate, 0x4d) == 2 &&
             F(s8, candidate, 0x27e) == 15 &&
-            F(s16, candidate, 0x2a8) < func_020435f4(candidate))
+            F(s16, candidate, 0x2a8) < ActorExtendedType2_GetDescriptorValue2A(candidate))
         {
             func_ov075_02213ca4(candidate, actor);
             F(void *, actor, 0x29c) = candidate;
@@ -314,7 +314,7 @@ extern "C" void func_ov075_02212f20(void *actor)
     F(s32, actor, 0x218) = F(s32, data_ov075_02216cc8, 0x20);
     F(s32, actor, 0x21c) = F(s32, data_ov075_02216cc8, 0x24);
     func_020050a4(P(actor, 0x18), P(actor, 0x28));
-    F(s32, actor, 0x24) = func_02033f44(actor) - 0x1000;
+    F(s32, actor, 0x24) = Actor_GetCachedTerrainHeight(actor) - 0x1000;
     F(s32, actor, 0x298) = 0;
     F(u16, F(void *, actor, 0x54), 0x24) |= 0x10;
     F(u16, F(void *, actor, 0x54), 0x24) &= (u16)~4;
@@ -364,7 +364,7 @@ extern "C" void func_ov075_02212fd8(void *actor)
         switch (F(u32, actor, 0x298))
         {
         case 0:
-            if (F(s32, actor, 0x24) < func_02033f44(actor))
+            if (F(s32, actor, 0x24) < Actor_GetCachedTerrainHeight(actor))
             {
                 F(u16, sprite, 0x24) |= 0x10;
             }
@@ -408,7 +408,7 @@ extern "C" void func_ov075_02212fd8(void *actor)
             break;
         }
         u32 state = F(u32, actor, 0x298);
-        s32 height = func_02033f44(actor);
+        s32 height = Actor_GetCachedTerrainHeight(actor);
         if ((state == 1 || state == 2) && height < F(s32, actor, 0x24) &&
             F(s32, actor, 0x24) < height + 0x10000)
         {
@@ -460,9 +460,9 @@ extern "C" void func_ov075_022133a4(void *actor, const void *position)
         return;
     func_020050a4(P(actor, 0x18), position);
     if (F(u32, actor, 0x298) != 2 ||
-        func_02033f44(actor) <= F(s32, actor, 0x24))
+        Actor_GetCachedTerrainHeight(actor) <= F(s32, actor, 0x24))
         return;
-    F(s32, actor, 0x24) = func_02033f44(actor);
+    F(s32, actor, 0x24) = Actor_GetCachedTerrainHeight(actor);
     F(u32, actor, 0x298) = 3;
     void *sprite = F(void *, actor, 0x54);
     func_02072b68(sprite, 0x15);
@@ -512,7 +512,7 @@ extern "C" void *func_ov075_0221352c(void *actor, void *descriptor, s32 arg2,
     F(void *, actor, 0x2ac) = 0;
     func_02004fe0(P(actor, 0x2b0));
     F(void *, F(void *, actor, 0x26c), 4) = 0;
-    s32 value = func_020435f4(actor);
+    s32 value = ActorExtendedType2_GetDescriptorValue2A(actor);
     F(s16, actor, 0x2aa) = (s16)(value < 1 ? 1 : value);
     F(void *, actor, 0x2a4) = (void *)func_02003e20(
         F(s16, actor, 0x2aa) * 4, data_ov075_02217168, 4, gHeapContext);
@@ -563,7 +563,7 @@ extern "C" void func_ov075_0221360c(void *actor)
     F(u16, F(void *, actor, 0x54), 0x24) &= (u16)~0x17;
     F(u32, actor, 0x298) = 3;
     F(u16, actor, 0x26a) = 120;
-    func_020593dc(gSoundContext, 0x1e9, 1, actor, 0, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, 0x1e9, 1, actor, 0, 0x100);
     void *effect = (void *)func_02003e14(0x14, data_ov075_02217170, 4,
                                          gHeapContext);
     if (effect != 0)
@@ -601,7 +601,7 @@ extern "C" void func_ov075_022137a0(void *actor)
                 func_02072b68(sprite, 0x14);
                 F(u16, sprite, 0x24) &= (u16)~3;
                 Invoke(actor, 0x8c);
-                func_020593dc(gSoundContext, 0x1e9, 0, actor, 0, 0x100);
+                Sound_PlayOwnedEffect(gSoundContext, 0x1e9, 0, actor, 0, 0x100);
             }
             else
                 --F(s16, actor, 0x25a);
@@ -686,7 +686,7 @@ extern "C" void func_ov075_022137a0(void *actor)
     func_ov075_02213cc0(actor);
     if (F(u32, actor, 0x298) == 2)
     {
-        s32 height = func_02033f44(actor);
+        s32 height = Actor_GetCachedTerrainHeight(actor);
         if (height < F(s32, actor, 0x24) &&
             F(s32, actor, 0x24) < height + 0x10000)
             F(u32, actor, 0x14) |= 0x800000;
@@ -823,7 +823,7 @@ extern "C" s32 func_ov075_02213f08(void *actor)
                 F(u32, actor, 0x298) = 3;
                 Invoke(actor, 0x8c);
             }
-            F(s32, actor, 0x24) = func_02033f44(actor);
+            F(s32, actor, 0x24) = Actor_GetCachedTerrainHeight(actor);
         }
         else
         {
@@ -831,7 +831,7 @@ extern "C" s32 func_ov075_02213f08(void *actor)
             func_ov075_02213ec4(position, actor, curve, time);
             func_020050a4(P(actor, 0x18), position);
             func_02005058(position);
-            s32 height = func_02033f44(actor);
+            s32 height = Actor_GetCachedTerrainHeight(actor);
             if (F(s32, actor, 0x24) < height)
                 F(s32, actor, 0x24) = height;
             F(u16, F(void *, actor, 0x54), 0x24) &= (u16)~0x10;
@@ -944,7 +944,7 @@ extern "C" s32 func_ov075_02214260(void *actor, const void *descriptor)
     func_02072b68(sprite, 0x14);
     F(u16, sprite, 0x24) &= (u16)~0x17;
     F(u32, actor, 0x260) &= ~0x800U;
-    func_020593dc(gSoundContext, 0x1e9, 0, actor, 0, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, 0x1e9, 0, actor, 0, 0x100);
     if (F(s16, actor, 0x250) > 0)
         --F(s16, actor, 0x250);
     func_ov075_02213cfc(actor);
@@ -1054,7 +1054,7 @@ extern "C" void func_ov075_022148d0(void *actor)
                 {
                     F(u16, actor, 0xd6) = 1;
                     F(u16, actor, 0x222) = 0;
-                    func_020593dc(gSoundContext, 0, 120, actor, 0, 0x100);
+                    Sound_PlayOwnedEffect(gSoundContext, 0, 120, actor, 0, 0x100);
                 }
             }
             else
@@ -1078,12 +1078,12 @@ extern "C" void func_ov075_022148d0(void *actor)
             if (func_ov075_02214770(actor, targetPosition) == 0)
             {
                 F(u16, actor, 0xd6) = 3;
-                func_0205940c(gSoundContext, 0, 120);
+                Sound_StopEffect(gSoundContext, 0, 120);
             }
             else
             {
-                if (func_020594a4(gSoundContext, 0, 120) == 0)
-                    func_020593dc(gSoundContext, 0, 120, actor, 0, 0x100);
+                if (Sound_IsEffectPlaying(gSoundContext, 0, 120) == 0)
+                    Sound_PlayOwnedEffect(gSoundContext, 0, 120, actor, 0, 0x100);
                 F(s32, actor, 0x224) += 0x29;
                 if (F(s32, actor, 0x224) > 0x1333)
                     F(s32, actor, 0x224) = 0x1333;
@@ -1109,7 +1109,7 @@ extern "C" void func_ov075_022148d0(void *actor)
                     if (dx * dx + dy * dy < 0x100)
                     {
                         F(u16, F(void *, actor, 0x54), 0x24) |= 0x10;
-                        func_0205940c(gSoundContext, 0, 120);
+                        Sound_StopEffect(gSoundContext, 0, 120);
                         void *manager = (void *)OverlayManager_GetGlobal();
                         OverlayManager_LoadOverlay(manager, 2, 0x40);
                         void *handoff = (void *)func_02003e14(
@@ -1147,7 +1147,7 @@ extern "C" void func_ov075_022148d0(void *actor)
         if ((F(u16, F(void *, actor, 0x54), 0x24) & 1) != 0)
         {
             F(u16, actor, 0xd6) = 0;
-            func_0205940c(gSoundContext, 0, 120);
+            Sound_StopEffect(gSoundContext, 0, 120);
         }
         break;
     default:
@@ -1222,7 +1222,7 @@ extern "C" s32 func_ov075_02214f18(void *actor, void *target)
     if (waypoints == 0)
     {
         func_020050a4(P(actor, 0x20c), P(target, 0x18));
-        F(s32, actor, 0x218) = func_02033f44(target);
+        F(s32, actor, 0x218) = Actor_GetCachedTerrainHeight(target);
         func_020050a4(P(actor, 0x18), P(actor, 0x20c));
         F(u16, actor, 0xd6) = 1;
         return 1;
@@ -1247,7 +1247,7 @@ extern "C" s32 func_ov075_02214f18(void *actor, void *target)
         return 0;
     F(s32, actor, 0x210) = bestX << 12;
     F(s32, actor, 0x214) = bestY << 12;
-    F(s32, actor, 0x218) = func_02033f44(target);
+    F(s32, actor, 0x218) = Actor_GetCachedTerrainHeight(target);
     func_020050a4(P(actor, 0x18), P(actor, 0x20c));
     return 1;
 }
@@ -1607,7 +1607,7 @@ extern "C" void func_ov075_02215218(void *actor)
     void *source = F(void *, actor, 0x298);
     if (source == 0 || (F(u32, source, 0x29c) & 1) == 0)
     {
-        func_020593dc(gSoundContext, 0x1e8, 2, actor, 0, 0x100);
+        Sound_PlayOwnedEffect(gSoundContext, 0x1e8, 2, actor, 0, 0x100);
     }
     else
     {
@@ -1968,7 +1968,7 @@ extern "C" void func_ov075_02215c90(void *actor)
     ActorExtendedType2_ResetVerticalMotionCallbacks(actor);
     if (func_ov075_022152ac(actor) != 0)
         F(u16, actor, 0x25a) = 300;
-    func_020593dc(gSoundContext, 0x1e8, 2, actor, 0, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, 0x1e8, 2, actor, 0, 0x100);
 }
 
 /* Updates partner coupling, animation mirroring, and link-source presentation. */
@@ -2336,7 +2336,7 @@ extern "C" void func_ov075_0221627c(void *actor)
     {
         void *candidate = F(void *, work, 0x2ea4 + index * 4);
         if (candidate == 0 ||
-            func_02033f44(candidate) != func_02033f44(actor))
+            Actor_GetCachedTerrainHeight(candidate) != Actor_GetCachedTerrainHeight(actor))
             continue;
         bool eligible;
         if (index == 0)

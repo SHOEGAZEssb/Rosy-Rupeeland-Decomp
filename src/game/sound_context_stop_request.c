@@ -19,7 +19,7 @@ void func_020594ec(void *context, s32 stream)
 {
     if ((*(u32 *)((u8 *)context + 0x9c) & 4) == 0) {
 #ifdef __MWERKS__
-        func_0205adb4(data_021e9aa8, stream);
+        SoundManager_PlayDefaultStream(data_021e9aa8, stream);
 #else
         Sound_HostPlayDefaultStreamRequest(stream);
 #endif

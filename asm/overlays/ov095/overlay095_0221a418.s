@@ -9,7 +9,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_0204cfa4
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020ada8c
 .extern func_020befec
 .extern func_020bf1f8
@@ -250,7 +250,7 @@ func_ov095_0221a418:
     mov r3, r4
     sub r1, r1, #0x12
     mov r2, #0xc
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     ldr r0, [r4, #0x54]
     mov r1, #0x200
     strh r1, [r0, #0x36]
@@ -310,7 +310,7 @@ func_ov095_0221a418:
     mov r3, r4
     sub r1, r1, #0x12
     mov r2, #0xb
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_0221a864:
     add sp, sp, #0xb8
     ldmia sp!, {r4, pc}

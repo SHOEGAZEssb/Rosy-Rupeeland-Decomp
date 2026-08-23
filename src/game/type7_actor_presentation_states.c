@@ -12,7 +12,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Type7Actor_DispatchCurrentCallback(void *actor);
-extern void func_020593dc(void *soundContext, s32 zero, s32 soundId,
+extern void Sound_PlayOwnedEffect(void *soundContext, s32 zero, s32 soundId,
                           void *actor, s32 parameter, s32 volume);
 #ifdef __cplusplus
 }
@@ -42,14 +42,14 @@ s32 Type7Actor_UpdatePresentation17UntilGlobalTargetClears(void *self)
  * sound ID 0x7e through the global sound context with recovered parameters
  * (actor, 0, 0x100). Then clear actor flag 0x8000 and +0xd0 bit one, select
  * presentation 18, and return zero. Actor presentation and sound state may
- * change; func_020593dc is the sound-system boundary and no hardware register
+ * change; Sound_PlayOwnedEffect is the sound-system boundary and no hardware register
  * is accessed directly.
  */
 s32 Type7Actor_UpdatePresentation18WithInitialSound(void *self)
 {
     u8 *actor = (u8 *)self;
     if (*(s16 *)(actor + 0x248) == 1)
-        func_020593dc(gSoundContext, 0, 0x7e, actor, 0, 0x100);
+        Sound_PlayOwnedEffect(gSoundContext, 0, 0x7e, actor, 0, 0x100);
     *(u32 *)(actor + 0x268) &= ~0x8000;
     *(u32 *)(actor + 0xd0) &= ~2;
     *(u16 *)(actor + 0xd6) = 18;

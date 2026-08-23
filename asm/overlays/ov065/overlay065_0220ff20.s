@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern VecFx32Bezier_Evaluate3D
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_020befec
@@ -119,7 +119,7 @@ Overlay065Particle_Update:
     ldr r0, [r0, #0x0]
     mov r2, #0xf
     mov r3, #0x64
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     mov r0, #0xa
     mul r0, r4, r0
     add r4, r0, #0x30
@@ -138,7 +138,7 @@ Overlay065Particle_Update:
     mov r3, r4
     mov r1, #0x0
     mov r2, #0x1d
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     bl genrand_int32
     str r5, [sp, #0x0]
     rsb r3, r4, #0x7f
@@ -148,7 +148,7 @@ Overlay065Particle_Update:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x21
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     add r0, r6, #0x100
     mov r1, #0x6
     strh r1, [r0, #0x1a]

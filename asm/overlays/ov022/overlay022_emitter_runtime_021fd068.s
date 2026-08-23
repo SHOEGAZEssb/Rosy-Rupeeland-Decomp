@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_emitter_runtime.c. */
     .extern data_ov022_022004b4
     .extern data_ov022_022006b4
-    .extern func_020593ac
+    .extern Sound_PlayEffectWithParameters
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
@@ -53,7 +53,7 @@ L_021fd09c:
     ldr r0, [r0, #0x0]
     mov r2, #0x4f
     mov r3, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     add r0, r6, #0x64
     mov r1, #0xa
     mov r2, #0x14

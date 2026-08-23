@@ -3,7 +3,7 @@
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_secondary_object_update.c. */
 .extern data_020c9670
-.extern func_0205943c
+.extern Sound_SetEffectParameters
 .extern func_020adc90
 .extern func_020befec
 .extern gSoundContext
@@ -96,7 +96,7 @@ func_ov041_02200a38: ; 0x02200a38
     ldr r0, [r0, #0x0]
     ldr r1, .L_02200cdc
     mov r3, r4
-    bl func_0205943c
+    bl Sound_SetEffectParameters
     mov r1, #0x0
     str r1, [sp, #0x0]
     str r1, [sp, #0x4]
@@ -107,7 +107,7 @@ func_ov041_02200a38: ; 0x02200a38
     ldr r1, .L_02200cdc
     mov r3, r4
     mov r2, #0xc
-    bl func_0205943c
+    bl Sound_SetEffectParameters
 .L_02200bb8:
     mov r0, #0x4
     mov r7, #0x1000

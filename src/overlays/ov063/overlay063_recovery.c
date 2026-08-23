@@ -40,7 +40,7 @@ extern "C" void GamePhaseRuntime_StageAreaRequest(void *, s32, s32, s32,
                                                    s32, s32);
 extern "C" void ActorCollection_UnregisterAndDestroyActor(void *, void *);
 extern "C" void Sound_StopAllDirectSequences(void *, s32);
-extern "C" void func_02058d28(void *);
+extern "C" void Sound_StopAllArchiveEffects(void *);
 extern "C" void *func_020a6320(void *);
 extern "C" void func_020a6390(void *);
 extern "C" void func_020a681c(void *);
@@ -362,7 +362,7 @@ extern "C" void func_ov063_02210414(void *scene, s32 mode)
     GX_VBlankIntr(1);
     GX_HBlankIntr(1);
     if ((FIELD(u32, scene, 0x50) & 0x8000) != 0) {
-        func_02058d28(gSoundContext);
+        Sound_StopAllArchiveEffects(gSoundContext);
         Sound_StopAllDirectSequences(gSoundContext, 0);
     }
 }

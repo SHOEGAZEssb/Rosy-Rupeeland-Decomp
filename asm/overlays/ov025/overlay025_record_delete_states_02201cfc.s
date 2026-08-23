@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_record_delete_states.c. */
 .extern data_ov025_02202e70
 .extern data_ov025_02202e78
-.extern func_0207f248
-.extern func_020802f4
+.extern RetailSaveContext_PollOperation
+.extern RetailSaveContext_BeginRecordDelete
 .extern func_02092260
 .extern func_02095dd4
 .extern func_ov025_021ff254
@@ -58,7 +58,7 @@ L_02201d38:
     ldr r1, [r4, #0x54]
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020802f4
+    bl RetailSaveContext_BeginRecordDelete
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -68,7 +68,7 @@ L_02201d38:
 L_02201d9c:
     ldr r0, L_02201ec0
     ldr r0, [r0, #0x0]
-    bl func_0207f248
+    bl RetailSaveContext_PollOperation
     cmp r0, #0x0
     beq L_02201eb0
     mvn r1, #0x0

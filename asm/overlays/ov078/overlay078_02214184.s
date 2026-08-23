@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov078/overlay078_recovery.c.
 .extern data_ov078_02215c88
 .extern data_ov078_02215d40
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov078_022134d0
 .extern gSoundContext
 
@@ -65,7 +65,7 @@ func_ov078_02214184:
     ldr r0, [r0, #0x0]
     mov r3, r4
     mov r1, #0x1
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02214280
 .L_02214268:
     ldr r0, .L_022142ac
@@ -73,7 +73,7 @@ func_ov078_02214184:
     ldr r0, [r0, #0x0]
     mov r3, r4
     mov r1, #0x61
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02214280:
     ldr r0, [r4, #0x2c0]
     cmp r0, #0x0

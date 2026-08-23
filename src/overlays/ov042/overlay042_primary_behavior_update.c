@@ -22,7 +22,7 @@ extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index
 extern "C" void func_020a1ec0(void *owner, u32 effect);
 extern "C" void func_020a1f04(void *owner, u32 sequence);
 extern "C" void Sound_StopDirectSequence(void *sound, s32 sequence, s32 value);
-extern "C" void func_0205943c(void *sound, s32 sequence, s32 parameter,
+extern "C" void Sound_SetEffectParameters(void *sound, s32 sequence, s32 parameter,
                                s32 value, s32 arg0, s32 arg1);
 extern "C" void func_020a1794(void *owner, const void *position,
                                const void *display, s32 arg);

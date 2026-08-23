@@ -58,11 +58,11 @@ class AuditArmCallAbiTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             header = Path(temporary) / "sound.h"
             header.write_text(
-                "void func_0205adb4(void *manager,\n"
+                "void SoundManager_PlayDefaultStream(void *manager,\n"
                 "                     int stream);\n",
                 encoding="utf-8",
             )
-            self.assertEqual(source_argument_count(header, "func_0205adb4"), 2)
+            self.assertEqual(source_argument_count(header, "SoundManager_PlayDefaultStream"), 2)
 
 
 if __name__ == "__main__":

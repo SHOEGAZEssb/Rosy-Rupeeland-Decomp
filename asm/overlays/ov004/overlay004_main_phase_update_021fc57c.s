@@ -12,7 +12,7 @@
     .extern Presentation_InterpolateQuadraticPulse
     .extern func_02070958
     .extern func_02074dc8
-    .extern func_020594a4
+    .extern Sound_IsEffectPlaying
     .extern func_ov004_021fb6e4
     .extern func_ov004_021fc24c
     .extern func_ov004_021fbf10
@@ -225,7 +225,7 @@ L_021fc85c:
     ldr r0, [r1, #0x0]
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     bne L_021fc8a8
     ldr r1, L_021fc8e8

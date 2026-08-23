@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_GetMagnitude
 .extern VecFx32Object_Assign
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov078_02213c3c
 .extern func_ov095_02218130
 .extern func_ov095_02218414
@@ -44,7 +44,7 @@ func_ov095_0221a878:
     mov r3, r6
     sub r1, r1, #0x12
     mov r2, #0x9
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_0221abb4
 .L_0221a8f0:
     mov r0, r6

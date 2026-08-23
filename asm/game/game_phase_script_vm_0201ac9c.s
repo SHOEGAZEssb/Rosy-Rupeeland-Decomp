@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_high_arity_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_02059604
+.extern Sound_ConfigureGroupSlots
 .extern gSoundContext
 .global func_0201ac9c
 func_0201ac9c: ; 0x0201ac9c
@@ -33,7 +33,7 @@ func_0201ac9c: ; 0x0201ac9c
     mov r2, r4
     ldr r0, [r0, #0x0]
     mov r3, r5
-    bl func_02059604
+    bl Sound_ConfigureGroupSlots
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}

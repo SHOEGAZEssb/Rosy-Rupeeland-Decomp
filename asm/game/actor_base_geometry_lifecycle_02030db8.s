@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020def7c
 .extern VecFx32Object_Destroy
-.extern func_02059424
+.extern Sound_StopOwnerEffects
 .extern gSoundContext
 
     .global ActorBaseGeometry_DestroyAndFree
@@ -16,7 +16,7 @@ ActorBaseGeometry_DestroyAndFree: ; 0x02030db8
     str r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
     mov r1, r4
-    bl func_02059424
+    bl Sound_StopOwnerEffects
     add r0, r4, #0x38
     bl VecFx32Object_Destroy
     add r0, r4, #0x28

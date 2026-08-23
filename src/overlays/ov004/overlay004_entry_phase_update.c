@@ -21,7 +21,7 @@ extern void *data_020f4e14;
 extern void *gDebugFont;
 extern const s32 data_ov004_021fcd40[2];
 extern void func_020922f0(void *state, s32 value);
-extern void func_020592fc(void *context, s32 channel, s32 value);
+extern void Sound_SetDirectSequenceTrackMask(void *context, s32 channel, s32 value);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *context);
 extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
 extern void func_ov004_021fbf10(void *state);
@@ -61,7 +61,7 @@ s32 func_ov004_021fc3ac(Overlay004EntryPhaseState *state)
 {
     if (state->phase_004 == 0) {
         func_020922f0(state, 0xcc);
-        func_020592fc(gSoundContext, 0xcc,
+        Sound_SetDirectSequenceTrackMask(gSoundContext, 0xcc,
                       overlay004_entry_sound_value(state->variant_150));
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);

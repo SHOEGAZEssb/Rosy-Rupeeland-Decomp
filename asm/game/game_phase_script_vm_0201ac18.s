@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_high_arity_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_02059550
+.extern Sound_PlayStream
 .extern gSoundContext
 .global func_0201ac18
 func_0201ac18: ; 0x0201ac18
@@ -33,7 +33,7 @@ func_0201ac18: ; 0x0201ac18
     mov r2, r5
     mov r3, r6
     mov r1, r1, lsr #0x10
-    bl func_02059550
+    bl Sound_PlayStream
 L_0201ac8c:
     mov r0, #0x0
     add sp, sp, #0x8

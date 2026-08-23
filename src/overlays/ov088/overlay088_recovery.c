@@ -41,7 +41,7 @@ extern "C" void GameWork_SetFlag(void *, s32);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern "C" void ActorContactState_AddContact(void *, void *, s32);
 extern "C" s32 func_020adc90(s32, s32);
-extern "C" void func_020593ac(void *, s32, s32, ...);
+extern "C" void Sound_PlayEffectWithParameters(void *, s32, s32, ...);
 extern "C" u8 gSystemState[];
 extern "C" const s16 data_020c9670[];
 extern "C" u8 data_ov088_0221b780[], data_ov088_0221b84c[],
@@ -79,8 +79,8 @@ extern "C" void *AuxiliaryTimedSpritePresentation_Init(void *, void *, void *,
                                                        s32, s32, s32, s32, s32,
                                                        s32, s32);
 extern "C" void func_02034a60(void *, s32, s32);
-extern "C" void func_0205940c(void *, s32, s32);
-extern "C" void func_020593dc(void *, s32, s32, ...);
+extern "C" void Sound_StopEffect(void *, s32, s32);
+extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, ...);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern "C" void VecFx32Object_Init(void *);
 extern "C" void VecFx32Object_InitCopy(void *, const void *);
@@ -344,9 +344,9 @@ extern "C" void func_ov088_02218290(void *a) {
     F(u32, a, 0x14) |= 6;
     u16 sound = F(u16, F(void *, a, 0x238), 0x26);
     if (sound)
-        func_0205940c(gSoundContext, sound >> 7, sound & 0x7f);
-    func_0205940c(gSoundContext, 0x1fb, 4);
-    func_0205940c(gSoundContext, 0x1fc, 4);
+        Sound_StopEffect(gSoundContext, sound >> 7, sound & 0x7f);
+    Sound_StopEffect(gSoundContext, 0x1fb, 4);
+    Sound_StopEffect(gSoundContext, 0x1fc, 4);
     F(u16, a, 0x21a) &= ~0x2000u;
     F(u16, a, 0x26c) = 0;
     F(u16, a, 0x21a) |= 0x20;
@@ -626,7 +626,7 @@ extern "C" void func_ov088_0221963c(void *a, s32, s32, s32) {
         F(u16, a, 0x270) = 0;
         u16 sound = F(u16, F(void *, a, 0x238), 0x26);
         if (sound)
-            func_020593dc(gSoundContext, sound >> 7, sound & 0x7f, a, 0, 0x100);
+            Sound_PlayOwnedEffect(gSoundContext, sound >> 7, sound & 0x7f, a, 0, 0x100);
     }
     s32 primary = -1, secondary = -1, state = F(u16, a, 0xd6),
         direction = F(u8, a, 0xd4);
@@ -691,7 +691,7 @@ extern "C" void func_ov088_02219a2c(void *a, void *other, s32 contact, s32) {
         F(s32, other, 0x24) - F(s32, a, 0x24) >= 0) {
         u16 sound = F(u16, F(void *, a, 0x238), 0x28);
         if (sound)
-            func_020593ac(gSoundContext, sound >> 7, sound & 0x7f,
+            Sound_PlayEffectWithParameters(gSoundContext, sound >> 7, sound & 0x7f,
                           F(s16, a, 0x236) > 0 ? 0x20 : 0x7f, 0, 0);
         F(u16, a, 0x236) = 10;
         s32 dx = F(s32, a, 0x1c) - F(s32, other, 0x1c),
@@ -955,7 +955,7 @@ extern "C" void func_ov088_0221a8c4(void *a) {
 /* Leave immobilization, stop its loop, and begin the presentation cooldown. */
 extern "C" void func_ov088_0221a930(void *a) {
     F(u16, a, 0x21a) &= ~0x2000u;
-    func_0205940c(gSoundContext, 0x1fc, 4);
+    Sound_StopEffect(gSoundContext, 0x1fc, 4);
     func_02034a60(a, 0xfe05, 0);
     F(s16, a, 0xda) = 1;
     F(s16, a, 0x26c) = 60;
@@ -972,8 +972,8 @@ static void leave_active_control(void *a) {
         }
         u16 s = F(u16, F(void *, a, 0x238), 0x26);
         if (s)
-            func_0205940c(gSoundContext, s >> 7, s & 0x7f);
-        func_0205940c(gSoundContext, 0x1fb, 4);
+            Sound_StopEffect(gSoundContext, s >> 7, s & 0x7f);
+        Sound_StopEffect(gSoundContext, 0x1fb, 4);
         func_02034a60(a, 0xfd86, 0);
     }
     clear_motion(a);
@@ -986,7 +986,7 @@ extern "C" void func_ov088_0221a298(void *a, void *effect_position) {
         void *player = F(void *, data_021052fc, 0x2ea4);
         u16 s = F(u16, F(void *, a, 0x238), 0x24);
         if (s)
-            func_020593dc(gSoundContext, s >> 7, s & 0x7f, a, 0, 0x100);
+            Sound_PlayOwnedEffect(gSoundContext, s >> 7, s & 0x7f, a, 0, 0x100);
         u8 p[16];
         func_ov088_0221a98c(p, a);
         VecFx32Object_Assign((u8 *)player + 0x18, p);

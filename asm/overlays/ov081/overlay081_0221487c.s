@@ -13,7 +13,7 @@
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedRuntime_AcceptInteractionQuery
 .extern func_020573e4
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov081_02213710
 .extern gSoundContext
 
@@ -140,7 +140,7 @@ func_ov081_0221487c:
     mov r3, r5
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02214b10
 .L_02214a50:
     ldr r0, .L_02214b28
@@ -188,7 +188,7 @@ func_ov081_0221487c:
     mov r3, r5
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     ldr r1, .L_02214b4c
     mov r0, r5
     mov r3, #0x1e

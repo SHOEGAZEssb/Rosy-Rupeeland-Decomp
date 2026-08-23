@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern void func_02059604(void *context, s32 first, s32 second, s32 third,
+extern void Sound_ConfigureGroupSlots(void *context, s32 first, s32 second, s32 third,
                          s32 fourth, s32 fifth, s32 sixth, s32 seventh);
 #ifdef __cplusplus
 }
@@ -31,7 +31,7 @@ s32 func_0201ac18(GamePhaseActorScriptVm *self)
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
 
     if (command == 32) {
-        func_02059550(gSoundContext, (u16)first, second, third, fourth, fifth);
+        Sound_PlayStream(gSoundContext, (u16)first, second, third, fourth, fifth);
     }
     return 0;
 }
@@ -47,7 +47,7 @@ s32 func_0201ac9c(GamePhaseActorScriptVm *self)
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
 
-    func_02059604(gSoundContext, first, second, third, fourth,
+    Sound_ConfigureGroupSlots(gSoundContext, first, second, third, fourth,
                   fifth, sixth, seventh);
     return 0;
 }

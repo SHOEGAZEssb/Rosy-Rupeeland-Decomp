@@ -20,11 +20,11 @@
 .extern Actor_UpdateGroundContactProbe
 .extern func_0204cfa4
 .extern func_0204cff4
-.extern func_020593ac
-.extern func_020593dc
-.extern func_0205940c
-.extern func_0205946c
-.extern func_020594a4
+.extern Sound_PlayEffectWithParameters
+.extern Sound_PlayOwnedEffect
+.extern Sound_StopEffect
+.extern Sound_SetEffectPitch
+.extern Sound_IsEffectPlaying
 .extern func_020adae4
 .extern func_020adc90
 .extern func_020ae024
@@ -488,7 +488,7 @@ func_ov088_02218328:
     ldr r1, .L_02219144
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     bne .L_02218a04
     mov r0, #0x0
@@ -500,7 +500,7 @@ func_ov088_02218328:
     mov r3, r4
     add r1, r1, #0xfb
     mov r2, #0x4
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02218a04:
     add r0, r4, #0x200
     ldrh r1, [r0, #0x1a]
@@ -518,7 +518,7 @@ func_ov088_02218328:
     add r1, r0, #0x224
     ldr r0, [r2, #0x0]
     mov r2, #0x4
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     bne .L_02218a74
     mov r0, #0x0
@@ -530,7 +530,7 @@ func_ov088_02218328:
     mov r3, r4
     add r1, r1, #0xfb
     mov r2, #0x4
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02218a74:
     add r0, r4, #0x200
     ldrh r1, [r0, #0x1a]
@@ -546,14 +546,14 @@ func_ov088_02218328:
     ldr r0, [r2, #0x0]
     mov r2, #0x4
     mov r5, #0x0
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     beq .L_02218ad8
     ldr r0, .L_02219140
     ldr r1, .L_02219144
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r1, .L_02219148
     mov r0, r4
     mov r2, r5
@@ -581,7 +581,7 @@ func_ov088_02218328:
     mov r1, r2, asr #0x7
     ldr r0, [r0, #0x0]
     and r2, r2, #0x7f
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     ldr r1, [r4, #0x238]
     add r0, r4, #0x200
@@ -592,7 +592,7 @@ func_ov088_02218328:
     ldr r0, [r1, #0x0]
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_0205946c
+    bl Sound_SetEffectPitch
     b .L_02218b88
 .L_02218b5c:
     ldrh r5, [r1, #0x26]
@@ -605,7 +605,7 @@ func_ov088_02218328:
     mov r3, r4
     mov r1, r5, asr #0x7
     and r2, r5, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02218b88:
     ldr r0, .L_02219108
     ldr r1, [r4, #0x1c]
@@ -703,7 +703,7 @@ func_ov088_02218328:
     ldr r0, [r0, #0x0]
     movle r3, #0x7f
     and r2, r2, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     add r0, r4, #0x200
     mov r1, #0xa
     strh r1, [r0, #0x36]

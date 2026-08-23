@@ -10,11 +10,11 @@
 .extern VecFx32Object_Add
 .extern func_0201e0ec
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_020593ac
-.extern func_020593dc
-.extern func_0205940c
-.extern func_0205946c
-.extern func_020594a4
+.extern Sound_PlayEffectWithParameters
+.extern Sound_PlayOwnedEffect
+.extern Sound_StopEffect
+.extern Sound_SetEffectPitch
+.extern Sound_IsEffectPlaying
 .extern func_020a2614
 .extern func_020a2960
 .extern func_ov076_02212e18
@@ -71,7 +71,7 @@ func_ov076_02212ee0:
     mov r1, #0x1c4
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_0205940c
+    bl Sound_StopEffect
     mov r0, #0x0
     b .L_0221359c
 .L_02212f9c:
@@ -308,7 +308,7 @@ func_ov076_02212ee0:
     ldr r0, [r2, #0x0]
     mov r2, #0x5b
     mov r3, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     b .L_022133a8
 .L_02213318:
     add r0, r10, #0x200
@@ -429,7 +429,7 @@ func_ov076_02212ee0:
     mov r1, #0x1c4
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r5, #0x0
     beq .L_02213550
     add r1, r10, #0x200
@@ -449,7 +449,7 @@ func_ov076_02212ee0:
     mov r3, r10
     mov r1, #0x1c4
     mov r2, #0x8
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02213530:
     add r0, r10, #0x200
     ldr r1, .L_022135a4
@@ -457,7 +457,7 @@ func_ov076_02212ee0:
     ldr r0, [r1, #0x0]
     mov r1, #0x1c4
     mov r2, #0x8
-    bl func_0205946c
+    bl Sound_SetEffectPitch
     b .L_0221356c
 .L_02213550:
     cmp r0, #0x0
@@ -466,7 +466,7 @@ func_ov076_02212ee0:
     mov r1, #0x1c4
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_0221356c:
     add r0, r10, #0x200
     ldrsh r1, [r0, #0xa0]

@@ -17,10 +17,10 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void Overlay032Scene_SetupGraphics(void *);
 extern void Overlay032Scene_ShutdownGraphics(void *);
-extern void func_020595d4(void *);
-extern void func_0205958c(...);
-extern void func_020595ec(void *);
-extern void func_02058ffc(...);
+extern void Sound_SaveStreamPosition(void *);
+extern void Sound_StopStream(...);
+extern void Sound_ResumeStreamPosition(void *);
+extern void Sound_SetCaptureRoute0Enabled(...);
 extern void func_020594ec(...);
 extern s32 GameWork_TestFlag(...);
 extern s32 DisplayBrightness_GetCurrent(void *);
@@ -55,7 +55,7 @@ extern "C" s32 func_ov032_021febec(void *scene)
     case 1:
         if (DisplayBrightness_IsMainTransitionComplete() && DisplayBrightness_IsSubTransitionComplete()) {
             Overlay032Scene_SetupGraphics(scene);
-            func_020595d4(gSoundContext);
+            Sound_SaveStreamPosition(gSoundContext);
             FIELD(s32, FIELD(void *, scene, 4), 0x20) = 1;
             FIELD(s32, FIELD(void *, scene, 0), 0x20) = 1;
             DisplayBrightness_StartSubTransition(1, 0x10);
@@ -64,8 +64,8 @@ extern "C" s32 func_ov032_021febec(void *scene)
         break;
     case 2:
         if (DisplayBrightness_IsSubTransitionComplete()) {
-            func_02058ffc(gSoundContext, 1, 0, 0x1e);
-            func_02058ffc(gSoundContext, 0, 0, 0x1e);
+            Sound_SetCaptureRoute0Enabled(gSoundContext, 1, 0, 0x1e);
+            Sound_SetCaptureRoute0Enabled(gSoundContext, 0, 0, 0x1e);
             func_020594ec(gSoundContext, 0x12);
             if (GameWork_TestFlag(gGameWork, 0x15a)) {
                 FIELD(s32, scene, 0xf28) = 1;
@@ -98,7 +98,7 @@ extern "C" s32 func_ov032_021fed8c(void *scene)
             DisplayBrightness_StartMainTransition(2, 0x10);
         }
         DisplayBrightness_StartSubTransition(2, 0x10);
-        func_0205958c(gSoundContext, 0);
+        Sound_StopStream(gSoundContext, 0);
         ++FIELD(s32, scene, 0xb64);
         break;
     case 1:
@@ -112,7 +112,7 @@ extern "C" s32 func_ov032_021fed8c(void *scene)
             DisplayBrightness_StartMainTransition(1, 0x10);
             DisplayBrightness_StartSubTransition(1, 0x10);
         }
-        func_020595ec(gSoundContext);
+        Sound_ResumeStreamPosition(gSoundContext);
         return 1;
     }
     return 0;

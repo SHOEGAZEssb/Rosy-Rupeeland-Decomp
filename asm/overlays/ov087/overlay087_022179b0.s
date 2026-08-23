@@ -13,9 +13,9 @@
 .extern Actor_SnapshotTransientState
 .extern Actor_UpdateAnimationState
 .extern ActorDerivedRuntime_UpdateFrame
-.extern func_020593ac
-.extern func_0205940c
-.extern func_0205943c
+.extern Sound_PlayEffectWithParameters
+.extern Sound_StopEffect
+.extern Sound_SetEffectParameters
 .extern func_020befec
 .extern func_ov087_02217ed8
 .extern func_ov087_022183fc
@@ -155,7 +155,7 @@ func_ov087_022179b0:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02217ed0
     mov r1, #0x67
     ldr r0, [r0, #0x0]
@@ -182,7 +182,7 @@ func_ov087_022179b0:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02217ed0
     mov r1, #0x67
     ldr r0, [r0, #0x0]
@@ -202,12 +202,12 @@ func_ov087_022179b0:
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02217ed0
     mov r1, #0x67
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r5, #0x200
     ldrh r1, [r0, #0x1a]
     bic r1, r1, #0x600
@@ -282,7 +282,7 @@ func_ov087_022179b0:
     ldr r0, [r0, #0x0]
     movle r3, #0x7f
     mov r1, #0x67
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     mov r0, #0xa
     str r0, [r5, #0x22c]
 .L_02217d7c:
@@ -311,7 +311,7 @@ func_ov087_022179b0:
     mov r1, #0x67
     mov r2, #0x4
     mov r3, #0x50
-    bl func_0205943c
+    bl Sound_SetEffectParameters
     add r0, sp, #0x18
     bl VecFx32Object_Destroy
 .L_02217de8:

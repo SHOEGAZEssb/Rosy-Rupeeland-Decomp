@@ -21,7 +21,7 @@ extern void *data_021052fc[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02058eb8(...);
+extern void Sound_SetModalEnvelopeEnabled(...);
 extern void Sound_ReleaseGroup(...);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(...);
 extern void GraphicsArchive_ReleaseResourceE4(...);
@@ -73,7 +73,7 @@ extern "C" void *func_ov032_021fd7f8(void *scene)
 {
     typedef void (*VirtualDestructor)(void *);
 
-    func_02058eb8(gSoundContext, 0, 0, 0x14, 0x1e);
+    Sound_SetModalEnvelopeEnabled(gSoundContext, 0, 0, 0x14, 0x1e);
     Sound_ReleaseGroup(gSoundContext, 0x81);
 
     void *owned = FIELD(void *, scene, 0x10);

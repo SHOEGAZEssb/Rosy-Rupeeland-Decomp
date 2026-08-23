@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_ov095_0221d1a4
 .extern TrackedResourceActorImpulse_Destroy
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern gSoundContext
 
 .global func_ov095_0221c130
@@ -20,7 +20,7 @@ func_ov095_0221c130:
     mov r1, r2, asr #0x7
     ldr r0, [r0, #0x0]
     and r2, r2, #0x7f
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_0221c164:
     mov r0, r4
     bl TrackedResourceActorImpulse_Destroy

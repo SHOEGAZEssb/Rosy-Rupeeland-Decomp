@@ -14,7 +14,7 @@
  * handle; a nonnegative ID returns one only when that exact stream owns a
  * nonzero handle. No state or hardware changes occur.
  */
-s32 func_02059510(void *context, s32 streamId)
+s32 Sound_IsStreamPlaying(void *context, s32 streamId)
 {
     u8 *manager = (u8 *)data_021e9aa8;
 
@@ -33,7 +33,7 @@ s32 func_02059510(void *context, s32 streamId)
  * flag. Requests are ignored while sound-context flag bit two is set. The
  * lower manager owns validation and the Nitro stream player.
  */
-void func_02059550(void *context, s32 streamId, s32 startUnits, s32 volume,
+void Sound_PlayStream(void *context, s32 streamId, s32 startUnits, s32 volume,
                    s32 fadeFrames, s32 fadeIn)
 {
     if ((*(u32 *)((u8 *)context + 0x9c) & 4) == 0)
@@ -42,28 +42,28 @@ void func_02059550(void *context, s32 streamId, s32 startUnits, s32 volume,
 }
 
 /* Stop the sole stream over fadeFrames; suppressed requests have no effect. */
-void func_0205958c(void *context, s32 fadeFrames)
+void Sound_StopStream(void *context, s32 fadeFrames)
 {
     if ((*(u32 *)((u8 *)context + 0x9c) & 4) == 0)
         func_0205af24(data_021e9aa8, fadeFrames);
 }
 
 /* Fade the sole stream to volume over fadeFrames when requests are enabled. */
-void func_020595b0(void *context, s32 volume, s32 fadeFrames)
+void Sound_FadeStreamVolume(void *context, s32 volume, s32 fadeFrames)
 {
     if ((*(u32 *)((u8 *)context + 0x9c) & 4) == 0)
         func_0205aee8(data_021e9aa8, volume, fadeFrames);
 }
 
 /* Save the current stream position through the lower manager; returns void. */
-void func_020595d4(void *context)
+void Sound_SaveStreamPosition(void *context)
 {
     (void)context;
     func_0205acdc(data_021e9aa8);
 }
 
 /* Restore the saved stream position through the lower manager; returns void. */
-void func_020595ec(void *context)
+void Sound_ResumeStreamPosition(void *context)
 {
     (void)context;
     func_0205acf4(data_021e9aa8);

@@ -6,9 +6,9 @@
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern void func_020593ac(void *context, s32 soundId, s32 variant,
+extern void Sound_PlayEffectWithParameters(void *context, s32 soundId, s32 variant,
                          s32 first, s32 second, s32 third);
-extern void func_0205943c(void *context, s32 soundId, s32 variant,
+extern void Sound_SetEffectParameters(void *context, s32 soundId, s32 variant,
                          s32 first, s32 second, s32 third);
 #ifdef __cplusplus
 }
@@ -29,10 +29,10 @@ s32 func_0201ab60(GamePhaseActorScriptVm *self)
     u16 packed = (u16)first;
 
     if (command == 30) {
-        func_020593ac(gSoundContext, packed >> 7, packed & 0x7f,
+        Sound_PlayEffectWithParameters(gSoundContext, packed >> 7, packed & 0x7f,
                       second, third, fourth);
     } else if (command == 31) {
-        func_0205943c(gSoundContext, packed >> 7, packed & 0x7f,
+        Sound_SetEffectParameters(gSoundContext, packed >> 7, packed & 0x7f,
                       second, third, fourth);
     }
     return 0;

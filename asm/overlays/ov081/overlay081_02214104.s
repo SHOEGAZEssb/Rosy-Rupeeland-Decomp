@@ -12,7 +12,7 @@
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
 .extern func_020573e4
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern func_020adae4
 .extern SignedAbsoluteValueVariant
 .extern func_ov081_02212de0
@@ -89,7 +89,7 @@ func_ov081_02214104:
     ldr r0, [r1, #0x0]
     add r1, r2, #0x33
     mov r2, #0x1
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
 .L_02214214:
     mov r1, #0x0
     mov r0, r6
@@ -288,7 +288,7 @@ func_ov081_02214104:
     rsb r3, r0, #0x40
     ldr r0, [r2, #0x0]
     mov r2, r1
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     mov r0, #0xa
     strb r0, [r6, #0x256]
 .L_022144f8:

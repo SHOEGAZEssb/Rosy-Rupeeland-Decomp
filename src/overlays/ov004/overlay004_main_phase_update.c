@@ -34,7 +34,7 @@ extern void PresentationScalar_TransitionTo(void *object, s32 mode, s32 value);
 extern s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 duration);
 extern void func_02070958(void *resource, s32 red, s32 green, s32 blue);
 extern void func_02074dc8(void *resource, void *context);
-extern s32 func_020594a4(void *context, s32 group, s32 index);
+extern s32 Sound_IsEffectPlaying(void *context, s32 group, s32 index);
 extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
 extern void func_ov004_021fc24c(void *state);
 extern void func_ov004_021fbf10(void *state);
@@ -70,7 +70,7 @@ static void overlay004_advance_phase(Overlay004MainPhaseState *state)
  * fades +0x58 from 0x100 to 0x200 for 60 frames and submits the two shared
  * resources to the contexts at +0x60/+0x64, then plays the sound ID at +0x158.
  * After 90 phase-four frames, +0x158 is treated as a packed 9-bit group and
- * 7-bit index; when func_020594a4 reports zero, the coordinate pair at
+ * 7-bit index; when Sound_IsEffectPlaying reports zero, the coordinate pair at
  * data_ov004_021fcd50 is applied. Every call also refreshes affine hardware
  * and the overlay contexts through the two recovered helpers. Object types and
  * most offset fields remain unidentified; hardware writes above are confirmed.
@@ -153,7 +153,7 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
         if (++FIELD(s32, state, 0x008) > 90) {
             u16 packed = (u16)FIELD(s32, state, 0x158);
 
-            if (func_020594a4(gSoundContext, packed >> 7, packed & 0x7f) ==
+            if (Sound_IsEffectPlaying(gSoundContext, packed >> 7, packed & 0x7f) ==
                 0) {
                 func_ov004_021fb6e4(state, data_ov004_021fcd50[0],
                                     data_ov004_021fcd50[1]);

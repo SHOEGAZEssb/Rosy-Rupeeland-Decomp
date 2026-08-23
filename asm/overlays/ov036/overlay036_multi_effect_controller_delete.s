@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov036/overlay036_multi_effect_controller_lifecycle.c for documented portable C. */
 
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern PresentationList_DeleteAll
     .extern GraphicsArchive_ReleaseOwlvResource
     .extern Graphics3DResourceOwner_RemoveManager
@@ -23,7 +23,7 @@ func_ov036_021ff680:
     ldr r0, [r0, #0x0]
     ldr r1, L_021ff740
     mov r2, #0x0
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r4, #0x108
     bl PresentationList_DeleteAll
     add r0, r4, #0x118

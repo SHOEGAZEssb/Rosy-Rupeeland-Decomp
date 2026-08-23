@@ -41,7 +41,7 @@ extern void func_0209c430(void *renderer, ...);
 extern void func_0209b58c(void *resource, ...);
 extern void func_0209b7ec(void *resource, ...);
 extern void func_0209b880(void *resource);
-extern void func_0205940c(void *context, s32 soundId, s32 mode);
+extern void Sound_StopEffect(void *context, s32 soundId, s32 mode);
 extern void Sound_Play(void *context, s32 soundId, s32 mode);
 extern void Heap_Free(void *allocation);
 extern void *func_0209a208(void *scene, s32 id0, s32 id1, s32 id2,
@@ -132,7 +132,7 @@ extern "C" void func_ov039_0220491c(void *emitter)
 {
     s32 &counter = FIELD(s32, emitter, 0x3a4);
     if (counter > 0 && --counter == 0)
-        func_0205940c(FIELD(void *, gSoundContext, 0), 0x1c5, 9);
+        Sound_StopEffect(FIELD(void *, gSoundContext, 0), 0x1c5, 9);
     FIELD(s32, emitter, 0x398) += 0xf6;
     if (FIELD(s32, emitter, 0x398) > 0x1000)
         FIELD(s32, emitter, 0x398) = 0x1000;

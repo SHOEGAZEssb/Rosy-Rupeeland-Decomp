@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov087/overlay087_recovery.c.
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern gSoundContext
 
 .global func_ov087_02218264
@@ -62,7 +62,7 @@ func_ov087_02218264:
     mov r1, #0x67
     mov r2, #0x4
     mov r3, #0x50
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
 .L_0221833c:
     cmp r4, #0x0
     addlt r0, r6, #0x200
@@ -109,7 +109,7 @@ func_ov087_02218264:
     mov r1, #0x67
     mov r2, #0x3
     mov r3, #0x40
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
 .L_022183ec:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}

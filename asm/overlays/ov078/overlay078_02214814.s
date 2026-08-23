@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorExtendedType2_SpawnOptionalPresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020befec
 .extern func_ov078_02213a74
 .extern gSoundContext
@@ -219,7 +219,7 @@ func_ov078_02214814:
     ldr r0, [r0, #0x0]
     mov r3, r8
     mov r1, #0x1
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02214b54
 .L_02214b3c:
     ldr r0, .L_02214cb0
@@ -227,7 +227,7 @@ func_ov078_02214814:
     ldr r0, [r0, #0x0]
     mov r3, r8
     mov r1, #0x61
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02214b54:
     mov r0, r8
     mov r1, r7
@@ -283,7 +283,7 @@ func_ov078_02214814:
     mov r3, r8
     ldr r0, [r0, #0x0]
     mov r1, #0x55
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02214c80
 .L_02214c2c:
     add r0, r8, #0x200
@@ -296,7 +296,7 @@ func_ov078_02214814:
     ldr r0, [r0, #0x0]
     mov r3, r8
     mov r1, #0x1
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02214c80
 .L_02214c5c:
     ldr r0, .L_02214cb0
@@ -304,7 +304,7 @@ func_ov078_02214814:
     ldr r0, [r0, #0x0]
     mov r3, r8
     mov r1, #0x61
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_02214c80
 .L_02214c78:
     mov r0, #0x1a

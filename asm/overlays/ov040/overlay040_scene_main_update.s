@@ -18,12 +18,12 @@
     .extern func_02025a3c
     .extern Sound_PlayDirectSequence
     .extern Sound_FadeDirectSequence
-    .extern func_020593ac
-    .extern func_0205940c
-    .extern func_020594a4
+    .extern Sound_PlayEffectWithParameters
+    .extern Sound_StopEffect
+    .extern Sound_IsEffectPlaying
     .extern func_020594ec
-    .extern func_0205958c
-    .extern func_020595b0
+    .extern Sound_StopStream
+    .extern Sound_FadeStreamVolume
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209a07c
     .extern func_0209a0d8
@@ -300,7 +300,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     mov r1, #0x12c
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     cmp r0, #0x0
     bne .L_021fe578
     ldr r0, .L_021ff13c
@@ -358,7 +358,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     mov r1, #0x12c
     mov r2, #0xc
     str r4, [sp, #0x4]
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     b .L_021ff3e0
 .L_021fe63c:
     cmp r0, #0x2
@@ -396,7 +396,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     mov r1, #0x3c
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_020595b0
+    bl Sound_FadeStreamVolume
     ldr r0, .L_021ff13c
     mov r1, #0x0
     ldr r0, [r0, #0x0]
@@ -441,7 +441,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     str r2, [r10, #0xb40]
     ldr r0, [r0, #0x0]
     mov r1, #0x78
-    bl func_020595b0
+    bl Sound_FadeStreamVolume
     ldr r0, [r10, #0x48]
     mvn r1, #0x0
     ldr r0, [r0, #0x5c]
@@ -912,7 +912,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     ldr r0, .L_021ff13c
     mov r1, #0xa
     ldr r0, [r0, #0x0]
-    bl func_0205958c
+    bl Sound_StopStream
     ldr r0, .L_021ff13c
     mov r1, #0x8
     ldr r0, [r0, #0x0]
@@ -1151,7 +1151,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
     ldr r0, [r0, #0x0]
     mov r1, #0x12c
     mov r2, #0x14
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_021ff13c
     mov r1, #0x12c
     ldr r0, [r0, #0x0]

@@ -9,7 +9,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern Sound_PlayDirectSequence
 .extern Sound_StopDirectSequence
-.extern func_02059344
+.extern Sound_IsDirectSequencePlaying
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov092_022177e0
@@ -181,7 +181,7 @@ func_ov092_022192c8:
     ldr r0, .L_022196c4
     mov r1, #0x94
     ldr r0, [r0, #0x0]
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     bne .L_022196b4
     ldr r0, .L_022196c4
@@ -196,7 +196,7 @@ func_ov092_022192c8:
     ldr r0, .L_022196c4
     mov r1, #0x94
     ldr r0, [r0, #0x0]
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     beq .L_022196b4
     ldr r0, .L_022196c4

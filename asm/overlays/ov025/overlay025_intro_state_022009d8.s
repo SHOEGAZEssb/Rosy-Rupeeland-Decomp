@@ -8,9 +8,9 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
-.extern func_0207f248
-.extern func_0207f2e0
-.extern func_020802f4
+.extern RetailSaveContext_PollOperation
+.extern RetailSaveContext_BeginDiscovery
+.extern RetailSaveContext_BeginRecordDelete
 .extern func_02091b98
 .extern func_02091c7c
 .extern func_020922f0
@@ -57,7 +57,7 @@ L_02200a18:
     ldr r0, L_02200e3c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
-    bl func_0207f2e0
+    bl RetailSaveContext_BeginDiscovery
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -66,7 +66,7 @@ L_02200a18:
 L_02200a40:
     ldr r0, L_02200e3c
     ldr r0, [r0, #0x0]
-    bl func_0207f248
+    bl RetailSaveContext_PollOperation
     cmp r0, #0x0
     mvnne r1, #0x0
     cmpne r0, r1
@@ -211,7 +211,7 @@ L_02200c1c:
     ldr r1, [r4, #0x638]
     ldr r0, [r0, #0x0]
     mov r2, #0x1
-    bl func_020802f4
+    bl RetailSaveContext_BeginRecordDelete
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -221,7 +221,7 @@ L_02200c1c:
 L_02200c80:
     ldr r0, L_02200e3c
     ldr r0, [r0, #0x0]
-    bl func_0207f248
+    bl RetailSaveContext_PollOperation
     cmp r0, #0x0
     beq L_02200e2c
     mvn r1, #0x0

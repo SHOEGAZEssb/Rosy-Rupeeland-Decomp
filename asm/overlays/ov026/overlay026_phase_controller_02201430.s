@@ -12,7 +12,7 @@
 .extern data_ov026_02204738
 .extern data_ov026_02204740
 .extern data_ov026_02204748
-.extern func_020592fc
+.extern Sound_SetDirectSequenceTrackMask
 .extern func_020594ec
 .extern func_020922f0
 .extern func_ov026_021ff878
@@ -77,7 +77,7 @@ L_022014e0:
     mov r1, #0x3d
     ldr r0, [r0, #0x0]
     mov r2, #0x4400
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_02201698
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -88,7 +88,7 @@ L_02201508:
     ldr r2, L_0220169c
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016a0
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -99,7 +99,7 @@ L_02201530:
     ldr r2, L_022016a4
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016a8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -110,7 +110,7 @@ L_02201558:
     ldr r2, L_022016ac
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016b0
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -121,7 +121,7 @@ L_02201580:
     ldr r2, L_022016b4
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016b8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -132,7 +132,7 @@ L_022015a8:
     ldr r2, L_022016bc
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016c0
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -143,7 +143,7 @@ L_022015d0:
     ldr r2, L_022016c4
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016c8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -154,7 +154,7 @@ L_022015f8:
     ldr r2, L_022016cc
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016d0
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -165,7 +165,7 @@ L_02201620:
     ldr r2, L_022016d4
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016d8
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -176,7 +176,7 @@ L_02201648:
     ldr r2, L_022016dc
     ldr r0, [r0, #0x0]
     mov r1, #0x3d
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     ldr r1, L_022016e0
     mov r0, r4
     ldmia r1, {r1, r2}

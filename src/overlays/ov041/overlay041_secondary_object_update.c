@@ -11,7 +11,7 @@
 extern "C" {
 s32 func_020befec(s32, s32);
 s32 func_020adc90(s32, s32);
-void func_0205943c(void *, s32, s32, s32, s32, s32);
+void Sound_SetEffectParameters(void *, s32, s32, s32, s32, s32);
 u32 genrand_int32(void);
 extern void *gSoundContext;
 extern const s16 data_020c9670[];
@@ -65,10 +65,10 @@ extern "C" void func_ov041_02200a38(void *object)
             volume = 0;
         if (volume > 100)
             volume = 100;
-        func_0205943c(gSoundContext, 0x12d, 8, volume, 0, 0);
+        Sound_SetEffectParameters(gSoundContext, 0x12d, 8, volume, 0, 0);
         if (volume < 10)
             volume = 10;
-        func_0205943c(gSoundContext, 0x12d, 12, volume, 0, 0);
+        Sound_SetEffectParameters(gSoundContext, 0x12d, 12, volume, 0, 0);
     }
 
     for (s32 lane = 3; lane >= 0; --lane) {

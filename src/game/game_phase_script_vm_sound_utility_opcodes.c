@@ -10,8 +10,8 @@ extern void *gSoundContext;
 extern s32 func_020570b0(u16 value);
 extern void func_02099114(s32 value);
 extern void Sound_StopAllManagedPlayers(void *context);
-extern void func_02059218(void *context);
-extern void func_02059a00(void *context);
+extern void SoundPhaseManager_Reset(void *context);
+extern void Sound_ReapplyCurrentGroupSlots(void *context);
 #ifdef __cplusplus
 }
 #endif
@@ -42,13 +42,13 @@ s32 GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand(GamePhaseActorScri
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (command) {
     case 15:
-        GamePhaseScriptVm_SetResult(&self->base, func_02059510(gSoundContext, -1) != 0);
+        GamePhaseScriptVm_SetResult(&self->base, Sound_IsStreamPlaying(gSoundContext, -1) != 0);
         break;
-    case 16: func_020595d4(gSoundContext); break;
-    case 17: func_020595ec(gSoundContext); break;
+    case 16: Sound_SaveStreamPosition(gSoundContext); break;
+    case 17: Sound_ResumeStreamPosition(gSoundContext); break;
     case 18: Sound_StopAllManagedPlayers(gSoundContext); break;
-    case 19: func_02059218(gSoundContext); break;
-    case 20: func_02059a00(gSoundContext); break;
+    case 19: SoundPhaseManager_Reset(gSoundContext); break;
+    case 20: Sound_ReapplyCurrentGroupSlots(gSoundContext); break;
     }
     return 0;
 }

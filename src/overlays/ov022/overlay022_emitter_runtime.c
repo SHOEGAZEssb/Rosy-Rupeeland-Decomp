@@ -15,7 +15,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
-extern void func_020593ac(void *, s32, s32, s32, ...);
+extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, ...);
 extern void *func_02073e48(void *, s32, s32, s32, ...);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
@@ -81,7 +81,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
 
     if (delta != 0) {
         if (func_02091c7c((u8 *)emitter + 0x2c, 2) != 0) {
-            func_020593ac(gSoundContext, 0, 0x4f, 0x7f, 0, 0);
+            Sound_PlayEffectWithParameters(gSoundContext, 0, 0x4f, 0x7f, 0, 0);
             func_02091b98((u8 *)emitter + 0x2c,
                           func_0209189c((u8 *)emitter + 0x64, 10, 20));
         }

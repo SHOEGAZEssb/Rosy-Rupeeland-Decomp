@@ -19,7 +19,7 @@ extern void Heap_Free(void *allocation);
 extern void func_02075020(void *resource);
 extern void func_02092418(void *state);
 extern void GX_SetGraphicsMode(s32 mode, s32 bgMode, s32 bg0Mode);
-extern void func_02059230(void *soundContext, s32 first, s32 second);
+extern void SoundPhaseManager_Update(void *soundContext, s32 first, s32 second);
 extern void func_ov048_0220b7b4(void *state);
 extern void func_020923a0(void *state);
 extern void GraphicsResourceSetVariant_Destroy(void *state);
@@ -33,7 +33,7 @@ extern void func_ov048_0220ba90(void *state);
  * invokes child +0x60's vtable slot +4 when present, destroys/frees resource
  * owner +0x5C, releases both global resource/font handles, tears down embedded
  * state +0x64/+0x98, resets graphics mode to (1,0,0), clears halfword registers
- * 0x04000050 and 0x04001050, and stops/resets sound through func_02059230(0,0).
+ * 0x04000050 and 0x04001050, and stops/resets sound through SoundPhaseManager_Update(0,0).
  * Returns object without freeing its storage; heap, resources, sound, renderer,
  * and display hardware state change.
  */
@@ -57,7 +57,7 @@ static void *teardown_presentation(void *object)
     GX_SetGraphicsMode(1, 0, 0);
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
-    func_02059230(gSoundContext, 0, 0);
+    SoundPhaseManager_Update(gSoundContext, 0, 0);
     func_ov048_0220b7b4((u8 *)object + 0x98);
     func_020923a0((u8 *)object + 0x64);
     return object;

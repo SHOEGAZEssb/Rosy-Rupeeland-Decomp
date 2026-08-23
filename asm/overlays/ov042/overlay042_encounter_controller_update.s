@@ -7,9 +7,9 @@
 .extern func_020a1ec0
 .extern func_ov042_02207114
 .extern func_ov066_02210514
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern func_020befec
-.extern func_0205943c
+.extern Sound_SetEffectParameters
 .extern func_ov042_02201234
 .extern func_ov042_02203678
 .extern func_ov042_0220368c
@@ -23,7 +23,7 @@
 .extern Sound_StopDirectSequence
 .extern func_020594ec
 .extern func_ov071_02210540
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern func_020a1794
 .extern func_ov042_022009a0
 .extern func_ov042_02200bc0
@@ -159,7 +159,7 @@ func_ov042_02201f30:
     ldr r0, [r0, #0x0]
     ldr r1, .L_02202e00
     mov r2, #0x4
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     ldr r0, [r4, #0x1b0]
     add r0, r0, #0x1
     str r0, [r4, #0x1b0]
@@ -214,7 +214,7 @@ func_ov042_02201f30:
     ldr r1, .L_02202e00
     movgt r3, #0x7f
     mov r2, #0x4
-    bl func_0205943c
+    bl Sound_SetEffectParameters
     b .L_022021c8
 .L_02202198:
     cmp r0, #0x134
@@ -561,7 +561,7 @@ func_ov042_02201f30:
     ldr r0, [r0, #0x0]
     ldr r1, .L_02202e38
     mov r3, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
 .L_022026d8:
     ldr r0, [r4, #0x158]
     cmp r0, #0x1000
@@ -626,7 +626,7 @@ func_ov042_02201f30:
     ldr r1, .L_02202e00
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_022027d0:
     ldr r2, [r4, #0x4c]
     ldr r0, [r4, #0x48]
@@ -711,7 +711,7 @@ func_ov042_02201f30:
     ldr r1, .L_02202e4c
     ldr r0, [r0, #0x0]
     mov r2, #0x7
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, [r4, #0x48]
     ldr r1, .L_02202e50
     bl func_020a1ec0
@@ -1193,7 +1193,7 @@ func_ov042_02201f30:
     rsb r1, r1, #0x16c
     ldr r0, [r0, #0x0]
     mov r2, #0x4
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, [r4, #0xa0]
     bl func_ov042_02205180
     mov r0, #0x4

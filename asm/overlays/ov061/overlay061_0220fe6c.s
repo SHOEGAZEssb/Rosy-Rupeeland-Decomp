@@ -8,7 +8,7 @@
 .extern DebugHudState_Close
 .extern DebugHudState_RefreshRectangle
 .extern DebugHudState_GetGlobal
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern gSoundContext
 
 .global func_ov061_0220fe6c
@@ -28,7 +28,7 @@ func_ov061_0220fe6c:
     ldr r1, .L_0220fed8
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_0220feac:
     bl OverlayManager_GetGlobal
     mov r1, #0x2

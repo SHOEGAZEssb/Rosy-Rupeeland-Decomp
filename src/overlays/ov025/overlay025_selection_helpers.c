@@ -13,7 +13,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020593ac(void *, s32, s32, s32, s32, s32);
+extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, s32, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void func_02091b98(void *, s32);
@@ -35,7 +35,7 @@ extern "C" void func_ov025_0220088c(void *scene)
     if (func_02091c7c((u8 *)scene + 0x618, 2)) {
         u16 sounds[6] = {0x3500, 0x3501, 0x3502, 0x3503, 0x3504, 0x3505};
         s32 choice = TitleRandom_NextBounded((u8 *)scene + 0x634, 6);
-        func_020593ac(gSoundContext, sounds[choice] >> 7,
+        Sound_PlayEffectWithParameters(gSoundContext, sounds[choice] >> 7,
                       sounds[choice] & 0x7f, 0x20, 0, 0);
         s32 result = func_0209189c((u8 *)scene + 0x634, 10, 30);
         func_02091b98((u8 *)scene + 0x618, result);

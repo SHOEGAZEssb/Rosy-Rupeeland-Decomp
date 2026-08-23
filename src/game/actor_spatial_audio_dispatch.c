@@ -11,7 +11,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *state);
 extern s32 SignedAbsoluteValueVariant(s32 value);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern s32 func_020adc40(s32 value);
-extern void func_020593ac(void *soundContext, u32 soundId, u32 variant,
+extern void Sound_PlayEffectWithParameters(void *soundContext, u32 soundId, u32 variant,
                           s32 volume, s32 pan, s32 extra);
 #ifdef __cplusplus
 }
@@ -23,7 +23,7 @@ extern void func_020593ac(void *soundContext, u32 soundId, u32 variant,
  * reference X (manager+0x2fbc resolved through ActorMotionAreaFollower_GetPosition), subtracting
  * 0x80000, shifting by 12, and clamping to [-96,96]. Volume is 96-|pan|/3.
  * The encoded sound splits into id=value>>7 and variant=value&0x7f; extra is
- * forwarded unchanged. Returns no value; func_020593ac affects sound hardware.
+ * forwarded unchanged. Returns no value; Sound_PlayEffectWithParameters affects sound hardware.
  */
 void func_020349b8(void *self, u32 sound, s32 extra)
 {
@@ -41,7 +41,7 @@ void func_020349b8(void *self, u32 sound, s32 extra)
     if (pan < -96) pan = -96;
     if (pan > 96) pan = 96;
     volume = 96 - func_020adae4(SignedAbsoluteValueVariant(pan), 3);
-    func_020593ac(gSoundContext, sound >> 7, sound & 0x7f,
+    Sound_PlayEffectWithParameters(gSoundContext, sound >> 7, sound & 0x7f,
                   volume, pan, extra);
 }
 
@@ -69,6 +69,6 @@ void func_02034a60(void *self, u32 sound, s32 extra)
 
     distance = func_020adc40((x * x + y * y) << 12) >> 12;
     volume = 96 - func_020adae4(SignedAbsoluteValueVariant(distance), 3);
-    func_020593ac(gSoundContext, sound >> 7, sound & 0x7f,
+    Sound_PlayEffectWithParameters(gSoundContext, sound >> 7, sound & 0x7f,
                   volume, x / 2, extra);
 }

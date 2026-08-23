@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov095_0221cba8
 .extern VecFx32Object_Assign
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov095_02218404
 .extern gSoundContext
 .extern genrand_int32
@@ -190,7 +190,7 @@ func_ov095_02218130:
     ldr r0, .L_02218400
     mov r2, #0xb
     ldr r0, [r0, #0x0]
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_022183f0
 .L_022183ec:
     bl OS_Halt

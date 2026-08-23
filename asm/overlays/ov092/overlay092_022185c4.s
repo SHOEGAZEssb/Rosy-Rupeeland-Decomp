@@ -9,7 +9,7 @@
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern Actor_SetActive
 .extern TrackedResourceActor_SpawnFromKey
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_Printf
 .extern func_020befec
@@ -126,7 +126,7 @@ func_ov092_022185c4:
     ldr r0, [r0, #0x0]
     mov r2, #0x9
     mov r3, #0x64
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
     b .L_02218904
 .L_02218758:
     ldr r0, [r4, #0x248]

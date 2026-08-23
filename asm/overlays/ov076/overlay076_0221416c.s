@@ -1,10 +1,10 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern ActorExtendedType2_UpdateFrame
-.extern func_020593dc
-.extern func_0205940c
-.extern func_0205946c
-.extern func_020594a4
+.extern Sound_PlayOwnedEffect
+.extern Sound_StopEffect
+.extern Sound_SetEffectPitch
+.extern Sound_IsEffectPlaying
 .extern gSoundContext
 
 .global func_ov076_0221416c
@@ -17,7 +17,7 @@ func_ov076_0221416c:
     mov r1, #0x1c4
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_020594a4
+    bl Sound_IsEffectPlaying
     ldrsh r1, [r4, #0xd6]
     sub r1, r1, #0x5
     mov r1, r1, lsl #0x10
@@ -37,7 +37,7 @@ func_ov076_0221416c:
     mov r3, r4
     mov r1, #0x1c4
     mov r2, #0x8
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_022141e0:
     ldrsh r0, [r4, #0xd6]
     cmp r0, #0x5
@@ -52,7 +52,7 @@ func_ov076_0221416c:
     mov r1, #0x1c4
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_0205946c
+    bl Sound_SetEffectPitch
     b .L_02214234
 .L_02214218:
     cmp r0, #0x0
@@ -61,7 +61,7 @@ func_ov076_0221416c:
     mov r1, #0x1c4
     ldr r0, [r0, #0x0]
     mov r2, #0x8
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_02214234:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}

@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_extended_command_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern func_020593dc
-.extern func_02059484
+.extern Sound_PlayOwnedEffect
+.extern Sound_FadeEffectVolume
 .extern Sound_FadeDirectSequence
-.extern func_02059200
-.extern func_0205936c
-.extern func_020592fc
+.extern Sound_ConfigureAuxiliaryManagers
+.extern Sound_GetDirectSequenceTrackMask
+.extern Sound_SetDirectSequenceTrackMask
 .extern gSoundContext
 .global func_0201aa14
 func_0201aa14: ; 0x0201aa14
@@ -45,7 +45,7 @@ L_0201aa78:
     mov r1, r2, asr #0x7
     ldr r3, [r7, #0x84]
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b L_0201ab50
 L_0201aaa0:
     ldr r1, L_0201ab5c
@@ -56,7 +56,7 @@ L_0201aaa0:
     mov r3, r4
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_02059484
+    bl Sound_FadeEffectVolume
     b L_0201ab50
 L_0201aac8:
     ldr r0, L_0201ab5c
@@ -75,14 +75,14 @@ L_0201aaf0:
     ldr r0, [r0, #0x0]
     mov r2, r4
     mov r3, r5
-    bl func_02059200
+    bl Sound_ConfigureAuxiliaryManagers
     b L_0201ab50
 L_0201ab0c:
     ldr r0, L_0201ab5c
     mov r1, r6, lsl #0x10
     ldr r0, [r0, #0x0]
     mov r1, r1, lsr #0x10
-    bl func_0205936c
+    bl Sound_GetDirectSequenceTrackMask
     mov r1, #0x1
     cmp r5, #0x0
     orrne r0, r0, r1, lsl r4
@@ -94,7 +94,7 @@ L_0201ab0c:
     mov r1, r6, lsl #0x10
     ldr r0, [r0, #0x0]
     mov r1, r1, lsr #0x10
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
 L_0201ab50:
     mov r0, #0x0
     add sp, sp, #0x8

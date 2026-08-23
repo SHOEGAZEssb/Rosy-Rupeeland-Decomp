@@ -9,7 +9,7 @@
 .extern data_ov071_02212340
 .extern data_ov071_022123e0
 .extern VecFx32Object_Assign
-.extern func_020595b0
+.extern Sound_FadeStreamVolume
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a1794
 .extern func_020adc40
@@ -597,7 +597,7 @@ func_ov071_0221083c:
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x3c
-    bl func_020595b0
+    bl Sound_FadeStreamVolume
 .L_022110b8:
     ldr r2, [r6, #0xec]
     ldr r0, [r6, #0xb0]

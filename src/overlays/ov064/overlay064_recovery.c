@@ -105,7 +105,7 @@ extern void Sound_StopAllDirectSequences(O64_ARGS), Sound_PlayDirectSequence(O64
 extern void *DisplayBrightnessPair_GetScreen(O64_ARGS);
 extern void DisplayBrightness_StartTransition(O64_ARGS);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(O64_ARGS);
-extern void Sound_StopAllManagedPlayers(O64_ARGS), func_02059604(O64_ARGS);
+extern void Sound_StopAllManagedPlayers(O64_ARGS), Sound_ConfigureGroupSlots(O64_ARGS);
 extern void Sound_SetMasterVolume(O64_ARGS);
 #ifdef __cplusplus
 }
@@ -803,7 +803,7 @@ s32 Overlay064Scene_UpdateMode3(void *scene)
             F(u16, F(void *, scene, 0x44), 0x24) &= (u16)~0x10;
             F(s16, scene, 0x74) = 0;
             Sound_StopAllManagedPlayers(gSoundContext, 0);
-            func_02059604(gSoundContext, 0xfff, 0x20a,
+            Sound_ConfigureGroupSlots(gSoundContext, 0xfff, 0x20a,
                           -1, -1, -1, -1);
             F(s32, gSoundContext, 0xa4) = 0x7f;
             Sound_SetMasterVolume();

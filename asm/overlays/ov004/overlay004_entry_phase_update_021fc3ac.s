@@ -1,6 +1,6 @@
     .text
     .extern func_020922f0
-    .extern func_020592fc
+    .extern Sound_SetDirectSequenceTrackMask
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_ov004_021fb6e4
     .extern func_ov004_021fbf10
@@ -42,70 +42,70 @@ L_021fc410:
     mov r1, #0xcc
     ldr r0, [r0, #0x0]
     mov r2, #0x4400
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc428:
     ldr r0, L_021fc548
     ldr r2, L_021fc54c
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc440:
     ldr r0, L_021fc548
     ldr r2, L_021fc550
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc458:
     ldr r0, L_021fc548
     ldr r2, L_021fc554
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc470:
     ldr r0, L_021fc548
     ldr r2, L_021fc558
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc488:
     ldr r0, L_021fc548
     ldr r2, L_021fc55c
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc4a0:
     ldr r0, L_021fc548
     ldr r2, L_021fc560
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc4b8:
     ldr r0, L_021fc548
     ldr r2, L_021fc564
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc4d0:
     ldr r0, L_021fc548
     ldr r2, L_021fc568
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
     b L_021fc4fc
 L_021fc4e8:
     ldr r0, L_021fc548
     ldr r2, L_021fc56c
     ldr r0, [r0, #0x0]
     mov r1, #0xcc
-    bl func_020592fc
+    bl Sound_SetDirectSequenceTrackMask
 L_021fc4fc:
     ldr r0, L_021fc570
     ldr r0, [r0, #0x0]

@@ -50,10 +50,10 @@ extern void func_020349b8(UNKNOWN_PARAMETERS);
 extern void func_0204d308(UNKNOWN_PARAMETERS);
 extern void Sound_StopAllDirectSequences(UNKNOWN_PARAMETERS);
 extern void Sound_PlayDirectSequence(UNKNOWN_PARAMETERS);
-extern void func_020593ac(UNKNOWN_PARAMETERS);
-extern void func_0205940c(UNKNOWN_PARAMETERS);
-extern void func_02059484(UNKNOWN_PARAMETERS);
-extern void func_0205958c(UNKNOWN_PARAMETERS);
+extern void Sound_PlayEffectWithParameters(UNKNOWN_PARAMETERS);
+extern void Sound_StopEffect(UNKNOWN_PARAMETERS);
+extern void Sound_FadeEffectVolume(UNKNOWN_PARAMETERS);
+extern void Sound_StopStream(UNKNOWN_PARAMETERS);
 extern void func_0209a748(UNKNOWN_PARAMETERS);
 extern void func_020a2844(UNKNOWN_PARAMETERS);
 extern void func_020a28e0(UNKNOWN_PARAMETERS);
@@ -231,7 +231,7 @@ void func_ov090_02217d70(void *self)
                                     0),
                               0x162b, 0x162c, 0x162d, 0, 4, -1, 1);
             ActorMotionJitter_EnsureMinimum((ActorMotionJitter *)(runtime + 0x2fbc), 0x2d, 2);
-            func_020593ac(gSoundContext, 0x142, 10, 0x40, 0, 0);
+            Sound_PlayEffectWithParameters(gSoundContext, 0x142, 10, 0x40, 0, 0);
         }
         VecFx32Triple_Destroy(&curve);
         VecFx32Object_Destroy(&third);
@@ -300,7 +300,7 @@ void func_ov090_02217d70(void *self)
             FIELD(u32, scene, 0x50) =
                 ((FIELD(u32, scene, 0x50) & ~1u) | 1) & 0xffff8001 | 6;
             FIELD(u8, scene, 0x54) &= ~1;
-            func_02059484(gSoundContext, 0x142, 0xb, 0x30, 0x3c);
+            Sound_FadeEffectVolume(gSoundContext, 0x142, 0xb, 0x30, 0x3c);
             if (secondaryActor != 0)
                 Type7Actor_SetFlag40StateEnabled(secondaryActor, 1);
         }
@@ -328,7 +328,7 @@ void func_ov090_02217d70(void *self)
         break;
     case 7:
         if ((FIELD(u8, scene, 0x54) & 1) != 0) {
-            func_02059484(gSoundContext, 0x142, 0xb, 0, 0x3c);
+            Sound_FadeEffectVolume(gSoundContext, 0x142, 0xb, 0, 0x3c);
             func_ov090_0221b7f8(self, 0x10);
             FIELD(u8, scene, 0x54) &= ~2;
             FIELD(u32, scene, 0x50) &= ~1u;
@@ -359,7 +359,7 @@ void func_ov090_02217d70(void *self)
         }
         break;
     case 10:
-        func_0205940c(gSoundContext, 0x142, 0xb);
+        Sound_StopEffect(gSoundContext, 0x142, 0xb);
         VecFx32Object_Assign((VecFx32Object *)((u8 *)self + 0x20c),
                              (VecFx32Object *)((u8 *)primaryActor + 0x18));
         if (FIELD(s32, self, 0x214) < 0x21c000)
@@ -1045,7 +1045,7 @@ void func_ov090_02217d70(void *self)
             TITLE_STATE(self) = 0x1e;
             if (secondaryActor != 0)
                 FIELD(u32, secondaryActor, 0x268) |= 0x20000;
-            func_0205958c(gSoundContext, 10);
+            Sound_StopStream(gSoundContext, 10);
             Sound_PlayDirectSequence(gSoundContext, 0x56, 0x7f);
         }
         break;

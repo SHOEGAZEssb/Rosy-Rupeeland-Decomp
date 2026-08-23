@@ -16,7 +16,7 @@ extern s32 func_020ada8c(s32 dividend, s32 divisor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void *SceneManager_GetCurrent(void *manager);
 extern void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *actor);
-extern void func_0205940c(void *sound, s32 first, s32 second);
+extern void Sound_StopEffect(void *sound, s32 first, s32 second);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
@@ -109,7 +109,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
                 --*(s32 *)(actor + 0x248);
                 if (*(void **)(actor + 0x26c) != 0) ActorDerivedType1_UpdateAuxiliaryResourceMotion(actor);
             } else {
-                func_0205940c(gSoundContext, 0, 0x25);
+                Sound_StopEffect(gSoundContext, 0, 0x25);
                 GameWork_ClearFlag(gGameWork, 0x3f5);
             }
         } else if (callActorQuery(actor, 0x38) == 0 &&

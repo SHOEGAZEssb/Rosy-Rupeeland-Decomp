@@ -5,7 +5,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern func_020349b8
 .extern ActorDerivedType1_ApplyResourceIndex
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern gHeapContext
 .extern gSoundContext
 
@@ -67,7 +67,7 @@ ActorDerivedType1_TeardownActiveRecord: ; 0x020390c8
     mov r1, r2, asr #0x7
     ldr r0, [r0, #0x0]
     and r2, r2, #0x7f
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_020391a0:
     mov r0, r4
     mov r1, #0x0

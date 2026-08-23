@@ -18,7 +18,7 @@ extern void ActorCollection_SetSpriteMode(void *object, s32 value);
 extern void ActorCollection_SetEnabled(void *object, s32 value);
 extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *object, s32 enabled);
 extern void ActorInteractionRuntime_Start(void);
-extern void func_020598a0(void *sound, u16 value);
+extern void SoundPhaseManager_SetPhase(void *sound, u16 value);
 extern void GamePhase_ResetTransientState(void);
 extern void GamePhaseState_CreatePhaseObject(GamePhaseState *self,
                                              const void *configuration);
@@ -118,7 +118,7 @@ void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configu
     u32 i;
     void *helper;
 
-    func_020598a0(gSoundContext, (u16)config->phaseId);
+    SoundPhaseManager_SetPhase(gSoundContext, (u16)config->phaseId);
     GamePhaseState_CreatePhaseObject(self, configuration);
     /* Offset 0x1c is the phase's overlay ID; phase 90 stores overlay 195. */
     OverlaySlot_LoadOverlay(self->overlaySlotStorage, config->overlayId1c);

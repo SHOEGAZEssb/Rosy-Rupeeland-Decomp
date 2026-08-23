@@ -11,7 +11,7 @@
 .extern TimedSpriteOffsetPresentation_Init
 .extern Position_AdjustForTerrainHeight
 .extern ActorFeedbackResources_GetResource
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern gHeapContext
 .extern gSoundContext
 .extern gTouchPanelManager
@@ -99,7 +99,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     ldr r0, [r0, #0x0]
     mov r1, r5, asr #0x7
     and r2, r5, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
 .L_0203a9f8:
     mov r0, #0x1
     bl ActorFeedbackResources_GetResource

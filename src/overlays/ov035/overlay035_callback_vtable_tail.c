@@ -12,7 +12,7 @@ extern const u8 data_ov035_02203af8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02059230(void *soundContext, s32 first, s32 second);
+extern void SoundPhaseManager_Update(void *soundContext, s32 first, s32 second);
 extern void func_ov035_02202350(void *record, void *first, void *second,
                                void *unused);
 extern s32 func_ov035_021fce5c(void *scene);
@@ -43,7 +43,7 @@ extern "C" s32 func_ov035_02202954(void *object)
 {
     switch (FIELD(s32, object, 4)) {
     case 0:
-        func_02059230(gSoundContext, 1, 0);
+        SoundPhaseManager_Update(gSoundContext, 1, 0);
         ++FIELD(s32, object, 4);
         FIELD(s32, object, 8) = 0;
         /* Fall through to install the active callback immediately. */

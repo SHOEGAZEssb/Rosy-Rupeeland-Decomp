@@ -5,7 +5,7 @@
     .extern data_ov018_021ffbf0
     .extern data_ov018_021ffbf8
     .extern data_ov018_021ffd68
-    .extern func_02059344
+    .extern Sound_IsDirectSequencePlaying
     .extern func_02073e48
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -283,7 +283,7 @@ L_021fedb8:
     ldr r0, L_021fef1c
     mov r1, #0x8f
     ldr r0, [r0, #0x0]
-    bl func_02059344
+    bl Sound_IsDirectSequencePlaying
     cmp r0, #0x0
     bne L_021feef4
     ldr r2, [r4, #0xd4]

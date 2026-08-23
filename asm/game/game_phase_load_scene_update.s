@@ -46,7 +46,7 @@
 .extern func_0201e0f4
 .extern ActorCollection_GetSpriteOwner
 .extern GridEffectActorRegistry_FinalizeDepartingActors
-.extern func_02058eb8
+.extern Sound_SetModalEnvelopeEnabled
 .extern InventoryScene_Init
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_ReleaseResources
@@ -188,7 +188,7 @@ L_0200d1e4:
     mov r1, #0x1
     mov r2, #0x0
     mov r3, #0x14
-    bl func_02058eb8
+    bl Sound_SetModalEnvelopeEnabled
     b L_0200d224
 L_0200d208:
     mov r2, #0x0
@@ -197,7 +197,7 @@ L_0200d208:
     ldr r0, [r0, #0x0]
     mov r1, #0x1
     mov r3, #0x14
-    bl func_02058eb8
+    bl Sound_SetModalEnvelopeEnabled
 L_0200d224:
     ldr r0, [r5, #0x2c]
     cmp r0, #0xa
@@ -1058,7 +1058,7 @@ L_0200dde8:
     ldr r0, [r0, #0x0]
     mov r2, r1
     mov r3, #0x14
-    bl func_02058eb8
+    bl Sound_SetModalEnvelopeEnabled
     add r0, r5, #0x40
     bl func_02092418
     cmp r4, #0xf

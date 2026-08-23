@@ -266,7 +266,7 @@ void Presentation_DestroyNoOp(void *object)
     (void)object;
 }
 
-extern void func_02073ef8(void *group);
+extern void GraphicsSpriteState_ReleaseFromGroup(void *group);
 
 /* Sprite-backed presentation destructor (retail 0x0209548C). Ownership of the
  * sprite group at +0x9C returns to its renderer before the inert base
@@ -276,7 +276,7 @@ void *SpritePresentation_Destroy(void *object)
     u8 *bytes = (u8 *)object;
 
     *(u32 *)bytes = (u32)(uintptr_t)data_020f26a8;
-    func_02073ef8(*(void **)(bytes + 0x9c));
+    GraphicsSpriteState_ReleaseFromGroup(*(void **)(bytes + 0x9c));
     *(u32 *)(bytes + 0x9c) = 0;
     Presentation_DestroyNoOp(object);
     return object;

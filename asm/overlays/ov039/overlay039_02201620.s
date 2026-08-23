@@ -8,7 +8,7 @@
     .extern func_ov049_0220c67c
     .extern Sound_StopAllDirectSequences
     .extern func_020594ec
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern Sound_Play
     .extern gSoundContext
     .global func_ov039_02201620
@@ -100,7 +100,7 @@ L_02201704:
     ldr r1, L_022017cc
     ldr r0, [r0, #0x0]
     mov r2, #0x9
-    bl func_0205940c
+    bl Sound_StopEffect
 L_02201778:
     add r0, r4, #0x1c00
     mov r2, #0x0
@@ -111,7 +111,7 @@ L_02201778:
     mov r2, #0x2
     ldr r0, [r1, #0x0]
     ldr r1, L_022017cc
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, L_022017c8
     ldr r1, L_022017cc
     ldr r0, [r0, #0x0]

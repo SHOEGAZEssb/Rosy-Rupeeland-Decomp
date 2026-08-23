@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
 .extern VecFx32Object_GetMagnitude
 .extern ActorExtendedType2_UpdateTargetValidationMotion
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov096_0221880c
 .extern func_ov096_0221881c
 .extern gSoundContext
@@ -66,7 +66,7 @@ func_ov096_02218958:
     ldr r0, [r0, #0x0]
     add r1, r1, #0xc7
     mov r2, #0x2
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     mov r0, r4
     bl func_ov096_0221881c
     mov r1, #0x0

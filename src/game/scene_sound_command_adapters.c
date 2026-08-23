@@ -11,8 +11,8 @@
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 archive, s32 member);
 extern void Sound_PlayDirectSequence(void *context, u16 sequence, s32 volume);
-extern void func_0205940c(void *context, s32 archive, s32 member);
-extern void func_0205943c(void *context, s32 archive, s32 member, s32 value,
+extern void Sound_StopEffect(void *context, s32 archive, s32 member);
+extern void Sound_SetEffectParameters(void *context, s32 archive, s32 member, s32 value,
                           s32 pan, s32 pitch);
 extern void Sound_StopDirectSequence(void *context, u16 sequence, s32 fade_frames);
 
@@ -29,7 +29,7 @@ void func_02092288(void *scene, s32 packed)
 {
     u16 value = (u16)packed;
     (void)scene;
-    func_0205940c(gSoundContext, (s32)value >> 7, value & 0x7f);
+    Sound_StopEffect(gSoundContext, (s32)value >> 7, value & 0x7f);
 }
 
 /* Apply an explicit volume/value to one packed sequence-archive member. */
@@ -37,7 +37,7 @@ void func_020922b0(void *scene, s32 packed, s32 argument)
 {
     u16 value = (u16)packed;
     (void)scene;
-    func_0205943c(gSoundContext, (s32)value >> 7, value & 0x7f,
+    Sound_SetEffectParameters(gSoundContext, (s32)value >> 7, value & 0x7f,
                   argument, 0, 0);
 }
 

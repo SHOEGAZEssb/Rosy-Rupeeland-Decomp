@@ -10,7 +10,7 @@
     .extern func_ov039_021fd93c
     .extern genrand_int32
     .extern func_020bf1f8
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern VecFx32Object_Init
     .extern VecFx32Object_Assign
     .extern VecFx32Object_Destroy
@@ -611,7 +611,7 @@ L_021fe898:
     mov r1, #0x63
     ldr r0, [r0, #0x0]
     mov r2, #0x7
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r6, #0x1c00
     ldrh r1, [r0, #0xba]
     cmp r1, #0xa
@@ -726,7 +726,7 @@ L_021fea4c:
     ldr r0, [r0, #0x0]
     mov r1, #0x63
     mov r2, #0x8
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r6, #0x1d00
     ldrh r1, [r0, #0x9c]
     add r1, r1, #0x1

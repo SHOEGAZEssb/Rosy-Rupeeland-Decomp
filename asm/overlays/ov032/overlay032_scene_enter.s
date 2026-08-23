@@ -7,9 +7,9 @@
 .extern DisplayBrightness_StartSubTransition
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
-.extern func_02058ffc
+.extern Sound_SetCaptureRoute0Enabled
 .extern func_020594ec
-.extern func_020595d4
+.extern Sound_SaveStreamPosition
 .extern Overlay032Scene_SetupGraphics
 .extern gGameWork
 .extern gSoundContext
@@ -48,7 +48,7 @@ L_021fec3c:
     bl Overlay032Scene_SetupGraphics
     ldr r0, L_021fed7c
     ldr r0, [r0, #0x0]
-    bl func_020595d4
+    bl Sound_SaveStreamPosition
     ldr r1, [r4, #0x4]
     mov r0, #0x1
     str r0, [r1, #0x20]
@@ -69,13 +69,13 @@ L_021fec94:
     ldr r0, [r0, #0x0]
     mov r2, #0x0
     mov r3, #0x1e
-    bl func_02058ffc
+    bl Sound_SetCaptureRoute0Enabled
     ldr r0, L_021fed7c
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, r1
     mov r3, #0x1e
-    bl func_02058ffc
+    bl Sound_SetCaptureRoute0Enabled
     ldr r0, L_021fed7c
     mov r1, #0x12
     ldr r0, [r0, #0x0]

@@ -28,26 +28,26 @@ EXT(func_02004fe0);
 EXT(func_0200500c);
 EXT(func_02005030);
 EXT(func_02005058);
-EXT(func_02005070);
+EXT(VecFx32Object_GetMagnitude);
 EXT(func_020050a4);
 EXT(func_0201e0ec);
 EXT(func_0201f864);
 EXT(func_02030acc);
 EXT(func_02032a94);
 EXT(func_020337d4);
-EXT(func_02033f44);
+EXT(Actor_GetCachedTerrainHeight);
 EXT(func_020349b8);
 EXT(func_02034a60);
 EXT(func_0203db80);
 EXT(func_0203e494);
 EXT(func_020405c8);
 EXT(func_0204305c);
-EXT(func_020435f4);
+EXT(ActorExtendedType2_GetDescriptorValue2A);
 EXT(func_02043610);
 EXT(func_0204cfa4);
 EXT(func_02050078);
 EXT(func_02059394);
-EXT(func_020593dc);
+EXT(Sound_PlayOwnedEffect);
 EXT(func_02072b68);
 EXT(func_020740c8);
 EXT(func_020a25c8);
@@ -536,7 +536,7 @@ extern "C" void func_ov078_02214184(void *actor, void *, void *target)
     F(s32, actor, 0x2a8) = F(s32, data_ov078_02215c88, 4);
     F(u16, actor, 0x298) = F(u16, actor, 0x29c) = 0;
     F(u32, actor, 0x260) &= ~8u;
-    func_020593dc(gSoundContext, F(u16, actor, 0x2c6) ? 1 : 0x61, 3, actor, 0, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, F(u16, actor, 0x2c6) ? 1 : 0x61, 3, actor, 0, 0x100);
     if (F(s32, actor, 0x2c0) == 0)
         F(u32, actor, 0x260) |= 10;
 }
@@ -586,7 +586,7 @@ extern "C" void func_ov078_022146c4(void *actor)
 {
     func_ov078_02213be0(actor);
     F(u32, actor, 0x260) |= 8;
-    if (func_020435f4(actor) >= 2)
+    if (ActorExtendedType2_GetDescriptorValue2A(actor) >= 2)
         func_02034a60(actor, 0x2a81, 0);
 }
 
@@ -625,7 +625,7 @@ extern "C" void func_ov078_02214814(void *actor, void *config)
     s32 dy = F(s32, target, 0x20) - F(s32, actor, 0x20);
     s32 vector[4];
     func_02005030(vector, P(actor, 0x18));
-    s32 factor = func_020435f4(actor) < 2 ? 0x4cd : 0xc00;
+    s32 factor = ActorExtendedType2_GetDescriptorValue2A(actor) < 2 ? 0x4cd : 0xc00;
     F(s32, vector, 4) -= MulFx(dx, factor);
     F(s32, vector, 8) -= MulFx(dy, factor);
     ((Method)F(void *, F(void *, actor, 0), 0xd0))(actor, vector);
@@ -645,7 +645,7 @@ extern "C" void func_ov078_02214814(void *actor, void *config)
         F(u16, actor, 0xd6) = 27;
         F(s32, actor, 0x2b4) = dx * 2;
         F(s32, actor, 0x2b8) = dy * 2;
-        func_020593dc(gSoundContext, func_020435f4(actor) < 2 ? 0x61 : 0x55,
+        Sound_PlayOwnedEffect(gSoundContext, ActorExtendedType2_GetDescriptorValue2A(actor) < 2 ? 0x61 : 0x55,
                       0, actor, 0, 0x100);
     }
     F(u8, actor, 0x24c) = F(s32, actor, 0x2c0) ? 3 : 2;
@@ -669,7 +669,7 @@ extern "C" void func_ov078_02214cb8(void *actor)
     F(s32, vector, 4) += F(s32, actor, 0x2b4) + F(s32, target, 0x1c) - F(s32, actor, 0x1c);
     F(s32, vector, 8) += F(s32, actor, 0x2b8) + F(s32, target, 0x20) - F(s32, actor, 0x20);
     ((Method)F(void *, F(void *, actor, 0), 0xd0))(actor, vector);
-    s32 stage = func_020435f4(actor);
+    s32 stage = ActorExtendedType2_GetDescriptorValue2A(actor);
     s32 divisor = stage < 1 ? 6 : (stage == 1 ? 6 : 7);
     F(s32, actor, 0x8c) = func_020adae4(F(s32, actor, 0x3c) * 5 + F(s32, actor, 0x8c) * 4, divisor);
     F(s32, actor, 0x90) = func_020adae4(F(s32, actor, 0x40) * 5 + F(s32, actor, 0x90) * 4, divisor);

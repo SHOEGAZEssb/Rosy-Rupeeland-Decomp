@@ -3,7 +3,7 @@
 .extern VecFx32Object_Assign
 .extern Actor_ClearTransientContactState
 .extern Actor_GetCachedTerrainHeight
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov075_02212d80
 .extern func_ov075_02212e04
@@ -195,7 +195,7 @@ func_ov075_022137a0:
     ldr r0, .L_02213c00
     mov r3, r7
     ldr r0, [r0, #0x0]
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02213a44:
     mov r0, #0x10000
     ldr r1, [r7, #0x5c]

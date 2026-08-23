@@ -68,7 +68,7 @@ extern u8 data_020d54d4[];
 extern void func_02092c8c(s32 screens, s32 brightness);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteOwner(void *collection);
 extern s32 SceneInputBase_Update(void *object, s32 mode);
-extern void func_02058eb8(void *sound, s32 a, s32 b, s32 c, s32 d);
+extern void Sound_SetModalEnvelopeEnabled(void *sound, s32 a, s32 b, s32 c, s32 d);
 extern void func_02092418(void *object);
 extern void *func_ov059_0220fd20(void *object, s32 mode);
 extern void *func_ov059_02210fec(void *object, void *phaseState);
@@ -370,7 +370,7 @@ code_r0x0200dd3c:
     OverlaySlot_UnloadOverlay((OverlaySlot *)self->field_8c);
     *UNK_0200e20c = *UNK_0200e20c & 0x7fff |
                     (u16)(self->savedPowerControlBit15 << 0xf);
-    func_02058eb8(gSoundContext,0,0,0x14,0x1e);
+    Sound_SetModalEnvelopeEnabled(gSoundContext,0,0,0x14,0x1e);
     func_02092418(self->field_40);
     switch(iVar5) {
     case 0:
@@ -538,14 +538,14 @@ code_r0x0200defc:
   case 0x15:
     break;
   case 0x16:
-    func_02058eb8(*UNK_0200e0e8,1,0,0x14,0);
+    Sound_SetModalEnvelopeEnabled(*UNK_0200e0e8,1,0,0x14,0);
     goto code_r0x0200d224;
   case 0x17:
     break;
   case 0x18:
     goto code_r0x0200d224;
   }
-  func_02058eb8(*UNK_0200e0e8,1,0,0x14,0x1e);
+  Sound_SetModalEnvelopeEnabled(*UNK_0200e0e8,1,0,0x14,0x1e);
 code_r0x0200d224:
   if (self->phase == 10) {
     func_020923a4(self->field_40);

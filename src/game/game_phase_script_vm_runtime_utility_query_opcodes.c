@@ -16,7 +16,7 @@ extern void *gGameWork;
 extern void RetailPhaseDatabase_UnlockById(void *state, u16 value);
 extern void ActorDescriptorState_ActivateFirstEligible(void *state);
 extern void GamePhaseTouchPrompt_SetEnabled(void *state, s32 value);
-extern s32 func_0207f80c(void *context, s32 zero0, s32 zero1, s32 enabled);
+extern s32 RetailSaveContext_BeginRecordOperation(void *context, s32 zero0, s32 zero1, s32 enabled);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ s32 GamePhaseActorScriptVm_SetTouchPromptEnabled(GamePhaseActorScriptVm *self)
 /* Query the runtime context with fixed arguments (0, 0, 1), push, and return zero. */
 s32 GamePhaseActorScriptVm_QueryRuntimeContextFixedMode(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, (u32)func_0207f80c(gRuntimeContext, 0, 0, 1));
+    GamePhaseScriptVm_SetResult(&self->base, (u32)RetailSaveContext_BeginRecordOperation(gRuntimeContext, 0, 0, 1));
     return 0;
 }
 

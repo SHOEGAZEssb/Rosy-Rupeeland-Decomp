@@ -5,7 +5,7 @@
 .extern data_020f4e18
 .extern data_ov026_022048b8
 .extern data_ov026_02204944
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern GraphicsArchive_ReleaseOwlvResource
 .extern GraphicsResourceSetVariant_Destroy
 .extern func_02075020
@@ -35,7 +35,7 @@ func_ov026_02200064:
     mov r1, #0x22
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r1, [r4, #0x20]
     add r0, r4, #0x2f4
     bic r1, r1, #0x400

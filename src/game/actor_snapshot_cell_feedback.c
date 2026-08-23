@@ -19,7 +19,7 @@ extern u32 genrand_int32(void);
 extern void *ActorFeedbackResources_GetResource(u32 index);
 extern void *TimedSpriteOffsetPresentation_Init(void *allocation, ...);
 extern void PresentationList_AppendObject(void *manager, void *presentation);
-extern void func_020593ac(void *context, s32 sound, s32 variant,
+extern void Sound_PlayEffectWithParameters(void *context, s32 sound, s32 variant,
                           s32 volume, s32 pan, s32 extra);
 #ifdef __cplusplus
 }
@@ -80,7 +80,7 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
                          ? 0
                          : 120 - ((distanceSquared * 120) >> 14);
         TouchPanelManager_GetPoint(&point, gTouchPanelManager);
-        func_020593ac(gSoundContext, packed >> 7, packed & 0x7f,
+        Sound_PlayEffectWithParameters(gSoundContext, packed >> 7, packed & 0x7f,
                       volume, (s32)point.y - 0x80, 0);
     }
 

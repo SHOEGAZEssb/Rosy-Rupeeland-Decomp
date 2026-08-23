@@ -52,7 +52,7 @@ extern void func_ov007_021fc0dc(void *object, s32 mode);
 extern void func_ov007_021fc1d4(void *object);
 extern void Sound_StopAllDirectSequences(void *context, s32 mode);
 extern void Sound_PlayDirectSequence(void *context, s32 value);
-extern void func_0205940c(void *context, s32 soundId, s32 mode);
+extern void Sound_StopEffect(void *context, s32 soundId, s32 mode);
 extern void Sound_Play(void *context, s32 soundId, s32 mode);
 extern void GXx_SetMasterBrightness_(s32 engine, s32 brightness);
 extern void func_ov069_0221099c(void *system);
@@ -121,7 +121,7 @@ extern "C" void func_ov039_02205c18(void *scene, const void *direction)
         FIELD(s32, FIELD(void *, scene, 0x80), 0x74) = 0x21;
     }
     Sound_Play(FIELD(void *, gSoundContext, 0), 0x63, 0x0c);
-    func_0205940c(FIELD(void *, gSoundContext, 0), 0x63, 3);
+    Sound_StopEffect(FIELD(void *, gSoundContext, 0), 0x63, 3);
 }
 
 /*

@@ -9,8 +9,8 @@ extern "C" {
 extern void *gSoundContext;
 extern void Sound_PlayDirectSequence(void *context, u16 first, u16 second);
 extern void Sound_StopDirectSequence(void *context, u16 first, u16 second);
-extern void func_020592c0(void *context, u16 first, s32 second);
-extern void func_020596e8(void *context, s32 first, s32 second);
+extern void Sound_SetDirectSequenceVolume(void *context, u16 first, s32 second);
+extern void Sound_UpdateGroupSlot(void *context, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
@@ -29,9 +29,9 @@ s32 func_0201a938(GamePhaseActorScriptVm *self)
     switch (command) {
     case 21: Sound_PlayDirectSequence(gSoundContext, (u16)first, (u16)second); break;
     case 22: Sound_StopDirectSequence(gSoundContext, (u16)first, (u16)second); break;
-    case 23: func_020592c0(gSoundContext, (u16)first, second); break;
-    case 24: func_020595b0(gSoundContext, first, second); break;
-    case 25: func_020596e8(gSoundContext, first, second); break;
+    case 23: Sound_SetDirectSequenceVolume(gSoundContext, (u16)first, second); break;
+    case 24: Sound_FadeStreamVolume(gSoundContext, first, second); break;
+    case 25: Sound_UpdateGroupSlot(gSoundContext, first, second); break;
     }
     return 0;
 }

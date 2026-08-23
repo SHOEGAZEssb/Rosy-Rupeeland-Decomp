@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov035/overlay035_callback_vtable_tail.c for documented portable C. */
 
-    .extern func_02059230
+    .extern SoundPhaseManager_Update
     .extern func_ov035_02202350
     .extern func_ov035_021fce5c
     .extern func_ov035_022028b4
@@ -38,7 +38,7 @@ L_02202974:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     mov r2, #0x0
-    bl func_02059230
+    bl SoundPhaseManager_Update
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

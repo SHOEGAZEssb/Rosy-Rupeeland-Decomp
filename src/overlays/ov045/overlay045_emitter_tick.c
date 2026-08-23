@@ -26,7 +26,7 @@ extern "C" void func_02091cf0(void *track);
 extern "C" void func_02091b98(void *track, s32 value);
 extern "C" s32 func_0209189c(void *seed, s32 minimum, s32 maximum);
 extern "C" s32 TitleRandom_NextBounded(void *seed, s32 modulus);
-extern "C" void func_020593ac(void *context, s32 first, s32 second,
+extern "C" void Sound_PlayEffectWithParameters(void *context, s32 first, s32 second,
                                s32 third, s32 fourth, s32 fifth);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *fontState, void *owner, s32 selector);
 extern "C" void func_02073e48(void *sprite, s32 variant, s32 x, s32 y,
@@ -63,7 +63,7 @@ extern "C" void func_ov045_0220b9b8(void *object)
 
     if (progress != 0) {
         if (func_02091c7c((u8 *)object + 0x2c, 2) != 0) {
-            func_020593ac(gSoundContext, 0, 0x4f, 0x7f, 0, 0);
+            Sound_PlayEffectWithParameters(gSoundContext, 0, 0x4f, 0x7f, 0, 0);
             func_02091b98((u8 *)object + 0x2c,
                            func_0209189c((u8 *)object + 0x64, 10, 20));
         }

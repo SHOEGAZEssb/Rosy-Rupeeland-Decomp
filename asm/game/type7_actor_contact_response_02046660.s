@@ -24,7 +24,7 @@
 .extern Type7Actor_PlayStateSound
 .extern Type7Actor_IsInteractionSceneActive
 .extern func_0204cfa4
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern AuxiliaryInteraction_Init
 .extern AuxiliaryInteraction_Destroy
 .extern AuxiliaryInteraction_AdmitTarget
@@ -415,7 +415,7 @@ Type7Actor_HandleContact: ; 0x02046660
     mov r3, r6
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add r0, r6, #0x200
     mov r1, #0xa
     strh r1, [r0, #0x54]

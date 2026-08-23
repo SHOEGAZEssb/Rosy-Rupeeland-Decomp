@@ -14,7 +14,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void ActorExtendedType2_PlayDescriptorSoundIfEnabled(void *actor);
-extern void func_0205940c(void *soundContext, s32 group, s32 value);
+extern void Sound_StopEffect(void *soundContext, s32 group, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -30,7 +30,7 @@ extern void func_0205940c(void *soundContext, s32 group, s32 value);
  * ActorExtendedType2_PlayDescriptorSoundIfEnabled, and puts index 0x30 in
  * state seven.
  * It returns one only on completion. Actor, virtual, sound, and presentation
- * state may change; func_0205940c is the only external subsystem boundary.
+ * state may change; Sound_StopEffect is the only external subsystem boundary.
  */
 s32 ActorExtendedType2_TryCompleteAttachmentGate(void *self)
 {
@@ -67,7 +67,7 @@ s32 ActorExtendedType2_TryCompleteAttachmentGate(void *self)
     {
         u16 packed = data_020e7318[index];
         if (packed != 0xffff)
-            func_0205940c(gSoundContext, packed >> 7, packed & 0x7f);
+            Sound_StopEffect(gSoundContext, packed >> 7, packed & 0x7f);
     }
     ActorExtendedType2_PlayDescriptorSoundIfEnabled(actor);
     if (*(u16 *)(actor + 0x4e) == 0x30)

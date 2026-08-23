@@ -64,7 +64,7 @@ extern "C" void func_02032228(void *, s32, s32, s32);
 extern "C" s32 func_02033f4c(void *);
 extern "C" void func_02034a60(void *, s32, s32);
 extern "C" s32 func_0204cfa4(s32, s32);
-extern "C" void func_020593dc(void *, s32, s32, void *, s32, s32);
+extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32);
 extern "C" void func_020a28e0(void *, s32, s32, s32, s32);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" void func_020adfbc(const void *, const void *, void *);
@@ -426,9 +426,9 @@ extern "C" void func_ov082_022132e8(void *a) {
     }
     s32 mode = ActorExtendedType2_GetDescriptorValue2C(a);
     if (mode == 0)
-        func_020593dc(gSoundContext, 0x1d6, 2, a, 0, 0x100);
+        Sound_PlayOwnedEffect(gSoundContext, 0x1d6, 2, a, 0, 0x100);
     else if (mode == 1)
-        func_020593dc(gSoundContext, 0x1e3, 3, a, 0, 0x100);
+        Sound_PlayOwnedEffect(gSoundContext, 0x1e3, 3, a, 0, 0x100);
 }
 /* Arm the timed attachment transition and install its callbacks. */
 extern "C" s32 func_ov082_0221340c(void *a) {

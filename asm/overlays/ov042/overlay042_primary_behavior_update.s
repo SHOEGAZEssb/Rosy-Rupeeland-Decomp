@@ -16,7 +16,7 @@
 .extern func_ov042_02203658
 .extern func_ov071_02211a10
 .extern func_ov042_02205d74
-.extern func_0205943c
+.extern Sound_SetEffectParameters
 .extern VecFx32Object_Destroy
 .extern Sound_StopDirectSequence
 .extern func_020a1f04
@@ -732,7 +732,7 @@ func_ov042_02205d80:
     rsb r3, r2, r2, lsl #0x3
     ldr r1, .L_02206da4
     mov r2, #0xa
-    bl func_0205943c
+    bl Sound_SetEffectParameters
     cmp r6, #0x0
     cmpgt r4, #0xb3
     ldr r0, [r9, #0x210]

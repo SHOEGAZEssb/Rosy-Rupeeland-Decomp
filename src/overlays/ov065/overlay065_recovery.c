@@ -46,7 +46,7 @@ extern void VecFx32Triple_Set(O65_ARGS), VecFx32Triple_Destroy(O65_ARGS);
 extern void VecFx32Bezier_Evaluate3D(O65_ARGS), func_020adff0(O65_ARGS);
 extern s32 func_020befec(s32, s32);
 extern u32 genrand_int32(void);
-extern void func_020593ac(O65_ARGS);
+extern void Sound_PlayEffectWithParameters(O65_ARGS);
 #ifdef __cplusplus
 }
 #endif
@@ -132,13 +132,13 @@ s32 Overlay065Particle_Update(O65Particle *p, void *scene)
         if (F(u16, scene, 0x11a) == 0) {
             pan = F(s16, p->sprite, 0x2c) - 0x7f;
             if (pan > 0x7f) pan = 0x7f; if (pan < -0x7f) pan = -0x7f;
-            func_020593ac(gSoundContext, 0, 0xf, 0x64, pan, 0);
+            Sound_PlayEffectWithParameters(gSoundContext, 0, 0xf, 0x64, pan, 0);
             animation = animation * 10 + 0x30;
             if (animation > 0x7f) animation = 0x7f;
             if (animation < 0x30) animation = 0x30;
-            func_020593ac(gSoundContext, 0, 0x1d, animation, pan,
+            Sound_PlayEffectWithParameters(gSoundContext, 0, 0x1d, animation, pan,
                           genrand_int32() & 0x7f);
-            func_020593ac(gSoundContext, 0, 0x21, 0x7f - animation, pan,
+            Sound_PlayEffectWithParameters(gSoundContext, 0, 0x21, 0x7f - animation, pan,
                           genrand_int32() & 0x7f);
             F(u16, scene, 0x11a) = 6;
         }

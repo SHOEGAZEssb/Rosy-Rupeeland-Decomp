@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_020593ac
+.extern Sound_PlayEffectWithParameters
 .extern func_020adae4
 .extern func_020adc40
 .extern SignedAbsoluteValueVariant
@@ -61,7 +61,7 @@ func_02034a60: ; 0x02034a60
     ldr r0, [r1, #0x0]
     mov r1, r6, asr #0x7
     and r2, r6, #0x7f
-    bl func_020593ac
+    bl Sound_PlayEffectWithParameters
 .L_02034b2c:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

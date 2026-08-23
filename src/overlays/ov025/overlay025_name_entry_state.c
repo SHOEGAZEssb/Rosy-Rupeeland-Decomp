@@ -53,8 +53,8 @@ extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void *func_020791e0(const void *, s32);
-extern s32 func_0207f248(void *);
-extern void func_0207f86c(void *, s32, void *, s32);
+extern s32 RetailSaveContext_PollOperation(void *);
+extern void RetailSaveContext_BeginNamedRecordWrite(void *, s32, void *, s32);
 extern void func_02092260(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void func_02092314(void *, s32, s32);
@@ -412,14 +412,14 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         GameWork_SetFlag(gGameWork, 0x25d);
         GameWork_SetFlag(gGameWork, 0x3f5);
         func_ov025_021fd3f4(FIELD(void *, scene, 0x598));
-        func_0207f86c(gRuntimeContext, FIELD(s32, scene, 0x54),
+        RetailSaveContext_BeginNamedRecordWrite(gRuntimeContext, FIELD(s32, scene, 0x54),
                       (u8 *)FIELD(void *, scene, 0x598) + 0x180, 1);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         break;
     }
     case 11: {
-        s32 status = func_0207f248(gRuntimeContext);
+        s32 status = RetailSaveContext_PollOperation(gRuntimeContext);
         if (status == 0)
             break;
         if (status == -1) {

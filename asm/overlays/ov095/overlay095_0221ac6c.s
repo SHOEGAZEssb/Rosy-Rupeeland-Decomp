@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern func_0201e0ec
 .extern ActorExtendedType2_InitializeReentryState
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_0206e590
 .extern func_020a2844
 .extern func_ov095_0221ae14
@@ -117,7 +117,7 @@ func_ov095_0221ac6c:
     mov r3, r8
     sub r1, r1, #0x12
     mov r2, #0xa
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_0221ae04:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}

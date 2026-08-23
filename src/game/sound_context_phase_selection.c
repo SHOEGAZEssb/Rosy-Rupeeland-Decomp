@@ -10,7 +10,7 @@ extern void *data_021e9abc;
 extern void func_0205bbdc(void *manager, s32 phaseId);
 extern void func_0205e248(void *manager, s32 phaseId);
 extern void func_020598e8(void *context, s32 phaseId);
-void func_020598a0(void *context, s32 phaseId);
+void SoundPhaseManager_SetPhase(void *context, s32 phaseId);
 #ifdef __cplusplus
 }
 #endif
@@ -22,7 +22,7 @@ void func_020598a0(void *context, s32 phaseId);
  * distinct from the direct-sequence manager at data_021e9abc; omitting this
  * third handoff loses phase-owned, data-selected sound behavior.
  */
-void func_020598a0(void *context, s32 phaseId)
+void SoundPhaseManager_SetPhase(void *context, s32 phaseId)
 {
     func_0205e248(data_021e9abc, phaseId);
     func_020598e8(context, phaseId);

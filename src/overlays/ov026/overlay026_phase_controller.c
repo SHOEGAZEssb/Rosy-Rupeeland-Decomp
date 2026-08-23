@@ -20,7 +20,7 @@ extern const s32 data_ov026_02204748[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020592fc(void *, s32, s32);
+extern void Sound_SetDirectSequenceTrackMask(void *, s32, s32);
 extern void func_020594ec(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void func_ov026_021ff878(void *, s32, s32);
@@ -70,7 +70,7 @@ extern "C" s32 func_ov026_02201430(void *scene)
         case 10: audio_id = 0xc7fb; pair = data_ov026_02204748; break;
         }
         if (audio_id != 0)
-            func_020592fc(gSoundContext, 0x3d, audio_id);
+            Sound_SetDirectSequenceTrackMask(gSoundContext, 0x3d, audio_id);
         apply_pair(scene, pair);
     }
     func_ov026_022009dc(scene);

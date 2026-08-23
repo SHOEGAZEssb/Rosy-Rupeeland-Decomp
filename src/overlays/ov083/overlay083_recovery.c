@@ -29,7 +29,7 @@ extern "C" void *Actor_GetCollection(void *);
 extern "C" void *ActorCollection_GetSpriteOwner(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, void *, void *, void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern "C" void func_0205940c(void *, s32, s32);
+extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" s32 ActorExtendedType2_UpdateTimedAttachmentTransition(void *);
 extern "C" void Actor_RestoreSavedFlags(void *);
 extern "C" void ActorExtendedType2_LaunchRandomMotion(void *);
@@ -154,7 +154,7 @@ extern "C" s32 func_ov083_02213170(void *actor)
     F(u32, actor, 0x21c) = F(u32, data_ov083_02213e48, 0xc);
     F(u32, actor, 0x260) |= 4;
     u16 sound = data_020e7318[F(u16, actor, 0x4e)];
-    if (sound != 0xffff) func_0205940c(gSoundContext, sound >> 7, sound & 0x7f);
+    if (sound != 0xffff) Sound_StopEffect(gSoundContext, sound >> 7, sound & 0x7f);
     if (partner != 0 && (F(u32, partner, 0x29c) & 1) != 0)
         ((V0)vm(partner, 0x1d8))(partner);
     F(u16, actor, 0xda) = 0;

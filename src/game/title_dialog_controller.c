@@ -17,13 +17,13 @@ extern void func_02071ee0(void *state, void *archive, u32 character_id,
 extern void *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner);
 extern void GraphicsSpriteGroup_ClearStates(void *group);
 extern void GraphicsSpriteGroup_Clear(void *group);
-extern void *func_02073ffc(void *group, const void *source, s32 attach);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group, const void *source, s32 attach);
 extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern void AnimationResourceState_ReleaseResources(void *resource_set);
 extern void Sound_Play(void *context, s32 archive, s32 member);
-extern void func_0207419c(void *group);
+extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void AnimationResourceState_Destroy(void *resource_set);
 extern void Heap_Free(void *allocation);
 extern void *GraphicsSpriteRenderer_SetFontResource(void *renderer,
@@ -68,7 +68,7 @@ void *TitleDialog_Init(void *object, void *font, void *text_resource)
     *(void **)(bytes + 0x0c) = GraphicsSpriteGroupOwner_CreateGroupWrapper(font);
     GraphicsSpriteGroup_ClearStates(primary_group);
     func_02071ee0(bytes + 0x14, data_020f4e18, 0x3298, 0x3299, 0x329a);
-    sprite = func_02073ffc(primary_group, bytes + 0x14, 2);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(primary_group, bytes + 0x14, 2);
     *(void **)(bytes + 0x10) = sprite;
     GraphicsSpriteState_SetAnimation(sprite, 0x18);
     *(u16 *)((u8 *)sprite + 0x24) |= 2u;
@@ -185,10 +185,10 @@ void TitleDialog_ExpandActorDescriptor(void *object)
                   ActorDescriptorComponent_GetCharacterResourceId(component), ActorDescriptorComponent_GetPaletteResourceId(component),
                   ActorDescriptorComponent_GetCellResourceId(component));
     *(s32 *)(bytes + 0xdc) += 0x10;
-    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
     func_02073e48(sprite, ActorDescriptorComponent_GetAnimation(component),
                   *(s32 *)(bytes + 0xdc), *(s32 *)(bytes + 0xe0), 0, 0, 0);
-    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
     func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 1, 0, 0);
     *(s32 *)(bytes + 0xdc) += 0x10;
@@ -263,10 +263,10 @@ void TitleDialog_ExpandPhaseLabel(void *object)
     func_02071ee0(bytes + 0x20, data_020f4e18,
                   0xd084, 0xd081, 0xd082);
     *(s32 *)(bytes + 0xdc) += 0x10;
-    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
     func_02073e48(sprite, 0, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 0, 0, 0);
-    sprite = func_02073ffc(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
+    sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
     func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 1, 0, 0);
     *(s32 *)(bytes + 0xdc) += 0x10;
@@ -553,8 +553,8 @@ void *func_02092e1c(void *object)
     u8 *bytes = (u8 *)object;
 
     *(void **)bytes = data_020f25c4;
-    func_0207419c(*(void **)(bytes + 0x08));
-    func_0207419c(*(void **)(bytes + 0x0c));
+    GraphicsSpriteGroup_Destroy(*(void **)(bytes + 0x08));
+    GraphicsSpriteGroup_Destroy(*(void **)(bytes + 0x0c));
     AnimationResourceState_Destroy(bytes + 0x20);
     AnimationResourceState_Destroy(bytes + 0x14);
     return object;

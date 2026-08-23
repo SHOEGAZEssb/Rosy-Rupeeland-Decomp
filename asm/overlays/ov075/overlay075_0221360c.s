@@ -5,7 +5,7 @@
 .extern data_ov075_02217170
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_SetPosition
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov075_02212f10
 .extern gHeapContext
@@ -85,7 +85,7 @@ func_ov075_0221360c:
     mov r3, r4
     add r1, r1, #0xe9
     mov r2, #0x1
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     ldr r1, .L_02213794
     ldr r3, .L_02213798
     mov r0, #0x14

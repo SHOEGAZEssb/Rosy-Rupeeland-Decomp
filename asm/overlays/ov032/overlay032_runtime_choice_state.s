@@ -12,15 +12,15 @@
 .extern data_021f5f18
 .extern data_ov032_02202220
 .extern func_020594ec
-.extern func_0205958c
+.extern Sound_StopStream
 .extern RetailPhaseDatabase_UnlockById
 .extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_02070b50
 .extern func_02070e0c
 .extern GraphicsResourceSet_ReleaseHandles
-.extern func_0207f248
-.extern func_0207f80c
+.extern RetailSaveContext_PollOperation
+.extern RetailSaveContext_BeginRecordOperation
 .extern RetailSelectionHistory_InsertUniqueId
 .extern RetailSelectionManager_AdvanceHistory
 .extern RetailSelectionManager_HasInactiveSpecialRecord
@@ -188,13 +188,13 @@ L_02200830:
     ldr r0, L_02200d90
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_0205958c
+    bl Sound_StopStream
     ldr r0, L_02200d94
     mvn r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x0
     mov r3, #0x1
-    bl func_0207f80c
+    bl RetailSaveContext_BeginRecordOperation
     ldr r0, [r4, #0xb64]
     add r0, r0, #0x1
     str r0, [r4, #0xb64]
@@ -202,7 +202,7 @@ L_02200830:
 L_02200880:
     ldr r0, L_02200d94
     ldr r0, [r0, #0x0]
-    bl func_0207f248
+    bl RetailSaveContext_PollOperation
     cmp r0, #0x0
     beq L_02200d64
     cmp r0, #0x1

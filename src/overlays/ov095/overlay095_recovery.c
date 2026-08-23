@@ -105,10 +105,10 @@ EXT(func_02033f4c);
 EXT(func_020befec);
 EXT(func_020adfbc);
 EXT(func_020adff0);
-EXT(func_0205940c);
-EXT(func_020594a4);
-EXT(func_0205946c);
-EXT(func_020593dc);
+EXT(Sound_StopEffect);
+EXT(Sound_IsEffectPlaying);
+EXT(Sound_SetEffectPitch);
+EXT(Sound_PlayOwnedEffect);
 #undef EXT
 
 extern "C" void *func_ov075_02212ae0(void *, void *, s32, s32);
@@ -237,9 +237,9 @@ extern "C" void func_ov095_02217a38(void *actor)
 extern "C" void func_ov095_02217aac(void *actor)
 {
     if ((F(u32, actor, 0xd0) & 0x100) != 0 &&
-        func_020594a4(gSoundContext, 0x1ee, 5) != 0)
+        Sound_IsEffectPlaying(gSoundContext, 0x1ee, 5) != 0)
     {
-        func_0205940c(gSoundContext, 0x1ee, 5);
+        Sound_StopEffect(gSoundContext, 0x1ee, 5);
     }
     ActorExtendedType2_UpdateFrame(actor);
     F(s16, actor, 0x6a) = F(s8, actor, 0x24c) == 8 ? -72 : -90;
@@ -494,7 +494,7 @@ extern "C" void func_ov095_02218130(void *actor, s16 form)
     }
     if (form == 4)
     {
-        func_020593dc(gSoundContext, 0x1ee, 0xb, actor, 0, 0x200);
+        Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 0xb, actor, 0, 0x200);
     }
 }
 
@@ -529,7 +529,7 @@ extern "C" void func_ov095_02218450(void *actor)
     F(s16, actor, 0x2dc) = 0;
     F(void *, actor, 0x2b4) = 0;
     F(void *, actor, 0x2b0) = 0;
-    func_020593dc(gSoundContext, 0x61, 0, actor, 0, 0x100);
+    Sound_PlayOwnedEffect(gSoundContext, 0x61, 0, actor, 0, 0x100);
 }
 
 /* Advances terminal-state motion, shrinking its vector until the timeout. */
@@ -597,7 +597,7 @@ extern "C" void func_ov095_0221a2b4(void *actor)
     s16 timer = F(s16, actor, 0x298);
     if (timer == 0)
     {
-        func_020593dc(gSoundContext, 0x1ee, 7, actor, 0, 0x200);
+        Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 7, actor, 0, 0x200);
     }
     if (timer >= 60)
     {
@@ -649,9 +649,9 @@ extern "C" void func_ov095_0221abc8(void *actor, void *impulse, s32 mode)
 /* Stops the encounter sound if active, then releases presentation resources. */
 extern "C" void func_ov095_0221ac20(void *actor)
 {
-    if (func_020594a4(gSoundContext, 0x1ee, 7) != 0)
+    if (Sound_IsEffectPlaying(gSoundContext, 0x1ee, 7) != 0)
     {
-        func_0205940c(gSoundContext, 0x1ee, 7);
+        Sound_StopEffect(gSoundContext, 0x1ee, 7);
     }
     ActorExtendedType2_PrepareRelease(actor);
 }
@@ -697,7 +697,7 @@ extern "C" void func_ov095_0221ac6c(void *actor)
                           3);
         }
     }
-    func_020593dc(gSoundContext, 0x1ee, 10, actor, 0, 0x200);
+    Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 10, actor, 0, 0x200);
 }
 
 /* Tests whether a linked actor still owns the expected recovered resource. */
@@ -1167,7 +1167,7 @@ extern "C" void func_ov095_0221bed0(void *actor)
     u32 sound = soundIds[descriptor][linked];
     if (sound != 0)
     {
-        func_020593dc(gSoundContext, (s32)sound >> 7,
+        Sound_PlayOwnedEffect(gSoundContext, (s32)sound >> 7,
                       sound & 0x7f, actor, 0, 0x100);
     }
 }
@@ -1253,7 +1253,7 @@ extern "C" void *func_ov095_0221c0e4(void *actor)
     u32 sound = F(u16, F(void *, actor, 0x1fc), 0x1e);
     if (sound != 0)
     {
-        func_0205940c(gSoundContext, (s32)sound >> 7, sound & 0x7f);
+        Sound_StopEffect(gSoundContext, (s32)sound >> 7, sound & 0x7f);
     }
     TrackedResourceActorImpulse_Destroy(actor);
     return actor;
@@ -1266,7 +1266,7 @@ extern "C" void *func_ov095_0221c130(void *actor)
     u32 sound = F(u16, F(void *, actor, 0x1fc), 0x1e);
     if (sound != 0)
     {
-        func_0205940c(gSoundContext, (s32)sound >> 7, sound & 0x7f);
+        Sound_StopEffect(gSoundContext, (s32)sound >> 7, sound & 0x7f);
     }
     TrackedResourceActorImpulse_Destroy(actor);
     Heap_Free(actor);
@@ -1279,7 +1279,7 @@ extern "C" void func_ov095_0221c184(void *actor)
     u32 sound = F(u16, F(void *, actor, 0x1fc), 0x1e);
     if (sound != 0)
     {
-        func_020593dc(gSoundContext, (s32)sound >> 7,
+        Sound_PlayOwnedEffect(gSoundContext, (s32)sound >> 7,
                       sound & 0x7f, actor, 0, 0x100);
     }
 }
@@ -1893,7 +1893,7 @@ extern "C" void func_ov095_0221a878(void *actor, void *context)
         F(u8, actor, 0x319) = 0;
         F(s16, actor, 0x2dc) = 0;
         F(s16, actor, 0xda) = 0x14;
-        func_020593dc(gSoundContext, 0x1ee, 9, actor, 0, 0x200);
+        Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 9, actor, 0, 0x200);
         return;
     }
     func_ov078_02213c3c(actor, context);
@@ -2087,7 +2087,7 @@ extern "C" void func_ov095_0221a418(void *actor, void *)
     case 0x18:
         if (F(s16, actor, 0x2dc) == 120)
         {
-            func_020593dc(gSoundContext, 0x1ee, 12, actor, 0, 0x200);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 12, actor, 0, 0x200);
             F(u16, F(void *, actor, 0x54), 0x36) = 0x200;
         }
         if (++F(s16, actor, 0x2dc) >= 180)
@@ -2110,7 +2110,7 @@ extern "C" void func_ov095_0221a418(void *actor, void *)
         {
             F(s16, actor, 0xda) = 0x17;
             F(s16, actor, 0x2dc) = 0;
-            func_020593dc(gSoundContext, 0x1ee, 11, actor, 0, 0x200);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 11, actor, 0, 0x200);
         }
         break;
     }
@@ -2153,15 +2153,15 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
             VecFx32Object_Assign(P(actor, 0x2e0), P(actor, 0x18));
             F(s16, actor, 0xda) = 0;
             F(u32, actor, 0x260) |= 0x400;
-            func_020593dc(gSoundContext, 0x1ee, 9, actor, 0, 0x200);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 9, actor, 0, 0x200);
             break;
         case 1:
             F(s16, actor, 0xda) = 4;
             F(s16, actor, 0x2d6) = 0;
-            func_020593dc(gSoundContext, 0x1ee, 1, actor, 0, 0x200);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 1, actor, 0, 0x200);
             break;
         case 2:
-            func_020593dc(gSoundContext, 0x1ee, 9, actor, 0, -0x100);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 9, actor, 0, -0x100);
             /* fall through */
         case 3:
             F(s16, actor, 0xda) = 0xc;
@@ -2233,7 +2233,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
                 F(s16, actor, 0xda) = 3;
                 F(s16, actor, 0x2dc) = 0;
                 F(u32, actor, 0xd0) |= 0x2000;
-                func_020593dc(gSoundContext, 0x1ee, 2, actor, 0, 0x200);
+                Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 2, actor, 0, 0x200);
                 func_ov095_0221af0c(actor, F(s32, actor, 0x1c),
                                     F(s32, actor, 0x20), 40);
             }
@@ -2281,7 +2281,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
                 F(s16, actor, 0x2dc) = 0x10;
                 F(u32, actor, 0x14) |= 0x80;
                 F(u8, F(void *, actor, 0x54), 0x3a) = 0;
-                func_020593dc(gSoundContext, 0x1ee, 5, actor, 0, 0x200);
+                Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 5, actor, 0, 0x200);
                 Sound_FadeDirectSequence(gSoundContext, 0xd0, 0x28, 0x50);
                 break;
             }
@@ -2316,7 +2316,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
                     func_020adae4(F(s16, actor, 0x31e), 60) + 6;
                 if (F(s16, actor, 0x31c) > 0x1000)
                     F(s16, actor, 0x31c) = 0x1000;
-                func_0205946c(gSoundContext, 0x1ee, 5,
+                Sound_SetEffectPitch(gSoundContext, 0x1ee, 5,
                               F(s16, actor, 0x31c));
             }
             else
@@ -2334,10 +2334,10 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
             {
                 F(s16, actor, 0xda) = 8;
                 F(s16, actor, 0x2dc) = 0;
-                func_0205940c(gSoundContext, 0x1ee, 5);
+                Sound_StopEffect(gSoundContext, 0x1ee, 5);
                 func_ov095_0221af0c(actor, F(s32, actor, 0x1c),
                                     F(s32, actor, 0x20), 40);
-                func_020593dc(gSoundContext, 0x1ee, 8, actor, 0, 0x200);
+                Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 8, actor, 0, 0x200);
             }
             break;
         case 8:
@@ -2347,7 +2347,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
                 F(s16, actor, 0xda) = 9;
                 F(s16, actor, 0x2dc) = 0;
                 F(s32, actor, 0x44) = 0x5000;
-                func_020593dc(gSoundContext, 0x1ee, 7, actor, 0, 0x200);
+                Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 7, actor, 0, 0x200);
             }
             break;
         case 9: case 10:
@@ -2359,7 +2359,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
                 F(s16, actor, 0xda) = 0xb;
                 F(s16, actor, 0x2dc) = 0;
                 F(s32, actor, 0x44) = 0x5000;
-                func_020593dc(gSoundContext, 0x1ee, 9, actor, 0, 0x200);
+                Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 9, actor, 0, 0x200);
             }
             break;
         default:
@@ -2487,7 +2487,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
         F(u8, actor, 0x24c) = 0;
         if (F(s16, actor, 0x2dc) < 60 &&
             F(s16, actor, 0x2dc) % 15 == 0)
-            func_020593dc(gSoundContext, 0x1ee, 0, actor, 0, 0x200);
+            Sound_PlayOwnedEffect(gSoundContext, 0x1ee, 0, actor, 0, 0x200);
         if (++F(s16, actor, 0x2dc) > 120)
         {
             F(s16, actor, 0xda) = 0x13;

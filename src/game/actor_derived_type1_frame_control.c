@@ -36,7 +36,7 @@ extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Sound_StopAllDirectSequences(void *context, s32 value);
-extern void func_0205958c(void *context, s32 value);
+extern void Sound_StopStream(void *context, s32 value);
 extern void Sound_PlayDirectSequence(void *context, s32 first, s32 second);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern void ActorDerivedType1_StartRecord(void *actor);
@@ -187,7 +187,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             *(s16 *)(actor + 0x234) = 60;
             *(u32 *)(actor + 0x10) |= 0x1f0000;
             Sound_StopAllDirectSequences(gSoundContext, 0x14);
-            func_0205958c(gSoundContext, 0x14);
+            Sound_StopStream(gSoundContext, 0x14);
             Sound_PlayDirectSequence(gSoundContext, 0x39, 0x78);
         }
     } else {

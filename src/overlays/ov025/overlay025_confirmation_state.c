@@ -17,8 +17,8 @@ typedef struct TransitionPair {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0207f248(void *);
-extern void func_0207ff90(void *, s32, s32);
+extern s32 RetailSaveContext_PollOperation(void *);
+extern void RetailSaveContext_BeginRecordLoad(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_ov025_021ff254(void *, TransitionPair);
 extern void func_ov025_02200178(void *);
@@ -43,12 +43,12 @@ extern "C" s32 func_ov025_02201348(void *scene)
     switch (FIELD(s32, scene, 4)) {
     case 0:
         func_ov025_022002f8(scene);
-        func_0207ff90(gRuntimeContext, FIELD(s32, scene, 0x54), 1);
+        RetailSaveContext_BeginRecordLoad(gRuntimeContext, FIELD(s32, scene, 0x54), 1);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Setup intentionally falls through to the first runtime poll. */
     case 1: {
-        s32 status = func_0207f248(gRuntimeContext);
+        s32 status = RetailSaveContext_PollOperation(gRuntimeContext);
         if (status == 0)
             break;
         if (status == -1) {

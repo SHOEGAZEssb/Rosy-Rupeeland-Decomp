@@ -6,7 +6,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorExtendedType2_InitializeTransformAndMotion
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov097_022177e0
 .extern gGameWork
 .extern gSoundContext
@@ -84,7 +84,7 @@ func_ov097_02219970:
     mov r3, r6
     ldr r0, [r0, #0x0]
     mov r2, #0xa
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02219a90:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}

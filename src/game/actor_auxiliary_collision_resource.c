@@ -31,7 +31,7 @@ extern void func_02071ee0(void *state, void *archive, u32 characterId,
                           u32 paletteId, u32 screenId);
 extern void *AnimationResourceState_Destroy(void *state);
 extern void AnimationResourceState_ReleaseResources(void *state);
-extern void *func_02073ffc(void *group, const void *source, s32 attach);
+extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group, const void *source, s32 attach);
 extern void GraphicsSpriteState_SetAnimationIndex(void *state, s32 index);
 extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
 extern void VecFx32_Subtract(VecFx32Object *result,
@@ -58,7 +58,7 @@ ActorAuxiliaryCollisionResource *func_020570c4(
     self->field28 = 0;
     func_02071ee0(&self->resources, data_020f4e18, 0x32ae, 0x3299,
                   0x32af);
-    self->sprite = func_02073ffc(self->group, &self->resources, 2);
+    self->sprite = GraphicsSpriteGroup_CreateStateFromSource(self->group, &self->resources, 2);
     GraphicsSpriteState_SetAnimationIndex(self->sprite, 0);
     *(u16 *)((u8 *)self->sprite + 0x24) |= 2;
     *(u16 *)((u8 *)self->sprite + 0x2c) = 0x80;

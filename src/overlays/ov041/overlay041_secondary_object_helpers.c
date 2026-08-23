@@ -10,7 +10,7 @@
 
 extern "C" {
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-s32 func_020594a4(void *, s32, s32);
+s32 Sound_IsEffectPlaying(void *, s32, s32);
 void Sound_Play(void *, s32, s32);
 s32 func_020befec(s32, s32);
 extern void *gSoundContext;
@@ -49,7 +49,7 @@ extern "C" void func_ov041_02200970(void *object, s32 rows)
         return;
     }
     FIELD(s32, object, 0x15c) = value + 0xc0000;
-    if (func_020594a4(gSoundContext, 0x12d, 8) == 0) {
+    if (Sound_IsEffectPlaying(gSoundContext, 0x12d, 8) == 0) {
         Sound_Play(gSoundContext, 0x12d, 8);
         Sound_Play(gSoundContext, 0x12d, 12);
     }

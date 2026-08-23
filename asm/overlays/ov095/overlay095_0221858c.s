@@ -21,9 +21,9 @@
 .extern func_0204cfa4
 .extern TrackedResourceActor_SpawnFromKey
 .extern Sound_FadeDirectSequence
-.extern func_020593dc
-.extern func_0205940c
-.extern func_0205946c
+.extern Sound_PlayOwnedEffect
+.extern Sound_StopEffect
+.extern Sound_SetEffectPitch
 .extern func_020a25c8
 .extern func_020a2844
 .extern func_020a291c
@@ -100,7 +100,7 @@ func_ov095_0221858c:
     mov r3, r4
     sub r1, r1, #0x12
     mov r2, #0x9
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_0221877c
 .L_0221864c:
     mov r0, #0x4
@@ -115,7 +115,7 @@ func_ov095_0221858c:
     mov r3, r4
     sub r1, r1, #0x12
     mov r2, #0x1
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_0221877c
 .L_02218684:
     mov r0, #0x0
@@ -127,7 +127,7 @@ func_ov095_0221858c:
     ldr r1, .L_022194a0
     mov r3, r4
     mov r2, #0x9
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_022186ac:
     mov r0, #0xc
     strh r0, [r4, #0xda]
@@ -395,7 +395,7 @@ func_ov095_0221858c:
     mov r3, r4
     sub r1, r1, #0x12
     mov r2, #0x2
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add r0, r4, #0x200
     ldrsh r1, [r0, #0xd4]
     mov r0, r4
@@ -676,7 +676,7 @@ func_ov095_0221858c:
     mov r3, r4
     sub r1, r1, #0x12
     mov r2, #0x5
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add r0, r4, #0x300
     mov r2, #0x0
     strh r2, [r0, #0x1c]
@@ -870,7 +870,7 @@ func_ov095_0221858c:
     ldrsh r3, [r0, #0x1c]
     ldr r0, [r1, #0x0]
     ldr r1, .L_022194a0
-    bl func_0205946c
+    bl Sound_SetEffectPitch
     b .L_022196bc
 .L_022191dc:
     ldr r1, .L_022194bc
@@ -893,7 +893,7 @@ func_ov095_0221858c:
     ldr r0, [r1, #0x0]
     ldr r1, .L_022194a0
     mov r2, #0x5
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r4, #0x200
     ldrsh r0, [r0, #0xd4]
     add r1, r4, #0x18
@@ -968,7 +968,7 @@ func_ov095_0221858c:
     mov r2, #0x8
     ldr r0, [r0, #0x0]
     mov r3, r4
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add r0, r4, #0x88
     mov r1, #0x0
     mov r2, r1
@@ -1000,7 +1000,7 @@ func_ov095_0221858c:
     ldr r0, [r0, #0x0]
     sub r1, r1, #0x12
     mov r2, #0x7
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     mov r1, #0x0
     str r1, [r4, #0x40]
     mov r2, r1
@@ -1166,7 +1166,7 @@ func_ov095_0221858c:
     ldr r0, [r0, #0x0]
     sub r1, r1, #0x12
     mov r2, #0x9
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_022196bc
 .L_02219660:
     mov r1, #0x0
@@ -1507,7 +1507,7 @@ func_ov095_0221858c:
     ldr r0, .L_0221949c
     mov r3, r4
     ldr r0, [r0, #0x0]
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add r0, sp, #0x1a8
     bl VecFx32Object_Destroy
 .L_02219b88:
@@ -1654,7 +1654,7 @@ func_ov095_0221858c:
     ldr r0, [r0, #0x0]
     mov r3, r4
     sub r1, r1, #0x12
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_02219dbc:
     add r0, sp, #0x198
     bl VecFx32Object_Destroy
@@ -1880,7 +1880,7 @@ func_ov095_0221858c:
     mov r3, r4
     ldr r0, [r0, #0x0]
     sub r1, r1, #0x12
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     add r0, sp, #0x138
     bl VecFx32Object_Destroy
     add r0, sp, #0x148

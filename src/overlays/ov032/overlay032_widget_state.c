@@ -32,7 +32,7 @@ extern void InventoryScroll_SetSelectedRow(...);
 extern s32 Overlay032SpriteWrapper_HitTest(...);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_BeginMarkerDrag(...);
-extern void func_0205940c(...);
+extern void Sound_StopEffect(...);
 extern s32 InventoryScroll_UpdateMarkerDrag(...);
 extern void InventoryScroll_EndMarkerDrag(...);
 extern void InventoryScroll_UpdatePresentation(void *);
@@ -137,7 +137,7 @@ extern "C" s32 func_ov032_02201960(void *widget)
     case 11:
         if (InventoryScroll_UpdateInterpolation(list)) {
             if (FIELD(s32, list, 0xc) != FIELD(s32, list, 0x10))
-                func_0205940c(gSoundContext, 0, 8);
+                Sound_StopEffect(gSoundContext, 0, 8);
             ++FIELD(s32, widget, 4);
         } else if (func_ov032_02201e58(widget)) {
             func_ov032_02201930(widget);

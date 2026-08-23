@@ -12,7 +12,7 @@ extern "C" {
 void func_ov041_021ff658(void *, s32);
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 void Sound_Play(void *, s32, s32);
-void func_0205940c(void *, s32, s32);
+void Sound_StopEffect(void *, s32, s32);
 void VecFx32Object_Init(void *);
 void VecFx32Object_Destroy(void *);
 s32 func_ov041_021ff5a8(void *, s32, const void *);
@@ -100,7 +100,7 @@ static void update_scrolling_mode(void *object)
                     Sound_Play(gSoundContext, 0, 0x10);
                 if (phases(object)[i] > 0x46) {
                     velocities(object)[i] = 0x1000;
-                    func_0205940c(gSoundContext, 0x12d, 5);
+                    Sound_StopEffect(gSoundContext, 0x12d, 5);
                 }
             } else {
                 if (phase < -0x3c) {

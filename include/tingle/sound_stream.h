@@ -13,18 +13,18 @@ extern "C" {
 
 extern void *data_021e9aa8;
 
-s32 func_02059510(void *context, s32 streamId);
+s32 Sound_IsStreamPlaying(void *context, s32 streamId);
 void func_020594ec(void *context, s32 streamId);
-void func_02059550(void *context, s32 streamId, s32 startUnits, s32 volume,
+void Sound_PlayStream(void *context, s32 streamId, s32 startUnits, s32 volume,
                    s32 fadeFrames, s32 fadeIn);
-void func_0205958c(void *context, s32 fadeFrames);
-void func_020595b0(void *context, s32 volume, s32 fadeFrames);
-void func_020595d4(void *context);
-void func_020595ec(void *context);
+void Sound_StopStream(void *context, s32 fadeFrames);
+void Sound_FadeStreamVolume(void *context, s32 volume, s32 fadeFrames);
+void Sound_SaveStreamPosition(void *context);
+void Sound_ResumeStreamPosition(void *context);
 
 void func_0205acdc(void *manager);
 void func_0205acf4(void *manager);
-void func_0205adb4(void *manager, s32 streamId);
+void SoundManager_PlayDefaultStream(void *manager, s32 streamId);
 void func_0205ae3c(void *manager, s32 streamId, s32 startUnits, s32 volume,
                    s32 fadeFrames, s32 fadeIn);
 void func_0205aee8(void *manager, s32 volume, s32 fadeFrames);

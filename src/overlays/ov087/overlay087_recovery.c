@@ -30,7 +30,7 @@ extern void *AnimationResource_Init(...), *Heap_Alloc(...);
 extern void Heap_Free(...), *OverlayManager_GetGlobal(...);
 extern void OverlayManager_LoadOverlay(...);
 extern void GameWork_SetFlag(...), GameWork_ClearFlag(...);
-extern void Sound_Play(...), func_020593ac(...), func_0205940c(...), func_0205943c(...);
+extern void Sound_Play(...), Sound_PlayEffectWithParameters(...), Sound_StopEffect(...), Sound_SetEffectParameters(...);
 extern void VecFx32Object_Init(...), VecFx32Object_InitCopy(...);
 extern void VecFx32Object_InitComponents(...), VecFx32Object_Assign(...);
 extern void VecFx32Object_Add(...), VecFx32Object_Subtract(...), VecFx32Object_Destroy(...);
@@ -163,19 +163,19 @@ void func_ov087_022179b0(void *actor, void *unused1, void *unused2,
     VecFx32Object_Add((u8 *)actor + 0x38, delta);
     if (speed > 0x19a) {
       if ((*flags & 0x200) == 0) {
-        func_0205940c(gSoundContext, 0x67, 2);
+        Sound_StopEffect(gSoundContext, 0x67, 2);
         Sound_Play(gSoundContext, 0x67, 1);
       }
       *flags = (*flags & (s16)~0x400) | 0x200;
     } else if (speed < 0x19a - 0x334) {
       if ((*flags & 0x400) == 0) {
-        func_0205940c(gSoundContext, 0x67, 1);
+        Sound_StopEffect(gSoundContext, 0x67, 1);
         Sound_Play(gSoundContext, 0x67, 2);
       }
       *flags = (*flags & (s16)~0x200) | 0x400;
     } else {
-      func_0205940c(gSoundContext, 0x67, 1);
-      func_0205940c(gSoundContext, 0x67, 2);
+      Sound_StopEffect(gSoundContext, 0x67, 1);
+      Sound_StopEffect(gSoundContext, 0x67, 2);
       *flags &= (s16)~0x600;
     }
     collision = F(u8, actor, 0x4b);
@@ -196,7 +196,7 @@ void func_ov087_022179b0(void *actor, void *unused1, void *unused2,
       F(s16, actor, 0x226) -= 10;
     }
     if (bounced) {
-      func_020593ac(gSoundContext, 0x67, 0,
+      Sound_PlayEffectWithParameters(gSoundContext, 0x67, 0,
                     F(s32, actor, 0x22c) > 0 ? 0x20 : 0x7f, 0, 0);
       F(s32, actor, 0x22c) = 10;
     }
@@ -210,7 +210,7 @@ void func_ov087_022179b0(void *actor, void *unused1, void *unused2,
       pan = -0x80;
     else if (pan > 0x7f)
       pan = 0x7f;
-    func_0205943c(gSoundContext, 0x67, 4, 0x50, pan,
+    Sound_SetEffectParameters(gSoundContext, 0x67, 4, 0x50, pan,
                   F(s32, actor, 0x228));
     VecFx32Object_Destroy(delta);
   }
@@ -304,7 +304,7 @@ void func_ov087_02218110(void *actor, void *other, void *contact) {
       F(s32, other, 0x90) += dy;
     }
     if (F(s16, actor, 0x224) == 1) {
-      func_020593ac(gSoundContext, 0x67);
+      Sound_PlayEffectWithParameters(gSoundContext, 0x67);
       F(s32, actor, 0x22c) = 10;
     }
     if (F(s16, actor, 0x21e) == 0 && F(s16, actor, 0x21c) > 0)
@@ -340,7 +340,7 @@ void func_ov087_02218264(void *actor, s32 horizontal, s32 vertical) {
       pan = -0x80;
     else if (pan > 0x7f)
       pan = 0x7f;
-    func_020593ac(gSoundContext, 0x67, 4, 0x50, pan,
+    Sound_PlayEffectWithParameters(gSoundContext, 0x67, 4, 0x50, pan,
                   F(s32, actor, 0x228));
   }
   F(s16, actor, 0x214) = vertical < 0 ? -1 : vertical > 0 ? 1 : 0;
@@ -356,7 +356,7 @@ void func_ov087_02218264(void *actor, s32 horizontal, s32 vertical) {
   }
   if ((*flags & 0x100) != 0) {
     *flags &= (u16)~0x100;
-    func_020593ac(gSoundContext, 0x67, 3, 0x40, 0, 0);
+    Sound_PlayEffectWithParameters(gSoundContext, 0x67, 3, 0x40, 0, 0);
   }
 }
 
@@ -469,9 +469,9 @@ void func_ov087_022186a8(void *actor, const void *position, s32 transition) {
       F(u16, actor, 0x21a) |= 0x80;
       Sound_Play(gSoundContext, 0x67, 5);
     }
-    func_0205940c(gSoundContext, 0x67, 4);
-    func_0205940c(gSoundContext, 0x67, 1);
-    func_0205940c(gSoundContext, 0x67, 2);
+    Sound_StopEffect(gSoundContext, 0x67, 4);
+    Sound_StopEffect(gSoundContext, 0x67, 1);
+    Sound_StopEffect(gSoundContext, 0x67, 2);
     GameWork_ClearFlag(gGameWork, 0x44b);
   }
   if (F(void *, actor, 0x220) != 0) {

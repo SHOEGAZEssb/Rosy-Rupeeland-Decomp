@@ -4,7 +4,7 @@
 .extern data_020e6c0c
 .extern data_020e7318
 .extern ActorExtendedType2_PlayDescriptorSoundIfEnabled
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern gSoundContext
 .global ActorExtendedType2_TryCompleteAttachmentGate
 .type ActorExtendedType2_TryCompleteAttachmentGate, @function
@@ -68,7 +68,7 @@ ActorExtendedType2_TryCompleteAttachmentGate: ; 0x02040e28
     mov r1, r2, asr #0x7
     ldr r0, [r0, #0x0]
     and r2, r2, #0x7f
-    bl func_0205940c
+    bl Sound_StopEffect
 .L_02040f10:
     mov r0, r4
     bl ActorExtendedType2_PlayDescriptorSoundIfEnabled

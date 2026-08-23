@@ -5,7 +5,7 @@
 .extern VecFx32Object_Assign
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_020adcac
@@ -111,7 +111,7 @@ func_ov096_02217f6c:
     mov r2, #0x4
     ldr r0, [r0, #0x0]
     mov r3, r5
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_022180e0:
     add r1, r5, #0x200
     ldrsh r2, [r1, #0x5a]

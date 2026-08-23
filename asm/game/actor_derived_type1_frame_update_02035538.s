@@ -29,7 +29,7 @@
 .extern Type7AuxiliaryPresentation_Init
 .extern Type7AuxiliaryPresentation_Activate
 .extern Type7MarkerPresentation_SelectAnimation
-.extern func_0205940c
+.extern Sound_StopEffect
 .extern func_020ada8c
 .extern func_020adc90
 .extern gGameWork
@@ -115,7 +115,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     mov r1, #0x0
     ldr r0, [r0, #0x0]
     mov r2, #0x25
-    bl func_0205940c
+    bl Sound_StopEffect
     ldr r0, .L_02035ba4
     ldr r1, .L_02035ba8
     ldr r0, [r0, #0x0]

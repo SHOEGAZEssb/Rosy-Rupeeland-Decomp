@@ -2,7 +2,7 @@
 .text
 .extern data_020df9e8
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_020ada8c
 .extern gSoundContext
 .extern genrand_int32
@@ -46,7 +46,7 @@ ActorExtendedType2_UpdateLongDelayAudio: ; 0x02042170
     mov r3, r4
     mov r1, #0x90
     mov r2, #0x2
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_020422d0
 .L_02042208:
     mov r0, #0x0
@@ -58,7 +58,7 @@ ActorExtendedType2_UpdateLongDelayAudio: ; 0x02042170
     mov r3, r4
     add r1, r1, #0xc6
     mov r2, #0x2
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_020422d0
 .L_02042234:
     ldrh r1, [r0, #0x58]
@@ -91,7 +91,7 @@ ActorExtendedType2_UpdateLongDelayAudio: ; 0x02042170
     mov r3, r4
     mov r1, #0x90
     mov r2, #0x3
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
     b .L_020422d0
 .L_020422b4:
     ldr r1, [r4, #0x260]

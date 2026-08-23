@@ -6,7 +6,7 @@
 .extern gDisplayBrightnessPair
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
-.extern func_02058d28
+.extern Sound_StopAllArchiveEffects
 .extern func_ov041_021fd01c
 .extern func_ov041_021fdeb4
 .extern func_ov041_021ff6b8
@@ -20,7 +20,7 @@ func_ov041_021fdfd0: ; 0x021fdfd0
     ldr r1, .L_021fe080
     mov r4, r0
     ldr r0, [r1, #0x0]
-    bl func_02058d28
+    bl Sound_StopAllArchiveEffects
     mov r0, #0x1
     str r0, [r4, #0x1f8]
     ldr r0, [r4, #0x10]

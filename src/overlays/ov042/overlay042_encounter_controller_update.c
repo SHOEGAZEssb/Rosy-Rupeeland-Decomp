@@ -18,10 +18,10 @@ extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" void Sound_StopDirectSequence(void *sound, s32 sequence, s32 value);
-extern "C" void func_020593ac(void *sound, s32 sequence, s32 channel,
+extern "C" void Sound_PlayEffectWithParameters(void *sound, s32 sequence, s32 channel,
                                s32 value, s32 arg0, s32 arg1);
-extern "C" void func_0205940c(void *sound, s32 sequence, s32 value);
-extern "C" void func_0205943c(void *sound, s32 sequence, s32 channel,
+extern "C" void Sound_StopEffect(void *sound, s32 sequence, s32 value);
+extern "C" void Sound_SetEffectParameters(void *sound, s32 sequence, s32 channel,
                                s32 value, s32 arg0, s32 arg1);
 extern "C" void func_020594ec(void *sound, s32 value);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *animation, s32 index);
@@ -178,7 +178,7 @@ extern "C" void func_ov042_02201f30(void *scene)
                 FIELD(s32, FIELD(void *, owner, 0x10), 0x538) = 1;
                 func_ov071_02210514(FIELD(void *, owner, 8), 4);
                 FIELD(s32, scene, 0xb8) = 0x1333;
-                func_020593ac(gSoundContext, 0x16b, 4, 0, 0, 0);
+                Sound_PlayEffectWithParameters(gSoundContext, 0x16b, 4, 0, 0, 0);
                 ++FIELD(s32, scene, 0x1b0);
             }
             if (tick > 140 && tick < 180) {
@@ -268,7 +268,7 @@ extern "C" void func_ov042_02201f30(void *scene)
                                            (func_020bf1f8(genrand_int32(), 10) - 5) * 0x1000;
             FIELD(s32, scene, 0xac) = FIELD(s32, scene, 0x15c) +
                                            (func_020bf1f8(genrand_int32(), 10) - 5) * 0x1000;
-            func_0205940c(gSoundContext, 0x16b, 4);
+            Sound_StopEffect(gSoundContext, 0x16b, 4);
         }
         update_display_and_trail(scene, 0x5a000, 0x582, 0x52);
         return;
@@ -301,7 +301,7 @@ extern "C" void func_ov042_02201f30(void *scene)
             if (FIELD(s32, scene, 0xe0) <= 0) {
                 FIELD(s32, scene, 0xe0) = 0;
                 FIELD(s32, scene, 0x1c0) = FIELD(s32, scene, 0x1bc) = 1;
-                func_0205940c(gSoundContext, 0x16b, 4);
+                Sound_StopEffect(gSoundContext, 0x16b, 4);
                 func_ov042_02205180(FIELD(void *, scene, 0xa0));
                 for (s32 i = 3; i >= 0; --i) func_ov042_022080d4(FIELD(void *, scene, 0x68 + i * 4));
                 for (s32 i = 2; i >= 0; --i) func_ov042_02208a90(FIELD(void *, scene, 0x78 + i * 4));

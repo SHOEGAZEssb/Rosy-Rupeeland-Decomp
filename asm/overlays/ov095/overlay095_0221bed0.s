@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_020593dc
+.extern Sound_PlayOwnedEffect
 .extern func_ov095_0221b6d8
 .extern gSoundContext
 
@@ -48,7 +48,7 @@ func_ov095_0221bed0:
     mov r3, r5
     mov r1, r2, asr #0x7
     and r2, r2, #0x7f
-    bl func_020593dc
+    bl Sound_PlayOwnedEffect
 .L_0221bf68:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}

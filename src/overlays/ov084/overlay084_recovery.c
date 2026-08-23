@@ -56,7 +56,7 @@ extern "C" s32 func_0204cfa4(s32, s32);
 extern "C" void func_02032228(void *, s32, s32, s32);
 extern "C" void func_02032370(void *, void *, s32);
 extern "C" void func_020349b8(void *, s32, s32);
-extern "C" void func_0205940c(void *, s32, s32);
+extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
 extern "C" s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
@@ -177,7 +177,7 @@ extern "C" s32 func_ov084_02212d98(void *a) {
         F(u32, a, 0x260) |= 4;
         u16 s = data_020e7318[F(u16, a, 0x4e)];
         if (s != 0xffff)
-            func_0205940c(gSoundContext, s >> 7, s & 0x7f);
+            Sound_StopEffect(gSoundContext, s >> 7, s & 0x7f);
     }
     return 0;
 }

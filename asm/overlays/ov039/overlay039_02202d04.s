@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_script_render.c for portable C. */
     .extern Sound_Play
-    .extern func_0205940c
+    .extern Sound_StopEffect
     .extern gSoundContext
     .global func_ov039_02202d04
 func_ov039_02202d04:
@@ -126,7 +126,7 @@ L_02202eb4:
     ldr r1, L_02202f30
     ldr r0, [r0, #0x0]
     mov r2, #0x2
-    bl func_0205940c
+    bl Sound_StopEffect
     add r0, r4, #0x1000
     mov r1, #0x50
     str r1, [r0, #0xcc0]
