@@ -8,7 +8,7 @@
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_Update
-.extern RuntimePresentationManager_Update
+.extern RuntimePresentationManager_UpdatePresentations
 .extern ActorCollection_DispatchEventToActors
 .extern ActorCollection_GetSpriteGroup
 .extern ActorFeedback_UpdatePresentations
@@ -83,7 +83,7 @@ Overlay064Scene_Update:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl RuntimePresentationManager_Update
+    bl RuntimePresentationManager_UpdatePresentations
     ldr r0, .L_02210c58
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_Update

@@ -1,0 +1,13 @@
+{
+  "RuntimePresentationManager_Update": "RuntimePresentationManager_UpdatePresentations",
+  "func_0201de4c": "RuntimePresentationManager_DispatchVBlankCallbacks",
+  "func_0201de88": "FieldEffect_VBlankCallbackNoOp",
+  "func_0201de8c": "RuntimePresentationManager_DispatchHBlankCallbacks",
+  "func_0201ded0": "FieldEffect_HBlankCallbackNoOp",
+  "func_0201dff0": "RuntimePresentationManager_NotifyScreenModeChanged",
+  "func_0201e050": "FieldEffect_ScreenModeChangedCallbackNoOp",
+  "func_0201e054": "RuntimePresentationManager_SetEnabled",
+  "func_0201e0e8": "FieldEffect_SetEnabledNoOp",
+  "func_0201e0f4": "RuntimePresentationManager_DisableGraphics3dForActivePhase",
+  "func_0201e1b0": "RuntimePresentationManager_DetachEffectsByKey"
+}

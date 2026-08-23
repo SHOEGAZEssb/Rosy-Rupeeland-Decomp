@@ -15,39 +15,50 @@ extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0Mode);
 }
 #endif
 
-/* Broadcast argument through virtual 0x14 to every field effect in both lists. */
-void func_0201dff0(RuntimePresentationManager *self, s32 argument)
+/* Notify every effect of a screen-mode change through virtual 0x14. */
+void RuntimePresentationManager_NotifyScreenModeChanged(
+    RuntimePresentationManager *self, s32 screenMode)
 {
     FieldEffectListNode *node;
     for (node=self->firstEffects.head; node; node=node->next)
-        ((void (*)(void *,s32))node->effect->vtable[5])(node->effect,argument);
+        ((void (*)(void *,s32))node->effect->vtable[5])(node->effect,screenMode);
     for (node=self->secondEffects.head; node; node=node->next)
-        ((void (*)(void *,s32))node->effect->vtable[5])(node->effect,argument);
+        ((void (*)(void *,s32))node->effect->vtable[5])(node->effect,screenMode);
 }
 
-/* Recovered no-op callback; inputs and state are ignored. */
-void func_0201e050(void) {}
+/* Default screen-mode virtual 0x14 implementation; inputs are ignored. */
+void FieldEffect_ScreenModeChangedCallbackNoOp(FieldEffect *self,
+                                                s32 screenMode)
+{
+    (void)self;
+    (void)screenMode;
+}
 
 /*
  * Broadcast argument through virtual 0x18 to both lists. When the 3D
  * presentation exists and byte 0x50a is set, select its enabled or disabled
- * transition helper according to argument. Returns no value.
+ * transition helper according to enabled. Returns no value.
  */
-void func_0201e054(RuntimePresentationManager *self, s32 argument)
+void RuntimePresentationManager_SetEnabled(RuntimePresentationManager *self,
+                                           s32 enabled)
 {
     FieldEffectListNode *node;
     for (node=self->firstEffects.head; node; node=node->next)
-        ((void (*)(void *,s32))node->effect->vtable[6])(node->effect,argument);
+        ((void (*)(void *,s32))node->effect->vtable[6])(node->effect,enabled);
     for (node=self->secondEffects.head; node; node=node->next)
-        ((void (*)(void *,s32))node->effect->vtable[6])(node->effect,argument);
+        ((void (*)(void *,s32))node->effect->vtable[6])(node->effect,enabled);
     if (self->graphics3dPresentation == 0 ||
         ((u8 *)self->graphics3dPresentation)[0x50a] == 0) return;
-    if (argument != 0) func_020a23a8(self->graphics3dPresentation,0,1);
+    if (enabled != 0) func_020a23a8(self->graphics3dPresentation,0,1);
     else func_020a2348(self->graphics3dPresentation,0,0);
 }
 
-/* Recovered no-op callback; inputs and state are ignored. */
-void func_0201e0e8(void) {}
+/* Default enabled-state virtual 0x18 implementation; inputs are ignored. */
+void FieldEffect_SetEnabledNoOp(FieldEffect *self, s32 enabled)
+{
+    (void)self;
+    (void)enabled;
+}
 
 /* Return the manager's borrowed 3D presentation without changing state. */
 Graphics3dPresentation *RuntimePresentationManager_GetGraphics3dPresentation(
@@ -57,14 +68,15 @@ Graphics3dPresentation *RuntimePresentationManager_GetGraphics3dPresentation(
 }
 
 /*
- * If recovered runtime selection flag bit 23 is set, reset the 3D presentation,
- * select its mode (1,0), and program GX display mode 6 with BG modes zero.
+ * When the active phase configuration's 3D flag (bit 23) is set, tear down the
+ * active 3D presentation state, select its disabled path, and program GX mode
+ * 6 with BG0 in 2D mode.
  */
-void func_0201e0f4(RuntimePresentationManager *self)
+void RuntimePresentationManager_DisableGraphics3dForActivePhase(RuntimePresentationManager *self)
 {
-    u8 *runtime=(u8 *)data_021052fc;
-    u8 *selection=**(u8 ***)(runtime+0x30bc);
-    if (((s32)(*(u32 *)(selection+0x40)<<8)>>31)==0) return;
+    u8 *runtimeRoot=(u8 *)data_021052fc;
+    u8 *activePhaseConfig=**(u8 ***)(runtimeRoot+0x30bc);
+    if (((s32)(*(u32 *)(activePhaseConfig+0x40)<<8)>>31)==0) return;
     func_020a2324(self->graphics3dPresentation);
     func_020a2348(self->graphics3dPresentation,1,0);
     GX_SetGraphicsMode(6,0,0);
@@ -80,15 +92,23 @@ void RuntimePresentationManager_BroadcastSlot1C(RuntimePresentationManager *self
         ((void (*)(void *,s32))node->effect->vtable[7])(node->effect,argument);
 }
 
-/* Recovered no-op callback; inputs and state are ignored. */
+/* Unresolved virtual 0x1c default; all identified FieldEffect vtables use it. */
 void func_0201e1ac(void) {}
 
-/* Remove nodes whose effects have the requested key without destroying the effects. */
-void func_0201e1b0(RuntimePresentationManager *self, s32 key)
+/*
+ * Detach nodes whose effects contain effectKey in signed dispatch-state bits
+ * 2..9 without destroying the effects. Retail passes the first-list base when
+ * removing a second-list match and advances through the freed node; this
+ * portable recovery keeps the intended second-list base and saved-next walk.
+ * The observed key 0x37 occurs only in the first list, so known valid behavior
+ * is identical.
+ */
+void RuntimePresentationManager_DetachEffectsByKey(
+    RuntimePresentationManager *self, s32 effectKey)
 {
     FieldEffectListNode *node,*next;
-    for(node=self->firstEffects.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))FieldEffectList_RemoveNode(&self->firstEffects,node);}
-    for(node=self->secondEffects.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))FieldEffectList_RemoveNode(&self->secondEffects,node);}
+    for(node=self->firstEffects.head;node;node=next){next=node->next;if(effectKey==((s32)(node->effect->dispatchState<<22)>>24))FieldEffectList_RemoveNode(&self->firstEffects,node);}
+    for(node=self->secondEffects.head;node;node=next){next=node->next;if(effectKey==((s32)(node->effect->dispatchState<<22)>>24))FieldEffectList_RemoveNode(&self->secondEffects,node);}
 }
 
 /* Destroy the node-only list, free the list object, and return its old address. */

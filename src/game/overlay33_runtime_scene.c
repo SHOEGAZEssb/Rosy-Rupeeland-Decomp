@@ -32,7 +32,8 @@ extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *runtime);
 extern void GamePhaseRuntime_PrepareActorCollections(void *runtime, u32 value, s32 mode);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *runtime, u32 value, s32 mode);
 extern void GamePhaseRuntime_SynchronizeActorPlacement(void *runtime, s32 index);
-extern void RuntimePresentationManager_Update(void *manager, s32 value);
+extern s32 RuntimePresentationManager_UpdatePresentations(
+    void *manager, s32 graphicsUpdateArgument);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void GamePhaseCurrencyHud_Update(void *context);
 #ifdef __cplusplus
@@ -139,7 +140,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
         return 0;
     GamePhaseRuntime_SynchronizeActorPlacement(runtime, 0);
     GamePhaseRuntime_SynchronizeActorPlacement(runtime, 1);
-    RuntimePresentationManager_Update(runtime + 0x2f7c, 1);
+    RuntimePresentationManager_UpdatePresentations(runtime + 0x2f7c, 1);
     GamePhaseRuntime_FinalizeActorCollections(runtime, self->base.value04, 3);
     value = ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc);
     func_ov033_021fd324(self->child3c, value);

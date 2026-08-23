@@ -9,7 +9,8 @@ extern "C" {
 #endif
 extern void GamePhaseAreaScene_RestoreSubDisplay(void *actor);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled);
-extern void func_0201dff0(void *object, s32 mode);
+extern void RuntimePresentationManager_NotifyScreenModeChanged(
+    void *manager, s32 screenMode);
 #ifdef __cplusplus
 }
 #endif
@@ -46,6 +47,6 @@ void GamePhaseRuntime_ApplyScreenMode(GamePhaseRuntime *self, s32 mode, s32 use3
         *palette = 0;
         GameWork_SetFlag(*workAddress, 0x39c);
     }
-    func_0201dff0(b + 0x2f7c, mode);
+    RuntimePresentationManager_NotifyScreenModeChanged(b + 0x2f7c, mode);
     GameWork_SetFlag(gGameWork, 0x3f4);
 }

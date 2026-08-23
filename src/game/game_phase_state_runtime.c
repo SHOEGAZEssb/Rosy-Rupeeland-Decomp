@@ -10,8 +10,9 @@ extern void DebugText_BeginFrame(void);
 extern void *GamePhaseVisualEffect_Update(void *object);
 extern void GamePhaseVisualEffect_PrepareBackground(void *object);
 extern void GamePhaseRegionTable_Destroy(void *object);
-extern void func_0201de4c(void *object);
-extern void func_0201de8c(void *object, u16 vcount);
+extern void RuntimePresentationManager_DispatchVBlankCallbacks(void *manager);
+extern void RuntimePresentationManager_DispatchHBlankCallbacks(
+    void *manager, u16 vcount);
 extern void RuntimePresentationManager_DestroyAllEffects(void *object);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
@@ -45,7 +46,7 @@ void GamePhaseState_UpdateRenderHelpers(GamePhaseState *self)
 {
     if (!(self->renderFlags & 2))
         return;
-    func_0201de4c(self->renderHelperStorage);
+    RuntimePresentationManager_DispatchVBlankCallbacks(self->renderHelperStorage);
     if (self->phaseObject)
         ((PhaseVirtualMethod)phaseVirtual(self, 0x1c))(self->phaseObject);
     GamePhaseVisualEffect_Update(self->helper_2eb4);
@@ -54,7 +55,7 @@ void GamePhaseState_UpdateRenderHelpers(GamePhaseState *self)
 /* Forward VCOUNT to the render helper at offset 0x2f58. */
 void GamePhaseState_ForwardVCount(GamePhaseState *self, u16 vcount)
 {
-    func_0201de8c(self->renderHelperStorage, vcount);
+    RuntimePresentationManager_DispatchHBlankCallbacks(self->renderHelperStorage, vcount);
 }
 
 /*

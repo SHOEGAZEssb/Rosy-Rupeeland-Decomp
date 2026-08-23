@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern VecFx32Object_Destroy
 .extern OverlaySlot_Destroy
-.extern func_0201e1b0
+.extern RuntimePresentationManager_DetachEffectsByKey
 .extern ActorCollection_Destructor
 .extern ActorCollection_UnregisterAndDestroyAllActors
 
@@ -20,7 +20,7 @@ GamePhaseAreaScene_DestroyAndFree: ; 0x02011f98
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e1b0
+    bl RuntimePresentationManager_DetachEffectsByKey
     add r0, r4, #0x8
     bl ActorCollection_UnregisterAndDestroyAllActors
     ldr r0, [r4, #0x4]

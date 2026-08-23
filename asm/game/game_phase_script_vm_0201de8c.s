@@ -16,8 +16,8 @@
 .extern gGraphics3dPresentationAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global func_0201de8c
-func_0201de8c: ; 0x0201de8c
+.global RuntimePresentationManager_DispatchHBlankCallbacks
+RuntimePresentationManager_DispatchHBlankCallbacks: ; 0x0201de8c
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r1
     ldr r4, [r0, #0x14]
@@ -40,4 +40,4 @@ L_0201dec4:
     ldmia sp!, {r3, r4, r5, pc}
 
 
-.size func_0201de8c, . - func_0201de8c
+.size RuntimePresentationManager_DispatchHBlankCallbacks, . - RuntimePresentationManager_DispatchHBlankCallbacks

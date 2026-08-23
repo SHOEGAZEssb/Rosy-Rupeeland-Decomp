@@ -5,7 +5,7 @@
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
 .extern GamePhaseCurrencyHud_Update
-.extern RuntimePresentationManager_Update
+.extern RuntimePresentationManager_UpdatePresentations
 .extern func_020a681c
 .extern func_020a6990
 .extern func_ov063_02210414
@@ -87,7 +87,7 @@ func_ov063_0220ffd0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl RuntimePresentationManager_Update
+    bl RuntimePresentationManager_UpdatePresentations
     ldr r0, .L_022101bc
     mov r1, #0x2
     ldr r0, [r0, #0x0]

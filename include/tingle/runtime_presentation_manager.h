@@ -58,6 +58,12 @@ RuntimePresentationManager *RuntimePresentationManager_Destroy(
     RuntimePresentationManager *self);
 void RuntimePresentationManager_DestroyAllEffects(
     RuntimePresentationManager *self);
+s32 RuntimePresentationManager_UpdatePresentations(
+    RuntimePresentationManager *self, s32 graphicsUpdateArgument);
+void RuntimePresentationManager_DispatchVBlankCallbacks(
+    RuntimePresentationManager *self);
+void RuntimePresentationManager_DispatchHBlankCallbacks(
+    RuntimePresentationManager *self, s32 vcount);
 FieldEffectListNode *RuntimePresentationManager_AppendSecondListEffect(
     RuntimePresentationManager *self, FieldEffect *effect);
 FieldEffect *RuntimePresentationManager_GetFirstListNodeEffect(
@@ -66,6 +72,14 @@ FieldEffect *RuntimePresentationManager_GetSecondListNodeEffect(
     RuntimePresentationManager *unused, FieldEffectListNode *node);
 Graphics3dPresentation *RuntimePresentationManager_GetGraphics3dPresentation(
     RuntimePresentationManager *self);
+void RuntimePresentationManager_NotifyScreenModeChanged(
+    RuntimePresentationManager *self, s32 screenMode);
+void RuntimePresentationManager_SetEnabled(RuntimePresentationManager *self,
+                                           s32 enabled);
+void RuntimePresentationManager_DisableGraphics3dForActivePhase(
+    RuntimePresentationManager *self);
+void RuntimePresentationManager_DetachEffectsByKey(
+    RuntimePresentationManager *self, s32 effectKey);
 
 #ifdef __cplusplus
 }

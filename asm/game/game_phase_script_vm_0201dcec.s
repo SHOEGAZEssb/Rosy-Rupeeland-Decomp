@@ -16,8 +16,8 @@
 .extern gGraphics3dPresentationAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global RuntimePresentationManager_Update
-RuntimePresentationManager_Update: ; 0x0201dcec
+.global RuntimePresentationManager_UpdatePresentations
+RuntimePresentationManager_UpdatePresentations: ; 0x0201dcec
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r5, r0
     mov r4, r1
@@ -91,4 +91,4 @@ L_0201ddd8:
 L_0201dde0: .word data_021052fc
 
 
-.size RuntimePresentationManager_Update, . - RuntimePresentationManager_Update
+.size RuntimePresentationManager_UpdatePresentations, . - RuntimePresentationManager_UpdatePresentations

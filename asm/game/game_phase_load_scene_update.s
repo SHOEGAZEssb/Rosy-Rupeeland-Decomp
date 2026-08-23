@@ -43,7 +43,7 @@
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseAreaScene_SetEnabled
-.extern func_0201e0f4
+.extern RuntimePresentationManager_DisableGraphics3dForActivePhase
 .extern ActorCollection_GetSpriteGroup
 .extern GridEffectActorRegistry_FinalizeDepartingActors
 .extern Sound_SetModalEnvelopeEnabled
@@ -210,7 +210,7 @@ L_0200d23c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0f4
+    bl RuntimePresentationManager_DisableGraphics3dForActivePhase
     add r0, r5, #0x40
     bl func_020923a4
     ldr r2, L_0200e0ec

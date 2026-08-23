@@ -9,9 +9,9 @@
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
-.global func_0201e0e8
-func_0201e0e8: ; 0x0201e0e8
+.global FieldEffect_SetEnabledNoOp
+FieldEffect_SetEnabledNoOp: ; 0x0201e0e8
     bx lr
 
 
-.size func_0201e0e8, . - func_0201e0e8
+.size FieldEffect_SetEnabledNoOp, . - FieldEffect_SetEnabledNoOp

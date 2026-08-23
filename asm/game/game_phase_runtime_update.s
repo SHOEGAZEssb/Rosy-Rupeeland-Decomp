@@ -22,7 +22,7 @@
 .extern GamePhaseState_TryStartBoundaryTransition
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_Update
-.extern RuntimePresentationManager_Update
+.extern RuntimePresentationManager_UpdatePresentations
 .extern func_02027654
 .extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_020338e4
@@ -241,7 +241,7 @@ L_020076a0:
     add r0, r4, #0x37c
     add r0, r0, #0x2c00
     mov r1, #0x1
-    bl RuntimePresentationManager_Update
+    bl RuntimePresentationManager_UpdatePresentations
     ldr r1, [r4, #0x4]
     mov r0, r4
     mov r2, #0x3

@@ -9,8 +9,8 @@
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
-.global func_0201dff0
-func_0201dff0: ; 0x0201dff0
+.global RuntimePresentationManager_NotifyScreenModeChanged
+RuntimePresentationManager_NotifyScreenModeChanged: ; 0x0201dff0
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -41,4 +41,4 @@ L_0201e044:
     ldmia sp!, {r4, r5, r6, pc}
 
 
-.size func_0201dff0, . - func_0201dff0
+.size RuntimePresentationManager_NotifyScreenModeChanged, . - RuntimePresentationManager_NotifyScreenModeChanged

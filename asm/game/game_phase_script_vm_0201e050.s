@@ -9,9 +9,9 @@
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
-.global func_0201e050
-func_0201e050: ; 0x0201e050
+.global FieldEffect_ScreenModeChangedCallbackNoOp
+FieldEffect_ScreenModeChangedCallbackNoOp: ; 0x0201e050
     bx lr
 
 
-.size func_0201e050, . - func_0201e050
+.size FieldEffect_ScreenModeChangedCallbackNoOp, . - FieldEffect_ScreenModeChangedCallbackNoOp

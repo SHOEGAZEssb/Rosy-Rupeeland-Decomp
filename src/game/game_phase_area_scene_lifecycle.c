@@ -26,7 +26,8 @@ extern void *SubThreeLayerResourceRenderer_Init(void *self);
 extern void *DualLayerTileRendererBase_Init(void *self);
 extern void DualLayerTileRendererBase_SetLayoutParameters(void *self, s32 a, s32 b, s32 c);
 extern void DualLayerTileRenderer_LoadEmbeddedRendererEntry(void *self, const void *config);
-extern void func_0201e1b0(void *state, s32 value);
+extern void RuntimePresentationManager_DetachEffectsByKey(
+    void *manager, s32 effectKey);
 extern void GX_SetBankForSubBG(s32 bank);
 extern void GXS_SetGraphicsMode(s32 mode);
 extern void func_020aea7c(s32 value);
@@ -159,7 +160,7 @@ void GamePhaseAreaScene_Start(GamePhaseAreaScene *self)
 GamePhaseAreaScene *GamePhaseAreaScene_Destroy(GamePhaseAreaScene *self)
 {
     self->vtable = data_020d5680;
-    func_0201e1b0((u8 *)data_021052fc + 0x2f7c, 0x37);
+    RuntimePresentationManager_DetachEffectsByKey((u8 *)data_021052fc + 0x2f7c, 0x37);
     ActorCollection_UnregisterAndDestroyAllActors(self->actorCollectionStorage);
     if (self->subRenderer)
         ((void (*)(void *))(*(void ***)self->subRenderer)[1])(

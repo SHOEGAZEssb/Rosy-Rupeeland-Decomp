@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_state_runtime.c.
 .text
 .extern GamePhaseVisualEffect_Update
-.extern func_0201de4c
+.extern RuntimePresentationManager_DispatchVBlankCallbacks
 
     .global GamePhaseState_UpdateRenderHelpers
 GamePhaseState_UpdateRenderHelpers: ; 0x0200e9e0
@@ -14,7 +14,7 @@ GamePhaseState_UpdateRenderHelpers: ; 0x0200e9e0
     ldmeqia sp!, {r4, pc}
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201de4c
+    bl RuntimePresentationManager_DispatchVBlankCallbacks
     add r0, r4, #0x2000
     ldr r0, [r0, #0xeb0]
     cmp r0, #0x0

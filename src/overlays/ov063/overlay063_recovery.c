@@ -33,7 +33,8 @@ extern "C" void GamePhaseAreaScene_Update(void *);
 extern "C" void GamePhaseRuntime_PrepareActorCollections(void *, s32, s32);
 extern "C" void GamePhaseRuntime_FinalizeActorCollections(void *, s32, s32);
 extern "C" void GamePhaseRuntime_SynchronizeActorPlacement(void *, s32);
-extern "C" void RuntimePresentationManager_Update(void *);
+extern "C" s32 RuntimePresentationManager_UpdatePresentations(
+    void *manager, s32 graphicsUpdateArgument);
 extern "C" void GamePhaseCurrencyHud_Update(void *);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern "C" void GamePhaseRuntime_StageAreaRequest(void *, s32, s32, s32,
@@ -204,7 +205,8 @@ extern "C" s32 func_ov063_0220ffd0(void *scene)
         call_method(actor, 0xdc);
         GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 0);
         GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 1);
-        RuntimePresentationManager_Update((u8 *)data_021052fc + 0x2f7c);
+        RuntimePresentationManager_UpdatePresentations(
+            (u8 *)data_021052fc + 0x2f7c, 1);
         GamePhaseRuntime_FinalizeActorCollections(data_021052fc, 2, 3);
     } else {
         call_method(actor, 0xe0);

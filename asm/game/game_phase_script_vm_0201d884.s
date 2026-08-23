@@ -18,7 +18,7 @@
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
-.extern RuntimePresentationManager_Update
+.extern RuntimePresentationManager_UpdatePresentations
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_Update
 .extern gOverlay33RuntimeSceneVTable
@@ -89,7 +89,7 @@ L_0201d920:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl RuntimePresentationManager_Update
+    bl RuntimePresentationManager_UpdatePresentations
     ldr r0, L_0201d9b4
     ldr r1, [r4, #0x4]
     ldr r0, [r0, #0x0]

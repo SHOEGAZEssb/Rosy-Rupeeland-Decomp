@@ -32,7 +32,8 @@ extern void AnimationResourceState_Destroy(void *);
 extern void func_020923a0(void *);
 extern void func_020923a4(void *);
 extern void __destroy_arr(...);
-extern void func_0201e0f4(void *);
+extern void RuntimePresentationManager_DisableGraphics3dForActivePhase(
+    void *manager);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GamePhaseState_SetEnabled(...);
 extern void GamePhaseAreaScene_SetEnabled(...);
@@ -152,7 +153,7 @@ extern "C" void Overlay032Scene_SetupGraphics(void *scene)
     GraphicsResourceSet set;
     u8 *context = (u8 *)data_021052fc[0];
 
-    func_0201e0f4(context + 0x2f7c);
+    RuntimePresentationManager_DisableGraphics3dForActivePhase(context + 0x2f7c);
     func_020923a4((u8 *)scene + 0xbe8);
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);

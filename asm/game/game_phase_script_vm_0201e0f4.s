@@ -9,8 +9,8 @@
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
-.global func_0201e0f4
-func_0201e0f4: ; 0x0201e0f4
+.global RuntimePresentationManager_DisableGraphics3dForActivePhase
+RuntimePresentationManager_DisableGraphics3dForActivePhase: ; 0x0201e0f4
     stmdb sp!, {r4, lr}
     ldr r1, L_0201e148
     mov r4, r0
@@ -35,4 +35,4 @@ func_0201e0f4: ; 0x0201e0f4
 L_0201e148: .word data_021052fc
 
 
-.size func_0201e0f4, . - func_0201e0f4
+.size RuntimePresentationManager_DisableGraphics3dForActivePhase, . - RuntimePresentationManager_DisableGraphics3dForActivePhase

@@ -16,9 +16,9 @@
 .extern gGraphics3dPresentationAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global func_0201ded0
-func_0201ded0: ; 0x0201ded0
+.global FieldEffect_HBlankCallbackNoOp
+FieldEffect_HBlankCallbackNoOp: ; 0x0201ded0
     bx lr
 
 
-.size func_0201ded0, . - func_0201ded0
+.size FieldEffect_HBlankCallbackNoOp, . - FieldEffect_HBlankCallbackNoOp

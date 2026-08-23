@@ -12,7 +12,7 @@
 .extern data_021052fc
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseAreaScene_SetEnabled
-.extern func_0201e0f4
+.extern RuntimePresentationManager_DisableGraphics3dForActivePhase
 .extern GraphicsResource_GetFormat
 .extern func_02070638
 .extern func_020706c4
@@ -44,7 +44,7 @@ Overlay032Scene_SetupGraphics:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0f4
+    bl RuntimePresentationManager_DisableGraphics3dForActivePhase
     add r0, r4, #0x3e8
     add r0, r0, #0x800
     bl func_020923a4

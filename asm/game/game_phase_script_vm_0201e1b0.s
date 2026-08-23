@@ -9,8 +9,8 @@
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
-.global func_0201e1b0
-func_0201e1b0: ; 0x0201e1b0
+.global RuntimePresentationManager_DetachEffectsByKey
+RuntimePresentationManager_DetachEffectsByKey: ; 0x0201e1b0
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     mov r4, r1
@@ -49,4 +49,4 @@ L_0201e21c:
     ldmia sp!, {r4, r5, r6, pc}
 
 
-.size func_0201e1b0, . - func_0201e1b0
+.size RuntimePresentationManager_DetachEffectsByKey, . - RuntimePresentationManager_DetachEffectsByKey

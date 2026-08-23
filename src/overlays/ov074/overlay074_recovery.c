@@ -47,10 +47,11 @@ extern void func_020adff0(...), func_020adfbc(...), func_020aef3c(...);
 extern void func_020b0374(...), func_020b0300(...), func_020a7b90(...);
 extern void func_020b0808(...), func_020b0844(...), func_020b0880(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
-extern void RuntimePresentationManager_DestroyAllEffects(...), func_0201de4c(...);
+extern void RuntimePresentationManager_DestroyAllEffects(...), RuntimePresentationManager_DispatchVBlankCallbacks(...);
 extern void func_020a2324(...), func_020a2348(...), func_020a23a8(...);
 extern void func_02059880(...), DebugText_BeginFrame(...);
-extern void OS_WaitVBlankIntr(...), RuntimePresentationManager_Update(...);
+extern void OS_WaitVBlankIntr(...);
+extern s32 RuntimePresentationManager_UpdatePresentations(...);
 extern void GamePhaseCurrencyHud_Update(...);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(...);
 extern void Type7Actor_ClearBoundaryTransitionFlags(...);
@@ -334,7 +335,7 @@ s32 func_ov074_022101dc(void *scene) {
     return 1;
   }
 
-  RuntimePresentationManager_Update((u8 *)runtime + 0x2f7c, 1);
+  RuntimePresentationManager_UpdatePresentations((u8 *)runtime + 0x2f7c, 1);
   if (F(void *, scene, 0x128) != 0) {
     SplineMover_Evaluate2D(point, (u8 *)scene + 0x8c);
     func_ov033_021fd324(F(void *, scene, 0x128), point);
@@ -498,7 +499,7 @@ s32 func_ov074_02210a3c(void *scene) {
       GamePhaseAreaScene_Update(area);
     break;
   }
-  func_0201de4c((u8 *)data_021052fc + 0x2f7c);
+  RuntimePresentationManager_DispatchVBlankCallbacks((u8 *)data_021052fc + 0x2f7c);
   return 0;
 }
 

@@ -5,7 +5,7 @@
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern GamePhaseState_ConfigureMainDisplay
 .extern GamePhaseAreaScene_RestoreSubDisplay
-.extern func_0201dff0
+.extern RuntimePresentationManager_NotifyScreenModeChanged
 .extern GameWork_SetFlag
 .extern gGameWork
 
@@ -67,7 +67,7 @@ L_02008638:
     add r0, r5, #0x37c
     mov r1, r4
     add r0, r0, #0x2c00
-    bl func_0201dff0
+    bl RuntimePresentationManager_NotifyScreenModeChanged
     ldr r0, L_0200865c
     mov r1, #0x3f4
     ldr r0, [r0, #0x0]

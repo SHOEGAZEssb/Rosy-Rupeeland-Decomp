@@ -9,8 +9,8 @@
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
-.global func_0201e054
-func_0201e054: ; 0x0201e054
+.global RuntimePresentationManager_SetEnabled
+RuntimePresentationManager_SetEnabled: ; 0x0201e054
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -55,4 +55,4 @@ L_0201e0dc:
     ldmia sp!, {r4, r5, r6, pc}
 
 
-.size func_0201e054, . - func_0201e054
+.size RuntimePresentationManager_SetEnabled, . - RuntimePresentationManager_SetEnabled

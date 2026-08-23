@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseVisualEffect_UpdatePosition
 .extern GamePhaseVisualEffect_SetEnabled
-.extern func_0201e054
+.extern RuntimePresentationManager_SetEnabled
 .extern ActorCollection_SetEnabled
 
     .global GamePhaseState_SetEnabled
@@ -25,7 +25,7 @@ GamePhaseState_SetEnabled: ; 0x0200ec6c
     add r0, r5, #0x358
     mov r1, r4
     add r0, r0, #0x2c00
-    bl func_0201e054
+    bl RuntimePresentationManager_SetEnabled
     ldmia sp!, {r3, r4, r5, pc}
     .size GamePhaseState_SetEnabled, . - GamePhaseState_SetEnabled
 

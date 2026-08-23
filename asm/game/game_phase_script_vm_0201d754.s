@@ -18,7 +18,7 @@
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
-.extern RuntimePresentationManager_Update
+.extern RuntimePresentationManager_UpdatePresentations
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_Update
 .extern gOverlay33RuntimeSceneVTable

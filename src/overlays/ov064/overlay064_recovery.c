@@ -51,7 +51,8 @@ extern void ActorFeedback_UpdatePresentations(O64_ARGS);
 extern void *ActorMotionAreaFollower_GetPosition(O64_ARGS);
 extern void ActorCollection_DispatchEventToActors(O64_ARGS);
 extern void GraphicsSpriteGroup_AdvanceAnimations(O64_ARGS);
-extern void GamePhaseRuntime_BuildSecondaryTransform(O64_ARGS), RuntimePresentationManager_Update(O64_ARGS);
+extern void GamePhaseRuntime_BuildSecondaryTransform(O64_ARGS);
+extern s32 RuntimePresentationManager_UpdatePresentations(O64_ARGS);
 extern void GamePhaseCurrencyHud_Update(O64_ARGS);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(O64_ARGS);
 extern void func_020afce8(O64_ARGS);
@@ -980,7 +981,7 @@ s32 Overlay064Scene_Update(void *scene)
         collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
         GraphicsSpriteGroup_AdvanceAnimations(
             ActorCollection_GetSpriteGroup(collection));
-        RuntimePresentationManager_Update((u8 *)data_021052fc + 0x2f7c, 1);
+        RuntimePresentationManager_UpdatePresentations((u8 *)data_021052fc + 0x2f7c, 1);
         GamePhaseCurrencyHud_Update(gLupyContext);
         GamePhaseRuntime_UpdateDualScreenUiPresentation(data_021052fc);
     } else {

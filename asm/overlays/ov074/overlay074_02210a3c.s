@@ -6,7 +6,7 @@
 .extern GamePhaseState_UpdateRenderHelpers
 .extern GamePhaseVisualEffect_Update
 .extern GamePhaseAreaScene_Update
-.extern func_0201de4c
+.extern RuntimePresentationManager_DispatchVBlankCallbacks
 .extern func_ov074_02211a0c
 
 .global func_ov074_02210a3c
@@ -101,7 +101,7 @@ func_ov074_02210a3c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201de4c
+    bl RuntimePresentationManager_DispatchVBlankCallbacks
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_02210b8c: .word data_021052fc

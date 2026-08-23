@@ -4,8 +4,9 @@
 #include "tingle/types.h"
 
 /*
- * Base of the runtime field-effect hierarchy. The low two dispatch flags gate
- * manager callbacks; bits 2..9 hold the signed key used for list removal.
+ * Base of the runtime field-effect hierarchy. Dispatch-state bit zero gates
+ * HBlank callbacks, bit one gates VBlank callbacks, and bits 2..9 hold the
+ * signed key used to detach matching list nodes.
  */
 typedef struct FieldEffect {
     void **vtable;
@@ -24,6 +25,11 @@ void *FieldEffect_Init(void *self);
 void *FieldEffect_Destroy(void *self);
 void *FieldEffect_DestroyAndFree(void *self);
 void *FieldEffect_DestroyBase(void *self);
+void FieldEffect_VBlankCallbackNoOp(FieldEffect *self);
+void FieldEffect_HBlankCallbackNoOp(FieldEffect *self, s32 vcount);
+void FieldEffect_ScreenModeChangedCallbackNoOp(FieldEffect *self,
+                                                s32 screenMode);
+void FieldEffect_SetEnabledNoOp(FieldEffect *self, s32 enabled);
 
 #ifdef __cplusplus
 }

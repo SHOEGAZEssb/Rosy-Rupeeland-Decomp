@@ -79,10 +79,11 @@ RuntimePresentationManager *RuntimePresentationManager_Destroy(RuntimePresentati
 /*
  * Poll both lists through effect virtual 0x08; completed effects are deleted
  * through virtual 0x04 and their nodes removed. If the 3D presentation's byte
- * 0x50a is set, refresh it from runtime field 0x2fbc with argument. Returns
- * zero.
+ * 0x50a is set, refresh it from runtime field 0x2fbc with the caller's opaque
+ * graphics update argument. Returns zero.
  */
-s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argument)
+s32 RuntimePresentationManager_UpdatePresentations(
+    RuntimePresentationManager *self, s32 graphicsUpdateArgument)
 {
     FieldEffectListNode *node;
     FieldEffectListNode *next;
@@ -111,7 +112,8 @@ s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argu
     if (self->graphics3dPresentation != 0 &&
         ((u8 *)self->graphics3dPresentation)[0x50a] != 0) {
         value = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
-        func_020a214c(self->graphics3dPresentation, value, argument);
+        func_020a214c(self->graphics3dPresentation, value,
+                      graphicsUpdateArgument);
     }
     return 0;
 }
@@ -128,8 +130,8 @@ void FieldEffectList_RemoveNode(FieldEffectList *self, FieldEffectListNode *node
     if (self->count == 0) FieldEffectList_Clear(self);
 }
 
-/* Dispatch virtual 0x0c to second-list effects whose dispatch-state bit 1 is set. */
-void func_0201de4c(RuntimePresentationManager *self)
+/* Dispatch VBlank virtual 0x0c to second-list effects with dispatch bit 1 set. */
+void RuntimePresentationManager_DispatchVBlankCallbacks(RuntimePresentationManager *self)
 {
     FieldEffectListNode *node;
     for (node = self->secondEffects.head; node != 0; node = node->next)
@@ -137,21 +139,26 @@ void func_0201de4c(RuntimePresentationManager *self)
             ((void (*)(void *))node->effect->vtable[3])(node->effect);
 }
 
-/* Recovered no-op callback; inputs and state are ignored. */
-void func_0201de88(void) {}
+/* Default VBlank virtual 0x0c implementation; effect state is unchanged. */
+void FieldEffect_VBlankCallbackNoOp(FieldEffect *self) { (void)self; }
 
-/* Dispatch argument through virtual 0x10 to second-list effects with dispatch-state bit 0 set. */
-void func_0201de8c(RuntimePresentationManager *self, s32 argument)
+/* Dispatch VCOUNT through HBlank virtual 0x10 to second-list effects with bit 0 set. */
+void RuntimePresentationManager_DispatchHBlankCallbacks(
+    RuntimePresentationManager *self, s32 vcount)
 {
     FieldEffectListNode *node;
     for (node = self->secondEffects.head; node != 0; node = node->next)
         if ((s32)(node->effect->dispatchState << 31) >> 31)
             ((void (*)(void *, s32))node->effect->vtable[4])(
-                node->effect, argument);
+                node->effect, vcount);
 }
 
-/* Recovered no-op callback; inputs and state are ignored. */
-void func_0201ded0(void) {}
+/* Default HBlank virtual 0x10 implementation; VCOUNT and state are ignored. */
+void FieldEffect_HBlankCallbackNoOp(FieldEffect *self, s32 vcount)
+{
+    (void)self;
+    (void)vcount;
+}
 
 /* Append a field effect to the manager's first list and return the new node. */
 FieldEffectListNode *RuntimePresentationManager_AppendFirstListEffect(

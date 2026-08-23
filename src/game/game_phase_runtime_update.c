@@ -41,7 +41,8 @@ extern void GamePhaseCurrencyHud_Update(void *context);
 extern s32 GamePhaseState_TryStartBoundaryTransition(void *object);
 extern void func_0200866c(GamePhaseRuntime *self);
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 index);
-extern void RuntimePresentationManager_Update(void *object, s32 enabled);
+extern s32 RuntimePresentationManager_UpdatePresentations(
+    void *manager, s32 graphicsUpdateArgument);
 extern s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 extern void func_020338e4(void *object);
 extern void Type7Actor_ClearTarget(void *object);
@@ -152,7 +153,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         func_0200866c(self);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 0);
         GamePhaseRuntime_SynchronizeActorPlacement(self, 1);
-        RuntimePresentationManager_Update(b + 0x2f7c, 1);
+        RuntimePresentationManager_UpdatePresentations(b + 0x2f7c, 1);
         GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
         if (GamePhaseRuntime_DispatchActorQueryRequest(self))
             return 0;

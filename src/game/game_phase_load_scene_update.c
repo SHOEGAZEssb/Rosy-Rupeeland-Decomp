@@ -75,7 +75,8 @@ extern void *func_ov059_02210fec(void *object, void *phaseState);
 extern u32 GX_VBlankIntr(u32 callback);
 extern void GridEffectActorRegistry_FinalizeDepartingActors(void);
 extern void func_020923a4(void *object);
-extern void func_0201e0f4(void *object);
+extern void RuntimePresentationManager_DisableGraphics3dForActivePhase(
+    void *manager);
 extern void func_020745c4(GraphicsSpriteRenderer *renderer, s32 mode);
 extern void *func_ov013_021fce2c(void *object);
 extern void *InventoryScene_Init(void *object);
@@ -551,7 +552,7 @@ code_r0x0200d224:
     func_020923a4(self->field_40);
   }
   else {
-    func_0201e0f4((u8 *)data_021052fc + 0x2f7c);
+    RuntimePresentationManager_DisableGraphics3dForActivePhase((u8 *)data_021052fc + 0x2f7c);
     func_020923a4(self->field_40);
     *UNK_0200e0ec = 0;
     GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 0);
