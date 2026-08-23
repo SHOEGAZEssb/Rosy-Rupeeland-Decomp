@@ -11,6 +11,7 @@ typedef struct TitleSeparationState {
 } TitleSeparationState;
 
 extern s32 func_020adc90(s32 numerator, s32 denominator);
+extern u64 func_020befec(s32 dividend, s32 divisor);
 extern void func_ov090_0221b3d0(VecFx32Object *vector, fx32 scale);
 
 /*
@@ -30,7 +31,8 @@ void func_ov090_0221b280(TitleSeparationState *self)
         s32 offset = 1;
 
         do {
-            s32 otherIndex = (i + offset) % 3;
+            /* Preserve retail's shared signed-divmod call and remainder ABI. */
+            s32 otherIndex = (s32)(func_020befec(i + offset, 3) >> 32);
             void *other = self->participants_1f4[otherIndex];
             if (FIELD(s16, other, 0xda) < sourceState) {
                 s32 dx = (FIELD(s32, other, 0x1c) >> 12) -

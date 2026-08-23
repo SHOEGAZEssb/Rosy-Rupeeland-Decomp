@@ -11,6 +11,8 @@ typedef struct TitleParticipantSelectState {
     void *participants_1f4[3];
 } TitleParticipantSelectState;
 
+extern u64 func_020befec(s32 dividend, s32 divisor);
+
 /*
  * Select the next participant whose signed state at +0xda is below three.
  * The chosen actor receives flag bit 2 at +0x2f2 and has +0x2c8 cleared. If
@@ -34,7 +36,8 @@ void func_ov090_0221b194(TitleParticipantSelectState *self, void *caller)
     candidate = -1;
     i = 0;
     while (i < 3) {
-        scanIndex = (scanIndex + 1) % 3;
+        /* The resident signed divmod helper returns its remainder in r1. */
+        scanIndex = (s32)(func_020befec(scanIndex + 1, 3) >> 32);
         if (FIELD(s16, self->participants_1f4[scanIndex], 0xda) < 3) {
             candidate = scanIndex;
             break;
