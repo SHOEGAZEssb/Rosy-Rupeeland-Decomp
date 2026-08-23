@@ -18,7 +18,8 @@ extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Add(void *vector, const void *other);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_0209a2ac(void *object, const void *position, s32 enabled);
-extern void func_0209b7a0(void *renderer, const void *position);
+extern void Graphics3dPresentation_BeginFrame(void *renderer,
+                                              const void *position);
 extern void func_0209b7ec(void *renderer, s32 value);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void *func_ov040_02200108(void *destination, const void *object);
@@ -84,7 +85,7 @@ extern "C" void func_ov040_022013e0(void *scene, const void *offset,
 
     FIELD(s32, translated, 8) =
         (func_020befec(FIELD(s32, offset, 8) >> 0xc, 3) + 8) * 0x1000;
-    func_0209b7a0(renderer, translated);
+    Graphics3dPresentation_BeginFrame(renderer, translated);
     func_0209b7ec(renderer, 0);
 
     /* Later consumers use these confirmed linked positions as their source. */

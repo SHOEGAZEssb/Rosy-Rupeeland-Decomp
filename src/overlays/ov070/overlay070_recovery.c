@@ -24,7 +24,8 @@ extern void func_02004fe0(...), func_02005030(...), func_02005058(...);
 extern void func_020050a4(...), func_02099fb0(...), func_02002e6c(...);
 extern s32 func_02003e2c(...), func_020befec(...), func_020bf1f8(...);
 extern void *func_0209a208(...);
-extern void func_0209a2ac(...), func_0209b7a0(...), func_0209b7ec(...);
+extern void func_0209a2ac(...), Graphics3dPresentation_BeginFrame(...);
+extern void func_0209b7ec(...);
 extern void func_0209b880(...), func_02072b68(...), func_02059394(...);
 extern void func_02059278(...);
 extern s32 func_020adc40(...);
@@ -472,7 +473,7 @@ void func_ov070_02211dcc(void *scene, const void *transform, void *unused,
   for (i = 0; i < 16; ++i)
     func_0209a2ac(F(void *, scene, 0x88 + i * 4), neutral, 1);
   ++F(s32, scene, 0x12c);
-  func_0209b7a0(F(void *, runtime, 0x18), transform);
+  Graphics3dPresentation_BeginFrame(F(void *, runtime, 0x18), transform);
   if ((F(u16, F(void *, scene, 0x6c), 0x42) & 4) != 0 &&
       F(s32, scene, 0x118) != 0) {
     u8 from[12], to[12];

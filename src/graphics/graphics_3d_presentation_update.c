@@ -10,9 +10,6 @@ extern void func_020a2da8(void *manager);
 extern void func_020a2fd0(void *manager);
 extern void func_020a6280(void *manager);
 extern void func_020a62e4(void *manager);
-extern void func_0209b7a0(void *presentation, const void *position);
-extern void func_020a219c(void *presentation);
-extern void Graphics3dPresentation_FinishFrame(void *presentation, s32 argument);
 extern u32 func_0209a4dc(void *manager);
 extern void func_0209a4c4(void *manager);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
@@ -47,9 +44,9 @@ void Graphics3dPresentation_UpdateFrame(
         return;
     func_020a2da8(presentation->pairedEntryManager);
     func_020a6280(presentation->slotManager);
-    func_0209b7a0(presentation, worldPosition);
-    func_020a219c(presentation);
-    Graphics3dPresentation_FinishFrame(presentation, swapBuffers);
+    Graphics3dPresentation_BeginFrame(presentation, worldPosition);
+    Graphics3dPresentation_RenderContents(presentation);
+    Graphics3dPresentation_EndFrame(presentation, swapBuffers);
 }
 
 /* The remaining recovered functions occupy non-contiguous retail objects.
@@ -57,29 +54,30 @@ void Graphics3dPresentation_UpdateFrame(
  * these portable bodies to the host recompilation. */
 #ifndef MATCHING
 
-/* Finalize one enabled 3D presentation frame. Child managers update and draw
- * first. Once the small manager becomes active, its uniform scale approaches
- * the selected endpoint, its retained transform is refreshed, and recovered
- * geometry submission consumes the borrowed manager synchronously. */
-void func_020a219c(void *presentation)
+/* Render the contents of one enabled 3D presentation frame. Child managers
+ * draw first. Once the small manager becomes active, its uniform scale
+ * approaches the selected endpoint, its retained transform is refreshed, and
+ * recovered geometry submission consumes the borrowed manager synchronously.
+ */
+void Graphics3dPresentation_RenderContents(
+    Graphics3dPresentation *presentation)
 {
-    u8 *bytes = (u8 *)presentation;
     void *manager;
     s32 scale;
     s32 remaining;
     s32 vector[4];
 
-    if (bytes[0x509] != 0)
+    if (presentation->drawSuppressed != 0)
         return;
-    func_020a2fd0(*(void **)(bytes + 0x4e4));
-    func_020a62e4(*(void **)(bytes + 0x4e8));
-    manager = *(void **)(bytes + 0x4e0);
+    func_020a2fd0(presentation->pairedEntryManager);
+    func_020a62e4(presentation->slotManager);
+    manager = presentation->transformManager;
     if (func_0209a4dc(manager) != 0)
         return;
 
-    scale = *(s32 *)(bytes + 0x4fc);
+    scale = presentation->scale;
     remaining = 0x1000 - scale;
-    if (*(s32 *)(bytes + 0x500) == 0) {
+    if (presentation->hideRequested == 0) {
         scale += (remaining >> 2) + 0x29;
         if (scale > 0x1000)
             scale = 0x1000;
@@ -90,8 +88,9 @@ void func_020a219c(void *presentation)
             func_0209a4c4(manager);
         }
     }
-    *(s32 *)(bytes + 0x4fc) = scale;
-    func_020050a4((u8 *)manager + 0x0c, bytes + 0x4ec);
+    presentation->scale = scale;
+    func_020050a4((u8 *)manager + 0x0c,
+                  &presentation->transformOffset);
     func_0200500c(vector, scale, scale, scale);
     func_020050a4((u8 *)manager + 0x1c, vector);
     VecFx32_TerminateNoOp(vector);

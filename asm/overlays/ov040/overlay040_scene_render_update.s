@@ -15,7 +15,7 @@
     .extern VecFx32Object_Add
     .extern VecFx32Object_Subtract
     .extern func_0209a2ac
-    .extern func_0209b7a0
+    .extern Graphics3dPresentation_BeginFrame
     .extern func_0209b7ec
     .extern func_0209bd14
     .extern func_0209c1bc
@@ -171,7 +171,7 @@ func_ov040_022013e0: ; 0x022013e0
     add r1, sp, #0x19c
     mov r0, r8
     str r2, [sp, #0x1a4]
-    bl func_0209b7a0
+    bl Graphics3dPresentation_BeginFrame
     mov r0, r8
     mov r1, #0x0
     bl func_0209b7ec

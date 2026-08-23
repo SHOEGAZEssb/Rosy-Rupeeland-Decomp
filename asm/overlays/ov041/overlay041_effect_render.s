@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern func_0209a2ac
-.extern func_0209b7a0
+.extern Graphics3dPresentation_BeginFrame
 .extern func_0209c7e8
 .extern func_0209c87c
 .extern func_0209c9d4
@@ -103,7 +103,7 @@ func_ov041_02203434: ; 0x02203434
     ldr r0, [r8, #0x48]
     add r1, sp, #0x234
     ldr r0, [r0, #0x18]
-    bl func_0209b7a0
+    bl Graphics3dPresentation_BeginFrame
     ldr r0, [r8, #0x48]
     add r1, sp, #0x234
     ldr r0, [r0, #0x18]

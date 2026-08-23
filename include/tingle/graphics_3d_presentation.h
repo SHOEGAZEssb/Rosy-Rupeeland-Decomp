@@ -12,8 +12,14 @@
  * managers but not the caller-owned Graphics3dPresentation allocation.
  */
 typedef struct Graphics3dPresentation {
-    /* The renderer/resource sublayout through +0x4df remains opaque here. */
-    u8 rendererAndResourceState[0x4e0];
+    /* The renderer sublayout through +0x4cb remains opaque here. */
+    u8 rendererState[0x4cc];
+    u32 frameOpen;
+    u32 resourcesLoaded;
+    u32 textureVramCursor;
+    u32 paletteVramCursor;
+    /* +0x4dc is reset during resource loading but otherwise unresolved. */
+    u8 opaqueResourceState[4];
     void *transformManager;
     void *pairedEntryManager;
     void *slotManager;
@@ -41,6 +47,16 @@ Graphics3dPresentation *Graphics3dPresentation_Destroy(
 void Graphics3dPresentation_UpdateFrame(
     Graphics3dPresentation *self, const VecFx32Object *worldPosition,
     s32 swapBuffers);
+void Graphics3dPresentation_BeginFrame(
+    Graphics3dPresentation *self, const VecFx32Object *worldPosition);
+void Graphics3dPresentation_RenderContents(Graphics3dPresentation *self);
+void Graphics3dPresentation_EndFrame(Graphics3dPresentation *self,
+                                     s32 swapBuffers);
+void Graphics3dPresentation_ReloadResources(Graphics3dPresentation *self);
+void Graphics3dPresentation_SuppressDrawing(Graphics3dPresentation *self);
+void Graphics3dPresentation_ResumeDrawing(Graphics3dPresentation *self);
+u32 Graphics3dPresentation_IsDrawingSuppressed(
+    const Graphics3dPresentation *self);
 void Graphics3dPresentation_Clear(Graphics3dPresentation *self);
 void Graphics3dPresentation_Disable(Graphics3dPresentation *self,
                                     s32 releaseResources,

@@ -7,7 +7,7 @@
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209a2ac
-.extern func_0209b7a0
+.extern Graphics3dPresentation_BeginFrame
 .extern func_0209d640
 .extern func_020b0880
 .extern func_020befec
@@ -117,7 +117,7 @@ func_ov071_022111b4:
     ldr r0, [r10, #0x48]
     mov r1, r9
     ldr r0, [r0, #0x20]
-    bl func_0209b7a0
+    bl Graphics3dPresentation_BeginFrame
     mov r1, #0x0
     add r0, sp, #0x0
     mov r2, r1

@@ -12,7 +12,7 @@ extern "C" {
 void func_0209a2ac(void *, const void *, s32);
 void VecFx32Object_InitCopy(void *, const void *);
 void VecFx32Object_Destroy(void *);
-void func_0209b7a0(void *, const void *);
+void Graphics3dPresentation_BeginFrame(void *, const void *);
 void func_0209c7e8(void *, s32);
 void func_0209c87c(void *, const void *, const void *, s32, s32);
 extern const s32 data_ov041_02204c58[9];
@@ -61,7 +61,7 @@ extern "C" void func_ov041_021fffc8(void *object, const void *transform)
             {0x60000, 0, 0x7f000, 0x1f000}
         };
         void *scene = FIELD(void *, owner, 0x18);
-        func_0209b7a0(scene, transform);
+        Graphics3dPresentation_BeginFrame(scene, transform);
         func_0209c7e8(scene, 0x1c);
 
         for (s32 i = FIELD(s32, object, 0x1ac) - 1; i >= 0; --i) {

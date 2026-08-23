@@ -43,7 +43,8 @@ extern s32 func_020befec(...);
 extern s32 func_020ae024(...);
 extern u32 genrand_int32(...);
 extern void func_020ad2d8(...), func_020ad2f4(...);
-extern void func_0209a2ac(...), func_0209b7a0(...), func_0209d640(...);
+extern void func_0209a2ac(...), Graphics3dPresentation_BeginFrame(...);
+extern void func_0209d640(...);
 extern void *func_0209a208(...);
 extern void func_0209b494(...);
 extern void func_020b0808(...), func_020b0880(...);
@@ -674,7 +675,8 @@ void func_ov071_022111b4(void *scene, s32 mode, s32 parameter) {
       F(u16, F(void *, scene, 0x78), 0x42);
   for (i = 0; i < 10; ++i)
     func_0209a2ac(F(void *, scene, 0x6c + i * 4), mode, 1);
-  func_0209b7a0(F(void *, F(void *, scene, 0x48), 0x20), mode);
+  Graphics3dPresentation_BeginFrame(
+      F(void *, F(void *, scene, 0x48), 0x20), mode);
   VecFx32Object_InitComponents(origin, 0, 0, 0);
   func_0209d640(F(void *, F(void *, scene, 0x48), 0x20), 0, parameter,
                 origin);

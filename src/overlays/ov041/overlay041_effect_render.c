@@ -20,7 +20,7 @@ void VecFx32Object_InitCopy(void *, const void *);
 void VecFx32Object_Assign(void *, const void *);
 void VecFx32Object_Destroy(void *);
 void VecFx32Object_Init(void *);
-void func_0209b7a0(void *, const void *);
+void Graphics3dPresentation_BeginFrame(void *, const void *);
 void func_0209c7e8(void *, s32);
 void func_0209c87c(void *, const Point2 *, const Point2 *, u16, s32);
 void func_0209c9d4(void *);
@@ -275,7 +275,7 @@ extern "C" void func_ov041_02203434(void *object, const void *transform)
         }
         void *owner = FIELD(void *, object, 0x48);
         void *renderContext = FIELD(void *, owner, 0x18);
-        func_0209b7a0(renderContext, localTransform);
+        Graphics3dPresentation_BeginFrame(renderContext, localTransform);
         VecFx32Object_Assign((u8 *)renderContext + 0x84, localTransform);
         func_0209c7e8(renderContext, 0);
 

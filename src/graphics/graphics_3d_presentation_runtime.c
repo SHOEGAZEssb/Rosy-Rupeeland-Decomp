@@ -361,25 +361,27 @@ void func_0209b478(void *object)
 /* Begin a presentation frame once: copy the borrowed world position into the
  * object's retained position, reset the Nitro geometry engine for submission,
  * and set the per-frame guard at +0x4CC. Repeated calls have no effect. */
-void func_0209b7a0(void *object, const void *position)
+void Graphics3dPresentation_BeginFrame(
+    Graphics3dPresentation *self, const VecFx32Object *worldPosition)
 {
-    u8 *bytes = (u8 *)object;
+    u8 *bytes = (u8 *)self;
 
-    if (*(u32 *)(bytes + 0x4cc) != 0)
+    if (self->frameOpen != 0)
         return;
-    func_020050a4(bytes + 0x84, position);
+    func_020050a4(bytes + 0x84, worldPosition);
     func_020b0558();
-    *(u32 *)(bytes + 0x4cc) = 1;
+    self->frameOpen = 1;
 }
 
-/* Finish a presentation frame. A nonzero argument requests a geometry-buffer
+/* End a presentation frame. A nonzero argument requests a geometry-buffer
  * swap through the DS command register; all calls clear the per-frame guard so
  * the next update can install a new position. */
-void Graphics3dPresentation_FinishFrame(void *object, s32 swap_buffers)
+void Graphics3dPresentation_EndFrame(Graphics3dPresentation *self,
+                                     s32 swapBuffers)
 {
-    if (swap_buffers != 0)
+    if (swapBuffers != 0)
         *(volatile u32 *)0x04000540 = 1;
-    *(u32 *)((u8 *)object + 0x4cc) = 0;
+    self->frameOpen = 0;
 }
 
 /* Pack the retail texture-parameter fields into the geometry command port.
@@ -439,11 +441,30 @@ void func_0209c9d4(void *object)
  * the presentation's resource profile. Allocations remain owned by the
  * object.
  */
-void func_020a22bc(void *object)
+void Graphics3dPresentation_ReloadResources(Graphics3dPresentation *self)
 {
-    func_0209a4f0(object);
-    func_0209a748(object,
-                  *(s32 *)((u8 *)object + 0x504) != 0 ? 3 : 8);
+    func_0209a4f0(self);
+    func_0209a748(self, self->resourceProfile != 0 ? 3 : 8);
+}
+
+/* Skip presentation drawing without disabling manager updates, frame setup,
+ * display routing, or resident resources. */
+void Graphics3dPresentation_SuppressDrawing(Graphics3dPresentation *self)
+{
+    self->drawSuppressed = 1;
+}
+
+/* Resume presentation drawing without changing lifecycle or resource state. */
+void Graphics3dPresentation_ResumeDrawing(Graphics3dPresentation *self)
+{
+    self->drawSuppressed = 0;
+}
+
+/* Return whether presentation drawing is suppressed; no state is changed. */
+u32 Graphics3dPresentation_IsDrawingSuppressed(
+    const Graphics3dPresentation *self)
+{
+    return self->drawSuppressed;
 }
 
 /*
@@ -486,7 +507,7 @@ void Graphics3dPresentation_Enable(Graphics3dPresentation *self,
                            ((((*display_control >> 8) & 0x1fu) | 1u) << 8);
     }
     if (loadResources != 0)
-        func_020a22bc(self);
+        Graphics3dPresentation_ReloadResources(self);
     self->enabled = 1;
 }
 

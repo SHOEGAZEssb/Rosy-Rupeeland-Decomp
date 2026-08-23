@@ -1,0 +1,9 @@
+{
+  "func_0209b7a0": "Graphics3dPresentation_BeginFrame",
+  "Graphics3dPresentation_FinishFrame": "Graphics3dPresentation_EndFrame",
+  "func_020a219c": "Graphics3dPresentation_RenderContents",
+  "func_020a22bc": "Graphics3dPresentation_ReloadResources",
+  "func_020a22f0": "Graphics3dPresentation_SuppressDrawing",
+  "func_020a22fc": "Graphics3dPresentation_ResumeDrawing",
+  "func_020a2308": "Graphics3dPresentation_IsDrawingSuppressed"
+}
