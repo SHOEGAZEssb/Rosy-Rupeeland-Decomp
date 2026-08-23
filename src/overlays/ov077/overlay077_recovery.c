@@ -27,7 +27,7 @@ extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
 extern "C" void ActorExtendedType2_Init(void *);
 extern "C" void ActorExtendedType2_Destroy(void *);
-extern "C" void Actor_UpdateAnimationState(void *);
+extern "C" void Actor_SynchronizeStatePresentation(void *);
 extern "C" void ActorExtendedType2_InitializePresentation(void *);
 extern "C" s16 ActorExtendedType2_GetDescriptorValue2A(void *);
 extern "C" s16 ActorExtendedType2_GetDescriptorValue2C(void *);
@@ -45,7 +45,7 @@ extern "C" void *AnimationResource_Init(void *, s32, s32, s32);
 extern "C" void *UtilAnimationResource_Init(void *, ...);
 
 #define EXT(name) extern "C" s32 name(...)
-EXT(ActorExtendedType2_ApplyAttachmentState);
+EXT(ActorExtendedType2_UpdatePresentationForState);
 EXT(ActorExtendedType2_ApplyContactResponse);
 EXT(ActorExtendedType2_IncrementSavedProgressCounter);
 EXT(ActorExtendedType2_RunRenderCallback);
@@ -272,7 +272,7 @@ extern "C" void func_ov077_02212f38(void *actor)
 {
     if ((F(u32, actor, 0x14) & 0x200000) != 0)
         return;
-    ActorExtendedType2_ApplyAttachmentState(actor);
+    ActorExtendedType2_UpdatePresentationForState(actor);
     F(u8, actor, 0x2a0) += 3;
     F(u8, actor, 0x2a1) += 1;
     s32 xIndex = ((s8)F(u8, actor, 0x2a0)) << 8;
@@ -807,7 +807,7 @@ extern "C" void func_ov077_022142f8(void *actor)
     DispatchStoredCallback(actor, callbackRecord);
     ((Method)F(void *, F(void *, actor, 0), 0xa4))(actor);
     F(u8, actor, 0xd5) = F(u8, actor, 0xd4) = 0;
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
 
     bool alternate = CallbackPairMatches(actor, P(data_ov077_02216fc8, 0x58),
                                          data_ov077_02217020) &&

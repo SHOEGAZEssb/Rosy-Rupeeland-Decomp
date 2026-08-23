@@ -11,7 +11,7 @@
 .extern VecFx32Object_Subtract
 .extern ActorMotionAreaFollower_GetPosition
 .extern Actor_SnapshotTransientState
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Sound_PlayEffectWithParameters
 .extern Sound_StopEffect
@@ -365,7 +365,7 @@ func_ov087_022179b0:
     str r0, [r1, #0x24]
 .L_02217ea4:
     mov r0, r5
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r5
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

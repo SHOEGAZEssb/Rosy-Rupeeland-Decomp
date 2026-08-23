@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern data_020e7444
 .extern Actor_PlayRadialSpatialSound
-.extern ActorExtendedType2_ApplyAttachmentState
+.extern ActorExtendedType2_UpdatePresentationForState
 
 .global func_ov076_02214100
 func_ov076_02214100:
@@ -10,7 +10,7 @@ func_ov076_02214100:
     mov r5, r0
     ldr r1, [r5, #0x54]
     ldrb r4, [r1, #0x38]
-    bl ActorExtendedType2_ApplyAttachmentState
+    bl ActorExtendedType2_UpdatePresentationForState
     ldrsh r0, [r5, #0xd6]
     sub r0, r0, #0x5
     mov r0, r0, lsl #0x10

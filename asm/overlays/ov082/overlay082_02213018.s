@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
-.extern ActorExtendedType2_TriggerContactFeedback
+.extern ActorExtendedType2_HandleLanding
 .extern ActorExtendedType2_GetDescriptorValue2C
 
 .global func_ov082_02213018
@@ -16,7 +16,7 @@ func_ov082_02213018:
     ldmgtia sp!, {r4, pc}
 .L_0221303c:
     mov r0, r4
-    bl ActorExtendedType2_TriggerContactFeedback
+    bl ActorExtendedType2_HandleLanding
     mov r1, #0x0
     strh r1, [r4, #0xda]
     add r0, r4, #0x200

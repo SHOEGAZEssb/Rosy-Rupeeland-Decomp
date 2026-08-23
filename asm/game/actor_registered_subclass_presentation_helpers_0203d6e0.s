@@ -13,9 +13,9 @@
 .extern SignedAbsoluteValue
 .extern gHeapContext
 .extern gSoundContext
-    .global ActorRegisteredSubclass_EmitImpactFeedback
-    .type ActorRegisteredSubclass_EmitImpactFeedback, @function
-ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
+    .global ActorRegisteredSubclass_HandleLanding
+    .type ActorRegisteredSubclass_HandleLanding, @function
+ActorRegisteredSubclass_HandleLanding: ; 0x0203d6e0
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x18
     mov r5, r0
@@ -92,11 +92,11 @@ ActorRegisteredSubclass_EmitImpactFeedback: ; 0x0203d6e0
 .L_0203d7f8: .word gActorRegisteredSubclassPresentationAllocationTag
 .L_0203d7fc: .word gHeapContext
 .L_0203d800: .word 0x162c
-    .size ActorRegisteredSubclass_EmitImpactFeedback, . - ActorRegisteredSubclass_EmitImpactFeedback
+    .size ActorRegisteredSubclass_HandleLanding, . - ActorRegisteredSubclass_HandleLanding
 
-    .global ActorRegisteredSubclass_UpdatePresentationState
-    .type ActorRegisteredSubclass_UpdatePresentationState, @function
-ActorRegisteredSubclass_UpdatePresentationState: ; 0x0203d804
+    .global ActorRegisteredSubclass_UpdatePresentationForState
+    .type ActorRegisteredSubclass_UpdatePresentationForState, @function
+ActorRegisteredSubclass_UpdatePresentationForState: ; 0x0203d804
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrsh r0, [r4, #0xd6]
@@ -124,7 +124,7 @@ ActorRegisteredSubclass_UpdatePresentationState: ; 0x0203d804
     bic r0, r0, #0x11
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size ActorRegisteredSubclass_UpdatePresentationState, . - ActorRegisteredSubclass_UpdatePresentationState
+    .size ActorRegisteredSubclass_UpdatePresentationForState, . - ActorRegisteredSubclass_UpdatePresentationForState
 
     .global ActorRegisteredSubclass_EnterState2
     .type ActorRegisteredSubclass_EnterState2, @function

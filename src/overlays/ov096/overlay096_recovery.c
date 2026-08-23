@@ -26,7 +26,7 @@ extern "C" void *ActorExtendedType2_Destroy(void *);
 extern "C" void ActorExtendedType2_ConfigureCallback08(void *);
 extern "C" void ActorExtendedType2_UpdateFrame(void *);
 extern "C" s32 ActorExtendedType2_GetDescriptorValue2A(void *);
-extern "C" void ActorExtendedType2_ApplyAttachmentState(void *);
+extern "C" void ActorExtendedType2_UpdatePresentationForState(void *);
 extern "C" void ActorExtendedType2_CopyAdjustedDescriptor(void *, void *);
 extern "C" void ActorExtendedType2_DispatchTransitionCallback(void *, void *);
 extern "C" void ActorExtendedType2_SelectRandomDescriptorCallback(void *, void *);
@@ -138,7 +138,7 @@ extern "C" bool func_ov096_02217e88(void *actor) { return F(u8,actor,0x298)==0&&
 /* Expose the inherited 0x80 actor capability bit. */
 extern "C" u32 func_ov096_02217ea4(void *actor) { return F(u32,actor,0xd0)&0x80; }
 /* Apply attachment state unless the local animation owns the sprite. */
-extern "C" void func_ov096_02217eb0(void *actor) { if(!(F(u8,actor,0x29b)&1))ActorExtendedType2_ApplyAttachmentState(actor); }
+extern "C" void func_ov096_02217eb0(void *actor) { if(!(F(u8,actor,0x29b)&1))ActorExtendedType2_UpdatePresentationForState(actor); }
 /* Copy the adjusted descriptor, clearing it while animation is active. */
 extern "C" void func_ov096_02217ec8(void *actor,void *out) { ActorExtendedType2_CopyAdjustedDescriptor(actor,out);if(!func_ov096_02217e88(actor))F(u16,out,0)=F(u16,out,2)=F(u16,out,4)=0; }
 /* Latch the descriptor threshold result and forward the transition callback. */

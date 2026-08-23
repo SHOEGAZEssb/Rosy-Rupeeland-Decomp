@@ -107,7 +107,7 @@ extern s32 Actor_GetCachedTerrainHeight(void *);
 extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
 extern void Actor_RefreshCachedTerrainHeight(void *);
 extern void Actor_SetRuntimeFlag80(void *);
-extern void Actor_UpdateAnimationState(void *);
+extern void Actor_SynchronizeStatePresentation(void *);
 extern void Actor_UpdateTimedResourceState(void *);
 extern void *ActorCollection_GetSpriteGroup(void *);
 extern s32 ActorDerivedRuntime_AcceptInteractionQuery(void *);
@@ -398,7 +398,7 @@ void func_ov081_02212de0(void *actor)
     }
 
     VCALL(Overlay081VoidMethod, actor, 0xa4)(actor);
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
     VCALL(Overlay081VoidMethod, actor, 0x20)(actor);
 }
 

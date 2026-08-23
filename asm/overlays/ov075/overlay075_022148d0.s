@@ -13,7 +13,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_SetRuntimeFlag80
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern Actor_QueryTerrainCell
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Sound_PlayOwnedEffect
@@ -332,7 +332,7 @@ func_ov075_022148d0:
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r5
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r5
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

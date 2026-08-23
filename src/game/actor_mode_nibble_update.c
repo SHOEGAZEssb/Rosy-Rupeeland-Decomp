@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
-extern void Actor_UpdateAnimationState(void *actor);
+extern void Actor_SynchronizeStatePresentation(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -20,7 +20,7 @@ extern void Actor_UpdateAnimationState(void *actor);
  * four into actor flags +0x14. When bit one was absent, bit two is consumed
  * only while +0xd6 equals one and attachment +0x54 halfword +0x24 has bit one;
  * consuming it clears +0xd6. Finish through virtual +0xa4,
- * Actor_UpdateAnimationState, and virtual +0x20. Returns no value; virtual and base helpers
+ * Actor_SynchronizeStatePresentation, and virtual +0x20. Returns no value; virtual and base helpers
  * have observable actor/presentation effects.
  */
 void ActorModeNibble_UpdateFrame(void *self)
@@ -51,6 +51,6 @@ void ActorModeNibble_UpdateFrame(void *self)
         *(s16 *)(actor + 0xd6) = 0;
     }
     (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
     (*(void (**)(void *))(*(u8 **)actor + 0x20))(actor);
 }

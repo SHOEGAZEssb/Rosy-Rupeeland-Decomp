@@ -6,7 +6,7 @@
 .extern Actor_SetRuntimeFlag80
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern Actor_UpdateTimedResourceState
 .extern ActorDerivedRuntime_UpdateFrame
 .extern func_ov085_02213b3c
@@ -138,7 +138,7 @@ func_ov085_02212d08:
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r4
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

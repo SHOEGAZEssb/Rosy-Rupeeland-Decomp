@@ -1,5 +1,5 @@
+#include "tingle/actor.h"
 #include "tingle/heap.h"
-#include "tingle/types.h"
 
 /* Apply table-record presentation state and manage a registered derived subclass lifecycle. */
 extern void *data_020df840[];
@@ -22,14 +22,14 @@ extern void *ActorDerivedRuntime_DestroyAlternate(void *actor);
  * and set bit two. Returns no value; animation and flag writes mutate the
  * actor's presentation.
  */
-void ActorTableRecord_UpdatePresentationState(void *self)
+void ActorTableRecord_UpdatePresentationForState(Actor *self)
 {
     u8 *actor = (u8 *)self;
     u8 *attachment;
     if ((*(u32 *)(actor + 0x20c) & 0x2000) == 0)
         return;
-    attachment = *(u8 **)(actor + 0x54);
-    GraphicsSpriteState_SetAnimationIndex(attachment, actor[0xd4]);
+    attachment = (u8 *)self->primaryAttachment;
+    GraphicsSpriteState_SetAnimationIndex(attachment, self->direction);
     *(u16 *)(attachment + 0x24) &= ~1;
     *(u16 *)(attachment + 0x24) |= 2;
 }

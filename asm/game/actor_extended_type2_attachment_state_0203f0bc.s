@@ -10,9 +10,9 @@
 .extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
-    .global ActorExtendedType2_ApplyAttachmentState
-    .type ActorExtendedType2_ApplyAttachmentState, @function
-ActorExtendedType2_ApplyAttachmentState: ; 0x0203f0bc
+    .global ActorExtendedType2_UpdatePresentationForState
+    .type ActorExtendedType2_UpdatePresentationForState, @function
+ActorExtendedType2_UpdatePresentationForState: ; 0x0203f0bc
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x4
     mov r7, r0
@@ -170,5 +170,5 @@ ActorExtendedType2_ApplyAttachmentState: ; 0x0203f0bc
 .L_0203f2e0: .word data_020e6ca4
 .L_0203f2e4: .word data_020e6b74
 .L_0203f2e8: .word data_020e6adc
-    .size ActorExtendedType2_ApplyAttachmentState, . - ActorExtendedType2_ApplyAttachmentState
+    .size ActorExtendedType2_UpdatePresentationForState, . - ActorExtendedType2_UpdatePresentationForState
 

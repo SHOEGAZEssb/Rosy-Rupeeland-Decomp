@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Actor_UpdateAnimationState(void *actor);
+extern void Actor_SynchronizeStatePresentation(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -23,7 +23,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * in its presentation flags at offset 0x24, and, when the low nibble at actor
  * offset 0x4B is nonzero, invokes virtual slot 0xC4 with zero. It sets actor
  * flag 0x2000 at 0xD0, increments signed timer 0x1F8, then runs virtual slots
- * 0xD4 and 0xA4, Actor_UpdateAnimationState, and virtual slot 0x20. Returns nothing; engine
+ * 0xD4 and 0xA4, Actor_SynchronizeStatePresentation, and virtual slot 0x20. Returns nothing; engine
  * callbacks mutate actor/presentation state, with no direct hardware access.
  */
 void TrackedResourceActorType28_Update(void *actor)
@@ -38,6 +38,6 @@ void TrackedResourceActorType28_Update(void *actor)
     ++FIELD(s16, actor, 0x1f8);
     virtual_function(actor, 0xd4)(actor);
     virtual_function(actor, 0xa4)(actor);
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
     virtual_function(actor, 0x20)(actor);
 }

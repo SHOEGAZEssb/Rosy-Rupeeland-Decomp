@@ -1,5 +1,5 @@
+#include "tingle/actor.h"
 #include "tingle/heap.h"
-#include "tingle/types.h"
 
 /*
  * Provide impact feedback and attachment-state transitions for the registered
@@ -33,10 +33,10 @@ extern void *TrackedResourceActor_SpawnFromKey(s32 effect, const void *first, co
  * presentation using attachment resource +0x00 and constants 0x162b..0x162d.
  * Returns no value; sound hardware, heap, and presentation state may change.
  */
-void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
+void ActorRegisteredSubclass_HandleLanding(Actor *self)
 {
     u8 *actor = (u8 *)self;
-    s32 magnitude = SignedAbsoluteValue(*(s32 *)(actor + 0x44));
+    s32 magnitude = SignedAbsoluteValue(self->velocity.value.z);
 
     if (magnitude > 0x1000) {
         u8 *reference = (u8 *)ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
@@ -58,7 +58,7 @@ void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
 
         allocation = Heap_Alloc(0x14, gActorRegisteredSubclassPresentationAllocationTag, 4, &gHeapContext);
         if (allocation != 0) {
-            u8 *attachment = *(u8 **)(actor + 0x54);
+            u8 *attachment = (u8 *)self->primaryAttachment;
             (void)AuxiliaryTimedSpritePresentation_Init(allocation, actor + 0x18,
                                 *(void **)attachment, 0x162b,
                                 0x162c, 0x162d, 0, 0x80, 2, 1);
@@ -72,21 +72,20 @@ void ActorRegisteredSubclass_EmitImpactFeedback(void *self)
  * 0x01/0x10. State two only sets bit 0x10; other states do nothing. Returns no
  * value; attachment animation and flags change.
  */
-void ActorRegisteredSubclass_UpdatePresentationState(void *self)
+void ActorRegisteredSubclass_UpdatePresentationForState(Actor *self)
 {
-    u8 *actor = (u8 *)self;
-    s16 state = *(s16 *)(actor + 0xd6);
+    s16 state = self->state;
     u8 *attachment;
 
     if (state == 2) {
-        attachment = *(u8 **)(actor + 0x54);
+        attachment = (u8 *)self->primaryAttachment;
         *(u16 *)(attachment + 0x24) |= 0x10;
         return;
     }
     if (state != 0 && state != 1)
         return;
 
-    attachment = *(u8 **)(actor + 0x54);
+    attachment = (u8 *)self->primaryAttachment;
     GraphicsSpriteState_SetAnimationIndex(attachment, state != 0);
     *(u16 *)(attachment + 0x24) |= 2;
     *(u16 *)(attachment + 0x24) &= ~0x11;
@@ -101,13 +100,14 @@ void ActorRegisteredSubclass_UpdatePresentationState(void *self)
  */
 void ActorRegisteredSubclass_EnterState2(void *self)
 {
-    u8 *actor = (u8 *)self;
+    Actor *actor = (Actor *)self;
     u8 *effect;
 
-    *(s16 *)(actor + 0xd6) = 2;
-    *(u32 *)(actor + 0x14) |= 0x6;
-    *(s32 *)(actor + 0x114) = 1;
-    *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) |= 0x10;
-    effect = (u8 *)TrackedResourceActor_SpawnFromKey(0x1c, actor + 0x18, actor + 0x18);
+    actor->state = 2;
+    actor->motionFlags |= 0x6;
+    *(s32 *)((u8 *)actor + 0x114) = 1;
+    *(u16 *)((u8 *)actor->primaryAttachment + 0x24) |= 0x10;
+    effect = (u8 *)TrackedResourceActor_SpawnFromKey(
+        0x1c, &actor->position, &actor->position);
     *(u32 *)(effect + 0x10) |= 0x100;
 }

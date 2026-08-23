@@ -6,9 +6,9 @@
 .extern Actor_GetOwningCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
-.global Type7Actor_UpdateAnimationState
-.type Type7Actor_UpdateAnimationState, @function
-Type7Actor_UpdateAnimationState: ; 0x02046208
+.global Type7Actor_UpdatePresentationForState
+.type Type7Actor_UpdatePresentationForState, @function
+Type7Actor_UpdatePresentationForState: ; 0x02046208
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl Actor_GetOwningCollection
@@ -212,4 +212,4 @@ Type7Actor_UpdateAnimationState: ; 0x02046208
     ldmia sp!, {r3, r4, r5, pc}
 .L_020464ec: .word data_020e16b0
 .L_020464f0: .word data_020e1720
-.size Type7Actor_UpdateAnimationState, . - Type7Actor_UpdateAnimationState
+.size Type7Actor_UpdatePresentationForState, . - Type7Actor_UpdatePresentationForState

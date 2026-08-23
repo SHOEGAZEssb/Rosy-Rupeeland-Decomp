@@ -1,0 +1,16 @@
+{
+  "func_02032928": "Actor_HandleLanding",
+  "Actor_UpdateAnimationState": "Actor_SynchronizeStatePresentation",
+  "func_020329a8": "Actor_UpdatePresentationForState",
+  "func_020329ac": "Actor_IsCurrentState5Or6",
+  "func_020329b4": "Actor_IsPreviousState9Or10",
+  "ActorModeNibble_UpdatePresentationState": "ActorModeNibble_UpdatePresentationForState",
+  "ActorTableRecord_UpdatePresentationState": "ActorTableRecord_UpdatePresentationForState",
+  "ActorRegisteredSubclass_EmitImpactFeedback": "ActorRegisteredSubclass_HandleLanding",
+  "ActorRegisteredSubclass_UpdatePresentationState": "ActorRegisteredSubclass_UpdatePresentationForState",
+  "ActorExtendedType2_ApplyAttachmentState": "ActorExtendedType2_UpdatePresentationForState",
+  "ActorExtendedType2_TriggerContactFeedback": "ActorExtendedType2_HandleLanding",
+  "func_02043794": "ActorExtendedType2_IsCurrentState5Or6",
+  "func_020437ac": "ActorExtendedType2_IsPreviousState9Or10",
+  "Type7Actor_UpdateAnimationState": "Type7Actor_UpdatePresentationForState"
+}

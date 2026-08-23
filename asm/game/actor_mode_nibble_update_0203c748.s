@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_mode_nibble_update.c.
 .text
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern ActorDerivedRuntime_UpdateFrame
     .global ActorModeNibble_UpdateFrame
     .type ActorModeNibble_UpdateFrame, @function
@@ -82,7 +82,7 @@ ActorModeNibble_UpdateFrame: ; 0x0203c748
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r4
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

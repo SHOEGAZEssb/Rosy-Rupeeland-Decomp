@@ -26,7 +26,7 @@ extern "C" u8 data_ov082_02214aac[], data_ov082_02214abc[],
 extern "C" void *ActorExtendedType2_Init(void *, const void *);
 extern "C" void *ActorExtendedType2_Destroy(void *);
 extern "C" void ActorExtendedType2_UpdateFrame(void *);
-extern "C" void ActorExtendedType2_TriggerContactFeedback(void *);
+extern "C" void ActorExtendedType2_HandleLanding(void *);
 extern "C" void ActorExtendedType2_CopyAdjustedDescriptor(void *, void *);
 extern "C" s32 ActorExtendedType2_GetDescriptorValue25(void *);
 extern "C" s32 ActorExtendedType2_GetDescriptorValue28(void *);
@@ -273,7 +273,7 @@ extern "C" void func_ov082_02212d90(void *a) {
 extern "C" void func_ov082_02213018(void *a) {
     if (ActorExtendedType2_GetDescriptorValue2C(a) != 1 ||
         F(s32, a, 0x24) <= F(s32, a, 0x238)) {
-        ActorExtendedType2_TriggerContactFeedback(a);
+        ActorExtendedType2_HandleLanding(a);
         F(s16, a, 0xda) = 0;
         F(u16, a, 0x298) = 0;
     }

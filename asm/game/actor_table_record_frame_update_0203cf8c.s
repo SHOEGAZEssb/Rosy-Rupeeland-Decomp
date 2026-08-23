@@ -4,7 +4,7 @@
 .extern VecFx32Object_GetMagnitude
 .extern Actor_TurnTowardVector
 .extern VecFx32Object_ScaleInPlaceRounded
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern Actor_UpdateTimedResourceState
 .extern Actor_QueryTerrainHeight
 .extern ActorFeedback_SpawnIndexedPresentation
@@ -190,7 +190,7 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     bl Actor_TurnTowardVector
 .L_0203d238:
     mov r0, r4
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

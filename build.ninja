@@ -13992,7 +13992,7 @@ build main_three_layer_resource_renderer: phony build/decomp/src/game/main_three
 
 actor_collection_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_lifecycle.o: mwccarm src/game/actor_collection_lifecycle.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
+build build/decomp/src/game/actor_collection_lifecycle.o: mwccarm src/game/actor_collection_lifecycle.c | include/tingle/actor.h include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_collection_lifecycle.c
   cflags = $actor_collection_lifecycle_cflags
 build build/decomp/asm/game/actor_collection_lifecycle_0202cf10.o: mwasmarm asm/game/actor_collection_lifecycle_0202cf10.s
@@ -14041,7 +14041,7 @@ build actor_collection_lifecycle: phony build/decomp/src/game/actor_collection_l
 
 actor_collection_registration_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_registration.o: mwccarm src/game/actor_collection_registration.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
+build build/decomp/src/game/actor_collection_registration.o: mwccarm src/game/actor_collection_registration.c | include/tingle/actor.h include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_collection_registration.c
   cflags = $actor_collection_registration_cflags
 build build/decomp/asm/game/actor_collection_registration_0202d110.o: mwasmarm asm/game/actor_collection_registration_0202d110.s
@@ -14098,7 +14098,7 @@ build actor_collection_registration: phony build/decomp/src/game/actor_collectio
 
 actor_collection_activation_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_activation.o: mwccarm src/game/actor_collection_activation.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
+build build/decomp/src/game/actor_collection_activation.o: mwccarm src/game/actor_collection_activation.c | include/tingle/actor.h include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_collection_activation.c
   cflags = $actor_collection_activation_cflags
 build build/decomp/asm/game/actor_collection_activation_0202d3cc.o: mwasmarm asm/game/actor_collection_activation_0202d3cc.s
@@ -14131,7 +14131,7 @@ build actor_collection_activation: phony build/decomp/src/game/actor_collection_
 
 actor_collection_active_drain_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_active_drain.o: mwccarm src/game/actor_collection_active_drain.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
+build build/decomp/src/game/actor_collection_active_drain.o: mwccarm src/game/actor_collection_active_drain.c | include/tingle/actor.h include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_collection_active_drain.c
   cflags = $actor_collection_active_drain_cflags
 build build/decomp/asm/game/actor_collection_active_drain_0202d5c8.o: mwasmarm asm/game/actor_collection_active_drain_0202d5c8.s
@@ -14999,7 +14999,7 @@ build actor_vector_damping: phony build/decomp/src/game/actor_vector_damping.o b
 
 actor_animation_state_dispatch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_animation_state_dispatch.o: mwccarm src/game/actor_animation_state_dispatch.c | include/tingle/types.h
+build build/decomp/src/game/actor_animation_state_dispatch.o: mwccarm src/game/actor_animation_state_dispatch.c | include/tingle/actor.h include/tingle/graphics_sprite_state.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_animation_state_dispatch.c
   cflags = $actor_animation_state_dispatch_cflags
 build build/decomp/asm/game/actor_animation_state_dispatch_02032928.o: mwasmarm asm/game/actor_animation_state_dispatch_02032928.s
@@ -15017,31 +15017,31 @@ build build/reports/actor_animation_state_dispatch_02032928.json: objdiff build/
   base_object = build/decomp/asm/game/actor_animation_state_dispatch_02032928.o
 build build/reports/actor_animation_state_dispatch_02032928.txt: match_report build/reports/actor_animation_state_dispatch_02032928.json | tools/report_objdiff.py
   report_json = build/reports/actor_animation_state_dispatch_02032928.json
-  report_args = --section .text --function func_02032928 --require-exact
+  report_args = --section .text --function Actor_HandleLanding --require-exact
 build build/reports/actor_animation_state_dispatch_0203292c.json: objdiff build/decomp/delinks/asm/game/actor_animation_state_dispatch_0203292c.o | build/decomp/asm/game/actor_animation_state_dispatch_0203292c.o
   target_object = build/decomp/delinks/asm/game/actor_animation_state_dispatch_0203292c.o
   base_object = build/decomp/asm/game/actor_animation_state_dispatch_0203292c.o
 build build/reports/actor_animation_state_dispatch_0203292c.txt: match_report build/reports/actor_animation_state_dispatch_0203292c.json | tools/report_objdiff.py
   report_json = build/reports/actor_animation_state_dispatch_0203292c.json
-  report_args = --section .text --function Actor_UpdateAnimationState --require-exact
+  report_args = --section .text --function Actor_SynchronizeStatePresentation --require-exact
 build build/reports/actor_animation_state_dispatch_020329a8.json: objdiff build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329a8.o | build/decomp/asm/game/actor_animation_state_dispatch_020329a8.o
   target_object = build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329a8.o
   base_object = build/decomp/asm/game/actor_animation_state_dispatch_020329a8.o
 build build/reports/actor_animation_state_dispatch_020329a8.txt: match_report build/reports/actor_animation_state_dispatch_020329a8.json | tools/report_objdiff.py
   report_json = build/reports/actor_animation_state_dispatch_020329a8.json
-  report_args = --section .text --function func_020329a8 --require-exact
+  report_args = --section .text --function Actor_UpdatePresentationForState --require-exact
 build build/reports/actor_animation_state_dispatch_020329ac.json: objdiff build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329ac.o | build/decomp/asm/game/actor_animation_state_dispatch_020329ac.o
   target_object = build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329ac.o
   base_object = build/decomp/asm/game/actor_animation_state_dispatch_020329ac.o
 build build/reports/actor_animation_state_dispatch_020329ac.txt: match_report build/reports/actor_animation_state_dispatch_020329ac.json | tools/report_objdiff.py
   report_json = build/reports/actor_animation_state_dispatch_020329ac.json
-  report_args = --section .text --function func_020329ac --require-exact
+  report_args = --section .text --function Actor_IsCurrentState5Or6 --require-exact
 build build/reports/actor_animation_state_dispatch_020329b4.json: objdiff build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329b4.o | build/decomp/asm/game/actor_animation_state_dispatch_020329b4.o
   target_object = build/decomp/delinks/asm/game/actor_animation_state_dispatch_020329b4.o
   base_object = build/decomp/asm/game/actor_animation_state_dispatch_020329b4.o
 build build/reports/actor_animation_state_dispatch_020329b4.txt: match_report build/reports/actor_animation_state_dispatch_020329b4.json | tools/report_objdiff.py
   report_json = build/reports/actor_animation_state_dispatch_020329b4.json
-  report_args = --section .text --function func_020329b4 --require-exact
+  report_args = --section .text --function Actor_IsPreviousState9Or10 --require-exact
 build build/reports/actor_animation_state_dispatch.txt: phony build/reports/actor_animation_state_dispatch_02032928.txt build/reports/actor_animation_state_dispatch_0203292c.txt build/reports/actor_animation_state_dispatch_020329a8.txt build/reports/actor_animation_state_dispatch_020329ac.txt build/reports/actor_animation_state_dispatch_020329b4.txt
 
 build actor_animation_state_dispatch: phony build/decomp/src/game/actor_animation_state_dispatch.o build/decomp/asm/game/actor_animation_state_dispatch_02032928.o build/decomp/asm/game/actor_animation_state_dispatch_0203292c.o build/decomp/asm/game/actor_animation_state_dispatch_020329a8.o build/decomp/asm/game/actor_animation_state_dispatch_020329ac.o build/decomp/asm/game/actor_animation_state_dispatch_020329b4.o build/reports/actor_animation_state_dispatch.txt
@@ -17317,7 +17317,7 @@ build actor_mode_nibble_update: phony build/decomp/src/game/actor_mode_nibble_up
 
 actor_mode_nibble_presentation_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_mode_nibble_presentation_state.o: mwccarm src/game/actor_mode_nibble_presentation_state.c | include/tingle/types.h
+build build/decomp/src/game/actor_mode_nibble_presentation_state.o: mwccarm src/game/actor_mode_nibble_presentation_state.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_mode_nibble_presentation_state.c
   cflags = $actor_mode_nibble_presentation_state_cflags
 build build/decomp/asm/game/actor_mode_nibble_presentation_state_0203c884.o: mwasmarm asm/game/actor_mode_nibble_presentation_state_0203c884.s
@@ -17327,7 +17327,7 @@ build build/reports/actor_mode_nibble_presentation_state_0203c884.json: objdiff 
   base_object = build/decomp/asm/game/actor_mode_nibble_presentation_state_0203c884.o
 build build/reports/actor_mode_nibble_presentation_state_0203c884.txt: match_report build/reports/actor_mode_nibble_presentation_state_0203c884.json | tools/report_objdiff.py
   report_json = build/reports/actor_mode_nibble_presentation_state_0203c884.json
-  report_args = --section .text --function ActorModeNibble_UpdatePresentationState --function ActorModeNibble_GetField108 --require-exact
+  report_args = --section .text --function ActorModeNibble_UpdatePresentationForState --function ActorModeNibble_GetField108 --require-exact
 build build/reports/actor_mode_nibble_presentation_state.txt: phony build/reports/actor_mode_nibble_presentation_state_0203c884.txt
 
 build actor_mode_nibble_presentation_state: phony build/decomp/src/game/actor_mode_nibble_presentation_state.o build/decomp/asm/game/actor_mode_nibble_presentation_state_0203c884.o build/reports/actor_mode_nibble_presentation_state.txt
@@ -17402,7 +17402,7 @@ build actor_table_record_frame_update: phony build/decomp/src/game/actor_table_r
 
 actor_table_record_presentation_and_subclass_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_table_record_presentation_and_subclass_lifecycle.o: mwccarm src/game/actor_table_record_presentation_and_subclass_lifecycle.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/actor_table_record_presentation_and_subclass_lifecycle.o: mwccarm src/game/actor_table_record_presentation_and_subclass_lifecycle.c | include/tingle/actor.h include/tingle/heap.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_table_record_presentation_and_subclass_lifecycle.c
   cflags = $actor_table_record_presentation_and_subclass_lifecycle_cflags
 build build/decomp/asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.o: mwasmarm asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.s
@@ -17412,7 +17412,7 @@ build build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d
   base_object = build/decomp/asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.o
 build build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.txt: match_report build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.json | tools/report_objdiff.py
   report_json = build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.json
-  report_args = --section .text --function ActorTableRecord_UpdatePresentationState --function ActorRegisteredSubclass_Init --function ActorRegisteredSubclass_Destroy --function ActorRegisteredSubclass_DestroyAndFree --require-exact
+  report_args = --section .text --function ActorTableRecord_UpdatePresentationForState --function ActorRegisteredSubclass_Init --function ActorRegisteredSubclass_Destroy --function ActorRegisteredSubclass_DestroyAndFree --require-exact
 build build/reports/actor_table_record_presentation_and_subclass_lifecycle.txt: phony build/reports/actor_table_record_presentation_and_subclass_lifecycle_0203d260.txt
 
 build actor_table_record_presentation_and_subclass_lifecycle: phony build/decomp/src/game/actor_table_record_presentation_and_subclass_lifecycle.o build/decomp/asm/game/actor_table_record_presentation_and_subclass_lifecycle_0203d260.o build/reports/actor_table_record_presentation_and_subclass_lifecycle.txt
@@ -17469,7 +17469,7 @@ build actor_registered_subclass_frame_update: phony build/decomp/src/game/actor_
 
 actor_registered_subclass_presentation_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_registered_subclass_presentation_helpers.o: mwccarm src/game/actor_registered_subclass_presentation_helpers.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/actor_registered_subclass_presentation_helpers.o: mwccarm src/game/actor_registered_subclass_presentation_helpers.c | include/tingle/actor.h include/tingle/heap.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_registered_subclass_presentation_helpers.c
   cflags = $actor_registered_subclass_presentation_helpers_cflags
 build build/decomp/asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.o: mwasmarm asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.s
@@ -17479,7 +17479,7 @@ build build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.json
   base_object = build/decomp/asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.o
 build build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.txt: match_report build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.json | tools/report_objdiff.py
   report_json = build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.json
-  report_args = --section .text --function ActorRegisteredSubclass_EmitImpactFeedback --function ActorRegisteredSubclass_UpdatePresentationState --function ActorRegisteredSubclass_EnterState2 --require-exact
+  report_args = --section .text --function ActorRegisteredSubclass_HandleLanding --function ActorRegisteredSubclass_UpdatePresentationForState --function ActorRegisteredSubclass_EnterState2 --require-exact
 build build/reports/actor_registered_subclass_presentation_helpers.txt: phony build/reports/actor_registered_subclass_presentation_helpers_0203d6e0.txt
 
 build actor_registered_subclass_presentation_helpers: phony build/decomp/src/game/actor_registered_subclass_presentation_helpers.o build/decomp/asm/game/actor_registered_subclass_presentation_helpers_0203d6e0.o build/reports/actor_registered_subclass_presentation_helpers.txt
@@ -17681,7 +17681,7 @@ build actor_extended_type2_render_callback: phony build/decomp/src/game/actor_ex
 
 actor_extended_type2_attachment_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_extended_type2_attachment_state.o: mwccarm src/game/actor_extended_type2_attachment_state.c | include/tingle/types.h
+build build/decomp/src/game/actor_extended_type2_attachment_state.o: mwccarm src/game/actor_extended_type2_attachment_state.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_extended_type2_attachment_state.c
   cflags = $actor_extended_type2_attachment_state_cflags
 build build/decomp/asm/game/actor_extended_type2_attachment_state_0203f0bc.o: mwasmarm asm/game/actor_extended_type2_attachment_state_0203f0bc.s
@@ -17691,7 +17691,7 @@ build build/reports/actor_extended_type2_attachment_state_0203f0bc.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_attachment_state_0203f0bc.o
 build build/reports/actor_extended_type2_attachment_state_0203f0bc.txt: match_report build/reports/actor_extended_type2_attachment_state_0203f0bc.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_attachment_state_0203f0bc.json
-  report_args = --section .text --function ActorExtendedType2_ApplyAttachmentState --require-exact
+  report_args = --section .text --function ActorExtendedType2_UpdatePresentationForState --require-exact
 build build/reports/actor_extended_type2_attachment_state.txt: phony build/reports/actor_extended_type2_attachment_state_0203f0bc.txt
 
 build actor_extended_type2_attachment_state: phony build/decomp/src/game/actor_extended_type2_attachment_state.o build/decomp/asm/game/actor_extended_type2_attachment_state_0203f0bc.o build/reports/actor_extended_type2_attachment_state.txt
@@ -18390,7 +18390,7 @@ build build/reports/actor_extended_type2_candidate_track.txt: phony build/report
 build actor_extended_type2_candidate_track: phony build/decomp/src/game/actor_extended_type2_candidate_track.o build/decomp/asm/game/actor_extended_type2_candidate_track_0204322c.o build/reports/actor_extended_type2_candidate_track.txt
 
 actor_extended_type2_contact_response_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/actor_extended_type2_contact_response.o: mwccarm src/game/actor_extended_type2_contact_response.c | include/tingle/types.h
+build build/decomp/src/game/actor_extended_type2_contact_response.o: mwccarm src/game/actor_extended_type2_contact_response.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_extended_type2_contact_response.c
   cflags = $actor_extended_type2_contact_response_cflags
 build build/decomp/asm/game/actor_extended_type2_contact_response_0204330c.o: mwasmarm asm/game/actor_extended_type2_contact_response_0204330c.s
@@ -18400,7 +18400,7 @@ build build/reports/actor_extended_type2_contact_response_0204330c.json: objdiff
   base_object = build/decomp/asm/game/actor_extended_type2_contact_response_0204330c.o
 build build/reports/actor_extended_type2_contact_response_0204330c.txt: match_report build/reports/actor_extended_type2_contact_response_0204330c.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_contact_response_0204330c.json
-  report_args = --section .text --function ActorExtendedType2_TriggerContactFeedback --function ActorExtendedType2_ApplyContactResponse --require-exact
+  report_args = --section .text --function ActorExtendedType2_HandleLanding --function ActorExtendedType2_ApplyContactResponse --require-exact
 build build/reports/actor_extended_type2_contact_response.txt: phony build/reports/actor_extended_type2_contact_response_0204330c.txt
 build actor_extended_type2_contact_response: phony build/decomp/src/game/actor_extended_type2_contact_response.o build/decomp/asm/game/actor_extended_type2_contact_response_0204330c.o build/reports/actor_extended_type2_contact_response.txt
 
@@ -18450,7 +18450,7 @@ build build/reports/actor_extended_type2_descriptor_activity_helpers.txt: phony 
 build actor_extended_type2_descriptor_activity_helpers: phony build/decomp/src/game/actor_extended_type2_descriptor_activity_helpers.o build/decomp/asm/game/actor_extended_type2_descriptor_activity_helpers_0204362c.o build/reports/actor_extended_type2_descriptor_activity_helpers.txt
 
 actor_extended_type2_interface_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/actor_extended_type2_interface_helpers.o: mwccarm src/game/actor_extended_type2_interface_helpers.c | include/tingle/types.h
+build build/decomp/src/game/actor_extended_type2_interface_helpers.o: mwccarm src/game/actor_extended_type2_interface_helpers.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_extended_type2_interface_helpers.c
   cflags = $actor_extended_type2_interface_helpers_cflags
 build build/decomp/asm/game/actor_extended_type2_interface_helpers_02043730.o: mwasmarm asm/game/actor_extended_type2_interface_helpers_02043730.s
@@ -19031,7 +19031,7 @@ build build/reports/type7_actor_frame_update_02045a60.txt: match_report build/re
 build type7_actor_frame_update: phony build/decomp/src/game/type7_actor_frame_update.o build/decomp/asm/game/type7_actor_frame_update_02045a60.o build/reports/type7_actor_frame_update_02045a60.txt
 
 type7_actor_animation_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/type7_actor_animation_update.o: mwccarm src/game/type7_actor_animation_update.c | include/tingle/types.h
+build build/decomp/src/game/type7_actor_animation_update.o: mwccarm src/game/type7_actor_animation_update.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/type7_actor_animation_update.c
   cflags = $type7_actor_animation_update_cflags
 build build/decomp/asm/game/type7_actor_animation_update_02046208.o: mwasmarm asm/game/type7_actor_animation_update_02046208.s
@@ -19041,7 +19041,7 @@ build build/reports/type7_actor_animation_update_02046208.json: objdiff build/de
   base_object = build/decomp/asm/game/type7_actor_animation_update_02046208.o
 build build/reports/type7_actor_animation_update_02046208.txt: match_report build/reports/type7_actor_animation_update_02046208.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_animation_update_02046208.json
-  report_args = --section .text --function Type7Actor_UpdateAnimationState --require-exact
+  report_args = --section .text --function Type7Actor_UpdatePresentationForState --require-exact
 build type7_actor_animation_update: phony build/decomp/src/game/type7_actor_animation_update.o build/decomp/asm/game/type7_actor_animation_update_02046208.o build/reports/type7_actor_animation_update_02046208.txt
 
 type7_actor_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

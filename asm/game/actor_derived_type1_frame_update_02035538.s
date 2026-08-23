@@ -18,7 +18,7 @@
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
 .extern VecFx32Object_ScaleInPlaceRounded
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern Actor_PlayHorizontalSpatialSound
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorDerivedType1_ClassifyState
@@ -392,7 +392,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     bl VecFx32Object_ScaleInPlaceRounded
 .L_02035a54:
     mov r0, r5
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     ldr r0, [r5, #0x270]
     cmp r0, #0x0
     beq .L_02035aa0

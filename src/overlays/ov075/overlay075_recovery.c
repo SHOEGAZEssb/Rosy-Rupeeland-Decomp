@@ -68,7 +68,7 @@ EXT(Actor_QueryTerrainHeight);
 EXT(ActorCollection_GetSpriteGroup);
 EXT(ActorRuntimeCollection_GetPendingAttachmentFlag);
 EXT(Actor_SetRuntimeFlag80);
-EXT(Actor_UpdateAnimationState);
+EXT(Actor_SynchronizeStatePresentation);
 EXT(AuxiliaryTimedSpritePresentation_Init);
 EXT(DualLayerTileRenderer_SetPackedTileValue);
 EXT(GraphicsSpriteGroup_CreateState);
@@ -1027,7 +1027,7 @@ extern "C" void func_ov075_022148d0(void *actor)
         return;
     }
     Invoke(actor, 0x18);
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(
             gActorRuntimeCollection) != 0)
     {

@@ -37,7 +37,7 @@
 .extern ActorExtendedType2_InitializeReentryState
 .extern ActorExtendedType2_DrawDebugOverlay
 .extern Actor_RefreshCachedTerrainHeightIfEnabled
-.extern ActorExtendedType2_TriggerContactFeedback
+.extern ActorExtendedType2_HandleLanding
 .extern Actor_ConvergeToTargetHeight
 .extern func_ov096_022182e8
 .extern func_ov096_022181ac
@@ -228,7 +228,7 @@ data_ov096_02218b98:
     .word ActorExtendedType2_InitializeReentryState
     .word ActorExtendedType2_DrawDebugOverlay
     .word Actor_RefreshCachedTerrainHeightIfEnabled
-    .word ActorExtendedType2_TriggerContactFeedback
+    .word ActorExtendedType2_HandleLanding
     .word Actor_ConvergeToTargetHeight
     .word func_ov096_022182e8
     .word func_ov096_022181ac
@@ -375,7 +375,7 @@ data_ov096_02218de8:
     .word ActorExtendedType2_InitializeReentryState
     .word ActorExtendedType2_DrawDebugOverlay
     .word Actor_RefreshCachedTerrainHeightIfEnabled
-    .word ActorExtendedType2_TriggerContactFeedback
+    .word ActorExtendedType2_HandleLanding
     .word Actor_ConvergeToTargetHeight
     .word func_ov096_022182e8
     .word func_ov096_022181ac

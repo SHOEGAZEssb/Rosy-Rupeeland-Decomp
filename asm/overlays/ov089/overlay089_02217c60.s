@@ -15,7 +15,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_GetCollisionBounds
 .extern Actor_SnapshotTransientState
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern ActorDerivedRuntime_UpdateFrame
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adc40
@@ -697,7 +697,7 @@ func_ov089_02217c60:
     bl VecFx32Object_Destroy
 .L_02218660:
     mov r0, r10
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r10
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

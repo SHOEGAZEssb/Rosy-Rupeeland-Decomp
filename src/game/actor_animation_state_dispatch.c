@@ -1,16 +1,10 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
+#include "tingle/graphics_sprite_state.h"
 
-/* Dispatch actor animation changes and provide default virtual methods. */
-typedef struct AnimationStateVTable {
-    u8 field_00[0x5c];
-    void (*changed_5c)(void *);
-    u8 field_60[8];
-    s32 (*steady_68)(void *);
-} AnimationStateVTable;
-
-/* Ignore the implied actor input, change no state, and return no value. */
-void func_02032928(void)
+/* Ignore the actor input, change no state, and return no value. */
+void Actor_HandleLanding(Actor *self)
 {
+    (void)self;
 }
 
 /*
@@ -20,34 +14,37 @@ void func_02032928(void)
  * nonzero, copy halfword 0xde to attachment-0x54 halfword 0x36. Returns no
  * value; virtual callbacks may update animation and presentation state.
  */
-void Actor_UpdateAnimationState(void *self)
+void Actor_SynchronizeStatePresentation(Actor *self)
 {
-    u8 *actor = (u8 *)self;
-    AnimationStateVTable *vtable = *(AnimationStateVTable **)actor;
+    ActorVTable *vtable = self->vtable;
 
-    if (*(s16 *)(actor + 0xd6) != *(s16 *)(actor + 0xd8) ||
-        *(s16 *)(actor + 0xda) != *(s16 *)(actor + 0xdc) ||
-        actor[0xd4] != actor[0xd5] || (*(u32 *)(actor + 0xd0) & 0x1000)) {
-        vtable->changed_5c(actor);
-        *(u32 *)(actor + 0xd0) &= ~0x1000;
-    } else if (vtable->steady_68(actor)) {
-        *(s16 *)(*(u8 **)(actor + 0x54) + 0x36) = *(s16 *)(actor + 0xde);
+    if (self->state != self->previousState ||
+        self->substate != self->previousSubstate ||
+        self->direction != self->previousDirection ||
+        (self->runtimeFlags & ACTOR_FORCE_PRESENTATION_REFRESH_FLAG)) {
+        vtable->updatePresentationForState(self);
+        self->runtimeFlags &= ~ACTOR_FORCE_PRESENTATION_REFRESH_FLAG;
+    } else if (vtable->isCurrentState5Or6(self)) {
+        self->primaryAttachment->scaleZ = self->presentationScaleZ;
     }
 }
 
-/* Ignore the implied actor input, change no state, and return no value. */
-void func_020329a8(void)
+/* Ignore the actor input, change no state, and return no value. */
+void Actor_UpdatePresentationForState(Actor *self)
 {
+    (void)self;
 }
 
-/* Ignore the implied inputs and return zero without changing state. */
-s32 func_020329ac(void)
+/* Ignore the actor input and return zero without changing state. */
+s32 Actor_IsCurrentState5Or6(const Actor *self)
 {
+    (void)self;
     return 0;
 }
 
-/* Ignore the implied inputs and return zero without changing state. */
-s32 func_020329b4(void)
+/* Ignore the actor input and return zero without changing state. */
+s32 Actor_IsPreviousState9Or10(const Actor *self)
 {
+    (void)self;
     return 0;
 }

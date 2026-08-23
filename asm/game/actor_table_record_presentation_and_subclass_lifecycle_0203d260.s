@@ -7,9 +7,9 @@
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern ActorTableRecord_Init
 .extern GraphicsSpriteState_SetAnimationIndex
-    .global ActorTableRecord_UpdatePresentationState
-    .type ActorTableRecord_UpdatePresentationState, @function
-ActorTableRecord_UpdatePresentationState: ; 0x0203d260
+    .global ActorTableRecord_UpdatePresentationForState
+    .type ActorTableRecord_UpdatePresentationForState, @function
+ActorTableRecord_UpdatePresentationForState: ; 0x0203d260
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x20c]
@@ -28,7 +28,7 @@ ActorTableRecord_UpdatePresentationState: ; 0x0203d260
     orr r0, r0, #0x2
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
-    .size ActorTableRecord_UpdatePresentationState, . - ActorTableRecord_UpdatePresentationState
+    .size ActorTableRecord_UpdatePresentationForState, . - ActorTableRecord_UpdatePresentationForState
 
     .global ActorRegisteredSubclass_Init
     .type ActorRegisteredSubclass_Init, @function

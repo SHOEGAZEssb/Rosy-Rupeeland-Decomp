@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_animation_state_dispatch.c.
 .text
 
-    .global Actor_UpdateAnimationState
-    .type Actor_UpdateAnimationState, @function
-Actor_UpdateAnimationState: ; 0x0203292c
+    .global Actor_SynchronizeStatePresentation
+    .type Actor_SynchronizeStatePresentation, @function
+Actor_SynchronizeStatePresentation: ; 0x0203292c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldrsh r2, [r4, #0xd6]
@@ -37,4 +37,4 @@ Actor_UpdateAnimationState: ; 0x0203292c
     ldrne r0, [r4, #0x54]
     strneh r1, [r0, #0x36]
     ldmia sp!, {r4, pc}
-    .size Actor_UpdateAnimationState, . - Actor_UpdateAnimationState
+    .size Actor_SynchronizeStatePresentation, . - Actor_SynchronizeStatePresentation

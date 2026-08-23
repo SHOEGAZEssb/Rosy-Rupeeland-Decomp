@@ -20,7 +20,7 @@ extern "C" {
 extern void ActorDerivedRuntime_Init(...), ActorDerivedRuntime_DestroyAlternate(...);
 extern void ActorDerivedRuntime_UpdateFrame(...);
 extern s32 ActorDerivedRuntime_HandlePairActive(...);
-extern void Actor_UpdateAnimationState(...), Actor_SnapshotTransientState(...);
+extern void Actor_SynchronizeStatePresentation(...), Actor_SnapshotTransientState(...);
 extern s32 ActorContactState_AddContact(...);
 extern void Actor_SetDirectionFromVector(...);
 extern void ActorDerivedType1_ResetToBaseState(...);
@@ -90,7 +90,7 @@ void *func_ov087_0221788c(void *actor) {
   resource = F(void *, actor, 0x220);
   if (resource != 0)
     ((Method)F(void *, F(void *, resource, 0), 4))(resource);
-  Actor_UpdateAnimationState(actor);
+  Actor_SynchronizeStatePresentation(actor);
   return actor;
 }
 

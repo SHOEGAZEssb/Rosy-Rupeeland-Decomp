@@ -39,7 +39,7 @@ extern s32 VecFx32Object_GetMagnitude(void *state);
 extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void VecFx32Object_ScaleInPlaceRounded(void *state, s32 scale);
-extern void Actor_UpdateAnimationState(void *actor);
+extern void Actor_SynchronizeStatePresentation(void *actor);
 extern void Type7MarkerPresentation_SelectAnimation(void *state, s32 mode);
 extern void Actor_ClearTransientContactState(void *actor);
 #ifdef __cplusplus
@@ -203,7 +203,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
                 actor + 0x88, func_020adc90(0x8000, magnitude));
         }
     }
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
 
     object = *(void **)(actor + 0x270);
     if (object != 0) {

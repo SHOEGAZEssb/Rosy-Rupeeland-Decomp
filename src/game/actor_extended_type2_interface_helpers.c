@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
 /*
  * Recovered extended type-two actor interface helpers. These are small virtual
@@ -62,16 +62,16 @@ s32 ActorExtendedType2_IsMode8(const void *self)
 }
 
 /* Return one exactly when signed current state +0xd6 is five or six. */
-s32 ActorExtendedType2_IsCurrentState5Or6(const void *self)
+s32 ActorExtendedType2_IsCurrentState5Or6(const Actor *self)
 {
-    s16 state = *(const s16 *)((const u8 *)self + 0xd6);
+    s16 state = self->state;
     return state == 5 || state == 6;
 }
 
 /* Return one exactly when signed previous state +0xd8 is nine or ten. */
-s32 ActorExtendedType2_IsPreviousState9Or10(const void *self)
+s32 ActorExtendedType2_IsPreviousState9Or10(const Actor *self)
 {
-    s16 state = *(const s16 *)((const u8 *)self + 0xd8);
+    s16 state = self->previousState;
     return state == 9 || state == 10;
 }
 

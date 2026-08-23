@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
 /* Recovered type-seven actor animation/resource update selected by state +0xd6. */
 extern u8 data_020e16b0[];
@@ -30,10 +30,10 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *resource, u32 animation)
  * also force 0x140 when actor +0x268 bit 0x400000 is set. Returns no value;
  * animation/render resource state changes but no direct hardware access occurs.
  */
-void Type7Actor_UpdateAnimationState(void *self)
+void Type7Actor_UpdatePresentationForState(Actor *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *resource = *(u8 **)(actor + 0x54);
+    u8 *resource = (u8 *)self->primaryAttachment;
     void *context = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
     s32 state;
     u16 scale = 0x100;
@@ -42,10 +42,10 @@ void Type7Actor_UpdateAnimationState(void *self)
 
     GraphicsSpriteGroup_ReplaceStateResources(context, resource, *(void **)(actor + 0x1f0),
                   *(void **)(actor + 0x1f4), *(void **)(actor + 0x1f8));
-    state = *(s16 *)(actor + 0xd6);
+    state = self->state;
     switch (state) {
     case 1: case 2: case 3: case 6: case 7: case 11:
-        animation = (actor[0xd4] + 8) & 0xff;
+        animation = (self->direction + 8) & 0xff;
         GraphicsSpriteState_SetAnimationIndex(resource, animation);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
@@ -98,8 +98,8 @@ void Type7Actor_UpdateAnimationState(void *self)
         break;
     }
     if (ordinary) {
-        if (actor[0xd4] != resource[0x38])
-            GraphicsSpriteState_SetAnimationIndex(resource, actor[0xd4]);
+        if (self->direction != resource[0x38])
+            GraphicsSpriteState_SetAnimationIndex(resource, self->direction);
         *(u16 *)(resource + 0x24) &= (u16)~1;
         *(u16 *)(resource + 0x24) |= 2;
         if ((*(u32 *)(actor + 0x268) & 0x400000) != 0)

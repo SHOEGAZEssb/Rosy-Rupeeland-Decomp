@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
 /*
  * Apply the mode-nibble actor's recovered state to its attachment and expose
@@ -21,11 +21,11 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animatio
  * Other state values do nothing. Returns no value; animation selection and
  * attachment flag writes change presentation state.
  */
-void ActorModeNibble_UpdatePresentationState(void *self)
+void ActorModeNibble_UpdatePresentationForState(Actor *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *attachment = *(u8 **)(actor + 0x54);
-    s16 state = *(s16 *)(actor + 0xd6);
+    u8 *attachment = (u8 *)self->primaryAttachment;
+    s16 state = self->state;
     if (state == 0) {
         GraphicsSpriteState_SetAnimationIndex(attachment, 0);
         *(u16 *)(attachment + 0x24) &= ~1;

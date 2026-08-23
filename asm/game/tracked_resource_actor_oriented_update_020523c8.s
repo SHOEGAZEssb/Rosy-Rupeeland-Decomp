@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_oriented_update.c.
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .text
     .global TrackedResourceActorType28_Update
 TrackedResourceActorType28_Update:
@@ -37,7 +37,7 @@ TrackedResourceActorType28_Update:
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r4
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

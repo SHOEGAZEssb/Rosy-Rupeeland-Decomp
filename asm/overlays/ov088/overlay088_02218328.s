@@ -12,7 +12,7 @@
 .extern VecFx32Object_Add
 .extern VecFx32Object_Subtract
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_PlayRadialSpatialSound
 .extern Actor_ReplaceAttachmentSlotResource
@@ -969,7 +969,7 @@ func_ov088_02218328:
     str r0, [r1, #0x14]
 .L_022190e8:
     mov r0, r4
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x20]

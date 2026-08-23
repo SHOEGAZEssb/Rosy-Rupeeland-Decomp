@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
-extern void Actor_UpdateAnimationState(void *actor);
+extern void Actor_SynchronizeStatePresentation(void *actor);
 extern void *Actor_GetOwningCollection(void *actor);
 #ifdef __cplusplus
 }
@@ -26,7 +26,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * settles the actor at field 0x1DC or invokes slot 0xC8. State 1 flashes that
  * presentation bit for 30 ticks, notifies ActorCollection_QueueActorForRemoval, then enters state 2.
  * State 2 invokes slot 0x54 with zero. The high state bit is preserved across
- * transitions. Finally calls virtual slots 0xD4 and 0xA4, Actor_UpdateAnimationState, and
+ * transitions. Finally calls virtual slots 0xD4 and 0xA4, Actor_SynchronizeStatePresentation, and
  * slot 0x20. Returns nothing; actor/presentation state changes and downstream
  * engine callbacks may have SDK effects, but hardware is not accessed here.
  */
@@ -75,6 +75,6 @@ void TrackedResourceActorType21_Update(void *actor)
 
     virtual_function(actor, 0xd4)(actor);
     virtual_function(actor, 0xa4)(actor);
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
     virtual_function(actor, 0x20)(actor);
 }

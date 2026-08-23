@@ -11,7 +11,7 @@
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
 .extern func_ov077_022130b8
@@ -66,7 +66,7 @@ func_ov077_022142f8:
     strb r1, [r7, #0xd5]
     mov r0, r7
     strb r1, [r7, #0xd4]
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     ldr r0, .L_02214c48
     mov r6, #0x1
     ldr r2, [r7, #0x218]

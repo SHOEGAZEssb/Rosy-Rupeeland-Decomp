@@ -1,6 +1,7 @@
 #ifndef TINGLE_ACTOR_COLLECTION_H
 #define TINGLE_ACTOR_COLLECTION_H
 
+#include "tingle/actor.h"
 #include "tingle/actor_pair_state.h"
 #include "tingle/graphics_sprite_group.h"
 #include "tingle/overlay_manager.h"
@@ -23,46 +24,15 @@ enum {
     ACTOR_COLLECTION_SENTINEL_INDEX_COUNT = 4
 };
 
-typedef struct ActorCollectionActor ActorCollectionActor;
-typedef ActorCollectionActor *(*ActorCollectionActorDestructor)(
-    ActorCollectionActor *self);
+typedef Actor ActorCollectionActor;
+typedef ActorVTable ActorCollectionActorVTable;
 
-/* The first two vtable entries perform the same teardown, but only the second
- * frees the actor allocation. Both return the actor's former address. */
-typedef struct ActorCollectionActorVTable {
-    ActorCollectionActorDestructor destroyWithoutFree;
-    ActorCollectionActorDestructor destroyAndFree;
-} ActorCollectionActorVTable;
-
-/* Verified actor fields shared by registration, pair teardown, retention
- * pruning, and deferred removal. Unconsumed bytes remain carry-through state
- * so this view does not assign them speculative semantics. */
-struct ActorCollectionActor {
-    ActorCollectionActorVTable *vtable;
-    u8 stateBeforeFlags[0x0c];
-    u32 flags;
-    u32 motionFlags;
-    u8 stateBeforeCollectionSlot[0x30];
-    s8 collectionSlot;
-    u8 contactEdges;
-    u8 pairStateBytes[2];
-    u8 activeContactCount;
-    u8 type;
-    u16 subtype;
-    s16 groupId;
-    u8 stateBeforeRuntimeFlags[0x7e];
-    u32 runtimeFlags;
-    u8 stateBeforeRuntimeId[0x10];
-    s16 runtimeId;
-    u8 carryThroughAfterRuntimeId[2];
-};
-
-/* Only type-seven actors are known to extend through targetStateFlags. Keep
- * this separate from the heterogeneous base view because other collection
- * actor allocations end before offset 0x268. */
+/* Only type-seven actors are verified to interpret offset 0x268 as
+ * targetStateFlags. Keep this view separate because other derived actor
+ * layouts give that offset different or unresolved semantics. */
 typedef struct ActorCollectionType7ActorView {
     ActorCollectionActor base;
-    u8 type7StateBeforeTargetFlags[0x180];
+    u8 type7StateBeforeTargetFlags[0x7c];
     u32 targetStateFlags;
 } ActorCollectionType7ActorView;
 
@@ -97,9 +67,9 @@ typedef struct ActorCollection {
 } ActorCollection;
 
 typedef char ActorCollectionActorVTableSizeCheck[
-    sizeof(ActorCollectionActorVTable) == 0x08 ? 1 : -1];
+    sizeof(ActorCollectionActorVTable) == 0xc0 ? 1 : -1];
 typedef char ActorCollectionActorSizeCheck[
-    sizeof(ActorCollectionActor) == 0x0e8 ? 1 : -1];
+    sizeof(ActorCollectionActor) == 0x1ec ? 1 : -1];
 typedef char ActorCollectionType7ActorViewSizeCheck[
     sizeof(ActorCollectionType7ActorView) == 0x26c ? 1 : -1];
 typedef char ActorCollectionSizeCheck[

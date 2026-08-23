@@ -100,7 +100,7 @@ extern "C" void Actor_ApplyMotionImpulse(void *, s32, s32);
 extern "C" s32 ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
 extern "C" void Actor_RefreshCachedTerrainHeight(void *);
 extern "C" void Actor_SetDirectionFromVector(void *, s32, s32);
-extern "C" void Actor_UpdateAnimationState(void *);
+extern "C" void Actor_SynchronizeStatePresentation(void *);
 extern "C" void Actor_UpdateGroundContactProbe(void *);
 extern "C" void VecFx32Object_Add(void *, const void *);
 extern "C" s32 func_020ae024(s32, s32);
@@ -478,7 +478,7 @@ extern "C" void func_ov088_02218328(void *a) {
         VecFx32Object_Assign((u8 *)player + 0x18, (u8 *)a + 0x18);
         F(u32, player, 0x14) |= 2;
     }
-    Actor_UpdateAnimationState(a);
+    Actor_SynchronizeStatePresentation(a);
     ((V0)vm(a, 0x20))(a);
 }
 /* Initialize a three-scalar presentation control record. */ extern "C" void

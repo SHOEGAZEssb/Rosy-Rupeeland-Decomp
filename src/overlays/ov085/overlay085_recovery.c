@@ -36,7 +36,7 @@ extern "C" void *Actor_GetOwningCollection(void*); extern "C" void *ActorCollect
 extern "C" void *GraphicsSpriteGroup_CreateState(void*,s32,s32,s32,u8);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void*,void*,void*,void*,void*);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void*,s32); extern "C" void Actor_SetRuntimeFlag80(void*);
-extern "C" void Actor_UpdateAnimationState(void*); extern "C" void Actor_UpdateTimedResourceState(void*);
+extern "C" void Actor_SynchronizeStatePresentation(void*); extern "C" void Actor_UpdateTimedResourceState(void*);
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshCachedTerrainHeight(void*);
 extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void Actor_UpdatePresentation(void*,void*,s32);
 extern "C" void Actor_TurnTowardVector(void*,s32,s32,s32); extern "C" void Actor_TurnTowardTargetPosition(void*,void*,s32);
@@ -89,7 +89,7 @@ extern "C" void func_ov085_02212d08(void*a)
    if(!F(void*,a,0x210)){if(VecFx32Object_GetMagnitude((u8*)a+0x98)>0x300)Actor_TurnTowardVector(a,F(s32,a,0x9c),F(s32,a,0xa0),0x400);else Actor_TurnTowardVector(a,F(s32,a,0x3c),F(s32,a,0x40),0x800);}
    else Actor_TurnTowardTargetPosition(a,(u8*)F(void*,a,0x210)+0x18,0x800);
   }
-  ((M0)vm(a,0xa4))(a);Actor_UpdateAnimationState(a);((M0)vm(a,0x20))(a);return;
+  ((M0)vm(a,0xa4))(a);Actor_SynchronizeStatePresentation(a);((M0)vm(a,0x20))(a);return;
  }
  if((u16)(F(s16,a,0xd6)-5)<2){F(s16,a,0xd6)=1;((M0)vm(a,0x5c))(a);}((M0)vm(a,0x20))(a);
 }

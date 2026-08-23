@@ -57,7 +57,7 @@ EXT(TrackedResourceActor_PostUpdate);
 EXT(TrackedResourceActor_EmitRecordEffects);
 EXT(TrackedResourceActor_DispatchTargetInteraction);
 EXT(Type7Actor_ProcessGlobalInteractionTrigger);
-EXT(Actor_UpdateAnimationState);
+EXT(Actor_SynchronizeStatePresentation);
 EXT(func_02003e2c);
 EXT(Heap_Free);
 EXT(Heap_Alloc);
@@ -1601,7 +1601,7 @@ extern "C" void func_ov097_0221a07c(void *actor)
     ++F(s16, actor, 0x1f8);
     ((Method)F(void *, F(void *, actor, 0), 0xd4))(actor);
     ((Method)F(void *, F(void *, actor, 0), 0xa4))(actor);
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
     F(u32, actor, 0x5c) = (F(u32, actor, 0x5c) & 0xffff0000u) | 0xffe8;
     if ((F(u32, actor, 0x1f4) & 1) == 0)
     {

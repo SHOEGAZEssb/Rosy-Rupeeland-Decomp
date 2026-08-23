@@ -69,5 +69,5 @@ ActorExtendedType2_TrackCandidate: ; 0x0204322c
     ldmia sp!, {r3, r4, r5, pc}
 .L_02043308: .word data_020e8380
 
-    .global ActorExtendedType2_TriggerContactFeedback
+    .global ActorExtendedType2_HandleLanding
 .size ActorExtendedType2_TrackCandidate, . - ActorExtendedType2_TrackCandidate

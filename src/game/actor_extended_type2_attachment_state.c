@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
 /* Select descriptor- and state-dependent resources and animation for attachment +0x54. */
 extern u8 data_020e6c0c[];
@@ -42,16 +42,16 @@ static s32 pairMatches(u32 first, u32 second)
  * zero/one of attachment +0x24; ordinary mode clears bit zero and sets bit one.
  * Returns no value; attachment resource, animation, and flags change.
  */
-void ActorExtendedType2_ApplyAttachmentState(void *self)
+void ActorExtendedType2_UpdatePresentationForState(Actor *self)
 {
     u8 *actor = (u8 *)self;
-    s16 state = *(s16 *)(actor + 0xd6);
+    s16 state = self->state;
     u32 resourceIndex = 0;
     u32 animation = 0;
     s32 specialFlags = 0;
     u16 value36 = 0x100;
-    u16 index = *(u16 *)(actor + 0x4e);
-    u8 direction = actor[0xd4];
+    u16 index = self->subtype;
+    u8 direction = self->direction;
     u32 *resource;
     u8 *attachment;
     void *context;
@@ -119,7 +119,7 @@ void ActorExtendedType2_ApplyAttachmentState(void *self)
 
     resource = *(u32 **)(actor + 0x208 + resourceIndex * 4);
     context = ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor));
-    attachment = *(u8 **)(actor + 0x54);
+    attachment = (u8 *)self->primaryAttachment;
     GraphicsSpriteGroup_ReplaceStateResources(context, attachment, resource[1], resource[2], resource[3]);
     GraphicsSpriteState_SetAnimationIndex(attachment, animation & 0xff);
     *(u16 *)(attachment + 0x36) = value36;

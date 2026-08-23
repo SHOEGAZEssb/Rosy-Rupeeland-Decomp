@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Actor_UpdateAnimationState(void *actor);
+extern void Actor_SynchronizeStatePresentation(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 #ifdef __cplusplus
@@ -28,7 +28,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
  * 0x24 at 0x1DC, enters state 1, and divides fields 0x3C/0x40 by 4. State 1
  * invokes slot 0xE0; state 2 invokes slot 0x54 with zero. Independently, while
  * timer 0x1F8 is less than signed record halfword 0x28, increments it and runs
- * slots 0xD8/0xD4/0xA4, Actor_UpdateAnimationState, and slot 0x20. Once the limit is reached,
+ * slots 0xD8/0xD4/0xA4, Actor_SynchronizeStatePresentation, and slot 0x20. Once the limit is reached,
  * it calls slot 0xDC instead. Returns nothing; virtual callbacks mutate engine
  * state and may cross SDK boundaries, with no direct hardware access here.
  */
@@ -76,7 +76,7 @@ void TrackedResourceActorImpulse_Update(void *actor)
         virtual_function(actor, 0xd8)(actor);
         virtual_function(actor, 0xd4)(actor);
         virtual_function(actor, 0xa4)(actor);
-        Actor_UpdateAnimationState(actor);
+        Actor_SynchronizeStatePresentation(actor);
         virtual_function(actor, 0x20)(actor);
     } else {
         virtual_function(actor, 0xdc)(actor);

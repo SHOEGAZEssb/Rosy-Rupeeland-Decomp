@@ -86,7 +86,7 @@ extern "C" void ActorDerivedRuntime_UpdateFrame(void *);
 extern "C" s32 ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
 extern "C" void ActorDerivedRuntime_ForwardTouchPoint(void *, void *, const void *);
 extern "C" s32 ActorContactState_AddContact(void *, void *, s32);
-extern "C" void Actor_UpdateAnimationState(void *);
+extern "C" void Actor_SynchronizeStatePresentation(void *);
 extern "C" void Actor_SnapshotTransientState(void *);
 extern "C" void *Actor_GetCollisionBounds(void *);
 extern "C" void *Actor_GetOwningCollection(void *);
@@ -581,7 +581,7 @@ extern "C" void func_ov089_02217c60(void *actor)
         }
         VecFx32Object_Destroy(&effectPosition);
     }
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
     call_void(actor, 0x20);
 }
 

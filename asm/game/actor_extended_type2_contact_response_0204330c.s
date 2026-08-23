@@ -6,9 +6,9 @@
 .extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020adc90
-.global ActorExtendedType2_TriggerContactFeedback
-.type ActorExtendedType2_TriggerContactFeedback, @function
-ActorExtendedType2_TriggerContactFeedback: ; 0x0204330c
+.global ActorExtendedType2_HandleLanding
+.type ActorExtendedType2_HandleLanding, @function
+ActorExtendedType2_HandleLanding: ; 0x0204330c
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r3, r4, #0x200
@@ -22,7 +22,7 @@ ActorExtendedType2_TriggerContactFeedback: ; 0x0204330c
     mov r3, #0x14
     bl ActorExtendedType2_SpawnOptionalPresentation
     ldmia sp!, {r4, pc}
-.size ActorExtendedType2_TriggerContactFeedback, . - ActorExtendedType2_TriggerContactFeedback
+.size ActorExtendedType2_HandleLanding, . - ActorExtendedType2_HandleLanding
 
 .global ActorExtendedType2_ApplyContactResponse
 .type ActorExtendedType2_ApplyContactResponse, @function

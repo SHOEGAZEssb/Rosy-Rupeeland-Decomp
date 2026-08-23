@@ -16,7 +16,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern Actor_SaveAndForceFlags
 .extern Actor_PlayHorizontalSpatialSound
 .extern AttachmentController_SetEnabled
@@ -451,7 +451,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     ldr r1, [r1, #0xa4]
     blx r1
     mov r0, r6
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     ldr r0, [r6, #0x260]
     tst r0, #0x40
     bne .L_0203ef14

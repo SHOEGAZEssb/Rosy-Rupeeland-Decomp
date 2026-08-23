@@ -13,7 +13,7 @@
 .extern func_02026588
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
-.extern Actor_UpdateAnimationState
+.extern Actor_SynchronizeStatePresentation
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Actor_UpdateGroundContactProbe
@@ -397,7 +397,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     blx r1
 .L_02045fbc:
     mov r0, r4
-    bl Actor_UpdateAnimationState
+    bl Actor_SynchronizeStatePresentation
     mov r0, r4
     bl Type7Actor_UpdateAttachmentControllerAnimation
     add r0, r4, #0x200

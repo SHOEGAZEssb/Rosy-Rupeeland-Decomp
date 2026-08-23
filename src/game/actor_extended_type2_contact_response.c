@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
 /*
  * Recovered extended type-two actor contact response. These helpers emit a
@@ -22,15 +22,16 @@ extern s32 ActorContactState_AddContact(void *actor, void *other, s32 context);
 /*
  * Clear signed halfword actor +0x280, request packed sound 0x57 at neutral pitch, and
  * invoke ActorExtendedType2_SpawnOptionalPresentation(actor, 0, 0x100, 20).
- * Its return value is forwarded. Actor, sound, and presentation state may
- * change; the two calls cross engine sound and presentation boundaries.
+ * Its incidental return value is ignored by the landing callback contract.
+ * Actor, sound, and presentation state may change; the two calls cross engine
+ * sound and presentation boundaries.
  */
-s32 ActorExtendedType2_TriggerContactFeedback(void *self)
+void ActorExtendedType2_HandleLanding(Actor *self)
 {
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x280) = 0;
     Actor_PlayHorizontalSpatialSound(actor, 0x57, 0);
-    return ActorExtendedType2_SpawnOptionalPresentation(actor, 0, 0x100, 20);
+    ActorExtendedType2_SpawnOptionalPresentation(actor, 0, 0x100, 20);
 }
 
 /*

@@ -46,7 +46,7 @@ extern "C" s32 Actor_GetCachedTerrainHeight(void *);
 extern "C" s32 Actor_GetGravityAcceleration(void *);
 extern "C" void ActorExtendedType2_UpdateFrame(void *);
 extern "C" void ActorExtendedType2_CopyAdjustedDescriptor(void *, const void *);
-extern "C" void ActorExtendedType2_TriggerContactFeedback(void *);
+extern "C" void ActorExtendedType2_HandleLanding(void *);
 extern "C" void ActorExtendedType2_InitializeReentryState(void *);
 extern "C" void ActorExtendedType2_UpdateTargetMotion(void *);
 extern "C" s32 ActorExtendedType2_GetDescriptorValue25(void *);
@@ -206,10 +206,11 @@ extern "C" void func_ov080_02212de8(void *actor)
 extern "C" void func_ov080_02212f6c(void *actor, const void *descriptor)
 { ActorExtendedType2_CopyAdjustedDescriptor(actor, descriptor); }
 
-/* Trigger contact feedback and clear the descriptor-side mode field. */
+/* Handle landing through the base implementation and clear the
+ * descriptor-side mode field. */
 extern "C" void func_ov080_02212f78(void *actor)
 {
-    ActorExtendedType2_TriggerContactFeedback(actor);
+    ActorExtendedType2_HandleLanding(actor);
     FIELD(u16, actor, 0xda) = 0;
 }
 

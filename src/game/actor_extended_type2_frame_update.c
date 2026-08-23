@@ -28,7 +28,7 @@ extern s32 func_020ae024(s32 y, s32 x);
 extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 maximum);
 extern void VecFx32Object_Destroy(void *vector);
 extern void Actor_UpdateGroundContactProbe(void *actor);
-extern void Actor_UpdateAnimationState(void *actor);
+extern void Actor_SynchronizeStatePresentation(void *actor);
 extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 extern void Type7MarkerPresentation_ReloadResources(void *owner);
 extern void Type7MarkerPresentation_SelectAnimation(void *owner, u32 animation);
@@ -64,7 +64,7 @@ static s32 multiplyFxRound(s32 first, s32 second)
  * countdown +0x268 computes displacement, applies descriptor-driven radial
  * impulse through the trigonometric table, clamps +0x8c/+0x90 to 0x6000, and
  * invokes virtual +0x13c on expiry. Finish with optional ground probing,
- * virtual +0xa4, Actor_UpdateAnimationState, helper +0x284 animation synchronization, and
+ * virtual +0xa4, Actor_SynchronizeStatePresentation, helper +0x284 animation synchronization, and
  * virtual +0x20. Returns no value; callbacks, actor/target motion, temporary
  * vector lifetime, attachment presentation, and global runtime state change.
  */
@@ -241,7 +241,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
     if ((*(u32 *)(actor + 0xd0) & 4) == 0)
         Actor_UpdateGroundContactProbe(actor);
     (*(void (**)(void *))(*(u8 **)actor + 0xa4))(actor);
-    Actor_UpdateAnimationState(actor);
+    Actor_SynchronizeStatePresentation(actor);
 
     if ((*(u32 *)(actor + 0x260) & 0x40) == 0) {
         u8 mode = actor[0x24c];
