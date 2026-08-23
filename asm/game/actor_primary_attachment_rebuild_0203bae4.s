@@ -2,7 +2,7 @@
 .text
 .extern data_020f4e18
 .extern ActorCollection_GetSpriteOwner
-.extern func_020313b4
+.extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetCollection
 .extern func_02071ee0
 .extern AnimationResourceState_ReleaseResources
@@ -57,7 +57,7 @@ Actor_RebuildPrimaryAttachment: ; 0x0203bae4
     mov r0, r4
     add r1, r4, #0x1ec
     and r2, r2, #0xff
-    bl func_020313b4
+    bl Actor_CreateSecondaryRenderAttachment
 .L_0203bb98:
     ldr r0, [r4, #0x54]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

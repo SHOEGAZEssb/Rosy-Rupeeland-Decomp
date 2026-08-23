@@ -2,7 +2,7 @@
 ; src/overlays/ov093/overlay093_recovery.c.
 .extern data_020f35d0
 .extern data_020f35e0
-.extern func_02031464
+.extern Actor_ReleasePrimaryRenderAttachment
 .extern func_020314b8
 .extern Actor_SnapshotTransientState
 .extern Actor_ClearTransientContactState
@@ -171,7 +171,7 @@ data_ov093_022188f0:
     .word func_02033f4c
     .word func_ov093_02218734
     .word Actor_ApplyMotionImpulse
-    .word func_02031464
+    .word Actor_ReleasePrimaryRenderAttachment
     .word func_ov093_022186bc
     .word func_ov093_022187cc
     .word func_ov093_022187c8

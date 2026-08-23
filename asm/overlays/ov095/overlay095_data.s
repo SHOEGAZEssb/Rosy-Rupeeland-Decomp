@@ -49,7 +49,7 @@
 .extern func_ov095_02217da8
 .extern func_ov095_0221b0ac
 .extern func_ov095_0221abc8
-.extern func_02031464
+.extern Actor_ReleasePrimaryRenderAttachment
 .extern ActorDerivedRuntime_NoOp
 .extern ActorExtendedType2_ResetRuntimeState
 .extern ActorExtendedType2_CopyAdjustedDescriptor
@@ -356,7 +356,7 @@ data_ov095_0221cca0:
     .word func_ov095_02217da8
     .word func_ov095_0221b0ac
     .word func_ov095_0221abc8
-    .word func_02031464
+    .word Actor_ReleasePrimaryRenderAttachment
     .word ActorDerivedRuntime_NoOp
     .word ActorExtendedType2_ResetRuntimeState
     .word ActorExtendedType2_CopyAdjustedDescriptor
@@ -520,7 +520,7 @@ data_ov095_0221cf4c:
     .word func_02033f4c
     .word func_ov095_0221b0ac
     .word ActorExtendedType2_ApplyMotionImpulseIfEnabled
-    .word func_02031464
+    .word Actor_ReleasePrimaryRenderAttachment
     .word ActorDerivedRuntime_NoOp
     .word ActorExtendedType2_ResetRuntimeState
     .word ActorExtendedType2_CopyAdjustedDescriptor
@@ -665,7 +665,7 @@ data_ov095_0221d1a4:
     .word func_02033f4c
     .word func_ov095_0221b0ac
     .word Actor_ApplyMotionImpulse
-    .word func_02031464
+    .word Actor_ReleasePrimaryRenderAttachment
     .word func_ov095_0221c344
     .word func_ov095_0221c4a4
     .word func_ov095_0221c690
@@ -744,7 +744,7 @@ data_ov095_0221d2e8:
     .word func_02033f4c
     .word func_ov095_0221b0ac
     .word Actor_ApplyMotionImpulse
-    .word func_02031464
+    .word Actor_ReleasePrimaryRenderAttachment
     .word func_ov095_0221c77c
     .word func_ov095_0221ca14
     .word func_ov095_0221cae0

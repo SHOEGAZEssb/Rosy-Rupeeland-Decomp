@@ -15,7 +15,8 @@ extern u8 *PackedTimerArray_Get(void *array, s32 id);
 extern void PackedTimer_Start(void *state);
 extern void PackedTimer_MarkComplete(void *state);
 extern void ActorDerivedType1_ResetToBaseState(void *actor);
-extern void func_020313b4(void *actor, void *state, s32 mode);
+extern void Actor_CreateSecondaryRenderAttachment(
+    void *actor, void *unusedAnimationResources, s32 attachPolicy);
 extern void GraphicsSpriteGroup_ReleaseState(void *owner, void *state);
 #ifdef __cplusplus
 }
@@ -85,12 +86,16 @@ s32 GamePhaseActorScriptVm_ResetType1ActorWhenFieldE4Zero(GamePhaseActorScriptVm
     return 0;
 }
 
-/* Set actor flag bit 0 and apply mode 2 to state at offset 0x1ec; return zero. */
+/*
+ * Set actor flag mask 0x1 and request secondary attachment +0x58 with attach
+ * policy two. The ABI's +0x1ec animation-resource argument is ignored. Return
+ * zero.
+ */
 s32 GamePhaseActorScriptVm_SetActorFlag1AndApplyStateMode2(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
     *(u32 *)(actor + 0x14) |= 1;
-    func_020313b4(actor, actor + 0x1ec, 2);
+    Actor_CreateSecondaryRenderAttachment(actor, actor + 0x1ec, 2);
     return 0;
 }
 

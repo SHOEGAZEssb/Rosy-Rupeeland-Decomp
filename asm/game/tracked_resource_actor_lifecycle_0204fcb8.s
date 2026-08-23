@@ -3,7 +3,7 @@
 .extern gTrackedResourceActorVtable
 .extern ActorRuntimeBase_Init
 .extern func_0203130c
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .text
 
@@ -44,7 +44,7 @@ TrackedResourceActor_DestroyComplete: ; 0x0204fd08
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldr r0, [r4, #0x1ec]
     cmp r0, #0x0
     beq .L_0204fd4c
@@ -72,7 +72,7 @@ TrackedResourceActor_DestroyAndFree: ; 0x0204fd60
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldr r0, [r4, #0x1ec]
     cmp r0, #0x0
     beq .L_0204fda4
@@ -102,7 +102,7 @@ TrackedResourceActor_Destroy: ; 0x0204fdc0
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldr r0, [r4, #0x1ec]
     cmp r0, #0x0
     beq .L_0204fe04

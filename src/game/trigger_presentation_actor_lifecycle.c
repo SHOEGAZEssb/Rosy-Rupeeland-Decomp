@@ -14,7 +14,7 @@ extern "C" {
 extern void Heap_Free(void *allocation);
 extern void *ActorRuntimeBase_Init(void *actor);
 extern void func_0203130c(void *actor);
-extern void func_02031488(void *actor);
+extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ void *func_0204e970(void *self)
     FIELD(const void *, self, 0) = data_020e2560;
     void (**vtable)(void *) = (void (**)(void *))data_020e2560;
     vtable[0xbc / sizeof(void *)](self);
-    func_02031488(self);
+    Actor_ReleaseSecondaryRenderAttachment(self);
     func_0203130c(self);
     return self;
 }

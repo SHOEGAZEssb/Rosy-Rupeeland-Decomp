@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void *ActorRuntimeBase_Init(void *self, const void *descriptor);
 extern void *func_0203130c(void *self);
-extern void func_02031488(void *self);
+extern void Actor_ReleaseSecondaryRenderAttachment(void *self);
 extern void *AnimationResource_InitEmpty(void *embedded);
 extern void *AnimationResource_Destroy(void *embedded);
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ static void *destroyDerivedRuntimeObject(void *self)
     u8 *object = (u8 *)self;
     *(void **)object = data_020df510;
     (*(void (**)(void *))(*(u8 **)object + 0xbc))(object);
-    func_02031488(object);
+    Actor_ReleaseSecondaryRenderAttachment(object);
     AnimationResource_Destroy(object + 0x1ec);
     func_0203130c(object);
     return object;

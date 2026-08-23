@@ -16,7 +16,7 @@ extern "C" {
 extern void Heap_Free(void *allocation);
 extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
 extern void func_0203130c(void *actor);
-extern void func_02031488(void *actor);
+extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 extern void Type7Actor_ClearGlobalRelationshipToActor(void *actor);
 #ifdef __cplusplus
 }
@@ -71,7 +71,7 @@ void *PresentationBackedActor_DestroyComplete(void *self)
     FIELD(const void *, self, 0x000) = data_020e238c;
     Type7Actor_ClearGlobalRelationshipToActor(self);
     vtable[0xbc / sizeof(void *)](self);
-    func_02031488(self);
+    Actor_ReleaseSecondaryRenderAttachment(self);
     if (FIELD(u16, self, 0x04e) == 10) {
         FIELD(u32, gPresentationBackedActorRuntimeState, 4)--;
     }

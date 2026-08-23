@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void AuxiliaryInteraction_Destroy(void *object);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_02031488(void *actor);
+extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 extern void Type7MarkerPresentation_Destroy(void *state);
 extern void VecFx32Object_Destroy(void *value);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
@@ -44,7 +44,7 @@ static void cleanupDerivedType1(u8 *actor)
     destroyOwnedVirtual(*(void **)(actor + 0x270));
     callback = *(void (**)(void *))(*(u8 **)actor + 0xbc);
     callback(actor);
-    func_02031488(actor);
+    Actor_ReleaseSecondaryRenderAttachment(actor);
     for (i = 0; i < 9; ++i)
         destroyOwnedVirtual(*(void **)(actor + 0x208 + i * 4));
     destroyOwnedVirtual(*(void **)(actor + 0x22c));
@@ -58,8 +58,9 @@ static void cleanupDerivedType1(u8 *actor)
 
 /*
  * Install the type-1 vtable, destroy/free optional object +0x26c and clear
- * GameWork flag 0x3ee, destroy optional +0x270, run vtable slot 0xbc and
- * func_02031488, destroy nine owned objects +0x208..+0x228 plus optional
+ * GameWork flag 0x3ee, destroy optional +0x270, release primary attachment
+ * +0x54 through vtable slot +0xbc, explicitly release secondary +0x58, destroy
+ * nine owned objects +0x208..+0x228 plus optional
  * +0x22c/+0x274, destroy owner state +0x2a8 and vectors +0x284/+0x254/+0x238,
  * then run the base destructor. Return self without freeing its allocation.
  * Object, heap, GameWork, and value helpers have observable ownership effects.

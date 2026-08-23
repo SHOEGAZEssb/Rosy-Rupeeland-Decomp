@@ -6,7 +6,7 @@
 .extern AnimationResource_InitEmpty
 .extern ActorRuntimeBase_Init
 .extern func_0203130c
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
     .global ActorDerivedRuntime_Init
     .type ActorDerivedRuntime_Init, @function
 ActorDerivedRuntime_Init: ; 0x0203b514
@@ -60,7 +60,7 @@ ActorDerivedRuntime_Destroy: ; 0x0203b594
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     add r0, r4, #0x1ec
     bl AnimationResource_Destroy
     mov r0, r4
@@ -81,7 +81,7 @@ ActorDerivedRuntime_DestroyAndFree: ; 0x0203b5d4
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     add r0, r4, #0x1ec
     bl AnimationResource_Destroy
     mov r0, r4
@@ -104,7 +104,7 @@ ActorDerivedRuntime_DestroyAlternate: ; 0x0203b61c
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     add r0, r4, #0x1ec
     bl AnimationResource_Destroy
     mov r0, r4

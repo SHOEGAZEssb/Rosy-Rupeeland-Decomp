@@ -3,7 +3,7 @@
 .extern data_020e2560
 .extern ActorRuntimeBase_Init
 .extern func_0203130c
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
 .text
 
     .global func_0204e944
@@ -32,7 +32,7 @@ func_0204e970: ; 0x0204e970
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     mov r0, r4
     bl func_0203130c
     mov r0, r4
@@ -51,7 +51,7 @@ func_0204e9a8: ; 0x0204e9a8
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     mov r0, r4
     bl func_0203130c
     mov r0, r4

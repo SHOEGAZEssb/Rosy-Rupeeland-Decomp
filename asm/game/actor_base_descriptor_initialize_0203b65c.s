@@ -2,7 +2,7 @@
 .text
 .extern data_020f4e18
 .extern ActorCollection_GetSpriteOwner
-.extern func_020313b4
+.extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetCollection
 .extern func_02034260
 .extern func_02071ee0
@@ -85,7 +85,7 @@ Actor_InitializeFromDescriptor: ; 0x0203b65c
     ldrb r2, [r4, #0x10]
     mov r0, r5
     add r1, r5, #0x1ec
-    bl func_020313b4
+    bl Actor_CreateSecondaryRenderAttachment
 .L_0203b784:
     mov r0, r5
     mov r1, r4

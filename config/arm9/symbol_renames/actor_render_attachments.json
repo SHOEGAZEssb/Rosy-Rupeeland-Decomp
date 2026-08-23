@@ -1,0 +1,5 @@
+{
+  "func_020313b4": "Actor_CreateSecondaryRenderAttachment",
+  "func_02031464": "Actor_ReleasePrimaryRenderAttachment",
+  "func_02031488": "Actor_ReleaseSecondaryRenderAttachment"
+}

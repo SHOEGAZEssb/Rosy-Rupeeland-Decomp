@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern data_020df3c8
 .extern VecFx32Object_Destroy
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Type7MarkerPresentation_Destroy
 .extern AuxiliaryInteraction_Destroy
@@ -43,7 +43,7 @@ ActorDerivedType1_Destroy: ; 0x02035188
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     mov r5, #0x0
 .L_020351fc:
     add r0, r4, r5, lsl #0x2

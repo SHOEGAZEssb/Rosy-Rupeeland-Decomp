@@ -9,7 +9,7 @@
 .extern data_020e8394
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
-.extern func_020313b4
+.extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -143,7 +143,7 @@ ActorExtendedType2_InitializePresentation: ; 0x0203e56c
     ldrb r2, [r6, #0x10]
     ldr r1, [r7, #0x208]
     mov r0, r7
-    bl func_020313b4
+    bl Actor_CreateSecondaryRenderAttachment
     ldr r0, [r7, #0x14]
     tst r0, #0x80
     ldrnesh r1, [r6, #0x3c]

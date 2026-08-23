@@ -2,9 +2,9 @@
 .text
 .extern GraphicsSpriteState_ReleaseFromGroup
 
-    .global func_02031464
-    .type func_02031464, @function
-func_02031464: ; 0x02031464
+    .global Actor_ReleasePrimaryRenderAttachment
+    .type Actor_ReleasePrimaryRenderAttachment, @function
+Actor_ReleasePrimaryRenderAttachment: ; 0x02031464
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x54]
@@ -14,5 +14,5 @@ func_02031464: ; 0x02031464
     mov r0, #0x0
     str r0, [r4, #0x54]
     ldmia sp!, {r4, pc}
-    .size func_02031464, . - func_02031464
+    .size Actor_ReleasePrimaryRenderAttachment, . - Actor_ReleasePrimaryRenderAttachment
 

@@ -4,7 +4,7 @@
 .extern gHeapContext
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
-.extern func_020313b4
+.extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -39,7 +39,7 @@ GridEffectActor_SetupPresentationResources: ; 0x0204ed3c
     ldrb r2, [r5, #0x10]
     ldr r1, [r6, #0x1ec]
     mov r0, r6
-    bl func_020313b4
+    bl Actor_CreateSecondaryRenderAttachment
     ldrb r1, [r5, #0x11]
     ldr r0, [r6, #0x54]
     bl GraphicsSpriteState_SetAnimationIndex

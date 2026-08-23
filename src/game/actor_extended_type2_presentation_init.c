@@ -19,7 +19,8 @@ extern void *ActorCollection_GetSpriteOwner(void *value);
 extern void *GraphicsSpriteGroup_CreateState(void *context, u32 first, u32 second, u32 third,
                            s32 kind);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
-extern void func_020313b4(void *actor, void *resource, u8 value);
+extern void Actor_CreateSecondaryRenderAttachment(
+    void *actor, void *unusedAnimationResources, u8 attachPolicy);
 #ifdef __cplusplus
 }
 #endif
@@ -44,8 +45,9 @@ static void *createResource(const u16 *record)
  * Normally select attachment animation eight. Index 0x30 instead samples the
  * RNG, stores its low 16 bits in +0xc8/+0xcc, derives bytes +0xd4/+0xd5 from
  * (sample+0x1000 truncated to 16 bits)>>13, and selects that value plus eight.
- * Invoke virtual +0x14, pass config byte +0x10 and resource +0x208 through
- * func_020313b4, and when actor +0x14 bit 0x80 is set copy config halfword +0x3c
+ * Invoke virtual +0x14, create the secondary attachment with config byte +0x10
+ * as its attach policy (the +0x208 resource argument is ignored), and when
+ * actor +0x14 bit 0x80 is set copy config halfword +0x3c
  * to attachment byte +0x3a. If +0x272 bits 0x1800 are set or +0x250 is zero,
  * invoke virtual +0xfc and copy the descriptor table halfword at index*0x30
  * into +0x24e; otherwise decrement a positive +0x250. Returns no value; heap,
@@ -91,7 +93,7 @@ void ActorExtendedType2_InitializePresentation(void *self, const void *configura
     }
 
     (*(void (**)(void *))(*(u8 **)actor + 0x14))(actor);
-    func_020313b4(actor, *(void **)(actor + 0x208), config[0x10]);
+    Actor_CreateSecondaryRenderAttachment(actor, *(void **)(actor + 0x208), config[0x10]);
     if ((*(u32 *)(actor + 0x14) & 0x80) != 0)
         attachment[0x3a] = (u8)*(s16 *)(config + 0x3c);
 

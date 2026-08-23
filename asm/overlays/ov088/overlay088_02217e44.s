@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern data_021056f0
 .extern data_ov088_0221b928
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern func_ov088_02218290
@@ -25,7 +25,7 @@ func_ov088_02217e44:
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldr r0, [r4, #0x224]
     cmp r0, #0x0
     beq .L_02217e98

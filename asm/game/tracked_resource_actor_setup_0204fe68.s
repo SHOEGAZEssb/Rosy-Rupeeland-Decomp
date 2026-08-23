@@ -4,7 +4,7 @@
 .extern gHeapContext
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
-.extern func_020313b4
+.extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetCollection
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -45,7 +45,7 @@ TrackedResourceActor_SetupPresentationResources: ; 0x0204fe68
     strh r1, [r2, #0x24]
     ldrb r2, [r5, #0x10]
     ldr r1, [r6, #0x1ec]
-    bl func_020313b4
+    bl Actor_CreateSecondaryRenderAttachment
     mov r0, r6
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x14]

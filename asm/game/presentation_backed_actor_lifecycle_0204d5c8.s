@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/presentation_backed_actor_lifecycle.c.
 .extern ActorRuntimeBase_Init
 .extern Type7Actor_ClearGlobalRelationshipToActor
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
 .extern func_0203130c
 .extern Heap_Free
 .extern data_020e238c
@@ -71,7 +71,7 @@ PresentationBackedActor_DestroyComplete:
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldrh r0, [r4, #0x4e]
     cmp r0, #0xa
     ldreq r0, .L_0204d6d0
@@ -98,7 +98,7 @@ PresentationBackedActor_DestroyAndFree:
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldrh r0, [r4, #0x4e]
     cmp r0, #0xa
     ldreq r0, .L_0204d734
@@ -127,7 +127,7 @@ PresentationBackedActor_Destroy:
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldrh r0, [r4, #0x4e]
     cmp r0, #0xa
     ldreq r0, .L_0204d790

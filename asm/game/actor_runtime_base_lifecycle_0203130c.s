@@ -7,7 +7,7 @@
 .extern GamePhaseActorScriptVm_Destroy
 .extern ActorCollection_GetSpriteOwner
 .extern func_02030e08
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
 .extern Actor_GetCollection
 .extern func_02057184
 .extern GraphicsSpriteGroup_ReleaseState
@@ -23,7 +23,7 @@ func_0203130c: ; 0x0203130c
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r5
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldr r4, [r5, #0xa8]
     cmp r4, #0x0
     beq .L_02031350

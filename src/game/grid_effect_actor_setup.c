@@ -15,7 +15,8 @@ extern "C" {
 extern void *AnimationResource_Init(void *storage, u32 resource0, u32 resource1,
                            u32 resource2);
 extern void *ActorCollection_GetSpriteOwner(void *collection);
-extern void func_020313b4(void *actor, void *bundle, u32 mode);
+extern void Actor_CreateSecondaryRenderAttachment(
+    void *actor, void *unusedAnimationResources, u32 attachPolicy);
 extern void *Actor_GetCollection(void *actor);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, void *resource1,
@@ -31,7 +32,8 @@ extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, voi
  * 0x04..0x0C and mode bytes at 0x10/0x11. Allocate a 16-byte bundle tagged by
  * gGridEffectActorAnimationResourceAllocationTag, initialize it with AnimationResource_Init, store it at actor+0x1EC,
  * prepare the actor, create a presentation at 0x54 from bundle words 1..3,
- * bind the bundle through func_020313b4, select the initial entry, and set
+ * create secondary +0x58 from primary +0x54 (the bundle argument is ignored),
+ * select the initial entry, and set
  * presentation flags 1 and 2. Returns nothing; heap/resource/presentation state
  * changes, and hardware is not accessed directly. Retail assumes allocation succeeds.
  */
@@ -56,7 +58,7 @@ void GridEffectActor_SetupPresentationResources(void *actor, const void *descrip
         owner, FIELD(void *, bundle, 4), FIELD(void *, bundle, 8),
         FIELD(void *, bundle, 12), FIELD(u8, descriptor, 0x10));
     FIELD(void *, actor, 0x54) = presentation;
-    func_020313b4(actor, bundle, FIELD(u8, descriptor, 0x10));
+    Actor_CreateSecondaryRenderAttachment(actor, bundle, FIELD(u8, descriptor, 0x10));
     GraphicsSpriteState_SetAnimationIndex(presentation, FIELD(u8, descriptor, 0x11));
     FIELD(u16, presentation, 0x24) |= 6;
 }

@@ -7,9 +7,9 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 
-    .global func_020313b4
-    .type func_020313b4, @function
-func_020313b4: ; 0x020313b4
+    .global Actor_CreateSecondaryRenderAttachment
+    .type Actor_CreateSecondaryRenderAttachment, @function
+Actor_CreateSecondaryRenderAttachment: ; 0x020313b4
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -55,5 +55,5 @@ func_020313b4: ; 0x020313b4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_02031460: .word data_021052fc
-    .size func_020313b4, . - func_020313b4
+    .size Actor_CreateSecondaryRenderAttachment, . - Actor_CreateSecondaryRenderAttachment
 

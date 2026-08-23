@@ -6,7 +6,7 @@
 .extern data_020df48c
 .extern AnimationResource_Init
 .extern ActorCollection_GetSpriteOwner
-.extern func_020313b4
+.extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetCollection
 .extern Actor_InitializeFromDescriptor
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -93,7 +93,7 @@ ActorDerivedType1_InitializeResources: ; 0x020353a0
     ldrb r2, [r9, #0x10]
     ldr r1, [r10, #0x208]
     mov r0, r10
-    bl func_020313b4
+    bl Actor_CreateSecondaryRenderAttachment
     mov r0, r10
     mov r1, r9
     bl Actor_InitializeFromDescriptor

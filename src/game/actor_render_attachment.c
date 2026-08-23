@@ -5,8 +5,8 @@ typedef struct ActorRenderAttachmentOwner {
     u8 field_00[0x14];
     u32 flags_14;
     u8 field_18[0x3c];
-    void *attachmentConfig_54;
-    void *attachment_58;
+    void *primaryAttachment_54;
+    void *secondaryAttachment_58;
 } ActorRenderAttachmentOwner;
 
 extern void *data_021052fc;
@@ -25,61 +25,69 @@ extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 #endif
 
 /*
- * When actor flag one is set and its collection mode at 0x2e84 equals one,
- * create attachment 0x58 through the context-two manager. Source parameters
- * come from config 0x54 offsets 0x14/0x18/0x1c and finalArg; copy config byte
- * 0x38, halfwords 0x2c/0x2e, and byte 0x3a to the result, and set result flag
- * two at 0x24. The second input is unused. Returns no value; helpers affect
- * render attachment state.
+ * When actor flag mask 0x1 is set and its collection field +0x2e84 equals one,
+ * create secondary attachment +0x58 in the sprite group owned by global actor
+ * collection two. Copy the primary attachment's resource words +0x14/+0x18/
+ * +0x1c, animation byte +0x38, signed positions +0x2c/+0x2e, flag mask 0x2,
+ * and byte +0x3a. The animation-resource input is unused. Retail assumes the
+ * primary attachment, target group, and allocation are valid and overwrites
+ * any existing secondary attachment. Returns no value; renderer/group-owned
+ * attachment state changes, with no direct hardware access.
  */
-void func_020313b4(ActorRenderAttachmentOwner *self, void *unused,
-                   s32 finalArg)
+void Actor_CreateSecondaryRenderAttachment(ActorRenderAttachmentOwner *actor,
+                                           void *unusedAnimationResources,
+                                           s32 attachPolicy)
 {
-    u8 *config;
-    u8 *attachment;
-    void *collection;
+    u8 *primaryAttachment;
+    u8 *secondaryAttachment;
+    void *actorCollection;
 
-    (void)unused;
-    if (!(self->flags_14 & 1))
+    (void)unusedAnimationResources;
+    if (!(actor->flags_14 & 1))
         return;
-    collection = Actor_GetCollection(self);
-    if (*(s32 *)((u8 *)collection + 0x2e84) != 1)
+    actorCollection = Actor_GetCollection(actor);
+    if (*(s32 *)((u8 *)actorCollection + 0x2e84) != 1)
         return;
-    config = (u8 *)self->attachmentConfig_54;
-    self->attachment_58 = GraphicsSpriteGroup_CreateState(
+    primaryAttachment = (u8 *)actor->primaryAttachment_54;
+    actor->secondaryAttachment_58 = GraphicsSpriteGroup_CreateState(
         ActorCollection_GetSpriteOwner(GamePhaseRuntime_GetActorCollection(data_021052fc, 2)),
-        *(u32 *)(config + 0x14), *(u32 *)(config + 0x18),
-        *(u32 *)(config + 0x1c), finalArg);
-    attachment = (u8 *)self->attachment_58;
-    GraphicsSpriteState_SetAnimationIndex(attachment, config[0x38]);
-    *(s16 *)(attachment + 0x2c) = *(s16 *)(config + 0x2c);
-    *(s16 *)(attachment + 0x2e) = *(s16 *)(config + 0x2e);
-    *(u16 *)(attachment + 0x24) |= 2;
-    attachment[0x3a] = config[0x3a];
+        *(u32 *)(primaryAttachment + 0x14), *(u32 *)(primaryAttachment + 0x18),
+        *(u32 *)(primaryAttachment + 0x1c), attachPolicy);
+    secondaryAttachment = (u8 *)actor->secondaryAttachment_58;
+    GraphicsSpriteState_SetAnimationIndex(secondaryAttachment,
+                                          primaryAttachment[0x38]);
+    *(s16 *)(secondaryAttachment + 0x2c) =
+        *(s16 *)(primaryAttachment + 0x2c);
+    *(s16 *)(secondaryAttachment + 0x2e) =
+        *(s16 *)(primaryAttachment + 0x2e);
+    *(u16 *)(secondaryAttachment + 0x24) |= 2;
+    secondaryAttachment[0x3a] = primaryAttachment[0x3a];
 }
 
 /*
- * If attachment/config field 0x54 is nonnull, release it through GraphicsSpriteState_ReleaseFromGroup
- * and clear the field. Returns no value; the helper owns render-state effects.
+ * If primary attachment +0x54 is nonnull, return it to its renderer group and
+ * clear the field. A null field is a no-op. Returns no value; the released
+ * attachment becomes invalid and renderer/group allocator state changes.
  */
-void func_02031464(ActorRenderAttachmentOwner *self)
+void Actor_ReleasePrimaryRenderAttachment(ActorRenderAttachmentOwner *actor)
 {
-    if (self->attachmentConfig_54) {
-        GraphicsSpriteState_ReleaseFromGroup(self->attachmentConfig_54);
-        self->attachmentConfig_54 = 0;
+    if (actor->primaryAttachment_54) {
+        GraphicsSpriteState_ReleaseFromGroup(actor->primaryAttachment_54);
+        actor->primaryAttachment_54 = 0;
     }
 }
 
 /*
- * If attachment field 0x58 is nonnull, release it, clear the field, and clear
- * actor flag one. A null field leaves both state locations unchanged. Returns
- * no value; GraphicsSpriteState_ReleaseFromGroup owns render-state effects.
+ * If secondary attachment +0x58 is nonnull, return it to its renderer group,
+ * clear the field, and clear actor flag mask 0x1. A null field leaves the flag
+ * unchanged. Returns no value; the released attachment becomes invalid and
+ * renderer/group allocator state changes.
  */
-void func_02031488(ActorRenderAttachmentOwner *self)
+void Actor_ReleaseSecondaryRenderAttachment(ActorRenderAttachmentOwner *actor)
 {
-    if (self->attachment_58) {
-        GraphicsSpriteState_ReleaseFromGroup(self->attachment_58);
-        self->attachment_58 = 0;
-        self->flags_14 &= ~1;
+    if (actor->secondaryAttachment_58) {
+        GraphicsSpriteState_ReleaseFromGroup(actor->secondaryAttachment_58);
+        actor->secondaryAttachment_58 = 0;
+        actor->flags_14 &= ~1;
     }
 }

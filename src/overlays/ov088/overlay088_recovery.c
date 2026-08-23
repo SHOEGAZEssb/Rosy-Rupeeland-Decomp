@@ -71,7 +71,7 @@ extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, s32,
 extern "C" void Actor_AdjustPositionForTerrainHeight(void *);
 extern "C" void Heap_Free(void *);
 extern "C" s32 func_020befec(s32, s32);
-extern "C" void func_02031488(void *);
+extern "C" void Actor_ReleaseSecondaryRenderAttachment(void *);
 extern "C" void *Heap_Alloc(s32, void *, s32, void *);
 extern "C" void *gHeapContext, *gSoundContext;
 extern "C" u8 data_ov088_0221ba04[];
@@ -229,7 +229,7 @@ static void release_owned_presentation(void *a) {
         data_021056f0 = 0;
     func_ov088_02218290(a);
     ((V0)vm(a, 0xbc))(a);
-    func_02031488(a);
+    Actor_ReleaseSecondaryRenderAttachment(a);
     const u32 sprites[] = {0x224, 0x228, 0x22c, 0x258};
     for (u32 i = 0; i < 4; i++)
         if (F(void *, a, sprites[i]))

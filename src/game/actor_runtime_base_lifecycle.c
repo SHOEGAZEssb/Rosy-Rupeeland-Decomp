@@ -21,7 +21,7 @@ extern u8 data_020df040[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031488(RuntimeActorLifecycle *);
+extern void Actor_ReleaseSecondaryRenderAttachment(RuntimeActorLifecycle *);
 extern void *Actor_GetCollection(RuntimeActorLifecycle *);
 extern void *ActorCollection_GetSpriteOwner(void *);
 extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
@@ -40,7 +40,7 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
 
     self->vtable_00 = (RuntimeActorLifecycleVTable *)data_020df040;
     self->vtable_00->cleanup_bc(self);
-    func_02031488(self);
+    Actor_ReleaseSecondaryRenderAttachment(self);
     object = self->field_a8;
     if (object)
         GraphicsSpriteGroup_ReleaseState(ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), object);

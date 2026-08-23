@@ -4,7 +4,7 @@
 .extern SelfLinkedSpriteConfig_Init
 .extern ActorRuntimeBase_Init
 .extern func_0203130c
-.extern func_02031488
+.extern Actor_ReleaseSecondaryRenderAttachment
 .extern Type7Actor_ClearGlobalRelationshipToActor
 .extern GridEffectActorRegistry_Unregister
 .text
@@ -52,7 +52,7 @@ GridEffectActor_Destroy: ; 0x0204ec74
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldr r0, [r4, #0x1ec]
     cmp r0, #0x0
     beq .L_0204ecb8
@@ -82,7 +82,7 @@ GridEffectActor_DestroyAndFree: ; 0x0204ecd4
     ldr r1, [r1, #0xbc]
     blx r1
     mov r0, r4
-    bl func_02031488
+    bl Actor_ReleaseSecondaryRenderAttachment
     ldr r0, [r4, #0x1ec]
     cmp r0, #0x0
     beq .L_0204ed18

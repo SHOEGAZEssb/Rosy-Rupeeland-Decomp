@@ -9,7 +9,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031488(void *actor);
+extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 extern void Type7MarkerPresentation_Destroy(void *object);
 extern void VecFx32Object_Destroy(void *vector);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
@@ -51,8 +51,9 @@ void ActorExtendedType2_ResetRuntimeState(void *self)
 
 /*
  * Restore vtable data_020dfee4, free optional object +0x26c, invoke virtual
- * destructor +0x04 on optional object +0x278, then invoke actor virtual +0xbc
- * and func_02031488. Destroy optional objects +0x208/+0x20c/+0x210/+0x214
+ * destructor +0x04 on optional object +0x278, release primary attachment +0x54
+ * through actor virtual +0xbc, then explicitly release secondary +0x58.
+ * Destroy optional objects +0x208/+0x20c/+0x210/+0x214
  * through their virtual +0x04 slots, destroy helper +0x284 and vectors
  * +0x23c/+0x22c, and finish through ActorDerivedRuntime_DestroyAlternate. Return self; owned heap,
  * vector, helper, and base actor state is released.
@@ -70,7 +71,7 @@ void *ActorExtendedType2_DestroyComplete(void *self)
         (*(void (**)(void *))(*(u8 **)object + 4))(object);
     }
     (*(void (**)(void *))(*(u8 **)actor + 0xbc))(actor);
-    func_02031488(actor);
+    Actor_ReleaseSecondaryRenderAttachment(actor);
     for (index = 0; index < 2; ++index) {
         void *object = *(void **)(actor + 0x208 + index * 4);
         if (object != 0)
