@@ -7,7 +7,7 @@
 .extern AnimationResource_Init
 .extern Actor_AdjustPositionForTerrainHeight
 .extern Actor_GetCachedTerrainHeight
-.extern func_02034568
+.extern Actor_IsTerrainCellEligibleAtHeight
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern func_ov088_02218280
@@ -66,7 +66,7 @@ func_ov088_0221aaac:
     mov r1, r1, asr #0x4
     mov r2, r10
     mov r3, r5
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     ldreq r0, [r4, #0x8c]
     sub r1, r8, r6
@@ -78,7 +78,7 @@ func_ov088_0221aaac:
     mov r2, r10
     mov r3, r5
     mov r1, r1, asr #0x4
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     ldreq r0, [r4, #0x8c]
     add r2, r9, r7
@@ -93,7 +93,7 @@ func_ov088_0221aaac:
     mov r1, r6
     mov r3, r5
     mov r2, r2, asr #0x4
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     ldreq r0, [r4, #0x90]
     sub r1, r9, r7
@@ -105,7 +105,7 @@ func_ov088_0221aaac:
     mov r1, r6
     mov r3, r5
     mov r2, r2, asr #0x4
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     ldreq r0, [r4, #0x8c]
     addeq r0, r0, #0x2000

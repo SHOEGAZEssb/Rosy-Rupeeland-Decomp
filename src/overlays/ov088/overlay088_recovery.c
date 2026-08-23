@@ -94,7 +94,7 @@ extern "C" s32 ActorDerivedType1_IsIdleEligible(void *);
 extern "C" void Actor_SetInteractionFlag2000(void *, s32);
 extern "C" void func_020adfbc(const void *, const void *, void *);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
-extern "C" s32 func_02034568(void *, s32, s32, s32);
+extern "C" s32 Actor_IsTerrainCellEligibleAtHeight(void *, s32, s32, s32);
 extern "C" s32 func_020adae4(s32, s32);
 extern "C" void Actor_ApplyMotionImpulse(void *, s32, s32);
 extern "C" void ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
@@ -897,13 +897,13 @@ extern "C" void func_ov088_0221aaac(void *a) {
     s32 hw = func_ov088_0221ad6c((u8 *)a + 4) / 2 + 2,
         hh = func_ov088_0221ad84((u8 *)a + 4) / 2 + 2,
         layer = Actor_GetCachedTerrainHeight(a) >> 16;
-    if (!func_02034568(a, (x + hw) >> 4, y >> 4, layer))
+    if (!Actor_IsTerrainCellEligibleAtHeight(a, (x + hw) >> 4, y >> 4, layer))
         F(s32, a, 0x8c) -= 0x2000;
-    if (!func_02034568(a, (x - hw) >> 4, y >> 4, layer))
+    if (!Actor_IsTerrainCellEligibleAtHeight(a, (x - hw) >> 4, y >> 4, layer))
         F(s32, a, 0x8c) += 0x2000;
-    if (!func_02034568(a, x >> 4, (y + hh) >> 4, layer))
+    if (!Actor_IsTerrainCellEligibleAtHeight(a, x >> 4, (y + hh) >> 4, layer))
         F(s32, a, 0x90) -= 0x2000;
-    if (!func_02034568(a, x >> 4, (y - hh) >> 4, layer))
+    if (!Actor_IsTerrainCellEligibleAtHeight(a, x >> 4, (y - hh) >> 4, layer))
         F(s32, a, 0x90) += 0x2000;
     void *player = F(void *, data_021052fc, 0x2ea4);
     clear_motion(player);
@@ -1152,7 +1152,7 @@ extern "C" s32 func_ov088_0221b218(void *a) {
 extern "C" s32 func_ov088_0221b278(void *a, s32 x, s32 y, s32 layer) {
     void *scene = F(void *, data_021052fc, 0x2ed4);
     ((V0)vm(scene, 0x2c))(scene);
-    return func_02034568(a, x, y, layer);
+    return Actor_IsTerrainCellEligibleAtHeight(a, x, y, layer);
 }
 
 /* Apply an external motion impulse only while the actor is active. */

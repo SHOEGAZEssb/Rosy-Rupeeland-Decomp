@@ -6,9 +6,10 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 GamePhaseState_QueryTerrainHeight(void *terrain, s32 x, s32 y);
+extern s32 GamePhaseState_QueryTerrainHeight(void *terrain, s32 gridX,
+                                             s32 gridY);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
-extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
+extern u32 Actor_QueryTerrainCell(void *actor, s32 gridX, s32 gridY);
 #ifdef __cplusplus
 }
 #endif
@@ -33,41 +34,50 @@ void Actor_BuildWorldInteractionBounds(s32 output[4], const void *self,
 }
 
 /*
- * Return zero when actor flag 0x04000000 is set. Otherwise query integer terrain
- * height at x/y. If terrain class bits 5..9 equal 15 and height+4 does not
- * exceed actor Z +0x24 shifted by 16, return height+4; otherwise return the base
- * height. Terrain helpers read global map/SDK-managed state.
+ * Inputs are an actor and integer 16-pixel terrain-cell coordinates. Return
+ * zero when actor flag mask 0x04000000 is set. Otherwise query the integer
+ * terrain-height level. If packed terrain class bits 5..9 equal 15 and
+ * baseHeight+4 does not exceed actor Z +0x24 shifted by 16, return that raised
+ * level; otherwise return the base level. Actor state is read-only. Terrain
+ * helpers may observe global map/SDK-managed state; no direct hardware access.
  */
-s32 Actor_QueryTerrainHeight(void *self, s32 x, s32 y)
+s32 Actor_QueryTerrainHeight(void *actorPointer, s32 gridX, s32 gridY)
 {
-    u8 *actor = (u8 *)self;
-    s32 height;
+    const u8 *actor = (const u8 *)actorPointer;
+    s32 terrainHeight;
 
     if ((*(u32 *)(actor + 0x14) & 0x04000000) != 0) return 0;
-    height = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24, x, y);
-    if (((Actor_QueryTerrainCell(actor, x, y) >> 5) & 0x1f) == 15 &&
-        height + 4 <= (*(s32 *)(actor + 0x24) >> 16)) {
-        height += 4;
+    terrainHeight = GamePhaseState_QueryTerrainHeight(
+        (u8 *)data_021052fc + 0x24, gridX, gridY);
+    if (((Actor_QueryTerrainCell(actorPointer, gridX, gridY) >> 5) & 0x1f) ==
+            15 &&
+        terrainHeight + 4 <= (*(s32 *)(actor + 0x24) >> 16)) {
+        terrainHeight += 4;
     }
-    return height;
+    return terrainHeight;
 }
 
 /*
- * Return zero when actor flag 0x04000000 is set. Otherwise invoke vtable slot
- * 0x2c of the global terrain object at manager offset 0x2ed4 with actor x/y and
- * a zero fourth argument, returning its packed terrain result. The callback may
- * read SDK-managed map state but actor fields are unchanged.
+ * Inputs are an actor and integer 16-pixel terrain-cell coordinates. Actor flag
+ * mask 0x04000000 suppresses the global query; exact retail initializes only
+ * the result's low halfword in that path, so meaningful packed fields are zero
+ * while upper bits are unspecified. Otherwise call global terrain object
+ * +0x2ed4 vtable slot +0x2c as queryCell(terrainMap, gridX, gridY) and return
+ * its packed word: bits 0..4 are the signed height sample used by callers,
+ * bits 5..9 the class, and bits 10..13 the subtype. Actor state is read-only;
+ * the callback may observe SDK-managed map state and has no direct hardware
+ * access.
  */
-u32 Actor_QueryTerrainCell(void *self, s32 x, s32 y)
+u32 Actor_QueryTerrainCell(void *actorPointer, s32 gridX, s32 gridY)
 {
-    u8 *actor = (u8 *)self;
-    void *terrain;
-    u32 (*query)(void *, s32, s32, s32);
+    const u8 *actor = (const u8 *)actorPointer;
+    void *terrainMap;
+    u32 (*queryCell)(void *, s32, s32);
 
     if ((*(u32 *)(actor + 0x14) & 0x04000000) != 0) return 0;
-    terrain = *(void **)((u8 *)data_021052fc + 0x2ed4);
-    query = *(u32 (**)(void *, s32, s32, s32))(*(u8 **)terrain + 0x2c);
-    return query(terrain, x, y, 0);
+    terrainMap = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    queryCell = *(u32 (**)(void *, s32, s32))(*(u8 **)terrainMap + 0x2c);
+    return queryCell(terrainMap, gridX, gridY);
 }
 
 /*

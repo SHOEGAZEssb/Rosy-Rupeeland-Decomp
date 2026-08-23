@@ -1,0 +1,7 @@
+{
+  "func_020343e4": "Actor_QueryTerrainHeight",
+  "func_02034464": "Actor_QueryTerrainCell",
+  "func_02034568": "Actor_IsTerrainCellEligibleAtHeight",
+  "func_0203463c": "Actor_IsTerrainCellEligibleAtHeightOrOneBelow",
+  "func_02034718": "Actor_ClassifyTerrainCellTransition"
+}

@@ -4,9 +4,9 @@
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
-    .global func_02034718
-    .type func_02034718, @function
-func_02034718: ; 0x02034718
+    .global Actor_ClassifyTerrainCellTransition
+    .type Actor_ClassifyTerrainCellTransition, @function
+Actor_ClassifyTerrainCellTransition: ; 0x02034718
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x8
     ldr r4, .L_020347fc
@@ -68,6 +68,6 @@ func_02034718: ; 0x02034718
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .L_020347fc: .word data_021052fc
-    .size func_02034718, . - func_02034718
+    .size Actor_ClassifyTerrainCellTransition, . - Actor_ClassifyTerrainCellTransition
 
     .global func_02034800

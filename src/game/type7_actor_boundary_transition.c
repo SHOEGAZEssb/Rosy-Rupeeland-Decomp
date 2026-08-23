@@ -3,7 +3,8 @@
 
 /*
  * Recovered type-seven boundary transition. It releases an optional attached
- * object, tests three cells along a requested map edge, relocates actor vector
+ * object, tests three sample queries along a requested map edge, relocates actor
+ * vector
  * state, and enters the associated boundary-transition presentation state.
  */
 
@@ -17,8 +18,10 @@ extern "C" {
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Heap_Free(void *allocation);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
-extern s32 func_02034568(void *actor, s32 x, s32 y, s32 height);
-extern s32 func_02034718(void *actor, s32 x, s32 y, s32 height);
+extern s32 Actor_IsTerrainCellEligibleAtHeight(
+    void *actor, s32 gridX, s32 gridY, s32 referenceHeight);
+extern s32 Actor_ClassifyTerrainCellTransition(
+    void *actor, s32 gridX, s32 gridY, s32 referenceHeight);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 value);
 extern void Type7Actor_SetCallbackPair(void *actor, u32 value0, u32 value1, s32 index);
 extern void AuxiliaryInteraction_Destroy(void *object);
@@ -37,12 +40,13 @@ extern s32 SignedAbsoluteValueVariant(s32 value);
  * set and bit 0x40000 is clear.
  *
  * The active edge is compared with map dimensions recovered through global
- * state +0x2ed4. Three cells centered across that edge are queried: the center
- * uses func_02034568 and must be nonzero, while its two neighbors use
- * func_02034718 and must return at most one. If all three pass, actor vector
- * fields +0x18, +0x28, and +0x284 are positioned at the edge with a 0x20-cell
- * inset; otherwise they are based on the supplied destination with a
- * 0x30-cell clearance derived from actor extents +0x68..+0x6e. The unexplained
+ * state +0x2ed4. Three sample offsets centered across that edge are queried: the center
+ * uses exact-height eligibility and must be nonzero, while its two neighbors
+ * accept transition classifications zero or one and reject only two. If all
+ * three pass, actor vector fields +0x18, +0x28, and +0x284 are positioned at
+ * the edge with a 0x20-world-unit inset (two terrain cells); otherwise they
+ * are based on the supplied destination with a 0x30-world-unit clearance
+ * (three terrain cells) derived from actor extents +0x68..+0x6e. The unexplained
  * fixed-point spacing 0xdfd7 is retained from the retail code.
  *
  * On a completed attempt, set +0x268 bits 0x4/0x80000, update +0x14, launch
@@ -52,9 +56,10 @@ extern s32 SignedAbsoluteValueVariant(s32 value);
  * game-work, heap-owned attachment, collision/presentation, and vector state;
  * there are no direct hardware effects.
  */
-void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *destination, s32 direction)
+void Type7Actor_ProcessBoundaryTransition(
+    void *actorPointer, const VecFx32Object *destination, s32 direction)
 {
-    u8 *actor = (u8 *)self;
+    u8 *actor = (u8 *)actorPointer;
     void *attachment = *(void **)(actor + 0x234);
 
     if (attachment != 0) {
@@ -71,78 +76,90 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
 
     if ((*(u32 *)(actor + 0x268) & 0x10) != 0
         && (*(u32 *)(actor + 0x268) & 0x40000) == 0) {
-        u8 *map = *(u8 **)(data_021052fc + 0x2ed4);
-        u32 packedDimensions = *(u32 *)(map + 0x20);
-        s32 rightEdge = (s32)((packedDimensions & 0xffff) << 4);
-        s32 bottomEdge = (s32)(packedDimensions >> 16) << 4;
-        s32 gridX = *(s32 *)(actor + 0x1c) >> 12;
-        s32 gridY = *(s32 *)(actor + 0x20) >> 12;
-        s32 halfWidth = func_020adae4(
+        u8 *terrainMap = *(u8 **)(data_021052fc + 0x2ed4);
+        u32 packedDimensions = *(u32 *)(terrainMap + 0x20);
+        s32 rightWorldEdge = (s32)((packedDimensions & 0xffff) << 4);
+        s32 bottomWorldEdge = (s32)(packedDimensions >> 16) << 4;
+        s32 worldX = *(s32 *)(actor + 0x1c) >> 12;
+        s32 worldY = *(s32 *)(actor + 0x20) >> 12;
+        s32 halfWidthWorld = func_020adae4(
             (s16)(*(s16 *)(actor + 0x6c) - *(s16 *)(actor + 0x68)), 2);
-        s32 height = Actor_GetCachedTerrainHeight(actor) >> 16;
-        s32 clearCount = 0;
-        s32 edgeClear = 0;
-        s32 offset;
+        s32 referenceHeight = Actor_GetCachedTerrainHeight(actor) >> 16;
+        s32 acceptedSampleCount = 0;
+        s32 edgeAccepted = 0;
+        s32 sampleOffset;
 
         if (direction == 0) {
-            if (gridX - halfWidth < 0x40) {
-                for (offset = -1; offset <= 1; ++offset) {
-                    s32 y = (*(s32 *)(actor + 0x20) + offset * 0x4000) >> 16;
-                    s32 result = offset == 0
-                        ? func_02034568(actor, 2, y, height)
-                        : func_02034718(actor, 2, y, height);
-                    if ((offset == 0 && result != 0)
-                        || (offset != 0 && result <= 1))
-                        ++clearCount;
+            if (worldX - halfWidthWorld < 0x40) {
+                for (sampleOffset = -1; sampleOffset <= 1; ++sampleOffset) {
+                    s32 sampleGridY =
+                        (*(s32 *)(actor + 0x20) + sampleOffset * 0x4000) >> 16;
+                    s32 terrainSampleResult = sampleOffset == 0
+                        ? Actor_IsTerrainCellEligibleAtHeight(
+                            actor, 2, sampleGridY, referenceHeight)
+                        : Actor_ClassifyTerrainCellTransition(
+                            actor, 2, sampleGridY, referenceHeight);
+                    if ((sampleOffset == 0 && terrainSampleResult != 0)
+                        || (sampleOffset != 0 && terrainSampleResult <= 1))
+                        ++acceptedSampleCount;
                 }
-                edgeClear = clearCount == 3;
+                edgeAccepted = acceptedSampleCount == 3;
             }
         } else if (direction == 1) {
-            if (gridX + halfWidth > rightEdge - 0x40) {
-                s32 x = func_020adae4(rightEdge, 0x10) - 2;
-                for (offset = -1; offset <= 1; ++offset) {
-                    s32 y = (*(s32 *)(actor + 0x20) + offset * 0x4000) >> 16;
-                    s32 result = offset == 0
-                        ? func_02034568(actor, x, y, height)
-                        : func_02034718(actor, x, y, height);
-                    if ((offset == 0 && result != 0)
-                        || (offset != 0 && result <= 1))
-                        ++clearCount;
+            if (worldX + halfWidthWorld > rightWorldEdge - 0x40) {
+                s32 sampleGridX = func_020adae4(rightWorldEdge, 0x10) - 2;
+                for (sampleOffset = -1; sampleOffset <= 1; ++sampleOffset) {
+                    s32 sampleGridY =
+                        (*(s32 *)(actor + 0x20) + sampleOffset * 0x4000) >> 16;
+                    s32 terrainSampleResult = sampleOffset == 0
+                        ? Actor_IsTerrainCellEligibleAtHeight(
+                            actor, sampleGridX, sampleGridY, referenceHeight)
+                        : Actor_ClassifyTerrainCellTransition(
+                            actor, sampleGridX, sampleGridY, referenceHeight);
+                    if ((sampleOffset == 0 && terrainSampleResult != 0)
+                        || (sampleOffset != 0 && terrainSampleResult <= 1))
+                        ++acceptedSampleCount;
                 }
-                edgeClear = clearCount == 3;
+                edgeAccepted = acceptedSampleCount == 3;
             }
         } else if (direction == 2) {
-            s32 extent = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6a));
-            if (gridY - extent < 0x40) {
-                for (offset = -1; offset <= 1; ++offset) {
-                    s32 x = (*(s32 *)(actor + 0x1c) + offset * 0xdfd7) >> 16;
-                    s32 result = offset == 0
-                        ? func_02034568(actor, x, 2, height)
-                        : func_02034718(actor, x, 2, height);
-                    if ((offset == 0 && result != 0)
-                        || (offset != 0 && result <= 1))
-                        ++clearCount;
+            s32 edgeExtentWorld = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6a));
+            if (worldY - edgeExtentWorld < 0x40) {
+                for (sampleOffset = -1; sampleOffset <= 1; ++sampleOffset) {
+                    s32 sampleGridX =
+                        (*(s32 *)(actor + 0x1c) + sampleOffset * 0xdfd7) >> 16;
+                    s32 terrainSampleResult = sampleOffset == 0
+                        ? Actor_IsTerrainCellEligibleAtHeight(
+                            actor, sampleGridX, 2, referenceHeight)
+                        : Actor_ClassifyTerrainCellTransition(
+                            actor, sampleGridX, 2, referenceHeight);
+                    if ((sampleOffset == 0 && terrainSampleResult != 0)
+                        || (sampleOffset != 0 && terrainSampleResult <= 1))
+                        ++acceptedSampleCount;
                 }
-                edgeClear = clearCount == 3;
+                edgeAccepted = acceptedSampleCount == 3;
             }
         } else {
-            s32 extent = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6e));
-            if (gridY + extent > bottomEdge - 0x40) {
-                s32 y = func_020adae4(bottomEdge, 0x10) - 2;
-                for (offset = -1; offset <= 1; ++offset) {
-                    s32 x = (*(s32 *)(actor + 0x1c) + offset * 0xdfd7) >> 16;
-                    s32 result = offset == 0
-                        ? func_02034568(actor, x, y, height)
-                        : func_02034718(actor, x, y, height);
-                    if ((offset == 0 && result != 0)
-                        || (offset != 0 && result <= 1))
-                        ++clearCount;
+            s32 edgeExtentWorld = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6e));
+            if (worldY + edgeExtentWorld > bottomWorldEdge - 0x40) {
+                s32 sampleGridY = func_020adae4(bottomWorldEdge, 0x10) - 2;
+                for (sampleOffset = -1; sampleOffset <= 1; ++sampleOffset) {
+                    s32 sampleGridX =
+                        (*(s32 *)(actor + 0x1c) + sampleOffset * 0xdfd7) >> 16;
+                    s32 terrainSampleResult = sampleOffset == 0
+                        ? Actor_IsTerrainCellEligibleAtHeight(
+                            actor, sampleGridX, sampleGridY, referenceHeight)
+                        : Actor_ClassifyTerrainCellTransition(
+                            actor, sampleGridX, sampleGridY, referenceHeight);
+                    if ((sampleOffset == 0 && terrainSampleResult != 0)
+                        || (sampleOffset != 0 && terrainSampleResult <= 1))
+                        ++acceptedSampleCount;
                 }
-                edgeClear = clearCount == 3;
+                edgeAccepted = acceptedSampleCount == 3;
             }
         }
 
-        if (edgeClear) {
+        if (edgeAccepted) {
             VecFx32Object edgePosition;
             VecFx32Object currentPosition;
             VecFx32Object_Init(&edgePosition);
@@ -154,19 +171,19 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
             if (direction == 0) {
                 edgePosition.value.x = destination->value.x;
                 currentPosition.value.x = destination->value.x
-                    + (gridX - 0x20) * 0x1000;
+                    + (worldX - 0x20) * 0x1000;
             } else if (direction == 1) {
                 edgePosition.value.x = destination->value.x;
                 currentPosition.value.x = destination->value.x
-                    - ((rightEdge - 0x20) - gridX) * 0x1000;
+                    - ((rightWorldEdge - 0x20) - worldX) * 0x1000;
             } else if (direction == 2) {
                 edgePosition.value.y = destination->value.y;
                 currentPosition.value.y = destination->value.y
-                    + (gridY - 0x20) * 0x1000;
+                    + (worldY - 0x20) * 0x1000;
             } else {
                 edgePosition.value.y = destination->value.y;
                 currentPosition.value.y = destination->value.y
-                    - ((bottomEdge - 0x20) - gridY) * 0x1000;
+                    - ((bottomWorldEdge - 0x20) - worldY) * 0x1000;
             }
 
             VecFx32Object_Assign((VecFx32Object *)(actor + 0x28), &currentPosition);
@@ -183,9 +200,9 @@ void Type7Actor_ProcessBoundaryTransition(void *self, const VecFx32Object *desti
             VecFx32Object position;
             VecFx32Object_InitCopy(&position, destination);
             if (direction == 0) {
-                position.value.x += (halfWidth + 0x30) * 0x1000;
+                position.value.x += (halfWidthWorld + 0x30) * 0x1000;
             } else if (direction == 1) {
-                position.value.x -= (halfWidth + 0x30) * 0x1000;
+                position.value.x -= (halfWidthWorld + 0x30) * 0x1000;
             } else if (direction == 2) {
                 s32 extent = SignedAbsoluteValueVariant(*(s16 *)(actor + 0x6a));
                 position.value.y += (extent + 0x30) * 0x1000;

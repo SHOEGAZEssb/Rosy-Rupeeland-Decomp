@@ -59,7 +59,7 @@ extern "C" void VecFx32Object_InitCopy(void *, const void *);
 extern "C" void VecFx32Object_Assign(void *, const void *);
 extern "C" void VecFx32Object_Destroy(void *);
 extern "C" void Actor_QueryTerrainHeight(void *, s32, s32);
-extern "C" s32 func_02034568(void *, s32, s32, s32);
+extern "C" s32 Actor_IsTerrainCellEligibleAtHeight(void *, s32, s32, s32);
 extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" s32 func_020adcac(const void *, const void *);
 extern "C" void Sound_StopEffect(void *, s32, s32);
@@ -259,7 +259,7 @@ extern "C" s32 func_ov080_02212f90(void *actor)
             s32 x = (FIELD(s32, candidate, 4) + halfX * 0x1000 * (probe % 3 - 1)) >> 16;
             s32 y = (FIELD(s32, candidate, 8) + halfY * 0x1000 * (probe / 3 - 1)) >> 16;
             Actor_QueryTerrainHeight(actor, x, y);
-            if (func_02034568(actor, x, y, 0) == 0) { valid = false; break; }
+            if (Actor_IsTerrainCellEligibleAtHeight(actor, x, y, 0) == 0) { valid = false; break; }
         }
         if (!valid)
             continue;

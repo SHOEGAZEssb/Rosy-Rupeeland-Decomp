@@ -8,8 +8,8 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
-.extern func_02034568
-.extern func_02034718
+.extern Actor_IsTerrainCellEligibleAtHeight
+.extern Actor_ClassifyTerrainCellTransition
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern Type7Actor_SetCallbackPair
 .extern AuxiliaryInteraction_Destroy
@@ -107,14 +107,14 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     bne .L_0204aae8
     ldr r3, [sp, #0x4]
     mov r2, r2, asr #0x10
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     addne r10, r10, #0x1
     b .L_0204aafc
 .L_0204aae8:
     ldr r3, [sp, #0x4]
     mov r2, r2, asr #0x10
-    bl func_02034718
+    bl Actor_ClassifyTerrainCellTransition
     cmp r0, #0x1
     addle r10, r10, #0x1
 .L_0204aafc:
@@ -149,7 +149,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     ldr r1, [sp, #0x0]
     ldr r3, [sp, #0x4]
     mov r2, r2, asr #0x10
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     addne r10, r10, #0x1
     b .L_0204ab9c
@@ -158,7 +158,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     ldr r1, [sp, #0x0]
     ldr r3, [sp, #0x4]
     mov r2, r2, asr #0x10
-    bl func_02034718
+    bl Actor_ClassifyTerrainCellTransition
     cmp r0, #0x1
     addle r10, r10, #0x1
 .L_0204ab9c:
@@ -189,7 +189,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     ldr r3, [sp, #0x4]
     mla r1, r9, r11, r1
     mov r1, r1, asr #0x10
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     addne r10, r10, #0x1
     b .L_0204ac2c
@@ -198,7 +198,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     ldr r3, [sp, #0x4]
     mla r1, r9, r11, r1
     mov r1, r1, asr #0x10
-    bl func_02034718
+    bl Actor_ClassifyTerrainCellTransition
     cmp r0, #0x1
     addle r10, r10, #0x1
 .L_0204ac2c:
@@ -233,7 +233,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     mla r1, r9, r2, r1
     mov r1, r1, asr #0x10
     mov r2, r11
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     addne r10, r10, #0x1
     b .L_0204acd0
@@ -243,7 +243,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     mla r1, r9, r2, r1
     mov r1, r1, asr #0x10
     mov r2, r11
-    bl func_02034718
+    bl Actor_ClassifyTerrainCellTransition
     cmp r0, #0x1
     addle r10, r10, #0x1
 .L_0204acd0:

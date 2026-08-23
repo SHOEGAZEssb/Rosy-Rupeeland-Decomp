@@ -4,9 +4,9 @@
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
-    .global func_02034568
-    .type func_02034568, @function
-func_02034568: ; 0x02034568
+    .global Actor_IsTerrainCellEligibleAtHeight
+    .type Actor_IsTerrainCellEligibleAtHeight, @function
+Actor_IsTerrainCellEligibleAtHeight: ; 0x02034568
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     ldr r4, .L_02034638
@@ -63,6 +63,6 @@ func_02034568: ; 0x02034568
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02034638: .word data_021052fc
-    .size func_02034568, . - func_02034568
+    .size Actor_IsTerrainCellEligibleAtHeight, . - Actor_IsTerrainCellEligibleAtHeight
 
-    .global func_0203463c
+    .global Actor_IsTerrainCellEligibleAtHeightOrOneBelow

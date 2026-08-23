@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_terrain_neighbor_response.c.
 .text
-.extern func_02034568
+.extern Actor_IsTerrainCellEligibleAtHeight
 
     .global func_02034800
     .type func_02034800, @function
@@ -25,7 +25,7 @@ func_02034800: ; 0x02034800
     mov r1, r9
     mov r3, r11
     add r2, r8, r5, asr #0x10
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     bne .L_02034874
     ldr r1, [r10, #0x4]

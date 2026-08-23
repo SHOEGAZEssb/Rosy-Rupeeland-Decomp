@@ -14,7 +14,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern Actor_QueryTerrainHeight
-.extern func_02034568
+.extern Actor_IsTerrainCellEligibleAtHeight
 .extern Actor_PlayRadialSpatialSound
 .extern func_020befec
 .extern func_020bf1f8
@@ -184,7 +184,7 @@ func_ov080_02212f90:
     mov r1, r8
     mov r0, r10
     mov r3, #0x0
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     moveq r5, #0x0
     beq .L_02213210

@@ -2,8 +2,8 @@
 .text
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
-.extern func_02034568
-.extern func_0203463c
+.extern Actor_IsTerrainCellEligibleAtHeight
+.extern Actor_IsTerrainCellEligibleAtHeightOrOneBelow
 .extern func_020adae4
 
     .global func_02034d34
@@ -18,7 +18,7 @@ func_02034d34: ; 0x02034d34
     mov r2, r8, asr #0x10
     str r3, [sp, #0x0]
     mov r10, r0
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     moveq r0, #0x0
     beq .L_02034e00
@@ -51,7 +51,7 @@ func_02034d34: ; 0x02034d34
     mov r0, r10
     mov r1, r11
     mov r2, r2, asr #0x10
-    bl func_0203463c
+    bl Actor_IsTerrainCellEligibleAtHeightOrOneBelow
     cmp r0, #0x0
     moveq r0, #0x0
     beq .L_02034e00

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_destination_collision_adjust.c.
 .extern Actor_GetCachedTerrainHeight
-.extern func_0203463c
-.extern func_02034718
+.extern Actor_IsTerrainCellEligibleAtHeightOrOneBelow
+.extern Actor_ClassifyTerrainCellTransition
 .extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020adc90
@@ -21,7 +21,7 @@ Type7Actor_AdjustDestinationForCollisions: ; 0x0204a5dc
     mov r0, r10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_0203463c
+    bl Actor_IsTerrainCellEligibleAtHeightOrOneBelow
     cmp r0, #0x0
     movne r4, #0x20000
     ldr r3, [r10, #0x7c]
@@ -77,7 +77,7 @@ Type7Actor_AdjustDestinationForCollisions: ; 0x0204a5dc
     ldr r3, [sp, #0xc]
     mov r0, r10
     add r2, r8, r2, asr #0x10
-    bl func_0203463c
+    bl Actor_IsTerrainCellEligibleAtHeightOrOneBelow
     cmp r0, #0x0
     beq .L_0204a734
     cmp r9, #0x0
@@ -164,7 +164,7 @@ Type7Actor_AdjustDestinationForCollisions: ; 0x0204a5dc
     beq .L_0204a858
     ldr r3, [sp, #0xc]
     mov r0, r10
-    bl func_02034718
+    bl Actor_ClassifyTerrainCellTransition
     cmp r0, #0x0
     ble .L_0204a858
     cmp r0, #0x2

@@ -10,7 +10,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
-.extern func_0203463c
+.extern Actor_IsTerrainCellEligibleAtHeightOrOneBelow
 .extern func_02034800
 .extern ActorRuntimeFlags_Test
 .extern gGameWork
@@ -184,7 +184,7 @@ Actor_UpdateGroundContactProbe: ; 0x0203bba4
     mov r0, r10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_0203463c
+    bl Actor_IsTerrainCellEligibleAtHeightOrOneBelow
     cmp r0, #0x0
     add r9, r9, #0x1
     subeq r7, r7, #0x1
@@ -249,7 +249,7 @@ Actor_UpdateGroundContactProbe: ; 0x0203bba4
     beq .L_0203bf2c
     ldr r3, [sp, #0xc]
     mov r0, r10
-    bl func_0203463c
+    bl Actor_IsTerrainCellEligibleAtHeightOrOneBelow
     cmp r0, #0x0
     ldreq r0, [sp, #0x8]
     mlaeq r6, r9, r4, r6

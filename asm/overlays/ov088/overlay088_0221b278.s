@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern data_021052fc
-.extern func_02034568
+.extern Actor_IsTerrainCellEligibleAtHeight
 
 .global func_ov088_0221b278
 func_ov088_0221b278:
@@ -21,7 +21,7 @@ func_ov088_0221b278:
     mov r1, r7
     mov r2, r6
     mov r3, r5
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0221b2c0: .word data_021052fc
 .size func_ov088_0221b278, . - func_ov088_0221b278

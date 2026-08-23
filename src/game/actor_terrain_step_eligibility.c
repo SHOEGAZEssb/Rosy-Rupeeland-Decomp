@@ -6,37 +6,44 @@ extern void *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
-extern u32 Actor_QueryTerrainCell(void *actor, s32 x, s32 y);
+extern s32 Actor_QueryTerrainHeight(void *actor, s32 gridX, s32 gridY);
+extern u32 Actor_QueryTerrainCell(void *actor, s32 gridX, s32 gridY);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Apply the same one-cell terrain border and packed-class exclusions as
- * func_02034568, but accept the queried height when it equals expectedHeight
- * or expectedHeight-1. Bits 5..9 equal to 7 or 14 and bits 10..13 equal to 1
- * are rejected. Return one only for an accepted cell; terrain helpers read
- * global map/SDK-managed state without changing actor fields.
+ * Apply the same inclusive unsigned-dimension bounds and packed exclusions as
+ * Actor_IsTerrainCellEligibleAtHeight, but accept queriedHeight equal to
+ * referenceHeight or exactly referenceHeight-1. Class bits 5..9 equal to 7 or
+ * 14 and subtype bits 10..13 equal to one are rejected. Return a strict
+ * boolean. Query order is dimensions, height, then packed cell. Actor state is
+ * read-only; terrain helpers may observe global map/SDK-managed state and no
+ * direct hardware is accessed.
  */
-s32 func_0203463c(void *self, s32 x, s32 y, s32 expectedHeight)
+s32 Actor_IsTerrainCellEligibleAtHeightOrOneBelow(void *actor, s32 gridX,
+                                                   s32 gridY,
+                                                   s32 referenceHeight)
 {
-    void *terrain = *(void **)((u8 *)data_021052fc + 0x2ed4);
-    u32 dimensions = *(u32 *)((u8 *)terrain + 0x20);
-    s32 height;
-    u32 packed;
+    void *terrainMap = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    u32 packedDimensions = *(u32 *)((u8 *)terrainMap + 0x20);
+    s32 queriedHeight;
+    u32 packedCell;
     u32 terrainClass;
 
-    if (x < 1 || y < 1 || x > (s32)(u16)dimensions - 1 ||
-        y > (s32)(s16)(dimensions >> 16) - 1) {
+    if (gridX < 1 || gridY < 1 ||
+        gridX > (s32)(u16)packedDimensions - 1 ||
+        gridY > (s32)(u16)(packedDimensions >> 16) - 1) {
         return 0;
     }
-    height = Actor_QueryTerrainHeight(self, x, y);
-    if (height != expectedHeight && height != expectedHeight - 1) return 0;
+    queriedHeight = Actor_QueryTerrainHeight(actor, gridX, gridY);
+    if (queriedHeight != referenceHeight &&
+        queriedHeight != referenceHeight - 1)
+        return 0;
 
-    packed = Actor_QueryTerrainCell(self, x, y);
-    terrainClass = (packed >> 5) & 0x1f;
-    if (terrainClass == 7 || ((packed >> 10) & 0x0f) == 1 ||
+    packedCell = Actor_QueryTerrainCell(actor, gridX, gridY);
+    terrainClass = (packedCell >> 5) & 0x1f;
+    if (terrainClass == 7 || ((packedCell >> 10) & 0x0f) == 1 ||
         terrainClass == 14) {
         return 0;
     }

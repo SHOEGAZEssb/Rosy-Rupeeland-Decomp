@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_terrain_neighbor_axis_response.c.
 .text
-.extern func_02034568
+.extern Actor_IsTerrainCellEligibleAtHeight
 .extern Memory_ClearBytes
 
     .global ActorTerrain_ApplyNeighborAxisBias
@@ -32,7 +32,7 @@ ActorTerrain_ApplyNeighborAxisBias: ; 0x02034894
     mov r1, r9
     add r2, r8, r5, asr #0x10
     mov r3, r11
-    bl func_02034568
+    bl Actor_IsTerrainCellEligibleAtHeight
     cmp r0, #0x0
     bne .L_02034920
     add r0, sp, #0x8

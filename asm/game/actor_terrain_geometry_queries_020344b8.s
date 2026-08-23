@@ -56,4 +56,4 @@ Position_AdjustForTerrainHeight: ; 0x020344b8
 .L_02034564: .word data_021052fc
     .size Position_AdjustForTerrainHeight, . - Position_AdjustForTerrainHeight
 
-    .global func_02034568
+    .global Actor_IsTerrainCellEligibleAtHeight
