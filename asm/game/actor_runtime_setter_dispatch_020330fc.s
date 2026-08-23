@@ -5,7 +5,7 @@
 .extern ActorBounds_GetHeight
 .extern ActorBounds_Copy
 .extern ActorBounds_Set
-.extern BoundsCenterSnapshot_Init
+.extern S8BoundsCenter_Init
 .extern ActorBounds_SetMinimum
 .extern Actor_SetAttachmentEnabled
 .extern Actor_SetAttachmentAnimation
@@ -76,7 +76,7 @@ Actor_SetRuntimeProperty: ; 0x020330fc
 .L_020331e4:
     add r0, sp, #0x2c
     add r1, r5, #0x8
-    bl BoundsCenterSnapshot_Init
+    bl S8BoundsCenter_Init
     add r0, r5, #0x8
     bl ActorBounds_GetHeight
     mov r3, r4, lsl #0x18
@@ -112,7 +112,7 @@ Actor_SetRuntimeProperty: ; 0x020330fc
 .L_02033270:
     add r0, sp, #0x24
     add r1, r5, #0x8
-    bl BoundsCenterSnapshot_Init
+    bl S8BoundsCenter_Init
     add r0, r5, #0x8
     bl ActorBounds_GetWidth
     mov r3, r0
@@ -149,7 +149,7 @@ Actor_SetRuntimeProperty: ; 0x020330fc
 .L_02033300:
     add r0, sp, #0x1c
     add r1, r5, #0x4
-    bl BoundsCenterSnapshot_Init
+    bl S8BoundsCenter_Init
     add r0, r5, #0x4
     bl ActorBounds_GetHeight
     mov r3, r4, lsl #0x18
@@ -185,7 +185,7 @@ Actor_SetRuntimeProperty: ; 0x020330fc
 .L_0203338c:
     add r0, sp, #0x14
     add r1, r5, #0x4
-    bl BoundsCenterSnapshot_Init
+    bl S8BoundsCenter_Init
     add r0, r5, #0x4
     bl ActorBounds_GetWidth
     mov r3, r0

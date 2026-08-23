@@ -3,7 +3,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern GamePhaseRegion_ContainsPoint
-.extern BoundsCenterSnapshot_Init
+.extern S8BoundsCenter_Init
 .extern func_020573e4
 .extern func_0205740c
 
@@ -47,7 +47,7 @@ Actor_TestQueryPoint: ; 0x02033974
     beq .L_02033a60
     add r0, sp, #0x8
     add r1, r6, #0x8
-    bl BoundsCenterSnapshot_Init
+    bl S8BoundsCenter_Init
     ldrsb r0, [sp, #0xd]
     ldr r1, [r6, #0x20]
     ldrsb ip, [sp, #0xc]

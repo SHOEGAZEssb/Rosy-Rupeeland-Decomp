@@ -7098,7 +7098,7 @@ build build/reports/game_phase_script_vm_0201b24c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b24c.o
 build build/reports/game_phase_script_vm_0201b24c.txt: match_report build/reports/game_phase_script_vm_0201b24c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b24c.json
-  report_args = --section .text --function func_0201b24c --require-exact
+  report_args = --section .text --function S16BoundsCenter_DestroyAndFree --require-exact
 
 build build/reports/game_heap_delete_helper.txt: phony build/reports/game_phase_script_vm_0201b24c.txt
 build build/reports/game_phase_script_vm_0201b260.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b260.o | build/decomp/asm/game/game_phase_script_vm_0201b260.o
@@ -15219,7 +15219,7 @@ build build/reports/actor_bounds_center_helpers_02033738.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_bounds_center_helpers_02033738.o
 build build/reports/actor_bounds_center_helpers_02033738.txt: match_report build/reports/actor_bounds_center_helpers_02033738.json | tools/report_objdiff.py
   report_json = build/reports/actor_bounds_center_helpers_02033738.json
-  report_args = --section .text --function BoundsCenterSnapshot_Init --require-exact
+  report_args = --section .text --function S8BoundsCenter_Init --require-exact
 build build/decomp/asm/game/actor_bounds_center_helpers_02033794.o: mwasmarm asm/game/actor_bounds_center_helpers_02033794.s
 build build/decomp/delinks/asm/game/actor_bounds_center_helpers_02033794.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_bounds_center_helpers_02033794.json: objdiff build/decomp/delinks/asm/game/actor_bounds_center_helpers_02033794.o | build/decomp/asm/game/actor_bounds_center_helpers_02033794.o
@@ -15227,7 +15227,7 @@ build build/reports/actor_bounds_center_helpers_02033794.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_bounds_center_helpers_02033794.o
 build build/reports/actor_bounds_center_helpers_02033794.txt: match_report build/reports/actor_bounds_center_helpers_02033794.json | tools/report_objdiff.py
   report_json = build/reports/actor_bounds_center_helpers_02033794.json
-  report_args = --section .text --function func_02033794 --require-exact
+  report_args = --section .text --function S8BoundsCenter_Destroy --require-exact
 build build/decomp/asm/game/actor_bounds_center_helpers_02033798.o: mwasmarm asm/game/actor_bounds_center_helpers_02033798.s
 build build/decomp/delinks/asm/game/actor_bounds_center_helpers_02033798.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_bounds_center_helpers_02033798.json: objdiff build/decomp/delinks/asm/game/actor_bounds_center_helpers_02033798.o | build/decomp/asm/game/actor_bounds_center_helpers_02033798.o
@@ -15783,7 +15783,7 @@ build build/reports/actor_virtual_default_helpers_02034e08.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_virtual_default_helpers_02034e08.o
 build build/reports/actor_virtual_default_helpers_02034e08.txt: match_report build/reports/actor_virtual_default_helpers_02034e08.json | tools/report_objdiff.py
   report_json = build/reports/actor_virtual_default_helpers_02034e08.json
-  report_args = --section .text --function func_02034e08 --require-exact
+  report_args = --section .text --function S8BoundsCenter_DestroyAndFree --require-exact
 build build/decomp/asm/game/actor_virtual_default_helpers_02034e1c.o: mwasmarm asm/game/actor_virtual_default_helpers_02034e1c.s
 build build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e1c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_virtual_default_helpers_02034e1c.json: objdiff build/decomp/delinks/asm/game/actor_virtual_default_helpers_02034e1c.o | build/decomp/asm/game/actor_virtual_default_helpers_02034e1c.o

@@ -2,9 +2,9 @@
 .text
 .extern data_020df030
 
-    .global BoundsCenterSnapshot_Init
-    .type BoundsCenterSnapshot_Init, @function
-BoundsCenterSnapshot_Init: ; 0x02033738
+    .global S8BoundsCenter_Init
+    .type S8BoundsCenter_Init, @function
+S8BoundsCenter_Init: ; 0x02033738
     ldr r3, .L_02033790
     mov r2, #0x0
     str r3, [r0, #0x0]
@@ -28,6 +28,6 @@ BoundsCenterSnapshot_Init: ; 0x02033738
     strb r1, [r0, #0x5]
     bx lr
 .L_02033790: .word data_020df030
-    .size BoundsCenterSnapshot_Init, . - BoundsCenterSnapshot_Init
+    .size S8BoundsCenter_Init, . - S8BoundsCenter_Init
 
-    .global func_02033794
+    .global S8BoundsCenter_Destroy

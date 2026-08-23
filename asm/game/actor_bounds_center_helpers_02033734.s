@@ -7,4 +7,4 @@ func_02033734: ; 0x02033734
     bx lr
     .size func_02033734, . - func_02033734
 
-    .global BoundsCenterSnapshot_Init
+    .global S8BoundsCenter_Init

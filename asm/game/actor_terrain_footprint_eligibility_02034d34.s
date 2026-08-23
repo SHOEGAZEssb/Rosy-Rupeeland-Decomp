@@ -70,4 +70,4 @@ func_02034d34: ; 0x02034d34
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     .size func_02034d34, . - func_02034d34
 
-    .global func_02034e08
+    .global S8BoundsCenter_DestroyAndFree

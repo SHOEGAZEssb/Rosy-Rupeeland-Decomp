@@ -1,7 +1,7 @@
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
-/* Supply snapshot deletion and shared actor-family virtual defaults. */
+/* Supply signed-byte bounds-center deletion and shared actor virtual defaults. */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -15,7 +15,7 @@ extern void VecFx32Object_InitCopy(void *destination, const void *source);
  * confirmed deleting-destructor convention; the returned address no longer
  * owns live storage and must not be dereferenced.
  */
-void *func_02034e08(void *self)
+void *S8BoundsCenter_DestroyAndFree(void *self)
 {
     Heap_Free(self);
     return self;

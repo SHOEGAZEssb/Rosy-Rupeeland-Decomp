@@ -1,0 +1,8 @@
+{
+  "func_020188fc": "S16BoundsCenter_Init",
+  "func_02018958": "S16BoundsCenter_Destroy",
+  "func_0201b24c": "S16BoundsCenter_DestroyAndFree",
+  "BoundsCenterSnapshot_Init": "S8BoundsCenter_Init",
+  "func_02033794": "S8BoundsCenter_Destroy",
+  "func_02034e08": "S8BoundsCenter_DestroyAndFree"
+}

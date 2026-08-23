@@ -15,11 +15,11 @@ typedef struct ActorBounds {
     s16 bottom;
 } ActorBounds;
 
-typedef struct BoundsCenter {
+typedef struct S16BoundsCenter {
     const void *vtable;
     s16 x;
     s16 y;
-} BoundsCenter;
+} S16BoundsCenter;
 
 #ifdef __cplusplus
 extern "C" {
@@ -37,8 +37,9 @@ extern s32 func_02056f34(void *result, const void *first, const void *second,
 #endif
 
 s32 S16Bounds_GetHeight(const ActorBounds *bounds);
-BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const ActorBounds *bounds);
-void S16BoundsCenter_Destroy(BoundsCenter *center);
+S16BoundsCenter *S16BoundsCenter_Init(S16BoundsCenter *center,
+                                     const ActorBounds *bounds);
+void S16BoundsCenter_Destroy(S16BoundsCenter *center);
 void S16Bounds_MoveTo(ActorBounds *bounds, s16 left, s16 top);
 s32 S16Bounds_GetWidth(const ActorBounds *bounds);
 void S16Bounds_Expand(ActorBounds *bounds, s32 horizontal, s32 vertical);
@@ -82,7 +83,7 @@ s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *se
         break;
     case 6: {
         s16 height = (s16)S16Bounds_GetHeight(bounds);
-        BoundsCenter center;
+        S16BoundsCenter center;
         ActorBounds replacement;
         S16BoundsCenter_Init(&center, bounds);
         func_020083b0(&replacement, 0, 0, first, height);
@@ -93,7 +94,7 @@ s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *se
     }
     case 7: {
         s16 width = (s16)S16Bounds_GetWidth(bounds);
-        BoundsCenter center;
+        S16BoundsCenter center;
         ActorBounds replacement;
         S16BoundsCenter_Init(&center, bounds);
         func_020083b0(&replacement, 0, 0, width, first);
@@ -138,7 +139,8 @@ s32 S16Bounds_GetHeight(const ActorBounds *bounds)
  * Initialize center with the recovered vtable and the midpoint of each bounds
  * axis, using signed division rounded toward zero.  Return center.
  */
-BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const ActorBounds *bounds)
+S16BoundsCenter *S16BoundsCenter_Init(S16BoundsCenter *center,
+                                     const ActorBounds *bounds)
 {
     center->vtable = data_020d5b10;
     center->x = (s16)(bounds->left + (s16)(bounds->right - bounds->left) / 2);
@@ -146,8 +148,8 @@ BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const ActorBounds *boun
     return center;
 }
 
-/* No-op destructor for the temporary recovered bounds-center value. */
-void S16BoundsCenter_Destroy(BoundsCenter *center)
+/* No-op destructor for a temporary signed-16 bounds-center value. */
+void S16BoundsCenter_Destroy(S16BoundsCenter *center)
 {
     (void)center;
 }

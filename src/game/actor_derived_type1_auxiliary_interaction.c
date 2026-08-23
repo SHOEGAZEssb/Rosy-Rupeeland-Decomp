@@ -40,7 +40,7 @@ extern const char data_020e5818[];
 extern const char data_020e5820[];
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *AnimationResource_Init(void *resource, s32 first, s32 second, s32 third);
-extern void func_020188fc(void *destination, const void *source);
+extern void S16BoundsCenter_Init(void *destination, const void *source);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void *func_0206b628(void *allocation, void *owner, void *first,
                            void *second, void *third, s32 x, s32 y, s32 z,
@@ -2718,7 +2718,7 @@ void *AuxiliaryInteraction_Init(void *allocation, void *owner)
         *(void **)(self + 0x08) = AnimationResource_Init(
             *(void **)(self + 0x08), 0x1359, 0x1001, 0x135a);
 
-    func_020188fc(transform, actor + 0x68);
+    S16BoundsCenter_Init(transform, actor + 0x68);
     object = Heap_Alloc(0x308, data_020e5818, 4, &gHeapContext);
     if (object != 0) {
         s32 mirrored = actor[0x4d] == 1;

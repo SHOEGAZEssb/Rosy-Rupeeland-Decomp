@@ -1,11 +1,11 @@
 #include "tingle/types.h"
 
-/* Construct bounds-center snapshots and reposition signed-byte actor bounds. */
-typedef struct BoundsCenterSnapshot {
+/* Construct signed-byte bounds centers and reposition signed-byte actor bounds. */
+typedef struct S8BoundsCenter {
     const void *vtable_00;
     s8 centerX_04;
     s8 centerY_05;
-} BoundsCenterSnapshot;
+} S8BoundsCenter;
 
 extern u8 data_020df030[];
 
@@ -24,12 +24,12 @@ void func_02033734(void *self)
 }
 
 /*
- * Initialize a center snapshot with vtable data_020df030 and the midpoint of
- * signed-byte bounds minX/minY/maxX/maxY. Each extent is first truncated to
- * s8 and division by two rounds toward zero. Returns no value and touches no
- * hardware or SDK state.
+ * Initialize a signed-byte bounds center with vtable data_020df030 and the
+ * midpoint of signed-byte bounds minX/minY/maxX/maxY. Each extent is first
+ * truncated to s8 and division by two rounds toward zero. Returns no value
+ * and touches no hardware or SDK state.
  */
-void BoundsCenterSnapshot_Init(BoundsCenterSnapshot *self, const s8 *bounds)
+void S8BoundsCenter_Init(S8BoundsCenter *self, const s8 *bounds)
 {
     s8 width;
     s8 height;
@@ -43,8 +43,8 @@ void BoundsCenterSnapshot_Init(BoundsCenterSnapshot *self, const s8 *bounds)
     self->centerY_05 = bounds[1] + height / 2;
 }
 
-/* Empty recovered snapshot lifecycle hook; ignores self and returns no value. */
-void func_02033794(BoundsCenterSnapshot *self)
+/* Empty recovered destructor; ignores self and returns no value. */
+void S8BoundsCenter_Destroy(S8BoundsCenter *self)
 {
     (void)self;
 }

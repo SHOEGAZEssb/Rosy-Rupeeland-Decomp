@@ -10,7 +10,7 @@ extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern void ActorBounds_Copy(void *destination, const void *source);
 extern void ActorBounds_Set(void *bounds, s32 minX, s32 minY, s32 maxX,
                             s32 maxY);
-extern void BoundsCenterSnapshot_Init(void *center, const void *bounds);
+extern void S8BoundsCenter_Init(void *center, const void *bounds);
 extern void ActorBounds_SetMinimum(void *bounds, s32 minX, s32 minY);
 extern void Actor_SetAttachmentAnimation(void *actor, s32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, s32 value);
@@ -27,7 +27,7 @@ static void setBoundsExtent(s8 *bounds, s32 value, s32 setHeight)
     s32 width;
     s32 height;
 
-    BoundsCenterSnapshot_Init(center, bounds);
+    S8BoundsCenter_Init(center, bounds);
     width = ActorBounds_GetWidth(bounds);
     height = ActorBounds_GetHeight(bounds);
     if (setHeight) {
