@@ -39,7 +39,6 @@ extern void RuntimePresentationManager_AppendFirstListEffect(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern u32 func_020a257c(...);
 extern u32 func_020a25c8(...);
-extern void func_020a245c(...);
 extern void func_020a2530(...);
 extern void func_020a2614(...);
 extern void func_020a27a0(...);
@@ -253,7 +252,8 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                                     a4, a5, 0x46));
         break;
     case 13:
-        func_020a245c(getScriptGraphics3dPresentation(), a1, a2, a3);
+        Graphics3dPresentation_SetPairedEntryModeAt(
+            getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 14:
         func_020a2530(getScriptGraphics3dPresentation(), a1, a6, a2, a3, a4, a5);

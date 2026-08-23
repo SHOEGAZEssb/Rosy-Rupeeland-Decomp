@@ -1,0 +1,14 @@
+{
+  "func_020a245c": "Graphics3dPresentation_SetPairedEntryModeAt",
+  "func_020a2aa8": "PairedEntryManager_Init",
+  "func_020a2b28": "PairedEntryManager_Destroy",
+  "func_020a2b58": "PairedEntryManager_SetModeAndOrigin",
+  "func_020a2bc8": "PairedEntryManager_Clear",
+  "func_020a2bf0": "PairedEntryManager_SpawnEntry",
+  "func_020a2da8": "PairedEntryManager_Update",
+  "func_020a2fd0": "PairedEntryManager_Render",
+  "func_020a31d0": "PairedEntryManager_SubmitColoredQuad",
+  "data_020c957c": "gPairedEntryGradientColors",
+  "data_020c9584": "gPairedEntryMode2EmissionIntervals",
+  "data_020f32f0": "gPairedEntryManagerAllocationTag"
+}

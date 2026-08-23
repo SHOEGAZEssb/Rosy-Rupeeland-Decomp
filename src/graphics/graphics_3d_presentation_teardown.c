@@ -3,6 +3,7 @@
  * chain rooted at retail 0x020A2324. */
 #include "tingle/heap.h"
 #include "tingle/graphics_3d_presentation.h"
+#include "tingle/paired_entry_manager.h"
 #include "tingle/sprite_effect.h"
 #include "tingle/types.h"
 
@@ -97,16 +98,17 @@ void SpriteEffectManager_Render(SpriteEffectManager *manager)
     }
 }
 
-/* Reset the fifteen paired presentation-record tables and active byte. */
-void func_020a2bc8(void *manager)
+/* Deactivate all fifteen paired entries and reset their wave phase. Scheduler,
+ * origin, render parity, and other per-entry values remain retained. */
+void PairedEntryManager_Clear(PairedEntryManager *manager)
 {
     s32 index;
 
-    for (index = 14; index >= 0; --index) {
-        *(u32 *)((u8 *)manager + 0xd0 + index * 4) = 0;
-        *(u32 *)((u8 *)manager + 0x184 + index * 4) = 0;
+    for (index = PAIRED_ENTRY_CAPACITY - 1; index >= 0; --index) {
+        manager->entryWavePhases[index] = 0;
+        manager->entryHorizontalVelocityOrGrowthState[index] = 0;
     }
-    *((u8 *)manager + 4) = 0;
+    manager->mode = 0;
 }
 
 /* Clear the instance's active state without changing its retained transform. */
@@ -119,6 +121,6 @@ void RupeeMeshInstance_Clear(RupeeMeshInstance *self)
 void Graphics3dPresentation_Clear(Graphics3dPresentation *self)
 {
     SpriteEffectManager_Clear(self->spriteEffectManager);
-    func_020a2bc8(self->pairedEntryManager);
+    PairedEntryManager_Clear(self->pairedEntryManager);
     RupeeMeshInstance_Clear(self->rupeeMeshInstance);
 }

@@ -1,15 +1,12 @@
-#include "tingle/types.h"
+#include "tingle/paired_entry_manager.h"
 
-/* Frame update for a fifteen-slot runtime 3D effect manager. */
+/* Frame scheduler and motion update for the fifteen-slot paired-entry manager. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-extern s32 func_020a2bf0(void *manager, s32 group, s32 variant);
-extern void func_020a2da8(void *manager);
 extern u32 genrand_int32(void);
-extern const s8 data_020c9584[];
 extern const s16 data_020c9670[];
 
 #ifdef __cplusplus
@@ -17,83 +14,86 @@ extern const s16 data_020c9670[];
 #endif
 
 /*
- * Advance the borrowed manager's mode countdown and its fifteen effect slots.
- * The mode byte at +4 selects which group func_020a2bf0 activates, while +5
- * and +6 retain the signed countdown and countdown-table index. Active slots
- * update their Q12 wave value at +0x10c, phase at +0xd0, and completion state
- * at +0x184. Mode-specific secondary counters at +0x20 use a twelve-byte
- * stride. The function returns no value; random mode timing consumes one value
- * from the game's global PRNG.
+ * Advance the mode scheduler and all active entries. Modes one and two emit
+ * moving entries on random or table-driven intervals; mode three emits one
+ * centered growing entry while the gate is zero. Active entries update their
+ * signed Q20.12 center, sine-scaled half-width, phase, and completion state.
+ * Random mode-one timing consumes one value from the global PRNG.
  */
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_020a2da8(void *manager)
+void PairedEntryManager_Update(PairedEntryManager *manager)
 {
-    u8 *bytes = (u8 *)manager;
-    u8 countdowns[10];
-    const u8 *countdownSource = (const u8 *)data_020c9584;
+    u8 countdowns[PAIRED_ENTRY_MODE2_INTERVAL_COUNT];
+    const u8 *countdownSource = gPairedEntryMode2EmissionIntervals;
     u8 *countdownDestination = countdowns;
     s32 index;
 
-    for (index = 10; index != 0; index--)
+    for (index = PAIRED_ENTRY_MODE2_INTERVAL_COUNT; index != 0; index--)
         *countdownDestination++ = *countdownSource++;
 
-    if (*(s32 *)(bytes + 8) == 0) {
-        if (*(s8 *)(bytes + 4) == 3) {
-            if (func_020a2bf0(manager, 2, 2) != 0)
-                *(s32 *)(bytes + 8) = 1;
-            *(s8 *)(bytes + 5) = 1;
+    if (manager->spawnGateCounter == 0) {
+        if (manager->mode == 3) {
+            if (PairedEntryManager_SpawnEntry(manager, 2, 2) != 0)
+                manager->spawnGateCounter = 1;
+            manager->emissionCountdown = 1;
         }
 
-        if (*(s8 *)(bytes + 4) == 2) {
-            --*(s8 *)(bytes + 5);
-            if (*(s8 *)(bytes + 5) == 0) {
-                func_020a2bf0(manager, 1, 0);
-                func_020a2bf0(manager, 1, 1);
-                *(s8 *)(bytes + 5) = countdowns[*(s8 *)(bytes + 6)];
-                ++*(s8 *)(bytes + 6);
-                if ((u32)*(s8 *)(bytes + 6) >= 10)
-                    *(s8 *)(bytes + 6) = 9;
+        if (manager->mode == 2) {
+            --manager->emissionCountdown;
+            if (manager->emissionCountdown == 0) {
+                PairedEntryManager_SpawnEntry(manager, 1, 0);
+                PairedEntryManager_SpawnEntry(manager, 1, 1);
+                manager->emissionCountdown =
+                    countdowns[manager->mode2IntervalIndex];
+                ++manager->mode2IntervalIndex;
+                if ((u32)manager->mode2IntervalIndex >=
+                    PAIRED_ENTRY_MODE2_INTERVAL_COUNT)
+                    manager->mode2IntervalIndex =
+                        PAIRED_ENTRY_MODE2_INTERVAL_COUNT - 1;
             }
-        } else if (*(s8 *)(bytes + 4) == 1) {
-            --*(s8 *)(bytes + 5);
-            if (*(s8 *)(bytes + 5) == 0) {
-                func_020a2bf0(manager, 0, 0);
-                *(s8 *)(bytes + 5) = (s8)((genrand_int32() & 0x18) + 0x28);
+        } else if (manager->mode == 1) {
+            --manager->emissionCountdown;
+            if (manager->emissionCountdown == 0) {
+                PairedEntryManager_SpawnEntry(manager, 0, 0);
+                manager->emissionCountdown =
+                    (s8)((genrand_int32() & 0x18) + 0x28);
             }
         }
     }
 
-    for (index = 14; index >= 0; index--) {
-        u8 *slot = bytes + index * 4;
-        s32 state = *(s32 *)(slot + 0x184);
+    for (index = PAIRED_ENTRY_CAPACITY - 1; index >= 0; index--) {
+        s32 state =
+            manager->entryHorizontalVelocityOrGrowthState[index];
 
         if (state == 0)
             continue;
 
         if (state == 1) {
             s64 rounding = 0x800;
-            *(s32 *)(slot + 0x10c) =
+            manager->entryHalfWidths[index] =
                 (s32)(((s64)data_020c9670[
-                            (*(s32 *)(slot + 0xd0) >> 4) * 2] *
-                        *(s32 *)(slot + 0x148) + rounding) >> 12);
-            *(s32 *)(slot + 0xd0) += 0xb4;
-            if (*(s32 *)(slot + 0xd0) > 0x4000) {
-                *(s32 *)(slot + 0xd0) = 0x4000;
-                ++*(s32 *)(bytes + 8);
+                            (manager->entryWavePhases[index] >> 4) * 2] *
+                        manager->entryHalfWidthAmplitudes[index] + rounding) >>
+                      12);
+            manager->entryWavePhases[index] += 0xb4;
+            if (manager->entryWavePhases[index] > 0x4000) {
+                manager->entryWavePhases[index] = 0x4000;
+                ++manager->spawnGateCounter;
             }
         } else {
             s64 rounding = 0x800;
-            *(s32 *)(bytes + 0x20 + index * 12) += state;
-            *(s32 *)(slot + 0x10c) =
+            manager->entryPoints[index].x += (u32)state;
+            manager->entryHalfWidths[index] =
                 (s32)(((s64)data_020c9670[
-                            (*(s32 *)(slot + 0xd0) >> 4) * 2] *
-                        *(s32 *)(slot + 0x148) + rounding) >> 12);
-            *(s32 *)(slot + 0xd0) +=
-                (*(s8 *)(bytes + 4) == 1) ? 0x96 : 0x12c;
-            if (*(s32 *)(slot + 0xd0) > 0x7fff)
-                *(s32 *)(slot + 0x184) = 0;
+                            (manager->entryWavePhases[index] >> 4) * 2] *
+                        manager->entryHalfWidthAmplitudes[index] + rounding) >>
+                      12);
+            manager->entryWavePhases[index] +=
+                (manager->mode == 1) ? 0x96 : 0x12c;
+            if (manager->entryWavePhases[index] > 0x7fff)
+                manager->entryHorizontalVelocityOrGrowthState[index] = 0;
         }
     }
 }

@@ -6,21 +6,21 @@
  */
 #include "tingle/heap.h"
 #include "tingle/graphics_3d_presentation.h"
+#include "tingle/paired_entry_manager.h"
 #include "tingle/point_2d_s16.h"
 #include "tingle/sprite_effect.h"
 #include "tingle/system.h"
 #include "tingle/types.h"
+#include "tingle/util_animation_resource.h"
 
 extern const RupeeMeshDescriptor gRupeeMeshDescriptor;
 extern const s16 data_020c9670[];
 extern u8 data_020f3064[];
 extern u8 data_021f63b0[];
 extern const char data_020f32e8[];
-extern const char data_020f32f0[];
 extern void *data_020f4e18;
 extern void *data_021052fc;
 
-extern void func_02004fe0(void *vector);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
@@ -30,10 +30,9 @@ extern void VecFx32_Subtract(VecFx32Object *result,
 extern void __construct_array(void *array, u32 count, u32 element_size,
                               void (*constructor)(void *),
                               void (*destructor)(void *));
-extern void func_020c0bc8(void *array, u32 count, u32 element_size,
+extern void __destroy_arr(void *array, u32 count, u32 element_size,
                           void (*destructor)(void *));
-extern void TouchPoint_Destroy(void *point);
-extern void TouchPoint_InitZero(void *point);
+extern u32 genrand_int32(void);
 
 extern void *func_0207164c(void *manager, u32 archive_id);
 extern void *func_02071798(void *manager, u32 archive_id);
@@ -568,23 +567,128 @@ void Graphics3dPresentation_DrawRupeeWithEffects(
         self, self->rupeeMeshInstance, appearanceFlags);
 }
 
-/* Initializes the paired presentation table and its fifteen touch points,
- * records owner, and returns the caller-provided object. */
-void *func_020a2aa8(void *object, void *owner)
+/* Adapt the typed zero-point constructor to the retail array-helper ABI. */
+static void PairedEntryPoint_Init(void *point)
 {
-    u8 *bytes = (u8 *)object;
+    TouchPoint_InitZero((TouchPoint *)point);
+}
+
+/* Adapt the typed point destructor to the retail array-helper ABI. */
+static void PairedEntryPoint_Destroy(void *point)
+{
+    TouchPoint_Destroy((TouchPoint *)point);
+}
+
+/* Initialize the value-only origin and fifteen entry points, record the
+ * borrowed render context, clear active entry state, and return self. */
+PairedEntryManager *PairedEntryManager_Init(
+    PairedEntryManager *self, Graphics3dPresentation *renderContext)
+{
     s32 index;
-    func_02004fe0(bytes + 0x0c);
-    __construct_array(bytes + 0x1c, 15, 0x0c, TouchPoint_InitZero,
-                      TouchPoint_Destroy);
-    *(u32 *)(bytes + 0) = (u32)owner;
-    bytes[4] = 0; bytes[5] = 1; bytes[6] = 0; bytes[7] = 0;
-    *(u32 *)(bytes + 8) = 0;
-    for (index = 14; index >= 0; --index) {
-        *(u32 *)(bytes + 0xd0 + index * 4) = 0;
-        *(u32 *)(bytes + 0x184 + index * 4) = 0;
+
+    VecFx32Object_Init(&self->origin);
+    __construct_array(self->entryPoints, PAIRED_ENTRY_CAPACITY,
+                      sizeof(TouchPoint), PairedEntryPoint_Init,
+                      PairedEntryPoint_Destroy);
+    self->renderContext = renderContext;
+    self->mode = 0;
+    self->emissionCountdown = 1;
+    self->mode2IntervalIndex = 0;
+    self->renderParity = 0;
+    self->spawnGateCounter = 0;
+    for (index = PAIRED_ENTRY_CAPACITY - 1; index >= 0; --index) {
+        self->entryWavePhases[index] = 0;
+        self->entryHorizontalVelocityOrGrowthState[index] = 0;
     }
-    return object;
+    return self;
+}
+
+/* Change presentation mode and update the integer-pixel origin. Repeating the
+ * current mode is a no-op, including for the supplied origin. Mode one resets
+ * its scheduler, while mode zero clears active entries. The stored signed mode
+ * is returned. */
+s32 PairedEntryManager_SetModeAndOrigin(PairedEntryManager *self, s32 mode,
+                                        s32 originX, s32 originY)
+{
+    if ((s32)self->mode == mode)
+        return self->mode;
+
+    self->mode = (s8)mode;
+    if (self->mode == 1) {
+        self->emissionCountdown = 1;
+        self->mode2IntervalIndex = 0;
+        self->renderParity = 0;
+        self->spawnGateCounter = 0;
+    }
+    self->origin.value.x = (s32)((u32)originX << 12);
+    self->origin.value.y = (s32)((u32)originY << 12);
+    self->origin.value.z = 0;
+    if (self->mode == 0)
+        PairedEntryManager_Clear(self);
+    return self->mode;
+}
+
+/* Multiply signed Q20.12 values with retail's positive-half-unit rounding. */
+static fx32 PairedEntryManager_MultiplyFx32Rounded(s32 lhs, s32 rhs)
+{
+    return (fx32)(((s64)lhs * rhs + 0x800) >> 12);
+}
+
+/* Consume one PRNG value and map its masked bits to [-40, 38.75] pixels. */
+static fx32 PairedEntryManager_RandomHorizontalPosition(void)
+{
+    return PairedEntryManager_MultiplyFx32Rounded(
+               (s32)(genrand_int32() & 0xfc0), 0x50000) -
+           0x28000;
+}
+
+/* Initialize the highest-numbered inactive entry for one of the three known
+ * motion patterns. A free slot always consumes two random horizontal anchors;
+ * patterns zero and one consume a third value for width amplitude. Return one
+ * on activation or zero when all fifteen entries are active. */
+s32 PairedEntryManager_SpawnEntry(PairedEntryManager *self, s32 pattern,
+                                  s32 excludedRenderPage)
+{
+    s32 index;
+
+    for (index = PAIRED_ENTRY_CAPACITY - 1; index >= 0; --index) {
+        fx32 firstPosition;
+        fx32 secondPosition;
+        fx32 initialPosition;
+
+        if (self->entryHorizontalVelocityOrGrowthState[index] != 0)
+            continue;
+
+        firstPosition = PairedEntryManager_RandomHorizontalPosition();
+        secondPosition = PairedEntryManager_RandomHorizontalPosition();
+        initialPosition = firstPosition;
+        if (pattern == 2) {
+            self->entryHorizontalVelocityOrGrowthState[index] = 1;
+            self->entryHalfWidthAmplitudes[index] = 0x28000;
+            initialPosition = 0;
+        } else if (pattern == 1) {
+            self->entryHorizontalVelocityOrGrowthState[index] =
+                PairedEntryManager_MultiplyFx32Rounded(
+                    secondPosition - firstPosition, 0x25);
+            self->entryHalfWidthAmplitudes[index] =
+                PairedEntryManager_MultiplyFx32Rounded(
+                    (s32)(genrand_int32() & 0xfff), 0x5000) +
+                0x3000;
+        } else {
+            self->entryHorizontalVelocityOrGrowthState[index] = -1;
+            self->entryHalfWidthAmplitudes[index] =
+                PairedEntryManager_MultiplyFx32Rounded(
+                    (s32)(genrand_int32() & 0xfff), 0x2000) +
+                0x1000;
+        }
+
+        self->entryWavePhases[index] = 0;
+        self->entryExcludedRenderPages[index] = excludedRenderPage;
+        self->entryPoints[index].x = (u32)initialPosition;
+        self->entryPoints[index].y = 0x28000;
+        return 1;
+    }
+    return 0;
 }
 
 /* Initializes the 30-slot presentation manager, records owner, and returns
@@ -775,6 +879,17 @@ void Graphics3dPresentation_SetSpriteEffectVertexDepth(
                                        (u8)effectHandle, vertexDepth);
 }
 
+/* Select a paired-entry mode at an integer-pixel origin. Retail accepts only
+ * modes zero through three and maps every other value to the clear mode. */
+s32 Graphics3dPresentation_SetPairedEntryModeAt(
+    Graphics3dPresentation *self, s32 mode, s32 originX, s32 originY)
+{
+    if (mode < 0 || mode > 3)
+        mode = 0;
+    return PairedEntryManager_SetModeAndOrigin(
+        self->pairedEntryManager, mode, originX, originY);
+}
+
 /* Request the retained rupee's animated visibility state. Only retail value
  * one shows it: the supplied integer coordinates become its compensated Q12
  * position, scale restarts at one, and the instance activates immediately.
@@ -864,12 +979,17 @@ Graphics3dPresentation *Graphics3dPresentation_Init(
         func_0209a748(self, 8);
 
     allocation = Heap_Alloc(0x2c, data_020f32e8, 4, &gHeapContext);
-    self->rupeeMeshInstance = RupeeMeshInstance_Init(allocation);
+    self->rupeeMeshInstance =
+        RupeeMeshInstance_Init((RupeeMeshInstance *)allocation);
     RupeeMeshInstance_BindDefaultMesh(self->rupeeMeshInstance);
-    allocation = Heap_Alloc(0x1fc, data_020f32f0, 4, &gHeapContext);
-    self->pairedEntryManager = func_020a2aa8(allocation, self);
+    allocation = Heap_Alloc(sizeof(PairedEntryManager),
+                            gPairedEntryManagerAllocationTag, 4,
+                            &gHeapContext);
+    self->pairedEntryManager = PairedEntryManager_Init(
+        (PairedEntryManager *)allocation, self);
     allocation = Heap_Alloc(0x80, gSpriteEffectManagerAllocationTag, 4, &gHeapContext);
-    self->spriteEffectManager = SpriteEffectManager_Init(allocation, self);
+    self->spriteEffectManager = SpriteEffectManager_Init(
+        (SpriteEffectManager *)allocation, self);
     self->drawSuppressed = 0;
     self->enabled = 1;
     func_0200500c(&vector, 0, 0x1800, -0x5800);
@@ -896,14 +1016,14 @@ SpriteEffectManager *SpriteEffectManager_Destroy(SpriteEffectManager *manager)
     return manager;
 }
 
-/* Destroys the fifteen touch points and the manager vector, returning the
- * caller-owned object without freeing its enclosing allocation. */
-void *func_020a2b28(void *object)
+/* Destroy the fifteen value-only entry points and origin, then return the
+ * caller-owned manager without freeing its enclosing allocation. */
+PairedEntryManager *PairedEntryManager_Destroy(PairedEntryManager *self)
 {
-    u8 *bytes = (u8 *)object;
-    func_020c0bc8(bytes + 0x1c, 15, 0x0c, TouchPoint_Destroy);
-    VecFx32_TerminateNoOp(bytes + 0x0c);
-    return object;
+    __destroy_arr(self->entryPoints, PAIRED_ENTRY_CAPACITY,
+                  sizeof(TouchPoint), PairedEntryPoint_Destroy);
+    VecFx32Object_Destroy(&self->origin);
+    return self;
 }
 
 /* Release the base 3D VRAM ownership and destroy its two retained vectors. */
@@ -931,17 +1051,17 @@ Graphics3dPresentation *Graphics3dPresentation_Destroy(
 
     child = self->rupeeMeshInstance;
     if (child != 0) {
-        RupeeMeshInstance_Destroy(child);
+        RupeeMeshInstance_Destroy((RupeeMeshInstance *)child);
         Heap_Free(child);
     }
     child = self->spriteEffectManager;
     if (child != 0) {
-        SpriteEffectManager_Destroy(child);
+        SpriteEffectManager_Destroy((SpriteEffectManager *)child);
         Heap_Free(child);
     }
     child = self->pairedEntryManager;
     if (child != 0) {
-        func_020a2b28(child);
+        PairedEntryManager_Destroy((PairedEntryManager *)child);
         Heap_Free(child);
     }
     VecFx32Object_Destroy(&self->rupeePosition);

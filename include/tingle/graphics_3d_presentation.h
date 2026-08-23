@@ -4,6 +4,7 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
+struct PairedEntryManager;
 struct SpriteEffectManager;
 
 /* Fixed indexed mesh installed in every resident rupee instance. Its packed
@@ -54,7 +55,7 @@ typedef struct Graphics3dPresentation {
     /* +0x4dc is reset during resource loading but otherwise unresolved. */
     u8 opaqueResourceState[4];
     RupeeMeshInstance *rupeeMeshInstance;
-    void *pairedEntryManager;
+    struct PairedEntryManager *pairedEntryManager;
     struct SpriteEffectManager *spriteEffectManager;
     VecFx32Object rupeePosition;
     fx32 rupeeScale;
@@ -118,6 +119,8 @@ void Graphics3dPresentation_SetSpriteEffectMinimumEmissionInterval(
     Graphics3dPresentation *self, u32 effectHandle, s16 minimumInterval);
 void Graphics3dPresentation_SetSpriteEffectVertexDepth(
     Graphics3dPresentation *self, u32 effectHandle, s16 vertexDepth);
+s32 Graphics3dPresentation_SetPairedEntryModeAt(
+    Graphics3dPresentation *self, s32 mode, s32 originX, s32 originY);
 void Graphics3dPresentation_Clear(Graphics3dPresentation *self);
 void Graphics3dPresentation_Disable(Graphics3dPresentation *self,
                                     s32 releaseResources,

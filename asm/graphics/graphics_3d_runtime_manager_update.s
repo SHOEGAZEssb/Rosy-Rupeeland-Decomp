@@ -1,14 +1,14 @@
 ; Matching retail form; see src/graphics/graphics_3d_runtime_manager_update.c
 ; for the documented portable implementation and recovered behavior.
 .text
-.extern data_020c9584
+.extern gPairedEntryMode2EmissionIntervals
 .extern data_020c9670
-.extern func_020a2bf0
+.extern PairedEntryManager_SpawnEntry
 .extern genrand_int32
 
-    .global func_020a2da8
-.type func_020a2da8, @function
-func_020a2da8:
+    .global PairedEntryManager_Update
+.type PairedEntryManager_Update, @function
+PairedEntryManager_Update:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     ldr r3, L_020a2fc4
@@ -29,7 +29,7 @@ L_020a2dc0:
     mov r1, #2
     mov r0, r4
     mov r2, r1
-    bl func_020a2bf0
+    bl PairedEntryManager_SpawnEntry
     cmp r0, #0
     movne r0, #1
     strne r0, [r4, #8]
@@ -48,11 +48,11 @@ L_020a2e0c:
     mov r0, r4
     mov r1, #1
     mov r2, #0
-    bl func_020a2bf0
+    bl PairedEntryManager_SpawnEntry
     mov r1, #1
     mov r0, r4
     mov r2, r1
-    bl func_020a2bf0
+    bl PairedEntryManager_SpawnEntry
     ldrsb r1, [r4, #6]
     add r0, sp, #0
     ldrb r0, [r0, r1]
@@ -76,7 +76,7 @@ L_020a2e80:
     mov r1, #0
     mov r0, r4
     mov r2, r1
-    bl func_020a2bf0
+    bl PairedEntryManager_SpawnEntry
     bl genrand_int32
     and r0, r0, #0x18
     add r0, r0, #0x28
@@ -151,7 +151,7 @@ L_020a2fb4:
     bpl L_020a2ee4
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_020a2fc4: .word data_020c9584
+L_020a2fc4: .word gPairedEntryMode2EmissionIntervals
 L_020a2fc8: .word data_020c9670
 L_020a2fcc: .word 0x7fff
-    .size func_020a2da8, .-func_020a2da8
+    .size PairedEntryManager_Update, .-PairedEntryManager_Update

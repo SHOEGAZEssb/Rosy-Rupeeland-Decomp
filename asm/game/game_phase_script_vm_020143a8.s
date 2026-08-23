@@ -40,7 +40,7 @@
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
 .extern Graphics3dPresentation_RemoveSpriteEffect
-.extern func_020a245c
+.extern Graphics3dPresentation_SetPairedEntryModeAt
 .extern Graphics3dPresentation_SetRupeeVisibleAt
 .extern func_020a2530
 .extern func_020a257c
@@ -839,7 +839,7 @@ L_02014e84:
     mov r1, r9
     mov r2, r8
     mov r3, r7
-    bl func_020a245c
+    bl Graphics3dPresentation_SetPairedEntryModeAt
     b L_0201553c
 L_02014eac:
     ldr r0, L_020154d0
@@ -1298,4 +1298,3 @@ L_0201553c:
     add sp, sp, #0xc0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
     .size func_020143a8, . - func_020143a8
-

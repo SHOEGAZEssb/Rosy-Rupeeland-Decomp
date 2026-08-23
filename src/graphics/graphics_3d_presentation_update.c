@@ -1,4 +1,5 @@
 #include "tingle/graphics_3d_presentation.h"
+#include "tingle/paired_entry_manager.h"
 #include "tingle/sprite_effect.h"
 
 /* Coordinate one frame of the active runtime 3D presentation manager. */
@@ -7,16 +8,17 @@
 extern "C" {
 #endif
 
-extern void func_020a2da8(void *manager);
-extern void func_020a2fd0(void *manager);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
 extern void func_0209c9d4(void *presentation);
-extern void func_020a31d0(void *manager, const s32 *coordinates,
-                          const u16 *colors);
 #ifndef MATCHING
+extern void TingleNativeG3_Begin(u32 primitive);
+extern void TingleNativeG3_End(void);
+extern void TingleNativeG3_Color(u32 color);
 extern void TingleNativeG3_Translate(s32 x, s32 y, s32 z);
+extern void TingleNativeG3_Vertex16(u32 xy, u32 z);
+extern void TingleNativeG3_VertexXY(u32 xy);
 #endif
 
 #ifdef __cplusplus
@@ -38,7 +40,7 @@ void Graphics3dPresentation_UpdateFrame(
 {
     if (presentation->enabled == 0)
         return;
-    func_020a2da8(presentation->pairedEntryManager);
+    PairedEntryManager_Update(presentation->pairedEntryManager);
     SpriteEffectManager_Update(presentation->spriteEffectManager);
     Graphics3dPresentation_BeginFrame(presentation, worldPosition);
     Graphics3dPresentation_RenderContents(presentation);
@@ -65,7 +67,7 @@ void Graphics3dPresentation_RenderContents(
 
     if (presentation->drawSuppressed != 0)
         return;
-    func_020a2fd0(presentation->pairedEntryManager);
+    PairedEntryManager_Render(presentation->pairedEntryManager);
     SpriteEffectManager_Render(presentation->spriteEffectManager);
     instance = presentation->rupeeMeshInstance;
     if (RupeeMeshInstance_IsInactive(instance) != 0)
@@ -93,6 +95,7 @@ void Graphics3dPresentation_RenderContents(
     Graphics3dPresentation_SubmitRetainedRupeeMesh(presentation, instance);
 }
 
+/* Multiply signed Q20.12 values with retail's positive-half-unit rounding. */
 static s32 MultiplyFx32Rounded(s32 lhs, s32 rhs)
 {
     return (s32)(((s64)lhs * rhs + 0x800) >> 12);
@@ -102,40 +105,42 @@ static s32 MultiplyFx32Rounded(s32 lhs, s32 rhs)
  * allocations here: it toggles the working page, establishes retail 3D draw
  * state through its owner, and emits quads only for entries whose page marker
  * differs from the new page. Coordinates are converted from fx32 to pixels. */
-void func_020a2fd0(void *manager)
+void PairedEntryManager_Render(PairedEntryManager *manager)
 {
-    static const u16 colors[4] = {0x7fff, 0x7fff, 0x2529, 0x2529};
-    u8 *bytes = (u8 *)manager;
-    void *owner = *(void **)bytes;
+    Graphics3dPresentation *renderContext = manager->renderContext;
     s32 index;
     s32 base_x;
     s32 base_y;
+    s32 translation_x;
+    s32 translation_y;
 
-    bytes[7] ^= 1;
-    func_0209c9d4(owner);
-    base_x = *(s32 *)((u8 *)owner + 0x88) + 0x80000;
-    base_y = *(s32 *)((u8 *)owner + 0x8c) + 0x60000;
-    *(volatile s32 *)0x04000470 = -(base_x >> 12);
-    *(volatile s32 *)0x04000470 = -(base_y >> 12);
+    manager->renderParity ^= 1;
+    func_0209c9d4(renderContext);
+    base_x = renderContext->framePosition.value.x + 0x80000;
+    base_y = renderContext->framePosition.value.y + 0x60000;
+    translation_x = (s16)((u32)base_x >> 12);
+    translation_y = (s16)((u32)base_y >> 12);
+    *(volatile s32 *)0x04000470 = -translation_x;
+    *(volatile s32 *)0x04000470 = -translation_y;
     *(volatile s32 *)0x04000470 = 0;
 #ifndef MATCHING
-    TingleNativeG3_Translate(-(base_x >> 12), -(base_y >> 12), 0);
+    TingleNativeG3_Translate(-translation_x, -translation_y, 0);
 #endif
 
-    for (index = 14; index >= 0; --index) {
+    for (index = PAIRED_ENTRY_CAPACITY - 1; index >= 0; --index) {
         s32 center;
         s32 extent;
         s32 origin_x;
         s32 origin_y;
         s32 coordinates[8];
 
-        if (*(u32 *)(bytes + 0x184 + index * 4) == 0 ||
-            (s8)bytes[7] == *(s32 *)(bytes + 0x1c0 + index * 4))
+        if (manager->entryHorizontalVelocityOrGrowthState[index] == 0 ||
+            manager->renderParity == manager->entryExcludedRenderPages[index])
             continue;
-        center = *(s32 *)(bytes + 0x20 + index * 12);
-        extent = *(s32 *)(bytes + 0x10c + index * 4);
-        origin_x = *(s32 *)(bytes + 0x10);
-        origin_y = *(s32 *)(bytes + 0x14) >> 12;
+        center = (s32)manager->entryPoints[index].x;
+        extent = manager->entryHalfWidths[index];
+        origin_x = manager->origin.value.x;
+        origin_y = manager->origin.value.y >> 12;
         coordinates[0] = (origin_x + center + extent) >> 12;
         coordinates[1] = origin_y;
         coordinates[2] = (origin_x + center - extent) >> 12;
@@ -146,8 +151,58 @@ void func_020a2fd0(void *manager)
         coordinates[6] =
             (origin_x + MultiplyFx32Rounded(center + extent, 0x219a)) >> 12;
         coordinates[7] = origin_y + 0x6c;
-        func_020a31d0(manager, coordinates, colors);
+        PairedEntryManager_SubmitColoredQuad(
+            manager, coordinates, gPairedEntryGradientColors);
     }
+}
+
+/* Truncate two signed coordinates into the geometry engine's packed XY word. */
+static u32 PackSignedXY(s32 x, s32 y)
+{
+    return (u32)(u16)(s16)x | ((u32)(u16)(s16)y << 16);
+}
+
+/* Submit one untextured QUADS primitive at depth zero. The manager argument is
+ * retained by the retail member-function ABI but is not inspected. Each pair
+ * of signed coordinates is truncated to the geometry engine's packed s16 XY
+ * format, and the first vertex explicitly establishes z through VTX_16. */
+void PairedEntryManager_SubmitColoredQuad(
+    PairedEntryManager *manager, const s32 coordinates[8],
+    const u16 colors[4])
+{
+    u32 packed;
+
+    (void)manager;
+    *(volatile u32 *)0x04000500 = 1;
+    *(volatile u32 *)0x04000480 = colors[0];
+    packed = PackSignedXY(coordinates[0], coordinates[1]);
+    *(volatile u32 *)0x0400048c = packed;
+    *(volatile u32 *)0x0400048c = 0;
+    *(volatile u32 *)0x04000480 = colors[1];
+    *(volatile u32 *)0x04000494 =
+        PackSignedXY(coordinates[2], coordinates[3]);
+    *(volatile u32 *)0x04000480 = colors[2];
+    *(volatile u32 *)0x04000494 =
+        PackSignedXY(coordinates[4], coordinates[5]);
+    *(volatile u32 *)0x04000480 = colors[3];
+    *(volatile u32 *)0x04000494 =
+        PackSignedXY(coordinates[6], coordinates[7]);
+    *(volatile u32 *)0x04000504 = 0;
+#ifndef MATCHING
+    TingleNativeG3_Begin(1);
+    TingleNativeG3_Color(colors[0]);
+    TingleNativeG3_Vertex16(packed, 0);
+    TingleNativeG3_Color(colors[1]);
+    TingleNativeG3_VertexXY(
+        PackSignedXY(coordinates[2], coordinates[3]));
+    TingleNativeG3_Color(colors[2]);
+    TingleNativeG3_VertexXY(
+        PackSignedXY(coordinates[4], coordinates[5]));
+    TingleNativeG3_Color(colors[3]);
+    TingleNativeG3_VertexXY(
+        PackSignedXY(coordinates[6], coordinates[7]));
+    TingleNativeG3_End();
+#endif
 }
 
 #endif
