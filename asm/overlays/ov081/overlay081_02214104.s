@@ -11,7 +11,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
-.extern func_020573e4
+.extern ActorInteractionIcon_IsActive
 .extern Sound_PlayEffectWithParameters
 .extern func_020adae4
 .extern SignedAbsoluteValueVariant
@@ -121,7 +121,7 @@ func_ov081_02214104:
     ldr r0, [r6, #0x1e0]
     cmp r0, #0x0
     beq .L_0221428c
-    bl func_020573e4
+    bl ActorInteractionIcon_IsActive
     cmp r0, #0x0
     bne .L_022143c8
 .L_0221428c:

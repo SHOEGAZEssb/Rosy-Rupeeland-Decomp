@@ -4,8 +4,8 @@
 .extern VecFx32Object_Destroy
 .extern GamePhaseRegion_ContainsPoint
 .extern S8BoundsCenter_Init
-.extern func_020573e4
-.extern func_0205740c
+.extern ActorInteractionIcon_IsActive
+.extern ActorInteractionIcon_BuildHitBounds
 
     .global Actor_TestQueryPoint
     .type Actor_TestQueryPoint, @function
@@ -42,7 +42,7 @@ Actor_TestQueryPoint: ; 0x02033974
     ldr r0, [r6, #0x1e0]
     cmp r0, #0x0
     beq .L_02033a60
-    bl func_020573e4
+    bl ActorInteractionIcon_IsActive
     cmp r0, #0x0
     beq .L_02033a60
     add r0, sp, #0x8
@@ -62,7 +62,7 @@ Actor_TestQueryPoint: ; 0x02033974
     ldr r1, [r6, #0x1e0]
     add r0, sp, #0x0
     add r2, sp, #0x18
-    bl func_0205740c
+    bl ActorInteractionIcon_BuildHitBounds
     add r0, sp, #0x18
     bl VecFx32Object_Destroy
     add r0, sp, #0x0

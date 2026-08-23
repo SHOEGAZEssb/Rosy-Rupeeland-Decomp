@@ -15,7 +15,7 @@ extern void RectS32_Set(void *output, s32 first, s32 second, s32 third,
                           s32 fourth);
 extern s32 func_02056f34(void *state, const void *actorGeometry,
                          const void *referenceGeometry, void *output);
-extern s32 func_020573e4(void *resource);
+extern s32 ActorInteractionIcon_IsActive(const void *icon);
 #ifdef __cplusplus
 }
 #endif
@@ -63,14 +63,15 @@ s32 Actor_IsInteractionEligible(void *self)
 }
 
 /*
- * If actor+0x1e0 is non-null, call its active-state predicate and discard the
- * result. Return zero unconditionally. The retained call may have observable
- * resource/SDK effects despite the confirmed constant return.
+ * If actor +0x1e0 is non-null, read and discard the interaction icon's active
+ * state. Return zero unconditionally. The retained predicate only reads the
+ * icon state bits; neither actor nor icon is modified.
  */
-s32 Actor_PollInteractionResource(void *self)
+s32 Actor_PollInteractionIconState(void *self)
 {
-    void *resource = *(void **)((u8 *)self + 0x1e0);
+    const void *interactionIcon = *(void **)((u8 *)self + 0x1e0);
 
-    if (resource != 0) func_020573e4(resource);
+    if (interactionIcon != 0)
+        ActorInteractionIcon_IsActive(interactionIcon);
     return 0;
 }

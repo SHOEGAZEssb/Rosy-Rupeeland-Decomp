@@ -124,7 +124,14 @@ extern void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern void Actor_TurnTowardTargetPosition(void *, const void *, s32);
 extern void func_02033b38(void *);
 extern s32 Fx32Vector2_Magnitude(s32, s32);
-extern s32 func_020573e4(void);
+#ifdef __MWERKS__
+/* These two exact ARM callers leave the tested icon pointer in r0. */
+extern s32 ActorInteractionIcon_IsActive(void);
+#define ACTOR_INTERACTION_ICON_IS_ACTIVE(icon) ActorInteractionIcon_IsActive()
+#else
+extern s32 ActorInteractionIcon_IsActive(const void *icon);
+#define ACTOR_INTERACTION_ICON_IS_ACTIVE(icon) ActorInteractionIcon_IsActive(icon)
+#endif
 extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, s32, s32);
 extern void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32, ...);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -1013,7 +1020,9 @@ void func_ov081_02214104(void *actor)
               (FIELD(u32, actor, 0x14) & 0x10000000) != 0;
 
     if (FIELD(void *, actor, 0x114) == 0 &&
-        (FIELD(void *, actor, 0x1e0) == 0 || func_020573e4() == 0)) {
+        (FIELD(void *, actor, 0x1e0) == 0 ||
+         ACTOR_INTERACTION_ICON_IS_ACTIVE(
+             FIELD(void *, actor, 0x1e0)) == 0)) {
         if (Overlay081_StateEquals(actor, 0xf8, data_ov081_02215360)) {
             markerAnimation = 2;
         } else if (!blocked) {
@@ -1185,7 +1194,9 @@ s32 func_ov081_0221487c(void *actor, void *query)
 
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) == 0 &&
         (FIELD(u32, actor, 0x14) & 0x10000000) == 0 &&
-        (FIELD(void *, actor, 0x1e0) == 0 || func_020573e4() == 0)) {
+        (FIELD(void *, actor, 0x1e0) == 0 ||
+         ACTOR_INTERACTION_ICON_IS_ACTIVE(
+             FIELD(void *, actor, 0x1e0)) == 0)) {
         if (Overlay081_StateEquals(actor, 0xa8, data_ov081_02215310) &&
             (FIELD(u32, actor, 0xd0) & 0x10) == 0 &&
             FIELD(s32, actor, 0x24) == FIELD(s32, actor, 0x1dc) &&

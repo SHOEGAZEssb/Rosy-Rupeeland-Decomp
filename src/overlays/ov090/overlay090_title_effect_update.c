@@ -74,7 +74,7 @@ void func_ov090_0221c780(TitleSpriteEffect *self, s32 x, s32 y,
         func_ov090_0221c728(
             self->primary,
             (s16)(u16)(((GraphicsSpriteState *)self->primary->handles[0])
-                               ->field_30 +
+                               ->rotationAngle +
                            0x200));
     } else {
         func_ov090_0221c68c(self, targetX, targetY);

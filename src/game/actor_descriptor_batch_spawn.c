@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
-    s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
+    s32, const s8 *, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
 extern void *GamePhaseMetadata_GetFlagsBits12To15(s32 value);

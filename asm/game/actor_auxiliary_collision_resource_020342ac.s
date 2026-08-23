@@ -1,15 +1,15 @@
 ; Matching retail form; see src/game/actor_auxiliary_collision_resource.c.
 .text
 .extern Heap_Alloc
-.extern data_020df208
+.extern gActorInteractionIconAllocationTag
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_020570c4
+.extern ActorInteractionIcon_Init
 .extern gHeapContext
 
-    .global Actor_EnsureAuxiliaryCollisionResource
-    .type Actor_EnsureAuxiliaryCollisionResource, @function
-Actor_EnsureAuxiliaryCollisionResource: ; 0x020342ac
+    .global Actor_EnsureInteractionIcon
+    .type Actor_EnsureInteractionIcon, @function
+Actor_EnsureInteractionIcon: ; 0x020342ac
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x1e0]
@@ -27,7 +27,7 @@ Actor_EnsureAuxiliaryCollisionResource: ; 0x020342ac
     bl ActorCollection_GetSpriteOwner
     mov r1, r0
     mov r0, r4
-    bl func_020570c4
+    bl ActorInteractionIcon_Init
     mov r4, r0
 .L_020342f8:
     str r4, [r5, #0x1e0]
@@ -39,8 +39,8 @@ Actor_EnsureAuxiliaryCollisionResource: ; 0x020342ac
     mov r0, r2, lsl #0xc
     str r0, [r1, #0x1c]
     ldmia sp!, {r3, r4, r5, pc}
-.L_02034318: .word data_020df208
+.L_02034318: .word gActorInteractionIconAllocationTag
 .L_0203431c: .word gHeapContext
-    .size Actor_EnsureAuxiliaryCollisionResource, . - Actor_EnsureAuxiliaryCollisionResource
+    .size Actor_EnsureInteractionIcon, . - Actor_EnsureInteractionIcon
 
-    .global Actor_DestroyAuxiliaryCollisionResource
+    .global Actor_DestroyInteractionIcon

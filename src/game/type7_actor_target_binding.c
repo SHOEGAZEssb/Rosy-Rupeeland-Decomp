@@ -13,7 +13,8 @@ extern "C" {
 extern void **GamePhaseRuntime_GetActorCollection(void *world, s32 collection);
 extern s32 func_020adcac(const void *first, const void *second);
 extern void Type7Actor_HandleObjectInteraction(void *actor, void *other);
-extern void Actor_DestroyAuxiliaryCollisionResource(void *actor, void *object);
+/* The loose second parameter preserves retail r1 traffic; the callee uses r0. */
+extern void Actor_DestroyInteractionIcon(void *actor, void *ignoredIcon);
 extern void AttachmentController_SetEnabled(void *value, s32 mode);
 #ifdef __cplusplus
 }
@@ -79,9 +80,8 @@ s32 Type7Actor_TryInteractWithNearbyType4Object(void *self)
 
 /*
  * Inputs are actor and target. Store target at +0x280, set actor flag 0x10,
- * destroy the auxiliary collision resource when non-null, forwarding that
- * resource as the retail call's ignored second argument, and clear +0xd0 bit
- * 0x100.
+ * destroy the interaction icon when non-null, forwarding that icon as the
+ * retail call's ignored second argument, and clear +0xd0 bit 0x100.
  * Actor relation, callback, and subordinate object state may change; no value
  * is returned and there is no direct hardware effect.
  */
@@ -91,16 +91,16 @@ void Type7Actor_SetTarget(void *self, void *target)
     *(void **)(actor + 0x280) = target;
     *(u32 *)(actor + 0x268) |= 0x10;
     if (*(void **)(actor + 0x1e0) != 0)
-        Actor_DestroyAuxiliaryCollisionResource(
+        Actor_DestroyInteractionIcon(
             actor, *(void **)(actor + 0x1e0));
     *(u32 *)(actor + 0xd0) &= ~0x100;
 }
 
 /*
  * Input is a type-seven actor. Null target +0x280, clear actor flag 0x10,
- * destroy the auxiliary collision resource when non-null, reset subobject
- * +0x2a8 with mode zero, and clear word +0x108. Actor relation and subordinate
- * state may change; no value is returned and no hardware is accessed directly.
+ * destroy the interaction icon when non-null, reset subobject +0x2a8 with mode
+ * zero, and clear word +0x108. Actor relation and subordinate state may change;
+ * no value is returned and no hardware is accessed directly.
  */
 void Type7Actor_ClearTarget(void *self)
 {
@@ -108,7 +108,7 @@ void Type7Actor_ClearTarget(void *self)
     *(void **)(actor + 0x280) = 0;
     *(u32 *)(actor + 0x268) &= ~0x10;
     if (*(void **)(actor + 0x1e0) != 0)
-        Actor_DestroyAuxiliaryCollisionResource(
+        Actor_DestroyInteractionIcon(
             actor, *(void **)(actor + 0x1e0));
     AttachmentController_SetEnabled(actor + 0x2a8, 0);
     *(u32 *)(actor + 0x108) = 0;

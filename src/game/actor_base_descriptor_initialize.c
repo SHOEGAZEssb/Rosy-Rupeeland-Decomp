@@ -15,7 +15,7 @@ extern void *GraphicsSpriteGroup_CreateState(void *collectionData, s32 first, s3
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 extern void Actor_CreateSecondaryRenderAttachment(
     void *actor, void *unusedAnimationResources, u32 attachPolicy);
-extern void func_02034260(void *actor, const void *descriptor);
+extern void Actor_ApplySpawnDescriptorScript(void *actor, const void *descriptor);
 #ifdef __cplusplus
 }
 #endif
@@ -30,9 +30,10 @@ extern void func_02034260(void *actor, const void *descriptor);
  * flag 0x01000000 overrides that byte to zero; flag 0x80 overrides it with the
  * low byte of descriptor halfword +0x3c. Create the secondary attachment from
  * the primary using descriptor attach policy +0x10; the +0x1ec argument is
- * retained by the ABI but ignored. Finally dispatch descriptor payload +0x2c through
- * func_02034260. Returns no value; virtual, resource, attachment, animation,
- * and callback calls mutate actor and presentation state.
+ * retained by the ABI but ignored. Finally apply the borrowed actor script at
+ * descriptor +0x2c through Actor_ApplySpawnDescriptorScript. Returns no value;
+ * virtual, resource, attachment, animation, and script calls mutate actor and
+ * presentation state.
  */
 void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
 {
@@ -65,5 +66,5 @@ void Actor_InitializeFromDescriptor(void *self, const void *descriptor)
             attachment[0x3a] = (u8)*(s16 *)(record + 0x3c);
         Actor_CreateSecondaryRenderAttachment(actor, actor + 0x1ec, record[0x10]);
     }
-    func_02034260(actor, descriptor);
+    Actor_ApplySpawnDescriptorScript(actor, descriptor);
 }

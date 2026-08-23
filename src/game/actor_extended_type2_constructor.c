@@ -48,7 +48,7 @@ extern u8 *ActorExtendedType2Record_FindByIndex(s32 index);
  * halfword +0x22 to byte +0x27f, always set +0x260 bit eight, and set bit
  * 0x8000 when temporary halfword +0x1a has bit 0x40. A non-minus-one +0x1cc
  * sets +0x272 bit 0x800; indices 0x67..0x70 set +0x260 bit 0x100000. Finally,
- * config +0x2c is forwarded to virtual +0x74 when nonzero. Returns self; base,
+ * config script +0x2c is assigned through virtual +0x74 when nonzero. Returns self; base,
  * heap, helper, virtual, and optional manager calls mutate owned engine state.
  */
 void *ActorExtendedType2_Init(void *self, const void *configuration)
@@ -139,8 +139,8 @@ void *ActorExtendedType2_Init(void *self, const void *configuration)
     if (*(u16 *)(actor + 0x4e) >= 0x67 &&
         *(u16 *)(actor + 0x4e) < 0x71)
         *(u32 *)(actor + 0x260) |= 0x100000;
-    if (*(u32 *)(config + 0x2c) != 0)
-        (*(void (**)(void *, u32))(*(u8 **)actor + 0x74))(
-            actor, *(u32 *)(config + 0x2c));
+    if (*(const s8 **)(config + 0x2c) != 0)
+        (*(void (**)(void *, const s8 *))(*(u8 **)actor + 0x74))(
+            actor, *(const s8 **)(config + 0x2c));
     return actor;
 }

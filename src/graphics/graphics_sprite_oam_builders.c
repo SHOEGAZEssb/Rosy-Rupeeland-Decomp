@@ -263,7 +263,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     cellFrame = &animation->cellFrames[timing->resourceIndex];
     cell = animation->cells + (u32)cellFrame->firstCell * 4U;
 
-    affineMode = state->field_30 != 0 || state->scaleX > 0x100 ||
+    affineMode = state->rotationAngle != 0 || state->scaleX > 0x100 ||
                  state->scaleX < -0x100 || state->scaleY > 0x100 ||
                  state->scaleY < -0x100 ? 3 : 1;
 
@@ -316,8 +316,8 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         if ((state->flags & 0x80) != 0)
             y = -(y + height);
 
-        if (state->field_30 != 0) {
-            u32 angle = ((u16)state->field_30 >> 4) << 1;
+        if (state->rotationAngle != 0) {
+            u32 angle = ((u16)state->rotationAngle >> 4) << 1;
             s32 sine = data_020c9670[angle];
             s32 cosine = data_020c9670[angle + 1];
             s32 centerX = x + width / 2;
@@ -405,7 +405,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
             continue;
         scaleX = (cellIndex & 1) != 0 ? -state->scaleX : state->scaleX;
         scaleY = (cellIndex & 2) != 0 ? -state->scaleY : state->scaleY;
-        angle = ((u16)state->field_30 >> 4) << 1;
+        angle = ((u16)state->rotationAngle >> 4) << 1;
         sine = (s32)data_020c9670[angle] << 4;
         cosine = (s32)data_020c9670[angle + 1] << 4;
         matrix[0] = DivideAffineComponent(cosine, scaleX);

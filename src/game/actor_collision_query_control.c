@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
 /* Reset actor motion and evaluate collision queries against actor geometry. */
 #ifdef __cplusplus
@@ -6,10 +7,10 @@ extern "C" {
 #endif
 extern u32 GamePhaseRegion_ContainsPoint(const void *rectangle, s32 x, s32 y);
 extern void S8BoundsCenter_Init(void *center, const void *bounds);
-extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
-extern void VecFx32Object_Destroy(void *vector);
-extern u32 func_020573e4(void *resource);
-extern void func_0205740c(void *output, void *resource, const void *position);
+extern s32 ActorInteractionIcon_IsActive(const void *icon);
+extern void ActorInteractionIcon_BuildHitBounds(
+    s16 hitBounds[4], const void *icon,
+    const VecFx32Object *actorCollisionCenter);
 extern u32 Actor_TestQueryPoint(void *self, const void *query);
 #ifdef __cplusplus
 }
@@ -83,44 +84,51 @@ u32 Actor_TestQueryPointAndClearFlag2000(void *self, const void *query)
 /*
  * Test query coordinates at query+4/+8 against an s16 rectangle recovered
  * from actor+0x60..+0x66 and translated by X and by Y-minus-Z in 20.12 space.
- * If actor+0x1e0 names an active resource, also build the center of bounds+8,
- * ask that resource for a second rectangle, and OR its test result into the
- * first. Returns the combined nonzero/zero result. Vector and resource helpers
- * may manage SDK-owned temporary state; actor fields are not modified.
+ * If actor +0x1e0 owns an active interaction icon, also build the center of
+ * actor bounds +8, ask the icon for its directional hit bounds, and OR that
+ * point test into the actor-bounds result. Returns the combined nonzero/zero
+ * result. Vector helpers manage temporary state; actor and icon are unchanged.
  */
 u32 Actor_TestQueryPoint(void *self, const void *query)
 {
     u8 *actor = (u8 *)self;
     const u8 *queryBytes = (const u8 *)query;
-    s16 rectangle[4];
-    u8 center[8];
-    s32 position[4];
-    s16 resourceRectangle[4];
+    s16 actorHitBounds[4];
+    u8 collisionBoundsCenter[8];
+    VecFx32Object actorCollisionCenter;
+    s16 iconHitBounds[4];
     s32 x = *(s32 *)(actor + 0x1c) >> 12;
     s32 y = (*(s32 *)(actor + 0x20) >> 12) -
             (*(s32 *)(actor + 0x24) >> 12);
-    void *resource;
+    void *interactionIcon;
     u32 result;
 
-    rectangle[0] = *(s16 *)(actor + 0x60) + x;
-    rectangle[1] = *(s16 *)(actor + 0x62) + y;
-    rectangle[2] = *(s16 *)(actor + 0x64) + x;
-    rectangle[3] = *(s16 *)(actor + 0x66) + y;
-    result = GamePhaseRegion_ContainsPoint(rectangle, *(s32 *)(queryBytes + 4),
+    actorHitBounds[0] = *(s16 *)(actor + 0x60) + x;
+    actorHitBounds[1] = *(s16 *)(actor + 0x62) + y;
+    actorHitBounds[2] = *(s16 *)(actor + 0x64) + x;
+    actorHitBounds[3] = *(s16 *)(actor + 0x66) + y;
+    result = GamePhaseRegion_ContainsPoint(actorHitBounds,
+                           *(s32 *)(queryBytes + 4),
                            *(s32 *)(queryBytes + 8));
 
-    resource = *(void **)(actor + 0x1e0);
-    if (resource != 0 && func_020573e4(resource) != 0) {
-        S8BoundsCenter_Init(center, actor + 8);
-        VecFx32Object_InitComponents(position,
-                      *(s32 *)(actor + 0x1c) + ((s8)center[4] << 12),
-                      *(s32 *)(actor + 0x20) + ((s8)center[5] << 12) -
-                          *(s32 *)(actor + 0x24),
-                      0);
-        func_0205740c(resourceRectangle, resource, position);
-        VecFx32Object_Destroy(position);
-        result |= GamePhaseRegion_ContainsPoint(resourceRectangle, *(s32 *)(queryBytes + 4),
-                                *(s32 *)(queryBytes + 8));
+    interactionIcon = *(void **)(actor + 0x1e0);
+    if (interactionIcon != 0 &&
+        ActorInteractionIcon_IsActive(interactionIcon) != 0) {
+        S8BoundsCenter_Init(collisionBoundsCenter, actor + 8);
+        VecFx32Object_InitComponents(
+            &actorCollisionCenter,
+            *(s32 *)(actor + 0x1c) +
+                ((s8)collisionBoundsCenter[4] << 12),
+            *(s32 *)(actor + 0x20) +
+                ((s8)collisionBoundsCenter[5] << 12) -
+                *(s32 *)(actor + 0x24),
+            0);
+        ActorInteractionIcon_BuildHitBounds(
+            iconHitBounds, interactionIcon, &actorCollisionCenter);
+        VecFx32Object_Destroy(&actorCollisionCenter);
+        result |= GamePhaseRegion_ContainsPoint(
+            iconHitBounds, *(s32 *)(queryBytes + 4),
+            *(s32 *)(queryBytes + 8));
     }
     return result;
 }

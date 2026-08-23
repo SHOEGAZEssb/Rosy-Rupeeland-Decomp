@@ -30,9 +30,9 @@
 .extern func_ov097_02219c7c
 .extern func_ov097_02219c64
 .extern func_ov097_02219be0
-.extern Actor_AssignPrimaryResourceWithEffect
-.extern Actor_AssignPrimaryResource
-.extern Actor_SetResourceVariant
+.extern Actor_AssignPrimaryScriptToCollection
+.extern Actor_AssignPrimaryScript
+.extern Actor_SelectScriptVariant
 .extern func_ov097_02217cf8
 .extern func_ov097_02217d44
 .extern ActorExtendedType2_DrawDebugOverlay
@@ -45,7 +45,7 @@
 .extern func_ov097_02219b7c
 .extern Actor_IntegrateMotion
 .extern func_ov097_02219b70
-.extern Actor_SetResourceSlot
+.extern Actor_SetScriptSlot
 .extern func_ov097_02217b14
 .extern func_ov097_02219b60
 .extern func_ov097_022191b8
@@ -312,9 +312,9 @@ data_ov097_0221a5f4:
     .word func_ov097_02219c7c
     .word func_ov097_02219c64
     .word func_ov097_02219be0
-    .word Actor_AssignPrimaryResourceWithEffect
-    .word Actor_AssignPrimaryResource
-    .word Actor_SetResourceVariant
+    .word Actor_AssignPrimaryScriptToCollection
+    .word Actor_AssignPrimaryScript
+    .word Actor_SelectScriptVariant
     .word func_ov097_02217cf8
     .word func_ov097_02217d44
     .word ActorExtendedType2_DrawDebugOverlay
@@ -327,7 +327,7 @@ data_ov097_0221a5f4:
     .word func_ov097_02219b7c
     .word Actor_IntegrateMotion
     .word func_ov097_02219b70
-    .word Actor_SetResourceSlot
+    .word Actor_SetScriptSlot
     .word func_ov097_02217b14
     .word func_ov097_02219b60
     .word func_ov097_022191b8
@@ -447,9 +447,9 @@ data_ov097_0221a80c:
     .word func_ov097_02219c7c
     .word func_ov097_02219c64
     .word func_ov097_02219be0
-    .word Actor_AssignPrimaryResourceWithEffect
-    .word Actor_AssignPrimaryResource
-    .word Actor_SetResourceVariant
+    .word Actor_AssignPrimaryScriptToCollection
+    .word Actor_AssignPrimaryScript
+    .word Actor_SelectScriptVariant
     .word ActorExtendedType2_PrepareRelease
     .word ActorExtendedType2_InitializeReentryState
     .word ActorExtendedType2_DrawDebugOverlay
@@ -462,7 +462,7 @@ data_ov097_0221a80c:
     .word func_ov097_02219b7c
     .word Actor_IntegrateMotion
     .word func_ov097_02219b70
-    .word Actor_SetResourceSlot
+    .word Actor_SetScriptSlot
     .word func_ov097_02219760
     .word func_ov097_02219b60
     .word ActorExtendedType2_ApplyMotionImpulseIfEnabled
@@ -608,9 +608,9 @@ data_ov097_0221aaa4:
     .word func_ov097_0221a480
     .word func_ov097_0221a478
     .word func_ov097_0221a470
-    .word Actor_AssignPrimaryResourceWithEffect
-    .word Actor_AssignPrimaryResource
-    .word Actor_SetResourceVariant
+    .word Actor_AssignPrimaryScriptToCollection
+    .word Actor_AssignPrimaryScript
+    .word Actor_SelectScriptVariant
     .word func_ov097_0221a460
     .word Actor_SetPosition
     .word func_02033b38
@@ -623,7 +623,7 @@ data_ov097_0221aaa4:
     .word func_ov097_02219b7c
     .word Actor_IntegrateMotion
     .word func_ov097_02219b70
-    .word Actor_SetResourceSlot
+    .word Actor_SetScriptSlot
     .word Actor_GetGravityAcceleration
     .word func_ov097_02219b60
     .word Actor_ApplyMotionImpulse

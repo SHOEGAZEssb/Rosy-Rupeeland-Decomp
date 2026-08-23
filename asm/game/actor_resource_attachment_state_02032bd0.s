@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_resource_attachment_state.c.
 .text
 
-    .global Actor_AssignPrimaryResource
-    .type Actor_AssignPrimaryResource, @function
-Actor_AssignPrimaryResource: ; 0x02032bd0
+    .global Actor_AssignPrimaryScript
+    .type Actor_AssignPrimaryScript, @function
+Actor_AssignPrimaryScript: ; 0x02032bd0
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0x10]
@@ -18,4 +18,4 @@ Actor_AssignPrimaryResource: ; 0x02032bd0
     orr r0, r0, #0x1000000
     str r0, [r4, #0x10]
     ldmia sp!, {r4, pc}
-    .size Actor_AssignPrimaryResource, . - Actor_AssignPrimaryResource
+    .size Actor_AssignPrimaryScript, . - Actor_AssignPrimaryScript

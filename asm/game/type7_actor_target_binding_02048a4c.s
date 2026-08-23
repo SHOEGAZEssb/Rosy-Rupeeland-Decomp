@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern Actor_DestroyAuxiliaryCollisionResource
+.extern Actor_DestroyInteractionIcon
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_HandleObjectInteraction
 .extern func_020adcac
@@ -114,7 +114,7 @@ Type7Actor_SetTarget: ; 0x02048b94
     ldr r1, [r4, #0x1e0]
     cmp r1, #0x0
     beq .L_02048bbc
-    bl Actor_DestroyAuxiliaryCollisionResource
+    bl Actor_DestroyInteractionIcon
 .L_02048bbc:
     ldr r0, [r4, #0xd0]
     bic r0, r0, #0x100
@@ -132,7 +132,7 @@ Type7Actor_ClearTarget: ; 0x02048bcc
     ldr r1, [r4, #0x1e0]
     cmp r1, #0x0
     beq .L_02048bf8
-    bl Actor_DestroyAuxiliaryCollisionResource
+    bl Actor_DestroyInteractionIcon
 .L_02048bf8:
     add r0, r4, #0x2a8
     mov r1, #0x0

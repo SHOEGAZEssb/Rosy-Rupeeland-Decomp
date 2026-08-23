@@ -17,18 +17,19 @@ extern void func_0203130c(void *actor);
 }
 #endif
 
-/* Invoke virtual slot 0x74 with one recovered pointer argument. */
-static void callDescriptorHook(void *self, void *value)
+/* Assign one borrowed script through virtual slot +0x74. */
+static void assignPrimaryScript(void *self, const s8 *script)
 {
-    void (**vtable)(void *, void *) = *(void (***)(void *, void *))self;
-    vtable[0x74 / 4](self, value);
+    void (**vtable)(void *, const s8 *) =
+        *(void (***)(void *, const s8 *))self;
+    vtable[0x74 / 4](self, script);
 }
 
 /*
  * Inputs are destination actor storage and a descriptor. Construct the base
- * through ActorRuntimeBase_Init, install vtable data_020e2028, and, when descriptor
- * word +0x2c is non-null, invoke virtual slot 0x74 with that word. Return self.
- * Base construction and the optional virtual hook may change engine state;
+ * through ActorRuntimeBase_Init, install vtable data_020e2028, and, when the
+ * descriptor script at +0x2c is non-null, assign it through virtual slot +0x74.
+ * Return self. Base construction and optional script assignment change engine state;
  * there are no direct hardware effects.
  */
 void *func_0204d244(void *self, const void *descriptor)
@@ -36,14 +37,15 @@ void *func_0204d244(void *self, const void *descriptor)
     ActorRuntimeBase_Init(self, descriptor);
     *(const void **)self = data_020e2028;
     if (*(void **)((u8 *)descriptor + 0x2c) != 0)
-        callDescriptorHook(self, *(void **)((u8 *)descriptor + 0x2c));
+        assignPrimaryScript(
+            self, *(const s8 **)((u8 *)descriptor + 0x2c));
     return self;
 }
 
 /*
  * Inputs and behavior match func_0204d244: construct the same base, install
- * data_020e2028, optionally dispatch descriptor +0x2c through slot 0x74, and
- * return self. This distinct address is retained because callers select the
+ * data_020e2028, optionally assign descriptor script +0x2c through slot +0x74,
+ * and return self. This distinct address is retained because callers select the
  * entry point independently. Engine state may change; no direct hardware effect.
  */
 void *func_0204d284(void *self, const void *descriptor)
@@ -51,7 +53,8 @@ void *func_0204d284(void *self, const void *descriptor)
     ActorRuntimeBase_Init(self, descriptor);
     *(const void **)self = data_020e2028;
     if (*(void **)((u8 *)descriptor + 0x2c) != 0)
-        callDescriptorHook(self, *(void **)((u8 *)descriptor + 0x2c));
+        assignPrimaryScript(
+            self, *(const s8 **)((u8 *)descriptor + 0x2c));
     return self;
 }
 

@@ -13,8 +13,8 @@ extern "C" {
 extern void *data_021052fc;
 extern const u8 data_020ea9b0[];
 extern s32 data_020e1964;
-extern void *Actor_GetAuxiliaryCollisionResource(void *actor);
-extern void func_020573fc(void *state, s32 value);
+extern void *Actor_GetInteractionIcon(void *actor);
+extern void ActorInteractionIcon_SetDirection(void *icon, s32 direction);
 extern void Type7Actor_SetMotionTargetWithTimer(void *entity, const VecFx32Object *position,
                           s32 angle);
 extern void Type7Actor_ResetMotionAndCooldown(void *entity);
@@ -31,13 +31,15 @@ extern void Type7Actor_SpawnFromRecord(s32 first, void *owner, s32 second, s32 t
 #endif
 
 /*
- * Pop one value, resolve the bound actor's recovered state object, pass the
- * value to its external operation, and return zero.
+ * Pop one direction, resolve the bound actor's interaction icon, map the low
+ * two bits to quarter-turn angle units, and return zero. Retail requires the
+ * icon pointer to be non-null.
  */
-s32 GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetInteractionIconDirection(GamePhaseActorScriptVm *self)
 {
-    s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    func_020573fc(Actor_GetAuxiliaryCollisionResource(self->actor), value);
+    s32 direction = (s32)GamePhaseScriptVm_Pop(&self->base);
+    ActorInteractionIcon_SetDirection(Actor_GetInteractionIcon(self->actor),
+                                      direction);
     return 0;
 }
 

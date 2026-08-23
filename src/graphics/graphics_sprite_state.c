@@ -39,7 +39,7 @@ void GraphicsSpriteState_Reset(GraphicsSpriteState *state)
     state->field_28 = 0;
     state->field_26 = 0;
     state->flags = 0;
-    state->field_30 = 0;
+    state->rotationAngle = 0;
     state->screenY = 0;
     one = 0x100;
     state->screenX = 0;

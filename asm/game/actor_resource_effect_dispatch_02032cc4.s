@@ -7,9 +7,9 @@
 .extern Actor_GetCollection
 .extern gGameWork
 
-    .global Actor_AssignPrimaryResourceWithEffect
-    .type Actor_AssignPrimaryResourceWithEffect, @function
-Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
+    .global Actor_AssignPrimaryScriptToCollection
+    .type Actor_AssignPrimaryScriptToCollection, @function
+Actor_AssignPrimaryScriptToCollection: ; 0x02032cc4
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x128
     mov r5, r0
@@ -52,4 +52,4 @@ Actor_AssignPrimaryResourceWithEffect: ; 0x02032cc4
     ldmia sp!, {r3, r4, r5, pc}
 .L_02032d5c: .word gGameWork
 .L_02032d60: .word gActorRuntimeCollection
-    .size Actor_AssignPrimaryResourceWithEffect, . - Actor_AssignPrimaryResourceWithEffect
+    .size Actor_AssignPrimaryScriptToCollection, . - Actor_AssignPrimaryScriptToCollection

@@ -7,7 +7,7 @@
 typedef struct AnimationResourceState {
     void *character;
     void *palette;
-    void *screen;
+    void *cell;
 } AnimationResourceState;
 
 void AnimationResourceState_ReleaseResources(AnimationResourceState *state);
@@ -17,7 +17,7 @@ void *func_02071e90(AnimationResourceState *state)
 {
     state->character = 0;
     state->palette = 0;
-    state->screen = 0;
+    state->cell = 0;
     return state;
 }
 
@@ -26,7 +26,7 @@ void *AnimationResourceState_InitEmbedded(AnimationResourceState *state)
 {
     state->character = 0;
     state->palette = 0;
-    state->screen = 0;
+    state->cell = 0;
     return state;
 }
 

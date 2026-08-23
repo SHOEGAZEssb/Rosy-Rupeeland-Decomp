@@ -20,7 +20,7 @@ typedef struct GraphicsSpriteState {
     u16 field_2a;
     s16 screenX;
     s16 screenY;
-    s16 field_30;
+    s16 rotationAngle;
     s16 scaleX;
     s16 scaleY;
     s16 scaleZ;

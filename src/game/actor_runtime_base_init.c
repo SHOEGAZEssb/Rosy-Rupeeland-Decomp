@@ -28,8 +28,10 @@ extern void *ActorMotionAreaFollower_GetPosition(void *);
  * data_020df040, and initialize recovered fields through 0x1eb. Descriptor
  * bytes 0x5c-0x60 configure packed state at 0x5c/0x60; halfwords 0x1a-0x20
  * configure 0x68; descriptor word 0x48 is retained at 0x1cc. Runtime value
- * objects at 0x78/0x88/0x98/0xb0, resources at 0xec/0x198, scale fields, five
- * pointers at 0x180, and collision halfwords 0x70-0x76 are initialized. A
+ * objects at +0x78/+0x88/+0x98/+0xb0, the actor script VM at +0xec, the FX32
+ * stepper at +0x198, scale fields, five borrowed script pointers at +0x180,
+ * the null interaction-icon owner at +0x1e0, and collision halfwords
+ * +0x70..+0x76 are initialized. A
  * descriptor 0x3c value from zero through three sets actor flag 0x80. The
  * vector at 0x78 is copied from global context offset 0x2fbc. Returns self;
  * helper calls may allocate or initialize SDK-managed value/resource state.

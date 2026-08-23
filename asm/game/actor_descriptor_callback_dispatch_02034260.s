@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_descriptor_callback_dispatch.c.
 .text
 
-    .global func_02034260
-    .type func_02034260, @function
-func_02034260: ; 0x02034260
+    .global Actor_ApplySpawnDescriptorScript
+    .type Actor_ApplySpawnDescriptorScript, @function
+Actor_ApplySpawnDescriptorScript: ; 0x02034260
     stmdb sp!, {r3, lr}
     ldr r2, [r1, #0x2c]
     cmp r2, #0x0
@@ -24,6 +24,6 @@ func_02034260: ; 0x02034260
     ldr r2, [r2, #0x74]
     blx r2
     ldmia sp!, {r3, pc}
-    .size func_02034260, . - func_02034260
+    .size Actor_ApplySpawnDescriptorScript, . - Actor_ApplySpawnDescriptorScript
 
-    .global Actor_EnsureAuxiliaryCollisionResource
+    .global Actor_EnsureInteractionIcon

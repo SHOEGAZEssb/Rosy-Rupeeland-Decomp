@@ -12,7 +12,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedRuntime_AcceptInteractionQuery
-.extern func_020573e4
+.extern ActorInteractionIcon_IsActive
 .extern Sound_PlayOwnedEffect
 .extern func_ov081_02213710
 .extern gSoundContext
@@ -36,7 +36,7 @@ func_ov081_0221487c:
     ldr r0, [r5, #0x1e0]
     cmp r0, #0x0
     beq .L_022148cc
-    bl func_020573e4
+    bl ActorInteractionIcon_IsActive
     cmp r0, #0x0
     bne .L_02214b10
 .L_022148cc:

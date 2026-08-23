@@ -3,6 +3,7 @@
 
 /* Release derived runtime actor attachments, resources, and value objects. */
 typedef struct RuntimeActorLifecycle RuntimeActorLifecycle;
+typedef struct ActorInteractionIcon ActorInteractionIcon;
 typedef struct RuntimeActorLifecycleVTable {
     u8 field_00[0xbc];
     void (*releasePrimaryRenderAttachment_bc)(RuntimeActorLifecycle *);
@@ -13,7 +14,7 @@ struct RuntimeActorLifecycle {
     u8 field_04[0xa4];
     void *auxiliaryRenderAttachment_a8;
     u8 field_ac[0x134];
-    void *field_1e0;
+    ActorInteractionIcon *interactionIcon_1e0;
 };
 
 extern u8 data_020df040[];
@@ -25,7 +26,7 @@ extern void Actor_ReleaseSecondaryRenderAttachment(RuntimeActorLifecycle *);
 extern void *Actor_GetCollection(RuntimeActorLifecycle *);
 extern void *ActorCollection_GetSpriteOwner(void *);
 extern void GraphicsSpriteGroup_ReleaseState(void *, void *);
-extern void func_02057184(void *);
+extern ActorInteractionIcon *ActorInteractionIcon_Destroy(ActorInteractionIcon *);
 extern void VecFx32Stepper_Destroy(void *);
 extern void GamePhaseActorScriptVm_Destroy(void *);
 extern void VecFx32Object_Destroy(void *);
@@ -36,18 +37,21 @@ extern void *func_02030e08(void *);
 
 static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
 {
-    void *object;
+    void *auxiliaryAttachment;
+    ActorInteractionIcon *interactionIcon;
 
     self->vtable_00 = (RuntimeActorLifecycleVTable *)data_020df040;
     self->vtable_00->releasePrimaryRenderAttachment_bc(self);
     Actor_ReleaseSecondaryRenderAttachment(self);
-    object = self->auxiliaryRenderAttachment_a8;
-    if (object)
-        GraphicsSpriteGroup_ReleaseState(ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), object);
-    object = self->field_1e0;
-    if (object) {
-        func_02057184(object);
-        Heap_Free(object);
+    auxiliaryAttachment = self->auxiliaryRenderAttachment_a8;
+    if (auxiliaryAttachment)
+        GraphicsSpriteGroup_ReleaseState(
+            ActorCollection_GetSpriteOwner(Actor_GetCollection(self)),
+            auxiliaryAttachment);
+    interactionIcon = self->interactionIcon_1e0;
+    if (interactionIcon) {
+        ActorInteractionIcon_Destroy(interactionIcon);
+        Heap_Free(interactionIcon);
     }
     VecFx32Stepper_Destroy((u8 *)self + 0x198);
     GamePhaseActorScriptVm_Destroy((u8 *)self + 0xec);
@@ -61,9 +65,9 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
 
 /*
  * Restore vtable data_020df040, invoke its offset-0xbc cleanup, release the
- * offset-0x58 attachment, unregister offset 0xa8, destroy/free optional object
- * 0x1e0, then destroy resources 0x198/0xec, vectors 0xb0/0x98/0x88/0x78, and
- * the common base. Return self without freeing it.
+ * offset-0x58 attachment, unregister offset +0xa8, destroy/free the optional
+ * interaction icon +0x1e0, then destroy resources +0x198/+0xec, vectors
+ * +0xb0/+0x98/+0x88/+0x78, and the common base. Return self without freeing it.
  */
 RuntimeActorLifecycle *func_020311bc(RuntimeActorLifecycle *self)
 {

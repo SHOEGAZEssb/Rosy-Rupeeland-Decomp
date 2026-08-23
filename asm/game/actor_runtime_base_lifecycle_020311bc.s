@@ -9,7 +9,7 @@
 .extern func_02030e08
 .extern Actor_ReleaseSecondaryRenderAttachment
 .extern Actor_GetCollection
-.extern func_02057184
+.extern ActorInteractionIcon_Destroy
 .extern GraphicsSpriteGroup_ReleaseState
 
     .global func_020311bc
@@ -37,7 +37,7 @@ func_020311bc: ; 0x020311bc
     cmp r4, #0x0
     beq .L_0203121c
     mov r0, r4
-    bl func_02057184
+    bl ActorInteractionIcon_Destroy
     mov r0, r4
     bl Heap_Free
 .L_0203121c:

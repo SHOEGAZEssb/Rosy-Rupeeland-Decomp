@@ -30,9 +30,9 @@
 .extern func_ov096_022182a0
 .extern func_ov096_02218288
 .extern func_ov096_022181f4
-.extern Actor_AssignPrimaryResourceWithEffect
-.extern Actor_AssignPrimaryResource
-.extern Actor_SetResourceVariant
+.extern Actor_AssignPrimaryScriptToCollection
+.extern Actor_AssignPrimaryScript
+.extern Actor_SelectScriptVariant
 .extern ActorExtendedType2_PrepareRelease
 .extern ActorExtendedType2_InitializeReentryState
 .extern ActorExtendedType2_DrawDebugOverlay
@@ -45,7 +45,7 @@
 .extern func_ov096_02218190
 .extern Actor_IntegrateMotion
 .extern func_ov096_02217ea4
-.extern Actor_SetResourceSlot
+.extern Actor_SetScriptSlot
 .extern Actor_GetGravityAcceleration
 .extern func_ov096_02218180
 .extern ActorExtendedType2_ApplyMotionImpulseIfEnabled
@@ -221,9 +221,9 @@ data_ov096_02218b98:
     .word func_ov096_022182a0
     .word func_ov096_02218288
     .word func_ov096_022181f4
-    .word Actor_AssignPrimaryResourceWithEffect
-    .word Actor_AssignPrimaryResource
-    .word Actor_SetResourceVariant
+    .word Actor_AssignPrimaryScriptToCollection
+    .word Actor_AssignPrimaryScript
+    .word Actor_SelectScriptVariant
     .word ActorExtendedType2_PrepareRelease
     .word ActorExtendedType2_InitializeReentryState
     .word ActorExtendedType2_DrawDebugOverlay
@@ -236,7 +236,7 @@ data_ov096_02218b98:
     .word func_ov096_02218190
     .word Actor_IntegrateMotion
     .word func_ov096_02217ea4
-    .word Actor_SetResourceSlot
+    .word Actor_SetScriptSlot
     .word Actor_GetGravityAcceleration
     .word func_ov096_02218180
     .word ActorExtendedType2_ApplyMotionImpulseIfEnabled
@@ -368,9 +368,9 @@ data_ov096_02218de8:
     .word func_ov096_022182a0
     .word func_ov096_02218288
     .word func_ov096_022181f4
-    .word Actor_AssignPrimaryResourceWithEffect
-    .word Actor_AssignPrimaryResource
-    .word Actor_SetResourceVariant
+    .word Actor_AssignPrimaryScriptToCollection
+    .word Actor_AssignPrimaryScript
+    .word Actor_SelectScriptVariant
     .word ActorExtendedType2_PrepareRelease
     .word ActorExtendedType2_InitializeReentryState
     .word ActorExtendedType2_DrawDebugOverlay
@@ -383,7 +383,7 @@ data_ov096_02218de8:
     .word func_ov096_02218190
     .word Actor_IntegrateMotion
     .word func_ov096_02217ea4
-    .word Actor_SetResourceSlot
+    .word Actor_SetScriptSlot
     .word Actor_GetGravityAcceleration
     .word func_ov096_02218180
     .word ActorExtendedTransform_ResetMotionImpulseState

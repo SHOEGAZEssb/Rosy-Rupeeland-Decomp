@@ -6479,7 +6479,7 @@ build build/reports/game_phase_script_vm_020184d4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020184d4.o
 build build/reports/game_phase_script_vm_020184d4.txt: match_report build/reports/game_phase_script_vm_020184d4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020184d4.json
-  report_args = --section .text --function GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetInteractionIconOffset --require-exact
 
 build build/reports/game_phase_script_vm_02018504.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02018504.o | build/decomp/asm/game/game_phase_script_vm_02018504.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02018504.o
@@ -6514,7 +6514,7 @@ build build/reports/game_phase_script_vm_020185f4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020185f4.o
 build build/reports/game_phase_script_vm_020185f4.txt: match_report build/reports/game_phase_script_vm_020185f4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020185f4.json
-  report_args = --section .text --function GamePhaseActorScriptVm_SetAuxiliaryCollisionResourceEnabled --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetInteractionIconEnabled --require-exact
 
 build build/reports/game_phase_script_vm_actor_runtime_display_opcodes.txt: phony build/reports/game_phase_script_vm_020184d4.txt build/reports/game_phase_script_vm_02018504.txt build/reports/game_phase_script_vm_0201850c.txt build/reports/game_phase_script_vm_0201853c.txt build/reports/game_phase_script_vm_0201856c.txt build/reports/game_phase_script_vm_020185f4.txt
 
@@ -6583,7 +6583,7 @@ build build/reports/game_phase_script_vm_02018c14.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02018c14.o
 build build/reports/game_phase_script_vm_02018c14.txt: match_report build/reports/game_phase_script_vm_02018c14.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02018c14.json
-  report_args = --section .text --function GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SetInteractionIconDirection --require-exact
 
 build build/reports/game_phase_script_vm_02018c3c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02018c3c.o | build/decomp/asm/game/game_phase_script_vm_02018c3c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02018c3c.o
@@ -15045,7 +15045,7 @@ build build/reports/actor_resource_variant_apply_02032aec.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_resource_variant_apply_02032aec.o
 build build/reports/actor_resource_variant_apply_02032aec.txt: match_report build/reports/actor_resource_variant_apply_02032aec.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_variant_apply_02032aec.json
-  report_args = --section .text --function Actor_SetResourceVariant --require-exact
+  report_args = --section .text --function Actor_SelectScriptVariant --require-exact
 build build/reports/actor_resource_variant_apply.txt: phony build/reports/actor_resource_variant_apply_02032aec.txt
 
 build actor_resource_variant_apply: phony build/decomp/src/game/actor_resource_variant_apply.o build/decomp/asm/game/actor_resource_variant_apply_02032aec.o build/reports/actor_resource_variant_apply.txt
@@ -15070,13 +15070,13 @@ build build/reports/actor_resource_attachment_state_02032bd0.json: objdiff build
   base_object = build/decomp/asm/game/actor_resource_attachment_state_02032bd0.o
 build build/reports/actor_resource_attachment_state_02032bd0.txt: match_report build/reports/actor_resource_attachment_state_02032bd0.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_attachment_state_02032bd0.json
-  report_args = --section .text --function Actor_AssignPrimaryResource --require-exact
+  report_args = --section .text --function Actor_AssignPrimaryScript --require-exact
 build build/reports/actor_resource_attachment_state_02032c08.json: objdiff build/decomp/delinks/asm/game/actor_resource_attachment_state_02032c08.o | build/decomp/asm/game/actor_resource_attachment_state_02032c08.o
   target_object = build/decomp/delinks/asm/game/actor_resource_attachment_state_02032c08.o
   base_object = build/decomp/asm/game/actor_resource_attachment_state_02032c08.o
 build build/reports/actor_resource_attachment_state_02032c08.txt: match_report build/reports/actor_resource_attachment_state_02032c08.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_attachment_state_02032c08.json
-  report_args = --section .text --function Actor_SetResourceSlot --require-exact
+  report_args = --section .text --function Actor_SetScriptSlot --require-exact
 build build/reports/actor_resource_attachment_state_02032c14.json: objdiff build/decomp/delinks/asm/game/actor_resource_attachment_state_02032c14.o | build/decomp/asm/game/actor_resource_attachment_state_02032c14.o
   target_object = build/decomp/delinks/asm/game/actor_resource_attachment_state_02032c14.o
   base_object = build/decomp/asm/game/actor_resource_attachment_state_02032c14.o
@@ -15111,7 +15111,7 @@ build build/reports/actor_resource_effect_dispatch_02032cc4.json: objdiff build/
   base_object = build/decomp/asm/game/actor_resource_effect_dispatch_02032cc4.o
 build build/reports/actor_resource_effect_dispatch_02032cc4.txt: match_report build/reports/actor_resource_effect_dispatch_02032cc4.json | tools/report_objdiff.py
   report_json = build/reports/actor_resource_effect_dispatch_02032cc4.json
-  report_args = --section .text --function Actor_AssignPrimaryResourceWithEffect --require-exact
+  report_args = --section .text --function Actor_AssignPrimaryScriptToCollection --require-exact
 build build/reports/actor_resource_effect_dispatch.txt: phony build/reports/actor_resource_effect_dispatch_02032cc4.txt
 
 build actor_resource_effect_dispatch: phony build/decomp/src/game/actor_resource_effect_dispatch.o build/decomp/asm/game/actor_resource_effect_dispatch_02032cc4.o build/reports/actor_resource_effect_dispatch.txt
@@ -15490,7 +15490,7 @@ build build/reports/actor_interaction_eligibility_02034148.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_interaction_eligibility_02034148.o
 build build/reports/actor_interaction_eligibility_02034148.txt: match_report build/reports/actor_interaction_eligibility_02034148.json | tools/report_objdiff.py
   report_json = build/reports/actor_interaction_eligibility_02034148.json
-  report_args = --section .text --function Actor_PollInteractionResource --require-exact
+  report_args = --section .text --function Actor_PollInteractionIconState --require-exact
 build build/reports/actor_interaction_eligibility.txt: phony build/reports/actor_interaction_eligibility_02034060.txt build/reports/actor_interaction_eligibility_02034148.txt
 
 build actor_interaction_eligibility: phony build/decomp/src/game/actor_interaction_eligibility.o build/decomp/asm/game/actor_interaction_eligibility_02034060.o build/decomp/asm/game/actor_interaction_eligibility_02034148.o build/reports/actor_interaction_eligibility.txt
@@ -15524,7 +15524,7 @@ build build/reports/actor_descriptor_callback_dispatch_02034260.json: objdiff bu
   base_object = build/decomp/asm/game/actor_descriptor_callback_dispatch_02034260.o
 build build/reports/actor_descriptor_callback_dispatch_02034260.txt: match_report build/reports/actor_descriptor_callback_dispatch_02034260.json | tools/report_objdiff.py
   report_json = build/reports/actor_descriptor_callback_dispatch_02034260.json
-  report_args = --section .text --function func_02034260 --require-exact
+  report_args = --section .text --function Actor_ApplySpawnDescriptorScript --require-exact
 build build/reports/actor_descriptor_callback_dispatch.txt: phony build/reports/actor_descriptor_callback_dispatch_02034260.txt
 
 build actor_descriptor_callback_dispatch: phony build/decomp/src/game/actor_descriptor_callback_dispatch.o build/decomp/asm/game/actor_descriptor_callback_dispatch_02034260.o build/reports/actor_descriptor_callback_dispatch.txt
@@ -15541,7 +15541,7 @@ build build/reports/actor_auxiliary_collision_resource_020342ac.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_020342ac.o
 build build/reports/actor_auxiliary_collision_resource_020342ac.txt: match_report build/reports/actor_auxiliary_collision_resource_020342ac.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_020342ac.json
-  report_args = --section .text --function Actor_EnsureAuxiliaryCollisionResource --require-exact
+  report_args = --section .text --function Actor_EnsureInteractionIcon --require-exact
 build build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o: mwasmarm asm/game/actor_auxiliary_collision_resource_02034320.s
 build build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034320.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_auxiliary_collision_resource_02034320.json: objdiff build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034320.o | build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o
@@ -15549,7 +15549,7 @@ build build/reports/actor_auxiliary_collision_resource_02034320.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o
 build build/reports/actor_auxiliary_collision_resource_02034320.txt: match_report build/reports/actor_auxiliary_collision_resource_02034320.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_02034320.json
-  report_args = --section .text --function Actor_DestroyAuxiliaryCollisionResource --require-exact
+  report_args = --section .text --function Actor_DestroyInteractionIcon --require-exact
 build build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o: mwasmarm asm/game/actor_auxiliary_collision_resource_02034354.s
 build build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034354.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_auxiliary_collision_resource_02034354.json: objdiff build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_02034354.o | build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o
@@ -15557,7 +15557,7 @@ build build/reports/actor_auxiliary_collision_resource_02034354.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o
 build build/reports/actor_auxiliary_collision_resource_02034354.txt: match_report build/reports/actor_auxiliary_collision_resource_02034354.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_02034354.json
-  report_args = --section .text --function Actor_GetAuxiliaryCollisionResource --require-exact
+  report_args = --section .text --function Actor_GetInteractionIcon --require-exact
 build build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o: mwasmarm asm/game/actor_auxiliary_collision_resource_0203435c.s
 build build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_0203435c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_auxiliary_collision_resource_0203435c.json: objdiff build/decomp/delinks/asm/game/actor_auxiliary_collision_resource_0203435c.o | build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o
@@ -15565,7 +15565,7 @@ build build/reports/actor_auxiliary_collision_resource_0203435c.json: objdiff bu
   base_object = build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o
 build build/reports/actor_auxiliary_collision_resource_0203435c.txt: match_report build/reports/actor_auxiliary_collision_resource_0203435c.json | tools/report_objdiff.py
   report_json = build/reports/actor_auxiliary_collision_resource_0203435c.json
-  report_args = --section .text --function Actor_SetAuxiliaryCollisionPosition --require-exact
+  report_args = --section .text --function Actor_SetInteractionIconOffset --require-exact
 build build/reports/actor_auxiliary_collision_resource.txt: phony build/reports/actor_auxiliary_collision_resource_020342ac.txt build/reports/actor_auxiliary_collision_resource_02034320.txt build/reports/actor_auxiliary_collision_resource_02034354.txt build/reports/actor_auxiliary_collision_resource_0203435c.txt
 
 build actor_auxiliary_collision_resource: phony build/decomp/src/game/actor_auxiliary_collision_resource.o build/decomp/asm/game/actor_auxiliary_collision_resource_020342ac.o build/decomp/asm/game/actor_auxiliary_collision_resource_02034320.o build/decomp/asm/game/actor_auxiliary_collision_resource_02034354.o build/decomp/asm/game/actor_auxiliary_collision_resource_0203435c.o build/reports/actor_auxiliary_collision_resource.txt
@@ -19048,7 +19048,7 @@ build build/reports/type7_actor_auxiliary_spawn_020471e4.json: objdiff build/dec
   base_object = build/decomp/asm/game/type7_actor_auxiliary_spawn_020471e4.o
 build build/reports/type7_actor_auxiliary_spawn_020471e4.txt: match_report build/reports/type7_actor_auxiliary_spawn_020471e4.json | tools/report_objdiff.py
   report_json = build/reports/type7_actor_auxiliary_spawn_020471e4.json
-  report_args = --section .text --function Type7Actor_SpawnAuxiliaryCollisionResource --require-exact
+  report_args = --section .text --function Type7Actor_CreatePhase10LoadScene --require-exact
 build type7_actor_auxiliary_spawn: phony build/decomp/src/game/type7_actor_auxiliary_spawn.o build/decomp/asm/game/type7_actor_auxiliary_spawn_020471e4.o build/reports/type7_actor_auxiliary_spawn_020471e4.txt
 
 type7_actor_touch_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

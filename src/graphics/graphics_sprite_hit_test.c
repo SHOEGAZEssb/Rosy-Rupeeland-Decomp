@@ -124,8 +124,8 @@ s32 func_02073aa8(GraphicsSpriteState *state, s32 pointX, s32 pointY)
     s32 centerY = state->screenY + owner->screenY;
     s32 index;
 
-    if (state->field_30 != 0) {
-        u16 angle = (u16)(-state->field_30);
+    if (state->rotationAngle != 0) {
+        u16 angle = (u16)(-state->rotationAngle);
         s32 sine = data_020c9670[((u32)angle >> 4) * 2U + 1U];
         s32 cosine = data_020c9670[((u32)angle >> 4) * 2U];
         s32 deltaX = pointX - centerX;

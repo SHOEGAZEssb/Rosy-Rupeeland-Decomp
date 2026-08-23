@@ -7,7 +7,7 @@
 typedef struct AnimationResourceState {
     void *character;
     void *palette;
-    void *screen;
+    void *cell;
 } AnimationResourceState;
 
 extern void func_02071bdc(void *archive, void *resource);
@@ -22,8 +22,8 @@ void AnimationResourceState_ReleaseResources(AnimationResourceState *state)
         return;
     func_02071bdc(*(void **)((u8 *)state->character + 4), state->character);
     func_02071c38(*(void **)((u8 *)state->palette + 4), state->palette);
-    func_02071c94(*(void **)((u8 *)state->screen + 4), state->screen);
+    func_02071c94(*(void **)((u8 *)state->cell + 4), state->cell);
     state->character = 0;
     state->palette = 0;
-    state->screen = 0;
+    state->cell = 0;
 }

@@ -4,7 +4,7 @@
 .extern Actor_SetInteractionFlag2000
 .extern Actor_ClearInteractionFlag2000
 .extern Actor_TestQueryPointAndClearFlag2000
-.extern Actor_PollInteractionResource
+.extern Actor_PollInteractionIconState
     .global ActorDerivedRuntime_HandlePairEnded
     .type ActorDerivedRuntime_HandlePairEnded, @function
 ActorDerivedRuntime_HandlePairEnded: ; 0x0203baa0
@@ -35,7 +35,7 @@ ActorDerivedRuntime_ClearInteractionQueryState: ; 0x0203bac0
     mov r4, r0
     bl Actor_ClearInteractionFlag2000
     mov r0, r4
-    bl Actor_PollInteractionResource
+    bl Actor_PollInteractionIconState
     ldmia sp!, {r4, pc}
     .size ActorDerivedRuntime_ClearInteractionQueryState, . - ActorDerivedRuntime_ClearInteractionQueryState
 

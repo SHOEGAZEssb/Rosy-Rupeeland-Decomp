@@ -64,8 +64,8 @@ static s32 callback_pair_matches(const u8 *actor, const void *first,
  * +0x3c/+0x40, and clear +0x14 bit 0x100.
  *
  * With no +0x280 target, an exact set of idle/descriptor conditions may copy
- * +0x1fc and record +0x56/+0x58 to +0x10c/+0x110/+0x114 and call vtable +0x74
- * with +0x298. Positive +0x108 commits +0x104/+0x200 and record +0x30 to shared
+ * +0x1fc and record +0x56/+0x58 to +0x10c/+0x110/+0x114 and assign the script
+ * at +0x298 through vtable +0x74. Positive +0x108 commits +0x104/+0x200 and record +0x30 to shared
  * scene/actor state, calls Type7Actor_SetTarget and the world +0x30e8 helpers, then
  * Type7Actor_DispatchCurrentCallback. A target at +0x280 may instead supply a transform through its
  * vtable +0xb4 into actor +0x214. Completed owned resource +0x234 is released
@@ -99,7 +99,9 @@ void Type7Actor_UpdateFrame(void *self)
         s32 release = 0;
         ActorDerivedRuntime_UpdateFrame(actor);
         target = *(u8 **)(actor + 0x280);
-        if (target == 0 || *(u32 *)(actor + 0x180) != *(u32 *)(actor + 0x294))
+        if (target == 0 ||
+            *(const s8 **)(actor + 0x180) !=
+                *(const s8 **)(actor + 0x294))
             return;
         if (func_020adcac(target + 0x1c, actor + 0x1c)
                 > *(s32 *)(actor + 0x25c) * 2)
@@ -109,7 +111,7 @@ void Type7Actor_UpdateFrame(void *self)
         if (!release)
             return;
         *(u32 *)(actor + 0x10) &= ~0x01000000u;
-        *(u32 *)(actor + 0x180) = 0;
+        *(const s8 **)(actor + 0x180) = 0;
         Type7Actor_ResetMotionAndCooldown(actor);
     }
     if ((*(u32 *)(actor + 0xd0) & 0x4000) != 0) {
@@ -141,7 +143,7 @@ void Type7Actor_UpdateFrame(void *self)
             && (*(u32 *)(actor + 0xd0) & 0x10) == 0
             && *(u32 *)(actor + 0x24) == *(u32 *)(actor + 0x1dc)
             && *(s32 *)(actor + 0x108) == 0
-            && *(void **)(actor + 0x298) != 0
+            && *(const s8 **)(actor + 0x298) != 0
             && !callback_pair_matches(actor,
                     *(void **)(data_020e16b0 + 0x78),
                     *(void **)(data_020e1728 + 4))) {
@@ -152,8 +154,8 @@ void Type7Actor_UpdateFrame(void *self)
             *(u32 *)(actor + 0x10c) = *(u32 *)(actor + 0x1fc);
             *(u32 *)(actor + 0x110) = *(u16 *)(record + 0x56);
             *(u32 *)(actor + 0x114) = *(u16 *)(record + 0x58);
-            (*(void (**)(void *, void *))(*(u8 **)actor + 0x74))(
-                actor, *(void **)(actor + 0x298));
+            (*(void (**)(void *, const s8 *))(*(u8 **)actor + 0x74))(
+                actor, *(const s8 **)(actor + 0x298));
         }
     }
     if (*(s32 *)(actor + 0x108) > 0) {

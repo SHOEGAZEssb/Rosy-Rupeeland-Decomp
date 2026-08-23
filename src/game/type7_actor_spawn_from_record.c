@@ -25,7 +25,7 @@ extern void Actor_RefreshCachedTerrainHeight(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
-    s32, s32, s32, s32, s32, u16, u8, u8, u8, u8);
+    s32, const s8 *, s32, s32, s32, u16, u8, u8, u8, u8);
 extern void Type7Actor_SetTarget(void *actor, void *object);
 extern void Type7Actor_InitializeStationaryMotionState(void *actor);
 extern s32 Type7Actor_MatchesGlobalRecordIndex(void *actor);
@@ -61,7 +61,7 @@ static void callActorVoidMethod(u8 *actor, u32 byteOffset)
  * a category-seven actor and return one.
  *
  * The record supplies descriptor words +0x02..+0x06, signed bytes +0x42/+0x43,
- * bounds +0x4c..+0x53, motion values +0x20/+0x28..+0x30, object pointers
+ * bounds +0x4c..+0x53, motion values +0x20/+0x28..+0x30, script pointers
  * +0x44/+0x48, and flags +0x38. Bit 0x40 suppresses replacement of the prior
  * global actor at +0x2ea8 and selects descriptor halfword +0x52 value 99 rather
  * than one. Bit zero controls actor +0x268 bit 0x4000.
@@ -164,8 +164,8 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
         func_020beb6c(func_020beb18(angle), 0x3f000000);
     *(s32 *)(actor + 0x260) = func_020beae4();
     *(s16 *)(actor + 0x258) = *(s16 *)(record + 0x30);
-    *(u32 *)(actor + 0x294) = *(u32 *)(record + 0x44);
-    *(u32 *)(actor + 0x298) = *(u32 *)(record + 0x48);
+    *(const s8 **)(actor + 0x294) = *(const s8 **)(record + 0x44);
+    *(const s8 **)(actor + 0x298) = *(const s8 **)(record + 0x48);
     if ((recordFlags & 1) == 0)
         *(u32 *)(actor + 0x268) |= 0x4000;
     if (*(u32 *)(actor + 0x1fc) == 0) {

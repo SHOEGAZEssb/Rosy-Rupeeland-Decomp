@@ -15,10 +15,10 @@
 .extern Actor_IntegrateMotion
 .extern Actor_SetPosition
 .extern func_02032abc
-.extern Actor_SetResourceVariant
-.extern Actor_AssignPrimaryResource
-.extern Actor_SetResourceSlot
-.extern Actor_AssignPrimaryResourceWithEffect
+.extern Actor_SelectScriptVariant
+.extern Actor_AssignPrimaryScript
+.extern Actor_SetScriptSlot
+.extern Actor_AssignPrimaryScriptToCollection
 .extern Actor_SetInteractionFlag2000
 .extern Actor_ClearInteractionFlag2000
 .extern Actor_TestQueryPointAndClearFlag2000
@@ -152,9 +152,9 @@ data_ov093_022188f0:
     .word func_ov093_02218798
     .word func_ov093_02218790
     .word func_ov093_02218788
-    .word Actor_AssignPrimaryResourceWithEffect
-    .word Actor_AssignPrimaryResource
-    .word Actor_SetResourceVariant
+    .word Actor_AssignPrimaryScriptToCollection
+    .word Actor_AssignPrimaryScript
+    .word Actor_SelectScriptVariant
     .word func_ov093_02218778
     .word Actor_SetPosition
     .word func_02033b38
@@ -167,7 +167,7 @@ data_ov093_022188f0:
     .word func_ov093_02218750
     .word Actor_IntegrateMotion
     .word func_ov093_02218744
-    .word Actor_SetResourceSlot
+    .word Actor_SetScriptSlot
     .word Actor_GetGravityAcceleration
     .word func_ov093_02218734
     .word Actor_ApplyMotionImpulse

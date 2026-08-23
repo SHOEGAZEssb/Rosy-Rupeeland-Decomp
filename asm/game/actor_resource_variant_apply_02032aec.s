@@ -10,9 +10,9 @@
 .extern Actor_GetCollection
 .extern gGameWork
 
-    .global Actor_SetResourceVariant
-    .type Actor_SetResourceVariant, @function
-Actor_SetResourceVariant: ; 0x02032aec
+    .global Actor_SelectScriptVariant
+    .type Actor_SelectScriptVariant, @function
+Actor_SelectScriptVariant: ; 0x02032aec
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x128
     mov r5, r0
@@ -74,4 +74,4 @@ Actor_SetResourceVariant: ; 0x02032aec
     ldmia sp!, {r3, r4, r5, pc}
 .L_02032bc8: .word gActorRuntimeCollection
 .L_02032bcc: .word gGameWork
-    .size Actor_SetResourceVariant, . - Actor_SetResourceVariant
+    .size Actor_SelectScriptVariant, . - Actor_SelectScriptVariant

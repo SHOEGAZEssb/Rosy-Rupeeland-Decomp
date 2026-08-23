@@ -2,23 +2,26 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
-/* Own and position the actor's optional auxiliary collision resource. */
-extern u8 data_020df208[];
+/* Own, animate, and position the actor's optional interaction icon. */
+extern const char gActorInteractionIconAllocationTag[];
 
 typedef struct AnimationResourceState {
     void *character;
     void *palette;
-    void *screen;
+    void *cell;
 } AnimationResourceState;
 
-typedef struct ActorAuxiliaryCollisionResource {
-    void *group;
-    void *sprite;
-    AnimationResourceState resources;
-    VecFx32Object position;
-    u32 flags;
-    u32 field28;
-} ActorAuxiliaryCollisionResource;
+typedef struct ActorInteractionIcon {
+    void *spriteGroup;
+    void *spriteState;
+    AnimationResourceState spriteResources;
+    VecFx32Object offsetFx32;
+    u32 stateFlags;
+    u32 directionAngle;
+} ActorInteractionIcon;
+
+typedef char ActorInteractionIconSizeCheck[
+    sizeof(ActorInteractionIcon) == 0x2c ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +31,7 @@ extern void *ActorCollection_GetSpriteOwner(void *collection);
 extern void *data_020f4e18;
 extern void *AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *archive, u32 characterId,
-                          u32 paletteId, u32 screenId);
+                          u32 paletteId, u32 cellId);
 extern void *AnimationResourceState_Destroy(void *state);
 extern void AnimationResourceState_ReleaseResources(void *state);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group, const void *source, s32 attach);
@@ -43,233 +46,247 @@ extern void func_02056f00(void *destination, const void *source);
 #endif
 
 /*
- * Construct the optional actor sprite from retail resources 0x32ae, 0x3299,
- * and 0x32af. The resource borrows its group and archive entries, owns the
- * created sprite state, starts at a zero fixed-point position, and returns its
- * caller-owned storage.
+ * Construct the interaction icon from retail resources 0x32ae, 0x3299, and
+ * 0x32af. The icon borrows its sprite group, retains the three loaded resource
+ * handles, owns the created sprite state, starts with a zero FX32 offset and
+ * direction, and returns its caller-owned storage.
  */
-ActorAuxiliaryCollisionResource *func_020570c4(
-    ActorAuxiliaryCollisionResource *self, void *group)
+ActorInteractionIcon *ActorInteractionIcon_Init(ActorInteractionIcon *self,
+                                                void *spriteGroup)
 {
-    self->group = group;
-    AnimationResourceState_InitEmbedded(&self->resources);
-    VecFx32Object_Init(&self->position);
-    self->flags = (self->flags & ~0x1fu) | 1u;
-    self->field28 = 0;
-    func_02071ee0(&self->resources, data_020f4e18, 0x32ae, 0x3299,
+    self->spriteGroup = spriteGroup;
+    AnimationResourceState_InitEmbedded(&self->spriteResources);
+    VecFx32Object_Init(&self->offsetFx32);
+    self->stateFlags = (self->stateFlags & ~0x1fu) | 1u;
+    self->directionAngle = 0;
+    func_02071ee0(&self->spriteResources, data_020f4e18, 0x32ae, 0x3299,
                   0x32af);
-    self->sprite = GraphicsSpriteGroup_CreateStateFromSource(self->group, &self->resources, 2);
-    GraphicsSpriteState_SetAnimationIndex(self->sprite, 0);
-    *(u16 *)((u8 *)self->sprite + 0x24) |= 2;
-    *(u16 *)((u8 *)self->sprite + 0x2c) = 0x80;
-    *(u16 *)((u8 *)self->sprite + 0x2e) = 0x60;
-    *(u16 *)((u8 *)self->sprite + 0x24) |= 4;
+    self->spriteState = GraphicsSpriteGroup_CreateStateFromSource(
+        self->spriteGroup, &self->spriteResources, 2);
+    GraphicsSpriteState_SetAnimationIndex(self->spriteState, 0);
+    *(u16 *)((u8 *)self->spriteState + 0x24) |= 2;
+    *(u16 *)((u8 *)self->spriteState + 0x2c) = 0x80;
+    *(u16 *)((u8 *)self->spriteState + 0x2e) = 0x60;
+    *(u16 *)((u8 *)self->spriteState + 0x24) |= 4;
     return self;
 }
 
-/* Release the owned sprite and borrowed animation triplet, then return self. */
-ActorAuxiliaryCollisionResource *func_02057184(
-    ActorAuxiliaryCollisionResource *self)
+/* Release the owned sprite and retained resource triplet, then return self. */
+ActorInteractionIcon *ActorInteractionIcon_Destroy(ActorInteractionIcon *self)
 {
-    GraphicsSpriteGroup_ReleaseState(self->group, self->sprite);
-    AnimationResourceState_ReleaseResources(&self->resources);
-    VecFx32Object_Destroy(&self->position);
-    AnimationResourceState_Destroy(&self->resources);
+    GraphicsSpriteGroup_ReleaseState(self->spriteGroup, self->spriteState);
+    AnimationResourceState_ReleaseResources(&self->spriteResources);
+    VecFx32Object_Destroy(&self->offsetFx32);
+    AnimationResourceState_Destroy(&self->spriteResources);
     return self;
 }
 
 /*
- * Advance the auxiliary sprite's six-state show/hide animation and synchronize
- * its screen position with the supplied actor transform and collision center.
+ * Advance the icon's six-state show/hide animation and synchronize its screen
+ * position with the borrowed view position and actor collision center. The
+ * icon retains neither input.
  */
-void func_020571b4(ActorAuxiliaryCollisionResource *self,
-                   const VecFx32Object *transform,
-                   const VecFx32Object *center)
+void ActorInteractionIcon_UpdatePresentation(
+    ActorInteractionIcon *self, const VecFx32Object *viewPosition,
+    const VecFx32Object *actorCollisionCenter)
 {
-    VecFx32Object displacement;
-    VecFx32Object position;
-    u16 *spriteFlags = (u16 *)((u8 *)self->sprite + 0x24);
-    u32 state = (self->flags >> 1) & 0xfu;
+    VecFx32Object relativePosition;
+    VecFx32Object screenPositionFx32;
+    u16 *spriteFlags = (u16 *)((u8 *)self->spriteState + 0x24);
+    u32 state = (self->stateFlags >> 1) & 0xfu;
 
     switch (state) {
     case 1:
         *spriteFlags &= 0xfffbu;
         *spriteFlags &= 0xfffdu;
-        GraphicsSpriteState_SetAnimationIndex(self->sprite, 2);
-        self->flags = (self->flags & ~0x1eu) | 4u;
+        GraphicsSpriteState_SetAnimationIndex(self->spriteState, 2);
+        self->stateFlags = (self->stateFlags & ~0x1eu) | 4u;
         /* fall through */
     case 2:
         if ((*spriteFlags & 1u) != 0) {
-            GraphicsSpriteState_SetAnimationIndex(self->sprite, 0);
+            GraphicsSpriteState_SetAnimationIndex(self->spriteState, 0);
             *spriteFlags |= 2u;
-            self->flags = (self->flags & ~0x1eu) | 6u;
+            self->stateFlags = (self->stateFlags & ~0x1eu) | 6u;
         }
         break;
     case 4:
         *spriteFlags &= 0xfffbu;
         *spriteFlags &= 0xfffdu;
-        GraphicsSpriteState_SetAnimationIndex(self->sprite, 1);
-        self->flags = (self->flags & ~0x1eu) | 10u;
+        GraphicsSpriteState_SetAnimationIndex(self->spriteState, 1);
+        self->stateFlags = (self->stateFlags & ~0x1eu) | 10u;
         /* fall through */
     case 5:
         if ((*spriteFlags & 1u) != 0) {
             *spriteFlags |= 4u;
-            self->flags &= ~0x1eu;
+            self->stateFlags &= ~0x1eu;
         }
         break;
     default:
         break;
     }
 
-    *(u16 *)((u8 *)self->sprite + 0x30) = (u16)self->field28;
-    VecFx32_Subtract(&displacement, center, transform);
-    func_02056f00(&position, &displacement);
-    VecFx32Object_Destroy(&displacement);
-    position.value.x += self->position.value.x;
-    position.value.y += self->position.value.y;
-    *(u16 *)((u8 *)self->sprite + 0x2c) =
-        (u16)(position.value.x >> 12);
-    *(u16 *)((u8 *)self->sprite + 0x2e) =
-        (u16)(position.value.y >> 12);
-    *(u8 *)((u8 *)self->sprite + 0x3a) = 0;
-    *(u16 *)((u8 *)self->sprite + 0x28) = 0x100;
-    VecFx32Object_Destroy(&position);
+    *(u16 *)((u8 *)self->spriteState + 0x30) =
+        (u16)self->directionAngle;
+    VecFx32_Subtract(&relativePosition, actorCollisionCenter, viewPosition);
+    func_02056f00(&screenPositionFx32, &relativePosition);
+    VecFx32Object_Destroy(&relativePosition);
+    screenPositionFx32.value.x += self->offsetFx32.value.x;
+    screenPositionFx32.value.y += self->offsetFx32.value.y;
+    *(u16 *)((u8 *)self->spriteState + 0x2c) =
+        (u16)(screenPositionFx32.value.x >> 12);
+    *(u16 *)((u8 *)self->spriteState + 0x2e) =
+        (u16)(screenPositionFx32.value.y >> 12);
+    *(u8 *)((u8 *)self->spriteState + 0x3a) = 0;
+    *(u16 *)((u8 *)self->spriteState + 0x28) = 0x100;
+    VecFx32Object_Destroy(&screenPositionFx32);
 }
 
-/* Advance the resource's low-nibble presentation state for visibility changes. */
-void func_02057394(ActorAuxiliaryCollisionResource *self, s32 enabled)
+/* Advance the icon toward shown or hidden according to shouldShow. */
+void ActorInteractionIcon_UpdateEnabledState(ActorInteractionIcon *self,
+                                             s32 shouldShow)
 {
     u32 state;
 
-    if (enabled != 0 && (self->flags & 1u) != 0) {
-        state = (self->flags >> 1) & 0xfu;
+    if (shouldShow != 0 && (self->stateFlags & 1u) != 0) {
+        state = (self->stateFlags >> 1) & 0xfu;
         if (state == 0)
-            self->flags = (self->flags & ~0x1eu) | 2u;
+            self->stateFlags = (self->stateFlags & ~0x1eu) | 2u;
         return;
     }
-    state = (self->flags >> 1) & 0xfu;
+    state = (self->stateFlags >> 1) & 0xfu;
     if (state == 3)
-        self->flags = (self->flags & ~0x1eu) | 8u;
+        self->stateFlags = (self->stateFlags & ~0x1eu) | 8u;
 }
 
-/* Report whether the resource's four-bit presentation state is nonzero. */
-s32 func_020573e4(const ActorAuxiliaryCollisionResource *self)
+/* Report whether the icon is appearing, shown, or disappearing. */
+s32 ActorInteractionIcon_IsActive(const ActorInteractionIcon *self)
 {
-    return ((self->flags >> 1) & 0xfu) != 0;
+    return ((self->stateFlags >> 1) & 0xfu) != 0;
 }
 
-/* Store the low two caller bits in field28 bits 14 and 15. */
-void func_020573fc(ActorAuxiliaryCollisionResource *self, s32 value)
+/* Map the low two direction bits to quarter-turn Nitro angle units. */
+void ActorInteractionIcon_SetDirection(ActorInteractionIcon *self,
+                                       s32 direction)
 {
-    self->field28 = ((u32)value << 30) >> 16;
+    self->directionAngle = ((u32)direction << 30) >> 16;
 }
 
 /*
- * Build the auxiliary resource's interaction rectangle for the direction in
- * field28 bits 14..15, then translate it by the supplied position and the
- * resource's own X/Y offset. The four directions use the retail 16-by-20
- * extents and the result is returned as four signed pixel coordinates.
+ * Build the icon's directional hit rectangle, then translate it by the
+ * supplied actor collision center and the icon's own FX32 X/Y offset. The
+ * result order is left/top/right/bottom in signed projected pixel units. The
+ * four directions use the retail 16-by-20 extents.
  */
-void func_0205740c(s16 *output, const ActorAuxiliaryCollisionResource *self,
-                   const VecFx32Object *position)
+void ActorInteractionIcon_BuildHitBounds(
+    s16 hitBounds[4], const ActorInteractionIcon *self,
+    const VecFx32Object *actorCollisionCenter)
 {
-    s32 direction = (s32)self->field28 / 0x4000;
-    s32 x = (position->value.x + self->position.value.x) >> 12;
-    s32 y = (position->value.y + self->position.value.y) >> 12;
+    s32 direction = (s32)self->directionAngle / 0x4000;
+    s32 offsetX =
+        (actorCollisionCenter->value.x + self->offsetFx32.value.x) >> 12;
+    s32 offsetY =
+        (actorCollisionCenter->value.y + self->offsetFx32.value.y) >> 12;
 
-    output[0] = -8;
-    output[1] = -20;
-    output[2] = 8;
-    output[3] = 0;
+    hitBounds[0] = -8;
+    hitBounds[1] = -20;
+    hitBounds[2] = 8;
+    hitBounds[3] = 0;
     switch (direction) {
     case 0:
         break;
     case 1:
-        output[0] = -20;
-        output[1] = -8;
-        output[2] = 0;
-        output[3] = 8;
+        hitBounds[0] = -20;
+        hitBounds[1] = -8;
+        hitBounds[2] = 0;
+        hitBounds[3] = 8;
         break;
     case 2:
-        output[0] = -8;
-        output[1] = 0;
-        output[2] = 8;
-        output[3] = 20;
+        hitBounds[0] = -8;
+        hitBounds[1] = 0;
+        hitBounds[2] = 8;
+        hitBounds[3] = 20;
         break;
     case 3:
-        output[0] = 0;
-        output[1] = -8;
-        output[2] = 20;
-        output[3] = 8;
+        hitBounds[0] = 0;
+        hitBounds[1] = -8;
+        hitBounds[2] = 20;
+        hitBounds[3] = 8;
         break;
     default:
         break;
     }
-    output[0] = (s16)(output[0] + x);
-    output[1] = (s16)(output[1] + y);
-    output[2] = (s16)(output[2] + x);
-    output[3] = (s16)(output[3] + y);
+    hitBounds[0] = (s16)(hitBounds[0] + offsetX);
+    hitBounds[1] = (s16)(hitBounds[1] + offsetY);
+    hitBounds[2] = (s16)(hitBounds[2] + offsetX);
+    hitBounds[3] = (s16)(hitBounds[3] + offsetY);
 }
 
 /*
- * Lazily allocate 0x2c bytes tagged by data_020df208, construct the resource
- * with data obtained from the actor's collection, and store it at actor+0x1e0.
- * Then set resource X +0x18 to zero and Y +0x1c to actor s16 +0x6a in 20.12
- * fixed point. The retail path proceeds to these writes even if allocation
- * failed, so successful allocation is an ownership precondition. Returns no
- * value; heap and constructor helpers manage SDK/resource state.
+ * Lazily allocate the 0x2c-byte icon with tag "ICON", construct it from the
+ * actor collection's borrowed sprite group, and store the owned pointer at
+ * actor +0x1e0. Whether new or existing, reset its FX32 X offset to zero and Y
+ * offset to the actor's signed top bound at +0x6a. Retail proceeds to these
+ * writes after allocation failure, so successful allocation/construction is a
+ * precondition. Returns no value; heap and graphics helpers own their effects.
  */
-void Actor_EnsureAuxiliaryCollisionResource(void *self)
+void Actor_EnsureInteractionIcon(void *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *resource = *(u8 **)(actor + 0x1e0);
+    ActorInteractionIcon *icon =
+        *(ActorInteractionIcon **)(actor + 0x1e0);
 
-    if (resource == 0) {
-        resource = (u8 *)Heap_Alloc(0x2c, (const char *)data_020df208, 4,
-                                    &gHeapContext);
-        if (resource != 0) {
-            resource = (u8 *)func_020570c4(
-                (ActorAuxiliaryCollisionResource *)resource,
+    if (icon == 0) {
+        icon = (ActorInteractionIcon *)Heap_Alloc(
+            sizeof(ActorInteractionIcon), gActorInteractionIconAllocationTag,
+            4, &gHeapContext);
+        if (icon != 0) {
+            icon = ActorInteractionIcon_Init(
+                icon,
                 ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)));
         }
-        *(u8 **)(actor + 0x1e0) = resource;
+        *(ActorInteractionIcon **)(actor + 0x1e0) = icon;
     }
-    *(s32 *)(resource + 0x18) = 0;
-    *(s32 *)(resource + 0x1c) = *(s16 *)(actor + 0x6a) << 12;
+    icon->offsetFx32.value.x = 0;
+    icon->offsetFx32.value.y =
+        (s32)((u32)(s32)*(s16 *)(actor + 0x6a) << 12);
 }
 
 /*
- * If actor+0x1e0 is non-null, run its destructor and free the allocation, then
- * clear the actor field. Returns no value; heap/resource ownership is released.
+ * If actor +0x1e0 is non-null, destroy and free the owned icon, then clear the
+ * actor field. Returns no value; heap and graphics ownership is released. The
+ * actor's separate 0x08000000 flag is deliberately unchanged.
  */
-void Actor_DestroyAuxiliaryCollisionResource(void *self)
+void Actor_DestroyInteractionIcon(void *self)
 {
     u8 *actor = (u8 *)self;
-    void *resource = *(void **)(actor + 0x1e0);
+    ActorInteractionIcon *icon =
+        *(ActorInteractionIcon **)(actor + 0x1e0);
 
-    if (resource != 0) {
-        func_02057184((ActorAuxiliaryCollisionResource *)resource);
-        Heap_Free(resource);
+    if (icon != 0) {
+        ActorInteractionIcon_Destroy(icon);
+        Heap_Free(icon);
     }
-    *(void **)(actor + 0x1e0) = 0;
+    *(ActorInteractionIcon **)(actor + 0x1e0) = 0;
 }
 
-/* Return the auxiliary resource pointer stored at actor+0x1e0. */
-void *Actor_GetAuxiliaryCollisionResource(void *self)
+/* Return the borrowed nullable interaction icon stored at actor +0x1e0. */
+ActorInteractionIcon *Actor_GetInteractionIcon(void *self)
 {
-    return *(void **)((u8 *)self + 0x1e0);
+    return *(ActorInteractionIcon **)((u8 *)self + 0x1e0);
 }
 
 /*
- * If the auxiliary resource exists, store integer X/Y at +0x18/+0x1c after
- * converting both to 20.12 fixed point. Returns no value.
+ * If the icon exists, convert signed projected-pixel offsets to FX32 Q20.12
+ * and store its X/Y offset. Negative inputs retain ARM two's-complement shift
+ * behavior. Returns no value and leaves the zero Z offset unchanged.
  */
-void Actor_SetAuxiliaryCollisionPosition(void *self, s32 x, s32 y)
+void Actor_SetInteractionIconOffset(void *self, s32 offsetX, s32 offsetY)
 {
-    u8 *resource = *(u8 **)((u8 *)self + 0x1e0);
+    ActorInteractionIcon *icon =
+        *(ActorInteractionIcon **)((u8 *)self + 0x1e0);
 
-    if (resource != 0) {
-        *(s32 *)(resource + 0x18) = x << 12;
-        *(s32 *)(resource + 0x1c) = y << 12;
+    if (icon != 0) {
+        icon->offsetFx32.value.x = (s32)((u32)offsetX << 12);
+        icon->offsetFx32.value.y = (s32)((u32)offsetY << 12);
     }
 }

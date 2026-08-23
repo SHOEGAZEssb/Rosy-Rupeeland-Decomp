@@ -1,8 +1,8 @@
 #include "tingle/types.h"
 
 /*
- * Project actor state into screen attachments, synchronize an optional runtime
- * object, and place the auxiliary height indicator.
+ * Project actor state into screen attachments, update the optional interaction
+ * icon, and place the auxiliary height indicator.
  */
 typedef struct ActorScreenPoint {
     void *vtable;
@@ -18,9 +18,9 @@ extern "C" {
 extern s32 func_020adae4(s32, s32);
 extern void *Actor_GetCollection(void *);
 extern s32 func_02030b7c(void *);
-extern void func_02057394(void *, s32);
+extern void ActorInteractionIcon_UpdateEnabledState(void *, s32);
 extern void Actor_GetCollisionCenter(void *, void *);
-extern void func_020571b4(void *, const void *, const void *);
+extern void ActorInteractionIcon_UpdatePresentation(void *, const void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern u32 Actor_QueryTerrainCell(void *, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -39,17 +39,18 @@ static s32 multiplyFx(s32 a, s32 b)
  * coordinates +0x04/+0x08, and optionally apply scale +0x1d0. Actor bounds
  * +0x68..+0x6e control primary +0x54 visibility and runtime flag mask 0x4.
  * Update primary position, priority +0x28, and optional scale; synchronize the
- * optional runtime object +0x1e0; then update auxiliary render attachment +0xa8
- * from terrain, baseline +0x1dc, and height delta. Returns no value; borrowed
- * actor/presentation state changes, with no direct hardware access.
+ * optional interaction icon +0x1e0; then update height-indicator attachment
+ * +0xa8 from terrain, baseline +0x1dc, and height delta. Returns no value;
+ * borrowed actor/presentation state changes, with no direct hardware access.
  *
  * Matching assembly is canonical. This compact portable source does not yet
  * reproduce five retail details: direct-coordinate mask 0x01000000 returns
  * before +0x1e0/+0xa8 work; non-direct primary priority uses view-relative Y;
  * auxiliary display requires mask 0x10000000 clear; terrain classes 17, 18,
- * and 20 hide the auxiliary; and +0x1e0 enablement includes reserved-peer,
- * collision-overlap, and identity-byte gates. Keep those discrepancies explicit
- * until the complete matching control flow replaces this host approximation.
+ * and 20 hide the height indicator; and +0x1e0 enablement includes
+ * reserved-peer, actor-bounds-overlap, and identity-byte gates. Keep those
+ * discrepancies explicit until the complete matching control flow replaces
+ * this host approximation.
  */
 void Actor_UpdatePresentation(ActorScreenPoint *screenPosition,
                               void *actorObject,
@@ -58,7 +59,7 @@ void Actor_UpdatePresentation(ActorScreenPoint *screenPosition,
     u8 *actor = (u8 *)actorObject;
     const u8 *viewPosition = (const u8 *)viewPositionPointer;
     u8 *primaryAttachment = *(u8 **)(actor + 0x54);
-    u8 *auxiliaryAttachment;
+    u8 *heightIndicatorAttachment;
     s32 worldX;
     s32 worldY;
     s32 worldZ;
@@ -129,20 +130,24 @@ void Actor_UpdatePresentation(ActorScreenPoint *screenPosition,
 
     if (!(*(u32 *)(actor + 0x14) & 0x01000000) &&
         *(void **)(actor + 0x1e0)) {
-        u8 center[0x10];
-        s32 enabled = *(void **)(actor + 0x184) &&
-                      (func_02030b7c(Actor_GetCollection(actor)) & 1);
+        void *interactionIcon = *(void **)(actor + 0x1e0);
+        u8 actorCollisionCenter[0x10];
+        s32 shouldShowInteractionIcon =
+            *(void **)(actor + 0x184) &&
+            (func_02030b7c(Actor_GetCollection(actor)) & 1);
         if (!*(void **)(actor + 0x184) &&
             !(*(u32 *)(actor + 0x14) & 0x1000))
-            enabled = 0;
-        func_02057394(*(void **)(actor + 0x1e0), enabled);
-        Actor_GetCollisionCenter(center, actor);
-        func_020571b4(*(void **)(actor + 0x1e0), viewPosition, center);
-        VecFx32Object_Destroy(center);
+            shouldShowInteractionIcon = 0;
+        ActorInteractionIcon_UpdateEnabledState(
+            interactionIcon, shouldShowInteractionIcon);
+        Actor_GetCollisionCenter(actorCollisionCenter, actor);
+        ActorInteractionIcon_UpdatePresentation(
+            interactionIcon, viewPosition, actorCollisionCenter);
+        VecFx32Object_Destroy(actorCollisionCenter);
     }
 
-    auxiliaryAttachment = *(u8 **)(actor + 0xa8);
-    if (auxiliaryAttachment) {
+    heightIndicatorAttachment = *(u8 **)(actor + 0xa8);
+    if (heightIndicatorAttachment) {
         u32 terrain = Actor_QueryTerrainCell(actor, *(s32 *)(actor + 0x1c) >> 16,
                                     *(s32 *)(actor + 0x20) >> 16);
         s32 terrainHeight = (s32)(terrain << 27) >> 27;
@@ -152,22 +157,23 @@ void Actor_UpdatePresentation(ActorScreenPoint *screenPosition,
 
         if (!(flags & 0x10000000) || !(flags & 0x02000000) ||
             (*(u16 *)(*(u8 **)(actor + 0x54) + 0x24) & 4) || delta <= 0) {
-            *(u16 *)(auxiliaryAttachment + 0x24) |= 8;
+            *(u16 *)(heightIndicatorAttachment + 0x24) |= 8;
         } else {
             s32 mode = delta < 0x5800 ? 1 : (delta > 0x20000 ? 3 : 2);
-            if (auxiliaryAttachment[0x38] != mode)
-                GraphicsSpriteState_SetAnimationIndex(auxiliaryAttachment, mode);
-            *(u16 *)(auxiliaryAttachment + 0x24) &= ~8;
-            *(s16 *)(auxiliaryAttachment + 0x2c) =
+            if (heightIndicatorAttachment[0x38] != mode)
+                GraphicsSpriteState_SetAnimationIndex(
+                    heightIndicatorAttachment, mode);
+            *(u16 *)(heightIndicatorAttachment + 0x24) &= ~8;
+            *(s16 *)(heightIndicatorAttachment + 0x2c) =
                 (s16)((*(s32 *)(actor + 0x1c) -
                        *(s32 *)(viewPosition + 0x04)) >> 12);
-            *(s16 *)(auxiliaryAttachment + 0x2e) =
+            *(s16 *)(heightIndicatorAttachment + 0x2e) =
                 (s16)(((*(s32 *)(actor + 0x20) -
                          *(s32 *)(viewPosition + 0x08)) >> 12) - 2 -
                       (baseline >> 12));
-            auxiliaryAttachment[0x3a] =
+            heightIndicatorAttachment[0x3a] =
                 baseline < (terrainHeight << 16) ? 2 : 1;
-            *(s16 *)(auxiliaryAttachment + 0x28) =
+            *(s16 *)(heightIndicatorAttachment + 0x28) =
                 (s16)(0x8007 - (((*(s32 *)(actor + 0x20) -
                                     *(s32 *)(viewPosition + 0x08)) >> 12) - 2));
         }

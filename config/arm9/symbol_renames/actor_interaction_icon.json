@@ -1,0 +1,19 @@
+{
+  "GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition": "GamePhaseActorScriptVm_SetInteractionIconOffset",
+  "GamePhaseActorScriptVm_SetAuxiliaryCollisionResourceEnabled": "GamePhaseActorScriptVm_SetInteractionIconEnabled",
+  "GamePhaseActorScriptVm_DispatchActorAuxiliaryCollisionCommand": "GamePhaseActorScriptVm_SetInteractionIconDirection",
+  "Actor_PollInteractionResource": "Actor_PollInteractionIconState",
+  "Actor_EnsureAuxiliaryCollisionResource": "Actor_EnsureInteractionIcon",
+  "Actor_DestroyAuxiliaryCollisionResource": "Actor_DestroyInteractionIcon",
+  "Actor_GetAuxiliaryCollisionResource": "Actor_GetInteractionIcon",
+  "Actor_SetAuxiliaryCollisionPosition": "Actor_SetInteractionIconOffset",
+  "Type7Actor_SpawnAuxiliaryCollisionResource": "Type7Actor_CreatePhase10LoadScene",
+  "func_020570c4": "ActorInteractionIcon_Init",
+  "func_02057184": "ActorInteractionIcon_Destroy",
+  "func_020571b4": "ActorInteractionIcon_UpdatePresentation",
+  "func_02057394": "ActorInteractionIcon_UpdateEnabledState",
+  "func_020573e4": "ActorInteractionIcon_IsActive",
+  "func_020573fc": "ActorInteractionIcon_SetDirection",
+  "func_0205740c": "ActorInteractionIcon_BuildHitBounds",
+  "data_020df208": "gActorInteractionIconAllocationTag"
+}

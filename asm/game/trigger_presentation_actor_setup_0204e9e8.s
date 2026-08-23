@@ -2,7 +2,7 @@
 .extern data_020f4e18
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_GetCollection
-.extern func_02034260
+.extern Actor_ApplySpawnDescriptorScript
 .extern func_02071e60
 .extern GraphicsArchive_FindPaletteResource
 .extern func_02071e80
@@ -49,7 +49,7 @@ func_0204e9e8: ; 0x0204e9e8
     mov r0, r5
     orr r2, r2, #0x2
     strh r2, [r3, #0x24]
-    bl func_02034260
+    bl Actor_ApplySpawnDescriptorScript
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 .L_0204ea88: .word data_020f4e18

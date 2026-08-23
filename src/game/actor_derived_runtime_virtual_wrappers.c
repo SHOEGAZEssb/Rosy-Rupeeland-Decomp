@@ -7,7 +7,7 @@ extern "C" {
 extern void func_02032abc(void *actor);
 extern s32 Actor_SetInteractionFlag2000(void *actor);
 extern s32 Actor_ClearInteractionFlag2000(void *actor);
-extern s32 Actor_PollInteractionResource(void *actor);
+extern s32 Actor_PollInteractionIconState(void *actor);
 extern u32 Actor_TestQueryPointAndClearFlag2000(void *actor, const void *query);
 #ifdef __cplusplus
 }
@@ -39,13 +39,13 @@ s32 ActorDerivedRuntime_AcceptInteractionQuery(void *actor)
 }
 
 /*
- * Clear actor interaction flag 0x2000, poll the optional interaction resource,
- * and return the poll wrapper's confirmed zero result.
+ * Clear actor interaction flag 0x2000, poll the optional interaction icon's
+ * active state, and return the poll wrapper's confirmed zero result.
  */
 s32 ActorDerivedRuntime_ClearInteractionQueryState(void *actor)
 {
     (void)Actor_ClearInteractionFlag2000(actor);
-    return Actor_PollInteractionResource(actor);
+    return Actor_PollInteractionIconState(actor);
 }
 
 /*

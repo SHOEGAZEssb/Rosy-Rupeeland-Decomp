@@ -83,8 +83,8 @@ void Type7Actor_EnterFlag40000State(void *self)
 /*
  * Inputs are a type-seven actor, a value stored at +0x110, and a zero/nonzero
  * selector stored canonically at +0x114. Require object +0x294 and actor state
- * code zero. Zero the three motion vectors, invoke actor virtual slot 0x74 with
- * object +0x294, reset an active embedded helper if needed, select animation
+ * code zero. Zero the three motion vectors, assign the script at +0x294 through
+ * actor virtual slot +0x74, reset an active embedded helper if needed, select animation
  * 0x19, enable it, and immediately invoke helper virtual slot two. No value is
  * returned. Actor-owned objects and animation state change; there are no direct
  * hardware effects.
@@ -93,17 +93,18 @@ void Type7Actor_StartAnimation19Interaction(void *self, s32 value, s32 selector)
 {
     u8 *actor = (u8 *)self;
     void *helper;
-    void (**actorVtable)(void *, void *);
+    void (**actorVtable)(void *, const s8 *);
     void (**helperVtable)(void *);
-    if (*(void **)(actor + 0x294) == 0 || Type7Actor_GetStateCode(actor) != 0)
+    if (*(const s8 **)(actor + 0x294) == 0 ||
+        Type7Actor_GetStateCode(actor) != 0)
         return;
     ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
     ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
     ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
     *(s32 *)(actor + 0x110) = value;
     *(s32 *)(actor + 0x114) = selector != 0;
-    actorVtable = *(void (***)(void *, void *))actor;
-    actorVtable[0x74 / 4](actor, *(void **)(actor + 0x294));
+    actorVtable = *(void (***)(void *, const s8 *))actor;
+    actorVtable[0x74 / 4](actor, *(const s8 **)(actor + 0x294));
     helper = actor + 0x2a8;
     if (*(s16 *)(actor + 0x2b6) != 0)
         Type7MarkerPresentation_ReloadResources(helper);

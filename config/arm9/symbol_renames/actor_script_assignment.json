@@ -1,0 +1,7 @@
+{
+  "Actor_SetResourceVariant": "Actor_SelectScriptVariant",
+  "Actor_AssignPrimaryResource": "Actor_AssignPrimaryScript",
+  "Actor_SetResourceSlot": "Actor_SetScriptSlot",
+  "Actor_AssignPrimaryResourceWithEffect": "Actor_AssignPrimaryScriptToCollection",
+  "func_02034260": "Actor_ApplySpawnDescriptorScript"
+}

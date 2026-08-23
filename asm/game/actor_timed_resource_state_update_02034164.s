@@ -85,4 +85,4 @@ Actor_UpdateTimedResourceState: ; 0x02034164
 .L_0203425c: .word data_021052fc
     .size Actor_UpdateTimedResourceState, . - Actor_UpdateTimedResourceState
 
-    .global func_02034260
+    .global Actor_ApplySpawnDescriptorScript

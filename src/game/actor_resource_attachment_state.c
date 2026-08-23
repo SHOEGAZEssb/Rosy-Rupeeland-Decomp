@@ -1,10 +1,10 @@
 #include "tingle/types.h"
 
-/* Manage actor resource slots and snapshot/restore primary attachment state. */
-typedef struct ResourceStateVTable {
+/* Manage actor script slots and snapshot/restore primary attachment state. */
+typedef struct ActorScriptStateVTable {
     u8 field_00[0x78];
-    void (*activate_78)(void *, s32);
-} ResourceStateVTable;
+    void (*selectScriptVariant_78)(void *, s32);
+} ActorScriptStateVTable;
 
 #ifdef __cplusplus
 extern "C" {
@@ -15,23 +15,24 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #endif
 
 /*
- * Set actor flag 0x08, store resource at slot 0x180, call vtable offset 0x78
- * with zero, then set flag 0x01000000. Returns no value; the virtual callback
- * may change resource or presentation state.
+ * Set actor flag 0x08, store the borrowed script in primary slot +0x180, call
+ * vtable offset +0x78 to select script variant zero, then set flag 0x01000000.
+ * Returns no value; the virtual callback may change script or presentation
+ * state. The actor does not take ownership of the script bytes.
  */
-void Actor_AssignPrimaryResource(void *self, void *resource)
+void Actor_AssignPrimaryScript(void *self, const s8 *script)
 {
     u8 *actor = (u8 *)self;
     *(u32 *)(actor + 0x10) |= 8;
-    *(void **)(actor + 0x180) = resource;
-    (*(ResourceStateVTable **)actor)->activate_78(actor, 0);
+    *(const s8 **)(actor + 0x180) = script;
+    (*(ActorScriptStateVTable **)actor)->selectScriptVariant_78(actor, 0);
     *(u32 *)(actor + 0x10) |= 0x01000000;
 }
 
-/* Store value in resource slot 0x180+index*4 and return no value. */
-void Actor_SetResourceSlot(void *self, s32 index, void *value)
+/* Store a borrowed script in slot +0x180+index*4 and return no value. */
+void Actor_SetScriptSlot(void *self, s32 index, const s8 *script)
 {
-    *(void **)((u8 *)self + 0x180 + index * 4) = value;
+    *(const s8 **)((u8 *)self + 0x180 + index * 4) = script;
 }
 
 /*

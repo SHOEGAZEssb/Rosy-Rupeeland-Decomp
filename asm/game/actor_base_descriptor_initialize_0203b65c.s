@@ -4,7 +4,7 @@
 .extern ActorCollection_GetSpriteOwner
 .extern Actor_CreateSecondaryRenderAttachment
 .extern Actor_GetCollection
-.extern func_02034260
+.extern Actor_ApplySpawnDescriptorScript
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
@@ -89,7 +89,7 @@ Actor_InitializeFromDescriptor: ; 0x0203b65c
 .L_0203b784:
     mov r0, r5
     mov r1, r4
-    bl func_02034260
+    bl Actor_ApplySpawnDescriptorScript
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203b794: .word data_020f4e18
 

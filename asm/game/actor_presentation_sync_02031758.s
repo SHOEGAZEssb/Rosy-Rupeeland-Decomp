@@ -10,8 +10,8 @@
 .extern Actor_BuildWorldInteractionBounds
 .extern Actor_QueryTerrainCell
 .extern func_02056f34
-.extern func_020571b4
-.extern func_02057394
+.extern ActorInteractionIcon_UpdatePresentation
+.extern ActorInteractionIcon_UpdateEnabledState
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .extern gSceneTouchInitialData
@@ -248,12 +248,12 @@ Actor_UpdatePresentation: ; 0x02031758
     mov r1, r0
     ldr r0, [r5, #0x1e0]
     and r1, r1, #0x1
-    bl func_02057394
+    bl ActorInteractionIcon_UpdateEnabledState
     b .L_02031b0c
 .L_02031ac8:
     ldr r0, [r5, #0x1e0]
     mov r1, #0x0
-    bl func_02057394
+    bl ActorInteractionIcon_UpdateEnabledState
     b .L_02031b0c
 .L_02031ad8:
     ldr r0, [r5, #0x14]
@@ -261,16 +261,16 @@ Actor_UpdatePresentation: ; 0x02031758
     bne .L_02031b0c
     ldr r0, [r5, #0x1e0]
     mov r1, #0x0
-    bl func_02057394
+    bl ActorInteractionIcon_UpdateEnabledState
     b .L_02031b0c
 .L_02031af4:
     ldr r0, [r5, #0x1e0]
     mov r1, #0x0
-    bl func_02057394
+    bl ActorInteractionIcon_UpdateEnabledState
     b .L_02031b0c
 .L_02031b04:
     mov r1, #0x0
-    bl func_02057394
+    bl ActorInteractionIcon_UpdateEnabledState
 .L_02031b0c:
     add r0, sp, #0x10
     mov r1, r5
@@ -278,7 +278,7 @@ Actor_UpdatePresentation: ; 0x02031758
     ldr r0, [r5, #0x1e0]
     add r2, sp, #0x10
     mov r1, r4
-    bl func_020571b4
+    bl ActorInteractionIcon_UpdatePresentation
     add r0, sp, #0x10
     bl VecFx32Object_Destroy
 .L_02031b30:

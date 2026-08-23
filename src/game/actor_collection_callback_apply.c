@@ -2,7 +2,7 @@
 
 /* Apply an installed callback to a category control actor and enable category-two members. */
 extern u8 *data_021052fc;
-extern void *data_020df500[2];
+extern const s8 *data_020df500[2];
 
 #ifdef __cplusplus
 extern "C" {
@@ -16,9 +16,10 @@ extern void Actor_SetActive(void *actor, s32 enabled);
 
 /*
  * Select category one when mode is zero and category two otherwise. Find its
- * type-three/subtype-four control actor, invoke virtual +0x74 with zero,
- * virtual +0xac with index four and the corresponding callback slot, then
- * virtual +0x78 with four. Category two additionally walks collection entries
+ * type-three/subtype-four control actor, clear its primary script through
+ * virtual +0x74, store the corresponding category script in slot four through
+ * virtual +0xac, then select script variant four through virtual +0x78.
+ * Category two additionally walks collection entries
  * [0,+0x2e74), invoking Actor_SetActive(entry,1) for every nonnull entry. Returns
  * no value; collection lookup, virtual calls, and enable calls mutate actor
  * state. The retail implementation assumes the control actor lookup succeeds.
@@ -31,12 +32,12 @@ void ActorDescriptorBatch_ApplyCategoryCallback(s32 mode)
     s32 category = mode == 0 ? 1 : 2;
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, category);
     void *control = ActorCollection_FindActorByTypeAndId(collection, 3, 4);
-    void **vtable = *(void ***)control;
+    u8 *vtable = *(u8 **)control;
 
-    (*(void (**)(void *, s32))((u8 *)vtable + 0x74))(control, 0);
-    (*(void (**)(void *, s32, void *))((u8 *)vtable + 0xac))(
+    (*(void (**)(void *, const s8 *))(vtable + 0x74))(control, 0);
+    (*(void (**)(void *, s32, const s8 *))(vtable + 0xac))(
         control, 4, data_020df500[mode == 0 ? 0 : 1]);
-    (*(void (**)(void *, s32))((u8 *)vtable + 0x78))(control, 4);
+    (*(void (**)(void *, s32))(vtable + 0x78))(control, 4);
 
     if (mode != 0) {
         s32 i;

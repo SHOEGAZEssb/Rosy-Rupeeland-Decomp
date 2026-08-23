@@ -10,25 +10,25 @@
 extern "C" {
 #endif
 extern DisplayBrightnessPair gDisplayBrightnessPair;
-extern void Actor_EnsureAuxiliaryCollisionResource(void *actor);
-extern void Actor_DestroyAuxiliaryCollisionResource(void *actor);
-extern void Actor_SetAuxiliaryCollisionPosition(void *actor, s32 first,
-                                                s32 second);
+extern void Actor_EnsureInteractionIcon(void *actor);
+extern void Actor_DestroyInteractionIcon(void *actor);
+extern void Actor_SetInteractionIconOffset(void *actor, s32 offsetX,
+                                           s32 offsetY);
 extern void func_0204ea8c(void *actor, s32 value);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pop second and first operands, pass them to the bound actor's recovered
- * two-value state operation, and return zero.  The callee's field effects
- * remain unknown.
+ * Pop signed Y then X offsets in projected pixels, convert them to FX32 through
+ * the bound actor's interaction-icon setter, and return zero. A missing icon
+ * is accepted as a no-op.
  */
-s32 GamePhaseActorScriptVm_SetAuxiliaryCollisionPosition(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetInteractionIconOffset(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    Actor_SetAuxiliaryCollisionPosition(self->actor, first, second);
+    s32 offsetY = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 offsetX = (s32)GamePhaseScriptVm_Pop(&self->base);
+    Actor_SetInteractionIconOffset(self->actor, offsetX, offsetY);
     return 0;
 }
 
@@ -87,19 +87,20 @@ s32 GamePhaseActorScriptVm_StartSelectedDisplayBrightnessTransitions(GamePhaseAc
 }
 
 /*
- * Pop an enable operand.  Select one of two recovered actor mode operations
- * and keep bit 0x08000000 at actor offset 0x14 synchronized with that mode.
- * Return zero.
+ * Pop an enable operand. Ensure and reset the bound actor's interaction icon
+ * when true or destroy it when false, and mirror that requested mode to actor
+ * +0x14 bit 0x08000000. Return zero. The actor flag is script-owned mode state,
+ * not a universal icon-existence invariant.
  */
-s32 GamePhaseActorScriptVm_SetAuxiliaryCollisionResourceEnabled(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetInteractionIconEnabled(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 *flags = (u32 *)((u8 *)self->actor + 0x14);
     if (enabled) {
-        Actor_EnsureAuxiliaryCollisionResource(self->actor);
+        Actor_EnsureInteractionIcon(self->actor);
         *flags |= 0x08000000;
     } else {
-        Actor_DestroyAuxiliaryCollisionResource(self->actor);
+        Actor_DestroyInteractionIcon(self->actor);
         *flags &= ~0x08000000;
     }
     return 0;
