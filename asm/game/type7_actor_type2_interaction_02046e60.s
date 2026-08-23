@@ -11,7 +11,7 @@
 .extern ActorVector_DivideByScalar
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_PlayStateSound
-.extern func_0204cff4
+.extern Fx32Vector2_LimitMagnitude
 .extern EffectManager_SubmitPointEffect
 .extern func_020adae4
 .extern func_020ae024
@@ -152,7 +152,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r0, r7, #0x8c
     add r1, r7, #0x90
     mov r2, #0x3000
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     mov r1, #0x0
     str r1, [r7, #0x40]
     str r1, [r7, #0x3c]
@@ -176,7 +176,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r0, r6, #0x8c
     mov r2, #0x6000
     str r3, [r6, #0x90]
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     mov r0, #0x0
     str r0, [r6, #0x40]
     str r0, [r6, #0x3c]

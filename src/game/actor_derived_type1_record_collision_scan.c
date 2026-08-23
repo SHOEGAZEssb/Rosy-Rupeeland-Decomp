@@ -14,7 +14,7 @@ extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *value);
 extern void VecFx32Object_Init(void *value);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 category);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern void func_02034a60(void *actor, u32 sound, s32 extra);
 extern void func_ov092_0221ad80(void *target, void *actor, s32 amount,
                                 s32 scale);
@@ -85,7 +85,7 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
                 continue;
             dx = *(s32 *)(target + 0x1c) - center[1];
             dy = *(s32 *)(target + 0x20) - center[2];
-            distance = func_0204cfa4(dx, dy);
+            distance = Fx32Vector2_Magnitude(dx, dy);
             if (distance >= radius)
                 continue;
             func_02034a60(actor, 0x54, 0);
@@ -103,7 +103,7 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
             s32 direction[4];
             dx = *(s32 *)(target + 0x1c) - center[1];
             dy = *(s32 *)(target + 0x20) - center[2];
-            distance = func_0204cfa4(dx, dy);
+            distance = Fx32Vector2_Magnitude(dx, dy);
             if (distance < 0x1000 || distance >= radius)
                 continue;
             VecFx32Object_Init(direction);

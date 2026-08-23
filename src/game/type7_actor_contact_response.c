@@ -30,7 +30,7 @@ extern void Type7Actor_SetCallbackPair(void *actor, u32 first, u32 second, s32 t
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *actor);
 extern void Type7Actor_ApplyType2InteractionResponse(void *actor, void *other,
                                                      s32 value, s32 extra);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 shift);
 extern s32 Type7Actor_HasSpecialCallbackPair(void *actor);
@@ -138,7 +138,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
         {
             s32 dx = *(s32 *)(other + 0x1c) - *(s32 *)(actor + 0x1c);
             s32 dy = *(s32 *)(other + 0x20) - *(s32 *)(actor + 0x20);
-            s32 magnitude = func_0204cfa4(dx, dy);
+            s32 magnitude = Fx32Vector2_Magnitude(dx, dy);
             if (magnitude <= 0x1000)
                 return ActorContactState_AddContact(actor, other, context);
             dx = func_020adc90(dx, magnitude);
@@ -208,7 +208,7 @@ s32 Type7Actor_HandleContact(void *self, void *otherObject, s32 context)
             return ActorContactState_AddContact(actor, other, context);
         dx = *(s32 *)(other + 0x1c) - *(s32 *)(actor + 0x1c);
         dy = *(s32 *)(other + 0x20) - *(s32 *)(actor + 0x20);
-        magnitude = func_0204cfa4(dx, dy);
+        magnitude = Fx32Vector2_Magnitude(dx, dy);
         if (magnitude > 0x1000) {
             dx = func_020adc90(dx, magnitude);
             *(s32 *)(actor + 0x9c) -= dx * 3;

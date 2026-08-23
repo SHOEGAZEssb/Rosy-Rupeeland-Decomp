@@ -18,7 +18,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_02034a60
 .extern ActorExtendedType2_InitializeTransformAndMotion
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_SpawnFromKey
 .extern Sound_FadeDirectSequence
 .extern Sound_PlayOwnedEffect
@@ -147,7 +147,7 @@ func_ov095_0221858c:
     ldr r1, [sp, #0x300]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r1, #0x6
     bl func_020befec
     mov r0, r0, asr #0xc
@@ -714,7 +714,7 @@ func_ov095_0221858c:
     sub r7, r1, r0
     mov r0, r6
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x1000
     ble .L_02218fbc
     mov r1, #0x1c

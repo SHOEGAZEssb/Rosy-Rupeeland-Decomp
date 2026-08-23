@@ -7,7 +7,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern Actor_GetCachedTerrainHeight
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_SpawnFromKey
 .extern Sound_PlayOwnedEffect
 .extern func_020ada8c
@@ -57,7 +57,7 @@ func_ov095_0221a418:
     ldr r0, [r4, #0x2f4]
     sub r1, r1, r3
     sub r0, r2, r0
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r1, #0x6
     bl func_020befec
     mov r0, r0, asr #0xc

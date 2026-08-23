@@ -6,7 +6,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorContactState_AddContact
 .extern ActorDerivedRuntime_HandlePairActive
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern Sound_PlayEffectWithParameters
 .extern func_020adc90
 .extern gSoundContext
@@ -69,7 +69,7 @@ func_ov088_02219a2c:
     sub r9, r1, r0
     mov r0, r7
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_02219bc0

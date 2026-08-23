@@ -52,7 +52,7 @@ extern s32 func_020beb18(s32);
 extern s32 func_020be8c0(s32, s32);
 extern s32 func_020beb6c(s32, s32);
 extern s32 func_020beae4(s32);
-extern s32 func_0204cfa4(s32, s32);
+extern s32 Fx32Vector2_Magnitude(s32, s32);
 extern s32 func_020adc90(s32, s32);
 #ifdef __cplusplus
 }
@@ -458,7 +458,7 @@ void func_ov066_02210b20(void *controller, void *first, void *second)
     func_ov066_02210e70(delta, second, first);
     nx = FIELD(s32, delta, 4);
     ny = FIELD(s32, delta, 8);
-    distance = func_0204cfa4(nx, ny);
+    distance = Fx32Vector2_Magnitude(nx, ny);
     if (distance <= 0 || distance >= FIELD(s32, first, 0x18) +
                                       FIELD(s32, second, 0x18)) return;
     nx = func_020adc90(nx, distance);

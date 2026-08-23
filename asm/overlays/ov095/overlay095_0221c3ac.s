@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_021052fc
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adc90
 
 .global func_ov095_0221c3ac
@@ -24,7 +24,7 @@ func_ov095_0221c3ac:
     sub r5, r0, r1
     mov r0, r4
     mov r1, r5
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     add r1, r8, #0x200
     ldrh r2, [r1, #0x2]
     mov r6, r0

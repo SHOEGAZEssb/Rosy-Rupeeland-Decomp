@@ -14,7 +14,7 @@ extern void VecFx32_Subtract(void *output, const void *first, const void *second
 extern s32 VecFx32Object_Subtract(const void *first, const void *second);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 extern s32 func_020ae024(s32 y, s32 x);
-extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
+extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 maximum);
 extern void VecFx32Object_Destroy(void *vector);
 extern void ActorVector_DivideByScalar(void *output, const void *direction, s32 scale);
 extern void func_02008378(void *output, const void *left, const void *right);
@@ -104,7 +104,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
         func_020adae4(directionX * secondWeight, total);
     *(s32 *)(actor + 0x90) -=
         func_020adae4(directionY * secondWeight, total);
-    func_0204cff4((s32 *)(actor + 0x8c), (s32 *)(actor + 0x90), 0x6000);
+    Fx32Vector2_LimitMagnitude((s32 *)(actor + 0x8c), (s32 *)(actor + 0x90), 0x6000);
     *(s32 *)(actor + 0x3c) = 0;
     *(s32 *)(actor + 0x40) = 0;
 
@@ -113,7 +113,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             func_020adae4(directionX * firstWeight, total);
         *(s32 *)(target + 0x90) +=
             func_020adae4(directionY * firstWeight, total);
-        func_0204cff4((s32 *)(target + 0x8c), (s32 *)(target + 0x90), 0x6000);
+        Fx32Vector2_LimitMagnitude((s32 *)(target + 0x8c), (s32 *)(target + 0x90), 0x6000);
         *(s32 *)(target + 0x3c) = 0;
         *(s32 *)(target + 0x40) = 0;
     }

@@ -5,8 +5,8 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_0204cfa4
-.extern func_0204cff4
+.extern Fx32Vector2_Magnitude
+.extern Fx32Vector2_LimitMagnitude
 .extern func_020adae4
 .extern func_020adc90
 .extern SignedAbsoluteValue
@@ -105,7 +105,7 @@ func_ov092_0221ada4:
 .L_0221aee4:
     mov r0, r4
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_0221b08c
@@ -159,7 +159,7 @@ func_ov092_0221ada4:
     add r2, r3, r2
     str r2, [r5, #0x90]
     mov r2, #0x10000
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     mov r1, #0x0
     ldr r3, [sp, #0x34]
     add r0, r5, #0x38

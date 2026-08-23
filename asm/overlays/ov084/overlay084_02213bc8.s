@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
 .extern VecFx32Object_Assign
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020befec
 .extern func_ov084_022131fc
 
@@ -39,7 +39,7 @@ func_ov084_02213bc8:
     sub r0, r1, r0
     ldr r1, [r4, #0xb8]
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x30000
     movlt r0, #0x18
     strlth r0, [r4, #0xae]

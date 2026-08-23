@@ -3,7 +3,7 @@
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorContactState_AddContact
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adc90
 
 .global func_ov077_0221378c
@@ -24,7 +24,7 @@ func_ov077_0221378c:
     sub r9, r1, r0
     mov r0, r4
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_0221385c

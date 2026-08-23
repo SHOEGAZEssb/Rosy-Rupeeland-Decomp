@@ -7,7 +7,7 @@ extern void *gGameWork;
 extern "C" {
 #endif
 extern void Actor_RefreshTerrainHeight(void *actor);
-extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
+extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 maximum);
 extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
 }
@@ -97,7 +97,7 @@ void Actor_ApplyMotionImpulse(void *self, const void *vector, s32 mark)
 
     *(s32 *)(actor + 0x8c) += *(s32 *)(values + 4);
     *(s32 *)(actor + 0x90) += *(s32 *)(values + 8);
-    func_0204cff4((s32 *)(actor + 0x8c), (s32 *)(actor + 0x90), 0x6000);
+    Fx32Vector2_LimitMagnitude((s32 *)(actor + 0x8c), (s32 *)(actor + 0x90), 0x6000);
     ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, *(s32 *)(values + 0x0c));
     if (mark != 0) *(u32 *)(actor + 0xd0) |= 0x4000;
 }

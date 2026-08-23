@@ -14,7 +14,7 @@ extern "C" {
 #endif
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *result, const void *from, const void *to);
-extern s32 func_0204cfa4(s32 y, s32 x);
+extern s32 Fx32Vector2_Magnitude(s32 y, s32 x);
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020adae4(s32 value, s32 shift);
@@ -49,7 +49,7 @@ void ActorExtendedType2_UpdateTargetMotion(void *self,
 
     VecFx32Object_Assign(actor + 0x78, targetTransform);
     VecFx32_Subtract(query, actor + 0x78, actor + 0x18);
-    magnitude = func_0204cfa4(*(s32 *)(query + 8), *(s32 *)(query + 4));
+    magnitude = Fx32Vector2_Magnitude(*(s32 *)(query + 8), *(s32 *)(query + 4));
 
     if (magnitude > 0x2000) {
         s32 limit;

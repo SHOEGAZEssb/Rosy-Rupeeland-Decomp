@@ -88,7 +88,7 @@ EXT(func_02031564);
 EXT(Actor_TurnTowardVector);
 EXT(func_02034a60);
 EXT(func_0201e0ec);
-EXT(func_0204cfa4);
+EXT(Fx32Vector2_Magnitude);
 EXT(func_0206e590);
 EXT(func_020a2844);
 EXT(func_020a25c8);
@@ -750,7 +750,7 @@ extern "C" void func_ov095_0221af0c(void *actor, s32 x, s32 y, s32 radius)
             resource == F(void *, data_ov095_0221cba8, 0x50) &&
             (F(void *, linked, 0x21c) == F(void *, data_ov095_0221cbf8, 4) ||
              resource == 0) &&
-            func_0204cfa4(F(s32, linked, 0x1c) - x,
+            Fx32Vector2_Magnitude(F(s32, linked, 0x1c) - x,
                           F(s32, linked, 0x20) - y) < (radius << 12))
         {
             F(Method, F(void *, linked, 0), 0x204)(linked);
@@ -765,7 +765,7 @@ extern "C" void func_ov095_0221af0c(void *actor, s32 x, s32 y, s32 radius)
         if (candidate != 0 && F(u8, candidate, 0x4d) == 4 &&
             (F(u16, candidate, 0x4e) == 0x1d ||
              F(u16, candidate, 0x4e) == 0x15) &&
-            func_0204cfa4(F(s32, candidate, 0x1c) - x,
+            Fx32Vector2_Magnitude(F(s32, candidate, 0x1c) - x,
                           F(s32, candidate, 0x20) - y) < (radius << 12))
         {
             ActorCollection_QueueActorForRemoval(Actor_GetCollection(actor),
@@ -1181,7 +1181,7 @@ extern "C" s32 func_ov095_0221bf8c(void *actor)
     }
     s32 dx = F(s32, actor, 0x230) - F(s32, actor, 0x1c);
     s32 dy = F(s32, actor, 0x20) - F(s32, actor, 0x234);
-    s32 distance = func_0204cfa4(dx, dy);
+    s32 distance = Fx32Vector2_Magnitude(dx, dy);
     if (F(u16, actor, 0x204) == 0 &&
         (distance <= 0x10000 || distance >= 0x60000 ||
          dy >= 0x50000 || dy <= -0x30000))
@@ -1368,7 +1368,7 @@ extern "C" void func_ov095_0221c3ac(void *actor)
     void *target = F(void *, data_021052fc, 0x2ea4);
     s32 dx = F(s32, target, 0x1c) - F(s32, actor, 0x1c);
     s32 dy = F(s32, target, 0x20) - F(s32, actor, 0x20);
-    s32 distance = func_0204cfa4(dx, dy);
+    s32 distance = Fx32Vector2_Magnitude(dx, dy);
     if (F(s16, actor, 0x202) == 0 && F(void *, target, 0x278) != 0)
     {
         F(s16, actor, 0x202) = 1;
@@ -1399,7 +1399,7 @@ extern "C" void func_ov095_0221c4a4(void *actor, void *target)
         {
             s32 dx = F(s32, target, 0x1c) - F(s32, actor, 0x1c);
             s32 dy = F(s32, target, 0x20) - F(s32, actor, 0x20);
-            s32 distance = func_0204cfa4(dx, dy);
+            s32 distance = Fx32Vector2_Magnitude(dx, dy);
             if (distance > 0x1000)
             {
                 dx = func_020adc90(dx, distance);
@@ -1596,7 +1596,7 @@ extern "C" void func_ov095_0221c8e8(void *actor)
     void *target = F(void *, data_021052fc, 0x2ea4);
     s32 dx = F(s32, target, 0x1c) - F(s32, actor, 0x1c);
     s32 dy = F(s32, target, 0x20) - F(s32, actor, 0x20);
-    if (func_0204cfa4(dx, dy) <= 0x1000)
+    if (Fx32Vector2_Magnitude(dx, dy) <= 0x1000)
     {
         return;
     }
@@ -2005,7 +2005,7 @@ extern "C" void func_ov095_0221a418(void *actor, void *)
                              P(F(void *, actor, 0x300), 0x18));
         F(s32, actor, 0x2fc) += 0x10000;
         F(s32, actor, 0x2f8) += 0x14000;
-        s32 distance = func_0204cfa4(
+        s32 distance = Fx32Vector2_Magnitude(
             F(s32, actor, 0x2e4) - F(s32, actor, 0x2f4),
             F(s32, actor, 0x2e8) - F(s32, actor, 0x2f8));
         s32 duration = (distance / 6 >> 12) + 90;

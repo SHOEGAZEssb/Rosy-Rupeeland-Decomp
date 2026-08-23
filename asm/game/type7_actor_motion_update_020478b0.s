@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern VecFx32_Subtract
 .extern Type7Actor_HasSpecialCallbackPair
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020ae024
 .global Type7Actor_SetMotionTarget
@@ -56,7 +56,7 @@ Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
     bl VecFx32_Subtract
     ldr r0, [sp, #0x4]
     ldr r1, [sp, #0x8]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x4000
     ble .L_02047c6c
     ldr r0, [r5, #0xd0]
@@ -141,7 +141,7 @@ Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
     ldr r1, [r1, #0x20]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     add r1, r5, #0x200
     ldrsh r1, [r1, #0x48]
     cmp r1, #0x28
@@ -279,7 +279,7 @@ Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
 .L_02047c6c:
     ldr r0, [r5, #0x8c]
     ldr r1, [r5, #0x90]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     ldr r1, .L_02047d3c
     cmp r0, r1
     ble .L_02047ca0

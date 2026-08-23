@@ -9,9 +9,9 @@ extern "C" {
 #endif
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
-extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
+extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 maximum);
 extern void VecFx32Object_Destroy(void *vector);
 #ifdef __cplusplus
 }
@@ -41,7 +41,7 @@ void ActorExtendedType2_ApplyTargetImpulse(void *self, const void *target)
 
     VecFx32Object_Assign(actor + 0x78, target);
     VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
-    if (func_0204cfa4(displacement[1], displacement[2]) > 0x4000) {
+    if (Fx32Vector2_Magnitude(displacement[1], displacement[2]) > 0x4000) {
         u8 *record = data_020e8380 + *(u16 *)(actor + 0x4e) * 0x30;
         u32 kind = *(u16 *)(record + 0x1e) >> 2;
         s32 magnitude = kind == 0 ? 0x2000 : kind == 1 ? 0x1000 : 0x800;
@@ -53,7 +53,7 @@ void ActorExtendedType2_ApplyTargetImpulse(void *self, const void *target)
             multiplyFxRound(data_020c9670[angle * 2 + 1], magnitude);
         *(s32 *)(actor + 0x90) +=
             multiplyFxRound(data_020c9670[angle * 2], magnitude);
-        func_0204cff4((s32 *)(actor + 0x8c),
+        Fx32Vector2_LimitMagnitude((s32 *)(actor + 0x8c),
                       (s32 *)(actor + 0x90), 0x6000);
         *(s32 *)(actor + 0x3c) = 0;
         *(s32 *)(actor + 0x40) = 0;

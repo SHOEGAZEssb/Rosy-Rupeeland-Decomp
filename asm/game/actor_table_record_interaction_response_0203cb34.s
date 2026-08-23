@@ -6,7 +6,7 @@
 .extern func_020349b8
 .extern ActorDerivedType1_StartRecordOrHandleType6D66
 .extern ActorTableRecord_ApplySeparationImpulse
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020adc90
 .extern func_020ae024
@@ -65,7 +65,7 @@ ActorTableRecord_ApplyCollisionResponse: ; 0x0203cb48
     sub r7, r1, r0
     mov r0, r9
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     bge .L_0203cc18

@@ -21,7 +21,7 @@
 .extern ActorVector_DivideByScalar
 .extern Type1Actor_TryEnterFailureState
 .extern ActorExtendedType2_GetDescriptorValue28
-.extern func_0204cff4
+.extern Fx32Vector2_LimitMagnitude
 .extern EffectManager_SubmitPointEffect
 .extern func_020ada8c
 .extern func_020adae4
@@ -154,7 +154,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     str r0, [r7, #0x90]
     add r0, r7, #0x8c
     mov r2, #0x6000
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     mov r1, #0x0
     str r1, [r7, #0x40]
     str r1, [r7, #0x3c]
@@ -178,7 +178,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add r0, r6, #0x8c
     mov r2, #0x6000
     str r3, [r6, #0x90]
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     mov r0, #0x0
     str r0, [r6, #0x40]
     str r0, [r6, #0x3c]

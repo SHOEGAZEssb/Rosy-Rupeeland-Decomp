@@ -123,7 +123,7 @@ extern void func_02031758(void *, void *, s32);
 extern void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern void Actor_TurnTowardTargetPosition(void *, const void *, s32);
 extern void func_02033b38(void *);
-extern s32 func_0204cfa4(s32, s32);
+extern s32 Fx32Vector2_Magnitude(s32, s32);
 extern s32 func_020573e4(void);
 extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, s32, s32);
 extern void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32, ...);
@@ -484,7 +484,7 @@ void func_ov081_0221313c(void *actor, void *other, s32 mode)
         if (kind == 1 || kind == 2 || kind == 3 || kind == 7 || kind == 9) {
             dx = FIELD(s32, other, 0x1c) - FIELD(s32, actor, 0x1c);
             dy = FIELD(s32, other, 0x20) - FIELD(s32, actor, 0x20);
-            distance = func_0204cfa4(dx, dy);
+            distance = Fx32Vector2_Magnitude(dx, dy);
             if (distance > 0x1000) {
                 impulseX = func_020adc90(dx, distance) * 3 / 2;
                 impulseY = func_020adc90(dy, distance) * 3 / 2;
@@ -534,7 +534,7 @@ void func_ov081_02213370(void *actor, const void *target)
 
     VecFx32Object_Assign((u8 *)actor + 0x78, target);
     func_ov081_02213528(&delta, (u8 *)actor + 0x78, (u8 *)actor + 0x18);
-    magnitude = func_0204cfa4(delta.x, delta.y);
+    magnitude = Fx32Vector2_Magnitude(delta.x, delta.y);
     if (magnitude > 0x4000) {
         if ((FIELD(u32, actor, 0xd0) & 2) != 0) {
             speed = FIELD(s32, actor, 0x228);
@@ -1130,7 +1130,7 @@ void func_ov081_022145c8(void *actor, void *other, s32 mode)
                 } else {
                     dx = FIELD(s32, other, 0x1c) - FIELD(s32, actor, 0x1c);
                     dy = FIELD(s32, other, 0x20) - FIELD(s32, actor, 0x20);
-                    distance = func_0204cfa4(dx, dy);
+                    distance = Fx32Vector2_Magnitude(dx, dy);
                     if (distance > 0x1000) {
                         impulseX = func_020adc90(dx, distance);
                         impulseY = func_020adc90(dy, distance);

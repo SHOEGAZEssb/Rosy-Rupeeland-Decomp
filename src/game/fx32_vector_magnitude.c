@@ -10,11 +10,13 @@
  * 4*(x*x + y*y), select the DS square-root unit's 64-bit mode through control
  * register 0x040002b0, write the operand at 0x040002b8/0x040002bc, and wait for
  * busy bit 0x8000 to clear. Return (hardware result + 1) arithmetic-shifted by
- * one, which yields the rounded magnitude in the original fixed-point scale.
- * No memory outside the square-root registers changes. This routine directly
- * drives and synchronously waits on Nintendo DS math hardware.
+ * one, which yields the nearest raw magnitude in the original fixed-point
+ * scale. Gameplay-scale fx32 inputs are required so the intermediate sum and
+ * shift remain representable. No memory outside the square-root registers
+ * changes. This routine directly drives and synchronously waits on Nintendo
+ * DS math hardware.
  */
-s32 func_0204cfa4(s32 x, s32 y)
+s32 Fx32Vector2_Magnitude(s32 x, s32 y)
 {
     volatile u16 *sqrtControl = (volatile u16 *)0x040002b0;
     volatile u32 *sqrtResult = (volatile u32 *)0x040002b4;

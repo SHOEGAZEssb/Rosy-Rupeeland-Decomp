@@ -23,9 +23,9 @@ extern void Actor_SaveAndForceFlags(void *actor);
 extern s32 Actor_TurnTowardTargetPosition(void *actor, const void *target, s32 step);
 extern s32 Actor_TurnTowardVector(void *actor, s32 x, s32 y, s32 step);
 extern void VecFx32_Subtract(void *output, ...);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
-extern void func_0204cff4(s32 *x, s32 *y, s32 maximum);
+extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 maximum);
 extern void VecFx32Object_Destroy(void *vector);
 extern void Actor_UpdateGroundContactProbe(void *actor);
 extern void Actor_UpdateAnimationState(void *actor);
@@ -197,7 +197,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
 
                 VecFx32_Subtract(temporary, target + 0x18, actor + 0x18,
                               (u32)parameter);
-                if (func_0204cfa4(*(s32 *)(temporary + 4),
+                if (Fx32Vector2_Magnitude(*(s32 *)(temporary + 4),
                                   *(s32 *)(temporary + 8)) > 0x4000) {
                     s32 magnitude;
                     s32 angle;
@@ -216,7 +216,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
                                         magnitude);
                     *(s32 *)(actor + 0x90) +=
                         multiplyFxRound(data_020c9670[angle * 2], magnitude);
-                    func_0204cff4((s32 *)(actor + 0x8c),
+                    Fx32Vector2_LimitMagnitude((s32 *)(actor + 0x8c),
                                   (s32 *)(actor + 0x90), 0x6000);
                 }
                 --actor[0x268];

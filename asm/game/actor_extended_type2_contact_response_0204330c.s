@@ -3,7 +3,7 @@
 .extern ActorContactState_AddContact
 .extern func_020349b8
 .extern ActorExtendedType2_SpawnOptionalPresentation
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020adc90
 .global ActorExtendedType2_TriggerContactFeedback
@@ -51,7 +51,7 @@ ActorExtendedType2_ApplyContactResponse: ; 0x02043340
     sub r9, r1, r0
     mov r0, r4
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r5, r0
     cmp r5, #0x1000
     ble .L_02043418

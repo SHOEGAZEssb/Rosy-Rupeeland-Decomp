@@ -8,7 +8,7 @@
 .extern ActorTargetSelection_Populate
 .extern ActorRegisteredSubclass_ProcessRegistry
 .extern InteractionTimingState_Tick
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_02053560
     .global ActorInteractionRuntime_Update
     .type ActorInteractionRuntime_Update, @function
@@ -44,7 +44,7 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
     str r1, [r3, #0x4]
     cmp r2, #0x0
     bne .L_0203ad30
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x29
     ldrlt r0, .L_0203ad58
     movlt r1, #0x0

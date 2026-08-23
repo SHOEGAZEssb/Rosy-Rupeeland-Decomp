@@ -2,7 +2,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_0203463c
 .extern func_02034718
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020adc90
 .text
@@ -33,7 +33,7 @@ Type7Actor_AdjustDestinationForCollisions: ; 0x0204a5dc
     mov r0, r6
     mov r1, r7
     moveq r4, #0x200000
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r5, r0
     cmp r5, r4
     blt .L_0204a888

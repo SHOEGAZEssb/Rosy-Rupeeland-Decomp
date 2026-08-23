@@ -9,7 +9,7 @@
 .extern ActorExtendedType2_SpawnOptionalPresentation
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue2C
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern Sound_PlayOwnedEffect
 .extern func_020adae4
 .extern func_020adc90
@@ -333,7 +333,7 @@ func_ov078_02214cb8:
     sub r8, r1, r0
     mov r0, r4
     mov r1, r8
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r7, r0
     cmp r7, #0x1000
     ble .L_02215224

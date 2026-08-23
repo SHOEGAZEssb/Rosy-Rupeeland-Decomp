@@ -5,7 +5,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020ae024
 .extern func_ov076_022145d8
 
@@ -74,7 +74,7 @@ func_ov076_02214288:
     ldr r1, [r6, #0x30]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0xc00
     ldrlt r0, [r6, #0x29c]
     eorlt r0, r0, #0x1

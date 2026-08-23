@@ -9,7 +9,7 @@
 .extern func_02034a60
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorDerivedType1_IsActiveRecordType6F
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020adc90
 .extern func_ov092_0221ad80
@@ -93,7 +93,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     sub r0, r1, r0
     ldr r1, [sp, #0x18]
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r4, r0
     cmp r4, r6
     bge .L_020396b8
@@ -145,7 +145,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
     mov r0, r11
     sub r7, r2, r1
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r4, r0
     cmp r4, #0x1000
     blt .L_020396b8

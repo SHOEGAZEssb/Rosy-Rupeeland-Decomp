@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/fx32_vector_magnitude.c.
 .text
-    .global func_0204cfa4
-.type func_0204cfa4, @function
-func_0204cfa4: ; 0x0204cfa4
+    .global Fx32Vector2_Magnitude
+.type Fx32Vector2_Magnitude, @function
+Fx32Vector2_Magnitude: ; 0x0204cfa4
     smull r3, r2, r1, r1
     smlal r3, r2, r0, r0
     mov r0, r2, lsl #0x2
@@ -24,4 +24,4 @@ func_0204cfa4: ; 0x0204cfa4
     bx lr
 .L_0204cfec: .word 0x40002b0
 .L_0204cff0: .word 0x40002b4
-.size func_0204cfa4, . - func_0204cfa4
+.size Fx32Vector2_Magnitude, . - Fx32Vector2_Magnitude

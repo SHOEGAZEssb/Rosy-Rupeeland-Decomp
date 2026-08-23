@@ -3,7 +3,7 @@
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedRuntime_HandlePairActive
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern Sound_PlayOwnedEffect
 .extern func_020adc90
 .extern gSoundContext
@@ -56,7 +56,7 @@ func_ov081_0221313c:
     sub r9, r1, r0
     mov r0, r8
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r7, r0
     cmp r7, #0x1000
     ble .L_0221334c

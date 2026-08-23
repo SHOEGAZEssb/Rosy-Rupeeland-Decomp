@@ -12,7 +12,7 @@ extern "C" {
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 func_0203463c(void *actor, s32 x, s32 y, s32 height);
 extern s32 func_02034718(void *actor, s32 x, s32 y, s32 height);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020adc90(s32 value, s32 length);
 #ifdef __cplusplus
@@ -53,7 +53,7 @@ void Type7Actor_AdjustDestinationForCollisions(void *self)
     s32 threshold = occupied != 0 ? 0x20000 : 0x200000;
     s32 deltaX = targetX - currentX;
     s32 deltaY = targetY - currentY;
-    s32 distance = func_0204cfa4(deltaX, deltaY);
+    s32 distance = Fx32Vector2_Magnitude(deltaX, deltaY);
 
     if (distance >= threshold) {
         s32 normalizedX = func_020adc90(deltaX, distance);

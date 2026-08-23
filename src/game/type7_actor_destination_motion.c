@@ -16,7 +16,7 @@ extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void ActorDerivedType1_SetSpecialModeEnabled(void *object, s32 mode);
 extern void Type7Actor_SelectRandomCallback(void *actor);
 extern void Type7Actor_CompleteDestinationMotion(void *actor);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
 #ifdef __cplusplus
@@ -26,7 +26,7 @@ extern s32 func_020ae024(s32 y, s32 x);
 /*
  * Input is a type-seven actor. Clear actor flag 0x8000, set +0xd0 bit one,
  * and copy destination transform +0x284 to temporary transform +0x78. Measure
- * the X/Y delta from current transform +0x18 with func_0204cfa4. If it is less
+ * the X/Y delta from current transform +0x18 with Fx32Vector2_Magnitude. If it is less
  * than one fx32 unit (0x1000), select presentation two, snap current transform
  * to the destination, and run Type7Actor_CompleteDestinationMotion.
  *
@@ -50,7 +50,7 @@ s32 Type7Actor_UpdateDestinationMotion(void *self)
     VecFx32Object_Assign(actor + 0x78, actor + 0x284);
     dx = *(s32 *)(actor + 0x7c) - *(s32 *)(actor + 0x1c);
     dy = *(s32 *)(actor + 0x80) - *(s32 *)(actor + 0x20);
-    distance = func_0204cfa4(dx, dy);
+    distance = Fx32Vector2_Magnitude(dx, dy);
     if (distance < 0x1000) {
         *(u16 *)(actor + 0xd6) = 2;
         VecFx32Object_Assign(actor + 0x18, actor + 0x78);

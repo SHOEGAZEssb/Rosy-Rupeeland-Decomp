@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov066/overlay066_recovery.c.
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adc90
 .extern func_ov066_02210e54
 .extern func_ov066_02210e70
@@ -27,7 +27,7 @@ func_ov066_02210b20:
     strne r0, [sp, #0x14]
     ldr r0, [sp, #0x10]
     ldr r1, [sp, #0x14]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     ldr r2, [r6, #0x18]
     ldr r1, [r5, #0x18]
     mov r4, r0

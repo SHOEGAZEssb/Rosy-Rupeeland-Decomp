@@ -93,7 +93,7 @@ extern "C" s32 VecFx32Object_GetMagnitude(void *);
 extern "C" s32 ActorDerivedType1_IsIdleEligible(void *);
 extern "C" void Actor_SetInteractionFlag2000(void *, s32);
 extern "C" void func_020adfbc(const void *, const void *, void *);
-extern "C" s32 func_0204cfa4(s32, s32);
+extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" s32 func_02034568(void *, s32, s32, s32);
 extern "C" s32 func_020adae4(s32, s32);
 extern "C" void Actor_ApplyMotionImpulse(void *, s32, s32);
@@ -104,7 +104,7 @@ extern "C" void Actor_UpdateAnimationState(void *);
 extern "C" void Actor_UpdateGroundContactProbe(void *);
 extern "C" void VecFx32Object_Add(void *, const void *);
 extern "C" s32 func_020ae024(s32, s32);
-extern "C" void func_0204cff4(s32 *, s32 *, s32);
+extern "C" void Fx32Vector2_LimitMagnitude(s32 *, s32 *, s32);
 
 extern "C" void func_ov088_022179e0(void *, s32, s32, s32, s32);
 extern "C" void func_ov088_022179f4(void *, const void *);
@@ -408,7 +408,7 @@ extern "C" void func_ov088_02218328(void *a) {
         s32 speed = (s32)(((s64)F(s32, a, 0x208) * (F(s16, a, 0x232) * 0x155) +
                            0x800) >>
                           12);
-        s32 magnitude = func_0204cfa4(F(s32, a, 0x3c), F(s32, a, 0x40));
+        s32 magnitude = Fx32Vector2_Magnitude(F(s32, a, 0x3c), F(s32, a, 0x40));
         if (magnitude > 0x19a) {
             s32 desired = func_020ae024(F(s32, a, 0x40), F(s32, a, 0x3c));
             u32 delta = (F(u32, a, 0xc8) - (desired - 0x4000)) & 0xffff;
@@ -431,7 +431,7 @@ extern "C" void func_ov088_02218328(void *a) {
                    12),
             (s32)(((s64)data_020c9670[phase + 1] * speed + 0x800) >> 12), 0);
         VecFx32Object_Add((u8 *)a + 0x38, impulse);
-        func_0204cff4((s32 *)((u8 *)a + 0x3c), (s32 *)((u8 *)a + 0x40), 0x6000);
+        Fx32Vector2_LimitMagnitude((s32 *)((u8 *)a + 0x3c), (s32 *)((u8 *)a + 0x40), 0x6000);
         VecFx32Object_Destroy(impulse);
     }
     if (F(s16, a, 0x232) < 0)
@@ -461,7 +461,7 @@ extern "C" void func_ov088_02218328(void *a) {
     F(s32, a, 0x264) = func_020adc90(spring, F(s32, a, 0x268));
     target += F(s32, a, 0x25c) * 12;
     if (F(s16, a, 0x230) == 1 && F(s32, a, 0x208) > 0)
-        target -= func_0204cfa4(F(s32, a, 0x3c), F(s32, a, 0x40)) * 2;
+        target -= Fx32Vector2_Magnitude(F(s32, a, 0x3c), F(s32, a, 0x40)) * 2;
     if (target < 0)
         target = 0;
     else {
@@ -696,7 +696,7 @@ extern "C" void func_ov088_02219a2c(void *a, void *other, s32 contact, s32) {
         F(u16, a, 0x236) = 10;
         s32 dx = F(s32, a, 0x1c) - F(s32, other, 0x1c),
             dy = F(s32, a, 0x20) - F(s32, other, 0x20),
-            d = func_0204cfa4(dx, dy);
+            d = Fx32Vector2_Magnitude(dx, dy);
         if (d > 0x1000) {
             u8 v[16];
             VecFx32Object_InitComponents(v, func_020adc90(dx, d),
@@ -1045,8 +1045,8 @@ extern "C" s32 func_ov088_0221add8(void *a, s32, s32, s32) {
     if (target) {
         if (!F(void *, a, 0x24c)) {
             if (F(s16, a, 0x230) == 1 && Type7Actor_GetStateCode(target) == 0 &&
-                func_0204cfa4(F(s32, a, 0x3c), F(s32, a, 0x40)) <= 0x1000 &&
-                func_0204cfa4(F(s32, a, 0x1c) - F(s32, target, 0x1c),
+                Fx32Vector2_Magnitude(F(s32, a, 0x3c), F(s32, a, 0x40)) <= 0x1000 &&
+                Fx32Vector2_Magnitude(F(s32, a, 0x1c) - F(s32, target, 0x1c),
                               F(s32, a, 0x20) - F(s32, target, 0x20)) <
                     0x30000) {
                 func_ov088_0221af2c(a, 30);
@@ -1145,7 +1145,7 @@ extern "C" s32 func_ov088_0221b218(void *a) {
         return 5;
     if (F(u16, a, 0x21a) & 0x2000)
         return 4;
-    return func_0204cfa4(F(s32, a, 0x3c), F(s32, a, 0x40)) < 0x1000 ? 0 : 3;
+    return Fx32Vector2_Magnitude(F(s32, a, 0x3c), F(s32, a, 0x40)) < 0x1000 ? 0 : 3;
 }
 
 /* Refresh scene collision state, then query one map cell. */

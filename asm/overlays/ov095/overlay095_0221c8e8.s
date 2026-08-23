@@ -3,7 +3,7 @@
 .extern data_020c9670
 .extern data_021052fc
 .extern Actor_TurnTowardVector
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 
 .global func_ov095_0221c8e8
 func_ov095_0221c8e8:
@@ -33,7 +33,7 @@ func_ov095_0221c8e8:
     sub r6, r0, r1
     mov r0, r5
     mov r1, r6
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x1000
     ldmleia sp!, {r4, r5, r6, pc}
     mov r0, r4

@@ -24,8 +24,8 @@
 .extern InteractionRecordAllocator_ReleaseOwner
 .extern Type7MarkerPresentation_SelectAnimation
 .extern Type7MarkerPresentation_ReloadResources
-.extern func_0204cfa4
-.extern func_0204cff4
+.extern Fx32Vector2_Magnitude
+.extern Fx32Vector2_LimitMagnitude
 .extern func_020ae024
     .global ActorExtendedType2_UpdateFrame
     .type ActorExtendedType2_UpdateFrame, @function
@@ -347,7 +347,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     bl VecFx32_Subtract
     ldr r0, [sp, #0x4]
     ldr r1, [sp, #0x8]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x4000
     ble .L_0203ed30
     cmp r5, #0x3
@@ -403,7 +403,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     add r1, r6, #0x90
     mov r2, #0x6000
     str r3, [r6, #0x90]
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
 .L_0203ed30:
     ldrb r0, [r6, #0x268]
     sub r0, r0, #0x1

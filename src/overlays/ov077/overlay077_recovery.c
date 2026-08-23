@@ -70,7 +70,7 @@ EXT(func_020099c0);
 EXT(Actor_TurnTowardVector);
 EXT(Actor_TurnTowardTargetPosition);
 EXT(func_020349b8);
-EXT(func_0204cfa4);
+EXT(Fx32Vector2_Magnitude);
 EXT(func_020538a4);
 EXT(func_020541d4);
 EXT(func_020a27a0);
@@ -488,7 +488,7 @@ extern "C" void func_ov077_0221378c(void *actor, void *other, void *contact)
     {
         s32 dx = F(s32, other, 0x1c) - F(s32, actor, 0x1c);
         s32 dy = F(s32, other, 0x20) - F(s32, actor, 0x20);
-        s32 length = func_0204cfa4(dx, dy);
+        s32 length = Fx32Vector2_Magnitude(dx, dy);
         if (length > 0x1000)
         {
             dx = func_020adc90(dx, length);
@@ -1010,7 +1010,7 @@ extern "C" void func_ov077_02214ce4(void *actor, const void *target)
     F(u32, spawned, 0x5c) = (F(u32, spawned, 0x5c) & 0xffff0000) | 0xffd8;
     s32 dx = F(s32, target, 4) - F(s32, position, 4);
     s32 dy = F(s32, target, 8) - F(s32, position, 8);
-    s32 length = func_0204cfa4(dx, dy);
+    s32 length = Fx32Vector2_Magnitude(dx, dy);
     if (length > 0x1000)
     {
         dx = func_020adc90(dx, length);

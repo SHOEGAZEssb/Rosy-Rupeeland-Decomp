@@ -15,7 +15,7 @@ extern void VecFx32Object_Normalize(void *vector);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, s32 group);
 extern void func_020328d0(void *vector, s32 angle);
 extern void ActorDerivedType1_StartRecord(void *actor, s32 value);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern void TrackedResourceActor_DispatchTargetInteraction(void *actor, void *target, ...);
 extern s32 SignedAbsoluteValue(s32 value);
 #ifdef __cplusplus
@@ -97,7 +97,7 @@ void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, u32 
                  FIELD(s16, record, 0x10);
         dx = FIELD(s32, candidate, 0x1c) - actor_x;
         dy = FIELD(s32, candidate, 0x20) - actor_y;
-        distance = func_0204cfa4(dx, dy);
+        distance = Fx32Vector2_Magnitude(dx, dy);
         if (distance >= radius * 0x1000)
             continue;
 

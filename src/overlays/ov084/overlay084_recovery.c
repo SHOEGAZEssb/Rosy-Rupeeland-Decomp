@@ -52,7 +52,7 @@ extern "C" void func_020adff0(const void *, const void *, void *);
 extern "C" void func_020adfbc(const void *, const void *, void *);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" s32 func_020befec(s32, s32);
-extern "C" s32 func_0204cfa4(s32, s32);
+extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" void Actor_TurnTowardTargetPosition(void *, void *, s32);
 extern "C" void func_020349b8(void *, s32, s32);
@@ -565,7 +565,7 @@ func_ov084_02213bc8(void *a) {
     VecFx32Object_Assign((u8 *)a + 0xb0, (u8 *)a + 0x22c);
     VecFx32Object_Assign((u8 *)a + 0x298, (u8 *)a + 0x18);
     clear_vectors(a);
-    s32 d = func_0204cfa4(F(s32, a, 0x29c) - F(s32, a, 0xb4),
+    s32 d = Fx32Vector2_Magnitude(F(s32, a, 0x29c) - F(s32, a, 0xb4),
                           F(s32, a, 0x2a0) - F(s32, a, 0xb8));
     F(s16, a, 0xae) =
         d < 0x30000 ? 0x18

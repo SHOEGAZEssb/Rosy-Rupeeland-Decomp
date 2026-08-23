@@ -8,7 +8,7 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern Actor_GetCachedTerrainHeight
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020befec
 .extern func_ov076_022135d0
 .extern func_ov076_02213628
@@ -69,7 +69,7 @@ func_ov076_02213a3c:
     mov r0, r5
     mov r1, r8
     add r4, r2, #0xf000
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r7, r0
     add r0, sp, #0x24
     bl VecFx32Object_Init

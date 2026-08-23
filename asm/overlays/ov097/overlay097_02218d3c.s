@@ -9,7 +9,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern func_020349b8
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020befec
@@ -59,7 +59,7 @@ func_ov097_02218d3c:
     ldr r0, [r5, #0x2dc]
     sub r1, r1, r3
     sub r0, r2, r0
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r1, #0x6
     bl func_020befec
     mov r0, r0, asr #0xc

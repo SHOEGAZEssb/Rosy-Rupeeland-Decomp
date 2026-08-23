@@ -11,7 +11,7 @@
 .extern data_ov081_02215338
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedRuntime_HandlePairActive
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern Sound_PlayOwnedEffect
 .extern func_020adc90
 .extern func_ov081_02213710
@@ -102,7 +102,7 @@ func_ov081_022145c8:
     sub r9, r1, r0
     mov r0, r7
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_02214834

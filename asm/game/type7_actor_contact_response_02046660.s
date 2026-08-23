@@ -23,7 +23,7 @@
 .extern Type7Actor_SetCallbackPair
 .extern Type7Actor_PlayStateSound
 .extern Type7Actor_IsInteractionSceneActive
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern Sound_PlayOwnedEffect
 .extern AuxiliaryInteraction_Init
 .extern AuxiliaryInteraction_Destroy
@@ -237,7 +237,7 @@ Type7Actor_HandleContact: ; 0x02046660
     sub r9, r1, r0
     mov r0, r7
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_02046d48
@@ -438,7 +438,7 @@ Type7Actor_HandleContact: ; 0x02046660
     sub r9, r1, r0
     mov r0, r8
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r7, r0
     cmp r7, #0x1000
     ble .L_02046d48

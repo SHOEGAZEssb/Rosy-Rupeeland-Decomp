@@ -6,7 +6,7 @@
 .extern VecFx32Object_Assign
 .extern ActorExtendedLinkSource_UpdateFrame
 .extern ActorExtendedLinkSource_ClearPartnerLinkedFlag
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_ov075_022152ac
 .extern func_ov075_022154e8
 .extern func_ov075_0221627c
@@ -225,7 +225,7 @@ func_ov075_02215cf8:
     ldr r1, [r1, #0x20]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x60000
     bge .L_0221603c
     mov r0, r4

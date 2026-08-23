@@ -31,7 +31,7 @@ extern "C" void *ActorCollection_GetSpriteOwner(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, void *, void *, void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern "C" void ActorContactState_AddContact(void *, void *, s32);
-extern "C" s32 func_0204cfa4(s32, s32);
+extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
@@ -176,7 +176,7 @@ extern "C" void func_ov079_02212f68(void *actor, void *other, s32 contactKind)
     } else if (FIELD(u8, other, 0x4d) == 2) {
         s32 dx = FIELD(s32, other, 0x1c) - FIELD(s32, actor, 0x1c);
         s32 dy = FIELD(s32, other, 0x20) - FIELD(s32, actor, 0x20);
-        s32 distance = func_0204cfa4(dx, dy);
+        s32 distance = Fx32Vector2_Magnitude(dx, dy);
         if (distance > 0x1000) {
             dx = func_020adc90(dx, distance);
             dy = func_020adc90(dy, distance);
@@ -201,7 +201,7 @@ extern "C" void func_ov079_02213064(void *actor, const void *other)
     FIELD(u32, actor, 0x260) |= 0x10;
     s32 dx = FIELD(s32, other, 0x1c) - FIELD(s32, actor, 0x1c);
     s32 dy = FIELD(s32, other, 0x20) - FIELD(s32, actor, 0x20);
-    s32 distance = func_0204cfa4(dx, dy);
+    s32 distance = Fx32Vector2_Magnitude(dx, dy);
     if (distance > 0x1000) {
         FIELD(s32, actor, 0x8c) -= func_020adc90(dx, distance);
         FIELD(s32, actor, 0x90) -= func_020adc90(dy, distance);
@@ -224,7 +224,7 @@ extern "C" s32 func_ov079_0221317c(void *actor, u32 direction)
     if ((FIELD(u32, actor, 0x260) & 0x10) == 0 &&
         !ActorExtendedType2_IsDirectionToActorAccepted(actor, direction, primary))
         return 0;
-    if (func_0204cfa4(FIELD(s32, primary, 0x1c) - FIELD(s32, actor, 0x1c),
+    if (Fx32Vector2_Magnitude(FIELD(s32, primary, 0x1c) - FIELD(s32, actor, 0x1c),
                       FIELD(s32, primary, 0x20) - FIELD(s32, actor, 0x20)) >= 0x28000)
         return 0;
     func_ov079_0221323c(actor);
@@ -271,7 +271,7 @@ extern "C" void *func_ov079_02213310(void *actor)
             (FIELD(s32, candidate, 0x21c) != FIELD(s32, data_ov079_02213b30, 4) && first != 0) ||
             FIELD(s32, candidate, 0x2a4) != 0)
             continue;
-        if (func_0204cfa4(FIELD(s32, candidate, 0x1c) - FIELD(s32, actor, 0x1c),
+        if (Fx32Vector2_Magnitude(FIELD(s32, candidate, 0x1c) - FIELD(s32, actor, 0x1c),
                           FIELD(s32, candidate, 0x20) - FIELD(s32, actor, 0x20)) < 0x30000)
             return candidate;
     }
@@ -377,7 +377,7 @@ extern "C" void func_ov079_02213700(void *actor)
         copy_pair(actor, 0x220, 0x78);
     } else if (FIELD(s32, actor, 0x24) == FIELD(s32, actor, 0x1dc)) {
         --FIELD(s32, actor, 0x2a0);
-        s32 distance = func_0204cfa4(FIELD(s32, partner, 0x1c) - FIELD(s32, actor, 0x1c),
+        s32 distance = Fx32Vector2_Magnitude(FIELD(s32, partner, 0x1c) - FIELD(s32, actor, 0x1c),
                                      FIELD(s32, partner, 0x20) - FIELD(s32, actor, 0x20));
         if (distance > 0x50000) {
             copy_pair(actor, 0x298, 0x70);
@@ -411,7 +411,7 @@ extern "C" void func_ov079_02213850(void *actor)
     }
     --FIELD(s32, actor, 0x2a0);
     (void)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
-    if (func_0204cfa4(FIELD(s32, partner, 0x1c) - FIELD(s32, actor, 0x1c),
+    if (Fx32Vector2_Magnitude(FIELD(s32, partner, 0x1c) - FIELD(s32, actor, 0x1c),
                       FIELD(s32, partner, 0x20) - FIELD(s32, actor, 0x20)) > 0x40000) {
         copy_pair(actor, 0x298, 0x60);
         copy_pair(actor, 0x220, 0x58);

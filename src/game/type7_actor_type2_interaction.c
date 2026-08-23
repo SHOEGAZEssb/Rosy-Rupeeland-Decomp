@@ -15,7 +15,7 @@ extern void VecFx32Object_Destroy(void *value);
 extern void VecFx32Object_Subtract(void *first, const void *second);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
-extern void func_0204cff4(s32 *x, s32 *y, s32 limit);
+extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 limit);
 extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
 extern void func_02008378(void *output, const void *first, const void *second);
 extern void *func_0201e0ec(void *world, s32 first, s32 second);
@@ -105,13 +105,13 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
         *(s32 *)(actor + 0x8c) = func_020adae4(*(s32 *)(actor + 0x8c), 2);
         *(s32 *)(actor + 0x90) = func_020adae4(*(s32 *)(actor + 0x90), 2);
     }
-    func_0204cff4((s32 *)(actor + 0x8c), (s32 *)(actor + 0x90), 0x3000);
+    Fx32Vector2_LimitMagnitude((s32 *)(actor + 0x8c), (s32 *)(actor + 0x90), 0x3000);
     *(u32 *)(actor + 0x3c) = 0;
     *(u32 *)(actor + 0x40) = 0;
     if ((*(u32 *)(other + 0x260) & 0x8000) == 0) {
         *(s32 *)(other + 0x8c) += func_020adae4(impulseX * value, combined);
         *(s32 *)(other + 0x90) += func_020adae4(impulseY * value, combined);
-        func_0204cff4((s32 *)(other + 0x8c), (s32 *)(other + 0x90), 0x6000);
+        Fx32Vector2_LimitMagnitude((s32 *)(other + 0x8c), (s32 *)(other + 0x90), 0x6000);
         *(u32 *)(other + 0x3c) = 0;
         *(u32 *)(other + 0x40) = 0;
     }

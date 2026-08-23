@@ -6,9 +6,9 @@ extern u8 gActorRuntimeCollection[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
-extern void func_0204cff4(s32 *x, s32 *y, s32 limit);
+extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 limit);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
                                                     s32 directionalMode,
@@ -23,7 +23,7 @@ extern void ActorContactState_AddContact(void *self, void *other, s32 mode);
  * horizontal +/-0x1000 impulse selected by signed byte +0x48 and zero Y;
  * otherwise divide both components by twice their distance. Add the resulting
  * impulse to target motion +0x8c/+0x90, then clamp that pair to 0x6000 through
- * func_0204cff4. Returns no value; math and clamp helpers mutate target motion.
+ * Fx32Vector2_LimitMagnitude. Returns no value; math and clamp helpers mutate target motion.
  */
 void ActorTableRecord_ApplySeparationImpulse(void *self, void *targetObject)
 {
@@ -31,7 +31,7 @@ void ActorTableRecord_ApplySeparationImpulse(void *self, void *targetObject)
     u8 *target = (u8 *)targetObject;
     s32 x = *(s32 *)(target + 0x1c) - *(s32 *)(actor + 0x1c);
     s32 y = *(s32 *)(target + 0x20) - *(s32 *)(actor + 0x20);
-    s32 distance = func_0204cfa4(x, y);
+    s32 distance = Fx32Vector2_Magnitude(x, y);
     if (distance < 0x1000) {
         x = *(s8 *)(target + 0x48) >= *(s8 *)(actor + 0x48)
                 ? -0x1000 : 0x1000;
@@ -42,7 +42,7 @@ void ActorTableRecord_ApplySeparationImpulse(void *self, void *targetObject)
     }
     *(s32 *)(target + 0x8c) += x;
     *(s32 *)(target + 0x90) += y;
-    func_0204cff4((s32 *)(target + 0x8c), (s32 *)(target + 0x90), 0x6000);
+    Fx32Vector2_LimitMagnitude((s32 *)(target + 0x8c), (s32 *)(target + 0x90), 0x6000);
 }
 
 /*

@@ -67,7 +67,7 @@ extern "C" void Heap_Free(void *);
 extern "C" void *func_0201e0ec(void *);
 extern "C" void func_020349b8(void *, ...);
 extern "C" void func_02034a60(void *, s32, s32);
-extern "C" s32 func_0204cfa4(s32, s32);
+extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Sound_PlayEffectWithParameters(void *, s32, s32, ...);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, ...);
 extern "C" void Sound_StopEffect(void *, s32, ...);
@@ -583,7 +583,7 @@ extern "C" void func_ov076_02213a3c(void *actor, s32, s32, s32) {
         s32 dx = F(s32, partner, 0x1c) - F(s32, actor, 0x1c);
         s32 dy = F(s32, partner, 0x20) - F(s32, actor, 0x20);
         terrain = F(s32, partner, 0x24) + 0xf000;
-        s32 distance = func_0204cfa4(dx, dy);
+        s32 distance = Fx32Vector2_Magnitude(dx, dy);
         u8 direction[16];
         VecFx32Object_Init(direction);
         if (distance > 1) {
@@ -831,7 +831,7 @@ extern "C" s32 func_ov076_02214288(void *actor, void *context, s32, s32 sign) {
             F(s32, actor, 0x29c) ^= 1;
         } else {
             s32 distance =
-                func_0204cfa4(F(s32, actor, 0x1c) - F(s32, actor, 0x2c),
+                Fx32Vector2_Magnitude(F(s32, actor, 0x1c) - F(s32, actor, 0x2c),
                               F(s32, actor, 0x20) - F(s32, actor, 0x30));
             if (distance < 0xc00)
                 F(s32, actor, 0x29c) ^= 1;

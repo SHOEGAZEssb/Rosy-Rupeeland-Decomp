@@ -105,8 +105,8 @@ EXT(ActorDerivedType1_GetActiveRecordId);
 EXT(func_0203bae4);
 EXT(func_0203c660);
 EXT(func_0204b078);
-EXT(func_0204cfa4);
-EXT(func_0204cff4);
+EXT(Fx32Vector2_Magnitude);
+EXT(Fx32Vector2_LimitMagnitude);
 EXT(func_0204d308);
 EXT(func_0204d3d8);
 EXT(func_0204d520);
@@ -1674,7 +1674,7 @@ extern "C" void func_ov092_0221a908(void *actor)
                         angle += 0x200;
                     else
                         angle += 0x180;
-                    s32 length = func_0204cfa4(x, y);
+                    s32 length = Fx32Vector2_Magnitude(x, y);
                     s32 index = ((u16)angle) >> 4;
                     const s16 *trig = (const s16 *)data_020c9670;
                     F(s32, actor, 0x8c) =
@@ -1737,7 +1737,7 @@ extern "C" void func_ov092_0221ab24(void *actor, void *other)
         }
         s32 dx = (F(s32, other, 0x1c) - F(s32, actor, 0x1c)) / 2;
         s32 dy = F(s32, other, 0x20) - F(s32, actor, 0x20);
-        s32 length = func_0204cfa4(dx, dy);
+        s32 length = Fx32Vector2_Magnitude(dx, dy);
         if (length <= 0x1000)
         {
             func_ov092_02217930(P(actor, 0x88), 0, 0, 0);
@@ -1797,7 +1797,7 @@ extern "C" void func_ov092_0221ada4(void *actor)
         if (impulseY < -0xc000)
             impulseY = -0xc000;
     }
-    s32 length = func_0204cfa4(dx, impulseY);
+    s32 length = Fx32Vector2_Magnitude(dx, impulseY);
     if (length > 0x1000)
     {
         s32 effectVector[4] = {
@@ -1810,7 +1810,7 @@ extern "C" void func_ov092_0221ada4(void *actor)
                          F(s32, actor, 0x204)};
         F(s32, actor, 0x8c) += motion[1];
         F(s32, actor, 0x90) += motion[2];
-        func_0204cff4(P(actor, 0x8c), P(actor, 0x90), 0x10000);
+        Fx32Vector2_LimitMagnitude(P(actor, 0x8c), P(actor, 0x90), 0x10000);
         func_ov092_02217930(P(actor, 0x38), 0, 0, motion[3]);
         F(s32, actor, 0x3c) = func_020adae4(motion[1], 8);
         F(s32, actor, 0x40) = func_020adae4(motion[2], 8);

@@ -4,8 +4,8 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorContactState_AddContact
 .extern ActorTableRecord_ApplyCollisionResponse
-.extern func_0204cfa4
-.extern func_0204cff4
+.extern Fx32Vector2_Magnitude
+.extern Fx32Vector2_LimitMagnitude
 .extern func_020adc90
     .global ActorTableRecord_ApplySeparationImpulse
     .type ActorTableRecord_ApplySeparationImpulse, @function
@@ -21,7 +21,7 @@ ActorTableRecord_ApplySeparationImpulse: ; 0x0203cea0
     sub r7, r1, r0
     mov r0, r6
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x1000
     bge .L_0203cef4
     ldrsb r1, [r4, #0x48]
@@ -50,7 +50,7 @@ ActorTableRecord_ApplySeparationImpulse: ; 0x0203cea0
     add r3, r3, r0
     add r0, r4, #0x8c
     str r3, [r4, #0x90]
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
     .size ActorTableRecord_ApplySeparationImpulse, . - ActorTableRecord_ApplySeparationImpulse
 

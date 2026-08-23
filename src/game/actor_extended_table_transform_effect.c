@@ -9,7 +9,7 @@ extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *value);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern s32 ActorExtendedType2_GetDescriptorValue2C(const void *actor);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 TrackedResourceActor_SpawnFromKey(s32 mode, void *first, void *second);
 #ifdef __cplusplus
@@ -43,7 +43,7 @@ s32 ActorExtendedTable_ApplyTargetRelativeTransform(void *self, s32 mode)
         s32 magnitude;
         VecFx32_Subtract(displacement, actorTransform, targetTransform);
         displacement[3] = 0;
-        magnitude = func_0204cfa4((s32)displacement[1],
+        magnitude = Fx32Vector2_Magnitude((s32)displacement[1],
                                   (s32)displacement[2]);
         if (magnitude > 0x1000) {
             s32 scale = ActorExtendedType2_GetDescriptorValue2C(actor) << 4;

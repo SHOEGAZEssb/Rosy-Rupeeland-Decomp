@@ -4,7 +4,7 @@
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern TrackedResourceActorType21_Update
 .extern func_020adae4
 .extern func_020ae024
@@ -95,7 +95,7 @@ func_ov092_0221a908:
     ldr r0, [sp, #0x14]
     ldr r1, [sp, #0x18]
     mov r5, r2, lsr #0x10
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r1, r5, asr #0x4
     mov ip, r1, lsl #0x1
     add r1, ip, #0x1

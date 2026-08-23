@@ -17,7 +17,7 @@
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_SpawnFromKey
 .extern Sound_PlayOwnedEffect
 .extern func_020adc90
@@ -367,7 +367,7 @@ func_ov097_022181a0:
     sub r5, r0, r1
     mov r0, r4
     mov r1, r5
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     ldr r1, .L_022188f0
     cmp r0, r1
     ble .L_02218740

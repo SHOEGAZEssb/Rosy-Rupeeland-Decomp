@@ -34,7 +34,7 @@ extern void Sound_Play(...), Sound_PlayEffectWithParameters(...), Sound_StopEffe
 extern void VecFx32Object_Init(...), VecFx32Object_InitCopy(...);
 extern void VecFx32Object_InitComponents(...), VecFx32Object_Assign(...);
 extern void VecFx32Object_Add(...), VecFx32Object_Subtract(...), VecFx32Object_Destroy(...);
-extern s32 func_0204cfa4(...), func_020adc90(...), func_020befec(...);
+extern s32 Fx32Vector2_Magnitude(...), func_020adc90(...), func_020befec(...);
 extern void *ActorMotionAreaFollower_GetPosition(...), *SceneManager_GetCurrent(...);
 extern void func_ov062_0220fe78(...), func_02033b38(...);
 #ifdef __cplusplus
@@ -290,7 +290,7 @@ void func_ov087_02218110(void *actor, void *other, void *contact) {
   if (F(u8, other, 0x4d) == 2 || F(u8, other, 0x4d) == 3) {
     s32 dx = F(s32, other, 0x1c) - F(s32, actor, 0x1c);
     s32 dy = F(s32, other, 0x20) - F(s32, actor, 0x20);
-    s32 distance = func_0204cfa4(dx, dy);
+    s32 distance = Fx32Vector2_Magnitude(dx, dy);
     if (distance > 0x1000) {
       dx = func_020adc90(dx, distance);
       dy = func_020adc90(dy, distance);

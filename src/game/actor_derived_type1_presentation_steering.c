@@ -15,7 +15,7 @@ extern void func_02031758(void *output, void *actor, const void *position);
 extern void *SceneManager_GetCurrent(void *manager);
 extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void AuxiliaryInteraction_UpdateResourceFrame(void *object);
 extern void ActorAttachment_CopyTouchState(void *actor, const void *snapshot);
@@ -133,7 +133,7 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
                 (func_020adae4(sumX, count) - *(s32 *)(actor + 0x1c)) * 2, 5);
             desiredY = func_020adae4(
                 (func_020adae4(sumY, count) - *(s32 *)(actor + 0x20)) * 2, 5);
-            magnitude = func_0204cfa4(desiredX, desiredY);
+            magnitude = Fx32Vector2_Magnitude(desiredX, desiredY);
             if (magnitude > 0x30000) {
                 desiredX = func_020adc90(desiredX * 0x30, magnitude);
                 desiredY = func_020adc90(desiredY * 0x30, magnitude);

@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern func_02034a60
 .extern Type7Actor_GetStateCode
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_ov088_02219154
 .extern func_ov088_0221af2c
 .extern func_ov088_0221b098
@@ -43,7 +43,7 @@ func_ov088_0221add8:
     bne .L_0221aebc
     ldr r0, [r5, #0x3c]
     ldr r1, [r5, #0x40]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x1000
     bgt .L_0221aebc
     ldr r3, [r5, #0x1c]
@@ -52,7 +52,7 @@ func_ov088_0221add8:
     ldr r1, [r4, #0x20]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x30000
     bge .L_0221aebc
     mov r0, r5

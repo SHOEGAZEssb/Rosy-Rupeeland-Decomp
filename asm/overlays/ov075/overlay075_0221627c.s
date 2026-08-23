@@ -5,7 +5,7 @@
 .extern data_ov075_022172d8
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_GetStateCode
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_ov075_0221625c
 .extern func_ov075_0221647c
 
@@ -133,7 +133,7 @@ func_ov075_0221627c:
     mov r0, r7
     sub r8, r2, r1
     mov r1, r8
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x20000
     bge .L_02216460
     mov r1, r9

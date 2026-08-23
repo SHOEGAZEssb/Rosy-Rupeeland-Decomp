@@ -5,8 +5,8 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32_Subtract
-.extern func_0204cfa4
-.extern func_0204cff4
+.extern Fx32Vector2_Magnitude
+.extern Fx32Vector2_LimitMagnitude
 .extern func_020ae024
     .global ActorExtendedType2_ApplyTargetImpulse
     .type ActorExtendedType2_ApplyTargetImpulse, @function
@@ -22,7 +22,7 @@ ActorExtendedType2_ApplyTargetImpulse: ; 0x0203f858
     bl VecFx32_Subtract
     ldr r0, [sp, #0x4]
     ldr r1, [sp, #0x8]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x4000
     ble .L_0203f964
     ldrh r2, [r5, #0x4e]
@@ -78,7 +78,7 @@ ActorExtendedType2_ApplyTargetImpulse: ; 0x0203f858
     add r1, r5, #0x90
     mov r2, #0x6000
     str r3, [r5, #0x90]
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     mov r0, #0x0
     str r0, [r5, #0x40]
     str r0, [r5, #0x3c]

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov087/overlay087_recovery.c.
 .extern ActorContactState_AddContact
 .extern ActorDerivedRuntime_HandlePairActive
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern Sound_PlayEffectWithParameters
 .extern func_020adc90
 .extern gSoundContext
@@ -32,7 +32,7 @@ func_ov087_02218110:
     sub r9, r1, r0
     mov r0, r4
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_022181e4

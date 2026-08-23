@@ -3,7 +3,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern func_020349b8
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_02053f9c
 .extern func_020adc90
 .extern func_ov077_02214c7c
@@ -37,7 +37,7 @@ func_ov077_02214ce4:
     mov r0, r5
     sub r8, r2, r1
     mov r1, r8
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r7, r0
     cmp r7, #0x1000
     ble .L_02214da4

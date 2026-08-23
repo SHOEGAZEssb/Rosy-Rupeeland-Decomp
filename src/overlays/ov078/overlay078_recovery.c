@@ -44,7 +44,7 @@ EXT(func_020405c8);
 EXT(func_0204305c);
 EXT(ActorExtendedType2_GetDescriptorValue2A);
 EXT(func_02043610);
-EXT(func_0204cfa4);
+EXT(Fx32Vector2_Magnitude);
 EXT(func_02050078);
 EXT(func_02059394);
 EXT(Sound_PlayOwnedEffect);
@@ -281,7 +281,7 @@ extern "C" void func_ov078_0221361c(void *actor, void *other, s32 arg)
     {
         s32 dx = F(s32, other, 0x1c) - F(s32, actor, 0x1c);
         s32 dy = F(s32, other, 0x20) - F(s32, actor, 0x20);
-        s32 distance = func_0204cfa4(dx, dy);
+        s32 distance = Fx32Vector2_Magnitude(dx, dy);
         if (distance > 0x1000)
         {
             s32 vector[4];
@@ -564,7 +564,7 @@ extern "C" void func_ov078_022142d4(void *actor, void *other, s32 arg)
     {
         s32 dx = F(s32, other, 0x1c) - F(s32, actor, 0x1c);
         s32 dy = F(s32, other, 0x20) - F(s32, actor, 0x20);
-        s32 distance = func_0204cfa4(dx, dy);
+        s32 distance = Fx32Vector2_Magnitude(dx, dy);
         if (distance > 0x1000)
         {
             s32 vector[4];

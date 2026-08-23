@@ -20,7 +20,7 @@
 .extern ActorDerivedType1_StartRecord
 .extern ActorExtendedType2_GetDescriptorValue28
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern EffectManager_SubmitPointEffect
 .extern func_020adc90
 .extern func_ov082_0221391c
@@ -85,7 +85,7 @@ func_ov082_02213538:
     sub r8, r1, r0
     mov r0, r7
     mov r1, r8
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r9, r0
     cmp r9, #0x1000
     ble .L_022138e0

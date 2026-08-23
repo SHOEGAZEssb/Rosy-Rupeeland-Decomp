@@ -3,7 +3,7 @@
 .extern VecFx32Object_Assign
 .extern ActorRuntimeTriple_Assign
 .extern Type7Actor_CompleteDestinationMotion
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adae4
 .extern func_020ae024
 .text
@@ -29,7 +29,7 @@ Type7Actor_UpdateDestinationMotion: ; 0x0204991c
     sub r7, r1, r0
     mov r0, r6
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r5, r0
     cmp r5, #0x1000
     bge .L_02049998

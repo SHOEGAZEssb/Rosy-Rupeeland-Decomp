@@ -3,7 +3,7 @@
 .extern data_ov079_02213b08
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_ov079_0221340c
 .extern func_ov079_02213458
 
@@ -42,7 +42,7 @@ func_ov079_02213700:
     ldr r1, [r4, #0x20]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x50000
     ble .L_022137bc
     ldr r0, .L_0221384c

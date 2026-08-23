@@ -3,7 +3,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern ActorContactState_AddContact
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adc90
 .extern func_ov078_02213838
 
@@ -51,7 +51,7 @@ func_ov078_0221361c:
     sub r9, r1, r0
     mov r0, r4
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_02213720
@@ -98,7 +98,7 @@ func_ov078_0221361c:
     sub r9, r1, r0
     mov r0, r4
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_0221381c

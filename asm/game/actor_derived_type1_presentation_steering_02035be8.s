@@ -8,7 +8,7 @@
 .extern func_02031758
 .extern ActorAttachment_CopyTouchState
 .extern AttachmentController_SetEnabled
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern AuxiliaryInteraction_UpdateResourceFrame
 .extern func_020adae4
 .extern func_020adc90
@@ -169,7 +169,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     mov r5, r0
     mov r0, r4
     mov r1, r5
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r6, r0
     cmp r6, #0x30000
     ble .L_02035e60

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_state_helpers.c.
 .text
 .extern ActorRuntimeTriple_Assign
-.extern func_0204cff4
+.extern Fx32Vector2_LimitMagnitude
 
     .global Actor_ApplyMotionImpulse
     .type Actor_ApplyMotionImpulse, @function
@@ -21,7 +21,7 @@ Actor_ApplyMotionImpulse: ; 0x02033f7c
     str r1, [r6, #0x90]
     add r1, r6, #0x90
     mov r2, #0x6000
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     mov r1, #0x0
     ldr r3, [r5, #0xc]
     mov r2, r1

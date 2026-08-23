@@ -8,7 +8,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern func_020349b8
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_DispatchTargetInteraction
 .extern EffectManager_SubmitPointEffect
 .extern func_020adc90
@@ -41,7 +41,7 @@ func_ov095_0221c4a4:
     sub r8, r1, r0
     mov r0, r4
     mov r1, r8
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r7, r0
     cmp r7, #0x1000
     ble .L_0221c5bc

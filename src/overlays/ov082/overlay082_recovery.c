@@ -63,7 +63,7 @@ extern "C" void *func_02022cb0(void *, const void *, void *, s32, s32, s32);
 extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" s32 func_02033f4c(void *);
 extern "C" void func_02034a60(void *, s32, s32);
-extern "C" s32 func_0204cfa4(s32, s32);
+extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32);
 extern "C" void func_020a28e0(void *, s32, s32, s32, s32);
 extern "C" s32 func_020adc90(s32, s32);
@@ -466,7 +466,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
         ((V1)vm(a, 0x1b4))(a, other);
         s32 dx = F(s32, a, 0x1c) - F(s32, other, 0x1c),
             dy = F(s32, a, 0x20) - F(s32, other, 0x20),
-            m = func_0204cfa4(dx, dy);
+            m = Fx32Vector2_Magnitude(dx, dy);
         if (m > 0x1000) {
             bool record = false;
             s32 kind = ActorExtendedType2_GetDescriptorValue25(a);

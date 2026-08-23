@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 
 .global func_ov088_0221b218
 func_ov088_0221b218:
@@ -23,7 +23,7 @@ func_ov088_0221b218:
     ldmneia sp!, {r3, pc}
     ldr r0, [r2, #0x3c]
     ldr r1, [r2, #0x40]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x1000
     movge r0, #0x3
     movlt r0, #0x0

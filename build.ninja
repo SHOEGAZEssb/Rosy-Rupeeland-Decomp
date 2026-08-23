@@ -19712,7 +19712,7 @@ build build/reports/fx32_vector_magnitude_0204cfa4.json: objdiff build/decomp/de
   base_object = build/decomp/asm/game/fx32_vector_magnitude_0204cfa4.o
 build build/reports/fx32_vector_magnitude_0204cfa4.txt: match_report build/reports/fx32_vector_magnitude_0204cfa4.json | tools/report_objdiff.py
   report_json = build/reports/fx32_vector_magnitude_0204cfa4.json
-  report_args = --section .text --function func_0204cfa4 --require-exact
+  report_args = --section .text --function Fx32Vector2_Magnitude --require-exact
 build fx32_vector_magnitude: phony build/decomp/src/game/fx32_vector_magnitude.o build/decomp/asm/game/fx32_vector_magnitude_0204cfa4.o build/reports/fx32_vector_magnitude_0204cfa4.txt
 
 fx32_vector_limit_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -19726,7 +19726,7 @@ build build/reports/fx32_vector_limit_0204cff4.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/game/fx32_vector_limit_0204cff4.o
 build build/reports/fx32_vector_limit_0204cff4.txt: match_report build/reports/fx32_vector_limit_0204cff4.json | tools/report_objdiff.py
   report_json = build/reports/fx32_vector_limit_0204cff4.json
-  report_args = --section .text --function func_0204cff4 --require-exact
+  report_args = --section .text --function Fx32Vector2_LimitMagnitude --require-exact
 build fx32_vector_limit: phony build/decomp/src/game/fx32_vector_limit.o build/decomp/asm/game/fx32_vector_limit_0204cff4.o build/reports/fx32_vector_limit_0204cff4.txt
 
 singleton_tracking_actor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

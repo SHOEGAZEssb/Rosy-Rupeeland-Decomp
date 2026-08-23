@@ -11,7 +11,7 @@ extern "C" {
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern s32 ActorExtendedType2_SpawnOptionalPresentation(
     void *actor, s32 first, s32 second, s32 third);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020adc90(s32 value, s32 divisor);
 extern s32 func_020adae4(s32 value, s32 shift);
 extern s32 ActorContactState_AddContact(void *actor, void *other, s32 context);
@@ -52,7 +52,7 @@ s32 ActorExtendedType2_ApplyContactResponse(void *self, void *otherObject, s32 c
         (*(u32 *)(other + 0x14) & 0x10) == 0) {
         s32 dx = *(s32 *)(other + 0x1c) - *(s32 *)(actor + 0x1c);
         s32 dy = *(s32 *)(other + 0x20) - *(s32 *)(actor + 0x20);
-        s32 magnitude = func_0204cfa4(dx, dy);
+        s32 magnitude = Fx32Vector2_Magnitude(dx, dy);
         if (magnitude > 0x1000) {
             dx = func_020adc90(dx, magnitude);
             dy = func_020adc90(dy, magnitude);

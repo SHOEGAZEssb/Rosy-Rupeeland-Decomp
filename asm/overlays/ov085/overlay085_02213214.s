@@ -11,7 +11,7 @@
 .extern data_ov085_02214408
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorDerivedRuntime_HandlePairActive
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adc90
 .extern func_ov085_02213ae4
 .extern func_ov085_02213bd0
@@ -88,7 +88,7 @@ func_ov085_02213214:
     sub r9, r1, r0
     mov r0, r7
     mov r1, r9
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r8, r0
     cmp r8, #0x1000
     ble .L_02213444

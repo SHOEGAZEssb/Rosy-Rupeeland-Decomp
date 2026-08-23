@@ -4,7 +4,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_GetMagnitude
 .extern ActorModeNibble_HandleContactFromField1FC
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_EmitRecordEffects
 .extern TrackedResourceActor_DispatchTargetInteraction
 .extern func_020adc90
@@ -96,7 +96,7 @@ func_ov092_0221ab24:
     sub r7, r2, r1
     mov r0, r6
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r4, r0
     cmp r4, #0x1000
     ble .L_0221aca4

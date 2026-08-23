@@ -6,7 +6,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 
 .global func_ov095_0221af0c
 func_ov095_0221af0c:
@@ -44,7 +44,7 @@ func_ov095_0221af0c:
     ldr r1, [r6, #0x20]
     sub r0, r0, r9
     sub r1, r1, r8
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, r7, lsl #0xc
     bge .L_0221afa8
     mov r0, r6
@@ -80,7 +80,7 @@ func_ov095_0221af0c:
     ldr r1, [r5, #0x20]
     sub r0, r0, r9
     sub r1, r1, r8
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, r7, lsl #0xc
     bge .L_0221b030
     mov r0, r10

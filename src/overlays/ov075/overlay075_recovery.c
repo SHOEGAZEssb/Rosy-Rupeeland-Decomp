@@ -116,8 +116,8 @@ EXT(func_0204368c);
 EXT(Sound_PlayOwnedEffect);
 EXT(Sound_StopEffect);
 EXT(Sound_IsEffectPlaying);
-EXT(func_0204cfa4);
-EXT(func_0204cff4);
+EXT(Fx32Vector2_Magnitude);
+EXT(Fx32Vector2_LimitMagnitude);
 EXT(func_02071ee0);
 EXT(func_02050078);
 EXT(func_02072b68);
@@ -986,7 +986,7 @@ extern "C" s32 func_ov075_02214770(void *actor, const void *target)
     func_ov075_02214898(delta, P(actor, 0x78), P(actor, 0x18));
     s32 dx = F(s32, delta, 4);
     s32 dy = F(s32, delta, 8);
-    s32 distance = func_0204cfa4(dx, dy);
+    s32 distance = Fx32Vector2_Magnitude(dx, dy);
     if (distance < 0x1001)
     {
         F(s32, actor, 0x3c) = 0;
@@ -1002,7 +1002,7 @@ extern "C" s32 func_ov075_02214770(void *actor, const void *target)
             (speed * data_020c9670[(angle >> 4) * 2]) >> 12;
         s32 stepX = F(s32, actor, 0x3c) << 6;
         s32 stepY = F(s32, actor, 0x40) << 6;
-        func_0204cff4(&stepX, &stepY, 0x18000);
+        Fx32Vector2_LimitMagnitude(&stepX, &stepY, 0x18000);
         s32 cell = Actor_QueryTerrainCell(
             actor, (F(s32, actor, 0x1c) + stepX) >> 16,
             (F(s32, actor, 0x20) + stepY) >> 16);
@@ -2016,7 +2016,7 @@ extern "C" void func_ov075_02215cf8(void *actor)
                         func_ov075_022154e8(partner) == 0 &&
                         func_ov075_022152ac(actor) == 0 &&
                         func_ov075_022154e8(actor) == 0 &&
-                        func_0204cfa4(F(s32, actor, 0x1c) -
+                        Fx32Vector2_Magnitude(F(s32, actor, 0x1c) -
                                          F(s32, partner, 0x1c),
                                      F(s32, actor, 0x20) -
                                          F(s32, partner, 0x20)) < 0x60000;
@@ -2360,7 +2360,7 @@ extern "C" void func_ov075_0221627c(void *actor)
             continue;
         s32 dx = F(s32, actor, 0x1c) - F(s32, candidate, 0x1c);
         s32 dy = F(s32, actor, 0x20) - F(s32, candidate, 0x20);
-        s32 distance = func_0204cfa4(dx, dy);
+        s32 distance = Fx32Vector2_Magnitude(dx, dy);
         if (distance < 0x20000)
             func_ov075_0221647c(actor, candidate, dx, dy, distance);
     }

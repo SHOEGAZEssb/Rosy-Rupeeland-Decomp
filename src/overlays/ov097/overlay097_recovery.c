@@ -71,7 +71,7 @@ EXT(func_0200637c);
 EXT(func_020064b8);
 EXT(func_02030ad4);
 EXT(func_02034a60);
-EXT(func_0204cfa4);
+EXT(Fx32Vector2_Magnitude);
 EXT(func_02033f4c);
 EXT(func_02033f7c);
 EXT(func_020349b8);
@@ -634,7 +634,7 @@ extern "C" void func_ov097_022181a0(void *actor, void *argument)
         void *primary = F(void *, data_021052fc, 0x2ea4);
         dx = F(s32, primary, 0x1c) - F(s32, actor, 0x1c);
         dy = F(s32, primary, 0x20) - F(s32, actor, 0x20);
-        s32 distance = func_0204cfa4(dx, dy);
+        s32 distance = Fx32Vector2_Magnitude(dx, dy);
         if (distance > 0x555)
         {
             dx = func_020adc90(dx, distance * 3);
@@ -831,7 +831,7 @@ extern "C" void func_ov097_02218d3c(void *actor)
                              P(F(void *, actor, 0x2c4), 0x18));
         F(s32, actor, 0x2e4) += 0x10000;
         F(s32, actor, 0x2e0) += 0x24000;
-        s32 distance = func_0204cfa4(
+        s32 distance = Fx32Vector2_Magnitude(
             F(s32, actor, 0x2cc) - F(s32, actor, 0x2dc),
             F(s32, actor, 0x2d0) - F(s32, actor, 0x2e0));
         F(s16, actor, 0x2c0) = (s16)(func_020befec(distance, 6) >> 12) + 30;
@@ -977,7 +977,7 @@ extern "C" void func_ov097_02219228(void *actor, void *other)
     {
         dx = 0;
     }
-    s32 distance = func_0204cfa4(dx, dy);
+    s32 distance = Fx32Vector2_Magnitude(dx, dy);
     if (distance <= 0x19a)
     {
         return;

@@ -9,7 +9,7 @@
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern func_020328d0
 .extern ActorDerivedType1_StartRecord
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern TrackedResourceActor_DispatchTargetInteraction
 .extern SignedAbsoluteValue
 .text
@@ -106,7 +106,7 @@ TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect:
     str r0, [sp, #0x0]
     ldr r1, [sp, #0x0]
     mov r0, r5
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, r4, lsl #0xc
     bge .L_020509cc
     cmp r0, #0x1000

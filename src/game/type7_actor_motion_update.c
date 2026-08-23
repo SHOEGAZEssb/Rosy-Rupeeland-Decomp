@@ -17,7 +17,7 @@ extern "C" {
 extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32_Subtract(void *output, const void *first, const void *second);
 extern void VecFx32Object_Destroy(void *value);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 Type7Actor_HasSpecialCallbackPair(const void *actor);
 extern s32 func_020adae4(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
@@ -97,7 +97,7 @@ void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTra
 
     VecFx32Object_Assign(actor + 0x78, requestedTransform);
     VecFx32_Subtract(displacement, actor + 0x78, actor + 0x18);
-    magnitude = func_0204cfa4((s32)displacement[1], (s32)displacement[2]);
+    magnitude = Fx32Vector2_Magnitude((s32)displacement[1], (s32)displacement[2]);
     if (magnitude > 0x4000) {
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {
             if (Type7Actor_HasSpecialCallbackPair(actor) != 0) {
@@ -116,7 +116,7 @@ void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTra
                            *(void **)(data_020e1718 + 4))) {
                 u8 *target = *(u8 **)(actor + 0x280);
                 if (target != 0) {
-                    s32 separation = func_0204cfa4(
+                    s32 separation = Fx32Vector2_Magnitude(
                         *(s32 *)(actor + 0x1c) - *(s32 *)(target + 0x1c),
                         *(s32 *)(actor + 0x20) - *(s32 *)(target + 0x20));
                     if (*(s16 *)(actor + 0x248) > 40 && separation > 0x40000) {
@@ -162,7 +162,7 @@ void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTra
             *(s32 *)(actor + 0x90) += func_020adae4(componentY, 0x40);
         }
     } else {
-        s32 velocity = func_0204cfa4(*(s32 *)(actor + 0x8c),
+        s32 velocity = Fx32Vector2_Magnitude(*(s32 *)(actor + 0x8c),
                                      *(s32 *)(actor + 0x90));
         if (velocity > 0x19a)
             *(u16 *)(actor + 0xd6) =

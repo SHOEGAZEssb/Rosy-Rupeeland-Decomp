@@ -4,8 +4,8 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern Actor_QueryTerrainCell
-.extern func_0204cfa4
-.extern func_0204cff4
+.extern Fx32Vector2_Magnitude
+.extern Fx32Vector2_LimitMagnitude
 .extern func_020ae024
 .extern func_ov075_02214898
 
@@ -22,7 +22,7 @@ func_ov075_02214770:
     bl func_ov075_02214898
     ldr r0, [sp, #0x14]
     ldr r1, [sp, #0x18]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x1000
     ble .L_02214874
     ldr r0, [sp, #0x18]
@@ -52,7 +52,7 @@ func_ov075_02214770:
     mov r2, #0x18000
     mov r3, r3, lsl #0x6
     str r3, [sp, #0x8]
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     ldr r3, [r5, #0x1c]
     ldr r2, [sp, #0xc]
     ldr r1, [r5, #0x20]

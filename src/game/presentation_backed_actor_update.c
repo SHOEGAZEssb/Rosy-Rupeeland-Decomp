@@ -21,7 +21,7 @@ extern void *Actor_GetCollection(void *actor);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Add(void *destination, const void *source);
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern void GraphicsSpriteState_SetAnimationIndex(void *presentation, u32 selection);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
 #ifdef __cplusplus
@@ -160,7 +160,7 @@ void func_0204d858(void *actor)
     if (target != 0 && FIELD(u16, actor, 0x1ec) < 2) {
         s32 dx = FIELD(s32, target, 0x1c) - FIELD(s32, actor, 0x1c);
         s32 dy = FIELD(s32, target, 0x20) - FIELD(s32, actor, 0x20);
-        s32 distance = func_0204cfa4(dx, dy);
+        s32 distance = Fx32Vector2_Magnitude(dx, dy);
         if (distance > 0x18000) {
             FIELD(s32, actor, 0x8c) += func_020adae4(dx, distance);
             FIELD(s32, actor, 0x90) += func_020adae4(dy, distance);

@@ -3,7 +3,7 @@
 .extern Sound_Play
 .extern data_ov079_02213b08
 .extern data_ov079_02213b38
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adc90
 .extern gSoundContext
 
@@ -37,7 +37,7 @@ func_ov079_02213064:
     sub r7, r1, r0
     mov r0, r5
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r6, r0
     cmp r6, #0x1000
     ble .L_02213134

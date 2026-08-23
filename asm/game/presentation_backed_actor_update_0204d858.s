@@ -8,7 +8,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetCollection
 .extern Actor_QueryTerrainHeight
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020adae4
 .text
@@ -333,7 +333,7 @@ func_0204d858: ; 0x0204d858
     sub r7, r1, r0
     mov r0, r4
     mov r1, r7
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     mov r5, r0
     cmp r5, #0x18000
     ble .L_0204ddec

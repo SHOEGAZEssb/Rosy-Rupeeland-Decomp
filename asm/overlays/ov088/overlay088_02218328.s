@@ -18,8 +18,8 @@
 .extern Actor_ReplaceAttachmentSlotResource
 .extern ActorDerivedRuntime_UpdateFrame
 .extern Actor_UpdateGroundContactProbe
-.extern func_0204cfa4
-.extern func_0204cff4
+.extern Fx32Vector2_Magnitude
+.extern Fx32Vector2_LimitMagnitude
 .extern Sound_PlayEffectWithParameters
 .extern Sound_PlayOwnedEffect
 .extern Sound_StopEffect
@@ -314,7 +314,7 @@ func_ov088_02218328:
     mov r7, r5, lsr #0xc
     orr r7, r7, r2, lsl #0x14
     mov r5, #0x400
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     ldr r1, .L_02219130
     cmp r0, r1
     ble .L_0221893c
@@ -481,7 +481,7 @@ func_ov088_02218328:
     add r0, r4, #0x3c
     add r1, r4, #0x40
     mov r2, #0x6000
-    bl func_0204cff4
+    bl Fx32Vector2_LimitMagnitude
     cmp r7, #0x29
     ble .L_02218a24
     ldr r0, .L_02219140
@@ -845,7 +845,7 @@ func_ov088_02218328:
     ble .L_02218fd8
     ldr r0, [r4, #0x3c]
     ldr r1, [r4, #0x40]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     add r1, r4, #0x200
     sub r6, r6, r0, lsl #0x1
     ldrh r0, [r1, #0x6e]

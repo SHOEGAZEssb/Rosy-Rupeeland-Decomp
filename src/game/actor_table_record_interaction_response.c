@@ -7,7 +7,7 @@ extern u8 *data_021052fc;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0204cfa4(s32 x, s32 y);
+extern s32 Fx32Vector2_Magnitude(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern s32 func_020adae4(s32 numerator, s32 denominator);
@@ -85,7 +85,7 @@ void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
         return;
     x = *(s32 *)(target + 0x1c) - *(s32 *)(actor + 0x1c);
     y = *(s32 *)(target + 0x20) - *(s32 *)(actor + 0x20);
-    distance = func_0204cfa4(x, y);
+    distance = Fx32Vector2_Magnitude(x, y);
     if (distance < 0x1000) {
         x = *(s8 *)(target + 0x48) >= *(s8 *)(actor + 0x48)
                 ? -0x1000 : 0x1000;

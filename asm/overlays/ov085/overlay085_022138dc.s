@@ -3,7 +3,7 @@
 .extern data_020c9670
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020ae024
 .extern func_020befec
 .extern func_ov085_02213a38
@@ -21,7 +21,7 @@ func_ov085_022138dc:
     bl func_ov085_02213a38
     ldr r0, [sp, #0x4]
     ldr r1, [sp, #0x8]
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x4000
     ble .L_02213994
     ldr r0, [r5, #0xd0]

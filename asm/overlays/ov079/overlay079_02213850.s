@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_ov079_02213b08
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_ov079_0221329c
 
 .global func_ov079_02213850
@@ -38,7 +38,7 @@ func_ov079_02213850:
     ldr r1, [r4, #0x20]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x40000
     ldmleia sp!, {r4, pc}
     ldr r0, .L_02213904

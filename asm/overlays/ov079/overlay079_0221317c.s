@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorExtendedType2_IsDirectionToActorAccepted
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_ov079_0221323c
 
 .global func_ov079_0221317c
@@ -48,7 +48,7 @@ func_ov079_0221317c:
     ldr r1, [r5, #0x20]
     sub r0, r3, r0
     sub r1, r2, r1
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     cmp r0, #0x28000
     movge r0, #0x0
     ldmgeia sp!, {r3, r4, r5, pc}

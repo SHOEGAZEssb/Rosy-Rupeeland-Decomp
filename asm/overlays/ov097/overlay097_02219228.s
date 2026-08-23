@@ -8,7 +8,7 @@
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02034a60
 .extern ActorExtendedType2_GetDescriptorValue25
-.extern func_0204cfa4
+.extern Fx32Vector2_Magnitude
 .extern func_020adc90
 .extern func_ov097_0221a43c
 .extern gHeapContext
@@ -54,7 +54,7 @@ func_ov097_02219228:
 .L_022192b4:
     mov r0, r5
     mov r1, r6
-    bl func_0204cfa4
+    bl Fx32Vector2_Magnitude
     ldr r1, .L_0221943c
     mov r4, r0
     cmp r4, r1
