@@ -25,7 +25,8 @@ extern void func_02074058(void *group);
 extern void func_02074330(void *manager, void *group);
 extern void func_02074038(void *group, void *state);
 extern void ActorAttachmentManager_Destroy(void *manager);
-extern void AuxiliaryInteraction_BuildTerminalVector(void *destination, void *object);
+extern void AuxiliaryInteraction_BuildTerminalVector(
+    void *outputPosition, void *interactionPointer);
 extern void GameWork_SetFlag(void *work, u32 flag);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
@@ -145,8 +146,7 @@ extern s32 ActorAttachmentManager_ProcessPendingEvents(void *manager);
 extern void ActorAttachmentManager_FinalizeRewards(void *manager);
 extern s32 ActorAttachmentManager_CountType0Records(void *manager);
 extern void ActorDescriptor_InitRange(void *descriptor, u16 value, s32 count);
-extern void func_02005030(void *destination, const void *source);
-extern void ActorTerrain_ApplyNeighborAxisBias(void *actor, void *vector);
+extern void Actor_ApplyTerrainNeighborAxisBias(void *actor, void *position);
 extern void ActorAttachmentDescriptor_CopyPayload(void *destination, const void *source);
 extern void ActorDescriptor_SetRangeEnd(void *descriptor, s32 enabled);
 extern void func_0204f894(void *position, void *descriptor, s32 duration);
@@ -1838,7 +1838,7 @@ void VecFx32_TerminateNoOp(void *vector)
 void *AuxiliaryInteraction_Destroy(void *object)
 {
     u8 *self = (u8 *)object;
-    s32 terminalVector[4];
+    s32 terminalPosition[4];
     s32 i;
 
 
@@ -1866,15 +1866,15 @@ void *AuxiliaryInteraction_Destroy(void *object)
     if ((*(u32 *)(self + 0x20) & 0x40000) == 0) {
         u8 *manager = *(u8 **)(self + 0x44);
         s32 count;
-        AuxiliaryInteraction_BuildTerminalVector(terminalVector, self);
+        AuxiliaryInteraction_BuildTerminalVector(terminalPosition, self);
         count = *(s32 *)(manager + 0x84);
         for (i = 0; i < count; i++) {
             u8 *actor = (u8 *)ActorAttachmentManager_GetRecord(manager, i);
             if ((*(s32 (**)(void *))(*(u8 **)actor + 0xa8))(actor) != 0)
                 (*(void (**)(void *, void *, s32))(*(u8 **)actor + 0x80))(
-                    actor, terminalVector, 0);
+                    actor, terminalPosition, 0);
         }
-        VecFx32_TerminateNoOp(terminalVector);
+        VecFx32_TerminateNoOp(terminalPosition);
     }
     if (*(void **)(self + 0x44) != 0) {
         ActorAttachmentManager_Destroy(*(void **)(self + 0x44));
@@ -1994,12 +1994,14 @@ void *AuxiliaryCoreSprite_Delete(void *object)
     return object;
 }
 
-/* Build the world-space vector passed to each attachment's terminal callback. */
-void AuxiliaryInteraction_BuildTerminalVector(void *destination, void *object)
+/* Build the terrain-biased world position passed to terminal callbacks. */
+void AuxiliaryInteraction_BuildTerminalVector(
+    void *outputPosition, void *interactionPointer)
 {
-    u8 *self = (u8 *)object;
-    func_02005030(destination, *(u8 **)(self + 0x10) + 0x28);
-    ActorTerrain_ApplyNeighborAxisBias(*(void **)(self + 0x10), destination);
+    u8 *interaction = (u8 *)interactionPointer;
+    u8 *actor = *(u8 **)(interaction + 0x10);
+    VecFx32Object_InitCopy(outputPosition, actor + 0x28);
+    Actor_ApplyTerrainNeighborAxisBias(actor, outputPosition);
 }
 
 static void releaseOwnedPresentation(void **field)
@@ -2021,7 +2023,7 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
     u8 *manager = *(u8 **)(self + 0x44);
     u8 *owner = *(u8 **)(self + 0x10);
     s32 attachmentCount = *(s32 *)(manager + 0x84);
-    s32 terminalVector[4];
+    s32 terminalPosition[4];
     s32 rewardPosition[4];
     s16 emptyTypeTwoCount = 0;
     s32 typeOneEmpty = -1;
@@ -2044,7 +2046,7 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
     else
         result = requestedResult == 1;
 
-    AuxiliaryInteraction_BuildTerminalVector(terminalVector, self);
+    AuxiliaryInteraction_BuildTerminalVector(terminalPosition, self);
     for (i = 0; i < attachmentCount; i++) {
         u8 *actor = (u8 *)ActorAttachmentManager_GetRecord(manager, i);
         if (actor[0x4d] == 1) {
@@ -2068,7 +2070,7 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
                 typeSevenState = 1;
         }
         (*(void (**)(void *, void *, s32))(*(u8 **)actor + 0x80))(
-            actor, terminalVector, result);
+            actor, terminalPosition, result);
     }
     if (!GameWork_TestFlag(gGameWork, 0x417)) {
         if (typeOneEmpty >= 0) {
@@ -2083,7 +2085,7 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
             AuxiliaryInteraction_PlaySpatialSound(self, (u16)(base | (typeSevenEmpty ? 5 : 2)));
         }
     }
-    func_02005030(rewardPosition, owner + 0x18);
+    VecFx32Object_InitCopy(rewardPosition, owner + 0x18);
     rewardPosition[3] += 0x14000;
     for (i = 0; i < *(s32 *)(manager + 0xc8); i++) {
         u8 descriptor[0x24];
@@ -2117,7 +2119,7 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
     func_0202de90(func_02007f0c(data_021052fc, 1));
     *(u32 *)(self + 0x20) |= 0x40000;
     VecFx32_TerminateNoOp(rewardPosition);
-    VecFx32_TerminateNoOp(terminalVector);
+    VecFx32_TerminateNoOp(terminalPosition);
 }
 
 /* Apply the core scale and optional secondary scale to its two halfwords. */

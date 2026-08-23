@@ -1,6 +1,7 @@
 #include "tingle/types.h"
+#include "tingle/vec_fx32.h"
 
-/* Bias a vector away from the more obstructed side of its terrain neighborhood. */
+/* Bias a position away from the more rejected terrain-neighborhood side. */
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -12,23 +13,27 @@ extern void Memory_ClearBytes(void *destination, u32 size);
 #endif
 
 /*
- * Probe the snapshotted 3x3 terrain neighborhood around vector X/Y +4/+8 at
- * reference height +0x0c. Count rejected cells independently for each relative
- * X and Y band. If left/right rejection counts differ, move vector X by 0x2000
- * away from the larger count; similarly move Y by 0x4000 according to top/bottom
- * counts. Equal or both-zero edge counts produce no movement on that axis.
- * Returns no value; the clear helper initializes two local count arrays and
- * terrain queries read global map state.
+ * Snapshot the supplied VecFx32Object's FX32 world position, derive its
+ * terrain-grid X/Y and reference-height indices with arithmetic >>16, and
+ * probe the centered 3x3 terrain neighborhood. Count rejected samples in each
+ * relative X and Y band. Comparing only the negative and positive outer bands,
+ * move X by one fixed two-world-unit step or Y by one fixed four-world-unit
+ * step away from the greater count. Equal outer counts produce no movement on
+ * that axis, regardless of the count difference's magnitude; center-band
+ * counts are collected but not used. The actor is borrowed and read-only; the
+ * borrowed position's X/Y fields are modified in place, Z is unchanged, and
+ * there is no allocation, ownership transfer, error return, or direct hardware
+ * access. Memory_ClearBytes initializes the two local count arrays.
  */
-void ActorTerrain_ApplyNeighborAxisBias(void *actorPointer,
-                                        void *vectorPointer)
+void Actor_ApplyTerrainNeighborAxisBias(void *actorPointer,
+                                        void *positionPointer)
 {
-    u8 *vector = (u8 *)vectorPointer;
+    VecFx32Object *position = (VecFx32Object *)positionPointer;
     s32 rejectedXBandCounts[3];
     s32 rejectedYBandCounts[3];
-    s32 originalX = *(s32 *)(vector + 4);
-    s32 originalY = *(s32 *)(vector + 8);
-    s32 referenceHeight = *(s32 *)(vector + 0x0c) >> 16;
+    s32 sampleCenterXFx32 = position->value.x;
+    s32 sampleCenterYFx32 = position->value.y;
+    s32 referenceHeight = position->value.z >> 16;
     s32 xOffset;
     s32 yOffset;
 
@@ -37,8 +42,8 @@ void ActorTerrain_ApplyNeighborAxisBias(void *actorPointer,
     for (xOffset = -1; xOffset <= 1; ++xOffset) {
         for (yOffset = -1; yOffset <= 1; ++yOffset) {
             if (Actor_IsTerrainCellEligibleAtHeight(
-                    actorPointer, xOffset + (originalX >> 16),
-                    yOffset + (originalY >> 16), referenceHeight) == 0) {
+                    actorPointer, xOffset + (sampleCenterXFx32 >> 16),
+                    yOffset + (sampleCenterYFx32 >> 16), referenceHeight) == 0) {
                 ++rejectedXBandCounts[xOffset + 1];
                 ++rejectedYBandCounts[yOffset + 1];
             }
@@ -46,13 +51,13 @@ void ActorTerrain_ApplyNeighborAxisBias(void *actorPointer,
     }
 
     if (rejectedXBandCounts[0] > rejectedXBandCounts[2]) {
-        *(s32 *)(vector + 4) += 0x2000;
+        position->value.x += 0x2000;
     } else if (rejectedXBandCounts[2] > rejectedXBandCounts[0]) {
-        *(s32 *)(vector + 4) -= 0x2000;
+        position->value.x -= 0x2000;
     }
     if (rejectedYBandCounts[0] > rejectedYBandCounts[2]) {
-        *(s32 *)(vector + 8) += 0x4000;
+        position->value.y += 0x4000;
     } else if (rejectedYBandCounts[2] > rejectedYBandCounts[0]) {
-        *(s32 *)(vector + 8) -= 0x4000;
+        position->value.y -= 0x4000;
     }
 }

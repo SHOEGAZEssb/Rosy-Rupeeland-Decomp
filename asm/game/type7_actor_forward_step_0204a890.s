@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_forward_step.c.
 .extern Actor_SaveAndForceFlags
 .extern Actor_QueryTerrainHeight
-.extern func_02034d34
+.extern Actor_IsTerrainFootprintEligibleAtHeight
 .extern func_020adae4
 .extern func_020adc90
 .text
@@ -43,7 +43,7 @@ Type7Actor_TryStartForwardStepTransition: ; 0x0204a890
     mov r1, r4
     mov r2, r7
     mov r3, r8
-    bl func_02034d34
+    bl Actor_IsTerrainFootprintEligibleAtHeight
     cmp r0, #0x0
     beq .L_0204a980
     str r4, [r6, #0xb4]

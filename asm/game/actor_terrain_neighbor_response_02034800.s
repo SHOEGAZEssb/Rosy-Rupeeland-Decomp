@@ -2,9 +2,9 @@
 .text
 .extern Actor_IsTerrainCellEligibleAtHeight
 
-    .global func_02034800
-    .type func_02034800, @function
-func_02034800: ; 0x02034800
+    .global Actor_ApplyTerrainNeighborRepulsion
+    .type Actor_ApplyTerrainNeighborRepulsion, @function
+Actor_ApplyTerrainNeighborRepulsion: ; 0x02034800
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     mov r10, r1
@@ -45,7 +45,7 @@ func_02034800: ; 0x02034800
     ble .L_02034828
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_02034800, . - func_02034800
+    .size Actor_ApplyTerrainNeighborRepulsion, . - Actor_ApplyTerrainNeighborRepulsion
 
-    .global ActorTerrain_ApplyNeighborAxisBias
+    .global Actor_ApplyTerrainNeighborAxisBias
 

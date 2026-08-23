@@ -11,7 +11,7 @@
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 .extern Actor_IsTerrainCellEligibleAtHeightOrOneBelow
-.extern func_02034800
+.extern Actor_ApplyTerrainNeighborRepulsion
 .extern ActorRuntimeFlags_Test
 .extern gGameWork
 .extern gSoundContext
@@ -322,7 +322,7 @@ Actor_UpdateGroundContactProbe: ; 0x0203bba4
     bl VecFx32Object_InitCopy
     add r1, sp, #0x24
     mov r0, r10
-    bl func_02034800
+    bl Actor_ApplyTerrainNeighborRepulsion
     add r1, sp, #0x24
     add r0, r10, #0x284
     bl VecFx32Object_Assign

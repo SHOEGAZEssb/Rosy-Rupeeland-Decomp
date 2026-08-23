@@ -93,4 +93,4 @@ Actor_SetAttachmentAnimation: ; 0x02034be4
     ldmia sp!, {r3, r4, r5, pc}
     .size Actor_SetAttachmentAnimation, . - Actor_SetAttachmentAnimation
 
-    .global func_02034d34
+    .global Actor_IsTerrainFootprintEligibleAtHeight

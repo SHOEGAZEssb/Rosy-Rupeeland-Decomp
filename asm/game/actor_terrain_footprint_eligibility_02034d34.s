@@ -6,9 +6,9 @@
 .extern Actor_IsTerrainCellEligibleAtHeightOrOneBelow
 .extern func_020adae4
 
-    .global func_02034d34
-    .type func_02034d34, @function
-func_02034d34: ; 0x02034d34
+    .global Actor_IsTerrainFootprintEligibleAtHeight
+    .type Actor_IsTerrainFootprintEligibleAtHeight, @function
+Actor_IsTerrainFootprintEligibleAtHeight: ; 0x02034d34
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     mov r9, r1
@@ -68,6 +68,6 @@ func_02034d34: ; 0x02034d34
 .L_02034e00:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_02034d34, . - func_02034d34
+    .size Actor_IsTerrainFootprintEligibleAtHeight, . - Actor_IsTerrainFootprintEligibleAtHeight
 
     .global S8BoundsCenter_DestroyAndFree

@@ -15674,7 +15674,7 @@ build build/reports/actor_terrain_neighbor_response_02034800.json: objdiff build
   base_object = build/decomp/asm/game/actor_terrain_neighbor_response_02034800.o
 build build/reports/actor_terrain_neighbor_response_02034800.txt: match_report build/reports/actor_terrain_neighbor_response_02034800.json | tools/report_objdiff.py
   report_json = build/reports/actor_terrain_neighbor_response_02034800.json
-  report_args = --section .text --function func_02034800 --require-exact
+  report_args = --section .text --function Actor_ApplyTerrainNeighborRepulsion --require-exact
 build build/reports/actor_terrain_neighbor_response.txt: phony build/reports/actor_terrain_neighbor_response_02034800.txt
 
 build actor_terrain_neighbor_response: phony build/decomp/src/game/actor_terrain_neighbor_response.o build/decomp/asm/game/actor_terrain_neighbor_response_02034800.o build/reports/actor_terrain_neighbor_response.txt
@@ -15691,7 +15691,7 @@ build build/reports/actor_terrain_neighbor_axis_response_02034894.json: objdiff 
   base_object = build/decomp/asm/game/actor_terrain_neighbor_axis_response_02034894.o
 build build/reports/actor_terrain_neighbor_axis_response_02034894.txt: match_report build/reports/actor_terrain_neighbor_axis_response_02034894.json | tools/report_objdiff.py
   report_json = build/reports/actor_terrain_neighbor_axis_response_02034894.json
-  report_args = --section .text --function ActorTerrain_ApplyNeighborAxisBias --require-exact
+  report_args = --section .text --function Actor_ApplyTerrainNeighborAxisBias --require-exact
 build build/reports/actor_terrain_neighbor_axis_response.txt: phony build/reports/actor_terrain_neighbor_axis_response_02034894.txt
 
 build actor_terrain_neighbor_axis_response: phony build/decomp/src/game/actor_terrain_neighbor_axis_response.o build/decomp/asm/game/actor_terrain_neighbor_axis_response_02034894.o build/reports/actor_terrain_neighbor_axis_response.txt
@@ -15766,7 +15766,7 @@ build build/reports/actor_terrain_footprint_eligibility_02034d34.json: objdiff b
   base_object = build/decomp/asm/game/actor_terrain_footprint_eligibility_02034d34.o
 build build/reports/actor_terrain_footprint_eligibility_02034d34.txt: match_report build/reports/actor_terrain_footprint_eligibility_02034d34.json | tools/report_objdiff.py
   report_json = build/reports/actor_terrain_footprint_eligibility_02034d34.json
-  report_args = --section .text --function func_02034d34 --require-exact
+  report_args = --section .text --function Actor_IsTerrainFootprintEligibleAtHeight --require-exact
 build build/reports/actor_terrain_footprint_eligibility.txt: phony build/reports/actor_terrain_footprint_eligibility_02034d34.txt
 
 build actor_terrain_footprint_eligibility: phony build/decomp/src/game/actor_terrain_footprint_eligibility.o build/decomp/asm/game/actor_terrain_footprint_eligibility_02034d34.o build/reports/actor_terrain_footprint_eligibility.txt

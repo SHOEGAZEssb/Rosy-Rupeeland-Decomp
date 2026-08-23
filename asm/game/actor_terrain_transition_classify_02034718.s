@@ -70,4 +70,4 @@ Actor_ClassifyTerrainCellTransition: ; 0x02034718
 .L_020347fc: .word data_021052fc
     .size Actor_ClassifyTerrainCellTransition, . - Actor_ClassifyTerrainCellTransition
 
-    .global func_02034800
+    .global Actor_ApplyTerrainNeighborRepulsion

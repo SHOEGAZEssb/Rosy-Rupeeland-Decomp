@@ -1,0 +1,5 @@
+{
+  "func_02034800": "Actor_ApplyTerrainNeighborRepulsion",
+  "ActorTerrain_ApplyNeighborAxisBias": "Actor_ApplyTerrainNeighborAxisBias",
+  "func_02034d34": "Actor_IsTerrainFootprintEligibleAtHeight"
+}

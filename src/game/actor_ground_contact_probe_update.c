@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Probe predicted actor ground contact, manage a contact cooldown, and derive escape motion. */
+/* Probe predicted ground contact, manage its cooldown, and derive escape motion. */
 extern u8 gActorRuntimeFlags[];
 extern void *gGameWork;
 extern void *gSoundContext;
@@ -20,7 +20,7 @@ extern void VecFx32Object_Normalize(void *vector);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
-extern void func_02034800(void *actor, void *vector);
+extern void Actor_ApplyTerrainNeighborRepulsion(void *actor, void *position);
 #ifdef __cplusplus
 }
 #endif
@@ -64,12 +64,12 @@ static s32 isTypeOne(const u8 *actor)
  * when nonzero.
  *
  * Install/decrement countdown +0x204. While nonzero set +0xd0 bit 0x40 and,
- * for type one, clear +0x230 bit 0x10000. On expiry clear bit 0x40; eligible
- * type-one actors with nonzero +0x2a2 set +0xd0 bit 0x10000, copy vector +0x28,
- * transform it through func_02034800, and retain it at +0x284. Returns no
- * value. Terrain, GameWork, sound, vector, and transform calls have observable
- * engine or SDK effects. Raw terrain-class meanings remain intentionally
- * unnamed.
+ * for type one, clear +0x230 bit 0x10000. On expiry clear bit 0x40; qualifying
+ * type-one actors with nonzero +0x2a2 set +0xd0 bit 0x10000, copy position
+ * +0x28, apply terrain-neighbor repulsion, and retain the adjusted position at
+ * +0x284. Returns no value. Terrain, GameWork, sound, vector, and transform
+ * calls have observable engine or SDK effects. Raw terrain-class meanings
+ * remain intentionally unnamed.
  */
 void Actor_UpdateGroundContactProbe(void *self)
 {
@@ -221,12 +221,13 @@ updateCountdown:
         *(u32 *)(actor + 0xd0) &= ~0x40;
         if (isSpecialTerrainClass && isTypeOne(actor) &&
             *(u16 *)(actor + 0x2a2) != 0) {
-            s32 vector[4];
+            s32 terrainAdjustedPosition[4];
             *(u32 *)(actor + 0xd0) |= 0x10000;
-            VecFx32Object_InitCopy(vector, actor + 0x28);
-            func_02034800(actor, vector);
-            VecFx32Object_Assign(actor + 0x284, vector);
-            VecFx32Object_Destroy(vector);
+            VecFx32Object_InitCopy(terrainAdjustedPosition, actor + 0x28);
+            Actor_ApplyTerrainNeighborRepulsion(
+                actor, terrainAdjustedPosition);
+            VecFx32Object_Assign(actor + 0x284, terrainAdjustedPosition);
+            VecFx32Object_Destroy(terrainAdjustedPosition);
         }
     } else {
         *(u32 *)(actor + 0xd0) &= ~0x40;
