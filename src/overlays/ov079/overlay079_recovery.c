@@ -30,7 +30,7 @@ extern "C" void *Actor_GetOwningCollection(void *);
 extern "C" void *ActorCollection_GetSpriteGroup(void *);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void *, void *, void *, void *, void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern "C" void ActorContactState_AddContact(void *, void *, s32);
+extern "C" s32 ActorContactState_AddContact(void *, void *, s32);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);

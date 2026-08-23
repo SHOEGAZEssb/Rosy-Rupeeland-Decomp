@@ -13,7 +13,8 @@ extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
                                                     s32 directionalMode,
                                                     s32 scale);
-extern void ActorContactState_AddContact(void *self, void *other, s32 mode);
+extern s32 ActorContactState_AddContact(void *self, void *other,
+                                        s32 wasTracked);
 #ifdef __cplusplus
 }
 #endif

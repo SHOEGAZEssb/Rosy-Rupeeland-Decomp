@@ -25,7 +25,7 @@ extern "C" u8 data_ov085_022143d8[],data_ov085_022143e0[],data_ov085_022143e8[];
 extern "C" u8 data_ov085_022143f8[],data_ov085_02214400[],data_ov085_02214408[];
 extern "C" u8 data_ov085_02214434[],data_ov085_0221447c[],data_ov085_022144f4[];
 extern "C" void *ActorDerivedRuntime_Init(void*,const void*); extern "C" void *ActorDerivedRuntime_DestroyAlternate(void*);
-extern "C" void ActorDerivedRuntime_UpdateFrame(void*); extern "C" void ActorDerivedRuntime_HandlePairActive(void*,void*,s32);
+extern "C" void ActorDerivedRuntime_UpdateFrame(void*); extern "C" s32 ActorDerivedRuntime_HandlePairActive(void*,void*,s32);
 extern "C" void ActorDerivedRuntime_AcceptInteractionQuery(void*,void*);
 extern "C" void Type7MarkerPresentation_Init(void*,void*); extern "C" void Type7MarkerPresentation_Destroy(void*);
 extern "C" void Type7MarkerPresentation_ReloadResources(void*); extern "C" void Type7MarkerPresentation_SelectAnimation(void*,s32);

@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /*
  * Prune inactive actors and populate the collection's deferred-removal queue.
@@ -7,27 +7,28 @@
  */
 typedef struct CollectionActor CollectionActor;
 typedef struct CollectionActorVTable {
-    void *field_00;
+    void *methodBeforeDestroy_00;
     void (*destroy_04)(CollectionActor *self);
 } CollectionActorVTable;
 struct CollectionActor {
     CollectionActorVTable *vtable_00;
-    u8 field_04[0x44];
+    u8 baseStateBeforeCollectionSlot_04[0x44];
     s8 slot_48;
-    u8 field_49[4];
+    u8 pairStateBytes_49[4];
     u8 type_4d;
-    u8 field_4e[2];
+    u8 baseStateBeforeGroup_4e[2];
     s16 group_50;
-    u8 field_52[0x7e];
+    u8 baseStateBeforeRuntimeFlags_52[0x7e];
     u32 flags_0d0;
-    u8 field_0d4[0x194];
+    u8 baseStateBeforeSecondaryFlags_0d4[0x194];
     u32 flags_268;
 };
 typedef struct ActorCollectionActivation {
     CollectionActor *actors_0000[128];
     void *relations_0200[5][128];
     CollectionActor *removalQueue_0c00[128];
-    u8 field_0e00[0x2074];
+    u8 collectionStateBeforePairMatrix_0e00[0x34];
+    ActorPairStateMatrix pairStateMatrix_0e34;
     s32 slotLimit_2e74;
     u32 flags_2e78;
     CollectionActor *specialActor_2e7c;
@@ -39,10 +40,6 @@ extern "C" {
 #endif
 extern void ActorCollection_RegisterActor(ActorCollectionActivation *, CollectionActor *);
 extern void ActorCollection_UnregisterActor(ActorCollectionActivation *, CollectionActor *);
-extern u8 ActorPairMatrix_Get(const u8 *, s32, s32);
-extern void ActorPairMatrix_Clear(u8 *, s32, s32);
-extern void ActorCollection_NotifyPairEnded(ActorCollectionActivation *, CollectionActor *,
-                          CollectionActor *);
 #ifdef __cplusplus
 }
 #endif
@@ -88,9 +85,12 @@ void ActorCollection_QueueActorForRemoval(ActorCollectionActivation *self, Colle
     if (actor->type_4d == 7 && self->secondaryActor_2e80 == actor) {
         for (i = 0; i < 128; i++) {
             if (self->actors_0000[i] &&
-                ActorPairMatrix_Get((u8 *)self + 0x0e34, 1, i))
-                ActorCollection_NotifyPairEnded(self, self->actors_0000[i], actor);
-            ActorPairMatrix_Clear((u8 *)self + 0x0e34, 1, i);
+                ActorPairStateMatrix_IsTracked(&self->pairStateMatrix_0e34, 1, i))
+                ActorCollection_DispatchPairEnded(
+                    (ActorPairCollection *)self,
+                    (ActorPairActor *)self->actors_0000[i],
+                    (ActorPairActor *)actor);
+            ActorPairStateMatrix_ClearPair(&self->pairStateMatrix_0e34, 1, i);
         }
         ActorCollection_RegisterActor(self, actor);
         self->actors_0000[1] = 0;

@@ -1,3 +1,4 @@
+#include "tingle/actor_pair_state.h"
 #include "tingle/graphics_sprite_group.h"
 #include "tingle/types.h"
 
@@ -21,7 +22,7 @@ typedef struct ActorCollection {
     ActorCollectionOwner owner_0e10;
     s32 actorCount_0e1c;
     void *field_0e20[5];
-    u8 relationshipMatrix_0e34[0x2040];
+    ActorPairStateMatrix pairStateMatrix_0e34;
     s32 slotLimit_2e74;
     u32 flags_2e78;
     void *specialActor_2e7c;
@@ -47,11 +48,11 @@ extern void ActorCollection_Deinit(ActorCollection *self);
 #endif
 
 /* Clear exactly 0x2040 relationship bytes and return no value. */
-void ActorPairMatrix_ClearAll(u8 *matrix)
+void ActorPairStateMatrix_ClearAll(ActorPairStateMatrix *matrix)
 {
     s32 i;
-    for (i = 0; i < 0x2040; i++)
-        matrix[i] = 0;
+    for (i = 0; i < ACTOR_PAIR_STATE_ENTRY_COUNT; i++)
+        matrix->entries[i] = 0;
 }
 
 /*
@@ -71,7 +72,7 @@ ActorCollection *ActorCollection_Init(ActorCollection *self)
     self->spriteGroup_0e00 = 0;
     OverlaySlot_Init(&self->owner_0e04);
     OverlaySlot_Init(&self->owner_0e10);
-    ActorPairMatrix_ClearAll(self->relationshipMatrix_0e34);
+    ActorPairStateMatrix_ClearAll(&self->pairStateMatrix_0e34);
     self->flags_2e78 |= 2;
     self->spriteMode_2e84 = 0;
     self->actorScale_2e88 = 0x1000;

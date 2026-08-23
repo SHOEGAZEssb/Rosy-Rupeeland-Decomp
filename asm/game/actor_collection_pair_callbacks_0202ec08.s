@@ -2,9 +2,9 @@
 .text
 .extern ActorDerivedRuntime_HandlePairActive
 
-    .global ActorCollection_NotifyPairActive
-    .type ActorCollection_NotifyPairActive, @function
-ActorCollection_NotifyPairActive: ; 0x0202ec08
+    .global ActorCollection_DispatchPairActive
+    .type ActorCollection_DispatchPairActive, @function
+ActorCollection_DispatchPairActive: ; 0x0202ec08
     stmdb sp!, {r3, lr}
     ldr r0, [r1, #0x10]
     tst r0, #0x1000000
@@ -34,4 +34,4 @@ ActorCollection_NotifyPairActive: ; 0x0202ec08
     mov r2, r3
     blx ip
     ldmia sp!, {r3, pc}
-    .size ActorCollection_NotifyPairActive, . - ActorCollection_NotifyPairActive
+    .size ActorCollection_DispatchPairActive, . - ActorCollection_DispatchPairActive

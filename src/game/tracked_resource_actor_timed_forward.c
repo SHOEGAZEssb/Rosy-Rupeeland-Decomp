@@ -5,13 +5,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void ActorContactState_AddContact(void *actor, u32 argument1, u32 argument2);
+extern s32 ActorContactState_AddContact(void *actor, void *other,
+                                        s32 wasTracked);
 #ifdef __cplusplus
 }
 #endif
 
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
-typedef void (*ForwardFunction)(void *, u32, u32);
+typedef void (*ForwardFunction)(void *actor, void *other, s32 wasTracked);
 
 /*
  * Inputs are a timed actor and two opaque callback arguments. Forwards all
@@ -19,9 +20,10 @@ typedef void (*ForwardFunction)(void *, u32, u32);
  * Returns nothing. Both callbacks can mutate engine state or cross SDK
  * boundaries; this wrapper has no direct hardware effects.
  */
-void TrackedResourceActorType26_ForwardInteractionCallback(void *actor, u32 argument1, u32 argument2)
+void TrackedResourceActorType26_ForwardInteractionCallback(
+    void *actor, void *other, s32 wasTracked)
 {
     (*(ForwardFunction *)((u8 *)FIELD(void *, actor, 0) + 0xc4))
-        (actor, argument1, argument2);
-    ActorContactState_AddContact(actor, argument1, argument2);
+        (actor, other, wasTracked);
+    ActorContactState_AddContact(actor, other, wasTracked);
 }

@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/actor_collection_registration.c.
 .text
-.extern ActorPairMatrix_Get
-.extern ActorCollection_NotifyPairEnded
-.extern ActorPairMatrix_Clear
+.extern ActorPairStateMatrix_IsTracked
+.extern ActorCollection_DispatchPairEnded
+.extern ActorPairStateMatrix_ClearPair
 
     .global ActorCollection_UnregisterActor
     .type ActorCollection_UnregisterActor, @function
@@ -63,18 +63,18 @@ ActorCollection_UnregisterActor: ; 0x0202d1e4
     mov r1, r4
     mov r2, r5
     add r0, r8, #0xc00
-    bl ActorPairMatrix_Get
+    bl ActorPairStateMatrix_IsTracked
     cmp r0, #0x0
     beq .L_0202d2cc
     ldr r1, [r7, r5, lsl #0x2]
     mov r0, r7
     mov r2, r6
-    bl ActorCollection_NotifyPairEnded
+    bl ActorCollection_DispatchPairEnded
 .L_0202d2cc:
     mov r1, r4
     mov r2, r5
     add r0, r8, #0xc00
-    bl ActorPairMatrix_Clear
+    bl ActorPairStateMatrix_ClearPair
     add r5, r5, #0x1
     cmp r5, #0x80
     blt .L_0202d298

@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_collection_registration.c.
 .text
 
-    .global ActorPairMatrix_Clear
-    .type ActorPairMatrix_Clear, @function
-ActorPairMatrix_Clear: ; 0x0202d324
+    .global ActorPairStateMatrix_ClearPair
+    .type ActorPairStateMatrix_ClearPair, @function
+ActorPairStateMatrix_ClearPair: ; 0x0202d324
     cmp r2, r1
     movgt r3, r1
     movgt r1, r2
@@ -17,4 +17,4 @@ ActorPairMatrix_Clear: ; 0x0202d324
     mov r2, #0x0
     strb r2, [r0, r1]
     bx lr
-    .size ActorPairMatrix_Clear, . - ActorPairMatrix_Clear
+    .size ActorPairStateMatrix_ClearPair, . - ActorPairStateMatrix_ClearPair

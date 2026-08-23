@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /*
  * Recovered update and interaction callbacks for the trigger-presentation
@@ -9,8 +9,6 @@
 extern "C" {
 #endif
 extern void Actor_SetRuntimeFlag80(void *actor);
-extern void ActorContactState_AddContact(void *actor);
-extern void func_02032abc(void);
 extern void Actor_TryDispatchActivationMode2(void *actor);
 extern s32 Actor_UpdateTimedResourceState(void *actor);
 #ifdef __cplusplus
@@ -38,7 +36,8 @@ void func_0204eaac(void *actor)
  */
 s32 func_0204eac8(void *actor, const void *other, s32 condition)
 {
-    ActorContactState_AddContact(actor);
+    ActorContactState_AddContact((ActorPairActor *)actor,
+                                 (ActorPairActor *)other, condition);
     if (FIELD(void *, actor, 0x188) != 0 &&
         FIELD(u8, other, 0x4d) == 1 && condition == 0) {
         Actor_TryDispatchActivationMode2(actor);
@@ -47,11 +46,10 @@ s32 func_0204eac8(void *actor, const void *other, s32 condition)
 }
 
 /*
- * Forward all register inputs to func_02032abc and propagate its return value.
+ * Forward all register inputs to ActorContactState_RemoveContact and propagate its return value.
  * This tail-call thunk has only the callee's engine effects.
  */
-void func_0204eb0c(void)
+void func_0204eb0c(ActorPairActor *actor)
 {
-    func_02032abc();
+    ActorContactState_RemoveContact(actor);
 }
-

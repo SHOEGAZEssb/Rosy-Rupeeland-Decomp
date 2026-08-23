@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /* Advance actor timed state, reconcile transient effects, and request removal. */
 extern u8 gActorRuntimeCollection[];
@@ -12,7 +12,6 @@ extern void GamePhaseScriptVm_Execute(void *state, s32 value);
 extern s32 ActorRuntimeCollection_TryCompleteAttachment(void *effectState, void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *manager, u32 slot);
 extern void *Actor_GetOwningCollection(void *actor);
-extern void ActorCollection_EndTrackedPair(void *collection, void *reference, void *actor);
 extern void *ActorRuntimeCollection_GetPrimaryContainer(void *effectState, s32 index);
 extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
 extern void GamePhaseActorScriptVm_Activate(void *state);
@@ -55,8 +54,10 @@ s32 Actor_UpdateTimedResourceState(void *self)
         if (actor[0xe8] != 2) {
             slotOne = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
             collection = Actor_GetOwningCollection(actor);
-            ActorCollection_EndTrackedPair(collection,
-                          *(void **)((u8 *)slotOne + 0x2e7c), actor);
+            ActorCollection_EndTrackedPair(
+                (ActorPairCollection *)collection,
+                *(ActorPairActor **)((u8 *)slotOne + 0x2e7c),
+                (ActorPairActor *)actor);
         }
         actor[0xe8] = 0;
         GamePhaseActorScriptVm_Assign(actor + 0xec, ActorRuntimeCollection_GetPrimaryContainer(gActorRuntimeCollection, 0));

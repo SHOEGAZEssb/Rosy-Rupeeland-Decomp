@@ -1,10 +1,9 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /* Implement small derived-actor virtual overrides by forwarding to recovered base helpers. */
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032abc(void *actor);
 extern s32 Actor_SetInteractionFlag2000(void *actor);
 extern s32 Actor_ClearInteractionFlag2000(void *actor);
 extern s32 Actor_PollInteractionIconState(void *actor);
@@ -14,13 +13,15 @@ extern u32 Actor_TestQueryPointAndClearFlag2000(void *actor, const void *query);
 #endif
 
 /*
- * Forward actor to func_02032abc when a tracked pair ends, ignoring the other
+ * Forward actor to ActorContactState_RemoveContact when a tracked pair ends,
+ * ignoring the other
  * actor. Returns no value; the base helper owns all observable state changes.
  */
-void ActorDerivedRuntime_HandlePairEnded(void *actor, void *other)
+void ActorDerivedRuntime_HandlePairEnded(ActorPairActor *actor,
+                                         ActorPairActor *other)
 {
     (void)other;
-    func_02032abc(actor);
+    ActorContactState_RemoveContact(actor);
 }
 
 /* Accept recovered virtual inputs, change no state, and return no value. */

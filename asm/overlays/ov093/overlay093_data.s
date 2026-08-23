@@ -14,7 +14,7 @@
 .extern Actor_ConvergeToTargetHeight
 .extern Actor_IntegrateMotion
 .extern Actor_SetPosition
-.extern func_02032abc
+.extern ActorContactState_RemoveContact
 .extern Actor_SelectScriptVariant
 .extern Actor_AssignPrimaryScript
 .extern Actor_SetScriptSlot
@@ -135,7 +135,7 @@ data_ov093_022188f0:
     .word Actor_ClearTransientContactState
     .word func_0204d3dc
     .word func_0204d3e4
-    .word func_02032abc
+    .word ActorContactState_RemoveContact
     .word func_02031f44
     .word func_0203213c
     .word func_02032144

@@ -165,7 +165,7 @@
 .extern func_ov097_0221a07c
 .extern Actor_ClearTransientContactState
 .extern TrackedResourceActor_HandleInteractionCallback
-.extern func_02032abc
+.extern ActorContactState_RemoveContact
 .extern func_ov097_0221a05c
 .extern Actor_ClearInteractionFlag2000
 .extern Actor_TestQueryPointAndClearFlag2000
@@ -591,7 +591,7 @@ data_ov097_0221aaa4:
     .word Actor_ClearTransientContactState
     .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word TrackedResourceActor_HandleInteractionCallback
-    .word func_02032abc
+    .word ActorContactState_RemoveContact
     .word func_02031f44
     .word func_0203213c
     .word func_02032144

@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /* Copy actor position and maintain a byte-counted contact flag. */
 
@@ -27,30 +27,33 @@ void Actor_SetPosition(void *self, const void *source)
 }
 
 /*
- * When third is zero, increment byte 0x4c and set actor flag one at 0x10.
- * Other inputs are otherwise ignored. Always return one; no helpers run.
+ * When wasTracked is zero, increment active-contact count byte 0x4c and set
+ * the active-contact flag at 0x10. Other inputs are otherwise ignored. Always
+ * return one; no helpers run.
  */
-s32 ActorContactState_AddContact(void *self, void *other, s32 third)
+s32 ActorContactState_AddContact(ActorPairActor *actor,
+                                 ActorPairActor *other, s32 wasTracked)
 {
-    u8 *actor = (u8 *)self;
+    ActorPairContactStateView *state = (ActorPairContactStateView *)actor;
     (void)other;
-    if (!third) {
-        actor[0x4c]++;
-        *(u32 *)(actor + 0x10) |= 1;
+    if (!wasTracked) {
+        state->activeContactCount_4c++;
+        state->flags_10 |= ACTOR_PAIR_ACTIVE_CONTACT_FLAG;
     }
     return 1;
 }
 
 /*
- * Decrement nonzero byte 0x4c. When it reaches zero, retain zero and clear
- * actor flag one at 0x10. Returns no value and calls no helpers.
+ * Decrement a nonzero active-contact count. When it reaches zero, retain zero
+ * and clear the active-contact flag at 0x10. Returns no value and calls no
+ * helpers.
  */
-void func_02032abc(void *self)
+void ActorContactState_RemoveContact(ActorPairActor *actor)
 {
-    u8 *actor = (u8 *)self;
-    if (!actor[0x4c])
+    ActorPairContactStateView *state = (ActorPairContactStateView *)actor;
+    if (!state->activeContactCount_4c)
         return;
-    actor[0x4c]--;
-    if (!actor[0x4c])
-        *(u32 *)(actor + 0x10) &= ~1;
+    state->activeContactCount_4c--;
+    if (!state->activeContactCount_4c)
+        state->flags_10 &= ~ACTOR_PAIR_ACTIVE_CONTACT_FLAG;
 }

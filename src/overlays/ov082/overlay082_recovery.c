@@ -53,7 +53,7 @@ extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
 extern "C" s32 ActorRuntimeCollection_GetBusyState(void *);
 extern "C" void *TrackedResourceActor_SpawnFromKey(s32, const void *,
                                                    const void *);
-extern "C" void ActorContactState_AddContact(void *, void *, s32);
+extern "C" s32 ActorContactState_AddContact(void *, void *, s32);
 extern "C" void ActorDerivedType1_StartRecord(void *, s32);
 extern "C" void *ActorMotionAreaFollower_GetPosition(void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);

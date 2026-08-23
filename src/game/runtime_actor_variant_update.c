@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /*
  * Recovered frame update for the runtime actor variant. It advances the base,
@@ -17,7 +17,6 @@ extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
 extern void GamePhaseActorScriptVm_Activate(void *state);
 extern s32 GamePhaseActorScriptVm_IsActive(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *runtime, void *actor);
-extern void ActorCollection_EndTrackedPair(void *runtime, void *anchor, void *actor);
 extern void Actor_SetRuntimeFlag80(void *actor);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *Actor_GetGlobalCollectionBySlot(void *actor, u32 slot);
@@ -57,7 +56,10 @@ void func_0204d308(void *self)
         if (actor[0xe8] != 2) {
             u8 *collection = (u8 *)Actor_GetGlobalCollectionBySlot(actor, 1);
             void *runtime = Actor_GetOwningCollection(actor);
-            ActorCollection_EndTrackedPair(runtime, *(void **)(collection + 0x2e7c), actor);
+            ActorCollection_EndTrackedPair(
+                (ActorPairCollection *)runtime,
+                *(ActorPairActor **)(collection + 0x2e7c),
+                (ActorPairActor *)actor);
         }
         actor[0xe8] = 0;
         GamePhaseActorScriptVm_Assign(state, ActorRuntimeCollection_GetPrimaryContainer(gActorRuntimeCollection));

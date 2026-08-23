@@ -1,3 +1,4 @@
+#include "tingle/actor_pair_state.h"
 #include "tingle/heap.h"
 #include "tingle/point_2d_s16.h"
 #include "tingle/sprite_effect.h"
@@ -16,7 +17,6 @@ typedef struct Graphics3dPresentation Graphics3dPresentation;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void ActorContactState_AddContact(void *actor);
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 ActorRuntimeCollection_GetBusyState(void *state);
 extern s32 ActorDerivedType1_HasBlockingStateFlags(void *actor);
@@ -2832,13 +2832,15 @@ static void *createAuxiliary(u8 *actor)
  * manager, target virtual, and resource calls have observable engine/SDK
  * effects; the target itself may also be modified by the called handlers.
  */
-s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other)
+s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other,
+                                                 s32 wasTracked)
 {
     u8 *actor = (u8 *)self;
     u8 *target = (u8 *)other;
     void *scene;
 
-    ActorContactState_AddContact(actor);
+    ActorContactState_AddContact((ActorPairActor *)actor,
+                                 (ActorPairActor *)target, wasTracked);
     scene = SceneManager_GetCurrent(gSceneManager);
     if (*(s32 *)((u8 *)scene + 4) == 2 || ActorRuntimeCollection_GetBusyState(gActorRuntimeCollection) != 0 ||
         ActorDerivedType1_HasBlockingStateFlags(actor) != 0 || *(s16 *)(actor + 0xd6) == 0x0d ||

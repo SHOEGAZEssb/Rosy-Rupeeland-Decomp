@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_runtime_virtual_wrappers.c.
 .text
-.extern func_02032abc
+.extern ActorContactState_RemoveContact
 .extern Actor_SetInteractionFlag2000
 .extern Actor_ClearInteractionFlag2000
 .extern Actor_TestQueryPointAndClearFlag2000
@@ -10,7 +10,7 @@
 ActorDerivedRuntime_HandlePairEnded: ; 0x0203baa0
     ldr ip, .L_0203baa8
     bx ip
-.L_0203baa8: .word func_02032abc
+.L_0203baa8: .word ActorContactState_RemoveContact
     .size ActorDerivedRuntime_HandlePairEnded, . - ActorDerivedRuntime_HandlePairEnded
 
     .global ActorDerivedRuntime_NoOp

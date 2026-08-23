@@ -15,7 +15,8 @@ extern "C" {
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
 extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
                                      const void *viewPosition);
-extern void ActorContactState_AddContact(void *actor, void *other, s32 mode);
+extern s32 ActorContactState_AddContact(void *actor, void *other,
+                                        s32 wasTracked);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 PresentationBackedActor_CanAcquireTarget(void *actor);
 extern void PresentationBackedActor_HandleInteraction(void *actor, void *target);

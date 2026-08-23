@@ -112,7 +112,7 @@ extern void Actor_UpdateTimedResourceState(void *);
 extern void *ActorCollection_GetSpriteGroup(void *);
 extern s32 ActorDerivedRuntime_AcceptInteractionQuery(void *);
 extern void *ActorDerivedRuntime_DestroyAlternate(void *);
-extern void ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
+extern s32 ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
 extern void *ActorDerivedRuntime_Init(void *, const void *);
 extern void ActorDerivedRuntime_UpdateFrame(void *);
 extern void ActorDerivedType1_TrySetStateVector(void *, const void *, s32, s32);

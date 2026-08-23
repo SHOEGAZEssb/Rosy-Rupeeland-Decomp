@@ -12,7 +12,8 @@ extern u8 gActorRuntimeCollection[];
 extern "C" {
 #endif
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *registry);
-extern void ActorContactState_AddContact(void *actor, void *other, s32 mode);
+extern s32 ActorContactState_AddContact(void *actor, void *other,
+                                        s32 wasTracked);
 #ifdef __cplusplus
 }
 #endif

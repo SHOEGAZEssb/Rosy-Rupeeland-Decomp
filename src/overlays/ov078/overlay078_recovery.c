@@ -33,7 +33,7 @@ EXT(func_020050a4);
 EXT(RuntimePresentationManager_GetGraphics3dPresentation);
 EXT(func_0201f864);
 EXT(func_02030acc);
-EXT(func_02032a94);
+EXT(ActorContactState_AddContact);
 EXT(func_020337d4);
 EXT(Actor_GetCachedTerrainHeight);
 EXT(Actor_PlayHorizontalSpatialSound);
@@ -292,7 +292,7 @@ extern "C" void func_ov078_0221361c(void *actor, void *other, s32 arg)
         F(void *, other, 0x2ac) = actor;
     }
     F(void *, actor, 0x2ac) = other;
-    func_02032a94(actor, other, arg);
+    ActorContactState_AddContact(actor, other, arg);
 }
 
 /* Reports whether the peer actor is in a push-reactive subtype. */
@@ -578,7 +578,7 @@ extern "C" void func_ov078_022142d4(void *actor, void *other, s32 arg)
         F(void *, other, 0x2ac) = actor;
     }
     F(void *, actor, 0x2ac) = other;
-    func_02032a94(actor, other, arg);
+    ActorContactState_AddContact(actor, other, arg);
 }
 
 /* Enters the active bouncing state and emits its high-stage cue when needed. */

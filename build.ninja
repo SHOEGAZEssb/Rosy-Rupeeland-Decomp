@@ -13992,7 +13992,7 @@ build main_three_layer_resource_renderer: phony build/decomp/src/game/main_three
 
 actor_collection_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_lifecycle.o: mwccarm src/game/actor_collection_lifecycle.c | include/tingle/types.h
+build build/decomp/src/game/actor_collection_lifecycle.o: mwccarm src/game/actor_collection_lifecycle.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_collection_lifecycle.c
   cflags = $actor_collection_lifecycle_cflags
 build build/decomp/asm/game/actor_collection_lifecycle_0202cf10.o: mwasmarm asm/game/actor_collection_lifecycle_0202cf10.s
@@ -14010,7 +14010,7 @@ build build/reports/actor_collection_lifecycle_0202cf10.json: objdiff build/deco
   base_object = build/decomp/asm/game/actor_collection_lifecycle_0202cf10.o
 build build/reports/actor_collection_lifecycle_0202cf10.txt: match_report build/reports/actor_collection_lifecycle_0202cf10.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_lifecycle_0202cf10.json
-  report_args = --section .text --function ActorPairMatrix_ClearAll --require-exact
+  report_args = --section .text --function ActorPairStateMatrix_ClearAll --require-exact
 build build/reports/actor_collection_lifecycle_0202cf2c.json: objdiff build/decomp/delinks/asm/game/actor_collection_lifecycle_0202cf2c.o | build/decomp/asm/game/actor_collection_lifecycle_0202cf2c.o
   target_object = build/decomp/delinks/asm/game/actor_collection_lifecycle_0202cf2c.o
   base_object = build/decomp/asm/game/actor_collection_lifecycle_0202cf2c.o
@@ -14041,7 +14041,7 @@ build actor_collection_lifecycle: phony build/decomp/src/game/actor_collection_l
 
 actor_collection_registration_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_registration.o: mwccarm src/game/actor_collection_registration.c | include/tingle/types.h
+build build/decomp/src/game/actor_collection_registration.o: mwccarm src/game/actor_collection_registration.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_collection_registration.c
   cflags = $actor_collection_registration_cflags
 build build/decomp/asm/game/actor_collection_registration_0202d110.o: mwasmarm asm/game/actor_collection_registration_0202d110.s
@@ -14073,13 +14073,13 @@ build build/reports/actor_collection_registration_0202d2f4.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_collection_registration_0202d2f4.o
 build build/reports/actor_collection_registration_0202d2f4.txt: match_report build/reports/actor_collection_registration_0202d2f4.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_registration_0202d2f4.json
-  report_args = --section .text --function ActorPairMatrix_Get --require-exact
+  report_args = --section .text --function ActorPairStateMatrix_IsTracked --require-exact
 build build/reports/actor_collection_registration_0202d324.json: objdiff build/decomp/delinks/asm/game/actor_collection_registration_0202d324.o | build/decomp/asm/game/actor_collection_registration_0202d324.o
   target_object = build/decomp/delinks/asm/game/actor_collection_registration_0202d324.o
   base_object = build/decomp/asm/game/actor_collection_registration_0202d324.o
 build build/reports/actor_collection_registration_0202d324.txt: match_report build/reports/actor_collection_registration_0202d324.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_registration_0202d324.json
-  report_args = --section .text --function ActorPairMatrix_Clear --require-exact
+  report_args = --section .text --function ActorPairStateMatrix_ClearPair --require-exact
 build build/reports/actor_collection_registration_0202d358.json: objdiff build/decomp/delinks/asm/game/actor_collection_registration_0202d358.o | build/decomp/asm/game/actor_collection_registration_0202d358.o
   target_object = build/decomp/delinks/asm/game/actor_collection_registration_0202d358.o
   base_object = build/decomp/asm/game/actor_collection_registration_0202d358.o
@@ -14098,7 +14098,7 @@ build actor_collection_registration: phony build/decomp/src/game/actor_collectio
 
 actor_collection_activation_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_activation.o: mwccarm src/game/actor_collection_activation.c | include/tingle/types.h
+build build/decomp/src/game/actor_collection_activation.o: mwccarm src/game/actor_collection_activation.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_collection_activation.c
   cflags = $actor_collection_activation_cflags
 build build/decomp/asm/game/actor_collection_activation_0202d3cc.o: mwasmarm asm/game/actor_collection_activation_0202d3cc.s
@@ -14323,7 +14323,7 @@ build actor_collection_update_dispatch: phony build/decomp/src/game/actor_collec
 
 actor_collection_pair_processing_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_pair_processing.o: mwccarm src/game/actor_collection_pair_processing.c | include/tingle/types.h
+build build/decomp/src/game/actor_collection_pair_processing.o: mwccarm src/game/actor_collection_pair_processing.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_collection_pair_processing.c
   cflags = $actor_collection_pair_processing_cflags
 build build/decomp/asm/game/actor_collection_pair_processing_0202e15c.o: mwasmarm asm/game/actor_collection_pair_processing_0202e15c.s
@@ -14391,7 +14391,7 @@ build actor_collection_event_dispatch: phony build/decomp/src/game/actor_collect
 
 actor_collection_pair_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_pair_callbacks.o: mwccarm src/game/actor_collection_pair_callbacks.c | include/tingle/types.h
+build build/decomp/src/game/actor_collection_pair_callbacks.o: mwccarm src/game/actor_collection_pair_callbacks.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_collection_pair_callbacks.c
   cflags = $actor_collection_pair_callbacks_cflags
 build build/decomp/asm/game/actor_collection_pair_callbacks_0202eba4.o: mwasmarm asm/game/actor_collection_pair_callbacks_0202eba4.s
@@ -14411,13 +14411,13 @@ build build/reports/actor_collection_pair_callbacks_0202ec08.json: objdiff build
   base_object = build/decomp/asm/game/actor_collection_pair_callbacks_0202ec08.o
 build build/reports/actor_collection_pair_callbacks_0202ec08.txt: match_report build/reports/actor_collection_pair_callbacks_0202ec08.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_pair_callbacks_0202ec08.json
-  report_args = --section .text --function ActorCollection_NotifyPairActive --require-exact
+  report_args = --section .text --function ActorCollection_DispatchPairActive --require-exact
 build build/reports/actor_collection_pair_callbacks_0202ec74.json: objdiff build/decomp/delinks/asm/game/actor_collection_pair_callbacks_0202ec74.o | build/decomp/asm/game/actor_collection_pair_callbacks_0202ec74.o
   target_object = build/decomp/delinks/asm/game/actor_collection_pair_callbacks_0202ec74.o
   base_object = build/decomp/asm/game/actor_collection_pair_callbacks_0202ec74.o
 build build/reports/actor_collection_pair_callbacks_0202ec74.txt: match_report build/reports/actor_collection_pair_callbacks_0202ec74.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_pair_callbacks_0202ec74.json
-  report_args = --section .text --function ActorCollection_NotifyPairEnded --require-exact
+  report_args = --section .text --function ActorCollection_DispatchPairEnded --require-exact
 build build/reports/actor_collection_pair_callbacks.txt: phony build/reports/actor_collection_pair_callbacks_0202eba4.txt build/reports/actor_collection_pair_callbacks_0202ec08.txt build/reports/actor_collection_pair_callbacks_0202ec74.txt
 
 build actor_collection_pair_callbacks: phony build/decomp/src/game/actor_collection_pair_callbacks.o build/decomp/asm/game/actor_collection_pair_callbacks_0202eba4.o build/decomp/asm/game/actor_collection_pair_callbacks_0202ec08.o build/decomp/asm/game/actor_collection_pair_callbacks_0202ec74.o build/reports/actor_collection_pair_callbacks.txt
@@ -15065,7 +15065,7 @@ build actor_height_band_init: phony build/decomp/src/game/actor_height_band_init
 
 actor_position_contact_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_position_contact_state.o: mwccarm src/game/actor_position_contact_state.c | include/tingle/types.h
+build build/decomp/src/game/actor_position_contact_state.o: mwccarm src/game/actor_position_contact_state.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_position_contact_state.c
   cflags = $actor_position_contact_state_cflags
 build build/decomp/asm/game/actor_position_contact_state_02032a64.o: mwasmarm asm/game/actor_position_contact_state_02032a64.s
@@ -15091,7 +15091,7 @@ build build/reports/actor_position_contact_state_02032abc.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_position_contact_state_02032abc.o
 build build/reports/actor_position_contact_state_02032abc.txt: match_report build/reports/actor_position_contact_state_02032abc.json | tools/report_objdiff.py
   report_json = build/reports/actor_position_contact_state_02032abc.json
-  report_args = --section .text --function func_02032abc --require-exact
+  report_args = --section .text --function ActorContactState_RemoveContact --require-exact
 build build/reports/actor_position_contact_state.txt: phony build/reports/actor_position_contact_state_02032a64.txt build/reports/actor_position_contact_state_02032a94.txt build/reports/actor_position_contact_state_02032abc.txt
 
 build actor_position_contact_state: phony build/decomp/src/game/actor_position_contact_state.o build/decomp/asm/game/actor_position_contact_state_02032a64.o build/decomp/asm/game/actor_position_contact_state_02032a94.o build/decomp/asm/game/actor_position_contact_state_02032abc.o build/reports/actor_position_contact_state.txt
@@ -15560,7 +15560,7 @@ build actor_interaction_eligibility: phony build/decomp/src/game/actor_interacti
 
 actor_timed_resource_state_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_timed_resource_state_update.o: mwccarm src/game/actor_timed_resource_state_update.c | include/tingle/types.h
+build build/decomp/src/game/actor_timed_resource_state_update.o: mwccarm src/game/actor_timed_resource_state_update.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_timed_resource_state_update.c
   cflags = $actor_timed_resource_state_update_cflags
 build build/decomp/asm/game/actor_timed_resource_state_update_02034164.o: mwasmarm asm/game/actor_timed_resource_state_update_02034164.s
@@ -16255,7 +16255,7 @@ build actor_derived_type1_auxiliary_motion: phony build/decomp/src/game/actor_de
 
 actor_derived_type1_auxiliary_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_derived_type1_auxiliary_interaction.o: mwccarm src/game/actor_derived_type1_auxiliary_interaction.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/sprite_effect.h include/tingle/types.h
+build build/decomp/src/game/actor_derived_type1_auxiliary_interaction.o: mwccarm src/game/actor_derived_type1_auxiliary_interaction.c | include/tingle/actor_pair_state.h include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/sprite_effect.h include/tingle/types.h
   source = src/game/actor_derived_type1_auxiliary_interaction.c
   cflags = $actor_derived_type1_auxiliary_interaction_cflags
 build build/decomp/asm/game/actor_derived_type1_auxiliary_interaction_02037d98.o: mwasmarm asm/game/actor_derived_type1_auxiliary_interaction_02037d98.s
@@ -16348,7 +16348,7 @@ build actor_vector_component_divide: phony build/decomp/src/game/actor_vector_co
 
 actor_derived_type1_contact_reset_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_derived_type1_contact_reset.o: mwccarm src/game/actor_derived_type1_contact_reset.c | include/tingle/types.h
+build build/decomp/src/game/actor_derived_type1_contact_reset.o: mwccarm src/game/actor_derived_type1_contact_reset.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_derived_type1_contact_reset.c
   cflags = $actor_derived_type1_contact_reset_cflags
 build build/decomp/asm/game/actor_derived_type1_contact_reset_020387cc.o: mwasmarm asm/game/actor_derived_type1_contact_reset_020387cc.s
@@ -17130,7 +17130,7 @@ build actor_derived_runtime_object_update: phony build/decomp/src/game/actor_der
 
 actor_derived_runtime_interaction_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_derived_runtime_interaction_callbacks.o: mwccarm src/game/actor_derived_runtime_interaction_callbacks.c | include/tingle/scene_touch.h include/tingle/types.h
+build build/decomp/src/game/actor_derived_runtime_interaction_callbacks.o: mwccarm src/game/actor_derived_runtime_interaction_callbacks.c | include/tingle/actor_pair_state.h include/tingle/scene_touch.h include/tingle/types.h
   source = src/game/actor_derived_runtime_interaction_callbacks.c
   cflags = $actor_derived_runtime_interaction_callbacks_cflags
 build build/decomp/asm/game/actor_derived_runtime_interaction_callbacks_0203b998.o: mwasmarm asm/game/actor_derived_runtime_interaction_callbacks_0203b998.s
@@ -17147,7 +17147,7 @@ build actor_derived_runtime_interaction_callbacks: phony build/decomp/src/game/a
 
 actor_derived_runtime_virtual_wrappers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_derived_runtime_virtual_wrappers.o: mwccarm src/game/actor_derived_runtime_virtual_wrappers.c | include/tingle/types.h
+build build/decomp/src/game/actor_derived_runtime_virtual_wrappers.o: mwccarm src/game/actor_derived_runtime_virtual_wrappers.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/actor_derived_runtime_virtual_wrappers.c
   cflags = $actor_derived_runtime_virtual_wrappers_cflags
 build build/decomp/asm/game/actor_derived_runtime_virtual_wrappers_0203baa0.o: mwasmarm asm/game/actor_derived_runtime_virtual_wrappers_0203baa0.s
@@ -19835,7 +19835,7 @@ build build/reports/runtime_actor_variant_lifecycle_0204d244.txt: match_report b
 build runtime_actor_variant_lifecycle: phony build/decomp/src/game/runtime_actor_variant_lifecycle.o build/decomp/asm/game/runtime_actor_variant_lifecycle_0204d244.o build/reports/runtime_actor_variant_lifecycle_0204d244.txt
 
 runtime_actor_variant_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/runtime_actor_variant_update.o: mwccarm src/game/runtime_actor_variant_update.c | include/tingle/types.h
+build build/decomp/src/game/runtime_actor_variant_update.o: mwccarm src/game/runtime_actor_variant_update.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/runtime_actor_variant_update.c
   cflags = $runtime_actor_variant_update_cflags
 build build/decomp/asm/game/runtime_actor_variant_update_0204d308.o: mwasmarm asm/game/runtime_actor_variant_update_0204d308.s
@@ -20083,7 +20083,7 @@ build build/reports/trigger_presentation_actor_setup_0204e9e8.txt: match_report 
 build trigger_presentation_actor_setup: phony build/decomp/src/game/trigger_presentation_actor_setup.o build/decomp/asm/game/trigger_presentation_actor_setup_0204e9e8.o build/reports/trigger_presentation_actor_setup_0204e9e8.txt
 
 trigger_presentation_actor_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/trigger_presentation_actor_callbacks.o: mwccarm src/game/trigger_presentation_actor_callbacks.c | include/tingle/types.h
+build build/decomp/src/game/trigger_presentation_actor_callbacks.o: mwccarm src/game/trigger_presentation_actor_callbacks.c | include/tingle/actor_pair_state.h include/tingle/types.h
   source = src/game/trigger_presentation_actor_callbacks.c
   cflags = $trigger_presentation_actor_callbacks_cflags
 build build/decomp/asm/game/trigger_presentation_actor_callbacks_0204eaac.o: mwasmarm asm/game/trigger_presentation_actor_callbacks_0204eaac.s

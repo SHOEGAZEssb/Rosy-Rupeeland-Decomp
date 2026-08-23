@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /*
  * Process potentially overlapping pairs from actor collection categories one
@@ -6,41 +6,42 @@
  * collision shapes, separates intersecting actors, maintains a pair-state
  * matrix, dispatches pair callbacks, and performs per-actor follow-up work.
  */
-typedef struct PairActor PairActor;
+typedef struct ActorPairProcessingActor ActorPairProcessingActor;
 
-typedef struct PairActorVTable {
-    u8 field_00[0x0c];
-    u32 (*filter_0c)(PairActor *);
-} PairActorVTable;
+typedef struct ActorPairFilterVTable {
+    u8 methodsBeforePairFilter_00[0x0c];
+    u32 (*getPairFilterMask_0c)(ActorPairProcessingActor *);
+} ActorPairFilterVTable;
 
-struct PairActor {
-    PairActorVTable *vtable_00;
-    u8 field_04[0x0c];
+struct ActorPairProcessingActor {
+    ActorPairFilterVTable *vtable_00;
+    u8 baseStateBeforeFlags_04[0x0c];
     u32 flags_10;
     u32 flags_14;
-    s32 field_18;
+    s32 positionState_18;
     s32 positionX_1c;
     s32 positionY_20;
     s32 positionZ_24;
-    s32 field_28;
+    s32 previousPositionState_28;
     s32 previousX_2c;
     s32 previousY_30;
-    u8 field_34[0x14];
-    s8 order_48;
+    u8 baseStateBeforeCollectionSlot_34[0x14];
+    s8 collectionSlot_48;
     u8 contactEdges_49;
-    u8 field_4a[3];
+    u8 pairStateBytes_4a[2];
+    u8 activeContactCount_4c;
     u8 type_4d;
-    u8 field_4e[6];
-    void *field_54;
+    u8 baseStateBeforeCollisionFollowUp_4e[6];
+    void *collisionFollowUpState_54;
 };
 
-typedef struct ActorPairCollection {
-    PairActor *actors_0000[128];
-    PairActor *categories_0200[5][128];
-    u8 field_0c00[0x220];
+typedef struct ActorPairProcessingCollection {
+    ActorPairProcessingActor *actors_0000[128];
+    ActorPairProcessingActor *categories_0200[5][128];
+    u8 collectionStateBeforeCategoryCounts_0c00[0x220];
     s32 categoryCounts_0e20[5];
-    u8 pairState_0e34[0x2040];
-} ActorPairCollection;
+    ActorPairStateMatrix pairStateMatrix_0e34;
+} ActorPairProcessingCollection;
 
 typedef struct CollisionWords {
     s32 word[4];
@@ -55,20 +56,16 @@ extern "C" {
 #endif
 extern void VecFx32Object_InitCopy(CollisionWords *, const void *);
 extern void VecFx32Object_Destroy(CollisionWords *);
-extern void Actor_BuildCollisionRect(CollisionWords *, PairActor *,
+extern void Actor_BuildCollisionRect(CollisionWords *, ActorPairProcessingActor *,
                                      CollisionWords *);
 extern s32 func_02056f34(CollisionWords *, const CollisionWords *,
                          const CollisionWords *, u32 *);
 extern s32 func_020adc90(s32, s32);
 extern s32 SignedAbsoluteValue(s32);
-extern s32 ActorPairMatrix_Get(u8 *, s32, s32);
-extern void ActorPairMatrix_Clear(u8 *, s32, s32);
-extern s32 ActorCollection_NotifyPairActive(ActorPairCollection *, PairActor *, PairActor *, s32);
-extern void ActorCollection_NotifyPairEnded(ActorPairCollection *, PairActor *, PairActor *);
 extern s32 ActorRuntimeFlags_Test(void *, s32);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
-extern void ActorCollision_ResolveCornerContacts(PairActor *, void *);
-extern void ActorCollision_ResolveSweptMovement(PairActor *, void *);
+extern void ActorCollision_ResolveCornerContacts(ActorPairProcessingActor *, void *);
+extern void ActorCollision_ResolveSweptMovement(ActorPairProcessingActor *, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -121,7 +118,8 @@ static void resolvePairAxis(s32 overlap, s32 deltaA, s32 deltaB,
         *positionB -= correctionB;
 }
 
-static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
+static s32 testPair(ActorPairProcessingActor *actorA,
+                    ActorPairProcessingActor *actorB, u32 *contact)
 {
     CollisionWords temporaryA;
     CollisionWords temporaryB;
@@ -137,10 +135,10 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
             0x1000)
         return 0;
 
-    VecFx32Object_InitCopy(&temporaryA, &actorA->field_18);
+    VecFx32Object_InitCopy(&temporaryA, &actorA->positionState_18);
     Actor_BuildCollisionRect(&shapeA, actorA, &temporaryA);
     VecFx32Object_Destroy(&temporaryA);
-    VecFx32Object_InitCopy(&temporaryB, &actorB->field_18);
+    VecFx32Object_InitCopy(&temporaryB, &actorB->positionState_18);
     Actor_BuildCollisionRect(&shapeB, actorB, &temporaryB);
     VecFx32Object_Destroy(&temporaryB);
     result = func_02056f34(&intersection, &shapeA, &shapeB, contact);
@@ -168,57 +166,66 @@ static s32 testPair(PairActor *actorA, PairActor *actorB, u32 *contact)
 /*
  * Sweep category one against category two using signed byte 0x48 as the sorted
  * key. Flag, virtual-mask, height, and shape tests reject pairs. Intersections
- * update edge byte 0x49 and may correct X/Y positions; pair-state at offset
- * 0x0e34 is queried or changed through ActorPairMatrix_Get/ActorPairMatrix_Clear. Pair
- * callbacks run in both directions. Finally, each processed category-one
- * actor may receive ActorCollision_ResolveCornerContacts and/or ActorCollision_ResolveSweptMovement using global context
- * offset 0x2ed4. Returns no value; helper calls may update gameplay state.
+ * update edge byte 0x49 and may correct X/Y positions. Pair state at offset
+ * 0x0e34 is queried or changed through ActorPairStateMatrix_IsTracked and
+ * ActorPairStateMatrix_ClearPair, and callbacks run in both directions.
+ * Finally, each processed category-one actor may receive
+ * ActorCollision_ResolveCornerContacts and/or
+ * ActorCollision_ResolveSweptMovement using global context offset 0x2ed4.
+ * Returns no value; helper calls may update gameplay state.
  */
-void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
+void ActorCollection_ProcessCategory1And2Pairs(ActorPairProcessingCollection *collection)
 {
     s32 firstPossible = 0;
-    s32 outerCount = self->categoryCounts_0e20[1];
-    s32 innerCount = self->categoryCounts_0e20[2];
+    s32 outerCount = collection->categoryCounts_0e20[1];
+    s32 innerCount = collection->categoryCounts_0e20[2];
     void *contextValue = *(void **)((u8 *)data_021052fc + 0x2ed4);
     s32 outer;
 
     for (outer = 0; outer < outerCount; outer++) {
-        PairActor *actorA = self->categories_0200[1][outer];
+        ActorPairProcessingActor *actorA = collection->categories_0200[1][outer];
         s32 inner;
 
         if (actorA->flags_14 & 2)
             continue;
         for (inner = firstPossible; inner < innerCount; inner++) {
-            PairActor *actorB = self->categories_0200[2][inner];
+            ActorPairProcessingActor *actorB = collection->categories_0200[2][inner];
             s32 collision;
-            s32 wasActive;
+            s32 wasTracked;
             u32 contact;
 
-            if (actorA->order_48 >= actorB->order_48) {
+            if (actorA->collectionSlot_48 >= actorB->collectionSlot_48) {
                 firstPossible++;
                 continue;
             }
             if (actorB->flags_14 & 4)
                 continue;
-            if (actorA->vtable_00->filter_0c(actorA) &
+            if (actorA->vtable_00->getPairFilterMask_0c(actorA) &
                 (actorB->flags_10 & 0x1f0000))
                 continue;
-            if (actorB->vtable_00->filter_0c(actorB) &
+            if (actorB->vtable_00->getPairFilterMask_0c(actorB) &
                 (actorA->flags_10 & 0x1f0000))
                 continue;
 
             collision = testPair(actorA, actorB, &contact);
-            wasActive = ActorPairMatrix_Get(self->pairState_0e34,
-                                      actorB->order_48, actorA->order_48);
+            wasTracked = ActorPairStateMatrix_IsTracked(
+                &collection->pairStateMatrix_0e34,
+                actorB->collectionSlot_48, actorA->collectionSlot_48);
             if (collision) {
                 s32 accepted;
-                s32 active = wasActive ? 1 : 0;
+                s32 wasTrackedValue = wasTracked ? 1 : 0;
 
-                accepted = ActorCollection_NotifyPairActive(self, actorA, actorB, active);
-                accepted += ActorCollection_NotifyPairActive(self, actorB, actorA, active);
+                accepted = ActorCollection_DispatchPairActive(
+                    (ActorPairCollection *)collection,
+                    (ActorPairActor *)actorA, (ActorPairActor *)actorB,
+                    wasTrackedValue);
+                accepted += ActorCollection_DispatchPairActive(
+                    (ActorPairCollection *)collection,
+                    (ActorPairActor *)actorB, (ActorPairActor *)actorA,
+                    wasTrackedValue);
                 if (accepted == 2) {
-                    s32 low = actorA->order_48;
-                    s32 high = actorB->order_48;
+                    s32 low = actorA->collectionSlot_48;
+                    s32 high = actorB->collectionSlot_48;
                     s32 index;
 
                     if (low > high) {
@@ -226,18 +233,24 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
                         low = high;
                         high = swap;
                     }
-                    index = low * 128 - (low * (low + 1)) / 2 + high;
-                    self->pairState_0e34[index] = 1;
+                    index = low * ACTOR_PAIR_SLOT_COUNT -
+                            (low * (low + 1)) / 2 + high;
+                    collection->pairStateMatrix_0e34.entries[index] = 1;
                 }
-            } else if (wasActive) {
-                ActorCollection_NotifyPairEnded(self, actorA, actorB);
-                ActorCollection_NotifyPairEnded(self, actorB, actorA);
-                ActorPairMatrix_Clear(self->pairState_0e34, actorB->order_48,
-                              actorA->order_48);
+            } else if (wasTracked) {
+                ActorCollection_DispatchPairEnded(
+                    (ActorPairCollection *)collection,
+                    (ActorPairActor *)actorA, (ActorPairActor *)actorB);
+                ActorCollection_DispatchPairEnded(
+                    (ActorPairCollection *)collection,
+                    (ActorPairActor *)actorB, (ActorPairActor *)actorA);
+                ActorPairStateMatrix_ClearPair(
+                    &collection->pairStateMatrix_0e34,
+                    actorB->collectionSlot_48, actorA->collectionSlot_48);
             }
         }
 
-        if (actorA->field_54 &&
+        if (actorA->collisionFollowUpState_54 &&
             (actorA->type_4d == 1 || actorA->type_4d == 7)) {
             if (!(actorA->flags_14 & 0x40) &&
                 !ActorRuntimeFlags_Test(gActorRuntimeFlags, 1)) {
@@ -245,7 +258,8 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairCollection *self)
                     ActorCollision_ResolveCornerContacts(actorA, contextValue);
                 ActorCollision_ResolveSweptMovement(actorA, contextValue);
             }
-        } else if (!actorA->field_54 || !(actorA->flags_14 & 0x100)) {
+        } else if (!actorA->collisionFollowUpState_54 ||
+                   !(actorA->flags_14 & 0x100)) {
             ActorCollision_ResolveSweptMovement(actorA, contextValue);
         }
     }

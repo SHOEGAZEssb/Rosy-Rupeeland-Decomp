@@ -12,7 +12,8 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
-extern void ActorContactState_AddContact(void *actor, void *context, s32 condition);
+extern s32 ActorContactState_AddContact(void *actor, void *other,
+                                        s32 wasTracked);
 extern void Actor_SetInteractionFlag2000(void *actor, void *context);
 extern void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void ActorDerivedType1_ScanActiveRecordCollisions(void *actor);

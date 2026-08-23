@@ -18,9 +18,11 @@ extern void *gSceneManager, *gSoundContext, *gSystemState;
 extern "C" {
 #endif
 extern void ActorDerivedRuntime_Init(...), ActorDerivedRuntime_DestroyAlternate(...);
-extern void ActorDerivedRuntime_UpdateFrame(...), ActorDerivedRuntime_HandlePairActive(...);
+extern void ActorDerivedRuntime_UpdateFrame(...);
+extern s32 ActorDerivedRuntime_HandlePairActive(...);
 extern void Actor_UpdateAnimationState(...), Actor_SnapshotTransientState(...);
-extern void ActorContactState_AddContact(...), Actor_SetDirectionFromVector(...);
+extern s32 ActorContactState_AddContact(...);
+extern void Actor_SetDirectionFromVector(...);
 extern void ActorDerivedType1_ResetToBaseState(...);
 extern void *Actor_GetOwningCollection(...), *GraphicsSpriteGroup_CreateState(...);
 extern void GraphicsSpriteGroup_ReplaceStateResources(...);

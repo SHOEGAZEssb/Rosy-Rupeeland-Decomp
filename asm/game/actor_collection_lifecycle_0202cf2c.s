@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_lifecycle.c.
 .text
 .extern OverlaySlot_Init
-.extern ActorPairMatrix_ClearAll
+.extern ActorPairStateMatrix_ClearAll
 
     .global ActorCollection_Init
     .type ActorCollection_Init, @function
@@ -17,7 +17,7 @@ ActorCollection_Init: ; 0x0202cf2c
     bl OverlaySlot_Init
     add r0, r4, #0x234
     add r0, r0, #0xc00
-    bl ActorPairMatrix_ClearAll
+    bl ActorPairStateMatrix_ClearAll
     mov r3, #0x0
     add r0, r4, #0x2000
     ldr r1, [r0, #0xe78]

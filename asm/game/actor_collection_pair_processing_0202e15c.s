@@ -8,10 +8,10 @@
 .extern ActorCollision_ResolveCornerContacts
 .extern ActorCollision_ResolveSweptMovement
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern ActorPairMatrix_Get
-.extern ActorPairMatrix_Clear
-.extern ActorCollection_NotifyPairActive
-.extern ActorCollection_NotifyPairEnded
+.extern ActorPairStateMatrix_IsTracked
+.extern ActorPairStateMatrix_ClearPair
+.extern ActorCollection_DispatchPairActive
+.extern ActorCollection_DispatchPairEnded
 .extern Actor_BuildCollisionRect
 .extern func_02056f34
 .extern ActorRuntimeFlags_Test
@@ -365,7 +365,7 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     ldr r2, [sp, #0x4]
     add r0, r0, #0xc00
     mov r6, #0x0
-    bl ActorPairMatrix_Get
+    bl ActorPairStateMatrix_IsTracked
     cmp r0, #0x0
     movne r7, #0x1
     moveq r7, r6
@@ -373,13 +373,13 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     mov r1, r4
     mov r2, r5
     mov r3, r7
-    bl ActorCollection_NotifyPairActive
+    bl ActorCollection_DispatchPairActive
     add r6, r6, r0
     mov r1, r5
     mov r3, r7
     mov r0, r10
     mov r2, r4
-    bl ActorCollection_NotifyPairActive
+    bl ActorCollection_DispatchPairActive
     add r0, r6, r0
     cmp r0, #0x2
     bne .L_0202e74c
@@ -406,22 +406,22 @@ ActorCollection_ProcessCategory1And2Pairs: ; 0x0202e15c
     ldr r1, [sp, #0x0]
     ldr r2, [sp, #0x4]
     add r0, r0, #0xc00
-    bl ActorPairMatrix_Get
+    bl ActorPairStateMatrix_IsTracked
     cmp r0, #0x0
     beq .L_0202e74c
     mov r0, r10
     mov r1, r4
     mov r2, r5
-    bl ActorCollection_NotifyPairEnded
+    bl ActorCollection_DispatchPairEnded
     mov r1, r5
     mov r0, r10
     mov r2, r4
-    bl ActorCollection_NotifyPairEnded
+    bl ActorCollection_DispatchPairEnded
     ldr r0, [sp, #0x30]
     ldr r1, [sp, #0x0]
     ldr r2, [sp, #0x4]
     add r0, r0, #0xc00
-    bl ActorPairMatrix_Clear
+    bl ActorPairStateMatrix_ClearPair
     b .L_0202e74c
 .L_0202e740:
     ldr r0, [sp, #0x14]

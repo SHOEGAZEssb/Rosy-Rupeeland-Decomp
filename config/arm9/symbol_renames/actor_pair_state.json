@@ -1,0 +1,12 @@
+{
+  "func_0202cf10": "ActorPairStateMatrix_ClearAll",
+  "func_0202d2f4": "ActorPairStateMatrix_IsTracked",
+  "func_0202d324": "ActorPairStateMatrix_ClearPair",
+  "func_0202eba4": "ActorCollection_EndTrackedPair",
+  "func_0202ec08": "ActorCollection_DispatchPairActive",
+  "func_0202ec74": "ActorCollection_DispatchPairEnded",
+  "func_02032a94": "ActorContactState_AddContact",
+  "func_02032abc": "ActorContactState_RemoveContact",
+  "func_0203b9dc": "ActorDerivedRuntime_HandlePairActive",
+  "func_0203baa0": "ActorDerivedRuntime_HandlePairEnded"
+}

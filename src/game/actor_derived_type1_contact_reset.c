@@ -1,11 +1,10 @@
-#include "tingle/types.h"
+#include "tingle/actor_pair_state.h"
 
 /* Reset type-1 actor contact bookkeeping and optional attachment state. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02032abc(void *actor);
 extern void Type7AuxiliaryPresentation_BeginShutdown(void *object);
 #ifdef __cplusplus
 }
@@ -14,11 +13,12 @@ extern void Type7AuxiliaryPresentation_BeginShutdown(void *object);
 /*
  * Forward actor to the confirmed contact-count decrement helper and return its
  * result unchanged. This address-derived wrapper has no additional state
- * effects; func_02032abc clears actor flag one when the count reaches zero.
+ * effects; ActorContactState_RemoveContact clears the active-contact flag when
+ * the count reaches zero.
  */
 void ActorDerivedType1_DecrementContactCount(void *actor)
 {
-    func_02032abc(actor);
+    ActorContactState_RemoveContact((ActorPairActor *)actor);
 }
 
 /*

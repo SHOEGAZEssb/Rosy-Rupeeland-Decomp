@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_callbacks.c.
 .extern Actor_SetRuntimeFlag80
 .extern ActorContactState_AddContact
-.extern func_02032abc
+.extern ActorContactState_RemoveContact
 .extern Actor_TryDispatchActivationMode2
 .extern Actor_UpdateTimedResourceState
 .text
@@ -45,6 +45,6 @@ func_0204eac8: ; 0x0204eac8
 func_0204eb0c: ; 0x0204eb0c
     ldr ip, .L_0204eb14
     bx ip
-.L_0204eb14: .word func_02032abc
+.L_0204eb14: .word ActorContactState_RemoveContact
 .size func_0204eb0c, . - func_0204eb0c
 
