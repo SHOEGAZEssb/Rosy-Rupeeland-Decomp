@@ -1020,9 +1020,11 @@ extern "C" s32 func_ov095_0221b6d8(void *actor)
             resource == 0);
 }
 
-/* Initializes a minion hop toward its parent and selects its sound variant. */
-extern "C" void func_ov095_0221b720(void *actor)
+/* Initializes a minion hop and selects its sound variant. */
+extern "C" void Overlay095Actor_StartHopPositionTransition(
+    void *actor, s32 stepHeight)
 {
+    (void)stepHeight;
     s16 alternate = F(s16, actor, 0x298);
     F(s16, actor, 0xae) = alternate == 0 ? 0x23 : 0x28;
     F(s16, actor, 0x29a) = F(s16, actor, 0xae);
@@ -1799,7 +1801,7 @@ extern "C" void func_ov095_0221ba38(void *actor)
 }
 
 /* Advances the minion along its curved hop and completes the transition. */
-extern "C" s32 func_ov095_0221b7c8(void *actor)
+extern "C" s32 Overlay095Actor_UpdateHopPositionTransition(void *actor)
 {
     if (F(s16, actor, 0xac) == 0xff)
     {

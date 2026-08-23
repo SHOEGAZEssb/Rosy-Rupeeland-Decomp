@@ -2,9 +2,9 @@
 .text
 .extern Actor_RestoreSavedFlags
 
-    .global func_02032208
-    .type func_02032208, @function
-func_02032208: ; 0x02032208
+    .global Actor_EndPositionTransition
+    .type Actor_EndPositionTransition, @function
+Actor_EndPositionTransition: ; 0x02032208
     stmdb sp!, {r3, lr}
     ldrsh r1, [r0, #0xac]
     cmp r1, #0xff
@@ -13,4 +13,4 @@ func_02032208: ; 0x02032208
     strh r1, [r0, #0xac]
     bl Actor_RestoreSavedFlags
     ldmia sp!, {r3, pc}
-    .size func_02032208, . - func_02032208
+    .size Actor_EndPositionTransition, . - Actor_EndPositionTransition

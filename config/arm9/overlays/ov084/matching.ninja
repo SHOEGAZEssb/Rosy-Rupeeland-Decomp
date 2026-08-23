@@ -529,7 +529,7 @@ build build/reports/overlay084_02213cb0.json: objdiff build/decomp/asm/overlays/
   base_object = build/decomp/delinks/asm/overlays/ov084/overlay084_02213cb0.o
 build build/reports/overlay084_02213cb0.txt: match_report build/reports/overlay084_02213cb0.json | tools/report_objdiff.py
   report_json = build/reports/overlay084_02213cb0.json
-  report_args = --section .text --function func_ov084_02213cb0 --require-exact
+  report_args = --section .text --function Overlay084Actor_UpdateCurvedPositionTransition --require-exact
 
 build build/decomp/asm/overlays/ov084/overlay084_02213e10.o: mwasmarm asm/overlays/ov084/overlay084_02213e10.s
 build build/decomp/delinks/asm/overlays/ov084/overlay084_02213e10.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov084/delinks.txt config/arm9/overlays/ov084/symbols.txt config/arm9/overlays/ov084/relocs.txt

@@ -1637,11 +1637,11 @@ Actor_ClearTransientContactState kind:function(arm,size=0x28) addr:0x02031720
 Actor_MarkFrameUpdateStarted kind:function(arm,size=0x10) addr:0x02031748
 Actor_UpdatePresentation kind:function(arm,size=0x554) addr:0x02031758
 ActorAttachment_CopyTouchState kind:function(arm,size=0x298) addr:0x02031cac
-func_02031f44 kind:function(arm,size=0x1b8) addr:0x02031f44
-func_020320fc kind:function(arm,size=0x40) addr:0x020320fc
+Actor_TryStartStepUpTransition kind:function(arm,size=0x1b8) addr:0x02031f44
+Actor_ConfigureStepUpTransition kind:function(arm,size=0x40) addr:0x020320fc
 func_0203213c kind:function(arm,size=0x8) addr:0x0203213c
-func_02032144 kind:function(arm,size=0xc4) addr:0x02032144
-func_02032208 kind:function(arm,size=0x20) addr:0x02032208
+Actor_UpdatePositionTransition kind:function(arm,size=0xc4) addr:0x02032144
+Actor_EndPositionTransition kind:function(arm,size=0x20) addr:0x02032208
 Actor_TurnTowardVector kind:function(arm,size=0x148) addr:0x02032228
 Actor_TurnTowardTargetPosition kind:function(arm,size=0x24) addr:0x02032370
 Actor_UpdateTerrainMotionFeedback kind:function(arm,size=0x134) addr:0x02032394
@@ -6173,7 +6173,7 @@ data_020c38ac kind:data(any) addr:0x020c38ac
 data_020c3908 kind:data(any) addr:0x020c3908
 data_020c3a1c kind:data(any) addr:0x020c3a1c
 data_020c3a28 kind:data(any) addr:0x020c3a28
-data_020c3a48 kind:data(any) addr:0x020c3a48
+gActorPositionTransitionHeightOffsets kind:data(any) addr:0x020c3a48
 data_020c3d80 kind:data(any) addr:0x020c3d80
 data_020c3d88 kind:data(any) addr:0x020c3d88
 data_020c3d90 kind:data(any) addr:0x020c3d90

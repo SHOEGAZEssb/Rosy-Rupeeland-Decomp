@@ -1,11 +1,11 @@
 ; Matching retail form; see src/game/actor_step_transition_advance.c.
 .text
-.extern data_020c3a48
+.extern gActorPositionTransitionHeightOffsets
 .extern VecFx32Object_Assign
 
-    .global func_02032144
-    .type func_02032144, @function
-func_02032144: ; 0x02032144
+    .global Actor_UpdatePositionTransition
+    .type Actor_UpdatePositionTransition, @function
+Actor_UpdatePositionTransition: ; 0x02032144
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x320
     mov r4, r0
@@ -57,6 +57,6 @@ func_02032144: ; 0x02032144
 .L_020321fc:
     add sp, sp, #0x320
     ldmia sp!, {r3, r4, r5, pc}
-.L_02032204: .word data_020c3a48
-    .size func_02032144, . - func_02032144
+.L_02032204: .word gActorPositionTransitionHeightOffsets
+    .size Actor_UpdatePositionTransition, . - Actor_UpdatePositionTransition
 

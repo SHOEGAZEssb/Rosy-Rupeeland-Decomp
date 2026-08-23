@@ -5,9 +5,9 @@
 .extern Actor_QueryTerrainCell
 .extern func_020adae4
 
-    .global func_02031f44
-    .type func_02031f44, @function
-func_02031f44: ; 0x02031f44
+    .global Actor_TryStartStepUpTransition
+    .type Actor_TryStartStepUpTransition, @function
+Actor_TryStartStepUpTransition: ; 0x02031f44
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -122,4 +122,4 @@ func_02031f44: ; 0x02031f44
 .L_020320f4:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-    .size func_02031f44, . - func_02031f44
+    .size Actor_TryStartStepUpTransition, . - Actor_TryStartStepUpTransition

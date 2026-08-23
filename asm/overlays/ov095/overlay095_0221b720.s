@@ -4,8 +4,8 @@
 .extern Actor_SetDirectionFromVector
 .extern func_ov095_0221bed0
 
-.global func_ov095_0221b720
-func_ov095_0221b720:
+.global Overlay095Actor_StartHopPositionTransition
+Overlay095Actor_StartHopPositionTransition:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x200
@@ -37,4 +37,4 @@ func_ov095_0221b720:
     add r1, r4, #0x18
     bl VecFx32Object_Assign
     ldmia sp!, {r4, pc}
-.size func_ov095_0221b720, . - func_ov095_0221b720
+.size Overlay095Actor_StartHopPositionTransition, . - Overlay095Actor_StartHopPositionTransition

@@ -6,11 +6,11 @@
 .extern Actor_CreateAuxiliaryRenderAttachment
 .extern Actor_SnapshotTransientState
 .extern Actor_ClearTransientContactState
-.extern func_02031f44
-.extern func_020320fc
+.extern Actor_TryStartStepUpTransition
+.extern Actor_ConfigureStepUpTransition
 .extern func_0203213c
-.extern func_02032144
-.extern func_02032208
+.extern Actor_UpdatePositionTransition
+.extern Actor_EndPositionTransition
 .extern Actor_ConvergeToTargetHeight
 .extern Actor_IntegrateMotion
 .extern Actor_SetPosition
@@ -136,11 +136,11 @@ data_ov093_022188f0:
     .word func_0204d3dc
     .word func_0204d3e4
     .word ActorContactState_RemoveContact
-    .word func_02031f44
+    .word Actor_TryStartStepUpTransition
     .word func_0203213c
-    .word func_02032144
-    .word func_020320fc
-    .word func_02032208
+    .word Actor_UpdatePositionTransition
+    .word Actor_ConfigureStepUpTransition
+    .word Actor_EndPositionTransition
     .word func_ov093_022187ac
     .word Actor_SetInteractionFlag2000
     .word Actor_ClearInteractionFlag2000

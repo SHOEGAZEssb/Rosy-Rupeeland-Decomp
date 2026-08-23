@@ -1,17 +1,12 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
 /* Detect and begin a short actor step/height transition from contact motion. */
-typedef struct StepActorVTable {
-    u8 field_00[0x3c];
-    void (*transition_3c)(void *, s32);
-} StepActorVTable;
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u32 Actor_QueryTerrainCell(void *, s32, s32);
-extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
-extern void Actor_SaveAndForceFlags(void *);
+extern u32 Actor_QueryTerrainCell(Actor *self, s32 gridX, s32 gridY);
+extern s32 Actor_QueryTerrainHeight(Actor *self, s32 gridX, s32 gridY);
+extern void Actor_SaveAndForceFlags(Actor *self);
 extern s32 func_020adae4(s32, s32);
 #ifdef __cplusplus
 }
@@ -25,20 +20,19 @@ static s32 terrainCodeBlocksStep(u32 terrain)
 }
 
 /*
- * Require current Z 0x24 to equal baseline 0x1dc and a low contact bit in byte
- * 0x4a or 0x4b. Probe 20 motion units ahead, reject recovered terrain codes,
- * and accept a positive height rise of at most 16 units (32 with flag
- * 0x400000), provided the eight-unit midpoint also stays within that limit.
- * On success store target X/Y/Z at 0xb4/0xb8/0xbc, call Actor_SaveAndForceFlags and the
- * vtable-offset-0x3c transition callback with the rise, derive per-frame X/Y
- * deltas as motion*20/24 at 0xc0/0xc4, clear field 0x44, and return one.
- * Return zero without transition otherwise. Terrain helpers observe world
- * state but no direct hardware is accessed.
+ * Require current Z to equal cached terrain height and a low contact bit in
+ * either pair-state byte. Probe 20 motion units ahead, reject recovered terrain
+ * codes, and accept a positive height rise of at most 16 units (32 with motion
+ * flag 0x400000), provided the eight-unit midpoint also stays within that
+ * limit. On success store the target position, save/force actor flags, configure
+ * the transition with the rise, derive per-frame X/Y deltas as motion*20/24,
+ * clear vertical velocity, and return one. Return zero without transition
+ * otherwise. Terrain helpers observe world state but no direct hardware is
+ * accessed.
  */
-s32 func_02031f44(void *self)
+s32 Actor_TryStartStepUpTransition(Actor *self)
 {
-    u8 *actor = (u8 *)self;
-    s32 baseline = *(s32 *)(actor + 0x1dc);
+    s32 baseline = self->cachedTerrainHeight;
     s32 targetX;
     s32 targetY;
     s32 targetHeight;
@@ -46,34 +40,35 @@ s32 func_02031f44(void *self)
     s32 limit;
     u32 terrain;
 
-    if (*(s32 *)(actor + 0x24) != baseline ||
-        !((actor[0x4a] | actor[0x4b]) & 0x0f))
+    if (self->position.value.z != baseline ||
+        !((self->pairStateBytes[0] | self->pairStateBytes[1]) & 0x0f))
         return 0;
-    targetX = *(s32 *)(actor + 0x1c) + *(s32 *)(actor + 0x3c) * 20;
-    targetY = *(s32 *)(actor + 0x20) + *(s32 *)(actor + 0x40) * 20;
-    terrain = Actor_QueryTerrainCell(actor, targetX >> 16, targetY >> 16);
+    targetX = self->position.value.x + self->velocity.value.x * 20;
+    targetY = self->position.value.y + self->velocity.value.y * 20;
+    terrain = Actor_QueryTerrainCell(self, targetX >> 16, targetY >> 16);
     if (terrainCodeBlocksStep(terrain))
         return 0;
-    targetHeight = Actor_QueryTerrainHeight(actor, targetX >> 16, targetY >> 16) << 4;
+    targetHeight =
+        Actor_QueryTerrainHeight(self, targetX >> 16, targetY >> 16) << 4;
     rise = targetHeight - (baseline >> 12);
-    limit = (*(u32 *)(actor + 0x14) & 0x400000) ? 32 : 16;
+    limit = (self->motionFlags & 0x400000) ? 32 : 16;
     if (rise <= 0 || rise > limit)
         return 0;
     if ((Actor_QueryTerrainHeight(
-             actor,
-             (*(s32 *)(actor + 0x1c) + *(s32 *)(actor + 0x3c) * 8) >> 16,
-             (*(s32 *)(actor + 0x20) + *(s32 *)(actor + 0x40) * 8) >> 16)
+             self,
+             (self->position.value.x + self->velocity.value.x * 8) >> 16,
+             (self->position.value.y + self->velocity.value.y * 8) >> 16)
          << 4) - (baseline >> 12) > limit)
         return 0;
-    *(s32 *)(actor + 0xb4) = targetX;
-    *(s32 *)(actor + 0xb8) = targetY;
-    *(s32 *)(actor + 0xbc) = targetHeight << 12;
-    Actor_SaveAndForceFlags(actor);
-    (*(StepActorVTable **)actor)->transition_3c(actor, rise);
-    *(s32 *)(actor + 0xc0) =
-        func_020adae4(*(s32 *)(actor + 0x3c) * 20, 24);
-    *(s32 *)(actor + 0xc4) =
-        func_020adae4(*(s32 *)(actor + 0x40) * 20, 24);
-    *(u32 *)(actor + 0x44) = 0;
+    self->positionTransitionTarget.value.x = targetX;
+    self->positionTransitionTarget.value.y = targetY;
+    self->positionTransitionTarget.value.z = targetHeight << 12;
+    Actor_SaveAndForceFlags(self);
+    self->vtable->configurePositionTransition(self, rise);
+    self->positionTransitionDeltaX = func_020adae4(
+        self->velocity.value.x * 20, ACTOR_POSITION_TRANSITION_DEFAULT_FRAMES);
+    self->positionTransitionDeltaY = func_020adae4(
+        self->velocity.value.y * 20, ACTOR_POSITION_TRANSITION_DEFAULT_FRAMES);
+    self->velocity.value.z = 0;
     return 1;
 }

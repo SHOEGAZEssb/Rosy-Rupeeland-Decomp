@@ -1,20 +1,19 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
-/* Select step-transition animation state and provide its default query. */
+/* Select a step-transition height curve and provide its default query. */
 
 /*
- * Set timer halfword 0xae to 24. Select state 2/0 at 0xac when actor flag
- * 0x400 is set and input equals/does not equal 0x20; otherwise select 3/1.
- * Returns no value and calls no hardware or SDK services.
+ * Configure a 24-frame step-up transition. Select state 2/0 when motion flag
+ * 0x400 is set and the step is/is not 32 world units high; otherwise select
+ * state 3/1. Returns no value and calls no hardware or SDK services.
  */
-void func_020320fc(void *self, s32 input)
+void Actor_ConfigureStepUpTransition(Actor *self, s32 stepHeight)
 {
-    u8 *actor = (u8 *)self;
-    *(s16 *)(actor + 0xae) = 24;
-    if (*(u32 *)(actor + 0x14) & 0x400)
-        *(s16 *)(actor + 0xac) = input == 0x20 ? 2 : 0;
+    self->positionTransitionTimer = ACTOR_POSITION_TRANSITION_DEFAULT_FRAMES;
+    if (self->motionFlags & 0x400)
+        self->positionTransitionState = stepHeight == 0x20 ? 2 : 0;
     else
-        *(s16 *)(actor + 0xac) = input == 0x20 ? 3 : 1;
+        self->positionTransitionState = stepHeight == 0x20 ? 3 : 1;
 }
 
 /* Ignore the implied actor input and return zero without changing state. */

@@ -13,8 +13,8 @@
 .extern func_ov095_0221b6d8
 .extern func_ov095_0221bed0
 
-.global func_ov095_0221b7c8
-func_ov095_0221b7c8:
+.global Overlay095Actor_UpdateHopPositionTransition
+Overlay095Actor_UpdateHopPositionTransition:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0x54
     mov r4, r0
@@ -179,4 +179,4 @@ func_ov095_0221b7c8:
     ldmia sp!, {r4, r5, pc}
 .L_0221ba30: .word data_021052fc
 .L_0221ba34: .word 0x7fff
-.size func_ov095_0221b7c8, . - func_ov095_0221b7c8
+.size Overlay095Actor_UpdateHopPositionTransition, . - Overlay095Actor_UpdateHopPositionTransition

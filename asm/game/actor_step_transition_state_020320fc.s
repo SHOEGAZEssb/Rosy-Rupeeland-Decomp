@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_step_transition_state.c.
 .text
 
-    .global func_020320fc
-    .type func_020320fc, @function
-func_020320fc: ; 0x020320fc
+    .global Actor_ConfigureStepUpTransition
+    .type Actor_ConfigureStepUpTransition, @function
+Actor_ConfigureStepUpTransition: ; 0x020320fc
     ldr r2, [r0, #0x14]
     tst r2, #0x400
     mov r2, #0x18
@@ -22,4 +22,4 @@ func_020320fc: ; 0x020320fc
 .L_02032134:
     strneh r1, [r0, #0xac]
     bx lr
-    .size func_020320fc, . - func_020320fc
+    .size Actor_ConfigureStepUpTransition, . - Actor_ConfigureStepUpTransition

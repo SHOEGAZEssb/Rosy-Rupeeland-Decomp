@@ -8,7 +8,9 @@ struct GraphicsSpriteState;
 
 enum {
     ACTOR_FRAME_UPDATE_STARTED_FLAG = 0x00000080,
-    ACTOR_FORCE_PRESENTATION_REFRESH_FLAG = 0x00001000
+    ACTOR_FORCE_PRESENTATION_REFRESH_FLAG = 0x00001000,
+    ACTOR_POSITION_TRANSITION_INACTIVE_STATE = 0x00ff,
+    ACTOR_POSITION_TRANSITION_DEFAULT_FRAMES = 24
 };
 
 typedef struct Actor Actor;
@@ -18,6 +20,11 @@ typedef Actor *(*ActorDestructor)(Actor *self);
 typedef void (*ActorFrameSnapshotCallback)(Actor *self);
 typedef void (*ActorFrameUpdateCallback)(Actor *self);
 typedef void (*ActorContactStateClearCallback)(Actor *self);
+typedef s32 (*ActorTryStartPositionTransitionCallback)(Actor *self);
+typedef s32 (*ActorUpdatePositionTransitionCallback)(Actor *self);
+typedef void (*ActorConfigurePositionTransitionCallback)(Actor *self,
+                                                         s32 stepHeight);
+typedef void (*ActorEndPositionTransitionCallback)(Actor *self);
 typedef void (*ActorStatePresentationCallback)(Actor *self);
 typedef void (*ActorLandingCallback)(Actor *self);
 typedef s32 (*ActorStatePredicate)(const Actor *self);
@@ -32,7 +39,13 @@ typedef struct ActorVTable {
     ActorFrameSnapshotCallback snapshotTransientState;
     ActorFrameUpdateCallback updateFrame;
     ActorContactStateClearCallback clearTransientContactState;
-    u8 opaqueSlots24[0x38];
+    u8 opaqueSlots24[0x0c];
+    ActorTryStartPositionTransitionCallback tryStartPositionTransition;
+    u8 opaqueSlot34[4];
+    ActorUpdatePositionTransitionCallback updatePositionTransition;
+    ActorConfigurePositionTransitionCallback configurePositionTransition;
+    ActorEndPositionTransitionCallback endPositionTransition;
+    u8 opaqueSlots44[0x18];
     ActorStatePresentationCallback updatePresentationForState;
     u8 opaqueSlot60[4];
     ActorStatePredicate isPreviousState9Or10;
@@ -63,7 +76,13 @@ struct Actor {
     u8 padding52[2];
     struct GraphicsSpriteState *primaryAttachment;
     struct GraphicsSpriteState *secondaryAttachment;
-    u8 opaqueState5c[0x74];
+    u8 opaqueState5c[0x50];
+    s16 positionTransitionState;
+    s16 positionTransitionTimer;
+    VecFx32Object positionTransitionTarget;
+    fx32 positionTransitionDeltaX;
+    fx32 positionTransitionDeltaY;
+    u8 opaqueStatec8[8];
     u32 runtimeFlags;
     u8 direction;
     u8 previousDirection;
@@ -75,7 +94,9 @@ struct Actor {
     u8 opaqueStatee0[4];
     s16 runtimeId;
     u8 opaqueStatee6[2];
-    u8 opaqueStatee8[0x104];
+    u8 opaqueStatee8[0xf4];
+    fx32 cachedTerrainHeight;
+    u8 opaqueState1e0[0x0c];
 };
 
 typedef char ActorVTableSizeCheck[sizeof(ActorVTable) == 0xc0 ? 1 : -1];
@@ -88,6 +109,10 @@ extern "C" {
 void Actor_SnapshotTransientState(Actor *self);
 void Actor_ClearTransientContactState(Actor *self);
 void Actor_MarkFrameUpdateStarted(Actor *self);
+s32 Actor_TryStartStepUpTransition(Actor *self);
+void Actor_ConfigureStepUpTransition(Actor *self, s32 stepHeight);
+s32 Actor_UpdatePositionTransition(Actor *self);
+void Actor_EndPositionTransition(Actor *self);
 void Actor_HandleLanding(Actor *self);
 void Actor_SynchronizeStatePresentation(Actor *self);
 void Actor_UpdatePresentationForState(Actor *self);
@@ -103,7 +128,10 @@ void ActorExtendedType2_HandleLanding(Actor *self);
 void ActorExtendedType2_ClearTransientContactState(Actor *self);
 s32 ActorExtendedType2_IsCurrentState5Or6(const Actor *self);
 s32 ActorExtendedType2_IsPreviousState9Or10(const Actor *self);
+s32 Type7Actor_TryStartForwardStepTransition(Actor *self);
 void Type7Actor_UpdatePresentationForState(Actor *self);
+
+extern const fx32 gActorPositionTransitionHeightOffsets[8][25];
 
 #ifdef __cplusplus
 }

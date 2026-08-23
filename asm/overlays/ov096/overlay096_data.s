@@ -14,11 +14,11 @@
 .extern Actor_UpdatePrimaryRenderAttachmentPriority
 .extern ActorExtendedType2_ApplyContactResponse
 .extern ActorDerivedRuntime_HandlePairEnded
-.extern func_02031f44
+.extern Actor_TryStartStepUpTransition
 .extern func_0203213c
-.extern func_02032144
-.extern func_020320fc
-.extern func_02032208
+.extern Actor_UpdatePositionTransition
+.extern Actor_ConfigureStepUpTransition
+.extern Actor_EndPositionTransition
 .extern func_ov096_022181b0
 .extern ActorExtendedType2_UpdateSceneInteraction
 .extern ActorDerivedRuntime_ClearInteractionQueryState
@@ -205,11 +205,11 @@ data_ov096_02218b98:
     .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word ActorExtendedType2_ApplyContactResponse
     .word ActorDerivedRuntime_HandlePairEnded
-    .word func_02031f44
+    .word Actor_TryStartStepUpTransition
     .word func_0203213c
-    .word func_02032144
-    .word func_020320fc
-    .word func_02032208
+    .word Actor_UpdatePositionTransition
+    .word Actor_ConfigureStepUpTransition
+    .word Actor_EndPositionTransition
     .word func_ov096_022181b0
     .word ActorExtendedType2_UpdateSceneInteraction
     .word ActorDerivedRuntime_ClearInteractionQueryState
@@ -352,11 +352,11 @@ data_ov096_02218de8:
     .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word ActorExtendedType2_ApplyContactResponse
     .word ActorDerivedRuntime_HandlePairEnded
-    .word func_02031f44
+    .word Actor_TryStartStepUpTransition
     .word func_0203213c
-    .word func_02032144
-    .word func_020320fc
-    .word func_02032208
+    .word Actor_UpdatePositionTransition
+    .word Actor_ConfigureStepUpTransition
+    .word Actor_EndPositionTransition
     .word func_ov096_022181b0
     .word ActorExtendedType2_UpdateSceneInteraction
     .word ActorDerivedRuntime_ClearInteractionQueryState

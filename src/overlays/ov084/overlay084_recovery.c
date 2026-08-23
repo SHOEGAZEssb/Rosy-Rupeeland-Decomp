@@ -577,33 +577,36 @@ func_ov084_02213bc8(void *a) {
     F(u32, a, 0xd0) |= 0x1000;
 }
 /* Interpolate the target path and commit completion when its timer expires. */
-extern "C" s32 func_ov084_02213cb0(void *a, s32, s32, s32) {
-    if (F(s16, a, 0xac) == 0xff)
+extern "C" s32 Overlay084Actor_UpdateCurvedPositionTransition(void *actor) {
+    if (F(s16, actor, 0xac) == 0xff)
         return 0;
-    s32 k = ((M0)vm(a, 0x144))(a);
-    Actor_TurnTowardTargetPosition(a, (u8 *)a + 0xb0, k);
-    F(s16, a, 0xd6) = 6;
-    if (F(s16, a, 0xae) < 1) {
-        ((V0)vm(a, 0x40))(a);
-        F(u32, a, 0x260) &= ~0x20u;
-        VecFx32Object_Assign((u8 *)a + 0x18, (u8 *)a + 0xb0);
-        Actor_RefreshCachedTerrainHeight(a);
+    s32 k = ((M0)vm(actor, 0x144))(actor);
+    Actor_TurnTowardTargetPosition(actor, (u8 *)actor + 0xb0, k);
+    F(s16, actor, 0xd6) = 6;
+    if (F(s16, actor, 0xae) < 1) {
+        ((V0)vm(actor, 0x40))(actor);
+        F(u32, actor, 0x260) &= ~0x20u;
+        VecFx32Object_Assign((u8 *)actor + 0x18, (u8 *)actor + 0xb0);
+        Actor_RefreshCachedTerrainHeight(actor);
         return 2;
     }
-    --F(s16, a, 0xae);
+    --F(s16, actor, 0xae);
     u8 d[16], q[16], m[16], path[48], p[16];
-    func_ov084_02213e10(d, (u8 *)a + 0xb0, (u8 *)a + 0x298);
+    func_ov084_02213e10(
+        d, (u8 *)actor + 0xb0, (u8 *)actor + 0x298);
     func_ov084_02213e48(q, d, 0x2000);
-    func_ov084_02212d28(m, (u8 *)a + 0x298, q);
+    func_ov084_02212d28(m, (u8 *)actor + 0x298, q);
     VecFx32Object_Destroy(q);
     VecFx32Object_Destroy(d);
     F(s32, m, 12) += 0x18000;
     VecFx32Triple_Init(path);
-    VecFx32Triple_Set(path, (u8 *)a + 0x298, (u8 *)a + 0xb0, m);
-    s32 t = func_020befec((F(u16, a, 0x2aa) - F(s16, a, 0xae)) * 0x1000,
-                          F(u16, a, 0x2aa));
+    VecFx32Triple_Set(
+        path, (u8 *)actor + 0x298, (u8 *)actor + 0xb0, m);
+    s32 t = func_020befec(
+        (F(u16, actor, 0x2aa) - F(s16, actor, 0xae)) * 0x1000,
+        F(u16, actor, 0x2aa));
     VecFx32Bezier_Evaluate3D(p, path, t);
-    VecFx32Object_Assign((u8 *)a + 0x18, p);
+    VecFx32Object_Assign((u8 *)actor + 0x18, p);
     VecFx32Object_Destroy(p);
     VecFx32Triple_Destroy(path);
     VecFx32Object_Destroy(m);

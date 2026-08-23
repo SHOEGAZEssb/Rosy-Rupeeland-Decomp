@@ -14822,7 +14822,7 @@ build actor_attachment_state_copy: phony build/decomp/src/game/actor_attachment_
 
 actor_step_transition_detect_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_step_transition_detect.o: mwccarm src/game/actor_step_transition_detect.c | include/tingle/types.h
+build build/decomp/src/game/actor_step_transition_detect.o: mwccarm src/game/actor_step_transition_detect.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_step_transition_detect.c
   cflags = $actor_step_transition_detect_cflags
 build build/decomp/asm/game/actor_step_transition_detect_02031f44.o: mwasmarm asm/game/actor_step_transition_detect_02031f44.s
@@ -14832,14 +14832,14 @@ build build/reports/actor_step_transition_detect_02031f44.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_step_transition_detect_02031f44.o
 build build/reports/actor_step_transition_detect_02031f44.txt: match_report build/reports/actor_step_transition_detect_02031f44.json | tools/report_objdiff.py
   report_json = build/reports/actor_step_transition_detect_02031f44.json
-  report_args = --section .text --function func_02031f44 --require-exact
+  report_args = --section .text --function Actor_TryStartStepUpTransition --require-exact
 build build/reports/actor_step_transition_detect.txt: phony build/reports/actor_step_transition_detect_02031f44.txt
 
 build actor_step_transition_detect: phony build/decomp/src/game/actor_step_transition_detect.o build/decomp/asm/game/actor_step_transition_detect_02031f44.o build/reports/actor_step_transition_detect.txt
 
 actor_step_transition_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_step_transition_state.o: mwccarm src/game/actor_step_transition_state.c | include/tingle/types.h
+build build/decomp/src/game/actor_step_transition_state.o: mwccarm src/game/actor_step_transition_state.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_step_transition_state.c
   cflags = $actor_step_transition_state_cflags
 build build/decomp/asm/game/actor_step_transition_state_020320fc.o: mwasmarm asm/game/actor_step_transition_state_020320fc.s
@@ -14851,7 +14851,7 @@ build build/reports/actor_step_transition_state_020320fc.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_step_transition_state_020320fc.o
 build build/reports/actor_step_transition_state_020320fc.txt: match_report build/reports/actor_step_transition_state_020320fc.json | tools/report_objdiff.py
   report_json = build/reports/actor_step_transition_state_020320fc.json
-  report_args = --section .text --function func_020320fc --require-exact
+  report_args = --section .text --function Actor_ConfigureStepUpTransition --require-exact
 build build/reports/actor_step_transition_state_0203213c.json: objdiff build/decomp/delinks/asm/game/actor_step_transition_state_0203213c.o | build/decomp/asm/game/actor_step_transition_state_0203213c.o
   target_object = build/decomp/delinks/asm/game/actor_step_transition_state_0203213c.o
   base_object = build/decomp/asm/game/actor_step_transition_state_0203213c.o
@@ -14864,7 +14864,7 @@ build actor_step_transition_state: phony build/decomp/src/game/actor_step_transi
 
 actor_step_transition_advance_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_step_transition_advance.o: mwccarm src/game/actor_step_transition_advance.c | include/tingle/types.h
+build build/decomp/src/game/actor_step_transition_advance.o: mwccarm src/game/actor_step_transition_advance.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_step_transition_advance.c
   cflags = $actor_step_transition_advance_cflags
 build build/decomp/asm/game/actor_step_transition_advance_02032144.o: mwasmarm asm/game/actor_step_transition_advance_02032144.s
@@ -14874,14 +14874,14 @@ build build/reports/actor_step_transition_advance_02032144.json: objdiff build/d
   base_object = build/decomp/asm/game/actor_step_transition_advance_02032144.o
 build build/reports/actor_step_transition_advance_02032144.txt: match_report build/reports/actor_step_transition_advance_02032144.json | tools/report_objdiff.py
   report_json = build/reports/actor_step_transition_advance_02032144.json
-  report_args = --section .text --function func_02032144 --require-exact
+  report_args = --section .text --function Actor_UpdatePositionTransition --require-exact
 build build/reports/actor_step_transition_advance.txt: phony build/reports/actor_step_transition_advance_02032144.txt
 
 build actor_step_transition_advance: phony build/decomp/src/game/actor_step_transition_advance.o build/decomp/asm/game/actor_step_transition_advance_02032144.o build/reports/actor_step_transition_advance.txt
 
 actor_step_transition_cancel_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_step_transition_cancel.o: mwccarm src/game/actor_step_transition_cancel.c | include/tingle/types.h
+build build/decomp/src/game/actor_step_transition_cancel.o: mwccarm src/game/actor_step_transition_cancel.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_step_transition_cancel.c
   cflags = $actor_step_transition_cancel_cflags
 build build/decomp/asm/game/actor_step_transition_cancel_02032208.o: mwasmarm asm/game/actor_step_transition_cancel_02032208.s
@@ -14891,7 +14891,7 @@ build build/reports/actor_step_transition_cancel_02032208.json: objdiff build/de
   base_object = build/decomp/asm/game/actor_step_transition_cancel_02032208.o
 build build/reports/actor_step_transition_cancel_02032208.txt: match_report build/reports/actor_step_transition_cancel_02032208.json | tools/report_objdiff.py
   report_json = build/reports/actor_step_transition_cancel_02032208.json
-  report_args = --section .text --function func_02032208 --require-exact
+  report_args = --section .text --function Actor_EndPositionTransition --require-exact
 build build/reports/actor_step_transition_cancel.txt: phony build/reports/actor_step_transition_cancel_02032208.txt
 
 build actor_step_transition_cancel: phony build/decomp/src/game/actor_step_transition_cancel.o build/decomp/asm/game/actor_step_transition_cancel_02032208.o build/reports/actor_step_transition_cancel.txt
@@ -19555,7 +19555,7 @@ build build/reports/type7_actor_destination_collision_adjust_0204a5dc.txt: match
 build type7_actor_destination_collision_adjust: phony build/decomp/src/game/type7_actor_destination_collision_adjust.o build/decomp/asm/game/type7_actor_destination_collision_adjust_0204a5dc.o build/reports/type7_actor_destination_collision_adjust_0204a5dc.txt
 
 type7_actor_forward_step_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/type7_actor_forward_step.o: mwccarm src/game/type7_actor_forward_step.c | include/tingle/types.h
+build build/decomp/src/game/type7_actor_forward_step.o: mwccarm src/game/type7_actor_forward_step.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/type7_actor_forward_step.c
   cflags = $type7_actor_forward_step_cflags
 build build/decomp/asm/game/type7_actor_forward_step_0204a890.o: mwasmarm asm/game/type7_actor_forward_step_0204a890.s

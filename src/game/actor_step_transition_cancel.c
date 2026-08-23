@@ -1,25 +1,25 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
-/* Cancel an active actor step transition. */
+/* End an active actor position transition. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Actor_RestoreSavedFlags(void *);
+extern void Actor_RestoreSavedFlags(Actor *self);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * If state halfword 0xac is not 0xff, set it to 0xff and notify
- * Actor_RestoreSavedFlags. An already-idle actor is unchanged. Returns no value; the
- * notification helper owns any gameplay effects.
+ * If a position transition is active, mark it inactive and restore the actor
+ * flags saved when the transition began. An already-idle actor is unchanged.
+ * Returns no value; the restoration helper owns any gameplay effects.
  */
-void func_02032208(void *self)
+void Actor_EndPositionTransition(Actor *self)
 {
-    u8 *actor = (u8 *)self;
-    if (*(s16 *)(actor + 0xac) == 0xff)
+    if (self->positionTransitionState ==
+        ACTOR_POSITION_TRANSITION_INACTIVE_STATE)
         return;
-    *(s16 *)(actor + 0xac) = 0xff;
-    Actor_RestoreSavedFlags(actor);
+    self->positionTransitionState = ACTOR_POSITION_TRANSITION_INACTIVE_STATE;
+    Actor_RestoreSavedFlags(self);
 }

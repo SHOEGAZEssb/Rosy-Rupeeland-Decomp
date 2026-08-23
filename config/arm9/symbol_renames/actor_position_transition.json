@@ -1,0 +1,11 @@
+{
+  "func_02031f44": "Actor_TryStartStepUpTransition",
+  "func_020320fc": "Actor_ConfigureStepUpTransition",
+  "func_02032144": "Actor_UpdatePositionTransition",
+  "func_02032208": "Actor_EndPositionTransition",
+  "func_0204a890": "Type7Actor_TryStartForwardStepTransition",
+  "func_ov084_02213cb0": "Overlay084Actor_UpdateCurvedPositionTransition",
+  "func_ov095_0221b720": "Overlay095Actor_StartHopPositionTransition",
+  "func_ov095_0221b7c8": "Overlay095Actor_UpdateHopPositionTransition",
+  "data_020c3a48": "gActorPositionTransitionHeightOffsets"
+}

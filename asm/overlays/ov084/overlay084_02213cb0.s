@@ -13,8 +13,8 @@
 .extern func_ov084_02213e10
 .extern func_ov084_02213e48
 
-.global func_ov084_02213cb0
-func_ov084_02213cb0:
+.global Overlay084Actor_UpdateCurvedPositionTransition
+Overlay084Actor_UpdateCurvedPositionTransition:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x70
     mov r4, r0
@@ -105,4 +105,4 @@ func_ov084_02213cb0:
 .L_02213e08:
     add sp, sp, #0x70
     ldmia sp!, {r3, r4, r5, pc}
-.size func_ov084_02213cb0, . - func_ov084_02213cb0
+.size Overlay084Actor_UpdateCurvedPositionTransition, . - Overlay084Actor_UpdateCurvedPositionTransition
