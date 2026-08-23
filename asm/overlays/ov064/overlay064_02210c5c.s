@@ -15,7 +15,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern PresentationList_AppendObject
 .extern func_02022cb0
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern GridEffectActorRegistry_BroadcastSlot1c
 .extern ActorInteractionRegistry_UpdateAll
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -210,7 +210,7 @@ Overlay064Scene_UpdateMode0:
     add r0, r4, #0x18
     bl VecFx32Object_Assign
     mov r0, r4
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     ldr r1, [r4, #0x54]
     ldrh r0, [r1, #0x24]
     orr r0, r0, #0x4

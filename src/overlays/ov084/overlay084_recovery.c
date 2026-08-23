@@ -35,7 +35,7 @@ extern "C" s32 ActorExtendedType2_TriggerStoredTargetCallback(void *);
 extern "C" void ActorExtendedType2_UpdateTargetMotion(void *, void *);
 extern "C" void ActorExtendedType2_UpdateFrame(void *);
 extern "C" void Actor_SaveAndForceFlags(void *);
-extern "C" void Actor_RefreshTerrainHeight(void *);
+extern "C" void Actor_RefreshCachedTerrainHeight(void *);
 extern "C" s32 Actor_GetCachedTerrainHeight(void *);
 extern "C" void *Heap_Alloc(s32, void *, s32, void *);
 extern "C" void *Heap_Free(void *);
@@ -587,7 +587,7 @@ extern "C" s32 func_ov084_02213cb0(void *a, s32, s32, s32) {
         ((V0)vm(a, 0x40))(a);
         F(u32, a, 0x260) &= ~0x20u;
         VecFx32Object_Assign((u8 *)a + 0x18, (u8 *)a + 0xb0);
-        Actor_RefreshTerrainHeight(a);
+        Actor_RefreshCachedTerrainHeight(a);
         return 2;
     }
     --F(s16, a, 0xae);

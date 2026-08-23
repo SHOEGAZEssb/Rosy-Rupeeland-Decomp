@@ -10,7 +10,7 @@ extern void InteractionWaypointCursor_Advance(void *object);
 extern s32 *InteractionWaypointCursor_GetCurrentRecord(void *object);
 extern s32 *InteractionWaypointCursor_GetCurrentYPointer(void *object);
 extern void VecFx32Object_Assign(void *destination, const void *source);
-extern void Actor_RefreshTerrainHeight(void *actor);
+extern void Actor_RefreshCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -69,7 +69,7 @@ void ActorExtendedType2_RestoreRandomizedPosition(void *self)
         *(s32 *)(actor + 0x1c) += xOffset << 12;
         *(s32 *)(actor + 0x20) += yOffset << 12;
     }
-    Actor_RefreshTerrainHeight(actor);
+    Actor_RefreshCachedTerrainHeight(actor);
     *(s32 *)(actor + 0x24) = *(s32 *)(actor + 0x1dc);
     VecFx32Object_Assign(actor + 0x28, actor + 0x18);
     *(s32 *)(actor + 0x44) = 0;

@@ -1,0 +1,5 @@
+{
+  "Actor_RefreshTerrainHeight": "Actor_RefreshCachedTerrainHeight",
+  "Actor_RefreshTerrainHeightIfEnabled": "Actor_RefreshCachedTerrainHeightIfEnabled",
+  "func_02033f4c": "Actor_GetGravityAcceleration"
+}

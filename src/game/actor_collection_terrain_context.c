@@ -38,35 +38,38 @@ void *Actor_GetCollectionBySlot(void *unused, u32 slot)
 }
 
 /*
- * Refresh cached height actor+0x1dc from the global terrain context using
- * actor X/Y at +0x1c/+0x20 shifted by 16. Flag 0x04000000 disables the query
- * and clears the cache. For terrain class bits 5..9 equal to 15, a four-unit
- * ledge adjustment is accepted when it does not exceed actor Z at +0x24;
- * actor flag 0x02000000 at +0x10 records the rejected-above-Z case. Other
- * classes clear that flag. The chosen integer height is stored shifted by 16.
- * Returns no value; the terrain helpers read global map/SDK-managed state.
+ * Refresh the signed FX32 Q20.12 world height cached at actor+0x1dc from the
+ * global terrain context. Actor X/Y at +0x1c/+0x20 are quantized into
+ * 16-world-unit grid cells. Flag 0x04000000 disables sampling and clears the
+ * cache while preserving the class-15 rejection flag at actor+0x10. For
+ * terrain class 15, a four-height-level (64-world-unit) ledge adjustment is
+ * accepted only when it does not exceed actor Z at +0x24; flag 0x02000000 at
+ * +0x10 records rejection of that raised level. Other classes clear the flag.
+ * The selected integer height level is stored shifted by 16. Returns no value;
+ * terrain helpers read global map state and no ownership is transferred.
  */
-void Actor_RefreshTerrainHeight(void *self)
+void Actor_RefreshCachedTerrainHeight(void *actorPointer)
 {
-    u8 *actor = (u8 *)self;
-    s32 x;
-    s32 y;
-    s32 height;
-    u32 terrainClass;
+    u8 *actor = (u8 *)actorPointer;
+    s32 gridX;
+    s32 gridY;
+    s32 selectedHeightLevel;
+    u32 packedCell;
 
     if ((*(u32 *)(actor + 0x14) & 0x04000000) != 0) {
         *(s32 *)(actor + 0x1dc) = 0;
         return;
     }
 
-    x = *(s32 *)(actor + 0x1c) >> 16;
-    y = *(s32 *)(actor + 0x20) >> 16;
-    height = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24, x, y);
-    terrainClass = Actor_QueryTerrainCell(actor, x, y);
+    gridX = *(s32 *)(actor + 0x1c) >> 16;
+    gridY = *(s32 *)(actor + 0x20) >> 16;
+    selectedHeightLevel = GamePhaseState_QueryTerrainHeight(
+        (u8 *)data_021052fc + 0x24, gridX, gridY);
+    packedCell = Actor_QueryTerrainCell(actor, gridX, gridY);
 
-    if (((terrainClass >> 5) & 0x1f) == 15) {
-        if (height + 4 <= (*(s32 *)(actor + 0x24) >> 16)) {
-            height += 4;
+    if (((packedCell >> 5) & 0x1f) == 15) {
+        if (selectedHeightLevel + 4 <= (*(s32 *)(actor + 0x24) >> 16)) {
+            selectedHeightLevel += 4;
             *(u32 *)(actor + 0x10) &= ~0x02000000;
         } else {
             *(u32 *)(actor + 0x10) |= 0x02000000;
@@ -74,5 +77,5 @@ void Actor_RefreshTerrainHeight(void *self)
     } else {
         *(u32 *)(actor + 0x10) &= ~0x02000000;
     }
-    *(s32 *)(actor + 0x1dc) = height << 16;
+    *(s32 *)(actor + 0x1dc) = selectedHeightLevel << 16;
 }

@@ -9,7 +9,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern ActorMotionAreaFollower_GetPosition
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern func_020befec
 .extern gSceneManager
 
@@ -72,7 +72,7 @@ func_ov062_022104d0:
     sub r0, r0, #0x8
     strh r0, [r1, #0x28]
     ldr r0, [r4, #0x24]
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     ldr r0, .L_02210648
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc

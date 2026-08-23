@@ -6,7 +6,7 @@ typedef struct MotionActorVTable {
     void (*land_8c)(void *);
     void (*accelerate_90)(void *, s32);
     u8 field_94[0x1c];
-    s32 (*vertical_b0)(void *);
+    s32 (*getGravityAcceleration_b0)(void *);
 } MotionActorVTable;
 
 #ifdef __cplusplus
@@ -41,8 +41,9 @@ static s32 multiplyFx(s32 a, s32 b)
  * 0xee1/0xf5c/0xfae. Normalize/add vector 0x98 when its magnitude is at least
  * 0x1000, otherwise clear it, then damp with 0x99a or 0xee1. Unless actor flag
  * 0x40 is set, process baseline 0x1dc: landing calls vtable 0x8c and clears
- * flags, airborne motion subtracts vtable-0xb0 acceleration, and Z is clamped
- * not below baseline. Returns no value; virtual callbacks own gameplay effects.
+ * flags, airborne motion subtracts vtable-0xb0 gravity acceleration from FX32
+ * vertical velocity, and Z is clamped not below baseline. Returns no value;
+ * virtual callbacks own gameplay effects.
  */
 void Actor_IntegrateMotion(void *self)
 {
@@ -139,7 +140,8 @@ void Actor_IntegrateMotion(void *self)
             *(u32 *)(actor + 0xd0) &= ~2;
             *(u32 *)(actor + 0x14) &= ~0x20000000;
         } else if (z > baseline) {
-            *(s32 *)(actor + 0x44) -= vtable->vertical_b0(actor);
+            *(s32 *)(actor + 0x44) -=
+                vtable->getGravityAcceleration_b0(actor);
         }
         if (*(s32 *)(actor + 0x24) < baseline)
             *(s32 *)(actor + 0x24) = baseline;

@@ -5,7 +5,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern Actor_SetDirectionFromVector
 .extern func_ov088_02218280
 .extern func_ov088_02219960
@@ -23,7 +23,7 @@ func_ov088_02218130:
     mov r3, #0x0
     bl func_ov088_02218280
     mov r0, r4
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     mov r0, r4
     mov r1, #0x1
     bl func_ov088_02219960

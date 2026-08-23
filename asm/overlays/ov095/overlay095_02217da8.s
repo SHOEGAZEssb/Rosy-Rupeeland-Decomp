@@ -1,13 +1,13 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_02033f4c
+.extern Actor_GetGravityAcceleration
 .extern func_020befec
 
 .global func_ov095_02217da8
 func_ov095_02217da8:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_02033f4c
+    bl Actor_GetGravityAcceleration
     ldrsh r1, [r4, #0xda]
     cmp r1, #0x7
     bne .L_02217dd0

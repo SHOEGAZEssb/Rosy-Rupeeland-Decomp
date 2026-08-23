@@ -98,7 +98,7 @@ extern "C" s32 Actor_IsTerrainCellEligibleAtHeight(void *, s32, s32, s32);
 extern "C" s32 func_020adae4(s32, s32);
 extern "C" void Actor_ApplyMotionImpulse(void *, s32, s32);
 extern "C" void ActorDerivedRuntime_HandlePairActive(void *, void *, s32);
-extern "C" void Actor_RefreshTerrainHeight(void *);
+extern "C" void Actor_RefreshCachedTerrainHeight(void *);
 extern "C" void Actor_SetDirectionFromVector(void *, s32, s32);
 extern "C" void Actor_UpdateAnimationState(void *);
 extern "C" void Actor_UpdateGroundContactProbe(void *);
@@ -313,7 +313,7 @@ extern "C" void func_ov088_02218280(void *v, s32 x, s32 y, s32 z) {
 /* Reset the actor at a map coordinate and spawn its arrival presentation. */
 extern "C" void func_ov088_02218130(void *a, s32 x, s32 y) {
     func_ov088_02218280((u8 *)a + 0x18, x << 12, y << 12, 0);
-    Actor_RefreshTerrainHeight(a);
+    Actor_RefreshCachedTerrainHeight(a);
     func_ov088_02219960(a, 1);
     F(s16, a, 0x21c) = F(s16, F(void *, a, 0x238), 0x16) * 60;
     F(s16, a, 0xda) = 0;

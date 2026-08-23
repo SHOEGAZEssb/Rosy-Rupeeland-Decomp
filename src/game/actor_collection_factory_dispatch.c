@@ -125,7 +125,7 @@ DECLARE_ACTOR_CTOR(func_ov097_022195f4);
 DECLARE_ACTOR_CTOR(func_ov097_02219d20);
 #undef DECLARE_ACTOR_CTOR
 extern void OS_Halt(void);
-extern void Actor_RefreshTerrainHeight(FactoryActor *);
+extern void Actor_RefreshCachedTerrainHeight(FactoryActor *);
 extern void ActorCollection_RegisterActor(FactoryCollection *, FactoryActor *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
 #ifdef __cplusplus
@@ -292,7 +292,7 @@ void *ActorCollection_SpawnActorFromDescriptor(FactoryCollection *self,
     if (self->mode_2e84 == 2)
         actor->flags_14 |= 0x04000000;
     else
-        Actor_RefreshTerrainHeight(actor);
+        Actor_RefreshCachedTerrainHeight(actor);
     actor->descriptorValue_e4 = descriptor->value_52;
     ActorCollection_RegisterActor(self, actor);
     return actor;

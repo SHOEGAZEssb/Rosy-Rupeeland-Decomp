@@ -21,7 +21,7 @@ extern void *func_02025d14(void *state);
 extern u32 GamePhaseMetadata_GetFlagsBits12To15(s32 phase);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 extern void *ActorCollection_SpawnActorFromDescriptor(void *collection, const void *descriptor);
-extern void Actor_RefreshTerrainHeight(void *actor);
+extern void Actor_RefreshCachedTerrainHeight(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void ActorSpawnDescriptor_Init(
     void *, u16, u16, s32, s32, s32, u8, u8, u16, u16, u16, u8, u8,
@@ -122,7 +122,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
     *(s16 *)(actor + 0x64) = *(s8 *)(record + 0x4e);
     *(s16 *)(actor + 0x66) = *(s8 *)(record + 0x4f);
     callActorMethod(actor, 0x54, 1);
-    Actor_RefreshTerrainHeight(actor);
+    Actor_RefreshCachedTerrainHeight(actor);
     *(s32 *)(actor + 0x24) = Actor_GetCachedTerrainHeight(actor);
     *(s16 *)(actor + 0x27e) = (s16)phase;
     *(u32 *)(actor + 0x200) = *(u16 *)(record + 0x20);

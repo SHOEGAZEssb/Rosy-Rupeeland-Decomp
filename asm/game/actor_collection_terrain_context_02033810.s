@@ -14,4 +14,4 @@ Actor_GetCollectionBySlot: ; 0x02033810
 .L_02033824: .word GamePhaseRuntime_GetActorCollection
     .size Actor_GetCollectionBySlot, . - Actor_GetCollectionBySlot
 
-    .global Actor_RefreshTerrainHeight
+    .global Actor_RefreshCachedTerrainHeight

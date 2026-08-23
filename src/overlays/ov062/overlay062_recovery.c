@@ -38,7 +38,7 @@ extern s32 func_020befec(...), func_020adcac(...), func_020ae024(...);
 extern void *func_02005580(...), *func_02005c3c(...);
 extern void func_02005afc(...), func_020059ac(...), func_0201f864(...);
 extern void func_02072b68(...), GraphicsSpriteState_ReleaseFromGroup(...), func_020740c8(...);
-extern void func_02032d64(...), func_02033828(...), func_02034b60(...);
+extern void func_02032d64(...), Actor_RefreshCachedTerrainHeight(...), func_02034b60(...);
 extern void func_02038aac(...), func_02008e10(...), func_020099c0(...);
 extern s32 func_02009d78(...), func_0202baec(...);
 extern void func_0204b5d8(...), func_0204b680(...);
@@ -227,7 +227,7 @@ static s32 Ov62_UpdateMotion(void *scene, s32 actorOffset, s32 frameOffset,
   if (spriteOffset != 0)
     func_02005afc(F(void *, scene, spriteOffset), position[1], position[2],
                   position[3], 4);
-  func_02033828(actor);
+  Actor_RefreshCachedTerrainHeight(actor);
   ((void (*)(void *, void *, s32))METHOD(actor, 0x58))(
       position, actor, func_02009d78((u8 *)data_021052fc + 0x2fbc));
   if (frame != duration)

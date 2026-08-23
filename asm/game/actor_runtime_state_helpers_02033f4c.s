@@ -2,9 +2,9 @@
 .text
 .extern gGameWork
 
-    .global func_02033f4c
-    .type func_02033f4c, @function
-func_02033f4c: ; 0x02033f4c
+    .global Actor_GetGravityAcceleration
+    .type Actor_GetGravityAcceleration, @function
+Actor_GetGravityAcceleration: ; 0x02033f4c
     ldr r0, [r0, #0x14]
     tst r0, #0x20000000
     ldrne r0, .L_02033f78
@@ -17,7 +17,7 @@ func_02033f4c: ; 0x02033f4c
     ldreqsh r0, [r0, #0x10]
     bx lr
 .L_02033f78: .word gGameWork
-    .size func_02033f4c, . - func_02033f4c
+    .size Actor_GetGravityAcceleration, . - Actor_GetGravityAcceleration
 
     .global Actor_ApplyMotionImpulse
 

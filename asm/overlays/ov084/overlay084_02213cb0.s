@@ -7,7 +7,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern Actor_TurnTowardTargetPosition
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern func_020befec
 .extern func_ov084_02212d28
 .extern func_ov084_02213e10
@@ -100,7 +100,7 @@ func_ov084_02213cb0:
     str r2, [r4, #0x260]
     bl VecFx32Object_Assign
     mov r0, r4
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     mov r0, #0x2
 .L_02213e08:
     add sp, sp, #0x70

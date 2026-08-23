@@ -37,7 +37,7 @@ extern "C" void *GraphicsSpriteGroup_CreateState(void*,s32,s32,s32,u8);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void*,void*,void*,void*,void*);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void*,s32); extern "C" void Actor_SetRuntimeFlag80(void*);
 extern "C" void Actor_UpdateAnimationState(void*); extern "C" void Actor_UpdateTimedResourceState(void*);
-extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshTerrainHeight(void*);
+extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshCachedTerrainHeight(void*);
 extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void Actor_UpdatePresentation(void*,void*,s32);
 extern "C" void Actor_TurnTowardVector(void*,s32,s32,s32); extern "C" void Actor_TurnTowardTargetPosition(void*,void*,s32);
 extern "C" void func_02033b38(void); extern "C" void Sound_PlayOwnedEffect(void*,s32,s32,void*,s32,s32);
@@ -98,7 +98,7 @@ extern "C" void func_ov085_02212ef4(void*a,s32,s32,s32){F(u32,a,0xd0)&=~0x10u;F(
 /* Toggle marker visibility through its sprite's bit 2. */
 extern "C" void func_ov085_02213194(void*m,s32 v){void*s=F(void*,m,4);if(v)F(u16,s,0x24)&=~4u;else F(u16,s,0x24)|=4;}
 /* Copy position to the local vector and clear both impulses. */
-extern "C" void func_ov085_022131b4(void*a){VecFx32Object_Assign((u8*)a+0x214,(u8*)a+0x18);Actor_RefreshTerrainHeight(a);F(s32,a,0x24)=F(s32,a,0x1dc);func_ov085_02213204((u8*)a+0x38,0,0,0);func_ov085_02213204((u8*)a+0x88,0,0,0);}
+extern "C" void func_ov085_022131b4(void*a){VecFx32Object_Assign((u8*)a+0x214,(u8*)a+0x18);Actor_RefreshCachedTerrainHeight(a);F(s32,a,0x24)=F(s32,a,0x1dc);func_ov085_02213204((u8*)a+0x38,0,0,0);func_ov085_02213204((u8*)a+0x88,0,0,0);}
 /* Assign the three payload coordinates following a vector header. */
 extern "C" void func_ov085_02213204(void*v,s32 x,s32 y,s32 z){F(s32,v,4)=x;F(s32,v,8)=y;F(s32,v,12)=z;}
 /* React to a paired actor and reflect motion or select recovery. */

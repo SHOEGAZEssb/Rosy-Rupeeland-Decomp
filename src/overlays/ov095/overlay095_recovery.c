@@ -101,7 +101,7 @@ EXT(func_020adae4);
 EXT(func_020adc90);
 EXT(func_020bf1f8);
 EXT(Actor_PlayHorizontalSpatialSound);
-EXT(func_02033f4c);
+EXT(Actor_GetGravityAcceleration);
 EXT(func_020befec);
 EXT(func_020adfbc);
 EXT(func_020adff0);
@@ -324,18 +324,15 @@ extern "C" s32 func_ov095_02217d90(void *bounds)
     return (s16)(F(s16, bounds, 6) - F(s16, bounds, 2));
 }
 
-/* Updates audio pitch according to the actor's active motion state. */
-extern "C" void func_ov095_02217da8(void *actor)
+/* Return state-scaled signed FX32 gravity acceleration for this actor type. */
+extern "C" s32 func_ov095_02217da8(void *actor)
 {
-    s32 value = func_02033f4c(actor);
+    s32 baseGravityAccelerationFx32 = Actor_GetGravityAcceleration(actor);
     if (F(s16, actor, 0xda) == 7)
-    {
-        func_020befec(value * 7, 5);
-    }
-    else if (F(s16, actor, 0xda) == 0 && F(s32, actor, 0x44) >= 0)
-    {
-        func_020befec(value * 5, 7);
-    }
+        return func_020befec(baseGravityAccelerationFx32 * 7, 5);
+    if (F(s16, actor, 0xda) == 0 && F(s32, actor, 0x44) >= 0)
+        return func_020befec(baseGravityAccelerationFx32 * 5, 7);
+    return baseGravityAccelerationFx32;
 }
 
 static void ReplaceActorResource(void *actor)

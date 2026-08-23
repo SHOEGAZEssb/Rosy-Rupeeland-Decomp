@@ -5,7 +5,7 @@
 .extern ActorCollection_QueueActorForRemoval
 .extern ActorSpawnDescriptor_Init
 .extern ActorCollection_SpawnActorFromDescriptor
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_SetTarget
 .extern Type7Actor_MatchesGlobalRecordIndex
@@ -129,7 +129,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
     ldr r2, [r2, #0x54]
     blx r2
     mov r0, r5
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     mov r0, r5
     bl Actor_GetCachedTerrainHeight
     str r0, [r5, #0x24]

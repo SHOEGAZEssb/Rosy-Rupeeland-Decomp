@@ -43,7 +43,7 @@ extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern "C" void Actor_SaveAndForceFlags(void *);
 extern "C" void Actor_RestoreSavedFlags(void *);
 extern "C" s32 Actor_GetCachedTerrainHeight(void *);
-extern "C" s32 func_02033f4c(void);
+extern "C" s32 Actor_GetGravityAcceleration(void *);
 extern "C" void ActorExtendedType2_UpdateFrame(void *);
 extern "C" void ActorExtendedType2_CopyAdjustedDescriptor(void *, const void *);
 extern "C" void ActorExtendedType2_TriggerContactFeedback(void *);
@@ -605,9 +605,9 @@ extern "C" void func_ov080_02213df4(void *actor, s32 enabled)
 /* Return the fixed secondary interaction mask. */
 extern "C" u32 func_ov080_02213e14(void) { return 0x20000; }
 
-/* Choose one of three variants from the base actor's current terrain value. */
-extern "C" s32 func_ov080_02213e1c(void)
-{ return func_020befec(func_02033f4c(), 3); }
+/* Return one third of the base actor's signed FX32 gravity acceleration. */
+extern "C" s32 func_ov080_02213e1c(void *actor)
+{ return func_020befec(Actor_GetGravityAcceleration(actor), 3); }
 
 /* Return the fixed movement scale used by the base actor. */
 extern "C" s32 func_ov080_02213e30(void) { return 0x400; }

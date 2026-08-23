@@ -36,7 +36,7 @@
 .extern func_ov097_02217cf8
 .extern func_ov097_02217d44
 .extern ActorExtendedType2_DrawDebugOverlay
-.extern Actor_RefreshTerrainHeightIfEnabled
+.extern Actor_RefreshCachedTerrainHeightIfEnabled
 .extern ActorExtendedType2_TriggerContactFeedback
 .extern Actor_ConvergeToTargetHeight
 .extern func_ov097_02219cc4
@@ -181,7 +181,7 @@
 .extern func_ov097_0221a45c
 .extern func_ov097_0221a458
 .extern func_ov097_0221a450
-.extern func_02033f4c
+.extern Actor_GetGravityAcceleration
 .extern Actor_ApplyMotionImpulse
 .extern func_ov097_02219ebc
 .extern func_ov097_0221a1c8
@@ -318,7 +318,7 @@ data_ov097_0221a5f4:
     .word func_ov097_02217cf8
     .word func_ov097_02217d44
     .word ActorExtendedType2_DrawDebugOverlay
-    .word Actor_RefreshTerrainHeightIfEnabled
+    .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
     .word func_ov097_02219cc4
@@ -453,7 +453,7 @@ data_ov097_0221a80c:
     .word ActorExtendedType2_PrepareRelease
     .word ActorExtendedType2_InitializeReentryState
     .word ActorExtendedType2_DrawDebugOverlay
-    .word Actor_RefreshTerrainHeightIfEnabled
+    .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word ActorExtendedType2_TriggerContactFeedback
     .word Actor_ConvergeToTargetHeight
     .word func_ov097_02219cc4
@@ -614,7 +614,7 @@ data_ov097_0221aaa4:
     .word func_ov097_0221a460
     .word Actor_SetPosition
     .word func_02033b38
-    .word Actor_RefreshTerrainHeightIfEnabled
+    .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word func_ov097_0221a45c
     .word Actor_ConvergeToTargetHeight
     .word func_ov097_0221a458
@@ -624,7 +624,7 @@ data_ov097_0221aaa4:
     .word Actor_IntegrateMotion
     .word func_ov097_02219b70
     .word Actor_SetResourceSlot
-    .word func_02033f4c
+    .word Actor_GetGravityAcceleration
     .word func_ov097_02219b60
     .word Actor_ApplyMotionImpulse
     .word Actor_ReleasePrimaryRenderAttachment

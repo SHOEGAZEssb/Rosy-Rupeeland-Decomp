@@ -6,7 +6,7 @@ extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Actor_RefreshTerrainHeight(void *actor);
+extern void Actor_RefreshCachedTerrainHeight(void *actor);
 extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 maximum);
 extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
@@ -56,31 +56,36 @@ void Actor_SetAttachmentBaseScale(void *self, s32 scaleX, s32 scaleY)
 }
 
 /*
- * Refresh cached terrain state through Actor_RefreshTerrainHeight unless actor flag
- * 0x01000000 at +0x14 is set. Returns no value; the helper reads map state.
+ * Refresh the signed FX32 Q20.12 terrain height cached at actor+0x1dc unless
+ * actor flag 0x01000000 at +0x14 is set. A skipped refresh preserves both the
+ * cached height and its related status flag. Returns no value; the refresh
+ * helper reads global map state and no ownership is transferred.
  */
-void Actor_RefreshTerrainHeightIfEnabled(void *self)
+void Actor_RefreshCachedTerrainHeightIfEnabled(void *actorPointer)
 {
-    if ((*(u32 *)((u8 *)self + 0x14) & 0x01000000) == 0)
-        Actor_RefreshTerrainHeight(self);
+    if ((*(u32 *)((u8 *)actorPointer + 0x14) & 0x01000000) == 0)
+        Actor_RefreshCachedTerrainHeight(actorPointer);
 }
 
-/* Return the cached terrain-height word at actor+0x1dc. */
-s32 Actor_GetCachedTerrainHeight(void *self)
+/* Return actor+0x1dc's signed FX32 Q20.12 cached world height. */
+s32 Actor_GetCachedTerrainHeight(void *actorPointer)
 {
-    return *(s32 *)((u8 *)self + 0x1dc);
+    return *(s32 *)((u8 *)actorPointer + 0x1dc);
 }
 
 /*
- * Return GameWork signed halfword 0x212 when actor flag 0x20000000 is set,
- * otherwise halfword 0x210. No state is changed and no hardware is touched.
+ * Return the signed FX32 gravity acceleration selected from GameWork halfword
+ * +0x212 when actor flag 0x20000000 is set, or the primary halfword +0x210
+ * otherwise. Consumers subtract this value from vertical velocity once per
+ * update, so its units are world units per frame squared. No state, ownership,
+ * timing source, or hardware is changed.
  */
-s32 func_02033f4c(void *self)
+s32 Actor_GetGravityAcceleration(void *actorPointer)
 {
-    u8 *actor = (u8 *)self;
-    u8 *work = (u8 *)gGameWork;
+    u8 *actor = (u8 *)actorPointer;
+    u8 *gameWork = (u8 *)gGameWork;
 
-    return *(s16 *)(work +
+    return *(s16 *)(gameWork +
         ((*(u32 *)(actor + 0x14) & 0x20000000) != 0 ? 0x212 : 0x210));
 }
 

@@ -11,7 +11,7 @@ extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void Type7AuxiliaryPresentation_Reset(void *object);
 extern void Type7AuxiliaryPresentation_EnterRaisedState(void *object);
-extern void Actor_RefreshTerrainHeight(void *actor);
+extern void Actor_RefreshCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -52,7 +52,7 @@ void ActorDerivedType1_ResetToBaseState(void *self)
     *(s32 *)(actor + 0x40) = 0;
     *(s32 *)(actor + 0x3c) = 0;
     actor[0x26b] = 0;
-    Actor_RefreshTerrainHeight(actor);
+    Actor_RefreshCachedTerrainHeight(actor);
     *(u32 *)(actor + 0x230) &= ~0x800000;
 }
 

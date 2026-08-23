@@ -58,7 +58,7 @@ extern void func_020afce8(O64_ARGS);
 extern void DebugText_BeginFrame(O64_ARGS), Sound_Play(O64_ARGS);
 extern void GamePhaseCurrencyHud_AddCurrency(O64_ARGS);
 extern void *func_02022cb0(O64_ARGS);
-extern void Actor_RefreshTerrainHeight(O64_ARGS);
+extern void Actor_RefreshCachedTerrainHeight(O64_ARGS);
 extern void GridEffectActorRegistry_BroadcastSlot1c(O64_ARGS);
 extern void ActorInteractionRegistry_UpdateAll(O64_ARGS);
 extern s32 func_020befec(O64_ARGS);
@@ -539,7 +539,7 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
         VecFx32Bezier_Evaluate3D(&position, F(void *, scene, 0x84), progress);
         VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x18),
                              &position);
-        Actor_RefreshTerrainHeight(actor);
+        Actor_RefreshCachedTerrainHeight(actor);
         F(u16, F(void *, actor, 0x54), 0x24) |= 4;
         if ((F(s16, scene, 0x74) & 4) != 0) {
             F(u16, F(void *, scene, 0x30), 0x24) |= 4;

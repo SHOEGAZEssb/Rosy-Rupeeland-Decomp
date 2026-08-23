@@ -105,7 +105,7 @@ extern "C" {
 extern void *Actor_GetCollection(void *);
 extern s32 Actor_GetCachedTerrainHeight(void *);
 extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
-extern void Actor_RefreshTerrainHeight(void *);
+extern void Actor_RefreshCachedTerrainHeight(void *);
 extern void Actor_SetRuntimeFlag80(void *);
 extern void Actor_UpdateAnimationState(void *);
 extern void Actor_UpdateTimedResourceState(void *);
@@ -446,7 +446,7 @@ void func_ov081_02212fe4(void *actor)
 void func_ov081_022130dc(void *actor)
 {
     VecFx32Object_Assign((u8 *)actor + 0x18, (u8 *)actor + 0x214);
-    Actor_RefreshTerrainHeight(actor);
+    Actor_RefreshCachedTerrainHeight(actor);
     FIELD(s32, actor, 0x24) = FIELD(s32, actor, 0x1dc);
     func_ov081_0221312c((u8 *)actor + 0x38, 0, 0, 0);
     func_ov081_0221312c((u8 *)actor + 0x88, 0, 0, 0);

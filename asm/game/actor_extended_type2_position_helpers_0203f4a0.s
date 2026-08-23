@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_position_helpers.c.
 .text
 .extern VecFx32Object_Assign
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern InteractionWaypointCursor_Advance
 .extern InteractionWaypointCursor_GetCurrentRecord
 .extern InteractionWaypointCursor_GetCurrentYPointer
@@ -81,7 +81,7 @@ ActorExtendedType2_RestoreRandomizedPosition: ; 0x0203f4f8
     str r0, [r4, #0x20]
 .L_0203f594:
     mov r0, r4
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     ldr r2, [r4, #0x1dc]
     add r0, r4, #0x28
     add r1, r4, #0x18

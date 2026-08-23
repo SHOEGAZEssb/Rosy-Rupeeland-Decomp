@@ -41,11 +41,11 @@ static void clearActorVector(u8 *actor, u32 offset)
  *
  * Invoke Actor_UpdateTerrainMotionFeedback for +0x14 bit 0x100000, add motion +0x38 to position,
  * and process the +0x10 bit-0x400 height correction unless +0x14 bit 0x40 is
- * set. Above floor +0x1dc, subtract virtual +0xb0 from vertical motion +0x44;
- * at or below it, clamp a strictly lower height, clear +0x14 bit 0x20000000,
- * clear correction bit 0x400, and zero +0x44. Finish with virtual +0x20.
- * Returns no value; track, vector, correction, and virtual calls mutate actor
- * and presentation state.
+ * set. Above cached floor height +0x1dc, subtract the virtual +0xb0 gravity
+ * acceleration from FX32 vertical velocity +0x44; at or below it, clamp a
+ * strictly lower height, clear +0x14 bit 0x20000000, clear correction bit
+ * 0x400, and zero +0x44. Finish with virtual +0x20. Returns no value; track,
+ * vector, correction, and virtual calls mutate actor and presentation state.
  */
 void ActorDerivedRuntime_UpdateFrame(void *self)
 {
@@ -90,13 +90,14 @@ void ActorDerivedRuntime_UpdateFrame(void *self)
     VecFx32Object_Add(actor + 0x18, actor + 0x38);
     if ((*(u32 *)(actor + 0x14) & 0x40) == 0 &&
         (*(u32 *)(actor + 0x10) & 0x400) != 0) {
-        s32 floor = *(s32 *)(actor + 0x1dc);
-        if (*(s32 *)(actor + 0x24) > floor) {
-            s32 delta = (*(s32 (**)(void *))(*(u8 **)actor + 0xb0))(actor);
-            *(s32 *)(actor + 0x44) -= delta;
+        s32 cachedTerrainHeightFx32 = *(s32 *)(actor + 0x1dc);
+        if (*(s32 *)(actor + 0x24) > cachedTerrainHeightFx32) {
+            s32 gravityAccelerationFx32 =
+                (*(s32 (**)(void *))(*(u8 **)actor + 0xb0))(actor);
+            *(s32 *)(actor + 0x44) -= gravityAccelerationFx32;
         } else {
-            if (*(s32 *)(actor + 0x24) < floor) {
-                *(s32 *)(actor + 0x24) = floor;
+            if (*(s32 *)(actor + 0x24) < cachedTerrainHeightFx32) {
+                *(s32 *)(actor + 0x24) = cachedTerrainHeightFx32;
                 *(u32 *)(actor + 0x14) &= ~0x20000000;
             }
             *(u32 *)(actor + 0x10) &= ~0x400;

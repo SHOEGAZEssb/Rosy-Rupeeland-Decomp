@@ -9,4 +9,4 @@ Actor_SetAttachmentBaseScale: ; 0x02033f20
     bx lr
     .size Actor_SetAttachmentBaseScale, . - Actor_SetAttachmentBaseScale
 
-    .global Actor_RefreshTerrainHeightIfEnabled
+    .global Actor_RefreshCachedTerrainHeightIfEnabled

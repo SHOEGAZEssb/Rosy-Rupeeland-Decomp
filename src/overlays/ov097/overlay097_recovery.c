@@ -72,7 +72,7 @@ EXT(func_020064b8);
 EXT(func_02030ad4);
 EXT(Actor_PlayRadialSpatialSound);
 EXT(Fx32Vector2_Magnitude);
-EXT(func_02033f4c);
+EXT(Actor_GetGravityAcceleration);
 EXT(func_02033f7c);
 EXT(Actor_PlayHorizontalSpatialSound);
 EXT(Sound_PlayOwnedEffect);
@@ -235,14 +235,12 @@ extern "C" s32 func_ov097_02217afc(void *record)
     return (s16)(F(s16, record, 6) - F(s16, record, 2));
 }
 
-/* Advances the random source and conditionally emits a positional sound. */
-extern "C" void func_ov097_02217b14(void *actor)
+/* Return state-scaled signed FX32 gravity acceleration for this actor type. */
+extern "C" s32 func_ov097_02217b14(void *actor)
 {
-    s32 value = func_02033f4c();
     if (F(s16, actor, 0xda) == 0 && F(s32, actor, 0x44) >= 0)
-    {
-        func_020befec(value * 5, 7);
-    }
+        return func_020befec(Actor_GetGravityAcceleration(actor) * 5, 7);
+    return Actor_GetGravityAcceleration(actor);
 }
 
 /* Selects presentation resources and animation for actor modes 26 and 27. */
@@ -1143,18 +1141,12 @@ extern "C" void func_ov097_02219748(void *actor)
     F(s32, actor, 0x2bc) = 0;
 }
 
-/* Updates the attached actor's audio pitch while it remains linked. */
-extern "C" void func_ov097_02219760(void *actor)
+/* Return link-scaled signed FX32 gravity acceleration for this actor type. */
+extern "C" s32 func_ov097_02219760(void *actor)
 {
     if (F(void *, actor, 0x2b0) != 0)
-    {
-        s32 value = func_02033f4c(actor);
-        func_020befec(value << 3, 9);
-    }
-    else
-    {
-        func_02033f4c(actor);
-    }
+        return func_020befec(Actor_GetGravityAcceleration(actor) << 3, 9);
+    return Actor_GetGravityAcceleration(actor);
 }
 
 /* Advances the link timeout and updates its timed transition. */

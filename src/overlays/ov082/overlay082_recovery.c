@@ -61,7 +61,7 @@ extern "C" void PresentationList_AppendObject(void *, void *);
 extern "C" void *func_0201e0ec(void *);
 extern "C" void *func_02022cb0(void *, const void *, void *, s32, s32, s32);
 extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
-extern "C" s32 func_02033f4c(void *);
+extern "C" s32 Actor_GetGravityAcceleration(void *);
 extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
 extern "C" void Sound_PlayOwnedEffect(void *, s32, s32, void *, s32, s32);
@@ -371,9 +371,9 @@ func_ov082_022131cc(void *a, s32 show) {
 func_ov082_022131ec(void) {
     return 0x20000;
 }
-/* Divide the resident descriptor-derived value by three. */ extern "C" s32
-func_ov082_022131f4(void *a) {
-    return func_020befec(func_02033f4c(a), 3);
+/* Return one third of the base actor's signed FX32 gravity acceleration. */
+extern "C" s32 func_ov082_022131f4(void *actor) {
+    return func_020befec(Actor_GetGravityAcceleration(actor), 3);
 }
 /* Return the fixed horizontal step. */ extern "C" s32
 func_ov082_02213208(void) {

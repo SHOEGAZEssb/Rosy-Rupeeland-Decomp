@@ -23,8 +23,8 @@
 .extern Actor_ClearInteractionFlag2000
 .extern Actor_TestQueryPointAndClearFlag2000
 .extern func_02033b38
-.extern Actor_RefreshTerrainHeightIfEnabled
-.extern func_02033f4c
+.extern Actor_RefreshCachedTerrainHeightIfEnabled
+.extern Actor_GetGravityAcceleration
 .extern Actor_ApplyMotionImpulse
 .extern func_0204d3dc
 .extern func_0204d3e0
@@ -158,7 +158,7 @@ data_ov093_022188f0:
     .word func_ov093_02218778
     .word Actor_SetPosition
     .word func_02033b38
-    .word Actor_RefreshTerrainHeightIfEnabled
+    .word Actor_RefreshCachedTerrainHeightIfEnabled
     .word func_ov093_02218774
     .word Actor_ConvergeToTargetHeight
     .word func_ov093_02218770
@@ -168,7 +168,7 @@ data_ov093_022188f0:
     .word Actor_IntegrateMotion
     .word func_ov093_02218744
     .word Actor_SetResourceSlot
-    .word func_02033f4c
+    .word Actor_GetGravityAcceleration
     .word func_ov093_02218734
     .word Actor_ApplyMotionImpulse
     .word Actor_ReleasePrimaryRenderAttachment

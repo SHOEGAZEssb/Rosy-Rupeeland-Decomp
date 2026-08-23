@@ -7,7 +7,7 @@
 .extern data_020ed470
 .extern OverlaySlot_LoadOverlay
 .extern ActorCollection_RegisterActor
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern ActorDerivedType1_Init
 .extern ActorDerivedRuntime_InitAlternate
 .extern ActorMotionProbe_Init
@@ -2157,7 +2157,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     streq r0, [r4, #0x14]
     beq .L_02030a40
     mov r0, r4
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
 .L_02030a40:
     ldrsh r0, [r5, #0x52]
     cmp r4, #0x0

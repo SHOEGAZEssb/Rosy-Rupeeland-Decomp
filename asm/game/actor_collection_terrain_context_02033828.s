@@ -4,9 +4,9 @@
 .extern GamePhaseState_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
-    .global Actor_RefreshTerrainHeight
-    .type Actor_RefreshTerrainHeight, @function
-Actor_RefreshTerrainHeight: ; 0x02033828
+    .global Actor_RefreshCachedTerrainHeight
+    .type Actor_RefreshCachedTerrainHeight, @function
+Actor_RefreshCachedTerrainHeight: ; 0x02033828
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -57,6 +57,6 @@ Actor_RefreshTerrainHeight: ; 0x02033828
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_020338e0: .word data_021052fc
-    .size Actor_RefreshTerrainHeight, . - Actor_RefreshTerrainHeight
+    .size Actor_RefreshCachedTerrainHeight, . - Actor_RefreshCachedTerrainHeight
 
     .global func_020338e4

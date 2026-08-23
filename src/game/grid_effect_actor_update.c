@@ -37,7 +37,7 @@ extern s32 func_020adcac(const void *point0, const void *point1);
 
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
-typedef s32 (*ActorScalarCallback)(void *actor);
+typedef s32 (*ActorGravityCallback)(void *actor);
 typedef void (*ActorStateCallback)(void *actor, s32 value);
 typedef s32 (*MapQueryCallback)(void *map, s32 x, s32 y);
 
@@ -85,9 +85,9 @@ void GridEffectActor_Update(void *actor)
     case 0: {
         void *presentation = FIELD(void *, actor, 0x54);
         FIELD(u16, presentation, 0x24) &= (u16)~4;
-        ActorScalarCallback gravity =
-            *(ActorScalarCallback *)((u8 *)FIELD(void *, actor, 0) + 0xb0);
-        FIELD(s32, actor, 0x44) -= gravity(actor);
+        ActorGravityCallback getGravityAcceleration =
+            *(ActorGravityCallback *)((u8 *)FIELD(void *, actor, 0) + 0xb0);
+        FIELD(s32, actor, 0x44) -= getGravityAcceleration(actor);
         VecFx32Object_Add((u8 *)actor + 0x18, (u8 *)actor + 0x38);
         if (FIELD(s32, actor, 0x24) < FIELD(s32, actor, 0x1dc)) {
             FIELD(s32, actor, 0x24) = FIELD(s32, actor, 0x1dc);

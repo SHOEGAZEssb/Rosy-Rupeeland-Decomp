@@ -15268,7 +15268,7 @@ build build/reports/actor_collection_terrain_context_02033828.json: objdiff buil
   base_object = build/decomp/asm/game/actor_collection_terrain_context_02033828.o
 build build/reports/actor_collection_terrain_context_02033828.txt: match_report build/reports/actor_collection_terrain_context_02033828.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_terrain_context_02033828.json
-  report_args = --section .text --function Actor_RefreshTerrainHeight --require-exact
+  report_args = --section .text --function Actor_RefreshCachedTerrainHeight --require-exact
 build build/reports/actor_collection_terrain_context.txt: phony build/reports/actor_collection_terrain_context_020337d4.txt build/reports/actor_collection_terrain_context_02033810.txt build/reports/actor_collection_terrain_context_02033828.txt
 
 build actor_collection_terrain_context: phony build/decomp/src/game/actor_collection_terrain_context.o build/decomp/asm/game/actor_collection_terrain_context_020337d4.o build/decomp/asm/game/actor_collection_terrain_context_02033810.o build/decomp/asm/game/actor_collection_terrain_context_02033828.o build/reports/actor_collection_terrain_context.txt
@@ -15416,7 +15416,7 @@ build build/reports/actor_runtime_state_helpers_02033f2c.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_runtime_state_helpers_02033f2c.o
 build build/reports/actor_runtime_state_helpers_02033f2c.txt: match_report build/reports/actor_runtime_state_helpers_02033f2c.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_state_helpers_02033f2c.json
-  report_args = --section .text --function Actor_RefreshTerrainHeightIfEnabled --require-exact
+  report_args = --section .text --function Actor_RefreshCachedTerrainHeightIfEnabled --require-exact
 build build/decomp/asm/game/actor_runtime_state_helpers_02033f44.o: mwasmarm asm/game/actor_runtime_state_helpers_02033f44.s
 build build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f44.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_runtime_state_helpers_02033f44.json: objdiff build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f44.o | build/decomp/asm/game/actor_runtime_state_helpers_02033f44.o
@@ -15432,7 +15432,7 @@ build build/reports/actor_runtime_state_helpers_02033f4c.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_runtime_state_helpers_02033f4c.o
 build build/reports/actor_runtime_state_helpers_02033f4c.txt: match_report build/reports/actor_runtime_state_helpers_02033f4c.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_state_helpers_02033f4c.json
-  report_args = --section .text --function func_02033f4c --require-exact
+  report_args = --section .text --function Actor_GetGravityAcceleration --require-exact
 build build/decomp/asm/game/actor_runtime_state_helpers_02033f7c.o: mwasmarm asm/game/actor_runtime_state_helpers_02033f7c.s
 build build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f7c.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/reports/actor_runtime_state_helpers_02033f7c.json: objdiff build/decomp/delinks/asm/game/actor_runtime_state_helpers_02033f7c.o | build/decomp/asm/game/actor_runtime_state_helpers_02033f7c.o

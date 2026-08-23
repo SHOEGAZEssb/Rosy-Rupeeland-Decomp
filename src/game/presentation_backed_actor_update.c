@@ -30,7 +30,7 @@ extern s32 func_020adae4(s32 numerator, s32 denominator);
 
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
-typedef s32 (*ActorScalarCallback)(void *actor);
+typedef s32 (*ActorGravityCallback)(void *actor);
 typedef void (*ActorUpdateCallback)(void *actor);
 typedef s32 (*MapQueryCallback)(void *map, s32 x, s32 y);
 
@@ -65,9 +65,10 @@ void func_0204d858(void *actor)
         VecFx32Object_Assign((u8 *)actor + 0x28, (u8 *)actor + 0x18);
         VecFx32Object_Add((u8 *)actor + 0x18, (u8 *)actor + 0x38);
 
-        ActorScalarCallback callback =
-            *(ActorScalarCallback *)((u8 *)FIELD(void *, actor, 0) + 0xb0);
-        FIELD(s32, actor, 0x44) -= fx_mul(callback(actor), 0x1666);
+        ActorGravityCallback getGravityAcceleration =
+            *(ActorGravityCallback *)((u8 *)FIELD(void *, actor, 0) + 0xb0);
+        FIELD(s32, actor, 0x44) -=
+            fx_mul(getGravityAcceleration(actor), 0x1666);
 
         if (FIELD(u16, actor, 0x4e) == 13 && FIELD(s32, actor, 0x44) < 0 &&
             FIELD(u8, actor, 0x1ef) != FIELD(u8, presentation, 0x38)) {

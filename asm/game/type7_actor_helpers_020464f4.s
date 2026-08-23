@@ -7,7 +7,7 @@
 .extern VecFx32Object_Assign
 .extern ActorRuntimeTriple_Assign
 .extern Actor_UpdatePresentation
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern Actor_ApplyMotionImpulse
 .extern ActorVector_DivideByScalar
 .extern AuxiliaryInteraction_UpdateResourceFrame
@@ -24,7 +24,7 @@ Type7Actor_ResetBaseTransformAndMotion: ; 0x020464f4
     add r1, r4, #0x214
     bl VecFx32Object_Assign
     mov r0, r4
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     mov r1, #0x0
     ldr r0, [r4, #0x1dc]
     mov r2, r1

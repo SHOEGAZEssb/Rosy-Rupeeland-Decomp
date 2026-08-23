@@ -2,7 +2,7 @@
 .text
 .extern GameWork_ClearFlag
 .extern Heap_Free
-.extern Actor_RefreshTerrainHeight
+.extern Actor_RefreshCachedTerrainHeight
 .extern Type7AuxiliaryPresentation_Reset
 .extern AuxiliaryInteraction_Destroy
 .extern gGameWork
@@ -52,7 +52,7 @@ ActorDerivedType1_ResetToBaseState: ; 0x02038aac
     str r1, [r4, #0x3c]
     mov r0, r4
     strb r1, [r4, #0x26b]
-    bl Actor_RefreshTerrainHeight
+    bl Actor_RefreshCachedTerrainHeight
     ldr r0, [r4, #0x230]
     bic r0, r0, #0x800000
     str r0, [r4, #0x230]

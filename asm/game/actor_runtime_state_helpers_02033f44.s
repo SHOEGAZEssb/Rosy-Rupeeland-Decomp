@@ -8,5 +8,5 @@ Actor_GetCachedTerrainHeight: ; 0x02033f44
     bx lr
     .size Actor_GetCachedTerrainHeight, . - Actor_GetCachedTerrainHeight
 
-    .global func_02033f4c
+    .global Actor_GetGravityAcceleration
 
