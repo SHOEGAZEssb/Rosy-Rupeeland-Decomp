@@ -16,8 +16,8 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
 .extern func_02008378
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern RisingSpriteMotionController_Init
 .extern RisingSpriteMotionController_Destroy
 .extern RisingSpriteMotionController_Update

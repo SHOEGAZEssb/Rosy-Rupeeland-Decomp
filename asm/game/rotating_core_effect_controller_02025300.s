@@ -6,7 +6,7 @@
 .extern data_020d6a98
 .extern VecFx32Object_InitCopy
 .extern AnimationResource_Init
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern func_0206b628
 .extern AuxiliaryCoreSprite_SetVisible
 .extern gHeapContext
@@ -20,7 +20,7 @@ func_02025300: ; 0x02025300
     mov r7, r1
     mov r5, r2
     mov r4, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r2, .L_02025484
     mov r1, r7
     add r0, r6, #0x18

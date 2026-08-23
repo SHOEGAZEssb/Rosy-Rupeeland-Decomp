@@ -11,8 +11,8 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern VecFx32_Subtract
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern func_0202293c
 .extern func_02022b70
 .extern func_02022c30
@@ -44,7 +44,7 @@ func_02022ec8: ; 0x02022ec8
     add r0, r5, #0xc
     bl VecFx32Object_Destroy
     mov r0, r5
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r5
     bl Heap_Free
     mov r0, r5

@@ -10,7 +10,7 @@
 .extern data_ov058_0220fcec
 .extern data_ov058_0220fcf4
 .extern data_ov058_0220fd0c
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
@@ -28,7 +28,7 @@ func_ov058_0220e840:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r0, .L_0220ea2c
     ldr ip, .L_0220ea30
     str r0, [r4, #0x0]

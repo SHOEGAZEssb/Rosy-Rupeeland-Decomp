@@ -1,13 +1,12 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
-#include "tingle/types.h"
 
-/* Manage two intrusive lists of runtime presentation objects and an auxiliary renderer. */
+/* Manage two intrusive lists of field effects and an auxiliary renderer. */
 
-typedef struct PresentationObject { void **vtable; u32 flags04; } PresentationObject;
 typedef struct PresentationNode {
     struct PresentationNode *next;
     struct PresentationNode *previous;
-    PresentationObject *object;
+    FieldEffect *effect;
 } PresentationNode;
 typedef struct PresentationList {
     void *vtable;
@@ -36,7 +35,7 @@ extern PresentationList *func_0201dc18(PresentationList *self);
 extern void func_0201dc58(PresentationList *self);
 extern void func_0201dde4(PresentationList *self, PresentationNode *node);
 extern PresentationNode *func_0201dee0(PresentationList *list,
-                                        PresentationObject *object);
+                                        FieldEffect *effect);
 extern void func_0201df64(RuntimePresentationManager *self);
 #ifdef __cplusplus
 }
@@ -73,7 +72,7 @@ PresentationList *func_0201dc38(PresentationList *self)
     return self;
 }
 
-/* Free every node without destroying its payload, then clear head/tail/count. */
+/* Free every node without destroying its FieldEffect, then clear head/tail/count. */
 void func_0201dc58(PresentationList *self)
 {
     PresentationNode *node = self->head;
@@ -87,7 +86,7 @@ void func_0201dc58(PresentationList *self)
     self->count = 0;
 }
 
-/* Destroy all payloads/lists and the optional auxiliary object, then return self. */
+/* Destroy all field effects/lists and the optional auxiliary, then return self. */
 RuntimePresentationManager *func_0201dc98(RuntimePresentationManager *self)
 {
     func_0201df64(self);
@@ -103,7 +102,7 @@ RuntimePresentationManager *func_0201dc98(RuntimePresentationManager *self)
 }
 
 /*
- * Poll both lists through payload virtual 0x08; completed payloads are deleted
+ * Poll both lists through effect virtual 0x08; completed effects are deleted
  * through virtual 0x04 and their nodes removed.  If the auxiliary's byte 0x50a
  * is set, refresh it from runtime field 0x2fbc with argument.  Returns zero.
  */
@@ -116,9 +115,9 @@ s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argu
     node = self->first.head;
     while (node != 0) {
         next = node->next;
-        if (((s32 (*)(void *))node->object->vtable[2])(node->object) != 0) {
-            if (node->object != 0)
-                ((void (*)(void *))node->object->vtable[1])(node->object);
+        if (((s32 (*)(void *))node->effect->vtable[2])(node->effect) != 0) {
+            if (node->effect != 0)
+                ((void (*)(void *))node->effect->vtable[1])(node->effect);
             func_0201dde4(&self->first, node);
         }
         node = next;
@@ -126,9 +125,9 @@ s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argu
     node = self->second.head;
     while (node != 0) {
         next = node->next;
-        if (((s32 (*)(void *))node->object->vtable[2])(node->object) != 0) {
-            if (node->object != 0)
-                ((void (*)(void *))node->object->vtable[1])(node->object);
+        if (((s32 (*)(void *))node->effect->vtable[2])(node->effect) != 0) {
+            if (node->effect != 0)
+                ((void (*)(void *))node->effect->vtable[1])(node->effect);
             func_0201dde4(&self->second, node);
         }
         node = next;
@@ -152,46 +151,46 @@ void func_0201dde4(PresentationList *self, PresentationNode *node)
     if (self->count == 0) func_0201dc58(self);
 }
 
-/* Dispatch virtual 0x0c to second-list objects whose recovered flag bit 1 is set. */
+/* Dispatch virtual 0x0c to second-list effects whose dispatch-state bit 1 is set. */
 void func_0201de4c(RuntimePresentationManager *self)
 {
     PresentationNode *node;
     for (node = self->second.head; node != 0; node = node->next)
-        if ((s32)(node->object->flags04 << 30) >> 31)
-            ((void (*)(void *))node->object->vtable[3])(node->object);
+        if ((s32)(node->effect->dispatchState << 30) >> 31)
+            ((void (*)(void *))node->effect->vtable[3])(node->effect);
 }
 
 /* Recovered no-op callback; inputs and state are ignored. */
 void func_0201de88(void) {}
 
-/* Dispatch argument through virtual 0x10 to second-list objects with flag bit 0 set. */
+/* Dispatch argument through virtual 0x10 to second-list effects with dispatch-state bit 0 set. */
 void func_0201de8c(RuntimePresentationManager *self, s32 argument)
 {
     PresentationNode *node;
     for (node = self->second.head; node != 0; node = node->next)
-        if ((s32)(node->object->flags04 << 31) >> 31)
-            ((void (*)(void *, s32))node->object->vtable[4])(
-                node->object, argument);
+        if ((s32)(node->effect->dispatchState << 31) >> 31)
+            ((void (*)(void *, s32))node->effect->vtable[4])(
+                node->effect, argument);
 }
 
 /* Recovered no-op callback; inputs and state are ignored. */
 void func_0201ded0(void) {}
 
-/* Append object to list via func_0201dee0 and return the new node. */
-PresentationNode *PresentationList_AppendObject(PresentationList *list, PresentationObject *object)
+/* Append a field effect via func_0201dee0 and return the new node. */
+PresentationNode *PresentationList_AppendObject(PresentationList *list, FieldEffect *effect)
 {
-    return func_0201dee0(list, object);
+    return func_0201dee0(list, effect);
 }
 
 /* Allocate a node, append it to list, increment count, and return the node. */
-PresentationNode *func_0201dee0(PresentationList *list, PresentationObject *object)
+PresentationNode *func_0201dee0(PresentationList *list, FieldEffect *effect)
 {
     PresentationNode *node = (PresentationNode *)Heap_Alloc(
         sizeof(PresentationNode), gRuntimePresentationListNodeAllocationTag, 4, &gHeapContext);
     if (node != 0) {
         node->next = 0;
         node->previous = 0;
-        node->object = object;
+        node->effect = effect;
     }
     if (list->tail != 0) {
         list->tail->next = node;
@@ -204,26 +203,26 @@ PresentationNode *func_0201dee0(PresentationList *list, PresentationObject *obje
     return node;
 }
 
-/* Append object to the manager's second list and return the new node. */
+/* Append a field effect to the manager's second list and return the new node. */
 PresentationNode *func_0201df44(RuntimePresentationManager *self,
-                                 PresentationObject *object)
+                                 FieldEffect *effect)
 {
-    return func_0201dee0(&self->second, object);
+    return func_0201dee0(&self->second, effect);
 }
 
-/* Return node's payload; the first recovered argument is unused. */
-PresentationObject *func_0201df54(void *unused, PresentationNode *node)
+/* Return the node's field effect; the first recovered argument is unused. */
+FieldEffect *func_0201df54(void *unused, PresentationNode *node)
 {
-    return node->object;
+    return node->effect;
 }
 
-/* Return node's payload; this duplicate accessor preserves its address identity. */
-PresentationObject *func_0201df5c(void *unused, PresentationNode *node)
+/* Return the node's field effect; this duplicate preserves address identity. */
+FieldEffect *func_0201df5c(void *unused, PresentationNode *node)
 {
-    return node->object;
+    return node->effect;
 }
 
-/* Destroy every payload in both lists, remove all nodes, and leave both lists empty. */
+/* Destroy every field effect, remove all nodes, and leave both lists empty. */
 void func_0201df64(RuntimePresentationManager *self)
 {
     PresentationNode *node;
@@ -231,8 +230,8 @@ void func_0201df64(RuntimePresentationManager *self)
     node = self->first.head;
     while (node != 0) {
         next = node->next;
-        if (node->object != 0)
-            ((void (*)(void *))node->object->vtable[1])(node->object);
+        if (node->effect != 0)
+            ((void (*)(void *))node->effect->vtable[1])(node->effect);
         func_0201dde4(&self->first, node);
         node = next;
     }
@@ -240,8 +239,8 @@ void func_0201df64(RuntimePresentationManager *self)
     node = self->second.head;
     while (node != 0) {
         next = node->next;
-        if (node->object != 0)
-            ((void (*)(void *))node->object->vtable[1])(node->object);
+        if (node->effect != 0)
+            ((void (*)(void *))node->effect->vtable[1])(node->effect);
         func_0201dde4(&self->second, node);
         node = next;
     }

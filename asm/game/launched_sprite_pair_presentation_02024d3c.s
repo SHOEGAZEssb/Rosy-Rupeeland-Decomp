@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern data_020d68e4
 .extern VecFx32Object_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_ReleaseState
 .extern gGameWork
@@ -35,7 +35,7 @@ func_02024d3c: ; 0x02024d3c
     add r0, r4, #0xc
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02024da4: .word data_020d68e4

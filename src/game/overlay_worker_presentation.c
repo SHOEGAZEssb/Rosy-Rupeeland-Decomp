@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -10,7 +11,7 @@
 
 typedef struct OverlayWorkerPresentation {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     s32 state08;
     u8 *worker0c;
     u8 sharedResource10[0x34];
@@ -23,8 +24,7 @@ extern void *data_020d6304;
 extern const char gOverlayWorkerAllocationTag[];
 extern void *gGameWork;
 extern s32 data_021055cc;
-extern void *TimedSpritePresentation_InitBase(void *self);
-extern void *func_0201e28c(void *self);
+
 extern void OverlaySlot_Init(void *resource);
 extern void OverlaySlot_LoadOverlay(void *resource, s32 id);
 extern void OverlaySlot_UnloadOverlay(void *resource);
@@ -42,7 +42,7 @@ extern void func_ov047_0220bda8(void *worker);
 #endif
 
 /*
- * Initialize the recovered base, embedded sharedResource10, and this vtable;
+ * Initialize the FieldEffect base, embedded sharedResource10, and this vtable;
  * clear GameWork flag 0x3bb and initialize shared resource ID 0x2f only for
  * the first live instance.  Allocate a 0x44-byte overlay worker, construct it
  * from the four recovered inputs, retain it, run its initial refresh, clear
@@ -55,7 +55,7 @@ OverlayWorkerPresentation *func_020200bc(
 {
     u8 *worker;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)data_020d6304;
     OverlaySlot_Init(self->sharedResource10);
     GameWork_ClearFlag(gGameWork, 0x3bb);
@@ -86,14 +86,14 @@ static OverlayWorkerPresentation *teardown_overlay_worker_presentation(
         OverlaySlot_UnloadOverlay(self->sharedResource10);
     }
     OverlaySlot_Destroy(self->sharedResource10);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
 /*
  * Decrement the shared instance count, destroy and free worker0c when present,
  * release the shared resource globally when the last instance leaves, tear
- * down the embedded resource and recovered base, and return self.
+ * down the embedded resource and FieldEffect base, and return self.
  */
 OverlayWorkerPresentation *func_02020188(
     OverlayWorkerPresentation *self)

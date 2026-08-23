@@ -16,8 +16,8 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
 .extern func_02008378
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern RisingSpriteMotionController_Init
 .extern RisingSpriteMotionController_Destroy
 .extern RisingSpriteMotionController_Update
@@ -46,7 +46,7 @@ RisingSpriteSwarmPresentation_Init: ; 0x02020794
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_02020884
     add r0, r4, #0xc
     str r1, [r4, #0x0]

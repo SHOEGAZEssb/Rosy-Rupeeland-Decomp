@@ -9,7 +9,7 @@
 .extern data_020d63d8
 .extern data_020d6564
 .extern data_020f4e18
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern MainBg1_SetControl
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl
@@ -45,7 +45,7 @@ DisplayFadePresentation_Init: ; 0x02020e84
     mov r5, r1
     mov r4, r2
     mov r7, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_020210f0
     add r0, r6, #0x14
     str r1, [r6, #0x0]

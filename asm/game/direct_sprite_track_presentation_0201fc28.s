@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern GamePhaseRuntime_GetActorCollection
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern ActorCollection_GetSpriteGroup
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
@@ -20,7 +20,7 @@ DirectSpriteTrackPresentation_Init: ; 0x0201fc28
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_0201fd58
     add r0, r7, #0x8
     str r1, [r7, #0x0]

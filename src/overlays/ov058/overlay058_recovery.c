@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /*
@@ -19,8 +20,8 @@ extern u8 gHeapContext[], gMainBgPaletteBuffer[], gSubBgPaletteBuffer[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *TimedSpritePresentation_InitBase(void *);
-extern void *func_0201e28c(void *);
+
+
 extern void *func_0201df44(void *, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
@@ -204,7 +205,7 @@ void *func_ov058_0220e840(void *scene, void *owner)
     s32 i;
     u16 *palette;
     (void)owner;
-    TimedSpritePresentation_InitBase(scene);
+    FieldEffect_Init(scene);
     FIELD(const void *, scene, 0) = data_ov058_0220fcc4;
     __construct_array((u8 *)scene + 0x18, 4, 0xc,
                       GraphicsResourceSet_Init, GraphicsResourceSet_Destroy);
@@ -274,7 +275,7 @@ static void Overlay058_DestroySceneMembers(void *scene)
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 1);
     func_020927b8((u8 *)scene + 0x84);
     __destroy_arr((u8 *)scene + 0x18, 4, 0xc, GraphicsResourceSet_Destroy);
-    func_0201e28c(scene);
+    FieldEffect_DestroyBase(scene);
 }
 
 /* Destroy every scene member but retain the scene allocation for its owner. */

@@ -9,7 +9,7 @@
 .extern AnimationResource_Init
 .extern AnimationResource_Destroy
 .extern AnimationResource_Assign
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -24,7 +24,7 @@ func_ov053_0220d624:
     sub sp, sp, #0x10
     mov r10, r0
     mov r4, r1
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_0220d7dc
     add r0, r10, #0x24
     str r1, [r10, #0x0]

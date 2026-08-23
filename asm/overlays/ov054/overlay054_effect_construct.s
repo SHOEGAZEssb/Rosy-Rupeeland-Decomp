@@ -6,7 +6,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern OverlaySlot_Init
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 
 .global func_ov054_0220e400
 func_ov054_0220e400:
@@ -15,7 +15,7 @@ func_ov054_0220e400:
     mov r4, r0
     mov r6, r1
     mov r5, r2
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_0220e49c
     add r0, r4, #0x194
     str r1, [r4, #0x0]

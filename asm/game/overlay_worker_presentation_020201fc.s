@@ -5,7 +5,7 @@
 .extern data_021055cc
 .extern OverlaySlot_Destroy
 .extern OverlaySlot_UnloadOverlay
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern func_ov047_0220ba64
 
 .global func_020201fc
@@ -37,7 +37,7 @@ func_020201fc: ; 0x020201fc
     add r0, r4, #0x10
     bl OverlaySlot_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

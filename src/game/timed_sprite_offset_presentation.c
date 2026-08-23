@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -25,7 +26,7 @@ typedef struct OffsetSpriteConfig {
 
 typedef struct TimedSpriteOffsetPresentation {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     void *presentation08;
     void *spriteGroup0c;
     s16 timer10;
@@ -41,7 +42,7 @@ extern "C" {
 extern void *gTimedSpriteOffsetPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
-extern void *TimedSpritePresentation_InitBase(void *self);
+
 extern OffsetSpriteConfig *TimedSpriteConfig_InitTracks(OffsetSpriteConfig *config);
 extern void *func_0201e584(void *self, OffsetSpriteConfig *config,
                            s32 spriteValue, s32 offset);
@@ -58,7 +59,7 @@ void TimedSpriteOffsetPresentation_CreateSprite(
     s32 field04, s32 field08, s32 field0c, s32 offset, s32 spriteByte);
 
 /*
- * Initialize the recovered base, install this wrapper's vtable, forward all
+ * Initialize the FieldEffect base, install this wrapper's vtable, forward all
  * remaining inputs to the sprite creation helper, and return self.
  */
 TimedSpriteOffsetPresentation *TimedSpriteOffsetPresentation_Init(
@@ -66,7 +67,7 @@ TimedSpriteOffsetPresentation *TimedSpriteOffsetPresentation_Init(
     const PresentationTrack *trackSource, s32 spriteValue, void *spriteGroup,
     s32 field04, s32 field08, s32 field0c, s32 offset, s32 spriteByte)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)gTimedSpriteOffsetPresentationVtable;
     TimedSpriteOffsetPresentation_CreateSprite(
         self, trackSource, spriteValue, spriteGroup, field04, field08, field0c,

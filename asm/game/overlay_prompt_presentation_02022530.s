@@ -12,8 +12,8 @@
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
 .extern GamePhaseCurrencyHud_SetVisible
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern SceneInputBase_Update
 .extern func_02092c8c

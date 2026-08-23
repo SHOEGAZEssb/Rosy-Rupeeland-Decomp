@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -17,7 +18,7 @@ typedef struct PresentationVector {
 
 typedef struct LaunchedSpritePairPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     const PresentationVector *anchor08;
     PresentationVector position0c;
     PresentationVector velocity1c;
@@ -41,8 +42,7 @@ extern void *data_020f4e18;
 extern u8 *data_021052fc;
 extern void *gGameWork;
 extern const s16 data_020c9670[];
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void VecFx32Object_Init(PresentationVector *);
 extern void VecFx32Object_InitComponents(PresentationVector *, s32, s32, s32);
 extern void VecFx32Object_InitCopy(PresentationVector *, const PresentationVector *);
@@ -93,7 +93,7 @@ LaunchedSpritePairPresentation *func_02024b04(
     s32 mode;
     s32 kind;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d68e4;
     self->anchor08 = anchor;
     VecFx32Object_InitCopy(&self->position0c,
@@ -146,7 +146,7 @@ LaunchedSpritePairPresentation *func_02024b04(
 /*
  * Set flag 0x3e0, release the primary sprite and optional secondary sprite
  * through their respective owners, destroy resource/velocity/position state,
- * tear down the common base, and return self.
+ * tear down the FieldEffect base, and return self.
  */
 LaunchedSpritePairPresentation *func_02024d3c(
     LaunchedSpritePairPresentation *self)
@@ -160,7 +160,7 @@ LaunchedSpritePairPresentation *func_02024d3c(
     AnimationResourceState_Destroy(self->resource3c);
     VecFx32Object_Destroy(&self->velocity1c);
     VecFx32Object_Destroy(&self->position0c);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

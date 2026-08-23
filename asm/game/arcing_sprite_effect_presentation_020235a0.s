@@ -15,8 +15,8 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern VecFx32Triple_InitWithValues
 .extern func_02008378
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern VecFx32Object_ScaleRounded
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReleaseState
@@ -58,7 +58,7 @@ func_020235a0: ; 0x020235a0
     blx r1
 .L_02023608:
     mov r0, r5
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_02023618: .word data_020d6740

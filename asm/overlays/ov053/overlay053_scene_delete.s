@@ -5,7 +5,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern AnimationResource_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AnimationResourceState_ReleaseResources
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
@@ -28,7 +28,7 @@ func_ov053_0220d850:
     add r0, r4, #0x24
     bl AnimationResource_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

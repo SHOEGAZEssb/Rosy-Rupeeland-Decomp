@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -14,7 +15,7 @@ typedef struct PresentationValue {
 
 typedef struct TimedSpriteRecordPresentation {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     s32 field08;
     s32 state0c;
     u8 *record10;
@@ -31,8 +32,7 @@ extern "C" {
 extern void *data_020d62b0[];
 extern const char data_020d62d0[];
 extern u8 *data_021052fc;
-extern void *TimedSpritePresentation_InitBase(void *self);
-extern void *func_0201e28c(void *self);
+
 extern u8 *GamePhaseGraphicsMetadata_GetByIndex(s32 index);
 extern void GamePhaseVisualEffect_Configure(void *runtime, u32 field00, u32 field02,
                           u32 field04, u32 field06, u32 field08, u32 field0e,
@@ -46,7 +46,7 @@ extern void PresentationList_AppendObject(void *manager, void *entry);
 #endif
 
 /*
- * Initialize the recovered base, retain field08, and resolve config offset
+ * Initialize the FieldEffect base, retain field08, and resolve config offset
  * 0x12 through GamePhaseGraphicsMetadata_GetByIndex.  Copy config offsets 0x34 and 0x38..0x3e into
  * self, clear state0c, submit the record's offsets 0x00..0x08 and 0x0e plus
  * the copied block to the runtime at 0x2ed8, then submit a temporary position
@@ -59,7 +59,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
     PresentationValue position;
     void *runtime;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = data_020d62b0;
     self->field08 = field08;
     self->record10 = GamePhaseGraphicsMetadata_GetByIndex(*(const s16 *)(config + 0x12));
@@ -83,19 +83,19 @@ TimedSpriteRecordPresentation *func_0201ff2c(
     return self;
 }
 
-/* Run recovered base teardown and return self without freeing it. */
+/* Run FieldEffect base teardown and return self without freeing it. */
 TimedSpriteRecordPresentation *func_02020018(
     TimedSpriteRecordPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
-/* Run recovered base teardown, free self, and return its old address. */
+/* Run FieldEffect base teardown, free self, and return its old address. */
 TimedSpriteRecordPresentation *func_0202002c(
     TimedSpriteRecordPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

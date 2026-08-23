@@ -9,7 +9,7 @@
 .extern data_020d63d8
 .extern data_020d6564
 .extern data_020f4e18
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern MainBg1_SetControl
 .extern MainBg2_SetControl
 .extern SubBg1_SetControl

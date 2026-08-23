@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 typedef struct TrackValue { u8 bytes[0x10]; } TrackValue;
 typedef struct RecordSpriteMotionPresentation {
-    void **vtable;u32 field04;s32 sampleArgument08;TrackValue track0c;
+    void **vtable;u32 dispatchState;s32 sampleArgument08;TrackValue track0c;
     TrackValue firstOffset1c,secondOffset2c;u8 *sprite3c;s32 timer40;
     void *spriteOwner44;u8 resource48[0x0c];
 } RecordSpriteMotionPresentation;
@@ -18,7 +19,7 @@ typedef struct SelfLinkedConfig { u8 bytes[0x24]; } SelfLinkedConfig;
 extern "C" {
 #endif
 extern void *data_020d6630[];extern void *data_020f4e18;extern void *data_021e9ac0;
-extern void *TimedSpritePresentation_InitBase(void *);extern void *func_0201e28c(void *);
+
 extern void VecFx32Object_InitCopy(void *,const void *);extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_InitComponents(void *,s32,s32,s32);extern void VecFx32Object_Assign(void *,const void *);
 extern void VecFx32Object_Destroy(void *);extern void VecFx32Object_Add(void *,const void *);
@@ -49,7 +50,7 @@ RecordSpriteMotionPresentation *func_02022ff4(
     s32 mode,s32 recordId,s32 rangeEnd,s32 firstOffset,s32 secondOffset)
 {
     TrackValue sampled,position,temp;SelfLinkedConfig record;void *component;s32 kind;
-    TimedSpritePresentation_InitBase(self);self->vtable=(void **)data_020d6630;
+    FieldEffect_Init(self);self->vtable=(void **)data_020d6630;
     self->sampleArgument08=sampleArgument;VecFx32Object_InitCopy(&self->track0c,config+0x18);
     VecFx32Object_Init(&self->firstOffset1c);VecFx32Object_Init(&self->secondOffset2c);
     self->spriteOwner44=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection((void *)config));
@@ -81,7 +82,7 @@ static RecordSpriteMotionPresentation *teardown_record_sprite(RecordSpriteMotion
     self->vtable=(void **)data_020d6630;GraphicsSpriteGroup_ReleaseState(self->spriteOwner44,self->sprite3c);
     AnimationResourceState_Destroy(self->resource48);VecFx32Object_Destroy(&self->secondOffset2c);
     VecFx32Object_Destroy(&self->firstOffset1c);VecFx32Object_Destroy(&self->track0c);
-    func_0201e28c(self);return self;
+    FieldEffect_DestroyBase(self);return self;
 }
 
 /* Release sprite/resource and all tracks, tear down base, and return self. */

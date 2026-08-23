@@ -3,7 +3,7 @@
 .extern data_020d6a24
 .extern data_021052fc
 .extern PresentationList_AppendObject
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 
     .global func_02025120
     .type func_02025120, @function
@@ -13,7 +13,7 @@ func_02025120: ; 0x02025120
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r0, .L_02025174
     ldr r1, [sp, #0x18]
     str r0, [r4, #0x0]

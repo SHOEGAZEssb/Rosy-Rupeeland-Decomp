@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_020d6a70
 .extern VecFx32Object_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AuxiliaryCore_Destroy
 
     .global func_020254a4
@@ -59,7 +59,7 @@ func_020254a4: ; 0x020254a4
     add r0, r4, #0x18
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_02025560: .word data_020d6a70

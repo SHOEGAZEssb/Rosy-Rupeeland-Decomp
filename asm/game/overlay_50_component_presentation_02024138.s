@@ -4,7 +4,7 @@
 .extern data_020d69ac
 .extern OverlaySlot_Destroy
 .extern OverlaySlot_UnloadOverlay
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern func_ov094_022186dc
 
     .global func_02024138
@@ -27,7 +27,7 @@ func_02024138: ; 0x02024138
     add r0, r5, #0xc
     bl OverlaySlot_Destroy
     mov r0, r5
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_02024184: .word data_020d69ac

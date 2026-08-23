@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 typedef struct FourStageCommandPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     s32 argument08;
     s32 argument0c;
     s32 argument10;
@@ -22,8 +23,7 @@ typedef struct FourStageCommandPresentation {
 extern "C" {
 #endif
 extern void *gFourStageCommandPresentationVtable;
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void DualLayerTileRenderer_FillTileRectangle(void *context, s32 mode, s32 argument08,
                           s32 argument0c, s32 argument10, s32 argument14,
                           s32 commandId);
@@ -32,7 +32,7 @@ extern void DualLayerTileRenderer_FillTileRectangle(void *context, s32 mode, s32
 #endif
 
 /*
- * Initialize the common base, retain context from r1, arguments at offsets
+ * Initialize the FieldEffect base, retain context from r1, arguments at offsets
  * 8/12 from r2/r3 and offsets 16/20 from the two stack arguments, zero stage
  * and timer, install the recovered vtable, and return self.
  */
@@ -40,7 +40,7 @@ FourStageCommandPresentation *FourStageCommandPresentation_Init(
     FourStageCommandPresentation *self, void *context,
     s32 argument08, s32 argument0c, s32 argument10, s32 argument14)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)gFourStageCommandPresentationVtable;
     self->argument08 = argument08;
     self->argument0c = argument0c;
@@ -52,19 +52,19 @@ FourStageCommandPresentation *FourStageCommandPresentation_Init(
     return self;
 }
 
-/* Tear down the common base and return self; retained arguments are not owned. */
+/* Tear down the FieldEffect base and return self; retained arguments are not owned. */
 FourStageCommandPresentation *FourStageCommandPresentation_Destroy(
     FourStageCommandPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
-/* Perform base teardown, free self, and return its old address. */
+/* Perform FieldEffect base teardown, free self, and return its old address. */
 FourStageCommandPresentation *FourStageCommandPresentation_DestroyAndFree(
     FourStageCommandPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

@@ -8,11 +8,11 @@
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
 .extern TimedSpritePresentation_SetVisible
-.extern data_020d6248
+.extern gFieldEffectVtable
 .extern data_020d6098
-.global func_0201e274
-func_0201e274: ; 0x0201e274
+.global FieldEffect_Destroy
+FieldEffect_Destroy: ; 0x0201e274
     bx lr
 
 
-.size func_0201e274, . - func_0201e274
+.size FieldEffect_Destroy, . - FieldEffect_Destroy

@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 typedef struct Overlay4cParameterizedPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     void *component08;
     u8 helper0c[0x10];
 } Overlay4cParameterizedPresentation;
@@ -18,8 +19,7 @@ extern "C" {
 #endif
 extern void *data_020d68bc;
 extern const char gOverlay4cParameterizedComponentAllocationTag[];
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
@@ -39,20 +39,20 @@ extern s32 data_ov089_022198e8(void *);
 Overlay4cParameterizedPresentation *func_0202432c(
     Overlay4cParameterizedPresentation *self, void *first, void *second)
 {
-    TimedSpritePresentation_InitBase(self);self->vtable00=(void **)data_020d68bc;
+    FieldEffect_Init(self);self->vtable00=(void **)data_020d68bc;
     OverlaySlot_Init(self->helper0c);OverlaySlot_LoadOverlay(self->helper0c,0x5e);
     self->component08=Heap_Alloc(0x4c,gOverlay4cParameterizedComponentAllocationTag,4,&gHeapContext);
     if(self->component08)self->component08=func_ov094_02219568(self->component08,first,second);
     return self;
 }
 
-/* Destroy/free the component, tear down helper and base, and return self. */
+/* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
 Overlay4cParameterizedPresentation *func_020243a0(
     Overlay4cParameterizedPresentation *self)
 {
     self->vtable00=(void **)data_020d68bc;
     if(self->component08){func_ov094_022196a4(self->component08);Heap_Free(self->component08);}
-    OverlaySlot_UnloadOverlay(self->helper0c);OverlaySlot_Destroy(self->helper0c);func_0201e28c(self);
+    OverlaySlot_UnloadOverlay(self->helper0c);OverlaySlot_Destroy(self->helper0c);FieldEffect_DestroyBase(self);
     return self;
 }
 

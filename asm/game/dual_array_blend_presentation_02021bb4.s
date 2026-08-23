@@ -11,8 +11,8 @@
 .extern data_020d63e0
 .extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern BlendElement_DestroyNoOp
 .extern ExtendedCallbackState_SetReferencesAndReset
 .extern DualArrayBlendPresentation_RetargetMirrored

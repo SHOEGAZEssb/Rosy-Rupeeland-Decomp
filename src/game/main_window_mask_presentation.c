@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 typedef struct MainWindowMaskPresentation {
     void **vtable_00;
-    u32 baseFlags_04;
+    u32 dispatchState;
 } MainWindowMaskPresentation;
 
 #ifdef __cplusplus
@@ -17,30 +18,29 @@ extern "C" {
 extern void *data_020de838[];
 extern const char data_020de858[];
 extern u8 *data_021052fc;
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void func_0201df44(void *, void *);
 
-/* Initialize the presentation, install its vtable, and set base flag bit one. */
+/* Initialize the presentation, install its vtable, and set FieldEffect dispatch-state bit 1. */
 MainWindowMaskPresentation *func_02028778(MainWindowMaskPresentation *self)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable_00 = (void **)data_020de838;
-    self->baseFlags_04 |= 2;
+    self->dispatchState |= 2;
     return self;
 }
 
-/* Tear down the presentation base and return self. */
+/* Tear down the FieldEffect base and return self. */
 MainWindowMaskPresentation *func_020287a4(MainWindowMaskPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
 /* Tear down, free the presentation, and return its old address. */
 MainWindowMaskPresentation *func_020287b8(MainWindowMaskPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

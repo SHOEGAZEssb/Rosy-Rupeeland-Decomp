@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -18,7 +19,7 @@ typedef struct SpriteResourceState {
 
 typedef struct DirectSpriteTrackPresentation {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     SpriteResourceState resource08;
     u8 *sprite14;
     s32 sampleArgument18;
@@ -32,7 +33,7 @@ extern void *gDirectSpriteTrackPresentationVtable;
 extern const char gDirectSpriteTrackPresentationAllocationTag[];
 extern void *data_020f4e18;
 extern u8 *data_021052fc;
-extern void *TimedSpritePresentation_InitBase(void *self);
+
 extern void AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *table, s32 field0c, s32 field10,
                           s32 field08);
@@ -57,7 +58,7 @@ extern void func_0201df44(void *manager, void *entry);
 #endif
 
 /*
- * Initialize the recovered base and resource state, create a fixed-point track
+ * Initialize the FieldEffect base and resource state, create a fixed-point track
  * from x/y, and retain sampleArgument.  Initialize the resource state from the
  * global table and three recovered inputs, then select runtime resource 1 when
  * selector is zero or resource 2 otherwise.  Create the sprite in mode 2 and
@@ -71,7 +72,7 @@ DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_Init(
     void *resource;
     s16 signedValue;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)gDirectSpriteTrackPresentationVtable;
     AnimationResourceState_InitEmbedded(&self->resource08);
     self->sampleArgument18 = sampleArgument;

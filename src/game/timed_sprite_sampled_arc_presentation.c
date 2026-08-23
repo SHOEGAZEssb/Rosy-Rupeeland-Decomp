@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -24,7 +25,7 @@ typedef struct SampledArcSpriteConfig {
 
 typedef struct TimedSpriteSampledArcPresentation {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     void *presentation08;
 } TimedSpriteSampledArcPresentation;
 
@@ -37,7 +38,7 @@ extern "C" {
 extern void *gTimedSpriteSampledArcPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
 extern u8 *data_021052fc;
-extern void *TimedSpritePresentation_InitBase(void *self);
+
 extern SampledArcSpriteConfig *TimedSpriteConfig_InitTracks(
     SampledArcSpriteConfig *config);
 extern void *func_0201edd0(void *self, SampledArcSpriteConfig *config);
@@ -49,7 +50,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *source);
 #endif
 
 /*
- * Initialize the recovered base and this vtable.  Build a temporary config
+ * Initialize the FieldEffect base and this vtable.  Build a temporary config
  * from spriteGroup and the three recovered fields, copy trackSource, set its
  * lifetime to 1200 and field34 to 2, and clear the second track's recovered
  * X/Y.  Allocate and initialize a 0x2c-byte sampled-arc child, retain it, write
@@ -67,7 +68,7 @@ TimedSpriteSampledArcPresentation *TimedSpriteSampledArcPresentation_Init(
     void *presentation;
     u8 *sprite;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)gTimedSpriteSampledArcPresentationVtable;
     TimedSpriteConfig_InitTracks(&config);
     config.spriteGroup = spriteGroup;

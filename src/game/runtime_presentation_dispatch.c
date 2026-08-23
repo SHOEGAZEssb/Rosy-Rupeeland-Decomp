@@ -1,10 +1,9 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
-#include "tingle/types.h"
 
 /* Broadcast presentation callbacks and coordinate the manager's auxiliary renderer. */
 
-typedef struct PresentationObject { void **vtable; u32 flags04; } PresentationObject;
-typedef struct PresentationNode { struct PresentationNode *next; struct PresentationNode *previous; PresentationObject *object; } PresentationNode;
+typedef struct PresentationNode { struct PresentationNode *next; struct PresentationNode *previous; FieldEffect *effect; } PresentationNode;
 typedef struct PresentationList { void *vtable; PresentationNode *head; PresentationNode *tail; u32 count; } PresentationList;
 typedef struct RuntimePresentationManager { PresentationList first; PresentationList second; u8 *auxiliary; } RuntimePresentationManager;
 
@@ -23,14 +22,14 @@ extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0Mode);
 }
 #endif
 
-/* Broadcast argument through virtual 0x14 to every object in both lists. */
+/* Broadcast argument through virtual 0x14 to every field effect in both lists. */
 void func_0201dff0(RuntimePresentationManager *self, s32 argument)
 {
     PresentationNode *node;
     for (node=self->first.head; node; node=node->next)
-        ((void (*)(void *,s32))node->object->vtable[5])(node->object,argument);
+        ((void (*)(void *,s32))node->effect->vtable[5])(node->effect,argument);
     for (node=self->second.head; node; node=node->next)
-        ((void (*)(void *,s32))node->object->vtable[5])(node->object,argument);
+        ((void (*)(void *,s32))node->effect->vtable[5])(node->effect,argument);
 }
 
 /* Recovered no-op callback; inputs and state are ignored. */
@@ -45,9 +44,9 @@ void func_0201e054(RuntimePresentationManager *self, s32 argument)
 {
     PresentationNode *node;
     for (node=self->first.head; node; node=node->next)
-        ((void (*)(void *,s32))node->object->vtable[6])(node->object,argument);
+        ((void (*)(void *,s32))node->effect->vtable[6])(node->effect,argument);
     for (node=self->second.head; node; node=node->next)
-        ((void (*)(void *,s32))node->object->vtable[6])(node->object,argument);
+        ((void (*)(void *,s32))node->effect->vtable[6])(node->effect,argument);
     if (self->auxiliary == 0 || self->auxiliary[0x50a] == 0) return;
     if (argument != 0) func_020a23a8(self->auxiliary,0,1);
     else func_020a2348(self->auxiliary,0,0);
@@ -73,25 +72,25 @@ void func_0201e0f4(RuntimePresentationManager *self)
     GX_SetGraphicsMode(6,0,0);
 }
 
-/* Broadcast argument through virtual 0x1c to every object in both lists. */
+/* Broadcast argument through virtual 0x1c to every field effect in both lists. */
 void RuntimePresentationManager_BroadcastSlot1C(RuntimePresentationManager *self, s32 argument)
 {
     PresentationNode *node;
     for (node=self->first.head; node; node=node->next)
-        ((void (*)(void *,s32))node->object->vtable[7])(node->object,argument);
+        ((void (*)(void *,s32))node->effect->vtable[7])(node->effect,argument);
     for (node=self->second.head; node; node=node->next)
-        ((void (*)(void *,s32))node->object->vtable[7])(node->object,argument);
+        ((void (*)(void *,s32))node->effect->vtable[7])(node->effect,argument);
 }
 
 /* Recovered no-op callback; inputs and state are ignored. */
 void func_0201e1ac(void) {}
 
-/* Remove nodes from both lists whose signed recovered flags04 bits 2..9 equal key. */
+/* Remove effects from both lists whose signed dispatch bits 2..9 equal key. */
 void func_0201e1b0(RuntimePresentationManager *self, s32 key)
 {
     PresentationNode *node,*next;
-    for(node=self->first.head;node;node=next){next=node->next;if(key==((s32)(node->object->flags04<<22)>>24))func_0201dde4(&self->first,node);}
-    for(node=self->second.head;node;node=next){next=node->next;if(key==((s32)(node->object->flags04<<22)>>24))func_0201dde4(&self->second,node);}
+    for(node=self->first.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))func_0201dde4(&self->first,node);}
+    for(node=self->second.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))func_0201dde4(&self->second,node);}
 }
 
 /* Clear a list, free the list object itself, and return its old address. */

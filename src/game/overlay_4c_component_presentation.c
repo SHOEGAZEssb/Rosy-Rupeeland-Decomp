@@ -1,14 +1,15 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
 /*
- * Adapt an overlay-94 0x4c-byte component to the common presentation base.
+ * Adapt an overlay-94 0x4c-byte component to the FieldEffect base.
  * The wrapper owns the component and an embedded helper configured with ID
  * 0x5e, and forwards the component's update and completion operations.
  */
 typedef struct Overlay4cComponentPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     void *component08;
     u8 helper0c[0x10];
 } Overlay4cComponentPresentation;
@@ -18,8 +19,7 @@ extern "C" {
 #endif
 extern void *data_020d690c;
 extern const char gOverlay4cComponentAllocationTag[];
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
@@ -32,22 +32,22 @@ extern s32 func_ov094_022191fc(void *);
 }
 #endif
 
-/* Initialize base/helper, allocate and construct the component, and return self. */
+/* Initialize the FieldEffect base/helper, allocate and construct the component, and return self. */
 Overlay4cComponentPresentation *func_02024200(Overlay4cComponentPresentation *self)
 {
-    TimedSpritePresentation_InitBase(self); self->vtable00=(void **)data_020d690c;
+    FieldEffect_Init(self); self->vtable00=(void **)data_020d690c;
     OverlaySlot_Init(self->helper0c); OverlaySlot_LoadOverlay(self->helper0c,0x5e);
     self->component08=Heap_Alloc(0x4c,gOverlay4cComponentAllocationTag,4,&gHeapContext);
     if(self->component08)self->component08=func_ov094_02218f14(self->component08);
     return self;
 }
 
-/* Destroy/free the component, tear down helper and base, and return self. */
+/* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
 Overlay4cComponentPresentation *func_02024264(Overlay4cComponentPresentation *self)
 {
     self->vtable00=(void **)data_020d690c;
     if(self->component08){func_ov094_0221900c(self->component08);Heap_Free(self->component08);}
-    OverlaySlot_UnloadOverlay(self->helper0c);OverlaySlot_Destroy(self->helper0c);func_0201e28c(self);
+    OverlaySlot_UnloadOverlay(self->helper0c);OverlaySlot_Destroy(self->helper0c);FieldEffect_DestroyBase(self);
     return self;
 }
 

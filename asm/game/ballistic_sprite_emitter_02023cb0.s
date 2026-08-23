@@ -5,7 +5,7 @@
 .extern data_020d6718
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern func_02023c0c
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
@@ -33,7 +33,7 @@ func_02023cb0: ; 0x02023cb0
     add r0, r4, #0x8
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02023d0c: .word data_020d6718

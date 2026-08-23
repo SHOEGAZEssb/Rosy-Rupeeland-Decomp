@@ -1048,10 +1048,10 @@ RuntimePresentationManager_BroadcastSlot1C kind:function(arm,size=0x60) addr:0x0
 func_0201e1ac kind:function(arm,size=0x4) addr:0x0201e1ac
 func_0201e1b0 kind:function(arm,size=0x78) addr:0x0201e1b0
 func_0201e228 kind:function(arm,size=0x28) addr:0x0201e228
-TimedSpritePresentation_InitBase kind:function(arm,size=0x24) addr:0x0201e250
-func_0201e274 kind:function(arm,size=0x4) addr:0x0201e274
-func_0201e278 kind:function(arm,size=0x14) addr:0x0201e278
-func_0201e28c kind:function(arm,size=0x4) addr:0x0201e28c
+FieldEffect_Init kind:function(arm,size=0x24) addr:0x0201e250
+FieldEffect_Destroy kind:function(arm,size=0x4) addr:0x0201e274
+FieldEffect_DestroyAndFree kind:function(arm,size=0x14) addr:0x0201e278
+FieldEffect_DestroyBase kind:function(arm,size=0x4) addr:0x0201e28c
 func_0201e290 kind:function(arm,size=0x78) addr:0x0201e290
 func_0201e308 kind:function(arm,size=0x38) addr:0x0201e308
 func_0201e340 kind:function(arm,size=0x40) addr:0x0201e340
@@ -6968,7 +6968,7 @@ gAuxiliaryTimedSpritePresentationVtable kind:data(any) addr:0x020d61a8
 gTimedSpriteSampledArcPresentationVtable kind:data(any) addr:0x020d61d0
 gTimedSpriteOffsetPresentationVtable kind:data(any) addr:0x020d61f8
 gTimedSpriteBurstManagerVtable kind:data(any) addr:0x020d6220
-data_020d6248 kind:data(any) addr:0x020d6248
+gFieldEffectVtable kind:data(any) addr:0x020d6248
 gTimedSpritePresentationAllocationTag kind:data(any) addr:0x020d6268
 gTimedSpriteAuxiliaryAllocationTag kind:data(any) addr:0x020d6270
 gDirectSpriteTrackPresentationAllocationTag kind:data(any) addr:0x020d6278

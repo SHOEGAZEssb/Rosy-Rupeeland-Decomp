@@ -1,15 +1,16 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
 /*
- * Adapt an overlay-94 0x50-byte component to the common presentation base.
+ * Adapt an overlay-94 0x50-byte component to the FieldEffect base.
  * The wrapper owns that component, forwards one constructor argument, manages
  * an embedded helper configured with ID 0x5e, and exposes two thin operations.
  */
 
 typedef struct Overlay50ComponentPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     void *component08;
     u8 helper0c[0x10];
 } Overlay50ComponentPresentation;
@@ -19,8 +20,7 @@ extern "C" {
 #endif
 extern void *data_020d69ac;
 extern const char gOverlay50ComponentAllocationTag[];
-extern void TimedSpritePresentation_InitBase(void *self);
-extern void func_0201e28c(void *self);
+
 extern void OverlaySlot_Init(void *helper);
 extern void OverlaySlot_Destroy(void *helper);
 extern void OverlaySlot_LoadOverlay(void *helper, s32 id);
@@ -41,7 +41,7 @@ extern s32 data_ov087_022189f8(void *component);
 Overlay50ComponentPresentation *func_020240cc(
     Overlay50ComponentPresentation *self, void *argument)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d69ac;
     OverlaySlot_Init(self->helper0c);
     OverlaySlot_LoadOverlay(self->helper0c, 0x5e);
@@ -52,7 +52,7 @@ Overlay50ComponentPresentation *func_020240cc(
     return self;
 }
 
-/* Destroy/free the component, tear down helper and base, and return self. */
+/* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
 Overlay50ComponentPresentation *func_02024138(
     Overlay50ComponentPresentation *self)
 {
@@ -63,7 +63,7 @@ Overlay50ComponentPresentation *func_02024138(
     }
     OverlaySlot_UnloadOverlay(self->helper0c);
     OverlaySlot_Destroy(self->helper0c);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

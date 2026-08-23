@@ -9,8 +9,8 @@
 .extern MIi_CpuCopy16
 .extern gPaletteCyclePresentationVtable
 .extern data_020f4e18
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern PaletteCyclePresentation_AdvancePalette
 .extern GraphicsBgResourceData_GetDecoded
 .extern func_02091b6c
@@ -33,7 +33,7 @@ PaletteCyclePresentation_Init: ; 0x02022580
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x10
     mov r4, r0
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_0202266c
     add r0, r4, #0x410
     str r1, [r4, #0x0]

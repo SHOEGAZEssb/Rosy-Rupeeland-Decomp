@@ -6,7 +6,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern VecFx32Object_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern Overlay050EffectManager_Destroy
@@ -48,7 +48,7 @@ Overlay050Scene_Delete:
     add r0, r6, #0x8
     bl AnimationResourceState_Destroy
     mov r0, r6
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r6
     bl Heap_Free
     mov r0, r6

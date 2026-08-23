@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 typedef struct VecValue { u32 field00;s32 x04,y08,z0c; } VecValue;
 typedef struct ArcingSpriteEffectPresentation {
-    void **vtable;u32 field04;u8 *firstDescriptor08,*secondDescriptor0c;
+    void **vtable;u32 dispatchState;u8 *firstDescriptor08,*secondDescriptor0c;
     u8 *sprite10;s16 frame14,duration16,state18,amplitude1a;
     u8 *path1c;u8 switchResource20;
 } ArcingSpriteEffectPresentation;
@@ -17,7 +18,7 @@ extern "C" {
 #endif
 extern void *data_020d6740;extern const char gArcingSpriteEffectAllocationTag[];
 extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
-extern void *TimedSpritePresentation_InitBase(void *);extern void *func_0201e28c(void *);
+
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_Destroy(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
@@ -41,7 +42,7 @@ ArcingSpriteEffectPresentation *func_02023434(
     const VecValue *second,s32 duration,s32 switchResource)
 {
     VecValue a,b,combined;
-    TimedSpritePresentation_InitBase(self);self->vtable=(void **)data_020d6740;
+    FieldEffect_Init(self);self->vtable=(void **)data_020d6740;
     self->frame14=0;self->duration16=(s16)duration;self->state18=0;
     self->amplitude1a=0x30;self->switchResource20=(u8)switchResource;
     self->firstDescriptor08=(u8 *)Heap_Alloc(0x10,gArcingSpriteEffectAllocationTag,4,&gHeapContext);
@@ -62,7 +63,7 @@ static ArcingSpriteEffectPresentation *teardown_arc(ArcingSpriteEffectPresentati
     if(self->path1c){VecFx32Triple_Destroy(self->path1c);Heap_Free(self->path1c);}
     if(self->firstDescriptor08)((void (*)(void *))(*(void ***)self->firstDescriptor08)[1])(self->firstDescriptor08);
     if(self->secondDescriptor0c)((void (*)(void *))(*(void ***)self->secondDescriptor0c)[1])(self->secondDescriptor0c);
-    func_0201e28c(self);return self;
+    FieldEffect_DestroyBase(self);return self;
 }
 
 /* Release sprite, path and both descriptors, tear down base, and return self. */

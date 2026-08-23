@@ -1,0 +1,7 @@
+{
+  "TimedSpritePresentation_InitBase": "FieldEffect_Init",
+  "func_0201e274": "FieldEffect_Destroy",
+  "func_0201e278": "FieldEffect_DestroyAndFree",
+  "func_0201e28c": "FieldEffect_DestroyBase",
+  "data_020d6248": "gFieldEffectVtable"
+}

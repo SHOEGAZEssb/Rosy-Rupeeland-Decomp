@@ -4,7 +4,7 @@
 .extern data_ov051_0220df98
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern func_020aea7c
 
 .global func_ov051_0220d99c
@@ -21,7 +21,7 @@ func_ov051_0220d99c:
     mov r1, #0x0
     bl OverlayManager_UnloadOverlay
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0220d9d8: .word data_ov051_0220df98

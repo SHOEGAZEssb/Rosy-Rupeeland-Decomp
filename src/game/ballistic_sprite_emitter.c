@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -37,7 +38,7 @@ typedef struct ParticleList {
 
 typedef struct BallisticSpriteEmitter {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     EmitterVector position08;
     SpriteResourceDescriptor resources18[2];
     void *spriteOwner38;
@@ -55,8 +56,7 @@ extern const char gBallisticSpriteEmitterAllocationTag[];
 extern void *gDebugFont;
 extern void *gSoundContext;
 extern u8 *data_021052fc;
-extern void TimedSpritePresentation_InitBase(void *self);
-extern void func_0201e28c(void *self);
+
 extern void PresentationList_AppendObject(void *list, void *value);
 extern void VecFx32Object_InitComponents(EmitterVector *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(EmitterVector *destination,
@@ -90,7 +90,7 @@ void func_02023c0c(ParticleList *self);
 void func_02023c4c(ParticleList *self, void *particle);
 
 /*
- * Initialize base state and copy position.  Construct and copy descriptors for
+ * Initialize FieldEffect state and copy position.  Construct and copy descriptors for
  * resource triples 0x1714..0x1716 and 0x1688..0x168a, acquire the sprite owner
  * derived from gDebugFont, then allocate six 0x34-byte particles using the
  * supplied lifetime and direction and append every allocation result to the
@@ -103,7 +103,7 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
     SpriteResourceDescriptor temporary;
     s32 index;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d6718;
     VecFx32Object_InitCopy(&self->position08, position);
     AnimationResource_Init(&self->resources18[0], 0, 0, 0);
@@ -189,7 +189,7 @@ void func_02023c4c(ParticleList *self, void *particle)
 
 /*
  * Release the acquired sprite owner, free list nodes, destroy both resource
- * descriptors and position, tear down the recovered base, and return self.
+ * descriptors and position, tear down the FieldEffect base, and return self.
  */
 BallisticSpriteEmitter *func_02023cb0(BallisticSpriteEmitter *self)
 {
@@ -200,7 +200,7 @@ BallisticSpriteEmitter *func_02023cb0(BallisticSpriteEmitter *self)
     AnimationResource_Destroy(&self->resources18[1]);
     AnimationResource_Destroy(&self->resources18[0]);
     VecFx32Object_Destroy(&self->position08);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

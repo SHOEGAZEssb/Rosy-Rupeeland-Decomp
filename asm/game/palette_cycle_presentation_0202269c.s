@@ -9,8 +9,8 @@
 .extern MIi_CpuCopy16
 .extern gPaletteCyclePresentationVtable
 .extern data_020f4e18
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern PaletteCyclePresentation_AdvancePalette
 .extern GraphicsBgResourceData_GetDecoded
 .extern func_02091b6c
@@ -34,7 +34,7 @@ PaletteCyclePresentation_DestroyAndFree: ; 0x0202269c
     mov r4, r0
     mov r1, #0x0
     str r1, [r4, #0x444]
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -2602,7 +2602,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201d9e4.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201da20.o: mwasmarm asm/game/game_phase_script_vm_0201da20.s
 build build/decomp/asm/game/game_phase_script_vm_0201da34.o: mwasmarm asm/game/game_phase_script_vm_0201da34.s
 build build/decomp/asm/game/game_phase_script_vm_0201da9c.o: mwasmarm asm/game/game_phase_script_vm_0201da9c.s
-build build/decomp/src/game/runtime_presentation_manager.o: mwccarm src/game/runtime_presentation_manager.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/runtime_presentation_manager.o: mwccarm src/game/runtime_presentation_manager.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/runtime_presentation_manager.c
   cflags = $runtime_presentation_manager_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201dbc8.o: mwasmarm asm/game/game_phase_script_vm_0201dbc8.s
@@ -2622,7 +2622,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201df44.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201df54.o: mwasmarm asm/game/game_phase_script_vm_0201df54.s
 build build/decomp/asm/game/game_phase_script_vm_0201df5c.o: mwasmarm asm/game/game_phase_script_vm_0201df5c.s
 build build/decomp/asm/game/game_phase_script_vm_0201df64.o: mwasmarm asm/game/game_phase_script_vm_0201df64.s
-build build/decomp/src/game/runtime_presentation_dispatch.o: mwccarm src/game/runtime_presentation_dispatch.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/runtime_presentation_dispatch.o: mwccarm src/game/runtime_presentation_dispatch.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/runtime_presentation_dispatch.c
   cflags = $runtime_presentation_dispatch_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201dff0.o: mwasmarm asm/game/game_phase_script_vm_0201dff0.s
@@ -2635,7 +2635,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201e14c.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201e1ac.o: mwasmarm asm/game/game_phase_script_vm_0201e1ac.s
 build build/decomp/asm/game/game_phase_script_vm_0201e1b0.o: mwasmarm asm/game/game_phase_script_vm_0201e1b0.s
 build build/decomp/asm/game/game_phase_script_vm_0201e228.o: mwasmarm asm/game/game_phase_script_vm_0201e228.s
-build build/decomp/src/game/timed_sprite_presentation.o: mwccarm src/game/timed_sprite_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_presentation.o: mwccarm src/game/timed_sprite_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/timed_sprite_presentation.c
   cflags = $timed_sprite_presentation_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201e250.o: mwasmarm asm/game/game_phase_script_vm_0201e250.s
@@ -2687,7 +2687,7 @@ build build/decomp/src/game/timed_sprite_sampled_arc_variant.o: mwccarm src/game
   cflags = $timed_sprite_sampled_arc_variant_cflags
 build build/decomp/asm/game/timed_sprite_sampled_arc_variant.o: mwasmarm asm/game/timed_sprite_sampled_arc_variant.s
 build build/decomp/delinks/asm/game/timed_sprite_sampled_arc_variant.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/decomp/src/game/timed_sprite_burst_manager.o: mwccarm src/game/timed_sprite_burst_manager.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_burst_manager.o: mwccarm src/game/timed_sprite_burst_manager.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/timed_sprite_burst_manager.c
   cflags = $timed_sprite_burst_manager_cflags
 build build/decomp/asm/game/timed_sprite_burst_manager_0201eefc.o: mwasmarm asm/game/timed_sprite_burst_manager_0201eefc.s
@@ -2706,7 +2706,7 @@ build build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f11c.o: phony
 build build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f15c.o: phony build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201eefc.o
 build build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f204.o: phony build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201eefc.o
 build build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201f2b4.o: phony build/decomp/delinks/asm/game/timed_sprite_burst_manager_0201eefc.o
-build build/decomp/src/game/timed_sprite_offset_presentation.o: mwccarm src/game/timed_sprite_offset_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_offset_presentation.o: mwccarm src/game/timed_sprite_offset_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/timed_sprite_offset_presentation.c
   cflags = $timed_sprite_offset_presentation_cflags
 build build/decomp/asm/game/timed_sprite_offset_presentation_0201f378.o: mwasmarm asm/game/timed_sprite_offset_presentation_0201f378.s
@@ -2719,7 +2719,7 @@ build build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f3e8.o:
 build build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f41c.o: phony build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f378.o
 build build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f458.o: phony build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f378.o
 build build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f520.o: phony build/decomp/delinks/asm/game/timed_sprite_offset_presentation_0201f378.o
-build build/decomp/src/game/timed_sprite_sampled_arc_presentation.o: mwccarm src/game/timed_sprite_sampled_arc_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_sampled_arc_presentation.o: mwccarm src/game/timed_sprite_sampled_arc_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/timed_sprite_sampled_arc_presentation.c
   cflags = $timed_sprite_sampled_arc_presentation_cflags
 build build/decomp/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o: mwasmarm asm/game/timed_sprite_sampled_arc_presentation_0201f598.s
@@ -2730,7 +2730,7 @@ build build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f5
 build build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f670.o: phony build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o
 build build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f6a4.o: phony build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o
 build build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f6e0.o: phony build/decomp/delinks/asm/game/timed_sprite_sampled_arc_presentation_0201f598.o
-build build/decomp/src/game/timed_sprite_auxiliary_presentation.o: mwccarm src/game/timed_sprite_auxiliary_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_auxiliary_presentation.o: mwccarm src/game/timed_sprite_auxiliary_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/timed_sprite_auxiliary_presentation.c
   cflags = $timed_sprite_auxiliary_presentation_cflags
 build build/decomp/asm/game/timed_sprite_auxiliary_presentation_0201f724.o: mwasmarm asm/game/timed_sprite_auxiliary_presentation_0201f724.s
@@ -2756,7 +2756,7 @@ build build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0
 build build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb54.o: phony build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fafc.o
 build build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb68.o: phony build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fafc.o
 build build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fb84.o: phony build/decomp/delinks/asm/game/timed_sprite_rising_auxiliary_presentation_0201fafc.o
-build build/decomp/src/game/direct_sprite_track_presentation.o: mwccarm src/game/direct_sprite_track_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/direct_sprite_track_presentation.o: mwccarm src/game/direct_sprite_track_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/direct_sprite_track_presentation.c
   cflags = $direct_sprite_track_presentation_cflags
 build build/decomp/asm/game/direct_sprite_track_presentation_0201fc28.o: mwasmarm asm/game/direct_sprite_track_presentation_0201fc28.s
@@ -2769,7 +2769,7 @@ build build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fd64.o:
 build build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fda4.o: phony build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fc28.o
 build build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fdec.o: phony build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fc28.o
 build build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fe68.o: phony build/decomp/delinks/asm/game/direct_sprite_track_presentation_0201fc28.o
-build build/decomp/src/game/timed_sprite_record_presentation.o: mwccarm src/game/timed_sprite_record_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_record_presentation.o: mwccarm src/game/timed_sprite_record_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/timed_sprite_record_presentation.c
   cflags = $timed_sprite_record_presentation_cflags
 build build/decomp/asm/game/timed_sprite_record_presentation_0201ff2c.o: mwasmarm asm/game/timed_sprite_record_presentation_0201ff2c.s
@@ -2782,7 +2782,7 @@ build build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020018.o:
 build build/decomp/delinks/asm/game/timed_sprite_record_presentation_0202002c.o: phony build/decomp/delinks/asm/game/timed_sprite_record_presentation_0201ff2c.o
 build build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020048.o: phony build/decomp/delinks/asm/game/timed_sprite_record_presentation_0201ff2c.o
 build build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020060.o: phony build/decomp/delinks/asm/game/timed_sprite_record_presentation_0201ff2c.o
-build build/decomp/src/game/overlay_worker_presentation.o: mwccarm src/game/overlay_worker_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/overlay_worker_presentation.o: mwccarm src/game/overlay_worker_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/overlay_worker_presentation.c
   cflags = $overlay_worker_presentation_cflags
 build build/decomp/asm/game/overlay_worker_presentation_020200bc.o: mwasmarm asm/game/overlay_worker_presentation_020200bc.s
@@ -2815,7 +2815,7 @@ build build/decomp/delinks/asm/game/rising_sprite_motion_controller_02020558.o: 
 build build/decomp/delinks/asm/game/rising_sprite_motion_controller_0202057c.o: phony build/decomp/delinks/asm/game/rising_sprite_motion_controller_020203e4.o
 build build/decomp/delinks/asm/game/rising_sprite_motion_controller_020206e8.o: phony build/decomp/delinks/asm/game/rising_sprite_motion_controller_020203e4.o
 build build/decomp/delinks/asm/game/rising_sprite_motion_controller_02020754.o: phony build/decomp/delinks/asm/game/rising_sprite_motion_controller_020203e4.o
-build build/decomp/src/game/rising_sprite_swarm_presentation.o: mwccarm src/game/rising_sprite_swarm_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/rising_sprite_swarm_presentation.o: mwccarm src/game/rising_sprite_swarm_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/rising_sprite_swarm_presentation.c
   cflags = $rising_sprite_swarm_presentation_cflags
 build build/decomp/asm/game/rising_sprite_swarm_presentation_02020794.o: mwasmarm asm/game/rising_sprite_swarm_presentation_02020794.s
@@ -2858,7 +2858,7 @@ build build/decomp/src/game/paired_reference_state.o: mwccarm src/game/paired_re
   cflags = $paired_reference_state_cflags
 build build/decomp/asm/game/paired_reference_state_02020e60.o: mwasmarm asm/game/paired_reference_state_02020e60.s
 build build/decomp/delinks/asm/game/paired_reference_state_02020e60.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/decomp/src/game/display_fade_presentation.o: mwccarm src/game/display_fade_presentation.c | include/tingle/types.h
+build build/decomp/src/game/display_fade_presentation.o: mwccarm src/game/display_fade_presentation.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/game/display_fade_presentation.c
   cflags = $display_fade_presentation_cflags
 build build/decomp/asm/game/display_fade_presentation_02020e84.o: mwasmarm asm/game/display_fade_presentation_02020e84.s
@@ -2885,7 +2885,7 @@ build build/decomp/asm/game/extended_callback_state_020215a0.o: mwasmarm asm/gam
 build build/decomp/asm/game/extended_callback_state_020215a4.o: mwasmarm asm/game/extended_callback_state_020215a4.s
 build build/decomp/delinks/asm/game/extended_callback_state_020215a0.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/decomp/delinks/asm/game/extended_callback_state_020215a4.o: phony build/decomp/delinks/asm/game/extended_callback_state_020215a0.o
-build build/decomp/src/game/dual_array_blend_presentation.o: mwccarm src/game/dual_array_blend_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/dual_array_blend_presentation.o: mwccarm src/game/dual_array_blend_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/dual_array_blend_presentation.c
   cflags = $dual_array_blend_presentation_cflags
 build build/decomp/asm/game/dual_array_blend_presentation_020215cc.o: mwasmarm asm/game/dual_array_blend_presentation_020215cc.s
@@ -2914,7 +2914,7 @@ build build/decomp/delinks/asm/game/dual_array_blend_presentation_02021bb4.o: ph
 build build/decomp/delinks/asm/game/dual_array_blend_presentation_02021f58.o: phony build/decomp/delinks/asm/game/dual_array_blend_presentation_020215cc.o
 build build/decomp/delinks/asm/game/dual_array_blend_presentation_02021f60.o: phony build/decomp/delinks/asm/game/dual_array_blend_presentation_020215cc.o
 build build/decomp/delinks/asm/game/dual_array_blend_presentation_02022040.o: phony build/decomp/delinks/asm/game/dual_array_blend_presentation_020215cc.o
-build build/decomp/src/game/overlay_prompt_presentation.o: mwccarm src/game/overlay_prompt_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/overlay_prompt_presentation.o: mwccarm src/game/overlay_prompt_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/overlay_prompt_presentation.c
   cflags = $overlay_prompt_presentation_cflags
 build build/decomp/asm/game/overlay_prompt_presentation_0202225c.o: mwasmarm asm/game/overlay_prompt_presentation_0202225c.s
@@ -2929,7 +2929,7 @@ build build/decomp/delinks/asm/game/overlay_prompt_presentation_02022354.o: phon
 build build/decomp/delinks/asm/game/overlay_prompt_presentation_020223d4.o: phony build/decomp/delinks/asm/game/overlay_prompt_presentation_0202225c.o
 build build/decomp/delinks/asm/game/overlay_prompt_presentation_02022530.o: phony build/decomp/delinks/asm/game/overlay_prompt_presentation_0202225c.o
 build build/decomp/delinks/asm/game/overlay_prompt_presentation_02022558.o: phony build/decomp/delinks/asm/game/overlay_prompt_presentation_0202225c.o
-build build/decomp/src/game/palette_cycle_presentation.o: mwccarm src/game/palette_cycle_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/palette_cycle_presentation.o: mwccarm src/game/palette_cycle_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/palette_cycle_presentation.c
   cflags = $palette_cycle_presentation_cflags
 build build/decomp/asm/game/palette_cycle_presentation_02022580.o: mwasmarm asm/game/palette_cycle_presentation_02022580.s
@@ -2944,7 +2944,7 @@ build build/decomp/delinks/asm/game/palette_cycle_presentation_0202269c.o: phony
 build build/decomp/delinks/asm/game/palette_cycle_presentation_020226c0.o: phony build/decomp/delinks/asm/game/palette_cycle_presentation_02022580.o
 build build/decomp/delinks/asm/game/palette_cycle_presentation_02022880.o: phony build/decomp/delinks/asm/game/palette_cycle_presentation_02022580.o
 build build/decomp/delinks/asm/game/palette_cycle_presentation_020228dc.o: phony build/decomp/delinks/asm/game/palette_cycle_presentation_02022580.o
-build build/decomp/src/game/presentation_base_teardown.o: mwccarm src/game/presentation_base_teardown.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/presentation_base_teardown.o: mwccarm src/game/presentation_base_teardown.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/presentation_base_teardown.c
   cflags = $presentation_base_teardown_cflags
 build build/decomp/asm/game/presentation_base_teardown_0202290c.o: mwasmarm asm/game/presentation_base_teardown_0202290c.s
@@ -2972,7 +2972,7 @@ build build/decomp/delinks/asm/game/sprite_number_group_02022b70.o: phony build/
 build build/decomp/delinks/asm/game/sprite_number_group_02022bc8.o: phony build/decomp/delinks/asm/game/sprite_number_group_0202293c.o
 build build/decomp/delinks/asm/game/sprite_number_group_02022c30.o: phony build/decomp/delinks/asm/game/sprite_number_group_0202293c.o
 build build/decomp/delinks/asm/game/sprite_number_group_02022c80.o: phony build/decomp/delinks/asm/game/sprite_number_group_0202293c.o
-build build/decomp/src/game/sprite_number_motion_presentation.o: mwccarm src/game/sprite_number_motion_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/sprite_number_motion_presentation.o: mwccarm src/game/sprite_number_motion_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/sprite_number_motion_presentation.c
   cflags = $sprite_number_motion_presentation_cflags
 build build/decomp/asm/game/sprite_number_motion_presentation_02022cb0.o: mwasmarm asm/game/sprite_number_motion_presentation_02022cb0.s
@@ -2988,7 +2988,7 @@ build build/decomp/src/game/self_linked_sprite_config.o: mwccarm src/game/self_l
   cflags = $self_linked_sprite_config_cflags
 build build/decomp/asm/game/self_linked_sprite_config_02022fbc.o: mwasmarm asm/game/self_linked_sprite_config_02022fbc.s
 build build/decomp/delinks/asm/game/self_linked_sprite_config_02022fbc.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/decomp/src/game/record_sprite_motion_presentation.o: mwccarm src/game/record_sprite_motion_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/record_sprite_motion_presentation.o: mwccarm src/game/record_sprite_motion_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/record_sprite_motion_presentation.c
   cflags = $record_sprite_motion_presentation_cflags
 build build/decomp/asm/game/record_sprite_motion_presentation_02022ff4.o: mwasmarm asm/game/record_sprite_motion_presentation_02022ff4.s
@@ -3009,7 +3009,7 @@ build build/decomp/src/math/vec_fx32_scale_rounded.o: mwccarm src/math/vec_fx32_
   cflags = $vec_fx32_scale_rounded_cflags
 build build/decomp/asm/math/vec_fx32_scale_rounded_020233c8.o: mwasmarm asm/math/vec_fx32_scale_rounded_020233c8.s
 build build/decomp/delinks/asm/math/vec_fx32_scale_rounded_020233c8.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/decomp/src/game/arcing_sprite_effect_presentation.o: mwccarm src/game/arcing_sprite_effect_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/arcing_sprite_effect_presentation.o: mwccarm src/game/arcing_sprite_effect_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/arcing_sprite_effect_presentation.c
   cflags = $arcing_sprite_effect_presentation_cflags
 build build/decomp/asm/game/arcing_sprite_effect_presentation_02023434.o: mwasmarm asm/game/arcing_sprite_effect_presentation_02023434.s
@@ -3029,7 +3029,7 @@ build build/decomp/asm/game/ballistic_sprite_particle_02023a14.o: mwasmarm asm/g
 build build/decomp/delinks/asm/game/ballistic_sprite_particle_02023890.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/decomp/delinks/asm/game/ballistic_sprite_particle_020239e8.o: phony build/decomp/delinks/asm/game/ballistic_sprite_particle_02023890.o
 build build/decomp/delinks/asm/game/ballistic_sprite_particle_02023a14.o: phony build/decomp/delinks/asm/game/ballistic_sprite_particle_02023890.o
-build build/decomp/src/game/ballistic_sprite_emitter.o: mwccarm src/game/ballistic_sprite_emitter.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/ballistic_sprite_emitter.o: mwccarm src/game/ballistic_sprite_emitter.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/ballistic_sprite_emitter.c
   cflags = $ballistic_sprite_emitter_cflags
 build build/decomp/asm/game/ballistic_sprite_emitter_02023a8c.o: mwasmarm asm/game/ballistic_sprite_emitter_02023a8c.s
@@ -3052,7 +3052,7 @@ build build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023d1c.o: phony b
 build build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023d90.o: phony build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023a8c.o
 build build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023ed4.o: phony build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023a8c.o
 build build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023f78.o: phony build/decomp/delinks/asm/game/ballistic_sprite_emitter_02023a8c.o
-build build/decomp/src/game/overlay_2c_component_presentation.o: mwccarm src/game/overlay_2c_component_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/overlay_2c_component_presentation.o: mwccarm src/game/overlay_2c_component_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/overlay_2c_component_presentation.c
   cflags = $overlay_2c_component_presentation_cflags
 build build/decomp/asm/game/overlay_2c_component_presentation_02023fa0.o: mwasmarm asm/game/overlay_2c_component_presentation_02023fa0.s
@@ -3065,7 +3065,7 @@ build build/decomp/delinks/asm/game/overlay_2c_component_presentation_02024004.o
 build build/decomp/delinks/asm/game/overlay_2c_component_presentation_02024054.o: phony build/decomp/delinks/asm/game/overlay_2c_component_presentation_02023fa0.o
 build build/decomp/delinks/asm/game/overlay_2c_component_presentation_020240ac.o: phony build/decomp/delinks/asm/game/overlay_2c_component_presentation_02023fa0.o
 build build/decomp/delinks/asm/game/overlay_2c_component_presentation_020240bc.o: phony build/decomp/delinks/asm/game/overlay_2c_component_presentation_02023fa0.o
-build build/decomp/src/game/overlay_50_component_presentation.o: mwccarm src/game/overlay_50_component_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/overlay_50_component_presentation.o: mwccarm src/game/overlay_50_component_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/overlay_50_component_presentation.c
   cflags = $overlay_50_component_presentation_cflags
 build build/decomp/asm/game/overlay_50_component_presentation_020240cc.o: mwasmarm asm/game/overlay_50_component_presentation_020240cc.s
@@ -3078,7 +3078,7 @@ build build/decomp/delinks/asm/game/overlay_50_component_presentation_02024138.o
 build build/decomp/delinks/asm/game/overlay_50_component_presentation_02024188.o: phony build/decomp/delinks/asm/game/overlay_50_component_presentation_020240cc.o
 build build/decomp/delinks/asm/game/overlay_50_component_presentation_020241e0.o: phony build/decomp/delinks/asm/game/overlay_50_component_presentation_020240cc.o
 build build/decomp/delinks/asm/game/overlay_50_component_presentation_020241f0.o: phony build/decomp/delinks/asm/game/overlay_50_component_presentation_020240cc.o
-build build/decomp/src/game/overlay_4c_component_presentation.o: mwccarm src/game/overlay_4c_component_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/overlay_4c_component_presentation.o: mwccarm src/game/overlay_4c_component_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/overlay_4c_component_presentation.c
   cflags = $overlay_4c_component_presentation_cflags
 build build/decomp/asm/game/overlay_4c_component_presentation_02024200.o: mwasmarm asm/game/overlay_4c_component_presentation_02024200.s
@@ -3091,7 +3091,7 @@ build build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024264.o
 build build/decomp/delinks/asm/game/overlay_4c_component_presentation_020242b4.o: phony build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024200.o
 build build/decomp/delinks/asm/game/overlay_4c_component_presentation_0202430c.o: phony build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024200.o
 build build/decomp/delinks/asm/game/overlay_4c_component_presentation_0202431c.o: phony build/decomp/delinks/asm/game/overlay_4c_component_presentation_02024200.o
-build build/decomp/src/game/overlay_4c_parameterized_presentation.o: mwccarm src/game/overlay_4c_parameterized_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/overlay_4c_parameterized_presentation.o: mwccarm src/game/overlay_4c_parameterized_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/overlay_4c_parameterized_presentation.c
   cflags = $overlay_4c_parameterized_presentation_cflags
 build build/decomp/asm/game/overlay_4c_parameterized_presentation_0202432c.o: mwasmarm asm/game/overlay_4c_parameterized_presentation_0202432c.s
@@ -3104,7 +3104,7 @@ build build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_020243
 build build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_020243f0.o: phony build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_0202432c.o
 build build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_02024448.o: phony build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_0202432c.o
 build build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_02024458.o: phony build/decomp/delinks/asm/game/overlay_4c_parameterized_presentation_0202432c.o
-build build/decomp/src/game/overlay_18_component_presentation.o: mwccarm src/game/overlay_18_component_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/overlay_18_component_presentation.o: mwccarm src/game/overlay_18_component_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/overlay_18_component_presentation.c
   cflags = $overlay_18_component_presentation_cflags
 build build/decomp/asm/game/overlay_18_component_presentation_02024468.o: mwasmarm asm/game/overlay_18_component_presentation_02024468.s
@@ -3117,7 +3117,7 @@ build build/decomp/delinks/asm/game/overlay_18_component_presentation_020244cc.o
 build build/decomp/delinks/asm/game/overlay_18_component_presentation_0202451c.o: phony build/decomp/delinks/asm/game/overlay_18_component_presentation_02024468.o
 build build/decomp/delinks/asm/game/overlay_18_component_presentation_02024574.o: phony build/decomp/delinks/asm/game/overlay_18_component_presentation_02024468.o
 build build/decomp/delinks/asm/game/overlay_18_component_presentation_02024584.o: phony build/decomp/delinks/asm/game/overlay_18_component_presentation_02024468.o
-build build/decomp/src/game/four_slot_3d_presentation.o: mwccarm src/game/four_slot_3d_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/four_slot_3d_presentation.o: mwccarm src/game/four_slot_3d_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/four_slot_3d_presentation.c
   cflags = $four_slot_3d_presentation_cflags
 build build/decomp/asm/game/four_slot_3d_presentation_02024594.o: mwasmarm asm/game/four_slot_3d_presentation_02024594.s
@@ -3130,7 +3130,7 @@ build build/decomp/delinks/asm/game/four_slot_3d_presentation_02024670.o: phony 
 build build/decomp/delinks/asm/game/four_slot_3d_presentation_020246a0.o: phony build/decomp/delinks/asm/game/four_slot_3d_presentation_02024594.o
 build build/decomp/delinks/asm/game/four_slot_3d_presentation_020246d8.o: phony build/decomp/delinks/asm/game/four_slot_3d_presentation_02024594.o
 build build/decomp/delinks/asm/game/four_slot_3d_presentation_0202497c.o: phony build/decomp/delinks/asm/game/four_slot_3d_presentation_02024594.o
-build build/decomp/src/game/launched_sprite_pair_presentation.o: mwccarm src/game/launched_sprite_pair_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/launched_sprite_pair_presentation.o: mwccarm src/game/launched_sprite_pair_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/launched_sprite_pair_presentation.c
   cflags = $launched_sprite_pair_presentation_cflags
 build build/decomp/asm/game/launched_sprite_pair_presentation_02024b04.o: mwasmarm asm/game/launched_sprite_pair_presentation_02024b04.s
@@ -3141,7 +3141,7 @@ build build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024b04.o
 build build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024d3c.o: phony build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024b04.o
 build build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024dac.o: phony build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024b04.o
 build build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024e24.o: phony build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024b04.o
-build build/decomp/src/game/timed_actor_rectangle_presentation.o: mwccarm src/game/timed_actor_rectangle_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_actor_rectangle_presentation.o: mwccarm src/game/timed_actor_rectangle_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/timed_actor_rectangle_presentation.c
   cflags = $timed_actor_rectangle_presentation_cflags
 build build/decomp/asm/game/timed_actor_rectangle_presentation_02025120.o: mwasmarm asm/game/timed_actor_rectangle_presentation_02025120.s
@@ -3152,7 +3152,7 @@ build build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025120.
 build build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_0202517c.o: phony build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025120.o
 build build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025190.o: phony build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025120.o
 build build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_020251ac.o: phony build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025120.o
-build build/decomp/src/game/rotating_core_effect_controller.o: mwccarm src/game/rotating_core_effect_controller.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/rotating_core_effect_controller.o: mwccarm src/game/rotating_core_effect_controller.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/rotating_core_effect_controller.c
   cflags = $rotating_core_effect_controller_cflags
 build build/decomp/asm/game/rotating_core_effect_controller_02025300.o: mwasmarm asm/game/rotating_core_effect_controller_02025300.s
@@ -3257,7 +3257,7 @@ build build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020269f8.o: phony 
 build build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026e38.o: phony build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020264b0.o
 build build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026e44.o: phony build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020264b0.o
 build build/decomp/delinks/asm/game/dual_screen_ui_grid_state_02026ed4.o: phony build/decomp/delinks/asm/game/dual_screen_ui_grid_state_020264b0.o
-build build/decomp/src/game/four_stage_command_presentation.o: mwccarm src/game/four_stage_command_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/four_stage_command_presentation.o: mwccarm src/game/four_stage_command_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/four_stage_command_presentation.c
   cflags = $four_stage_command_presentation_cflags
 build build/decomp/asm/game/four_stage_command_presentation_02026f38.o: mwasmarm asm/game/four_stage_command_presentation_02026f38.s
@@ -3268,7 +3268,7 @@ build build/decomp/delinks/asm/game/four_stage_command_presentation_02026f38.o: 
 build build/decomp/delinks/asm/game/four_stage_command_presentation_02026f8c.o: phony build/decomp/delinks/asm/game/four_stage_command_presentation_02026f38.o
 build build/decomp/delinks/asm/game/four_stage_command_presentation_02026fa0.o: phony build/decomp/delinks/asm/game/four_stage_command_presentation_02026f38.o
 build build/decomp/delinks/asm/game/four_stage_command_presentation_02026fbc.o: phony build/decomp/delinks/asm/game/four_stage_command_presentation_02026f38.o
-build build/decomp/src/game/indexed_sprite_overlay_presentation.o: mwccarm src/game/indexed_sprite_overlay_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/indexed_sprite_overlay_presentation.o: mwccarm src/game/indexed_sprite_overlay_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/indexed_sprite_overlay_presentation.c
   cflags = $indexed_sprite_overlay_presentation_cflags
 build build/decomp/asm/game/indexed_sprite_overlay_presentation_02027150.o: mwasmarm asm/game/indexed_sprite_overlay_presentation_02027150.s
@@ -3281,7 +3281,7 @@ build build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_0202721c
 build build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027268.o: phony build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027150.o
 build build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_020272bc.o: phony build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027150.o
 build build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_020272e0.o: phony build/decomp/delinks/asm/game/indexed_sprite_overlay_presentation_02027150.o
-build build/decomp/src/game/reversed_frame_sprite_overlay_presentation.o: mwccarm src/game/reversed_frame_sprite_overlay_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/reversed_frame_sprite_overlay_presentation.o: mwccarm src/game/reversed_frame_sprite_overlay_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/reversed_frame_sprite_overlay_presentation.c
   cflags = $reversed_frame_sprite_overlay_presentation_cflags
 build build/decomp/asm/game/reversed_frame_sprite_overlay_presentation_02027300.o: mwasmarm asm/game/reversed_frame_sprite_overlay_presentation_02027300.s
@@ -3392,7 +3392,7 @@ build build/decomp/delinks/asm/game/game_phase_metadata_queries_020284e0.o: phon
 build build/decomp/delinks/asm/game/game_phase_metadata_queries_020284f0.o: phony build/decomp/delinks/asm/game/game_phase_metadata_queries_02028388.o
 build build/decomp/delinks/asm/game/game_phase_metadata_queries_02028508.o: phony build/decomp/delinks/asm/game/game_phase_metadata_queries_02028388.o
 build build/decomp/delinks/asm/game/game_phase_metadata_queries_0202852c.o: phony build/decomp/delinks/asm/game/game_phase_metadata_queries_02028388.o
-build build/decomp/src/game/main_bg1_follow_presentation.o: mwccarm src/game/main_bg1_follow_presentation.c | include/tingle/graphics_resources.h include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/main_bg1_follow_presentation.o: mwccarm src/game/main_bg1_follow_presentation.c | include/tingle/field_effect.h include/tingle/graphics_resources.h include/tingle/heap.h include/tingle/types.h
   source = src/game/main_bg1_follow_presentation.c
   cflags = $main_bg1_follow_presentation_cflags
 build build/decomp/asm/game/main_bg1_follow_presentation_02028544.o: mwasmarm asm/game/main_bg1_follow_presentation_02028544.s
@@ -3409,7 +3409,7 @@ build build/decomp/delinks/asm/game/main_bg1_follow_presentation_020285a4.o: pho
 build build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028630.o: phony build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028544.o
 build build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028684.o: phony build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028544.o
 build build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028764.o: phony build/decomp/delinks/asm/game/main_bg1_follow_presentation_02028544.o
-build build/decomp/src/game/main_window_mask_presentation.o: mwccarm src/game/main_window_mask_presentation.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/main_window_mask_presentation.o: mwccarm src/game/main_window_mask_presentation.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
   source = src/game/main_window_mask_presentation.c
   cflags = $main_window_mask_presentation_cflags
 build build/decomp/asm/game/main_window_mask_presentation_02028778.o: mwasmarm asm/game/main_window_mask_presentation_02028778.s
@@ -3433,7 +3433,7 @@ build build/decomp/asm/game/randomized_sprite_particle_02028998.o: mwasmarm asm/
 build build/decomp/delinks/asm/game/randomized_sprite_particle_02028860.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
 build build/decomp/delinks/asm/game/randomized_sprite_particle_0202895c.o: phony build/decomp/delinks/asm/game/randomized_sprite_particle_02028860.o
 build build/decomp/delinks/asm/game/randomized_sprite_particle_02028998.o: phony build/decomp/delinks/asm/game/randomized_sprite_particle_02028860.o
-build build/decomp/src/game/randomized_sprite_particle_emitter.o: mwccarm src/game/randomized_sprite_particle_emitter.c | include/tingle/game_work.h include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/randomized_sprite_particle_emitter.o: mwccarm src/game/randomized_sprite_particle_emitter.c | include/tingle/field_effect.h include/tingle/game_work.h include/tingle/heap.h include/tingle/types.h
   source = src/game/randomized_sprite_particle_emitter.c
   cflags = $randomized_sprite_particle_emitter_cflags
 build build/decomp/asm/game/randomized_sprite_particle_emitter_02028b98.o: mwasmarm asm/game/randomized_sprite_particle_emitter_02028b98.s
@@ -7992,28 +7992,28 @@ build build/reports/game_phase_script_vm_0201e250.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e250.o
 build build/reports/game_phase_script_vm_0201e250.txt: match_report build/reports/game_phase_script_vm_0201e250.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e250.json
-  report_args = --section .text --function TimedSpritePresentation_InitBase --require-exact
+  report_args = --section .text --function FieldEffect_Init --require-exact
 
 build build/reports/game_phase_script_vm_0201e274.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e274.o | build/decomp/asm/game/game_phase_script_vm_0201e274.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e274.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e274.o
 build build/reports/game_phase_script_vm_0201e274.txt: match_report build/reports/game_phase_script_vm_0201e274.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e274.json
-  report_args = --section .text --function func_0201e274 --require-exact
+  report_args = --section .text --function FieldEffect_Destroy --require-exact
 
 build build/reports/game_phase_script_vm_0201e278.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e278.o | build/decomp/asm/game/game_phase_script_vm_0201e278.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e278.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e278.o
 build build/reports/game_phase_script_vm_0201e278.txt: match_report build/reports/game_phase_script_vm_0201e278.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e278.json
-  report_args = --section .text --function func_0201e278 --require-exact
+  report_args = --section .text --function FieldEffect_DestroyAndFree --require-exact
 
 build build/reports/game_phase_script_vm_0201e28c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e28c.o | build/decomp/asm/game/game_phase_script_vm_0201e28c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e28c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e28c.o
 build build/reports/game_phase_script_vm_0201e28c.txt: match_report build/reports/game_phase_script_vm_0201e28c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e28c.json
-  report_args = --section .text --function func_0201e28c --require-exact
+  report_args = --section .text --function FieldEffect_DestroyBase --require-exact
 
 build build/reports/game_phase_script_vm_0201e290.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e290.o | build/decomp/asm/game/game_phase_script_vm_0201e290.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e290.o
@@ -42210,7 +42210,7 @@ build overlay050: phony overlay050_small overlay050_matching
 subninja config/arm9/overlays/ov051/matching.ninja
 
 overlay051_small_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov051/overlay051_scene_lifecycle.o: mwccarm src/overlays/ov051/overlay051_scene_lifecycle.c | include/tingle/types.h
+build build/decomp/src/overlays/ov051/overlay051_scene_lifecycle.o: mwccarm src/overlays/ov051/overlay051_scene_lifecycle.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov051/overlay051_scene_lifecycle.c
   cflags = $overlay051_small_cflags
 build build/decomp/delinks/src/overlays/ov051/overlay051_scene_lifecycle.o: dsd_delink config/arm9/config.yaml | config/arm9/overlays/ov051/delinks.txt config/arm9/overlays/ov051/symbols.txt config/arm9/overlays/ov051/relocs.txt
@@ -42258,10 +42258,10 @@ build build/reports/overlay051_virtual_noop_bc.txt: match_report build/reports/o
 build build/reports/overlay051_virtual_noop_c0.txt: match_report build/reports/overlay051_virtual_noops.json | tools/report_objdiff.py
   report_json = build/reports/overlay051_virtual_noops.json
   report_args = --section .text --function func_ov051_0220dec0 --require-exact
-build build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_sub_scene_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_sub_scene_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov051/overlay051_sub_scene_recovery.c
   cflags = $overlay051_small_cflags
-build build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_main_scene_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o: mwccarm src/overlays/ov051/overlay051_main_scene_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov051/overlay051_main_scene_recovery.c
   cflags = $overlay051_small_cflags
 build overlay051_portable: phony build/decomp/src/overlays/ov051/overlay051_sub_scene_recovery.o build/decomp/src/overlays/ov051/overlay051_main_scene_recovery.o
@@ -42288,7 +42288,7 @@ build overlay052: phony overlay052_small overlay052_matching
 subninja config/arm9/overlays/ov053/matching.ninja
 
 overlay053_small_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov053/overlay053_recovery.o: mwccarm src/overlays/ov053/overlay053_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov053/overlay053_recovery.o: mwccarm src/overlays/ov053/overlay053_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov053/overlay053_recovery.c
   cflags = $overlay053_small_cflags
 build build/decomp/src/overlays/ov053/overlay053_embedded_record.o: mwccarm src/overlays/ov053/overlay053_embedded_record.c | include/tingle/types.h
@@ -42340,7 +42340,7 @@ build overlay053: phony overlay053_small overlay053_matching overlay053_portable
 
 subninja config/arm9/overlays/ov054/matching.ninja
 overlay054_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov054/overlay054_recovery.o: mwccarm src/overlays/ov054/overlay054_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov054/overlay054_recovery.o: mwccarm src/overlays/ov054/overlay054_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov054/overlay054_recovery.c
   cflags = $overlay054_portable_cflags
 build overlay054_portable: phony build/decomp/src/overlays/ov054/overlay054_recovery.o
@@ -42348,7 +42348,7 @@ build overlay054: phony overlay054_matching overlay054_portable
 
 subninja config/arm9/overlays/ov055/matching.ninja
 overlay055_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov055/overlay055_recovery.o: mwccarm src/overlays/ov055/overlay055_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov055/overlay055_recovery.o: mwccarm src/overlays/ov055/overlay055_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov055/overlay055_recovery.c
   cflags = $overlay055_portable_cflags
 build overlay055_portable: phony build/decomp/src/overlays/ov055/overlay055_recovery.o
@@ -42364,7 +42364,7 @@ build overlay056: phony overlay056_matching overlay056_portable
 
 subninja config/arm9/overlays/ov057/matching.ninja
 overlay057_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov057/overlay057_recovery.o: mwccarm src/overlays/ov057/overlay057_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov057/overlay057_recovery.o: mwccarm src/overlays/ov057/overlay057_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov057/overlay057_recovery.c
   cflags = $overlay057_portable_cflags
 build overlay057_portable: phony build/decomp/src/overlays/ov057/overlay057_recovery.o
@@ -42372,7 +42372,7 @@ build overlay057: phony overlay057_matching overlay057_portable
 
 subninja config/arm9/overlays/ov058/matching.ninja
 overlay058_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov058/overlay058_recovery.o: mwccarm src/overlays/ov058/overlay058_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov058/overlay058_recovery.o: mwccarm src/overlays/ov058/overlay058_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov058/overlay058_recovery.c
   cflags = $overlay058_portable_cflags
 build overlay058_portable: phony build/decomp/src/overlays/ov058/overlay058_recovery.o
@@ -42464,7 +42464,7 @@ build overlay072: phony overlay072_matching overlay072_portable
 
 subninja config/arm9/overlays/ov073/matching.ninja
 overlay073_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov073/overlay073_recovery.o: mwccarm src/overlays/ov073/overlay073_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov073/overlay073_recovery.o: mwccarm src/overlays/ov073/overlay073_recovery.c | include/tingle/field_effect.h include/tingle/types.h
   source = src/overlays/ov073/overlay073_recovery.c
   cflags = $overlay073_portable_cflags
 build overlay073_portable: phony build/decomp/src/overlays/ov073/overlay073_recovery.o

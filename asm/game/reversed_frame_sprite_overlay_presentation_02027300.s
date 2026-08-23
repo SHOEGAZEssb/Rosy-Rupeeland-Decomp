@@ -6,7 +6,7 @@
 .extern gSpriteOverlayControllerAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -23,7 +23,7 @@ ReversedFrameSpriteOverlayPresentation_Init: ; 0x02027300
     sub sp, sp, #0x4
     mov r4, r0
     mov r6, r1
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_020273bc
     add r0, r4, #0x8
     str r1, [r4, #0x0]

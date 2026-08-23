@@ -12,8 +12,8 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern VecFx32_Subtract
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern SelfLinkedSpriteConfig_Init
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
@@ -49,7 +49,7 @@ func_020232b0: ; 0x020232b0
     add r0, r4, #0xc
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /* Overlay 55 paired-screen animated-object scene. */
@@ -34,7 +35,7 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *VecFx32Object_Init(void *); extern void *VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void *VecFx32Object_Assign(void *, const void *); extern void *VecFx32Object_Destroy(void *);
-extern void *TimedSpritePresentation_InitBase(void *); extern void *func_0201e28c(void *); extern void PresentationList_AppendObject(void *, void *);
+extern void PresentationList_AppendObject(void *, void *);
 extern void *OverlayManager_GetGlobal(void); extern void OverlayManager_UnloadOverlay(void *, s32);
 extern void *func_02071568(void *, u32); extern void *func_020716bc(void *, u32);
 extern void *func_020718dc(void *, u32); extern void *GraphicsBgResourceData_GetDecoded(void *);
@@ -111,7 +112,7 @@ void func_ov055_0220e8a0(void *c)
 /* Construct the scene base, groups, and owned collection. */
 void *func_ov055_0220e8b8(void *scene, void *owner, s32 mode)
 {
-    void *c; void (**vtable)(void*,s32); TimedSpritePresentation_InitBase(scene); FIELD(const void*,scene,0)=data_ov055_0220f058;
+    void *c; void (**vtable)(void*,s32); FieldEffect_Init(scene); FIELD(const void*,scene,0)=data_ov055_0220f058;
     VecFx32Object_Init((u8*)scene+8); FIELD(void*,scene,0x1c)=0; FIELD(void*,scene,0x28)=owner; FIELD(s32,scene,0x2c)=mode;
     FIELD(void*,scene,0x1c)=GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14[0]); FIELD(void*,scene,0x20)=GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     c=Heap_Alloc(0x48,data_ov055_0220f080,4,gHeapContext); if(c)c=func_ov055_0220e574(c,FIELD(void*,scene,0x1c),FIELD(void*,scene,0x20),mode); FIELD(void*,scene,0x24)=c;
@@ -135,7 +136,7 @@ void *func_ov055_0220ea68(void *scene)
     void *c=FIELD(void*,scene,0x24); FIELD(const void*,scene,0)=data_ov055_0220f058;
     if(c){func_ov055_0220e7cc(c); Heap_Free(c);} GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14[0],FIELD(void*,scene,0x1c));
     GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont,FIELD(void*,scene,0x20)); OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(),1);
-    VecFx32Object_Destroy((u8*)scene+8); func_0201e28c(scene); return scene;
+    VecFx32Object_Destroy((u8*)scene+8); FieldEffect_DestroyBase(scene); return scene;
 }
 
 /* Destroy all resources and free the scene allocation. */

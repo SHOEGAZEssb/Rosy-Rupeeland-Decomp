@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -24,7 +25,7 @@ typedef struct AuxiliarySpriteConfig {
 
 typedef struct AuxiliaryTimedSpritePresentation {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     void *presentation08;
     u8 *auxiliary0c;
     s16 timer10;
@@ -40,7 +41,7 @@ extern "C" {
 extern void *gAuxiliaryTimedSpritePresentationVtable;
 extern const char gTimedSpriteAuxiliaryAllocationTag[];
 extern u8 *data_021052fc;
-extern void *TimedSpritePresentation_InitBase(void *self);
+
 extern AuxiliarySpriteConfig *TimedSpriteConfig_InitTracks(AuxiliarySpriteConfig *config);
 extern void *AnimationResource_Init(void *self, s32 first, s32 second, s32 third);
 extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
@@ -62,7 +63,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     AuxiliarySpriteConfig config;
     void *child;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)gAuxiliaryTimedSpritePresentationVtable;
     self->auxiliary0c =
         (u8 *)Heap_Alloc(0x10, gTimedSpriteAuxiliaryAllocationTag, 4, &gHeapContext);
@@ -96,7 +97,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
 }
 
 /*
- * Initialize the recovered base and this vtable; allocate/construct the
+ * Initialize the FieldEffect base and this vtable; allocate/construct the
  * 0x10-byte auxiliary from three inputs; use its words 0x04/0x08/0x0c plus
  * spriteGroup and trackSource to build a 120-frame config; allocate a 0x30-byte
  * offset-sprite child using the low byte of spriteValue and offset; retain a

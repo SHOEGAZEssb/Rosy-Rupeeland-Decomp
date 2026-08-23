@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -30,7 +31,7 @@ typedef struct TransientOrbitEffect {
 
 typedef struct RotatingCoreEffectController {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     u8 *core08;
     ResourceDescriptor *firstDescriptor0c;
     ResourceDescriptor *secondDescriptor10;
@@ -57,8 +58,7 @@ extern const char data_020d6a98[];
 extern const char data_020d6aa0[];
 extern const s16 data_020c9670[];
 extern u8 *data_021052fc;
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void VecFx32Object_Init(ControllerVector *);
 extern void VecFx32Object_InitComponents(ControllerVector *, s32, s32, s32);
 extern void VecFx32Object_InitCopy(ControllerVector *, const ControllerVector *);
@@ -103,7 +103,7 @@ RotatingCoreEffectController *func_02025300(
     RotatingCoreEffectController *self, const ControllerVector *position,
     void *owner, s32 countdown, s32 argument5, s32 argument6)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d6a70;
     VecFx32Object_InitCopy(&self->position18, position);
     self->effect28 = 0;
@@ -157,7 +157,7 @@ RotatingCoreEffectController *func_020254a4(
     destroy_polymorphic(self->secondDescriptor10);
     destroy_polymorphic(self->thirdDescriptor14);
     VecFx32Object_Destroy(&self->position18);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/indexed_sprite_overlay_presentation.c.
 .text
 .extern gIndexedSpriteOverlayPresentationVtable
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 
@@ -24,7 +24,7 @@ IndexedSpriteOverlayPresentation_Destroy: ; 0x0202721c
     add r0, r4, #0x8
     bl AnimationResourceState_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_02027264: .word gIndexedSpriteOverlayPresentationVtable

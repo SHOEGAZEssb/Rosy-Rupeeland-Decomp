@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -27,7 +28,7 @@ typedef struct ControllerList {
 
 typedef struct RisingSpriteSwarmPresentation {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     s32 referencePosition08;
     ControllerList controllers0c;
     s32 state1c;
@@ -52,8 +53,7 @@ extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *TimedSpritePresentation_InitBase(void *self);
-extern void *func_0201e28c(void *self);
+
 extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(PresentationValue *destination, const void *source);
 extern void VecFx32Object_Destroy(PresentationValue *value);
@@ -94,7 +94,7 @@ void RisingSpriteSwarmPresentation_SetControllerState(
     RisingSpriteSwarmPresentation *self, s32 state);
 
 /*
- * Initialize the recovered base, list owner, sprite-resource state, and track;
+ * Initialize the FieldEffect base, list owner, sprite-resource state, and track;
  * retain referencePosition and add a fixed-point Z offset from trackZ. Acquire
  * two graphics resources, initialize spriteConfig2c from the global resource
  * table and IDs 0x1658..0x165a, clear GameWork flags 0x408/0x409, reset the
@@ -107,7 +107,7 @@ RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Init(
 {
     PresentationValue offset;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)data_020d6398;
     self->referencePosition08 = referencePosition;
     RisingSpriteControllerList_Init(&self->controllers0c);
@@ -189,11 +189,11 @@ static RisingSpriteSwarmPresentation *teardown_swarm(
     AnimationResourceState_Destroy(self->spriteConfig2c);
     self->controllers0c.vtable = (void **)data_020d6358;
     RisingSpriteControllerList_Clear(&self->controllers0c);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
-/* Destroy all children and owned resources, tear down the base, and return self. */
+/* Destroy all children and owned resources, tear down the FieldEffect base, and return self. */
 RisingSpriteSwarmPresentation *RisingSpriteSwarmPresentation_Destroy(
     RisingSpriteSwarmPresentation *self)
 {

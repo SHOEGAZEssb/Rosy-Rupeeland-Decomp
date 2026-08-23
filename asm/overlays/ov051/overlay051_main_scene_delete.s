@@ -4,7 +4,7 @@
 .extern data_ov051_0220df48
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern func_020ae96c
 
 .global func_ov051_0220dd44
@@ -18,7 +18,7 @@ func_ov051_0220dd44:
     mov r1, #0x0
     bl OverlayManager_UnloadOverlay
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

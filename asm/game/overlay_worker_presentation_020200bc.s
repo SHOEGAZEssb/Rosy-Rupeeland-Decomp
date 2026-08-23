@@ -7,7 +7,7 @@
 .extern data_021055cc
 .extern OverlaySlot_Init
 .extern OverlaySlot_LoadOverlay
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern func_ov043_0220b740
 .extern func_ov047_0220bda8
 .extern gGameWork
@@ -21,7 +21,7 @@ func_020200bc: ; 0x020200bc
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_0202016c
     add r0, r7, #0x10
     str r1, [r7, #0x0]

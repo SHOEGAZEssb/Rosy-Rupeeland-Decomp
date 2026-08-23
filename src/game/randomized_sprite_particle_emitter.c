@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/game_work.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
@@ -30,7 +31,7 @@ typedef struct ParticleList {
 
 typedef struct RandomizedSpriteParticleEmitter {
     void **vtable_00;
-    u32 baseFlags_04;
+    u32 dispatchState;
     const void *projection_08;
     EmitterVector position_0c;
     EmitterVector target_1c;
@@ -64,8 +65,7 @@ extern void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void VecFx32Object_InitCopy(void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void *PresentationList_AppendObject(void *, void *);
 extern void AnimationResourceState_ReleaseResources(void *);
 extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -96,7 +96,7 @@ RandomizedSpriteParticleEmitter *func_02028b98(
     const EmitterVector *position, const EmitterVector *target, s32 frame)
 {
     u8 temporary[0x10];
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable_00 = (void **)data_020de8cc;
     self->projection_08 = projection;
     VecFx32Object_InitCopy(&self->position_0c, position);
@@ -148,7 +148,7 @@ void func_02028cd4(ParticleList *self)
     self->count_0c = 0;
 }
 
-/* Release all particles/nodes and owned graphics/vector/base state; return self. */
+/* Release all particles/nodes and owned graphics/vector/FieldEffect state; return self. */
 RandomizedSpriteParticleEmitter *func_02028d14(
     RandomizedSpriteParticleEmitter *self)
 {
@@ -172,7 +172,7 @@ RandomizedSpriteParticleEmitter *func_02028d14(
     __destroy_arr(self->resources_2c, 2, 0x10, AnimationResource_Destroy);
     VecFx32Object_Destroy(&self->target_1c);
     VecFx32Object_Destroy(&self->position_0c);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

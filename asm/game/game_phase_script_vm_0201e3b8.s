@@ -8,7 +8,7 @@
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
 .extern TimedSpritePresentation_SetVisible
-.extern data_020d6248
+.extern gFieldEffectVtable
 .extern data_020d6098
 .global TimedSpritePresentation_SetVisible
 TimedSpritePresentation_SetVisible: ; 0x0201e3b8

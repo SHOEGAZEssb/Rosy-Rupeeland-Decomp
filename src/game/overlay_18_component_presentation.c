@@ -1,14 +1,15 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
 /*
- * Adapt an overlay-94 0x18-byte component to the common presentation base.
+ * Adapt an overlay-94 0x18-byte component to the FieldEffect base.
  * The wrapper owns the component and an embedded helper configured with ID
  * 0x5e, and forwards two component operations.
  */
 typedef struct Overlay18ComponentPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     void *component08;
     u8 helper0c[0x10];
 } Overlay18ComponentPresentation;
@@ -18,8 +19,7 @@ extern "C" {
 #endif
 extern void *data_020d6984;
 extern const char gOverlay18ComponentAllocationTag[];
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
@@ -33,13 +33,13 @@ extern s32 data_ov089_02219b78(void *);
 #endif
 
 /*
- * Initialize the common base and helper, select helper ID 0x5e, allocate and
+ * Initialize the FieldEffect base and helper, select helper ID 0x5e, allocate and
  * construct the 0x18-byte overlay component, store it, and return self.
  */
 Overlay18ComponentPresentation *func_02024468(
     Overlay18ComponentPresentation *self)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d6984;
     OverlaySlot_Init(self->helper0c);
     OverlaySlot_LoadOverlay(self->helper0c, 0x5e);
@@ -50,7 +50,7 @@ Overlay18ComponentPresentation *func_02024468(
     return self;
 }
 
-/* Destroy/free the component, tear down helper and base, and return self. */
+/* Destroy/free the component, tear down its helper and FieldEffect base, and return self. */
 Overlay18ComponentPresentation *func_020244cc(
     Overlay18ComponentPresentation *self)
 {
@@ -61,7 +61,7 @@ Overlay18ComponentPresentation *func_020244cc(
     }
     OverlaySlot_UnloadOverlay(self->helper0c);
     OverlaySlot_Destroy(self->helper0c);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

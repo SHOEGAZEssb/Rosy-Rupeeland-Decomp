@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern __destroy_arr
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern DisplayControlElement_NoOp
 
     .global FourSlot3DPresentation_DestroyAndFree
@@ -16,7 +16,7 @@ FourSlot3DPresentation_DestroyAndFree: ; 0x020246a0
     mov r2, #0x1c
     bl __destroy_arr
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern gReversedFrameSpriteOverlayPresentationVtable
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 
@@ -25,7 +25,7 @@ ReversedFrameSpriteOverlayPresentation_DestroyAndFree: ; 0x02027420
     add r0, r4, #0x8
     bl AnimationResourceState_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

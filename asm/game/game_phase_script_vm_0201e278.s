@@ -8,10 +8,10 @@
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
 .extern TimedSpritePresentation_SetVisible
-.extern data_020d6248
+.extern gFieldEffectVtable
 .extern data_020d6098
-.global func_0201e278
-func_0201e278: ; 0x0201e278
+.global FieldEffect_DestroyAndFree
+FieldEffect_DestroyAndFree: ; 0x0201e278
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Heap_Free
@@ -19,4 +19,4 @@ func_0201e278: ; 0x0201e278
     ldmia sp!, {r4, pc}
 
 
-.size func_0201e278, . - func_0201e278
+.size FieldEffect_DestroyAndFree, . - FieldEffect_DestroyAndFree

@@ -6,7 +6,7 @@
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
 .extern VecFx32Object_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_ov055_0220e7cc
 .extern gDebugFont
@@ -39,7 +39,7 @@ func_ov055_0220eae4:
     add r0, r5, #0x8
     bl VecFx32Object_Destroy
     mov r0, r5
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r5
     bl Heap_Free
     mov r0, r5

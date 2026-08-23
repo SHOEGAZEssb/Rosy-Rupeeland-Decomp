@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /*
@@ -9,7 +10,7 @@
 
 typedef struct DisplayFadePresentation {
     void **vtable;
-    u32 flags04;
+    u32 dispatchState;
     void *callbackBase08;
     s32 callbackTag0c;
     s32 state10;
@@ -34,7 +35,7 @@ extern "C" {
 extern void *data_020d6564;
 extern void *data_020f4e18;
 extern void *gGameWork;
-extern void *TimedSpritePresentation_InitBase(void *self);
+
 extern void func_02091b6c(void *fade);
 extern void func_02091b98(void *fade, s32 duration);
 extern s32 func_02091c7c(void *fade, s32 channel);
@@ -77,10 +78,10 @@ extern const void *data_020d63d8[];
 #endif
 
 /*
- * Initialize the base, fade and scroll helpers, retain engine selection and
+ * Initialize the FieldEffect base, fade and scroll helpers, retain engine selection and
  * fadeParameter, and load graphics IDs 0xc006..0xc008.  Configure the selected
  * display engine's blend/background registers and resource layers, clear one
- * 0x20-byte palette row selected by paletteIndex, enable recovered base flag
+ * 0x20-byte palette row selected by paletteIndex, enable FieldEffect dispatch-state
  * bits 0/1, clear GameWork flag 0x3d3, install the initial callback pair from
  * data_020d63c0, destroy the temporary resource set, and return self.  All
  * direct 0x04000000/0x04001000 writes are confirmed hardware effects.
@@ -92,7 +93,7 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
     GraphicsResourceSet resources;
     void *palette;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)data_020d6564;
     func_02091b6c(self->fade14);
     func_020929b0(self->scroll3c);
@@ -136,8 +137,8 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
         palette = (u8 *)GraphicsBgResourceData_GetDecoded(resources.second) + paletteIndex * 0x20;
         func_020b1ff0(palette, 0, 0x20);
     }
-    self->flags04 = (self->flags04 | 2) & ~1;
-    self->flags04 |= 1;
+    self->dispatchState = (self->dispatchState | 2) & ~1;
+    self->dispatchState |= 1;
     GameWork_ClearFlag(gGameWork, 0x3d3);
     PairedReferenceState_SetReferencesAndReset(
         self, (void *)data_020d63c0[0], (void *)data_020d63c0[1]);

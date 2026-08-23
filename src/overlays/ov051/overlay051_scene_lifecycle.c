@@ -1,8 +1,9 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
-/* Overlay 51 shared dream-scene base teardown and deleting hook. */
+/* Overlay 51 shared dream-scene FieldEffect teardown and deleting hook. */
 
-extern "C" void func_0201e28c(void *scene);
+
 extern "C" void Heap_Free(void *allocation);
 
 /*
@@ -11,7 +12,7 @@ extern "C" void Heap_Free(void *allocation);
  */
 extern "C" void *func_ov051_0220d658(void *scene)
 {
-    func_0201e28c(scene);
+    FieldEffect_DestroyBase(scene);
     return scene;
 }
 
@@ -21,7 +22,7 @@ extern "C" void *func_ov051_0220d658(void *scene)
  */
 extern "C" void *func_ov051_0220d66c(void *scene)
 {
-    func_0201e28c(scene);
+    FieldEffect_DestroyBase(scene);
     Heap_Free(scene);
     return scene;
 }

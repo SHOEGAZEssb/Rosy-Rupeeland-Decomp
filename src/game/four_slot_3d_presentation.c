@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -23,7 +24,7 @@ typedef struct ScreenSegment {
 
 typedef struct FourSlot3DPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     s32 selection08;
     s32 intensity0c[4];
     DisplayControlElement elements1c[4];
@@ -40,8 +41,7 @@ extern const ScreenSegment data_020d67fc[4];
 extern const s16 data_020c9670[];
 extern void *gGameWork;
 extern u8 *data_021052fc;
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void DisplayControlElement_NoOp(DisplayControlElement *);
 extern void func_02091b6c(DisplayControlElement *);
 extern void func_02091bac(DisplayControlElement *, s32, s32, s32, s32);
@@ -60,7 +60,7 @@ void FourSlot3DPresentation_DrawSegmentQuad(FourSlot3DPresentation *self,
                    u16 secondColor);
 
 /*
- * Initialize the common base and four display-control elements, store the
+ * Initialize the FieldEffect base and four display-control elements, store the
  * selection and a random word, then initialize each intensity to zero when its
  * flag is set or 0x800 otherwise.  Configure every element with arguments
  * (3,3,intensity/256,6) and return self.
@@ -69,7 +69,7 @@ FourSlot3DPresentation *FourSlot3DPresentation_Init(
     FourSlot3DPresentation *self, s32 selection)
 {
     s32 index;
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d6934;
     for (index = 0; index < 4; index++) {
         func_02091b6c(&self->elements1c[index]);
@@ -85,7 +85,7 @@ FourSlot3DPresentation *FourSlot3DPresentation_Init(
     return self;
 }
 
-/* Destroy all four display-control elements, tear down base, and return self. */
+/* Destroy all four display-control elements, tear down the FieldEffect base, and return self. */
 FourSlot3DPresentation *FourSlot3DPresentation_Destroy(
     FourSlot3DPresentation *self)
 {
@@ -93,7 +93,7 @@ FourSlot3DPresentation *FourSlot3DPresentation_Destroy(
     for (index = 3; index >= 0; index--) {
         DisplayControlElement_NoOp(&self->elements1c[index]);
     }
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

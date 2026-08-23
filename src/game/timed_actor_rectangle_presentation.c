@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 typedef struct TimedActorRectanglePresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     u8 *actor08;
     s16 firstExtent0c;
     s16 secondExtent0e;
@@ -21,8 +22,7 @@ extern "C" {
 extern void *data_020d6a24;
 extern u8 *data_021052fc;
 extern void *data_020f4e14;
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void PresentationList_AppendObject(void *, void *);
 extern const s32 *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 func_020befec(s32, s32);
@@ -32,7 +32,7 @@ extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 #endif
 
 /*
- * Initialize base state, retain actor and two signed 16-bit extents plus the
+ * Initialize FieldEffect state, retain actor and two signed 16-bit extents plus the
  * stack-provided lifetime, register self in the runtime list at offset 0x2f7c,
  * and return self.
  */
@@ -40,7 +40,7 @@ TimedActorRectanglePresentation *func_02025120(
     TimedActorRectanglePresentation *self, void *actor, s32 firstExtent,
     s32 secondExtent, s32 lifetime)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)data_020d6a24;
     self->actor08 = (u8 *)actor;
     self->firstExtent0c = (s16)firstExtent;
@@ -50,19 +50,19 @@ TimedActorRectanglePresentation *func_02025120(
     return self;
 }
 
-/* Tear down the common base and return self; this object owns no actor data. */
+/* Tear down the FieldEffect base and return self; this object owns no actor data. */
 TimedActorRectanglePresentation *func_0202517c(
     TimedActorRectanglePresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
-/* Perform base teardown, free self, and return its old address. */
+/* Perform FieldEffect base teardown, free self, and return its old address. */
 TimedActorRectanglePresentation *func_02025190(
     TimedActorRectanglePresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     Heap_Free(self);
     return self;
 }

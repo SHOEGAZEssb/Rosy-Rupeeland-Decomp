@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 
 typedef struct PaletteCyclePresentation {
-    void **vtable; u32 flags04; s32 firstIndex08; s32 lastIndex0c;
+    void **vtable; u32 dispatchState; s32 firstIndex08; s32 lastIndex0c;
     u16 palette10[0x100]; u8 field210[0x200]; u8 generator410[0x18];
     u8 fade428[0x1c]; s32 uploadEnabled444;
 } PaletteCyclePresentation;
@@ -19,8 +20,7 @@ extern "C" {
 extern void *gPaletteCyclePresentationVtable;
 extern void *data_020f4e18;
 extern void *gGameWork;
-extern void *TimedSpritePresentation_InitBase(void *);
-extern void *func_0201e28c(void *);
+
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
@@ -50,12 +50,12 @@ void PaletteCyclePresentation_AdvancePalette(PaletteCyclePresentation *self);
  * Initialize base, generator and fade helpers; set palette range 1..120; load
  * resource IDs 0x904b/0x904c/0x904f and copy its 0x200-byte palette. Configure
  * generator mode 5, prewarm one update for each range step, clear flag 0x408,
- * enable base flag bit 1, destroy the temporary resource set, and return self.
+ * enable FieldEffect dispatch-state bit 1, destroy the temporary resource set, and return self.
  */
 PaletteCyclePresentation *PaletteCyclePresentation_Init(PaletteCyclePresentation *self)
 {
     void *resources[3]; s32 i;
-    TimedSpritePresentation_InitBase(self); self->vtable=(void **)gPaletteCyclePresentationVtable;
+    FieldEffect_Init(self); self->vtable=(void **)gPaletteCyclePresentationVtable;
     func_02091d08(self->generator410); func_02091b6c(self->fade428);
     self->uploadEnabled444=0; self->firstIndex08=1; self->lastIndex0c=120;
     GraphicsResourceSet_Init(resources);
@@ -63,17 +63,17 @@ PaletteCyclePresentation *PaletteCyclePresentation_Init(PaletteCyclePresentation
     MIi_CpuCopy16(GraphicsBgResourceData_GetDecoded(resources[1]),self->palette10,0x200);
     func_02091d24(self->generator410,1,0,0,5);
     for(i=self->firstIndex08;i<self->lastIndex0c;i++) PaletteCyclePresentation_AdvancePalette(self);
-    GameWork_ClearFlag(gGameWork,0x408); self->flags04|=2;
+    GameWork_ClearFlag(gGameWork,0x408); self->dispatchState|=2;
     GraphicsResourceSet_Destroy(resources); return self;
 }
 
-/* Disable uploads, tear down the recovered base, and return self. */
+/* Disable uploads, tear down the FieldEffect base, and return self. */
 PaletteCyclePresentation *PaletteCyclePresentation_Destroy(PaletteCyclePresentation *self)
-{ self->uploadEnabled444=0; func_0201e28c(self); return self; }
+{ self->uploadEnabled444=0; FieldEffect_DestroyBase(self); return self; }
 
-/* Disable uploads, tear down the recovered base, free self, and return its old address. */
+/* Disable uploads, tear down the FieldEffect base, free self, and return its old address. */
 PaletteCyclePresentation *PaletteCyclePresentation_DestroyAndFree(PaletteCyclePresentation *self)
-{ self->uploadEnabled444=0; func_0201e28c(self); Heap_Free(self); return self; }
+{ self->uploadEnabled444=0; FieldEffect_DestroyBase(self); Heap_Free(self); return self; }
 
 /*
  * Shift palette entries in the configured range one place upward. With 1/32

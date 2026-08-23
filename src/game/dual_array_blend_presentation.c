@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -10,7 +11,7 @@
 
 typedef struct BlendElement { u8 bytes[0x9c]; } BlendElement;
 typedef struct DualArrayBlendPresentation {
-    void **vtable; u32 flags04; void *callback08; s32 callbackTag0c;
+    void **vtable; u32 dispatchState; void *callback08; s32 callbackTag0c;
     s32 state10; s32 timer14; s32 engine18; s32 active1c;
     BlendElement first20[3]; BlendElement second1f4[3]; u32 random3c8;
 } DualArrayBlendPresentation;
@@ -29,8 +30,7 @@ extern void *data_021055dc;
 extern void *gGameWork;
 extern u8 gSystemState[];
 extern const s16 data_020c36c4[];
-extern void *TimedSpritePresentation_InitBase(void *);
-extern void *func_0201e28c(void *);
+
 extern void Presentation_InitVariant(void *);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
@@ -58,7 +58,7 @@ void DualArrayBlendPresentation_RetargetCompletedRandomly(
     DualArrayBlendPresentation *);
 
 /*
- * Initialize the base and construct both three-element, 0x9c-stride SDK arrays.
+ * Initialize the FieldEffect base and construct both three-element, 0x9c-stride SDK arrays.
  * Seed random3c8, retain engine, initialize mirrored element endpoints spaced
  * by 0x8000, set GameWork flag 0x3d2, enable the object, install the initial
  * callback pair, and return self. Array construction/destruction is an SDK ABI
@@ -68,7 +68,7 @@ DualArrayBlendPresentation *DualArrayBlendPresentation_Init(
     DualArrayBlendPresentation *self, s32 engine)
 {
     s32 i;
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)gDualArrayBlendPresentationVtable;
     for (i = 0; i < 3; i++) {
         Presentation_InitVariant(&self->first20[i]);
@@ -83,7 +83,7 @@ DualArrayBlendPresentation *DualArrayBlendPresentation_Init(
     }
     GameWork_SetFlag(gGameWork, 0x3d2);
     self->active1c = 1;
-    self->flags04 = ((self->flags04 | 2) & ~1) | 1;
+    self->dispatchState = ((self->dispatchState | 2) & ~1) | 1;
     ExtendedCallbackState_SetReferencesAndReset(self, (void *)data_020d63d0[0],
                   (void *)data_020d63d0[1]);
     return self;
@@ -110,11 +110,11 @@ static DualArrayBlendPresentation *teardown_blend(
         BlendElement_DestroyNoOp(&self->second1f4[i]);
         BlendElement_DestroyNoOp(&self->first20[i]);
     }
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
-/* Restore selected display state, destroy both arrays and base, and return self. */
+/* Restore selected display state, destroy both arrays and the FieldEffect base, and return self. */
 DualArrayBlendPresentation *DualArrayBlendPresentation_Destroy(DualArrayBlendPresentation *self)
 { return teardown_blend(self); }
 

@@ -1,14 +1,14 @@
 ; Matching retail form; see src/game/main_window_mask_presentation.c.
 .text
 .extern data_020de838
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 
     .global func_02028778
     .type func_02028778, @function
 func_02028778: ; 0x02028778
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_020287a0
     mov r0, r4
     str r1, [r4, #0x0]

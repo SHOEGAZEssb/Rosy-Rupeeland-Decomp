@@ -10,7 +10,7 @@
 .extern AnimationResource_Init
 .extern ActorMotionAreaFollower_GetPosition
 .extern PresentationList_AppendObject
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern func_0201e584
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext
@@ -24,7 +24,7 @@ AuxiliaryTimedSpritePresentation_Init: ; 0x0201f864
     mov r7, r1
     mov r6, r2
     mov r5, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r0, .L_0201f994
     ldr r1, .L_0201f998
     ldr r3, .L_0201f99c

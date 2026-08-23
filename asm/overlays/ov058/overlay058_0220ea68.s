@@ -7,7 +7,7 @@
 .extern data_ov058_0220fcc4
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
@@ -70,7 +70,7 @@ func_ov058_0220ea68:
     ldr r3, .L_0220eb4c
     bl __destroy_arr
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220eb40: .word data_ov058_0220fcc4

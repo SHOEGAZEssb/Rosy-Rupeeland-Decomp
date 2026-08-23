@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 extern "C" void MI_CpuCopy8(const void *source, void *destination, u32 size);
@@ -58,7 +59,7 @@ extern "C" void *Heap_Alloc(u32 size, const void *tag, u32 alignment,
                              void *heap);
 extern "C" void Heap_Free(void *allocation);
 extern "C" void func_0201df44(void *manager, void *object);
-extern "C" void *func_0201e28c(void *scene);
+
 extern "C" void *OverlayManager_GetGlobal(void);
 extern "C" void OverlayManager_UnloadOverlay(void *manager, s32 slot);
 
@@ -102,7 +103,7 @@ extern "C" void *func_ov051_0220d99c(void *scene)
     GX_SetBankForSubBG(4);
     func_020aea7c(0x80);
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 0);
-    func_0201e28c(scene);
+    FieldEffect_DestroyBase(scene);
     return scene;
 }
 

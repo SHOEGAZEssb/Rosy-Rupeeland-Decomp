@@ -3,7 +3,7 @@
 .extern Heap_Free
 .extern data_ov054_0220f160
 .extern VecFx32Object_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern AnimationResourceState_Destroy
 
 .global func_ov054_0220ed54
@@ -22,7 +22,7 @@ func_ov054_0220ed54:
     add r0, r4, #0x8
     bl VecFx32Object_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

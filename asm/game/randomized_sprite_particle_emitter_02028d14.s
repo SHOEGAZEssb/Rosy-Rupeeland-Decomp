@@ -7,7 +7,7 @@
 .extern data_020f4e14
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Destroy
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 .extern func_0202895c
 .extern func_02028cd4
 .extern func_02028e9c
@@ -61,7 +61,7 @@ func_02028d14: ; 0x02028d14
     add r0, r6, #0xc
     bl VecFx32Object_Destroy
     mov r0, r6
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r6
     ldmia sp!, {r4, r5, r6, pc}
 .L_02028dc4: .word data_020de8cc

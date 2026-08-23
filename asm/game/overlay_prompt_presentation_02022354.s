@@ -12,8 +12,8 @@
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
 .extern GamePhaseCurrencyHud_SetVisible
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern SceneInputBase_Update
 .extern func_02092c8c
@@ -54,7 +54,7 @@ func_02022354: ; 0x02022354
     add r0, r4, #0x10
     bl OverlaySlot_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

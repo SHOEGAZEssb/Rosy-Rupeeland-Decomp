@@ -7,7 +7,7 @@
 .extern gSpriteOverlayControllerAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -23,7 +23,7 @@ IndexedSpriteOverlayPresentation_Init: ; 0x02027150
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_02027200
     add r0, r5, #0x8
     str r1, [r5, #0x0]

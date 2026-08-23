@@ -1,10 +1,11 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /* Recovered overlay 57 compact graphics scene lifecycle. */
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" void TimedSpritePresentation_InitBase(void *);
-extern "C" void func_0201e28c(void *);
+
+
 extern "C" void GraphicsResourceSet_Init(void *);
 extern "C" void GraphicsResourceSet_Destroy(void *);
 extern "C" void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
@@ -44,7 +45,7 @@ static s16 configure_layer(s16 value, s32 index)
 /* Construct the presentation, load resources, and configure its four layers. */
 extern "C" void *func_ov057_0220e400(void *scene)
 {
-    TimedSpritePresentation_InitBase(scene);
+    FieldEffect_Init(scene);
     FIELD(void *, scene, 0) = data_ov057_0220e7d4;
     GraphicsResourceSet_Init((u8 *)scene + 8);
     FIELD(s32, scene, 0x20) = 0;
@@ -65,7 +66,7 @@ static void destroy_scene(void *scene)
     FIELD(void *, scene, 0) = data_ov057_0220e7d4;
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 1);
     GraphicsResourceSet_Destroy((u8 *)scene + 8);
-    func_0201e28c(scene);
+    FieldEffect_DestroyBase(scene);
 }
 
 /* Destroy the graphics scene while retaining its allocation. */

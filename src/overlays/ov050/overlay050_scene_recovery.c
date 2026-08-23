@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /* Overlay 50 field-effect scene lifecycle and four-way particle controller. */
@@ -16,8 +17,7 @@ extern "C" u8 data_ov050_0220e3e8[];
 extern "C" u8 data_ov050_0220e3f0[];
 extern "C" void *Heap_Alloc(u32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
-extern "C" void *TimedSpritePresentation_InitBase(void *);
-extern "C" void *func_0201e28c(void *);
+
 extern "C" void PresentationList_AppendObject(void *, void *);
 extern "C" void AnimationResourceState_InitEmbedded(void *);
 extern "C" void AnimationResourceState_Destroy(void *);
@@ -47,7 +47,7 @@ extern "C" void Overlay050Scene_SetChildValue34(void *, s32);
 extern "C" void func_ov050_0220e168(void *, const void *, const void *);
 
 /*
- * Construct caller-owned `scene`: initialize the base scene and owner, create
+ * Construct caller-owned `scene`: initialize its FieldEffect base and owner, create
  * render records/font states, allocate and construct the manager/children,
  * initialize counters/callbacks, and clear the relevant GameWork flag. Return
  * `scene`. Heap, GameWork, sprite/font, resource-owner, and SDK state change.
@@ -58,7 +58,7 @@ extern "C" void *func_ov050_0220db84(void *scene, void *argument,
 {
     s32 index;
 
-    TimedSpritePresentation_InitBase(scene);
+    FieldEffect_Init(scene);
     FIELD(void *, scene, 0) = data_ov050_0220e3c0;
     AnimationResourceState_InitEmbedded((u8 *)scene + 8);
     FIELD(void *, scene, 0x2c) = argument;
@@ -93,8 +93,8 @@ extern "C" void *func_ov050_0220db84(void *scene, void *argument,
 
 /*
  * Destroy the scene without freeing its own storage: release manager and child
- * effects, font states, task/transition state, render record, owner, and base
- * scene in reverse order. Return the unchanged scene pointer. Heap and SDK
+ * effects, font states, task/transition state, render record, owner, and
+ * FieldEffect base in reverse order. Return the unchanged scene pointer. Heap and SDK
  * resources change; no direct MMIO occurs.
  */
 static void *DestroyScene(void *scene, s32 freeScene)
@@ -116,7 +116,7 @@ static void *DestroyScene(void *scene, s32 freeScene)
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 0);
     VecFx32Object_Destroy((u8 *)scene + 0x30);
     AnimationResourceState_Destroy((u8 *)scene + 8);
-    func_0201e28c(scene);
+    FieldEffect_DestroyBase(scene);
     if (freeScene != 0)
         Heap_Free(scene);
     return scene;

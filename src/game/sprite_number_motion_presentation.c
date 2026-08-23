@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -9,7 +10,7 @@
 
 typedef struct TrackValue { u8 bytes[0x10]; } TrackValue;
 typedef struct SpriteNumberMotionPresentation {
-    void **vtable; u32 field04; s32 sampleArgument08; TrackValue track0c;
+    void **vtable; u32 dispatchState; s32 sampleArgument08; TrackValue track0c;
     TrackValue firstOffset1c; TrackValue secondOffset2c;
     void *numberGroup3c; s32 timer40;
 } SpriteNumberMotionPresentation;
@@ -19,8 +20,7 @@ extern "C" {
 #endif
 extern void *data_020d6658[];
 extern const char gSpriteNumberGroupAllocationTag[];
-extern void *TimedSpritePresentation_InitBase(void *);
-extern void *func_0201e28c(void *);
+
 extern void VecFx32Object_InitCopy(void *,const void *);
 extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_InitComponents(void *,s32,s32,s32);
@@ -53,7 +53,7 @@ SpriteNumberMotionPresentation *func_02022cb0(
 {
     TrackValue sampled,position,temp;
     void *group=0,*owner;
-    TimedSpritePresentation_InitBase(self);self->vtable=(void **)data_020d6658;
+    FieldEffect_Init(self);self->vtable=(void **)data_020d6658;
     self->sampleArgument08=sampleArgument;VecFx32Object_InitCopy(&self->track0c,config+0x18);
     VecFx32Object_Init(&self->firstOffset1c);VecFx32Object_Init(&self->secondOffset2c);
     *(s32 *)&self->track0c.bytes[0x0c]+=0x10000;
@@ -78,7 +78,7 @@ static SpriteNumberMotionPresentation *teardown_number_motion(SpriteNumberMotion
     self->vtable=(void **)data_020d6658;
     if(self->numberGroup3c){func_02022b70(self->numberGroup3c);Heap_Free(self->numberGroup3c);}
     VecFx32Object_Destroy(&self->secondOffset2c);VecFx32Object_Destroy(&self->firstOffset1c);
-    VecFx32Object_Destroy(&self->track0c);func_0201e28c(self);return self;
+    VecFx32Object_Destroy(&self->track0c);FieldEffect_DestroyBase(self);return self;
 }
 
 /* Destroy/free the number group and all three tracks, tear down base, and return self. */

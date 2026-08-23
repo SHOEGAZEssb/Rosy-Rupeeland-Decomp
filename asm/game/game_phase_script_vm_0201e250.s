@@ -8,10 +8,10 @@
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_ReleaseState
 .extern TimedSpritePresentation_SetVisible
-.extern data_020d6248
+.extern gFieldEffectVtable
 .extern data_020d6098
-.global TimedSpritePresentation_InitBase
-TimedSpritePresentation_InitBase: ; 0x0201e250
+.global FieldEffect_Init
+FieldEffect_Init: ; 0x0201e250
     ldr r1, L_0201e270
     str r1, [r0, #0x0]
     ldr r1, [r0, #0x4]
@@ -20,7 +20,7 @@ TimedSpritePresentation_InitBase: ; 0x0201e250
     bic r1, r1, #0x3fc
     str r1, [r0, #0x4]
     bx lr
-L_0201e270: .word data_020d6248
+L_0201e270: .word gFieldEffectVtable
 
 
-.size TimedSpritePresentation_InitBase, . - TimedSpritePresentation_InitBase
+.size FieldEffect_Init, . - FieldEffect_Init

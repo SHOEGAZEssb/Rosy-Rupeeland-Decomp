@@ -7,7 +7,7 @@
 .extern data_ov050_0220e3c0
 .extern data_ov050_0220e3e8
 .extern VecFx32Object_InitCopy
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -23,7 +23,7 @@ func_ov050_0220db84:
     mov r6, r1
     mov r5, r2
     mov r4, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_0220dc94
     add r0, r10, #0x8
     str r1, [r10, #0x0]

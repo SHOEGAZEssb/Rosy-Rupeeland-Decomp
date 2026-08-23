@@ -1,7 +1,7 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
-#include "tingle/types.h"
 
-/* Implement the base timed sprite presentation used by several runtime effects. */
+/* Implement CFieldEffect, followed by the independent CEffChip class. */
 
 typedef struct PresentationTrack { u8 bytes[0x10]; } PresentationTrack;
 typedef struct TimedSpritePresentation {
@@ -15,7 +15,6 @@ typedef struct TimedSpritePresentation {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d6248;
 extern void *data_020d6098;
 extern void VecFx32Object_InitComponents(PresentationTrack *track,s32 first,s32 second,s32 third);
 extern void VecFx32Object_Destroy(void *track);
@@ -27,23 +26,23 @@ extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner, void *sprite);
 }
 #endif
 
-/* Install the base vtable and clear recovered flag bits 0..9; return self. */
-void *TimedSpritePresentation_InitBase(void *self)
+/* Install the FieldEffect vtable, clear dispatch-state bits 0..9, and return self. */
+void *FieldEffect_Init(void *self)
 {
-    u32 *words=(u32 *)self;
-    words[0]=(u32)data_020d6248;
-    words[1]&=~0x3ff;
+    FieldEffect *effect = (FieldEffect *)self;
+    effect->vtable = (void **)gFieldEffectVtable;
+    effect->dispatchState &= ~0x3ff;
     return self;
 }
 
-/* Base destructor is a recovered no-op and returns self unchanged. */
-void *func_0201e274(void *self) { return self; }
+/* FieldEffect's non-deleting destructor is a no-op and returns self. */
+void *FieldEffect_Destroy(void *self) { return self; }
 
-/* Free the base object and return its old address. */
-void *func_0201e278(void *self) { Heap_Free(self); return self; }
+/* Free the FieldEffect object and return its old address. */
+void *FieldEffect_DestroyAndFree(void *self) { Heap_Free(self); return self; }
 
-/* Base update is a recovered no-op and returns the incoming value unchanged. */
-s32 func_0201e28c(s32 value) { return value; }
+/* Shared derived-destructor tail; the FieldEffect base owns no resources. */
+void *FieldEffect_DestroyBase(void *self) { return self; }
 
 /*
  * Initialize two zeroed interpolation tracks, clear the timer, create a sprite

@@ -5,7 +5,7 @@
 .extern data_ov057_0220e7d4
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
-.extern func_0201e28c
+.extern FieldEffect_DestroyBase
 
 .global func_ov057_0220e518
 func_ov057_0220e518:
@@ -19,7 +19,7 @@ func_ov057_0220e518:
     add r0, r4, #0x8
     bl GraphicsResourceSet_Destroy
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4

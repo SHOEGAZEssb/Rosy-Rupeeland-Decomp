@@ -10,7 +10,7 @@
 .extern AnimationResource_Init
 .extern ActorMotionAreaFollower_GetPosition
 .extern PresentationList_AppendObject
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern func_0201e584
 .extern TimedSpriteConfig_InitTracks
 .extern gHeapContext

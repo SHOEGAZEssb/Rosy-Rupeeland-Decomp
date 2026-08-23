@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /*
@@ -13,7 +14,7 @@ extern "C" u8 data_ov053_0220dd64[], data_ov053_0220dd70[], data_ov053_0220dd84[
 extern "C" u8 data_ov053_0220dd8c[], data_ov053_0220dd94[], data_ov053_0220dd9c[];
 extern "C" u32 data_ov053_0220dd30[];
 extern "C" void *data_021052fc, *gDebugFont, *gGameWork, *gSoundContext, *gHeapContext;
-extern "C" void TimedSpritePresentation_InitBase(void *);
+
 extern "C" void *func_ov053_0220d600(void *);
 extern "C" void func_ov053_0220da60(void *);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -27,7 +28,7 @@ extern "C" s32 GameWork_TestFlag(void *,u16);
 /* Construct the caller-owned field-effect scene and return it; graphics and GameWork state change. */
 extern "C" void *func_ov053_0220d624(void *scene, u32 mode)
 {
-    u8 *s=(u8*)scene; TimedSpritePresentation_InitBase(scene);
+    u8 *s=(u8*)scene; FieldEffect_Init(scene);
     *(u32**)s=data_ov053_0220dd10; func_ov053_0220d600(s+0x24);
     *(u16*)(s+0x34)=(u16)mode; *(u16*)(s+0x36)=0; *(u16*)(s+0x38)=0;
     func_ov053_0220da60(scene);
@@ -57,8 +58,8 @@ extern "C" void GraphicsSpriteGroupOwner_DestroyGroup(void *,void *);
 extern "C" void AnimationResourceState_ReleaseResources(void *);
 extern "C" void *OverlayManager_GetGlobal(void);
 extern "C" void OverlayManager_UnloadOverlay(void *,s32);
-extern "C" void func_0201e28c(void *);
-static void *ov053_destroy(void *scene){u8*s=(u8*)scene;*(u32**)s=data_ov053_0220dd10;GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont,*(void**)(s+8));AnimationResourceState_ReleaseResources(s+0x28);OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(),0);AnimationResource_Destroy(s+0x24);func_0201e28c(scene);return scene;}
+
+static void *ov053_destroy(void *scene){u8*s=(u8*)scene;*(u32**)s=data_ov053_0220dd10;GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont,*(void**)(s+8));AnimationResourceState_ReleaseResources(s+0x28);OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(),0);AnimationResource_Destroy(s+0x24);FieldEffect_DestroyBase(scene);return scene;}
 extern "C" void *func_ov053_0220d7fc(void *scene){return ov053_destroy(scene);}
 /* Destroy and free `scene`, return its former identity, and update heap/graphics/task/SDK state. */
 extern "C" void Heap_Free(void *);

@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /*
@@ -19,8 +20,7 @@ extern "C" {
 #endif
 extern void *func_0201e290(void *, void *);
 extern void *func_0201e380(void *);
-extern void *func_0201e28c(void *);
-extern void *TimedSpritePresentation_InitBase(void *);
+
 extern void TimedSpritePresentation_SetVisible(void *, s32);
 extern void *VecFx32Object_Init(void *);
 extern void *VecFx32Object_InitCopy(void *, const void *);
@@ -359,7 +359,7 @@ void *func_ov073_02210710(void *scene, void *owner, s32 x, s32 y, s32 z,
 {
     void *animation;
     s32 adjustedZ = z;
-    TimedSpritePresentation_InitBase(scene);
+    FieldEffect_Init(scene);
     FIELD(const void *, scene, 0) = data_ov073_02210be4;
     FIELD(void *, scene, 0x10) = owner;
     FIELD(s16, scene, 0x18) = (s16)delay;
@@ -402,7 +402,7 @@ static void Overlay073_DestroySceneMembers(void *scene)
         vtable[1](resource);
     }
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 2);
-    func_0201e28c(scene);
+    FieldEffect_DestroyBase(scene);
 }
 
 /* Destroy the paired scene without freeing its allocation. */

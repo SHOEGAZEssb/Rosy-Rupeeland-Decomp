@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -16,7 +17,7 @@ typedef struct IndexedResourceRecord {
 
 typedef struct IndexedSpriteOverlayPresentation {
     void **vtable00;
-    u32 field04;
+    u32 dispatchState;
     u8 resource08[0x0c];
     u8 *spriteOwner14;
     void *controller18;
@@ -34,8 +35,7 @@ extern const IndexedResourceRecord data_020c370c[];
 extern const u8 data_020c3734[];
 extern void *data_020f4e18;
 extern void *data_020f4e14;
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -61,7 +61,7 @@ IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Init(
 {
     const IndexedResourceRecord *record = &data_020c370c[index];
     u8 *sprite;
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable00 = (void **)gIndexedSpriteOverlayPresentationVtable;
     AnimationResourceState_InitEmbedded(self->resource08);
     func_02071ee0(self->resource08, data_020f4e18,
@@ -79,7 +79,7 @@ IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Init(
 
 /*
  * Destroy the owned controller through vtable slot one, release the sprite
- * owner through GraphicsSpriteGroup_Destroy, destroy resource state and base, and return self.
+ * owner through GraphicsSpriteGroup_Destroy, destroy resource and FieldEffect state, and return self.
  */
 IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Destroy(
     IndexedSpriteOverlayPresentation *self)
@@ -90,7 +90,7 @@ IndexedSpriteOverlayPresentation *IndexedSpriteOverlayPresentation_Destroy(
             self->controller18);
     GraphicsSpriteGroup_Destroy(self->spriteOwner14);
     AnimationResourceState_Destroy(self->resource08);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 

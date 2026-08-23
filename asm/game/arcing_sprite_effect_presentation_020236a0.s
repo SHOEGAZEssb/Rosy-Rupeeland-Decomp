@@ -15,8 +15,8 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern VecFx32Triple_InitWithValues
 .extern func_02008378
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern VecFx32Object_ScaleRounded
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_ReleaseState

@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/types.h"
 
 /*
@@ -19,8 +20,8 @@ extern void *data_ov054_0220f160;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *TimedSpritePresentation_InitBase(void *);
-extern void *func_0201e28c(void *);
+
+
 extern void *VecFx32Object_Init(void *);
 extern void *VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void *VecFx32Object_Assign(void *, const void *);
@@ -71,7 +72,7 @@ void *func_ov054_0220e400(void *object, s32 variant, s32 enabled)
 {
     u8 initial[16];
     s32 i;
-    TimedSpritePresentation_InitBase(object);
+    FieldEffect_Init(object);
     FIELD(const void *, object, 0) = data_ov054_0220f0e0;
     FIELD(s32, object, 8) = variant;
     FIELD(s32, object, 0xc) = enabled;
@@ -94,7 +95,7 @@ void *func_ov054_0220e4a0(void *object)
 {
     OverlaySlot_Destroy((u8 *)object + 0x1a8);
     VecFx32Object_Destroy((u8 *)object + 0x194);
-    func_0201e28c(object);
+    FieldEffect_DestroyBase(object);
     return object;
 }
 
@@ -337,7 +338,7 @@ s32 func_ov054_0220ec4c(const void *object, const void *target)
 /* Construct the second, actor-following presentation and seed its position. */
 void *func_ov054_0220ec6c(void *object, void *owner)
 {
-    TimedSpritePresentation_InitBase(object);
+    FieldEffect_Init(object);
     FIELD(const void *, object, 0) = data_ov054_0220f108;
     VecFx32Object_Init((u8 *)object + 8);
     FIELD(void *, object, 0x18) = owner;
@@ -359,7 +360,7 @@ static void Overlay054_DestroySecondMembers(void *object)
     VecFx32Object_Destroy((u8 *)object + 0x30);
     AnimationResourceState_Destroy((u8 *)object + 0x24);
     VecFx32Object_Destroy((u8 *)object + 8);
-    func_0201e28c(object);
+    FieldEffect_DestroyBase(object);
 }
 
 /* Destroy the second presentation without freeing its allocation. */

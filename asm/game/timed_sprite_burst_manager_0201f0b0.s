@@ -15,7 +15,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorMotion_GetPosition
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern TimedSpritePresentation_SetVisible
 .extern func_0201e454
 .extern TimedSpriteBurstManager_Init

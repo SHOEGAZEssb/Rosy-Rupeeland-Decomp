@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -8,7 +9,7 @@
  */
 
 typedef struct OverlayPromptPresentation {
-    void **vtable; u32 flags04; s32 state08; void *worker0c;
+    void **vtable; u32 dispatchState; s32 state08; void *worker0c;
     u8 sharedResource10[0x0c]; s32 restoreMode1c; s32 callbacksActive20;
 } OverlayPromptPresentation;
 typedef void (*WorkerMethod)(void *);
@@ -21,8 +22,7 @@ extern const char gOverlayPromptWorkerAllocationTag[];
 extern u8 *gLupyContext;
 extern void *gGameWork;
 extern void *gDebugFont;
-extern void *TimedSpritePresentation_InitBase(void *);
-extern void *func_0201e28c(void *);
+
 extern void OverlaySlot_Init(void *);
 extern void OverlaySlot_Destroy(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
@@ -40,18 +40,18 @@ extern s32 GameWork_TestFlag(void *, s32);
 #endif
 
 /*
- * Initialize the base and embedded shared resource, clear worker/state/callback
+ * Initialize the FieldEffect base and embedded shared resource, clear worker/state/callback
  * fields, and set restoreMode1c when Lupy context halfword 0xb0 has bit 0 clear.
  * Enable recovered object flags, clear GameWork flag 0x408, and return self.
  */
 OverlayPromptPresentation *func_0202225c(OverlayPromptPresentation *self)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)data_020d653c;
     OverlaySlot_Init(self->sharedResource10);
     self->worker0c = 0; self->callbacksActive20 = 0; self->state08 = 0;
     self->restoreMode1c = ((*(u16 *)(gLupyContext + 0xb0) & 1) == 0);
-    self->flags04 = ((self->flags04 | 2) & ~1) | 1;
+    self->dispatchState = ((self->dispatchState | 2) & ~1) | 1;
     GameWork_ClearFlag(gGameWork, 0x408);
     return self;
 }
@@ -66,11 +66,11 @@ static OverlayPromptPresentation *teardown_prompt(OverlayPromptPresentation *sel
     }
     if (self->restoreMode1c != 0) GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
     OverlaySlot_Destroy(self->sharedResource10);
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
-/* Disable callbacks, destroy worker/resource/base state, restore Lupy mode if needed, and return self. */
+/* Disable callbacks, destroy worker/resource/FieldEffect state, restore Lupy mode if needed, and return self. */
 OverlayPromptPresentation *func_020222dc(OverlayPromptPresentation *self)
 { return teardown_prompt(self); }
 

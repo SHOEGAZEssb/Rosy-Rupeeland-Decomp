@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/four_stage_command_presentation.c.
 .text
 .extern gFourStageCommandPresentationVtable
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 
     .global FourStageCommandPresentation_Init
     .type FourStageCommandPresentation_Init, @function
@@ -11,7 +11,7 @@ FourStageCommandPresentation_Init: ; 0x02026f38
     mov r4, r1
     mov r7, r2
     mov r6, r3
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r0, .L_02026f88
     ldr r1, [sp, #0x18]
     str r0, [r5, #0x0]

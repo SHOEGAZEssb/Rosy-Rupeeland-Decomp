@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
@@ -42,7 +43,7 @@ typedef struct BurstSpriteConfig {
 
 typedef struct TimedSpriteBurstManager {
     void **vtable;
-    u32 field04;
+    u32 dispatchState;
     OwnedPointerArray sprites08;
     void *spriteGroup10;
     s32 state14;
@@ -75,7 +76,7 @@ extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
                            HeapContext *heap);
 extern void func_02003e38(void *allocation);
 extern void *ActorMotion_GetPosition(void *source);
-extern void *TimedSpritePresentation_InitBase(void *self);
+
 extern void *func_0201e454(void *self, BurstSpriteConfig *config);
 extern void TimedSpritePresentation_SetVisible(void *sprite, s32 enabled);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
@@ -94,7 +95,7 @@ BurstSpriteConfig *TimedSpriteConfig_InitTracks(BurstSpriteConfig *config);
 void OwnedPointerArray_Resize(OwnedPointerArray *array, s32 count);
 
 /*
- * Initialize the recovered base and manager vtable, construct a temporary
+ * Initialize the FieldEffect base and manager vtable, construct a temporary
  * sprite config, acquire a sprite group from gDebugFont, allocate count pointer
  * slots, and compute the input rectangle's fixed-point center.  For each slot,
  * choose a random table direction and radius 12..19, build start/velocity
@@ -109,7 +110,7 @@ TimedSpriteBurstManager *TimedSpriteBurstManager_Init(
     TouchPointValue center;
     s32 index;
 
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable = (void **)gTimedSpriteBurstManagerVtable;
     self->sprites08.items = 0;
     self->sprites08.count = 0;

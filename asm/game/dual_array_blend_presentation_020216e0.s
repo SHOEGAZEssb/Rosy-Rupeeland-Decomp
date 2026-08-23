@@ -11,8 +11,8 @@
 .extern data_020d63e0
 .extern gDualArrayBlendPresentationVtable
 .extern data_021055dc
-.extern TimedSpritePresentation_InitBase
-.extern func_0201e28c
+.extern FieldEffect_Init
+.extern FieldEffect_DestroyBase
 .extern BlendElement_DestroyNoOp
 .extern ExtendedCallbackState_SetReferencesAndReset
 .extern DualArrayBlendPresentation_RetargetMirrored
@@ -81,7 +81,7 @@ DualArrayBlendPresentation_Destroy: ; 0x020216e0
     mov r2, #0x9c
     bl __destroy_arr
     mov r0, r4
-    bl func_0201e28c
+    bl FieldEffect_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0202179c: .word gDualArrayBlendPresentationVtable

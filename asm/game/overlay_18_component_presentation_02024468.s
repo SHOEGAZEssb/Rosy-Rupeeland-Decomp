@@ -5,7 +5,7 @@
 .extern gOverlay18ComponentAllocationTag
 .extern OverlaySlot_Init
 .extern OverlaySlot_LoadOverlay
-.extern TimedSpritePresentation_InitBase
+.extern FieldEffect_Init
 .extern func_ov094_0221991c
 .extern gHeapContext
 
@@ -14,7 +14,7 @@
 func_02024468: ; 0x02024468
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl TimedSpritePresentation_InitBase
+    bl FieldEffect_Init
     ldr r1, .L_020244bc
     add r0, r4, #0xc
     str r1, [r4, #0x0]

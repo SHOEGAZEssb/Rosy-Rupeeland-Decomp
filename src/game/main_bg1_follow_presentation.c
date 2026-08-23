@@ -1,3 +1,4 @@
+#include "tingle/field_effect.h"
 #include "tingle/graphics_resources.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
@@ -10,7 +11,7 @@
  */
 typedef struct MainBg1FollowPresentation {
     void **vtable_00;
-    u32 baseFlags_04;
+    u32 dispatchState;
     u8 *target_08;
 } MainBg1FollowPresentation;
 
@@ -29,8 +30,7 @@ extern const char data_020de804[];
 extern u8 *data_021052fc;
 extern void *data_020f4e18;
 extern u8 gMainBgPaletteBuffer[];
-extern void TimedSpritePresentation_InitBase(void *);
-extern void func_0201e28c(void *);
+
 extern void PresentationList_AppendObject(void *, void *);
 extern const u8 *GamePhaseGraphicsMetadata_GetByIndex(s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
@@ -45,28 +45,28 @@ extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void PaletteBuffer_Write(void *, const void *, s32, s32);
 void func_02028684(MainBg1FollowPresentation *);
 
-/* Initialize the presentation base, retain the target, install its vtable, and set up BG1. */
+/* Initialize the FieldEffect base, retain the target, install its vtable, and set up BG1. */
 MainBg1FollowPresentation *func_02028544(MainBg1FollowPresentation *self,
                                          void *target)
 {
-    TimedSpritePresentation_InitBase(self);
+    FieldEffect_Init(self);
     self->vtable_00 = (void **)data_020de7e4;
     self->target_08 = (u8 *)target;
     func_02028684(self);
     return self;
 }
 
-/* Tear down the presentation base and return self; the target is borrowed. */
+/* Tear down the FieldEffect base and return self; the target is borrowed. */
 MainBg1FollowPresentation *func_02028574(MainBg1FollowPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     return self;
 }
 
 /* Tear down, free the presentation, and return its old address. */
 MainBg1FollowPresentation *func_02028588(MainBg1FollowPresentation *self)
 {
-    func_0201e28c(self);
+    FieldEffect_DestroyBase(self);
     Heap_Free(self);
     return self;
 }
