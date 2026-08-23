@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_misc_opcodes.c.
 .text
 .extern data_021052fc
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Actor_GetCachedTerrainHeight
 .global GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set
 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set:
@@ -22,12 +22,12 @@ GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set:
 L_02016908:
     mov r0, r5
     mov r1, #1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02016924
 L_02016918:
     mov r0, r5
     mov r1, #0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_02016924:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}

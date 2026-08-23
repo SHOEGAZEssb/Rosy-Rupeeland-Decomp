@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_utility_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020adc40
 .global GamePhaseActorScriptVm_CalculateScaledDistance
 GamePhaseActorScriptVm_CalculateScaledDistance:
@@ -33,7 +33,7 @@ GamePhaseActorScriptVm_CalculateScaledDistance:
     mov r1, r0
     mov r0, r4
     mov r1, r1, asr #6
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
     .size GamePhaseActorScriptVm_CalculateScaledDistance, . - GamePhaseActorScriptVm_CalculateScaledDistance

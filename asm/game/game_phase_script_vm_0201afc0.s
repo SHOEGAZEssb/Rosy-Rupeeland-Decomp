@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_scaled_runtime_value_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020befec
 .extern data_021052fc
 .global GamePhaseActorScriptVm_CalculateScaledRuntimeValue
@@ -34,7 +34,7 @@ GamePhaseActorScriptVm_CalculateScaledRuntimeValue: ; 0x0201afc0
     mov r3, r3, asr #0x8
     mul r3, r1, r3
     add r1, r3, r2, asr #0x8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_0201b03c: .word data_021052fc

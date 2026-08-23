@@ -28,12 +28,12 @@ s32 GamePhaseActorScriptVm_SetTileMapCell(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop X/Y, push Actor_QueryTerrainHeight for the bound actor, and return zero. */
+/* Pop X/Y, store Actor_QueryTerrainHeight for the bound actor as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_QueryTerrainHeight(GamePhaseActorScriptVm *self)
 {
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryTerrainHeight(self->actor, first, second));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, Actor_QueryTerrainHeight(self->actor, first, second));
     return 0;
 }
 

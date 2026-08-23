@@ -109,11 +109,11 @@ static void addScriptObject(void *object)
 }
 
 /*
- * Pop six operands and a selector, first push zero as the default script
+ * Pop six operands and a selector, first store zero as the default script
  * result, then dispatch selectors 1-38. Cases 0, 2, and out-of-range halt;
  * case 5 is a no-op. The remaining confirmed cases allocate/register gameplay
  * objects, call manager commands, load overlays, query or bind actors, and
- * occasionally replace the default pushed result. Every path returns one so
+ * occasionally replace the default VM result. Every path returns one so
  * the VM stops dispatching after this command. Address-derived helper names
  * and numeric selectors are preserved because semantic command names are not
  * yet proven.
@@ -128,7 +128,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     u32 a1 = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
-    GamePhaseScriptVm_SetResult(&self->base, 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, 0);
 
     switch (selector) {
     case 1: {
@@ -241,12 +241,12 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         break;
     }
     case 11:
-        GamePhaseScriptVm_SetResult(&self->base,
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                       func_020a257c(getScriptManagerInterface(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
     case 12:
-        GamePhaseScriptVm_SetResult(&self->base,
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                       func_020a25c8(getScriptManagerInterface(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
@@ -304,7 +304,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             node = (u8 *)func_0201df5c(getScriptObjectManager(), handle);
             target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a2);
             *(void **)(node + 8) = (u8 *)target + 0x18;
-            GamePhaseScriptVm_SetResult(&self->base, (u32)handle);
+            GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)handle);
         } else if (a1 == 2) {
             u8 *node = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
             void *target = ActorCollection_FindActorByRuntimeId(
@@ -324,9 +324,9 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             sourceNode = (u8 *)func_0201df54(getScriptObjectManager(), handle);
             targetNode = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
             *(void **)(targetNode + 8) = func_ov054_0220ef78(sourceNode);
-            GamePhaseScriptVm_SetResult(&self->base, (u32)handle);
+            GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)handle);
         } else if (a1 == 2) {
-            GamePhaseScriptVm_SetResult(&self->base, data_ov054_0220f160 != 0);
+            GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, data_ov054_0220f160 != 0);
         }
         break;
     case 24:
@@ -347,7 +347,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         break;
     case 30:
     case 33:
-        GamePhaseScriptVm_SetResult(
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(
             &self->base,
             DirectSpriteTrackPresentation_SpawnAndRegister(selector == 33, a1, a2, a3, a4, a5, a6,
                           0x100, *(u32 *)(actor + 0x110),

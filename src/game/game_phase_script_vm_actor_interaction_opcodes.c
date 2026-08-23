@@ -52,11 +52,11 @@ s32 GamePhaseActorScriptVm_NoOp(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a value, push Actor_QueryRuntimeProperty(bound actor, value), and return zero. */
+/* Pop a value, store Actor_QueryRuntimeProperty(bound actor, value) as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_QueryActorProperty(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryRuntimeProperty(self->actor, value));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, Actor_QueryRuntimeProperty(self->actor, value));
     return 0;
 }
 
@@ -71,14 +71,14 @@ s32 GamePhaseActorScriptVm_SetActorProperty(GamePhaseActorScriptVm *self)
 
 /*
  * Pop a value and actor index, resolve the indexed actor from the bound
- * collection, push Actor_QueryRuntimeProperty(target, value), and return zero.
+ * collection, store Actor_QueryRuntimeProperty(target, value) as the VM result, and return zero.
  */
 s32 GamePhaseActorScriptVm_QueryIndexedActorProperty(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     void *target = ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), index);
-    GamePhaseScriptVm_SetResult(&self->base, Actor_QueryRuntimeProperty(target, value));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, Actor_QueryRuntimeProperty(target, value));
     return 0;
 }
 

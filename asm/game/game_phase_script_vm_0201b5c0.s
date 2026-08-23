@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_multiply_divide_opcodes.c.
 .text
 .extern GamePhaseScriptVm_ReadU32Le
-.extern GamePhaseScriptVm_UpdateZeroFlag
+.extern GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
 .global GamePhaseScriptVm_MultiplyImmediate
 GamePhaseScriptVm_MultiplyImmediate: ; 0x0201b5c0
     stmdb sp!, {r3, r4, r5, lr}
@@ -20,7 +20,7 @@ GamePhaseScriptVm_MultiplyImmediate: ; 0x0201b5c0
     mul r3, r2, r0
     mov r0, r4
     str r3, [ip, r5, lsl #0x2]
-    bl GamePhaseScriptVm_UpdateZeroFlag
+    bl GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .size GamePhaseScriptVm_MultiplyImmediate, . - GamePhaseScriptVm_MultiplyImmediate

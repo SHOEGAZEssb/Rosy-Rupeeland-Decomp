@@ -49,26 +49,26 @@ s32 GamePhaseActorScriptVm_MarkPackedTimerComplete(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a timer id, push its repeat count, and return zero. */
+/* Pop a timer id, store its repeat count as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_GetPackedTimerRepeatCount(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
         &self->base,
         *(u16 *)(PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id) + 6));
     return 0;
 }
 
 /*
- * Pop a timer id and push whether its packed state is the initial or repeating
- * countdown state (one or two). Return zero.
+ * Pop a timer id and store whether its packed state is the initial or repeating
+ * countdown state (one or two) as the VM result. Return zero.
  */
 s32 GamePhaseActorScriptVm_IsPackedTimerActive(GamePhaseActorScriptVm *self)
 {
     s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
     u32 state = *(u32 *)(
         PackedTimerArray_Get(PackedTimerArray_GetGlobal(), id) + 8) >> 29;
-    GamePhaseScriptVm_SetResult(&self->base, state == 1 || state == 2);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, state == 1 || state == 2);
     return 0;
 }
 

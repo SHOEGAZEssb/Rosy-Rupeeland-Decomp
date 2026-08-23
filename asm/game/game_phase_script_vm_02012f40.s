@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_state_opcodes.c.
 .text
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 
     .global GamePhaseActorScriptVm_IsActorFlag1Set
 GamePhaseActorScriptVm_IsActorFlag1Set: ; 0x02012f40
@@ -10,7 +10,7 @@ GamePhaseActorScriptVm_IsActorFlag1Set: ; 0x02012f40
     tst r1, #0x1
     movne r1, #0x1
     moveq r1, #0x0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r3, pc}
     .size GamePhaseActorScriptVm_IsActorFlag1Set, . - GamePhaseActorScriptVm_IsActorFlag1Set

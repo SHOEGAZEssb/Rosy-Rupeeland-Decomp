@@ -2,7 +2,7 @@
 .text
 .extern data_020c9670
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 
     .global GamePhaseActorScriptVm_LookupAngleFirstComponent
 GamePhaseActorScriptVm_LookupAngleFirstComponent: ; 0x02012d18
@@ -16,7 +16,7 @@ GamePhaseActorScriptVm_LookupAngleFirstComponent: ; 0x02012d18
     mov r1, r1, lsl #0x2
     ldrsh r1, [r0, r1]
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02012d4c: .word data_020c9670

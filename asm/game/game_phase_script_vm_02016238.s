@@ -20,7 +20,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseLoadScene_Init
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_0201cfd0
 .extern PresentationList_AppendObject
 .extern func_020200bc
@@ -373,19 +373,19 @@ L_020166cc:
     ldr r1, [r0, #0x14]
     mov r0, r5
     ldr r1, [r1, #0x10]
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02016704
 L_020166e0:
     ldr r1, [r0, #0x18]
     mov r0, r5
     ldr r1, [r1, #0x10]
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02016704
 L_020166f4:
     ldr r1, [r0, #0x1c]
     mov r0, r5
     ldr r1, [r1, #0x10]
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_02016704:
     mov r0, #0
     b L_020167d4
@@ -415,18 +415,18 @@ L_02016734:
 L_0201675c:
     ldrh r1, [r0, #0x12]
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201678c
 L_0201676c:
     ldrh r1, [r0, #0x14]
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201678c
 L_0201677c:
     ldrh r1, [r0, #0x10]
     mov r0, r5
     and r1, r1, #0xff
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_0201678c:
     mov r0, #0
     b L_020167d4

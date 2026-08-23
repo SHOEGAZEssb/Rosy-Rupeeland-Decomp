@@ -17,8 +17,8 @@ extern PackedBitGrid *func_020275b0(void);
 #endif
 
 /*
- * Pop a row and column, test the corresponding packed bit, push the masked
- * bit value (zero or a power of two), and return zero.  The byte and bit
+ * Pop a row and column, test the corresponding packed bit, store the masked
+ * bit value (zero or a power of two) as the VM result, and return zero.  The byte and bit
  * positions use signed division and remainder, matching the recovered code.
  */
 s32 GamePhaseActorScriptVm_GetPackedBitGridMask(GamePhaseActorScriptVm *self)
@@ -28,7 +28,7 @@ s32 GamePhaseActorScriptVm_GetPackedBitGridMask(GamePhaseActorScriptVm *self)
     PackedBitGrid *grid = func_020275b0();
     s32 index = row * grid->stride_08 + column;
 
-    GamePhaseScriptVm_SetResult(&self->base,
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                   grid->bytes_00[index / 8] & (1 << (index % 8)));
     return 0;
 }

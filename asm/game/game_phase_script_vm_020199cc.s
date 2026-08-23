@@ -3,7 +3,7 @@
 .extern PackedTimerArray_Get
 .extern PackedTimerArray_GetGlobal
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .global GamePhaseActorScriptVm_IsPackedTimerActive
 GamePhaseActorScriptVm_IsPackedTimerActive:
     stmdb sp!, {r3, r4, r5, lr}
@@ -20,7 +20,7 @@ GamePhaseActorScriptVm_IsPackedTimerActive:
     moveq r1, #0x1
     movne r1, #0x0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .size GamePhaseActorScriptVm_IsPackedTimerActive, . - GamePhaseActorScriptVm_IsPackedTimerActive

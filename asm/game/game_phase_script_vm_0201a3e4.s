@@ -3,7 +3,7 @@
 .extern ActorMotionOscillation_InitInterval
 .extern ActorMotionOscillation_Sample
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020befec
 .extern gSystemState
 .extern OS_Halt
@@ -85,7 +85,7 @@ L_0201a4ec:
 L_0201a4f0:
     mov r0, r4
     mov r1, r9
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}

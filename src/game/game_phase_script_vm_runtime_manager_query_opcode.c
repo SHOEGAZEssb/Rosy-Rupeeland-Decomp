@@ -17,7 +17,7 @@ extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
  * Pop query mode.  Modes 0/1 test recovered manager flags/activity, mode 2
  * evaluates the confirmed multi-field readiness predicate (unless scene type
  * 2 is active), and modes 3..5 return signed manager fields 0x294..0x298.
- * Unsupported modes push zero.  Return zero.
+ * Unsupported modes store zero as the VM result.  Return zero.
  */
 s32 func_02019c60(GamePhaseActorScriptVm *self)
 {
@@ -56,6 +56,6 @@ s32 func_02019c60(GamePhaseActorScriptVm *self)
         result = *(s16 *)(manager + 0x298);
         break;
     }
-    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)result);
     return 0;
 }

@@ -14,9 +14,9 @@ typedef u32 (*RuntimePackedQueryMethod)(void *object, u32 first, u32 second);
 
 /*
  * Pop second, first, and field selector values; invoke virtual method 0x2c on
- * runtime object 0x2ed4 with first and second; then push either the signed
+ * runtime object 0x2ed4 with first and second; then store either the signed
  * low five bits (selector 0), bits 5..9 (selector 1), or bits 10..13
- * (selector 2). Other selectors push nothing. Returns zero.
+ * (selector 2) as the VM result. Other selectors store no VM result. Returns zero.
  */
 s32 func_02016bc0(GamePhaseActorScriptVm *self)
 {
@@ -28,10 +28,10 @@ s32 func_02016bc0(GamePhaseActorScriptVm *self)
     u32 packed = vtable[0x2c / sizeof(void *)](object, first, second);
 
     if (selector == 0)
-        GamePhaseScriptVm_SetResult(&self->base, (u32)((s32)(packed << 27) >> 27));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)((s32)(packed << 27) >> 27));
     else if (selector == 1)
-        GamePhaseScriptVm_SetResult(&self->base, (packed >> 5) & 0x1f);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (packed >> 5) & 0x1f);
     else if (selector == 2)
-        GamePhaseScriptVm_SetResult(&self->base, (packed >> 10) & 0xf);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (packed >> 10) & 0xf);
     return 0;
 }

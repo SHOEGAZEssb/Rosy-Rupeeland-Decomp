@@ -17,7 +17,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorRuntimeTriple_Assign
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RectS32_Set
 .extern func_0201d240
 .extern PresentationList_AppendObject
@@ -99,7 +99,7 @@ func_020143a8: ; 0x020143a8
     mov r0, r11
     mov r1, #0x0
     ldr r10, [r11, #0x84]
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     ldr r0, [sp, #0x1c]
     cmp r0, #0x26
     addls pc, pc, r0, lsl #0x2
@@ -810,7 +810,7 @@ L_02014dfc:
     bl func_020a257c
     mov r1, r0
     mov r0, r11
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201553c
 L_02014e40:
     ldr r0, L_020154d0
@@ -828,7 +828,7 @@ L_02014e40:
     bl func_020a25c8
     mov r1, r0
     mov r0, r11
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201553c
 L_02014e84:
     ldr r0, L_020154d0
@@ -1061,7 +1061,7 @@ L_02015144:
     add r0, r0, #0x18
     str r0, [r5, #0x8]
     mov r0, r11
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201553c
 L_020151e4:
     ldr r0, L_020154d0
@@ -1123,7 +1123,7 @@ L_02015238:
     str r0, [r6, #0x8]
     mov r0, r11
     mov r1, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201553c
 L_020152d0:
     ldr r0, L_020154f4
@@ -1132,7 +1132,7 @@ L_020152d0:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r11
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201553c
 L_020152f0:
     ldr r0, L_020154d0
@@ -1158,7 +1158,7 @@ L_02015308:
     bl DirectSpriteTrackPresentation_SpawnAndRegister
     mov r1, r0
     mov r0, r11
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201553c
 L_02015350:
     str r6, [sp, #0x0]
@@ -1177,7 +1177,7 @@ L_02015350:
     bl DirectSpriteTrackPresentation_SpawnAndRegister
     mov r1, r0
     mov r0, r11
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201553c
 L_02015398:
     ldr r0, L_020154d0

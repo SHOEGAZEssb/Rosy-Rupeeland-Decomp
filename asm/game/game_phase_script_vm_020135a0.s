@@ -2,7 +2,7 @@
 .text
 .extern data_020d5af8
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020ae024
 
     .global GamePhaseActorScriptVm_LookupDirectionTowardCoordinates
@@ -24,7 +24,7 @@ GamePhaseActorScriptVm_LookupDirectionTowardCoordinates: ; 0x020135a0
     mov r0, r0, lsr #0x10
     ldrsb r1, [r1, r0]
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_020135f0: .word data_020d5af8

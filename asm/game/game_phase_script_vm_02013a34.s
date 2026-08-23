@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_interaction_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_QueryRuntimeProperty
 .extern Actor_GetOwningCollection
@@ -23,7 +23,7 @@ GamePhaseActorScriptVm_QueryIndexedActorProperty: ; 0x02013a34
     bl Actor_QueryRuntimeProperty
     mov r1, r0
     mov r0, r6
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
     .size GamePhaseActorScriptVm_QueryIndexedActorProperty, . - GamePhaseActorScriptVm_QueryIndexedActorProperty

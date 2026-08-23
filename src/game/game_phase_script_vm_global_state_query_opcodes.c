@@ -1,6 +1,6 @@
 #include "tingle/game_phase_script_vm.h"
 
-/* Push recovered values from a global context and a one-based runtime record table. */
+/* Store recovered values from a global context and a one-based runtime record table as VM results. */
 
 #ifdef __cplusplus
 extern "C" {
@@ -12,19 +12,19 @@ extern void *GamePhaseMetadata_GetByIndex(s32 index);
 }
 #endif
 
-/* Query the subobject at global-context offset 0x34, push its result, and return zero. */
+/* Query the subobject at global-context offset 0x34, store its result as the VM result, and return zero. */
 s32 func_0201b040(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base,
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                   (u32)ActorDescriptorState_CountInactiveKind1Subtype1((u8 *)data_021e9ac0 + 0x34));
     return 0;
 }
 
-/* Pop a one-based record index, push its signed byte at offset 0x4c, and return zero. */
+/* Pop a one-based record index, store its signed byte at offset 0x4c as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_GetOneBasedPhaseRecordByte4c(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base) - 1;
     s8 value = *(s8 *)((u8 *)GamePhaseMetadata_GetByIndex(index) + 0x4c);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)value);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)value);
     return 0;
 }

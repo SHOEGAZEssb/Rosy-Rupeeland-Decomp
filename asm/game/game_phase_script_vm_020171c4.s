@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_currency_opcodes.c.
 .text
 .extern GamePhaseCurrencyHud_GetCurrency
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern gLupyContext
 .global GamePhaseActorScriptVm_GetCurrency
 GamePhaseActorScriptVm_GetCurrency:
@@ -12,7 +12,7 @@ GamePhaseActorScriptVm_GetCurrency:
     bl GamePhaseCurrencyHud_GetCurrency
     mov r1, r0
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_020171ec: .word gLupyContext

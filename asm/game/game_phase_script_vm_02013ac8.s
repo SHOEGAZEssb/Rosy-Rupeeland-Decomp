@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
 
@@ -29,7 +29,7 @@ GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0: ; 0x02013ac8
     mov r0, r4
     ldrb r1, [r1, #0x169]
     and r1, r1, #0x1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02013b68
 L_02013b20:
     ldr r1, L_02013b70
@@ -41,7 +41,7 @@ L_02013b20:
     ldr r1, [r1, #0xebc]
     ldrb r1, [r1, #0x169]
     and r1, r1, #0x1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02013b68
 L_02013b4c:
     bl Actor_GetOwningCollection
@@ -50,7 +50,7 @@ L_02013b4c:
     ldrb r1, [r0, #0x169]
     mov r0, r4
     and r1, r1, #0x1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_02013b68:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

@@ -19,10 +19,10 @@ s32 GamePhaseActorScriptVm_ClearGameWorkFlag(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a flag index, push its persistent GameWork state, and return zero. */
+/* Pop a flag index, store its persistent GameWork state as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_TestGameWorkFlag(GamePhaseActorScriptVm *self)
 {
     s32 flag = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, GameWork_TestFlag(gGameWork, flag));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, GameWork_TestFlag(gGameWork, flag));
     return 0;
 }

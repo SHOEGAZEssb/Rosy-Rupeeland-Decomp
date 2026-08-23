@@ -27,7 +27,7 @@ s32 GamePhaseActorScriptVm_SetField5cLowHalfword(GamePhaseActorScriptVm *self)
 
 /*
  * Pop three operands, pass them in reverse pop order to DualLayerTileRenderer_ForwardLayerPair on the
- * global runtime object at offset 0x2ed4, push its result, and return zero.
+ * global runtime object at offset 0x2ed4, store its result as the VM result, and return zero.
  */
 s32 func_0201350c(GamePhaseActorScriptVm *self)
 {
@@ -35,7 +35,7 @@ s32 func_0201350c(GamePhaseActorScriptVm *self)
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
     void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
-    GamePhaseScriptVm_SetResult(&self->base, DualLayerTileRenderer_ForwardLayerPair(object, first, second, third));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, DualLayerTileRenderer_ForwardLayerPair(object, first, second, third));
     return 0;
 }
 
@@ -56,7 +56,7 @@ s32 GamePhaseActorScriptVm_SetField40(GamePhaseActorScriptVm *self)
 /*
  * Pop target y and x integer coordinates, form the horizontal fx32 delta from
  * the bound actor, derive an angle through func_020ae024, use bits 12-15 to
- * index the signed-byte direction table at data_020d5af8, push it, and return
+ * index the signed-byte direction table at data_020d5af8, store it as the VM result, and return
  * zero. The table's semantic labels remain unconfirmed.
  */
 s32 GamePhaseActorScriptVm_LookupDirectionTowardCoordinates(GamePhaseActorScriptVm *self)
@@ -66,42 +66,42 @@ s32 GamePhaseActorScriptVm_LookupDirectionTowardCoordinates(GamePhaseActorScript
     VecFx32Object *position = (VecFx32Object *)((u8 *)self->actor + 0x18);
     s32 angle = func_020ae024((targetY << 12) - position->value.y,
                              (targetX << 12) - position->value.x);
-    GamePhaseScriptVm_SetResult(&self->base, data_020d5af8[((u32)angle << 4) >> 16]);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, data_020d5af8[((u32)angle << 4) >> 16]);
     return 0;
 }
 
-/* Resolve runtime collection 1's actor at offset 0x2e7c and push integer x. */
+/* Resolve runtime collection 1's actor at offset 0x2e7c and store integer x as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorX(GamePhaseActorScriptVm *self)
 {
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
-    GamePhaseScriptVm_SetResult(&self->base, value.value.x >> 12);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value.value.x >> 12);
     VecFx32Object_Destroy(&value);
     return 0;
 }
 
-/* Resolve runtime collection 1's actor at offset 0x2e7c and push integer y. */
+/* Resolve runtime collection 1's actor at offset 0x2e7c and store integer y as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorY(GamePhaseActorScriptVm *self)
 {
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
-    GamePhaseScriptVm_SetResult(&self->base, value.value.y >> 12);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value.value.y >> 12);
     VecFx32Object_Destroy(&value);
     return 0;
 }
 
-/* Resolve runtime collection 1's actor at offset 0x2e7c and push integer z. */
+/* Resolve runtime collection 1's actor at offset 0x2e7c and store integer z as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorZ(GamePhaseActorScriptVm *self)
 {
     u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
-    GamePhaseScriptVm_SetResult(&self->base, value.value.z >> 12);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value.value.z >> 12);
     VecFx32Object_Destroy(&value);
     return 0;
 }

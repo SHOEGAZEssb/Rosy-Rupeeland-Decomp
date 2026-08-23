@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RectS32_Init
 .extern RectS32_ContainsPoint
 .extern ActorCollection_FindActorByRuntimeId
@@ -53,11 +53,11 @@ GamePhaseActorScriptVm_IsCollection1ActorInRectangle:
     mov r0, r4
     beq L_02016ef4
     mov r1, #1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02016efc
 L_02016ef4:
     mov r1, #0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_02016efc:
     add r0, sp, #0x14
     bl VecFx32Object_Destroy

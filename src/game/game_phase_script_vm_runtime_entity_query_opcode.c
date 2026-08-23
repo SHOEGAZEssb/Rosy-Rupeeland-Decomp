@@ -2,7 +2,7 @@
 
 /*
  * Query the active runtime entity, recovered lookup records, or an indexed
- * actor and push the selected value back to the script VM.
+ * actor and store the selected value as the script VM result.
  */
 
 #ifdef __cplusplus
@@ -23,8 +23,8 @@ extern s32 Type7Actor_SelectRandomEligibleRecordId(s32 mode, s32 index);
  * Pop sub-index, record/actor index, and query mode.  Modes 0..15 select
  * active-entity presence or fields, the fallback global, fields in recovered
  * records, mode-specific table values, or indexed-actor offset 0x1fc.  A
- * missing entity and unsupported indexes yield zero where retail does.  Push
- * the result and return zero.
+ * missing entity and unsupported indexes yield zero where retail does.  Store
+ * the value as the VM result and return zero.
  */
 s32 GamePhaseActorScriptVm_DispatchType7ActorQuery(GamePhaseActorScriptVm *self)
 {
@@ -90,6 +90,6 @@ s32 GamePhaseActorScriptVm_DispatchType7ActorQuery(GamePhaseActorScriptVm *self)
         break;
     }
     }
-    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)result);
     return 0;
 }

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_movement_status_opcodes.c.
 .text
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 
     .global GamePhaseActorScriptVm_IsMovementActive
 GamePhaseActorScriptVm_IsMovementActive: ; 0x020134a0
@@ -10,11 +10,11 @@ GamePhaseActorScriptVm_IsMovementActive: ; 0x020134a0
     tst r1, #0x40
     beq L_020134c0
     mov r1, #0x1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_020134c8
 L_020134c0:
     mov r1, #0x0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_020134c8:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

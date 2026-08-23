@@ -2,7 +2,7 @@
 .text
 .extern GameWork_TestFlag
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern gGameWork
 
     .global GamePhaseActorScriptVm_TestGameWorkFlag
@@ -16,7 +16,7 @@ GamePhaseActorScriptVm_TestGameWorkFlag: ; 0x02013cc4
     bl GameWork_TestFlag
     mov r1, r0
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02013cf4: .word gGameWork

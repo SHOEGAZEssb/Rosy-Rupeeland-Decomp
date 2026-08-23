@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_command_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Sound_Play
 .extern Sound_StopEffect
 .extern Sound_PlayOwnedEffect
@@ -109,7 +109,7 @@ L_0201a73c:
     bl Sound_IsEffectPlaying
     mov r1, r0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201a928
 L_0201a768:
     ldr r0, L_0201a934
@@ -125,7 +125,7 @@ L_0201a77c:
     bl Sound_IsDirectSequencePlaying
     mov r1, r0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201a928
 L_0201a7a0:
     ldr r0, L_0201a934

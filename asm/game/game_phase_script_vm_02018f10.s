@@ -3,7 +3,7 @@
 .extern data_020e1964
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
 .extern Type7Actor_GetStateCode
@@ -154,7 +154,7 @@ L_020190d8:
     ldr r1, [r0, #0x1fc]
 L_020190ec:
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_020190fc: .word data_021052fc

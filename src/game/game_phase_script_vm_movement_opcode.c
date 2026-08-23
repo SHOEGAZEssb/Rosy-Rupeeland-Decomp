@@ -34,7 +34,7 @@ static fx32 squareFx32(fx32 value)
  * For actors whose byte at 0xe6 is 1, the opcode also updates facing from the
  * horizontal displacement and normalizes flags at actor->0x54. It then sets
  * actor flag 0x40, constructs/copies a movement object into offset 0x198,
- * clears actor flag 1, pushes the chosen duration, and returns zero. The exact
+ * clears actor flag 1, stores the chosen duration as the VM result, and returns zero. The exact
  * semantic names of the movement modes and helper object remain unconfirmed.
  */
 s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
@@ -103,7 +103,7 @@ s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
     VecFx32Stepper_Assign(actor + 0x198, movement);
     VecFx32Stepper_Destroy(movement);
     *(u32 *)(actor + 0x10) &= ~1u;
-    GamePhaseScriptVm_SetResult(&self->base, duration);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, duration);
     if (*(s16 *)(actor + 0xe4) == 1 && *(void **)(actor + 0x54) != 0)
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x20;
     VecFx32Object_Destroy(&target);

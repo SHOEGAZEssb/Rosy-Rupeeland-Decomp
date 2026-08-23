@@ -6,7 +6,7 @@
 .extern VecFx32Stepper_Assign
 .extern VecFx32Stepper_Destroy
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern func_020adc40
 .extern func_020befec
@@ -202,7 +202,7 @@ L_02013354:
     mov r0, r9
     bic r2, r2, #0x1
     str r2, [r3, #0x10]
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     ldr r1, [r9, #0x84]
     ldrsh r0, [r1, #0xe4]
     cmp r0, #0x1

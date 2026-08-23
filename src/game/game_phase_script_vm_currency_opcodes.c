@@ -44,10 +44,10 @@ s32 GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition(GamePhaseActorScript
     return 0;
 }
 
-/* Read the current GameWork currency, push it onto the VM value stack, and return zero. */
+/* Read the current GameWork currency, store it as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_GetCurrency(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseCurrencyHud_GetCurrency();
-    GamePhaseScriptVm_SetResult(&self->base, value);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value);
     return 0;
 }

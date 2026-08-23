@@ -46,7 +46,7 @@ s32 GamePhaseActorScriptVm_SetAttachmentFrameIndex(GamePhaseActorScriptVm *self)
  * Pop integer z, y, and x, calculate their Euclidean distance from the bound
  * actor's fx32 position after converting that position to integers, pass the
  * squared sum through func_020adc40, divide the signed result by 64 with
- * truncation toward zero, push it, and return zero.
+ * truncation toward zero, store it as the VM result, and return zero.
  */
 s32 GamePhaseActorScriptVm_CalculateDistanceToCoordinates(GamePhaseActorScriptVm *self)
 {
@@ -58,6 +58,6 @@ s32 GamePhaseActorScriptVm_CalculateDistanceToCoordinates(GamePhaseActorScriptVm
     s32 dy = y - (*(s32 *)(actor + 0x20) >> 12);
     s32 dz = z - (*(s32 *)(actor + 0x24) >> 12);
     s32 distance = func_020adc40(dx * dx + dy * dy + dz * dz);
-    GamePhaseScriptVm_SetResult(&self->base, distance / 64);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, distance / 64);
     return 0;
 }

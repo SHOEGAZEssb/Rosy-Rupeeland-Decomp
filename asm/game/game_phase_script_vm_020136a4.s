@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 
     .global GamePhaseActorScriptVm_GetCollection1ActorVectorZ
 GamePhaseActorScriptVm_GetCollection1ActorVectorZ: ; 0x020136a4
@@ -23,7 +23,7 @@ GamePhaseActorScriptVm_GetCollection1ActorVectorZ: ; 0x020136a4
     ldr r1, [sp, #0xc]
     mov r0, r4
     mov r1, r1, asr #0xc
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
     mov r0, #0x0

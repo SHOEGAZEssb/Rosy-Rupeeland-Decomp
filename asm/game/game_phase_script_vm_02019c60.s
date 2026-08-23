@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorDerivedType1_IsIdleEligible
 .extern gSceneManager
 .extern SceneManager_GetCurrent
@@ -110,7 +110,7 @@ L_02019db0:
 L_02019db8:
     mov r0, r6
     mov r1, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02019dcc: .word data_021052fc

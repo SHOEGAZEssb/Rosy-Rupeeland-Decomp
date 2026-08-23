@@ -9,7 +9,7 @@
 .extern ActorMotion_ConfigureBoundActorTarget
 .extern ActorMotionAreaFollower_BindActor
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorCollection_FindActorByRuntimeId
 
     .global func_02012814
@@ -58,7 +58,7 @@ L_02012890:
     bl ActorMotion_ConfigureGridTarget
     mov r1, r0
     mov r0, r8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02012a50
 L_020128c4:
     ldr r0, L_02012a5c
@@ -70,7 +70,7 @@ L_020128c4:
     bl ActorMotion_ConfigureBoundActorTarget
     mov r1, r0
     mov r0, r8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02012a50
 L_020128f0:
     cmp r4, #0x0
@@ -97,7 +97,7 @@ L_02012928:
     moveq r1, #0x1
     movne r1, #0x0
     mov r0, r8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02012a50
 L_02012950:
     ldr r0, L_02012a5c
@@ -122,7 +122,7 @@ L_02012984:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02012a50
 L_020129ac:
     ldr r0, L_02012a5c
@@ -136,7 +136,7 @@ L_020129ac:
     bl ActorMotion_ConfigureGridTarget
     mov r1, r0
     mov r0, r8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02012a50
 L_020129e0:
     ldr r0, L_02012a5c
@@ -148,7 +148,7 @@ L_020129e0:
     bl ActorMotion_ConfigureBoundActorTarget
     mov r1, r0
     mov r0, r8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02012a50
 L_02012a0c:
     cmp r4, #0x0

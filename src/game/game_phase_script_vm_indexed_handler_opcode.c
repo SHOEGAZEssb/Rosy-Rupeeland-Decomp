@@ -15,8 +15,8 @@ extern s32 func_0208372c(s32 index);
 #endif
 
 /*
- * Pop handler index and mode.  Modes 1/2 push whether the indexed state equals
- * 2/1 respectively; modes 3/4 invoke function slot 1/0 of the indexed handler
+ * Pop handler index and mode.  Modes 1/2 store whether the indexed state equals
+ * 2/1 respectively as the VM result; modes 3/4 invoke function slot 1/0 of the indexed handler
  * record.  Mode 0 and unsupported modes do nothing.  Return zero.
  */
 s32 func_020192f4(GamePhaseActorScriptVm *self)
@@ -26,10 +26,10 @@ s32 func_020192f4(GamePhaseActorScriptVm *self)
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (mode) {
     case 1:
-        GamePhaseScriptVm_SetResult(&self->base, func_0208372c(index) == 2);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0208372c(index) == 2);
         break;
     case 2:
-        GamePhaseScriptVm_SetResult(&self->base, func_0208372c(index) == 1);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0208372c(index) == 1);
         break;
     case 3:
         ((Handler)data_020f1678[index][1])();

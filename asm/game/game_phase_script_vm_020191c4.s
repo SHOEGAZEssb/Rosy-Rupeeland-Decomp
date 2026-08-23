@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_utility_query_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020befec
 .global GamePhaseActorScriptVm_IsPointWithinEllipse
 GamePhaseActorScriptVm_IsPointWithinEllipse:
@@ -52,7 +52,7 @@ GamePhaseActorScriptVm_IsPointWithinEllipse:
 L_02019274:
     mov r0, r8
     mov r1, r7
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .size GamePhaseActorScriptVm_IsPointWithinEllipse, . - GamePhaseActorScriptVm_IsPointWithinEllipse

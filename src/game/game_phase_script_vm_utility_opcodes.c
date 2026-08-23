@@ -35,7 +35,7 @@ s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScr
 
 /*
  * Pop two integer XYZ triples, calculate their Euclidean distance through
- * func_020adc40, arithmetically divide the result by 64, push it, and return zero.
+ * func_020adc40, arithmetically divide the result by 64, store it as the VM result, and return zero.
  */
 s32 GamePhaseActorScriptVm_CalculateScaledDistance(GamePhaseActorScriptVm *self)
 {
@@ -49,7 +49,7 @@ s32 GamePhaseActorScriptVm_CalculateScaledDistance(GamePhaseActorScriptVm *self)
     s32 dy = z1 - z2;
     s32 dz = y1 - y2;
     s32 distance = func_020adc40(dx * dx + dy * dy + dz * dz);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)(distance >> 6));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)(distance >> 6));
     return 0;
 }
 
@@ -70,18 +70,18 @@ s32 GamePhaseActorScriptVm_CreateApplyScene(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a signed value, push its SignedAbsoluteValueVariant classification, and return zero. */
+/* Pop a signed value, store its SignedAbsoluteValueVariant classification as the VM result, and return zero. */
 s32 func_02015e40(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)SignedAbsoluteValueVariant(value));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)SignedAbsoluteValueVariant(value));
     return 0;
 }
 
-/* Pop a u16 key, query the table referenced by data_021e9ac0, push the result, and return zero. */
+/* Pop a u16 key, query the table referenced by data_021e9ac0, store the value as the VM result, and return zero. */
 s32 func_02015e64(GamePhaseActorScriptVm *self)
 {
     u16 value = (u16)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_02063670(data_021e9ac0, value));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_02063670(data_021e9ac0, value));
     return 0;
 }

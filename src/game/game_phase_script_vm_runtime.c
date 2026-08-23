@@ -65,13 +65,13 @@ s32 func_020127f0(GamePhaseScriptVm *self)
 }
 
 /*
- * Store value in registers[7] (offset 0x48) and mirror its nonzero state into
- * stateFlags bit 1. No value is returned.
+ * Store the result in registers[7] (offset 0x48) and set the condition bit
+ * exactly when that result is nonzero. No value is returned.
  */
-void GamePhaseScriptVm_SetResult(GamePhaseScriptVm *self, u32 value)
+void GamePhaseScriptVm_StoreResultAndUpdateCondition(GamePhaseScriptVm *self, u32 result)
 {
-    self->registers[7] = value;
-    if (value)
+    self->registers[7] = result;
+    if (result)
         self->stateFlags |= 2;
     else
         self->stateFlags &= ~2;

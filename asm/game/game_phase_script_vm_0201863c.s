@@ -3,7 +3,7 @@
 .extern func_020083b0
 .extern S16Rectangle_Translate
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern S16Bounds_GetHeight
 .extern S16BoundsCenter_Init
 .extern S16Bounds_MoveTo
@@ -193,7 +193,7 @@ L_02018868:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r8
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_020188d8:
     mov r0, #0x0
     add sp, sp, #0x68

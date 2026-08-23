@@ -2,7 +2,7 @@
 .text
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern InventoryManager_ContainsId
 .global func_020161ac
 func_020161ac:
@@ -17,11 +17,11 @@ func_020161ac:
     mov r0, r4
     beq L_020161e0
     mov r1, #1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_020161e8
 L_020161e0:
     mov r1, #0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_020161e8:
     mov r0, #0
     ldmia sp!, {r4, pc}

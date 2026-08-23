@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_utility_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020570b0
 .global func_0201a50c
 func_0201a50c:
@@ -15,7 +15,7 @@ func_0201a50c:
     bl func_020570b0
     mov r1, r0
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .size func_0201a50c, . - func_0201a50c

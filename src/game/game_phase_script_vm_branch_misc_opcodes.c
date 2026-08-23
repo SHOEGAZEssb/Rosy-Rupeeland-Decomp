@@ -4,12 +4,13 @@
 
 typedef s32 (*GamePhaseScriptVmByteMethod)(GamePhaseScriptVm *self, u8 value);
 
-/* Bitwise-complement the low-three-bit-selected register, update zero state, return zero. */
+/* Bitwise-complement the low-three-bit-selected register, update the condition
+ * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_NotRegister(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     self->registers[destination] = ~self->registers[destination];
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 

@@ -40,11 +40,11 @@ s32 GamePhaseActorScriptVm_DispatchActorModeCommand(GamePhaseActorScriptVm *self
     return 0;
 }
 
-/* Push whether bit 0 is set in the bound actor's word at offset 0x10. */
+/* Store whether bit 0 is set in the bound actor's word at offset 0x10 as the VM result. */
 s32 GamePhaseActorScriptVm_IsActorFlag1Set(GamePhaseActorScriptVm *self)
 {
     u32 flags = *(u32 *)((u8 *)self->actor + 0x10);
-    GamePhaseScriptVm_SetResult(&self->base, (flags & 1) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (flags & 1) != 0);
     return 0;
 }
 
@@ -75,11 +75,11 @@ s32 GamePhaseActorScriptVm_DispatchCollectionModeCommand(GamePhaseActorScriptVm 
     return 0;
 }
 
-/* Push the byte at actor->0x54->0x38 and return zero. */
+/* Store the byte at actor->0x54->0x38 as the VM result and return zero. */
 s32 GamePhaseActorScriptVm_GetAttachmentByte38(GamePhaseActorScriptVm *self)
 {
     u8 *object = *(u8 **)((u8 *)self->actor + 0x54);
-    GamePhaseScriptVm_SetResult(&self->base, object[0x38]);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, object[0x38]);
     return 0;
 }
 

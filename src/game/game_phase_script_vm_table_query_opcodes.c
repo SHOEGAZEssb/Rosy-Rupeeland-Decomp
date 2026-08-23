@@ -23,25 +23,25 @@ s32 func_02016144(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Push whether func_020636f0 returns a non-null entry for data_021e9ac0, then return zero. */
+/* Store whether func_020636f0 returns a non-null entry for data_021e9ac0 as the VM result, then return zero. */
 s32 func_0201616c(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, func_020636f0(data_021e9ac0) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_020636f0(data_021e9ac0) != 0);
     return 0;
 }
 
-/* Pop a value, push whether InventoryManager_ContainsId finds it in data_021e9ac0, and return zero. */
+/* Pop a value, store whether InventoryManager_ContainsId finds it in data_021e9ac0 as the VM result, and return zero. */
 s32 func_020161ac(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, InventoryManager_ContainsId(data_021e9ac0, value) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, InventoryManager_ContainsId(data_021e9ac0, value) != 0);
     return 0;
 }
 
-/* Pop a value, push whether func_0206f9d4 finds it in data_021e9e00, and return zero. */
+/* Pop a value, store whether func_0206f9d4 finds it in data_021e9e00 as the VM result, and return zero. */
 s32 func_020161f4(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_0206f9d4(data_021e9e00, value) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0206f9d4(data_021e9e00, value) != 0);
     return 0;
 }

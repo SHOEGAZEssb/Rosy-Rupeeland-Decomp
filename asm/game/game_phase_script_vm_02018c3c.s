@@ -7,7 +7,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Type7Actor_SetMotionTargetWithTimer
 .extern Type7Actor_ResetMotionAndCooldown
 .extern Type7Actor_ClearTarget
@@ -135,7 +135,7 @@ L_02018db8:
 L_02018ddc:
     mov r0, r9
     mvn r1, #0x0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r4, #0x0
     ldr r2, L_02018f04
     mov r0, #0x68
@@ -148,7 +148,7 @@ L_02018df8:
     ldr r1, L_02018f08
     mov r0, r9
     ldrsh r1, [r1, r3]
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02018ef4
 L_02018e1c:
     add r4, r4, #0x1

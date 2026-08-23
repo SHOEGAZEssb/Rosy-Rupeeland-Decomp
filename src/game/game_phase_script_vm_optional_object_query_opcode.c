@@ -17,7 +17,7 @@ extern s32 func_ov088_0221b380(void *object);
  * inverse of flag 0x20, two overlay queries, a signed-state comparison,
  * pointer presence, fx32 X/Y components converted to integers, or signed
  * halfword 0x21c.  A missing object yields zero only where retail checks it.
- * Push the result and return zero.
+ * Store the value as the VM result and return zero.
  */
 s32 GamePhaseActorScriptVm_DispatchOptionalSingletonQuery(GamePhaseActorScriptVm *self)
 {
@@ -51,6 +51,6 @@ s32 GamePhaseActorScriptVm_DispatchOptionalSingletonQuery(GamePhaseActorScriptVm
         result = func_ov088_0221b380(object);
         break;
     }
-    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)result);
     return 0;
 }

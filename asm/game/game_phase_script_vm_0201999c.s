@@ -3,7 +3,7 @@
 .extern PackedTimerArray_Get
 .extern PackedTimerArray_GetGlobal
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .global GamePhaseActorScriptVm_GetPackedTimerRepeatCount
 GamePhaseActorScriptVm_GetPackedTimerRepeatCount:
     stmdb sp!, {r3, r4, r5, lr}
@@ -15,7 +15,7 @@ GamePhaseActorScriptVm_GetPackedTimerRepeatCount:
     bl PackedTimerArray_Get
     ldrh r1, [r0, #0x6]
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .size GamePhaseActorScriptVm_GetPackedTimerRepeatCount, . - GamePhaseActorScriptVm_GetPackedTimerRepeatCount

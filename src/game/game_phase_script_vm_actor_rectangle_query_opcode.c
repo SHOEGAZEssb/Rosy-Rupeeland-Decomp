@@ -41,8 +41,8 @@ s32 RectS32_ContainsPoint(const RectS32 *rect, s32 x, s32 y)
 /*
  * Pop bottom, right, top, left, and actor index; resolve that actor from
  * runtime collection 1, copy its fx32 position object at 0x18, convert X/Y to
- * integers, test them against the half-open signed rectangle, push the boolean
- * result, destroy the temporary vector, and return zero.
+ * integers, test them against the half-open signed rectangle, store the Boolean
+ * as the VM result, destroy the temporary vector, and return zero.
  */
 s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm *self)
 {
@@ -57,7 +57,7 @@ s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm 
 
     VecFx32Object_InitCopy(&position, (const VecFx32Object *)(actor + 0x18));
     RectS32_Init(&rect, left, top, right, bottom);
-    GamePhaseScriptVm_SetResult(&self->base,
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                   RectS32_ContainsPoint(&rect, position.value.x >> 12,
                                 position.value.y >> 12) != 0);
     VecFx32Object_Destroy(&position);

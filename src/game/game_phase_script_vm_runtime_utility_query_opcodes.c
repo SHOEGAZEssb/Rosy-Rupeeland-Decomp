@@ -51,10 +51,10 @@ s32 GamePhaseActorScriptVm_SetTouchPromptEnabled(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Query the runtime context with fixed arguments (0, 0, 1), push, and return zero. */
+/* Query the runtime context with fixed arguments (0, 0, 1), store the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_QueryRuntimeContextFixedMode(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, (u32)RetailSaveContext_BeginRecordOperation(gRuntimeContext, 0, 0, 1));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)RetailSaveContext_BeginRecordOperation(gRuntimeContext, 0, 0, 1));
     return 0;
 }
 
@@ -65,9 +65,9 @@ static s32 squareFx32(s32 value)
 }
 
 /*
- * Pop vertical radius, horizontal radius, first Y/X, and second Y/X.  Push one
+ * Pop vertical radius, horizontal radius, first Y/X, and second Y/X.  Store one as the VM result
  * when the points coincide or when the sum of the two normalized squared-axis
- * distances is below 1.0 fx32; otherwise push zero.  The recovered division
+ * distances is below 1.0 fx32; otherwise store zero.  The recovered division
  * routine supplies each normalized term.  Return zero.
  */
 s32 GamePhaseActorScriptVm_IsPointWithinEllipse(GamePhaseActorScriptVm *self)
@@ -88,21 +88,21 @@ s32 GamePhaseActorScriptVm_IsPointWithinEllipse(GamePhaseActorScriptVm *self)
              < 0x1000) {
         inside = 1;
     }
-    GamePhaseScriptVm_SetResult(&self->base, (u32)inside);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)inside);
     return 0;
 }
 
-/* Push the confirmed GameWork word at offset 0x44 and return zero. */
+/* Store the confirmed GameWork word at offset 0x44 as the VM result and return zero. */
 s32 GamePhaseActorScriptVm_GetGameWorkField44(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, *(u32 *)((u8 *)gGameWork + 0x44));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *(u32 *)((u8 *)gGameWork + 0x44));
     return 0;
 }
 
-/* Push the negated GameWork word at offset 0x48 and return zero. */
+/* Store the negated GameWork word at offset 0x48 as the VM result and return zero. */
 s32 GamePhaseActorScriptVm_GetNegatedGameWorkField48(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, (u32)-*(s32 *)((u8 *)gGameWork + 0x48));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)-*(s32 *)((u8 *)gGameWork + 0x48));
     return 0;
 }
 

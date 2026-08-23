@@ -26,19 +26,19 @@ s32 GamePhaseActorScriptVm_ConfigureAttachmentByte3aAndFlag80(GamePhaseActorScri
     return 0;
 }
 
-/* Push the bound actor's halfword at offset 0x4e and return zero. */
+/* Store the bound actor's halfword at offset 0x4e as the VM result and return zero. */
 s32 GamePhaseActorScriptVm_GetActorField4e(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, *(u16 *)((u8 *)self->actor + 0x4e));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *(u16 *)((u8 *)self->actor + 0x4e));
     return 0;
 }
 
-/* Pop a bit index and value, push value masked by that single bit, and return zero. */
+/* Pop a bit index and value, store value masked by that single bit as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_MaskValueByBit(GamePhaseActorScriptVm *self)
 {
     u32 bit = GamePhaseScriptVm_Pop(&self->base);
     u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, value & (1u << bit));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value & (1u << bit));
     return 0;
 }
 

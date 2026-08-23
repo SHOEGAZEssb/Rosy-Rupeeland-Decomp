@@ -119,7 +119,7 @@ static void spawnActorSnapshot(GamePhaseActorScriptVm *self, s32 actorIndex,
     *(s32 *)(descriptor + 0x54) = -1;
     *(s32 *)(descriptor + 0x58) = 0;
     ActorCollection_SpawnActorFromDescriptor(Actor_GetOwningCollection(self->actor), descriptor);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)value);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)value);
     VecFx32Object_Destroy(&transform);
 }
 

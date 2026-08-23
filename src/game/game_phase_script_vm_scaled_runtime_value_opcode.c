@@ -1,6 +1,6 @@
 #include "tingle/game_phase_script_vm.h"
 
-/* Combine two script operands with a recovered runtime scale and push the result. */
+/* Combine two script operands with a recovered runtime scale and store the VM result. */
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,7 +14,7 @@ extern s32 func_020befec(s32 dividend, s32 divisor);
 /*
  * Pop a factor and base, narrow both to halfwords, divide the factor by 192,
  * multiply it by the low-halfword runtime field at 0x2ed4->0x20 scaled by
- * 1/16, add base/256, push the result, and return zero.  Signed truncating
+ * 1/16, add base/256, store the result as the VM result, and return zero.  Signed truncating
  * division is retained for the recovered arithmetic sequence.
  */
 s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *self)
@@ -27,6 +27,6 @@ s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *s
     s32 result = func_020befec(factor, 192) * (runtimeScale / 256)
                + base / 256;
 
-    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)result);
     return 0;
 }

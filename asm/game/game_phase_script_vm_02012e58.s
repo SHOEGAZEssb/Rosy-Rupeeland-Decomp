@@ -2,7 +2,7 @@
 .text
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 
     .global GamePhaseActorScriptVm_GetVectorZ
 GamePhaseActorScriptVm_GetVectorZ: ; 0x02012e58
@@ -16,7 +16,7 @@ GamePhaseActorScriptVm_GetVectorZ: ; 0x02012e58
     ldr r1, [sp, #0xc]
     mov r0, r4
     mov r1, r1, asr #0xc
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
     mov r0, #0x0

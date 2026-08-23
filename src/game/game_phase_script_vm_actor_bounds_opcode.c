@@ -47,7 +47,7 @@ void S16Bounds_Expand(ActorBounds *bounds, s32 horizontal, s32 vertical);
 /*
  * Pop four signed-16-bit values followed by a command.  Commands replace or
  * edit the bound actor's rectangle at offset 0x70, translate/expand it, or
- * query overlap between two indexed actors and push the Boolean result.
+ * query overlap between two indexed actors and store the Boolean as the VM result.
  * Commands 6/7 preserve the old center while changing one dimension and call
  * the actor bounds-application routine.  Unsupported commands do nothing.
  * Return zero.
@@ -120,7 +120,7 @@ s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *se
                                           secondActor + 0x18);
         Actor_BuildWorldInteractionBounds(firstState, firstActor,
                                           firstActor + 0x18);
-        GamePhaseScriptVm_SetResult(&self->base,
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                       func_02056f34(result, secondState, firstState, scratch)
                           != 0);
         break;

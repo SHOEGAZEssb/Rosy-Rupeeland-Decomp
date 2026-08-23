@@ -42,8 +42,8 @@ s32 GamePhaseActorScriptVm_CancelMovement(GamePhaseActorScriptVm *self)
 
 /*
  * Pop an actor index, resolve it from the bound actor's collection, turn the
- * bound actor toward the target's horizontal displacement, push byte 0x38 of
- * actor->0x54 when present (otherwise zero), and return zero.
+ * bound actor toward the target's horizontal displacement, store byte 0x38 of
+ * actor->0x54 when present (otherwise zero) as the VM result, and return zero.
  */
 s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActorScriptVm *self)
 {
@@ -55,6 +55,6 @@ s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActor
     u8 *object;
     Actor_UpdateAttachmentDirectionFromVector(actor, dx, dy);
     object = *(u8 **)(actor + 0x54);
-    GamePhaseScriptVm_SetResult(&self->base, object != 0 ? object[0x38] : 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, object != 0 ? object[0x38] : 0);
     return 0;
 }

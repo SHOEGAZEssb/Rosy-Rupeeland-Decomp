@@ -3,7 +3,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 
     .global GamePhaseActorScriptVm_IsBrightnessTransitionPending
 GamePhaseActorScriptVm_IsBrightnessTransitionPending: ; 0x02014250
@@ -41,7 +41,7 @@ L_020142b8:
     mov r1, #0x0
 L_020142bc:
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, pc}
     .size GamePhaseActorScriptVm_IsBrightnessTransitionPending, . - GamePhaseActorScriptVm_IsBrightnessTransitionPending

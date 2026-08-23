@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_indexed_global_query_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_02063698
 .extern data_021e9ac0
 .global GamePhaseActorScriptVm_QueryGlobalContextByIndex
@@ -16,7 +16,7 @@ GamePhaseActorScriptVm_QueryGlobalContextByIndex: ; 0x0201af88
     bl func_02063698
     mov r1, r0
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201afbc: .word data_021e9ac0

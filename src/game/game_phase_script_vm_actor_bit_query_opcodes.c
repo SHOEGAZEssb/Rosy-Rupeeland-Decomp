@@ -14,18 +14,18 @@ extern void OS_Halt(void);
 }
 #endif
 
-/* Push actor byte 0x169 bit 0 through the VM value stack. */
-static void pushActorBit(GamePhaseActorScriptVm *self, const void *actor)
+/* Store actor byte 0x169 bit 0 as the VM result. */
+static void storeActorBitResult(GamePhaseActorScriptVm *self, const void *actor)
 {
-    GamePhaseScriptVm_SetResult(&self->base, *((const u8 *)actor + 0x169) & 1);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *((const u8 *)actor + 0x169) & 1);
 }
 
 /*
  * Pop a selector. A nonzero selector resolves that indexed actor from the
  * bound collection. Zero instead selects the runtime collection-1 actor at
  * offset 0x2e7c when the bound collection's mode at 0x2e84 is 1, or follows
- * the runtime 0x2fb8 -> 0x2ebc pointers otherwise. Push selected actor byte
- * 0x169 bit 0 and return zero.
+ * the runtime 0x2fb8 -> 0x2ebc pointers otherwise. Store selected actor byte
+ * 0x169 bit 0 as the VM result and return zero.
  */
 s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *self)
 {
@@ -40,7 +40,7 @@ s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *s
         u8 *owner = *(u8 **)((u8 *)data_021052fc + 0x2fb8);
         actor = *(u8 **)(owner + 0x2ebc);
     }
-    pushActorBit(self, actor);
+    storeActorBitResult(self, actor);
     return 0;
 }
 
@@ -48,8 +48,8 @@ s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *s
  * Pop an index. If runtime pointers 0x24->0 and 0x2fb8->0x2eac->0 differ,
  * return zero immediately. Otherwise collection mode 1 resolves the index
  * from runtime collection 2, mode 2 from collection 1, and other modes halt.
- * Type-1 targets redirect to collection 1's actor at 0x2e7c. Push byte 0x169
- * bit 0 from the final target and return zero.
+ * Type-1 targets redirect to collection 1's actor at 0x2e7c. Store byte 0x169
+ * bit 0 from the final target as the VM result and return zero.
  */
 s32 GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0(GamePhaseActorScriptVm *self)
 {
@@ -75,6 +75,6 @@ s32 GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0(GamePhaseActorScrip
         u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(runtime, 1);
         target = *(u8 **)(collection + 0x2e7c);
     }
-    pushActorBit(self, target);
+    storeActorBitResult(self, target);
     return 0;
 }

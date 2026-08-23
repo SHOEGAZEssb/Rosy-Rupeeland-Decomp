@@ -38,10 +38,10 @@ s32 GamePhaseActorScriptVm_WaitForMovementCompletion(GamePhaseActorScriptVm *sel
     return 0;
 }
 
-/* Push whether actor flag 0x40 is set and return zero. */
+/* Store whether actor flag 0x40 is set as the VM result and return zero. */
 s32 GamePhaseActorScriptVm_IsMovementActive(GamePhaseActorScriptVm *self)
 {
     u32 flags = *(u32 *)((u8 *)self->actor + 0x10);
-    GamePhaseScriptVm_SetResult(&self->base, (flags & 0x40) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (flags & 0x40) != 0);
     return 0;
 }

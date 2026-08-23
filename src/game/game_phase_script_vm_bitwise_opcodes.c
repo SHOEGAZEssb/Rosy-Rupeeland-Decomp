@@ -14,59 +14,65 @@ static u32 readImmediate(GamePhaseScriptVm *self)
     return value;
 }
 
-/* AND destination with the encoded source register, update zero state, and return zero. */
+/* AND destination with the encoded source register, update the condition to
+ * reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_AndRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
     self->registers[destination] &= self->registers[(operand >> 4) & 7];
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* AND the byte-selected register with a 32-bit immediate, update zero state, return zero. */
+/* AND the byte-selected register with a 32-bit immediate, update the condition
+ * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_AndImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
     self->registers[destination] &= readImmediate(self);
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* OR destination with the encoded source register, update zero state, and return zero. */
+/* OR destination with the encoded source register, update the condition to
+ * reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_OrRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
     self->registers[destination] |= self->registers[(operand >> 4) & 7];
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* OR the byte-selected register with a 32-bit immediate, update zero state, return zero. */
+/* OR the byte-selected register with a 32-bit immediate, update the condition
+ * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_OrImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
     self->registers[destination] |= readImmediate(self);
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* XOR destination with the encoded source register, update zero state, and return zero. */
+/* XOR destination with the encoded source register, update the condition to
+ * reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_XorRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = readOperand(self);
     s32 destination = operand & 7;
     self->registers[destination] ^= self->registers[(operand >> 4) & 7];
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* XOR the byte-selected register with a 32-bit immediate, update zero state, return zero. */
+/* XOR the byte-selected register with a 32-bit immediate, update the condition
+ * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_XorImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = readOperand(self);
     self->registers[destination] ^= readImmediate(self);
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }

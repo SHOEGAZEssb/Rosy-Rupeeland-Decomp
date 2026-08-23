@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_bitwise_opcodes.c.
 .text
-.extern GamePhaseScriptVm_UpdateZeroFlag
+.extern GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
 .global GamePhaseScriptVm_OrRegisters
 GamePhaseScriptVm_OrRegisters: ; 0x0201b7dc
     stmdb sp!, {r3, lr}
@@ -17,7 +17,7 @@ GamePhaseScriptVm_OrRegisters: ; 0x0201b7dc
     ldr r2, [r2, #0x2c]
     orr r2, r3, r2
     str r2, [ip, r1, lsl #0x2]
-    bl GamePhaseScriptVm_UpdateZeroFlag
+    bl GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .size GamePhaseScriptVm_OrRegisters, . - GamePhaseScriptVm_OrRegisters

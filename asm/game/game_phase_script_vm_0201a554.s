@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_sound_utility_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Sound_StopAllManagedPlayers
 .extern SoundPhaseManager_Reset
 .extern Sound_IsStreamPlaying
@@ -34,11 +34,11 @@ L_0201a588:
     mov r0, r4
     beq L_0201a5b0
     mov r1, #0x1
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201a608
 L_0201a5b0:
     mov r1, #0x0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201a608
 L_0201a5bc:
     ldr r0, L_0201a610

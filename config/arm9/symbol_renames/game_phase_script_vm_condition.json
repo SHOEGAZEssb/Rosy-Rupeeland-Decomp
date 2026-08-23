@@ -1,0 +1,4 @@
+{
+  "GamePhaseScriptVm_SetResult": "GamePhaseScriptVm_StoreResultAndUpdateCondition",
+  "GamePhaseScriptVm_UpdateZeroFlag": "GamePhaseScriptVm_UpdateConditionForZeroRegisterValue"
+}

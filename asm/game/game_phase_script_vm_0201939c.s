@@ -10,7 +10,7 @@
 .extern ActorBounds_GetWidth
 .extern ActorBounds_GetHeight
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_02019890
 .extern ActorCollection_QueueGroupForRemoval
 .extern ActorCollection_SpawnActorFromDescriptor
@@ -186,7 +186,7 @@ L_0201948c:
     bl ActorCollection_SpawnActorFromDescriptor
     mov r0, r9
     mov r1, r7
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     add r0, sp, #0xdc
     bl VecFx32Object_Destroy
     b L_02019878

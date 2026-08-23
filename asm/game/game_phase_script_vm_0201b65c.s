@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_ReadU32Le
 .extern func_020befec
-.extern GamePhaseScriptVm_UpdateZeroFlag
+.extern GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
 .global GamePhaseScriptVm_DivideImmediate
 GamePhaseScriptVm_DivideImmediate: ; 0x0201b65c
     stmdb sp!, {r4, r5, r6, lr}
@@ -22,7 +22,7 @@ GamePhaseScriptVm_DivideImmediate: ; 0x0201b65c
     str r0, [r4, r5, lsl #0x2]
     mov r0, r6
     mov r1, r5
-    bl GamePhaseScriptVm_UpdateZeroFlag
+    bl GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .size GamePhaseScriptVm_DivideImmediate, . - GamePhaseScriptVm_DivideImmediate

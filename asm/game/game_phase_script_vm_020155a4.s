@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_geometry_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020adc40
 
     .global GamePhaseActorScriptVm_CalculateDistanceToCoordinates
@@ -30,7 +30,7 @@ GamePhaseActorScriptVm_CalculateDistanceToCoordinates: ; 0x020155a4
     add r1, r0, r1, lsr #0x1a
     mov r0, r5
     mov r1, r1, asr #0x6
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
     .size GamePhaseActorScriptVm_CalculateDistanceToCoordinates, . - GamePhaseActorScriptVm_CalculateDistanceToCoordinates

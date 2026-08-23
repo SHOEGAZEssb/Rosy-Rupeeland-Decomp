@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern DualLayerTileRenderer_ForwardLayerPair
 
     .global func_0201350c
@@ -26,7 +26,7 @@ func_0201350c: ; 0x0201350c
     bl DualLayerTileRenderer_ForwardLayerPair
     mov r1, r0
     mov r0, r6
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02013564: .word data_021052fc

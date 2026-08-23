@@ -21,10 +21,10 @@ s32 GamePhaseActorScriptVm_StartBrightnessTransition(GamePhaseActorScriptVm *sel
 }
 
 /*
- * Pop a display selector and push whether the selected transition is not yet
+ * Pop a display selector and store whether the selected transition is not yet
  * complete: selector 1 checks the first controller, selector 2 the second,
  * and other values report pending if either controller is incomplete. Returns
- * zero after pushing the result.
+ * zero after storing the VM result.
  */
 s32 GamePhaseActorScriptVm_IsBrightnessTransitionPending(GamePhaseActorScriptVm *self)
 {
@@ -36,6 +36,6 @@ s32 GamePhaseActorScriptVm_IsBrightnessTransitionPending(GamePhaseActorScriptVm 
         pending = DisplayBrightness_IsSubTransitionComplete() == 0;
     else
         pending = DisplayBrightness_IsMainTransitionComplete() == 0 || DisplayBrightness_IsSubTransitionComplete() == 0;
-    GamePhaseScriptVm_SetResult(&self->base, pending);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, pending);
     return 0;
 }

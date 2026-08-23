@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_subsystem_command_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_02027818
 .extern func_02027828
 .extern func_02027864
@@ -47,7 +47,7 @@ L_02019e30:
     bl func_02027818
     mov r1, r0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019f44
 L_02019e4c:
     bl GamePhaseProgress_GetOrCreateGlobal
@@ -63,7 +63,7 @@ L_02019e6c:
     bl GamePhaseProgress_GetOrCreateGlobal
     ldr r1, [r0, #0x0]
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019f44
 L_02019e80:
     bl GamePhaseProgress_GetOrCreateGlobal
@@ -76,7 +76,7 @@ L_02019e90:
     bl func_02027828
     mov r1, r0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019f44
 L_02019eac:
     bl GamePhaseProgress_GetOrCreateGlobal
@@ -90,7 +90,7 @@ L_02019ebc:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019f44
 L_02019edc:
     bl GamePhaseProgress_GetOrCreateGlobal
@@ -101,14 +101,14 @@ L_02019ee8:
     bl func_02027e8c
     mov r1, r0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019f44
 L_02019f00:
     bl GamePhaseProgress_GetOrCreateGlobal
     bl func_02027eac
     mov r1, r0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019f44
 L_02019f18:
     bl GamePhaseProgress_GetOrCreateGlobal
@@ -122,7 +122,7 @@ L_02019f28:
     movne r1, #0x1
     moveq r1, #0x0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_02019f44:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

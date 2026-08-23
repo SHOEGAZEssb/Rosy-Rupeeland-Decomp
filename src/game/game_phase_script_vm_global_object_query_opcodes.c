@@ -15,45 +15,45 @@ extern u32 func_0207a4a8(void *context, s32 first, s32 second);
 }
 #endif
 
-/* Pop a selector, test func_0207a494 for a non-null result, push that boolean, and return zero. */
+/* Pop a selector, test func_0207a494 for a non-null result, store that Boolean as the VM result, and return zero. */
 s32 func_02017788(GamePhaseActorScriptVm *self)
 {
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_0207a494(data_021f5128, selector) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0207a494(data_021f5128, selector) != 0);
     return 0;
 }
 
-/* Pop second and first selectors, test func_0207a99c, push its non-null status, and return zero. */
+/* Pop second and first selectors, test func_0207a99c, store its non-null status as the VM result, and return zero. */
 s32 func_020177c8(GamePhaseActorScriptVm *self)
 {
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base,
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                   func_0207a99c(data_021f5128, first, second) != 0);
     return 0;
 }
 
-/* Pop a selector, test func_0207a40c for a non-null result, push that boolean, and return zero. */
+/* Pop a selector, test func_0207a40c for a non-null result, store that Boolean as the VM result, and return zero. */
 s32 func_0201787c(GamePhaseActorScriptVm *self)
 {
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_0207a40c(data_021f5128, selector) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0207a40c(data_021f5128, selector) != 0);
     return 0;
 }
 
-/* Pop a selector, test RetailRecordManager_IsSelectorAvailable for a non-null result, push that boolean, and return zero. */
+/* Pop a selector, test RetailRecordManager_IsSelectorAvailable for a non-null result, store that Boolean as the VM result, and return zero. */
 s32 func_020178bc(GamePhaseActorScriptVm *self)
 {
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, RetailRecordManager_IsSelectorAvailable(data_021f5128, selector) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, RetailRecordManager_IsSelectorAvailable(data_021f5128, selector) != 0);
     return 0;
 }
 
-/* Pop second and first selectors, push the value returned by func_0207a4a8, and return zero. */
+/* Pop second and first selectors, store the value returned by func_0207a4a8 as the VM result, and return zero. */
 s32 func_02017938(GamePhaseActorScriptVm *self)
 {
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_0207a4a8(data_021f5128, first, second));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0207a4a8(data_021f5128, first, second));
     return 0;
 }

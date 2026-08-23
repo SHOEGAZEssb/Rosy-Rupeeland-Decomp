@@ -16,11 +16,11 @@ extern void Sound_ReapplyCurrentGroupSlots(void *context);
 }
 #endif
 
-/* Pop a value, pass its low byte shifted by eight to the converter, push, return zero. */
+/* Pop a value, pass its low byte shifted by eight to the converter, store the VM result, return zero. */
 s32 func_0201a50c(GamePhaseActorScriptVm *self)
 {
     u16 value = (u16)((u8)GamePhaseScriptVm_Pop(&self->base) << 8);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)func_020570b0(value));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_020570b0(value));
     return 0;
 }
 
@@ -33,7 +33,7 @@ s32 func_0201a540(GamePhaseActorScriptVm *self)
 
 /*
  * Pop command 15..20 and dispatch to the corresponding sound-context
- * operation.  Command 15 queries index -1 and pushes a normalized Boolean;
+ * operation.  Command 15 queries index -1 and stores a normalized Boolean as the VM result;
  * the remaining commands only mutate sound state.  Other commands do nothing.
  * Return zero.
  */
@@ -42,7 +42,7 @@ s32 GamePhaseActorScriptVm_DispatchSoundContextUtilityCommand(GamePhaseActorScri
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (command) {
     case 15:
-        GamePhaseScriptVm_SetResult(&self->base, Sound_IsStreamPlaying(gSoundContext, -1) != 0);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, Sound_IsStreamPlaying(gSoundContext, -1) != 0);
         break;
     case 16: Sound_SaveStreamPosition(gSoundContext); break;
     case 17: Sound_ResumeStreamPosition(gSoundContext); break;

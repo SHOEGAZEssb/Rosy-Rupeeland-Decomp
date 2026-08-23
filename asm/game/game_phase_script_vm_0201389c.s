@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_target_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_UpdateAttachmentDirectionFromVector
 .extern Actor_GetOwningCollection
@@ -31,12 +31,12 @@ GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38: ; 0x0201389c
     beq L_02013900
     ldrb r1, [r0, #0x38]
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_0201390c
 L_02013900:
     mov r0, r4
     mov r1, #0x0
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_0201390c:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

@@ -40,7 +40,7 @@ static void *allocCommandObject(u32 size, const char *tag)
 /*
  * Pop a parameter and selector, dispatch selectors 0..82, and return zero.
  * Confirmed paths create runtime scenes/effects, register an effect relative
- * to the active actor, modify actor presentation flags, or push queried data.
+ * to the active actor, modify actor presentation flags, or store queried data as the VM result.
  * Unsupported selectors halt. Most simple selectors map to a kind passed with
  * the parameter to a 0x9c-byte GamePhaseLoadScene object. Selector 18 reaches that
  * path with the incoming r7 value in retail; portable C uses zero while the
@@ -149,7 +149,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         u8 *presentation = actor != 0 ? *(u8 **)(actor + 0x54) : 0;
         if (presentation != 0) {
             u32 offset = selector == 31 ? 0x14 : selector == 32 ? 0x18 : 0x1c;
-            GamePhaseScriptVm_SetResult(&self->base,
+            GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                           *(u32 *)(*(u8 **)(presentation + offset) + 0x10));
         }
         return 0;
@@ -164,11 +164,11 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
     case 37: {
         u8 *record = RuntimeRecordTable_FindByKey(data_021f3d68, parameter);
         if (selector == 35)
-            GamePhaseScriptVm_SetResult(&self->base, *(u16 *)(record + 0x12));
+            GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *(u16 *)(record + 0x12));
         else if (selector == 36)
-            GamePhaseScriptVm_SetResult(&self->base, *(u16 *)(record + 0x14));
+            GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *(u16 *)(record + 0x14));
         else
-            GamePhaseScriptVm_SetResult(&self->base, *(u16 *)(record + 0x10) & 0xff);
+            GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *(u16 *)(record + 0x10) & 0xff);
         return 0;
     }
     default:

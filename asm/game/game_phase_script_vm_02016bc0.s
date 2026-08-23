@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .global func_02016bc0
 func_02016bc0:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -38,19 +38,19 @@ L_02016c34:
     mov r1, r0, lsl #27
     mov r0, r4
     mov r1, r1, asr #27
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02016c6c
 L_02016c48:
     mov r1, r0, lsl #22
     mov r0, r4
     mov r1, r1, lsr #27
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02016c6c
 L_02016c5c:
     mov r1, r0, lsl #18
     mov r0, r4
     mov r1, r1, lsr #28
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
 L_02016c6c:
     mov r0, #0
     add sp, sp, #8

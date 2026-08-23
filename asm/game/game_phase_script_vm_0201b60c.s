@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_multiply_divide_opcodes.c.
 .text
 .extern func_020befec
-.extern GamePhaseScriptVm_UpdateZeroFlag
+.extern GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
 .global GamePhaseScriptVm_DivideRegisters
 GamePhaseScriptVm_DivideRegisters: ; 0x0201b60c
     stmdb sp!, {r4, r5, r6, lr}
@@ -21,7 +21,7 @@ GamePhaseScriptVm_DivideRegisters: ; 0x0201b60c
     str r0, [r5, r6, lsl #0x2]
     mov r0, r4
     mov r1, r6
-    bl GamePhaseScriptVm_UpdateZeroFlag
+    bl GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .size GamePhaseScriptVm_DivideRegisters, . - GamePhaseScriptVm_DivideRegisters

@@ -21,7 +21,7 @@ extern s32 RectS32_ContainsPoint(const RectS32 *rect, s32 x, s32 y);
 
 /*
  * Pop rectangle bottom/right/top/left followed by point Y/X, construct the
- * signed half-open rectangle, push whether the point lies inside, and return
+ * signed half-open rectangle, store whether the point lies inside as the VM result, and return
  * zero.  The helper pair defines the recovered boundary behavior.
  */
 s32 GamePhaseActorScriptVm_IsPointInRectangle(GamePhaseActorScriptVm *self)
@@ -35,6 +35,6 @@ s32 GamePhaseActorScriptVm_IsPointInRectangle(GamePhaseActorScriptVm *self)
     RectS32 rect;
 
     RectS32_Init(&rect, left, top, right, bottom);
-    GamePhaseScriptVm_SetResult(&self->base, (u32)RectS32_ContainsPoint(&rect, x, y));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)RectS32_ContainsPoint(&rect, x, y));
     return 0;
 }

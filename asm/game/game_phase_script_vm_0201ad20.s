@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_packed_bit_grid_opcodes.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020275b0
 .global GamePhaseActorScriptVm_GetPackedBitGridMask
 GamePhaseActorScriptVm_GetPackedBitGridMask: ; 0x0201ad20
@@ -25,7 +25,7 @@ GamePhaseActorScriptVm_GetPackedBitGridMask: ; 0x0201ad20
     mov r1, #0x1
     and r1, r2, r1, lsl r0
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 .size GamePhaseActorScriptVm_GetPackedBitGridMask, . - GamePhaseActorScriptVm_GetPackedBitGridMask

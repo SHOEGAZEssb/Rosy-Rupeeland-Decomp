@@ -2,10 +2,10 @@
 
 /* Implement compact script-VM condition and control-flow primitives. */
 
-/* Set stateFlags bit one exactly when registers[index] is zero. */
-void GamePhaseScriptVm_UpdateZeroFlag(GamePhaseScriptVm *self, s32 index)
+/* Set the condition bit exactly when the selected register value is zero. */
+void GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(GamePhaseScriptVm *self, s32 registerIndex)
 {
-    if (self->registers[index] != 0)
+    if (self->registers[registerIndex] != 0)
         self->stateFlags &= (u8)~2;
     else
         self->stateFlags |= 2;

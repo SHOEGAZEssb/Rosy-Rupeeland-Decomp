@@ -2,7 +2,7 @@
 .text
 .extern data_020f1678
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_0208372c
 .global func_020192f4
 func_020192f4:
@@ -28,7 +28,7 @@ L_0201932c:
     moveq r1, #0x1
     movne r1, #0x0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019390
 L_0201934c:
     mov r0, r4
@@ -37,7 +37,7 @@ L_0201934c:
     moveq r1, #0x1
     movne r1, #0x0
     mov r0, r5
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     b L_02019390
 L_0201936c:
     ldr r0, L_02019398

@@ -2,46 +2,50 @@
 
 /* Add or subtract register and immediate operands in the compact script VM. */
 
-/* Add the encoded source register to the encoded destination, update zero state, return zero. */
+/* Add the encoded source register to the encoded destination, update the
+ * condition to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_AddRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = (u8)*self->cursor++;
     s32 destination = operand & 7;
     s32 source = (operand >> 4) & 7;
     self->registers[destination] += self->registers[source];
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* Add a 32-bit immediate to the byte-selected register, update zero state, return zero. */
+/* Add a 32-bit immediate to the byte-selected register, update the condition
+ * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_AddImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
     u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] += immediate;
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* Subtract the encoded source register from the destination, update zero state, return zero. */
+/* Subtract the encoded source register from the destination, update the
+ * condition to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_SubtractRegisters(GamePhaseScriptVm *self)
 {
     u8 operand = (u8)*self->cursor++;
     s32 destination = operand & 7;
     s32 source = (operand >> 4) & 7;
     self->registers[destination] -= self->registers[source];
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
 
-/* Subtract a 32-bit immediate from the byte-selected register, update zero state, return zero. */
+/* Subtract a 32-bit immediate from the byte-selected register, update the
+ * condition to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_SubtractImmediate(GamePhaseScriptVm *self)
 {
     u8 destination = (u8)*self->cursor++;
     u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] -= immediate;
-    GamePhaseScriptVm_UpdateZeroFlag(self, destination);
+    GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }

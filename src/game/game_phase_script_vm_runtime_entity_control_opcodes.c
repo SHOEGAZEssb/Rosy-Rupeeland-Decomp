@@ -47,7 +47,7 @@ s32 GamePhaseActorScriptVm_SetInteractionIconDirection(GamePhaseActorScriptVm *s
  * Pop fourth, third, second, first, and command operands.  Dispatch commands
  * 0..15 against the active runtime entity at runtime offset 0x2ea8.  Commands
  * include creation, recovered state calls, an fx32 position update, flag and
- * field writes, a 36-entry table lookup whose result is pushed to the VM, and
+ * field writes, a 36-entry table lookup whose value is stored as the VM result, and
  * global fallback-state clearing when no entity exists.  Missing entities and
  * unsupported commands do nothing unless the recovered case explicitly
  * updates the fallback state.  Return zero.
@@ -108,11 +108,11 @@ s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptV
         break;
     case 9: {
         s32 index;
-        GamePhaseScriptVm_SetResult(&self->base, (u32)-1);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)-1);
         for (index = 0; index < 36; index++) {
             const u8 *record = data_020ea9b0 + index * 0x68;
             if (*(const s16 *)record == first) {
-                GamePhaseScriptVm_SetResult(&self->base, (u32)*(const s16 *)(record + 0x2e));
+                GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)*(const s16 *)(record + 0x2e));
                 break;
             }
         }

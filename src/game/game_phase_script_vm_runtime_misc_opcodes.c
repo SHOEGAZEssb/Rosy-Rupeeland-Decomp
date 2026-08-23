@@ -61,8 +61,8 @@ s32 GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown(GamePhaseActorScri
 }
 
 /*
- * Push one when runtime actor 0x2ea4 has bit 4 set at 0xd0 or its fx32 Y at
- * 0x24 is greater than Actor_GetCachedTerrainHeight(actor); otherwise push zero. Return zero.
+ * Store one as the VM result when runtime actor 0x2ea4 has bit 4 set at 0xd0 or its fx32 Y at
+ * 0x24 is greater than Actor_GetCachedTerrainHeight(actor); otherwise store zero. Return zero.
  */
 s32 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set(GamePhaseActorScriptVm *self)
 {
@@ -71,6 +71,6 @@ s32 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set(GamePhaseAc
     if (!result)
         result = (*(s32 *)(actor + 0x24) >> 12) >
                  (Actor_GetCachedTerrainHeight(actor) >> 12);
-    GamePhaseScriptVm_SetResult(&self->base, result);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, result);
     return 0;
 }

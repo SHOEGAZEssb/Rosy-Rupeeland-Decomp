@@ -29,8 +29,8 @@ extern void SoundPhaseManager_RequestAlternateTransition(void *context, s32 enab
 /*
  * Pop a value and command selector, dispatch the selected sound-context
  * operation, and return zero.  Commands 0..3 split the low halfword into a
- * nine-bit sound ID and seven-bit variant.  Commands 3 and 5 push their query
- * results; selectors 15..33 and unsupported selectors have no effect.
+ * nine-bit sound ID and seven-bit variant.  Commands 3 and 5 store their query
+ * values as VM results; selectors 15..33 and unsupported selectors have no effect.
  */
 s32 func_0201a614(GamePhaseActorScriptVm *self)
 {
@@ -63,12 +63,12 @@ s32 func_0201a614(GamePhaseActorScriptVm *self)
         packed = (u16)value;
         soundId = packed >> 7;
         variant = packed & 0x7f;
-        GamePhaseScriptVm_SetResult(&self->base,
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
                       (u32)Sound_IsEffectPlaying(gSoundContext, soundId, variant));
         break;
     case 4: Sound_StopAllDirectSequences(gSoundContext, value); break;
     case 5:
-        GamePhaseScriptVm_SetResult(&self->base, (u32)Sound_IsDirectSequencePlaying(gSoundContext, (u16)value));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)Sound_IsDirectSequencePlaying(gSoundContext, (u16)value));
         break;
     case 6: func_020594ec(gSoundContext, (u16)value); break;
     case 7: Sound_StopStream(gSoundContext, value); break;

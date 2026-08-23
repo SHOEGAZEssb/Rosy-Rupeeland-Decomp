@@ -2,7 +2,7 @@
 .text
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_02063670
 .global func_02015e64
 func_02015e64:
@@ -16,7 +16,7 @@ func_02015e64:
     bl func_02063670
     mov r1, r0
     mov r0, r4
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_02015e98: .word data_021e9ac0

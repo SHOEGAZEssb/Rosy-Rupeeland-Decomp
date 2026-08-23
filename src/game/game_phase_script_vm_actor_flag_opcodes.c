@@ -54,10 +54,10 @@ s32 GamePhaseActorScriptVm_SetAttachmentFlag20(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a value, push func_020adc40's fixed-point root result, and return zero. */
+/* Pop a value, store func_020adc40's fixed-point root result as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_ComputeFixedPointRoot(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_SetResult(&self->base, func_020adc40(value));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_020adc40(value));
     return 0;
 }

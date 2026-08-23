@@ -19,7 +19,7 @@ extern void OS_Halt(void);
  * recovered 12-byte triple and evaluate it with the system source or the
  * popped parameter, selecting normal/alternate evaluation as encoded.  Mode
  * 4 computes first + ((second-first)/third)*parameter using fx32 arithmetic.
- * Invalid modes halt.  Push the result and return zero otherwise.
+ * Invalid modes halt.  Store the value as the VM result and return zero otherwise.
  */
 s32 GamePhaseActorScriptVm_GenerateModeBasedValue(GamePhaseActorScriptVm *self)
 {
@@ -41,6 +41,6 @@ s32 GamePhaseActorScriptVm_GenerateModeBasedValue(GamePhaseActorScriptVm *self)
     } else {
         OS_Halt();
     }
-    GamePhaseScriptVm_SetResult(&self->base, (u32)result);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)result);
     return 0;
 }

@@ -28,10 +28,10 @@ static void callActorValueMethod(void *actor, u32 offset, u32 value)
 
 /*
  * Pop a command and index. If the runtime's two owner links do not identify
- * the same object, return zero without pushing a result. Otherwise select the
+ * the same object, return zero without storing a VM result. Otherwise select the
  * opposite actor collection according to the bound collection's mode at
  * 0x2e84, dispatch through virtual method 0x70 or 0x74, activate non-local
- * targets, push one, and return zero. Mode values other than 1 or 2 halt.
+ * targets, store one as the VM result, and return zero. Mode values other than 1 or 2 halt.
  */
 s32 func_02015b64(GamePhaseActorScriptVm *self)
 {
@@ -73,6 +73,6 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
         Actor_SetActive(target, 1);
     }
 
-    GamePhaseScriptVm_SetResult(&self->base, 1);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, 1);
     return 0;
 }

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_branch_misc_opcodes.c.
 .text
-.extern GamePhaseScriptVm_UpdateZeroFlag
+.extern GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
 .global GamePhaseScriptVm_NotRegister
 GamePhaseScriptVm_NotRegister: ; 0x0201b8fc
     stmdb sp!, {r3, lr}
@@ -12,7 +12,7 @@ GamePhaseScriptVm_NotRegister: ; 0x0201b8fc
     ldr r2, [r3, #0x2c]
     mvn r2, r2
     str r2, [r3, #0x2c]
-    bl GamePhaseScriptVm_UpdateZeroFlag
+    bl GamePhaseScriptVm_UpdateConditionForZeroRegisterValue
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .size GamePhaseScriptVm_NotRegister, . - GamePhaseScriptVm_NotRegister

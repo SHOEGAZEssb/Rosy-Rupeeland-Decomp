@@ -27,9 +27,9 @@ s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScript
     return 0;
 }
 
-/* Query the recovered global runtime value, push it, and return zero. */
+/* Query the recovered global runtime value, store it as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_GetDepartingOrFinishedGridEffectActorCount(GamePhaseActorScriptVm *self)
 {
-    GamePhaseScriptVm_SetResult(&self->base, (u32)GridEffectActorRegistry_CountDepartingOrFinishedActors());
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)GridEffectActorRegistry_CountDepartingOrFinishedActors());
     return 0;
 }

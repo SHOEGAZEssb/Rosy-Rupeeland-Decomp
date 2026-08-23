@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_rectangle_point_query_opcode.c.
 .text
 .extern GamePhaseScriptVm_Pop
-.extern GamePhaseScriptVm_SetResult
+.extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RectS32_Init
 .extern RectS32_ContainsPoint
 .global GamePhaseActorScriptVm_IsPointInRectangle
@@ -38,7 +38,7 @@ GamePhaseActorScriptVm_IsPointInRectangle: ; 0x0201add4
     bl RectS32_ContainsPoint
     mov r1, r0
     mov r0, r9
-    bl GamePhaseScriptVm_SetResult
+    bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
