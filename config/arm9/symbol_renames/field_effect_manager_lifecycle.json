@@ -1,0 +1,13 @@
+{
+  "func_0201dbc8": "RuntimePresentationManager_Init",
+  "func_0201dc18": "FieldEffectList_Init",
+  "func_0201dc38": "FieldEffectList_Destroy",
+  "func_0201dc58": "FieldEffectList_Clear",
+  "func_0201dc98": "RuntimePresentationManager_Destroy",
+  "func_0201dde4": "FieldEffectList_RemoveNode",
+  "func_0201df64": "RuntimePresentationManager_DestroyAllEffects",
+  "func_0201e228": "FieldEffectList_DestroyAndFree",
+  "gRuntimePresentationListNodeAllocationTag": "gFieldEffectListNodeAllocationTag",
+  "gRuntimePresentationListVTable": "gFieldEffectListVtable",
+  "gRuntimePresentationAuxiliaryAllocationTag": "gGraphics3dPresentationAllocationTag"
+}

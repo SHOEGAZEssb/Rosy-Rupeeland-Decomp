@@ -6,14 +6,14 @@
 .extern func_020a20d4
 .extern func_020a214c
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201dc18
-.extern func_0201dc58
-.extern func_0201dde4
+.extern FieldEffectList_Init
+.extern FieldEffectList_Clear
+.extern FieldEffectList_RemoveNode
 .extern FieldEffectList_Append
-.extern func_0201df64
-.extern gRuntimePresentationListVTable
-.extern gRuntimePresentationListNodeAllocationTag
-.extern gRuntimePresentationAuxiliaryAllocationTag
+.extern RuntimePresentationManager_DestroyAllEffects
+.extern gFieldEffectListVtable
+.extern gFieldEffectListNodeAllocationTag
+.extern gGraphics3dPresentationAllocationTag
 .extern data_021052fc
 .extern gHeapContext
 .global RuntimePresentationManager_Update
@@ -40,7 +40,7 @@ L_0201dd00:
 L_0201dd34:
     mov r0, r5
     mov r1, r6
-    bl func_0201dde4
+    bl FieldEffectList_RemoveNode
 L_0201dd40:
     ldr r6, [r6, #0x0]
 L_0201dd44:
@@ -65,7 +65,7 @@ L_0201dd54:
 L_0201dd88:
     mov r1, r7
     add r0, r5, #0x10
-    bl func_0201dde4
+    bl FieldEffectList_RemoveNode
 L_0201dd94:
     ldr r7, [r7, #0x0]
 L_0201dd98:

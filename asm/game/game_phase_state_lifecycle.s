@@ -7,9 +7,9 @@
 .extern GamePhaseVisualEffect_Destroy
 .extern GamePhaseRegionTable_Init
 .extern GamePhaseRegionTable_Destroy
-.extern func_0201dbc8
-.extern func_0201dc98
-.extern func_0201df64
+.extern RuntimePresentationManager_Init
+.extern RuntimePresentationManager_Destroy
+.extern RuntimePresentationManager_DestroyAllEffects
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_Init
 .extern ActorCollection_Destructor
@@ -37,7 +37,7 @@ GamePhaseState_Init: ; 0x0200e4dc
     bl GamePhaseVisualEffect_Init
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201dbc8
+    bl RuntimePresentationManager_Init
     add r1, r4, #0x2000
     ldr r2, [r1, #0xf7c]
     add r0, r4, #0x2f80
@@ -69,7 +69,7 @@ GamePhaseState_Destroy: ; 0x0200e574
     bl GamePhaseRegionTable_Destroy
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201dc98
+    bl RuntimePresentationManager_Destroy
     add r0, r4, #0x2b4
     add r0, r0, #0x2c00
     bl GamePhaseVisualEffect_Destroy
@@ -117,7 +117,7 @@ GamePhaseState_ResetRuntime: ; 0x0200e61c
     mov r4, r0
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201df64
+    bl RuntimePresentationManager_DestroyAllEffects
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation

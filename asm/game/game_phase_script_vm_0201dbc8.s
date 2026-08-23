@@ -6,23 +6,23 @@
 .extern func_020a20d4
 .extern func_020a214c
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201dc18
-.extern func_0201dc58
-.extern func_0201dde4
+.extern FieldEffectList_Init
+.extern FieldEffectList_Clear
+.extern FieldEffectList_RemoveNode
 .extern FieldEffectList_Append
-.extern func_0201df64
-.extern gRuntimePresentationListVTable
-.extern gRuntimePresentationListNodeAllocationTag
-.extern gRuntimePresentationAuxiliaryAllocationTag
+.extern RuntimePresentationManager_DestroyAllEffects
+.extern gFieldEffectListVtable
+.extern gFieldEffectListNodeAllocationTag
+.extern gGraphics3dPresentationAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global func_0201dbc8
-func_0201dbc8: ; 0x0201dbc8
+.global RuntimePresentationManager_Init
+RuntimePresentationManager_Init: ; 0x0201dbc8
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_0201dc18
+    bl FieldEffectList_Init
     add r0, r4, #0x10
-    bl func_0201dc18
+    bl FieldEffectList_Init
     ldr r0, L_0201dc0c
     ldr r1, L_0201dc10
     ldr r3, L_0201dc14
@@ -37,8 +37,8 @@ L_0201dc00:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0201dc0c: .word 0x50c
-L_0201dc10: .word gRuntimePresentationAuxiliaryAllocationTag
+L_0201dc10: .word gGraphics3dPresentationAllocationTag
 L_0201dc14: .word gHeapContext
 
 
-.size func_0201dbc8, . - func_0201dbc8
+.size RuntimePresentationManager_Init, . - RuntimePresentationManager_Init

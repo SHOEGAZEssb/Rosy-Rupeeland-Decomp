@@ -12,6 +12,7 @@ extern void GamePhaseVisualEffect_PrepareBackground(void *object);
 extern void GamePhaseRegionTable_Destroy(void *object);
 extern void func_0201de4c(void *object);
 extern void func_0201de8c(void *object, u16 vcount);
+extern void RuntimePresentationManager_DestroyAllEffects(void *object);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
 extern void ActorCollectionActivation_DestroyReservedSlot(void *object);
@@ -69,7 +70,7 @@ void GamePhaseState_ResetActivePhase(GamePhaseState *self)
     *(u16 *)(work + 0x20c) = 0;
     *(u16 *)(work + 0x20e) = 0;
     GamePhaseRegionTable_Destroy(self->helper_2f80);
-    func_0201df64(self->renderHelperStorage);
+    RuntimePresentationManager_DestroyAllEffects(self->renderHelperStorage);
     RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
     func_020a2324();
     ActorFeedback_DestroyPresentations();

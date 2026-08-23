@@ -6,18 +6,18 @@
 .extern func_020a20d4
 .extern func_020a214c
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201dc18
-.extern func_0201dc58
-.extern func_0201dde4
+.extern FieldEffectList_Init
+.extern FieldEffectList_Clear
+.extern FieldEffectList_RemoveNode
 .extern FieldEffectList_Append
-.extern func_0201df64
-.extern gRuntimePresentationListVTable
-.extern gRuntimePresentationListNodeAllocationTag
-.extern gRuntimePresentationAuxiliaryAllocationTag
+.extern RuntimePresentationManager_DestroyAllEffects
+.extern gFieldEffectListVtable
+.extern gFieldEffectListNodeAllocationTag
+.extern gGraphics3dPresentationAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global func_0201dc58
-func_0201dc58: ; 0x0201dc58
+.global FieldEffectList_Clear
+FieldEffectList_Clear: ; 0x0201dc58
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x4]
@@ -39,4 +39,4 @@ L_0201dc7c:
     ldmia sp!, {r3, r4, r5, pc}
 
 
-.size func_0201dc58, . - func_0201dc58
+.size FieldEffectList_Clear, . - FieldEffectList_Clear

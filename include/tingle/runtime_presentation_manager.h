@@ -5,9 +5,12 @@
 
 /*
  * Runtime owner for two CList<CFieldEffect *> instances and one separately
- * allocated 3D presentation. The list-order distinction is retained because
- * only the second list receives the two bit-gated callbacks, while otherwise
- * valid second-list effects may leave both callback bits clear.
+ * allocated 3D presentation. List primitives own and free only their nodes.
+ * Manager update/teardown paths destroy effects before unlinking those nodes,
+ * while keyed removal only unlinks nodes. The list-order distinction is
+ * retained because only the second list receives the two bit-gated callbacks,
+ * while otherwise valid second-list effects may leave both callback bits
+ * clear.
  */
 typedef struct FieldEffectListNode {
     struct FieldEffectListNode *next;
@@ -34,10 +37,27 @@ typedef struct RuntimePresentationManager {
 extern "C" {
 #endif
 
+extern u8 gFieldEffectListVtable[];
+extern const char gFieldEffectListNodeAllocationTag[];
+extern const char gGraphics3dPresentationAllocationTag[];
+
+FieldEffectList *FieldEffectList_Init(FieldEffectList *self);
+FieldEffectList *FieldEffectList_Destroy(FieldEffectList *self);
+void FieldEffectList_Clear(FieldEffectList *self);
+void FieldEffectList_RemoveNode(FieldEffectList *self,
+                                FieldEffectListNode *node);
 FieldEffectListNode *RuntimePresentationManager_AppendFirstListEffect(
     RuntimePresentationManager *self, FieldEffect *effect);
 FieldEffectListNode *FieldEffectList_Append(FieldEffectList *list,
-                                             FieldEffect *effect);
+                                            FieldEffect *effect);
+FieldEffectList *FieldEffectList_DestroyAndFree(FieldEffectList *self);
+
+RuntimePresentationManager *RuntimePresentationManager_Init(
+    RuntimePresentationManager *self);
+RuntimePresentationManager *RuntimePresentationManager_Destroy(
+    RuntimePresentationManager *self);
+void RuntimePresentationManager_DestroyAllEffects(
+    RuntimePresentationManager *self);
 FieldEffectListNode *RuntimePresentationManager_AppendSecondListEffect(
     RuntimePresentationManager *self, FieldEffect *effect);
 FieldEffect *RuntimePresentationManager_GetFirstListNodeEffect(

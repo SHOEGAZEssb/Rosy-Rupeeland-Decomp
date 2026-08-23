@@ -10,7 +10,7 @@
 .extern VecFx32Object_Init
 .extern SplineMover_Init
 .extern GamePhaseTouchPrompt_SetEnabled
-.extern func_0201df64
+.extern RuntimePresentationManager_DestroyAllEffects
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern GamePhaseMetadata_GetByIndex
 .extern ActorDerivedType1_ResetToBaseState
@@ -88,7 +88,7 @@ func_ov074_0220fda8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df64
+    bl RuntimePresentationManager_DestroyAllEffects
     ldr r0, .L_0220fff4
     mov r1, #0x1
     ldr r0, [r0, #0x0]

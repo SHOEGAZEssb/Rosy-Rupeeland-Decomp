@@ -3,7 +3,7 @@
 .extern OverlaySlot_Init
 .extern GamePhaseVisualEffect_Init
 .extern GamePhaseRegionTable_Init
-.extern func_0201dbc8
+.extern RuntimePresentationManager_Init
 .extern ActorCollection_Init
 
     .global GamePhaseState_Init
@@ -25,7 +25,7 @@ GamePhaseState_Init: ; 0x0200e4dc
     bl GamePhaseVisualEffect_Init
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201dbc8
+    bl RuntimePresentationManager_Init
     add r1, r4, #0x2000
     ldr r2, [r1, #0xf7c]
     add r0, r4, #0x2f80

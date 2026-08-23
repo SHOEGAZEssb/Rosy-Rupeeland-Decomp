@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetFlag200000Inverse
 .extern GamePhaseScriptVm_Pop
-.extern func_0201df64
+.extern RuntimePresentationManager_DestroyAllEffects
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_02025d14
 .extern func_02026514
@@ -125,7 +125,7 @@ L_02019c18:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df64
+    bl RuntimePresentationManager_DestroyAllEffects
     mov r0, r4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c

@@ -6,10 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *gRuntimePresentationListVTable;
 extern void *data_021052fc;
-extern void func_0201dc58(FieldEffectList *list);
-extern void func_0201dde4(FieldEffectList *list, FieldEffectListNode *node);
 extern void func_020a2324(void *presentation);
 extern void func_020a2348(void *presentation, s32 first, s32 second);
 extern void func_020a23a8(void *presentation, s32 first, s32 second);
@@ -86,19 +83,19 @@ void RuntimePresentationManager_BroadcastSlot1C(RuntimePresentationManager *self
 /* Recovered no-op callback; inputs and state are ignored. */
 void func_0201e1ac(void) {}
 
-/* Remove effects from both lists whose signed dispatch bits 2..9 equal key. */
+/* Remove nodes whose effects have the requested key without destroying the effects. */
 void func_0201e1b0(RuntimePresentationManager *self, s32 key)
 {
     FieldEffectListNode *node,*next;
-    for(node=self->firstEffects.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))func_0201dde4(&self->firstEffects,node);}
-    for(node=self->secondEffects.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))func_0201dde4(&self->secondEffects,node);}
+    for(node=self->firstEffects.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))FieldEffectList_RemoveNode(&self->firstEffects,node);}
+    for(node=self->secondEffects.head;node;node=next){next=node->next;if(key==((s32)(node->effect->dispatchState<<22)>>24))FieldEffectList_RemoveNode(&self->secondEffects,node);}
 }
 
-/* Clear a list, free the list object itself, and return its old address. */
-FieldEffectList *func_0201e228(FieldEffectList *self)
+/* Destroy the node-only list, free the list object, and return its old address. */
+FieldEffectList *FieldEffectList_DestroyAndFree(FieldEffectList *self)
 {
-    self->vtable=gRuntimePresentationListVTable;
-    func_0201dc58(self);
+    self->vtable=gFieldEffectListVtable;
+    FieldEffectList_Clear(self);
     Heap_Free(self);
     return self;
 }

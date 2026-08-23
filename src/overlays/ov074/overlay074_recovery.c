@@ -47,7 +47,7 @@ extern void func_020adff0(...), func_020adfbc(...), func_020aef3c(...);
 extern void func_020b0374(...), func_020b0300(...), func_020a7b90(...);
 extern void func_020b0808(...), func_020b0844(...), func_020b0880(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
-extern void func_0201df64(...), func_0201de4c(...);
+extern void RuntimePresentationManager_DestroyAllEffects(...), func_0201de4c(...);
 extern void func_020a2324(...), func_020a2348(...), func_020a23a8(...);
 extern void func_02059880(...), DebugText_BeginFrame(...);
 extern void OS_WaitVBlankIntr(...), RuntimePresentationManager_Update(...);
@@ -129,7 +129,7 @@ void *func_ov074_0220fd68(void *record, s32 first, s32 second) {
 /* Constructs the main scene, resources, presentation records, gameplay links, and display state; returns the initialized scene. */
 void *func_ov074_0220fda8(void *scene, s32 direction) {
   volatile u32 *display_control = (volatile u32 *)0x04000000;
-  void *runtime;
+  void *presentationManager;
   void *actor;
   s32 transition[6];
   s8 target_area;
@@ -155,11 +155,11 @@ void *func_ov074_0220fda8(void *scene, s32 direction) {
   F(u8, data_021052fc, 0x30cc) |= 4;
   func_ov074_02210b90(scene);
 
-  runtime = (u8 *)data_021052fc + 0x2f7c;
-  actor = RuntimePresentationManager_GetGraphics3dPresentation(runtime);
+  presentationManager = (u8 *)data_021052fc + 0x2f7c;
+  actor = RuntimePresentationManager_GetGraphics3dPresentation(presentationManager);
   func_020a2324();
   func_020a2348(actor, 1, 0);
-  func_0201df64(runtime);
+  RuntimePresentationManager_DestroyAllEffects(presentationManager);
   func_02059880(gSoundContext, 1);
   display = *display_control;
   *display_control = (display & ~0x1f00U) |

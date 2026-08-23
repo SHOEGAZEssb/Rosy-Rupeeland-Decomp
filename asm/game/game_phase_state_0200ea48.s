@@ -3,7 +3,7 @@
 .extern DebugText_BeginFrame
 .extern GameWork_SetFlag
 .extern GamePhaseRegionTable_Destroy
-.extern func_0201df64
+.extern RuntimePresentationManager_DestroyAllEffects
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollectionActivation_DestroyReservedSlot
 .extern ActorDerivedType1_ClearFailureCounter
@@ -35,7 +35,7 @@ GamePhaseState_ResetActivePhase: ; 0x0200ea48
     bl GamePhaseRegionTable_Destroy
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201df64
+    bl RuntimePresentationManager_DestroyAllEffects
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation

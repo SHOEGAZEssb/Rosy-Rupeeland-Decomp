@@ -1,34 +1,27 @@
 #include "tingle/heap.h"
 #include "tingle/runtime_presentation_manager.h"
 
-/* Manage two intrusive lists of field effects and the owned 3D presentation. */
+/* Manage two linked lists of field effects and the owned 3D presentation. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *gRuntimePresentationListVTable;
-extern char gRuntimePresentationListNodeAllocationTag[];
-extern char gRuntimePresentationAuxiliaryAllocationTag[];
 extern void *data_021052fc;
 extern void *func_020a1f80(void *self, s32 value);
 extern void func_020a20d4(void *self);
 extern void func_020a214c(void *self, void *value, s32 argument);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
-extern FieldEffectList *func_0201dc18(FieldEffectList *self);
-extern void func_0201dc58(FieldEffectList *self);
-extern void func_0201dde4(FieldEffectList *self, FieldEffectListNode *node);
-extern void func_0201df64(RuntimePresentationManager *self);
 #ifdef __cplusplus
 }
 #endif
 
 /* Initialize both lists, allocate/construct the 0x50c-byte 3D presentation, and return self. */
-RuntimePresentationManager *func_0201dbc8(RuntimePresentationManager *self)
+RuntimePresentationManager *RuntimePresentationManager_Init(RuntimePresentationManager *self)
 {
     void *graphics3dPresentation;
-    func_0201dc18(&self->firstEffects);
-    func_0201dc18(&self->secondEffects);
-    graphics3dPresentation = Heap_Alloc(0x50c, gRuntimePresentationAuxiliaryAllocationTag, 4, &gHeapContext);
+    FieldEffectList_Init(&self->firstEffects);
+    FieldEffectList_Init(&self->secondEffects);
+    graphics3dPresentation = Heap_Alloc(0x50c, gGraphics3dPresentationAllocationTag, 4, &gHeapContext);
     if (graphics3dPresentation != 0)
         graphics3dPresentation = func_020a1f80(graphics3dPresentation, 1);
     self->graphics3dPresentation =
@@ -36,26 +29,26 @@ RuntimePresentationManager *func_0201dbc8(RuntimePresentationManager *self)
     return self;
 }
 
-/* Install the recovered list vtable, clear head/tail/count, and return self. */
-FieldEffectList *func_0201dc18(FieldEffectList *self)
+/* Install the CList<CFieldEffect *> vtable and initialize an empty list. */
+FieldEffectList *FieldEffectList_Init(FieldEffectList *self)
 {
-    self->vtable = gRuntimePresentationListVTable;
+    self->vtable = gFieldEffectListVtable;
     self->head = 0;
     self->tail = 0;
     self->count = 0;
     return self;
 }
 
-/* Install the list vtable, clear all nodes, and return self. */
-FieldEffectList *func_0201dc38(FieldEffectList *self)
+/* Restore the list vtable, free its nodes without destroying effects, and return self. */
+FieldEffectList *FieldEffectList_Destroy(FieldEffectList *self)
 {
-    self->vtable = gRuntimePresentationListVTable;
-    func_0201dc58(self);
+    self->vtable = gFieldEffectListVtable;
+    FieldEffectList_Clear(self);
     return self;
 }
 
 /* Free every node without destroying its FieldEffect, then clear head/tail/count. */
-void func_0201dc58(FieldEffectList *self)
+void FieldEffectList_Clear(FieldEffectList *self)
 {
     FieldEffectListNode *node = self->head;
     while (node != 0) {
@@ -68,18 +61,18 @@ void func_0201dc58(FieldEffectList *self)
     self->count = 0;
 }
 
-/* Destroy all field effects/lists and the optional 3D presentation, then return self. */
-RuntimePresentationManager *func_0201dc98(RuntimePresentationManager *self)
+/* Destroy all effects and the optional 3D presentation, then destroy both embedded lists. */
+RuntimePresentationManager *RuntimePresentationManager_Destroy(RuntimePresentationManager *self)
 {
-    func_0201df64(self);
+    RuntimePresentationManager_DestroyAllEffects(self);
     if (self->graphics3dPresentation != 0) {
         func_020a20d4(self->graphics3dPresentation);
         Heap_Free(self->graphics3dPresentation);
     }
-    self->secondEffects.vtable = gRuntimePresentationListVTable;
-    func_0201dc58(&self->secondEffects);
-    self->firstEffects.vtable = gRuntimePresentationListVTable;
-    func_0201dc58(&self->firstEffects);
+    self->secondEffects.vtable = gFieldEffectListVtable;
+    FieldEffectList_Clear(&self->secondEffects);
+    self->firstEffects.vtable = gFieldEffectListVtable;
+    FieldEffectList_Clear(&self->firstEffects);
     return self;
 }
 
@@ -101,7 +94,7 @@ s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argu
         if (((s32 (*)(void *))node->effect->vtable[2])(node->effect) != 0) {
             if (node->effect != 0)
                 ((void (*)(void *))node->effect->vtable[1])(node->effect);
-            func_0201dde4(&self->firstEffects, node);
+            FieldEffectList_RemoveNode(&self->firstEffects, node);
         }
         node = next;
     }
@@ -111,7 +104,7 @@ s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argu
         if (((s32 (*)(void *))node->effect->vtable[2])(node->effect) != 0) {
             if (node->effect != 0)
                 ((void (*)(void *))node->effect->vtable[1])(node->effect);
-            func_0201dde4(&self->secondEffects, node);
+            FieldEffectList_RemoveNode(&self->secondEffects, node);
         }
         node = next;
     }
@@ -123,8 +116,8 @@ s32 RuntimePresentationManager_Update(RuntimePresentationManager *self, s32 argu
     return 0;
 }
 
-/* Unlink/free node, decrement count, and fully clear the list when it becomes empty. */
-void func_0201dde4(FieldEffectList *self, FieldEffectListNode *node)
+/* Unlink/free one node without destroying its effect, then maintain count/empty state. */
+void FieldEffectList_RemoveNode(FieldEffectList *self, FieldEffectListNode *node)
 {
     if (node == self->head) self->head = node->next;
     else node->previous->next = node->next;
@@ -132,7 +125,7 @@ void func_0201dde4(FieldEffectList *self, FieldEffectListNode *node)
     else node->next->previous = node->previous;
     if (node != 0) Heap_Free(node);
     self->count--;
-    if (self->count == 0) func_0201dc58(self);
+    if (self->count == 0) FieldEffectList_Clear(self);
 }
 
 /* Dispatch virtual 0x0c to second-list effects whose dispatch-state bit 1 is set. */
@@ -172,7 +165,7 @@ FieldEffectListNode *FieldEffectList_Append(FieldEffectList *list,
                                             FieldEffect *effect)
 {
     FieldEffectListNode *node = (FieldEffectListNode *)Heap_Alloc(
-        sizeof(FieldEffectListNode), gRuntimePresentationListNodeAllocationTag,
+        sizeof(FieldEffectListNode), gFieldEffectListNodeAllocationTag,
         4, &gHeapContext);
     if (node != 0) {
         node->next = 0;
@@ -212,7 +205,7 @@ FieldEffect *RuntimePresentationManager_GetSecondListNodeEffect(
 }
 
 /* Destroy every field effect, remove all nodes, and leave both lists empty. */
-void func_0201df64(RuntimePresentationManager *self)
+void RuntimePresentationManager_DestroyAllEffects(RuntimePresentationManager *self)
 {
     FieldEffectListNode *node;
     FieldEffectListNode *next;
@@ -221,17 +214,17 @@ void func_0201df64(RuntimePresentationManager *self)
         next = node->next;
         if (node->effect != 0)
             ((void (*)(void *))node->effect->vtable[1])(node->effect);
-        func_0201dde4(&self->firstEffects, node);
+        FieldEffectList_RemoveNode(&self->firstEffects, node);
         node = next;
     }
-    func_0201dc58(&self->firstEffects);
+    FieldEffectList_Clear(&self->firstEffects);
     node = self->secondEffects.head;
     while (node != 0) {
         next = node->next;
         if (node->effect != 0)
             ((void (*)(void *))node->effect->vtable[1])(node->effect);
-        func_0201dde4(&self->secondEffects, node);
+        FieldEffectList_RemoveNode(&self->secondEffects, node);
         node = next;
     }
-    func_0201dc58(&self->secondEffects);
+    FieldEffectList_Clear(&self->secondEffects);
 }

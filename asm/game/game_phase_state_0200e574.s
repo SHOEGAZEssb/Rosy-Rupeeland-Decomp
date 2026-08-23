@@ -4,7 +4,7 @@
 .extern GamePhaseState_UnloadPhase
 .extern GamePhaseVisualEffect_Destroy
 .extern GamePhaseRegionTable_Destroy
-.extern func_0201dc98
+.extern RuntimePresentationManager_Destroy
 .extern ActorCollection_Destructor
 
     .global GamePhaseState_Destroy
@@ -16,7 +16,7 @@ GamePhaseState_Destroy: ; 0x0200e574
     bl GamePhaseRegionTable_Destroy
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201dc98
+    bl RuntimePresentationManager_Destroy
     add r0, r4, #0x2b4
     add r0, r0, #0x2c00
     bl GamePhaseVisualEffect_Destroy

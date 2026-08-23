@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/runtime_presentation_dispatch.c.
 .text
 .extern Heap_Free
-.extern func_0201dc58
-.extern func_0201dde4
+.extern FieldEffectList_Clear
+.extern FieldEffectList_RemoveNode
 .extern func_020a2324
 .extern func_020a2348
 .extern func_020a23a8
 .extern GX_SetGraphicsMode
-.extern gRuntimePresentationListVTable
+.extern gFieldEffectListVtable
 .extern data_021052fc
 .global func_0201e1b0
 func_0201e1b0: ; 0x0201e1b0
@@ -24,7 +24,7 @@ L_0201e1c4:
     bne L_0201e1e4
     mov r0, r5
     mov r1, r6
-    bl func_0201dde4
+    bl FieldEffectList_RemoveNode
 L_0201e1e4:
     ldr r6, [r6, #0x0]
 L_0201e1e8:
@@ -40,7 +40,7 @@ L_0201e1f8:
     bne L_0201e218
     mov r0, r5
     mov r1, r6
-    bl func_0201dde4
+    bl FieldEffectList_RemoveNode
 L_0201e218:
     ldr r6, [r6, #0x0]
 L_0201e21c:
