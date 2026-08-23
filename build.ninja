@@ -2602,7 +2602,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201d9e4.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201da20.o: mwasmarm asm/game/game_phase_script_vm_0201da20.s
 build build/decomp/asm/game/game_phase_script_vm_0201da34.o: mwasmarm asm/game/game_phase_script_vm_0201da34.s
 build build/decomp/asm/game/game_phase_script_vm_0201da9c.o: mwasmarm asm/game/game_phase_script_vm_0201da9c.s
-build build/decomp/src/game/runtime_presentation_manager.o: mwccarm src/game/runtime_presentation_manager.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/runtime_presentation_manager.h include/tingle/types.h
+build build/decomp/src/game/runtime_presentation_manager.o: mwccarm src/game/runtime_presentation_manager.c | include/tingle/field_effect.h include/tingle/graphics_3d_presentation.h include/tingle/heap.h include/tingle/runtime_presentation_manager.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/runtime_presentation_manager.c
   cflags = $runtime_presentation_manager_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201dbc8.o: mwasmarm asm/game/game_phase_script_vm_0201dbc8.s
@@ -2622,7 +2622,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201df44.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201df54.o: mwasmarm asm/game/game_phase_script_vm_0201df54.s
 build build/decomp/asm/game/game_phase_script_vm_0201df5c.o: mwasmarm asm/game/game_phase_script_vm_0201df5c.s
 build build/decomp/asm/game/game_phase_script_vm_0201df64.o: mwasmarm asm/game/game_phase_script_vm_0201df64.s
-build build/decomp/src/game/runtime_presentation_dispatch.o: mwccarm src/game/runtime_presentation_dispatch.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/runtime_presentation_manager.h include/tingle/types.h
+build build/decomp/src/game/runtime_presentation_dispatch.o: mwccarm src/game/runtime_presentation_dispatch.c | include/tingle/field_effect.h include/tingle/graphics_3d_presentation.h include/tingle/heap.h include/tingle/runtime_presentation_manager.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/runtime_presentation_dispatch.c
   cflags = $runtime_presentation_dispatch_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201dff0.o: mwasmarm asm/game/game_phase_script_vm_0201dff0.s
@@ -3776,7 +3776,7 @@ build build/decomp/src/graphics/graphics_3d_resource_owner_ops.o: mwccarm src/gr
   source = src/graphics/graphics_3d_resource_owner_ops.c
   cflags = $graphics_3d_resource_owner_ops_cflags
 
-build build/decomp/src/graphics/graphics_3d_presentation_update.o: mwccarm src/graphics/graphics_3d_presentation_update.c | include/tingle/types.h
+build build/decomp/src/graphics/graphics_3d_presentation_update.o: mwccarm src/graphics/graphics_3d_presentation_update.c | include/tingle/graphics_3d_presentation.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/graphics/graphics_3d_presentation_update.c
   cflags = $graphics_3d_presentation_update_cflags
 
@@ -12336,7 +12336,7 @@ build build/reports/graphics_3d_presentation_update.json: objdiff build/decomp/d
 
 build build/reports/graphics_3d_presentation_update.txt: match_report build/reports/graphics_3d_presentation_update.json | tools/report_objdiff.py
   report_json = build/reports/graphics_3d_presentation_update.json
-  report_args = --section .text --function func_020a214c --require-exact
+  report_args = --section .text --function Graphics3dPresentation_UpdateFrame --require-exact
 
 build graphics_3d_presentation_update: phony build/decomp/delinks/src/graphics/graphics_3d_presentation_update.o build/decomp/src/graphics/graphics_3d_presentation_update.o build/reports/graphics_3d_presentation_update.txt
 

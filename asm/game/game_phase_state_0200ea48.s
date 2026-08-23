@@ -8,7 +8,7 @@
 .extern ActorCollectionActivation_DestroyReservedSlot
 .extern ActorDerivedType1_ClearFailureCounter
 .extern ActorFeedback_DestroyPresentations
-.extern func_020a2324
+.extern Graphics3dPresentation_Clear
 .extern gGameWork
 
     .global GamePhaseState_ResetActivePhase
@@ -39,7 +39,7 @@ GamePhaseState_ResetActivePhase: ; 0x0200ea48
     add r0, r4, #0x358
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
-    bl func_020a2324
+    bl Graphics3dPresentation_Clear
     bl ActorFeedback_DestroyPresentations
     add r0, r4, #0x2000
     ldr r0, [r0, #0xeb0]

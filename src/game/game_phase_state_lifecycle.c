@@ -22,7 +22,9 @@ extern void ActorCollection_Destructor(void *object);
 extern void ActorCollection_Deinit(void *object);
 extern void ActorCollection_UnregisterAndDestroyAllActors(void *object);
 extern void ActorFeedback_DestroyPresentations(void);
-extern void func_020a2324(void);
+/* Matching forwards the preceding getter result in r0; host preparation makes
+ * that argument explicit. */
+extern void Graphics3dPresentation_Clear(void);
 #ifdef __cplusplus
 }
 #endif
@@ -92,7 +94,7 @@ void GamePhaseState_ResetRuntime(GamePhaseState *self)
 {
     RuntimePresentationManager_DestroyAllEffects(self->renderHelperStorage);
     RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
-    func_020a2324();
+    Graphics3dPresentation_Clear();
     ActorFeedback_DestroyPresentations();
     ActorCollection_UnregisterAndDestroyAllActors(self->actorCollectionStorage);
 }

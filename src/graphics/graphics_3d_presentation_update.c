@@ -1,4 +1,4 @@
-#include "tingle/types.h"
+#include "tingle/graphics_3d_presentation.h"
 
 /* Coordinate one frame of the active runtime 3D presentation manager. */
 
@@ -38,17 +38,18 @@ extern void TingleNativeG3_Translate(s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_020a214c(void *presentation, const void *position, s32 argument)
+void Graphics3dPresentation_UpdateFrame(
+    Graphics3dPresentation *presentation,
+    const VecFx32Object *worldPosition,
+    s32 swapBuffers)
 {
-    u8 *bytes = (u8 *)presentation;
-
-    if (bytes[0x50a] == 0)
+    if (presentation->enabled == 0)
         return;
-    func_020a2da8(*(void **)(bytes + 0x4e4));
-    func_020a6280(*(void **)(bytes + 0x4e8));
-    func_0209b7a0(presentation, position);
+    func_020a2da8(presentation->pairedEntryManager);
+    func_020a6280(presentation->slotManager);
+    func_0209b7a0(presentation, worldPosition);
     func_020a219c(presentation);
-    Graphics3dPresentation_FinishFrame(presentation, argument);
+    Graphics3dPresentation_FinishFrame(presentation, swapBuffers);
 }
 
 /* The remaining recovered functions occupy non-contiguous retail objects.

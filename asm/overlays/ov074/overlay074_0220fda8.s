@@ -18,8 +18,8 @@
 .extern GridEffectActorRegistry_BroadcastStateValue0
 .extern func_02059880
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_020a2324
-.extern func_020a2348
+.extern Graphics3dPresentation_Clear
+.extern Graphics3dPresentation_Disable
 .extern func_ov074_0220fd20
 .extern func_ov074_0220fd44
 .extern func_ov074_0220fd68
@@ -79,11 +79,11 @@ func_ov074_0220fda8:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r5, r0
-    bl func_020a2324
+    bl Graphics3dPresentation_Clear
     mov r0, r5
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020a2348
+    bl Graphics3dPresentation_Disable
     ldr r0, .L_0220fff0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c

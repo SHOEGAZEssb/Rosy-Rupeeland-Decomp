@@ -19,9 +19,11 @@ extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
 extern void ActorCollectionActivation_DestroyReservedSlot(void *object);
 extern void ActorDerivedType1_ClearFailureCounter(void *object);
 extern void ActorFeedback_DestroyPresentations(void);
-extern void func_020a2324(void);
-extern void func_020a2348(void *object, s32 a, s32 b);
-extern void func_020a23a8(void *object, s32 a, s32 b);
+/* Matching forwards the preceding getter result in r0; host preparation makes
+ * that argument explicit. */
+extern void Graphics3dPresentation_Clear(void);
+extern void Graphics3dPresentation_Disable(void *object, s32 a, s32 b);
+extern void Graphics3dPresentation_Enable(void *object, s32 a, s32 b);
 extern void func_020ae9a4(GamePhaseState *self);
 extern void GX_SetBankForBG(s32 bank);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As3D);
@@ -73,7 +75,7 @@ void GamePhaseState_ResetActivePhase(GamePhaseState *self)
     GamePhaseRegionTable_Destroy(self->helper_2f80);
     RuntimePresentationManager_DestroyAllEffects(self->renderHelperStorage);
     RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
-    func_020a2324();
+    Graphics3dPresentation_Clear();
     ActorFeedback_DestroyPresentations();
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x24))(self->phaseObject, 0);
     if (self->phaseObject)
@@ -126,9 +128,9 @@ void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
     *(volatile u32 *)0x04000000 &= ~0x38000000;
     render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
     if ((s32)(*(u32 *)(config + 0x40) << 8) < 0 && use3dMode)
-        func_020a23a8(render, 1, 1);
+        Graphics3dPresentation_Enable(render, 1, 1);
     else
-        func_020a2348(render, 1, 0);
+        Graphics3dPresentation_Disable(render, 1, 0);
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x34))(self->phaseObject, 1);
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x20))(self->phaseObject, 1);
     ((PhaseVirtualMethod)phaseVirtual(self, 0x1c))(self->phaseObject);

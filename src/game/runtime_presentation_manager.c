@@ -7,10 +7,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *func_020a1f80(void *self, s32 value);
-extern void func_020a20d4(void *self);
-extern void func_020a214c(void *self, void *value, s32 argument);
-extern void *ActorMotionAreaFollower_GetPosition(void *object);
+extern VecFx32Object *ActorMotionAreaFollower_GetPosition(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -18,14 +15,15 @@ extern void *ActorMotionAreaFollower_GetPosition(void *object);
 /* Initialize both lists, allocate/construct the 0x50c-byte 3D presentation, and return self. */
 RuntimePresentationManager *RuntimePresentationManager_Init(RuntimePresentationManager *self)
 {
-    void *graphics3dPresentation;
+    Graphics3dPresentation *graphics3dPresentation;
     FieldEffectList_Init(&self->firstEffects);
     FieldEffectList_Init(&self->secondEffects);
-    graphics3dPresentation = Heap_Alloc(0x50c, gGraphics3dPresentationAllocationTag, 4, &gHeapContext);
+    graphics3dPresentation = (Graphics3dPresentation *)Heap_Alloc(
+        sizeof(Graphics3dPresentation), gGraphics3dPresentationAllocationTag,
+        4, &gHeapContext);
     if (graphics3dPresentation != 0)
-        graphics3dPresentation = func_020a1f80(graphics3dPresentation, 1);
-    self->graphics3dPresentation =
-        (Graphics3dPresentation *)graphics3dPresentation;
+        graphics3dPresentation = Graphics3dPresentation_Init(graphics3dPresentation, 1);
+    self->graphics3dPresentation = graphics3dPresentation;
     return self;
 }
 
@@ -66,7 +64,7 @@ RuntimePresentationManager *RuntimePresentationManager_Destroy(RuntimePresentati
 {
     RuntimePresentationManager_DestroyAllEffects(self);
     if (self->graphics3dPresentation != 0) {
-        func_020a20d4(self->graphics3dPresentation);
+        Graphics3dPresentation_Destroy(self->graphics3dPresentation);
         Heap_Free(self->graphics3dPresentation);
     }
     self->secondEffects.vtable = gFieldEffectListVtable;
@@ -78,16 +76,16 @@ RuntimePresentationManager *RuntimePresentationManager_Destroy(RuntimePresentati
 
 /*
  * Poll both lists through effect virtual 0x08; completed effects are deleted
- * through virtual 0x04 and their nodes removed. If the 3D presentation's byte
- * 0x50a is set, refresh it from runtime field 0x2fbc with the caller's opaque
- * graphics update argument. Returns zero.
+ * through virtual 0x04 and their nodes removed. If the 3D presentation is
+ * enabled, refresh it from runtime field 0x2fbc and forward the caller's frame
+ * buffer-swap request. Returns zero.
  */
 s32 RuntimePresentationManager_UpdatePresentations(
     RuntimePresentationManager *self, s32 graphicsUpdateArgument)
 {
     FieldEffectListNode *node;
     FieldEffectListNode *next;
-    void *value;
+    VecFx32Object *worldPosition;
 
     node = self->firstEffects.head;
     while (node != 0) {
@@ -110,10 +108,12 @@ s32 RuntimePresentationManager_UpdatePresentations(
         node = next;
     }
     if (self->graphics3dPresentation != 0 &&
-        ((u8 *)self->graphics3dPresentation)[0x50a] != 0) {
-        value = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
-        func_020a214c(self->graphics3dPresentation, value,
-                      graphicsUpdateArgument);
+        self->graphics3dPresentation->enabled != 0) {
+        worldPosition = ActorMotionAreaFollower_GetPosition(
+            (u8 *)data_021052fc + 0x2fbc);
+        Graphics3dPresentation_UpdateFrame(self->graphics3dPresentation,
+                                            worldPosition,
+                                            graphicsUpdateArgument);
     }
     return 0;
 }

@@ -22,8 +22,8 @@ extern void SoundPhaseManager_SetPhase(void *sound, u16 value);
 extern void GamePhase_ResetTransientState(void);
 extern void GamePhaseState_CreatePhaseObject(GamePhaseState *self,
                                              const void *configuration);
-extern void func_020a2348(void *object, s32 a, s32 b);
-extern void func_020a23a8(void *object, s32 a, s32 b);
+extern void Graphics3dPresentation_Disable(void *object, s32 a, s32 b);
+extern void Graphics3dPresentation_Enable(void *object, s32 a, s32 b);
 extern void func_020ae740(void);
 extern void GX_DisableBankForLCDC(void);
 extern void GX_SetBankForBG(s32 bank);
@@ -62,12 +62,12 @@ void GamePhaseState_ConfigureForPhase(GamePhaseState *self, const void *configur
         GX_DisableBankForLCDC();
         GX_SetGraphicsMode(1, 0, 1);
         render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
-        func_020a23a8(render, 1, 1);
+        Graphics3dPresentation_Enable(render, 1, 1);
     } else {
         func_020ae740();
         GX_SetBankForBG(2);
         render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
-        func_020a2348(render, 1, 0);
+        Graphics3dPresentation_Disable(render, 1, 0);
         GX_SetGraphicsMode(1, 0, 0);
         *(volatile u32 *)0x04000000 =
             (*(volatile u32 *)0x04000000 & ~0x1f00) | 0x1000;

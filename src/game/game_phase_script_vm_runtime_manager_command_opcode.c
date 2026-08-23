@@ -20,7 +20,9 @@ extern void ActorDerivedType1_UpdateOrientationFlag(void *manager);
 extern void ActorDerivedType1_TeardownActiveRecord(void *manager);
 extern void func_02055688(void);
 extern void GraphicsSpriteGroup_ReleaseResources(void *object);
-extern void func_020a2324(void);
+/* Matching forwards the preceding getter result in r0; host preparation makes
+ * that argument explicit. */
+extern void Graphics3dPresentation_Clear(void);
 #ifdef __cplusplus
 }
 #endif
@@ -86,7 +88,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         func_02055688();
         RuntimePresentationManager_DestroyAllEffects(presentationManager);
         RuntimePresentationManager_GetGraphics3dPresentation(presentationManager);
-        func_020a2324();
+        Graphics3dPresentation_Clear();
         break;
     }
     case 6:

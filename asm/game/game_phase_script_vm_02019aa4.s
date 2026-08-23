@@ -13,7 +13,7 @@
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_02055688
 .extern GraphicsSpriteGroup_ReleaseResources
-.extern func_020a2324
+.extern Graphics3dPresentation_Clear
 .global func_02019aa4
 func_02019aa4:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
@@ -131,7 +131,7 @@ L_02019c18:
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
-    bl func_020a2324
+    bl Graphics3dPresentation_Clear
     b L_02019c54
 L_02019c4c:
     mov r0, r1

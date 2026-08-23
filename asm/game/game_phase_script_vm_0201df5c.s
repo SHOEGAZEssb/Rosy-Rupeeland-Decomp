@@ -2,9 +2,9 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern func_020a1f80
-.extern func_020a20d4
-.extern func_020a214c
+.extern Graphics3dPresentation_Init
+.extern Graphics3dPresentation_Destroy
+.extern Graphics3dPresentation_UpdateFrame
 .extern ActorMotionAreaFollower_GetPosition
 .extern FieldEffectList_Init
 .extern FieldEffectList_Clear

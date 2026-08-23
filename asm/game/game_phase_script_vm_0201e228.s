@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern FieldEffectList_Clear
 .extern FieldEffectList_RemoveNode
-.extern func_020a2324
-.extern func_020a2348
-.extern func_020a23a8
+.extern Graphics3dPresentation_Clear
+.extern Graphics3dPresentation_Disable
+.extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc

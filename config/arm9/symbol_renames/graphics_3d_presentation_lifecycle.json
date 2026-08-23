@@ -1,0 +1,8 @@
+{
+  "func_020a1f80": "Graphics3dPresentation_Init",
+  "func_020a20d4": "Graphics3dPresentation_Destroy",
+  "func_020a214c": "Graphics3dPresentation_UpdateFrame",
+  "func_020a2324": "Graphics3dPresentation_Clear",
+  "func_020a2348": "Graphics3dPresentation_Disable",
+  "func_020a23a8": "Graphics3dPresentation_Enable"
+}

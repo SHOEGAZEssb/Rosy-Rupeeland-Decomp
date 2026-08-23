@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern FieldEffectList_Clear
 .extern FieldEffectList_RemoveNode
-.extern func_020a2324
-.extern func_020a2348
-.extern func_020a23a8
+.extern Graphics3dPresentation_Clear
+.extern Graphics3dPresentation_Disable
+.extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
@@ -47,11 +47,11 @@ L_0201e0a8:
     mov r1, #0x0
     beq L_0201e0dc
     mov r2, #0x1
-    bl func_020a23a8
+    bl Graphics3dPresentation_Enable
     ldmia sp!, {r4, r5, r6, pc}
 L_0201e0dc:
     mov r2, r1
-    bl func_020a2348
+    bl Graphics3dPresentation_Disable
     ldmia sp!, {r4, r5, r6, pc}
 
 

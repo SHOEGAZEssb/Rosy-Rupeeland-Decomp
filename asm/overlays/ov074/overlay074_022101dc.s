@@ -16,7 +16,7 @@
 .extern RuntimePresentationManager_UpdatePresentations
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Type7Actor_ClearBoundaryTransitionFlags
-.extern func_020a23a8
+.extern Graphics3dPresentation_Enable
 .extern func_ov025_021fd2e8
 .extern func_ov033_021fd324
 .extern func_ov074_022105b4
@@ -214,7 +214,7 @@ func_ov074_022101dc:
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020a23a8
+    bl Graphics3dPresentation_Enable
     ldr r3, .L_022105a8
     mov lr, #0x4000000
     ldr r0, [r3, #0x0]

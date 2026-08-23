@@ -2,6 +2,7 @@
 /* Portable reconstructions of the assembly-selected presentation teardown
  * chain rooted at retail 0x020A2324. */
 #include "tingle/heap.h"
+#include "tingle/graphics_3d_presentation.h"
 #include "tingle/types.h"
 
 typedef void (*ElementDestructor)(void *element);
@@ -110,10 +111,10 @@ void func_0209a4e4(void *manager)
     *(u32 *)((u8 *)manager + 4) = 1;
 }
 
-/* Tear down the three manager families embedded at +0x4E0..+0x4E8. */
-void func_020a2324(void *object)
+/* Clear live content while retaining all three owned child managers. */
+void Graphics3dPresentation_Clear(Graphics3dPresentation *self)
 {
-    func_020a33cc(*(void **)((u8 *)object + 0x4e8));
-    func_020a2bc8(*(void **)((u8 *)object + 0x4e4));
-    func_0209a4e4(*(void **)((u8 *)object + 0x4e0));
+    func_020a33cc(self->slotManager);
+    func_020a2bc8(self->pairedEntryManager);
+    func_0209a4e4(self->transformManager);
 }

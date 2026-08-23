@@ -7,9 +7,6 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void func_020a2324(void *presentation);
-extern void func_020a2348(void *presentation, s32 first, s32 second);
-extern void func_020a23a8(void *presentation, s32 first, s32 second);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0Mode);
 #ifdef __cplusplus
 }
@@ -36,7 +33,7 @@ void FieldEffect_ScreenModeChangedCallbackNoOp(FieldEffect *self,
 
 /*
  * Broadcast argument through virtual 0x18 to both lists. When the 3D
- * presentation exists and byte 0x50a is set, select its enabled or disabled
+ * presentation exists and is active, select its enabled or disabled
  * transition helper according to enabled. Returns no value.
  */
 void RuntimePresentationManager_SetEnabled(RuntimePresentationManager *self,
@@ -48,9 +45,9 @@ void RuntimePresentationManager_SetEnabled(RuntimePresentationManager *self,
     for (node=self->secondEffects.head; node; node=node->next)
         ((void (*)(void *,s32))node->effect->vtable[6])(node->effect,enabled);
     if (self->graphics3dPresentation == 0 ||
-        ((u8 *)self->graphics3dPresentation)[0x50a] == 0) return;
-    if (enabled != 0) func_020a23a8(self->graphics3dPresentation,0,1);
-    else func_020a2348(self->graphics3dPresentation,0,0);
+        self->graphics3dPresentation->enabled == 0) return;
+    if (enabled != 0) Graphics3dPresentation_Enable(self->graphics3dPresentation,0,1);
+    else Graphics3dPresentation_Disable(self->graphics3dPresentation,0,0);
 }
 
 /* Default enabled-state virtual 0x18 implementation; inputs are ignored. */
@@ -77,8 +74,8 @@ void RuntimePresentationManager_DisableGraphics3dForActivePhase(RuntimePresentat
     u8 *runtimeRoot=(u8 *)data_021052fc;
     u8 *activePhaseConfig=**(u8 ***)(runtimeRoot+0x30bc);
     if (((s32)(*(u32 *)(activePhaseConfig+0x40)<<8)>>31)==0) return;
-    func_020a2324(self->graphics3dPresentation);
-    func_020a2348(self->graphics3dPresentation,1,0);
+    Graphics3dPresentation_Clear(self->graphics3dPresentation);
+    Graphics3dPresentation_Disable(self->graphics3dPresentation,1,0);
     GX_SetGraphicsMode(6,0,0);
 }
 

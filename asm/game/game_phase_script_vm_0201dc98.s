@@ -2,9 +2,9 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern func_020a1f80
-.extern func_020a20d4
-.extern func_020a214c
+.extern Graphics3dPresentation_Init
+.extern Graphics3dPresentation_Destroy
+.extern Graphics3dPresentation_UpdateFrame
 .extern ActorMotionAreaFollower_GetPosition
 .extern FieldEffectList_Init
 .extern FieldEffectList_Clear
@@ -25,7 +25,7 @@ RuntimePresentationManager_Destroy: ; 0x0201dc98
     cmp r4, #0x0
     beq L_0201dcc0
     mov r0, r4
-    bl func_020a20d4
+    bl Graphics3dPresentation_Destroy
     mov r0, r4
     bl Heap_Free
 L_0201dcc0:

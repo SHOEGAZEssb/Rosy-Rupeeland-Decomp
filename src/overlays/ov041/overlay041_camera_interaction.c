@@ -19,7 +19,7 @@ void func_ov041_021fffc8(void *, void *);
 void func_ov070_02211dcc(void *, void *);
 void func_ov041_02203434(void *, void *);
 void func_ov041_02200ce8(void *, void *);
-void func_020a214c(void *, void *, s32);
+void Graphics3dPresentation_UpdateFrame(void *, void *, s32);
 void func_ov041_021fe56c(void *);
 void VecFx32Object_Destroy(void *);
 extern void *gSoundContext;
@@ -104,7 +104,7 @@ extern "C" void func_ov041_021feec8(void *owner)
         if (mode == 0 || mode == 2)
             func_ov041_02200ce8(FIELD(void *, owner, 0x14), transform);
     }
-    func_020a214c(FIELD(void *, owner, 0x18), transform, 0);
+    Graphics3dPresentation_UpdateFrame(FIELD(void *, owner, 0x18), transform, 0);
     func_ov041_021fe56c(owner);
     VecFx32Object_Destroy(transform);
 }

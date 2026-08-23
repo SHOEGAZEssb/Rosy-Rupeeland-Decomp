@@ -5,6 +5,7 @@
  * flow: only the NitroSDK transfer/register calls remain native boundaries.
  */
 #include "tingle/heap.h"
+#include "tingle/graphics_3d_presentation.h"
 #include "tingle/system.h"
 #include "tingle/types.h"
 
@@ -280,7 +281,7 @@ void *func_0209a450(void *object)
     return object;
 }
 
-/* Installs the confirmed retail vtable pointer into the small 3D manager. */
+/* Install the confirmed retail render descriptor in the small 3D manager. */
 void func_0209a4b4(void *object)
 {
     *(u32 *)object = (u32)data_020d23fc;
@@ -435,7 +436,8 @@ void func_0209c9d4(void *object)
 
 /*
  * Retail 0x020A22BC: reset 3D state and reload the resource set selected by
- * the presentation mode at +0x504. Allocations remain owned by the object.
+ * the presentation's resource profile. Allocations remain owned by the
+ * object.
  */
 void func_020a22bc(void *object)
 {
@@ -447,71 +449,85 @@ void func_020a22bc(void *object)
 /*
  * Retail 0x020A2348: select the 2D BG0 path. A nonzero release_resources
  * releases owned 3D VRAM first; a nonzero configure_display selects main
- * engine mode 1/BG mode 0 and removes BG0 from the visible plane mask.
+ * engine mode 1/BG mode 0 and removes BG0 from the visible plane mask. The
+ * presentation's enabled state becomes false.
  */
-void func_020a2348(void *object, s32 release_resources,
-                   s32 configure_display)
+void Graphics3dPresentation_Disable(Graphics3dPresentation *self,
+                                    s32 releaseResources,
+                                    s32 configureDisplay)
 {
     volatile u32 *display_control = (volatile u32 *)0x04000000;
 
-    if (release_resources != 0)
-        func_0209b478(object);
-    if (configure_display != 0) {
+    if (releaseResources != 0)
+        func_0209b478(self);
+    if (configureDisplay != 0) {
         GX_SetGraphicsMode(1, 0, 0);
         *display_control = (*display_control & ~0x1f00u) |
                            (((*display_control >> 8) & 0x1eu) << 8);
     }
-    ((u8 *)object)[0x50a] = 0;
+    self->enabled = 0;
 }
 
 /*
  * Retail 0x020A23A8: select the 3D BG0 path. Display configuration preserves
  * all visible planes while enabling BG0; optional resource setup reloads the
- * mode-selected texture set. The mode byte at +0x50A becomes enabled.
+ * profile-selected texture set. The presentation's enabled state becomes
+ * true.
  */
-void func_020a23a8(void *object, s32 load_resources, s32 configure_display)
+void Graphics3dPresentation_Enable(Graphics3dPresentation *self,
+                                   s32 loadResources,
+                                   s32 configureDisplay)
 {
     volatile u32 *display_control = (volatile u32 *)0x04000000;
 
-    if (configure_display != 0) {
+    if (configureDisplay != 0) {
         GX_SetGraphicsMode(1, 0, 1);
         *display_control = (*display_control & ~0x1f00u) |
                            ((((*display_control >> 8) & 0x1fu) | 1u) << 8);
     }
-    if (load_resources != 0)
-        func_020a22bc(object);
-    ((u8 *)object)[0x50a] = 1;
+    if (loadResources != 0)
+        func_020a22bc(self);
+    self->enabled = 1;
 }
 
-void *func_020a1f80(void *object, s32 mode)
+/*
+ * Initialize the caller-owned presentation for one resource profile, create
+ * its three child managers, seed the retained transform, and return self.
+ * This portable body covers the profile-one path used by
+ * RuntimePresentationManager; retail profile zero also configures display
+ * routing and performs a second resource reset/reload that remains unrecovered
+ * here.
+ */
+Graphics3dPresentation *Graphics3dPresentation_Init(
+    Graphics3dPresentation *self, s32 resourceProfile)
 {
-    u8 *bytes = (u8 *)object;
-    u8 vector[16];
+    u8 *bytes = (u8 *)self;
+    VecFx32Object vector;
     void *allocation;
 
     func_02004fe0(bytes + 0x70);
     func_02004fe0(bytes + 0x84);
     func_02004fe0(bytes + 0x4ec);
-    *(s32 *)(bytes + 0x504) = mode;
-    func_0209a4f0(object);
-    if (mode == 0)
-        func_0209a748(object, 8);
+    self->resourceProfile = resourceProfile;
+    func_0209a4f0(self);
+    if (resourceProfile == 0)
+        func_0209a748(self, 8);
 
     allocation = Heap_Alloc(0x2c, data_020f32e8, 4, &gHeapContext);
-    *(u32 *)(bytes + 0x4e0) = (u32)func_0209a450(allocation);
+    self->transformManager = func_0209a450(allocation);
     func_0209a4b4(allocation);
     allocation = Heap_Alloc(0x1fc, data_020f32f0, 4, &gHeapContext);
-    *(u32 *)(bytes + 0x4e4) = (u32)func_020a2aa8(allocation, object);
+    self->pairedEntryManager = func_020a2aa8(allocation, self);
     allocation = Heap_Alloc(0x80, data_020f32f8, 4, &gHeapContext);
-    *(u32 *)(bytes + 0x4e8) = (u32)func_020a3360(allocation, object);
-    bytes[0x509] = 0;
-    bytes[0x50a] = 1;
-    func_0200500c(vector, 0, 0x1800, -0x5800);
-    func_020050a4(bytes + 0x4ec, vector);
-    VecFx32_TerminateNoOp(vector);
-    *(u32 *)(bytes + 0x4fc) = 0;
-    *(u32 *)(bytes + 0x500) = 0;
-    return object;
+    self->slotManager = func_020a3360(allocation, self);
+    self->drawSuppressed = 0;
+    self->enabled = 1;
+    func_0200500c(&vector, 0, 0x1800, -0x5800);
+    func_020050a4(&self->transformOffset, &vector);
+    VecFx32_TerminateNoOp(&vector);
+    self->scale = 0;
+    self->hideRequested = 0;
+    return self;
 }
 
 /* Destroys the small manager's two vectors, clears its first word, and returns
@@ -539,4 +555,47 @@ void *func_020a2b28(void *object)
     func_020c0bc8(bytes + 0x1c, 15, 0x0c, TouchPoint_Destroy);
     VecFx32_TerminateNoOp(bytes + 0x0c);
     return object;
+}
+
+/* Release the base 3D VRAM ownership and destroy its two retained vectors. */
+void *func_0209a5cc(void *object)
+{
+    Graphics3dPresentation *self = (Graphics3dPresentation *)object;
+    u8 *bytes = (u8 *)self;
+
+    func_020ae740();
+    func_020ae72c();
+    *(u32 *)(bytes + 0x4d0) = 0;
+    VecFx32_TerminateNoOp(bytes + 0x84);
+    VecFx32_TerminateNoOp(bytes + 0x70);
+    return self;
+}
+
+/*
+ * Destroy and free the three owned child managers, then release the retained
+ * transform and base graphics state. The caller still owns self.
+ */
+Graphics3dPresentation *Graphics3dPresentation_Destroy(
+    Graphics3dPresentation *self)
+{
+    void *child;
+
+    child = self->transformManager;
+    if (child != 0) {
+        func_0209a484(child);
+        Heap_Free(child);
+    }
+    child = self->slotManager;
+    if (child != 0) {
+        func_020a3388(child);
+        Heap_Free(child);
+    }
+    child = self->pairedEntryManager;
+    if (child != 0) {
+        func_020a2b28(child);
+        Heap_Free(child);
+    }
+    VecFx32_TerminateNoOp(&self->transformOffset);
+    func_0209a5cc(self);
+    return self;
 }

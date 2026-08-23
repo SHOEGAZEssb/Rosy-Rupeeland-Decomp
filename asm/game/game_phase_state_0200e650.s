@@ -7,8 +7,8 @@
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_SetSpriteMode
 .extern ActorCollection_SetEnabled
-.extern func_020a2348
-.extern func_020a23a8
+.extern Graphics3dPresentation_Disable
+.extern Graphics3dPresentation_Enable
 .extern func_020ae740
 
     .global GamePhaseState_ConfigureForPhase
@@ -32,7 +32,7 @@ GamePhaseState_ConfigureForPhase: ; 0x0200e650
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1
     mov r2, r1
-    bl func_020a23a8
+    bl Graphics3dPresentation_Enable
     b L_0200e6ec
 L_0200e6a4:
     bl func_020ae740
@@ -43,7 +43,7 @@ L_0200e6a4:
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020a2348
+    bl Graphics3dPresentation_Disable
     mov r1, #0x0
     mov r2, r1
     mov r0, #0x1

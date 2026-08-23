@@ -48,7 +48,7 @@ extern void func_020b0374(...), func_020b0300(...), func_020a7b90(...);
 extern void func_020b0808(...), func_020b0844(...), func_020b0880(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern void RuntimePresentationManager_DestroyAllEffects(...), RuntimePresentationManager_DispatchVBlankCallbacks(...);
-extern void func_020a2324(...), func_020a2348(...), func_020a23a8(...);
+extern void Graphics3dPresentation_Clear(...), Graphics3dPresentation_Disable(...), Graphics3dPresentation_Enable(...);
 extern void func_02059880(...), DebugText_BeginFrame(...);
 extern void OS_WaitVBlankIntr(...);
 extern s32 RuntimePresentationManager_UpdatePresentations(...);
@@ -158,8 +158,8 @@ void *func_ov074_0220fda8(void *scene, s32 direction) {
 
   presentationManager = (u8 *)data_021052fc + 0x2f7c;
   actor = RuntimePresentationManager_GetGraphics3dPresentation(presentationManager);
-  func_020a2324();
-  func_020a2348(actor, 1, 0);
+  Graphics3dPresentation_Clear(actor);
+  Graphics3dPresentation_Disable(actor, 1, 0);
   RuntimePresentationManager_DestroyAllEffects(presentationManager);
   func_02059880(gSoundContext, 1);
   display = *display_control;
@@ -308,7 +308,7 @@ s32 func_ov074_022101dc(void *scene) {
     if ((F(u32, scene, 0x140) & 2) == 0)
       break;
     object = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)runtime + 0x2f7c);
-    func_020a23a8(object, 1, 0);
+    Graphics3dPresentation_Enable(object, 1, 0);
     F(u8, runtime, 0x30cc) &= (u8)~4;
     {
       volatile u32 *display = (volatile u32 *)0x04000000;

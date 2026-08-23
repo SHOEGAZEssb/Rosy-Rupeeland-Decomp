@@ -5,7 +5,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern Sound_PlayDirectSequence
-.extern func_020a214c
+.extern Graphics3dPresentation_UpdateFrame
 .extern func_020a6990
 .extern func_020a6aa8
 .extern SignedAbsoluteValue
@@ -213,7 +213,7 @@ func_ov041_021feec8: ; 0x021feec8
     ldr r0, [r7, #0x18]
     add r1, sp, #0x0
     mov r2, #0x0
-    bl func_020a214c
+    bl Graphics3dPresentation_UpdateFrame
     mov r0, r7
     bl func_ov041_021fe56c
     add r0, sp, #0x0

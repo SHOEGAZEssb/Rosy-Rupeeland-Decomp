@@ -2,6 +2,7 @@
 #define TINGLE_RUNTIME_PRESENTATION_MANAGER_H
 
 #include "tingle/field_effect.h"
+#include "tingle/graphics_3d_presentation.h"
 
 /*
  * Runtime owner for two CList<CFieldEffect *> instances and one separately
@@ -24,8 +25,6 @@ typedef struct FieldEffectList {
     FieldEffectListNode *tail;
     u32 count;
 } FieldEffectList;
-
-typedef struct Graphics3dPresentation Graphics3dPresentation;
 
 typedef struct RuntimePresentationManager {
     FieldEffectList firstEffects;

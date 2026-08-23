@@ -2,9 +2,9 @@
 .text
 .extern Heap_Alloc
 .extern Heap_Free
-.extern func_020a1f80
-.extern func_020a20d4
-.extern func_020a214c
+.extern Graphics3dPresentation_Init
+.extern Graphics3dPresentation_Destroy
+.extern Graphics3dPresentation_UpdateFrame
 .extern ActorMotionAreaFollower_GetPosition
 .extern FieldEffectList_Init
 .extern FieldEffectList_Clear
@@ -84,7 +84,7 @@ L_0201dd98:
     mov r1, r0
     ldr r0, [r5, #0x20]
     mov r2, r4
-    bl func_020a214c
+    bl Graphics3dPresentation_UpdateFrame
 L_0201ddd8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

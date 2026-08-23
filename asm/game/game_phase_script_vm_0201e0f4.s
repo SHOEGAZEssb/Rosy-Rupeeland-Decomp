@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern FieldEffectList_Clear
 .extern FieldEffectList_RemoveNode
-.extern func_020a2324
-.extern func_020a2348
-.extern func_020a23a8
+.extern Graphics3dPresentation_Clear
+.extern Graphics3dPresentation_Disable
+.extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
 .extern data_021052fc
@@ -22,11 +22,11 @@ RuntimePresentationManager_DisableGraphics3dForActivePhase: ; 0x0201e0f4
     movs r0, r0, asr #0x1f
     ldmeqia sp!, {r4, pc}
     ldr r0, [r4, #0x20]
-    bl func_020a2324
+    bl Graphics3dPresentation_Clear
     ldr r0, [r4, #0x20]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020a2348
+    bl Graphics3dPresentation_Disable
     mov r1, #0x0
     mov r2, r1
     mov r0, #0x6
