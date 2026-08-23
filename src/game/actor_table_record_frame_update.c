@@ -12,7 +12,7 @@ extern void func_020328d0(void *vector, s32 scale);
 extern s32 VecFx32Object_GetMagnitude(void *vector);
 extern s32 Actor_QueryTerrainHeight(void *actor, s32 x, s32 y);
 extern void ActorFeedback_SpawnIndexedPresentation(void *actor, u32 resource, u16 value);
-extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
+extern void Actor_TurnTowardVector(void *actor, s32 x, s32 y, s32 scale);
 extern void Actor_UpdateAnimationState(void *actor);
 #ifdef __cplusplus
 }
@@ -44,7 +44,7 @@ static s32 squareFxRound(s32 value)
  * bit, divide motion +0x3c/+0x40 by three and zero both when their rounded
  * fixed-point squared sum is below 410. For +0x20c bit 0x2000, store vector
  * +0x88 length divided by 16 into attachment +0x54 halfword +0x36 and invoke
- * func_02032228(actor,+0x8c,+0x90,0x800). Finish through Actor_UpdateAnimationState and
+ * Actor_TurnTowardVector(actor,+0x8c,+0x90,0x800). Finish through Actor_UpdateAnimationState and
  * virtual +0x20. Returns no value; map, presentation, vector, and virtual calls
  * have observable actor/engine effects.
  */
@@ -110,7 +110,7 @@ void ActorTableRecord_UpdateFrame(void *self)
     if ((*(u32 *)(actor + 0x20c) & 0x2000) != 0) {
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x36) =
             (u16)func_020adae4(VecFx32Object_GetMagnitude(actor + 0x88), 16);
-        func_02032228(actor, *(s32 *)(actor + 0x8c),
+        Actor_TurnTowardVector(actor, *(s32 *)(actor + 0x8c),
                       *(s32 *)(actor + 0x90), 0x800);
     }
     Actor_UpdateAnimationState(actor);

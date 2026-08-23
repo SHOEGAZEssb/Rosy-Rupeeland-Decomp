@@ -15,7 +15,7 @@
 .extern PresentationList_AppendObject
 .extern func_0201e0ec
 .extern func_02022cb0
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern ActorContactState_AddContact
 .extern ActorDerivedType1_StartRecord
 .extern ActorExtendedType2_GetDescriptorValue28
@@ -239,7 +239,7 @@ func_ov082_02213538:
     rsb r1, r7, #0x0
     rsb r2, r8, #0x0
     mov r3, #0x8000
-    bl func_02032228
+    bl Actor_TurnTowardVector
 .L_02213850:
     add r0, sp, #0x18
     add r1, r4, #0x18

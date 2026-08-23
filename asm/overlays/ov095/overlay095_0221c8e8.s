@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_020c9670
 .extern data_021052fc
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern func_0204cfa4
 
 .global func_ov095_0221c8e8
@@ -40,7 +40,7 @@ func_ov095_0221c8e8:
     mov r1, r5
     mov r2, r6
     mov r3, #0x80
-    bl func_02032228
+    bl Actor_TurnTowardVector
     ldr r0, [r4, #0xc8]
     ldr r1, .L_0221ca0c
     mov r0, r0, lsl #0x10

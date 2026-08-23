@@ -29,8 +29,8 @@ extern void Type7Actor_ClearTarget(void *object);
 extern void GamePhaseRuntime_StageAreaRequest(void *manager, s32 first, s32 second, s32 third,
                           s32 fourth, s32 fifth);
 extern void ActorDerivedRuntime_UpdateFrame(void *actor);
-extern s32 func_02032370(void *actor, void *state, s32 step);
-extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
+extern s32 Actor_TurnTowardTargetPosition(void *actor, void *state, s32 step);
+extern s32 Actor_TurnTowardVector(void *actor, s32 x, s32 y, s32 step);
 extern void *Type7AuxiliaryPresentation_Init(void *storage, void *actor);
 extern void Type7AuxiliaryPresentation_Activate(void *object);
 extern void ActorDerivedType1_ClassifyState(void *actor);
@@ -145,10 +145,10 @@ void ActorDerivedType1_UpdateFrame(void *self)
     *(u32 *)(actor + 0x230) &= ~0x200;
 
     if (*(s16 *)(actor + 0x264) > 0) {
-        orientation = func_02032370(actor, actor + 0x254, 0x1000);
+        orientation = Actor_TurnTowardTargetPosition(actor, actor + 0x254, 0x1000);
         --*(s16 *)(actor + 0x264);
     } else if ((*(u32 *)(actor + 0x230) & 0x40000000) != 0) {
-        orientation = func_02032228(
+        orientation = Actor_TurnTowardVector(
             actor, (*(u32 *)(actor + 0x230) & 0x80000000) != 0 ? -8 : 8,
             0, 0x800);
         if (*(s16 *)(actor + 0x266) > 0) --*(s16 *)(actor + 0x266);
@@ -157,7 +157,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
             --*(s16 *)(actor + 0x252);
             *(u32 *)(actor + 0xd0) |= 0x8000;
         }
-        orientation = func_02032228(actor, *(s32 *)(actor + 0x3c),
+        orientation = Actor_TurnTowardVector(actor, *(s32 *)(actor + 0x3c),
                                     *(s32 *)(actor + 0x40), 0x800);
         if (*(s16 *)(actor + 0x266) > 0) --*(s16 *)(actor + 0x266);
     }

@@ -8,7 +8,7 @@
 .extern VecFx32Triple_Set
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02032370
+.extern Actor_TurnTowardTargetPosition
 .extern ActorExtendedType2_DispatchNearTargetState
 .extern ActorExtendedLinkSource_LinkPartner
 .extern func_020befec
@@ -40,7 +40,7 @@ func_ov075_02216928:
     mov r2, r0
     mov r0, r4
     add r1, r5, #0x18
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     add r1, r4, #0x200
     ldrsh r2, [r1, #0xa0]
     add r0, sp, #0x70

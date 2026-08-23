@@ -12,8 +12,8 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern func_0201e0ec
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_02032228
-.extern func_02032370
+.extern Actor_TurnTowardVector
+.extern Actor_TurnTowardTargetPosition
 .extern func_020349b8
 .extern ActorExtendedType2_IncrementSavedProgressCounter
 .extern PresentationBackedActor_SpawnAmountVariant
@@ -204,7 +204,7 @@ func_ov077_02215494:
     mov r2, r0
     mov r0, r5
     add r1, r7, #0x18
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     b .L_022158a8
 .L_02215728:
     ldr r0, [r5, #0x308]
@@ -261,7 +261,7 @@ func_ov077_02215494:
     ldr r1, [r5, #0x3c]
     ldr r2, [r5, #0x40]
     mov r0, r5
-    bl func_02032228
+    bl Actor_TurnTowardVector
     add r0, sp, #0x58
     bl VecFx32Object_Destroy
     b .L_022158a8
@@ -302,7 +302,7 @@ func_ov077_02215494:
     ldr r1, [r5, #0x3c]
     ldr r2, [r5, #0x40]
     mov r0, r5
-    bl func_02032228
+    bl Actor_TurnTowardVector
     add r0, sp, #0x48
     bl VecFx32Object_Destroy
 .L_022158a8:

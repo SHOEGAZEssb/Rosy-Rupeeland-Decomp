@@ -15,8 +15,8 @@
 .extern GamePhaseRuntime_StageAreaRequest
 .extern ActorRuntimeTriple_Assign
 .extern Actor_ClearTransientContactState
-.extern func_02032228
-.extern func_02032370
+.extern Actor_TurnTowardVector
+.extern Actor_TurnTowardTargetPosition
 .extern func_020328d0
 .extern Actor_UpdateAnimationState
 .extern func_020349b8
@@ -236,7 +236,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     mov r0, r5
     add r1, r5, #0x254
     mov r2, #0x1000
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     add r1, r5, #0x200
     ldrsh r2, [r1, #0x64]
     mov r4, r0
@@ -250,7 +250,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     mov r0, r5
     mov r2, #0x0
     mov r3, #0x800
-    bl func_02032228
+    bl Actor_TurnTowardVector
     add r1, r5, #0x200
     ldrsh r2, [r1, #0x66]
     mov r4, r0
@@ -265,7 +265,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     mov r0, r5
     add r1, r5, #0x254
     mov r2, #0x1000
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     add r1, r5, #0x200
     ldrsh r2, [r1, #0x64]
     mov r4, r0
@@ -284,7 +284,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     ldr r1, [r5, #0x3c]
     ldr r2, [r5, #0x40]
     mov r0, r5
-    bl func_02032228
+    bl Actor_TurnTowardVector
     add r1, r5, #0x200
     ldrsh r2, [r1, #0x66]
     mov r4, r0

@@ -2,9 +2,9 @@
 .text
 .extern func_020ae024
 
-    .global func_02032228
-    .type func_02032228, @function
-func_02032228: ; 0x02032228
+    .global Actor_TurnTowardVector
+    .type Actor_TurnTowardVector, @function
+Actor_TurnTowardVector: ; 0x02032228
     stmdb sp!, {r3, r4, r5, lr}
     cmp r1, #0x0
     mov r5, r0
@@ -99,5 +99,5 @@ func_02032228: ; 0x02032228
     mov r0, r0, asr #0xd
     and r0, r0, #0xff
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_02032228, . - func_02032228
+    .size Actor_TurnTowardVector, . - Actor_TurnTowardVector
 

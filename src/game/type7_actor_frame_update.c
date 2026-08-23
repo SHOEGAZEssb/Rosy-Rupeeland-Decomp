@@ -28,8 +28,8 @@ extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern s32 AuxiliaryInteraction_RunSelectedSequence(void *resource);
 extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
-extern void func_02032370(void *actor, const void *target, s32 scale);
-extern void func_02032228(void *actor, s32 x, s32 y, s32 scale);
+extern void Actor_TurnTowardTargetPosition(void *actor, const void *target, s32 scale);
+extern void Actor_TurnTowardVector(void *actor, s32 x, s32 y, s32 scale);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void Actor_UpdateGroundContactProbe(void *actor);
@@ -214,14 +214,14 @@ void Type7Actor_UpdateFrame(void *self)
         if (callback_pair_matches(actor,
                 *(void **)(data_020e16b0 + 0x98),
                 *(void **)(data_020e1748 + 4))) {
-            func_02032370(actor, actor + 0x284, 0x800);
+            Actor_TurnTowardTargetPosition(actor, actor + 0x284, 0x800);
         } else if (*(void **)(actor + 0x210) != 0) {
-            func_02032370(actor, (u8 *)*(void **)(actor + 0x210) + 0x18, 0x800);
+            Actor_TurnTowardTargetPosition(actor, (u8 *)*(void **)(actor + 0x210) + 0x18, 0x800);
         } else if (*(void **)(actor + 0x234) == 0
                    && (*(u32 *)(actor + 0x268) & 0x0c) != 0) {
-            func_02032370(actor, actor + 0x224, 0x800);
+            Actor_TurnTowardTargetPosition(actor, actor + 0x224, 0x800);
         } else {
-            func_02032228(actor, *(s32 *)(actor + 0x3c),
+            Actor_TurnTowardVector(actor, *(s32 *)(actor + 0x3c),
                           *(s32 *)(actor + 0x40), 0x800);
         }
         if (*(s16 *)(actor + 0x246) > 0) {

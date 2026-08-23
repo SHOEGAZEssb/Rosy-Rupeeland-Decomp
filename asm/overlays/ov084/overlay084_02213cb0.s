@@ -6,7 +6,7 @@
 .extern VecFx32Triple_Set
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_02032370
+.extern Actor_TurnTowardTargetPosition
 .extern Actor_RefreshTerrainHeight
 .extern func_020befec
 .extern func_ov084_02212d28
@@ -28,7 +28,7 @@ func_ov084_02213cb0:
     mov r2, r0
     mov r0, r4
     add r1, r4, #0xb0
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     mov r0, #0x6
     strh r0, [r4, #0xd6]
     ldrsh r1, [r4, #0xae]

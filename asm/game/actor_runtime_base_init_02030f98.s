@@ -10,7 +10,7 @@
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseActorScriptVm_Init
 .extern ActorBaseGeometry_Init
-.extern func_02032228
+.extern Actor_TurnTowardVector
 
     .global ActorRuntimeBase_Init
     .type ActorRuntimeBase_Init, @function
@@ -105,7 +105,7 @@ ActorRuntimeBase_Init: ; 0x02030f98
     mov r0, r5
     mov r3, #0x800
     str r1, [r5, #0xc0]
-    bl func_02032228
+    bl Actor_TurnTowardVector
     ldr r0, .L_020311b8
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3bc

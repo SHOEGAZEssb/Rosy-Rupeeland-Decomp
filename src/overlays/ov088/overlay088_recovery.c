@@ -86,7 +86,7 @@ extern "C" void VecFx32Object_Init(void *);
 extern "C" void VecFx32Object_InitCopy(void *, const void *);
 extern "C" void VecFx32Object_Destroy(void *);
 extern "C" void VecFx32Object_Assign(void *, const void *);
-extern "C" void func_02032228(void *, s32, s32, s32);
+extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern "C" s32 Actor_GetCachedTerrainHeight(void *);
 extern "C" s32 VecFx32Object_GetMagnitude(void *);
@@ -805,7 +805,7 @@ extern "C" s32 func_ov088_02219d9c(void *a) {
             d = (keys & 0x40) ? 4 : 0;
         u8 old[16];
         VecFx32Object_InitCopy(old, (u8 *)a + 0x38);
-        func_02032228(a, -data_020c9670[d * 1024], data_020c9670[d * 1024 + 1],
+        Actor_TurnTowardVector(a, -data_020c9670[d * 1024], data_020c9670[d * 1024 + 1],
                       0x800);
         VecFx32Object_Assign((u8 *)a + 0x38, old);
         F(s32, a, 0x208) = F(s32, a, 0x20c);

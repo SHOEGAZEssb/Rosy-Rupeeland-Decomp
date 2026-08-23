@@ -85,7 +85,7 @@ EXT(Sound_FadeDirectSequence);
 EXT(Type7Actor_ProcessGlobalInteractionTrigger);
 EXT(TrackedResourceActor_PostUpdate);
 EXT(func_02031564);
-EXT(func_02032228);
+EXT(Actor_TurnTowardVector);
 EXT(func_02034a60);
 EXT(func_0201e0ec);
 EXT(func_0204cfa4);
@@ -1296,7 +1296,7 @@ extern "C" void func_ov095_0221c1d0(void *actor)
     }
     else
     {
-        animation = func_02032228(actor, F(s32, actor, 0x3c),
+        animation = Actor_TurnTowardVector(actor, F(s32, actor, 0x3c),
                                   F(s32, actor, 0x40), 0x800);
         if (F(u8, actor, 0x200) != 0)
         {
@@ -1532,7 +1532,7 @@ extern "C" void *func_ov095_0221c760(void *actor)
 extern "C" void func_ov095_0221c77c(void *actor)
 {
     TrackedResourceActorImpulse_SetupFromRecord(actor);
-    func_02032228(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40), 0x8000);
+    Actor_TurnTowardVector(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40), 0x8000);
     F(u32, actor, 0x10) |= 0x1f0000;
     F(u32, actor, 0xd0) &= ~0x2000u;
     F(u16, actor, 0x60) = 0xfff0;
@@ -1600,7 +1600,7 @@ extern "C" void func_ov095_0221c8e8(void *actor)
     {
         return;
     }
-    func_02032228(actor, dx, dy, 0x80);
+    Actor_TurnTowardVector(actor, dx, dy, 0x80);
     u32 angle = (u16)F(u32, actor, 0xc8) >> 4;
     s32 xDirection = F(s16, data_020c9670, angle * 4);
     s32 yDirection = F(s16, data_020c9670, angle * 4 + 2);

@@ -20,8 +20,8 @@ extern void **GamePhaseRuntime_GetActorCollection(void *runtime, s32 collection)
 extern void InteractionRecordAllocator_ReleaseOwner(void *handle, void *actor);
 extern void func_020349b8(void *actor, u32 sound, s32 extra);
 extern void Actor_SaveAndForceFlags(void *actor);
-extern s32 func_02032370(void *actor, const void *target, s32 step);
-extern s32 func_02032228(void *actor, s32 x, s32 y, s32 step);
+extern s32 Actor_TurnTowardTargetPosition(void *actor, const void *target, s32 step);
+extern s32 Actor_TurnTowardVector(void *actor, s32 x, s32 y, s32 step);
 extern void VecFx32_Subtract(void *output, ...);
 extern s32 func_0204cfa4(s32 x, s32 y);
 extern s32 func_020ae024(s32 y, s32 x);
@@ -165,12 +165,12 @@ void ActorExtendedType2_UpdateFrame(void *self)
                              data_020df9e8 + 0x110, data_020dfaf8) ||
                  (*(u32 *)(actor + 0x260) & 0x20) != 0)) {
                 s32 step = (*(s32 (**)(void *))(*(u8 **)actor + 0x144))(actor);
-                (void)func_02032370(actor,
+                (void)Actor_TurnTowardTargetPosition(actor,
                                     (u8 *)*(void **)(actor + 0x228) + 0x18,
                                     step);
             } else {
                 s32 step = (*(s32 (**)(void *))(*(u8 **)actor + 0x140))(actor);
-                (void)func_02032228(actor, *(s32 *)(actor + 0x3c),
+                (void)Actor_TurnTowardVector(actor, *(s32 *)(actor + 0x3c),
                                     *(s32 *)(actor + 0x40), step);
             }
         }

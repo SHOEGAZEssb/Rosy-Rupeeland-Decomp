@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_ov095_0221d288
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gHeapContext
 
@@ -28,7 +28,7 @@ func_ov095_0221c1d0:
     ldr r1, [r4, #0x3c]
     ldr r2, [r4, #0x40]
     mov r3, #0x800
-    bl func_02032228
+    bl Actor_TurnTowardVector
     ldrb r2, [r4, #0x200]
     mov r1, r0
     cmp r2, #0x0

@@ -3,7 +3,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern Actor_QueryTerrainHeight
 .extern InteractionWaypointCursor_Advance
 .extern InteractionWaypointCursor_GetCurrentRecord
@@ -96,7 +96,7 @@ func_ov075_02213cfc:
     sub r2, r3, r2
     sub r1, r4, r1
     mov r3, #0x8000
-    bl func_02032228
+    bl Actor_TurnTowardVector
     ldrb r2, [r5, #0xd4]
     add r0, sp, #0x0
     add r1, r5, #0x18

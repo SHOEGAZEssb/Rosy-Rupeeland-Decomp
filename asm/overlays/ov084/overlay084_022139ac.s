@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern func_ov084_02213bc8
 
 .global func_ov084_022139ac
@@ -29,7 +29,7 @@ func_ov084_022139ac:
     mov r0, r4
     sub r1, lr, r1
     sub r2, ip, r2
-    bl func_02032228
+    bl Actor_TurnTowardVector
     mov r0, r4
     ldr r1, [r0, #0x0]
     ldr r1, [r1, #0x38]

@@ -39,7 +39,7 @@ extern "C" void GraphicsSpriteState_SetAnimationIndex(void*,s32); extern "C" voi
 extern "C" void Actor_UpdateAnimationState(void*); extern "C" void Actor_UpdateTimedResourceState(void*);
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshTerrainHeight(void*);
 extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void func_02031758(void*,void*,s32);
-extern "C" void func_02032228(void*,s32,s32,s32); extern "C" void func_02032370(void*,void*,s32);
+extern "C" void Actor_TurnTowardVector(void*,s32,s32,s32); extern "C" void Actor_TurnTowardTargetPosition(void*,void*,s32);
 extern "C" void func_02033b38(void); extern "C" void Sound_PlayOwnedEffect(void*,s32,s32,void*,s32,s32);
 extern "C" void func_02071ee0(void*,const void*,s32,s32,s32); extern "C" s32 func_0209189c(void*,s32,s32);
 extern "C" s32 func_0204cfa4(s32,s32); extern "C" s32 func_020adc90(s32,s32);
@@ -86,8 +86,8 @@ extern "C" void func_ov085_02212d08(void*a)
    if(F(s32,a,0x230)!=-1){if(F(s32,a,0x22c)<F(s32,a,0x230))++F(s32,a,0x22c);else func_ov085_02213b3c(a);}
    resolve_callback(a,F(u32,a,0x208),F(u32,a,0x20c))(a);
    if((u16)(F(s16,a,0xd6)-1)<2&&func_ov085_02214248(a))F(s16,a,0xd6)=5;
-   if(!F(void*,a,0x210)){if(VecFx32Object_GetMagnitude((u8*)a+0x98)>0x300)func_02032228(a,F(s32,a,0x9c),F(s32,a,0xa0),0x400);else func_02032228(a,F(s32,a,0x3c),F(s32,a,0x40),0x800);}
-   else func_02032370(a,(u8*)F(void*,a,0x210)+0x18,0x800);
+   if(!F(void*,a,0x210)){if(VecFx32Object_GetMagnitude((u8*)a+0x98)>0x300)Actor_TurnTowardVector(a,F(s32,a,0x9c),F(s32,a,0xa0),0x400);else Actor_TurnTowardVector(a,F(s32,a,0x3c),F(s32,a,0x40),0x800);}
+   else Actor_TurnTowardTargetPosition(a,(u8*)F(void*,a,0x210)+0x18,0x800);
   }
   ((M0)vm(a,0xa4))(a);Actor_UpdateAnimationState(a);((M0)vm(a,0x20))(a);return;
  }

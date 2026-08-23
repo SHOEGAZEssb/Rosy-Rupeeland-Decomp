@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern func_02034a60
 .extern func_ov088_02218280
 .extern gSystemState
@@ -133,7 +133,7 @@ func_ov088_02219d9c:
     mov r0, r5
     rsb r1, r1, #0x0
     mov r3, #0x800
-    bl func_02032228
+    bl Actor_TurnTowardVector
     add r1, sp, #0x0
     add r0, r5, #0x38
     bl VecFx32Object_Assign

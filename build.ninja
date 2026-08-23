@@ -14847,13 +14847,13 @@ build build/reports/actor_orientation_update_02032228.json: objdiff build/decomp
   base_object = build/decomp/asm/game/actor_orientation_update_02032228.o
 build build/reports/actor_orientation_update_02032228.txt: match_report build/reports/actor_orientation_update_02032228.json | tools/report_objdiff.py
   report_json = build/reports/actor_orientation_update_02032228.json
-  report_args = --section .text --function func_02032228 --require-exact
+  report_args = --section .text --function Actor_TurnTowardVector --require-exact
 build build/reports/actor_orientation_update_02032370.json: objdiff build/decomp/delinks/asm/game/actor_orientation_update_02032370.o | build/decomp/asm/game/actor_orientation_update_02032370.o
   target_object = build/decomp/delinks/asm/game/actor_orientation_update_02032370.o
   base_object = build/decomp/asm/game/actor_orientation_update_02032370.o
 build build/reports/actor_orientation_update_02032370.txt: match_report build/reports/actor_orientation_update_02032370.json | tools/report_objdiff.py
   report_json = build/reports/actor_orientation_update_02032370.json
-  report_args = --section .text --function func_02032370 --require-exact
+  report_args = --section .text --function Actor_TurnTowardTargetPosition --require-exact
 build build/reports/actor_orientation_update.txt: phony build/reports/actor_orientation_update_02032228.txt build/reports/actor_orientation_update_02032370.txt
 
 build actor_orientation_update: phony build/decomp/src/game/actor_orientation_update.o build/decomp/asm/game/actor_orientation_update_02032228.o build/decomp/asm/game/actor_orientation_update_02032370.o build/reports/actor_orientation_update.txt

@@ -11,8 +11,8 @@
 .extern VecFx32Object_Assign
 .extern func_02025d14
 .extern func_02026588
-.extern func_02032228
-.extern func_02032370
+.extern Actor_TurnTowardVector
+.extern Actor_TurnTowardTargetPosition
 .extern Actor_UpdateAnimationState
 .extern Actor_GetCachedTerrainHeight
 .extern ActorDerivedRuntime_UpdateFrame
@@ -318,7 +318,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     mov r0, r4
     add r1, r4, #0x284
     mov r2, #0x800
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     b .L_02045f0c
 .L_02045eac:
     ldr r1, [r4, #0x210]
@@ -327,7 +327,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     mov r0, r4
     add r1, r1, #0x18
     mov r2, #0x800
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     b .L_02045f0c
 .L_02045ecc:
     ldr r0, [r4, #0x234]
@@ -339,14 +339,14 @@ Type7Actor_UpdateFrame: ; 0x02045a60
     mov r0, r4
     add r1, r4, #0x224
     mov r2, #0x800
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     b .L_02045f0c
 .L_02045ef8:
     ldr r1, [r4, #0x3c]
     ldr r2, [r4, #0x40]
     mov r0, r4
     mov r3, #0x800
-    bl func_02032228
+    bl Actor_TurnTowardVector
 .L_02045f0c:
     add r0, r4, #0x200
     ldrsh r1, [r0, #0x46]

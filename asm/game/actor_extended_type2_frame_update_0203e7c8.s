@@ -14,8 +14,8 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_02032228
-.extern func_02032370
+.extern Actor_TurnTowardVector
+.extern Actor_TurnTowardTargetPosition
 .extern Actor_UpdateAnimationState
 .extern Actor_SaveAndForceFlags
 .extern func_020349b8
@@ -284,7 +284,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     mov r2, r0
     mov r0, r6
     add r1, r1, #0x18
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     b .L_0203eba8
 .L_0203eb84:
     mov r0, r6
@@ -295,7 +295,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     ldr r1, [r6, #0x3c]
     ldr r2, [r6, #0x40]
     mov r0, r6
-    bl func_02032228
+    bl Actor_TurnTowardVector
 .L_0203eba8:
     add r0, r6, #0x200
     ldrsh r1, [r0, #0x52]

@@ -4,8 +4,8 @@
 .extern VecFx32Object_GetMagnitude
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Actor_SetRuntimeFlag80
-.extern func_02032228
-.extern func_02032370
+.extern Actor_TurnTowardVector
+.extern Actor_TurnTowardTargetPosition
 .extern Actor_UpdateAnimationState
 .extern Actor_UpdateTimedResourceState
 .extern ActorDerivedRuntime_UpdateFrame
@@ -117,7 +117,7 @@ func_ov081_02212de0:
     mov r0, r4
     add r1, r1, #0x18
     mov r2, #0x800
-    bl func_02032370
+    bl Actor_TurnTowardTargetPosition
     b .L_02212fb0
 .L_02212f70:
     add r0, r4, #0x98
@@ -129,14 +129,14 @@ func_ov081_02212de0:
     ldr r2, [r4, #0xa0]
     mov r0, r4
     mov r3, #0x400
-    bl func_02032228
+    bl Actor_TurnTowardVector
     b .L_02212fb0
 .L_02212f9c:
     ldr r1, [r4, #0x3c]
     ldr r2, [r4, #0x40]
     mov r0, r4
     mov r3, #0x800
-    bl func_02032228
+    bl Actor_TurnTowardVector
 .L_02212fb0:
     mov r0, r4
     ldr r1, [r0, #0x0]

@@ -99,8 +99,8 @@ EXT(func_02005058);
 EXT(func_0200634c);
 EXT(func_0200637c);
 EXT(func_02031720);
-EXT(func_02032228);
-EXT(func_02032370);
+EXT(Actor_TurnTowardVector);
+EXT(Actor_TurnTowardTargetPosition);
 EXT(func_020064b8);
 EXT(func_0201f864);
 EXT(func_02022cb0);
@@ -766,7 +766,7 @@ extern "C" void func_ov075_02213cfc(void *actor)
     InteractionWaypointCursor_Advance(cursor);
     F(u16, actor, 0x25a) =
         InteractionWaypointCursor_GetCurrentDurationFrames(cursor);
-    func_02032228(actor, F(s32, actor, 0x2b4) - F(s32, actor, 0x1c),
+    Actor_TurnTowardVector(actor, F(s32, actor, 0x2b4) - F(s32, actor, 0x1c),
                   F(s32, actor, 0x2b8) - F(s32, actor, 0x20), 0x8000);
     F(u8, actor, 0xd4) &= 0x0e;
     u8 position[16];
@@ -2216,7 +2216,7 @@ extern "C" void func_ov075_0221647c(void *actor, void *target, s32 dx,
     if (sound != 0xffff)
         Sound_Play(gSoundContext, sound >> 7, sound & 0x7f);
     if (currency > 0)
-        func_02032228(actor, -impulseX, -impulseY, 0x8000);
+        Actor_TurnTowardVector(actor, -impulseX, -impulseY, 0x8000);
     u8 delta[16];
     u8 scaled[16];
     u8 effectPosition[16];
@@ -2269,7 +2269,7 @@ extern "C" s32 func_ov075_02216928(void *actor)
     void *target = F(void *, actor, 0x2a8);
     if (F(s16, actor, 0x2a0) < 30)
     {
-        func_02032370(actor, P(target, 0x18), Invoke(actor, 0x140));
+        Actor_TurnTowardTargetPosition(actor, P(target, 0x18), Invoke(actor, 0x140));
         ++F(s16, actor, 0x2a0);
         u8 targetPosition[16];
         u8 delta[16];

@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern TrackedResourceActorImpulse_SetupFromRecord
 
 .global func_ov095_0221c77c
@@ -12,7 +12,7 @@ func_ov095_0221c77c:
     ldr r2, [r4, #0x40]
     mov r0, r4
     mov r3, #0x8000
-    bl func_02032228
+    bl Actor_TurnTowardVector
     ldr r0, [r4, #0x10]
     mvn r1, #0xf
     orr r0, r0, #0x1f0000

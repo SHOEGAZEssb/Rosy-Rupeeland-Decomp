@@ -3,7 +3,7 @@
 .extern data_020e0ac8
 .extern data_020e0ad0
 .extern data_020e0ad8
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2C
 .extern ActorExtendedTable_MatchesCallbackPair18
@@ -78,7 +78,7 @@ ActorExtendedTable_UpdateFrame: ; 0x0204483c
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x1000
-    bl func_02032228
+    bl Actor_TurnTowardVector
     b .L_02044964
 .L_02044948:
     ldr r0, [r4, #0x260]

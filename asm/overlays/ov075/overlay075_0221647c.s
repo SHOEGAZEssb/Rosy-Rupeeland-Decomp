@@ -13,7 +13,7 @@
 .extern PresentationList_AppendObject
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02022cb0
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern ActorDerivedType1_TeardownRecordAndApplyMotionImpulse
 .extern ActorDerivedType1_GetSingletonObject
 .extern Actor_RandomizeValueByTenPercent
@@ -246,7 +246,7 @@ func_ov075_0221647c:
     rsb r1, r4, #0x0
     rsb r2, r11, #0x0
     mov r3, #0x8000
-    bl func_02032228
+    bl Actor_TurnTowardVector
 .L_022167c8:
     add r0, sp, #0x2c
     add r1, r5, #0x18

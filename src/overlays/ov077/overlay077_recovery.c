@@ -67,8 +67,8 @@ EXT(func_02005030);
 EXT(func_02005058);
 EXT(func_020050a4);
 EXT(func_020099c0);
-EXT(func_02032228);
-EXT(func_02032370);
+EXT(Actor_TurnTowardVector);
+EXT(Actor_TurnTowardTargetPosition);
 EXT(func_020349b8);
 EXT(func_0204cfa4);
 EXT(func_020538a4);
@@ -1254,7 +1254,7 @@ extern "C" void func_ov077_02215494(void *actor)
         ((Method)F(void *, F(void *, actor, 0), 0xd0))(actor, P(primary, 0x18));
         F(u16, actor, 0xd6) = 2;
         s32 step = ((Method)F(void *, F(void *, actor, 0), 0x144))(actor);
-        func_02032370(actor, P(primary, 0x18), step);
+        Actor_TurnTowardTargetPosition(actor, P(primary, 0x18), step);
     }
     else if (countdown <= 0)
     {
@@ -1272,7 +1272,7 @@ extern "C" void func_ov077_02215494(void *actor)
             F(s32, actor, 0x40) *= 3;
         }
         s32 step = ((Method)F(void *, F(void *, actor, 0), 0x140))(actor);
-        func_02032228(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40), step);
+        Actor_TurnTowardVector(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40), step);
         VecFx32Object_Destroy(target);
     }
     else
@@ -1290,7 +1290,7 @@ extern "C" void func_ov077_02215494(void *actor)
         F(s32, actor, 0x40) <<= 2;
         F(u16, actor, 0xd6) = 2;
         s32 step = ((Method)F(void *, F(void *, actor, 0), 0x140))(actor);
-        func_02032228(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40), step);
+        Actor_TurnTowardVector(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40), step);
         VecFx32Object_Destroy(target);
     }
 
@@ -1384,7 +1384,7 @@ extern "C" s32 func_ov077_02215f34(void *actor)
         F(s32, actor, 0x21c) = F(s32, data_ov077_02216fc8, 0x84);
         ((Method)F(void *, F(void *, actor, 0), 0xd0))(actor, P(primary, 0x18));
         F(u16, actor, 0xd6) = F(s16, actor, 0x2e6) < 1 ? 2 : 3;
-        func_02032370(actor, P(primary, 0x18),
+        Actor_TurnTowardTargetPosition(actor, P(primary, 0x18),
                       ((Method)F(void *, F(void *, actor, 0), 0x144))(actor));
     }
     else
@@ -1400,7 +1400,7 @@ extern "C" s32 func_ov077_02215f34(void *actor)
             F(s32, actor, 0x3c) *= 3;
             F(s32, actor, 0x40) *= 3;
         }
-        func_02032228(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40),
+        Actor_TurnTowardVector(actor, F(s32, actor, 0x3c), F(s32, actor, 0x40),
                       ((Method)F(void *, F(void *, actor, 0), 0x140))(actor));
         func_02005058(target);
     }

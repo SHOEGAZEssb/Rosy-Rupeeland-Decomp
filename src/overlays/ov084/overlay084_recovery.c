@@ -53,8 +53,8 @@ extern "C" void func_020adfbc(const void *, const void *, void *);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" s32 func_020befec(s32, s32);
 extern "C" s32 func_0204cfa4(s32, s32);
-extern "C" void func_02032228(void *, s32, s32, s32);
-extern "C" void func_02032370(void *, void *, s32);
+extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
+extern "C" void Actor_TurnTowardTargetPosition(void *, void *, s32);
 extern "C" void func_020349b8(void *, s32, s32);
 extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
@@ -516,7 +516,7 @@ extern "C" s32 func_ov084_022139ac(void *a) {
     F(u8, a, 0x24c) = 2;
     void *t = F(void *, a, 0x228);
     s32 k = ((M0)vm(a, 0x144))(a);
-    func_02032228(a, F(s32, t, 0x1c) - F(s32, a, 0x1c),
+    Actor_TurnTowardVector(a, F(s32, t, 0x1c) - F(s32, a, 0x1c),
                   F(s32, t, 0x20) - F(s32, a, 0x20), k);
     if (((M0)vm(a, 0x38))(a)) {
         F(u8, a, 0x24c) = 2;
@@ -581,7 +581,7 @@ extern "C" s32 func_ov084_02213cb0(void *a, s32, s32, s32) {
     if (F(s16, a, 0xac) == 0xff)
         return 0;
     s32 k = ((M0)vm(a, 0x144))(a);
-    func_02032370(a, (u8 *)a + 0xb0, k);
+    Actor_TurnTowardTargetPosition(a, (u8 *)a + 0xb0, k);
     F(s16, a, 0xd6) = 6;
     if (F(s16, a, 0xae) < 1) {
         ((V0)vm(a, 0x40))(a);

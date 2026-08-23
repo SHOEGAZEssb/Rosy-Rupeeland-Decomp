@@ -60,7 +60,7 @@ extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern "C" void PresentationList_AppendObject(void *, void *);
 extern "C" void *func_0201e0ec(void *);
 extern "C" void *func_02022cb0(void *, const void *, void *, s32, s32, s32);
-extern "C" void func_02032228(void *, s32, s32, s32);
+extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" s32 func_02033f4c(void *);
 extern "C" void func_02034a60(void *, s32, s32);
 extern "C" s32 func_0204cfa4(s32, s32);
@@ -510,7 +510,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
                     Sound_Play(gSoundContext, snd >> 7, snd & 0x7f);
             }
             if (amount > 0)
-                func_02032228(a, -dx, -dy, 0x8000);
+                Actor_TurnTowardVector(a, -dx, -dy, 0x8000);
             u8 delta[16], scaled[16], pos[16];
             func_ov082_02213974(delta, (u8 *)other + 0x18, (u8 *)a + 0x18);
             func_ov082_022139ac(scaled, delta, 0x2000);

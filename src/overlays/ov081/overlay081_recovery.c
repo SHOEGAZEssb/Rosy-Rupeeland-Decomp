@@ -120,8 +120,8 @@ extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
 extern void DebugText_Printf(void *, s32, s32, s32, const char *, ...);
 extern void func_02031758(void *, void *, s32);
-extern void func_02032228(void *, s32, s32, s32);
-extern void func_02032370(void *, const void *, s32);
+extern void Actor_TurnTowardVector(void *, s32, s32, s32);
+extern void Actor_TurnTowardTargetPosition(void *, const void *, s32);
 extern void func_02033b38(void *);
 extern s32 func_0204cfa4(s32, s32);
 extern s32 func_020573e4(void);
@@ -379,13 +379,13 @@ void func_ov081_02212de0(void *actor)
             FIELD(s16, actor, 0xd6) = 5;
 
         if (FIELD(void *, actor, 0x210) != 0) {
-            func_02032370(actor, (u8 *)FIELD(void *, actor, 0x210) + 0x18,
+            Actor_TurnTowardTargetPosition(actor, (u8 *)FIELD(void *, actor, 0x210) + 0x18,
                           0x800);
         } else if (VecFx32Object_GetMagnitude((u8 *)actor + 0x98) > 0x19a) {
-            func_02032228(actor, FIELD(s32, actor, 0x9c),
+            Actor_TurnTowardVector(actor, FIELD(s32, actor, 0x9c),
                           FIELD(s32, actor, 0xa0), 0x400);
         } else {
-            func_02032228(actor, FIELD(s32, actor, 0x3c),
+            Actor_TurnTowardVector(actor, FIELD(s32, actor, 0x3c),
                           FIELD(s32, actor, 0x40), 0x800);
         }
     }

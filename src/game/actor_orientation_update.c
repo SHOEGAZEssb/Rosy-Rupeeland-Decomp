@@ -1,6 +1,6 @@
 #include "tingle/types.h"
 
-/* Rotate actor orientation toward a vector or world-space target point. */
+/* Turn actor orientation toward a vector or world-space target position. */
 
 #ifdef __cplusplus
 extern "C" {
@@ -12,17 +12,18 @@ extern u16 func_020ae024(s32 y, s32 x);
 
 /*
  * For nonzero vector X/Y, obtain its angle through func_020ae024, rotate by
- * -0x4000, and move current angle 0xc8 toward it by at most maxStep along the
- * shorter 16-bit arc. A turn delta below 0x2000, or actor flag 0x8000 at 0xd0,
+ * -0x4000, and move current angle 0xc8 toward it by at most the requested
+ * step along the shorter 16-bit arc. A turn delta below 0x2000, or actor flag
+ * 0x8000 at 0xd0,
  * sets flag one; otherwise X/Y motion 0x3c/0x40 is cleared. A zero vector
  * restores angle 0xcc. Quantize current angle to byte 0xd4 and set debounce
  * halfword 0x1ea to five when it differs from prior byte 0xd5; otherwise count
  * that timer down. Return the desired/restored angle quantized to eight
  * directions. No direct hardware access occurs.
  */
-s32 func_02032228(void *self, s32 x, s32 y, s32 maxStep)
+s32 Actor_TurnTowardVector(void *actorPointer, s32 x, s32 y, s32 maximumStep)
 {
-    u8 *actor = (u8 *)self;
+    u8 *actor = (u8 *)actorPointer;
     u32 desired;
     u32 current;
 
@@ -40,14 +41,14 @@ s32 func_02032228(void *self, s32 x, s32 y, s32 maxStep)
                 *(u32 *)(actor + 0xd0) |= 1;
             else
                 *(u32 *)(actor + 0x3c) = *(u32 *)(actor + 0x40) = 0;
-            adjustment = delta > maxStep ? maxStep : delta;
+            adjustment = delta > maximumStep ? maximumStep : delta;
         } else {
             delta = 0x10000 - delta;
             if (delta < 0x2000 || (*(u32 *)(actor + 0xd0) & 0x8000))
                 *(u32 *)(actor + 0xd0) |= 1;
             else
                 *(u32 *)(actor + 0x3c) = *(u32 *)(actor + 0x40) = 0;
-            adjustment = -(delta > maxStep ? maxStep : delta);
+            adjustment = -(delta > maximumStep ? maximumStep : delta);
         }
         *(u32 *)(actor + 0xc8) = (u16)(current + adjustment);
     } else {
@@ -67,14 +68,15 @@ s32 func_02032228(void *self, s32 x, s32 y, s32 maxStep)
 
 /*
  * Subtract actor X/Y at 0x1c/0x20 from target vector coordinates 0x04/0x08,
- * then delegate to func_02032228 with maxStep. Return its direction index.
+ * then delegate to Actor_TurnTowardVector with the requested maximum step.
+ * Return its direction index.
  */
-s32 func_02032370(void *self, const void *target, s32 maxStep)
+s32 Actor_TurnTowardTargetPosition(void *actorPointer, const void *target,
+                                   s32 maximumStep)
 {
     const u8 *point = (const u8 *)target;
-    u8 *actor = (u8 *)self;
-    return func_02032228(actor,
-                         *(s32 *)(point + 0x04) - *(s32 *)(actor + 0x1c),
-                         *(s32 *)(point + 0x08) - *(s32 *)(actor + 0x20),
-                         maxStep);
+    u8 *actor = (u8 *)actorPointer;
+    return Actor_TurnTowardVector(
+        actor, *(s32 *)(point + 0x04) - *(s32 *)(actor + 0x1c),
+        *(s32 *)(point + 0x08) - *(s32 *)(actor + 0x20), maximumStep);
 }

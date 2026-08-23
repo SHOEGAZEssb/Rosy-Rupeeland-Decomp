@@ -2,7 +2,7 @@
 .text
 .extern data_021052fc
 .extern VecFx32Object_GetMagnitude
-.extern func_02032228
+.extern Actor_TurnTowardVector
 .extern func_020328d0
 .extern Actor_UpdateAnimationState
 .extern Actor_UpdateTimedResourceState
@@ -187,7 +187,7 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     ldr r1, [r4, #0x8c]
     ldr r2, [r4, #0x90]
     mov r0, r4
-    bl func_02032228
+    bl Actor_TurnTowardVector
 .L_0203d238:
     mov r0, r4
     bl Actor_UpdateAnimationState
