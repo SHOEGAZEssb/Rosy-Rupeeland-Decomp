@@ -1,3 +1,4 @@
+#include "tingle/graphics_3d_presentation.h"
 #include "tingle/types.h"
 
 /*
@@ -15,7 +16,6 @@ void func_ov041_021fec84(void *, s32, s32);
 void func_ov070_02212908(void *, s32, s32, s32);
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 s32 func_020a25c8(void *, s32, s32, s32, s32, s32, s32);
-void func_020a2448(void *, s32, s32);
 extern void *gSoundContext;
 extern const u8 data_ov041_02204d00[];
 extern const s32 data_ov041_02204c7c[];
@@ -85,7 +85,9 @@ extern "C" s32 func_ov041_02200348(void *object, const void *point)
                 (FIELD(s32, position, 4) >> 12) - 14,
                 (FIELD(s32, position, 8) >> 12) - 19,
                 28, 28, 4);
-            func_020a2448(FIELD(void *, owner, 0x18), effect, -20);
+            Graphics3dPresentation_SetSpriteEffectVertexDepth(
+                (Graphics3dPresentation *)FIELD(void *, owner, 0x18),
+                effect, -20);
             FIELD(s32, owner, 0x1d8) += data_ov041_02204c7c[type];
             Sound_Play(gSoundContext, 0, 0x0f);
             typeArray[i] = -1;

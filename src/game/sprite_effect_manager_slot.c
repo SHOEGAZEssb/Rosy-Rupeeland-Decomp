@@ -3,25 +3,18 @@
 #include "tingle/heap.h"
 #include "tingle/sprite_effect.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern void *func_020a3790(void *effect);
-
-/* The manager owns non-null slots; empty slots are accepted unchanged. */
-void func_020a338c(SpriteEffectManager *manager, s32 index)
+/* Destroy, free, and clear one caller-selected owned slot. Empty slots are
+ * accepted unchanged; retail requires the index to be in the 30-slot range. */
+void SpriteEffectManager_RemoveEffectAt(SpriteEffectManager *manager,
+                                        u32 effectIndex)
 {
-    SpriteEffectInstance *effect = manager->slots04[index];
+    SpriteEffectInstance *effect = manager->effects[effectIndex];
 
     if (effect == 0)
         return;
     if (effect != 0) {
-        func_020a3790(effect);
+        SpriteEffectInstance_Destroy(effect);
         Heap_Free(effect);
     }
-    manager->slots04[index] = 0;
+    manager->effects[effectIndex] = 0;
 }
-
-#ifdef __cplusplus
-}
-#endif

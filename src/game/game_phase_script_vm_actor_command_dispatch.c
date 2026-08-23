@@ -47,7 +47,6 @@ extern void func_020a2844(...);
 extern void func_020a28e0(...);
 extern void func_020a29f8(...);
 extern void func_020a2a4c(...);
-extern void func_020a2310(...);
 extern void func_02028630(...);
 extern u32 DirectSpriteTrackPresentation_SpawnAndRegister(...);
 extern void func_02023ed4(...);
@@ -269,7 +268,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         Graphics3dPresentation_SetRupeeVisibleAt(getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 18:
-        func_020a2310(getScriptGraphics3dPresentation(), a1);
+        Graphics3dPresentation_RemoveSpriteEffect(getScriptGraphics3dPresentation(), a1);
         break;
     case 19: {
         void *object = Heap_Alloc(0x58, data_020d5b34, 4, &gHeapContext);

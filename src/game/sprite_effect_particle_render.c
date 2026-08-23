@@ -41,22 +41,22 @@ static const s32 sMode10Triangles[2][6] = {
  * alternate primitive path. Temporary vectors are owned by this call and are
  * destroyed after each synchronous submission.
  */
-void func_020a3fc4(SpriteEffectInstance *effect)
+void SpriteEffectInstance_Render(SpriteEffectInstance *effect)
 {
     VecFx32Object *positions = (VecFx32Object *)effect->positions08;
-    s32 mode = effect->mode70;
+    s32 mode = effect->renderMode70;
     s32 index;
 
-    func_0209c3b4(effect->owner00);
+    func_0209c3b4(effect->renderContext);
     if (mode == 5 || mode < 0 || mode > 10)
         return;
 
-    for (index = (s32)effect->count04 - 1; index >= 0; --index) {
+    for (index = (s32)effect->particleCapacity04 - 1; index >= 0; --index) {
         VecFx32Object position;
         VecFx32Object scale;
         s32 z;
 
-        if (effect->active1c[index] <= 0)
+        if (effect->remainingParticleLifetimes1c[index] <= 0)
             continue;
 
         z = positions[index].value.z;
@@ -66,20 +66,20 @@ void func_020a3fc4(SpriteEffectInstance *effect)
             (mode == 1 || mode == 9 || mode == 10) ? (-z >> 12) : z);
 
         if (mode == 2 || mode == 6) {
-            VecFx32Object_InitComponents(&scale, effect->field18[index],
-                                         effect->field18[index], 0x1000);
+            VecFx32Object_InitComponents(&scale, effect->scales18[index],
+                                         effect->scales18[index], 0x1000);
         } else if (mode == 3 || mode == 7) {
             s32 animatedScale =
-                (s32)(((s64)effect->field18[index] *
-                       effect->field28[index] +
+                (s32)(((s64)effect->scales18[index] *
+                       effect->scaleAnimationState28[index] +
                        0x800) >>
                       12);
             VecFx32Object_InitComponents(&scale, animatedScale,
                                          animatedScale, 0x1000);
         } else {
-            VecFx32Object_InitComponents(&scale, effect->field18[index],
-                                         effect->field18[index],
-                                         effect->field18[index]);
+            VecFx32Object_InitComponents(&scale, effect->scales18[index],
+                                         effect->scales18[index],
+                                         effect->scales18[index]);
         }
 
         if (mode == 1 || mode == 9 || mode == 10) {
@@ -94,42 +94,48 @@ void func_020a3fc4(SpriteEffectInstance *effect)
             } else if (mode == 9) {
                 triangles = &sMode9Triangles[0][0];
                 lastTriangle = 2;
-                color = effect->alpha52;
+                color = effect->primitiveColor52;
             } else {
                 triangles = &sMode10Triangles[0][0];
                 lastTriangle = 1;
                 color = 0x7fff;
             }
-            func_0209c614(effect->owner00, &position, &scale,
-                          (u16)effect->state10[index], triangles,
-                          lastTriangle, color, (s16)effect->field50);
+            func_0209c614(effect->renderContext, &position, &scale,
+                          (u16)effect->angles10[index], triangles,
+                          lastTriangle, color, effect->vertexDepth50);
         } else {
-            s32 bounds[2];
+            s32 bounds[4];
             s32 region[4];
-            s32 frame = effect->field20[index];
+            s32 frame = effect->animationFrames20[index];
             s32 cellSize;
             u16 color;
 
             if (mode == 8) {
                 bounds[0] = -4;
                 bounds[1] = -4;
+                bounds[2] = 4;
+                bounds[3] = 4;
                 cellSize = 0x8000;
             } else {
                 bounds[0] = -8;
                 bounds[1] = -8;
-                cellSize = (mode == 0) ? 0x10000 : 0x20000;
+                bounds[2] = 8;
+                bounds[3] = 8;
+                cellSize = (mode == 0 || mode == 2 || mode == 3)
+                               ? 0x10000
+                               : 0x20000;
             }
             region[0] = frame * cellSize;
             region[1] = 0;
             region[2] = (frame + 1) * cellSize;
             region[3] = cellSize;
             color = (mode == 2 || mode == 6) ?
-                        (u16)effect->field24[index] :
+                        (u16)effect->grayscaleColors24[index] :
                         0x7fff;
-            func_0209c430(effect->owner00, &position, &scale,
-                          (u16)effect->state10[index], bounds,
-                          effect->animation48, region, color,
-                          (s16)effect->field50);
+            func_0209c430(effect->renderContext, &position, &scale,
+                          (u16)effect->angles10[index], bounds,
+                          effect->textureResourceIndex48, region, color,
+                          effect->vertexDepth50);
         }
 
         VecFx32Object_Destroy(&scale);

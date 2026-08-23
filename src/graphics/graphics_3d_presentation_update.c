@@ -1,4 +1,5 @@
 #include "tingle/graphics_3d_presentation.h"
+#include "tingle/sprite_effect.h"
 
 /* Coordinate one frame of the active runtime 3D presentation manager. */
 
@@ -8,8 +9,6 @@ extern "C" {
 
 extern void func_020a2da8(void *manager);
 extern void func_020a2fd0(void *manager);
-extern void func_020a6280(void *manager);
-extern void func_020a62e4(void *manager);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
@@ -40,7 +39,7 @@ void Graphics3dPresentation_UpdateFrame(
     if (presentation->enabled == 0)
         return;
     func_020a2da8(presentation->pairedEntryManager);
-    func_020a6280(presentation->slotManager);
+    SpriteEffectManager_Update(presentation->spriteEffectManager);
     Graphics3dPresentation_BeginFrame(presentation, worldPosition);
     Graphics3dPresentation_RenderContents(presentation);
     Graphics3dPresentation_EndFrame(presentation, swapBuffers);
@@ -67,7 +66,7 @@ void Graphics3dPresentation_RenderContents(
     if (presentation->drawSuppressed != 0)
         return;
     func_020a2fd0(presentation->pairedEntryManager);
-    func_020a62e4(presentation->slotManager);
+    SpriteEffectManager_Render(presentation->spriteEffectManager);
     instance = presentation->rupeeMeshInstance;
     if (RupeeMeshInstance_IsInactive(instance) != 0)
         return;

@@ -3,7 +3,7 @@
 .extern DebugText_BeginFrame
 .extern data_ov070_022129cc
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020a2448
+.extern Graphics3dPresentation_SetSpriteEffectVertexDepth
 .extern func_020a25c8
 .extern func_020adc40
 .extern func_020adc90
@@ -319,7 +319,7 @@ func_ov070_022103d8:
     ldr r0, [r5, #0x48]
     mov r2, r7
     ldr r0, [r0, #0x18]
-    bl func_020a2448
+    bl Graphics3dPresentation_SetSpriteEffectVertexDepth
 .L_0221084c:
     subs r4, r4, #0x1
     bpl .L_022106a8

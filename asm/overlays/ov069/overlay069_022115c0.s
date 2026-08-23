@@ -5,8 +5,8 @@
 .extern data_ov069_0221255c
 .extern data_ov069_02212590
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_020a2310
-.extern func_020a2448
+.extern Graphics3dPresentation_RemoveSpriteEffect
+.extern Graphics3dPresentation_SetSpriteEffectVertexDepth
 .extern func_020a25c8
 .extern func_020adc40
 .extern gSoundContext
@@ -83,7 +83,7 @@ func_ov069_022115c0:
     bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, r10, r8, lsl #0x2
     ldr r1, [r1, #0x928]
-    bl func_020a2310
+    bl Graphics3dPresentation_RemoveSpriteEffect
 .L_022116d8:
     ldr r0, .L_02211770
     ldr r0, [r0, #0x0]
@@ -108,7 +108,7 @@ func_ov069_022115c0:
     mov r1, r0
     mov r0, r4
     mvn r2, #0x13
-    bl func_020a2448
+    bl Graphics3dPresentation_SetSpriteEffectVertexDepth
     ldr r0, .L_02211774
     mov r1, #0x0
     ldr r0, [r0, #0x0]

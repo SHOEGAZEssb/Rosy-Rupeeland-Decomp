@@ -7,6 +7,7 @@
 #include "tingle/heap.h"
 #include "tingle/graphics_3d_presentation.h"
 #include "tingle/point_2d_s16.h"
+#include "tingle/sprite_effect.h"
 #include "tingle/system.h"
 #include "tingle/types.h"
 
@@ -16,7 +17,6 @@ extern u8 data_020f3064[];
 extern u8 data_021f63b0[];
 extern const char data_020f32e8[];
 extern const char data_020f32f0[];
-extern const char data_020f32f8[];
 extern void *data_020f4e18;
 extern void *data_021052fc;
 
@@ -589,15 +589,16 @@ void *func_020a2aa8(void *object, void *owner)
 
 /* Initializes the 30-slot presentation manager, records owner, and returns
  * the caller-provided storage. */
-void *func_020a3360(void *object, void *owner)
+SpriteEffectManager *SpriteEffectManager_Init(SpriteEffectManager *manager,
+                                              void *renderContext)
 {
-    u32 *words = (u32 *)object;
-    u32 index;
-    words[0] = (u32)owner;
-    for (index = 1; index <= 30; ++index)
-        words[index] = 0;
-    words[31] = 0;
-    return object;
+    s32 index;
+
+    manager->renderContext = renderContext;
+    for (index = SPRITE_EFFECT_SLOT_COUNT - 1; index >= 0; --index)
+        manager->effects[index] = 0;
+    manager->renderSuppressed7c = 0;
+    return manager;
 }
 
 /* Reset Nitro 3D and matrix-stack state, select retail texture bank B and
@@ -735,6 +736,45 @@ u32 Graphics3dPresentation_IsDrawingSuppressed(
     return self->drawSuppressed;
 }
 
+/* Forward sprite-effect controls through the presentation-owned 30-slot
+ * manager. Retail narrows every caller-provided handle to eight bits before
+ * indexing; the manager and its live effects remain owned by self. */
+void Graphics3dPresentation_RemoveSpriteEffect(
+    Graphics3dPresentation *self, u32 effectHandle)
+{
+    SpriteEffectManager_RemoveEffectAt(self->spriteEffectManager,
+                                       (u8)effectHandle);
+}
+
+void Graphics3dPresentation_SetSpriteEffectAngularVelocityRange(
+    Graphics3dPresentation *self, u32 effectHandle,
+    u16 angularVelocityRange)
+{
+    SpriteEffectManager_SetAngularVelocityRange(
+        self->spriteEffectManager, (u8)effectHandle, angularVelocityRange);
+}
+
+void Graphics3dPresentation_SetSpriteEffectParticleLifetime(
+    Graphics3dPresentation *self, u32 effectHandle, s16 particleLifetime)
+{
+    SpriteEffectManager_SetParticleLifetime(
+        self->spriteEffectManager, (u8)effectHandle, particleLifetime);
+}
+
+void Graphics3dPresentation_SetSpriteEffectMinimumEmissionInterval(
+    Graphics3dPresentation *self, u32 effectHandle, s16 minimumInterval)
+{
+    SpriteEffectManager_SetMinimumEmissionInterval(
+        self->spriteEffectManager, (u8)effectHandle, minimumInterval);
+}
+
+void Graphics3dPresentation_SetSpriteEffectVertexDepth(
+    Graphics3dPresentation *self, u32 effectHandle, s16 vertexDepth)
+{
+    SpriteEffectManager_SetVertexDepth(self->spriteEffectManager,
+                                       (u8)effectHandle, vertexDepth);
+}
+
 /* Request the retained rupee's animated visibility state. Only retail value
  * one shows it: the supplied integer coordinates become its compensated Q12
  * position, scale restarts at one, and the instance activates immediately.
@@ -828,8 +868,8 @@ Graphics3dPresentation *Graphics3dPresentation_Init(
     RupeeMeshInstance_BindDefaultMesh(self->rupeeMeshInstance);
     allocation = Heap_Alloc(0x1fc, data_020f32f0, 4, &gHeapContext);
     self->pairedEntryManager = func_020a2aa8(allocation, self);
-    allocation = Heap_Alloc(0x80, data_020f32f8, 4, &gHeapContext);
-    self->slotManager = func_020a3360(allocation, self);
+    allocation = Heap_Alloc(0x80, gSpriteEffectManagerAllocationTag, 4, &gHeapContext);
+    self->spriteEffectManager = SpriteEffectManager_Init(allocation, self);
     self->drawSuppressed = 0;
     self->enabled = 1;
     func_0200500c(&vector, 0, 0x1800, -0x5800);
@@ -851,9 +891,9 @@ RupeeMeshInstance *RupeeMeshInstance_Destroy(RupeeMeshInstance *self)
 }
 
 /* Confirmed no-op destructor hook for the 30-slot manager. */
-void func_020a3388(void *object)
+SpriteEffectManager *SpriteEffectManager_Destroy(SpriteEffectManager *manager)
 {
-    (void)object;
+    return manager;
 }
 
 /* Destroys the fifteen touch points and the manager vector, returning the
@@ -894,9 +934,9 @@ Graphics3dPresentation *Graphics3dPresentation_Destroy(
         RupeeMeshInstance_Destroy(child);
         Heap_Free(child);
     }
-    child = self->slotManager;
+    child = self->spriteEffectManager;
     if (child != 0) {
-        func_020a3388(child);
+        SpriteEffectManager_Destroy(child);
         Heap_Free(child);
     }
     child = self->pairedEntryManager;

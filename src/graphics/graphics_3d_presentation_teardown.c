@@ -3,13 +3,12 @@
  * chain rooted at retail 0x020A2324. */
 #include "tingle/heap.h"
 #include "tingle/graphics_3d_presentation.h"
+#include "tingle/sprite_effect.h"
 #include "tingle/types.h"
 
 typedef void (*ElementDestructor)(void *element);
 
 extern void VecFx32_TerminateNoOp(void *vector);
-extern s32 func_020a3c78(void *object);
-extern void func_020a3fc4(void *object);
 
 /* Retail array delete helper at 0x020C0C24. The allocation prefix stores the
  * element count immediately before the first element; destruction runs in
@@ -32,30 +31,33 @@ void func_020c0c24(void *array, u32 stride, u32 headerSize,
     Heap_Free((u8 *)array - headerSize);
 }
 
-/* Destroy the subordinate buffers and vector arrays of one 3D presentation. */
-void func_020a3790(void *object)
+/* Destroy the subordinate buffers and vector arrays of one sprite effect. */
+SpriteEffectInstance *SpriteEffectInstance_Destroy(
+    SpriteEffectInstance *effect)
 {
     s32 offset;
 
     for (offset = 0x28; offset >= 0x10; offset -= 4)
-        Heap_Free(*(void **)((u8 *)object + offset));
-    func_020c0c24(*(void **)((u8 *)object + 0x0c), 0x10, 8,
+        Heap_Free(*(void **)((u8 *)effect + offset));
+    func_020c0c24(effect->velocities0c, 0x10, 8,
                    VecFx32_TerminateNoOp);
-    func_020c0c24(*(void **)((u8 *)object + 0x08), 0x10, 8,
+    func_020c0c24(effect->positions08, 0x10, 8,
                    VecFx32_TerminateNoOp);
+    return effect;
 }
 
 /* Destroy all thirty presentation slots in reverse retail order. */
-void func_020a33cc(void *manager)
+void SpriteEffectManager_Clear(SpriteEffectManager *manager)
 {
     s32 index;
 
     for (index = 29; index >= 0; --index) {
-        void **slot = (void **)((u8 *)manager + 4 + index * 4);
-        if (*slot != 0) {
-            func_020a3790(*slot);
-            Heap_Free(*slot);
-            *slot = 0;
+        SpriteEffectInstance *effect = manager->effects[index];
+
+        if (effect != 0) {
+            SpriteEffectInstance_Destroy(effect);
+            Heap_Free(effect);
+            manager->effects[index] = 0;
         }
     }
 }
@@ -63,16 +65,17 @@ void func_020a33cc(void *manager)
 /* Update all thirty presentation slots in reverse retail order. Objects whose
  * update reports zero are synchronously destroyed and freed, and their slot is
  * cleared; live objects and empty slots remain unchanged. */
-void func_020a6280(void *manager)
+void SpriteEffectManager_Update(SpriteEffectManager *manager)
 {
     s32 index;
 
     for (index = 29; index >= 0; --index) {
-        void **slot = (void **)((u8 *)manager + 4 + index * 4);
-        if (*slot != 0 && func_020a3c78(*slot) == 0) {
-            func_020a3790(*slot);
-            Heap_Free(*slot);
-            *slot = 0;
+        SpriteEffectInstance *effect = manager->effects[index];
+
+        if (effect != 0 && SpriteEffectInstance_Update(effect) == 0) {
+            SpriteEffectInstance_Destroy(effect);
+            Heap_Free(effect);
+            manager->effects[index] = 0;
         }
     }
 }
@@ -80,16 +83,17 @@ void func_020a6280(void *manager)
 /* Submit all thirty live presentation slots in reverse retail order unless
  * the manager's +0x7C suppression flag is set. Slots and objects are borrowed;
  * this pass does not change ownership. */
-void func_020a62e4(void *manager)
+void SpriteEffectManager_Render(SpriteEffectManager *manager)
 {
     s32 index;
 
-    if (*(u32 *)((u8 *)manager + 0x7c) != 0)
+    if (manager->renderSuppressed7c != 0)
         return;
     for (index = 29; index >= 0; --index) {
-        void *object = *(void **)((u8 *)manager + 4 + index * 4);
-        if (object != 0)
-            func_020a3fc4(object);
+        SpriteEffectInstance *effect = manager->effects[index];
+
+        if (effect != 0)
+            SpriteEffectInstance_Render(effect);
     }
 }
 
@@ -114,7 +118,7 @@ void RupeeMeshInstance_Clear(RupeeMeshInstance *self)
 /* Clear live content while retaining all three owned child managers. */
 void Graphics3dPresentation_Clear(Graphics3dPresentation *self)
 {
-    func_020a33cc(self->slotManager);
+    SpriteEffectManager_Clear(self->spriteEffectManager);
     func_020a2bc8(self->pairedEntryManager);
     RupeeMeshInstance_Clear(self->rupeeMeshInstance);
 }

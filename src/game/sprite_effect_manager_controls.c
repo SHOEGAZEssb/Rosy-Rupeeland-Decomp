@@ -6,46 +6,51 @@
 extern "C" {
 #endif
 
-/* Update the occupied slot's field at byte 0x46. */
-void func_020a3418(SpriteEffectManager *manager, s32 index, u16 value)
+/* Replace the symmetric signed angular-velocity range for an occupied slot. */
+void SpriteEffectManager_SetAngularVelocityRange(
+    SpriteEffectManager *manager, u32 effectIndex, u16 angularVelocityRange)
 {
-    u8 *effect = (u8 *)manager->slots04[index];
+    SpriteEffectInstance *effect = manager->effects[effectIndex];
     if (effect != 0)
-        *(u16 *)(effect + 0x46) = value;
+        effect->angularVelocityRange46 = angularVelocityRange;
 }
 
-/* Update the occupied slot's field at byte 0x56. */
-void func_020a342c(SpriteEffectManager *manager, s32 index, u16 value)
+/* Replace the fixed lifetime assigned to subsequently spawned particles. */
+void SpriteEffectManager_SetParticleLifetime(
+    SpriteEffectManager *manager, u32 effectIndex, s16 particleLifetime)
 {
-    u8 *effect = (u8 *)manager->slots04[index];
+    SpriteEffectInstance *effect = manager->effects[effectIndex];
     if (effect != 0)
-        *(u16 *)(effect + 0x56) = value;
+        effect->particleLifetime56 = particleLifetime;
 }
 
-/* Update the occupied slot's field at byte 0x58. */
-void func_020a3440(SpriteEffectManager *manager, s32 index, u16 value)
+/* Replace the minimum interval between subsequent particle emissions. */
+void SpriteEffectManager_SetMinimumEmissionInterval(
+    SpriteEffectManager *manager, u32 effectIndex, s16 minimumInterval)
 {
-    u8 *effect = (u8 *)manager->slots04[index];
+    SpriteEffectInstance *effect = manager->effects[effectIndex];
     if (effect != 0)
-        *(u16 *)(effect + 0x58) = value;
+        effect->minimumEmissionInterval58 = minimumInterval;
 }
 
-/* Update the occupied slot's field at byte 0x50. */
-void func_020a3454(SpriteEffectManager *manager, s32 index, u16 value)
+/* Replace the signed immediate-renderer depth for an occupied slot. */
+void SpriteEffectManager_SetVertexDepth(SpriteEffectManager *manager,
+                                        u32 effectIndex, s16 vertexDepth)
 {
-    u8 *effect = (u8 *)manager->slots04[index];
+    SpriteEffectInstance *effect = manager->effects[effectIndex];
     if (effect != 0)
-        *(u16 *)(effect + 0x50) = value;
+        effect->vertexDepth50 = vertexDepth;
 }
 
-/* Replace the occupied slot's paired Q12 bounds at bytes 0x3c and 0x40. */
-void func_020a3468(SpriteEffectManager *manager, s32 index, s32 first,
-                   s32 second)
+/* Replace the occupied slot's two Q12 horizontal emission velocities. */
+void SpriteEffectManager_SetHorizontalVelocityXZ(
+    SpriteEffectManager *manager, u32 effectIndex, s32 velocityX,
+    s32 velocityZ)
 {
-    u8 *effect = (u8 *)manager->slots04[index];
+    SpriteEffectInstance *effect = manager->effects[effectIndex];
     if (effect != 0) {
-        *(s32 *)(effect + 0x3c) = first;
-        *(s32 *)(effect + 0x40) = second;
+        effect->horizontalVelocityX3c = velocityX;
+        effect->horizontalVelocityZ40 = velocityZ;
     }
 }
 

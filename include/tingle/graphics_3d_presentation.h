@@ -4,6 +4,8 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
+struct SpriteEffectManager;
+
 /* Fixed indexed mesh installed in every resident rupee instance. Its packed
  * data contains vertex-10 values, normal values, byte vertex indices, then
  * halfword normal indices; all four regions are borrowed immutable data. */
@@ -53,7 +55,7 @@ typedef struct Graphics3dPresentation {
     u8 opaqueResourceState[4];
     RupeeMeshInstance *rupeeMeshInstance;
     void *pairedEntryManager;
-    void *slotManager;
+    struct SpriteEffectManager *spriteEffectManager;
     VecFx32Object rupeePosition;
     fx32 rupeeScale;
     s32 rupeeHideRequested;
@@ -105,6 +107,17 @@ void Graphics3dPresentation_SuppressDrawing(Graphics3dPresentation *self);
 void Graphics3dPresentation_ResumeDrawing(Graphics3dPresentation *self);
 u32 Graphics3dPresentation_IsDrawingSuppressed(
     const Graphics3dPresentation *self);
+void Graphics3dPresentation_RemoveSpriteEffect(
+    Graphics3dPresentation *self, u32 effectHandle);
+void Graphics3dPresentation_SetSpriteEffectAngularVelocityRange(
+    Graphics3dPresentation *self, u32 effectHandle,
+    u16 angularVelocityRange);
+void Graphics3dPresentation_SetSpriteEffectParticleLifetime(
+    Graphics3dPresentation *self, u32 effectHandle, s16 particleLifetime);
+void Graphics3dPresentation_SetSpriteEffectMinimumEmissionInterval(
+    Graphics3dPresentation *self, u32 effectHandle, s16 minimumInterval);
+void Graphics3dPresentation_SetSpriteEffectVertexDepth(
+    Graphics3dPresentation *self, u32 effectHandle, s16 vertexDepth);
 void Graphics3dPresentation_Clear(Graphics3dPresentation *self);
 void Graphics3dPresentation_Disable(Graphics3dPresentation *self,
                                     s32 releaseResources,

@@ -1,3 +1,4 @@
+#include "tingle/graphics_3d_presentation.h"
 #include "tingle/types.h"
 
 /*
@@ -13,12 +14,12 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
+extern Graphics3dPresentation *
+RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void *PresentationBackedActor_InitBase(void *actor,
                                               const void *descriptor);
 extern void *PresentationBackedActor_Destroy(void *actor);
 extern void func_0204d858(void *actor);
-extern void func_020a2310(void *manager, s32 handle);
 extern void func_020a25c8(void *manager, s32 mode, s32 x, s32 y,
                           s32 width, s32 height, s32 kind);
 extern s32 func_020a257c(void *manager, s32 mode, s32 x, s32 y,
@@ -56,8 +57,10 @@ void *func_0204e774(void *self)
     FIELD(const void *, self, 0) = data_020e2458;
     s16 handle = FIELD(s16, self, 0x1fe);
     if (handle != -1) {
-        void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
-        func_020a2310(manager, handle);
+        Graphics3dPresentation *manager =
+            RuntimePresentationManager_GetGraphics3dPresentation(
+                (u8 *)data_021052fc + 0x2f7c);
+        Graphics3dPresentation_RemoveSpriteEffect(manager, handle);
     }
     PresentationBackedActor_Destroy(self);
     return self;

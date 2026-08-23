@@ -6,7 +6,7 @@
 .extern PresentationBackedActor_InitBase
 .extern PresentationBackedActor_Destroy
 .extern func_0204d858
-.extern func_020a2310
+.extern Graphics3dPresentation_RemoveSpriteEffect
 .extern func_020a25c8
 .extern func_020a257c
 .text
@@ -46,7 +46,7 @@ func_0204e774: ; 0x0204e774
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r5
-    bl func_020a2310
+    bl Graphics3dPresentation_RemoveSpriteEffect
 .L_0204e7b4:
     mov r0, r4
     bl PresentationBackedActor_Destroy
@@ -74,7 +74,7 @@ EffectHandleActor_Delete: ; 0x0204e7cc
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r5
-    bl func_020a2310
+    bl Graphics3dPresentation_RemoveSpriteEffect
 .L_0204e80c:
     mov r0, r4
     bl PresentationBackedActor_Destroy

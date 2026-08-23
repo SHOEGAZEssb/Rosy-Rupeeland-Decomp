@@ -3776,7 +3776,7 @@ build build/decomp/src/graphics/graphics_3d_resource_owner_ops.o: mwccarm src/gr
   source = src/graphics/graphics_3d_resource_owner_ops.c
   cflags = $graphics_3d_resource_owner_ops_cflags
 
-build build/decomp/src/graphics/graphics_3d_presentation_update.o: mwccarm src/graphics/graphics_3d_presentation_update.c | include/tingle/graphics_3d_presentation.h include/tingle/types.h include/tingle/vec_fx32.h
+build build/decomp/src/graphics/graphics_3d_presentation_update.o: mwccarm src/graphics/graphics_3d_presentation_update.c | include/tingle/graphics_3d_presentation.h include/tingle/sprite_effect.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/graphics/graphics_3d_presentation_update.c
   cflags = $graphics_3d_presentation_update_cflags
 
@@ -10871,63 +10871,63 @@ build build/reports/sprite_effect_config.json: objdiff build/decomp/delinks/src/
   base_object = build/decomp/src/game/sprite_effect_config.o
 build build/reports/sprite_effect_config.txt: match_report build/reports/sprite_effect_config.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_config.json
-  report_args = --section .text --function func_020a32e0 --require-exact
+  report_args = --section .text --function SpriteEffectConfig_InitDefaults --require-exact
 
 build build/reports/sprite_effect_manager_slot.json: objdiff build/decomp/delinks/src/game/sprite_effect_manager_slot.o | build/decomp/src/game/sprite_effect_manager_slot.o
   target_object = build/decomp/delinks/src/game/sprite_effect_manager_slot.o
   base_object = build/decomp/src/game/sprite_effect_manager_slot.o
 build build/reports/sprite_effect_manager_slot.txt: match_report build/reports/sprite_effect_manager_slot.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_manager_slot.json
-  report_args = --section .text --function func_020a338c --require-exact
+  report_args = --section .text --function SpriteEffectManager_RemoveEffectAt --require-exact
 
 build build/reports/sprite_effect_manager_controls.json: objdiff build/decomp/delinks/src/game/sprite_effect_manager_controls.o | build/decomp/src/game/sprite_effect_manager_controls.o
   target_object = build/decomp/delinks/src/game/sprite_effect_manager_controls.o
   base_object = build/decomp/src/game/sprite_effect_manager_controls.o
 build build/reports/sprite_effect_manager_controls.txt: match_report build/reports/sprite_effect_manager_controls.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_manager_controls.json
-  report_args = --section .text --function func_020a3418 --function func_020a342c --function func_020a3440 --function func_020a3454 --function func_020a3468 --require-exact
+  report_args = --section .text --function SpriteEffectManager_SetAngularVelocityRange --function SpriteEffectManager_SetParticleLifetime --function SpriteEffectManager_SetMinimumEmissionInterval --function SpriteEffectManager_SetVertexDepth --function SpriteEffectManager_SetHorizontalVelocityXZ --require-exact
 
 build build/reports/sprite_effect_instance_construct.json: objdiff build/decomp/delinks/src/game/sprite_effect_instance_construct.o | build/decomp/src/game/sprite_effect_instance_construct.o
   target_object = build/decomp/delinks/src/game/sprite_effect_instance_construct.o
   base_object = build/decomp/src/game/sprite_effect_instance_construct.o
 build build/reports/sprite_effect_instance_construct.txt: match_report build/reports/sprite_effect_instance_construct.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_instance_construct.json
-  report_args = --section .text --function func_020a3480
+  report_args = --section .text --function SpriteEffectInstance_Init
 
 build build/reports/sprite_effect_bounds_copy.json: objdiff build/decomp/delinks/src/game/sprite_effect_bounds_copy.o | build/decomp/src/game/sprite_effect_bounds_copy.o
   target_object = build/decomp/delinks/src/game/sprite_effect_bounds_copy.o
   base_object = build/decomp/src/game/sprite_effect_bounds_copy.o
 build build/reports/sprite_effect_bounds_copy.txt: match_report build/reports/sprite_effect_bounds_copy.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_bounds_copy.json
-  report_args = --section .text --function func_020a376c --require-exact
+  report_args = --section .text --function SpriteEffectBounds_Assign --require-exact
 
 build build/reports/sprite_effect_particle_spawn.json: objdiff build/decomp/delinks/src/game/sprite_effect_particle_spawn.o | build/decomp/src/game/sprite_effect_particle_spawn.o
   target_object = build/decomp/delinks/src/game/sprite_effect_particle_spawn.o
   base_object = build/decomp/src/game/sprite_effect_particle_spawn.o
 build build/reports/sprite_effect_particle_spawn.txt: match_report build/reports/sprite_effect_particle_spawn.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_particle_spawn.json
-  report_args = --section .text --function func_020a3804
+  report_args = --section .text --function SpriteEffectInstance_SpawnParticle
 
 build build/reports/sprite_effect_particle_update.json: objdiff build/decomp/delinks/src/game/sprite_effect_particle_update.o | build/decomp/src/game/sprite_effect_particle_update.o
   target_object = build/decomp/delinks/src/game/sprite_effect_particle_update.o
   base_object = build/decomp/src/game/sprite_effect_particle_update.o
 build build/reports/sprite_effect_particle_update.txt: match_report build/reports/sprite_effect_particle_update.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_particle_update.json
-  report_args = --section .text --function func_020a3c78
+  report_args = --section .text --function SpriteEffectInstance_Update
 
 build build/reports/sprite_effect_particle_render.json: objdiff build/decomp/delinks/src/game/sprite_effect_particle_render.o | build/decomp/src/game/sprite_effect_particle_render.o
   target_object = build/decomp/delinks/src/game/sprite_effect_particle_render.o
   base_object = build/decomp/src/game/sprite_effect_particle_render.o
 build build/reports/sprite_effect_particle_render.txt: match_report build/reports/sprite_effect_particle_render.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_particle_render.json
-  report_args = --section .text --function func_020a3fc4
+  report_args = --section .text --function SpriteEffectInstance_Render
 
 build build/reports/sprite_effect_factory.json: objdiff build/decomp/delinks/src/game/sprite_effect_factory.o | build/decomp/src/game/sprite_effect_factory.o
   target_object = build/decomp/delinks/src/game/sprite_effect_factory.o
   base_object = build/decomp/src/game/sprite_effect_factory.o
 build build/reports/sprite_effect_factory.txt: match_report build/reports/sprite_effect_factory.json | tools/report_objdiff.py
   report_json = build/reports/sprite_effect_factory.json
-  report_args = --section .text --function func_020a4df0
+  report_args = --section .text --function SpriteEffectManager_CreatePresetEffect
 
 build build/reports/graphics_immediate_effect_renderer.json: objdiff build/decomp/delinks/src/graphics/graphics_immediate_effect_renderer.o | build/decomp/src/graphics/graphics_immediate_effect_renderer.o
   target_object = build/decomp/delinks/src/graphics/graphics_immediate_effect_renderer.o
@@ -16192,7 +16192,7 @@ build actor_derived_type1_auxiliary_motion: phony build/decomp/src/game/actor_de
 
 actor_derived_type1_auxiliary_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_derived_type1_auxiliary_interaction.o: mwccarm src/game/actor_derived_type1_auxiliary_interaction.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/types.h
+build build/decomp/src/game/actor_derived_type1_auxiliary_interaction.o: mwccarm src/game/actor_derived_type1_auxiliary_interaction.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/sprite_effect.h include/tingle/types.h
   source = src/game/actor_derived_type1_auxiliary_interaction.c
   cflags = $actor_derived_type1_auxiliary_interaction_cflags
 build build/decomp/asm/game/actor_derived_type1_auxiliary_interaction_02037d98.o: mwasmarm asm/game/actor_derived_type1_auxiliary_interaction_02037d98.s
@@ -19964,7 +19964,7 @@ build build/reports/presentation_backed_actor_spawn_variants_0204e584.txt: match
 build presentation_backed_actor_spawn_variants: phony build/decomp/src/game/presentation_backed_actor_spawn_variants.o build/decomp/asm/game/presentation_backed_actor_spawn_variants_0204e584.o build/reports/presentation_backed_actor_spawn_variants_0204e584.txt
 
 effect_handle_actor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/game/effect_handle_actor.o: mwccarm src/game/effect_handle_actor.c | include/tingle/types.h
+build build/decomp/src/game/effect_handle_actor.o: mwccarm src/game/effect_handle_actor.c | include/tingle/graphics_3d_presentation.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/effect_handle_actor.c
   cflags = $effect_handle_actor_cflags
 build build/decomp/asm/game/effect_handle_actor_0204e740.o: mwasmarm asm/game/effect_handle_actor_0204e740.s
@@ -38476,7 +38476,7 @@ build overlay040_presentation_states: phony build/decomp/src/overlays/ov040/over
 build overlay040_partial5: phony overlay040_partial4 overlay040_presentation_states
 
 overlay040_motion_update_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov040/overlay040_motion_update.o: mwccarm src/overlays/ov040/overlay040_motion_update.c | include/tingle/types.h
+build build/decomp/src/overlays/ov040/overlay040_motion_update.o: mwccarm src/overlays/ov040/overlay040_motion_update.c | include/tingle/graphics_3d_presentation.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/overlays/ov040/overlay040_motion_update.c
   cflags = $overlay040_motion_update_cflags
 build build/decomp/asm/overlays/ov040/overlay040_vertical_motion_update.o: mwasmarm asm/overlays/ov040/overlay040_vertical_motion_update.s
@@ -39205,7 +39205,7 @@ build overlay041_scene_transform: phony build/decomp/src/overlays/ov041/overlay0
 build overlay041_partial16: phony overlay041_partial15 overlay041_scene_transform
 
 overlay041_descriptor_hit_test_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov041/overlay041_descriptor_hit_test.o: mwccarm src/overlays/ov041/overlay041_descriptor_hit_test.c | include/tingle/types.h
+build build/decomp/src/overlays/ov041/overlay041_descriptor_hit_test.o: mwccarm src/overlays/ov041/overlay041_descriptor_hit_test.c | include/tingle/graphics_3d_presentation.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/overlays/ov041/overlay041_descriptor_hit_test.c
   cflags = $overlay041_descriptor_hit_test_cflags
 build build/decomp/asm/overlays/ov041/overlay041_descriptor_hit_test.o: mwasmarm asm/overlays/ov041/overlay041_descriptor_hit_test.s

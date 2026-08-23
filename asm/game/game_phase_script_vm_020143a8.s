@@ -39,7 +39,7 @@
 .extern ActorCollection_GetSpriteGroup
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
-.extern func_020a2310
+.extern Graphics3dPresentation_RemoveSpriteEffect
 .extern func_020a245c
 .extern Graphics3dPresentation_SetRupeeVisibleAt
 .extern func_020a2530
@@ -947,7 +947,7 @@ L_02015018:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
-    bl func_020a2310
+    bl Graphics3dPresentation_RemoveSpriteEffect
     b L_0201553c
 L_02015038:
     ldr r1, L_020154c8

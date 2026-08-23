@@ -5,13 +5,12 @@
 #include "tingle/vec_fx32.h"
 
 /*
- * Construct one caller-allocated resident sprite effect. The instance borrows
- * owner and config data, owns all nine arrays it allocates, and may seed up to
- * count04 particles through the canonical spawn routine. Allocation failure
- * is retained as a null owned-array pointer, matching retail behavior.
+ * Construct one caller-allocated resident sprite effect. The instance retains
+ * the borrowed render context, copies the configuration, owns all nine arrays
+ * it allocates, and may seed up to particleCapacity04 particles through the
+ * canonical spawn routine. Allocation failure remains a null owned-array
+ * pointer, matching retail behavior.
  */
-
-extern const char data_020f3300[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,52 +18,55 @@ extern "C" {
 extern void *func_020c09cc(void *allocation, u32 count, u32 elementSize,
                            u32 headerSize, void *constructor,
                            void *destructor);
-SpriteEffectInstance *func_020a3480(SpriteEffectInstance *effect, void *owner,
-                                    const SpriteEffectConfig *config)
+SpriteEffectInstance *SpriteEffectInstance_Init(
+    SpriteEffectInstance *effect, void *renderContext,
+    const SpriteEffectConfig *config)
 {
     void *allocation;
     u32 count;
     s32 index;
     s32 range;
 
-    effect->owner00 = owner;
-    effect->field6e = 0;
-    effect->enabled6c = 1;
-    effect->field72 = 0;
-    effect->count04 = config->count02;
-    effect->mode70 = config->mode00;
-    effect->distribution4b = config->distribution40;
-    func_020a376c(&effect->bounds5c, &config->bounds04);
-    effect->lifetime54 = config->lifetime28;
-    effect->lifetimeRange56 = config->lifetimeRange2a;
-    range = config->startRange2e;
-    effect->start58 = config->start2c -
+    effect->renderContext = renderContext;
+    effect->age6e = 0;
+    effect->emissionCountdown6c = 1;
+    effect->reservedInitializationValue = 0;
+    effect->particleCapacity04 = config->particleCapacity02;
+    effect->renderMode70 = config->renderMode00;
+    effect->distributionMode4b = config->distributionMode40;
+    SpriteEffectBounds_Assign(&effect->spawnBounds5c,
+                              &config->spawnBounds04);
+    effect->remainingEmitterLifetime54 = config->emitterLifetime28;
+    effect->particleLifetime56 = config->particleLifetime2a;
+    range = config->emissionIntervalRange2e;
+    effect->minimumEmissionInterval58 = config->emissionIntervalCenter2c -
                       ((range + (s32)((u32)range >> 31)) >> 1);
-    effect->startRange5a = config->startRange2e;
-    effect->angle30 = config->angle24;
-    range = config->angle24;
-    effect->acceleration2c = config->acceleration20 -
+    effect->emissionIntervalRange5a = config->emissionIntervalRange2e;
+    effect->verticalVelocityRange30 = config->verticalVelocityRange24;
+    range = config->verticalVelocityRange24;
+    effect->minimumVerticalVelocity2c = config->verticalVelocityCenter20 -
                              ((range + (s32)((u32)range >> 31)) >> 1);
-    effect->descriptor34 = (u16)config->descriptor1c;
+    effect->verticalAcceleration34 = (s16)config->verticalAcceleration1c;
     effect->scaleRange38 = config->scaleRange32;
     range = config->scaleRange32;
-    effect->scale36 = config->scale30 -
+    effect->minimumScale36 = config->scaleCenter30 -
                       ((range + (s32)((u32)range >> 31)) >> 1);
-    effect->velocity3c = config->velocity14;
-    effect->velocity40 = config->velocity18;
-    effect->inverseAngleRange3a = (s16)(0x1000 - config->angleRange26);
-    effect->flags44 = config->flags34;
-    effect->color46 = config->color36;
-    effect->animation48 = config->animation41;
-    effect->tiles49 = config->tiles42;
-    effect->palettes4a = config->palettes43;
-    effect->field4c = config->field38;
-    effect->field4e = config->field3a;
-    effect->field50 = 0;
-    effect->alpha52 = config->alpha3c;
+    effect->horizontalVelocityX3c = config->horizontalVelocityX14;
+    effect->horizontalVelocityZ40 = config->horizontalVelocityZ18;
+    effect->velocityRetention3a =
+        (s16)(0x1000 - config->velocityDamping26);
+    effect->bounceOnPositiveY44 = config->bounceOnPositiveY34;
+    effect->angularVelocityRange46 = config->angularVelocityRange36;
+    effect->textureResourceIndex48 = config->textureResourceIndex41;
+    effect->animationFrameCount49 = config->animationFrameCount42;
+    effect->animationFrameDuration4a = config->animationFrameDuration43;
+    effect->copiedConfigHalfwordA = config->reservedHalfwordA;
+    effect->copiedConfigHalfwordB = config->reservedHalfwordB;
+    effect->vertexDepth50 = 0;
+    effect->primitiveColor52 = config->primitiveColor3c;
 
-    count = effect->count04;
-    allocation = func_02003e20(count * 0x10 + 8, data_020f3300, 4,
+    count = effect->particleCapacity04;
+    allocation = func_02003e20(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
                                &gHeapContext);
     if (allocation != 0)
         allocation = func_020c09cc(allocation, count, 0x10, 8,
@@ -72,39 +74,40 @@ SpriteEffectInstance *func_020a3480(SpriteEffectInstance *effect, void *owner,
                                    (void *)VecFx32Object_Destroy);
     effect->positions08 = allocation;
 
-    allocation = func_02003e20(count * 0x10 + 8, data_020f3300, 4,
+    allocation = func_02003e20(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
                                &gHeapContext);
     if (allocation != 0)
         allocation = func_020c09cc(allocation, count, 0x10, 8,
                                    (void *)VecFx32Object_Init,
                                    (void *)VecFx32Object_Destroy);
     effect->velocities0c = allocation;
-    effect->state10 = (s16 *)func_02003e20(count * 2, data_020f3300, 4,
+    effect->angles10 = (u16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->values14 = (s32 *)func_02003e20(count * 4, data_020f3300, 4,
+    effect->angularVelocities14 = (s32 *)func_02003e20(count * 4, gSpriteEffectParticleStorageAllocationTag, 4,
                                             &gHeapContext);
-    effect->field18 = (s16 *)func_02003e20(count * 2, data_020f3300, 4,
+    effect->scales18 = (s16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->active1c = (s16 *)func_02003e20(count * 2, data_020f3300, 4,
+    effect->remainingParticleLifetimes1c = (s16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                             &gHeapContext);
-    effect->field20 = (s16 *)func_02003e20(count * 2, data_020f3300, 4,
+    effect->animationFrames20 = (s16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->field24 = (s16 *)func_02003e20(count * 2, data_020f3300, 4,
+    effect->grayscaleColors24 = (u16 *)func_02003e20(count * 2, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
-    effect->field28 = (s32 *)func_02003e20(count * 4, data_020f3300, 4,
+    effect->scaleAnimationState28 = (s32 *)func_02003e20(count * 4, gSpriteEffectParticleStorageAllocationTag, 4,
                                            &gHeapContext);
 
-    for (index = (s32)effect->count04 - 1; index >= 0; --index)
-        effect->active1c[index] = 0;
+    for (index = (s32)effect->particleCapacity04 - 1; index >= 0; --index)
+        effect->remainingParticleLifetimes1c[index] = 0;
 
-    count = config->initialCount3e;
+    count = config->initialParticleCount3e;
     if (count != 0) {
-        if (count > effect->count04)
-            count = effect->count04;
+        if (count > effect->particleCapacity04)
+            count = effect->particleCapacity04;
         while (count-- != 0)
-            func_020a3804(effect, config->initialCount3e);
-        if (effect->distribution4b == 2)
-            effect->distribution4b = 1;
+            SpriteEffectInstance_SpawnParticle(
+                effect, config->initialParticleCount3e);
+        if (effect->distributionMode4b == 2)
+            effect->distributionMode4b = 1;
     }
     return effect;
 }

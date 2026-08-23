@@ -1,5 +1,7 @@
 #include "tingle/types.h"
 
+typedef struct Graphics3dPresentation Graphics3dPresentation;
+
 /*
  * Recovered overlay 69 scripted multi-object scene and effect subsystem.
  *
@@ -33,8 +35,13 @@ extern s32 func_020ae024(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern void func_0209b58c(...), func_0209b7ec(...), func_0209b880(...);
 extern void func_0209c430(...), func_020adff0(...);
-extern void *func_020a257c(...), *func_020a25c8(...), *func_0209a208(...);
-extern void func_020a2310(...), func_020a2448(...), func_020a2614(...);
+extern void *func_020a257c(...), *func_0209a208(...);
+extern u32 func_020a25c8(...);
+extern void Graphics3dPresentation_RemoveSpriteEffect(
+    Graphics3dPresentation *, u32);
+extern void Graphics3dPresentation_SetSpriteEffectVertexDepth(
+    Graphics3dPresentation *, u32, s16);
+extern void func_020a2614(...);
 extern void func_020a27a0(...), func_0209a2ac(...), func_02099fb0(...);
 extern s32 func_0209e330(...);
 extern void func_0209e328(...), GraphicsSpriteState_SetAnimationIndex(...);
@@ -476,18 +483,20 @@ s32 func_ov069_022115c0(void *owner, const void *position) {
                (F(const s32, position, 8) - 0xa000);
       s32 distance = func_020adc40(fx_mul(dx, dx) + fx_mul(dy, dy));
       if (distance < thresholds[type - 1]) {
-        void *renderer;
-        void *effect;
+        Graphics3dPresentation *renderer;
+        u32 effect;
         F(s32, F(void *, owner, 0), 0x90) += rewards[type];
         F(s32, owner, 0x7c0 + i * 4) = 0;
-        renderer = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+        renderer = (Graphics3dPresentation *)
+            RuntimePresentationManager_GetGraphics3dPresentation(
+                (u8 *)data_021052fc + 0x2f7c);
         if (F(s32, owner, 0x928 + i * 4) != 0xff)
-          func_020a2310(renderer, F(s32, owner, 0x928 + i * 4));
+          Graphics3dPresentation_RemoveSpriteEffect(renderer, F(s32, owner, 0x928 + i * 4));
         effect = func_020a25c8(renderer, 0,
             (F(s32, owner, 0xa94 + i * 0x10) >> 12) - 14,
             (F(s32, owner, 0xa9c + i * 0x10) >> 12) - 19,
             28, 28, 4);
-        func_020a2448(renderer, effect, -20);
+        Graphics3dPresentation_SetSpriteEffectVertexDepth(renderer, effect, -20);
         Sound_Play(gSoundContext, 0, 0xf);
         return 1;
       }

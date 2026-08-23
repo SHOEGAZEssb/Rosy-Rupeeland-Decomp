@@ -1,5 +1,6 @@
 #include "tingle/heap.h"
 #include "tingle/point_2d_s16.h"
+#include "tingle/sprite_effect.h"
 #include "tingle/types.h"
 
 /* Dispatch type-1 interactions that create, update, or hand off an auxiliary resource. */
@@ -166,8 +167,6 @@ extern const u16 data_020e5804;
 extern u8 *ActorExtendedType2Record_FindByIndex(s32 index);
 extern void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y,
                           s32 kind);
-extern u32 func_020a4df0(void *manager, s32 kind, const void *bounds,
-                         s32 lifetime);
 #ifdef __cplusplus
 }
 #endif
@@ -190,14 +189,15 @@ void ProgressionFlags_SetGate2C8_767_74B(void)
 /* Submit the point-sized effect rectangle used by retail 0x020A2894. */
 void EffectManager_SubmitPointEffect(void *manager, s32 subtype, s32 x, s32 y, s32 kind)
 {
-    s32 bounds[4];
+    SpriteEffectBounds bounds;
 
-    bounds[0] = x << 12;
-    bounds[1] = y << 12;
-    bounds[2] = bounds[0];
-    bounds[3] = bounds[1];
-    func_020a4df0(*(void **)((u8 *)manager + 0x4e8), subtype + 0x14,
-                   bounds, kind * 0x19a + 0x1000);
+    bounds.minimumX = x << 12;
+    bounds.minimumZ = y << 12;
+    bounds.maximumX = bounds.minimumX;
+    bounds.maximumZ = bounds.minimumZ;
+    SpriteEffectManager_CreatePresetEffect(
+        *(SpriteEffectManager **)((u8 *)manager + 0x4e8), subtype + 0x14,
+        &bounds, kind * 0x19a + 0x1000);
 }
 
 /* Initialize a two-word counter pair to the supplied capacity. */
