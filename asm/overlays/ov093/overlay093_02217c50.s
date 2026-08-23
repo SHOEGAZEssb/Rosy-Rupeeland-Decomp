@@ -19,7 +19,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorMotion_BindActor
 .extern ActorMotionAreaFollower_BindActor
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
@@ -79,7 +79,7 @@ func_ov093_02217c50:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldrb r1, [r4, #0x1fc]
     mov r6, r0
     cmp r1, #0x9

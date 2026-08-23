@@ -64,7 +64,7 @@ extern "C" void VecFx32Object_Add(void *, const void *);
 extern "C" void VecFx32Object_Normalize(void *);
 extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
-extern "C" void *func_0201e0ec(void *);
+extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
 extern "C" void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" s32 Fx32Vector2_Magnitude(s32, s32);
@@ -327,7 +327,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
             s32 state = F(s16, actor, 0xda);
             if (state > 4)
                 state = 4;
-            void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
             func_020a2960(manager, 0, F(s32, actor, 0x1c) >> 12,
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) -
                               0x20 - state * 9,
@@ -337,7 +337,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
         F(u8, actor, 0x29c) &= ~4u;
         for (s32 i = 0; i < 4; ++i) {
             s32 angle = (((i - 1) * 0x2710 - 0xdac) & 0xffff) >> 4;
-            void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
             func_020a2614(manager, 1,
                           (F(s32, actor, 0x1c) >> 12) +
                               ((data_020c9670[angle * 2] * 0x14) >> 12),

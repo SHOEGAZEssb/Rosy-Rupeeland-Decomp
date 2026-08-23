@@ -7,7 +7,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseScriptVm_Pop
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern RisingSpriteSwarmPresentation_Init
 .extern ActorCollection_FindActorByRuntimeId
 .extern gGameWork
@@ -56,7 +56,7 @@ L_02017a0c:
     ldr r0, [r0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_02017a38
 L_02017a28:
     ldr r0, L_02017a4c

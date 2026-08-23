@@ -4,7 +4,7 @@
     .extern VecFx32Object_InitComponents
     .extern func_ov039_022014f8
     .extern func_020befec
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_0209c3b4
     .extern func_0209c430
     .extern VecFx32Object_Destroy
@@ -259,7 +259,7 @@ L_02203d1c:
     moveq r9, #0x0
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r5, r0
     bl func_0209c3b4
     add r1, sp, #0x6c

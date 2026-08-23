@@ -11,7 +11,7 @@
 .extern SplineMover_Init
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern func_0201df64
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern GamePhaseMetadata_GetByIndex
 .extern ActorDerivedType1_ResetToBaseState
 .extern ActorDerivedType1_GetSingletonObject
@@ -77,7 +77,7 @@ func_ov074_0220fda8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r5, r0
     bl func_020a2324
     mov r0, r5

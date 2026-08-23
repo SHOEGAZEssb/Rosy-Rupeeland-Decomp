@@ -19,7 +19,7 @@ extern void *data_020de838[];
 extern const char data_020de858[];
 extern u8 *data_021052fc;
 
-extern void func_0201df44(void *, void *);
+extern void RuntimePresentationManager_AppendSecondListEffect(void *, void *);
 
 /* Initialize the presentation, install its vtable, and set FieldEffect dispatch-state bit 1. */
 MainWindowMaskPresentation *func_02028778(MainWindowMaskPresentation *self)
@@ -78,7 +78,7 @@ void func_02028814(void)
             &gHeapContext);
     if (self)
         self = func_02028778(self);
-    func_0201df44(manager, self);
+    RuntimePresentationManager_AppendSecondListEffect(manager, self);
 }
 
 #ifdef __cplusplus

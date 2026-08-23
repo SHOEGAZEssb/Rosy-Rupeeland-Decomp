@@ -9,7 +9,7 @@
 .extern func_0201dc18
 .extern func_0201dc58
 .extern func_0201dde4
-.extern func_0201dee0
+.extern FieldEffectList_Append
 .extern func_0201df64
 .extern gRuntimePresentationListVTable
 .extern gRuntimePresentationListNodeAllocationTag

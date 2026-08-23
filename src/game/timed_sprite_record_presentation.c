@@ -40,7 +40,7 @@ extern void GamePhaseVisualEffect_Configure(void *runtime, u32 field00, u32 fiel
 extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void GamePhaseVisualEffect_SetBaseOffset(void *runtime, PresentationValue *value);
-extern void PresentationList_AppendObject(void *manager, void *entry);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *entry);
 #ifdef __cplusplus
 }
 #endif
@@ -122,5 +122,5 @@ void func_02020060(s32 field08, const u8 *config)
     if (self != 0) {
         func_0201ff2c(self, field08, config);
     }
-    PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
+    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
 }

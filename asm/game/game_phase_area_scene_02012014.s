@@ -7,7 +7,7 @@
 .extern GamePhaseRegionTable_GetRegion
 .extern GamePhaseRegionTable_IsRegionRevealed
 .extern GamePhaseRegionTable_SetRegionRevealed
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern FourStageCommandPresentation_Init
 .extern gHeapContext
 
@@ -74,7 +74,7 @@ L_020120e4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     add r1, r10, #0x2000
     str r0, [r1, #0xed4]
 L_02012110:

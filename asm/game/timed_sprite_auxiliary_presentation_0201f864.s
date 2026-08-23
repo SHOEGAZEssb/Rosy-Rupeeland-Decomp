@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern AnimationResource_Init
 .extern ActorMotionAreaFollower_GetPosition
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
 .extern func_0201e584
 .extern TimedSpriteConfig_InitTracks
@@ -88,7 +88,7 @@ AuxiliaryTimedSpritePresentation_Init: ; 0x0201f864
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
 .L_0201f978:
     add r0, sp, #0x20
     bl VecFx32Object_Destroy

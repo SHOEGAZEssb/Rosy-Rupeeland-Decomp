@@ -34,7 +34,7 @@
 .extern ActorMotion_SetTarget
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_BindActor
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_PlayHorizontalSpatialSound
 .extern Actor_SetDirectionFromVector
@@ -264,7 +264,7 @@ func_ov090_02217d70:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x2
     bl func_0209a748
     mov r0, #0x1
@@ -1276,7 +1276,7 @@ func_ov090_02217d70:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r1, [r9, #0x24]
     ldr r3, [r9, #0x1c]
     ldr r2, [r9, #0x20]
@@ -1365,7 +1365,7 @@ func_ov090_02217d70:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1e
     str r1, [sp, #0x0]
     ldr r1, [r9, #0x24]
@@ -1429,7 +1429,7 @@ func_ov090_02217d70:
     ldr r0, [r6, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r8, [sp, #0x0]
     ldr r1, [r9, #0x24]
     ldr r2, [r9, #0x1c]
@@ -1453,7 +1453,7 @@ func_ov090_02217d70:
     ldr r0, [r8, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r7, [sp, #0x0]
     ldr r1, [r4, #0x230]
     ldr r2, [r4, #0x228]

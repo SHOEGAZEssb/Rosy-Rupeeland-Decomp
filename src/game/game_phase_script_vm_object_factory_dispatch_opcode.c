@@ -27,8 +27,8 @@ extern const char data_020d5bcc[];
 extern const char data_020d5bd4[];
 extern const char data_020d5bdc[];
 extern const char data_020d5be4[];
-extern void PresentationList_AppendObject(void *list, void *object);
-extern void func_0201df44(void *list, void *object);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *list, void *object);
+extern void RuntimePresentationManager_AppendSecondListEffect(void *list, void *object);
 extern void *func_0201d240(void *object, s32 enabled, s32 value);
 extern void *func_0201d688(void *object, s32 value);
 extern void *func_020200bc(void *object, s32 value, s32 zero0, s32 zero1,
@@ -62,10 +62,9 @@ static void *allocateObject(u32 size, const char *tag)
     return Heap_Alloc(size, tag, 4, &gHeapContext);
 }
 
-/* Return the confirmed object-list address at runtime offset 0x2f7c. */
-static void *runtimeObjectList(void)
+/* Return the presentation manager at confirmed runtime offset 0x2f7c. */
+static void *runtimePresentationManager(void)
 {
-    /* Confirmed list address; the runtime type containing offset 0x2f7c is not. */
     return (u8 *)data_021052fc + 0x2f7c;
 }
 
@@ -89,7 +88,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5b94);
         if (object)
             object = func_02024468(object);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 19:
         GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
@@ -105,7 +104,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5b9c);
         if (object)
             object = func_0202432c(object, value, parameter);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 16: {
         void *state = OverlayManager_GetGlobal();
@@ -117,44 +116,44 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5ba4);
         if (object)
             object = func_02024200(object);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 14:
         object = allocateObject(0x1c, data_020d5bac);
         if (object)
             object = IndexedSpriteOverlayPresentation_Init(object, value);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 13:
         object = allocateObject(0x18, data_020d5bb4);
         if (object)
             object = func_020240cc(object, value);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 12:
         object = allocateObject(0x1c, data_020d5bbc);
         if (object)
             object = ReversedFrameSpriteOverlayPresentation_Init(object, value);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 11:
         /* 0x448 is a confirmed allocation size; the object type is unknown. */
         object = allocateObject(0x448, data_020d5bc4);
         if (object)
             object = PaletteCyclePresentation_Init(object);
-        func_0201df44(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
         break;
     case 10:
         object = allocateObject(0x1c, data_020d5b74);
         if (object)
             object = func_020200bc(object, value, 0, 0, parameter);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 9:
         object = allocateObject(0x90, data_020d5bcc);
         if (object)
             object = FourSlot3DPresentation_Init(object, value);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 8:
         object = allocateObject(0x40, data_020d5bd4);
@@ -167,7 +166,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x18, data_020d5bb4);
         if (object)
             object = func_02023fa0(object);
-        PresentationList_AppendObject(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendFirstListEffect(runtimePresentationManager(), object);
         break;
     case 5:
         object = allocateObject(0x44, data_020d5bdc);
@@ -178,7 +177,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x24, data_020d5be4);
         if (object)
             object = func_0202225c(object);
-        func_0201df44(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
         break;
     case 3:
         SceneDisplayResources_Setup(value);
@@ -187,14 +186,14 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
         object = allocateObject(0x3cc, data_020d5b34);
         if (object)
             object = DualArrayBlendPresentation_Init(object, value);
-        func_0201df44(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
         break;
     default:
         object = allocateObject(0x54, data_020d5b34);
         if (object)
             object = DisplayFadePresentation_Init(object, mode, value,
                                                   parameter);
-        func_0201df44(runtimeObjectList(), object);
+        RuntimePresentationManager_AppendSecondListEffect(runtimePresentationManager(), object);
         break;
     }
     return 0;

@@ -8,7 +8,7 @@
     .extern func_ov039_02204974
     .extern genrand_int32
     .extern func_020bf1f8
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_ov039_021fce40
     .extern func_ov039_02204168
     .extern func_0209b58c
@@ -643,7 +643,7 @@ L_02204d44:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r0, [sp, #0x40]
     add r0, sp, #0xec
     bl func_ov039_021fce40

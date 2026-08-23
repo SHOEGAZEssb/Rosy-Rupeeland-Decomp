@@ -51,7 +51,7 @@ extern s32 func_ov069_022119dc(void *object);
 extern void func_ov069_022119bc(void *object);
 extern void func_ov069_02210a44(void *system, s32 index, s32 x, s32 y,
                                 s32 ownerX, s32 ownerY);
-extern void *func_0201e0ec(void *object);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void func_020a28e0(void *context, s32 type, s32 x, s32 y, s32 value);
 extern void func_020a2614(void *context, s32 type, s32 x, s32 y, s32 value);
 extern void func_0209f158(void *system, const void *position);
@@ -177,7 +177,7 @@ static void updateTimedSequence(void *scene, s32 variant)
         FIELD(s32, scene, 0x1da8) -= reduction;
     }
 
-    void *effectContext = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+    void *effectContext = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
     if (time == 10) {
         void *a = FIELD(void *, scene, 0x74);
         void *b = FIELD(void *, scene, 0x78);

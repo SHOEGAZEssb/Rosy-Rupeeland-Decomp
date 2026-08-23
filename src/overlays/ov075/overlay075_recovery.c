@@ -80,7 +80,7 @@ EXT(InteractionWaypointCursor_GetCurrentDurationFrames);
 EXT(InteractionWaypointCursor_GetCurrentRecord);
 EXT(InteractionWaypointCursor_GetCurrentYPointer);
 EXT(Type7Actor_GetStateCode);
-EXT(PresentationList_AppendObject);
+EXT(RuntimePresentationManager_AppendFirstListEffect);
 EXT(SceneManager_GetCurrent);
 EXT(Sound_Play);
 EXT(OverlayManager_GetGlobal);
@@ -2198,7 +2198,7 @@ extern "C" void func_ov075_0221647c(void *actor, void *target, s32 dx,
                 F(void *, F(void *, data_021052fc, 0), 0x2fbc));
             func_02022cb0(effect, position, target, -currency, 0x2000, -192);
         }
-        PresentationList_AppendObject(
+        RuntimePresentationManager_AppendFirstListEffect(
             F(void *, F(void *, data_021052fc, 0), 0x2f7c), effect);
         GamePhaseCurrencyHud_AddCurrency(gLupyContext, -currency, 0);
         F(u32, target, 0x230) |= 0x40000;

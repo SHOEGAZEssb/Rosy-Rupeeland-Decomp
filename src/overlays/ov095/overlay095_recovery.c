@@ -87,7 +87,7 @@ EXT(TrackedResourceActor_PostUpdate);
 EXT(Actor_UpdatePrimaryRenderAttachmentPriority);
 EXT(Actor_TurnTowardVector);
 EXT(Actor_PlayRadialSpatialSound);
-EXT(func_0201e0ec);
+EXT(RuntimePresentationManager_GetGraphics3dPresentation);
 EXT(Fx32Vector2_Magnitude);
 EXT(func_0206e590);
 EXT(func_020a2844);
@@ -606,7 +606,7 @@ extern "C" void func_ov095_0221a2b4(void *actor)
     if (timer < 45 && timer % 10 == 0)
     {
         u32 random = (u32)genrand_int32();
-        void *effects = (void *)func_0201e0ec(P(data_021052fc, 0x2f7c));
+        void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
         s32 width = func_ov095_02217d90(P(actor, 0x68));
         func_020a291c(effects, 1,
                       (F(s32, actor, 0x1c) >> 12) - 12 + random % 24,
@@ -669,7 +669,7 @@ extern "C" void func_ov095_0221ac6c(void *actor)
         return;
     }
 
-    void *effects = (void *)func_0201e0ec(P(data_021052fc, 0x2f7c));
+    void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
     func_020a2844(effects, 0, F(s32, actor, 0x1c) >> 12,
                   ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) - 24,
                   8);
@@ -1414,7 +1414,7 @@ extern "C" void func_ov095_0221c4a4(void *actor, void *target)
             func_ov095_02217d58(direction, P(actor, 0x18), P(target, 0x18));
             func_ov095_0221a208(scaled, direction, 0x2000);
             VecFx32Object_Destroy(direction);
-            void *effects = (void *)func_0201e0ec(P(data_021052fc, 0x2f7c));
+            void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
             EffectManager_SubmitPointEffect(
                 effects, 0, F(s32, scaled, 4) >> 12,
                 ((F(s32, scaled, 8) - F(s32, scaled, 0xc)) >> 12) - 28, 0);
@@ -1846,7 +1846,7 @@ extern "C" s32 func_ov095_0221b7c8(void *actor)
         F(s32, control, 0xc) = F(s32, actor, 0x2a8) + 0x50000;
         if (F(s16, actor, 0xae) > 26 && (F(s16, actor, 0xae) & 1) == 0)
         {
-            void *effects = (void *)func_0201e0ec(P(data_021052fc, 0x2f7c));
+            void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
             func_020a2960(effects, 0, F(s32, actor, 0x1c) >> 12,
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) - 32,
                           0x7fff);

@@ -57,7 +57,7 @@ extern void *gDebugFont;
 extern void *gSoundContext;
 extern u8 *data_021052fc;
 
-extern void PresentationList_AppendObject(void *list, void *value);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *list, void *value);
 extern void VecFx32Object_InitComponents(EmitterVector *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(EmitterVector *destination,
                           const EmitterVector *source);
@@ -284,7 +284,7 @@ void func_02023ed4(s32 x, s32 y, s32 remaining, s32 direction)
     if (emitter != 0) {
         emitter = func_02023a8c(emitter, &position, remaining, direction);
     }
-    PresentationList_AppendObject(data_021052fc + 0x2f7c, emitter);
+    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, emitter);
     VecFx32Object_Destroy(&position);
 }
 

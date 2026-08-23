@@ -60,7 +60,7 @@ EXT(PresentationBackedActor_SpawnAmountVariant);
 EXT(SignedAbsoluteValue);
 EXT(Sound_Play);
 EXT(UtilAnimationResource_UpdatePosition);
-EXT(func_0201e0ec);
+EXT(RuntimePresentationManager_GetGraphics3dPresentation);
 EXT(func_02003e2c);
 EXT(func_02004fe0);
 EXT(func_02005030);
@@ -1128,7 +1128,7 @@ extern "C" s32 func_ov077_02215050(void *actor)
                           ? 2
                           : (F(s16, actor, 0x4e) == 0x82 ? 1 : 0);
         void *context =
-            (void *)func_0201e0ec(P(F(void *, data_021052fc, 0), 0x2f7c));
+            (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, data_021052fc, 0), 0x2f7c));
         func_020a2844(context, variant, F(s32, actor, 0x1c) >> 12,
                       (F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12, 3);
         func_020a2844(context, 2, F(s32, actor, 0x1c) >> 12,
@@ -1340,7 +1340,7 @@ extern "C" void func_ov077_02215494(void *actor)
                 F(u8, actor, 0x2e4) &= 0x8f;
                 Actor_PlayHorizontalSpatialSound(actor, 0x9f85, 0);
                 Actor_PlayHorizontalSpatialSound(actor, 0x9f83, 0);
-                void *context = (void *)func_0201e0ec(
+                void *context = (void *)RuntimePresentationManager_GetGraphics3dPresentation(
                     P(F(void *, data_021052fc, 0), 0x2f7c));
                 func_020a27a0(context, 2,
                               F(s32, F(void *, actor, 0x29c), 0x1c) >> 12,
@@ -1552,7 +1552,7 @@ extern "C" s32 func_ov077_022169bc(void *actor)
     F(u32, actor, 0x260) &= ~3u;
     F(s32, actor, 0x3c) = F(s32, actor, 0x40) = 0;
     void *effects =
-        (void *)func_0201e0ec(P(F(void *, data_021052fc, 0), 0x2f7c));
+        (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, data_021052fc, 0), 0x2f7c));
     u32 phase = (F(u8, actor, 0x2e4) >> 4) & 7;
     if (phase == 0)
     {

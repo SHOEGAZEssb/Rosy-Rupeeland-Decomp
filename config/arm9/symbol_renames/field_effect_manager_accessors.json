@@ -1,0 +1,8 @@
+{
+  "PresentationList_AppendObject": "RuntimePresentationManager_AppendFirstListEffect",
+  "func_0201dee0": "FieldEffectList_Append",
+  "func_0201df44": "RuntimePresentationManager_AppendSecondListEffect",
+  "func_0201df54": "RuntimePresentationManager_GetFirstListNodeEffect",
+  "func_0201df5c": "RuntimePresentationManager_GetSecondListNodeEffect",
+  "func_0201e0ec": "RuntimePresentationManager_GetGraphics3dPresentation"
+}

@@ -10,7 +10,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
@@ -453,7 +453,7 @@ func_ov077_02215494:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r1, [r4, #0x24]
     ldr r2, [r4, #0x20]
     mov r1, r1, asr #0xc

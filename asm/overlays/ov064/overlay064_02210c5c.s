@@ -13,7 +13,7 @@
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_02022cb0
 .extern Actor_RefreshCachedTerrainHeight
 .extern GridEffectActorRegistry_BroadcastSlot1c
@@ -176,7 +176,7 @@ Overlay064Scene_UpdateMode0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     add r1, sp, #0x58
     mov r0, r6
     bl Overlay064Scene_SpawnRewardEffect

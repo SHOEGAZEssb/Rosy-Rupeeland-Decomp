@@ -6,7 +6,7 @@
     .extern func_ov049_0220c124
     .extern func_ov069_022109c4
     .extern func_ov039_021fce40
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_0209a748
     .extern func_ov039_02200f9c
     .extern VecFx32Object_InitComponents
@@ -51,7 +51,7 @@ func_ov039_02200cd8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x7
     bl func_0209a748
     mov r0, #0x200000

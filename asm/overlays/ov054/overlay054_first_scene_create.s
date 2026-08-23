@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_021052fc
 .extern data_ov054_0220f150
-.extern func_0201df44
+.extern RuntimePresentationManager_AppendSecondListEffect
 .extern func_ov054_0220e68c
 .extern gHeapContext
 
@@ -28,7 +28,7 @@ func_ov054_0220e9bc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df44
+    bl RuntimePresentationManager_AppendSecondListEffect
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220ea0c: .word data_ov054_0220f150
 .L_0220ea10: .word gHeapContext

@@ -4,7 +4,7 @@
 .extern GameWork_SetFlag
 .extern GamePhaseRegionTable_Destroy
 .extern func_0201df64
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollectionActivation_DestroyReservedSlot
 .extern ActorDerivedType1_ClearFailureCounter
 .extern ActorFeedback_DestroyPresentations
@@ -38,7 +38,7 @@ GamePhaseState_ResetActivePhase: ; 0x0200ea48
     bl func_0201df64
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     bl func_020a2324
     bl ActorFeedback_DestroyPresentations
     add r0, r4, #0x2000

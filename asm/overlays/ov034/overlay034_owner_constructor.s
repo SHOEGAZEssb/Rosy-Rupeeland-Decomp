@@ -4,7 +4,7 @@
 
     .extern Presentation_Init
     .extern GraphicsArchive_AcquireOwlvResource
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern Heap_Alloc
     .extern func_ov034_021fcff0
     .extern PresentationScalar_SetImmediate
@@ -30,7 +30,7 @@ func_ov034_021fd544:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r1, [r0, #0x35c]
     ldr r6, L_021fd62c
     str r1, [r9, #0xac]

@@ -49,7 +49,7 @@ extern void *func_0201e584(void *self, AuxiliarySpriteConfig *config,
 extern void VecFx32Object_Destroy(void *track);
 extern void VecFx32Object_Assign(PresentationTrack *destination, const void *source);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
-extern void PresentationList_AppendObject(void *manager, void *entry);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *entry);
 #ifdef __cplusplus
 }
 #endif
@@ -89,7 +89,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     self->timer10 = 120;
     self->spriteByte12 = (s16)spriteByte;
     if (registerWithManager != 0) {
-        PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
+        RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
     }
     VecFx32Object_Destroy(&config.second20);
     VecFx32Object_Destroy(&config.first10);

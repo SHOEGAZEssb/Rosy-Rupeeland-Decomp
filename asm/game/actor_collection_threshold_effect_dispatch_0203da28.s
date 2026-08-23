@@ -5,7 +5,7 @@
 .extern data_020e8380
 .extern data_021052fc
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_020a2614
     .global ActorCollection_DispatchType2ThresholdEffects
     .type ActorCollection_DispatchType2ThresholdEffects, @function
@@ -75,7 +75,7 @@ ActorCollection_DispatchType2ThresholdEffects: ; 0x0203da28
     ldr r0, [r4, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r11, [sp, #0x0]
     ldr r2, [r8, #0x1c]
     ldr r3, [r8, #0x20]

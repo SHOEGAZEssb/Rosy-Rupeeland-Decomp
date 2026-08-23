@@ -20,7 +20,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_BroadcastSlot1C
 .extern func_02025300
 .extern ActorCollection_UnregisterAndDestroyAllActors
@@ -262,7 +262,7 @@ Overlay064Scene_Construct:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b .L_022105c4
 .L_0221006c:
     ldr r1, .L_02210604

@@ -8,7 +8,7 @@
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Assign
     .extern VecFx32Object_Destroy
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_020a2844
     .extern Sound_Play
     .extern func_020594ec
@@ -111,7 +111,7 @@ L_022020ac:
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
     str r1, [sp, #0x34]
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x7
     str r1, [sp, #0x0]
     ldr r2, [sp, #0x30]
@@ -167,7 +167,7 @@ L_022021dc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r2, L_02202cec
     mov r1, #0x0
     str r2, [sp, #0x0]
@@ -314,7 +314,7 @@ L_02202410:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, r5, #0x1c00
     ldrh r1, [r1, #0xaa]
     mov r4, r0
@@ -873,7 +873,7 @@ L_02202c94:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r2, L_02202cec
     mov r1, #0x0
     str r2, [sp, #0x0]

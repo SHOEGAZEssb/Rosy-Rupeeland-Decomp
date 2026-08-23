@@ -62,7 +62,7 @@ extern "C" s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern "C" void *ActorMotionAreaFollower_GetPosition(void *);
 extern "C" void *func_02022cb0(void *, void *, void *, s32, s32, s32);
-extern "C" void PresentationList_AppendObject(void *, void *);
+extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern "C" void InteractionRecordAllocator_ReleaseOwner(void *, void *);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
 extern "C" void *func_020536b8(void *);
@@ -224,7 +224,7 @@ extern "C" s32 func_ov084_02212e6c(void *a, s32, s32, s32) {
                                   ActorMotionAreaFollower_GetPosition(
                                       (u8 *)data_021052fc + 0x2fbc),
                                   a, -amount, 0x2000, -0xc0);
-            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, e);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, e);
             if (F(s32, a, 0x298) + amount < 0x7fff)
                 F(s32, a, 0x298) += amount;
             u8 q[16], x[16], y[16], m[16];

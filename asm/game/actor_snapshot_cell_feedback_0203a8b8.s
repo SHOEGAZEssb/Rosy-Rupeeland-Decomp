@@ -7,7 +7,7 @@
 .extern gActorInteractionResourceState
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern TimedSpriteOffsetPresentation_Init
 .extern Position_AdjustForTerrainHeight
 .extern ActorFeedbackResources_GetResource
@@ -142,7 +142,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     add r0, sp, #0x1c
     bl VecFx32Object_Destroy
     mov r0, #0x1

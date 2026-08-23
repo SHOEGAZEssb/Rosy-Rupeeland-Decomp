@@ -46,7 +46,7 @@ extern void ActorDerivedType1_ResetToBaseState(...);
 extern void func_020adff0(...), func_020adfbc(...), func_020aef3c(...);
 extern void func_020b0374(...), func_020b0300(...), func_020a7b90(...);
 extern void func_020b0808(...), func_020b0844(...), func_020b0880(...);
-extern void *func_0201e0ec(...);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern void func_0201df64(...), func_0201de4c(...);
 extern void func_020a2324(...), func_020a2348(...), func_020a23a8(...);
 extern void func_02059880(...), DebugText_BeginFrame(...);
@@ -156,7 +156,7 @@ void *func_ov074_0220fda8(void *scene, s32 direction) {
   func_ov074_02210b90(scene);
 
   runtime = (u8 *)data_021052fc + 0x2f7c;
-  actor = func_0201e0ec(runtime);
+  actor = RuntimePresentationManager_GetGraphics3dPresentation(runtime);
   func_020a2324();
   func_020a2348(actor, 1, 0);
   func_0201df64(runtime);
@@ -306,7 +306,7 @@ s32 func_ov074_022101dc(void *scene) {
   case 5:
     if ((F(u32, scene, 0x140) & 2) == 0)
       break;
-    object = func_0201e0ec((u8 *)runtime + 0x2f7c);
+    object = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)runtime + 0x2f7c);
     func_020a23a8(object, 1, 0);
     F(u8, runtime, 0x30cc) &= (u8)~4;
     {

@@ -36,7 +36,7 @@ extern void func_ov039_022014e0(void *output, void *input);
 extern s32 func_020befec(s32 value, s32 divisor);
 extern s32 func_020ae024(s32 y, s32 x);
 extern s32 func_020adc40(s32 value);
-extern void *func_0201e0ec(void *object);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void *func_0209c3b4(void);
 extern void func_0209c430(void *renderer, ...);
 extern void func_020a2844(void *resource, s32 type, s32 x, s32 y, s32 mode);

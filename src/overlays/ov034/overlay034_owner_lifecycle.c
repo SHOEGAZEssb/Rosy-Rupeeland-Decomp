@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void Presentation_Init(void *object);
 extern void *GraphicsArchive_AcquireOwlvResource(void *resourceContext, s32 resourceId);
-extern void *func_0201e0ec(void *globalRecord);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *globalRecord);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
 extern void func_ov034_021fcff0(void *state, s32 side);
@@ -43,7 +43,7 @@ extern "C" void *func_ov034_021fd544(void *owner)
     FIELD(const void *, owner, 0) = data_ov034_021ff194;
     FIELD(void *, owner, 0x9c) = GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5001);
 
-    void *record = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+    void *record = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
     FIELD(void *, owner, 0xac) = FIELD(void *, record, 0x35c);
     FIELD(void *, owner, 0xb0) = FIELD(void *, record, 0x434);
     FIELD(void *, owner, 0xb4) = FIELD(void *, record, 0xd4);

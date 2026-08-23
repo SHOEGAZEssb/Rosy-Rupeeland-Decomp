@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_021052fc
 .extern data_ov055_0220f088
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_02027e8c
 .extern GamePhaseProgress_GetOrCreateGlobal
 .extern func_ov055_0220e8b8
@@ -35,7 +35,7 @@ func_ov055_0220ef6c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220efd4: .word data_ov055_0220f088

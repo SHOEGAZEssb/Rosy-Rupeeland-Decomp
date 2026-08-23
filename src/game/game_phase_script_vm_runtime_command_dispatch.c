@@ -26,7 +26,7 @@ extern void *func_020200bc(...);
 extern void *func_0201cfd0(...);
 extern void *func_0206ec68(...);
 extern void *GamePhaseLoadScene_Init(...);
-extern void PresentationList_AppendObject(...);
+extern void RuntimePresentationManager_AppendFirstListEffect(...);
 extern u8 *RuntimeRecordTable_FindByKey(...);
 #ifdef __cplusplus
 }
@@ -124,7 +124,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         object = allocCommandObject(0x1c, data_020d5b74);
         if (object != 0)
             object = func_020200bc(object, parameter, x, y, 30);
-        PresentationList_AppendObject(runtime + 0x2f7c, object);
+        RuntimePresentationManager_AppendFirstListEffect(runtime + 0x2f7c, object);
         VecFx32Object_Destroy(&position);
         return 0;
     }

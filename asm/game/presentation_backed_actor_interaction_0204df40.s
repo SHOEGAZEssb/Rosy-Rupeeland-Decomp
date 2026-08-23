@@ -9,8 +9,8 @@
 .extern gSoundContext
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern PresentationList_AppendObject
-.extern func_0201e0ec
+.extern RuntimePresentationManager_AppendFirstListEffect
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_02022cb0
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetOwningCollection
@@ -124,7 +124,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     ldrh r0, [r6, #0x4e]
     cmp r0, #0x13
     bne .L_0204e12c
@@ -132,7 +132,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x28
     str r1, [sp, #0x0]
     str r1, [sp, #0x4]
@@ -174,7 +174,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x20
     str r1, [sp, #0x0]
     mov r1, #0x18

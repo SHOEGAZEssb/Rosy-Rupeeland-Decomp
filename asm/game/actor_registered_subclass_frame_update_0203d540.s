@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_registered_subclass_frame_update.c.
 .text
 .extern data_021052fc
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_GetCachedTerrainHeight
 .extern ActorTableRecord_UpdateFrame
 .extern ActorRegisteredSubclass_EnterState2
@@ -76,7 +76,7 @@ ActorRegisteredSubclass_UpdateFrame: ; 0x0203d540
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r3, r4, lsr #0x4
     mov r1, #0x3c
     str r1, [sp, #0x0]

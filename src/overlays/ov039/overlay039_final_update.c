@@ -40,7 +40,7 @@ extern void func_0209a2a4(void *object, void *parent);
 extern void func_0209a2ac(void *object, void *context, s32 enabled);
 extern void func_0209e384(void *object);
 extern void func_0209e35c(void *object);
-extern void *func_0201e0ec(void *object);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void func_020a27a0(void *resource, ...);
 extern void func_020a68fc(void *object);
 extern s32 ActorRuntimeFlags_Test(void *object, s32 mode);
@@ -202,7 +202,7 @@ extern "C" void func_ov039_02206ae0(void *scene)
 extern "C" void func_ov039_0220713c(void *scene)
 {
     if (FIELD(s32, scene, 0xd4) == 0) return;
-    void *resource = func_0201e0ec((u8 *)FIELD(void *, data_021052fc, 0) +
+    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
                                    0x2f7c);
     func_020a27a0(resource, scene, FIELD(s32, scene, 0xd4));
     FIELD(s32, scene, 0xd0)++;

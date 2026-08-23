@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Sound_PlayEffectWithParameters
 .extern Sound_PlayOwnedEffect
@@ -270,7 +270,7 @@ func_ov076_02212ee0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x0
     str r1, [sp, #0x0]
     mov r2, r9, lsl #0x1
@@ -333,7 +333,7 @@ func_ov076_02212ee0:
     add r0, r0, #0x2c00
     cmp r4, #0x4
     movgt r4, #0x4
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r2, .L_022135c0
     add r1, r4, r4, lsl #0x3
     str r2, [sp, #0x0]

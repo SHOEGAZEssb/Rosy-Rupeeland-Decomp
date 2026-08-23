@@ -9,7 +9,7 @@
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Init
 .extern GamePhaseRuntime_GetActorCollection
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_PlayHorizontalSpatialSound
 .extern PresentationBackedActor_Spawn
@@ -83,7 +83,7 @@ func_ov090_0221b428:
     ldr r0, [r7, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r10, lsl #0x6
     add r3, r1, #0xdc
     mov r1, #0x0

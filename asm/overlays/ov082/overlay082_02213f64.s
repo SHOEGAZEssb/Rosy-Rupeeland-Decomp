@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
 .extern data_021052fc
 .extern data_ov082_0221483c
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_PlayRadialSpatialSound
 .extern ActorExtendedType2_UpdateFrame
 .extern ActorExtendedType2_GetDescriptorValue2A
@@ -77,7 +77,7 @@ func_ov082_02213f64:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r5, r0
     mov r0, r6
     mov r1, #0x18

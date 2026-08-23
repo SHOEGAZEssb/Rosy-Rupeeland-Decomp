@@ -41,7 +41,7 @@ extern void Actor_ReplaceAttachmentSlotResource(O64_ARGS);
 extern void Type7Actor_EnterSpecialPresentationState(O64_ARGS);
 extern void GamePhaseTouchPrompt_SetEnabled(O64_ARGS);
 extern void GamePhaseCurrencyHud_SetVisible(O64_ARGS);
-extern void PresentationList_AppendObject(O64_ARGS), RuntimePresentationManager_BroadcastSlot1C(O64_ARGS);
+extern void RuntimePresentationManager_AppendFirstListEffect(O64_ARGS), RuntimePresentationManager_BroadcastSlot1C(O64_ARGS);
 extern void *func_02025300(O64_ARGS);
 extern void Sound_SetCaptureEnabled(O64_ARGS), Sound_LoadGroup(O64_ARGS);
 extern void AuxiliaryInteraction_Destroy(O64_ARGS);
@@ -246,7 +246,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
                     ActorCollection_GetSpriteGroup(actorCollection), 0x1e,
                     1, 0);
             }
-            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, replacement);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, replacement);
         }
     } else if (mode == 2) {
         s32 direction;
@@ -520,7 +520,7 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
                     motion, position, actor, -F(s32, scene, 0x80),
                     0x2000, -0xc0);
             }
-            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, motion);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, motion);
             Overlay064Scene_SpawnRewardEffect(scene, &savedPosition);
             VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x18),
                                  &destination);
@@ -610,7 +610,7 @@ s32 Overlay064Scene_UpdateMode1(void *scene)
                         (u8 *)data_021052fc + 0x2fbc),
                     actor, -F(s32, scene, 0x80), 0x2000, -0xc0);
             }
-            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, effect);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, effect);
             Sound_StopAllDirectSequences(gSoundContext, 0);
             Sound_PlayDirectSequence(gSoundContext, 0x27, 0x7f);
         }
@@ -675,7 +675,7 @@ s32 Overlay064Scene_UpdateMode2(void *scene)
                         (u8 *)data_021052fc + 0x2fbc),
                     actor, -F(s32, scene, 0x80), 0x2000, -0xc0);
             }
-            PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, effect);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, effect);
             DisplayBrightness_StartTransition(
                 DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0),
                 0, -0x10, 0x3c);

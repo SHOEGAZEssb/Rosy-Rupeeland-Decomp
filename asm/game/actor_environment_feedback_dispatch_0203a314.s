@@ -10,7 +10,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern func_02008514
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern TimedSpriteOffsetPresentation_Init
 .extern TimedSpriteSampledArcPresentation_Init
 .extern Actor_QueryTerrainHeight
@@ -282,7 +282,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
 .L_0203a6dc:
     ldr r0, .L_0203a8b0
     ldr r0, [r0, #0x4]
@@ -333,7 +333,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
 .L_0203a79c:
     ldr r0, .L_0203a8b0
     sub r1, r4, #0x1
@@ -382,7 +382,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
 .L_0203a854:
     ldr r0, .L_0203a8b0
     ldr r0, [r0, #0x4]

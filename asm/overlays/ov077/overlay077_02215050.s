@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern data_ov077_02216fc8
 .extern VecFx32Object_Assign
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_PlayHorizontalSpatialSound
 .extern func_020a2844
 .extern func_ov077_02213768
@@ -77,7 +77,7 @@ func_ov077_02215050:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x3
     str r1, [sp, #0x0]
     ldr r1, [r5, #0x24]

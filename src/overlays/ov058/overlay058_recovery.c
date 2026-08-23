@@ -22,7 +22,7 @@ extern "C" {
 #endif
 
 
-extern void *func_0201df44(void *, void *);
+extern void *RuntimePresentationManager_AppendSecondListEffect(void *, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
@@ -505,7 +505,7 @@ void *func_ov058_0220f484(void)
 {
     void *scene = Heap_Alloc(0xb0, data_ov058_0220fd04, 4, gHeapContext);
     if (scene) scene = func_ov058_0220e840(scene, (u8 *)data_021052fc + 0x2fbc);
-    func_0201df44((u8 *)data_021052fc + 0x2f7c, scene);
+    RuntimePresentationManager_AppendSecondListEffect((u8 *)data_021052fc + 0x2f7c, scene);
     return scene;
 }
 

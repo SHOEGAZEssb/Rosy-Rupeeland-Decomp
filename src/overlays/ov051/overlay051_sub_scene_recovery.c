@@ -58,7 +58,7 @@ extern "C" void func_020afd28(volatile void *registers,
 extern "C" void *Heap_Alloc(u32 size, const void *tag, u32 alignment,
                              void *heap);
 extern "C" void Heap_Free(void *allocation);
-extern "C" void func_0201df44(void *manager, void *object);
+extern "C" void RuntimePresentationManager_AppendSecondListEffect(void *manager, void *object);
 
 extern "C" void *OverlayManager_GetGlobal(void);
 extern "C" void OverlayManager_UnloadOverlay(void *manager, s32 slot);
@@ -158,7 +158,7 @@ extern "C" void *func_ov051_0220daa4(s32 first, s32 second, s32 third)
 
     if (scene != 0)
         scene = func_ov051_0220d878(scene, first, second, third);
-    func_0201df44(*(u8 **)data_021052fc + 0x2f7c, scene);
+    RuntimePresentationManager_AppendSecondListEffect(*(u8 **)data_021052fc + 0x2f7c, scene);
     return scene;
 }
 

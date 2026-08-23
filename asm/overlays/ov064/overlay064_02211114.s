@@ -10,7 +10,7 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_02022cb0
 .extern ActorDerivedType1_ApplyResourceIndex
 .extern Actor_ReplaceAttachmentSlotResource
@@ -121,7 +121,7 @@ Overlay064Scene_UpdateMode1:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     ldr r0, .L_02211360
     mov r1, #0x0
     ldr r0, [r0, #0x0]

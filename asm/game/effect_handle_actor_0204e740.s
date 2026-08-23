@@ -2,7 +2,7 @@
 .extern Heap_Free
 .extern data_020e2458
 .extern data_021052fc
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern PresentationBackedActor_InitBase
 .extern PresentationBackedActor_Destroy
 .extern func_0204d858
@@ -44,7 +44,7 @@ func_0204e774: ; 0x0204e774
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r5
     bl func_020a2310
 .L_0204e7b4:
@@ -72,7 +72,7 @@ EffectHandleActor_Delete: ; 0x0204e7cc
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r5
     bl func_020a2310
 .L_0204e80c:
@@ -100,7 +100,7 @@ func_0204e82c: ; 0x0204e82c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, r4, #0x100
     ldrh r2, [r1, #0xec]
     cmp r2, #0x0

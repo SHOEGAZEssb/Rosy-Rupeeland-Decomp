@@ -9,15 +9,15 @@
 .extern func_0201dc18
 .extern func_0201dc58
 .extern func_0201dde4
-.extern func_0201dee0
+.extern FieldEffectList_Append
 .extern func_0201df64
 .extern gRuntimePresentationListVTable
 .extern gRuntimePresentationListNodeAllocationTag
 .extern gRuntimePresentationAuxiliaryAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global func_0201dee0
-func_0201dee0: ; 0x0201dee0
+.global FieldEffectList_Append
+FieldEffectList_Append: ; 0x0201dee0
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     mov r5, r0
@@ -45,4 +45,4 @@ L_0201df3c: .word gRuntimePresentationListNodeAllocationTag
 L_0201df40: .word gHeapContext
 
 
-.size func_0201dee0, . - func_0201dee0
+.size FieldEffectList_Append, . - FieldEffectList_Append

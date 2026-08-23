@@ -40,7 +40,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animatio
 extern void ActorDerivedType1_ResetSpecialModeFlags(void *actor);
 extern void func_02063820(void *state, u32 value);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
-extern void *func_0201e0ec(void *state);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *state);
 extern void func_020a25c8(void *object, s32 first, s32 x, s32 y,
                           s32 width, s32 height, s32 kind);
 extern void ActorFeedback_ProcessSnapshotCell(const void *snapshot);
@@ -236,7 +236,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                 Sound_Play(gSoundContext, *(u16 *)(descriptor + 0x1a) >> 7,
                            *(u16 *)(descriptor + 0x1a) & 0x7f);
             for (i = 0; i < 4; ++i) {
-                void *effect = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+                void *effect = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
                 func_020a25c8(effect, 0,
                               (*(s32 *)(actor + 0x1c) >> 12) - 0x10,
                               (*(s32 *)(actor + 0x20) >> 12) -

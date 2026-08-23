@@ -45,7 +45,7 @@ extern DisplayBrightnessPair gDisplayBrightnessPair;
 
 extern void GX_HBlankIntr(UNKNOWN_PARAMETERS);
 extern void GX_VBlankIntr(UNKNOWN_PARAMETERS);
-extern void *func_0201e0ec(UNKNOWN_PARAMETERS);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(UNKNOWN_PARAMETERS);
 extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void func_0204d308(UNKNOWN_PARAMETERS);
 extern void Sound_StopAllDirectSequences(UNKNOWN_PARAMETERS);
@@ -180,7 +180,7 @@ void func_ov090_02217d70(void *self)
         TITLE_TIMER(self) = 0;
         GX_VBlankIntr(0);
         GX_HBlankIntr(0);
-        func_0209a748(func_0201e0ec(runtime + 0x2f7c), 2);
+        func_0209a748(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 2);
         GX_VBlankIntr(1);
         GX_HBlankIntr(1);
         DisplayBrightness_StartTransition(
@@ -588,7 +588,7 @@ void func_ov090_02217d70(void *self)
         VecFx32Object_Assign((VecFx32Object *)((u8 *)self + 0x20c),
                              (VecFx32Object *)((u8 *)primaryActor + 0x18));
         if ((TITLE_TIMER(self) & 3) == 0)
-            func_020a29ac(func_0201e0ec(runtime + 0x2f7c), 0,
+            func_020a29ac(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
                           FIELD(s32, primaryActor, 0x1c) >> 12,
                           ((FIELD(s32, primaryActor, 0x20) >> 12) -
                            (FIELD(s32, primaryActor, 0x24) >> 12)) - 0x3c);
@@ -626,7 +626,7 @@ void func_ov090_02217d70(void *self)
                 FIELD(u16, TITLE_SPRITE(self), 0x24) |= 4;
             }
         } else if ((TITLE_TIMER(self) % 10) == 0) {
-            func_020a28e0(func_0201e0ec(runtime + 0x2f7c), 1,
+            func_020a28e0(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 1,
                           FIELD(s32, primaryActor, 0x1c) >> 12,
                           ((FIELD(s32, primaryActor, 0x20) >> 12) -
                            (FIELD(s32, primaryActor, 0x24) >> 12)) - 0x1c,
@@ -649,7 +649,7 @@ void func_ov090_02217d70(void *self)
                 if ((FIELD(u8, self, 0x222) & 2) == 0) {
                     TITLE_STATE(self) = 0x12;
                     for (i = 0; i < 3; i++)
-                        func_020a2844(func_0201e0ec(runtime + 0x2f7c), 0,
+                        func_020a2844(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
                                       FIELD(s32, self, 0x228) >> 12,
                                       (FIELD(s32, self, 0x22c) >> 12) -
                                           (FIELD(s32, self, 0x230) >> 12),
@@ -661,7 +661,7 @@ void func_ov090_02217d70(void *self)
                         void *actor = TITLE_PARTICIPANT(self, i);
                         FIELD(u16, actor, 0x2f2) |= 0x40;
                         func_020a2844(
-                            func_0201e0ec(runtime + 0x2f7c), 0,
+                            RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 0,
                             FIELD(s32, actor, 0x1c) >> 12,
                             (FIELD(s32, actor, 0x20) >> 12) -
                                 (FIELD(s32, actor, 0x24) >> 12),

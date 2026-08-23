@@ -14,7 +14,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *owner,
                            s32 value, s32 first, s32 second);
-extern void PresentationList_AppendObject(void *manager, void *object);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *object);
 extern void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *actor);
 extern void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern void Type1Actor_TryEnterFailureState(void *actor);
@@ -71,7 +71,7 @@ void ActorDerivedType1_DispatchInteractionAmount(void *self, s32 amount, void *s
             effect = func_02022cb0(allocation, resource, actor, negative,
                                    0x2000, -0xc0);
         }
-        PresentationList_AppendObject(data_021052fc + 0x2f7c, effect);
+        RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, effect);
         descriptor = *(u8 **)(source + 0x1fc);
         if (*(s16 *)descriptor == 0x21 || *(s16 *)descriptor == 0x22 ||
             *(s16 *)descriptor == 0x2e || *(s16 *)descriptor == 0x2f ||

@@ -9,10 +9,10 @@
 .extern GX_SetGraphicsMode
 .extern gRuntimePresentationListVTable
 .extern data_021052fc
-.global func_0201e0ec
-func_0201e0ec: ; 0x0201e0ec
+.global RuntimePresentationManager_GetGraphics3dPresentation
+RuntimePresentationManager_GetGraphics3dPresentation: ; 0x0201e0ec
     ldr r0, [r0, #0x20]
     bx lr
 
 
-.size func_0201e0ec, . - func_0201e0ec
+.size RuntimePresentationManager_GetGraphics3dPresentation, . - RuntimePresentationManager_GetGraphics3dPresentation

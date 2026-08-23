@@ -3,7 +3,7 @@
 .extern gTrackedResourceActorSpriteEffectAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
@@ -23,7 +23,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r1, [r6, #0x1fc]
     ldrsb r5, [r1, #0x12]
     cmp r5, #0x1e

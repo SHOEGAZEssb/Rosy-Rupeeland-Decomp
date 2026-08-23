@@ -52,7 +52,7 @@ extern u8 *GraphicsSpriteGroup_CreateState(void *resource, s32 field08, s32 fiel
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
 extern void GraphicsSpriteGroup_ReleaseState(void *spriteOwner);
 extern void *ActorMotionAreaFollower_GetPosition(void *source);
-extern void func_0201df44(void *manager, void *entry);
+extern void RuntimePresentationManager_AppendSecondListEffect(void *manager, void *entry);
 #ifdef __cplusplus
 }
 #endif
@@ -165,5 +165,5 @@ void DirectSpriteTrackPresentation_SpawnAndRegister(
             self, selector, field0c, field10, field08, spriteValue, x, y,
             signedField, field28, field3a, (s32)position);
     }
-    func_0201df44(data_021052fc + 0x2f7c, self);
+    RuntimePresentationManager_AppendSecondListEffect(data_021052fc + 0x2f7c, self);
 }

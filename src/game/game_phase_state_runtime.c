@@ -12,7 +12,7 @@ extern void GamePhaseVisualEffect_PrepareBackground(void *object);
 extern void GamePhaseRegionTable_Destroy(void *object);
 extern void func_0201de4c(void *object);
 extern void func_0201de8c(void *object, u16 vcount);
-extern void *func_0201e0ec(void *object);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
 extern void ActorCollectionActivation_DestroyReservedSlot(void *object);
 extern void ActorDerivedType1_ClearFailureCounter(void *object);
@@ -70,7 +70,7 @@ void GamePhaseState_ResetActivePhase(GamePhaseState *self)
     *(u16 *)(work + 0x20e) = 0;
     GamePhaseRegionTable_Destroy(self->helper_2f80);
     func_0201df64(self->renderHelperStorage);
-    func_0201e0ec(self->renderHelperStorage);
+    RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
     func_020a2324();
     ActorFeedback_DestroyPresentations();
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x24))(self->phaseObject, 0);
@@ -122,7 +122,7 @@ void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
         GX_SetGraphicsMode(1, 0, 0);
     }
     *(volatile u32 *)0x04000000 &= ~0x38000000;
-    render = func_0201e0ec(self->renderHelperStorage);
+    render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
     if ((s32)(*(u32 *)(config + 0x40) << 8) < 0 && use3dMode)
         func_020a23a8(render, 1, 1);
     else

@@ -20,10 +20,10 @@
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RectS32_Set
 .extern func_0201d240
-.extern PresentationList_AppendObject
-.extern func_0201df54
-.extern func_0201df5c
-.extern func_0201e0ec
+.extern RuntimePresentationManager_AppendFirstListEffect
+.extern RuntimePresentationManager_GetFirstListNodeEffect
+.extern RuntimePresentationManager_GetSecondListNodeEffect
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern TimedSpriteBurstManager_Init
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern DirectSpriteTrackPresentation_SpawnAndRegister
@@ -188,7 +188,7 @@ L_02014558:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_0201553c
 L_02014570:
     ldr r1, L_020154c8
@@ -220,7 +220,7 @@ L_020145cc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_0201553c
 L_020145e8:
     ldr r1, L_020154c8
@@ -254,7 +254,7 @@ L_0201464c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_0201553c
 L_02014668:
     bl OverlayManager_GetGlobal
@@ -500,7 +500,7 @@ L_020149c0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     add r0, sp, #0x80
     bl VecFx32Object_Destroy
     b L_0201553c
@@ -643,7 +643,7 @@ L_02014bc4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     add r0, sp, #0x60
     bl VecFx32Object_Destroy
     add r0, sp, #0x70
@@ -788,7 +788,7 @@ L_02014dd0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     add r0, sp, #0x40
     bl VecFx32Object_Destroy
     add r0, sp, #0x50
@@ -799,7 +799,7 @@ L_02014dfc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r6, [sp, #0x0]
     mov r1, r9
     mov r2, r8
@@ -817,7 +817,7 @@ L_02014e40:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r6, [sp, #0x0]
     mov r1, r9
     mov r2, r8
@@ -835,7 +835,7 @@ L_02014e84:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
     mov r2, r8
     mov r3, r7
@@ -846,7 +846,7 @@ L_02014eac:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r7, [sp, #0x0]
     str r6, [sp, #0x4]
     mov r1, r9
@@ -860,7 +860,7 @@ L_02014ee0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
     mov r2, r8
     mov r3, r7
@@ -872,7 +872,7 @@ L_02014f0c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
     mov r2, r8
     mov r3, r7
@@ -883,7 +883,7 @@ L_02014f34:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
     mov r2, r8
     mov r3, r7
@@ -895,7 +895,7 @@ L_02014f60:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
     mov r2, r8
     mov r3, r7
@@ -906,7 +906,7 @@ L_02014f88:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
     mov r2, r8
     mov r3, r7
@@ -918,7 +918,7 @@ L_02014fb4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r6, [sp, #0x0]
     mov r1, r9
     mov r2, r8
@@ -931,7 +931,7 @@ L_02014fe4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r6, [sp, #0x0]
     str r5, [sp, #0x4]
     mov r1, r9
@@ -945,7 +945,7 @@ L_02015018:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, r9
     bl func_020a2310
     b L_0201553c
@@ -976,7 +976,7 @@ L_02015088:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_0201553c
 L_020150a4:
     bl OverlayManager_GetGlobal
@@ -1049,7 +1049,7 @@ L_02015144:
     mov r1, r4
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df5c
+    bl RuntimePresentationManager_GetSecondListNodeEffect
     mov r5, r0
     ldr r0, L_020154d0
     mov r1, #0x1
@@ -1069,7 +1069,7 @@ L_020151e4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df5c
+    bl RuntimePresentationManager_GetSecondListNodeEffect
     ldr r1, L_020154d0
     mov r4, r0
     ldr r0, [r1, #0x0]
@@ -1109,14 +1109,14 @@ L_02015238:
     mov r1, r5
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df54
+    bl RuntimePresentationManager_GetFirstListNodeEffect
     ldr r1, L_020154d0
     mov r4, r0
     ldr r0, [r1, #0x0]
     mov r1, r8
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df5c
+    bl RuntimePresentationManager_GetSecondListNodeEffect
     mov r6, r0
     mov r0, r4
     bl func_ov054_0220ef78
@@ -1222,7 +1222,7 @@ L_0201542c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_0201553c
 L_02015444:
     bl OverlayManager_GetGlobal

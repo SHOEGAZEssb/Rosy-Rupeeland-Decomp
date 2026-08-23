@@ -57,8 +57,8 @@ extern "C" void ActorContactState_AddContact(void *, void *, s32);
 extern "C" void ActorDerivedType1_StartRecord(void *, s32);
 extern "C" void *ActorMotionAreaFollower_GetPosition(void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
-extern "C" void PresentationList_AppendObject(void *, void *);
-extern "C" void *func_0201e0ec(void *);
+extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
+extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
 extern "C" void *func_02022cb0(void *, const void *, void *, s32, s32, s32);
 extern "C" void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern "C" s32 Actor_GetGravityAcceleration(void *);
@@ -416,7 +416,7 @@ extern "C" void func_ov082_022132e8(void *a) {
     if (ActorExtendedType2_GetDescriptorValue25(a) != 1 ||
         !func_ov082_0221340c(a))
         return;
-    void *e = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+    void *e = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
     s32 x = (F(s32, a, 0x1c) >> 12) - 12,
         y = (F(s32, a, 0x20) >> 12) - (F(s32, a, 0x24) >> 12);
     for (s32 i = 0; i < 5; i++) {
@@ -502,7 +502,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
                                           ActorMotionAreaFollower_GetPosition(
                                               (u8 *)data_021052fc + 0x2fbc),
                                           other, -amount, 0x2000, -0xc0);
-                    PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c,
+                    RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c,
                                                   p);
                 }
                 u16 snd = data_020e6e68[F(u16, a, 0x4e)];
@@ -517,7 +517,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
             func_ov082_022139f4(pos, (u8 *)a + 0x18, scaled);
             F(s32, pos, 8) += 0x18000 - F(s32, pos, 12);
             EffectManager_SubmitPointEffect(
-                func_0201e0ec((u8 *)data_021052fc + 0x2f7c), 1, F(s32, pos, 4),
+                RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 1, F(s32, pos, 4),
                 F(s32, pos, 8), 0);
             VecFx32Object_Destroy(pos);
             VecFx32Object_Destroy(scaled);
@@ -648,7 +648,7 @@ extern "C" void func_ov082_02213f64(void *a) {
             ActorExtendedType2_GetDescriptorValue25(a) == 1 &&
             F(s16, a, 0x29a) % 3 == 0) {
             u32 r = genrand_int32();
-            func_020a28e0(func_0201e0ec((u8 *)data_021052fc + 0x2f7c), 1,
+            func_020a28e0(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 1,
                           (F(s32, a, 0x1c) >> 12) - 12 +
                               (s32)(func_020bf1f8(r, 24) >> 32),
                           (F(s32, a, 0x20) >> 12) - (F(s32, a, 0x24) >> 12) -

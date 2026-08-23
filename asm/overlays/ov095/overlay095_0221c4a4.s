@@ -4,7 +4,7 @@
 .extern gActorRuntimeCollection
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetOwningCollection
 .extern Actor_PlayHorizontalSpatialSound
@@ -103,7 +103,7 @@ func_ov095_0221c4a4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x0
     str r1, [sp, #0x0]
     ldr r3, [sp, #0x20]

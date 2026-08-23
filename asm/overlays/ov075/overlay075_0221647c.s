@@ -10,7 +10,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02022cb0
 .extern Actor_TurnTowardVector
@@ -196,7 +196,7 @@ func_ov075_0221647c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     ldr r0, .L_02216890
     rsb r1, r7, #0x0
     ldr r0, [r0, #0x0]

@@ -33,8 +33,8 @@ extern void *OverlayManager_GetGlobal(void);
 extern void OverlayManager_UnloadOverlay(void *, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
-extern void *func_0201df44(void *, void *);
-extern void PresentationList_AppendObject(void *, void *);
+extern void *RuntimePresentationManager_AppendSecondListEffect(void *, void *);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
 extern void *GamePhaseState_GetConfiguration(void *);
@@ -251,7 +251,7 @@ void func_ov054_0220e9bc(s32 variant, s32 enabled)
 {
     void *object = Heap_Alloc(0x1b8, data_ov054_0220f150, 4, gHeapContext);
     if (object != 0) object = func_ov054_0220e68c(object, variant, enabled);
-    func_0201df44((u8 *)data_021052fc + 0x2f7c, object);
+    RuntimePresentationManager_AppendSecondListEffect((u8 *)data_021052fc + 0x2f7c, object);
 }
 
 /* Forward one scanline index to the first presentation. */
@@ -425,7 +425,7 @@ void func_ov054_0220ef80(void *owner)
     void *object = Heap_Alloc(0x50, data_ov054_0220f150, 4, gHeapContext);
     if (object != 0) object = func_ov054_0220ec6c(object, owner);
     data_ov054_0220f160 = object;
-    PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, object);
+    RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, object);
 }
 
 /* Intentional no-op callback; the presentation remains unchanged. */

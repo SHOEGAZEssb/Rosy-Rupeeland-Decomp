@@ -13,7 +13,7 @@ extern "C" {
 extern void ActorTableRecord_UpdateFrame(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 extern void ActorRegisteredSubclass_EnterState2(void *actor);
-extern void *func_0201e0ec(void *manager);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 #ifdef __cplusplus
 }
@@ -69,7 +69,7 @@ void ActorRegisteredSubclass_UpdateFrame(void *self)
         }
         if (timer[0] % 15 == 2) {
             u32 random = genrand_int32();
-            void *effect = func_0201e0ec(data_021052fc + 0x2f7c);
+            void *effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
             s32 x = (*(s32 *)(actor + 0x1c) >> 12) - 2 +
                     (s32)(random & 3);
             s32 y = (*(s32 *)(actor + 0x20) >> 12) -

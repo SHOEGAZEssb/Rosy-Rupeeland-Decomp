@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_0209c430
 
 .global func_ov069_02211274
@@ -159,7 +159,7 @@ func_ov069_02211274:
     add r0, r0, #0x2c00
     str r9, [r10, #0x0]
     str r5, [r10, #0x4]
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x5a
     mov r9, r0
     sub r10, r1, #0x1

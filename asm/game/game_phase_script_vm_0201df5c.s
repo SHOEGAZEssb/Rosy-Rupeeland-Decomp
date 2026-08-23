@@ -9,17 +9,17 @@
 .extern func_0201dc18
 .extern func_0201dc58
 .extern func_0201dde4
-.extern func_0201dee0
+.extern FieldEffectList_Append
 .extern func_0201df64
 .extern gRuntimePresentationListVTable
 .extern gRuntimePresentationListNodeAllocationTag
 .extern gRuntimePresentationAuxiliaryAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global func_0201df5c
-func_0201df5c: ; 0x0201df5c
+.global RuntimePresentationManager_GetSecondListNodeEffect
+RuntimePresentationManager_GetSecondListNodeEffect: ; 0x0201df5c
     ldr r0, [r1, #0x8]
     bx lr
 
 
-.size func_0201df5c, . - func_0201df5c
+.size RuntimePresentationManager_GetSecondListNodeEffect, . - RuntimePresentationManager_GetSecondListNodeEffect

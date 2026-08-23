@@ -30,7 +30,7 @@ extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 extern void func_ov049_0220c124(void *object);
 extern void func_ov069_022109c4(void *object);
-extern void *func_0201e0ec(void *object);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void func_0209a748(void *resource, s32 mode);
 extern void *func_0209a208(void *owner, s32 firstId, s32 secondId,
                            s32 thirdId, void *context, s32 mode);
@@ -76,7 +76,7 @@ extern "C" void *func_ov039_02200cd8(void *scene, void *owner, s32 variant)
     FIELD(void *, scene, 0x48) = owner;
     FIELD(void *, scene, 0xb0c) = owner;
     FIELD(void *, scene, 0xbc) = owner;
-    func_0209a748(func_0201e0ec((u8 *)FIELD(void *, data_021052fc, 0) +
+    func_0209a748(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
                                 0x2f7c), 7);
     FIELD(s32, scene, 0x30) = 0x200000;
     FIELD(s32, scene, 0x34) = 0x118000;

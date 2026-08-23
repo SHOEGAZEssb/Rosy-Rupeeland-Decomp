@@ -14,7 +14,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32 size, const void *tag, u32 align, void *heap);
-extern void *func_0201e0ec(void *manager);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void AuxiliaryTimedSpritePresentation_Init(void *storage, const void *position, void *context,
                           u16 id, u16 value0, u16 value1, s32 arg0,
                           s32 arg1, s32 arg2, s32 arg3);
@@ -50,7 +50,7 @@ extern void func_020a291c(void *manager, s32 subtype, s32 x, s32 y);
 void TrackedResourceActor_EmitRecordEffects(void *actor)
 {
     void *record = FIELD(void *, actor, 0x1fc);
-    void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+    void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
     s32 selector = FIELD(s8, record, 0x12);
     s32 x = FIELD(s32, actor, 0x1c) >> 12;
     s32 y = (FIELD(s32, actor, 0x20) >> 12) -

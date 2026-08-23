@@ -2602,7 +2602,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201d9e4.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201da20.o: mwasmarm asm/game/game_phase_script_vm_0201da20.s
 build build/decomp/asm/game/game_phase_script_vm_0201da34.o: mwasmarm asm/game/game_phase_script_vm_0201da34.s
 build build/decomp/asm/game/game_phase_script_vm_0201da9c.o: mwasmarm asm/game/game_phase_script_vm_0201da9c.s
-build build/decomp/src/game/runtime_presentation_manager.o: mwccarm src/game/runtime_presentation_manager.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/runtime_presentation_manager.o: mwccarm src/game/runtime_presentation_manager.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/runtime_presentation_manager.h include/tingle/types.h
   source = src/game/runtime_presentation_manager.c
   cflags = $runtime_presentation_manager_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201dbc8.o: mwasmarm asm/game/game_phase_script_vm_0201dbc8.s
@@ -2622,7 +2622,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201df44.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201df54.o: mwasmarm asm/game/game_phase_script_vm_0201df54.s
 build build/decomp/asm/game/game_phase_script_vm_0201df5c.o: mwasmarm asm/game/game_phase_script_vm_0201df5c.s
 build build/decomp/asm/game/game_phase_script_vm_0201df64.o: mwasmarm asm/game/game_phase_script_vm_0201df64.s
-build build/decomp/src/game/runtime_presentation_dispatch.o: mwccarm src/game/runtime_presentation_dispatch.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/runtime_presentation_dispatch.o: mwccarm src/game/runtime_presentation_dispatch.c | include/tingle/field_effect.h include/tingle/heap.h include/tingle/runtime_presentation_manager.h include/tingle/types.h
   source = src/game/runtime_presentation_dispatch.c
   cflags = $runtime_presentation_dispatch_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201dff0.o: mwasmarm asm/game/game_phase_script_vm_0201dff0.s
@@ -7878,35 +7878,35 @@ build build/reports/game_phase_script_vm_0201ded4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201ded4.o
 build build/reports/game_phase_script_vm_0201ded4.txt: match_report build/reports/game_phase_script_vm_0201ded4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201ded4.json
-  report_args = --section .text --function PresentationList_AppendObject --require-exact
+  report_args = --section .text --function RuntimePresentationManager_AppendFirstListEffect --require-exact
 
 build build/reports/game_phase_script_vm_0201dee0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201dee0.o | build/decomp/asm/game/game_phase_script_vm_0201dee0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201dee0.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201dee0.o
 build build/reports/game_phase_script_vm_0201dee0.txt: match_report build/reports/game_phase_script_vm_0201dee0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201dee0.json
-  report_args = --section .text --function func_0201dee0 --require-exact
+  report_args = --section .text --function FieldEffectList_Append --require-exact
 
 build build/reports/game_phase_script_vm_0201df44.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201df44.o | build/decomp/asm/game/game_phase_script_vm_0201df44.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201df44.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201df44.o
 build build/reports/game_phase_script_vm_0201df44.txt: match_report build/reports/game_phase_script_vm_0201df44.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201df44.json
-  report_args = --section .text --function func_0201df44 --require-exact
+  report_args = --section .text --function RuntimePresentationManager_AppendSecondListEffect --require-exact
 
 build build/reports/game_phase_script_vm_0201df54.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201df54.o | build/decomp/asm/game/game_phase_script_vm_0201df54.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201df54.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201df54.o
 build build/reports/game_phase_script_vm_0201df54.txt: match_report build/reports/game_phase_script_vm_0201df54.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201df54.json
-  report_args = --section .text --function func_0201df54 --require-exact
+  report_args = --section .text --function RuntimePresentationManager_GetFirstListNodeEffect --require-exact
 
 build build/reports/game_phase_script_vm_0201df5c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201df5c.o | build/decomp/asm/game/game_phase_script_vm_0201df5c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201df5c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201df5c.o
 build build/reports/game_phase_script_vm_0201df5c.txt: match_report build/reports/game_phase_script_vm_0201df5c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201df5c.json
-  report_args = --section .text --function func_0201df5c --require-exact
+  report_args = --section .text --function RuntimePresentationManager_GetSecondListNodeEffect --require-exact
 
 build build/reports/game_phase_script_vm_0201df64.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201df64.o | build/decomp/asm/game/game_phase_script_vm_0201df64.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201df64.o
@@ -7949,7 +7949,7 @@ build build/reports/game_phase_script_vm_0201e0ec.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201e0ec.o
 build build/reports/game_phase_script_vm_0201e0ec.txt: match_report build/reports/game_phase_script_vm_0201e0ec.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201e0ec.json
-  report_args = --section .text --function func_0201e0ec --require-exact
+  report_args = --section .text --function RuntimePresentationManager_GetGraphics3dPresentation --require-exact
 
 build build/reports/game_phase_script_vm_0201e0f4.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201e0f4.o | build/decomp/asm/game/game_phase_script_vm_0201e0f4.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201e0f4.o

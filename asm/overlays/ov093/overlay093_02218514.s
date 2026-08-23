@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov093_022187f0
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_UpdatePresentation
 .extern func_020a29ac
 
@@ -56,7 +56,7 @@ func_ov093_02218514:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r1, [r10, #0x210]
     mov r6, r0
     ldrb r1, [r1, #0x38]

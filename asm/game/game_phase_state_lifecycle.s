@@ -10,7 +10,7 @@
 .extern func_0201dbc8
 .extern func_0201dc98
 .extern func_0201df64
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_Init
 .extern ActorCollection_Destructor
 .extern ActorCollection_Deinit
@@ -120,7 +120,7 @@ GamePhaseState_ResetRuntime: ; 0x0200e61c
     bl func_0201df64
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     bl func_020a2324
     bl ActorFeedback_DestroyPresentations
     add r0, r4, #0x4

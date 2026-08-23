@@ -13,7 +13,7 @@ extern void *data_021052fc;
 extern "C" {
 #endif
 extern void Heap_Free(void *allocation);
-extern void *func_0201e0ec(void *manager);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void *PresentationBackedActor_InitBase(void *actor,
                                               const void *descriptor);
 extern void *PresentationBackedActor_Destroy(void *actor);
@@ -56,7 +56,7 @@ void *func_0204e774(void *self)
     FIELD(const void *, self, 0) = data_020e2458;
     s16 handle = FIELD(s16, self, 0x1fe);
     if (handle != -1) {
-        void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+        void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
         func_020a2310(manager, handle);
     }
     PresentationBackedActor_Destroy(self);
@@ -87,7 +87,7 @@ void *EffectHandleActor_Delete(void *self)
 void func_0204e82c(void *actor)
 {
     if (FIELD(u8, FIELD(void *, actor, 0x54), 0x38) >= 6) {
-        void *manager = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+        void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
         s32 x = FIELD(s32, actor, 0x1c) >> 12;
         s32 y = (FIELD(s32, actor, 0x20) >> 12) -
                 (FIELD(s32, actor, 0x24) >> 12);

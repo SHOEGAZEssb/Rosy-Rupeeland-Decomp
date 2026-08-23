@@ -116,7 +116,7 @@ extern void *ActorAttachmentManager_GetEventQueue(void *manager);
 extern void AuxiliaryInteraction_FinalizeResult(void *resource, s32 index);
 extern void *func_02022cb0(void *allocation, const void *camera, void *owner,
                            s32 velocity, s32 scale, s32 offset);
-extern void PresentationList_AppendObject(void *manager, void *entry);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *entry);
 extern void AuxiliaryCore_ApplyScale(void *core, s32 value, s32 index);
 extern void *TimedSpriteConfig_InitTracks(void *config);
 extern void *func_0201ea20(void *allocation, void *owner, void *config,
@@ -128,7 +128,7 @@ extern void *AuxiliaryTimedSpritePresentation_Init(
     void *allocation, const void *position, void *group, s32 first,
     s32 second, s32 third, s32 spriteValue, s32 offset, s32 spriteByte,
     s32 registerWithManager);
-extern void *func_0201e0ec(void *manager);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void func_020a2a4c(void *manager, s32 first, s32 x, s32 y,
                           s32 velocityX, s32 velocityY, s32 kind);
 extern void func_020a27a0(void *manager, s32 first, s32 x, s32 y);
@@ -2247,7 +2247,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
                         effect,
                         ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc),
                         owner, -event[1], 0x2000, -0xc0);
-                PresentationList_AppendObject(data_021052fc + 0x2f7c, effect);
+                RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, effect);
                 switch (genrand_int32() & 3) {
                 case 0: AuxiliaryInteraction_PlaySpatialSound(self, 0x42); break;
                 case 1: AuxiliaryInteraction_PlaySpatialSound(self, 0x43); break;
@@ -2437,7 +2437,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
 
     *(u32 *)(self + 0x20) |= 0x10000;
     {
-        void *effectManager = func_0201e0ec(data_021052fc + 0x2f7c);
+        void *effectManager = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
         if (owner[0x4d] == 7) {
             u8 *state = *(u8 **)(owner + 0x29c);
             switch (*(s16 *)(state + 0x3c)) {
@@ -2556,7 +2556,7 @@ void AuxiliaryInteraction_ProcessTouchSamples(void *object, const void *touchObj
     u8 *self = (u8 *)object;
     const s32 *touch = (const s32 *)touchObject;
     u8 *manager = *(u8 **)(self + 0x44);
-    void *effectManager = func_0201e0ec(data_021052fc + 0x2f7c);
+    void *effectManager = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
 
     if (func_020ada8c((u32)*(s16 *)(self + 0xac), 5) == 0) {
         s32 quotient;

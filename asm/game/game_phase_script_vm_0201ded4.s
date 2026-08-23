@@ -9,18 +9,18 @@
 .extern func_0201dc18
 .extern func_0201dc58
 .extern func_0201dde4
-.extern func_0201dee0
+.extern FieldEffectList_Append
 .extern func_0201df64
 .extern gRuntimePresentationListVTable
 .extern gRuntimePresentationListNodeAllocationTag
 .extern gRuntimePresentationAuxiliaryAllocationTag
 .extern data_021052fc
 .extern gHeapContext
-.global PresentationList_AppendObject
-PresentationList_AppendObject: ; 0x0201ded4
+.global RuntimePresentationManager_AppendFirstListEffect
+RuntimePresentationManager_AppendFirstListEffect: ; 0x0201ded4
     ldr ip, L_0201dedc
     bx ip
-L_0201dedc: .word func_0201dee0
+L_0201dedc: .word FieldEffectList_Append
 
 
-.size PresentationList_AppendObject, . - PresentationList_AppendObject
+.size RuntimePresentationManager_AppendFirstListEffect, . - RuntimePresentationManager_AppendFirstListEffect

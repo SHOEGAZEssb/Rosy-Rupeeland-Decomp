@@ -9,7 +9,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_0209e328
 .extern func_0209e330
@@ -204,7 +204,7 @@ func_ov069_022119f8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r3, [r10, #0x48]
     mov r1, #0x8
     str r1, [sp, #0x0]
@@ -462,7 +462,7 @@ func_ov069_022119f8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r3, [r10, #0x48]
     mov r1, #0x0
     ldr r2, [r3, #0x34]

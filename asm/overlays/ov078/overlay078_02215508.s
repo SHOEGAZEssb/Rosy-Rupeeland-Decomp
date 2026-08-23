@@ -8,7 +8,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern TrackedResourceActor_SpawnFromKey
 .extern func_020a25c8
 .extern func_020adae4
@@ -110,7 +110,7 @@ func_ov078_02215508:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x20
     str r1, [sp, #0x0]
     mov r1, #0x18

@@ -19,7 +19,7 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_BindActor
 .extern GamePhaseCurrencyHud_GetCurrency
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_SetActive
 .extern func_0204d308
 .extern Sound_PlayDirectSequence
@@ -84,7 +84,7 @@ func_ov091_02217ce0:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldrb r1, [r4, #0x1ec]
     mov r6, r0
     cmp r1, #0xe

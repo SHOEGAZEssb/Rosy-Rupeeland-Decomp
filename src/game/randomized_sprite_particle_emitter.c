@@ -66,7 +66,7 @@ extern void VecFx32Object_InitCopy(void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void VecFx32_Subtract(void *, const void *, const void *);
 
-extern void *PresentationList_AppendObject(void *, void *);
+extern void *RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern void AnimationResourceState_ReleaseResources(void *);
 extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
@@ -284,7 +284,7 @@ void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
         &gHeapContext);
     if (self)
         self = func_02028b98(self, projection, &position, &target, frame);
-    result = PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
+    result = RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
     VecFx32Object_Destroy(&target);
     VecFx32Object_Destroy(&position);
     return result;

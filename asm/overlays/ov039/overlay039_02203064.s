@@ -1,6 +1,6 @@
 .text
 /* Exact fallback; see overlay039_script_render.c for portable C. */
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_0209c3b4
     .extern VecFx32Object_InitComponents
     .extern func_ov039_022014f8
@@ -18,7 +18,7 @@ func_ov039_02203064:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r4, r0
     bl func_0209c3b4
     mvn ip, #0xf

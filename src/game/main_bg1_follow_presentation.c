@@ -31,7 +31,7 @@ extern u8 *data_021052fc;
 extern void *data_020f4e18;
 extern u8 gMainBgPaletteBuffer[];
 
-extern void PresentationList_AppendObject(void *, void *);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern const u8 *GamePhaseGraphicsMetadata_GetByIndex(s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern void VecFx32Object_InitCopy(void *, const void *);
@@ -101,7 +101,7 @@ void func_02028630(void *target)
             &gHeapContext);
     if (self)
         self = func_02028544(self, target);
-    PresentationList_AppendObject(manager, self);
+    RuntimePresentationManager_AppendFirstListEffect(manager, self);
 }
 
 /*

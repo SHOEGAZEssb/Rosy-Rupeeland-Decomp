@@ -92,7 +92,7 @@ EXT(func_0200637c);
 EXT(func_020064b8);
 EXT(func_02007f0c);
 EXT(func_0201140c);
-EXT(func_0201e0ec);
+EXT(RuntimePresentationManager_GetGraphics3dPresentation);
 EXT(func_0201f864);
 EXT(func_0201fafc);
 EXT(func_02030acc);
@@ -1332,7 +1332,7 @@ extern "C" void func_ov092_02217ddc(void *scene)
     if (F(s32, manager, 4) == 2 || func_ov092_02218380(gGameWork, 0, 1) == 0)
         return;
     func_0200323c(gSceneManager);
-    func_0201e0ec(P(F(void *, data_021052fc, 0), 0x2f7c));
+    RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, data_021052fc, 0), 0x2f7c));
     func_ov092_02218394(gGameWork, 0, 0, F(s16, scene, 0x284));
     if (ActorDerivedType1_GetActiveRecordId(primary) == 0x68)
     {

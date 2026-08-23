@@ -7,7 +7,7 @@
 .extern VecFx32Triple_Set
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_020a2960
 .extern func_020befec
 .extern func_ov095_0221b6d8
@@ -77,7 +77,7 @@ func_ov095_0221b7c8:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r2, .L_0221ba34
     mov r1, #0x0
     str r2, [sp, #0x0]

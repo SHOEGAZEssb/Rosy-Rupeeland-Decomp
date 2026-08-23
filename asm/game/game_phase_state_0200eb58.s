@@ -3,7 +3,7 @@
 .extern GX_SetBankForBG
 .extern GX_SetGraphicsMode
 .extern GamePhaseVisualEffect_PrepareBackground
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_020a2348
 .extern func_020a23a8
 .extern func_020ae9a4
@@ -46,14 +46,14 @@ L_0200ebb0:
     add r0, r5, #0x358
     beq L_0200ebf4
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1
     mov r2, r1
     bl func_020a23a8
     b L_0200ec08
 L_0200ebf4:
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1
     mov r2, #0x0
     bl func_020a2348

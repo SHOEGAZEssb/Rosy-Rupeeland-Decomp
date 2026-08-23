@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern AnimationResource_Init
 .extern ActorMotionAreaFollower_GetPosition
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
 .extern func_0201e584
 .extern TimedSpriteConfig_InitTracks

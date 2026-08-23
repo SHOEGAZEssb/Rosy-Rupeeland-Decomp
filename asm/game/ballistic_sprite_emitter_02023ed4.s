@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_02023a8c
 .extern gHeapContext
 
@@ -44,7 +44,7 @@ func_02023ed4: ; 0x02023ed4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     cmp r4, #0x0
     beq .L_02023f64
     add r0, sp, #0x0

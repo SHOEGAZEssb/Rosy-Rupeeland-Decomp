@@ -23,7 +23,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *context, s32 value, s32 extra
 extern void *ActorMotionAreaFollower_GetPosition(void *manager);
 extern void *func_02022cb0(void *allocation, void *resource, void *actor,
                            s32 value, s32 first, s32 second);
-extern void PresentationList_AppendObject(void *manager, void *object);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void *object);
 extern void Sound_Play(void *context, u32 sound, u32 variant);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 extern u32 genrand_int32(void);
@@ -31,7 +31,7 @@ extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void func_02008378(void *output, const void *left, const void *right);
 extern void VecFx32Object_Destroy(void *vector);
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
-extern void *func_0201e0ec(void *manager);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void func_020a28e0(void *effect, s32 kind, s32 x, s32 y, s32 duration);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_ClearFlag(void *work, u32 flag);
@@ -144,7 +144,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
                 object = func_02022cb0(object, resource, actor, value,
                                       0x2000, -0xc0);
             }
-            PresentationList_AppendObject(data_021052fc + 0x2f7c, object);
+            RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, object);
             if (*(u16 *)(descriptor + 0x1a) != 0)
                 Sound_Play(gSoundContext, *(u16 *)(descriptor + 0x1a) >> 7,
                            *(u16 *)(descriptor + 0x1a) & 0x7f);
@@ -168,7 +168,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
                 AuxiliaryTimedSpritePresentation_Init(allocation, position, *(void **)attachment,
                               0x1075, 0x1001, 0x1076, 0, 16, -1, 1);
             }
-            effect = func_0201e0ec(data_021052fc + 0x2f7c);
+            effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
             func_020a28e0(effect, 1, position[1] >> 12,
                           (position[2] >> 12) - (position[3] >> 12), 30);
             VecFx32Object_Destroy(position);

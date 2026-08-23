@@ -23,7 +23,7 @@ extern void *data_020d6a24;
 extern u8 *data_021052fc;
 extern void *data_020f4e14;
 
-extern void PresentationList_AppendObject(void *, void *);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern const s32 *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 func_020befec(s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
@@ -46,7 +46,7 @@ TimedActorRectanglePresentation *func_02025120(
     self->firstExtent0c = (s16)firstExtent;
     self->secondExtent0e = (s16)secondExtent;
     self->remaining10 = lifetime;
-    PresentationList_AppendObject(data_021052fc + 0x2f7c, self);
+    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
     return self;
 }
 

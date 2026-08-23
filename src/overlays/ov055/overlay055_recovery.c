@@ -35,7 +35,7 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *VecFx32Object_Init(void *); extern void *VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void *VecFx32Object_Assign(void *, const void *); extern void *VecFx32Object_Destroy(void *);
-extern void PresentationList_AppendObject(void *, void *);
+extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern void *OverlayManager_GetGlobal(void); extern void OverlayManager_UnloadOverlay(void *, s32);
 extern void *func_02071568(void *, u32); extern void *func_020716bc(void *, u32);
 extern void *func_020718dc(void *, u32); extern void *GraphicsBgResourceData_GetDecoded(void *);
@@ -182,7 +182,7 @@ void func_ov055_0220eefc(void *scene, const void *v)
 void *func_ov055_0220ef6c(void)
 {
     void *scene=Heap_Alloc(0x30,data_ov055_0220f088,4,gHeapContext); if(scene){u8 *runtime=(u8*)data_021052fc; scene=func_ov055_0220e8b8(scene,runtime+0x2fbc,func_02027e8c(GamePhaseProgress_GetOrCreateGlobal()));}
-    PresentationList_AppendObject((u8*)data_021052fc+0x2f7c,scene); return scene;
+    RuntimePresentationManager_AppendFirstListEffect((u8*)data_021052fc+0x2f7c,scene); return scene;
 }
 
 /* Submit or release both collection sprite groups. */

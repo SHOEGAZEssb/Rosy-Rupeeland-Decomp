@@ -4,7 +4,7 @@
 .extern gDirectSpriteTrackPresentationAllocationTag
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
-.extern func_0201df44
+.extern RuntimePresentationManager_AppendSecondListEffect
 .extern DirectSpriteTrackPresentation_Init
 .extern gHeapContext
 
@@ -55,7 +55,7 @@ DirectSpriteTrackPresentation_SpawnAndRegister: ; 0x0201fe68
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df44
+    bl RuntimePresentationManager_AppendSecondListEffect
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .L_0201ff20: .word gDirectSpriteTrackPresentationAllocationTag

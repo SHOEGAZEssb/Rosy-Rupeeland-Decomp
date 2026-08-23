@@ -18,7 +18,7 @@ extern "C" u8 data_ov050_0220e3f0[];
 extern "C" void *Heap_Alloc(u32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
 
-extern "C" void PresentationList_AppendObject(void *, void *);
+extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern "C" void AnimationResourceState_InitEmbedded(void *);
 extern "C" void AnimationResourceState_Destroy(void *);
 extern "C" void func_02071ee0(void *, void *, s32, s32, s32);
@@ -260,6 +260,6 @@ extern "C" void *func_ov050_0220e1a0(void *argument,
 
     if (scene != 0)
         scene = func_ov050_0220db84(scene, argument, origin, resources);
-    PresentationList_AppendObject((u8 *)data_021052fc + 0x2f7c, scene);
+    RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, scene);
     return scene;
 }

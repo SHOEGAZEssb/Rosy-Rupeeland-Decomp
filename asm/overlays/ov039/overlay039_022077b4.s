@@ -13,7 +13,7 @@
     .extern func_ov039_022013e8
     .extern func_ov039_02205c18
     .extern VecFx32Object_Destroy
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_020a27a0
     .extern func_ov039_02206ae0
     .extern VecFx32Object_Add
@@ -307,7 +307,7 @@ L_02207bc0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r1, [r5, #0x34]
     ldr r2, [r5, #0x30]
     sub r1, r1, #0x20000

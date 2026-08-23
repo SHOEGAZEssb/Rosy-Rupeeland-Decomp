@@ -55,7 +55,7 @@ extern "C" void *OverlayManager_GetGlobal(void);
 extern "C" void OverlayManager_LoadOverlay(void *, s32, const void *);
 extern "C" void GameWork_SetFlag(void *, s32);
 extern "C" void GameWork_ClearFlag(void *, s32);
-extern "C" void *func_0201e0ec(void *);
+extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
 extern "C" void Sound_PlayDirectSequence(void *, s32, s32);
 extern "C" void Sound_StopDirectSequence(void *, s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
@@ -64,7 +64,7 @@ extern "C" void func_020a2844(void *, ...);
 extern "C" s32 GamePhaseCurrencyHud_GetCurrency(void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern "C" void *func_02022cb0(void *, ...);
-extern "C" void PresentationList_AppendObject(void *, void *);
+extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern "C" void Type1Actor_TryEnterFailureState(void *);
 extern "C" void func_ov060_0220fd54(void *, void *, s32);
 extern "C" void func_ov076_02213740(void *);
@@ -240,7 +240,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
     func_0204d308(actor);
     void *primary = F(void *, data_021052fc, 0x2ea4);
     scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
-    void *effects = func_0201e0ec(data_021052fc + 0x2f7c);
+    void *effects = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
 
     switch (F(u8, actor, 0x1ec)) {
     case 0: {
@@ -548,7 +548,7 @@ extern "C" void func_ov091_02218aa0(void *actor, void *interaction) {
         effect =
             func_02022cb0(effect, position, primary, amount, 0x2000, -0xc0);
     }
-    PresentationList_AppendObject(data_021052fc + 0x2f7c, effect);
+    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, effect);
     Type1Actor_TryEnterFailureState(primary);
 }
 

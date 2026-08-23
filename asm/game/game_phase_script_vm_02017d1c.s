@@ -21,8 +21,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern func_0201d240
 .extern func_0201d688
-.extern PresentationList_AppendObject
-.extern func_0201df44
+.extern RuntimePresentationManager_AppendFirstListEffect
+.extern RuntimePresentationManager_AppendSecondListEffect
 .extern func_020200bc
 .extern DisplayFadePresentation_Init
 .extern SceneDisplayResources_Setup
@@ -95,7 +95,7 @@ L_02017dcc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02017de4:
     ldr r0, L_020181c8
@@ -136,7 +136,7 @@ L_02017e60:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02017e78:
     bl OverlayManager_GetGlobal
@@ -160,7 +160,7 @@ L_02017eb4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02017ecc:
     ldr r1, L_020181dc
@@ -178,7 +178,7 @@ L_02017ef4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02017f0c:
     ldr r1, L_020181e0
@@ -196,7 +196,7 @@ L_02017f34:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02017f4c:
     ldr r1, L_020181e4
@@ -214,7 +214,7 @@ L_02017f74:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02017f8c:
     ldr r0, L_020181e8
@@ -231,7 +231,7 @@ L_02017fb0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df44
+    bl RuntimePresentationManager_AppendSecondListEffect
     b L_020181b0
 L_02017fc8:
     ldr r1, L_020181f0
@@ -252,7 +252,7 @@ L_02017ffc:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02018014:
     ldr r1, L_020181f4
@@ -270,7 +270,7 @@ L_0201803c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_02018054:
     ldr r1, L_020181f8
@@ -298,7 +298,7 @@ L_020180a0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     b L_020181b0
 L_020180b8:
     ldr r1, L_020181fc
@@ -327,7 +327,7 @@ L_02018108:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df44
+    bl RuntimePresentationManager_AppendSecondListEffect
     b L_020181b0
 L_02018120:
     mov r0, r6
@@ -349,7 +349,7 @@ L_02018154:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df44
+    bl RuntimePresentationManager_AppendSecondListEffect
     b L_020181b0
 L_0201816c:
     ldr r1, L_02018204
@@ -369,7 +369,7 @@ L_0201819c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201df44
+    bl RuntimePresentationManager_AppendSecondListEffect
 L_020181b0:
     mov r0, #0x0
     add sp, sp, #0x4

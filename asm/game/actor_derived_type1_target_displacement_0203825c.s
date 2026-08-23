@@ -13,8 +13,8 @@
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern PresentationList_AppendObject
-.extern func_0201e0ec
+.extern RuntimePresentationManager_AppendFirstListEffect
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_02022cb0
 .extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_IsTargetStateEligible
@@ -229,7 +229,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add r1, r2, r1
     add r0, r0, #0x2c00
     str r1, [sp, #0x50]
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x0
     str r1, [sp, #0x0]
     ldr r2, [sp, #0x4c]
@@ -334,7 +334,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     ldr r0, .L_02038774
     mov r1, #0x14
     ldr r0, [r0, #0x0]

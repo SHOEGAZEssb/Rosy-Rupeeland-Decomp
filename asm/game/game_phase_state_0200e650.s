@@ -4,7 +4,7 @@
 .extern GX_SetBankForBG
 .extern GX_SetGraphicsMode
 .extern GamePhaseState_ApplyConfiguration
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_SetSpriteMode
 .extern ActorCollection_SetEnabled
 .extern func_020a2348
@@ -29,7 +29,7 @@ GamePhaseState_ConfigureForPhase: ; 0x0200e650
     bl GX_SetGraphicsMode
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1
     mov r2, r1
     bl func_020a23a8
@@ -40,7 +40,7 @@ L_0200e6a4:
     bl GX_SetBankForBG
     add r0, r4, #0x358
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1
     mov r2, #0x0
     bl func_020a2348

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov069/overlay069_recovery.c.
 .extern data_020c9670
 .extern data_021052fc
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_0209b58c
 .extern SignedAbsoluteValueVariant
 .extern func_020bf1f8
@@ -470,7 +470,7 @@ func_ov069_0220ff38:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r3, sp, #0x24
     str r3, [sp, #0x0]
     mov r3, r4

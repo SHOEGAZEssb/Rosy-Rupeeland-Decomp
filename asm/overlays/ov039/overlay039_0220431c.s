@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_secondary_effects.c for portable C. */
     .extern func_020ae024
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_020a2844
     .extern func_ov039_02203770
     .extern func_ov039_02204180
@@ -81,7 +81,7 @@ L_022043f0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, r10, r9, lsl #0x2
     ldr r3, [r1, #0x9c]
     mov r1, #0x3

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_021052fc
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorExtendedType2_InitializeReentryState
 .extern Sound_PlayOwnedEffect
 .extern func_0206e590
@@ -43,7 +43,7 @@ func_ov095_0221ac6c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x8
     str r1, [sp, #0x0]
     ldr r1, [r8, #0x24]

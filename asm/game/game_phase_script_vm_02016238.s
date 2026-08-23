@@ -22,7 +22,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_0201cfd0
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_020200bc
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
@@ -277,7 +277,7 @@ L_02016594:
     ldr r0, [r0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     add r0, sp, #4
     bl VecFx32Object_Destroy
     mov r0, #0

@@ -65,7 +65,7 @@ EXT(OS_Halt);
 EXT(AuxiliaryTimedSpritePresentation_Init);
 EXT(TrackedResourceActor_SpawnFromKey);
 EXT(func_020099c0);
-EXT(func_0201e0ec);
+EXT(RuntimePresentationManager_GetGraphics3dPresentation);
 EXT(func_0200634c);
 EXT(func_0200637c);
 EXT(func_020064b8);
@@ -335,7 +335,7 @@ extern "C" void func_ov097_02217d44(void *actor)
     }
 
     void *effectOwner =
-        (void *)func_0201e0ec(P(data_021052fc, 0x2f7c));
+        (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
     func_020a2844(effectOwner, 0, F(s32, actor, 0x1c) >> 12,
                   (F(s32, actor, 0x20) >> 12) -
                       (F(s32, actor, 0x24) >> 12) - 24,
@@ -705,7 +705,7 @@ extern "C" void func_ov097_02218940(void *actor)
         {
             u32 random = genrand_int32();
             void *effectOwner =
-                (void *)func_0201e0ec(P(data_021052fc, 0x2f7c));
+                (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
             s32 height = func_ov097_02217afc(P(actor, 0x68));
             s32 randomX = (s32)(random % 36) - 18;
             func_020a291c(effectOwner, 1,

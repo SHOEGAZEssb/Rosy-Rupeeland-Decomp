@@ -3,7 +3,7 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020adc40
     .extern func_020adc90
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_020a27a0
     .extern data_ov039_022082e4
     .extern data_ov039_02208324
@@ -221,7 +221,7 @@ L_022073c4:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     ldr r2, [r5, #0x30]
     ldr r1, [r5, #0x34]
     mov r2, r2, asr #0xc

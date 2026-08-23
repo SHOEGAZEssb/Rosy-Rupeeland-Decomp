@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_helper_pool2.c for portable C. */
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Init
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_0209c430
     .extern VecFx32Object_Destroy
     .extern data_021052fc
@@ -80,7 +80,7 @@ L_022037c0:
     str r1, [sp, #0x1c]
     mov r1, #0x0
     str r1, [sp, #0x20]
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, sp, #0x64
     str r1, [sp, #0x0]
     mov r1, #0x0

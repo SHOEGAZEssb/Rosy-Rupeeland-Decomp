@@ -2,7 +2,7 @@
 .text
 .extern data_020d6a24
 .extern data_021052fc
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
 
     .global func_02025120
@@ -26,7 +26,7 @@ func_02025120: ; 0x02025120
     mov r1, r4
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     mov r0, r4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02025174: .word data_020d6a24

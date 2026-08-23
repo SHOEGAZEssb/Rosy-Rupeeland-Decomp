@@ -38,7 +38,7 @@ extern void func_ov039_022049cc(void *scene);
 extern void func_ov039_022014f8(void *output, const void *first,
                                 const void *second);
 extern s32 func_ov039_0220159c(void *scene, s32 *distance);
-extern void *func_0201e0ec(void *object);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void *func_0209c3b4(void);
 extern void func_0209c430(void *renderer, ...);
 extern void func_020a2844(void *resource, const void *position);
@@ -242,7 +242,7 @@ extern "C" s32 func_ov039_02202f34(void *scene, void *result)
  */
 extern "C" void func_ov039_02203064(void *scene)
 {
-    void *resource = func_0201e0ec((u8 *)FIELD(void *, data_021052fc, 0) +
+    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
                                    0x2f7c);
     void *renderer = func_0209c3b4();
     Overlay039ScriptVector scale, direction;

@@ -46,7 +46,7 @@ extern "C" void *DisplayBrightnessPair_GetScreen(void *, s32);
 extern "C" void DisplayBrightness_StartTransition(void *, s32, s32, s32);
 extern "C" void GXx_SetMasterBrightness_(void *, s32);
 extern "C" void func_020afce8(void *, s32, s32);
-extern "C" void *func_0201e0ec(void *);
+extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
 extern "C" void Actor_UpdatePresentation(void *, void *);
 extern "C" void Sound_Play(void *, s32, s32);
 extern "C" s32 Sound_IsEffectPlaying(void *, s32, s32);
@@ -258,7 +258,7 @@ extern "C" void func_ov093_02217c50(void *actor)
     ActorMotionAreaFollower_BindActor((u8 *)data_021052fc + 0x2fbc, actor);
     ActorMotion_BindActor((u8 *)data_021052fc + 0x3044, actor);
     scene = SceneManager_GetCurrent(gSceneManager);
-    particleSystem = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+    particleSystem = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
     timer = FIELD(u16, actor, 0x1fe);
 
     switch (FIELD(u8, actor, 0x1fc)) {
@@ -472,7 +472,7 @@ extern "C" void func_ov093_02218514(void *unused, void *actor)
             : FIELD(s32, actor, 0x248);
     GraphicsSpriteState_SetDepthOrderedWorldPosition(
         FIELD(void *, actor, 0x210), 0x180000, y, 0, 4);
-    particleSystem = func_0201e0ec((u8 *)data_021052fc + 0x2f7c);
+    particleSystem = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
     if (FIELD(u8, FIELD(void *, actor, 0x210), 0x38) == 1 &&
         FIELD(u16, actor, 0x1fe) % 4 == 0) {
         func_020a29ac(particleSystem, 0, 0x180, (y >> 12) - 12);

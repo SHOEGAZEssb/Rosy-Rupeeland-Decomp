@@ -21,7 +21,7 @@
 .extern ActorRuntimeCollection_QueueValue
 .extern ActorRuntimeCollection_IsQueuedValueMissing
 .extern ActorRuntimeCollection_GetBusyState
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_020328d0
 .extern Actor_QueryTerrainHeight
 .extern Actor_PlayHorizontalSpatialSound
@@ -442,7 +442,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     ldr r0, [r11, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r6, [sp, #0x0]
     str r5, [sp, #0x4]
     str r4, [sp, #0x8]

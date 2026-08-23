@@ -6,7 +6,7 @@
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_0209b7ec
 .extern func_0209b880
 .extern func_0209c3b4
@@ -63,7 +63,7 @@ func_ov049_0220cf94:
     str ip, [lr, #0x0]
     str ip, [lr, #0x4]
     stmia r1, {r8, ip}
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x0
     mov r5, r0
     bl func_0209b7ec

@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern data_021052fc
 .extern data_ov097_0221a4c8
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_FindActorByRuntimeId
 .extern Actor_GetOwningCollection
 .extern Actor_PlayRadialSpatialSound
@@ -56,7 +56,7 @@ func_ov097_02217d44:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x8
     str r1, [sp, #0x0]
     ldr r1, [r7, #0x24]

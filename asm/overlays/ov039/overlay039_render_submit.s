@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_render_submit.c for documented portable C. */
     .extern func_0209a2ac
     .extern Sound_SetEffectParameters
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_0209c3b4
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Init
@@ -108,7 +108,7 @@ L_02200814:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r6, r0
     bl func_0209c3b4
     mov r0, #0x1e

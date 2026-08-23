@@ -30,12 +30,12 @@ extern void *func_02024b04(...);
 extern void *func_0201d240(...);
 extern void *func_ov054_0220e9bc(...);
 extern void *func_ov054_0220ef80(...);
-extern void *func_0201df54(...);
-extern void *func_0201df5c(...);
+extern void *RuntimePresentationManager_GetFirstListNodeEffect(...);
+extern void *RuntimePresentationManager_GetSecondListNodeEffect(...);
 extern void *func_ov054_0220ef78(...);
 extern void *func_ov073_02210710(...);
-extern void PresentationList_AppendObject(...);
-extern void *func_0201e0ec(...);
+extern void RuntimePresentationManager_AppendFirstListEffect(...);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern u32 func_020a257c(...);
 extern u32 func_020a25c8(...);
 extern void func_020a245c(...);
@@ -70,8 +70,8 @@ extern void func_ov053_0220da0c(u16 value);
 }
 #endif
 
-/* Return the global runtime's object manager at confirmed offset 0x2f7c. */
-static void *getScriptObjectManager(void)
+/* Return the global runtime's presentation manager at confirmed offset 0x2f7c. */
+static void *getScriptPresentationManager(void)
 {
     return (u8 *)data_021052fc + 0x2f7c;
 }
@@ -82,10 +82,11 @@ static void *getScriptEffectContext(void)
     return ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
 }
 
-/* Resolve the manager's address-derived secondary interface. */
-static void *getScriptManagerInterface(void)
+/* Return the presentation manager's borrowed 3D presentation. */
+static void *getScriptGraphics3dPresentation(void)
 {
-    return func_0201e0ec(getScriptObjectManager());
+    return RuntimePresentationManager_GetGraphics3dPresentation(
+        getScriptPresentationManager());
 }
 
 /*
@@ -102,10 +103,11 @@ static s32 convertEffectOperand(s32 value)
     return func_020beae4(converted);
 }
 
-/* Add an allocated or null object to the global manager, matching retail behavior. */
-static void addScriptObject(void *object)
+/* Add an allocated or null field effect to the manager, matching retail behavior. */
+static void addScriptFieldEffect(void *effect)
 {
-    PresentationList_AppendObject(getScriptObjectManager(), object);
+    RuntimePresentationManager_AppendFirstListEffect(
+        getScriptPresentationManager(), effect);
 }
 
 /*
@@ -140,7 +142,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         object = Heap_Alloc(0x28, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = TimedSpriteBurstManager_Init(object, rect, a2, a3, a4);
-        addScriptObject(object);
+        addScriptFieldEffect(object);
         break;
     }
     case 3: {
@@ -149,7 +151,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             object = func_02022cb0(object, getScriptEffectContext(),
                                    *(void **)((u8 *)data_021052fc + 0x2ea4),
                                    a1, 0x2000, -0xc0);
-        addScriptObject(object);
+        addScriptFieldEffect(object);
         break;
     }
     case 4: {
@@ -158,7 +160,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             object = func_02022ff4(object, getScriptEffectContext(),
                                    *(void **)((u8 *)data_021052fc + 0x2ea4),
                                    a1, a2, a3, 0x2000, -0xc0);
-        addScriptObject(object);
+        addScriptFieldEffect(object);
         break;
     }
     case 5:
@@ -213,7 +215,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             object = func_02025300(
                 object, &vector, ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
                 (s16)a4, 1, 0);
-        addScriptObject(object);
+        addScriptFieldEffect(object);
         VecFx32Object_Destroy(&vector);
         break;
     }
@@ -235,45 +237,45 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                 object, ActorCollection_GetSpriteGroup(Actor_GetOwningCollection(actor)),
                 &firstVector, &secondVector, variant, selector == 10);
         }
-        addScriptObject(object);
+        addScriptFieldEffect(object);
         VecFx32Object_Destroy(&secondVector);
         VecFx32Object_Destroy(&firstVector);
         break;
     }
     case 11:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
-                      func_020a257c(getScriptManagerInterface(), a1, a2, a3,
+                      func_020a257c(getScriptGraphics3dPresentation(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
     case 12:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
-                      func_020a25c8(getScriptManagerInterface(), a1, a2, a3,
+                      func_020a25c8(getScriptGraphics3dPresentation(), a1, a2, a3,
                                     a4, a5, 0x46));
         break;
     case 13:
-        func_020a245c(getScriptManagerInterface(), a1, a2, a3);
+        func_020a245c(getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 14:
-        func_020a2530(getScriptManagerInterface(), a1, a6, a2, a3, a4, a5);
+        func_020a2530(getScriptGraphics3dPresentation(), a1, a6, a2, a3, a4, a5);
         break;
     case 15:
-        func_020a2614(getScriptManagerInterface(), a1, a2, a3, a4);
+        func_020a2614(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
         break;
     case 16:
-        func_020a27a0(getScriptManagerInterface(), a1, a2, a3);
+        func_020a27a0(getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 17:
-        func_020a2480(getScriptManagerInterface(), a1, a2, a3);
+        func_020a2480(getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 18:
-        func_020a2310(getScriptManagerInterface(), a1);
+        func_020a2310(getScriptGraphics3dPresentation(), a1);
         break;
     case 19: {
         void *object = Heap_Alloc(0x58, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = func_02024b04(object, getScriptEffectContext(), actor,
                                    a1, a2, a3);
-        addScriptObject(object);
+        addScriptFieldEffect(object);
         break;
     }
     case 20: {
@@ -294,55 +296,59 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
     case 22:
         if (a1 == 0 || a1 == 1) {
             void *handle;
-            u8 *node;
+            u8 *effect;
             void *target;
             GameWork_SetFlag(gGameWork, 0x40a);
             OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x36);
             handle = func_ov054_0220e9bc(
                 (u8 *)*(void **)((u8 *)data_021052fc + 0x2ea4) + 0x18,
                 getScriptEffectContext());
-            node = (u8 *)func_0201df5c(getScriptObjectManager(), handle);
+            effect = (u8 *)RuntimePresentationManager_GetSecondListNodeEffect(
+                getScriptPresentationManager(), handle);
             target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a2);
-            *(void **)(node + 8) = (u8 *)target + 0x18;
+            *(void **)(effect + 8) = (u8 *)target + 0x18;
             GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)handle);
         } else if (a1 == 2) {
-            u8 *node = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
+            u8 *effect = (u8 *)RuntimePresentationManager_GetSecondListNodeEffect(
+                getScriptPresentationManager(), a2);
             void *target = ActorCollection_FindActorByRuntimeId(
                 GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a3);
-            *(void **)(node + 8) = (u8 *)target + 0x18;
+            *(void **)(effect + 8) = (u8 *)target + 0x18;
         }
         break;
     case 23:
         if (a1 == 1) {
             void *handle;
-            u8 *sourceNode;
-            u8 *targetNode;
+            u8 *sourceEffect;
+            u8 *targetEffect;
             *(u16 *)((u8 *)gGameWork + 0x1a0) = (u16)a3;
             *(u16 *)((u8 *)gGameWork + 0x1a2) = (u16)a4;
             *(u16 *)((u8 *)gGameWork + 0x1a4) = (u16)a5;
             handle = func_ov054_0220ef80(getScriptEffectContext());
-            sourceNode = (u8 *)func_0201df54(getScriptObjectManager(), handle);
-            targetNode = (u8 *)func_0201df5c(getScriptObjectManager(), a2);
-            *(void **)(targetNode + 8) = func_ov054_0220ef78(sourceNode);
+            sourceEffect = (u8 *)RuntimePresentationManager_GetFirstListNodeEffect(
+                getScriptPresentationManager(), handle);
+            targetEffect = (u8 *)RuntimePresentationManager_GetSecondListNodeEffect(
+                getScriptPresentationManager(), a2);
+            *(void **)(targetEffect + 8) = func_ov054_0220ef78(sourceEffect);
             GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)handle);
         } else if (a1 == 2) {
             GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, data_ov054_0220f160 != 0);
         }
         break;
     case 24:
-        func_020a28e0(getScriptManagerInterface(), a1, a2, a3, a4);
+        func_020a28e0(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
         break;
     case 25:
-        func_020a29f8(getScriptManagerInterface(), a1, a2, a3, a4, a5);
+        func_020a29f8(getScriptGraphics3dPresentation(), a1, a2, a3, a4, a5);
         break;
     case 26:
         func_02028630(getScriptEffectContext());
         break;
     case 27:
-        func_020a2844(getScriptManagerInterface(), a1, a2, a3, a4);
+        func_020a2844(getScriptGraphics3dPresentation(), a1, a2, a3, a4);
         break;
     case 29:
-        func_020a2a4c(getScriptManagerInterface(), a1, a2, a3,
+        func_020a2a4c(getScriptGraphics3dPresentation(), a1, a2, a3,
                       a4, a5, a6);
         break;
     case 30:
@@ -363,7 +369,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                 object, target, (s32)a1 << 12, (s32)a2 << 12,
                 (s32)a3 << 12, 0x1642, 0x1640, 0x1643,
                 (s16)a4, 1, a6);
-        addScriptObject(object);
+        addScriptFieldEffect(object);
         break;
     }
     case 32:

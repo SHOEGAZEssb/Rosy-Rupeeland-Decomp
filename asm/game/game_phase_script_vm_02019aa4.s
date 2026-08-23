@@ -5,7 +5,7 @@
 .extern Actor_SetFlag200000Inverse
 .extern GamePhaseScriptVm_Pop
 .extern func_0201df64
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_02025d14
 .extern func_02026514
 .extern ActorCollection_GetSpriteGroup
@@ -130,7 +130,7 @@ L_02019c18:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     bl func_020a2324
     b L_02019c54
 L_02019c4c:

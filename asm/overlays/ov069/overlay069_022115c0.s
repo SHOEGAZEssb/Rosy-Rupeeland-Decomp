@@ -4,7 +4,7 @@
 .extern data_021052fc
 .extern data_ov069_0221255c
 .extern data_ov069_02212590
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_020a2310
 .extern func_020a2448
 .extern func_020a25c8
@@ -80,7 +80,7 @@ func_ov069_022115c0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, r10, r8, lsl #0x2
     ldr r1, [r1, #0x928]
     bl func_020a2310
@@ -89,7 +89,7 @@ func_ov069_022115c0:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1c
     str r1, [sp, #0x0]
     str r1, [sp, #0x4]

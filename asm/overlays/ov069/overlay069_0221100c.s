@@ -3,7 +3,7 @@
 .extern data_021052fc
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_020a257c
 .extern func_ov069_0221123c
 
@@ -70,7 +70,7 @@ func_ov069_0221100c:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     str r6, [sp, #0x0]
     stmib sp, {r6, r11}
     add r3, r10, r9, lsl #0x4

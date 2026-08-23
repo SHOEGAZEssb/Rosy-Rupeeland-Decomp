@@ -9,7 +9,7 @@ extern "C" {
 extern void *gLupyContext;
 extern void *gSoundContext;
 extern void OverlaySlot_LoadOverlay(void *object, u32 value);
-extern void *func_0201e0ec(void *object);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void *func_0202751c(void *object, void *phaseObject);
 extern void *func_020275b0(void);
 extern void func_02027f2c(void);
@@ -61,12 +61,12 @@ void GamePhaseState_ConfigureForPhase(GamePhaseState *self, const void *configur
         GX_SetBankForBG(0x10);
         GX_DisableBankForLCDC();
         GX_SetGraphicsMode(1, 0, 1);
-        render = func_0201e0ec(self->renderHelperStorage);
+        render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
         func_020a23a8(render, 1, 1);
     } else {
         func_020ae740();
         GX_SetBankForBG(2);
-        render = func_0201e0ec(self->renderHelperStorage);
+        render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
         func_020a2348(render, 1, 0);
         GX_SetGraphicsMode(1, 0, 0);
         *(volatile u32 *)0x04000000 =

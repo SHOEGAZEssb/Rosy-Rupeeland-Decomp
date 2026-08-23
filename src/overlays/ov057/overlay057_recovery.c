@@ -13,7 +13,7 @@ extern "C" void *OverlayManager_GetGlobal(void);
 extern "C" void OverlayManager_UnloadOverlay(void *, s32);
 extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
-extern "C" void func_0201df44(void *, void *);
+extern "C" void RuntimePresentationManager_AppendSecondListEffect(void *, void *);
 extern "C" s32 func_020af958(void);
 extern "C" s32 func_020af938(void);
 extern "C" void func_020b581c(s32, s32, s32);
@@ -89,7 +89,7 @@ extern "C" void func_ov057_0220e558(void)
 {
     void *scene = Heap_Alloc(0x28, data_ov057_0220e7f4, 4, gHeapContext);
     if (scene) scene = func_ov057_0220e400(scene);
-    func_0201df44((u8 *)data_021052fc + 0x2f7c, scene);
+    RuntimePresentationManager_AppendSecondListEffect((u8 *)data_021052fc + 0x2f7c, scene);
 }
 
 /* Constant-status scene callback. */

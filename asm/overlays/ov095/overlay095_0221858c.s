@@ -13,7 +13,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern ActorMotionJitter_EnsureMinimum
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_PlayRadialSpatialSound
@@ -196,7 +196,7 @@ func_ov095_0221858c:
     ldr r0, [r1, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, r4, #0x200
     ldrsh r1, [r1, #0xd4]
     mov r5, r0
@@ -1094,7 +1094,7 @@ func_ov095_0221858c:
     mov r9, r3, asr #0xc
     mov r10, r2, asr #0xc
     ldr r6, [r4, #0x24]
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r11, r0
     add r0, r4, #0x68
     bl func_ov095_02217d90

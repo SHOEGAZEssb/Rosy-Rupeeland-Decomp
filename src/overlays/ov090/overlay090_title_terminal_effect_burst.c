@@ -21,7 +21,7 @@ extern void *gSoundContext;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
 extern void func_ov077_02216960(void *participant);
-extern void *func_0201e0ec(void *value);
+extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *value);
 extern void func_020a2614(void *value, s32 first, s32 second, s32 third,
                           s32 fourth);
 extern u32 genrand_int32(void);
@@ -90,7 +90,7 @@ void func_ov090_0221b428(void *self)
     do {
         column = 0;
         do {
-            func_020a2614(func_0201e0ec((u8 *)data_021052fc + 0x2f7c), 0,
+            func_020a2614(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
                           row * 0x60 + 0x1c2, column * 0x40 + 0xdc, 8);
             column++;
         } while (column < 2);

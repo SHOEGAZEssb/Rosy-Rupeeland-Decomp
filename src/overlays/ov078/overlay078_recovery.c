@@ -30,7 +30,7 @@ EXT(func_02005030);
 EXT(func_02005058);
 EXT(VecFx32Object_GetMagnitude);
 EXT(func_020050a4);
-EXT(func_0201e0ec);
+EXT(RuntimePresentationManager_GetGraphics3dPresentation);
 EXT(func_0201f864);
 EXT(func_02030acc);
 EXT(func_02032a94);

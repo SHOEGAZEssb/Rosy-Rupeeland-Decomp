@@ -6,7 +6,7 @@
 .extern data_021052fc
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_02022cb0
 .extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect
@@ -78,7 +78,7 @@ ActorDerivedType1_DispatchInteractionAmount: ; 0x020398a4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     ldr r0, [r6, #0x1fc]
     ldrsh r0, [r0, #0x0]
     cmp r0, #0x21

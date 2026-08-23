@@ -16,7 +16,7 @@
     .extern func_ov069_022119dc
     .extern func_ov069_022119bc
     .extern func_ov069_02210a44
-    .extern func_0201e0ec
+    .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_020a28e0
     .extern func_020a2614
     .extern func_0209f158
@@ -404,7 +404,7 @@ L_021ffb70:
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     add r1, r10, #0x1c00
     ldrh r1, [r1, #0xae]
     mov r5, r0

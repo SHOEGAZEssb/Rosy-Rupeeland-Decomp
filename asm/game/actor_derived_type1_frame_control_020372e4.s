@@ -14,8 +14,8 @@
 .extern func_02008378
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern PresentationList_AppendObject
-.extern func_0201e0ec
+.extern RuntimePresentationManager_AppendFirstListEffect
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern func_02022cb0
 .extern Actor_TryInitializeHeightBandFromPoint
@@ -141,7 +141,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     ldr r0, [r7, #0x27c]
     ldrh r2, [r0, #0x1a]
     cmp r2, #0x0
@@ -214,7 +214,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x1e
     str r1, [sp, #0x0]
     ldr r1, [sp, #0x40]

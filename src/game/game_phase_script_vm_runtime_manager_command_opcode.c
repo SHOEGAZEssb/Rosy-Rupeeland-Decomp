@@ -12,7 +12,7 @@ extern void *data_021052fc;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Actor_SetFlag200000Inverse(void *actor, s32 enabled);
 extern void func_0201df64(void *list);
-extern void func_0201e0ec(void *list);
+extern void RuntimePresentationManager_GetGraphics3dPresentation(void *list);
 extern void *func_02025d14(void *state);
 extern void func_02026514(void *state);
 extern void *ActorCollection_GetSpriteGroup(void *collection);
@@ -85,7 +85,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         void *list = runtime + 0x2f7c;
         func_02055688();
         func_0201df64(list);
-        func_0201e0ec(list);
+        RuntimePresentationManager_GetGraphics3dPresentation(list);
         func_020a2324();
         break;
     }

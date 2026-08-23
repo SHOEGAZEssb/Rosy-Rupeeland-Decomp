@@ -5,7 +5,7 @@
 .extern data_020df4f0
 .extern data_021052fc
 .extern gActorInteractionResourceState
-.extern PresentationList_AppendObject
+.extern RuntimePresentationManager_AppendFirstListEffect
 .extern TimedSpriteOffsetPresentation_Init
 .extern ActorFeedbackResources_GetResource
 .extern gHeapContext
@@ -147,7 +147,7 @@ ActorFeedback_SpawnIndexedPresentation: ; 0x0203a0f0
     ldr r0, [r0, #0x0]
     add r0, r0, #0x37c
     add r0, r0, #0x2c00
-    bl PresentationList_AppendObject
+    bl RuntimePresentationManager_AppendFirstListEffect
     ldr r0, [r5, #0x8]
     ldr r0, [r0, #0x4]
     strh r6, [r0, #0x36]

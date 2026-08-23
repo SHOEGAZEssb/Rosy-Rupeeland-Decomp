@@ -6,7 +6,7 @@
 .extern VecFx32Object_Subtract
 .extern VecFx32_Subtract
 .extern func_02008378
-.extern func_0201e0ec
+.extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern ActorVector_DivideByScalar
 .extern Type7Actor_ResetInteractionState
@@ -206,7 +206,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r1, r2, r1
     add r0, r0, #0x2c00
     str r1, [sp, #0x2c]
-    bl func_0201e0ec
+    bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x0
     str r1, [sp, #0x0]
     ldr r2, [sp, #0x28]

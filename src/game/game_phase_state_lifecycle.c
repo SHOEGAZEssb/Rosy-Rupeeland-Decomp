@@ -16,7 +16,7 @@ extern void GamePhaseRegionTable_Destroy(void *object);
 extern void func_0201dbc8(void *object);
 extern void func_0201dc98(void *object);
 extern void func_0201df64(void *object);
-extern void func_0201e0ec(void *object);
+extern void RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void ActorCollection_Init(void *object);
 extern void ActorCollection_Destructor(void *object);
 extern void ActorCollection_Deinit(void *object);
@@ -91,7 +91,7 @@ void GamePhaseState_UnloadPhase(GamePhaseState *self)
 void GamePhaseState_ResetRuntime(GamePhaseState *self)
 {
     func_0201df64(self->renderHelperStorage);
-    func_0201e0ec(self->renderHelperStorage);
+    RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
     func_020a2324();
     ActorFeedback_DestroyPresentations();
     ActorCollection_UnregisterAndDestroyAllActors(self->actorCollectionStorage);
