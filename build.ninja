@@ -1994,7 +1994,7 @@ build build/decomp/asm/game/game_phase_script_vm_020142f4.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_02014314.o: mwasmarm asm/game/game_phase_script_vm_02014314.s
 build build/decomp/asm/game/game_phase_script_vm_0201433c.o: mwasmarm asm/game/game_phase_script_vm_0201433c.s
 
-build build/decomp/src/game/game_phase_script_vm_actor_command_dispatch.o: mwccarm src/game/game_phase_script_vm_actor_command_dispatch.c | include/tingle/game_phase_script_vm.h include/tingle/game_work.h include/tingle/heap.h include/tingle/overlay_manager.h include/tingle/vec_fx32.h include/tingle/types.h
+build build/decomp/src/game/game_phase_script_vm_actor_command_dispatch.o: mwccarm src/game/game_phase_script_vm_actor_command_dispatch.c | include/tingle/game_phase_script_vm.h include/tingle/game_work.h include/tingle/graphics_3d_presentation.h include/tingle/heap.h include/tingle/overlay_manager.h include/tingle/vec_fx32.h include/tingle/types.h
   source = src/game/game_phase_script_vm_actor_command_dispatch.c
   cflags = $game_phase_script_vm_actor_command_dispatch_cflags
 build build/decomp/asm/game/game_phase_script_vm_020143a8.o: mwasmarm asm/game/game_phase_script_vm_020143a8.s
@@ -2242,7 +2242,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201853c.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201856c.o: mwasmarm asm/game/game_phase_script_vm_0201856c.s
 build build/decomp/asm/game/game_phase_script_vm_020185f4.o: mwasmarm asm/game/game_phase_script_vm_020185f4.s
 
-build build/decomp/src/game/game_phase_script_vm_actor_bounds_opcode.o: mwccarm src/game/game_phase_script_vm_actor_bounds_opcode.c | include/tingle/game_phase_script_vm.h include/tingle/game_phase_runtime.h include/tingle/actor_motion.h include/tingle/types.h
+build build/decomp/src/game/game_phase_script_vm_actor_bounds_opcode.o: mwccarm src/game/game_phase_script_vm_actor_bounds_opcode.c | include/tingle/game_phase_script_vm.h include/tingle/game_phase_runtime.h include/tingle/actor_motion.h include/tingle/point_2d_s16.h include/tingle/types.h
   source = src/game/game_phase_script_vm_actor_bounds_opcode.c
   cflags = $game_phase_script_vm_actor_bounds_opcode_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201863c.o: mwasmarm asm/game/game_phase_script_vm_0201863c.s
@@ -2253,7 +2253,7 @@ build build/decomp/asm/game/game_phase_script_vm_0201895c.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_02018998.o: mwasmarm asm/game/game_phase_script_vm_02018998.s
 build build/decomp/asm/game/game_phase_script_vm_020189b0.o: mwasmarm asm/game/game_phase_script_vm_020189b0.s
 
-build build/decomp/src/game/game_phase_script_vm_actor_interaction_bounds_opcode.o: mwccarm src/game/game_phase_script_vm_actor_interaction_bounds_opcode.c | include/tingle/game_phase_script_vm.h include/tingle/game_phase_runtime.h include/tingle/actor_motion.h include/tingle/types.h
+build build/decomp/src/game/game_phase_script_vm_actor_interaction_bounds_opcode.o: mwccarm src/game/game_phase_script_vm_actor_interaction_bounds_opcode.c | include/tingle/game_phase_script_vm.h include/tingle/game_phase_runtime.h include/tingle/actor_motion.h include/tingle/point_2d_s16.h include/tingle/types.h
   source = src/game/game_phase_script_vm_actor_interaction_bounds_opcode.c
   cflags = $game_phase_script_vm_actor_interaction_bounds_opcode_cflags
 build build/decomp/asm/game/game_phase_script_vm_020189e4.o: mwasmarm asm/game/game_phase_script_vm_020189e4.s
@@ -2433,7 +2433,7 @@ build build/decomp/src/game/game_phase_actor_script_vm_dispatch.o: mwccarm src/g
 build build/decomp/asm/game/game_phase_script_vm_0201b210.o: mwasmarm asm/game/game_phase_script_vm_0201b210.s
 build build/decomp/asm/game/game_phase_script_vm_0201b228.o: mwasmarm asm/game/game_phase_script_vm_0201b228.s
 build build/decomp/asm/game/game_phase_script_vm_0201b23c.o: mwasmarm asm/game/game_phase_script_vm_0201b23c.s
-build build/decomp/src/game/game_heap_delete_helper.o: mwccarm src/game/game_heap_delete_helper.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/game_heap_delete_helper.o: mwccarm src/game/game_heap_delete_helper.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/types.h
   source = src/game/game_heap_delete_helper.c
   cflags = $game_heap_delete_helper_cflags
 build build/decomp/asm/game/game_phase_script_vm_0201b24c.o: mwasmarm asm/game/game_phase_script_vm_0201b24c.s
@@ -2662,17 +2662,17 @@ build build/decomp/asm/game/game_phase_script_vm_0201e584.o: mwasmarm asm/game/g
 build build/decomp/asm/game/game_phase_script_vm_0201e5f0.o: mwasmarm asm/game/game_phase_script_vm_0201e5f0.s
 build build/decomp/asm/game/game_phase_script_vm_0201e604.o: mwasmarm asm/game/game_phase_script_vm_0201e604.s
 build build/decomp/asm/game/game_phase_script_vm_0201e620.o: mwasmarm asm/game/game_phase_script_vm_0201e620.s
-build build/decomp/src/game/timed_sprite_attached_variant.o: mwccarm src/game/timed_sprite_attached_variant.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_attached_variant.o: mwccarm src/game/timed_sprite_attached_variant.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/types.h
   source = src/game/timed_sprite_attached_variant.c
   cflags = $timed_sprite_attached_variant_cflags
 build build/decomp/asm/game/timed_sprite_attached_variant.o: mwasmarm asm/game/timed_sprite_attached_variant.s
 build build/decomp/delinks/asm/game/timed_sprite_attached_variant.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/decomp/src/game/timed_sprite_orbit_variant.o: mwccarm src/game/timed_sprite_orbit_variant.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_orbit_variant.o: mwccarm src/game/timed_sprite_orbit_variant.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/types.h
   source = src/game/timed_sprite_orbit_variant.c
   cflags = $timed_sprite_orbit_variant_cflags
 build build/decomp/asm/game/timed_sprite_orbit_variant.o: mwasmarm asm/game/timed_sprite_orbit_variant.s
 build build/decomp/delinks/asm/game/timed_sprite_orbit_variant.o: dsd_delink config/arm9/config.yaml config/arm9/delinks.txt config/arm9/symbols.txt config/arm9/relocs.txt
-build build/decomp/src/game/timed_sprite_free_orbit_variant.o: mwccarm src/game/timed_sprite_free_orbit_variant.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/timed_sprite_free_orbit_variant.o: mwccarm src/game/timed_sprite_free_orbit_variant.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/types.h
   source = src/game/timed_sprite_free_orbit_variant.c
   cflags = $timed_sprite_free_orbit_variant_cflags
 build build/decomp/asm/game/timed_sprite_free_orbit_variant.o: mwasmarm asm/game/timed_sprite_free_orbit_variant.s
@@ -6537,14 +6537,14 @@ build build/reports/game_phase_script_vm_020188fc.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_020188fc.o
 build build/reports/game_phase_script_vm_020188fc.txt: match_report build/reports/game_phase_script_vm_020188fc.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020188fc.json
-  report_args = --section .text --function S16BoundsCenter_Init --require-exact
+  report_args = --section .text --function CPoint2DS16_InitFromRectangle --require-exact
 
 build build/reports/game_phase_script_vm_02018958.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02018958.o | build/decomp/asm/game/game_phase_script_vm_02018958.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02018958.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02018958.o
 build build/reports/game_phase_script_vm_02018958.txt: match_report build/reports/game_phase_script_vm_02018958.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02018958.json
-  report_args = --section .text --function S16BoundsCenter_Destroy --require-exact
+  report_args = --section .text --function CPoint2DS16_Destroy --require-exact
 
 build build/reports/game_phase_script_vm_0201895c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201895c.o | build/decomp/asm/game/game_phase_script_vm_0201895c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201895c.o
@@ -7098,7 +7098,7 @@ build build/reports/game_phase_script_vm_0201b24c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201b24c.o
 build build/reports/game_phase_script_vm_0201b24c.txt: match_report build/reports/game_phase_script_vm_0201b24c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201b24c.json
-  report_args = --section .text --function S16BoundsCenter_DestroyAndFree --require-exact
+  report_args = --section .text --function CPoint2DS16_DestroyAndFree --require-exact
 
 build build/reports/game_heap_delete_helper.txt: phony build/reports/game_phase_script_vm_0201b24c.txt
 build build/reports/game_phase_script_vm_0201b260.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201b260.o | build/decomp/asm/game/game_phase_script_vm_0201b260.o
@@ -16192,7 +16192,7 @@ build actor_derived_type1_auxiliary_motion: phony build/decomp/src/game/actor_de
 
 actor_derived_type1_auxiliary_interaction_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_derived_type1_auxiliary_interaction.o: mwccarm src/game/actor_derived_type1_auxiliary_interaction.c | include/tingle/heap.h include/tingle/types.h
+build build/decomp/src/game/actor_derived_type1_auxiliary_interaction.o: mwccarm src/game/actor_derived_type1_auxiliary_interaction.c | include/tingle/heap.h include/tingle/point_2d_s16.h include/tingle/types.h
   source = src/game/actor_derived_type1_auxiliary_interaction.c
   cflags = $actor_derived_type1_auxiliary_interaction_cflags
 build build/decomp/asm/game/actor_derived_type1_auxiliary_interaction_02037d98.o: mwasmarm asm/game/actor_derived_type1_auxiliary_interaction_02037d98.s
@@ -40924,7 +40924,7 @@ build overlay042_encounter_controller_update: phony build/decomp/src/overlays/ov
 build overlay042_partial62: phony overlay042_partial61 overlay042_encounter_controller_update
 
 overlay042_encounter_render_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov042/overlay042_encounter_render.o: mwccarm src/overlays/ov042/overlay042_encounter_render.c | include/tingle/types.h
+build build/decomp/src/overlays/ov042/overlay042_encounter_render.o: mwccarm src/overlays/ov042/overlay042_encounter_render.c | include/tingle/graphics_3d_presentation.h include/tingle/types.h
   source = src/overlays/ov042/overlay042_encounter_render.c
   cflags = $overlay042_encounter_render_cflags
 build build/decomp/asm/overlays/ov042/overlay042_encounter_render.o: mwasmarm asm/overlays/ov042/overlay042_encounter_render.s

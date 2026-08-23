@@ -6,10 +6,14 @@
  */
 #include "tingle/heap.h"
 #include "tingle/graphics_3d_presentation.h"
+#include "tingle/point_2d_s16.h"
 #include "tingle/system.h"
 #include "tingle/types.h"
 
-extern u8 data_020d23fc[];
+extern const RupeeMeshDescriptor gRupeeMeshDescriptor;
+extern const s16 data_020c9670[];
+extern u8 data_020f3064[];
+extern u8 data_021f63b0[];
 extern const char data_020f32e8[];
 extern const char data_020f32f0[];
 extern const char data_020f32f8[];
@@ -20,6 +24,9 @@ extern void func_02004fe0(void *vector);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
+extern void VecFx32_Subtract(VecFx32Object *result,
+                             const VecFx32Object *left,
+                             const VecFx32Object *right);
 extern void __construct_array(void *array, u32 count, u32 element_size,
                               void (*constructor)(void *),
                               void (*destructor)(void *));
@@ -48,9 +55,20 @@ extern u32 GX_HBlankIntr(u32 enable);
 extern void G3X_Init(void);
 extern void G3X_InitMtxStack(void);
 extern void func_020b0558(void);
+extern void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
+                          u32 repeat_s, u32 repeat_t, u32 flip, u32 address);
+extern void func_0209b454(u32 address, u32 format);
+extern void func_0209b560(u32 light, u32 polygon_mode, u32 cull_mode,
+                          u32 polygon_id, u32 alpha, u32 misc);
+extern void func_0209bcb0(s32 s, s32 t);
+extern void func_0209bce4(s32 x, s32 y, s32 z);
+extern void func_020b0844(s32 sine, s32 cosine);
+extern void func_020b0880(s32 sine, s32 cosine);
 extern void func_020b0a54(s32 left, s32 right, s32 bottom, s32 top,
                           s32 near_plane, s32 far_plane, s32 scale,
                           s32 load, void *matrix);
+extern s32 func_020adc40(s32 value);
+extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void GX_SetGraphicsMode(u32 display_mode, u32 bg_mode, u32 bg0_as_3d);
 extern u16 func_020ae740(void);
 extern u16 func_020ae72c(void);
@@ -59,9 +77,21 @@ extern void func_020aee48(u32 banks);
 #ifndef MATCHING
 extern void TingleNativeG3_SetMatrixMode(u32 mode);
 extern void TingleNativeG3_Identity(void);
+extern void TingleNativeG3_Push(void);
+extern void TingleNativeG3_Pop(u32 count);
 extern void TingleNativeG3_Translate(s32 x, s32 y, s32 z);
+extern void TingleNativeG3_Scale(s32 x, s32 y, s32 z);
 extern void TingleNativeG3_SetTextureParam(u32 value);
 extern void TingleNativeG3_SetPolygonAttr(u32 value);
+extern void TingleNativeG3_SetLightVector(u32 value);
+extern void TingleNativeG3_SetLightColor(u32 value);
+extern void TingleNativeG3_SetMaterial(u32 value);
+extern void TingleNativeG3_Begin(u32 primitive);
+extern void TingleNativeG3_End(void);
+extern void TingleNativeG3_Color(u32 color);
+extern void TingleNativeG3_Normal(u32 normal);
+extern void TingleNativeG3_Vertex10(u32 xyz);
+extern void TingleNativeG3_VertexXY(u32 xy);
 #endif
 
 typedef void (*RetailDestructor)(void *);
@@ -268,36 +298,274 @@ void func_0209a748(void *object, s32 mode)
     GX_HBlankIntr(old_hblank);
 }
 
-/* Initializes the small 3D manager's two vectors and default state, returning
- * the caller-provided object without allocation or SDK effects. */
-void *func_0209a450(void *object)
+/* Initialize a caller-owned rupee instance with inactive state, render variant
+ * one, and two zero vectors. No allocation or SDK effect occurs. */
+RupeeMeshInstance *RupeeMeshInstance_Init(RupeeMeshInstance *self)
 {
-    u8 *bytes = (u8 *)object;
-    func_02004fe0(bytes + 0x0c);
-    func_02004fe0(bytes + 0x1c);
-    *(u32 *)(bytes + 0) = 0;
-    *(u32 *)(bytes + 4) = 1;
-    *(u32 *)(bytes + 8) = 1;
-    return object;
+    VecFx32Object_Init(&self->translation);
+    VecFx32Object_Init(&self->scale);
+    self->meshDescriptor = 0;
+    self->inactive = 1;
+    self->renderVariant = 1;
+    return self;
 }
 
-/* Install the confirmed retail render descriptor in the small 3D manager. */
-void func_0209a4b4(void *object)
+/* Borrow the immutable retail rupee descriptor for subsequent submissions. */
+void RupeeMeshInstance_BindDefaultMesh(RupeeMeshInstance *self)
 {
-    *(u32 *)object = (u32)data_020d23fc;
+    self->meshDescriptor = &gRupeeMeshDescriptor;
 }
 
-/* Mark the small 3D manager inactive. The caller retains ownership; no SDK or
- * allocation effects occur. */
-void func_0209a4c4(void *object)
+/* Mark the instance inactive. The caller retains ownership and transform. */
+void RupeeMeshInstance_Deactivate(RupeeMeshInstance *self)
 {
-    *(u32 *)((u8 *)object + 4) = 1;
+    self->inactive = 1;
 }
 
-/* Return the small 3D manager's inactive flag without changing state. */
-u32 func_0209a4dc(void *object)
+/* Mark the instance active without changing its borrowed mesh or transform. */
+void RupeeMeshInstance_Activate(RupeeMeshInstance *self)
 {
-    return *(u32 *)((u8 *)object + 4);
+    self->inactive = 0;
+}
+
+/* Return the instance's inactive flag without changing state. */
+u32 RupeeMeshInstance_IsInactive(const RupeeMeshInstance *self)
+{
+    return self->inactive;
+}
+
+/* Construct a generic retail CPoint2D<short> from explicit components. The
+ * caller owns the eight-byte value and no allocation or hardware effect
+ * occurs. */
+CPoint2DS16 *CPoint2DS16_InitComponents(CPoint2DS16 *self, s16 x, s16 y)
+{
+    self->vtable = gCPoint2DS16VTable;
+    self->x = x;
+    self->y = y;
+    return self;
+}
+
+/* Submit one descriptor-selected normal and packed VTX_10 vertex to the NDS
+ * geometry ports. Both command tables are borrowed immutable data and the
+ * host boundary consumes the values synchronously. */
+void Graphics3d_SubmitIndexedNormalVertex(
+    const u32 *vertexCommands, u32 vertexIndex,
+    const u32 *normalCommands, u32 normalIndex)
+{
+    u32 normal = normalCommands[normalIndex];
+    u32 vertex = vertexCommands[vertexIndex];
+
+    *(volatile u32 *)0x04000484 = normal;
+    *(volatile u32 *)0x04000490 = vertex;
+#ifndef MATCHING
+    TingleNativeG3_Normal(normal);
+    TingleNativeG3_Vertex10(vertex);
+#endif
+}
+
+/* Submit the three indexed normal/vertex pairs of one packed rupee triangle.
+ * Index streams and command tables are borrowed for this synchronous draw. */
+void Graphics3d_SubmitIndexedTriangle(
+    const u32 *vertexCommands, const u8 *vertexIndices,
+    const u32 *normalCommands, const u16 *normalIndices)
+{
+    Graphics3d_SubmitIndexedNormalVertex(
+        vertexCommands, vertexIndices[0], normalCommands, normalIndices[0]);
+    Graphics3d_SubmitIndexedNormalVertex(
+        vertexCommands, vertexIndices[1], normalCommands, normalIndices[1]);
+    Graphics3d_SubmitIndexedNormalVertex(
+        vertexCommands, vertexIndices[2], normalCommands, normalIndices[2]);
+}
+
+static s32 SquareFx32Rounded(s32 value)
+{
+    return (s32)(((s64)value * value + 0x800) >> 12);
+}
+
+/* Normalize one Q12 direction, pack it as a signed GX light vector, and set
+ * that light's borrowed RGB15 color. The two hardware commands are submitted
+ * synchronously; magnitude-plus-one preserves retail's zero-vector behavior. */
+void Graphics3d_SetNormalizedLight(u32 lightId, s32 x, s32 y, s32 z,
+                                   u16 color)
+{
+    s32 squared = (s32)((u32)SquareFx32Rounded(x) +
+                        (u32)SquareFx32Rounded(y) +
+                        (u32)SquareFx32Rounded(z));
+    s32 magnitude = func_020adc40(squared);
+    s32 normalizedX = func_020adc90(x, magnitude + 1);
+    s32 normalizedY = func_020adc90(y, magnitude + 1);
+    s32 normalizedZ = func_020adc90(z, magnitude + 1);
+    u32 vector = ((u32)(normalizedX >> 3) & 0x3ffu) |
+                 (((u32)(normalizedY >> 3) & 0x3ffu) << 10) |
+                 (((u32)(normalizedZ >> 3) & 0x3ffu) << 20) |
+                 (lightId << 30);
+    u32 packedColor = (u32)color | (lightId << 30);
+
+    *(volatile u32 *)0x040004c8 = vector;
+    *(volatile u32 *)0x040004cc = packedColor;
+#ifndef MATCHING
+    TingleNativeG3_SetLightVector(vector);
+    TingleNativeG3_SetLightColor(packedColor);
+#endif
+}
+
+static u32 RupeeWobbleAngle(u16 phase)
+{
+    s16 sample = data_020c9670[(phase >> 4) * 2];
+    return ((u32)(s32)sample >> 7) & 0xfffu;
+}
+
+/* Submit the overlay encounter's explicitly transformed rupee. Translation,
+ * scale, and immutable mesh data are borrowed for the call. The low flag byte
+ * selects an eight-texel atlas column; bit 0x100 accelerates wobble and emits
+ * a white six-triangle damage flash. Retail render variant two requests
+ * normal-derived texture coordinates; that visual mode remains an explicit
+ * native-rasterizer dependency, while the default variant-one path is fully
+ * mirrored. All geometry and lighting effects are synchronous. */
+void Graphics3dPresentation_SubmitRupeeMeshWithEffects(
+    Graphics3dPresentation *self, const RupeeMeshInstance *instance,
+    u32 appearanceFlags)
+{
+    static const s16 flashOutline[7][2] = {
+        {-0x90a,  0x77e}, {-0x90a, -0x77e}, {0, -0x10cd},
+        { 0x90a, -0x77e}, { 0x90a,  0x77e}, {0,  0x10cd},
+        {-0x90a,  0x77e}
+    };
+    const RupeeMeshDescriptor *mesh = instance->meshDescriptor;
+    const u32 *vertexCommands = mesh->packedData;
+    const u32 *normalCommands = vertexCommands + mesh->vertexCount;
+    const u8 *vertexIndices =
+        (const u8 *)(normalCommands + mesh->normalCount);
+    u32 cornerCount = mesh->triangleCount * 3;
+    const u16 *normalIndices =
+        (const u16 *)(vertexIndices + cornerCount);
+    VecFx32Object lightDirection;
+    u8 *bytes = (u8 *)self;
+    u16 *firstPhase = (u16 *)data_021f63b0;
+    u16 *secondPhase = (u16 *)(data_020f3064 + 4);
+    s32 intensity;
+    u32 angle;
+    u32 corner;
+    s32 outline;
+
+    VecFx32_Subtract(&lightDirection, &instance->translation,
+                     &self->lightingReference);
+    intensity = (s32)((u32)self->lightStrength * 0x18u) >> 12;
+    Graphics3d_SetNormalizedLight(
+        0, lightDirection.value.x, lightDirection.value.y,
+        lightDirection.value.z,
+        (u16)((u32)intensity | ((u32)intensity << 5) |
+              ((u32)intensity << 10)));
+    intensity = (s32)((u32)self->lightStrength << 2) >> 12;
+    Graphics3d_SetNormalizedLight(
+        1, -0xb50, -0xb50, 0, (u16)((u32)intensity << 10));
+
+    *(volatile u32 *)0x04000444 = 0;
+    *(volatile s32 *)0x04000470 = instance->translation.value.x;
+    *(volatile s32 *)0x04000470 = instance->translation.value.y;
+    *(volatile s32 *)0x04000470 = instance->translation.value.z;
+    *(volatile s32 *)0x0400046c = instance->scale.value.x;
+    *(volatile s32 *)0x0400046c = instance->scale.value.y;
+    *(volatile s32 *)0x0400046c = instance->scale.value.z;
+#ifndef MATCHING
+    TingleNativeG3_Push();
+    TingleNativeG3_Translate(instance->translation.value.x,
+                             instance->translation.value.y,
+                             instance->translation.value.z);
+    TingleNativeG3_Scale(instance->scale.value.x,
+                         instance->scale.value.y,
+                         instance->scale.value.z);
+#endif
+
+    *firstPhase = (u16)(*firstPhase + 0x13e);
+    *secondPhase = (u16)(*secondPhase + 0x1f4);
+    if ((appearanceFlags & 0x100u) != 0) {
+        *firstPhase = (u16)(*firstPhase + 0x6aa);
+        *secondPhase = (u16)(*secondPhase + 0x4c5);
+    }
+    angle = RupeeWobbleAngle(*secondPhase);
+    func_020b0844(data_020c9670[angle * 2],
+                  data_020c9670[angle * 2 + 1]);
+    angle = RupeeWobbleAngle(*firstPhase);
+    func_020b0880(data_020c9670[angle * 2],
+                  data_020c9670[angle * 2 + 1]);
+
+    func_0209bcb0((s32)((appearanceFlags & 0xffu) << 15), 0);
+    func_0209b414(*(u32 *)(bytes + 0x130),
+                  instance->renderVariant == 2 ? 2 : 1,
+                  *(u32 *)(bytes + 0x208), *(u32 *)(bytes + 0x2e0),
+                  0, 0, 0, *(u32 *)(bytes + 0x3b8));
+    func_0209b454(*(u32 *)(bytes + 0x490), *(u32 *)(bytes + 0x130));
+    *(volatile u32 *)0x040004c0 = 0x6318;
+    *(volatile u32 *)0x040004c4 = 0x4e73;
+#ifndef MATCHING
+    /* SPE_EMI/specular lighting is not yet represented by native G3; retain
+     * the retail register write while mirroring its diffuse/ambient word. */
+    TingleNativeG3_SetMaterial(0x6318);
+#endif
+    func_0209b560(3, 2, 2, 1, 0x1f, 0);
+    *(volatile u32 *)0x04000500 = 0;
+#ifndef MATCHING
+    TingleNativeG3_Begin(0);
+#endif
+    for (corner = 0; corner < cornerCount; corner += 3) {
+        Graphics3d_SubmitIndexedTriangle(
+            vertexCommands, vertexIndices + corner,
+            normalCommands, normalIndices + corner);
+    }
+    *(volatile u32 *)0x04000504 = 0;
+#ifndef MATCHING
+    TingleNativeG3_End();
+#endif
+
+    if ((appearanceFlags & 0x100u) != 0) {
+        func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);
+        func_0209b560(0, 0, 3, 0, 0x1f, 0);
+        *(volatile u32 *)0x04000480 = 0x7fff;
+#ifndef MATCHING
+        TingleNativeG3_Color(0x7fff);
+#endif
+        for (outline = 5; outline >= 0; --outline) {
+            u32 xy = (u16)flashOutline[outline + 1][0] |
+                     ((u32)(u16)flashOutline[outline + 1][1] << 16);
+
+            *(volatile u32 *)0x04000500 = 2;
+#ifndef MATCHING
+            TingleNativeG3_Begin(2);
+#endif
+            func_0209bce4(flashOutline[outline][0],
+                          flashOutline[outline][1], 0);
+            *(volatile u32 *)0x04000494 = xy;
+            *(volatile u32 *)0x04000494 = 0;
+#ifndef MATCHING
+            TingleNativeG3_VertexXY(xy);
+            TingleNativeG3_VertexXY(0);
+#endif
+            *(volatile u32 *)0x04000504 = 0;
+#ifndef MATCHING
+            TingleNativeG3_End();
+#endif
+        }
+    }
+
+    *(volatile u32 *)0x04000448 = 1;
+#ifndef MATCHING
+    TingleNativeG3_Pop(1);
+#endif
+    VecFx32Object_Destroy(&lightDirection);
+}
+
+/* Copy an explicit transform into the owned rupee instance, then consume it
+ * synchronously through the effect submission path. Neither argument vector
+ * is retained after its values have been copied. */
+void Graphics3dPresentation_DrawRupeeWithEffects(
+    Graphics3dPresentation *self, const VecFx32Object *translation,
+    const VecFx32Object *scale, u32 appearanceFlags)
+{
+    VecFx32Object_Assign(&self->rupeeMeshInstance->translation, translation);
+    VecFx32Object_Assign(&self->rupeeMeshInstance->scale, scale);
+    Graphics3dPresentation_SubmitRupeeMeshWithEffects(
+        self, self->rupeeMeshInstance, appearanceFlags);
 }
 
 /* Initializes the paired presentation table and its fifteen touch points,
@@ -467,6 +735,28 @@ u32 Graphics3dPresentation_IsDrawingSuppressed(
     return self->drawSuppressed;
 }
 
+/* Request the retained rupee's animated visibility state. Only retail value
+ * one shows it: the supplied integer coordinates become its compensated Q12
+ * position, scale restarts at one, and the instance activates immediately.
+ * Every other value requests the existing shrink-to-hide transition. */
+void Graphics3dPresentation_SetRupeeVisibleAt(
+    Graphics3dPresentation *self, s32 visible, s32 x, s32 y)
+{
+    if (visible < 0 || visible > 1)
+        visible = 0;
+    if (visible != 1) {
+        self->rupeeHideRequested = 1;
+        return;
+    }
+
+    self->rupeePosition.value.x = (s32)((u32)x << 7);
+    self->rupeePosition.value.y = -(s32)((u32)y << 7);
+    self->rupeePosition.value.z = -0x5800;
+    self->rupeeScale = 1;
+    self->rupeeHideRequested = 0;
+    RupeeMeshInstance_Activate(self->rupeeMeshInstance);
+}
+
 /*
  * Retail 0x020A2348: select the 2D BG0 path. A nonzero release_resources
  * releases owned 3D VRAM first; a nonzero configure_display selects main
@@ -522,21 +812,20 @@ void Graphics3dPresentation_Enable(Graphics3dPresentation *self,
 Graphics3dPresentation *Graphics3dPresentation_Init(
     Graphics3dPresentation *self, s32 resourceProfile)
 {
-    u8 *bytes = (u8 *)self;
     VecFx32Object vector;
     void *allocation;
 
-    func_02004fe0(bytes + 0x70);
-    func_02004fe0(bytes + 0x84);
-    func_02004fe0(bytes + 0x4ec);
+    VecFx32Object_Init(&self->lightingReference);
+    VecFx32Object_Init(&self->framePosition);
+    VecFx32Object_Init(&self->rupeePosition);
     self->resourceProfile = resourceProfile;
     func_0209a4f0(self);
     if (resourceProfile == 0)
         func_0209a748(self, 8);
 
     allocation = Heap_Alloc(0x2c, data_020f32e8, 4, &gHeapContext);
-    self->transformManager = func_0209a450(allocation);
-    func_0209a4b4(allocation);
+    self->rupeeMeshInstance = RupeeMeshInstance_Init(allocation);
+    RupeeMeshInstance_BindDefaultMesh(self->rupeeMeshInstance);
     allocation = Heap_Alloc(0x1fc, data_020f32f0, 4, &gHeapContext);
     self->pairedEntryManager = func_020a2aa8(allocation, self);
     allocation = Heap_Alloc(0x80, data_020f32f8, 4, &gHeapContext);
@@ -544,22 +833,21 @@ Graphics3dPresentation *Graphics3dPresentation_Init(
     self->drawSuppressed = 0;
     self->enabled = 1;
     func_0200500c(&vector, 0, 0x1800, -0x5800);
-    func_020050a4(&self->transformOffset, &vector);
+    VecFx32Object_Assign(&self->rupeePosition, &vector);
     VecFx32_TerminateNoOp(&vector);
-    self->scale = 0;
-    self->hideRequested = 0;
+    self->rupeeScale = 0;
+    self->rupeeHideRequested = 0;
     return self;
 }
 
-/* Destroys the small manager's two vectors, clears its first word, and returns
- * the caller-owned object. */
-void *func_0209a484(void *object)
+/* Release the two value-only vectors, clear the borrowed descriptor, and
+ * return the still caller-owned instance. */
+RupeeMeshInstance *RupeeMeshInstance_Destroy(RupeeMeshInstance *self)
 {
-    u8 *bytes = (u8 *)object;
-    *(u32 *)bytes = 0;
-    VecFx32_TerminateNoOp(bytes + 0x1c);
-    VecFx32_TerminateNoOp(bytes + 0x0c);
-    return object;
+    self->meshDescriptor = 0;
+    VecFx32Object_Destroy(&self->scale);
+    VecFx32Object_Destroy(&self->translation);
+    return self;
 }
 
 /* Confirmed no-op destructor hook for the 30-slot manager. */
@@ -601,9 +889,9 @@ Graphics3dPresentation *Graphics3dPresentation_Destroy(
 {
     void *child;
 
-    child = self->transformManager;
+    child = self->rupeeMeshInstance;
     if (child != 0) {
-        func_0209a484(child);
+        RupeeMeshInstance_Destroy(child);
         Heap_Free(child);
     }
     child = self->slotManager;
@@ -616,7 +904,7 @@ Graphics3dPresentation *Graphics3dPresentation_Destroy(
         func_020a2b28(child);
         Heap_Free(child);
     }
-    VecFx32_TerminateNoOp(&self->transformOffset);
+    VecFx32Object_Destroy(&self->rupeePosition);
     func_0209a5cc(self);
     return self;
 }

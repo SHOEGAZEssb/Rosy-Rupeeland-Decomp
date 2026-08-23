@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitComponents
 .extern func_020befec
 .extern VecFx32Object_Assign
-.extern func_020a227c
+.extern Graphics3dPresentation_DrawRupeeWithEffects
 .extern func_0209b494
 .extern func_ov042_02204ee4
 .extern VecFx32Object_Init
@@ -462,7 +462,7 @@ func_ov042_022036c4:
     add r1, sp, #0xb8
     ldr r0, [r0, #0x20]
     mov r3, r3, lsr #0x10
-    bl func_020a227c
+    bl Graphics3dPresentation_DrawRupeeWithEffects
     ldr r2, [sp, #0xcc]
     ldr r1, [sp, #0xd0]
     ldr r0, [sp, #0xd4]

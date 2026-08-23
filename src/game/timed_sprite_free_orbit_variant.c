@@ -1,4 +1,5 @@
 #include "tingle/heap.h"
+#include "tingle/point_2d_s16.h"
 #include "tingle/types.h"
 
 /*
@@ -11,16 +12,10 @@ typedef struct PresentationTrack {
     u8 bytes[0x10];
 } PresentationTrack;
 
-typedef struct BoundsCenter {
-    const void *vtable;
-    s16 x;
-    s16 y;
-} BoundsCenter;
-
 typedef struct FreeOrbitTimedSprite FreeOrbitTimedSprite;
 typedef void (*FreeOrbitTimedSpriteApply)(FreeOrbitTimedSprite *self,
                                           const void *position,
-                                          const BoundsCenter *center);
+                                          const CPoint2DS16 *center);
 
 struct FreeOrbitTimedSprite {
     void **vtable;
@@ -41,7 +36,6 @@ struct FreeOrbitTimedSprite {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_020d5b10;
 extern void *data_020d60f8;
 extern FreeOrbitTimedSprite *func_0201e9d8(FreeOrbitTimedSprite *self,
                                            u8 *owner, u8 *config,
@@ -93,19 +87,19 @@ FreeOrbitTimedSprite *func_0201ec18(FreeOrbitTimedSprite *self)
 /*
  * Decrement lifetime and hide/finish on expiry.  Otherwise call vtable slot 5
  * with position40 and a recovered bounds-center value whose vtable is
- * data_020d5b10 and whose X/Y are zero, advance both tracks, advance the
+ * gCPoint2DS16VTable and whose X/Y are zero, advance both tracks, advance the
  * wrapping orbit angle, and return zero.
  */
 s32 func_0201ec40(FreeOrbitTimedSprite *self)
 {
-    BoundsCenter zeroCenter;
+    CPoint2DS16 zeroCenter;
 
     self->remaining28--;
     if (self->remaining28 < 0) {
         TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
-    zeroCenter.vtable = data_020d5b10;
+    zeroCenter.vtable = gCPoint2DS16VTable;
     zeroCenter.x = 0;
     zeroCenter.y = 0;
     ((FreeOrbitTimedSpriteApply)self->vtable[5])(

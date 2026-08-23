@@ -9,7 +9,7 @@
 .extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern VecFx32_Subtract
-.extern S16BoundsCenter_Init
+.extern CPoint2DS16_InitFromRectangle
 .extern func_020adae4
 .extern func_020ae024
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -112,7 +112,7 @@ func_0201e7d0: ; 0x0201e7d0
     ldr r1, [r4, #0x2c]
     add r0, sp, #0x0
     add r1, r1, #0x68
-    bl S16BoundsCenter_Init
+    bl CPoint2DS16_InitFromRectangle
     mov r0, r4
     ldr r3, [r0, #0x0]
     ldr r1, [r4, #0x2c]

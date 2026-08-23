@@ -1,4 +1,5 @@
 #include "tingle/heap.h"
+#include "tingle/point_2d_s16.h"
 #include "tingle/types.h"
 
 /* Dispatch type-1 interactions that create, update, or hand off an auxiliary resource. */
@@ -41,7 +42,6 @@ extern const char data_020e5818[];
 extern const char data_020e5820[];
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *AnimationResource_Init(void *resource, s32 first, s32 second, s32 third);
-extern void S16BoundsCenter_Init(void *destination, const void *source);
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void *func_0206b628(void *allocation, void *owner, void *first,
                            void *second, void *third, s32 x, s32 y, s32 z,
@@ -2694,7 +2694,7 @@ void *AuxiliaryInteraction_Init(void *allocation, void *owner)
 {
     u8 *self = (u8 *)allocation;
     u8 *actor = (u8 *)owner;
-    u8 transform[8];
+    CPoint2DS16 center;
     void *object;
     void *manager;
     s32 i;
@@ -2720,11 +2720,11 @@ void *AuxiliaryInteraction_Init(void *allocation, void *owner)
         *(void **)(self + 0x08) = AnimationResource_Init(
             *(void **)(self + 0x08), 0x1359, 0x1001, 0x135a);
 
-    S16BoundsCenter_Init(transform, actor + 0x68);
+    CPoint2DS16_InitFromRectangle(&center, actor + 0x68);
     object = Heap_Alloc(0x308, data_020e5818, 4, &gHeapContext);
     if (object != 0) {
         s32 mirrored = actor[0x4d] == 1;
-        s32 vertical = func_020befec(*(s16 *)(transform + 6) * 2, 3) << 12;
+        s32 vertical = func_020befec(center.y * 2, 3) << 12;
         object = func_0206b628(
             object, *(void **)(self + 0x0c), *(void **)(self + 0x00),
             *(void **)(self + 0x04), *(void **)(self + 0x08),

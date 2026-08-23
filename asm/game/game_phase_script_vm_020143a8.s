@@ -41,7 +41,7 @@
 .extern Actor_GetOwningCollection
 .extern func_020a2310
 .extern func_020a245c
-.extern func_020a2480
+.extern Graphics3dPresentation_SetRupeeVisibleAt
 .extern func_020a2530
 .extern func_020a257c
 .extern func_020a25c8
@@ -899,7 +899,7 @@ L_02014f60:
     mov r1, r9
     mov r2, r8
     mov r3, r7
-    bl func_020a2480
+    bl Graphics3dPresentation_SetRupeeVisibleAt
     b L_0201553c
 L_02014f88:
     ldr r0, L_020154d0

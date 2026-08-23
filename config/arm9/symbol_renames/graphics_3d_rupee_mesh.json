@@ -1,0 +1,19 @@
+{
+  "data_020d5b10": "gCPoint2DS16VTable",
+  "data_020d23fc": "gRupeeMeshDescriptor",
+  "func_0209a450": "RupeeMeshInstance_Init",
+  "func_0209a484": "RupeeMeshInstance_Destroy",
+  "func_0209a4b4": "RupeeMeshInstance_BindDefaultMesh",
+  "func_0209a4c4": "RupeeMeshInstance_Deactivate",
+  "func_0209a4d0": "RupeeMeshInstance_Activate",
+  "func_0209a4dc": "RupeeMeshInstance_IsInactive",
+  "func_0209a4e4": "RupeeMeshInstance_Clear",
+  "func_0209cc94": "Graphics3d_SubmitIndexedNormalVertex",
+  "func_0209ccb0": "Graphics3d_SubmitIndexedTriangle",
+  "func_0209ccfc": "Graphics3d_SetNormalizedLight",
+  "func_0209cdd0": "Graphics3dPresentation_SubmitRetainedRupeeMesh",
+  "func_0209d1fc": "Graphics3dPresentation_SubmitRupeeMeshWithEffects",
+  "func_0209d628": "CPoint2DS16_InitComponents",
+  "func_020a227c": "Graphics3dPresentation_DrawRupeeWithEffects",
+  "func_020a2480": "Graphics3dPresentation_SetRupeeVisibleAt"
+}

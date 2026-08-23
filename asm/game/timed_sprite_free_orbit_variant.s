@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/timed_sprite_free_orbit_variant.c.
 .text
 .extern Heap_Free
-.extern data_020d5b10
+.extern gCPoint2DS16VTable
 .extern data_020d60f8
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -97,5 +97,5 @@ func_0201ec40: ; 0x0201ec40
 .L_0201ecb0:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-.L_0201ecb8: .word data_020d5b10
+.L_0201ecb8: .word gCPoint2DS16VTable
     .size func_0201ec40, .-func_0201ec40

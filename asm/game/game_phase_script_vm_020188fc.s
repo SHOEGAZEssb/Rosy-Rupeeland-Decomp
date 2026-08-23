@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_bounds_opcode.c.
 .text
-.extern data_020d5b10
-.global S16BoundsCenter_Init
-S16BoundsCenter_Init:
+.extern gCPoint2DS16VTable
+.global CPoint2DS16_InitFromRectangle
+CPoint2DS16_InitFromRectangle:
     ldr r3, L_02018954
     mov r2, #0x0
     str r3, [r0, #0x0]
@@ -25,5 +25,5 @@ S16BoundsCenter_Init:
     add r1, r2, r1, asr #0x1
     strh r1, [r0, #0x6]
     bx lr
-L_02018954: .word data_020d5b10
-.size S16BoundsCenter_Init, . - S16BoundsCenter_Init
+L_02018954: .word gCPoint2DS16VTable
+.size CPoint2DS16_InitFromRectangle, . - CPoint2DS16_InitFromRectangle

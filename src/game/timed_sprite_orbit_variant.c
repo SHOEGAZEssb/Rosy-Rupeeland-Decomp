@@ -1,4 +1,5 @@
 #include "tingle/heap.h"
+#include "tingle/point_2d_s16.h"
 #include "tingle/types.h"
 
 /*
@@ -11,16 +12,10 @@ typedef struct PresentationTrack {
     u8 bytes[0x10];
 } PresentationTrack;
 
-typedef struct BoundsCenter {
-    const void *vtable;
-    s16 x;
-    s16 y;
-} BoundsCenter;
-
 typedef struct OrbitTimedSprite OrbitTimedSprite;
 typedef void (*OrbitTimedSpriteApply)(OrbitTimedSprite *self,
                                       const void *position,
-                                      const BoundsCenter *center);
+                                      const CPoint2DS16 *center);
 
 struct OrbitTimedSprite {
     void **vtable;
@@ -50,7 +45,6 @@ extern void VecFx32Object_Add(PresentationTrack *first,
                           PresentationTrack *second);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *sprite, const void *position, s32 first,
                           s32 second, s32 third, s32 constant8);
-extern BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const void *bounds);
 extern u32 genrand_int32(void);
 #ifdef __cplusplus
 }
@@ -115,14 +109,14 @@ OrbitTimedSprite *func_0201ea7c(OrbitTimedSprite *self)
  */
 s32 OrbitTimedSprite_Update(OrbitTimedSprite *self)
 {
-    BoundsCenter center;
+    CPoint2DS16 center;
 
     self->remaining28--;
     if (self->remaining28 < 0) {
         TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
-    S16BoundsCenter_Init(&center, self->owner2c + 0x68);
+    CPoint2DS16_InitFromRectangle(&center, self->owner2c + 0x68);
     ((OrbitTimedSpriteApply)self->vtable[5])(
         self, self->owner2c + 0x18, &center);
     VecFx32Object_Add(&self->first08, &self->second18);
@@ -137,7 +131,7 @@ s32 OrbitTimedSprite_Update(OrbitTimedSprite *self)
  * spriteByte3e is nonnegative, store its low byte at sprite offset 0x3a.
  */
 void func_0201eb18(OrbitTimedSprite *self, const void *ownerPosition,
-                   const BoundsCenter *unusedCenter)
+                   const CPoint2DS16 *unusedCenter)
 {
     s32 tableIndex = (self->angle38 >> 4) * 2;
     s32 x = *(s32 *)&self->first08.bytes[4]

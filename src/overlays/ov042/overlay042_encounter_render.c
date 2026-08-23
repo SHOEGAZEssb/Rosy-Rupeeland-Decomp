@@ -1,3 +1,4 @@
+#include "tingle/graphics_3d_presentation.h"
 #include "tingle/types.h"
 
 /*
@@ -14,29 +15,26 @@ extern "C" s32 data_ov042_0220acd8[];
 extern "C" s32 data_ov042_0220ad68[];
 extern "C" s32 data_ov042_0220af24[];
 extern "C" s32 data_ov042_0220b564[];
+extern "C" u16 data_ov042_0220b6e0[];
 extern "C" u8 gDisplayBrightnessPair[];
 extern "C" u32 genrand_int32(void);
 extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
 extern "C" void func_0209a2ac(void *display, void *renderContext, s32 layer);
-extern "C" void VecFx32Object_Init(void *matrix);
-extern "C" void VecFx32Object_InitComponents(void *matrix, s32 x, s32 y, s32 z);
-extern "C" void VecFx32Object_Destroy(void *matrix);
-extern "C" void VecFx32Object_Assign(void *destination, const void *source);
 extern "C" void func_0209b494(void *graphics, s32 parameter, s32 value);
 extern "C" void func_0209b668(void *graphics);
 extern "C" void func_020a1794(void *owner, const void *position,
                                const void *matrix, s32 flags);
-extern "C" void func_020a227c(void *graphics, const void *position, s32 angle);
 extern "C" void *DisplayBrightnessPair_GetScreen(void *controller, s32 screen);
 extern "C" void DisplayBrightness_StartTransition(void *brightness, s32 start, s32 end, s32 duration);
-extern "C" void Memory_ClearBytes(void *object);
 extern "C" void func_ov042_02204e74(s32 polygon, s32 texture,
                                      s32 palette, s32 alpha,
                                      s32 arg0, s32 arg1);
-extern "C" void func_ov042_02204ee4(void *scene, const void *position,
-                                     s32 color, const void *scale);
+extern "C" void func_ov042_02204ee4(
+    void *scene, const s32 *translation, s32 angle, const s32 *scale,
+    const s32 *vertices, const s32 *extraTranslation,
+    const s32 *texcoords, u16 attributes);
 extern "C" void func_ov042_02205808(void *pool);
 extern "C" void func_ov042_02208774(void *object, void *renderContext);
 extern "C" void func_ov042_02208fd0(void *object, void *renderContext);
@@ -58,13 +56,45 @@ static void start_brightness_ramp(s32 start, s32 end, s32 duration)
     DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 1), start, end, duration);
 }
 
-/* Emit a single reconstructed billboard through the overlay geometry helper. */
+/* Emit one portable approximation of the retail table-driven quad. The full
+ * eight-argument ABI is preserved so the recovered geometry helper never
+ * consumes indeterminate host registers; the omitted per-quad tables remain
+ * a separate recovery dependency for this surrounding encounter renderer. */
 static void emit_billboard(void *scene, s32 x, s32 y, s32 z,
                            s32 color, s32 scale)
 {
-    s32 position[3] = {x, y, z};
-    s32 dimensions[3] = {scale, scale, scale};
-    func_ov042_02204ee4(scene, position, color, dimensions);
+    static const s32 vertices[5] = {-1, -1, 0, 1, 1};
+    static const s32 texcoords[4] = {0, 0, 8, 8};
+    const s32 extraTranslation[2] = {0, 0};
+    VecFx32Object translation;
+    VecFx32Object dimensions;
+
+    VecFx32Object_InitComponents(&translation, x, y, z);
+    VecFx32Object_InitComponents(&dimensions, scale, scale, scale);
+    func_ov042_02204ee4(
+        scene, (const s32 *)&translation, 0, (const s32 *)&dimensions,
+        vertices, extraTranslation, texcoords, (u16)color);
+    VecFx32Object_Destroy(&dimensions);
+    VecFx32Object_Destroy(&translation);
+}
+
+/* Retail nests a sine-table lookup to produce the encounter light's slow
+ * first-axis drift. The first Q12 sample is reinterpreted as a full-turn angle
+ * before the second lookup, then divided by five. */
+static s32 get_rupee_light_first_axis_offset(void)
+{
+    u16 phase = (u16)(data_ov042_0220b6e0[0] + 0xc8);
+    s16 firstSample;
+    u32 secondByteOffset;
+    s16 secondSample;
+
+    data_ov042_0220b6e0[0] = phase;
+    firstSample = data_020c9670[(phase >> 4) * 2];
+    secondByteOffset =
+        (((((u32)(s32)firstSample << 18) >> 16) >> 4) << 2);
+    secondSample = *(const s16 *)((const u8 *)data_020c9670 +
+                                  secondByteOffset);
+    return func_020befec(secondSample, 5);
 }
 
 /*
@@ -76,54 +106,159 @@ static void emit_billboard(void *scene, s32 x, s32 y, s32 z,
  */
 static void draw_mode2_ribbon(void *scene)
 {
-    s32 base[4];
-    s32 actor[4];
-    s32 scale[4];
-    Memory_ClearBytes(base);
-    VecFx32Object_InitComponents(base, 192, 160, 112);
-    VecFx32Object_InitComponents(actor, FIELD(s32, scene, 0xa8) >> 12,
-                   FIELD(s32, scene, 0xac) >> 12, 210);
-
+    static const s32 vertices[8][6] = {
+        {-56, -10, -38,   8, 54, -38},
+        { 56, -10, -38,  -8, 54, -38},
+        {-42,  -8, -38,   6, 40, -38},
+        { 42,  -8, -38,  -6, 40, -38},
+        {-24,  -5, -42,   0, 59, -42},
+        { 24,  -5, -42,   0, 59, -42},
+        {-13, -10, -38,  11,  6, -38},
+        { 13, -10, -38, -11,  6, -38}
+    };
+    static const s32 extraTranslations[8][2] = {
+        {-11, 27}, {11, 27}, {-16, -34}, {16, -34},
+        {0, -25}, {0, -25}, {-32, -4}, {32, -4}
+    };
+    static const s32 texcoordPairs[12][2] = {
+        {0, 0}, {0x3f000, 0x40000}, {0x41000, 0},
+        {0x6f000, 0x2f000}, {0x70000, 0}, {0x87000, 0x40000},
+        {0x40000, 0x30000}, {0x58000, 0x40000},
+        {0x58000, 0x30000}, {0x70000, 0x40000}, {0x88000, 0},
+        {0xa0000, 0x10000}
+    };
+    Graphics3dPresentation *presentation =
+        (Graphics3dPresentation *)FIELD(
+            void *, FIELD(void *, scene, 0x48), 0x20);
+    VecFx32Object rupeeScale;
+    VecFx32Object rupeeTranslation;
+    VecFx32Object lightingReference;
+    VecFx32Object billboardScale;
+    u16 localAttributes[27];
+    u16 quadAngles[8] = {0};
+    s32 texcoordSelectors[9] = {0};
+    s32 timer = FIELD(s32, scene, 0x1bc);
+    s32 direction = FIELD(s32, scene, 0x1d0);
     s32 phase = FIELD(s32, scene, 0x1d4);
-    s32 amplitude = phase ? FIELD(s32, scene, 0x1dc) : 135;
-    if (amplitude < 1)
-        amplitude = 1;
-    scale[0] = func_020befec(FIELD(s32, scene, 0x1d0) * amplitude, 135);
-    scale[1] = func_020befec(FIELD(s32, scene, 0x1d8) * amplitude, 135);
-    scale[2] = func_020befec(FIELD(s32, scene, 0x1dc) * amplitude, 135);
+    s32 i;
 
-    s32 center[3] = {FIELD(s32, scene, 0xa8), 0, FIELD(s32, scene, 0xac)};
-    VecFx32Object_Assign((u8 *)FIELD(void *, FIELD(void *, scene, 0x48), 0x20) + 0x70,
-                   actor);
-    func_020a227c(FIELD(void *, FIELD(void *, scene, 0x48), 0x20), actor,
-                   (FIELD(s32, scene, 0x1bc) * 0x127) & 0xffff);
-    VecFx32Object_InitComponents(scale, scale[0] >> 7, scale[1] >> 7, scale[2] >> 7);
+    VecFx32Object_InitComponents(&rupeeScale, 192, 160, 112);
+    VecFx32Object_InitComponents(
+        &rupeeTranslation, FIELD(s32, scene, 0xa8) >> 12,
+        FIELD(s32, scene, 0xac) >> 12, 210);
+
+    if (timer > 180) {
+        s32 factor = 135 - (timer - 180) / 2;
+
+        if (timer > 295) {
+            factor -= (timer - 295) * 2;
+            if (factor < 1)
+                factor = 1;
+        }
+        rupeeScale.value.x = func_020befec(rupeeScale.value.x * factor, 135);
+        rupeeScale.value.y = func_020befec(rupeeScale.value.y * factor, 135);
+        rupeeScale.value.z = func_020befec(rupeeScale.value.z * factor, 135);
+    } else if (timer == 0 && FIELD(s32, scene, 0x1cc) == 0 &&
+               FIELD(s32, scene, 0x1b0) != 0) {
+        s32 progress = FIELD(s32, scene, 0x1b0);
+        s32 factor = progress >= 180 ? 512 - (progress - 180) * 2 : 512;
+
+        rupeeScale.value.x = rupeeScale.value.x * factor / 256;
+        rupeeScale.value.y = rupeeScale.value.y * factor / 256;
+        rupeeScale.value.z = rupeeScale.value.z * factor / 256;
+    }
+
+    if (phase != 0) {
+        u16 phaseAngle = (u16)(phase * FIELD(s32, scene, 0x1d8));
+        s16 sample = data_020c9670[(phaseAngle >> 4) * 2];
+        u16 angle = (u16)((((s64)sample *
+                            FIELD(s32, scene, 0x1dc)) + 0x800) >> 12);
+
+        if (direction == 0) {
+            quadAngles[0] = angle;
+        } else if (direction == 1) {
+            quadAngles[1] = (u16)-(s16)angle;
+        } else if (direction == 2) {
+            quadAngles[0] = angle;
+            quadAngles[1] = (u16)-(s16)angle;
+        }
+    }
+    if (timer != 0) {
+        quadAngles[0] = 1600;
+        quadAngles[1] = (u16)-1000;
+        quadAngles[2] = (u16)-800;
+        quadAngles[3] = 280;
+    } else if (FIELD(s32, scene, 0x1cc) != 0) {
+        s32 spread = FIELD(s32, scene, 0x1cc);
+
+        if (FIELD(s32, scene, 0x1e0) == 0) {
+            quadAngles[0] = (u16)(-100 * spread);
+            quadAngles[1] = (u16)( 100 * spread);
+            quadAngles[2] = (u16)( 300 * spread);
+            quadAngles[3] = (u16)(-300 * spread);
+        } else {
+            quadAngles[0] = (u16)( 300 * spread);
+            quadAngles[1] = (u16)(-300 * spread);
+            quadAngles[2] = (u16)( 400 * spread);
+            quadAngles[3] = (u16)(-400 * spread);
+        }
+    }
+
+    VecFx32Object_InitComponents(&lightingReference, -750, -800, -500);
+    lightingReference.value.x += get_rupee_light_first_axis_offset();
+    VecFx32Object_Assign(&presentation->lightingReference, &lightingReference);
+    presentation->lightStrength =
+        timer > 0x127 ? 0 : 0x1000;
+    Graphics3dPresentation_DrawRupeeWithEffects(
+        presentation, &rupeeTranslation, &rupeeScale,
+        (u16)(FIELD(s32, scene, 0x150) |
+              (FIELD(s32, scene, 0x1c4) > 3 ? 0x100 : 0)));
+    VecFx32Object_InitComponents(
+        &billboardScale, rupeeScale.value.x * 32,
+        rupeeScale.value.y * 32, rupeeScale.value.z * 32);
     func_0209b494(FIELD(void *, FIELD(void *, scene, 0x48), 0x20), 38, 0);
 
-    /* The retail function emits seven color-indexed ribbon billboards. */
-    for (s32 i = 6; i >= 0; --i) {
-        s32 tableIndex = (FIELD(s32, scene, 0x1bc) + i * 3) % 27;
-        emit_billboard(scene,
-                       center[0] + data_ov042_0220acd8[i * 2],
-                       center[1],
-                       center[2] + data_ov042_0220acd8[i * 2 + 1],
-                       data_ov042_0220ad98[tableIndex], 0x1000 + i * 0x180);
+    for (i = 0; i < 27; ++i)
+        localAttributes[i] = data_ov042_0220ad98[i];
+    for (i = 0; i < 8; ++i)
+        texcoordSelectors[i] = data_ov042_0220acd8[i];
+    if (FIELD(s32, scene, 0x1c4) > 3) {
+        texcoordSelectors[6] = 8;
+        texcoordSelectors[7] = 8;
+    }
+    if (phase != 0 && (phase & 8) == 0 &&
+        direction >= 0 && direction <= 2) {
+        texcoordSelectors[direction + 6] = 10;
+    }
+
+    for (i = 7; i >= 0; --i) {
+        u16 attributes = localAttributes[
+            FIELD(s32, scene, 0x150) * 4 + 3 + i / 2];
+
+        if (timer > 0x127)
+            attributes = localAttributes[23];
+        func_ov042_02204ee4(
+            scene, (const s32 *)&rupeeTranslation, quadAngles[i],
+            (const s32 *)&billboardScale, vertices[i],
+            extraTranslations[i],
+            &texcoordPairs[texcoordSelectors[i]][0], attributes);
     }
 
     if ((FIELD(s32, scene, 0x1bc) % 30) == 0) {
         FIELD(s32, scene, 0x244) = 6;
         FIELD(s32, scene, 0x260) = 1;
         s32 matrix[4];
-        VecFx32Object_Init(matrix);
+        VecFx32Object_Init((VecFx32Object *)matrix);
         func_020a1794(FIELD(void *, scene, 0x48), (u8 *)scene + 0xa4, matrix, 0);
         FIELD(s32, scene, 0x254) = matrix[1];
         FIELD(s32, scene, 0x258) = matrix[2];
-        VecFx32Object_Destroy(matrix);
+        VecFx32Object_Destroy((VecFx32Object *)matrix);
     }
 
-    VecFx32Object_Destroy(scale);
-    VecFx32Object_Destroy(actor);
-    VecFx32Object_Destroy(base);
+    VecFx32Object_Destroy(&billboardScale);
+    VecFx32Object_Destroy(&lightingReference);
+    VecFx32Object_Destroy(&rupeeTranslation);
+    VecFx32Object_Destroy(&rupeeScale);
 }
 
 /*

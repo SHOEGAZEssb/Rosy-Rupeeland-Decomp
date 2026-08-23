@@ -5,7 +5,7 @@
 .extern S16Rectangle_Translate
 .extern GamePhaseScriptVm_Pop
 .extern S16Bounds_GetHeight
-.extern S16BoundsCenter_Init
+.extern CPoint2DS16_InitFromRectangle
 .extern S16Bounds_MoveTo
 .extern S16Bounds_GetWidth
 .extern S16Bounds_Expand
@@ -83,7 +83,7 @@ L_02018acc:
     mov r4, r0
     add r0, sp, #0x24
     add r1, r1, #0x60
-    bl S16BoundsCenter_Init
+    bl CPoint2DS16_InitFromRectangle
     mov r1, #0x0
     add r0, sp, #0xc
     mov r2, r1
@@ -118,7 +118,7 @@ L_02018b54:
     mov r4, r0
     add r0, sp, #0x1c
     add r1, r1, #0x60
-    bl S16BoundsCenter_Init
+    bl CPoint2DS16_InitFromRectangle
     mov r1, #0x0
     add r0, sp, #0x4
     mov r2, r1

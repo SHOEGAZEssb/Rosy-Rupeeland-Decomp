@@ -10,12 +10,9 @@ extern void func_020a2da8(void *manager);
 extern void func_020a2fd0(void *manager);
 extern void func_020a6280(void *manager);
 extern void func_020a62e4(void *manager);
-extern u32 func_0209a4dc(void *manager);
-extern void func_0209a4c4(void *manager);
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
-extern void func_0209cdd0(void *presentation, void *manager);
 extern void func_0209c9d4(void *presentation);
 extern void func_020a31d0(void *manager, const s32 *coordinates,
                           const u16 *colors);
@@ -62,7 +59,7 @@ void Graphics3dPresentation_UpdateFrame(
 void Graphics3dPresentation_RenderContents(
     Graphics3dPresentation *presentation)
 {
-    void *manager;
+    RupeeMeshInstance *instance;
     s32 scale;
     s32 remaining;
     s32 vector[4];
@@ -71,13 +68,13 @@ void Graphics3dPresentation_RenderContents(
         return;
     func_020a2fd0(presentation->pairedEntryManager);
     func_020a62e4(presentation->slotManager);
-    manager = presentation->transformManager;
-    if (func_0209a4dc(manager) != 0)
+    instance = presentation->rupeeMeshInstance;
+    if (RupeeMeshInstance_IsInactive(instance) != 0)
         return;
 
-    scale = presentation->scale;
+    scale = presentation->rupeeScale;
     remaining = 0x1000 - scale;
-    if (presentation->hideRequested == 0) {
+    if (presentation->rupeeHideRequested == 0) {
         scale += (remaining >> 2) + 0x29;
         if (scale > 0x1000)
             scale = 0x1000;
@@ -85,16 +82,16 @@ void Graphics3dPresentation_RenderContents(
         scale -= (remaining >> 2) + 0x29;
         if (scale < 1) {
             scale = 1;
-            func_0209a4c4(manager);
+            RupeeMeshInstance_Deactivate(instance);
         }
     }
-    presentation->scale = scale;
-    func_020050a4((u8 *)manager + 0x0c,
-                  &presentation->transformOffset);
+    presentation->rupeeScale = scale;
+    VecFx32Object_Assign(&instance->translation,
+                         &presentation->rupeePosition);
     func_0200500c(vector, scale, scale, scale);
-    func_020050a4((u8 *)manager + 0x1c, vector);
+    VecFx32Object_Assign(&instance->scale, (const VecFx32Object *)vector);
     VecFx32_TerminateNoOp(vector);
-    func_0209cdd0(presentation, manager);
+    Graphics3dPresentation_SubmitRetainedRupeeMesh(presentation, instance);
 }
 
 static s32 MultiplyFx32Rounded(s32 lhs, s32 rhs)

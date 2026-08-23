@@ -1,4 +1,5 @@
 #include "tingle/heap.h"
+#include "tingle/point_2d_s16.h"
 #include "tingle/types.h"
 
 /*
@@ -11,18 +12,12 @@ typedef struct PresentationTrack {
     u8 bytes[0x10];
 } PresentationTrack;
 
-typedef struct BoundsCenter {
-    const void *vtable;
-    s16 x;
-    s16 y;
-} BoundsCenter;
-
 typedef struct AttachedTimedSprite AttachedTimedSprite;
 
 typedef s32 (*AttachedTimedSpriteGate)(AttachedTimedSprite *self, s32 argument);
 typedef void (*AttachedTimedSpriteApply)(AttachedTimedSprite *self,
                                          const void *position,
-                                         const BoundsCenter *center);
+                                         const CPoint2DS16 *center);
 
 struct AttachedTimedSprite {
     void **vtable;
@@ -52,7 +47,6 @@ extern void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(void *spr
                           s32 second, s32 third, s32 constant8);
 extern void VecFx32_Subtract(void *output, s32 argument,
                           PresentationTrack *track);
-extern BoundsCenter *S16BoundsCenter_Init(BoundsCenter *center, const void *bounds);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
 extern u16 func_020ae024(s32 x, s32 y);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
@@ -117,14 +111,14 @@ s32 func_0201e794(AttachedTimedSprite *self, s32 argument)
  */
 s32 func_0201e7d0(AttachedTimedSprite *self)
 {
-    BoundsCenter center;
+    CPoint2DS16 center;
 
     self->remaining28--;
     if (self->remaining28 < 0) {
         TimedSpritePresentation_SetVisible(self, 0);
         return 1;
     }
-    S16BoundsCenter_Init(&center, self->owner2c + 0x68);
+    CPoint2DS16_InitFromRectangle(&center, self->owner2c + 0x68);
     ((AttachedTimedSpriteApply)self->vtable[5])(
         self, self->owner2c + 0x18, &center);
     VecFx32Object_Add(&self->first08, &self->second18);
@@ -136,7 +130,7 @@ s32 func_0201e7d0(AttachedTimedSprite *self)
  * The final halfword self-assignment is retail-observed and has no value change.
  */
 void func_0201e840(AttachedTimedSprite *self, const void *ownerPosition,
-                   const BoundsCenter *unusedCenter)
+                   const CPoint2DS16 *unusedCenter)
 {
     (void)unusedCenter;
     GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite, ownerPosition,
@@ -156,7 +150,7 @@ void func_0201e840(AttachedTimedSprite *self, const void *ownerPosition,
  * This function returns no value and destroys the temporary track sample.
  */
 void func_0201e888(AttachedTimedSprite *self, s32 argument,
-                   const BoundsCenter *center)
+                   const CPoint2DS16 *center)
 {
     s32 sample[4];
     s32 x;

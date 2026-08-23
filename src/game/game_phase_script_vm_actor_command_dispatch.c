@@ -1,5 +1,6 @@
 #include "tingle/game_phase_script_vm.h"
 #include "tingle/game_work.h"
+#include "tingle/graphics_3d_presentation.h"
 #include "tingle/heap.h"
 #include "tingle/overlay_manager.h"
 #include "tingle/vec_fx32.h"
@@ -43,7 +44,6 @@ extern void func_020a2530(...);
 extern void func_020a2614(...);
 extern void func_020a27a0(...);
 extern void func_020a2844(...);
-extern void func_020a2480(...);
 extern void func_020a28e0(...);
 extern void func_020a29f8(...);
 extern void func_020a2a4c(...);
@@ -83,10 +83,11 @@ static void *getScriptEffectContext(void)
 }
 
 /* Return the presentation manager's borrowed 3D presentation. */
-static void *getScriptGraphics3dPresentation(void)
+static Graphics3dPresentation *getScriptGraphics3dPresentation(void)
 {
-    return RuntimePresentationManager_GetGraphics3dPresentation(
-        getScriptPresentationManager());
+    return (Graphics3dPresentation *)
+        RuntimePresentationManager_GetGraphics3dPresentation(
+            getScriptPresentationManager());
 }
 
 /*
@@ -265,7 +266,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         func_020a27a0(getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 17:
-        func_020a2480(getScriptGraphics3dPresentation(), a1, a2, a3);
+        Graphics3dPresentation_SetRupeeVisibleAt(getScriptGraphics3dPresentation(), a1, a2, a3);
         break;
     case 18:
         func_020a2310(getScriptGraphics3dPresentation(), a1);

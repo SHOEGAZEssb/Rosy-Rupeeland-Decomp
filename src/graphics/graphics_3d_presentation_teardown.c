@@ -105,10 +105,10 @@ void func_020a2bc8(void *manager)
     *((u8 *)manager + 4) = 0;
 }
 
-/* Mark the 3D presentation manager reset at retail 0x0209A4E4. */
-void func_0209a4e4(void *manager)
+/* Clear the instance's active state without changing its retained transform. */
+void RupeeMeshInstance_Clear(RupeeMeshInstance *self)
 {
-    *(u32 *)((u8 *)manager + 4) = 1;
+    self->inactive = 1;
 }
 
 /* Clear live content while retaining all three owned child managers. */
@@ -116,5 +116,5 @@ void Graphics3dPresentation_Clear(Graphics3dPresentation *self)
 {
     func_020a33cc(self->slotManager);
     func_020a2bc8(self->pairedEntryManager);
-    func_0209a4e4(self->transformManager);
+    RupeeMeshInstance_Clear(self->rupeeMeshInstance);
 }

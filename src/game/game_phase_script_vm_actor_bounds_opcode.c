@@ -1,6 +1,7 @@
 #include "tingle/game_phase_script_vm.h"
 #include "tingle/game_phase_runtime.h"
 #include "tingle/actor_motion.h"
+#include "tingle/point_2d_s16.h"
 
 /*
  * Implement the actor-script collision-bounds dispatcher and its local
@@ -15,16 +16,9 @@ typedef struct ActorBounds {
     s16 bottom;
 } ActorBounds;
 
-typedef struct S16BoundsCenter {
-    const void *vtable;
-    s16 x;
-    s16 y;
-} S16BoundsCenter;
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const void *data_020d5b10;
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void Actor_BuildWorldInteractionBounds(void *destination, void *actor,
@@ -37,9 +31,8 @@ extern s32 func_02056f34(void *result, const void *first, const void *second,
 #endif
 
 s32 S16Bounds_GetHeight(const ActorBounds *bounds);
-S16BoundsCenter *S16BoundsCenter_Init(S16BoundsCenter *center,
-                                     const ActorBounds *bounds);
-void S16BoundsCenter_Destroy(S16BoundsCenter *center);
+CPoint2DS16 *CPoint2DS16_InitFromRectangle(CPoint2DS16 *center,
+                                           const void *bounds);
 void S16Bounds_MoveTo(ActorBounds *bounds, s16 left, s16 top);
 s32 S16Bounds_GetWidth(const ActorBounds *bounds);
 void S16Bounds_Expand(ActorBounds *bounds, s32 horizontal, s32 vertical);
@@ -83,9 +76,9 @@ s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *se
         break;
     case 6: {
         s16 height = (s16)S16Bounds_GetHeight(bounds);
-        S16BoundsCenter center;
+        CPoint2DS16 center;
         ActorBounds replacement;
-        S16BoundsCenter_Init(&center, bounds);
+        CPoint2DS16_InitFromRectangle(&center, bounds);
         func_020083b0(&replacement, 0, 0, first, height);
         Actor_SetInteractionBounds(actor, &replacement);
         S16Bounds_MoveTo(bounds, (s16)(center.x - first / 2),
@@ -94,9 +87,9 @@ s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *se
     }
     case 7: {
         s16 width = (s16)S16Bounds_GetWidth(bounds);
-        S16BoundsCenter center;
+        CPoint2DS16 center;
         ActorBounds replacement;
-        S16BoundsCenter_Init(&center, bounds);
+        CPoint2DS16_InitFromRectangle(&center, bounds);
         func_020083b0(&replacement, 0, 0, width, first);
         Actor_SetInteractionBounds(actor, &replacement);
         S16Bounds_MoveTo(bounds, (s16)(center.x - width / 2),
@@ -139,17 +132,19 @@ s32 S16Bounds_GetHeight(const ActorBounds *bounds)
  * Initialize center with the recovered vtable and the midpoint of each bounds
  * axis, using signed division rounded toward zero.  Return center.
  */
-S16BoundsCenter *S16BoundsCenter_Init(S16BoundsCenter *center,
-                                     const ActorBounds *bounds)
+CPoint2DS16 *CPoint2DS16_InitFromRectangle(CPoint2DS16 *center,
+                                            const void *rectangle)
 {
-    center->vtable = data_020d5b10;
+    const ActorBounds *bounds = (const ActorBounds *)rectangle;
+
+    center->vtable = gCPoint2DS16VTable;
     center->x = (s16)(bounds->left + (s16)(bounds->right - bounds->left) / 2);
     center->y = (s16)(bounds->top + (s16)(bounds->bottom - bounds->top) / 2);
     return center;
 }
 
 /* No-op destructor for a temporary signed-16 bounds-center value. */
-void S16BoundsCenter_Destroy(S16BoundsCenter *center)
+void CPoint2DS16_Destroy(CPoint2DS16 *center)
 {
     (void)center;
 }
