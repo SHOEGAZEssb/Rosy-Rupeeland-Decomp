@@ -1206,7 +1206,7 @@ extern "C" s32 func_ov088_0221b3e4(void *a) {
 }
 /* Consume the deferred touch notification and spawn its tracked resource actor.
  */
-extern "C" void func_ov088_0221b428(void *a, s32, s32, s32) {
+extern "C" void Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch(void *a) {
     Actor_SnapshotTransientState(a);
     if (!(F(u16, a, 0x21a) & 0x800))
         return;
@@ -1339,4 +1339,4 @@ extern "C" s32 func_ov088_0221b218(void *);
 extern "C" s32 func_ov088_0221b278(void *, s32, s32, s32);
 extern "C" void func_ov088_0221b2c4(void *, s32, s32);
 extern "C" s32 func_ov088_0221b2e0(void *, s32, s32, s32);
-extern "C" void func_ov088_0221b428(void *, s32, s32, s32);
+extern "C" void Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch(void *);

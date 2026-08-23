@@ -35,7 +35,7 @@ extern "C" s32 VecFx32Object_GetMagnitude(const void*); extern "C" void *Heap_Fr
 extern "C" void *Actor_GetOwningCollection(void*); extern "C" void *ActorCollection_GetSpriteGroup(void*);
 extern "C" void *GraphicsSpriteGroup_CreateState(void*,s32,s32,s32,u8);
 extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void*,void*,void*,void*,void*);
-extern "C" void GraphicsSpriteState_SetAnimationIndex(void*,s32); extern "C" void Actor_SetRuntimeFlag80(void*);
+extern "C" void GraphicsSpriteState_SetAnimationIndex(void*,s32); extern "C" void Actor_MarkFrameUpdateStarted(void*);
 extern "C" void Actor_SynchronizeStatePresentation(void*); extern "C" void Actor_UpdateTimedResourceState(void*);
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshCachedTerrainHeight(void*);
 extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void Actor_UpdatePresentation(void*,void*,s32);
@@ -79,7 +79,7 @@ extern "C" void func_ov085_02212c8c(void*a,const void*r){func_02071ee0((u8*)a+0x
 extern "C" void func_ov085_02212d08(void*a)
 {
  if(F(s32,a,0x114)){ActorDerivedRuntime_UpdateFrame(a);return;}
- ((M0)vm(a,0x18))(a);Actor_SetRuntimeFlag80(a);Actor_UpdateTimedResourceState(a);
+ ((M0)vm(a,0x18))(a);Actor_MarkFrameUpdateStarted(a);Actor_UpdateTimedResourceState(a);
  if(!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)&&!(F(u32,a,0x14)&0x10000000)){
   F(s16,a,0xd6)=1;F(s32,a,0x3c)=F(s32,a,0x40)=0;
   if(!((M0)vm(a,0x38))(a)){

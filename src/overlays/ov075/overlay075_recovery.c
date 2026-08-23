@@ -67,7 +67,7 @@ EXT(Actor_QueryTerrainCell);
 EXT(Actor_QueryTerrainHeight);
 EXT(ActorCollection_GetSpriteGroup);
 EXT(ActorRuntimeCollection_GetPendingAttachmentFlag);
-EXT(Actor_SetRuntimeFlag80);
+EXT(Actor_MarkFrameUpdateStarted);
 EXT(Actor_SynchronizeStatePresentation);
 EXT(AuxiliaryTimedSpritePresentation_Init);
 EXT(DualLayerTileRenderer_SetPackedTileValue);
@@ -98,7 +98,6 @@ EXT(func_02005030);
 EXT(func_02005058);
 EXT(func_0200634c);
 EXT(func_0200637c);
-EXT(func_02031720);
 EXT(Actor_TurnTowardVector);
 EXT(Actor_TurnTowardTargetPosition);
 EXT(func_020064b8);
@@ -415,7 +414,7 @@ extern "C" void func_ov075_02212fd8(void *actor)
             F(u32, actor, 0x14) |= 0x800000;
         }
     }
-    func_02031720(actor);
+    Actor_ClearTransientContactState(actor);
 }
 
 /* Rotates the actor sprite toward a target by at most the supplied step. */
@@ -691,7 +690,7 @@ extern "C" void func_ov075_022137a0(void *actor)
             F(s32, actor, 0x24) < height + 0x10000)
             F(u32, actor, 0x14) |= 0x800000;
     }
-    func_02031720(actor);
+    Actor_ClearTransientContactState(actor);
 }
 
 /* Reports whether a child actor is outside the two transition pairs. */
@@ -1154,7 +1153,7 @@ extern "C" void func_ov075_022148d0(void *actor)
         break;
     }
     Invoke(actor, 0xa4);
-    Actor_SetRuntimeFlag80(actor);
+    Actor_MarkFrameUpdateStarted(actor);
     Invoke(actor, 0x20);
 }
 

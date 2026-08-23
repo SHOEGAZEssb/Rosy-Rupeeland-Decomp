@@ -10,7 +10,7 @@
 .extern Actor_CreateAuxiliaryRenderAttachment
 .extern Actor_SnapshotTransientState
 .extern func_ov097_02218034
-.extern ActorExtendedType2_ClearTransientInteractionState
+.extern ActorExtendedType2_ClearTransientContactState
 .extern Actor_UpdatePrimaryRenderAttachmentPriority
 .extern func_ov097_02217cec
 .extern ActorDerivedRuntime_HandlePairEnded
@@ -292,7 +292,7 @@ data_ov097_0221a5f4:
     .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov097_02218034
-    .word ActorExtendedType2_ClearTransientInteractionState
+    .word ActorExtendedType2_ClearTransientContactState
     .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word func_ov097_02217cec
     .word ActorDerivedRuntime_HandlePairEnded
@@ -427,7 +427,7 @@ data_ov097_0221a80c:
     .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word ActorExtendedType2_UpdateFrame
-    .word ActorExtendedType2_ClearTransientInteractionState
+    .word ActorExtendedType2_ClearTransientContactState
     .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word func_ov078_0221361c
     .word ActorDerivedRuntime_HandlePairEnded

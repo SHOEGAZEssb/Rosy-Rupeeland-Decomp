@@ -1,0 +1,8 @@
+{
+  "func_020316e8": "Actor_SnapshotTransientState",
+  "func_02031720": "Actor_ClearTransientContactState",
+  "Actor_SetRuntimeFlag80": "Actor_MarkFrameUpdateStarted",
+  "ActorExtendedType2_ClearTransientInteractionState": "ActorExtendedType2_ClearTransientContactState",
+  "func_ov088_0221b428": "Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch",
+  "func_ov095_0221b2e8": "Overlay095Actor_SnapshotTransientState"
+}

@@ -9,8 +9,8 @@
 .extern func_ov088_0221a98c
 .extern gTouchPanelManager
 
-.global func_ov088_0221b428
-func_ov088_0221b428:
+.global Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch
+Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -68,4 +68,4 @@ func_ov088_0221b428:
     ldmia sp!, {r3, r4, r5, pc}
 .L_0221b500: .word data_021052fc
 .L_0221b504: .word gTouchPanelManager
-.size func_ov088_0221b428, . - func_ov088_0221b428
+.size Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch, . - Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch

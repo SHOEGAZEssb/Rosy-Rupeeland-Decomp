@@ -106,7 +106,7 @@ extern void *Actor_GetOwningCollection(void *);
 extern s32 Actor_GetCachedTerrainHeight(void *);
 extern s32 Actor_QueryTerrainHeight(void *, s32, s32);
 extern void Actor_RefreshCachedTerrainHeight(void *);
-extern void Actor_SetRuntimeFlag80(void *);
+extern void Actor_MarkFrameUpdateStarted(void *);
 extern void Actor_SynchronizeStatePresentation(void *);
 extern void Actor_UpdateTimedResourceState(void *);
 extern void *ActorCollection_GetSpriteGroup(void *);
@@ -348,7 +348,7 @@ void func_ov081_02212de0(void *actor)
     }
 
     VCALL(Overlay081VoidMethod, actor, 0x18)(actor);
-    Actor_SetRuntimeFlag80(actor);
+    Actor_MarkFrameUpdateStarted(actor);
     Actor_UpdateTimedResourceState(actor);
     if (ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) != 0 ||
         (FIELD(u32, actor, 0x14) & 0x10000000) != 0) {

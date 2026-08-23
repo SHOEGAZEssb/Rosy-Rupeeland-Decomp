@@ -3,7 +3,7 @@
 .extern gActorRuntimeCollection
 .extern VecFx32Object_GetMagnitude
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern Actor_SetRuntimeFlag80
+.extern Actor_MarkFrameUpdateStarted
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
 .extern Actor_SynchronizeStatePresentation
@@ -26,7 +26,7 @@ func_ov085_02212d08:
     ldr r1, [r1, #0x18]
     blx r1
     mov r0, r4
-    bl Actor_SetRuntimeFlag80
+    bl Actor_MarkFrameUpdateStarted
     mov r0, r4
     bl Actor_UpdateTimedResourceState
     ldr r0, .L_02212eec

@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/runtime_actor_variant_update.c.
-.extern Actor_SetRuntimeFlag80
+.extern Actor_MarkFrameUpdateStarted
 .extern GamePhaseActorScriptVm_IsActive
 .extern GamePhaseScriptVm_Execute
 .extern ActorRuntimeCollection_TryCompleteAttachment
@@ -16,7 +16,7 @@
 func_0204d308: ; 0x0204d308
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl Actor_SetRuntimeFlag80
+    bl Actor_MarkFrameUpdateStarted
     add r0, r4, #0xec
     bl GamePhaseActorScriptVm_IsActive
     cmp r0, #0x0

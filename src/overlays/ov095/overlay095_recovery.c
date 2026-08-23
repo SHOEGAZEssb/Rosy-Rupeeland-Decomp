@@ -988,8 +988,8 @@ extern "C" void *func_ov095_0221b2c0(void *actor)
     return actor;
 }
 
-/* Snapshots transient state and clears the actor's consumed-contact bit. */
-extern "C" void func_ov095_0221b2e8(void *actor)
+/* Snapshot transient state and clear this actor's overlay-specific bit four. */
+extern "C" void Overlay095Actor_SnapshotTransientState(void *actor)
 {
     Actor_SnapshotTransientState(actor);
     F(u32, actor, 0xd0) &= ~4u;

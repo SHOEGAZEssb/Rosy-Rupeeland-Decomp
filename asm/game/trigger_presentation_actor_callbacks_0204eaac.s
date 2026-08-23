@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_callbacks.c.
-.extern Actor_SetRuntimeFlag80
+.extern Actor_MarkFrameUpdateStarted
 .extern ActorContactState_AddContact
 .extern ActorContactState_RemoveContact
 .extern Actor_TryDispatchActivationMode2
@@ -10,7 +10,7 @@
 func_0204eaac: ; 0x0204eaac
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl Actor_SetRuntimeFlag80
+    bl Actor_MarkFrameUpdateStarted
     mov r0, r4
     bl Actor_UpdateTimedResourceState
     cmp r0, #0x0

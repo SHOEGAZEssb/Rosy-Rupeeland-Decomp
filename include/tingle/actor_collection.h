@@ -96,6 +96,9 @@ void ActorCollection_QueueActorForRemoval(ActorCollection *self,
                                           ActorCollectionActor *actor);
 void ActorCollection_QueueGroupForRemoval(ActorCollection *self, s32 groupId);
 void ActorCollection_DrainRemovalQueue(ActorCollection *self);
+void ActorCollection_UpdateCategory0Actors(ActorCollection *self);
+void ActorCollection_UpdateFlag100Category0Actors(ActorCollection *self);
+void ActorCollection_UpdateFlag800Actors(ActorCollection *self);
 
 #ifdef __cplusplus
 }

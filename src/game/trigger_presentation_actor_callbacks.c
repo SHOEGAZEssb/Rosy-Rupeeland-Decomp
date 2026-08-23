@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Actor_SetRuntimeFlag80(void *actor);
+extern void Actor_MarkFrameUpdateStarted(void *actor);
 extern void Actor_TryDispatchActivationMode2(void *actor);
 extern s32 Actor_UpdateTimedResourceState(void *actor);
 #ifdef __cplusplus
@@ -18,13 +18,14 @@ extern s32 Actor_UpdateTimedResourceState(void *actor);
 #define FIELD(type, object, offset) (*(type *)((u8 *)(object) + (offset)))
 
 /*
- * Input is an actor. Run Actor_SetRuntimeFlag80 and then Actor_UpdateTimedResourceState, discarding the
- * latter's result after the retail comparison against zero. Returns nothing;
- * only the callees' engine effects are observable and hardware is untouched directly.
+ * Input is an actor. Run Actor_MarkFrameUpdateStarted and then
+ * Actor_UpdateTimedResourceState, discarding the latter's result after the
+ * retail comparison against zero. Returns nothing; only the callees' engine
+ * effects are observable and hardware is untouched directly.
  */
 void func_0204eaac(void *actor)
 {
-    Actor_SetRuntimeFlag80(actor);
+    Actor_MarkFrameUpdateStarted(actor);
     (void)(Actor_UpdateTimedResourceState(actor) == 0);
 }
 

@@ -30,10 +30,10 @@ ActorExtendedType2_GetConstant800Duplicate: ; 0x0203ef88
     bx lr
     .size ActorExtendedType2_GetConstant800Duplicate, . - ActorExtendedType2_GetConstant800Duplicate
 
-    .global ActorExtendedType2_ClearTransientInteractionState
-    .type ActorExtendedType2_ClearTransientInteractionState, @function
+    .global ActorExtendedType2_ClearTransientContactState
+    .type ActorExtendedType2_ClearTransientContactState, @function
 
-ActorExtendedType2_ClearTransientInteractionState: ; 0x0203ef90
+ActorExtendedType2_ClearTransientContactState: ; 0x0203ef90
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_ClearTransientContactState
@@ -41,5 +41,5 @@ ActorExtendedType2_ClearTransientInteractionState: ; 0x0203ef90
     bic r0, r0, #0x190
     str r0, [r4, #0x260]
     ldmia sp!, {r4, pc}
-    .size ActorExtendedType2_ClearTransientInteractionState, . - ActorExtendedType2_ClearTransientInteractionState
+    .size ActorExtendedType2_ClearTransientContactState, . - ActorExtendedType2_ClearTransientContactState
 

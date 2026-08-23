@@ -1,14 +1,7 @@
-#include "tingle/types.h"
+#include "tingle/actor.h"
 
-/* Provide compact state, scalar-constant, and flag-reset helpers for extended type two. */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern void Actor_ClearTransientContactState(void *actor);
-#ifdef __cplusplus
-}
-#endif
+/* Provide compact state, scalar-constant, and flag-reset helpers for extended
+ * type two. */
 
 /* Return one unless signed actor state +0xd6 equals 0x10; change no state. */
 s32 ActorExtendedType2_IsStateNot16(const void *self)
@@ -33,9 +26,8 @@ s32 ActorExtendedType2_GetConstant800Duplicate(void)
  * 0x10, 0x80, and 0x100 in actor word +0x260. Returns no value; base helper and
  * actor state change.
  */
-void ActorExtendedType2_ClearTransientInteractionState(void *self)
+void ActorExtendedType2_ClearTransientContactState(Actor *self)
 {
-    u8 *actor = (u8 *)self;
-    Actor_ClearTransientContactState(actor);
-    *(u32 *)(actor + 0x260) &= ~0x190;
+    Actor_ClearTransientContactState(self);
+    *(u32 *)((u8 *)self + 0x260) &= ~0x190;
 }

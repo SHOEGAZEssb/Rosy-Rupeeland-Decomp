@@ -12,7 +12,7 @@
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern AuxiliaryTimedSpritePresentation_Init
-.extern Actor_SetRuntimeFlag80
+.extern Actor_MarkFrameUpdateStarted
 .extern Actor_SynchronizeStatePresentation
 .extern Actor_QueryTerrainCell
 .extern ActorDerivedRuntime_UpdateFrame
@@ -43,7 +43,7 @@ func_ov075_022148d0:
     ldr r1, [r1, #0x18]
     blx r1
     mov r0, r5
-    bl Actor_SetRuntimeFlag80
+    bl Actor_MarkFrameUpdateStarted
     ldr r0, .L_02214d60
     bl ActorRuntimeCollection_GetPendingAttachmentFlag
     cmp r0, #0x0

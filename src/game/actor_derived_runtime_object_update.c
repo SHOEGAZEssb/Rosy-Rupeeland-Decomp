@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void Actor_SetRuntimeFlag80(void *actor);
+extern void Actor_MarkFrameUpdateStarted(void *actor);
 extern s32 Actor_UpdateTimedResourceState(void *actor);
 extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -30,10 +30,11 @@ static void clearActorVector(u8 *actor, u32 offset)
 }
 
 /*
- * Run base frame helper Actor_SetRuntimeFlag80 and return early when Actor_UpdateTimedResourceState says
- * the actor is inactive. Copy position +0x18 to +0x28. While +0x10 bit 0x40
- * permits track processing (with the recovered bit-one/+0x14 bit-0x10 gate),
- * advance track +0x198 and copy sampled components +4/+8/+0xc to motion
+ * Run base frame helper Actor_MarkFrameUpdateStarted and return early when
+ * Actor_UpdateTimedResourceState says the actor is inactive. Copy position
+ * +0x18 to +0x28. While +0x10 bit 0x40 permits track processing (with the
+ * recovered bit-one/+0x14 bit-0x10 gate), advance track +0x198 and copy sampled
+ * components +4/+8/+0xc to motion
  * +0x3c/+0x40/+0x44, retaining Z when +0x10 bit 0x400 is set. A completed
  * track clears bit 0x40 and motion +0x38, then copies its terminal vector to
  * +0x28 and +0x18. An incomplete track can instead be cancelled when byte
@@ -50,7 +51,7 @@ static void clearActorVector(u8 *actor, u32 offset)
 void ActorDerivedRuntime_UpdateFrame(void *self)
 {
     u8 *actor = (u8 *)self;
-    Actor_SetRuntimeFlag80(actor);
+    Actor_MarkFrameUpdateStarted(actor);
     if (Actor_UpdateTimedResourceState(actor) == 0)
         return;
     VecFx32Object_Assign(actor + 0x28, actor + 0x18);

@@ -17,7 +17,7 @@ extern void GamePhaseActorScriptVm_Assign(void *state, void *value);
 extern void GamePhaseActorScriptVm_Activate(void *state);
 extern s32 GamePhaseActorScriptVm_IsActive(void *state);
 extern void ActorCollection_QueueActorForRemoval(void *runtime, void *actor);
-extern void Actor_SetRuntimeFlag80(void *actor);
+extern void Actor_MarkFrameUpdateStarted(void *actor);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *Actor_GetGlobalCollectionBySlot(void *actor, u32 slot);
 #ifdef __cplusplus
@@ -25,9 +25,9 @@ extern void *Actor_GetGlobalCollectionBySlot(void *actor, u32 slot);
 #endif
 
 /*
- * Input is a runtime actor variant. Run base update Actor_SetRuntimeFlag80. Continue
- * only when embedded state +0xec is active; then execute it and require actor
- * +0x169 bit 0x01.
+ * Input is a runtime actor variant. Run base update
+ * Actor_MarkFrameUpdateStarted. Continue only when embedded state +0xec is
+ * active; then execute it and require actor +0x169 bit 0x01.
  *
  * When byte +0xe8 is nonzero, require ActorRuntimeCollection_TryCompleteAttachment to accept the actor in
  * registry gActorRuntimeCollection. Values other than two additionally obtain category
@@ -43,7 +43,7 @@ void func_0204d308(void *self)
 {
     u8 *actor = (u8 *)self;
     void *state = actor + 0xec;
-    Actor_SetRuntimeFlag80(actor);
+    Actor_MarkFrameUpdateStarted(actor);
     if (GamePhaseActorScriptVm_IsActive(state) == 0)
         return;
     GamePhaseScriptVm_Execute(state, 0);

@@ -7,6 +7,7 @@
 struct GraphicsSpriteState;
 
 enum {
+    ACTOR_FRAME_UPDATE_STARTED_FLAG = 0x00000080,
     ACTOR_FORCE_PRESENTATION_REFRESH_FLAG = 0x00001000
 };
 
@@ -14,6 +15,9 @@ typedef struct Actor Actor;
 /* The first two vtable entries perform the same teardown, but only the second
  * frees the actor allocation. Both return the actor's former address. */
 typedef Actor *(*ActorDestructor)(Actor *self);
+typedef void (*ActorFrameSnapshotCallback)(Actor *self);
+typedef void (*ActorFrameUpdateCallback)(Actor *self);
+typedef void (*ActorContactStateClearCallback)(Actor *self);
 typedef void (*ActorStatePresentationCallback)(Actor *self);
 typedef void (*ActorLandingCallback)(Actor *self);
 typedef s32 (*ActorStatePredicate)(const Actor *self);
@@ -24,7 +28,11 @@ typedef s32 (*ActorStatePredicate)(const Actor *self);
 typedef struct ActorVTable {
     ActorDestructor destroyWithoutFree;
     ActorDestructor destroyAndFree;
-    u8 opaqueSlots08[0x54];
+    u8 opaqueSlots08[0x10];
+    ActorFrameSnapshotCallback snapshotTransientState;
+    ActorFrameUpdateCallback updateFrame;
+    ActorContactStateClearCallback clearTransientContactState;
+    u8 opaqueSlots24[0x38];
     ActorStatePresentationCallback updatePresentationForState;
     u8 opaqueSlot60[4];
     ActorStatePredicate isPreviousState9Or10;
@@ -77,6 +85,9 @@ typedef char ActorSizeCheck[sizeof(Actor) == 0x1ec ? 1 : -1];
 extern "C" {
 #endif
 
+void Actor_SnapshotTransientState(Actor *self);
+void Actor_ClearTransientContactState(Actor *self);
+void Actor_MarkFrameUpdateStarted(Actor *self);
 void Actor_HandleLanding(Actor *self);
 void Actor_SynchronizeStatePresentation(Actor *self);
 void Actor_UpdatePresentationForState(Actor *self);
@@ -89,6 +100,7 @@ void ActorRegisteredSubclass_HandleLanding(Actor *self);
 void ActorRegisteredSubclass_UpdatePresentationForState(Actor *self);
 void ActorExtendedType2_UpdatePresentationForState(Actor *self);
 void ActorExtendedType2_HandleLanding(Actor *self);
+void ActorExtendedType2_ClearTransientContactState(Actor *self);
 s32 ActorExtendedType2_IsCurrentState5Or6(const Actor *self);
 s32 ActorExtendedType2_IsPreviousState9Or10(const Actor *self);
 void Type7Actor_UpdatePresentationForState(Actor *self);

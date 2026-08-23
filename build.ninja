@@ -14290,7 +14290,7 @@ build actor_collection_motion_category_build: phony build/decomp/src/game/actor_
 
 actor_collection_update_dispatch_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_update_dispatch.o: mwccarm src/game/actor_collection_update_dispatch.c | include/tingle/types.h
+build build/decomp/src/game/actor_collection_update_dispatch.o: mwccarm src/game/actor_collection_update_dispatch.c | include/tingle/actor.h include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/overlay_manager.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_collection_update_dispatch.c
   cflags = $actor_collection_update_dispatch_cflags
 build build/decomp/asm/game/actor_collection_update_dispatch_0202dfec.o: mwasmarm asm/game/actor_collection_update_dispatch_0202dfec.s
@@ -14755,7 +14755,7 @@ build actor_attachment_layer_sync: phony build/decomp/src/game/actor_attachment_
 
 actor_runtime_frame_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_runtime_frame_state.o: mwccarm src/game/actor_runtime_frame_state.c | include/tingle/types.h
+build build/decomp/src/game/actor_runtime_frame_state.o: mwccarm src/game/actor_runtime_frame_state.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_runtime_frame_state.c
   cflags = $actor_runtime_frame_state_cflags
 build build/decomp/asm/game/actor_runtime_frame_state_020316e8.o: mwasmarm asm/game/actor_runtime_frame_state_020316e8.s
@@ -14781,7 +14781,7 @@ build build/reports/actor_runtime_frame_state_02031748.json: objdiff build/decom
   base_object = build/decomp/asm/game/actor_runtime_frame_state_02031748.o
 build build/reports/actor_runtime_frame_state_02031748.txt: match_report build/reports/actor_runtime_frame_state_02031748.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_frame_state_02031748.json
-  report_args = --section .text --function Actor_SetRuntimeFlag80 --require-exact
+  report_args = --section .text --function Actor_MarkFrameUpdateStarted --require-exact
 build build/reports/actor_runtime_frame_state.txt: phony build/reports/actor_runtime_frame_state_020316e8.txt build/reports/actor_runtime_frame_state_02031720.txt build/reports/actor_runtime_frame_state_02031748.txt
 
 build actor_runtime_frame_state: phony build/decomp/src/game/actor_runtime_frame_state.o build/decomp/asm/game/actor_runtime_frame_state_020316e8.o build/decomp/asm/game/actor_runtime_frame_state_02031720.o build/decomp/asm/game/actor_runtime_frame_state_02031748.o build/reports/actor_runtime_frame_state.txt
@@ -17647,7 +17647,7 @@ build actor_extended_type2_frame_update: phony build/decomp/src/game/actor_exten
 
 actor_extended_type2_misc_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_extended_type2_misc_helpers.o: mwccarm src/game/actor_extended_type2_misc_helpers.c | include/tingle/types.h
+build build/decomp/src/game/actor_extended_type2_misc_helpers.o: mwccarm src/game/actor_extended_type2_misc_helpers.c | include/tingle/actor.h include/tingle/types.h include/tingle/vec_fx32.h
   source = src/game/actor_extended_type2_misc_helpers.c
   cflags = $actor_extended_type2_misc_helpers_cflags
 build build/decomp/asm/game/actor_extended_type2_misc_helpers_0203ef60.o: mwasmarm asm/game/actor_extended_type2_misc_helpers_0203ef60.s
@@ -17657,7 +17657,7 @@ build build/reports/actor_extended_type2_misc_helpers_0203ef60.json: objdiff bui
   base_object = build/decomp/asm/game/actor_extended_type2_misc_helpers_0203ef60.o
 build build/reports/actor_extended_type2_misc_helpers_0203ef60.txt: match_report build/reports/actor_extended_type2_misc_helpers_0203ef60.json | tools/report_objdiff.py
   report_json = build/reports/actor_extended_type2_misc_helpers_0203ef60.json
-  report_args = --section .text --function ActorExtendedType2_IsStateNot16 --function ActorExtendedType2_GetConstant800 --function ActorExtendedType2_GetConstant800Duplicate --function ActorExtendedType2_ClearTransientInteractionState --require-exact
+  report_args = --section .text --function ActorExtendedType2_IsStateNot16 --function ActorExtendedType2_GetConstant800 --function ActorExtendedType2_GetConstant800Duplicate --function ActorExtendedType2_ClearTransientContactState --require-exact
 build build/reports/actor_extended_type2_misc_helpers.txt: phony build/reports/actor_extended_type2_misc_helpers_0203ef60.txt
 
 build actor_extended_type2_misc_helpers: phony build/decomp/src/game/actor_extended_type2_misc_helpers.o build/decomp/asm/game/actor_extended_type2_misc_helpers_0203ef60.o build/reports/actor_extended_type2_misc_helpers.txt
