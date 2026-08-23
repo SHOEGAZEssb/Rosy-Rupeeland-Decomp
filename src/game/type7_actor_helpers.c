@@ -12,7 +12,8 @@ extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *value);
 extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
 extern void Actor_RefreshTerrainHeight(void *actor);
-extern void func_02031758(void *context, void *actor, void *value);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern void AuxiliaryInteraction_UpdateResourceFrame(void *resource);
 extern void Actor_ApplyMotionImpulse(void *actor, const void *value, s32 mode);
 extern void ActorVector_DivideByScalar(void *output, const void *input, s32 scale);
@@ -36,22 +37,24 @@ void Type7Actor_ResetBaseTransformAndMotion(void *self)
 }
 
 /*
- * Forward the three inputs to func_02031758, copy actor transform +0x18 to a
+ * Forward the screen-position record, actor, and view position to
+ * Actor_UpdatePresentation, copy actor transform +0x18 to a
  * temporary, and add signed actor halfword +0x6a times 0xb33 to temporary word
- * +8. Invoke helper +0x2a8 vtable +0x0c with value, the adjusted temporary, and
+ * +8. Invoke helper +0x2a8 vtable +0x0c with the view position, the adjusted temporary, and
  * zero. If resource +0x234 exists, pass it to AuxiliaryInteraction_UpdateResourceFrame. Finalize the
  * temporary and return no value; actor/helper/resource state may change.
  */
-void Type7Actor_ForwardHelperEvent(void *context, void *self, void *value)
+void Type7Actor_ForwardHelperEvent(void *screenPosition, void *self,
+                                   const void *viewPosition)
 {
     u8 *actor = (u8 *)self;
     u32 temporary[4];
-    func_02031758(context, actor, value);
+    Actor_UpdatePresentation(screenPosition, actor, viewPosition);
     VecFx32Object_InitCopy(temporary, actor + 0x18);
     temporary[2] = (u32)((s32)temporary[2] + *(s16 *)(actor + 0x6a) * 0xb33);
-    (*(void (**)(void *, void *, void *, s32))(
+    (*(void (**)(void *, const void *, void *, s32))(
         *(u8 **)(actor + 0x2a8) + 0x0c))(
-        actor + 0x2a8, value, temporary, 0);
+        actor + 0x2a8, viewPosition, temporary, 0);
     if (*(void **)(actor + 0x234) != 0)
         AuxiliaryInteraction_UpdateResourceFrame(*(void **)(actor + 0x234));
     VecFx32Object_Destroy(temporary);

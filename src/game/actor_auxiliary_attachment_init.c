@@ -5,7 +5,7 @@ typedef struct ActorAuxiliaryAttachmentOwner {
     u8 field_00[0x14];
     u32 flags_14;
     u8 field_18[0x90];
-    void *attachment_a8;
+    void *auxiliaryRenderAttachment_a8;
 } ActorAuxiliaryAttachmentOwner;
 
 extern void *data_020f4e18;
@@ -25,29 +25,35 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #endif
 
 /*
- * If actor flag 0x02000000 is clear, set attachment 0xa8 to null. Otherwise
- * resolve global resource IDs 0x1386, 0x1001, and 0x1387, create an attachment
- * through the actor collection's offset-0x0e00 manager with final argument
- * two, configure it with zero, and set attachment flags 0x0a at offset 0x24.
- * Returns no value; resource and render helpers may mutate shared state.
+ * If actor flag mask 0x02000000 is clear, store null at auxiliary render
+ * attachment +0xa8 without releasing any prior state. Otherwise resolve global
+ * character/palette/cell resource handles 0x1386/0x1001/0x1387, create mode-two
+ * sprite state through the actor collection's sprite owner, store it at +0xa8,
+ * select animation zero, and set sprite flag masks 0x2|0x8. Retail assumes the
+ * resource handles, sprite group, and allocation are valid and overwrites any
+ * existing +0xa8. Returns no value; renderer/group ownership state changes,
+ * with no direct hardware access.
  */
-void func_020314b8(ActorAuxiliaryAttachmentOwner *self)
+void Actor_CreateAuxiliaryRenderAttachment(ActorAuxiliaryAttachmentOwner *actor)
 {
-    u32 first;
-    u32 second;
-    u32 third;
-    u16 *flags;
+    u32 characterResource;
+    u32 paletteResource;
+    u32 cellResource;
+    u16 *attachmentFlags;
 
-    if (!(self->flags_14 & 0x02000000)) {
-        self->attachment_a8 = 0;
+    if (!(actor->flags_14 & 0x02000000)) {
+        actor->auxiliaryRenderAttachment_a8 = 0;
         return;
     }
-    first = func_02071e60(data_020f4e18, 0x1386);
-    second = GraphicsArchive_FindPaletteResource(data_020f4e18, 0x1001);
-    third = func_02071e80(data_020f4e18, 0x1387);
-    self->attachment_a8 = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), first, second, third, 2);
-    GraphicsSpriteState_SetAnimationIndex(self->attachment_a8, 0);
-    flags = (u16 *)((u8 *)self->attachment_a8 + 0x24);
-    *flags |= 0x0a;
+    characterResource = func_02071e60(data_020f4e18, 0x1386);
+    paletteResource = GraphicsArchive_FindPaletteResource(data_020f4e18, 0x1001);
+    cellResource = func_02071e80(data_020f4e18, 0x1387);
+    actor->auxiliaryRenderAttachment_a8 = GraphicsSpriteGroup_CreateState(
+        ActorCollection_GetSpriteOwner(Actor_GetCollection(actor)),
+        characterResource, paletteResource, cellResource, 2);
+    GraphicsSpriteState_SetAnimationIndex(
+        actor->auxiliaryRenderAttachment_a8, 0);
+    attachmentFlags =
+        (u16 *)((u8 *)actor->auxiliaryRenderAttachment_a8 + 0x24);
+    *attachmentFlags |= 0x0a;
 }

@@ -1,0 +1,6 @@
+{
+  "func_020313b0": "Actor_InitializeFromDescriptorNoOp",
+  "func_020314b8": "Actor_CreateAuxiliaryRenderAttachment",
+  "func_02031564": "Actor_UpdatePrimaryRenderAttachmentPriority",
+  "func_02031758": "Actor_UpdatePresentation"
+}

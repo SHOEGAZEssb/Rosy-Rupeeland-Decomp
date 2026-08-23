@@ -5,13 +5,13 @@
 typedef struct RuntimeActorLifecycle RuntimeActorLifecycle;
 typedef struct RuntimeActorLifecycleVTable {
     u8 field_00[0xbc];
-    void (*cleanup_bc)(RuntimeActorLifecycle *);
+    void (*releasePrimaryRenderAttachment_bc)(RuntimeActorLifecycle *);
 } RuntimeActorLifecycleVTable;
 
 struct RuntimeActorLifecycle {
     RuntimeActorLifecycleVTable *vtable_00;
     u8 field_04[0xa4];
-    void *field_a8;
+    void *auxiliaryRenderAttachment_a8;
     u8 field_ac[0x134];
     void *field_1e0;
 };
@@ -39,9 +39,9 @@ static RuntimeActorLifecycle *destroyRuntimeActor(RuntimeActorLifecycle *self)
     void *object;
 
     self->vtable_00 = (RuntimeActorLifecycleVTable *)data_020df040;
-    self->vtable_00->cleanup_bc(self);
+    self->vtable_00->releasePrimaryRenderAttachment_bc(self);
     Actor_ReleaseSecondaryRenderAttachment(self);
-    object = self->field_a8;
+    object = self->auxiliaryRenderAttachment_a8;
     if (object)
         GraphicsSpriteGroup_ReleaseState(ActorCollection_GetSpriteOwner(Actor_GetCollection(self)), object);
     object = self->field_1e0;
@@ -90,7 +90,12 @@ RuntimeActorLifecycle *func_0203130c(RuntimeActorLifecycle *self)
     return destroyRuntimeActor(self);
 }
 
-/* Ignore the implied actor input, change no state, and return no value. */
-void func_020313b0(void)
+/*
+ * Base actor vtable slot +0x10 ignores its borrowed actor and spawn descriptor,
+ * changes no state, and returns no value.
+ */
+void Actor_InitializeFromDescriptorNoOp(void *actor, const void *descriptor)
 {
+    (void)actor;
+    (void)descriptor;
 }

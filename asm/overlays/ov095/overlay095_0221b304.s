@@ -1,14 +1,14 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_021052fc
-.extern func_02031564
+.extern Actor_UpdatePrimaryRenderAttachmentPriority
 
 .global func_ov095_0221b304
 func_ov095_0221b304:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
-    bl func_02031564
+    bl Actor_UpdatePrimaryRenderAttachmentPriority
     ldr r0, .L_0221b388
     ldr r1, [r4, #0x1c]
     ldr r0, [r0, #0x0]

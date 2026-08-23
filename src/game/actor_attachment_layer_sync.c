@@ -1,14 +1,14 @@
 #include "tingle/types.h"
 
-/* Synchronize attachment byte 0x3a with terrain height and a nearby actor. */
-typedef struct LayerQueryVTable {
+/* Reconcile primary render-attachment priority with terrain and a nearby actor. */
+typedef struct TerrainCellQueryVTable {
     u8 field_00[0x2c];
-    u32 (*query_2c)(void *, s32, s32);
-} LayerQueryVTable;
+    u32 (*queryCell_2c)(void *, s32, s32);
+} TerrainCellQueryVTable;
 
-typedef struct LayerQueryObject {
-    LayerQueryVTable *vtable_00;
-} LayerQueryObject;
+typedef struct TerrainCellQueryObject {
+    TerrainCellQueryVTable *vtable_00;
+} TerrainCellQueryObject;
 
 extern void *data_021052fc;
 
@@ -22,58 +22,69 @@ extern s32 SignedAbsoluteValue(s32);
 #endif
 
 /*
- * Require config 0x54, either attachment 0x58 or actor flag 0x04, and no actor
- * flag 0x80. Query global object 0x2ed4 at integer X/Y; compare actor Z with
- * the sign-extended low five query bits to set config byte 0x3a to one or two.
- * Non-type-one actors then compare that byte with the context-one actor's
- * config byte. When Z ordering agrees, horizontal separation is below 30,
- * and vertical separation lies in (0,60) or (-40,0), copy the peer byte.
- * Returns no value; the virtual terrain query may observe world state.
+ * Require primary +0x54, either secondary +0x58 or runtime flag mask 0x4, and
+ * no actor flag mask 0x80. Query terrain at integer X/Y and compare actor Z
+ * with the sign-extended low five height bits to set primary priority/layer
+ * byte +0x3a to one or two. Except for actor type byte +0x4d equal to one,
+ * reconcile that byte with the collection-one priority peer. Retail literally
+ * tests SignedAbsoluteValue(0) before the peer work. When Z ordering agrees,
+ * absolute screen-X separation is below 30, and screen-Y separation lies in
+ * (0,60) or (-40,0), copy the peer byte. The reserved peer and its primary
+ * attachment are assumed valid. Returns no value; borrowed presentation state
+ * changes and the terrain query may observe world state; no direct hardware.
  */
-void func_02031564(void *self)
+void Actor_UpdatePrimaryRenderAttachmentPriority(void *actorPointer)
 {
-    u8 *actor = (u8 *)self;
-    u8 *config = *(u8 **)(actor + 0x54);
-    u8 *peer;
-    u8 *peerConfig;
-    LayerQueryObject *query;
-    u32 queryResult;
-    s32 queryHeight;
-    s32 dx;
-    s32 dy;
+    u8 *actor = (u8 *)actorPointer;
+    u8 *primaryAttachment = *(u8 **)(actor + 0x54);
+    u8 *priorityPeerActor;
+    u8 *peerPrimaryAttachment;
+    TerrainCellQueryObject *terrainQuery;
+    u32 terrainCell;
+    s32 terrainHeight;
+    s32 peerScreenXDelta;
+    s32 peerScreenYDelta;
 
-    if (!config)
+    if (!primaryAttachment)
         return;
     if (!*(void **)(actor + 0x58) && !(*(u32 *)(actor + 0x10) & 4))
         return;
     if (*(u32 *)(actor + 0x14) & 0x80)
         return;
-    query = *(LayerQueryObject **)((u8 *)data_021052fc + 0x2ed4);
-    queryResult = query->vtable_00->query_2c(
-        query, *(s32 *)(actor + 0x1c) >> 16,
+    terrainQuery = *(TerrainCellQueryObject **)((u8 *)data_021052fc + 0x2ed4);
+    terrainCell = terrainQuery->vtable_00->queryCell_2c(
+        terrainQuery, *(s32 *)(actor + 0x1c) >> 16,
         *(s32 *)(actor + 0x20) >> 16);
-    queryHeight = (s32)(queryResult << 27) >> 27;
-    config[0x3a] = *(s32 *)(actor + 0x24) < (queryHeight << 16) ? 2 : 1;
+    terrainHeight = (s32)(terrainCell << 27) >> 27;
+    primaryAttachment[0x3a] =
+        *(s32 *)(actor + 0x24) < (terrainHeight << 16) ? 2 : 1;
     if (actor[0x4d] == 1)
         return;
 
-    peer = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1) + 0x2e7c);
+    priorityPeerActor = *(u8 **)(
+        (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1) + 0x2e7c);
     if (SignedAbsoluteValue(0) >= 0x2000)
         return;
-    peerConfig = *(u8 **)(peer + 0x54);
-    if (config[0x3a] < peerConfig[0x3a]) {
-        if (*(s32 *)(peer + 0x24) < *(s32 *)(actor + 0x24))
+    peerPrimaryAttachment = *(u8 **)(priorityPeerActor + 0x54);
+    if (primaryAttachment[0x3a] < peerPrimaryAttachment[0x3a]) {
+        if (*(s32 *)(priorityPeerActor + 0x24) < *(s32 *)(actor + 0x24))
             return;
-        dx = *(s16 *)(peerConfig + 0x2c) - *(s16 *)(config + 0x2c);
-        dy = *(s16 *)(peerConfig + 0x2e) - *(s16 *)(config + 0x2e);
-        if (SignedAbsoluteValue(dx) < 30 && dy > 0 && dy < 60)
-            config[0x3a] = peerConfig[0x3a];
-    } else if (config[0x3a] > peerConfig[0x3a]) {
-        if (*(s32 *)(peer + 0x24) > *(s32 *)(actor + 0x24))
+        peerScreenXDelta = *(s16 *)(peerPrimaryAttachment + 0x2c) -
+                           *(s16 *)(primaryAttachment + 0x2c);
+        peerScreenYDelta = *(s16 *)(peerPrimaryAttachment + 0x2e) -
+                           *(s16 *)(primaryAttachment + 0x2e);
+        if (SignedAbsoluteValue(peerScreenXDelta) < 30 &&
+            peerScreenYDelta > 0 && peerScreenYDelta < 60)
+            primaryAttachment[0x3a] = peerPrimaryAttachment[0x3a];
+    } else if (primaryAttachment[0x3a] > peerPrimaryAttachment[0x3a]) {
+        if (*(s32 *)(priorityPeerActor + 0x24) > *(s32 *)(actor + 0x24))
             return;
-        dx = *(s16 *)(peerConfig + 0x2c) - *(s16 *)(config + 0x2c);
-        dy = *(s16 *)(peerConfig + 0x2e) - *(s16 *)(config + 0x2e);
-        if (SignedAbsoluteValue(dx) < 30 && dy < 0 && dy > -40)
-            config[0x3a] = peerConfig[0x3a];
+        peerScreenXDelta = *(s16 *)(peerPrimaryAttachment + 0x2c) -
+                           *(s16 *)(primaryAttachment + 0x2c);
+        peerScreenYDelta = *(s16 *)(peerPrimaryAttachment + 0x2e) -
+                           *(s16 *)(primaryAttachment + 0x2e);
+        if (SignedAbsoluteValue(peerScreenXDelta) < 30 &&
+            peerScreenYDelta < 0 && peerScreenYDelta > -40)
+            primaryAttachment[0x3a] = peerPrimaryAttachment[0x3a];
     }
 }

@@ -47,7 +47,7 @@ extern "C" void DisplayBrightness_StartTransition(void *, s32, s32, s32);
 extern "C" void GXx_SetMasterBrightness_(void *, s32);
 extern "C" void func_020afce8(void *, s32, s32);
 extern "C" void *func_0201e0ec(void *);
-extern "C" void func_02031758(void *, void *);
+extern "C" void Actor_UpdatePresentation(void *, void *);
 extern "C" void Sound_Play(void *, s32, s32);
 extern "C" s32 Sound_IsEffectPlaying(void *, s32, s32);
 extern "C" void Sound_PlayEffectWithParameters(void *, s32, s32, s32, s32, s32);
@@ -458,7 +458,7 @@ extern "C" void func_ov093_02218514(void *unused, void *actor)
     s32 y;
     s32 i;
 
-    func_02031758(unused, actor);
+    Actor_UpdatePresentation(unused, actor);
     GraphicsSpriteState_SetDepthOrderedWorldPosition(
         FIELD(void *, actor, 0x204), 0x180000,
         FIELD(s32, actor, 0x24c) + 0x240000 +

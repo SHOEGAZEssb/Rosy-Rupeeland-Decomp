@@ -7,7 +7,8 @@ extern s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031758(void *output, void *actor, const void *transform);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern u32 genrand_int32(void);
 extern u64 func_020bf1f8(u32 value, u32 divisor);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -36,7 +37,7 @@ static s32 centeredRandom(s32 range)
 }
 
 /*
- * Run func_02031758(source, actor, transform), preserve signed attachment
+ * Run Actor_UpdatePresentation(screenPosition, actor, viewPosition), preserve signed attachment
  * offsets +0x2c/+0x2e, and decrement actor timer +0x240. On expiry reset it
  * from +0x24c, choose
  * centered random X/Y within ranges +0x244/+0x248, scale both by fixed value
@@ -48,22 +49,22 @@ static s32 centeredRandom(s32 range)
  * Advance phase halfword +0x208 by +0x254, sample data_020c9670 at recovered
  * doubled index (phase>>4), scale it by +0x250 * +0x20c, and add that vertical
  * oscillation to current vector. Apply current X/Y offsets to attachment
- * halfwords +0x2c/+0x2e and source words +0x04/+0x08. Build a TouchPoint using
+ * halfwords +0x2c/+0x2e and screen-position words +0x04/+0x08. Build a TouchPoint using
  * gSceneTouchInitialData's point vtable and forward it to actor through
  * ActorAttachment_CopyTouchState. Returns no value; RNG, vector lifecycles, attachment writes,
  * and touch dispatch mutate global/actor/presentation state.
  */
-void ActorMotionProbe_UpdateTouchMotion(void *source, void *self,
-                                        const void *transform)
+void ActorMotionProbe_UpdateTouchMotion(void *screenPosition, void *self,
+                                        const void *viewPosition)
 {
-    u8 *output = (u8 *)source;
+    u8 *screenPositionBytes = (u8 *)screenPosition;
     u8 *actor = (u8 *)self;
     u8 *attachment;
     s16 baseX;
     s16 baseY;
     s32 oscillation;
 
-    func_02031758(source, self, transform);
+    Actor_UpdatePresentation(screenPosition, self, viewPosition);
     attachment = *(u8 **)(actor + 0x54);
     baseX = *(s16 *)(attachment + 0x2c);
     baseY = *(s16 *)(attachment + 0x2e);
@@ -100,14 +101,15 @@ void ActorMotionProbe_UpdateTouchMotion(void *source, void *self,
         (s16)(baseX + (*(s32 *)(actor + 0x214) >> 12));
     *(s16 *)(attachment + 0x2e) =
         (s16)(baseY + ((*(s32 *)(actor + 0x218) + oscillation) >> 12));
-    *(s32 *)(output + 4) = baseX + (*(s32 *)(actor + 0x214) >> 12);
-    *(s32 *)(output + 8) =
+    *(s32 *)(screenPositionBytes + 4) =
+        baseX + (*(s32 *)(actor + 0x214) >> 12);
+    *(s32 *)(screenPositionBytes + 8) =
         baseY + ((*(s32 *)(actor + 0x218) + oscillation) >> 12);
     {
         TouchPoint point;
         point.vtable = &gSceneTouchInitialData.pointVTable;
-        point.x = *(u32 *)(output + 4);
-        point.y = *(u32 *)(output + 8);
+        point.x = *(u32 *)(screenPositionBytes + 4);
+        point.y = *(u32 *)(screenPositionBytes + 8);
         ActorAttachment_CopyTouchState(actor, &point);
     }
 }

@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern ActorContactState_AddContact
 .text
     .global PresentationBackedActor_ForwardPairInteraction
@@ -18,7 +18,7 @@ PresentationBackedActor_ForwardPairInteraction: ; 0x0204ded4
 PresentationBackedActor_BuildTargetTransform: ; 0x0204dee0
     ldr ip, .L_0204dee8
     bx ip
-.L_0204dee8: .word func_02031758
+.L_0204dee8: .word Actor_UpdatePresentation
 .size PresentationBackedActor_BuildTargetTransform, . - PresentationBackedActor_BuildTargetTransform
 
     .global PresentationBackedActor_CanAcquireTarget

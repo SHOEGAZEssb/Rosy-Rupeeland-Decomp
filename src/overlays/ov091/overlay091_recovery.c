@@ -70,7 +70,7 @@ extern "C" void func_ov060_0220fd54(void *, void *, s32);
 extern "C" void func_ov076_02213740(void *);
 extern "C" void func_ov076_02213780(void *);
 extern "C" void func_ov076_02214034(void *, s32);
-extern "C" void func_02031758(void *, void *, void *);
+extern "C" void Actor_UpdatePresentation(void *, void *, void *);
 
 extern "C" void func_ov091_02218838(void *, s32, s32, s32);
 extern "C" void *func_ov091_02218848(void *, const void *, const void *,
@@ -513,7 +513,7 @@ extern "C" void func_ov091_02218a48(void *actor) {
 /* Forward the inherited runtime actor render callback. */
 extern "C" void func_ov091_02218a5c(void *context, void *actor,
                                     void *argument) {
-    func_02031758(context, actor, argument);
+    Actor_UpdatePresentation(context, actor, argument);
 }
 
 /* Empty encounter callback with no observable effect. */

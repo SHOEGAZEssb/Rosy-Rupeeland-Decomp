@@ -6,7 +6,7 @@
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
 .extern VecFx32_Subtract
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern ActorAttachment_CopyTouchState
 .extern func_020befec
 .extern func_020bf1f8
@@ -19,7 +19,7 @@ ActorMotionProbe_UpdateTouchMotion: ; 0x0203c240
     sub sp, sp, #0x2c
     mov r8, r1
     mov r9, r0
-    bl func_02031758
+    bl Actor_UpdatePresentation
     ldr r1, [r8, #0x54]
     ldr r0, [r8, #0x240]
     ldrsh r5, [r1, #0x2c]

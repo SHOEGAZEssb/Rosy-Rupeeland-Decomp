@@ -9,7 +9,8 @@ extern "C" {
 extern void *func_0201e0ec(void *manager);
 extern void func_020a25c8(void *effect, s32 kind, s32 x, s32 y,
                           s32 width, s32 height, s32 duration);
-extern void func_02031758(void *context, void *actor, s32 argument);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern void VecFx32Object_InitCopy(void *vector, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 #ifdef __cplusplus
@@ -20,14 +21,16 @@ extern void VecFx32Object_Destroy(void *vector);
  * When actor +0x260 bit 0x100000 is set and attachment +0x24 has none of bits
  * 0x04/0x08/0x10, increment byte +0x294. After it exceeds 20, emit a kind-zero
  * effect through manager +0x2f7c at actor X-16 and Y-Z-24 (shifted down 12),
- * using constants 32,24,70, then reset the byte. Always forward context, actor,
- * and argument to func_02031758. Copy actor vector +0x18 to a temporary vector,
+ * using constants 32,24,70, then reset the byte. Always forward the screen
+ * position, actor, and view position to Actor_UpdatePresentation. Copy actor
+ * vector +0x18 to a temporary vector,
  * add signed halfword +0x6a times 0xb33 to its Z component, invoke helper
- * +0x284 virtual +0x0c with argument, temporary vector, and zero, then destroy
+ * +0x284 virtual +0x0c with the view position, temporary vector, and zero, then destroy
  * the temporary vector. Returns no value; effect, actor, helper, and temporary
  * vector state may change.
  */
-void ActorExtendedType2_RunRenderCallback(void *context, void *self, s32 argument)
+void ActorExtendedType2_RunRenderCallback(void *screenPosition, void *self,
+                                          const void *viewPosition)
 {
     u8 *actor = (u8 *)self;
     s32 position[4];
@@ -46,13 +49,13 @@ void ActorExtendedType2_RunRenderCallback(void *context, void *self, s32 argumen
         }
     }
 
-    func_02031758(context, actor, argument);
+    Actor_UpdatePresentation(screenPosition, actor, viewPosition);
     VecFx32Object_InitCopy(position, actor + 0x18);
     position[2] += *(s16 *)(actor + 0x6a) * 0xb33;
     {
         u8 *helper = actor + 0x284;
-        (*(void (**)(void *, s32, void *, s32))(*(u8 **)helper + 0x0c))(
-            helper, argument, position, 0);
+        (*(void (**)(void *, const void *, void *, s32))(
+            *(u8 **)helper + 0x0c))(helper, viewPosition, position, 0);
     }
     VecFx32Object_Destroy(position);
 }

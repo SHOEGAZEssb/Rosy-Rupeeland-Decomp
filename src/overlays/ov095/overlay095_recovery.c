@@ -84,7 +84,7 @@ EXT(ActorMotionJitter_EnsureMinimum);
 EXT(Sound_FadeDirectSequence);
 EXT(Type7Actor_ProcessGlobalInteractionTrigger);
 EXT(TrackedResourceActor_PostUpdate);
-EXT(func_02031564);
+EXT(Actor_UpdatePrimaryRenderAttachmentPriority);
 EXT(Actor_TurnTowardVector);
 EXT(Actor_PlayRadialSpatialSound);
 EXT(func_0201e0ec);
@@ -1001,7 +1001,7 @@ extern "C" void func_ov095_0221b2e8(void *actor)
 /* Tracks whether the actor occupies terrain class one at its current tile. */
 extern "C" void func_ov095_0221b304(void *actor)
 {
-    func_02031564(actor);
+    Actor_UpdatePrimaryRenderAttachmentPriority(actor);
     void *terrain = F(void *, data_021052fc, 0x2ed4);
     Method query = F(Method, F(void *, terrain, 0), 0x2c);
     s32 tile = query(terrain, F(s32, actor, 0x1c) >> 16,

@@ -3,7 +3,7 @@
 .extern data_020f35d0
 .extern data_020f35e0
 .extern Actor_ReleasePrimaryRenderAttachment
-.extern func_020314b8
+.extern Actor_CreateAuxiliaryRenderAttachment
 .extern Actor_SnapshotTransientState
 .extern Actor_ClearTransientContactState
 .extern func_02031f44
@@ -129,7 +129,7 @@ data_ov093_022188f0:
     .word func_ov093_0221872c
     .word func_ov093_02218724
     .word func_ov093_02217908
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov093_02217c50
     .word Actor_ClearTransientContactState

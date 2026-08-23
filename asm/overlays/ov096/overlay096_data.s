@@ -7,11 +7,11 @@
 .extern func_ov096_02218178
 .extern func_ov096_02218308
 .extern ActorExtendedType2_InitializePresentation
-.extern func_020314b8
+.extern Actor_CreateAuxiliaryRenderAttachment
 .extern Actor_SnapshotTransientState
 .extern func_ov096_022178c0
 .extern ActorExtendedType2_ClearTransientInteractionState
-.extern func_02031564
+.extern Actor_UpdatePrimaryRenderAttachmentPriority
 .extern ActorExtendedType2_ApplyContactResponse
 .extern ActorDerivedRuntime_HandlePairEnded
 .extern func_02031f44
@@ -198,11 +198,11 @@ data_ov096_02218b98:
     .word func_ov096_02218178
     .word func_ov096_02218308
     .word ActorExtendedType2_InitializePresentation
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov096_022178c0
     .word ActorExtendedType2_ClearTransientInteractionState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word ActorExtendedType2_ApplyContactResponse
     .word ActorDerivedRuntime_HandlePairEnded
     .word func_02031f44
@@ -345,11 +345,11 @@ data_ov096_02218de8:
     .word func_ov096_02218178
     .word func_ov096_02218308
     .word ActorExtendedType2_InitializePresentation
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov096_022185d8
     .word ActorExtendedType2_ClearTransientInteractionState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word ActorExtendedType2_ApplyContactResponse
     .word ActorDerivedRuntime_HandlePairEnded
     .word func_02031f44

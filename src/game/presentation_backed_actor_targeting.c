@@ -13,7 +13,8 @@ extern const u8 gActorRuntimeCollection[];
 extern "C" {
 #endif
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(const void *state);
-extern void func_02031758(void *output, void *actor, const void *transform);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern void ActorContactState_AddContact(void *actor, void *other, s32 mode);
 extern s32 Type7Actor_GetStateCode(void *actor);
 extern s32 PresentationBackedActor_CanAcquireTarget(void *actor);
@@ -65,12 +66,14 @@ void PresentationBackedActor_ForwardPairInteraction(void *actor, void *other, s3
 }
 
 /*
- * Forward all register inputs to func_02031758 and propagate its return value.
+ * Forward all register inputs to Actor_UpdatePresentation.
  * This recovered tail-call thunk has only the callee's engine-side effects.
  */
-void PresentationBackedActor_BuildTargetTransform(void *output, void *actor, const void *transform)
+void PresentationBackedActor_BuildTargetTransform(void *screenPosition,
+                                                  void *actor,
+                                                  const void *viewPosition)
 {
-    func_02031758(output, actor, transform);
+    Actor_UpdatePresentation(screenPosition, actor, viewPosition);
 }
 
 /*

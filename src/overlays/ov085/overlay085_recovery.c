@@ -38,7 +38,7 @@ extern "C" void GraphicsSpriteGroup_ReplaceStateResources(void*,void*,void*,void
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void*,s32); extern "C" void Actor_SetRuntimeFlag80(void*);
 extern "C" void Actor_UpdateAnimationState(void*); extern "C" void Actor_UpdateTimedResourceState(void*);
 extern "C" s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void*); extern "C" void Actor_RefreshTerrainHeight(void*);
-extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void func_02031758(void*,void*,s32);
+extern "C" s32 Actor_GetCachedTerrainHeight(void*); extern "C" void Actor_UpdatePresentation(void*,void*,s32);
 extern "C" void Actor_TurnTowardVector(void*,s32,s32,s32); extern "C" void Actor_TurnTowardTargetPosition(void*,void*,s32);
 extern "C" void func_02033b38(void); extern "C" void Sound_PlayOwnedEffect(void*,s32,s32,void*,s32,s32);
 extern "C" void func_02071ee0(void*,const void*,s32,s32,s32); extern "C" s32 func_0209189c(void*,s32,s32);
@@ -109,7 +109,7 @@ extern "C" s32 func_ov085_0221347c(void){return 0;}
 extern "C" void func_ov085_02213484(void*a,void*q,s32,s32){if(!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)&&!(F(u32,a,0x14)&0x10000000)){bool impact=state_is(a,0x48,data_ov085_02214370)||state_is(a,0xa0,data_ov085_022143c8);if(impact){if(!(F(u32,a,0xd0)&0x10)&&F(s32,a,0x24)==F(s32,a,0x1dc)&&!F(s32,a,0x24c)){F(s32,a,0x24c)=4;F(u32,a,0xd0)|=0x1000;}}else if(state_is(a,0x98,data_ov085_022143c0)){set_pair(a,data_ov085_022143b8,200);F(s32,a,0x250)=0;Sound_PlayOwnedEffect(gSoundContext,0x133,2,a,0,0x100);}else if(!state_is(a,0x88,data_ov085_022143b0)&&!state_is(a,0x30,data_ov085_02214358))set_pair(a,data_ov085_022143a0,60);}ActorDerivedRuntime_AcceptInteractionQuery(a,q);}
 
 /* Render the marker 0x18000 fixed-point units above the actor. */
-extern "C" void func_ov085_022136c8(void*c,void*a,s32 q,s32){func_02031758(c,a,q);if(!(F(u32,a,0x14)&0x10000000)){u8 p[16];VecFx32Object_InitCopy(p,(u8*)a+0x18);F(s32,p,8)-=0x18000;((V3)F(void*,F(void*,a,0x23c),0xc))((u8*)a+0x23c,q,p,0);VecFx32Object_Destroy(p);}else func_ov085_02213194((u8*)a+0x23c,0);}
+extern "C" void func_ov085_022136c8(void*c,void*a,s32 q,s32){Actor_UpdatePresentation(c,a,q);if(!(F(u32,a,0x14)&0x10000000)){u8 p[16];VecFx32Object_InitCopy(p,(u8*)a+0x18);F(s32,p,8)-=0x18000;((V3)F(void*,F(void*,a,0x23c),0xc))((u8*)a+0x23c,q,p,0);VecFx32Object_Destroy(p);}else func_ov085_02213194((u8*)a+0x23c,0);}
 /* Replace resources and choose an animation from movement phase. */
 extern "C" void func_ov085_02213748(void*a,s32,s32,s32){void*s=F(void*,a,0x54);GraphicsSpriteGroup_ReplaceStateResources(ActorCollection_GetSpriteOwner(Actor_GetCollection(a)),s,F(void*,a,0x1f0),F(void*,a,0x1f4),F(void*,a,0x1f8));s32 n=-1;switch(F(u16,a,0xd6)){case 1:case 2:n=(F(s32,a,0x24)==Actor_GetCachedTerrainHeight(a)?8:0x1a)+F(u8,a,0xd4);break;case 3:n=0x11;break;case 4:n=0x38;break;case 5:case 6:n=(F(s32,a,0x24)==Actor_GetCachedTerrainHeight(a)?0:0x1a)+F(u8,a,0xd4);break;case 7:n=F(u8,a,0xd4);break;case 8:n=0x37;break;}if(n>=0){F(u16,s,0x24)=(F(u16,s,0x24)&~1u)|2;if(F(u8,s,0x38)!=(u8)n)GraphicsSpriteState_SetAnimationIndex(s,n);}}
 /* Derive horizontal velocity toward home and select the move phase. */

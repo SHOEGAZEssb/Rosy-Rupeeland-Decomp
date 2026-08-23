@@ -98,7 +98,7 @@ EXT(func_0201fafc);
 EXT(func_02030acc);
 EXT(func_02032cac);
 EXT(func_02032de4);
-EXT(func_02031758);
+EXT(Actor_UpdatePresentation);
 EXT(func_020337d4);
 EXT(func_020390c8);
 EXT(ActorDerivedType1_GetActiveRecordId);
@@ -392,7 +392,7 @@ extern "C" void func_ov092_022183d4(void *scene)
 /* Forwards display maintenance through the resident callback. */
 extern "C" void func_ov092_02218438(void)
 {
-    func_02031758();
+    Actor_UpdatePresentation();
 }
 
 /* Applies the encounter's signed brightness ramp to both engines. */

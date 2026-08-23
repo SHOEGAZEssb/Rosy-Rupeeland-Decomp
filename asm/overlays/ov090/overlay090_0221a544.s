@@ -6,7 +6,7 @@
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
-.extern func_02031758
+.extern Actor_UpdatePresentation
 
 .global func_ov090_0221a544
 func_ov090_0221a544:
@@ -14,7 +14,7 @@ func_ov090_0221a544:
     sub sp, sp, #0x18
     mov r6, r1
     mov r5, r2
-    bl func_02031758
+    bl Actor_UpdatePresentation
     ldr r1, .L_0221a6a4
     ldr r0, [r6, #0x200]
     ldr r1, [r1, #0x0]

@@ -119,7 +119,7 @@ extern void ActorDerivedType1_TrySetStateVector(void *, const void *, s32, s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *);
 extern void DebugText_Printf(void *, s32, s32, s32, const char *, ...);
-extern void func_02031758(void *, void *, s32);
+extern void Actor_UpdatePresentation(void *, void *, s32);
 extern void Actor_TurnTowardVector(void *, s32, s32, s32);
 extern void Actor_TurnTowardTargetPosition(void *, const void *, s32);
 extern void func_02033b38(void *);
@@ -1079,7 +1079,7 @@ void func_ov081_02214544(void *context, void *actor, s32 argument)
 {
     Overlay081Vector position;
 
-    func_02031758(context, actor, argument);
+    Actor_UpdatePresentation(context, actor, argument);
     if ((FIELD(u32, actor, 0x14) & 0x10000000) == 0) {
         VecFx32Object_InitCopy(&position, (u8 *)actor + 0x18);
         position.y -= 0x18000;

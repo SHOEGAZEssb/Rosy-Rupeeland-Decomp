@@ -7,11 +7,11 @@
 .extern func_ov095_0221b0a4
 .extern func_ov095_0221b1ec
 .extern func_ov095_02217a38
-.extern func_020314b8
+.extern Actor_CreateAuxiliaryRenderAttachment
 .extern Actor_SnapshotTransientState
 .extern func_ov095_02217aac
 .extern ActorExtendedType2_ClearTransientInteractionState
-.extern func_02031564
+.extern Actor_UpdatePrimaryRenderAttachmentPriority
 .extern func_ov095_02218124
 .extern ActorDerivedRuntime_HandlePairEnded
 .extern func_02031f44
@@ -314,11 +314,11 @@ data_ov095_0221cca0:
     .word func_ov095_0221b0a4
     .word func_ov095_0221b1ec
     .word func_ov095_02217a38
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov095_02217aac
     .word ActorExtendedType2_ClearTransientInteractionState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word func_ov095_02218124
     .word ActorDerivedRuntime_HandlePairEnded
     .word func_02031f44
@@ -478,7 +478,7 @@ data_ov095_0221cf4c:
     .word func_ov095_0221b0a4
     .word func_ov095_0221b1ec
     .word ActorExtendedType2_InitializePresentation
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word func_ov095_0221b2e8
     .word func_ov095_0221ba38
     .word ActorExtendedType2_ClearTransientInteractionState
@@ -623,11 +623,11 @@ data_ov095_0221d1a4:
     .word func_ov095_0221b0a4
     .word func_ov095_0221c71c
     .word TrackedResourceActor_SetupPresentationResources
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov095_0221c3a0
     .word Actor_ClearTransientContactState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word TrackedResourceActor_HandleInteractionCallback
     .word func_02032abc
     .word func_02031f44
@@ -702,11 +702,11 @@ data_ov095_0221d2e8:
     .word func_ov095_0221b0a4
     .word func_ov095_0221c71c
     .word TrackedResourceActor_SetupPresentationResources
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov095_0221c8dc
     .word Actor_ClearTransientContactState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word TrackedResourceActor_HandleInteractionCallback
     .word func_02032abc
     .word func_02031f44

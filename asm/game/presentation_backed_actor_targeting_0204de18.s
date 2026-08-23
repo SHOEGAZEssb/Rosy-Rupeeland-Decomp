@@ -2,7 +2,7 @@
 .extern data_021052fc
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern ActorContactState_AddContact
 .extern Type7Actor_GetStateCode
 .extern PresentationBackedActor_CanAcquireTarget

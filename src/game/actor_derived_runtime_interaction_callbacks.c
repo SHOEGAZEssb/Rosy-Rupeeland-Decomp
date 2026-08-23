@@ -6,7 +6,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031758(void *output, void *actor, const void *transform);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern void ActorAttachment_CopyTouchState(void *actor, const TouchPoint *point);
 extern void ActorContactState_AddContact(void *actor, void *other, s32 mode);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -19,20 +20,21 @@ extern s32 Actor_TryDispatchActivationMode2(void *actor);
 #endif
 
 /*
- * Pass source, actor, and transform through func_02031758, copy source words
- * +0x04/+0x08 into a stack TouchPoint using gSceneTouchInitialData's point
- * vtable, and forward that point to actor through ActorAttachment_CopyTouchState. Returns no
- * value; both helpers can mutate source/actor interaction state.
+ * Pass the writable screen-position record, actor, and borrowed view position
+ * through Actor_UpdatePresentation. Copy screen-position words +0x04/+0x08
+ * into a stack TouchPoint using gSceneTouchInitialData's point vtable and
+ * forward that point to the actor through ActorAttachment_CopyTouchState.
+ * Returns no value; both helpers can mutate presentation/actor state.
  */
-void ActorDerivedRuntime_ForwardTouchPoint(void *source, void *actor,
-                                           const void *transform)
+void ActorDerivedRuntime_ForwardTouchPoint(void *screenPosition, void *actor,
+                                           const void *viewPosition)
 {
-    u8 *input = (u8 *)source;
+    u8 *screenPositionBytes = (u8 *)screenPosition;
     TouchPoint point;
-    func_02031758(source, actor, transform);
+    Actor_UpdatePresentation(screenPosition, actor, viewPosition);
     point.vtable = &gSceneTouchInitialData.pointVTable;
-    point.x = *(u32 *)(input + 4);
-    point.y = *(u32 *)(input + 8);
+    point.x = *(u32 *)(screenPositionBytes + 4);
+    point.y = *(u32 *)(screenPositionBytes + 8);
     ActorAttachment_CopyTouchState(actor, &point);
 }
 

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/grid_effect_actor_touch.c.
 .extern gSceneTouchInitialData
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern ActorAttachment_CopyTouchState
 .text
     .global GridEffectActor_ApplyTouchData
@@ -9,7 +9,7 @@ GridEffectActor_ApplyTouchData:
     sub sp, sp, #0xc
     mov r4, r1
     mov r5, r0
-    bl func_02031758
+    bl Actor_UpdatePresentation
     ldr r0, [r4, #0x58]
     cmp r0, #0x0
     beq .L_0204ee18

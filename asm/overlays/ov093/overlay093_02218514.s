@@ -5,14 +5,14 @@
 .extern data_ov093_022187f0
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern func_0201e0ec
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern func_020a29ac
 
 .global func_ov093_02218514
 func_ov093_02218514:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r1
-    bl func_02031758
+    bl Actor_UpdatePresentation
     mov r0, #0x4
     str r0, [sp, #0x0]
     add r0, r10, #0x200

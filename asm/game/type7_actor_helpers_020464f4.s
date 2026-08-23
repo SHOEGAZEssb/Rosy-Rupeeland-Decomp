@@ -6,7 +6,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorRuntimeTriple_Assign
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern Actor_RefreshTerrainHeight
 .extern Actor_ApplyMotionImpulse
 .extern ActorVector_DivideByScalar
@@ -45,7 +45,7 @@ Type7Actor_ForwardHelperEvent: ; 0x02046544
     sub sp, sp, #0x10
     mov r5, r1
     mov r4, r2
-    bl func_02031758
+    bl Actor_UpdatePresentation
     add r0, sp, #0x0
     add r1, r5, #0x18
     bl VecFx32Object_InitCopy

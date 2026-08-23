@@ -11,7 +11,8 @@ extern "C" {
 #endif
 extern void VecFx32Object_InitCopy(void *temporary, const void *source);
 extern void VecFx32Object_Destroy(void *temporary);
-extern void func_02031758(void *output, void *actor, const void *position);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern void *SceneManager_GetCurrent(void *manager);
 extern void AttachmentController_SetEnabled(void *owner, s32 enabled);
 extern s32 func_020adae4(s32 dividend, s32 divisor);
@@ -38,8 +39,8 @@ static void decaySteering(u8 *actor)
 }
 
 /*
- * Copy the supplied position into a temporary, add active object +0x270 offsets
- * +0x1c/+0x20 when its byte +0x10 bit 1 is set, and pass it to func_02031758.
+ * Copy the supplied view position into a temporary, add active object +0x270 offsets
+ * +0x1c/+0x20 when its byte +0x10 bit 1 is set, and pass it to Actor_UpdatePresentation.
  * Update that object with actor direction byte +0xd4, hide owner state +0x2a8
  * outside scenes 1/0x16, and submit an actor-position temporary whose +8 word
  * is offset by s16 +0x6a times 0xb33. Decay actor+0x244 by 92/100. Unless
@@ -47,26 +48,28 @@ static void decaySteering(u8 *actor)
  * 0x1000 and optionally a local s16 center/radius at +0x29a..+0x29e. Blend the
  * bounded desired vector into accumulators +0x23c/+0x240 over a 600-frame ramp,
  * or decay both by 0xf48/0x1000 when no target contributes. Update optional
- * object +0x26c, copy output X/Y into a gSceneTouchInitialData snapshot for
+ * object +0x26c, copy screen-position X/Y into a gSceneTouchInitialData snapshot for
  * ActorAttachment_CopyTouchState, and destroy temporaries. Returns no value; presentation,
  * scene, owner, and value helpers may modify SDK-managed state.
  */
-void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, const void *position)
+void ActorDerivedType1_UpdatePresentationSteering(void *screenPosition,
+                                                   void *self,
+                                                   const void *viewPosition)
 {
     u8 *actor = (u8 *)self;
-    const u8 *input = (const u8 *)position;
+    const u8 *viewPositionBytes = (const u8 *)viewPosition;
     s32 adjusted[4];
     s32 actorPosition[4];
     void *object;
     u32 i;
 
-    VecFx32Object_InitCopy(adjusted, input);
+    VecFx32Object_InitCopy(adjusted, viewPositionBytes);
     object = *(void **)(actor + 0x270);
     if (object != 0 && (((u8 *)object)[0x10] & 1) != 0) {
         adjusted[1] += *(s32 *)((u8 *)object + 0x1c);
         adjusted[2] += *(s32 *)((u8 *)object + 0x20);
     }
-    func_02031758(output, actor, adjusted);
+    Actor_UpdatePresentation(screenPosition, actor, adjusted);
     if (object != 0) {
         void (*updateDirection)(void *, u32) =
             *(void (**)(void *, u32))(*(u8 **)object + 0x0c);
@@ -84,7 +87,7 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
         void (*submit)(void *, const void *, const void *, s32) =
             *(void (**)(void *, const void *, const void *, s32))
                 (*(u8 **)owner + 0x0c);
-        submit(owner, input, actorPosition, 0);
+        submit(owner, viewPositionBytes, actorPosition, 0);
     }
     VecFx32Object_Destroy(actorPosition);
     *(s32 *)(actor + 0x244) = func_020adae4(*(s32 *)(actor + 0x244) * 0x5c,
@@ -157,8 +160,8 @@ void ActorDerivedType1_UpdatePresentationSteering(void *output, void *self, cons
     {
         u8 snapshot[12];
         *(void **)snapshot = gSceneTouchInitialData;
-        *(s32 *)(snapshot + 4) = *(s32 *)((u8 *)output + 4);
-        *(s32 *)(snapshot + 8) = *(s32 *)((u8 *)output + 8);
+        *(s32 *)(snapshot + 4) = *(s32 *)((u8 *)screenPosition + 4);
+        *(s32 *)(snapshot + 8) = *(s32 *)((u8 *)screenPosition + 8);
         ActorAttachment_CopyTouchState(actor, snapshot);
     }
     VecFx32Object_Destroy(adjusted);

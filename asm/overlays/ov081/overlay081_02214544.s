@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern func_ov081_02214524
 
 .global func_ov081_02214544
@@ -11,7 +11,7 @@ func_ov081_02214544:
     sub sp, sp, #0x10
     mov r5, r1
     mov r4, r2
-    bl func_02031758
+    bl Actor_UpdatePresentation
     ldr r0, [r5, #0x14]
     tst r0, #0x10000000
     moveq r0, #0x1

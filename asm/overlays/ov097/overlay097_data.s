@@ -7,11 +7,11 @@
 .extern func_ov097_02219b58
 .extern func_ov097_02219ce4
 .extern func_ov078_02212bb4
-.extern func_020314b8
+.extern Actor_CreateAuxiliaryRenderAttachment
 .extern Actor_SnapshotTransientState
 .extern func_ov097_02218034
 .extern ActorExtendedType2_ClearTransientInteractionState
-.extern func_02031564
+.extern Actor_UpdatePrimaryRenderAttachmentPriority
 .extern func_ov097_02217cec
 .extern ActorDerivedRuntime_HandlePairEnded
 .extern func_02031f44
@@ -289,11 +289,11 @@ data_ov097_0221a5f4:
     .word func_ov097_02219b58
     .word func_ov097_02219ce4
     .word func_ov078_02212bb4
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov097_02218034
     .word ActorExtendedType2_ClearTransientInteractionState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word func_ov097_02217cec
     .word ActorDerivedRuntime_HandlePairEnded
     .word func_02031f44
@@ -424,11 +424,11 @@ data_ov097_0221a80c:
     .word func_ov097_02219b58
     .word func_ov097_02219ce4
     .word func_ov078_02212bb4
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word ActorExtendedType2_UpdateFrame
     .word ActorExtendedType2_ClearTransientInteractionState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word func_ov078_0221361c
     .word ActorDerivedRuntime_HandlePairEnded
     .word func_02031f44
@@ -585,11 +585,11 @@ data_ov097_0221aaa4:
     .word func_ov097_02219b58
     .word func_ov097_0221a494
     .word TrackedResourceActor_SetupPresentationResources
-    .word func_020314b8
+    .word Actor_CreateAuxiliaryRenderAttachment
     .word Actor_SnapshotTransientState
     .word func_ov097_0221a07c
     .word Actor_ClearTransientContactState
-    .word func_02031564
+    .word Actor_UpdatePrimaryRenderAttachmentPriority
     .word TrackedResourceActor_HandleInteractionCallback
     .word func_02032abc
     .word func_02031f44

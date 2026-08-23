@@ -4,9 +4,9 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern SignedAbsoluteValue
 
-    .global func_02031564
-    .type func_02031564, @function
-func_02031564: ; 0x02031564
+    .global Actor_UpdatePrimaryRenderAttachmentPriority
+    .type Actor_UpdatePrimaryRenderAttachmentPriority, @function
+Actor_UpdatePrimaryRenderAttachmentPriority: ; 0x02031564
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r6, r0
@@ -107,5 +107,5 @@ func_02031564: ; 0x02031564
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_020316e4: .word data_021052fc
-    .size func_02031564, . - func_02031564
+    .size Actor_UpdatePrimaryRenderAttachmentPriority, . - Actor_UpdatePrimaryRenderAttachmentPriority
 

@@ -63,7 +63,8 @@ extern void Actor_RequestAttachmentActivation(void *actor, s32 enabled);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *group);
 extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
-extern void func_02031758(void *output, void *actor, const void *transform);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern const s16 data_020c9670[];
 extern void GraphicsSpriteGroup_Clear(void *group);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *group);
@@ -562,9 +563,11 @@ void ActorKind8_SyncAuxiliarySpriteLayer(void *self, const void *primarySprite)
 /*
  * Project the actor into presentation space, advance its horizontal motion,
  * synchronize auxiliary sprite placement/visibility, and advance the owned
- * sprite group. The output and transform are caller-owned frame data.
+ * sprite group. The screen-position record and view position are caller-owned
+ * frame data.
  */
-void func_020582b8(void *output, void *self, const void *transform)
+void func_020582b8(void *screenPosition, void *self,
+                   const void *viewPosition)
 {
     u8 *actor = (u8 *)self;
     u8 *sprite;
@@ -575,7 +578,7 @@ void func_020582b8(void *output, void *self, const void *transform)
     u32 mode;
     s32 index;
 
-    func_02031758(output, actor, transform);
+    Actor_UpdatePresentation(screenPosition, actor, viewPosition);
     sprite = *(u8 **)(actor + 0x54);
     *(s16 *)(sprite + 0x2c) = (s16)(
         *(s16 *)(sprite + 0x2c) + (ActorKind8_GetMotionSample(actor + 0x3c8) * 2 >> 12));

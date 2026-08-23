@@ -11,8 +11,8 @@ extern const u8 gSceneTouchInitialData[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02031758(const void *source, void *actor,
-                          const void *transform);
+extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
+                                     const void *viewPosition);
 extern void ActorAttachment_CopyTouchState(void *actor, const void *touch_data);
 #ifdef __cplusplus
 }
@@ -27,22 +27,24 @@ typedef struct RecoveredTouchData {
 } RecoveredTouchData;
 
 /*
- * Inputs are a source record, actor, and borrowed presentation transform. Run
- * the inherited func_02031758 callback with all three original inputs. If
+ * Inputs are a writable screen-position record, actor, and borrowed view
+ * position. Run
+ * the inherited Actor_UpdatePresentation callback with all three original inputs. If
  * actor pointer 0x58 is non-null, build
- * a three-word record containing gSceneTouchInitialData and source words 1..2,
+ * a three-word record containing gSceneTouchInitialData and screen-position
+ * words 1..2,
  * then pass it to ActorAttachment_CopyTouchState. Returns nothing; actor touch state may change
  * and no hardware is accessed directly.
  */
-void GridEffectActor_ApplyTouchData(const void *source, void *actor,
-                                    const void *transform)
+void GridEffectActor_ApplyTouchData(void *screenPosition, void *actor,
+                                    const void *viewPosition)
 {
-    func_02031758(source, actor, transform);
+    Actor_UpdatePresentation(screenPosition, actor, viewPosition);
     if (FIELD(void *, actor, 0x58) != 0) {
         RecoveredTouchData data;
         data.initial_data = gSceneTouchInitialData;
-        data.source_value_04 = FIELD(u32, source, 4);
-        data.source_value_08 = FIELD(u32, source, 8);
+        data.source_value_04 = FIELD(u32, screenPosition, 4);
+        data.source_value_08 = FIELD(u32, screenPosition, 8);
         ActorAttachment_CopyTouchState(actor, &data);
     }
 }

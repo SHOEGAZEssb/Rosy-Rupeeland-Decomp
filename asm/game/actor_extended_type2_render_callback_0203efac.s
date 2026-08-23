@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern func_0201e0ec
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern func_020a25c8
     .global ActorExtendedType2_RunRenderCallback
     .type ActorExtendedType2_RunRenderCallback, @function
@@ -56,7 +56,7 @@ ActorExtendedType2_RunRenderCallback: ; 0x0203efac
     mov r0, r6
     mov r1, r5
     mov r2, r4
-    bl func_02031758
+    bl Actor_UpdatePresentation
     add r0, sp, #0xc
     add r1, r5, #0x18
     bl VecFx32Object_InitCopy

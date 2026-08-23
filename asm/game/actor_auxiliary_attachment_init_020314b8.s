@@ -9,9 +9,9 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_CreateState
 
-    .global func_020314b8
-    .type func_020314b8, @function
-func_020314b8: ; 0x020314b8
+    .global Actor_CreateAuxiliaryRenderAttachment
+    .type Actor_CreateAuxiliaryRenderAttachment, @function
+Actor_CreateAuxiliaryRenderAttachment: ; 0x020314b8
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     ldr r0, [r4, #0x14]
@@ -55,4 +55,4 @@ func_020314b8: ; 0x020314b8
 .L_02031558: .word 0x1386
 .L_0203155c: .word 0x1001
 .L_02031560: .word 0x1387
-    .size func_020314b8, . - func_020314b8
+    .size Actor_CreateAuxiliaryRenderAttachment, . - Actor_CreateAuxiliaryRenderAttachment

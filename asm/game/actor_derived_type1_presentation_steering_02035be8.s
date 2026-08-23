@@ -5,7 +5,7 @@
 .extern gActorTargetSelectionCandidates
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern ActorAttachment_CopyTouchState
 .extern AttachmentController_SetEnabled
 .extern Fx32Vector2_Magnitude
@@ -45,7 +45,7 @@ ActorDerivedType1_UpdatePresentationSteering: ; 0x02035be8
     add r2, sp, #0x1c
     mov r0, r10
     mov r1, r9
-    bl func_02031758
+    bl Actor_UpdatePresentation
     ldr r0, [r9, #0x270]
     cmp r0, #0x0
     beq .L_02035c70

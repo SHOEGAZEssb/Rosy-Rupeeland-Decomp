@@ -16,9 +16,9 @@
 .extern func_020adae4
 .extern gSceneTouchInitialData
 
-    .global func_02031758
-    .type func_02031758, @function
-func_02031758: ; 0x02031758
+    .global Actor_UpdatePresentation
+    .type Actor_UpdatePresentation, @function
+Actor_UpdatePresentation: ; 0x02031758
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x60
     ldr r4, .L_02031ca4
@@ -382,4 +382,4 @@ func_02031758: ; 0x02031758
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .L_02031ca4: .word gSceneTouchInitialData
 .L_02031ca8: .word 0x8007
-    .size func_02031758, . - func_02031758
+    .size Actor_UpdatePresentation, . - Actor_UpdatePresentation

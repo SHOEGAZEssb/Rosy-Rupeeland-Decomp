@@ -7,7 +7,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_021052fc;
-extern void func_02031758(void);
+extern void Actor_UpdatePresentation(void);
 
 /*
  * Run the inherited presentation callback, place the main boss-stage sprite at the
@@ -20,7 +20,7 @@ void func_ov090_0221a544(void *context, void *self,
 {
     void *actor;
 
-    func_02031758();
+    Actor_UpdatePresentation();
     actor = FIELD(void *, data_021052fc, 0x2ea4);
     if (FIELD(GraphicsSpriteState *, self, 0x200) != 0) {
         u8 state = FIELD(u8, self, 0x1ec);

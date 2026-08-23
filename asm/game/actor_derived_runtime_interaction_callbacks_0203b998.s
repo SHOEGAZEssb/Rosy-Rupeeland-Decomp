@@ -4,7 +4,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32Stepper_Reset
-.extern func_02031758
+.extern Actor_UpdatePresentation
 .extern ActorAttachment_CopyTouchState
 .extern ActorContactState_AddContact
 .extern Actor_TryDispatchActivationMode2
@@ -16,7 +16,7 @@ ActorDerivedRuntime_ForwardTouchPoint: ; 0x0203b998
     sub sp, sp, #0xc
     mov r5, r0
     mov r4, r1
-    bl func_02031758
+    bl Actor_UpdatePresentation
     ldr r0, .L_0203b9d8
     add r1, sp, #0x0
     str r0, [sp, #0x0]
