@@ -11,7 +11,7 @@ extern const void *data_020d5680;
 extern const char gGamePhaseAreaSceneRendererAllocationTag[];
 extern void *data_021052fc;
 extern void ActorCollection_Init(void *renderer);
-extern void ActorCollection_SetSpriteMode(void *renderer, s32 value);
+extern void ActorCollection_CreateSpriteGroupForDisplayMode(void *renderer, s32 value);
 extern void ActorCollection_SetActorScale(void *renderer, s32 scale);
 extern void *ActorCollection_FindActorByTypeAndId(void *renderer, s32 first, s32 second);
 extern void ActorCollection_UnregisterAndDestroyAllActors(void *renderer);
@@ -144,7 +144,7 @@ rendererConfigured:
  */
 void GamePhaseAreaScene_Start(GamePhaseAreaScene *self)
 {
-    ActorCollection_SetSpriteMode(self->actorCollectionStorage, 2);
+    ActorCollection_CreateSpriteGroupForDisplayMode(self->actorCollectionStorage, 2);
     ActorCollection_SetActorScale(self->actorCollectionStorage, 0x1000);
     OverlaySlot_LoadOverlay(self->overlaySlotStorage, self->config->overlayId);
     self->config->loadCallback(0);

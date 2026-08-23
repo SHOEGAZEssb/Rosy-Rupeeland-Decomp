@@ -5,7 +5,7 @@
 .extern GamePhaseRegionTable_Destroy
 .extern RuntimePresentationManager_DestroyAllEffects
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern ActorCollectionActivation_DestroyReservedSlot
+.extern ActorCollection_DestroyUnretainedActors
 .extern ActorDerivedType1_ClearFailureCounter
 .extern ActorFeedback_DestroyPresentations
 .extern Graphics3dPresentation_Clear
@@ -56,7 +56,7 @@ GamePhaseState_ResetActivePhase: ; 0x0200ea48
     blx r1
 L_0200eaec:
     add r0, r4, #0x4
-    bl ActorCollectionActivation_DestroyReservedSlot
+    bl ActorCollection_DestroyUnretainedActors
     add r0, r4, #0x2000
     ldr r0, [r0, #0xe80]
     bl ActorDerivedType1_ClearFailureCounter

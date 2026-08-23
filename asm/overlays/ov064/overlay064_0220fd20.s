@@ -24,7 +24,7 @@
 .extern RuntimePresentationManager_BroadcastSlot1C
 .extern func_02025300
 .extern ActorCollection_UnregisterAndDestroyAllActors
-.extern ActorCollectionActivation_DestroyReservedSlot
+.extern ActorCollection_DestroyUnretainedActors
 .extern ActorCollection_SetEnabled
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_ReplaceAttachmentSlotResource
@@ -370,7 +370,7 @@ Overlay064Scene_Construct:
     mov r1, #0x1
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
-    bl ActorCollectionActivation_DestroyReservedSlot
+    bl ActorCollection_DestroyUnretainedActors
     ldr r0, .L_022105f8
     mov r1, #0x1
     ldr r0, [r0, #0x0]

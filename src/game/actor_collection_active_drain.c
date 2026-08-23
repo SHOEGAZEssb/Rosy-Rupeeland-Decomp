@@ -1,54 +1,30 @@
-#include "tingle/types.h"
+#include "tingle/actor_collection.h"
 
 /*
- * Drain the actor collection's deferred-removal queue when its dirty flag is
- * set. Each queued actor is removed from collection bookkeeping, destroyed
- * through vtable offset 0x04, and cleared from the queue slot.
+ * Drain the actor collection's deferred-removal queue when its processing flag
+ * is set. Each queued actor is removed from collection bookkeeping, destroyed
+ * and freed through vtable offset 0x04, and cleared from the queue slot.
  */
-typedef struct DrainActor DrainActor;
-typedef struct DrainActorVTable {
-    void *field_00;
-    void (*destroy_04)(DrainActor *self);
-} DrainActorVTable;
-struct DrainActor {
-    DrainActorVTable *vtable_00;
-};
-typedef struct ActorCollectionActiveDrain {
-    DrainActor *actors_0000[128];
-    u8 field_0200[0xa00];
-    DrainActor *removalQueue_0c00[128];
-    u8 field_0e00[0x2074];
-    s32 slotLimit_2e74;
-    u32 flags_2e78;
-} ActorCollectionActiveDrain;
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern void ActorCollection_UnregisterActor(ActorCollectionActiveDrain *, DrainActor *);
-#ifdef __cplusplus
-}
-#endif
 
 /*
- * Return immediately when flags_2e78 bit zero is clear. Otherwise scan active
- * slots below slotLimit_2e74; for every nonnull entry, remove it, invoke its
- * destructor when nonnull, and clear the active entry. The flag itself is not
+ * Return immediately when the removal-queue processing flag is clear.
+ * Otherwise scan slots below slotLimit; for every queued actor, unregister it,
+ * destroy and free it, and clear the queue entry. The flag itself is not
  * cleared by this routine.
  */
-void ActorCollection_DrainRemovalQueue(ActorCollectionActiveDrain *self)
+void ActorCollection_DrainRemovalQueue(ActorCollection *self)
 {
     s32 i;
 
-    if (!(self->flags_2e78 & 1))
+    if (!(self->flags & ACTOR_COLLECTION_PROCESS_REMOVAL_QUEUE_FLAG))
         return;
-    for (i = 0; i < self->slotLimit_2e74; i++) {
-        DrainActor *actor = self->removalQueue_0c00[i];
+    for (i = 0; i < self->slotLimit; i++) {
+        ActorCollectionActor *actor = self->removalQueue[i];
         if (actor) {
             ActorCollection_UnregisterActor(self, actor);
             if (actor)
-                actor->vtable_00->destroy_04(actor);
-            self->removalQueue_0c00[i] = 0;
+                actor->vtable->destroyAndFree(actor);
+            self->removalQueue[i] = 0;
         }
     }
 }

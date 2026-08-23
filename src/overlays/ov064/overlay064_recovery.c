@@ -36,7 +36,7 @@ extern void *GraphicsSpriteGroup_CreateState(O64_ARGS);
 extern void GraphicsSpriteState_SetAnimationIndex(O64_ARGS);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(O64_ARGS);
 extern void ActorCollection_UnregisterAndDestroyAllActors(O64_ARGS);
-extern void ActorCollection_SetEnabled(O64_ARGS), ActorCollectionActivation_DestroyReservedSlot(O64_ARGS);
+extern void ActorCollection_SetEnabled(O64_ARGS), ActorCollection_DestroyUnretainedActors(O64_ARGS);
 extern void Actor_ReplaceAttachmentSlotResource(O64_ARGS);
 extern void Type7Actor_EnterSpecialPresentationState(O64_ARGS);
 extern void GamePhaseTouchPrompt_SetEnabled(O64_ARGS);
@@ -289,7 +289,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         if (target != 0 && F(void *, target, 0x234) != 0)
             F(u32, F(void *, target, 0x234), 0x20) |= 0x40000;
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
-        ActorCollectionActivation_DestroyReservedSlot(actorCollection);
+        ActorCollection_DestroyUnretainedActors(actorCollection);
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
         ActorCollection_SetEnabled(actorCollection, 0);
         call_method2_void(F(void *, data_021052fc, 0x30e8), 0xc, 0, 0x1f);

@@ -1,0 +1,14 @@
+{
+  "func_0202cf2c": "ActorCollection_Init",
+  "func_0202d014": "ActorCollection_CreateSpriteGroupForDisplayMode",
+  "func_0202d06c": "ActorCollection_Destructor",
+  "func_0202d094": "ActorCollection_Deinit",
+  "func_0202d110": "ActorCollection_RegisterActor",
+  "func_0202d1e4": "ActorCollection_UnregisterActor",
+  "func_0202d358": "ActorCollection_UnregisterAndDestroyActor",
+  "func_0202d380": "ActorCollection_UnregisterAndDestroyAllActors",
+  "func_0202d3cc": "ActorCollection_DestroyUnretainedActors",
+  "func_0202d494": "ActorCollection_QueueActorForRemoval",
+  "func_0202d568": "ActorCollection_QueueGroupForRemoval",
+  "func_0202d5c8": "ActorCollection_DrainRemovalQueue"
+}

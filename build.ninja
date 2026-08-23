@@ -13992,7 +13992,7 @@ build main_three_layer_resource_renderer: phony build/decomp/src/game/main_three
 
 actor_collection_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_lifecycle.o: mwccarm src/game/actor_collection_lifecycle.c | include/tingle/actor_pair_state.h include/tingle/types.h
+build build/decomp/src/game/actor_collection_lifecycle.o: mwccarm src/game/actor_collection_lifecycle.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
   source = src/game/actor_collection_lifecycle.c
   cflags = $actor_collection_lifecycle_cflags
 build build/decomp/asm/game/actor_collection_lifecycle_0202cf10.o: mwasmarm asm/game/actor_collection_lifecycle_0202cf10.s
@@ -14022,7 +14022,7 @@ build build/reports/actor_collection_lifecycle_0202d014.json: objdiff build/deco
   base_object = build/decomp/asm/game/actor_collection_lifecycle_0202d014.o
 build build/reports/actor_collection_lifecycle_0202d014.txt: match_report build/reports/actor_collection_lifecycle_0202d014.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_lifecycle_0202d014.json
-  report_args = --section .text --function ActorCollection_SetSpriteMode --require-exact
+  report_args = --section .text --function ActorCollection_CreateSpriteGroupForDisplayMode --require-exact
 build build/reports/actor_collection_lifecycle_0202d06c.json: objdiff build/decomp/delinks/asm/game/actor_collection_lifecycle_0202d06c.o | build/decomp/asm/game/actor_collection_lifecycle_0202d06c.o
   target_object = build/decomp/delinks/asm/game/actor_collection_lifecycle_0202d06c.o
   base_object = build/decomp/asm/game/actor_collection_lifecycle_0202d06c.o
@@ -14041,7 +14041,7 @@ build actor_collection_lifecycle: phony build/decomp/src/game/actor_collection_l
 
 actor_collection_registration_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_registration.o: mwccarm src/game/actor_collection_registration.c | include/tingle/actor_pair_state.h include/tingle/types.h
+build build/decomp/src/game/actor_collection_registration.o: mwccarm src/game/actor_collection_registration.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
   source = src/game/actor_collection_registration.c
   cflags = $actor_collection_registration_cflags
 build build/decomp/asm/game/actor_collection_registration_0202d110.o: mwasmarm asm/game/actor_collection_registration_0202d110.s
@@ -14098,7 +14098,7 @@ build actor_collection_registration: phony build/decomp/src/game/actor_collectio
 
 actor_collection_activation_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_activation.o: mwccarm src/game/actor_collection_activation.c | include/tingle/actor_pair_state.h include/tingle/types.h
+build build/decomp/src/game/actor_collection_activation.o: mwccarm src/game/actor_collection_activation.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
   source = src/game/actor_collection_activation.c
   cflags = $actor_collection_activation_cflags
 build build/decomp/asm/game/actor_collection_activation_0202d3cc.o: mwasmarm asm/game/actor_collection_activation_0202d3cc.s
@@ -14112,7 +14112,7 @@ build build/reports/actor_collection_activation_0202d3cc.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_collection_activation_0202d3cc.o
 build build/reports/actor_collection_activation_0202d3cc.txt: match_report build/reports/actor_collection_activation_0202d3cc.json | tools/report_objdiff.py
   report_json = build/reports/actor_collection_activation_0202d3cc.json
-  report_args = --section .text --function ActorCollectionActivation_DestroyReservedSlot --require-exact
+  report_args = --section .text --function ActorCollection_DestroyUnretainedActors --require-exact
 build build/reports/actor_collection_activation_0202d494.json: objdiff build/decomp/delinks/asm/game/actor_collection_activation_0202d494.o | build/decomp/asm/game/actor_collection_activation_0202d494.o
   target_object = build/decomp/delinks/asm/game/actor_collection_activation_0202d494.o
   base_object = build/decomp/asm/game/actor_collection_activation_0202d494.o
@@ -14131,7 +14131,7 @@ build actor_collection_activation: phony build/decomp/src/game/actor_collection_
 
 actor_collection_active_drain_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 
-build build/decomp/src/game/actor_collection_active_drain.o: mwccarm src/game/actor_collection_active_drain.c | include/tingle/types.h
+build build/decomp/src/game/actor_collection_active_drain.o: mwccarm src/game/actor_collection_active_drain.c | include/tingle/actor_collection.h include/tingle/actor_pair_state.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/overlay_manager.h include/tingle/types.h
   source = src/game/actor_collection_active_drain.c
   cflags = $actor_collection_active_drain_cflags
 build build/decomp/asm/game/actor_collection_active_drain_0202d5c8.o: mwasmarm asm/game/actor_collection_active_drain_0202d5c8.s

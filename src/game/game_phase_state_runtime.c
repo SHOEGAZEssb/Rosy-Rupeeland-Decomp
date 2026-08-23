@@ -16,7 +16,7 @@ extern void RuntimePresentationManager_DispatchHBlankCallbacks(
 extern void RuntimePresentationManager_DestroyAllEffects(void *object);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
-extern void ActorCollectionActivation_DestroyReservedSlot(void *object);
+extern void ActorCollection_DestroyUnretainedActors(void *object);
 extern void ActorDerivedType1_ClearFailureCounter(void *object);
 extern void ActorFeedback_DestroyPresentations(void);
 /* Matching forwards the preceding getter result in r0; host preparation makes
@@ -80,7 +80,7 @@ void GamePhaseState_ResetActivePhase(GamePhaseState *self)
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x24))(self->phaseObject, 0);
     if (self->phaseObject)
         ((PhaseVirtualMethod)phaseVirtual(self, 4))(self->phaseObject);
-    ActorCollectionActivation_DestroyReservedSlot(self->actorCollectionStorage);
+    ActorCollection_DestroyUnretainedActors(self->actorCollectionStorage);
     ActorDerivedType1_ClearFailureCounter(self->actorCollectionStorage + 0x2e7c);
     DebugText_BeginFrame();
 }

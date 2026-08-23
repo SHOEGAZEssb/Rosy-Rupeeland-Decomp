@@ -5,7 +5,7 @@
 .extern GX_SetGraphicsMode
 .extern GamePhaseState_ApplyConfiguration
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern ActorCollection_SetSpriteMode
+.extern ActorCollection_CreateSpriteGroupForDisplayMode
 .extern ActorCollection_SetEnabled
 .extern Graphics3dPresentation_Disable
 .extern Graphics3dPresentation_Enable
@@ -56,7 +56,7 @@ L_0200e6a4:
 L_0200e6ec:
     add r0, r4, #0x4
     mov r1, #0x1
-    bl ActorCollection_SetSpriteMode
+    bl ActorCollection_CreateSpriteGroupForDisplayMode
     add r0, r4, #0x4
     mov r1, #0x0
     bl ActorCollection_SetEnabled

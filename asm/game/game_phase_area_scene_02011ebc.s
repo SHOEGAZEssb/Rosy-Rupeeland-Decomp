@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_area_scene_lifecycle.c.
 .text
 .extern OverlaySlot_LoadOverlay
-.extern ActorCollection_SetSpriteMode
+.extern ActorCollection_CreateSpriteGroupForDisplayMode
 .extern ActorCollection_FindActorByTypeAndId
 .extern ActorCollection_SetActorScale
 
@@ -11,7 +11,7 @@ GamePhaseAreaScene_Start: ; 0x02011ebc
     mov r4, r0
     add r0, r4, #0x8
     mov r1, #0x2
-    bl ActorCollection_SetSpriteMode
+    bl ActorCollection_CreateSpriteGroupForDisplayMode
     add r0, r4, #0x8
     mov r1, #0x1000
     bl ActorCollection_SetActorScale
