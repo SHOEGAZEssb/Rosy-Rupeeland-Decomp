@@ -50,7 +50,7 @@ void GamePhaseAreaScene_Update(GamePhaseAreaScene *self);
 void GamePhaseAreaScene_RestoreSubDisplay(GamePhaseAreaScene *self);
 void GamePhaseAreaScene_SetEnabled(GamePhaseAreaScene *self, s32 enabled);
 GamePhaseAreaSceneConfig *GamePhaseAreaScene_GetConfig(GamePhaseAreaScene *self);
-void GamePhaseAreaScene_RegisterEnabledRegions(
+void GamePhaseAreaScene_ApplyRevealedRegions(
     GamePhaseAreaScene *self, GamePhaseRegionTable *regionTable);
 s32 GamePhaseAreaScene_GetSubRendererLowCoordinate(GamePhaseAreaScene *self);
 s32 GamePhaseAreaScene_GetSubRendererHighCoordinate(GamePhaseAreaScene *self);

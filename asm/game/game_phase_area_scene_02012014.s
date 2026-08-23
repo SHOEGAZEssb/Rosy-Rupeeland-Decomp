@@ -5,8 +5,8 @@
 .extern data_021052fc
 .extern GamePhaseRegionTable_FindContainingRegion
 .extern GamePhaseRegionTable_GetRegion
-.extern GamePhaseRegionTable_IsRegionEnabled
-.extern GamePhaseRegionTable_SetRegionEnabled
+.extern GamePhaseRegionTable_IsRegionRevealed
+.extern GamePhaseRegionTable_SetRegionRevealed
 .extern PresentationList_AppendObject
 .extern FourStageCommandPresentation_Init
 .extern gHeapContext
@@ -46,7 +46,7 @@ GamePhaseAreaScene_UpdateRegionAtPosition: ; 0x02012014
     mov r5, r3, asr #0x1
     mov r6, r6, asr #0x1
     mov r7, r7, asr #0x1
-    bl GamePhaseRegionTable_IsRegionEnabled
+    bl GamePhaseRegionTable_IsRegionRevealed
     cmp r0, #0x0
     bne L_02012110
     ldr r0, [r10, #0x4]
@@ -81,7 +81,7 @@ L_02012110:
     mov r0, r9
     mov r1, r8
     mov r2, #0x1
-    bl GamePhaseRegionTable_SetRegionEnabled
+    bl GamePhaseRegionTable_SetRegionRevealed
     add r0, r10, #0x2000
     ldr r2, [r0, #0xea8]
     and r1, r8, #0x1f

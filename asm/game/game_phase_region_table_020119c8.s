@@ -3,8 +3,8 @@
 .extern GameWork_TestFlag
 .extern gGameWork
 
-    .global GamePhaseRegionTable_IsRegionEnabled
-GamePhaseRegionTable_IsRegionEnabled: ; 0x020119c8
+    .global GamePhaseRegionTable_IsRegionRevealed
+GamePhaseRegionTable_IsRegionRevealed: ; 0x020119c8
     stmdb sp!, {r3, lr}
     ldr r2, [r0, #0xc]
     cmp r2, #0x0
@@ -16,5 +16,5 @@ GamePhaseRegionTable_IsRegionEnabled: ; 0x020119c8
     bl GameWork_TestFlag
     ldmia sp!, {r3, pc}
 L_020119f0: .word gGameWork
-    .size GamePhaseRegionTable_IsRegionEnabled, . - GamePhaseRegionTable_IsRegionEnabled
+    .size GamePhaseRegionTable_IsRegionRevealed, . - GamePhaseRegionTable_IsRegionRevealed
 

@@ -1,0 +1,7 @@
+{
+  "GamePhaseRegionTable_IsRegionEnabled": "GamePhaseRegionTable_IsRegionRevealed",
+  "GamePhaseRegionTable_SetRegionEnabled": "GamePhaseRegionTable_SetRegionRevealed",
+  "GamePhaseRegionTable_GetCount": "GamePhaseRegionTable_GetRegionCount",
+  "GamePhaseRegionTable_SetGameWorkFlagBase": "GamePhaseRegionTable_SetRevealFlagBase",
+  "GamePhaseAreaScene_RegisterEnabledRegions": "GamePhaseAreaScene_ApplyRevealedRegions"
+}

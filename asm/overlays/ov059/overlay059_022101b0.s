@@ -1,8 +1,8 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern GamePhaseRegionTable_GetRegion
-.extern GamePhaseRegionTable_IsRegionEnabled
-.extern GamePhaseRegionTable_GetCount
+.extern GamePhaseRegionTable_IsRegionRevealed
+.extern GamePhaseRegionTable_GetRegionCount
 .extern func_020befec
 .extern func_ov059_0221026c
 .extern func_ov059_022102ac
@@ -42,7 +42,7 @@ func_ov059_022101b0:
     mov r6, r0
     mov r0, r4
     mov r1, r8
-    bl GamePhaseRegionTable_IsRegionEnabled
+    bl GamePhaseRegionTable_IsRegionRevealed
     cmp r0, #0x0
     beq .L_02210254
     mov r0, r5
@@ -55,7 +55,7 @@ func_ov059_022101b0:
     add r8, r8, #0x1
 .L_02210258:
     mov r0, r4
-    bl GamePhaseRegionTable_GetCount
+    bl GamePhaseRegionTable_GetRegionCount
     cmp r8, r0
     blt .L_022101c8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}

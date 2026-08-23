@@ -4,8 +4,8 @@
 .extern GameWork_SetFlag
 .extern gGameWork
 
-    .global GamePhaseRegionTable_SetRegionEnabled
-GamePhaseRegionTable_SetRegionEnabled: ; 0x020119f4
+    .global GamePhaseRegionTable_SetRegionRevealed
+GamePhaseRegionTable_SetRegionRevealed: ; 0x020119f4
     stmdb sp!, {r3, lr}
     ldr r3, [r0, #0xc]
     mvn r0, #0x0
@@ -25,5 +25,5 @@ L_02011a24:
     bl GameWork_ClearFlag
     ldmia sp!, {r3, pc}
 L_02011a38: .word gGameWork
-    .size GamePhaseRegionTable_SetRegionEnabled, . - GamePhaseRegionTable_SetRegionEnabled
+    .size GamePhaseRegionTable_SetRegionRevealed, . - GamePhaseRegionTable_SetRegionRevealed
 

@@ -14,7 +14,8 @@ extern void *MainDualLayerResourceRendererAlt_Init(void *object);
 extern void *MainBg0ResourceRenderer_Init(void *object);
 extern void *MainThreeLayerResourceRenderer_Init(void *object);
 extern void GamePhaseRegionTable_Load(void *object, u32 value);
-extern void GamePhaseRegionTable_SetGameWorkFlagBase(void *object, u32 value);
+extern void GamePhaseRegionTable_SetRevealFlagBase(void *object,
+                                                   s32 revealFlagBase);
 #ifdef __cplusplus
 }
 #endif
@@ -64,5 +65,6 @@ void GamePhaseState_CreatePhaseObject(GamePhaseState *self, const void *configur
         object, *(u32 *)(config + 4), 1, 0);
     DualLayerTileRenderer_LoadEmbeddedRendererEntry(object, config + 0x34);
     GamePhaseRegionTable_Load(self->helper_2f80, *(u32 *)(config + 4));
-    GamePhaseRegionTable_SetGameWorkFlagBase(self->helper_2f80, *(u32 *)(config + 0x48));
+    GamePhaseRegionTable_SetRevealFlagBase(self->helper_2f80,
+                                           *(s32 *)(config + 0x48));
 }

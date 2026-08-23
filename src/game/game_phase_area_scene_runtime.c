@@ -36,12 +36,12 @@ static s32 halfTowardZero(s16 value)
 
 /*
  * Convert worldX/worldY from fx32 to integer coordinates and find their region.
- * A newly entered, previously unflagged region creates a 0x24-byte effect from
+ * A newly entered, previously unrevealed region creates a 0x24-byte effect from
  * its bounds halved toward zero, assigns recovered flags 0xdc in the 0x3fc
  * field, registers it in phase list 0x37, and stores the handle at 0x2ed4.
- * The region's GameWork flag is then set and its low-five-bit index replaces
+ * The region's reveal flag is then set and its low-five-bit index replaces
  * stateFlags bits 0-4. Re-entering the current region does nothing.
- * Returns zero; heap, phase-list, region flags, and object state may change.
+ * Returns zero; heap, phase-list, reveal flags, and object state may change.
  */
 s32 GamePhaseAreaScene_UpdateRegionAtPosition(
     GamePhaseAreaScene *self, GamePhaseRegionTable *table,
@@ -51,7 +51,7 @@ s32 GamePhaseAreaScene_UpdateRegionAtPosition(
         table, worldX >> 12, worldY >> 12);
     if (index != -1 && index != (s32)(self->stateFlags & 0x1f)) {
         GamePhaseRegion *region = GamePhaseRegionTable_GetRegion(table, index);
-        if (!GamePhaseRegionTable_IsRegionEnabled(table, index) &&
+        if (!GamePhaseRegionTable_IsRegionRevealed(table, index) &&
             self->subRenderer) {
             void *effect = Heap_Alloc(0x24, gGamePhaseAreaRegionEffectAllocationTag, 4,
                                       &gHeapContext);
@@ -67,7 +67,7 @@ s32 GamePhaseAreaScene_UpdateRegionAtPosition(
             self->regionEffectHandle = PresentationList_AppendObject(
                 (u8 *)data_021052fc + 0x2f7c, effect);
         }
-        GamePhaseRegionTable_SetRegionEnabled(table, index, 1);
+        GamePhaseRegionTable_SetRegionRevealed(table, index, 1);
         self->stateFlags =
             (self->stateFlags & ~0x1f) | (index & 0x1f);
     }

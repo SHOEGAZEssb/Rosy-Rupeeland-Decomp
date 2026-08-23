@@ -1,12 +1,12 @@
 ; Matching retail form; see src/game/game_phase_area_scene_helpers.c.
 .text
 .extern GamePhaseRegionTable_GetRegion
-.extern GamePhaseRegionTable_IsRegionEnabled
-.extern GamePhaseRegionTable_GetCount
+.extern GamePhaseRegionTable_IsRegionRevealed
+.extern GamePhaseRegionTable_GetRegionCount
 .extern DualLayerTileRenderer_FillTileRectangle
 
-    .global GamePhaseAreaScene_RegisterEnabledRegions
-GamePhaseAreaScene_RegisterEnabledRegions: ; 0x02012444
+    .global GamePhaseAreaScene_ApplyRevealedRegions
+GamePhaseAreaScene_ApplyRevealedRegions: ; 0x02012444
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0xc
     mov r8, r0
@@ -21,7 +21,7 @@ GamePhaseAreaScene_RegisterEnabledRegions: ; 0x02012444
 L_02012470:
     mov r0, r7
     mov r1, r6
-    bl GamePhaseRegionTable_IsRegionEnabled
+    bl GamePhaseRegionTable_IsRegionRevealed
     cmp r0, #0x0
     beq L_020124d4
     mov r0, r7
@@ -48,11 +48,11 @@ L_020124d4:
     add r6, r6, #0x1
 L_020124d8:
     mov r0, r7
-    bl GamePhaseRegionTable_GetCount
+    bl GamePhaseRegionTable_GetRegionCount
     cmp r6, r0
     blt L_02012470
 L_020124e8:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-    .size GamePhaseAreaScene_RegisterEnabledRegions, . - GamePhaseAreaScene_RegisterEnabledRegions
+    .size GamePhaseAreaScene_ApplyRevealedRegions, . - GamePhaseAreaScene_ApplyRevealedRegions
 

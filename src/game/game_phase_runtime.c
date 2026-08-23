@@ -54,7 +54,7 @@ extern void ActorCollection_DispatchEventToActors(void *object, void *value);
 extern void GamePhaseRuntime_SetDisplayRouting(s32 value);
 extern void func_02020060(void *object, const void *config);
 extern void GamePhaseCurrencyHud_SetVisible(void *object, s32 enabled);
-extern void GamePhaseAreaScene_RegisterEnabledRegions(void *object, void *source);
+extern void GamePhaseAreaScene_ApplyRevealedRegions(void *object, void *source);
 extern void GamePhaseTouchPrompt_SetEnabled(FrameTask *task, s32 enabled);
 
 #ifdef __cplusplus
@@ -213,7 +213,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
 
     if (((modeBits >> 18) & 3) == 2 &&
         *(const s32 *)(config + 0x48) != -1) {
-        GamePhaseAreaScene_RegisterEnabledRegions(*(void **)(bytes + 0x2fb8), bytes + 0x2fa4);
+        GamePhaseAreaScene_ApplyRevealedRegions(*(void **)(bytes + 0x2fb8), bytes + 0x2fa4);
     }
 
     *(void **)(bytes + 0x30f0) = entity;

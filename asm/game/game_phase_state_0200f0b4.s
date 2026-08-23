@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern gGamePhaseStateRendererAllocationTag
 .extern GamePhaseRegionTable_Load
-.extern GamePhaseRegionTable_SetGameWorkFlagBase
+.extern GamePhaseRegionTable_SetRevealFlagBase
 .extern DualLayerTileRendererBase_Init
 .extern DualLayerTileRenderer_LoadEmbeddedRendererEntry
 .extern MainDualLayerResourceRenderer_Init
@@ -125,7 +125,7 @@ L_0200f204:
     bl GamePhaseRegionTable_Load
     ldr r1, [r4, #0x48]
     add r0, r5, #0x2f80
-    bl GamePhaseRegionTable_SetGameWorkFlagBase
+    bl GamePhaseRegionTable_SetRevealFlagBase
     ldmia sp!, {r3, r4, r5, pc}
 L_0200f250: .word 0x400000e
 L_0200f254: .word 0x187c

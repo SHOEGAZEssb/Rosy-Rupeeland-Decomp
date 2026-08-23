@@ -7,8 +7,8 @@
 .extern GamePhaseRegionTable_Init
 .extern GamePhaseRegionTable_Destroy
 .extern GamePhaseRegionTable_Load
-.extern GamePhaseRegionTable_GetCount
-.extern GamePhaseRegionTable_SetGameWorkFlagBase
+.extern GamePhaseRegionTable_GetRegionCount
+.extern GamePhaseRegionTable_SetRevealFlagBase
 .extern func_020706c4
 .extern func_02070bc4
 .extern func_02070eac
@@ -221,12 +221,12 @@ func_ov059_0220fd80:
     bl GamePhaseRegionTable_Load
     ldr r1, [r9, #0x48]
     add r0, sp, #0x4
-    bl GamePhaseRegionTable_SetGameWorkFlagBase
+    bl GamePhaseRegionTable_SetRevealFlagBase
     add r1, sp, #0x4
     mov r0, r10
     bl func_ov059_022101b0
     add r0, sp, #0x4
-    bl GamePhaseRegionTable_GetCount
+    bl GamePhaseRegionTable_GetRegionCount
     cmp r0, #0x0
     bgt .L_02210088
     mov r0, r10

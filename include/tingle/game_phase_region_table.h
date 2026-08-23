@@ -10,12 +10,12 @@ typedef struct GamePhaseRegion {
     s16 bottom;
 } GamePhaseRegion;
 
-/* Owned rectangle table with per-table flags and an optional GameWork flag base. */
+/* Owned rectangle table with per-table flags and optional GameWork reveal flags. */
 typedef struct GamePhaseRegionTable {
     GamePhaseRegion *regions;
     s32 count;
     u32 flags;
-    s32 gameWorkFlagBase;
+    s32 revealFlagBase;
 } GamePhaseRegionTable;
 
 /* Only the recovered region-file slice of the larger caller record is known. */
@@ -48,13 +48,13 @@ s32 GamePhaseRegionTable_ClassifyContainedSide(
     const GamePhaseRegion *candidate);
 s32 GamePhaseRegionTable_Load(GamePhaseRegionTable *self,
                               const GamePhaseRegionFileInfo *info);
-s32 GamePhaseRegionTable_IsRegionEnabled(const GamePhaseRegionTable *self,
+s32 GamePhaseRegionTable_IsRegionRevealed(const GamePhaseRegionTable *self,
                                          s32 index);
-void GamePhaseRegionTable_SetRegionEnabled(GamePhaseRegionTable *self,
-                                           s32 index, s32 enabled);
-s32 GamePhaseRegionTable_GetCount(const GamePhaseRegionTable *self);
-void GamePhaseRegionTable_SetGameWorkFlagBase(GamePhaseRegionTable *self,
-                                              s32 flagBase);
+void GamePhaseRegionTable_SetRegionRevealed(GamePhaseRegionTable *self,
+                                            s32 index, s32 revealed);
+s32 GamePhaseRegionTable_GetRegionCount(const GamePhaseRegionTable *self);
+void GamePhaseRegionTable_SetRevealFlagBase(GamePhaseRegionTable *self,
+                                            s32 revealFlagBase);
 void GamePhaseRegionTable_PublishActive(GamePhaseRegionTable *self);
 #ifdef __cplusplus
 }

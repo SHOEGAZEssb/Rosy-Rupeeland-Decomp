@@ -24,7 +24,7 @@
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern func_02008f2c
 .extern GamePhaseAreaScene_GetConfig
-.extern GamePhaseAreaScene_RegisterEnabledRegions
+.extern GamePhaseAreaScene_ApplyRevealedRegions
 .extern GamePhaseMetadata_GetTextResourceId
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -346,7 +346,7 @@ func_ov059_02211330:
     ldr r0, [r0, #0xfb8]
     add r1, r1, #0x3a4
     add r1, r1, #0x2c00
-    bl GamePhaseAreaScene_RegisterEnabledRegions
+    bl GamePhaseAreaScene_ApplyRevealedRegions
     ldr r0, .L_0221184c
     mov r1, #0x1
     ldr r0, [r0, #0x0]

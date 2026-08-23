@@ -1,7 +1,7 @@
 #include "tingle/game_phase_region_table.h"
 #include "tingle/game_work.h"
 
-/* Bind region indices to consecutive GameWork flags and publish a table globally. */
+/* Bind region indices to consecutive reveal flags and publish a table globally. */
 
 #ifdef __cplusplus
 extern "C" {
@@ -12,44 +12,44 @@ extern GamePhaseRegionTable *gActiveGamePhaseRegionTable;
 #endif
 
 /*
- * Return one when no GameWork flag range is bound (negative base); otherwise
- * return whether flag gameWorkFlagBase + index is set. No state changes.
+ * Return one when no GameWork reveal-flag range is bound (negative base);
+ * otherwise return whether revealFlagBase + index is set. No state changes.
  */
-s32 GamePhaseRegionTable_IsRegionEnabled(const GamePhaseRegionTable *self,
+s32 GamePhaseRegionTable_IsRegionRevealed(const GamePhaseRegionTable *self,
                                          s32 index)
 {
-    if (self->gameWorkFlagBase < 0)
+    if (self->revealFlagBase < 0)
         return 1;
-    return GameWork_TestFlag(gGameWork, self->gameWorkFlagBase + index);
+    return GameWork_TestFlag(gGameWork, self->revealFlagBase + index);
 }
 
 /*
- * Set or clear GameWork flag gameWorkFlagBase + index from enabled. A base of
+ * Set or clear reveal flag revealFlagBase + index from revealed. A base of
  * exactly -1 disables the operation; other negative values are preserved as
  * recovered because their caller constraints are not yet confirmed.
  */
-void GamePhaseRegionTable_SetRegionEnabled(GamePhaseRegionTable *self,
-                                           s32 index, s32 enabled)
+void GamePhaseRegionTable_SetRegionRevealed(GamePhaseRegionTable *self,
+                                            s32 index, s32 revealed)
 {
-    if (self->gameWorkFlagBase == -1)
+    if (self->revealFlagBase == -1)
         return;
-    if (enabled)
-        GameWork_SetFlag(gGameWork, self->gameWorkFlagBase + index);
+    if (revealed)
+        GameWork_SetFlag(gGameWork, self->revealFlagBase + index);
     else
-        GameWork_ClearFlag(gGameWork, self->gameWorkFlagBase + index);
+        GameWork_ClearFlag(gGameWork, self->revealFlagBase + index);
 }
 
 /* Return the number of owned regions without changing state. */
-s32 GamePhaseRegionTable_GetCount(const GamePhaseRegionTable *self)
+s32 GamePhaseRegionTable_GetRegionCount(const GamePhaseRegionTable *self)
 {
     return self->count;
 }
 
-/* Replace the consecutive GameWork flag base; no value is returned. */
-void GamePhaseRegionTable_SetGameWorkFlagBase(GamePhaseRegionTable *self,
-                                              s32 flagBase)
+/* Replace the consecutive GameWork reveal-flag base; no value is returned. */
+void GamePhaseRegionTable_SetRevealFlagBase(GamePhaseRegionTable *self,
+                                            s32 revealFlagBase)
 {
-    self->gameWorkFlagBase = flagBase;
+    self->revealFlagBase = revealFlagBase;
 }
 
 /* Publish self for consumers of the active phase table. */

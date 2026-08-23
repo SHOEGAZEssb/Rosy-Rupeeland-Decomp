@@ -54,12 +54,12 @@ extern void func_02008f2c(...), GamePhaseState_UpdateRenderHelpers(...);
 extern void GamePhaseCurrencyHud_SetVisible(...);
 extern void GamePhaseRegionTable_Init(...), GamePhaseRegionTable_Destroy(...);
 extern void GamePhaseRegionTable_Load(...);
-extern s32 GamePhaseRegionTable_GetCount(...);
+extern s32 GamePhaseRegionTable_GetRegionCount(...);
 extern void *GamePhaseRegionTable_GetRegion(...);
-extern s32 GamePhaseRegionTable_IsRegionEnabled(...);
-extern void GamePhaseRegionTable_SetGameWorkFlagBase(...);
+extern s32 GamePhaseRegionTable_IsRegionRevealed(...);
+extern void GamePhaseRegionTable_SetRevealFlagBase(void *, s32);
 extern void *GamePhaseAreaScene_GetConfig(...);
-extern void GamePhaseAreaScene_RegisterEnabledRegions(...);
+extern void GamePhaseAreaScene_ApplyRevealedRegions(...);
 extern void *GamePhaseMetadata_GetByIndex(...);
 extern s32 GamePhaseMetadata_GetTextResourceId(...);
 extern void *GamePhaseVariantMetadata_GetForPhase(...);
@@ -197,15 +197,15 @@ void func_ov059_022102ac(void *p, s32 x, s32 y, s32 w, s32 h) {
       F(u16, F(void *, p, 4 + x * 4 + (y + j) * 16 + i * 4), 0x24) |= 4;
 }
 
-/* Apply enabled region rectangles to the preview's hidden cells. */
+/* Hide preview cover cells over rectangles that have already been revealed. */
 void func_ov059_022101b0(void *p, void *regions) {
-  s32 i, n = GamePhaseRegionTable_GetCount(regions);
+  s32 i, n = GamePhaseRegionTable_GetRegionCount(regions);
   for (i = 0; i < n; i++) {
     const void *r = GamePhaseRegionTable_GetRegion(regions, i);
     s32 x = F(s16, r, 0) / 0x100, y = func_020befec(F(s16, r, 2), 0xc0);
     s32 w = ((s32)F(s16, r, 4) - F(s16, r, 0)) / 0x100;
     s32 h = func_020befec(func_ov059_0221026c(r), 0xc0);
-    if (GamePhaseRegionTable_IsRegionEnabled(regions, i))
+    if (GamePhaseRegionTable_IsRegionRevealed(regions, i))
       func_ov059_022102ac(p, x, y, w, h);
   }
 }
@@ -260,9 +260,9 @@ void func_ov059_0220fd80(void *p, void *cfg, s32 bg, s32 priority,
   func_ov059_02210178(p, 0);
   GamePhaseRegionTable_Init(regions);
   GamePhaseRegionTable_Load(regions, F(void *, cfg, 4));
-  GamePhaseRegionTable_SetGameWorkFlagBase(regions, F(void *, cfg, 0x48));
+  GamePhaseRegionTable_SetRevealFlagBase(regions, F(s32, cfg, 0x48));
   func_ov059_022101b0(p, regions);
-  if (GamePhaseRegionTable_GetCount(regions) < 1)
+  if (GamePhaseRegionTable_GetRegionCount(regions) < 1)
     func_ov059_02210284(p);
   GamePhaseRegionTable_Destroy(regions);
   GraphicsResourceSet_Destroy(resources);
@@ -805,7 +805,7 @@ s32 func_ov059_02211330(void *s) {
     GamePhaseRuntime_DestroySecondaryActorSubsystem(data_021052fc);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(
         data_021052fc, F(void *, data_021052fc, 0x30bc), 1);
-    GamePhaseAreaScene_RegisterEnabledRegions(F(void *, data_021052fc, 0x2fb8),
+    GamePhaseAreaScene_ApplyRevealedRegions(F(void *, data_021052fc, 0x2fb8),
                                               (u8 *)data_021052fc + 0x2fa4);
     GamePhaseRuntime_ApplyScreenMode(data_021052fc, 1, 1);
     DisplayBrightness_StartSubTransition(1, 0x10);
