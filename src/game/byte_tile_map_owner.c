@@ -1,16 +1,17 @@
 #include "tingle/heap.h"
+#include "tingle/ncl_file.h"
 #include "tingle/types.h"
 
 /*
  * Own a square signed-byte tile map plus an adjacent sized resource buffer and
- * an opaque 12-byte metadata component. The object supplies lifecycle hooks,
+ * an embedded CNclFile palette resource. The object supplies lifecycle hooks,
  * bounds-checked cell access, and several intentionally empty virtual methods.
  */
 typedef struct ByteTileMapOwner {
     void **vtable_00;
     u8 sizedBuffer_04[8];
     u8 tileBytes_0c[4];
-    u8 metadata_10[12];
+    NclFile palette_10;
     void *field_1c;
     u32 dimensions_20;
     u32 flags_24;
@@ -27,10 +28,8 @@ extern void *CompressedByteBuffer_Destroy(void *self);
 extern s32 CompressedByteBuffer_IsEmpty(const void *self);
 extern u8 CompressedByteBuffer_GetByte(void *self, s32 index);
 extern void CompressedByteBuffer_SetByte(void *self, s32 index, u8 value);
-extern void NclFile_Init(void *self);
-extern void NclFile_Destroy(void *self);
 /*
- * Install the recovered vtable, initialize both buffer owners and metadata,
+ * Install the recovered vtable, initialize both buffer owners and the palette,
  * clear flag bit zero, set flag bit one, preserve only dimensions_20's low
  * halfword, clear field_1c, and return self.
  */
@@ -39,7 +38,7 @@ ByteTileMapOwner *ByteTileMapOwner_Init(ByteTileMapOwner *self)
     self->vtable_00 = gByteTileMapOwnerVtable;
     SizedCompressedBuffer_Init(self->sizedBuffer_04);
     CompressedByteBuffer_Init(self->tileBytes_0c);
-    NclFile_Init(self->metadata_10);
+    NclFile_Init(&self->palette_10);
     self->flags_24 &= ~1u;
     self->flags_24 |= 2;
     self->dimensions_20 &= 0xffff;
@@ -47,10 +46,10 @@ ByteTileMapOwner *ByteTileMapOwner_Init(ByteTileMapOwner *self)
     return self;
 }
 
-/* Destroy metadata and both owned buffers, then return self without freeing it. */
+/* Destroy the palette and both owned buffers, then return self without freeing it. */
 ByteTileMapOwner *ByteTileMapOwner_DestroyComplete(ByteTileMapOwner *self)
 {
-    NclFile_Destroy(self->metadata_10);
+    NclFile_Destroy(&self->palette_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
     SizedCompressedBuffer_Destroy(self->sizedBuffer_04);
     return self;
@@ -59,7 +58,7 @@ ByteTileMapOwner *ByteTileMapOwner_DestroyComplete(ByteTileMapOwner *self)
 /* Destroy all embedded owners, free self, and return its former address. */
 ByteTileMapOwner *ByteTileMapOwner_DestroyAndFree(ByteTileMapOwner *self)
 {
-    NclFile_Destroy(self->metadata_10);
+    NclFile_Destroy(&self->palette_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
     SizedCompressedBuffer_Destroy(self->sizedBuffer_04);
     Heap_Free(self);
@@ -69,7 +68,7 @@ ByteTileMapOwner *ByteTileMapOwner_DestroyAndFree(ByteTileMapOwner *self)
 /* Destroy all embedded owners and return self; this is a second non-freeing virtual destructor. */
 ByteTileMapOwner *ByteTileMapOwner_Destroy(ByteTileMapOwner *self)
 {
-    NclFile_Destroy(self->metadata_10);
+    NclFile_Destroy(&self->palette_10);
     CompressedByteBuffer_Destroy(self->tileBytes_0c);
     SizedCompressedBuffer_Destroy(self->sizedBuffer_04);
     return self;

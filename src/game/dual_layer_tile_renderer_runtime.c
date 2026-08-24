@@ -1,4 +1,5 @@
 #include "tingle/heap.h"
+#include "tingle/ncl_file.h"
 #include "tingle/types.h"
 
 /*
@@ -11,9 +12,7 @@ typedef struct DualLayerTileRenderer {
     u8 base_00[4];
     u8 resource_04[8];
     u8 optionalResource_0c[4];
-    void *palette_10;
-    void *paletteData_14;
-    u8 field_18[4];
+    NclFile palette_10;
     const u8 *config_1c;
     u32 packedDimensions_20;
     u32 flags_24;
@@ -60,11 +59,6 @@ extern const char gDualLayerTileRendererArchivePath[];
 extern const char gDualLayerTileRendererLayerAllocationTag[];
 extern u8 gMainBgPaletteBuffer[];
 extern u8 gSubBgPaletteBuffer[];
-extern void GameFile_Init(void *);
-extern void GameFile_Destroy(void *);
-extern void GameFile_Open(void *, const char *);
-extern void GameFile_Close(void *);
-extern void NclFile_LoadCompressedFromFile(void *, void *, u32, u32);
 extern void SizedCompressedBuffer_LoadLz8Section(void *, void *, u32, u32);
 extern void CompressedByteBuffer_LoadLz8Payload(void *, void *, u32, u32);
 extern void *SizedCompressedBuffer_GetData(void *);
@@ -117,20 +111,21 @@ extern void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *);
 void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                    const TileRendererConfig *config, s32 mode, s32 variant)
 {
-    u8 file[0x4c];
+    GameFile file;
     void *map;
     void *optional;
     self->engineMode_30 = (u8)mode;
     self->layerVariant_31 = (u8)variant;
     self->config_1c = (const u8 *)config;
-    GameFile_Init(file);
-    GameFile_Open(file, gDualLayerTileRendererArchivePath);
-    NclFile_LoadCompressedFromFile(&self->palette_10, file, config->resourceOffset_08,
+    GameFile_Init(&file);
+    GameFile_Open(&file, gDualLayerTileRendererArchivePath);
+    NclFile_LoadCompressedFromFile(&self->palette_10, &file,
+                  config->resourceOffset_08,
                   config->resourceSize_0c);
-    SizedCompressedBuffer_LoadLz8Section(self->resource_04, file, config->mapOffset_10,
+    SizedCompressedBuffer_LoadLz8Section(self->resource_04, &file, config->mapOffset_10,
                   config->mapSize_14);
     if (config->optionalSize_2c)
-        CompressedByteBuffer_LoadLz8Payload(self->optionalResource_0c, file,
+        CompressedByteBuffer_LoadLz8Payload(self->optionalResource_0c, &file,
                       config->optionalOffset_28, config->optionalSize_2c);
     self->packedDimensions_20 =
         (u16)config->dimension0_38 | ((u32)(u16)config->dimension1_3a << 16);
@@ -148,7 +143,7 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
         }
         map = SizedCompressedBuffer_GetData(self->resource_04);
         optional = CompressedByteBuffer_GetData(self->optionalResource_0c);
-        TileLayer_InitSourceMap(self->layers_28[0], file, config->layer0Offset_18,
+        TileLayer_InitSourceMap(self->layers_28[0], &file, config->layer0Offset_18,
                       config->layer0Size_1c, map,
                       (s16)(self->packedDimensions_20 & 0xffff),
                       (s16)(self->packedDimensions_20 >> 16), optional);
@@ -168,7 +163,7 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
                     self->layers_28[1], mode, self->field_44, self->height_4c);
         }
         map = SizedCompressedBuffer_GetData(self->resource_04);
-        TileLayer_InitSourceMap(self->layers_28[1], file, config->layer1Offset_20,
+        TileLayer_InitSourceMap(self->layers_28[1], &file, config->layer1Offset_20,
                       config->layer1Size_24, map,
                       (s16)(self->packedDimensions_20 & 0xffff),
                       (s16)(self->packedDimensions_20 >> 16), 0);
@@ -178,8 +173,8 @@ void DualLayerTileRenderer_LoadFromConfig(DualLayerTileRenderer *self,
     }
     DualLayerTileRenderer_UploadGraphics(self);
     DualLayerTileRenderer_UploadPalette(self);
-    GameFile_Close(file);
-    GameFile_Destroy(file);
+    GameFile_Close(&file);
+    GameFile_Destroy(&file);
 }
 
 /*
@@ -257,20 +252,20 @@ void DualLayerTileRenderer_UpdatePosition(DualLayerTileRenderer *self, const voi
 void DualLayerTileRenderer_UploadGraphics(DualLayerTileRenderer *self)
 {
     u8 resource[0x14];
-    u8 file[0x4c];
+    GameFile file;
     s32 units = self->layerVariant_31 == 0 ? 0x20 : 0x40;
     func_020b44e8();
     NcgFile_Init(resource);
-    GameFile_Init(file);
-    GameFile_Open(file, gDualLayerTileRendererArchivePath);
-    NcgFile_LoadCompressedFromFile(resource, file,
+    GameFile_Init(&file);
+    GameFile_Open(&file, gDualLayerTileRendererArchivePath);
+    NcgFile_LoadCompressedFromFile(resource, &file,
                   *(const u32 *)(self->config_1c + 0),
                   *(const u32 *)(self->config_1c + 4));
     if (self->engineMode_30 == 1)
         func_020b581c(*(void **)(resource + 4), func_020af838(), units << 10);
     else if (self->engineMode_30 == 2)
         func_020b581c(*(void **)(resource + 4), func_020af7e8(), units << 10);
-    GameFile_Destroy(file);
+    GameFile_Destroy(&file);
     NcgFile_Destroy(resource);
 }
 
@@ -280,21 +275,21 @@ void DualLayerTileRenderer_UploadPalette(DualLayerTileRenderer *self)
     func_020b44e8();
     if (self->engineMode_30 == 1) {
         if (self->layerVariant_31 == 0)
-            PaletteBuffer_Write(gMainBgPaletteBuffer, self->paletteData_14, 0, 0x1c0);
+            PaletteBuffer_Write(gMainBgPaletteBuffer, self->palette_10.base.data, 0, 0x1c0);
         else if (self->layerVariant_31 == 2) {
             func_020b1618();
-            func_020b1598(self->paletteData_14, 0x4000, 0x2000);
-            func_020b1598(self->paletteData_14, 0x6000, 0x2000);
+            func_020b1598(self->palette_10.base.data, 0x4000, 0x2000);
+            func_020b1598(self->palette_10.base.data, 0x6000, 0x2000);
             func_020b1534();
         }
     } else if (self->engineMode_30 == 2) {
-        *(u16 *)self->paletteData_14 = 0;
+        *(u16 *)self->palette_10.base.data = 0;
         if (self->layerVariant_31 == 0)
-            PaletteBuffer_Write(gSubBgPaletteBuffer, self->paletteData_14, 0, 0x200);
+            PaletteBuffer_Write(gSubBgPaletteBuffer, self->palette_10.base.data, 0, 0x200);
         else if (self->layerVariant_31 == 2) {
             func_020b13d4();
-            func_020b1360(self->paletteData_14, 0x4000, 0x2000);
-            func_020b1360(self->paletteData_14, 0x6000, 0x2000);
+            func_020b1360(self->palette_10.base.data, 0x4000, 0x2000);
+            func_020b1360(self->palette_10.base.data, 0x6000, 0x2000);
             func_020b1314();
         }
     }
@@ -398,18 +393,18 @@ void DualLayerTileRenderer_LoadEmbeddedRendererEntry(DualLayerTileRenderer *self
                                                      const void *schedule)
 {
     u8 resource[0x14];
-    u8 file[0x4c];
+    GameFile file;
     u8 temporary[0x181c];
     NcgFile_Init(resource);
-    GameFile_Init(file);
-    GameFile_Open(file, gDualLayerTileRendererArchivePath);
-    NcgFile_LoadCompressedFromFile(resource, file,
+    GameFile_Init(&file);
+    GameFile_Open(&file, gDualLayerTileRendererArchivePath);
+    NcgFile_LoadCompressedFromFile(resource, &file,
                   *(const u32 *)(self->config_1c + 0),
                   *(const u32 *)(self->config_1c + 4));
     AnimatedTileStagingBuffer_InitFromSource(temporary, resource, schedule);
     AnimatedTileStagingBuffer_Assign(self->embeddedRenderer_60, temporary);
     AnimatedTileStagingBuffer_Destroy(temporary);
-    GameFile_Destroy(file);
+    GameFile_Destroy(&file);
     NcgFile_Destroy(resource);
 }
 

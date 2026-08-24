@@ -1,0 +1,10 @@
+{
+  "NclFile_Init": "NclFile_Init",
+  "NclFile_Destroy": "NclFile_Destroy",
+  "NclFile_DestroyAndFree": "NclFile_DestroyAndFree",
+  "NclFile_ParseResource": "NclFile_ParseResource",
+  "NclFile_LoadCompressedFromFile": "NclFile_LoadCompressedFromFile",
+  "NclFile_GetSignature": "NclFile_GetSignature",
+  "gNclFileVTable": "gNclFileVTable",
+  "gNclFileBufferTag": "gNclFileBufferTag"
+}
