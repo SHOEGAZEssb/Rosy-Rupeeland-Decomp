@@ -133,14 +133,29 @@ void *RetailTextDatabaseManager_Destroy(void *object)
 }
 
 /* Initialize each of the two smaller resource-owner globals. */
-void func_0207a13c(void *object)
+void LanguageDatabase_InitEmpty(void *object)
 {
     memset(object, 0, 8);
 }
 
-void func_0207a16c(void *object)
+extern void LanguageDatabase_Destroy(void *object);
+extern void RuntimeRecordTable_Destroy(void *object);
+
+void *LanguageDatabase_DestroyIfLoaded(void *object)
+{
+    if (*(void **)object != 0) LanguageDatabase_Destroy(object);
+    return object;
+}
+
+void RuntimeRecordTable_InitEmpty(void *object)
 {
     memset(object, 0, 8);
+}
+
+void *RuntimeRecordTable_DestroyIfLoaded(void *object)
+{
+    if (*(void **)object != 0) RuntimeRecordTable_Destroy(object);
+    return object;
 }
 
 /* Clear the twelve-word singleton at 0x0207C38C. */

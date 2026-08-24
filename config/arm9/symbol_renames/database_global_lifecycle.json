@@ -1,0 +1,6 @@
+{
+  "func_0207a13c": "LanguageDatabase_InitEmpty",
+  "func_0207a14c": "LanguageDatabase_DestroyIfLoaded",
+  "func_0207a16c": "RuntimeRecordTable_InitEmpty",
+  "func_0207a17c": "RuntimeRecordTable_DestroyIfLoaded"
+}

@@ -56,10 +56,10 @@ extern void RetailResourceDescriptorManager_InitNoOp(void *);
 extern void RetailResourceDescriptorManager_DestroyNoOp(void *);
 extern void RetailTextDatabaseManager_Init(void *);
 extern void RetailTextDatabaseManager_Destroy(void *);
-extern void func_0207a13c(void *);
-extern void func_0207a14c(void *);
-extern void func_0207a16c(void *);
-extern void func_0207a17c(void *);
+extern void LanguageDatabase_InitEmpty(void *);
+extern void LanguageDatabase_DestroyIfLoaded(void *);
+extern void RuntimeRecordTable_InitEmpty(void *);
+extern void RuntimeRecordTable_DestroyIfLoaded(void *);
 extern void func_0207c38c(void *);
 extern void func_0207c424(void *);
 extern void ActorRuntimeFlags_Init(void *);
@@ -321,7 +321,7 @@ void __sinit_020c16cc(void)
 /*
  * No inputs. Construct three globals in retail order: data_021f3ecc,
  * gLanguageDatabase, and data_021f3d68. Register their respective destructors
- * RetailTextDatabaseManager_Destroy, func_0207a14c, and func_0207a17c with records
+ * RetailTextDatabaseManager_Destroy, LanguageDatabase_DestroyIfLoaded, and RuntimeRecordTable_DestroyIfLoaded with records
  * data_021f3d44/data_021f3d50/data_021f3d5c. Global lifetimes change; no value
  * is returned and no direct hardware effect occurs.
  */
@@ -329,10 +329,10 @@ void __sinit_020c16f8(void)
 {
     RetailTextDatabaseManager_Init(data_021f3ecc);
     __register_global_object(data_021f3ecc, RetailTextDatabaseManager_Destroy, data_021f3d44);
-    func_0207a13c(gLanguageDatabase);
-    __register_global_object(gLanguageDatabase, func_0207a14c, data_021f3d50);
-    func_0207a16c(data_021f3d68);
-    __register_global_object(data_021f3d68, func_0207a17c, data_021f3d5c);
+    LanguageDatabase_InitEmpty(gLanguageDatabase);
+    __register_global_object(gLanguageDatabase, LanguageDatabase_DestroyIfLoaded, data_021f3d50);
+    RuntimeRecordTable_InitEmpty(data_021f3d68);
+    __register_global_object(data_021f3d68, RuntimeRecordTable_DestroyIfLoaded, data_021f3d5c);
 }
 
 /*

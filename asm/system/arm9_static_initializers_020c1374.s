@@ -18,8 +18,8 @@
 .extern func_0206fd78
 .extern RetailResourceDescriptorManager_InitNoOp
 .extern RetailTextDatabaseManager_Init
-.extern func_0207a13c
-.extern func_0207a16c
+.extern LanguageDatabase_InitEmpty
+.extern RuntimeRecordTable_InitEmpty
 .extern func_0207c38c
 .extern ActorRuntimeFlags_Init
 .extern func_02092364
@@ -95,8 +95,8 @@
 .extern GraphicsSpriteState_DestroyGlobalPool
 .extern RetailResourceDescriptorManager_DestroyNoOp
 .extern RetailTextDatabaseManager_Destroy
-.extern func_0207a14c
-.extern func_0207a17c
+.extern LanguageDatabase_DestroyIfLoaded
+.extern RuntimeRecordTable_DestroyIfLoaded
 .extern func_0207c424
 .extern ActorRuntimeFlags_Destroy
 .extern func_020923a0
@@ -405,13 +405,13 @@ __sinit_020c16f8: ; 0x020c16f8
     ldr r2, .L_020c1750
     bl __register_global_object
     ldr r0, .L_020c1754
-    bl func_0207a13c
+    bl LanguageDatabase_InitEmpty
     ldr r0, .L_020c1754
     ldr r1, .L_020c1758
     ldr r2, .L_020c175c
     bl __register_global_object
     ldr r0, .L_020c1760
-    bl func_0207a16c
+    bl RuntimeRecordTable_InitEmpty
     ldr r0, .L_020c1760
     ldr r1, .L_020c1764
     ldr r2, .L_020c1768
@@ -421,10 +421,10 @@ __sinit_020c16f8: ; 0x020c16f8
 .L_020c174c: .word RetailTextDatabaseManager_Destroy
 .L_020c1750: .word data_021f3d44
 .L_020c1754: .word gLanguageDatabase
-.L_020c1758: .word func_0207a14c
+.L_020c1758: .word LanguageDatabase_DestroyIfLoaded
 .L_020c175c: .word data_021f3d50
 .L_020c1760: .word data_021f3d68
-.L_020c1764: .word func_0207a17c
+.L_020c1764: .word RuntimeRecordTable_DestroyIfLoaded
 .L_020c1768: .word data_021f3d5c
 
 __sinit_020c176c: ; 0x020c176c
