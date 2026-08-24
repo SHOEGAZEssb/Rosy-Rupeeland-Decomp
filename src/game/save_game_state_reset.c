@@ -403,8 +403,8 @@ static void PackCategoryEntry(const u8 *entry, u8 *result)
     WriteU16(result, 2, (u16)*(const u32 *)(entry + 0x0c));
 }
 
-/* Exact portable behavior of assembly-selected retail 0x0207A594. */
-void func_0207a594(void *state_pointer, s32 mode)
+/* Serialize all category channels and the manager's ordered descriptor list. */
+void RetailRecordManager_SaveState(void *state_pointer, s32 mode)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -547,8 +547,8 @@ void RetailResourceDescriptorManager_LoadState(void *state_pointer)
     }
 }
 
-/* Exact portable behavior of assembly-selected retail 0x0207A6E0. */
-void func_0207a6e0(void *state_pointer)
+/* Restore all category channels and the manager's ordered descriptor list. */
+void RetailRecordManager_LoadState(void *state_pointer)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -632,4 +632,3 @@ void func_0206f8c8(void *state_pointer)
     }
     WriteU32(state, 4, (u32)(highest + 1));
 }
-

@@ -41,7 +41,7 @@ extern s32 GamePhaseProgress_GetCurrentAdjustedThreshold(void *state);
 extern s32 func_02027e8c(void *state);
 extern s32 func_02027e9c(void *state);
 extern void func_0206392c(void *state, s32 mode);
-extern void func_0207a594(void *state, s32 mode);
+extern void RetailRecordManager_SaveState(void *state, s32 mode);
 extern void RetailResourceDescriptorManager_SaveState(void *state, s32 mode);
 extern void func_020981f0(void *state, s32 mode);
 extern void RuntimeRecordTable_SaveActiveState(void *state, s32 mode);
@@ -52,7 +52,7 @@ extern u8 data_021f5f18[];
 extern u8 data_021f3d68[];
 extern u8 data_021e9e00[];
 extern void func_02063a00(void *state);
-extern void func_0207a6e0(void *state);
+extern void RetailRecordManager_LoadState(void *state);
 extern void RetailResourceDescriptorManager_LoadState(void *state);
 extern void func_02098298(void *state);
 extern void RuntimeRecordTable_LoadActiveState(void *state);
@@ -79,7 +79,7 @@ void RetailSaveContext_RestoreGameSingletons(void)
     void *progress;
 
     func_02063a00(data_021e9ac0);
-    func_0207a6e0(data_021f5128);
+    RetailRecordManager_LoadState(data_021f5128);
     RetailResourceDescriptorManager_LoadState(data_021f38fc);
     func_02098298(data_021f5f18);
     RuntimeRecordTable_LoadActiveState(data_021f3d68);
@@ -622,7 +622,7 @@ static u32 retail_save_crc32(const u8 *bytes, u32 size)
 static void retail_save_reset_game_state(s32 mode)
 {
     func_0206392c(data_021e9ac0, mode);
-    func_0207a594(data_021f5128, mode);
+    RetailRecordManager_SaveState(data_021f5128, mode);
     RetailResourceDescriptorManager_SaveState(data_021f38fc, mode);
     func_020981f0(data_021f5f18, mode);
     RuntimeRecordTable_SaveActiveState(data_021f3d68, mode);

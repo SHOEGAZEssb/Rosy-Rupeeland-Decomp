@@ -1,0 +1,5 @@
+{
+  "RecordSelection_GetChannelCount": "RecordSelection_GetChannelCount",
+  "func_0207a594": "RetailRecordManager_SaveState",
+  "func_0207a6e0": "RetailRecordManager_LoadState"
+}
