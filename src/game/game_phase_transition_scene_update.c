@@ -1,4 +1,5 @@
 #include "tingle/game_phase_transition_scene.h"
+#include "tingle/game_phase_runtime.h"
 #include "tingle/game_work.h"
 #include "tingle/heap.h"
 
@@ -8,7 +9,7 @@
 extern "C" {
 #endif
 extern const u8 gGamePhaseResumeSceneAllocationTag[];
-extern void *gGamePhaseRuntime;
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
 extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
@@ -16,7 +17,6 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern s32 DisplayBrightness_IsMainTransitionDecreasing(void);
 extern s32 DisplayBrightness_IsSubTransitionDecreasing(void);
-extern void GamePhaseRuntime_ApplyStagedAreaRequest(void *context);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 value);
 extern void *GamePhaseResumeScene_Init(void *allocation, s32 mode);
 #ifdef __cplusplus

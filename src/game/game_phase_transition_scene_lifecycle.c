@@ -6,7 +6,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5350;
 #ifdef __cplusplus
 }
 #endif
@@ -15,7 +14,7 @@ extern SceneVTable data_020d5350;
 GamePhaseTransitionScene *GamePhaseTransitionScene_Init(GamePhaseTransitionScene *self)
 {
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5350;
+    self->base.vtable = &gGamePhaseTransitionSceneVTable;
     self->base.value04 = 0x12;
     return self;
 }

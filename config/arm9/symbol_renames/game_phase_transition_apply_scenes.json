@@ -1,0 +1,12 @@
+{
+  "GamePhaseTransitionScene_Init": "GamePhaseTransitionScene_Init",
+  "GamePhaseTransitionScene_Destroy": "GamePhaseTransitionScene_Destroy",
+  "GamePhaseTransitionScene_DestroyAndFree": "GamePhaseTransitionScene_DestroyAndFree",
+  "GamePhaseTransitionScene_Update": "GamePhaseTransitionScene_Update",
+  "GamePhaseApplyScene_Init": "GamePhaseApplyScene_Init",
+  "GamePhaseApplyScene_Destroy": "GamePhaseApplyScene_Destroy",
+  "GamePhaseApplyScene_DestroyAndFree": "GamePhaseApplyScene_DestroyAndFree",
+  "GamePhaseApplyScene_Update": "GamePhaseApplyScene_Update",
+  "data_020d5350": "gGamePhaseTransitionSceneVTable",
+  "data_020d5384": "gGamePhaseApplySceneVTable"
+}

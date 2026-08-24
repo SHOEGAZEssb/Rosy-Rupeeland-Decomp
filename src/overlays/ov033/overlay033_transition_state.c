@@ -22,7 +22,9 @@ extern void GamePhaseRuntime_StageAreaRequest(void *context, s32 first, s32 seco
                          s32 fourth, s32 fifth);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                        void *heapContext);
-extern void *GamePhaseTransitionScene_Init(void *object);
+typedef struct GamePhaseTransitionScene GamePhaseTransitionScene;
+extern GamePhaseTransitionScene *GamePhaseTransitionScene_Init(
+    GamePhaseTransitionScene *object);
 extern void func_02092c8c(s32 first, s32 second);
 extern void func_ov033_021fd598(void *scene);
 extern void Type7Actor_EnterFlag40000State(void *object);
@@ -99,7 +101,7 @@ extern "C" s32 func_ov033_021fd738(void *scene)
             void *effect = Heap_Alloc(0x24, data_ov033_021fdec8, -4,
                                       gHeapContext);
             if (effect != 0)
-                GamePhaseTransitionScene_Init(effect);
+                GamePhaseTransitionScene_Init((GamePhaseTransitionScene *)effect);
             FIELD(s32, scene, 0xd0) = 2;
         } else {
             if ((FIELD(u16, group, 0x98) & 1) != 0 &&

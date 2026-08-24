@@ -6806,8 +6806,8 @@ data_020d5308 kind:data(any) addr:0x020d5308
 data_020d5314 kind:data(any) addr:0x020d5314
 data_020d5320 kind:data(any) addr:0x020d5320
 data_020d5334 kind:data(any) addr:0x020d5334
-data_020d5350 kind:data(any) addr:0x020d5350
-data_020d5384 kind:data(any) addr:0x020d5384
+gGamePhaseTransitionSceneVTable kind:data(any) addr:0x020d5350
+gGamePhaseApplySceneVTable kind:data(any) addr:0x020d5384
 gGamePhaseResumeSceneAllocationTag kind:data(any) addr:0x020d53b0
 data_020d53b8 kind:data(any) addr:0x020d53b8
 data_020d53d8 kind:data(any) addr:0x020d53d8

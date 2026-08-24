@@ -21,9 +21,14 @@ extern "C" {
 #endif
 typedef struct DebugPhaseSelector DebugPhaseSelector;
 extern DebugPhaseSelector *DebugPhaseSelector_Init(DebugPhaseSelector *object);
-extern void *GamePhaseTransitionScene_Init(void *object);
+typedef struct GamePhaseApplyScene GamePhaseApplyScene;
+extern GamePhaseApplyScene *GamePhaseApplyScene_Init(
+    GamePhaseApplyScene *object, void *pendingArea, u32 requestValue0,
+    u32 requestValue1, u32 unusedRequestValue3);
+typedef struct GamePhaseTransitionScene GamePhaseTransitionScene;
+extern GamePhaseTransitionScene *GamePhaseTransitionScene_Init(
+    GamePhaseTransitionScene *object);
 extern void *GamePhaseEffectScene_Init(void *object, s32 mode);
-extern void *GamePhaseApplyScene_Init(void *object, u32 a, u32 b, u32 c, u32 d);
 extern void *func_ov059_0220fd20(void *object, s32 mode, s32 value);
 extern void *func_0206ec68(void *object);
 extern s32 OverlayManager_GetGlobal(void);
@@ -87,7 +92,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
     if (*(s32 *)(b + 0x30e4) != -1) {
         object = allocRuntimeObject(0x24);
         if (object != 0)
-            GamePhaseTransitionScene_Init(object);
+            GamePhaseTransitionScene_Init((GamePhaseTransitionScene *)object);
 
         switch (*(s32 *)(b + 0x30e4)) {
         case 2:
@@ -125,7 +130,8 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
     if (*(u8 *)(b + 0x30cc) & 8) {
         object = allocRuntimeObject(0x30);
         if (object != 0)
-            GamePhaseApplyScene_Init(object, *(u32 *)(b + 0x30d0),
+            GamePhaseApplyScene_Init((GamePhaseApplyScene *)object,
+                          *(void **)(b + 0x30d0),
                           *(u32 *)(b + 0x30d4), *(u32 *)(b + 0x30d8),
                           *(u32 *)(b + 0x30e0));
         return 0;

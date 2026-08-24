@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern Scene_Destroy
 .extern Scene_Init
-.extern data_020d5384
+.extern gGamePhaseApplySceneVTable
 .extern gGamePhaseRuntime
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
@@ -27,7 +27,7 @@ GamePhaseApplyScene_Init:
     str r5, [r7, #0x28]
     str r4, [r7, #0x2c]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_0200c8f0: .word data_020d5384
+L_0200c8f0: .word gGamePhaseApplySceneVTable
 .size GamePhaseApplyScene_Init, . - GamePhaseApplyScene_Init
 
 .global GamePhaseApplyScene_Destroy

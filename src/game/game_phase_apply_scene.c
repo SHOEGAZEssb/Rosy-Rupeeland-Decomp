@@ -7,23 +7,24 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5384;
-extern void *gGamePhaseRuntime;
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #ifdef __cplusplus
 }
 #endif
 
-/* Initialize the Scene, retain its three constructor values, and return self. */
-GamePhaseApplyScene *GamePhaseApplyScene_Init(GamePhaseApplyScene *self, void *area,
-                                   u32 field28, u32 field2c)
+/* Initialize the Scene, retain its area and two request values, and return self. */
+GamePhaseApplyScene *GamePhaseApplyScene_Init(
+    GamePhaseApplyScene *self, void *pendingArea, u32 requestValue0,
+    u32 requestValue1, u32 unusedRequestValue3)
 {
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5384;
-    self->area = area;
-    self->field_28 = field28;
-    self->field_2c = field2c;
+    self->base.vtable = &gGamePhaseApplySceneVTable;
+    self->pendingArea = pendingArea;
+    self->requestValue0 = requestValue0;
+    self->requestValue1 = requestValue1;
+    (void)unusedRequestValue3;
     return self;
 }
 
@@ -51,7 +52,7 @@ GamePhaseApplyScene *GamePhaseApplyScene_DestroyAndFree(GamePhaseApplyScene *sel
  */
 s32 GamePhaseApplyScene_Update(GamePhaseApplyScene *self)
 {
-    GamePhaseRuntime *runtime = (GamePhaseRuntime *)gGamePhaseRuntime;
+    GamePhaseRuntime *runtime = gGamePhaseRuntime;
 
     switch (self->base.value08) {
     case 0:
@@ -62,8 +63,8 @@ s32 GamePhaseApplyScene_Update(GamePhaseApplyScene *self)
         self->base.value08++;
         break;
     case 2:
-        GamePhaseRuntime_CreateSecondaryActorSubsystem(runtime, self->area, 1);
-        GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, self->area, 1);
+        GamePhaseRuntime_CreateSecondaryActorSubsystem(runtime, self->pendingArea, 1);
+        GamePhaseRuntime_RefreshAreaAuxiliaryObject(runtime, self->pendingArea, 1);
         GamePhaseAreaScene_SetEnabled(*(void **)((u8 *)runtime + 0x2fb8), 1);
         if (self != 0)
             self->base.vtable->destroyAndFree(&self->base);
