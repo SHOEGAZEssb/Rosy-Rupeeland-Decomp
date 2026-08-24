@@ -55,6 +55,7 @@ extern void *RetailRecordManager_Construct(void *manager);
 extern void *gGameWork;
 extern void GameWork_SetFlag(void *work, s32 flag);
 extern s32 RecordSelection_HasAvailableEntry(void *category, s32 bank);
+extern s32 RecordSelection_GetChannelCount(void *category, s32 channel);
 extern void func_0207c460(void *slot, u16 id);
 extern void func_0207ad90(void *category, void *slot);
 
@@ -227,6 +228,25 @@ s32 RetailRecordManager_CategoryHasAvailableEntry(void *manager_pointer,
 {
     void *category = *(void **)((u8 *)manager_pointer + selector * 4);
     return RecordSelection_HasAvailableEntry(category, 1);
+}
+
+/* Apply each bank-one record's default value at metadata +8 to its slot. */
+void RetailRecordManager_ApplyDefaultValues(void *manager_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u32 category_index;
+
+    for (category_index = 0; category_index < 18; ++category_index) {
+        u8 *category = *(u8 **)(manager + category_index * 4);
+        u32 index;
+
+        for (index = 0; index < (u32)RecordSelection_GetChannelCount(category, 1);
+             ++index) {
+            u8 *slot = *(u8 **)(category + 0x1c) + index * 0x10;
+            u8 *record = *(u8 **)(slot + 4);
+            RecordDescriptor_SetValue(slot, *(s32 *)(record + 8));
+        }
+    }
 }
 
 /* Mark the save-owned discovery bit for a borrowed category slot. The bit

@@ -35,7 +35,7 @@ void func_0207e1a4(void *category)
 }
 
 /* Retail category post-load hook 0x0207A820 is intentionally empty. */
-void func_0207a820(void *category)
+void RetailRecordCategory_PostLoadNoOp(void *category)
 {
     (void)category;
 }
