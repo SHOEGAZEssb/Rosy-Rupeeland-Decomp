@@ -83,7 +83,7 @@ void RetailResourceDescriptorManager_DestroyNoOp(void *object)
 }
 
 /* Clear four two-word resource owners at the exact 0x0207A064 offsets. */
-void func_0207a064(void *object)
+void RetailTextDatabaseManager_Init(void *object)
 {
     u8 *bytes = (u8 *)object;
 
@@ -91,6 +91,45 @@ void func_0207a064(void *object)
     memset(bytes + 0x088, 0, 8);
     memset(bytes + 0x154, 0, 8);
     memset(bytes + 0x1b0, 0, 8);
+}
+
+extern void LanguageLookupDatabase_Destroy(void *object);
+extern void ModalMessageDatabase_Destroy(void *object);
+extern void RetailSelectionDatabase_Destroy(void *object);
+extern void RetailTextTable_Destroy(void *object);
+
+void *LanguageLookupDatabase_DestroyIfLoaded(void *object)
+{
+    if (*(void **)object != 0) LanguageLookupDatabase_Destroy(object);
+    return object;
+}
+
+void *ModalMessageDatabase_DestroyIfLoaded(void *object)
+{
+    if (*(void **)object != 0) ModalMessageDatabase_Destroy(object);
+    return object;
+}
+
+void *RetailSelectionDatabase_DestroyIfLoaded(void *object)
+{
+    if (*(void **)object != 0) RetailSelectionDatabase_Destroy(object);
+    return object;
+}
+
+void *RetailTextTable_DestroyIfLoaded(void *object)
+{
+    if (*(void **)object != 0) RetailTextTable_Destroy(object);
+    return object;
+}
+
+void *RetailTextDatabaseManager_Destroy(void *object)
+{
+    u8 *bytes = (u8 *)object;
+    RetailTextTable_DestroyIfLoaded(bytes + 0x1b0);
+    RetailSelectionDatabase_DestroyIfLoaded(bytes + 0x154);
+    ModalMessageDatabase_DestroyIfLoaded(bytes + 0x88);
+    LanguageLookupDatabase_DestroyIfLoaded(bytes);
+    return object;
 }
 
 /* Initialize each of the two smaller resource-owner globals. */

@@ -17,7 +17,7 @@
 .extern func_0206fbb0
 .extern func_0206fd78
 .extern RetailResourceDescriptorManager_InitNoOp
-.extern func_0207a064
+.extern RetailTextDatabaseManager_Init
 .extern func_0207a13c
 .extern func_0207a16c
 .extern func_0207c38c
@@ -94,7 +94,7 @@
 .extern GraphicsSpriteState_Destroy
 .extern GraphicsSpriteState_DestroyGlobalPool
 .extern RetailResourceDescriptorManager_DestroyNoOp
-.extern func_0207a10c
+.extern RetailTextDatabaseManager_Destroy
 .extern func_0207a14c
 .extern func_0207a17c
 .extern func_0207c424
@@ -399,7 +399,7 @@ __sinit_020c16cc: ; 0x020c16cc
 __sinit_020c16f8: ; 0x020c16f8
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c1748
-    bl func_0207a064
+    bl RetailTextDatabaseManager_Init
     ldr r0, .L_020c1748
     ldr r1, .L_020c174c
     ldr r2, .L_020c1750
@@ -418,7 +418,7 @@ __sinit_020c16f8: ; 0x020c16f8
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c1748: .word data_021f3ecc
-.L_020c174c: .word func_0207a10c
+.L_020c174c: .word RetailTextDatabaseManager_Destroy
 .L_020c1750: .word data_021f3d44
 .L_020c1754: .word gLanguageDatabase
 .L_020c1758: .word func_0207a14c

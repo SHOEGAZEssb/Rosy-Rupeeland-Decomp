@@ -1,0 +1,8 @@
+{
+  "func_0207a064": "RetailTextDatabaseManager_Init",
+  "func_0207a08c": "LanguageLookupDatabase_DestroyIfLoaded",
+  "func_0207a0ac": "ModalMessageDatabase_DestroyIfLoaded",
+  "func_0207a0cc": "RetailSelectionDatabase_DestroyIfLoaded",
+  "func_0207a0ec": "RetailTextTable_DestroyIfLoaded",
+  "func_0207a10c": "RetailTextDatabaseManager_Destroy"
+}

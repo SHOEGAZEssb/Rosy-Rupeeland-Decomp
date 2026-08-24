@@ -54,8 +54,8 @@ extern void GraphicsSpriteState_Destroy(void *);
 extern void GraphicsSpriteState_DestroyGlobalPool(void *);
 extern void RetailResourceDescriptorManager_InitNoOp(void *);
 extern void RetailResourceDescriptorManager_DestroyNoOp(void *);
-extern void func_0207a064(void *);
-extern void func_0207a10c(void *);
+extern void RetailTextDatabaseManager_Init(void *);
+extern void RetailTextDatabaseManager_Destroy(void *);
 extern void func_0207a13c(void *);
 extern void func_0207a14c(void *);
 extern void func_0207a16c(void *);
@@ -321,14 +321,14 @@ void __sinit_020c16cc(void)
 /*
  * No inputs. Construct three globals in retail order: data_021f3ecc,
  * gLanguageDatabase, and data_021f3d68. Register their respective destructors
- * func_0207a10c, func_0207a14c, and func_0207a17c with records
+ * RetailTextDatabaseManager_Destroy, func_0207a14c, and func_0207a17c with records
  * data_021f3d44/data_021f3d50/data_021f3d5c. Global lifetimes change; no value
  * is returned and no direct hardware effect occurs.
  */
 void __sinit_020c16f8(void)
 {
-    func_0207a064(data_021f3ecc);
-    __register_global_object(data_021f3ecc, func_0207a10c, data_021f3d44);
+    RetailTextDatabaseManager_Init(data_021f3ecc);
+    __register_global_object(data_021f3ecc, RetailTextDatabaseManager_Destroy, data_021f3d44);
     func_0207a13c(gLanguageDatabase);
     __register_global_object(gLanguageDatabase, func_0207a14c, data_021f3d50);
     func_0207a16c(data_021f3d68);
