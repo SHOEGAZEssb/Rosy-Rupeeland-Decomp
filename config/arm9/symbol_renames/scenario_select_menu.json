@@ -1,0 +1,20 @@
+{
+  "func_02082db4": "ScenarioSelectMenu_Construct",
+  "func_02082e9c": "ScenarioSelectMenu_Destroy",
+  "func_02082ef8": "ScenarioSelectMenu_Delete",
+  "func_02082f5c": "ScenarioSelectMenu_PopulateAllScenarios",
+  "func_02083138": "ScenarioSelectMenu_PopulateCharacters",
+  "func_020831bc": "ScenarioSelectMenu_PopulateCharacterScenarios",
+  "func_020833a4": "ScenarioSelectMenu_FindCharacterIdByName",
+  "func_02083424": "ScenarioSelectMenu_Update",
+  "func_0208372c": "Scenario_GetStatus",
+  "data_020efa24": "gScenarioSelectMenuRttiName",
+  "data_020efa5c": "gScenarioSelectMenuVTable",
+  "data_020ef724": "gScenarioCharacterNameTable",
+  "data_020f1548": "gScenarioCharacterGroupTable",
+  "data_020f154c": "gScenarioCharacterGroupListView",
+  "data_020f1678": "gScenarioActionTables",
+  "data_020f19a4": "gScenarioCompletionPredicates",
+  "data_020f1cd0": "gScenarioRunningPredicates",
+  "data_020f1ffc": "gScenarioNameTable"
+}

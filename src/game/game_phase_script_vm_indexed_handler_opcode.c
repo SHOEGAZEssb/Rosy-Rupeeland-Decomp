@@ -1,41 +1,43 @@
 #include "tingle/game_phase_script_vm.h"
 
 /*
- * Query or invoke one entry in a recovered global handler table selected by a
- * script-provided index.
+ * Query or invoke one entry in the recovered scenario handler table selected
+ * by a script-provided index.
  */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void **data_020f1678[];
-extern s32 func_0208372c(s32 index);
+extern void **gScenarioActionTables[];
+extern s32 Scenario_GetStatus(s32 scenario_index);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pop handler index and mode.  Modes 1/2 store whether the indexed state equals
- * 2/1 respectively as the VM result; modes 3/4 invoke function slot 1/0 of the indexed handler
- * record.  Mode 0 and unsupported modes do nothing.  Return zero.
+ * Pop scenario index and mode. Modes 1/2 store whether the scenario is complete
+ * or running respectively; modes 3/4 invoke function slot 1/0 of its action
+ * record. Mode 0 and unsupported modes do nothing. Return zero.
  */
 s32 func_020192f4(GamePhaseActorScriptVm *self)
 {
     typedef void (*Handler)(void);
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 scenario_index = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     switch (mode) {
     case 1:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0208372c(index) == 2);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(
+            &self->base, Scenario_GetStatus(scenario_index) == 2);
         break;
     case 2:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0208372c(index) == 1);
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(
+            &self->base, Scenario_GetStatus(scenario_index) == 1);
         break;
     case 3:
-        ((Handler)data_020f1678[index][1])();
+        ((Handler)gScenarioActionTables[scenario_index][1])();
         break;
     case 4:
-        ((Handler)data_020f1678[index][0])();
+        ((Handler)gScenarioActionTables[scenario_index][0])();
         break;
     }
     return 0;

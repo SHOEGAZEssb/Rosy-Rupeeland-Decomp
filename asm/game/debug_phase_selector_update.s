@@ -7,7 +7,7 @@
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern Heap_Alloc
-.extern func_02082db4
+.extern ScenarioSelectMenu_Construct
 .extern ActorRuntimeGridCanvas_DrawGrid
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GamePhase_Start
@@ -79,7 +79,7 @@ L_0200c400:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200c59c
-    bl func_02082db4
+    bl ScenarioSelectMenu_Construct
     b L_0200c59c
 L_0200c454:
     tst r3, #0x1

@@ -18,7 +18,7 @@ extern void *gSoundContext;
 extern void *gRuntimeContext;
 extern u8 data_021f5f18[];
 extern u8 data_021e9e00[];
-extern u8 data_020f1678[];
+extern u8 gScenarioActionTables[];
 extern const u8 data_ov032_02202220[];
 
 #ifdef __cplusplus
@@ -135,7 +135,7 @@ extern "C" s32 func_ov032_02200618(void *scene)
             GameWork_SetFlag(gGameWork, 0x398);
             RetailPhaseDatabase_UnlockById(data_021e9e00, 10);
             typedef void (*Callback)(void);
-            ((Callback)FIELD(void *, FIELD(void *, data_020f1678, 0x70), 4))();
+            ((Callback)FIELD(void *, FIELD(void *, gScenarioActionTables, 0x70), 4))();
             const u32 ids[] = {0x68, 0x36, 0x35, 0x34, 0x2e};
             for (u32 i = 0; i < 5; ++i) RetailSelectionHistory_InsertUniqueId(data_021f5f18, ids[i]);
         }

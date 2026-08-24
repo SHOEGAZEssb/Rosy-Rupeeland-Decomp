@@ -14,7 +14,7 @@ extern void DebugText_BeginFrame(void);
 extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
 extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern void *func_02082db4(void *allocation);
+extern void *ScenarioSelectMenu_Construct(void *allocation);
 #ifdef __cplusplus
 }
 #endif
@@ -58,7 +58,7 @@ s32 DebugPhaseSelector_Update(DebugPhaseSelector *self)
             debugObject = Heap_Alloc(0xb8, (const char *)data_020d52f8, 4,
                                      &gHeapContext);
             if (debugObject != 0)
-                func_02082db4(debugObject);
+                ScenarioSelectMenu_Construct(debugObject);
         } else if (pressed & 1) {
             self->selectedPhase = self->grid.pageIndex * 90 +
                                   self->row * 10 + self->column;

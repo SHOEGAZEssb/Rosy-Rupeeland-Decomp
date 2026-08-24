@@ -6,7 +6,7 @@
 .extern GameWork_TestFlag
 .extern GraphicsResourceSet_Load
 .extern Sound_Play
-.extern data_020f1678
+.extern gScenarioActionTables
 .extern data_020f4e18
 .extern data_021e9e00
 .extern data_021f5f18
@@ -543,7 +543,7 @@ L_02200d7c: .word data_021f5f18
 L_02200d80: .word gGameWork
 L_02200d84: .word 0x15a
 L_02200d88: .word data_021e9e00
-L_02200d8c: .word data_020f1678
+L_02200d8c: .word gScenarioActionTables
 L_02200d90: .word gSoundContext
 L_02200d94: .word gRuntimeContext
 L_02200d98: .word data_ov032_02202220
