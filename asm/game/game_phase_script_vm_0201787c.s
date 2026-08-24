@@ -3,7 +3,7 @@
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_0207a40c
+.extern RetailRecordManager_IsSelectorDiscovered
 .global func_0201787c
 func_0201787c:
     stmdb sp!, {r3, r4, r5, lr}
@@ -13,7 +13,7 @@ func_0201787c:
     mov r1, r0
     ldr r0, [r2]
     mov r4, #0
-    bl func_0207a40c
+    bl RetailRecordManager_IsSelectorDiscovered
     cmp r0, #0
     movne r4, #1
     mov r0, r5

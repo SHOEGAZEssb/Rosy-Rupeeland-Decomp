@@ -54,6 +54,7 @@ extern void RetailRecordDatabase_AppendFinalRecord(void *database);
 extern void *RetailRecordManager_Construct(void *manager);
 extern void *gGameWork;
 extern void GameWork_SetFlag(void *work, s32 flag);
+extern s32 RecordSelection_HasAvailableEntry(void *category, s32 bank);
 
 /* Copy the mutable descriptor fields retained by the manager's ordered list.
  * Both records are borrowed 16-byte slots; identity storage at +0 is retained. */
@@ -202,6 +203,28 @@ u32 RetailRecord_GetCategoryBank(u16 id)
 {
     u8 *record = RetailRecordDatabase_FindById(data_021f5138, id);
     return ((*(u32 *)(record + 0x0c) >> 8) & 0x0f) == 1 ? 0 : 1;
+}
+
+/* Test the save-owned discovery bit indexed by the selected record. */
+s32 RetailRecordManager_IsSelectorDiscovered(void *context, s32 selector)
+{
+    u8 *record;
+    u32 index;
+
+    (void)context;
+    record = (u8 *)RetailRecordDatabase_FindById(data_021f5138,
+                                                 (u16)selector);
+    index = *(u16 *)(record + 2);
+    return (((u8 *)gGameWork)[0xee8 + index / 8] &
+            (u8)(1u << (index % 8))) != 0;
+}
+
+/* Test whether category `selector` has an available entry in bank one. */
+s32 RetailRecordManager_CategoryHasAvailableEntry(void *manager_pointer,
+                                                  s32 selector)
+{
+    void *category = *(void **)((u8 *)manager_pointer + selector * 4);
+    return RecordSelection_HasAvailableEntry(category, 1);
 }
 
 /* Mark the save-owned discovery bit for a borrowed category slot. The bit

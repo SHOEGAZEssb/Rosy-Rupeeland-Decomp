@@ -6,20 +6,20 @@
 extern "C" {
 #endif
 extern void *data_021f5128;
-extern void *func_0207a40c(void *context, s32 selector);
+extern void *RetailRecordManager_IsSelectorDiscovered(void *context, s32 selector);
 extern void *RetailRecordManager_IsSelectorAvailable(void *context, s32 selector);
-extern void *func_0207a494(void *context, s32 selector);
+extern void *RetailRecordManager_CategoryHasAvailableEntry(void *context, s32 selector);
 extern void *func_0207a99c(void *context, s32 first, s32 second);
 extern u32 func_0207a4a8(void *context, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
 
-/* Pop a selector, test func_0207a494 for a non-null result, store that Boolean as the VM result, and return zero. */
+/* Pop a selector, test RetailRecordManager_CategoryHasAvailableEntry for a non-null result, store that Boolean as the VM result, and return zero. */
 s32 func_02017788(GamePhaseActorScriptVm *self)
 {
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0207a494(data_021f5128, selector) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, RetailRecordManager_CategoryHasAvailableEntry(data_021f5128, selector) != 0);
     return 0;
 }
 
@@ -33,11 +33,11 @@ s32 func_020177c8(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop a selector, test func_0207a40c for a non-null result, store that Boolean as the VM result, and return zero. */
+/* Pop a selector, test RetailRecordManager_IsSelectorDiscovered for a non-null result, store that Boolean as the VM result, and return zero. */
 s32 func_0201787c(GamePhaseActorScriptVm *self)
 {
     s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0207a40c(data_021f5128, selector) != 0);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, RetailRecordManager_IsSelectorDiscovered(data_021f5128, selector) != 0);
     return 0;
 }
 
