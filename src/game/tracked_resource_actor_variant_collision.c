@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *gActorRuntimeCollection;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
-extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 extern void ActorCollection_QueueActorForRemoval(void *handle, void *actor);
@@ -50,7 +50,7 @@ void TrackedResourceActorType22And25_HandleCollision(void *actor, void *target, 
         virtual_function(target, 0xb8)(target, vector);
         VecFx32Object_Destroy(vector);
     }
-    ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
+    VecFx32Object_SetComponents((u8 *)actor + 0x38, 0, 0, 0);
     FIELD(u16, actor, 0x1f0) = (FIELD(u16, actor, 0x1f0) & 0x8000) | 2;
     FIELD(u32, actor, 0x10) |= 0x1f0000;
     FIELD(u16, actor, 0x1f8) = 0;

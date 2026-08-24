@@ -17,24 +17,24 @@ typedef void (*ActorRuntimeDispatchMethod)(void *object, s32 reason,
                                            void *value);
 typedef void (*ActorRuntimeFinishMethod)(void *object, s32 reason);
 
-/* Store an address-derived pending value at offset 0x134; returns no value. */
+/* Stage a nonzero value for a later owned-queue append. */
 void ActorRuntimeCollection_SetPendingValue(ActorRuntimeCollection *self, u32 value)
 {
-    self->field_134 = value;
+    self->pendingQueueValue = value;
 }
 
 /*
- * Append field 0x134 to the owned queue when the queue has at most eight
- * entries and the field is nonzero. Returns no value; a 12-byte node may be
- * allocated through ActorRuntimeOwnedList_Append and no hardware is touched directly.
+ * Append the staged value when the queue has at most eight entries and the
+ * value is nonzero. A 12-byte node may be allocated by the append helper.
  */
 void ActorRuntimeCollection_QueuePendingValue(ActorRuntimeCollection *self)
 {
     if (self->ownedList.count > 8)
         return;
-    if (self->field_134 == 0)
+    if (self->pendingQueueValue == 0)
         return;
-    ActorRuntimeOwnedList_Append(&self->ownedList, (void *)self->field_134);
+    ActorRuntimeOwnedList_Append(&self->ownedList,
+                                 (void *)self->pendingQueueValue);
 }
 
 /*
@@ -132,5 +132,6 @@ s32 ActorRuntimeCollection_IsQueuedValueMissing(const ActorRuntimeCollection *se
 /* Return selection flag bit 1 OR queue-nonempty bit 0 without changing state. */
 u32 ActorRuntimeCollection_GetBusyState(const ActorRuntimeCollection *self)
 {
-    return (self->flags & 2) | (self->ownedList.count != 0);
+    return (self->flags & ACTOR_RUNTIME_COLLECTION_HAS_SELECTED_OBJECT) |
+           (self->ownedList.count != 0);
 }

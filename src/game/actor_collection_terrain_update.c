@@ -50,7 +50,7 @@ extern "C" {
 extern s32 ActorRuntimeFlags_Test(void *, s32);
 extern s32 Actor_GetCachedTerrainHeight(TerrainUpdateActor *);
 extern u32 Actor_QueryTerrainCell(TerrainUpdateActor *, s32, s32);
-extern void ActorRuntimeTriple_Assign(void *, s32, s32, s32);
+extern void VecFx32Object_SetComponents(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -63,8 +63,8 @@ static void restoreTerrainActor(
     actor->cachedTerrainHeightFx32_1dc = previousCachedTerrainHeightFx32;
     actor->field_3c = 0;
     actor->field_40 = 0;
-    ActorRuntimeTriple_Assign((u8 *)actor + 0x88, 0, 0, 0);
-    ActorRuntimeTriple_Assign((u8 *)actor + 0x98, 0, 0, 0);
+    VecFx32Object_SetComponents((u8 *)actor + 0x88, 0, 0, 0);
+    VecFx32Object_SetComponents((u8 *)actor + 0x98, 0, 0, 0);
     actor->flags_d0 |= 0x40;
 }
 

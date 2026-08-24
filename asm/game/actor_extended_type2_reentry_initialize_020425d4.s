@@ -5,7 +5,7 @@
 .extern gGamePhaseRuntime
 .extern gActorExtendedType2ReentryAngleAccumulator
 .extern ActorMotionAreaFollower_GetPosition
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_SetPosition
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -24,17 +24,17 @@ ActorExtendedType2_InitializeReentryState: ; 0x020425d4
     mov r3, r1
     add r0, r4, #0x38
     str r1, [r4, #0x264]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     add r0, r4, #0x98
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldr r0, [r4, #0x1fc]
     cmp r0, #0x0
     bgt .L_02042648

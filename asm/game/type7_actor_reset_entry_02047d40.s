@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_reset.c.
 .text
 .extern GameWork_SetFlag
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Type7Actor_ResetInteractionState
 .extern gGameWork
 .global Type7Actor_ResetMotionAndCooldown
@@ -33,17 +33,17 @@ Type7Actor_ResetMotionAndCooldown: ; 0x02047d40
     mov lr, #0xf
     add r0, r4, #0x38
     strh lr, [ip, #0xa6]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r4, #0x98
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldmia sp!, {r4, pc}
 .L_02047dd0: .word gGameWork
 .L_02047dd4: .word 0x417

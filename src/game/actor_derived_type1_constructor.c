@@ -10,7 +10,7 @@ extern void *ActorDerivedRuntime_Init(void *self, const void *descriptor);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Init(void *vector);
 extern void Type7MarkerPresentation_Init(void *state, void *owner);
-extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
+extern void VecFx32Object_SetComponents(void *state, s32 first, s32 second, s32 third);
 #ifdef __cplusplus
 }
 #endif
@@ -63,7 +63,7 @@ void *ActorDerivedType1_Init(void *self, const void *descriptor)
     *(u16 *)(actor + 0x236) = 0;
     *(u32 *)(actor + 0xd0) &= ~4;
     *(u32 *)(actor + 0x14) |= 0x100000;
-    ActorRuntimeTriple_Assign(actor + 0x254, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x254, 0, 0, 0);
     *(u16 *)(actor + 0x264) = 0;
     actor[0x26a] = 0xff;
     return actor;

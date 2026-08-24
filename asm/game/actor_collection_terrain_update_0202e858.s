@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_terrain_update.c.
 .text
 .extern gActorRuntimeFlags
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_QueryTerrainCell
 .extern ActorRuntimeFlags_Test
@@ -60,12 +60,12 @@ ActorCollection_UpdateCategory3TerrainActors: ; 0x0202e858
     mov r2, r1
     mov r3, r1
     str r1, [r9, #0x3c]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r9, #0x98
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldr r0, [r9, #0xd0]
     orr r0, r0, #0x40
     str r0, [r9, #0xd0]
@@ -167,12 +167,12 @@ ActorCollection_UpdateCategory3TerrainActors: ; 0x0202e858
     mov r2, r1
     mov r3, r1
     str r1, [r9, #0x3c]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r9, #0x98
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldr r0, [r9, #0xd0]
     orr r0, r0, #0x40
     str r0, [r9, #0xd0]

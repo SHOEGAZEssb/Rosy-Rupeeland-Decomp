@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_orientation_animation_control.c.
 .text
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern func_020ae024
 
     .global Actor_SetDirectionFromVector
@@ -32,12 +32,12 @@ Actor_SetDirectionFromVector: ; 0x02034b60
     mov r3, r1
     add r0, r4, #0x38
     strh r1, [ip, #0xea]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldmia sp!, {r4, pc}
     .size Actor_SetDirectionFromVector, . - Actor_SetDirectionFromVector
 

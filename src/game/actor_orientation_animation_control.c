@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 extern u32 func_020ae024(s32 y, s32 x);
-extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
+extern void VecFx32Object_SetComponents(void *state, s32 first, s32 second, s32 third);
 extern void GraphicsSpriteState_SetAnimationIndex(void *attachment, u32 animation);
 #ifdef __cplusplus
 }
@@ -44,8 +44,8 @@ void Actor_SetDirectionFromVector(void *self, s32 x, s32 y)
     actor[0xd5] = 0xff;
     actor[0xd4] = (u8)(((angle + 0x1000) & 0xffff) >> 13);
     *(u16 *)(actor + 0x1ea) = 0;
-    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
-    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x38, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
 }
 
 /* Set or clear attachment flag 0x40. */

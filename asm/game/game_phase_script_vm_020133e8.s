@@ -2,7 +2,7 @@
 .text
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_SetVelocity
 
     .global GamePhaseActorScriptVm_WaitForMovementCompletion
@@ -29,17 +29,17 @@ GamePhaseActorScriptVm_WaitForMovementCompletion: ; 0x020133e8
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x38
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x98
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, sp, #0x0
     mov r2, r1

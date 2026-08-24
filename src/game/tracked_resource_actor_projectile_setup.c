@@ -9,7 +9,7 @@ extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_InitSum(void *destination, u32 transform, const void *vector);
-extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *vector, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -35,7 +35,7 @@ void TrackedResourceActorType24_SetupFromRecord(void *actor, const void *record,
     VecFx32Object_Assign((u8 *)actor + 0x18, position);
     VecFx32Object_Destroy(position);
     VecFx32Object_Destroy(source);
-    ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
+    VecFx32Object_SetComponents((u8 *)actor + 0x38, 0, 0, 0);
     FIELD(u32, actor, 0xd0) |= 0x2000;
     FIELD(u32, actor, 0x5c) = (FIELD(u32, actor, 0x5c) & 0xffff0000) | 8;
 }

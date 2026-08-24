@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_destination_motion.c.
 .extern gFx32CosSinTable
 .extern VecFx32Object_Assign
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Type7Actor_CompleteDestinationMotion
 .extern Fx32Vector2_Magnitude
 .extern func_020adae4
@@ -48,17 +48,17 @@ Type7Actor_UpdateDestinationMotion: ; 0x0204991c
     mov r3, r1
     add r0, r4, #0x38
     strh ip, [r4, #0xd6]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     add r0, r4, #0x98
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r0, r7
     mov r1, r6
     bl func_020ae024

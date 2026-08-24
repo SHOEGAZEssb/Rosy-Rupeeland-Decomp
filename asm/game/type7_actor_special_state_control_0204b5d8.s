@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_special_state_control.c.
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern AttachmentController_SetEnabled
 .extern Type7Actor_GetStateCode
 .extern Type7Actor_UpdateAttachmentControllerAnimation
@@ -43,17 +43,17 @@ Type7Actor_EnterSpecialPresentationState: ; 0x0204b5d8
     orr ip, r0, #0x20
     add r0, r4, #0x38
     strh ip, [lr, #0x24]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x98
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldmia sp!, {r4, pc}
 .size Type7Actor_EnterSpecialPresentationState, . - Type7Actor_EnterSpecialPresentationState
 
@@ -109,17 +109,17 @@ Type7Actor_StartAnimation19Interaction: ; 0x0204b6ec
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x98
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     cmp r5, #0x0
     movne r0, #0x1
     str r6, [r4, #0x110]

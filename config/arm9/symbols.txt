@@ -500,7 +500,7 @@ ActorRuntimeCollection_QueueValue kind:function(arm,size=0x1c) addr:0x0200b164
 ActorRuntimeCollection_DispatchQueuedValue kind:function(arm,size=0xbc) addr:0x0200b180
 ActorRuntimeCollection_IsQueuedValueMissing kind:function(arm,size=0x58) addr:0x0200b23c
 ActorRuntimeCollection_GetBusyState kind:function(arm,size=0x2c) addr:0x0200b294
-ActorRuntimeTriple_Assign kind:function(arm,size=0x10) addr:0x0200b2c0
+VecFx32Object_SetComponents kind:function(arm,size=0x10) addr:0x0200b2c0
 ActorRuntimeScene_Init kind:function(arm,size=0x14c) addr:0x0200b2d0
 ActorRuntimeScene_Destroy kind:function(arm,size=0x150) addr:0x0200b41c
 ActorRuntimeScene_DestroyAndFree kind:function(arm,size=0x158) addr:0x0200b56c
@@ -6760,8 +6760,8 @@ data_020d441c kind:data(any) addr:0x020d441c
 data_020d4428 kind:data(any) addr:0x020d4428
 data_020d4434 kind:data(any) addr:0x020d4434
 data_020d4440 kind:data(any) addr:0x020d4440
-data_020d4458 kind:data(any) addr:0x020d4458
-data_020d4468 kind:data(any) addr:0x020d4468
+gActorRuntimeOwnedListVTable kind:data(any) addr:0x020d4458
+gActorRuntimeListBaseVTable kind:data(any) addr:0x020d4468
 data_020d4470 kind:data(any) addr:0x020d4470
 data_020d448c kind:data(any) addr:0x020d448c
 gActorRuntimeSceneAllocationTag kind:data(any) addr:0x020d44b8

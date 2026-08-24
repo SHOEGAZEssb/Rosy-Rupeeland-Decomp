@@ -6,7 +6,7 @@
 .extern GameWork_TestFlag
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern ActorDerivedType1_ClearStateVectorTimers
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Type7Actor_EnterSpecialPresentationState
 .extern ActorRuntimeScene_ActivateFlaggedActors
 .extern GamePhaseRuntime_GetActorCollection
@@ -63,17 +63,17 @@ L_0200b364:
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     add r0, r4, #0x98
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldr r0, L_0200b40c
     ldr r0, [r0, #0x0]
     add r0, r0, #0x2000

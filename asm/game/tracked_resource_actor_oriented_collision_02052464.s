@@ -3,7 +3,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern ActorCollection_QueueActorForRemoval
 .extern VecFx32Object_ScaleInPlaceRounded
 .extern Actor_GetOwningCollection
@@ -59,7 +59,7 @@ TrackedResourceActorType28_HandleCollision:
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x38
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     add r1, r5, #0x100
     mov r0, #0x8000
     ldrh r2, [r1, #0xf0]

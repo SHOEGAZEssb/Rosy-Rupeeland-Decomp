@@ -3,7 +3,7 @@
 .extern data_020df3c8
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern ActorDerivedRuntime_Init
 .extern Type7MarkerPresentation_Init
 
@@ -75,7 +75,7 @@ ActorDerivedType1_Init: ; 0x02035060
     orr r3, r3, #0x100000
     str r3, [r4, #0x14]
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r4, #0x200
     strh r1, [r0, #0x64]

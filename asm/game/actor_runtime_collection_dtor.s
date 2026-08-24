@@ -3,7 +3,7 @@
 .text
 .extern ActorRuntimeOwnedList_Clear
 .extern GamePhaseActorScriptVm_Destroy
-.extern data_020d4468
+.extern gActorRuntimeListBaseVTable
 .global ActorRuntimeCollection_Destroy
 ActorRuntimeCollection_Destroy:
     stmdb sp!, {r4, lr}
@@ -20,6 +20,6 @@ ActorRuntimeCollection_Destroy:
     bl GamePhaseActorScriptVm_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200ae48: .word data_020d4468
+L_0200ae48: .word gActorRuntimeListBaseVTable
 .size ActorRuntimeCollection_Destroy, . - ActorRuntimeCollection_Destroy
 

@@ -54,9 +54,9 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
 
     *(u32 *)(active + 0x230) &= ~4;
     ActorDerivedType1_ClearStateVectorTimers(active);
-    ActorRuntimeTriple_Assign(active + 0x38, 0, 0, 0);
-    ActorRuntimeTriple_Assign(active + 0x88, 0, 0, 0);
-    ActorRuntimeTriple_Assign(active + 0x98, 0, 0, 0);
+    VecFx32Object_SetComponents(active + 0x38, 0, 0, 0);
+    VecFx32Object_SetComponents(active + 0x88, 0, 0, 0);
+    VecFx32Object_SetComponents(active + 0x98, 0, 0, 0);
 
     context = *(void **)(root + 0x2ea8);
     if (context != 0)

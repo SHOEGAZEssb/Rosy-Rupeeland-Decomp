@@ -5,7 +5,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_UpdatePresentation
 .extern Actor_RefreshCachedTerrainHeight
 .extern Actor_ApplyMotionImpulse
@@ -31,12 +31,12 @@ Type7Actor_ResetBaseTransformAndMotion: ; 0x020464f4
     mov r3, r1
     str r0, [r4, #0x24]
     add r0, r4, #0x38
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     add r0, r4, #0x88
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldmia sp!, {r4, pc}
 
 .size Type7Actor_ResetBaseTransformAndMotion, . - Type7Actor_ResetBaseTransformAndMotion

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_derived_type1_runtime_reset.c.
 .text
 .extern VecFx32Object_Assign
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_ResetToBaseState
 
@@ -17,17 +17,17 @@ ActorDerivedType1_ResetRuntimeState: ; 0x0203936c
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     add r0, r4, #0x98
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r0, r4
     mov r1, #0x0
     mov r2, #0x1000

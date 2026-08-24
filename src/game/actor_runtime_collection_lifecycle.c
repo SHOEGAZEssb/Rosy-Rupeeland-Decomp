@@ -5,26 +5,22 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d4458[];
-extern const u8 data_020d4468[];
-extern void GamePhaseActorScriptVm_Init(void *container);
-extern void GamePhaseActorScriptVm_Destroy(void *container);
 extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Initialize the collection flags, its two address-derived container objects,
+ * Initialize the collection flags, its two embedded actor-script VM objects,
  * and the owned-node list. Returns self; container constructors may initialize
  * additional internal state, and no hardware is accessed directly.
  */
 ActorRuntimeCollection *ActorRuntimeCollection_Init(ActorRuntimeCollection *self)
 {
     self->flags = 0;
-    GamePhaseActorScriptVm_Init(self->firstContainer);
-    GamePhaseActorScriptVm_Init(self->secondContainer);
-    self->field_134 = 0;
+    GamePhaseActorScriptVm_Init(&self->primaryScriptState.scriptVm);
+    GamePhaseActorScriptVm_Init(&self->secondaryScriptVm);
+    self->pendingQueueValue = 0;
     ActorRuntimeOwnedList_Init(&self->ownedList);
     return self;
 }
@@ -36,11 +32,11 @@ ActorRuntimeCollection *ActorRuntimeCollection_Init(ActorRuntimeCollection *self
  */
 ActorRuntimeOwnedList *ActorRuntimeOwnedList_Init(ActorRuntimeOwnedList *self)
 {
-    self->vtable = data_020d4468;
+    self->vtable = gActorRuntimeListBaseVTable;
     self->head = 0;
     self->tail = 0;
     self->count = 0;
-    self->vtable = data_020d4458;
+    self->vtable = gActorRuntimeOwnedListVTable;
     return self;
 }
 
@@ -50,7 +46,7 @@ ActorRuntimeOwnedList *ActorRuntimeOwnedList_Init(ActorRuntimeOwnedList *self)
  */
 ActorRuntimeOwnedList *ActorRuntimeOwnedList_Destroy(ActorRuntimeOwnedList *self)
 {
-    self->vtable = data_020d4468;
+    self->vtable = gActorRuntimeListBaseVTable;
     ActorRuntimeOwnedList_Clear(self);
     return self;
 }
@@ -63,10 +59,10 @@ ActorRuntimeOwnedList *ActorRuntimeOwnedList_Destroy(ActorRuntimeOwnedList *self
 ActorRuntimeCollection *ActorRuntimeCollection_Destroy(ActorRuntimeCollection *self)
 {
     ActorRuntimeOwnedList_Clear(&self->ownedList);
-    self->ownedList.vtable = data_020d4468;
+    self->ownedList.vtable = gActorRuntimeListBaseVTable;
     ActorRuntimeOwnedList_Clear(&self->ownedList);
-    GamePhaseActorScriptVm_Destroy(self->secondContainer);
-    GamePhaseActorScriptVm_Destroy(self->firstContainer);
+    GamePhaseActorScriptVm_Destroy(&self->secondaryScriptVm);
+    GamePhaseActorScriptVm_Destroy(&self->primaryScriptState.scriptVm);
     return self;
 }
 

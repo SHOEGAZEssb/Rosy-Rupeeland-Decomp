@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void Actor_SetPosition(void *actor, const void *position);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
-extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *value);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -48,9 +48,9 @@ void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s3
 
     if (GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) > 0) {
         *(u32 *)(actor + 0xd0) &= ~0x200;
-        ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
-        ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
-        ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
+        VecFx32Object_SetComponents(actor + 0x38, 0, 0, 0);
+        VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
+        VecFx32Object_SetComponents(actor + 0x98, 0, 0, 0);
         if (mode != 0) {
             s32 offset[4];
             s32 x = (gActorAlternatingMotionCounter & 1) ? -0x1800 : 0x1800;

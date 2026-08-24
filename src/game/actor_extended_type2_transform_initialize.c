@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 extern void *VecFx32Object_Assign(void *destination, const void *source);
-extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *vector, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -21,7 +21,7 @@ void ActorExtendedType2_InitializeTransformAndMotion(void *self, const void *pos
 {
     u8 *a=(u8 *)self; const u8 *m=(const u8 *)motion;
     VecFx32Object_Assign(a+0x28,position); VecFx32Object_Assign(a+0x18,a+0x28); VecFx32Object_Assign(a+0x22c,a+0x18);
-    ActorRuntimeTriple_Assign(a+0x38,0,0,0); ActorRuntimeTriple_Assign(a+0x88,0,0,0); ActorRuntimeTriple_Assign(a+0x98,0,0,0);
+    VecFx32Object_SetComponents(a+0x38,0,0,0); VecFx32Object_SetComponents(a+0x88,0,0,0); VecFx32Object_SetComponents(a+0x98,0,0,0);
     *(u32 *)(a+0x8c)=*(const u32 *)(m+4); *(u32 *)(a+0x90)=*(const u32 *)(m+8); *(u32 *)(a+0x44)=*(const u32 *)(m+0xc);
     (*(void (**)(void *))(*(u8 **)a+0x114))(a);
 }

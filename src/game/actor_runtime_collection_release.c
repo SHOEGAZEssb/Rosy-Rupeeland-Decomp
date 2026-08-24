@@ -16,9 +16,11 @@ void ActorRuntimeCollection_ReleaseSelectedObject(ActorRuntimeCollection *self)
     void *selected;
     void **vtable;
 
-    self->flags = (self->flags & ~2) | 4;
+    self->flags =
+        (self->flags & ~ACTOR_RUNTIME_COLLECTION_HAS_SELECTED_OBJECT) |
+        ACTOR_RUNTIME_COLLECTION_RELEASE_DISPATCHED;
     GameWork_ClearFlag(gGameWork, 0x400);
-    selected = *(void **)((u8 *)self + 0x9c);
+    selected = self->primaryScriptState.selectedObject;
     vtable = *(void ***)selected;
     ((ActorRuntimeReleaseMethod)vtable[0x78 / 4])(selected, 3);
 }

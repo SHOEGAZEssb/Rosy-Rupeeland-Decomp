@@ -13,7 +13,7 @@
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern VecFx32Object_GetMagnitude
 .extern GamePhaseRuntime_StageAreaRequest
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_ClearTransientContactState
 .extern Actor_TurnTowardVector
 .extern Actor_TurnTowardTargetPosition
@@ -380,7 +380,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     b .L_02035a54
 .L_02035a38:
     cmp r1, #0x8000

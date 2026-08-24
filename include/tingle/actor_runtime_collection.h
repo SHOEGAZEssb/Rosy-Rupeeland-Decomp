@@ -1,6 +1,7 @@
 #ifndef TINGLE_ACTOR_RUNTIME_COLLECTION_H
 #define TINGLE_ACTOR_RUNTIME_COLLECTION_H
 
+#include "tingle/game_phase_script_vm.h"
 #include "tingle/types.h"
 
 typedef struct ActorRuntimeOwnedNode {
@@ -16,14 +17,31 @@ typedef struct ActorRuntimeOwnedList {
     u32 count;
 } ActorRuntimeOwnedList;
 
+typedef struct ActorRuntimePrimaryScriptState {
+    GamePhaseActorScriptVm scriptVm;
+    void *selectedObject;
+} ActorRuntimePrimaryScriptState;
+
+enum ActorRuntimeCollectionFlags {
+    ACTOR_RUNTIME_COLLECTION_HAS_ATTACHED_OBJECT = 1 << 0,
+    ACTOR_RUNTIME_COLLECTION_HAS_SELECTED_OBJECT = 1 << 1,
+    ACTOR_RUNTIME_COLLECTION_RELEASE_DISPATCHED = 1 << 2,
+    ACTOR_RUNTIME_COLLECTION_ATTACHMENT_PENDING = 1 << 3
+};
+
 typedef struct ActorRuntimeCollection {
     u32 flags;
-    u32 field_04;
-    u8 firstContainer[0x98];
-    u8 secondContainer[0x94];
-    u32 field_134;
+    void *attachedObject;
+    ActorRuntimePrimaryScriptState primaryScriptState;
+    GamePhaseActorScriptVm secondaryScriptVm;
+    u32 pendingQueueValue;
     ActorRuntimeOwnedList ownedList;
 } ActorRuntimeCollection;
+
+typedef char ActorRuntimePrimaryScriptStateSizeCheck[
+    sizeof(ActorRuntimePrimaryScriptState) == 0x98 ? 1 : -1];
+typedef char ActorRuntimeCollectionSizeCheck[
+    sizeof(ActorRuntimeCollection) == 0x148 ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,8 +54,10 @@ ActorRuntimeCollection *ActorRuntimeCollection_Destroy(ActorRuntimeCollection *s
 void ActorRuntimeOwnedList_Clear(ActorRuntimeOwnedList *self);
 void ActorRuntimeCollection_Reset(ActorRuntimeCollection *self);
 void ActorRuntimeCollection_DetachActiveObject(ActorRuntimeCollection *self);
-void *ActorRuntimeCollection_CopyPrimaryContainerState(ActorRuntimeCollection *self, const void *source);
-void *ActorRuntimeCollection_GetPrimaryContainer(ActorRuntimeCollection *self);
+GamePhaseActorScriptVm *ActorRuntimeCollection_CopyPrimaryContainerState(
+    ActorRuntimeCollection *self, const GamePhaseActorScriptVm *source);
+GamePhaseActorScriptVm *ActorRuntimeCollection_GetPrimaryContainer(
+    ActorRuntimeCollection *self);
 void ActorRuntimeCollection_SelectObject(ActorRuntimeCollection *self, void *candidate);
 void ActorRuntimeCollection_ReleaseSelectedObject(ActorRuntimeCollection *self);
 void ActorRuntimeCollection_AttachObject(ActorRuntimeCollection *self, void *object);
@@ -53,6 +73,9 @@ u32 ActorRuntimeCollection_GetBusyState(const ActorRuntimeCollection *self);
 ActorRuntimeOwnedList *func_0200bac4(ActorRuntimeOwnedList *self);
 ActorRuntimeOwnedList *func_0200baec(ActorRuntimeOwnedList *self);
 ActorRuntimeOwnedList *func_0200bb14(ActorRuntimeOwnedList *self);
+
+extern const void *gActorRuntimeOwnedListVTable[];
+extern const void *gActorRuntimeListBaseVTable[];
 
 #ifdef __cplusplus
 }

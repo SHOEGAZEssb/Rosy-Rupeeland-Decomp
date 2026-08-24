@@ -1,21 +1,21 @@
 #include "tingle/actor_runtime_scene.h"
 
-/* Initialize a three-word state block embedded after an optional owner prefix. */
+/* Replace the three components of an initialized fixed-point vector object. */
 
 /*
- * If object is nonnull, advance past its leading four-byte prefix; then store
- * first/second/third consecutively and return the destination. A null object
- * deliberately leaves address zero as the destination, matching the original
- * unchecked contract. No SDK or hardware state is touched.
+ * Preserve the VecFx32Object vtable, store x/y/z in its value payload, and
+ * return that payload. A null object deliberately retains the retail unchecked
+ * write-to-zero contract.
  */
-u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third)
+VecFx32Value *VecFx32Object_SetComponents(VecFx32Object *object, fx32 x,
+                                         fx32 y, fx32 z)
 {
-    u32 *destination = (u32 *)object;
+    VecFx32Value *destination = (VecFx32Value *)object;
 
     if (destination != 0)
-        destination = (u32 *)((u8 *)destination + 4);
-    destination[0] = first;
-    destination[1] = second;
-    destination[2] = third;
+        destination = &object->value;
+    destination->x = x;
+    destination->y = y;
+    destination->z = z;
     return destination;
 }

@@ -7,7 +7,7 @@ extern "C" {
 #endif
 extern void *gActorRuntimeCollection;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
-extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Object_ScaleInPlaceRounded(void *vector, s32 scale);
@@ -44,7 +44,7 @@ void TrackedResourceActorImpulse_HandleCollision(void *actor, void *target, u32 
         virtual_function(target, 0xb8)(target, vector, 1);
         VecFx32Object_Destroy(vector);
     }
-    ActorRuntimeTriple_Assign((u8 *)actor + 0x38, 0, 0, 0);
+    VecFx32Object_SetComponents((u8 *)actor + 0x38, 0, 0, 0);
     virtual_function(actor, 0xc8)(actor);
     FIELD(u32, actor, 0x14) &= 0xff7fffff;
 }

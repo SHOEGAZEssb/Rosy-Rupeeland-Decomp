@@ -20,7 +20,7 @@ extern void *GamePhaseRuntime_GetActorCollection(...);
 extern void *ActorCollection_FindActorByRuntimeId(...);
 extern void *Actor_GetOwningCollection(...);
 extern void *ActorCollection_GetSpriteGroup(...);
-extern u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
+extern u32 *VecFx32Object_SetComponents(void *object, u32 first, u32 second, u32 third);
 extern void *TimedSpriteBurstManager_Init(...);
 extern void *func_02022cb0(...);
 extern void *func_02022ff4(...);
@@ -164,7 +164,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         void *object;
         VecFx32Object_Init(&position);
         if (a6 != 0)
-            ActorRuntimeTriple_Assign(&position, *(s32 *)(actor + 0x10c) << 12,
+            VecFx32Object_SetComponents(&position, *(s32 *)(actor + 0x10c) << 12,
                           *(s32 *)(actor + 0x110) << 12,
                           *(s32 *)(actor + 0x114) << 12);
         else

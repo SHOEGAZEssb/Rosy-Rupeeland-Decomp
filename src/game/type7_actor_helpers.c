@@ -10,7 +10,7 @@ extern "C" {
 extern void *VecFx32Object_Assign(void *destination, const void *source);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *value);
-extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *vector, s32 x, s32 y, s32 z);
 extern void Actor_RefreshCachedTerrainHeight(void *actor);
 extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
                                      const void *viewPosition);
@@ -33,8 +33,8 @@ void Type7Actor_ResetBaseTransformAndMotion(void *self)
     VecFx32Object_Assign(actor + 0x18, actor + 0x214);
     Actor_RefreshCachedTerrainHeight(actor);
     *(u32 *)(actor + 0x24) = *(u32 *)(actor + 0x1dc);
-    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
-    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x38, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
 }
 
 /*

@@ -5,7 +5,7 @@
 .extern gActorAlternatingMotionCounter
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern Actor_SetPosition
 .extern Actor_GetCachedTerrainHeight
@@ -40,17 +40,17 @@ ActorDerivedType1_EnterPositionedState: ; 0x02038834
     mov r3, r1
     add r0, r5, #0x38
     str ip, [r5, #0xd0]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x88
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r5, #0x98
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     cmp r4, #0x0
     beq .L_02038920
     ldr r0, .L_020389e0

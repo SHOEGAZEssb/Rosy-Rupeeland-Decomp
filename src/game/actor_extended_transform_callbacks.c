@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void ActorRuntimeTriple_Assign(void *vector, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *vector, s32 x, s32 y, s32 z);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor, ...);
 extern s32 ActorExtendedType2_GetDescriptorValue2A(const void *actor);
 extern void ActorExtendedType2_ApplyMotionImpulseIfEnabled(void *actor, void *first, void *second);
@@ -24,7 +24,7 @@ void ActorExtendedTransform_ResetMotionImpulseState(void *self, void *first, voi
     u8 *actor = (u8 *)self;
     *(u16 *)(actor + 0x298) = 0;
     *(u32 *)(actor + 0x44) = 0;
-    ActorRuntimeTriple_Assign(actor + 0x29c, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x29c, 0, 0, 0);
     ActorExtendedType2_ApplyMotionImpulseIfEnabled(actor, first, second);
 }
 
@@ -40,7 +40,7 @@ void ActorExtendedTransform_AdjustTerrainCoordinates(void *self, s32 *x, s32 *y)
 {
     u8 *actor = (u8 *)self;
     if (Actor_IsAtCachedTerrainHeight(actor, x, y) != 0) {
-        ActorRuntimeTriple_Assign(actor + 0x29c, *x, *y, 0);
+        VecFx32Object_SetComponents(actor + 0x29c, *x, *y, 0);
         *(s32 *)(actor + 0x44) = ActorExtendedType2_GetDescriptorValue2A(actor) << 4;
     } else {
         s32 ax = *(s32 *)(actor + 0x2a0);
@@ -65,7 +65,7 @@ s32 ActorExtendedTransform_AdvanceTerrainRetry(void *self)
         && *(s16 *)(actor + 0x298) < *(s16 *)(actor + 0x29a)) {
         ++*(s16 *)(actor + 0x298);
         *(u16 *)(actor + 0xd6) = 1;
-        ActorRuntimeTriple_Assign(actor + 0x29c, 0, 0, 0);
+        VecFx32Object_SetComponents(actor + 0x29c, 0, 0, 0);
         *(u32 *)(actor + 0x44) = 0;
         return 1;
     }

@@ -15,7 +15,7 @@
 .extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotionAreaFollower_GetPosition
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RectS32_Set
@@ -275,7 +275,7 @@ L_02014680:
     mov r1, r1, lsl #0xc
     mov r2, r2, lsl #0xc
     mov r3, r3, lsl #0xc
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     b L_020146bc
 L_020146b4:
     add r1, r10, #0x18

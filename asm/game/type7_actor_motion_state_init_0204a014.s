@@ -4,7 +4,7 @@
 .extern gActorAlternatingMotionCounter
 .extern gGameWork
 .extern GameWork_TestFlag
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Type7Actor_SetCallbackPair
 .extern GraphicsSpriteState_SetAnimationIndex
 .text
@@ -42,17 +42,17 @@ Type7Actor_InitializeStationaryMotionState: ; 0x0204a014
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x38
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r4, #0x88
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r4, #0x98
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r0, #0x0
     str r0, [r4, #0x108]
     ldr r0, [r4, #0xd0]
@@ -90,17 +90,17 @@ Type7Actor_InitializeActiveMotionState: ; 0x0204a0d8
     mov r2, r1
     add r0, r5, #0x38
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r5, #0x88
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     add r0, r5, #0x98
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     cmp r4, #0x0
     beq .L_0204a1e4
     ldr r0, .L_0204a1f4

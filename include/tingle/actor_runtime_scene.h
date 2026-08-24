@@ -4,6 +4,7 @@
 #include "tingle/types.h"
 #include "tingle/scene.h"
 #include "tingle/scene_touch.h"
+#include "tingle/vec_fx32.h"
 
 typedef struct ActorRuntimeScene {
     Scene base;
@@ -17,7 +18,8 @@ typedef char ActorRuntimeSceneSizeCheck[
 extern "C" {
 #endif
 
-u32 *ActorRuntimeTriple_Assign(void *object, u32 first, u32 second, u32 third);
+VecFx32Value *VecFx32Object_SetComponents(VecFx32Object *object, fx32 x,
+                                         fx32 y, fx32 z);
 ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object);
 ActorRuntimeScene *ActorRuntimeScene_Destroy(ActorRuntimeScene *self);
 ActorRuntimeScene *ActorRuntimeScene_DestroyAndFree(ActorRuntimeScene *self);

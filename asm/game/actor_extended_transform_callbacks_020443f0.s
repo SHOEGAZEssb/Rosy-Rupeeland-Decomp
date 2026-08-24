@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_transform_callbacks.c.
 .text
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_IsAtCachedTerrainHeight
 .extern ActorExtendedType2_GetDescriptorValue2A
 .extern ActorExtendedType2_ApplyMotionImpulseIfEnabled
@@ -22,7 +22,7 @@ ActorExtendedTransform_ResetMotionImpulseState: ; 0x020443f0
     mov r3, r1
     add r0, r6, #0x29c
     str r1, [r6, #0x44]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r0, r6
     mov r1, r5
     mov r2, r4
@@ -42,7 +42,7 @@ ActorExtendedTransform_AdjustTerrainCoordinates: ; 0x02044434
     ldr r2, [r4, #0x0]
     add r0, r6, #0x29c
     mov r3, #0x0
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r0, r6
     bl ActorExtendedType2_GetDescriptorValue2A
     mov r0, r0, lsl #0x4
@@ -85,7 +85,7 @@ ActorExtendedTransform_AdvanceTerrainRetry: ; 0x020444b4
     mov r3, r1
     add r0, r4, #0x29c
     strh ip, [r4, #0xd6]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r0, #0x0
     str r0, [r4, #0x44]
     mov r0, #0x1

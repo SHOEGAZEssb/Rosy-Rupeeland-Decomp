@@ -11,9 +11,6 @@ extern void OS_Halt(void);
 }
 #endif
 
-/* Offset 0x9c lies at the end of the still-opaque first container. */
-#define ACTOR_RUNTIME_SELECTED_SLOT(self) ((void **)((u8 *)(self) + 0x9c))
-
 /*
  * Mark an object selected in field 0x9c and set persistent GameWork flag
  * 0x400. If a selection already exists, exactly one of the old/new objects is
@@ -23,8 +20,8 @@ extern void OS_Halt(void);
  */
 void ActorRuntimeCollection_SelectObject(ActorRuntimeCollection *self, void *candidate)
 {
-    if (self->flags & 2) {
-        void *current = *ACTOR_RUNTIME_SELECTED_SLOT(self);
+    if (self->flags & ACTOR_RUNTIME_COLLECTION_HAS_SELECTED_OBJECT) {
+        void *current = self->primaryScriptState.selectedObject;
         u32 candidateFlags = *(u32 *)((u8 *)candidate + 0x14);
         u32 currentFlags = *(u32 *)((u8 *)current + 0x14);
         u32 candidateClass = candidateFlags & 0x2000;
@@ -38,7 +35,7 @@ void ActorRuntimeCollection_SelectObject(ActorRuntimeCollection *self, void *can
         }
     }
 
-    self->flags |= 2;
+    self->flags |= ACTOR_RUNTIME_COLLECTION_HAS_SELECTED_OBJECT;
     GameWork_SetFlag(gGameWork, 0x400);
-    *ACTOR_RUNTIME_SELECTED_SLOT(self) = candidate;
+    self->primaryScriptState.selectedObject = candidate;
 }

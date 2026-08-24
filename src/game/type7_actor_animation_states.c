@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *value, s32 x, s32 y, s32 z);
 extern s32 Type7Actor_HasFlag4Target(void *actor);
 extern void Type7Actor_ResetInteractionState(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -49,8 +49,8 @@ s32 Type7Actor_UpdateTargetProximityState(void *self)
     u8 *target;
     *(s32 *)(actor + 0x40) = 0;
     *(s32 *)(actor + 0x3c) = 0;
-    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
-    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x98, 0, 0, 0);
     target = *(u8 **)(actor + 0x280);
     if (target == 0)
         return 0;

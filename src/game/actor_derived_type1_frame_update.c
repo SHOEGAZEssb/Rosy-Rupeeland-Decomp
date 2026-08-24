@@ -36,7 +36,7 @@ extern void Type7AuxiliaryPresentation_Activate(void *object);
 extern void ActorDerivedType1_ClassifyState(void *actor);
 extern s32 Actor_IsAtCachedTerrainHeight(void *actor);
 extern s32 VecFx32Object_GetMagnitude(void *state);
-extern void ActorRuntimeTriple_Assign(void *state, s32 first, s32 second, s32 third);
+extern void VecFx32Object_SetComponents(void *state, s32 first, s32 second, s32 third);
 extern s32 func_020adc90(s32 numerator, s32 denominator);
 extern void VecFx32Object_ScaleInPlaceRounded(void *state, s32 scale);
 extern void Actor_SynchronizeStatePresentation(void *actor);
@@ -197,7 +197,7 @@ void ActorDerivedType1_UpdateFrame(void *self)
     {
         s32 magnitude = VecFx32Object_GetMagnitude(actor + 0x88);
         if (magnitude < 0x19a) {
-            ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
+            VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
         } else if (magnitude > 0x8000) {
             VecFx32Object_ScaleInPlaceRounded(
                 actor + 0x88, func_020adc90(0x8000, magnitude));

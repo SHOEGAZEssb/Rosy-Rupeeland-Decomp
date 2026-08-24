@@ -3,7 +3,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32Object_InitSum
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .text
     .global TrackedResourceActorType24_SetupFromRecord
 TrackedResourceActorType24_SetupFromRecord:
@@ -32,7 +32,7 @@ TrackedResourceActorType24_SetupFromRecord:
     add r0, r4, #0x38
     mov r2, r1
     mov r3, r1
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldr r1, [r4, #0xd0]
     mov r0, #0x10000
     orr r1, r1, #0x2000

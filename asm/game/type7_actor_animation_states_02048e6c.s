@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_animation_states.c.
 .text
-.extern ActorRuntimeTriple_Assign
+.extern VecFx32Object_SetComponents
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_ResetInteractionState
 .extern Type7Actor_HasFlag4Target
@@ -37,12 +37,12 @@ Type7Actor_UpdateTargetProximityState: ; 0x02048e98
     mov r3, r1
     add r0, r4, #0x88
     str r1, [r4, #0x3c]
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     mov r1, #0x0
     mov r2, r1
     mov r3, r1
     add r0, r4, #0x98
-    bl ActorRuntimeTriple_Assign
+    bl VecFx32Object_SetComponents
     ldr r0, [r4, #0x280]
     cmp r0, #0x0
     moveq r0, #0x0

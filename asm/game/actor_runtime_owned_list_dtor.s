@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern ActorRuntimeOwnedList_Clear
-.extern data_020d4468
+.extern gActorRuntimeListBaseVTable
 .global ActorRuntimeOwnedList_Destroy
 ActorRuntimeOwnedList_Destroy:
     stmdb sp!, {r4, lr}
@@ -12,6 +12,6 @@ ActorRuntimeOwnedList_Destroy:
     bl ActorRuntimeOwnedList_Clear
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200ae0c: .word data_020d4468
+L_0200ae0c: .word gActorRuntimeListBaseVTable
 .size ActorRuntimeOwnedList_Destroy, . - ActorRuntimeOwnedList_Destroy
 

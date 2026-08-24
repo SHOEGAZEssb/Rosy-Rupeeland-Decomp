@@ -13,7 +13,7 @@ extern u8 *gGamePhaseRuntime;
 extern "C" {
 #endif
 extern void Actor_SetPosition(void *actor, const void *position);
-extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
+extern void VecFx32Object_SetComponents(void *value, s32 x, s32 y, s32 z);
 extern u32 genrand_int32(void);
 extern s32 func_020ada8c(s32 value, s32 divisor);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
@@ -47,9 +47,9 @@ void ActorExtendedType2_InitializeReentryState(void *self, const void *position,
 
     Actor_SetPosition(actor, position);
     *(u32 *)(actor + 0x264) = 0;
-    ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
-    ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);
-    ActorRuntimeTriple_Assign(actor + 0x98, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x38, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
+    VecFx32Object_SetComponents(actor + 0x98, 0, 0, 0);
     if (*(s32 *)(actor + 0x1fc) <= 0) {
         (*(void (**)(void *))(*(u8 **)actor + 0x100))(actor);
     } else {
