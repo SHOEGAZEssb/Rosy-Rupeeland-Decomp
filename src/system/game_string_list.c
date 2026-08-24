@@ -7,11 +7,6 @@
  * own copied strings, while the list tracks head, tail, and element count.
  */
 
-extern u8 data_020d41c0[];
-extern u32 data_020d41ec[];
-
-typedef GameString *(*GameStringVirtualFunction)(GameString *self);
-
 /*
  * Install the retail CTask vtable and clear its registration pointer. Derived
  * frame tasks overwrite the vtable after this shared base construction.
@@ -58,7 +53,7 @@ s32 FrameTask_UpdateNoop(FrameTask *self)
 /* Install the GameString-list vtable, clear all nodes, and return self. */
 GameStringList *GameStringList_Destroy(GameStringList *self)
 {
-    self->vtable = data_020d41ec;
+    self->vtable = &gGameStringListVTable;
     GameStringList_Clear(self);
     return self;
 }
@@ -74,8 +69,7 @@ void GameStringList_Clear(GameStringList *self)
 
     while (node != 0) {
         GameStringListNode *next = node->next;
-        ((const GameStringVirtualFunction *)node->value.vtable)[0](
-            &node->value);
+        node->value.vtable->destroy(&node->value);
         if (node != 0) {
             GameString_Destroy(&node->value);
             Heap_Free(node);
@@ -98,7 +92,7 @@ GameStringListNode *GameStringList_Append(GameStringList *self,
 {
     GameStringListNode *node =
         (GameStringListNode *)Heap_Alloc(sizeof(GameStringListNode),
-                                        (const char *)data_020d41c0, 4,
+                                        gGameStringListNodeAllocationTag, 4,
                                         &gHeapContext);
 
     if (node != 0) {
@@ -125,7 +119,7 @@ GameStringListNode *GameStringList_Append(GameStringList *self,
  */
 GameStringList *GameStringList_DestroyAndFree(GameStringList *self)
 {
-    self->vtable = data_020d41ec;
+    self->vtable = &gGameStringListVTable;
     GameStringList_Clear(self);
     Heap_Free(self);
     return self;

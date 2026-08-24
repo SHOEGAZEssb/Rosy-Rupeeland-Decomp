@@ -3,14 +3,24 @@
 
 #include "tingle/types.h"
 
-typedef struct GameString {
-    const void *vtable;
+typedef struct GameString GameString;
+
+typedef struct GameStringVTable {
+    GameString *(*destroy)(GameString *string);
+    GameString *(*destroyAndFree)(GameString *string);
+} GameStringVTable;
+
+struct GameString {
+    const GameStringVTable *vtable;
     char *data;
-} GameString;
+};
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+extern GameStringVTable gGameStringVTable;
+extern const char gGameStringHeapTag[];
 
 GameString *GameString_Init(GameString *string);
 GameString *GameString_InitCString(GameString *string, const char *source,

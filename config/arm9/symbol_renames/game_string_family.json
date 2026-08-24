@@ -1,0 +1,22 @@
+{
+  "GameString_Init": "GameString_Init",
+  "GameString_InitCString": "GameString_InitCString",
+  "GameString_InitFromOther": "GameString_InitFromOther",
+  "GameString_Destroy": "GameString_Destroy",
+  "GameString_DestroyAndFree": "GameString_DestroyAndFree",
+  "GameString_Assign": "GameString_Assign",
+  "GameString_Append": "GameString_Append",
+  "GameString_Clear": "GameString_Clear",
+  "GameString_InitPrefix": "GameString_InitPrefix",
+  "GameString_AssignCopy": "GameString_AssignCopy",
+  "GameString_Concat": "GameString_Concat",
+  "GameString_Equals": "GameString_Equals",
+  "gGameStringVTable": "gGameStringVTable",
+  "gGameStringHeapTag": "gGameStringHeapTag",
+  "GameStringList_Destroy": "GameStringList_Destroy",
+  "GameStringList_Clear": "GameStringList_Clear",
+  "GameStringList_Append": "GameStringList_Append",
+  "GameStringList_DestroyAndFree": "GameStringList_DestroyAndFree",
+  "data_020d41c0": "gGameStringListNodeAllocationTag",
+  "data_020d41ec": "gGameStringListVTable"
+}

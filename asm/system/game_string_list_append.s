@@ -1,6 +1,6 @@
 .text
-.extern data_020d41c0
-.extern data_020d41ec
+.extern gGameStringListNodeAllocationTag
+.extern gGameStringListVTable
 .extern gHeapContext
 .extern Heap_Alloc
 .extern Heap_Free
@@ -44,7 +44,7 @@ link_node:
     str r1, [r4, #0xc]
     ldmia sp!, {r4, r5, r6, pc}
 node_tag:
-    .word data_020d41c0
+    .word gGameStringListNodeAllocationTag
 heap_context:
     .word gHeapContext
     .size GameStringList_Append, .-GameStringList_Append
@@ -62,5 +62,5 @@ GameStringList_DestroyAndFree:
     mov r0, r4
     ldmia sp!, {r4, pc}
 list_vtable:
-    .word data_020d41ec
+    .word gGameStringListVTable
     .size GameStringList_DestroyAndFree, .-GameStringList_DestroyAndFree

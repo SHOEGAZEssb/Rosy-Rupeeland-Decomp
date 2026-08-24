@@ -22,8 +22,6 @@ extern char *strncpy(char *destination, const char *source, u32 length);
 extern char *strcat(char *destination, const char *source);
 extern s32 strcmp(const char *left, const char *right);
 
-extern u32 gGameStringVTable[];
-extern u8 gGameStringHeapTag[];
 extern u8 gHeapContext[];
 
 #ifdef __cplusplus
@@ -33,7 +31,7 @@ extern u8 gHeapContext[];
 /* Initialize an empty string with no allocation and return the object. */
 GameString *GameString_Init(GameString *string)
 {
-    string->vtable = gGameStringVTable;
+    string->vtable = &gGameStringVTable;
     string->data = 0;
     return string;
 }
@@ -42,7 +40,7 @@ GameString *GameString_Init(GameString *string)
 GameString *GameString_InitCString(GameString *string, const char *source,
                                   u32 length)
 {
-    string->vtable = gGameStringVTable;
+    string->vtable = &gGameStringVTable;
     string->data = 0;
     GameString_Assign(string, source, length);
     return string;
@@ -55,7 +53,7 @@ GameString *GameString_InitCString(GameString *string, const char *source,
 GameString *GameString_InitFromOther(GameString *string,
                                     const GameString *source)
 {
-    string->vtable = gGameStringVTable;
+    string->vtable = &gGameStringVTable;
     string->data = 0;
     if (source->data != 0)
         GameString_Assign(string, source->data, 0);
@@ -65,7 +63,7 @@ GameString *GameString_InitFromOther(GameString *string,
 /* Release the owned buffer, restore this class's vtable, and return this. */
 GameString *GameString_Destroy(GameString *string)
 {
-    string->vtable = gGameStringVTable;
+    string->vtable = &gGameStringVTable;
     GameString_Clear(string);
     return string;
 }
@@ -73,7 +71,7 @@ GameString *GameString_Destroy(GameString *string)
 /* Destroy the string, free the object itself, and return its original address. */
 GameString *GameString_DestroyAndFree(GameString *string)
 {
-    string->vtable = gGameStringVTable;
+    string->vtable = &gGameStringVTable;
     GameString_Clear(string);
     Heap_Free(string);
     return string;
@@ -221,7 +219,7 @@ void GameString_Clear(GameString *string) throw()
 void GameString_InitPrefix(GameString *string, const GameString *source,
                            s32 length)
 {
-    string->vtable = gGameStringVTable;
+    string->vtable = &gGameStringVTable;
     string->data = 0;
     if (length > 0)
         GameString_Assign(string, source->data, (u32)length);
@@ -245,7 +243,7 @@ GameString *GameString_AssignCopy(GameString *string,
 void GameString_Concat(GameString *result, const GameString *left,
                        const GameString *right)
 {
-    result->vtable = gGameStringVTable;
+    result->vtable = &gGameStringVTable;
     result->data = 0;
     GameString_AssignCopy(result, left);
     GameString_Append(result, right->data);

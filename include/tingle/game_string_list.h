@@ -7,6 +7,11 @@
 typedef struct GameStringListNode GameStringListNode;
 typedef struct GameStringList GameStringList;
 
+typedef struct GameStringListVTable {
+    GameStringList *(*destroy)(GameStringList *self);
+    GameStringList *(*destroyAndFree)(GameStringList *self);
+} GameStringListVTable;
+
 struct GameStringListNode {
     GameStringListNode *next;
     GameStringListNode *previous;
@@ -14,7 +19,7 @@ struct GameStringListNode {
 };
 
 struct GameStringList {
-    const void *vtable;
+    const GameStringListVTable *vtable;
     GameStringListNode *head;
     GameStringListNode *tail;
     s32 count;
@@ -28,6 +33,9 @@ typedef char GameStringListSizeCheck[
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+extern GameStringListVTable gGameStringListVTable;
+extern const char gGameStringListNodeAllocationTag[];
 
 GameStringList *GameStringList_Destroy(GameStringList *self);
 void GameStringList_Clear(GameStringList *self);

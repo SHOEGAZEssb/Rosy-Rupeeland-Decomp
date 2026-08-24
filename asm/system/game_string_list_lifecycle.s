@@ -1,6 +1,6 @@
 .text
 .extern gFrameTaskVTable
-.extern data_020d41ec
+.extern gGameStringListVTable
 .extern Heap_Free
 .extern GameStringList_Clear
 
@@ -57,5 +57,5 @@ GameStringList_Destroy:
     mov r0, r4
     ldmia sp!, {r4, pc}
 list_vtable:
-    .word data_020d41ec
+    .word gGameStringListVTable
     .size GameStringList_Destroy, .-GameStringList_Destroy

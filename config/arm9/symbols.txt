@@ -6723,10 +6723,10 @@ data_020d4180 kind:data(any) addr:0x020d4180
 gSoftwareCanvasVTable kind:data(any) addr:0x020d4190
 data_020d4198 kind:data(any) addr:0x020d4198
 gFrameTaskVTable kind:data(any) addr:0x020d41b4
-data_020d41c0 kind:data(any) addr:0x020d41c0
+gGameStringListNodeAllocationTag kind:data(any) addr:0x020d41c0
 data_020d41d0 kind:data(any) addr:0x020d41d0
 data_020d41d8 kind:data(any) addr:0x020d41d8
-data_020d41ec kind:data(any) addr:0x020d41ec
+gGameStringListVTable kind:data(any) addr:0x020d41ec
 data_020d41f4 kind:data(any) addr:0x020d41f4
 data_020d4208 kind:data(any) addr:0x020d4208
 data_020d4218 kind:data(any) addr:0x020d4218
