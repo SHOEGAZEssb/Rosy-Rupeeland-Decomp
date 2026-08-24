@@ -74,8 +74,8 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
     count = *(u16 *)(header + 6);
     entry = mode == 0x10 ? renderer->indexedPool0.head
                          : renderer->indexedPool1.head;
-    while (entry != 0 && entry->field_0c != resource)
-        entry = entry->next;
+    while (entry != 0 && entry->resource != resource)
+        entry = entry->nextOrFreeNext;
 
     if (entry == 0) {
         if (*(void **)(resource_bytes + 0x14) == 0)
@@ -85,10 +85,12 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
         count = *(u16 *)(header + 6);
         if (mode == 0x10)
             entry = GraphicsIndexedChainPool_AllocateChain(
-                &renderer->indexedPool0, count, 1);
+                &renderer->indexedPool0, count,
+                GRAPHICS_INDEXED_CHAIN_MODE_SHARED_OBJECT_PALETTE);
         else
             entry = GraphicsIndexedChainPool_AllocateChain(
-                &renderer->indexedPool1, count, 3);
+                &renderer->indexedPool1, count,
+                GRAPHICS_INDEXED_CHAIN_MODE_SHARED_OBJECT_EXTENDED_PALETTE);
         if (entry == 0)
             return 0;
 
@@ -106,14 +108,14 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
                 GraphicsTransferQueue_Enqueue(
                     &renderer->transferQueue, transferKind,
                     source + index * record_size,
-                    (u32)current->index * record_size, record_size);
+                    (u32)current->descriptorIndex * record_size, record_size);
                 current = current->chainNext;
             }
         }
         GX_VBlankIntr(gGraphicsSpriteStatePool.interrupt_state);
-        entry->field_0c = resource;
+        entry->resource = resource;
     }
-    ++entry->field_10;
+    ++entry->referenceCount;
     return entry;
 }
 

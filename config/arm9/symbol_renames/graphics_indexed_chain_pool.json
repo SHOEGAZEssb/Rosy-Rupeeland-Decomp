@@ -1,0 +1,7 @@
+{
+  "func_020727c4": "GraphicsIndexedChainEntry_Init",
+  "func_020727e8": "GraphicsIndexedChainEntry_Destroy",
+  "func_020727ec": "GraphicsIndexedChainPool_Init",
+  "func_0207287c": "GraphicsIndexedChainPool_AllocateChain",
+  "func_0207290c": "GraphicsIndexedChainPool_ReleaseChain"
+}

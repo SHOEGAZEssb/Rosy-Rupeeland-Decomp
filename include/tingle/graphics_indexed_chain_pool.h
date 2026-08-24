@@ -5,17 +5,24 @@
 
 enum { GRAPHICS_INDEXED_CHAIN_CAPACITY = 16 };
 
+enum {
+    GRAPHICS_INDEXED_CHAIN_MODE_SHARED_OBJECT_PALETTE = 1,
+    GRAPHICS_INDEXED_CHAIN_MODE_IMMEDIATE_RELEASE_OBJECT_PALETTE = 2,
+    GRAPHICS_INDEXED_CHAIN_MODE_SHARED_OBJECT_EXTENDED_PALETTE = 3,
+    GRAPHICS_INDEXED_CHAIN_MODE_IMMEDIATE_RELEASE_OBJECT_EXTENDED_PALETTE = 4
+};
+
 typedef struct GraphicsIndexedChainEntry GraphicsIndexedChainEntry;
 
 /* One indexed descriptor; roots may own further descriptors through chainNext. */
 struct GraphicsIndexedChainEntry {
-    GraphicsIndexedChainEntry *prev;
-    GraphicsIndexedChainEntry *next;
+    GraphicsIndexedChainEntry *previousOrFreePrevious;
+    GraphicsIndexedChainEntry *nextOrFreeNext;
     GraphicsIndexedChainEntry *chainNext;
-    void *field_0c;
-    u8 field_10;
-    u8 mode;
-    u8 index;
+    void *resource;
+    u8 referenceCount;
+    u8 bindingMode;
+    u8 descriptorIndex;
     u8 padding_13;
 };
 
@@ -24,8 +31,8 @@ typedef struct GraphicsIndexedChainPool {
     GraphicsIndexedChainEntry entries[GRAPHICS_INDEXED_CHAIN_CAPACITY];
     GraphicsIndexedChainEntry *head;
     GraphicsIndexedChainEntry *tail;
-    GraphicsIndexedChainEntry *freeEntries;
-    u32 allocatedCount;
+    GraphicsIndexedChainEntry *freeHead;
+    u32 allocatedEntryCount;
 } GraphicsIndexedChainPool;
 
 typedef char GraphicsIndexedChainEntrySizeCheck[
@@ -42,7 +49,7 @@ void GraphicsIndexedChainEntry_Destroy(GraphicsIndexedChainEntry *entry);
 GraphicsIndexedChainPool *GraphicsIndexedChainPool_Init(
     GraphicsIndexedChainPool *pool);
 GraphicsIndexedChainEntry *GraphicsIndexedChainPool_AllocateChain(
-    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 mode);
+    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 bindingMode);
 void GraphicsIndexedChainPool_ReleaseChain(GraphicsIndexedChainPool *pool,
                                            GraphicsIndexedChainEntry *root);
 

@@ -77,7 +77,7 @@ void GraphicsSpriteRenderer_QueuePendingBlocks(GraphicsSpriteRenderer *renderer)
     GraphicsSpriteRenderer_ConfigureObjectDisplay(renderer);
     root = renderer->indexedPool1.head;
     while (root != 0) {
-        u8 *resource = (u8 *)root->field_0c;
+        u8 *resource = (u8 *)root->resource;
         GraphicsIndexedChainEntry *entry = root;
         u16 count;
         u32 interrupt_state;
@@ -93,11 +93,11 @@ void GraphicsSpriteRenderer_QueuePendingBlocks(GraphicsSpriteRenderer *renderer)
                 &renderer->transferQueue,
                 GRAPHICS_TRANSFER_KIND_OBJECT_EXTENDED_PALETTE,
                 (u8 *)GraphicsBgResourceData_GetDecoded(resource) + index * 0x200,
-                (u32)entry->index << 9, 0x200);
+                (u32)entry->descriptorIndex << 9, 0x200);
             entry = entry->chainNext;
         }
         GX_VBlankIntr(gGraphicsSpriteStatePool.interrupt_state);
-        root = root->next;
+        root = root->nextOrFreeNext;
     }
     renderer->field_34 = 1;
 }

@@ -58,7 +58,7 @@ void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer
         GraphicsTransferQueue_Enqueue(
             &renderer->transferQueue, GRAPHICS_TRANSFER_KIND_OBJECT_PALETTE,
             source,
-            (u32)entry->index << 5, 0x20);
+            (u32)entry->descriptorIndex << 5, 0x20);
         entry = entry->chainNext;
     }
     GX_VBlankIntr(gGraphicsSpriteStatePool.interruptState);

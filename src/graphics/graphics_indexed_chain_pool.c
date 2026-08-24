@@ -3,8 +3,8 @@
 /*
  * Sixteen-entry graphics descriptor pool. Allocations append one active root
  * and optionally chain more descriptors from it; each descriptor retains a
- * stable byte index assigned at construction. The remaining payload byte and
- * pointer are kept offset-based until their consumers are fully reconstructed.
+ * stable descriptor index assigned at construction. Roots retain palette
+ * resources, a byte reference count, and their palette binding mode.
  */
 
 #ifdef __cplusplus
@@ -20,18 +20,18 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
 #endif
 
 /*
- * Clear all links, the offset-0x0c pointer, and three payload bytes in entry.
+ * Clear all links, the resource pointer, and three payload bytes in entry.
  * The descriptor changes in place; there is no return value or hardware I/O.
  */
 void GraphicsIndexedChainEntry_Init(GraphicsIndexedChainEntry *entry)
 {
     entry->chainNext = 0;
-    entry->next = 0;
-    entry->prev = 0;
-    entry->field_0c = 0;
-    entry->field_10 = 0;
-    entry->mode = 0;
-    entry->index = 0;
+    entry->nextOrFreeNext = 0;
+    entry->previousOrFreePrevious = 0;
+    entry->resource = 0;
+    entry->referenceCount = 0;
+    entry->bindingMode = 0;
+    entry->descriptorIndex = 0;
 }
 
 /*
@@ -61,33 +61,34 @@ GraphicsIndexedChainPool *GraphicsIndexedChainPool_Init(
 
     pool->tail = 0;
     pool->head = 0;
-    pool->freeEntries = pool->entries;
-    pool->allocatedCount = 0;
+    pool->freeHead = pool->entries;
+    pool->allocatedEntryCount = 0;
 
     for (i = 0; i < GRAPHICS_INDEXED_CHAIN_CAPACITY; i++) {
-        pool->entries[i].index = i;
+        pool->entries[i].descriptorIndex = i;
     }
     for (i = 0; i < GRAPHICS_INDEXED_CHAIN_CAPACITY - 1; i++) {
-        pool->entries[i].next = &pool->entries[i + 1];
+        pool->entries[i].nextOrFreeNext = &pool->entries[i + 1];
     }
     return pool;
 }
 
 /*
  * Take up to requestedCount descriptors. Append the first as an active root,
- * store mode on that root, and connect later descriptors through chainNext.
+ * store bindingMode on that root, and connect later descriptors through
+ * chainNext.
  * Returns the root or null, and counts every descriptor obtained. Exhaustion
  * returns a shorter chain. Confirmed callers pass a positive requestedCount;
  * retail zero-count behavior consumes the free list because this is do-while.
  */
 #ifndef MATCHING
 GraphicsIndexedChainEntry *GraphicsIndexedChainPool_AllocateChain(
-    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 mode)
+    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 bindingMode)
 {
     GraphicsIndexedChainEntry *head = pool->head;
     GraphicsIndexedChainEntry *tail = pool->tail;
-    GraphicsIndexedChainEntry *freeEntry = pool->freeEntries;
-    u32 allocatedCount = pool->allocatedCount;
+    GraphicsIndexedChainEntry *freeEntry = pool->freeHead;
+    u32 allocatedEntryCount = pool->allocatedEntryCount;
     GraphicsIndexedChainEntry *root = 0;
     GraphicsIndexedChainEntry *previous = 0;
 
@@ -97,37 +98,37 @@ GraphicsIndexedChainEntry *GraphicsIndexedChainPool_AllocateChain(
         if (entry == 0) {
             break;
         }
-        freeEntry = entry->next;
+        freeEntry = entry->nextOrFreeNext;
         if (previous != 0) {
             previous->chainNext = entry;
-            entry->prev = 0;
+            entry->previousOrFreePrevious = 0;
         } else {
             root = entry;
-            root->mode = mode;
+            root->bindingMode = bindingMode;
             if (head != 0) {
-                tail->next = entry;
+                tail->nextOrFreeNext = entry;
             } else {
                 head = entry;
             }
-            entry->prev = tail;
+            entry->previousOrFreePrevious = tail;
             tail = entry;
         }
-        entry->next = 0;
+        entry->nextOrFreeNext = 0;
         entry->chainNext = 0;
-        allocatedCount++;
+        allocatedEntryCount++;
         previous = entry;
     } while (--requestedCount != 0);
 
     pool->head = head;
     pool->tail = tail;
-    pool->freeEntries = freeEntry;
-    pool->allocatedCount = allocatedCount;
+    pool->freeHead = freeEntry;
+    pool->allocatedEntryCount = allocatedEntryCount;
     return root;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
 asm GraphicsIndexedChainEntry *GraphicsIndexedChainPool_AllocateChain(
-    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 mode)
+    GraphicsIndexedChainPool *pool, s32 requestedCount, u8 bindingMode)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, r9}
     mov r12, r0
@@ -174,7 +175,7 @@ indexed_chain_allocate_done:
 /*
  * Remove non-null root from the active list, then return root and every
  * chainNext descriptor to the free-list head. All returned links are detached
- * and allocatedCount is decremented per descriptor. Payloads remain intact;
+ * and allocatedEntryCount is decremented per descriptor. Payloads remain intact;
  * there is no SDK or graphics-hardware operation.
  */
 #ifndef MATCHING
@@ -184,7 +185,7 @@ void GraphicsIndexedChainPool_ReleaseChain(GraphicsIndexedChainPool *pool,
     GraphicsIndexedChainEntry *head;
     GraphicsIndexedChainEntry *tail;
     GraphicsIndexedChainEntry *freeEntry;
-    u32 allocatedCount;
+    u32 allocatedEntryCount;
     GraphicsIndexedChainEntry *prev;
     GraphicsIndexedChainEntry *next;
 
@@ -194,17 +195,17 @@ void GraphicsIndexedChainPool_ReleaseChain(GraphicsIndexedChainPool *pool,
 
     head = pool->head;
     tail = pool->tail;
-    freeEntry = pool->freeEntries;
-    allocatedCount = pool->allocatedCount;
-    prev = root->prev;
-    next = root->next;
+    freeEntry = pool->freeHead;
+    allocatedEntryCount = pool->allocatedEntryCount;
+    prev = root->previousOrFreePrevious;
+    next = root->nextOrFreeNext;
     if (prev != 0) {
-        prev->next = next;
+        prev->nextOrFreeNext = next;
     } else {
         head = next;
     }
     if (next != 0) {
-        next->prev = prev;
+        next->previousOrFreePrevious = prev;
     } else {
         tail = prev;
     }
@@ -213,20 +214,20 @@ void GraphicsIndexedChainPool_ReleaseChain(GraphicsIndexedChainPool *pool,
         GraphicsIndexedChainEntry *chainNext = root->chainNext;
 
         if (freeEntry != 0) {
-            freeEntry->prev = root;
+            freeEntry->previousOrFreePrevious = root;
         }
-        root->prev = 0;
-        root->next = freeEntry;
+        root->previousOrFreePrevious = 0;
+        root->nextOrFreeNext = freeEntry;
         root->chainNext = 0;
         freeEntry = root;
-        allocatedCount--;
+        allocatedEntryCount--;
         root = chainNext;
     } while (root != 0);
 
     pool->head = head;
     pool->tail = tail;
-    pool->freeEntries = freeEntry;
-    pool->allocatedCount = allocatedCount;
+    pool->freeHead = freeEntry;
+    pool->allocatedEntryCount = allocatedEntryCount;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
