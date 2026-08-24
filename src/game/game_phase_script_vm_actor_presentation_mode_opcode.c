@@ -13,7 +13,7 @@ extern void func_020708c4(void *state);
 extern void GraphicsArchiveResource_ReleaseAlternateBuffer(void *state);
 extern void func_02070958(void *state, s32 first, s32 second, s32 third);
 extern void func_02070a78(void *state, s32 first, s32 second, s32 third);
-extern void func_02074dc8(void *type, void *object);
+extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *type, void *object);
 extern void func_020afd0c(void *reg, s32 firstMask, s32 secondMask,
                           s32 firstCoefficient, s32 secondCoefficient);
 #ifdef __cplusplus
@@ -22,7 +22,7 @@ extern void func_020afd0c(void *reg, s32 firstMask, s32 secondMask,
 
 static void refreshPresentationObject(void *object)
 {
-    func_02074dc8(**(void ***)object, object);
+    GraphicsSpriteRenderer_QueueStatePaletteUploads(**(void ***)object, object);
 }
 
 /*

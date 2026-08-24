@@ -16,7 +16,7 @@ extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
-extern void func_02074dc8(void *);
+extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *);
 extern void GraphicsSpriteRenderer_SetTextGridPosition(void *, s32, s32);
 extern void func_02091e1c(void *);
 extern void func_020958d8(void *);
@@ -70,7 +70,7 @@ extern "C" void func_ov030_021fd304(void *widget)
     for (s32 i = 0; i < 7; ++i) {
         void *sprite = FIELD(void *, widget, 0x34 + i * 4);
         if ((FIELD(u16, sprite, 0x24) & 4) == 0) {
-            func_02074dc8(data_020f4e14[0]);
+            GraphicsSpriteRenderer_QueueStatePaletteUploads(data_020f4e14[0]);
             break;
         }
     }

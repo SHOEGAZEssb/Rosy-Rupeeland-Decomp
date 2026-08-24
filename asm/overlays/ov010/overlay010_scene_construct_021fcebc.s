@@ -21,7 +21,7 @@
     .extern Heap_AllocCore
     .extern GraphicsResourceSetVariant_Init
     .extern GraphicsSpriteRenderer_HideAllSprites
-    .extern func_02075238
+    .extern GraphicsSpriteRenderer_Suspend
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern Graphics3DResourceOwner_Init
     .extern Graphics3DResourceOwner_CreateManager
@@ -115,7 +115,7 @@ L_021fcfac:
     blt L_021fcf30
     ldr r0, L_021fd1a4
     ldr r0, [r0, #0x0]
-    bl func_02075238
+    bl GraphicsSpriteRenderer_Suspend
     ldr r0, L_021fd1a4
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_HideAllSprites

@@ -19,7 +19,7 @@ extern void GraphicsSpriteState_InitGlobalPool(void);
 extern void *GraphicsSpriteRenderer_Init(void *state, int engine, int arg2, int arg3);
 extern void *func_02071568(void *manager, u32 resourceId);
 extern void *func_020716bc(void *manager, u32 resourceId);
-extern void func_02075398(void *state, void *resourceC000,
+extern void GraphicsSpriteRenderer_InitTextResources(void *state, void *resourceC000,
                           void *resourceC001);
 
 #ifdef __cplusplus
@@ -89,9 +89,9 @@ void GraphicsSystem_Init(void)
     resourceC001 = func_020716bc(manager, GRAPHICS_RESOURCE_ID_C001);
     GRAPHICS_STATE_FIELD(void *, 0x00) = resourceC001;
 
-    func_02075398(GRAPHICS_STATE_FIELD(void *, 0x0C), resourceC000,
+    GraphicsSpriteRenderer_InitTextResources(GRAPHICS_STATE_FIELD(void *, 0x0C), resourceC000,
                   resourceC001);
-    func_02075398(GRAPHICS_STATE_FIELD(void *, 0x08), resourceC000,
+    GraphicsSpriteRenderer_InitTextResources(GRAPHICS_STATE_FIELD(void *, 0x08), resourceC000,
                   resourceC001);
 
     *mainDispCnt = (*mainDispCnt & ~DISPCNT_PLANE_MASK) | DISPCNT_OBJ_ENABLE;
@@ -178,12 +178,12 @@ graphics_init_main_done:
     str r2, [r1]
     ldr r0, [r1, #0xc]
     ldr r1, [r1, #4]
-    bl func_02075398
+    bl GraphicsSpriteRenderer_InitTextResources
     ldr r2, =gGraphicsState020F4E08
     ldr r0, [r2, #8]
     ldr r1, [r2, #4]
     ldr r2, [r2]
-    bl func_02075398
+    bl GraphicsSpriteRenderer_InitTextResources
     mov r1, #0x04000000
     ldr r0, [r1]
     add r2, r1, #0x1000

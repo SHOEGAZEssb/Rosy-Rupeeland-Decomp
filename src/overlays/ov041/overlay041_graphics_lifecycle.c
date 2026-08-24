@@ -16,7 +16,7 @@ extern void func_020ae90c(void);
 extern void func_020ae284(s32, s32, s32);
 extern void func_020af478(s32);
 extern void func_020ae6dc(void);
-extern void func_02075238(void *);
+extern void GraphicsSpriteRenderer_Suspend(void *);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Destroy(void *);
@@ -36,7 +36,7 @@ extern void VecFx32Object_Destroy(void *);
 extern void func_02099fb0(void *);
 extern void func_02003e2c(void *);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
-extern void func_02075020(void *);
+extern void GraphicsSpriteRenderer_Resume(void *);
 void func_ov041_021fdd04(s32, s32, s32, s32, s32);
 void func_ov041_021fdd38(s32, s32, s32, s32);
 extern void func_ov041_021fe088(void *, s32, s32);
@@ -105,7 +105,7 @@ extern "C" void func_ov041_021fd01c(void *owner)
     *(volatile u32 *)0x0400001c = 0;
     *(volatile u16 *)0x05000000 = 0;
     *(volatile u16 *)0x05000400 = 0;
-    func_02075238(data_020f4e14);
+    GraphicsSpriteRenderer_Suspend(data_020f4e14);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
     func_020ae6dc();
     func_02071f80(temporary);
@@ -181,7 +181,7 @@ extern "C" void *func_ov041_021fdd64(void *owner, s32, s32, s32)
     if (FIELD(void *, owner, 0x0c)) { func_ov041_022012f4(FIELD(void *, owner, 0x0c)); func_02003e2c(FIELD(void *, owner, 0x0c)); FIELD(void *, owner, 0x0c)=0; }
     if (FIELD(void *, owner, 8)) { func_ov070_02210238(FIELD(void *, owner, 8)); func_02003e2c(FIELD(void *, owner, 8)); FIELD(void *, owner, 8)=0; }
     GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14, FIELD(void *, owner, 0));
-    func_02075020(gDisplayBrightnessPair);
+    GraphicsSpriteRenderer_Resume(gDisplayBrightnessPair);
     VecFx32Object_Destroy((u8 *)owner + 0x19c);
     VecFx32Object_Destroy((u8 *)owner + 0x18c);
     for (s32 index=9; index>=0; index--) GraphicsResourceSet_Destroy((u8 *)owner+0xf0+index*0x0c);

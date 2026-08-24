@@ -1,7 +1,7 @@
     .text
     .extern data_020f4e14
     .extern func_02070958
-    .extern func_02074dc8
+    .extern GraphicsSpriteRenderer_QueueStatePaletteUploads
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_scene_state_reset.c. */
@@ -45,7 +45,7 @@ func_ov009_021fd294: ; 0x021fd294
     ldr r0, L_021fd334
     ldr r1, [r4, #0x88]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     ldmia sp!, {r4, pc}
 L_021fd334: .word data_020f4e14
 

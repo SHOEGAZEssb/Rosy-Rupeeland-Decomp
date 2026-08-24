@@ -56,7 +56,8 @@ void *func_020c09cc(void *allocation, u32 count, u32 element_size,
 }
 
 /* Bind or retain a palette resource exactly as retail 0x02074B9C. */
-void *func_02074b9c(void *renderer_pointer, void *resource)
+void *GraphicsSpriteRenderer_AcquirePaletteBinding(
+    GraphicsSpriteRenderer *renderer_pointer, void *resource)
 {
     GraphicsSpriteRenderer *renderer =
         (GraphicsSpriteRenderer *)renderer_pointer;
@@ -138,8 +139,9 @@ void GraphicsSpriteRenderer_ReleaseExtendedPalette(GraphicsSpriteRenderer *rende
 
 /* Bind the two font resources and initialize the retail twelve-entry text
  * object chain exactly as 0x02075398. */
-void func_02075398(void *renderer_pointer, void *character_resource,
-                   void *palette_resource)
+void GraphicsSpriteRenderer_InitTextResources(
+    GraphicsSpriteRenderer *renderer_pointer, void *character_resource,
+    void *palette_resource)
 {
     GraphicsSpriteRenderer *renderer =
         (GraphicsSpriteRenderer *)renderer_pointer;
@@ -155,7 +157,7 @@ void func_02075398(void *renderer_pointer, void *character_resource,
                                     &gHeapContext);
     renderer->field_04 = GraphicsVramAllocator_Allocate(
         &renderer->vramAllocator, 0xc0, character_resource, 4);
-    renderer->field_08 = func_02074b9c(renderer, palette_resource);
+    renderer->field_08 = GraphicsSpriteRenderer_AcquirePaletteBinding(renderer, palette_resource);
     entries = (GraphicsRenderEntry *)func_020c09cc(
         Heap_Alloc(0x128, data_020e69f4, 4, &gHeapContext),
         12, 0x18, 8, (void (*)(void *))GraphicsRenderEntry_Init, 0);

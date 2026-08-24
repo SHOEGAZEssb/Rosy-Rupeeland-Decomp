@@ -21,7 +21,7 @@ extern s32 func_020adc90(...);
 extern void GraphicsArchiveResource_ReleaseAlternateBuffer(void *);
 extern void func_020708c4(void *);
 extern void func_02070958(...);
-extern void func_02074dc8(...);
+extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(...);
 extern void Overlay032Controller_CreateObject(...);
 extern void func_ov032_0220147c(void *);
 extern void func_ov032_022014c0(...);
@@ -100,7 +100,7 @@ extern "C" s32 Overlay032Controller_UpdateScale(void *controller)
     if (frames == 0) FIELD(s32, controller, 0x18) = scale_from_value(FIELD(s32, controller, 0x24));
     else FIELD(s32, controller, 0x18) += FIELD(s32, controller, 0x1c);
     apply_scale(controller);
-    func_02074dc8(FIELD(void *, FIELD(void *, controller, 8), 0), FIELD(void *, controller, 0));
+    GraphicsSpriteRenderer_QueueStatePaletteUploads(FIELD(void *, FIELD(void *, controller, 8), 0), FIELD(void *, controller, 0));
     return frames == 0;
 }
 

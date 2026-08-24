@@ -11,7 +11,7 @@
     .extern PresentationScalar_TransitionTo
     .extern Presentation_InterpolateQuadraticPulse
     .extern func_02070958
-    .extern func_02074dc8
+    .extern GraphicsSpriteRenderer_QueueStatePaletteUploads
     .extern Sound_IsEffectPlaying
     .extern func_ov004_021fb6e4
     .extern func_ov004_021fc24c
@@ -205,12 +205,12 @@ L_021fc80c:
     ldr r0, L_021fc8dc
     ldr r1, [r1, #0xc]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     ldr r1, [r4, #0x64]
     ldr r0, L_021fc8e0
     ldr r1, [r1, #0xc]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_021fc8a8
 L_021fc85c:
     ldr r0, [r4, #0x8]

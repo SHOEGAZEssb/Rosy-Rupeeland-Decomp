@@ -3,7 +3,7 @@
     .extern func_020befec
     .extern func_020afce8
     .extern func_02070958
-    .extern func_02074dc8
+    .extern GraphicsSpriteRenderer_QueueStatePaletteUploads
     .extern data_020f4e14
 
     .global func_ov040_02201288
@@ -94,7 +94,7 @@ func_ov040_02201288:
     ldr r0, .L_022013dc
     ldr r1, [r1, #0xc]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     ldmia sp!, {r3, r4, r5, pc}
 .L_022013d8: .word 0x4000050
 .L_022013dc: .word data_020f4e14

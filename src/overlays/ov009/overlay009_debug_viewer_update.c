@@ -24,7 +24,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *object, s32 value);
 extern void GraphicsSpriteState_SetFrameIndex(void *object, s32 value);
 extern void func_02070958(void *member, s32 x, s32 y, s32 z);
 extern void func_02070a78(void *member, s32 delta, s32 first, s32 last);
-extern void func_02074dc8(void *manager, void *object);
+extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *manager, void *object);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *owner);
 #ifdef __cplusplus
 }
@@ -38,7 +38,7 @@ static void overlay009_apply_scale(void *state)
     func_02070958(FIELD(void *, object, 0x18),
                   FIELD(s32, state, 0x120), FIELD(s32, state, 0x124),
                   FIELD(s32, state, 0x128));
-    func_02074dc8(data_020f4e14, object);
+    GraphicsSpriteRenderer_QueueStatePaletteUploads(data_020f4e14, object);
 }
 
 /* Recreate the active object after changing the selected file, record, or kind. */
@@ -247,7 +247,7 @@ s32 func_ov009_021fd4e8(void *state)
                           FIELD(s32, state, 0x138) / 16,
                           FIELD(s32, state, 0x12c),
                           FIELD(s32, state, 0x130));
-            func_02074dc8(data_020f4e14, object);
+            GraphicsSpriteRenderer_QueueStatePaletteUploads(data_020f4e14, object);
         } else if (row == 7 && (held & 0x31)) {
             FIELD(s32, state, 0x11c) = 0;
         }

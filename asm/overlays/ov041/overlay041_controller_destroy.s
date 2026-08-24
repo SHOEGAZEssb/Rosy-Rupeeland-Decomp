@@ -8,7 +8,7 @@
 .extern data_020f4e14
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
-.extern func_02075020
+.extern GraphicsSpriteRenderer_Resume
 .extern func_02099fb0
 .extern func_ov041_021fce00
 .extern func_ov041_021fdeb4
@@ -81,7 +81,7 @@ func_ov041_021fdd64: ; 0x021fdd64
     bl GraphicsSpriteGroupOwner_DestroyGroup
     ldr r0, .L_021fdeac
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x19c
     bl VecFx32Object_Destroy
     add r0, r4, #0x18c

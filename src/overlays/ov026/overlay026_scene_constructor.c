@@ -32,7 +32,7 @@ extern void *GraphicsArchive_AcquireOwlvResource(void *, s32);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void GraphicsResourceSetVariant_Load(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
-extern void func_02075238(void *);
+extern void GraphicsSpriteRenderer_Suspend(void *);
 extern void *GraphicsAnimationInstanceManager_CreateInstance(void *, void *);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
 extern void *Graphics3DResourceOwner_CreateManager(void *);
@@ -120,9 +120,9 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     G3X_Init();
     FIELD(s32, scene, 0x50) = 0;
     func_020923a4((u8 *)scene + 0x328);
-    func_02075238(data_020f4e14);
+    GraphicsSpriteRenderer_Suspend(data_020f4e14);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
-    func_02075238(gDebugFont);
+    GraphicsSpriteRenderer_Suspend(gDebugFont);
     GraphicsSpriteRenderer_HideAllSprites(gDebugFont);
     func_020ae6dc();
 

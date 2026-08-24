@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_widget_controller.c for documented portable C. */
 .extern func_02070958
-.extern func_02074dc8
+.extern GraphicsSpriteRenderer_QueueStatePaletteUploads
 .extern func_020be8c0
 .extern func_020beae4
 .extern func_020beb18
@@ -44,7 +44,7 @@ L_022016c4:
     ldr r0, [r4, #0x8]
     ldr r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_022016fc:
@@ -61,7 +61,7 @@ L_022016fc:
     ldr r0, [r4, #0x8]
     ldr r1, [r4, #0x0]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .size Overlay032Controller_UpdateScale, .-Overlay032Controller_UpdateScale

@@ -29,7 +29,7 @@ extern void *GraphicsRenderEntryPool_AllocateChain(void *pool,
                                                     s32 requested_count);
 extern void GraphicsRenderEntryPool_SortRoots(void *pool);
 extern void GraphicsSpriteStatePool_Release(void *pool, void *state);
-extern void *func_02074b9c(void *renderer, void *resource);
+extern void *GraphicsSpriteRenderer_AcquirePaletteBinding(void *renderer, void *resource);
 extern void *GraphicsVramAllocator_Allocate(void *allocator, u16 size,
                                             void *owner, u32 alignment);
 extern void GraphicsVramAllocator_Release(void *allocator, void *allocation);
@@ -86,7 +86,7 @@ void GraphicsSpriteRenderer_BuildFrame(void *renderer_pointer, s32 sort_roots)
                         void *entry;
 
                         if (*(void **)(state + 0x10) == 0) {
-                            *(void **)(state + 0x10) = func_02074b9c(
+                            *(void **)(state + 0x10) = GraphicsSpriteRenderer_AcquirePaletteBinding(
                                 renderer, *(void **)(state + 0x18));
                         }
                         if (*(void **)(state + 0x0c) == 0) {

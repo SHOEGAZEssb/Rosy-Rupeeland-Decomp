@@ -1,0 +1,7 @@
+{
+  "func_02074b9c": "GraphicsSpriteRenderer_AcquirePaletteBinding",
+  "func_02074dc8": "GraphicsSpriteRenderer_QueueStatePaletteUploads",
+  "func_02075020": "GraphicsSpriteRenderer_Resume",
+  "func_02075238": "GraphicsSpriteRenderer_Suspend",
+  "func_02075398": "GraphicsSpriteRenderer_InitTextResources"
+}

@@ -7,7 +7,7 @@
     .extern func_ov043_0220b740
     .extern G3X_Init
     .extern func_020923a4
-    .extern func_02075238
+    .extern GraphicsSpriteRenderer_Suspend
     .extern GraphicsSpriteRenderer_HideAllSprites
     .extern func_020ae7b0
     .extern func_020ae6dc
@@ -46,14 +46,14 @@ func_ov037_021fe4fc:
     bl func_020923a4
     ldr r0, L_021fe628
     ldr r0, [r0, #0x0]
-    bl func_02075238
+    bl GraphicsSpriteRenderer_Suspend
     ldr r0, L_021fe628
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_HideAllSprites
     bl func_020ae7b0
     ldr r0, L_021fe62c
     ldr r0, [r0, #0x0]
-    bl func_02075238
+    bl GraphicsSpriteRenderer_Suspend
     ldr r0, L_021fe62c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_HideAllSprites

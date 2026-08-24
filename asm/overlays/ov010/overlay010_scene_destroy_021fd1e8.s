@@ -7,7 +7,7 @@
     .extern data_ov010_021fec68
     .extern Heap_FreeCore
     .extern GraphicsResourceSetVariant_Destroy
-    .extern func_02075020
+    .extern GraphicsSpriteRenderer_Resume
     .extern Graphics3DResourceOwner_Destroy
     .extern Graphics3DResourceBinding_Destroy
     .extern func_020923a0
@@ -56,7 +56,7 @@ L_021fd23c:
 L_021fd270:
     ldr r0, L_021fd2b0
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x180
     bl func_02092418
     bl DebugText_BeginFrame

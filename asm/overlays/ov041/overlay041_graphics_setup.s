@@ -20,7 +20,7 @@
 .extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteRenderer_HideAllSprites
-.extern func_02075238
+.extern GraphicsSpriteRenderer_Suspend
 .extern func_020ae6dc
 .extern func_020ae90c
 .extern func_020ae9a4
@@ -86,7 +86,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     strh r2, [r0, #0x0]
     ldr r0, .L_021fdc30
     ldr r0, [r0, #0x0]
-    bl func_02075238
+    bl GraphicsSpriteRenderer_Suspend
     ldr r0, .L_021fdc30
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_HideAllSprites

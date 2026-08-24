@@ -50,6 +50,15 @@ void GraphicsSpriteRenderer_BuildFrame(GraphicsSpriteRenderer *renderer,
                                        s32 sortRoots);
 void GraphicsSpriteRenderer_FlushVBlankTransfers(
     GraphicsSpriteRenderer *renderer);
+void *GraphicsSpriteRenderer_AcquirePaletteBinding(
+    GraphicsSpriteRenderer *renderer, void *resource);
+void GraphicsSpriteRenderer_QueueStatePaletteUploads(
+    GraphicsSpriteRenderer *renderer, GraphicsSpriteState *state);
+void GraphicsSpriteRenderer_Resume(GraphicsSpriteRenderer *renderer);
+void GraphicsSpriteRenderer_Suspend(GraphicsSpriteRenderer *renderer);
+void GraphicsSpriteRenderer_InitTextResources(
+    GraphicsSpriteRenderer *renderer, void *characterResource,
+    void *paletteResource);
 void GraphicsSpriteRenderer_ConfigureObjectDisplay(
     GraphicsSpriteRenderer *renderer);
 void *GraphicsSpriteRenderer_SetFontResource(GraphicsSpriteRenderer *renderer, void *replacement);

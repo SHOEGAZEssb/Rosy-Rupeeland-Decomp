@@ -20,7 +20,7 @@ extern void func_02092364(void *state);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
 extern void func_020923a4(void *state);
-extern void func_02075238(void *resource);
+extern void GraphicsSpriteRenderer_Suspend(void *resource);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *resource);
 extern void func_020ae6dc(void);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
@@ -119,9 +119,9 @@ extern "C" void *func_ov035_02202378(void *object, s32 selection)
     G3X_Init();
     FIELD(s32, object, 0x50) = 0;
     func_020923a4((u8 *)object + 0x64);
-    func_02075238(data_020f4e14[0]);
+    GraphicsSpriteRenderer_Suspend(data_020f4e14[0]);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14[0]);
-    func_02075238(gDebugFont[0]);
+    GraphicsSpriteRenderer_Suspend(gDebugFont[0]);
     GraphicsSpriteRenderer_HideAllSprites(gDebugFont[0]);
     func_020ae6dc();
 

@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void Graphics3DResourceOwner_Destroy(void *owner);
 extern void Heap_Free(void *allocation);
-extern void func_02075020(void *resource);
+extern void GraphicsSpriteRenderer_Resume(void *resource);
 extern void func_02092418(void *camera);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As3D);
 extern void func_ov048_0220b7b4(void *state);
@@ -28,7 +28,7 @@ extern void func_020923a0(void *camera);
 /*
  * Reinstalls the presentation vtable, clears active flag 0x400, deletes the
  * main scene at +0x5C through vtable slot +4, destroys/frees resource owner
- * +0x58, releases shared graphics and debug-font resources, tears down the
+ * +0x58, resumes shared graphics and debug-font renderers, tears down the
  * camera, resets display mode and both brightness registers, then releases
  * the +0x94 subsystem. Returns presentation without freeing it. Heap, shared
  * resources, display hardware, and camera/graphics state change.
@@ -47,8 +47,8 @@ extern "C" void *func_ov037_021fe648(void *presentation)
         Graphics3DResourceOwner_Destroy(owner);
         Heap_Free(owner);
     }
-    func_02075020(data_020f4e14[0]);
-    func_02075020(gDebugFont[0]);
+    GraphicsSpriteRenderer_Resume(data_020f4e14[0]);
+    GraphicsSpriteRenderer_Resume(gDebugFont[0]);
     func_02092418((u8 *)presentation + 0x60);
     GX_SetGraphicsMode(1, 0, 0);
     REG16(0x04000050) = 0;

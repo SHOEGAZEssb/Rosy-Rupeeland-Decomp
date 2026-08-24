@@ -32,7 +32,7 @@
     .extern GraphicsSpriteState_ResetFrame
     .extern GraphicsSpriteState_HitTestOpaquePixel
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .extern func_02074dc8
+    .extern GraphicsSpriteRenderer_QueueStatePaletteUploads
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_Printf
     .extern GraphicsSpriteCanvas_DrawRect
@@ -497,7 +497,7 @@ L_021fdb08:
     ldr r0, L_021fe9c8
     ldr r1, [r9, #0x88]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_021fdd84
 L_021fdb70:
     ldr r0, [r9, #0x88]
@@ -524,7 +524,7 @@ L_021fdb70:
     ldr r0, L_021fe9c8
     ldr r1, [r9, #0x88]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_021fdd84
 L_021fdbd8:
     ldr r0, [r9, #0x88]
@@ -551,7 +551,7 @@ L_021fdbd8:
     ldr r0, L_021fe9c8
     ldr r1, [r9, #0x88]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_021fdd84
 L_021fdc40:
     ldr r0, [r9, #0x50]
@@ -632,7 +632,7 @@ L_021fdd38:
     ldr r0, L_021fe9c8
     ldr r1, [r9, #0x88]
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_021fdd84
 L_021fdd70:
     ldr r0, [r9, #0x50]

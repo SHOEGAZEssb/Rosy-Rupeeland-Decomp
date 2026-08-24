@@ -5,7 +5,7 @@
 .extern data_ov027_021fee60
 .extern data_ov027_021feeb4
 .extern GraphicsResourceSetVariant_Destroy
-.extern func_02075020
+.extern GraphicsSpriteRenderer_Resume
 .extern Graphics3DResourceOwner_Destroy
 .extern func_020923a0
 .extern func_02092418
@@ -43,10 +43,10 @@ func_ov027_021fde24:
 L_021fde7c:
     ldr r0, L_021fdf34
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     ldr r0, L_021fdf38
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x164
     bl func_02092418
     mov r1, #0x0

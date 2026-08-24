@@ -8,7 +8,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_Destroy
-.extern func_02074dc8
+.extern GraphicsSpriteRenderer_QueueStatePaletteUploads
 .extern GraphicsSpriteRenderer_SetTextGridPosition
 .extern func_02091e1c
 .extern func_020958d8
@@ -89,7 +89,7 @@ L_021fd35c:
     bne L_021fd388
     ldr r0, L_021fd3e4
     ldr r0, [r0, #0x0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_021fd394
 L_021fd388:
     add r2, r2, #0x1

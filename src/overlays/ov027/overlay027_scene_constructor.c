@@ -29,7 +29,7 @@ extern void func_ov043_0220b740(void *);
 extern void func_02091b6c(void *);
 extern void G3X_Init(void);
 extern void func_020923a4(void *);
-extern void func_02075238(void *);
+extern void GraphicsSpriteRenderer_Suspend(void *);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void func_020ae6dc(void);
 extern void *Graphics3DResourceOwner_Init(void *, s32, s32);
@@ -81,9 +81,9 @@ extern "C" void *Overlay027Scene_Init(void *scene)
     G3X_Init();
     FIELD(s32, scene, 0x50) = 0;
     func_020923a4((u8 *)scene + 0x164);
-    func_02075238(data_020f4e14);
+    GraphicsSpriteRenderer_Suspend(data_020f4e14);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
-    func_02075238(gDebugFont);
+    GraphicsSpriteRenderer_Suspend(gDebugFont);
     GraphicsSpriteRenderer_HideAllSprites(gDebugFont);
     func_020ae6dc();
 

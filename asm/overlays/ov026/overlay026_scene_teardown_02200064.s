@@ -8,7 +8,7 @@
 .extern Sound_StopEffect
 .extern GraphicsArchive_ReleaseOwlvResource
 .extern GraphicsResourceSetVariant_Destroy
-.extern func_02075020
+.extern GraphicsSpriteRenderer_Resume
 .extern Graphics3DResourceOwner_Destroy
 .extern Graphics3DLightSet_Destroy
 .extern func_02092314
@@ -59,10 +59,10 @@ func_ov026_02200064:
 L_022000e4:
     ldr r0, L_022001ac
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     ldr r0, L_022001b0
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x328
     bl func_02092418
     mov r1, #0x0

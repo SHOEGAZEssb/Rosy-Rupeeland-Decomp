@@ -29,7 +29,7 @@ extern void Graphics3DSceneState_Init(void *);
 extern void func_02092364(void *);
 extern void func_020923a4(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02075238(void *);
+extern void GraphicsSpriteRenderer_Suspend(void *);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void *Heap_AllocCore(s32, const char *, s32, void *);
 extern void func_020b4554(void *, s32);
@@ -109,7 +109,7 @@ void *func_ov010_021fcebc(void *state)
         func_020b4554(buffer, length);
         CheckedFS_CloseFile(&file);
     }
-    func_02075238(manager);
+    GraphicsSpriteRenderer_Suspend(manager);
     GraphicsSpriteRenderer_HideAllSprites(manager);
     allocation = Heap_Alloc(0x624, data_ov010_021fec84, 4, gHeapContext);
     if (allocation) Graphics3DResourceOwner_Init(allocation, 4, 2);

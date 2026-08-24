@@ -4,7 +4,7 @@
 
     .extern Graphics3DResourceOwner_Destroy
     .extern Heap_Free
-    .extern func_02075020
+    .extern GraphicsSpriteRenderer_Resume
     .extern func_02092418
     .extern GX_SetGraphicsMode
     .extern func_ov048_0220b7b4
@@ -40,10 +40,10 @@ L_021fe74c:
 L_021fe768:
     ldr r0, L_021fe7d0
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     ldr r0, L_021fe7d4
     ldr r0, [r0, #0x0]
-    bl func_02075020
+    bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x60
     bl func_02092418
     mov r1, #0x0

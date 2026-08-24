@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern void *data_020f4e14;
 extern void func_02070958(void *member, s32 x, s32 y, s32 z);
-extern void func_02074dc8(void *manager, void *object);
+extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *manager, void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -55,6 +55,6 @@ void func_ov009_021fd294(void *state)
                       FIELD(s32, state, 0x120),
                       FIELD(s32, state, 0x124),
                       FIELD(s32, state, 0x128));
-        func_02074dc8(data_020f4e14, object);
+        GraphicsSpriteRenderer_QueueStatePaletteUploads(data_020f4e14, object);
     }
 }

@@ -14,7 +14,7 @@ extern "C" {
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern void func_020afce8(volatile void *reg, s32 layer, s32 value);
 extern void func_02070958(void *object, s32 x, s32 y, s32 z);
-extern void func_02074dc8(void *context, void *renderer);
+extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *context, void *renderer);
 extern void *data_020f4e14;
 extern s32 func_020adc40(s32 squaredDistance);
 extern void Sound_Play(void *sound, s32 parameter, s32 id);
@@ -187,6 +187,6 @@ extern "C" void func_ov040_02201288(void *scene)
     if (optional != 0) {
         s32 scale = value * 25 + 0x100;
         func_02070958(FIELD(void *, optional, 0x14), scale, scale, scale);
-        func_02074dc8(data_020f4e14, FIELD(void *, optional, 0x0c));
+        GraphicsSpriteRenderer_QueueStatePaletteUploads(data_020f4e14, FIELD(void *, optional, 0x0c));
     }
 }

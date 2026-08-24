@@ -21,7 +21,7 @@
 .extern GraphicsResourceSetVariant_Init
 .extern GraphicsResourceSetVariant_Load
 .extern GraphicsSpriteRenderer_HideAllSprites
-.extern func_02075238
+.extern GraphicsSpriteRenderer_Suspend
 .extern GraphicsAnimationInstanceManager_CreateInstance
 .extern Graphics3DResourceOwner_Init
 .extern Graphics3DResourceOwner_CreateManager
@@ -132,13 +132,13 @@ L_021ff984:
     bl func_020923a4
     ldr r0, L_021ffff8
     ldr r0, [r0, #0x0]
-    bl func_02075238
+    bl GraphicsSpriteRenderer_Suspend
     ldr r0, L_021ffff8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_HideAllSprites
     ldr r0, L_021ffffc
     ldr r0, [r0, #0x0]
-    bl func_02075238
+    bl GraphicsSpriteRenderer_Suspend
     ldr r0, L_021ffffc
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_HideAllSprites

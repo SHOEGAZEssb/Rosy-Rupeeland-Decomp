@@ -6,7 +6,7 @@
 .extern GraphicsArchiveResource_ReleaseAlternateBuffer
 .extern func_02070958
 .extern func_02070a78
-.extern func_02074dc8
+.extern GraphicsSpriteRenderer_QueueStatePaletteUploads
 .extern func_020afd0c
 .global func_02017ac8
 func_02017ac8:
@@ -44,7 +44,7 @@ L_02017b38:
     ldr r0, [r8]
     mov r1, r8
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     cmp r7, #0
     beq L_02017d04
     ldr r0, [r7, #0x18]
@@ -52,7 +52,7 @@ L_02017b38:
     ldr r0, [r7]
     mov r1, r7
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_02017d04
 L_02017b74:
     ldr r0, [r8, #0x18]
@@ -60,7 +60,7 @@ L_02017b74:
     ldr r0, [r8]
     mov r1, r8
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     cmp r7, #0
     beq L_02017d04
     ldr r0, [r7, #0x18]
@@ -68,7 +68,7 @@ L_02017b74:
     ldr r0, [r7]
     mov r1, r7
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_02017d04
 L_02017bb0:
     ldr r0, [r8, #0x18]
@@ -79,7 +79,7 @@ L_02017bb0:
     ldr r0, [r8]
     mov r1, r8
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     cmp r7, #0
     beq L_02017d04
     ldr r0, [r7, #0x18]
@@ -90,7 +90,7 @@ L_02017bb0:
     ldr r0, [r7]
     mov r1, r7
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_02017d04
 L_02017c04:
     ldr r0, [r8, #0x18]
@@ -101,7 +101,7 @@ L_02017c04:
     ldr r0, [r8]
     mov r1, r8
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     cmp r7, #0
     beq L_02017d04
     ldr r0, [r7, #0x18]
@@ -112,7 +112,7 @@ L_02017c04:
     ldr r0, [r7]
     mov r1, r7
     ldr r0, [r0]
-    bl func_02074dc8
+    bl GraphicsSpriteRenderer_QueueStatePaletteUploads
     b L_02017d04
 L_02017c58:
     mov r0, #1

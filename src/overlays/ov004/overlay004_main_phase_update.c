@@ -33,7 +33,7 @@ extern void SpritePresentation_Show(void *object);
 extern void PresentationScalar_TransitionTo(void *object, s32 mode, s32 value);
 extern s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 duration);
 extern void func_02070958(void *resource, s32 red, s32 green, s32 blue);
-extern void func_02074dc8(void *resource, void *context);
+extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *resource, void *context);
 extern s32 Sound_IsEffectPlaying(void *context, s32 group, s32 index);
 extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
 extern void func_ov004_021fc24c(void *state);
@@ -142,9 +142,9 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
             s32 value = Presentation_InterpolateQuadraticPulse(0x100, 0x200, 60);
 
             func_02070958(FIELD(void *, state, 0x058), value, value, value);
-            func_02074dc8(data_020f4e14,
+            GraphicsSpriteRenderer_QueueStatePaletteUploads(data_020f4e14,
                           FIELD(void *, FIELD(void *, state, 0x060), 0x0c));
-            func_02074dc8(gDebugFont,
+            GraphicsSpriteRenderer_QueueStatePaletteUploads(gDebugFont,
                           FIELD(void *, FIELD(void *, state, 0x064), 0x0c));
         }
         break;

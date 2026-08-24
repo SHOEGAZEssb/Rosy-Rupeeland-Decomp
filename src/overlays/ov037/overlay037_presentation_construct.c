@@ -20,7 +20,7 @@ extern void func_02092364(void *camera);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
 extern void func_020923a4(void *camera);
-extern void func_02075238(void *resource);
+extern void GraphicsSpriteRenderer_Suspend(void *resource);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *resource);
 extern void func_020ae7b0(void);
 extern void func_020ae6dc(void);
@@ -38,7 +38,7 @@ extern void func_ov037_021fe4d4(void *node, void *value24, void *value28);
 /*
  * Constructs the top-level overlay presentation. It initializes the common
  * presentation and embedded camera/+0x94 subsystem, resets the geometry engine,
- * activates shared graphics and debug-font resources, allocates a 0x624-byte
+ * suspends shared graphics and debug-font renderers, allocates a 0x624-byte
  * resource owner at +0x58 and the 0x1E0-byte main scene at +0x5C, enables flag
  * 0x400 at +0x20, and initializes retained node values from the two-word table
  * at data_ov037_021fec98. Returns presentation; heap, graphics hardware, shared
@@ -56,10 +56,10 @@ extern "C" void *func_ov037_021fe4fc(void *presentation, void *argument)
     FIELD(s32, presentation, 0x50) = 0;
     func_020923a4((u8 *)presentation + 0x60);
 
-    func_02075238(data_020f4e14[0]);
+    GraphicsSpriteRenderer_Suspend(data_020f4e14[0]);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14[0]);
     func_020ae7b0();
-    func_02075238(gDebugFont[0]);
+    GraphicsSpriteRenderer_Suspend(gDebugFont[0]);
     GraphicsSpriteRenderer_HideAllSprites(gDebugFont[0]);
     func_020ae6dc();
 

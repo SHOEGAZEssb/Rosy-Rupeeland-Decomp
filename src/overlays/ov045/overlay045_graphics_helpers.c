@@ -14,7 +14,7 @@ extern "C" void *gDebugFont;
 extern "C" void func_020708c4(void *resource);
 extern "C" void func_02070958(void *resource, s32 first, s32 second,
                                s32 third);
-extern "C" void func_02074dc8(void *font, void *sprite);
+extern "C" void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *font, void *sprite);
 
 /*
  * Apply one value uniformly to the resource at +8 after its shared prepare
@@ -25,7 +25,7 @@ extern "C" void Overlay045Graphics_SetUniformValue(void *object, s32 value)
 {
     func_020708c4(FIELD(void *, object, 8));
     func_02070958(FIELD(void *, object, 8), value, value, value);
-    func_02074dc8(gDebugFont, FIELD(void *, object, 0x20));
+    GraphicsSpriteRenderer_QueueStatePaletteUploads(gDebugFont, FIELD(void *, object, 0x20));
 }
 
 /*
