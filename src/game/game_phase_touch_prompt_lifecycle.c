@@ -1,4 +1,5 @@
 #include "tingle/game_phase_touch_prompt.h"
+#include "tingle/frame_task.h"
 #include "tingle/heap.h"
 
 /* Construct and destroy the phase-owned, resource-backed touch prompt actor. */
@@ -10,8 +11,6 @@ extern const void *data_020d5604;
 extern const char gGamePhaseTouchPromptActorAllocationTag[];
 extern void *data_020f4e14;
 extern void *data_020f4e18;
-extern void *func_02006108(void *self);
-extern void *func_02006138(void *self);
 extern void AnimationResourceState_InitEmbedded(void *state);
 extern void AnimationResourceState_Destroy(void *state);
 extern void func_02071ee0(void *state, void *manager, void *resource0,
@@ -37,7 +36,7 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
     GraphicsSpriteState *sprite;
     void *spriteState;
 
-    func_02006108(self);
+    FrameTask_Construct((FrameTask *)self);
     self->vtable = data_020d5604;
     self->owner = owner;
     AnimationResourceState_InitEmbedded(&self->resources);
@@ -75,7 +74,7 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Destroy(GamePhaseTouchPrompt *self)
         ((void (*)(void *))(*(void ***)self->actor)[1])(self->actor);
     GraphicsSpriteGroup_Destroy(self->spriteGroup);
     AnimationResourceState_Destroy(&self->resources);
-    func_02006138(self);
+    FrameTask_DestroyBase((FrameTask *)self);
     return self;
 }
 

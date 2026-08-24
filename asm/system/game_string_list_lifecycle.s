@@ -1,50 +1,50 @@
 .text
-.extern data_020d41b4
+.extern gFrameTaskVTable
 .extern data_020d41ec
 .extern Heap_Free
 .extern GameStringList_Clear
 
 /* Matching lifecycle code; portable equivalents are in game_string_list.c. */
-.global func_02006108
-.type func_02006108, @function
-func_02006108:
+.global FrameTask_Construct
+.type FrameTask_Construct, @function
+FrameTask_Construct:
     ldr r2, base_vtable
     mov r1, #0
     str r2, [r0]
     str r1, [r0, #4]
     bx lr
 base_vtable:
-    .word data_020d41b4
-    .size func_02006108, .-func_02006108
+    .word gFrameTaskVTable
+    .size FrameTask_Construct, .-FrameTask_Construct
 
-.global func_02006120
-.type func_02006120, @function
-func_02006120:
+.global FrameTask_Destroy
+.type FrameTask_Destroy, @function
+FrameTask_Destroy:
     bx lr
-    .size func_02006120, .-func_02006120
+    .size FrameTask_Destroy, .-FrameTask_Destroy
 
-.global func_02006124
-.type func_02006124, @function
-func_02006124:
+.global FrameTask_DestroyAndFree
+.type FrameTask_DestroyAndFree, @function
+FrameTask_DestroyAndFree:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02006124, .-func_02006124
+    .size FrameTask_DestroyAndFree, .-FrameTask_DestroyAndFree
 
-.global func_02006138
-.type func_02006138, @function
-func_02006138:
+.global FrameTask_DestroyBase
+.type FrameTask_DestroyBase, @function
+FrameTask_DestroyBase:
     bx lr
-    .size func_02006138, .-func_02006138
+    .size FrameTask_DestroyBase, .-FrameTask_DestroyBase
 
-.global func_0200613c
-.type func_0200613c, @function
-func_0200613c:
+.global FrameTask_UpdateNoop
+.type FrameTask_UpdateNoop, @function
+FrameTask_UpdateNoop:
     mov r0, #0
     bx lr
-    .size func_0200613c, .-func_0200613c
+    .size FrameTask_UpdateNoop, .-FrameTask_UpdateNoop
 
 .global GameStringList_Destroy
 .type GameStringList_Destroy, @function

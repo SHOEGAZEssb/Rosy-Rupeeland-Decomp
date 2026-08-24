@@ -332,11 +332,11 @@ SoftwareCanvas_FillRect kind:function(arm,size=0x80) addr:0x02005eb8
 SoftwareCanvas_DrawRect kind:function(arm,size=0xb4) addr:0x02005f38
 SoftwareCanvas_DrawGlyph kind:function(arm,size=0x8c) addr:0x02005fec
 SoftwareCanvas_DrawFormattedText kind:function(arm,size=0x90) addr:0x02006078
-func_02006108 kind:function(arm,size=0x18) addr:0x02006108
-func_02006120 kind:function(arm,size=0x4) addr:0x02006120
-func_02006124 kind:function(arm,size=0x14) addr:0x02006124
-func_02006138 kind:function(arm,size=0x4) addr:0x02006138
-func_0200613c kind:function(arm,size=0x8) addr:0x0200613c
+FrameTask_Construct kind:function(arm,size=0x18) addr:0x02006108
+FrameTask_Destroy kind:function(arm,size=0x4) addr:0x02006120
+FrameTask_DestroyAndFree kind:function(arm,size=0x14) addr:0x02006124
+FrameTask_DestroyBase kind:function(arm,size=0x4) addr:0x02006138
+FrameTask_UpdateNoop kind:function(arm,size=0x8) addr:0x0200613c
 GameStringList_Destroy kind:function(arm,size=0x20) addr:0x02006144
 GameStringList_Clear kind:function(arm,size=0x5c) addr:0x02006164
 GameStringList_Append kind:function(arm,size=0x80) addr:0x020061c0
@@ -6722,7 +6722,7 @@ gAnimationResourceVTable kind:data(any) addr:0x020d4178
 data_020d4180 kind:data(any) addr:0x020d4180
 gSoftwareCanvasVTable kind:data(any) addr:0x020d4190
 data_020d4198 kind:data(any) addr:0x020d4198
-data_020d41b4 kind:data(any) addr:0x020d41b4
+gFrameTaskVTable kind:data(any) addr:0x020d41b4
 data_020d41c0 kind:data(any) addr:0x020d41c0
 data_020d41d0 kind:data(any) addr:0x020d41d0
 data_020d41d8 kind:data(any) addr:0x020d41d8

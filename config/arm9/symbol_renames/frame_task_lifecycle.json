@@ -1,0 +1,8 @@
+{
+  "func_02006108": "FrameTask_Construct",
+  "func_02006120": "FrameTask_Destroy",
+  "func_02006124": "FrameTask_DestroyAndFree",
+  "func_02006138": "FrameTask_DestroyBase",
+  "func_0200613c": "FrameTask_UpdateNoop",
+  "data_020d41b4": "gFrameTaskVTable"
+}

@@ -29,11 +29,6 @@ typedef char GameStringListSizeCheck[
 extern "C" {
 #endif
 
-GameStringList *func_02006108(GameStringList *self);
-GameStringList *func_02006120(GameStringList *self);
-GameStringList *func_02006124(GameStringList *self);
-void *func_02006138(void *self);
-void *func_0200613c(void *self);
 GameStringList *GameStringList_Destroy(GameStringList *self);
 void GameStringList_Clear(GameStringList *self);
 GameStringListNode *GameStringList_Append(GameStringList *self,

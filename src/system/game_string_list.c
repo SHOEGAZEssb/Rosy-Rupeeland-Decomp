@@ -1,4 +1,5 @@
 #include "tingle/game_string_list.h"
+#include "tingle/frame_task.h"
 #include "tingle/heap.h"
 
 /*
@@ -6,50 +7,49 @@
  * own copied strings, while the list tracks head, tail, and element count.
  */
 
-extern u32 data_020d41b4[];
 extern u8 data_020d41c0[];
 extern u32 data_020d41ec[];
 
 typedef GameString *(*GameStringVirtualFunction)(GameString *self);
 
 /*
- * Install the base-list vtable and clear the head pointer. The recovered base
- * constructor leaves the tail and count fields untouched and returns self.
+ * Install the retail CTask vtable and clear its registration pointer. Derived
+ * frame tasks overwrite the vtable after this shared base construction.
  */
-GameStringList *func_02006108(GameStringList *self)
+FrameTask *FrameTask_Construct(FrameTask *self)
 {
-    self->vtable = data_020d41b4;
-    self->head = 0;
+    self->vtable = &gFrameTaskVTable;
+    self->registration = 0;
     return self;
 }
 
-/* Base-list destruction hook: change no state and return self. */
-GameStringList *func_02006120(GameStringList *self)
+/* Virtual CTask destruction hook: change no state and return self. */
+FrameTask *FrameTask_Destroy(FrameTask *self)
 {
     return self;
 }
 
-/* Free the base-list object itself and return its original address. */
-GameStringList *func_02006124(GameStringList *self)
+/* Free the heap-owned task and return its original address. */
+FrameTask *FrameTask_DestroyAndFree(FrameTask *self)
 {
     Heap_Free(self);
     return self;
 }
 
 /*
- * Recovered no-op virtual hook associated with this list template's metadata.
- * Its exact semantic role is not yet confirmed; it returns its input unchanged.
+ * Base-destructor variant called explicitly by derived task destructors. CTask
+ * owns no resources, so it returns its input unchanged.
  */
-void *func_02006138(void *self)
+FrameTask *FrameTask_DestroyBase(FrameTask *self)
 {
     return self;
 }
 
 /*
- * Recovered null-returning virtual hook associated with the same metadata. It
- * accepts an unused object pointer, changes no state, and returns null.
+ * Default CTask update slot. It accepts an unused task, changes no state, and
+ * returns zero so the frame scheduler keeps the task alive.
  */
-void *func_0200613c(void *self)
+s32 FrameTask_UpdateNoop(FrameTask *self)
 {
     (void)self;
     return 0;

@@ -14,6 +14,7 @@ typedef struct FrameTaskVTable {
 
 struct FrameTask {
     FrameTaskVTable *vtable;
+    void *registration;
 };
 
 struct FrameTaskNode {
@@ -43,7 +44,13 @@ extern "C" {
 
 extern FrameTaskTags gFrameTaskTags;
 extern FrameTaskList gFrameTaskList;
+extern FrameTaskVTable gFrameTaskVTable;
 
+FrameTask *FrameTask_Construct(FrameTask *task);
+FrameTask *FrameTask_Destroy(FrameTask *task);
+FrameTask *FrameTask_DestroyAndFree(FrameTask *task);
+FrameTask *FrameTask_DestroyBase(FrameTask *task);
+s32 FrameTask_UpdateNoop(FrameTask *task);
 FrameTaskNode *FrameTaskList_Add(FrameTask *task, int append);
 FrameTaskNode *FrameTaskNode_Init(FrameTaskNode *node, FrameTask **task);
 void FrameTaskList_DestroyNode(FrameTaskNode *node);

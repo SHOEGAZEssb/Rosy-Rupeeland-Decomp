@@ -5,7 +5,7 @@
 .extern gGamePhaseTouchPromptActorAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02006108
+.extern FrameTask_Construct
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_CreateStateFromSource
@@ -20,7 +20,7 @@ GamePhaseTouchPrompt_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     mov r5, r1
-    bl func_02006108
+    bl FrameTask_Construct
     ldr r1, L_02010320
     add r0, r4, #0xc
     str r1, [r4, #0x0]
@@ -86,4 +86,3 @@ L_0201032c: .word data_020f4e18
 L_02010330: .word gGamePhaseTouchPromptActorAllocationTag
 L_02010334: .word gHeapContext
     .size GamePhaseTouchPrompt_Init, . - GamePhaseTouchPrompt_Init
-

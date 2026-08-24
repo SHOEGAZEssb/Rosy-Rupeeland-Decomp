@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020d5604
-.extern func_02006138
+.extern FrameTask_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .global GamePhaseTouchPrompt_DestroyAndFree
@@ -23,11 +23,10 @@ L_020103ac:
     add r0, r4, #0xc
     bl AnimationResourceState_Destroy
     mov r0, r4
-    bl func_02006138
+    bl FrameTask_DestroyBase
     mov r0, r4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_020103d4: .word data_020d5604
     .size GamePhaseTouchPrompt_DestroyAndFree, . - GamePhaseTouchPrompt_DestroyAndFree
-

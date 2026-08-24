@@ -1,4 +1,5 @@
 #include "tingle/scene_touch.h"
+#include "tingle/frame_task.h"
 #include "tingle/touch_panel.h"
 
 /*
@@ -36,8 +37,6 @@ typedef char SceneTouchUpdateFrameSizeCheck[
 extern "C" {
 #endif
 
-extern void *func_02006108(void *task);
-extern void func_02006138(void *task);
 extern int TouchRegionManager_BeginPressAt(void *embedded, u32 x, u32 y);
 extern int TouchRegionManager_EndPressOutside(void *embedded, u32 x, u32 y);
 extern void Heap_Free(void *allocation);
@@ -54,7 +53,7 @@ extern void *gSceneState020F4DFC;
 /* Initialize the task base, install the dispatcher vtable, and clear history. */
 SceneTouchTask *SceneTouchTask_Init(SceneTouchTask *task)
 {
-    func_02006108(task);
+    FrameTask_Construct((FrameTask *)task);
     task->vtable = &gSceneTouchInitialData.taskVTable;
     task->previousTouchState = TOUCH_STATE_RELEASED;
     return task;
@@ -63,14 +62,14 @@ SceneTouchTask *SceneTouchTask_Init(SceneTouchTask *task)
 /* Destroy the dispatcher task base without freeing its allocation. */
 SceneTouchTask *SceneTouchTask_Destroy(SceneTouchTask *task)
 {
-    func_02006138(task);
+    FrameTask_DestroyBase((FrameTask *)task);
     return task;
 }
 
 /* Destroy and release a heap-owned dispatcher task. */
 SceneTouchTask *SceneTouchTask_DestroyAndFree(SceneTouchTask *task)
 {
-    func_02006138(task);
+    FrameTask_DestroyBase((FrameTask *)task);
     Heap_Free(task);
     return task;
 }
