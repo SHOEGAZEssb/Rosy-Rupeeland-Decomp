@@ -25,7 +25,7 @@
 .extern func_ov075_022168a8
 .extern func_ov075_022168f0
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 .extern genrand_int32
 
@@ -299,7 +299,7 @@ func_ov075_0221647c:
 .L_02216884: .word data_ov075_022177d0
 .L_02216888: .word gHeapContext
 .L_0221688c: .word data_021052fc
-.L_02216890: .word gLupyContext
+.L_02216890: .word gGamePhaseCurrencyHud
 .L_02216894: .word data_020e6e68
 .L_02216898: .word 0xffff
 .L_0221689c: .word gSoundContext

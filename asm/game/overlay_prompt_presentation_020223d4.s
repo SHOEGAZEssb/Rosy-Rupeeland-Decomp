@@ -21,7 +21,7 @@
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_020223d4
     .type func_020223d4, @function
@@ -114,7 +114,7 @@ func_020223d4: ; 0x020223d4
 .L_0202250c:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.L_02022514: .word gLupyContext
+.L_02022514: .word gGamePhaseCurrencyHud
 .L_02022518: .word 0x5
 .L_0202251c: .word gOverlayPromptWorkerAllocationTag
 .L_02022520: .word gHeapContext

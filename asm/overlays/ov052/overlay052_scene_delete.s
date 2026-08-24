@@ -11,7 +11,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GraphicsArchive_ReleaseResourceE4
 .extern GraphicsSpriteGroup_Destroy
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_ov052_0220d968
 func_ov052_0220d968:
@@ -78,5 +78,5 @@ func_ov052_0220d968:
 .L_0220da44: .word data_020f4e18
 .L_0220da48: .word data_021052fc
 .L_0220da4c: .word gDisplayBrightnessPair
-.L_0220da50: .word gLupyContext
+.L_0220da50: .word gGamePhaseCurrencyHud
 .size func_ov052_0220d968, . - func_ov052_0220d968

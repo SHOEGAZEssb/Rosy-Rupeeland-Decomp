@@ -10,7 +10,7 @@ extern const s32 data_020d7830[];
 extern const u8 data_ov022_022006c4[];
 extern const u8 data_ov022_022006cc[];
 extern void *gHeapContext;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern u8 gSystemState[];
 
 #ifdef __cplusplus
@@ -18,7 +18,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void *func_02003e20(u32, const void *, u32, void *);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
@@ -124,7 +124,7 @@ extern "C" void func_ov022_021fda78(void *entry)
  * Appends the indexed global menu descriptor while capacity remains. The
  * descriptor is selected from 0x34-byte records at data_020D780C. Its option
  * flag is set when the corresponding threshold in data_020D7830 is greater
- * than or equal to current Lupy currency, then count +0x2C advances. Full or
+ * than or equal to current currency, then count +0x2C advances. Full or
  * unallocated arrays are unchanged; no value is returned.
  */
 extern "C" void func_ov022_021fda7c(void *menu, s32 index)
@@ -136,7 +136,7 @@ extern "C" void func_ov022_021fda7c(void *menu, s32 index)
     s32 offset = index * 0x34;
     void *entry = (u8 *)entries + count * 8;
     FIELD(const void *, entry, 0) = data_020d780c + offset;
-    if (data_020d7830[offset / 4] >= GamePhaseCurrencyHud_GetCurrency(gLupyContext))
+    if (data_020d7830[offset / 4] >= GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud))
         FIELD(s32, entry, 4) = 1;
     FIELD(s32, menu, 0x2c) = count + 1;
 }

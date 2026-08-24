@@ -51,7 +51,7 @@
     .extern func_ov045_0220bdd0
     .extern func_ov045_0220bdf0
     .extern gHeapContext
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
     .extern Heap_Alloc
 
 .global func_ov021_022023f0
@@ -596,7 +596,7 @@ L_02202bb8: .word data_ov021_02202fb8
 L_02202bbc: .word gHeapContext
 L_02202bc0: .word data_ov021_02202cd0
 L_02202bc4: .word 0xff676980
-L_02202bc8: .word gLupyContext
+L_02202bc8: .word gGamePhaseCurrencyHud
 L_02202bcc: .word data_ov021_02202d68
 L_02202bd0: .word data_ov021_02202d38
 L_02202bd4: .word data_021f5128

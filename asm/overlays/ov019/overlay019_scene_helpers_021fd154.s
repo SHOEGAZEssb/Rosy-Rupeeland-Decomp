@@ -4,7 +4,7 @@
     .extern GamePhaseRuntime_UpdateActorPresentationState
     .extern GamePhaseCurrencyHud_Update
     .extern func_ov002_021fba00
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
 
 .global func_ov019_021fd154
 .global func_ov019_021fd170
@@ -37,5 +37,5 @@ L_021fd1a4:
     bl func_ov002_021fba00
     ldmia sp!, {r4, pc}
 L_021fd1b0: .word data_021052fc
-L_021fd1b4: .word gLupyContext
+L_021fd1b4: .word gGamePhaseCurrencyHud
     .size func_ov019_021fd170, . - func_ov019_021fd170

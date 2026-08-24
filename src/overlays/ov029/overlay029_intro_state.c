@@ -7,7 +7,7 @@
 extern void *data_020f4e14[];
 extern void *gDebugFont;
 extern void *gHeapContext;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern const u8 data_ov029_021fed20[];
 extern const s32 data_ov029_021fec70[];
 extern const s32 data_ov029_021fec28[];
@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -65,9 +65,9 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
     case 0:
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-        FIELD(u16, gLupyContext, 0xbc) = 0xfa;
-        FIELD(u16, gLupyContext, 0xbe) = 0x1e;
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+        FIELD(u16, gGamePhaseCurrencyHud, 0xbc) = 0xfa;
+        FIELD(u16, gGamePhaseCurrencyHud, 0xbe) = 0x1e;
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x78));
         Overlay045_DrawSelectorPreview(FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
         FIELD(u32, state, 0x20) = (FIELD(u32, state, 0x20) & ~1u) | 1;
@@ -80,7 +80,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
             FIELD(s32, state, 0x54), FIELD(s32, state, 0x58));
         func_02092260(state, FIELD(s32, state, 0x58) == 5 ? 0x6d : 0x69);
         if (FIELD(s32, state, 0x5c) == 4 &&
-            GamePhaseCurrencyHud_GetCurrency(gLupyContext) == 1) {
+            GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) == 1) {
             FIELD(s32, state, 0x6c) = 0;
             func_ov029_021fd7a8(state, 6);
             func_ov029_021fce4c(state,

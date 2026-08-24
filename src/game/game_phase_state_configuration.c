@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *gSoundContext;
 extern void OverlaySlot_LoadOverlay(void *object, u32 value);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
@@ -102,14 +102,14 @@ void GamePhaseState_ApplyAreaChange(GamePhaseState *self, const void *configurat
  * Apply core descriptor fields and reset per-phase GameWork state. This clears
  * the pointer bank and 19 transient flags, updates current/previous phase IDs,
  * resets shared render/debug services, derives a signed mode from config bit
- * 25, seeds Lupy values 0xb4/3, and attaches phaseObject to a new helper.
+ * 25, seeds currency-HUD values 0xb4/3, and attaches phaseObject to a new helper.
  */
 void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configuration)
 {
     const PhaseConfiguration *config =
         (const PhaseConfiguration *)configuration;
     u8 *work = (u8 *)gGameWork;
-    u8 *lupy = (u8 *)gLupyContext;
+    u8 *currencyHud = (u8 *)gGamePhaseCurrencyHud;
     static const u16 flags[] = {
         0x400, 0x3ee, 0x3fd, 0x403, 0x404, 0x402, 0x40a,
         0x35a, 0x11, 0x12, 0x3f4, 0x395, 0x39c, 0x16,
@@ -138,8 +138,8 @@ void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configu
     GamePhase_ResetTransientState();
     *(s32 *)((u8 *)GamePhaseProgress_GetOrCreateGlobal() + 8) =
         (s32)(config->flags40 << 6) >> 31;
-    *(u16 *)(lupy + 0xcc) = 0xb4;
-    *(u16 *)(lupy + 0xce) = 3;
+    *(u16 *)(currencyHud + 0xcc) = 0xb4;
+    *(u16 *)(currencyHud + 0xce) = 3;
     helper = func_020275b0();
     func_0202751c(helper, self->phaseObject);
 }

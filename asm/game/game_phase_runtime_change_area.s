@@ -27,7 +27,7 @@
 .extern func_020beb18
 .extern func_020beb6c
 .extern func_ov056_0220f054
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
     .global GamePhaseRuntime_ChangeToNeighborArea
 .type GamePhaseRuntime_ChangeToNeighborArea, @function
@@ -302,6 +302,6 @@ L_02007ef8:
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, pc}
 L_02007f00: .word gActorRuntimeCollection
-L_02007f04: .word gLupyContext
+L_02007f04: .word gGamePhaseCurrencyHud
     .size GamePhaseRuntime_ChangeToNeighborArea, .-GamePhaseRuntime_ChangeToNeighborArea
 

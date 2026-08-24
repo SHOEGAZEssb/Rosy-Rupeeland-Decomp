@@ -16,7 +16,7 @@
     .extern func_ov018_021fd90c
     .extern func_ov018_021fdb7c
     .extern gDebugFont
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
 
 .global func_ov018_021fe6f0
 func_ov018_021fe6f0:
@@ -107,7 +107,7 @@ L_021fe82c:
     bl func_ov018_021fd788
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_021fe83c: .word gLupyContext
+L_021fe83c: .word gGamePhaseCurrencyHud
 L_021fe840: .word data_020f4e14
 L_021fe844: .word gDebugFont
 L_021fe848: .word data_021052fc

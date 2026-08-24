@@ -13,7 +13,7 @@ typedef void (*V0)(void *);
 typedef void (*V1)(void *, void *);
 typedef void (*V2)(void *, void *, s32);
 
-extern "C" void *gActorRuntimeCollection, *gSoundContext, *gLupyContext,
+extern "C" void *gActorRuntimeCollection, *gSoundContext, *gGamePhaseCurrencyHud,
     *gHeapContext, *data_021052fc;
 extern "C" const u16 data_020e6e68[];
 extern "C" const u8 data_020e6adc[], data_020e6b74[], data_020e6c0c[];
@@ -494,7 +494,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
             s32 amount = ActorExtendedType2_GetDescriptorValue28(a);
             if (!F(u16, a, 0x29c)) {
                 if (F(u8, other, 0x4d) == 1 && amount > 0) {
-                    GamePhaseCurrencyHud_AddCurrency(gLupyContext, -amount, 0);
+                    GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, -amount, 0);
                     void *p =
                         Heap_Alloc(0x44, data_ov082_02214aa4, 4, gHeapContext);
                     if (p)

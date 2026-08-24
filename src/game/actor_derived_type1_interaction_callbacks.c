@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Provide type-1 actor interaction callbacks and their default return paths. */
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
 extern u8 *data_021052fc;
 extern void *gSceneManager;
@@ -27,11 +27,11 @@ void ActorDerivedType1_InteractionNoOp(void) {}
 /*
  * Return zero while optional object +0x270 has byte +0x10 bit one, actor
  * +0x230 bit 0x20000 is set, or amount is nonpositive. With +0xd0 bit 0x40000
- * clear, subtract positive amount from Lupy, allocate/register a 0x44-byte
+ * clear, subtract the positive amount from currency, allocate/register a 0x44-byte
  * actor-owned effect with -amount, 0x2000, and -0xc0, call
  * Type1Actor_TryEnterFailureState, and
  * return one. With that bit set, instead dispatch source through current scene
- * object +0x4c virtual +0xcc and return its result. Heap, Lupy, manager, scene,
+ * object +0x4c virtual +0xcc and return its result. Heap, currency-HUD, manager, scene,
  * and virtual calls have observable engine state.
  */
 s32 ActorDerivedType1_TryApplyInteractionAmount(void *self, s32 amount, void *source)
@@ -51,7 +51,7 @@ s32 ActorDerivedType1_TryApplyInteractionAmount(void *self, s32 amount, void *so
         s32 negative = -amount;
         void *allocation;
         void *effect = 0;
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, negative, 0);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, negative, 0);
         allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
             void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);

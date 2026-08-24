@@ -7,7 +7,7 @@ typedef s32 (*Method0)(void *);
 extern "C" void *gSceneManager;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
-extern "C" void *gLupyContext;
+extern "C" void *gGamePhaseCurrencyHud;
 extern "C" void *gSoundContext;
 extern "C" u8 *data_021052fc;
 extern "C" u8 gActorCategory1DescriptorTable[];
@@ -61,7 +61,7 @@ extern "C" void Sound_StopDirectSequence(void *, s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
 extern "C" void Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(void *, ...);
 extern "C" void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(void *, ...);
-extern "C" s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern "C" s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern "C" void *func_02022cb0(void *, ...);
 extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
@@ -274,7 +274,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
     case 2:
         clamp_blend(actor, 0x29);
         VecFx32Object_Assign((u8 *)actor + 0x210, (u8 *)primary + 0x18);
-        if (!GamePhaseCurrencyHud_GetCurrency(gLupyContext)) {
+        if (!GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud)) {
             F(u32, primary, 0x230) &= ~4u;
             GameWork_ClearFlag(gGameWork, 0x3ec);
             F(s32, actor, 0x220) = 0;
@@ -297,7 +297,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
         VecFx32Object_Assign((u8 *)actor + 0x210, (u8 *)partner + 0x18);
         s32 state = F(s16, F(void *, actor, 0x1f4), 0xda);
         clear_motion_vectors(primary);
-        if (!GamePhaseCurrencyHud_GetCurrency(gLupyContext)) {
+        if (!GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud)) {
             F(u32, primary, 0x230) &= ~4u;
             GameWork_ClearFlag(gGameWork, 0x3ec);
             F(s32, actor, 0x220) = 0;
@@ -540,7 +540,7 @@ extern "C" void func_ov091_02218aa0(void *actor, void *interaction) {
     if (!amount)
         return;
     void *primary = F(void *, data_021052fc, 0x2ea4);
-    GamePhaseCurrencyHud_AddCurrency(gLupyContext, amount, 0);
+    GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, amount, 0);
     void *effect = Heap_Alloc(0x44, data_ov091_02218dd0, 4, gHeapContext);
     if (effect) {
         const void *position =

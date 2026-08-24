@@ -9,7 +9,7 @@ extern void *data_021052fc;
 extern const s32 data_ov018_021ffc08[2];
 extern const s32 data_ov018_021ffc30[2];
 extern void *gDebugFont;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -31,7 +31,7 @@ extern void func_ov018_021fdb7c(void *, s32);
 
 /*
  * Run the two-phase result-finalization callback selected by state +4. Phase 0
- * enables Lupy context mode 1, commits two font/resource objects, sets global
+ * enables currency-HUD mode 1, commits two font/resource objects, sets global
  * scene flag bit 1 at data_021052FC+0x2F6C, converts raster object +0x190,
  * submits it with constants 0/0x600, flushes its 0x20-by-0x20 storage, frees
  * the temporary conversion, sets state flag bit 0, and advances. Phase 1 waits
@@ -45,7 +45,7 @@ extern "C" s32 func_ov018_021fe6f0(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0: {
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         FIELD(u32, (u8 *)data_021052fc + 0x2000, 0xf6c) |= 2;

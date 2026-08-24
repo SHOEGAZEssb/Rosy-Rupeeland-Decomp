@@ -5,7 +5,7 @@
     .extern data_ov021_02202e50
     .extern gDebugFont
     .extern gGameWork
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
     .extern GameWork_ClearFlag
     .extern GameWork_TestFlag
     .extern GamePhaseCurrencyHud_SetVisible
@@ -120,7 +120,7 @@ L_021ff814: .word gGameWork
 L_021ff818: .word 0x3b2
 L_021ff81c: .word data_020f4e14
 L_021ff820: .word gDebugFont
-L_021ff824: .word gLupyContext
+L_021ff824: .word gGamePhaseCurrencyHud
 L_021ff828: .word 0xee0e
 L_021ff82c: .word data_ov021_02202e50
 L_021ff830: .word data_ov021_02202d28

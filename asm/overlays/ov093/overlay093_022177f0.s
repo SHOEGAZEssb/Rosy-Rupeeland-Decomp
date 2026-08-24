@@ -9,7 +9,7 @@
 .extern func_0204d520
 .extern func_ov093_022177e0
 .extern gGameWork
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_ov093_022177f0
 func_ov093_022177f0:
@@ -82,5 +82,5 @@ func_ov093_022177f0:
 .L_022178f8: .word gGameWork
 .L_022178fc: .word 0x3f5
 .L_02217900: .word 0x403
-.L_02217904: .word gLupyContext
+.L_02217904: .word gGamePhaseCurrencyHud
 .size func_ov093_022177f0, . - func_ov093_022177f0

@@ -7,7 +7,7 @@
  */
 
 extern u8 gActorRuntimeCollection[];
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -104,9 +104,9 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     if (*(s16 *)(area + 0x12) >= 0)
         func_02020060(ActorMotionAreaFollower_GetPosition(b + 0x2fbc), area);
 
-    GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
-    *(u16 *)((u8 *)gLupyContext + 0xbc) = 250;
-    *(u16 *)((u8 *)gLupyContext + 0xbe) = 30;
+    GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
+    *(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xbc) = 250;
+    *(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xbe) = 30;
 
     if (oldVariant != *(s8 *)(area + 0x4c))
         GamePhaseRuntime_RefreshAreaAuxiliaryObject(self, area, 1);

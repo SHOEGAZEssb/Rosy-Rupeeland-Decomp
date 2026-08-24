@@ -2,7 +2,7 @@
 .text
 .extern GameWork_TestFlag
 .extern Sound_Play
-.extern data_020c368c
+.extern gGamePhaseCurrencyHudReminderThresholds
 .extern data_021052fc
 .extern GamePhaseCurrencyHud_UpdateDigits
 .extern GamePhaseCurrencyHud_SetVisible
@@ -326,7 +326,7 @@ L_020112c0:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_020112d8: .word data_021052fc
 L_020112dc: .word gGameWork
-L_020112e0: .word data_020c368c
+L_020112e0: .word gGamePhaseCurrencyHudReminderThresholds
 L_020112e4: .word 0x3f5
 L_020112e8: .word gSoundContext
 L_020112ec: .word 0x4000304

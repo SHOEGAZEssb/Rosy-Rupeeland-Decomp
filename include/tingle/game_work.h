@@ -46,9 +46,9 @@ typedef struct GameWork {
     u8 unknown0008[8];
     u16 playerName[16];
     u8 unknown0030[0x10];
-    u32 currency;
-    u32 unknown0044;
-    u32 unknown0048;
+    s32 currency;
+    s32 currencyIncreaseAccumulator;
+    s32 currencyDecreaseAccumulator;
     u16 values004C[256];
     u8 bytes024C[0x180];
     void *pointerBanks[GAME_WORK_POINTER_BANK_COUNT]

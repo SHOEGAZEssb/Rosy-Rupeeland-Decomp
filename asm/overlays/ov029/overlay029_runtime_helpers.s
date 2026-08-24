@@ -29,7 +29,7 @@
 .extern func_ov045_0220c18c
 .extern Overlay045_DrawSelectorPreview
 .extern gDebugFont
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern GraphicsResourceSet_Destroy
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
@@ -130,7 +130,7 @@ L_021fd748:
     mov r2, #0x20
     bl func_020b2058
     ldmia sp!, {r4, pc}
-L_021fd7a0: .word gLupyContext
+L_021fd7a0: .word gGamePhaseCurrencyHud
 L_021fd7a4: .word data_021f5ee8
 .size func_ov029_021fd6fc, .-func_ov029_021fd6fc
     .global func_ov029_021fd7a8

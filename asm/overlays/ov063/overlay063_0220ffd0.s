@@ -9,7 +9,7 @@
 .extern func_020a681c
 .extern func_020a6990
 .extern func_ov063_02210414
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_ov063_0220ffd0
 func_ov063_0220ffd0:
@@ -146,5 +146,5 @@ func_ov063_0220ffd0:
     ldmia sp!, {r4, pc}
 .L_022101b8: .word 0xc000ffff
 .L_022101bc: .word data_021052fc
-.L_022101c0: .word gLupyContext
+.L_022101c0: .word gGamePhaseCurrencyHud
 .size func_ov063_0220ffd0, . - func_ov063_0220ffd0

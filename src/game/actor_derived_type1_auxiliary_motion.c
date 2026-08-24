@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Synchronize a type-1 actor's auxiliary resource mode and directional motion. */
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *gGameWork;
 extern u8 gSystemState[];
 extern s32 data_020df254[];
@@ -13,7 +13,7 @@ extern void *data_021e9abc;
 extern "C" {
 #endif
 extern s32 AuxiliaryInteraction_RunSelectedSequence(void *resource);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
 extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern s32 AuxiliaryInteraction_IsCoreHidden(void *resource);
@@ -76,7 +76,7 @@ void ActorDerivedType1_UpdateAuxiliaryResourceMotion(void *self)
     }
 
     if (mode == 2) {
-        if (GamePhaseCurrencyHud_GetCurrency(gLupyContext) > 0)
+        if (GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) > 0)
             *(u32 *)(actor + 0x10) &= ~0x1f0000;
         resource = *(void **)(actor + 0x26c);
         if (resource != 0) {

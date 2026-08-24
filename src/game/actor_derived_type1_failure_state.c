@@ -2,7 +2,7 @@
 
 /* Enter and guard the type-1 actor failure state shared with GameWork and audio. */
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void GameWork_SetFlag(void *work, u32 flag);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
 extern void func_020338e4(void *actor);
 extern void Sound_StopAllManagedPlayers(void *soundContext);
 extern void Type1Actor_EnterFailureState(void *actor);
@@ -25,17 +25,17 @@ void ActorDerivedType1_ClearFailureCounter(void *self)
 }
 
 /*
- * Return while GameWork flag 0x3f5 is already set or the Lupy query is
+ * Return while GameWork flag 0x3f5 is already set or the currency query is
  * positive. Otherwise enter the failure state through
  * Type1Actor_EnterFailureState. Returns
- * no value; GameWork/Lupy queries are read-only, while entry changes actor,
+ * no value; GameWork/currency queries are read-only, while entry changes actor,
  * GameWork, and audio state.
  */
 void Type1Actor_TryEnterFailureState(void *self)
 {
     if (GameWork_TestFlag(gGameWork, 0x3f5) != 0)
         return;
-    if (GamePhaseCurrencyHud_GetCurrency(gLupyContext) > 0)
+    if (GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) > 0)
         return;
     Type1Actor_EnterFailureState(self);
 }

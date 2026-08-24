@@ -12,7 +12,7 @@ typedef struct OverlayTransitionObject {
 typedef struct OverlayTransitionScene {
     Scene base;
     OverlayTransitionObject *object24;
-    s32 restoreLupy28;
+    s32 restoreCurrencyHud28;
     OverlaySlot overlay2c;
     s32 kind38;
     u32 parameter3c;
@@ -26,7 +26,7 @@ extern SceneVTable data_020d5d58;
 extern char data_020d5d8c[];
 extern char data_020d5d94[];
 extern void *data_021052fc;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *gDebugFont;
 extern void func_02092c8c(s32 screen, s32 brightness);
 extern s32 SceneInputBase_Update(void *object, s32 mode);
@@ -46,7 +46,7 @@ extern OverlayTransitionObject *func_ov046_0220c7d8(
 
 /*
  * Initialize the Scene and embedded overlay slot, remember kind and parameter,
- * clear child/state, snapshot whether Lupy flag b0 bit zero was clear, set scene
+ * clear child/state, snapshot whether currency-HUD flag b0 bit zero was clear, set scene
  * flags 0/1, and return self.
  */
 OverlayTransitionScene *func_0201d240(OverlayTransitionScene *self, s32 kind,
@@ -61,9 +61,9 @@ OverlayTransitionScene *func_0201d240(OverlayTransitionScene *self, s32 kind,
     self->parameter3c = parameter;
     self->state40 = 0;
     self->object24 = 0;
-    if ((*(u16 *)((u8 *)gLupyContext + 0xb0) & 1) == 0)
+    if ((*(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xb0) & 1) == 0)
         restore = 1;
-    self->restoreLupy28 = (s16)restore;
+    self->restoreCurrencyHud28 = (s16)restore;
     Scene_SetFlags03(&self->base);
     return self;
 }
@@ -97,7 +97,7 @@ OverlayTransitionScene *func_0201d300(OverlayTransitionScene *self)
 
 /*
  * Advance the six-state transition.  It fades out, suppresses the current
- * runtime/Lupy presentation, loads overlay 31 (kind 0) or 46 (kind 1), polls
+ * runtime/currency-HUD presentation, loads overlay 31 (kind 0) or 46 (kind 1), polls
  * that overlay object through two phases, destroys it, restores presentation,
  * fades in, and finally destroys this scene.  Other kind values intentionally
  * skip allocation as recovered.  Returns one only on final destruction.
@@ -120,8 +120,8 @@ s32 func_0201d358(OverlayTransitionScene *self)
         runtimeObject = *(void **)((u8 *)runtime + 0x2fb8);
         if (runtimeObject != 0)
             GamePhaseAreaScene_SetEnabled(runtimeObject, 0);
-        if (self->restoreLupy28 != 0)
-            GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
+        if (self->restoreCurrencyHud28 != 0)
+            GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
         GamePhaseRuntime_SetPlacementMode(runtime, 0, 1);
         if (self->kind38 == 0) {
             OverlaySlot_LoadOverlay(&self->overlay2c, 0x1f);
@@ -166,8 +166,8 @@ s32 func_0201d358(OverlayTransitionScene *self)
             GamePhaseRuntime_ApplyScreenMode(runtime, 1, 1);
             GamePhaseRuntime_SetPlacementMode(runtime, 1, 1);
         }
-        if (self->restoreLupy28 != 0)
-            GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+        if (self->restoreCurrencyHud28 != 0)
+            GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         func_02092c8c(3, 0);
         self->state40++;
         break;

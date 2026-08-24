@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Advance type-1 actor timers, timed effects, input motion, and attachment state. */
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
 extern HeapContext gHeapContext;
 extern u8 *data_021052fc;
@@ -137,7 +137,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             kind >= 0x73 && kind <= 0x74) {
             s32 value = -*(s16 *)(descriptor + 0x0e);
             void *object;
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext, value, 0);
+            GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, value, 0);
             object = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
             if (object != 0) {
                 void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);

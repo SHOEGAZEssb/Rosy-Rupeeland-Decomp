@@ -9,26 +9,27 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern const s32 data_020c368c[];
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern s32 SignedAbsoluteValueVariant(s32 value);
-extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value);
+extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, s32 value);
 #ifdef __cplusplus
 }
 #endif
 
-/* Return the persistent currency value displayed by this HUD. */
-u32 GamePhaseCurrencyHud_GetCurrency(void)
+/* Return the persistent currency value associated with this HUD. */
+s32 GamePhaseCurrencyHud_GetCurrency(const GamePhaseCurrencyHud *self)
 {
+    (void)self;
     return gGameWork->currency;
 }
 
 /*
  * Unless active-actor flags at 0xd0 contain 0x100, clamp value to 9,999,999,
- * accumulate its signed difference into GameWork offsets 0x44/0x48, store it
- * as the persistent currency and in both HUD value fields, clear the transition counter, and
- * refresh all digits. Negative input is not clamped by the recovered code.
+ * accumulate its signed difference in the corresponding increase/decrease
+ * GameWork accumulator, store it as the persistent currency and in both HUD
+ * value fields, clear the transition counter, and refresh all digits. Negative
+ * input is not clamped by the recovered code.
  */
 void GamePhaseCurrencyHud_SetCurrency(GamePhaseCurrencyHud *self, s32 value)
 {
@@ -38,11 +39,11 @@ void GamePhaseCurrencyHud_SetCurrency(GamePhaseCurrencyHud *self, s32 value)
         return;
     if (value > CURRENCY_MAX)
         value = CURRENCY_MAX;
-    difference = value - (s32)gGameWork->currency;
+    difference = value - gGameWork->currency;
     if (difference > 0)
-        gGameWork->unknown0044 += difference;
+        gGameWork->currencyIncreaseAccumulator += difference;
     else
-        gGameWork->unknown0048 += difference;
+        gGameWork->currencyDecreaseAccumulator += difference;
     gGameWork->currency = value;
     self->displayedValue = value;
     self->transitionStartValue = value;
@@ -52,8 +53,8 @@ void GamePhaseCurrencyHud_SetCurrency(GamePhaseCurrencyHud *self, s32 value)
 
 /*
  * Apply delta to persistent currency with a 0..9,999,999 clamp, update the
- * recovered positive/negative accumulators at 0x44/0x48, and prepare the HUD's
- * gain/loss animation. When hidden flag bit 0 is clear, marker/backdrop sprites
+ * signed increase/decrease accumulators, and prepare the HUD's gain/loss
+ * animation. When hidden flag bit 0 is clear, marker/backdrop sprites
  * select direction-specific animations and sound 78/79 plays once. Magnitude
  * chooses flags 0x20, 0x40, or 0x80 unless forcedDuration supplies flag 0x100
  * and an explicit counter. Crossing the table threshold selected by GameWork
@@ -77,7 +78,7 @@ void GamePhaseCurrencyHud_AddCurrency(GamePhaseCurrencyHud *self, s32 delta,
     actor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
     if (*(u32 *)(actor + 0xd0) & 0x100)
         return;
-    oldValue = (s32)gGameWork->currency;
+    oldValue = gGameWork->currency;
     newValue = oldValue + delta;
     if (newValue < 0)
         newValue = 0;
@@ -85,40 +86,40 @@ void GamePhaseCurrencyHud_AddCurrency(GamePhaseCurrencyHud *self, s32 delta,
         newValue = CURRENCY_MAX;
     actualDelta = newValue - oldValue;
     if (actualDelta > 0)
-        gGameWork->unknown0044 += actualDelta;
+        gGameWork->currencyIncreaseAccumulator += actualDelta;
     else
-        gGameWork->unknown0048 += actualDelta;
+        gGameWork->currencyDecreaseAccumulator += actualDelta;
 
     thresholdIndex = *(s16 *)((u8 *)gGameWork + 0x12e);
-    threshold = data_020c368c[thresholdIndex];
+    threshold = gGamePhaseCurrencyHudReminderThresholds[thresholdIndex];
     if (!(self->flags & 1) && newValue >= threshold) {
         self->thresholdReminderTimer = 180;
         self->thresholdReminderCount = 3;
-        if ((s32)gGameWork->currency < threshold)
+        if (gGameWork->currency < threshold)
             Sound_Play(gSoundContext, 0, 125);
     }
     gGameWork->currency = newValue;
     self->transitionStartValue = self->displayedValue;
-    if (newValue == (s32)self->displayedValue)
+    if (newValue == self->displayedValue)
         return;
     if (self->flags & 1)
         return;
 
     self->transitionState = 1;
     self->transitionTimer = 20;
-    if (newValue > (s32)self->transitionStartValue)
+    if (newValue > self->transitionStartValue)
         self->flags |= 8;
-    else if (newValue < (s32)self->transitionStartValue)
+    else if (newValue < self->transitionStartValue)
         self->flags |= 0x10;
     for (display = 0; display < 2; display++) {
-        s32 increasing = newValue >= (s32)self->transitionStartValue;
+        s32 increasing = newValue >= self->transitionStartValue;
         GraphicsSpriteState_SetAnimationIndex(self->marker[display], increasing ? 1 : 2);
         GraphicsSpriteState_SetAnimationIndex(self->backdrop[display], increasing ? 1 : 2);
         self->marker[display]->flags &= ~1;
     }
-    if ((s16)self->soundCooldown == 0) {
+    if (self->soundCooldown == 0) {
         Sound_Play(gSoundContext, 0,
-                   newValue < (s32)self->transitionStartValue ? 79 : 78);
+                   newValue < self->transitionStartValue ? 79 : 78);
         self->soundCooldown = 2;
     }
     magnitudeClass = SignedAbsoluteValueVariant(actualDelta);
@@ -126,7 +127,7 @@ void GamePhaseCurrencyHud_AddCurrency(GamePhaseCurrencyHud *self, s32 delta,
     if (forcedDuration > 0) {
         self->flags |= 0x100;
         self->transitionDuration = forcedDuration;
-        self->transitionTimer = (u16)forcedDuration;
+        self->transitionTimer = (s16)forcedDuration;
     } else if (magnitudeClass < 20) {
         self->flags |= 0x20;
     } else if (magnitudeClass < 100) {

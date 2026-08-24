@@ -19,7 +19,7 @@
 .extern data_021052fc
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .global GamePhaseTransitionScene_Update
 GamePhaseTransitionScene_Update:
     stmdb sp!, {r4, lr}
@@ -152,7 +152,7 @@ L_0200c89c:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0200c8a4: .word gGameWork
-L_0200c8a8: .word gLupyContext
+L_0200c8a8: .word gGamePhaseCurrencyHud
 L_0200c8ac: .word data_021052fc
 L_0200c8b0: .word gGamePhaseResumeSceneAllocationTag
 L_0200c8b4: .word gHeapContext

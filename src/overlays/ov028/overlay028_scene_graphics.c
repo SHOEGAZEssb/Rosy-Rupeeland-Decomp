@@ -10,7 +10,7 @@ extern void *data_021f3d68;
 extern u16 data_ov028_021ff300[];
 extern const u8 data_ov028_021ff2e8[];
 extern void *gHeapContext;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -145,7 +145,7 @@ extern "C" void func_ov028_021fe438(void *state)
         func_ov028_021fe540(child,
                            func_0209189c((u8 *)state + 0x27c, 0x10, 0x20));
     }
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     func_020958d8((u8 *)state + 0x98);
     func_020958d8((u8 *)state + 0x144);
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x54));

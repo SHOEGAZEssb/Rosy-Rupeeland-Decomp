@@ -21,7 +21,7 @@
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_02022558
     .type func_02022558, @function

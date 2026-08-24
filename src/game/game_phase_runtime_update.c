@@ -13,7 +13,7 @@ extern u8 data_021f38fc[];
 extern void *data_020f4e14;
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *gSceneManager;
 
 #ifdef __cplusplus
@@ -36,7 +36,7 @@ extern s32 FrameCounter_Tick31(void *object);
 extern void func_020783cc(void *object);
 extern void func_02078384(void *object);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *object);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
 extern void GamePhaseCurrencyHud_Update(void *context);
 extern s32 GamePhaseState_TryStartBoundaryTransition(void *object);
 extern void func_0200866c(GamePhaseRuntime *self);
@@ -143,7 +143,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
 
     restricted = 0;
     if (!GameWork_TestFlag(gGameWork, 0x3f5) &&
-        GamePhaseCurrencyHud_GetCurrency(gLupyContext) <= 0)
+        GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) <= 0)
         restricted = 1;
 
     if (!restricted) {
@@ -159,7 +159,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
             return 0;
     }
 
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     if (restricted) {
         func_020338e4(*(void **)(b + 0x2ea4));
         object = *(void **)(b + 0x2ea8);

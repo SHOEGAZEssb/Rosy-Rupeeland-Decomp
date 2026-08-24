@@ -24,7 +24,7 @@
 .extern data_020d5d8c
 .extern data_020d5d94
 .extern data_021052fc
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gDebugFont
 .extern gHeapContext
 .global func_0201d300

@@ -41,7 +41,7 @@ extern GamePhaseRuntime *data_021052fc;
 extern void *gSoundContext;
 extern GraphicsSpriteRenderer *data_020f4e14;
 extern GraphicsSpriteRenderer *gDebugFont;
-extern GamePhaseCurrencyHud *gLupyContext;
+extern GamePhaseCurrencyHud *gGamePhaseCurrencyHud;
 extern u8 data_020d553c[];
 extern u8 data_020d5534[];
 extern u8 data_020d548c[];
@@ -110,7 +110,7 @@ extern void *func_ov037_021fe4fc(void *object, s32 argument);
 #define UNK_0200e0f0 (&data_020f4e14)
 #define UNK_0200e0fc (&gDebugFont)
 #define UNK_0200e3c4 (0x3ba)
-#define UNK_0200e0f4 (&gLupyContext)
+#define UNK_0200e0f4 (&gGamePhaseCurrencyHud)
 #define UNK_0200e3d0 (0x3cd)
 #define UNK_0200e3c8 (0x48)
 #define UNK_0200e3cc ((const char *)data_020d553c)

@@ -6,7 +6,7 @@
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
 .extern ActorCollection_SetEnabled
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_ov061_022100e4
 func_ov061_022100e4:
@@ -73,5 +73,5 @@ func_ov061_022100e4:
 .L_022101cc: .word data_021052fc
 .L_022101d0: .word 0x4001000
 .L_022101d4: .word 0x5000400
-.L_022101d8: .word gLupyContext
+.L_022101d8: .word gGamePhaseCurrencyHud
 .size func_ov061_022100e4, . - func_ov061_022100e4

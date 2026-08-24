@@ -15,7 +15,7 @@ extern const u32 data_ov021_02202df8[];
 extern const u32 data_ov021_02202e00[];
 extern const u32 data_ov021_02202e08[];
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,7 +24,7 @@ extern void GameWork_ClearFlag(void *, u32);
 extern void GameWork_SetFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_02062ca8(void *);
@@ -215,8 +215,8 @@ extern "C" s32 func_ov021_02201800(void *state)
             FIELD(s32, state, 0x3d8) = 1;
         s32 gain = FIELD(s32, FIELD(void *, state, 0x2bc), 8);
         s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                       GamePhaseCurrencyHud_GetCurrency(gLupyContext), gain, 0);
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, gain, anim);
+                                       GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud), gain, 0);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, gain, anim);
         func_02062ca8(FIELD(void *, state, 0x37c));
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;

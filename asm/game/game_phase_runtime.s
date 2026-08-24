@@ -42,7 +42,7 @@
 .extern GameWork_TestFlag
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern GXS_SetGraphicsMode
 .extern Heap_Alloc
 .extern Scene_ClearFlags03
@@ -382,6 +382,6 @@ L_02006f80:
 L_02006fc0: .word gActorRuntimeCollection
 L_02006fc4: .word gGameWork
 L_02006fc8: .word 0x3f2
-L_02006fcc: .word gLupyContext
+L_02006fcc: .word gGamePhaseCurrencyHud
 L_02006fd0: .word data_021052fc
     .size GamePhaseRuntime_Configure, .-GamePhaseRuntime_Configure

@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseCurrencyHud_SetCurrency
 .extern GamePhaseScriptVm_Pop
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .global GamePhaseActorScriptVm_SetCurrency
 GamePhaseActorScriptVm_SetCurrency:
     stmdb sp!, {r3, lr}
@@ -13,5 +13,5 @@ GamePhaseActorScriptVm_SetCurrency:
     bl GamePhaseCurrencyHud_SetCurrency
     mov r0, #0
     ldmia sp!, {r3, pc}
-L_02017170: .word gLupyContext
+L_02017170: .word gGamePhaseCurrencyHud
     .size GamePhaseActorScriptVm_SetCurrency, . - GamePhaseActorScriptVm_SetCurrency

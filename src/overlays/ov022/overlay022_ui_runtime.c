@@ -11,7 +11,7 @@ extern const u16 data_021f5ed0[];
 extern u8 data_021f5ee8[];
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -143,7 +143,7 @@ extern "C" void func_ov022_021ff048(void *scene)
 }
 
 /*
- * Performs the scene's incremental teardown. It shuts down global Lupy state,
+ * Performs the scene's incremental teardown. It shuts down the global currency HUD,
  * both embedded controllers, optional status/menu/overlay-46 objects, the
  * +0x354 object, and sprite-resource owners +0x9C/+0xA0. For up to 16 calls it
  * also advances +0x370, updates +0x368/+0x36C, and clears/uploads two 0x20-byte
@@ -151,7 +151,7 @@ extern "C" void func_ov022_021ff048(void *scene)
  */
 extern "C" void func_ov022_021ff0d0(void *scene)
 {
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     func_020958d8((u8 *)scene + 0xa8);
     for (s32 i = 0; i < 2; ++i)
         func_020958d8((u8 *)scene + 0x154 + i * 0xac);

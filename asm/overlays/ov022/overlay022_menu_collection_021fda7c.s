@@ -3,7 +3,7 @@
     .extern data_020d780c
     .extern data_020d7830
     .extern GamePhaseCurrencyHud_GetCurrency
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
 
 .global func_ov022_021fda7c
 func_ov022_021fda7c:
@@ -37,6 +37,6 @@ func_ov022_021fda7c:
     str r0, [r5, #0x2c]
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdaf0: .word data_020d780c
-L_021fdaf4: .word gLupyContext
+L_021fdaf4: .word gGamePhaseCurrencyHud
 L_021fdaf8: .word data_020d7830
 .size func_ov022_021fda7c, . - func_ov022_021fda7c

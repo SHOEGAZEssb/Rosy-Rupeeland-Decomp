@@ -9,7 +9,7 @@ extern "C" u8 *data_021052fc;
 extern "C" void *gHeapContext;
 extern "C" void *gGameWork;
 extern "C" void *gSoundContext;
-extern "C" void *gLupyContext;
+extern "C" void *gGamePhaseCurrencyHud;
 extern "C" void *gSceneManager;
 extern "C" void *gActorRuntimeCollection;
 extern "C" s16 data_020c9670[];
@@ -34,6 +34,7 @@ extern "C" u8 data_ov075_02217358[];
 extern "C" u8 data_ov075_02217410[];
 extern "C" u8 data_ov075_022175ec[];
 extern "C" u8 data_ov075_022177d0[];
+extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 
 #define EXT(name) extern "C" s32 name(...)
 EXT(ActorExtendedType2_Init);
@@ -74,7 +75,6 @@ EXT(DualLayerTileRenderer_SetPackedTileValue);
 EXT(GraphicsSpriteGroup_CreateState);
 EXT(GraphicsSpriteGroup_ReplaceStateResources);
 EXT(GameWork_TestFlag);
-EXT(GamePhaseCurrencyHud_AddCurrency);
 EXT(InteractionWaypointCursor_Advance);
 EXT(InteractionWaypointCursor_GetCurrentDurationFrames);
 EXT(InteractionWaypointCursor_GetCurrentRecord);
@@ -2199,7 +2199,7 @@ extern "C" void func_ov075_0221647c(void *actor, void *target, s32 dx,
         }
         RuntimePresentationManager_AppendFirstListEffect(
             F(void *, F(void *, data_021052fc, 0), 0x2f7c), effect);
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, -currency, 0);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, -currency, 0);
         F(u32, target, 0x230) |= 0x40000;
         ActorDerivedType1_TeardownRecordAndApplyMotionImpulse(target, impulse);
         F(s32, target, 0x44) = 0x3000;

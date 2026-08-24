@@ -7,13 +7,12 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern const s32 data_020c368c[];
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern u32 genrand_int32(void);
 extern s32 Presentation_InterpolateLinear(s32 target, s32 start, s32 duration,
                         s32 remaining);
-extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value);
+extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, s32 value);
 extern void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 value);
 #ifdef __cplusplus
 }
@@ -37,7 +36,7 @@ static s32 randomBelow(s32 limit)
 void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
 {
     u8 *actor = 0;
-    u32 current;
+    s32 current;
     s32 threshold;
     s32 thresholdEvent = 0;
     s32 activeRow;
@@ -60,12 +59,13 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
         goto render;
     }
 
-    if ((s16)self->soundCooldown > 0)
+    if (self->soundCooldown > 0)
         self->soundCooldown--;
-    threshold = data_020c368c[*(s16 *)((u8 *)gGameWork + 0x12e)];
+    threshold = gGamePhaseCurrencyHudReminderThresholds[
+        *(s16 *)((u8 *)gGameWork + 0x12e)];
     if ((s32)current < threshold) {
-        if ((s16)self->thresholdReminderCount > 0) {
-            if ((s16)self->thresholdReminderTimer == 0) {
+        if (self->thresholdReminderCount > 0) {
+            if (self->thresholdReminderTimer == 0) {
                 if (current && !GameWork_TestFlag(gGameWork, 0x3f5))
                     Sound_Play(gSoundContext, 0, 114);
                 self->thresholdReminderTimer = 120;
@@ -93,16 +93,16 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
     activeGroup->field_20 = 1;
 
     if (self->transitionState == 1) {
-        if ((s16)self->transitionTimer != 0) {
+        if (self->transitionTimer != 0) {
             self->transitionTimer--;
             if (self->flags & 0x100) {
                 self->displayedValue = Presentation_InterpolateLinear(
                     current, self->transitionStartValue,
-                    self->transitionDuration, (s16)self->transitionTimer);
+                    self->transitionDuration, self->transitionTimer);
             } else if (self->flags & 0x20) {
                 self->displayedValue = current;
             } else if (self->flags & 0x40) {
-                s32 remaining = (s16)self->transitionTimer;
+                s32 remaining = self->transitionTimer;
                 if (remaining > 10)
                     remaining = 10;
                 self->displayedValue = Presentation_InterpolateLinear(
@@ -110,7 +110,7 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
             } else {
                 self->displayedValue = Presentation_InterpolateLinear(
                     current, self->transitionStartValue, 20,
-                    (s16)self->transitionTimer);
+                    self->transitionTimer);
             }
         } else {
             self->flags &= ~0x1e0;
@@ -120,25 +120,25 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
         }
     }
     if (self->transitionState == 2) {
-        if ((s16)self->transitionTimer != 0)
+        if (self->transitionTimer != 0)
             self->transitionTimer--;
         else
             self->transitionState = 0;
     }
 
     GamePhaseCurrencyHud_UpdateDigits(self, self->displayedValue);
-    if ((s16)self->ornamentSpawnTimer == 0) {
+    if (self->ornamentSpawnTimer == 0) {
         if (self->flags & 8) {
-            s32 ornament = (s16)self->nextOrnamentIndex;
+            s32 ornament = self->nextOrnamentIndex;
             GraphicsSpriteState *sprite =
                 self->ornaments[activeRow][ornament];
-            self->ornamentSpawnTimer = (u16)(randomBelow(4) + 2);
+            self->ornamentSpawnTimer = (s16)(randomBelow(4) + 2);
             sprite->flags &= ~5;
             GraphicsSpriteState_SetAnimationIndex(sprite, sprite->animationIndex);
-            sprite->field_2c = (s16)-randomBelow(170);
-            sprite->field_2e = (s16)-randomBelow(40);
+            sprite->screenX = (s16)-randomBelow(170);
+            sprite->screenY = (s16)-randomBelow(40);
             self->nextOrnamentIndex++;
-            if ((s16)self->nextOrnamentIndex >= 4)
+            if (self->nextOrnamentIndex >= 4)
                 self->nextOrnamentIndex = 0;
         }
     } else {
@@ -169,7 +169,7 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
             }
         } else {
             backdropAnimation = 0;
-            markerAnimation = (s32)current >= threshold ? 0 : 3;
+            markerAnimation = current >= threshold ? 0 : 3;
         }
         GraphicsSpriteState_SetAnimationIndex(self->marker[activeRow], markerAnimation);
         self->marker[activeRow]->flags &= ~1;

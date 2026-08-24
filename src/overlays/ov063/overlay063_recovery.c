@@ -53,7 +53,7 @@ extern "C" void func_020a6aa8(void *, const void *, s32);
 extern "C" void *data_021052fc;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
-extern "C" void *gLupyContext;
+extern "C" void *gGamePhaseCurrencyHud;
 extern "C" void *gSoundContext;
 extern "C" u8 data_ov063_022105cc[];
 extern "C" u8 data_ov063_022105dc[];
@@ -212,8 +212,8 @@ extern "C" s32 func_ov063_0220ffd0(void *scene)
         call_method(actor, 0xe0);
     }
 
-    if ((FIELD(u16, gLupyContext, 0xb0) & 1) == 0) {
-        GamePhaseCurrencyHud_Update(gLupyContext);
+    if ((FIELD(u16, gGamePhaseCurrencyHud, 0xb0) & 1) == 0) {
+        GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     }
     if ((FIELD(u32, scene, 0x50) & 1) != 0) {
         s32 ready = func_020a6990((u8 *)scene + 0x28, 0, 6);

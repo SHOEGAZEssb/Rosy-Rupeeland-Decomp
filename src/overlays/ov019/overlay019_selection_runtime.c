@@ -7,14 +7,14 @@
 extern const s32 data_ov019_021fd600[2];
 extern const s32 data_ov019_021fd608[2];
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern void GameWork_SetFlag(void *, u32);
 extern u32 genrand_int32(void);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void func_02092260(void *, s32);
 extern s32 func_ov002_021fbb68(void *, const void *);
 extern s32 func_ov002_021fbc54(void *);
@@ -33,7 +33,7 @@ extern void func_ov019_021fd170(void *);
  * randomized event 0x3C80/0x3C81. State 2 waits for the press animation. State
  * 3 applies digit/backspace/clear keys; index 12 selects transition 0x021FD600,
  * while index 13 validates the enabled numeric value. In mode +0x54==1 it must
- * not exceed the value queried from gLupyContext; failures emit event 9 and
+ * not exceed the value queried from gGamePhaseCurrencyHud; failures emit event 9 and
  * restart. Success emits 0x3C82, stores the selected value at GameWork +0x7CC,
  * sets flag 0x390, and selects transition 0x021FD608. State 4 waits for the
  * control release, restores the selected icon, and restarts. State 10 delays
@@ -79,7 +79,7 @@ extern "C" s32 func_ov019_021fd278(void *state)
             s32 value = FIELD(s32, presentation, 0x88);
             if (FIELD(s32, presentation, 0x90) == 0 ||
                 (FIELD(s32, state, 0x54) == 1 &&
-                 value >= GamePhaseCurrencyHud_GetCurrency(gLupyContext))) {
+                 value >= GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud))) {
                 func_02092260(state, 9);
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;

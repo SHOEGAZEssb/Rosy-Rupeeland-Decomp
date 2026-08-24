@@ -1,3 +1,4 @@
+#include "tingle/game_phase_currency_hud.h"
 #include "tingle/types.h"
 
 /* Recovered overlay 92 multi-actor encounter and tracked attacker runtime. */
@@ -9,7 +10,6 @@ extern "C" void *gGameWork;
 extern "C" void *gSceneManager;
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
-extern "C" void *gLupyContext;
 extern "C" u8 *data_021052fc;
 extern "C" u8 data_020c9670[];
 extern "C" void *data_020f4e14;
@@ -91,7 +91,6 @@ EXT(func_0200634c);
 EXT(func_0200637c);
 EXT(func_020064b8);
 EXT(func_02007f0c);
-EXT(func_0201140c);
 EXT(RuntimePresentationManager_GetGraphics3dPresentation);
 EXT(func_0201f864);
 EXT(func_0201fafc);
@@ -1132,7 +1131,7 @@ extern "C" void func_ov092_02219e8c(void *scene)
     F(s16, scene, 0x28a) = F(u8, scene, 0x2a0) == 0 ? 0 : 4;
     F(s16, scene, 0x29c) = F(s16, scene, 0x29e) = 0;
     F(s16, gGameWork, 0x212) = 0x1000;
-    func_0201140c(gLupyContext);
+    GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
 }
 
 /* Copies the four-halfword primary actor pose used by encounter teardown. */

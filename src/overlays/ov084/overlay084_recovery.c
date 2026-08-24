@@ -13,7 +13,7 @@ typedef void (*V0)(void *);
 typedef void (*V1)(void *, void *);
 typedef void (*V2)(void *, void *, s32);
 
-extern "C" void *gHeapContext, *gSoundContext, *gLupyContext, *data_021052fc;
+extern "C" void *gHeapContext, *gSoundContext, *gGamePhaseCurrencyHud, *data_021052fc;
 extern "C" u16 gActorInteractionResourceState;
 extern "C" const s16 data_020c9670[], data_020e6f94[];
 extern "C" const u16 data_020e7318[];
@@ -58,7 +58,7 @@ extern "C" void Actor_TurnTowardTargetPosition(void *, void *, s32);
 extern "C" void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch);
 extern "C" void Sound_StopEffect(void *, s32, s32);
 extern "C" void Sound_Play(void *, s32, s32);
-extern "C" s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern "C" s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern "C" void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern "C" void *ActorMotionAreaFollower_GetPosition(void *);
 extern "C" void *func_02022cb0(void *, void *, void *, s32, s32, s32);
@@ -212,10 +212,10 @@ extern "C" s32 func_ov084_02212e6c(void *a, s32, s32, s32) {
             F(s16, a, 0x29e) = 1;
             F(s16, a, 0x29c) = 0;
             s32 amount = F(s32, a, 0x114),
-                held = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
+                held = GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud);
             if (held <= amount)
                 amount = held - 1;
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext, -amount, 0);
+            GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, -amount, 0);
             F(u32, a, 0x14) &= ~0x30000u;
             Sound_Play(gSoundContext, 0, 0x20);
             void *e = Heap_Alloc(0x44, data_ov084_022143a4, 4, gHeapContext);

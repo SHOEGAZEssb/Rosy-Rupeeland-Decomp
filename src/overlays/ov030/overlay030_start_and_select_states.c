@@ -6,7 +6,7 @@
 
 extern void *data_020f4e14[];
 extern void *gDebugFont;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern const s32 data_ov030_021ff780[];
 extern const s32 data_ov030_021ff7a0[];
 extern const s32 data_ov030_021ff768[];
@@ -35,7 +35,7 @@ extern void func_02092c8c(s32, s32, void *);
 
 /*
  * Startup state handler keyed by scene state +4. State 0 clears the sprite and
- * debug-font canvases, enables global Lupy mode 1, refreshes the font, begins
+ * debug-font canvases, enables global currency-HUD mode 1, refreshes the font, begins
  * overlay-45 transition (8,0x21), sets scene flag bit 0, advances to state 1,
  * and clears timer +8. State 1 waits for the transition helper, then stores its
  * returned handle at +0x35C, opens the count-dependent initial dialog, and seeds
@@ -49,7 +49,7 @@ extern "C" s32 func_ov030_021feb64(void *scene)
     case 0:
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
         Overlay045_DrawSelectorPreview(8, 0x21);
         FIELD(u32, scene, 0x20) |= 1;

@@ -540,7 +540,7 @@ build build/decomp/src/system/game_work_io.o: mwccarm src/system/game_work_io.c 
   source = src/system/game_work_io.c
   cflags = $game_work_io_cflags
 
-build build/decomp/src/system/game_phase.o: mwccarm src/system/game_phase.c | include/tingle/game_phase.h include/tingle/game_work.h include/tingle/types.h
+build build/decomp/src/system/game_phase.o: mwccarm src/system/game_phase.c | include/tingle/animation_resource.h include/tingle/game_phase.h include/tingle/game_phase_currency_hud.h include/tingle/game_work.h include/tingle/graphics_sprite_create.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/types.h
   source = src/system/game_phase.c
   cflags = $game_phase_cflags
 
@@ -42653,7 +42653,7 @@ build overlay091_portable: phony build/decomp/src/overlays/ov091/overlay091_reco
 build overlay091: phony overlay091_matching overlay091_portable
 subninja config/arm9/overlays/ov092/matching.ninja
 overlay092_portable_cflags = -proc arm946e -O4 -inline off -interworking -Cpp_exceptions off -lang c++
-build build/decomp/src/overlays/ov092/overlay092_recovery.o: mwccarm src/overlays/ov092/overlay092_recovery.c | include/tingle/types.h
+build build/decomp/src/overlays/ov092/overlay092_recovery.o: mwccarm src/overlays/ov092/overlay092_recovery.c | include/tingle/animation_resource.h include/tingle/game_phase_currency_hud.h include/tingle/graphics_sprite_create.h include/tingle/graphics_sprite_group.h include/tingle/graphics_sprite_state.h include/tingle/types.h
   source = src/overlays/ov092/overlay092_recovery.c
   cflags = $overlay092_portable_cflags
 build overlay092_portable: phony build/decomp/src/overlays/ov092/overlay092_recovery.o

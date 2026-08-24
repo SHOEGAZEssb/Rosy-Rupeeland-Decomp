@@ -24,7 +24,7 @@
 .extern data_020d5d8c
 .extern data_020d5d94
 .extern data_021052fc
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gDebugFont
 .extern gHeapContext
 .global func_0201d358
@@ -220,7 +220,7 @@ L_0201d5ec:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0201d604: .word data_021052fc
-L_0201d608: .word gLupyContext
+L_0201d608: .word gGamePhaseCurrencyHud
 L_0201d60c: .word 0x1f
 L_0201d610: .word data_020d5d8c
 L_0201d614: .word gHeapContext

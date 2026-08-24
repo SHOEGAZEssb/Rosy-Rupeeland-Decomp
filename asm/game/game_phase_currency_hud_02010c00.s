@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_currency_hud_values.c.
 .text
 .extern Sound_Play
-.extern data_020c368c
+.extern gGamePhaseCurrencyHudReminderThresholds
 .extern data_021052fc
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern SignedAbsoluteValueVariant
@@ -168,7 +168,7 @@ L_02010e24:
 L_02010e54: .word data_021052fc
 L_02010e58: .word gGameWork
 L_02010e5c: .word 0x98967f
-L_02010e60: .word data_020c368c
+L_02010e60: .word gGamePhaseCurrencyHudReminderThresholds
 L_02010e64: .word gSoundContext
     .size GamePhaseCurrencyHud_AddCurrency, . - GamePhaseCurrencyHud_AddCurrency
 

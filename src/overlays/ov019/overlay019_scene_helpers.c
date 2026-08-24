@@ -6,7 +6,7 @@
 
 extern const u32 data_ov019_021fd638[];
 extern void *data_021052fc;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -84,7 +84,7 @@ extern "C" void func_ov019_021fd154(s32 value)
 
 /*
  * If optional state +0x58 exists, call 0x02008E10 on global data_021052FC with
- * zero; otherwise call 0x02010E68 on gLupyContext. Then update overlay-2 helper
+ * zero; otherwise call 0x02010E68 on gGamePhaseCurrencyHud. Then update overlay-2 helper
  * +0x5C through 0x021FBA00. Returns void. Global/SDK and helper state may change;
  * no direct hardware access occurs.
  */
@@ -93,7 +93,7 @@ extern "C" void func_ov019_021fd170(void *state)
     if (FIELD(void *, state, 0x58) != 0)
         GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 0);
     else
-        GamePhaseCurrencyHud_Update(gLupyContext);
+        GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     func_ov002_021fba00(FIELD(void *, state, 0x5c));
 }
 

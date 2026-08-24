@@ -17,7 +17,7 @@
 .extern Sound_StopAllDirectSequences
 .extern Sound_PlayDirectSequence
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
 .global Overlay064Scene_UpdateMode2
@@ -146,7 +146,7 @@ Overlay064Scene_UpdateMode2:
     ldmia sp!, {r4, r5, r6, pc}
 .L_02211544: .word data_021052fc
 .L_02211548: .word gSoundContext
-.L_0221154c: .word gLupyContext
+.L_0221154c: .word gGamePhaseCurrencyHud
 .L_02211550: .word data_ov064_02211ecc
 .L_02211554: .word gHeapContext
 .L_02211558: .word gDisplayBrightnessPair

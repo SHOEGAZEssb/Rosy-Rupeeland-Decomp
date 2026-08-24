@@ -25,7 +25,7 @@
 .extern Overlay045_DrawSelectorPreview
 .extern gDebugFont
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern Heap_Alloc
 
 
@@ -196,7 +196,7 @@ L_021fdc2c:
     ldmia sp!, {r4, pc}
 L_021fdc3c: .word data_020f4e14
 L_021fdc40: .word gDebugFont
-L_021fdc44: .word gLupyContext
+L_021fdc44: .word gGamePhaseCurrencyHud
 L_021fdc48: .word data_ov029_021fec70
 L_021fdc4c: .word data_ov029_021fed20
 L_021fdc50: .word gHeapContext

@@ -15,7 +15,7 @@ extern const void *data_020e408c[];
 extern u8 data_021052fc[];
 extern void *data_021f38fc[];
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *data_020f4e14;
 extern void *ActorRuntimeBase_Init(void *actor, const void *descriptor);
 extern void *AnimationResourceState_InitEmbedded(void *state);
@@ -81,7 +81,7 @@ extern const char data_020d3b3b[];
 extern const char data_020d3b5d[];
 extern const char data_020e3f60[];
 extern const char data_020e414c[];
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
 extern void Actor_BuildCollisionRect(void *output, const void *actor,
                                      const void *position);
 extern void Actor_BuildWorldInteractionBounds(void *output, const void *actor,
@@ -644,7 +644,7 @@ s32 ActorKind8_HandlePlayerContact(void *self)
     vtable = *(void ***)player;
     if (((ActorAvailabilityQuery)vtable[0xa8 / 4])(player) != 0 ||
         (*(u32 *)(player + 0xd0) & 0x10) != 0 ||
-        GamePhaseCurrencyHud_GetCurrency(gLupyContext) <= 0) {
+        GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) <= 0) {
         return 0;
     }
 

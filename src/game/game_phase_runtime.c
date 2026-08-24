@@ -22,7 +22,7 @@ extern u32 data_020d431c[];
 extern u8 gGamePhaseTouchPromptAllocationTag[];
 extern GamePhaseRuntimeGlobal data_021052fc;
 extern u8 gActorRuntimeCollection[];
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -108,7 +108,7 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
 /*
  * Apply one phase configuration to the runtime. This establishes sub-screen
  * graphics mode, initializes map/entity systems, positions up to two entities,
- * binds render resources, configures the global LUPY context, and enables scene
+ * binds render resources, configures the global currency HUD, and enables scene
  * processing. Config field meanings remain offset-derived except where their
  * bit behavior is directly confirmed. Hardware display registers, GameWork,
  * global task state, and numerous embedded runtime objects may change.
@@ -207,9 +207,9 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     }
 
     *(s32 *)(bytes + 0x30e4) = -1;
-    GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
-    *(u16 *)((u8 *)gLupyContext + 0xbc) = 250;
-    *(u16 *)((u8 *)gLupyContext + 0xbe) = 30;
+    GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
+    *(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xbc) = 250;
+    *(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xbe) = 30;
 
     if (((modeBits >> 18) & 3) == 2 &&
         *(const s32 *)(config + 0x48) != -1) {

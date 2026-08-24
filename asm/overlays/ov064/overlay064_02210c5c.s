@@ -25,7 +25,7 @@
 .extern Overlay064VecFx32Path_Init
 .extern Overlay064Scene_SpawnRewardEffect
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
 .global Overlay064Scene_UpdateMode0
@@ -284,6 +284,6 @@ Overlay064Scene_UpdateMode0:
 .L_02211018: .word 0xb33
 .L_0221101c: .word data_ov064_02211ed4
 .L_02211020: .word gHeapContext
-.L_02211024: .word gLupyContext
+.L_02211024: .word gGamePhaseCurrencyHud
 .L_02211028: .word data_ov064_02211ecc
 .size Overlay064Scene_UpdateMode0, . - Overlay064Scene_UpdateMode0

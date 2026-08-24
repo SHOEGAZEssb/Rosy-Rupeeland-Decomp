@@ -10,7 +10,7 @@
 .extern func_02022cb0
 .extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneManager
 
     .global ActorDerivedType1_TryApplyInteractionAmount
@@ -97,7 +97,7 @@ ActorDerivedType1_TryApplyInteractionAmount: ; 0x02039a54
 .L_02039b7c:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
-.L_02039b84: .word gLupyContext
+.L_02039b84: .word gGamePhaseCurrencyHud
 .L_02039b88: .word data_020df4a4
 .L_02039b8c: .word gHeapContext
 .L_02039b90: .word data_021052fc

@@ -5,7 +5,7 @@
 .extern data_021052fc
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
@@ -246,7 +246,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_0204e294: .word data_021052fc
-.L_0204e298: .word gLupyContext
+.L_0204e298: .word gGamePhaseCurrencyHud
 .L_0204e29c: .word gPresentationBackedActorCurrencyEffectAllocationTag
 .L_0204e2a0: .word gHeapContext
 .L_0204e2a4: .word gGameWork

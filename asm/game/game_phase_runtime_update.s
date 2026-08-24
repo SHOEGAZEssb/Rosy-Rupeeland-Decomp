@@ -37,7 +37,7 @@
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneManager
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
@@ -337,6 +337,6 @@ L_02007850: .word data_021f38fc
 L_02007854: .word data_020f4e14
 L_02007858: .word gDebugFont
 L_0200785c: .word 0x3f5
-L_02007860: .word gLupyContext
+L_02007860: .word gGamePhaseCurrencyHud
 L_02007864: .word gSceneManager
     .size GamePhaseRuntime_Update, .-GamePhaseRuntime_Update

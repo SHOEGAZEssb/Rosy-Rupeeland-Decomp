@@ -11,7 +11,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_ov059_02210968
 .extern func_ov059_02210ba4
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneManager
 
 .global func_ov059_02211134
@@ -56,6 +56,6 @@ func_ov059_02211134:
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 .L_022111c8: .word data_ov059_02211b7c
-.L_022111cc: .word gLupyContext
+.L_022111cc: .word gGamePhaseCurrencyHud
 .L_022111d0: .word gSceneManager
 .size func_ov059_02211134, . - func_ov059_02211134

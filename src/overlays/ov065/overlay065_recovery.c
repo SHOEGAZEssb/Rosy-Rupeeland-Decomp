@@ -20,7 +20,7 @@ extern "C" {
 #define O65_ARGS
 #endif
 extern void *data_020f4e14, *data_021052fc, *gDebugFont;
-extern void *gLupyContext, *gSoundContext;
+extern void *gGamePhaseCurrencyHud, *gSoundContext;
 extern s16 data_020c9670[];
 extern u16 data_ov065_02210b5c[];
 extern u8 data_ov065_02210bb8[];
@@ -231,7 +231,7 @@ s32 Overlay065Scene_Update(void *self)
         if (++F(u16, self, 0x120) > 20) { s32 amount = F(s32, self, 0x15c);
             F(s32, self, 8) = 2; GraphicsSpriteState_SetAnimationIndex(F(void *, self, 0x158), 20);
             F(u16, self, 0x120) = 0; if (amount > F(s32, self, 0x11c)) amount = F(s32, self, 0x11c);
-            F(s32, self, 0x11c) -= amount; GamePhaseCurrencyHud_AddCurrency(gLupyContext, -amount, 0);
+            F(s32, self, 0x11c) -= amount; GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, -amount, 0);
             Overlay065Scene_LaunchAmountParticles(self, amount); } break;
     case 2:
         if (++F(u16, self, 0x120) > 30) {

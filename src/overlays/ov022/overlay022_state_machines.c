@@ -20,7 +20,7 @@ extern void *data_ov022_02200550[];
 extern void *data_ov022_02200560[];
 extern void *data_ov022_02200654;
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,8 +28,8 @@ extern "C" {
 extern void Heap_Free(void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
-extern void *GamePhaseCurrencyHud_GetCurrency(void *);
-extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
+extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092c8c(s32, s32);
@@ -68,7 +68,7 @@ extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
 extern void func_020922f0(void *, s32);
 extern void GameWork_ClearFlag(void *, u16);
-extern void *func_ov022_021fcfd4(void *, void *, s32, s32);
+extern s32 func_ov022_021fcfd4(void *, s32, s32, s32);
 extern s32 func_ov022_021fd068(void *);
 extern void func_ov022_021fdafc(void *);
 extern void func_ov022_021fdb38(void *);
@@ -223,7 +223,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
 
 /*
  * Runs the descriptor-action animation. It resolves the selected record,
- * emits random particles during two waits, starts Lupy effects keyed by the
+ * emits random particles during two waits, starts currency-HUD effects keyed by the
  * descriptor and completion table, presents action/progress messages, advances
  * the collection, interpolates overlay-46 selection, and rebuilds collections
  * before returning to the hub callback. Scene, collection, effects, messages,
@@ -258,11 +258,13 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         break;
     case 3:
         if (func_ov022_021ff368(scene)) {
-            void *context = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
+            s32 currency = GamePhaseCurrencyHud_GetCurrency(
+                gGamePhaseCurrencyHud);
             s32 id = FIELD(u16, FIELD(void *, scene, 0x360), 0x18);
-            void *effect = func_ov022_021fcfd4(
-                FIELD(void *, scene, 0x354), context, id, 0);
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext, id, effect);
+            s32 duration = func_ov022_021fcfd4(
+                FIELD(void *, scene, 0x354), currency, id, 0);
+            GamePhaseCurrencyHud_AddCurrency(
+                gGamePhaseCurrencyHud, id, duration);
             ADVANCE(scene);
         } else {
             func_ov022_021fe9e8(scene);
@@ -281,10 +283,12 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
             if (FIELD(s32, scene, 0x2ac)) {
                 s32 offset = FIELD(s32, scene, 0x358) * 0x34;
                 s32 id = FIELD(u16, data_020d782e, offset);
-                void *context = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
-                void *effect = func_ov022_021fcfd4(
-                    FIELD(void *, scene, 0x354), context, id, 0);
-                GamePhaseCurrencyHud_AddCurrency(gLupyContext, id, effect);
+                s32 currency = GamePhaseCurrencyHud_GetCurrency(
+                    gGamePhaseCurrencyHud);
+                s32 duration = func_ov022_021fcfd4(
+                    FIELD(void *, scene, 0x354), currency, id, 0);
+                GamePhaseCurrencyHud_AddCurrency(
+                    gGamePhaseCurrencyHud, id, duration);
             }
             ADVANCE(scene);
         }
@@ -486,7 +490,7 @@ extern "C" s32 func_ov022_022001a0(void *scene)
 
 /*
  * Runs the five-step confirmed-menu action. It increments game-work halfword
- * +0x98, closes the menu, starts a Lupy effect keyed by selected descriptor
+ * +0x98, closes the menu, starts a currency-HUD effect keyed by selected descriptor
  * word +0x24 (with its negated external key), waits for the emitter, presents
  * message key 6 and waits for acknowledgement, then after 60 frames stores
  * descriptor halfword +2 at game-work +0x204, clears descriptor flag +0x20,
@@ -505,10 +509,12 @@ extern "C" s32 func_ov022_022002e4(void *scene)
         if (DisplayBrightness_IsMainTransitionComplete()) {
             void *descriptor = FIELD(void *, scene, 0x2bc);
             s32 id = FIELD(s32, descriptor, 0x24);
-            void *context = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
-            void *effect = func_ov022_021fcfd4(
-                FIELD(void *, scene, 0x354), context, id, 1);
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext, -id, effect);
+            s32 currency = GamePhaseCurrencyHud_GetCurrency(
+                gGamePhaseCurrencyHud);
+            s32 duration = func_ov022_021fcfd4(
+                FIELD(void *, scene, 0x354), currency, id, 1);
+            GamePhaseCurrencyHud_AddCurrency(
+                gGamePhaseCurrencyHud, -id, duration);
             ADVANCE(scene);
         }
         break;

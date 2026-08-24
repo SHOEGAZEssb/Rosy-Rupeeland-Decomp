@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern const u8 data_021f5ee8[];
 
 #ifdef __cplusplus
@@ -26,7 +26,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 #endif
 
 /*
- * Advances all three menu controllers, global Lupy context, optional auxiliary
+ * Advances all three menu controllers, the global currency HUD, optional auxiliary
  * object +0x2C0, optional board widget +0x2C4, and required overlay-45 object
  * +0x2C8. While palette step +0x334 is below 16, it increments the step, blends
  * palette buffers +0x32C/+0x330, and uploads the 0x20-byte palette at 0x021F5EE8
@@ -38,7 +38,7 @@ extern "C" void func_ov030_021fe768(void *scene)
     func_020958d8((u8 *)scene + 0xb8);
     func_020958d8((u8 *)scene + 0x164);
     func_020958d8((u8 *)scene + 0x210);
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     if (FIELD(void *, scene, 0x2c0) != 0)
         func_ov045_0220c18c(FIELD(void *, scene, 0x2c0));
     if (FIELD(void *, scene, 0x2c4) != 0)

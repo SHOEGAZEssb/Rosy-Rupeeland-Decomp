@@ -3,8 +3,6 @@
 
 /* Implement script opcodes that change or directly set the player's currency HUD value. */
 
-extern GamePhaseCurrencyHud *gLupyContext;
-
 /*
  * Pop a signed currency delta, apply it through GamePhaseCurrencyHud_AddCurrency with no forced
  * duration, and return zero. This also has the GameWork, HUD, sound, and
@@ -13,7 +11,7 @@ extern GamePhaseCurrencyHud *gLupyContext;
 s32 GamePhaseActorScriptVm_AddCurrency(GamePhaseActorScriptVm *self)
 {
     s32 delta = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseCurrencyHud_AddCurrency(gLupyContext, delta, 0);
+    GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, delta, 0);
     return 0;
 }
 
@@ -24,7 +22,7 @@ s32 GamePhaseActorScriptVm_AddCurrency(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_SetCurrency(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseCurrencyHud_SetCurrency(gLupyContext, value);
+    GamePhaseCurrencyHud_SetCurrency(gGamePhaseCurrencyHud, value);
     return 0;
 }
 
@@ -38,16 +36,16 @@ s32 GamePhaseActorScriptVm_SetCurrencyHudVisibleAndPosition(GamePhaseActorScript
     s32 height = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 width = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 visible = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseCurrencyHud_SetVisible(gLupyContext, visible);
-    gLupyContext->baseX = (s16)width;
-    gLupyContext->baseY = (s16)height;
+    GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, visible);
+    gGamePhaseCurrencyHud->baseX = (s16)width;
+    gGamePhaseCurrencyHud->baseY = (s16)height;
     return 0;
 }
 
 /* Read the current GameWork currency, store it as the VM result, and return zero. */
 s32 GamePhaseActorScriptVm_GetCurrency(GamePhaseActorScriptVm *self)
 {
-    u32 value = GamePhaseCurrencyHud_GetCurrency();
+    s32 value = GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value);
     return 0;
 }

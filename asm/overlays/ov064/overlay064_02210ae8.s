@@ -13,7 +13,7 @@
 .extern ActorCollection_GetSpriteGroup
 .extern ActorFeedback_UpdatePresentations
 .extern GraphicsSpriteGroup_AdvanceAnimations
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global Overlay064Scene_Update
 Overlay064Scene_Update:
@@ -114,5 +114,5 @@ Overlay064Scene_Update:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_02210c54: .word data_021052fc
-.L_02210c58: .word gLupyContext
+.L_02210c58: .word gGamePhaseCurrencyHud
 .size Overlay064Scene_Update, . - Overlay064Scene_Update

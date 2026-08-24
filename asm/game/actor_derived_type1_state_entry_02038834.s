@@ -11,7 +11,7 @@
 .extern Actor_GetCachedTerrainHeight
 .extern Actor_ReplaceAttachmentSlotResource
 .extern Type1Actor_EnterFailureState
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
     .global ActorDerivedType1_EnterPositionedState
@@ -126,7 +126,7 @@ ActorDerivedType1_EnterPositionedState: ; 0x02038834
     blx r1
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, pc}
-.L_020389dc: .word gLupyContext
+.L_020389dc: .word gGamePhaseCurrencyHud
 .L_020389e0: .word gActorAlternatingMotionCounter
 .L_020389e4: .word 0x109e
 .L_020389e8: .word gSoundContext

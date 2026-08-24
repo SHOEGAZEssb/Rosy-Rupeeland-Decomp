@@ -4,7 +4,7 @@
 /* Resolve weighted type-1/target displacement and its collision presentation effects. */
 extern s16 data_020c9670[];
 extern u8 *data_021052fc;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
 
 #ifdef __cplusplus
@@ -67,11 +67,11 @@ static s32 displacementStrength(s32 total)
  * target virtual +0xf0 is called when +0x264 exists. With actor cooldown +0x268
  * clear, emit a scene impact at a normalized offset. A target predicate and
  * relative-angle gate then derive a randomized positive magnitude; when valid,
- * set cooldown 30, update Lupy state, allocate/register an object using manager
+ * set cooldown 30, update currency state, allocate/register an object using manager
  * resource +0x2ea4, dispatch event (0x14,7), play actor sounds 0x26/0x0e, and
  * call Type1Actor_TryEnterFailureState. Returns no value. Vector, target virtual,
  * manager, random,
- * Lupy, heap, sound, and effect calls have observable engine/SDK effects.
+ * Currency-HUD, heap, sound, and effect calls have observable engine/SDK effects.
  */
 void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
     void *self, void *other, s32 firstWeight, s32 secondWeight)
@@ -173,7 +173,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             void *object;
             s32 negative = -magnitude;
             *(s16 *)(actor + 0x268) = 30;
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext, negative, 0);
+            GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, negative, 0);
             VecFx32Object_InitComponents(position, *(s32 *)(actor + 0x1c),
                           *(s32 *)(actor + 0x20),
                           *(s32 *)(actor + 0x24) + 0x18000);

@@ -81,7 +81,7 @@
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
     .global GamePhaseLoadScene_Update
@@ -1246,7 +1246,7 @@ L_0200e0e4: .word data_021052fc
 L_0200e0e8: .word gSoundContext
 L_0200e0ec: .word 0x4000050
 L_0200e0f0: .word data_020f4e14
-L_0200e0f4: .word gLupyContext
+L_0200e0f4: .word gGamePhaseCurrencyHud
 L_0200e0f8: .word 0x4001050
 L_0200e0fc: .word gDebugFont
 L_0200e100: .word 0x2e

@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern const u8 gGamePhaseResumeSceneAllocationTag[];
 extern void *data_021052fc;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
 extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
@@ -29,7 +29,7 @@ typedef void (*GamePhaseTransitionMethod)(void *object, s32 value,
 /*
  * Advance the Scene value08 state machine. State 0 either consumes GameWork
  * flag 0x3f8 and skips ahead, or starts missing screen-2 fades. State 1 waits
- * for both fades, resets Lupy state, and invokes context object 0x30e8's vtable
+ * for both fades, resets currency-HUD state, and invokes context object 0x30e8's vtable
  * method 0x0c with (0,0x1f). State 2 optionally consumes flag 0x3e8/resetting
  * GameWork, refreshes the root context, and allocates/initializes a 0x28-byte
  * mode-1 object. State 3 destroys this scene, consumes flag 0x386 or starts
@@ -57,7 +57,7 @@ s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
 
         if (!DisplayBrightness_IsMainTransitionComplete() || !DisplayBrightness_IsSubTransitionComplete())
             break;
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
         object = *(void **)((u8 *)data_021052fc + 0x30e8);
         vtable = *(void ***)object;
         ((GamePhaseTransitionMethod)vtable[3])(object, 0, 0x1f);

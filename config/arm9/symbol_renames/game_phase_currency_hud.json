@@ -1,0 +1,13 @@
+{
+  "func_02010854": "AnimationResource_InitEmpty",
+  "func_02010878": "GamePhaseCurrencyHud_Init",
+  "func_02010b64": "GamePhaseCurrencyHud_GetCurrency",
+  "func_02010b78": "GamePhaseCurrencyHud_SetCurrency",
+  "func_02010c00": "GamePhaseCurrencyHud_AddCurrency",
+  "func_02010e68": "GamePhaseCurrencyHud_Update",
+  "func_020112f0": "GamePhaseCurrencyHud_UpdateDigits",
+  "func_0201140c": "GamePhaseCurrencyHud_SetVisible",
+  "data_020c368c": "gGamePhaseCurrencyHudReminderThresholds",
+  "gLupyContext": "gGamePhaseCurrencyHud",
+  "gLupyTag": "gGamePhaseCurrencyHudAllocationTag"
+}

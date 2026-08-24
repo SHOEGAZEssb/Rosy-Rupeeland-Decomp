@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Enter a type-1 actor state while resetting motion and presentation bookkeeping. */
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern u8 gActorAlternatingMotionCounter;
 extern void *gSoundContext;
 
@@ -9,7 +9,7 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Actor_SetPosition(void *actor, const void *position);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *context, s32 value);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
 extern void ActorRuntimeTriple_Assign(void *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *value);
@@ -24,7 +24,7 @@ extern void Sound_Play(void *context, s32 channel, s32 sound);
 
 /*
  * Copy position into actor current/previous positions, clear state flag +0x14
- * bit 0x200, and reset cooldown +0x268. If the Lupy query is positive, clear
+ * bit 0x200, and reset cooldown +0x268. If the currency query is positive, clear
  * +0xd0 bit 0x200 and zero vectors +0x38/+0x88/+0x98. A nonzero mode then
  * dispatches virtual +0xb8 with a signed X/-0x3000 offset and an incremented
  * global byte; zero mode instead sets +0x230 bit 0x400, vertical velocity
@@ -36,7 +36,7 @@ extern void Sound_Play(void *context, s32 channel, s32 sound);
  * same velocity/height,
  * set +0xd0 bit 0x2000, and play sound 0x2d. Finally clear bit four in the
  * halfword at object +0x54/+0x24 and call actor virtual +0x5c. Returns no
- * value; virtual, Lupy, effect, and sound calls have observable engine state.
+ * value; virtual, currency-HUD, effect, and sound calls have observable engine state.
  */
 void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s32 mode)
 {
@@ -46,7 +46,7 @@ void ActorDerivedType1_EnterPositionedState(void *self, const void *position, s3
     *(u32 *)(actor + 0x14) &= ~0x200;
     *(u16 *)(actor + 0x268) = 0;
 
-    if (GamePhaseCurrencyHud_GetCurrency(gLupyContext, 0) > 0) {
+    if (GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) > 0) {
         *(u32 *)(actor + 0xd0) &= ~0x200;
         ActorRuntimeTriple_Assign(actor + 0x38, 0, 0, 0);
         ActorRuntimeTriple_Assign(actor + 0x88, 0, 0, 0);

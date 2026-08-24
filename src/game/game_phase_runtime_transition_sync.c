@@ -3,7 +3,7 @@
 /* Synchronize actors and global gameplay state after a phase transition. */
 
 extern GamePhaseRuntime *data_021052fc;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -21,7 +21,7 @@ extern void GamePhaseCurrencyHud_Update(void *context);
  * Temporarily set property zero on the global runtime's secondary actor and
  * remember its prior value, finalize the primary actor, synchronize actor zero
  * for modes 0/2 and actor one for modes 1/2, run transition finalization, then
- * restore the secondary property. It enables object 0x2f7c, advances the Lupy
+ * restore the secondary property. It enables object 0x2f7c, advances the currency-HUD
  * context, and invokes virtual slot four on object 0x30e8. Returns no value.
  */
 void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 mode)
@@ -37,7 +37,7 @@ void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 m
     GamePhaseRuntime_FinalizeActorCollections(self, self->field_04, 3);
     func_02030b58(GamePhaseRuntime_GetActorCollection(self, 1), previous);
     RuntimePresentationManager_UpdatePresentations(b + 0x2f7c, 1);
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     {
         void *object = *(void **)(b + 0x30e8);
         (*(void (***)(void *))object)[4](object);

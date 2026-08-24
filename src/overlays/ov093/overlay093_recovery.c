@@ -66,7 +66,7 @@ extern "C" void func_ov063_02210314(void *);
 
 extern "C" void *data_021052fc;
 extern "C" void *gGameWork;
-extern "C" void *gLupyContext;
+extern "C" void *gGamePhaseCurrencyHud;
 extern "C" void *gHeapContext;
 extern "C" void *gSceneManager;
 extern "C" void *gSoundContext;
@@ -131,7 +131,7 @@ extern "C" void *func_ov093_022177f0(void *actor)
     GameWork_SetFlag(gGameWork, 0x3f5);
     GameWork_SetFlag(gGameWork, 0x403);
     GameWork_SetFlag(gGameWork, 0x3f8);
-    GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
+    GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
     func_ov093_022177e0((u8 *)actor + 0x18, 0x180000,
                         FIELD(s32, actor, 0x244), 0);
     func_ov093_022177e0((u8 *)actor + 0x1ec, 0x180000,

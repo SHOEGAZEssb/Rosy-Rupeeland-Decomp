@@ -14,7 +14,7 @@ extern "C" {
 #define O64_ARGS
 #endif
 extern void *data_021052fc, *data_02105300, *data_020f4e14;
-extern void *gGameWork, *gSoundContext, *gLupyContext, *gDebugFont;
+extern void *gGameWork, *gSoundContext, *gGamePhaseCurrencyHud, *gDebugFont;
 extern void *gHeapContext;
 extern u8 data_ov064_02211e98[], data_ov064_02211e40[];
 extern u8 data_ov064_02211ec4[], data_ov064_02211ecc[];
@@ -281,7 +281,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         Sound_SetCaptureEnabled(gSoundContext, 0);
         actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
         ActorCollection_UnregisterAndDestroyAllActors(actorCollection);
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
         target = F(void *, actor, 0x26c);
         if (target != 0)
             F(u32, target, 0x20) |= 0x40000;
@@ -506,7 +506,7 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
                     motion, (const VecFx32Object *)((u8 *)actor + 0x18),
                     &savedPosition, (const VecFx32Object *)curve);
             F(void *, scene, 0x84) = motion;
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext,
+            GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud,
                                              -F(s32, scene, 0x80), 0);
             VecFx32Object_InitCopy(
                 &destination, (const VecFx32Object *)((u8 *)actor + 0x18));
@@ -602,7 +602,7 @@ s32 Overlay064Scene_UpdateMode1(void *scene)
             F(u16, F(void *, actor, 0x54), 0x24) |= 4;
             GraphicsSpriteState_SetAnimationIndex(sprite, 0x11);
             F(u16, sprite, 0x24) &= (u16)~1;
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext,
+            GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud,
                                              -F(s32, scene, 0x80), 0);
             if (effect != 0) {
                 effect = func_02022cb0(
@@ -667,7 +667,7 @@ s32 Overlay064Scene_UpdateMode2(void *scene)
             F(s32, scene, 8) = 2;
             F(s16, scene, 0x74) = 0;
             F(u16, sprite, 0x24) |= 4;
-            GamePhaseCurrencyHud_AddCurrency(gLupyContext,
+            GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud,
                                              -F(s32, scene, 0x80), 0);
             if (effect != 0) {
                 effect = func_02022cb0(
@@ -982,7 +982,7 @@ s32 Overlay064Scene_Update(void *scene)
         GraphicsSpriteGroup_AdvanceAnimations(
             ActorCollection_GetSpriteGroup(collection));
         RuntimePresentationManager_UpdatePresentations((u8 *)data_021052fc + 0x2f7c, 1);
-        GamePhaseCurrencyHud_Update(gLupyContext);
+        GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
         GamePhaseRuntime_UpdateDualScreenUiPresentation(data_021052fc);
     } else {
         GraphicsSpriteGroup_AdvanceAnimations(F(void *, scene, 0x3c));

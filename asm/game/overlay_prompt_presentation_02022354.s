@@ -21,7 +21,7 @@
 .extern gDebugFont
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_02022354
     .type func_02022354, @function
@@ -60,6 +60,6 @@ func_02022354: ; 0x02022354
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_020223cc: .word data_020d653c
-.L_020223d0: .word gLupyContext
+.L_020223d0: .word gGamePhaseCurrencyHud
     .size func_02022354, .-func_02022354
 

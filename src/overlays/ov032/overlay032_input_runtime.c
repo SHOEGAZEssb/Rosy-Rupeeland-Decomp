@@ -15,7 +15,7 @@ typedef struct TouchPoint {
 extern void *gDebugFont;
 extern const u16 gPadState1[];
 extern void *gTouchPanelManager;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *data_020f4e14[];
 extern void *data_021052fc[];
 extern const u8 data_021f4020[];
@@ -109,7 +109,7 @@ extern "C" s32 func_ov032_021fdf30(void *scene)
     if (result == 0) {
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 4));
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0));
-        GamePhaseCurrencyHud_Update(gLupyContext);
+        GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
         Overlay032_UpdatePromptBlink(scene);
     }
     return result;

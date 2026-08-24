@@ -39,7 +39,7 @@
 .extern func_ov091_022188f8
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneManager
 .extern gSoundContext
 
@@ -798,6 +798,6 @@ func_ov091_02217ce0:
 .L_02218824: .word data_ov091_02218dc8
 .L_02218828: .word gHeapContext
 .L_0221882c: .word gSoundContext
-.L_02218830: .word gLupyContext
+.L_02218830: .word gGamePhaseCurrencyHud
 .L_02218834: .word 0xccd
 .size func_ov091_02217ce0, . - func_ov091_02217ce0

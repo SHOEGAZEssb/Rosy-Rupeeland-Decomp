@@ -27,7 +27,7 @@
 .extern func_020adae4
 .extern func_020ae024
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern genrand_int32
 
     .global ActorDerivedType1_ApplyWeightedCollisionDisplacement
@@ -368,7 +368,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02038770: .word data_020c9670
 .L_02038774: .word data_021052fc
-.L_02038778: .word gLupyContext
+.L_02038778: .word gGamePhaseCurrencyHud
 .L_0203877c: .word data_020df4a4
 .L_02038780: .word gHeapContext
     .size ActorDerivedType1_ApplyWeightedCollisionDisplacement, . - ActorDerivedType1_ApplyWeightedCollisionDisplacement

@@ -17,13 +17,13 @@ extern const u32 data_ov021_02202da8[];
 extern const u32 data_ov021_02202db8[];
 extern const u32 data_ov021_02202dc0[];
 extern const u32 data_ov021_02202dc8[];
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -214,8 +214,8 @@ extern "C" s32 func_ov021_02201f98(void *state)
             FIELD(s32, state, 0x3d8) = 1;
         s32 gain = FIELD(s32, FIELD(void *, state, 0x2bc), 8);
         s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                       GamePhaseCurrencyHud_GetCurrency(gLupyContext), gain, 0);
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, gain, anim);
+                                       GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud), gain, 0);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, gain, anim);
         func_02062ca8(FIELD(void *, state, 0x380));
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;

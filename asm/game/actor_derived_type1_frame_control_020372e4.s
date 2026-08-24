@@ -33,7 +33,7 @@
 .extern SignedAbsoluteValue
 .extern gGameWork
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneTouchInitialData
 .extern gSoundContext
 .extern gSystemState
@@ -545,7 +545,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
 .L_02037a54:
     add sp, sp, #0x44
     ldmia sp!, {r4, r5, r6, r7, pc}
-.L_02037a5c: .word gLupyContext
+.L_02037a5c: .word gGamePhaseCurrencyHud
 .L_02037a60: .word data_020df4a4
 .L_02037a64: .word gHeapContext
 .L_02037a68: .word data_021052fc

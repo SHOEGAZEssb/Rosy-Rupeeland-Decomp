@@ -35,7 +35,7 @@
     .extern func_ov045_0220b924
     .extern func_ov045_0220b9b8
     .extern func_ov045_0220bc34
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
 
 .global func_ov021_02200d10
 func_ov021_02200d10:
@@ -343,7 +343,7 @@ L_02201168:
     ldmia sp!, {r3, r4, r5, pc}
 L_02201178: .word data_ov021_02202e78
 L_0220117c: .word data_ov021_02202e70
-L_02201180: .word gLupyContext
+L_02201180: .word gGamePhaseCurrencyHud
 L_02201184: .word data_ov021_02202e68
 L_02201188: .word data_ov021_02202e60
 L_0220118c: .word data_ov021_02202e58

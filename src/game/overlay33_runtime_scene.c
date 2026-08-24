@@ -22,7 +22,7 @@ extern SceneVTable gOverlay33RuntimeSceneVTable;
 extern char gOverlay33RuntimeSceneChildAllocationTag[];
 extern u8 data_020d36e1[];
 extern void *data_021052fc;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern Overlay33Child *func_ov033_021fd070(Overlay33Child *self, u32 parameter);
 extern void func_ov030_021fd260(Overlay33Child *self);
 extern s32 func_ov014_021fd2f8(Overlay33Child *self);
@@ -115,7 +115,7 @@ Overlay33RuntimeScene *func_0201d7e8(Overlay33RuntimeScene *self)
  * Rebind the display object whenever the runtime selection changes, update the
  * runtime and overlay child, destroy this scene if the child finishes, and when
  * its secondary poll is idle refresh two runtime channels, their managers, and
- * Lupy state.  Returns one only when destroyed, otherwise zero.
+ * currency-HUD state. Returns one only when destroyed, otherwise zero.
  */
 s32 func_0201d884(Overlay33RuntimeScene *self)
 {
@@ -144,7 +144,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
     GamePhaseRuntime_FinalizeActorCollections(runtime, self->base.value04, 3);
     value = ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc);
     func_ov033_021fd324(self->child3c, value);
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     return 0;
 }
 

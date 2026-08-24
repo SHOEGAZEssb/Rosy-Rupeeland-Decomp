@@ -13,7 +13,7 @@
     .extern func_ov019_021fce00
     .extern func_ov019_021fd170
     .extern gGameWork
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
     .extern genrand_int32
 
 .global func_ov019_021fd278
@@ -175,7 +175,7 @@ L_021fd4a0:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd4b0: .word 0x3c81
-L_021fd4b4: .word gLupyContext
+L_021fd4b4: .word gGamePhaseCurrencyHud
 L_021fd4b8: .word 0x3c82
 L_021fd4bc: .word gGameWork
 L_021fd4c0: .word data_ov019_021fd608

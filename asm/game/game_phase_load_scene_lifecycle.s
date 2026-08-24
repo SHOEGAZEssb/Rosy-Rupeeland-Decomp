@@ -10,7 +10,7 @@
 .extern OverlaySlot_Destroy
 .extern func_02092364
 .extern func_020923a0
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
     .global GamePhaseLoadScene_Init
 GamePhaseLoadScene_Init: ; 0x0200cf00
@@ -56,7 +56,7 @@ GamePhaseLoadScene_Init: ; 0x0200cf00
     str r1, [r4, #0x98]
     ldmia sp!, {r4, r5, r6, pc}
 L_0200cfa4: .word data_020d5460
-L_0200cfa8: .word gLupyContext
+L_0200cfa8: .word gGamePhaseCurrencyHud
 L_0200cfac: .word 0x4000304
     .size GamePhaseLoadScene_Init, . - GamePhaseLoadScene_Init
 

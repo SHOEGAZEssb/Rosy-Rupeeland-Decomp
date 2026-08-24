@@ -16,7 +16,7 @@ extern u8 data_ov052_0220e200[], data_ov052_0220e21c[];
 extern u8 data_ov052_0220e224[], data_ov052_0220e240[];
 extern void *data_020f4e18, *data_021052fc;
 extern u8 data_021f4020[];
-extern void *gDebugFont, *gLupyContext, *gSceneManager;
+extern void *gDebugFont, *gGamePhaseCurrencyHud, *gSceneManager;
 extern void *gSoundContext, *gTouchPanelManager;
 extern u8 gDisplayBrightnessPair[], gHeapContext[];
 extern const u16 gPadState1[];
@@ -73,8 +73,8 @@ void *Overlay052Scene_Init(void *scene, u32 mode, u32 variant)
     FIELD(void *,s,0x14)=sprite; FIELD(s16,sprite,0x2c)=0x26; FIELD(s16,sprite,0x2e)=0x6d;
     FIELD(s32,s,0x24)=4;
     DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),0,-16,0);
-    FIELD(u16,s,0x30)=(FIELD(u16,gLupyContext,0xb0)&1)==0;
-    if(FIELD(s16,s,0x30)) GamePhaseCurrencyHud_SetVisible(gLupyContext,0);
+    FIELD(u16,s,0x30)=(FIELD(u16,gGamePhaseCurrencyHud,0xb0)&1)==0;
+    if(FIELD(s16,s,0x30)) GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud,0);
     GamePhaseRuntime_SetPlacementMode(data_021052fc,0,1);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont); return scene;
 }
@@ -88,7 +88,7 @@ void *Overlay052Scene_Destroy(void *scene)
     o=FIELD(void *,s,0x20); if(o) ((DeletingDestructor *)FIELD(void *,o,0))[1](o);
     if(FIELD(void *,data_021052fc,0x2fb8)) GamePhaseRuntime_ApplyScreenMode(data_021052fc,1,1);
     if(FIELD(s16,s,0x2c)) DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),-16,0,4);
-    if(FIELD(s16,s,0x30)) GamePhaseCurrencyHud_SetVisible(gLupyContext,1);
+    if(FIELD(s16,s,0x30)) GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud,1);
     return scene;
 }
 

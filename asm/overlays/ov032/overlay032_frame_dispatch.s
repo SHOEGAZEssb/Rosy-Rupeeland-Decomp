@@ -5,7 +5,7 @@
 .extern GamePhaseCurrencyHud_Update
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern Overlay032_UpdatePromptBlink
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gPadState1
 .extern gTouchPanelManager
 
@@ -74,6 +74,6 @@ L_021fe00c:
     ldmia sp!, {r4, r5, pc}
 L_021fe018: .word gPadState1
 L_021fe01c: .word gTouchPanelManager
-L_021fe020: .word gLupyContext
+L_021fe020: .word gGamePhaseCurrencyHud
 .size func_ov032_021fdf30, .-func_ov032_021fdf30
 

@@ -8,7 +8,7 @@
     .extern func_ov002_021fbe60
     .extern func_ov019_021fce00
     .extern func_ov019_021fd170
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
 
 .global func_ov019_021fd1b8
 func_ov019_021fd1b8:
@@ -61,7 +61,7 @@ L_021fd25c:
     bl func_ov019_021fd170
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_021fd26c: .word gLupyContext
+L_021fd26c: .word gGamePhaseCurrencyHud
 L_021fd270: .word 0x3c84
 L_021fd274: .word data_ov019_021fd5e8
     .size func_ov019_021fd1b8, . - func_ov019_021fd1b8

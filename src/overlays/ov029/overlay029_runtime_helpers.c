@@ -6,7 +6,7 @@
 
 extern void *data_020f4e18[];
 extern void *gDebugFont;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern u16 data_021f5ee8[];
 extern const u8 data_021f5ed0[];
 
@@ -81,7 +81,7 @@ extern "C" void func_ov029_021fd644(void *state)
  */
 extern "C" void func_ov029_021fd6fc(void *state)
 {
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     if (FIELD(void *, state, 0xa4) != 0)
         func_ov045_0220c18c(FIELD(void *, state, 0xa4));
     void *object = FIELD(void *, state, 0xa0);

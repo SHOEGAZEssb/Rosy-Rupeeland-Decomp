@@ -8,6 +8,7 @@ extern "C" {
 #endif
 
 typedef struct GamePhaseTransition GamePhaseTransition;
+typedef struct GamePhaseCurrencyHud GamePhaseCurrencyHud;
 
 typedef struct GamePhaseTransitionVTable {
     GamePhaseTransition *(*destroy)(GamePhaseTransition *transition);
@@ -38,14 +39,14 @@ typedef char GamePhaseTransitionVTableSizeCheck[
 typedef struct GamePhaseInitialData {
     GamePhaseTransitionVTable vtable;
     char phaseTag[8];
-    char lupyTag[8];
+    char currencyHudTag[8];
 } GamePhaseInitialData;
 
 typedef char GamePhaseInitialDataSizeCheck[
     sizeof(GamePhaseInitialData) == 0x3C ? 1 : -1];
 
 extern GamePhaseInitialData gGamePhaseInitialData;
-extern void *gLupyContext;
+extern GamePhaseCurrencyHud *gGamePhaseCurrencyHud;
 
 void GamePhase_Start(int phaseId, int resetGameWork);
 GamePhaseTransition *GamePhase_Bootstrap(void);

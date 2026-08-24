@@ -6156,7 +6156,7 @@ kMtInitialSeed kind:data(any) addr:0x020c35f0
 data_020c3600 kind:data(any) addr:0x020c3600
 data_020c3618 kind:data(any) addr:0x020c3618
 data_020c3630 kind:data(any) addr:0x020c3630
-data_020c368c kind:data(any) addr:0x020c368c
+gGamePhaseCurrencyHudReminderThresholds kind:data(any) addr:0x020c368c
 data_020c36c4 kind:data(any) addr:0x020c36c4
 data_020c3704 kind:data(any) addr:0x020c3704
 data_020c370c kind:data(any) addr:0x020c370c
@@ -6632,7 +6632,7 @@ data_020d3ca8 kind:data(any) addr:0x020d3ca8
 data_020d3cb8 kind:data(any) addr:0x020d3cb8
 gGamePhaseInitialData kind:data(any) addr:0x020d3cd4
 gGamePhaseTag kind:data(any) addr:0x020d3d00
-gLupyTag kind:data(any) addr:0x020d3d08
+gGamePhaseCurrencyHudAllocationTag kind:data(any) addr:0x020d3d08
 gMtIndex kind:data(any) addr:0x020d3d10
 gMtMag01 kind:data(any) addr:0x020d3d14
 gHeapStorageTag kind:data(any) addr:0x020d3d1c
@@ -9241,7 +9241,7 @@ data_02105458 kind:bss addr:0x02105458
 data_0210545c kind:bss addr:0x0210545c
 data_02105468 kind:bss addr:0x02105468
 data_0210548c kind:bss addr:0x0210548c
-gLupyContext kind:bss addr:0x0210559c
+gGamePhaseCurrencyHud kind:bss addr:0x0210559c
 data_021055a0 kind:bss addr:0x021055a0
 data_021055ac kind:bss addr:0x021055ac
 gDefaultGamePhaseRegion kind:bss addr:0x021055b8

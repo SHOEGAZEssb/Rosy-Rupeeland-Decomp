@@ -12,7 +12,7 @@ extern u8 data_ov059_02211ac0[], data_ov059_02211ac8[];
 extern u8 data_ov059_02211af8[], data_ov059_02211b08[];
 extern u8 data_ov059_02211b5c[], data_ov059_02211b7c[];
 extern char data_ov059_02211ba8[], data_ov059_02211bb0[];
-extern void *gHeapContext, *gDebugFont, *gSceneManager, *gLupyContext;
+extern void *gHeapContext, *gDebugFont, *gSceneManager, *gGamePhaseCurrencyHud;
 extern void *data_020f4e18, *data_021052fc, *gSoundContext;
 
 #ifdef __cplusplus
@@ -606,7 +606,7 @@ void *func_ov059_02210fec(void *s, void *phase) {
   TouchRegionManager_SetEnabled(Scene_GetEmbedded10(s), 0);
   TouchRegionManager_NotifyAll(Scene_GetEmbedded10(s), 0);
   TouchRegionManager_Tick(Scene_GetEmbedded10(s));
-  GamePhaseCurrencyHud_SetVisible(gLupyContext, 0);
+  GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
   SceneManager_SetUpdateEnabled(gSceneManager, 1);
   return s;
 }
@@ -614,7 +614,7 @@ void *func_ov059_02210fec(void *s, void *phase) {
 /* Destroy a scene's preview, button, spline, text, and base resources. */
 void *func_ov059_02211134(void *s) {
   F(const void *, s, 0) = data_ov059_02211b7c;
-  GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+  GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
   if (F(void *, s, 0x3c)) {
     func_ov059_02210ba4(F(void *, s, 0x3c));
     Heap_Free(F(void *, s, 0x3c));

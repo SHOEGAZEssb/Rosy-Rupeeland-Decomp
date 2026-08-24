@@ -11,7 +11,7 @@
 .extern func_ov022_021ff0d0
 .extern func_ov022_021ff220
 .extern gDebugFont
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 .extern Sound_Play
 
@@ -64,7 +64,7 @@ L_021ff524: .word gSoundContext
 L_021ff528: .word 0x122
 L_021ff52c: .word data_020f4e14
 L_021ff530: .word gDebugFont
-L_021ff534: .word gLupyContext
+L_021ff534: .word gGamePhaseCurrencyHud
 L_021ff538: .word data_ov022_02200508
 .size func_ov022_021ff480, .-func_ov022_021ff480
 

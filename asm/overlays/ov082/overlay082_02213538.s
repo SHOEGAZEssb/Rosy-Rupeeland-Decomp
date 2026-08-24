@@ -28,7 +28,7 @@
 .extern func_ov082_022139ac
 .extern func_ov082_022139f4
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
 .global func_ov082_02213538
@@ -286,7 +286,7 @@ func_ov082_02213538:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022138f8: .word gActorRuntimeCollection
 .L_022138fc: .word 0xffff0001
-.L_02213900: .word gLupyContext
+.L_02213900: .word gGamePhaseCurrencyHud
 .L_02213904: .word data_ov082_02214aa4
 .L_02213908: .word gHeapContext
 .L_0221390c: .word data_021052fc

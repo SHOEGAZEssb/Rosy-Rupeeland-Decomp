@@ -9,7 +9,7 @@
 extern void *data_021052fc;
 extern void *gGameWork;
 extern void *gHeapContext;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *gSoundContext;
 extern const u8 gPresentationBackedActorCurrencyEffectAllocationTag[];
 
@@ -80,7 +80,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
                 ActorDerivedType1_TrySetStateVector(primary, (u8 *)actor + 0x18, 15, 2);
         }
 
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, FIELD(s16, actor, 0x1f2), 0);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, FIELD(s16, actor, 0x1f2), 0);
         void *effect = Heap_Alloc(0x44, gPresentationBackedActorCurrencyEffectAllocationTag, 4, &gHeapContext);
         if (effect != 0) {
             void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
@@ -99,7 +99,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
         complete_interaction(actor);
         sound = 15;
     } else if (type == 11 || type == 12) {
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, FIELD(s16, actor, 0x1f2) * 3, 0);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, FIELD(s16, actor, 0x1f2) * 3, 0);
         FIELD(u16, actor, 0x1ec) = 2;
         sound = type == 11 ? 17 : 18;
     } else if (type == 18) {

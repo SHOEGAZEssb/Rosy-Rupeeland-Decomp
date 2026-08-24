@@ -13,7 +13,7 @@ extern u8 data_ov074_02211d34[], data_ov074_02211d48[];
 extern u8 data_ov074_02211d5c[];
 extern u8 data_ov074_02211d8c[], data_ov074_02211db8[];
 extern void *data_021052fc;
-extern void *data_02105300, *gGameWork, *gSoundContext, *gLupyContext;
+extern void *data_02105300, *gGameWork, *gSoundContext, *gGamePhaseCurrencyHud;
 extern void *gHeapContext, *gSceneManager;
 extern u8 data_020f4e14[];
 extern const s16 data_020c9670[];
@@ -342,7 +342,7 @@ s32 func_ov074_022101dc(void *scene) {
     VecFx32Object_Destroy(point);
     func_ov025_021fd2e8(F(void *, scene, 0x128));
   }
-  GamePhaseCurrencyHud_Update(gLupyContext);
+  GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
   return 0;
 }
 

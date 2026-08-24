@@ -14,7 +14,7 @@
 .extern func_ov022_021ff368
 .extern GameWork_ClearFlag
 .extern gGameWork
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 
     .global func_ov022_022002e4
@@ -125,7 +125,7 @@ L_0220045c:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0220046c: .word gGameWork
-L_02200470: .word gLupyContext
+L_02200470: .word gGamePhaseCurrencyHud
 L_02200474: .word data_ov022_022004f8
 .size func_ov022_022002e4, .-func_ov022_022002e4
 

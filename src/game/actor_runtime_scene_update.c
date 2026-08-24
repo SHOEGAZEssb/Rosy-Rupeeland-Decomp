@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern void *data_021052fc;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void GamePhaseRuntime_PrepareActorCollections(void *context, u32 value, s32 mode);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *context, u32 value, s32 mode);
 extern s32 GamePhaseRuntime_SynchronizeActorPlacement(void *context, s32 index);
@@ -25,7 +25,7 @@ extern s32 RuntimePresentationManager_UpdatePresentations(
  * Tick the shared game context, then branch on Scene value08. State 0 performs
  * a one-time sequence using Scene value04 and mode 3; state 1 invokes the
  * scene's deleting destructor and returns 1. Other states, and state 0 after
- * setup, update shared context offset 0x2f7c plus the root and Lupy contexts,
+ * setup, update shared context offset 0x2f7c plus the root and currency-HUD contexts,
  * then return 0. Indirect helpers may affect gameplay/rendering; no hardware
  * registers are written directly.
  */
@@ -49,6 +49,6 @@ s32 ActorRuntimeScene_Update(ActorRuntimeScene *self)
 
     RuntimePresentationManager_UpdatePresentations(root + 0x2f7c, 1);
     GamePhaseRuntime_UpdateDualScreenUiPresentation(root);
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     return 0;
 }

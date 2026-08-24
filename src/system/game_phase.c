@@ -1,10 +1,11 @@
 #include "tingle/game_phase.h"
+#include "tingle/game_phase_currency_hud.h"
 #include "tingle/game_work.h"
 
 /*
  * Game-phase construction and the boot transition that precedes phase 0xE1.
- * The phase configuration fields and LUPY-tagged context remain opaque until
- * their consumers provide evidence for more specific names.
+ * The phase configuration fields remain opaque until their consumers provide
+ * evidence for more specific names.
  */
 
 typedef struct GamePhaseConfig {
@@ -30,7 +31,6 @@ extern void *GamePhaseRuntime_Init(void *phase);
 extern void GamePhaseRuntime_Configure(void *phase, const GamePhaseConfig *config,
                           s32 value2C, s32 value30, int unknown);
 extern void *GamePhaseResumeScene_Init(void *object, int unknown);
-extern void *GamePhaseCurrencyHud_Init(void *context);
 extern const GamePhaseConfig *GamePhaseMetadata_GetByIndex(int phaseIndex);
 
 extern void DisplayBrightness_StartMainTransition(int mode, int duration);
@@ -48,7 +48,6 @@ extern int Scene_NoopMethod20(GamePhaseTransition *transition);
 extern int Scene_OnCovered(GamePhaseTransition *transition);
 
 extern void *gHeapContext;
-extern void *gLupyContext;
 
 #ifdef __cplusplus
 }
@@ -113,19 +112,21 @@ void GamePhase_Start(int phaseId, int resetGameWork)
 }
 
 /*
- * Create the opaque LUPY context and schedule the transition which eventually
- * starts phase 0xE1. Allocation failures are propagated through null results.
+ * Create the currency HUD and schedule the transition which eventually starts
+ * phase 0xE1. Allocation failures are propagated through null results. The
+ * literal "LUPY" allocation tag is retained as retail data.
  */
 GamePhaseTransition *GamePhase_Bootstrap(void)
 {
-    void *lupy = Heap_Alloc(0xD0, gGamePhaseInitialData.lupyTag, 4,
-                            &gHeapContext);
+    GamePhaseCurrencyHud *currencyHud = (GamePhaseCurrencyHud *)Heap_Alloc(
+        sizeof(GamePhaseCurrencyHud), gGamePhaseInitialData.currencyHudTag, 4,
+        &gHeapContext);
     GamePhaseTransition *transition;
 
-    if (lupy != 0) {
-        lupy = GamePhaseCurrencyHud_Init(lupy);
+    if (currencyHud != 0) {
+        currencyHud = GamePhaseCurrencyHud_Init(currencyHud);
     }
-    gLupyContext = lupy;
+    gGamePhaseCurrencyHud = currencyHud;
 
     transition = (GamePhaseTransition *)Heap_Alloc(
         sizeof(GamePhaseTransition), gGamePhaseInitialData.phaseTag, 4,

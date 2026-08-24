@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const s32 data_ov019_021fd5e8[2];
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -22,7 +22,7 @@ extern void func_ov019_021fd170(void *);
 #endif
 
 /*
- * Run the two-phase opening callback selected by +4. Phase 0 enables Lupy
+ * Run the two-phase opening callback selected by +4. Phase 0 enables currency-HUD
  * context mode 1, starts overlay-2 footer animation on presentation +0x5C,
  * sets scene flag bit 0, advances, and deliberately falls through. Phase 1
  * updates that animation; while incomplete, store the negated animation value
@@ -35,7 +35,7 @@ extern "C" s32 func_ov019_021fd1b8(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         func_ov002_021fbdc0(FIELD(void *, state, 0x5c));
         FIELD(u32, state, 0x20) |= 1;
         FIELD(s32, state, 4)++;

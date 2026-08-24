@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Dispatch a type-1 actor interaction into damage effects or the active scene. */
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
 extern u8 *data_021052fc;
 extern void *gSceneManager;
@@ -27,7 +27,7 @@ extern void *SceneManager_GetCurrent(void *manager);
 /*
  * Return while optional actor object +0x270 has byte +0x10 bit one or actor
  * +0x230 bit 0x20000. With +0xd0 bit 0x40000 clear and positive amount,
- * subtract amount from Lupy, allocate/register a 0x44-byte effect carrying
+ * subtract the amount from currency, allocate/register a 0x44-byte effect carrying
  * -amount, 0x2000, and -0xc0, then inspect source descriptor +0x1fc. IDs
  * 0x21/0x22/0x2e/0x2f/0x40 trigger auxiliary reset, sound 0x26, and actor
  * +0x230 bit 0x400000 when descriptor byte +0x2c is four or 0x200000 otherwise;
@@ -36,7 +36,7 @@ extern void *SceneManager_GetCurrent(void *manager);
  * than -1 starts a record through ActorDerivedType1_StartRecord.
  *
  * With actor +0xd0 bit 0x40000 set, positive amount instead dispatches source
- * to virtual +0xc8 on current scene object +0x4c. Returns no value; Lupy, heap,
+ * to virtual +0xc8 on current scene object +0x4c. Returns no value; currency-HUD, heap,
  * manager, auxiliary, sound, record, and scene calls alter engine state.
  */
 void ActorDerivedType1_DispatchInteractionAmount(void *self, s32 amount, void *sourceValue)
@@ -64,7 +64,7 @@ void ActorDerivedType1_DispatchInteractionAmount(void *self, s32 amount, void *s
         s32 negative = -amount;
         void *allocation;
         void *effect = 0;
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, negative, 0);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, negative, 0);
         allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
             void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);

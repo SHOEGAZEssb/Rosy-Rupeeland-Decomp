@@ -9,7 +9,7 @@
 .extern func_02022cb0
 .extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global func_ov091_02218aa0
 func_ov091_02218aa0:
@@ -68,7 +68,7 @@ func_ov091_02218aa0:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
 .L_02218b70: .word data_021052fc
-.L_02218b74: .word gLupyContext
+.L_02218b74: .word gGamePhaseCurrencyHud
 .L_02218b78: .word data_ov091_02218dd0
 .L_02218b7c: .word gHeapContext
 .size func_ov091_02218aa0, . - func_ov091_02218aa0

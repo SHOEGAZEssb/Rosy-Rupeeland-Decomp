@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .global GamePhaseActorScriptVm_GetCurrency
 GamePhaseActorScriptVm_GetCurrency:
     stmdb sp!, {r4, lr}
@@ -15,5 +15,5 @@ GamePhaseActorScriptVm_GetCurrency:
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0
     ldmia sp!, {r4, pc}
-L_020171ec: .word gLupyContext
+L_020171ec: .word gGamePhaseCurrencyHud
     .size GamePhaseActorScriptVm_GetCurrency, . - GamePhaseActorScriptVm_GetCurrency

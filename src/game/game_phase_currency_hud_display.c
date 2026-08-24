@@ -18,7 +18,7 @@ extern u32 genrand_int32(void);
  * chance of 0xc0).
  * Consumes the global RNG and changes sprite animation state; returns nothing.
  */
-void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value)
+void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, s32 value)
 {
     s32 digit;
     s32 display;

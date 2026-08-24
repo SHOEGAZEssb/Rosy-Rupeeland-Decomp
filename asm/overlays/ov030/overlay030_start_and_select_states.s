@@ -21,7 +21,7 @@
 .extern func_ov045_0220c9e8
 .extern Overlay045_DrawSelectorPreview
 .extern gDebugFont
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 
     .global func_ov030_021feb64
@@ -83,7 +83,7 @@ L_021fec24:
     ldmia sp!, {r4, pc}
 L_021fec34: .word data_020f4e14
 L_021fec38: .word gDebugFont
-L_021fec3c: .word gLupyContext
+L_021fec3c: .word gGamePhaseCurrencyHud
 L_021fec40: .word data_ov030_021ff780
 .size func_ov030_021feb64, .-func_ov030_021feb64
     .global func_ov030_021fec44

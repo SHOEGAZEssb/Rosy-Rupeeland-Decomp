@@ -12,7 +12,7 @@
 extern const u32 data_ov013_021feb40[];
 extern const u32 data_ov013_021feb58[];
 extern const s32 data_ov013_021febb4[];
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -112,7 +112,7 @@ void func_ov013_021fdbb0(void *state)
         GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x88));
     }
     if (FIELD(s32, state, 0x97c) != 0)
-        GamePhaseCurrencyHud_Update(gLupyContext);
+        GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
 }
 
 /*

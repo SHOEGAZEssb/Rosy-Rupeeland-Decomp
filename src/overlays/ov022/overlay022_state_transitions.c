@@ -9,7 +9,7 @@ extern const u8 data_020d780c[];
 extern void *data_ov022_02200508[];
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -77,7 +77,7 @@ extern "C" s32 func_ov022_021ff368(void *scene)
 
 /*
  * Exit-transition callback. On state step zero it stops/replays sound 0x122,
- * resets both font contexts, hides controller +0xA8, enables Lupy mode 1,
+ * resets both font contexts, hides controller +0xA8, enables currency-HUD mode 1,
  * presents message key zero, installs the callback/argument pair at
  * data_ov022_02200508, and sets scene flag bit 0. Every call advances scene
  * teardown and returns zero. Audio, font, UI, callback, and teardown state
@@ -91,7 +91,7 @@ extern "C" s32 func_ov022_021ff480(void *scene)
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_02095940((u8 *)scene + 0xa8);
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         func_ov022_021ff220(scene, 0);
         func_ov022_021fdd1c(scene, data_ov022_02200508[0],
                            data_ov022_02200508[1]);

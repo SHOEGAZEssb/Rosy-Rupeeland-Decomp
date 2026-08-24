@@ -4,7 +4,7 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern Type1Actor_EnterFailureState
 .extern gGameWork
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
     .global Type1Actor_TryEnterFailureState
     .type Type1Actor_TryEnterFailureState, @function
@@ -27,5 +27,5 @@ Type1Actor_TryEnterFailureState: ; 0x02039bb0
     ldmia sp!, {r4, pc}
 .L_02039bf0: .word gGameWork
 .L_02039bf4: .word 0x3f5
-.L_02039bf8: .word gLupyContext
+.L_02039bf8: .word gGamePhaseCurrencyHud
     .size Type1Actor_TryEnterFailureState, . - Type1Actor_TryEnterFailureState

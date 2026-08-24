@@ -12,7 +12,7 @@
 .extern GamePhaseProgress_GetOrCreateGlobal
 .extern SoundPhaseManager_SetPhase
 .extern gGameWork
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
     .global GamePhaseState_ApplyConfiguration
@@ -168,6 +168,6 @@ L_0200e9cc: .word 0x395
 L_0200e9d0: .word 0x417
 L_0200e9d4: .word 0x438
 L_0200e9d8: .word 0x419
-L_0200e9dc: .word gLupyContext
+L_0200e9dc: .word gGamePhaseCurrencyHud
     .size GamePhaseState_ApplyConfiguration, . - GamePhaseState_ApplyConfiguration
 

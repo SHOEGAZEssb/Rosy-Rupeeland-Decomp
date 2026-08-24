@@ -23,14 +23,14 @@ extern const u32 data_ov021_02202e80[];
 extern const u32 data_ov021_02202e88[];
 extern const u32 data_ov021_02202e90[];
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
@@ -133,7 +133,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;
             } else if (func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 1 &&
-                       GamePhaseCurrencyHud_GetCurrency(gLupyContext) <= FIELD(s32, state, 0x394)) {
+                       GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) <= FIELD(s32, state, 0x394)) {
                 func_02092260(state, 9);
                 FIELD(s32, state, 4) = 10;
                 FIELD(s32, state, 8) = 0;
@@ -216,9 +216,9 @@ extern "C" s32 func_ov021_02200d10(void *state)
             s32 capacity = FIELD(s32, FIELD(u8 *, desc, 4), 0x10);
             if (capacity > amount) {
                 s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                               GamePhaseCurrencyHud_GetCurrency(gLupyContext),
+                                               GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud),
                                                amount, 1);
-                GamePhaseCurrencyHud_AddCurrency(gLupyContext, -amount, anim);
+                GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, -amount, anim);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
@@ -262,9 +262,9 @@ extern "C" s32 func_ov021_02200d10(void *state)
         break;
     case 10: {
         s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                       GamePhaseCurrencyHud_GetCurrency(gLupyContext),
+                                       GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud),
                                        FIELD(s32, state, 0x394), 1);
-        GamePhaseCurrencyHud_AddCurrency(gLupyContext, -FIELD(s32, state, 0x394), anim);
+        GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, -FIELD(s32, state, 0x394), anim);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through into the animation wait. */

@@ -22,7 +22,7 @@
     .extern GameWork_SetFlag
     .extern GameWork_TestFlag
     .extern gGameWork
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
 
 .global func_ov021_02201800
 func_ov021_02201800:
@@ -193,7 +193,7 @@ L_02201a64:
     bl func_ov021_021feea4
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_02201a74: .word gLupyContext
+L_02201a74: .word gGamePhaseCurrencyHud
 L_02201a78: .word gGameWork
 L_02201a7c: .word 0x3df
 L_02201a80: .word data_ov021_02202de0

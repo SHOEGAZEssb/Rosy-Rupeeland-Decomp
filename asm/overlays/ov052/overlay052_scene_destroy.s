@@ -10,7 +10,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GraphicsArchive_ReleaseResourceE4
 .extern GraphicsSpriteGroup_Destroy
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global Overlay052Scene_Destroy
 Overlay052Scene_Destroy:
@@ -75,5 +75,5 @@ Overlay052Scene_Destroy:
 .L_0220d958: .word data_020f4e18
 .L_0220d95c: .word data_021052fc
 .L_0220d960: .word gDisplayBrightnessPair
-.L_0220d964: .word gLupyContext
+.L_0220d964: .word gGamePhaseCurrencyHud
 .size Overlay052Scene_Destroy, . - Overlay052Scene_Destroy

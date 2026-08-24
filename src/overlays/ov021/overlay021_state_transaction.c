@@ -14,14 +14,14 @@ extern const u32 data_ov021_02202d70[];
 extern const u32 data_ov021_02202d90[];
 extern const u32 data_ov021_02202fb8[];
 extern u8 gHeapContext[];
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *);
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
@@ -90,8 +90,8 @@ static void destroy_polymorphic(void *object)
 static void animate_currency(void *state, s32 amount, s32 debit)
 {
     s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
-                                   GamePhaseCurrencyHud_GetCurrency(gLupyContext), amount, debit);
-    GamePhaseCurrencyHud_AddCurrency(gLupyContext, debit ? -amount : amount, anim);
+                                   GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud), amount, debit);
+    GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, debit ? -amount : amount, anim);
 }
 
 static void prepare_result_widget(void *state)

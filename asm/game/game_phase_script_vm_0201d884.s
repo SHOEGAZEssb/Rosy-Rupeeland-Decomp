@@ -25,7 +25,7 @@
 .extern gOverlay33RuntimeSceneChildAllocationTag
 .extern data_020d36e1
 .extern data_021052fc
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gHeapContext
 .global func_0201d884
 func_0201d884: ; 0x0201d884
@@ -110,7 +110,7 @@ L_0201d920:
     ldmia sp!, {r4, pc}
 L_0201d9b4: .word data_021052fc
 L_0201d9b8: .word data_020d36e1
-L_0201d9bc: .word gLupyContext
+L_0201d9bc: .word gGamePhaseCurrencyHud
 
 
 .size func_0201d884, . - func_0201d884

@@ -10,7 +10,7 @@ extern const u8 data_021f5ee8[];
 extern const u8 data_ov021_02202fa0[];
 extern const u8 data_ov021_02202fa8[];
 extern u8 gHeapContext[];
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -161,7 +161,7 @@ extern "C" void func_ov021_021feb60(void *state)
 }
 
 /*
- * Run the shared per-frame scene update: update global Lupy context, the main
+ * Run the shared per-frame scene update: update the global currency HUD, the main
  * input helper +0xA0, both 0xAC-byte helpers, active-list controller/renderer,
  * optional dialog/panels, external object +0x3EC, and renderer +0x94. While the
  * tile-buffer blend timer +0x3F8 is below 16, increment it, interpolate
@@ -171,7 +171,7 @@ extern "C" void func_ov021_021feb60(void *state)
  */
 extern "C" void func_ov021_021feea4(void *state)
 {
-    GamePhaseCurrencyHud_Update(gLupyContext);
+    GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     func_020958d8((u8 *)state + 0xa0);
     s32 i;
     for (i = 0; i < 2; i++)

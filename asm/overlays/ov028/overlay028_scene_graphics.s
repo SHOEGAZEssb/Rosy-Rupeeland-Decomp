@@ -32,7 +32,7 @@
 .extern func_ov028_021fda4c
 .extern func_ov028_021fe540
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern GraphicsResourceSet_Destroy
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
@@ -280,5 +280,5 @@ L_021fe528:
     ldmeqia sp!, {r4, pc}
     bl func_ov028_021fda4c
     ldmia sp!, {r4, pc}
-L_021fe53c: .word gLupyContext
+L_021fe53c: .word gGamePhaseCurrencyHud
 .size func_ov028_021fe438, .-func_ov028_021fe438

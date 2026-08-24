@@ -82,8 +82,8 @@ extern void *GraphicsSpriteGroup_CreateState(void *group, void *resource0,
                                              u8 attach);
 extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern u32 func_020ada8c(u32 numerator, u32 denominator);
-extern void *gLupyContext;
-extern s32 GamePhaseCurrencyHud_GetCurrency(void *context);
+extern void *gGamePhaseCurrencyHud;
+extern s32 GamePhaseCurrencyHud_GetCurrency(const void *context);
 extern void GamePhaseCurrencyHud_SetCurrency(void *context, s32 value);
 extern s32 GameWork_TestFlag(void *work, u32 flag);
 extern void VecFx32Object_Assign(void *destination, const void *source);
@@ -567,7 +567,7 @@ void ActorAttachmentRecord_ConfigureHitInterval(void *object, s32 first, s32 sec
 void ActorAttachmentRecord_InitializeType1State(void *object)
 {
     u8 *self = (u8 *)object;
-    s32 extent = GamePhaseCurrencyHud_GetCurrency(gLupyContext) * 10;
+    s32 extent = GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) * 10;
     *(s32 *)(self + 0x14) = extent;
     *(s32 *)(self + 0x18) = extent;
     *(u32 *)(self + 0x1d8) = 0;
@@ -1746,19 +1746,19 @@ void ActorAttachmentRecord_DrainPendingAmount(void *object)
     if (++*(s32 *)(record + 0x1dc) > 29) {
         s32 amount = *(s32 *)(record + 0x1d8);
         s32 drain = amount / 10;
-        currency = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
+        currency = GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud);
         if (drain > 0) {
             u32 event[3] = {1, (u32)drain, 0};
             currency -= drain;
             if (currency < 0)
                 currency = 0;
-            GamePhaseCurrencyHud_SetCurrency(gLupyContext, currency);
+            GamePhaseCurrencyHud_SetCurrency(gGamePhaseCurrencyHud, currency);
             ActorAttachmentEventQueue_Append(*(void **)(*(u8 **)(record + 4) + 0xc4), event);
         }
         *(s32 *)(record + 0x1d8) = amount % 10;
         *(s32 *)(record + 0x1dc) = 0;
     }
-    currency = GamePhaseCurrencyHud_GetCurrency(gLupyContext);
+    currency = GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud);
     *(s32 *)(record + 0x18) = currency * 10;
     if ((*(u32 *)(*(u8 **)(record + 0x1d0) + 0xd0) & 0x20000) != 0 &&
         *(s32 *)(record + 0x18) == 0)
@@ -2043,7 +2043,7 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
     for (i = 0; i < attachmentCount; i++) {
         u8 *actor = (u8 *)ActorAttachmentManager_GetRecord(manager, i);
         if (actor[0x4d] == 1) {
-            typeOneEmpty = GamePhaseCurrencyHud_GetCurrency(gLupyContext) == 0;
+            typeOneEmpty = GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) == 0;
         } else if (actor[0x4d] == 2) {
             if (*(s32 *)(actor + 0x1fc) == 0) {
                 emptyTypeTwoCount++;

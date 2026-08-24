@@ -18,7 +18,7 @@
 .extern func_ov059_022109bc
 .extern func_ov059_022109f0
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneManager
 
 .global func_ov059_02210fec
@@ -105,6 +105,6 @@ func_ov059_02210fec:
 .L_02211120: .word data_ov059_02211bb0
 .L_02211124: .word gHeapContext
 .L_02211128: .word data_ov059_02211ba8
-.L_0221112c: .word gLupyContext
+.L_0221112c: .word gGamePhaseCurrencyHud
 .L_02211130: .word gSceneManager
 .size func_ov059_02210fec, . - func_ov059_02210fec

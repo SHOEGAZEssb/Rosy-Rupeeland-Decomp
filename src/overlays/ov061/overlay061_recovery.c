@@ -34,7 +34,6 @@ extern DisplayBrightnessPair gDisplayBrightnessPair;
 extern GraphicsSpriteRenderer *data_020f4e14;
 extern GraphicsSpriteRenderer *gDebugFont;
 extern GamePhaseRuntime *data_021052fc;
-extern void *gLupyContext;
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern void Sound_StopEffect(void *context, s32 bank, s32 soundId);
@@ -107,7 +106,7 @@ void func_ov061_022100e4(Overlay61Scene *self)
 {
     volatile u32 *displayControl;
     volatile u16 *palette;
-    u16 lupyFlags;
+    u16 currencyHudFlags;
 
     if (self->screen == 0) {
         displayControl = (volatile u32 *)0x04000000;
@@ -127,9 +126,9 @@ void func_ov061_022100e4(Overlay61Scene *self)
         GamePhaseRuntime_SetPlacementMode(data_021052fc, 0, 1);
     }
 
-    lupyFlags = *(u16 *)((u8 *)gLupyContext + 0xb0);
-    self->restoreCurrencyHud = (lupyFlags & 1) == 0;
-    GamePhaseCurrencyHud_SetVisible((GamePhaseCurrencyHud *)gLupyContext, 0);
+    currencyHudFlags = gGamePhaseCurrencyHud->flags;
+    self->restoreCurrencyHud = (currencyHudFlags & 1) == 0;
+    GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
 }
 
 /* Restore the display mode and phase presentation hidden by the modal scene. */
@@ -144,7 +143,7 @@ void func_ov061_022101dc(Overlay61Scene *self)
         GamePhaseRuntime_ApplyScreenMode(data_021052fc, 1, 1);
         GamePhaseRuntime_SetPlacementMode(data_021052fc, 1, 1);
     }
-    GamePhaseCurrencyHud_SetVisible((GamePhaseCurrencyHud *)gLupyContext,
+    GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud,
                                     self->restoreCurrencyHud);
 }
 

@@ -13,7 +13,7 @@
 .extern ActorDerivedType1_StartRecord
 .extern Type1Actor_TryEnterFailureState
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneManager
 
     .global ActorDerivedType1_DispatchInteractionAmount
@@ -127,7 +127,7 @@ ActorDerivedType1_DispatchInteractionAmount: ; 0x020398a4
 .L_02039a34:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02039a3c: .word gLupyContext
+.L_02039a3c: .word gGamePhaseCurrencyHud
 .L_02039a40: .word data_020df4a4
 .L_02039a44: .word gHeapContext
 .L_02039a48: .word data_021052fc

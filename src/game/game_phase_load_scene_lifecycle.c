@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern SceneVTable data_020d5460;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 extern void func_02092364(void *object);
 extern void func_020923a0(void *object);
 #ifdef __cplusplus
@@ -28,12 +28,12 @@ typedef struct OwnedObject {
 /*
  * Initialize the Scene and its four embedded helpers, retain the requested
  * phase values, enable Scene flags 0/1, and snapshot POWCNT1 bit 15. The flag
- * at Lupy offset 0xb0 determines field_34 with inverted bit-0 polarity.
+ * at currency-HUD offset 0xb0 determines field_34 with inverted bit-0 polarity.
  */
 GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 phase,
                                   s32 phaseArgument)
 {
-    u16 lupyFlags;
+    u16 currencyHudFlags;
 
     Scene_Init(&self->base);
     self->base.vtable = &data_020d5460;
@@ -49,8 +49,8 @@ GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 phase,
     self->ownedObjectCallbacksEnabled = 0;
     self->runtimeCallbacksEnabled = 1;
     Scene_SetFlags03(&self->base);
-    lupyFlags = *(u16 *)((u8 *)gLupyContext + 0xb0);
-    self->field_34 = (lupyFlags & 1) ? 0 : 1;
+    currencyHudFlags = *(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xb0);
+    self->field_34 = (currencyHudFlags & 1) ? 0 : 1;
     self->savedPowerControlBit15 =
         (*(volatile u16 *)0x04000304 & 0x8000) >> 15;
     return self;

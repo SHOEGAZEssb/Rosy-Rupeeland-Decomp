@@ -15,7 +15,7 @@
 .extern Overlay065Particle_Update
 .extern Overlay065Scene_LaunchAmountParticles
 .extern gDebugFont
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSceneManager
 
 .global Overlay065Scene_Update
@@ -220,6 +220,6 @@ Overlay065Scene_Update:
 .L_022108e4: .word data_020f4e14
 .L_022108e8: .word gDebugFont
 .L_022108ec: .word data_021052fc
-.L_022108f0: .word gLupyContext
+.L_022108f0: .word gGamePhaseCurrencyHud
 .L_022108f4: .word data_020c9670
 .size Overlay065Scene_Update, . - Overlay065Scene_Update

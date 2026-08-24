@@ -12,7 +12,7 @@ extern void *gDebugFont;
 extern void func_02071e90(void *state);
 extern void func_02071ee0(void *state, void *manager, void *resource0,
                           void *resource1, void *resource2);
-extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, u32 value);
+extern void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, s32 value);
 extern void GamePhaseCurrencyHud_SetVisible(GamePhaseCurrencyHud *self, s32 value);
 #ifdef __cplusplus
 }
@@ -76,9 +76,9 @@ GamePhaseCurrencyHud *GamePhaseCurrencyHud_Init(GamePhaseCurrencyHud *self)
                 (GraphicsSpriteResourceDescriptor *)&self->resources[0],
                 0, 0, 0xc0, 0, 0);
             self->digits[display][digit] = sprite;
-            sprite->field_2c = x;
+            sprite->screenX = x;
             x -= 16;
-            sprite->field_2e = 0;
+            sprite->screenY = 0;
             if (digit == 2 || digit == 5)
                 x -= 4;
         }
@@ -86,14 +86,14 @@ GamePhaseCurrencyHud *GamePhaseCurrencyHud_Init(GamePhaseCurrencyHud *self)
             self->groups[display],
             (GraphicsSpriteResourceDescriptor *)&self->resources[1],
             0, 0, 0xc0, 1, 2);
-        self->marker[display]->field_2c = -128;
-        self->marker[display]->field_2e = -12;
+        self->marker[display]->screenX = -128;
+        self->marker[display]->screenY = -12;
         self->backdrop[display] = GraphicsSpriteState_Create(
             self->groups[display],
             (GraphicsSpriteResourceDescriptor *)&self->resources[2],
             0, 0, 0x100, 1, 2);
-        self->backdrop[display]->field_2c = 0;
-        self->backdrop[display]->field_2e = 0;
+        self->backdrop[display]->screenX = 0;
+        self->backdrop[display]->screenY = 0;
         for (digit = 0; digit < 4; digit++)
             self->ornaments[display][digit] = GraphicsSpriteState_Create(
                 self->groups[display],

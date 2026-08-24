@@ -257,8 +257,8 @@ void GameWork_Init(GameWork *work)
     int j;
 
     work->currency = 0;
-    work->unknown0044 = 0;
-    work->unknown0048 = 0;
+    work->currencyIncreaseAccumulator = 0;
+    work->currencyDecreaseAccumulator = 0;
 
     /* Clear the leading scalar tables, then install their nonzero defaults. */
     for (i = 0; i < 256; i++) {

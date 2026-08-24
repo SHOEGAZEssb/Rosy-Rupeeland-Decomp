@@ -20,7 +20,7 @@
 .extern func_ov052_0220d600
 .extern gDebugFont
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 
 .global Overlay052Scene_Init
 Overlay052Scene_Init:
@@ -180,6 +180,6 @@ Overlay052Scene_Init:
 .L_0220d870: .word data_ov052_0220e224
 .L_0220d874: .word 0x14ec
 .L_0220d878: .word gDisplayBrightnessPair
-.L_0220d87c: .word gLupyContext
+.L_0220d87c: .word gGamePhaseCurrencyHud
 .L_0220d880: .word data_021052fc
 .size Overlay052Scene_Init, . - Overlay052Scene_Init

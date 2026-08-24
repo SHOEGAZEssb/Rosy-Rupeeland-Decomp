@@ -21,7 +21,7 @@
 .extern func_ov084_02212d28
 .extern func_ov084_022131fc
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
 .global func_ov084_02212e6c
@@ -252,7 +252,7 @@ func_ov084_02212e6c:
     add sp, sp, #0x88
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_022131dc: .word data_020c9670
-.L_022131e0: .word gLupyContext
+.L_022131e0: .word gGamePhaseCurrencyHud
 .L_022131e4: .word gSoundContext
 .L_022131e8: .word data_ov084_022143a4
 .L_022131ec: .word gHeapContext

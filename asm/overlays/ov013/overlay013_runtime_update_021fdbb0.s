@@ -14,7 +14,7 @@
     .extern SpriteMotionController_PublishCoordinates
     .extern func_02095988
     .extern func_ov013_021fdfbc
-    .extern gLupyContext
+    .extern gGamePhaseCurrencyHud
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_runtime_update.c. */
@@ -154,7 +154,7 @@ L_021fdd64:
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fdd80: .word data_ov013_021feb58
 L_021fdd84: .word data_ov013_021feb40
-L_021fdd88: .word gLupyContext
+L_021fdd88: .word gGamePhaseCurrencyHud
 
     .size func_ov013_021fdbb0, . - func_ov013_021fdbb0
 func_ov013_021fdd8c:

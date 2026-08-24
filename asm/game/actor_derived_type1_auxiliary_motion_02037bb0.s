@@ -11,7 +11,7 @@
 .extern AuxiliaryInteraction_IsCoreHidden
 .extern func_020adae4
 .extern gGameWork
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSystemState
 
     .global ActorDerivedType1_UpdateAuxiliaryResourceMotion
@@ -142,7 +142,7 @@ ActorDerivedType1_UpdateAuxiliaryResourceMotion: ; 0x02037bb0
     str r0, [r5, #0x40]
     str r0, [r5, #0x3c]
     ldmia sp!, {r4, r5, r6, pc}
-.L_02037d80: .word gLupyContext
+.L_02037d80: .word gGamePhaseCurrencyHud
 .L_02037d84: .word gGameWork
 .L_02037d88: .word 0x3ee
 .L_02037d8c: .word gSystemState

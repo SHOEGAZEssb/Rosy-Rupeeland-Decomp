@@ -20,7 +20,7 @@
 .extern Sound_PlayDirectSequence
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern gHeapContext
-.extern gLupyContext
+.extern gGamePhaseCurrencyHud
 .extern gSoundContext
 
 .global Overlay064Scene_UpdateMode1
@@ -181,7 +181,7 @@ Overlay064Scene_UpdateMode1:
 .L_02211358: .word data_021052fc
 .L_0221135c: .word 0x1004
 .L_02211360: .word gSoundContext
-.L_02211364: .word gLupyContext
+.L_02211364: .word gGamePhaseCurrencyHud
 .L_02211368: .word data_ov064_02211ecc
 .L_0221136c: .word gHeapContext
 .L_02211370: .word gDisplayBrightnessPair

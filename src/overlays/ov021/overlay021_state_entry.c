@@ -17,7 +17,7 @@ extern const u32 data_ov021_02202f30[];
 extern const u32 data_ov021_02202f38[];
 extern void *gDebugFont;
 extern void *gGameWork;
-extern void *gLupyContext;
+extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
 extern "C" {
@@ -65,7 +65,7 @@ extern void Overlay045_DrawSelectorPreview(s32, s32);
 /*
  * One-time scene entry handler. Unless game-work flag 0x3B2 is set, start an
  * overlay-45 object for mode +0x54 and store its handle at +0x2D0. Commit both
- * fonts, disable input helper +0xA0, and enable global Lupy input. If saved row
+ * fonts, disable input helper +0xA0, and enable the global currency HUD. If saved row
  * +0x3E4 is valid, activate list zero, cache that row descriptor +0x2BC,
  * restore external value for record tag 0xEE0E, and transition through
  * data_ov021_02202E50. Otherwise clear flag 0x3B2 and restore font state when
@@ -83,7 +83,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_02095940((u8 *)state + 0xa0);
-        GamePhaseCurrencyHud_SetVisible(gLupyContext, 1);
+        GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
 
         if (FIELD(s32, state, 0x3e4) >= 0) {
             FIELD(s32, state, 0x2c4) = 0;
