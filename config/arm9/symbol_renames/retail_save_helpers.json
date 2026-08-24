@@ -1,0 +1,8 @@
+{
+  "func_02080984": "RetailSaveContext_PollCardOperation",
+  "func_020809c4": "RetailSaveContext_IsHeaderValid",
+  "func_02080a14": "RetailSaveContext_IsPayloadValid",
+  "func_02080a68": "RetailSaveContext_UpdatePayloadCrc",
+  "func_02080a90": "RetailSaveContext_ReleaseGameBuffer",
+  "func_02080abc": "RetailSave_CalculateCrc32"
+}
