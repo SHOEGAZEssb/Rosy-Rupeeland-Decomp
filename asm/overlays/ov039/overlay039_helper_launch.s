@@ -3,7 +3,7 @@
     .extern VecFx32Object_InitCopy
     .extern VecFx32Object_Destroy
     .extern func_020ae024
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov039_021fd93c
 func_ov039_021fd93c:
@@ -89,7 +89,7 @@ L_021fda68:
     bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-L_021fda78: .word data_020c9670
+L_021fda78: .word gFx32CosSinTable
 L_021fda7c: .word 0x1b33
     .size func_ov039_021fd93c, .-func_ov039_021fd93c
 
@@ -157,7 +157,7 @@ L_021fdb64:
     subs r4, r4, #0x1
     bpl L_021fda90
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_021fdb70: .word data_020c9670
+L_021fdb70: .word gFx32CosSinTable
 L_021fdb74: .word 0x1b33
     .size func_ov039_021fda80, .-func_ov039_021fda80
 

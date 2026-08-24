@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_destination_motion.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Assign
 .extern ActorRuntimeTriple_Assign
 .extern Type7Actor_CompleteDestinationMotion
@@ -99,6 +99,6 @@ Type7Actor_UpdateDestinationMotion: ; 0x0204991c
 .L_02049a70:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02049a78: .word data_020c9670
+.L_02049a78: .word gFx32CosSinTable
 .size Type7Actor_UpdateDestinationMotion, . - Type7Actor_UpdateDestinationMotion
 

@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,9 +50,9 @@ extern "C" void func_ov026_021fd6b0(void *object, s32 matrix_mode)
     s32 xi = (s16)x >> 4;
     s32 yi = (s16)y >> 4;
     s32 zi = (s16)z >> 4;
-    func_020b0880(data_020c9670[xi * 2], data_020c9670[xi * 2 + 1]);
-    func_020b0844(data_020c9670[yi * 2], data_020c9670[yi * 2 + 1]);
-    func_020b0808(data_020c9670[zi * 2], data_020c9670[zi * 2 + 1]);
+    func_020b0880(gFx32CosSinTable[xi * 2], gFx32CosSinTable[xi * 2 + 1]);
+    func_020b0844(gFx32CosSinTable[yi * 2], gFx32CosSinTable[yi * 2 + 1]);
+    func_020b0808(gFx32CosSinTable[zi * 2], gFx32CosSinTable[zi * 2 + 1]);
     *scale_port = FIELD(u32, object, 0x70);
     *scale_port = FIELD(u32, object, 0x70);
     *scale_port = FIELD(u32, object, 0x70);

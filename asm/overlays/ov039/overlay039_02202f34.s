@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay039_script_render.c for portable C. */
     .extern func_ov039_022014f8
     .extern VecFx32Object_Destroy
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .global func_ov039_02202f34
 func_ov039_02202f34:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
@@ -83,6 +83,6 @@ L_02203054:
 L_02203058:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-L_02203060: .word data_020c9670
+L_02203060: .word gFx32CosSinTable
     .size func_ov039_02202f34, .-func_ov039_02202f34
 

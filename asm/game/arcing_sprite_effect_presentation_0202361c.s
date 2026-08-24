@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020d6740
 .extern gArcingSpriteEffectAllocationTag
 .extern data_02105610

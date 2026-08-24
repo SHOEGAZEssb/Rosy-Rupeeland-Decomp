@@ -6,7 +6,7 @@
 #define REG32(address) (*(volatile u32 *)(address))
 
 extern const u8 data_ov036_022060b4[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -65,7 +65,7 @@ extern "C" void func_ov036_021fd6e0(void *object)
         REG32(0x04000498) = 8;
     } else if (FIELD(s32, object, 0x9c) == 1) {
         s32 index = (FIELD(s32, object, 0x60) >> 4) * 2;
-        func_020b0808(data_020c9670[index], data_020c9670[index + 1]);
+        func_020b0808(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
         REG32(0x04000500) = 0;
         REG32(0x04000480) = FIELD(u16, object, 0xa0);
         REG32(0x0400048c) = 0x0000fffe;

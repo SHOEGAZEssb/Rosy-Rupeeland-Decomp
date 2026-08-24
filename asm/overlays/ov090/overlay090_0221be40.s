@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_participant_presentation_update.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -211,5 +211,5 @@ func_ov090_0221be40:
     bl VecFx32Object_Destroy
     add sp, sp, #0x44
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
-.L_0221c134: .word data_020c9670
+.L_0221c134: .word gFx32CosSinTable
 .size func_ov090_0221be40, . - func_ov090_0221be40

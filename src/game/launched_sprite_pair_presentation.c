@@ -41,7 +41,7 @@ extern u8 data_021f3d68[];
 extern void *data_020f4e18;
 extern u8 *gGamePhaseRuntime;
 extern void *gGameWork;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 extern void VecFx32Object_Init(PresentationVector *);
 extern void VecFx32Object_InitComponents(PresentationVector *, s32, s32, s32);
@@ -234,7 +234,7 @@ s32 func_02024e24(LaunchedSpritePairPresentation *self)
         s32 sine;
         self->acceleration2c += 0x52;
         self->velocity1c.z0c += self->acceleration2c;
-        sine = data_020c9670[((self->angle30 & 0xffff) >> 4) * 2];
+        sine = gFx32CosSinTable[((self->angle30 & 0xffff) >> 4) * 2];
         self->velocity1c.x04 =
             sine * Presentation_InterpolateLinear(0, 0x10, 0x78, self->frame34);
         self->angle30 += 0x400;

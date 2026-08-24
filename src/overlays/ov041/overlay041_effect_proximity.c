@@ -10,7 +10,7 @@
 
 extern "C" {
 s32 func_020adc40(s32);
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 }
 
 /*
@@ -33,9 +33,9 @@ extern "C" s32 func_ov041_022015b0(void *object, s32 x, s32 y)
     if (FIELD(s32, object, 0x624) == 0) {
         s32 direction = (FIELD(s32, object, 0x4b8) >> 4) * 2;
         s32 recordX =
-            FIELD(s32, object, 0x6c) + data_020c9670[direction] * 0x30;
+            FIELD(s32, object, 0x6c) + gFx32CosSinTable[direction] * 0x30;
         s32 recordY =
-            FIELD(s32, object, 0x70) + data_020c9670[direction + 1] * 0x30;
+            FIELD(s32, object, 0x70) + gFx32CosSinTable[direction + 1] * 0x30;
         s32 dx = recordX - x;
         s32 dy = recordY - y;
         if ((dx < 0 ? -dx : dx) <= 0x20000 &&

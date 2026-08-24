@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Scan nearby runtime actors for the type-0x6f descriptor collision response. */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
@@ -63,8 +63,8 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
     projection = func_020adae4(radius, 3);
     VecFx32Object_InitCopy(center, actor + 0x18);
     index = ((actor[0xd4] & 7) << 9) * 2;
-    center[1] -= projection * data_020c9670[index];
-    center[2] += projection * data_020c9670[index + 1];
+    center[1] -= projection * gFx32CosSinTable[index];
+    center[2] += projection * gFx32CosSinTable[index + 1];
 
     for (i = 0;; ++i) {
         u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);

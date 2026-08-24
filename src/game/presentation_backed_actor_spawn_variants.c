@@ -8,7 +8,7 @@
  */
 
 extern const s16 data_020c3e78[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u16 gPresentationBackedActorRuntimeState[];
 
 #ifdef __cplusplus
@@ -73,9 +73,9 @@ void PresentationBackedActor_SpawnTripleVariant(u32 playback_value, s32 amount, 
     for (i = 0; i < 3; i++) {
         s32 angle_index = (s16)gPresentationBackedActorRuntimeState[0] >> 4;
         velocity.value.x = func_020adae4(
-            data_020c9670[angle_index * 2 + 1] * 3, 2);
+            gFx32CosSinTable[angle_index * 2 + 1] * 3, 2);
         velocity.value.y = func_020adae4(
-            data_020c9670[angle_index * 2] * 3, 2);
+            gFx32CosSinTable[angle_index * 2] * 3, 2);
         PresentationBackedActor_Spawn(19, playback_value, divided_amount, position,
                       &velocity, 0x3010, 0x300e, 0x3011, 0, 7, 1);
         gPresentationBackedActorRuntimeState[0] = (u16)(gPresentationBackedActorRuntimeState[0] +

@@ -21,7 +21,7 @@ extern void *gSoundContext;
 extern void *gSystemState;
 extern void *gGamePhaseRuntime;
 extern void *gActorRuntimeFlags;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_ov039_022083fc[];
 
 #ifdef __cplusplus

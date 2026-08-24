@@ -5,7 +5,7 @@
  * direction and magnitude from actor transforms, optionally clamps it through
  * indexed world data, and updates the actor's fixed-point motion fields.
  */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 data_020e0f28[];
 extern u8 *gGamePhaseRuntime;
 
@@ -31,7 +31,7 @@ extern void VecFx32Object_Destroy(void *transform);
  * from gGamePhaseRuntime, and the 0x3c-byte records in data_020e0f28 when +0xd0
  * bit one is set; otherwise the signed virtual-output halfword supplies the
  * limit. Positive magnitudes become angle-derived +0x3c/+0x40 velocities using
- * data_020c9670. Actor +0x14 bit 0x40 selects a 0x19a/0xe66 fixed-point blend
+ * gFx32CosSinTable. Actor +0x14 bit 0x40 selects a 0x19a/0xe66 fixed-point blend
  * with +0x8c/+0x90; state becomes five or six according to +0xd0 bit one.
  * Nonpositive magnitude clears velocity and enters state one. With +0xd0 bit
  * two, virtual +0x30 may also clear +0x8c/+0x90/+0x94. The temporary transform
@@ -72,8 +72,8 @@ void ActorExtendedType2_UpdateTargetMotion(void *self,
         *(u16 *)(actor + 0xde) = 0x100;
         if (limit > 0) {
             s32 angle = func_020ae024(*(s32 *)(query + 8), *(s32 *)(query + 4)) >> 4;
-            s32 velocityX = (limit * data_020c9670[angle * 2 + 1]) >> 12;
-            s32 velocityY = (limit * data_020c9670[angle * 2]) >> 12;
+            s32 velocityX = (limit * gFx32CosSinTable[angle * 2 + 1]) >> 12;
+            s32 velocityY = (limit * gFx32CosSinTable[angle * 2]) >> 12;
             if ((*(u32 *)(actor + 0x14) & 0x40) == 0) {
                 *(s32 *)(actor + 0x3c) = velocityX;
                 *(s32 *)(actor + 0x40) = velocityY;

@@ -18,7 +18,7 @@
 extern "C" {
 #endif
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void func_0209b414(u32 format, u32 generation, u32 sizeS, u32 sizeT,
                           u32 repeatS, u32 repeatT, u32 flip, u32 address);
 extern void func_0209b494(void *context, s32 resource, s32 polygonId);
@@ -120,8 +120,8 @@ void func_0209c430(void *context, const VecFx32Object *position,
 #endif
 
     tableIndex = (angle >> 4) * 2;
-    func_020b0808(data_020c9670[tableIndex],
-                  data_020c9670[tableIndex + 1]);
+    func_020b0808(gFx32CosSinTable[tableIndex],
+                  gFx32CosSinTable[tableIndex + 1]);
     func_0209b494(context, (s32)resource, 0);
 
     REG_G3_BEGIN_VTXS = 1;
@@ -194,8 +194,8 @@ void func_0209c614(void *context, const VecFx32Object *position,
 #endif
 
     tableIndex = (angle >> 4) * 2;
-    func_020b0808(data_020c9670[tableIndex],
-                  data_020c9670[tableIndex + 1]);
+    func_020b0808(gFx32CosSinTable[tableIndex],
+                  gFx32CosSinTable[tableIndex + 1]);
     func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);
     func_0209b560(0, 0, 3, 2, 0x1f, 0);
 

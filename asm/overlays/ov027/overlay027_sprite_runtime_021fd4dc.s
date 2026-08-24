@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov027/overlay027_sprite_runtime.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern GraphicsAnimationInstance_SetAnimation
 .extern PresentationScalar_SetImmediate
 .extern Presentation_InterpolateScalar
@@ -92,6 +92,6 @@ L_021fd5f4:
     and r1, r2, #0xff
     bl GraphicsAnimationInstance_SetAnimation
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-L_021fd620: .word data_020c9670
+L_021fd620: .word gFx32CosSinTable
 .size func_ov027_021fd4dc, .-func_ov027_021fd4dc
 

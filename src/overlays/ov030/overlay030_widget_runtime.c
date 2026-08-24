@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *data_020f4e14[];
 
 #ifdef __cplusplus
@@ -65,7 +65,7 @@ extern "C" void func_ov030_021fd304(void *widget)
 {
     u16 phase = (u16)(FIELD(u32, widget, 0x1c8) + 0x1000);
     FIELD(u32, widget, 0x1c8) = phase;
-    s32 scaled = (data_020c9670[phase >> 4] << 7) / 0x1000 + 0x180;
+    s32 scaled = (gFx32CosSinTable[phase >> 4] << 7) / 0x1000 + 0x180;
     func_02070958(FIELD(void *, widget, 8), scaled, scaled, scaled);
     for (s32 i = 0; i < 7; ++i) {
         void *sprite = FIELD(void *, widget, 0x34 + i * 4);

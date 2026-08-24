@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov026_022048f8[];
 extern const u8 data_ov026_02204a48[];
 extern void *gHeapContext;
@@ -54,13 +54,13 @@ extern "C" void *func_ov026_021fe2c8(void *object, void *payload)
         func_020b0000((u8 *)object + 4, 0x18);
         func_020aff38((u8 *)object + 4, 0, 0, 0);
         func_020b0000((u8 *)object + 4, 0);
-        s32 sin1 = data_020c9670[angle1 * 2];
-        s32 cos1 = data_020c9670[angle1 * 2 + 1];
+        s32 sin1 = gFx32CosSinTable[angle1 * 2];
+        s32 cos1 = gFx32CosSinTable[angle1 * 2 + 1];
         func_020aff00((u8 *)object + 4,
                       (s16)((sin1 * 0x333 + 0x800) >> 12),
                       (s16)((cos1 * 0x333 + 0x800) >> 12));
-        s32 sin0 = data_020c9670[angle0 * 2];
-        s32 cos0 = data_020c9670[angle0 * 2 + 1];
+        s32 sin0 = gFx32CosSinTable[angle0 * 2];
+        s32 cos0 = gFx32CosSinTable[angle0 * 2 + 1];
         func_020aff00((u8 *)object + 4,
                       (s16)((sin0 * 0x333 + 0x800) >> 12),
                       (s16)((cos0 * 0x333 + 0x800) >> 12));

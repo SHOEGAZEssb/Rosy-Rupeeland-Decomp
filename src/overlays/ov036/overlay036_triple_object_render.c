@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 #define REG32(address) (*(volatile u32 *)(address))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,7 +27,7 @@ extern void func_ov036_021fcfa0(void *object, void *transform);
  * Draws the object only when +0xAC is nonzero. It configures polygon state
  * (cull 3, ID 0x10, alpha 0x1F), clears common render parameters, selects the
  * GX matrix mode, loads translation +0x10/+0x20/+0x30, applies X/Y/Z rotations
- * from low-16-bit angles +0x40/+0x50/+0x60 through data_020c9670, and loads
+ * from low-16-bit angles +0x40/+0x50/+0x60 through gFx32CosSinTable, and loads
  * uniform scale +0x70. Every child linked from +0xA0 through +8 is drawn using
  * caller transform. Finally the GX matrix is committed. Returns nothing and
  * directly changes Nintendo DS GX state.
@@ -43,11 +43,11 @@ extern "C" void func_ov036_02203c44(void *object, void *transform)
     REG32(0x04000470) = FIELD(s32, object, 0x20);
     REG32(0x04000470) = FIELD(s32, object, 0x30);
     u32 index = ((u16)FIELD(s32, object, 0x40) >> 4) * 2;
-    func_020b0880(data_020c9670[index], data_020c9670[index + 1]);
+    func_020b0880(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
     index = ((u16)FIELD(s32, object, 0x50) >> 4) * 2;
-    func_020b0844(data_020c9670[index], data_020c9670[index + 1]);
+    func_020b0844(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
     index = ((u16)FIELD(s32, object, 0x60) >> 4) * 2;
-    func_020b0808(data_020c9670[index], data_020c9670[index + 1]);
+    func_020b0808(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
     REG32(0x0400046c) = FIELD(s32, object, 0x70);
     REG32(0x0400046c) = FIELD(s32, object, 0x70);
     REG32(0x0400046c) = FIELD(s32, object, 0x70);

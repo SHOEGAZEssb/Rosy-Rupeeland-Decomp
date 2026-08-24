@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_math_opcodes.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 
@@ -21,6 +21,6 @@ GamePhaseActorScriptVm_LookupAngleSecondComponent: ; 0x02012d50
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_02012d8c: .word data_020c9670
+L_02012d8c: .word gFx32CosSinTable
     .size GamePhaseActorScriptVm_LookupAngleSecondComponent, . - GamePhaseActorScriptVm_LookupAngleSecondComponent
 

@@ -10,7 +10,7 @@ extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
 extern "C" u8 *gGamePhaseRuntime;
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" u8 data_020e83a0[];
 extern "C" u8 data_ov077_02216f2c[], data_ov077_02216f34[];
 extern "C" u8 data_ov077_02216f4c[], data_ov077_02216f64[];
@@ -277,8 +277,8 @@ extern "C" void func_ov077_02212f38(void *actor)
     F(u8, actor, 0x2a1) += 1;
     s32 xIndex = ((s8)F(u8, actor, 0x2a0)) << 8;
     s32 yIndex = ((s8)F(u8, actor, 0x2a1)) << 8;
-    F(s32, actor, 0x2a8) = data_020c9670[(u16)xIndex >> 4] << 3;
-    F(s32, actor, 0x2ac) = data_020c9670[((u16)yIndex >> 4) * 2] << 3;
+    F(s32, actor, 0x2a8) = gFx32CosSinTable[(u16)xIndex >> 4] << 3;
+    F(s32, actor, 0x2ac) = gFx32CosSinTable[((u16)yIndex >> 4) * 2] << 3;
     void *attachment = F(void *, actor, 0x29c);
     if (attachment != 0)
     {
@@ -620,7 +620,7 @@ extern "C" void func_ov077_02213c30(void *out, void *actor, void *contact)
                 time = 0x10;
             s32 index = ((u16)(F(u16, actor, 0x2fe) << 12)) >> 4;
             F(s16, actor, 0x2fc) =
-                (s16)((time * 2 * data_020c9670[index * 2]) >> 4);
+                (s16)((time * 2 * gFx32CosSinTable[index * 2]) >> 4);
         }
     }
     void *body = F(void *, actor, 0x2c4);
@@ -658,8 +658,8 @@ extern "C" void func_ov077_02213c30(void *out, void *actor, void *contact)
             static const s16 *offsetsY = (const s16 *)data_ov077_02216f64;
             void *primary = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
             s32 trigIndex = ((u16)F(s16, actor, 0x2fc)) >> 4;
-            s16 cosine = data_020c9670[trigIndex * 2];
-            s16 sine = data_020c9670[trigIndex * 2 + 1];
+            s16 cosine = gFx32CosSinTable[trigIndex * 2];
+            s16 sine = gFx32CosSinTable[trigIndex * 2 + 1];
             for (s32 i = 0; i < 3; ++i)
             {
                 s32 slot = F(s16, actor, 0xda) * 3 + i;
@@ -837,8 +837,8 @@ extern "C" void func_ov077_022142f8(void *actor)
         F(u8, actor, 0x2a1) += (u8)(damage + (variant == 0 ? 1 : 1));
         s32 ix = ((u16)((s8)F(u8, actor, 0x2a0) << 8)) >> 4;
         s32 iy = ((u16)((s8)F(u8, actor, 0x2a1) << 8)) >> 4;
-        F(s32, actor, 0x2a8) = amplitude * data_020c9670[ix * 2];
-        F(s32, actor, 0x2ac) = amplitude * data_020c9670[iy * 2];
+        F(s32, actor, 0x2a8) = amplitude * gFx32CosSinTable[ix * 2];
+        F(s32, actor, 0x2ac) = amplitude * gFx32CosSinTable[iy * 2];
 
         if (variant == 0 && F(s16, actor, 0x2ea) > 2)
         {
@@ -876,8 +876,8 @@ extern "C" void func_ov077_022142f8(void *actor)
             F(s32, actor, 0x2f4) = blend;
             s32 angle =
                 ((F(s16, actor, 0x2ec) * F(s16, actor, 0x302)) & 0xffff) >> 4;
-            s32 targetX = data_020c9670[angle * 2] * 12;
-            s32 targetY = data_020c9670[angle * 2 + 1] * 12;
+            s32 targetX = gFx32CosSinTable[angle * 2] * 12;
+            s32 targetY = gFx32CosSinTable[angle * 2 + 1] * 12;
             if ((F(u16, actor, 0x2f2) & 0x180) != 0)
                 targetY -= 0x30000;
             F(s32, actor, 0x2b8) =
@@ -1282,9 +1282,9 @@ extern "C" void func_ov077_02215494(void *actor)
         s32 angle = ((countdown - 0x28) * 100) >> 4;
         s32 target[4];
         VecFx32Object_InitCopy(target, P(actor, 0x22c));
-        F(s32, target, 4) += data_020c9670[(angle & 0xffff) >> 4] * 0x20;
+        F(s32, target, 4) += gFx32CosSinTable[(angle & 0xffff) >> 4] * 0x20;
         F(s32, target, 8) +=
-            data_020c9670[((angle & 0xffff) >> 4) * 2 + 1] * 0x20;
+            gFx32CosSinTable[((angle & 0xffff) >> 4) * 2 + 1] * 0x20;
         ((Method)F(void *, F(void *, actor, 0), 0xd0))(actor, target);
         F(s32, actor, 0x3c) <<= 2;
         F(s32, actor, 0x40) <<= 2;

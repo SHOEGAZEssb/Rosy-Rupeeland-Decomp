@@ -3,7 +3,7 @@
 /* Exact fallback for func_ov041_02201e98; see the documented portable C in
  * src/overlays/ov041/overlay041_effect_attack_state.c. */
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_020ae024
 .extern func_ov041_02202a00
 .extern func_ov041_02202a3c
@@ -250,7 +250,7 @@ func_ov041_02201e98: ; 0x02201e98
 .L_02202210: .word gSoundContext
 .L_02202214: .word 0x12d
 .L_02202218: .word 0x1c2
-.L_0220221c: .word data_020c9670
+.L_0220221c: .word gFx32CosSinTable
 
     .size func_ov041_02201e98, . - func_ov041_02201e98
 

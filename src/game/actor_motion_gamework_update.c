@@ -1,5 +1,6 @@
 #include "tingle/actor_motion.h"
 #include "tingle/game_work.h"
+#include "tingle/touch_region.h"
 
 /*
  * Per-frame update for the ActorMotion subclass that exports display-relative
@@ -30,39 +31,40 @@ s32 ActorMotionGameWork_Update(ActorMotion *self, const s16 *bounds)
 {
     s32 result = 0;
     VecFx32Object offset;
+    const RectS16 *viewport = (const RectS16 *)bounds;
 
     if (self->mode == 2) {
-        if ((self->field_1c | self->field_20) != 0) {
-            if (self->field_2c > 0) {
-                self->field_30 |= 1;
-                --self->field_2c;
-                self->position.value.x += self->field_1c;
-                self->position.value.y += self->field_20;
+        if ((self->velocityX | self->velocityY) != 0) {
+            if (self->remainingSteps > 0) {
+                self->flags |= ACTOR_MOTION_FLAG_MOVING;
+                --self->remainingSteps;
+                self->position.value.x += self->velocityX;
+                self->position.value.y += self->velocityY;
             } else {
-                self->field_30 &= ~1;
-                self->position.value.x = self->field_24;
-                self->position.value.y = self->field_28;
-                self->field_1c = 0;
-                self->field_20 = 0;
+                self->flags &= ~ACTOR_MOTION_FLAG_MOVING;
+                self->position.value.x = self->destinationX;
+                self->position.value.y = self->destinationY;
+                self->velocityX = 0;
+                self->velocityY = 0;
             }
         }
     } else {
         result = ActorMotion_UpdateFromBoundActor(self);
     }
 
-    if (bounds[0] != 0 || bounds[1] != 0 ||
-        bounds[2] != 0 || bounds[3] != 0) {
-        if ((self->position.value.x >> 12) < bounds[0])
-            self->position.value.x = bounds[0] << 12;
-        if ((self->position.value.x >> 12) + 0x100 >= bounds[2])
-            self->position.value.x = (bounds[2] - 0x100) << 12;
-        if ((self->position.value.y >> 12) < bounds[1])
-            self->position.value.y = bounds[1] << 12;
-        if ((self->position.value.y >> 12) + 0xc0 >= bounds[3])
-            self->position.value.y = (bounds[3] - 0xc0) << 12;
+    if (viewport->left != 0 || viewport->top != 0 ||
+        viewport->right != 0 || viewport->bottom != 0) {
+        if ((self->position.value.x >> 12) < viewport->left)
+            self->position.value.x = viewport->left << 12;
+        if ((self->position.value.x >> 12) + 0x100 >= viewport->right)
+            self->position.value.x = (viewport->right - 0x100) << 12;
+        if ((self->position.value.y >> 12) < viewport->top)
+            self->position.value.y = viewport->top << 12;
+        if ((self->position.value.y >> 12) + 0xc0 >= viewport->bottom)
+            self->position.value.y = (viewport->bottom - 0xc0) << 12;
     }
 
-    if (self->field_30 & 2)
+    if (self->flags & ACTOR_MOTION_FLAG_OSCILLATION)
         ActorMotion_UpdateOscillation(self);
 
     ActorMotionState_BuildOscillationOffset(&offset, &self->state);

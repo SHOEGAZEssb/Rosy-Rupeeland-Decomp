@@ -5,29 +5,35 @@
 #include "tingle/vec_fx32.h"
 
 typedef struct ActorMotionTriple {
-    s32 x;
-    s32 y;
-    s32 z;
+    s32 halfRange;
+    s32 midpoint;
+    s32 phaseIncrement;
 } ActorMotionTriple;
 
 typedef struct ActorMotionState {
-    ActorMotionTriple first;
-    ActorMotionTriple second;
+    ActorMotionTriple xOscillation;
+    ActorMotionTriple yOscillation;
     s32 sampledOffsetX;
     s32 sampledOffsetY;
 } ActorMotionState;
+
+enum ActorMotionFlags {
+    ACTOR_MOTION_FLAG_MOVING = 1 << 0,
+    ACTOR_MOTION_FLAG_OSCILLATION = 1 << 1,
+    ACTOR_MOTION_FLAG_ALTERNATE_TARGET_Y = 1 << 3
+};
 
 typedef struct ActorMotion {
     const void *vtable;
     void *actor;
     VecFx32Object position;
     s32 mode;
-    s32 field_1c;
-    s32 field_20;
-    s32 field_24;
-    s32 field_28;
-    s32 field_2c;
-    s32 field_30;
+    s32 velocityX;
+    s32 velocityY;
+    s32 destinationX;
+    s32 destinationY;
+    s32 remainingSteps;
+    u32 flags;
     VecFx32Object target;
     ActorMotionState state;
 } ActorMotion;

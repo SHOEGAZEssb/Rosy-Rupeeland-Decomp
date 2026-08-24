@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 #define REG32(address) (*(volatile u32 *)(address))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov036_02205ad0[];
 extern const u8 data_ov036_02205be4[];
 
@@ -21,7 +21,7 @@ extern void func_ov036_021fd660(s16 first, u16 second, u16 third);
 /*
  * Draws a timed motion primitive unless hidden flag bit 0 is set or scaled
  * value +0x70<<4 is nonpositive. It loads translation, X/Y scale from +0x70
- * with unit Z scale, and Z rotation +0x60 through data_020c9670. Types +0x9A
+ * with unit Z scale, and Z rotation +0x60 through gFx32CosSinTable. Types +0x9A
  * 0/1 emit one coordinate plus two packed vertex words from offsets 0x90..0x9A
  * of data_ov036_02205ad0, using colors +0xB4/+0xB6. Type 2 emits six analogous
  * records of 12 bytes from data_ov036_02205be4. Other types submit no vertices.
@@ -43,7 +43,7 @@ extern "C" void func_ov036_021fd4c8(void *object)
     REG32(0x0400046c) = scale;
     REG32(0x0400046c) = 0x1000;
     s32 index = (FIELD(s32, object, 0x60) >> 4) * 2;
-    func_020b0808(data_020c9670[index], data_020c9670[index + 1]);
+    func_020b0808(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
     REG32(0x04000500) = 0;
 
     s32 type = FIELD(s16, object, 0x9a);

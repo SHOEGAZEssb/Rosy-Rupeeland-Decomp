@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *data_020f4e18[];
 extern const s32 data_ov017_02201414[];
 extern u8 data_ov017_022016e0[];
@@ -62,8 +62,8 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
         s32 coordinateX;
 
         FIELD(void *, pool, 0x10 + i * 4) = sprite;
-        coordinateZ = radius * data_020c9670[tableIndex * 2 + 1] / 0x100;
-        coordinateX = radius * data_020c9670[tableIndex * 2] / 0x100;
+        coordinateZ = radius * gFx32CosSinTable[tableIndex * 2 + 1] / 0x100;
+        coordinateX = radius * gFx32CosSinTable[tableIndex * 2] / 0x100;
         func_ov017_021fe3c4(sprite,
                            (u8)TitleRandom_NextBounded((u8 *)pool + 0x54, 3),
                            (u32)coordinateX, (u32)-0x666, (u32)coordinateZ,

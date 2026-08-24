@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Probe the actor's nearby cells and dispatch the corresponding terrain feedback presentation. */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern const char data_020df4f0[];
 extern u8 *gGamePhaseRuntime;
 extern u8 gActorInteractionResourceState[];
@@ -87,8 +87,8 @@ s32 ActorFeedback_DispatchEnvironment(void *self)
     u16 sound = 0;
 
     VecFx32Object_InitCopy(position, actor + 0x18);
-    first = data_020c9670[direction * 0x400];
-    second = data_020c9670[direction * 0x400 + 1];
+    first = gFx32CosSinTable[direction * 0x400];
+    second = gFx32CosSinTable[direction * 0x400 + 1];
     position[1] = (position[1] - first * 12) & ~0xfff;
     position[2] = (position[2] + second * 12) & ~0xfff;
     centerX = position[1] >> 12;

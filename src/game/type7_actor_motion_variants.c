@@ -6,7 +6,7 @@
  * return the actor to its idle state or hand the destination to its motion
  * controller.
  */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -60,9 +60,9 @@ s32 Type7Actor_UpdateRandomOffsetMotion(void *self)
         displacement = (*(u8 **)(actor + 0x29c))[0x54] == 2 ? 0x80 : 0x18;
         index = (s32)(direction & 0xffff) >> 4;
         *(s32 *)(actor + 0x7c) +=
-            displacement * data_020c9670[index * 2 + 1];
+            displacement * gFx32CosSinTable[index * 2 + 1];
         *(s32 *)(actor + 0x80) +=
-            displacement * data_020c9670[index * 2];
+            displacement * gFx32CosSinTable[index * 2];
         *(void **)(actor + 0x210) = 0;
     }
 
@@ -103,9 +103,9 @@ s32 Type7Actor_UpdateRandomOffsetMotionVariant(void *self)
         displacement = (*(u8 **)(actor + 0x29c))[0x54] == 2 ? 0x80 : 0x18;
         index = (s32)(direction & 0xffff) >> 4;
         *(s32 *)(actor + 0x7c) +=
-            displacement * data_020c9670[index * 2 + 1];
+            displacement * gFx32CosSinTable[index * 2 + 1];
         *(s32 *)(actor + 0x80) +=
-            displacement * data_020c9670[index * 2];
+            displacement * gFx32CosSinTable[index * 2];
         *(void **)(actor + 0x210) = 0;
     }
 

@@ -16,7 +16,7 @@ typedef struct TitleEffectBounds {
 
 extern void *gGamePhaseRuntime;
 extern const char data_ov090_0221cc00[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gSoundContext;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void ActorCollection_QueueActorForRemoval(void *collection, void *actor);
@@ -125,7 +125,7 @@ void func_ov090_0221b428(void *self)
 
         VecFx32Object_InitComponents(
             &velocity,
-            data_020c9670[((u16)random >> 4) * 2 + 1] * 3,
+            gFx32CosSinTable[((u16)random >> 4) * 2 + 1] * 3,
             ((random >> 8) & randomMask) + 0x4000, 0xa000);
         /* Retail obtains the signed remainder from the helper's high word. */
         velocity.value.y +=

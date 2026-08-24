@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_scene_construct.c. */
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_020f4e14
     .extern data_020f4e18
     .extern data_021e9ac0
@@ -497,7 +497,7 @@ L_021ff114: .word data_ov017_0220168c
 L_021ff118: .word data_021e9e1c
 L_021ff11c: .word data_021e9ac0
 L_021ff120: .word data_ov017_02201414
-L_021ff124: .word data_020c9670
+L_021ff124: .word gFx32CosSinTable
 L_021ff128: .word 0x5011
 L_021ff12c: .word 0x5052
 L_021ff130: .word data_ov017_02201694

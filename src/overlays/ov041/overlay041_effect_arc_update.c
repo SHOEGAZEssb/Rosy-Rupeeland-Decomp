@@ -11,7 +11,7 @@
 extern "C" {
 u32 genrand_int32(void);
 void func_ov041_02202a70(void *);
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 }
 
 /*
@@ -31,7 +31,7 @@ extern "C" void func_ov041_02202220(void *object)
     s32 phase = FIELD(s32, object, 0x930) + 0x320;
     FIELD(s32, object, 0x930) = phase;
     u32 direction = ((u16)phase >> 4) * 2;
-    s32 sample = data_020c9670[direction + 1];
+    s32 sample = gFx32CosSinTable[direction + 1];
     FIELD(s32, object, 0x70) =
         FIELD(s32, object, 0x4b4) +
         (s32)(((s64)sample * 0x28000 + 0x800) >> 12);

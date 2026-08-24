@@ -7,7 +7,7 @@
 extern void *gGamePhaseRuntime;
 extern void *gTouchPanelManager;
 extern const u16 gPadState1[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov033_021fdec0[];
 extern u8 gHeapContext[];
 
@@ -98,7 +98,7 @@ static s32 div512_toward_zero(s32 value)
  * selector for Presentation_InterpolateQuadraticPulse, and writes its result to sprite-group offset
  * +0x12C. It queries the global tile/height state beneath the primary object's
  * fixed-point X/Y coordinates, combines that result with a signed lookup from
- * data_020c9670 and the object's +0x24 height, then stores the resulting motion
+ * gFx32CosSinTable and the object's +0x24 height, then stores the resulting motion
  * adjustment at scene +0x20. Returns no value; scene/group state and the query
  * subsystem may change, with no direct MMIO.
  */
@@ -116,7 +116,7 @@ extern "C" void func_ov033_021fd4cc(void *scene, s32 delta)
     s32 tile = GamePhaseState_QueryTerrainHeight((u8 *)gGamePhaseRuntime + 0x24,
                              div16_toward_zero(xPixels),
                              div16_toward_zero(yPixels));
-    s16 wave = data_020c9670[(FIELD(s32, scene, 0x38) >> 4) * 2];
+    s16 wave = gFx32CosSinTable[(FIELD(s32, scene, 0x38) >> 4) * 2];
     s32 target = wave * 0x18 + ((tile << 4) + 0x40) * 0x1000 -
                  FIELD(s32, primary, 0x24);
     FIELD(s32, scene, 0x20) = div512_toward_zero(target);

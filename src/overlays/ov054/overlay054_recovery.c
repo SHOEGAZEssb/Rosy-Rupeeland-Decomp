@@ -13,7 +13,7 @@ extern const u8 data_ov054_0220f0e0[], data_ov054_0220f108[];
 extern const u8 data_ov054_0220f130[], data_ov054_0220f150[];
 extern void *gGamePhaseRuntime, *data_020f4e18[], *gGameWork;
 extern u8 gSystemState[], gHeapContext[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u8 gMainBgPaletteBuffer[];
 extern void *data_ov054_0220f160;
 
@@ -222,7 +222,7 @@ s32 func_ov054_0220e75c(void *object)
         VecFx32Object_Destroy(relative);
         phase = (s32)(((u32)(0x222 * FIELD(u32, gSystemState, 0x64)) & 0xffff) >> 4);
         FIELD(s32, object, 0x1a4) =
-            base + fx_mul(data_020c9670[phase * 2 + 1], amplitude);
+            base + fx_mul(gFx32CosSinTable[phase * 2 + 1], amplitude);
         blend = FIELD(s16, gGameWork, 0x19e);
         if (blend > 0x10) blend = 0x10;
         if (blend < 0) blend = 0;
@@ -399,8 +399,8 @@ s32 func_ov054_0220eda4(void *object)
     radius = FIELD(s16, gGameWork, 0x196);
     VecFx32Object_Init(orbit);
     phase = angle >> 4;
-    FIELD(s32, orbit, 4) = fx_mul(data_020c9670[phase * 2 + 1], radius);
-    FIELD(s32, orbit, 8) = fx_mul(data_020c9670[phase * 2], radius);
+    FIELD(s32, orbit, 4) = fx_mul(gFx32CosSinTable[phase * 2 + 1], radius);
+    FIELD(s32, orbit, 8) = fx_mul(gFx32CosSinTable[phase * 2], radius);
     FIELD(s32, orbit, 0xc) = 0;
     VecFx32Object_Add((u8 *)object + 0x40, orbit);
     VecFx32Object_Init(damping);

@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_ramp_primitive_spawn.c for documented portable C. */
 
     .extern func_0209189c
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern Heap_Alloc
     .extern func_ov036_021fd690
     .extern Presentation_SetPosition
@@ -113,7 +113,7 @@ L_0220167c:
     bl PresentationList_Append
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-L_02201700: .word data_020c9670
+L_02201700: .word gFx32CosSinTable
 L_02201704: .word data_ov036_02206180
 L_02201708: .word gHeapContext
 L_0220170c: .word 0x21f

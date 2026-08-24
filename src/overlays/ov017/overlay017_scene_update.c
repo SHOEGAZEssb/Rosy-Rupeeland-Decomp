@@ -5,7 +5,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_ov017_02201414[];
 extern const char data_ov017_022016c4[];
 extern const char data_ov017_022016cc[];
@@ -199,8 +199,8 @@ extern "C" void func_ov017_02200188(void *state)
             FIELD(s32, state, 0x3d4) = 0;
             angleIndex = TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000);
             distance = TitleRandom_NextBounded((u8 *)state + 0x3fc, radius);
-            x = coordinateToGrid(distance * data_020c9670[angleIndex * 2]);
-            z = coordinateToGrid(distance * data_020c9670[angleIndex * 2 + 1]);
+            x = coordinateToGrid(distance * gFx32CosSinTable[angleIndex * 2]);
+            z = coordinateToGrid(distance * gFx32CosSinTable[angleIndex * 2 + 1]);
             sprite = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, state, 0x244),
                                    (u8 *)state + 0x248);
             actor = Heap_Alloc(0xa0, data_ov017_022016cc, 4, &gHeapContext);
@@ -230,8 +230,8 @@ extern "C" void func_ov017_02200188(void *state)
             FIELD(s32, state, 0x3e8) = 0;
             angleIndex = TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000);
             distance = TitleRandom_NextBounded((u8 *)state + 0x3fc, radius);
-            x = coordinateToGrid(distance * data_020c9670[angleIndex * 2]);
-            z = coordinateToGrid(distance * data_020c9670[angleIndex * 2 + 1]);
+            x = coordinateToGrid(distance * gFx32CosSinTable[angleIndex * 2]);
+            z = coordinateToGrid(distance * gFx32CosSinTable[angleIndex * 2 + 1]);
             if (FIELD(s32, state, 0x3f8) < 0x20) {
                 void *effect = Heap_Alloc(
                     0xa0, data_ov017_022016c4, 4, &gHeapContext);

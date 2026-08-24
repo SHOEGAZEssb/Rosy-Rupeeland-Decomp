@@ -2,7 +2,7 @@
 
 /* Overlay 94 radial burst effect; transition positions use Q12 fixed point. */
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov094_02219eb8[];
 
 #ifdef __cplusplus
@@ -43,8 +43,8 @@ extern "C" void *func_ov094_022177e0(void *effect, void *firstState,
     *(s32 *)((u8 *)effect + 0xb4) = animationBase;
 
     s32 index = angle >> 4;
-    s32 cosine = data_020c9670[index * 2];
-    s32 sine = data_020c9670[index * 2 + 1];
+    s32 cosine = gFx32CosSinTable[index * 2];
+    s32 sine = gFx32CosSinTable[index * 2 + 1];
     s32 initialX = scale * cosine * 0x30 / 0x100 + 0x80000;
     s32 initialY = scale * sine * 0x10 / 0x100 - 0x40000;
     s32 targetX = scale * cosine * 0x80 / 0x100 + 0x80000;
@@ -167,7 +167,7 @@ extern "C" s32 func_ov094_02217a10(void *effect)
             s32 index = (s32)(phase & 0xffff) >> 4;
             PresentationScalar_SetImmediate(
                 (u8 *)effect + 0x4c,
-                -data_020c9670[index * 2 + 1] * 4);
+                -gFx32CosSinTable[index * 2 + 1] * 4);
         }
         if (func_ov094_02217bc8(effect)) {
             *(s32 *)((u8 *)effect + 0x7c) = 0x1e;

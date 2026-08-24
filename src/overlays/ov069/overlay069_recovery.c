@@ -18,7 +18,7 @@ extern u8 data_ov069_0221255c[], data_ov069_02212590[];
 extern u8 data_ov069_022125ac[];
 extern u8 data_ov069_0221278c[], data_ov069_0221279c[];
 extern u8 data_ov069_022127d0[], data_020f3058[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gGamePhaseRuntime, *gSoundContext;
 
 #ifdef __cplusplus
@@ -133,8 +133,8 @@ void func_ov069_0220fe3c(void *owner, const void *first, const void *second,
   b[2] += 0x2f000;
   a[1] = (a[1] - a[2]) - 0x28000;
   angle = func_020ae024(a[1] - b[2], a[2] - b[1]);
-  F(s32, owner, 0x324) = fx_mul(data_020c9670[(angle >> 4) * 2 + 1], 0x5000);
-  F(s32, owner, 0x328) = fx_mul(data_020c9670[(angle >> 4) * 2], 0x5000);
+  F(s32, owner, 0x324) = fx_mul(gFx32CosSinTable[(angle >> 4) * 2 + 1], 0x5000);
+  F(s32, owner, 0x328) = fx_mul(gFx32CosSinTable[(angle >> 4) * 2], 0x5000);
   VecFx32Object_Destroy(a);
   VecFx32Object_Destroy(b);
 }
@@ -175,8 +175,8 @@ void func_ov069_0220ff38(void *owner, const void *origin, s32 mode,
       trail[3] += SignedAbsoluteValueVariant(i - 6) * 0xbb8 - 0x2a000;
       trail[6] += trail[3] + 0xe000;
       trail[9] += trail[3] + 0x1e000;
-      trail[5] += fx_mul(data_020c9670[((u16)angles[0] >> 4) * 2], 0x6000);
-      trail[8] += fx_mul(data_020c9670[((u16)angles[4] >> 4) * 2], 0x4000);
+      trail[5] += fx_mul(gFx32CosSinTable[((u16)angles[0] >> 4) * 2], 0x6000);
+      trail[8] += fx_mul(gFx32CosSinTable[((u16)angles[4] >> 4) * 2], 0x4000);
     } else if (mode == 0) {
       trail[2] += (i - 6) * 0x4000;
       trail[5] += (i - 6) * 0x6000;
@@ -184,10 +184,10 @@ void func_ov069_0220ff38(void *owner, const void *origin, s32 mode,
       trail[3] += SignedAbsoluteValueVariant(i - 6) * 0xbb8;
       trail[6] += trail[3] + 0xe000;
       trail[9] += trail[3] + 0x1e000;
-      trail[5] += fx_mul(data_020c9670[((u16)angles[0] >> 4) * 2], 0x6000);
-      trail[6] += fx_mul(data_020c9670[((u16)angles[1] >> 4) * 2], 0x3000);
-      trail[8] += fx_mul(data_020c9670[((u16)angles[4] >> 4) * 2], 0x4000);
-      trail[9] += fx_mul(data_020c9670[((u16)angles[5] >> 4) * 2], 0x5000);
+      trail[5] += fx_mul(gFx32CosSinTable[((u16)angles[0] >> 4) * 2], 0x6000);
+      trail[6] += fx_mul(gFx32CosSinTable[((u16)angles[1] >> 4) * 2], 0x3000);
+      trail[8] += fx_mul(gFx32CosSinTable[((u16)angles[4] >> 4) * 2], 0x4000);
+      trail[9] += fx_mul(gFx32CosSinTable[((u16)angles[5] >> 4) * 2], 0x5000);
     } else {
       s32 remaining = 0x1000 - blend * F(s32, owner, 0x338);
       if (remaining < 0) remaining = 0;
@@ -198,10 +198,10 @@ void func_ov069_0220ff38(void *owner, const void *origin, s32 mode,
                   SignedAbsoluteValueVariant(i - 6) * 0xbb8 + 0xf000;
       trail[9] += blend * F(s32, owner, 0x338) * 0x78 +
                   SignedAbsoluteValueVariant(i - 6) * 0xbb8 + 0x20000;
-      trail[5] += fx_mul(fx_mul(data_020c9670[((u16)angles[0] >> 4) * 2], 0x2000), remaining);
-      trail[6] += fx_mul(data_020c9670[((u16)angles[1] >> 4) * 2], 0x2000);
-      trail[8] += fx_mul(fx_mul(data_020c9670[((u16)angles[4] >> 4) * 2], 0x3000), remaining);
-      trail[9] += fx_mul(data_020c9670[((u16)angles[5] >> 4) * 2], 0x3000);
+      trail[5] += fx_mul(fx_mul(gFx32CosSinTable[((u16)angles[0] >> 4) * 2], 0x2000), remaining);
+      trail[6] += fx_mul(gFx32CosSinTable[((u16)angles[1] >> 4) * 2], 0x2000);
+      trail[8] += fx_mul(fx_mul(gFx32CosSinTable[((u16)angles[4] >> 4) * 2], 0x3000), remaining);
+      trail[9] += fx_mul(gFx32CosSinTable[((u16)angles[5] >> 4) * 2], 0x3000);
       angles[0] += 9000; angles[1] += 9000; angles[4] += 9000; angles[5] += 9000;
     }
     angles[0] += (s16)func_020bf1f8(frame_delta * ((genrand_int32() & 0xfff) + 0x898), 10);
@@ -364,9 +364,9 @@ void func_ov069_02210dc0(void *owner, const void *origin) {
     u8 *entry = (u8 *)owner + i * 0x10;
     s32 dx, dy, distance;
     F(s32, owner, 0x7c0 + i * 4) = (s32)(genrand_int32() & 3) + 7;
-    F(s32, entry, 0xa94) = radius * data_020c9670[angle * 2] + F(const s32, origin, 4);
+    F(s32, entry, 0xa94) = radius * gFx32CosSinTable[angle * 2] + F(const s32, origin, 4);
     F(s32, entry, 0xa98) = 0;
-    F(s32, entry, 0xa9c) = radius * data_020c9670[angle * 2 + 1] + F(const s32, origin, 8);
+    F(s32, entry, 0xa9c) = radius * gFx32CosSinTable[angle * 2 + 1] + F(const s32, origin, 8);
     F(s32, entry, 0xa94) += fx_mul((s32)(genrand_int32() & 0xfff), 0x3c000) - 0x1e000;
     F(s32, entry, 0xa9c) += fx_mul((s32)(genrand_int32() & 0xfff), 0x3c000) - 0x1e000;
     dx = F(const s32, origin, 4) - F(s32, entry, 0xa94);
@@ -717,7 +717,7 @@ void func_ov069_022119f8(void *object) {
     ++F(s32, object, 0x64);
     VecFx32Object_Add((u8 *)sprite_record + 0x2c, (u8 *)object + 0x50);
     phase = func_020befec(F(s32, object, 0x64) << 14, 50);
-    F(s32, sprite_record, 0x38) = data_020c9670[(phase >> 4) * 2] * 0x3c;
+    F(s32, sprite_record, 0x38) = gFx32CosSinTable[(phase >> 4) * 2] * 0x3c;
     F(u16, sprite_record, 0x3c) =
       F(u16, sprite_record, 0x3e) = (u16)(func_020befec(
           F(s32, sprite_record, 0x38) * 0xff >> 12, 0x3c) + 0x100);
@@ -764,7 +764,7 @@ void func_ov069_022119f8(void *object) {
     ++F(s32, object, 0x64);
     VecFx32Object_Add((u8 *)sprite_record + 0x2c, (u8 *)object + 0x50);
     phase = func_020befec(F(s32, object, 0x64) << 15, 50);
-    F(s32, sprite_record, 0x38) = data_020c9670[(phase >> 4) * 2] * 0x3c;
+    F(s32, sprite_record, 0x38) = gFx32CosSinTable[(phase >> 4) * 2] * 0x3c;
     F(u16, sprite_record, 0x3c) =
       F(u16, sprite_record, 0x3e) = (u16)(func_020befec(
           F(s32, sprite_record, 0x38) * 0x14 >> 12, 0x3c) + 0x100);

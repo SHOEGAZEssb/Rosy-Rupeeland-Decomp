@@ -16,7 +16,7 @@ typedef struct Overlay008Point {
 extern "C" {
 #endif
 extern const s32 data_ov008_021fc25c[22];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *member);
 extern void func_0209a2ac(void *object, const void *transform, s32 mode);
@@ -87,8 +87,8 @@ void func_ov008_021fbe0c(void *state, const void *transform)
         if (code >= 1) {
             Overlay008Point vertices[4];
             u32 angle = FIELD(u16, state, 0x4fc + index * 2) >> 4;
-            s32 cosine = data_020c9670[angle * 2];
-            s32 sine = data_020c9670[angle * 2 + 1];
+            s32 cosine = gFx32CosSinTable[angle * 2];
+            s32 sine = gFx32CosSinTable[angle * 2 + 1];
             s32 size = data_ov008_021fc25c[code];
             s32 x;
             s32 y;

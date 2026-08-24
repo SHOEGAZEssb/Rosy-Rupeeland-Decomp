@@ -12,7 +12,7 @@
     .extern func_ov039_021fce40
     .extern func_ov039_02204168
     .extern func_0209b58c
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern gGamePhaseRuntime
     .global func_ov039_022049cc
 func_ov039_022049cc:
@@ -829,7 +829,7 @@ L_02205638:
     add sp, sp, #0x108
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_02205648: .word 0xccd
-L_0220564c: .word data_020c9670
+L_0220564c: .word gFx32CosSinTable
 L_02205650: .word gGamePhaseRuntime
     .size func_ov039_022049cc, .-func_ov039_022049cc
 

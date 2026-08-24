@@ -8,7 +8,7 @@
  */
 
 extern const s16 data_020c3e78[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u16 gPresentationBackedActorRuntimeState[];
 
 #ifdef __cplusplus
@@ -30,7 +30,7 @@ extern u32 genrand_int32(void);
  * position source, and an opaque descriptor argument. Choose an initial tier
  * from one third of the amount, repeatedly subtract the largest applicable
  * threshold in data_020c3e78, and spawn no more than five type-10 actors. The
- * X/Y velocity components come from data_020c9670 at the global angle's upper
+ * X/Y velocity components come from gFx32CosSinTable at the global angle's upper
  * bits and are scaled by 3/2. After each spawn, advance that angle by a random
  * remainder modulo 0x3000 plus 0x1800. Returns nothing; actor-manager and RNG
  * state change, while hardware is not accessed directly.
@@ -58,9 +58,9 @@ void PresentationBackedActor_SpawnSplitAmount(u32 playback_value, s32 amount,
                 s32 angle_index = ((s16)gPresentationBackedActorRuntimeState[0] >> 4);
                 amount = (s16)(amount - denomination);
                 velocity.value.x = func_020adae4(
-                    data_020c9670[angle_index * 2 + 1] * 3, 2);
+                    gFx32CosSinTable[angle_index * 2 + 1] * 3, 2);
                 velocity.value.y = func_020adae4(
-                    data_020c9670[angle_index * 2] * 3, 2);
+                    gFx32CosSinTable[angle_index * 2] * 3, 2);
                 PresentationBackedActor_Spawn(10, playback_value, denomination, position,
                               &velocity, 0x300d, 0x300e, 0x300f,
                               candidate, 7, 1);

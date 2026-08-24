@@ -1,4 +1,5 @@
 #include "tingle/actor_motion.h"
+#include "tingle/touch_region.h"
 
 /*
  * Per-frame update for the bounded/jittered ActorMotion subclass. It advances
@@ -27,31 +28,32 @@ extern u64 func_020bf1f8(u32 value, u32 modulus);
 void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds)
 {
     ActorMotion *motion = &self->base;
+    const RectS16 *viewport = (const RectS16 *)bounds;
 
     if (motion->mode == 2) {
-        if ((motion->field_1c | motion->field_20) != 0) {
-            if (motion->field_2c >= 0) {
-                motion->field_30 |= 1;
-                --motion->field_2c;
-                motion->position.value.x += motion->field_1c;
-                motion->position.value.y += motion->field_20;
+        if ((motion->velocityX | motion->velocityY) != 0) {
+            if (motion->remainingSteps >= 0) {
+                motion->flags |= ACTOR_MOTION_FLAG_MOVING;
+                --motion->remainingSteps;
+                motion->position.value.x += motion->velocityX;
+                motion->position.value.y += motion->velocityY;
             } else {
-                motion->field_30 &= ~1;
-                motion->position.value.x = motion->field_24;
-                motion->position.value.y = motion->field_28;
-                motion->field_1c = 0;
-                motion->field_20 = 0;
+                motion->flags &= ~ACTOR_MOTION_FLAG_MOVING;
+                motion->position.value.x = motion->destinationX;
+                motion->position.value.y = motion->destinationY;
+                motion->velocityX = 0;
+                motion->velocityY = 0;
             }
         }
 
-        if ((motion->position.value.x >> 12) < bounds[0])
-            motion->position.value.x = bounds[0] << 12;
-        if ((motion->position.value.x >> 12) + 0x100 >= bounds[2])
-            motion->position.value.x = (bounds[2] - 0x100) << 12;
-        if ((motion->position.value.y >> 12) < bounds[1])
-            motion->position.value.y = bounds[1] << 12;
-        if ((motion->position.value.y >> 12) + 0xc0 >= bounds[3])
-            motion->position.value.y = (bounds[3] - 0xc0) << 12;
+        if ((motion->position.value.x >> 12) < viewport->left)
+            motion->position.value.x = viewport->left << 12;
+        if ((motion->position.value.x >> 12) + 0x100 >= viewport->right)
+            motion->position.value.x = (viewport->right - 0x100) << 12;
+        if ((motion->position.value.y >> 12) < viewport->top)
+            motion->position.value.y = viewport->top << 12;
+        if ((motion->position.value.y >> 12) + 0xc0 >= viewport->bottom)
+            motion->position.value.y = (viewport->bottom - 0xc0) << 12;
     } else {
         VecFx32Object position;
 
@@ -81,6 +83,6 @@ void ActorMotionJitter_Update(ActorMotionJitter *self, const s16 *bounds)
         VecFx32Object_Destroy(&position);
     }
 
-    if (motion->field_30 & 2)
+    if (motion->flags & ACTOR_MOTION_FLAG_OSCILLATION)
         ActorMotion_UpdateOscillation(motion);
 }

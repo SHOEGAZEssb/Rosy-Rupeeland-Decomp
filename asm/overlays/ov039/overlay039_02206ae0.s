@@ -23,7 +23,7 @@
     .extern data_ov039_022082c4
     .extern gSystemState
     .extern gSoundContext
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .global func_ov039_02206ae0
 func_ov039_02206ae0:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
@@ -447,7 +447,7 @@ L_02207120: .word gSoundContext
 L_02207124: .word 0x1e66
 L_02207128: .word 0x333
 L_0220712c: .word 0x119a
-L_02207130: .word data_020c9670
+L_02207130: .word gFx32CosSinTable
 L_02207134: .word 0xb33
 L_02207138: .word 0xfffff4cd
     .size func_ov039_02206ae0, .-func_ov039_02206ae0

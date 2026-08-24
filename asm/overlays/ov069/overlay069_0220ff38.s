@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov069/overlay069_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_0209b58c
@@ -517,7 +517,7 @@ func_ov069_0220ff38:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022106f8: .word 0x14cd
 .L_022106fc: .word 0xbb8
-.L_02210700: .word data_020c9670
+.L_02210700: .word gFx32CosSinTable
 .L_02210704: .word 0xfff
 .L_02210708: .word gGamePhaseRuntime
 .size func_ov069_0220ff38, . - func_ov069_0220ff38

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_motion_oscillation_sample.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Assign
 .global ActorMotionOscillation_Sample
 ActorMotionOscillation_Sample: ; 0x020096f0
@@ -42,7 +42,7 @@ L_0200974c:
     orr r1, r1, r0, lsl #0x14
     add r0, r3, r1
     bx lr
-L_0200977c: .word data_020c9670
+L_0200977c: .word gFx32CosSinTable
 
     .size ActorMotionOscillation_Sample, .-ActorMotionOscillation_Sample
 

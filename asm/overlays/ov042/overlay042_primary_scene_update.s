@@ -37,7 +37,7 @@
 .extern func_ov042_021fdeac
 .extern func_ov042_022009a0
 .extern gSoundContext
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov042_0220b190
 .extern gDisplayBrightnessPair
 
@@ -898,7 +898,7 @@ func_ov042_02207114:
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02207dd8: .word gSoundContext
 .L_02207ddc: .word 0x16a
-.L_02207de0: .word data_020c9670
+.L_02207de0: .word gFx32CosSinTable
 .L_02207de4: .word 0xb501
 .L_02207de8: .word 0xb486
 .L_02207dec: .word 0x578

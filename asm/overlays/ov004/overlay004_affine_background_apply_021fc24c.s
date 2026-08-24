@@ -1,7 +1,7 @@
     .text
     .extern func_020adc90
     .extern func_020afd28
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .global func_ov004_021fc24c
 func_ov004_021fc24c: ; 0x021fc24c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
@@ -87,7 +87,7 @@ func_ov004_021fc24c: ; 0x021fc24c
     bl func_020afd28
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-L_021fc398: .word data_020c9670
+L_021fc398: .word gFx32CosSinTable
 L_021fc39c: .word 0x4001030
 L_021fc3a0: .word 0x4000030
 L_021fc3a4: .word 0x4001020

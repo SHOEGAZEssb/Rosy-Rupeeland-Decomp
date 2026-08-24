@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_motion_probe_touch_update.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -131,7 +131,7 @@ ActorMotionProbe_UpdateTouchMotion: ; 0x0203c240
     bl ActorAttachment_CopyTouchState
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
-.L_0203c408: .word data_020c9670
+.L_0203c408: .word gFx32CosSinTable
 .L_0203c40c: .word gSceneTouchInitialData
 
     .size ActorMotionProbe_UpdateTouchMotion, . - ActorMotionProbe_UpdateTouchMotion

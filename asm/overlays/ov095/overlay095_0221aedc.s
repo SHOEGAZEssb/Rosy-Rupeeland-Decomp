@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 
 .global func_ov095_0221aedc
 func_ov095_0221aedc:
@@ -15,5 +15,5 @@ func_ov095_0221aedc:
     mla r1, r2, r3, r1
     str r1, [r0, #0x24]
     bx lr
-.L_0221af08: .word data_020c9670
+.L_0221af08: .word gFx32CosSinTable
 .size func_ov095_0221aedc, . - func_ov095_0221aedc

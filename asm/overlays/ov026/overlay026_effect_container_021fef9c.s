@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_effect_container.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020f4e18
 .extern data_ov026_022040cc
 .extern data_ov026_0220426c
@@ -240,7 +240,7 @@ L_021ff2b8: .word data_ov026_02204a68
 L_021ff2bc: .word data_ov026_02204a50
 L_021ff2c0: .word 0x7fff
 L_021ff2c4: .word 0xfffffd9a
-L_021ff2c8: .word data_020c9670
+L_021ff2c8: .word gFx32CosSinTable
 L_021ff2cc: .word 0x266
 .size func_ov026_021fef9c, .-func_ov026_021fef9c
 

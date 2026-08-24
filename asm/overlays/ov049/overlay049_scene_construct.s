@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov049/overlay049_scene_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern data_ov049_0220d31a
 .extern VecFx32Object_Init
@@ -240,6 +240,6 @@ func_ov049_0220cf94:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0220d2f4: .word data_ov049_0220d31a
 .L_0220d2f8: .word gGamePhaseRuntime
-.L_0220d2fc: .word data_020c9670
+.L_0220d2fc: .word gFx32CosSinTable
 .L_0220d300: .word 0x7fff
 .size func_ov049_0220cf94, . - func_ov049_0220cf94

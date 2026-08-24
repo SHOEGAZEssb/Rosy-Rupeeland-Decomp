@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov036_022051f0[];
 
 #ifdef __cplusplus
@@ -42,7 +42,7 @@ static s32 halve(s32 value)
  * scale toward 0x4000 in mode 3 for 30 frames, and are restarted. Each of the
  * eight +0x128 children uses its 0x14-byte data_ov036_022051f0 record:
  * +4/+8 offset the anchor X/Z, +0xC supplies Y, and an atan-like SDK helper
- * applied to (+4,(+8+0x100))/16 selects a direction in data_020c9670. Half of
+ * applied to (+4,(+8+0x100))/16 selects a direction in gFx32CosSinTable. Half of
  * that direction becomes mode-4 X/Y targets; scale targets 0x19A in mode 2
  * over 60 frames. Returns nothing; transforms, timers, active flags, and
  * animation state change.
@@ -74,9 +74,9 @@ extern "C" void func_ov036_022018a8(void *controller)
         Presentation_SetPosition(child, anchorX + xOffset, anchorZ + zOffset,
                       *(const s32 *)(record + 0xc));
         PresentationScalar_TransitionBy((u8 *)child + 0xc, 4,
-                      halve(data_020c9670[index]));
+                      halve(gFx32CosSinTable[index]));
         PresentationScalar_TransitionBy((u8 *)child + 0x1c, 4,
-                      halve(data_020c9670[index + 1]));
+                      halve(gFx32CosSinTable[index + 1]));
         PresentationScalar_TransitionTo((u8 *)child + 0x6c, 2, 0x19a);
         FIELD(s32, child, 0x7c) = 0x3c;
         FIELD(s32, child, 0x80) = 0;

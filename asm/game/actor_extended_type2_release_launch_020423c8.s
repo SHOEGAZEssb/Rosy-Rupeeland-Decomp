@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_release_launch.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020df9e8
 .extern data_020e6d3c
 .extern Actor_SaveAndForceFlags
@@ -96,7 +96,7 @@ ActorExtendedType2_LaunchRandomMotion: ; 0x02042408
     bl Actor_PlayHorizontalSpatialSound
     ldmia sp!, {r4, pc}
 .L_02042504: .word data_020df9e8
-.L_02042508: .word data_020c9670
+.L_02042508: .word gFx32CosSinTable
 .L_0204250c: .word data_020e6d3c
 .L_02042510: .word 0xffff
 .size ActorExtendedType2_LaunchRandomMotion, . - ActorExtendedType2_LaunchRandomMotion

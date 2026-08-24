@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_orbit.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern PresentationScalar_SetImmediate
 
 
@@ -46,6 +46,6 @@ func_ov026_02200d38:
     orr r1, r1, r2, lsl #0x14
     bl PresentationScalar_SetImmediate
     ldmia sp!, {r4, pc}
-L_02200dd4: .word data_020c9670
+L_02200dd4: .word gFx32CosSinTable
 .size func_ov026_02200d38, .-func_ov026_02200d38
 

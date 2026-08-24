@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov089_02219ae8
 .extern data_ov089_02219aec
 .extern data_ov089_02219b48
@@ -132,7 +132,7 @@ func_ov089_02218a5c:
 .L_02218c28:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}
-.L_02218c30: .word data_020c9670
+.L_02218c30: .word gFx32CosSinTable
 .L_02218c34: .word data_ov089_02219b48
 .L_02218c38: .word data_ov089_02219b4c
 .L_02218c3c: .word data_ov089_02219ae8

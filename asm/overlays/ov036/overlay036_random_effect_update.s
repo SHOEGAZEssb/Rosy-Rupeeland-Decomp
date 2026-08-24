@@ -18,7 +18,7 @@
     .extern PresentationList_UpdateAndDeleteCompleted
     .extern data_ov036_02206148
     .extern gHeapContext
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern gSoundContext
 
     .global func_ov036_021fe3c0
@@ -404,7 +404,7 @@ L_021fe950: .word data_ov036_02206148
 L_021fe954: .word gHeapContext
 L_021fe958: .word 0x333
 L_021fe95c: .word 0xfffffe66
-L_021fe960: .word data_020c9670
+L_021fe960: .word gFx32CosSinTable
 L_021fe964: .word gSoundContext
     .size func_ov036_021fe3c0, .-func_ov036_021fe3c0
 

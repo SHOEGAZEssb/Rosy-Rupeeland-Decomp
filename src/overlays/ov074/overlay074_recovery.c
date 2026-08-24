@@ -16,7 +16,7 @@ extern void *gGamePhaseRuntime;
 extern void *gGamePhaseTouchPromptTaskNode, *gGameWork, *gSoundContext, *gGamePhaseCurrencyHud;
 extern void *gHeapContext, *gSceneManager;
 extern u8 data_020f4e14[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -675,8 +675,8 @@ void func_ov074_022117d0(void *record, s32 x, s32 y) {
   volatile u32 *scale = (volatile u32 *)0x0400046c;
   volatile u32 *vertex = (volatile u32 *)0x0400048c;
   s32 angle = F(u16, record, 2) >> 4;
-  s32 sine = data_020c9670[angle * 2];
-  s32 cosine = data_020c9670[angle * 2 + 1];
+  s32 sine = gFx32CosSinTable[angle * 2];
+  s32 cosine = gFx32CosSinTable[angle * 2 + 1];
   s16 color;
   *matrix = 0;
   matrix[11] = (0x80 - x) << 12;

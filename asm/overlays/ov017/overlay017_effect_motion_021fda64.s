@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_motion.c. */
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov017_02201414
     .extern data_ov017_022016e0
     .extern PresentationScalar_SetImmediate
@@ -261,7 +261,7 @@ L_021fddb0:
 L_021fde2c: .word 0xfd7
 L_021fde30: .word data_ov017_022016e0
 L_021fde34: .word data_ov017_02201414
-L_021fde38: .word data_020c9670
+L_021fde38: .word gFx32CosSinTable
 L_021fde3c: .word 0x40002b0
 
     .size func_ov017_021fda64, . - func_ov017_021fda64

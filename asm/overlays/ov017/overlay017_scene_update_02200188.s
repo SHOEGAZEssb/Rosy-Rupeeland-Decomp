@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_scene_update.c. */
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov017_02201414
     .extern data_ov017_022016c4
     .extern data_ov017_022016cc
@@ -495,7 +495,7 @@ L_0220085c: .word gHeapContext
 L_02200860: .word data_ov017_0220170c
 L_02200864: .word data_ov017_02201754
 L_02200868: .word 0x4115
-L_0220086c: .word data_020c9670
+L_0220086c: .word gFx32CosSinTable
 L_02200870: .word data_ov017_022016cc
 L_02200874: .word data_ov017_022016f0
 L_02200878: .word data_ov017_022016f8

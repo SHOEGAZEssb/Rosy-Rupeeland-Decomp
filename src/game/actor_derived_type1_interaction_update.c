@@ -2,7 +2,7 @@
 
 /* Process type-1 actor impacts, proximity responses, terrain interaction, and scale events. */
 extern u8 gSystemState[];
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern void *gActorTargetSelectionCandidates[10];
 extern u8 gActorTargetSelectionMetadata[4];
 extern void *gGamePhaseRuntime;
@@ -53,7 +53,7 @@ extern void ActorDerivedType1_ScanActiveRecordCollisions(void *actor);
 static void directionPair(u8 direction, s16 *first, s16 *second)
 {
     u32 index = (u32)(direction & 7) * 0x400;
-    const s16 *pair = (const s16 *)((const u8 *)data_020c9670 + index * 2);
+    const s16 *pair = (const s16 *)((const u8 *)gFx32CosSinTable + index * 2);
     *first = pair[0];
     *second = pair[1];
 }

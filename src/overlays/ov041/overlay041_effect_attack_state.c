@@ -16,7 +16,7 @@ void func_ov041_02202a3c(void *);
 void func_ov041_02202a70(void *);
 void Sound_Play(void *, s32, s32);
 extern void *gSoundContext;
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 }
 
 /*
@@ -156,6 +156,6 @@ extern "C" void func_ov041_02201e98(void *object, s32 *angleOut, s32 *speedOut)
         FIELD(s32, object, 0x930) = phase;
         u32 direction = ((u16)phase >> 4) * 2;
         FIELD(s32, object, 0x940) =
-            (0x1000 - data_020c9670[direction + 1]) >> 1;
+            (0x1000 - gFx32CosSinTable[direction + 1]) >> 1;
     }
 }

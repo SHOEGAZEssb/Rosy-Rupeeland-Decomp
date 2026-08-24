@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov049/overlay049_controller_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_020ae024
 .extern func_020befec
 .extern func_ov049_0220c21c
@@ -467,7 +467,7 @@ func_ov049_0220c8a0:
 .L_0220cf7c: .word 0x23a000
 .L_0220cf80: .word 0x1388
 .L_0220cf84: .word 0x7fff
-.L_0220cf88: .word data_020c9670
+.L_0220cf88: .word gFx32CosSinTable
 .L_0220cf8c: .word 0xe66
 .L_0220cf90: .word 0x333
 .size func_ov049_0220c8a0, . - func_ov049_0220c8a0

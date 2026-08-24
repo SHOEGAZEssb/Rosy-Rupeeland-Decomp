@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_chain_curve_update.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -115,6 +115,6 @@ func_ov090_0221c184:
     bl VecFx32Object_Destroy
     add sp, sp, #0x80
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0221c310: .word data_020c9670
+.L_0221c310: .word gFx32CosSinTable
 .L_0221c314: .word 0x19a
 .size func_ov090_0221c184, . - func_ov090_0221c184

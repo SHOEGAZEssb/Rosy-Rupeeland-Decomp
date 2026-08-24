@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020df4f0
 .extern gGamePhaseRuntime
 .extern gActorInteractionResourceState
@@ -401,7 +401,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     mov r0, r6
     add sp, sp, #0x4c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0203a890: .word data_020c9670
+.L_0203a890: .word gFx32CosSinTable
 .L_0203a894: .word gSceneTouchInitialData
 .L_0203a898: .word gGamePhaseRuntime
 .L_0203a89c: .word gActorFeedbackPresentations

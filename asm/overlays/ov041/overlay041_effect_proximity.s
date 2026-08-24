@@ -2,7 +2,7 @@
 
 /* Exact fallback for func_ov041_022015b0; see the documented portable C in
  * src/overlays/ov041/overlay041_effect_proximity.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_020adc40
 
     .global func_ov041_022015b0
@@ -129,6 +129,6 @@ func_ov041_022015b0: ; 0x022015b0
     blt .L_022016d0
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02201780: .word data_020c9670
+.L_02201780: .word gFx32CosSinTable
     .size func_ov041_022015b0, . - func_ov041_022015b0
 

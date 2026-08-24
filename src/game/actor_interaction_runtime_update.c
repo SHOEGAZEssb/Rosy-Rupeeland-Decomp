@@ -4,7 +4,7 @@
 extern u16 gActorInteractionDirectionIndex;
 extern u16 gActorInteractionMagnitude;
 extern s32 gActorInteractionSmoothedDisplacement[2];
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 gActorInteractionResourceState[];
 
 #ifdef __cplusplus
@@ -40,8 +40,8 @@ void ActorInteractionRuntime_Update(void)
 {
     u32 index = (u8)gActorInteractionDirectionIndex * 0x10;
     s32 scale = gActorInteractionMagnitude * 3;
-    s32 first = data_020c9670[index];
-    s32 second = data_020c9670[index + 1];
+    s32 first = gFx32CosSinTable[index];
+    s32 second = gFx32CosSinTable[index + 1];
 
     gActorInteractionSmoothedDisplacement[0] =
         (gActorInteractionSmoothedDisplacement[0] * 3 + ((scale * first) >> 12)) >> 2;

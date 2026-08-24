@@ -6,7 +6,7 @@
 
 extern void *gSoundContext;
 extern const u8 data_021f3ecc[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -92,7 +92,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
         s32 value = func_02091c7c((u8 *)scene + 0x84, 1);
         u32 phase = ((u32)value & 0xff) << 8;
         FIELD(u32, scene, 0x3c) = phase;
-        s16 wave = data_020c9670[(phase >> 4) * 2];
+        s16 wave = gFx32CosSinTable[(phase >> 4) * 2];
         FIELD(s32, scene, 0x40) = (wave << 5) / 0x1000;
 
         if (func_02091cf0((u8 *)scene + 0x84)) {

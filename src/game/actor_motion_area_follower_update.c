@@ -1,5 +1,6 @@
 #include "tingle/actor_motion.h"
 #include "tingle/game_work.h"
+#include "tingle/touch_region.h"
 
 /*
  * Main update for the area-aware actor-motion helper. It selects map-area
@@ -57,6 +58,7 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
     VecFx32Object candidate;
     VecFx32Object oscillation;
     s32 area;
+    const RectS16 *viewport = (const RectS16 *)bounds;
 
     func_02056f00(&transformed, actor + 0x18);
     area = GamePhaseRegionTable_FindContainingRegion(self->areaContext,
@@ -102,14 +104,14 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
     }
 
     VecFx32Object_InitCopy(&candidate, &motion->position);
-    if ((candidate.value.x >> 12) < bounds[0])
-        candidate.value.x = bounds[0] << 12;
-    else if ((candidate.value.x >> 12) + 0x100 > bounds[2])
-        candidate.value.x = (bounds[2] - 0x100) << 12;
-    if ((candidate.value.y >> 12) < bounds[1])
-        candidate.value.y = bounds[1] << 12;
-    else if ((candidate.value.y >> 12) + 0xc0 > bounds[3])
-        candidate.value.y = (bounds[3] - 0xc0) << 12;
+    if ((candidate.value.x >> 12) < viewport->left)
+        candidate.value.x = viewport->left << 12;
+    else if ((candidate.value.x >> 12) + 0x100 > viewport->right)
+        candidate.value.x = (viewport->right - 0x100) << 12;
+    if ((candidate.value.y >> 12) < viewport->top)
+        candidate.value.y = viewport->top << 12;
+    else if ((candidate.value.y >> 12) + 0xc0 > viewport->bottom)
+        candidate.value.y = (viewport->bottom - 0xc0) << 12;
 
     if (self->transitionActive != 0) {
         s32 newWeight = self->transitionTimer;

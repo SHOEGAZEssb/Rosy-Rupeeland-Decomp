@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,8 +33,8 @@ extern "C" void func_ov026_02200d38(void *scene)
     s32 index = angle >> 4;
     s32 radius = FIELD(s32, scene, 0x360);
     void *child = FIELD(void *, scene, 0x2e8);
-    s32 x = (-data_020c9670[index * 2] * radius + 0x800) >> 12;
-    s32 z = (data_020c9670[index * 2 + 1] * radius + 0x800) >> 12;
+    s32 x = (-gFx32CosSinTable[index * 2] * radius + 0x800) >> 12;
+    s32 z = (gFx32CosSinTable[index * 2 + 1] * radius + 0x800) >> 12;
     PresentationScalar_SetImmediate((u8 *)child + 0xc, x);
     PresentationScalar_SetImmediate((u8 *)child + 0x2c, z);
 }

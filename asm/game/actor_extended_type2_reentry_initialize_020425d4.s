@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_reentry_initialize.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020df9e8
 .extern gGamePhaseRuntime
 .extern gActorExtendedType2ReentryAngleAccumulator
@@ -159,6 +159,6 @@ ActorExtendedType2_InitializeReentryState: ; 0x020425d4
 .L_020427fc: .word data_020df9e8
 .L_02042800: .word 0xfff
 .L_02042804: .word gActorExtendedType2ReentryAngleAccumulator
-.L_02042808: .word data_020c9670
+.L_02042808: .word gFx32CosSinTable
 .L_0204280c: .word gGamePhaseRuntime
 .size ActorExtendedType2_InitializeReentryState, . - ActorExtendedType2_InitializeReentryState

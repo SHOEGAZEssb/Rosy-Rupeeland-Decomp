@@ -15,7 +15,7 @@ typedef struct Overlay039ScriptVector {
     s32 z_0c;
 } Overlay039ScriptVector;
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 
@@ -101,8 +101,8 @@ extern "C" void func_ov039_02201b1c(void *scene)
     FIELD(s32, scene, 0x34) += FIELD(s32, scene, 0x1cf0);
     u16 angle = (u16)FIELD(s32, scene, 0x1ccc);
     s32 trigIndex = ((u32)angle >> 4) * 2;
-    FIELD(s32, scene, 0xb0) = fixedMultiply(data_020c9670[trigIndex], 0x444);
-    FIELD(s32, scene, 0xb4) = fixedMultiply(data_020c9670[trigIndex + 1], 0x444);
+    FIELD(s32, scene, 0xb0) = fixedMultiply(gFx32CosSinTable[trigIndex], 0x444);
+    FIELD(s32, scene, 0xb4) = fixedMultiply(gFx32CosSinTable[trigIndex + 1], 0x444);
     func_ov039_02203480(scene);
 }
 
@@ -219,10 +219,10 @@ extern "C" s32 func_ov039_02202f34(void *scene, void *result)
     s32 dy = FIELD(s32, ownerPos, 0x34) - origin.y_08;
     u16 angle = (u16)(-FIELD(s32, scene, 0x1ccc));
     u32 index = ((u32)angle >> 4) * 2;
-    s32 rotatedX = fixedMultiply(data_020c9670[index + 1], dx) -
-                   fixedMultiply(data_020c9670[index], dy);
-    s32 rotatedY = fixedMultiply(data_020c9670[index], dx) +
-                   fixedMultiply(data_020c9670[index + 1], dy);
+    s32 rotatedX = fixedMultiply(gFx32CosSinTable[index + 1], dx) -
+                   fixedMultiply(gFx32CosSinTable[index], dy);
+    s32 rotatedY = fixedMultiply(gFx32CosSinTable[index], dx) +
+                   fixedMultiply(gFx32CosSinTable[index + 1], dy);
     VecFx32Object_Destroy(&origin);
     if (rotatedX > -0x10000 + 0x800 && rotatedX < 0x10000 &&
         rotatedY > 0xb000) {

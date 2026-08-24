@@ -4,7 +4,7 @@
  * src/overlays/ov042/overlay042_record_helpers.c. */
 .extern genrand_int32
 .extern func_ov042_021fda0c
-.extern data_020c9670
+.extern gFx32CosSinTable
 
     .global func_ov042_021fd924
 func_ov042_021fd924:
@@ -65,5 +65,5 @@ func_ov042_021fd924:
     ldr r0, [r0, #0xd94]
     str r0, [r8, #0xf24]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_021fda08: .word data_020c9670
+.L_021fda08: .word gFx32CosSinTable
     .size func_ov042_021fd924, . - func_ov042_021fd924

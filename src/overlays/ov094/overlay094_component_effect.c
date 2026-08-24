@@ -7,7 +7,7 @@
  */
 
 extern void *data_020f4e18;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov094_02219ef0[];
 extern void *gGameWork;
 
@@ -164,10 +164,10 @@ extern "C" s32 func_ov094_02218b84(void *effect)
             s32 index = (s32)(angle & 0xffff) >> 4;
             PresentationScalar_TransitionTo(
                 (u8 *)effect + 0x0c, 4,
-                data_020c9670[index * 2] * 0x60 + 0x80000);
+                gFx32CosSinTable[index * 2] * 0x60 + 0x80000);
             PresentationScalar_TransitionTo(
                 (u8 *)effect + 0x1c, 4,
-                data_020c9670[index * 2 + 1] * 0x60 - 0xa0000);
+                gFx32CosSinTable[index * 2 + 1] * 0x60 - 0xa0000);
             *(s32 *)((u8 *)effect + 0x7c) = 0x14;
             *(s32 *)((u8 *)effect + 0x80) = 0;
             ++*state;

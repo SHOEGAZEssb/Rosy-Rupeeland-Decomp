@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_target_impulse.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020e8380
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -101,6 +101,6 @@ ActorExtendedType2_ApplyTargetImpulse: ; 0x0203f858
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203f9a4: .word data_020e8380
-.L_0203f9a8: .word data_020c9670
+.L_0203f9a8: .word gFx32CosSinTable
     .size ActorExtendedType2_ApplyTargetImpulse, . - ActorExtendedType2_ApplyTargetImpulse
 

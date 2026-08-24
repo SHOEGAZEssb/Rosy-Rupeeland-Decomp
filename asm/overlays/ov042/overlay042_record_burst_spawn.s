@@ -1,6 +1,6 @@
 .text
 .extern genrand_int32
-.extern data_020c9670
+.extern gFx32CosSinTable
 .global func_ov042_021fda24
 func_ov042_021fda24:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -110,5 +110,5 @@ func_ov042_021fda24:
     bpl .L_021fda40
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_021fdbc0: .word 0x3fff
-.L_021fdbc4: .word data_020c9670
+.L_021fdbc4: .word gFx32CosSinTable
 .size func_ov042_021fda24, . - func_ov042_021fda24

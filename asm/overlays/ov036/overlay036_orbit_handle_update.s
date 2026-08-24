@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_orbit_handles.c for documented portable C. */
 
     .extern func_ov036_021fe978
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov036_022002b8
 func_ov036_022002b8:
@@ -30,6 +30,6 @@ func_ov036_022002b8:
     add r1, ip, lr
     bl func_ov036_021fe978
     ldmia sp!, {r3, pc}
-L_02200314: .word data_020c9670
+L_02200314: .word gFx32CosSinTable
     .size func_ov036_022002b8, .-func_ov036_022002b8
 

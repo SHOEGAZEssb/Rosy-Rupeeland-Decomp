@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag
 .extern GameWork_TestFlag
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -256,5 +256,5 @@ Overlay050Scene_Update:
 .L_0220e158: .word 0x245
 .L_0220e15c: .word gGameWork
 .L_0220e160: .word 0x21b
-.L_0220e164: .word data_020c9670
+.L_0220e164: .word gFx32CosSinTable
 .size Overlay050Scene_Update, . - Overlay050Scene_Update

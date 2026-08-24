@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern s32 func_020ae024(fx32 first, fx32 second);
 #ifdef __cplusplus
 }
@@ -14,14 +14,14 @@ extern s32 func_020ae024(fx32 first, fx32 second);
 
 /*
  * Pop an eight-bit angle, use its upper-resolution index to read the first
- * signed component of the interleaved table at data_020c9670, store that
+ * signed component of the interleaved table at gFx32CosSinTable, store that
  * component as the VM result, and return zero. The table's precise SDK identity is unconfirmed.
  */
 s32 GamePhaseActorScriptVm_LookupAngleFirstComponent(GamePhaseActorScriptVm *self)
 {
     u32 angle = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s16)((angle & 0xff) << 8) >> 4;
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, data_020c9670[index * 2]);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, gFx32CosSinTable[index * 2]);
     return 0;
 }
 
@@ -33,7 +33,7 @@ s32 GamePhaseActorScriptVm_LookupAngleSecondComponent(GamePhaseActorScriptVm *se
 {
     u32 angle = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s16)((angle & 0xff) << 8) >> 4;
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, data_020c9670[index * 2 + 1]);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, gFx32CosSinTable[index * 2 + 1]);
     return 0;
 }
 

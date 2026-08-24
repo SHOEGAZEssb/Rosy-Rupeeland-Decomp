@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_segment_effect_render.c for documented portable C. */
 
     .extern func_ov036_021fd660
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov036_021fd97c
 func_ov036_021fd97c:
@@ -141,7 +141,7 @@ func_ov036_021fd97c:
     str r0, [r2, #0x0]
     str r1, [r2, #0x70]
     ldmia sp!, {r4, r5, r6, pc}
-L_021fdb94: .word data_020c9670
+L_021fdb94: .word gFx32CosSinTable
 L_021fdb98: .word 0x4000500
 L_021fdb9c: .word 0x4000494
     .size func_ov036_021fd97c, .-func_ov036_021fd97c

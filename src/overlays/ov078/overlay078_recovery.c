@@ -8,7 +8,7 @@ typedef s32 (*Method)(...);
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
 extern "C" u8 *gGamePhaseRuntime;
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" u8 data_020e6adc[], data_020e6b74[], data_020e6c0c[], data_020e6ca4[];
 extern "C" u8 gTrackedResourceActorRecordTable[];
 extern "C" u8 data_ov078_02215c44[], data_ov078_02215c54[];
@@ -868,7 +868,7 @@ extern "C" void func_ov078_02215a80(void *actor)
 extern "C" s32 func_ov078_02215aa0(void *actor, void *config)
 {
     s32 radius = F(s16, config, 0x12) +
-                 (data_020c9670[(F(u16, actor, 0x2bc) >> 4) * 2] >> 9);
+                 (gFx32CosSinTable[(F(u16, actor, 0x2bc) >> 4) * 2] >> 9);
     F(u16, actor, 0x2bc) += 0x200;
     return radius * radius;
 }

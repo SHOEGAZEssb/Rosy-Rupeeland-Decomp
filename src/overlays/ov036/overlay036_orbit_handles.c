@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov036_0220607c[];
 
 #ifdef __cplusplus
@@ -66,7 +66,7 @@ extern "C" void *func_ov036_0220029c(void *object)
 
 /*
  * Advances angle +0xBC by 0x100, samples the first signed component of
- * data_020c9670 at its low-16-bit angle, truncates the scaled value toward zero
+ * gFx32CosSinTable at its low-16-bit angle, truncates the scaled value toward zero
  * into offset +0xB0, and positions handle +0x9C at (base X + offset, base Y,
  * base Z). It returns nothing; angle, offset, and handle position change.
  */
@@ -75,7 +75,7 @@ extern "C" void func_ov036_022002b8(void *object)
     s32 angle = FIELD(s32, object, 0xbc) + 0x100;
     FIELD(s32, object, 0xbc) = angle;
     s32 index = ((u16)angle >> 4) * 2;
-    s32 scaled = data_020c9670[index] << 4;
+    s32 scaled = gFx32CosSinTable[index] << 4;
     s32 offset = (scaled + ((u32)(scaled >> 7) >> 24)) >> 8;
     FIELD(s32, object, 0xb0) = offset;
     func_ov036_021fe978(FIELD(void *, object, 0x9c),

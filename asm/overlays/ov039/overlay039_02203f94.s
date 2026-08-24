@@ -4,7 +4,7 @@
     .extern func_ov039_02204118
     .extern Sound_Play
     .extern VecFx32Object_Destroy
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern gSoundContext
     .global func_ov039_02203f94
 func_ov039_02203f94:
@@ -96,7 +96,7 @@ L_022040d8:
     bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-L_022040e8: .word data_020c9670
+L_022040e8: .word gFx32CosSinTable
 L_022040ec: .word gSoundContext
 L_022040f0: .word 0x1c5
     .size func_ov039_02203f94, .-func_ov039_02203f94

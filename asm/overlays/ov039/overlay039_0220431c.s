@@ -5,7 +5,7 @@
     .extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
     .extern func_ov039_02203770
     .extern func_ov039_02204180
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern gGamePhaseRuntime
     .global func_ov039_0220431c
 func_ov039_0220431c:
@@ -152,7 +152,7 @@ L_02204534:
     subs r9, r9, #0x1
     bpl L_02204344
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_02204540: .word data_020c9670
+L_02204540: .word gFx32CosSinTable
 L_02204544: .word 0x1666
 L_02204548: .word gGamePhaseRuntime
     .size func_ov039_0220431c, .-func_ov039_0220431c

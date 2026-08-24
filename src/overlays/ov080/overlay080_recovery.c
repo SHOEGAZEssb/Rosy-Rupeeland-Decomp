@@ -26,7 +26,7 @@ extern "C" u16 data_02105770;
 extern "C" const u8 data_020e6adc[], data_020e6b74[], data_020e6c0c[];
 extern "C" const u16 data_020e7318[];
 extern "C" const u8 data_020e8380[], gTrackedResourceActorRecordTable[];
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" u8 data_ov080_02213e68[], data_ov080_02213e70[];
 extern "C" u8 data_ov080_02213e78[], data_ov080_02213e90[];
 extern "C" u8 data_ov080_02213ea8[], data_ov080_02213eb0[];
@@ -251,8 +251,8 @@ extern "C" s32 func_ov080_02212f90(void *actor)
         u16 angle = (u16)(sector * 0x471c);
         s32 trigIndex = angle >> 4;
         s32 radius = (data_0210576c & 1) != 0 ? 0x4b : 0x6c;
-        FIELD(s32, candidate, 4) += radius * data_020c9670[trigIndex * 2 + 1];
-        FIELD(s32, candidate, 8) += radius * data_020c9670[trigIndex * 2];
+        FIELD(s32, candidate, 4) += radius * gFx32CosSinTable[trigIndex * 2 + 1];
+        FIELD(s32, candidate, 8) += radius * gFx32CosSinTable[trigIndex * 2];
         s32 halfX = ((s32)FIELD(s8, actor, 0xa) - FIELD(s8, actor, 8)) / 2 + 2;
         s32 halfY = ((s32)FIELD(s8, actor, 0xb) - FIELD(s8, actor, 9)) / 2 + 2;
         bool valid = true;
@@ -411,7 +411,7 @@ extern "C" s32 func_ov080_02213774(void *actor, const void *contact)
     s32 dx = (FIELD(s32, actor, 0x1c) - FIELD(s32, target, 0x1c)) >> 12;
     s32 dy = (FIELD(s32, actor, 0x20) - FIELD(s32, target, 0x20)) >> 12;
     FIELD(u8, actor, 0x299) = phase + 2;
-    s32 radius = FIELD(s16, contact, 0x12) + (data_020c9670[((phase << 8) >> 4) * 2] >> 9);
+    s32 radius = FIELD(s16, contact, 0x12) + (gFx32CosSinTable[((phase << 8) >> 4) * 2] >> 9);
     bool inside = ((Ov80Method0)vmethod(target, 0xa8))(target) == 0 && dx * dx + dy * dy < radius * radius;
     FIELD(s32, direction, 4) += (inside ? dx : -dx) << 12;
     FIELD(s32, direction, 8) += (inside ? dy : -dy) << 12;

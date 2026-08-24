@@ -5,7 +5,7 @@
     .extern Presentation_Init
     .extern func_020b0808
     .extern data_ov036_022060b4
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov036_021fd690
 func_ov036_021fd690:
@@ -118,7 +118,7 @@ L_021fd804:
 L_021fd81c: .word 0x4000444
 L_021fd820: .word 0x4000500
 L_021fd824: .word 0xfff8
-L_021fd828: .word data_020c9670
+L_021fd828: .word gFx32CosSinTable
 L_021fd82c: .word 0xfffe
 L_021fd830: .word 0x4000504
     .size func_ov036_021fd6e0, .-func_ov036_021fd6e0

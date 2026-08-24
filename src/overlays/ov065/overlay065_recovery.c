@@ -21,7 +21,7 @@ extern "C" {
 #endif
 extern void *data_020f4e14, *gGamePhaseRuntime, *gDebugFont;
 extern void *gGamePhaseCurrencyHud, *gSoundContext;
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u16 data_ov065_02210b5c[];
 extern u8 data_ov065_02210bb8[];
 extern const char data_ov065_02210be4[];
@@ -114,7 +114,7 @@ s32 Overlay065Particle_Update(O65Particle *p, void *scene)
         VecFx32Bezier_Evaluate3D(&pos, p->path,
             func_020befec((s32)p->frame << 12, p->duration));
         i = (u16)func_020befec((s32)p->frame << 15, p->duration) >> 4;
-        pos.z += p->rotation * data_020c9670[i];
+        pos.z += p->rotation * gFx32CosSinTable[i];
         GraphicsSpriteState_SetDepthOrderedWorldPosition(p->sprite,
             pos.x, pos.y, pos.z, 8);
         F(u16, p->sprite, 0x28) += p->animation; F(u16, p->sprite, 0x24) |= 2;
@@ -243,7 +243,7 @@ s32 Overlay065Scene_Update(void *self)
                 F(u16, actor, 0x24) = (F(u16, actor, 0x24) | 2) & 0xfffeu;
                 F(u16, F(void *, self, 0x158), 0x24) |= 0x10; F(s32, self, 8) = 3; }
             F(u16, self, 0x120) = 0;
-        } else offset = fxmul(data_020c9670[(u16)func_020befec((s32)F(u16, self, 0x120) << 15, 30) >> 4], 0x6000);
+        } else offset = fxmul(gFx32CosSinTable[(u16)func_020befec((s32)F(u16, self, 0x120) << 15, 30) >> 4], 0x6000);
         break;
     }
     for (g = 0; g < 2; ++g) for (i = 0; i < 30; ++i)
@@ -263,8 +263,8 @@ void Overlay065Scene_GenerateRandomTarget(void *self, O65Vec *out)
 {
     s32 i, x, y, radius; F(u16, self, 0x122) += (u16)((genrand_int32() & 0x7ff) + 0x1000);
     i = F(u16, self, 0x122) >> 4;
-    x = fxmul(data_020c9670[i * 2 + 1], F(s32, self, 0x144));
-    y = fxmul(data_020c9670[i * 2], F(s32, self, 0x148)); radius = genrand_int32() & 0xfff;
+    x = fxmul(gFx32CosSinTable[i * 2 + 1], F(s32, self, 0x144));
+    y = fxmul(gFx32CosSinTable[i * 2], F(s32, self, 0x148)); radius = genrand_int32() & 0xfff;
     VecFx32Object_Assign(out, (u8 *)self + 0x134);
     out->x += fxmul(x, radius); out->y += fxmul(y, radius);
 }

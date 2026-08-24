@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" u32 genrand_int32(void);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 /*
  * Given a pool, requested state, origin payload, and subtype tag, allocate at
@@ -35,14 +35,14 @@ extern "C" void func_ov042_021fda24(void *pool, s32 requestedState,
         s32 radius = 8;
         for (s32 sample = 2; sample >= 0; --sample) {
             u32 randomAngle = genrand_int32() & 0x3fff;
-            radius += data_020c9670[((u16)randomAngle >> 4) * 2] >> 2;
+            radius += gFx32CosSinTable[((u16)randomAngle >> 4) * 2] >> 2;
         }
         if (radius > 0x800)
             radius = 0x800;
 
         s32 trigIndex = ((u16)angle >> 4) * 2;
-        s32 x = data_020c9670[trigIndex + 1];
-        s32 y = data_020c9670[trigIndex];
+        s32 x = gFx32CosSinTable[trigIndex + 1];
+        s32 y = gFx32CosSinTable[trigIndex];
         x = (s32)(((s64)x * radius + 0x800) >> 12);
         y = (s32)(((s64)y * radius + 0x800) >> 12);
         FIELD(u16, pool, 0x9ac + index * 2) = angle;

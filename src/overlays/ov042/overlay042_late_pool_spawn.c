@@ -13,7 +13,7 @@ extern "C" void func_ov042_021fda0c(void *destination, const void *source);
 extern "C" void func_ov042_0220368c(void *destination, const void *left,
                                       const void *right);
 extern "C" u16 func_020ae024(s32 x, s32 y);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 static s32 multiply_fx(s32 value, s32 factor)
 {
@@ -48,8 +48,8 @@ extern "C" void func_ov042_022051a8(void *pool, s32 subtype,
     void *record = (u8 *)pool + 0x144 + index * 12;
     FIELD(u16, pool, 0xc4 + index * 2) = angle;
     s32 trigIndex = (angle >> 4) * 2;
-    s32 sine = data_020c9670[trigIndex];
-    s32 cosine = data_020c9670[trigIndex + 1];
+    s32 sine = gFx32CosSinTable[trigIndex];
+    s32 cosine = gFx32CosSinTable[trigIndex + 1];
     func_ov042_021fda0c(record, source);
 
     s32 factor;

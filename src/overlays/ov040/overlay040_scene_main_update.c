@@ -34,7 +34,7 @@ extern void *gSoundContext;
 extern const s32 data_ov040_022042f0[];
 extern const s32 *data_ov040_02203e3c[];
 extern const s32 data_ov040_02203a18[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 #ifdef __cplusplus
 }
 #endif
@@ -80,9 +80,9 @@ extern "C" void func_ov040_021fe1b0(void *scene, s32 unused1, s32 unused2,
     s32 interpolation = 0;
     if (FIELD(s32, scene, 0x84c) == 0) interpolation = FIELD(s32, scene, 0x840) >> 3;
     else if (FIELD(s32, scene, 0x84c) == 1)
-        interpolation = SignedAbsoluteValueVariant(data_020c9670[(FIELD(s32, scene, 0x840) >> 4) * 2]);
+        interpolation = SignedAbsoluteValueVariant(gFx32CosSinTable[(FIELD(s32, scene, 0x840) >> 4) * 2]);
     else if (FIELD(s32, scene, 0x84c) == 2)
-        interpolation = 0x800 - ((data_020c9670[(FIELD(s32, scene, 0x840) >> 4) * 2 + 1] * 0x800) >> 12);
+        interpolation = 0x800 - ((gFx32CosSinTable[(FIELD(s32, scene, 0x840) >> 4) * 2 + 1] * 0x800) >> 12);
 
     void *renderer = FIELD(void *, FIELD(void *, scene, 0x48), 0x10);
     for (s32 index = 0; index < 0x13; index++) {

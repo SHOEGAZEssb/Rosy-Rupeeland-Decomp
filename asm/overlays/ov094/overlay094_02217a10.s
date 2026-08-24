@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Presentation_InterpolateSmoothStep
 .extern PresentationScalar_SetImmediate
@@ -128,5 +128,5 @@ func_ov094_02217a10:
     bl func_ov094_02217be0
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.L_02217bc4: .word data_020c9670
+.L_02217bc4: .word gFx32CosSinTable
 .size func_ov094_02217a10, . - func_ov094_02217a10

@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Apply table-record actor collision force, recoil, sound, and follow-up effects. */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
@@ -95,8 +95,8 @@ void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
     if (directionalMode != 0) {
         u32 angle = (func_020ae024(y, x) + 0x1000) & 0xe000;
         u32 index = (angle >> 4) * 2;
-        x = data_020c9670[index];
-        y = data_020c9670[index + 1];
+        x = gFx32CosSinTable[index];
+        y = gFx32CosSinTable[index + 1];
     } else {
         x = func_020adc90(x, distance);
         y = func_020adc90(y, distance);

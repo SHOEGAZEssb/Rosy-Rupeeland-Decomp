@@ -7,7 +7,7 @@
  * and tracks a compact two-triple movement state used by later update code.
  */
 
-extern const void *data_020d43f4[];
+extern const void *gActorMotionVTable[];
 
 /*
  * Construct an unbound motion helper, zero its embedded state, and initialize
@@ -18,18 +18,18 @@ ActorMotion *ActorMotion_Init(ActorMotion *self)
 {
     VecFx32Object temporary;
 
-    self->vtable = data_020d43f4;
+    self->vtable = gActorMotionVTable;
     self->actor = 0;
     VecFx32Object_Init(&self->position);
     self->mode = 0;
-    self->field_30 = 0;
+    self->flags = 0;
     VecFx32Object_Init(&self->target);
     ActorMotionState_Init(&self->state);
-    self->field_1c = 0;
-    self->field_20 = 0;
-    self->field_24 = 0;
-    self->field_28 = 0;
-    self->field_2c = 0;
+    self->velocityX = 0;
+    self->velocityY = 0;
+    self->destinationX = 0;
+    self->destinationY = 0;
+    self->remainingSteps = 0;
     VecFx32Object_InitComponents(&temporary, -0x80000, -0x74000, 0);
     VecFx32Object_Assign(&self->target, &temporary);
     VecFx32Object_Destroy(&temporary);
@@ -39,8 +39,8 @@ ActorMotion *ActorMotion_Init(ActorMotion *self)
 /* Zero both triples and both trailing words of the embedded movement state. */
 ActorMotionState *ActorMotionState_Init(ActorMotionState *self)
 {
-    ActorMotionTriple_Clear(&self->first);
-    ActorMotionTriple_Clear(&self->second);
+    ActorMotionTriple_Clear(&self->xOscillation);
+    ActorMotionTriple_Clear(&self->yOscillation);
     self->sampledOffsetX = 0;
     self->sampledOffsetY = 0;
     return self;
@@ -49,9 +49,9 @@ ActorMotionState *ActorMotionState_Init(ActorMotionState *self)
 /* Zero the three signed components of a movement-state triple and return it. */
 ActorMotionTriple *ActorMotionTriple_Clear(ActorMotionTriple *self)
 {
-    self->x = 0;
-    self->y = 0;
-    self->z = 0;
+    self->halfRange = 0;
+    self->midpoint = 0;
+    self->phaseIncrement = 0;
     return self;
 }
 
@@ -95,12 +95,12 @@ void ActorMotion_Reset(ActorMotion *self)
     VecFx32Object_Assign(&self->position, &zero);
     VecFx32Object_Destroy(&zero);
     self->mode = 0;
-    self->field_30 = 0;
-    self->field_1c = 0;
-    self->field_20 = 0;
-    self->field_24 = 0;
-    self->field_28 = 0;
-    self->field_2c = 0;
+    self->flags = 0;
+    self->velocityX = 0;
+    self->velocityY = 0;
+    self->destinationX = 0;
+    self->destinationY = 0;
+    self->remainingSteps = 0;
     ActorMotionState_Reset(&self->state);
     VecFx32Object_InitComponents(&target, -0x80000, -0x74000, 0);
     VecFx32Object_Assign(&self->target, &target);
@@ -117,9 +117,9 @@ void ActorMotionState_Reset(ActorMotionState *self)
     ActorMotionTriple second;
 
     ActorMotionTriple_Clear(&first);
-    ActorMotionTriple_Assign(&self->first, &first);
+    ActorMotionTriple_Assign(&self->xOscillation, &first);
     ActorMotionTriple_Clear(&second);
-    ActorMotionTriple_Assign(&self->second, &second);
+    ActorMotionTriple_Assign(&self->yOscillation, &second);
     self->sampledOffsetX = 0;
     self->sampledOffsetY = 0;
 }
@@ -129,9 +129,9 @@ ActorMotionTriple *ActorMotionTriple_Assign(ActorMotionTriple *self,
                                  const ActorMotionTriple *source)
 {
     if (self != source) {
-        self->x = source->x;
-        self->y = source->y;
-        self->z = source->z;
+        self->halfRange = source->halfRange;
+        self->midpoint = source->midpoint;
+        self->phaseIncrement = source->phaseIncrement;
     }
     return self;
 }
@@ -166,6 +166,6 @@ void ActorMotion_SetMode2(ActorMotion *self)
 void ActorMotion_SetMode1AndClearOutputs(ActorMotion *self)
 {
     self->mode = 1;
-    self->field_1c = 0;
-    self->field_20 = 0;
+    self->velocityX = 0;
+    self->velocityY = 0;
 }

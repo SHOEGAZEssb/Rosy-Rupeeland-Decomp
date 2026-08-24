@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020e6e68
 .extern gGamePhaseRuntime
 .extern data_ov075_022177d0
@@ -295,7 +295,7 @@ func_ov075_0221647c:
     add sp, sp, #0x5c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0221687c: .word 0x3333
-.L_02216880: .word data_020c9670
+.L_02216880: .word gFx32CosSinTable
 .L_02216884: .word data_ov075_022177d0
 .L_02216888: .word gHeapContext
 .L_0221688c: .word gGamePhaseRuntime

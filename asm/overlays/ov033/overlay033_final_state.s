@@ -24,7 +24,7 @@
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern data_021f3ecc
     .extern gSoundContext
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov033_021fd9a0
 func_ov033_021fd9a0:
@@ -247,5 +247,5 @@ L_021fdcc0:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fdcd0: .word data_021f3ecc
 L_021fdcd4: .word gSoundContext
-L_021fdcd8: .word data_020c9670
+L_021fdcd8: .word gFx32CosSinTable
 .size func_ov033_021fd9a0, .-func_ov033_021fd9a0

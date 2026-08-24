@@ -15,7 +15,7 @@ typedef void (*V2)(void *, void *, s32);
 
 extern "C" void *gHeapContext, *gSoundContext, *gGamePhaseCurrencyHud, *gGamePhaseRuntime;
 extern "C" u16 gActorInteractionResourceState;
-extern "C" const s16 data_020c9670[], data_020e6f94[];
+extern "C" const s16 gFx32CosSinTable[], data_020e6f94[];
 extern "C" const u16 data_020e7318[];
 extern "C" u8 data_ov084_02214108[], data_ov084_02214118[],
     data_ov084_02214140[], data_ov084_022141c8[];
@@ -204,7 +204,7 @@ extern "C" s32 func_ov084_02212e6c(void *a, s32, s32, s32) {
     }
     VecFx32Bezier_Evaluate3D(p, F(void *, a, 0x2a4), t);
     u16 phase = (u16)func_020befec(F(s16, a, 0x29c) << 15, 20);
-    F(s32, p, 12) += data_020c9670[(phase >> 4) * 2] * 40;
+    F(s32, p, 12) += gFx32CosSinTable[(phase >> 4) * 2] * 40;
     VecFx32Object_Assign((u8 *)a + 0x18, p);
     clear_vectors(a);
     if (++F(s16, a, 0x29c) > 20) {

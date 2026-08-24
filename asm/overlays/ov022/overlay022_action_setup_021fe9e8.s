@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov022/overlay022_action_setup.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern TitleRandom_NextBounded
@@ -67,6 +67,6 @@ func_ov022_021fe9e8:
     bl GraphicsSpriteState_ApplyRenderConfig
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, pc}
-L_021feac4: .word data_020c9670
+L_021feac4: .word gFx32CosSinTable
 .size func_ov022_021fe9e8, .-func_ov022_021fe9e8
 

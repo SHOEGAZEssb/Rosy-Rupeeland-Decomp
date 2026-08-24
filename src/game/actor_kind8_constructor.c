@@ -67,7 +67,7 @@ extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
 extern void Actor_UpdatePresentation(void *screenPosition, void *actor,
                                      const void *viewPosition);
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void GraphicsSpriteGroup_Clear(void *group);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *owner, void *group);
 extern void *func_0203130c(void *actor);
@@ -238,8 +238,8 @@ s32 ActorKind8_UpdateDelayedGridEffect(void *self)
         u32 index = (u16)genrand_int32() >> 4;
 
         VecFx32Object_Init(&velocity);
-        velocity.value.x = (s32)data_020c9670[index * 2 + 1] * 2;
-        velocity.value.y = (s32)data_020c9670[index * 2] * 2;
+        velocity.value.x = (s32)gFx32CosSinTable[index * 2 + 1] * 2;
+        velocity.value.y = (s32)gFx32CosSinTable[index * 2] * 2;
         velocity.value.z = 0x3000;
         VecFx32Object_Assign((VecFx32Object *)(effect + 0x38), &velocity);
         VecFx32Object_Destroy(&velocity);
@@ -545,7 +545,7 @@ s32 ActorKind8_GetMotionSample(const void *counter)
 {
     u32 index = (u16)*(const u32 *)counter;
 
-    return data_020c9670[(index >> 4) * 2];
+    return gFx32CosSinTable[(index >> 4) * 2];
 }
 
 /* Mirror one active auxiliary sprite's priority and display plane. */

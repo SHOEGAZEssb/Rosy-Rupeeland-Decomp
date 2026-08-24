@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern Heap_Alloc
 .extern OS_Halt
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern data_ov097_0221a4c8
 .extern data_ov097_0221aa1c
@@ -515,7 +515,7 @@ func_ov097_022181a0:
 .L_022188d0: .word data_ov097_0221aa1c
 .L_022188d4: .word gHeapContext
 .L_022188d8: .word 0x162f
-.L_022188dc: .word data_020c9670
+.L_022188dc: .word gFx32CosSinTable
 .L_022188e0: .word 0x166b
 .L_022188e4: .word gGamePhaseRuntime
 .L_022188e8: .word gSoundContext

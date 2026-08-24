@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_radial_fan.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov026_022048f8
 .extern data_ov026_02204a48
 .extern Heap_AllocCore
@@ -169,7 +169,7 @@ L_021fe37c:
 L_021fe508: .word data_ov026_022048f8
 L_021fe50c: .word data_ov026_02204a48
 L_021fe510: .word gHeapContext
-L_021fe514: .word data_020c9670
+L_021fe514: .word gFx32CosSinTable
 L_021fe518: .word 0x333
 .size func_ov026_021fe2c8, .-func_ov026_021fe2c8
 

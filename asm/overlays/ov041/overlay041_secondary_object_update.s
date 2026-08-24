@@ -2,7 +2,7 @@
 
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_secondary_object_update.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern Sound_SetEffectParameters
 .extern func_020adc90
 .extern func_020befec
@@ -188,7 +188,7 @@ func_ov041_02200a38: ; 0x02200a38
 .L_02200cd4: .word 0x733
 .L_02200cd8: .word gSoundContext
 .L_02200cdc: .word 0x12d
-.L_02200ce0: .word data_020c9670
+.L_02200ce0: .word gFx32CosSinTable
 .L_02200ce4: .word 0xffff
     .size func_ov041_02200a38, . - func_ov041_02200a38
 

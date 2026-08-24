@@ -13,7 +13,7 @@
     .extern data_ov039_02208107
     .extern data_ov039_0220811c
     .extern data_ov039_022080f4
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern gSoundContext
     .global func_ov039_02201b1c
 func_ov039_02201b1c:
@@ -345,7 +345,7 @@ L_02201fd0: .word data_ov039_02208107
 L_02201fd4: .word data_ov039_0220811c
 L_02201fd8: .word data_ov039_022080f4
 L_02201fdc: .word 0x444
-L_02201fe0: .word data_020c9670
+L_02201fe0: .word gFx32CosSinTable
 L_02201fe4: .word gSoundContext
 L_02201fe8: .word 0x1c5
     .size func_ov039_02201b1c, .-func_ov039_02201b1c

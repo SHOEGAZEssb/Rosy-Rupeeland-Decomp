@@ -11,7 +11,7 @@
 extern const u8 data_ov073_02210bcc[], data_ov073_02210be4[];
 extern const u8 data_ov073_02210c04[], data_ov073_02210c0c[];
 extern const u8 data_ov073_02210c14[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gGamePhaseRuntime;
 extern u8 gHeapContext[];
 
@@ -161,7 +161,7 @@ void func_ov073_0220ff3c(void *object, const void *target)
     u8 delta[16];
     s32 phase = (u16)FIELD(u16, object, 0x3c) >> 4;
     s32 desired = FIELD(s32, target, 0xc) +
-                  ((s32)data_020c9670[phase * 2] << 2);
+                  ((s32)gFx32CosSinTable[phase * 2] << 2);
     FIELD(s32, object, 0x24) = func_020adae4(
         desired - FIELD(s32, object, 0x14), FIELD(s16, object, 0x3e));
     func_ov073_0221007c(delta, target, (u8 *)object + 8);
@@ -186,9 +186,9 @@ void func_ov073_0220ff3c(void *object, const void *target)
                 (s32)FIELD(s16, object, 0x40) * 2);
             s32 index = (angle >> 4) * 2;
             FIELD(s32, object, 0x1c) = fx_mul(
-                data_020c9670[index + 1], 0xc00 - interpolation);
+                gFx32CosSinTable[index + 1], 0xc00 - interpolation);
             FIELD(s32, object, 0x20) =
-                fx_mul(data_020c9670[index], 0x800);
+                fx_mul(gFx32CosSinTable[index], 0x800);
         }
     }
     VecFx32Object_Destroy(delta);
@@ -300,8 +300,8 @@ void func_ov073_02210338(void *controller, const void *origin)
         VecFx32Object_Assign((u8 *)child + 0x2c, origin);
         angle = FIELD(s16, controller, 0x2e) ? phase : (0x10000 - phase) & 0xffff;
         index = (angle >> 4) * 2;
-        sine = data_020c9670[index + 1];
-        cosine = data_020c9670[index];
+        sine = gFx32CosSinTable[index + 1];
+        cosine = gFx32CosSinTable[index];
         FIELD(s32, child, 0x30) += fx_mul(sine, full);
         FIELD(s32, child, 0x34) -= fx_mul(cosine, half);
         scale = 0x80 - cosine / 0x40 - SignedAbsoluteValue(FIELD(s32, child, 0x24)) / 0x100;

@@ -26,7 +26,7 @@ typedef struct Overlay001GridUpdateState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
 extern void InventoryScroll_UpdatePresentation(void *controller);
 extern void func_020958d8(void *element);
@@ -67,7 +67,7 @@ void func_ov001_021fbf7c(Overlay001GridUpdateState *state)
     phase = state->phase_1f8 + state->phaseStep_200;
     state->phase_1f8 = phase;
     tableIndex = ((u16)phase >> 4) * 2 + 1;
-    product = (s64)data_020c9670[tableIndex] * 0x1052 + 0x800;
+    product = (s64)gFx32CosSinTable[tableIndex] * 0x1052 + 0x800;
     value = (s32)(product >> 12);
     value /= 0x10;
     if (value < -0x100) {

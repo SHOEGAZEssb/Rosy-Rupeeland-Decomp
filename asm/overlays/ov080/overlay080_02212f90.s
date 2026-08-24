@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
 .extern GameWork_TestFlag
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern data_0210576c
 .extern data_0210576d
@@ -295,7 +295,7 @@ func_ov080_02212f90:
 .L_02213390: .word data_0210576f
 .L_02213394: .word data_0210576d
 .L_02213398: .word 0x471c
-.L_0221339c: .word data_020c9670
+.L_0221339c: .word gFx32CosSinTable
 .L_022133a0: .word data_ov080_02213e68
 .L_022133a4: .word data_ov080_02213ef0
 .size func_ov080_02212f90, . - func_ov080_02212f90

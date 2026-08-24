@@ -65,7 +65,7 @@ extern void func_02070418(void *resource);
 extern u32 func_0207043c(void *resource);
 extern void func_02070d74(void *resource);
 extern u32 GX_VBlankIntr(u32 state);
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 /*
  * Build an unrotated, 1.0-scale OAM chain for the current recovered animation
@@ -324,8 +324,8 @@ void GraphicsSpriteState_BuildAffineOamChain(GraphicsSpriteState *state, Graphic
 
         if (state->rotationAngle != 0) {
             u32 angle = ((u16)state->rotationAngle >> 4) << 1;
-            s32 sine = data_020c9670[angle];
-            s32 cosine = data_020c9670[angle + 1];
+            s32 sine = gFx32CosSinTable[angle];
+            s32 cosine = gFx32CosSinTable[angle + 1];
             s32 centerX = x + width / 2;
             s32 centerY = y + height / 2;
             s32 rotatedX = (centerY * sine + centerX * cosine) >> 12;
@@ -413,8 +413,8 @@ void GraphicsSpriteState_BuildAffineOamChain(GraphicsSpriteState *state, Graphic
         scaleX = (cellIndex & 1) != 0 ? -state->scaleX : state->scaleX;
         scaleY = (cellIndex & 2) != 0 ? -state->scaleY : state->scaleY;
         angle = ((u16)state->rotationAngle >> 4) << 1;
-        sine = (s32)data_020c9670[angle] << 4;
-        cosine = (s32)data_020c9670[angle + 1] << 4;
+        sine = (s32)gFx32CosSinTable[angle] << 4;
+        cosine = (s32)gFx32CosSinTable[angle + 1] << 4;
         matrix[0] = DivideAffineComponent(cosine, scaleX);
         matrix[1] = DivideAffineComponent(-sine, scaleX);
         matrix[2] = DivideAffineComponent(sine, scaleY);

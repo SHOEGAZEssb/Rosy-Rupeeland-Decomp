@@ -18,7 +18,7 @@ typedef struct Overlay039Vector {
 extern const s32 data_ov039_0220801c[3];
 extern const s32 data_ov039_02208028[3];
 extern const s32 data_ov039_02208034[3];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_ov039_022083b0[3];
 extern const s32 data_ov039_022083a4[3];
 extern const s32 data_ov039_02208398[3];
@@ -70,7 +70,7 @@ static s32 fixedMultiply(s32 first, s32 second)
 
 static s16 trigComponent(u16 angle, s32 component)
 {
-    return data_020c9670[((u32)angle >> 4) * 2 + component];
+    return gFx32CosSinTable[((u32)angle >> 4) * 2 + component];
 }
 
 /* Update the three +0x74 orbit anchors from phase, amplitude, and velocity. */

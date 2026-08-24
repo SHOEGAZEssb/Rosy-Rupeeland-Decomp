@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_020d780c[];
 extern const u8 data_020d7828[];
 extern const u8 data_020d782c[];
@@ -54,8 +54,8 @@ extern "C" void func_ov022_021fe9e8(void *scene)
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xa0),
                                  (u8 *)scene + 0x90, 1);
     u32 table_index = ((genrand_int32() & 0xffff) >> 4) * 2;
-    s32 x_term = data_020c9670[table_index] * 12;
-    s32 y_term = data_020c9670[table_index + 1] * 12;
+    s32 x_term = gFx32CosSinTable[table_index] * 12;
+    s32 y_term = gFx32CosSinTable[table_index + 1] * 12;
     s32 descriptor_id = FIELD(s32, scene, 0x358);
     const u8 *subrecord = FIELD(const u8 *, scene, 0x364);
     s32 x = func_ov043_0220b740(descriptor_id) + FIELD(s16, subrecord, 6)

@@ -7,7 +7,7 @@
     .extern func_020956fc
     .extern func_020ae024
     .extern PresentationScalar_TransitionBy
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov036_022051f0
 
     .global func_ov036_022018a8
@@ -126,7 +126,7 @@ L_02201964:
     cmp r4, #0x8
     blt L_02201964
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_02201a6c: .word data_020c9670
+L_02201a6c: .word gFx32CosSinTable
 L_02201a70: .word data_ov036_022051f0
 L_02201a74: .word 0x19a
     .size func_ov036_022018a8, .-func_ov036_022018a8

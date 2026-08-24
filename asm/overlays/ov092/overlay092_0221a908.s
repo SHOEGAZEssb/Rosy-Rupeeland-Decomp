@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -154,5 +154,5 @@ func_ov092_0221a908:
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, pc}
 .L_0221ab1c: .word gSystemState
-.L_0221ab20: .word data_020c9670
+.L_0221ab20: .word gFx32CosSinTable
 .size func_ov092_0221a908, . - func_ov092_0221a908

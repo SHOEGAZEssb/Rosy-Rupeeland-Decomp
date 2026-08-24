@@ -28,7 +28,7 @@ typedef void (*Ov89ArgMethod)(void *, s32);
 typedef s32 (*Ov89TerrainQuery)(void *, s32, s32);
 
 extern "C" void *data_020f4e18;
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" void *gGamePhaseRuntime;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
@@ -523,8 +523,8 @@ extern "C" void func_ov089_02217c60(void *actor)
     }
 
     angle = FIELD(s32, actor, 0x224) >> 4;
-    sine = data_020c9670[angle * 2];
-    cosine = data_020c9670[angle * 2 + 1];
+    sine = gFx32CosSinTable[angle * 2];
+    cosine = gFx32CosSinTable[angle * 2 + 1];
     projection = fx_mul(-cosine, FIELD(s32, actor, 0x3c)) +
                  fx_mul(sine, FIELD(s32, actor, 0x40));
     projection = fx_mul(projection, 0x333);
@@ -679,7 +679,7 @@ extern "C" void func_ov089_02218a5c(void *context, void *actor,
     if (FIELD(s32, actor, 0x238) < 0x1800) FIELD(s32, actor, 0x238) += 0xcd;
     FIELD(s16, actor, 0x234) += FIELD(s16, actor, 0x236);
     index = (u16)FIELD(s16, actor, 0x234) >> 4;
-    bob = fx_mul(data_020c9670[index * 2], FIELD(s32, actor, 0x238)) >> 12;
+    bob = fx_mul(gFx32CosSinTable[index * 2], FIELD(s32, actor, 0x238)) >> 12;
     FIELD(s16, FIELD(void *, actor, 0x54), 0x2e) += (s16)bob;
     for (which = 0; which < 2; ++which) {
         void *attachment = FIELD(void *, actor, 0x240 + which * 4);

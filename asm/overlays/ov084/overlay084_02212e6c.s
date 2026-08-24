@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern data_ov084_02214108
 .extern data_ov084_022143a4
@@ -251,7 +251,7 @@ func_ov084_02212e6c:
     mov r0, #0x0
     add sp, sp, #0x88
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_022131dc: .word data_020c9670
+.L_022131dc: .word gFx32CosSinTable
 .L_022131e0: .word gGamePhaseCurrencyHud
 .L_022131e4: .word gSoundContext
 .L_022131e8: .word data_ov084_022143a4

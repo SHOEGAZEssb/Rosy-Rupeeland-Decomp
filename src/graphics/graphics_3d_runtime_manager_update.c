@@ -7,7 +7,7 @@ extern "C" {
 #endif
 
 extern u32 genrand_int32(void);
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 }
@@ -73,7 +73,7 @@ void PairedEntryManager_Update(PairedEntryManager *manager)
         if (state == 1) {
             s64 rounding = 0x800;
             manager->entryHalfWidths[index] =
-                (s32)(((s64)data_020c9670[
+                (s32)(((s64)gFx32CosSinTable[
                             (manager->entryWavePhases[index] >> 4) * 2] *
                         manager->entryHalfWidthAmplitudes[index] + rounding) >>
                       12);
@@ -86,7 +86,7 @@ void PairedEntryManager_Update(PairedEntryManager *manager)
             s64 rounding = 0x800;
             manager->entryPoints[index].x += (u32)state;
             manager->entryHalfWidths[index] =
-                (s32)(((s64)data_020c9670[
+                (s32)(((s64)gFx32CosSinTable[
                             (manager->entryWavePhases[index] >> 4) * 2] *
                         manager->entryHalfWidthAmplitudes[index] + rounding) >>
                       12);

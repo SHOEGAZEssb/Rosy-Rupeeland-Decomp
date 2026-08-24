@@ -3,7 +3,7 @@
 /* Exact fallback for func_ov041_02202c34; see the documented portable C in
  * src/overlays/ov041/overlay041_effect_update.c. */
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -510,7 +510,7 @@ func_ov041_02202c34: ; 0x02202c34
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 .L_02203328: .word gSoundContext
 .L_0220332c: .word 0x12d
-.L_02203330: .word data_020c9670
+.L_02203330: .word gFx32CosSinTable
 .L_02203334: .word 0xff55
 .L_02203338: .word 0x7fff
     .size func_ov041_02202c34, . - func_ov041_02202c34

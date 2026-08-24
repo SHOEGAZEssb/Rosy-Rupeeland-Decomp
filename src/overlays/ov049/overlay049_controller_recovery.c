@@ -51,7 +51,7 @@ extern "C" void *func_ov049_0220c124(void *controller)
  * rendering state may change; no direct MMIO is used. State labels remain
  * offset-derived because their semantic names are not confirmed.
  */
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" u16 func_020ae024(s32, s32);
 extern "C" s32 func_020befec(s32, s32);
 
@@ -94,10 +94,10 @@ extern "C" void func_ov049_0220c8a0(void *controller, const void *position)
                 u8 *current = record + point * 0xc;
                 s32 tableIndex = (angle >> 4) * 2;
                 *(s32 *)(current + 8) = *(s32 *)(current - 4) +
-                    controller_multiply_fx(data_020c9670[tableIndex + 1],
+                    controller_multiply_fx(gFx32CosSinTable[tableIndex + 1],
                                            0xe000);
                 *(s32 *)(current + 0xc) = *(s32 *)current +
-                    controller_multiply_fx(data_020c9670[tableIndex], 0xe000);
+                    controller_multiply_fx(gFx32CosSinTable[tableIndex], 0xe000);
                 angle = (u16)(angle + 0x1f40);
             }
             angle = 0;
@@ -105,10 +105,10 @@ extern "C" void func_ov049_0220c8a0(void *controller, const void *position)
                 u8 *current = record + point * 0xc;
                 s32 tableIndex = (angle >> 4) * 2;
                 *(s32 *)(current + 8) = *(s32 *)(current + 0x14) -
-                    controller_multiply_fx(data_020c9670[tableIndex + 1],
+                    controller_multiply_fx(gFx32CosSinTable[tableIndex + 1],
                                            0xe000);
                 *(s32 *)(current + 0xc) = *(s32 *)(current + 0x18) -
-                    controller_multiply_fx(data_020c9670[tableIndex], 0xe000);
+                    controller_multiply_fx(gFx32CosSinTable[tableIndex], 0xe000);
                 angle = (u16)(angle + 0x1f40);
             }
             *(s32 *)(record + 0x24) += (*phase - 0x14) * 0x333;
@@ -198,10 +198,10 @@ extern "C" void func_ov049_0220c8a0(void *controller, const void *position)
                 }
                 s32 tableIndex = (angle >> 4) * 2;
                 *(s32 *)(current + 4) +=
-                    controller_multiply_fx(data_020c9670[tableIndex + 1],
+                    controller_multiply_fx(gFx32CosSinTable[tableIndex + 1],
                                            0xe66);
                 *(s32 *)(current + 8) +=
-                    controller_multiply_fx(data_020c9670[tableIndex], 0xe66);
+                    controller_multiply_fx(gFx32CosSinTable[tableIndex], 0xe66);
             }
             *timer = point == 0 ? *timer + 1 :
                      *(s32 *)(timer - 1) + 3;

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/randomized_sprite_particle.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
@@ -143,6 +143,6 @@ func_02028998: ; 0x02028998
 .L_02028b8c:
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02028b94: .word data_020c9670
+.L_02028b94: .word gFx32CosSinTable
     .size func_02028998, . - func_02028998
 

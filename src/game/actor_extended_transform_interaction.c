@@ -4,7 +4,7 @@
  * Recovered interaction-driven motion update for the extended actor owning the
  * transform-like value at +0x29c.
  */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 data_020e0f28[];
 extern u8 *gGamePhaseRuntime;
 
@@ -72,8 +72,8 @@ void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTra
         if (magnitude > 0) {
             s32 angle = func_020ae024(*(s32 *)(displacement + 8),
                                       *(s32 *)(displacement + 4)) >> 4;
-            s32 velocityX = (magnitude * data_020c9670[angle * 2 + 1]) >> 12;
-            s32 velocityY = (magnitude * data_020c9670[angle * 2]) >> 12;
+            s32 velocityX = (magnitude * gFx32CosSinTable[angle * 2 + 1]) >> 12;
+            s32 velocityY = (magnitude * gFx32CosSinTable[angle * 2]) >> 12;
             (*(void (**)(void *, s32 *, s32 *))(*(u8 **)actor + 0x1d8))(
                 actor, &velocityX, &velocityY);
             *(s32 *)(actor + 0x3c) = velocityX;

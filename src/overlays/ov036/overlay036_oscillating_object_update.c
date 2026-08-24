@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -35,7 +35,7 @@ static s32 divide_by_256(s32 value)
  * Updates a five-state oscillating object and reports when its selected path
  * leaves the recovered vertical bounds. Phase +0xF4 advances by 0x200 modulo
  * 16 bits. State 0 saves X +0x10 at +0xC4 and falls into state 1. In state 1,
- * data_020c9670 supplies a six-unit, signed-truncated oscillation around that
+ * gFx32CosSinTable supplies a six-unit, signed-truncated oscillation around that
  * X; Y is offset by +0x18 and resource +0xD4 follows the resulting XYZ.
  * Variant +0xCC zero starts a 30-frame timer once Y exceeds 0xC00. Variant one
  * periodically advances the resource selector from resource byte +0x54 plus
@@ -63,7 +63,7 @@ extern "C" s32 func_ov036_02201e50(void *object)
     case 1: {
         s32 index = (FIELD(s32, object, 0xf4) >> 4) * 2;
         s32 x = FIELD(s32, object, 0xc4) +
-                divide_by_256((s16)data_020c9670[index] * 6);
+                divide_by_256((s16)gFx32CosSinTable[index] * 6);
         PresentationScalar_SetImmediate((u8 *)object + 0xc, x);
         PresentationScalar_SetImmediate((u8 *)object + 0x1c,
                       FIELD(s32, object, 0x20) + 0x18);

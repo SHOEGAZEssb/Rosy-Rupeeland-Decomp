@@ -15,7 +15,7 @@ typedef struct Overlay039HelperVector {
     s32 z_0c;
 } Overlay039HelperVector;
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
@@ -95,9 +95,9 @@ extern "C" void func_ov039_022035d4(void *scene, s32 targetX, s32 targetY,
                         ? 0xfa0 : func_020ae024(targetY - sourceY,
                                                targetX - sourceX);
         u32 index = ((u32)angle >> 4) * 2;
-        FIELD(s32, helper, 0x10) = fixedMultiply(data_020c9670[index + 1],
+        FIELD(s32, helper, 0x10) = fixedMultiply(gFx32CosSinTable[index + 1],
                                                  0x1b33);
-        FIELD(s32, helper, 0x14) = fixedMultiply(data_020c9670[index], 0x1b33);
+        FIELD(s32, helper, 0x14) = fixedMultiply(gFx32CosSinTable[index], 0x1b33);
         FIELD(s32, helper, 0x18) = FIELD(s32, helper, 0x1c) = 0;
         return;
     }

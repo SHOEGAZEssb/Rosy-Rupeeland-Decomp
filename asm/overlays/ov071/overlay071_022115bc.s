@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov071/overlay071_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov071_02212340
 .extern data_ov071_022123e0
 .extern func_020ae024
@@ -278,5 +278,5 @@ func_ov071_022115bc:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022119b0: .word data_ov071_02212340
 .L_022119b4: .word data_ov071_022123e0
-.L_022119b8: .word data_020c9670
+.L_022119b8: .word gFx32CosSinTable
 .size func_ov071_022115bc, . - func_ov071_022115bc

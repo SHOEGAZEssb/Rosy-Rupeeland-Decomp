@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_tube_mesh.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov026_022048e8
 .extern data_ov026_02204a48
 .extern Heap_AllocCore
@@ -220,7 +220,7 @@ L_021fdae0:
 L_021fdcc0: .word data_ov026_022048e8
 L_021fdcc4: .word data_ov026_02204a48
 L_021fdcc8: .word gHeapContext
-L_021fdccc: .word data_020c9670
+L_021fdccc: .word gFx32CosSinTable
 L_021fdcd0: .word 0x333
 L_021fdcd4: .word 0xfd7
 .size func_ov026_021fd9c4, .-func_ov026_021fd9c4

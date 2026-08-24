@@ -9,7 +9,7 @@
 extern "C" void func_020b0808(s16 sine, s16 cosine);
 extern "C" void func_ov042_0220507c(s32 s, s32 t);
 extern "C" void func_ov042_02204eb4(s16 x, s16 y, s32 z);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 /*
  * The first argument is unused. Given three-component translation and scale
@@ -46,8 +46,8 @@ extern "C" void func_ov042_02204ee4(void *unused, const s32 *translation,
     *mtxTranslate = (u32)extraTranslation[1];
     *mtxTranslate = 0;
     s32 trigIndex = (angle >> 4) * 2;
-    func_020b0808(data_020c9670[trigIndex],
-                  data_020c9670[trigIndex + 1]);
+    func_020b0808(gFx32CosSinTable[trigIndex],
+                  gFx32CosSinTable[trigIndex + 1]);
     *begin = 1;
     *polygonAttr = attributes;
 

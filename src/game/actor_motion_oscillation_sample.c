@@ -2,7 +2,7 @@
 
 /* Table sampling and target assignment used by actor motion. */
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 static s32 actor_motion_sample_multiply(s16 value, s32 scale)
 {
@@ -18,18 +18,18 @@ static s32 actor_motion_sample_multiply(s16 value, s32 scale)
  */
 s32 ActorMotionOscillation_Sample(const ActorMotionTriple *state, s32 time, s32 tableMode)
 {
-    u32 phase = (u16)(state->z * time);
+    u32 phase = (u16)(state->phaseIncrement * time);
     u32 index = phase >> 4;
     s16 sample;
 
     if (tableMode == 0)
-        sample = data_020c9670[index * 2 + 1];
+        sample = gFx32CosSinTable[index * 2 + 1];
     else if (tableMode == 1)
-        sample = data_020c9670[index * 2];
+        sample = gFx32CosSinTable[index * 2];
     else
         return (s32)state;
 
-    return state->y + actor_motion_sample_multiply(sample, state->x);
+    return state->midpoint + actor_motion_sample_multiply(sample, state->halfRange);
 }
 
 /* Copy a supplied vector payload into the motion target and return that target. */

@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_sprite_pool.c. */
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_020f4e18
     .extern data_ov017_02201414
     .extern data_ov017_022016e0
@@ -110,7 +110,7 @@ L_021fe484:
 L_021fe574: .word 0x6020
 L_021fe578: .word data_020f4e18
 L_021fe57c: .word data_ov017_02201414
-L_021fe580: .word data_020c9670
+L_021fe580: .word gFx32CosSinTable
 L_021fe584: .word data_ov017_022016e0
 L_021fe588: .word 0xfffff99a
     .size func_ov017_021fe40c, . - func_ov017_021fe40c

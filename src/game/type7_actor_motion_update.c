@@ -9,7 +9,7 @@ extern u8 data_020e16b0[];
 extern u8 data_020e1718[];
 extern u8 data_020e1770[];
 extern u8 data_020e1700[];
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -73,7 +73,7 @@ void Type7Actor_SetMotionTargetWithTimer(void *self, const void *transform, s32 
  * separation. The data_020e16b0+0x68/data_020e1718 pair can boost speed after
  * 40 ticks when its target is farther than 0x40000, setting flag 0x400000 past
  * 0x46000. Flag +0x268 bit two doubles speed; actor flag +0x14 bit 0x40 divides
- * it by ten. Convert the displacement angle through data_020c9670 and store
+ * it by ten. Convert the displacement angle through gFx32CosSinTable and store
  * directional components at +0x3c/+0x40 and speed at +0x240. When +0x246 is
  * zero, add one sixty-fourth of those components to +0x8c/+0x90.
  *
@@ -152,8 +152,8 @@ void Type7Actor_UpdateMotionTowardTransform(void *self, const void *requestedTra
         if ((*(u32 *)(actor + 0x14) & 0x40) != 0)
             speed = func_020adae4(speed, 10);
         angle = func_020ae024((s32)displacement[2], (s32)displacement[1]) >> 4;
-        componentX = (speed * data_020c9670[angle * 2 + 1]) >> 12;
-        componentY = (speed * data_020c9670[angle * 2]) >> 12;
+        componentX = (speed * gFx32CosSinTable[angle * 2 + 1]) >> 12;
+        componentY = (speed * gFx32CosSinTable[angle * 2]) >> 12;
         *(s32 *)(actor + 0x3c) = componentX;
         *(s32 *)(actor + 0x40) = componentY;
         *(s32 *)(actor + 0x240) = speed;

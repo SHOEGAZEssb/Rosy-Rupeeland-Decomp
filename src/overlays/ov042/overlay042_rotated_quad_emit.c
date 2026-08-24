@@ -9,13 +9,13 @@
 extern "C" void func_020b0808(s16 sine, s16 cosine);
 extern "C" void func_ov042_0220507c(s32 s, s32 t);
 extern "C" void func_ov042_02204eb4(s16 x, s16 y, s32 z);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 /*
  * The first argument is unused. Given a two-word translation, 16-bit angle,
  * four signed vertex coordinate pairs, four texture coordinate pairs, and a
  * polygon attribute halfword, reset matrix mode, stream translation and scale
- * parameters, load sine/cosine from data_020c9670, and call the SDK rotation
+ * parameters, load sine/cosine from gFx32CosSinTable, and call the SDK rotation
  * helper. Set polygon attributes, begin a primitive, then emit four texture
  * coordinates and vertices clockwise; the first vertex uses the shared helper
  * with Z=0xAE and the remaining packed XY vertices go directly to G3_VTX_16.
@@ -38,8 +38,8 @@ extern "C" void func_ov042_02205b38(void *unused, const s32 *translation,
     *mtxTranslate = (u32)translation[1];
     *mtxTranslate = 0;
     s32 trigIndex = (angle >> 4) * 2;
-    func_020b0808(data_020c9670[trigIndex],
-                  data_020c9670[trigIndex + 1]);
+    func_020b0808(gFx32CosSinTable[trigIndex],
+                  gFx32CosSinTable[trigIndex + 1]);
     *begin = 1;
     *polygonAttr = attributes;
 

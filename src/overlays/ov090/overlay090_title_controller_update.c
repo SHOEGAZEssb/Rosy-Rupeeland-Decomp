@@ -38,7 +38,7 @@ extern u8 *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern void *gDebugFont;
 extern u8 data_020f4e14[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const char data_ov090_0221cc08[];
 extern const char data_ov090_0221cc10[];
 extern DisplayBrightnessPair gDisplayBrightnessPair;
@@ -555,9 +555,9 @@ void func_ov090_02217d70(void *self)
         direction = func_ov090_0221aab8(self);
         if (direction != 0xffffffff) {
             s32 tableIndex = (direction & 7) << 9;
-            FIELD(s32, primaryActor, 0x1c) -= data_020c9670[tableIndex * 2];
+            FIELD(s32, primaryActor, 0x1c) -= gFx32CosSinTable[tableIndex * 2];
             FIELD(s32, primaryActor, 0x20) +=
-                data_020c9670[tableIndex * 2 + 1] / 2;
+                gFx32CosSinTable[tableIndex * 2 + 1] / 2;
             if (FIELD(s32, primaryActor, 0x1c) < 0x1ba000)
                 FIELD(s32, primaryActor, 0x1c) = 0x1ba000;
             else if (FIELD(s32, primaryActor, 0x1c) > 0x246000)

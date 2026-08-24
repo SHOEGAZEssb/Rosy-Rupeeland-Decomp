@@ -2,7 +2,7 @@
 
 /* Overlay 12 transform submission to the Nintendo DS geometry engine. */
 
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -29,11 +29,11 @@ void func_ov012_021fcef4(void *object)
 
     /* Rotation fields use a 16-bit angle whose low four bits are fractional. */
     angle = (u16)*(u32 *)((u8 *)object + 0x20) >> 4;
-    func_020b0880(data_020c9670[angle * 2], data_020c9670[angle * 2 + 1]);
+    func_020b0880(gFx32CosSinTable[angle * 2], gFx32CosSinTable[angle * 2 + 1]);
     angle = (u16)*(u32 *)((u8 *)object + 0x24) >> 4;
-    func_020b0844(data_020c9670[angle * 2], data_020c9670[angle * 2 + 1]);
+    func_020b0844(gFx32CosSinTable[angle * 2], gFx32CosSinTable[angle * 2 + 1]);
     angle = (u16)*(u32 *)((u8 *)object + 0x28) >> 4;
-    func_020b0808(data_020c9670[angle * 2], data_020c9670[angle * 2 + 1]);
+    func_020b0808(gFx32CosSinTable[angle * 2], gFx32CosSinTable[angle * 2 + 1]);
 
     *scale = *(s32 *)((u8 *)object + 0x14);
     *scale = *(s32 *)((u8 *)object + 0x18);

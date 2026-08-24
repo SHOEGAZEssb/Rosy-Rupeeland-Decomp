@@ -5,7 +5,7 @@
  * presentation object. They drive its bobbing offsets and staged transitions.
  */
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_020c3dfc[];
 extern const s16 data_020e1e60[];
 extern void *gSoundContext;
@@ -42,7 +42,7 @@ extern void Sound_Play(void *soundContext, s32 group, s32 index);
  * +0x18 becomes base +0x28 plus 0x1e000 and current +0x14 approaches it by
  * 0x1400 per call without overshoot. Advance 8-bit phases +0x24/+0x26 by two
  * and three, then read two signed values 0x40 bytes apart from the recovered
- * table data_020c9670 and scale each by 3/2 into +0x1c/+0x20. If the bit is
+ * table gFx32CosSinTable and scale each by 3/2 into +0x1c/+0x20. If the bit is
  * clear, zero +0x14/+0x18. No value is returned. Only object state and the
  * read-only lookup table are involved; there are no SDK or hardware effects.
  */
@@ -57,8 +57,8 @@ void Type7AuxiliaryPresentation_UpdateMotion(Type7AuxiliaryPresentation *self)
         }
         self->phase24 = (self->phase24 + 2) & 0xff;
         self->phase26 = (self->phase26 + 3) & 0xff;
-        self->offset1c = data_020c9670[self->phase24 * 0x20] * 3 / 2;
-        self->offset20 = data_020c9670[self->phase26 * 0x20 + 1] * 3 / 2;
+        self->offset1c = gFx32CosSinTable[self->phase24 * 0x20] * 3 / 2;
+        self->offset20 = gFx32CosSinTable[self->phase26 * 0x20 + 1] * 3 / 2;
     } else {
         self->targetHeight18 = 0;
         self->height14 = 0;

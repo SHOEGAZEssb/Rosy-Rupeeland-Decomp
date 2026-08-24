@@ -56,7 +56,7 @@ extern void *data_020d6a70;
 extern const char data_020d6a90[];
 extern const char data_020d6a98[];
 extern const char data_020d6aa0[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u8 *gGamePhaseRuntime;
 
 extern void VecFx32Object_Init(ControllerVector *);
@@ -242,8 +242,8 @@ s32 func_020256b4(RotatingCoreEffectController *self)
                 config[3] = (u32)self->optionalDescriptor2c->animation0c;
                 VecFx32Object_Assign(&first, &self->position18);
                 angle = *(s32 *)(self->core08 + 0x2d8) >> 4;
-                first.x04 += data_020c9670[angle * 2 + 1] << 4;
-                first.y08 += (data_020c9670[angle * 2] << 4) - 0x18000;
+                first.x04 += gFx32CosSinTable[angle * 2 + 1] << 4;
+                first.y08 += (gFx32CosSinTable[angle * 2] << 4) - 0x18000;
                 VecFx32Object_InitComponents(&offset, 0, -0x18000, 0);
                 VecFx32Object_InitSum(&combined, &self->position18, &offset);
                 VecFx32Object_Destroy(&offset);

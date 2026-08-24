@@ -2,7 +2,7 @@
 
 /* Exact fallback for func_ov041_02203434; see the documented portable C in
  * src/overlays/ov041/overlay041_effect_render.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -1092,7 +1092,7 @@ func_ov041_02203434: ; 0x02203434
     str r1, [r0, #0x34]
     b .L_02204a60
 .L_022044a8: .word 0xfff
-.L_022044ac: .word data_020c9670
+.L_022044ac: .word gFx32CosSinTable
 .L_022044b0:
     cmp r0, #0x0
     bne .L_02204658

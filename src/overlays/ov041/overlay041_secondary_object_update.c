@@ -14,7 +14,7 @@ s32 func_020adc90(s32, s32);
 void Sound_SetEffectParameters(void *, s32, s32, s32, s32, s32);
 u32 genrand_int32(void);
 extern void *gSoundContext;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 }
 
 static s32 fixed_mul(s32 a, s32 b)
@@ -77,7 +77,7 @@ extern "C" void func_ov041_02200a38(void *object)
         void *render = FIELD(void *, object, 0x4c + lane * 4);
         FIELD(s32, render, 0x30) = FIELD(s32, record, 4);
         u16 phase = FIELD(u16, object, 0x94 + lane * 2);
-        s32 sine = data_020c9670[(phase >> 4) * 2];
+        s32 sine = gFx32CosSinTable[(phase >> 4) * 2];
         FIELD(s32, render, 0x34) =
             (FIELD(s32, record, 8) - 0x7000 + fixed_mul(sine, 0x5000))
             & -0x1000;

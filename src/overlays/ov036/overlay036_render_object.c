@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 #define REG32(address) (*(volatile u32 *)(address))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -45,11 +45,11 @@ extern "C" void func_ov036_021fcfa0(void *object, s32 mode)
     if (FIELD(u16, object, 0x98) & 2)
         func_020b00f0(mode);
     s32 index = (angleX >> 4) * 2;
-    func_020b0880(data_020c9670[index], data_020c9670[index + 1]);
+    func_020b0880(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
     index = (angleY >> 4) * 2;
-    func_020b0844(data_020c9670[index], data_020c9670[index + 1]);
+    func_020b0844(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
     index = (angleZ >> 4) * 2;
-    func_020b0808(data_020c9670[index], data_020c9670[index + 1]);
+    func_020b0808(gFx32CosSinTable[index], gFx32CosSinTable[index + 1]);
     REG32(0x0400046c) = scale;
     REG32(0x0400046c) = scale;
     REG32(0x0400046c) = scale;

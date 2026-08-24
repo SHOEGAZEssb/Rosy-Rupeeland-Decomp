@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const u8 data_ov037_021feec0[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gHeapContext;
 
 #ifdef __cplusplus
@@ -76,8 +76,8 @@ extern "C" void func_ov037_021fdf68(void *scene)
     PresentationScalar_SetImmediate((u8 *)object + 0x6c, scale, 1);
 
     s32 tableIndex = (angle >> 4) * 2;
-    s16 sine = data_020c9670[tableIndex];
-    s16 cosine = data_020c9670[tableIndex + 1];
+    s16 sine = gFx32CosSinTable[tableIndex];
+    s16 cosine = gFx32CosSinTable[tableIndex + 1];
     s32 depth = func_0209189c(randomState, -0xc00, -0x200);
     Presentation_SetPosition(object, fixedMul15(sine, 0x180),
                    fixedMul15(cosine, 0x180) + 0x3000, depth);

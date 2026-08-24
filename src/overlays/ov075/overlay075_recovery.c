@@ -12,7 +12,7 @@ extern "C" void *gSoundContext;
 extern "C" void *gGamePhaseCurrencyHud;
 extern "C" void *gSceneManager;
 extern "C" void *gActorRuntimeCollection;
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" u8 data_020e6adc[], data_020e6b74[], data_020e6ca4[];
 extern "C" u16 data_020e6e68[];
 extern "C" void *data_020f4e18;
@@ -789,7 +789,7 @@ extern "C" void func_ov075_02213ec4(void *result, const void *unused,
 {
     VecFx32Bezier_Evaluate3D(result, curve, time);
     u32 phase = ((u32)time << 19) >> 16;
-    F(s32, result, 0xc) += data_020c9670[(s32)phase >> 4] * 0x40;
+    F(s32, result, 0xc) += gFx32CosSinTable[(s32)phase >> 4] * 0x40;
 }
 
 /* Interpolates the source and its children along the active waypoint curve. */
@@ -996,9 +996,9 @@ extern "C" s32 func_ov075_02214770(void *actor, const void *target)
         s32 angle = func_020ae024(dy, dx);
         s32 speed = F(s32, actor, 0x224);
         F(s32, actor, 0x3c) =
-            (speed * data_020c9670[((angle >> 4) * 2) + 1]) >> 12;
+            (speed * gFx32CosSinTable[((angle >> 4) * 2) + 1]) >> 12;
         F(s32, actor, 0x40) =
-            (speed * data_020c9670[(angle >> 4) * 2]) >> 12;
+            (speed * gFx32CosSinTable[(angle >> 4) * 2]) >> 12;
         s32 stepX = F(s32, actor, 0x3c) << 6;
         s32 stepY = F(s32, actor, 0x40) << 6;
         Fx32Vector2_LimitMagnitude(&stepX, &stepY, 0x18000);
@@ -2177,8 +2177,8 @@ extern "C" void func_ov075_0221647c(void *actor, void *target, s32 dx,
     s32 angle = func_020ae024(dy, dx);
     angle = (angle + (s32)(random % 0x3333) * sign) & 0xffff;
     s32 index = angle >> 4;
-    s32 impulseX = data_020c9670[index * 2 + 1] * 3;
-    s32 impulseY = data_020c9670[index * 2] * 3;
+    s32 impulseX = gFx32CosSinTable[index * 2 + 1] * 3;
+    s32 impulseY = gFx32CosSinTable[index * 2] * 3;
     u8 impulse[16];
     func_0200500c(impulse, impulseX, impulseY, 0);
     ((Method)F(void *, F(void *, actor, 0), 0xb8))(actor, impulse, 1);

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/overlays/ov000/overlay000_grid_update.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern InventoryScroll_UpdatePresentation
 .extern func_020958d8
@@ -65,7 +65,7 @@ L_021fc238:
     moveq r1, #0x10
     strh r1, [r0, #0x32]
     ldmia sp!, {r3, r4, r5, pc}
-L_021fc24c: .word data_020c9670
+L_021fc24c: .word gFx32CosSinTable
 L_021fc250: .word 0x1052
 .size func_ov000_021fc164, . - func_ov000_021fc164
 

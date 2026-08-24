@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov030/overlay030_widget_runtime.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020f4e14
 .extern func_02070958
 .extern AnimationResourceState_Destroy
@@ -116,7 +116,7 @@ L_021fd394:
     ldr r0, [r4, #0x2c]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
-L_021fd3e0: .word data_020c9670
+L_021fd3e0: .word gFx32CosSinTable
 L_021fd3e4: .word data_020f4e14
 .size func_ov030_021fd304, .-func_ov030_021fd304
     .global func_ov030_021fd3e8

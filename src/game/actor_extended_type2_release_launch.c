@@ -5,7 +5,7 @@
  * release callbacks, refresh collision state, and initialize randomized motion.
  */
 extern u8 data_020df9e8[];
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u16 data_020e6d3c[];
 
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ void ActorExtendedType2_PrepareRelease(void *self)
  * Refresh actor bookkeeping with Actor_SaveAndForceFlags, clear +0x14 bits 1, 2, and
  * 0x40, invoke virtual +0x40, set +0x10 mask 0x1f0000, and install global pair
  * +0x1d8/+0x1dc. Unless +0x260 bit 0x8000 is set, a random low-16-bit angle
- * indexes data_020c9670 to set +0x3c/+0x40 velocity at twice table magnitude
+ * indexes gFx32CosSinTable to set +0x3c/+0x40 velocity at twice table magnitude
  * and +0x44 to 0x3800. Attachment scales +0x32/+0x34 become 0x100, +0x30 and
  * actor +0x25a clear, +0xd0 bit 0x100 is set, and +0x260 bits zero and one clear.
  * Finally the descriptor-indexed data_020e6d3c sound is played unless 0xffff.
@@ -63,8 +63,8 @@ void ActorExtendedType2_LaunchRandomMotion(void *self)
         u16 random = (u16)genrand_int32();
         if ((*(u32 *)(actor + 0x260) & 0x8000) == 0) {
             s32 angle = random >> 4;
-            *(s32 *)(actor + 0x3c) = data_020c9670[angle * 2 + 1] << 1;
-            *(s32 *)(actor + 0x40) = data_020c9670[angle * 2] << 1;
+            *(s32 *)(actor + 0x3c) = gFx32CosSinTable[angle * 2 + 1] << 1;
+            *(s32 *)(actor + 0x40) = gFx32CosSinTable[angle * 2] << 1;
             *(s32 *)(actor + 0x44) = 0x3800;
         }
     }

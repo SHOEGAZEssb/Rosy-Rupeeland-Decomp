@@ -6239,7 +6239,7 @@ data_020c9590 kind:data(any) addr:0x020c9590
 data_020c959c kind:data(any) addr:0x020c959c
 data_020c95ac kind:data(any) addr:0x020c95ac
 data_020c95bc kind:data(any) addr:0x020c95bc
-data_020c9670 kind:data(any) addr:0x020c9670
+gFx32CosSinTable kind:data(any) addr:0x020c9670
 data_020c9770 kind:data(any) addr:0x020c9770
 data_020cd470 kind:data(any) addr:0x020cd470
 data_020cd670 kind:data(any) addr:0x020cd670
@@ -6751,9 +6751,9 @@ data_020d4394 kind:data(any) addr:0x020d4394
 data_020d43a0 kind:data(any) addr:0x020d43a0
 data_020d43ac kind:data(any) addr:0x020d43ac
 data_020d43bc kind:data(any) addr:0x020d43bc
-data_020d43d4 kind:data(any) addr:0x020d43d4
-data_020d43e4 kind:data(any) addr:0x020d43e4
-data_020d43f4 kind:data(any) addr:0x020d43f4
+gActorMotionJitterVTable kind:data(any) addr:0x020d43d4
+gActorMotionGameWorkVTable kind:data(any) addr:0x020d43e4
+gActorMotionVTable kind:data(any) addr:0x020d43f4
 gActorRuntimeOwnedNodeAllocationTag kind:data(any) addr:0x020d43fc
 data_020d440c kind:data(any) addr:0x020d440c
 data_020d441c kind:data(any) addr:0x020d441c

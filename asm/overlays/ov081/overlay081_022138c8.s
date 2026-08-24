@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov081/overlay081_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Assign
 .extern Actor_QueryTerrainHeight
 .extern func_020bf1f8
@@ -80,5 +80,5 @@ func_ov081_022138c8:
 .L_022139d0:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.L_022139d8: .word data_020c9670
+.L_022139d8: .word gFx32CosSinTable
 .size func_ov081_022138c8, . - func_ov081_022138c8

@@ -17,7 +17,7 @@
     .extern data_ov035_02202bd4
     .extern data_ov035_02202ca4
     .extern data_ov035_02203d48
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern gHeapContext
 
     .global func_ov035_022011a8
@@ -136,6 +136,6 @@ func_ov035_022012ac:
     add r3, r4, r3, asr #0x8
     bl func_ov035_021fd51c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-L_0220135c: .word data_020c9670
+L_0220135c: .word gFx32CosSinTable
     .size func_ov035_022012ac, .-func_ov035_022012ac
 

@@ -6,7 +6,7 @@
 
 extern void *data_020f4e18;
 extern void *gHeapContext;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u16 data_ov026_022040cc[];
 extern const s32 data_ov026_0220426c[];
 extern const u8 data_ov026_02204960[];
@@ -110,8 +110,8 @@ extern "C" void *func_ov026_021fef9c(void *object, void *resource_arg)
     for (s32 i = 0; i < 4; ++i) {
         /* Quarter-turn indices select interleaved sine/cosine entries. */
         s32 table_index = i * 1024;
-        s32 x = (data_020c9670[table_index * 2] * 0x266) >> 12;
-        s32 z = (data_020c9670[table_index * 2 + 1] * 0x266) >> 12;
+        s32 x = (gFx32CosSinTable[table_index * 2] * 0x266) >> 12;
+        s32 z = (gFx32CosSinTable[table_index * 2 + 1] * 0x266) >> 12;
         void *orbit = Heap_Alloc(0xb0, data_ov026_02204a50, 4, gHeapContext);
         if (orbit != 0)
             orbit = func_ov026_021fce54(orbit, model_resource, 2, 0x7fff);

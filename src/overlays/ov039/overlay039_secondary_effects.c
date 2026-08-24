@@ -15,7 +15,7 @@ typedef struct Overlay039EffectVector {
     s32 z_0c;
 } Overlay039EffectVector;
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 
@@ -177,9 +177,9 @@ extern "C" void func_ov039_02203f94(void *scene)
         void *effect = FIELD(void *, scene, 0x9c + i * 4);
         if (FIELD(s32, effect, 0) != 0) continue;
         FIELD(s32, effect, 0x10) = origin.x_04 -
-            fixedMultiply(data_020c9670[index], 0xc000);
+            fixedMultiply(gFx32CosSinTable[index], 0xc000);
         FIELD(s32, effect, 0x14) = origin.y_08 +
-            fixedMultiply(data_020c9670[index + 1], 0xc000);
+            fixedMultiply(gFx32CosSinTable[index + 1], 0xc000);
         FIELD(s32, effect, 0x1c) = FIELD(s32, effect, 0x20) = 0;
         FIELD(s32, effect, 8) = 0x21c;
         FIELD(s32, effect, 0) = 1;
@@ -213,9 +213,9 @@ extern "C" void func_ov039_02204180(void *object)
         xPhase += i * 0x50 + 0xc8;
         yPhase += i * 0x3c + 0x12c;
         s32 x = FIELD(s32, object, 0x10) +
-            data_020c9670[((u16)xPhase >> 4) * 2] * 0x16;
+            gFx32CosSinTable[((u16)xPhase >> 4) * 2] * 0x16;
         s32 y = FIELD(s32, object, 0x14) +
-            data_020c9670[((u16)yPhase >> 4) * 2 + 1] * 0x16;
+            gFx32CosSinTable[((u16)yPhase >> 4) * 2 + 1] * 0x16;
         FIELD(s32, object, 0x8c + i * 12) = x;
         FIELD(s32, object, 0x90 + i * 12) = y;
         if (x > 0x2bc000 || x < 0x144000 || y > 0x280000 || y < 0x6e000)
@@ -277,8 +277,8 @@ extern "C" void func_ov039_0220431c(void *scene)
         s32 age = FIELD(s32, effect, 4);
         s32 speed = 0x1666 + (age < 20 ? (20 - age) * 0x258 : 0);
         u32 index = ((u16)FIELD(s32, effect, 0x24) >> 4) * 2;
-        FIELD(s32, effect, 0x1c) = -fixedMultiply(data_020c9670[index], speed);
-        FIELD(s32, effect, 0x20) = fixedMultiply(data_020c9670[index + 1], speed);
+        FIELD(s32, effect, 0x1c) = -fixedMultiply(gFx32CosSinTable[index], speed);
+        FIELD(s32, effect, 0x20) = fixedMultiply(gFx32CosSinTable[index + 1], speed);
         func_ov039_02203770((u8 *)effect + 0x0c, (u8 *)effect + 0x18);
         FIELD(s32, effect, 4)++;
         FIELD(s32, effect, 8)--;

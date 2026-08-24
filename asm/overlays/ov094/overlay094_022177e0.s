@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov094_02219eb8
 .extern GraphicsSpriteState_GetSequenceDuration
 .extern PresentationScalar_SetImmediate
@@ -125,7 +125,7 @@ func_ov094_022177e0:
     strh r3, [r1, #0x28]
     str r2, [r8, #0x88]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_022179a4: .word data_020c9670
+.L_022179a4: .word gFx32CosSinTable
 .L_022179a8: .word data_ov094_02219eb8
 .L_022179ac: .word 0x7fff
 .size func_ov094_022177e0, . - func_ov094_022177e0

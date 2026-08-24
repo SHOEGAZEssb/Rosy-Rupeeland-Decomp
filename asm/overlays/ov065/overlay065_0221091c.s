@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Assign
 .extern genrand_int32
 
@@ -62,6 +62,6 @@ Overlay065Scene_GenerateRandomTarget:
     str r0, [r6, #0x8]
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_022109f8: .word 0x7ff
-.L_022109fc: .word data_020c9670
+.L_022109fc: .word gFx32CosSinTable
 .L_02210a00: .word 0xfff
 .size Overlay065Scene_GenerateRandomTarget, . - Overlay065Scene_GenerateRandomTarget

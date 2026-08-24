@@ -180,7 +180,7 @@ extern "C" void func_ov049_0220c67c(void *system)
  * timers/angles, clear the record state, and choose a 200..295-frame cooldown.
  * At most one record is expanded. System and RNG state change; no MMIO occurs.
  */
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" s32 func_020bf1f8(s32, s32);
 extern "C" void func_ov049_0220c23c(void *, const void *);
 
@@ -194,8 +194,8 @@ extern "C" void func_ov049_0220c6cc(void *system, const void *point, s32 angle)
     for (s32 index = 9; index >= 0; --index) {
         if (*particle_half(system, 0x644, index) < 0) {
             s32 tableIndex = (angle >> 4) * 2;
-            s32 sine = data_020c9670[tableIndex];
-            s32 cosine = data_020c9670[tableIndex + 1];
+            s32 sine = gFx32CosSinTable[tableIndex];
+            s32 cosine = gFx32CosSinTable[tableIndex + 1];
             u8 *record = particle_record(system, index);
             for (s32 pointIndex = 4; pointIndex >= 0; --pointIndex) {
                 s32 distance = (-9 * pointIndex) * 0x1000;

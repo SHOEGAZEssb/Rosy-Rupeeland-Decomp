@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov077_02216f2c
 .extern data_ov077_02216f34
 .extern data_ov077_02216f7c
@@ -662,7 +662,7 @@ func_ov077_022142f8:
 .L_02214c48: .word data_ov077_02216fc8
 .L_02214c4c: .word data_ov077_02217020
 .L_02214c50: .word data_ov077_02217018
-.L_02214c54: .word data_020c9670
+.L_02214c54: .word gFx32CosSinTable
 .L_02214c58: .word 0xeb8
 .L_02214c5c: .word 0xffffc7f2
 .L_02214c60: .word 0xe66

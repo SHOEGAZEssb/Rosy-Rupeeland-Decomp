@@ -4,7 +4,7 @@
 #include "tingle/random.h"
 #include "tingle/vec_fx32.h"
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern u64 func_020bf1f8(u32 value, u32 divisor);
 
@@ -76,7 +76,7 @@ s32 SpriteEffectInstance_Update(SpriteEffectInstance *effect)
                     ((effect->age6e % 2) *
                      (effect->minimumScale36 >> 1));
             effect->scales18[index] = (s16)MULTIPLY_FX_ROUNDED(
-                data_020c9670[tableIndex], scale);
+                gFx32CosSinTable[tableIndex], scale);
         } else if (effect->renderMode70 == 3 ||
                    effect->renderMode70 == 7) {
             if (effect->distributionMode4b != 4) {

@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Bezier_Evaluate3D
 
 .global func_ov075_02213ec4
@@ -21,5 +21,5 @@ func_ov075_02213ec4:
     add r0, r1, r0, lsl #0x6
     str r0, [r4, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-.L_02213f04: .word data_020c9670
+.L_02213f04: .word gFx32CosSinTable
 .size func_ov075_02213ec4, . - func_ov075_02213ec4

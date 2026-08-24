@@ -15,7 +15,7 @@ typedef struct Overlay007ItemsFrameState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void func_ov007_021fbaf0(void *state);
 extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
@@ -46,7 +46,7 @@ static void overlay007_clear_primary_trigger(Overlay007ItemsFrameState *state)
  * Return immediately when primary +0x4C is null or hidden marker +0xD0 is set.
  * When +0xD4 equals one, run func_ov007_021fbaf0 once (which advances it to
  * two) and finish the frame. Otherwise read owner +0xB0 as a 16-bit angle,
- * use data_020c9670 at `(angle>>4)*2`, multiply by -0xB4000 with 20.12
+ * use gFx32CosSinTable at `(angle>>4)*2`, multiply by -0xB4000 with 20.12
  * rounding, and store +0x88. If owner +0xAC equals 10, set primary member +0x0C
  * to value 2 and trigger byte +0xA0.
  *
@@ -93,7 +93,7 @@ void func_ov007_021fbcd8(Overlay007ItemsFrameState *state)
     owner = overlay007_frame_owner(state);
     {
         u16 angle = FIELD(u16, owner, 0x0b0);
-        s32 coefficient = data_020c9670[(angle >> 4) * 2];
+        s32 coefficient = gFx32CosSinTable[(angle >> 4) * 2];
         s64 product = (s64)coefficient * -0xb4000;
 
         FIELD(s32, state, 0x088) = (s32)((product + 0x800) >> 12);

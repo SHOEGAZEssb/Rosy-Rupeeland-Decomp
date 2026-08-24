@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_result_sequence.c. */
     .extern Heap_Alloc
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov018_021ffbf0
     .extern data_ov018_021ffbf8
     .extern data_ov018_021ffd68
@@ -373,7 +373,7 @@ L_021fef08: .word 0x4001052
 L_021fef0c: .word data_ov018_021ffd68
 L_021fef10: .word gHeapContext
 L_021fef14: .word 0x4001050
-L_021fef18: .word data_020c9670
+L_021fef18: .word gFx32CosSinTable
 L_021fef1c: .word gSoundContext
 L_021fef20: .word gDebugFont
 L_021fef24: .word data_ov018_021ffbf8

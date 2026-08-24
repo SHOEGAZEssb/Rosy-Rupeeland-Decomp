@@ -9,7 +9,7 @@
     .extern Presentation_SetPosition
     .extern PresentationScalar_TransitionTo
     .extern PresentationList_Append
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov035_02203d68
     .extern gHeapContext
 
@@ -93,7 +93,7 @@ L_02200fa8:
     bl PresentationList_Append
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_02200ff4: .word data_020c9670
+L_02200ff4: .word gFx32CosSinTable
 L_02200ff8: .word data_ov035_02203d68
 L_02200ffc: .word gHeapContext
     .size func_ov035_02200ec0, .-func_ov035_02200ec0

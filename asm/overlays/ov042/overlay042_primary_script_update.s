@@ -10,7 +10,7 @@
 .extern data_ov042_0220adce
 .extern data_ov042_0220aec4
 .extern data_ov042_0220af9c
-.extern data_020c9670
+.extern gFx32CosSinTable
 
     .global func_ov042_02201234
 func_ov042_02201234:
@@ -847,7 +847,7 @@ func_ov042_02201234:
 .L_02201e8c: .word 0xfffffccd
 .L_02201e90: .word 0x333
 .L_02201e94: .word 0xbb8
-.L_02201e98: .word data_020c9670
+.L_02201e98: .word gFx32CosSinTable
 .L_02201e9c: .word 0x1ccd
 .size func_ov042_02201234, . - func_ov042_02201234
 

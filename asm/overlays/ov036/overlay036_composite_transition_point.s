@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_composite_transition_point.c for documented portable C. */
 
     .extern func_ov036_021fdc5c
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov036_02203228
 func_ov036_02203228:
@@ -38,6 +38,6 @@ func_ov036_02203228:
     bl func_ov036_021fdc5c
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
-L_022032a4: .word data_020c9670
+L_022032a4: .word gFx32CosSinTable
     .size func_ov036_02203228, .-func_ov036_02203228
 

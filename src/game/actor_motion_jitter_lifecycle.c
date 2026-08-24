@@ -6,13 +6,13 @@
  * frame countdown and radius used to jitter an actor-derived destination.
  */
 
-extern const void *data_020d43d4[];
+extern const void *gActorMotionJitterVTable[];
 
 /* Construct the base motion object, install this vtable, clear jitter fields, and return self. */
 ActorMotionJitter *ActorMotionJitter_Init(ActorMotionJitter *self)
 {
     ActorMotion_Init(&self->base);
-    self->base.vtable = data_020d43d4;
+    self->base.vtable = gActorMotionJitterVTable;
     self->remainingFrames = 0;
     self->radius = 0;
     return self;

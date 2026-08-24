@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov036_02206180[];
 extern void *gHeapContext;
 
@@ -40,7 +40,7 @@ static s32 mul_q12_round(s32 first, s32 second)
 /*
  * Emits a mode-1 0xA8-byte primitive into list +0x158. A random signed Q12
  * value scaled by controller +0x178 selects both the object's negative Z
- * rotation and a 0x2800 direction from data_020c9670; another random value in
+ * rotation and a 0x2800 direction from gFx32CosSinTable; another random value in
  * [-0x800,0x800] supplies X at Y=-0x600. The direction becomes mode-1 targets
  * +0xC/+0x1C, Z targets -0x100, and duration is sign-extended into +0x7C with
  * elapsed +0x80 cleared. Returns nothing; RNG, heap, transform, and list state
@@ -52,8 +52,8 @@ extern "C" void func_ov036_02201580(void *controller, s32 duration)
                                 -0x1000, 0x1000);
     s32 angle = mul_q12_trunc(sample, FIELD(s32, controller, 0x178));
     u32 index = ((u16)angle >> 4) * 2;
-    s32 first = mul_q12_round(data_020c9670[index], 0x2800);
-    s32 second = mul_q12_round(data_020c9670[index + 1], 0x2800);
+    s32 first = mul_q12_round(gFx32CosSinTable[index], 0x2800);
+    s32 second = mul_q12_round(gFx32CosSinTable[index + 1], 0x2800);
     s32 x = func_0209189c((u8 *)controller + 0xc0, -0x800, 0x800);
 
     void *object = Heap_Alloc(0xa8, data_ov036_02206180, 4, gHeapContext);

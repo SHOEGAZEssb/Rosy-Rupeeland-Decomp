@@ -1,7 +1,7 @@
 .text
 /* Exact fallback; see overlay039_helper_pool2.c for portable C. */
     .extern func_020ae024
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .global func_ov039_022035d4
 func_ov039_022035d4:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -66,7 +66,7 @@ L_022036b8:
     subs r4, r4, #0x1
     bpl L_022035e4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_022036c4: .word data_020c9670
+L_022036c4: .word gFx32CosSinTable
 L_022036c8: .word 0x1b33
     .size func_ov039_022035d4, .-func_ov039_022035d4
 

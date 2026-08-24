@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_interaction_runtime_update.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gActorInteractionDirectionIndex
 .extern gActorInteractionMagnitude
 .extern gActorInteractionSmoothedDisplacement
@@ -62,7 +62,7 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
 .L_0203ad50: .word gActorInteractionDirectionIndex
 .L_0203ad54: .word gActorInteractionMagnitude
 .L_0203ad58: .word gActorInteractionSmoothedDisplacement
-.L_0203ad5c: .word data_020c9670
+.L_0203ad5c: .word gFx32CosSinTable
 .L_0203ad60: .word gActorInteractionResourceState
 
     .size ActorInteractionRuntime_Update, . - ActorInteractionRuntime_Update

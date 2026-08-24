@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/four_slot_3d_presentation.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_020ae024
 
     .global FourSlot3DPresentation_DrawSegmentQuad
@@ -101,7 +101,7 @@ FourSlot3DPresentation_DrawSegmentQuad: ; 0x0202497c
     orr r1, r2, r1, lsr #0x10
     str r1, [r0, #0x14]
     ldmia sp!, {r4, r5, r6, pc}
-.L_02024af8: .word data_020c9670
+.L_02024af8: .word gFx32CosSinTable
 .L_02024afc: .word 0x4000480
 .L_02024b00: .word 0xfff0
     .size FourSlot3DPresentation_DrawSegmentQuad, . - FourSlot3DPresentation_DrawSegmentQuad

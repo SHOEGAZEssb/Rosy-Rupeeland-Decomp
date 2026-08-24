@@ -24,11 +24,11 @@ ActorMotionTriple *ActorMotionOscillation_InitInterval(ActorMotionTriple *result
     s32 difference = first - second;
     s32 half = (difference + (s32)((u32)difference >> 31)) >> 1;
 
-    result->x = half;
+    result->halfRange = half;
     if (half < 0)
         half = -half;
-    result->y = minimum + half;
-    result->z = func_020befec(0x10000, duration);
+    result->midpoint = minimum + half;
+    result->phaseIncrement = func_020befec(0x10000, duration);
     return result;
 }
 

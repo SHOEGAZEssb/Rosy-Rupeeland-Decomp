@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern TouchPoint_Init
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gTimedSpritePointerArrayAllocationTag
 .extern gTimedSpriteBurstManagerVtable
 .extern gTimedSpritePresentationAllocationTag
@@ -149,7 +149,7 @@ TimedSpriteBurstManager_Init: ; 0x0201eefc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0201f09c: .word gTimedSpriteBurstManagerVtable
 .L_0201f0a0: .word gDebugFont
-.L_0201f0a4: .word data_020c9670
+.L_0201f0a4: .word gFx32CosSinTable
 .L_0201f0a8: .word gTimedSpritePresentationAllocationTag
 .L_0201f0ac: .word gHeapContext
     .size TimedSpriteBurstManager_Init, .-TimedSpriteBurstManager_Init

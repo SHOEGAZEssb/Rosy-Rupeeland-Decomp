@@ -4,7 +4,7 @@
     .extern VecFx32Object_InitCopy
     .extern func_020adc40
     .extern VecFx32Object_Destroy
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_items_frame_update.c. */
@@ -215,7 +215,7 @@ L_021fbf3c:
 L_021fbfc8:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-L_021fbfd0: .word data_020c9670
+L_021fbfd0: .word gFx32CosSinTable
 L_021fbfd4: .word 0x1ff
 L_021fbfd8: .word 0x4001010
 

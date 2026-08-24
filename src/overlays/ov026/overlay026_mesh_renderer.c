@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *data_020f4e18;
 extern const u16 data_ov026_022042fc[];
 extern const u16 data_ov026_022042fe[];
@@ -84,8 +84,8 @@ extern "C" void *func_ov026_021fd030(void *object, s32 resource_id, s32 variant)
     for (s32 i = 0; i <= 16; ++i) {
         /* The original fixed-point arithmetic maps 17 samples around a half arc. */
         s32 angle = (i * 0x1000) >> 4;
-        s32 sine = data_020c9670[angle * 2];
-        s32 cosine = data_020c9670[angle * 2 + 1];
+        s32 sine = gFx32CosSinTable[angle * 2];
+        s32 cosine = gFx32CosSinTable[angle * 2 + 1];
         s32 u = i * 0x2000;
         func_020aff78((u8 *)object + 0xa0, u, -0x80000);
         func_020aff38((u8 *)object + 0xa0, sine, 0x1000, cosine);

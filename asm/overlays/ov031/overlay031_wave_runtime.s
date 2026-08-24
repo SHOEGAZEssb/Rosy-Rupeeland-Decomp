@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov031/overlay031_wave_effect.c for documented portable C. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov031_021fe5fc
 .extern Presentation_InterpolateLinear
 .extern func_020befec
@@ -195,7 +195,7 @@ L_021fd14c: .word data_ov031_021fe5fc
 L_021fd150: .word 0xfff
 L_021fd154: .word 0x1414
 L_021fd158: .word 0x5dc
-L_021fd15c: .word data_020c9670
+L_021fd15c: .word gFx32CosSinTable
 .size func_ov031_021fce98, .-func_ov031_021fce98
     .global func_ov031_021fd160
 func_ov031_021fd160:

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern GameWork_TestFlag
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern func_020afd0c
@@ -148,6 +148,6 @@ func_ov054_0220e75c:
 .L_0220e958: .word 0x40a
 .L_0220e95c: .word gSystemState
 .L_0220e960: .word 0x222
-.L_0220e964: .word data_020c9670
+.L_0220e964: .word gFx32CosSinTable
 .L_0220e968: .word 0x4000050
 .size func_ov054_0220e75c, . - func_ov054_0220e75c

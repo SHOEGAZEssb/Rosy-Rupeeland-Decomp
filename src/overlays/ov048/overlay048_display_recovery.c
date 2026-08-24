@@ -15,7 +15,7 @@
  * Object OAM records, SDK graphics state, and main/sub MMIO all change; nothing
  * is returned. Packed values are confirmed hardware encodings.
  */
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" void func_020925f8(void);
 extern "C" void func_02092638(s32, s32, s32, s32);
 extern "C" void func_02092688(s32, s32, s32, s32);
@@ -51,10 +51,10 @@ extern "C" void func_ov048_0220b7b8(void *object)
     GXS_SetGraphicsMode(5);
 
     *subBg2Control = (*subBg2Control & 0x43) | 0x4084;
-    transform[0] = data_020c9670[1];
-    transform[1] = data_020c9670[0];
-    transform[2] = -data_020c9670[0];
-    transform[3] = data_020c9670[1];
+    transform[0] = gFx32CosSinTable[1];
+    transform[1] = gFx32CosSinTable[0];
+    transform[2] = -gFx32CosSinTable[0];
+    transform[3] = gFx32CosSinTable[1];
     func_020afd28((volatile void *)0x04001020, transform, 0, 0, 0, 0);
     *(volatile u32 *)0x04001000 =
         (*(volatile u32 *)0x04001000 & ~0x60u) | 0x20;

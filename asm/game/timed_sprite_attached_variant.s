@@ -13,7 +13,7 @@
 .extern func_020adae4
 .extern func_020ae024
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020d6138
 .global func_0201e6e4
 .type func_0201e6e4, @function
@@ -240,5 +240,5 @@ func_0201e888: ; 0x0201e888
     ldmia sp!, {r4, r5, r6, pc}
 .L_0201e9cc: .word 0x40002b0
 .L_0201e9d0: .word 0x40002b4
-.L_0201e9d4: .word data_020c9670
+.L_0201e9d4: .word gFx32CosSinTable
     .size func_0201e888, .-func_0201e888

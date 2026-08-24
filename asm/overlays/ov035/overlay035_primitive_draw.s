@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov035/overlay035_primitive.c for documented portable C. */
 
     .extern func_020b0808
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
 
     .global func_ov035_021fd30c
@@ -93,7 +93,7 @@ L_021fd430:
 L_021fd448: .word 0x4000444
 L_021fd44c: .word 0x4000500
 L_021fd450: .word 0xfff8
-L_021fd454: .word data_020c9670
+L_021fd454: .word gFx32CosSinTable
 L_021fd458: .word 0xfffe
 L_021fd45c: .word 0x4000504
 .size func_ov035_021fd30c, .-func_ov035_021fd30c

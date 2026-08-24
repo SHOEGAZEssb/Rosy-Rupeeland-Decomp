@@ -38,7 +38,7 @@ extern void *data_020d6934;
 extern const u16 data_020d6780[4];
 extern const ScreenSegment data_020d67dc[4];
 extern const ScreenSegment data_020d67fc[4];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gGameWork;
 extern u8 *gGamePhaseRuntime;
 
@@ -192,8 +192,8 @@ void FourSlot3DPresentation_DrawSegmentQuad(FourSlot3DPresentation *self,
     u32 angle = (u16)(func_020ae024(segment->x1 - segment->x0,
                                     segment->y1 - segment->y0) + 0x4000);
     s32 index = (s32)(angle >> 4);
-    s32 yOffset = (width * data_020c9670[index * 2 + 1]) / 0x1000;
-    s32 xOffset = (width * data_020c9670[index * 2]) / 0x1000;
+    s32 yOffset = (width * gFx32CosSinTable[index * 2 + 1]) / 0x1000;
+    s32 xOffset = (width * gFx32CosSinTable[index * 2]) / 0x1000;
     s32 halfY = yOffset / 2;
     s32 halfX = xOffset / 2;
     (void)self;

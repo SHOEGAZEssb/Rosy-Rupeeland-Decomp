@@ -9,7 +9,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" u16 data_ov042_0220ad98[];
 extern "C" s32 data_ov042_0220acd8[];
 extern "C" s32 data_ov042_0220ad68[];
@@ -89,10 +89,10 @@ static s32 get_rupee_light_first_axis_offset(void)
     s16 secondSample;
 
     data_ov042_0220b6e0[0] = phase;
-    firstSample = data_020c9670[(phase >> 4) * 2];
+    firstSample = gFx32CosSinTable[(phase >> 4) * 2];
     secondByteOffset =
         (((((u32)(s32)firstSample << 18) >> 16) >> 4) << 2);
-    secondSample = *(const s16 *)((const u8 *)data_020c9670 +
+    secondSample = *(const s16 *)((const u8 *)gFx32CosSinTable +
                                   secondByteOffset);
     return func_020befec(secondSample, 5);
 }
@@ -170,7 +170,7 @@ static void draw_mode2_ribbon(void *scene)
 
     if (phase != 0) {
         u16 phaseAngle = (u16)(phase * FIELD(s32, scene, 0x1d8));
-        s16 sample = data_020c9670[(phaseAngle >> 4) * 2];
+        s16 sample = gFx32CosSinTable[(phaseAngle >> 4) * 2];
         u16 angle = (u16)((((s64)sample *
                             FIELD(s32, scene, 0x1dc)) + 0x800) >> 12);
 

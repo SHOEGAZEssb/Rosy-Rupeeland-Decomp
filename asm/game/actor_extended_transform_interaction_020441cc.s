@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_transform_interaction.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020e0f28
 .extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
@@ -156,5 +156,5 @@ ActorExtendedTransform_UpdateTargetMotion: ; 0x020441cc
     ldmia sp!, {r4, r5, r6, pc}
 .L_020443e4: .word gGamePhaseRuntime
 .L_020443e8: .word data_020e0f28
-.L_020443ec: .word data_020c9670
+.L_020443ec: .word gFx32CosSinTable
 .size ActorExtendedTransform_UpdateTargetMotion, . - ActorExtendedTransform_UpdateTargetMotion

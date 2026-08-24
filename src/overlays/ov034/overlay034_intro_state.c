@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_ov034_021fe740[];
 
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ extern "C" s32 func_ov034_021fdfe0(void *scene)
             FIELD(s32, scene, 0x1b8) = 2;
         } else {
             u16 angle = (u16)Presentation_InterpolateScalar(item0, 1, 0, 0x20000);
-            s32 wave = data_020c9670[(angle >> 4) * 2] * 2;
+            s32 wave = gFx32CosSinTable[(angle >> 4) * 2] * 2;
             for (s32 i = 0; i < count; ++i)
                 PresentationScalar_SetImmediate((u8 *)FIELD(void *, scene, 8 + i * 4) + 0x4c,
                               wave);

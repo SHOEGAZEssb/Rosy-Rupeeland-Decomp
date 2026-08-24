@@ -10,7 +10,7 @@
 .extern SceneManager_GetCurrent
 .extern Scene_ClearFlag02
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gDisplayBrightnessPair
 .extern data_020f4e14
 .extern gGamePhaseRuntime
@@ -2133,7 +2133,7 @@ func_ov090_02217d70:
     add r0, sp, #0x188
     bl VecFx32Object_Destroy
     b .L_0221a284
-.L_02219c38: .word data_020c9670
+.L_02219c38: .word gFx32CosSinTable
 .L_02219c3c: .word 0x14a
 .L_02219c40: .word 0x103b
 .L_02219c44: .word 0xa10c

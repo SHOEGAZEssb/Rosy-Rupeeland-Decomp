@@ -5,7 +5,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *data_020f4e14;
 extern void *data_020f4e18[];
 extern void *data_021e9ac0;
@@ -212,8 +212,8 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
             data_ov017_02201414[radiusIndex] - 0xc);
         func_ov017_021ff8a8(
             state, effectId,
-            radius * data_020c9670[angle * 2],
-            radius * data_020c9670[angle * 2 + 1],
+            radius * gFx32CosSinTable[angle * 2],
+            radius * gFx32CosSinTable[angle * 2 + 1],
             (u16)recordValue);
         FIELD(s32, state, 0x3c8) += recordValue;
     }

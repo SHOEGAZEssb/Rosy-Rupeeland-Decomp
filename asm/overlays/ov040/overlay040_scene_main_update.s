@@ -3,7 +3,7 @@
     .extern Heap_Alloc
     .extern Sound_Play
     .extern TouchPanelManager_GetPoint
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov040_02203a18
     .extern data_ov040_02203e3c
     .extern data_ov040_022042f0
@@ -1098,7 +1098,7 @@ func_ov040_021fe1b0: ; 0x021fe1b0
 .L_021ff12c: .word data_ov040_02203e3c
 .L_021ff130: .word data_ov040_022042f0
 .L_021ff134: .word data_ov040_02203a18
-.L_021ff138: .word data_020c9670
+.L_021ff138: .word gFx32CosSinTable
 .L_021ff13c: .word gSoundContext
 .L_021ff140: .word 0x9616
 .L_021ff144: .word 0x100f

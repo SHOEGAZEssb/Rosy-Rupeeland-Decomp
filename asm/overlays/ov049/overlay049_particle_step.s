@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov049/overlay049_particle_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_020bf1f8
 .extern func_ov049_0220c23c
 .extern genrand_int32
@@ -127,5 +127,5 @@ func_ov049_0220c6cc:
 .L_0220c894:
     add sp, sp, #0x24
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
-.L_0220c89c: .word data_020c9670
+.L_0220c89c: .word gFx32CosSinTable
 .size func_ov049_0220c6cc, . - func_ov049_0220c6cc

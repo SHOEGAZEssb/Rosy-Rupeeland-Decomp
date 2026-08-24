@@ -16,7 +16,7 @@ void Graphics3dPresentation_BeginFrame(void *, const void *);
 void func_0209c7e8(void *, s32);
 void func_0209c87c(void *, const void *, const void *, s32, s32);
 extern const s32 data_ov041_02204c58[9];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 }
 
 static s32 fixed_mul(s32 a, s32 b)
@@ -71,8 +71,8 @@ extern "C" void func_ov041_021fffc8(void *object, const void *transform)
             s32 scale = data_ov041_02204c58[type];
             u16 phase = ((u16 *)FIELD(void *, object, 0x94))[i];
             s32 angle = phase >> 4;
-            s32 sine = data_020c9670[angle * 2];
-            s32 cosine = -data_020c9670[angle * 2 + 1];
+            s32 sine = gFx32CosSinTable[angle * 2];
+            s32 cosine = -gFx32CosSinTable[angle * 2 + 1];
             u8 *position = (u8 *)FIELD(void *, object, 0x84) + i * 12;
             s32 shape[8];
 

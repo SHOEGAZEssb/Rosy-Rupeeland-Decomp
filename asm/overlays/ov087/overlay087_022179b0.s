@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov087/overlay087_recovery.c.
 .extern SceneManager_GetCurrent
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -374,7 +374,7 @@ func_ov087_022179b0:
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, pc}
 .L_02217ec4: .word gSceneManager
-.L_02217ec8: .word data_020c9670
+.L_02217ec8: .word gFx32CosSinTable
 .L_02217ecc: .word 0x19a
 .L_02217ed0: .word gSoundContext
 .L_02217ed4: .word gGamePhaseRuntime

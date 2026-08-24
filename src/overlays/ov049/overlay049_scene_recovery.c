@@ -14,7 +14,7 @@
  * parameters. Temporary vectors are destroyed before return. Renderer state
  * changes through SDK helpers, while controller ownership is unchanged.
  */
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" const u16 data_ov049_0220d31a[];
 extern "C" void *gGamePhaseRuntime;
 extern "C" void VecFx32Object_Init(void *);
@@ -59,7 +59,7 @@ extern "C" void func_ov049_0220cf94(void *controller)
                                 state + 4 + recordIndex * 0x3c + point * 0xc);
             u16 turn = *(u16 *)(state + 0x658 + recordIndex * 2);
             *(s32 *)(points + point * 0xc + 8) +=
-                data_020c9670[(turn >> 4) * 2] * -20;
+                gFx32CosSinTable[(turn >> 4) * 2] * -20;
         }
         s32 selector = recordIndex % 4;
         s16 hold = *(s16 *)(state + 0x694 + recordIndex * 2);

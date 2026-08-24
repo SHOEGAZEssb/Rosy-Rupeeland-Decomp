@@ -43,7 +43,7 @@ extern "C" s32 ActorContactState_AddContact(void *, void *, s32);
 extern "C" s32 func_020adc90(s32, s32);
 extern "C" void Sound_PlayEffectWithParameters(void *, s32, s32, ...);
 extern "C" u8 gSystemState[];
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" u8 data_ov088_0221b780[], data_ov088_0221b84c[],
     data_ov088_0221b928[];
 extern "C" u8 data_ov088_0221b9fc[];
@@ -427,9 +427,9 @@ extern "C" void func_ov088_02218328(void *a) {
         u8 impulse[16];
         VecFx32Object_InitComponents(
             impulse,
-            -(s32)(((s64)data_020c9670[phase] * F(s32, a, 0x208) + 0x800) >>
+            -(s32)(((s64)gFx32CosSinTable[phase] * F(s32, a, 0x208) + 0x800) >>
                    12),
-            (s32)(((s64)data_020c9670[phase + 1] * speed + 0x800) >> 12), 0);
+            (s32)(((s64)gFx32CosSinTable[phase + 1] * speed + 0x800) >> 12), 0);
         VecFx32Object_Add((u8 *)a + 0x38, impulse);
         Fx32Vector2_LimitMagnitude((s32 *)((u8 *)a + 0x3c), (s32 *)((u8 *)a + 0x40), 0x6000);
         VecFx32Object_Destroy(impulse);
@@ -805,7 +805,7 @@ extern "C" s32 func_ov088_02219d9c(void *a) {
             d = (keys & 0x40) ? 4 : 0;
         u8 old[16];
         VecFx32Object_InitCopy(old, (u8 *)a + 0x38);
-        Actor_TurnTowardVector(a, -data_020c9670[d * 1024], data_020c9670[d * 1024 + 1],
+        Actor_TurnTowardVector(a, -gFx32CosSinTable[d * 1024], gFx32CosSinTable[d * 1024 + 1],
                       0x800);
         VecFx32Object_Assign((u8 *)a + 0x38, old);
         F(s32, a, 0x208) = F(s32, a, 0x20c);

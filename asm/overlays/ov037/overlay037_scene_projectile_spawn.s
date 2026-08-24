@@ -14,7 +14,7 @@
     .extern PresentationList_Append
     .extern data_ov037_021feec0
     .extern gHeapContext
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov037_021fdf68
 func_ov037_021fdf68:
@@ -189,5 +189,5 @@ L_021fe1dc: .word 0x171
 L_021fe1e0: .word 0x1fd
 L_021fe1e4: .word 0x4e73
 L_021fe1e8: .word 0x1c3
-L_021fe1ec: .word data_020c9670
+L_021fe1ec: .word gFx32CosSinTable
     .size func_ov037_021fdf68, .-func_ov037_021fdf68

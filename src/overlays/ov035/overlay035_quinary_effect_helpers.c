@@ -8,7 +8,7 @@ extern void *gSoundContext;
 extern const u8 data_ov035_02202bd4[];
 extern const u8 data_ov035_02202ca4[];
 extern const u8 data_ov035_02203d48[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u8 gHeapContext[];
 
 #ifdef __cplusplus
@@ -70,7 +70,7 @@ extern "C" s32 func_ov035_022011a8(void *scene)
 /*
  * Appends one rotated edge to primitive list +0x170. Sprite +0x104 supplies
  * its 16-bit angle at +0x60 and center at +0x10/+0x20. Adjacent entries in
- * data_020c9670 rotate two confirmed local coordinate pairs built from the
+ * gFx32CosSinTable rotate two confirmed local coordinate pairs built from the
  * constants 56, 24, 96, and 32; the resulting two screen points are passed to
  * func_ov035_021fd51c. There is no return value and list geometry changes.
  * The table access and fixed-point arithmetic are confirmed; axis orientation
@@ -80,8 +80,8 @@ extern "C" void func_ov035_022012ac(void *scene)
 {
     void *sprite = FIELD(void *, scene, 0x104);
     s32 tableIndex = (((u16)FIELD(s32, sprite, 0x60)) >> 4) << 1;
-    s32 a = data_020c9670[tableIndex];
-    s32 b = data_020c9670[tableIndex + 1];
+    s32 a = gFx32CosSinTable[tableIndex];
+    s32 b = gFx32CosSinTable[tableIndex + 1];
     s32 centerX = FIELD(s32, sprite, 0x10);
     s32 centerY = FIELD(s32, sprite, 0x20);
 

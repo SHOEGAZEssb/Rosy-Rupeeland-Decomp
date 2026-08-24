@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void *gSoundContext;
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" s32 data_ov042_0220ac78[];
 extern "C" s32 data_ov042_0220ac84[];
 extern "C" s32 data_ov042_0220ac9c[];
@@ -321,7 +321,7 @@ extern "C" void func_ov042_02201f30(void *scene)
         if (tick >= 240 && tick < 400) {
             s32 phase = ((tick - 240) * 110) & 0xffff;
             if (phase <= 0x3a98) {
-                s32 scale = 0x100 - (data_020c9670[(phase >> 4) * 2] >> 4);
+                s32 scale = 0x100 - (gFx32CosSinTable[(phase >> 4) * 2] >> 4);
                 FIELD(s16, FIELD(void *, scene, 0x50), 0x3c) = (s16)scale;
                 FIELD(s16, FIELD(void *, scene, 0x50), 0x3e) = (s16)scale;
                 FIELD(u16, animation_of(FIELD(void *, scene, 0x50)), 0x30) =

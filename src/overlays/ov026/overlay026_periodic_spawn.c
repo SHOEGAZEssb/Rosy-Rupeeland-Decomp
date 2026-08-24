@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *gHeapContext;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov026_02204ad4[];
 
 #ifdef __cplusplus
@@ -24,8 +24,8 @@ static void random_circle(void *scene, s32 radius, s32 *x, s32 *z)
 {
     u32 angle = (u32)TitleRandom_NextBounded((u8 *)scene + 0x7a4, 0x1000);
     s32 index = (angle >> 4) & 0xfff;
-    *x = (data_020c9670[index * 2] * radius + 0x800) >> 12;
-    *z = (data_020c9670[index * 2 + 1] * radius + 0x800) >> 12;
+    *x = (gFx32CosSinTable[index * 2] * radius + 0x800) >> 12;
+    *z = (gFx32CosSinTable[index * 2 + 1] * radius + 0x800) >> 12;
 }
 
 /* Allocates the shared 0xB4 motion-object storage on heap 4. */

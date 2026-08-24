@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern GameWork_TestFlag
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_0209189c
 .extern PresentationScalar_TransitionTo
 .extern Presentation_UpdateScript
@@ -275,6 +275,6 @@ func_ov094_0221807c:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_02218464: .word gGameWork
-.L_02218468: .word data_020c9670
+.L_02218468: .word gFx32CosSinTable
 .L_0221846c: .word 0x3d5
 .size func_ov094_0221807c, . - func_ov094_0221807c

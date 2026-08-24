@@ -11,7 +11,7 @@ extern "C" void *gSceneManager;
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
 extern "C" u8 *gGamePhaseRuntime;
-extern "C" u8 data_020c9670[];
+extern "C" u8 gFx32CosSinTable[];
 extern "C" void *data_020f4e14;
 extern "C" u8 gSystemState[];
 extern "C" u8 data_ov092_0221b17c[];
@@ -1675,7 +1675,7 @@ extern "C" void func_ov092_0221a908(void *actor)
                         angle += 0x180;
                     s32 length = Fx32Vector2_Magnitude(x, y);
                     s32 index = ((u16)angle) >> 4;
-                    const s16 *trig = (const s16 *)data_020c9670;
+                    const s16 *trig = (const s16 *)gFx32CosSinTable;
                     F(s32, actor, 0x8c) =
                         (s32)(((s64)trig[index * 2 + 1] * length + 0x800) >>
                               12);

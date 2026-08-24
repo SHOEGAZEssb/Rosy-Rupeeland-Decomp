@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/timed_sprite_orbit_variant.c.
 .text
 .extern Heap_Free
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020d6118
 .extern VecFx32Object_Add
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
@@ -157,5 +157,5 @@ func_0201eb18: ; 0x0201eb18
     strgeb r1, [r0, #0x3a]
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-.L_0201eba8: .word data_020c9670
+.L_0201eba8: .word gFx32CosSinTable
     .size func_0201eb18, .-func_0201eb18

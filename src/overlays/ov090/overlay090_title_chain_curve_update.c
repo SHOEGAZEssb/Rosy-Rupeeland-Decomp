@@ -19,7 +19,7 @@ typedef struct TitlePresentationChain {
     s32 scaleHeight;
 } TitlePresentationChain;
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void func_ov090_0221a460(VecFx32Object *result,
                                 const VecFx32Object *left,
                                 const VecFx32Object *right);
@@ -56,7 +56,7 @@ void func_ov090_0221c184(TitlePresentationChain *self,
         VecFx32Object smoothedDifference;
         VecFx32Object nodeTemporary;
         fx32 weight =
-            data_020c9670[(((u16)(self->step * i)) >> 4) * 2];
+            gFx32CosSinTable[(((u16)(self->step * i)) >> 4) * 2];
 
         func_ov090_0221c138(&endpointDifference, end, start);
         func_ov090_0221a498(&weightedDifference, &endpointDifference,

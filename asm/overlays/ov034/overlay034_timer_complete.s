@@ -21,7 +21,7 @@
     .extern genrand_int32
     .extern func_020bf1f8
     .extern func_ov034_021fce00
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov034_021fe740
     .extern gTouchPanelManager
     .extern gSoundContext

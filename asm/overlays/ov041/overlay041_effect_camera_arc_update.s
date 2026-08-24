@@ -3,7 +3,7 @@
 /* Exact fallback for func_ov041_0220232c; see the documented portable C in
  * src/overlays/ov041/overlay041_effect_camera_arc_update.c. */
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_ov041_021fec04
 .extern func_ov041_02202a70
 .extern gSoundContext
@@ -115,7 +115,7 @@ func_ov041_0220232c: ; 0x0220232c
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_022024bc: .word gSoundContext
 .L_022024c0: .word 0x12d
-.L_022024c4: .word data_020c9670
+.L_022024c4: .word gFx32CosSinTable
 
     .size func_ov041_0220232c, . - func_ov041_0220232c
 

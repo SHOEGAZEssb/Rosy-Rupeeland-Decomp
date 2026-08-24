@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_derived_type1_record_collision_scan.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
@@ -193,7 +193,7 @@ ActorDerivedType1_ScanActiveRecordCollisions: ; 0x02039468
 .L_02039700:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02039708: .word data_020c9670
+.L_02039708: .word gFx32CosSinTable
 .L_0203970c: .word gGamePhaseRuntime
 .L_02039710: .word 0x1ccd
     .size ActorDerivedType1_ScanActiveRecordCollisions, . - ActorDerivedType1_ScanActiveRecordCollisions

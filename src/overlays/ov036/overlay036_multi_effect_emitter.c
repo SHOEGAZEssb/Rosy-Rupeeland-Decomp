@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov036_02206148[];
 extern void *gHeapContext;
 
@@ -75,8 +75,8 @@ extern "C" void func_ov036_021ff7cc(void *controller, s32 range)
     u16 angle = (u16)(TitleRandom_NextBounded((u8 *)controller + 0xc0, 0x1000) << 4);
     s32 radius = func_0209189c((u8 *)controller + 0xc0, 0x600, 0xc00);
     s32 index = (angle >> 4) * 2;
-    s32 x = mul_q12_trunc(radius, data_020c9670[index]);
-    s32 z = mul_q12_trunc(radius, data_020c9670[index + 1]);
+    s32 x = mul_q12_trunc(radius, gFx32CosSinTable[index]);
+    s32 z = mul_q12_trunc(radius, gFx32CosSinTable[index + 1]);
     s32 red = func_0209189c((u8 *)controller + 0xc0, 0x10, 0x1f);
     s32 green = func_0209189c((u8 *)controller + 0xc0, 0x10, 0x1f);
     u16 fullColor = (u16)(red | (green << 5));

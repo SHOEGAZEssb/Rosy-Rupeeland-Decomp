@@ -19,7 +19,7 @@ extern u8 data_ov062_02211bd8[], data_ov062_02211be8[];
 extern u8 data_ov062_02211bf4[], data_ov062_02211c14[];
 extern u8 data_ov062_02211c40[];
 extern void *gHeapContext, *gSceneManager, *gGamePhaseRuntime;
-extern void *gSoundContext, *data_020c9670;
+extern void *gSoundContext, *gFx32CosSinTable;
 #define data_020f4db0 gHeapContext
 #define data_020f4e00 gSceneManager
 #define data_02105860 gSoundContext
@@ -222,7 +222,7 @@ static s32 Ov62_UpdateMotion(void *scene, s32 actorOffset, s32 frameOffset,
                      func_020befec(frame << 12, duration));
   phase = func_020befec(frame << 15, duration);
   position[3] += F(s32, scene, amplitudeOffset) *
-                 F(const s16, data_020c9670, ((phase & 0xffff) >> 4) * 4);
+                 F(const s16, gFx32CosSinTable, ((phase & 0xffff) >> 4) * 4);
   func_020050a4((u8 *)actor + 0x18, position);
   if (spriteOffset != 0)
     func_02005afc(F(void *, scene, spriteOffset), position[1], position[2],

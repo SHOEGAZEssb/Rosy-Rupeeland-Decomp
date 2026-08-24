@@ -17,7 +17,7 @@ typedef struct ArcingSpriteEffectPresentation {
 extern "C" {
 #endif
 extern void *data_020d6740;extern const char gArcingSpriteEffectAllocationTag[];
-extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundContext;
+extern const s16 gFx32CosSinTable[];extern u8 data_02105610;extern void *gSoundContext;
 
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void VecFx32Object_Init(void *);
@@ -91,7 +91,7 @@ s32 func_020236a0(ArcingSpriteEffectPresentation *self)
         progress=func_020befec(self->frame14<<12,self->duration16);
         VecFx32Bezier_Evaluate3D(&value,self->path1c,progress);
         index=(func_020befec(self->frame14<<15,self->duration16)&0xffff)>>4;
-        value.z0c+=self->amplitude1a*data_020c9670[index];
+        value.z0c+=self->amplitude1a*gFx32CosSinTable[index];
         GraphicsSpriteState_SetDepthOrderedWorldPosition(self->sprite10,value.x04,value.y08,value.z0c,8);
         if(++self->frame14>self->duration16){self->frame14=self->duration16;if(self->switchResource20)self->state18=1;else{*(u16 *)(self->sprite10+0x24)|=8;self->state18=3;}}
         VecFx32Object_Destroy(&value);break;

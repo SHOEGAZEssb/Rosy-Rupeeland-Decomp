@@ -6,7 +6,7 @@
 #define REG32(address) (*(volatile u32 *)(address))
 
 extern const u8 data_ov035_02203c40[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -124,9 +124,9 @@ extern "C" void func_ov035_021fda24(void *particle)
     REG32(0x04000470) = FIELD(u32, particle, 0x10);
     REG32(0x04000470) = FIELD(u32, particle, 0x20);
     REG32(0x04000470) = FIELD(u32, particle, 0x30);
-    func_020b0880(data_020c9670[ix], data_020c9670[ix + 1]);
-    func_020b0844(data_020c9670[iy], data_020c9670[iy + 1]);
-    func_020b0808(data_020c9670[iz], data_020c9670[iz + 1]);
+    func_020b0880(gFx32CosSinTable[ix], gFx32CosSinTable[ix + 1]);
+    func_020b0844(gFx32CosSinTable[iy], gFx32CosSinTable[iy + 1]);
+    func_020b0808(gFx32CosSinTable[iz], gFx32CosSinTable[iz + 1]);
     REG32(0x0400046c) = 0x10000;
     REG32(0x0400046c) = 0x10000;
     REG32(0x0400046c) = 0x10000;

@@ -11,7 +11,7 @@ extern u8 data_020dfaf8[];
 extern u8 data_020dfa48[];
 extern u16 data_020e6f94[];
 extern u8 data_020e8380[];
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -212,10 +212,10 @@ void ActorExtendedType2_UpdateFrame(void *self)
                     angle = func_020ae024(*(s32 *)(temporary + 8),
                                           *(s32 *)(temporary + 4)) >> 4;
                     *(s32 *)(actor + 0x8c) +=
-                        multiplyFxRound(data_020c9670[angle * 2 + 1],
+                        multiplyFxRound(gFx32CosSinTable[angle * 2 + 1],
                                         magnitude);
                     *(s32 *)(actor + 0x90) +=
-                        multiplyFxRound(data_020c9670[angle * 2], magnitude);
+                        multiplyFxRound(gFx32CosSinTable[angle * 2], magnitude);
                     Fx32Vector2_LimitMagnitude((s32 *)(actor + 0x8c),
                                   (s32 *)(actor + 0x90), 0x6000);
                 }

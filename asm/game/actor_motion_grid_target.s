@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_motion_grid_target.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
@@ -117,5 +117,5 @@ L_0200939c:
     ldr r0, [r5, #0x2c]
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
-L_020093a8: .word data_020c9670
+L_020093a8: .word gFx32CosSinTable
     .size ActorMotion_ConfigureGridTarget, .-ActorMotion_ConfigureGridTarget

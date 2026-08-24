@@ -5,7 +5,7 @@
     .extern PresentationScalar_SetImmediate
     .extern Presentation_UpdateScript
     .extern AlternateSpritePresentation_SyncTransform
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
 
     .global func_ov035_021fdbe0
@@ -78,6 +78,6 @@ L_021fdcc8:
     bl AlternateSpritePresentation_SyncTransform
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
-L_021fdce4: .word data_020c9670
+L_021fdce4: .word gFx32CosSinTable
 .size func_ov035_021fdbe0, .-func_ov035_021fdbe0
 

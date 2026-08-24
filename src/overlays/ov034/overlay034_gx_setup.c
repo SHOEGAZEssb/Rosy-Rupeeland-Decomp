@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 #define REG32(address) (*(volatile u32 *)(address))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,7 +25,7 @@ extern void func_01ff88c4(s32 first, void *resource, s32 entry, s32 count);
 static void apply_rotation(u32 angle, void (*apply)(s32, s32))
 {
     u32 index = (u16)angle >> 4;
-    apply(data_020c9670[index * 2], data_020c9670[index * 2 + 1]);
+    apply(gFx32CosSinTable[index * 2], gFx32CosSinTable[index * 2 + 1]);
 }
 
 /*

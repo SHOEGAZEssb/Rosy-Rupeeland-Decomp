@@ -4,7 +4,7 @@
 #include "tingle/random.h"
 #include "tingle/vec_fx32.h"
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern s32 func_020befec(s32 numerator, s32 denominator);
 extern u64 func_020bf1f8(u32 value, u32 divisor);
 
@@ -23,9 +23,9 @@ static void SpriteEffect_PolarFactors(u16 angle, s32 radius, s32 *xFactor,
 
     if (radius > 0x800)
         radius = 0x800;
-    *xFactor = MULTIPLY_FX_ROUNDED(data_020c9670[tableIndex + 1], radius) +
+    *xFactor = MULTIPLY_FX_ROUNDED(gFx32CosSinTable[tableIndex + 1], radius) +
                0x800;
-    *zFactor = MULTIPLY_FX_ROUNDED(data_020c9670[tableIndex], radius) + 0x800;
+    *zFactor = MULTIPLY_FX_ROUNDED(gFx32CosSinTable[tableIndex], radius) + 0x800;
 }
 
 /* Three cosine samples reproduce the retail clustered radial distribution. */
@@ -36,7 +36,7 @@ static s32 SpriteEffect_RandomClusterRadius(void)
 
     for (sample = 0; sample < 3; ++sample) {
         u32 angle = genrand_int32() & 0x3fff;
-        radius += data_020c9670[(angle >> 4) * 2] >> 2;
+        radius += gFx32CosSinTable[(angle >> 4) * 2] >> 2;
     }
     return radius;
 }

@@ -12,7 +12,7 @@
     .extern func_ov036_02201d60
     .extern func_02091bd0
     .extern func_02091cf0
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern gSoundContext
 
     .global func_ov036_02201e50
@@ -210,7 +210,7 @@ L_0220211c:
 L_02202120:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
-L_02202128: .word data_020c9670
+L_02202128: .word gFx32CosSinTable
 L_0220212c: .word 0x333
 L_02202130: .word gSoundContext
 L_02202134: .word 0x1b1

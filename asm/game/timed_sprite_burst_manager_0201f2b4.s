@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern TouchPoint_Init
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gTimedSpritePointerArrayAllocationTag
 .extern gTimedSpriteBurstManagerVtable
 .extern gTimedSpritePresentationAllocationTag

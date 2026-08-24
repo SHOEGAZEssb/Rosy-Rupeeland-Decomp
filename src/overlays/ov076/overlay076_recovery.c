@@ -18,7 +18,7 @@ extern "C" void *gHeapContext;
 extern "C" void *gGameWork;
 extern "C" void *gGamePhaseRuntime;
 extern "C" u8 gSystemState[];
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" const s16 data_020e6d3c[];
 extern "C" const u16 data_020e7444[];
 extern "C" u8 data_ov076_0221480c[];
@@ -340,9 +340,9 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
             void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
             Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 1,
                           (F(s32, actor, 0x1c) >> 12) +
-                              ((data_020c9670[angle * 2] * 0x14) >> 12),
+                              ((gFx32CosSinTable[angle * 2] * 0x14) >> 12),
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) +
-                              6 + ((data_020c9670[angle * 2 + 1] * 9) >> 12),
+                              6 + ((gFx32CosSinTable[angle * 2 + 1] * 9) >> 12),
                           0);
         }
         F(u16, actor, 0xda) = F(s16, actor, 0x252) == 0
@@ -633,7 +633,7 @@ extern "C" void func_ov076_02213a3c(void *actor, s32, s32, s32) {
         if (scale > 16)
             scale = 16;
         F(u16, F(void *, actor, 0x54), 0x30) =
-            (u16)((scale * 2 * data_020c9670[phase * 2]) / 64);
+            (u16)((scale * 2 * gFx32CosSinTable[phase * 2]) / 64);
     }
 
     if (F(u8, actor, 0x2cf)) {
@@ -643,7 +643,7 @@ extern "C" void func_ov076_02213a3c(void *actor, s32, s32, s32) {
         if (scale > 16)
             scale = 16;
         F(s16, actor, 0x2ca) =
-            (s16)func_020befec(scale * 2 * data_020c9670[phase * 2], -48);
+            (s16)func_020befec(scale * 2 * gFx32CosSinTable[phase * 2], -48);
     } else {
         F(s16, actor, 0x2ca) = 0;
     }
@@ -682,7 +682,7 @@ extern "C" void func_ov076_02213e64(void *context, void *actor,
     ActorExtendedType2_RunRenderCallback(context, actor, transform);
     F(u16, actor, 0x2d0) += 0x1000;
     s32 phase = F(u16, actor, 0x2d0) >> 4;
-    s32 bob = data_020c9670[phase * 2];
+    s32 bob = gFx32CosSinTable[phase * 2];
     void *body = F(void *, actor, 0x54);
     F(s16, body, 0x2e) -= (s16)(bob >> 12);
     F(u8, body, 0x3a) = palette;
@@ -704,8 +704,8 @@ extern "C" void func_ov076_02213e64(void *context, void *actor,
     u8 orbit[16];
     VecFx32Object_Init(orbit);
     phase = F(u16, actor, 0x2ca) >> 4;
-    F(s32, orbit, 4) -= data_020c9670[phase * 2] * 0x29;
-    F(s32, orbit, 12) += data_020c9670[phase * 2 + 1] * 0x29;
+    F(s32, orbit, 4) -= gFx32CosSinTable[phase * 2] * 0x29;
+    F(s32, orbit, 12) += gFx32CosSinTable[phase * 2 + 1] * 0x29;
     void *second = F(void *, actor, 0x2a4);
     GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(
         second, transform, bounds, F(s32, orbit, 4), F(s32, orbit, 8),
@@ -869,8 +869,8 @@ extern "C" s32 func_ov076_02214288(void *actor, void *context, s32, s32 sign) {
     u8 position[16];
     VecFx32Object_InitComponents(
         position,
-        F(s32, target, 0x1c) - fx_mul(data_020c9670[phase * 2 + 1], radius),
-        F(s32, target, 0x20) - fx_mul(data_020c9670[phase * 2], radius),
+        F(s32, target, 0x1c) - fx_mul(gFx32CosSinTable[phase * 2 + 1], radius),
+        F(s32, target, 0x20) - fx_mul(gFx32CosSinTable[phase * 2], radius),
         F(s32, actor, 0x24));
     F(u32, actor, 0xd0) |= 2;
     ((Method1)vmethod(actor, 0xd0))(actor, position);

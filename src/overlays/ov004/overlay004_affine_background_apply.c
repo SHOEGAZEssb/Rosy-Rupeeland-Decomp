@@ -27,7 +27,7 @@ typedef struct Overlay004AffineBackgroundState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern s32 func_020adc90(s16 coefficient, s32 scale);
 extern void func_020afd28(volatile void *registers,
                           const Overlay004AffineMatrix *matrix, s32 width,
@@ -39,8 +39,8 @@ extern void func_020afd28(volatile void *registers,
 static void overlay004_build_affine(Overlay004AffineMatrix *matrix, s32 angle,
                                      s32 scale)
 {
-    s32 sine = func_020adc90(data_020c9670[angle * 2 + 1], scale);
-    s32 cosine = func_020adc90(data_020c9670[angle * 2], scale);
+    s32 sine = func_020adc90(gFx32CosSinTable[angle * 2 + 1], scale);
+    s32 cosine = func_020adc90(gFx32CosSinTable[angle * 2], scale);
 
     matrix->field_00 = sine;
     matrix->field_04 = cosine;

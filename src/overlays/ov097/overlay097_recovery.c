@@ -10,7 +10,7 @@ extern "C" void *gSoundContext;
 extern "C" void *gHeapContext;
 extern "C" void *gActorRuntimeCollection;
 extern "C" u8 *gGamePhaseRuntime;
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" u16 data_020e6e68[];
 extern "C" u8 data_ov097_0221a4c8[];
 extern "C" u16 data_ov097_0221a4a4[];
@@ -574,8 +574,8 @@ extern "C" void func_ov097_022181a0(void *actor, void *argument)
                         0x162e, 0x162f, 0x1630, 0, 0x80, 2, 1);
                 }
                 s32 direction = ((u32)F(u8, actor, 0xd4) << 13) >> 4;
-                s32 dx = data_020c9670[direction * 2];
-                s32 dy = data_020c9670[direction * 2 + 1];
+                s32 dx = gFx32CosSinTable[direction * 2];
+                s32 dy = gFx32CosSinTable[direction * 2 + 1];
                 TrackedResourceActor_SpawnFromKey(0x22, point, point);
                 point[0] = F(s32, actor, 0x1c) - dx * 0x30;
                 point[1] = F(s32, actor, 0x20) + dy * 0x14 - 0x8000;
@@ -622,9 +622,9 @@ extern "C" void func_ov097_022181a0(void *actor, void *argument)
     {
         s32 angle = (u16)F(s16, actor, 0x2b8) >> 4;
         s32 scalar = ActorExtendedType2_GetDescriptorValue2C(actor);
-        dx = func_020befec(data_020c9670[angle * 2 + 1] * scalar, 12);
+        dx = func_020befec(gFx32CosSinTable[angle * 2 + 1] * scalar, 12);
         scalar = ActorExtendedType2_GetDescriptorValue2C(actor);
-        dy = func_020befec(data_020c9670[angle * 2] * scalar, 12);
+        dy = func_020befec(gFx32CosSinTable[angle * 2] * scalar, 12);
     }
     else
     {

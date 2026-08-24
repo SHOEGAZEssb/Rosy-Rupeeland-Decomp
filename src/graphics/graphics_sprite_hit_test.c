@@ -51,7 +51,7 @@ typedef struct SpriteTouchPoint {
     s32 y;
 } SpriteTouchPoint;
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void func_02070418(void *resource);
 extern void func_02070d74(void *resource);
 
@@ -119,8 +119,8 @@ s32 GraphicsSpriteState_HitTestOpaquePixel(GraphicsSpriteState *state, s32 point
 
     if (state->rotationAngle != 0) {
         u16 angle = (u16)(-state->rotationAngle);
-        s32 sine = data_020c9670[((u32)angle >> 4) * 2U + 1U];
-        s32 cosine = data_020c9670[((u32)angle >> 4) * 2U];
+        s32 sine = gFx32CosSinTable[((u32)angle >> 4) * 2U + 1U];
+        s32 cosine = gFx32CosSinTable[((u32)angle >> 4) * 2U];
         s32 deltaX = pointX - centerX;
         s32 deltaY = pointY - centerY;
         s32 rotatedX = deltaX * sine + deltaY * cosine;

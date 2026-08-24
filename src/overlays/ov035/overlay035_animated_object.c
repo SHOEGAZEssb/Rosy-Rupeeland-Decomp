@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const u8 data_ov035_02203bec[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,16 +64,16 @@ extern "C" s32 func_ov035_021fdbe0(void *object)
                           (FIELD(s32, object, 0xa4) ? -0x200 : 0x200));
         FIELD(s32, object, 0xac) = angle;
         PresentationScalar_SetImmediate((u8 *)object + 0x5c, angle);
-        s16 sine = data_020c9670[(angle >> 4) * 2];
+        s16 sine = gFx32CosSinTable[(angle >> 4) * 2];
         PresentationScalar_SetImmediate((u8 *)object + 0x1c,
                       FIELD(s32, object, 0xa8) + sine / 8);
     } else if (kind == 3) {
         u16 angle = (u16)(FIELD(s32, object, 0xac) + 0x200);
         FIELD(s32, object, 0xac) = angle;
-        s16 rotation = *(const s16 *)((const u8 *)data_020c9670 +
+        s16 rotation = *(const s16 *)((const u8 *)gFx32CosSinTable +
                                       (angle & 0x3ffc));
         PresentationScalar_SetImmediate((u8 *)object + 0x5c, rotation);
-        s16 sine = data_020c9670[(angle >> 4) * 2];
+        s16 sine = gFx32CosSinTable[(angle >> 4) * 2];
         PresentationScalar_SetImmediate((u8 *)object + 0x1c,
                       FIELD(s32, object, 0xa8) + sine / 8);
     }

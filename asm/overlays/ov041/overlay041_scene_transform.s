@@ -2,7 +2,7 @@
 
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_scene_transform.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov041_02204c58
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -242,6 +242,6 @@ func_ov041_021fffc8: ; 0x021fffc8
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0220033c: .word data_ov041_02204c58
 .L_02200340: .word 0x7fff
-.L_02200344: .word data_020c9670
+.L_02200344: .word gFx32CosSinTable
     .size func_ov041_021fffc8, . - func_ov041_021fffc8
 

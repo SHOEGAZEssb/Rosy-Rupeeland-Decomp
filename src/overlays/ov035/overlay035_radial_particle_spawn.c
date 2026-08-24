@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov035_02203d68[];
 extern u8 gHeapContext[];
 
@@ -34,7 +34,7 @@ static s32 q15_product(s32 product)
  * Spawns one randomized radial particle using random state +0xC0. Inputs red,
  * green, and blue are packed into a 5:5:5 value without independent masking;
  * the final cast supplies the binary's 16-bit truncation. A random angle selects
- * adjacent entries in data_020c9670 and a random 0x100..0x1FF magnitude supplies
+ * adjacent entries in gFx32CosSinTable and a random 0x100..0x1FF magnitude supplies
  * X/Y at Z=-0x10000. The 0xA8-byte object receives a +0x2C motion target of
  * 0x2000 over 40 frames and is attached to collection +0x118. It has no defined
  * return value; RNG, heap, animation, transform, and collection state change.
@@ -49,10 +49,10 @@ extern "C" void func_ov035_02200ec0(void *scene, s32 red, s32 green,
 
     s32 forwardIndex = angle >> 3;
     s32 reverseIndex = (((u16)-angle) >> 4) << 1;
-    s32 forwardA = data_020c9670[forwardIndex];
-    s32 forwardB = data_020c9670[forwardIndex + 1];
-    s32 reverseA = data_020c9670[reverseIndex];
-    s32 reverseB = data_020c9670[reverseIndex + 1];
+    s32 forwardA = gFx32CosSinTable[forwardIndex];
+    s32 forwardB = gFx32CosSinTable[forwardIndex + 1];
+    s32 reverseA = gFx32CosSinTable[reverseIndex];
+    s32 reverseB = gFx32CosSinTable[reverseIndex + 1];
     s32 x = q15_product(magnitude * forwardA);
     s32 y = q15_product(magnitude * forwardB);
 

@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 #define REG32(address) (*(volatile u32 *)(address))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,7 +34,7 @@ static void write_xy(s32 x, s32 y)
 
 /*
  * Draws the segment effect held in object. Angle +0x60 selects a signed pair
- * from data_020c9670; size +0xAC scales that direction in Q12. The inferred
+ * from gFx32CosSinTable; size +0xAC scales that direction in Q12. The inferred
  * endpoints at +0x9C/+0xA0 and +0xA4/+0xA8 are expanded into a six-vertex
  * strip, with packed color +0xB6 on the center pair and zero on the outer
  * pairs. Transform coordinates +0x9C/+0xA0/+0x30 are submitted first. It
@@ -44,9 +44,9 @@ extern "C" void func_ov036_021fd97c(void *object)
 {
     s32 index = (FIELD(s32, object, 0x60) >> 4) * 2;
     s32 offsetX = mul_q12_trunc(FIELD(s32, object, 0xac),
-                                data_020c9670[index]);
+                                gFx32CosSinTable[index]);
     s32 offsetY = mul_q12_trunc(FIELD(s32, object, 0xac),
-                                data_020c9670[index + 1]);
+                                gFx32CosSinTable[index + 1]);
 
     REG32(0x04000500) = 1;
     REG32(0x04000480) = FIELD(u16, object, 0xb6);

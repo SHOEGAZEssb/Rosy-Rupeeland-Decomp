@@ -2,7 +2,7 @@
 
 /* Exact fallback for func_ov042_021ffd78; see the documented portable C in
  * src/overlays/ov042/overlay042_secondary_geometry.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_020b0808
 .extern func_ov042_021ffd00
 .extern func_ov042_021ffd44
@@ -97,7 +97,7 @@ func_ov042_021ffd78:
     str r0, [r1, #-0x4c]
     ldmia sp!, {r4, r5, r6, pc}
 .L_021ffed4: .word 0x4000444
-.L_021ffed8: .word data_020c9670
+.L_021ffed8: .word gFx32CosSinTable
 .L_021ffedc: .word 0x4000500
 .L_021ffee0: .word 0x4000494
     .size func_ov042_021ffd78, . - func_ov042_021ffd78

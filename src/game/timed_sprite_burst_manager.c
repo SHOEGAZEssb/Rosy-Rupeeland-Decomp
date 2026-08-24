@@ -61,7 +61,7 @@ typedef void (*BurstSpriteMove)(void *sprite,
 extern "C" {
 #endif
 extern void *gTimedSpriteBurstManagerVtable;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const char gTimedSpritePointerArrayAllocationTag[];
 extern const char gTimedSpritePresentationAllocationTag[];
 extern void *data_020f4e18;
@@ -137,8 +137,8 @@ TimedSpriteBurstManager *TimedSpriteBurstManager_Init(
         u16 random = (u16)genrand_int32();
         s32 radius = (random & 7) + 12;
         s32 tableIndex = ((s16)random >> 4) * 2;
-        s32 velocityX = -radius * (data_020c9670[tableIndex] >> 3);
-        s32 velocityY = radius * (data_020c9670[tableIndex + 1] >> 3);
+        s32 velocityX = -radius * (gFx32CosSinTable[tableIndex] >> 3);
+        s32 velocityY = radius * (gFx32CosSinTable[tableIndex + 1] >> 3);
         void *sprite;
 
         *(s32 *)&config.second20.bytes[4] = velocityX;

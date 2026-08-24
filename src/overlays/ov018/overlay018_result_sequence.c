@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_ov018_021ffbf0[2];
 extern const s32 data_ov018_021ffbf8[2];
 extern const u8 data_ov018_021ffd68[];
@@ -145,9 +145,9 @@ extern "C" s32 func_ov018_021fea1c(void *state)
                 s32 radiusX = func_020befec(width * (i + 2), 5);
                 s32 radiusY = func_020befec(height * (i + 2), 5);
                 s32 x = func_ov018_021fe19c(state, descriptor) + centerX +
-                        divideBy4096(radiusX * data_020c9670[angle * 2]);
+                        divideBy4096(radiusX * gFx32CosSinTable[angle * 2]);
                 s32 y = func_ov018_021fe1d8(state, descriptor) + centerY +
-                        divideBy4096(radiusY * data_020c9670[angle * 2 + 1]);
+                        divideBy4096(radiusY * gFx32CosSinTable[angle * 2 + 1]);
                 void *sprite = GraphicsSpriteGroup_CreateStateFromSource(
                     FIELD(void *, state, 0xcc), (u8 *)state + 0xac, 1);
                 GraphicsSpriteState_ApplyRenderConfig(sprite,

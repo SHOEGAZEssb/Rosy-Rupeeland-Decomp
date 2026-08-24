@@ -19,7 +19,7 @@ extern "C" void func_ov042_021ff2f8(void *position, const void *velocity);
 extern "C" u16 data_ov042_0220adce[];
 extern "C" u16 data_ov042_0220aec4[];
 extern "C" u16 data_ov042_0220af9c[];
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 static s32 multiply_fx(s32 left, s32 right)
 {
@@ -297,7 +297,7 @@ extern "C" void func_ov042_02201234(void *scene)
         s32 timer = ++FIELD(s32, scene, 0xd0);
         if (timer < 131) {
             u16 phase = (u16)(timer * 0x1ddc + 0x8000);
-            s16 cosine = data_020c9670[((phase >> 4) * 2) + 1];
+            s16 cosine = gFx32CosSinTable[((phase >> 4) * 2) + 1];
             FIELD(s32, scene, 0xac) -=
                 multiply_fx(cosine + 0x1000, 0x1ccd);
             FIELD(s32, scene, 0x1d4)++;

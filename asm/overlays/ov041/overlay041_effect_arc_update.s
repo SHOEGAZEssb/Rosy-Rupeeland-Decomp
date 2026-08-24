@@ -2,7 +2,7 @@
 
 /* Exact fallback for func_ov041_02202220; see the documented portable C in
  * src/overlays/ov041/overlay041_effect_arc_update.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_ov041_02202a70
 .extern genrand_int32
 
@@ -74,7 +74,7 @@ func_ov041_02202220: ; 0x02202220
     str r2, [r4, #0x4b8]
     bl func_ov041_02202a70
     ldmia sp!, {r3, r4, r5, pc}
-.L_02202328: .word data_020c9670
+.L_02202328: .word gFx32CosSinTable
 
     .size func_ov041_02202220, . - func_ov041_02202220
 

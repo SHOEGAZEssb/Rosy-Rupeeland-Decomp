@@ -15,7 +15,7 @@ typedef struct Overlay039VectorObject {
     s32 field_0c;
 } Overlay039VectorObject;
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -70,8 +70,8 @@ extern "C" void func_ov039_021fd93c(void *scene, s32 targetX, s32 targetY,
         }
         u16 angle = (u16)(func_020ae024(dx, dy) + angleOffset);
         s32 index = ((s32)angle) >> 4;
-        FIELD(s32, helper, 0x10) = scaledDirection(data_020c9670[index * 2 + 1]);
-        FIELD(s32, helper, 0x14) = scaledDirection(data_020c9670[index * 2]);
+        FIELD(s32, helper, 0x10) = scaledDirection(gFx32CosSinTable[index * 2 + 1]);
+        FIELD(s32, helper, 0x14) = scaledDirection(gFx32CosSinTable[index * 2]);
         FIELD(u32, helper, 0x18) = 0;
         FIELD(u32, helper, 0x1c) = 0;
         break;
@@ -107,8 +107,8 @@ extern "C" void func_ov039_021fda80(void *scene, s32 targetX, s32 targetY,
             dy = targetY - currentY;
         }
         s32 index = func_020ae024(dx, dy) >> 4;
-        FIELD(s32, helper, 0x10) = scaledDirection(data_020c9670[index * 2 + 1]);
-        FIELD(s32, helper, 0x14) = scaledDirection(data_020c9670[index * 2]);
+        FIELD(s32, helper, 0x10) = scaledDirection(gFx32CosSinTable[index * 2 + 1]);
+        FIELD(s32, helper, 0x14) = scaledDirection(gFx32CosSinTable[index * 2]);
         FIELD(u32, helper, 0x18) = 0;
         FIELD(u32, helper, 0x1c) = 0;
         return;

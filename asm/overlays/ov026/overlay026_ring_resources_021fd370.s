@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_ring_resources.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov026_022049ec
 .extern data_ov026_02204a48
 .extern Heap_AllocCore
@@ -112,7 +112,7 @@ L_021fd420:
 L_021fd4cc: .word data_ov026_022049ec
 L_021fd4d0: .word data_ov026_02204a48
 L_021fd4d4: .word gHeapContext
-L_021fd4d8: .word data_020c9670
+L_021fd4d8: .word gFx32CosSinTable
 L_021fd4dc: .word 0x7e08
 .size func_ov026_021fd370, .-func_ov026_021fd370
 

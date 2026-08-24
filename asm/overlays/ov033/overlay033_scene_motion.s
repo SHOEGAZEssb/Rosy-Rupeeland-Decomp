@@ -13,7 +13,7 @@
     .extern gHeapContext
     .extern gPadState1
     .extern gTouchPanelManager
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
     .global func_ov033_021fd37c
 func_ov033_021fd37c:
@@ -164,5 +164,5 @@ func_ov033_021fd4cc:
     str r0, [r4, #0x20]
     ldmia sp!, {r4, pc}
 L_021fd590: .word gGamePhaseRuntime
-L_021fd594: .word data_020c9670
+L_021fd594: .word gFx32CosSinTable
 .size func_ov033_021fd4cc, .-func_ov033_021fd4cc

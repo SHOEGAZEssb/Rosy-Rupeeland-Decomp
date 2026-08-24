@@ -5,7 +5,7 @@
     .extern func_020b0880
     .extern func_020b0844
     .extern func_020b0808
-    .extern data_020c9670
+    .extern gFx32CosSinTable
 
 
     .global func_ov035_021fda24
@@ -83,7 +83,7 @@ func_ov035_021fda24:
     str r4, [ip, #-0x24]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fdb44: .word 0x4000444
-L_021fdb48: .word data_020c9670
+L_021fdb48: .word gFx32CosSinTable
 L_021fdb4c: .word 0x400046c
 L_021fdb50: .word 0xfff8fffa
 .size func_ov035_021fda24, .-func_ov035_021fda24

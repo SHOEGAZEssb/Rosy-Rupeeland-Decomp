@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov071/overlay071_recovery.c.
 .extern GameWork_TestFlag
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov071_02212224
 .extern data_ov071_022122b4
 .extern data_ov071_022122f4
@@ -623,7 +623,7 @@ func_ov071_0221083c:
     add sp, sp, #0xa4
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02211110: .word 0x6d6
-.L_02211114: .word data_020c9670
+.L_02211114: .word gFx32CosSinTable
 .L_02211118: .word data_ov071_022122b4
 .L_0221111c: .word data_ov071_022122f4
 .L_02211120: .word gSystemState

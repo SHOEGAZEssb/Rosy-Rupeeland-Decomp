@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_disc_mesh.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020f4e18
 .extern data_ov026_022048c8
 .extern data_ov026_02204a40
@@ -319,6 +319,6 @@ L_021fe1e8: .word data_020f4e18
 L_021fe1ec: .word data_ov026_02204a48
 L_021fe1f0: .word 0xfff
 L_021fe1f4: .word 0xccd
-L_021fe1f8: .word data_020c9670
+L_021fe1f8: .word gFx32CosSinTable
 .size func_ov026_021fdd84, .-func_ov026_021fdd84
 

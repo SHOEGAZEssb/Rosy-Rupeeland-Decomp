@@ -10,7 +10,7 @@ extern u8 gSystemState[];
  */
 void ActorMotion_ClearOscillation(ActorMotion *self)
 {
-    self->field_30 &= ~2;
+    self->flags &= ~ACTOR_MOTION_FLAG_OSCILLATION;
     ActorMotionState_Reset(&self->state);
 }
 
@@ -22,7 +22,7 @@ void ActorMotion_ClearOscillation(ActorMotion *self)
 void ActorMotion_UpdateOscillation(ActorMotion *self)
 {
     self->state.sampledOffsetX =
-        ActorMotionOscillation_Sample(&self->state.first, *(s32 *)(gSystemState + 0x64), 0);
+        ActorMotionOscillation_Sample(&self->state.xOscillation, *(s32 *)(gSystemState + 0x64), 0);
     self->state.sampledOffsetY =
-        ActorMotionOscillation_Sample(&self->state.second, *(s32 *)(gSystemState + 0x64), 0);
+        ActorMotionOscillation_Sample(&self->state.yOscillation, *(s32 *)(gSystemState + 0x64), 0);
 }

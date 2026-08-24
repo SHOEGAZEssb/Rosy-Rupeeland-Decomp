@@ -27,7 +27,7 @@ extern "C" void func_ov042_02209944(void *destination, const void *source);
 extern "C" void func_ov042_02200afc(void *destination, const void *owner);
 extern "C" s32 func_ov071_02211a10(void *collision, const void *position,
                                      s32 radius, s32 kind, s32 flags);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" s32 data_ov042_0220b6e4[];
 extern "C" s32 data_ov042_0220b6e8[];
 
@@ -90,7 +90,7 @@ extern "C" void func_ov042_02209360(void *object)
         }
     } else if (state == 3) {
         s32 phase = FIELD(s32, object, 0x70);
-        s16 cosine = data_020c9670[((phase >> 4) * 2) + 1];
+        s16 cosine = gFx32CosSinTable[((phase >> 4) * 2) + 1];
         s32 amplitude = (cosine + 0x1000) / 2;
         FIELD(s32, object, 0x60) = FIELD(s32, object, 0x74) +
             multiply_fx(amplitude, FIELD(s32, object, 0x6c));
@@ -105,7 +105,7 @@ extern "C" void func_ov042_02209360(void *object)
         s32 growth = timer / 2;
         if (growth > 49)
             growth = 49;
-        s16 sine = data_020c9670[(FIELD(u16, object, 0x8c) >> 4) * 2];
+        s16 sine = gFx32CosSinTable[(FIELD(u16, object, 0x8c) >> 4) * 2];
         FIELD(s32, object, 0x54) = FIELD(s32, object, 0x60) + growth * sine;
         s32 emission = ++FIELD(s32, object, 0x88);
         if ((emission & 7) == 1) {

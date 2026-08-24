@@ -1,5 +1,5 @@
     .text
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern InventoryScroll_UpdatePresentation
     .extern func_020958d8
@@ -63,6 +63,6 @@ L_021fc04c:
     moveq r1, #0x10
     strh r1, [r0, #0x32]
     ldmia sp!, {r3, r4, r5, pc}
-L_021fc060: .word data_020c9670
+L_021fc060: .word gFx32CosSinTable
 L_021fc064: .word 0x1052
     .size func_ov001_021fbf7c, .-func_ov001_021fbf7c

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_motion_actor_target.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern VecFx32_GetDirectionAngle
@@ -95,6 +95,6 @@ L_02009504:
     ldr r0, [r5, #0x2c]
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
-L_02009510: .word data_020c9670
+L_02009510: .word gFx32CosSinTable
     .size ActorMotion_ConfigureBoundActorTarget, .-ActorMotion_ConfigureBoundActorTarget
 

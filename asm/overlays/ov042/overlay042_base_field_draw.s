@@ -8,7 +8,7 @@
 .extern genrand_int32
 .extern func_ov042_021fd578
 .extern data_020cd470
-.extern data_020c9670
+.extern gFx32CosSinTable
     .global func_ov042_021fd158
 func_ov042_021fd158:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -266,7 +266,7 @@ func_ov042_021fd158:
 .L_021fd528: .word data_020cd470
 .L_021fd52c: .word 0x40004a8
 .L_021fd530: .word 0x172000
-.L_021fd534: .word data_020c9670
+.L_021fd534: .word gFx32CosSinTable
 .L_021fd538: .word 0x4000444
 .L_021fd53c: .word 0x7fff
 .L_021fd540: .word 0xfffff768

@@ -25,7 +25,7 @@ extern "C" void func_ov042_022051a8(void *pool, s32 subtype,
                                       const void *position, u16 angle);
 extern "C" s32 func_ov071_02211a10(void *collision, const void *position,
                                      s32 radius, s32 kind, s32 flags);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 static s32 multiply_fx(s32 left, s32 right)
 {
@@ -76,7 +76,7 @@ extern "C" void func_ov042_022080f0(void *object)
             FIELD(s32, object, 0x70) = 0;
             GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, object, 0x4c), 0x0c), 0);
         } else {
-            s16 sine = data_020c9670[(phase >> 4) * 2];
+            s16 sine = gFx32CosSinTable[(phase >> 4) * 2];
             FIELD(s32, object, 0x54) =
                 multiply_fx(FIELD(s32, object, 0x6c), sine);
         }

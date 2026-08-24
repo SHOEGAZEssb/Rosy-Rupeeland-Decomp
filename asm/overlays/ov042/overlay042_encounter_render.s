@@ -23,7 +23,7 @@
 .extern DisplayBrightnessPair_GetScreen
 .extern DisplayBrightness_StartTransition
 .extern data_ov042_0220ad98
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov042_0220b6e0
 .extern data_ov042_0220acd8
 .extern data_ov042_0220af24
@@ -1119,7 +1119,7 @@ func_ov042_022036c4:
     bl func_020adc90
     b .L_022047a8
 .L_02204738: .word data_ov042_0220ad98
-.L_0220473c: .word data_020c9670
+.L_0220473c: .word gFx32CosSinTable
 .L_02204740: .word 0xfc18
 .L_02204744: .word 0xfffffed9
 .L_02204748: .word 0xfffffd12

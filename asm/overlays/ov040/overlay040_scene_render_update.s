@@ -2,7 +2,7 @@
 /* Exact fallback; see overlay040_scene_render_update.c for portable C. */
     .extern __construct_array
     .extern __destroy_arr
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov040_02203810
     .extern data_ov040_02203854
     .extern data_ov040_0220385e
@@ -951,7 +951,7 @@ func_ov040_022013e0: ; 0x022013e0
 .L_022021bc: .word VecFx32Object_Destroy
 .L_022021c0: .word VecFx32Object_Init
 .L_022021c4: .word data_ov040_0220385e
-.L_022021c8: .word data_020c9670
+.L_022021c8: .word gFx32CosSinTable
 .L_022021cc: .word 0x7fb8
 .L_022021d0: .word data_ov040_02203854
 .L_022021d4: .word 0x739c

@@ -34,7 +34,7 @@ struct AttachedTimedSprite {
 extern "C" {
 #endif
 extern void *data_020d6138;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern AttachedTimedSprite *func_0201e290(AttachedTimedSprite *self,
                                           u8 *config);
 extern AttachedTimedSprite *func_0201e380(AttachedTimedSprite *self);
@@ -177,10 +177,10 @@ void func_0201e888(AttachedTimedSprite *self, s32 argument,
 
     if (length > 0x4000) {
         s32 angleIndex = ((s32)func_020ae024(x, y) >> 4) * 2;
-        s64 product = (s64)data_020c9670[angleIndex + 1]
+        s64 product = (s64)gFx32CosSinTable[angleIndex + 1]
                       * self->radialScale34;
         *(s32 *)&self->second18.bytes[4] += (s32)((product + 0x800) >> 12);
-        product = (s64)data_020c9670[angleIndex] * self->radialScale34;
+        product = (s64)gFx32CosSinTable[angleIndex] * self->radialScale34;
         *(s32 *)&self->second18.bytes[8] += (s32)((product + 0x800) >> 12);
     }
     VecFx32Object_Destroy(sample);

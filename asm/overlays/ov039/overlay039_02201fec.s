@@ -28,7 +28,7 @@
     .extern gGamePhaseRuntime
     .extern gSoundContext
     .extern data_ov039_022080c6
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .global func_ov039_02201fec
 func_ov039_02201fec:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
@@ -894,7 +894,7 @@ L_02202cec: .word 0x5bf4
 L_02202cf0: .word 0x1c5
 L_02202cf4: .word 0x14a
 L_02202cf8: .word data_ov039_022080c6
-L_02202cfc: .word data_020c9670
+L_02202cfc: .word gFx32CosSinTable
 L_02202d00: .word 0x7ff
     .size func_ov039_02201fec, .-func_ov039_02201fec
 

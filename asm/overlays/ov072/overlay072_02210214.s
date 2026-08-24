@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov072/overlay072_recovery.c.
 .extern DebugText_BeginFrame
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
@@ -409,5 +409,5 @@ func_ov072_02210214:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022107c8: .word gGamePhaseRuntime
 .L_022107cc: .word gSoundContext
-.L_022107d0: .word data_020c9670
+.L_022107d0: .word gFx32CosSinTable
 .size func_ov072_02210214, . - func_ov072_02210214

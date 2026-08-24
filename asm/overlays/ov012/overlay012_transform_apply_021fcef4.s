@@ -1,5 +1,5 @@
     .text
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern func_020b0880
     .extern func_020b0844
     .extern func_020b0808
@@ -62,7 +62,7 @@ func_ov012_021fcef4:
 L_021fcfc8:
     .word 0x04000470
 L_021fcfcc:
-    .word data_020c9670
+    .word gFx32CosSinTable
 L_021fcfd0:
     .word 0x0400046c
     .size func_ov012_021fcef4, . - func_ov012_021fcef4

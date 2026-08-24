@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov027_021fe8ac[];
 
 #ifdef __cplusplus
@@ -106,8 +106,8 @@ extern "C" void func_ov027_021fd4dc(void *object, s32 from, s32 to)
     s32 angle = (u16)Presentation_InterpolateScalar(object, 1, 0,
                                     FIELD(s32, object, 0xa4));
     angle >>= 4;
-    s32 trig0 = data_020c9670[angle * 2];
-    s32 trig1 = data_020c9670[angle * 2 + 1];
+    s32 trig0 = gFx32CosSinTable[angle * 2];
+    s32 trig1 = gFx32CosSinTable[angle * 2 + 1];
     s32 scale = Presentation_InterpolateScalar(object, 1, from, to);
     s32 dx = FIELD(s32, object, 0xb0);
     s32 dy = FIELD(s32, object, 0xb4);

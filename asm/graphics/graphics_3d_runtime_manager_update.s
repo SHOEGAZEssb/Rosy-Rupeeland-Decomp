@@ -2,7 +2,7 @@
 ; for the documented portable implementation and recovered behavior.
 .text
 .extern gPairedEntryMode2EmissionIntervals
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern PairedEntryManager_SpawnEntry
 .extern genrand_int32
 
@@ -152,6 +152,6 @@ L_020a2fb4:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_020a2fc4: .word gPairedEntryMode2EmissionIntervals
-L_020a2fc8: .word data_020c9670
+L_020a2fc8: .word gFx32CosSinTable
 L_020a2fcc: .word 0x7fff
     .size PairedEntryManager_Update, .-PairedEntryManager_Update

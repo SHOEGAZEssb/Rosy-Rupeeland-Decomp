@@ -22,7 +22,7 @@ typedef struct TitlePresentationChain {
     s32 scale_height_14;
 } TitlePresentationChain;
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void func_ov090_0221c138(VecFx32Object *difference,
                                 const VecFx32Object *first,
                                 const VecFx32Object *second);
@@ -54,10 +54,10 @@ void func_ov090_0221be40(TitlePresentationChain *self,
     s32 i;
 
     VecFx32Object_Init(&working);
-    directionX = data_020c9670[(angle >> 4) * 2];
-    directionY = -data_020c9670[(angle >> 4) * 2 + 1];
+    directionX = gFx32CosSinTable[(angle >> 4) * 2];
+    directionY = -gFx32CosSinTable[(angle >> 4) * 2 + 1];
     for (i = 0; i < self->count; i++) {
-        chainValue = data_020c9670[(((u16)(self->step * i)) >> 4) * 2];
+        chainValue = gFx32CosSinTable[(((u16)(self->step * i)) >> 4) * 2];
 
         if (i == 0) {
             VecFx32Object difference;
@@ -79,7 +79,7 @@ void func_ov090_0221be40(TitlePresentationChain *self,
                                 &self->items[i]->position);
             VecFx32Object_Assign(&working, &difference);
             VecFx32Object_Destroy(&difference);
-            previousValue = data_020c9670[
+            previousValue = gFx32CosSinTable[
                 (((u16)((i - 1) * self->step)) >> 4) * 2];
             working.value.y -= ((previousValue - chainValue) * 3) / 2;
             if (func_ov090_0221c350(self, &working) != 0) {

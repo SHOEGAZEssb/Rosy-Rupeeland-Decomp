@@ -36,7 +36,7 @@ struct OrbitTimedSprite {
 extern "C" {
 #endif
 extern u8 data_020d6118[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern OrbitTimedSprite *func_0201e6e4(OrbitTimedSprite *self, u8 *owner,
                                        u8 *config, s32 spriteValue);
 extern OrbitTimedSprite *func_0201e380(OrbitTimedSprite *self);
@@ -135,9 +135,9 @@ void func_0201eb18(OrbitTimedSprite *self, const void *ownerPosition,
 {
     s32 tableIndex = (self->angle38 >> 4) * 2;
     s32 x = *(s32 *)&self->first08.bytes[4]
-            + data_020c9670[tableIndex] * 0x14;
+            + gFx32CosSinTable[tableIndex] * 0x14;
     s32 y = *(s32 *)&self->first08.bytes[8]
-            + data_020c9670[tableIndex + 1] * 0x14;
+            + gFx32CosSinTable[tableIndex + 1] * 0x14;
 
     (void)unusedCenter;
     GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(self->sprite, ownerPosition, x, y,

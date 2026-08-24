@@ -2,7 +2,7 @@
 
 /* Apply a descriptor-scaled radial impulse toward a supplied target position. */
 extern u8 data_020e8380[];
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +28,7 @@ static s32 multiplyFxRound(s32 first, s32 second)
  * position +0x18. When planar distance exceeds 0x4000, decode descriptor
  * halfword +0x1e bits two and above: values zero, one, and all others select
  * magnitudes 0x2000, 0x1000, and 0x800. Store 0x100 at actor +0xde, project the
- * magnitude through data_020c9670 toward the target, add it to +0x8c/+0x90,
+ * magnitude through gFx32CosSinTable toward the target, add it to +0x8c/+0x90,
  * clamp both to 0x6000, and clear desired motion +0x3c/+0x40. Finally, when
  * +0xd0 bit four is set and virtual +0x30 returns nonzero, clear +0x8c/+0x90/
  * +0x94. Destroy the temporary displacement. Returns no value; target, motion,
@@ -50,9 +50,9 @@ void ActorExtendedType2_ApplyTargetImpulse(void *self, const void *target)
         *(u16 *)(actor + 0xde) = 0x100;
         angle = func_020ae024(displacement[2], displacement[1]) >> 4;
         *(s32 *)(actor + 0x8c) +=
-            multiplyFxRound(data_020c9670[angle * 2 + 1], magnitude);
+            multiplyFxRound(gFx32CosSinTable[angle * 2 + 1], magnitude);
         *(s32 *)(actor + 0x90) +=
-            multiplyFxRound(data_020c9670[angle * 2], magnitude);
+            multiplyFxRound(gFx32CosSinTable[angle * 2], magnitude);
         Fx32Vector2_LimitMagnitude((s32 *)(actor + 0x8c),
                       (s32 *)(actor + 0x90), 0x6000);
         *(s32 *)(actor + 0x3c) = 0;

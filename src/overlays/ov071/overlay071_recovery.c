@@ -21,7 +21,7 @@ extern u8 data_ov071_022123e0[];
 extern u8 data_020c9770[];
 extern u8 data_020cd470[];
 extern u8 gSystemState[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *data_020f3058, *gGameWork;
 extern void *gSoundContext;
 extern void *gHeapContext;
@@ -373,7 +373,7 @@ void func_ov071_02210560(void *scene) {
       s32 scale;
       if (angle > 0x4000)
         angle = 0x4000;
-      scale = (((0x1000 - data_020c9670[(angle >> 4) * 2 + 1]) *
+      scale = (((0x1000 - gFx32CosSinTable[(angle >> 4) * 2 + 1]) *
                 0x180) >> 12) + 0x80;
       F(s16, F(void *, scene, 0xec), 0x3c) = (s16)scale;
       F(s16, F(void *, scene, 0xec), 0x3e) = (s16)scale;
@@ -413,7 +413,7 @@ void func_ov071_0221083c(void *scene) {
       scale = 0x1d0;
     F(s32, scene, 0xc8) = frame;
     if (frame > 0x11)
-      scale += (data_020c9670[(((previous - 0x10) * 0x6d6 & 0xffff) >>
+      scale += (gFx32CosSinTable[(((previous - 0x10) * 0x6d6 & 0xffff) >>
                                4) *
                               2] *
                 0x30) >>
@@ -772,7 +772,7 @@ void func_ov071_022115bc(void *collection) {
     } else if (F(s32, data_ov071_02212340, 0x10) == 1) {
       s32 phase = F(u16, data_ov071_022123e0, 8) >> 4;
       radial_offset = ((F(s32, data_ov071_02212340, 4) >> 1) *
-                       data_020c9670[phase * 2]) >> 12;
+                       gFx32CosSinTable[phase * 2]) >> 12;
     } else {
       s32 spread = F(s32, data_ov071_02212340, 4);
       radial_scale = func_020befec(spread * count * 0x1000,
@@ -781,13 +781,13 @@ void func_ov071_022115bc(void *collection) {
       if (F(s32, data_ov071_022123e0, 0x10) == 1)
         radial_scale -= 0x800;
       radial_offset = (((radial_scale * spread) >> 12) *
-                       data_020c9670[(F(u16, data_ov071_022123e0, 8) >> 4) *
+                       gFx32CosSinTable[(F(u16, data_ov071_022123e0, 8) >> 4) *
                                     2]) >>
                       12;
     }
     direction = func_020ae024(transformed[1], transformed[2]);
-    sine = data_020c9670[(direction >> 4) * 2];
-    cosine = data_020c9670[(direction >> 4) * 2 + 1];
+    sine = gFx32CosSinTable[(direction >> 4) * 2];
+    cosine = gFx32CosSinTable[(direction >> 4) * 2 + 1];
     F(s16, collection, 0x874 + slot * 2) = (s16)-direction;
     F(s16, collection, 0x8ec + slot * 2) =
         F(s16, data_ov071_022123e0, 8);
@@ -935,10 +935,10 @@ void func_ov071_02211ca4(void *collection) {
     func_ov071_02210184(point);
     phase = F(u16, collection, 0x8ec + index * 2) >> 4;
     point[1] = x + ov071_multiply_fx(
-                       data_020c9670[phase * 2],
+                       gFx32CosSinTable[phase * 2],
                        F(s32, collection, 0x5a8 + element_offset));
     point[2] = y + ov071_multiply_fx(
-                       data_020c9670[phase * 2],
+                       gFx32CosSinTable[phase * 2],
                        F(s32, collection, 0x5ac + element_offset));
     effect = F(s32, data_ov071_02212340, 0xc);
     if (effect < 2)
@@ -971,12 +971,12 @@ void func_ov071_02211e98(void *collection) {
       s32 angle = F(u16, collection, 0x8ec + i * 2) >> 4;
       position[0] =
           (F(s32, collection, 8 + i * 12) +
-           ov071_multiply_fx(data_020c9670[angle * 2],
+           ov071_multiply_fx(gFx32CosSinTable[angle * 2],
                              F(s32, collection, 0x5a8 + i * 12))) >>
           12;
       position[1] =
           (F(s32, collection, 0xc + i * 12) +
-           ov071_multiply_fx(data_020c9670[angle * 2],
+           ov071_multiply_fx(gFx32CosSinTable[angle * 2],
                              F(s32, collection, 0x5ac + i * 12))) >>
           12;
     }
@@ -1007,8 +1007,8 @@ void func_ov071_022120a4(void *unused, const s32 *position, s32 angle,
   matrix[11] = (u32)position[0];
   matrix[11] = (u32)position[1];
   matrix[11] = 0;
-  func_020b0808(data_020c9670[(angle >> 4) * 2],
-                data_020c9670[(angle >> 4) * 2 + 1]);
+  func_020b0808(gFx32CosSinTable[(angle >> 4) * 2],
+                gFx32CosSinTable[(angle >> 4) * 2 + 1]);
   *(volatile u32 *)0x04000500 = 1;
   *(volatile u32 *)0x04000480 = polygon_attribute;
   func_ov071_02211398(texture[0], texture[1]);

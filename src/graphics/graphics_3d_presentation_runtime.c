@@ -14,7 +14,7 @@
 #include "tingle/util_animation_resource.h"
 
 extern const RupeeMeshDescriptor gRupeeMeshDescriptor;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u8 data_020f3064[];
 extern u8 data_021f63b0[];
 extern const char data_020f32e8[];
@@ -410,7 +410,7 @@ void Graphics3d_SetNormalizedLight(u32 lightId, s32 x, s32 y, s32 z,
 
 static u32 RupeeWobbleAngle(u16 phase)
 {
-    s16 sample = data_020c9670[(phase >> 4) * 2];
+    s16 sample = gFx32CosSinTable[(phase >> 4) * 2];
     return ((u32)(s32)sample >> 7) & 0xfffu;
 }
 
@@ -483,11 +483,11 @@ void Graphics3dPresentation_SubmitRupeeMeshWithEffects(
         *secondPhase = (u16)(*secondPhase + 0x4c5);
     }
     angle = RupeeWobbleAngle(*secondPhase);
-    func_020b0844(data_020c9670[angle * 2],
-                  data_020c9670[angle * 2 + 1]);
+    func_020b0844(gFx32CosSinTable[angle * 2],
+                  gFx32CosSinTable[angle * 2 + 1]);
     angle = RupeeWobbleAngle(*firstPhase);
-    func_020b0880(data_020c9670[angle * 2],
-                  data_020c9670[angle * 2 + 1]);
+    func_020b0880(gFx32CosSinTable[angle * 2],
+                  gFx32CosSinTable[angle * 2 + 1]);
 
     func_0209bcb0((s32)((appearanceFlags & 0xffu) << 15), 0);
     func_0209b414(*(u32 *)(bytes + 0x130),

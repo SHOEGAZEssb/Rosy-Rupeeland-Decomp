@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_motion_update.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020e16b0
 .extern data_020e1700
 .extern data_020e1718
@@ -333,7 +333,7 @@ Type7Actor_UpdateMotionTowardTransform: ; 0x02047908
 .L_02047d2c: .word 0x159a
 .L_02047d30: .word data_020e1770
 .L_02047d34: .word data_020e1700
-.L_02047d38: .word data_020c9670
+.L_02047d38: .word gFx32CosSinTable
 .L_02047d3c: .word 0x19a
 
 .size Type7Actor_SetMotionTarget, Type7Actor_SetMotionTargetWithTimer - Type7Actor_SetMotionTarget

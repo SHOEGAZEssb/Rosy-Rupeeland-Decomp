@@ -5,7 +5,7 @@
  * advances an actor toward a saved transform using the shared direction table;
  * the reset restores callback and global-target state once it arrives.
  */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern s32 func_020ae024(s32 y, s32 x);
  * Otherwise select presentation 10, clear the vector-like values at
  * +0x38/+0x88/+0x98, derive a direction with func_020ae024, and compute a step
  * from four times +0x23c through func_020adae4(..., 2), clamped to the measured
- * distance. Multiply that step by the corresponding data_020c9670 direction
+ * distance. Multiply that step by the corresponding gFx32CosSinTable direction
  * pair with fx32 rounding, advance X/Y +0x1c/+0x20, and copy current transform
  * +0x18 to +0x28. Always return zero. Actor transform, presentation, vector,
  * and callback state may change; no SDK or hardware effects occur directly.
@@ -70,9 +70,9 @@ s32 Type7Actor_UpdateDestinationMotion(void *self)
         if (distance <= step)
             step = distance;
         index = direction >> 4;
-        product = (s64)data_020c9670[index * 2 + 1] * step + 0x800;
+        product = (s64)gFx32CosSinTable[index * 2 + 1] * step + 0x800;
         *(s32 *)(actor + 0x1c) += (s32)(product >> 12);
-        product = (s64)data_020c9670[index * 2] * step + 0x800;
+        product = (s64)gFx32CosSinTable[index * 2] * step + 0x800;
         *(s32 *)(actor + 0x20) += (s32)(product >> 12);
         VecFx32Object_Assign(actor + 0x28, actor + 0x18);
     }

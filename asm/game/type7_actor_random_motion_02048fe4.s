@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_random_motion.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_UpdateMotionTowardTransform
@@ -106,7 +106,7 @@ Type7Actor_UpdateRandomMotionState: ; 0x02048fe4
 .L_0204913c:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-.L_02049144: .word data_020c9670
+.L_02049144: .word gFx32CosSinTable
 
 .size Type7Actor_UpdateRandomMotionState, . - Type7Actor_UpdateRandomMotionState
 

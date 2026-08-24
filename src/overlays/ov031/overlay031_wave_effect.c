@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const s8 data_ov031_021fe5fc[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -89,8 +89,8 @@ extern "C" void func_ov031_021fce98(void *effect)
     for (s32 i = 0; i < 0xc0; ++i) {
         u16 phaseA = (u16)(FIELD(s32, effect, 0x48c) + i * 0x1414);
         u16 phaseB = (u16)(FIELD(s32, effect, 0x488) + i * 0x5dc);
-        s64 first = (s64)data_020c9670[phaseA >> 4] * amplitudeA;
-        s64 second = (s64)data_020c9670[phaseB >> 4] * amplitudeB;
+        s64 first = (s64)gFx32CosSinTable[phaseA >> 4] * amplitudeA;
+        s64 second = (s64)gFx32CosSinTable[phaseB >> 4] * amplitudeB;
         wave[i] = (s16)(((first + 0x800) >> 24) +
                         ((second + 0x800) >> 24));
         offset[i] = pattern[(FIELD(s32, effect, 0x490) + i) % 5];

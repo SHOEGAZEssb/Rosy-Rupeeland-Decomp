@@ -11,7 +11,7 @@ extern void *data_020f4e18;
 extern void *gDebugFont;
 extern void *gGameWork;
 extern u8 gHeapContext[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_ov094_02219c98[];
 extern const s32 data_ov094_02219d18[];
 extern const u8 data_ov094_02219e70[];
@@ -132,13 +132,13 @@ extern "C" s32 func_ov094_02218720(void *object)
                     u32 angle = func_020ae024(coordinates[0] / 0x1000,
                                              coordinates[1] / 0x1000);
                     s32 angleIndex = (s32)(angle & 0xffff) >> 4;
-                    startX = data_020c9670[angleIndex * 2] * 0x80 + 0x80000;
-                    startY = data_020c9670[angleIndex * 2 + 1] * 0x80 - 0x80000;
+                    startX = gFx32CosSinTable[angleIndex * 2] * 0x80 + 0x80000;
+                    startY = gFx32CosSinTable[angleIndex * 2 + 1] * 0x80 - 0x80000;
                 } else {
                     coordinates = data_ov094_02219d18 + index * 2;
                     s32 angleIndex = index * 0x100;
-                    startX = data_020c9670[angleIndex * 2] * 0x80 + 0x80000;
-                    startY = data_020c9670[angleIndex * 2 + 1] * 0x80 - 0xa0000;
+                    startX = gFx32CosSinTable[angleIndex * 2] * 0x80 + 0x80000;
+                    startY = gFx32CosSinTable[angleIndex * 2 + 1] * 0x80 - 0xa0000;
                 }
 
                 void *effect = Heap_Alloc(0xcc, data_ov094_02219f0c,

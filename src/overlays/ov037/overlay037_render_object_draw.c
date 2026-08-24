@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 #define REG32(address) (*(volatile u32 *)(address))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -72,14 +72,14 @@ extern "C" void func_ov037_021fcf20(void *object, void *matrixContext)
         func_020b00f0(matrixContext);
 
     u16 angle = (u16)FIELD(u32, object, 0x40);
-    func_020b0880(data_020c9670[(angle >> 4) * 2],
-                  data_020c9670[(angle >> 4) * 2 + 1]);
+    func_020b0880(gFx32CosSinTable[(angle >> 4) * 2],
+                  gFx32CosSinTable[(angle >> 4) * 2 + 1]);
     angle = (u16)FIELD(u32, object, 0x50);
-    func_020b0844(data_020c9670[(angle >> 4) * 2],
-                  data_020c9670[(angle >> 4) * 2 + 1]);
+    func_020b0844(gFx32CosSinTable[(angle >> 4) * 2],
+                  gFx32CosSinTable[(angle >> 4) * 2 + 1]);
     angle = (u16)FIELD(u32, object, 0x60);
-    func_020b0808(data_020c9670[(angle >> 4) * 2],
-                  data_020c9670[(angle >> 4) * 2 + 1]);
+    func_020b0808(gFx32CosSinTable[(angle >> 4) * 2],
+                  gFx32CosSinTable[(angle >> 4) * 2 + 1]);
 
     REG32(0x0400046c) = FIELD(u32, object, 0x70);
     REG32(0x0400046c) = FIELD(u32, object, 0x70);

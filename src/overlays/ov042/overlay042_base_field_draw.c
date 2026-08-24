@@ -19,7 +19,7 @@ extern "C" void func_020b0808(s16 sine, s16 cosine);
 extern "C" void func_ov042_021fd578(void *context, const s32 *vertices,
                                       const s32 *texcoords, s32 count);
 extern "C" s16 data_020cd470[];
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 static s32 signed_mod4(s32 value)
 {
@@ -90,8 +90,8 @@ extern "C" void func_ov042_021fd158(void *object, s32 selector)
 
     s32 angleIndex = ((u16)FIELD(s32, object, 0x528) >> 4) * 2;
     s32 baseX = (-FIELD(s32, object, 0x520) * 300) / 64;
-    func_020b0808(data_020c9670[angleIndex],
-                  data_020c9670[angleIndex + 1]);
+    func_020b0808(gFx32CosSinTable[angleIndex],
+                  gFx32CosSinTable[angleIndex + 1]);
     *(volatile u32 *)0x04000444 = 0;
     *(volatile u32 *)0x04000480 = 0x7fff;
 
@@ -106,8 +106,8 @@ extern "C" void func_ov042_021fd158(void *object, s32 selector)
         s32 emitted = 0;
         s32 phase0 = (u16)rowPhase;
         s32 phase1 = (u16)(rowPhase + 300);
-        s32 offset0 = (data_020c9670[(phase0 >> 4) * 2] * -2200) >> 12;
-        s32 offset1 = (data_020c9670[(phase1 >> 4) * 2] * -2200) >> 12;
+        s32 offset0 = (gFx32CosSinTable[(phase0 >> 4) * 2] * -2200) >> 12;
+        s32 offset1 = (gFx32CosSinTable[(phase1 >> 4) * 2] * -2200) >> 12;
         for (s32 column = widthStart; column < endColumn; ++column) {
             s32 x = (column - 8) * 160;
             vertices[emitted * 3] = x;

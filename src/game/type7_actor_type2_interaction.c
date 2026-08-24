@@ -4,7 +4,7 @@
  * Recovered type-two interaction response for the type-seven actor. It applies
  * an interpolated directional impulse and emits a world-space feedback effect.
  */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ static s32 scale_shift_round(s32 value, s32 shift)
  * fixed-point polynomial from t, 1-t, t^2, (1-t)^2, and 2t(1-t), including a
  * 0x5000 coefficient, and clamp the resulting impulse magnitude to 0xa000.
  * Compute the actor-to-other angle, halve the combined-center +4/+8 components,
- * add the data_020c9670 direction pair, and scale by that magnitude. Subtract
+ * add the gFx32CosSinTable direction pair, and scale by that magnitude. Subtract
  * impulses weighted by extra/(3*(value+extra)) from actor +0x8c/+0x90, halving
  * them when resource +0x234 exists, clamp to 0x3000, and clear +0x3c/+0x40.
  * Unless other +0x260 bit 0x8000 is set, add impulses weighted by
@@ -102,9 +102,9 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
     *(s32 *)(actorCenter + 2) = func_020adae4(*(s32 *)(actorCenter + 2), 2);
     angle >>= 4;
     impulseX = multiply_fx_round(
-        *(s32 *)(actorCenter + 1) + data_020c9670[angle * 2 + 1], strength);
+        *(s32 *)(actorCenter + 1) + gFx32CosSinTable[angle * 2 + 1], strength);
     impulseY = multiply_fx_round(
-        *(s32 *)(actorCenter + 2) + data_020c9670[angle * 2], strength);
+        *(s32 *)(actorCenter + 2) + gFx32CosSinTable[angle * 2], strength);
     *(s32 *)(actor + 0x8c) -= func_020adae4(impulseX * extra, combined * 3);
     *(s32 *)(actor + 0x90) -= func_020adae4(impulseY * extra, combined * 3);
     if (*(void **)(actor + 0x234) != 0) {

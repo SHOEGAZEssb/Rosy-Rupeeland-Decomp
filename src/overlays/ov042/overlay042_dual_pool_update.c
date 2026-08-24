@@ -14,7 +14,7 @@ extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" void func_ov042_021ff2f8(void *position, const void *velocity);
 extern "C" void func_ov042_021fe9e4(void *pool, s32 index);
 extern "C" void func_ov042_021fea08(void *pool, s32 index);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 
 static s32 multiply_fx(s32 left, s32 right)
 {
@@ -122,14 +122,14 @@ extern "C" void func_ov042_021feabc(void *pool)
             u16 phaseX = (u16)(time * 1600);
             u16 phaseY = (u16)(time * 0x8fc);
             FIELD(s32, presentation, 0x30) +=
-                data_020c9670[(phaseX >> 4) * 2];
+                gFx32CosSinTable[(phaseX >> 4) * 2];
             FIELD(s32, presentation, 0x34) +=
-                data_020c9670[(phaseY >> 4) * 2 + 1];
+                gFx32CosSinTable[(phaseY >> 4) * 2 + 1];
         } else if (time < 1025) {
             u16 phase = (u16)((time - 1000) * 0x28f);
             if (phase > 0x4000)
                 phase = 0x4000;
-            s32 factor = 0x1000 - data_020c9670[(phase >> 4) * 2];
+            s32 factor = 0x1000 - gFx32CosSinTable[(phase >> 4) * 2];
             void *vector = (u8 *)pool + 0x122c + i * 12;
             FIELD(s32, presentation, 0x30) -=
                 multiply_fx(FIELD(s32, vector, 0), factor);
@@ -139,7 +139,7 @@ extern "C" void func_ov042_021feabc(void *pool)
             u16 phase = (u16)((time - 1025) * 0x3c3);
             if (phase > 0x4000)
                 phase = 0x4000;
-            s32 factor = 0x14cd - data_020c9670[(phase >> 4) * 2];
+            s32 factor = 0x14cd - gFx32CosSinTable[(phase >> 4) * 2];
             void *vector = (u8 *)pool + 0x122c + i * 12;
             FIELD(s32, presentation, 0x30) +=
                 multiply_fx(FIELD(s32, vector, 0), factor);
@@ -150,7 +150,7 @@ extern "C" void func_ov042_021feabc(void *pool)
             u16 phase = (u16)(elapsed * 0x1d4);
             if (phase > 0x4000)
                 phase = 0x4000;
-            s32 factor = 0x1800 - data_020c9670[(phase >> 4) * 2];
+            s32 factor = 0x1800 - gFx32CosSinTable[(phase >> 4) * 2];
             void *vector = (u8 *)pool + 0x122c + i * 12;
             FIELD(s32, presentation, 0x30) -=
                 multiply_fx(FIELD(s32, vector, 0), factor);

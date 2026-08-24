@@ -33,7 +33,7 @@ void VecFx32Object_Assign(void *, const void *);
 void VecFx32Object_Destroy(void *);
 void Sound_Play(void *, s32, s32);
 extern void *gSoundContext;
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 }
 
 /* Multiply two signed 20.12 fixed-point values with the game's rounding. */
@@ -132,7 +132,7 @@ extern "C" void func_ov041_02202c34(void *object)
                 tablePhase = 0;
             u32 index = ((u16)tablePhase >> 4) * 2;
             FIELD(s32, object, 0x940) =
-                (0x1000 - data_020c9670[index + 1]) >> 1;
+                (0x1000 - gFx32CosSinTable[index + 1]) >> 1;
         }
 
         void *owner = FIELD(void *, object, 0x48);
@@ -145,7 +145,7 @@ extern "C" void func_ov041_02202c34(void *object)
             u32 index =
                 ((u32)FIELD(s32, object, 0x934) >> 4) * 2;
             s32 rise =
-                mul_fx(0x1000 - data_020c9670[index + 1], 0x46000);
+                mul_fx(0x1000 - gFx32CosSinTable[index + 1], 0x46000);
             transform[2] =
                 FIELD(s32, object, 0x70) + rise + 0x1e000;
         }
@@ -235,8 +235,8 @@ extern "C" void func_ov041_02202c34(void *object)
         s32 magnitude = mul_fx(remaining, 0x1800) + 0x99a;
         u32 index =
             (((u16)FIELD(s32, object, 0x4b8) >> 4) * 2);
-        vector[1] = mul_fx(data_020c9670[index], magnitude);
-        vector[2] = mul_fx(data_020c9670[index + 1], magnitude);
+        vector[1] = mul_fx(gFx32CosSinTable[index], magnitude);
+        vector[2] = mul_fx(gFx32CosSinTable[index + 1], magnitude);
         FIELD(s32, object, 0x6c) += vector[1];
         FIELD(s32, object, 0x70) += vector[2];
     }

@@ -27,7 +27,7 @@
     .extern data_ov039_0220801c
     .extern data_ov039_02208028
     .extern data_ov039_02208034
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov039_022083b0
     .extern data_ov039_022083a4
     .extern data_ov039_02208398
@@ -960,7 +960,7 @@ L_022003c0: .word 0x898
 L_022003c4: .word data_ov039_0220801c
 L_022003c8: .word data_ov039_02208028
 L_022003cc: .word data_ov039_02208034
-L_022003d0: .word data_020c9670
+L_022003d0: .word gFx32CosSinTable
 L_022003d4: .word data_ov039_022083b0
 L_022003d8: .word data_ov039_022083a4
 L_022003dc: .word data_ov039_02208398

@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_020f4e18;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u32 data_ov017_02201414[];
 extern const u32 data_ov017_02201608[];
 extern u8 data_ov017_022016e0[];
@@ -145,11 +145,11 @@ extern "C" void Overlay017Transform_SubmitGeometry(void *state)
                              FIELD(s32, state, 0x10));
 #endif
     index = ((u16)FIELD(u32, state, 0x20)) >> 4;
-    func_020b0880(data_020c9670[index * 2], data_020c9670[index * 2 + 1]);
+    func_020b0880(gFx32CosSinTable[index * 2], gFx32CosSinTable[index * 2 + 1]);
     index = ((u16)FIELD(u32, state, 0x24)) >> 4;
-    func_020b0844(data_020c9670[index * 2], data_020c9670[index * 2 + 1]);
+    func_020b0844(gFx32CosSinTable[index * 2], gFx32CosSinTable[index * 2 + 1]);
     index = ((u16)FIELD(u32, state, 0x28)) >> 4;
-    func_020b0808(data_020c9670[index * 2], data_020c9670[index * 2 + 1]);
+    func_020b0808(gFx32CosSinTable[index * 2], gFx32CosSinTable[index * 2 + 1]);
     *scale = FIELD(u32, state, 0x14);
     *scale = FIELD(u32, state, 0x18);
     *scale = FIELD(u32, state, 0x1c);

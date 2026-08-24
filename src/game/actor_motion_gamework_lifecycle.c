@@ -6,13 +6,13 @@
  * GameWork. It adds no recovered fields beyond the 0x64-byte base object.
  */
 
-extern const void *data_020d43e4[];
+extern const void *gActorMotionGameWorkVTable[];
 
 /* Construct the base object, install the GameWork-updating vtable, and return self. */
 ActorMotion *ActorMotionGameWork_Init(ActorMotion *self)
 {
     ActorMotion_Init(self);
-    self->vtable = data_020d43e4;
+    self->vtable = gActorMotionGameWorkVTable;
     return self;
 }
 

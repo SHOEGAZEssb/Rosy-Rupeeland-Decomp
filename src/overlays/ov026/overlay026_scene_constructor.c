@@ -8,7 +8,7 @@ extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *gDebugFont;
 extern void *gHeapContext;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_020cdc1c[];
 extern const s32 data_ov026_02204750[];
 extern const u8 data_ov026_02204944[];
@@ -196,8 +196,8 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
         s32 radius = func_0209189c((u8 *)scene + 0x7a4, 0x4cd, 0x800);
         u32 angle = (u16)func_020befec(i << 16, 24);
         s32 index = (angle >> 4) & 0xfff;
-        s32 x = (data_020c9670[index * 2 + 1] * radius + 0x800) >> 12;
-        s32 z = (data_020c9670[index * 2] * radius + 0x800) >> 12;
+        s32 x = (gFx32CosSinTable[index * 2 + 1] * radius + 0x800) >> 12;
+        s32 z = (gFx32CosSinTable[index * 2] * radius + 0x800) >> 12;
         void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x70),
                                      (u8 *)scene + 0x7c);
         FIELD(void *, scene, 0xf8 + i * 4) = record;
@@ -209,8 +209,8 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     for (s32 i = 0; i < 16; ++i) {
         u32 angle = (u32)TitleRandom_NextBounded((u8 *)scene + 0x7a4, 0x1000);
         s32 index = (angle >> 4) & 0xfff;
-        s32 x = (data_020c9670[index * 2 + 1] * 0x800 + 0x800) >> 12;
-        s32 z = (data_020c9670[index * 2] * 0x800 + 0x800) >> 12;
+        s32 x = (gFx32CosSinTable[index * 2 + 1] * 0x800 + 0x800) >> 12;
+        s32 z = (gFx32CosSinTable[index * 2] * 0x800 + 0x800) >> 12;
         void *record = GraphicsAnimationInstanceManager_CreateInstance(FIELD(void *, scene, 0x74),
                                      (u8 *)scene + 0x88);
         FIELD(void *, scene, 0xb8 + i * 4) = record;

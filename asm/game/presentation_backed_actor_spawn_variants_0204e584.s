@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/presentation_backed_actor_spawn_variants.c.
 .extern data_020c3e78
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gPresentationBackedActorRuntimeState
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -131,7 +131,7 @@ PresentationBackedActor_SpawnTripleVariant: ; 0x0204e628
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0204e734: .word 0x3010
-.L_0204e738: .word data_020c9670
+.L_0204e738: .word gFx32CosSinTable
 .L_0204e73c: .word gPresentationBackedActorRuntimeState
 .size PresentationBackedActor_SpawnTripleVariant, . - PresentationBackedActor_SpawnTripleVariant
 

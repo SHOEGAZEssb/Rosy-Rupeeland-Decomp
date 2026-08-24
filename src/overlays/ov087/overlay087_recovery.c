@@ -10,7 +10,7 @@ typedef void (*Method)(void *);
 typedef void (*Method2)(void *, s32);
 
 extern u8 data_ov087_022189e0[], data_ov087_02218aa4[];
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *data_020f4e18, *gGamePhaseRuntime, *gGameWork, *gHeapContext;
 extern void *gSceneManager, *gSoundContext, *gSystemState;
 
@@ -160,8 +160,8 @@ void func_ov087_022179b0(void *actor, void *unused1, void *unused2,
                         func_020befec(F(s16, actor, 0x226) << 12, 12));
     angle = (F(s32, actor, 0xc8) >> 4) * 2;
     VecFx32Object_InitComponents(
-        delta, -multiply_fx(data_020c9670[angle], speed),
-        multiply_fx(data_020c9670[angle + 1], speed), 0);
+        delta, -multiply_fx(gFx32CosSinTable[angle], speed),
+        multiply_fx(gFx32CosSinTable[angle + 1], speed), 0);
     VecFx32Object_Add((u8 *)actor + 0x38, delta);
     if (speed > 0x19a) {
       if ((*flags & 0x200) == 0) {

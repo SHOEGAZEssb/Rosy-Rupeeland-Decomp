@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Resolve weighted type-1/target displacement and its collision presentation effects. */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u8 *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
@@ -96,9 +96,9 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
     actorCenter[1] = func_020adae4(actorCenter[1], 2);
     actorCenter[2] = func_020adae4(actorCenter[2], 2);
     tableIndex = (angle >> 4) * 2;
-    directionX = multiplyFx(actorCenter[1] + data_020c9670[tableIndex + 1],
+    directionX = multiplyFx(actorCenter[1] + gFx32CosSinTable[tableIndex + 1],
                             strength);
-    directionY = multiplyFx(actorCenter[2] + data_020c9670[tableIndex],
+    directionY = multiplyFx(actorCenter[2] + gFx32CosSinTable[tableIndex],
                             strength);
 
     *(s32 *)(actor + 0x8c) -=

@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_TestFlag
 .extern Heap_Alloc
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov094_02219c98
 .extern data_ov094_02219d18
 .extern data_ov094_02219f0c
@@ -214,7 +214,7 @@ func_ov094_02218720:
 .L_022189dc: .word gGameWork
 .L_022189e0: .word 0x3d3
 .L_022189e4: .word data_ov094_02219c98
-.L_022189e8: .word data_020c9670
+.L_022189e8: .word gFx32CosSinTable
 .L_022189ec: .word data_ov094_02219d18
 .L_022189f0: .word data_ov094_02219f0c
 .L_022189f4: .word gHeapContext

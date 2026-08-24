@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_geometry_command.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_01ff88c4
 .extern func_020b0808
 .extern func_020b0844
@@ -91,7 +91,7 @@ func_ov026_021fcea4:
     str r1, [r0, #0x0]
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_021fcfe0: .word 0x4000444
-L_021fcfe4: .word data_020c9670
+L_021fcfe4: .word gFx32CosSinTable
 L_021fcfe8: .word 0x400046c
 L_021fcfec: .word 0x40004c4
 L_021fcff0: .word 0x4000448

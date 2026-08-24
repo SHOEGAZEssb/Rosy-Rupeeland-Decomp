@@ -21,7 +21,7 @@
     .extern genrand_int32
     .extern func_020bf1f8
     .extern func_ov034_021fce00
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov034_021fe740
     .extern gTouchPanelManager
     .extern gSoundContext
@@ -231,7 +231,7 @@ L_021fe2a8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fe2b8: .word 0x266
-L_021fe2bc: .word data_020c9670
+L_021fe2bc: .word gFx32CosSinTable
 L_021fe2c0: .word data_ov034_021fe740
 .size func_ov034_021fdfe0, .-func_ov034_021fdfe0
 

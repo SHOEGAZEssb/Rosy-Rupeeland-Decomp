@@ -9,7 +9,7 @@
 #define REG_G3_TEXCOORD (*(volatile u32 *)0x04000488)
 #define REG_G3_VTX_16   (*(volatile u32 *)0x0400048c)
 
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" void func_020b0808(s32 sine, s32 cosine);
 
 /*
@@ -69,8 +69,8 @@ extern "C" void func_ov042_021ffd78(void *unused, const s32 *transform,
     *(volatile u32 *)0x04000470 = transform[1];
     s32 tableIndex = (angle >> 4) * 2;
     *(volatile u32 *)0x04000470 = 0;
-    func_020b0808(data_020c9670[tableIndex],
-                  data_020c9670[tableIndex + 1]);
+    func_020b0808(gFx32CosSinTable[tableIndex],
+                  gFx32CosSinTable[tableIndex + 1]);
     *(volatile u32 *)0x04000500 = 1;
     *(volatile u32 *)0x04000480 = polygonAttributes;
     func_ov042_021ffd44(textureCoordinates[0], textureCoordinates[1]);

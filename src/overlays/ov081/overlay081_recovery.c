@@ -36,7 +36,7 @@ typedef void (*Overlay081TargetMethod)(void *, void *, s32);
 typedef void (*Overlay081ResourceMethod)(void *, void *);
 
 extern void *data_020f4e18;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u8 *gGamePhaseRuntime;
 extern u8 gActorRuntimeCollection[];
 extern void *gDebugFont;
@@ -562,8 +562,8 @@ void func_ov081_02213370(void *actor, const void *target)
         if ((FIELD(u32, actor, 0x14) & 0x40) != 0)
             speed = func_020befec(speed, 10);
         angle = func_020ae024(delta.y, delta.x) >> 4;
-        FIELD(s32, actor, 0x3c) = speed * data_020c9670[angle * 2 + 1] >> 12;
-        FIELD(s32, actor, 0x40) = speed * data_020c9670[angle * 2] >> 12;
+        FIELD(s32, actor, 0x3c) = speed * gFx32CosSinTable[angle * 2 + 1] >> 12;
+        FIELD(s32, actor, 0x40) = speed * gFx32CosSinTable[angle * 2] >> 12;
     } else {
         if (FIELD(s16, actor, 0xd8) == 7) {
             FIELD(s32, actor, 0x8c) = FIELD(s32, actor, 0x3c) / 2;
@@ -764,8 +764,8 @@ s32 func_ov081_022138c8(void *actor)
         angle = (s32)(genrand_int32() & 0xffff) >> 4;
         distance = (s32)(func_020bf1f8(genrand_int32(), 0x60000) >> 32) +
                    0x18000;
-        FIELD(s32, actor, 0x7c) += distance * data_020c9670[angle * 2 + 1];
-        FIELD(s32, actor, 0x80) += distance * data_020c9670[angle * 2];
+        FIELD(s32, actor, 0x7c) += distance * gFx32CosSinTable[angle * 2 + 1];
+        FIELD(s32, actor, 0x80) += distance * gFx32CosSinTable[angle * 2];
         FIELD(s32, actor, 0x84) = Actor_QueryTerrainHeight(
                                        actor, FIELD(s32, actor, 0x7c) >> 16,
                                        FIELD(s32, actor, 0x80) >> 16)
@@ -798,8 +798,8 @@ s32 func_ov081_022139dc(void *actor)
     if (FIELD(s32, actor, 0x230) == 0) {
         VecFx32Object_Assign((u8 *)actor + 0x78, (u8 *)actor + 0x214);
         angle = (s32)(genrand_int32() & 0xffff) >> 4;
-        FIELD(s32, actor, 0x7c) += data_020c9670[angle * 2 + 1] << 19;
-        FIELD(s32, actor, 0x80) += data_020c9670[angle * 2] << 19;
+        FIELD(s32, actor, 0x7c) += gFx32CosSinTable[angle * 2 + 1] << 19;
+        FIELD(s32, actor, 0x80) += gFx32CosSinTable[angle * 2] << 19;
         FIELD(void *, actor, 0x210) = 0;
     }
     return Overlay081_UpdateMotionState(actor);
@@ -814,8 +814,8 @@ s32 func_ov081_02213aac(void *actor)
     if (FIELD(s32, actor, 0x230) == 0) {
         VecFx32Object_Assign((u8 *)actor + 0x78, (u8 *)actor + 0x214);
         angle = (s32)(genrand_int32() & 0xffff) >> 4;
-        FIELD(s32, actor, 0x7c) += data_020c9670[angle * 2 + 1] << 19;
-        FIELD(s32, actor, 0x80) += data_020c9670[angle * 2] << 19;
+        FIELD(s32, actor, 0x7c) += gFx32CosSinTable[angle * 2 + 1] << 19;
+        FIELD(s32, actor, 0x80) += gFx32CosSinTable[angle * 2] << 19;
         FIELD(void *, actor, 0x210) = 0;
     }
     return Overlay081_UpdateMotionState(actor);

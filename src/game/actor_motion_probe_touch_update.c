@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Update randomized probe motion, attachment oscillation, and a forwarded touch point. */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -46,7 +46,7 @@ static s32 centeredRandom(s32 range)
  * and retain the target at +0x220. While the timer remains nonnegative, add
  * delta +0x230 into current vector +0x210 instead.
  *
- * Advance phase halfword +0x208 by +0x254, sample data_020c9670 at recovered
+ * Advance phase halfword +0x208 by +0x254, sample gFx32CosSinTable at recovered
  * doubled index (phase>>4), scale it by +0x250 * +0x20c, and add that vertical
  * oscillation to current vector. Apply current X/Y offsets to attachment
  * halfwords +0x2c/+0x2e and screen-position words +0x04/+0x08. Build a TouchPoint using
@@ -95,7 +95,7 @@ void ActorMotionProbe_UpdateTouchMotion(void *screenPosition, void *self,
 
     *(u16 *)(actor + 0x208) += (u16)*(s32 *)(actor + 0x254);
     oscillation = multiplyFxRound(
-        data_020c9670[((u16)*(u16 *)(actor + 0x208) >> 4) * 2],
+        gFx32CosSinTable[((u16)*(u16 *)(actor + 0x208) >> 4) * 2],
         *(s32 *)(actor + 0x250) * *(s32 *)(actor + 0x20c));
     *(s16 *)(attachment + 0x2c) =
         (s16)(baseX + (*(s32 *)(actor + 0x214) >> 12));

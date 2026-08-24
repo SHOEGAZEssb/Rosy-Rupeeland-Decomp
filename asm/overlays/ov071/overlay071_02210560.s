@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov071/overlay071_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Assign
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020a1794
@@ -202,5 +202,5 @@ func_ov071_02210560:
     movne r0, #0x0
     strne r0, [r4, #0xcc]
     ldmia sp!, {r4, pc}
-.L_02210838: .word data_020c9670
+.L_02210838: .word gFx32CosSinTable
 .size func_ov071_02210560, . - func_ov071_02210560

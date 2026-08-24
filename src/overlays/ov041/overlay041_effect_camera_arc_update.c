@@ -14,7 +14,7 @@ u32 genrand_int32(void);
 void func_ov041_02202a70(void *);
 void Sound_Play(void *, s32, s32);
 extern void *gSoundContext;
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 }
 
 /*
@@ -39,7 +39,7 @@ extern "C" void func_ov041_0220232c(void *object)
         Sound_Play(gSoundContext, 0x12d, 11);
 
     u32 direction = ((u16)phase >> 4) * 2;
-    s32 sample = data_020c9670[direction + 1];
+    s32 sample = gFx32CosSinTable[direction + 1];
     s32 viewOffset =
         FIELD(s32, view, 0x15c) - FIELD(s32, owner, 0x194);
     FIELD(s32, object, 0x70) =

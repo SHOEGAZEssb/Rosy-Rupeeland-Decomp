@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_auxiliary_presentation_update.c.
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020c3dfc
 .extern data_020e1e60
 .extern data_020e1e62
@@ -64,7 +64,7 @@ Type7AuxiliaryPresentation_UpdateMotion: ; 0x0204c96c
     str r1, [r0, #0x18]
     str r1, [r0, #0x14]
     bx lr
-.L_0204ca3c: .word data_020c9670
+.L_0204ca3c: .word gFx32CosSinTable
 .size Type7AuxiliaryPresentation_UpdateMotion, . - Type7AuxiliaryPresentation_UpdateMotion
 
     .global Type7AuxiliaryPresentation_UpdateAnimationAndPosition

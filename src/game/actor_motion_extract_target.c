@@ -28,7 +28,7 @@ void ActorMotion_GetBoundActorTargetPosition(VecFx32Object *result, const ActorM
     if (*(u8 *)(actor + 0x4d) == 1) {
         result->value.x = *(s32 *)(actor + 0x1c) +
                           *(s32 *)(actor + 0x23c);
-        if (self->field_30 & 8) {
+        if (self->flags & ACTOR_MOTION_FLAG_ALTERNATE_TARGET_Y) {
             s32 offset = *(s32 *)(actor + 0x240);
             s32 adjustment = Actor_GetCachedTerrainHeight(actor);
             actor = (u8 *)self->actor;

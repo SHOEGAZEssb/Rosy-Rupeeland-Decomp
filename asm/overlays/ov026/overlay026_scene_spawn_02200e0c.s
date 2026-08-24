@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_scene_spawn.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov026_02204acc
 .extern GraphicsAnimationInstanceManager_CreateInstance
 .extern func_0209189c
@@ -140,7 +140,7 @@ L_02200e54:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
 L_02200fdc: .word data_ov026_02204acc
 L_02200fe0: .word gHeapContext
-L_02200fe4: .word data_020c9670
+L_02200fe4: .word gFx32CosSinTable
 L_02200fe8: .word 0x333
 L_02200fec: .word 0x19a
 L_02200ff0: .word 0x666

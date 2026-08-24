@@ -28,7 +28,7 @@ void func_0209ca90(void *, const Point2 *, s32, u16, s32);
 void func_ov008_021fbe0c(void *, const void *);
 u16 func_ov041_0220333c(void *, s32);
 u32 genrand_int32(void);
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 }
 
 /*
@@ -59,7 +59,7 @@ static const Point2 sEffectUv[34] = {
 static Point2 direction_pair(s32 direction)
 {
     u32 index = ((u16)direction >> 4) * 2;
-    Point2 result = {data_020c9670[index], data_020c9670[index + 1]};
+    Point2 result = {gFx32CosSinTable[index], gFx32CosSinTable[index + 1]};
     return result;
 }
 

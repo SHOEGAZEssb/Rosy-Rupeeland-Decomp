@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *data_020f4e18;
 extern const u8 data_ov026_022049b4[];
 extern const u8 data_ov026_02204a40[];
@@ -60,8 +60,8 @@ extern "C" void func_ov026_021fe72c(void *object)
         s32 y1 = FIELD(s32, object, 0xac) - FIELD(s32, object, 0xa4) +
                  func_0209189c((u8 *)object + 0xc0,
                                 -FIELD(s32, object, 0xa8));
-        s32 x = (data_020c9670[table_index * 2] * radius + 0x800) >> 12;
-        s32 z = (data_020c9670[table_index * 2 + 1] * radius + 0x800) >> 12;
+        s32 x = (gFx32CosSinTable[table_index * 2] * radius + 0x800) >> 12;
+        s32 z = (gFx32CosSinTable[table_index * 2 + 1] * radius + 0x800) >> 12;
         *(volatile u32 *)0x0400048c = (u16)y0 | ((u32)(u16)x << 16);
         *(volatile u32 *)0x0400048c = (u16)y1 | ((u32)(u16)x << 16);
         *(volatile u32 *)0x04000494 = (u16)z | ((u32)(u16)y0 << 16);

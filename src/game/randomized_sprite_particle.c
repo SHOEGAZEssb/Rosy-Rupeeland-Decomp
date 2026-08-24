@@ -26,7 +26,7 @@ typedef struct RandomizedSpriteParticle {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u32 genrand_int32(void);
 extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_InitComponents(void *, s32, s32, s32);
@@ -108,9 +108,9 @@ s32 func_02028998(RandomizedSpriteParticle *self, const void *projection)
     angle = func_020ae024(difference.z, difference.y) >> 4;
     tableIndex = angle * 2;
     self->steering_30.y =
-        func_020adc90(data_020c9670[tableIndex + 1], magnitude << 12);
+        func_020adc90(gFx32CosSinTable[tableIndex + 1], magnitude << 12);
     self->steering_30.z =
-        func_020adc90(data_020c9670[tableIndex], magnitude << 12);
+        func_020adc90(gFx32CosSinTable[tableIndex], magnitude << 12);
     self->steering_30.x = 0;
     VecFx32Object_Add(&self->velocity_20, &self->steering_30);
 

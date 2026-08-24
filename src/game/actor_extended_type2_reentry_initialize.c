@@ -5,7 +5,7 @@
  * accumulators, selects one of two launch paths, and rebuilds state-20 context.
  */
 extern u8 data_020df9e8[];
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 extern u16 gActorExtendedType2ReentryAngleAccumulator;
 extern u8 *gGamePhaseRuntime;
 
@@ -31,7 +31,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *manager);
  * +0x3c to a random signed horizontal value, +0x40 to zero, and +0x44 to a
  * random value in [0x2000,0x2fff]. With nonzero variant, advance global angle
  * gActorExtendedType2ReentryAngleAccumulator by 0x1999 plus a random 12-bit value, wrap values above 0x8000,
- * derive a fixed-point 0x2800 vector through data_020c9670, construct a temporary
+ * derive a fixed-point 0x2800 vector through gFx32CosSinTable, construct a temporary
  * vector, pass it to virtual +0xb8 with mode one, and finalize it. Then set
  * +0x25a to 120, enter state 20, invoke virtual +0x5c, resolve the manager
  * resource at gGamePhaseRuntime+0x2fbc and pass it with actor to virtual +0x58 using
@@ -69,8 +69,8 @@ void ActorExtendedType2_InitializeReentryState(void *self, const void *position,
                 gActorExtendedType2ReentryAngleAccumulator -= 0x8000;
             {
                 s32 index = gActorExtendedType2ReentryAngleAccumulator >> 4;
-                s32 x = (s32)(((s64)data_020c9670[index * 2 + 1] * 0x2800 + 0x800) >> 12);
-                s32 y = (s32)(((s64)data_020c9670[index * 2] * 0x2800 + 0x800) >> 12);
+                s32 x = (s32)(((s64)gFx32CosSinTable[index * 2 + 1] * 0x2800 + 0x800) >> 12);
+                s32 y = (s32)(((s64)gFx32CosSinTable[index * 2] * 0x2800 + 0x800) >> 12);
                 s32 vector[4];
                 VecFx32Object_InitComponents(vector, x, y, 0);
                 (*(void (**)(void *, void *, s32))(*(u8 **)actor + 0xb8))

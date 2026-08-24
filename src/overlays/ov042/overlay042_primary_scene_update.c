@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void *gSoundContext;
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" s32 data_ov042_0220b190[];
 extern "C" u8 gDisplayBrightnessPair[];
 extern "C" u32 genrand_int32(void);
@@ -135,7 +135,7 @@ extern "C" void func_ov042_02207114(void *scene)
             wave = 70;
         s32 index = ((((phase + wave) << 22) >> 16) >> 4) * 2 + 1;
         set_display_bit4(primaryDisplay, 0);
-        s32 scale = 0x100 - (data_020c9670[index] >> 4);
+        s32 scale = 0x100 - (gFx32CosSinTable[index] >> 4);
         set_display_scale(primaryDisplay, scale);
         FIELD(u16, animation_of(primaryDisplay), 0x30) = 0;
         if (++FIELD(s32, scene, 0x1b0) > 180) {
@@ -174,7 +174,7 @@ extern "C" void func_ov042_02207114(void *scene)
             }
             s32 fadeTick = tick - 60;
             s32 phase = (fadeTick * 200) & 0xffff;
-            s32 scale = 0x100 - (data_020c9670[(phase >> 4) * 2] >> 4);
+            s32 scale = 0x100 - (gFx32CosSinTable[(phase >> 4) * 2] >> 4);
             if (scale < 0x10) {
                 scale = 0x10;
                 set_display_bit4(primaryDisplay, 1);

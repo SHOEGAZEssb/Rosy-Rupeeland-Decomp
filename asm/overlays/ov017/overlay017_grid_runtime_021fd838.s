@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_grid_runtime.c. */
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern func_020b0808
     .extern func_020b0844
     .extern func_020b0880
@@ -61,7 +61,7 @@ Overlay017Transform_SubmitGeometry:
     str r3, [r0, #0x0]
     ldmia sp!, {r4, pc}
 L_021fd90c: .word 0x4000470
-L_021fd910: .word data_020c9670
+L_021fd910: .word gFx32CosSinTable
 L_021fd914: .word 0x400046c
     .size Overlay017Transform_SubmitGeometry, . - Overlay017Transform_SubmitGeometry
 

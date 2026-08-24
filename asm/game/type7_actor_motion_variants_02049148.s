@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_motion_variants.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_Assign
 .extern Actor_GetCachedTerrainHeight
 .extern Type7Actor_UpdateMotionTowardTransform
@@ -106,7 +106,7 @@ Type7Actor_UpdateRandomOffsetMotion: ; 0x02049148
 .L_02049290:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.L_02049298: .word data_020c9670
+.L_02049298: .word gFx32CosSinTable
 .size Type7Actor_UpdateRandomOffsetMotion, . - Type7Actor_UpdateRandomOffsetMotion
 
     .global Type7Actor_UpdateRandomOffsetMotionVariant
@@ -202,7 +202,7 @@ Type7Actor_UpdateRandomOffsetMotionVariant: ; 0x0204929c
 .L_020493ec:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.L_020493f4: .word data_020c9670
+.L_020493f4: .word gFx32CosSinTable
 .size Type7Actor_UpdateRandomOffsetMotionVariant, . - Type7Actor_UpdateRandomOffsetMotionVariant
 
     .global Type7Actor_UpdateRelatedTargetMotion

@@ -4,7 +4,7 @@
 .extern Sound_Play
 .extern data_020c3d80
 .extern data_020c3d88
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020d37dc
 .extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
@@ -571,7 +571,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
     add sp, sp, #0x70
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02037264: .word gSystemState
-.L_02037268: .word data_020c9670
+.L_02037268: .word gFx32CosSinTable
 .L_0203726c: .word gActorTargetSelectionCandidates
 .L_02037270: .word gActorTargetSelectionMetadata
 .L_02037274: .word gGamePhaseRuntime

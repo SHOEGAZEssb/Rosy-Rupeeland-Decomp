@@ -105,7 +105,7 @@ extern s32 AuxiliaryCoreHistoryRecord_Advance(void *record);
 extern void AuxiliaryCoreHistoryRecord_ReleaseSprite(void *record);
 extern void AuxiliaryCoreHistoryRecord_ProjectSprite(void *record);
 extern s32 func_020adc40(s32 value);
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern void *gTouchPanelManager;
 extern void *gSceneTouchInitialData;
 extern void TouchPanelManager_GetPoint(void *point, void *initialData);
@@ -862,7 +862,7 @@ void AuxiliaryCore_UpdateMotion(void *object, const void *requestedPosition)
             if (*(s32 *)(self + 0x300) < 0)
                 *(s32 *)(self + 0x300) = 0;
             *(s32 *)(self + 0x2fc) =
-                -data_020c9670[(*(s32 *)(self + 0x300) >> 4) * 2];
+                -gFx32CosSinTable[(*(s32 *)(self + 0x300) >> 4) * 2];
         }
     } else {
         if ((*(u16 *)(self + 0x2ee) & 2) == 0)
@@ -1038,9 +1038,9 @@ void func_0206c1b4(void *recordObject, void *coreObject, const void *position,
             record[0x26] == 1 ? 0x59 : 0x40;
         direction = (angle >> 4) * 2;
         *(s32 *)(record + 0x18) =
-            func_020adae4(data_020c9670[direction] * 2, record[0x26]);
+            func_020adae4(gFx32CosSinTable[direction] * 2, record[0x26]);
         *(s32 *)(record + 0x1c) =
-            func_020adae4(data_020c9670[direction + 1] * 2, record[0x26]);
+            func_020adae4(gFx32CosSinTable[direction + 1] * 2, record[0x26]);
         VecFx32Object_Assign(record + 4, position);
         *(s32 *)(record + 8) += *(s32 *)(record + 0x18) * scale;
         *(s32 *)(record + 12) += *(s32 *)(record + 0x1c) * scale;
@@ -1066,8 +1066,8 @@ void func_0206c1b4(void *recordObject, void *coreObject, const void *position,
             (s16)(func_020ada8c((u16)genrand_int32(), 4) + 0x44);
         scale = (*(s16 *)(core + 0x2e2) *
                  ((s32)func_020ada8c((u16)genrand_int32(), 14) + 14)) >> 8;
-        *(s32 *)(record + 0x18) = data_020c9670[direction] * scale;
-        *(s32 *)(record + 0x1c) = data_020c9670[direction + 1] * scale;
+        *(s32 *)(record + 0x18) = gFx32CosSinTable[direction] * scale;
+        *(s32 *)(record + 0x1c) = gFx32CosSinTable[direction + 1] * scale;
         offset[1] = *(s32 *)(record + 0x18);
         offset[2] = *(s32 *)(record + 0x1c);
         ((s32 *)record)[1] = ((const s32 *)position)[0] + offset[0];
@@ -1119,10 +1119,10 @@ void AuxiliaryCoreSprite_TrackParent(void *object, void *parentObject)
 
     VecFx32Object_InitCopy(target, parent + 8);
     target[1] -= multiplyFx32(
-        multiplyFx32(data_020c9670[angle * 2 + 1], amplitude),
+        multiplyFx32(gFx32CosSinTable[angle * 2 + 1], amplitude),
         0x1000 - vertical);
     target[2] -= multiplyFx32(
-        multiplyFx32(data_020c9670[angle * 2], amplitude),
+        multiplyFx32(gFx32CosSinTable[angle * 2], amplitude),
         vertical + 0x1000);
     for (i = 1; i < 4; i++)
         ((s32 *)self)[i + 2] =
@@ -1158,7 +1158,7 @@ void AuxiliaryCoreSprite_UpdatePulseScale(void *object)
         }
         *(u32 *)(self + 0x44) = (*(u32 *)(self + 0x44) + 0x1000) & 0xffff;
         scale = (scale + *(s32 *)(self + 0x48) + *(s16 *)(sprite + 0x32) * 3) >> 2;
-        scale += ((data_020c9670[(*(u32 *)(self + 0x44) >> 4) * 2] * 8 +
+        scale += ((gFx32CosSinTable[(*(u32 *)(self + 0x44) >> 4) * 2] * 8 +
                    0x4000) * 0x10) >> 16;
         scale = (((func_020adae4(*(s16 *)(core + 0x2e2) - 0x100, 4) +
                    0x100) * 0x10000 >> 16) * scale * 0x100) >> 16;
@@ -2275,8 +2275,8 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
             void *effect;
             initializeEffectConfig(&config, *(void **)(self + 0x0c), descriptor,
                                    owner + 0x18);
-            config.first[1] += data_020c9670[angle * 2 + 1] * 0x10;
-            config.first[2] += data_020c9670[angle * 2] * 0x10 - 0x18000;
+            config.first[1] += gFx32CosSinTable[angle * 2 + 1] * 0x10;
+            config.first[2] += gFx32CosSinTable[angle * 2] * 0x10 - 0x18000;
             animation = (*(s32 (**)(void *))(*(u8 **)actor + 0x1cc))(actor);
             effect = Heap_Alloc(0x40, data_020e5830, 4, &gHeapContext);
             if (effect != 0)
@@ -2304,8 +2304,8 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
         u32 random;
         initializeEffectConfig(&config, *(void **)(self + 0x0c), descriptor,
                                owner + 0x18);
-        config.first[1] += data_020c9670[angle * 2 + 1] * 0x10;
-        config.first[2] += data_020c9670[angle * 2] * 0x10 - 0x18000;
+        config.first[1] += gFx32CosSinTable[angle * 2 + 1] * 0x10;
+        config.first[2] += gFx32CosSinTable[angle * 2] * 0x10 - 0x18000;
         random = genrand_int32();
         effect = Heap_Alloc(0x40, data_020e5830, 4, &gHeapContext);
         if (effect != 0)
@@ -2356,8 +2356,8 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
         }
         initializeEffectConfig(&config, *(void **)(self + 0x0c), descriptor,
                                owner + 0x18);
-        config.first[1] += data_020c9670[angle * 2 + 1] * 0x10;
-        config.first[2] += data_020c9670[angle * 2] * 0x10 - 0x18000;
+        config.first[1] += gFx32CosSinTable[angle * 2 + 1] * 0x10;
+        config.first[2] += gFx32CosSinTable[angle * 2] * 0x10 - 0x18000;
         config.lifetime = 0x23;
         random = genrand_int32();
         effect = Heap_Alloc(0x40, data_020e5830, 4, &gHeapContext);
@@ -2456,8 +2456,8 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
                         s32 cosine;
                         VecFx32Object_InitCopy(position, owner + 0x18);
                         angle = (genrand_int32() & 0xffff) >> 4;
-                        sine = data_020c9670[angle * 2 + 1];
-                        cosine = data_020c9670[angle * 2];
+                        sine = gFx32CosSinTable[angle * 2 + 1];
+                        cosine = gFx32CosSinTable[angle * 2];
                         position[1] += multiplyFx32(sine, 0x50000);
                         position[2] += multiplyFx32(cosine, 0x50000);
                         Graphics3dPresentation_CreatePreset22To24TimedPointSpriteEffectWithHorizontalVelocityAt(presentation, 0, position[1] >> 12,

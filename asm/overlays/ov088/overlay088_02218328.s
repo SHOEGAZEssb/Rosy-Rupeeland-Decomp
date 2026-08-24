@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern data_ov088_0221ba04
 .extern VecFx32Object_InitComponents
@@ -990,7 +990,7 @@ func_ov088_02218328:
 .L_02219130: .word 0x19a
 .L_02219134: .word 0xf85
 .L_02219138: .word 0xfd83
-.L_0221913c: .word data_020c9670
+.L_0221913c: .word gFx32CosSinTable
 .L_02219140: .word gSoundContext
 .L_02219144: .word 0x1fb
 .L_02219148: .word 0xfd85

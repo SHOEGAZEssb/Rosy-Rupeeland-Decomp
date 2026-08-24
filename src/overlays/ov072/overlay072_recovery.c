@@ -42,7 +42,7 @@ extern "C" void *gGamePhaseRuntime;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" u8 data_ov072_022109dc[];
 extern "C" u8 data_ov072_02210a30[];
 extern "C" u8 data_ov072_02210b0c[];
@@ -377,7 +377,7 @@ extern "C" s32 func_ov072_02210214(void *scene)
         if ((FIELD(u16, orbit, 0x24) & 4) == 0) {
             s32 phase = FIELD(s32, scene, 0x50 + i * 4);
             s32 angle = (s32)(((u32)phase << 26) >> 20);
-            s32 wave = data_020c9670[angle * 2];
+            s32 wave = gFx32CosSinTable[angle * 2];
             s32 delta = (wave + ((u32)(wave >> 9) >> 22)) >> 10;
             GraphicsSpriteState_SetScreenPositionCulled(
                 orbit, FIELD(s16, central, 0x2c) + delta,

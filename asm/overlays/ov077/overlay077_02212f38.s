@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -113,5 +113,5 @@ func_ov077_02212f38:
 .L_022130ac:
     add sp, sp, #0x28
     ldmia sp!, {r4, pc}
-.L_022130b4: .word data_020c9670
+.L_022130b4: .word gFx32CosSinTable
 .size func_ov077_02212f38, . - func_ov077_02212f38

@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const s32 data_ov017_02201414[];
 extern u8 data_ov017_022016e0[];
 
@@ -74,8 +74,8 @@ extern "C" void func_ov017_021fda64(void *state)
         if (distanceSquared > boundary * boundary) {
             u16 angle = func_020ae024(x, z) + 0x4000;
             s32 index = angle >> 4;
-            s32 nx = data_020c9670[index * 2];
-            s32 nz = data_020c9670[index * 2 + 1];
+            s32 nx = gFx32CosSinTable[index * 2];
+            s32 nz = gFx32CosSinTable[index * 2 + 1];
             s32 projection = fxMul(nx, vx) + fxMul(nz, vz);
             vx += (fxMul(nx, projection) - vx) * 2;
             vz += (fxMul(nz, projection) - vz) * 2;

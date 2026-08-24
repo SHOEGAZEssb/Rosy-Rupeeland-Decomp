@@ -1,5 +1,5 @@
     .text
-    .extern data_020c9670
+    .extern gFx32CosSinTable
     .extern data_ov008_021fc25c
     .extern VecFx32Object_InitCopy
     .extern VecFx32Object_Destroy
@@ -290,6 +290,6 @@ L_021fc238:
     add sp, sp, #0x1ec
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fc250: .word data_ov008_021fc25c
-L_021fc254: .word data_020c9670
+L_021fc254: .word gFx32CosSinTable
 
     .size func_ov008_021fbe0c, . - func_ov008_021fbe0c

@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern Sound_Play
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020d6740
 .extern gArcingSpriteEffectAllocationTag
 .extern data_02105610
@@ -155,7 +155,7 @@ func_020236a0: ; 0x020236a0
     movne r0, #0x0
     add sp, sp, #0x14
     ldmia sp!, {r3, r4, pc}
-.L_02023884: .word data_020c9670
+.L_02023884: .word gFx32CosSinTable
 .L_02023888: .word data_02105610
 .L_0202388c: .word gSoundContext
     .size func_020236a0, .-func_020236a0

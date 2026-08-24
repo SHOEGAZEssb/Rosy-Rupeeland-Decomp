@@ -11,7 +11,7 @@ extern "C" void *data_020f4e14[];
 extern "C" void *data_020f4e18[];
 extern "C" void *gDebugFont;
 extern "C" u8 gHeapContext[];
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" u8 data_ov050_0220e3c0[];
 extern "C" u8 data_ov050_0220e3e8[];
 extern "C" u8 data_ov050_0220e3f0[];
@@ -212,7 +212,7 @@ extern "C" s32 Overlay050Scene_Update(void *scene)
     FIELD(s32, scene, 0x48) += FIELD(s32, scene, 0x44);
     for (index = 0; index < 4; ++index) {
         u16 phase = (u16)((index << 14) + (u16)FIELD(s32, scene, 0x48));
-        s32 sample = data_020c9670[(phase >> 4) * 2 + 1];
+        s32 sample = gFx32CosSinTable[(phase >> 4) * 2 + 1];
         s32 offset[4];
         s32 transformed[4];
         void *child = FIELD(void *, scene, 0x1c + index * 4);

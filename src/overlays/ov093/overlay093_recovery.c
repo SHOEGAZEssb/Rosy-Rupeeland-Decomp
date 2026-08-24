@@ -71,7 +71,7 @@ extern "C" void *gHeapContext;
 extern "C" void *gSceneManager;
 extern "C" void *gSoundContext;
 extern "C" u8 gDisplayBrightnessPair[];
-extern "C" const s16 data_020c9670[];
+extern "C" const s16 gFx32CosSinTable[];
 extern "C" const u8 data_ov093_022187f0[];
 extern "C" u8 data_ov093_022188f0[];
 extern "C" u8 data_ov093_022189e0[];
@@ -462,7 +462,7 @@ extern "C" void func_ov093_02218514(void *unused, void *actor)
     GraphicsSpriteState_SetDepthOrderedWorldPosition(
         FIELD(void *, actor, 0x204), 0x180000,
         FIELD(s32, actor, 0x24c) + 0x240000 +
-            data_020c9670[(FIELD(u16, actor, 0x23c) >> 4) * 2] * 3,
+            gFx32CosSinTable[(FIELD(u16, actor, 0x23c) >> 4) * 2] * 3,
         0, 4);
     FIELD(u8, FIELD(void *, actor, 0x204), 0x3a) = 2;
     GraphicsSpriteState_SetDepthOrderedWorldPosition(

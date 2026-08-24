@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov036_02206148[];
 extern void *gHeapContext;
 extern void *gSoundContext;
@@ -49,7 +49,7 @@ static u16 pack_color(s32 red, s32 green, s32 blue)
  * Advances the randomized effect's seven-state sequence at +0xAC. States 0/1
  * emit intermittent single motion primitives until the common timer ends;
  * state 2 waits four frames; state 3 emits a 16-way radial burst using
- * data_020c9670; state 4 updates an optional handle and starts a sound/scale
+ * gFx32CosSinTable; state 4 updates an optional handle and starts a sound/scale
  * transition; state 5 fades that handle and sets its flag bit 2; state 6
  * reports completion. The embedded list +0x9C is updated on every nonterminal
  * return. Returns one only in state 6, otherwise zero. It advances RNG/timers,
@@ -154,8 +154,8 @@ extern "C" s32 func_ov036_021fe3c0(void *object)
             u16 angle = (u16)(i << 9);
             s32 index = (angle >> 4) * 2;
             func_ov036_021fe968(particle,
-                                mul_q12_round(speed, data_020c9670[index]),
-                                mul_q12_round(speed, data_020c9670[index + 1]),
+                                mul_q12_round(speed, gFx32CosSinTable[index]),
+                                mul_q12_round(speed, gFx32CosSinTable[index + 1]),
                                 0);
             PresentationScalar_SetImmediate((u8 *)particle + 0x5c, (u16)-angle);
             PresentationScalar_SetImmediate((u8 *)particle + 0x6c, scale);

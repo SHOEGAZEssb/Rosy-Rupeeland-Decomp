@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_periodic_spawn.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov026_02204ad4
 .extern TitleRandom_NextBounded
 .extern PresentationList_Append
@@ -95,7 +95,7 @@ L_0220125c:
 L_02201268:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
-L_02201270: .word data_020c9670
+L_02201270: .word gFx32CosSinTable
 L_02201274: .word 0x19a
 L_02201278: .word data_ov026_02204ad4
 L_0220127c: .word gHeapContext

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
 .extern SceneManager_GetCurrent
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020f4e14
 .extern gGamePhaseRuntime
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
@@ -221,5 +221,5 @@ Overlay065Scene_Update:
 .L_022108e8: .word gDebugFont
 .L_022108ec: .word gGamePhaseRuntime
 .L_022108f0: .word gGamePhaseCurrencyHud
-.L_022108f4: .word data_020c9670
+.L_022108f4: .word gFx32CosSinTable
 .size Overlay065Scene_Update, . - Overlay065Scene_Update

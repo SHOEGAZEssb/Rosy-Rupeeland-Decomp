@@ -5,7 +5,7 @@
  * temporary destination, runs target acquisition, and updates directional
  * motion through the shared motion helper.
  */
-extern s16 data_020c9670[];
+extern s16 gFx32CosSinTable[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +28,7 @@ extern void Type7Actor_ResetInteractionState(void *actor);
  * +0xd0/2. When signed counter +0x248 is zero, copy +0x214 to temporary
  * transform +0x78, draw a 16-bit direction and a sign-cleared random magnitude
  * modulo 0x80 for record subtype two or 0x18 otherwise, and add the corresponding
- * data_020c9670 direction components directly to +0x7c/+0x80. Save
+ * gFx32CosSinTable direction components directly to +0x7c/+0x80. Save
  * Actor_GetCachedTerrainHeight(actor) at +0x84 and null related object +0x210.
  *
  * Try Type7Actor_TryInstallGlobalTargetCallback,
@@ -59,9 +59,9 @@ s32 Type7Actor_UpdateRandomMotionState(void *self)
             (s32)(genrand_int32() & 0x7fffffff), modulus);
         index = (s32)direction >> 4;
         *(s32 *)(actor + 0x7c) +=
-            magnitude * data_020c9670[index * 2 + 1];
+            magnitude * gFx32CosSinTable[index * 2 + 1];
         *(s32 *)(actor + 0x80) +=
-            magnitude * data_020c9670[index * 2];
+            magnitude * gFx32CosSinTable[index * 2];
         *(s32 *)(actor + 0x84) = Actor_GetCachedTerrainHeight(actor);
         *(void **)(actor + 0x210) = 0;
     }

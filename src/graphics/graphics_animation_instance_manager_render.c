@@ -18,7 +18,7 @@ extern void GraphicsAnimationInstance_Render(GraphicsAnimationInstance *instance
                           void *renderContext);
 
 #ifndef MATCHING
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern u8 data_021f38a0[];
 extern void *memcpy(void *destination, const void *source, u32 size);
 extern void Graphics3DCommand_SetPolygonAttr(u32 lightMask, u32 polygonMode,
@@ -107,14 +107,14 @@ void GraphicsAnimationInstance_Render(GraphicsAnimationInstance *instance, void 
         func_020b00f0((const s32 *)render_context);
 
     index = (u16)instance->field_48 >> 4;
-    func_020b0880(data_020c9670[index * 2],
-                  data_020c9670[index * 2 + 1]);
+    func_020b0880(gFx32CosSinTable[index * 2],
+                  gFx32CosSinTable[index * 2 + 1]);
     index = (u16)instance->field_4a >> 4;
-    func_020b0844(data_020c9670[index * 2],
-                  data_020c9670[index * 2 + 1]);
+    func_020b0844(gFx32CosSinTable[index * 2],
+                  gFx32CosSinTable[index * 2 + 1]);
     index = (u16)instance->field_4c >> 4;
-    func_020b0808(data_020c9670[index * 2],
-                  data_020c9670[index * 2 + 1]);
+    func_020b0808(gFx32CosSinTable[index * 2],
+                  gFx32CosSinTable[index * 2 + 1]);
     *scale = scale_x;
     *scale = scale_y;
     *scale = 0x1000;

@@ -26,7 +26,7 @@ extern "C" u8 data_ov095_0221d1a4[];
 extern "C" u8 data_ov095_0221d288[];
 extern "C" u8 data_ov095_0221d2e8[];
 extern "C" u8 data_ov095_0221d3cc[];
-extern "C" u8 data_020c9670[];
+extern "C" u8 gFx32CosSinTable[];
 extern "C" u8 data_020e6adc[];
 extern "C" u8 data_020e6b74[];
 extern "C" void *gActorRuntimeCollection;
@@ -733,7 +733,7 @@ extern "C" void func_ov095_0221aedc(void *actor, s32 base, s32 amplitude)
 {
     u32 tableOffset = ((u16)F(s16, actor, 0x2dc) & 0x3f) << 8;
     F(s32, actor, 0x24) =
-        base + amplitude * F(s16, data_020c9670, tableOffset);
+        base + amplitude * F(s16, gFx32CosSinTable, tableOffset);
 }
 
 /* Removes linked encounter objects found within the supplied world radius. */
@@ -1601,8 +1601,8 @@ extern "C" void func_ov095_0221c8e8(void *actor)
     }
     Actor_TurnTowardVector(actor, dx, dy, 0x80);
     u32 angle = (u16)F(u32, actor, 0xc8) >> 4;
-    s32 xDirection = F(s16, data_020c9670, angle * 4);
-    s32 yDirection = F(s16, data_020c9670, angle * 4 + 2);
+    s32 xDirection = F(s16, gFx32CosSinTable, angle * 4);
+    s32 yDirection = F(s16, gFx32CosSinTable, angle * 4 + 2);
     F(s32, actor, 0x3c) =
         (s32)(((s64)xDirection * -0x119a + 0x800) >> 12);
     F(s32, actor, 0x40) =

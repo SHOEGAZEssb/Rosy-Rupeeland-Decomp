@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov026/overlay026_particle_renderer.c. */
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_0209189c
 .extern TitleRandom_NextBounded
 .extern func_ov026_021fd900
@@ -126,7 +126,7 @@ L_021fe8c8:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fe8f0: .word 0x4000444
-L_021fe8f4: .word data_020c9670
+L_021fe8f4: .word gFx32CosSinTable
 L_021fe8f8: .word 0x4000504
 .size func_ov026_021fe72c, .-func_ov026_021fe72c
 

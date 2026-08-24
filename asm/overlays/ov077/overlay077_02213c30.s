@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern data_ov077_02216f4c
 .extern data_ov077_02216f64
@@ -457,7 +457,7 @@ func_ov077_02213c30:
 .L_02214274:
     add sp, sp, #0x4c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0221427c: .word data_020c9670
+.L_0221427c: .word gFx32CosSinTable
 .L_02214280: .word data_ov077_022170d8
 .L_02214284: .word gGamePhaseRuntime
 .L_02214288: .word data_ov077_02216f4c

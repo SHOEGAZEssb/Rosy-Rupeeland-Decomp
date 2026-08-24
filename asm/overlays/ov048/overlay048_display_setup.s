@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov048/overlay048_display_recovery.c.
 .extern GXS_SetGraphicsMode
 .extern GX_SetGraphicsMode
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern func_020925f8
 .extern func_02092638
 .extern func_02092688
@@ -134,7 +134,7 @@ func_ov048_0220b7b8:
 .L_0220b980: .word 0xffffcffd
 .L_0220b984: .word 0xcfdf
 .L_0220b988: .word 0x4000050
-.L_0220b98c: .word data_020c9670
+.L_0220b98c: .word gFx32CosSinTable
 .L_0220b990: .word 0x400100c
 .L_0220b994: .word 0xc0000c00
 .L_0220b998: .word 0x4000540

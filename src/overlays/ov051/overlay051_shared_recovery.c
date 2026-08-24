@@ -14,7 +14,7 @@ extern "C" void func_020ad274(const void *source, void *destination,
                                s32 first, s32 second);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" u8 data_ov051_0220df70[];
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" u8 gSystemState[];
 
 /* Initialize caller-owned `scene`, construct both embedded record arrays, set
@@ -66,8 +66,8 @@ extern "C" void func_ov051_0220d688(void *scene)
         u32 lookup = *angle >> 4;
 
         func_020ad250(record);
-        func_020ad268(record, data_020c9670[lookup * 2],
-                      data_020c9670[lookup * 2 + 1]);
+        func_020ad268(record, gFx32CosSinTable[lookup * 2],
+                      gFx32CosSinTable[lookup * 2 + 1]);
         func_020ad274(record, record, scalar, scalar);
     }
 }
@@ -104,9 +104,9 @@ extern "C" s32 func_ov051_0220d7bc(const void *rangeValue, s32 index,
     s64 product;
 
     if (mode == 0)
-        factor = data_020c9670[((phase >> 4) * 2 + 1)];
+        factor = gFx32CosSinTable[((phase >> 4) * 2 + 1)];
     else if (mode == 1)
-        factor = data_020c9670[(phase >> 4) * 2];
+        factor = gFx32CosSinTable[(phase >> 4) * 2];
     else
         return 0;
     product = (s64)factor * range[0] + 0x800;

@@ -9,7 +9,7 @@
 
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *resource, u8 mode);
 extern "C" u32 genrand_int32(void);
-extern "C" s16 data_020c9670[];
+extern "C" s16 gFx32CosSinTable[];
 extern "C" void func_0209a07c(void *child);
 
 /*
@@ -69,8 +69,8 @@ extern "C" void func_ov042_021fd924(void *object, s32 kind,
     u16 angle = (u16)genrand_int32();
     FIELD(u16, object, 0x9ac + index * 2) = angle;
     s32 tableIndex = (angle >> 4) * 2;
-    s16 first = data_020c9670[tableIndex];
-    s16 second = data_020c9670[tableIndex + 1];
+    s16 first = gFx32CosSinTable[tableIndex];
+    s16 second = gFx32CosSinTable[tableIndex + 1];
     func_ov042_021fda0c((u8 *)object + 0x4c + index * 12, source);
     s32 scale = kind == 1 ? 12 : 8;
     FIELD(s32, object, 0x500 + index * 12) = second * scale;

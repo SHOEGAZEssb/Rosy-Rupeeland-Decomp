@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/launched_sprite_pair_presentation.c.
 .text
 .extern GameWork_TestFlag
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020f4e18
 .extern DisplayController_GetVerticalOffset
 .extern func_02071ee0
@@ -221,5 +221,5 @@ func_02024e24: ; 0x02024e24
 .L_02025110: .word 0x385
 .L_02025114: .word 0x115c
 .L_02025118: .word data_020f4e18
-.L_0202511c: .word data_020c9670
+.L_0202511c: .word gFx32CosSinTable
     .size func_02024e24, . - func_02024e24

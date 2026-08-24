@@ -2,7 +2,7 @@
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_terminal_effect_burst.c.
 .extern Heap_Alloc
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern gGamePhaseRuntime
 .extern data_ov090_0221cc00
 .extern VecFx32Object_InitComponents
@@ -273,7 +273,7 @@ func_ov090_0221b428:
 .L_0221b7c8: .word data_ov090_0221cc00
 .L_0221b7cc: .word gHeapContext
 .L_0221b7d0: .word 0x1719
-.L_0221b7d4: .word data_020c9670
+.L_0221b7d4: .word gFx32CosSinTable
 .L_0221b7d8: .word gSoundContext
 .L_0221b7dc: .word 0xa10c
 .size func_ov090_0221b428, . - func_ov090_0221b428

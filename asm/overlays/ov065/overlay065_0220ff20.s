@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov065/overlay065_recovery.c.
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_ov065_02210c00
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
@@ -185,7 +185,7 @@ Overlay065Particle_Update:
     moveq r0, #0x0
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_022101b0: .word data_020c9670
+.L_022101b0: .word gFx32CosSinTable
 .L_022101b4: .word data_ov065_02210c00
 .L_022101b8: .word gSoundContext
 .size Overlay065Particle_Update, . - Overlay065Particle_Update

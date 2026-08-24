@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_frame_update.c.
 .text
-.extern data_020c9670
+.extern gFx32CosSinTable
 .extern data_020df9e8
 .extern data_020dfa40
 .extern data_020dfa48
@@ -566,6 +566,6 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
 .L_0203ef4c: .word data_020e8380
 .L_0203ef50: .word 0x333
 .L_0203ef54: .word 0x11f
-.L_0203ef58: .word data_020c9670
+.L_0203ef58: .word gFx32CosSinTable
 .L_0203ef5c: .word data_020dfa48
     .size ActorExtendedType2_UpdateFrame, . - ActorExtendedType2_UpdateFrame

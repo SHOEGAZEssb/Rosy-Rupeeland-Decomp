@@ -3,7 +3,7 @@
 /* Overlay 94's mode-dependent paired directional effect; coordinates are Q12. */
 
 extern void *data_020f4e18;
-extern const s16 data_020c9670[];
+extern const s16 gFx32CosSinTable[];
 extern const u8 data_ov094_02219e80[];
 extern void *gGameWork;
 
@@ -180,10 +180,10 @@ extern "C" s32 func_ov094_0221807c(void *effect)
                 s32 index = (s32)(angle & 0xffff) >> 4;
                 PresentationScalar_TransitionTo(
                     (u8 *)effect + 0x0c, 4,
-                    baseX + data_020c9670[index * 2] * 0x60);
+                    baseX + gFx32CosSinTable[index * 2] * 0x60);
                 PresentationScalar_TransitionTo(
                     (u8 *)effect + 0x1c, 4,
-                    baseY + data_020c9670[index * 2 + 1] * 0x60);
+                    baseY + gFx32CosSinTable[index * 2 + 1] * 0x60);
                 *(s32 *)((u8 *)effect + 0x7c) = 0x14;
                 *(s32 *)((u8 *)effect + 0x80) = 0;
                 ++*state;
@@ -231,10 +231,10 @@ extern "C" s32 func_ov094_0221807c(void *effect)
             PresentationScalar_TransitionTo((u8 *)effect + 0x6c, 1, 0x10);
             PresentationScalar_TransitionTo(
                 (u8 *)effect + 0x0c, 4,
-                baseX + data_020c9670[index * 2] * 0x80);
+                baseX + gFx32CosSinTable[index * 2] * 0x80);
             PresentationScalar_TransitionTo(
                 (u8 *)effect + 0x1c, 4,
-                baseY + data_020c9670[index * 2 + 1] * 0x80);
+                baseY + gFx32CosSinTable[index * 2 + 1] * 0x80);
             *(s32 *)((u8 *)effect + 0x7c) = 0x28;
             *(s32 *)((u8 *)effect + 0x80) = 0;
             ++*state;
