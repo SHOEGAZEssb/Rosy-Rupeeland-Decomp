@@ -549,7 +549,7 @@ static void PopulateRecordCategory(u8 *category, u16 excluded0,
     }
 }
 
-void func_0207e0e8(void *self)
+void RetailRecordCategory0_PopulateTypeZeroRecords(void *self)
 {
     PopulateRecordCategory((u8 *)self, 0x2f, 0xffff);
 }
@@ -566,12 +566,12 @@ void RetailRecordCategory_PopulateTypeZeroRecords(void *self)
     PopulateRecordCategory((u8 *)self, 0xffff, 0xffff);
 }
 
-void func_0207dbcc(void *self)
+void RetailRecordCategory4_PopulateTypeZeroRecords(void *self)
 {
     PopulateRecordCategory((u8 *)self, 0x18, 0xffff);
 }
 
-void func_0207deb4(void *self)
+void RetailRecordCategory5_PopulateTypeZeroRecords(void *self)
 {
     PopulateRecordCategory((u8 *)self, 0x48, 0x4a);
 }
@@ -1091,13 +1091,13 @@ void *RetailRecordManager_Construct(void *manager_pointer)
         if (category == 0)
             OS_Halt();
         if (index == 0)
-            func_0207e0e8(category);
+            RetailRecordCategory0_PopulateTypeZeroRecords(category);
         else if (index == 1)
             func_0207e270(category);
         else if (index == 4)
-            func_0207dbcc(category);
+            RetailRecordCategory4_PopulateTypeZeroRecords(category);
         else if (index == 5)
-            func_0207deb4(category);
+            RetailRecordCategory5_PopulateTypeZeroRecords(category);
         else if (index == 7)
             func_0207e3cc(category);
         else if (index == 8)

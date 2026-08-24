@@ -28,8 +28,8 @@ static u32 ReadU32(const u8 *bytes, u32 offset);
 static void WriteU32(u8 *bytes, u32 offset, u32 value);
 static u32 CategoryCount(const u8 *category, u32 selector);
 
-/* Retail category post-load hook 0x0207E1A4 is intentionally empty. */
-void func_0207e1a4(void *category)
+/* Retail category-zero post-load hook is intentionally empty. */
+void RetailRecordCategory0_PostLoadNoOp(void *category)
 {
     (void)category;
 }
