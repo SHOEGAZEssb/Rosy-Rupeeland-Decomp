@@ -100,6 +100,33 @@ const void *RecordMessageTable_GetGroupMessage(const void *table, s32 group, s32
                          *(const u16 *)record);
 }
 
+static const DescriptorMessageRecord *DescriptorMessageTable_FindRecord(
+    const DescriptorMessageRecord *records, s32 count, u16 identifier)
+{
+    s32 index;
+
+    for (index = 0; index < count; ++index) {
+        if (records[index].identifier == identifier)
+            return &records[index];
+    }
+    OS_Halt();
+    return 0;
+}
+
+const DescriptorMessageRecord *DescriptorMessageTable_FindPrimaryRecordById(
+    const DescriptorMessageTable *table, u16 identifier)
+{
+    return DescriptorMessageTable_FindRecord(table->primaryRecords,
+                                              table->primaryCount, identifier);
+}
+
+const DescriptorMessageRecord *DescriptorMessageTable_FindSecondaryRecordById(
+    const DescriptorMessageTable *table, u16 identifier)
+{
+    return DescriptorMessageTable_FindRecord(table->secondaryRecords,
+                                              table->secondaryCount, identifier);
+}
+
 /* Resolve one descriptor message slot. IDs below 2000 use the primary
  * 16-byte record bank and IDs 2000..2999 use the secondary bank. Retail-valid
  * callers provide a present ID and slot 0..6; invalid IDs request a fatal halt.
@@ -109,30 +136,21 @@ const void *DescriptorMessageTable_GetMessage(const void *table_pointer, s32 ide
 {
     const DescriptorMessageTable *table =
         (const DescriptorMessageTable *)table_pointer;
-    const DescriptorMessageRecord *records;
-    s32 count;
-    s32 index;
+    const DescriptorMessageRecord *record;
 
     if (identifier >= 3000) {
         OS_Halt();
         return 0;
     }
     if (identifier >= 2000) {
-        records = table->secondaryRecords;
-        count = table->secondaryCount;
+        record = DescriptorMessageTable_FindSecondaryRecordById(
+            table, (u16)identifier);
     } else {
-        records = table->primaryRecords;
-        count = table->primaryCount;
+        record = DescriptorMessageTable_FindPrimaryRecordById(
+            table, (u16)identifier);
     }
-    identifier = (u16)identifier;
-    for (index = 0; index < count; ++index) {
-        if (records[index].identifier == identifier) {
-            return LanguageDatabase_GetRecordById((ResourceFileManager *)gLanguageDatabase,
-                                 records[index].resources[slot]);
-        }
-    }
-    OS_Halt();
-    return 0;
+    return LanguageDatabase_GetRecordById((ResourceFileManager *)gLanguageDatabase,
+                                           record->resources[slot]);
 }
 
 /* Return one message payload owned by a type-one descriptor. The descriptor
