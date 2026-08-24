@@ -1,0 +1,13 @@
+{
+  "func_02082a8c": "DebugStringMenu_Construct",
+  "func_02082ac0": "DebugStringMenu_InitStringList",
+  "func_02082ae0": "DebugStringMenu_Destroy",
+  "func_02082b00": "DebugStringMenu_Append",
+  "func_02082b54": "DebugStringMenu_WalkVisibleRange",
+  "func_02082b9c": "DebugStringMenu_PollInput",
+  "func_02082c14": "DebugStringMenu_GetSelectedIndex",
+  "func_02082c1c": "DebugStringMenu_Clear",
+  "func_02082cc0": "DebugStringMenu_PollPagedInput",
+  "func_02082d54": "DebugStringMenu_FindNodeIndex",
+  "func_02082d80": "DebugStringMenu_GetSelectedString"
+}
