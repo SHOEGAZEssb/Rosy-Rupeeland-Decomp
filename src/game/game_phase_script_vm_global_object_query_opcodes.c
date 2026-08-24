@@ -10,7 +10,8 @@ extern void *RetailRecordManager_IsSelectorDiscovered(void *context, s32 selecto
 extern void *RetailRecordManager_IsSelectorAvailable(void *context, s32 selector);
 extern void *RetailRecordManager_CategoryHasAvailableEntry(void *context, s32 selector);
 extern void *func_0207a99c(void *context, s32 first, s32 second);
-extern u32 func_0207a4a8(void *context, s32 first, s32 second);
+extern s32 RetailRecordManager_GetType1Tier(void *manager, s32 category_index,
+                                            s32 id);
 #ifdef __cplusplus
 }
 #endif
@@ -49,11 +50,14 @@ s32 func_020178bc(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop second and first selectors, store the value returned by func_0207a4a8 as the VM result, and return zero. */
-s32 func_02017938(GamePhaseActorScriptVm *self)
+/* Pop a record ID and category index, store its current type-one tier as the VM
+ * result, update the VM condition, and return zero. */
+s32 GamePhaseActorScriptVm_QueryRetailRecordTier(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, func_0207a4a8(data_021f5128, first, second));
+    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 category_index = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base,
+        RetailRecordManager_GetType1Tier(data_021f5128, category_index, id));
     return 0;
 }

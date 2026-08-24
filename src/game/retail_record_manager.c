@@ -230,6 +230,39 @@ s32 RetailRecordManager_CategoryHasAvailableEntry(void *manager_pointer,
     return RecordSelection_HasAvailableEntry(category, 1);
 }
 
+/* Return a type-one record's current tier within a category. Completed records
+ * report their final metadata tier; missing, inactive, and non-type-one records
+ * report -1. The manager, category slots, and database records remain borrowed. */
+s32 RetailRecordManager_GetType1Tier(void *manager_pointer, s32 category_index,
+                                     s32 id)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u8 *record;
+    u32 flags;
+    u8 *category;
+    u32 index;
+
+    if (RetailRecordManager_IsSelectorAvailable(manager_pointer, id)) {
+        record = RetailRecordDatabase_FindById(data_021f5138, (u16)id);
+        flags = *(u32 *)(record + 0x0c);
+        if ((flags & 0xff) == (u32)category_index &&
+            ((flags >> 8) & 0x0f) == 1)
+            return (s32)((flags >> 12) & 0x0f) - 1;
+    }
+
+    category = *(u8 **)(manager + category_index * 4);
+    for (index = 0;
+         index < (u32)RecordSelection_GetChannelCount(category, 0); ++index) {
+        u8 *slot = *(u8 **)(category + 0x18) + index * 0x10;
+
+        record = *(u8 **)(slot + 4);
+        flags = *(u32 *)(record + 0x0c);
+        if (((flags >> 8) & 0x0f) == 1 && *(u16 *)record == (u16)id)
+            return *(s32 *)(slot + 8) == 0 ? -1 : *(s32 *)(slot + 0x0c);
+    }
+    return -1;
+}
+
 /* Apply each bank-one record's default value at metadata +8 to its slot. */
 void RetailRecordManager_ApplyDefaultValues(void *manager_pointer)
 {
