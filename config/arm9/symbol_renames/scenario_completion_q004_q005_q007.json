@@ -1,0 +1,14 @@
+{
+  "func_02083c44": "ScenarioCompletion_TestQ004DollReturn",
+  "func_02083cac": "ScenarioCompletion_TestQ005PayCmm01",
+  "func_02083dd0": "ScenarioCompletion_TestQ007Stage01MapGet",
+  "func_02083dfc": "ScenarioCompletion_TestQ007Stage02MapGet",
+  "func_02083e28": "ScenarioCompletion_TestQ007Stage03MapGet",
+  "func_02083e54": "ScenarioCompletion_TestQ007Stage04MapGet",
+  "func_02083e80": "ScenarioCompletion_TestQ007Stage05MapGet",
+  "func_02083eac": "ScenarioCompletion_TestQ007Stage06MapGet",
+  "func_02083ed8": "ScenarioCompletion_TestQ007Stage07MapGet",
+  "func_02083f00": "ScenarioCompletion_TestQ007Stage08MapGet",
+  "func_02083f2c": "ScenarioCompletion_TestQ007Stage09MapGet",
+  "func_02083f58": "ScenarioCompletion_TestQ007Stage10MapGet"
+}
