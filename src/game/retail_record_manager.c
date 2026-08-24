@@ -549,7 +549,8 @@ void func_0207e3cc(void *self)
     (void)self;
 }
 
-void func_0207b55c(void *self)
+/* Category eight deliberately has no initial record population. */
+void RetailRecordCategory8_PopulateNoOp(void *self)
 {
     (void)self;
 }
@@ -1003,7 +1004,7 @@ void *RetailRecordManager_Construct(void *manager_pointer)
         else if (index == 7)
             func_0207e3cc(category);
         else if (index == 8)
-            func_0207b55c(category);
+            RetailRecordCategory8_PopulateNoOp(category);
         else
             RetailRecordCategory_PopulateTypeZeroRecords(category);
     }

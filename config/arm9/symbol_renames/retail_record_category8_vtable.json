@@ -1,0 +1,8 @@
+{
+  "func_0207b514": "RetailRecordCategory8_DestroyAndFree",
+  "func_0207b558": "RetailRecordCategory8_PostLoadNoOp",
+  "func_0207b55c": "RetailRecordCategory8_PopulateNoOp",
+  "func_0207b560": "RetailRecordCategory8_DestroyNoOp",
+  "func_0207b564": "RetailRecordCategory8_DestroyInPlace",
+  "func_0207b5a0": "RetailRecordCategory_DestroyInPlace"
+}

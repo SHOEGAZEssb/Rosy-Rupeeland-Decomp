@@ -44,8 +44,8 @@ void RetailRecordCategory_PostLoadNoOp(void *category)
     void name(void *object) { (void)object; }
 
 DEFINE_RETAIL_EMPTY_HOOK(RetailRecordSlot_DestroyNoOp)
-DEFINE_RETAIL_EMPTY_HOOK(func_0207b558)
-DEFINE_RETAIL_EMPTY_HOOK(func_0207b560)
+DEFINE_RETAIL_EMPTY_HOOK(RetailRecordCategory8_PostLoadNoOp)
+DEFINE_RETAIL_EMPTY_HOOK(RetailRecordCategory8_DestroyNoOp)
 DEFINE_RETAIL_EMPTY_HOOK(func_0207d020)
 DEFINE_RETAIL_EMPTY_HOOK(func_0207d2e0)
 DEFINE_RETAIL_EMPTY_HOOK(func_0207d6fc)
