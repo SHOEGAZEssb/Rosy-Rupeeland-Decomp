@@ -1,0 +1,8 @@
+{
+  "func_0207c69c": "RetailRecordCategoryMenu_Construct",
+  "func_0207c6f8": "RetailRecordCategoryMenu_Update",
+  "func_0207c970": "RetailRecordCategoryMenu_Delete",
+  "func_0207c98c": "RetailRecordCategoryMenu_NoOp",
+  "func_0207c990": "RetailRecordListMenu_Construct",
+  "func_0207ca04": "RetailRecordListMenu_Update"
+}
