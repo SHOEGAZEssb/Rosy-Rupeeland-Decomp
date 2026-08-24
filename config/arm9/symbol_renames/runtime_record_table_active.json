@@ -1,0 +1,6 @@
+{
+  "func_02079ac0": "RuntimeRecordTable_ActivateByKey",
+  "func_02079b68": "RuntimeRecordTable_ActivateAll",
+  "func_02079ba4": "RuntimeRecordTable_IsKeyActive",
+  "func_02079be4": "RuntimeRecordTable_ClearActive"
+}

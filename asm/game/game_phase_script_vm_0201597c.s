@@ -3,7 +3,7 @@
 .extern data_021f3d68
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_02079ba4
+.extern RuntimeRecordTable_IsKeyActive
 
     .global GamePhaseActorScriptVm_HasDataTableValue
 GamePhaseActorScriptVm_HasDataTableValue: ; 0x0201597c
@@ -12,7 +12,7 @@ GamePhaseActorScriptVm_HasDataTableValue: ; 0x0201597c
     bl GamePhaseScriptVm_Pop
     mov r1, r0
     ldr r0, L_020159b0
-    bl func_02079ba4
+    bl RuntimeRecordTable_IsKeyActive
     cmp r0, #0x0
     movne r1, #0x1
     moveq r1, #0x0
