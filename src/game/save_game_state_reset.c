@@ -21,7 +21,7 @@ extern s32 func_0206fa9c(void *entry_slot);
 extern void *ActorDatabase_FindDescriptorById(void *manager, u16 actor_id);
 extern void OS_Halt(void);
 extern void func_0207ec6c(void *category);
-s32 func_0207aec8(void *category, u16 actor_id);
+s32 RetailRecordCategory_IsRecordDiscovered(void *category, u16 record_id);
 
 static u16 ReadU16(const u8 *bytes, u32 offset);
 static u32 ReadU32(const u8 *bytes, u32 offset);
@@ -70,7 +70,7 @@ void func_0207e9d8(void *category_pointer)
         u16 id = ReadU16(record, 0);
         if ((id == 0x27 || id == 0x28 || id == 0x2a ||
              (id >= 0x30 && id <= 0x36)) &&
-            func_0207aec8(category, id))
+            RetailRecordCategory_IsRecordDiscovered(category, id))
             WriteU32(record, 0x0c,
                      ReadU32(record, 0x0c) & ~0xa0000000u);
     }
@@ -158,14 +158,16 @@ static void *LookupActorRecord(u8 *manager, u16 identifier, u32 count_offset,
     return 0;
 }
 
-s32 func_0207aec8(void *category, u16 actor_id)
+/* Category-callback adapter for the global manager's record discovery query.
+ * The category is borrowed but unused by the default implementation. */
+s32 RetailRecordCategory_IsRecordDiscovered(void *category, u16 record_id)
 {
     u8 *record;
     u32 bit;
     u8 *work = (u8 *)gGameWork;
     (void)category;
 
-    record = (u8 *)LookupActorRecord(data_021f5138, actor_id,
+    record = (u8 *)LookupActorRecord(data_021f5138, record_id,
                                      0x20, 0, 0x8c);
     bit = ReadU16(record, 2);
     return work[0xee8 + (bit >> 3)] & (1u << (bit & 7));

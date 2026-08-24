@@ -940,7 +940,17 @@ void RetailRecordCategory_ClearChannels(void *category_pointer)
     *(u32 *)(category + 0x0c) = 0;
 }
 
-static void *CreateRecordCategory(u32 category_index)
+/* Category-eight constructor used by the factory's out-of-range fallback. */
+void *RetailRecordCategory8_Construct(u8 *category, u32 category_index)
+{
+    RetailRecordCategory_Construct(category, category_index);
+    *(const void **)category = data_020eebb0;
+    return category;
+}
+
+/* Allocate and construct one of the 18 category variants. Out-of-range
+ * selectors preserve retail's category-eight fallback. */
+void *RetailRecordCategory_Create(u32 category_index)
 {
     static const void *const vtables[18] = {
         data_020ef028, data_020ef0a8, data_020eef68, data_020eefac,
@@ -955,8 +965,12 @@ static void *CreateRecordCategory(u32 category_index)
         return 0;
     if (category_index >= 18)
         category_index = 8;
-    RetailRecordCategory_Construct(category, category_index);
-    *(const void **)category = vtables[category_index];
+    if (category_index == 8) {
+        RetailRecordCategory8_Construct(category, category_index);
+    } else {
+        RetailRecordCategory_Construct(category, category_index);
+        *(const void **)category = vtables[category_index];
+    }
     return category;
 }
 
@@ -970,7 +984,7 @@ void *RetailRecordManager_Construct(void *manager_pointer)
         RetailRecordSlot_Init(manager + 0x48 + index * 0x10);
     *(void **)data_021f5128 = manager;
     for (index = 0; index < 18; ++index) {
-        u8 *category = CreateRecordCategory(index);
+        u8 *category = RetailRecordCategory_Create(index);
 
         *(u8 **)(manager + index * 4) = category;
         if (category == 0)
