@@ -39,7 +39,9 @@ typedef struct ResourceFileManager {
     u8 cache[0x1002];
 } ResourceFileManager;
 
-extern u8 data_021f4090[];
+extern u8 gLanguageDatabase[];
+extern const u16 gLanguageDatabaseErrorText[];
+extern const u16 gLanguageDatabaseNullText[];
 extern u8 data_021f5138[];
 extern void OS_Halt(void);
 extern u32 LanguageDatabase_GetRecordLength(void *manager, u16 identifier);
@@ -80,7 +82,7 @@ u32 LanguageLookup_GetResourceSize(const LookupIndexPrefix *table, s32 identifie
     for (recordIndex = table->starts[group];
          recordIndex < table->count; ++recordIndex) {
         if (records[recordIndex].identifier == identifier) {
-            return LanguageDatabase_GetRecordLength(data_021f4090,
+            return LanguageDatabase_GetRecordLength(gLanguageDatabase,
                                  records[recordIndex].resource);
         }
     }
@@ -93,7 +95,7 @@ const void *RecordMessageTable_GetGroupMessage(const void *table, s32 group, s32
     const u8 *record = (const u8 *)table + group * 0x9c +
                        index * 4 + 0x1d0;
 
-    return LanguageDatabase_GetRecordById((ResourceFileManager *)data_021f4090,
+    return LanguageDatabase_GetRecordById((ResourceFileManager *)gLanguageDatabase,
                          *(const u16 *)record);
 }
 
@@ -124,7 +126,7 @@ const void *DescriptorMessageTable_GetMessage(const void *table_pointer, s32 ide
     identifier = (u16)identifier;
     for (index = 0; index < count; ++index) {
         if (records[index].identifier == identifier) {
-            return LanguageDatabase_GetRecordById((ResourceFileManager *)data_021f4090,
+            return LanguageDatabase_GetRecordById((ResourceFileManager *)gLanguageDatabase,
                                  records[index].resources[slot]);
         }
     }
@@ -203,7 +205,7 @@ void *LanguageDatabase_GetRecordById(ResourceFileManager *manager,
     s32 recordIndex;
 
     if (identifier == 0) {
-        return (void *)0x020c6d08;
+        return (void *)gLanguageDatabaseNullText;
     }
     if (manager->cachedIdentifier == (s32)identifier) {
         return manager->cache;
@@ -220,13 +222,13 @@ void *LanguageDatabase_GetRecordById(ResourceFileManager *manager,
          recordIndex < manager->count; ++recordIndex) {
         if (manager->records[recordIndex].identifier == identifier) {
             if (LanguageDatabase_LoadRecordIntoCache(manager, recordIndex) == 0) {
-                return (void *)0x020c6d00;
+                return (void *)gLanguageDatabaseErrorText;
             }
             manager->cachedIdentifier = (s32)identifier;
             return manager->cache;
         }
     }
-    return (void *)0x020c6d00;
+    return (void *)gLanguageDatabaseErrorText;
 }
 
 /* Exercise both language-record query paths for the resident debug menu. */
@@ -257,9 +259,9 @@ void *func_020791e0(const LookupIndexPrefix *table, s32 identifier)
     for (recordIndex = table->starts[group];
          recordIndex < table->count; ++recordIndex) {
         if (records[recordIndex].identifier == identifier) {
-            return LanguageDatabase_GetRecordById((ResourceFileManager *)data_021f4090,
+            return LanguageDatabase_GetRecordById((ResourceFileManager *)gLanguageDatabase,
                                  records[recordIndex].resource);
         }
     }
-    return (void *)0x020c6d00;
+    return (void *)gLanguageDatabaseErrorText;
 }

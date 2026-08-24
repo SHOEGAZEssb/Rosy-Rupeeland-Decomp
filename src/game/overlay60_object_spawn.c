@@ -16,7 +16,7 @@ typedef struct Overlay60ScriptContext {
 extern "C" {
 #endif
 extern u8 data_021f3ecc[];
-extern u8 data_021f4090[];
+extern u8 gLanguageDatabase[];
 extern char gOverlay60ScriptObjectAllocationTag[];
 extern s32 GamePhaseScriptVm_Pop(void *script);
 extern s32 SignedAbsoluteValueVariant(s32 value);
@@ -49,14 +49,14 @@ s32 DisplayRouting_MatchesRequest(s32 input)
 
 /*
  * Resolve the resource identifier passed in r1 through the fixed language
- * manager. Retail replaces r0 with data_021f4090 before tail-calling
+ * manager. Retail replaces r0 with gLanguageDatabase before tail-calling
  * LanguageDatabase_GetRecordById, so the collection mode originally passed in r0 is ignored
  * while the second argument remains the lookup identifier.
  */
 void *func_0201da20(u32 unusedMode, u32 resourceIdentifier)
 {
     (void)unusedMode;
-    return LanguageDatabase_GetRecordById(data_021f4090, resourceIdentifier);
+    return LanguageDatabase_GetRecordById(gLanguageDatabase, resourceIdentifier);
 }
 
 /*
@@ -107,7 +107,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
         resource = func_020791e0(data_021f3ecc, (u16)resourceIndex);
     else {
         Actor_GetOwningCollection(context->owner84);
-        resource = LanguageDatabase_GetRecordById(data_021f4090, resourceIndex);
+        resource = LanguageDatabase_GetRecordById(gLanguageDatabase, resourceIndex);
     }
     requestedDisplay = DisplayRouting_MatchesRequest(requestedDisplay);
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3c);

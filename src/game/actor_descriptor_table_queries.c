@@ -18,7 +18,7 @@ extern void func_02071ee0(void *resource, void *manager, u32 first,
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern u8 data_021e9ad0[];
-extern u8 data_021f4090[];
+extern u8 gLanguageDatabase[];
 extern void func_020b5294(void);
 extern u8 data_020c4424[];
 extern u8 data_021e9d2c[];
@@ -160,7 +160,7 @@ void *ActorDescriptor_LoadDetailResource(void *self)
         metadata = *(u8 **)(data_021e9ad0 + 0x254);
     }
     resource_id = *(u16 *)(metadata + 6);
-    LanguageDatabase_CopyRecordById(data_021f4090, resource_id, data_021e9ad0 + 0x50,
+    LanguageDatabase_CopyRecordById(gLanguageDatabase, resource_id, data_021e9ad0 + 0x50,
                   0x200);
     return data_021e9ad0 + 0x50;
 }

@@ -6205,8 +6205,8 @@ data_020c475e kind:data(any) addr:0x020c475e
 data_020c4778 kind:data(any) addr:0x020c4778
 data_020c477c kind:data(any) addr:0x020c477c
 data_020c6cfc kind:data(any) addr:0x020c6cfc
-data_020c6d00 kind:data(any) addr:0x020c6d00
-data_020c6d08 kind:data(any) addr:0x020c6d08
+gLanguageDatabaseErrorText kind:data(any) addr:0x020c6d00
+gLanguageDatabaseNullText kind:data(any) addr:0x020c6d08
 data_020c6d14 kind:data(any) addr:0x020c6d14
 data_020c6d18 kind:data(any) addr:0x020c6d18
 data_020c7ba8 kind:data(any) addr:0x020c7ba8
@@ -8221,11 +8221,11 @@ data_020e9fa0 kind:data(any) addr:0x020e9fa0
 data_020ea5b8 kind:data(any) addr:0x020ea5b8
 data_020ea5c0 kind:data(any) addr:0x020ea5c0
 data_020ea5c8 kind:data(any) addr:0x020ea5c8
-data_020ea5d0 kind:data(any) addr:0x020ea5d0
+gLanguageDatabaseEntryAllocationTag kind:data(any) addr:0x020ea5d0
 data_020ea5d8 kind:data(any) addr:0x020ea5d8
 data_020ea5e0 kind:data(any) addr:0x020ea5e0
 data_020ea5e8 kind:data(any) addr:0x020ea5e8
-data_020ea5f8 kind:data(any) addr:0x020ea5f8
+gLanguageDatabasePath kind:data(any) addr:0x020ea5f8
 data_020ea608 kind:data(any) addr:0x020ea608
 data_020ea618 kind:data(any) addr:0x020ea618
 data_020ea62c kind:data(any) addr:0x020ea62c
@@ -8240,7 +8240,7 @@ data_020ed470 kind:data(any) addr:0x020ed470
 data_020ed530 kind:data(any) addr:0x020ed530
 data_020ed548 kind:data(any) addr:0x020ed548
 data_020ed638 kind:data(any) addr:0x020ed638
-data_020ed6e0 kind:data(any) addr:0x020ed6e0
+gLanguageDatabasePreloadedRecords kind:data(any) addr:0x020ed6e0
 data_020ed740 kind:data(any) addr:0x020ed740
 data_020ed742 kind:data(any) addr:0x020ed742
 data_020ed744 kind:data(any) addr:0x020ed744
@@ -9423,7 +9423,7 @@ data_021f3d68 kind:bss addr:0x021f3d68
 data_021f3ecc kind:bss addr:0x021f3ecc
 data_021f3f54 kind:bss addr:0x021f3f54
 data_021f4020 kind:bss addr:0x021f4020
-data_021f4090 kind:bss addr:0x021f4090
+gLanguageDatabase kind:bss addr:0x021f4090
 data_021f5128 kind:bss addr:0x021f5128
 data_021f512c kind:bss addr:0x021f512c
 data_021f5138 kind:bss addr:0x021f5138

@@ -25,7 +25,7 @@ extern const char data_020e5050[];
 extern const char data_020e5058[];
 extern const char *data_020c45a4[];
 extern u8 data_021f3ecc[];
-extern u8 data_021f4090[];
+extern u8 gLanguageDatabase[];
 extern void OS_Halt(void);
 extern void SelfLinkedSpriteConfig_Init(void *descriptor);
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
@@ -346,7 +346,7 @@ void func_0206425c(void *database_pointer)
         *(u8 *)(record + 4) = (u8)ReadU16(input + 2);
         *(u16 *)(record + 6) =
             (u16)(input[8] | ((u16)input[9] << 5) | ((u16)input[10] << 10));
-        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input + 4), record + 8, 0x60);
+        LanguageDatabase_CopyRecordById(gLanguageDatabase, ReadU16(input + 4), record + 8, 0x60);
         *(void **)(record + 0x68) =
             func_02079fc4(data_021f3ecc, ReadU16(input + 0x10));
         *(void **)(record + 0x6c) =
@@ -431,7 +431,7 @@ void func_02063cd0(void *database_pointer)
         *(u16 *)(record + 4) = descriptor_id;
         *(u16 *)(record + 6) = ReadU16(input + 0x0c);
         *(u32 *)(record + 0x0c) = ReadU32(input + 8);
-        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input + 6), record + 0x10,
+        LanguageDatabase_CopyRecordById(gLanguageDatabase, ReadU16(input + 6), record + 0x10,
                       0x60);
         if (type == 0) {
             descriptor = FindRecord(database, 0x2a0, 0x2c8, 0x14,
@@ -468,7 +468,7 @@ void ActorDatabase_Init(void *database)
     func_02063cd0(database);
     *(void **)((u8 *)database + 0x254) = FindActorRecord(database, 0x3e);
     *(void **)((u8 *)database + 0x258) = FindActorRecord(database, 0x40);
-    LanguageDatabase_CopyRecordById(data_021f4090, 0x11c5, (u8 *)database + 0x25c, 0x40);
+    LanguageDatabase_CopyRecordById(gLanguageDatabase, 0x11c5, (u8 *)database + 0x25c, 0x40);
 }
 
 /* Load the actor databases and allocate their 0x4c-byte runtime manager. */

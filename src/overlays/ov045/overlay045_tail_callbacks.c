@@ -13,7 +13,7 @@ extern "C" void *gGameWork;
 extern "C" void *gDebugFont;
 extern "C" u8 data_021f3ecc[];
 extern "C" void **data_021f5128;
-extern "C" u8 data_020ed6e0[];
+extern "C" u8 gLanguageDatabasePreloadedRecords[];
 extern "C" u8 data_ov045_0220d570[];
 extern "C" void Sound_ReleaseGroup(void *context, s32 handle);
 extern "C" s32 GameWork_TestFlag(void *work, s32 flag);
@@ -36,7 +36,8 @@ extern "C" void func_ov045_0220d2d8(s32 handle)
  * Draw the selector's preview centered around X=0x54 at Y=0xAC. Most selectors
  * resolve data_021f5128[selector] through RecordMode_GetMessageGroup. Selector 9, and
  * selector 8/subtype 0x2C, use flagged lookup ID 0x1B6 plus two when progress
- * flag 0x3A5 is set. Other selector-8 subtypes use data_020ed6e0 records with
+ * flag 0x3A5 is set. Other selector-8 subtypes use the preloaded language
+ * database records with
  * stride 0x68. Measure with mode 8/spacing -2, halve width toward zero, then
  * draw with color 13 and the same mode/spacing. Font/display state changes.
  */
@@ -49,7 +50,7 @@ extern "C" void Overlay045_DrawSelectorPreview(u32 selector, u32 subtype)
         if (subtype == 0x2c && GameWork_TestFlag(gGameWork, 0x3a5))
             entry = (u8 *)data_021f3ecc + RetailTextTable_FindRecordById(data_021f3ecc, 0x1b6) + 2;
         else
-            entry = data_020ed6e0 + subtype * 0x68;
+            entry = gLanguageDatabasePreloadedRecords + subtype * 0x68;
     } else {
         entry = RecordMode_GetMessageGroup(data_021f5128[selector]);
     }

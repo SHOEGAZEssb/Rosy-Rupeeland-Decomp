@@ -13,7 +13,7 @@
 .extern Heap_Alloc
 .extern func_ov060_022100e4
 .extern data_021f3ecc
-.extern data_021f4090
+.extern gLanguageDatabase
 .extern gOverlay60ScriptObjectAllocationTag
 .extern gHeapContext
 .global func_0201da34

@@ -13,7 +13,7 @@
 .extern Heap_Alloc
 .extern func_ov060_022100e4
 .extern data_021f3ecc
-.extern data_021f4090
+.extern gLanguageDatabase
 .extern gOverlay60ScriptObjectAllocationTag
 .extern gHeapContext
 .global func_0201da20
@@ -22,7 +22,7 @@ func_0201da20: ; 0x0201da20
     ldr r0, L_0201da30
     bx ip
 L_0201da2c: .word LanguageDatabase_GetRecordById
-L_0201da30: .word data_021f4090
+L_0201da30: .word gLanguageDatabase
 
 
 .size func_0201da20, . - func_0201da20

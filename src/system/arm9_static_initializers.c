@@ -108,7 +108,7 @@ extern u8 data_021f38fc[];
 extern u8 data_021f38f0[];
 extern u8 data_021f3ecc[];
 extern u8 data_021f3d44[];
-extern u8 data_021f4090[];
+extern u8 gLanguageDatabase[];
 extern u8 data_021f3d50[];
 extern u8 data_021f3d68[];
 extern u8 data_021f3d5c[];
@@ -320,7 +320,7 @@ void __sinit_020c16cc(void)
 
 /*
  * No inputs. Construct three globals in retail order: data_021f3ecc,
- * data_021f4090, and data_021f3d68. Register their respective destructors
+ * gLanguageDatabase, and data_021f3d68. Register their respective destructors
  * func_0207a10c, func_0207a14c, and func_0207a17c with records
  * data_021f3d44/data_021f3d50/data_021f3d5c. Global lifetimes change; no value
  * is returned and no direct hardware effect occurs.
@@ -329,8 +329,8 @@ void __sinit_020c16f8(void)
 {
     func_0207a064(data_021f3ecc);
     __register_global_object(data_021f3ecc, func_0207a10c, data_021f3d44);
-    func_0207a13c(data_021f4090);
-    __register_global_object(data_021f4090, func_0207a14c, data_021f3d50);
+    func_0207a13c(gLanguageDatabase);
+    __register_global_object(gLanguageDatabase, func_0207a14c, data_021f3d50);
     func_0207a16c(data_021f3d68);
     __register_global_object(data_021f3d68, func_0207a17c, data_021f3d5c);
 }

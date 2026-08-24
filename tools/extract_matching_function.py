@@ -31,7 +31,7 @@ def load_address_aliases(repository: Path) -> dict[str, str]:
                 continue
             name = match.group("name")
             address = match.group("address").lower().zfill(8)
-            prefix = "data" if name.startswith("data_") else "func"
+            prefix = "func" if "kind:function" in line else "data"
             old_name = (
                 f"{prefix}_ov{overlay}_{address}"
                 if overlay is not None

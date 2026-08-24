@@ -25,7 +25,7 @@ extern const char data_020ea62c[];
 extern const char data_020ea5c8[];
 extern const char data_020ea5d8[];
 extern const char data_020ea5e0[];
-extern u8 data_021f4090[];
+extern u8 gLanguageDatabase[];
 extern u8 data_021f4020[];
 extern u8 data_021f5f18[];
 extern u8 data_021f3ecc[];
@@ -274,7 +274,7 @@ void func_02079264(void *manager_pointer)
         *(u16 *)(record + 4) = ReadU16(input + 2);
         *(u8 *)(record + 2) = input[4];
         *(s8 *)(record + 3) = (s8)input[5];
-        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input + 6), record + 6, 0x60);
+        LanguageDatabase_CopyRecordById(gLanguageDatabase, ReadU16(input + 6), record + 6, 0x60);
         if (input[4] == 1 && (s8)input[5] == -1)
             ++special_count;
     }
@@ -299,7 +299,7 @@ void *RetailSelectionDatabase_FindResource(void *manager_pointer, u16 id)
         u8 *record = records + index * 0x66;
 
         if (*(u16 *)record == id)
-            return LanguageDatabase_GetRecordById(data_021f4090, *(u16 *)(record + 4));
+            return LanguageDatabase_GetRecordById(gLanguageDatabase, *(u16 *)(record + 4));
     }
     OS_Halt();
     return 0;
@@ -380,7 +380,7 @@ void func_02079d78(void *manager_pointer)
         u8 *record = records + index * 0x62;
         GameFile_Read(&file, input, sizeof(input));
         *(u16 *)record = ReadU16(input);
-        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input + 2), record + 2, 0x60);
+        LanguageDatabase_CopyRecordById(gLanguageDatabase, ReadU16(input + 2), record + 2, 0x60);
     }
     GameFile_Close(&file);
     *(u32 *)(manager + 0x1bc) = count / 2;
@@ -428,9 +428,9 @@ void func_02079694(void *manager_pointer)
         *(u16 *)(record + 0x00) = ReadU16(input + 0x00);
         *(u16 *)(record + 0x02) = ReadU16(input + 0x0e);
         *(void **)(record + 0x04) =
-            func_02079fc4(data_021f4090, ReadU16(input + 0x04));
+            func_02079fc4(gLanguageDatabase, ReadU16(input + 0x04));
         *(void **)(record + 0x08) =
-            func_02079fc4(data_021f4090, ReadU16(input + 0x08));
+            func_02079fc4(gLanguageDatabase, ReadU16(input + 0x08));
         *(u8 *)(record + 0x0c) = (u8)ReadU16(input + 0x06);
         *(u8 *)(record + 0x0d) = (u8)ReadU16(input + 0x0a);
         *(u16 *)(record + 0x0e) = ReadU16(input + 0x10);
@@ -438,7 +438,7 @@ void func_02079694(void *manager_pointer)
         *(u16 *)(record + 0x12) = ReadU16(input + 0x12);
         *(u16 *)(record + 0x14) = ReadU16(input + 0x14);
         *(s16 *)(record + 0x16) = (s16)ReadU16(input + 0x16);
-        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input + 0x0c),
+        LanguageDatabase_CopyRecordById(gLanguageDatabase, ReadU16(input + 0x0c),
                       record + 0x18, 0x60);
     }
     GameFile_Close(&file);

@@ -10,12 +10,14 @@
 
 extern void *memcpy(void *destination, const void *source, u32 size);
 
-extern u8 data_021f4090[];
+extern u8 gLanguageDatabase[];
 extern u8 data_021f3ecc[];
 extern u8 data_021f3d68[];
-extern const char data_020ea5f8[];
-extern const char data_020ea5d0[];
-extern u8 data_020ed6e0[];
+extern const char gLanguageDatabasePath[];
+extern const char gLanguageDatabaseEntryAllocationTag[];
+extern u8 gLanguageDatabasePreloadedRecords[];
+extern const u16 gLanguageDatabaseErrorText[];
+extern const u16 gLanguageDatabaseNullText[];
 
 extern void func_02079d78(void *manager);
 extern void func_02079694(void *manager);
@@ -93,12 +95,12 @@ void *func_020795e8(void *manager_pointer, s32 message_id)
             u16 resource_id = *(const u16 *)(record + 6);
             *(u16 *)(manager + 0xbc) = *(const u16 *)(record + 2);
             *(u32 *)(manager + 0xc0) =
-                LanguageDatabase_GetRecordLength(data_021f4090, resource_id);
-            LanguageDatabase_CopyRecordById(data_021f4090, text_id,
+                LanguageDatabase_GetRecordLength(gLanguageDatabase, resource_id);
+            LanguageDatabase_CopyRecordById(gLanguageDatabase, text_id,
                                             manager + 0x5c, 0x60);
             *(void **)(manager + 0xc4) = manager + 0x5c;
             *(void **)(manager + 0xc8) =
-                LanguageDatabase_GetRecordById(data_021f4090, resource_id);
+                LanguageDatabase_GetRecordById(gLanguageDatabase, resource_id);
             return manager + 0xbc;
         }
     }
@@ -137,7 +139,7 @@ void LanguageDatabase_CopyRecordById(void *manager_pointer, u16 id,
     u32 index;
 
     if (id == 0) {
-        memcpy(destination, (const void *)0x020c6d08, 5);
+        memcpy(destination, gLanguageDatabaseNullText, 5);
         return;
     }
     bucket = 0;
@@ -180,7 +182,7 @@ void LanguageDatabase_Init(void *manager_pointer)
     *(u32 *)(manager + 0x38) = language;
     *(u32 *)(manager + 0x0c) = 0xffffffffu;
     CheckedFS_InitFile(file);
-    CheckedFS_ConvertPathToFileID(file_id, data_020ea5f8);
+    CheckedFS_ConvertPathToFileID(file_id, gLanguageDatabasePath);
     CheckedFS_OpenFileFast(file, *file_id);
     CheckedFS_ReadFile(file, header, 0x10);
     count = ReadU16(header + 2);
@@ -188,7 +190,8 @@ void LanguageDatabase_Init(void *manager_pointer)
     if (*(void **)manager != 0)
         LanguageDatabase_Destroy(manager);
     entries = (LanguageDatabaseEntry *)Heap_Alloc(
-        count * sizeof(*entries), data_020ea5d0, 4, &gHeapContext);
+        count * sizeof(*entries), gLanguageDatabaseEntryAllocationTag, 4,
+        &gHeapContext);
     *(LanguageDatabaseEntry **)manager = entries;
     *(u32 *)(manager + 4) = count;
     CheckedFS_ReadFile(file, header, 0x60);
@@ -213,7 +216,7 @@ void LanguageDatabase_Init(void *manager_pointer)
         *(u32 *)(manager + 0x10 + index * 4) = entries[record].id;
     }
     for (index = 0; index < 50; ++index) {
-        u8 *record = data_020ed6e0 + index * 0x68;
+        u8 *record = gLanguageDatabasePreloadedRecords + index * 0x68;
         u16 id = *(u16 *)(record + 0x66);
         LanguageDatabase_CopyRecordById(manager, id, record, 0x60);
     }
@@ -222,11 +225,10 @@ void LanguageDatabase_Init(void *manager_pointer)
 /* Preserve the retail order of the three global database constructors. */
 void RetailDatabaseManagers_InitGlobals(void)
 {
-    LanguageDatabase_Init(data_021f4090);
+    LanguageDatabase_Init(gLanguageDatabase);
     func_02079d78(data_021f3ecc);
     func_02079694(data_021f3d68);
 }
-
 
 
 

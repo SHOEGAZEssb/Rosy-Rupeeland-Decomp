@@ -71,7 +71,7 @@
 .extern data_021f3d5c
 .extern data_021f3d68
 .extern data_021f3ecc
-.extern data_021f4090
+.extern gLanguageDatabase
 .extern data_021f512c
 .extern data_021f5138
 .extern gActorRuntimeFlags
@@ -420,7 +420,7 @@ __sinit_020c16f8: ; 0x020c16f8
 .L_020c1748: .word data_021f3ecc
 .L_020c174c: .word func_0207a10c
 .L_020c1750: .word data_021f3d44
-.L_020c1754: .word data_021f4090
+.L_020c1754: .word gLanguageDatabase
 .L_020c1758: .word func_0207a14c
 .L_020c175c: .word data_021f3d50
 .L_020c1760: .word data_021f3d68
