@@ -1,0 +1,7 @@
+{
+  "func_020781bc": "RetailResourceDescriptor_UpdateForFrame",
+  "func_0207829c": "RetailResourceDescriptorGroupPool_AllocateHeader",
+  "func_020782c0": "RetailResourceDescriptorGroup_ResetDescriptors",
+  "func_020782f0": "RetailResourceDescriptorGroup_AllocateDescriptorAtSlot",
+  "func_02078338": "RetailResourceDescriptorGroup_UpdateForFrame"
+}

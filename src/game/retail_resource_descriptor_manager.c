@@ -50,7 +50,7 @@ void *RetailResourceDescriptorPool_AllocateDescriptor(u32 size)
 }
 
 /* Consume one group header from the preallocated unique-group pool. */
-void *func_0207829c(u32 size)
+void *RetailResourceDescriptorGroupPool_AllocateHeader(u32 size)
 {
     u8 *result = *(u8 **)data_021f38e8;
 
@@ -71,8 +71,9 @@ void *RetailResourceDescriptorPool_AllocatePointerSlots(u32 count)
 }
 
 /* Construct and insert one grouped descriptor at retail 0x020782F0. */
-void func_020782f0(void *group_pointer, u32 slot, s32 value8, u32 actor_id,
-                   u32 value6, u32 value7)
+void RetailResourceDescriptorGroup_AllocateDescriptorAtSlot(
+    void *group_pointer, u32 slot, s32 value8, u32 actor_id,
+    u32 value6, u32 value7)
 {
     u8 *group = (u8 *)group_pointer;
     u8 *entry = (u8 *)RetailResourceDescriptorPool_AllocateDescriptor(0x2c);
@@ -145,15 +146,16 @@ void *func_02078428(void *manager_pointer)
             OS_Halt();
         group = *(u8 **)(manager + group_index * 4);
         if (group == 0) {
-            group = (u8 *)func_0207829c(8);
+            group = (u8 *)RetailResourceDescriptorGroupPool_AllocateHeader(8);
             if (group != 0) {
                 *(u32 *)(group + 4) = occurrences[group_index];
                 *(void **)group = RetailResourceDescriptorPool_AllocatePointerSlots(occurrences[group_index]);
             }
             *(u8 **)(manager + group_index * 4) = group;
         }
-        func_020782f0(group, input[9], (s8)input[8], ReadU16(input + 4),
-                      input[6], input[7]);
+        RetailResourceDescriptorGroup_AllocateDescriptorAtSlot(
+            group, input[9], (s8)input[8], ReadU16(input + 4), input[6],
+            input[7]);
     }
     CheckedFS_CloseFile(&file);
     return manager;
@@ -169,7 +171,8 @@ void func_02078370(void)
  * fifty elapsed frames, roll its byte-sized percentage and increment the
  * runtime record count up to the configured byte-sized maximum. Backward or
  * wrapped frame values only replace the retained frame and do not accumulate. */
-void func_020781bc(void *descriptor_pointer, u16 frame)
+void RetailResourceDescriptor_UpdateForFrame(void *descriptor_pointer,
+                                             u16 frame)
 {
     u8 *descriptor = (u8 *)descriptor_pointer;
     u16 previous;
@@ -203,14 +206,15 @@ void func_020781bc(void *descriptor_pointer, u16 frame)
 
 /* Update every borrowed descriptor pointer in one group with the same frame
  * value. The group and its pointer array remain owned by the manager. */
-void func_02078338(void *group_pointer, u16 frame)
+void RetailResourceDescriptorGroup_UpdateForFrame(void *group_pointer,
+                                                  u16 frame)
 {
     u8 *group = (u8 *)group_pointer;
     void **descriptors = *(void ***)group;
     u32 index;
 
     for (index = 0; index < *(u32 *)(group + 4); ++index)
-        func_020781bc(descriptors[index], frame);
+        RetailResourceDescriptor_UpdateForFrame(descriptors[index], frame);
 }
 
 /* Update one of the manager's 271 optional groups per call, then advance the
@@ -223,7 +227,8 @@ void func_02078384(void *manager_pointer)
     void *group = *(void **)(manager + index * 4);
 
     if (group != 0)
-        func_02078338(group, *(u16 *)(manager + 0x444));
+        RetailResourceDescriptorGroup_UpdateForFrame(
+            group, *(u16 *)(manager + 0x444));
     ++index;
     if (index >= 0x10f)
         index = 0;
@@ -241,5 +246,4 @@ void func_020783cc(void *manager_pointer)
                   ((*(u32 *)(manager + 0x440) & 1) != 0 ? 100 : 1));
     *(u16 *)(manager + 0x444) = frame;
 }
-
 

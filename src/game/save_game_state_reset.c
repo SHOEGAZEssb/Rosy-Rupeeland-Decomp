@@ -326,8 +326,10 @@ void func_0206392c(void *state_pointer, s32 mode)
                   (u32 *)(work + 0xd50 + index * 4));
 }
 
-static void ResetCollection(u8 *collection)
+/* Reset every descriptor in a borrowed group at retail 0x020782C0. */
+void RetailResourceDescriptorGroup_ResetDescriptors(void *group_pointer)
 {
+    u8 *collection = (u8 *)group_pointer;
     u32 index;
     u32 count = *(u32 *)(collection + 4);
     u8 **items = *(u8 ***)(collection + 0);
@@ -362,7 +364,7 @@ void func_02078690(void *state_pointer, s32 mode)
         for (group = 0; group < 0x10f; ++group) {
             u8 *collection = *(u8 **)(state + group * 4);
             if (collection != 0)
-                ResetCollection(collection);
+                RetailResourceDescriptorGroup_ResetDescriptors(collection);
         }
     }
     WriteU16(work, 0x4efc, (u16)*(u32 *)(state + 0x43c));
@@ -620,7 +622,6 @@ void func_0206f8c8(void *state_pointer)
     }
     WriteU32(state, 4, (u32)(highest + 1));
 }
-
 
 
 
