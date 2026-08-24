@@ -24,7 +24,7 @@ extern s32 func_020b3598(char *destination, const char *format, void *args);
  * draw that many characters at (x,y) with expansion mode zero. Returns no
  * value. Retail performs no length clamp, so callers must keep formatted text
  * within the buffer; the renderer's tile buffer and VRAM transfer state may
- * change through func_020756b4.
+ * change through GraphicsSpriteRenderer_DrawFixedTileText.
  */
 void GraphicsSpriteRenderer_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
                    const char *format, ...)
@@ -35,7 +35,8 @@ void GraphicsSpriteRenderer_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 
         s32 length = func_020b3598(buffer, format, args);
 
         buffer[length] = '\0';
-        func_020756b4(renderer, x, y, buffer, length, 0);
+        GraphicsSpriteRenderer_DrawFixedTileText(renderer, x, y, buffer,
+                                                 length, 0);
     }
 }
 
@@ -54,6 +55,7 @@ void DebugText_Printf(GraphicsSpriteRenderer *renderer, s32 x, s32 y,
         s32 length = func_020b3598(buffer, format, args);
 
         buffer[length] = '\0';
-        func_020756b4(renderer, x, y, buffer, length, mode);
+        GraphicsSpriteRenderer_DrawFixedTileText(renderer, x, y, buffer,
+                                                 length, mode);
     }
 }

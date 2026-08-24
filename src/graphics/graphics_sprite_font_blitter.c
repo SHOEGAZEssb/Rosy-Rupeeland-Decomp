@@ -29,9 +29,9 @@ static u32 FontCanvasByteOffset(s32 x, s32 y)
  * coordinates are screen pixels, mode contributes the low four-bit ink
  * value, and the glyph's advance byte is returned even when clipped.
  */
-u32 func_02075ad4(const GraphicsSpriteFontGlyph *glyph,
-                  const u8 *bitmap, u8 *destination,
-                  s32 destinationX, s32 destinationY, u32 mode)
+u32 GraphicsSpriteFont_BlitGlyph(const GraphicsSpriteFontGlyph *glyph,
+                                 const u8 *bitmap, u8 *destination,
+                                 s32 destinationX, s32 destinationY, u32 mode)
 {
     s32 width = glyph->wide != 0 ? 16 : 8;
     s32 y;
@@ -80,4 +80,3 @@ u32 func_02075ad4(const GraphicsSpriteFontGlyph *glyph,
     }
     return glyph->advance;
 }
-

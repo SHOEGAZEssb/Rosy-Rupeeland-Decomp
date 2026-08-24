@@ -27,16 +27,17 @@ typedef char GraphicsSpriteFontGlyphSizeCheck[
 extern "C" {
 #endif
 
-extern u32 func_02075ad4(const GraphicsSpriteFontGlyph *glyph,
-                         const u8 *bitmap, void *destination,
-                         u32 destinationX, u32 destinationY, u32 mode);
+extern u32 GraphicsSpriteFont_BlitGlyph(const GraphicsSpriteFontGlyph *glyph,
+                                        const u8 *bitmap, void *destination,
+                                        u32 destinationX, u32 destinationY,
+                                        u32 mode);
 
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Render glyphIndex through func_02075ad4 when both the text OAM block at
+ * Render glyphIndex through GraphicsSpriteFont_BlitGlyph when both the text OAM block at
  * field_0c and font at field_18 exist. Clear the low two tag bits from the
  * glyph's bitmap offset, add it to the font bitmap blob, and pass field_00 as
  * the destination plus the three caller controls. Return the blitter result,
@@ -53,7 +54,7 @@ u32 GraphicsSpriteRenderer_DrawGlyph(GraphicsSpriteRenderer *renderer,
         return 0;
     }
     font = (GraphicsSpriteFontResource *)renderer->field_18;
-    return func_02075ad4(
+    return GraphicsSpriteFont_BlitGlyph(
         &font->glyphs[glyphIndex],
         font->bitmapData +
             (font->glyphs[glyphIndex].bitmapOffsetAndFlags & ~3),
