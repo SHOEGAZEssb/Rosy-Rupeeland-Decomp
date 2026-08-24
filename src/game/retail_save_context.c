@@ -44,7 +44,7 @@ extern void func_0206392c(void *state, s32 mode);
 extern void func_0207a594(void *state, s32 mode);
 extern void RetailResourceDescriptorManager_SaveState(void *state, s32 mode);
 extern void func_020981f0(void *state, s32 mode);
-extern void func_02079c0c(void *state, s32 mode);
+extern void RuntimeRecordTable_SaveActiveState(void *state, s32 mode);
 extern void *data_021e9ac0;
 extern void *data_021f5128;
 extern u8 data_021f38fc[];
@@ -55,7 +55,7 @@ extern void func_02063a00(void *state);
 extern void func_0207a6e0(void *state);
 extern void RetailResourceDescriptorManager_LoadState(void *state);
 extern void func_02098298(void *state);
-extern void SaveGameState_ResetLanguageRecords(void *state);
+extern void RuntimeRecordTable_LoadActiveState(void *state);
 extern void func_0206f8c8(void *state);
 extern void Type7Actor_LoadPersistentState(void);
 extern void *PackedTimerArray_GetGlobal(void);
@@ -82,7 +82,7 @@ void RetailSaveContext_RestoreGameSingletons(void)
     func_0207a6e0(data_021f5128);
     RetailResourceDescriptorManager_LoadState(data_021f38fc);
     func_02098298(data_021f5f18);
-    SaveGameState_ResetLanguageRecords(data_021f3d68);
+    RuntimeRecordTable_LoadActiveState(data_021f3d68);
     func_0206f8c8(data_021e9e00);
     Type7Actor_LoadPersistentState();
     PackedTimerArray_LoadFromGameWork(PackedTimerArray_GetGlobal());
@@ -625,7 +625,7 @@ static void retail_save_reset_game_state(s32 mode)
     func_0207a594(data_021f5128, mode);
     RetailResourceDescriptorManager_SaveState(data_021f38fc, mode);
     func_020981f0(data_021f5f18, mode);
-    func_02079c0c(data_021f3d68, mode);
+    RuntimeRecordTable_SaveActiveState(data_021f3d68, mode);
 }
 
 static s32 retail_save_header_valid(const u8 *header)

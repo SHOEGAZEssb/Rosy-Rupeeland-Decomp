@@ -463,8 +463,9 @@ void func_020981f0(void *state_pointer, s32 mode)
     WriteU32(work, 0x5e10, count);
 }
 
-/* Exact portable behavior of assembly-selected retail 0x02079C0C. */
-void func_02079c0c(void *state_pointer, s32 mode)
+/* Serialize active record-index slots into the eight-byte GameWork bitmap.
+ * Mode one clears the active set before serialization. */
+void RuntimeRecordTable_SaveActiveState(void *state_pointer, s32 mode)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -590,8 +591,8 @@ void func_02098298(void *state_pointer)
     }
 }
 
-/* Exact portable behavior of assembly-selected retail 0x02079CA8. */
-void SaveGameState_ResetLanguageRecords(void *state_pointer)
+/* Restore active record pointers and counters from the GameWork bitmap. */
+void RuntimeRecordTable_LoadActiveState(void *state_pointer)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -631,5 +632,4 @@ void func_0206f8c8(void *state_pointer)
     }
     WriteU32(state, 4, (u32)(highest + 1));
 }
-
 

@@ -1,0 +1,4 @@
+{
+  "func_02079c0c": "RuntimeRecordTable_SaveActiveState",
+  "SaveGameState_ResetLanguageRecords": "RuntimeRecordTable_LoadActiveState"
+}
