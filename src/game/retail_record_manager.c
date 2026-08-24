@@ -47,7 +47,7 @@ extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destina
 extern void *SharedResourceDescriptorTable_GetById(void *manager, u16 id);
 extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
 extern u8 data_021e9ad0[];
-extern void func_0207b944(void *database);
+extern void RetailRecordDatabase_LoadPrimaryRecords(void *database);
 extern void RetailRecordDatabase_AppendLocalizedRecords(void *database);
 extern void RetailRecordDatabase_AppendAuxiliaryRecords(void *database);
 extern void RetailRecordDatabase_AppendFinalRecord(void *database);
@@ -635,8 +635,39 @@ void RetailRecordDatabase_LoadCategoryRows(void *database_pointer)
     CheckedFS_CloseFile(file);
 }
 
+static void RetailRecordDatabase_ClearOwnedArray(void *array_pointer)
+{
+    u8 *array = (u8 *)array_pointer;
+
+    if (*(void **)array != 0) {
+        Heap_Free(*(void **)array);
+        *(void **)array = 0;
+    }
+    *(u32 *)(array + 4) = 0;
+}
+
+void RetailRecordDatabase_ClearPrimaryRecords(void *database)
+{
+    RetailRecordDatabase_ClearOwnedArray(database);
+}
+
+void RetailRecordDatabase_ClearLocalizedAuxiliary(void *array)
+{
+    RetailRecordDatabase_ClearOwnedArray(array);
+}
+
+void RetailRecordDatabase_ClearSecondaryAuxiliary(void *array)
+{
+    RetailRecordDatabase_ClearOwnedArray(array);
+}
+
+void RetailRecordDatabase_ClearFinalIds(void *array)
+{
+    RetailRecordDatabase_ClearOwnedArray(array);
+}
+
 /* Load the primary 0x8c-byte selectable records at retail 0x0207B944. */
-void func_0207b944(void *database_pointer)
+void RetailRecordDatabase_LoadPrimaryRecords(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile file;
@@ -658,7 +689,7 @@ void func_0207b944(void *database_pointer)
                   *(u32 *)(database + 0x28) + *(u32 *)(database + 0x2c);
     *(u32 *)(database + 0x20) = total_count;
     if (*(void **)database != 0)
-        Heap_Free(*(void **)database);
+        RetailRecordDatabase_ClearPrimaryRecords(database);
     records = Heap_Alloc(total_count * 0x8c, data_020eebdc, 4,
                          &gHeapContext);
     *(u8 **)database = records;
@@ -719,7 +750,7 @@ void RetailRecordDatabase_AppendLocalizedRecords(void *database_pointer)
     count = ReadU16(header);
     *(u32 *)(database + 0x24) = count;
     if (*(void **)(database + 8) != 0)
-        Heap_Free(*(void **)(database + 8));
+        RetailRecordDatabase_ClearLocalizedAuxiliary(database + 8);
     auxiliary = Heap_Alloc(count * 0x10, data_020eebe4, 4, &gHeapContext);
     *(u8 **)(database + 8) = auxiliary;
     *(u32 *)(database + 0x0c) = count;
@@ -788,7 +819,7 @@ void RetailRecordDatabase_AppendAuxiliaryRecords(void *database_pointer)
     count = ReadU16(header);
     *(u32 *)(database + 0x28) = count;
     if (*(void **)(database + 0x10) != 0)
-        Heap_Free(*(void **)(database + 0x10));
+        RetailRecordDatabase_ClearSecondaryAuxiliary(database + 0x10);
     auxiliary = Heap_Alloc(count * 0x10, data_020eebcc, 4, &gHeapContext);
     *(u8 **)(database + 0x10) = auxiliary;
     *(u32 *)(database + 0x14) = count;
@@ -854,7 +885,7 @@ void RetailRecordDatabase_AppendFinalRecord(void *database_pointer)
     count = ReadU16(header);
     *(u32 *)(database + 0x2c) = count;
     if (*(void **)(database + 0x18) != 0)
-        Heap_Free(*(void **)(database + 0x18));
+        RetailRecordDatabase_ClearFinalIds(database + 0x18);
     ids = Heap_Alloc(count * 2, data_020eebd4, 4, &gHeapContext);
     *(u16 **)(database + 0x18) = ids;
     *(u32 *)(database + 0x1c) = count;
@@ -1019,7 +1050,7 @@ void RetailRecordDatabase_LoadAll(void *database)
     RetailRecordDatabase_LoadPath4Count(database);
     RetailRecordDatabase_LoadPath7Count(database);
     RetailRecordDatabase_LoadPath3Count(database);
-    func_0207b944(database);
+    RetailRecordDatabase_LoadPrimaryRecords(database);
     RetailRecordDatabase_AppendLocalizedRecords(database);
     RetailRecordDatabase_AppendAuxiliaryRecords(database);
     RetailRecordDatabase_AppendFinalRecord(database);

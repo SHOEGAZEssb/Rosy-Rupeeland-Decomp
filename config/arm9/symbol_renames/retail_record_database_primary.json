@@ -1,0 +1,7 @@
+{
+  "func_0207b944": "RetailRecordDatabase_LoadPrimaryRecords",
+  "func_0207bb68": "RetailRecordDatabase_ClearPrimaryRecords",
+  "func_0207bdf4": "RetailRecordDatabase_ClearLocalizedAuxiliary",
+  "func_0207c058": "RetailRecordDatabase_ClearSecondaryAuxiliary",
+  "func_0207c24c": "RetailRecordDatabase_ClearFinalIds"
+}
