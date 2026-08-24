@@ -33,7 +33,7 @@ extern u64 func_020bf1f8(u32, u32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_Printf(void *, s32, s32, const char *, ...);
 extern void GraphicsSpriteCanvas_DrawLine(void *, s32, s32, s32, s32, s32);
-extern void func_020766c8(void *);
+extern void GraphicsSpriteCanvas_NoOp(void *);
 extern void TouchPanelManager_GetPoint(void *);
 extern void GamePhaseState_UpdateRenderHelpers(void *);
 extern void GamePhaseAreaScene_Update(void *);
@@ -221,7 +221,7 @@ s32 func_ov066_0220ff60(void *scene)
     else if (pressed & 2) {
         if (scene) ((void (**)(void *))FIELD(void *, scene, 0))[1](scene);
         return 1;
-    } else if (pressed & 0x400) func_020766c8(data_020f4e14[0]);
+    } else if (pressed & 0x400) GraphicsSpriteCanvas_NoOp(data_020f4e14[0]);
     else if (pressed & 1) func_ov066_0220fee0(scene);
     held = FIELD(u16, gSystemState, 4);
     Overlay066_AdjustBounds(controller, held);

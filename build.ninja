@@ -12240,7 +12240,7 @@ build build/reports/graphics_sprite_canvas.json: objdiff build/decomp/delinks/sr
 
 build build/reports/graphics_sprite_canvas.txt: match_report build/reports/graphics_sprite_canvas.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_canvas.json
-  report_args = --section .text --function GraphicsSpriteCanvas_DrawLine --function func_020763dc --function GraphicsSpriteCanvas_FillRect --function GraphicsSpriteCanvas_DrawRect --function func_020766c8
+  report_args = --section .text --function GraphicsSpriteCanvas_DrawLine --function GraphicsSpriteCanvas_PutPixelRetainedColor --function GraphicsSpriteCanvas_FillRect --function GraphicsSpriteCanvas_DrawRect --function GraphicsSpriteCanvas_NoOp
 
 build build/reports/graphics_sprite_runtime_lifecycle.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_runtime_lifecycle.o | build/decomp/src/graphics/graphics_sprite_runtime_lifecycle.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_runtime_lifecycle.o

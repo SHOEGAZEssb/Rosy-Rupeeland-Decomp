@@ -12,7 +12,7 @@
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteRenderer_Printf
 .extern GraphicsSpriteCanvas_DrawLine
-.extern func_020766c8
+.extern GraphicsSpriteCanvas_NoOp
 .extern func_ov066_0220fee0
 .extern func_ov066_02210a9c
 .extern gDebugFont
@@ -63,7 +63,7 @@ func_ov066_0220ff60:
     beq .L_02210000
     ldr r0, .L_022103e0
     ldr r0, [r0, #0x0]
-    bl func_020766c8
+    bl GraphicsSpriteCanvas_NoOp
     b .L_02210010
 .L_02210000:
     tst r0, #0x1

@@ -21,7 +21,7 @@ void GraphicsSpriteCanvas_FillRect(GraphicsSpriteCanvas *canvas,
 void GraphicsSpriteCanvas_DrawRect(GraphicsSpriteCanvas *canvas,
                                    s32 x0, s32 y0, s32 x1, s32 y1,
                                    u32 color);
-void func_020766c8(void);
+void GraphicsSpriteCanvas_NoOp(void);
 
 #ifdef __cplusplus
 }

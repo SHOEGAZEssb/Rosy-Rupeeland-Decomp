@@ -28,7 +28,7 @@ static u32 *GraphicsSpriteCanvas_GetPixelWord(u32 *pixels, s32 x, s32 y)
 
 /*
  * Store the low four bits of color at one in-bounds pixel. This portable
- * helper expresses the behavior of retail func_020763dc; the retail helper
+ * helper expresses the behavior of retail GraphicsSpriteCanvas_PutPixelRetainedColor; the retail helper
  * receives color through its caller's retained r5 rather than the C ABI.
  */
 static void GraphicsSpriteCanvas_PutPixel(u32 *pixels, s32 x, s32 y,
@@ -166,7 +166,7 @@ void GraphicsSpriteCanvas_DrawRect(GraphicsSpriteCanvas *canvas,
 }
 
 /* No-op drawing hook. It accepts no inputs, changes no state, and returns. */
-void func_020766c8(void)
+void GraphicsSpriteCanvas_NoOp(void)
 {
 }
 #else
@@ -174,7 +174,7 @@ void func_020766c8(void)
 #ifdef __cplusplus
 extern "C" {
 #endif
-void func_020763dc(u32 *pixels, s32 x, s32 y);
+void GraphicsSpriteCanvas_PutPixelRetainedColor(u32 *pixels, s32 x, s32 y);
 #ifdef __cplusplus
 }
 #endif
@@ -246,7 +246,7 @@ asm void GraphicsSpriteCanvas_DrawLine(GraphicsSpriteCanvas *canvas,
  * typed GraphicsSpriteCanvas_PutPixel helper above; this address-derived entry
  * point must remain private because it has no portable callable signature.
  */
-asm void func_020763dc(u32 *pixels, s32 x, s32 y)
+asm void GraphicsSpriteCanvas_PutPixelRetainedColor(u32 *pixels, s32 x, s32 y)
 {
     and r9, r1, #7
     mov r9, r9, lsl #2
@@ -455,7 +455,7 @@ asm void GraphicsSpriteCanvas_DrawRect(GraphicsSpriteCanvas *canvas,
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 }
 
-asm void func_020766c8(void)
+asm void GraphicsSpriteCanvas_NoOp(void)
 {
     bx lr
 }
