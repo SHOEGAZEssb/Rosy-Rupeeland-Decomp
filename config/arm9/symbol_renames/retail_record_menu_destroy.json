@@ -1,0 +1,8 @@
+{
+  "func_0207db14": "RetailRecordTypeOneMenu_Destroy",
+  "func_0207db48": "RetailRecordNonTypeOneMenu_Destroy",
+  "func_0207db7c": "RetailRecordChannelZeroMenu_Destroy",
+  "func_0207db90": "RetailRecordChannelOneMenu_Destroy",
+  "func_0207dba4": "RetailRecordListMenu_Destroy",
+  "func_0207dbb8": "RetailRecordCategoryMenu_Destroy"
+}
