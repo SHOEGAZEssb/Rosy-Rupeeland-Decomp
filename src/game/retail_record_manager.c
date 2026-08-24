@@ -55,6 +55,8 @@ extern void *RetailRecordManager_Construct(void *manager);
 extern void *gGameWork;
 extern void GameWork_SetFlag(void *work, s32 flag);
 extern s32 RecordSelection_HasAvailableEntry(void *category, s32 bank);
+extern void func_0207c460(void *slot, u16 id);
+extern void func_0207ad90(void *category, void *slot);
 
 /* Copy the mutable descriptor fields retained by the manager's ordered list.
  * Both records are borrowed 16-byte slots; identity storage at +0 is retained. */
@@ -762,6 +764,22 @@ void RetailRecordSlot_Init(u8 *slot)
     *(u32 *)(slot + 4) = 0;
     *(u32 *)(slot + 8) = 0;
     *(u32 *)(slot + 0x0c) = 0;
+}
+
+/* Build a temporary slot for `id` and dispatch it to the record-selected
+ * manager category encoded in record byte +0x0c. */
+void RetailRecordManager_InsertRecordById(void *manager_pointer, u16 id)
+{
+    u8 slot[0x10];
+    u8 *record;
+    u32 category_index;
+
+    RetailRecordSlot_Init(slot);
+    func_0207c460(slot, id);
+    record = *(u8 **)(slot + 4);
+    category_index = record[0x0c];
+    func_0207ad90(*(void **)((u8 *)manager_pointer + category_index * 4),
+                  slot);
 }
 
 static void InitializeRecordCategory(u8 *category, u32 category_index)
