@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern gSceneTouchInitialData
-.global TouchPoint_Assign
-TouchPoint_Assign:
+.global TouchPoint_InitCopy
+TouchPoint_InitCopy:
     ldr r2, L_0200b858
     str r2, [r0, #0x0]
     ldr r2, [r1, #0x4]
@@ -12,5 +12,5 @@ TouchPoint_Assign:
     str r1, [r0, #0x8]
     bx lr
 L_0200b858: .word gSceneTouchInitialData
-.size TouchPoint_Assign, . - TouchPoint_Assign
+.size TouchPoint_InitCopy, . - TouchPoint_InitCopy
 

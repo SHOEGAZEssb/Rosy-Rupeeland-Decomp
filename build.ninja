@@ -11340,7 +11340,7 @@ build build/reports/actor_runtime_scene_end.json: objdiff build/decomp/delinks/a
   base_object = build/decomp/asm/game/actor_runtime_scene_end.o
 build build/reports/actor_runtime_scene_end.txt: match_report build/reports/actor_runtime_scene_end.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_end.json
-  report_args = --section .text --function ActorRuntimeScene_End --require-exact
+  report_args = --section .text --function ActorRuntimeScene_Leave --require-exact
 
 build build/reports/actor_runtime_scene_touch_begin.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_touch_begin.o | build/decomp/asm/game/actor_runtime_scene_touch_begin.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_touch_begin.o
@@ -11354,7 +11354,7 @@ build build/reports/actor_runtime_touch_copy.json: objdiff build/decomp/delinks/
   base_object = build/decomp/asm/game/actor_runtime_touch_copy.o
 build build/reports/actor_runtime_touch_copy.txt: match_report build/reports/actor_runtime_touch_copy.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_touch_copy.json
-  report_args = --section .text --function TouchPoint_Assign --require-exact
+  report_args = --section .text --function TouchPoint_InitCopy --require-exact
 
 build build/reports/actor_runtime_scene_touch_move.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_touch_move.o | build/decomp/asm/game/actor_runtime_scene_touch_move.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_touch_move.o
@@ -11375,21 +11375,21 @@ build build/reports/actor_runtime_scene_actor_deactivate.json: objdiff build/dec
   base_object = build/decomp/asm/game/actor_runtime_scene_actor_deactivate.o
 build build/reports/actor_runtime_scene_actor_deactivate.txt: match_report build/reports/actor_runtime_scene_actor_deactivate.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_actor_deactivate.json
-  report_args = --section .text --function ActorRuntimeScene_DeactivateActorSets --require-exact
+  report_args = --section .text --function ActorRuntimeScene_DeactivateNonType1Actors --require-exact
 
 build build/reports/actor_runtime_scene_actor_activate.json: objdiff build/decomp/delinks/asm/game/actor_runtime_scene_actor_activate.o | build/decomp/asm/game/actor_runtime_scene_actor_activate.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_scene_actor_activate.o
   base_object = build/decomp/asm/game/actor_runtime_scene_actor_activate.o
 build build/reports/actor_runtime_scene_actor_activate.txt: match_report build/reports/actor_runtime_scene_actor_activate.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_scene_actor_activate.json
-  report_args = --section .text --function ActorRuntimeScene_ActivateFlaggedActors --require-exact
+  report_args = --section .text --function ActorRuntimeScene_ActivateFlaggedNonType1Actors --require-exact
 
 build build/reports/actor_runtime_owned_list_variants.json: objdiff build/decomp/delinks/src/game/actor_runtime_owned_list_variants.o | build/decomp/src/game/actor_runtime_owned_list_variants.o
   target_object = build/decomp/delinks/src/game/actor_runtime_owned_list_variants.o
   base_object = build/decomp/src/game/actor_runtime_owned_list_variants.o
 build build/reports/actor_runtime_owned_list_variants.txt: match_report build/reports/actor_runtime_owned_list_variants.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_owned_list_variants.json
-  report_args = --section .text --function func_0200bac4 --function func_0200baec --function func_0200bb14 --require-exact
+  report_args = --section .text --function ActorRuntimeOwnedList_DestroyAndFree --function ActorRuntimeListBase_DestroyAndFree --function ActorRuntimeListBase_Destroy --require-exact
 
 build build/reports/actor_runtime_object_lists_ctor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_ctor.o | build/decomp/asm/game/actor_runtime_object_lists_ctor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_ctor.o

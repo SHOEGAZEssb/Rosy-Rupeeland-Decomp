@@ -4,8 +4,8 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetActive
 .extern gGamePhaseRuntime
-.global ActorRuntimeScene_ActivateFlaggedActors
-ActorRuntimeScene_ActivateFlaggedActors:
+.global ActorRuntimeScene_ActivateFlaggedNonType1Actors
+ActorRuntimeScene_ActivateFlaggedNonType1Actors:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     ldr r0, L_0200bac0
     mov r1, #0x1
@@ -61,4 +61,4 @@ L_0200bab0:
     blt L_0200ba84
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_0200bac0: .word gGamePhaseRuntime
-.size ActorRuntimeScene_ActivateFlaggedActors, . - ActorRuntimeScene_ActivateFlaggedActors
+.size ActorRuntimeScene_ActivateFlaggedNonType1Actors, . - ActorRuntimeScene_ActivateFlaggedNonType1Actors

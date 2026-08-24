@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_scene_teardown.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern ActorRuntimeScene_DeactivateActorSets
+.extern ActorRuntimeScene_DeactivateNonType1Actors
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetActive
 .extern GameWork_TestFlag
@@ -13,7 +13,7 @@
 .extern func_02030b58
 .extern Scene_Destroy
 .extern Heap_Free
-.extern data_020d448c
+.extern gActorRuntimeSceneVTable
 .extern gGamePhaseRuntime
 .extern gGameWork
 .global ActorRuntimeScene_DestroyAndFree
@@ -22,7 +22,7 @@ ActorRuntimeScene_DestroyAndFree:
     ldr r1, L_0200b6b0
     mov r5, r0
     str r1, [r5, #0x0]
-    bl ActorRuntimeScene_DeactivateActorSets
+    bl ActorRuntimeScene_DeactivateNonType1Actors
     ldr r0, L_0200b6b4
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -102,7 +102,7 @@ L_0200b680:
     bl Heap_Free
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
-L_0200b6b0: .word data_020d448c
+L_0200b6b0: .word gActorRuntimeSceneVTable
 L_0200b6b4: .word gGamePhaseRuntime
 L_0200b6b8: .word gGameWork
 L_0200b6bc: .word 0x3f3

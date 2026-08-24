@@ -6,14 +6,13 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d448c;
 extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void func_02030b58(void *context, s32 value);
 extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
 extern void Type7Actor_EnterSpecialPresentationState(void *object);
-extern void GraphicsSpriteState_SetAnimationIndex(u8 value);
-extern void ActorRuntimeScene_ActivateFlaggedActors(ActorRuntimeScene *self);
+extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 index);
+extern void ActorRuntimeScene_ActivateFlaggedNonType1Actors(ActorRuntimeScene *self);
 #ifdef __cplusplus
 }
 #endif
@@ -35,8 +34,8 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
     void *context;
 
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d448c;
-    self->object = object;
+    self->base.vtable = &gActorRuntimeSceneVTable;
+    self->attachedObject = object;
     Scene_SetFlags03(&self->base);
     self->base.value04 = 2;
 
@@ -45,7 +44,7 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
     if (!GameWork_TestFlag(gGameWork, 0x3f3) &&
         !GameWork_TestFlag(gGameWork, 0x403)) {
         child = *(u8 **)(active + 0x54);
-        GraphicsSpriteState_SetAnimationIndex(child[0x38]);
+        GraphicsSpriteState_SetAnimationIndex(child, child[0x38]);
         child = *(u8 **)(active + 0x54);
         *(u16 *)(child + 0x36) = 0x100;
         child = *(u8 **)(active + 0x54);
@@ -54,14 +53,14 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
 
     *(u32 *)(active + 0x230) &= ~4;
     ActorDerivedType1_ClearStateVectorTimers(active);
-    VecFx32Object_SetComponents(active + 0x38, 0, 0, 0);
-    VecFx32Object_SetComponents(active + 0x88, 0, 0, 0);
-    VecFx32Object_SetComponents(active + 0x98, 0, 0, 0);
+    VecFx32Object_SetComponents((VecFx32Object *)(active + 0x38), 0, 0, 0);
+    VecFx32Object_SetComponents((VecFx32Object *)(active + 0x88), 0, 0, 0);
+    VecFx32Object_SetComponents((VecFx32Object *)(active + 0x98), 0, 0, 0);
 
     context = *(void **)(root + 0x2ea8);
     if (context != 0)
         Type7Actor_EnterSpecialPresentationState(context);
-    ActorRuntimeScene_ActivateFlaggedActors(self);
+    ActorRuntimeScene_ActivateFlaggedNonType1Actors(self);
     context = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     func_02030b58(context, 0);
     GameWork_TestFlag(gGameWork, 0x410);

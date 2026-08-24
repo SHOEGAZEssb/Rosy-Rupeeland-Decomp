@@ -7,7 +7,7 @@
  * Restore the base list vtable, clear all owned nodes, free self, and return
  * its old address. Heap_Free is the only SDK/runtime effect.
  */
-ActorRuntimeOwnedList *func_0200bac4(ActorRuntimeOwnedList *self)
+ActorRuntimeOwnedList *ActorRuntimeOwnedList_DestroyAndFree(ActorRuntimeOwnedList *self)
 {
     self->vtable = gActorRuntimeListBaseVTable;
     ActorRuntimeOwnedList_Clear(self);
@@ -17,9 +17,9 @@ ActorRuntimeOwnedList *func_0200bac4(ActorRuntimeOwnedList *self)
 
 /*
  * Destroy and free a second address-distinct list variant using the same base
- * behavior as func_0200bac4; returns the old self address.
+ * behavior as ActorRuntimeOwnedList_DestroyAndFree; returns the old self address.
  */
-ActorRuntimeOwnedList *func_0200baec(ActorRuntimeOwnedList *self)
+ActorRuntimeOwnedList *ActorRuntimeListBase_DestroyAndFree(ActorRuntimeOwnedList *self)
 {
     self->vtable = gActorRuntimeListBaseVTable;
     ActorRuntimeOwnedList_Clear(self);
@@ -28,7 +28,7 @@ ActorRuntimeOwnedList *func_0200baec(ActorRuntimeOwnedList *self)
 }
 
 /* Restore the base vtable, clear owned nodes, and return self without freeing. */
-ActorRuntimeOwnedList *func_0200bb14(ActorRuntimeOwnedList *self)
+ActorRuntimeOwnedList *ActorRuntimeListBase_Destroy(ActorRuntimeOwnedList *self)
 {
     self->vtable = gActorRuntimeListBaseVTable;
     ActorRuntimeOwnedList_Clear(self);

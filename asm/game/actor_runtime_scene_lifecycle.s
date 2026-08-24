@@ -8,10 +8,10 @@
 .extern ActorDerivedType1_ClearStateVectorTimers
 .extern VecFx32Object_SetComponents
 .extern Type7Actor_EnterSpecialPresentationState
-.extern ActorRuntimeScene_ActivateFlaggedActors
+.extern ActorRuntimeScene_ActivateFlaggedNonType1Actors
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02030b58
-.extern data_020d448c
+.extern gActorRuntimeSceneVTable
 .extern gGamePhaseRuntime
 .extern gGameWork
 .global ActorRuntimeScene_Init
@@ -83,7 +83,7 @@ L_0200b364:
     bl Type7Actor_EnterSpecialPresentationState
 L_0200b3d0:
     mov r0, r5
-    bl ActorRuntimeScene_ActivateFlaggedActors
+    bl ActorRuntimeScene_ActivateFlaggedNonType1Actors
     ldr r0, L_0200b40c
     mov r1, #0x1
     ldr r0, [r0, #0x0]
@@ -96,7 +96,7 @@ L_0200b3d0:
     bl GameWork_TestFlag
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
-L_0200b408: .word data_020d448c
+L_0200b408: .word gActorRuntimeSceneVTable
 L_0200b40c: .word gGamePhaseRuntime
 L_0200b410: .word gGameWork
 L_0200b414: .word 0x3f3

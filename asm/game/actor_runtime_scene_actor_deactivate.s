@@ -5,8 +5,8 @@
 .extern Actor_RestorePrimaryAttachmentState
 .extern Actor_SetActive
 .extern gGamePhaseRuntime
-.global ActorRuntimeScene_DeactivateActorSets
-ActorRuntimeScene_DeactivateActorSets:
+.global ActorRuntimeScene_DeactivateNonType1Actors
+ActorRuntimeScene_DeactivateNonType1Actors:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     ldr r0, L_0200b9fc
     mov r1, #0x1
@@ -94,4 +94,4 @@ L_0200b9ec:
     blt L_0200b98c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_0200b9fc: .word gGamePhaseRuntime
-.size ActorRuntimeScene_DeactivateActorSets, . - ActorRuntimeScene_DeactivateActorSets
+.size ActorRuntimeScene_DeactivateNonType1Actors, . - ActorRuntimeScene_DeactivateNonType1Actors

@@ -1,0 +1,18 @@
+{
+  "ActorRuntimeScene_Init": "ActorRuntimeScene_Init",
+  "ActorRuntimeScene_Destroy": "ActorRuntimeScene_Destroy",
+  "ActorRuntimeScene_DestroyAndFree": "ActorRuntimeScene_DestroyAndFree",
+  "ActorRuntimeScene_Update": "ActorRuntimeScene_Update",
+  "ActorRuntimeScene_Begin": "ActorRuntimeScene_Begin",
+  "ActorRuntimeScene_End": "ActorRuntimeScene_Leave",
+  "ActorRuntimeScene_TouchBegin": "ActorRuntimeScene_TouchBegin",
+  "TouchPoint_Assign": "TouchPoint_InitCopy",
+  "ActorRuntimeScene_TouchMove": "ActorRuntimeScene_TouchMove",
+  "ActorRuntimeScene_TouchEnd": "ActorRuntimeScene_TouchEnd",
+  "ActorRuntimeScene_DeactivateActorSets": "ActorRuntimeScene_DeactivateNonType1Actors",
+  "ActorRuntimeScene_ActivateFlaggedActors": "ActorRuntimeScene_ActivateFlaggedNonType1Actors",
+  "func_0200bac4": "ActorRuntimeOwnedList_DestroyAndFree",
+  "func_0200baec": "ActorRuntimeListBase_DestroyAndFree",
+  "func_0200bb14": "ActorRuntimeListBase_Destroy",
+  "data_020d448c": "gActorRuntimeSceneVTable"
+}

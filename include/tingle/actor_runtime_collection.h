@@ -70,9 +70,12 @@ void ActorRuntimeCollection_QueueValue(ActorRuntimeCollection *self, void *value
 s32 ActorRuntimeCollection_DispatchQueuedValue(ActorRuntimeCollection *self);
 s32 ActorRuntimeCollection_IsQueuedValueMissing(const ActorRuntimeCollection *self, const void *value);
 u32 ActorRuntimeCollection_GetBusyState(const ActorRuntimeCollection *self);
-ActorRuntimeOwnedList *func_0200bac4(ActorRuntimeOwnedList *self);
-ActorRuntimeOwnedList *func_0200baec(ActorRuntimeOwnedList *self);
-ActorRuntimeOwnedList *func_0200bb14(ActorRuntimeOwnedList *self);
+ActorRuntimeOwnedList *ActorRuntimeOwnedList_DestroyAndFree(
+    ActorRuntimeOwnedList *self);
+ActorRuntimeOwnedList *ActorRuntimeListBase_DestroyAndFree(
+    ActorRuntimeOwnedList *self);
+ActorRuntimeOwnedList *ActorRuntimeListBase_Destroy(
+    ActorRuntimeOwnedList *self);
 
 extern const void *gActorRuntimeOwnedListVTable[];
 extern const void *gActorRuntimeListBaseVTable[];

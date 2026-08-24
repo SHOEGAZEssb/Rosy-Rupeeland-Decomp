@@ -31,7 +31,7 @@ s32 ActorRuntimeScene_Begin(ActorRuntimeScene *self)
 }
 
 /* Invoke shared-context vtable method 0x10 and return 0; self is unused. */
-s32 ActorRuntimeScene_End(ActorRuntimeScene *self)
+s32 ActorRuntimeScene_Leave(ActorRuntimeScene *self)
 {
     void *context = gGamePhaseRuntime;
     void **vtable = *(void ***)context;
@@ -53,14 +53,14 @@ s32 ActorRuntimeScene_TouchBegin(ActorRuntimeScene *self, const TouchPoint *poin
     void **vtable;
 
     (void)self;
-    TouchPoint_Assign(&copy, point);
+    TouchPoint_InitCopy(&copy, point);
     vtable = *(void ***)context;
     ((ActorRuntimeTouchMethod)vtable[0x14 / 4])(context, &copy);
     return 0;
 }
 
 /* Copy x/y from source, install the shared TouchPoint vtable, and return result. */
-TouchPoint *TouchPoint_Assign(TouchPoint *result, const TouchPoint *source)
+TouchPoint *TouchPoint_InitCopy(TouchPoint *result, const TouchPoint *source)
 {
     result->vtable = &gSceneTouchInitialData.pointVTable;
     result->x = source->x;
@@ -76,7 +76,7 @@ s32 ActorRuntimeScene_TouchMove(ActorRuntimeScene *self, const TouchPoint *point
     void **vtable;
 
     (void)self;
-    TouchPoint_Assign(&copy, point);
+    TouchPoint_InitCopy(&copy, point);
     vtable = *(void ***)context;
     ((ActorRuntimeTouchMethod)vtable[0x18 / 4])(context, &copy);
     return 0;
@@ -90,7 +90,7 @@ s32 ActorRuntimeScene_TouchEnd(ActorRuntimeScene *self, const TouchPoint *point)
     void **vtable;
 
     (void)self;
-    TouchPoint_Assign(&copy, point);
+    TouchPoint_InitCopy(&copy, point);
     vtable = *(void ***)context;
     ((ActorRuntimeTouchMethod)vtable[0x1c / 4])(context, &copy);
     return 0;

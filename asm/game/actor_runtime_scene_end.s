@@ -2,8 +2,8 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern gGamePhaseRuntime
-.global ActorRuntimeScene_End
-ActorRuntimeScene_End:
+.global ActorRuntimeScene_Leave
+ActorRuntimeScene_Leave:
     stmdb sp!, {r3, lr}
     ldr r0, L_0200b800
     ldr r0, [r0, #0x0]
@@ -13,5 +13,5 @@ ActorRuntimeScene_End:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_0200b800: .word gGamePhaseRuntime
-.size ActorRuntimeScene_End, . - ActorRuntimeScene_End
+.size ActorRuntimeScene_Leave, . - ActorRuntimeScene_Leave
 
