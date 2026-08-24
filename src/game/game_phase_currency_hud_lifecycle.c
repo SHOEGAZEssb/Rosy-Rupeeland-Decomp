@@ -55,8 +55,8 @@ GamePhaseCurrencyHud *GamePhaseCurrencyHud_Init(GamePhaseCurrencyHud *self)
     self->baseX = 0x100;
     self->baseY = 0xc0;
     for (display = 0; display < 2; display++) {
-        self->groups[display]->field_18 = self->baseX;
-        self->groups[display]->field_1c = self->baseY;
+        self->groups[display]->screenOffsetX = self->baseX;
+        self->groups[display]->screenOffsetY = self->baseY;
     }
 
     func_02071ee0(&self->resources[0].entries[0], data_020f4e18,

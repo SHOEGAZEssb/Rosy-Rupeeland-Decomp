@@ -6,6 +6,7 @@
  * the optional 0x6000-byte character upload through SDK hardware boundaries.
  */
 #include "tingle/graphics_transfer_queue.h"
+#include "tingle/graphics_sprite_group.h"
 #include "tingle/types.h"
 
 extern void func_020b4554(void *address, u32 size);
@@ -26,9 +27,7 @@ extern void GraphicsRenderEntryPool_AppendRoot(void *pool, void *entry);
 extern void *GraphicsRenderEntryPool_AllocateChain(void *pool,
                                                     s32 requested_count);
 extern void GraphicsRenderEntryPool_SortRoots(void *pool);
-extern void GraphicsSpriteGroup_RemoveState(void *group, void *state);
 extern void GraphicsSpriteStatePool_Release(void *pool, void *state);
-extern u16 GraphicsSpriteState_GetCurrentFrameResourceField02(void *state);
 extern void *func_02074b9c(void *renderer, void *resource);
 extern void *GraphicsVramAllocator_Allocate(void *allocator, u16 size,
                                             void *owner, u32 alignment);
@@ -48,7 +47,7 @@ extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *renderer,
 void func_020745c4(void *renderer_pointer, s32 sort_roots)
 {
     u8 *renderer = (u8 *)renderer_pointer;
-    u8 *group;
+    GraphicsSpriteGroup *group;
     s32 oam_index = 0;
 
     GraphicsRenderEntryPool_Reset(renderer + 0xe70);
@@ -59,22 +58,25 @@ void func_020745c4(void *renderer_pointer, s32 sort_roots)
         GraphicsRenderEntryPool_AppendRoot(renderer + 0xe70,
                                             *(void **)(renderer + 0x0c));
 
-    for (group = *(u8 **)(renderer + 0x43c); group != 0;
-         group = *(u8 **)(group + 0x08)) {
-        u8 *state = *(u8 **)(group + 0x0c);
+    for (group = *(GraphicsSpriteGroup **)(renderer + 0x43c); group != 0;
+         group = group->next) {
+        u8 *state = (u8 *)group->head;
 
-        if (*(u32 *)(group + 0x20) != 0) {
+        if (group->renderEnabled != 0) {
             while (state != 0) {
                 u8 *next = *(u8 **)(state + 0x08);
                 u16 flags = *(u16 *)(state + 0x24);
 
                 if ((flags & 0x100) != 0 && (flags & 1) != 0) {
                     void *pool = *(void **)state;
-                    GraphicsSpriteGroup_RemoveState(pool, state);
+                    GraphicsSpriteGroup_RemoveState(
+                        (GraphicsSpriteGroup *)pool,
+                        (GraphicsSpriteState *)state);
                     GraphicsSpriteStatePool_Release(*(void **)pool, state);
                 } else if ((flags & 0x1c) == 0) {
                     u16 cell_count =
-                        GraphicsSpriteState_GetCurrentFrameResourceField02(state);
+                        GraphicsSpriteState_GetCurrentFrameResourceField02(
+                            (GraphicsSpriteState *)state);
                     u32 allocated_count = *(u32 *)(renderer + 0x1a7c);
                     if (cell_count != 0 && allocated_count <= 128U &&
                         cell_count <= 128U - allocated_count) {

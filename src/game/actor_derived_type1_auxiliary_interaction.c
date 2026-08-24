@@ -25,9 +25,9 @@ extern s32 ActorRuntimeFlags_Test(void *state, s32 mask);
 extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
 extern void *AuxiliaryInteraction_Destroy(void *resource);
 extern void AuxiliaryCore_Destroy(void *core);
-extern void func_02074058(void *group);
-extern void func_02074330(void *manager, void *group);
-extern void func_02074038(void *group, void *state);
+extern void GraphicsSpriteGroup_Clear(void *group);
+extern void GraphicsSpriteGroupOwner_DestroyGroup(void *manager, void *group);
+extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
 extern void ActorAttachmentManager_Destroy(void *manager);
 extern void AuxiliaryInteraction_BuildTerminalVector(
     void *outputPosition, void *interactionPointer);
@@ -1849,8 +1849,9 @@ void *AuxiliaryInteraction_Destroy(void *object)
         AuxiliaryCore_Destroy(*(void **)(self + 0x14));
         Heap_Free(*(void **)(self + 0x14));
     }
-    func_02074058(*(void **)(self + 0x0c));
-    func_02074330(data_020f4e14, *(void **)(self + 0x0c));
+    GraphicsSpriteGroup_Clear(*(void **)(self + 0x0c));
+    GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14,
+                                          *(void **)(self + 0x0c));
     for (i = 0; i < 3; i++) {
         void *presentation = *(void **)(self + i * 4);
         if (presentation != 0)
@@ -1981,7 +1982,7 @@ void *AuxiliaryCoreSprite_Delete(void *object)
     u8 *record = (u8 *)object;
     void *state = *(void **)(record + 0x34);
     *(const void **)(record + 0) = data_020e57c4;
-    func_02074038(*(void **)state, state);
+    GraphicsSpriteGroup_ReleaseState(*(void **)state, state);
     VecFx32_TerminateNoOp(record + 8);
     Heap_Free(record);
     return object;

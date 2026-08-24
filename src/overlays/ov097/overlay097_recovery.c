@@ -78,7 +78,6 @@ EXT(Actor_PlayHorizontalSpatialSound);
 EXT(Sound_PlayOwnedEffect);
 EXT(Sound_StopEffect);
 EXT(Sound_IsEffectPlaying);
-EXT(func_020740c8);
 EXT(func_0206e590);
 EXT(Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt);
 EXT(Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt);

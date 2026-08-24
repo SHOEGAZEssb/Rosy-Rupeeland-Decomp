@@ -90,7 +90,7 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
         activeGroup = self->groups[1];
         activeRow = 1;
     }
-    activeGroup->field_20 = 1;
+    activeGroup->renderEnabled = 1;
 
     if (self->transitionState == 1) {
         if (self->transitionTimer != 0) {
@@ -177,11 +177,11 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
     }
 
     if (!(self->flags & 0x10)) {
-        activeGroup->field_18 = self->baseX;
-        activeGroup->field_1c = self->baseY;
+        activeGroup->screenOffsetX = self->baseX;
+        activeGroup->screenOffsetY = self->baseY;
     } else {
-        activeGroup->field_18 = self->baseX + (3 - randomBelow(8));
-        activeGroup->field_1c = self->baseY - randomBelow(4);
+        activeGroup->screenOffsetX = self->baseX + (3 - randomBelow(8));
+        activeGroup->screenOffsetY = self->baseY - randomBelow(4);
     }
 
 render:

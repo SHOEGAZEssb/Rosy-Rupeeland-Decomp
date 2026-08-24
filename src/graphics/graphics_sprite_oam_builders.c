@@ -8,6 +8,7 @@
 #include "tingle/graphics_render_entry_pool.h"
 #include "tingle/graphics_sprite_render_helpers.h"
 #include "tingle/graphics_lookup_cache.h"
+#include "tingle/graphics_sprite_group.h"
 #include "tingle/graphics_sprite_state.h"
 #include "tingle/graphics_transfer_queue.h"
 #include "tingle/graphics_vram_allocator.h"
@@ -157,8 +158,10 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
             attributes[1] ^= 0x2000;
         }
 
-        finalX = x + state->screenX + *(s32 *)((u8 *)state->field_00 + 0x18);
-        finalY = y + state->screenY + *(s32 *)((u8 *)state->field_00 + 0x1c);
+        finalX = x + state->screenX +
+                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetX;
+        finalY = y + state->screenY +
+                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetY;
         attributes[1] = (u16)((attributes[1] & 0xfe00U) |
                               ((u32)finalX & 0x1ffU));
         attributes[0] = (u16)((attributes[0] & 0xff00U) |
@@ -333,9 +336,9 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         }
 
         finalX = x + state->screenX +
-                 *(s32 *)((u8 *)state->field_00 + 0x18);
+                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetX;
         finalY = y + state->screenY +
-                 *(s32 *)((u8 *)state->field_00 + 0x1c);
+                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetY;
 
         matrixVariant = ((cell[1] >> 12) & 1U) ^
                         (((state->flags & 0x40) != 0) ? 1U : 0U);

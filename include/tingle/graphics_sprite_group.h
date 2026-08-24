@@ -11,9 +11,9 @@ typedef struct GraphicsSpriteGroup {
     GraphicsSpriteState *head;
     GraphicsSpriteState *tail;
     u32 count;
-    u32 field_18;
-    u32 field_1c;
-    u32 field_20;
+    s32 screenOffsetX;
+    s32 screenOffsetY;
+    u32 renderEnabled;
 } GraphicsSpriteGroup;
 
 typedef struct GraphicsSpriteSource3 {

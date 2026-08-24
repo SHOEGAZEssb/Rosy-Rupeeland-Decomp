@@ -1,4 +1,5 @@
 #include "tingle/field_effect.h"
+#include "tingle/graphics_sprite_group.h"
 #include "tingle/types.h"
 
 /* Overlay 55 paired-screen animated-object scene. */
@@ -26,13 +27,6 @@ extern void *__destroy_arr(void *, s32, s32, void (*)(void *));
 extern u32 genrand_int32(void); extern void *GamePhaseProgress_GetOrCreateGlobal(void); extern s32 func_02027e8c(void *);
 extern void AnimationResourceState_InitEmbedded(void *); extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void *GraphicsSpriteGroup_CreateState(void *, void *, void *, void *, s32);
-extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void GraphicsSpriteState_SetFrameIndex(void *, u8);
-extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
-extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
-extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
-extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *VecFx32Object_Init(void *); extern void *VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void *VecFx32Object_Assign(void *, const void *); extern void *VecFx32Object_Destroy(void *);
 extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
@@ -56,9 +50,9 @@ void *func_ov055_0220e400(void *object, void *group)
     AnimationResourceState_InitEmbedded(resource); FIELD(s32, object, 8) = FIELD(s32, GamePhaseProgress_GetOrCreateGlobal(), 0x10);
     if (FIELD(s32, object, 8) == 2) func_02071ee0(resource, data_020f4e18[0], 0x224b, 0x224c, 0x224d);
     else func_02071ee0(resource, data_020f4e18[0], 0x2239, 0x223a, 0x223b);
-    sprite = GraphicsSpriteGroup_CreateState(group, FIELD(void *, resource, 0), FIELD(void *, resource, 4), FIELD(void *, resource, 8), 2);
+    sprite = GraphicsSpriteGroup_CreateState((GraphicsSpriteGroup *)group, FIELD(void *, resource, 0), FIELD(void *, resource, 4), FIELD(void *, resource, 8), 2);
     FIELD(void *, object, 0) = sprite; FIELD(u16, sprite, 0x24) |= 4;
-    GraphicsSpriteState_SetAnimationIndex(sprite, 1); FIELD(u16, sprite, 0x2c) = 0x80; FIELD(u16, sprite, 0x2e) = 0x2f;
+    GraphicsSpriteState_SetAnimationIndex((GraphicsSpriteState *)sprite, 1); FIELD(u16, sprite, 0x2c) = 0x80; FIELD(u16, sprite, 0x2e) = 0x2f;
     if (FIELD(s32, object, 8) == 2) FIELD(u16, sprite, 0x24) |= 2; else FIELD(u16, sprite, 0x24) &= (u16)~2;
     FIELD(u8, sprite, 0x3a) = 2; AnimationResourceState_Destroy(resource); return object;
 }
@@ -68,7 +62,7 @@ void func_ov055_0220e518(void *object)
 {
     if (FIELD(s32, object, 8) == 2 || --FIELD(s32, object, 4) >= 0) return;
     FIELD(s32, object, 4) = (s32)(genrand_int32() % 3) * 0xf0;
-    GraphicsSpriteState_SetAnimationIndex(FIELD(void *, object, 0), 1);
+    GraphicsSpriteState_SetAnimationIndex((GraphicsSpriteState *)FIELD(void *, object, 0), 1);
     FIELD(u16, FIELD(void *, object, 0), 0x24) &= (u16)~1;
 }
 
@@ -79,12 +73,12 @@ void *func_ov055_0220e574(void *c, void *primary, void *secondary, s32 mode)
     FIELD(void *, c, 0x24)=primary; FIELD(void *, c, 0x28)=secondary; FIELD(s32,c,0x38)=0; FIELD(s32,c,0x3c)=0; FIELD(s32,c,0x40)=0;
     func_02071ee0(c,data_020f4e18[0],0x2239,0x223a,0x223b); func_02071ee0((u8*)c+12,data_020f4e18[0],0x223f,0x2240,0x2241);
     func_02071ee0((u8*)c+24,data_020f4e18[0],0x224b,0x224c,0x224d);
-    s=GraphicsSpriteGroup_CreateState(primary,FIELD(void*,c,0),FIELD(void*,c,4),FIELD(void*,c,8),2); FIELD(void*,c,0x2c)=s;
-    FIELD(u16,s,0x24)|=6; GraphicsSpriteState_SetAnimationIndex(s,3); FIELD(u16,s,0x2c)=0x54; FIELD(u16,s,0x2e)=0x46; FIELD(u8,s,0x3a)=2;
-    s=GraphicsSpriteGroup_CreateState(primary,FIELD(void*,c,0),FIELD(void*,c,4),FIELD(void*,c,8),2); FIELD(void*,c,0x30)=s;
-    FIELD(u16,s,0x24)|=6; GraphicsSpriteState_SetAnimationIndex(s,3); FIELD(u16,s,0x2c)=0xac; FIELD(u16,s,0x2e)=0x46; FIELD(u8,s,0x3a)=2;
-    s=GraphicsSpriteGroup_CreateState(mode<=1?primary:secondary,FIELD(void*,c,12),FIELD(void*,c,16),FIELD(void*,c,20),2); FIELD(void*,c,0x34)=s;
-    GraphicsSpriteState_SetAnimationIndex(s,0); FIELD(u16,s,0x2c)=0x80; FIELD(u16,s,0x2e)=mode<=1?0x0e:0x50; FIELD(u16,s,0x24)|=0x20; FIELD(u8,s,0x3a)=mode<=1?2:1;
+    s=GraphicsSpriteGroup_CreateState((GraphicsSpriteGroup *)primary,FIELD(void*,c,0),FIELD(void*,c,4),FIELD(void*,c,8),2); FIELD(void*,c,0x2c)=s;
+    FIELD(u16,s,0x24)|=6; GraphicsSpriteState_SetAnimationIndex((GraphicsSpriteState *)s,3); FIELD(u16,s,0x2c)=0x54; FIELD(u16,s,0x2e)=0x46; FIELD(u8,s,0x3a)=2;
+    s=GraphicsSpriteGroup_CreateState((GraphicsSpriteGroup *)primary,FIELD(void*,c,0),FIELD(void*,c,4),FIELD(void*,c,8),2); FIELD(void*,c,0x30)=s;
+    FIELD(u16,s,0x24)|=6; GraphicsSpriteState_SetAnimationIndex((GraphicsSpriteState *)s,3); FIELD(u16,s,0x2c)=0xac; FIELD(u16,s,0x2e)=0x46; FIELD(u8,s,0x3a)=2;
+    s=GraphicsSpriteGroup_CreateState((GraphicsSpriteGroup *)(mode<=1?primary:secondary),FIELD(void*,c,12),FIELD(void*,c,16),FIELD(void*,c,20),2); FIELD(void*,c,0x34)=s;
+    GraphicsSpriteState_SetAnimationIndex((GraphicsSpriteState *)s,0); FIELD(u16,s,0x2c)=0x80; FIELD(u16,s,0x2e)=mode<=1?0x0e:0x50; FIELD(u16,s,0x24)|=0x20; FIELD(u8,s,0x3a)=mode<=1?2:1;
     child=Heap_Alloc(12,data_ov055_0220f078,4,gHeapContext); if(child) child=func_ov055_0220e400(child,primary); FIELD(void*,c,0x44)=child; return c;
 }
 
@@ -97,7 +91,7 @@ void func_ov055_0220e804(void *c)
 {
     if(--FIELD(s32,c,0x40)<0){u32 frame; FIELD(s32,c,0x40)=(s32)(genrand_int32()&3)+6;
         do{frame=genrand_int32()%3;}while(frame==FIELD(u8,FIELD(void*,c,0x34),0x39));
-        GraphicsSpriteState_SetFrameIndex(FIELD(void*,c,0x34),(u8)frame);}
+        GraphicsSpriteState_SetFrameIndex((GraphicsSpriteState *)FIELD(void*,c,0x34),(u8)frame);}
     func_ov055_0220e518(FIELD(void*,c,0x44));
 }
 
@@ -107,7 +101,10 @@ void func_ov055_0220e860(void *c)
 
 /* Mark both sprite groups for submission. */
 void func_ov055_0220e8a0(void *c)
-{ FIELD(u32,FIELD(void*,c,0x24),0x20)=1; FIELD(u32,FIELD(void*,c,0x28),0x20)=1; }
+{
+    ((GraphicsSpriteGroup *)FIELD(void *, c, 0x24))->renderEnabled = 1;
+    ((GraphicsSpriteGroup *)FIELD(void *, c, 0x28))->renderEnabled = 1;
+}
 
 /* Construct the scene base, groups, and owned collection. */
 void *func_ov055_0220e8b8(void *scene, void *owner, s32 mode)
@@ -134,8 +131,8 @@ void func_ov055_0220e96c(void *scene)
 void *func_ov055_0220ea68(void *scene)
 {
     void *c=FIELD(void*,scene,0x24); FIELD(const void*,scene,0)=data_ov055_0220f058;
-    if(c){func_ov055_0220e7cc(c); Heap_Free(c);} GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14[0],FIELD(void*,scene,0x1c));
-    GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont,FIELD(void*,scene,0x20)); OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(),1);
+    if(c){func_ov055_0220e7cc(c); Heap_Free(c);} GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14[0],(GraphicsSpriteGroup *)FIELD(void*,scene,0x1c));
+    GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont,(GraphicsSpriteGroup *)FIELD(void*,scene,0x20)); OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(),1);
     VecFx32Object_Destroy((u8*)scene+8); FieldEffect_DestroyBase(scene); return scene;
 }
 
@@ -146,9 +143,9 @@ void *func_ov055_0220eae4(void *scene)
 /* Advance transform, random animation, and the primary sprite group. */
 void func_ov055_0220eb68(void *scene)
 {
-    u8 vector[16]; void *group; VecFx32Object_InitComponents(vector,0,0x42000,0); VecFx32Object_Assign((u8*)scene+8,vector); VecFx32Object_Destroy(vector);
-    func_ov055_0220eefc(scene,(u8*)scene+8); func_ov055_0220e804(FIELD(void*,scene,0x24)); group=FIELD(void*,scene,0x1c);
-    FIELD(u32,group,0x18)=0; FIELD(u32,group,0x1c)=FIELD(s32,scene,0x2c)==0?0x60:0; GraphicsSpriteGroup_AdvanceAnimations(group); *(volatile u16*)0x05000000=0;
+    u8 vector[16]; GraphicsSpriteGroup *group; VecFx32Object_InitComponents(vector,0,0x42000,0); VecFx32Object_Assign((u8*)scene+8,vector); VecFx32Object_Destroy(vector);
+    func_ov055_0220eefc(scene,(u8*)scene+8); func_ov055_0220e804(FIELD(void*,scene,0x24)); group=(GraphicsSpriteGroup *)FIELD(void*,scene,0x1c);
+    group->screenOffsetX=0; group->screenOffsetY=FIELD(s32,scene,0x2c)==0?0x60:0; GraphicsSpriteGroup_AdvanceAnimations(group); *(volatile u16*)0x05000000=0;
 }
 
 /* Load and release one pair of recovered BG resources. */
@@ -187,7 +184,7 @@ void *func_ov055_0220ef6c(void)
 
 /* Submit or release both collection sprite groups. */
 void func_ov055_0220efe0(void *scene, s32 mode)
-{ void *c=FIELD(void*,scene,0x24); if(mode){func_ov055_0220e8a0(c);return;} GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void*,c,0x24)); GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void*,c,0x28)); }
+{ void *c=FIELD(void*,scene,0x24); if(mode){func_ov055_0220e8a0(c);return;} GraphicsSpriteGroup_ReleaseIndexedEntries((GraphicsSpriteGroup *)FIELD(void*,c,0x24)); GraphicsSpriteGroup_ReleaseIndexedEntries((GraphicsSpriteGroup *)FIELD(void*,c,0x28)); }
 
 /* Intentional no-op scene callback; all state remains unchanged. */
 void func_ov055_0220f010(void *scene){(void)scene;}

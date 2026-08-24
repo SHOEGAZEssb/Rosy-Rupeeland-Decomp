@@ -1,0 +1,16 @@
+{
+  "func_02073f20": "GraphicsSpriteGroup_Init",
+  "func_02073f50": "GraphicsSpriteGroup_AppendState",
+  "func_02073f8c": "GraphicsSpriteGroup_RemoveState",
+  "func_02073fc4": "GraphicsSpriteGroup_CreateState",
+  "func_02074038": "GraphicsSpriteGroup_ReleaseState",
+  "func_02074058": "GraphicsSpriteGroup_Clear",
+  "func_020740a4": "GraphicsSpriteGroup_AdvanceAnimations",
+  "func_020740c8": "GraphicsSpriteGroup_ReplaceStateResources",
+  "func_020740e8": "GraphicsSpriteGroup_ReplaceStateResourcesFromSource",
+  "func_02074110": "GraphicsSpriteGroup_ReleaseIndexedEntries",
+  "func_02074154": "GraphicsSpriteGroup_ReleaseResources",
+  "func_02074178": "GraphicsSpriteGroup_PrepareResources",
+  "func_020742cc": "GraphicsSpriteGroupOwner_CreateGroup",
+  "func_02074330": "GraphicsSpriteGroupOwner_DestroyGroup"
+}

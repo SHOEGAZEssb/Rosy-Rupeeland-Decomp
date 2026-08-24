@@ -37,7 +37,7 @@ extern void func_0200634c(...), func_0200637c(...);
 extern s32 func_020befec(...), func_020adcac(...), func_020ae024(...);
 extern void *func_02005580(...), *func_02005c3c(...);
 extern void func_02005afc(...), func_020059ac(...), func_0201f864(...);
-extern void func_02072b68(...), GraphicsSpriteState_ReleaseFromGroup(...), func_020740c8(...);
+extern void func_02072b68(...), GraphicsSpriteState_ReleaseFromGroup(...), GraphicsSpriteGroup_ReplaceStateResources(...);
 extern void func_02032d64(...), Actor_RefreshCachedTerrainHeight(...), func_02034b60(...);
 extern void func_02038aac(...), func_02008e10(...), func_020099c0(...);
 extern s32 func_02009d78(...), func_0202baec(...);
@@ -457,7 +457,7 @@ s32 func_ov062_02211388(void *scene) {
     } else if (F(s32, scene, 0x74) > 5) {
       F(s32, scene, 8) = 3;
       func_020050a4((u8 *)scene + 0x24, (u8 *)scene + 0x34);
-      func_020740c8(F(void *, scene, 0x64), F(void *, scene, 0x64),
+      GraphicsSpriteGroup_ReplaceStateResources(F(void *, scene, 0x64), F(void *, scene, 0x64),
                     F(s32, F(void *, scene, 0x60), 4),
                     F(s32, F(void *, scene, 0x60), 8),
                     F(s32, F(void *, scene, 0x60), 12));

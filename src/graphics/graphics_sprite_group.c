@@ -94,8 +94,9 @@ void GraphicsSpriteState_ReleaseFromGroup(GraphicsSpriteState *state)
 }
 
 /*
- * Initialize an empty group for owner, clear all list and opaque fields, and
- * set field_20 to one. Returns group and performs no allocation or SDK access.
+ * Initialize an empty group for owner, clear its links and screen offset, and
+ * enable sprite submission. Returns group and performs no allocation or SDK
+ * access.
  */
 #ifndef MATCHING
 GraphicsSpriteGroup *GraphicsSpriteGroup_Init(GraphicsSpriteGroup *group,
@@ -106,10 +107,10 @@ GraphicsSpriteGroup *GraphicsSpriteGroup_Init(GraphicsSpriteGroup *group,
     group->previous = 0;
     group->tail = 0;
     group->head = 0;
-    group->field_1c = 0;
-    group->field_18 = 0;
+    group->screenOffsetY = 0;
+    group->screenOffsetX = 0;
     group->count = 0;
-    group->field_20 = 1;
+    group->renderEnabled = 1;
     return group;
 }
 #else
@@ -326,14 +327,15 @@ void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(
 }
 
 /*
- * Clear group field_20, release every non-null state offset-0x10 allocation,
- * and null that pointer. Renderer allocation state changes; list links remain.
+ * Disable group submission, release every non-null state's indexed palette
+ * binding, and null that pointer. Renderer allocation state changes; list
+ * links and the states' other resources remain.
  */
 void GraphicsSpriteGroup_ReleaseIndexedEntries(GraphicsSpriteGroup *group)
 {
     GraphicsSpriteState *state;
 
-    group->field_20 = 0;
+    group->renderEnabled = 0;
     state = group->head;
     while (state != 0) {
         if (state->field_10 != 0) {

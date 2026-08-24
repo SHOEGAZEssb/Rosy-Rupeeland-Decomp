@@ -49,7 +49,7 @@ EXT(func_02050078);
 EXT(func_02059394);
 EXT(Sound_PlayOwnedEffect);
 EXT(func_02072b68);
-EXT(func_020740c8);
+EXT(GraphicsSpriteGroup_ReplaceStateResources);
 EXT(Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds);
 EXT(func_020adae4);
 EXT(func_020adc90);
@@ -135,7 +135,7 @@ static void ConfigureSprite(void *actor, s32 animation, s32 clearMask, s32 setMa
     void *resource = F(void *, actor, 0x208);
     func_020337d4(actor);
     s32 graphics = func_02030acc(actor);
-    func_020740c8(graphics, F(void *, actor, 0x54), F(s32, resource, 4),
+    GraphicsSpriteGroup_ReplaceStateResources(graphics, F(void *, actor, 0x54), F(s32, resource, 4),
                   F(s32, resource, 8), F(s32, resource, 0xc));
     func_02072b68(F(void *, actor, 0x54), animation);
     F(u16, F(void *, actor, 0x54), 0x24) &= (u16)~clearMask;
