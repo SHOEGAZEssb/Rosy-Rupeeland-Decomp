@@ -618,8 +618,8 @@ static u32 retail_save_crc32(const u8 *bytes, u32 size)
     return ~crc;
 }
 
-/* Apply the retail save/load reset mode to the game-owned singleton set. */
-static void retail_save_reset_game_state(s32 mode)
+/* Apply the retail write-side save mode to the game-owned singleton set. */
+static void retail_save_apply_game_singleton_mode(s32 mode)
 {
     func_0206392c(data_021e9ac0, mode);
     RetailRecordManager_SaveState(data_021f5128, mode);
@@ -782,7 +782,7 @@ s32 RetailSaveContext_WriteRecord(void *context_pointer)
         }
         break;
     case 30:
-        retail_save_reset_game_state(*(s32 *)(context + 0x20));
+        retail_save_apply_game_singleton_mode(*(s32 *)(context + 0x20));
         *(u32 *)(context + 0x1b4) = 31;
         break;
     case 31: {
@@ -1005,6 +1005,4 @@ s32 RetailSaveContext_CopyRecord(void *context_pointer)
         return 0;
     }
 }
-
-
 

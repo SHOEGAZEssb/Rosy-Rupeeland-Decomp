@@ -1,4 +1,5 @@
 {
+  "func_0207f044": "RetailSaveContext_ApplyGameSingletonSaveMode",
   "func_0207f0c0": "RetailSaveContext_RestoreGameSingletons",
   "func_0207f12c": "RetailSaveContext_InitializeGlobal",
   "func_0207f168": "RetailSaveContext_Construct",
