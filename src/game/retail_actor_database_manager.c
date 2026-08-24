@@ -30,7 +30,7 @@ extern void OS_Halt(void);
 extern void SelfLinkedSpriteConfig_Init(void *descriptor);
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
-extern void *func_02079fc4(void *manager, u16 id);
+extern void *SharedResourceDescriptorTable_GetById(void *manager, u16 id);
 extern void func_02063cd0(void *database);
 extern void *func_0206330c(void *manager);
 
@@ -269,7 +269,7 @@ void func_02063f30(void *database_pointer)
         *(u8 *)(record + 3) = input[8];
         *(u16 *)(record + 4) = ReadU16(input + 6);
         *(void **)(record + 8) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 2));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 2));
     }
     CheckedFS_CloseFile(&file);
 }
@@ -307,9 +307,9 @@ void func_020640a4(void *database_pointer)
         *(u8 *)(record + 6) = input[10];
         *(u8 *)(record + 7) = input[11];
         *(void **)(record + 8) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 2));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 2));
         *(void **)(record + 0x0c) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 4));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 4));
         *(u32 *)(record + 0x10) = ReadU32(input + 0x0c);
     }
     CheckedFS_CloseFile(&file);
@@ -348,9 +348,9 @@ void func_0206425c(void *database_pointer)
             (u16)(input[8] | ((u16)input[9] << 5) | ((u16)input[10] << 10));
         LanguageDatabase_CopyRecordById(gLanguageDatabase, ReadU16(input + 4), record + 8, 0x60);
         *(void **)(record + 0x68) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 0x10));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 0x10));
         *(void **)(record + 0x6c) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 0x14));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 0x14));
         *(s16 *)(record + 0x70) = (s16)ReadU16(input + 0x18);
         *(u8 *)(record + 0x72) = (u8)ReadU16(input + 0x12);
         *(u8 *)(record + 0x73) = (u8)ReadU16(input + 0x16);
@@ -389,7 +389,7 @@ void func_02064444(void *database_pointer)
         *(s16 *)(record + 4) = (s16)ReadU16(input + 6);
         *(u16 *)(record + 6) = ReadU16(input + 8);
         *(void **)(record + 8) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 2));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 2));
     }
     CheckedFS_CloseFile(&file);
 }

@@ -44,7 +44,7 @@ extern const char *data_020c9200[];
 extern void OS_Halt(void);
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
-extern void *func_02079fc4(void *manager, u16 id);
+extern void *SharedResourceDescriptorTable_GetById(void *manager, u16 id);
 extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
 extern u8 data_021e9ad0[];
 extern void func_0207b944(void *database);
@@ -477,10 +477,10 @@ void func_0207b7f4(void *database_pointer)
             OS_Halt();
         LanguageDatabase_CopyRecordById(gLanguageDatabase, ReadU16(input), record, 0x60);
         *(void **)(record + 0x8c) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 2));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 2));
         *(u16 *)(record + 0x90) = ReadU16(input + 4);
         *(void **)(record + 0x94) =
-            func_02079fc4(data_021f3ecc, ReadU16(input + 6));
+            SharedResourceDescriptorTable_GetById(data_021f3ecc, ReadU16(input + 6));
         *(u16 *)(record + 0x98) = ReadU16(input + 8);
         for (subindex = 0; subindex < 11; ++subindex)
             *(u16 *)(record + 0x60 + subindex * 4) =

@@ -377,8 +377,9 @@ void ModalMessageDatabase_Load(void *manager_pointer)
     CheckedFS_CloseFile(file);
 }
 
-/* Resolve one shared 0x10-byte descriptor by its leading ID, as 0x02079FC4. */
-void *func_02079fc4(void *language_manager, u16 id)
+/* Resolve one shared 0x10-byte descriptor by leading ID. Retail returns the
+ * first descriptor when the ID is absent. */
+void *SharedResourceDescriptorTable_GetById(void *language_manager, u16 id)
 {
     u32 index;
 
@@ -526,9 +527,9 @@ void RuntimeRecordTable_Load(void *manager_pointer)
         *(u16 *)(record + 0x00) = ReadU16(input + 0x00);
         *(u16 *)(record + 0x02) = ReadU16(input + 0x0e);
         *(void **)(record + 0x04) =
-            func_02079fc4(gLanguageDatabase, ReadU16(input + 0x04));
+            SharedResourceDescriptorTable_GetById(gLanguageDatabase, ReadU16(input + 0x04));
         *(void **)(record + 0x08) =
-            func_02079fc4(gLanguageDatabase, ReadU16(input + 0x08));
+            SharedResourceDescriptorTable_GetById(gLanguageDatabase, ReadU16(input + 0x08));
         *(u8 *)(record + 0x0c) = (u8)ReadU16(input + 0x06);
         *(u8 *)(record + 0x0d) = (u8)ReadU16(input + 0x0a);
         *(u16 *)(record + 0x0e) = ReadU16(input + 0x10);
