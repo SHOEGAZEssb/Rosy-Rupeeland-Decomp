@@ -75,7 +75,7 @@ void func_020745c4(void *renderer_pointer, s32 sort_roots)
                     GraphicsSpriteStatePool_Release(*(void **)pool, state);
                 } else if ((flags & 0x1c) == 0) {
                     u16 cell_count =
-                        GraphicsSpriteState_GetCurrentFrameResourceField02(
+                        GraphicsSpriteState_GetCurrentCellCount(
                             (GraphicsSpriteState *)state);
                     u32 allocated_count = *(u32 *)(renderer + 0x1a7c);
                     if (cell_count != 0 && allocated_count <= 128U &&

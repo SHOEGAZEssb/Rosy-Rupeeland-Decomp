@@ -53,8 +53,9 @@ void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *sprite,
     }
     sprite->animationIndex = animation;
     sprite->frameIndex = 0;
-    sprite->framePosition = 0;
-    if ((sprite->field_3b & 1u) == 0 && sprite->graphicsVramBinding != 0) {
+    sprite->animationTime = 0;
+    if ((sprite->resourceControlFlags & 1u) == 0 &&
+        sprite->graphicsVramBinding != 0) {
         *(u8 *)((u8 *)sprite->graphicsVramBinding + 0x0c) = 0;
     }
     sprite->flags &= 0xfffeu;
@@ -80,13 +81,14 @@ void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *sprite,
         frameIndex = (u8)(sequence->frameCount - 1);
     }
     sprite->frameIndex = frameIndex;
-    sprite->framePosition = 0;
+    sprite->animationTime = 0;
     frame = &resource->frames[sequence->firstFrame];
     for (index = 0; index < frameIndex; ++index) {
-        sprite->framePosition += frame[index].duration;
+        sprite->animationTime += frame[index].duration;
     }
-    sprite->framePosition <<= 8;
-    if ((sprite->field_3b & 1u) == 0 && sprite->graphicsVramBinding != 0) {
+    sprite->animationTime <<= 8;
+    if ((sprite->resourceControlFlags & 1u) == 0 &&
+        sprite->graphicsVramBinding != 0) {
         *(u8 *)((u8 *)sprite->graphicsVramBinding + 0x0c) = 0;
     }
     sprite->flags |= 1;
@@ -97,8 +99,9 @@ void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *sprite,
 void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *sprite)
 {
     sprite->frameIndex = 0;
-    sprite->framePosition = 0;
-    if ((sprite->field_3b & 1u) == 0 && sprite->graphicsVramBinding != 0) {
+    sprite->animationTime = 0;
+    if ((sprite->resourceControlFlags & 1u) == 0 &&
+        sprite->graphicsVramBinding != 0) {
         *(u8 *)((u8 *)sprite->graphicsVramBinding + 0x0c) = 0;
     }
     sprite->flags &= 0xfffeu;

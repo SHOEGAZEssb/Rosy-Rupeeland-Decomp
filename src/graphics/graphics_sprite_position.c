@@ -29,7 +29,7 @@ static u32 queryLayer(s32 positionX, s32 positionY)
 
 /*
  * Query the global view object with the integer parts of positionX/Y, set
- * field_3a to 2 when depth lies below the query's signed five-bit result (or
+ * oamPriority to 2 when depth lies below the query's signed five-bit result (or
  * 1 otherwise), then convert X/Y relative to origin and depth into integer
  * sprite coordinates. GraphicsSpriteState_SetScreenPositionCulled performs
  * flag-controlled culling. No graphics register is accessed directly and no
@@ -44,7 +44,7 @@ void GraphicsSpriteState_SetWorldPositionFromOrigin(GraphicsSpriteState *state,
     u32 result = queryLayer(positionX, positionY);
     s32 layer = (s32)(result << 27) >> 27;
 
-    state->field_3a = depth < layer * 0x10000 ? 2 : 1;
+    state->oamPriority = depth < layer * 0x10000 ? 2 : 1;
     GraphicsSpriteState_SetScreenPositionCulled(state,
                   (positionX >> 12) - (origin->field_04 >> 12),
                   (positionY >> 12) - (depth >> 12) -
@@ -88,8 +88,8 @@ void GraphicsSpriteState_SetScreenPositionCulled(GraphicsSpriteState *state,
 /*
  * Variant of GraphicsSpriteState_SetWorldPositionFromOrigin that uses
  * positionY-origin.field_08 as the retained depth basis, subtracts depth only
- * from the displayed Y, and stores 0x7fff minus that basis in field_28 after
- * culling. The layer query and field_3a selection have the same effects as
+ * from the displayed Y, and stores 0x7fff minus that basis in sortOrder after
+ * culling. The layer query and oamPriority selection have the same effects as
  * GraphicsSpriteState_SetWorldPositionFromOrigin.
  */
 void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
@@ -100,11 +100,11 @@ void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
     s32 layer = (s32)(result << 27) >> 27;
     s32 relativeY = (positionY >> 12) - (origin->field_08 >> 12);
 
-    state->field_3a = depth < layer * 0x10000 ? 2 : 1;
+    state->oamPriority = depth < layer * 0x10000 ? 2 : 1;
     GraphicsSpriteState_SetScreenPositionCulled(state,
                   (positionX >> 12) - (origin->field_04 >> 12),
                   relativeY - (depth >> 12), cullFlag);
-    state->field_28 = (u16)(0x7fff - relativeY);
+    state->sortOrder = (u16)(0x7fff - relativeY);
 }
 
 /*

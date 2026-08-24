@@ -14,7 +14,7 @@ extern u32 genrand_int32(void);
 /*
  * Extract seven decimal digits from value, start a changed digit's animation
  * only after its prior animation reaches terminal flag 1, clear hide flag 4,
- * and randomize scaleZ when a digit changes (usually 0xe0..0x2df, with a 1/16
+ * and randomize animationTimeStep when a digit changes (usually 0xe0..0x2df, with a 1/16
  * chance of 0xc0).
  * Consumes the global RNG and changes sprite animation state; returns nothing.
  */
@@ -34,7 +34,7 @@ void GamePhaseCurrencyHud_UpdateDigits(GamePhaseCurrencyHud *self, s32 value)
                     scale = 0xc0;
                 else
                     scale = (u16)((genrand_int32() & 0x1ff) + 0xe0);
-                sprite->scaleZ = (s16)scale;
+                sprite->animationTimeStep = (s16)scale;
             }
             sprite->flags &= ~4;
         }

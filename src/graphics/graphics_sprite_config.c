@@ -8,7 +8,7 @@
 
 /*
  * Select animationIndex through GraphicsSpriteState_SetAnimationIndex, then
- * store the supplied screen coordinates, field_3a byte, and field_28 halfword.
+ * store the supplied screen coordinates, OAM priority, and sort order.
  * OR flags into the existing flags word, preserving all earlier bits. The
  * state is the only modified object;
  * any frame reset or attached-metadata invalidation is performed by the called
@@ -16,21 +16,21 @@
  */
 #ifndef MATCHING
 void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
-                   s16 screenX, s16 screenY, u8 field3a,
-                   u16 field28, u16 flags)
+                   s16 screenX, s16 screenY, u8 oamPriority,
+                   u16 sortOrder, u16 flags)
 {
     GraphicsSpriteState_SetAnimationIndex(state, animationIndex);
     state->screenX = screenX;
     state->screenY = screenY;
-    state->field_3a = field3a;
-    state->field_28 = field28;
+    state->oamPriority = oamPriority;
+    state->sortOrder = sortOrder;
     state->flags |= flags;
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
 asm void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
-                       s16 screenX, s16 screenY, u8 field3a,
-                       u16 field28, u16 flags)
+                       s16 screenX, s16 screenY, u8 oamPriority,
+                       u16 sortOrder, u16 flags)
 {
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0

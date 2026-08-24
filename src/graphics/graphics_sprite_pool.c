@@ -69,7 +69,7 @@ GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
         state->graphicsVramBinding =
             GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
                 owner, graphicsResource);
-        state->field_3b |= 1;
+        state->resourceControlFlags |= 1;
     }
     return state;
 }
@@ -99,7 +99,7 @@ void GraphicsSpriteStatePool_Release(void *ownerPointer,
 
 /*
  * Replace any changed resource pointers on state unless state is null or
- * field_3b bit 1 freezes replacement. A graphics-resource change always drops
+ * resourceControlFlags bit 1 freezes replacement. A graphics-resource change always drops
  * the VRAM range and reacquires it when attachment bit 0 is set. A palette-
  * resource change releases and clears the indexed binding. For an unattached
  * state, an animation-resource change also drops the VRAM binding when the
@@ -116,7 +116,7 @@ void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
     GraphicsSpritePoolOwner *owner =
         (GraphicsSpritePoolOwner *)ownerPointer;
 
-    if (state == 0 || (state->field_3b & 2) != 0) {
+    if (state == 0 || (state->resourceControlFlags & 2) != 0) {
         return;
     }
     if (state->graphicsResource != graphicsResource) {
@@ -124,7 +124,7 @@ void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
                       (GraphicsVramRangeNode *)state->graphicsVramBinding);
         state->graphicsVramBinding = 0;
         state->graphicsResource = graphicsResource;
-        if ((state->field_3b & 1) != 0) {
+        if ((state->resourceControlFlags & 1) != 0) {
             state->graphicsVramBinding =
                 GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
                     owner, graphicsResource);
@@ -137,7 +137,7 @@ void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
         state->paletteResource = paletteResource;
     }
     if (state->animationResource != animationResource) {
-        if ((state->field_3b & 1) == 0 &&
+        if ((state->resourceControlFlags & 1) == 0 &&
             ((GraphicsSpriteResource1c *)state->animationResource)
                     ->field_20->field_24 !=
                 ((GraphicsSpriteResource1c *)animationResource)

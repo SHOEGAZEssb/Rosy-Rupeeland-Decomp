@@ -12,7 +12,7 @@
  * Convert positionX/Y and depth from 20.12 fixed point. The visible interval
  * is [-field_04, 256-field_00) by [-field_06, 192-field_02). On success write
  * screenX/screenY and clear cullFlag; otherwise set cullFlag and retain those
- * coordinates. Always store 0x7fff minus the pre-depth relative Y in field_28.
+ * coordinates. Always store 0x7fff minus the pre-depth relative Y in sortOrder.
  * No graphics register is accessed directly and no value is returned.
  */
 void GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(
@@ -32,7 +32,7 @@ void GraphicsSpriteState_SetDepthOrderedWorldPositionWithMargins(
     } else {
         state->flags |= cullFlag;
     }
-    state->field_28 = (u16)(0x7fff - relativeY);
+    state->sortOrder = (u16)(0x7fff - relativeY);
 }
 #else
 /* This matching form implements the documented portable C directly above. */

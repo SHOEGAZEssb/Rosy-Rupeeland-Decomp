@@ -16,12 +16,12 @@ extern "C" {
 #endif
 
 void GraphicsSpriteState_Configure(GraphicsSpriteState *state, u8 animationIndex,
-                   u8 field3a, u16 field28, u16 flagsToSet,
+                   u8 oamPriority, u16 sortOrder, u16 flagsToSet,
                    u16 flagsToClear);
 GraphicsSpriteState *GraphicsSpriteState_Create(
     GraphicsSpriteGroup *group,
     const GraphicsSpriteResourceDescriptor *resources,
-    u8 animationIndex, u8 field3a, u16 field28,
+    u8 animationIndex, u8 oamPriority, u16 sortOrder,
     u16 flagsToSet, u16 flagsToClear);
 
 #ifdef __cplusplus

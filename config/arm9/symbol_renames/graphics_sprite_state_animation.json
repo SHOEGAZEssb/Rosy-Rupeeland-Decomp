@@ -1,0 +1,10 @@
+{
+  "func_02072aec": "GraphicsSpriteState_Init",
+  "func_02072b00": "GraphicsSpriteState_Reset",
+  "func_02072b68": "GraphicsSpriteState_SetAnimationIndex",
+  "func_02072bdc": "GraphicsSpriteState_SetFrameIndex",
+  "func_02072c98": "GraphicsSpriteState_ResetFrame",
+  "func_02072cd0": "GraphicsSpriteState_GetSequenceDuration",
+  "func_02072d04": "GraphicsSpriteState_AdvanceAnimation",
+  "func_02072e50": "GraphicsSpriteState_GetCurrentCellCount"
+}

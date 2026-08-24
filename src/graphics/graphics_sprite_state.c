@@ -34,20 +34,20 @@ void GraphicsSpriteState_Reset(GraphicsSpriteState *state)
     state->graphicsResource = 0;
     state->paletteResource = 0;
     state->animationResource = 0;
-    state->framePosition = 0;
-    state->field_2a = 0;
-    state->field_28 = 0;
+    state->animationTime = 0;
+    state->objectMode = 0;
+    state->sortOrder = 0;
     state->field_26 = 0;
     state->flags = 0;
     state->rotationAngle = 0;
     state->screenY = 0;
     one = 0x100;
     state->screenX = 0;
-    state->scaleZ = one;
+    state->animationTimeStep = one;
     state->scaleY = one;
     state->scaleX = one;
-    state->field_3b = 0;
-    state->field_3a = 0;
+    state->resourceControlFlags = 0;
+    state->oamPriority = 0;
     state->frameIndex = 0;
     state->animationIndex = 0;
 }

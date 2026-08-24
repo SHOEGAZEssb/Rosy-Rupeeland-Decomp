@@ -9,17 +9,17 @@
 
 #ifndef MATCHING
 /*
- * Select animationIndex, write field_3a and field_28, then OR flagsToSet and
+ * Select animationIndex, write OAM priority and sort order, then OR flagsToSet and
  * clear flagsToClear in that order. The animation selector may reset frame
  * state and attached metadata; this function returns no value.
  */
 void GraphicsSpriteState_Configure(GraphicsSpriteState *state, u8 animationIndex,
-                   u8 field3a, u16 field28, u16 flagsToSet,
+                   u8 oamPriority, u16 sortOrder, u16 flagsToSet,
                    u16 flagsToClear)
 {
     GraphicsSpriteState_SetAnimationIndex(state, animationIndex);
-    state->field_3a = field3a;
-    state->field_28 = field28;
+    state->oamPriority = oamPriority;
+    state->sortOrder = sortOrder;
     state->flags = (state->flags | flagsToSet) & (u16)~flagsToClear;
 }
 
@@ -31,14 +31,14 @@ void GraphicsSpriteState_Configure(GraphicsSpriteState *state, u8 animationIndex
 GraphicsSpriteState *GraphicsSpriteState_Create(
     GraphicsSpriteGroup *group,
     const GraphicsSpriteResourceDescriptor *resources,
-    u8 animationIndex, u8 field3a, u16 field28,
+    u8 animationIndex, u8 oamPriority, u16 sortOrder,
     u16 flagsToSet, u16 flagsToClear)
 {
     GraphicsSpriteState *state =
         GraphicsSpriteGroup_CreateState(
             group, resources->graphicsResource, resources->paletteResource,
             resources->animationResource, 2);
-    GraphicsSpriteState_Configure(state, animationIndex, field3a, field28,
+    GraphicsSpriteState_Configure(state, animationIndex, oamPriority, sortOrder,
                   flagsToSet, flagsToClear);
     return state;
 }

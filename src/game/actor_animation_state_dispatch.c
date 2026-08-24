@@ -25,7 +25,7 @@ void Actor_SynchronizeStatePresentation(Actor *self)
         vtable->updatePresentationForState(self);
         self->runtimeFlags &= ~ACTOR_FORCE_PRESENTATION_REFRESH_FLAG;
     } else if (vtable->isCurrentState5Or6(self)) {
-        self->primaryAttachment->scaleZ = self->presentationScaleZ;
+        self->primaryAttachment->animationTimeStep = self->presentationScaleZ;
     }
 }
 

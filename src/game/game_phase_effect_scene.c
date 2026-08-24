@@ -57,7 +57,7 @@ GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 
         group = ActorCollection_GetSpriteGroup();
         self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
-            0x24, source->field_3a, source->field_28, 4, 2);
+            0x24, source->oamPriority, source->sortOrder, 4, 2);
         self->callbackWord = data_020d53b8[0];
         self->callbackThisAdjust = (s32)data_020d53b8[1];
         break;
@@ -67,7 +67,7 @@ GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 
         group = ActorCollection_GetSpriteGroup();
         self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
-            0x35, source->field_3a, source->field_28, 4, 2);
+            0x35, source->oamPriority, source->sortOrder, 4, 2);
         self->callbackWord = data_020d53b8[2];
         self->callbackThisAdjust = (s32)data_020d53b8[3];
         break;
@@ -77,7 +77,7 @@ GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 
         group = ActorCollection_GetSpriteGroup();
         self->sprite = GraphicsSpriteState_Create(group,
             (const GraphicsSpriteResourceDescriptor *)self->resources,
-            0x16, source->field_3a, source->field_28, 4, 2);
+            0x16, source->oamPriority, source->sortOrder, 4, 2);
         self->callbackWord = data_020d53b8[6];
         self->callbackThisAdjust = (s32)data_020d53b8[7];
         break;

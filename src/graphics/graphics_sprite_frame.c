@@ -44,11 +44,12 @@ extern void func_02070d74(SpriteFrameResource *resource);
 #endif
 
 /*
- * Advance framePosition by signed 8.8 scaleZ unless paused or blocked by flags
+ * Advance animationTime by signed 8.8 animationTimeStep unless blocked by flags
  * 0, 2, 4, or 5. At either sequence boundary, flags bit 1 selects wrapping;
  * otherwise clamp, set terminal bit 0, and retain the first/last valid time.
  * Recompute frameIndex from variable durations and invalidate the attached
- * offset-0x0c byte on a change unless field_3b bit 0 suppresses invalidation.
+ * VRAM-binding byte on a change unless resourceControlFlags bit 0 suppresses
+ * invalidation.
  * Resource preparation is the only possible asset/SDK side effect.
  */
 #ifndef MATCHING
@@ -66,33 +67,34 @@ void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state)
     if (resource->field_14 == 0) {
         func_02070d74(resource);
     }
-    if ((state->field_3b & 2) != 0 || (state->flags & 0x35) != 0) {
+    if ((state->resourceControlFlags & 2) != 0 ||
+        (state->flags & 0x35) != 0) {
         return;
     }
 
     sequence = &resource->sequences[state->animationIndex];
-    position = state->framePosition + state->scaleZ;
-    state->framePosition = position;
+    position = state->animationTime + state->animationTimeStep;
+    state->animationTime = position;
     if (position < 0) {
         if ((state->flags & 2) != 0) {
             position += (s32)sequence->duration << 8;
-            state->framePosition = position;
+            state->animationTime = position;
         } else {
             state->flags |= 1;
-            state->framePosition = 0;
+            state->animationTime = 0;
         }
     } else if (position >> 8 >= sequence->duration) {
         if ((state->flags & 2) != 0) {
             position -= (s32)sequence->duration << 8;
-            state->framePosition = position;
+            state->animationTime = position;
         } else {
             state->flags |= 1;
-            state->framePosition = ((s32)sequence->duration - 1) << 8;
+            state->animationTime = ((s32)sequence->duration - 1) << 8;
         }
     }
 
     frame = &resource->frames[sequence->firstFrame];
-    elapsed = state->framePosition >> 8;
+    elapsed = state->animationTime >> 8;
     accumulated = 0;
     frameIndex = 0;
     while (frameIndex < sequence->frameCount) {
@@ -106,7 +108,7 @@ void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state)
 
     if (state->frameIndex != frameIndex) {
         state->frameIndex = (u8)frameIndex;
-        if ((state->field_3b & 1) == 0 &&
+        if ((state->resourceControlFlags & 1) == 0 &&
             state->graphicsVramBinding != 0) {
             ((u8 *)state->graphicsVramBinding)[0x0c] = 0;
         }
@@ -213,8 +215,7 @@ sprite_advance_duration_done:
  * animation resource when necessary; otherwise state and hardware are unchanged.
  */
 #ifndef MATCHING
-u16 GraphicsSpriteState_GetCurrentFrameResourceField02(
-    GraphicsSpriteState *state)
+u16 GraphicsSpriteState_GetCurrentCellCount(GraphicsSpriteState *state)
 {
     SpriteFrameResource *resource =
         (SpriteFrameResource *)state->animationResource;
@@ -230,8 +231,7 @@ u16 GraphicsSpriteState_GetCurrentFrameResourceField02(
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm u16 GraphicsSpriteState_GetCurrentFrameResourceField02(
-    GraphicsSpriteState *state)
+asm u16 GraphicsSpriteState_GetCurrentCellCount(GraphicsSpriteState *state)
 {
     stmdb sp!, {r4, lr}
     mov r4, r0

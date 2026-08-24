@@ -112,7 +112,7 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     interruptState = GX_VBlankIntr(0);
     gGraphicsSpriteStatePool.interruptState = interruptState;
 
-    if ((state->field_3b & 1) != 0) {
+    if ((state->resourceControlFlags & 1) != 0) {
         if (binding->field_0c == 0) {
             if (graphics->field_14 == 0) {
                 func_02070418(graphics);
@@ -125,8 +125,8 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         func_02070418(graphics);
     }
 
-    entry->sortKey = (s32)((u32)state->field_28 |
-                           ((u32)state->field_3a << 16));
+    entry->sortKey = (s32)((u32)state->sortOrder |
+                           ((u32)state->oamPriority << 16));
     for (cellIndex = 0; cellIndex < cellFrame->cellCount; ++cellIndex) {
         u16 *attributes = (u16 *)&entry->field_10;
         u16 metadata;
@@ -167,9 +167,9 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         attributes[0] = (u16)((attributes[0] & 0xff00U) |
                               ((u32)finalY & 0xffU));
         attributes[0] = (u16)((attributes[0] & ~0x0c00U) |
-                              ((state->field_2a & 3U) << 10));
+                              ((state->objectMode & 3U) << 10));
         attributes[2] = (u16)((attributes[2] & ~0x0c00U) |
-                              (((u16)state->field_3a & 3U) << 10));
+                              (((u16)state->oamPriority & 3U) << 10));
         attributes[2] = (u16)((attributes[2] & ~0xf000U) |
                               ((paletteIndices[(cell[2] >> 12) & 0x0f] &
                                 0x0fU) << 12));
@@ -181,7 +181,7 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
 
         sourceTile = cell[2] & 0x03ffU;
         tileCount = metadata >> 8;
-        if ((state->field_3b & 1) != 0) {
+        if ((state->resourceControlFlags & 1) != 0) {
             attributes[2] = (u16)((attributes[2] & 0xfc00U) |
                                   ((tileDestination + sourceTile) & 0x03ffU));
         } else {
@@ -278,7 +278,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     interruptState = GX_VBlankIntr(0);
     gGraphicsSpriteStatePool.interruptState = interruptState;
 
-    if ((state->field_3b & 1) != 0) {
+    if ((state->resourceControlFlags & 1) != 0) {
         if (binding->field_0c == 0) {
             if (graphics->field_14 == 0)
                 func_02070418(graphics);
@@ -290,8 +290,8 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         func_02070418(graphics);
     }
 
-    entry->sortKey = (s32)((u32)state->field_28 |
-                           ((u32)state->field_3a << 16));
+    entry->sortKey = (s32)((u32)state->sortOrder |
+                           ((u32)state->oamPriority << 16));
     for (cellIndex = 0; cellIndex < cellFrame->cellCount; ++cellIndex) {
         u16 *attributes = (u16 *)&entry->field_10;
         u16 metadata = cell[3];
@@ -361,16 +361,16 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                                   ((u32)affineMode << 8));
         }
         attributes[0] = (u16)((attributes[0] & ~0x0c00U) |
-                              ((state->field_2a & 3U) << 10));
+                              ((state->objectMode & 3U) << 10));
         attributes[2] = (u16)((attributes[2] & ~0x0c00U) |
-                              (((u16)state->field_3a & 3U) << 10));
+                              (((u16)state->oamPriority & 3U) << 10));
         attributes[2] = (u16)((attributes[2] & ~0xf000U) |
                               ((paletteIndices[(cell[2] >> 12) & 0x0fU] &
                                 0x0fU) << 12));
 
         sourceTile = cell[2] & 0x03ffU;
         tileCount = metadata >> 8;
-        if ((state->field_3b & 1) != 0) {
+        if ((state->resourceControlFlags & 1) != 0) {
             attributes[2] = (u16)((attributes[2] & 0xfc00U) |
                                   ((tileDestination + sourceTile) & 0x03ffU));
         } else {
