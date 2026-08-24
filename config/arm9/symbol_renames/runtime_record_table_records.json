@@ -1,0 +1,5 @@
+{
+  "func_02079948": "RuntimeRecordTable_SwapRecords",
+  "func_02079a08": "RuntimeRecord_Copy",
+  "RuntimeRecordTable_FindByKey": "RuntimeRecordTable_FindByKey"
+}

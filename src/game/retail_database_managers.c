@@ -435,6 +435,25 @@ static void CopyRecord78(u8 *destination, const u8 *source)
     memcpy(destination, source, 0x78);
 }
 
+/* Copy all fields and inline text from one 0x78-byte runtime record. */
+void RuntimeRecord_Copy(void *destination, const void *source)
+{
+    CopyRecord78((u8 *)destination, (const u8 *)source);
+}
+
+/* Exchange two manager-owned records selected by array index. */
+void RuntimeRecordTable_SwapRecords(void *manager_pointer, u32 first_index,
+                                    u32 second_index)
+{
+    u8 *records = *(u8 **)manager_pointer;
+    u8 temporary[0x78];
+
+    RuntimeRecord_Copy(temporary, records + first_index * 0x78);
+    RuntimeRecord_Copy(records + first_index * 0x78,
+                       records + second_index * 0x78);
+    RuntimeRecord_Copy(records + second_index * 0x78, temporary);
+}
+
 /* Per-record destructor callback; runtime records own no nested allocations. */
 void RuntimeRecordTable_RecordDestroyNoOp(void *record_pointer)
 {
@@ -506,11 +525,7 @@ void RuntimeRecordTable_Load(void *manager_pointer)
         while (position != 0 &&
                *(u16 *)(records + position * 0x78 + 2) <
                    *(u16 *)(records + (position - 1) * 0x78 + 2)) {
-            u8 temporary[0x78];
-            CopyRecord78(temporary, records + position * 0x78);
-            CopyRecord78(records + position * 0x78,
-                         records + (position - 1) * 0x78);
-            CopyRecord78(records + (position - 1) * 0x78, temporary);
+            RuntimeRecordTable_SwapRecords(manager, position, position - 1);
             --position;
         }
     }
