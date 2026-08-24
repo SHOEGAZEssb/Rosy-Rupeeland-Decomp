@@ -1,0 +1,17 @@
+{
+  "func_0207ed88": "RecordCategory_ApplyCategory13Completion",
+  "func_0207ed94": "RetailRecordCategory13_Delete",
+  "func_0207edd8": "RetailRecordCategory13_Destroy",
+  "func_0207ee14": "RecordCategory_ApplyCategory14Completion",
+  "func_0207ee20": "RetailRecordCategory14_Delete",
+  "func_0207ee64": "RetailRecordCategory14_Destroy",
+  "func_0207eea0": "RecordCategory_ApplyCategory15Completion",
+  "func_0207eeac": "RetailRecordCategory15_Delete",
+  "func_0207eef0": "RetailRecordCategory15_Destroy",
+  "func_0207ef2c": "RecordCategory_ApplyCategory16Completion",
+  "func_0207ef38": "RetailRecordCategory16_Delete",
+  "func_0207ef7c": "RetailRecordCategory16_Destroy",
+  "func_0207efb8": "RecordCategory_ApplyCategory17Completion",
+  "func_0207efc4": "RetailRecordCategory17_Delete",
+  "func_0207f008": "RetailRecordCategory17_Destroy"
+}
