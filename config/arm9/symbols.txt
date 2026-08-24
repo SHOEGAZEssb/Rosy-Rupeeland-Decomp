@@ -6147,8 +6147,8 @@ __sinit_020c16f8 kind:function(arm,size=0x74) addr:0x020c16f8
 __sinit_020c176c kind:function(arm,size=0x2c) addr:0x020c176c
 __sinit_020c1798 kind:function(arm,size=0x2c) addr:0x020c1798
 __sinit_020c17c4 kind:function(arm,size=0x2c) addr:0x020c17c4
-data_020c17f0 kind:data(any) addr:0x020c17f0
-data_020c19f0 kind:data(any) addr:0x020c19f0
+gSoftwareCanvasFontPalette kind:data(any) addr:0x020c17f0
+gSoftwareCanvasFontGlyphRows kind:data(any) addr:0x020c19f0
 data_020c2c00 kind:data(any) addr:0x020c2c00
 data_020c2c02 kind:data(any) addr:0x020c2c02
 data_020c2c06 kind:data(any) addr:0x020c2c06

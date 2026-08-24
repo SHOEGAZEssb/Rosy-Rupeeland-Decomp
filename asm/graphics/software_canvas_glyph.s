@@ -1,8 +1,8 @@
 .text
 .global SoftwareCanvas_DrawGlyph
 .type SoftwareCanvas_DrawGlyph, @function
-.extern data_020c19f0
-.extern data_020c17f0
+.extern gSoftwareCanvasFontGlyphRows
+.extern gSoftwareCanvasFontPalette
 .extern gSoftwareCanvasTextCursor
 
 /* Matching implementation; see the documented portable C equivalent. */
@@ -42,9 +42,9 @@ pixel_loop:
     blt row_loop
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 glyph_data:
-    .word data_020c19f0
+    .word gSoftwareCanvasFontGlyphRows
 palette_data:
-    .word data_020c17f0
+    .word gSoftwareCanvasFontPalette
 cursor_data:
     .word gSoftwareCanvasTextCursor
     .size SoftwareCanvas_DrawGlyph, .-SoftwareCanvas_DrawGlyph

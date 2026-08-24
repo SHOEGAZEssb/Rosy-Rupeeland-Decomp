@@ -10,6 +10,11 @@ typedef struct SoftwareCanvasVTable {
     SoftwareCanvas *(*destroyAndFree)(SoftwareCanvas *self);
 } SoftwareCanvasVTable;
 
+typedef struct SoftwareCanvasTextCursor {
+    s32 y;
+    s32 x;
+} SoftwareCanvasTextCursor;
+
 struct SoftwareCanvas {
     const SoftwareCanvasVTable *vtable;
     s32 field_04;
@@ -26,6 +31,9 @@ extern "C" {
 #endif
 
 extern SoftwareCanvasVTable gSoftwareCanvasVTable;
+extern const u16 gSoftwareCanvasFontPalette[];
+extern const u32 gSoftwareCanvasFontGlyphRows[];
+extern SoftwareCanvasTextCursor gSoftwareCanvasTextCursor;
 
 SoftwareCanvas *SoftwareCanvas_Init(SoftwareCanvas *self);
 SoftwareCanvas *SoftwareCanvas_InitWithBuffer(SoftwareCanvas *self, s32 field04,

@@ -1,0 +1,16 @@
+{
+  "SoftwareCanvas_Init": "SoftwareCanvas_Init",
+  "SoftwareCanvas_InitWithBuffer": "SoftwareCanvas_InitWithBuffer",
+  "SoftwareCanvas_Destroy": "SoftwareCanvas_Destroy",
+  "SoftwareCanvas_DestroyAndFree": "SoftwareCanvas_DestroyAndFree",
+  "SoftwareCanvas_SetPixel": "SoftwareCanvas_SetPixel",
+  "SoftwareCanvas_DrawLine": "SoftwareCanvas_DrawLine",
+  "SoftwareCanvas_FillRect": "SoftwareCanvas_FillRect",
+  "SoftwareCanvas_DrawRect": "SoftwareCanvas_DrawRect",
+  "SoftwareCanvas_DrawGlyph": "SoftwareCanvas_DrawGlyph",
+  "SoftwareCanvas_DrawFormattedText": "SoftwareCanvas_DrawFormattedText",
+  "data_020c17f0": "gSoftwareCanvasFontPalette",
+  "data_020c19f0": "gSoftwareCanvasFontGlyphRows",
+  "gSoftwareCanvasVTable": "gSoftwareCanvasVTable",
+  "gSoftwareCanvasTextCursor": "gSoftwareCanvasTextCursor"
+}

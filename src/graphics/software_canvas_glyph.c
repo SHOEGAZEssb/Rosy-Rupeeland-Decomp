@@ -5,10 +5,6 @@
  * one 8x8, 4-bpp glyph through a shared palette at a shared cursor position.
  */
 
-extern const u16 data_020c17f0[];
-extern const u32 data_020c19f0[];
-extern s32 gSoftwareCanvasTextCursor[2];
-
 /*
  * Draw glyphIndex at the shared x/y cursor. Each nonzero low-first nibble is
  * looked up in palette entries starting at byte offset 0x20, forced opaque,
@@ -18,13 +14,13 @@ extern s32 gSoftwareCanvasTextCursor[2];
  */
 void SoftwareCanvas_DrawGlyph(SoftwareCanvas *self, s32 glyphIndex)
 {
-    const u32 *glyph = data_020c19f0 + glyphIndex * 8;
-    const u16 *palette = data_020c17f0 + 16;
+    const u32 *glyph = gSoftwareCanvasFontGlyphRows + glyphIndex * 8;
+    const u16 *palette = gSoftwareCanvasFontPalette + 16;
     s32 y;
 
     for (y = 0; y < 8; y++) {
-        u16 *dst = self->pixels + (gSoftwareCanvasTextCursor[0] + y) * 256
-                   + gSoftwareCanvasTextCursor[1];
+        u16 *dst = self->pixels + (gSoftwareCanvasTextCursor.y + y) * 256
+                   + gSoftwareCanvasTextCursor.x;
         u32 row = glyph[y];
         s32 x;
 
