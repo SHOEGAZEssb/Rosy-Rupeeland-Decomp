@@ -1,0 +1,11 @@
+{
+  "func_020787c4": "RetailResourceDescriptorDebugMenu_Init",
+  "func_02078820": "RetailResourceDescriptorDebugMenu_Draw",
+  "func_02078944": "RetailResourceDescriptorDebugMenu_UpdateInput",
+  "func_02078ab4": "RetailResourceDescriptorDebugMenu_DestroyAndFree",
+  "func_02078ad0": "RetailResourceDescriptorDebugMenu_Destroy",
+  "data_020e6a9c": "gRetailResourceDescriptorDebugMenuVtable",
+  "data_020e6ad0": "gRetailResourceDescriptorDebugMenuEnabledText",
+  "data_020e6ad4": "gRetailResourceDescriptorDebugMenuDisabledText",
+  "data_020e6ad8": "gRetailResourceDescriptorDebugMenuStringFormat"
+}
