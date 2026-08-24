@@ -1,0 +1,7 @@
+{
+  "func_0207e9d8": "RetailRecordCategory12_PostLoad",
+  "func_0207eaa4": "RecordCategory_ApplyCategory12Completion",
+  "func_0207ec6c": "RetailRecordCategory12_ClearTrackedRecordFlags",
+  "func_0207ed08": "RetailRecordCategory12_Delete",
+  "func_0207ed4c": "RetailRecordCategory12_Destroy"
+}

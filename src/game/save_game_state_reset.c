@@ -20,7 +20,7 @@ extern void RetailSelectionHistoryEntry_Init(void *entry, u16 identifier);
 extern s32 func_0206fa9c(void *entry_slot);
 extern void *ActorDatabase_FindDescriptorById(void *manager, u16 actor_id);
 extern void OS_Halt(void);
-extern void func_0207ec6c(void *category);
+extern void RetailRecordCategory12_ClearTrackedRecordFlags(void *category);
 s32 RetailRecordCategory_IsRecordDiscovered(void *category, u16 record_id);
 
 static u16 ReadU16(const u8 *bytes, u32 offset);
@@ -53,15 +53,15 @@ DEFINE_RETAIL_EMPTY_HOOK(RetailRecordTypeOneMenu_NoOp)
 
 #undef DEFINE_RETAIL_EMPTY_HOOK
 
-/* Retail category post-load filter at 0x0207E9D8. */
-void func_0207e9d8(void *category_pointer)
+/* Restore category twelve's tracked-record flags after loading save state. */
+void RetailRecordCategory12_PostLoad(void *category_pointer)
 {
     u8 *category = (u8 *)category_pointer;
     u8 *work = (u8 *)gGameWork;
     u32 index;
 
     if (*(s16 *)(work + 0x90) >= 5) {
-        func_0207ec6c(category);
+        RetailRecordCategory12_ClearTrackedRecordFlags(category);
         return;
     }
     for (index = 0; index < CategoryCount(category, 1); ++index) {
