@@ -1,12 +1,13 @@
 #include "tingle/actor_motion.h"
+#include "tingle/game_phase_region_table.h"
 
 /* Area-crossing direction query for the area-aware actor-motion helper. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02056f00(VecFx32Object *result, const void *source);
-extern s32 GamePhaseRegionTable_ClassifyContainedSide(void *context, s32 area, const s16 *rectangle);
+extern void VecFx32Object_InitPlanarProjection(VecFx32Object *result,
+                                               const void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -20,7 +21,7 @@ extern s32 GamePhaseRegionTable_ClassifyContainedSide(void *context, s32 area, c
 s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self, void *actor, s32 area)
 {
     VecFx32Object position;
-    s16 rectangle[4];
+    GamePhaseRegion rectangle;
     s32 result;
     s32 loweredY;
     s32 x;
@@ -30,7 +31,7 @@ s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self
     s32 top;
     s32 bottom;
 
-    func_02056f00(&position, (u8 *)actor + 0x18);
+    VecFx32Object_InitPlanarProjection(&position, (u8 *)actor + 0x18);
     loweredY = position.value.y - 0x10000;
     x = position.value.x >> 12;
     left = x - 0x10;
@@ -38,12 +39,12 @@ s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self
     y = loweredY >> 12;
     top = y - 0x10;
     bottom = y + 0x10;
-    rectangle[2] = (s16)right;
-    rectangle[1] = (s16)top;
+    rectangle.right = (s16)right;
+    rectangle.top = (s16)top;
     position.value.y = loweredY;
-    rectangle[0] = (s16)left;
-    rectangle[3] = (s16)bottom;
-    result = GamePhaseRegionTable_ClassifyContainedSide(self->areaContext, area, rectangle);
+    rectangle.left = (s16)left;
+    rectangle.bottom = (s16)bottom;
+    result = GamePhaseRegionTable_ClassifyContainedSide(self->areaContext, area, &rectangle);
     VecFx32Object_Destroy(&position);
     return result;
 }

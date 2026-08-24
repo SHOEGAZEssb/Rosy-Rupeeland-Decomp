@@ -4,6 +4,9 @@
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
+typedef struct GamePhaseRegionTable GamePhaseRegionTable;
+typedef struct RectS16 RectS16;
+
 typedef struct ActorMotionTriple {
     s32 halfRange;
     s32 midpoint;
@@ -53,11 +56,11 @@ typedef char ActorMotionJitterSizeCheck[
 
 typedef struct ActorMotionAreaFollower {
     ActorMotionJitter jitter;
-    void *areaContext;
-    VecFx32Object offset;
-    s32 transitionActive;
-    s32 transitionTimer;
-    s32 previousArea;
+    GamePhaseRegionTable *areaContext;
+    VecFx32Object smoothedPosition;
+    s32 smoothingActive;
+    s32 smoothingWeight;
+    s32 currentAreaIndex;
 } ActorMotionAreaFollower;
 
 typedef char ActorMotionAreaFollowerSizeCheck[
@@ -119,7 +122,7 @@ void ActorMotionAreaFollower_BindActor(ActorMotion *self, void *actor);
 s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self, void *actor, s32 area);
 void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s32 area,
                    const s16 *fallbackBounds);
-void S16Rectangle_Translate(s16 *rectangle, s32 x, s32 y);
+void RectS16_Translate(RectS16 *rectangle, s32 x, s32 y);
 void ActorMotionAreaFollower_RefreshCurrentArea(ActorMotionAreaFollower *self);
 void ActorMotionAreaFollower_Reset(ActorMotionAreaFollower *self);
 void ActorCollision_ResolveCornerContacts(void *actor, void *collisionContext);

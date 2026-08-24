@@ -28,7 +28,7 @@ extern void VecFx32Object_Assign(void *,const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void VecFx32Object_Add(void *,const void *);
 extern void VecFx32_Subtract(void *,const void *,s32);
-extern void func_02056f00(void *,const void *);
+extern void VecFx32Object_InitPlanarProjection(void *,const void *);
 extern void *Actor_GetOwningCollection(void *);
 extern void *ActorCollection_GetSpriteGroup(void *);
 extern void *func_0202293c(void *,void *,s32);
@@ -61,7 +61,7 @@ SpriteNumberMotionPresentation *func_02022cb0(
     if(group){owner=ActorCollection_GetSpriteGroup(Actor_GetOwningCollection((void *)config));func_0202293c(group,owner,value);}
     self->numberGroup3c=group;if(value==0)func_02022c80(group,0);
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
-    func_02056f00(&position,&sampled);VecFx32Object_Destroy(&sampled);
+    VecFx32Object_InitPlanarProjection(&position,&sampled);VecFx32Object_Destroy(&sampled);
     func_02022c30(group,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
     if((*(s32 *)&position.bytes[8]>>12)>0x40) {
         VecFx32Object_InitComponents(&temp,0,0,firstOffset);VecFx32Object_Assign(&self->firstOffset1c,&temp);VecFx32Object_Destroy(&temp);
@@ -98,7 +98,7 @@ s32 func_02022f28(SpriteNumberMotionPresentation *self)
 {
     TrackValue sampled,position;
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
-    func_02056f00(&position,&sampled);VecFx32Object_Destroy(&sampled);
+    VecFx32Object_InitPlanarProjection(&position,&sampled);VecFx32Object_Destroy(&sampled);
     func_02022c30(self->numberGroup3c,*(s32 *)&position.bytes[4]>>12,*(s32 *)&position.bytes[8]>>12);
     VecFx32Object_Add(&self->track0c,&self->firstOffset1c);
     VecFx32Object_Add(&self->firstOffset1c,&self->secondOffset2c);

@@ -2,7 +2,7 @@
 .text
 .extern RectS16_Assign
 .extern RectS16_InitComponents
-.extern S16Rectangle_Translate
+.extern RectS16_Translate
 .extern GamePhaseScriptVm_Pop
 .extern S16Bounds_GetHeight
 .extern CPoint2DS16_InitFromRectangle
@@ -150,7 +150,7 @@ L_02018bdc:
     mov r1, r7
     mov r2, r6
     add r0, r0, #0x60
-    bl S16Rectangle_Translate
+    bl RectS16_Translate
     b L_02018c08
 L_02018bf4:
     ldr r0, [r8, #0x84]

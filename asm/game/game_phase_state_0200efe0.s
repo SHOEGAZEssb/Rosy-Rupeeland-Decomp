@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_state_boundary_transition.c.
 .text
 .extern VecFx32Object_Destroy
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 
     .global GamePhaseState_GetBoundaryDirection
 GamePhaseState_GetBoundaryDirection: ; 0x0200efe0
@@ -16,7 +16,7 @@ GamePhaseState_GetBoundaryDirection: ; 0x0200efe0
     bne L_0200f0ac
     add r0, sp, #0x0
     add r1, r1, #0x18
-    bl func_02056f00
+    bl VecFx32Object_InitPlanarProjection
     add r0, r4, #0x2000
     ldr r0, [r0, #0xeb0]
     ldr r1, [sp, #0x4]

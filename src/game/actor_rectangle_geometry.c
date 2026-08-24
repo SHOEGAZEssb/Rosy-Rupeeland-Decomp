@@ -15,7 +15,7 @@ extern "C" {
  * displacement: copy +4, subtract +0xC from +8, and clear +0xC. The vector
  * constructor owns initialization; no hardware or SDK state is touched.
  */
-void func_02056f00(void *destination, const void *source)
+void VecFx32Object_InitPlanarProjection(void *destination, const void *source)
 {
     u8 *result = (u8 *)destination;
     const u8 *value = (const u8 *)source;

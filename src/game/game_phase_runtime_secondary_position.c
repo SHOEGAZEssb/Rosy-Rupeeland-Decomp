@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02056f00(void *value, const void *position);
+extern void VecFx32Object_InitPlanarProjection(void *value, const void *position);
 extern void GamePhaseAreaScene_UpdateRegionAtPosition(void *actor, void *areaState, s32 x, s32 y);
 extern void VecFx32Object_Destroy(void *value);
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ void func_0200866c(GamePhaseRuntime *self)
 
     if (actor != 0 &&
         ((*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 12) >> 30) == 2) {
-        func_02056f00(value, (u8 *)*(void **)(b + 0x2ea4) + 0x18);
+        VecFx32Object_InitPlanarProjection(value, (u8 *)*(void **)(b + 0x2ea4) + 0x18);
         GamePhaseAreaScene_UpdateRegionAtPosition(*(void **)(b + 0x2fb8), b + 0x2fa4,
                       *(s32 *)(value + 4), *(s32 *)(value + 8));
         VecFx32Object_Destroy(value);

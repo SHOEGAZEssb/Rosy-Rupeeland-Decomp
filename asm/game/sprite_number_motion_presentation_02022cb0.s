@@ -19,7 +19,7 @@
 .extern func_02022c80
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 .extern gHeapContext
 
 .global func_02022cb0
@@ -74,7 +74,7 @@ func_02022cb0: ; 0x02022cb0
     bl VecFx32_Subtract
     add r0, sp, #0x50
     add r1, sp, #0x40
-    bl func_02056f00
+    bl VecFx32Object_InitPlanarProjection
     add r0, sp, #0x40
     bl VecFx32Object_Destroy
     ldr r1, [sp, #0x54]

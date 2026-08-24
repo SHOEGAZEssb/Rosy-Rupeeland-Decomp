@@ -38,7 +38,7 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
 extern void *GamePhaseState_GetConfiguration(void *);
-extern void func_02056f00(void *, const void *);
+extern void VecFx32Object_InitPlanarProjection(void *, const void *);
 extern s32 func_020adc40(s32);
 extern s32 func_020ae024(s32, s32);
 extern u32 genrand_int32(void);
@@ -129,7 +129,7 @@ void func_ov054_0220e560(void *object, u8 *bounds, const void *position)
 {
     u8 converted[16];
     s32 radius, radiusSquared, centerX, centerY, low, high, x;
-    func_02056f00(converted, position);
+    VecFx32Object_InitPlanarProjection(converted, position);
     radius = fx_mul((s32)FIELD(s16, gGameWork, 0x218) << 12,
                     FIELD(s32, object, 0x1a4));
     radiusSquared = fx_mul(radius, radius);

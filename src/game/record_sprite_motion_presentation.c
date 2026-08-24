@@ -23,7 +23,7 @@ extern void *data_020d6630[];extern void *data_020f4e18;extern void *data_021e9a
 extern void VecFx32Object_InitCopy(void *,const void *);extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_InitComponents(void *,s32,s32,s32);extern void VecFx32Object_Assign(void *,const void *);
 extern void VecFx32Object_Destroy(void *);extern void VecFx32Object_Add(void *,const void *);
-extern void VecFx32_Subtract(void *,const void *,s32);extern void func_02056f00(void *,const void *);
+extern void VecFx32_Subtract(void *,const void *,s32);extern void VecFx32Object_InitPlanarProjection(void *,const void *);
 extern void *Actor_GetOwningCollection(void *);extern void *ActorCollection_GetSpriteGroup(void *);
 extern void AnimationResourceState_InitEmbedded(void *);extern void AnimationResourceState_Destroy(void *);
 extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32);extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);
@@ -64,7 +64,7 @@ RecordSpriteMotionPresentation *func_02022ff4(
     component=ActorDescriptor_GetComponent(&record,0);GraphicsSpriteState_SetAnimationIndex(self->sprite3c,ActorDescriptorComponent_GetAnimation(component));
     if(rangeEnd==0)*(u16 *)(self->sprite3c+0x24)|=4;
     VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
-    func_02056f00(&position,&sampled);VecFx32Object_Destroy(&sampled);
+    VecFx32Object_InitPlanarProjection(&position,&sampled);VecFx32Object_Destroy(&sampled);
     *(s16 *)(self->sprite3c+0x2c)=(s16)(*(s32 *)&position.bytes[4]>>12);
     *(s16 *)(self->sprite3c+0x2e)=(s16)(*(s32 *)&position.bytes[8]>>12);
     if((*(s32 *)&position.bytes[8]>>12)>0x40){
@@ -97,7 +97,7 @@ RecordSpriteMotionPresentation *func_020232b0(RecordSpriteMotionPresentation *se
 s32 func_02023308(RecordSpriteMotionPresentation *self)
 {
     TrackValue sampled,position;VecFx32_Subtract(&sampled,&self->track0c,self->sampleArgument08);
-    func_02056f00(&position,&sampled);VecFx32Object_Destroy(&sampled);
+    VecFx32Object_InitPlanarProjection(&position,&sampled);VecFx32Object_Destroy(&sampled);
     *(s16 *)(self->sprite3c+0x2c)=(s16)(*(s32 *)&position.bytes[4]>>12);
     *(s16 *)(self->sprite3c+0x2e)=(s16)(*(s32 *)&position.bytes[8]>>12);
     VecFx32Object_Add(&self->track0c,&self->firstOffset1c);VecFx32Object_Add(&self->firstOffset1c,&self->secondOffset2c);

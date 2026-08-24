@@ -1,4 +1,6 @@
 #include "tingle/actor_motion.h"
+#include "tingle/game_phase_region_table.h"
+#include "tingle/touch_region.h"
 
 /*
  * Area-bound clamping and collision-rectangle preparation for actor motion.
@@ -10,7 +12,6 @@
 extern "C" {
 #endif
 extern const s8 *Actor_GetCollisionBounds(void *actor);
-extern const s16 *GamePhaseRegionTable_GetRegion(void *context, s32 area);
 #ifdef __cplusplus
 }
 #endif
@@ -28,10 +29,10 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
     ActorMotion *motion = &self->jitter.base;
     u8 *actor = (u8 *)motion->actor;
     VecFx32Object position;
-    s16 lowerRectangle[4];
-    s16 actorRectangle[4];
+    RectS16 lowerRectangle;
+    RectS16 actorRectangle;
     const s8 *collision;
-    const s16 *bounds;
+    const GamePhaseRegion *bounds;
     s32 actorX;
     s32 actorY;
     s32 actorZ;
@@ -43,27 +44,27 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
     actorZ = *(s32 *)(actor + 0x24) >> 12;
     collision = Actor_GetCollisionBounds(actor);
 
-    lowerRectangle[0] = collision[0];
-    lowerRectangle[1] = (s16)(-42 - actorZ);
-    lowerRectangle[2] = collision[2];
-    lowerRectangle[3] = (s16)-actorZ;
-    S16Rectangle_Translate(lowerRectangle, actorX, actorY);
+    lowerRectangle.left = collision[0];
+    lowerRectangle.top = (s16)(-42 - actorZ);
+    lowerRectangle.right = collision[2];
+    lowerRectangle.bottom = (s16)-actorZ;
+    RectS16_Translate(&lowerRectangle, actorX, actorY);
 
-    actorRectangle[0] = collision[0];
-    actorRectangle[1] = (s16)(collision[1] - 8);
-    actorRectangle[2] = collision[2];
-    actorRectangle[3] = collision[3];
-    S16Rectangle_Translate(actorRectangle, actorX, actorY);
+    actorRectangle.left = collision[0];
+    actorRectangle.top = (s16)(collision[1] - 8);
+    actorRectangle.right = collision[2];
+    actorRectangle.bottom = collision[3];
+    RectS16_Translate(&actorRectangle, actorX, actorY);
 
     bounds = GamePhaseRegionTable_GetRegion(self->areaContext, area);
-    if ((position.value.x >> 12) < bounds[0])
-        position.value.x = bounds[0] << 12;
-    else if ((position.value.x >> 12) + 0x100 >= bounds[2])
-        position.value.x = (bounds[2] - 0x100) << 12;
-    if ((position.value.y >> 12) < bounds[1])
-        position.value.y = bounds[1] << 12;
-    else if ((position.value.y >> 12) + 0xc0 >= bounds[3])
-        position.value.y = (bounds[3] - 0xc0) << 12;
+    if ((position.value.x >> 12) < bounds->left)
+        position.value.x = bounds->left << 12;
+    else if ((position.value.x >> 12) + 0x100 >= bounds->right)
+        position.value.x = (bounds->right - 0x100) << 12;
+    if ((position.value.y >> 12) < bounds->top)
+        position.value.y = bounds->top << 12;
+    else if ((position.value.y >> 12) + 0xc0 >= bounds->bottom)
+        position.value.y = (bounds->bottom - 0xc0) << 12;
     VecFx32Object_Assign(&motion->position, &position);
     VecFx32Object_Destroy(&position);
 }

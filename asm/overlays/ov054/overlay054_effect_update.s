@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov054/overlay054_recovery.c.
 .extern VecFx32Object_Destroy
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 .extern func_020adc40
 .extern gGameWork
 
@@ -13,7 +13,7 @@ func_ov054_0220e560:
     mov r10, r1
     add r0, sp, #0x0
     mov r1, r2
-    bl func_02056f00
+    bl VecFx32Object_InitPlanarProjection
     ldr r0, .L_0220e688
     ldr r5, [r4, #0x1a4]
     ldr r0, [r0, #0x0]

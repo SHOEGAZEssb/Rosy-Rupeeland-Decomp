@@ -1,0 +1,9 @@
+{
+  "ActorMotionAreaFollower_BindActor": "ActorMotionAreaFollower_BindActor",
+  "ActorMotionAreaFollower_QueryCrossingDirection": "ActorMotionAreaFollower_QueryCrossingDirection",
+  "ActorMotionAreaFollower_ClampToAreaBounds": "ActorMotionAreaFollower_ClampToAreaBounds",
+  "S16Rectangle_Translate": "RectS16_Translate",
+  "ActorMotionAreaFollower_RefreshCurrentArea": "ActorMotionAreaFollower_RefreshCurrentArea",
+  "ActorMotionAreaFollower_Reset": "ActorMotionAreaFollower_Reset",
+  "func_02056f00": "VecFx32Object_InitPlanarProjection"
+}

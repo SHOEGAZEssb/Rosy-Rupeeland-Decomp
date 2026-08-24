@@ -1,4 +1,5 @@
 #include "tingle/actor_motion.h"
+#include "tingle/game_phase_region_table.h"
 #include "tingle/game_work.h"
 #include "tingle/touch_region.h"
 
@@ -13,11 +14,10 @@ extern void *gGamePhaseRuntime;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02056f00(VecFx32Object *result, const void *source);
-extern s32 GamePhaseRegionTable_FindContainingRegion(void *context, s32 x, s32 y);
+extern void VecFx32Object_InitPlanarProjection(VecFx32Object *result,
+                                               const void *source);
 extern s32 ActorMotionAreaFollower_QueryCrossingDirection(ActorMotionAreaFollower *self, void *actor,
                          s32 area);
-extern const s16 *GamePhaseRegionTable_GetRegion(void *context, s32 area);
 extern void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s32 area,
                           const s16 *bounds);
 extern s32 Type7Actor_GetStateCode(void *actor);
@@ -42,7 +42,7 @@ static s32 area_follower_multiply_fx32(s32 left, s32 right)
  * opposite/along the recovered direction code (1 left, 2 right, 3 up, 4 down).
  *
  * The resulting position is clamped to the caller bounds, then the retained
- * offset vector approaches it using a capped transition weight which begins at
+ * smoothed position approaches it using a capped weight which begins at
  * 0x29 and rises by 12 to 0x200. Smoothing ends below distance 0x1000. The
  * smoothed position becomes current position, and coordinates plus oscillation
  * are written to GameWork offsets 0x22e/0x230 with screen-center biases 128/96.
@@ -60,23 +60,24 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
     s32 area;
     const RectS16 *viewport = (const RectS16 *)bounds;
 
-    func_02056f00(&transformed, actor + 0x18);
+    VecFx32Object_InitPlanarProjection(&transformed, actor + 0x18);
     area = GamePhaseRegionTable_FindContainingRegion(self->areaContext,
                          transformed.value.x >> 12,
                          (transformed.value.y >> 12) - 0x10);
 
     if (GameWork_TestFlag(gGameWork, 0x404) == 0 && area >= 0) {
         s32 direction = ActorMotionAreaFollower_QueryCrossingDirection(self, actor, area);
-        const s16 *areaBounds = GamePhaseRegionTable_GetRegion(self->areaContext, area);
+        const GamePhaseRegion *areaBounds =
+            GamePhaseRegionTable_GetRegion(self->areaContext, area);
 
-        ActorMotionJitter_Update(&self->jitter, areaBounds);
+        ActorMotionJitter_Update(&self->jitter, (const s16 *)areaBounds);
         ActorMotionAreaFollower_ClampToAreaBounds(self, area, bounds);
-        if (self->previousArea != -1 && self->previousArea != area) {
+        if (self->currentAreaIndex != -1 && self->currentAreaIndex != area) {
             u8 *runtime;
             u8 *companion = 0;
 
-            self->transitionTimer = 0x29;
-            self->transitionActive = 1;
+            self->smoothingWeight = 0x29;
+            self->smoothingActive = 1;
             if (*(u8 *)(actor + 0x4d) == 1) {
                 runtime = (u8 *)gGamePhaseRuntime;
                 companion = *(u8 **)(runtime + 0x2ea8);
@@ -98,7 +99,7 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
                 VecFx32Object_Destroy(&shifted);
             }
         }
-        self->previousArea = area;
+        self->currentAreaIndex = area;
     } else {
         ActorMotionJitter_Update(&self->jitter, bounds);
     }
@@ -113,28 +114,28 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
     else if ((candidate.value.y >> 12) + 0xc0 > viewport->bottom)
         candidate.value.y = (viewport->bottom - 0xc0) << 12;
 
-    if (self->transitionActive != 0) {
-        s32 newWeight = self->transitionTimer;
+    if (self->smoothingActive != 0) {
+        s32 newWeight = self->smoothingWeight;
         s32 oldWeight = 0x1000 - newWeight;
 
-        self->offset.value.x =
-            area_follower_multiply_fx32(self->offset.value.x, oldWeight) +
+        self->smoothedPosition.value.x =
+            area_follower_multiply_fx32(self->smoothedPosition.value.x, oldWeight) +
             area_follower_multiply_fx32(candidate.value.x, newWeight);
-        self->offset.value.y =
-            area_follower_multiply_fx32(self->offset.value.y, oldWeight) +
+        self->smoothedPosition.value.y =
+            area_follower_multiply_fx32(self->smoothedPosition.value.y, oldWeight) +
             area_follower_multiply_fx32(candidate.value.y, newWeight);
-        self->offset.value.z =
-            area_follower_multiply_fx32(self->offset.value.z, oldWeight) +
+        self->smoothedPosition.value.z =
+            area_follower_multiply_fx32(self->smoothedPosition.value.z, oldWeight) +
             area_follower_multiply_fx32(candidate.value.z, newWeight);
-        self->transitionTimer += 12;
-        if (self->transitionTimer > 0x200)
-            self->transitionTimer = 0x200;
-        if (func_020adcac(&self->offset.value, &candidate.value) < 0x1000)
-            self->transitionActive = 0;
+        self->smoothingWeight += 12;
+        if (self->smoothingWeight > 0x200)
+            self->smoothingWeight = 0x200;
+        if (func_020adcac(&self->smoothedPosition.value, &candidate.value) < 0x1000)
+            self->smoothingActive = 0;
     } else {
-        VecFx32Object_Assign(&self->offset, &candidate);
+        VecFx32Object_Assign(&self->smoothedPosition, &candidate);
     }
-    VecFx32Object_Assign(&motion->position, &self->offset);
+    VecFx32Object_Assign(&motion->position, &self->smoothedPosition);
 
     ActorMotionState_BuildOscillationOffset(&oscillation, &motion->state);
     *(s16 *)((u8 *)gGameWork + 0x22e) =

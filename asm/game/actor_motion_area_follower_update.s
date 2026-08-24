@@ -13,7 +13,7 @@
 .extern GamePhaseRegionTable_FindContainingRegion
 .extern GamePhaseRegionTable_GetRegion
 .extern Type7Actor_GetStateCode
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 .extern func_020adcac
 .extern gGameWork
 .global ActorMotionAreaFollower_Update
@@ -25,7 +25,7 @@ ActorMotionAreaFollower_Update: ; 0x02009d80
     mov r9, r1
     add r0, sp, #0x40
     add r1, r7, #0x18
-    bl func_02056f00
+    bl VecFx32Object_InitPlanarProjection
     ldr r0, [sp, #0x48]
     ldr r1, [sp, #0x44]
     mov r2, r0, asr #0xc

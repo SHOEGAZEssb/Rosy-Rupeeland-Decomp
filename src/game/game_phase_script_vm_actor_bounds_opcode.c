@@ -91,7 +91,7 @@ s32 GamePhaseActorScriptVm_DispatchActorBoundsCommand(GamePhaseActorScriptVm *se
         break;
     }
     case 8:
-        S16Rectangle_Translate((s16 *)bounds, first, second);
+        RectS16_Translate(bounds, first, second);
         break;
     case 9:
         S16Bounds_Expand(bounds, first, second);

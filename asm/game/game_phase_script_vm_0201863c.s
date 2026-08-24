@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_bounds_opcode.c.
 .text
 .extern RectS16_InitComponents
-.extern S16Rectangle_Translate
+.extern RectS16_Translate
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern S16Bounds_GetHeight
@@ -156,7 +156,7 @@ L_02018838:
     mov r1, r7
     mov r2, r6
     add r0, r0, #0x70
-    bl S16Rectangle_Translate
+    bl RectS16_Translate
     b L_020188d8
 L_02018850:
     ldr r0, [r8, #0x84]

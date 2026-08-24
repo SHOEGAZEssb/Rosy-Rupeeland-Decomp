@@ -19,7 +19,7 @@
 .extern func_02022c80
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 .extern gHeapContext
 
 .global func_02022ec8

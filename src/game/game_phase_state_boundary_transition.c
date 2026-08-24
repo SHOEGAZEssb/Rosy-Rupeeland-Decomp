@@ -16,7 +16,7 @@ extern s32 ActorRuntimeCollection_GetBusyState(void *object);
 extern s32 ActorDerivedType1_GetActiveRecordId(void *actor);
 extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
 extern s32 OverlayManager_GetGlobal(void);
-extern void *func_02056f00(void *vector, const void *source);
+extern void *VecFx32Object_InitPlanarProjection(void *vector, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
 extern void *func_ov074_0220fda8(void *object, s32 directionIndex);
 #ifdef __cplusplus
@@ -100,7 +100,7 @@ s32 GamePhaseState_GetBoundaryDirection(GamePhaseState *self)
 
     if (*(u32 *)(actor + 0xd0) & 0x10)
         return -1;
-    func_02056f00(vector, actor + 0x18);
+    VecFx32Object_InitPlanarProjection(vector, actor + 0x18);
     dimensions = *(u32 *)((u8 *)self->phaseObject + 0x20);
     x = vector[1] >> 12;
     z = vector[2] >> 12;

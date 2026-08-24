@@ -17,7 +17,7 @@
 .extern SelfLinkedSpriteConfig_Init
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 .extern ActorDescriptor_InitRange
 .extern ActorDescriptor_Init
 .extern ActorDescriptor_GetComponent

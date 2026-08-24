@@ -32,7 +32,7 @@ extern void *RetailResourceDescriptorManager_GetDescriptor(
 extern void ActorDescriptor_SetActive(void *record, s32 enabled);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner);
-extern void S16Rectangle_Translate(void *rectangle, s32 x, s32 y);
+extern void RectS16_Translate(void *rectangle, s32 x, s32 y);
 extern void ActorKind8_PopulateInteractionPresentations(void *actor, s32 playSound);
 extern s32 RetailResourceDescriptorManager_GetGroupDescriptorCount(
     void **tables, s32 tableIndex);
@@ -368,7 +368,7 @@ void *func_020579b0(void *self, const void *descriptor)
         *(s16 *)(actor + 0x72) = *(s8 *)(actor + 9);
         *(s16 *)(actor + 0x74) = *(s8 *)(actor + 0x0a);
         *(s16 *)(actor + 0x76) = *(s8 *)(actor + 0x0b);
-        S16Rectangle_Translate(actor + 0x70, 0, 1);
+        RectS16_Translate(actor + 0x70, 0, 1);
     } else if (mode == 4 || mode == 5) {
         *(s16 *)(actor + 0x60) = -0x14;
         *(s16 *)(actor + 0x64) = 0x14;

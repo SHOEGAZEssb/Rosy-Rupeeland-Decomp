@@ -6,7 +6,7 @@
 .extern ActorMotionOscillation_InitInterval
 .extern ActorMotionOscillation_Sample
 .extern SpriteMotionDelta_Step
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 .extern gSystemState
 
 .global RisingSpriteMotionController_Update
@@ -69,7 +69,7 @@ RisingSpriteMotionController_Update: ; 0x0202057c
     bl VecFx32_Subtract
     add r0, sp, #0x20
     add r1, sp, #0x0
-    bl func_02056f00
+    bl VecFx32Object_InitPlanarProjection
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
     add r0, sp, #0x10

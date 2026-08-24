@@ -43,7 +43,7 @@ extern void VecFx32Object_InitComponents(PresentationValue *track, s32 x, s32 y,
 extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void VecFx32_Subtract(PresentationValue *destination,
                           PresentationValue *track, s32 argument);
-extern void func_02056f00(PresentationValue *destination,
+extern void VecFx32Object_InitPlanarProjection(PresentationValue *destination,
                           PresentationValue *source);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_GetSpriteGroup(void *resource);
@@ -135,7 +135,7 @@ s32 DirectSpriteTrackPresentation_Update(DirectSpriteTrackPresentation *self)
         return 1;
     }
     VecFx32_Subtract(&sampled, &self->track1c, self->sampleArgument18);
-    func_02056f00(&transformed, &sampled);
+    VecFx32Object_InitPlanarProjection(&transformed, &sampled);
     VecFx32Object_Destroy(&sampled);
     *(s16 *)(self->sprite14 + 0x2c) =
         (s16)(*(s32 *)&transformed.bytes[4] >> 12);

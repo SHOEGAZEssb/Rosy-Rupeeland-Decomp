@@ -3,7 +3,7 @@
 .text
 .extern VecFx32Object_Destroy
 .extern GamePhaseRegionTable_ClassifyContainedSide
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 .global ActorMotionAreaFollower_QueryCrossingDirection
 ActorMotionAreaFollower_QueryCrossingDirection: ; 0x0200a124
     stmdb sp!, {r3, r4, r5, lr}
@@ -12,7 +12,7 @@ ActorMotionAreaFollower_QueryCrossingDirection: ; 0x0200a124
     add r0, sp, #0x8
     add r1, r1, #0x18
     mov r4, r2
-    bl func_02056f00
+    bl VecFx32Object_InitPlanarProjection
     ldr r1, [sp, #0x10]
     ldr r0, [sp, #0xc]
     sub ip, r1, #0x10000

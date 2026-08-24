@@ -41,7 +41,7 @@ extern void ActorMotionTriple_Assign(void *state, void *source);
 extern s32 ActorMotionOscillation_Sample(void *state, s32 time, s32 mode);
 extern void VecFx32_Subtract(VecFx32Object *destination, void *source,
                           s32 argument);
-extern void func_02056f00(VecFx32Object *destination,
+extern void VecFx32Object_InitPlanarProjection(VecFx32Object *destination,
                           VecFx32Object *source);
 extern u8 *GraphicsSpriteGroup_CreateState(void *owner, s32 first, s32 second, s32 third,
                          s32 mode);
@@ -162,7 +162,7 @@ s32 RisingSpriteMotionController_Update(RisingSpriteMotionController *self,
     ActorMotionOscillation_InitInterval(oscillationSample, -scale << 6, scale << 6, 0xc8);
     VecFx32Bezier_Evaluate3D(&pathSample, &self->path1c, self->offset5c);
     VecFx32_Subtract(&sampled, &pathSample, referencePosition);
-    func_02056f00(&transformed, &sampled);
+    VecFx32Object_InitPlanarProjection(&transformed, &sampled);
     VecFx32Object_Destroy(&sampled);
     VecFx32Object_Destroy(&pathSample);
     transformed.value.x +=

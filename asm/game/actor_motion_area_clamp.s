@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern S16Rectangle_Translate
+.extern RectS16_Translate
 .extern GamePhaseRegionTable_GetRegion
 .extern Actor_GetCollisionBounds
 .global ActorMotionAreaFollower_ClampToAreaBounds
@@ -38,7 +38,7 @@ ActorMotionAreaFollower_ClampToAreaBounds: ; 0x0200a1a0
     strh r5, [sp, #0xc]
     strh r3, [sp, #0xa]
     mov r2, r6
-    bl S16Rectangle_Translate
+    bl RectS16_Translate
     ldrsb r3, [r4, #0x0]
     mov r1, r7
     mov r2, r6
@@ -51,7 +51,7 @@ ActorMotionAreaFollower_ClampToAreaBounds: ; 0x0200a1a0
     strh r3, [sp, #0x4]
     ldrsb r3, [r4, #0x3]
     strh r3, [sp, #0x6]
-    bl S16Rectangle_Translate
+    bl RectS16_Translate
     ldr r0, [r9, #0x68]
     mov r1, r8
     bl GamePhaseRegionTable_GetRegion

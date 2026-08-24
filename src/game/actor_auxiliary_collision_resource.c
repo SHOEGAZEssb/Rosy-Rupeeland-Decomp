@@ -40,7 +40,7 @@ extern void GraphicsSpriteGroup_ReleaseState(void *group, void *state);
 extern void VecFx32_Subtract(VecFx32Object *result,
                              const VecFx32Object *left,
                              const VecFx32Object *right);
-extern void func_02056f00(void *destination, const void *source);
+extern void VecFx32Object_InitPlanarProjection(void *destination, const void *source);
 #ifdef __cplusplus
 }
 #endif
@@ -128,7 +128,7 @@ void ActorInteractionIcon_UpdatePresentation(
     *(u16 *)((u8 *)self->spriteState + 0x30) =
         (u16)self->directionAngle;
     VecFx32_Subtract(&relativePosition, actorCollisionCenter, viewPosition);
-    func_02056f00(&screenPositionFx32, &relativePosition);
+    VecFx32Object_InitPlanarProjection(&screenPositionFx32, &relativePosition);
     VecFx32Object_Destroy(&relativePosition);
     screenPositionFx32.value.x += self->offsetFx32.value.x;
     screenPositionFx32.value.y += self->offsetFx32.value.y;

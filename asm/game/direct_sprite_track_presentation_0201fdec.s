@@ -2,7 +2,7 @@
 .text
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
-.extern func_02056f00
+.extern VecFx32Object_InitPlanarProjection
 
 .global DirectSpriteTrackPresentation_Update
     .type DirectSpriteTrackPresentation_Update, @function
@@ -23,7 +23,7 @@ DirectSpriteTrackPresentation_Update: ; 0x0201fdec
     bl VecFx32_Subtract
     add r0, sp, #0x10
     add r1, sp, #0x0
-    bl func_02056f00
+    bl VecFx32Object_InitPlanarProjection
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
     ldr r0, [sp, #0x14]
