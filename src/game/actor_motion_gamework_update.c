@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 extern s32 ActorMotion_UpdateFromBoundActor(ActorMotion *self);
-extern void func_02008740(VecFx32Object *result,
+extern void ActorMotionState_BuildOscillationOffset(VecFx32Object *result,
                           const ActorMotionState *state);
 #ifdef __cplusplus
 }
@@ -65,13 +65,13 @@ s32 ActorMotionGameWork_Update(ActorMotion *self, const s16 *bounds)
     if (self->field_30 & 2)
         ActorMotion_UpdateOscillation(self);
 
-    func_02008740(&offset, &self->state);
+    ActorMotionState_BuildOscillationOffset(&offset, &self->state);
     *(s16 *)((u8 *)gGameWork + 0x232) =
         (s16)((self->position.value.x + offset.value.x -
                self->target.value.x) >> 12);
     VecFx32Object_Destroy(&offset);
 
-    func_02008740(&offset, &self->state);
+    ActorMotionState_BuildOscillationOffset(&offset, &self->state);
     *(s16 *)((u8 *)gGameWork + 0x234) =
         (s16)((self->position.value.y + offset.value.y -
                self->target.value.y) >> 12);

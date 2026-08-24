@@ -230,8 +230,8 @@ object retains a pre-encoded forward branch from `func_02007328` to its copy
 helper in addition to the branch relocation; a freshly compiled object leaves
 that relocation field clear, but the linker produces the same final ARM branch.
 
-The same delinker artifact occurs on the forward call from `func_020086f8` to
-the immediately following `func_02008740`; their linked ARM code is identical.
+The same delinker artifact occurs on the forward call from `GamePhaseRuntime_BuildPrimaryTransform` to
+the immediately following `ActorMotionState_BuildOscillationOffset`; their linked ARM code is identical.
 
 The large per-frame game-phase controller has documented portable C and a
 separately assembled matching form. Preserve its early-return order, request-bit

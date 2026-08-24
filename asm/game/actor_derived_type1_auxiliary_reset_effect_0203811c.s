@@ -7,7 +7,7 @@
 .extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern ActorMotionJitter_EnsureMinimum
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern AuxiliaryInteraction_Destroy
@@ -64,7 +64,7 @@ ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     add r0, sp, #0x28
     add r2, sp, #0x18
     add r1, r4, #0x18
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, sp, #0x18
     bl VecFx32Object_Destroy
     ldr r1, .L_02038250

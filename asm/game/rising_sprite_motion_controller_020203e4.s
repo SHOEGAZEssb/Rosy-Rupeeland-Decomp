@@ -6,7 +6,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Triple_InitWithValues
 .extern VecFx32Triple_Assign
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern ActorMotionTriple_Clear
 .extern ActorMotionTriple_Assign
 .extern ActorMotionOscillation_InitInterval
@@ -48,7 +48,7 @@ RisingSpriteMotionController_Init: ; 0x020203e4
     ldr r1, [sp, #0x88]
     add r0, sp, #0x50
     add r2, sp, #0x60
-    bl func_02008378
+    bl VecFx32Object_InitSum
     ldr r1, [sp, #0x88]
     add r0, sp, #0x20
     add r2, sp, #0x50

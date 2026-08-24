@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_interaction_bounds_opcode.c.
 .text
-.extern func_02008354
-.extern func_020083b0
+.extern RectS16_Assign
+.extern RectS16_InitComponents
 .extern S16Rectangle_Translate
 .extern GamePhaseScriptVm_Pop
 .extern S16Bounds_GetHeight
@@ -51,11 +51,11 @@ L_02018a68:
     mov r2, r6
     mov r3, r5
     str r4, [sp, #0x0]
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, [r8, #0x84]
     add r1, sp, #0x14
     add r0, r0, #0x60
-    bl func_02008354
+    bl RectS16_Assign
     b L_02018c08
 L_02018a94:
     ldr r0, [r8, #0x84]
@@ -89,11 +89,11 @@ L_02018acc:
     mov r2, r1
     str r4, [sp, #0x0]
     mov r3, r7
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, [r8, #0x84]
     add r1, sp, #0xc
     add r0, r0, #0x60
-    bl func_02008354
+    bl RectS16_Assign
     rsb r0, r7, #0x0
     ldr r2, [r8, #0x84]
     add r1, r0, r0, lsr #0x1f
@@ -124,11 +124,11 @@ L_02018b54:
     mov r2, r1
     str r7, [sp, #0x0]
     mov r3, r4
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, [r8, #0x84]
     add r1, sp, #0x4
     add r0, r0, #0x60
-    bl func_02008354
+    bl RectS16_Assign
     rsb r0, r4, #0x0
     ldr r2, [r8, #0x84]
     add r1, r0, r0, lsr #0x1f

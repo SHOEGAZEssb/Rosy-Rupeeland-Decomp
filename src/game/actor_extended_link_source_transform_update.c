@@ -11,7 +11,7 @@ extern "C" {
 extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Destroy(void *value);
 extern void VecFx32Object_Assign(void *destination, const void *source);
-extern void func_02008378(void *destination, const void *left, const void *right);
+extern void VecFx32Object_InitSum(void *destination, const void *left, const void *right);
 extern void ActorExtendedType2_RunRenderCallback(void *context, void *actor, void *record);
 #ifdef __cplusplus
 }
@@ -22,7 +22,7 @@ extern void ActorExtendedType2_RunRenderCallback(void *context, void *actor, voi
  * ActorExtendedType2_RunRenderCallback. While actor flags +0x29c bit zero are
  * set, obtain a fixed-point value from vtable +0x1e0, use it to form a
  * temporary transform-like value,
- * combine it with partner +0x18 and +0x28 through func_02008378, and assign the
+ * combine it with partner +0x18 and +0x28 through VecFx32Object_InitSum, and assign the
  * results to actor +0x18/+0x28. After the base update, an enabled nonnull
  * partner also supplies byte +0x3a and halfword +0x28 in the objects at +0x54;
  * the halfword is adjusted by the virtual result and signed actor halfword
@@ -41,10 +41,10 @@ void ActorExtendedLinkSource_UpdatePartnerTransform(void *context, void *self, v
         s32 value = (*(s32 (**)(void *))(*(u8 **)actor + 0x1e0))(actor);
         VecFx32Object_InitComponents(offset, 0, 0, value);
         partner = *(void **)(actor + 0x298);
-        func_02008378(result, (u8 *)partner + 0x18, offset);
+        VecFx32Object_InitSum(result, (u8 *)partner + 0x18, offset);
         VecFx32Object_Assign(actor + 0x18, result);
         VecFx32Object_Destroy(result);
-        func_02008378(result, (u8 *)partner + 0x28, offset);
+        VecFx32Object_InitSum(result, (u8 *)partner + 0x28, offset);
         VecFx32Object_Assign(actor + 0x28, result);
         VecFx32Object_Destroy(result);
         VecFx32Object_Destroy(offset);

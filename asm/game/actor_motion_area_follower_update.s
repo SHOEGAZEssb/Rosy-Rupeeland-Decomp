@@ -6,7 +6,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02008740
+.extern ActorMotionState_BuildOscillationOffset
 .extern ActorMotionJitter_Update
 .extern ActorMotionAreaFollower_QueryCrossingDirection
 .extern ActorMotionAreaFollower_ClampToAreaBounds
@@ -219,7 +219,7 @@ L_0200a070:
     bl VecFx32Object_Assign
     add r0, sp, #0x10
     add r1, r4, #0x44
-    bl func_02008740
+    bl ActorMotionState_BuildOscillationOffset
     ldr r0, L_0200a108
     ldr r3, [r4, #0xc]
     ldr r1, [r0, #0x0]
@@ -233,7 +233,7 @@ L_0200a070:
     bl VecFx32Object_Destroy
     add r0, sp, #0x0
     add r1, r4, #0x44
-    bl func_02008740
+    bl ActorMotionState_BuildOscillationOffset
     ldr r0, L_0200a108
     ldr r3, [r4, #0x10]
     ldr r1, [r0, #0x0]

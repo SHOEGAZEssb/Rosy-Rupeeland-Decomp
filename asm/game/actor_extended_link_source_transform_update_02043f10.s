@@ -3,7 +3,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern ActorExtendedType2_RunRenderCallback
 .global ActorExtendedLinkSource_UpdatePartnerTransform
 .type ActorExtendedLinkSource_UpdatePartnerTransform, @function
@@ -29,7 +29,7 @@ ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
     add r0, sp, #0x10
     add r2, sp, #0x20
     add r1, r1, #0x18
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, r4, #0x18
     add r1, sp, #0x10
     bl VecFx32Object_Assign
@@ -39,7 +39,7 @@ ActorExtendedLinkSource_UpdatePartnerTransform: ; 0x02043f10
     add r0, sp, #0x0
     add r2, sp, #0x20
     add r1, r1, #0x28
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, r4, #0x28
     add r1, sp, #0x0
     bl VecFx32Object_Assign

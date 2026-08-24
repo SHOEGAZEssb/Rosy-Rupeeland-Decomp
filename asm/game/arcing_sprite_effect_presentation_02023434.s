@@ -14,7 +14,7 @@
 .extern VecFx32Triple_Destroy
 .extern VecFx32Bezier_Evaluate3D
 .extern VecFx32Triple_InitWithValues
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern FieldEffect_Init
 .extern FieldEffect_DestroyBase
 .extern VecFx32Object_ScaleRounded
@@ -92,7 +92,7 @@ func_02023434: ; 0x02023434
     add r0, sp, #0x2c
     add r1, sp, #0x1c
     add r2, sp, #0xc
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, sp, #0xc
     bl VecFx32Object_Destroy
     add r0, sp, #0x1c

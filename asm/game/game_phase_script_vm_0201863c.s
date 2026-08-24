@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_bounds_opcode.c.
 .text
-.extern func_020083b0
+.extern RectS16_InitComponents
 .extern S16Rectangle_Translate
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
@@ -57,7 +57,7 @@ L_020186c4:
     mov r2, r6
     mov r3, r5
     str r4, [sp, #0x0]
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, [r8, #0x84]
     add r1, sp, #0x14
     bl Actor_SetInteractionBounds
@@ -96,7 +96,7 @@ L_02018724:
     add r0, sp, #0xc
     mov r2, r1
     mov r3, r7
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, [r8, #0x84]
     add r1, sp, #0xc
     bl Actor_SetInteractionBounds
@@ -131,7 +131,7 @@ L_020187b0:
     add r0, sp, #0x4
     str r7, [sp, #0x0]
     mov r2, r1
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, [r8, #0x84]
     add r1, sp, #0x4
     bl Actor_SetInteractionBounds

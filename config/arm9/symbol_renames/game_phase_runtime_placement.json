@@ -1,0 +1,16 @@
+{
+  "func_02008354": "RectS16_Assign",
+  "func_02008378": "VecFx32Object_InitSum",
+  "func_020083b0": "RectS16_InitComponents",
+  "func_020086f8": "GamePhaseRuntime_BuildPrimaryTransform",
+  "func_02008740": "ActorMotionState_BuildOscillationOffset",
+  "GamePhaseRuntime_ChangeToNeighborArea": "GamePhaseRuntime_ChangeToNeighborArea",
+  "GamePhaseRuntime_SynchronizeActorPlacement": "GamePhaseRuntime_SynchronizeActorPlacement",
+  "GamePhaseRuntime_ApplyScreenMode": "GamePhaseRuntime_ApplyScreenMode",
+  "GamePhaseRuntime_BuildSecondaryTransform": "GamePhaseRuntime_BuildSecondaryTransform",
+  "GamePhaseRuntime_SetPlacementMode": "GamePhaseRuntime_SetPlacementMode",
+  "GamePhaseRuntime_RefreshAreaAuxiliaryObject": "GamePhaseRuntime_RefreshAreaAuxiliaryObject",
+  "GamePhaseRuntime_RecreateDualScreenUiPresentation": "GamePhaseRuntime_RecreateDualScreenUiPresentation",
+  "gGamePhaseAreaAuxiliaryObjectAllocationTag": "gGamePhaseAreaAuxiliaryObjectAllocationTag",
+  "gGamePhaseDualScreenUiPresentationAllocationTag": "gGamePhaseDualScreenUiPresentationAllocationTag"
+}

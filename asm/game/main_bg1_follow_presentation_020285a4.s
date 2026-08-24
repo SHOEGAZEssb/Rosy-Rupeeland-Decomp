@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
-.extern func_02008740
+.extern ActorMotionState_BuildOscillationOffset
 .extern ActorMotionAreaFollower_GetPosition
 
     .global func_020285a4
@@ -29,7 +29,7 @@ func_020285a4: ; 0x020285a4
     ldr r1, [r4, #0x8]
     add r0, sp, #0x0
     add r1, r1, #0x44
-    bl func_02008740
+    bl ActorMotionState_BuildOscillationOffset
     add r0, sp, #0x10
     add r1, sp, #0x0
     bl VecFx32Object_Add

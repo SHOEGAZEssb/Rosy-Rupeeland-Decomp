@@ -9,7 +9,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern ActorMotionAreaFollower_GetPosition
 .extern TimedSpritePresentation_SetVisible
 .extern func_0201ebac
@@ -100,7 +100,7 @@ func_020256b4: ; 0x020256b4
     add r0, sp, #0x28
     add r1, r5, #0x18
     add r2, sp, #0x8
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, sp, #0x8
     bl VecFx32Object_Destroy
     ldr r1, .L_02025a30

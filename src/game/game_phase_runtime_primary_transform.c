@@ -1,15 +1,14 @@
 #include "tingle/game_phase_runtime.h"
+#include "tingle/actor_motion.h"
+#include "tingle/vec_fx32.h"
 
 /* Build the primary actor transform from runtime offsets and current position. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *ActorMotionAreaFollower_GetPosition(void *object);
-extern void func_02008378(void *destination, const void *left,
+extern void VecFx32Object_InitSum(void *destination, const void *left,
                           const void *right);
-extern void VecFx32Object_Destroy(void *value);
-extern void VecFx32Object_InitComponents(void *destination, s32 x, s32 y, s32 z);
 #ifdef __cplusplus
 }
 #endif
@@ -19,13 +18,16 @@ extern void VecFx32Object_InitComponents(void *destination, s32 x, s32 y, s32 z)
  * current position of object 0x2fbc, store the resulting value at destination,
  * and destroy the temporary. Returns no value.
  */
-void func_020086f8(void *destination, GamePhaseRuntime *self)
+void GamePhaseRuntime_BuildPrimaryTransform(void *destination, GamePhaseRuntime *self)
 {
-    u8 offset[16];
+    VecFx32Object offset;
     u8 *b = (u8 *)self;
-    func_02008740(offset, b + 0x3000);
-    func_02008378(destination, ActorMotionAreaFollower_GetPosition(b + 0x2fbc), offset);
-    VecFx32Object_Destroy(offset);
+    ActorMotionState_BuildOscillationOffset(&offset,
+                          (const ActorMotionState *)(b + 0x3000));
+    VecFx32Object_InitSum(destination,
+        ActorMotionAreaFollower_GetPosition((ActorMotionAreaFollower *)(b + 0x2fbc)),
+        &offset);
+    VecFx32Object_Destroy(&offset);
 }
 
 /*
@@ -33,8 +35,10 @@ void func_020086f8(void *destination, GamePhaseRuntime *self)
  * 0x1c, with a zero third component. The destination is mutated; returns no
  * value and tail-calls the recovered vector constructor.
  */
-void func_02008740(void *destination, const void *runtimeFields)
+void ActorMotionState_BuildOscillationOffset(void *destination, const void *runtimeFields)
 {
-    const u8 *b = (const u8 *)runtimeFields;
-    VecFx32Object_InitComponents(destination, *(s32 *)(b + 0x18), *(s32 *)(b + 0x1c), 0);
+    const ActorMotionState *state = (const ActorMotionState *)runtimeFields;
+    VecFx32Object_InitComponents((VecFx32Object *)destination,
+                                 state->sampledOffsetX,
+                                 state->sampledOffsetY, 0);
 }

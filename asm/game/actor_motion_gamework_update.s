@@ -3,7 +3,7 @@
 .text
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
-.extern func_02008740
+.extern ActorMotionState_BuildOscillationOffset
 .extern ActorMotion_UpdateOscillation
 .extern ActorMotion_UpdateFromBoundActor
 .extern gGameWork
@@ -107,7 +107,7 @@ L_02009b84:
 L_02009b98:
     add r0, sp, #0x10
     add r1, r6, #0x44
-    bl func_02008740
+    bl ActorMotionState_BuildOscillationOffset
     ldr r0, L_02009c1c
     ldr r3, [r6, #0xc]
     ldr r1, [r0, #0x0]
@@ -122,7 +122,7 @@ L_02009b98:
     bl VecFx32Object_Destroy
     add r0, sp, #0x0
     add r1, r6, #0x44
-    bl func_02008740
+    bl ActorMotionState_BuildOscillationOffset
     ldr r0, L_02009c1c
     ldr r3, [r6, #0x10]
     ldr r1, [r0, #0x0]

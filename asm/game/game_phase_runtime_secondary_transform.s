@@ -5,8 +5,8 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02008378
-.extern func_02008740
+.extern VecFx32Object_InitSum
+.extern ActorMotionState_BuildOscillationOffset
 .extern GamePhaseRuntime_GetActiveAreaPlacementVariant
 .extern ActorMotion_GetPosition
 .extern OS_Halt
@@ -52,7 +52,7 @@ L_020087b8:
     mov r1, r0
     add r0, sp, #0x20
     add r2, sp, #0x30
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, sp, #0x40
     add r1, sp, #0x20
     bl VecFx32Object_Assign
@@ -99,11 +99,11 @@ L_02008880:
     add r1, r4, #0x88
     add r0, sp, #0x0
     add r1, r1, #0x3000
-    bl func_02008740
+    bl ActorMotionState_BuildOscillationOffset
     add r1, sp, #0x40
     add r2, sp, #0x0
     mov r0, r5
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, sp, #0x0
     bl VecFx32Object_Destroy
     add r0, sp, #0x40

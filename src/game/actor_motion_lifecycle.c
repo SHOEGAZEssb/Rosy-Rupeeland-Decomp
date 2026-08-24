@@ -41,8 +41,8 @@ ActorMotionState *ActorMotionState_Init(ActorMotionState *self)
 {
     ActorMotionTriple_Clear(&self->first);
     ActorMotionTriple_Clear(&self->second);
-    self->field_18 = 0;
-    self->field_1c = 0;
+    self->sampledOffsetX = 0;
+    self->sampledOffsetY = 0;
     return self;
 }
 
@@ -120,8 +120,8 @@ void ActorMotionState_Reset(ActorMotionState *self)
     ActorMotionTriple_Assign(&self->first, &first);
     ActorMotionTriple_Clear(&second);
     ActorMotionTriple_Assign(&self->second, &second);
-    self->field_18 = 0;
-    self->field_1c = 0;
+    self->sampledOffsetX = 0;
+    self->sampledOffsetY = 0;
 }
 
 /* Assign all three components unless source and destination are identical. */

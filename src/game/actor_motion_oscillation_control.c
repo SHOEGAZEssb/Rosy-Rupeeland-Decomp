@@ -21,8 +21,8 @@ void ActorMotion_ClearOscillation(ActorMotion *self)
  */
 void ActorMotion_UpdateOscillation(ActorMotion *self)
 {
-    self->state.field_18 =
+    self->state.sampledOffsetX =
         ActorMotionOscillation_Sample(&self->state.first, *(s32 *)(gSystemState + 0x64), 0);
-    self->state.field_1c =
+    self->state.sampledOffsetY =
         ActorMotionOscillation_Sample(&self->state.second, *(s32 *)(gSystemState + 0x64), 0);
 }

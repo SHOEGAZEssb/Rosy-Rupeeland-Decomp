@@ -64,7 +64,7 @@ extern void VecFx32Object_InitComponents(ControllerVector *, s32, s32, s32);
 extern void VecFx32Object_InitCopy(ControllerVector *, const ControllerVector *);
 extern void VecFx32Object_Destroy(ControllerVector *);
 extern void VecFx32Object_Assign(ControllerVector *, const ControllerVector *);
-extern void func_02008378(ControllerVector *, const ControllerVector *,
+extern void VecFx32Object_InitSum(ControllerVector *, const ControllerVector *,
                           const ControllerVector *);
 extern void *AnimationResource_Init(ResourceDescriptor *, s32, s32, s32);
 extern void *func_0206b628(void *, void *, ResourceDescriptor *,
@@ -245,7 +245,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
                 first.x04 += data_020c9670[angle * 2 + 1] << 4;
                 first.y08 += (data_020c9670[angle * 2] << 4) - 0x18000;
                 VecFx32Object_InitComponents(&offset, 0, -0x18000, 0);
-                func_02008378(&combined, &self->position18, &offset);
+                VecFx32Object_InitSum(&combined, &self->position18, &offset);
                 VecFx32Object_Destroy(&offset);
                 self->effect28 = (TransientOrbitEffect *)Heap_Alloc(
                     0x50, data_020d6aa0, 4, &gHeapContext);

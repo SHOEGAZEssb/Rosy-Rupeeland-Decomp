@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_rect_opcodes.c.
 .text
-.extern func_02008354
+.extern RectS16_Assign
 .extern GamePhaseScriptVm_Pop
 .global GamePhaseActorScriptVm_SetActorRectangle
 GamePhaseActorScriptVm_SetActorRectangle:
@@ -24,7 +24,7 @@ GamePhaseActorScriptVm_SetActorRectangle:
     ldr r0, [r7, #0x84]
     add r1, sp, #0
     add r0, r0, #0x68
-    bl func_02008354
+    bl RectS16_Assign
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}

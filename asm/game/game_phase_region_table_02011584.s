@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_region_table_lifecycle.c.
 .text
 .extern gDefaultGamePhaseRegion
-.extern func_02008354
+.extern RectS16_Assign
 .extern GamePhaseRegionTable_Resize
 
     .global GamePhaseRegionTable_SetRegionsFromSentinel
@@ -14,7 +14,7 @@ GamePhaseRegionTable_SetRegionsFromSentinel: ; 0x02011584
     bl GamePhaseRegionTable_Resize
     ldr r0, [r6, #0x0]
     ldr r1, L_02011668
-    bl func_02008354
+    bl RectS16_Assign
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_020115ac:
     mov r4, #0x0
@@ -60,7 +60,7 @@ L_02011644:
     ldr r0, [r6, #0x0]
     mov r1, r5
     add r0, r0, r7, lsl #0x3
-    bl func_02008354
+    bl RectS16_Assign
     add r5, r5, #0x8
     add r7, r7, #0x1
 L_0201165c:

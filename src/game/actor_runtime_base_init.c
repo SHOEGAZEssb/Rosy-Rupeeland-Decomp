@@ -11,7 +11,7 @@ extern void *gGamePhaseRuntime;
 extern "C" {
 #endif
 extern void *ActorBaseGeometry_Init(void *, const void *);
-extern void func_020083b0(void *, s32, s32, s32, s32);
+extern void RectS16_InitComponents(void *, s32, s32, s32, s32);
 extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern void VecFx32Object_Assign(void *, const void *);
@@ -49,10 +49,10 @@ void *ActorRuntimeBase_Init(void *self, const void *descriptor)
     *(u32 *)(actor + 0x58) = 0;
     *(u32 *)(actor + 0x5c) =
         (*(u32 *)(actor + 0x5c) & 0xff000000) | *(u16 *)(desc + 0x60);
-    func_020083b0(actor + 0x60, *(s8 *)(desc + 0x5c),
+    RectS16_InitComponents(actor + 0x60, *(s8 *)(desc + 0x5c),
                   *(s8 *)(desc + 0x5d), *(s8 *)(desc + 0x5e),
                   *(s8 *)(desc + 0x5f));
-    func_020083b0(actor + 0x68, *(s16 *)(desc + 0x1a),
+    RectS16_InitComponents(actor + 0x68, *(s16 *)(desc + 0x1a),
                   *(s16 *)(desc + 0x1c), *(s16 *)(desc + 0x1e),
                   *(s16 *)(desc + 0x20));
     VecFx32Object_Init(actor + 0x78);

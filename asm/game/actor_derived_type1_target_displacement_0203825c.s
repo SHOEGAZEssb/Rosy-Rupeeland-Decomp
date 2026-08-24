@@ -9,7 +9,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Subtract
 .extern VecFx32_Subtract
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
@@ -215,7 +215,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add r0, sp, #0x48
     add r2, sp, #0x8
     add r1, r7, #0x18
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, sp, #0x8
     bl VecFx32Object_Destroy
     add r0, sp, #0x18

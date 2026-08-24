@@ -1,4 +1,6 @@
 #include "tingle/game_phase_runtime.h"
+#include "tingle/touch_region.h"
+#include "tingle/vec_fx32.h"
 
 /*
  * Synchronize primary or secondary actor placement with the active area.
@@ -8,15 +10,12 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02008354(void *output, const void *input);
 extern void ActorMotionAreaFollower_Update(void *object, const void *value);
-extern void func_020086f8(void *state, GamePhaseRuntime *self);
+extern void GamePhaseRuntime_BuildPrimaryTransform(void *state, GamePhaseRuntime *self);
 extern void GamePhaseRuntime_BuildSecondaryTransform(void *state, GamePhaseRuntime *self);
 extern void GamePhaseState_ApplyPlacementState(void *object, const void *state);
-extern void VecFx32Object_Destroy(void *state);
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
-extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
-extern void func_02008378(void *output, const void *state, const void *offset);
+extern void VecFx32Object_InitSum(void *output, const void *state, const void *offset);
 extern void GamePhaseAreaScene_ApplyPlacementState(void *actor, const void *state);
 extern s32 GamePhaseAreaScene_GetSubRendererLowCoordinate(void *actor);
 extern s32 GamePhaseAreaScene_GetSubRendererHighCoordinate(void *actor);
@@ -37,13 +36,13 @@ extern void ActorMotionGameWork_Update(void *object, const void *value);
 s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actorIndex)
 {
     u8 *b = (u8 *)self;
-    u8 compact[8];
-    u8 raw0[8];
-    u8 raw1[8];
-    u8 full0[16];
-    u8 full1[16];
-    u8 full2[16];
-    u8 offset[16];
+    RectS16 compact;
+    RectS16 primaryBounds;
+    RectS16 secondaryBounds;
+    VecFx32Object placement;
+    VecFx32Object basePlacement;
+    VecFx32Object shiftedPlacement;
+    VecFx32Object offset;
     u8 *actor;
     u32 packed;
     s32 orientation;
@@ -52,41 +51,41 @@ s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actor
         if (*(u8 *)(b + 0x30cc) & 4)
             return 0;
         packed = *(u32 *)(*(u8 **)(b + 0x2ed4) + 0x20);
-        func_020083b0(raw0, 0, 0,
+        RectS16_InitComponents(&primaryBounds, 0, 0,
                       (s32)((packed & 0xffff) << 20) >> 16,
                       (s32)((packed >> 16) << 20) >> 16);
-        func_02008354(compact, raw0);
-        ActorMotionAreaFollower_Update(b + 0x2fbc, compact);
-        func_020086f8(full0, self);
-        GamePhaseState_ApplyPlacementState(b + 0x24, full0);
-        VecFx32Object_Destroy(full0);
+        RectS16_Assign(&compact, &primaryBounds);
+        ActorMotionAreaFollower_Update(b + 0x2fbc, &compact);
+        GamePhaseRuntime_BuildPrimaryTransform(&placement, self);
+        GamePhaseState_ApplyPlacementState(b + 0x24, &placement);
+        VecFx32Object_Destroy(&placement);
     } else if (actorIndex == 1) {
         orientation = (*(u32 *)(*(u8 **)(b + 0x30bc) + 0x40) << 12) >> 30;
         if (orientation == 3) {
-            VecFx32Object_InitComponents(offset, 0, -(DisplayController_GetSubScreenVerticalOffset() << 12), 0);
-            func_020086f8(full1, self);
-            func_02008378(full2, full1, offset);
-            GamePhaseAreaScene_ApplyPlacementState(*(void **)(b + 0x2fb8), full2);
-            VecFx32Object_Destroy(full2);
-            VecFx32Object_Destroy(full1);
-            VecFx32Object_Destroy(offset);
+            VecFx32Object_InitComponents(&offset, 0, -(DisplayController_GetSubScreenVerticalOffset() << 12), 0);
+            GamePhaseRuntime_BuildPrimaryTransform(&basePlacement, self);
+            VecFx32Object_InitSum(&shiftedPlacement, &basePlacement, &offset);
+            GamePhaseAreaScene_ApplyPlacementState(*(void **)(b + 0x2fb8), &shiftedPlacement);
+            VecFx32Object_Destroy(&shiftedPlacement);
+            VecFx32Object_Destroy(&basePlacement);
+            VecFx32Object_Destroy(&offset);
         } else {
             if (orientation == 0) {
                 actor = *(u8 **)(b + 0x2fb8);
-                func_020083b0(raw1, 0, 0,
+                RectS16_InitComponents(&secondaryBounds, 0, 0,
                               (s16)GamePhaseAreaScene_GetSubRendererLowCoordinate(actor),
                               (s16)GamePhaseAreaScene_GetSubRendererHighCoordinate(*(void **)(b + 0x2fb8)));
-                func_02008354(compact, raw1);
+                RectS16_Assign(&compact, &secondaryBounds);
             } else {
-                func_020083b0(raw1, 0, 0, 0, 0);
-                func_02008354(compact, raw1);
+                RectS16_InitComponents(&secondaryBounds, 0, 0, 0, 0);
+                RectS16_Assign(&compact, &secondaryBounds);
             }
-            ActorMotionGameWork_Update(b + 0x3044, compact);
+            ActorMotionGameWork_Update(b + 0x3044, &compact);
             if (*(void **)(b + 0x30fc) != 0 &&
                 *(void **)(b + 0x2fb8) != 0) {
-                GamePhaseRuntime_BuildSecondaryTransform(full0, self);
-                GamePhaseAreaScene_ApplyPlacementState(*(void **)(b + 0x2fb8), full0);
-                VecFx32Object_Destroy(full0);
+                GamePhaseRuntime_BuildSecondaryTransform(&placement, self);
+                GamePhaseAreaScene_ApplyPlacementState(*(void **)(b + 0x2fb8), &placement);
+                VecFx32Object_Destroy(&placement);
             }
         }
     }

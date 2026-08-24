@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020086f8(void *state, GamePhaseRuntime *self);
+extern void GamePhaseRuntime_BuildPrimaryTransform(void *state, GamePhaseRuntime *self);
 extern void GamePhaseRuntime_BuildSecondaryTransform(void *state, GamePhaseRuntime *self);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *state);
 extern void VecFx32Object_Destroy(void *state);
@@ -32,7 +32,7 @@ void GamePhaseRuntime_FinalizeActorCollections(GamePhaseRuntime *self, s32 value
     (void)value;
 
     if (mode == 1 || mode == 3) {
-        func_020086f8(primaryState, self);
+        GamePhaseRuntime_BuildPrimaryTransform(primaryState, self);
         actor = b + 0x28;
         ActorCollection_DispatchEventToActors(actor, primaryState);
         VecFx32Object_Destroy(primaryState);

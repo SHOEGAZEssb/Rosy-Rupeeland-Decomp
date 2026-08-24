@@ -35,7 +35,7 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern const u8 *GamePhaseGraphicsMetadata_GetByIndex(s32);
 extern void *ActorMotionAreaFollower_GetPosition(void *);
 extern void VecFx32Object_InitCopy(void *, const void *);
-extern void func_02008740(void *, const void *);
+extern void ActorMotionState_BuildOscillationOffset(void *, const void *);
 extern void VecFx32Object_Add(void *, const void *);
 extern void VecFx32Object_Destroy(void *);
 extern void BgScroll_SetMainBg1(s32, s32);
@@ -83,7 +83,7 @@ s32 func_020285a4(MainBg1FollowPresentation *self)
     VecFx32Object_InitCopy(sampled, ActorMotionAreaFollower_GetPosition(self->target_08));
     sampled[1] = (sampled[1] + (sampled[1] < 0)) / 2;
     sampled[2] = (sampled[2] + (sampled[2] < 0)) / 2;
-    func_02008740(transformed, self->target_08 + 0x44);
+    ActorMotionState_BuildOscillationOffset(transformed, self->target_08 + 0x44);
     VecFx32Object_Add(sampled, transformed);
     VecFx32Object_Destroy(transformed);
     BgScroll_SetMainBg1(sampled[1] >> 12, sampled[2] >> 12);

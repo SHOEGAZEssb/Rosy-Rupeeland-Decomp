@@ -18,7 +18,7 @@ extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 maximum);
 extern void VecFx32Object_Destroy(void *vector);
 extern void VecFx32Object_DivideByScalar(void *output, const void *direction,
                                          s32 divisor);
-extern void func_02008378(void *output, const void *left, const void *right);
+extern void VecFx32Object_InitSum(void *output, const void *left, const void *right);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
 extern void Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(void *effect, s32 kind, s32 x, s32 y, s32 extra);
 extern s32 ActorDerivedType1_IsTargetStateEligible(void *target);
@@ -135,7 +135,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
 
         VecFx32_Subtract(separation, target + 0x18, actor + 0x18);
         VecFx32Object_DivideByScalar(normalized, separation, 0x2000);
-        func_02008378(effectPosition, actor + 0x18, normalized);
+        VecFx32Object_InitSum(effectPosition, actor + 0x18, normalized);
         VecFx32Object_Destroy(normalized);
         VecFx32Object_Destroy(separation);
         effectPosition[2] += 0x18000 - effectPosition[3];

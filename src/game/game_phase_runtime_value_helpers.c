@@ -1,26 +1,26 @@
 #include "tingle/game_phase_runtime.h"
+#include "tingle/touch_region.h"
+#include "tingle/vec_fx32.h"
 
 /* Compact placement-value helpers used by actor synchronization. */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void VecFx32Object_Init(void *value);
-extern void func_020adff0(const void *left, const void *right,
-                          void *destination);
+extern void func_020adff0(const VecFx32Value *left,
+                          const VecFx32Value *right,
+                          VecFx32Value *destination);
 #ifdef __cplusplus
 }
 #endif
 
 /* Copy four signed halfwords from source to destination; changes no other state. */
-void func_02008354(void *destination, const void *source)
+void RectS16_Assign(RectS16 *destination, const RectS16 *source)
 {
-    s16 *dst = (s16 *)destination;
-    const s16 *src = (const s16 *)source;
-    dst[0] = src[0];
-    dst[1] = src[1];
-    dst[2] = src[2];
-    dst[3] = src[3];
+    destination->left = source->left;
+    destination->top = source->top;
+    destination->right = source->right;
+    destination->bottom = source->bottom;
 }
 
 /*
@@ -28,22 +28,24 @@ void func_02008354(void *destination, const void *source)
  * offset four of left and right. Null inputs remain null. Returns no value;
  * initialization and the external vector addition mutate destination.
  */
-void func_02008378(void *destination, const void *left, const void *right)
+void VecFx32Object_InitSum(void *destination, const void *left, const void *right)
 {
-    VecFx32Object_Init(destination);
+    VecFx32Object_Init((VecFx32Object *)destination);
     if (right != 0)
         right = (const u8 *)right + 4;
     if (left != 0)
         left = (const u8 *)left + 4;
-    func_020adff0(left, right, (u8 *)destination + 4);
+    func_020adff0((const VecFx32Value *)left,
+                  (const VecFx32Value *)right,
+                  (VecFx32Value *)((u8 *)destination + 4));
 }
 
 /* Store four inputs as truncated signed halfwords; returns no value. */
-void func_020083b0(void *destination, s32 a, s32 b, s32 c, s16 d)
+void RectS16_InitComponents(RectS16 *destination, s32 left, s32 top,
+                            s32 right, s16 bottom)
 {
-    s16 *dst = (s16 *)destination;
-    dst[0] = (s16)a;
-    dst[1] = (s16)b;
-    dst[2] = (s16)c;
-    dst[3] = (s16)d;
+    destination->left = (s16)left;
+    destination->top = (s16)top;
+    destination->right = (s16)right;
+    destination->bottom = bottom;
 }

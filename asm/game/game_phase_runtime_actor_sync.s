@@ -4,10 +4,10 @@
 .extern DisplayController_GetSubScreenVerticalOffset
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
-.extern func_02008354
-.extern func_02008378
-.extern func_020083b0
-.extern func_020086f8
+.extern RectS16_Assign
+.extern VecFx32Object_InitSum
+.extern RectS16_InitComponents
+.extern GamePhaseRuntime_BuildPrimaryTransform
 .extern GamePhaseRuntime_BuildSecondaryTransform
 .extern ActorMotionGameWork_Update
 .extern ActorMotionAreaFollower_Update
@@ -48,17 +48,17 @@ L_02008168:
     mov r3, r3, lsr #0x10
     mov r3, r3, lsl #0x14
     mov r3, r3, asr #0x10
-    bl func_020083b0
+    bl RectS16_InitComponents
     add r0, sp, #0x1c
     add r1, sp, #0x14
-    bl func_02008354
+    bl RectS16_Assign
     add r0, r4, #0x3bc
     add r1, sp, #0x1c
     add r0, r0, #0x2c00
     bl ActorMotionAreaFollower_Update
     add r0, sp, #0x54
     mov r1, r4
-    bl func_020086f8
+    bl GamePhaseRuntime_BuildPrimaryTransform
     add r1, sp, #0x54
     add r0, r4, #0x24
     bl GamePhaseState_ApplyPlacementState
@@ -82,11 +82,11 @@ L_020081fc:
     bl VecFx32Object_InitComponents
     add r0, sp, #0x44
     mov r1, r4
-    bl func_020086f8
+    bl GamePhaseRuntime_BuildPrimaryTransform
     add r0, sp, #0x34
     add r1, sp, #0x44
     add r2, sp, #0x64
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, r4, #0x2000
     ldr r0, [r0, #0xfb8]
     add r1, sp, #0x34
@@ -116,10 +116,10 @@ L_0200827c:
     mov r2, r1
     mov r3, r3, asr #0x10
     str ip, [sp, #0x0]
-    bl func_020083b0
+    bl RectS16_InitComponents
     add r0, sp, #0x1c
     add r1, sp, #0xc
-    bl func_02008354
+    bl RectS16_Assign
     b L_020082f8
 L_020082d4:
     mov r1, #0x0
@@ -127,10 +127,10 @@ L_020082d4:
     mov r2, r1
     mov r3, r1
     str r1, [sp, #0x0]
-    bl func_020083b0
+    bl RectS16_InitComponents
     add r0, sp, #0x1c
     add r1, sp, #0x4
-    bl func_02008354
+    bl RectS16_Assign
 L_020082f8:
     add r0, r4, #0x44
     add r1, sp, #0x1c

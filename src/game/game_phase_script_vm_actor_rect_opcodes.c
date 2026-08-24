@@ -15,7 +15,7 @@ s32 GamePhaseActorScriptVm_SetActorRectangle(GamePhaseActorScriptVm *self)
     bounds.right = (s16)GamePhaseScriptVm_Pop(&self->base);
     bounds.top = (s16)GamePhaseScriptVm_Pop(&self->base);
     bounds.left = (s16)GamePhaseScriptVm_Pop(&self->base);
-    func_02008354((u8 *)self->actor + 0x68, &bounds);
+    RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }
 
@@ -26,7 +26,7 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleLeft(GamePhaseActorScriptVm *self
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.left -= amount;
-    func_02008354((u8 *)self->actor + 0x68, &bounds);
+    RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }
 
@@ -37,7 +37,7 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleTop(GamePhaseActorScriptVm *self)
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.top -= amount;
-    func_02008354((u8 *)self->actor + 0x68, &bounds);
+    RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }
 
@@ -48,7 +48,7 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleRight(GamePhaseActorScriptVm *sel
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.right += amount;
-    func_02008354((u8 *)self->actor + 0x68, &bounds);
+    RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }
 
@@ -59,6 +59,6 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleBottom(GamePhaseActorScriptVm *se
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
     bounds.bottom += amount;
-    func_02008354((u8 *)self->actor + 0x68, &bounds);
+    RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }

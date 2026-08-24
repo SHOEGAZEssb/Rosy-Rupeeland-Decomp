@@ -13,8 +13,8 @@ typedef struct ActorMotionTriple {
 typedef struct ActorMotionState {
     ActorMotionTriple first;
     ActorMotionTriple second;
-    s32 field_18;
-    s32 field_1c;
+    s32 sampledOffsetX;
+    s32 sampledOffsetY;
 } ActorMotionState;
 
 typedef struct ActorMotion {

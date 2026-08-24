@@ -15,7 +15,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern FieldEffect_Init
 .extern FieldEffect_DestroyBase
 .extern RisingSpriteMotionController_Init
@@ -61,7 +61,7 @@ RisingSpriteSwarmPresentation_SpawnController: ; 0x02020c38
     add r2, sp, #0x18
     add r1, r4, #0x38
     mov r5, #0x1
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r1, sp, #0x8
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x48]

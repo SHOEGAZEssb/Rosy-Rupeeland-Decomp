@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Subtract
 .extern VecFx32_Subtract
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorDerivedType1_IsTargetStateEligible
 .extern VecFx32Object_DivideByScalar
@@ -192,7 +192,7 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add r0, sp, #0x24
     add r2, sp, #0x4
     add r1, r7, #0x18
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r0, sp, #0x4
     bl VecFx32Object_Destroy
     add r0, sp, #0x14

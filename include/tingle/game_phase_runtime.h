@@ -3,6 +3,8 @@
 
 #include "tingle/types.h"
 
+typedef struct RectS16 RectS16;
+
 typedef struct GamePhaseRuntime {
     const void *vtable;
     s32 field_04;
@@ -51,16 +53,17 @@ void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void
 void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
 void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_SynchronizeActorPlacement(GamePhaseRuntime *self, s32 actorIndex);
-void func_02008354(void *destination, const void *source);
-void func_02008378(void *destination, const void *left, const void *right);
-void func_020083b0(void *destination, s32 a, s32 b, s32 c, s16 d);
+void RectS16_Assign(RectS16 *destination, const RectS16 *source);
+void VecFx32Object_InitSum(void *destination, const void *left, const void *right);
+void RectS16_InitComponents(RectS16 *destination, s32 left, s32 top,
+                            s32 right, s16 bottom);
 s32 GamePhaseRuntime_DispatchActorQueryRequest(GamePhaseRuntime *self);
 s32 GamePhaseRuntime_RequestPrimaryWarp(GamePhaseRuntime *self, s32 x, s32 y);
 s32 func_02008514(GamePhaseRuntime *self, s32 x, s32 y);
 void GamePhaseRuntime_ApplyScreenMode(GamePhaseRuntime *self, s32 mode, s32 use3dMode);
 void func_0200866c(GamePhaseRuntime *self);
-void func_020086f8(void *destination, GamePhaseRuntime *self);
-void func_02008740(void *destination, const void *runtimeFields);
+void GamePhaseRuntime_BuildPrimaryTransform(void *destination, GamePhaseRuntime *self);
+void ActorMotionState_BuildOscillationOffset(void *destination, const void *runtimeFields);
 void GamePhaseRuntime_BuildSecondaryTransform(void *destination, GamePhaseRuntime *self);
 s32 GamePhaseRuntime_SetPlacementMode(GamePhaseRuntime *self, s32 mode, s32 synchronize);
 s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self);

@@ -33,7 +33,7 @@ extern void SubBgExtendedPaletteBuffer_Init(void *);
 extern void SubBgExtendedPaletteBuffer_Destroy(void *);
 extern void ActorRuntimeCollection_Init(void *);
 extern void ActorRuntimeCollection_Destroy(void *);
-extern void func_020083b0(void *, s32, s32, s32, s32);
+extern void RectS16_InitComponents(void *, s32, s32, s32, s32);
 extern void NoOpDestructor(void *);
 extern void func_02092364(void *);
 extern void func_020923a0(void *);
@@ -203,9 +203,9 @@ void __sinit_020c1490(void)
  */
 void __sinit_020c14bc(void)
 {
-    func_020083b0(gDefaultGamePhaseRegion, 0, 0, 0x400, 0x300);
+    RectS16_InitComponents(gDefaultGamePhaseRegion, 0, 0, 0x400, 0x300);
     __register_global_object(gDefaultGamePhaseRegion, NoOpDestructor, data_021055ac);
-    func_020083b0(data_021055c0, 0, 0, 0, 0);
+    RectS16_InitComponents(data_021055c0, 0, 0, 0, 0);
     __register_global_object(data_021055c0, NoOpDestructor, data_021055a0);
 }
 

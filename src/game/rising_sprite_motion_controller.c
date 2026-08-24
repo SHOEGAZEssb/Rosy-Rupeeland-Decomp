@@ -33,7 +33,7 @@ extern "C" {
 #endif
 extern u8 gSystemState[];
 extern void ActorMotionTriple_Clear(void *state);
-extern void func_02008378(VecFx32Object *destination,
+extern void VecFx32Object_InitSum(VecFx32Object *destination,
                           const VecFx32Object *left,
                           const VecFx32Object *right);
 extern void ActorMotionOscillation_InitInterval(void *value, s32 first, s32 second, s32 third);
@@ -91,7 +91,7 @@ RisingSpriteMotionController *RisingSpriteMotionController_Init(
     self->offset5c = 0;
     self->systemTime60 = *(s32 *)(gSystemState + 0x64);
     VecFx32Object_InitComponents(&value60, 0, 0, 0x46000);
-    func_02008378(&value50, path, &value60);
+    VecFx32Object_InitSum(&value50, path, &value60);
     VecFx32Triple_InitWithValues(&pathValue20, path, &value50, path);
     VecFx32Triple_Assign(&self->path1c, &pathValue20);
     VecFx32Triple_Destroy(&pathValue20);

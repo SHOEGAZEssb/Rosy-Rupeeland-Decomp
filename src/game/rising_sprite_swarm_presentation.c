@@ -59,7 +59,7 @@ extern void VecFx32Object_InitCopy(PresentationValue *destination, const void *s
 extern void VecFx32Object_Destroy(PresentationValue *value);
 extern void VecFx32Object_Add(PresentationValue *destination,
                           PresentationValue *source);
-extern void func_02008378(PresentationValue *destination,
+extern void VecFx32Object_InitSum(PresentationValue *destination,
                           const PresentationValue *left,
                           const PresentationValue *right);
 extern void AnimationResourceState_InitEmbedded(void *state);
@@ -318,7 +318,7 @@ void RisingSpriteSwarmPresentation_SpawnController(RisingSpriteSwarmPresentation
 
     if (controller != 0) {
         VecFx32Object_InitComponents(&base, 0, 0, 0x20000);
-        func_02008378(&path, &self->track38, &base);
+        VecFx32Object_InitSum(&path, &self->track38, &base);
         RisingSpriteMotionController_Init(controller, self->resource24, self->resource28,
                       self->spriteConfig2c, &path,
                       self->nextPathArgument48);

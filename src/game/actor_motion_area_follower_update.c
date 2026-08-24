@@ -20,7 +20,7 @@ extern const s16 *GamePhaseRegionTable_GetRegion(void *context, s32 area);
 extern void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s32 area,
                           const s16 *bounds);
 extern s32 Type7Actor_GetStateCode(void *actor);
-extern void func_02008740(VecFx32Object *result,
+extern void ActorMotionState_BuildOscillationOffset(VecFx32Object *result,
                           const ActorMotionState *state);
 extern s32 func_020adcac(const VecFx32Value *left,
                          const VecFx32Value *right);
@@ -134,12 +134,12 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
     }
     VecFx32Object_Assign(&motion->position, &self->offset);
 
-    func_02008740(&oscillation, &motion->state);
+    ActorMotionState_BuildOscillationOffset(&oscillation, &motion->state);
     *(s16 *)((u8 *)gGameWork + 0x22e) =
         (s16)(((motion->position.value.x + oscillation.value.x) >> 12) +
               0x80);
     VecFx32Object_Destroy(&oscillation);
-    func_02008740(&oscillation, &motion->state);
+    ActorMotionState_BuildOscillationOffset(&oscillation, &motion->state);
     *(s16 *)((u8 *)gGameWork + 0x230) =
         (s16)(((motion->position.value.y + oscillation.value.y) >> 12) +
               0x60);

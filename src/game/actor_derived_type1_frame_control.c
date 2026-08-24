@@ -28,7 +28,7 @@ extern void Sound_Play(void *context, u32 sound, u32 variant);
 extern void Type1Actor_TryEnterFailureState(void *actor);
 extern u32 genrand_int32(void);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
-extern void func_02008378(void *output, const void *left, const void *right);
+extern void VecFx32Object_InitSum(void *output, const void *left, const void *right);
 extern void VecFx32Object_Destroy(void *vector);
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *manager);
@@ -160,7 +160,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             void *effect;
             VecFx32Object_InitComponents(offset, (randomX << 12) - 0x6000, 0,
                           (randomY << 12) + 0x1e000);
-            func_02008378(position, actor + 0x18, offset);
+            VecFx32Object_InitSum(position, actor + 0x18, offset);
             VecFx32Object_Destroy(offset);
             allocation = Heap_Alloc(0x14, data_020df4a4, 4, &gHeapContext);
             if (allocation != 0) {

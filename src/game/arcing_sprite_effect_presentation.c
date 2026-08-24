@@ -22,7 +22,7 @@ extern const s16 data_020c9670[];extern u8 data_02105610;extern void *gSoundCont
 extern void *AnimationResource_Init(void *,s32,s32,s32);extern u8 *GraphicsSpriteState_Create(void *,void *,s32,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetDepthOrderedWorldPosition(void *,s32,s32,s32,s32);extern void VecFx32Object_Init(void *);
 extern void VecFx32Object_Destroy(void *);extern void VecFx32Triple_Destroy(void *);extern void VecFx32Bezier_Evaluate3D(void *,void *,s32);
-extern void VecFx32Triple_InitWithValues(void *,const void *,const void *,const void *);extern void func_02008378(void *,const void *,const void *);
+extern void VecFx32Triple_InitWithValues(void *,const void *,const void *,const void *);extern void VecFx32Object_InitSum(void *,const void *,const void *);
 extern void VecFx32Object_ScaleRounded(void *,const void *,s32);extern s32 func_020befec(s32,s32);
 extern void GraphicsSpriteGroup_ReleaseState(void *,void *);extern void GraphicsSpriteGroup_ReplaceStateResources(void *,s32,s32,s32,s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *,s32);extern void Sound_Play(void *,s32,s32);
@@ -51,7 +51,7 @@ ArcingSpriteEffectPresentation *func_02023434(
     if(self->secondDescriptor0c)AnimationResource_Init(self->secondDescriptor0c,0x1625,0x1626,0x1627);
     self->sprite10=GraphicsSpriteState_Create(spriteOwner,self->firstDescriptor08,0,0,0,10,0);
     VecFx32Object_ScaleRounded(&a,first,0x4cd);VecFx32Object_ScaleRounded(&b,second,0xb33);
-    func_02008378(&combined,&a,&b);VecFx32Object_Destroy(&b);VecFx32Object_Destroy(&a);
+    VecFx32Object_InitSum(&combined,&a,&b);VecFx32Object_Destroy(&b);VecFx32Object_Destroy(&a);
     self->path1c=(u8 *)Heap_Alloc(0x30,gArcingSpriteEffectAllocationTag,4,&gHeapContext);
     if(self->path1c)VecFx32Triple_InitWithValues(self->path1c,first,second,&combined);
     VecFx32Object_Destroy(&combined);return self;

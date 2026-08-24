@@ -2,7 +2,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern ActorRuntimeTriple_Assign
 .text
     .global TrackedResourceActorType24_SetupFromRecord
@@ -20,7 +20,7 @@ TrackedResourceActorType24_SetupFromRecord:
     add r0, sp, #0x0
     add r2, sp, #0x10
     mov r1, r5
-    bl func_02008378
+    bl VecFx32Object_InitSum
     add r1, sp, #0x0
     add r0, r4, #0x18
     bl VecFx32Object_Assign

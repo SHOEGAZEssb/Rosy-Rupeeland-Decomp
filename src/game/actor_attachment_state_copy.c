@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern s32 DisplayController_GetSubScreenVerticalOffset(void);
-extern void func_020083b0(void *, s32, s32, s32, s32);
+extern void RectS16_InitComponents(void *, s32, s32, s32, s32);
 extern s32 GamePhaseRegion_ContainsPoint(const void *, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteState_SetFrameIndex(void *, s32);
@@ -47,7 +47,7 @@ void ActorAttachment_CopyTouchState(void *self, const void *pointPointer)
     *(s16 *)(destination + 0x2c) = (s16)*(s32 *)(point + 0x04);
     *(s16 *)(destination + 0x2e) =
         (s16)(*(s32 *)(point + 0x08) + verticalOffset);
-    func_020083b0(rectangle, 0, 0, 0x100, 0xc0);
+    RectS16_InitComponents(rectangle, 0, 0, 0x100, 0xc0);
     rectangle[0] -= *(s16 *)(actor + 0x6c);
     rectangle[1] -= *(s16 *)(actor + 0x6e);
     rectangle[2] -= *(s16 *)(actor + 0x68);

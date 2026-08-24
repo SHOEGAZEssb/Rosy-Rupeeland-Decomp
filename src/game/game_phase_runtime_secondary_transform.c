@@ -1,4 +1,5 @@
 #include "tingle/game_phase_runtime.h"
+#include "tingle/vec_fx32.h"
 
 /*
  * Build the optional actor transform for four recovered placement modes.
@@ -8,14 +9,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void VecFx32Object_Init(void *value);
 extern s32 GamePhaseRuntime_GetActiveAreaPlacementVariant(GamePhaseRuntime *self);
-extern void VecFx32Object_InitComponents(void *value, s32 x, s32 y, s32 z);
 extern void *ActorMotion_GetPosition(void *object);
-extern void func_02008378(void *destination, const void *left,
+extern void VecFx32Object_InitSum(void *destination, const void *left,
                           const void *right);
-extern void VecFx32Object_Assign(void *destination, const void *source);
-extern void VecFx32Object_Destroy(void *value);
 extern void OS_Halt(void);
 #ifdef __cplusplus
 }
@@ -32,45 +29,45 @@ extern void OS_Halt(void);
 void GamePhaseRuntime_BuildSecondaryTransform(void *destination, GamePhaseRuntime *self)
 {
     u8 *b = (u8 *)self;
-    u8 runtimeOffset[16];
-    u8 mode3Offset[16];
-    u8 combined[16];
-    u8 mode1Offset[16];
-    u8 base[16];
+    VecFx32Object runtimeOffset;
+    VecFx32Object mode3Offset;
+    VecFx32Object combined;
+    VecFx32Object mode1Offset;
+    VecFx32Object base;
     s32 variant;
 
-    VecFx32Object_Init(base);
+    VecFx32Object_Init(&base);
     switch (*(u32 *)(b + 0x30fc)) {
     case 0:
         break;
     case 1:
         variant = GamePhaseRuntime_GetActiveAreaPlacementVariant(self);
         if (variant == 0) {
-            VecFx32Object_InitComponents(mode1Offset, -0x10000, -0x28000, 0);
-            func_02008378(combined, ActorMotion_GetPosition(b + 0x3044), mode1Offset);
-            VecFx32Object_Assign(base, combined);
-            VecFx32Object_Destroy(combined);
-            VecFx32Object_Destroy(mode1Offset);
+            VecFx32Object_InitComponents(&mode1Offset, -0x10000, -0x28000, 0);
+            VecFx32Object_InitSum(&combined, ActorMotion_GetPosition(b + 0x3044), &mode1Offset);
+            VecFx32Object_Assign(&base, &combined);
+            VecFx32Object_Destroy(&combined);
+            VecFx32Object_Destroy(&mode1Offset);
         } else if (variant == 1 || variant == 2) {
-            VecFx32Object_Assign(base, ActorMotion_GetPosition(b + 0x3044));
+            VecFx32Object_Assign(&base, ActorMotion_GetPosition(b + 0x3044));
         } else {
             OS_Halt();
         }
         break;
     case 2:
-        VecFx32Object_Assign(base, ActorMotion_GetPosition(b + 0x3044));
+        VecFx32Object_Assign(&base, ActorMotion_GetPosition(b + 0x3044));
         break;
     case 3:
-        VecFx32Object_InitComponents(mode3Offset, -0x10000, -0x30000, 0);
-        VecFx32Object_Assign(base, mode3Offset);
-        VecFx32Object_Destroy(mode3Offset);
+        VecFx32Object_InitComponents(&mode3Offset, -0x10000, -0x30000, 0);
+        VecFx32Object_Assign(&base, &mode3Offset);
+        VecFx32Object_Destroy(&mode3Offset);
         break;
     default:
         OS_Halt();
         break;
     }
-    func_02008740(runtimeOffset, b + 0x3088);
-    func_02008378(destination, base, runtimeOffset);
-    VecFx32Object_Destroy(runtimeOffset);
-    VecFx32Object_Destroy(base);
+    ActorMotionState_BuildOscillationOffset(&runtimeOffset, b + 0x3088);
+    VecFx32Object_InitSum(destination, &base, &runtimeOffset);
+    VecFx32Object_Destroy(&runtimeOffset);
+    VecFx32Object_Destroy(&base);
 }

@@ -9,7 +9,7 @@
 .extern OwnedPointerList_Init
 .extern PackedTimerArray_Init
 .extern DisplayBrightnessPair_Init
-.extern func_020083b0
+.extern RectS16_InitComponents
 .extern ActorRuntimeCollection_Init
 .extern func_02059a48
 .extern func_020645d8
@@ -241,7 +241,7 @@ __sinit_020c14bc: ; 0x020c14bc
     mov r2, r1
     mov r3, #0x400
     str ip, [sp, #0x0]
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, .L_020c1518
     ldr r1, .L_020c151c
     ldr r2, .L_020c1520
@@ -251,7 +251,7 @@ __sinit_020c14bc: ; 0x020c14bc
     mov r2, r1
     mov r3, r1
     str r1, [sp, #0x0]
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldr r0, .L_020c1524
     ldr r1, .L_020c151c
     ldr r2, .L_020c1528

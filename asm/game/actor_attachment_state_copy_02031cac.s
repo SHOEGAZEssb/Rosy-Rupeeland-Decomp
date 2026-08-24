@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_attachment_state_copy.c.
 .text
 .extern DisplayController_GetSubScreenVerticalOffset
-.extern func_020083b0
+.extern RectS16_InitComponents
 .extern GamePhaseRegion_ContainsPoint
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteState_SetFrameIndex
@@ -29,7 +29,7 @@ ActorAttachment_CopyTouchState: ; 0x02031cac
     add r0, sp, #0x4
     mov r2, r1
     mov r3, #0x100
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldrsh r1, [sp, #0x4]
     ldrsh r0, [r5, #0x6c]
     ldrsh r3, [sp, #0x6]

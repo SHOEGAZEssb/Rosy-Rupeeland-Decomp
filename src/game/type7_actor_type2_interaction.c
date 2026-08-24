@@ -18,7 +18,7 @@ extern s32 func_020ae024(s32 y, s32 x);
 extern void Fx32Vector2_LimitMagnitude(s32 *x, s32 *y, s32 limit);
 extern void VecFx32Object_DivideByScalar(void *output, const void *input,
                                          s32 divisor);
-extern void func_02008378(void *output, const void *first, const void *second);
+extern void VecFx32Object_InitSum(void *output, const void *first, const void *second);
 /*
  * The extra arguments are ignored by the one-argument accessor but preserve
  * the retail caller's r1/r2 scheduling in the exact ARM build.
@@ -124,7 +124,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
 
     VecFx32_Subtract(displacement, other + 0x18, actor + 0x18);
     VecFx32Object_DivideByScalar(scaled, displacement, 0x2000);
-    func_02008378(effectTransform, actor + 0x18, scaled);
+    VecFx32Object_InitSum(effectTransform, actor + 0x18, scaled);
     VecFx32Object_Destroy(scaled);
     VecFx32Object_Destroy(displacement);
     {

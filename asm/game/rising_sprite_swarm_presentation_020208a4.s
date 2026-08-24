@@ -15,7 +15,7 @@
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
-.extern func_02008378
+.extern VecFx32Object_InitSum
 .extern FieldEffect_Init
 .extern FieldEffect_DestroyBase
 .extern RisingSpriteMotionController_Init

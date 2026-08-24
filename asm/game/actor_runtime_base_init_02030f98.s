@@ -6,7 +6,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Assign
 .extern VecFx32Stepper_Init
-.extern func_020083b0
+.extern RectS16_InitComponents
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseActorScriptVm_Init
 .extern ActorBaseGeometry_Init
@@ -37,14 +37,14 @@ ActorRuntimeBase_Init: ; 0x02030f98
     ldrsb r1, [r4, #0x5c]
     ldrsb r2, [r4, #0x5d]
     ldrsb r3, [r4, #0x5e]
-    bl func_020083b0
+    bl RectS16_InitComponents
     ldrsh r1, [r4, #0x20]
     add r0, r5, #0x68
     str r1, [sp, #0x0]
     ldrsh r1, [r4, #0x1a]
     ldrsh r2, [r4, #0x1c]
     ldrsh r3, [r4, #0x1e]
-    bl func_020083b0
+    bl RectS16_InitComponents
     add r0, r5, #0x78
     bl VecFx32Object_Init
     mov r1, #0x0

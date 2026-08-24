@@ -14,7 +14,7 @@ extern void AuxiliaryInteraction_Destroy(void *resource);
 extern void GameWork_ClearFlag(void *work, u32 flag);
 extern void ActorMotionJitter_EnsureMinimum(void *manager, s32 first, s32 second);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
-extern void func_02008378(void *output, const void *left, const void *right);
+extern void VecFx32Object_InitSum(void *output, const void *left, const void *right);
 extern void VecFx32Object_Destroy(void *vector);
 extern void *AuxiliaryTimedSpritePresentation_Init(void *allocation, ...);
 #ifdef __cplusplus
@@ -54,7 +54,7 @@ void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *self)
         actor[0x2a0] = 8;
         ActorMotionJitter_EnsureMinimum(gGamePhaseRuntime + 0x2fbc, 0x1e, 4);
         VecFx32Object_InitComponents(offset, 0, 0, 0x24000);
-        func_02008378(position, actor + 0x18, offset);
+        VecFx32Object_InitSum(position, actor + 0x18, offset);
         VecFx32Object_Destroy(offset);
         allocation = Heap_Alloc(0x14, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
