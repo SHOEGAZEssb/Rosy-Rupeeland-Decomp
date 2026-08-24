@@ -1,0 +1,5 @@
+{
+  "func_02017818": "GamePhaseActorScriptVm_SetRetailRecordValue",
+  "func_0207ac84": "RecordCategory_FindSlotById",
+  "func_0207ad90": "RetailRecordCategory_InsertDescriptor"
+}

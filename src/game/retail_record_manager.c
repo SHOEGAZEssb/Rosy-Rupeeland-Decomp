@@ -57,7 +57,6 @@ extern void GameWork_SetFlag(void *work, s32 flag);
 extern s32 RecordSelection_HasAvailableEntry(void *category, s32 bank);
 extern s32 RecordSelection_GetChannelCount(void *category, s32 channel);
 extern void func_0207c460(void *slot, u16 id);
-extern void func_0207ad90(void *category, void *slot);
 
 /* Copy the mutable descriptor fields retained by the manager's ordered list.
  * Both records are borrowed 16-byte slots; identity storage at +0 is retained. */
@@ -404,6 +403,48 @@ void RecordCategory_CompleteTerminalType1Slot(void *category_pointer, void *slot
         RecordSlot_MarkComplete(slot);
         RecordCategory_RemoveById(category_pointer, *(u16 *)record);
     }
+}
+
+/* Find a borrowed category slot by record ID within a caller-selected bank. */
+void *RecordCategory_FindSlotById(void *category_pointer, u32 bank, u16 id)
+{
+    u8 *category = (u8 *)category_pointer;
+    u32 count = *(u32 *)(category + 8 + bank * 4);
+    u8 *slots = *(u8 **)(category + 0x18 + bank * 4);
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *slot = slots + index * 0x10;
+
+        if (*(u16 *)(*(u8 **)(slot + 4)) == id)
+            return slot;
+    }
+    return 0;
+}
+
+/* Copy a borrowed descriptor into its metadata-selected category channel.
+ * Duplicate IDs return null; the destination slot remains category-owned. */
+void *RetailRecordCategory_InsertDescriptor(void *category_pointer,
+                                             const void *descriptor_pointer)
+{
+    u8 *category = (u8 *)category_pointer;
+    const u8 *descriptor = (const u8 *)descriptor_pointer;
+    u8 *record = *(u8 *const *)(descriptor + 4);
+    u16 id = *(u16 *)record;
+    u32 bank = RetailRecord_GetCategoryBank(id);
+    u32 count;
+    u8 *slot;
+
+    if (RecordCategory_FindSlotById(category, bank, id) != 0)
+        return 0;
+    record = RetailRecordDatabase_FindById(data_021f5138, id);
+    if ((*(u32 *)(record + 0x0c) & 0xff) != *(u32 *)(category + 4))
+        OS_Halt();
+    count = *(u32 *)(category + 8 + bank * 4);
+    slot = *(u8 **)(category + 0x18 + bank * 4) + count * 0x10;
+    RecordSlot_CopyMutableState(slot, descriptor);
+    *(u32 *)(category + 8 + bank * 4) = count + 1;
+    return slot;
 }
 
 /* Insert one menu record into a category's original two-bank slot arrays. */
@@ -862,8 +903,8 @@ void RetailRecordManager_InsertRecordById(void *manager_pointer, u16 id)
     func_0207c460(slot, id);
     record = *(u8 **)(slot + 4);
     category_index = record[0x0c];
-    func_0207ad90(*(void **)((u8 *)manager_pointer + category_index * 4),
-                  slot);
+    RetailRecordCategory_InsertDescriptor(
+        *(void **)((u8 *)manager_pointer + category_index * 4), slot);
 }
 
 /* Construct a preallocated 0x670-byte category with two empty 50-slot

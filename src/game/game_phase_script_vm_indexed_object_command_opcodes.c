@@ -8,8 +8,8 @@ extern "C" {
 extern void **data_021f5128;
 extern void RetailRecordCategory_InsertById(void *object, s32 value);
 extern void RecordCategory_RemoveById(void *object, s32 value);
-extern void *RetailRecord_GetCategoryBank(s32 selector);
-extern void *func_0207ac84(void *object, void *resolved, s32 selector);
+extern u32 RetailRecord_GetCategoryBank(u16 id);
+extern void *RecordCategory_FindSlotById(void *category, u32 bank, u16 id);
 extern void RecordDescriptor_SetValue(void *object, s32 value);
 #ifdef __cplusplus
 }
@@ -34,18 +34,18 @@ s32 func_02017750(GamePhaseActorScriptVm *self)
 }
 
 /*
- * Pop a command value, selector, and table index. Resolve the selector through
- * RetailRecord_GetCategoryBank, query the indexed object through func_0207ac84, and if that
- * succeeds apply the command value through RecordDescriptor_SetValue. Return zero.
+ * Pop a value, record ID, and category index. Find the category slot in the
+ * record-selected bank and apply the value when that slot is present.
  */
-s32 func_02017818(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetRetailRecordValue(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 selector = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *object = data_021f5128[index];
-    void *result = func_0207ac84(object, RetailRecord_GetCategoryBank(selector), selector);
-    if (result)
-        RecordDescriptor_SetValue(result, value);
+    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 category_index = (s32)GamePhaseScriptVm_Pop(&self->base);
+    void *category = data_021f5128[category_index];
+    void *slot = RecordCategory_FindSlotById(
+        category, RetailRecord_GetCategoryBank((u16)id), (u16)id);
+    if (slot)
+        RecordDescriptor_SetValue(slot, value);
     return 0;
 }

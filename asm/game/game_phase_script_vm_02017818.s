@@ -2,11 +2,11 @@
 .text
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
-.extern func_0207ac84
+.extern RecordCategory_FindSlotById
 .extern RetailRecord_GetCategoryBank
 .extern RecordDescriptor_SetValue
-.global func_02017818
-func_02017818:
+.global GamePhaseActorScriptVm_SetRetailRecordValue
+GamePhaseActorScriptVm_SetRetailRecordValue:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -24,7 +24,7 @@ func_02017818:
     mov r2, r4
     mov r1, r0
     mov r0, r6
-    bl func_0207ac84
+    bl RecordCategory_FindSlotById
     cmp r0, #0
     beq L_02017870
     mov r1, r5
@@ -33,4 +33,4 @@ L_02017870:
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
 L_02017878: .word data_021f5128
-    .size func_02017818, . - func_02017818
+    .size GamePhaseActorScriptVm_SetRetailRecordValue, . - GamePhaseActorScriptVm_SetRetailRecordValue
