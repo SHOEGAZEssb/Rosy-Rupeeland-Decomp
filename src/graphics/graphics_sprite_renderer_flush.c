@@ -45,7 +45,7 @@ extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *renderer,
  * malformed or over-budget presentation data from handing a partial/null
  * chain to the retail builders; valid submissions retain retail ordering and
  * effects. */
-void func_020745c4(void *renderer_pointer, s32 sort_roots)
+void GraphicsSpriteRenderer_BuildFrame(void *renderer_pointer, s32 sort_roots)
 {
     u8 *renderer = (u8 *)renderer_pointer;
     GraphicsAffineMatrixCache *affineMatrixCache =
@@ -181,7 +181,7 @@ void func_020745c4(void *renderer_pointer, s32 sort_roots)
  * the text character buffer. The queue is empty on return. This routine
  * performs cache maintenance and ordered SDK graphics transfers.
  */
-void func_020748a8(void *renderer_pointer)
+void GraphicsSpriteRenderer_FlushVBlankTransfers(void *renderer_pointer)
 {
     u8 *renderer = (u8 *)renderer_pointer;
     GraphicsTransferQueue *queue =

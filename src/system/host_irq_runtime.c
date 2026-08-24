@@ -11,7 +11,7 @@
 
 extern void func_020b2840(u32 interrupt, void (*handler)(void));
 extern void func_020b273c(u32 interrupt_mask);
-extern void func_020748a8(void *renderer);
+extern void GraphicsSpriteRenderer_FlushVBlankTransfers(void *renderer);
 extern void BgScroll_Flush(void);
 extern void MainBgPaletteBuffer_Flush(void *buffer);
 extern void SubBgPaletteBuffer_Flush(void *buffer);
@@ -45,9 +45,9 @@ void func_01ff80c0(void)
 
     data_027e006c = current_vcount;
     if (data_020f4e14 != NULL)
-        func_020748a8(data_020f4e14);
+        GraphicsSpriteRenderer_FlushVBlankTransfers(data_020f4e14);
     if (gDebugFont != NULL)
-        func_020748a8(gDebugFont);
+        GraphicsSpriteRenderer_FlushVBlankTransfers(gDebugFont);
     if (gSceneManager != NULL && !SceneManager_IsEmpty(gSceneManager)) {
         scene = SceneManager_GetCurrent(gSceneManager);
         if ((scene->flags.raw & 1) != 0)

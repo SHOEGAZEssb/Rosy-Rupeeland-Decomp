@@ -77,7 +77,7 @@ extern void GridEffectActorRegistry_FinalizeDepartingActors(void);
 extern void func_020923a4(void *object);
 extern void RuntimePresentationManager_DisableGraphics3dForActivePhase(
     void *manager);
-extern void func_020745c4(GraphicsSpriteRenderer *renderer, s32 mode);
+extern void GraphicsSpriteRenderer_BuildFrame(GraphicsSpriteRenderer *renderer, s32 mode);
 extern void *func_ov013_021fce2c(void *object);
 extern void *InventoryScene_Init(void *object);
 extern void *func_ov044_0220be60(void *object);
@@ -558,7 +558,7 @@ code_r0x0200d224:
     GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 0);
     GraphicsSpriteGroup_ReleaseResources(ActorCollection_GetSpriteGroup(
         GamePhaseRuntime_GetActorCollection(data_021052fc, 1)));
-    func_020745c4(*UNK_0200e0f0,0);
+    GraphicsSpriteRenderer_BuildFrame(*UNK_0200e0f0,0);
   }
   iVar5 = self->phase;
   if (iVar5 == 1) {
@@ -572,7 +572,7 @@ code_r0x0200d2f0:
     GamePhaseRuntime_SetPlacementMode(data_021052fc, 0, 1);
     GamePhaseAreaScene_SetEnabled(
         GamePhaseRuntime_GetAreaScene(data_021052fc), 0);
-    func_020745c4(*UNK_0200e0fc,0);
+    GraphicsSpriteRenderer_BuildFrame(*UNK_0200e0fc,0);
     GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 0);
   }
   switch(self->phase) {

@@ -62,7 +62,7 @@ extern void GX_DispOn(void);
 extern void OS_WaitVBlankIntr(void);
 extern void DisplayBrightness_UpdateAll(void);
 extern void FrameTaskList_Update(void);
-extern void func_020745c4(void *owner, s32 value);
+extern void GraphicsSpriteRenderer_BuildFrame(void *owner, s32 value);
 
 extern const char data_020d3b80[];
 extern const char data_020d3b88[];
@@ -220,9 +220,9 @@ void TingleRecoveredCanonicalRunFrame(void)
     SceneManager_UpdateCurrent(gSceneManager);
     if (data_020f4e1c != NULL) {
         if (data_020f4e14 != NULL)
-            func_020745c4(data_020f4e14, 1);
+            GraphicsSpriteRenderer_BuildFrame(data_020f4e14, 1);
         if (gDebugFont != NULL)
-            func_020745c4(gDebugFont, 1);
+            GraphicsSpriteRenderer_BuildFrame(gDebugFont, 1);
     }
     SoundContext_Update(gSoundContext);
 }

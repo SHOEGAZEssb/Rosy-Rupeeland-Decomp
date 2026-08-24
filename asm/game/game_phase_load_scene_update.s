@@ -51,7 +51,7 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroup_ReleaseResources
 .extern GraphicsSpriteGroup_PrepareResources
-.extern func_020745c4
+.extern GraphicsSpriteRenderer_BuildFrame
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern SceneInputBase_Update
 .extern func_020923a4
@@ -229,7 +229,7 @@ L_0200d23c:
     ldr r0, L_0200e0f0
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_020745c4
+    bl GraphicsSpriteRenderer_BuildFrame
 L_0200d29c:
     ldr r0, [r5, #0x2c]
     cmp r0, #0x1
@@ -270,7 +270,7 @@ L_0200d2f0:
     ldr r0, L_0200e0fc
     mov r1, #0x0
     ldr r0, [r0, #0x0]
-    bl func_020745c4
+    bl GraphicsSpriteRenderer_BuildFrame
     ldr r0, L_0200e0f4
     mov r1, #0x0
     ldr r0, [r0, #0x0]

@@ -46,6 +46,10 @@ extern "C" {
 
 GraphicsSpriteRenderer *GraphicsSpriteRenderer_Init(GraphicsSpriteRenderer *renderer,
                                       u32 engine, u32 field28, u32 field2c);
+void GraphicsSpriteRenderer_BuildFrame(GraphicsSpriteRenderer *renderer,
+                                       s32 sortRoots);
+void GraphicsSpriteRenderer_FlushVBlankTransfers(
+    GraphicsSpriteRenderer *renderer);
 void GraphicsSpriteRenderer_ConfigureObjectDisplay(
     GraphicsSpriteRenderer *renderer);
 void *GraphicsSpriteRenderer_SetFontResource(GraphicsSpriteRenderer *renderer, void *replacement);
