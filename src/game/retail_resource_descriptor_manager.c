@@ -28,7 +28,7 @@ static u16 ReadU16(const u8 *bytes)
 }
 
 /* Allocate the retail fixed record and pointer pools at 0x02077FB4. */
-void func_02077fb4(u32 count)
+void RetailResourceDescriptorPool_Init(u32 count)
 {
     *(u32 *)(data_021f38d8 + 0) = count;
     *(u32 *)(data_021f38d8 + 8) = count;
@@ -39,10 +39,11 @@ void func_02077fb4(u32 count)
 }
 
 /* Consume one fixed 0x2c-byte descriptor from the retail linear pool. */
-static u8 *AllocateDescriptor(void)
+void *RetailResourceDescriptorPool_AllocateDescriptor(u32 size)
 {
     u8 *result = *(u8 **)(data_021f38d8 + 4);
 
+    (void)size;
     *(u8 **)(data_021f38d8 + 4) = result + 0x2c;
     --*(u32 *)(data_021f38d8 + 8);
     return result;
@@ -60,7 +61,7 @@ void *func_0207829c(u32 size)
 }
 
 /* Consume count pointer slots from the retail linear pointer pool. */
-void *func_02078014(u32 count)
+void *RetailResourceDescriptorPool_AllocatePointerSlots(u32 count)
 {
     void *result = *(void **)(data_021f38d8 + 0x0c);
 
@@ -74,7 +75,7 @@ void func_020782f0(void *group_pointer, u32 slot, s32 value8, u32 actor_id,
                    u32 value6, u32 value7)
 {
     u8 *group = (u8 *)group_pointer;
-    u8 *entry = AllocateDescriptor();
+    u8 *entry = (u8 *)RetailResourceDescriptorPool_AllocateDescriptor(0x2c);
     u8 *runtime = entry + 8;
 
     SelfLinkedSpriteConfig_Init(runtime);
@@ -129,7 +130,7 @@ void *func_02078428(void *manager_pointer)
     }
     if (!CheckedFS_SeekFile(&file, 0x10, 0))
         OS_Halt();
-    func_02077fb4(count);
+    RetailResourceDescriptorPool_Init(count);
     *(u32 *)(data_021f38e8 + 4) = unique_count;
     *(void **)data_021f38e8 =
         Heap_Alloc(unique_count * 8, data_020e6a34, 4, &gHeapContext);
@@ -147,7 +148,7 @@ void *func_02078428(void *manager_pointer)
             group = (u8 *)func_0207829c(8);
             if (group != 0) {
                 *(u32 *)(group + 4) = occurrences[group_index];
-                *(void **)group = func_02078014(occurrences[group_index]);
+                *(void **)group = RetailResourceDescriptorPool_AllocatePointerSlots(occurrences[group_index]);
             }
             *(u8 **)(manager + group_index * 4) = group;
         }
@@ -240,6 +241,5 @@ void func_020783cc(void *manager_pointer)
                   ((*(u32 *)(manager + 0x440) & 1) != 0 ? 100 : 1));
     *(u16 *)(manager + 0x444) = frame;
 }
-
 
 

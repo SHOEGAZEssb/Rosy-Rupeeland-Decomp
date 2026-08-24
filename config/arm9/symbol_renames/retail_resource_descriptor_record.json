@@ -1,0 +1,9 @@
+{
+  "func_02077f90": "RetailResourceDescriptorPool_AllocateDescriptor",
+  "func_02077fb4": "RetailResourceDescriptorPool_Init",
+  "func_02078014": "RetailResourceDescriptorPool_AllocatePointerSlots",
+  "func_0207803c": "RetailResourceDescriptor_Init",
+  "func_0207809c": "RetailResourceDescriptor_Reset",
+  "func_020780c4": "RetailResourceDescriptor_SavePackedState",
+  "func_020780ec": "RetailResourceDescriptor_LoadPackedState"
+}

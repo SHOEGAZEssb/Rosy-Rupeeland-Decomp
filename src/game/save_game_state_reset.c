@@ -14,7 +14,7 @@ extern u8 data_021e9ad0[];
 extern u8 data_021f4020[];
 extern void *RetailRecordCategory_InsertById(void *category, u16 actor_id);
 extern s32 func_02062e70(void *entry, const void *packed);
-extern void func_020780ec(void *entry, const void *packed);
+extern void RetailResourceDescriptor_LoadPackedState(void *entry, const void *packed);
 extern void func_0207c4a4(void *entry, const void *packed);
 extern void RetailSelectionHistoryEntry_Init(void *entry, u16 identifier);
 extern s32 func_0206fa9c(void *entry_slot);
@@ -134,7 +134,7 @@ s32 func_02062e70(void *entry_pointer, const void *packed_pointer)
     return 1;
 }
 
-void func_020780ec(void *entry_pointer, const void *packed_pointer)
+void RetailResourceDescriptor_LoadPackedState(void *entry_pointer, const void *packed_pointer)
 {
     u8 *entry = (u8 *)entry_pointer;
     const u8 *packed = (const u8 *)packed_pointer;
@@ -528,7 +528,7 @@ void func_02078730(void *state_pointer)
         if (collection == 0)
             continue;
         for (item = 0; item < ReadU32(collection, 4); ++item) {
-            func_020780ec((*(u8 ***)(collection + 0))[item],
+            RetailResourceDescriptor_LoadPackedState((*(u8 ***)(collection + 0))[item],
                           work + 0x4f00 + packed_index * 6);
             ++packed_index;
         }
