@@ -10,7 +10,7 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
-.extern func_02079d60
+.extern RuntimeRecord_GetMessageRecord
 .extern RetailTextTable_FindRecordById
 .extern func_02091b98
 .extern func_02091c7c
@@ -31,7 +31,7 @@ func_ov028_021fd8b8:
     cmp r5, #0x0
     beq L_021fd9c0
     mov r0, r5
-    bl func_02079d60
+    bl RuntimeRecord_GetMessageRecord
     mov r1, r0
     ldr r0, [r6, #0x50]
     mov r2, #0x1

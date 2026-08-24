@@ -17,7 +17,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
-extern u32 func_02079d60(const void *);
+extern u32 RuntimeRecord_GetMessageRecord(const void *);
 extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern s32 func_02091b98(void *, s32);
 extern s32 func_02091c7c(void *, s32);
@@ -46,7 +46,7 @@ extern "C" void func_ov028_021fd8b8(void *state, const void *descriptor,
     void *font = FIELD(void *, state, 0);
     if (descriptor != 0) {
         TitleDialog_SetText(FIELD(void *, state, 0x50),
-                      func_02079d60(descriptor), 1);
+                      RuntimeRecord_GetMessageRecord(descriptor), 1);
         TitleDialog_UpdateTextPage(FIELD(void *, state, 0x50), 0);
         GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, state, 0x30));
         GraphicsSpriteRenderer_DrawText(font, (u8 *)descriptor + 0x18,

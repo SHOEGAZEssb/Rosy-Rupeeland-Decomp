@@ -12,6 +12,8 @@
 extern void OS_Halt(void);
 extern void *gGameWork;
 extern void GameWork_SetFlag(void *work, u32 flag);
+extern u8 gLanguageDatabase[];
+extern void *LanguageDatabase_GetRecordById(void *manager, u32 identifier);
 
 /* Return the record whose leading halfword equals key. */
 u8 *RuntimeRecordTable_FindByKey(void *table, u32 key)
@@ -87,4 +89,13 @@ void RuntimeRecordTable_ClearActive(void *table_pointer)
         *(void **)(table + 8 + index * 4) = 0;
     *(u32 *)(table + 0x10c) = 0;
     *(u32 *)(table + 0x110) = 0;
+}
+
+/* Resolve the borrowed language message selected by record halfword +0x0e. */
+void *RuntimeRecord_GetMessageRecord(const void *record_pointer)
+{
+    const u8 *record = (const u8 *)record_pointer;
+
+    return LanguageDatabase_GetRecordById(
+        gLanguageDatabase, *(const u16 *)(record + 0x0e));
 }
