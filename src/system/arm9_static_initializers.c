@@ -52,8 +52,8 @@ extern void func_0206fdd8(void *);
 extern void GraphicsSpriteState_Init(void *);
 extern void GraphicsSpriteState_Destroy(void *);
 extern void GraphicsSpriteState_DestroyGlobalPool(void *);
-extern void func_020787bc(void *);
-extern void func_020787c0(void *);
+extern void RetailResourceDescriptorManager_InitNoOp(void *);
+extern void RetailResourceDescriptorManager_DestroyNoOp(void *);
 extern void func_0207a064(void *);
 extern void func_0207a10c(void *);
 extern void func_0207a13c(void *);
@@ -306,14 +306,16 @@ void __sinit_020c1684(void)
 }
 
 /*
- * No inputs. Construct data_021f38fc and register func_020787c0 with record
- * data_021f38f0. Global lifetime state changes; no value or direct hardware
- * effect occurs.
+ * No inputs. Construct data_021f38fc and register the manager's no-op
+ * destructor with record data_021f38f0. Global lifetime state changes; no value
+ * or direct hardware effect occurs.
  */
 void __sinit_020c16cc(void)
 {
-    func_020787bc(data_021f38fc);
-    __register_global_object(data_021f38fc, func_020787c0, data_021f38f0);
+    RetailResourceDescriptorManager_InitNoOp(data_021f38fc);
+    __register_global_object(data_021f38fc,
+                             RetailResourceDescriptorManager_DestroyNoOp,
+                             data_021f38f0);
 }
 
 /*

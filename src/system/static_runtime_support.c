@@ -71,13 +71,13 @@ void func_0206fd78(void *object)
 }
 
 /* The retail global at 0x021F38FC has an empty constructor. */
-void func_020787bc(void *object)
+void RetailResourceDescriptorManager_InitNoOp(void *object)
 {
     (void)object;
 }
 
 /* The matching destructor is also empty. */
-void func_020787c0(void *object)
+void RetailResourceDescriptorManager_DestroyNoOp(void *object)
 {
     (void)object;
 }

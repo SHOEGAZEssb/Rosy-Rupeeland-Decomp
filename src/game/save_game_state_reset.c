@@ -352,21 +352,30 @@ static void PackCollectionEntry(const u8 *entry, u8 *result,
                               ((u32)ReadU16(entry, 0x0c) << 12)));
 }
 
+/* Reset every populated group in the manager at retail 0x0207865C. */
+void RetailResourceDescriptorManager_ResetAllDescriptors(void *state_pointer)
+{
+    u8 *state = (u8 *)state_pointer;
+    u32 group;
+
+    for (group = 0; group < 0x10f; ++group) {
+        u8 *collection = *(u8 **)(state + group * 4);
+
+        if (collection != 0)
+            RetailResourceDescriptorGroup_ResetDescriptors(collection);
+    }
+}
+
 /* Exact portable behavior of assembly-selected retail 0x02078690. */
-void func_02078690(void *state_pointer, s32 mode)
+void RetailResourceDescriptorManager_SaveState(void *state_pointer, s32 mode)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
     u32 group;
     u32 output = 0;
 
-    if (mode == 1) {
-        for (group = 0; group < 0x10f; ++group) {
-            u8 *collection = *(u8 **)(state + group * 4);
-            if (collection != 0)
-                RetailResourceDescriptorGroup_ResetDescriptors(collection);
-        }
-    }
+    if (mode == 1)
+        RetailResourceDescriptorManager_ResetAllDescriptors(state);
     WriteU16(work, 0x4efc, (u16)*(u32 *)(state + 0x43c));
     for (group = 0; group < 0x10f; ++group) {
         u8 *collection = *(u8 **)(state + group * 4);
@@ -516,7 +525,7 @@ void func_02063a00(void *state_pointer)
 }
 
 /* Exact portable behavior of assembly-selected retail 0x02078730. */
-void func_02078730(void *state_pointer)
+void RetailResourceDescriptorManager_LoadState(void *state_pointer)
 {
     u8 *state = (u8 *)state_pointer;
     u8 *work = (u8 *)gGameWork;
@@ -622,6 +631,5 @@ void func_0206f8c8(void *state_pointer)
     }
     WriteU32(state, 4, (u32)(highest + 1));
 }
-
 
 

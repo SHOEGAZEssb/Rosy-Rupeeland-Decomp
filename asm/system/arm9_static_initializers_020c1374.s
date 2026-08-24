@@ -16,7 +16,7 @@
 .extern func_0206f750
 .extern func_0206fbb0
 .extern func_0206fd78
-.extern func_020787bc
+.extern RetailResourceDescriptorManager_InitNoOp
 .extern func_0207a064
 .extern func_0207a13c
 .extern func_0207a16c
@@ -93,7 +93,7 @@
 .extern GraphicsSpriteState_Init
 .extern GraphicsSpriteState_Destroy
 .extern GraphicsSpriteState_DestroyGlobalPool
-.extern func_020787c0
+.extern RetailResourceDescriptorManager_DestroyNoOp
 .extern func_0207a10c
 .extern func_0207a14c
 .extern func_0207a17c
@@ -386,14 +386,14 @@ __sinit_020c1684: ; 0x020c1684
 __sinit_020c16cc: ; 0x020c16cc
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c16ec
-    bl func_020787bc
+    bl RetailResourceDescriptorManager_InitNoOp
     ldr r0, .L_020c16ec
     ldr r1, .L_020c16f0
     ldr r2, .L_020c16f4
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c16ec: .word data_021f38fc
-.L_020c16f0: .word func_020787c0
+.L_020c16f0: .word RetailResourceDescriptorManager_DestroyNoOp
 .L_020c16f4: .word data_021f38f0
 
 __sinit_020c16f8: ; 0x020c16f8

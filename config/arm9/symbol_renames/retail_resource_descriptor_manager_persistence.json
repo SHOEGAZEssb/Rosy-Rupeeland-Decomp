@@ -1,0 +1,7 @@
+{
+  "func_0207865c": "RetailResourceDescriptorManager_ResetAllDescriptors",
+  "func_02078690": "RetailResourceDescriptorManager_SaveState",
+  "func_02078730": "RetailResourceDescriptorManager_LoadState",
+  "func_020787bc": "RetailResourceDescriptorManager_InitNoOp",
+  "func_020787c0": "RetailResourceDescriptorManager_DestroyNoOp"
+}

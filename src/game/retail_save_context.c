@@ -42,7 +42,7 @@ extern s32 func_02027e8c(void *state);
 extern s32 func_02027e9c(void *state);
 extern void func_0206392c(void *state, s32 mode);
 extern void func_0207a594(void *state, s32 mode);
-extern void func_02078690(void *state, s32 mode);
+extern void RetailResourceDescriptorManager_SaveState(void *state, s32 mode);
 extern void func_020981f0(void *state, s32 mode);
 extern void func_02079c0c(void *state, s32 mode);
 extern void *data_021e9ac0;
@@ -53,7 +53,7 @@ extern u8 data_021f3d68[];
 extern u8 data_021e9e00[];
 extern void func_02063a00(void *state);
 extern void func_0207a6e0(void *state);
-extern void func_02078730(void *state);
+extern void RetailResourceDescriptorManager_LoadState(void *state);
 extern void func_02098298(void *state);
 extern void SaveGameState_ResetLanguageRecords(void *state);
 extern void func_0206f8c8(void *state);
@@ -80,7 +80,7 @@ void RetailSaveContext_RestoreGameSingletons(void)
 
     func_02063a00(data_021e9ac0);
     func_0207a6e0(data_021f5128);
-    func_02078730(data_021f38fc);
+    RetailResourceDescriptorManager_LoadState(data_021f38fc);
     func_02098298(data_021f5f18);
     SaveGameState_ResetLanguageRecords(data_021f3d68);
     func_0206f8c8(data_021e9e00);
@@ -623,7 +623,7 @@ static void retail_save_reset_game_state(s32 mode)
 {
     func_0206392c(data_021e9ac0, mode);
     func_0207a594(data_021f5128, mode);
-    func_02078690(data_021f38fc, mode);
+    RetailResourceDescriptorManager_SaveState(data_021f38fc, mode);
     func_020981f0(data_021f5f18, mode);
     func_02079c0c(data_021f3d68, mode);
 }
@@ -1005,7 +1005,6 @@ s32 RetailSaveContext_CopyRecord(void *context_pointer)
         return 0;
     }
 }
-
 
 
 
