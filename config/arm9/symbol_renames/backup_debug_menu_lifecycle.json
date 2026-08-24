@@ -1,0 +1,7 @@
+{
+  "func_02080e84": "BackupDebugMenu_Construct",
+  "func_02080f18": "BackupDebugMenu_Update",
+  "func_0208122c": "BackupDebugMenu_Delete",
+  "func_02082878": "BackupDebugMenu_Destroy",
+  "func_0208288c": "BackupDebugMenu_NoOp"
+}
