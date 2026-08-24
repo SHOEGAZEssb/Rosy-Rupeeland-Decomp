@@ -27,7 +27,7 @@ extern s32 GameWork_TestFlag(void *, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_020957f0(void *, void *, s32, s32, s32);
 extern void func_02095820(void *, s32, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void SpritePresentation_Hide(void *);
@@ -99,7 +99,7 @@ void func_ov013_021fd310(void *state)
         associated = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
                                    (u8 *)state + 0x54, 2);
         FIELD(void *, state, 0x950 + i * 4) = associated;
-        func_02073e48(associated, FIELD(s32, descriptor, 4),
+        GraphicsSpriteState_ApplyRenderConfig(associated, FIELD(s32, descriptor, 4),
                       FIELD(s32, descriptor, 8),
                       FIELD(s32, descriptor, 0x0c), 3, 7, 0);
         if (GameWork_TestFlag(gGameWork, FIELD(u16, descriptor, 0x14))) {
@@ -144,7 +144,7 @@ void func_ov013_021fd310(void *state)
         func_02095820(record, 0x80, 0x92);
         FIELD(void *, state, 0x94c) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, state, 0x84), (u8 *)state + 0x6c, 2);
-        func_02073e48(FIELD(void *, state, 0x94c), 2, 0x80, 0xb2,
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x94c), 2, 0x80, 0xb2,
                       3, 0, 4);
     } else {
         for (i = 0; i < 5; ++i) {
@@ -171,7 +171,7 @@ void func_ov013_021fd310(void *state)
         }
         FIELD(void *, state, 0x94c) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, state, 0x84), (u8 *)state + 0x60, 2);
-        func_02073e48(FIELD(void *, state, 0x94c), 15, 0x80, 0xb2,
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x94c), 15, 0x80, 0xb2,
                       3, 0, 4);
     }
 

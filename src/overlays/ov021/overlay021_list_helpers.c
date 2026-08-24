@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -192,7 +192,7 @@ extern "C" void func_ov021_021fd2b4(void *state, s32 index)
     row->sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x1c),
                                 (u8 *)state + 0x10, 1);
     const u8 *record = FIELD(const u8 *, row->descriptor, 4);
-    func_02073e48(row->sprite, FIELD(u16, record, 4) >= 2 ? 3 : 1,
+    GraphicsSpriteState_ApplyRenderConfig(row->sprite, FIELD(u16, record, 4) >= 2 ? 3 : 1,
                   row->x, row->y, 0, 0, 2);
 }
 

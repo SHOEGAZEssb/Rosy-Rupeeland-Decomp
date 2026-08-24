@@ -23,7 +23,7 @@ extern "C" {
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
@@ -66,7 +66,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
     for (s32 i = 0; i < 8; ++i) {
         ((void **)widget)[i + 4] = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, widget, 0), (u8 *)widget + 4, 1);
-        func_02073e48(((void **)widget)[i + 4], 5, 0x33 + 22 * i, 13,
+        GraphicsSpriteState_ApplyRenderConfig(((void **)widget)[i + 4], 5, 0x33 + 22 * i, 13,
                       2, 0x100, 1);
     }
 
@@ -82,7 +82,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
         ((void **)widget)[special_index + 12] =
             GraphicsSpriteGroup_CreateStateFromSource(
                 FIELD(void *, widget, 0), (u8 *)widget + 4, create_source);
-        func_02073e48(((void **)widget)[special_index + 12], animation,
+        GraphicsSpriteState_ApplyRenderConfig(((void **)widget)[special_index + 12], animation,
                       special[special_index].x, 0xb3, sprite_layer,
                       sprite_scale, no_flag);
         if (special[special_index].glyph == 0)
@@ -99,7 +99,7 @@ extern "C" void *func_ov025_021fce00(void *widget)
                 FIELD(void *, widget, 0), (u8 *)widget + 4, 1);
             s32 x = 0x13 + 22 * column + (row_odd ? 2 : -2);
             row_sprites[column + 16] = sprite;
-            func_02073e48(
+            GraphicsSpriteState_ApplyRenderConfig(
                 ((void **)widget)[row * 11 + column + 16], 0,
                 x, row_y + 0x24, 2, 0x100, 0);
         }

@@ -33,7 +33,7 @@ extern void func_02092814(void *, s32);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_ov045_0220c48c(s32, s32, s32);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void func_02092f88(void *, s32, void *);
@@ -133,20 +133,20 @@ extern "C" void *func_ov030_021fda3c(void *scene)
         sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x7c, 1);
         func_020957f0((u8 *)scene + 0x164, sprite, 2, 0, 0);
         func_02095820((u8 *)scene + 0x164, 0x80, 0x70);
-        func_02073e48(FIELD(void *, scene, 0xa0), 0, 0x20, 0x40, 0, 0, 0);
-        func_02073e48(FIELD(void *, scene, 0xa4), 0, 0x20, 0x70, 0, 0, 0);
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xa0), 0, 0x20, 0x40, 0, 0, 0);
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xa4), 0, 0x20, 0x70, 0, 0, 0);
         for (s32 i = 0; i < 2; ++i) {
-            func_02073e48(FIELD(void *, scene, 0xa8 + i * 4), 0,
+            GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xa8 + i * 4), 0,
                           0x32 + i * 8, 0x40, 0, i, 0);
-            func_02073e48(FIELD(void *, scene, 0xb0 + i * 4), 0,
+            GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xb0 + i * 4), 0,
                           0x32 + i * 8, 0x70, 0, i, 0);
         }
     } else {
         func_02095820((u8 *)scene + 0xb8, 0x80, 0x60);
-        func_02073e48(FIELD(void *, scene, 0xa0), 0, 0x20, 0x60, 0, 0, 0);
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xa0), 0, 0x20, 0x60, 0, 0, 0);
         FIELD(u16, FIELD(void *, scene, 0xa4), 0x24) |= 0x10;
         for (s32 i = 0; i < 2; ++i) {
-            func_02073e48(FIELD(void *, scene, 0xa8 + i * 4), 0,
+            GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xa8 + i * 4), 0,
                           0x32 + i * 8, 0x60, 0, i, 0);
             FIELD(u16, FIELD(void *, scene, 0xb0 + i * 4), 0x24) |= 0x10;
         }

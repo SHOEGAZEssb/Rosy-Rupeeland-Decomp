@@ -7,7 +7,7 @@
 .extern AnimationResourceState_Destroy
 .extern func_02071ee0
 .extern AnimationResourceState_ReleaseResources
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroup_Destroy
@@ -156,7 +156,7 @@ func_ov028_021fd7e0:
     mov r0, #0x100
     str r0, [sp, #0x8]
     mov r0, r6
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, #0x80
     strh r0, [r6, #0x36]
     add sp, sp, #0xc

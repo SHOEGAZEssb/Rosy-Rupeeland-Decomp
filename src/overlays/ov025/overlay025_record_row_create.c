@@ -17,7 +17,7 @@ extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern s64 func_020befec(s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -33,7 +33,7 @@ extern void func_02092814(void *, s32);
         slot =                                                                 \
             GraphicsSpriteGroup_CreateStateFromSource(                         \
                 FIELD(void *, widget, 0xc), widget, 1);                        \
-        func_02073e48(slot, animation, x, y, 1, 15, 0);                        \
+        GraphicsSpriteState_ApplyRenderConfig(slot, animation, x, y, 1, 15, 0);                        \
     } while (0)
 
 /* Indexed slots are addressed after creation, matching retail evaluation. */
@@ -44,7 +44,7 @@ extern void func_02092814(void *, s32);
         void **sprite_slot =                                                   \
             (void **)((u8 *)widget + ((slot_index) << 2) + 0x14);              \
         *sprite_slot = created_sprite;                                         \
-        func_02073e48(*sprite_slot, animation, x, y, 1, 15, 0);                \
+        GraphicsSpriteState_ApplyRenderConfig(*sprite_slot, animation, x, y, 1, 15, 0);                \
     } while (0)
 
 /*
@@ -86,7 +86,7 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
         FIELD(s32, widget, 0x84) = FIELD(s32, record, 0x10);
         FIELD(s32, widget, 0x74) = 1;
         FIELD(s32, widget, 0x88) = 1;
-        func_02073e48(FIELD(void *, widget, 0x10), 2, 0, 0, 1, 16, 0);
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, widget, 0x10), 2, 0, 0, 1, 16, 0);
         FIELD(s32, widget, 0x80) = FIELD(u8, record, 3);
 
         if (FIELD(s32, widget, 0x80) != 0) {
@@ -136,7 +136,7 @@ extern "C" void *func_ov025_021fd5dc(void *widget, s32 index)
     } else {
         if (type == 2) FIELD(s32, widget, 0x8c) = 1;
         FIELD(s32, widget, 0x74) = 0;
-        func_02073e48(FIELD(void *, widget, 0x10), 0, 0, 0, 1, 16, 0);
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, widget, 0x10), 0, 0, 0, 1, 16, 0);
     }
     func_02092814((u8 *)widget + 0x30, 0x7001);
     func_02092814((u8 *)widget + 0x30, 0x7005);

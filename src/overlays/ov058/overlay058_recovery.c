@@ -27,7 +27,7 @@ extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_SetFrameIndex(void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -99,10 +99,10 @@ void *func_ov058_0220e400(void *object, void *mainGroup, void *subGroup)
                   0x1000, 0x1001, 0x1002);
     FIELD(void *, object, 0x20) =
         GraphicsSpriteGroup_CreateStateFromSource(mainGroup, object, 2);
-    func_02073e48(FIELD(void *, object, 0x20), 0, 0x80, 0xe, 2, 0x100, 0x20);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, object, 0x20), 0, 0x80, 0xe, 2, 0x100, 0x20);
     FIELD(void *, object, 0x24) =
         GraphicsSpriteGroup_CreateStateFromSource(subGroup, object, 2);
-    func_02073e48(FIELD(void *, object, 0x24), 0, 0x80, 0xe, 2, 0x100, 0x20);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, object, 0x24), 0, 0x80, 0xe, 2, 0x100, 0x20);
     if (!GameWork_TestFlag(gGameWork, 0xcd)) {
         FIELD(void *, object, 0x28) = 0;
         FIELD(void *, object, 0x2c) = 0;
@@ -110,11 +110,11 @@ void *func_ov058_0220e400(void *object, void *mainGroup, void *subGroup)
         FIELD(void *, object, 0x28) =
             GraphicsSpriteGroup_CreateStateFromSource(mainGroup,
                                                        (u8 *)object + 0xc, 2);
-        func_02073e48(FIELD(void *, object, 0x28), 0x11, 0x80, 2, 2, 0, 2);
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, object, 0x28), 0x11, 0x80, 2, 2, 0, 2);
         FIELD(void *, object, 0x2c) =
             GraphicsSpriteGroup_CreateStateFromSource(subGroup,
                                                        (u8 *)object + 0xc, 2);
-        func_02073e48(FIELD(void *, object, 0x2c), 0x11, 0x80, 2, 2, 0, 2);
+        GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, object, 0x2c), 0x11, 0x80, 2, 2, 0, 2);
     }
     return object;
 }

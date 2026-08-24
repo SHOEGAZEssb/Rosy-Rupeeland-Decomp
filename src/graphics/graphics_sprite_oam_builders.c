@@ -73,7 +73,7 @@ extern const s16 data_020c9670[];
  * palette selection, character-block allocation, transfer coalescing, and
  * first-upload invalidation follow the instruction stream at 0x02072EA4.
  */
-void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
+void GraphicsSpriteState_BuildUnscaledOamChain(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                    GraphicsTransferQueue *queue)
 {
     SpriteFrameResource *animation =
@@ -235,7 +235,7 @@ static s32 ScaleCellOrigin(s32 origin, s32 extent, s32 scale)
  * interns up to four flip-specific affine matrices in the renderer's recovered
  * lookup cache. The cache owns no storage: its records point into shadow OAM.
  */
-void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
+void GraphicsSpriteState_BuildAffineOamChain(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                    GraphicsTransferQueue *queue,
                    GraphicsAffineMatrixCache *affineMatrixCache)
 {

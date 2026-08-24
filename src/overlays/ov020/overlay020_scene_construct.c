@@ -23,7 +23,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern s32 GameWork_TestFlag(void *, u32);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void SceneInputBase_Init(void *);
@@ -74,7 +74,7 @@ extern "C" void *func_ov020_021fd844(void *state)
     func_02095820((u8 *)state + 0x70, 0xe8, 0xaa);
     FIELD(void *, state, 0x11c) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x6c), (u8 *)state + 0x54, 1);
-    func_02073e48(FIELD(void *, state, 0x11c), 1, 0x84, 0x1e, 1, 0, 6);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x11c), 1, 0x84, 0x1e, 1, 0, 6);
 
     count = 0;
     for (i = 0; i < 36; i++) {

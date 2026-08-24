@@ -13,7 +13,7 @@
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReplaceStateResources
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -134,7 +134,7 @@ func_ov028_021fdb00:
     ldr r0, [r10, #0x8c]
     mov r2, #0x84
     mov r3, #0x1e
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x54]
     add r1, r10, #0x5c
     mov r2, #0x1

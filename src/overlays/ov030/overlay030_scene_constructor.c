@@ -14,7 +14,7 @@ extern "C" {
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void func_020708c4(void *);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02091e0c(void *, s32);
@@ -87,7 +87,7 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
     FIELD(void *, widget, 0x30) = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, widget, 0x2c), (u8 *)widget + 0x1c, 2);
     sourceObject = ActorDescriptor_GetComponent(source, 0);
-    func_02073e48(FIELD(void *, widget, 0x30),
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, widget, 0x30),
                   ActorDescriptorComponent_GetAnimation(sourceObject), 0x20, 0xb0, 0, 0x100, 0);
 
     for (s32 i = 0; i < 7; ++i) {
@@ -97,13 +97,13 @@ extern "C" void *func_ov030_021fcf20(void *widget, void *font,
         const s16 *entry = &data_ov030_021ff708[i * 4];
         s32 x = (entry[0] + entry[2]) / 2;
         s32 y = (entry[1] + entry[3]) / 2 + 7;
-        func_02073e48(sprite, 0, x, y, 1, 0, 4);
+        GraphicsSpriteState_ApplyRenderConfig(sprite, 0, x, y, 1, 0, 4);
     }
     for (s32 i = 0; i < 2; ++i) {
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x2c),
                                      (u8 *)widget + 0x10, 1);
         FIELD(void *, widget, 0x50 + i * 4) = sprite;
-        func_02073e48(sprite, 0, 0x32 + i * 8, 0xb0, 0, i, 0);
+        GraphicsSpriteState_ApplyRenderConfig(sprite, 0, 0x32 + i * 8, 0xb0, 0, i, 0);
     }
 
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, widget, 0x2c),

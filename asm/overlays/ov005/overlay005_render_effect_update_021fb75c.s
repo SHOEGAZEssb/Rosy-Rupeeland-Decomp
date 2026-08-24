@@ -5,7 +5,7 @@
     .extern TitleRandom_NextBounded
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_render_effect_update.c. */
@@ -58,7 +58,7 @@ func_ov005_021fb75c: ; 0x021fb75c
     add r2, r6, r1, asr #0xc
     mov r0, r4
     mov r1, #0x0
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fb81c:
     mov r0, r5
     add sp, sp, #0xc

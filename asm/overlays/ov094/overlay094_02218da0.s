@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0209189c
 
@@ -49,7 +49,7 @@ func_ov094_02218da0:
     mov r3, r5, asr #0xb
     add r3, r5, r3, lsr #0x14
     add r3, r8, r3, asr #0xc
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r7, #0xb4]
     add r1, r7, #0xa4
     ldr r0, [r0, #0x0]
@@ -80,7 +80,7 @@ func_ov094_02218da0:
     mov r3, r5, asr #0xb
     add r3, r5, r3, lsr #0x14
     add r3, r7, r3, asr #0xc
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 .L_02218ecc:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}

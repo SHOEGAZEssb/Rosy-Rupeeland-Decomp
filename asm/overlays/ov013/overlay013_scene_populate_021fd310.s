@@ -12,7 +12,7 @@
     .extern GamePhaseMetadata_IsAreaBehaviorPermitted
     .extern GraphicsBgMapResource_SetPaletteBank
     .extern func_02072048
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_020925a4
@@ -94,7 +94,7 @@ L_021fd34c:
     ldr r2, [sp, #0xc]
     ldr r1, [r10, #0x4]
     mov r3, r8
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldrh r1, [r10, #0x14]
     ldr r0, [r11, #0x0]
     bl GameWork_TestFlag
@@ -321,7 +321,7 @@ L_021fd714:
     mov r1, #0x2
     mov r2, #0x80
     mov r3, #0xb2
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fd8f4
 L_021fd758:
     ldr r11, L_021fda0c
@@ -430,7 +430,7 @@ L_021fd8a8:
     mov r1, #0xf
     mov r2, #0x80
     mov r3, #0xb2
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fd8f4:
     ldr r0, L_021fda10
     ldr r0, [r0, #0x0]

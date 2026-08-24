@@ -34,7 +34,7 @@ extern u32 ActorDescriptorComponent_GetAnimation(void *component);
 extern void func_02071ee0(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
-extern void func_02073e48(void *resource, s32 value, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *resource, s32 value, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void GraphicsSpriteRenderer_SetFontResource(void *renderer, const void *source);
 extern void GraphicsSpriteRenderer_DrawText(void *renderer, const u16 *text, s32 x, s32 y,
@@ -91,7 +91,7 @@ void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
                   0x70, 0x4c, 0xe, 6, 0);
 
     resource = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_08, 1);
-    func_02073e48(resource, ActorDescriptor_GetPresentationAnimation(record), 0x5c, 0x48, 1, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(resource, ActorDescriptor_GetPresentationAnimation(record), 0x5c, 0x48, 1, 0, 0);
 
     GraphicsSpriteRenderer_SetFontResource(state->renderer_00, state->textSource_28);
     GraphicsSpriteCanvas_FillRect(state->renderer_00, 0x5c, 0x38, 0xcc, 0x48, 0);
@@ -109,7 +109,7 @@ void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
                       first, second, third);
         resource = GraphicsSpriteGroup_CreateStateFromSource(state->spriteOwner_04, state->resource_14, 2);
         component = ActorDescriptor_GetComponent(record, 0);
-        func_02073e48(resource, ActorDescriptorComponent_GetAnimation(component),
+        GraphicsSpriteState_ApplyRenderConfig(resource, ActorDescriptorComponent_GetAnimation(component),
                       0x48, 0x48, 1, 0, 0);
     }
 }

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov028/overlay028_list_sprites.c. */
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteState_ReleaseFromGroup
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_ov028_021fd390
@@ -110,7 +110,7 @@ func_ov028_021fd390:
     ldrsh r3, [r1, #0xa]
     addne r5, r5, #0x32
     mov r1, r5
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fd418:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, pc}

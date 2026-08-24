@@ -7,7 +7,7 @@
 .extern func_ov044_0220baa0
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_ov044_0220bb48
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern InventoryCell_Destroy
 
     .global func_ov044_0220b8e4
@@ -188,7 +188,7 @@ func_ov044_0220baa0:
     ldr r3, [r0, #0x18]
     mov r0, r4
     mov r1, r5
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 .L_0220bb40:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, pc}

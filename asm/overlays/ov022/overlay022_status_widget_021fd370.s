@@ -4,7 +4,7 @@
     .extern data_ov022_02200608
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_ov022_021fd48c
 
@@ -61,7 +61,7 @@ func_ov022_021fd370:
     ldr r0, [r4, #0x24]
     mov r2, #0x40
     mov r3, #0x54
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, r4
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}

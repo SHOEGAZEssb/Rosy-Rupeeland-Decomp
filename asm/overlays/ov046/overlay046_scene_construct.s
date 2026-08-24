@@ -10,7 +10,7 @@
 .extern func_02027fe8
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern SceneInputBase_Init
@@ -139,7 +139,7 @@ func_ov046_0220c7d8:
     mov r0, #0x4
     str r0, [sp, #0x8]
     ldr r0, [r5, #0x64]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, #0x118
     ldr r1, .L_0220ca30
     mov r2, #0x4

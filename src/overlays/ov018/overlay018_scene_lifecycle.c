@@ -29,7 +29,7 @@ extern void *GamePhaseState_GetConfiguration(void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -181,13 +181,13 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc4),
                            (u8 *)state + 0xb8, 2);
     FIELD(void *, state, 0xd0) = sprite;
-    func_02073e48(sprite, 0x21, FIELD(s16, actorData, 0x2c),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0x21, FIELD(s16, actorData, 0x2c),
                   FIELD(s16, actorData, 0x2e), FIELD(u8, actorData, 0x3a),
                   FIELD(u16, actorData, 0x28), 0);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc8),
                            (u8 *)state + 0xa0, 2);
     FIELD(void *, state, 0xd4) = sprite;
-    func_02073e48(sprite, 0x18, 0xec, 0xac, 0, 0, 6);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0x18, 0xec, 0xac, 0, 0, 6);
     FIELD(s32, state, 0x18c) = 0;
     FIELD(u32, state, 0x20) |= 0x400;
     func_ov018_021fcf40(state, data_ov018_021ffc10[0],

@@ -27,7 +27,7 @@ extern s32 ActorDescriptorComponent_GetAnimation(void *component);
 extern void func_02071ee0(void *metadata, void *config, s32 first, s32 second,
                           s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *metadata, s32 kind);
-extern void func_02073e48(void *resource, s32 value, s32 x, s32 y, s32 mode,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *resource, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
 extern s32 func_ov000_021fc834(const void *metadata, s32 mask);
 #ifdef __cplusplus
@@ -75,7 +75,7 @@ void func_ov000_021fc84c(Overlay000RowResourcesState *state, s32 row)
         resource = GraphicsSpriteGroup_CreateStateFromSource(
             state->spriteGroup_008, metadata, 2);
         value = ActorDescriptorComponent_GetAnimation(ActorDescriptor_GetComponent(cell, 0));
-        func_02073e48(resource, value, FIELD(s32, metadata, 0x14),
+        GraphicsSpriteState_ApplyRenderConfig(resource, value, FIELD(s32, metadata, 0x14),
                       FIELD(s32, metadata, 0x18), 2, 0x3000, 0);
         FIELD(void *, metadata, 0x10) = resource;
         if (func_ov000_021fc834(metadata, 1) != 0) {

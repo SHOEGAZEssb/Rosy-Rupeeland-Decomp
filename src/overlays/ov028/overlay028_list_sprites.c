@@ -15,7 +15,7 @@ typedef struct Overlay028Row {
 extern "C" {
 #endif
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void func_ov028_021fd390(void *, s32);
@@ -80,7 +80,7 @@ extern "C" void func_ov028_021fd390(void *state, s32 index)
             s32 selector = index;
             if (row->descriptor != 0)
                 selector += 0x32;
-            func_02073e48(row->sprite, selector, row->x, row->y, 0, 0, 0);
+            GraphicsSpriteState_ApplyRenderConfig(row->sprite, selector, row->x, row->y, 0, 0, 0);
         }
     }
 }

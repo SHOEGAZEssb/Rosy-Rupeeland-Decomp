@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov022/overlay022_ui_runtime.c. */
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_020957f0
 .extern func_02095820
@@ -59,7 +59,7 @@ func_ov022_021fee3c:
     mov r1, #0x14
     mov r2, #0x86
     mov r3, #0x1c
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r4, #0x9c]
     add r1, r4, #0x78
     mov r2, #0x1

@@ -11,7 +11,7 @@
     .extern InventoryCell_Destroy
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleCharacterResourceCollection_Init
@@ -212,7 +212,7 @@ L_021fbd48:
     ldr r0, [r10, #0x20]
     mov r2, #0x38
     mov r3, #0x34
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0xc]
     add r1, r10, #0x10
     mov r2, #0x1
@@ -228,7 +228,7 @@ L_021fbd48:
     mov r1, #0x3
     mov r2, #0x38
     mov r3, #0x34
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r2, [r10, #0x1b8]
     ldr r1, [r10, #0x8]
     mov r0, #0x38

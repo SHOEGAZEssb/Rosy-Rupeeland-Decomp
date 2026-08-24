@@ -48,7 +48,7 @@ extern void AnimationResourceState_InitEmbedded(void *resource);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
-extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void TitleCharacterResourceCollection_Init(void *state);
@@ -115,7 +115,7 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
 
     state->sprite_020 =
         GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
-    func_02073e48(state->sprite_020, 2, 0x38, 0x38, 2, 0, 2);
+    GraphicsSpriteState_ApplyRenderConfig(state->sprite_020, 2, 0x38, 0x38, 2, 0, 2);
 
     sprite = GraphicsSpriteGroup_CreateStateFromSource(state->spriteGroup_00c, state->resource_010, 1);
     func_020957f0(state->element_024, sprite, 0x3a, 2, 0);

@@ -1,6 +1,6 @@
     .text
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern Heap_Alloc
     .extern SpritePresentation_Init
     .extern Presentation_SetPosition
@@ -28,7 +28,7 @@ func_ov004_021fbf40: ; 0x021fbf40
     mov r1, #0x18
     mov r4, r0
     str r2, [sp, #0x8]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r1, L_021fc240
     ldr r3, L_021fc244
     mov r0, #0xa0
@@ -59,7 +59,7 @@ L_021fbfa0:
     mov r1, #0x17
     mov r2, #0x67
     mov r3, #0x41
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x60]
     add r1, r10, #0x54
     mov r2, #0x1
@@ -77,7 +77,7 @@ L_021fbfa0:
     add r1, r1, #0xd
     mov r2, #0xab
     mov r3, #0x42
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x60]
     add r1, r10, #0x54
     mov r2, #0x1
@@ -94,7 +94,7 @@ L_021fbfa0:
     add r1, r1, #0xd
     mov r2, #0xc3
     mov r3, #0x42
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r1, L_021fc248
     ldr r2, [r10, #0x14c]
     add r0, sp, #0xc
@@ -121,7 +121,7 @@ L_021fbfa0:
     mov r1, #0xb
     mov r3, #0x62
     str r4, [sp, #0x8]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x32
     mov r8, r4
     mov r11, #0x1
@@ -140,7 +140,7 @@ L_021fc104:
     mov r2, r9
     mov r3, #0x61
     sub r1, r1, #0x30
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     sub r0, r7, r8
     cmp r0, #0x4
     addne r9, r9, #0x10
@@ -155,7 +155,7 @@ L_021fc104:
     add r2, r9, #0xc
     mov r3, #0x61
     str r4, [sp, #0x8]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x18
 L_021fc174:
     add r8, r8, #0x1
@@ -176,7 +176,7 @@ L_021fc178:
     sub r2, r9, #0x4
     mov r1, #0x19
     mov r3, #0x61
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x60]
     add r1, r10, #0x54
     mov r2, #0x1
@@ -187,7 +187,7 @@ L_021fc178:
     str r1, [sp, #0x8]
     add r2, r9, #0x8
     mov r3, #0x61
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x18
 L_021fc1ec:
     ldr r0, [r10, #0x60]
@@ -201,7 +201,7 @@ L_021fc1ec:
     str r1, [sp, #0x8]
     mov r1, #0xc
     mov r3, #0x61
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x60]
     bl GraphicsSpriteGroup_ReleaseIndexedEntries
     mov r1, #0x0

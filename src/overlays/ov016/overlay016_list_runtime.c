@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
@@ -63,7 +63,7 @@ extern "C" void func_ov016_021fd270(void *state, s32 index)
     if ((FIELD(u16, descriptor, 0xc) & 7) == 0) {
         resourceIndex += 0x32;
     }
-    func_02073e48(sprite, resourceIndex, FIELD(s16, descriptor, 8),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, resourceIndex, FIELD(s16, descriptor, 8),
                   FIELD(s16, descriptor, 0xa), 1, 0, 0);
 }
 

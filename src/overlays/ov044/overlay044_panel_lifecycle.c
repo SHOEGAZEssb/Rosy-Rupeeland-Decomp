@@ -17,7 +17,7 @@ extern "C" void InventoryCell_Destroy(void *record);
 extern "C" void GraphicsSpriteGroup_ReleaseIndexedEntries(void *object);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *font, void *owner, s32 value);
 extern "C" s32 func_ov044_0220bb48(void *record, s32 mode);
-extern "C" void func_02073e48(void *binding, s32 row, s32 x, s32 y,
+extern "C" void GraphicsSpriteState_ApplyRenderConfig(void *binding, s32 row, s32 x, s32 y,
                                s32 visible, s32 first, s32 second);
 extern "C" void func_ov044_0220baa0(void *object, s32 index);
 
@@ -129,7 +129,7 @@ extern "C" void func_ov044_0220baa0(void *object, s32 index)
     s32 row = index - 1;
     if (!func_ov044_0220bb48(record, 1))
         row += 50;
-    func_02073e48(binding, row,
+    GraphicsSpriteState_ApplyRenderConfig(binding, row,
                    FIELD(s32, record, 0x14), FIELD(s32, record, 0x18),
                    1, 0, 0);
 }

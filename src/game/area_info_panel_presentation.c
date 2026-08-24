@@ -40,7 +40,7 @@ extern u8 *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern u8 *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, const void *);
@@ -72,9 +72,9 @@ AreaInfoPanelPresentation *func_02027fe8(AreaInfoPanelPresentation *self,
                   0x3326, 0x3327, 0x3328);
     self->primarySprite_38 =
         GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner_34, self->resources_24, 1);
-    func_02073e48(self->primarySprite_38, 0, 0x1e, 0xa2, 1, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(self->primarySprite_38, 0, 0x1e, 0xa2, 1, 0, 0);
     secondary = GraphicsSpriteGroup_CreateStateFromSource(self->spriteOwner_34, self->resources_24, 1);
-    func_02073e48(secondary, 1, 5, 0xbd, 1, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(secondary, 1, 5, 0xbd, 1, 0, 0);
     GraphicsSpriteGroup_ReleaseIndexedEntries(self->spriteOwner_34);
     return self;
 }

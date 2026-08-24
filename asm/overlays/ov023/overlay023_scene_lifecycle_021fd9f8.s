@@ -11,7 +11,7 @@
 .extern func_020716bc
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern func_02091b6c
@@ -139,7 +139,7 @@ L_021fda84:
     mov r1, #0x14
     mov r2, #0x86
     mov r3, #0x2d
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0xc8]
     add r1, r10, #0xbc
     mov r2, #0x1

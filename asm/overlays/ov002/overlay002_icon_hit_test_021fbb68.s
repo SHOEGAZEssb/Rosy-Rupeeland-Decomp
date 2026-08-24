@@ -1,5 +1,5 @@
     .text
-    .extern func_02073aa8
+    .extern GraphicsSpriteState_HitTestOpaquePixel
     .extern GraphicsSpriteState_SetAnimationIndex
     .global func_ov002_021fbb68
 func_ov002_021fbb68: ; 0x021fbb68
@@ -12,7 +12,7 @@ L_021fbb7c:
     add r0, r6, r4, lsl #0x2
     ldr r0, [r0, #0x34]
     ldmib r5, {r1, r2}
-    bl func_02073aa8
+    bl GraphicsSpriteState_HitTestOpaquePixel
     cmp r0, #0x0
     beq L_021fbc40
     add r3, r6, r4, lsl #0x2
@@ -24,7 +24,7 @@ L_021fbb7c:
     strh r0, [r2, #0x2e]
     ldr r0, [r3, #0x34]
     ldmib r5, {r1, r2}
-    bl func_02073aa8
+    bl GraphicsSpriteState_HitTestOpaquePixel
     cmp r0, #0x0
     beq L_021fbc20
     str r4, [r6, #0x8c]

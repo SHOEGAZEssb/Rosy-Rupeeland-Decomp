@@ -8,7 +8,7 @@
     .extern func_02003e20
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleCharacterResourceCollection_Init
@@ -125,7 +125,7 @@ L_021fcf84:
     ldr r1, [r5, #0x60]
     mov r2, #0x26
     mov r3, #0xaa
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fd018
 L_021fcfc8:
     ldr r1, L_021fd064

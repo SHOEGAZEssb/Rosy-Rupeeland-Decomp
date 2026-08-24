@@ -8,7 +8,7 @@
     .extern AnimationResourceState_Destroy
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern data_021052fc
     .extern data_020f4e18
     .extern data_ov033_021fdda8
@@ -104,7 +104,7 @@ L_021fcee8:
     ldrh r1, [r10, #0x6]
     ldr r2, [r10, #0xc]
     ldr r3, [r10, #0x10]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r4, r4, #0x1
     cmp r4, #0x9
     blt L_021fce7c

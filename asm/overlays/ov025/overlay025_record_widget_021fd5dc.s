@@ -8,7 +8,7 @@
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -99,7 +99,7 @@ L_021fd6b8:
     ldr r0, [r10, #0x10]
     mov r3, r2
     mov r1, #0x2
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldrb r0, [r4, #0x3]
     str r0, [r10, #0x80]
     cmp r0, #0x0
@@ -124,7 +124,7 @@ L_021fd6b8:
     ldr r2, [r1, #0xf8]
     add r1, r3, #0xa
     mov r3, #0xc
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
@@ -141,7 +141,7 @@ L_021fd6b8:
     ldr r2, L_021fd9cc
     mov r3, #0xc
     ldr r2, [r2, #0xfc]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0xc]
     mov r1, r10
     mov r2, #0x1
@@ -158,7 +158,7 @@ L_021fd6b8:
     ldr r2, L_021fd9cc
     mov r3, #0xc
     ldr r2, [r2, #0x100]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fd920
 L_021fd800:
     mov r4, #0x0
@@ -191,7 +191,7 @@ L_021fd824:
     ldr r2, [r11, r7, lsl #0x2]
     mov r1, #0x1e
     mov r3, #0xc
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fd904
 L_021fd87c:
     mov r0, r8
@@ -220,7 +220,7 @@ L_021fd89c:
     ldr r2, [r11, r7, lsl #0x2]
     add r1, r6, #0xa
     mov r3, #0xc
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, r8
     mov r1, r5
     bl func_020befec
@@ -254,7 +254,7 @@ L_021fd920:
     ldr r0, [r10, #0x2c]
     mov r3, r2
     add r1, r1, #0x4
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fd994
 L_021fd960:
     cmp r0, #0x2
@@ -269,7 +269,7 @@ L_021fd960:
     ldr r0, [r10, #0x10]
     mov r2, r1
     mov r3, r1
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fd994:
     ldr r1, L_021fd9dc
     add r0, r10, #0x30

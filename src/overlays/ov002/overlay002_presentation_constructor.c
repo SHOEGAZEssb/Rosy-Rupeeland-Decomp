@@ -44,7 +44,7 @@ extern void func_02071ee0(void *resource, void *manager, s32 first, s32 second,
                           s32 third);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 kind);
-extern void func_02073e48(void *sprite, s32 value, s32 x, s32 y, s32 mode,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
 extern void func_ov002_021fba1c(Overlay002PresentationState *state, s32 value);
 extern void Sound_LoadGroup(void *context, s32 value);
@@ -87,33 +87,33 @@ Overlay002PresentationState *func_ov002_021fb6e0(
     for (i = 0; i < 7; i++) {
         state->indicator_018[i] =
             GraphicsSpriteGroup_CreateStateFromSource(state->resourceA_010, state->resource_004, 1);
-        func_02073e48(state->indicator_018[i], 0, data_ov002_021fbe80[i],
+        GraphicsSpriteState_ApplyRenderConfig(state->indicator_018[i], 0, data_ov002_021fbe80[i],
                       0x1f, 1, 0x100, 4);
     }
     for (i = 0; i < 14; i++) {
         state->icon_034[i] =
             GraphicsSpriteGroup_CreateStateFromSource(state->resourceB_014, state->resource_004, 1);
-        func_02073e48(state->icon_034[i], data_ov002_021fbea0[i].value,
+        GraphicsSpriteState_ApplyRenderConfig(state->icon_034[i], data_ov002_021fbea0[i].value,
                       data_ov002_021fbea0[i].x,
                       data_ov002_021fbea0[i].y, 0, 0, 0);
     }
     state->control_06c =
         GraphicsSpriteGroup_CreateStateFromSource(state->resourceA_010, state->resource_004, 1);
-    func_02073e48(state->control_06c, 0x21, 0x3f, 0x1f, 1, 0x100, 4);
+    GraphicsSpriteState_ApplyRenderConfig(state->control_06c, 0x21, 0x3f, 0x1f, 1, 0x100, 4);
     state->control_070 =
         GraphicsSpriteGroup_CreateStateFromSource(state->resourceA_010, state->resource_004, 1);
-    func_02073e48(state->control_070, 0x21, 0x91, 0x1f, 1, 0x100, 4);
+    GraphicsSpriteState_ApplyRenderConfig(state->control_070, 0x21, 0x91, 0x1f, 1, 0x100, 4);
     func_ov002_021fba1c(state, initialValue);
     state->control_074 =
         GraphicsSpriteGroup_CreateStateFromSource(state->resourceB_014, state->resource_004, 1);
-    func_02073e48(state->control_074, 0x1d, 0xd0, 0x48, 1, 0, 2);
+    GraphicsSpriteState_ApplyRenderConfig(state->control_074, 0x1d, 0xd0, 0x48, 1, 0, 2);
     state->control_078 =
         GraphicsSpriteGroup_CreateStateFromSource(state->resourceB_014, state->resource_004, 1);
-    func_02073e48(state->control_078, 0x1e, 0xd4, 0x2f, 1, 0x10, 0);
+    GraphicsSpriteState_ApplyRenderConfig(state->control_078, 0x1e, 0xd4, 0x2f, 1, 0x10, 0);
     for (i = 0; i < 2; i++) {
         state->footer_07c[i] =
             GraphicsSpriteGroup_CreateStateFromSource(state->resourceB_014, state->resource_004, 1);
-        func_02073e48(state->footer_07c[i], i + 0x1f,
+        GraphicsSpriteState_ApplyRenderConfig(state->footer_07c[i], i + 0x1f,
                       i == 0 ? 0xec : 0x15, 0x20, 1, 0, 2);
     }
     Sound_LoadGroup(gSoundContext, 0x79);

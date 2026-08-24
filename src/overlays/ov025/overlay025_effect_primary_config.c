@@ -9,7 +9,7 @@ extern const u8 data_ov025_02202c84[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(
     void *, void *, void *);
 #ifdef __cplusplus
@@ -42,11 +42,11 @@ extern "C" void func_ov025_021fe174(void *object, s32 resourceIndex,
 
     FIELD(u16, FIELD(void *, object, 0xe8), 0x24) &= ~0x46;
     void *sprite = FIELD(void *, object, 0xe8);
-    func_02073e48(sprite, animation, FIELD(s16, sprite, 0x2c),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, animation, FIELD(s16, sprite, 0x2c),
                   FIELD(s16, sprite, 0x2e), 3, 0x2000, setupFlag);
 
     FIELD(u16, FIELD(void *, object, 0xf0), 0x24) &= ~0x46;
     sprite = FIELD(void *, object, 0xf0);
-    func_02073e48(sprite, animation, FIELD(s16, sprite, 0x2c),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, animation, FIELD(s16, sprite, 0x2c),
                   FIELD(s16, sprite, 0x2e), 3, 0x2000, setupFlag);
 }

@@ -26,7 +26,7 @@ extern void func_02091b98(void *animation, s32 value);
 extern s32 TitleRandom_NextBounded(u32 *randomState, s32 selector);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *owner, void *resource, s32 mode);
 extern s32 func_0209189c(u32 *randomState, s32 minimum, s32 maximum);
-extern void func_02073e48(void *drawObject, s32 mode, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *drawObject, s32 mode, s32 x, s32 y,
                           s32 layer, s32 companionY, u16 scale);
 #ifdef __cplusplus
 }
@@ -46,7 +46,7 @@ static s32 overlay005_fixed_to_integer(s32 value)
  * and 0x100 otherwise, acquire a draw object from owner_0a8/resource_09c, and
  * add func_0209189c(random_0ac,-32,32) to X. Submit mode 0, adjusted X, Y,
  * layer 3, companion Y `0x7FFF-Y`, and the 16-bit scale through
- * func_02073e48, then return the inherited update result. Resource and renderer
+ * GraphicsSpriteState_ApplyRenderConfig, then return the inherited update result. Resource and renderer
  * side effects are delegated; the exact visual identity remains unknown.
  */
 #ifdef __cplusplus
@@ -66,7 +66,7 @@ s32 func_ov005_021fb75c(Overlay005RenderEffect *state)
         scale = TitleRandom_NextBounded(&state->random_0ac, 2) ? 0x140 : 0x100;
         drawObject = GraphicsSpriteGroup_CreateStateFromSource(state->owner_0a8, state->resource_09c, 1);
         x += func_0209189c(&state->random_0ac, -32, 32);
-        func_02073e48(drawObject, 0, x, y, 3, 0x7fff - y, scale);
+        GraphicsSpriteState_ApplyRenderConfig(drawObject, 0, x, y, 3, 0x7fff - y, scale);
     }
     return result;
 }

@@ -34,7 +34,7 @@ extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *group,
                                                              void *source,
                                                              s32 count);
-extern "C" void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
+extern "C" void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 animation, s32 x, s32 y,
                                 s32 priority, s32 palette, s32 flags);
 extern "C" void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                               void *heap);
@@ -120,7 +120,7 @@ extern "C" void *func_ov046_0220c7d8(void *scene, s32 selection)
               + func_ov046_0220b77c(FIELD(s32, scene, 0x6c));
     FIELD(void *, scene, 0x64) = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, scene, 0x60), (u8 *)scene + 0x54, 1);
-    func_02073e48(FIELD(void *, scene, 0x64), 0, markerX, markerY, 0, 0, 4);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0x64), 0, markerX, markerY, 0, 0, 4);
 
     panel = Heap_Alloc(0x118, data_ov046_0220cf3c, 4, gHeapContext);
     if (panel != 0) {

@@ -1,0 +1,6 @@
+{
+  "func_02072ea4": "GraphicsSpriteState_BuildUnscaledOamChain",
+  "func_02073340": "GraphicsSpriteState_BuildAffineOamChain",
+  "func_02073aa8": "GraphicsSpriteState_HitTestOpaquePixel",
+  "func_02073e48": "GraphicsSpriteState_ApplyRenderConfig"
+}

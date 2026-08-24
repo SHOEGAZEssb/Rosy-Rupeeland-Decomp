@@ -13,7 +13,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, s32, void *);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 RecordSelection_HasAvailableEntry(void *, s32);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
@@ -110,7 +110,7 @@ extern "C" void func_ov021_021fe6b0(void *state)
 
     FIELD(void *, state, 0x98) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x7c, 1);
-    func_02073e48(FIELD(void *, state, 0x98), 0x14, 0x86, 0x1c,
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x98), 0x14, 0x86, 0x1c,
                   1, 0, 6);
     void *inputSprite =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x7c, 1);
@@ -118,6 +118,6 @@ extern "C" void func_ov021_021fe6b0(void *state)
     func_02095820((u8 *)state + 0xa0, 0xe4, 0xaa);
     FIELD(void *, state, 0x9c) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x94), (u8 *)state + 0x88, 1);
-    func_02073e48(FIELD(void *, state, 0x9c), 0, 0x54, 0xe,
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x9c), 0, 0x54, 0xe,
                   1, 0, 4);
 }

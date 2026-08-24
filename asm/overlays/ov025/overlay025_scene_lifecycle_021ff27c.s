@@ -18,7 +18,7 @@
 .extern Sound_LoadGroup
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -278,7 +278,7 @@ L_021ff55c:
     ldr r0, [r10, #0xbc]
     mov r2, #0x80
     mov r3, #0x60
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r6, L_021ffa2c
     add r5, sp, #0x24
     add r4, sp, #0xc
@@ -313,7 +313,7 @@ L_021ff634:
     sub r3, r1, #0x100
     mov r1, r9
     ldr r2, [r8, r9, lsl #0x2]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x1
     cmp r9, #0x6
     blt L_021ff634
@@ -332,7 +332,7 @@ L_021ff634:
     ldr r0, [r10, #0xc0]
     sub r3, r2, #0x120
     mov r1, #0x8
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0xb0]
     add r1, r10, #0x5c
     mov r2, #0x1
@@ -412,7 +412,7 @@ L_021ff7a8:
     mov r4, #0x2
     str r4, [sp, #0x8]
     mov r4, r0
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, #0xa0
     ldr r1, L_021ffa3c
     mov r2, #0x4
@@ -446,7 +446,7 @@ L_021ff81c:
     mov r1, #0x0
     mov r2, #0x80
     mov r3, #0xb0
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, #0xa0
     ldr r1, L_021ffa44
     mov r2, #0x4

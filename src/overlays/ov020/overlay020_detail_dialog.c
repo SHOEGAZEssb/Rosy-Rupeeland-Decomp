@@ -19,7 +19,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void AnimationResourceState_ReleaseResources(void *);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Clear(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
@@ -75,7 +75,7 @@ static void createQuantitySprite(void *state, s32 animation, s32 x, s32 y)
 {
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc),
                                  (u8 *)state + 0x1c, 1);
-    func_02073e48(sprite, animation, x, y, 1, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, animation, x, y, 1, 0, 0);
 }
 
 /*
@@ -107,7 +107,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
                       FIELD(u16, entry, 6));
         void *header = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0xc),
                                      (u8 *)state + 0x10, 2);
-        func_02073e48(header, 3, 0x30, 0x28, 2, 0, 0);
+        GraphicsSpriteState_ApplyRenderConfig(header, 3, 0x30, 0x28, 2, 0, 0);
 
         for (s32 row = 0; row < 3; row++) {
             s32 quantity = FIELD(s8, entry, 9 + row);

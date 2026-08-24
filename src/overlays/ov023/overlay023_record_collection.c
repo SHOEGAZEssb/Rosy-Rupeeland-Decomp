@@ -18,7 +18,7 @@ extern void *func_02003e20(u32, const void *, u32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, ...);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -188,7 +188,7 @@ extern "C" void func_ov023_021fd164(void *collection, s32 index)
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, collection, 4), entry + 4, 2);
     FIELD(void *, entry, 0x10) = sprite;
     s32 frame = func_0207b4e8((u8 *)bank + 0x668);
-    func_02073e48(sprite, frame, FIELD(s16, entry, 0x14),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, frame, FIELD(s16, entry, 0x14),
                   FIELD(s16, entry, 0x16), 0, 0, 0);
 }
 

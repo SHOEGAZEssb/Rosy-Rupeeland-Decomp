@@ -9,7 +9,7 @@
     .extern func_02003e20
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern LanguageLookup_GetResourceSize
@@ -90,7 +90,7 @@ func_ov021_021fce18:
     mov r1, #0x1c
     mov r2, #0x38
     mov r3, #0x86
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     str r4, [r7, #0x60]
     str r5, [r7, #0x50]
     mov r4, #0x0

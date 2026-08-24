@@ -102,7 +102,7 @@ static s32 CellContainsOpaquePixel(const SpriteGraphicsResource *graphics,
  * retains retail inverse rotation/scale order, strict right/bottom bounds,
  * sprite-level flips, per-cell flips, and transparent-pixel rejection.
  */
-s32 func_02073aa8(GraphicsSpriteState *state, s32 pointX, s32 pointY)
+s32 GraphicsSpriteState_HitTestOpaquePixel(GraphicsSpriteState *state, s32 pointX, s32 pointY)
 {
     GraphicsSpriteGroup *group = state->group;
     SpriteGraphicsResource *graphics =
@@ -213,5 +213,5 @@ s32 GraphicsSpriteState_TestTouchPoint(GraphicsSpriteState *state, const SpriteT
     group = state->group;
     if (group->renderEnabled == 0)
         return 0;
-    return func_02073aa8(state, point->x, point->y);
+    return GraphicsSpriteState_HitTestOpaquePixel(state, point->x, point->y);
 }

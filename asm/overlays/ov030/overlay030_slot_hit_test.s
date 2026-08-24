@@ -4,7 +4,7 @@
 .extern data_ov030_021ff708
 .extern data_ov030_021ff7cc
 .extern data_ov030_021ff820
-.extern func_02073aa8
+.extern GraphicsSpriteState_HitTestOpaquePixel
 .extern func_ov030_021fd680
 
 
@@ -54,7 +54,7 @@ L_021fd5a8:
     ldr r0, [r4, #0x34]
     add r1, r9, r1
     sub r2, r3, r2
-    bl func_02073aa8
+    bl GraphicsSpriteState_HitTestOpaquePixel
     cmp r0, #0x0
     beq L_021fd654
     ldr r2, [r10, #0x1b0]

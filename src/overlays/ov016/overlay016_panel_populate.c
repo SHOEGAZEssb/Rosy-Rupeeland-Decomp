@@ -21,7 +21,7 @@ extern s32 ActorDescriptorComponent_GetCellResourceId(void *);
 extern s32 ActorDescriptorComponent_GetAnimation(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, s32, s32, s32);
@@ -94,7 +94,7 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
         overlay016_show_sprite(FIELD(void *, state, 0x88));
         overlay016_load_row_resource((u8 *)state + 0x18, header);
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4), (u8 *)state + 0x18, 2);
-        func_02073e48(sprite, ActorDescriptorComponent_GetAnimation(ActorDescriptor_GetComponent(header, 0)),
+        GraphicsSpriteState_ApplyRenderConfig(sprite, ActorDescriptorComponent_GetAnimation(ActorDescriptor_GetComponent(header, 0)),
                       0x44, 0x36, 1, 0, 0);
 
         for (i = 0; i < 6; i++) {
@@ -104,7 +104,7 @@ extern "C" void func_ov016_021fdaa0(void *state, void *selection, s32 image)
 
                 overlay016_load_row_resource(rowResource, row);
                 sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4), rowResource, 2);
-                func_02073e48(sprite, ActorDescriptorComponent_GetAnimation(ActorDescriptor_GetComponent(row, 0)),
+                GraphicsSpriteState_ApplyRenderConfig(sprite, ActorDescriptorComponent_GetAnimation(ActorDescriptor_GetComponent(row, 0)),
                               x + 0x26, y + 0x60, 1, 0, 0);
                 if (FIELD(u8, selection, 0xe + i) == 2) {
                     FIELD(u16, sprite, 0x2a) = 1;

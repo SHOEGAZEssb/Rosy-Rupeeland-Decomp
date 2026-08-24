@@ -30,7 +30,7 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern GraphicsSpriteState_SetFrameIndex
     .extern GraphicsSpriteState_ResetFrame
-    .extern func_02073aa8
+    .extern GraphicsSpriteState_HitTestOpaquePixel
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern func_02074dc8
     .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -749,7 +749,7 @@ L_021fdecc:
     beq L_021fdf54
     ldr r1, [r9, #0x58]
     ldr r2, [r9, #0x5c]
-    bl func_02073aa8
+    bl GraphicsSpriteState_HitTestOpaquePixel
     cmp r0, #0x0
     beq L_021fdf54
     ldr r1, L_021fe9d8

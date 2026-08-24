@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Sound_PlayEffectWithParameters(void *, s32, s32, s32, ...);
-extern void *func_02073e48(void *, s32, s32, s32, ...);
+extern void *GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
@@ -101,7 +101,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
         void *font_resource = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, emitter, 0), (u8 *)emitter + 4, 1);
         const s32 *start = FIELD(const s32 *, emitter, 0x68);
-        void *sprite_resource = func_02073e48(font_resource, frame,
+        void *sprite_resource = GraphicsSpriteState_ApplyRenderConfig(font_resource, frame,
                                               start[0], start[1], 0, 0, 0);
         void *object = Heap_Alloc(0xa4, data_ov022_022006b4,
                                   4, gHeapContext);

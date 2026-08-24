@@ -28,7 +28,7 @@ extern void *func_ov001_021fb6f8(void *,void *); extern void func_ov001_021fb7d4
 extern void *func_ov001_021fbabc(void *,void *); extern void InventoryRecordCollection_SortAlternate(void *,s32);
 extern void func_02071ee0(void *,void *,s32,s32,s32); extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32); extern void func_020957f0(void *,void *,s32,s32,s32);
-extern void func_02073e48(void *,s32,s32,s32,s32,s32,s32); extern void func_020afd0c(void *,s32,s32,s32,s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *,s32,s32,s32,s32,s32,s32); extern void func_020afd0c(void *,s32,s32,s32,s32);
 extern void Sound_LoadGroup(void *,s32); extern void Sound_ReleaseGroup(void *,s32); extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov015_021fce00(void *); extern void func_ov015_021fce14(void *); extern void func_ov015_021fce30(void *,s32,s32,s32);
 extern void func_ov015_021fd230(void *,const void *); extern void func_ov015_021fd41c(void *);
@@ -74,7 +74,7 @@ extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soun
     FIELD(void *,state,0x54)=GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     for(i=0;i<3;i++){selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x58,1);func_020957f0((u8 *)state+0xfc+i*0xac,selected,0,2,0);}
     FIELD(s32,state,0x300)=0;func_ov015_021fda50(state);func_ov015_021fd8a8(state,0);func_ov015_021fd8ec(state);func_ov015_021fda50(state);
-    selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x64,1);FIELD(void *,state,0x70)=selected;func_02073e48(selected,0,0x9c,0xe,1,0,4);
+    selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x64,1);FIELD(void *,state,0x70)=selected;GraphicsSpriteState_ApplyRenderConfig(selected,0,0x9c,0xe,1,0,4);
     func_020afd0c((void *)0x04000050,0,4,4,0xc);FIELD(u32,state,0x20)|=0x400;
     func_ov015_021fce30(state,data_ov015_021fec48[0],data_ov015_021fec48[1],0);return state;
 }

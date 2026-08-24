@@ -26,7 +26,7 @@ extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, ...);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
@@ -113,7 +113,7 @@ extern "C" void *func_ov023_021fd9f8(void *scene)
     FIELD(void *, scene, 0xc8) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     FIELD(void *, scene, 0xcc) = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, scene, 0xc8), (u8 *)scene + 0xbc, 1);
-    func_02073e48(FIELD(void *, scene, 0xcc), 0x14, 0x86, 0x2d, 1, 0, 6);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xcc), 0x14, 0x86, 0x2d, 1, 0, 6);
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0xc8),
                                  (u8 *)scene + 0xbc, 1);
     func_020957f0((u8 *)scene + 0xd0, sprite, 6, 1, 0);

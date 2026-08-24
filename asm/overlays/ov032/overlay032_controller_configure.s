@@ -1,7 +1,7 @@
 .text
 
 /* Exact fallback; see src/overlays/ov032/overlay032_child_controller_base.c for documented portable C. */
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 
     .global func_ov032_022014c0
 func_ov032_022014c0:
@@ -19,7 +19,7 @@ func_ov032_022014c0:
     str r0, [sp, #0x8]
     ldr r0, [r4, #0x0]
     ldr r3, [sp, #0x18]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [sp, #0x28]
     str r0, [r4, #0x2c]
     add sp, sp, #0xc

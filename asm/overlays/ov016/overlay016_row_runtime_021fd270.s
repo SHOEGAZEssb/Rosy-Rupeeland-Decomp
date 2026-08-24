@@ -1,6 +1,6 @@
     .text
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteState_ReleaseFromGroup
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroup_AdvanceAnimations
@@ -50,7 +50,7 @@ func_ov016_021fd270:
     ldrsh r3, [r1, #0xa]
     addeq r5, r5, #0x32
     mov r1, r5
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fd308:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}

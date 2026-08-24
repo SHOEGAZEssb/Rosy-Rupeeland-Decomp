@@ -9,7 +9,7 @@
 .extern data_020f4e18
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern InventoryScroll_InitBase
 .extern InventoryScroll_ConfigureRange
 .extern InventoryScroll_UpdateArrowAnimations
@@ -61,7 +61,7 @@ func_02094154:
     str r2, [sp, #0x8]
     mov r1, #0x6
     mov r3, #0x2e
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x50]
     add r1, r10, #0x54
     mov r2, #0x1
@@ -74,7 +74,7 @@ func_02094154:
     mov r1, #0x7
     add r3, r7, #0x2e
     str r2, [sp, #0x8]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     cmp r7, #0x0
     ble .L_02094274
     ldr r0, [r10, #0x50]
@@ -91,7 +91,7 @@ func_02094154:
     add r3, r1, #0x2e
     mov r1, #0x8
     str r2, [sp, #0x8]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 .L_02094274:
     add r0, r7, #0x5c
     mov r5, r0, lsl #0xc
@@ -154,7 +154,7 @@ func_02094154:
     ldr r0, [r10, #0x60]
     mov r3, r2
     mov r1, #0x4
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, r10
     mov r1, r9
     mov r2, r8

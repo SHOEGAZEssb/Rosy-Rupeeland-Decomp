@@ -25,7 +25,7 @@ extern void GraphicsSpriteState_ReleaseFromGroup(void *state);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group,
                                                        void *resourceSet,
                                                        s32 mode);
-extern void func_02073e48(void *state, s32 animationIndex, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *state, s32 animationIndex, s32 x, s32 y,
                          s32 unknown0, s32 unknown1, s32 scale);
 extern s32 func_0209189c(void *randomState, s32 lower, s32 upper);
 extern u32 genrand_int32(void);
@@ -125,13 +125,13 @@ extern "C" void func_ov094_02218470(void *effect)
         *(void **)firstParent, resourceSet, 1);
     s32 x = baseX + func_0209189c(randomState, -24, 24);
     s32 y = baseY + func_0209189c(randomState, -24, 24);
-    func_02073e48(child, 0, x, y, 0, 0, 0x100);
+    GraphicsSpriteState_ApplyRenderConfig(child, 0, x, y, 0, 0, 0x100);
     void *secondParent = *(void **)((u8 *)effect + 0xc0);
     child = GraphicsSpriteGroup_CreateStateFromSource(
         *(void **)secondParent, resourceSet, 1);
     x = baseX + func_0209189c(randomState, -24, 24);
     y = baseY + func_0209189c(randomState, -24, 24);
-    func_02073e48(child, 0, x, y, 0, 0, 0x100);
+    GraphicsSpriteState_ApplyRenderConfig(child, 0, x, y, 0, 0, 0x100);
 }
 
 /*

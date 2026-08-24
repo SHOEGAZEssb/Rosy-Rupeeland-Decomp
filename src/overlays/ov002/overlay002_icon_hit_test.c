@@ -27,7 +27,7 @@ typedef struct Overlay002PointInput {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_02073aa8(void *sprite, s32 x, s32 y);
+extern s32 GraphicsSpriteState_HitTestOpaquePixel(void *sprite, s32 x, s32 y);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 value);
 #ifdef __cplusplus
 }
@@ -56,14 +56,14 @@ s32 func_ov002_021fbb68(Overlay002IconHitState *state,
         s16 x;
         s16 y;
 
-        if (func_02073aa8(sprite, input->x_04, input->y_08) == 0) {
+        if (GraphicsSpriteState_HitTestOpaquePixel(sprite, input->x_04, input->y_08) == 0) {
             continue;
         }
         x = FIELD(s16, sprite, 0x2c);
         y = FIELD(s16, sprite, 0x2e);
         FIELD(u16, sprite, 0x2c) = x;
         FIELD(u16, sprite, 0x2e) = y + 2;
-        if (func_02073aa8(sprite, input->x_04, input->y_08) != 0) {
+        if (GraphicsSpriteState_HitTestOpaquePixel(sprite, input->x_04, input->y_08) != 0) {
             state->selectedIndex_08c = i;
             state->phase_094 = 4;
             switch (state->selectedIndex_08c) {

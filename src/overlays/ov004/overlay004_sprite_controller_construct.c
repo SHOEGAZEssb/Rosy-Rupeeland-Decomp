@@ -23,7 +23,7 @@ extern const char data_ov004_021fcdd0[];
 extern const char data_ov004_021fcdd8[];
 extern void *gHeapContext;
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 kind);
-extern void func_02073e48(void *sprite, s32 value, s32 x, s32 y, s32 mode,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
                         void *context);
@@ -41,7 +41,7 @@ static void *overlay004_create_sprite(void *context, void *resource, s32 value,
                                       s32 x, s32 y)
 {
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(context, resource, 1);
-    func_02073e48(sprite, value, x, y, 0, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, value, x, y, 0, 0, 0);
     return sprite;
 }
 

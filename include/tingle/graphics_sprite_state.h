@@ -49,7 +49,7 @@ void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *state);
 u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *state);
 void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state);
 u16 GraphicsSpriteState_GetCurrentCellCount(GraphicsSpriteState *state);
-void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
+void GraphicsSpriteState_ApplyRenderConfig(GraphicsSpriteState *state, u8 animationIndex,
                    s16 screenX, s16 screenY, u8 oamPriority,
                    u16 sortOrder, u16 flags);
 

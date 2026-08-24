@@ -17,7 +17,7 @@ extern void *gGamePhaseCurrencyHud;
 extern "C" {
 #endif
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, ...);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
@@ -71,7 +71,7 @@ extern "C" void func_ov022_021fee3c(void *scene)
 
     FIELD(void *, scene, 0xa4) = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, scene, 0x9c), (u8 *)scene + 0x78, 1);
-    func_02073e48(FIELD(void *, scene, 0xa4), 0x14, 0x86, 0x1c, 1, 0, 6);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, scene, 0xa4), 0x14, 0x86, 0x1c, 1, 0, 6);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, scene, 0x9c),
                            (u8 *)scene + 0x78, 1);
     func_020957f0((u8 *)scene + 0xa8, sprite, 2, 1, 0);

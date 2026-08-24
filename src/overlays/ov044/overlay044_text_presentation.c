@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void *GraphicsSpriteGroup_CreateStateFromSource(void *resource, void *descriptor, s32 mode);
-extern "C" void func_02073e48(void *binding, s32 x, s32 y, s32 palette,
+extern "C" void GraphicsSpriteState_ApplyRenderConfig(void *binding, s32 x, s32 y, s32 palette,
                                 s32 mode, s32 flags, s32 finalMode);
 extern "C" void func_020957f0(void *presentation, void *binding, s32 index,
                                 s32 mode, s32 flags);
@@ -30,7 +30,7 @@ extern "C" void func_ov044_0220c610(void *object)
     void *binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xbc),
                                   (u8 *)object + 0xc0, 1);
     FIELD(void *, object, 0xcc) = binding;
-    func_02073e48(binding, 0, 0x84, 0x20, 2, 0, 2);
+    GraphicsSpriteState_ApplyRenderConfig(binding, 0, 0x84, 0x20, 2, 0, 2);
     binding = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, object, 0xbc),
                             (u8 *)object + 0xc0, 1);
     func_020957f0((u8 *)object + 0xd0, binding, 9, 2, 0);

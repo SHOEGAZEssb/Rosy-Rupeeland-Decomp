@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern gGameWork
 
@@ -53,7 +53,7 @@ func_ov058_0220e400:
     mov r1, #0x0
     mov r2, #0x80
     mov r3, #0xe
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r4, #0x1c]
     mov r1, r4
     mov r2, #0x2
@@ -69,7 +69,7 @@ func_ov058_0220e400:
     mov r1, #0x0
     mov r2, #0x80
     mov r3, #0xe
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, .L_0220e594
     mov r1, #0xcd
     ldr r0, [r0, #0x0]
@@ -91,7 +91,7 @@ func_ov058_0220e400:
     ldr r0, [r4, #0x28]
     mov r1, #0x11
     mov r2, #0x80
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r4, #0x1c]
     add r1, r4, #0xc
     mov r2, #0x2
@@ -104,7 +104,7 @@ func_ov058_0220e400:
     ldr r0, [r4, #0x2c]
     mov r1, #0x11
     mov r2, #0x80
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 .L_0220e57c:
     mov r0, r4
     add sp, sp, #0xc

@@ -18,7 +18,7 @@ extern "C" {
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern u32 genrand_int32(void);
 extern s32 Sound_IsDirectSequencePlaying(void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 TitleRandom_NextBounded(void *, s32);
@@ -150,7 +150,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
                         divideBy4096(radiusY * data_020c9670[angle * 2 + 1]);
                 void *sprite = GraphicsSpriteGroup_CreateStateFromSource(
                     FIELD(void *, state, 0xcc), (u8 *)state + 0xac, 1);
-                func_02073e48(sprite,
+                GraphicsSpriteState_ApplyRenderConfig(sprite,
                     TitleRandom_NextBounded((u8 *)state + 0x3dc, 4),
                     x, y, 0, 0, 0x100);
             }

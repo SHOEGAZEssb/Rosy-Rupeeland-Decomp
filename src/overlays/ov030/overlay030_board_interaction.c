@@ -17,7 +17,7 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-extern s32 func_02073aa8(void *, s32, s32);
+extern s32 GraphicsSpriteState_HitTestOpaquePixel(void *, s32, s32);
 extern void func_02095940(void *);
 extern void *func_ov030_021fce00(void *);
 extern void func_ov030_021fd3e8(void *);
@@ -87,7 +87,7 @@ extern "C" s32 func_ov030_021fd520(void *board, s32 x, s32 y)
             s32 probeX = x + data_ov030_021ff7cc[probe];
             s32 probeY = y + data_ov030_021ff820[probe] -
                          FIELD(s32, board, 0x1c4);
-            if (func_02073aa8(sprite, probeX, probeY) == 0)
+            if (GraphicsSpriteState_HitTestOpaquePixel(sprite, probeX, probeY) == 0)
                 continue;
             records = FIELD(void *, board, 0x1b0);
             if (FIELD(s32, records, 0) < 3) {

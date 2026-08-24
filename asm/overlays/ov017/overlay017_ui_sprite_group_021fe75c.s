@@ -3,7 +3,7 @@
     .extern data_020f4e18
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern gDebugFont
@@ -55,7 +55,7 @@ Overlay017UiSpriteGroup_Init:
     ldr r0, [r9, #0x1c]
     mov r2, #0xdc
     mov r3, #0x86
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r8, #0x0
     mov r7, #0x1
     mov r6, r7
@@ -77,7 +77,7 @@ L_021fe830:
     mov r1, r5
     add r2, r2, #0x10
     mov r3, r10
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r8, r8, #0x1
     cmp r8, #0xf
     blt L_021fe830

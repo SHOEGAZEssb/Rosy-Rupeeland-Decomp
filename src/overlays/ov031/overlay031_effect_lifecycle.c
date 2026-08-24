@@ -21,7 +21,7 @@ extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void Heap_Free(void *);
 extern void *SpritePresentation_Init(void *, void *);
@@ -91,17 +91,17 @@ extern "C" void *func_ov031_021fd258(void *effect)
 
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x54),
                                   (u8 *)effect + 0x5c, 1);
-    func_02073e48(sprite, 0, 0xa0, 0x48, 3, 0x2000, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0, 0xa0, 0x48, 3, 0x2000, 0);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x58),
                            (u8 *)effect + 0x5c, 1);
-    func_02073e48(sprite, 2, 0xa0, 0x80, 3, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 2, 0xa0, 0x80, 3, 0, 0);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x58),
                            (u8 *)effect + 0x5c, 1);
-    func_02073e48(sprite, 0, 0xd1, 0x11, 3, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0, 0xd1, 0x11, 3, 0, 0);
     if (FIELD(s32, effect, 0x6c) == 0) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, effect, 0x58),
                                (u8 *)effect + 0x5c, 1);
-        func_02073e48(sprite, 8, 0xa0, 0x48, 3, 0x1800, 0);
+        GraphicsSpriteState_ApplyRenderConfig(sprite, 8, 0xa0, 0x48, 3, 0x1800, 0);
     }
     FIELD(s32, effect, 0x68) = 0;
     void *composite = Heap_Alloc(0xa0, data_ov031_021fe788, 4, gHeapContext);
@@ -111,7 +111,7 @@ extern "C" void *func_ov031_021fd258(void *effect)
         composite = SpritePresentation_Init(composite, sprite);
     }
     FIELD(void *, effect, 0x70) = composite;
-    func_02073e48(FIELD(void *, composite, 0x9c), 1, 0xa0, 0x12,
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, composite, 0x9c), 1, 0xa0, 0x12,
                   3, 0x1000, 0);
     Presentation_SetPosition(composite, 0xa0000,
                   FIELD(s32, effect, 0x6c) == 0 ? 0x70000 : 0x12000, 0);

@@ -28,7 +28,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *func_ov031_021fd258(void *);
 extern void func_ov031_021fdfa8(void *);
 extern void func_ov031_021fd934(void *, s32, s32);
@@ -90,11 +90,11 @@ extern "C" void *func_ov031_021fd95c(void *scene, void *owner)
                   0x14ec, 0x14ed, 0x14ee);
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x5c, 1);
     FIELD(void *, scene, 0x6c) = sprite;
-    func_02073e48(sprite, 0, 0x26, 0x5b, 0, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0, 0x26, 0x5b, 0, 0, 0);
     FIELD(s32, scene, 0x94) = 4;
     sprite = GraphicsSpriteGroup_CreateStateFromSource(renderer, (u8 *)scene + 0x5c, 1);
     FIELD(void *, scene, 0x68) = sprite;
-    func_02073e48(sprite, 2, 0x26, 0x6d, 0, 0, 2);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 2, 0x26, 0x6d, 0, 0, 2);
     FIELD(s32, scene, 0x9c) = 0;
 
     void *effect = Heap_Alloc(0x154, data_ov031_021fe7a0, 4, gHeapContext);

@@ -25,7 +25,7 @@ extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(...);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
-extern void func_02073e48(...);
+extern void GraphicsSpriteState_ApplyRenderConfig(...);
 extern void Heap_Free(void *);
 extern void *SpritePresentation_Init(...);
 extern void Presentation_SetPosition(...);
@@ -118,12 +118,12 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
     FIELD(s32, resource, 0x1c) = arg5;
 
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
-    func_02073e48(sprite, 6, 0, 0x2e, 2, 0x4000, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 6, 0, 0x2e, 2, 0x4000, 0);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
-    func_02073e48(sprite, 7, 0, height + 0x2e, 2, 0x4000, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 7, 0, height + 0x2e, 2, 0x4000, 0);
     if (height > 0) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
-        func_02073e48(sprite, 8, 0, height / 2 + 0x2e, 2, 0x4001, 0);
+        GraphicsSpriteState_ApplyRenderConfig(sprite, 8, 0, height / 2 + 0x2e, 2, 0x4001, 0);
     }
 
     s32 secondOffset = (height + 0x5c) << 12;
@@ -140,7 +140,7 @@ extern "C" void *func_ov032_02201f80(void *object, void *canvas, s32 arg2, s32 a
         SpritePresentation_SyncPosition(part);
     }
     FIELD(void *, object, 0x60) = GraphicsSpriteGroup_CreateStateFromSource(resource, (u8 *)object + 0x54, 1);
-    func_02073e48(FIELD(void *, object, 0x60), 4, 0, 0, 2, 0x2000, 0);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, object, 0x60), 4, 0, 0, 2, 0x2000, 0);
     InventoryScroll_ConfigureRange(object, arg2, arg3, 0);
     FIELD(s32, object, 0x3c) = 0;
     FIELD(s32, object, 0x40) = 0x10;

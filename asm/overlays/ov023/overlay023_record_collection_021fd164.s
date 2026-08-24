@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov023/overlay023_record_collection.c. */
 .extern data_021f5128
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0207b4e8
 
@@ -52,7 +52,7 @@ func_ov023_021fd164:
     ldrsh r2, [r5, #0x14]
     ldrsh r3, [r5, #0x16]
     mov r0, r4
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fd214:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, pc}

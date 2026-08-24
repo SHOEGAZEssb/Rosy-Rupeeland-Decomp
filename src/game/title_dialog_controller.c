@@ -18,7 +18,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner);
 extern void GraphicsSpriteGroup_ClearStates(void *group);
 extern void GraphicsSpriteGroup_Clear(void *group);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group, const void *source, s32 attach);
-extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void GraphicsSpriteState_SetAnimation(void *sprite, u32 animation);
 extern void AnimationResourceState_ReleaseResources(void *resource_set);
@@ -186,10 +186,10 @@ void TitleDialog_ExpandActorDescriptor(void *object)
                   ActorDescriptorComponent_GetCellResourceId(component));
     *(s32 *)(bytes + 0xdc) += 0x10;
     sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
-    func_02073e48(sprite, ActorDescriptorComponent_GetAnimation(component),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, ActorDescriptorComponent_GetAnimation(component),
                   *(s32 *)(bytes + 0xdc), *(s32 *)(bytes + 0xe0), 0, 0, 0);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
-    func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 1, 0, 0);
     *(s32 *)(bytes + 0xdc) += 0x10;
 
@@ -264,10 +264,10 @@ void TitleDialog_ExpandPhaseLabel(void *object)
                   0xd084, 0xd081, 0xd082);
     *(s32 *)(bytes + 0xdc) += 0x10;
     sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x20, 2);
-    func_02073e48(sprite, 0, *(s32 *)(bytes + 0xdc),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 0, 0, 0);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(*(void **)(bytes + 0x0c), bytes + 0x14, 2);
-    func_02073e48(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 0x1b, *(s32 *)(bytes + 0xdc),
                   *(s32 *)(bytes + 0xe0), 1, 0, 0);
     *(s32 *)(bytes + 0xdc) += 0x10;
     label = (const u16 *)ActorDescriptor_GetPrimaryLabel((u8 *)record + 4);

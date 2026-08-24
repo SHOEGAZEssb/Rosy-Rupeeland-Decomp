@@ -10,7 +10,7 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern ActorDescriptor_GetPresentationAnimation
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern ActorDescriptor_GetPrimaryLabel
     .extern ActorDescriptor_GetComponent
     .extern ActorDescriptorComponent_GetCharacterResourceId
@@ -86,7 +86,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     mov r0, r7
     mov r2, #0x5c
     mov r3, #0x48
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r6, #0x0]
     ldr r1, [r6, #0x28]
     bl GraphicsSpriteRenderer_SetFontResource
@@ -153,7 +153,7 @@ func_ov001_021fb87c: ; 0x021fb87c
     str r2, [sp, #0x8]
     mov r2, #0x48
     mov r3, r2
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fba98
 L_021fba90:
     mov r1, #0x1

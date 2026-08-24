@@ -33,8 +33,8 @@ extern void *func_02074b9c(void *renderer, void *resource);
 extern void *GraphicsVramAllocator_Allocate(void *allocator, u16 size,
                                             void *owner, u32 alignment);
 extern void GraphicsVramAllocator_Release(void *allocator, void *allocation);
-extern void func_02072ea4(void *state, void *entry, void *queue);
-extern void func_02073340(void *state, void *entry, void *queue,
+extern void GraphicsSpriteState_BuildUnscaledOamChain(void *state, void *entry, void *queue);
+extern void GraphicsSpriteState_BuildAffineOamChain(void *state, void *entry, void *queue,
                           GraphicsAffineMatrixCache *affineMatrixCache);
 extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *renderer,
                                                         void *entry);
@@ -106,10 +106,10 @@ void func_020745c4(void *renderer_pointer, s32 sort_roots)
                             if (*(s16 *)(state + 0x30) == 0 &&
                                 *(s16 *)(state + 0x32) == 0x100 &&
                                 *(s16 *)(state + 0x34) == 0x100) {
-                                func_02072ea4(state, entry,
+                                GraphicsSpriteState_BuildUnscaledOamChain(state, entry,
                                               renderer + 0x1d14);
                             } else {
-                                func_02073340(state, entry,
+                                GraphicsSpriteState_BuildAffineOamChain(state, entry,
                                               renderer + 0x1d14,
                                               affineMatrixCache);
                             }

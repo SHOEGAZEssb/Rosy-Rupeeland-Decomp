@@ -32,7 +32,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void func_02071ee0(void *resource, void *manager, s32 first,
                           s32 second, s32 third);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 mode);
-extern void func_02073e48(void *drawObject, s32 mode, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *drawObject, s32 mode, s32 x, s32 y,
                           s32 first, s32 second, s32 third);
 extern void func_02091bac(void *animation, s32 mode, s32 value, s32 scale,
                           s32 duration);
@@ -116,13 +116,13 @@ func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
         func_02071ee0(resource, data_020f4e18, entry[0], entry[1], entry[2]);
         draw = GraphicsSpriteGroup_CreateStateFromSource(context, resource, 2);
         FIELD(void *, state, 0x0c8 + index * 4) = draw;
-        func_02073e48(draw, 0, x, y, 1, index, 4);
+        GraphicsSpriteState_ApplyRenderConfig(draw, 0, x, y, 1, index, 4);
 
         if (index <= FIELD(s32, state, 0x108)) {
             FIELD(u16, draw, 0x2a) = 2;
         } else if (index <= FIELD(s32, state, 0x104) && createMarkers) {
             draw = GraphicsSpriteGroup_CreateStateFromSource(context, (u8 *)state + 0x08, 1);
-            func_02073e48(draw, entry[3], x, y, 1, index, 0);
+            GraphicsSpriteState_ApplyRenderConfig(draw, entry[3], x, y, 1, index, 0);
         }
     }
 
@@ -131,7 +131,7 @@ func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
         void *draw = GraphicsSpriteGroup_CreateStateFromSource(context, resource, 2);
 
         FIELD(void *, state, 0x0f4 + index * 4) = draw;
-        func_02073e48(draw, 0, data_ov005_021fc8d8[index * 2],
+        GraphicsSpriteState_ApplyRenderConfig(draw, 0, data_ov005_021fc8d8[index * 2],
                       data_ov005_021fc8d8[index * 2 + 1], 1, 0, 2);
     }
 

@@ -27,7 +27,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group,
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *group);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
-extern void func_02073e48(void *sprite, s32 animation, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 animation, s32 x, s32 y,
                           s32 enabled, s32 field28, s32 flags);
 extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment, void *heap);
 extern void Heap_Free(void *allocation);
@@ -494,14 +494,14 @@ void *func_02094154(void *controller, void *owner, s32 total, s32 visible,
     FIELD(s32, group, 0x1c) = y;
     sprite = GraphicsSpriteGroup_CreateStateFromSource(
         group, (u8 *)controller + 0x54, 1);
-    func_02073e48(sprite, 6, 0, 0x2e, 2, 0x4000, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 6, 0, 0x2e, 2, 0x4000, 0);
     sprite = GraphicsSpriteGroup_CreateStateFromSource(
         group, (u8 *)controller + 0x54, 1);
-    func_02073e48(sprite, 7, 0, height + 0x2e, 2, 0x4000, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 7, 0, height + 0x2e, 2, 0x4000, 0);
     if (height > 0) {
         sprite = GraphicsSpriteGroup_CreateStateFromSource(
             group, (u8 *)controller + 0x54, 1);
-        func_02073e48(sprite, 8, 0, height / 2 + 0x2e, 2, 0x4001, 0);
+        GraphicsSpriteState_ApplyRenderConfig(sprite, 8, 0, height / 2 + 0x2e, 2, 0x4001, 0);
     }
 
     secondOffset = (height + 0x5c) << 12;
@@ -524,7 +524,7 @@ void *func_02094154(void *controller, void *owner, s32 total, s32 visible,
     sprite = GraphicsSpriteGroup_CreateStateFromSource(
         group, (u8 *)controller + 0x54, 1);
     FIELD(void *, controller, 0x60) = sprite;
-    func_02073e48(sprite, 4, 0, 0, 2, 0x2000, 0);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, 4, 0, 0, 2, 0x2000, 0);
     InventoryScroll_ConfigureRange(controller, total, visible, 0);
     FIELD(s32, controller, 0x3c) = 0;
     FIELD(s32, controller, 0x40) = 0x10;

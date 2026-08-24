@@ -15,7 +15,7 @@
     .extern InventoryRecordCollection_SortAlternate
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern SceneInputBase_Init
@@ -269,7 +269,7 @@ L_021fd108:
     ldr r0, [r10, #0x70]
     mov r2, #0x9c
     mov r3, #0xe
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, #0xc
     str r0, [sp, #0x0]
     ldr r0, L_021fd228

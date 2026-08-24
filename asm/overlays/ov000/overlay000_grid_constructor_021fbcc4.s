@@ -13,7 +13,7 @@
 .extern ActorDescriptor_IsInvalid
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern TitleCharacterResourceCollection_Init
@@ -86,7 +86,7 @@ func_ov000_021fbcc4: ; 0x021fbcc4
     stmib sp, {r0, r1}
     ldr r0, [r10, #0x20]
     mov r3, r2
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0xc]
     add r1, r10, #0x10
     mov r2, #0x1

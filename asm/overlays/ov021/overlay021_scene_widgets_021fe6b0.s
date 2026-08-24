@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_scene_widgets.c. */
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_020957f0
     .extern func_02095820
@@ -82,7 +82,7 @@ L_021fe78c:
     mov r1, #0x14
     mov r2, #0x86
     mov r3, #0x1c
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x94]
     add r1, r10, #0x7c
     mov r2, #0x1
@@ -112,7 +112,7 @@ L_021fe78c:
     ldr r0, [r10, #0x9c]
     mov r2, #0x54
     mov r3, #0xe
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
     .size func_ov021_021fe6b0, . - func_ov021_021fe6b0

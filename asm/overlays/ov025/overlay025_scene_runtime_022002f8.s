@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_scene_runtime.c. */
 .extern data_020f4e14
 .extern GraphicsBgMapResource_UploadToMainBg
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteCanvas_FillRect
 .extern TitleScreenResourceCollection_Get
@@ -34,7 +34,7 @@ func_ov025_022002f8:
     mov r1, #0x1
     mov r2, #0x38
     mov r3, #0x44
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, #0x60
     str r0, [sp, #0x0]
     mov r0, #0x0

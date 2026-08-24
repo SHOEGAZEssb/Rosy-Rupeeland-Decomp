@@ -10,7 +10,7 @@ extern "C" {
 extern void *GraphicsSpriteGroup_CreateStateFromSource(...);
 extern void GraphicsSpriteGroup_ReleaseState(...);
 extern void GraphicsArchiveResource_ReleaseAlternateBuffer(void *);
-extern void func_02073e48(void *, u8, s16, s16, u8, u16, u16);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, u8, s16, s16, u8, u16, u16);
 #ifdef __cplusplus
 }
 #endif
@@ -93,7 +93,7 @@ extern "C" void func_ov032_022014c0(void *controller, s32 arg1, s32 arg2, s32 ar
 {
     FIELD(s32, controller, 0x10) = arg1;
     FIELD(s32, controller, 0x14) = arg2;
-    func_02073e48(FIELD(void *, controller, 0), (u8)arg1,
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, controller, 0), (u8)arg1,
                   (s16)arg3, (s16)arg4, (u8)arg5,
                   (u16)arg6, (u16)arg7);
     FIELD(s32, controller, 0x2c) = arg8;

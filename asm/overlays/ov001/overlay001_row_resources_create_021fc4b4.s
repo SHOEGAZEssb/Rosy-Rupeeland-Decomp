@@ -7,7 +7,7 @@
     .extern ActorDescriptorComponent_GetAnimation
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .global func_ov001_021fc4b4
 func_ov001_021fc4b4: ; 0x021fc4b4
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -70,7 +70,7 @@ L_021fc4d0:
     ldr r2, [r8, #0x14]
     ldr r3, [r8, #0x18]
     mov r0, r4
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r8, #0xc]
     cmp r0, #0x0
     ldrne r0, [r0, #0x20]

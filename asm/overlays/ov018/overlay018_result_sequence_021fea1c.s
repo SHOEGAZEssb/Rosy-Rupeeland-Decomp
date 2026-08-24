@@ -6,7 +6,7 @@
     .extern data_ov018_021ffbf8
     .extern data_ov018_021ffd68
     .extern Sound_IsDirectSequencePlaying
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern TitleRandom_NextBounded
@@ -243,7 +243,7 @@ L_021fec50:
     ldr r2, [sp, #0xc]
     mov r3, r10
     mov r0, r11
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x1
     cmp r9, #0x2
     blt L_021fec50

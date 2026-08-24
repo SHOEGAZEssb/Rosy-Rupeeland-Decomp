@@ -25,7 +25,7 @@ extern void *func_02003e20(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteState_ReleaseFromGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
@@ -172,7 +172,7 @@ extern "C" void func_ov020_021fd100(void *state, s32 index)
         if (row->sprite == 0) {
             row->sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                         (u8 *)state + 8, 1);
-            func_02073e48(row->sprite, FIELD(u8, row->descriptor, 0x12),
+            GraphicsSpriteState_ApplyRenderConfig(row->sprite, FIELD(u8, row->descriptor, 0x12),
                           row->x, row->y, 0, 0, 0);
         }
     }

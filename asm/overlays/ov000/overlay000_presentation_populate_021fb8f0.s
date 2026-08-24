@@ -14,7 +14,7 @@
 .extern ActorDescriptorComponent_GetCellResourceId
 .extern ActorDescriptorComponent_GetAnimation
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_DrawText
@@ -115,7 +115,7 @@ Overlay000_PopulatePresentation: ; 0x021fb8f0
     str r2, [sp, #0x8]
     mov r2, #0x5c
     mov r3, #0x44
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fbb94
 L_021fba5c:
     bl GraphicsSpriteRenderer_SetFontResource
@@ -195,7 +195,7 @@ L_021fba5c:
     mov r2, #0x5c
     mov r3, #0x44
     str r1, [sp, #0x8]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fbb94:
     ldr r0, [r6, #0x0]
     ldr r1, [r6, #0x28]
@@ -261,7 +261,7 @@ L_021fbb94:
     str r2, [sp, #0x8]
     mov r2, #0x48
     mov r3, #0x44
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     b L_021fbca4
 L_021fbc9c:
     mov r1, #0x1

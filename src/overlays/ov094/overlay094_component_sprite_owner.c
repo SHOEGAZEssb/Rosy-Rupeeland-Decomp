@@ -28,7 +28,7 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *group);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *group);
 extern s32 TitleRandom_NextBounded(void *randomState, s32 upper);
 extern s32 func_0209189c(void *randomState, s32 lower, s32 upper);
-extern void func_02073e48(void *state, s32 animationIndex, s32 x, s32 y,
+extern void GraphicsSpriteState_ApplyRenderConfig(void *state, s32 animationIndex, s32 x, s32 y,
                          s32 unknown0, s32 unknown1, s32 scale);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
@@ -101,7 +101,7 @@ extern "C" void func_ov094_02219a08(void *object)
 
     void *state = GraphicsSpriteGroup_CreateStateFromSource(group, object, 1);
     s32 animation = func_0209189c(randomState, 1, 2);
-    func_02073e48(state, animation, x, y, 0, 0, 0x100);
+    GraphicsSpriteState_ApplyRenderConfig(state, animation, x, y, 0, 0, 0x100);
     *(u16 *)((u8 *)state + 0x36) =
         (u16)func_0209189c(randomState, 0x80, 0xc0);
 }

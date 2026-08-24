@@ -12,7 +12,7 @@
     .extern GamePhaseState_GetConfiguration
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern func_02091b6c
@@ -250,7 +250,7 @@ L_021fd06c:
     ldrsh r2, [r5, #0x2c]
     ldrsh r3, [r5, #0x2e]
     ldr r0, [r4, #0xd0]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r4, #0xc8]
     add r1, r4, #0xa0
     mov r2, #0x2
@@ -265,7 +265,7 @@ L_021fd06c:
     mov r1, #0x18
     mov r2, #0xec
     mov r3, #0xac
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, #0x0
     str r0, [r4, #0x18c]
     ldr r0, [r4, #0x20]

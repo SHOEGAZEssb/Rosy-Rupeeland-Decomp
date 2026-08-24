@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
 .extern GameWork_TestFlag
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0209189c
 .extern TitleRandom_NextBounded
@@ -52,7 +52,7 @@ func_ov094_02219a08:
     mov r0, r4
     mov r2, r5
     mov r3, r6
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r0, r7, #0x14
     mov r1, #0x80
     mov r2, #0xc0

@@ -4,7 +4,7 @@
 .extern data_020f4e18
 .extern data_021f5128
 .extern func_02071ee0
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern func_0207b464
 .extern func_0207b490
@@ -68,7 +68,7 @@ func_ov023_021fd634:
     ldr r0, [r5, #0x14]
     mov r2, #0x2a
     mov r3, #0x30
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fd710:
     ldr r0, [r5, #0x44]
     add r0, r0, #0x1

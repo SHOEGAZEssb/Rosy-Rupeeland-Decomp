@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_effect_primary_config.c. */
 .extern data_ov025_02202c84
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_ReplaceStateResourcesFromSource
 
 
@@ -45,7 +45,7 @@ L_021fe1d4:
     stmib sp, {r2, r4}
     ldrsh r2, [r0, #0x2c]
     ldrsh r3, [r0, #0x2e]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr ip, [r6, #0xf0]
     mov r3, #0x3
     ldrh r0, [ip, #0x24]
@@ -58,7 +58,7 @@ L_021fe1d4:
     stmib sp, {r2, r4}
     ldrsh r2, [r0, #0x2c]
     ldrsh r3, [r0, #0x2e]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 L_021fe244: .word data_ov025_02202c84

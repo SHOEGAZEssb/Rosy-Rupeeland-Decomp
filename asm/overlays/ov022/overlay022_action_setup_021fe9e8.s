@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov022/overlay022_action_setup.c. */
 .extern data_020c9670
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
 .extern TitleRandom_NextBounded
 .extern func_ov043_0220b740
@@ -64,7 +64,7 @@ func_ov022_021fe9e8:
     str r4, [sp, #0x4]
     mov r4, #0x100
     str r4, [sp, #0x8]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, pc}
 L_021feac4: .word data_020c9670

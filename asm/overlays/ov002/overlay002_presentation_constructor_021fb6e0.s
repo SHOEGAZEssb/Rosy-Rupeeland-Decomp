@@ -5,7 +5,7 @@
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern func_ov002_021fba1c
     .extern data_ov002_021fbe80
     .extern data_ov002_021fbea0
@@ -65,7 +65,7 @@ L_021fb778:
     ldr r2, [r4, r9, lsl #0x2]
     mov r1, r11
     mov r3, #0x1f
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x1
     cmp r9, #0x7
     blt L_021fb778
@@ -90,7 +90,7 @@ L_021fb7d0:
     ldrh r2, [r3, #0x2]
     ldr r0, [r9, #0x34]
     ldrh r3, [r3, #0x4]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r5, r5, #0x1
     cmp r5, #0xe
     blt L_021fb7d0
@@ -109,7 +109,7 @@ L_021fb7d0:
     mov r1, #0x21
     mov r2, #0x3f
     mov r3, #0x1f
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x10]
     add r1, r10, #0x4
     mov r2, #0x1
@@ -125,7 +125,7 @@ L_021fb7d0:
     mov r1, #0x21
     mov r2, #0x91
     mov r3, #0x1f
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, r10
     ldr r1, [r10, #0x88]
     bl func_ov002_021fba1c
@@ -144,7 +144,7 @@ L_021fb7d0:
     mov r1, #0x1d
     mov r2, #0xd0
     mov r3, #0x48
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r10, #0x14]
     add r1, r10, #0x4
     mov r2, #0x1
@@ -160,7 +160,7 @@ L_021fb7d0:
     mov r1, #0x1e
     mov r2, #0xd4
     mov r3, #0x2f
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     mov r9, #0x0
     mov r6, #0x1
     mov r11, #0x15
@@ -185,7 +185,7 @@ L_021fb944:
     movne r2, r11
     mov r3, #0x20
     add r1, r9, #0x1f
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x1
     cmp r9, #0x2
     blt L_021fb944

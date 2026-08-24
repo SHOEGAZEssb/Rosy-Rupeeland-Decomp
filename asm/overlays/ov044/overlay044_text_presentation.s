@@ -1,6 +1,6 @@
 .text
 .extern GraphicsSpriteGroup_CreateStateFromSource
-.extern func_02073e48
+.extern GraphicsSpriteState_ApplyRenderConfig
 .extern func_020957f0
 .extern func_02095820
 .extern func_02095940
@@ -24,7 +24,7 @@ func_ov044_0220c610:
     ldr r0, [r4, #0xcc]
     mov r2, #0x84
     mov r3, #0x20
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r4, #0xbc]
     add r1, r4, #0xc0
     mov r2, #0x1

@@ -15,7 +15,7 @@
  * animation selector. There are no direct SDK or graphics-hardware accesses.
  */
 #ifndef MATCHING
-void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
+void GraphicsSpriteState_ApplyRenderConfig(GraphicsSpriteState *state, u8 animationIndex,
                    s16 screenX, s16 screenY, u8 oamPriority,
                    u16 sortOrder, u16 flags)
 {
@@ -28,7 +28,7 @@ void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
-asm void func_02073e48(GraphicsSpriteState *state, u8 animationIndex,
+asm void GraphicsSpriteState_ApplyRenderConfig(GraphicsSpriteState *state, u8 animationIndex,
                        s16 screenX, s16 screenY, u8 oamPriority,
                        u16 sortOrder, u16 flags)
 {

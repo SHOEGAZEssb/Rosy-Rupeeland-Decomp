@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_sprites.c. */
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_020957f0
     .extern func_02095820
@@ -24,7 +24,7 @@ Overlay016_CreateSceneSprite:
     ldr r0, [r4, #0xe4]
     mov r2, #0x84
     mov r3, #0x20
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [r4, #0xe0]
     add r1, r4, #0xc8
     mov r2, #0x1

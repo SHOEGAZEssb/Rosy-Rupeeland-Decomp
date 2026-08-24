@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov020/overlay020_list_runtime.c. */
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
 
 .global func_ov020_021fd100
@@ -35,7 +35,7 @@ func_ov020_021fd100:
     ldrb r1, [r4, #0x12]
     ldrsh r2, [r3, #0x8]
     ldrsh r3, [r3, #0xa]
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
 L_021fd17c:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}

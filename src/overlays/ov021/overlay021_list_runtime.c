@@ -26,7 +26,7 @@ extern void *func_02003e20(u32, const void *, s32, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
@@ -78,7 +78,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
                   0x329b, 0x329c, 0x329d);
     FIELD(void *, state, 0x24) =
         GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x20), (u8 *)state + 4, 1);
-    func_02073e48(FIELD(void *, state, 0x24), 0x1c, 0x38, 0x86, 1, 0, 4);
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x24), 0x1c, 0x38, 0x86, 1, 0, 4);
 
     FIELD(s32, state, 0x60) = mode;
     FIELD(s32, state, 0x50) = capacity;

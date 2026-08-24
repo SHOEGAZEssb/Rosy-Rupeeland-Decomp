@@ -15,7 +15,7 @@ extern "C" {
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
@@ -63,7 +63,7 @@ extern "C" void *func_ov016_021fe118(void *state, s32 index)
     func_02095940((u8 *)state + 0x20);
     FIELD(void *, state, 0x1c) = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x18),
                                                (u8 *)state + 0xc, 2);
-    func_02073e48(FIELD(void *, state, 0x1c), FIELD(u32, state, 0xe4),
+    GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, state, 0x1c), FIELD(u32, state, 0xe4),
                   0x26, 0xaa, 1, 0, 0);
     return state;
 }

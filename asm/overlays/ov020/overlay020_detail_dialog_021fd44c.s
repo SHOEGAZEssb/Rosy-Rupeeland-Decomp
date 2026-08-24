@@ -6,7 +6,7 @@
     .extern data_ov020_021fe48c
     .extern func_02071ee0
     .extern AnimationResourceState_ReleaseResources
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroup_Clear
     .extern GraphicsSpriteRenderer_SetFontResource
@@ -61,7 +61,7 @@ func_ov020_021fd44c:
     mov r1, #0x3
     mov r2, #0x30
     mov r3, #0x28
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldrsb r2, [r8, #0x9]
     ldrsb r1, [r8, #0xa]
     ldrsb r0, [r8, #0xb]
@@ -93,7 +93,7 @@ L_021fd530:
     add r1, r4, #0x2
     mov r2, r9
     add r3, r7, #0x52
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x40
     add r10, r10, #0x1
 L_021fd56c:
@@ -121,7 +121,7 @@ L_021fd598:
     add r1, r4, #0x1
     mov r2, r9
     add r3, r7, #0x52
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x20
     add r10, r10, #0x1
 L_021fd5d4:
@@ -146,7 +146,7 @@ L_021fd5f4:
     mov r1, r4
     mov r2, r9
     add r3, r7, #0x52
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     add r9, r9, #0x8
     add r10, r10, #0x1
 L_021fd630:

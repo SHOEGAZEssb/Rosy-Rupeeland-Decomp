@@ -11,7 +11,7 @@
     .extern ActorDescriptorComponent_GetAnimation
     .extern func_02071ee0
     .extern GraphicsSpriteState_SetAnimationIndex
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
@@ -96,7 +96,7 @@ func_ov016_021fdaa0:
     mov r0, r5
     mov r2, #0x44
     mov r3, #0x36
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, L_021fdf4c
     ldr r1, [r7, #0x0]
     ldrb r0, [r0, #0x5f]
@@ -161,7 +161,7 @@ L_021fdbf0:
     ldr r0, [sp, #0x24]
     add r2, r5, #0x26
     add r3, r6, #0x60
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r0, [sp, #0xc]
     add r0, r0, r9
     ldrb r0, [r0, #0xe]

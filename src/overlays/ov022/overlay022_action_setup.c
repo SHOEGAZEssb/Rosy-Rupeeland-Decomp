@@ -20,7 +20,7 @@ extern "C" {
 #endif
 extern u32 genrand_int32(void);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
-extern void func_02073e48(void *, s32, s32, s32, ...);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void *RetailTextTable_FindRecordById(const void *, u16);
 extern void func_0207c460(void *, u16);
@@ -63,7 +63,7 @@ extern "C" void func_ov022_021fe9e8(void *scene)
     s32 y = func_ov046_0220b77c(descriptor_id) + FIELD(s16, subrecord, 8)
           + ((y_term + ((y_term >> 11) >> 20)) >> 12);
     s32 frame = TitleRandom_NextBounded((u8 *)scene + 0x390, 4);
-    func_02073e48(sprite, frame, x, y, 0, 0, 0x100);
+    GraphicsSpriteState_ApplyRenderConfig(sprite, frame, x, y, 0, 0, 0x100);
 }
 
 /*

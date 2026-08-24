@@ -12,7 +12,7 @@ extern const u8 data_ov028_021ff29c[];
 extern "C" {
 #endif
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern void func_02073e48(void *, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, s32, s32, s32);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
@@ -56,18 +56,18 @@ extern "C" void func_ov028_021fd8b8(void *state, const void *descriptor,
                       ids[1], ids[2], ids[3]);
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                      (u8 *)state + 8, 2);
-        func_02073e48(sprite, FIELD(u8, descriptor, 0xc),
+        GraphicsSpriteState_ApplyRenderConfig(sprite, FIELD(u8, descriptor, 0xc),
                       0x39, 0x38, 1, 0, 0);
         sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                (u8 *)state + 0x14, 2);
-        func_02073e48(sprite, variant + 0x32, 0x3a, 0x5e, 1, 0, 0);
+        GraphicsSpriteState_ApplyRenderConfig(sprite, variant + 0x32, 0x3a, 0x5e, 1, 0, 0);
     } else {
         GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, state, 0x30));
         const void *text = RetailTextTable_FindRecordById(data_021f3ecc, 0x188);
         GraphicsSpriteRenderer_DrawText(font, (u8 *)text + 2, 0x60, 0x1d, 1, 6, 0);
         void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 4),
                                      (u8 *)state + 0x14, 2);
-        func_02073e48(sprite, variant, 0x3a, 0x5e, 1, 0, 0);
+        GraphicsSpriteState_ApplyRenderConfig(sprite, variant, 0x3a, 0x5e, 1, 0, 0);
     }
 }
 

@@ -12,7 +12,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_02073e48(void *, s32, s32, s32, ...);
+extern void *GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
@@ -78,7 +78,7 @@ extern "C" void *func_ov022_021fd370(void *widget)
     void *secondary = GraphicsSpriteGroup_CreateStateFromSource(
         FIELD(void *, widget, 0x1c), (u8 *)widget + 0x10, 1);
     FIELD(void *, widget, 0x24) = secondary;
-    func_02073e48(secondary, 0, 0x40, 0x54, 2, 0, 0);
+    GraphicsSpriteState_ApplyRenderConfig(secondary, 0, 0x40, 0x54, 2, 0, 0);
     return widget;
 }
 

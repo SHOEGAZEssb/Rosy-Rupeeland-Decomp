@@ -3,7 +3,7 @@
     .extern data_ov022_022004b4
     .extern data_ov022_022006b4
     .extern Sound_PlayEffectWithParameters
-    .extern func_02073e48
+    .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern func_0209189c
     .extern TitleRandom_NextBounded
@@ -98,7 +98,7 @@ L_021fd150:
     mov r1, r5
     ldmia r3, {r2, r3}
     mov r5, r0
-    bl func_02073e48
+    bl GraphicsSpriteState_ApplyRenderConfig
     ldr r1, L_021fd2d4
     ldr r3, L_021fd2d8
     mov r0, #0xa4
