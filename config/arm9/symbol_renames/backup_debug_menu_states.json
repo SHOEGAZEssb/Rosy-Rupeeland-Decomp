@@ -1,0 +1,9 @@
+{
+  "func_02080f44": "BackupDebugMenu_UpdateMainMenu",
+  "func_02081248": "BackupDebugMenu_DrawRecordSummaries",
+  "func_020813e0": "BackupDebugMenu_UpdateWriteRecord",
+  "func_020816c4": "BackupDebugMenu_UpdateLoadRecord",
+  "func_02081a74": "BackupDebugMenu_UpdateCapacityProbe",
+  "func_02081bec": "BackupDebugMenu_UpdateDeleteRecord",
+  "func_02081ecc": "BackupDebugMenu_UpdateCopyRecord"
+}
