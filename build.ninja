@@ -4550,7 +4550,7 @@ build build/reports/graphics_lookup_cache.json: objdiff build/decomp/delinks/src
 
 build build/reports/graphics_lookup_cache.txt: match_report build/reports/graphics_lookup_cache.json | tools/report_objdiff.py
   report_json = build/reports/graphics_lookup_cache.json
-  report_args = --section .text --function GraphicsLookupCacheEntry_Init --function GraphicsLookupCacheEntry_Destroy --function GraphicsLookupCache_Init --function GraphicsLookupCache_BindRecords --function GraphicsLookupCache_Find --function GraphicsLookupCache_TakeSearchEnd
+  report_args = --section .text --function GraphicsAffineMatrixCacheEntry_Init --function GraphicsAffineMatrixCacheEntry_Destroy --function GraphicsAffineMatrixCache_Init --function GraphicsAffineMatrixCache_BindOamBuffer --function GraphicsAffineMatrixCache_FindMatrix --function GraphicsAffineMatrixCache_Allocate
 
 build build/reports/graphics_sprite_state.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_state.o | build/decomp/src/graphics/graphics_sprite_state.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_state.o

@@ -235,7 +235,7 @@ static s32 ScaleCellOrigin(s32 origin, s32 extent, s32 scale)
  */
 void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                    GraphicsTransferQueue *queue,
-                   GraphicsLookupCache *lookupCache)
+                   GraphicsAffineMatrixCache *affineMatrixCache)
 {
     SpriteFrameResource *animation =
         (SpriteFrameResource *)state->animationResource;
@@ -249,7 +249,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     SpriteGraphicsResource *graphics =
         (SpriteGraphicsResource *)state->graphicsResource;
     GraphicsRenderEntry *firstEntry = entry;
-    GraphicsLookupCacheEntry *matrixEntries[4] = {0};
+    GraphicsAffineMatrixCacheEntry *matrixEntries[4] = {0};
     u32 paletteIndices[16] = {0};
     u8 matrixUsed[4] = {0};
     u32 expectedTile = 0xffffffffU;
@@ -397,7 +397,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
 
     for (cellIndex = 0; cellIndex < 4; ++cellIndex) {
         s16 matrix[4];
-        GraphicsLookupCacheEntry *cacheEntry;
+        GraphicsAffineMatrixCacheEntry *cacheEntry;
         s32 scaleX;
         s32 scaleY;
         u32 angle;
@@ -416,14 +416,15 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         matrix[2] = DivideAffineComponent(sine, scaleY);
         matrix[3] = DivideAffineComponent(cosine, scaleY);
 
-        cacheEntry = GraphicsLookupCache_Find(lookupCache, matrix);
+        cacheEntry = GraphicsAffineMatrixCache_FindMatrix(affineMatrixCache,
+                                                          matrix);
         if (cacheEntry == 0) {
-            cacheEntry = GraphicsLookupCache_TakeSearchEnd(lookupCache);
+            cacheEntry = GraphicsAffineMatrixCache_Allocate(affineMatrixCache);
             if (cacheEntry != 0) {
-                cacheEntry->record[0] = matrix[0];
-                cacheEntry->record[4] = matrix[1];
-                cacheEntry->record[8] = matrix[2];
-                cacheEntry->record[12] = matrix[3];
+                cacheEntry->affineParameters[0] = matrix[0];
+                cacheEntry->affineParameters[4] = matrix[1];
+                cacheEntry->affineParameters[8] = matrix[2];
+                cacheEntry->affineParameters[12] = matrix[3];
             }
         }
         matrixEntries[cellIndex] = cacheEntry;
@@ -432,10 +433,10 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     for (entry = firstEntry; entry != 0; entry = entry->chainNext) {
         u16 *attribute1 = (u16 *)&entry->field_10 + 1;
         u32 variant = (*attribute1 >> 9) & 0x1fU;
-        GraphicsLookupCacheEntry *cacheEntry = matrixEntries[variant & 3U];
+        GraphicsAffineMatrixCacheEntry *cacheEntry = matrixEntries[variant & 3U];
         if (cacheEntry != 0) {
             *attribute1 = (u16)((*attribute1 & ~0x3e00U) |
-                                ((cacheEntry->index & 0x1fU) << 9));
+                                ((cacheEntry->oamAffineIndex & 0x1fU) << 9));
         }
     }
 

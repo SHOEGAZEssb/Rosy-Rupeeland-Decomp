@@ -6,6 +6,7 @@
  * the optional 0x6000-byte character upload through SDK hardware boundaries.
  */
 #include "tingle/graphics_transfer_queue.h"
+#include "tingle/graphics_lookup_cache.h"
 #include "tingle/graphics_sprite_group.h"
 #include "tingle/types.h"
 
@@ -34,7 +35,7 @@ extern void *GraphicsVramAllocator_Allocate(void *allocator, u16 size,
 extern void GraphicsVramAllocator_Release(void *allocator, void *allocation);
 extern void func_02072ea4(void *state, void *entry, void *queue);
 extern void func_02073340(void *state, void *entry, void *queue,
-                          void *lookup_cache);
+                          GraphicsAffineMatrixCache *affineMatrixCache);
 extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *renderer,
                                                         void *entry);
 
@@ -47,11 +48,13 @@ extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *renderer,
 void func_020745c4(void *renderer_pointer, s32 sort_roots)
 {
     u8 *renderer = (u8 *)renderer_pointer;
+    GraphicsAffineMatrixCache *affineMatrixCache =
+        (GraphicsAffineMatrixCache *)(renderer + 0x1a80);
     GraphicsSpriteGroup *group;
     s32 oam_index = 0;
 
     GraphicsRenderEntryPool_Reset(renderer + 0xe70);
-    *(void **)(renderer + 0x1d0c) = *(void **)(renderer + 0x1d08);
+    affineMatrixCache->nextFree = affineMatrixCache->searchBegin;
     if (*(u32 *)(renderer + 0x30) == 0)
         return;
     if (*(u32 *)(renderer + 0x38) != 0)
@@ -108,7 +111,7 @@ void func_020745c4(void *renderer_pointer, s32 sort_roots)
                             } else {
                                 func_02073340(state, entry,
                                               renderer + 0x1d14,
-                                              renderer + 0x1a80);
+                                              affineMatrixCache);
                             }
                         }
                     }

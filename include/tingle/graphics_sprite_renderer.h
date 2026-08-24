@@ -33,7 +33,7 @@ typedef struct GraphicsSpriteRenderer {
     GraphicsIndexedChainPool indexedPool0;
     GraphicsIndexedChainPool indexedPool1;
     GraphicsRenderEntryPool renderEntryPool;
-    GraphicsLookupCache lookupCache;
+    GraphicsAffineMatrixCache affineMatrixCache;
     GraphicsTransferQueue transferQueue;
 } GraphicsSpriteRenderer;
 

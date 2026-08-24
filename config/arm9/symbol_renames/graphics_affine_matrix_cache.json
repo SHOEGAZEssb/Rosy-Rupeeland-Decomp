@@ -1,0 +1,8 @@
+{
+  "func_0207298c": "GraphicsAffineMatrixCacheEntry_Init",
+  "func_020729a4": "GraphicsAffineMatrixCacheEntry_Destroy",
+  "func_020729a8": "GraphicsAffineMatrixCache_Init",
+  "func_02072a38": "GraphicsAffineMatrixCache_BindOamBuffer",
+  "func_02072a64": "GraphicsAffineMatrixCache_FindMatrix",
+  "func_02072acc": "GraphicsAffineMatrixCache_Allocate"
+}

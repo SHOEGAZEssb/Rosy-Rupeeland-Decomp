@@ -21,8 +21,9 @@ extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
 /*
  * Construct every embedded allocator/pool in dependency order, store the three
  * caller configuration words, initialize owner-list and control fields, run
- * the renderer-specific setup, reset render entries, and bind the lookup cache
- * to shadowBuffer. Finally clear seven leading pointers and set field_20 to 16.
+ * the renderer-specific setup, reset render entries, and bind the affine matrix
+ * cache to shadowBuffer. Finally clear seven leading pointers and set field_20
+ * to 16.
  * Returns renderer. No heap allocation occurs; callees initialize fixed arrays
  * and may establish renderer/platform state, but this function directly writes
  * no graphics registers.
@@ -34,7 +35,7 @@ GraphicsSpriteRenderer *GraphicsSpriteRenderer_Init(GraphicsSpriteRenderer *rend
     GraphicsIndexedChainPool_Init(&renderer->indexedPool0);
     GraphicsIndexedChainPool_Init(&renderer->indexedPool1);
     GraphicsRenderEntryPool_Init(&renderer->renderEntryPool);
-    GraphicsLookupCache_Init(&renderer->lookupCache);
+    GraphicsAffineMatrixCache_Init(&renderer->affineMatrixCache);
     GraphicsTransferQueue_Init(&renderer->transferQueue);
     renderer->engine = engine;
     renderer->field_28 = field28;
@@ -46,8 +47,8 @@ GraphicsSpriteRenderer *GraphicsSpriteRenderer_Init(GraphicsSpriteRenderer *rend
     renderer->groupHead = 0;
     GraphicsSpriteRenderer_ConfigureObjectDisplay(renderer);
     GraphicsRenderEntryPool_Reset(&renderer->renderEntryPool);
-    GraphicsLookupCache_BindRecords(
-        &renderer->lookupCache, renderer->shadowBuffer);
+    GraphicsAffineMatrixCache_BindOamBuffer(
+        &renderer->affineMatrixCache, renderer->shadowBuffer);
     renderer->field_38 = 1;
     renderer->field_1c = 0;
     renderer->field_20 = 0x10;
