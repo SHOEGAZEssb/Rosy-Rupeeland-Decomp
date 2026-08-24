@@ -96,7 +96,7 @@ GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 
 GamePhaseEffectScene *GamePhaseEffectScene_Destroy(GamePhaseEffectScene *self)
 {
     self->base.vtable = &data_020d5400;
-    GraphicsSpriteGroup_ReleaseState((GraphicsSpriteGroup *)self->sprite->field_00, self->sprite);
+    GraphicsSpriteGroup_ReleaseState(self->sprite->group, self->sprite);
     if (self->resources != 0)
         self->resources->vtable->destroy(self->resources);
     Scene_Destroy(&self->base);
@@ -107,7 +107,7 @@ GamePhaseEffectScene *GamePhaseEffectScene_Destroy(GamePhaseEffectScene *self)
 GamePhaseEffectScene *GamePhaseEffectScene_DestroyAndFree(GamePhaseEffectScene *self)
 {
     self->base.vtable = &data_020d5400;
-    GraphicsSpriteGroup_ReleaseState((GraphicsSpriteGroup *)self->sprite->field_00, self->sprite);
+    GraphicsSpriteGroup_ReleaseState(self->sprite->group, self->sprite);
     if (self->resources != 0)
         self->resources->vtable->destroy(self->resources);
     Scene_Destroy(&self->base);
@@ -135,7 +135,7 @@ s32 GamePhaseEffectScene_Update(GamePhaseEffectScene *self)
 
     {
         s32 complete = callback(adjusted);
-        GraphicsSpriteGroup_AdvanceAnimations((GraphicsSpriteGroup *)self->sprite->field_00);
+        GraphicsSpriteGroup_AdvanceAnimations(self->sprite->group);
         *(volatile u32 *)0x04000064 = 0xc0310010;
         if (complete) {
             if (self != 0)

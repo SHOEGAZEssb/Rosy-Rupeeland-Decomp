@@ -1,0 +1,11 @@
+{
+  "func_02073e90": "GraphicsSpriteState_ReleaseResources",
+  "func_02073ed4": "GraphicsSpriteState_PrepareResources",
+  "func_020741b0": "GraphicsSpriteState_InitGlobalPool",
+  "func_020743ac": "GraphicsSpriteStatePool_Allocate",
+  "func_0207442c": "GraphicsSpriteStatePool_Release",
+  "func_0207447c": "GraphicsSpriteState_ReplaceResources",
+  "data_021ede68": "gGraphicsSpriteStatePool",
+  "data_021ede74": "gGraphicsSpriteStatePoolDestructorRecord",
+  "data_021edea0": "gGraphicsSpriteStates"
+}

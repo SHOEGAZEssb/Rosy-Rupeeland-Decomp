@@ -171,9 +171,9 @@ Overlay60Resources* func_ov060_0220ff1c(Overlay60Resources* self, Scene* scene,
         func_ov060_0220fd20(region, 100, &bounds);
     TouchRegionManager_Add(
         (TouchRegionManager*)Scene_GetEmbedded10(scene), &region->base);
-    source.field_00 = self->resource[0];
-    source.field_04 = self->resource[1];
-    source.field_08 = self->resource[2];
+    source.graphicsResource = self->resource[0];
+    source.paletteResource = self->resource[1];
+    source.animationResource = self->resource[2];
     func_ov060_0220fd84(region,
         GraphicsSpriteGroup_CreateStateFromSource(self->group, &source, 1), 0,
         1);

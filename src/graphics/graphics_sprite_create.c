@@ -35,8 +35,9 @@ GraphicsSpriteState *GraphicsSpriteState_Create(
     u16 flagsToSet, u16 flagsToClear)
 {
     GraphicsSpriteState *state =
-        GraphicsSpriteGroup_CreateState(group, resources->field_04, resources->field_08,
-                      resources->field_0c, 2);
+        GraphicsSpriteGroup_CreateState(
+            group, resources->graphicsResource, resources->paletteResource,
+            resources->animationResource, 2);
     GraphicsSpriteState_Configure(state, animationIndex, field3a, field28,
                   flagsToSet, flagsToClear);
     return state;

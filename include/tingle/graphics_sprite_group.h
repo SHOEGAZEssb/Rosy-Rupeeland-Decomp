@@ -17,9 +17,9 @@ typedef struct GraphicsSpriteGroup {
 } GraphicsSpriteGroup;
 
 typedef struct GraphicsSpriteSource3 {
-    void *field_00;
-    void *field_04;
-    void *field_08;
+    void *graphicsResource;
+    void *paletteResource;
+    void *animationResource;
 } GraphicsSpriteSource3;
 
 typedef char GraphicsSpriteGroupSizeCheck[
@@ -39,18 +39,18 @@ void GraphicsSpriteGroup_AppendState(GraphicsSpriteGroup *group,
 void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
                                      GraphicsSpriteState *state);
 GraphicsSpriteState *GraphicsSpriteGroup_CreateState(
-    GraphicsSpriteGroup *group, void *field14, void *field18, void *field1c,
-    u8 attach);
+    GraphicsSpriteGroup *group, void *graphicsResource, void *paletteResource,
+    void *animationResource, u8 graphicsBindingMode);
 GraphicsSpriteState *GraphicsSpriteGroup_CreateStateFromSource(
     GraphicsSpriteGroup *group, const GraphicsSpriteSource3 *source,
-    u8 attach);
+    u8 graphicsBindingMode);
 void GraphicsSpriteGroup_ReleaseState(GraphicsSpriteGroup *group,
                                       GraphicsSpriteState *state);
 void GraphicsSpriteGroup_Clear(GraphicsSpriteGroup *group);
 void GraphicsSpriteGroup_AdvanceAnimations(GraphicsSpriteGroup *group);
 void GraphicsSpriteGroup_ReplaceStateResources(
-    GraphicsSpriteGroup *group, GraphicsSpriteState *state, void *field14,
-    void *field18, void *field1c);
+    GraphicsSpriteGroup *group, GraphicsSpriteState *state,
+    void *graphicsResource, void *paletteResource, void *animationResource);
 void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(
     GraphicsSpriteGroup *group, GraphicsSpriteState *state,
     const GraphicsSpriteSource3 *source);

@@ -26,13 +26,13 @@ void GraphicsSpriteState_Reset(GraphicsSpriteState *state)
 {
     s16 one;
 
-    state->field_00 = 0;
-    state->field_08 = 0;
-    state->field_04 = 0;
-    state->field_0c = 0;
-    state->field_10 = 0;
-    state->field_14 = 0;
-    state->field_18 = 0;
+    state->group = 0;
+    state->nextOrFree = 0;
+    state->previous = 0;
+    state->graphicsVramBinding = 0;
+    state->indexedPaletteBinding = 0;
+    state->graphicsResource = 0;
+    state->paletteResource = 0;
     state->animationResource = 0;
     state->framePosition = 0;
     state->field_2a = 0;

@@ -84,9 +84,9 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     const u16 *cell;
     SpritePaletteBinding *palette;
     GraphicsVramRangeNode *binding =
-        (GraphicsVramRangeNode *)state->field_0c;
+        (GraphicsVramRangeNode *)state->graphicsVramBinding;
     SpriteGraphicsResource *graphics =
-        (SpriteGraphicsResource *)state->field_14;
+        (SpriteGraphicsResource *)state->graphicsResource;
     u32 paletteIndices[16] = {0};
     u32 expectedTile = 0xffffffffU;
     u32 tileDestination;
@@ -102,7 +102,7 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     cellFrame = &animation->cellFrames[timing->resourceIndex];
     cell = animation->cells + (u32)cellFrame->firstCell * 4U;
 
-    for (palette = (SpritePaletteBinding *)state->field_10;
+    for (palette = (SpritePaletteBinding *)state->indexedPaletteBinding;
          palette != 0;
          palette = palette->next) {
         paletteIndices[paletteCount++] = palette->paletteIndex;
@@ -159,9 +159,9 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         }
 
         finalX = x + state->screenX +
-                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetX;
+                 state->group->screenOffsetX;
         finalY = y + state->screenY +
-                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetY;
+                 state->group->screenOffsetY;
         attributes[1] = (u16)((attributes[1] & 0xfe00U) |
                               ((u32)finalX & 0x1ffU));
         attributes[0] = (u16)((attributes[0] & 0xff00U) |
@@ -245,9 +245,9 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     const u16 *cell;
     SpritePaletteBinding *palette;
     GraphicsVramRangeNode *binding =
-        (GraphicsVramRangeNode *)state->field_0c;
+        (GraphicsVramRangeNode *)state->graphicsVramBinding;
     SpriteGraphicsResource *graphics =
-        (SpriteGraphicsResource *)state->field_14;
+        (SpriteGraphicsResource *)state->graphicsResource;
     GraphicsRenderEntry *firstEntry = entry;
     GraphicsLookupCacheEntry *matrixEntries[4] = {0};
     u32 paletteIndices[16] = {0};
@@ -270,7 +270,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                  state->scaleX < -0x100 || state->scaleY > 0x100 ||
                  state->scaleY < -0x100 ? 3 : 1;
 
-    for (palette = (SpritePaletteBinding *)state->field_10;
+    for (palette = (SpritePaletteBinding *)state->indexedPaletteBinding;
          palette != 0; palette = palette->next)
         paletteIndices[paletteCount++] = palette->paletteIndex;
 
@@ -336,9 +336,9 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         }
 
         finalX = x + state->screenX +
-                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetX;
+                 state->group->screenOffsetX;
         finalY = y + state->screenY +
-                 ((GraphicsSpriteGroup *)state->field_00)->screenOffsetY;
+                 state->group->screenOffsetY;
 
         matrixVariant = ((cell[1] >> 12) & 1U) ^
                         (((state->flags & 0x40) != 0) ? 1U : 0U);

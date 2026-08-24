@@ -13,8 +13,8 @@ typedef struct GraphicsSpriteResource14 {
 } GraphicsSpriteResource14;
 
 typedef struct GraphicsSpriteStatePool {
-    u32 count;
-    u32 field_04;
+    u32 liveCount;
+    u32 interruptState;
     GraphicsSpriteState *freeHead;
 } GraphicsSpriteStatePool;
 
@@ -31,14 +31,16 @@ extern void GraphicsSpriteResource_Prepare(void *resource);
 extern void func_02070d38(void *resource);
 extern void func_02070d74(void *resource);
 extern GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
-    void *owner, void *field14, void *field18, void *field1c,
-    u8 attach, GraphicsSpriteGroup *group);
+    void *owner, void *graphicsResource, void *paletteResource,
+    void *animationResource, u8 graphicsBindingMode,
+    GraphicsSpriteGroup *group);
 extern void GraphicsSpriteStatePool_Release(void *owner,
                                             GraphicsSpriteState *state);
 extern void GraphicsSpriteState_ReplaceResources(void *owner,
                                                  GraphicsSpriteState *state,
-                                                 void *field14, void *field18,
-                                                 void *field1c);
+                                                 void *graphicsResource,
+                                                 void *paletteResource,
+                                                 void *animationResource);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(
     void *owner, GraphicsSpriteGroup *group);
 extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *owner,
@@ -56,14 +58,14 @@ extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *owner,
  */
 void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state)
 {
-    GraphicsSpriteResource_ReleaseTexture(state->field_14);
-    if (((GraphicsSpriteResource14 *)state->field_14)->field_24 != 0) {
+    GraphicsSpriteResource_ReleaseTexture(state->graphicsResource);
+    if (((GraphicsSpriteResource14 *)state->graphicsResource)->field_24 != 0) {
         return;
     }
-    if (state->field_0c != 0) {
-        ((u8 *)state->field_0c)[0x0c] = 0;
+    if (state->graphicsVramBinding != 0) {
+        ((u8 *)state->graphicsVramBinding)[0x0c] = 0;
     }
-    func_02070830(state->field_18);
+    func_02070830(state->paletteResource);
     func_02070d38(state->animationResource);
 }
 
@@ -74,8 +76,8 @@ void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state)
  */
 void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state)
 {
-    func_02070418(state->field_14);
-    GraphicsSpriteResource_Prepare(state->field_18);
+    func_02070418(state->graphicsResource);
+    GraphicsSpriteResource_Prepare(state->paletteResource);
     func_02070d74(state->animationResource);
 }
 
@@ -87,7 +89,7 @@ void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state)
  */
 void GraphicsSpriteState_ReleaseFromGroup(GraphicsSpriteState *state)
 {
-    GraphicsSpriteGroup *group = (GraphicsSpriteGroup *)state->field_00;
+    GraphicsSpriteGroup *group = state->group;
 
     GraphicsSpriteGroup_RemoveState(group, state);
     GraphicsSpriteStatePool_Release(group->owner, state);
@@ -145,13 +147,13 @@ void GraphicsSpriteGroup_AppendState(GraphicsSpriteGroup *group,
         return;
     }
     if (group->head != 0) {
-        group->tail->field_08 = state;
+        group->tail->nextOrFree = state;
     } else {
         group->head = state;
     }
-    state->field_04 = group->tail;
+    state->previous = group->tail;
     group->tail = state;
-    state->field_08 = 0;
+    state->nextOrFree = 0;
     group->count++;
 }
 #else
@@ -189,15 +191,15 @@ void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
     if (state == 0) {
         return;
     }
-    if (state->field_04 != 0) {
-        ((GraphicsSpriteState *)state->field_04)->field_08 = state->field_08;
+    if (state->previous != 0) {
+        state->previous->nextOrFree = state->nextOrFree;
     } else {
-        group->head = (GraphicsSpriteState *)state->field_08;
+        group->head = state->nextOrFree;
     }
-    if (state->field_08 != 0) {
-        ((GraphicsSpriteState *)state->field_08)->field_04 = state->field_04;
+    if (state->nextOrFree != 0) {
+        state->nextOrFree->previous = state->previous;
     } else {
-        group->tail = (GraphicsSpriteState *)state->field_04;
+        group->tail = state->previous;
     }
     group->count--;
 }
@@ -225,15 +227,16 @@ asm void GraphicsSpriteGroup_RemoveState(GraphicsSpriteGroup *group,
 
 /*
  * Allocate/configure a sprite state from the renderer using three resource
- * pointers and attach policy, append it to group, and return it. Pool
+ * pointers and graphics-binding policy, append it to group, and return it. Pool
  * exhaustion behavior is inherited from GraphicsSpriteStatePool_Allocate.
  */
 GraphicsSpriteState *GraphicsSpriteGroup_CreateState(
-    GraphicsSpriteGroup *group, void *field14, void *field18, void *field1c,
-    u8 attach)
+    GraphicsSpriteGroup *group, void *graphicsResource, void *paletteResource,
+    void *animationResource, u8 graphicsBindingMode)
 {
     GraphicsSpriteState *state = GraphicsSpriteStatePool_Allocate(
-        group->owner, field14, field18, field1c, attach, group);
+        group->owner, graphicsResource, paletteResource, animationResource,
+        graphicsBindingMode, group);
     GraphicsSpriteGroup_AppendState(group, state);
     return state;
 }
@@ -245,11 +248,11 @@ GraphicsSpriteState *GraphicsSpriteGroup_CreateState(
  */
 GraphicsSpriteState *GraphicsSpriteGroup_CreateStateFromSource(
     GraphicsSpriteGroup *group, const GraphicsSpriteSource3 *source,
-    u8 attach)
+    u8 graphicsBindingMode)
 {
     GraphicsSpriteState *state = GraphicsSpriteStatePool_Allocate(
-        group->owner, source->field_00, source->field_04, source->field_08,
-        attach, group);
+        group->owner, source->graphicsResource, source->paletteResource,
+        source->animationResource, graphicsBindingMode, group);
     GraphicsSpriteGroup_AppendState(group, state);
     return state;
 }
@@ -276,7 +279,7 @@ void GraphicsSpriteGroup_Clear(GraphicsSpriteGroup *group)
     GraphicsSpriteState *state = group->head;
 
     while (state != 0) {
-        GraphicsSpriteState *next = (GraphicsSpriteState *)state->field_08;
+        GraphicsSpriteState *next = state->nextOrFree;
         GraphicsSpriteGroup_RemoveState(group, state);
         GraphicsSpriteStatePool_Release(group->owner, state);
         state = next;
@@ -293,7 +296,7 @@ void GraphicsSpriteGroup_AdvanceAnimations(GraphicsSpriteGroup *group)
 
     while (state != 0) {
         GraphicsSpriteState_AdvanceAnimation(state);
-        state = (GraphicsSpriteState *)state->field_08;
+        state = state->nextOrFree;
     }
 }
 
@@ -302,12 +305,13 @@ void GraphicsSpriteGroup_AdvanceAnimations(GraphicsSpriteGroup *group)
  * owning renderer. Resource releases/reacquisition may occur in the callee.
  */
 void GraphicsSpriteGroup_ReplaceStateResources(
-    GraphicsSpriteGroup *group, GraphicsSpriteState *state, void *field14,
-    void *field18, void *field1c)
+    GraphicsSpriteGroup *group, GraphicsSpriteState *state,
+    void *graphicsResource, void *paletteResource, void *animationResource)
 {
     if (state != 0) {
-        GraphicsSpriteState_ReplaceResources(group->owner, state, field14,
-                                             field18, field1c);
+        GraphicsSpriteState_ReplaceResources(
+            group->owner, state, graphicsResource, paletteResource,
+            animationResource);
     }
 }
 
@@ -321,8 +325,8 @@ void GraphicsSpriteGroup_ReplaceStateResourcesFromSource(
 {
     if (state != 0) {
         GraphicsSpriteState_ReplaceResources(
-            group->owner, state, source->field_00,
-            source->field_04, source->field_08);
+            group->owner, state, source->graphicsResource,
+            source->paletteResource, source->animationResource);
     }
 }
 
@@ -338,12 +342,12 @@ void GraphicsSpriteGroup_ReleaseIndexedEntries(GraphicsSpriteGroup *group)
     group->renderEnabled = 0;
     state = group->head;
     while (state != 0) {
-        if (state->field_10 != 0) {
+        if (state->indexedPaletteBinding != 0) {
             GraphicsSpriteRenderer_ReleaseIndexedEntry(group->owner,
-                                                       state->field_10);
-            state->field_10 = 0;
+                state->indexedPaletteBinding);
+            state->indexedPaletteBinding = 0;
         }
-        state = (GraphicsSpriteState *)state->field_08;
+        state = state->nextOrFree;
     }
 }
 
@@ -354,7 +358,7 @@ void GraphicsSpriteGroup_ReleaseResources(GraphicsSpriteGroup *group)
 
     while (state != 0) {
         GraphicsSpriteState_ReleaseResources(state);
-        state = (GraphicsSpriteState *)state->field_08;
+        state = state->nextOrFree;
     }
 }
 
@@ -365,7 +369,7 @@ void GraphicsSpriteGroup_PrepareResources(GraphicsSpriteGroup *group)
 
     while (state != 0) {
         GraphicsSpriteState_PrepareResources(state);
-        state = (GraphicsSpriteState *)state->field_08;
+        state = state->nextOrFree;
     }
 }
 
@@ -385,9 +389,9 @@ void GraphicsSpriteState_InitGlobalPool(void)
 {
     s32 index;
 
-    gGraphicsSpriteStatePool.count = 0;
+    gGraphicsSpriteStatePool.liveCount = 0;
     gGraphicsSpriteStatePool.freeHead = gGraphicsSpriteStates;
     for (index = 0; index < 383; index++) {
-        gGraphicsSpriteStates[index].field_08 = &gGraphicsSpriteStates[index + 1];
+        gGraphicsSpriteStates[index].nextOrFree = &gGraphicsSpriteStates[index + 1];
     }
 }

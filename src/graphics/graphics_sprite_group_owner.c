@@ -136,12 +136,13 @@ GraphicsSpriteGroup *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner)
 }
 
 /* Creates a state from a three-resource source and returns the resulting
- * state; attach is narrowed to the retail byte-sized flag. */
+ * state; graphicsBindingMode is narrowed to the retail byte-sized flag. */
 void *GraphicsSpriteGroup_CreateStateFromSourceWrapper(GraphicsSpriteGroup *group,
-                   const GraphicsSpriteSource3 *source, s32 attach)
+                   const GraphicsSpriteSource3 *source,
+                   s32 graphicsBindingMode)
 {
     return GraphicsSpriteGroup_CreateStateFromSource(group, source,
-                                                      (u8)attach);
+                                                      (u8)graphicsBindingMode);
 }
 
 /* Releases the group's indexed entries without destroying the group. */

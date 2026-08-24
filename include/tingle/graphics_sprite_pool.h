@@ -8,13 +8,15 @@ extern "C" {
 #endif
 
 GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
-    void *owner, void *field14, void *field18, void *field1c,
-    u8 attach, GraphicsSpriteGroup *group);
+    void *owner, void *graphicsResource, void *paletteResource,
+    void *animationResource, u8 graphicsBindingMode,
+    GraphicsSpriteGroup *group);
 void GraphicsSpriteStatePool_Release(void *owner, GraphicsSpriteState *state);
 void GraphicsSpriteState_ReplaceResources(void *owner,
                                           GraphicsSpriteState *state,
-                                          void *field14, void *field18,
-                                          void *field1c);
+                                          void *graphicsResource,
+                                          void *paletteResource,
+                                          void *animationResource);
 
 #ifdef __cplusplus
 }

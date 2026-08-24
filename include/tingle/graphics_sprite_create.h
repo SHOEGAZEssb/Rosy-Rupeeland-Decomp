@@ -6,9 +6,9 @@
 /* Resource tuple with an unidentified leading field skipped by creation. */
 typedef struct GraphicsSpriteResourceDescriptor {
     void *field_00;
-    void *field_04;
-    void *field_08;
-    void *field_0c;
+    void *graphicsResource;
+    void *paletteResource;
+    void *animationResource;
 } GraphicsSpriteResourceDescriptor;
 
 #ifdef __cplusplus

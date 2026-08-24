@@ -106,8 +106,9 @@ void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state)
 
     if (state->frameIndex != frameIndex) {
         state->frameIndex = (u8)frameIndex;
-        if ((state->field_3b & 1) == 0 && state->field_0c != 0) {
-            ((u8 *)state->field_0c)[0x0c] = 0;
+        if ((state->field_3b & 1) == 0 &&
+            state->graphicsVramBinding != 0) {
+            ((u8 *)state->graphicsVramBinding)[0x0c] = 0;
         }
     }
 }

@@ -3,15 +3,17 @@
 
 #include "tingle/types.h"
 
-/* Sprite animation/render state; several pointer roles remain under recovery. */
+struct GraphicsSpriteGroup;
+
+/* Sprite animation/render state and its owner-scoped resource bindings. */
 typedef struct GraphicsSpriteState {
-    void *field_00;
-    void *field_04;
-    void *field_08;
-    void *field_0c;
-    void *field_10;
-    void *field_14;
-    void *field_18;
+    struct GraphicsSpriteGroup *group;
+    struct GraphicsSpriteState *previous;
+    struct GraphicsSpriteState *nextOrFree;
+    void *graphicsVramBinding;
+    void *indexedPaletteBinding;
+    void *graphicsResource;
+    void *paletteResource;
     void *animationResource;
     s32 framePosition;
     u16 flags;

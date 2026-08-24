@@ -3,13 +3,13 @@
 
 /*
  * Allocation, recycling, and resource replacement for fixed-pool sprite
- * states. The pool contains 384 stable objects and uses field_08 as its free
+ * states. The pool contains 384 stable objects and uses nextOrFree as its free
  * link while an object is not attached to a sprite group.
  */
 
 typedef struct GraphicsSpriteStatePool {
-    u32 count;
-    u32 field_04;
+    u32 liveCount;
+    u32 interruptState;
     GraphicsSpriteState *freeHead;
 } GraphicsSpriteStatePool;
 
@@ -45,27 +45,30 @@ extern void GraphicsSpriteRenderer_ReleaseIndexedEntry(void *owner,
 
 /*
  * Pop one state from the global free list, reset it, bind its group and three
- * resource pointers, and optionally acquire the offset-0x0c VRAM range when
- * attach equals one. Returns the state. Retail performs no exhaustion check;
+ * resource pointers, and optionally acquire the graphics VRAM binding when
+ * graphicsBindingMode equals one. Returns the state. Retail performs no
+ * exhaustion check;
  * an empty free list is outside the valid caller contract. Pool and optional
  * VRAM allocator state change, with no direct SDK or hardware access.
  */
 GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
-    void *owner, void *field14, void *field18, void *field1c,
-    u8 attach, GraphicsSpriteGroup *group)
+    void *owner, void *graphicsResource, void *paletteResource,
+    void *animationResource, u8 graphicsBindingMode,
+    GraphicsSpriteGroup *group)
 {
     GraphicsSpriteState *state = gGraphicsSpriteStatePool.freeHead;
 
-    gGraphicsSpriteStatePool.freeHead = (GraphicsSpriteState *)state->field_08;
-    gGraphicsSpriteStatePool.count++;
+    gGraphicsSpriteStatePool.freeHead = state->nextOrFree;
+    gGraphicsSpriteStatePool.liveCount++;
     GraphicsSpriteState_Reset(state);
-    state->field_00 = group;
-    state->field_14 = field14;
-    state->field_18 = field18;
-    state->animationResource = field1c;
-    if (attach == 1) {
-        state->field_0c =
-            GraphicsSpriteRenderer_AcquireGraphicsVramBinding(owner, field14);
+    state->group = group;
+    state->graphicsResource = graphicsResource;
+    state->paletteResource = paletteResource;
+    state->animationResource = animationResource;
+    if (graphicsBindingMode == 1) {
+        state->graphicsVramBinding =
+            GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
+                owner, graphicsResource);
         state->field_3b |= 1;
     }
     return state;
@@ -73,8 +76,8 @@ GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
 
 /*
  * Return a non-null state to the global pool. Release its offset-0x0c VRAM
- * range and offset-0x10 renderer allocation first, then push it through
- * field_08 and decrement the live count. The state is invalid for caller use.
+ * range and indexed-palette binding first, then push it through nextOrFree and
+ * decrement the live count. The state is invalid for caller use.
  */
 void GraphicsSpriteStatePool_Release(void *ownerPointer,
                                      GraphicsSpriteState *state)
@@ -86,26 +89,29 @@ void GraphicsSpriteStatePool_Release(void *ownerPointer,
         return;
     }
     GraphicsVramAllocator_Release(&owner->vramAllocator,
-                  (GraphicsVramRangeNode *)state->field_0c);
-    GraphicsSpriteRenderer_ReleaseIndexedEntry(owner, state->field_10);
-    state->field_08 = gGraphicsSpriteStatePool.freeHead;
+                  (GraphicsVramRangeNode *)state->graphicsVramBinding);
+    GraphicsSpriteRenderer_ReleaseIndexedEntry(
+        owner, state->indexedPaletteBinding);
+    state->nextOrFree = gGraphicsSpriteStatePool.freeHead;
     gGraphicsSpriteStatePool.freeHead = state;
-    gGraphicsSpriteStatePool.count--;
+    gGraphicsSpriteStatePool.liveCount--;
 }
 
 /*
  * Replace any changed resource pointers on state unless state is null or
- * field_3b bit 1 freezes replacement. A field_14 change always drops the VRAM
- * range and reacquires it when attachment bit 0 is set. A field_18 change
- * releases and clears offset 0x10. For an unattached state, a field_1c change
- * also drops offset 0x0c when the nested offset-0x24 identities differ.
+ * field_3b bit 1 freezes replacement. A graphics-resource change always drops
+ * the VRAM range and reacquires it when attachment bit 0 is set. A palette-
+ * resource change releases and clears the indexed binding. For an unattached
+ * state, an animation-resource change also drops the VRAM binding when the
+ * nested offset-0x24 identities differ.
  * Returns no value; renderer allocator state may change through the helpers.
  */
 #ifndef MATCHING
 void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
                                           GraphicsSpriteState *state,
-                                          void *field14, void *field18,
-                                          void *field1c)
+                                          void *graphicsResource,
+                                          void *paletteResource,
+                                          void *animationResource)
 {
     GraphicsSpritePoolOwner *owner =
         (GraphicsSpritePoolOwner *)ownerPointer;
@@ -113,39 +119,43 @@ void GraphicsSpriteState_ReplaceResources(void *ownerPointer,
     if (state == 0 || (state->field_3b & 2) != 0) {
         return;
     }
-    if (state->field_14 != field14) {
+    if (state->graphicsResource != graphicsResource) {
         GraphicsVramAllocator_Release(&owner->vramAllocator,
-                      (GraphicsVramRangeNode *)state->field_0c);
-        state->field_0c = 0;
-        state->field_14 = field14;
+                      (GraphicsVramRangeNode *)state->graphicsVramBinding);
+        state->graphicsVramBinding = 0;
+        state->graphicsResource = graphicsResource;
         if ((state->field_3b & 1) != 0) {
-            state->field_0c = GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
-                owner, field14);
+            state->graphicsVramBinding =
+                GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
+                    owner, graphicsResource);
         }
     }
-    if (state->field_18 != field18) {
-        GraphicsSpriteRenderer_ReleaseIndexedEntry(owner, state->field_10);
-        state->field_10 = 0;
-        state->field_18 = field18;
+    if (state->paletteResource != paletteResource) {
+        GraphicsSpriteRenderer_ReleaseIndexedEntry(
+            owner, state->indexedPaletteBinding);
+        state->indexedPaletteBinding = 0;
+        state->paletteResource = paletteResource;
     }
-    if (state->animationResource != field1c) {
+    if (state->animationResource != animationResource) {
         if ((state->field_3b & 1) == 0 &&
             ((GraphicsSpriteResource1c *)state->animationResource)
                     ->field_20->field_24 !=
-                ((GraphicsSpriteResource1c *)field1c)->field_20->field_24) {
+                ((GraphicsSpriteResource1c *)animationResource)
+                    ->field_20->field_24) {
             GraphicsVramAllocator_Release(&owner->vramAllocator,
-                          (GraphicsVramRangeNode *)state->field_0c);
-            state->field_0c = 0;
+                          (GraphicsVramRangeNode *)state->graphicsVramBinding);
+            state->graphicsVramBinding = 0;
         }
-        state->animationResource = field1c;
+        state->animationResource = animationResource;
     }
 }
 #else
 /* This matching fallback implements the documented portable C directly above. */
 asm void GraphicsSpriteState_ReplaceResources(void *owner,
                                               GraphicsSpriteState *state,
-                                              void *field14, void *field18,
-                                              void *field1c)
+                                              void *graphicsResource,
+                                              void *paletteResource,
+                                              void *animationResource)
 {
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldr r4, [sp, #0x18]

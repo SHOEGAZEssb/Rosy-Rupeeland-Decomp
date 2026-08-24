@@ -8,15 +8,8 @@
  * screen pixels and all referenced resource storage remains owned by the
  * recovered graphics caches.
  */
-#include "tingle/graphics_sprite_state.h"
+#include "tingle/graphics_sprite_group.h"
 #include "tingle/types.h"
-
-typedef struct SpriteOwnerState {
-    u8 padding_00[0x18];
-    s32 screenX;
-    s32 screenY;
-    s32 enabled;
-} SpriteOwnerState;
 
 typedef struct SpriteGraphicsResource {
     u8 padding_00[0x14];
@@ -111,17 +104,17 @@ static s32 CellContainsOpaquePixel(const SpriteGraphicsResource *graphics,
  */
 s32 func_02073aa8(GraphicsSpriteState *state, s32 pointX, s32 pointY)
 {
-    SpriteOwnerState *owner = (SpriteOwnerState *)state->field_00;
+    GraphicsSpriteGroup *group = state->group;
     SpriteGraphicsResource *graphics =
-        (SpriteGraphicsResource *)state->field_14;
+        (SpriteGraphicsResource *)state->graphicsResource;
     SpriteFrameResource *animation =
         (SpriteFrameResource *)state->animationResource;
     SpriteFrameSequence *sequence;
     SpriteFrameTiming *timing;
     SpriteCellFrame *frame;
     const u16 *cell;
-    s32 centerX = state->screenX + owner->screenX;
-    s32 centerY = state->screenY + owner->screenY;
+    s32 centerX = state->screenX + group->screenOffsetX;
+    s32 centerY = state->screenY + group->screenOffsetY;
     s32 index;
 
     if (state->rotationAngle != 0) {
@@ -190,18 +183,18 @@ s32 func_02073aa8(GraphicsSpriteState *state, s32 pointX, s32 pointY)
 s32 func_0209286c(GraphicsSpriteState *state, const SpriteTouchPoint *point,
                   s32 horizontalRadius, s32 verticalRadius)
 {
-    SpriteOwnerState *owner;
+    GraphicsSpriteGroup *group;
     s32 centerX;
     s32 centerY;
 
     if (state == 0 || (state->flags & 0x0c) != 0)
         return 0;
-    owner = (SpriteOwnerState *)state->field_00;
-    if (owner->enabled == 0)
+    group = state->group;
+    if (group->renderEnabled == 0)
         return 0;
 
-    centerX = state->screenX + owner->screenX;
-    centerY = state->screenY + owner->screenY;
+    centerX = state->screenX + group->screenOffsetX;
+    centerY = state->screenY + group->screenOffsetY;
     if (centerX - horizontalRadius > point->x ||
         centerX + horizontalRadius < point->x ||
         centerY - verticalRadius > point->y ||
@@ -213,12 +206,12 @@ s32 func_0209286c(GraphicsSpriteState *state, const SpriteTouchPoint *point,
 /* Apply the shared hidden/inactive guards used by scene touch callers. */
 s32 GraphicsSpriteState_TestTouchPoint(GraphicsSpriteState *state, const SpriteTouchPoint *point)
 {
-    SpriteOwnerState *owner;
+    GraphicsSpriteGroup *group;
 
     if (state == 0 || (state->flags & 0x0c) != 0)
         return 0;
-    owner = (SpriteOwnerState *)state->field_00;
-    if (owner->enabled == 0)
+    group = state->group;
+    if (group->renderEnabled == 0)
         return 0;
     return func_02073aa8(state, point->x, point->y);
 }

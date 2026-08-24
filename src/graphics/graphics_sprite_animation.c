@@ -54,8 +54,8 @@ void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *sprite,
     sprite->animationIndex = animation;
     sprite->frameIndex = 0;
     sprite->framePosition = 0;
-    if ((sprite->field_3b & 1u) == 0 && sprite->field_0c != 0) {
-        *(u8 *)((u8 *)sprite->field_0c + 0x0c) = 0;
+    if ((sprite->field_3b & 1u) == 0 && sprite->graphicsVramBinding != 0) {
+        *(u8 *)((u8 *)sprite->graphicsVramBinding + 0x0c) = 0;
     }
     sprite->flags &= 0xfffeu;
 }
@@ -86,8 +86,8 @@ void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *sprite,
         sprite->framePosition += frame[index].duration;
     }
     sprite->framePosition <<= 8;
-    if ((sprite->field_3b & 1u) == 0 && sprite->field_0c != 0) {
-        *(u8 *)((u8 *)sprite->field_0c + 0x0c) = 0;
+    if ((sprite->field_3b & 1u) == 0 && sprite->graphicsVramBinding != 0) {
+        *(u8 *)((u8 *)sprite->graphicsVramBinding + 0x0c) = 0;
     }
     sprite->flags |= 1;
 }
@@ -98,8 +98,8 @@ void GraphicsSpriteState_ResetFrame(GraphicsSpriteState *sprite)
 {
     sprite->frameIndex = 0;
     sprite->framePosition = 0;
-    if ((sprite->field_3b & 1u) == 0 && sprite->field_0c != 0) {
-        *(u8 *)((u8 *)sprite->field_0c + 0x0c) = 0;
+    if ((sprite->field_3b & 1u) == 0 && sprite->graphicsVramBinding != 0) {
+        *(u8 *)((u8 *)sprite->graphicsVramBinding + 0x0c) = 0;
     }
     sprite->flags &= 0xfffeu;
 }
