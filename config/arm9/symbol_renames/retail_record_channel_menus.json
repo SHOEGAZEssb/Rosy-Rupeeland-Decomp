@@ -1,0 +1,12 @@
+{
+  "func_0207cd40": "RetailRecordListMenu_Delete",
+  "func_0207cd5c": "RetailRecordListMenu_NoOp",
+  "func_0207cd60": "RetailRecordChannelOneMenu_Construct",
+  "func_0207cdd8": "RetailRecordChannelOneMenu_Update",
+  "func_0207d004": "RetailRecordChannelOneMenu_Delete",
+  "func_0207d020": "RetailRecordChannelOneMenu_NoOp",
+  "func_0207d024": "RetailRecordChannelZeroMenu_Construct",
+  "func_0207d098": "RetailRecordChannelZeroMenu_Update",
+  "func_0207d2c4": "RetailRecordChannelZeroMenu_Delete",
+  "func_0207d2e0": "RetailRecordChannelZeroMenu_NoOp"
+}
