@@ -4,7 +4,7 @@
     .extern Heap_Alloc
     .extern data_020f4e14
     .extern data_020f4e18
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov018_021ffc10
     .extern data_ov018_021ffd3c
     .extern data_ov018_021ffd50
@@ -289,7 +289,7 @@ L_021fd338: .word 0x2655
 L_021fd33c: .word 0x2042
 L_021fd340: .word 0x6108
 L_021fd344: .word 0x2218
-L_021fd348: .word data_021052fc
+L_021fd348: .word gGamePhaseRuntime
 L_021fd34c: .word data_020f4e18
 L_021fd350: .word 0x329a
 L_021fd354: .word 0x4002

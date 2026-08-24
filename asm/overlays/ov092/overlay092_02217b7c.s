@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov092_0221c818
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
@@ -92,5 +92,5 @@ func_ov092_02217b7c:
 .L_02217c9c: .word gHeapContext
 .L_02217ca0: .word 0x32c8
 .L_02217ca4: .word 0x32f2
-.L_02217ca8: .word data_021052fc
+.L_02217ca8: .word gGamePhaseRuntime
 .size func_ov092_02217b7c, . - func_ov092_02217b7c

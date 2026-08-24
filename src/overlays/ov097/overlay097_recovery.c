@@ -9,7 +9,7 @@ extern "C" void *gGameWork;
 extern "C" void *gSoundContext;
 extern "C" void *gHeapContext;
 extern "C" void *gActorRuntimeCollection;
-extern "C" u8 *data_021052fc;
+extern "C" u8 *gGamePhaseRuntime;
 extern "C" s16 data_020c9670[];
 extern "C" u16 data_020e6e68[];
 extern "C" u8 data_ov097_0221a4c8[];
@@ -334,7 +334,7 @@ extern "C" void func_ov097_02217d44(void *actor)
     }
 
     void *effectOwner =
-        (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
+        (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(gGamePhaseRuntime, 0x2f7c));
     Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(effectOwner, 0, F(s32, actor, 0x1c) >> 12,
                   (F(s32, actor, 0x20) >> 12) -
                       (F(s32, actor, 0x24) >> 12) - 24,
@@ -347,12 +347,12 @@ extern "C" void func_ov097_02217d44(void *actor)
         ActorExtendedType2_GetDescriptorValue25(actor) == 0 ? 5 : 4;
     if (func_ov097_02217fd8(gGameWork, 0, linkedIndex) == 2)
     {
-        void *primary = F(void *, F(void *, data_021052fc, 0x2ea4), 0x26c);
+        void *primary = F(void *, F(void *, gGamePhaseRuntime, 0x2ea4), 0x26c);
         if (primary != 0)
         {
             func_0206e590(primary, 1);
         }
-        void *secondary = F(void *, data_021052fc, 0x2ea8);
+        void *secondary = F(void *, gGamePhaseRuntime, 0x2ea8);
         if (secondary != 0)
         {
             secondary = F(void *, secondary, 0x234);
@@ -589,7 +589,7 @@ extern "C" void func_ov097_022181a0(void *actor, void *argument)
                 }
                 if ((F(u32, actor, 0x10) & 4) != 0)
                 {
-                    func_020099c0(P(data_021052fc, 0x2fbc), 15, 1);
+                    func_020099c0(P(gGamePhaseRuntime, 0x2fbc), 15, 1);
                 }
                 VecFx32Object_Destroy(point);
             }
@@ -628,7 +628,7 @@ extern "C" void func_ov097_022181a0(void *actor, void *argument)
     }
     else
     {
-        void *primary = F(void *, data_021052fc, 0x2ea4);
+        void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
         dx = F(s32, primary, 0x1c) - F(s32, actor, 0x1c);
         dy = F(s32, primary, 0x20) - F(s32, actor, 0x20);
         s32 distance = Fx32Vector2_Magnitude(dx, dy);
@@ -704,7 +704,7 @@ extern "C" void func_ov097_02218940(void *actor)
         {
             u32 random = genrand_int32();
             void *effectOwner =
-                (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
+                (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(gGamePhaseRuntime, 0x2f7c));
             s32 height = func_ov097_02217afc(P(actor, 0x68));
             s32 randomX = (s32)(random % 36) - 18;
             Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(effectOwner, 1,
@@ -764,7 +764,7 @@ extern "C" void func_ov097_02218b40(void *actor, void *other,
     s32 primaryDistance = 0x7fffffff;
     if ((F(u16, other, 0x1a) & 0x10) == 0)
     {
-        void *primary = F(void *, data_021052fc, 0x2ea4);
+        void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
         func_ov097_02218d04(temporary, P(actor, 0x18), P(primary, 0x18));
         VecFx32Object_Assign(delta, temporary);
         VecFx32Object_Destroy(temporary);
@@ -773,7 +773,7 @@ extern "C" void func_ov097_02218b40(void *actor, void *other,
     s32 secondaryDistance = 0x7fffffff;
     if ((F(u16, other, 0x1a) & 0x20) != 0)
     {
-        candidate = F(void *, data_021052fc, 0x2ea8);
+        candidate = F(void *, gGamePhaseRuntime, 0x2ea8);
     }
     if (candidate != 0 && (F(u32, candidate, 0x268) & 0x10) != 0)
     {
@@ -960,7 +960,7 @@ extern "C" void func_ov097_02219228(void *actor, void *other)
     F(s16, actor, 0xda) = 7;
     F(u32, actor, 0xd0) |= 0x1000;
     F(s16, actor, 0x2be) = 0;
-    void *primary = F(void *, data_021052fc, 0x2ea4);
+    void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
     s32 dx = F(s32, primary, 0x1c) - F(s32, other, 0x1c);
     s32 dy = F(s32, primary, 0x20) - F(s32, other, 0x20);
     if (ActorExtendedType2_GetDescriptorValue25(actor) == 0)
@@ -1100,7 +1100,7 @@ extern "C" void *func_ov097_022195f4(void *actor, void *descriptor,
     func_ov097_02217934(P(actor, 8), -14, -6, 14, 6);
 
     void *collection = (void *)GamePhaseRuntime_GetActorCollection(
-        F(void *, data_021052fc, 0), 1);
+        F(void *, gGamePhaseRuntime, 0), 1);
     s32 count = 0;
     for (s32 index = 0; index < F(s32, collection, 0x2e74); ++index)
     {
@@ -1241,7 +1241,7 @@ extern "C" void func_ov097_02219970(void *actor, void *linked,
     VecFx32Object_Destroy(vector);
     ((Method)F(void *, F(void *, actor, 0), 0x54))(actor, 1);
     ((Method)F(void *, F(void *, actor, 0), 0xd4))(
-        actor, F(void *, F(void *, data_021052fc, 0), 0x2ea4));
+        actor, F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4));
     F(s32, actor, 0x218) = F(s32, data_ov097_0221a4c8, 0x20);
     F(s32, actor, 0x21c) = F(s32, data_ov097_0221a4c8, 0x24);
     F(u32, actor, 0x10) |= 0x1f0000;

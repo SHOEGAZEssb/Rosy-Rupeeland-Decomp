@@ -13,7 +13,7 @@
 .extern data_020d5b7c
 .extern data_020d5b84
 .extern data_020d5b8c
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_021f3d68
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -462,7 +462,7 @@ L_020167ec: .word data_020d5b54
 L_020167f0: .word data_020d5b5c
 L_020167f4: .word data_020d5b64
 L_020167f8: .word data_020d5b6c
-L_020167fc: .word data_021052fc
+L_020167fc: .word gGamePhaseRuntime
 L_02016800: .word data_020d5b74
 L_02016804: .word data_020d5b7c
 L_02016808: .word data_020d5b84

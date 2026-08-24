@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov088_0221b6ec
 .extern data_ov088_0221b6f0
 .extern data_ov088_0221b9fc
@@ -107,7 +107,7 @@ func_ov088_0221af2c:
     bl Type7Actor_EnterFlag40000State
     add sp, sp, #0x1c
     ldmia sp!, {r4, r5, r6, r7, pc}
-.L_0221b07c: .word data_021052fc
+.L_0221b07c: .word gGamePhaseRuntime
 .L_0221b080: .word data_ov088_0221b9fc
 .L_0221b084: .word gHeapContext
 .L_0221b088: .word 0xfd86

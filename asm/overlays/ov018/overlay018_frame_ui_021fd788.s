@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_frame_ui.c. */
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_021f3ecc
     .extern GamePhaseRuntime_UpdateActorPresentationState
     .extern GraphicsSpriteGroup_AdvanceAnimations
@@ -114,7 +114,7 @@ L_021fd8d0:
 L_021fd8f4:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
-L_021fd8fc: .word data_021052fc
+L_021fd8fc: .word gGamePhaseRuntime
 L_021fd900: .word gDebugFont
 L_021fd904: .word data_021f3ecc
 L_021fd908: .word 0x319

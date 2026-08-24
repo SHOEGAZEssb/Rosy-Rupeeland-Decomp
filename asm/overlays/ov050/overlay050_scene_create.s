@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov050/overlay050_scene_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov050_0220e3f0
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_ov050_0220db84
@@ -34,5 +34,5 @@ func_ov050_0220e1a0:
     ldmia sp!, {r4, r5, r6, pc}
 .L_0220e1f8: .word data_ov050_0220e3f0
 .L_0220e1fc: .word gHeapContext
-.L_0220e200: .word data_021052fc
+.L_0220e200: .word gGamePhaseRuntime
 .size func_ov050_0220e1a0, . - func_ov050_0220e1a0

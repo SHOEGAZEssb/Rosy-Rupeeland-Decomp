@@ -16,7 +16,7 @@ typedef struct Overlay039ScriptVector {
 } Overlay039ScriptVector;
 
 extern const s16 data_020c9670[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -242,7 +242,7 @@ extern "C" s32 func_ov039_02202f34(void *scene, void *result)
  */
 extern "C" void func_ov039_02203064(void *scene)
 {
-    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
+    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                    0x2f7c);
     void *renderer = func_0209c3b4();
     Overlay039ScriptVector scale, direction;

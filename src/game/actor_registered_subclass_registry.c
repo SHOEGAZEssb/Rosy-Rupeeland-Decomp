@@ -6,7 +6,7 @@
  */
 extern s16 gActorRegisteredSubclassCounters[2];
 extern void *gActorRegisteredSubclassRegistry[4];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -76,7 +76,7 @@ void ActorRegisteredSubclass_ProcessRegistry(void)
 
     if (gActorRegisteredSubclassCounters[1] == 0)
         return;
-    primary = *(u8 **)(data_021052fc + 0x2ea4);
+    primary = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
     if (func_02007868(primary) != 0) {
         for (i = 0; i < 4; ++i) {
             u8 *candidate = (u8 *)gActorRegisteredSubclassRegistry[i];

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_touch_prompt_runtime.c.
 .text
 .extern SceneManager_GetCurrent
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseTouchPrompt_UpdateInteraction
 .extern GamePhaseTouchPrompt_UpdateHideSequence
 .extern GamePhaseTouchPrompt_UpdateAlternateHideSequence
@@ -101,7 +101,7 @@ L_020104f4:
 L_02010510:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_02010518: .word data_021052fc
+L_02010518: .word gGamePhaseRuntime
 L_0201051c: .word gSceneManager
     .size GamePhaseTouchPrompt_Update, . - GamePhaseTouchPrompt_Update
 

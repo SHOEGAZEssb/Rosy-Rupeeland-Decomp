@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Sound_Play
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov084_02214108
 .extern data_ov084_022143a4
 .extern VecFx32Object_InitCopy
@@ -256,7 +256,7 @@ func_ov084_02212e6c:
 .L_022131e4: .word gSoundContext
 .L_022131e8: .word data_ov084_022143a4
 .L_022131ec: .word gHeapContext
-.L_022131f0: .word data_021052fc
+.L_022131f0: .word gGamePhaseRuntime
 .L_022131f4: .word 0x7fff
 .L_022131f8: .word data_ov084_02214108
 .size func_ov084_02212e6c, . - func_ov084_02212e6c

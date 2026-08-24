@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
@@ -34,10 +34,10 @@ s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *s
     if (selector != 0) {
         actor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), selector);
     } else if (*(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84) == 1) {
-        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         actor = *(u8 **)(collection + 0x2e7c);
     } else {
-        u8 *owner = *(u8 **)((u8 *)data_021052fc + 0x2fb8);
+        u8 *owner = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2fb8);
         actor = *(u8 **)(owner + 0x2ebc);
     }
     storeActorBitResult(self, actor);
@@ -54,7 +54,7 @@ s32 GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0(GamePhaseActorScriptVm *s
 s32 GamePhaseActorScriptVm_GetIndexedRuntimeActorFlag169Bit0(GamePhaseActorScriptVm *self)
 {
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *owner = *(u8 **)(runtime + 0x2fb8);
     void *first = **(void ***)(runtime + 0x24);
     void *second = **(void ***)(owner + 0x2eac);

@@ -6,7 +6,7 @@
  * releases owned state, and conditionally records its terminal scene values.
  */
 extern u8 data_020e1c38[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gType7ActorRegistry[3];
 extern u8 data_020e16b0[];
 extern void *gGameWork;
@@ -25,7 +25,7 @@ extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
 #endif
 
 /*
- * Restore vtable data_020e1c38. If world object *data_021052fc+0x2ea4 is
+ * Restore vtable data_020e1c38. If world object *gGamePhaseRuntime+0x2ea4 is
  * nonnull, pass it with zero to ActorDerivedType1_SetSpecialModeEnabled. Remove
  * self from the first matching gType7ActorRegistry slot. If owned pointer +0x234
  * exists, release it via AuxiliaryInteraction_Destroy and Heap_Free. Clear GameWork flag
@@ -46,7 +46,7 @@ void *Type7Actor_Destroy(void *self)
     void *resource;
     s32 i;
     *(void **)actor = data_020e1c38;
-    worldObject = *(void **)(data_021052fc + 0x2ea4);
+    worldObject = *(void **)(gGamePhaseRuntime + 0x2ea4);
     if (worldObject != 0)
         ActorDerivedType1_SetSpecialModeEnabled(worldObject, 0);
     for (i = 0; i < 3; ++i) {

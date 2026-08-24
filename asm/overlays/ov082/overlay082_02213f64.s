@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov082/overlay082_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov082_0221483c
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_PlayRadialSpatialSound
@@ -206,7 +206,7 @@ func_ov082_02213f64:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
 .L_02214238: .word 0xffff0001
-.L_0221423c: .word data_021052fc
+.L_0221423c: .word gGamePhaseRuntime
 .L_02214240: .word data_ov082_0221483c
 .L_02214244: .word 0xc883
 .size func_ov082_02213f64, . - func_ov082_02213f64

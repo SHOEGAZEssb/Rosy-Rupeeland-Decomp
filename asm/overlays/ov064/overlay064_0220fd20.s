@@ -8,8 +8,8 @@
 .extern data_020cdc1c
 .extern data_020ed530
 .extern data_020f4e14
-.extern data_021052fc
-.extern data_02105300
+.extern gGamePhaseRuntime
+.extern gGamePhaseTouchPromptTaskNode
 .extern data_ov064_02211dd4
 .extern data_ov064_02211e40
 .extern data_ov064_02211e98
@@ -633,7 +633,7 @@ Overlay064Scene_Construct:
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022105f4: .word data_ov064_02211e98
-.L_022105f8: .word data_021052fc
+.L_022105f8: .word gGamePhaseRuntime
 .L_022105fc: .word gGameWork
 .L_02210600: .word 0x3f5
 .L_02210604: .word data_ov064_02211ec4
@@ -647,7 +647,7 @@ Overlay064Scene_Construct:
 .L_02210624: .word data_ov064_02211ecc
 .L_02210628: .word 0x1096
 .L_0221062c: .word gGamePhaseCurrencyHud
-.L_02210630: .word data_02105300
+.L_02210630: .word gGamePhaseTouchPromptTaskNode
 .L_02210634: .word data_020f4e14
 .L_02210638: .word gDebugFont
 .L_0221063c: .word 0x104c

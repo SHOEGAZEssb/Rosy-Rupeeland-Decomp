@@ -5,7 +5,7 @@
 .extern SceneManager_SetUpdateEnabled
 .extern TouchPanelManager_GetPoint
 .extern data_020c3630
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern ActorDerivedType1_IsActiveRecordType69
 .extern ActorDerivedType1_IsActiveRecordType6A
@@ -150,7 +150,7 @@ L_02010708:
     ldmia sp!, {r4, r5, pc}
 L_02010710: .word gGameWork
 L_02010714: .word gTouchPanelManager
-L_02010718: .word data_021052fc
+L_02010718: .word gGamePhaseRuntime
 L_0201071c: .word gSceneManager
 L_02010720: .word data_020c3630
     .size GamePhaseTouchPrompt_UpdateInteraction, . - GamePhaseTouchPrompt_UpdateInteraction

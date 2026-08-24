@@ -10,7 +10,7 @@ typedef struct TerrainCellQueryObject {
     TerrainCellQueryVTable *vtable_00;
 } TerrainCellQueryObject;
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,7 +51,7 @@ void Actor_UpdatePrimaryRenderAttachmentPriority(void *actorPointer)
         return;
     if (*(u32 *)(actor + 0x14) & 0x80)
         return;
-    terrainQuery = *(TerrainCellQueryObject **)((u8 *)data_021052fc + 0x2ed4);
+    terrainQuery = *(TerrainCellQueryObject **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     terrainCell = terrainQuery->vtable_00->queryCell_2c(
         terrainQuery, *(s32 *)(actor + 0x1c) >> 16,
         *(s32 *)(actor + 0x20) >> 16);
@@ -62,7 +62,7 @@ void Actor_UpdatePrimaryRenderAttachmentPriority(void *actorPointer)
         return;
 
     priorityPeerActor = *(u8 **)(
-        (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1) + 0x2e7c);
+        (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1) + 0x2e7c);
     if (SignedAbsoluteValue(0) >= 0x2000)
         return;
     peerPrimaryAttachment = *(u8 **)(priorityPeerActor + 0x54);

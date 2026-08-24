@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *gGameWork;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -50,7 +50,7 @@ s32 func_ov013_021fe9c8(void *state)
         case 3:
             GameWork_SetFlag(gGameWork, 0x3f2);
             GameWork_SetFlag(gGameWork, 0x393);
-            ActorMotion_SetMode2(data_021052fc + 0x2fbc);
+            ActorMotion_SetMode2(gGamePhaseRuntime + 0x2fbc);
             break;
         case 4:
             FIELD(s32, state, 0x980) = 15;
@@ -82,7 +82,7 @@ extern "C"
 s32 func_ov013_021feacc(void *state)
 {
     if (FIELD(s32, state, 0x97c) != 0)
-        GamePhaseAreaScene_Update(FIELD(void *, data_021052fc, 0x2fb8));
+        GamePhaseAreaScene_Update(FIELD(void *, gGamePhaseRuntime, 0x2fb8));
     if (FIELD(u32, state, 0x20) & 0x400) {
         void *object = FIELD(void *, state, 0x9a8);
         volatile u32 *dispcnt = (volatile u32 *)0x04000000;

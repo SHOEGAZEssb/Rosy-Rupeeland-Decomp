@@ -14,7 +14,7 @@
 .extern gFieldEffectListVtable
 .extern gFieldEffectListNodeAllocationTag
 .extern gGraphics3dPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gHeapContext
 .global FieldEffectList_Destroy
 FieldEffectList_Destroy: ; 0x0201dc38

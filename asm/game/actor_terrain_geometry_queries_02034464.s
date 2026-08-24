@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_terrain_geometry_queries.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 
     .global Actor_QueryTerrainCell
     .type Actor_QueryTerrainCell, @function
@@ -26,7 +26,7 @@ Actor_QueryTerrainCell: ; 0x02034464
     ldr r0, [sp, #0x8]
     add sp, sp, #0xc
     ldmia sp!, {pc}
-.L_020344b4: .word data_021052fc
+.L_020344b4: .word gGamePhaseRuntime
     .size Actor_QueryTerrainCell, . - Actor_QueryTerrainCell
 
     .global Position_AdjustForTerrainHeight

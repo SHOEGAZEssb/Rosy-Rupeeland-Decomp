@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern const void *data_020d5680;
 extern const char gGamePhaseAreaSceneRendererAllocationTag[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void ActorCollection_Init(void *renderer);
 extern void ActorCollection_CreateSpriteGroupForDisplayMode(void *renderer, s32 value);
 extern void ActorCollection_SetActorScale(void *renderer, s32 scale);
@@ -160,7 +160,7 @@ void GamePhaseAreaScene_Start(GamePhaseAreaScene *self)
 GamePhaseAreaScene *GamePhaseAreaScene_Destroy(GamePhaseAreaScene *self)
 {
     self->vtable = data_020d5680;
-    RuntimePresentationManager_DetachEffectsByKey((u8 *)data_021052fc + 0x2f7c, 0x37);
+    RuntimePresentationManager_DetachEffectsByKey((u8 *)gGamePhaseRuntime + 0x2f7c, 0x37);
     ActorCollection_UnregisterAndDestroyAllActors(self->actorCollectionStorage);
     if (self->subRenderer)
         ((void (*)(void *))(*(void ***)self->subRenderer)[1])(

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_utility_query_opcodes.c.
 .text
-.extern data_02105300
+.extern gGamePhaseTouchPromptTaskNode
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern GamePhaseScriptVm_Pop
 .global GamePhaseActorScriptVm_SetTouchPromptEnabled
@@ -14,5 +14,5 @@ GamePhaseActorScriptVm_SetTouchPromptEnabled:
     bl GamePhaseTouchPrompt_SetEnabled
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-L_02019188: .word data_02105300
+L_02019188: .word gGamePhaseTouchPromptTaskNode
 .size GamePhaseActorScriptVm_SetTouchPromptEnabled, . - GamePhaseActorScriptVm_SetTouchPromptEnabled

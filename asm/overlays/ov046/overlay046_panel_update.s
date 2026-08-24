@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov046/overlay046_panel_update.c.
 .extern data_020d780c
 .extern data_020d7838
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov046_0220cd14
 .extern data_ov046_0220cd18
 .extern data_ov046_0220cd1c
@@ -216,7 +216,7 @@ func_ov046_0220c4a0:
 .L_0220c784:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0220c78c: .word data_021052fc
+.L_0220c78c: .word gGamePhaseRuntime
 .L_0220c790: .word data_ov046_0220cd14
 .L_0220c794: .word gGameWork
 .L_0220c798: .word data_020d780c

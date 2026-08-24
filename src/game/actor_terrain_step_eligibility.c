@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Validate a terrain cell while permitting a one-unit downward height step. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,7 +25,7 @@ s32 Actor_IsTerrainCellEligibleAtHeightOrOneBelow(void *actor, s32 gridX,
                                                    s32 gridY,
                                                    s32 referenceHeight)
 {
-    void *terrainMap = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *terrainMap = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     u32 packedDimensions = *(u32 *)((u8 *)terrainMap + 0x20);
     s32 queriedHeight;
     u32 packedCell;

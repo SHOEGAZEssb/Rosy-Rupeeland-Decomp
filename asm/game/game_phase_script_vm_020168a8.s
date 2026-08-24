@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_misc_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Type7AuxiliaryPresentation_BeginShutdown
 .global GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown
 GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown:
@@ -13,5 +13,5 @@ GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown:
     bl Type7AuxiliaryPresentation_BeginShutdown
     mov r0, #0
     ldmia sp!, {r3, pc}
-L_020168cc: .word data_021052fc
+L_020168cc: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown, . - GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_nearest_participant.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorDerivedType1_TeardownActiveRecord
@@ -152,7 +152,7 @@ func_ov090_0221ae1c:
     str r0, [r8, #0x14]
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0221b030: .word data_021052fc
+.L_0221b030: .word gGamePhaseRuntime
 .L_0221b034: .word 0x10a9
 .L_0221b038: .word 0x109d
 .size func_ov090_0221ae1c, . - func_ov090_0221ae1c

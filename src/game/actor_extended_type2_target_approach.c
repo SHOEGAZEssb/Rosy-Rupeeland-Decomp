@@ -5,7 +5,7 @@
  * on primary-actor state, a virtual predicate, a cooldown, and target range.
  */
 extern u8 data_020df9e8[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -20,7 +20,7 @@ extern void VecFx32Object_Destroy(void *temporary);
 /*
  * Set actor +0x260 bits zero and one and stop with zero if virtual +0x38 is
  * busy. Descriptor +0x1a bit one installs global callback pair +0x290/+0x294.
- * Otherwise the routine resolves the primary actor through data_021052fc; its
+ * Otherwise the routine resolves the primary actor through gGamePhaseRuntime; its
  * +0xd0 bit 0x100 invokes actor virtual +0xe8. After virtual +0x11c accepts the
  * descriptor, positive signed cooldown +0x25a is decremented. At zero, actor
  * and target +0x228 positions are compared against (descriptor +0x0a + 32)^2.
@@ -47,7 +47,7 @@ s32 ActorExtendedType2_UpdateTargetApproach(void *self, const void *descriptorRe
     }
 
     {
-        u8 *collection = (u8 *)func_02007f0c(data_021052fc, 1);
+        u8 *collection = (u8 *)func_02007f0c(gGamePhaseRuntime, 1);
         u8 *primary = *(u8 **)(collection + 0x2e7c);
         if ((*(u32 *)(primary + 0xd0) & 0x100) != 0) {
             (*(void (**)(void *))(vtable + 0xe8))(actor);

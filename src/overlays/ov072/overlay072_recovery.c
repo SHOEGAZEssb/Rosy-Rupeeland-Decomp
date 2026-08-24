@@ -38,7 +38,7 @@ extern "C" void Sound_Play(void *, s32, s32);
 extern "C" void Sound_LoadGroup(void *, s32);
 extern "C" void Sound_ReleaseGroup(void *, s32);
 
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
@@ -63,7 +63,7 @@ static s32 call_method(void *object, u32 offset)
 
 static void *runtime_actor(void)
 {
-    return FIELD(void *, data_021052fc, 0x2ea4);
+    return FIELD(void *, gGamePhaseRuntime, 0x2ea4);
 }
 
 static void set_animation_finished_flags(void *sprite)
@@ -127,9 +127,9 @@ extern "C" void *func_ov072_0220fd20(void *scene, s32 variant)
         FIELD(s32, scene, 0x50 + i * 4) = 0;
     }
 
-    if (FIELD(void *, data_021052fc, 0x2ea8) != 0) {
+    if (FIELD(void *, gGamePhaseRuntime, 0x2ea8) != 0) {
         Type7Actor_EnterSpecialPresentationState(
-            FIELD(void *, data_021052fc, 0x2ea8));
+            FIELD(void *, gGamePhaseRuntime, 0x2ea8));
     }
     Scene_SetFlags03(scene);
     return scene;
@@ -167,15 +167,15 @@ static void destroy_scene(void *scene)
     FIELD(u16, actorPresentation, 0x24) &= (u16)~4;
     Actor_SetDirectionFromVector(actor, 0, 0x1000);
     call_method(actor, 0x5c);
-    if (FIELD(void *, data_021052fc, 0x2ea8) != 0) {
+    if (FIELD(void *, gGamePhaseRuntime, 0x2ea8) != 0) {
         Type7Actor_LeaveSpecialPresentationState(
-            FIELD(void *, data_021052fc, 0x2ea8));
+            FIELD(void *, gGamePhaseRuntime, 0x2ea8));
     }
 
     if (FIELD(s32, scene, 0x7c) == 1) {
         s32 index = FIELD(s32, scene, 0x78);
         s32 area = FIELD(s32, data_ov072_022109dc, index * 0x1c + 0x14);
-        GamePhaseRuntime_StageAreaRequest(data_021052fc, area, 0, 0, 0, 0);
+        GamePhaseRuntime_StageAreaRequest(gGamePhaseRuntime, area, 0, 0, 0, 0);
     }
     func_ov072_0221004c(gGameWork, 0, 0x78,
                         FIELD(s32, scene, 0x7c));
@@ -202,7 +202,7 @@ extern "C" void *func_ov072_02210070(void *scene)
 extern "C" s32 func_ov072_022101c0(void *scene)
 {
     s32 finished = func_ov072_02210214(scene);
-    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
     if (finished != 0) {
         if (scene != 0) {
             call_method(scene, 4);
@@ -392,21 +392,21 @@ extern "C" s32 func_ov072_02210214(void *scene)
 /* Dispatch runtime route slot 0x0c and return callback status zero. */
 extern "C" s32 func_ov072_022107d4(void)
 {
-    call_method(data_021052fc, 0x0c);
+    call_method(gGamePhaseRuntime, 0x0c);
     return 0;
 }
 
 /* Dispatch runtime route slot 0x10 and return its result. */
 extern "C" s32 func_ov072_022107f8(void)
 {
-    return call_method(data_021052fc, 0x10);
+    return call_method(gGamePhaseRuntime, 0x10);
 }
 
 /* Select the actor's containing three-entry area record. */
 extern "C" s32 func_ov072_02210818(void *)
 {
     void *actor = runtime_actor();
-    s32 type = FIELD(s32, FIELD(void *, data_021052fc, 0x303bc), 0);
+    s32 type = FIELD(s32, FIELD(void *, gGamePhaseRuntime, 0x303bc), 0);
     s32 x = FIELD(s32, actor, 0x1c) >> 12;
     s32 y = FIELD(s32, actor, 0x20) >> 12;
     s32 i;
@@ -441,7 +441,7 @@ extern "C" s32 func_ov072_022108e8(void *scene)
         return -1;
     }
     actor = runtime_actor();
-    type = FIELD(s32, FIELD(void *, data_021052fc, 0x303bc), 0);
+    type = FIELD(s32, FIELD(void *, gGamePhaseRuntime, 0x303bc), 0);
     actorX = FIELD(s32, actor, 0x1c) >> 12;
     actorY = FIELD(s32, actor, 0x20) >> 12;
     for (i = 0; i < 12; ++i) {

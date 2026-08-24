@@ -5,7 +5,7 @@ extern u8 gSystemState[];
 extern s16 data_020c9670[];
 extern void *gActorTargetSelectionCandidates[10];
 extern u8 gActorTargetSelectionMetadata[4];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern s8 data_020c3d80[8];
 extern s8 data_020c3d88[8];
 extern u8 gActorRuntimeCollection[];
@@ -173,7 +173,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
         }
 
         for (i = 0;; ++i) {
-            u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+            u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
             u8 *target;
             if (i >= *(u32 *)(collection + 0x2e74)) break;
             target = *(u8 **)(collection + i * 4);
@@ -204,7 +204,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
         x = (*(s32 *)(actor + 0x1c) >> 16) + data_020c3d80[actor[0xd4]];
         y = (*(s32 *)(actor + 0x20) >> 16) + data_020c3d88[actor[0xd4]];
         {
-            void *terrain = *(void **)((u8 *)data_021052fc + 0x2ed4);
+            void *terrain = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
             u32 (*query)(void *, s32, s32, s32) =
                 *(u32 (**)(void *, s32, s32, s32))(*(u8 **)terrain + 0x2c);
             packed = query(terrain, x, y, 0);
@@ -236,7 +236,7 @@ s32 ActorDerivedType1_ProcessInteraction(void *self)
                 Sound_Play(gSoundContext, *(u16 *)(descriptor + 0x1a) >> 7,
                            *(u16 *)(descriptor + 0x1a) & 0x7f);
             for (i = 0; i < 4; ++i) {
-                void *effect = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+                void *effect = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
                 Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(effect, 0,
                               (*(s32 *)(actor + 0x1c) >> 12) - 0x10,
                               (*(s32 *)(actor + 0x20) >> 12) -

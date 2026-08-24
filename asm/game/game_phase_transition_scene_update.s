@@ -16,7 +16,7 @@
 .extern Heap_Alloc
 .extern GamePhaseResumeScene_Init
 .extern gGamePhaseResumeSceneAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGameWork
 .extern gHeapContext
 .extern gGamePhaseCurrencyHud
@@ -153,7 +153,7 @@ L_0200c89c:
     ldmia sp!, {r4, pc}
 L_0200c8a4: .word gGameWork
 L_0200c8a8: .word gGamePhaseCurrencyHud
-L_0200c8ac: .word data_021052fc
+L_0200c8ac: .word gGamePhaseRuntime
 L_0200c8b0: .word gGamePhaseResumeSceneAllocationTag
 L_0200c8b4: .word gHeapContext
 L_0200c8b8: .word 0x386

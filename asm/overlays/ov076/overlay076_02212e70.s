@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_HandleObjectInteraction
@@ -35,5 +35,5 @@ func_ov076_02212e70:
     mov r1, r4
     bl Actor_SetInteractionFlag2000
     ldmia sp!, {r3, r4, r5, pc}
-.L_02212edc: .word data_021052fc
+.L_02212edc: .word gGamePhaseRuntime
 .size func_ov076_02212e70, . - func_ov076_02212e70

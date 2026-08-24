@@ -5,7 +5,7 @@
 .extern Heap_Free
 .extern SceneManager_GetCurrent
 .extern data_020df48c
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern gActorRuntimeFlags
 .extern ActorMotionJitter_EnsureMinimum
@@ -239,5 +239,5 @@ ActorDerivedType1_HandleAuxiliaryInteraction: ; 0x02037d98
 .L_02038098: .word gHeapContext
 .L_0203809c: .word gGameWork
 .L_020380a0: .word 0x3ee
-.L_020380a4: .word data_021052fc
+.L_020380a4: .word gGamePhaseRuntime
     .size ActorDerivedType1_HandleAuxiliaryInteraction, . - ActorDerivedType1_HandleAuxiliaryInteraction

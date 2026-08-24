@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_render_attachment.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
@@ -54,6 +54,6 @@ Actor_CreateSecondaryRenderAttachment: ; 0x020313b4
 .L_02031458:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_02031460: .word data_021052fc
+.L_02031460: .word gGamePhaseRuntime
     .size Actor_CreateSecondaryRenderAttachment, . - Actor_CreateSecondaryRenderAttachment
 

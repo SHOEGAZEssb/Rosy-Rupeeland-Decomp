@@ -3,7 +3,7 @@
     .extern __construct_array
     .extern data_020f4e14
     .extern data_020f4e18
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov013_021feb58
     .extern data_ov013_021fecf0
     .extern data_ov013_021fed6c
@@ -177,7 +177,7 @@ L_021fd038:
 L_021fd064: .word data_ov013_021fed6c
 L_021fd068: .word func_ov013_021fce00
 L_021fd06c: .word func_020957bc
-L_021fd070: .word data_021052fc
+L_021fd070: .word gGamePhaseRuntime
 L_021fd074: .word 0x329a
 L_021fd078: .word data_020f4e18
 L_021fd07c: .word 0x32ff

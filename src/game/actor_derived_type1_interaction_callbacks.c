@@ -4,7 +4,7 @@
 /* Provide type-1 actor interaction callbacks and their default return paths. */
 extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gSceneManager;
 
 #ifdef __cplusplus
@@ -54,11 +54,11 @@ s32 ActorDerivedType1_TryApplyInteractionAmount(void *self, s32 amount, void *so
         GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, negative, 0);
         allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
-            void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+            void *resource = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
             effect = func_02022cb0(allocation, resource, actor, negative,
                                    0x2000, -0xc0);
         }
-        RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, effect);
+        RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, effect);
         Type1Actor_TryEnterFailureState(actor);
         return 1;
     }

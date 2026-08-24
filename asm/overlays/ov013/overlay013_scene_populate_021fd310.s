@@ -6,7 +6,7 @@
     .extern GraphicsResourceSet_Load
     .extern data_020f4e14
     .extern data_020f4e18
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov013_021febb4
     .extern data_ov013_021fec18
     .extern GamePhaseMetadata_IsAreaBehaviorPermitted
@@ -500,7 +500,7 @@ L_021fd918:
 L_021fd9f4: .word gGameWork
 L_021fd9f8: .word 0x39b
 L_021fd9fc: .word data_ov013_021fec18
-L_021fda00: .word data_021052fc
+L_021fda00: .word gGamePhaseRuntime
 L_021fda04: .word 0x889
 L_021fda08: .word 0x3de
 L_021fda0c: .word data_ov013_021febb4

@@ -32,7 +32,7 @@ extern "C" {
 extern void *gDirectSpriteTrackPresentationVtable;
 extern const char gDirectSpriteTrackPresentationAllocationTag[];
 extern void *data_020f4e18;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern void AnimationResourceState_InitEmbedded(void *state);
 extern void func_02071ee0(void *state, void *table, s32 field0c, s32 field10,
@@ -79,7 +79,7 @@ DirectSpriteTrackPresentation *DirectSpriteTrackPresentation_Init(
     VecFx32Object_InitComponents(&self->track1c, x << 12, y << 12, 0);
     func_02071ee0(&self->resource08, data_020f4e18, field0c, field10, field08);
     resource = ActorCollection_GetSpriteGroup(
-        GamePhaseRuntime_GetActorCollection(data_021052fc, selector == 0 ? 1 : 2));
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, selector == 0 ? 1 : 2));
     self->sprite14 = GraphicsSpriteGroup_CreateState(
         resource, *(s32 *)&self->resource08.bytes[0],
         *(s32 *)&self->resource08.bytes[4],
@@ -160,10 +160,10 @@ void DirectSpriteTrackPresentation_SpawnAndRegister(
         (DirectSpriteTrackPresentation *)Heap_Alloc(
             0x2c, gDirectSpriteTrackPresentationAllocationTag, 4, &gHeapContext);
     if (self != 0) {
-        void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+        void *position = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
         DirectSpriteTrackPresentation_Init(
             self, selector, field0c, field10, field08, spriteValue, x, y,
             signedField, field28, field3a, (s32)position);
     }
-    RuntimePresentationManager_AppendSecondListEffect(data_021052fc + 0x2f7c, self);
+    RuntimePresentationManager_AppendSecondListEffect(gGamePhaseRuntime + 0x2f7c, self);
 }

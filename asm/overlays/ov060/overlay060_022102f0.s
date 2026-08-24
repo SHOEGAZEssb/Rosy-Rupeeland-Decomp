@@ -4,7 +4,7 @@
 .extern TouchRegionManager_NotifyAll
 .extern TouchRegionManager_SetEnabled
 .extern TouchRegionManager_Tick
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern DebugHudState_PollInput
 .extern DebugHudState_GetGlobal
@@ -97,5 +97,5 @@ func_ov060_022102f0:
 .L_02210424:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-.L_0221042c: .word data_021052fc
+.L_0221042c: .word gGamePhaseRuntime
 .size func_ov060_022102f0, . - func_ov060_022102f0

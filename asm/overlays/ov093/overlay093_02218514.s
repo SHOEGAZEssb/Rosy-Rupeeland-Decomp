@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov093/overlay093_recovery.c.
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov093_022187f0
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern RuntimePresentationManager_GetGraphics3dPresentation
@@ -117,6 +117,6 @@ func_ov093_02218514:
     blt .L_02218620
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022186b0: .word data_020c9670
-.L_022186b4: .word data_021052fc
+.L_022186b4: .word gGamePhaseRuntime
 .L_022186b8: .word data_ov093_022187f0
 .size func_ov093_02218514, . - func_ov093_02218514

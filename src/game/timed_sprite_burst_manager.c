@@ -65,7 +65,7 @@ extern const s16 data_020c9670[];
 extern const char gTimedSpritePointerArrayAllocationTag[];
 extern const char gTimedSpritePresentationAllocationTag[];
 extern void *data_020f4e18;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gDebugFont;
 extern u32 genrand_int32(void);
 extern void TouchPoint_Init(TouchPointValue *point, s32 x, s32 y);
@@ -244,7 +244,7 @@ s32 TimedSpriteBurstManager_Update(TimedSpriteBurstManager *self)
     PresentationTrack position;
     s32 index;
 
-    VecFx32Object_InitCopy(&position, ActorMotion_GetPosition(data_021052fc + 0x3044));
+    VecFx32Object_InitCopy(&position, ActorMotion_GetPosition(gGamePhaseRuntime + 0x3044));
     switch (self->state14) {
     case 0:
         for (index = 0; index < self->sprites08.count; index++) {

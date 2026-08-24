@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Initialize actor height-band fields by scanning terrain rows. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,7 +27,7 @@ void Actor_TryInitializeHeightBandFromPoint(void *self,
 {
     u8 *actor = (u8 *)self;
     const u8 *input = (const u8 *)inputPointer;
-    u8 *world = *(u8 **)((u8 *)data_021052fc + 0x2ed4);
+    u8 *world = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     s32 x = *(s32 *)(input + 0x04) >> 4;
     s32 y = *(s32 *)(input + 0x08) >> 4;
     s32 row = func_020adae4(

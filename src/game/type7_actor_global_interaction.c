@@ -5,7 +5,7 @@
  * the global object against the active type-seven actor and conditionally
  * forwards the triggering object into the actor's interaction handler.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -21,7 +21,7 @@ extern s32 Type7Actor_IsInteractionSceneActive(void);
 
 /*
  * Input is an interaction trigger. Return immediately unless Type7Actor_IsInteractionSceneActive
- * permits processing and the global actor at data_021052fc+0x2ea8 exists.
+ * permits processing and the global actor at gGamePhaseRuntime+0x2ea8 exists.
  * Update the global object at +0x2ea4 from that actor's transform +0x18 with
  * recovered distance 20 and mode zero. Continue only when descriptor +0x29c
  * halfword +0x38 has bit three set and Type7Actor_GetStateCode returns zero or one; then
@@ -36,7 +36,7 @@ void Type7Actor_ProcessGlobalInteractionTrigger(void *trigger)
 
     if (Type7Actor_IsInteractionSceneActive() == 0)
         return;
-    state = data_021052fc;
+    state = gGamePhaseRuntime;
     actor = *(u8 **)(state + 0x2ea8);
     if (actor == 0)
         return;

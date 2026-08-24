@@ -14,7 +14,7 @@
 .extern gFieldEffectListVtable
 .extern gFieldEffectListNodeAllocationTag
 .extern gGraphics3dPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gHeapContext
 .global FieldEffectList_Init
 FieldEffectList_Init: ; 0x0201dc18

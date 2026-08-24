@@ -13,7 +13,7 @@ typedef struct TerrainQueryVTable {
     u32 (*query_2c)(void *, s32, s32);
 } TerrainQueryVTable;
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -45,7 +45,7 @@ void Actor_UpdateTerrainMotionFeedback(void *self)
     if ((ActorFeedbackResources_GetPackedSound(8) || ActorFeedbackResources_GetPackedSound(7)) &&
         !vtable->query_a0(actor) && !(*(u32 *)(actor + 0xd0) & 0x10) &&
         !vtable->query_a8(actor)) {
-        queryObject = *(TerrainQueryVTable ***)((u8 *)data_021052fc + 0x2ed4);
+        queryObject = *(TerrainQueryVTable ***)((u8 *)gGamePhaseRuntime + 0x2ed4);
         terrain = (*queryObject)->query_2c(
             queryObject, *(s32 *)(actor + 0x1c) >> 16,
             *(s32 *)(actor + 0x20) >> 16);

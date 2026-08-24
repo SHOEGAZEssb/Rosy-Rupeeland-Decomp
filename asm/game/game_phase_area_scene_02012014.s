@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gGamePhaseAreaRegionEffectAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRegionTable_FindContainingRegion
 .extern GamePhaseRegionTable_GetRegion
 .extern GamePhaseRegionTable_IsRegionRevealed
@@ -94,6 +94,6 @@ L_02012138:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_02012144: .word gGamePhaseAreaRegionEffectAllocationTag
 L_02012148: .word gHeapContext
-L_0201214c: .word data_021052fc
+L_0201214c: .word gGamePhaseRuntime
     .size GamePhaseAreaScene_UpdateRegionAtPosition, . - GamePhaseAreaScene_UpdateRegionAtPosition
 

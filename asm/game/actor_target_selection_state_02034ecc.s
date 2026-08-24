@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_target_selection_state.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorTargetSelectionMetadata
 .extern gActorTargetSelectionCandidates
 .extern gActorTargetSelectionPriorities
@@ -113,7 +113,7 @@ ActorTargetSelection_Populate: ; 0x02034ecc
     blt .L_02035028
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02035040: .word data_021052fc
+.L_02035040: .word gGamePhaseRuntime
 .L_02035044: .word gActorTargetSelectionMetadata
 .L_02035048: .word gActorTargetSelectionCandidates
 .L_0203504c: .word gActorTargetSelectionPriorities

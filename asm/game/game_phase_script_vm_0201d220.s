@@ -26,7 +26,7 @@
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global func_0201d220
 func_0201d220: ; 0x0201d220
     stmdb sp!, {r3, lr}
@@ -36,7 +36,7 @@ func_0201d220: ; 0x0201d220
     bl GamePhaseState_UpdateRenderHelpers
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-L_0201d23c: .word data_021052fc
+L_0201d23c: .word gGamePhaseRuntime
 
 
 .size func_0201d220, . - func_0201d220

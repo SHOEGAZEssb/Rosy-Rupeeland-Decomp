@@ -5,7 +5,7 @@
 .extern Scene_Destroy
 .extern Scene_Init
 .extern data_020d5384
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
@@ -110,5 +110,5 @@ L_0200c9c8:
 L_0200c9f0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0200c9f8: .word data_021052fc
+L_0200c9f8: .word gGamePhaseRuntime
 .size GamePhaseApplyScene_Update, . - GamePhaseApplyScene_Update

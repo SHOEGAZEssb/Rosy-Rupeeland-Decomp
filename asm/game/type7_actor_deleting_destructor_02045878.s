@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern data_020e16b0
 .extern data_020e1c38
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gType7ActorRegistry
 .extern VecFx32Object_Destroy
 .extern ActorDerivedType1_SetSpecialModeEnabled
@@ -105,7 +105,7 @@ Type7Actor_DestroyAndFree: ; 0x02045878
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_020459bc: .word data_020e1c38
-.L_020459c0: .word data_021052fc
+.L_020459c0: .word gGamePhaseRuntime
 .L_020459c4: .word gType7ActorRegistry
 .L_020459c8: .word gGameWork
 .L_020459cc: .word 0x3fd

@@ -6,7 +6,7 @@
  * the common path stops normal presentation playback before dispatch.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 extern void *gHeapContext;
 extern void *gGamePhaseCurrencyHud;
@@ -72,7 +72,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
     FIELD(u32, actor, 0x5c) = (FIELD(u32, actor, 0x5c) & 0xffff0000) | 0xff00;
 
     if (type == 10 || type == 19) {
-        void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+        void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
         if (FIELD(u8, trigger, 0x4d) == 1) {
             ActorPredicate predicate =
                 *(ActorPredicate *)((u8 *)FIELD(void *, primary, 0) + 0xa8);
@@ -83,14 +83,14 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
         GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, FIELD(s16, actor, 0x1f2), 0);
         void *effect = Heap_Alloc(0x44, gPresentationBackedActorCurrencyEffectAllocationTag, 4, &gHeapContext);
         if (effect != 0) {
-            void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+            void *point = ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
             effect = func_02022cb0(effect, point, actor,
                                    FIELD(s16, actor, 0x1f2), 0x2000, -0xc0);
         }
-        RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, effect);
+        RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, effect);
 
         if (type == 19) {
-            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
             s32 x = (FIELD(s32, actor, 0x1c) >> 12) - 20;
             s32 y = (FIELD(s32, actor, 0x20) >> 12) -
                     (FIELD(s32, actor, 0x24) >> 12) - 20;
@@ -104,7 +104,7 @@ s32 PresentationBackedActor_HandleInteraction(void *actor, void *trigger)
         sound = type == 11 ? 17 : 18;
     } else if (type == 18) {
         FIELD(s16, gGameWork, 0xf6) += FIELD(s16, actor, 0x1f2);
-        void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+        void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
         s32 x = FIELD(s32, actor, 0x1c) >> 12;
         s32 y = (FIELD(s32, actor, 0x20) >> 12) -
                 (FIELD(s32, actor, 0x24) >> 12) - 20;

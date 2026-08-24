@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Select, materialize, destroy, and query the recovered 15-entry actor resource table. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 data_020e9fa0[];
 extern u8 gActorInteractionResourceState[];
 extern const char gActorFeedbackResourcePointerArrayAllocationTag[];
@@ -18,7 +18,7 @@ extern void *AnimationResource_Init(void *allocation, u16 first, u16 second, u16
 #endif
 
 /*
- * Resolve the active table index from data_021052fc -> +0x24 -> +0x00 minus
+ * Resolve the active table index from gGamePhaseRuntime -> +0x24 -> +0x00 minus
  * one through GamePhaseMetadata_GetByIndex, sign-extend the low 12 bits of returned word
  * +0x40, and select its 0x78-byte record block in data_020e9fa0. Store that
  * block at singleton gActorInteractionResourceState +0x04 and allocate a 0x3c-byte array at
@@ -33,7 +33,7 @@ void ActorFeedbackResources_Load(void)
     u8 *records;
     void **resources;
     s32 i;
-    void *state = *(void **)(*(u8 **)(data_021052fc + 0x24));
+    void *state = *(void **)(*(u8 **)(gGamePhaseRuntime + 0x24));
 
     state = GamePhaseMetadata_GetByIndex(*(s32 *)state - 1);
     selector = (*(s32 *)((u8 *)state + 0x40) << 20) >> 20;

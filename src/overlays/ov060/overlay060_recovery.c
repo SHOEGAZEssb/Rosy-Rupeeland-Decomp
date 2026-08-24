@@ -38,7 +38,7 @@ extern TouchRegionVTable data_ov060_02210600;
 extern SceneVTable data_ov060_02210620;
 extern char data_ov060_0221064c[], data_ov060_02210654[];
 extern void *data_020f4e18, *data_020f4e14, *gSoundContext;
-extern GamePhaseRuntime* data_021052fc;
+extern GamePhaseRuntime* gGamePhaseRuntime;
 extern GameWork* gGameWork;
 extern void *AnimationResourceState_InitEmbedded(void*), *AnimationResourceState_Destroy(void*);
 extern void func_02071ee0(void*, void*, s32, s32, s32);
@@ -290,19 +290,19 @@ s32 func_ov060_022102f0(Overlay60Scene* self)
     GraphicsSpriteGroup_AdvanceAnimations(self->resources->group);
     TouchRegionManager_Tick(
         (TouchRegionManager*)Scene_GetEmbedded10(&self->base));
-    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
     return 0;
 }
 /* Invoke the active game-phase scene's virtual method at offset 0x10. */
 s32 func_ov060_02210430(void)
 {
-    Scene* runtime = (Scene*)data_021052fc;
+    Scene* runtime = (Scene*)gGamePhaseRuntime;
     return runtime->vtable->method10(runtime);
 }
 /* Invoke the active game-phase scene's virtual method at offset 0x0c. */
 s32 func_ov060_02210450(void)
 {
-    Scene* runtime = (Scene*)data_021052fc;
+    Scene* runtime = (Scene*)gGamePhaseRuntime;
     return runtime->vtable->method0C(runtime);
 }
 /* Commit choice 100/101, play sounds, update flag 0x3ea, and start closing. */

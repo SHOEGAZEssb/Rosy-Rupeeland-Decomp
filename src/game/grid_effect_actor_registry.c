@@ -6,7 +6,7 @@
  * while releasing their allocated mode bit.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gGridEffectActorRuntimeState[];
 extern void *gGridEffectActorRegistry[];
 
@@ -38,7 +38,7 @@ void GridEffectActorRegistry_Reset(void)
  * Ignore all register inputs and return the address of the first empty slot.
  * If every slot is occupied, select the actor with the greatest upper-bit age
  * value from halfword 0x1F0, finish it through Actor_GetOwningCollection/ActorCollection_QueueActorForRemoval, set
- * global flag 0x10 at data_021052fc+0x30B8, and return its slot for reuse. The
+ * global flag 0x10 at gGamePhaseRuntime+0x30B8, and return its slot for reuse. The
  * evicted actor and global state change; no direct hardware effects occur.
  */
 void **GridEffectActorRegistry_AcquireSlot(void)
@@ -60,7 +60,7 @@ void **GridEffectActorRegistry_AcquireSlot(void)
 
     void *actor = *oldest_slot;
     ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
-    FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
+    FIELD(u32, gGamePhaseRuntime, 0x30b8) |= 0x10;
     return oldest_slot;
 }
 

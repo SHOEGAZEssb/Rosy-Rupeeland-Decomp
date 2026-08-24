@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov049/overlay049_scene_recovery.c.
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov049_0220d31a
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
@@ -239,7 +239,7 @@ func_ov049_0220cf94:
     add sp, sp, #0x144
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0220d2f4: .word data_ov049_0220d31a
-.L_0220d2f8: .word data_021052fc
+.L_0220d2f8: .word gGamePhaseRuntime
 .L_0220d2fc: .word data_020c9670
 .L_0220d300: .word 0x7fff
 .size func_ov049_0220cf94, . - func_ov049_0220cf94

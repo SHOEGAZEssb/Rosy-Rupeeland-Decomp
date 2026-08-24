@@ -13,7 +13,7 @@
 typedef void (*Ov79ArgMethod)(void *, s32);
 typedef void (*Ov79RecordMethod)(void *, const void *);
 
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *gSoundContext;
 extern "C" const u8 data_020e6adc[];
 extern "C" const u8 data_020e6b74[];
@@ -219,7 +219,7 @@ extern "C" s32 func_ov079_0221317c(void *actor, u32 direction)
     if (FIELD(s32, actor, 0x2a4) > 0 ||
         FIELD(s32, actor, 0x24) != FIELD(s32, actor, 0x1dc))
         return 0;
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     void *primary = FIELD(void *, collection, 0x2e7c);
     if ((FIELD(u32, actor, 0x260) & 0x10) == 0 &&
         !ActorExtendedType2_IsDirectionToActorAccepted(actor, direction, primary))
@@ -235,7 +235,7 @@ extern "C" s32 func_ov079_0221317c(void *actor, u32 direction)
 extern "C" void func_ov079_0221323c(void *actor)
 {
     copy_pair(actor, 0x298, 0x68);
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     FIELD(void *, actor, 0x228) = FIELD(void *, collection, 0x2e7c);
     func_ov079_02213458(actor, FIELD(void *, actor, 0x228));
     FIELD(s32, actor, 0x2a0) = (s32)(func_020bf1f8(genrand_int32(), 0x3c) >> 32) + 0xb4;
@@ -260,7 +260,7 @@ extern "C" void *func_ov079_02213310(void *actor)
 {
     if (FIELD(s32, actor, 0x2a4) > 0)
         return 0;
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     s32 count = FIELD(s32, collection, 0x2e74);
     for (s32 index = 0; index < count; ++index) {
         void *candidate = FIELD(void *, collection, index * 4);
@@ -410,7 +410,7 @@ extern "C" void func_ov079_02213850(void *actor)
         return;
     }
     --FIELD(s32, actor, 0x2a0);
-    (void)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    (void)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     if (Fx32Vector2_Magnitude(FIELD(s32, partner, 0x1c) - FIELD(s32, actor, 0x1c),
                       FIELD(s32, partner, 0x20) - FIELD(s32, actor, 0x20)) > 0x40000) {
         copy_pair(actor, 0x298, 0x60);

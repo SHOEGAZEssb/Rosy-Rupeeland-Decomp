@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020c3704
 .extern data_020d6b58
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern func_02026990
@@ -287,7 +287,7 @@ func_02026588: ; 0x02026588
 .L_02026968:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
-.L_02026970: .word data_021052fc
+.L_02026970: .word gGamePhaseRuntime
 .L_02026974: .word gDebugFont
 .L_02026978: .word data_020d6b58
 .L_0202697c: .word gHeapContext

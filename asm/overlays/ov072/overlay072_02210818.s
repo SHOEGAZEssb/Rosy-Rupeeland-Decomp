@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov072/overlay072_recovery.c.
 .extern GameWork_TestFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov072_022109dc
 .extern gGameWork
 
@@ -60,7 +60,7 @@ func_ov072_02210818:
     blt .L_02210858
     mvn r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-.L_022108dc: .word data_021052fc
+.L_022108dc: .word gGamePhaseRuntime
 .L_022108e0: .word data_ov072_022109dc
 .L_022108e4: .word gGameWork
 .size func_ov072_02210818, . - func_ov072_02210818

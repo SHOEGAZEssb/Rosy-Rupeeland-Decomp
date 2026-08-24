@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_control_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .global GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9
 GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9:
@@ -16,5 +16,5 @@ GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9:
     blx r2
     mov r0, #0
     ldmia sp!, {r3, pc}
-L_020176c4: .word data_021052fc
+L_020176c4: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9, . - GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9

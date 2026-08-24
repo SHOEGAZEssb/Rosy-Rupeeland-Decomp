@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/grid_effect_actor_registry.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGridEffectActorRuntimeState
 .extern gGridEffectActorRegistry
 .extern ActorCollection_QueueActorForRemoval
@@ -61,7 +61,7 @@ GridEffectActorRegistry_AcquireSlot: ; 0x0204f9c0
     str r2, [r1, #0xb8]
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204fa40: .word gGridEffectActorRegistry
-.L_0204fa44: .word data_021052fc
+.L_0204fa44: .word gGamePhaseRuntime
 .size GridEffectActorRegistry_AcquireSlot, . - GridEffectActorRegistry_AcquireSlot
 
     .global GridEffectActorRegistry_Unregister

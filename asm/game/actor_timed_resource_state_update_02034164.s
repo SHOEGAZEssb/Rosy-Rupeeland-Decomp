@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_timed_resource_state_update.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPrimaryContainer
@@ -82,7 +82,7 @@ Actor_UpdateTimedResourceState: ; 0x02034164
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}
 .L_02034258: .word gActorRuntimeCollection
-.L_0203425c: .word data_021052fc
+.L_0203425c: .word gGamePhaseRuntime
     .size Actor_UpdateTimedResourceState, . - Actor_UpdateTimedResourceState
 
     .global Actor_ApplySpawnDescriptorScript

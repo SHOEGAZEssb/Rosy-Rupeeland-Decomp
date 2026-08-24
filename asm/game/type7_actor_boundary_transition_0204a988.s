@@ -2,7 +2,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Free
 .extern data_020e17e8
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -451,7 +451,7 @@ Type7Actor_ProcessBoundaryTransition: ; 0x0204a988
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0204afc0: .word gGameWork
 .L_0204afc4: .word 0x3fd
-.L_0204afc8: .word data_021052fc
+.L_0204afc8: .word gGamePhaseRuntime
 .L_0204afcc: .word 0xdfd7
 .L_0204afd0: .word data_020e17e8
 .size Type7Actor_ProcessBoundaryTransition, . - Type7Actor_ProcessBoundaryTransition

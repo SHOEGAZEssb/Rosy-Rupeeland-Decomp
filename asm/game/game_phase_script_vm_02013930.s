@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_interaction_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Type7Actor_ResetMotionAndCooldown
 
     .global GamePhaseActorScriptVm_ClearFlag01000000AndCleanup
@@ -47,6 +47,6 @@ L_020139b8:
 L_020139c4:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_020139cc: .word data_021052fc
+L_020139cc: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_ClearFlag01000000AndCleanup, . - GamePhaseActorScriptVm_ClearFlag01000000AndCleanup
 

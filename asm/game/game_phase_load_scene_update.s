@@ -30,7 +30,7 @@
 .extern data_020d5534
 .extern data_020d553c
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern DisplayBrightness_IsMainTransitionComplete
@@ -1242,7 +1242,7 @@ L_0200e07c:
     mov r1, #0x0
     bl func_02092c8c
     b L_0200e2ac
-L_0200e0e4: .word data_021052fc
+L_0200e0e4: .word gGamePhaseRuntime
 L_0200e0e8: .word gSoundContext
 L_0200e0ec: .word 0x4000050
 L_0200e0f0: .word data_020f4e14

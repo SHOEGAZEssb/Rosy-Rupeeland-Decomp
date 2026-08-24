@@ -36,7 +36,7 @@
     .extern data_ov039_02207fdc
     .extern data_ov039_02207fd8
     .extern data_ov039_02208010
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern gDisplayBrightnessPair
     .extern gSoundContext
 
@@ -968,7 +968,7 @@ L_022003e0: .word 0x555
 L_022003e4: .word gSoundContext
 L_022003e8: .word 0x1c5
 L_022003ec: .word 0x2b33
-L_022003f0: .word data_021052fc
+L_022003f0: .word gGamePhaseRuntime
 L_022003f4: .word 0x186
 L_022003f8: .word gDisplayBrightnessPair
 L_022003fc: .word data_ov039_02207fe0

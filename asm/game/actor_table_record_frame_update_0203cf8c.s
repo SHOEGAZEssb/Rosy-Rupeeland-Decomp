@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_table_record_frame_update.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_GetMagnitude
 .extern Actor_TurnTowardVector
 .extern VecFx32Object_ScaleInPlaceRounded
@@ -199,6 +199,6 @@ ActorTableRecord_UpdateFrame: ; 0x0203cf8c
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0203d258: .word 0x19a
-.L_0203d25c: .word data_021052fc
+.L_0203d25c: .word gGamePhaseRuntime
 
     .size ActorTableRecord_UpdateFrame, . - ActorTableRecord_UpdateFrame

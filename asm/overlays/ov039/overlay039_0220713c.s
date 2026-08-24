@@ -9,7 +9,7 @@
     .extern data_ov039_02208324
     .extern data_ov039_022082d4
     .extern gSystemState
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .global func_ov039_0220713c
 func_ov039_0220713c:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
@@ -239,6 +239,6 @@ L_0220749c: .word 0x28f
 L_022074a0: .word 0x1ccd
 L_022074a4: .word 0x26e000
 L_022074a8: .word 0xe66
-L_022074ac: .word data_021052fc
+L_022074ac: .word gGamePhaseRuntime
     .size func_ov039_0220713c, .-func_ov039_0220713c
 

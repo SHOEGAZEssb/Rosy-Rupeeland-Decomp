@@ -3,7 +3,7 @@
 
 /* Register the derived actor, initiate its timed state, and notify the primary runtime actor. */
 extern void *gActorRegisteredSubclassRegistry[4];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern const char gActorRegisteredSubclassPresentationAllocationTag[];
 
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ void ActorRegisteredSubclass_TriggerPrimaryInteraction(void *self)
         ActorRegisteredSubclass_StartTimedState(actor, 0x78);
         Actor_PlayHorizontalSpatialSound(actor, 0xe204, 0);
     }
-    target = *(u8 **)(data_021052fc + 0x2ea4);
+    target = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
     ActorDerivedType1_StartRecord(target, 0x7e);
     Actor_SetDirectionFromVector(
         target, *(s32 *)(actor + 0x1c) - *(s32 *)(target + 0x1c),

@@ -2,7 +2,7 @@
     .extern Heap_Free
     .extern __destroy_arr
     .extern data_020f4e14
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov013_021fed6c
     .extern RuntimePresentationManager_BroadcastSlot1C
     .extern AnimationResourceState_Destroy
@@ -83,6 +83,6 @@ L_021fd204:
     ldmia sp!, {r4, pc}
 L_021fd29c: .word data_ov013_021fed6c
 L_021fd2a0: .word data_020f4e14
-L_021fd2a4: .word data_021052fc
+L_021fd2a4: .word gGamePhaseRuntime
 L_021fd2a8: .word func_ov013_021fce00
     .size func_ov013_021fd1a0, . - func_ov013_021fd1a0

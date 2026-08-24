@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -115,5 +115,5 @@ func_ov074_02210878:
     bl VecFx32Object_Destroy
     add sp, sp, #0xa4
     ldmia sp!, {r4, r5, pc}
-.L_02210a00: .word data_021052fc
+.L_02210a00: .word gGamePhaseRuntime
 .size func_ov074_02210878, . - func_ov074_02210878

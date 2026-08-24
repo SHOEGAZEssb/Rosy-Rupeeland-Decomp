@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_attachment_layer_sync.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern SignedAbsoluteValue
 
@@ -106,6 +106,6 @@ Actor_UpdatePrimaryRenderAttachmentPriority: ; 0x02031564
 .L_020316dc:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_020316e4: .word data_021052fc
+.L_020316e4: .word gGamePhaseRuntime
     .size Actor_UpdatePrimaryRenderAttachmentPriority, . - Actor_UpdatePrimaryRenderAttachmentPriority
 

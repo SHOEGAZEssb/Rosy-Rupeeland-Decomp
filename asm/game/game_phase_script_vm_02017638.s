@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_control_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
 .extern ActorCollection_SetEnabled
@@ -17,5 +17,5 @@ GamePhaseActorScriptVm_SetRuntimeCollection2Enabled:
     bl ActorCollection_SetEnabled
     mov r0, #0
     ldmia sp!, {r4, pc}
-L_02017664: .word data_021052fc
+L_02017664: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_SetRuntimeCollection2Enabled, . - GamePhaseActorScriptVm_SetRuntimeCollection2Enabled

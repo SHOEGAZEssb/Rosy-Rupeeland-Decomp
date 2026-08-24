@@ -1,6 +1,6 @@
     .text
     .extern Heap_Alloc
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov013_021fed88
     .extern data_ov013_021fed90
     .extern GamePhaseRuntime_SetPlacementMode
@@ -52,7 +52,7 @@ L_021fda7c:
     orr r0, r0, #0x400
     str r0, [r4, #0x20]
     ldmia sp!, {r4, pc}
-L_021fda90: .word data_021052fc
+L_021fda90: .word gGamePhaseRuntime
 L_021fda94: .word data_ov013_021fed88
 L_021fda98: .word gHeapContext
 

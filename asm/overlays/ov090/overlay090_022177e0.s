@@ -4,7 +4,7 @@
 .extern GXx_SetMasterBrightness_
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov090_0221cb10
 .extern VecFx32Object_Init
 .extern GamePhaseRuntime_GetActorCollection
@@ -162,7 +162,7 @@ func_ov090_022177e0:
     mov r0, r10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02217a20: .word data_ov090_0221cb10
-.L_02217a24: .word data_021052fc
+.L_02217a24: .word gGamePhaseRuntime
 .L_02217a28: .word gGameWork
 .L_02217a2c: .word 0x403
 .L_02217a30: .word 0x386

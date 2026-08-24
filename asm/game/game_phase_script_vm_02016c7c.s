@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_packed_runtime_update_opcode.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern DualLayerTileRenderer_SetPackedTileValue
 .global func_02016c7c
@@ -64,5 +64,5 @@ L_02016d2c:
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_02016d5c: .word data_021052fc
+L_02016d5c: .word gGamePhaseRuntime
     .size func_02016c7c, . - func_02016c7c

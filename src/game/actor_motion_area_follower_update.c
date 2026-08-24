@@ -7,7 +7,7 @@
  * position, and publishes centered coordinates into GameWork.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -76,7 +76,7 @@ s32 ActorMotionAreaFollower_Update(ActorMotionAreaFollower *self, const s16 *bou
             self->transitionTimer = 0x29;
             self->transitionActive = 1;
             if (*(u8 *)(actor + 0x4d) == 1) {
-                runtime = (u8 *)data_021052fc;
+                runtime = (u8 *)gGamePhaseRuntime;
                 companion = *(u8 **)(runtime + 0x2ea8);
             }
             if (companion != 0 && Type7Actor_GetStateCode(companion) == 3) {

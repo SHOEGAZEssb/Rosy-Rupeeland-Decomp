@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_GetConfiguration
 .extern func_020b0808
 .extern func_020b0844
@@ -103,7 +103,7 @@ func_ov074_022117d0:
 .L_02211938: .word 0x400046c
 .L_0221193c: .word 0x5ed00000
 .L_02211940: .word 0x1f00c0
-.L_02211944: .word data_021052fc
+.L_02211944: .word gGamePhaseRuntime
 .L_02211948: .word 0x4000480
 .L_0221194c: .word 0xf800f800
 .L_02211950: .word 0x400048c

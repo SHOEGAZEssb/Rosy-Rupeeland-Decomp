@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov057/overlay057_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov057_0220e7f4
 .extern RuntimePresentationManager_AppendSecondListEffect
 .extern func_ov057_0220e400
@@ -28,5 +28,5 @@ func_ov057_0220e558:
     ldmia sp!, {r3, pc}
 .L_0220e598: .word data_ov057_0220e7f4
 .L_0220e59c: .word gHeapContext
-.L_0220e5a0: .word data_021052fc
+.L_0220e5a0: .word gGamePhaseRuntime
 .size func_ov057_0220e558, . - func_ov057_0220e558

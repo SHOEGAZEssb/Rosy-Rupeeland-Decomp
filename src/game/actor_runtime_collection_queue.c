@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern const u8 gActorRuntimeOwnedNodeAllocationTag[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 #ifdef __cplusplus
 }
@@ -89,7 +89,7 @@ s32 ActorRuntimeCollection_DispatchQueuedValue(ActorRuntimeCollection *self)
     if (self->ownedList.count == 0)
         return 0;
 
-    runtimeObject = *(void **)((u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1) + 8);
+    runtimeObject = *(void **)((u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1) + 8);
     node = self->ownedList.tail;
     value = node->value;
     self->ownedList.tail = node->previous;

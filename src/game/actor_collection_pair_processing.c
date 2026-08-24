@@ -47,7 +47,7 @@ typedef struct CollisionWords {
     s32 word[4];
 } CollisionWords;
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gActorRuntimeCollection[];
 extern u8 gActorRuntimeFlags[];
 
@@ -179,7 +179,7 @@ void ActorCollection_ProcessCategory1And2Pairs(ActorPairProcessingCollection *co
     s32 firstPossible = 0;
     s32 outerCount = collection->categoryCounts_0e20[1];
     s32 innerCount = collection->categoryCounts_0e20[2];
-    void *contextValue = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *contextValue = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     s32 outer;
 
     for (outer = 0; outer < outerCount; outer++) {

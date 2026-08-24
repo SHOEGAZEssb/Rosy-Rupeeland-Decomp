@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_UpdatePrimaryRenderAttachmentPriority
 
 .global func_ov095_0221b304
@@ -38,5 +38,5 @@ func_ov095_0221b304:
     strne r0, [r4, #0xd0]
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-.L_0221b388: .word data_021052fc
+.L_0221b388: .word gGamePhaseRuntime
 .size func_ov095_0221b304, . - func_ov095_0221b304

@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_020f4e14;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const s32 data_ov018_021ffc08[2];
 extern const s32 data_ov018_021ffc30[2];
 extern void *gDebugFont;
@@ -48,7 +48,7 @@ extern "C" s32 func_ov018_021fe6f0(void *state)
         GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-        FIELD(u32, (u8 *)data_021052fc + 0x2000, 0xf6c) |= 2;
+        FIELD(u32, (u8 *)gGamePhaseRuntime + 0x2000, 0xf6c) |= 2;
 
         void *temporary = func_ov003_021fb804(FIELD(void *, state, 0x190));
         func_020b1ccc(temporary, 0, 0x600);

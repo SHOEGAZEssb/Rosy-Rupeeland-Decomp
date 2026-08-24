@@ -8,7 +8,7 @@
 .extern gTimedSpriteBurstManagerVtable
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern func_02003e20
 .extern func_02003e38
 .extern VecFx32Object_Init

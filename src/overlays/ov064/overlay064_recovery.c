@@ -13,7 +13,7 @@ extern "C" {
 #else
 #define O64_ARGS
 #endif
-extern void *data_021052fc, *data_02105300, *data_020f4e14;
+extern void *gGamePhaseRuntime, *gGamePhaseTouchPromptTaskNode, *data_020f4e14;
 extern void *gGameWork, *gSoundContext, *gGamePhaseCurrencyHud, *gDebugFont;
 extern void *gHeapContext;
 extern u8 data_ov064_02211e98[], data_ov064_02211e40[];
@@ -174,7 +174,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
     F(u16, scene, 0x7e) = 0;
     F(u32, scene, 0x80) = parameter;
     F(void *, scene, 0x84) = 0;
-    actor = F(void *, data_021052fc, 0x2ea4);
+    actor = F(void *, gGamePhaseRuntime, 0x2ea4);
     actorResource = F(void *, actor, 0x54);
     actorX = F(s16, actorResource, 0x2c);
     actorY = F(s16, actorResource, 0x2e);
@@ -194,7 +194,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         s32 special = 0;
 
         F(void *, scene, 0x24) = make_animation(0x1092, 0x1001, 0x1093);
-        actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        actorCollection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         presentation = GraphicsSpriteState_Create(
             ActorCollection_GetSpriteGroup(actorCollection),
             F(void *, scene, 0x24), 0, F(u8, actorResource, 0x3a),
@@ -202,7 +202,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         F(void *, scene, 0x30) = presentation;
         F(u32, scene, 0x6c) = F(u32, data_ov064_02211e40, 0);
         F(u32, scene, 0x70) = F(u32, data_ov064_02211e40, 4);
-        direction = call_method2(F(void *, data_021052fc, 0x2ed4), 0x2c,
+        direction = call_method2(F(void *, gGamePhaseRuntime, 0x2ed4), 0x2c,
                                  F(s16, scene, 0x78), F(s16, scene, 0x7a));
         index = ((u32)direction >> 5) & 0x1f;
         if ((u32)(index - 0x11) < 4 &&
@@ -211,7 +211,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         if (special)
             actorY -= 0x18;
         F(u8, scene, 0x76) = index != 6 && index != 0x14;
-        index = ActorDirection_GetPresentationGroup(F(void *, F(void *, data_021052fc, 0x30bc), 0));
+        index = ActorDirection_GetPresentationGroup(F(void *, F(void *, gGamePhaseRuntime, 0x30bc), 0));
         F(u32, scene, 0x80) = data_020ed530[index * 2 + F(u8, scene, 0x76)];
         F(s16, presentation, 0x2c) = actorX;
         F(s16, presentation, 0x2e) = actorY;
@@ -219,7 +219,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         void *replacement;
 
         F(void *, scene, 0x24) = make_animation(0x11ff, 0x1200, 0x1201);
-        actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        actorCollection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         presentation = GraphicsSpriteState_Create(
             ActorCollection_GetSpriteGroup(actorCollection),
             F(void *, scene, 0x24), 0x10, F(u8, actorResource, 0x3a),
@@ -241,13 +241,13 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
                                      &gHeapContext);
             if (replacement != 0) {
                 actorCollection =
-                    GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+                    GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
                 replacement = func_02025300(
                     replacement, (u8 *)actor + 0x18,
                     ActorCollection_GetSpriteGroup(actorCollection), 0x1e,
                     1, 0);
             }
-            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, replacement);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, replacement);
         }
     } else if (mode == 2) {
         s32 direction;
@@ -255,7 +255,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         s32 special = 0;
 
         F(void *, scene, 0x24) = make_animation(0x1096, 0x1097, 0x1098);
-        actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        actorCollection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         presentation = GraphicsSpriteState_Create(
             ActorCollection_GetSpriteGroup(actorCollection),
             F(void *, scene, 0x24), 2, F(u8, actorResource, 0x3a),
@@ -263,7 +263,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         F(void *, scene, 0x30) = presentation;
         F(u32, scene, 0x6c) = F(u32, data_ov064_02211e40, 8);
         F(u32, scene, 0x70) = F(u32, data_ov064_02211e40, 0xc);
-        direction = call_method2(F(void *, data_021052fc, 0x2ed4), 0x2c,
+        direction = call_method2(F(void *, gGamePhaseRuntime, 0x2ed4), 0x2c,
                                  F(s16, scene, 0x78), F(s16, scene, 0x7a));
         index = (((u32)direction >> 5) & 0x1f) - 0x11;
         if ((u32)index < 4 && ((1u << index) & 0xb) != 0)
@@ -277,23 +277,23 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
     } else if (mode == 3) {
         s32 i;
 
-        RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 1);
+        RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 1);
         Sound_SetCaptureEnabled(gSoundContext, 0);
-        actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
+        actorCollection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2);
         ActorCollection_UnregisterAndDestroyAllActors(actorCollection);
         GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
         target = F(void *, actor, 0x26c);
         if (target != 0)
             F(u32, target, 0x20) |= 0x40000;
-        target = F(void *, data_021052fc, 0x2ea8);
+        target = F(void *, gGamePhaseRuntime, 0x2ea8);
         if (target != 0 && F(void *, target, 0x234) != 0)
             F(u32, F(void *, target, 0x234), 0x20) |= 0x40000;
-        actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        actorCollection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         ActorCollection_DestroyUnretainedActors(actorCollection);
-        actorCollection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        actorCollection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         ActorCollection_SetEnabled(actorCollection, 0);
-        call_method2_void(F(void *, data_021052fc, 0x30e8), 0xc, 0, 0x1f);
-        GamePhaseTouchPrompt_SetEnabled(F(void *, data_02105300, 8), 0);
+        call_method2_void(F(void *, gGamePhaseRuntime, 0x30e8), 0xc, 0, 0x1f);
+        GamePhaseTouchPrompt_SetEnabled(F(void *, gGamePhaseTouchPromptTaskNode, 8), 0);
         F(void *, scene, 0x3c) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
         F(void *, scene, 0x40) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
         F(void *, scene, 0x24) = make_animation(0x104c, 0x104d, 0x104e);
@@ -367,7 +367,7 @@ void *Overlay064Scene_Construct(void *scene, s32 mode, u32 parameter)
         F(u8, scene, 0x76) = 0;
     }
 
-    target = F(void *, data_021052fc, 0x2ea8);
+    target = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (target != 0)
         Type7Actor_EnterSpecialPresentationState(target);
     Scene_SetFlags03(scene);
@@ -405,26 +405,26 @@ static void *destroy_scene(void *scene, s32 freeScene)
         Heap_Free(object);
     }
 
-    actor = F(void *, data_021052fc, 0x2ea4);
+    actor = F(void *, gGamePhaseRuntime, 0x2ea4);
     F(u16, F(void *, actor, 0x54), 0x24) &= (u16)~4;
     ActorDerivedType1_ResetRuntimeState(actor);
     mode = F(u8, scene, 0x77);
     if (mode == 0) {
-        GamePhaseRuntime_RequestPrimaryWarp(data_021052fc, F(s16, scene, 0x78) << 16,
+        GamePhaseRuntime_RequestPrimaryWarp(gGamePhaseRuntime, F(s16, scene, 0x78) << 16,
                       F(s16, scene, 0x7a) << 16);
     } else if (mode == 1 || mode == 2) {
         Sound_ReleaseGroup(gSoundContext, mode == 1 ? 0x52 : 0x53);
         GamePhaseRuntime_StageAreaRequest(
-            data_021052fc, F(s16, gGameWork, 0x188),
+            gGamePhaseRuntime, F(s16, gGameWork, 0x188),
             F(s16, gGameWork, 0x18a), F(s16, gGameWork, 0x18c), 0, 0);
         GameWork_SetFlag(gGameWork, 0x3f8);
     } else if (mode == 3) {
-        GamePhaseRuntime_StageAreaRequest(data_021052fc, 0xc6, 0x100,
+        GamePhaseRuntime_StageAreaRequest(gGamePhaseRuntime, 0xc6, 0x100,
                                           0xc0, 0, 0);
         GameWork_SetFlag(gGameWork, 0x3f8);
     }
 
-    object = F(void *, data_021052fc, 0x2ea8);
+    object = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (object != 0)
         Type7Actor_LeaveSpecialPresentationState(object);
     OverlayManager_UnloadOverlay(OverlayManager_GetGlobal(), 2);
@@ -449,7 +449,7 @@ void *Overlay064Scene_Delete(void *scene)
 /* Drive the mode-zero actor presentation through its five retail states. */
 s32 Overlay064Scene_UpdateMode0(void *scene)
 {
-    void *actor = F(void *, data_021052fc, 0x2ea4);
+    void *actor = F(void *, gGamePhaseRuntime, 0x2ea4);
     s32 state;
     s32 result = 0;
 
@@ -460,7 +460,7 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
         void *sceneSprite;
 
         F(s32, scene, 8) = 1;
-        actorSprite = F(void *, F(void *, data_021052fc, 0x2ea4), 0x54);
+        actorSprite = F(void *, F(void *, gGamePhaseRuntime, 0x2ea4), 0x54);
         F(u16, actorSprite, 0x24) |= 4;
         sceneSprite = F(void *, scene, 0x30);
         F(u16, sceneSprite, 0x24) &= (u16)~4;
@@ -516,12 +516,12 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
                                 &gHeapContext);
             if (motion != 0) {
                 void *position = ActorMotionAreaFollower_GetPosition(
-                    (u8 *)data_021052fc + 0x2fbc);
+                    (u8 *)gGamePhaseRuntime + 0x2fbc);
                 motion = func_02022cb0(
                     motion, position, actor, -F(s32, scene, 0x80),
                     0x2000, -0xc0);
             }
-            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, motion);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, motion);
             Overlay064Scene_SpawnRewardEffect(scene, &savedPosition);
             VecFx32Object_Assign((VecFx32Object *)((u8 *)actor + 0x18),
                                  &destination);
@@ -575,7 +575,7 @@ s32 Overlay064Scene_UpdateMode0(void *scene)
 /* Drive the mode-one replacement, payment, sound, and fade sequence. */
 s32 Overlay064Scene_UpdateMode1(void *scene)
 {
-    void *actor = F(void *, data_021052fc, 0x2ea4);
+    void *actor = F(void *, gGamePhaseRuntime, 0x2ea4);
     s32 state;
     s32 result = 0;
 
@@ -608,10 +608,10 @@ s32 Overlay064Scene_UpdateMode1(void *scene)
                 effect = func_02022cb0(
                     effect,
                     ActorMotionAreaFollower_GetPosition(
-                        (u8 *)data_021052fc + 0x2fbc),
+                        (u8 *)gGamePhaseRuntime + 0x2fbc),
                     actor, -F(s32, scene, 0x80), 0x2000, -0xc0);
             }
-            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, effect);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, effect);
             Sound_StopAllDirectSequences(gSoundContext, 0);
             Sound_PlayDirectSequence(gSoundContext, 0x27, 0x7f);
         }
@@ -644,7 +644,7 @@ s32 Overlay064Scene_UpdateMode1(void *scene)
 /* Drive the mode-two payment, sound, and immediate fade sequence. */
 s32 Overlay064Scene_UpdateMode2(void *scene)
 {
-    void *actor = F(void *, data_021052fc, 0x2ea4);
+    void *actor = F(void *, gGamePhaseRuntime, 0x2ea4);
     s32 state;
     s32 result = 0;
 
@@ -673,10 +673,10 @@ s32 Overlay064Scene_UpdateMode2(void *scene)
                 effect = func_02022cb0(
                     effect,
                     ActorMotionAreaFollower_GetPosition(
-                        (u8 *)data_021052fc + 0x2fbc),
+                        (u8 *)gGamePhaseRuntime + 0x2fbc),
                     actor, -F(s32, scene, 0x80), 0x2000, -0xc0);
             }
-            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, effect);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, effect);
             DisplayBrightness_StartTransition(
                 DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair, 0),
                 0, -0x10, 0x3c);
@@ -851,7 +851,7 @@ void Overlay064Scene_SpawnRewardEffect(void *scene, const VecFx32Object *positio
     u64 division = func_020bf1f8(genrand_int32(), 0x64);
     s32 random = (s32)(division >> 32);
     s32 category = ActorDirection_GetPresentationGroup(
-        F(s32, F(void *, data_021052fc, 0x30bc), 0));
+        F(s32, F(void *, gGamePhaseRuntime, 0x30bc), 0));
     s32 selection = 0;
     s32 cumulative = 0;
     s32 direction = F(s8, scene, 0x76);
@@ -964,26 +964,26 @@ s32 Overlay064Scene_Update(void *scene)
         VecFx32Object position;
         void *collection;
 
-        GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 0);
-        GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 1);
+        GamePhaseRuntime_SynchronizeActorPlacement(gGamePhaseRuntime, 0);
+        GamePhaseRuntime_SynchronizeActorPlacement(gGamePhaseRuntime, 1);
         ActorFeedback_UpdatePresentations();
-        collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         ActorCollection_DispatchEventToActors(
             collection,
-            ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc));
-        collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+            ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc));
+        collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         GraphicsSpriteGroup_AdvanceAnimations(
             ActorCollection_GetSpriteGroup(collection));
-        GamePhaseRuntime_BuildSecondaryTransform(&position, data_021052fc);
-        collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
+        GamePhaseRuntime_BuildSecondaryTransform(&position, gGamePhaseRuntime);
+        collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2);
         ActorCollection_DispatchEventToActors(collection, &position);
         VecFx32Object_Destroy(&position);
-        collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
+        collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2);
         GraphicsSpriteGroup_AdvanceAnimations(
             ActorCollection_GetSpriteGroup(collection));
-        RuntimePresentationManager_UpdatePresentations((u8 *)data_021052fc + 0x2f7c, 1);
+        RuntimePresentationManager_UpdatePresentations((u8 *)gGamePhaseRuntime + 0x2f7c, 1);
         GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
-        GamePhaseRuntime_UpdateDualScreenUiPresentation(data_021052fc);
+        GamePhaseRuntime_UpdateDualScreenUiPresentation(gGamePhaseRuntime);
     } else {
         GraphicsSpriteGroup_AdvanceAnimations(F(void *, scene, 0x3c));
         GraphicsSpriteGroup_AdvanceAnimations(F(void *, scene, 0x40));
@@ -1005,7 +1005,7 @@ s32 Overlay064Scene_Update(void *scene)
 s32 Overlay064Scene_UpdateDisplayEffect(void *scene)
 {
     if (F(u8, scene, 0x77) != 3) {
-        void *runtime = data_021052fc;
+        void *runtime = gGamePhaseRuntime;
         void (*update)(void *) =
             *(void (**)(void *))((u8 *)F(void *, runtime, 0) + 0xc);
         update(runtime);

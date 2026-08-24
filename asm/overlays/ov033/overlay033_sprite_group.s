@@ -9,7 +9,7 @@
     .extern func_02071ee0
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteState_ApplyRenderConfig
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_020f4e18
     .extern data_ov033_021fdda8
     .extern data_ov033_021fde9c
@@ -123,7 +123,7 @@ L_021fcee8:
 L_021fcf74: .word data_ov033_021fde9c
 L_021fcf78: .word AnimationResourceState_Destroy
 L_021fcf7c: .word AnimationResourceState_InitEmbedded
-L_021fcf80: .word data_021052fc
+L_021fcf80: .word gGamePhaseRuntime
 L_021fcf84: .word data_ov033_021fdda8
 L_021fcf88: .word data_020f4e18
 .size func_ov033_021fce1c, .-func_ov033_021fce1c

@@ -8,7 +8,7 @@
  */
 
 extern const u8 data_020e2458[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -55,7 +55,7 @@ void *func_0204e774(void *self)
     if (handle != -1) {
         Graphics3dPresentation *manager =
             RuntimePresentationManager_GetGraphics3dPresentation(
-                (u8 *)data_021052fc + 0x2f7c);
+                (u8 *)gGamePhaseRuntime + 0x2f7c);
         Graphics3dPresentation_RemoveSpriteEffect(manager, handle);
     }
     PresentationBackedActor_Destroy(self);
@@ -88,7 +88,7 @@ void func_0204e82c(void *actor)
     if (FIELD(u8, FIELD(void *, actor, 0x54), 0x38) >= 6) {
         Graphics3dPresentation *manager =
             RuntimePresentationManager_GetGraphics3dPresentation(
-                (u8 *)data_021052fc + 0x2f7c);
+                (u8 *)gGamePhaseRuntime + 0x2f7c);
         s32 x = FIELD(s32, actor, 0x1c) >> 12;
         s32 y = (FIELD(s32, actor, 0x20) >> 12) -
                 (FIELD(s32, actor, 0x24) >> 12);

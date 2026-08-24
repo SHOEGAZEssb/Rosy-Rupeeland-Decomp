@@ -14,7 +14,7 @@
 .extern gFieldEffectListVtable
 .extern gFieldEffectListNodeAllocationTag
 .extern gGraphics3dPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gHeapContext
 .global RuntimePresentationManager_DispatchVBlankCallbacks
 RuntimePresentationManager_DispatchVBlankCallbacks: ; 0x0201de4c

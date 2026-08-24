@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern const u8 gGamePhaseResumeSceneAllocationTag[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
 extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
@@ -58,7 +58,7 @@ s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
         if (!DisplayBrightness_IsMainTransitionComplete() || !DisplayBrightness_IsSubTransitionComplete())
             break;
         GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 0);
-        object = *(void **)((u8 *)data_021052fc + 0x30e8);
+        object = *(void **)((u8 *)gGamePhaseRuntime + 0x30e8);
         vtable = *(void ***)object;
         ((GamePhaseTransitionMethod)vtable[3])(object, 0, 0x1f);
         self->base.value08++;
@@ -71,7 +71,7 @@ s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
             GameWork_ClearFlag(gGameWork, 0x3e8);
             GameWork_Reset();
         }
-        GamePhaseRuntime_ApplyStagedAreaRequest(data_021052fc);
+        GamePhaseRuntime_ApplyStagedAreaRequest(gGamePhaseRuntime);
         allocation = Heap_Alloc(0x28, (const char *)gGamePhaseResumeSceneAllocationTag, -4,
                                 &gHeapContext);
         if (allocation != 0)

@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_neighborhood_scan.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
@@ -294,6 +294,6 @@ TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect:
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02050a00: .word gActorRuntimeCollection
-.L_02050a04: .word data_021052fc
+.L_02050a04: .word gGamePhaseRuntime
     .size TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect, . - TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
 

@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern gAuxiliaryTimedSpritePresentationVtable
 .extern gTimedSpriteAuxiliaryAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern AnimationResource_Init
@@ -44,6 +44,6 @@ AuxiliaryTimedSpritePresentation_Update: ; 0x0201fa90
     movlt r0, #0x1
     movge r0, #0x0
     ldmia sp!, {r4, pc}
-.L_0201faf8: .word data_021052fc
+.L_0201faf8: .word gGamePhaseRuntime
     .size AuxiliaryTimedSpritePresentation_Update, .-AuxiliaryTimedSpritePresentation_Update
 

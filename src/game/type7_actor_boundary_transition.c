@@ -9,7 +9,7 @@
  */
 
 extern void *gGameWork;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern const u32 data_020e17e8[2];
 
 #ifdef __cplusplus
@@ -76,7 +76,7 @@ void Type7Actor_ProcessBoundaryTransition(
 
     if ((*(u32 *)(actor + 0x268) & 0x10) != 0
         && (*(u32 *)(actor + 0x268) & 0x40000) == 0) {
-        u8 *terrainMap = *(u8 **)(data_021052fc + 0x2ed4);
+        u8 *terrainMap = *(u8 **)(gGamePhaseRuntime + 0x2ed4);
         u32 packedDimensions = *(u32 *)(terrainMap + 0x20);
         s32 rightWorldEdge = (s32)((packedDimensions & 0xffff) << 4);
         s32 bottomWorldEdge = (s32)(packedDimensions >> 16) << 4;
@@ -225,7 +225,7 @@ void Type7Actor_ProcessBoundaryTransition(
         Type7Actor_SetCallbackPair(actor, data_020e17e8[0], data_020e17e8[1], -1);
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x10;
         *(u16 *)(actor + 0x246) = 0;
-        ActorDerivedType1_SetSpecialModeEnabled(*(void **)(data_021052fc + 0x2ea4), 1);
+        ActorDerivedType1_SetSpecialModeEnabled(*(void **)(gGamePhaseRuntime + 0x2ea4), 1);
     }
     *(u16 *)(actor + 0x2a6) = 0;
 }

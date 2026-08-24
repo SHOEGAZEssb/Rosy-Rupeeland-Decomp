@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gActorRuntimeCollection;
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
 extern void VecFx32Object_Init(void *vector);
@@ -34,7 +34,7 @@ static VirtualFunction virtual_function(void *actor, u32 offset)
 /*
  * Inputs are a tracked-resource actor and three unused callback arguments.
  * Unless global state gActorRuntimeCollection disables processing, scan group 1 of the
- * actor manager at data_021052fc. Candidates must pass type, state-bit, height,
+ * actor manager at gGamePhaseRuntime. Candidates must pass type, state-bit, height,
  * and record-radius checks. Nearby candidates can receive a normalized and
  * record-scaled direction vector, followed by one of five behaviors selected
  * by signed record byte 0x2C. Modes dispatch damage-like values, the recovered
@@ -75,7 +75,7 @@ void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, u32 
     VecFx32Object_Init(scan_state);
 
     for (index = 0;; ++index) {
-        manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        manager = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         if (index >= FIELD(s32, manager, 0x2e74))
             break;
         candidate = FIELD(void *, manager, index * 4);

@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern TouchPoint_Assign
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global ActorRuntimeScene_TouchMove
 ActorRuntimeScene_TouchMove:
     stmdb sp!, {lr}
@@ -18,6 +18,6 @@ ActorRuntimeScene_TouchMove:
     mov r0, #0x0
     add sp, sp, #0xc
     ldmia sp!, {pc}
-L_0200b890: .word data_021052fc
+L_0200b890: .word gGamePhaseRuntime
 .size ActorRuntimeScene_TouchMove, . - ActorRuntimeScene_TouchMove
 

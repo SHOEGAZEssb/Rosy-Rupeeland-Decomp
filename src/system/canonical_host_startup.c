@@ -71,7 +71,7 @@ extern void *data_020f4e14;
 extern void *data_020f4e1c;
 extern void *gDebugFont;
 extern void *gSoundContext;
-extern u8 data_021052fc[];
+extern u8 gGamePhaseRuntime[];
 extern u8 gGamePhaseMetadataTable[];
 extern s32 func_ov025_022009d8(void *scene);
 extern s32 func_ov025_02200e54(void *scene);
@@ -230,7 +230,7 @@ void TingleRecoveredCanonicalRunFrame(void)
 /* Resolve the configured metadata record without adding state to game code. */
 s32 TingleRecoveredCanonicalGetPhase(void)
 {
-    u8 *runtime = *(u8 **)data_021052fc;
+    u8 *runtime = *(u8 **)gGamePhaseRuntime;
     const u8 *metadata;
     uintptr_t distance;
 

@@ -4,8 +4,8 @@
 .extern Scene_Init
 .extern Scene_SetFlags03
 .extern data_020f4e14
-.extern data_021052fc
-.extern data_02105300
+.extern gGamePhaseRuntime
+.extern gGamePhaseTouchPromptTaskNode
 .extern data_ov074_02211d8c
 .extern VecFx32Object_Init
 .extern SplineMover_Init
@@ -180,9 +180,9 @@ func_ov074_0220fda8:
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, pc}
 .L_0220ffec: .word data_ov074_02211d8c
-.L_0220fff0: .word data_021052fc
+.L_0220fff0: .word gGamePhaseRuntime
 .L_0220fff4: .word gSoundContext
-.L_0220fff8: .word data_02105300
+.L_0220fff8: .word gGamePhaseTouchPromptTaskNode
 .L_0220fffc: .word data_020f4e14
 .L_02210000: .word gGameWork
 .L_02210004: .word 0x412

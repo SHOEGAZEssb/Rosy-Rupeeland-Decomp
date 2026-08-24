@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_target_binding.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_DestroyInteractionIcon
 .extern AttachmentController_SetEnabled
@@ -102,7 +102,7 @@ Type7Actor_TryInteractWithNearbyType4Object: ; 0x02048a4c
 .L_02048b88:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02048b90: .word data_021052fc
+.L_02048b90: .word gGamePhaseRuntime
 
 Type7Actor_SetTarget: ; 0x02048b94
     stmdb sp!, {r4, lr}

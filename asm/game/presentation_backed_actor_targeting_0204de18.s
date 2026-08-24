@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/presentation_backed_actor_targeting.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Actor_UpdatePresentation
@@ -59,5 +59,5 @@ PresentationBackedActor_AcquireNearbyTarget: ; 0x0204de18
     mov r1, r5
     bl PresentationBackedActor_HandleInteraction
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204ded0: .word data_021052fc
+.L_0204ded0: .word gGamePhaseRuntime
 .size PresentationBackedActor_AcquireNearbyTarget, . - PresentationBackedActor_AcquireNearbyTarget

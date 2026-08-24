@@ -31,7 +31,7 @@ extern "C" {
 #endif
 extern void *data_020d62b0[];
 extern const char data_020d62d0[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern u8 *GamePhaseGraphicsMetadata_GetByIndex(s32 index);
 extern void GamePhaseVisualEffect_Configure(void *runtime, u32 field00, u32 field02,
@@ -69,7 +69,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
     self->field1c = *(const s16 *)(config + 0x3c);
     self->field1e = *(const s16 *)(config + 0x3e);
     self->state0c = 0;
-    runtime = data_021052fc + 0x2ed8;
+    runtime = gGamePhaseRuntime + 0x2ed8;
     GamePhaseVisualEffect_Configure(runtime, *(u16 *)(self->record10 + 0x00),
                   *(u16 *)(self->record10 + 0x02),
                   *(u16 *)(self->record10 + 0x04),
@@ -122,5 +122,5 @@ void func_02020060(s32 field08, const u8 *config)
     if (self != 0) {
         func_0201ff2c(self, field08, config);
     }
-    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
+    RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, self);
 }

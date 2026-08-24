@@ -10,7 +10,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern s32 gActorCategory1DescriptorTable;
 extern s32 gActorCategory2DescriptorTable;
 extern u8 ActorBounds_GetWidth(const void *value);
@@ -159,7 +159,7 @@ s32 func_0201939c(GamePhaseActorScriptVm *self)
         break;
     }
     case 2: {
-        void *manager = *(void **)((u8 *)data_021052fc + 0x2ea4);
+        void *manager = *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4);
         if (ActorDerivedType1_IsIdleEligible(manager))
             ActorDerivedType1_StartRecord(manager, p6);
         break;

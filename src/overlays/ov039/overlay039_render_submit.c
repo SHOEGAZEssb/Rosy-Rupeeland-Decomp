@@ -16,7 +16,7 @@ typedef struct Overlay039RenderVector {
 } Overlay039RenderVector;
 
 extern void *gSoundContext;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -96,7 +96,7 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
     Sound_SetEffectParameters(FIELD(void *, gSoundContext, 0), 0x63, 8, 0x64,
                   pan >> 12, 0);
 
-    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
+    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                    0x2f7c);
     void *renderer = func_0209c3b4();
     for (s32 i = 29; i >= 0; i--) {

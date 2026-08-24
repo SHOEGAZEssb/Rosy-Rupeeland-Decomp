@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_terrain_context.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
@@ -56,7 +56,7 @@ Actor_RefreshCachedTerrainHeight: ; 0x02033828
 .L_020338d8:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_020338e0: .word data_021052fc
+.L_020338e0: .word gGamePhaseRuntime
     .size Actor_RefreshCachedTerrainHeight, . - Actor_RefreshCachedTerrainHeight
 
     .global func_020338e4

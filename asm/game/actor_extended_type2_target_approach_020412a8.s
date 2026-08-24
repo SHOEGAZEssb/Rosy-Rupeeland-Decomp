@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_target_approach.c.
 .text
 .extern data_020df9e8
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
@@ -108,5 +108,5 @@ ActorExtendedType2_UpdateTargetApproach: ; 0x020412a8
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204141c: .word data_020df9e8
-.L_02041420: .word data_021052fc
+.L_02041420: .word gGamePhaseRuntime
 .size ActorExtendedType2_UpdateTargetApproach, . - ActorExtendedType2_UpdateTargetApproach

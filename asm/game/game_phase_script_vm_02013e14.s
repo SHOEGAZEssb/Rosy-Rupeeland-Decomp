@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_action_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern ByteTileMapOwner_SetCell
 
@@ -25,6 +25,6 @@ GamePhaseActorScriptVm_SetTileMapCell: ; 0x02013e14
     bl ByteTileMapOwner_SetCell
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-L_02013e60: .word data_021052fc
+L_02013e60: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_SetTileMapCell, . - GamePhaseActorScriptVm_SetTileMapCell
 

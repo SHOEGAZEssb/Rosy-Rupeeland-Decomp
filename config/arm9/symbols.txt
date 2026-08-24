@@ -6737,7 +6737,7 @@ data_020d4264 kind:data(any) addr:0x020d4264
 data_020d42e8 kind:data(any) addr:0x020d42e8
 data_020d42f4 kind:data(any) addr:0x020d42f4
 data_020d430c kind:data(any) addr:0x020d430c
-data_020d431c kind:data(any) addr:0x020d431c
+gGamePhaseRuntimeVTable kind:data(any) addr:0x020d431c
 gGamePhaseTouchPromptAllocationTag kind:data(any) addr:0x020d4348
 gGamePhaseRuntimeFieldLoaderAllocationTag kind:data(any) addr:0x020d4350
 gGamePhaseLoadSceneAllocationTag kind:data(any) addr:0x020d4358
@@ -9233,8 +9233,8 @@ gGraphicsResourceSetsDestructorRecord kind:bss addr:0x021052c4
 gErrorDisplayContextDestructorRecord kind:bss addr:0x021052d0
 gGraphicsResourceSets kind:bss addr:0x021052dc
 gSoftwareCanvasTextCursor kind:bss addr:0x021052f4
-data_021052fc kind:bss addr:0x021052fc
-data_02105300 kind:bss addr:0x02105300
+gGamePhaseRuntime kind:bss addr:0x021052fc
+gGamePhaseTouchPromptTaskNode kind:bss addr:0x02105300
 gActorRuntimeCollectionDestructorRecord kind:bss addr:0x02105304
 gActorRuntimeCollection kind:bss addr:0x02105310
 data_02105458 kind:bss addr:0x02105458

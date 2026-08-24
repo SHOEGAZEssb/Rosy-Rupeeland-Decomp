@@ -16,7 +16,7 @@ typedef struct Overlay039HelperVector {
 } Overlay039HelperVector;
 
 extern const s16 data_020c9670[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -156,7 +156,7 @@ extern "C" void func_ov039_02203794(void *scene)
         position.x_04 = FIELD(s32, helper, 4);
         position.y_08 = FIELD(s32, helper, 8);
         position.z_0c = 0;
-        void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
+        void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                        0x2f7c);
         func_0209c430(resource, &position, &scale, 0, bounds, 0,
                       sizes[FIELD(s32, helper, 0x1c) & 6], 0x7fff, packet);

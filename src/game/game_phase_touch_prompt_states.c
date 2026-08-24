@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const u32 data_020c3618[];
 extern const u32 data_020c3630[];
 extern s32 GraphicsSpriteState_TestTouchPoint(void *spriteState, const TouchPoint *point);
@@ -46,7 +46,7 @@ void GamePhaseTouchPrompt_UpdateInteraction(GamePhaseTouchPrompt *self)
         case 1:
             if (gTouchPanelManager->state == TOUCH_STATE_PRESSED) {
                 TouchPoint point;
-                u8 *phaseActor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+                u8 *phaseActor = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
                 TouchPanelManager_GetPoint(&point, gTouchPanelManager);
                 if (GraphicsSpriteState_TestTouchPoint(*(void **)((u8 *)self->actor + 0x9c),
                                   &point)) {

@@ -14,7 +14,7 @@
 .extern gFieldEffectListVtable
 .extern gFieldEffectListNodeAllocationTag
 .extern gGraphics3dPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gHeapContext
 .global RuntimePresentationManager_GetSecondListNodeEffect
 RuntimePresentationManager_GetSecondListNodeEffect: ; 0x0201df5c

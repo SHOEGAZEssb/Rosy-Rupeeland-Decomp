@@ -4,7 +4,7 @@
 
 extern void *data_020f4e14;
 extern void *data_020f4e18;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gDebugFont;
 extern void *gGameWork;
 
@@ -45,7 +45,7 @@ extern "C" void *func_ov094_02219568(void *object, s32 width, s32 height)
     *(s32 *)((u8 *)object + 0x44) = width;
     *(s32 *)((u8 *)object + 0x48) = height;
 
-    void *area = *(void **)(data_021052fc + 0x30bc);
+    void *area = *(void **)(gGamePhaseRuntime + 0x30bc);
     if (*(s32 *)area == 0xa7) {
         func_02071ee0(object, data_020f4e18, 0x1690, 0x1691, 0x1692);
     } else {

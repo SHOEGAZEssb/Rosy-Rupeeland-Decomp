@@ -3,7 +3,7 @@
 .extern DebugText_BeginFrame
 .extern OS_WaitVBlankIntr
 .extern Scene_SetFlags03
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov074_02211d34
 .extern VecFx32Object_Destroy
 .extern SplineMover_Update
@@ -295,7 +295,7 @@ func_ov074_022101dc:
 .L_022105a0:
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
-.L_022105a8: .word data_021052fc
+.L_022105a8: .word gGamePhaseRuntime
 .L_022105ac: .word data_ov074_02211d34
 .L_022105b0: .word gGamePhaseCurrencyHud
 .size func_ov074_022101dc, . - func_ov074_022101dc

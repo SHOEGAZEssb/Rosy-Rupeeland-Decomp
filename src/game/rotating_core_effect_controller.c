@@ -57,7 +57,7 @@ extern const char data_020d6a90[];
 extern const char data_020d6a98[];
 extern const char data_020d6aa0[];
 extern const s16 data_020c9670[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern void VecFx32Object_Init(ControllerVector *);
 extern void VecFx32Object_InitComponents(ControllerVector *, s32, s32, s32);
@@ -280,7 +280,7 @@ s32 func_020256b4(RotatingCoreEffectController *self)
             self->effect28 = 0;
         } else {
             ((ObjectCameraUpdate)self->effect28->vtable00[4])(
-                self->effect28, ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc));
+                self->effect28, ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc));
         }
     }
     AuxiliaryCore_ApplyScale(self->core08, self->value30, -1);

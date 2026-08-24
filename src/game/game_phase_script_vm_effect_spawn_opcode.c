@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const char data_020d5b2c[];
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
@@ -55,7 +55,7 @@ s32 GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect(GamePhaseActorScriptV
                                           &gHeapContext);
             if (allocation != 0) {
                 void *runtimeObject =
-                    *(void **)((u8 *)data_021052fc + 0x2ea4);
+                    *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4);
                 func_ov062_0220fe78(allocation, &position, second, first,
                                     0, runtimeObject, 1);
             }

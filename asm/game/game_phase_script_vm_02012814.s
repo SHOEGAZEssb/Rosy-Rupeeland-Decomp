@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_opcodes.c.
 .text
 .extern OS_Halt
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotion_SetMode2
 .extern ActorMotion_SetMode1AndClearOutputs
@@ -175,6 +175,6 @@ L_02012a50:
     mov r0, #0x0
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-L_02012a5c: .word data_021052fc
+L_02012a5c: .word gGamePhaseRuntime
     .size func_02012814, . - func_02012814
 

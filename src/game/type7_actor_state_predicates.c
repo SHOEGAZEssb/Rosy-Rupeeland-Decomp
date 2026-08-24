@@ -4,7 +4,7 @@
  * Recovered type-seven state predicates. They compare an optional actor index
  * with global state and expose whether a target-backed flag condition is set.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -17,7 +17,7 @@ extern void *GamePhaseState_GetConfiguration(void *state);
 /*
  * Input is a type-seven actor. Return true immediately when signed halfword
  * +0x27e is -1. Otherwise call GamePhaseState_GetConfiguration on global state
- * data_021052fc+0x24 and compare the signed low halfword of its first result
+ * gGamePhaseRuntime+0x24 and compare the signed low halfword of its first result
  * word with actor +0x27e, returning whether they match. Global state is read;
  * actor state is unchanged and there are no direct SDK or hardware effects.
  */
@@ -28,7 +28,7 @@ s32 Type7Actor_MatchesGlobalRecordIndex(void *self)
     u32 *record;
     if (expected == -1)
         return 1;
-    record = (u32 *)GamePhaseState_GetConfiguration(data_021052fc + 0x24);
+    record = (u32 *)GamePhaseState_GetConfiguration(gGamePhaseRuntime + 0x24);
     return expected == (s16)record[0];
 }
 

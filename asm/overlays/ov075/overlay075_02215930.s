@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern DualLayerTileRenderer_SetPackedTileValue
 
 .global func_ov075_02215930
@@ -45,5 +45,5 @@ func_ov075_02215930:
     ble .L_02215958
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_022159c0: .word data_021052fc
+.L_022159c0: .word gGamePhaseRuntime
 .size func_ov075_02215930, . - func_ov075_02215930

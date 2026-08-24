@@ -7,7 +7,7 @@ typedef s32 (*Method)(...);
 
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
-extern "C" u8 *data_021052fc;
+extern "C" u8 *gGamePhaseRuntime;
 extern "C" s16 data_020c9670[];
 extern "C" u8 data_020e6adc[], data_020e6b74[], data_020e6c0c[], data_020e6ca4[];
 extern "C" u8 gTrackedResourceActorRecordTable[];
@@ -343,7 +343,7 @@ extern "C" void func_ov078_02213a3c(void *actor)
 extern "C" void func_ov078_02213a74(void *actor, void *contact, void *fallback)
 {
     (void)contact;
-    void *work = F(void *, data_021052fc, 0);
+    void *work = F(void *, gGamePhaseRuntime, 0);
     void *first = work ? F(void *, work, 0x2ea4) : 0;
     void *second = work ? F(void *, work, 0x2ea8) : fallback;
     if (second != 0 && (F(u32, second, 0x268) & 0x10) != 0)

@@ -9,7 +9,7 @@ extern u8 data_020e16b0[];
 extern u8 data_020e1728[];
 extern u8 data_020e1748[];
 extern u8 data_020e1838[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gGameWork;
 
 #ifdef __cplusplus
@@ -166,9 +166,9 @@ void Type7Actor_UpdateFrame(void *self)
         *(u32 *)(actor + 0x1fc) = *(u32 *)(actor + 0x200);
         record = *(u8 **)(actor + 0x29c);
         *(u16 *)(actor + 0x258) = *(u16 *)(record + 0x30);
-        worldObject = *(void **)(data_021052fc + 0x2ea4);
+        worldObject = *(void **)(gGamePhaseRuntime + 0x2ea4);
         Type7Actor_SetTarget(actor, worldObject, *(s16 *)(record + 0x30));
-        worldHelper = *(void **)(data_021052fc + 0x30e8);
+        worldHelper = *(void **)(gGamePhaseRuntime + 0x30e8);
         func_02026588(func_02025d14(worldHelper), 0);
         *((u8 *)func_02025d14(worldHelper) + 0x8d) = 0;
         Type7Actor_DispatchCurrentCallback(actor);

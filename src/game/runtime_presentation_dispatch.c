@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0Mode);
 #ifdef __cplusplus
 }
@@ -71,7 +71,7 @@ Graphics3dPresentation *RuntimePresentationManager_GetGraphics3dPresentation(
  */
 void RuntimePresentationManager_DisableGraphics3dForActivePhase(RuntimePresentationManager *self)
 {
-    u8 *runtimeRoot=(u8 *)data_021052fc;
+    u8 *runtimeRoot=(u8 *)gGamePhaseRuntime;
     u8 *activePhaseConfig=**(u8 ***)(runtimeRoot+0x30bc);
     if (((s32)(*(u32 *)(activePhaseConfig+0x40)<<8)>>31)==0) return;
     Graphics3dPresentation_Clear(self->graphics3dPresentation);

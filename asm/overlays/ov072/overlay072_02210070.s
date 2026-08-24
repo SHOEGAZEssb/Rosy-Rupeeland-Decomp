@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov072/overlay072_recovery.c.
 .extern Heap_Free
 .extern Scene_Destroy
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov072_022109dc
 .extern data_ov072_02210b0c
 .extern OverlayManager_UnloadOverlay
@@ -102,7 +102,7 @@ func_ov072_02210070:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
 .L_022101b0: .word data_ov072_02210b0c
-.L_022101b4: .word data_021052fc
+.L_022101b4: .word gGamePhaseRuntime
 .L_022101b8: .word data_ov072_022109dc
 .L_022101bc: .word gGameWork
 .size func_ov072_02210070, . - func_ov072_02210070

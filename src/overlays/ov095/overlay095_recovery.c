@@ -7,7 +7,7 @@ typedef s32 (*Method)(...);
 
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
-extern "C" u8 *data_021052fc;
+extern "C" u8 *gGamePhaseRuntime;
 extern "C" u8 gTrackedResourceActorRecordTable[];
 extern "C" u8 data_ov095_0221cb8c[];
 extern "C" u8 data_ov095_0221cba8[];
@@ -278,7 +278,7 @@ extern "C" void func_ov095_02217c40(void *actor, void *context)
     if ((F(u32, actor, 0x314) & 1) != 0)
     {
         void *collection = (void *)GamePhaseRuntime_GetActorCollection(
-            F(void *, data_021052fc, 0), 1);
+            F(void *, gGamePhaseRuntime, 0), 1);
         s32 linkedCount = 0;
         for (s32 index = 0; index < F(s32, collection, 0x2e74); ++index)
         {
@@ -447,7 +447,7 @@ extern "C" void func_ov095_02218130(void *actor, s16 form)
     {
         F(void *, actor, 0x2a4) = F(void *, data_ov095_0221cba8, 0x30);
         F(void *, actor, 0x2a8) = F(void *, data_ov095_0221cba8, 0x34);
-        F(void *, actor, 0x228) = F(void *, data_021052fc, 0x2ea4);
+        F(void *, actor, 0x228) = F(void *, gGamePhaseRuntime, 0x2ea4);
         VecFx32Object_Assign(P(actor, 0x2f0), P(F(void *, actor, 0x228), 0x18));
         F(s32, actor, 0x2fc) += 0x20000;
     }
@@ -456,7 +456,7 @@ extern "C" void func_ov095_02218130(void *actor, s16 form)
         F(void *, actor, 0x2a4) = F(void *, data_ov095_0221cba8, 8);
         F(void *, actor, 0x2a8) = F(void *, data_ov095_0221cba8, 0xc);
         F(s16, actor, 0x2de) = 0;
-        F(void *, actor, 0x228) = F(void *, data_021052fc, 0x2ea4);
+        F(void *, actor, 0x228) = F(void *, gGamePhaseRuntime, 0x2ea4);
     }
     else if (form == 2 || form == 3)
     {
@@ -466,7 +466,7 @@ extern "C" void func_ov095_02218130(void *actor, s16 form)
         }
         F(void *, actor, 0x2a4) = F(void *, data_ov095_0221cba8, 0x38);
         F(void *, actor, 0x2a8) = F(void *, data_ov095_0221cba8, 0x3c);
-        F(void *, actor, 0x228) = F(void *, data_021052fc, 0x2ea4);
+        F(void *, actor, 0x228) = F(void *, gGamePhaseRuntime, 0x2ea4);
     }
     else if (form == 4)
     {
@@ -606,7 +606,7 @@ extern "C" void func_ov095_0221a2b4(void *actor)
     if (timer < 45 && timer % 10 == 0)
     {
         u32 random = (u32)genrand_int32();
-        void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
+        void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(gGamePhaseRuntime, 0x2f7c));
         s32 width = func_ov095_02217d90(P(actor, 0x68));
         Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(effects, 1,
                       (F(s32, actor, 0x1c) >> 12) - 12 + random % 24,
@@ -669,16 +669,16 @@ extern "C" void func_ov095_0221ac6c(void *actor)
         return;
     }
 
-    void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
+    void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(gGamePhaseRuntime, 0x2f7c));
     Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(effects, 0, F(s32, actor, 0x1c) >> 12,
                   ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) - 24,
                   8);
-    void *primary = F(void *, data_021052fc, 0x2ea4);
+    void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
     if (F(void *, primary, 0x26c) != 0)
     {
         func_0206e590(F(void *, primary, 0x26c), 1);
     }
-    void *secondary = F(void *, data_021052fc, 0x2ea8);
+    void *secondary = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (secondary != 0 && F(void *, secondary, 0x234) != 0)
     {
         func_0206e590(F(void *, secondary, 0x234), 1);
@@ -755,7 +755,7 @@ extern "C" void func_ov095_0221af0c(void *actor, s32 x, s32 y, s32 radius)
     }
 
     void *collection = (void *)GamePhaseRuntime_GetActorCollection(
-        data_021052fc, 1);
+        gGamePhaseRuntime, 1);
     for (s32 index = 0; index < F(s32, collection, 0x2e74); ++index)
     {
         void *candidate = F(void *, collection, index * 4);
@@ -999,7 +999,7 @@ extern "C" void Overlay095Actor_SnapshotTransientState(void *actor)
 extern "C" void func_ov095_0221b304(void *actor)
 {
     Actor_UpdatePrimaryRenderAttachmentPriority(actor);
-    void *terrain = F(void *, data_021052fc, 0x2ed4);
+    void *terrain = F(void *, gGamePhaseRuntime, 0x2ed4);
     Method query = F(Method, F(void *, terrain, 0), 0x2c);
     s32 tile = query(terrain, F(s32, actor, 0x1c) >> 16,
                      F(s32, actor, 0x20) >> 16);
@@ -1364,7 +1364,7 @@ extern "C" void func_ov095_0221c3ac(void *actor)
     {
         return;
     }
-    void *target = F(void *, data_021052fc, 0x2ea4);
+    void *target = F(void *, gGamePhaseRuntime, 0x2ea4);
     s32 dx = F(s32, target, 0x1c) - F(s32, actor, 0x1c);
     s32 dy = F(s32, target, 0x20) - F(s32, actor, 0x20);
     s32 distance = Fx32Vector2_Magnitude(dx, dy);
@@ -1416,7 +1416,7 @@ extern "C" void func_ov095_0221c4a4(void *actor, void *target)
             func_ov095_02217d58(direction, P(actor, 0x18), P(target, 0x18));
             func_ov095_0221a208(scaled, direction, 0x2000);
             VecFx32Object_Destroy(direction);
-            void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
+            void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(gGamePhaseRuntime, 0x2f7c));
             Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
                 effects, 0, F(s32, scaled, 4) >> 12,
                 ((F(s32, scaled, 8) - F(s32, scaled, 0xc)) >> 12) - 28, 0);
@@ -1592,7 +1592,7 @@ extern "C" void func_ov095_0221c8e8(void *actor)
     {
         return;
     }
-    void *target = F(void *, data_021052fc, 0x2ea4);
+    void *target = F(void *, gGamePhaseRuntime, 0x2ea4);
     s32 dx = F(s32, target, 0x1c) - F(s32, actor, 0x1c);
     s32 dy = F(s32, target, 0x20) - F(s32, actor, 0x20);
     if (Fx32Vector2_Magnitude(dx, dy) <= 0x1000)
@@ -1848,7 +1848,7 @@ extern "C" s32 Overlay095Actor_UpdateHopPositionTransition(void *actor)
         F(s32, control, 0xc) = F(s32, actor, 0x2a8) + 0x50000;
         if (F(s16, actor, 0xae) > 26 && (F(s16, actor, 0xae) & 1) == 0)
         {
-            void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(data_021052fc, 0x2f7c));
+            void *effects = (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(gGamePhaseRuntime, 0x2f7c));
             Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(effects, 0, F(s32, actor, 0x1c) >> 12,
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) - 32,
                           0x7fff);
@@ -1966,13 +1966,13 @@ extern "C" void func_ov095_0221a878(void *actor, void *context)
     {
         u8 value[16];
         func_ov095_02218414(value, P(actor, 0x18),
-                            P(F(void *, data_021052fc, 0x2ea4), 0x18));
+                            P(F(void *, gGamePhaseRuntime, 0x2ea4), 0x18));
         VecFx32Object_Assign(difference, value);
         VecFx32Object_Destroy(value);
         primaryDistance = VecFx32Object_GetMagnitude(difference);
     }
     s32 secondaryDistance = 0x7fffffff;
-    void *secondary = F(void *, data_021052fc, 0x2ea8);
+    void *secondary = F(void *, gGamePhaseRuntime, 0x2ea8);
     if ((F(u16, context, 0x1a) & 0x20) != 0 && secondary != 0 &&
         (F(u32, secondary, 0x268) & 0x10) != 0)
     {
@@ -2141,7 +2141,7 @@ extern "C" void func_ov095_0221858c(void *actor, void *context,
         (F(u32, actor, 0x260) | 0x1021u) & 0xfffffbf5u;
     F(s16, actor, 0xd6) = 0x1b;
     F(u8, actor, 0x24c) = 3;
-    void *primary = F(void *, data_021052fc, 0x2ea4);
+    void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
     s16 form = F(s16, actor, 0x2d4);
 
     if (F(s16, actor, 0x298) == 0)

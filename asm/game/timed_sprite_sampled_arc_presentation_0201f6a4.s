@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern gTimedSpriteSampledArcPresentationVtable
 .extern gTimedSpritePresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition

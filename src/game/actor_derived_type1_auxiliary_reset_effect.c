@@ -3,7 +3,7 @@
 
 /* Tear down a type-1 auxiliary resource and emit its guarded reset effect. */
 extern void *gGameWork;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern const char data_020df4a4[];
 
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect(void *self)
         s32 position[4];
         void *allocation;
         actor[0x2a0] = 8;
-        ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x1e, 4);
+        ActorMotionJitter_EnsureMinimum(gGamePhaseRuntime + 0x2fbc, 0x1e, 4);
         VecFx32Object_InitComponents(offset, 0, 0, 0x24000);
         func_02008378(position, actor + 0x18, offset);
         VecFx32Object_Destroy(offset);

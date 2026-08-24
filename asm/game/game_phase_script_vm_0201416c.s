@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_phase_request_opcode.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_StageAreaRequest
 .extern GamePhaseScriptVm_Pop
 
@@ -31,6 +31,6 @@ GamePhaseActorScriptVm_StageAreaRequest: ; 0x0201416c
     mov r0, #0x1
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_020141d0: .word data_021052fc
+L_020141d0: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_StageAreaRequest, . - GamePhaseActorScriptVm_StageAreaRequest
 

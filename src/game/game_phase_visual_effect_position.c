@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern s32 gActorInteractionSmoothedDisplacement[2];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 #ifdef __cplusplus
 }
 #endif
@@ -33,7 +33,7 @@ void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
 {
     VecFx32Object current;
     VecFx32Object temporary;
-    GamePhaseRuntime *runtime = (GamePhaseRuntime *)data_021052fc;
+    GamePhaseRuntime *runtime = (GamePhaseRuntime *)gGamePhaseRuntime;
 
     if (!self->resources.resource0 || !(self->flags & 1))
         return;

@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,12 +29,12 @@ extern "C" s32 func_ov019_021fd4d8(void *state)
         volatile u32 *display;
         s32 layer;
         if (FIELD(void *, state, 0x58) == 0) {
-            GamePhaseAreaScene_Update(FIELD(void *, (u8 *)data_021052fc + 0x2000,
+            GamePhaseAreaScene_Update(FIELD(void *, (u8 *)gGamePhaseRuntime + 0x2000,
                                0xfb8));
             display = (volatile u32 *)0x04000000;
             layer = FIELD(s32, state, 0x48);
         } else {
-            GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
+            GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
             display = (volatile u32 *)0x04001000;
             layer = FIELD(s32, state, 0x4c);
         }

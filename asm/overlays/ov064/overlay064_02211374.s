@@ -4,7 +4,7 @@
 .extern Heap_Alloc
 .extern Sound_Play
 .extern gDisplayBrightnessPair
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov064_02211ecc
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
@@ -144,7 +144,7 @@ Overlay064Scene_UpdateMode2:
 .L_0221153c:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
-.L_02211544: .word data_021052fc
+.L_02211544: .word gGamePhaseRuntime
 .L_02211548: .word gSoundContext
 .L_0221154c: .word gGamePhaseCurrencyHud
 .L_02211550: .word data_ov064_02211ecc

@@ -16,7 +16,7 @@ typedef struct Overlay039EffectVector {
 } Overlay039EffectVector;
 
 extern const s16 data_020c9670[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 
 #ifdef __cplusplus

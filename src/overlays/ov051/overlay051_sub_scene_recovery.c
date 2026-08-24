@@ -37,7 +37,7 @@ typedef struct Overlay051ResourceSet {
 extern "C" void *data_020f4e18;
 extern "C" u8 data_ov051_0220df98[];
 extern "C" u8 data_ov051_0220dfb8[];
-extern "C" u8 data_021052fc[];
+extern "C" u8 gGamePhaseRuntime[];
 extern "C" u8 gHeapContext[];
 extern "C" void *func_ov051_0220d600(void *scene);
 extern "C" void GraphicsResourceSet_Init(Overlay051ResourceSet *set);
@@ -134,7 +134,7 @@ extern "C" void func_ov051_0220d688(void *scene);
 
 extern "C" s32 func_ov051_0220da24(void *scene)
 {
-    void *runtime = *(void **)data_021052fc;
+    void *runtime = *(void **)gGamePhaseRuntime;
 
     ActorCollection_SetEnabled(GamePhaseRuntime_GetActorCollection(runtime, 2),
                                1);
@@ -158,7 +158,7 @@ extern "C" void *func_ov051_0220daa4(s32 first, s32 second, s32 third)
 
     if (scene != 0)
         scene = func_ov051_0220d878(scene, first, second, third);
-    RuntimePresentationManager_AppendSecondListEffect(*(u8 **)data_021052fc + 0x2f7c, scene);
+    RuntimePresentationManager_AppendSecondListEffect(*(u8 **)gGamePhaseRuntime + 0x2f7c, scene);
     return scene;
 }
 

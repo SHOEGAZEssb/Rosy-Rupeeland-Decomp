@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_terrain_motion_toggle.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorFeedbackResources_GetPackedSound
 .extern ActorFeedback_SpawnIndexedPresentation
 
@@ -89,6 +89,6 @@ Actor_UpdateTerrainMotionFeedback: ; 0x02032394
 .L_020324bc:
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
-.L_020324c4: .word data_021052fc
+.L_020324c4: .word gGamePhaseRuntime
     .size Actor_UpdateTerrainMotionFeedback, . - Actor_UpdateTerrainMotionFeedback
 

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_terrain_context.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 
     .global Actor_GetGlobalCollectionBySlot
@@ -10,7 +10,7 @@ Actor_GetGlobalCollectionBySlot: ; 0x02033810
     ldr ip, .L_02033824
     ldr r0, [r0, #0x0]
     bx ip
-.L_02033820: .word data_021052fc
+.L_02033820: .word gGamePhaseRuntime
 .L_02033824: .word GamePhaseRuntime_GetActorCollection
     .size Actor_GetGlobalCollectionBySlot, . - Actor_GetGlobalCollectionBySlot
 

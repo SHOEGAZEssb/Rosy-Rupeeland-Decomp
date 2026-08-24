@@ -3,7 +3,7 @@
 ; src/overlays/ov090/overlay090_title_state0b_transition.c.
 .extern GameWork_ClearFlag
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetOwningCollection
 .extern ActorDerivedType1_TeardownActiveRecord
@@ -92,7 +92,7 @@ func_ov090_0221a784:
     ldr r0, [r0, #0x0]
     bl Sound_Play
     ldmia sp!, {r4, r5, r6, pc}
-.L_0221a8b0: .word data_021052fc
+.L_0221a8b0: .word gGamePhaseRuntime
 .L_0221a8b4: .word gGameWork
 .L_0221a8b8: .word gSoundContext
 .size func_ov090_0221a784, . - func_ov090_0221a784

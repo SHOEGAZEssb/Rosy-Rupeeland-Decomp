@@ -37,7 +37,7 @@ extern "C" {
 #endif
 extern void *gTimedSpriteSampledArcPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern SampledArcSpriteConfig *TimedSpriteConfig_InitTracks(
     SampledArcSpriteConfig *config);
@@ -121,7 +121,7 @@ TimedSpriteSampledArcPresentation *TimedSpriteSampledArcPresentation_DestroyAndF
 s32 TimedSpriteSampledArcPresentation_Update(
     TimedSpriteSampledArcPresentation *self)
 {
-    const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    const void *position = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     return ((PresentationUpdate)(*(void ***)self->presentation08)[2])(
                self->presentation08, position)
            != 0;

@@ -2,7 +2,7 @@
 
 /* Scan nearby runtime actors for the type-0x6f descriptor collision response. */
 extern s16 data_020c9670[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -67,7 +67,7 @@ void ActorDerivedType1_ScanActiveRecordCollisions(void *self)
     center[2] += projection * data_020c9670[index + 1];
 
     for (i = 0;; ++i) {
-        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         u8 *target;
         s32 dx;
         s32 dy;

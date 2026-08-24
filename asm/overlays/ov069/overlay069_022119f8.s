@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov069/overlay069_recovery.c.
 .extern Sound_Play
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov069_0221279c
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
@@ -763,7 +763,7 @@ func_ov069_022119f8:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_022124a0: .word data_ov069_0221279c
 .L_022124a4: .word 0x119a
-.L_022124a8: .word data_021052fc
+.L_022124a8: .word gGamePhaseRuntime
 .L_022124ac: .word 0x1da000
 .L_022124b0: .word 0x609000
 .L_022124b4: .word 0x528000

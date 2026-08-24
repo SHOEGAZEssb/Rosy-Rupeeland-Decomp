@@ -39,7 +39,7 @@ extern "C" {
 extern void *data_020d68e4;
 extern u8 data_021f3d68[];
 extern void *data_020f4e18;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gGameWork;
 extern const s16 data_020c9670[];
 
@@ -108,7 +108,7 @@ LaunchedSpritePairPresentation *func_02024b04(
     GraphicsSpriteState_SetAnimationIndex(self->primarySprite50, 0);
     *(u16 *)(self->primarySprite50 + 0x24) |= 2;
 
-    runtimeObject = *(u8 **)(data_021052fc + 0x30bc);
+    runtimeObject = *(u8 **)(gGamePhaseRuntime + 0x30bc);
     kind = *(s32 *)(runtimeObject + 0x00);
     mode = (*(u32 *)(runtimeObject + 0x40) >> 18) & 3;
     if (mode == 3 || (u32)(kind - 2) <= 2) {

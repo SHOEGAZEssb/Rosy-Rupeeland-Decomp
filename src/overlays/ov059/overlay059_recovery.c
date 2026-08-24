@@ -13,7 +13,7 @@ extern u8 data_ov059_02211af8[], data_ov059_02211b08[];
 extern u8 data_ov059_02211b5c[], data_ov059_02211b7c[];
 extern char data_ov059_02211ba8[], data_ov059_02211bb0[];
 extern void *gHeapContext, *gDebugFont, *gSceneManager, *gGamePhaseCurrencyHud;
-extern void *data_020f4e18, *data_021052fc, *gSoundContext;
+extern void *data_020f4e18, *gGamePhaseRuntime, *gSoundContext;
 
 #ifdef __cplusplus
 extern "C" {
@@ -536,7 +536,7 @@ void func_ov059_02210c60(void *c, s32 floor) {
 /* Toggle the actor collection that renders the selected dungeon floor. */
 void func_ov059_02210f34(void *c, s32 enabled) {
   s32 i;
-  void *collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
+  void *collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2);
   (void)c;
   ActorCollection_SetEnabled(collection, enabled);
   for (i = 0; i < F(s32, collection, 0x2e74); i++) {
@@ -550,13 +550,13 @@ void func_ov059_02210f34(void *c, s32 enabled) {
         set(actor, 0);
     }
   }
-  F(u32, F(void *, F(void *, data_021052fc, 0x2fb8), 0x2ebc), 0x10) &=
+  F(u32, F(void *, F(void *, gGamePhaseRuntime, 0x2fb8), 0x2ebc), 0x10) &=
       ~0x04000000u;
 }
 
 /* Rebuild the actor-backed map for a selected floor. */
 void func_ov059_02210dfc(void *c, s32 floor) {
-  void *runtime = data_021052fc, *meta, *collection, *actor;
+  void *runtime = gGamePhaseRuntime, *meta, *collection, *actor;
   s32 phase, current;
   GamePhaseRuntime_DestroySecondaryActorSubsystem(runtime);
   phase = F(s16, F(void *, c, 8), 8 + floor * 2);
@@ -639,8 +639,8 @@ void *func_ov059_022111d4(void *s) {
 /* Forward the scene's terminal virtual callback. */
 void func_ov059_0221127c(void) {
   Overlay59SceneCallback cb =
-      F(Overlay59SceneCallback, F(void *, data_021052fc, 0), 0x10);
-  cb(data_021052fc);
+      F(Overlay59SceneCallback, F(void *, gGamePhaseRuntime, 0), 0x10);
+  cb(gGamePhaseRuntime);
 }
 
 /* Commit one frame of preview backgrounds and actor presentation. */
@@ -652,7 +652,7 @@ s32 func_ov059_0221129c(void *s) {
             (((((*disp >> 8) & 0x1f) & ~1u) | (F(s32, s, 0x34) ? 1 : 0)) << 8);
   }
   func_ov059_02210bc4(F(void *, s, 0x3c));
-  GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
+  GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
   return 0;
 }
 
@@ -682,19 +682,19 @@ void func_ov059_02211870(void) {
 /* Enter the interactive map presentation at the selected floor. */
 void func_ov059_02211920(void *s, s32 floor) {
   volatile u32 *disp = (volatile u32 *)0x04001000;
-  void *runtimeObject = F(void *, data_021052fc, 0x30e8);
+  void *runtimeObject = F(void *, gGamePhaseRuntime, 0x30e8);
   Overlay59RuntimeCallback prepare =
       F(Overlay59RuntimeCallback, F(void *, runtimeObject, 0), 0x0c);
   *disp = (*disp & ~0x1f00u) | 0x1000;
   prepare(runtimeObject, 0, 0x1f, (void *)prepare, 0);
-  F(u32, data_021052fc, 0x30b8) |= 0x30;
+  F(u32, gGamePhaseRuntime, 0x30b8) |= 0x30;
   func_ov059_02211870();
   func_ov059_02210c60(F(void *, s, 0x3c), floor);
   F(s32, s, 0x34) = 1;
   func_ov059_02210c24(F(void *, s, 0x3c), 1);
   DebugSpriteText_SetTextResource(
       (u8 *)s + 0x40,
-      GamePhaseMetadata_GetTextResourceId(F(void *, data_021052fc, 0x30bc)));
+      GamePhaseMetadata_GetTextResourceId(F(void *, gGamePhaseRuntime, 0x30bc)));
   F(s32, s, 0x38) = 1;
 }
 
@@ -792,10 +792,10 @@ s32 func_ov059_02211330(void *s) {
     VecFx32Object_Destroy(pos);
     func_ov059_02210db0(F(void *, s, 0x3c), 0, F(s32, s, 0x50));
     if (!finished) {
-      GamePhaseAreaScene_GetConfig(F(void *, data_021052fc, 0x2fb8));
+      GamePhaseAreaScene_GetConfig(F(void *, gGamePhaseRuntime, 0x2fb8));
       DebugSpriteText_SetTextResource((u8 *)s + 0x40,
                                       GamePhaseMetadata_GetTextResourceId(
-                                          F(void *, data_021052fc, 0x30bc)));
+                                          F(void *, gGamePhaseRuntime, 0x30bc)));
       func_ov059_02210f34(F(void *, s, 0x3c), 1);
       F(s32, s, 0x24) = 10;
     }
@@ -805,12 +805,12 @@ s32 func_ov059_02211330(void *s) {
   } else if (F(s32, s, 0x24) == 301) {
     Scene_ClearFlags03(s);
     func_ov059_02211854(0);
-    GamePhaseRuntime_DestroySecondaryActorSubsystem(data_021052fc);
+    GamePhaseRuntime_DestroySecondaryActorSubsystem(gGamePhaseRuntime);
     GamePhaseRuntime_CreateSecondaryActorSubsystem(
-        data_021052fc, F(void *, data_021052fc, 0x30bc), 1);
-    GamePhaseAreaScene_ApplyRevealedRegions(F(void *, data_021052fc, 0x2fb8),
-                                              (u8 *)data_021052fc + 0x2fa4);
-    GamePhaseRuntime_ApplyScreenMode(data_021052fc, 1, 1);
+        gGamePhaseRuntime, F(void *, gGamePhaseRuntime, 0x30bc), 1);
+    GamePhaseAreaScene_ApplyRevealedRegions(F(void *, gGamePhaseRuntime, 0x2fb8),
+                                              (u8 *)gGamePhaseRuntime + 0x2fa4);
+    GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime, 1, 1);
     DisplayBrightness_StartSubTransition(1, 0x10);
     DisplayBrightness_StartMainTransition(1, 0x10);
     func_ov059_0221127c();
@@ -820,7 +820,7 @@ s32 func_ov059_02211330(void *s) {
     GraphicsSpriteGroup_AdvanceAnimations(F(void *, F(void *, s, 0x48), 0));
     TouchRegionManager_Tick(Scene_GetEmbedded10(s));
   }
-  GamePhaseRuntime_PrepareActorCollections(data_021052fc, F(s32, s, 4), 2);
-  GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
+  GamePhaseRuntime_PrepareActorCollections(gGamePhaseRuntime, F(s32, s, 4), 2);
+  GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
   return 0;
 }

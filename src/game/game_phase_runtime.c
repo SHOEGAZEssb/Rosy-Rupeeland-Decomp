@@ -13,14 +13,10 @@
  * most embedded types retain offset-derived identities pending their recovery.
  */
 
-typedef struct GamePhaseRuntimeGlobal {
-    GamePhaseRuntime *runtime;
-    FrameTaskNode *taskNode;
-} GamePhaseRuntimeGlobal;
-
-extern u32 data_020d431c[];
+extern u32 gGamePhaseRuntimeVTable[];
 extern u8 gGamePhaseTouchPromptAllocationTag[];
-extern GamePhaseRuntimeGlobal data_021052fc;
+extern GamePhaseRuntime *gGamePhaseRuntime;
+extern FrameTaskNode *gGamePhaseTouchPromptTaskNode;
 extern u8 gActorRuntimeCollection[];
 extern void *gGamePhaseCurrencyHud;
 
@@ -73,7 +69,7 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
     void *task;
 
     Scene_Init((Scene *)self);
-    self->vtable = data_020d431c;
+    self->vtable = gGamePhaseRuntimeVTable;
     GamePhaseState_Init(bytes + 0x24);
 
     /* These adjacent objects share storage at 0x2fa4..0x2fbf. */
@@ -94,12 +90,12 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
     *(s32 *)(bytes + 0x30f4) = 0;
     func_020ae90c(bytes + 0x3000);
 
-    data_021052fc.runtime = self;
+    gGamePhaseRuntime = self;
     self->field_04 = 1;
     task = Heap_Alloc(0x30, (const char *)gGamePhaseTouchPromptAllocationTag, 4, &gHeapContext);
     if (task != 0)
         task = GamePhaseTouchPrompt_Init(task, self);
-    data_021052fc.taskNode = FrameTaskList_Add((FrameTask *)task, 0);
+    gGamePhaseTouchPromptTaskNode = FrameTaskList_Add((FrameTask *)task, 0);
 
     GamePhaseRuntime_CreateFieldLoader(self);
     return self;
@@ -217,7 +213,7 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     }
 
     *(void **)(bytes + 0x30f0) = entity;
-    GamePhaseTouchPrompt_SetEnabled(data_021052fc.taskNode->task, 1);
+    GamePhaseTouchPrompt_SetEnabled(gGamePhaseTouchPromptTaskNode->task, 1);
     *(u32 *)(bytes + 0x30b8) |= 0x30;
     Scene_SetFlags03((Scene *)self);
 }

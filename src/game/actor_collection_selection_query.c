@@ -24,7 +24,7 @@ typedef struct SelectionVectorStorage {
 extern "C" {
 #endif
 extern u8 gActorRuntimeCollection[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern s32 Actor_TestQueryPoint(void *actor,
                                 const ActorSelectionQuery *query);
 extern s32 Actor_IsInteractionEligible(void *actor);
@@ -128,7 +128,7 @@ s32 ActorCollection_ProcessSelectionQuery(ActorSelectionCollection *self,
     }
 
     if (candidate) {
-        scene = (u8 *)data_021052fc;
+        scene = (u8 *)gGamePhaseRuntime;
         actor = *(void **)(scene + 0x2ea4);
         if (ActorDerivedType1_IsIdleEligible(actor) && !ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)) {
             if (Actor_IsInteractionEligible(candidate)) {

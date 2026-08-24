@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov052/overlay052_recovery.c.
 .extern gDisplayBrightnessPair
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov052_0220e200
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
@@ -73,7 +73,7 @@ Overlay052Scene_Destroy:
     ldmia sp!, {r4, pc}
 .L_0220d954: .word data_ov052_0220e200
 .L_0220d958: .word data_020f4e18
-.L_0220d95c: .word data_021052fc
+.L_0220d95c: .word gGamePhaseRuntime
 .L_0220d960: .word gDisplayBrightnessPair
 .L_0220d964: .word gGamePhaseCurrencyHud
 .size Overlay052Scene_Destroy, . - Overlay052Scene_Destroy

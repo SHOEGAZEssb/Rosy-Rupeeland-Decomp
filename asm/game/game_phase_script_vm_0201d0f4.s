@@ -26,7 +26,7 @@
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global func_0201d0f4
 func_0201d0f4: ; 0x0201d0f4
     stmdb sp!, {r4, lr}
@@ -108,7 +108,7 @@ L_0201d20c: .word gDebugFont
 L_0201d210: .word data_020d5d84
 L_0201d214: .word gHeapContext
 L_0201d218: .word gSoundContext
-L_0201d21c: .word data_021052fc
+L_0201d21c: .word gGamePhaseRuntime
 
 
 .size func_0201d0f4, . - func_0201d0f4

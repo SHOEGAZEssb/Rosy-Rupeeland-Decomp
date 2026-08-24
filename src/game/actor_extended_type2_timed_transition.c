@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Advance the extended type-two actor's timed attachment transition. */
-extern u8 data_020e6b74[];extern u16 data_020e71ec[];extern u8 data_020df9e8[];extern u8 *data_021052fc;extern void *gGameWork;
+extern u8 data_020e6b74[];extern u16 data_020e71ec[];extern u8 data_020df9e8[];extern u8 *gGamePhaseRuntime;extern void *gGameWork;
 #ifdef __cplusplus
 extern "C" {extern s32 GameWork_TestFlag(void *work,s32 flag);extern s16 *InteractionRecordAllocator_ReserveRandomRecord(void *handle,void *actor);extern void Actor_AdjustPositionForTerrainHeight(void *actor);extern void InteractionWaypointCursor_SelectNearest(void *object,s32 x,s32 y);extern s32 *InteractionWaypointCursor_GetCurrentRecord(void *object);extern s32 *InteractionWaypointCursor_GetCurrentYPointer(void *object);extern u16 InteractionWaypointCursor_GetCurrentDurationFrames(void *object);extern void Actor_PlayHorizontalSpatialSound(void *actor,u32 packedSound,s32 pitch);}
 #endif
@@ -30,7 +30,7 @@ s32 ActorExtendedType2_UpdateTimedAttachmentTransition(void *self,const void *de
   if(*(void **)(a+0x274)){s16 *p=InteractionRecordAllocator_ReserveRandomRecord(*(void **)(a+0x274),a);*(s32 *)(a+0x230)=(s32)p[0]<<12;*(s32 *)(a+0x234)=(s32)p[1]<<12;Actor_AdjustPositionForTerrainHeight(a);if(*(void **)(a+0x26c)){void *o=*(void **)(a+0x26c);InteractionWaypointCursor_SelectNearest(o,*(s32 *)(a+0x230)>>12,*(s32 *)(a+0x234)>>12);*(s32 *)(a+0x230)=*InteractionWaypointCursor_GetCurrentRecord(o)<<12;*(s32 *)(a+0x234)=*InteractionWaypointCursor_GetCurrentYPointer(o)<<12;*(u16 *)(a+0x26a)=InteractionWaypointCursor_GetCurrentDurationFrames(o);}}
   (*(void (**)(void *))(*(u8 **)a+0xcc))(a);*(u16 *)(a+0x24e)=*(u16 *)(d+0x14);*(u32 *)(a+0x260)|=0x800;return 0;
  }else{
-  u16 f=*(u16 *)(a+0x272);u8 *primary=*(u8 **)(data_021052fc+0x2ea4);s32 ok=0;if((*(u32 *)(a+0x10)&4)!=0){if((f&0x100)!=0)ok=(f&0x400)==0||(*(s32 (**)(void *))(*(u8 **)primary+0xa8))(primary)!=0;}else if((f&0x200)!=0)ok=(f&0x400)==0||(*(s32 (**)(void *))(*(u8 **)primary+0xa8))(primary)!=0;if(!ok)return 0;
+  u16 f=*(u16 *)(a+0x272);u8 *primary=*(u8 **)(gGamePhaseRuntime+0x2ea4);s32 ok=0;if((*(u32 *)(a+0x10)&4)!=0){if((f&0x100)!=0)ok=(f&0x400)==0||(*(s32 (**)(void *))(*(u8 **)primary+0xa8))(primary)!=0;}else if((f&0x200)!=0)ok=(f&0x400)==0||(*(s32 (**)(void *))(*(u8 **)primary+0xa8))(primary)!=0;if(!ok)return 0;
   (*(void (**)(void *))(*(u8 **)a+0xc4))(a);if(!*(void **)(a+0x1fc))*(void **)(a+0x1fc)=*(void **)(a+0x200);*(s16 *)(a+0xd6)=19;*(u32 *)(a+0x218)=*(u32 *)(data_020df9e8+0x2d0);*(u32 *)(a+0x21c)=*(u32 *)(data_020df9e8+0x2d4);*(u32 *)(a+0x14)&=~0x10000000;*(u16 *)(att+0x24)&=~0x10;*(u32 *)(a+0x260)&=~0x800;if((*(u32 *)(a+0x260)&0x4000)==0&&*(s16 *)(a+0x250)>0)--*(s16 *)(a+0x250);u16 sound=data_020e71ec[index];if(sound)Actor_PlayHorizontalSpatialSound(a,sound,0);return 1;
  }
 }

@@ -41,7 +41,7 @@ extern "C" {
 #endif
 extern void *gTimedSpriteOffsetPresentationVtable;
 extern const char gTimedSpritePresentationAllocationTag[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern OffsetSpriteConfig *TimedSpriteConfig_InitTracks(OffsetSpriteConfig *config);
 extern void *func_0201e584(void *self, OffsetSpriteConfig *config,
@@ -145,7 +145,7 @@ void TimedSpriteOffsetPresentation_CreateSprite(
  */
 s32 TimedSpriteOffsetPresentation_Update(TimedSpriteOffsetPresentation *self)
 {
-    const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    const void *position = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     s32 finished =
         ((PresentationUpdate)(*(void ***)self->presentation08)[2])(
             self->presentation08, position);

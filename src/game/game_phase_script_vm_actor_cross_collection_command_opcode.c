@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gActorRuntimeCollection[];
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *state);
@@ -37,7 +37,7 @@ s32 func_02015b64(GamePhaseActorScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *owner = *(u8 **)(runtime + 0x2fb8);
     void *target;
     u32 mode;

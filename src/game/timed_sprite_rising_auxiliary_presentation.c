@@ -26,7 +26,7 @@ typedef s32 (*ChildUpdate)(void *child, const void *position);
 extern "C" {
 #endif
 extern void *gRisingAuxiliaryTimedSpritePresentationVtable;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern RisingAuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_InitBase(
     RisingAuxiliaryTimedSpritePresentation *self,
     const PresentationTrack *trackSource, void *spriteGroup, s32 auxiliaryFirst,
@@ -89,7 +89,7 @@ s32 RisingAuxiliaryTimedSpritePresentation_Update(
     PresentationTrack position;
     s32 finished;
 
-    VecFx32Object_InitCopy(&position, ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc));
+    VecFx32Object_InitCopy(&position, ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc));
     *(s32 *)&position.bytes[8] -= DisplayController_GetSubScreenVerticalOffset() << 12;
     ((ChildUpdate)(*(void ***)self->presentation08)[2])(
         self->presentation08, &position);

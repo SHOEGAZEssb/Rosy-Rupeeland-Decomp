@@ -21,7 +21,7 @@ extern "C" {
 extern SceneVTable gOverlay33RuntimeSceneVTable;
 extern char gOverlay33RuntimeSceneChildAllocationTag[];
 extern u8 data_020d36e1[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern Overlay33Child *func_ov033_021fd070(Overlay33Child *self, u32 parameter);
 extern void func_ov030_021fd260(Overlay33Child *self);
@@ -60,7 +60,7 @@ Overlay33RuntimeScene *func_0201d688(Overlay33RuntimeScene *self, u32 parameter)
     if (child != 0)
         child = func_ov033_021fd070(child, parameter);
     self->child3c = child;
-    runtime = data_021052fc;
+    runtime = gGamePhaseRuntime;
     self->display2c = *(RuntimeDisplayObject **)((u8 *)runtime + 0x2ea4);
     ((void (*)(void *, void *))self->display2c->vtable[0x1d])(
         self->display2c, data_020d36e1);
@@ -119,7 +119,7 @@ Overlay33RuntimeScene *func_0201d7e8(Overlay33RuntimeScene *self)
  */
 s32 func_0201d884(Overlay33RuntimeScene *self)
 {
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     void *selection = **(void ***)(runtime + 0x30bc);
     void *value;
 
@@ -151,7 +151,7 @@ s32 func_0201d884(Overlay33RuntimeScene *self)
 /* Invoke method 0x0c on the runtime root and return zero. */
 s32 func_0201d9c0(void)
 {
-    Scene *runtime = (Scene *)data_021052fc;
+    Scene *runtime = (Scene *)gGamePhaseRuntime;
     runtime->vtable->method0C(runtime);
     return 0;
 }

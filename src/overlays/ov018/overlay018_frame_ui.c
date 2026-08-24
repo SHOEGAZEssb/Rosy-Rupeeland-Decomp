@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_021f3ecc;
 extern void *gDebugFont;
 
@@ -48,7 +48,7 @@ extern "C" void func_ov018_021fd788(void *state)
         }
     }
     func_020958d8((u8 *)state + 0xd8);
-    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
 
     {
         void *actorData = FIELD(void *, FIELD(void *, state, 0x184), 0x54);

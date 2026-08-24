@@ -4,7 +4,7 @@
 .extern data_020e17b8
 .extern data_020e1920
 .extern data_020e1928
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Assign
 .extern Type7Actor_HasSpecialCallbackPair
 .extern Type7Actor_SetCallbackPair
@@ -88,7 +88,7 @@ Type7Actor_TryCancelDistantTarget: ; 0x0204820c
 .L_02048314:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204831c: .word data_021052fc
+.L_0204831c: .word gGamePhaseRuntime
 .L_02048320: .word data_020e16b0
 .L_02048324: .word data_020e17b8
 .L_02048328: .word data_020e1928
@@ -111,7 +111,7 @@ Type7Actor_TryInstallGlobalTargetCallback: ; 0x0204832c
     bl Type7Actor_SetCallbackPair
     mov r0, #0x1
     ldmia sp!, {r3, pc}
-.L_02048370: .word data_021052fc
+.L_02048370: .word gGamePhaseRuntime
 .L_02048374: .word data_020e1920
 
 .size Type7Actor_TryCancelDistantTarget, Type7Actor_TryInstallGlobalTargetCallback - Type7Actor_TryCancelDistantTarget

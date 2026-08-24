@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_entity_position_opcodes.c.
 .text
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global GamePhaseActorScriptVm_GetActiveEntityPositionZ
 GamePhaseActorScriptVm_GetActiveEntityPositionZ: ; 0x0201aecc
     stmdb sp!, {r3, lr}
@@ -16,5 +16,5 @@ GamePhaseActorScriptVm_GetActiveEntityPositionZ: ; 0x0201aecc
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-L_0201aefc: .word data_021052fc
+L_0201aefc: .word gGamePhaseRuntime
 .size GamePhaseActorScriptVm_GetActiveEntityPositionZ, . - GamePhaseActorScriptVm_GetActiveEntityPositionZ

@@ -5,7 +5,7 @@
 extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
 extern HeapContext gHeapContext;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern void *gGameWork;
 extern s16 gActorTargetSelectionMetadata[];
@@ -140,11 +140,11 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
             GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, value, 0);
             object = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
             if (object != 0) {
-                void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+                void *resource = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
                 object = func_02022cb0(object, resource, actor, value,
                                       0x2000, -0xc0);
             }
-            RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, object);
+            RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, object);
             if (*(u16 *)(descriptor + 0x1a) != 0)
                 Sound_Play(gSoundContext, *(u16 *)(descriptor + 0x1a) >> 7,
                            *(u16 *)(descriptor + 0x1a) & 0x7f);
@@ -168,7 +168,7 @@ void ActorDerivedType1_UpdateFrameControl(void *self)
                 AuxiliaryTimedSpritePresentation_Init(allocation, position, *(void **)attachment,
                               0x1075, 0x1001, 0x1076, 0, 16, -1, 1);
             }
-            effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+            effect = RuntimePresentationManager_GetGraphics3dPresentation(gGamePhaseRuntime + 0x2f7c);
             Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(effect, 1, position[1] >> 12,
                           (position[2] >> 12) - (position[3] >> 12), 30);
             VecFx32Object_Destroy(position);

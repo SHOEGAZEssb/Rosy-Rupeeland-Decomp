@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_scene_prepare_opcode.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern GamePhaseRuntime_RefreshAreaAuxiliaryObject
 .extern GamePhaseState_GetConfiguration
@@ -47,5 +47,5 @@ GamePhaseActorScriptVm_PrepareRuntimeScene:
     bl GamePhaseAreaScene_SetEnabled
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0201a12c: .word data_021052fc
+L_0201a12c: .word gGamePhaseRuntime
 .size GamePhaseActorScriptVm_PrepareRuntimeScene, . - GamePhaseActorScriptVm_PrepareRuntimeScene

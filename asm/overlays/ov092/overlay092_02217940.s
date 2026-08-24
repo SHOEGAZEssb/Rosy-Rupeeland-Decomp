@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern __construct_array
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov092_0221c728
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_TranslateSecondaryBounds
@@ -160,6 +160,6 @@ func_ov092_02217940:
 .L_02217b68: .word data_ov092_0221c728
 .L_02217b6c: .word func_ov092_0221792c
 .L_02217b70: .word func_ov092_02217928
-.L_02217b74: .word data_021052fc
+.L_02217b74: .word gGamePhaseRuntime
 .L_02217b78: .word gGameWork
 .size func_ov092_02217940, . - func_ov092_02217940

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_target_selection_state.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorTargetSelectionMetadata
 .extern gActorTargetSelectionCandidates
 
@@ -27,7 +27,7 @@ ActorTargetSelection_Reset: ; 0x02034e58
     bx lr
 .L_02034e9c: .word gActorTargetSelectionCandidates
 .L_02034ea0: .word gActorTargetSelectionMetadata
-.L_02034ea4: .word data_021052fc
+.L_02034ea4: .word gGamePhaseRuntime
     .size ActorTargetSelection_Reset, . - ActorTargetSelection_Reset
 
     .global ActorTargetSelection_ClearCandidates

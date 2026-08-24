@@ -27,7 +27,7 @@ extern const u8 data_ov039_02207fe7[7];
 extern const u8 data_ov039_02207fdc[4];
 extern const u8 data_ov039_02207fd8[4];
 extern const s32 data_ov039_02208010[3];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gDisplayBrightnessPair;
 extern void *gSoundContext;
 
@@ -177,7 +177,7 @@ static void updateTimedSequence(void *scene, s32 variant)
         FIELD(s32, scene, 0x1da8) -= reduction;
     }
 
-    void *effectContext = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+    void *effectContext = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
     if (time == 10) {
         void *a = FIELD(void *, scene, 0x74);
         void *b = FIELD(void *, scene, 0x78);

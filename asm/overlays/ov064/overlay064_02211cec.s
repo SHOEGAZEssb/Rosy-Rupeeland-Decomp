@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov064/overlay064_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern func_020afce8
 
 .global Overlay064Scene_UpdateDisplayEffect
@@ -63,6 +63,6 @@ Overlay064Scene_UpdateDisplayEffect:
 .L_02211dc0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.L_02211dc8: .word data_021052fc
+.L_02211dc8: .word gGamePhaseRuntime
 .L_02211dcc: .word 0x4001050
 .size Overlay064Scene_UpdateDisplayEffect, . - Overlay064Scene_UpdateDisplayEffect

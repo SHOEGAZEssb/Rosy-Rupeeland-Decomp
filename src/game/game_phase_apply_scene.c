@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern SceneVTable data_020d5384;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 #ifdef __cplusplus
@@ -51,7 +51,7 @@ GamePhaseApplyScene *GamePhaseApplyScene_DestroyAndFree(GamePhaseApplyScene *sel
  */
 s32 GamePhaseApplyScene_Update(GamePhaseApplyScene *self)
 {
-    GamePhaseRuntime *runtime = (GamePhaseRuntime *)data_021052fc;
+    GamePhaseRuntime *runtime = (GamePhaseRuntime *)gGamePhaseRuntime;
 
     switch (self->base.value08) {
     case 0:

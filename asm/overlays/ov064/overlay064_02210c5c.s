@@ -3,7 +3,7 @@
 .extern DebugText_BeginFrame
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov064_02211ecc
 .extern data_ov064_02211ed4
 .extern VecFx32Object_InitCopy
@@ -278,7 +278,7 @@ Overlay064Scene_UpdateMode0:
 .L_02211004:
     add sp, sp, #0x68
     ldmia sp!, {r4, r5, r6, pc}
-.L_0221100c: .word data_021052fc
+.L_0221100c: .word gGamePhaseRuntime
 .L_02211010: .word gSoundContext
 .L_02211014: .word 0x4cd
 .L_02211018: .word 0xb33

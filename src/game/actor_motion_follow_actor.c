@@ -5,7 +5,7 @@
  * active phase configuration selects full-size or half-size actor coordinates.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 static s32 actor_motion_half_toward_zero(s32 value)
 {
@@ -23,7 +23,7 @@ s32 ActorMotion_UpdateFromBoundActor(ActorMotion *self)
 {
     VecFx32Object temporary;
     u8 *actor = (u8 *)self->actor;
-    u8 *runtime = *(u8 **)&data_021052fc;
+    u8 *runtime = *(u8 **)&gGamePhaseRuntime;
     u8 *config = *(u8 **)(runtime + 0x30bc);
     u32 mode;
 

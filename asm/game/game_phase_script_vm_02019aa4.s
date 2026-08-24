@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_manager_command_opcode.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetFlag200000Inverse
 .extern GamePhaseScriptVm_Pop
@@ -139,5 +139,5 @@ L_02019c4c:
 L_02019c54:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-L_02019c5c: .word data_021052fc
+L_02019c5c: .word gGamePhaseRuntime
 .size func_02019aa4, . - func_02019aa4

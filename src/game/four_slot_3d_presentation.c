@@ -40,7 +40,7 @@ extern const ScreenSegment data_020d67dc[4];
 extern const ScreenSegment data_020d67fc[4];
 extern const s16 data_020c9670[];
 extern void *gGameWork;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern void DisplayControlElement_NoOp(DisplayControlElement *);
 extern void func_02091b6c(DisplayControlElement *);
@@ -122,10 +122,10 @@ s32 FourSlot3DPresentation_Update(FourSlot3DPresentation *self)
     volatile u32 *finish = (volatile u32 *)0x04000504;
     s32 index;
 
-    if ((data_021052fc[0x30cc] & 4) != 0) {
+    if ((gGamePhaseRuntime[0x30cc] & 4) != 0) {
         return 0;
     }
-    camera = (const s32 *)ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    camera = (const s32 *)ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     for (index = 0; index < 4; index++) {
         if (!GameWork_TestFlag(gGameWork, data_020d6780[index])) {
             self->intensity0c[index] += 0x10;

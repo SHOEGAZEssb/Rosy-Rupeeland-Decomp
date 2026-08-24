@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_sequence_complete.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionJitter_EnsureMinimum
 .extern ActorCollection_QueueActorForRemoval
 .extern Actor_GetOwningCollection
@@ -29,5 +29,5 @@ TrackedResourceActorType27_Complete:
     mov r0, r4
     bl TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
     ldmia sp!, {r4, pc}
-.L_020522a4: .word data_021052fc
+.L_020522a4: .word gGamePhaseRuntime
     .size TrackedResourceActorType27_Complete, . - TrackedResourceActorType27_Complete

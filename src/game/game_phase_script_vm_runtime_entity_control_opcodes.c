@@ -10,7 +10,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const u8 data_020ea9b0[];
 extern s32 data_020e1964;
 extern void *Actor_GetInteractionIcon(void *actor);
@@ -59,7 +59,7 @@ s32 GamePhaseActorScriptVm_DispatchActiveType7ActorCommand(GamePhaseActorScriptV
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
 
     switch (command) {

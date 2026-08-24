@@ -14,7 +14,7 @@ typedef struct TitleEffectBounds {
     s8 bottom;
 } TitleEffectBounds;
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const char data_ov090_0221cc00[];
 extern const s16 data_020c9670[];
 extern void *gSoundContext;
@@ -61,13 +61,13 @@ void func_ov090_0221b428(void *self)
 
     for (i = 0;
          i < FIELD(s32,
-                   GamePhaseRuntime_GetActorCollection(data_021052fc, 1),
+                   GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1),
                    0x2e74);
          i++) {
         void *actor;
         s32 isTypeFour;
         collection =
-            GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+            GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         actor = FIELD(void *, collection, i * 4);
         if (actor != 0) {
             isTypeFour = FIELD(u8, actor, 0x4d) == 4;
@@ -76,7 +76,7 @@ void func_ov090_0221b428(void *self)
         }
         if (isTypeFour) {
             ActorCollection_QueueActorForRemoval(
-                GamePhaseRuntime_GetActorCollection(data_021052fc, 1), actor);
+                GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), actor);
         }
     }
 
@@ -90,7 +90,7 @@ void func_ov090_0221b428(void *self)
     do {
         column = 0;
         do {
-            Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
+            Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c), 0,
                           row * 0x60 + 0x1c2, column * 0x40 + 0xdc, 8);
             column++;
         } while (column < 2);

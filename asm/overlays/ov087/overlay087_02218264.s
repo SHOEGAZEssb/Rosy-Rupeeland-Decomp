@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov087/overlay087_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern Sound_PlayEffectWithParameters
 .extern gSoundContext
@@ -113,6 +113,6 @@ func_ov087_02218264:
 .L_022183ec:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
-.L_022183f4: .word data_021052fc
+.L_022183f4: .word gGamePhaseRuntime
 .L_022183f8: .word gSoundContext
 .size func_ov087_02218264, . - func_ov087_02218264

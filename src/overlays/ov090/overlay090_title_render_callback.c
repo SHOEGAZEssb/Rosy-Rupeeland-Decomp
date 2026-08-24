@@ -6,7 +6,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void Actor_UpdatePresentation(void);
 
 /*
@@ -21,7 +21,7 @@ void func_ov090_0221a544(void *context, void *self,
     void *actor;
 
     Actor_UpdatePresentation();
-    actor = FIELD(void *, data_021052fc, 0x2ea4);
+    actor = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     if (FIELD(GraphicsSpriteState *, self, 0x200) != 0) {
         u8 state = FIELD(u8, self, 0x1ec);
         s32 offset = state != 0x1f ? 0 : -0x18000;

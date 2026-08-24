@@ -13,7 +13,7 @@ extern const u32 data_ov013_021fed6c[];
 extern const char data_ov013_021fed80[];
 extern const u32 data_ov013_021feb58[];
 extern const s32 data_ov013_021fecf0[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern u8 gHeapContext[];
@@ -91,7 +91,7 @@ void *func_ov013_021fce2c(void *state)
     FIELD(s32, state, 0x978) = 0;
     func_02091b6c((u8 *)state + 0x988);
 
-    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 1);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 1);
     func_02071ee0((u8 *)state + 0x54, data_020f4e18,
                   0x3298, 0x3299, 0x329a);
     func_02071ee0((u8 *)state + 0x60, data_020f4e18,
@@ -109,7 +109,7 @@ void *func_ov013_021fce2c(void *state)
     FIELD(s32, state, 0x97c) = 0;
     FIELD(s32, state, 0x980) = 0;
     /* This two-bit extraction and equality test are confirmed; its meaning is not. */
-    if ((FIELD(u32, FIELD(u8 *, data_021052fc, 0x30bc), 0x40) >> 18 & 3) == 2)
+    if ((FIELD(u32, FIELD(u8 *, gGamePhaseRuntime, 0x30bc), 0x40) >> 18 & 3) == 2)
         FIELD(s32, state, 0x97c) = 1;
     FIELD(s32, state, 0x974) = 0;
     FIELD(void *, state, 0x84) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
@@ -154,7 +154,7 @@ void *func_ov013_021fd09c(void *state)
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x84));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x88));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
-    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 0);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 0);
     func_ov013_021fce00((u8 *)state + 0x89c);
     for (i = 4; i >= 0; --i)
         func_ov013_021fce00((u8 *)state + 0x540 + i * 0xac);
@@ -197,7 +197,7 @@ s32 func_ov013_021fd2ac(void *state)
     Overlay013Callback function;
 
     if (FIELD(void *, state, 0x9a8) == 0)
-        GamePhaseRuntime_FinalizeActorCollections(data_021052fc, 9, 2);
+        GamePhaseRuntime_FinalizeActorCollections(gGamePhaseRuntime, 9, 2);
     if (callback == 0)
         return 0;
     if (encoding & 1) {

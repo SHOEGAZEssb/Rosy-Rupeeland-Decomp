@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void Actor_RestorePrimaryAttachmentState(void *actor);
 extern void Actor_SetActive(void *actor, s32 active);
@@ -26,7 +26,7 @@ void ActorRuntimeScene_DeactivateActorSets(ActorRuntimeScene *self)
 
     (void)self;
     for (bank = 1; bank <= 2; bank++) {
-        u8 *context = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, bank);
+        u8 *context = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, bank);
         s32 count = *(s32 *)(context + 0x2e74);
         s32 index;
 
@@ -56,7 +56,7 @@ void ActorRuntimeScene_ActivateFlaggedActors(ActorRuntimeScene *self)
 
     (void)self;
     for (bank = 1; bank <= 2; bank++) {
-        u8 *context = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, bank);
+        u8 *context = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, bank);
         s32 count = *(s32 *)(context + 0x2e74);
         s32 index;
 

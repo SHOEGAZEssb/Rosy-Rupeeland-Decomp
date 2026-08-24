@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov062_02211c40
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
@@ -523,7 +523,7 @@ func_ov062_02211388:
 .L_02211aa8: .word gSceneManager
 .L_02211aac: .word gSystemState
 .L_02211ab0: .word gSoundContext
-.L_02211ab4: .word data_021052fc
+.L_02211ab4: .word gGamePhaseRuntime
 .L_02211ab8: .word data_ov062_02211c40
 .L_02211abc: .word gHeapContext
 .L_02211ac0: .word 0xe66

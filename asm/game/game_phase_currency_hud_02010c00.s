@@ -2,7 +2,7 @@
 .text
 .extern Sound_Play
 .extern gGamePhaseCurrencyHudReminderThresholds
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern SignedAbsoluteValueVariant
 .extern gGameWork
@@ -165,7 +165,7 @@ L_02010e24:
     orrge r0, r0, #0x80
     strgeh r0, [r10, #0xb0]
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_02010e54: .word data_021052fc
+L_02010e54: .word gGamePhaseRuntime
 L_02010e58: .word gGameWork
 L_02010e5c: .word 0x98967f
 L_02010e60: .word gGamePhaseCurrencyHudReminderThresholds

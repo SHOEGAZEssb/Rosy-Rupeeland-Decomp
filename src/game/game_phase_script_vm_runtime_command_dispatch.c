@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 data_021f3d68[];
 extern const char data_020d5b3c[], data_020d5b44[], data_020d5b4c[];
 extern const char data_020d5b54[], data_020d5b5c[], data_020d5b64[];
@@ -112,7 +112,7 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         return 0;
 
     case 11: {
-        u8 *runtime = (u8 *)data_021052fc;
+        u8 *runtime = (u8 *)gGamePhaseRuntime;
         u8 *actor = *(u8 **)(runtime + 0x2ea4);
         VecFx32Object position;
         s32 x, y;

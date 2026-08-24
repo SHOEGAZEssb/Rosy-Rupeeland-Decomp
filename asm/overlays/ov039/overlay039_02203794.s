@@ -5,7 +5,7 @@
     .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern func_0209c430
     .extern VecFx32Object_Destroy
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .global func_ov039_02203794
 func_ov039_02203794:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -107,6 +107,6 @@ L_02203908:
     bpl L_022037c0
     add sp, sp, #0x84
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_02203918: .word data_021052fc
+L_02203918: .word gGamePhaseRuntime
     .size func_ov039_02203794, .-func_ov039_02203794
 

@@ -7,7 +7,7 @@
  */
 
 extern void *data_020f4e14;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gGridEffectActorRuntimeState[];
 extern void *gSceneManager;
 
@@ -55,7 +55,7 @@ static void GridEffectActor_SetState(void *actor, u16 state)
 static void GridEffectActor_Finish(void *actor)
 {
     ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
-    FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
+    FIELD(u32, gGamePhaseRuntime, 0x30b8) |= 0x10;
     GridEffectActor_SetState(actor, 3);
 }
 
@@ -106,7 +106,7 @@ void GridEffectActor_Update(void *actor)
     }
 
     case 1: {
-        void *map = FIELD(void *, data_021052fc, 0x2ed4);
+        void *map = FIELD(void *, gGamePhaseRuntime, 0x2ed4);
         MapQueryCallback query =
             *(MapQueryCallback *)((u8 *)FIELD(void *, map, 0) + 0x2c);
         s32 x = FIELD(s32, actor, 0x1c) >> 16;
@@ -169,7 +169,7 @@ void GridEffectActor_Update(void *actor)
                 value = ActorDescriptor_GetPrimaryLabel((u8 *)actor + 0x1f4);
                 GraphicsSpriteRenderer_DrawText(grid_context, value, pixel_x, pixel_y, 13, 8, 0);
             }
-            FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
+            FIELD(u32, gGamePhaseRuntime, 0x30b8) |= 0x10;
         } else {
             FIELD(u16, FIELD(void *, actor, 0x54), 0x24) |= 4;
             GridEffectActor_Finish(actor);
@@ -189,12 +189,12 @@ void GridEffectActor_Update(void *actor)
     }
 
     if (GridEffectActor_CanBeginDeparture(actor)) {
-        void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+        void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
         if (func_020adcac((u8 *)primary + 0x1c,
                           (u8 *)actor + 0x1c) < 0x18000) {
             GridEffectActor_BeginDeparture(actor, primary);
         } else {
-            void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
+            void *secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
             if (secondary != 0 && Type7Actor_GetStateCode(secondary) == 0 &&
                 func_020adcac((u8 *)secondary + 0x1c,
                               (u8 *)actor + 0x1c) < 0x18000) {

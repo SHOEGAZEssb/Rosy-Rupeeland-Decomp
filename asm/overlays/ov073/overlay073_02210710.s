@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov073/overlay073_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov073_02210be4
 .extern data_ov073_02210c0c
 .extern data_ov073_02210c14
@@ -143,7 +143,7 @@ func_ov073_02210710:
 .L_022108e8: .word data_ov073_02210be4
 .L_022108ec: .word data_ov073_02210c0c
 .L_022108f0: .word gHeapContext
-.L_022108f4: .word data_021052fc
+.L_022108f4: .word gGamePhaseRuntime
 .L_022108f8: .word 0x1645
 .L_022108fc: .word data_ov073_02210c14
 .size func_ov073_02210710, . - func_ov073_02210710

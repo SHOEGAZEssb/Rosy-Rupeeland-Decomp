@@ -2,7 +2,7 @@
 
 /* Advance actor timed state, reconcile transient effects, and request removal. */
 extern u8 gActorRuntimeCollection[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -52,7 +52,7 @@ s32 Actor_UpdateTimedResourceState(void *self)
             return 0;
         }
         if (actor[0xe8] != 2) {
-            slotOne = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+            slotOne = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
             collection = Actor_GetOwningCollection(actor);
             ActorCollection_EndTrackedPair(
                 (ActorPairCollection *)collection,

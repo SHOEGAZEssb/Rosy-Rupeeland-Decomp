@@ -28,7 +28,7 @@ extern const u16 data_020d782c[];
 extern const s16 data_020d7a48[];
 extern u8 data_021f3ecc[];
 extern u8 gSystemState[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *data_020f4e18;
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
@@ -125,7 +125,7 @@ void func_02028100(AreaInfoPanelPresentation *self, s32 index)
         return;
     }
 
-    for (i = 0; i < *(s32 *)data_021052fc; i++) {
+    for (i = 0; i < *(s32 *)gGamePhaseRuntime; i++) {
         if (index == *(const s16 *)((const u8 *)data_020d7a48 + i * 0x24)) {
             matching++;
             if (i == 0 || *((u8 *)gGameWork + 0x5e94 + i))

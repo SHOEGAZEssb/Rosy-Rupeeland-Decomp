@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void VecFx32Object_Destroy(void *vector);
 extern s32 VecFx32Object_GetMagnitude(const void *vector);
 extern void VecFx32_Subtract(void *destination, const void *target,
@@ -47,7 +47,7 @@ s32 TrackedResourceActorType26_HandleProximityInteraction(void *actor, u32 argum
     s64 product;
     s32 result;
 
-    target = FIELD(void *, data_021052fc, 0x2ea4);
+    target = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     VecFx32_Subtract(vector, (u8 *)target + 0x18, (u8 *)actor + 0x18);
     FIELD(s32, vector, 0x0c) = 0;
     distance = VecFx32Object_GetMagnitude(vector);

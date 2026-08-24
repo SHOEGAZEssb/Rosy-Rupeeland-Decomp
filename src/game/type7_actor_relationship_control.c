@@ -10,7 +10,7 @@ extern u8 data_020e1758[];
 extern u32 data_020e1760[];
 extern u8 data_020e1768[];
 extern u8 data_020e1890[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -60,14 +60,14 @@ void Type7Actor_TryAssignRelatedObject(void *self, void *candidate)
 
 /*
  * Input is an actor pointer that may be referenced by the global actor at
- * data_021052fc+0x2ea8. If that global actor and its related pointer +0x210
+ * gGamePhaseRuntime+0x2ea8. If that global actor and its related pointer +0x210
  * both exist and the pointer equals the input, clear the reciprocal link.
  * Global relationship state may change; there is no return value or direct
  * SDK/hardware effect.
  */
 void Type7Actor_ClearGlobalRelationshipToActor(void *actor)
 {
-    u8 *globalActor = *(u8 **)(data_021052fc + 0x2ea8);
+    u8 *globalActor = *(u8 **)(gGamePhaseRuntime + 0x2ea8);
     if (globalActor != 0 && *(void **)(globalActor + 0x210) != 0
         && *(void **)(globalActor + 0x210) == actor)
         *(void **)(globalActor + 0x210) = 0;

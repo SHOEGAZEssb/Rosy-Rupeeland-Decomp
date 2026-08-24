@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020c9670
 .extern data_020d6aa0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
@@ -258,5 +258,5 @@ func_020256b4: ; 0x020256b4
 .L_02025a2c: .word data_020c9670
 .L_02025a30: .word data_020d6aa0
 .L_02025a34: .word gHeapContext
-.L_02025a38: .word data_021052fc
+.L_02025a38: .word gGamePhaseRuntime
     .size func_020256b4, . - func_020256b4

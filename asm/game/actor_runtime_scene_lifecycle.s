@@ -12,7 +12,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern func_02030b58
 .extern data_020d448c
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGameWork
 .global ActorRuntimeScene_Init
 ActorRuntimeScene_Init:
@@ -97,7 +97,7 @@ L_0200b3d0:
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_0200b408: .word data_020d448c
-L_0200b40c: .word data_021052fc
+L_0200b40c: .word gGamePhaseRuntime
 L_0200b410: .word gGameWork
 L_0200b414: .word 0x3f3
 L_0200b418: .word 0x403

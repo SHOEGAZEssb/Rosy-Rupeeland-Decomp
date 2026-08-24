@@ -7,7 +7,7 @@
 .extern TouchRegionManager_NotifyAll
 .extern TouchRegionManager_SetEnabled
 .extern TouchRegionManager_Tick
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern DisplayBrightness_IsSubTransitionIncreasing
@@ -393,6 +393,6 @@ func_ov059_02211330:
 .L_02211840: .word gDebugFont
 .L_02211844: .word 0x12d
 .L_02211848: .word gSoundContext
-.L_0221184c: .word data_021052fc
+.L_0221184c: .word gGamePhaseRuntime
 .L_02211850: .word 0x4001000
 .size func_ov059_02211330, . - func_ov059_02211330

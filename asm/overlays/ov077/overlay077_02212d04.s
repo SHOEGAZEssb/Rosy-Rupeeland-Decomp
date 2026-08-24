@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov077_022174c8
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseMetadata_GetByIndex
@@ -100,5 +100,5 @@ func_ov077_02212d04:
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02212e38: .word data_ov077_022174c8
 .L_02212e3c: .word gHeapContext
-.L_02212e40: .word data_021052fc
+.L_02212e40: .word gGamePhaseRuntime
 .size func_ov077_02212d04, . - func_ov077_02212d04

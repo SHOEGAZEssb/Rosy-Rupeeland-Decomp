@@ -9,7 +9,7 @@ extern u8 data_020df9e8[];
 extern u8 data_020dfad8[];
 extern u8 data_020dfba0[];
 extern u8 data_020dfa50[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -77,7 +77,7 @@ s32 ActorExtendedType2_UpdateTargetValidationMotion(void *self, const void *desc
 
     target = *(u8 **)(actor + 0x228);
     if (target[0x4d] == 7 && (*(u16 *)(record + 0x1a) & 0x10) == 0) {
-        void *primary = *(void **)(data_021052fc + 0x2ea4);
+        void *primary = *(void **)(gGamePhaseRuntime + 0x2ea4);
         if ((*(s32 (**)(void *, void *, const void *))(vtable + 0x120))
                 (actor, primary, record) != 0)
             return 0;

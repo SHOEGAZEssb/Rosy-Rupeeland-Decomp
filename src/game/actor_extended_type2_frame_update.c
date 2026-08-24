@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Advance extended type-two actor callbacks, motion, targeting, and presentation. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 data_020df9e8[];
 extern u8 data_020dfb08[];
 extern u8 data_020dfaf0[];
@@ -90,7 +90,7 @@ void ActorExtendedType2_UpdateFrame(void *self)
         !pairMatches(first, second, data_020df9e8 + 0x120,
                      data_020dfb08) &&
         *(s32 *)(actor + 0x1dc) == *(s32 *)(actor + 0x24)) {
-        void **collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        void **collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         void *object = *(void **)((u8 *)collection + 0x2e7c);
         if ((*(s32 (**)(void *))(*(u8 **)object + 0xa8))(object) == 0) {
             u16 sound;

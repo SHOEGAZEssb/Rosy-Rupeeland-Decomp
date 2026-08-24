@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern gRisingAuxiliaryTimedSpritePresentationVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern DisplayController_GetSubScreenVerticalOffset
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -55,6 +55,6 @@ RisingAuxiliaryTimedSpritePresentation_Update: ; 0x0201fb84
 .L_0201fc1c:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-.L_0201fc24: .word data_021052fc
+.L_0201fc24: .word gGamePhaseRuntime
     .size RisingAuxiliaryTimedSpritePresentation_Update, .-RisingAuxiliaryTimedSpritePresentation_Update
 

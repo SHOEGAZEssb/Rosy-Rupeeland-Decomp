@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov028/overlay028_scene_constructor.c. */
 .extern data_020f4e14
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov028_021ff210
 .extern data_ov028_021ff238
 .extern data_ov028_021ff250
@@ -340,7 +340,7 @@ L_021fdf78: .word gDebugFont
 L_021fdf7c: .word data_ov028_021ff2d8
 L_021fdf80: .word gHeapContext
 L_021fdf84: .word data_ov028_021ff2e0
-L_021fdf88: .word data_021052fc
+L_021fdf88: .word gGamePhaseRuntime
 L_021fdf8c: .word data_ov028_021ff250
 L_021fdf90: .word data_ov028_021ff210
 .size func_ov028_021fdb00, .-func_ov028_021fdb00

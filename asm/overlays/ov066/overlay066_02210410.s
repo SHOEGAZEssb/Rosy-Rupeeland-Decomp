@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov066/overlay066_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_UpdateRenderHelpers
 .extern GamePhaseAreaScene_Update
 
@@ -18,5 +18,5 @@ func_ov066_02210410:
     bl GamePhaseAreaScene_Update
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.L_02210440: .word data_021052fc
+.L_02210440: .word gGamePhaseRuntime
 .size func_ov066_02210410, . - func_ov066_02210410

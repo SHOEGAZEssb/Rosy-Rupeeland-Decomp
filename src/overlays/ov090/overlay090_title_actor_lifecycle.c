@@ -19,7 +19,7 @@ typedef void (*ActorModeMethod)(void *self, s32 mode);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern GamePhaseRuntime *data_021052fc;
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern u8 data_020f4e14[];
 extern void *gDebugFont;
 extern const char data_ov090_0221cc00[];
@@ -74,9 +74,9 @@ extern "C" void *func_ov090_022177e0(void *self)
     FIELD(u8, self, 0x246) = 0;
     FIELD(u8, self, 0x247) = 0;
 
-    while (index < FIELD(s32, GamePhaseRuntime_GetActorCollection(data_021052fc, 1), 0x2e74)
+    while (index < FIELD(s32, GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), 0x2e74)
            && found < 3) {
-        void *actor = FIELD(void *, GamePhaseRuntime_GetActorCollection(data_021052fc, 1),
+        void *actor = FIELD(void *, GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1),
                             index * 4);
         if (actor != 0 && FIELD(u8, actor, 0x4d) == 2
             && FIELD(s8, actor, 0x27e) == 0x12
@@ -87,10 +87,10 @@ extern "C" void *func_ov090_022177e0(void *self)
         index++;
     }
 
-    primary = FIELD(void *, data_021052fc, 0x2ea4);
+    primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     FIELD(u32, primary, 0xd0) |= 0x40000;
-    if (FIELD(void *, data_021052fc, 0x2ea8) != 0)
-        FIELD(u32, FIELD(void *, data_021052fc, 0x2ea8), 0xd0) |= 0x40000;
+    if (FIELD(void *, gGamePhaseRuntime, 0x2ea8) != 0)
+        FIELD(u32, FIELD(void *, gGamePhaseRuntime, 0x2ea8), 0xd0) |= 0x40000;
     FIELD(u32, primary, 0x230) &= ~4;
     ((ActorModeMethod)FIELD(void *, FIELD(void *, primary, 0), 0x54))(primary, 0);
     FIELD(u32, primary, 0x230) |= 0x20;

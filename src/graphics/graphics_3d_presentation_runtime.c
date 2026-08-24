@@ -19,7 +19,7 @@ extern u8 data_020f3064[];
 extern u8 data_021f63b0[];
 extern const char data_020f32e8[];
 extern void *data_020f4e18;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_TerminateNoOp(void *vector);
@@ -209,7 +209,7 @@ static u16 GameplayActorTextureId(void)
     void *actor;
     s16 specification;
 
-    actor = *(void **)((u8 *)data_021052fc + 0x2ea8);
+    actor = *(void **)((u8 *)gGamePhaseRuntime + 0x2ea8);
     if (actor == 0)
         return 0xe086;
     specification = **(s16 **)((u8 *)actor + 0x29c);

@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern GameWork_TestFlag
 .extern data_020ed548
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -121,7 +121,7 @@ Overlay064Scene_SpawnRewardEffect:
 .L_02211cd0:
     add sp, sp, #0x54
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
-.L_02211cd8: .word data_021052fc
+.L_02211cd8: .word gGamePhaseRuntime
 .L_02211cdc: .word gGameWork
 .L_02211ce0: .word 0x411
 .L_02211ce4: .word data_020ed548

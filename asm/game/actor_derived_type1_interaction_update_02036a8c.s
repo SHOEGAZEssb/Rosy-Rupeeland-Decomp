@@ -6,7 +6,7 @@
 .extern data_020c3d88
 .extern data_020c9670
 .extern data_020d37dc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern gActorTargetSelectionMetadata
 .extern gActorTargetSelectionCandidates
@@ -574,7 +574,7 @@ ActorDerivedType1_ProcessInteraction: ; 0x02036a8c
 .L_02037268: .word data_020c9670
 .L_0203726c: .word gActorTargetSelectionCandidates
 .L_02037270: .word gActorTargetSelectionMetadata
-.L_02037274: .word data_021052fc
+.L_02037274: .word gGamePhaseRuntime
 .L_02037278: .word data_020c3d80
 .L_0203727c: .word data_020c3d88
 .L_02037280: .word gActorRuntimeCollection

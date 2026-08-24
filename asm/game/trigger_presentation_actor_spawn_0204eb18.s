@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/trigger_presentation_actor_spawn.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_SpawnActorFromDescriptor
 .extern ActorSpawnDescriptor_Init
@@ -62,6 +62,6 @@ func_0204eb18: ; 0x0204eb18
     str r0, [r5, #0x10]
     add sp, sp, #0xb0
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204ebf0: .word data_021052fc
+.L_0204ebf0: .word gGamePhaseRuntime
 .size func_0204eb18, . - func_0204eb18
 

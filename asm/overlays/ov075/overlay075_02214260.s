@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern GameWork_TestFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov075_02216cc8
 .extern Sound_PlayOwnedEffect
 .extern GraphicsSpriteState_SetAnimationIndex
@@ -168,7 +168,7 @@ func_ov075_02214260:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
 .L_022144a8: .word gGameWork
-.L_022144ac: .word data_021052fc
+.L_022144ac: .word gGamePhaseRuntime
 .L_022144b0: .word data_ov075_02216cc8
 .L_022144b4: .word gSoundContext
 .size func_ov075_02214260, . - func_ov075_02214260

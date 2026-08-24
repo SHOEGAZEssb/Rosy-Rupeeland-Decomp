@@ -50,7 +50,7 @@ extern "C" void func_020a6940(void *);
 extern "C" s32 func_020a6990(void *, s32, s32);
 extern "C" void func_020a6aa8(void *, const void *, s32);
 
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
 extern "C" void *gGamePhaseCurrencyHud;
@@ -199,15 +199,15 @@ extern "C" s32 func_ov063_0220ffd0(void *scene)
         (flags & 0xc000ffff) | ((count & 0x3fff) << 16);
 
     if (call_method(actor, 0xd8) != 0) {
-        call_method(data_021052fc, 8);
+        call_method(gGamePhaseRuntime, 8);
     } else if ((FIELD(u8, scene, 0x54) & 2) == 0 || (count & 1) != 0) {
-        GamePhaseRuntime_PrepareActorCollections(data_021052fc, 2, 3);
+        GamePhaseRuntime_PrepareActorCollections(gGamePhaseRuntime, 2, 3);
         call_method(actor, 0xdc);
-        GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 0);
-        GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 1);
+        GamePhaseRuntime_SynchronizeActorPlacement(gGamePhaseRuntime, 0);
+        GamePhaseRuntime_SynchronizeActorPlacement(gGamePhaseRuntime, 1);
         RuntimePresentationManager_UpdatePresentations(
-            (u8 *)data_021052fc + 0x2f7c, 1);
-        GamePhaseRuntime_FinalizeActorCollections(data_021052fc, 2, 3);
+            (u8 *)gGamePhaseRuntime + 0x2f7c, 1);
+        GamePhaseRuntime_FinalizeActorCollections(gGamePhaseRuntime, 2, 3);
     } else {
         call_method(actor, 0xe0);
     }
@@ -238,7 +238,7 @@ extern "C" s32 func_ov063_022101c4(void *scene)
     void *actor = FIELD(void *, scene, 0x4c);
     void *controller;
 
-    GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
+    GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
     if (actor != 0) {
         call_method(actor, 0xc0);
     }
@@ -248,7 +248,7 @@ extern "C" s32 func_ov063_022101c4(void *scene)
         mode = (s32)(FIELD(u32, scene, 0x50) << 17) >> 18;
         func_020a6aa8((u8 *)scene + 0x28,
                      ActorMotionAreaFollower_GetPosition(
-                         (u8 *)data_021052fc + 0x2fbc),
+                         (u8 *)gGamePhaseRuntime + 0x2fbc),
                      mode);
         VecFx32Object_Destroy(temporary);
     }
@@ -257,7 +257,7 @@ extern "C" s32 func_ov063_022101c4(void *scene)
     if (controller != 0) {
         FIELD(s32, controller, 0x20) ^= 1;
     } else {
-        GamePhaseAreaScene_Update(FIELD(void *, data_021052fc, 0x2fb8));
+        GamePhaseAreaScene_Update(FIELD(void *, gGamePhaseRuntime, 0x2fb8));
     }
     return 0;
 }
@@ -310,7 +310,7 @@ extern "C" s32 func_ov063_02210348(void *, const void *input)
 {
     u8 route[12];
     func_ov063_02210380(route, input);
-    call_route_method(data_021052fc, 0x14, route);
+    call_route_method(gGamePhaseRuntime, 0x14, route);
     return 0;
 }
 
@@ -324,7 +324,7 @@ extern "C" s32 func_ov063_022103a4(void *, const void *input)
 {
     u8 route[12];
     func_ov063_02210380(route, input);
-    call_route_method(data_021052fc, 0x18, route);
+    call_route_method(gGamePhaseRuntime, 0x18, route);
     return 0;
 }
 
@@ -333,7 +333,7 @@ extern "C" s32 func_ov063_022103dc(void *, const void *input)
 {
     u8 route[12];
     func_ov063_02210380(route, input);
-    call_route_method(data_021052fc, 0x1c, route);
+    call_route_method(gGamePhaseRuntime, 0x1c, route);
     return 0;
 }
 
@@ -353,12 +353,12 @@ extern "C" void func_ov063_02210414(void *scene, s32 mode)
     third = call_method(actor, 0xec);
 
     if (mode == 3 || mode == 1) {
-        GamePhaseRuntime_StageAreaRequest(data_021052fc, first, second, third,
+        GamePhaseRuntime_StageAreaRequest(gGamePhaseRuntime, first, second, third,
                                           0, 0);
         FIELD(s16, gGameWork, 0x1e4) = mode == 3 ? 1 : -1;
     } else if (mode != 5) {
         ActorCollection_UnregisterAndDestroyActor(
-            GamePhaseRuntime_GetActorCollection(data_021052fc, 1), actor);
+            GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), actor);
     }
 
     GX_VBlankIntr(1);

@@ -2,7 +2,7 @@
 
 /* Copy and conditionally amend a descriptor record for an extended type-two actor. */
 extern u8 data_020e8380[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 /* Return whether an actor's virtual +0xa8 reports nonzero. */
 static s32 actorIsActive(void *object)
@@ -34,15 +34,15 @@ void ActorExtendedType2_CopyAdjustedDescriptor(const void *self, void *output)
         *(u16 *)(destination + 0x1a) &= ~1;
     } else if ((*(const u32 *)(actor + 0x14) & 0x10000) != 0 ||
                ((*(const u32 *)(actor + 0x14) & 0x20000) != 0 &&
-                actorIsActive(*(void **)(data_021052fc + 0x2ea4)))) {
+                actorIsActive(*(void **)(gGamePhaseRuntime + 0x2ea4)))) {
         *(u16 *)(destination + 0x1a) |= 1;
     }
 
     if ((*(u16 *)(destination + 0x1a) & 0x80) != 0) {
-        void *primary = *(void **)(data_021052fc + 0x2ea4);
+        void *primary = *(void **)(gGamePhaseRuntime + 0x2ea4);
         s32 set = actorIsActive(primary);
         if (!set) {
-            void *secondary = *(void **)(data_021052fc + 0x2ea8);
+            void *secondary = *(void **)(gGamePhaseRuntime + 0x2ea8);
             if (secondary != 0)
                 set = actorIsActive(secondary);
         }

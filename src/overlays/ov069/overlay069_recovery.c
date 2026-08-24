@@ -19,7 +19,7 @@ extern u8 data_ov069_022125ac[];
 extern u8 data_ov069_0221278c[], data_ov069_0221279c[];
 extern u8 data_ov069_022127d0[], data_020f3058[];
 extern const s16 data_020c9670[];
-extern void *data_021052fc, *gSoundContext;
+extern void *gGamePhaseRuntime, *gSoundContext;
 
 #ifdef __cplusplus
 extern "C" {
@@ -159,7 +159,7 @@ void func_ov069_0220ff38(void *owner, const void *origin, s32 mode,
     if (blend < 0) blend = 0;
   }
   F(s32, owner, 0x330) = blend;
-  renderer = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+  renderer = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
   for (i = 12; i >= 0; --i) {
     s32 *trail = (s32 *)((u8 *)owner + i * 0x24);
     s16 *angles = (s16 *)((u8 *)owner + 0x1e4 + i * 0x18);
@@ -238,7 +238,7 @@ void func_ov069_0221070c(void *owner, s32 random_value) {
   palette = random_value < 2 ? (const u16 *)data_ov069_02212546 :
             random_value == 2 ? (const u16 *)data_ov069_0221253e :
                                 (const u16 *)data_ov069_02212536;
-  renderer = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+  renderer = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
   func_0209b7ec(renderer, 0);
   for (i = 12; i >= 0; --i) {
     s32 transform_index = i % 3;
@@ -403,7 +403,7 @@ void func_ov069_0221100c(void *owner, s32 submit_only) {
           *age = -1;
           if (active == 1)
             F(u32, owner, 0x928 + i * 4) =
-                Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
+                Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c), 0,
                               (F(s32, velocity, 0xa94) >> 12) - 20,
                               (F(s32, velocity, 0xa9c) >> 12) - 20,
                               40, 40, 0x46);
@@ -449,7 +449,7 @@ void func_ov069_02211274(void *owner) {
     -12,-12,12,12, -12,-12,12,12, -16,-16,16,16
   };
   s32 scale[4], position[4];
-  void *renderer = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+  void *renderer = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
   s32 i;
   VecFx32Object_InitComponents(scale, 0x1000, 0x1000, 0x1000);
   for (i = 89; i >= 0; --i) {
@@ -496,7 +496,7 @@ s32 func_ov069_022115c0(void *owner, const void *position) {
         F(s32, owner, 0x7c0 + i * 4) = 0;
         renderer = (Graphics3dPresentation *)
             RuntimePresentationManager_GetGraphics3dPresentation(
-                (u8 *)data_021052fc + 0x2f7c);
+                (u8 *)gGamePhaseRuntime + 0x2f7c);
         if (F(u32, owner, 0x928 + i * 4) != 0xff)
           Graphics3dPresentation_RemoveSpriteEffect(renderer, F(u32, owner, 0x928 + i * 4));
         effect = Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(renderer, 0,
@@ -682,7 +682,7 @@ void func_ov069_022119f8(void *object) {
       if ((paired == 0
            ? func_ov039_02203964(F(void *, context, 0x18), (u8 *)sprite_record + 0x2c)
            : func_ov069_02210970(paired, (u8 *)sprite_record + 0x2c)) != 0) {
-        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 4,
+        Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c), 4,
                        F(s32, sprite_record, 0x30) >> 12,
                        F(s32, sprite_record, 0x34) >> 12, 8);
       }
@@ -739,7 +739,7 @@ void func_ov069_022119f8(void *object) {
       F(s32, sprite_record, 0x38) = 0;
       ++F(s32, object, 0x60);
       F(s32, object, 0x64) = 0;
-      Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 0,
+      Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c), 0,
                      F(s32, sprite_record, 0x30) >> 12,
                      (F(s32, sprite_record, 0x34) >> 12) + 8);
       F(s32, context, 0x44) = 0x19;

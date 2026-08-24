@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/timed_sprite_record_presentation.c.
 .text
 .extern data_020d62b0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern GamePhaseVisualEffect_Configure
@@ -70,5 +70,5 @@ func_0201ff2c: ; 0x0201ff2c
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, pc}
 .L_02020010: .word data_020d62b0
-.L_02020014: .word data_021052fc
+.L_02020014: .word gGamePhaseRuntime
     .size func_0201ff2c, .-func_0201ff2c

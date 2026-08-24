@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/presentation_backed_actor_targeting.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern Actor_UpdatePresentation
@@ -45,6 +45,6 @@ PresentationBackedActor_CanAcquireTarget: ; 0x0204deec
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_0204df38: .word gActorRuntimeCollection
-.L_0204df3c: .word data_021052fc
+.L_0204df3c: .word gGamePhaseRuntime
 .size PresentationBackedActor_CanAcquireTarget, . - PresentationBackedActor_CanAcquireTarget
 

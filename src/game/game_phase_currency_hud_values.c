@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern s32 SignedAbsoluteValueVariant(s32 value);
@@ -33,7 +33,7 @@ s32 GamePhaseCurrencyHud_GetCurrency(const GamePhaseCurrencyHud *self)
  */
 void GamePhaseCurrencyHud_SetCurrency(GamePhaseCurrencyHud *self, s32 value)
 {
-    u8 *actor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+    u8 *actor = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
     s32 difference;
     if (*(u32 *)(actor + 0xd0) & 0x100)
         return;
@@ -75,7 +75,7 @@ void GamePhaseCurrencyHud_AddCurrency(GamePhaseCurrencyHud *self, s32 delta,
 
     if (!delta)
         return;
-    actor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+    actor = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
     if (*(u32 *)(actor + 0xd0) & 0x100)
         return;
     oldValue = gGameWork->currency;

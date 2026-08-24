@@ -11,7 +11,7 @@ typedef void (*Method2)(void *, s32);
 
 extern u8 data_ov087_022189e0[], data_ov087_02218aa4[];
 extern const s16 data_020c9670[];
-extern void *data_020f4e18, *data_021052fc, *gGameWork, *gHeapContext;
+extern void *data_020f4e18, *gGamePhaseRuntime, *gGameWork, *gHeapContext;
 extern void *gSceneManager, *gSoundContext, *gSystemState;
 
 #ifdef __cplusplus
@@ -204,7 +204,7 @@ void func_ov087_022179b0(void *actor, void *unused1, void *unused2,
     }
     pan = (F(s32, actor, 0x1c) -
            F(s32, ActorMotionAreaFollower_GetPosition(
-                      (u8 *)data_021052fc + 0x2fbc),
+                      (u8 *)gGamePhaseRuntime + 0x2fbc),
              4) +
            0x80000) >>
           12;
@@ -228,7 +228,7 @@ void func_ov087_022179b0(void *actor, void *unused1, void *unused2,
   F(s16, actor, 0x214) = 0;
   ((Method)METHOD(actor, 0xa4))(actor);
   if (F(s16, actor, 0x224) == 1) {
-    void *follower = F(void *, data_021052fc, 0x2ea4);
+    void *follower = F(void *, gGamePhaseRuntime, 0x2ea4);
     VecFx32Object_Assign((u8 *)follower + 0x18, (u8 *)actor + 0x18);
     F(s32, follower, 0x24) += 0xa000;
   }
@@ -334,7 +334,7 @@ void func_ov087_02218264(void *actor, s32 horizontal, s32 vertical) {
       return;
     pan = (F(s32, actor, 0x1c) -
            F(s32, ActorMotionAreaFollower_GetPosition(
-                      (u8 *)data_021052fc + 0x2fbc),
+                      (u8 *)gGamePhaseRuntime + 0x2fbc),
              4) +
            0x80000) >>
           12;
@@ -391,7 +391,7 @@ void func_ov087_022184b0(void *actor, s32 transition) {
     F(void *, actor, 0x220) = resource;
     F(u16, actor, 0x21a) |= 2;
     if (transition <= 0) {
-      void *shared = F(void *, data_021052fc, 0x2ea4);
+      void *shared = F(void *, gGamePhaseRuntime, 0x2ea4);
       F(u32, shared, 0x230) &= ~4u;
       func_ov087_02218698((u8 *)shared + 0x38, 0, 0, 0);
       func_ov087_02218698((u8 *)shared + 0x88, 0, 0, 0);
@@ -443,7 +443,7 @@ void func_ov087_022186a8(void *actor, const void *position, s32 transition) {
     F(s16, actor, 0x214) = 0;
     F(s16, actor, 0xd6) = 1;
     ((Method)METHOD(actor, 0x5c))(actor);
-    shared = F(void *, data_021052fc, 0x2ea4);
+    shared = F(void *, gGamePhaseRuntime, 0x2ea4);
     if (transition <= 0) {
       F(u32, shared, 0x14) &= ~2u;
       F(u32, shared, 0x230) |= 4;

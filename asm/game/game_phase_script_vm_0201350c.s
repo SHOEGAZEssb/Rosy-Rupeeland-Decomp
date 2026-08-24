@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_query_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern DualLayerTileRenderer_ForwardLayerPair
@@ -29,6 +29,6 @@ func_0201350c: ; 0x0201350c
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-L_02013564: .word data_021052fc
+L_02013564: .word gGamePhaseRuntime
     .size func_0201350c, . - func_0201350c
 

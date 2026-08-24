@@ -8,7 +8,7 @@
 .extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global FieldEffect_SetEnabledNoOp
 FieldEffect_SetEnabledNoOp: ; 0x0201e0e8
     bx lr

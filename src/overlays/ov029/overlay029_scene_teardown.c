@@ -6,7 +6,7 @@
 
 extern void *data_020f4e14[];
 extern void *data_020f4e18[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gDebugFont;
 extern const u8 data_ov029_021fecfc[];
 
@@ -57,7 +57,7 @@ static void Overlay029_TearDown(void *state)
     *(volatile u16 *)0x04001050 = 0;
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);
     GraphicsSpriteRenderer_QueuePaletteUploads(gDebugFont);
-    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 0);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 0);
     func_020927b8((u8 *)state + 0x78);
 }
 

@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern const char gGamePhaseAreaRegionEffectAllocationTag[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *FourStageCommandPresentation_Init(void *self, void *renderer, s32 left, s32 top,
                            s32 right, s32 bottom);
 extern void *RuntimePresentationManager_AppendFirstListEffect(void *list, void *effect);
@@ -65,7 +65,7 @@ s32 GamePhaseAreaScene_UpdateRegionAtPosition(
             *(u32 *)((u8 *)effect + 4) =
                 (*(u32 *)((u8 *)effect + 4) & ~0x3fc) | 0xdc;
             self->regionEffectHandle = RuntimePresentationManager_AppendFirstListEffect(
-                (u8 *)data_021052fc + 0x2f7c, effect);
+                (u8 *)gGamePhaseRuntime + 0x2f7c, effect);
         }
         GamePhaseRegionTable_SetRegionRevealed(table, index, 1);
         self->stateFlags =

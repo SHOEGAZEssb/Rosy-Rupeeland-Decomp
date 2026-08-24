@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov077/overlay077_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov077_02216fc8
 .extern VecFx32Object_Assign
 .extern RuntimePresentationManager_GetGraphics3dPresentation
@@ -103,5 +103,5 @@ func_ov077_02215050:
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, pc}
 .L_022151b4: .word data_ov077_02216fc8
-.L_022151b8: .word data_021052fc
+.L_022151b8: .word gGamePhaseRuntime
 .size func_ov077_02215050, . - func_ov077_02215050

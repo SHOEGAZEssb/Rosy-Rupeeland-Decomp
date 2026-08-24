@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_render_callback.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin
@@ -102,6 +102,6 @@ func_ov090_0221a544:
 .L_0221a69c:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}
-.L_0221a6a4: .word data_021052fc
+.L_0221a6a4: .word gGamePhaseRuntime
 .L_0221a6a8: .word 0x4cd
 .size func_ov090_0221a544, . - func_ov090_0221a544

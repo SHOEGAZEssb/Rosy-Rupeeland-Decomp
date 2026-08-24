@@ -5,7 +5,7 @@
     .extern VecFx32Object_Init
     .extern func_0209c430
     .extern VecFx32Object_Destroy
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .global func_ov039_0220454c
 func_ov039_0220454c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -194,7 +194,7 @@ L_02204814:
     bpl L_02204578
     add sp, sp, #0xb4
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_02204824: .word data_021052fc
+L_02204824: .word gGamePhaseRuntime
 L_02204828: .word 0x7fff
     .size func_ov039_0220454c, .-func_ov039_0220454c
 

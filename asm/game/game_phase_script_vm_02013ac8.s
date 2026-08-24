@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_bit_query_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
@@ -54,6 +54,6 @@ L_02013b4c:
 L_02013b68:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_02013b70: .word data_021052fc
+L_02013b70: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0, . - GamePhaseActorScriptVm_GetSelectedActorFlag169Bit0
 

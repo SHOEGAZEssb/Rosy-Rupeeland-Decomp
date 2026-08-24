@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 extern const u32 data_ov015_021feba8[];
 extern const u32 data_ov015_021febb0[];
@@ -212,7 +212,7 @@ extern "C" s32 func_ov015_021fe9b8(void *state)
             (FIELD(u16, metadata, 4) == 1 || FIELD(u16, metadata, 4) == 2)) {
             GameWork_SetFlag(gGameWork, FIELD(u16, metadata, 4) == 1 ? 0x3cc : 0x3cd);
         } else {
-            void *manager = FIELD(void *, (u8 *)FIELD(void *, data_021052fc, 0) + 0x2000, 0xea4);
+            void *manager = FIELD(void *, (u8 *)FIELD(void *, gGamePhaseRuntime, 0) + 0x2000, 0xea4);
             ActorDerivedType1_StartRecord(manager, func_02062a10(item));
             func_02062db0(item);
         }

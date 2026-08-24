@@ -4,7 +4,7 @@
 .extern data_020e1760
 .extern data_020e1768
 .extern data_020e1890
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Type7Actor_SetCallbackPair
 .text
     .global Type7Actor_TryAssignRelatedObject
@@ -88,6 +88,6 @@ Type7Actor_ClearGlobalRelationshipToActor: ; 0x0204a4bc
     moveq r0, #0x0
     streq r0, [r2, #0x210]
     bx lr
-.L_0204a4ec: .word data_021052fc
+.L_0204a4ec: .word gGamePhaseRuntime
 .size Type7Actor_ClearGlobalRelationshipToActor, . - Type7Actor_ClearGlobalRelationshipToActor
 

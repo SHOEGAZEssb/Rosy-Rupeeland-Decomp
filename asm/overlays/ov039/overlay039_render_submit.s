@@ -20,7 +20,7 @@
     .extern func_ov069_0221100c
     .extern func_ov069_02211274
     .extern gSoundContext
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .global func_ov039_0220076c
 func_ov039_0220076c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -376,7 +376,7 @@ L_02200cb0:
     add sp, sp, #0xf4
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_02200cb8: .word gSoundContext
-L_02200cbc: .word data_021052fc
+L_02200cbc: .word gGamePhaseRuntime
 L_02200cc0: .word 0x7fff
     .size func_ov039_0220076c, .-func_ov039_0220076c
 

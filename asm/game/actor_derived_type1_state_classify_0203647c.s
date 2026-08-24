@@ -4,7 +4,7 @@
 .extern Heap_Alloc
 .extern Sound_Play
 .extern data_020df49c
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern Actor_IsAtCachedTerrainHeight
@@ -425,7 +425,7 @@ ActorDerivedType1_ClassifyState: ; 0x0203647c
 .L_02036a64:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
-.L_02036a6c: .word data_021052fc
+.L_02036a6c: .word gGamePhaseRuntime
 .L_02036a70: .word 0x40
 .L_02036a74: .word data_020df49c
 .L_02036a78: .word gHeapContext

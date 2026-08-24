@@ -10,7 +10,7 @@ typedef struct Overlay055BgConfig {
     u32 character_destination, character_size, palette_bank, palette_count;
 } Overlay055BgConfig;
 
-extern void *data_020f4e14[], *data_020f4e18[], *data_021052fc, *gDebugFont;
+extern void *data_020f4e14[], *data_020f4e18[], *gGamePhaseRuntime, *gDebugFont;
 extern u8 gHeapContext[], gMainBgPaletteBuffer[], gSubBgPaletteBuffer[];
 extern const u32 data_020c3850[], data_020c38ac[], data_020c3908[];
 extern const Overlay055BgConfig *data_020d8818[];
@@ -178,8 +178,8 @@ void func_ov055_0220eefc(void *scene, const void *v)
 /* Allocate, construct, and register the scene. */
 void *func_ov055_0220ef6c(void)
 {
-    void *scene=Heap_Alloc(0x30,data_ov055_0220f088,4,gHeapContext); if(scene){u8 *runtime=(u8*)data_021052fc; scene=func_ov055_0220e8b8(scene,runtime+0x2fbc,func_02027e8c(GamePhaseProgress_GetOrCreateGlobal()));}
-    RuntimePresentationManager_AppendFirstListEffect((u8*)data_021052fc+0x2f7c,scene); return scene;
+    void *scene=Heap_Alloc(0x30,data_ov055_0220f088,4,gHeapContext); if(scene){u8 *runtime=(u8*)gGamePhaseRuntime; scene=func_ov055_0220e8b8(scene,runtime+0x2fbc,func_02027e8c(GamePhaseProgress_GetOrCreateGlobal()));}
+    RuntimePresentationManager_AppendFirstListEffect((u8*)gGamePhaseRuntime+0x2f7c,scene); return scene;
 }
 
 /* Submit or release both collection sprite groups. */

@@ -19,7 +19,7 @@ extern "C" {
 #else
 #define O65_ARGS
 #endif
-extern void *data_020f4e14, *data_021052fc, *gDebugFont;
+extern void *data_020f4e14, *gGamePhaseRuntime, *gDebugFont;
 extern void *gGamePhaseCurrencyHud, *gSoundContext;
 extern s16 data_020c9670[];
 extern u16 data_ov065_02210b5c[];
@@ -223,7 +223,7 @@ s32 Overlay065Scene_Update(void *self)
     if (SceneManager_GetCurrent(gSceneManager) != self) return 0;
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-    actor = F(void *, data_021052fc, 0x2ea4);
+    actor = F(void *, gGamePhaseRuntime, 0x2ea4);
     if (F(u16, self, 0x11a) != 0) --F(u16, self, 0x11a);
     switch (F(s32, self, 8)) {
     case 0: call_method(actor, 0x54, 0); F(s32, self, 8) = 1;
@@ -239,7 +239,7 @@ s32 Overlay065Scene_Update(void *self)
                 F(s32, self, 8) = 1; F(s16, self, 0x118) ^= 1; }
             else { ActorDerivedType1_ApplyResourceIndex(actor, 0); actor = F(void *, actor, 0x54);
                 GraphicsSpriteState_SetAnimationIndex(actor, 4);
-                call_method(F(void *, data_021052fc, 0x2ea4), 0x54, 1);
+                call_method(F(void *, gGamePhaseRuntime, 0x2ea4), 0x54, 1);
                 F(u16, actor, 0x24) = (F(u16, actor, 0x24) | 2) & 0xfffeu;
                 F(u16, F(void *, self, 0x158), 0x24) |= 0x10; F(s32, self, 8) = 3; }
             F(u16, self, 0x120) = 0;
@@ -249,14 +249,14 @@ s32 Overlay065Scene_Update(void *self)
     for (g = 0; g < 2; ++g) for (i = 0; i < 30; ++i)
         active += Overlay065Particle_Update(F(O65Particle *, self, 0x28 + g * 0x78 + i * 4), self);
     if (F(s32, self, 8) == 3 && active == 0) { call_method(self, 4, 0); return 1; }
-    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
     GraphicsSpriteState_SetDepthOrderedWorldPosition(F(void *, self, 0x158),
         F(s32, self, 0x128), F(s32, self, 0x12c), F(s32, self, 0x130) + offset, 4);
     GraphicsSpriteGroup_AdvanceAnimations(F(void *, self, 0x24)); return 0;
 }
 
 /* Invoke the global runtime transition callback and return zero. */
-s32 func_ov065_022108f8(void) { call_method(data_021052fc, 12, 0); return 0; }
+s32 func_ov065_022108f8(void) { call_method(gGamePhaseRuntime, 12, 0); return 0; }
 
 /* Generate a randomized target around the scene's source vector. */
 void Overlay065Scene_GenerateRandomTarget(void *self, O65Vec *out)

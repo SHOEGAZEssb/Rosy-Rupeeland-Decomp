@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov088_0221ba04
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
@@ -977,7 +977,7 @@ func_ov088_02218328:
 .L_02219100:
     add sp, sp, #0x78
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.L_02219108: .word data_021052fc
+.L_02219108: .word gGamePhaseRuntime
 .L_0221910c: .word gSceneManager
 .L_02219110: .word 0x1089
 .L_02219114: .word 0xfffff99a

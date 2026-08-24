@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Sound_Play
 .extern data_020e6e68
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern data_ov082_02214aa4
 .extern VecFx32Object_InitComponents
@@ -289,7 +289,7 @@ func_ov082_02213538:
 .L_02213900: .word gGamePhaseCurrencyHud
 .L_02213904: .word data_ov082_02214aa4
 .L_02213908: .word gHeapContext
-.L_0221390c: .word data_021052fc
+.L_0221390c: .word gGamePhaseRuntime
 .L_02213910: .word data_020e6e68
 .L_02213914: .word 0xffff
 .L_02213918: .word gSoundContext

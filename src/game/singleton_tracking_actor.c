@@ -6,7 +6,7 @@
  */
 
 extern const u8 data_020e1f2c[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 *gGameWork;
 
 #ifdef __cplusplus
@@ -92,14 +92,14 @@ void func_0204d10c(void *self)
         ActorDerivedRuntime_UpdateFrame(actor);
         return;
     }
-    collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     target = *(u8 **)(collection + 0x2e7c);
     *(u8 **)(actor + 0x208) = target;
     if (GameWork_TestFlag(gGameWork, 0x405) != 0) {
         void (**vtable)(void *, s32) = *(void (***)(void *, s32))actor;
         vtable[0x54 / 4](actor, 0);
     }
-    mode = (*(u32 *)(*(u8 **)(data_021052fc + 0x30bc) + 0x40) >> 18) & 3;
+    mode = (*(u32 *)(*(u8 **)(gGamePhaseRuntime + 0x30bc) + 0x40) >> 18) & 3;
     *(s32 *)(actor + 0x1c) = *(s32 *)(target + 0x1c) / 2;
     if (mode == 2) {
         *(s32 *)(actor + 0x20) = *(s32 *)(target + 0x20) / 2

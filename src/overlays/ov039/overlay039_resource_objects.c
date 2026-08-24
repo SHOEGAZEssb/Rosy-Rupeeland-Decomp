@@ -17,7 +17,7 @@ typedef struct Overlay039ResourceVector {
 
 extern void *data_ov039_02208464;
 extern void *data_ov039_02208498;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -65,7 +65,7 @@ extern void func_ov039_02204974(void *emitter);
  */
 extern "C" void func_ov039_0220454c(void *scene)
 {
-    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
+    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                    0x2f7c);
     for (s32 i = 2; i >= 0; i--) {
         void *effect = FIELD(void *, scene, 0x9c + i * 4);
@@ -185,7 +185,7 @@ extern "C" void func_ov039_022049cc(void *scene)
 extern "C" void func_ov039_02205654(void *scene)
 {
     void *emitter = (u8 *)scene + 0xbc;
-    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
+    void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                    0x2f7c);
     for (s32 i = 0; i < 13; i++) if (FIELD(s32, emitter, 0x344 + i * 4))
         func_0209b7ec(resource, emitter, i);

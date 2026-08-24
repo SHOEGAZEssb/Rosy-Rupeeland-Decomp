@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov086/overlay086_recovery.c.
 .extern GameWork_TestFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorExtendedType2_InitializeReentryState
 .extern gGameWork
 
@@ -56,5 +56,5 @@ func_ov086_02212b30:
     ldmia sp!, {r4, r5, r6, pc}
 .L_02212be0: .word gGameWork
 .L_02212be4: .word 0x44b
-.L_02212be8: .word data_021052fc
+.L_02212be8: .word gGamePhaseRuntime
 .size func_ov086_02212b30, . - func_ov086_02212b30

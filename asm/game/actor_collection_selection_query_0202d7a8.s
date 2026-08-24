@@ -10,7 +10,7 @@
 .extern VecFx32Object_Destroy
 .extern Actor_DispatchActivationMode1
 .extern gActorRuntimeCollection
-.extern data_021052fc
+.extern gGamePhaseRuntime
 
     .global ActorCollection_ProcessSelectionQuery
     .type ActorCollection_ProcessSelectionQuery, @function
@@ -235,5 +235,5 @@ ActorCollection_ProcessSelectionQuery: ; 0x0202d7a8
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0202dae4: .word gActorRuntimeCollection
-.L_0202dae8: .word data_021052fc
+.L_0202dae8: .word gGamePhaseRuntime
     .size ActorCollection_ProcessSelectionQuery, . - ActorCollection_ProcessSelectionQuery

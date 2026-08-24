@@ -5,7 +5,7 @@
  * conditionally notifies two global actors before running the base update.
  */
 extern void *gSceneManager;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -20,7 +20,7 @@ extern s32 Actor_SetInteractionFlag2000(void *actor, s32 context);
 #endif
 
 /*
- * In current scene type one, resolve global actors at data_021052fc+0x2ea4 and
+ * In current scene type one, resolve global actors at gGamePhaseRuntime+0x2ea4 and
  * +0x2ea8. Continue the special path only when actor +0x260 bit one is set,
  * actor virtual +0xa8 reports inactive, the secondary actor exists and has
  * +0x268 bit 0x10, and ActorSelection_Contains(primary,actor) accepts. Then send actor
@@ -34,11 +34,11 @@ s32 ActorExtendedType2_UpdateSceneInteraction(void *self, s32 context)
     u8 *actor = (u8 *)self;
     u8 *scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
     if (*(u32 *)(scene + 4) == 1) {
-        u8 *secondary = *(u8 **)(data_021052fc + 0x2ea8);
+        u8 *secondary = *(u8 **)(gGamePhaseRuntime + 0x2ea8);
         if ((*(u32 *)(actor + 0x260) & 2) != 0 &&
             (*(s32 (**)(void *))(*(u8 **)actor + 0xa8))(actor) == 0 &&
             secondary != 0 && (*(u32 *)(secondary + 0x268) & 0x10) != 0) {
-            void *primary = *(void **)(data_021052fc + 0x2ea4);
+            void *primary = *(void **)(gGamePhaseRuntime + 0x2ea4);
             if (ActorSelection_Contains(primary, actor) != 0) {
                 ActorDerivedType1_TrySetStateVector(primary, actor + 0x18, 20, 0);
                 Type7Actor_HandleObjectInteraction(secondary, actor);

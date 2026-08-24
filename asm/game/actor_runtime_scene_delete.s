@@ -14,7 +14,7 @@
 .extern Scene_Destroy
 .extern Heap_Free
 .extern data_020d448c
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGameWork
 .global ActorRuntimeScene_DestroyAndFree
 ActorRuntimeScene_DestroyAndFree:
@@ -103,7 +103,7 @@ L_0200b680:
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_0200b6b0: .word data_020d448c
-L_0200b6b4: .word data_021052fc
+L_0200b6b4: .word gGamePhaseRuntime
 L_0200b6b8: .word gGameWork
 L_0200b6bc: .word 0x3f3
 L_0200b6c0: .word 0x403

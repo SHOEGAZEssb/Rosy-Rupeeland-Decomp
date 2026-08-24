@@ -7,7 +7,7 @@ typedef void (*RuntimeObjectToggleMethod)(void *self, s32 enabled);
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GamePhaseRuntime_SetPlacementMode(void *runtime, s32 mode, s32 synchronize);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void ActorCollection_SetEnabled(void *object, s32 enabled);
@@ -24,7 +24,7 @@ extern void ActorCollection_SetEnabled(void *object, s32 enabled);
 s32 GamePhaseActorScriptVm_SetPlacementModeAndSynchronize(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
 
     if (enabled != 0) {
         GamePhaseRuntime_SetPlacementMode(runtime, 1, 1);

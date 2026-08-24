@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const s8 data_020d5af8[];
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern u16 DualLayerTileRenderer_ForwardLayerPair(void *object, u32 first,
@@ -34,7 +34,7 @@ s32 func_0201350c(GamePhaseActorScriptVm *self)
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, DualLayerTileRenderer_ForwardLayerPair(object, first, second, third));
     return 0;
 }
@@ -73,7 +73,7 @@ s32 GamePhaseActorScriptVm_LookupDirectionTowardCoordinates(GamePhaseActorScript
 /* Resolve runtime collection 1's actor at offset 0x2e7c and store integer x as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorX(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
@@ -85,7 +85,7 @@ s32 GamePhaseActorScriptVm_GetCollection1ActorVectorX(GamePhaseActorScriptVm *se
 /* Resolve runtime collection 1's actor at offset 0x2e7c and store integer y as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorY(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
@@ -97,7 +97,7 @@ s32 GamePhaseActorScriptVm_GetCollection1ActorVectorY(GamePhaseActorScriptVm *se
 /* Resolve runtime collection 1's actor at offset 0x2e7c and store integer z as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorZ(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     VecFx32Object value;
     void *actor = *(void **)(collection + 0x2e7c);
     VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));

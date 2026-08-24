@@ -10,7 +10,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const char data_020d5b34[];
 extern const char data_020d5b2c[];
 extern void *data_ov054_0220f160;
@@ -62,13 +62,13 @@ extern void func_ov053_0220da0c(u16 value);
 /* Return the global runtime's presentation manager at confirmed offset 0x2f7c. */
 static void *getScriptPresentationManager(void)
 {
-    return (u8 *)data_021052fc + 0x2f7c;
+    return (u8 *)gGamePhaseRuntime + 0x2f7c;
 }
 
 /* Resolve the global runtime context stored through the object at offset 0x2fbc. */
 static void *getScriptEffectContext(void)
 {
-    return ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+    return ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
 }
 
 /* Return the presentation manager's borrowed 3D presentation. */
@@ -139,7 +139,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         void *object = Heap_Alloc(0x44, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = func_02022cb0(object, getScriptEffectContext(),
-                                   *(void **)((u8 *)data_021052fc + 0x2ea4),
+                                   *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4),
                                    a1, 0x2000, -0xc0);
         addScriptFieldEffect(object);
         break;
@@ -148,7 +148,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         void *object = Heap_Alloc(0x54, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
             object = func_02022ff4(object, getScriptEffectContext(),
-                                   *(void **)((u8 *)data_021052fc + 0x2ea4),
+                                   *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4),
                                    a1, a2, a3, 0x2000, -0xc0);
         addScriptFieldEffect(object);
         break;
@@ -188,7 +188,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
         if (object != 0)
             func_ov065_022101bc(
                 object, a1,
-                (u8 *)*(void **)((u8 *)data_021052fc + 0x2ea4) + 0x18,
+                (u8 *)*(void **)((u8 *)gGamePhaseRuntime + 0x2ea4) + 0x18,
                 &vector, convertEffectOperand((s32)a5),
                 convertEffectOperand((s32)a6));
         VecFx32Object_Destroy(&vector);
@@ -292,18 +292,18 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
             GameWork_SetFlag(gGameWork, 0x40a);
             OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 1, 0x36);
             handle = func_ov054_0220e9bc(
-                (u8 *)*(void **)((u8 *)data_021052fc + 0x2ea4) + 0x18,
+                (u8 *)*(void **)((u8 *)gGamePhaseRuntime + 0x2ea4) + 0x18,
                 getScriptEffectContext());
             effect = (u8 *)RuntimePresentationManager_GetSecondListNodeEffect(
                 getScriptPresentationManager(), handle);
-            target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a2);
+            target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), a2);
             *(void **)(effect + 8) = (u8 *)target + 0x18;
             GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)handle);
         } else if (a1 == 2) {
             u8 *effect = (u8 *)RuntimePresentationManager_GetSecondListNodeEffect(
                 getScriptPresentationManager(), a2);
             void *target = ActorCollection_FindActorByRuntimeId(
-                GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a3);
+                GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), a3);
             *(void **)(effect + 8) = (u8 *)target + 0x18;
         }
         break;
@@ -351,7 +351,7 @@ s32 func_020143a8(GamePhaseActorScriptVm *self)
                           *(u32 *)(actor + 0x114)));
         break;
     case 31: {
-        void *target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), a5);
+        void *target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), a5);
         void *object;
         OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x49);
         object = Heap_Alloc(0x1c, data_020d5b34, 4, &gHeapContext);

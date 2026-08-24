@@ -13,7 +13,7 @@ extern u32 data_021057dc[3];
 extern u32 data_021057e8[3];
 extern void *data_021057f4[4];
 extern u32 data_02105804[16];
-extern u8 data_021052fc[];
+extern u8 gGamePhaseRuntime[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -78,7 +78,7 @@ void func_02053560(void)
         return;
     }
 
-    mainActor = *(void **)(*(u8 **)data_021052fc + 0x2ea4);
+    mainActor = *(void **)(*(u8 **)gGamePhaseRuntime + 0x2ea4);
     mainHeight = Actor_GetCachedTerrainHeight(mainActor);
     upperHeight = mainHeight + 0x10000;
     if (!ActorDerivedType1_IsIdleEligible(mainActor))

@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020d5b34
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GameWork_SetFlag
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorMotionAreaFollower_GetPosition
@@ -66,7 +66,7 @@ L_02017a28:
 L_02017a38:
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
-L_02017a40: .word data_021052fc
+L_02017a40: .word gGamePhaseRuntime
 L_02017a44: .word data_020d5b34
 L_02017a48: .word gHeapContext
 L_02017a4c: .word gGameWork

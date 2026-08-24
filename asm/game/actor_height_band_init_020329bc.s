@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_height_band_init.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_QueryTerrainHeight
 .extern func_020adae4
 
@@ -51,5 +51,5 @@ Actor_TryInitializeHeightBandFromPoint: ; 0x020329bc
     cmp r8, #0x0
     bge .L_02032a10
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_02032a60: .word data_021052fc
+.L_02032a60: .word gGamePhaseRuntime
     .size Actor_TryInitializeHeightBandFromPoint, . - Actor_TryInitializeHeightBandFromPoint

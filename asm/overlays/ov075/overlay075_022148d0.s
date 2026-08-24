@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern data_ov075_02217280
 .extern data_ov075_02217288
@@ -341,7 +341,7 @@ func_ov075_022148d0:
     add sp, sp, #0x38
     ldmia sp!, {r3, r4, r5, pc}
 .L_02214d60: .word gActorRuntimeCollection
-.L_02214d64: .word data_021052fc
+.L_02214d64: .word gGamePhaseRuntime
 .L_02214d68: .word gSoundContext
 .L_02214d6c: .word 0x4cd
 .L_02214d70: .word 0x1333

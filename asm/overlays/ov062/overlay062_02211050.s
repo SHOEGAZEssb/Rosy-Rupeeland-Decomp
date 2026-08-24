@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov062/overlay062_recovery.c.
 .extern Scene_ClearFlags03
 .extern Scene_Destroy
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov062_02211c14
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
@@ -123,5 +123,5 @@ func_ov062_02211050:
     ldmia sp!, {r4, pc}
 .L_022111dc: .word data_ov062_02211c14
 .L_022111e0: .word gSoundContext
-.L_022111e4: .word data_021052fc
+.L_022111e4: .word gGamePhaseRuntime
 .size func_ov062_02211050, . - func_ov062_02211050

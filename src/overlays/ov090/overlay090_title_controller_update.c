@@ -34,7 +34,7 @@ typedef void (*TitleActorModeMethod)(void *actor, s32 mode);
 typedef void (*TitleActorNoArgMethod)(void);
 typedef void (*TitleControllerStateMethod)(void *self, s32 value);
 
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern void *gDebugFont;
 extern u8 data_020f4e14[];
@@ -115,7 +115,7 @@ extern void Sound_Play(void *context, s32 channel, s32 soundId);
  */
 void func_ov090_02217d70(void *self)
 {
-    u8 *runtime = data_021052fc;
+    u8 *runtime = gGamePhaseRuntime;
     void *primaryActor;
     void *secondaryActor;
     void *scene;
@@ -1089,7 +1089,7 @@ void func_ov090_02217d70(void *self)
         if (TITLE_TIMER(self) < 0x2ee) {
             void *collection =
                 GamePhaseRuntime_GetActorCollection(
-                    (GamePhaseRuntime *)data_021052fc, 1);
+                    (GamePhaseRuntime *)gGamePhaseRuntime, 1);
             s32 count = 0;
             s32 actorIndex;
 

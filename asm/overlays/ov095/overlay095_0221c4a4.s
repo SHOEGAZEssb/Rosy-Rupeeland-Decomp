@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern VecFx32Object_Destroy
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
@@ -144,5 +144,5 @@ func_ov095_0221c4a4:
     add sp, sp, #0x24
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 .L_0221c688: .word gActorRuntimeCollection
-.L_0221c68c: .word data_021052fc
+.L_0221c68c: .word gGamePhaseRuntime
 .size func_ov095_0221c4a4, . - func_ov095_0221c4a4

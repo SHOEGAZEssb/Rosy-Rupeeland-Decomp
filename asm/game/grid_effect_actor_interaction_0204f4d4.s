@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/grid_effect_actor_interaction.c.
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_021e9ac0
 .extern gSoundContext
 .extern VecFx32Object_Subtract
@@ -89,7 +89,7 @@ GridEffectActor_BeginDeparture: ; 0x0204f4d4
     ldr r0, [r0, #0x0]
     bl InventoryRecordCollection_MergeOrInsert
     ldmia sp!, {r4, pc}
-.L_0204f600: .word data_021052fc
+.L_0204f600: .word gGamePhaseRuntime
 .L_0204f604: .word gSoundContext
 .L_0204f608: .word data_021e9ac0
 .size GridEffectActor_BeginDeparture, . - GridEffectActor_BeginDeparture

@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void ByteTileMapOwner_SetCell(void *object, u32 first, u32 second, u32 third);
 extern u32 Actor_QueryTerrainHeight(void *actor, u32 first, u32 second);
 extern void Actor_SavePrimaryAttachmentState(void *actor);
@@ -23,7 +23,7 @@ s32 GamePhaseActorScriptVm_SetTileMapCell(GamePhaseActorScriptVm *self)
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     ByteTileMapOwner_SetCell(object, first, second, third);
     return 0;
 }

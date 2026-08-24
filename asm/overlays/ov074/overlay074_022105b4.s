@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern Scene_ClearFlags03
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov074_02211db8
 .extern VecFx32Object_Destroy
 .extern SplineMover_Destroy
@@ -120,7 +120,7 @@ func_ov074_022105b4:
     blx r1
     add sp, sp, #0x4c
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_02210720: .word data_021052fc
+.L_02210720: .word gGamePhaseRuntime
 .L_02210724: .word data_ov074_02211db8
 .L_02210728: .word gHeapContext
 .L_0221072c: .word gSceneManager

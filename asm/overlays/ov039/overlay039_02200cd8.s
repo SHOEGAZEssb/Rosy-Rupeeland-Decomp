@@ -18,7 +18,7 @@
     .extern genrand_int32
     .extern func_ov069_02210dc0
     .extern data_ov039_02208438
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov039_0220846c
     .extern gHeapContext
     .global func_ov039_02200cd8
@@ -182,7 +182,7 @@ L_02200ec0:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_02200f3c: .word data_ov039_02208438
-L_02200f40: .word data_021052fc
+L_02200f40: .word gGamePhaseRuntime
 L_02200f44: .word data_ov039_0220846c
 L_02200f48: .word gHeapContext
     .size func_ov039_02200cd8, .-func_ov039_02200cd8

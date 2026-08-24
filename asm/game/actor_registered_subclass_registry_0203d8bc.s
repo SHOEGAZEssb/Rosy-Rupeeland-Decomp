@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_registered_subclass_registry.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRegisteredSubclassCounters
 .extern gActorRegisteredSubclassRegistry
 .extern func_02007868
@@ -112,7 +112,7 @@ ActorRegisteredSubclass_ProcessRegistry: ; 0x0203d944
     strh r1, [r0, #0x0]
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203da14: .word gActorRegisteredSubclassCounters
-.L_0203da18: .word data_021052fc
+.L_0203da18: .word gGamePhaseRuntime
 .L_0203da1c: .word gActorRegisteredSubclassRegistry
     .size ActorRegisteredSubclass_ProcessRegistry, . - ActorRegisteredSubclass_ProcessRegistry
 

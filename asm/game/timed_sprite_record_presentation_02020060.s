@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020d62d0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern func_0201ff2c
 .extern gHeapContext
@@ -33,5 +33,5 @@ func_02020060: ; 0x02020060
     ldmia sp!, {r3, r4, r5, pc}
 .L_020200b0: .word data_020d62d0
 .L_020200b4: .word gHeapContext
-.L_020200b8: .word data_021052fc
+.L_020200b8: .word gGamePhaseRuntime
     .size func_02020060, .-func_02020060

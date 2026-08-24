@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov087_02218aa4
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
@@ -161,7 +161,7 @@ func_ov087_022186a8:
     strh r1, [r0, #0x24]
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, pc}
-.L_022188c8: .word data_021052fc
+.L_022188c8: .word gGamePhaseRuntime
 .L_022188cc: .word 0x3e
 .L_022188d0: .word data_ov087_02218aa4
 .L_022188d4: .word gHeapContext

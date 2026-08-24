@@ -4,7 +4,7 @@
 .extern GamePhaseRuntime_GetActorCollection
 .extern Heap_Free
 .extern ActorRuntimeOwnedList_Clear
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global ActorRuntimeCollection_DispatchQueuedValue
 ActorRuntimeCollection_DispatchQueuedValue:
     stmdb sp!, {r4, r5, r6, lr}
@@ -55,6 +55,6 @@ L_0200b204:
     blx r2
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
-L_0200b238: .word data_021052fc
+L_0200b238: .word gGamePhaseRuntime
 .size ActorRuntimeCollection_DispatchQueuedValue, . - ActorRuntimeCollection_DispatchQueuedValue
 

@@ -8,7 +8,7 @@
 
 typedef void (*TitleVirtualMethod)(void *self, s32 value);
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern s32 func_020adcac(const void *first, const void *second);
 extern void func_ov090_0221a420(VecFx32Object *destination, void *participant);
 extern s32 func_ov077_02214eec(void *participant, void *activeRecord);
@@ -26,7 +26,7 @@ extern void ActorDerivedType1_TeardownActiveRecord(void *actor);
  */
 void func_ov090_0221ae1c(void *self)
 {
-    void *actor = FIELD(void *, data_021052fc, 0x2ea4);
+    void *actor = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     VecFx32Object *actorPosition = (VecFx32Object *)((u8 *)actor + 0x18);
     s32 nearestDistance = 0x10000000;
     s32 nearestIndex = -1;

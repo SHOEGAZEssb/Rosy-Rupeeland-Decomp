@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_020f4e18[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const u8 data_ov034_021ff194[];
 extern const u8 data_ov034_021ff1a8[];
 extern u8 gHeapContext[];
@@ -43,7 +43,7 @@ extern "C" void *func_ov034_021fd544(void *owner)
     FIELD(const void *, owner, 0) = data_ov034_021ff194;
     FIELD(void *, owner, 0x9c) = GraphicsArchive_AcquireOwlvResource(data_020f4e18[0], 0x5001);
 
-    void *record = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+    void *record = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
     FIELD(void *, owner, 0xac) = FIELD(void *, record, 0x35c);
     FIELD(void *, owner, 0xb0) = FIELD(void *, record, 0x434);
     FIELD(void *, owner, 0xb4) = FIELD(void *, record, 0xd4);

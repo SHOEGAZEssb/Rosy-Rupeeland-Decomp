@@ -13,7 +13,7 @@
 .extern data_020c9670
 .extern gDisplayBrightnessPair
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov090_0221cc08
 .extern data_ov090_0221cc10
 .extern OverlayManager_LoadOverlay
@@ -1116,7 +1116,7 @@ func_ov090_02217d70:
     mov r0, r4
     bl func_ov090_0221b280
     b .L_0221a284
-.L_02218cf0: .word data_021052fc
+.L_02218cf0: .word gGamePhaseRuntime
 .L_02218cf4: .word gSceneManager
 .L_02218cf8: .word 0x3f
 .L_02218cfc: .word data_ov090_0221cc08
@@ -2629,7 +2629,7 @@ func_ov090_02217d70:
     add sp, sp, #0x358
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0221a3ac: .word gSoundContext
-.L_0221a3b0: .word data_021052fc
+.L_0221a3b0: .word gGamePhaseRuntime
 .L_0221a3b4: .word 0x4cd
 .L_0221a3b8: .word gGameWork
 .L_0221a3bc: .word 0x19a

@@ -6,7 +6,7 @@
 
 extern void *data_020f4e14[];
 extern void *data_020f4e18[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gDebugFont;
 extern void *gHeapContext;
 extern const u8 data_ov028_021ff2ac[];
@@ -141,7 +141,7 @@ extern "C" void *func_ov028_021fdb00(void *state)
         func_ov028_021fd680(effect, data_020f4e14[0]);
     FIELD(void *, state, 0x224) = effect;
 
-    void *owner = FIELD(void *, (u8 *)data_021052fc + 0x2000, 0xea4);
+    void *owner = FIELD(void *, (u8 *)gGamePhaseRuntime + 0x2000, 0xea4);
     sprite = FIELD(void *, owner, 0x58);
     FIELD(void *, state, 0x90) = sprite;
     if (sprite != 0) {

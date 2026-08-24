@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Scene_Init
 .extern Scene_SetFlags03
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov062_02211c14
 .extern data_ov062_02211c40
 .extern VecFx32Object_Init
@@ -359,7 +359,7 @@ func_ov062_02210b38:
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 .L_02211030: .word data_ov062_02211c14
-.L_02211034: .word data_021052fc
+.L_02211034: .word gGamePhaseRuntime
 .L_02211038: .word data_ov062_02211c40
 .L_0221103c: .word gHeapContext
 .L_02211040: .word 0x1011

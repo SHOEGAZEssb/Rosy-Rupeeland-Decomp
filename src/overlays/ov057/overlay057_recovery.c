@@ -27,7 +27,7 @@ extern "C" void *GraphicsBgResourceData_GetDecoded(void *);
 extern "C" void PaletteBuffer_Write(void *, const void *, s32, s32);
 
 extern "C" void *data_020f4e18;
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *gHeapContext;
 extern "C" u8 gSubBgPaletteBuffer[];
 extern "C" u8 gMainBgPaletteBuffer[];
@@ -89,7 +89,7 @@ extern "C" void func_ov057_0220e558(void)
 {
     void *scene = Heap_Alloc(0x28, data_ov057_0220e7f4, 4, gHeapContext);
     if (scene) scene = func_ov057_0220e400(scene);
-    RuntimePresentationManager_AppendSecondListEffect((u8 *)data_021052fc + 0x2f7c, scene);
+    RuntimePresentationManager_AppendSecondListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, scene);
 }
 
 /* Constant-status scene callback. */

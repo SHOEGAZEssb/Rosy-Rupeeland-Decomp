@@ -7,7 +7,7 @@
  * state and target acquisition.
  */
 extern void *gGameWork;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u32 data_020e1788[];
 extern u32 data_020e18d0[];
 
@@ -82,7 +82,7 @@ void Type7Actor_HandleResourceInteraction(void *self, void *object)
     }
     *(u32 *)(actor + 0x14) |= 6;
     set_virtual_mode(actor, 0);
-    ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x28, 4);
+    ActorMotionJitter_EnsureMinimum(gGamePhaseRuntime + 0x2fbc, 0x28, 4);
 }
 
 /*

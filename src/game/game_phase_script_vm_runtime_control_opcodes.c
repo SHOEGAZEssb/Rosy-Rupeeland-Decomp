@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void ActorCollection_SetEnabled(void *object, s32 value);
 extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 #ifdef __cplusplus
@@ -17,7 +17,7 @@ extern void GamePhaseAreaScene_SetEnabled(void *object, s32 enabled);
 s32 GamePhaseActorScriptVm_SetRuntimeCollection2Enabled(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    ActorCollection_SetEnabled(GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)data_021052fc, 2), value);
+    ActorCollection_SetEnabled(GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)gGamePhaseRuntime, 2), value);
     return 0;
 }
 
@@ -25,7 +25,7 @@ s32 GamePhaseActorScriptVm_SetRuntimeCollection2Enabled(GamePhaseActorScriptVm *
 s32 GamePhaseActorScriptVm_SetAreaSceneEnabled(GamePhaseActorScriptVm *self)
 {
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseAreaScene_SetEnabled(*(void **)((u8 *)data_021052fc + 0x2fb8), enabled);
+    GamePhaseAreaScene_SetEnabled(*(void **)((u8 *)gGamePhaseRuntime + 0x2fb8), enabled);
     return 0;
 }
 
@@ -37,7 +37,7 @@ s32 GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9(GamePhaseActorScriptVm *se
 {
     typedef void (*Method)(void *, s32);
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     Method method = *(Method *)((u8 *)*(void **)object + 0x24);
     method(object, value);
     return 0;
@@ -47,7 +47,7 @@ s32 GamePhaseActorScriptVm_DispatchRuntimeObjectSlot9(GamePhaseActorScriptVm *se
 s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode1(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    GamePhaseRuntime_ApplyScreenMode((GamePhaseRuntime *)data_021052fc, 1, 1);
+    GamePhaseRuntime_ApplyScreenMode((GamePhaseRuntime *)gGamePhaseRuntime, 1, 1);
     return 0;
 }
 
@@ -55,7 +55,7 @@ s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode1(GamePhaseActorScriptVm *self
 s32 GamePhaseActorScriptVm_SelectRuntimeScreenMode0(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    GamePhaseRuntime_ApplyScreenMode((GamePhaseRuntime *)data_021052fc, 0, 1);
+    GamePhaseRuntime_ApplyScreenMode((GamePhaseRuntime *)gGamePhaseRuntime, 0, 1);
     return 0;
 }
 

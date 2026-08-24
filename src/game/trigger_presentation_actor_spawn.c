@@ -6,7 +6,7 @@
  * entry, and enables actor flag 0x100.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -40,7 +40,7 @@ void func_0204eb18(u32 type, u32 selection, const void *position,
                   FIELD(s32, position, 8) >> 12,
                   FIELD(s32, position, 12) >> 12,
                   width, height, 0, 0, 0, 0, 0, 0xff, 0, 0, 0, 0);
-    void *manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    void *manager = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     func_0204ea8c(actor, selection);
     FIELD(u32, actor, 0x10) |= 0x100;

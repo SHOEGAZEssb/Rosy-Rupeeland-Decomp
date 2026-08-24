@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern const u32 data_ov019_021fd638[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
@@ -91,7 +91,7 @@ extern "C" void func_ov019_021fd154(s32 value)
 extern "C" void func_ov019_021fd170(void *state)
 {
     if (FIELD(void *, state, 0x58) != 0)
-        GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 0);
+        GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 0);
     else
         GamePhaseCurrencyHud_Update(gGamePhaseCurrencyHud);
     func_ov002_021fba00(FIELD(void *, state, 0x5c));
@@ -117,7 +117,7 @@ extern "C" s32 func_ov019_021fd588(void *state)
 {
     if ((FIELD(u32, state, 0x20) & 0x400) &&
         FIELD(void *, state, 0x58) != 0) {
-        GamePhaseState_ForwardVCount((u8 *)data_021052fc + 0x24,
+        GamePhaseState_ForwardVCount((u8 *)gGamePhaseRuntime + 0x24,
                       *(volatile u16 *)0x04000006);
     }
     return 0;

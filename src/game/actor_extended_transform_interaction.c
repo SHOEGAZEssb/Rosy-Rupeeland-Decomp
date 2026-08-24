@@ -6,7 +6,7 @@
  */
 extern s16 data_020c9670[];
 extern u8 data_020e0f28[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -56,7 +56,7 @@ void ActorExtendedTransform_UpdateTargetMotion(void *self, const void *targetTra
         (*(void (**)(void *, void *))(*(u8 **)actor + 0xc8))(actor, limits);
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {
             u16 index = *(u16 *)(actor + 0x256) >> 2;
-            u8 *root = *(u8 **)data_021052fc;
+            u8 *root = *(u8 **)gGamePhaseRuntime;
             u8 *primary = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(root, 1) + 0x2e7c);
             s16 row = ((*(s32 (**)(void *))(*(u8 **)primary + 0xa8))(primary) != 0)
                           ? *(s16 *)(limits + 4) : *(s16 *)(limits + 2);

@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Build category bootstrap descriptors and register a caller-provided actor descriptor batch. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gGameWork;
 extern s32 data_020e1964[];
 extern void *gActorCategory1DescriptorTable;
@@ -34,7 +34,7 @@ extern "C" {
 /* Return category's runtime collection. */
 static u8 *actorCollection(s32 category)
 {
-    return (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, category);
+    return (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, category);
 }
 
 /* Add one descriptor and overwrite its recovered post-init halfword +0x52. */
@@ -75,7 +75,7 @@ void ActorDescriptorBatch_RegisterAndSpawn(void *unused0, void *unused1,
     if (category == 1) {
         u8 *collection = actorCollection(1);
         if (*(void **)(collection + 0x2e7c) == 0) {
-            u8 *phaseState = *(u8 **)(data_021052fc + 0x30bc);
+            u8 *phaseState = *(u8 **)(gGamePhaseRuntime + 0x30bc);
             void *actor;
             ActorSpawnDescriptor_Init(&descriptor, 1, 0, -1, -1, 2, 0, 0,
                            *(s32 *)(phaseState + 0x2c),
@@ -87,7 +87,7 @@ void ActorDescriptorBatch_RegisterAndSpawn(void *unused0, void *unused1,
         }
 
         {
-            s32 phase = **(s32 **)(data_021052fc + 0x30bc);
+            s32 phase = **(s32 **)(gGamePhaseRuntime + 0x30bc);
             if (phase == 0x29)
                 GameWork_ClearFlag(gGameWork, 0x10);
             if (phase == 0x5a) {

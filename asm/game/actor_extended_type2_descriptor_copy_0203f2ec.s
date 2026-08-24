@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_descriptor_copy.c.
 .text
 .extern data_020e8380
-.extern data_021052fc
+.extern gGamePhaseRuntime
     .global ActorExtendedType2_CopyAdjustedDescriptor
     .type ActorExtendedType2_CopyAdjustedDescriptor, @function
 ActorExtendedType2_CopyAdjustedDescriptor: ; 0x0203f2ec
@@ -116,6 +116,6 @@ ActorExtendedType2_CopyAdjustedDescriptor: ; 0x0203f2ec
     strh r0, [r4, #0x1a]
     ldmia sp!, {r4, pc}
 .L_0203f498: .word data_020e8380
-.L_0203f49c: .word data_021052fc
+.L_0203f49c: .word gGamePhaseRuntime
     .size ActorExtendedType2_CopyAdjustedDescriptor, . - ActorExtendedType2_CopyAdjustedDescriptor
 

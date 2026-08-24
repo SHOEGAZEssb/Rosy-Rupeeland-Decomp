@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GamePhaseTouchPrompt_UpdateInteraction(GamePhaseTouchPrompt *self);
 extern void GamePhaseTouchPrompt_UpdateHideSequence(GamePhaseTouchPrompt *self);
 extern void GamePhaseTouchPrompt_UpdateAlternateHideSequence(GamePhaseTouchPrompt *self);
@@ -39,7 +39,7 @@ s32 GamePhaseTouchPrompt_Update(GamePhaseTouchPrompt *self)
 
     if (!self->enabled)
         return 0;
-    phaseActor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+    phaseActor = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
     scene = SceneManager_GetCurrent(gSceneManager);
     if (scene->value04 == 1) {
         PromptVirtualQuery query =

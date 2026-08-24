@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
 .extern GameWork_TestFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov080_02213e68
 .extern data_ov080_02213e70
 .extern data_ov080_02213e78
@@ -108,7 +108,7 @@ func_ov080_02212de8:
     mov r0, r4
     bl ActorExtendedType2_UpdateFrame
     ldmia sp!, {r4, pc}
-.L_02212f54: .word data_021052fc
+.L_02212f54: .word gGamePhaseRuntime
 .L_02212f58: .word gGameWork
 .L_02212f5c: .word data_ov080_02213e68
 .L_02212f60: .word data_ov080_02213e78

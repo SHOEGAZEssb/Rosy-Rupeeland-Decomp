@@ -5,7 +5,7 @@
  * initializes its runtime fields, and repairs references to a replaced actor.
  */
 
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 data_020e16b0[];
 extern u16 data_020e5804;
 
@@ -95,9 +95,9 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
         return 0;
 
     recordFlags = *(u16 *)(record + 0x38);
-    collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     if ((recordFlags & 0x40) == 0) {
-        replacedActor = *(void **)(data_021052fc + 0x2ea8);
+        replacedActor = *(void **)(gGamePhaseRuntime + 0x2ea8);
         if (replacedActor != 0)
             ActorCollection_QueueActorForRemoval(collection, replacedActor);
     }
@@ -126,7 +126,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
     *(s32 *)(actor + 0x24) = Actor_GetCachedTerrainHeight(actor);
     *(s16 *)(actor + 0x27e) = (s16)phase;
     *(u32 *)(actor + 0x200) = *(u16 *)(record + 0x20);
-    Type7Actor_SetTarget(actor, *(void **)(data_021052fc + 0x2ea4));
+    Type7Actor_SetTarget(actor, *(void **)(gGamePhaseRuntime + 0x2ea4));
     *(u32 *)(actor + 0x10) &= ~0x01000000;
 
     if (*(s8 *)(actor + 0x48) == 1) {
@@ -173,7 +173,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
         callActorVoidMethod(actor, 0x5c);
     }
 
-    if ((*(u32 *)(*(u8 **)(data_021052fc + 0x2ea4) + 0xd0)
+    if ((*(u32 *)(*(u8 **)(gGamePhaseRuntime + 0x2ea4) + 0xd0)
          & 0x40000) != 0) {
         *(u32 *)(actor + 0xd0) |= 0x40000;
         *(u32 *)(actor + 0x10) |= 0x100;
@@ -183,7 +183,7 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
     if (replacedActor != 0) {
         s32 index;
         for (index = 0;; ++index) {
-            u8 *category = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+            u8 *category = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
             u8 *other;
             if (index >= *(s32 *)(category + 0x2e74))
                 break;
@@ -200,6 +200,6 @@ s32 Type7Actor_SpawnFromRecord(s32 recordIndex, s32 phase, s32 x, s32 y, s32 fie
     record = Type7Actor_FindAuxiliaryRecord(recordIndex);
     data_020e5804 = record[0x13];
     *(u8 *)((u8 *)func_02025d14(
-        *(void **)(data_021052fc + 0x30e8)) + 0x8d) = 0;
+        *(void **)(gGamePhaseRuntime + 0x30e8)) + 0x8d) = 0;
     return 1;
 }

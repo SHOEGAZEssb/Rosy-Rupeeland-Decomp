@@ -4,7 +4,7 @@
 .extern GameWork_SetFlag
 .extern data_020d68e4
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_021f3d68
 .extern DisplayController_GetVerticalOffset
 .extern VecFx32Object_Init
@@ -169,7 +169,7 @@ func_02024b04: ; 0x02024b04
 .L_02024d24: .word data_021f3d68
 .L_02024d28: .word 0x300c
 .L_02024d2c: .word data_020f4e18
-.L_02024d30: .word data_021052fc
+.L_02024d30: .word gGamePhaseRuntime
 .L_02024d34: .word gGameWork
 .L_02024d38: .word 0x385
     .size func_02024b04, . - func_02024b04

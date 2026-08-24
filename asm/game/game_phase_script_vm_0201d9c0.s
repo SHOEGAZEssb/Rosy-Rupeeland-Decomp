@@ -24,7 +24,7 @@
 .extern gOverlay33RuntimeSceneVTable
 .extern gOverlay33RuntimeSceneChildAllocationTag
 .extern data_020d36e1
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gHeapContext
 .global func_0201d9c0
@@ -37,7 +37,7 @@ func_0201d9c0: ; 0x0201d9c0
     blx r1
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-L_0201d9e0: .word data_021052fc
+L_0201d9e0: .word gGamePhaseRuntime
 
 
 .size func_0201d9c0, . - func_0201d9c0

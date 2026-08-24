@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov061/overlay061_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseRuntime_SetPlacementMode
 .extern GamePhaseState_SetEnabled
@@ -42,6 +42,6 @@ func_ov061_022101dc:
     ldr r0, [r0, #0x0]
     bl GamePhaseCurrencyHud_SetVisible
     ldmia sp!, {r4, pc}
-.L_02210258: .word data_021052fc
+.L_02210258: .word gGamePhaseRuntime
 .L_0221025c: .word gGamePhaseCurrencyHud
 .size func_ov061_022101dc, . - func_ov061_022101dc

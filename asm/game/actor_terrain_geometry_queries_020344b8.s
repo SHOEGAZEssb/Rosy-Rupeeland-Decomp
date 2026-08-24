@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_terrain_geometry_queries.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_QueryTerrainHeight
 .extern func_020adae4
 
@@ -53,7 +53,7 @@ Position_AdjustForTerrainHeight: ; 0x020344b8
     cmp r8, #0x0
     bge .L_02034518
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_02034564: .word data_021052fc
+.L_02034564: .word gGamePhaseRuntime
     .size Position_AdjustForTerrainHeight, . - Position_AdjustForTerrainHeight
 
     .global Actor_IsTerrainCellEligibleAtHeight

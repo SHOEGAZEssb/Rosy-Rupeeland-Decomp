@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GamePhaseRuntime_StageAreaRequest(void *runtime, u32 first, u32 second, u32 third,
                          u32 fourth, u32 zero);
 #ifdef __cplusplus
@@ -23,6 +23,6 @@ s32 GamePhaseActorScriptVm_StageAreaRequest(GamePhaseActorScriptVm *self)
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseRuntime_StageAreaRequest(data_021052fc, first, second, third, fourth, 0);
+    GamePhaseRuntime_StageAreaRequest(gGamePhaseRuntime, first, second, third, fourth, 0);
     return 1;
 }

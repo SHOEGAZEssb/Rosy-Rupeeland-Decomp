@@ -5,7 +5,7 @@
  * object collection for nearby compatible type-four actors and manage the
  * actor's persistent +0x280 target.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -53,10 +53,10 @@ s32 Type7Actor_TryInteractWithNearbyType4Object(void *self)
     if ((*(u8 **)(actor + 0x29c))[0x54] == 2)
         return 0;
 
-    while (index < *(s32 *)((u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1)
+    while (index < *(s32 *)((u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)
                             + 0x2e74)) {
         u8 *candidate =
-            (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1)[index];
+            (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)[index];
         if (candidate != 0 && candidate[0x4d] == 4) {
             u16 kind = *(u16 *)(candidate + 0x4e);
             if (kind == 0x21 || kind == 0x12) {

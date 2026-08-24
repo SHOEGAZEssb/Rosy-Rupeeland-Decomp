@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gBallisticSpriteEmitterAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern RuntimePresentationManager_AppendFirstListEffect
@@ -54,5 +54,5 @@ func_02023ed4: ; 0x02023ed4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02023f6c: .word gBallisticSpriteEmitterAllocationTag
 .L_02023f70: .word gHeapContext
-.L_02023f74: .word data_021052fc
+.L_02023f74: .word gGamePhaseRuntime
     .size func_02023ed4, . - func_02023ed4

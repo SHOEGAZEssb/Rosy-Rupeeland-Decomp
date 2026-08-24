@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov061/overlay061_recovery.c.
 .extern gDisplayBrightnessPair
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightness_GetCurrent
 .extern DisplayBrightnessPair_GetScreen
@@ -138,7 +138,7 @@ func_ov061_0220fedc:
 .L_02210084:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
-.L_0221008c: .word data_021052fc
+.L_0221008c: .word gGamePhaseRuntime
 .L_02210090: .word gDisplayBrightnessPair
 .L_02210094: .word data_020f4e14
 .L_02210098: .word gDebugFont

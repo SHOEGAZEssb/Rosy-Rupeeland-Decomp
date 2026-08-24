@@ -3,7 +3,7 @@
 .extern GX_HBlankIntr
 .extern GX_VBlankIntr
 .extern Scene_ClearFlags03
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_StageAreaRequest
 .extern ActorCollection_UnregisterAndDestroyActor
@@ -100,7 +100,7 @@ func_ov063_02210414:
 .L_02210554:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_0221055c: .word data_021052fc
+.L_0221055c: .word gGamePhaseRuntime
 .L_02210560: .word gGameWork
 .L_02210564: .word gSoundContext
 .size func_ov063_02210414, . - func_ov063_02210414

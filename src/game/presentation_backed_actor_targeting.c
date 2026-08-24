@@ -6,7 +6,7 @@
  * global actor candidates, and preserve two thin inherited callback thunks.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const u8 gActorRuntimeCollection[];
 
 #ifdef __cplusplus
@@ -29,7 +29,7 @@ extern s32 func_020adcac(const void *point0, const void *point1);
 
 /*
  * Input is an actor. If PresentationBackedActor_CanAcquireTarget permits acquisition, compare its point
- * at 0x1C with the global primary actor at data_021052fc+0x2EA4 and trigger
+ * at 0x1C with the global primary actor at gGamePhaseRuntime+0x2EA4 and trigger
  * PresentationBackedActor_HandleInteraction inside 0x10000 units. Otherwise consider the secondary actor
  * at +0x2EA8 when it exists, passes Type7Actor_GetStateCode, and is inside 0x18000 units.
  * Returns nothing; the chosen handler may mutate actor and global engine state.
@@ -42,13 +42,13 @@ void PresentationBackedActor_AcquireNearbyTarget(void *actor)
     if (!PresentationBackedActor_CanAcquireTarget(actor))
         return;
 
-    primary = FIELD(void *, data_021052fc, 0x2ea4);
+    primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     if (func_020adcac((u8 *)primary + 0x1c, (u8 *)actor + 0x1c) < 0x10000) {
         PresentationBackedActor_HandleInteraction(actor, primary);
         return;
     }
 
-    secondary = FIELD(void *, data_021052fc, 0x2ea8);
+    secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
     if (secondary == 0 || Type7Actor_GetStateCode(secondary) != 0)
         return;
     if (func_020adcac((u8 *)secondary + 0x1c, (u8 *)actor + 0x1c) <
@@ -86,7 +86,7 @@ s32 PresentationBackedActor_CanAcquireTarget(void *actor)
 {
     if (FIELD(u16, actor, 0x1ec) == 1 &&
         ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) == 0) {
-        void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+        void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
         if ((FIELD(u32, primary, 0xd0) & 0x100) == 0)
             return 1;
     }

@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gRandomizedSpriteParticleEmitterAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -80,6 +80,6 @@ func_0202906c: ; 0x0202906c
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02029164: .word gRandomizedSpriteParticleEmitterAllocationTag
 .L_02029168: .word gHeapContext
-.L_0202916c: .word data_021052fc
+.L_0202916c: .word gGamePhaseRuntime
     .size func_0202906c, . - func_0202906c
 

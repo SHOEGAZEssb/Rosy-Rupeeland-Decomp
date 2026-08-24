@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_motion_follow_actor.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
@@ -68,7 +68,7 @@ L_02009cf4:
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-L_02009d08: .word data_021052fc
+L_02009d08: .word gGamePhaseRuntime
 
     .size ActorMotion_UpdateFromBoundActor, .-ActorMotion_UpdateFromBoundActor
 

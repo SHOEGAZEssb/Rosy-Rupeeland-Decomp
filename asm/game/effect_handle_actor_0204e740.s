@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/effect_handle_actor.c.
 .extern Heap_Free
 .extern data_020e2458
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern PresentationBackedActor_InitBase
 .extern PresentationBackedActor_Destroy
@@ -53,7 +53,7 @@ func_0204e774: ; 0x0204e774
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204e7c4: .word data_020e2458
-.L_0204e7c8: .word data_021052fc
+.L_0204e7c8: .word gGamePhaseRuntime
 .size func_0204e774, . - func_0204e774
 
     .global EffectHandleActor_Delete
@@ -83,7 +83,7 @@ EffectHandleActor_Delete: ; 0x0204e7cc
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204e824: .word data_020e2458
-.L_0204e828: .word data_021052fc
+.L_0204e828: .word gGamePhaseRuntime
 .size EffectHandleActor_Delete, . - EffectHandleActor_Delete
 
     .global func_0204e82c
@@ -158,6 +158,6 @@ func_0204e82c: ; 0x0204e82c
     bl func_0204d858
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, pc}
-.L_0204e938: .word data_021052fc
+.L_0204e938: .word gGamePhaseRuntime
 .size func_0204e82c, . - func_0204e82c
 

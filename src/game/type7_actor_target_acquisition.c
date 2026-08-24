@@ -5,7 +5,7 @@
  * global target, then scans a ten-entry actor registry using layer, height,
  * range, and priority gates.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gActorTargetSelectionCandidates[10];
 extern s32 gActorTargetSelectionPriorities[10];
 extern u32 data_020e16e8[];
@@ -43,7 +43,7 @@ static s32 invoke_a8_predicate(void *object)
  * immediately while either counter +0x256/+0x25a is nonzero.
  *
  * Except for record subtype two, first consider the global object at
- * data_021052fc+0x2ea4 when its virtual +0xa8 predicate or ActorDerivedType1_IsSpecialRecordActive
+ * gGamePhaseRuntime+0x2ea4 when its virtual +0xa8 predicate or ActorDerivedType1_IsSpecialRecordActive
  * accepts it. Bind it at +0x210; unless Type7Actor_HasSpecialCallbackPair recognizes the actor
  * callback, install data_020e16e8 for 20 ticks in finite mode or
  * data_020e18f0 indefinitely. Return one after binding.
@@ -81,7 +81,7 @@ s32 Type7Actor_TryAcquireTarget(void *self, s32 finiteMode)
 
     subtype = (*(u8 **)(actor + 0x29c))[0x54];
     if (subtype != 2) {
-        u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
+        u8 *globalObject = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
         if (invoke_a8_predicate(globalObject) != 0
             || ActorDerivedType1_IsSpecialRecordActive(globalObject) != 0) {
             *(void **)(actor + 0x210) = globalObject;

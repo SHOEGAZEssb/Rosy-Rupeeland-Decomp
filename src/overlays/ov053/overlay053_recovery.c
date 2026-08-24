@@ -13,7 +13,7 @@ extern "C" u8 data_ov053_0220dd40[], data_ov053_0220dd4c[], data_ov053_0220dd58[
 extern "C" u8 data_ov053_0220dd64[], data_ov053_0220dd70[], data_ov053_0220dd84[];
 extern "C" u8 data_ov053_0220dd8c[], data_ov053_0220dd94[], data_ov053_0220dd9c[];
 extern "C" u32 data_ov053_0220dd30[];
-extern "C" void *data_021052fc, *gDebugFont, *gGameWork, *gSoundContext, *gHeapContext;
+extern "C" void *gGamePhaseRuntime, *gDebugFont, *gGameWork, *gSoundContext, *gHeapContext;
 
 extern "C" void *func_ov053_0220d600(void *);
 extern "C" void func_ov053_0220da60(void *);
@@ -73,7 +73,7 @@ extern "C" s32 func_ov053_0220d8ac(void *scene)
 /* Allocate, construct, and register a scene; return the allocation and update heap/scene-manager state. */
 extern "C" void *Heap_Alloc(s32,const void*,s32,void*);
 extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *,void *);
-extern "C" void *func_ov053_0220da0c(u32 mode){void*p=Heap_Alloc(0x40,data_ov053_0220dd30,4,gHeapContext);if(p)p=func_ov053_0220d624(p,mode);RuntimePresentationManager_AppendFirstListEffect((u8*)data_021052fc+0x2f7c,p);return p;}
+extern "C" void *func_ov053_0220da0c(u32 mode){void*p=Heap_Alloc(0x40,data_ov053_0220dd30,4,gHeapContext);if(p)p=func_ov053_0220d624(p,mode);RuntimePresentationManager_AppendFirstListEffect((u8*)gGamePhaseRuntime+0x2f7c,p);return p;}
 /* Configure/load/apply temporary graphics resources and BG scroll state; VRAM, display MMIO, and SDK state change. */
 extern "C" void GraphicsResourceSet_Init(void*);extern "C" void GraphicsResourceSet_Load(void*,void*,s32,s32,s32);extern "C" void func_02072048(void*,s32,s32);extern "C" void GraphicsResourceSet_ReleaseHandles(void*);extern "C" void GraphicsResourceSet_Apply(void*,s32,s32);extern "C" void GraphicsResourceSet_Destroy(void*);extern "C" void BgScroll_SetMainBg2(s32,s32);extern "C" void BgScroll_SetSubBg2(s32,s32);extern "C" void *data_020f4e18;
 extern "C" void func_ov053_0220da60(void *){u32 set[3];GraphicsResourceSet_Init(set);GraphicsResourceSet_Load(set,data_020f4e18,0xa12f,0xa130,0xa131);func_02072048(set,2,0);GraphicsResourceSet_ReleaseHandles(set);volatile u16*sub=(volatile u16*)0x0400100c;*sub=(*sub&0x43)|0x1a00;GraphicsResourceSet_Load(set,data_020f4e18,0xa12c,0xa12d,0xa12e);GraphicsResourceSet_Apply(set,2,0);volatile u32*disp=(volatile u32*)0x04001000;u32 planes=(*disp&0x1f00)>>8;*disp=(*disp&~0x1f00)|((planes|4)<<8);BgScroll_SetMainBg2(0,0);BgScroll_SetSubBg2(0,0);*(volatile u16*)0x0400000c&=(u16)~3;*(volatile u16*)0x0400100c&=(u16)~3;GraphicsResourceSet_Destroy(set);}

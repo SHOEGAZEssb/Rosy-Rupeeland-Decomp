@@ -4,7 +4,7 @@
 .extern GameWork_ClearFlag
 .extern data_020c3600
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_UpdateRenderHelpers
 .extern GamePhaseState_ForwardVCount
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
@@ -34,7 +34,7 @@ L_0200e3f8:
 L_0200e418:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0200e420: .word data_021052fc
+L_0200e420: .word gGamePhaseRuntime
     .size GamePhaseLoadScene_UpdateRenderHelpers, . - GamePhaseLoadScene_UpdateRenderHelpers
 
     .global GamePhaseLoadScene_ForwardCurrentVCount
@@ -63,7 +63,7 @@ L_0200e470:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_0200e478: .word 0x4000006
-L_0200e47c: .word data_021052fc
+L_0200e47c: .word gGamePhaseRuntime
     .size GamePhaseLoadScene_ForwardCurrentVCount, . - GamePhaseLoadScene_ForwardCurrentVCount
 
     .global GamePhase_ResetTransientState

@@ -3,7 +3,7 @@
 ; src/overlays/ov090/overlay090_title_terminal_effect_burst.c.
 .extern Heap_Alloc
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov090_0221cc00
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -269,7 +269,7 @@ func_ov090_0221b428:
     bl VecFx32Object_Destroy
     add sp, sp, #0x60
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0221b7c4: .word data_021052fc
+.L_0221b7c4: .word gGamePhaseRuntime
 .L_0221b7c8: .word data_ov090_0221cc00
 .L_0221b7cc: .word gHeapContext
 .L_0221b7d0: .word 0x1719

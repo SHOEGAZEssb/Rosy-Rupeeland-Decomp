@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the documented portable implementation in
 ; src/overlays/ov090/overlay090_title_periodic_effect_spawn.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern TrackedResourceActor_SpawnFromKey
@@ -158,5 +158,5 @@ func_ov090_0221ab4c:
 .L_0221ad58:
     add sp, sp, #0x30
     ldmia sp!, {r3, r4, r5, pc}
-.L_0221ad60: .word data_021052fc
+.L_0221ad60: .word gGamePhaseRuntime
 .size func_ov090_0221ab4c, . - func_ov090_0221ab4c

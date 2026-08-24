@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern Scene_Destroy
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov064_02211e98
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
@@ -177,7 +177,7 @@ Overlay064Scene_Destroy:
 .L_02210884: .word data_ov064_02211e98
 .L_02210888: .word data_020f4e14
 .L_0221088c: .word gDebugFont
-.L_02210890: .word data_021052fc
+.L_02210890: .word gGamePhaseRuntime
 .L_02210894: .word gSoundContext
 .L_02210898: .word gGameWork
 .size Overlay064Scene_Destroy, . - Overlay064Scene_Destroy

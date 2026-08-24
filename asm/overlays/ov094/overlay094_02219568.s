@@ -4,7 +4,7 @@
 .extern GameWork_ClearFlag
 .extern data_020f4e14
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern AnimationResourceState_InitEmbedded
 .extern func_02071ee0
 .extern GraphicsSpriteGroupOwner_CreateGroup
@@ -86,7 +86,7 @@ func_ov094_02219568:
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_0221967c: .word data_021052fc
+.L_0221967c: .word gGamePhaseRuntime
 .L_02219680: .word 0x1692
 .L_02219684: .word data_020f4e18
 .L_02219688: .word 0x13d1

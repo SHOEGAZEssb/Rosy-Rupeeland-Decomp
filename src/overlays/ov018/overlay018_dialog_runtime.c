@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_020f4e14;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_021f3ecc;
 extern const u8 data_ov018_021ffd60[];
 extern void *gGameWork;
@@ -57,7 +57,7 @@ extern "C" void func_ov018_021fd90c(void *state)
     FIELD(s32, dialog, 0xd0) = 0xc;
     FIELD(s32, dialog, 0xd4) = 0;
     FIELD(s32, dialog, 0xbc) = -2;
-    handle = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    handle = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     FIELD(void *, state, 0x18c) =
         ActorCollection_FindActorByRuntimeId(handle, FIELD(s32, gGameWork, 0x3f4));
 }

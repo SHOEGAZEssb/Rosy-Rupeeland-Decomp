@@ -9,7 +9,7 @@
     .extern data_ov039_022080ce
     .extern data_ov039_022080e8
     .extern data_ov039_02208158
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .global func_ov039_02205654
 func_ov039_02205654:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
@@ -177,6 +177,6 @@ L_022058b0: .word data_ov039_022080d6
 L_022058b4: .word data_ov039_022080ce
 L_022058b8: .word data_ov039_022080e8
 L_022058bc: .word data_ov039_02208158
-L_022058c0: .word data_021052fc
+L_022058c0: .word gGamePhaseRuntime
     .size func_ov039_02205654, .-func_ov039_02205654
 

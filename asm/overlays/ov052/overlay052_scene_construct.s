@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern gDisplayBrightnessPair
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov052_0220e200
 .extern data_ov052_0220e21c
 .extern data_ov052_0220e224
@@ -181,5 +181,5 @@ Overlay052Scene_Init:
 .L_0220d874: .word 0x14ec
 .L_0220d878: .word gDisplayBrightnessPair
 .L_0220d87c: .word gGamePhaseCurrencyHud
-.L_0220d880: .word data_021052fc
+.L_0220d880: .word gGamePhaseRuntime
 .size Overlay052Scene_Init, . - Overlay052Scene_Init

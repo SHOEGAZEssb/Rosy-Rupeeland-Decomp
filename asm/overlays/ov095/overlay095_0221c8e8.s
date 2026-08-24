@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_TurnTowardVector
 .extern Fx32Vector2_Magnitude
 
@@ -79,7 +79,7 @@ func_ov095_0221c8e8:
     orr r1, r1, r0, lsl #0x14
     str r1, [r4, #0x40]
     ldmia sp!, {r4, r5, r6, pc}
-.L_0221ca08: .word data_021052fc
+.L_0221ca08: .word gGamePhaseRuntime
 .L_0221ca0c: .word 0xffffee66
 .L_0221ca10: .word data_020c9670
 .size func_ov095_0221c8e8, . - func_ov095_0221c8e8

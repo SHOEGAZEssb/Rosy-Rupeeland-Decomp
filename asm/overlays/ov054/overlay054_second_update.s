@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_TestFlag
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Add
@@ -127,7 +127,7 @@ func_ov054_0220eda4:
 .L_0220ef5c:
     add sp, sp, #0x20
     ldmia sp!, {r4, r5, r6, pc}
-.L_0220ef64: .word data_021052fc
+.L_0220ef64: .word gGamePhaseRuntime
 .L_0220ef68: .word gGameWork
 .L_0220ef6c: .word 0x40d
 .L_0220ef70: .word data_020c9670

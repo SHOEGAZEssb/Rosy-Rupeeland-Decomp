@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern data_020d5680
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern OverlaySlot_Destroy
 .extern RuntimePresentationManager_DetachEffectsByKey
@@ -42,6 +42,6 @@ L_02011fe0:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_0201200c: .word data_020d5680
-L_02012010: .word data_021052fc
+L_02012010: .word gGamePhaseRuntime
     .size GamePhaseAreaScene_DestroyAndFree, . - GamePhaseAreaScene_DestroyAndFree
 

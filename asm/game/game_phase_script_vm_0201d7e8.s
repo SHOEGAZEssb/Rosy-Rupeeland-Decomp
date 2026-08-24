@@ -24,7 +24,7 @@
 .extern gOverlay33RuntimeSceneVTable
 .extern gOverlay33RuntimeSceneChildAllocationTag
 .extern data_020d36e1
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gHeapContext
 .global func_0201d7e8

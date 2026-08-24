@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void ActorMotionJitter_EnsureMinimum(void *manager_field, s32 event, s32 argument);
 extern void TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(void *actor, ...);
 #ifdef __cplusplus
@@ -28,5 +28,5 @@ void TrackedResourceActorType22And25_CleanupSubtype19(void *actor)
         return;
     TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect(actor);
     if ((FIELD(u32, actor, 0x10) & 4) != 0)
-        ActorMotionJitter_EnsureMinimum((u8 *)data_021052fc + 0x2fbc, 0x14, 3);
+        ActorMotionJitter_EnsureMinimum((u8 *)gGamePhaseRuntime + 0x2fbc, 0x14, 3);
 }

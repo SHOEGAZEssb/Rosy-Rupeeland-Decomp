@@ -3,7 +3,7 @@
 
 /* Resolve weighted type-1/target displacement and its collision presentation effects. */
 extern s16 data_020c9670[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
 
@@ -139,7 +139,7 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
         VecFx32Object_Destroy(normalized);
         VecFx32Object_Destroy(separation);
         effectPosition[2] += 0x18000 - effectPosition[3];
-        effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+        effect = RuntimePresentationManager_GetGraphics3dPresentation(gGamePhaseRuntime + 0x2f7c);
         Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(effect, 1, effectPosition[1], effectPosition[2], 0);
 
         if (ActorDerivedType1_IsTargetStateEligible(target) != 0) {
@@ -181,13 +181,13 @@ void ActorDerivedType1_ApplyWeightedCollisionDisplacement(
             object = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
             if (object != 0) {
                 void *managerResource =
-                    ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+                    ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
                 object = func_02022cb0(object, managerResource,
-                                      *(void **)(data_021052fc + 0x2ea4),
+                                      *(void **)(gGamePhaseRuntime + 0x2ea4),
                                       negative, 0x2000, -0xc0);
             }
-            RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, object);
-            ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 7);
+            RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, object);
+            ActorMotionJitter_EnsureMinimum(gGamePhaseRuntime + 0x2fbc, 0x14, 7);
             Actor_PlayHorizontalSpatialSound(actor, 0x26, 0);
             Actor_PlayHorizontalSpatialSound(actor, 0x0e, 0);
             Type1Actor_TryEnterFailureState(actor);

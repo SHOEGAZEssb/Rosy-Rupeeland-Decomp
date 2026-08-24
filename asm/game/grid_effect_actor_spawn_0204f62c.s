@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/grid_effect_actor_spawn.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseMetadata_GetByIndex
 .extern ActorCollection_SpawnActorFromDescriptor
@@ -125,6 +125,6 @@ GridEffectActor_SpawnCore: ; 0x0204f62c
     add sp, sp, #0xb0
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .L_0204f7dc: .word 0x8218
-.L_0204f7e0: .word data_021052fc
+.L_0204f7e0: .word gGamePhaseRuntime
 .size GridEffectActor_SpawnCore, . - GridEffectActor_SpawnCore
 

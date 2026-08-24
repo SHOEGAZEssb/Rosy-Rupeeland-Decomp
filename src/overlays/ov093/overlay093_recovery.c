@@ -64,7 +64,7 @@ extern "C" void Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
 extern "C" void *func_ov060_0220fd54(void *, void *, s32);
 extern "C" void func_ov063_02210314(void *);
 
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *gGameWork;
 extern "C" void *gGamePhaseCurrencyHud;
 extern "C" void *gHeapContext;
@@ -124,7 +124,7 @@ extern "C" void *func_ov093_022177f0(void *actor)
     FIELD(s32, actor, 0x248) = -0x248000;
     FIELD(s32, actor, 0x24c) = 0;
 
-    primary = FIELD(void *, data_021052fc, 0x2ea4);
+    primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     FIELD(u32, primary, 0x230) &= ~4u;
     call_void_method(primary, 0x54);
     GameWork_ClearFlag(gGameWork, 0x3ec);
@@ -176,8 +176,8 @@ extern "C" void func_ov093_02217908(void *actor)
         FIELD(void *, resource, 0xc), 1);
     GraphicsSpriteState_Configure(FIELD(void *, actor, 0x208), 1, 0, 0, 6, 0);
 
-    if (FIELD(void *, data_021052fc, 0x2ea8) != 0) {
-        Type7Actor_SetActorEnabled(FIELD(void *, data_021052fc, 0x2ea8), 0);
+    if (FIELD(void *, gGamePhaseRuntime, 0x2ea8) != 0) {
+        Type7Actor_SetActorEnabled(FIELD(void *, gGamePhaseRuntime, 0x2ea8), 0);
     }
     for (i = 0; i < 5; ++i) {
         const u8 *record = data_ov093_022187f0 + i * 0x14;
@@ -250,15 +250,15 @@ extern "C" void func_ov093_02217c50(void *actor)
     s32 i;
 
     func_0204d308(actor);
-    primary = FIELD(void *, data_021052fc, 0x2ea4);
+    primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     scene = SceneManager_GetCurrent(gSceneManager);
     if (FIELD(s32, scene, 4) == 2) {
         return;
     }
-    ActorMotionAreaFollower_BindActor((u8 *)data_021052fc + 0x2fbc, actor);
-    ActorMotion_BindActor((u8 *)data_021052fc + 0x3044, actor);
+    ActorMotionAreaFollower_BindActor((u8 *)gGamePhaseRuntime + 0x2fbc, actor);
+    ActorMotion_BindActor((u8 *)gGamePhaseRuntime + 0x3044, actor);
     scene = SceneManager_GetCurrent(gSceneManager);
-    particleSystem = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+    particleSystem = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
     timer = FIELD(u16, actor, 0x1fe);
 
     switch (FIELD(u8, actor, 0x1fc)) {
@@ -472,7 +472,7 @@ extern "C" void func_ov093_02218514(void *unused, void *actor)
             : FIELD(s32, actor, 0x248);
     GraphicsSpriteState_SetDepthOrderedWorldPosition(
         FIELD(void *, actor, 0x210), 0x180000, y, 0, 4);
-    particleSystem = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+    particleSystem = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
     if (FIELD(u8, FIELD(void *, actor, 0x210), 0x38) == 1 &&
         FIELD(u16, actor, 0x1fe) % 4 == 0) {
         Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(particleSystem, 0, 0x180, (y >> 12) - 12);

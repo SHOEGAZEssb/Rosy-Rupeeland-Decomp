@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov088_0221b9fc
 .extern VecFx32Object_Assign
 .extern AnimationResource_Init
@@ -193,7 +193,7 @@ func_ov088_0221aaac:
 .L_0221ad58:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
-.L_0221ad60: .word data_021052fc
+.L_0221ad60: .word gGamePhaseRuntime
 .L_0221ad64: .word data_ov088_0221b9fc
 .L_0221ad68: .word gHeapContext
 .size func_ov088_0221aaac, . - func_ov088_0221aaac

@@ -20,7 +20,7 @@ typedef struct TimedActorRectanglePresentation {
 extern "C" {
 #endif
 extern void *data_020d6a24;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *data_020f4e14;
 
 extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
@@ -46,7 +46,7 @@ TimedActorRectanglePresentation *func_02025120(
     self->firstExtent0c = (s16)firstExtent;
     self->secondExtent0e = (s16)secondExtent;
     self->remaining10 = lifetime;
-    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
+    RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, self);
     return self;
 }
 
@@ -85,7 +85,7 @@ s32 func_020251ac(TimedActorRectanglePresentation *self)
     s32 verticalAdjustment;
 
     if (--self->remaining10 <= 0) return 1;
-    camera = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    camera = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     x = (*(s32 *)(self->actor08 + 0x1c) >> 12) - (camera[1] >> 12);
     verticalAdjustment =
         func_020befec(7 * (*(s16 *)(self->actor08 + 0x6e) -
@@ -100,7 +100,7 @@ s32 func_020251ac(TimedActorRectanglePresentation *self)
         GraphicsSpriteCanvas_FillRect(data_020f4e14, x - 1, y - 1, x + second + 1,
                       y + 3, 14);
         GraphicsSpriteCanvas_FillRect(data_020f4e14, x, y, x + first, y + 2, 2);
-        *(u32 *)(data_021052fc + 0x30b8) |= 0x30;
+        *(u32 *)(gGamePhaseRuntime + 0x30b8) |= 0x30;
     }
     return 0;
 }

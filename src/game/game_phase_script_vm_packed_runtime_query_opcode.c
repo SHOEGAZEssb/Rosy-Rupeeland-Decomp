@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 #ifdef __cplusplus
 }
 #endif
@@ -23,7 +23,7 @@ s32 func_02016bc0(GamePhaseActorScriptVm *self)
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     RuntimePackedQueryMethod *vtable = *(RuntimePackedQueryMethod **)object;
     u32 packed = vtable[0x2c / sizeof(void *)](object, first, second);
 

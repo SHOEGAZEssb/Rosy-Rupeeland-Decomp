@@ -5,7 +5,7 @@
 extern void *gSceneManager;
 extern void *gSoundContext;
 extern void *gGameWork;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gType7AuxiliaryPresentationAllocationTag[];
 
 #ifdef __cplusplus
@@ -127,14 +127,14 @@ void ActorDerivedType1_UpdateFrame(void *self)
                     DisplayBrightness_StartSubTransition(2, 0x10);
                 }
             } else if (DisplayBrightness_IsMainTransitionComplete() != 0 && DisplayBrightness_IsSubTransitionComplete() != 0) {
-                u8 *managed = *(u8 **)((u8 *)data_021052fc + 0x2ea8);
+                u8 *managed = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea8);
                 u8 *work = (u8 *)gGameWork;
                 GameWork_SetFlag(work, 0x3f8);
                 GameWork_SetFlag(work, 0x3f6);
                 GameWork_SetFlag(work, 0x10);
                 if (managed != 0 && (*(u32 *)(managed + 0x268) & 0x10) != 0)
                     Type7Actor_ClearTarget(managed);
-                GamePhaseRuntime_StageAreaRequest(data_021052fc, *(s16 *)(work + 0x200),
+                GamePhaseRuntime_StageAreaRequest(gGamePhaseRuntime, *(s16 *)(work + 0x200),
                               *(s16 *)(work + 0x1f6),
                               *(s16 *)(work + 0x1f4), 0, 0);
             }

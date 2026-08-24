@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_entity_query_opcode.c.
 .text
 .extern data_020e1964
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorCollection_FindActorByRuntimeId
@@ -157,6 +157,6 @@ L_020190ec:
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-L_020190fc: .word data_021052fc
+L_020190fc: .word gGamePhaseRuntime
 L_02019100: .word data_020e1964
 .size GamePhaseActorScriptVm_DispatchType7ActorQuery, . - GamePhaseActorScriptVm_DispatchType7ActorQuery

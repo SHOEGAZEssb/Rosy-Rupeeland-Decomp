@@ -40,7 +40,7 @@ extern "C" {
 #endif
 extern void *gAuxiliaryTimedSpritePresentationVtable;
 extern const char gTimedSpriteAuxiliaryAllocationTag[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern AuxiliarySpriteConfig *TimedSpriteConfig_InitTracks(AuxiliarySpriteConfig *config);
 extern void *AnimationResource_Init(void *self, s32 first, s32 second, s32 third);
@@ -89,7 +89,7 @@ static AuxiliaryTimedSpritePresentation *initialize_auxiliary_presentation(
     self->timer10 = 120;
     self->spriteByte12 = (s16)spriteByte;
     if (registerWithManager != 0) {
-        RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
+        RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, self);
     }
     VecFx32Object_Destroy(&config.second20);
     VecFx32Object_Destroy(&config.first10);
@@ -170,7 +170,7 @@ AuxiliaryTimedSpritePresentation *AuxiliaryTimedSpritePresentation_DestroyBase(
  */
 s32 AuxiliaryTimedSpritePresentation_Update(AuxiliaryTimedSpritePresentation *self)
 {
-    const void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    const void *position = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     ((ChildUpdate)(*(void ***)self->presentation08)[2])(
         self->presentation08, position);
     if (self->spriteByte12 != -1) {

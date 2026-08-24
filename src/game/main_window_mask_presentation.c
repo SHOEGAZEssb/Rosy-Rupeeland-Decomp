@@ -17,7 +17,7 @@ extern "C" {
 #endif
 extern void *data_020de838[];
 extern const char data_020de858[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 extern void RuntimePresentationManager_AppendSecondListEffect(void *, void *);
 
@@ -71,7 +71,7 @@ void func_020287dc(void)
 /* Allocate an eight-byte instance and enqueue it at global offset 0x2f7c. */
 void func_02028814(void)
 {
-    void *manager = data_021052fc + 0x2f7c;
+    void *manager = gGamePhaseRuntime + 0x2f7c;
     MainWindowMaskPresentation *self =
         (MainWindowMaskPresentation *)Heap_Alloc(
             sizeof(MainWindowMaskPresentation), data_020de858, 4,

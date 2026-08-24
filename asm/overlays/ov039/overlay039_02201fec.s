@@ -25,7 +25,7 @@
     .extern func_ov069_02210a44
     .extern func_ov069_022119bc
     .extern genrand_int32
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern gSoundContext
     .extern data_ov039_022080c6
     .extern data_020c9670
@@ -888,7 +888,7 @@ L_02202cd4:
     bl VecFx32Object_Destroy
     add sp, sp, #0x4c
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
-L_02202ce4: .word data_021052fc
+L_02202ce4: .word gGamePhaseRuntime
 L_02202ce8: .word gSoundContext
 L_02202cec: .word 0x5bf4
 L_02202cf0: .word 0x1c5

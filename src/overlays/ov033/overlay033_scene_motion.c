@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gTouchPanelManager;
 extern const u16 gPadState1[];
 extern const s16 data_020c9670[];
@@ -37,12 +37,12 @@ extern void func_ov033_021fd4cc(void *scene, s32 delta);
  */
 extern "C" s32 func_ov033_021fd37c(void *owner)
 {
-    s32 selection = GamePhaseState_GetBoundaryDirection((u8 *)data_021052fc + 0x24);
+    s32 selection = GamePhaseState_GetBoundaryDirection((u8 *)gGamePhaseRuntime + 0x24);
     if (selection <= 0 || selection > 4)
         return 0;
 
     s32 index = selection - 1;
-    void *entries = FIELD(void *, (u8 *)data_021052fc + 0x3000, 0xbc);
+    void *entries = FIELD(void *, (u8 *)gGamePhaseRuntime + 0x3000, 0xbc);
     if (FIELD(s16, entries, 0x14 + index * 2) < 0)
         return 0;
 
@@ -113,7 +113,7 @@ extern "C" void func_ov033_021fd4cc(void *scene, s32 delta)
     void *primary = FIELD(void *, scene, 4);
     s32 xPixels = FIELD(s32, primary, 0x1c) >> 12;
     s32 yPixels = FIELD(s32, primary, 0x20) >> 12;
-    s32 tile = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24,
+    s32 tile = GamePhaseState_QueryTerrainHeight((u8 *)gGamePhaseRuntime + 0x24,
                              div16_toward_zero(xPixels),
                              div16_toward_zero(yPixels));
     s16 wave = data_020c9670[(FIELD(s32, scene, 0x38) >> 4) * 2];

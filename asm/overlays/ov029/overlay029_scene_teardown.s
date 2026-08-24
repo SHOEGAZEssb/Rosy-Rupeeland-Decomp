@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov029/overlay029_scene_teardown.c. */
 .extern data_020f4e14
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov029_021fecfc
 .extern RuntimePresentationManager_BroadcastSlot1C
 .extern func_02071c38
@@ -98,7 +98,7 @@ L_021fd28c: .word data_020f4e18
 L_021fd290: .word 0x4000050
 L_021fd294: .word data_020f4e14
 L_021fd298: .word gDebugFont
-L_021fd29c: .word data_021052fc
+L_021fd29c: .word gGamePhaseRuntime
 .size func_ov029_021fd174, .-func_ov029_021fd174
     .global func_ov029_021fd2a0
 func_ov029_021fd2a0:
@@ -184,5 +184,5 @@ L_021fd3c0: .word data_020f4e18
 L_021fd3c4: .word 0x4000050
 L_021fd3c8: .word data_020f4e14
 L_021fd3cc: .word gDebugFont
-L_021fd3d0: .word data_021052fc
+L_021fd3d0: .word gGamePhaseRuntime
 .size func_ov029_021fd2a0, .-func_ov029_021fd2a0

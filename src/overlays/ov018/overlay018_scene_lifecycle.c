@@ -6,7 +6,7 @@
 
 extern void *data_020f4e14;
 extern void *data_020f4e18[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const s32 data_ov018_021ffc10[2];
 extern const u32 data_ov018_021ffcf0[];
 extern const u32 data_ov018_021ffd00[];
@@ -136,7 +136,7 @@ extern "C" void *func_ov018_021fcf68(void *state, void *context)
     FIELD(u16, descriptor, 0xe) = 0x2218;
     func_020b4554((u8 *)descriptor + 4, 0x20);
 
-    global = data_021052fc;
+    global = gGamePhaseRuntime;
     actorData = GamePhaseState_GetConfiguration((u8 *)global + 0x24);
     FIELD(s32, state, 0x198) = FIELD(s32, actorData, 0);
     actorData = GamePhaseState_GetConfiguration((u8 *)global + 0x24);

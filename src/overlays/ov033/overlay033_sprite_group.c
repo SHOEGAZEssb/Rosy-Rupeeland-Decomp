@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_020f4e18[];
 extern const u8 data_ov033_021fdda8[];
 extern const u8 data_ov033_021fde9c[];
@@ -88,7 +88,7 @@ extern "C" void *func_ov033_021fce1c(void *group, void *spriteContext)
     FIELD(s32, group, 0x12c) = 0;
     FIELD(s32, group, 0x130) = 0;
 
-    activeObject = FIELD(void *, (u8 *)data_021052fc + 0x2000, 0xea8);
+    activeObject = FIELD(void *, (u8 *)gGamePhaseRuntime + 0x2000, 0xea8);
     for (s32 i = 0; i < 9; ++i) {
         void *descriptor = (u8 *)group + 0x9c + i * 0xc;
         const Overlay033SpriteSpec *spec = &specs[i];

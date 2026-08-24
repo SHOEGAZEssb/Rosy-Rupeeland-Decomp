@@ -8,7 +8,7 @@
  * visibility flag. The global object's semantic type is not yet confirmed.
  */
 
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,7 +22,7 @@ typedef u32 (*GraphicsLayerQuery)(void *self, s32 x, s32 y);
 #ifndef MATCHING
 static u32 queryLayer(s32 positionX, s32 positionY)
 {
-    void *object = *(void **)(data_021052fc + 0x2ed4);
+    void *object = *(void **)(gGamePhaseRuntime + 0x2ed4);
     GraphicsLayerQuery query = *(GraphicsLayerQuery *)(*(u8 **)object + 0x2c);
     return query(object, positionX >> 16, positionY >> 16);
 }
@@ -63,7 +63,7 @@ void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *state,
                                           s32 depth, u16 cullFlag)
 {
     GraphicsPositionSource *origin =
-        ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+        ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     GraphicsSpriteState_SetWorldPositionFromOrigin(
         state, origin, positionX, positionY, depth, cullFlag);
 }
@@ -118,7 +118,7 @@ void GraphicsSpriteState_SetDepthOrderedWorldPosition(
     u16 cullFlag)
 {
     GraphicsPositionSource *origin =
-        ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+        ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
         state, origin, positionX, positionY, depth, cullFlag);
 }
@@ -130,7 +130,7 @@ asm void GraphicsSpriteState_SetWorldPositionFromOrigin(
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
-    ldr r4, =data_021052fc
+    ldr r4, =gGamePhaseRuntime
     mov r7, r0
     ldr r0, [r4]
     mov r4, r3
@@ -172,7 +172,7 @@ asm void GraphicsSpriteState_SetWorldPosition(GraphicsSpriteState *, s32, s32,
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
-    ldr ip, =data_021052fc
+    ldr ip, =gGamePhaseRuntime
     mov r4, r0
     ldr r0, [ip]
     mov r7, r1
@@ -225,7 +225,7 @@ asm void GraphicsSpriteState_SetDepthOrderedWorldPositionFromOrigin(
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
-    ldr r4, =data_021052fc
+    ldr r4, =gGamePhaseRuntime
     mov r7, r0
     ldr r0, [r4]
     mov r4, r3
@@ -270,7 +270,7 @@ asm void GraphicsSpriteState_SetDepthOrderedWorldPosition(
 {
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
-    ldr ip, =data_021052fc
+    ldr ip, =gGamePhaseRuntime
     mov r4, r0
     ldr r0, [ip]
     mov r7, r1

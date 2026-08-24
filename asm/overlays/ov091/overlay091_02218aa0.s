@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov091/overlay091_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov091_02218dd0
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
@@ -67,7 +67,7 @@ func_ov091_02218aa0:
 .L_02218b68:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
-.L_02218b70: .word data_021052fc
+.L_02218b70: .word gGamePhaseRuntime
 .L_02218b74: .word gGamePhaseCurrencyHud
 .L_02218b78: .word data_ov091_02218dd0
 .L_02218b7c: .word gHeapContext

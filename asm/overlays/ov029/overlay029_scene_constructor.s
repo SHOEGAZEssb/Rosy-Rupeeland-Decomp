@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov029/overlay029_scene_constructor.c. */
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov029_021fec30
 .extern data_ov029_021fecfc
 .extern data_ov029_021fed10
@@ -221,7 +221,7 @@ L_021fd108:
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, pc}
 L_021fd134: .word data_ov029_021fecfc
-L_021fd138: .word data_021052fc
+L_021fd138: .word gGamePhaseRuntime
 L_021fd13c: .word gGameWork
 L_021fd140: .word 0x38a
 L_021fd144: .word data_020f4e18

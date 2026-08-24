@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_destination_motion.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern Type7Actor_SelectRandomCallback
 .text
@@ -27,6 +27,6 @@ Type7Actor_CompleteDestinationMotion: ; 0x02049a7c
     bl Type7Actor_SelectRandomCallback
     ldmia sp!, {r4, pc}
 .L_02049acc: .word 0xfff7fffb
-.L_02049ad0: .word data_021052fc
+.L_02049ad0: .word gGamePhaseRuntime
 .size Type7Actor_CompleteDestinationMotion, . - Type7Actor_CompleteDestinationMotion
 

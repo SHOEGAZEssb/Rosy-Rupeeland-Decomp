@@ -4,7 +4,7 @@
  * Recovered type-seven target-state predicates. They cancel or install callback
  * states according to the global target object, actor distance, and flags.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 data_020e16b0[];
 extern u8 data_020e17b8[];
 extern u32 data_020e1928[];
@@ -31,7 +31,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
 
 /*
  * Input is a type-seven actor. Return zero immediately when related object
- * +0x210 equals the global object at data_021052fc+0x2ea4, or actor flag
+ * +0x210 equals the global object at gGamePhaseRuntime+0x2ea4, or actor flag
  * 0x20000 is set. Build a distance limit from +0x25c, multiplying it by three
  * for callback pair data_020e16b0+0x108/data_020e17b8 and by one otherwise,
  * then add 0x20000 for collision bit +0xd0/0x40000 or 0x10000 otherwise.
@@ -47,7 +47,7 @@ static s32 callback_pair_matches(const u8 *actor, void *first, void *second)
 s32 Type7Actor_TryCancelDistantTarget(void *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
+    u8 *globalObject = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
     u32 flags = *(u32 *)(actor + 0x268);
     s32 multiplier;
     s32 limit;
@@ -73,14 +73,14 @@ s32 Type7Actor_TryCancelDistantTarget(void *self)
 
 /*
  * Input is a type-seven actor. Read the global object at
- * data_021052fc+0x2ea4 and return zero when its +0x270 pointer is null.
+ * gGamePhaseRuntime+0x2ea4 and return zero when its +0x270 pointer is null.
  * Otherwise null actor +0x210, install data_020e1920 with duration -1, and
  * return one. Actor callback state may change; no SDK or hardware effect occurs.
  */
 s32 Type7Actor_TryInstallGlobalTargetCallback(void *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
+    u8 *globalObject = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
     if (*(void **)(globalObject + 0x270) == 0)
         return 0;
     *(void **)(actor + 0x210) = 0;

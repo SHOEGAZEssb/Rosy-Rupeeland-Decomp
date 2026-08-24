@@ -29,7 +29,7 @@ typedef s32 (*Ov89TerrainQuery)(void *, s32, s32);
 
 extern "C" void *data_020f4e18;
 extern "C" const s16 data_020c9670[];
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
 extern "C" void *gSceneManager;
@@ -275,7 +275,7 @@ extern "C" void func_ov089_022179dc(void *actor)
     FIELD(u16, FIELD(void *, attachment, 4), 0x24) &= (u16)~2;
 
     if ((FIELD(u16, actor, 0x20c) & 0x800) != 0) {
-        void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
+        void *secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
         void *resource = FIELD(void *, secondary, 0x29c);
         attachment = allocate_attachment();
         FIELD(void *, actor, 0x244) = attachment;
@@ -486,7 +486,7 @@ extern "C" void func_ov089_02217c60(void *actor)
 
     Actor_SnapshotTransientState(actor);
     func_ov089_02218cb4(actor);
-    terrain = FIELD(void *, data_021052fc, 0x2ed4);
+    terrain = FIELD(void *, gGamePhaseRuntime, 0x2ed4);
     if (FIELD(s16, actor, 0x214) == 1) {
         s32 tile = terrain_cell(terrain, (FIELD(s32, actor, 0x1c) >> 12) / 16,
                                 (FIELD(s32, actor, 0x20) >> 12) / 16);
@@ -558,16 +558,16 @@ extern "C" void func_ov089_02217c60(void *actor)
     call_void(actor, 0xa4);
     if (FIELD(s16, actor, 0x214) == 1) {
         Ov89Vector effectPosition;
-        void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+        void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
         VecFx32Object_InitCopy(&effectPosition, (u8 *)actor + 0x18);
         effectPosition.x += data_ov089_02219b48[FIELD(u8, FIELD(void *, actor, 0x240), 0x1a) * 3];
         effectPosition.y += data_ov089_02219b4c[FIELD(u8, FIELD(void *, actor, 0x240), 0x1a) * 3];
         VecFx32Object_Assign((u8 *)primary + 0x18, (u8 *)actor + 0x18);
-        if (FIELD(void *, data_021052fc, 0x2ea8) != 0 &&
+        if (FIELD(void *, gGamePhaseRuntime, 0x2ea8) != 0 &&
             (FIELD(u16, actor, 0x20c) & 0x800) != 0) {
             Ov89Vector position;
             func_ov089_02218e80(&position, actor, 0);
-            VecFx32Object_Assign((u8 *)FIELD(void *, data_021052fc, 0x2ea8) + 0x18,
+            VecFx32Object_Assign((u8 *)FIELD(void *, gGamePhaseRuntime, 0x2ea8) + 0x18,
                                  &position);
             VecFx32Object_Destroy(&position);
         }
@@ -606,7 +606,7 @@ extern "C" void func_ov089_02218720(void *actor)
     if ((FIELD(u16, actor, 0x20c) & 0x80) != 0)
         Sound_Play(gSoundContext, 0x84, 3);
     if ((FIELD(u16, actor, 0x20c) & 0x100) != 0) {
-        void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
+        void *secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
         u32 value;
         FIELD(u16, actor, 0x20c) &= (u16)~0x100;
         value = (u32)FIELD(u16, FIELD(void *, secondary, 0x29c), 0x38) >> 7;
@@ -631,10 +631,10 @@ extern "C" void func_ov089_02218720(void *actor)
         FIELD(u16, FIELD(void *, attachment, 4), 0x24) |= 2;
         func_ov089_02217c14(attachment, (u8 *)actor + 0x18);
     }
-    if (FIELD(void *, data_021052fc, 0x2ea8) != 0 &&
+    if (FIELD(void *, gGamePhaseRuntime, 0x2ea8) != 0 &&
         (FIELD(u16, actor, 0x20c) & 0x800) != 0 &&
-        (FIELD(u16, FIELD(void *, FIELD(void *, data_021052fc, 0x2ea8), 0x54), 0x24) & 4) != 0)
-        Type7Actor_SetActorEnabled(FIELD(void *, data_021052fc, 0x2ea8), 0);
+        (FIELD(u16, FIELD(void *, FIELD(void *, gGamePhaseRuntime, 0x2ea8), 0x54), 0x24) & 4) != 0)
+        Type7Actor_SetActorEnabled(FIELD(void *, gGamePhaseRuntime, 0x2ea8), 0);
 }
 
 /* Resolve contact with type-two/three actors and delegate the common pair path. */
@@ -793,7 +793,7 @@ extern "C" void func_ov089_02218f28(void *actor, s32 amplitude)
         void *secondary;
         void *scene;
         FIELD(u16, actor, 0x20c) |= 2;
-        secondary = FIELD(void *, data_021052fc, 0x2ea8);
+        secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
         if (secondary != 0 && Type7Actor_GetStateCode(secondary) == 0)
             FIELD(u16, actor, 0x20c) |= 0x800;
         func_ov089_022179dc(actor);
@@ -802,7 +802,7 @@ extern "C" void func_ov089_02218f28(void *actor, s32 amplitude)
         FIELD(s32, actor, 0x224) = FIELD(s32, actor, 0xc8);
         FIELD(s32, actor, 0x228) = 0;
         FIELD(s32, actor, 0x230) = -1;
-        primary = FIELD(void *, data_021052fc, 0x2ea4);
+        primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
         if (amplitude < 1) {
             FIELD(u32, primary, 0x230) &= ~4u;
             func_ov089_02219214((u8 *)primary + 0x38, 0, 0, 0);
@@ -862,8 +862,8 @@ extern "C" void func_ov089_02219224(void *actor, const void *target,
     (void)unused;
     if (FIELD(s16, actor, 0x214) == 1) {
         Ov89Direction direction;
-        void *primary = FIELD(void *, data_021052fc, 0x2ea4);
-        void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
+        void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
+        void *secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
         direction.vtable = data_ov089_02219918;
         direction.horizontal = 0;
         direction.vertical = 0;

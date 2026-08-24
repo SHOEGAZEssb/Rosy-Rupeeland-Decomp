@@ -8,7 +8,7 @@
 .extern gTimedSpriteBurstManagerVtable
 .extern gTimedSpritePresentationAllocationTag
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern func_02003e20
 .extern func_02003e38
 .extern VecFx32Object_Init
@@ -94,6 +94,6 @@ TimedSpriteBurstManager_Update: ; 0x0201f2b4
 .L_0201f36c:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-.L_0201f374: .word data_021052fc
+.L_0201f374: .word gGamePhaseRuntime
     .size TimedSpriteBurstManager_Update, .-TimedSpriteBurstManager_Update
 

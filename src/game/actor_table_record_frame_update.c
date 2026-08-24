@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Advance table-record actor strength, recoil, terrain presentation, and virtual frame state. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -86,7 +86,7 @@ void ActorTableRecord_UpdateFrame(void *self)
     if ((*(u32 *)(actor + 0x14) & 0x10000000) == 0) {
         s32 x = *(s32 *)(actor + 0x1c) >> 16;
         s32 y = *(s32 *)(actor + 0x20) >> 16;
-        u8 *map = *(u8 **)(data_021052fc + 0x2ed4);
+        u8 *map = *(u8 **)(gGamePhaseRuntime + 0x2ed4);
         u32 cell = (*(u32 (**)(void *, s32, s32))(*(u8 **)map + 0x2c))(
             map, x, y);
         if (((cell >> 10) & 0x0f) == 1 &&

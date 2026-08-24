@@ -10,7 +10,7 @@ extern u8 gActorRuntimeCollection[];
 extern u8 gActorRuntimeFlags[];
 extern const char data_020df48c[];
 extern void *gGameWork;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 typedef struct Graphics3dPresentation Graphics3dPresentation;
 
@@ -1180,7 +1180,7 @@ void AuxiliaryCoreSprite_UpdatePresentation(void *object)
     u8 *self = (u8 *)object;
     u8 *sprite = *(u8 **)(self + 0x34);
     const s32 *camera = (const s32 *)ActorMotionAreaFollower_GetPosition(
-        data_021052fc + 0x2fbc);
+        gGamePhaseRuntime + 0x2fbc);
     s32 first = 0;
     s32 second = 0;
     s32 x;
@@ -1267,7 +1267,7 @@ void AuxiliaryCoreHistoryRecord_ProjectSprite(void *object)
     u8 *record = (u8 *)object;
     u8 *sprite = *(u8 **)record;
     const s32 *camera = (const s32 *)ActorMotionAreaFollower_GetPosition(
-        data_021052fc + 0x2fbc);
+        gGamePhaseRuntime + 0x2fbc);
     s32 x = (*(s32 *)(record + 8) - camera[1]) >> 12;
     s32 y = ((*(s32 *)(record + 12) - camera[2]) - *(s32 *)(record + 16)) >> 12;
     if (x > -33 && x < 0x120 && y > -33 && y < 0x100) {
@@ -2108,9 +2108,9 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
     *(u16 *)(*(u8 **)(self + 0x14) + 0x2ee) |= 2;
     if (owner[0x4d] == 1)
         *(s16 *)((u8 *)gGameWork + 0x184) = emptyTypeTwoCount;
-    else if (owner == *(u8 **)(data_021052fc + 0x2ea8))
+    else if (owner == *(u8 **)(gGamePhaseRuntime + 0x2ea8))
         *(s16 *)((u8 *)gGameWork + 0x186) = emptyTypeTwoCount;
-    func_0202de90(func_02007f0c(data_021052fc, 1));
+    func_0202de90(func_02007f0c(gGamePhaseRuntime, 1));
     *(u32 *)(self + 0x20) |= 0x40000;
     VecFx32_TerminateNoOp(rewardPosition);
     VecFx32_TerminateNoOp(terminalPosition);
@@ -2239,9 +2239,9 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
                 if (effect != 0)
                     effect = func_02022cb0(
                         effect,
-                        ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc),
+                        ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc),
                         owner, -event[1], 0x2000, -0xc0);
-                RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, effect);
+                RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, effect);
                 switch (genrand_int32() & 3) {
                 case 0: AuxiliaryInteraction_PlaySpatialSound(self, 0x42); break;
                 case 1: AuxiliaryInteraction_PlaySpatialSound(self, 0x43); break;
@@ -2413,9 +2413,9 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
         s32 touch[4];
         TouchPanelManager_GetPoint(touch, gTouchPanelManager);
         touch[1] += ((s32 *)ActorMotionAreaFollower_GetPosition(
-                         data_021052fc + 0x2fbc))[1] >> 12;
+                         gGamePhaseRuntime + 0x2fbc))[1] >> 12;
         touch[2] += ((s32 *)ActorMotionAreaFollower_GetPosition(
-                         data_021052fc + 0x2fbc))[2] >> 12;
+                         gGamePhaseRuntime + 0x2fbc))[2] >> 12;
         if (owner[0x4d] == 7) {
             switch (*(s16 *)(*(u8 **)(owner + 0x29c) + 0x3c)) {
             case 0: AuxiliaryInteraction_ProcessTouchSamples(self, touch); break;
@@ -2433,7 +2433,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
     {
         Graphics3dPresentation *presentation =
             (Graphics3dPresentation *)RuntimePresentationManager_GetGraphics3dPresentation(
-                data_021052fc + 0x2f7c);
+                gGamePhaseRuntime + 0x2f7c);
         if (owner[0x4d] == 7) {
             u8 *state = *(u8 **)(owner + 0x29c);
             switch (*(s16 *)(state + 0x3c)) {
@@ -2476,7 +2476,7 @@ s32 AuxiliaryInteraction_RunSelectedSequence(void *object, s32 selectedIndex)
                     if (*(s16 *)(core + 0x2de) != 0) {
                         TrackedResourceActor_SpawnFromKey(0x36, owner + 0x18,
                                                           owner + 0x18);
-                        ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc,
+                        ActorMotionJitter_EnsureMinimum(gGamePhaseRuntime + 0x2fbc,
                                                        0x14, 3);
                         Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(presentation, 2,
                                       *(s32 *)(owner + 0x1c) >> 12,
@@ -2554,7 +2554,7 @@ void AuxiliaryInteraction_ProcessTouchSamples(void *object, const void *touchObj
     u8 *manager = *(u8 **)(self + 0x44);
     Graphics3dPresentation *presentation =
         (Graphics3dPresentation *)RuntimePresentationManager_GetGraphics3dPresentation(
-            data_021052fc + 0x2f7c);
+            gGamePhaseRuntime + 0x2f7c);
 
     if (func_020ada8c((u32)*(s16 *)(self + 0xac), 5) == 0) {
         s32 quotient;
@@ -2599,7 +2599,7 @@ void AuxiliaryInteraction_FlagSecondaryTouch(void *object)
         func_020ada8c(genrand_int32() & 0x7fffffff,
                       data_020e5804) != 0)
         return;
-    secondary = *(u8 **)(data_021052fc + 0x2ea8);
+    secondary = *(u8 **)(gGamePhaseRuntime + 0x2ea8);
     if (secondary == 0 || *(s32 *)(secondary + 0x1fc) <= 0)
         return;
     for (i = 0; i < 3; i++) {
@@ -2616,7 +2616,7 @@ void AuxiliaryInteraction_PlaySpatialSound(void *object, s32 sound)
     s32 magnitude;
     s32 volume = 0;
     s32 pan;
-    const void *camera = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    const void *camera = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
 
     VecFx32_Subtract(delta, *(u8 **)(self + 0x10) + 0x18, camera);
     delta[1] -= 0x80000;
@@ -2641,7 +2641,7 @@ void AuxiliaryInteraction_UpdateResourceFrame(void *object)
 {
     u8 *self = (u8 *)object;
     s32 position[4];
-    const void *camera = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    const void *camera = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     s32 i;
 
     for (i = 0; i < 3; i++) {
@@ -2868,7 +2868,7 @@ s32 ActorDerivedType1_HandleAuxiliaryInteraction(void *self, void *other,
             }
             if (AuxiliaryInteraction_AdmitTarget(*(void **)(actor + 0x26c), target, 1) != 0) {
                 *(u32 *)(actor + 0x10) &= ~0x1f0000;
-                ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 2);
+                ActorMotionJitter_EnsureMinimum(gGamePhaseRuntime + 0x2fbc, 0x14, 2);
             }
         } else if ((*(u32 *)(target + 0x260) & 1) != 0) {
             s32 offset = *(s8 *)(target + 0x27f);

@@ -25,7 +25,7 @@ extern "C" {
 extern SceneVTable data_020d5d58;
 extern char data_020d5d8c[];
 extern char data_020d5d94[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern void *gDebugFont;
 extern void func_02092c8c(s32 screen, s32 brightness);
@@ -104,7 +104,7 @@ OverlayTransitionScene *func_0201d300(OverlayTransitionScene *self)
  */
 s32 func_0201d358(OverlayTransitionScene *self)
 {
-    void *runtime = data_021052fc;
+    void *runtime = gGamePhaseRuntime;
     void *runtimeObject;
     OverlayTransitionObject *object;
 
@@ -186,7 +186,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
 /* Invoke method 0x0c on the runtime root and optional overlay object; return zero. */
 s32 func_0201d624(OverlayTransitionScene *self)
 {
-    Scene *runtime = (Scene *)data_021052fc;
+    Scene *runtime = (Scene *)gGamePhaseRuntime;
     runtime->vtable->method0C(runtime);
     if (self->object24 != 0)
         ((void (*)(void *))self->object24->vtable[3])(self->object24);

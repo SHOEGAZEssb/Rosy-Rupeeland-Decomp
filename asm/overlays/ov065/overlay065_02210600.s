@@ -3,7 +3,7 @@
 .extern SceneManager_GetCurrent
 .extern data_020c9670
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern GamePhaseRuntime_UpdateActorPresentationState
 .extern GamePhaseCurrencyHud_AddCurrency
@@ -219,7 +219,7 @@ Overlay065Scene_Update:
 .L_022108e0: .word gSceneManager
 .L_022108e4: .word data_020f4e14
 .L_022108e8: .word gDebugFont
-.L_022108ec: .word data_021052fc
+.L_022108ec: .word gGamePhaseRuntime
 .L_022108f0: .word gGamePhaseCurrencyHud
 .L_022108f4: .word data_020c9670
 .size Overlay065Scene_Update, . - Overlay065Scene_Update

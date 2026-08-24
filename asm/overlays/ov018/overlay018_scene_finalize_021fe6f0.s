@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_scene_finalize.c. */
     .extern data_020f4e14
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov018_021ffc08
     .extern data_ov018_021ffc30
     .extern DisplayBrightness_IsMainTransitionComplete
@@ -110,7 +110,7 @@ L_021fe82c:
 L_021fe83c: .word gGamePhaseCurrencyHud
 L_021fe840: .word data_020f4e14
 L_021fe844: .word gDebugFont
-L_021fe848: .word data_021052fc
+L_021fe848: .word gGamePhaseRuntime
 L_021fe84c: .word data_ov018_021ffc30
 L_021fe850: .word data_ov018_021ffc08
     .size func_ov018_021fe6f0, . - func_ov018_021fe6f0

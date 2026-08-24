@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GamePhaseVisualEffect_SetEnabled(void *effect, s32 value);
 extern void GamePhaseVisualEffect_SetBlendCoefficients(void *effect, s32 first, s32 second);
 extern void OS_Halt(void);
@@ -25,7 +25,7 @@ s32 GamePhaseActorScriptVm_DispatchVisualEffectControl(GamePhaseActorScriptVm *s
     s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     void *effect = runtime + 0x2ed8;
 
     if (mode == 1) {

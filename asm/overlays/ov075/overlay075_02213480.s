@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern TrackedResourceActor_SpawnFromKey
@@ -49,5 +49,5 @@ func_ov075_02213480:
 .L_0221351c:
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-.L_02213524: .word data_021052fc
+.L_02213524: .word gGamePhaseRuntime
 .size func_ov075_02213480, . - func_ov075_02213480

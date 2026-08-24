@@ -7,7 +7,7 @@
  */
 extern s16 data_020c9670[];
 extern u8 data_020e0f28[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,7 +28,7 @@ extern void VecFx32Object_Destroy(void *transform);
  * displacement from +0x78 to +0x18, and obtain its magnitude. Magnitudes above
  * 0x2000 are optionally
  * limited using virtual +0xc8 output, actor +0x256, the primary actor selected
- * from data_021052fc, and the 0x3c-byte records in data_020e0f28 when +0xd0
+ * from gGamePhaseRuntime, and the 0x3c-byte records in data_020e0f28 when +0xd0
  * bit one is set; otherwise the signed virtual-output halfword supplies the
  * limit. Positive magnitudes become angle-derived +0x3c/+0x40 velocities using
  * data_020c9670. Actor +0x14 bit 0x40 selects a 0x19a/0xe66 fixed-point blend
@@ -56,7 +56,7 @@ void ActorExtendedType2_UpdateTargetMotion(void *self,
         (*(void (**)(void *, void *))(*(u8 **)actor + 0xc8))(actor, limits);
         if ((*(u32 *)(actor + 0xd0) & 2) != 0) {
             u16 index = *(u16 *)(actor + 0x256) >> 2;
-            u8 *context = *(u8 **)data_021052fc;
+            u8 *context = *(u8 **)gGamePhaseRuntime;
             u8 *primary = *(u8 **)((u8 *)GamePhaseRuntime_GetActorCollection(context, 1) + 0x2e7c);
             s16 row = ((*(s32 (**)(void *))(*(u8 **)primary + 0xa8))(primary) != 0)
                           ? *(s16 *)(limits + 4) : *(s16 *)(limits + 2);

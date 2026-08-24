@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov084_02214108
 .extern ActorExtendedType2_InitializeReentryState
 
@@ -58,6 +58,6 @@ func_ov084_0221341c:
     strh r3, [r1, #0xa2]
     strh r3, [r1, #0x9c]
     ldmia sp!, {r4, pc}
-.L_022134e8: .word data_021052fc
+.L_022134e8: .word gGamePhaseRuntime
 .L_022134ec: .word data_ov084_02214108
 .size func_ov084_0221341c, . - func_ov084_0221341c

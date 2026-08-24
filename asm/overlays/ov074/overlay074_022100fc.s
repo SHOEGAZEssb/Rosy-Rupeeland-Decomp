@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern Heap_Free
 .extern Scene_Destroy
-.extern data_02105300
+.extern gGamePhaseTouchPromptTaskNode
 .extern data_ov074_02211d8c
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
@@ -70,7 +70,7 @@ func_ov074_022100fc:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_022101cc: .word data_ov074_02211d8c
-.L_022101d0: .word data_02105300
+.L_022101d0: .word gGamePhaseTouchPromptTaskNode
 .L_022101d4: .word gGameWork
 .L_022101d8: .word 0x412
 .size func_ov074_022100fc, . - func_ov074_022100fc

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/timed_actor_rectangle_presentation.c.
 .text
 .extern data_020d6a24
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
 
@@ -30,5 +30,5 @@ func_02025120: ; 0x02025120
     mov r0, r4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02025174: .word data_020d6a24
-.L_02025178: .word data_021052fc
+.L_02025178: .word gGamePhaseRuntime
     .size func_02025120, . - func_02025120

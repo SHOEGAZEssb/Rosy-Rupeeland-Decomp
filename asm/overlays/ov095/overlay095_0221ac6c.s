@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorExtendedType2_InitializeReentryState
 .extern Sound_PlayOwnedEffect
@@ -121,6 +121,6 @@ func_ov095_0221ac6c:
 .L_0221ae04:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_0221ae0c: .word data_021052fc
+.L_0221ae0c: .word gGamePhaseRuntime
 .L_0221ae10: .word gSoundContext
 .size func_ov095_0221ac6c, . - func_ov095_0221ac6c

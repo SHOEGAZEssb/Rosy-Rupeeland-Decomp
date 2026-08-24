@@ -6,7 +6,7 @@
 extern "C" {
 #endif
 extern u8 data_021f5f18[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const void *data_020d430c;
 extern void RetailSelectionHistory_InsertUniqueId(void *state, s32 value);
 extern void func_020983c0(void *state, s32 value);
@@ -46,7 +46,7 @@ s32 func_02019f8c(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     if (mode == 1)
         invokeRuntimeValue(*(void **)(runtime + 0x2ed4), value);
     else if (mode == 2)
@@ -76,6 +76,6 @@ s32 func_0201a03c(GamePhaseActorScriptVm *self)
     config.second = (s32)GamePhaseScriptVm_Pop(&self->base);
     config.first = (s32)GamePhaseScriptVm_Pop(&self->base);
     config.tag = data_020d430c;
-    func_ov056_0220f054(GamePhaseRuntime_GetAuxiliaryOverlayObject(data_021052fc), &config);
+    func_ov056_0220f054(GamePhaseRuntime_GetAuxiliaryOverlayObject(gGamePhaseRuntime), &config);
     return 0;
 }

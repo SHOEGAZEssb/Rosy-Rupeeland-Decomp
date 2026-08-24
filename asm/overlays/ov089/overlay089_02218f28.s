@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern GameWork_SetFlag
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov089_02219a04
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
@@ -210,7 +210,7 @@ func_ov089_02218f28:
     strh r1, [r0, #0x14]
     add sp, sp, #0x2c
     ldmia sp!, {r4, r5, r6, r7, pc}
-.L_022191fc: .word data_021052fc
+.L_022191fc: .word gGamePhaseRuntime
 .L_02219200: .word 0x3e
 .L_02219204: .word data_ov089_02219a04
 .L_02219208: .word gHeapContext

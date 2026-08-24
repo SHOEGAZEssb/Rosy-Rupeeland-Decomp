@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Type7AuxiliaryPresentation_BeginShutdown(void *object);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
@@ -27,7 +27,7 @@ s32 GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4(GamePhase
         GameWork_SetFlag(gGameWork, 1004);
     else
         GameWork_ClearFlag(gGameWork, 1004);
-    collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     actor = *(u8 **)(collection + 0x2e7c);
     if (enabled != 0)
         *(u32 *)(actor + 0x230) |= 4;
@@ -53,7 +53,7 @@ s32 GamePhaseActorScriptVm_RuntimeMiscNoOp1(GamePhaseActorScriptVm *self)
 /* Pass runtime actor 0x2ea4's object at offset 0x270 to Type7AuxiliaryPresentation_BeginShutdown and return zero. */
 s32 GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown(GamePhaseActorScriptVm *self)
 {
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *actor = *(u8 **)(runtime + 0x2ea4);
     (void)self;
     Type7AuxiliaryPresentation_BeginShutdown(*(void **)(actor + 0x270));
@@ -66,7 +66,7 @@ s32 GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown(GamePhaseActorScri
  */
 s32 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set(GamePhaseActorScriptVm *self)
 {
-    u8 *actor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+    u8 *actor = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
     s32 result = (*(u32 *)(actor + 0xd0) & 0x10) != 0;
     if (!result)
         result = (*(s32 *)(actor + 0x24) >> 12) >

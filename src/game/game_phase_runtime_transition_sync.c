@@ -2,7 +2,7 @@
 
 /* Synchronize actors and global gameplay state after a phase transition. */
 
-extern GamePhaseRuntime *data_021052fc;
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ extern void GamePhaseCurrencyHud_Update(void *context);
 void GamePhaseRuntime_UpdateActorPresentationState(GamePhaseRuntime *self, s32 mode)
 {
     u8 *b = (u8 *)self;
-    s32 previous = func_02030b58(GamePhaseRuntime_GetActorCollection(data_021052fc, 1), 0);
+    s32 previous = func_02030b58(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), 0);
 
     ActorCollection_UpdateFlag800Actors(b + 0x28);
     if (mode == 0 || mode == 2)

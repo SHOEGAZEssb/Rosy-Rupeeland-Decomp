@@ -4,7 +4,7 @@
 .extern data_020df9e8
 .extern data_020e6b74
 .extern data_020e71ec
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_AdjustPositionForTerrainHeight
 .extern Actor_PlayHorizontalSpatialSound
 .extern InteractionRecordAllocator_ReserveRandomRecord
@@ -273,7 +273,7 @@ ActorExtendedType2_UpdateTimedAttachmentTransition: ; 0x0204067c
     ldmia sp!, {r3, r4, r5, pc}
 .L_02040a44: .word data_020e6b74
 .L_02040a48: .word gGameWork
-.L_02040a4c: .word data_021052fc
+.L_02040a4c: .word gGamePhaseRuntime
 .L_02040a50: .word data_020df9e8
 .L_02040a54: .word data_020e71ec
 .size ActorExtendedType2_UpdateTimedAttachmentTransition, . - ActorExtendedType2_UpdateTimedAttachmentTransition

@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Type7Actor_SetActorEnabled
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_ov089_02217c14
@@ -158,5 +158,5 @@ func_ov089_02218720:
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, pc}
 .L_0221894c: .word gSoundContext
-.L_02218950: .word data_021052fc
+.L_02218950: .word gGamePhaseRuntime
 .size func_ov089_02218720, . - func_ov089_02218720

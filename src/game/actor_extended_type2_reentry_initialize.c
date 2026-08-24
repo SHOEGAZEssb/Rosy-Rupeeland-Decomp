@@ -7,7 +7,7 @@
 extern u8 data_020df9e8[];
 extern s16 data_020c9670[];
 extern u16 gActorExtendedType2ReentryAngleAccumulator;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,7 +34,7 @@ extern void *ActorMotionAreaFollower_GetPosition(void *manager);
  * derive a fixed-point 0x2800 vector through data_020c9670, construct a temporary
  * vector, pass it to virtual +0xb8 with mode one, and finalize it. Then set
  * +0x25a to 120, enter state 20, invoke virtual +0x5c, resolve the manager
- * resource at data_021052fc+0x2fbc and pass it with actor to virtual +0x58 using
+ * resource at gGamePhaseRuntime+0x2fbc and pass it with actor to virtual +0x58 using
  * 12 bytes of output storage. Finally set +0x10 bits 0x90000, clear +0x14 bits
  * one and two, and clear +0xd0 bit 0x20000. The routine has no meaningful return
  * value. Actor, attachment, global angle, random, virtual, vector, and manager
@@ -82,7 +82,7 @@ void ActorExtendedType2_InitializeReentryState(void *self, const void *position,
         *(u16 *)(actor + 0xd6) = 20;
         (*(void (**)(void *))(*(u8 **)actor + 0x5c))(actor);
         {
-            void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+            void *resource = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
             (*(void (**)(void *, void *, void *))(*(u8 **)actor + 0x58))
                 (output, actor, resource);
         }

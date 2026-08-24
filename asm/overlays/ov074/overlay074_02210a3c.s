@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
 .extern GX_DisableBankForLCDC
 .extern GX_SetGraphicsMode
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_UpdateRenderHelpers
 .extern GamePhaseVisualEffect_Update
 .extern GamePhaseAreaScene_Update
@@ -104,5 +104,5 @@ func_ov074_02210a3c:
     bl RuntimePresentationManager_DispatchVBlankCallbacks
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-.L_02210b8c: .word data_021052fc
+.L_02210b8c: .word gGamePhaseRuntime
 .size func_ov074_02210a3c, . - func_ov074_02210a3c

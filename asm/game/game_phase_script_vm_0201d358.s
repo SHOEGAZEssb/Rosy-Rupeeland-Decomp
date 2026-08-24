@@ -23,7 +23,7 @@
 .extern data_020d5d58
 .extern data_020d5d8c
 .extern data_020d5d94
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gDebugFont
 .extern gHeapContext
@@ -219,7 +219,7 @@ L_0201d5ec:
     bl GamePhaseRuntime_UpdateActorPresentationState
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0201d604: .word data_021052fc
+L_0201d604: .word gGamePhaseRuntime
 L_0201d608: .word gGamePhaseCurrencyHud
 L_0201d60c: .word 0x1f
 L_0201d610: .word data_020d5d8c

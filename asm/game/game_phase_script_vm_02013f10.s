@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern data_020d5b2c
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern VecFx32Object_InitComponents
@@ -119,6 +119,6 @@ L_02014080:
 L_0201408c: .word 0x3e
 L_02014090: .word data_020d5b2c
 L_02014094: .word gHeapContext
-L_02014098: .word data_021052fc
+L_02014098: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect, . - GamePhaseActorScriptVm_ConfigureOrSpawnOverlay62Effect
 

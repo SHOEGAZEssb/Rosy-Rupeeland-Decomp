@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_020f4e14[];
 extern const u8 data_ov033_021fdeb0[];
 extern const u8 data_ov033_021fdeb8[];
@@ -51,7 +51,7 @@ extern void func_ov033_021fd04c(void *object, s32 callbackWord,
  */
 extern "C" void *func_ov033_021fd070(void *scene)
 {
-    void *global = data_021052fc;
+    void *global = gGamePhaseRuntime;
     void *primary;
     void *secondary;
 

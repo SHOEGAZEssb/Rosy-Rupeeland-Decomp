@@ -2,7 +2,7 @@
 .text
 .extern gDirectSpriteTrackPresentationVtable
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern GamePhaseRuntime_GetActorCollection
 .extern FieldEffect_Init
@@ -95,5 +95,5 @@ DirectSpriteTrackPresentation_Init: ; 0x0201fc28
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_0201fd58: .word gDirectSpriteTrackPresentationVtable
 .L_0201fd5c: .word data_020f4e18
-.L_0201fd60: .word data_021052fc
+.L_0201fd60: .word gGamePhaseRuntime
     .size DirectSpriteTrackPresentation_Init, .-DirectSpriteTrackPresentation_Init

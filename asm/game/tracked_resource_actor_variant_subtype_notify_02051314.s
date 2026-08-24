@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_variant_subtype_notify.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionJitter_EnsureMinimum
 .extern TrackedResourceActor_ScanNeighborhoodAndApplyRecordEffect
 .text
@@ -22,5 +22,5 @@ TrackedResourceActorType22And25_CleanupSubtype19:
     add r0, r0, #0x2c00
     bl ActorMotionJitter_EnsureMinimum
     ldmia sp!, {r4, pc}
-.L_02051358: .word data_021052fc
+.L_02051358: .word gGamePhaseRuntime
     .size TrackedResourceActorType22And25_CleanupSubtype19, . - TrackedResourceActorType22And25_CleanupSubtype19

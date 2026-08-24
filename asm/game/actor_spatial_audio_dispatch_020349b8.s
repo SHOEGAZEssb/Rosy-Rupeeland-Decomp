@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_spatial_audio_dispatch.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern Sound_PlayEffectWithParameters
 .extern func_020adae4
@@ -52,7 +52,7 @@ Actor_PlayHorizontalSpatialSound: ; 0x020349b8
 .L_02034a50:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, pc}
-.L_02034a58: .word data_021052fc
+.L_02034a58: .word gGamePhaseRuntime
 .L_02034a5c: .word gSoundContext
     .size Actor_PlayHorizontalSpatialSound, . - Actor_PlayHorizontalSpatialSound
 

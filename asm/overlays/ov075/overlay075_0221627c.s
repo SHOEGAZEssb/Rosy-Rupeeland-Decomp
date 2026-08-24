@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov075/overlay075_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov075_02217290
 .extern data_ov075_022172d8
 .extern Actor_GetCachedTerrainHeight
@@ -149,5 +149,5 @@ func_ov075_0221627c:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02216470: .word data_ov075_02217290
 .L_02216474: .word data_ov075_022172d8
-.L_02216478: .word data_021052fc
+.L_02216478: .word gGamePhaseRuntime
 .size func_ov075_0221627c, . - func_ov075_0221627c

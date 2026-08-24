@@ -33,7 +33,7 @@ extern SceneVTable data_ov061_022102b0;
 extern DisplayBrightnessPair gDisplayBrightnessPair;
 extern GraphicsSpriteRenderer *data_020f4e14;
 extern GraphicsSpriteRenderer *gDebugFont;
-extern GamePhaseRuntime *data_021052fc;
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern void Sound_StopEffect(void *context, s32 bank, s32 soundId);
@@ -114,16 +114,16 @@ void func_ov061_022100e4(Overlay61Scene *self)
         self->savedDisplayMode = (u16)((*displayControl & 0x1f00) >> 8);
         *displayControl = (*displayControl & ~0x1f00u) | 0x1000;
         *palette = 0x7fff;
-        GamePhaseState_SetEnabled((u8 *)data_021052fc + 0x24, 0);
+        GamePhaseState_SetEnabled((u8 *)gGamePhaseRuntime + 0x24, 0);
         ActorCollection_SetEnabled(
-            GamePhaseRuntime_GetActorCollection(data_021052fc, 1), 0);
+            GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), 0);
     } else {
         displayControl = (volatile u32 *)0x04001000;
         palette = (volatile u16 *)0x05000400;
         self->savedDisplayMode = (u16)((*displayControl & 0x1f00) >> 8);
         *displayControl = (*displayControl & ~0x1f00u) | 0x1000;
         *palette = 0x7fff;
-        GamePhaseRuntime_SetPlacementMode(data_021052fc, 0, 1);
+        GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 0, 1);
     }
 
     currencyHudFlags = gGamePhaseCurrencyHud->flags;
@@ -136,12 +136,12 @@ void func_ov061_022101dc(Overlay61Scene *self)
 {
     if (self->screen == 0) {
         volatile u32 *displayControl = (volatile u32 *)0x04000000;
-        GamePhaseState_SetEnabled((u8 *)data_021052fc + 0x24, 1);
+        GamePhaseState_SetEnabled((u8 *)gGamePhaseRuntime + 0x24, 1);
         *displayControl = (*displayControl & ~0x1f00u) |
                           ((u32)self->savedDisplayMode << 8);
     } else {
-        GamePhaseRuntime_ApplyScreenMode(data_021052fc, 1, 1);
-        GamePhaseRuntime_SetPlacementMode(data_021052fc, 1, 1);
+        GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime, 1, 1);
+        GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 1, 1);
     }
     GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud,
                                     self->restoreCurrencyHud);
@@ -153,7 +153,7 @@ void func_ov061_022101dc(Overlay61Scene *self)
  */
 s32 func_ov061_0221009c(Overlay61Scene *self)
 {
-    Scene *runtimeScene = (Scene *)data_021052fc;
+    Scene *runtimeScene = (Scene *)gGamePhaseRuntime;
     runtimeScene->vtable->method0C(runtimeScene);
     if (self->screen == 0)
         *(volatile u16 *)0x05000000 = 0x7fff;
@@ -167,7 +167,7 @@ s32 func_ov061_0220fedc(Overlay61Scene *self)
 {
     DisplayBrightness *brightness;
 
-    GamePhaseRuntime_FinalizeActorCollections(data_021052fc,
+    GamePhaseRuntime_FinalizeActorCollections(gGamePhaseRuntime,
                                               (s32)self->base.value04, 3);
     switch (self->base.value08) {
     case 0:
@@ -222,6 +222,6 @@ s32 func_ov061_0220fedc(Overlay61Scene *self)
         break;
     }
 
-    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
     return 0;
 }

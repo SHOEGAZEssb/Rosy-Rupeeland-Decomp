@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_visual_effect_control_opcode.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseVisualEffect_SetEnabled
 .extern GamePhaseVisualEffect_SetBlendCoefficients
 .extern GamePhaseScriptVm_Pop
@@ -59,5 +59,5 @@ L_0201a1e0:
 L_0201a1e4:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-L_0201a1ec: .word data_021052fc
+L_0201a1ec: .word gGamePhaseRuntime
 .size GamePhaseActorScriptVm_DispatchVisualEffectControl, . - GamePhaseActorScriptVm_DispatchVisualEffectControl

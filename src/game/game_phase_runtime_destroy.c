@@ -9,13 +9,8 @@
  * Optional pointers retain offset-derived names until their classes are known.
  */
 
-typedef struct GamePhaseRuntimeGlobal {
-    GamePhaseRuntime *runtime;
-    FrameTaskNode *taskNode;
-} GamePhaseRuntimeGlobal;
-
-extern u32 data_020d431c[];
-extern GamePhaseRuntimeGlobal data_021052fc;
+extern u32 gGamePhaseRuntimeVTable[];
+extern FrameTaskNode *gGamePhaseTouchPromptTaskNode;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -52,7 +47,7 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
     u8 *bytes = (u8 *)self;
     void *object;
 
-    self->vtable = data_020d431c;
+    self->vtable = gGamePhaseRuntimeVTable;
     Scene_ClearFlags03((Scene *)self);
     func_020ae9a4();
     func_020ae90c();
@@ -88,7 +83,7 @@ GamePhaseRuntime *GamePhaseRuntime_Destroy(GamePhaseRuntime *self)
     *(volatile u32 *)0x04001000 =
         (*(volatile u32 *)0x04001000 & ~0x1f00) | 0x1000;
 
-    FrameTaskList_DestroyNode(data_021052fc.taskNode);
+    FrameTaskList_DestroyNode(gGamePhaseTouchPromptTaskNode);
     Sound_StopAllManagedPlayers(gSoundContext);
     OverlaySlot_Destroy((OverlaySlot *)(bytes + 0x30c0));
     ActorMotionGameWork_Destroy(bytes + 0x3044);

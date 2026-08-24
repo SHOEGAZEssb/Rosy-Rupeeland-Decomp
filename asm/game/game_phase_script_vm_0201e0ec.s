@@ -8,7 +8,7 @@
 .extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global RuntimePresentationManager_GetGraphics3dPresentation
 RuntimePresentationManager_GetGraphics3dPresentation: ; 0x0201e0ec
     ldr r0, [r0, #0x20]

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_cross_collection_command_opcode.c.
 .text
 .extern OS_Halt
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
@@ -125,6 +125,6 @@ L_02015cf0:
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_02015d04: .word data_021052fc
+L_02015d04: .word gGamePhaseRuntime
 L_02015d08: .word gActorRuntimeCollection
     .size func_02015b64, . - func_02015b64

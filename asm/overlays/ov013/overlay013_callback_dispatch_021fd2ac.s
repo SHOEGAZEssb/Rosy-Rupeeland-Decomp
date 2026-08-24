@@ -1,5 +1,5 @@
     .text
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern GamePhaseRuntime_FinalizeActorCollections
 
 /* Exact fallback; see the documented portable reconstruction in
@@ -33,5 +33,5 @@ L_021fd2d4:
 L_021fd304:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_021fd30c: .word data_021052fc
+L_021fd30c: .word gGamePhaseRuntime
     .size func_ov013_021fd2ac, . - func_ov013_021fd2ac

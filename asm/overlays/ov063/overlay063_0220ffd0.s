@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov063/overlay063_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_PrepareActorCollections
 .extern GamePhaseRuntime_FinalizeActorCollections
 .extern GamePhaseRuntime_SynchronizeActorPlacement
@@ -145,6 +145,6 @@ func_ov063_0220ffd0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 .L_022101b8: .word 0xc000ffff
-.L_022101bc: .word data_021052fc
+.L_022101bc: .word gGamePhaseRuntime
 .L_022101c0: .word gGamePhaseCurrencyHud
 .size func_ov063_0220ffd0, . - func_ov063_0220ffd0

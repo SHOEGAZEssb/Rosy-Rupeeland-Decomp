@@ -6,7 +6,7 @@
  * stores the resulting actor through a slot returned by GridEffectActorRegistry_AcquireSlot.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,13 +69,13 @@ void *GridEffectActor_SpawnCore(const void *position, void *source, s16 timer)
                   FIELD(s32, position, 12) >> 12,
                   20, 4, 0x8218, 0, 0, 0, 0, 0xff, 0, 0, 0, 0);
 
-    void *records = FIELD(void *, data_021052fc, 0x24);
+    void *records = FIELD(void *, gGamePhaseRuntime, 0x24);
     s32 last_index = FIELD(s32, records, 0) - 1;
     void *record = GamePhaseMetadata_GetByIndex(last_index);
     if ((FIELD(u32, record, 0x40) >> 18 & 3) == 3)
         FIELD(u32, descriptor, 0x28) |= 1;
 
-    void *manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    void *manager = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     *slot = actor;
     FIELD(s16, actor, 0x218) = timer;

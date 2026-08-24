@@ -12,7 +12,7 @@ typedef void (*ObjectLifecycle)(void *object);
 
 extern const void *data_020e4064[];
 extern const void *data_020e408c[];
-extern u8 data_021052fc[];
+extern u8 gGamePhaseRuntime[];
 extern void *data_021f38fc[];
 extern void *gGameWork;
 extern void *gGamePhaseCurrencyHud;
@@ -337,7 +337,7 @@ void *func_020579b0(void *self, const void *descriptor)
     *(u32 *)(actor + 0x3ac) = *(const u16 *)(config + 2);
     *(s32 *)(actor + 0x3c0) = *(const s32 *)(config + 0x48);
 
-    runtime = *(u8 **)data_021052fc;
+    runtime = *(u8 **)gGamePhaseRuntime;
     tableIndex = **(s32 **)(runtime + 0x30bc);
     record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(data_021f38fc, tableIndex,
                                 *(s32 *)(actor + 0x3ac));
@@ -406,7 +406,7 @@ void *func_020579b0(void *self, const void *descriptor)
 void ActorKind8_CreatePrimaryPresentation(void *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *runtime = *(u8 **)data_021052fc;
+    u8 *runtime = *(u8 **)gGamePhaseRuntime;
     s32 tableIndex = **(s32 **)(runtime + 0x30bc);
     u8 *record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
@@ -501,7 +501,7 @@ void ActorKind8_UpdateInteractionPresentations(void *self)
             node = next;
         }
     } else {
-        u8 *runtime = *(u8 **)data_021052fc;
+        u8 *runtime = *(u8 **)gGamePhaseRuntime;
         s32 tableIndex = **(s32 **)(runtime + 0x30bc);
         u8 *record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
@@ -514,7 +514,7 @@ void ActorKind8_UpdateInteractionPresentations(void *self)
     }
 
     {
-        u8 *runtime = *(u8 **)data_021052fc;
+        u8 *runtime = *(u8 **)gGamePhaseRuntime;
         s32 tableIndex = **(s32 **)(runtime + 0x30bc);
         u8 *record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
@@ -594,7 +594,7 @@ void func_020582b8(void *screenPosition, void *self,
         GraphicsSpriteGroup_ReleaseIndexedEntries(group);
     }
 
-    runtime = *(u8 **)data_021052fc;
+    runtime = *(u8 **)gGamePhaseRuntime;
     tableIndex = **(s32 **)(runtime + 0x30bc);
     record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
@@ -641,7 +641,7 @@ s32 ActorKind8_HandlePlayerContact(void *self)
         return 0;
     }
 
-    runtime = *(u8 **)data_021052fc;
+    runtime = *(u8 **)gGamePhaseRuntime;
     player = *(u8 **)(runtime + 0x2ea4);
     vtable = *(void ***)player;
     if (((ActorAvailabilityQuery)vtable[0xa8 / 4])(player) != 0 ||
@@ -817,7 +817,7 @@ void *func_02057dcc(void *self)
 void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
 {
     u8 *actor = (u8 *)self;
-    u8 *runtime = *(u8 **)data_021052fc;
+    u8 *runtime = *(u8 **)gGamePhaseRuntime;
     s32 tableIndex = **(s32 **)(runtime + 0x30bc);
     s32 group;
     s32 groupCount = RetailResourceDescriptorManager_GetGroupDescriptorCount(

@@ -2,7 +2,7 @@
 .text
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseScriptVm_Pop
 .extern gGameWork
@@ -42,5 +42,5 @@ L_02016884:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_02016890: .word gGameWork
-L_02016894: .word data_021052fc
+L_02016894: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4, . - GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4

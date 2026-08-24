@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Gate descriptor-driven interaction callbacks against cooldown and runtime actors. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -26,7 +26,7 @@ s32 ActorExtendedType2_TryDescriptorInteraction120(void *self, const void *descr
     u8 *a=(u8 *)self; const u8 *d=(const u8 *)descriptorRecord; u16 *cool=(u16 *)(a+0x254);
     if(*cool!=0){*(u32 *)(a+0x260)&=~1;--*cool;return 0;}
     if((*(u16 *)(d+0x1a)&1)==0||*(s16 *)(d+0x16)<=0||ActorExtendedType2_MatchesInteractionCallbackPairs(a,*(s16 *)(d+0x16)))return 0;
-    if((*(u16 *)(d+0x1a)&0x10)==0){void *p=*(void **)(data_021052fc+0x2ea4);if((*(s32 (**)(void *,void *,const void *))(*(u8 **)a+0x120))(a,p,d))return 1;}
-    if((*(u16 *)(d+0x1a)&0x20)!=0){u8 *p=*(u8 **)(data_021052fc+0x2ea8);if(p!=0&&(*(u32 *)(p+0x268)&0x10)!=0&&(*(s32 (**)(void *,void *,const void *))(*(u8 **)a+0x120))(a,p,d))return 1;}
+    if((*(u16 *)(d+0x1a)&0x10)==0){void *p=*(void **)(gGamePhaseRuntime+0x2ea4);if((*(s32 (**)(void *,void *,const void *))(*(u8 **)a+0x120))(a,p,d))return 1;}
+    if((*(u16 *)(d+0x1a)&0x20)!=0){u8 *p=*(u8 **)(gGamePhaseRuntime+0x2ea8);if(p!=0&&(*(u32 *)(p+0x268)&0x10)!=0&&(*(s32 (**)(void *,void *,const void *))(*(u8 **)a+0x120))(a,p,d))return 1;}
     return 0;
 }

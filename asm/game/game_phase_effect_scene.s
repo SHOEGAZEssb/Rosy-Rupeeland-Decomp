@@ -10,7 +10,7 @@
 .extern data_020d5400
 .extern data_020d542c
 .extern data_020cdc1c
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern AnimationResource_Init
 .extern GraphicsSpriteState_Create
 .extern GamePhaseRuntime_GetActorCollection
@@ -169,7 +169,7 @@ L_0200cc00:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}
 L_0200cc20: .word data_020d5400
-L_0200cc24: .word data_021052fc
+L_0200cc24: .word gGamePhaseRuntime
 L_0200cc28: .word data_020d542c
 L_0200cc2c: .word gHeapContext
 L_0200cc30: .word 0x100b
@@ -305,7 +305,7 @@ L_0200cdc4:
 L_0200cde0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0200cde8: .word data_021052fc
+L_0200cde8: .word gGamePhaseRuntime
 L_0200cdec: .word gSoundContext
     .size GamePhaseEffectScene_WaitForAnimation, . - GamePhaseEffectScene_WaitForAnimation
 
@@ -381,6 +381,6 @@ L_0200ceb0:
 L_0200cef0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0200cef8: .word data_021052fc
+L_0200cef8: .word gGamePhaseRuntime
 L_0200cefc: .word gSoundContext
     .size GamePhaseEffectScene_RiseAfterAnimation, . - GamePhaseEffectScene_RiseAfterAnimation

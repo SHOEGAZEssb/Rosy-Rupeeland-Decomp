@@ -5,7 +5,7 @@
  * target state and trigger one sound event while selecting presentations 17
  * and 18.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -20,7 +20,7 @@ extern void Sound_PlayOwnedEffect(void *soundContext, s32 zero, s32 soundId,
 
 /*
  * Input is a type-seven actor. Clear actor flag 0x8000 and +0xd0 bit one, then
- * select presentation 17. Read the global object at data_021052fc+0x2ea4; if
+ * select presentation 17. Read the global object at gGamePhaseRuntime+0x2ea4; if
  * its +0x270 pointer is null, dispatch the installed actor callback. Always
  * return zero. Actor presentation/callback state may change and the global
  * object is observed; no direct SDK or hardware access occurs.
@@ -28,7 +28,7 @@ extern void Sound_PlayOwnedEffect(void *soundContext, s32 zero, s32 soundId,
 s32 Type7Actor_UpdatePresentation17UntilGlobalTargetClears(void *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
+    u8 *globalObject = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
     *(u32 *)(actor + 0x268) &= ~0x8000;
     *(u32 *)(actor + 0xd0) &= ~2;
     *(u16 *)(actor + 0xd6) = 17;

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_scene_callbacks.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global ActorRuntimeScene_End
 ActorRuntimeScene_End:
     stmdb sp!, {r3, lr}
@@ -12,6 +12,6 @@ ActorRuntimeScene_End:
     blx r1
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-L_0200b800: .word data_021052fc
+L_0200b800: .word gGamePhaseRuntime
 .size ActorRuntimeScene_End, . - ActorRuntimeScene_End
 

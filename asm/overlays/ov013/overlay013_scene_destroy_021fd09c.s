@@ -1,7 +1,7 @@
     .text
     .extern __destroy_arr
     .extern data_020f4e14
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov013_021fed6c
     .extern RuntimePresentationManager_BroadcastSlot1C
     .extern AnimationResourceState_Destroy
@@ -80,6 +80,6 @@ L_021fd100:
     ldmia sp!, {r4, pc}
 L_021fd190: .word data_ov013_021fed6c
 L_021fd194: .word data_020f4e14
-L_021fd198: .word data_021052fc
+L_021fd198: .word gGamePhaseRuntime
 L_021fd19c: .word func_ov013_021fce00
     .size func_ov013_021fd09c, . - func_ov013_021fd09c

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/type7_actor_registry.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gType7ActorRegistry
 .extern GamePhaseRuntime_GetActorCollection
 .global Type7ActorRegistry_Populate
@@ -52,7 +52,7 @@ Type7ActorRegistry_Populate: ; 0x020454f8
     blt .L_0204557c
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02045590: .word gType7ActorRegistry
-.L_02045594: .word data_021052fc
+.L_02045594: .word gGamePhaseRuntime
 
 .size Type7ActorRegistry_Populate, . - Type7ActorRegistry_Populate
 Type7ActorRegistry_Clear: ; 0x02045598

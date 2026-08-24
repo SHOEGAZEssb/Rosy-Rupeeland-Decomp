@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gOverlay62TerrainGateObjectAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern ActorDerivedType1_IsIdleEligible
@@ -62,7 +62,7 @@ Actor_TrySpawnTerrainGateObject: ; 0x02039ea0
 .L_02039f54:
     add sp, sp, #0x8
     ldmia sp!, {r3, pc}
-.L_02039f5c: .word data_021052fc
+.L_02039f5c: .word gGamePhaseRuntime
 .L_02039f60: .word 0x3e
 .L_02039f64: .word gOverlay62TerrainGateObjectAllocationTag
 .L_02039f68: .word gHeapContext

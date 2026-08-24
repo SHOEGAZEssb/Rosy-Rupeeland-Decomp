@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern DebugSpriteText_SetTextResource
 .extern GamePhaseMetadata_GetTextResourceId
 .extern func_ov059_02210c24
@@ -54,5 +54,5 @@ func_ov059_02211920:
     str r0, [r5, #0x38]
     ldmia sp!, {r3, r4, r5, pc}
 .L_022119d0: .word 0x4001000
-.L_022119d4: .word data_021052fc
+.L_022119d4: .word gGamePhaseRuntime
 .size func_ov059_02211920, . - func_ov059_02211920

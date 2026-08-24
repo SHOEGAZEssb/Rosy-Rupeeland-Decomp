@@ -1,7 +1,7 @@
     .text
     .extern GameWork_ClearFlag
     .extern GameWork_SetFlag
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov015_021feba8
     .extern ActorDerivedType1_StartRecord
     .extern func_02062a10
@@ -111,7 +111,7 @@ L_021feafc:
     ldmia sp!, {r4, r5, r6, pc}
 L_021feb0c: .word gGameWork
 L_021feb10: .word 0x3cd
-L_021feb14: .word data_021052fc
+L_021feb14: .word gGamePhaseRuntime
 L_021feb18: .word 0x389
 L_021feb1c: .word data_ov015_021feba8
 

@@ -12,7 +12,7 @@ extern const u8 data_ov073_02210bcc[], data_ov073_02210be4[];
 extern const u8 data_ov073_02210c04[], data_ov073_02210c0c[];
 extern const u8 data_ov073_02210c14[];
 extern const s16 data_020c9670[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gHeapContext[];
 
 #ifdef __cplusplus
@@ -249,7 +249,7 @@ void *func_ov073_022100b4(void *controller, void *animation,
         data_ov073_02210c04, 4, gHeapContext);
     func_ov073_022102bc(descriptor);
     FIELD(void *, descriptor, 0) = ActorCollection_GetSpriteGroup(
-        GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1));
     FIELD(void *, descriptor, 4) = FIELD(void *, animation, 4);
     FIELD(void *, descriptor, 8) = FIELD(void *, animation, 8);
     FIELD(void *, descriptor, 0xc) = FIELD(void *, animation, 0xc);
@@ -330,7 +330,7 @@ void func_ov073_02210338(void *controller, const void *origin)
         FIELD(s32, emission, 8) += dy * 4;
         child = Heap_Alloc(0x14, data_ov073_02210c0c, 4, gHeapContext);
         if (child) child = AuxiliaryTimedSpritePresentation_Init(child, emission,
-            ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 1)),
+            ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)),
             0x1642, 0x1640, 0x1643, 0, -3, 1, 1);
         {
             void *payload = FIELD(void *, child, 8);
@@ -370,7 +370,7 @@ void *func_ov073_02210710(void *scene, void *owner, s32 x, s32 y, s32 z,
         VecFx32Object_InitComponents(position, x, y, z);
         aux = Heap_Alloc(0x14, data_ov073_02210c0c, 4, gHeapContext);
         if (aux) AuxiliaryTimedSpritePresentation_Init(aux, position,
-            ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 1)),
+            ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)),
             0x1644, 0x1645, 0x1646, 0, -4, 1, 1);
         VecFx32Object_Destroy(position);
     }
@@ -443,9 +443,9 @@ s32 func_ov073_02210a08(void *scene)
     selector = FIELD(u16, FIELD(void *, FIELD(void *, scene, 0x10), 0x54), 0x28);
     {
         void *position = ActorMotionAreaFollower_GetPosition(
-            (u8 *)data_021052fc + 0x2fbc);
+            (u8 *)gGamePhaseRuntime + 0x2fbc);
         func_ov073_022106d0(FIELD(void *, scene, 8), position, selector);
-        position = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+        position = ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
         func_ov073_022106d0(FIELD(void *, scene, 0xc), position, selector);
     }
     VecFx32Object_Destroy(origin);

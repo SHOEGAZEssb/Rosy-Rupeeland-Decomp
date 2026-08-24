@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_global_interaction.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorDerivedType1_TrySetStateVector
 .extern Type7Actor_HandleObjectInteraction
 .extern Type7Actor_GetStateCode
@@ -36,6 +36,6 @@ Type7Actor_ProcessGlobalInteractionTrigger: ; 0x0204a4f0
     mov r1, r4
     bl Type7Actor_HandleObjectInteraction
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204a560: .word data_021052fc
+.L_0204a560: .word gGamePhaseRuntime
 .size Type7Actor_ProcessGlobalInteractionTrigger, . - Type7Actor_ProcessGlobalInteractionTrigger
 

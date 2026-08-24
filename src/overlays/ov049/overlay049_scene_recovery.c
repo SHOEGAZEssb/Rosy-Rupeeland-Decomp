@@ -16,7 +16,7 @@
  */
 extern "C" const s16 data_020c9670[];
 extern "C" const u16 data_ov049_0220d31a[];
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void VecFx32Object_Init(void *);
 extern "C" void VecFx32Object_InitComponents(void *, s32, s32, s32);
 extern "C" void VecFx32Object_Destroy(void *);
@@ -44,7 +44,7 @@ extern "C" void func_ov049_0220cf94(void *controller)
         {0x10000, 0x20000}, {0x30000, 0x20000},
         {0x10000, 0x10000}, {0x30000, 0x10000},
     };
-    u8 *graphicsRoot = (u8 *)data_021052fc;
+    u8 *graphicsRoot = (u8 *)gGamePhaseRuntime;
     void *renderer = func_0209b7ec(RuntimePresentationManager_GetGraphics3dPresentation(graphicsRoot + 0x2f7c), 0);
     for (s32 recordIndex = 9; recordIndex >= 0; --recordIndex) {
         s16 status = *(s16 *)(state + 0x644 + recordIndex * 2);

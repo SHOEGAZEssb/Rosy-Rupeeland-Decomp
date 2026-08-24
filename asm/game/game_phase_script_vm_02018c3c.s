@@ -3,7 +3,7 @@
 .extern data_020e1964
 .extern data_020ea9b0
 .extern data_020ea9de
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
@@ -217,7 +217,7 @@ L_02018ef4:
     mov r0, #0x0
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
-L_02018f00: .word data_021052fc
+L_02018f00: .word gGamePhaseRuntime
 L_02018f04: .word data_020ea9b0
 L_02018f08: .word data_020ea9de
 L_02018f0c: .word data_020e1964

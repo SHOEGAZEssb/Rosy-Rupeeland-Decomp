@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/dual_screen_ui_grid_state.c.
 .text
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .extern ActorRuntimeCollection_GetBusyState
@@ -304,7 +304,7 @@ func_020269f8: ; 0x020269f8
     ldr r0, [r6, #0x0]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02026e28: .word data_021052fc
+.L_02026e28: .word gGamePhaseRuntime
 .L_02026e2c: .word gActorRuntimeCollection
 .L_02026e30: .word gSoundContext
 .L_02026e34: .word 0xfffffccd

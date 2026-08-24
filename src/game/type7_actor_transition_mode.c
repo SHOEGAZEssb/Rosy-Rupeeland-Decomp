@@ -5,7 +5,7 @@
  * boundary-mode presentation and configure its embedded transition helper.
  */
 
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -57,7 +57,7 @@ void Type7Actor_SetActorEnabled(void *self, s32 enabled)
         *(u16 *)(attachment + 0x24) |= 0x10;
         *(u32 *)(actor + 0x14) &= ~0x02000000;
     }
-    ActorDerivedType1_SetSpecialModeEnabled(*(void **)(data_021052fc + 0x2ea4), 0);
+    ActorDerivedType1_SetSpecialModeEnabled(*(void **)(gGamePhaseRuntime + 0x2ea4), 0);
 }
 
 /*

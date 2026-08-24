@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_registered_subclass_frame_update.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Actor_GetCachedTerrainHeight
 .extern ActorTableRecord_UpdateFrame
@@ -121,5 +121,5 @@ ActorRegisteredSubclass_UpdateFrame: ; 0x0203d540
     orr r0, r0, #0x1000
     str r0, [r5, #0xd0]
     ldmia sp!, {r3, r4, r5, pc}
-.L_0203d6dc: .word data_021052fc
+.L_0203d6dc: .word gGamePhaseRuntime
     .size ActorRegisteredSubclass_UpdateFrame, . - ActorRegisteredSubclass_UpdateFrame

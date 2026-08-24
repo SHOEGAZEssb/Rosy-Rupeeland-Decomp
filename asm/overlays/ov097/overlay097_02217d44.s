@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov097/overlay097_recovery.c.
 .extern GameWork_SetFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov097_0221a4c8
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern ActorCollection_FindActorByRuntimeId
@@ -188,7 +188,7 @@ func_ov097_02217d44:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02217fc0: .word data_ov097_0221a4c8
 .L_02217fc4: .word gGameWork
-.L_02217fc8: .word data_021052fc
+.L_02217fc8: .word gGamePhaseRuntime
 .L_02217fcc: .word 0x415
 .L_02217fd0: .word 0x416
 .L_02217fd4: .word 0xf688

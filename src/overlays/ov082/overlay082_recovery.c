@@ -14,7 +14,7 @@ typedef void (*V1)(void *, void *);
 typedef void (*V2)(void *, void *, s32);
 
 extern "C" void *gActorRuntimeCollection, *gSoundContext, *gGamePhaseCurrencyHud,
-    *gHeapContext, *data_021052fc;
+    *gHeapContext, *gGamePhaseRuntime;
 extern "C" const u16 data_020e6e68[];
 extern "C" const u8 data_020e6adc[], data_020e6b74[], data_020e6c0c[];
 extern "C" u8 data_ov082_022145e8[], data_ov082_022145f0[],
@@ -416,7 +416,7 @@ extern "C" void func_ov082_022132e8(void *a) {
     if (ActorExtendedType2_GetDescriptorValue25(a) != 1 ||
         !func_ov082_0221340c(a))
         return;
-    void *e = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+    void *e = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
     s32 x = (F(s32, a, 0x1c) >> 12) - 12,
         y = (F(s32, a, 0x20) >> 12) - (F(s32, a, 0x24) >> 12);
     for (s32 i = 0; i < 5; i++) {
@@ -500,9 +500,9 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
                     if (p)
                         p = func_02022cb0(p,
                                           ActorMotionAreaFollower_GetPosition(
-                                              (u8 *)data_021052fc + 0x2fbc),
+                                              (u8 *)gGamePhaseRuntime + 0x2fbc),
                                           other, -amount, 0x2000, -0xc0);
-                    RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c,
+                    RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c,
                                                   p);
                 }
                 u16 snd = data_020e6e68[F(u16, a, 0x4e)];
@@ -517,7 +517,7 @@ extern "C" void func_ov082_02213538(void *a, void *other, s32 q) {
             func_ov082_022139f4(pos, (u8 *)a + 0x18, scaled);
             F(s32, pos, 8) += 0x18000 - F(s32, pos, 12);
             Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(
-                RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 1, F(s32, pos, 4),
+                RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c), 1, F(s32, pos, 4),
                 F(s32, pos, 8), 0);
             VecFx32Object_Destroy(pos);
             VecFx32Object_Destroy(scaled);
@@ -648,7 +648,7 @@ extern "C" void func_ov082_02213f64(void *a) {
             ActorExtendedType2_GetDescriptorValue25(a) == 1 &&
             F(s16, a, 0x29a) % 3 == 0) {
             u32 r = genrand_int32();
-            Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c), 1,
+            Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c), 1,
                           (F(s32, a, 0x1c) >> 12) - 12 +
                               (s32)(func_020bf1f8(r, 24) >> 32),
                           (F(s32, a, 0x20) >> 12) - (F(s32, a, 0x24) >> 12) -

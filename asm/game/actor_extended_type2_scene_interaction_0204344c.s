@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_scene_interaction.c.
 .text
 .extern SceneManager_GetCurrent
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_SetInteractionFlag2000
 .extern ActorDerivedType1_TrySetStateVector
 .extern ActorSelection_Contains
@@ -70,7 +70,7 @@ ActorExtendedType2_UpdateSceneInteraction: ; 0x0204344c
     bl Actor_SetInteractionFlag2000
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204352c: .word gSceneManager
-.L_02043530: .word data_021052fc
+.L_02043530: .word gGamePhaseRuntime
 
     .global ActorExtendedType2_UpdateDescriptorQueryFlags
 .size ActorExtendedType2_UpdateSceneInteraction, . - ActorExtendedType2_UpdateSceneInteraction

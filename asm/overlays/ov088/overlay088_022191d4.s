@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern SceneManager_GetCurrent
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov088_0221b6ac
 .extern data_ov088_0221b6b0
 .extern data_ov088_0221b6ec
@@ -309,7 +309,7 @@ func_ov088_022191d4:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02219624: .word gSceneManager
-.L_02219628: .word data_021052fc
+.L_02219628: .word gGamePhaseRuntime
 .L_0221962c: .word data_ov088_0221b6b0
 .L_02219630: .word data_ov088_0221b6ac
 .L_02219634: .word data_ov088_0221b6ec

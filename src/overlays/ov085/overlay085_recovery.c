@@ -12,7 +12,7 @@ typedef s32 (*M0)(void *); typedef void (*S0)(void *); typedef void (*V1)(void *
 typedef void (*V2)(void *, void *, s32); typedef void (*V3)(void *, s32, void *, s32);
 typedef void (*VPP)(void *, void *, void *);
 
-extern "C" void *gActorRuntimeCollection,*gSoundContext,*data_021052fc;
+extern "C" void *gActorRuntimeCollection,*gSoundContext,*gGamePhaseRuntime;
 extern "C" const s16 data_020c9670[]; extern "C" void *data_020f4e18;
 extern "C" u8 data_ov085_02214328[],data_ov085_02214330[],data_ov085_02214338[];
 extern "C" u8 data_ov085_02214340[],data_ov085_02214348[],data_ov085_02214350[];
@@ -102,7 +102,7 @@ extern "C" void func_ov085_022131b4(void*a){VecFx32Object_Assign((u8*)a+0x214,(u
 /* Assign the three payload coordinates following a vector header. */
 extern "C" void func_ov085_02213204(void*v,s32 x,s32 y,s32 z){F(s32,v,4)=x;F(s32,v,8)=y;F(s32,v,12)=z;}
 /* React to a paired actor and reflect motion or select recovery. */
-extern "C" void func_ov085_02213214(void*a,void*o,s32 q){if(!(F(u32,a,0x10)&0x1000000)&&!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)){if(F(u8,o,0x4d)==1&&((M0)vm(o,0x68))(o)){if(!state_is(a,0xe0,data_ov085_02214408)&&!state_is(a,0xd8,data_ov085_02214400)){s32 dx=F(s32,o,0x1c)-F(s32,a,0x1c),dy=F(s32,o,0x20)-F(s32,a,0x20),d=Fx32Vector2_Magnitude(dx,dy);if(d>0x1000){F(s32,a,0x9c)-=2*func_020adc90(dx,d);F(s32,a,0xa0)-=2*func_020adc90(dy,d);if(state_is(a,0xc0,data_ov085_022143e8))((V2)vm(a,0xd0))(a,F(void*,data_021052fc,0x2ea4),240);else if(!state_is(a,0xb8,data_ov085_022143e0))set_pair(a,data_ov085_022143f8,30);}}else{set_pair(a,data_ov085_022143d8,90);F(s32,a,0x250)=1;}}else if(!q&&(u16)(F(s16,a,0xd6)-5)<2)func_ov085_02213ae4(a);}ActorDerivedRuntime_HandlePairActive(a,o,q);}
+extern "C" void func_ov085_02213214(void*a,void*o,s32 q){if(!(F(u32,a,0x10)&0x1000000)&&!ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection)){if(F(u8,o,0x4d)==1&&((M0)vm(o,0x68))(o)){if(!state_is(a,0xe0,data_ov085_02214408)&&!state_is(a,0xd8,data_ov085_02214400)){s32 dx=F(s32,o,0x1c)-F(s32,a,0x1c),dy=F(s32,o,0x20)-F(s32,a,0x20),d=Fx32Vector2_Magnitude(dx,dy);if(d>0x1000){F(s32,a,0x9c)-=2*func_020adc90(dx,d);F(s32,a,0xa0)-=2*func_020adc90(dy,d);if(state_is(a,0xc0,data_ov085_022143e8))((V2)vm(a,0xd0))(a,F(void*,gGamePhaseRuntime,0x2ea4),240);else if(!state_is(a,0xb8,data_ov085_022143e0))set_pair(a,data_ov085_022143f8,30);}}else{set_pair(a,data_ov085_022143d8,90);F(s32,a,0x250)=1;}}else if(!q&&(u16)(F(s16,a,0xd6)-5)<2)func_ov085_02213ae4(a);}ActorDerivedRuntime_HandlePairActive(a,o,q);}
 /* Reject the optional interaction query. */
 extern "C" s32 func_ov085_0221347c(void){return 0;}
 /* Accept an interaction and schedule its marker/sound response. */

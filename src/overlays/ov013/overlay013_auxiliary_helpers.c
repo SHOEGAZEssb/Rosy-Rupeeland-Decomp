@@ -7,7 +7,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const char data_ov013_021fed88[];
 extern const char data_ov013_021fed90[];
 extern u8 gHeapContext[];
@@ -51,7 +51,7 @@ void func_ov013_021fda40(void *state)
 {
     void *object;
 
-    GamePhaseRuntime_SetPlacementMode(data_021052fc, 0, 1);
+    GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 0, 1);
     object = Heap_Alloc(0xb8, data_ov013_021fed88, 4, gHeapContext);
     if (object != 0)
         object = func_ov006_021fb708(object);

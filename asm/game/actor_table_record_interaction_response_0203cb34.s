@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_table_record_interaction_response.c.
 .text
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern func_02007868
 .extern Actor_PlayHorizontalSpatialSound
 .extern ActorDerivedType1_StartRecordOrHandleType6D66
@@ -247,7 +247,7 @@ ActorTableRecord_ApplyCollisionResponse: ; 0x0203cb48
     strne r0, [r6, #0x20c]
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 .L_0203ce98: .word data_020c9670
-.L_0203ce9c: .word data_021052fc
+.L_0203ce9c: .word gGamePhaseRuntime
     .size ActorTableRecord_ApplyCollisionResponse, . - ActorTableRecord_ApplyCollisionResponse
 
 

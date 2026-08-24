@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_collection_terrain_context.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 
     .global Actor_GetOwningCollection
@@ -21,7 +21,7 @@ Actor_GetOwningCollection: ; 0x020337d4
     ldr r0, [r0, #0x0]
     bl GamePhaseRuntime_GetActorCollection
     ldmia sp!, {r3, pc}
-.L_0203380c: .word data_021052fc
+.L_0203380c: .word gGamePhaseRuntime
     .size Actor_GetOwningCollection, . - Actor_GetOwningCollection
 
     .global Actor_GetGlobalCollectionBySlot

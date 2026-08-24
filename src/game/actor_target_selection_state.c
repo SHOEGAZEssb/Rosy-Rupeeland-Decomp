@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Initialize and populate the global ten-entry actor target-selection cache. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gActorTargetSelectionCandidates[10];
 extern s32 gActorTargetSelectionPriorities[10];
 extern u8 gActorTargetSelectionMetadata[4];
@@ -30,7 +30,7 @@ void ActorTargetSelection_Reset(void)
     for (i = 0; i < 10; ++i) gActorTargetSelectionCandidates[i] = 0;
     *(s16 *)(gActorTargetSelectionMetadata + 2) = 0;
     *(s16 *)gActorTargetSelectionMetadata = -1;
-    owner = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+    owner = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
     *(s32 *)(owner + 0x278) = 0;
 }
 
@@ -56,7 +56,7 @@ void ActorTargetSelection_ClearCandidates(void)
  */
 void ActorTargetSelection_Populate(void)
 {
-    u8 *manager = (u8 *)data_021052fc;
+    u8 *manager = (u8 *)gGamePhaseRuntime;
     u8 *owner = *(u8 **)(manager + 0x2ea4);
     u32 found = 0;
     u32 index = 0;

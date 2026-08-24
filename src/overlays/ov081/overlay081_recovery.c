@@ -37,7 +37,7 @@ typedef void (*Overlay081ResourceMethod)(void *, void *);
 
 extern void *data_020f4e18;
 extern const s16 data_020c9670[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 gActorRuntimeCollection[];
 extern void *gDebugFont;
 extern void *gSoundContext;
@@ -971,7 +971,7 @@ void func_ov081_022140f8(void *actor, const void *descriptor)
 /* Compute the actor-relative horizontal sound parameter clamped to [-96,96]. */
 static s32 Overlay081_GetSoundOffset(void *actor)
 {
-    void *position = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+    void *position = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
     s32 offset = ((FIELD(s32, actor, 0x1c) - FIELD(s32, position, 4) -
                    0x80000) >>
                   12) /
@@ -1148,7 +1148,7 @@ void func_ov081_022145c8(void *actor, void *other, s32 mode)
                         if (Overlay081_StateEquals(actor, 0xc0,
                                                    data_ov081_02215328)) {
                             VCALL(Overlay081TargetMethod, actor, 0xd0)(
-                                actor, FIELD(void *, data_021052fc, 0x2ea4),
+                                actor, FIELD(void *, gGamePhaseRuntime, 0x2ea4),
                                 0xf0);
                         } else if (!Overlay081_StateEquals(
                                        actor, 0xb8,
@@ -1205,7 +1205,7 @@ s32 func_ov081_0221487c(void *actor, void *query)
         }
 
         if (shouldLaunch) {
-            void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+            void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
             s32 dx;
             s32 dy;
 
@@ -1308,7 +1308,7 @@ void func_ov081_02214d3c(void *actor)
 s32 func_ov081_02214d9c(void *actor)
 {
     FIELD(u32, actor, 0xd0) &= ~2U;
-    FIELD(void *, actor, 0x210) = FIELD(void *, data_021052fc, 0x2ea4);
+    FIELD(void *, actor, 0x210) = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     return 0;
 }
 
@@ -1316,7 +1316,7 @@ s32 func_ov081_02214d9c(void *actor)
 void func_ov081_02214dc8(void *actor)
 {
     VCALL(Overlay081TargetMethod, actor, 0xd0)(
-        actor, FIELD(void *, data_021052fc, 0x2ea4), 0x12c);
+        actor, FIELD(void *, gGamePhaseRuntime, 0x2ea4), 0x12c);
 }
 
 /*
@@ -1428,7 +1428,7 @@ void func_ov081_022150b0(void *actor)
     FIELD(u16, actor, 0x1ea) = 0;
     if (FIELD(u8, FIELD(void *, actor, 0x54), 0x38) != 0x1a) {
         VCALL(Overlay081TargetMethod, actor, 0xd0)(
-            actor, FIELD(void *, data_021052fc, 0x2ea4), 0x12c);
+            actor, FIELD(void *, gGamePhaseRuntime, 0x2ea4), 0x12c);
     } else {
         const Overlay081StateDescriptor *state =
             Overlay081_State(data_ov081_02215370);

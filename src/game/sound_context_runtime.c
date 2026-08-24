@@ -20,7 +20,7 @@
 
 extern const char data_020e4154[];
 extern void *gSoundContext;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_021e9abc;
 
 extern s32 TingleNativeSound_LoadDefaultArchive(void);
@@ -79,7 +79,7 @@ static s32 sound_requests_enabled(void *context)
  * subclasses do not expose a common status bit for this transition. */
 static s32 phase_sound_primary_actor_ready(void)
 {
-    u8 *phase = (u8 *)data_021052fc;
+    u8 *phase = (u8 *)gGamePhaseRuntime;
     u8 *actor;
     s32 (*query)(void *);
 
@@ -96,7 +96,7 @@ static s32 phase_sound_primary_actor_ready(void)
  * at offset 0x268, the branch selected by phase-sound transition requests. */
 static s32 phase_sound_secondary_scene_ready(void)
 {
-    u8 *phase = (u8 *)data_021052fc;
+    u8 *phase = (u8 *)gGamePhaseRuntime;
     u8 *scene;
 
     if (phase == 0)

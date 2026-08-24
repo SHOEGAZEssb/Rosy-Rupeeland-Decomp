@@ -9,7 +9,7 @@
 .extern GraphicsResourceSet_Load
 .extern data_020f4e14
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseAreaScene_SetEnabled
 .extern RuntimePresentationManager_DisableGraphics3dForActivePhase
@@ -311,7 +311,7 @@ Overlay032Scene_SetupGraphics:
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-L_021fdddc: .word data_021052fc
+L_021fdddc: .word gGamePhaseRuntime
 L_021fdde0: .word data_020f4e14
 L_021fdde4: .word gDebugFont
 L_021fdde8: .word 0x4000304

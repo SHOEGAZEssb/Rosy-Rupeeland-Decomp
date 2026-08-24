@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/tracked_resource_actor_effects.c.
 .extern Heap_Alloc
 .extern gTrackedResourceActorSpriteEffectAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gHeapContext
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern AuxiliaryTimedSpritePresentation_Init
@@ -219,7 +219,7 @@ TrackedResourceActor_EmitRecordEffects: ; 0x02050260
 .L_0205054c:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}
-.L_02050554: .word data_021052fc
+.L_02050554: .word gGamePhaseRuntime
 .L_02050558: .word gTrackedResourceActorSpriteEffectAllocationTag
 .L_0205055c: .word gHeapContext
 .size TrackedResourceActor_EmitRecordEffects, . - TrackedResourceActor_EmitRecordEffects

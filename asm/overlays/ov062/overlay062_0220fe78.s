@@ -5,7 +5,7 @@
 .extern Scene_Init
 .extern Scene_SetFlags03
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov062_02211b34
 .extern data_ov062_02211b60
 .extern data_ov062_02211b68
@@ -215,7 +215,7 @@ func_ov062_0220fe78:
     add sp, sp, #0x48
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02210150: .word data_ov062_02211b34
-.L_02210154: .word data_021052fc
+.L_02210154: .word gGamePhaseRuntime
 .L_02210158: .word gGameWork
 .L_0221015c: .word 0x266
 .L_02210160: .word 0xd9a

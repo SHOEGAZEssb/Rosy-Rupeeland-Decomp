@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
 .extern GameWork_TestFlag
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_0210576c
 .extern data_0210576d
 .extern data_0210576f
@@ -290,7 +290,7 @@ func_ov080_02212f90:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02213380: .word gGameWork
 .L_02213384: .word data_02105770
-.L_02213388: .word data_021052fc
+.L_02213388: .word gGamePhaseRuntime
 .L_0221338c: .word data_0210576c
 .L_02213390: .word data_0210576f
 .L_02213394: .word data_0210576d

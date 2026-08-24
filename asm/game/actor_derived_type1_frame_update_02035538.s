@@ -6,7 +6,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern gType7AuxiliaryPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern DisplayBrightness_IsMainTransitionComplete
@@ -489,7 +489,7 @@ ActorDerivedType1_UpdateFrame: ; 0x02035538
 .L_02035ba4: .word gGameWork
 .L_02035ba8: .word 0x3f5
 .L_02035bac: .word 0x3f6
-.L_02035bb0: .word data_021052fc
+.L_02035bb0: .word gGamePhaseRuntime
 .L_02035bb4: .word 0x3f2
 .L_02035bb8: .word gType7AuxiliaryPresentationAllocationTag
 .L_02035bbc: .word gHeapContext

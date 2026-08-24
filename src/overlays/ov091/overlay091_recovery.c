@@ -9,7 +9,7 @@ extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
 extern "C" void *gGamePhaseCurrencyHud;
 extern "C" void *gSoundContext;
-extern "C" u8 *data_021052fc;
+extern "C" u8 *gGamePhaseRuntime;
 extern "C" u8 gActorCategory1DescriptorTable[];
 extern "C" u8 data_ov091_02218cd0[];
 extern "C" u8 data_ov091_02218dc0[];
@@ -103,7 +103,7 @@ extern "C" void *func_ov091_022177e0(void *actor, const void *descriptor) {
     F(s32, actor, 0x220) = 0;
     VecFx32Object_Init((u8 *)actor + 0x224);
     u8 *collection =
-        (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     s32 support_index = 0;
     for (s32 index = 0; index < F(s32, collection, 0x2e74); ++index) {
         void *candidate = F(void *, collection, index * 4);
@@ -138,13 +138,13 @@ extern "C" void func_ov091_02217910(void *actor) {
 }
 
 static void destroy_encounter(void *actor, bool release_allocation) {
-    void *primary = F(void *, data_021052fc, 0x2ea4);
+    void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
     if (primary) {
         F(u32, primary, 0x230) |= 4;
         F(u32, primary, 0xd0) &= ~0x40000u;
         GameWork_SetFlag(gGameWork, 0x3ec);
-        ActorMotionAreaFollower_BindActor(data_021052fc + 0x2fbc, primary);
-        ActorMotion_BindActor(data_021052fc + 0x3044, primary);
+        ActorMotionAreaFollower_BindActor(gGamePhaseRuntime + 0x2fbc, primary);
+        ActorMotion_BindActor(gGamePhaseRuntime + 0x3044, primary);
         GraphicsSpriteState_ReleaseFromGroup(F(void *, actor, 0x238));
         void *resource = F(void *, actor, 0x234);
         if (resource)
@@ -158,7 +158,7 @@ static void destroy_encounter(void *actor, bool release_allocation) {
         }
         Actor_SetActive(primary, 0);
     }
-    void *secondary = F(void *, data_021052fc, 0x2ea8);
+    void *secondary = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (secondary)
         Actor_SetActive(secondary, 0);
     Actor_SetActive(F(void *, actor, 0x1f4), 0);
@@ -210,7 +210,7 @@ static void update_motion_target(void *actor) {
     u8 target[16];
     VecFx32Object_InitComponents(target, -0x80000,
                                  -0x74000 - F(s32, actor, 0x24) / 2, 0);
-    ActorMotion_SetTarget(data_021052fc + 0x2fbc, target);
+    ActorMotion_SetTarget(gGamePhaseRuntime + 0x2fbc, target);
     VecFx32Object_Destroy(target);
 }
 
@@ -235,12 +235,12 @@ extern "C" void func_ov091_02217ce0(void *actor) {
     u8 *scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
     if (F(s32, scene, 4) == 2 || F(s32, gGameWork, 0x3cc) == 0)
         return;
-    ActorMotionAreaFollower_BindActor(data_021052fc + 0x2fbc, actor);
-    ActorMotion_BindActor(data_021052fc + 0x3044, actor);
+    ActorMotionAreaFollower_BindActor(gGamePhaseRuntime + 0x2fbc, actor);
+    ActorMotion_BindActor(gGamePhaseRuntime + 0x3044, actor);
     func_0204d308(actor);
-    void *primary = F(void *, data_021052fc, 0x2ea4);
+    void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
     scene = (u8 *)SceneManager_GetCurrent(gSceneManager);
-    void *effects = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+    void *effects = RuntimePresentationManager_GetGraphics3dPresentation(gGamePhaseRuntime + 0x2f7c);
 
     switch (F(u8, actor, 0x1ec)) {
     case 0: {
@@ -254,7 +254,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
         F(u32, primary, 0x230) |= 0x20;
         F(u32, primary, 0xd0) |= 0x40000;
         Actor_SetActive(primary, 1);
-        void *secondary = F(void *, data_021052fc, 0x2ea8);
+        void *secondary = F(void *, gGamePhaseRuntime, 0x2ea8);
         if (secondary)
             Actor_SetActive(secondary, 1);
         Actor_SetActive(F(void *, actor, 0x1f4), 1);
@@ -392,7 +392,7 @@ extern "C" void func_ov091_02217ce0(void *actor) {
             F(s32, source, 0x44) = 0x2800;
             F(u8, source, 0x2d2) = 2;
             Sound_Play(gSoundContext, 0, 0x28);
-            ActorMotionJitter_EnsureMinimum(data_021052fc + 0x2fbc, 0x14, 1);
+            ActorMotionJitter_EnsureMinimum(gGamePhaseRuntime + 0x2fbc, 0x14, 1);
             F(s32, actor, 0x220) = 0;
         }
         VecFx32Object_Destroy(end);
@@ -500,9 +500,9 @@ extern "C" void func_ov091_02218930(void *actor) {
                          (u8 *)F(void *, actor, 0x1f0) + 0x18);
     update_actor_blend(actor);
     update_motion_target(actor);
-    GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 0);
-    GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 1);
-    GamePhaseRuntime_FinalizeActorCollections(data_021052fc, 2, 3);
+    GamePhaseRuntime_SynchronizeActorPlacement(gGamePhaseRuntime, 0);
+    GamePhaseRuntime_SynchronizeActorPlacement(gGamePhaseRuntime, 1);
+    GamePhaseRuntime_FinalizeActorCollections(gGamePhaseRuntime, 2, 3);
 }
 
 /* Invoke virtual slot 0x1c for encounter finalization. */
@@ -539,16 +539,16 @@ extern "C" void func_ov091_02218aa0(void *actor, void *interaction) {
     s32 amount = -F(s16, F(void *, interaction, 0x1fc), 0xc);
     if (!amount)
         return;
-    void *primary = F(void *, data_021052fc, 0x2ea4);
+    void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
     GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, amount, 0);
     void *effect = Heap_Alloc(0x44, data_ov091_02218dd0, 4, gHeapContext);
     if (effect) {
         const void *position =
-            ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+            ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
         effect =
             func_02022cb0(effect, position, primary, amount, 0x2000, -0xc0);
     }
-    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, effect);
+    RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, effect);
     Type1Actor_TryEnterFailureState(primary);
 }
 

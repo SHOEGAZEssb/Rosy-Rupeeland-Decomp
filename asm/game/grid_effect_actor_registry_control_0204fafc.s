@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/grid_effect_actor_registry_control.c.
 .extern data_020f4e18
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGridEffectActorRuntimeState
 .extern gGridEffectActorRegistry
 .extern ActorCollection_QueueActorForRemoval
@@ -129,7 +129,7 @@ GridEffectActorRegistry_FinalizeDepartingActors: ; 0x0204fbdc
     str r1, [r0, #0xb8]
     ldmia sp!, {r4, r5, r6, pc}
 .L_0204fc64: .word gGridEffectActorRegistry
-.L_0204fc68: .word data_021052fc
+.L_0204fc68: .word gGamePhaseRuntime
 .size GridEffectActorRegistry_FinalizeDepartingActors, . - GridEffectActorRegistry_FinalizeDepartingActors
 
     .global GridEffectActorRegistry_CountDepartingOrFinishedActors

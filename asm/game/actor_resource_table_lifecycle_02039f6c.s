@@ -5,7 +5,7 @@
 .extern gActorFeedbackResourcePointerArrayAllocationTag
 .extern gActorFeedbackAnimationResourceAllocationTag
 .extern data_020e9fa0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorInteractionResourceState
 .extern AnimationResource_Init
 .extern GamePhaseMetadata_GetByIndex
@@ -69,7 +69,7 @@ ActorFeedbackResources_Load: ; 0x02039f6c
     cmp r7, #0xf
     blt .L_02039fcc
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0203a038: .word data_021052fc
+.L_0203a038: .word gGamePhaseRuntime
 .L_0203a03c: .word data_020e9fa0
 .L_0203a040: .word gActorInteractionResourceState
 .L_0203a044: .word gActorFeedbackResourcePointerArrayAllocationTag

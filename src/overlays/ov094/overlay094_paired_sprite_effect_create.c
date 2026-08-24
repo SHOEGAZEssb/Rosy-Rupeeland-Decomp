@@ -2,7 +2,7 @@
 
 /* Overlay 94 construction for the title/menu's paired sprite effect. */
 
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern const u8 data_ov094_02219e9c[];
 
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ extern "C" void *func_ov094_02219344(void *effect, void *firstState,
     PresentationScalar_TransitionTo((u8 *)effect + 0x1c, 1, secondCoordinate);
 
     u16 parameter = (u16)(0x7fff - secondCoordinate / 0x1000);
-    void *area = *(void **)(data_021052fc + 0x30bc);
+    void *area = *(void **)(gGamePhaseRuntime + 0x30bc);
     firstState = *(void **)((u8 *)effect + 0x9c);
     if (*(s32 *)area == 0xa7) {
         *(volatile u8 *)((u8 *)firstState + 0x3a) = 0;

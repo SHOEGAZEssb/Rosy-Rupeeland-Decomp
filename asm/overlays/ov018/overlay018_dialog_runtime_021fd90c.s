@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_dialog_runtime.c (constructor). */
     .extern Heap_Alloc
     .extern data_020f4e14
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov018_021ffd60
     .extern GamePhaseRuntime_GetActorCollection
     .extern ActorCollection_FindActorByRuntimeId
@@ -73,6 +73,6 @@ L_021fd9e0: .word data_ov018_021ffd60
 L_021fd9e4: .word gHeapContext
 L_021fd9e8: .word data_020f4e14
 L_021fd9ec: .word gSystemState
-L_021fd9f0: .word data_021052fc
+L_021fd9f0: .word gGamePhaseRuntime
 L_021fd9f4: .word gGameWork
     .size func_ov018_021fd90c, . - func_ov018_021fd90c

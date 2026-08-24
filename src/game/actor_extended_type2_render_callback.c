@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Forward an extended type-two render callback and update its helper position. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -39,7 +39,7 @@ void ActorExtendedType2_RunRenderCallback(void *screenPosition, void *self,
         (*(u16 *)(*(u8 **)(actor + 0x54) + 0x24) & 0x1c) == 0) {
         ++actor[0x294];
         if (actor[0x294] > 20) {
-            void *effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+            void *effect = RuntimePresentationManager_GetGraphics3dPresentation(gGamePhaseRuntime + 0x2f7c);
             Graphics3dPresentation_CreatePreset3To5SpriteEffectInBounds(effect, 0,
                           (*(s32 *)(actor + 0x1c) >> 12) - 16,
                           (*(s32 *)(actor + 0x20) >> 12) -

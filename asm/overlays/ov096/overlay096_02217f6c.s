@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov096_02218b08
 .extern VecFx32Object_Assign
 .extern ActorCollection_GetSpriteGroup
@@ -120,7 +120,7 @@ func_ov096_02217f6c:
     strh r2, [r1, #0x5a]
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
-.L_022180fc: .word data_021052fc
+.L_022180fc: .word gGamePhaseRuntime
 .L_02218100: .word data_ov096_02218b08
 .L_02218104: .word gSoundContext
 .size func_ov096_02217f6c, . - func_ov096_02217f6c

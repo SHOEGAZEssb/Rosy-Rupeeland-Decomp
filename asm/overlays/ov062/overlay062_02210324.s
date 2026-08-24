@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern Scene_ClearFlags03
 .extern Scene_Destroy
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov062_02211b34
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
@@ -128,5 +128,5 @@ func_ov062_02210324:
     ldmia sp!, {r3, r4, r5, pc}
 .L_022104c4: .word data_ov062_02211b34
 .L_022104c8: .word gGameWork
-.L_022104cc: .word data_021052fc
+.L_022104cc: .word gGamePhaseRuntime
 .size func_ov062_02210324, . - func_ov062_02210324

@@ -2,7 +2,7 @@
 .extern Heap_Alloc
 .extern Sound_Play
 .extern gPresentationBackedActorCurrencyEffectAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGameWork
 .extern gHeapContext
 .extern gGamePhaseCurrencyHud
@@ -245,7 +245,7 @@ PresentationBackedActor_HandleInteraction: ; 0x0204df40
 .L_0204e28c:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_0204e294: .word data_021052fc
+.L_0204e294: .word gGamePhaseRuntime
 .L_0204e298: .word gGamePhaseCurrencyHud
 .L_0204e29c: .word gPresentationBackedActorCurrencyEffectAllocationTag
 .L_0204e2a0: .word gHeapContext

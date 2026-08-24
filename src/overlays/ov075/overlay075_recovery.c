@@ -5,7 +5,7 @@
 #define P(base, offset) ((void *)((u8 *)(base) + (offset)))
 typedef s32 (*Method)(...);
 
-extern "C" u8 *data_021052fc;
+extern "C" u8 *gGamePhaseRuntime;
 extern "C" void *gHeapContext;
 extern "C" void *gGameWork;
 extern "C" void *gSoundContext;
@@ -221,7 +221,7 @@ extern "C" void *func_ov075_02212bb8(void *actor, void *descriptor, s32 arg2,
 extern "C" void func_ov075_02212c90(void *actor)
 {
     void *collection =
-        (void *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        (void *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     s32 count = F(s32, collection, 0x2e74);
     for (s32 i = 0; i < count; ++i)
     {
@@ -487,7 +487,7 @@ extern "C" void func_ov075_02213480(void *actor)
     u8 position[16];
     func_02005030(position, P(actor, 0x18));
     F(s32, position, 0xc) -= 0x4000;
-    void *primary = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+    void *primary = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
     void *presentation = (void *)func_02050078(
         F(s16, F(void *, actor, 0x2a0), 0), position, P(primary, 0x18));
     F(u32, presentation, 0x5c) =
@@ -918,14 +918,14 @@ extern "C" s32 func_ov075_02214260(void *actor, const void *descriptor)
     {
         ready = (contactFlags & 0x200) != 0 &&
                 ((contactFlags & 0x400) == 0 ||
-                 Invoke(F(void *, F(void *, data_021052fc, 0), 0x2ea4),
+                 Invoke(F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4),
                         0xa8) != 0);
     }
     else
     {
         ready = (contactFlags & 0x100) != 0 &&
                 ((contactFlags & 0x400) == 0 ||
-                 Invoke(F(void *, F(void *, data_021052fc, 0), 0x2ea4),
+                 Invoke(F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4),
                         0xa8) != 0);
     }
     if (!ready)
@@ -1035,7 +1035,7 @@ extern "C" void func_ov075_022148d0(void *actor)
     }
     F(s32, actor, 0x3c) = 0;
     F(s32, actor, 0x40) = 0;
-    void *work = F(void *, data_021052fc, 0);
+    void *work = F(void *, gGamePhaseRuntime, 0);
     void *primary = F(void *, work, 0x2ea4);
     switch (F(u16, actor, 0xd6))
     {
@@ -1824,7 +1824,7 @@ extern "C" void func_ov075_02215910(void *actor)
 /* Writes one packed value across the terrain link's stored tile rectangle. */
 extern "C" void func_ov075_02215930(void *actor, s32 value)
 {
-    void *renderer = F(void *, F(void *, data_021052fc, 0), 0x2ed4);
+    void *renderer = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ed4);
     for (s32 x = F(s32, actor, 0x2a8); x <= F(s32, actor, 0x2b0); ++x)
     {
         for (s32 y = F(s32, actor, 0x2ac); y <= F(s32, actor, 0x2b4); ++y)
@@ -2194,11 +2194,11 @@ extern "C" void func_ov075_0221647c(void *actor, void *target, s32 dx,
         if (effect != 0)
         {
             void *position = (void *)ActorMotionAreaFollower_GetPosition(
-                F(void *, F(void *, data_021052fc, 0), 0x2fbc));
+                F(void *, F(void *, gGamePhaseRuntime, 0), 0x2fbc));
             func_02022cb0(effect, position, target, -currency, 0x2000, -192);
         }
         RuntimePresentationManager_AppendFirstListEffect(
-            F(void *, F(void *, data_021052fc, 0), 0x2f7c), effect);
+            F(void *, F(void *, gGamePhaseRuntime, 0), 0x2f7c), effect);
         GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, -currency, 0);
         F(u32, target, 0x230) |= 0x40000;
         ActorDerivedType1_TeardownRecordAndApplyMotionImpulse(target, impulse);
@@ -2330,7 +2330,7 @@ extern "C" void func_ov075_0221627c(void *actor)
     }
     if ((F(u32, actor, 0x29c) & 1) == 0)
         return;
-    void *work = F(void *, data_021052fc, 0);
+    void *work = F(void *, gGamePhaseRuntime, 0);
     for (s32 index = 0; index < 2; ++index)
     {
         void *candidate = F(void *, work, 0x2ea4 + index * 4);

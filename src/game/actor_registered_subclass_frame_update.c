@@ -5,7 +5,7 @@
  * Advance the registered actor subclass through its idle, timed-effect, and
  * contact states while maintaining its height flag and presentation object.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -69,7 +69,7 @@ void ActorRegisteredSubclass_UpdateFrame(void *self)
         }
         if (timer[0] % 15 == 2) {
             u32 random = genrand_int32();
-            void *effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+            void *effect = RuntimePresentationManager_GetGraphics3dPresentation(gGamePhaseRuntime + 0x2f7c);
             s32 x = (*(s32 *)(actor + 0x1c) >> 12) - 2 +
                     (s32)(random & 3);
             s32 y = (*(s32 *)(actor + 0x20) >> 12) -

@@ -6,7 +6,7 @@
  * effect families, followed by optional auxiliary-object and action creation.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const u8 gTrackedResourceActorSpriteEffectAllocationTag[];
 extern void *gHeapContext;
 
@@ -50,7 +50,7 @@ extern void Graphics3dPresentation_CreatePreset28To29PointSpriteEffectAt(void *m
 void TrackedResourceActor_EmitRecordEffects(void *actor)
 {
     void *record = FIELD(void *, actor, 0x1fc);
-    void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+    void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
     s32 selector = FIELD(s8, record, 0x12);
     s32 x = FIELD(s32, actor, 0x1c) >> 12;
     s32 y = (FIELD(s32, actor, 0x20) >> 12) -

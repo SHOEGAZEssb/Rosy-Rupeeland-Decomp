@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
 .extern GameWork_ClearFlag
 .extern Scene_Destroy
-.extern data_02105300
+.extern gGamePhaseTouchPromptTaskNode
 .extern data_ov074_02211d8c
 .extern OverlayManager_UnloadOverlay
 .extern OverlayManager_GetGlobal
@@ -67,7 +67,7 @@ func_ov074_02210024:
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_022100ec: .word data_ov074_02211d8c
-.L_022100f0: .word data_02105300
+.L_022100f0: .word gGamePhaseTouchPromptTaskNode
 .L_022100f4: .word gGameWork
 .L_022100f8: .word 0x412
 .size func_ov074_02210024, . - func_ov074_02210024

@@ -4,7 +4,7 @@
 .extern data_020dfad8
 .extern data_020dfba0
 .extern data_020dfa50
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorExtendedRecordArray_ContainsPoint
@@ -239,7 +239,7 @@ ActorExtendedType2_UpdateTargetValidationMotion: ; 0x02040f4c
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .L_02041294: .word data_020df9e8
-.L_02041298: .word data_021052fc
+.L_02041298: .word gGamePhaseRuntime
 .L_0204129c: .word data_020dfad8
 .L_020412a0: .word data_020dfba0
 .L_020412a4: .word data_020dfa50

@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void OS_Halt(void);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
@@ -35,7 +35,7 @@ s32 func_02012814(GamePhaseScriptVm *self)
     u32 b = GamePhaseScriptVm_Pop(self);
     u32 a = GamePhaseScriptVm_Pop(self);
     u32 selector = GamePhaseScriptVm_Pop(self);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     switch (selector) {
     case 1:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(self, ActorMotion_ConfigureGridTarget(runtime + 0x2fbc, a, b, c, d));

@@ -10,7 +10,7 @@
     .extern PresentationScalar_SetImmediate
     .extern data_ov034_021ff194
     .extern data_020f4e18
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov034_021ff1a8
     .extern gHeapContext
 
@@ -75,7 +75,7 @@ L_021fd5e4:
 L_021fd61c: .word data_ov034_021ff194
 L_021fd620: .word data_020f4e18
 L_021fd624: .word 0x5001
-L_021fd628: .word data_021052fc
+L_021fd628: .word gGamePhaseRuntime
 L_021fd62c: .word data_ov034_021ff1a8
 L_021fd630: .word gHeapContext
 .size func_ov034_021fd544, .-func_ov034_021fd544

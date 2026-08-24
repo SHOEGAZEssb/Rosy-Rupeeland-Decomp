@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern const u16 data_020c3600[12];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_020f4e14;
 extern void *gDebugFont;
 extern void GamePhaseState_UpdateRenderHelpers(void *runtimeObject);
@@ -37,7 +37,7 @@ typedef struct LoadPhaseObject {
 s32 GamePhaseLoadScene_UpdateRenderHelpers(GamePhaseLoadScene *self)
 {
     if (self->runtimeCallbacksEnabled)
-        GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
+        GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
     if (self->ownedObjectCallbacksEnabled && self->ownedObject)
         ((LoadPhaseObject *)self->ownedObject)->vtable->method0c(
             self->ownedObject);
@@ -52,7 +52,7 @@ s32 GamePhaseLoadScene_UpdateRenderHelpers(GamePhaseLoadScene *self)
 s32 GamePhaseLoadScene_ForwardCurrentVCount(GamePhaseLoadScene *self)
 {
     if (self->runtimeCallbacksEnabled)
-        GamePhaseState_ForwardVCount((u8 *)data_021052fc + 0x24,
+        GamePhaseState_ForwardVCount((u8 *)gGamePhaseRuntime + 0x24,
                       *(volatile u16 *)0x04000006);
     if (self->ownedObjectCallbacksEnabled && self->ownedObject)
         ((LoadPhaseObject *)self->ownedObject)->vtable->method10(

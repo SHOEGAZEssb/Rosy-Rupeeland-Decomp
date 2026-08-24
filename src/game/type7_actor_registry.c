@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Recovered three-slot registry populated from type-seven actors in the primary world list. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gType7ActorRegistry[3];
 
 #ifdef __cplusplus
@@ -13,7 +13,7 @@ extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 #endif
 
 /*
- * Scan entries in world list GamePhaseRuntime_GetActorCollection(*data_021052fc,1), whose count is at
+ * Scan entries in world list GamePhaseRuntime_GetActorCollection(*gGamePhaseRuntime,1), whose count is at
  * returned object +0x2e74, until three actors with type byte +0x4d equal to
  * seven are found or the list ends. Store those actor pointers in
  * gType7ActorRegistry, assign their halfword +0x27c the sequence 0,5,10, and clear
@@ -24,7 +24,7 @@ void Type7ActorRegistry_Populate(void)
 {
     s32 found = 0;
     s32 index = 0;
-    void *context = *(void **)data_021052fc;
+    void *context = *(void **)gGamePhaseRuntime;
     while (index < *(s32 *)((u8 *)GamePhaseRuntime_GetActorCollection(context, 1) + 0x2e74)
            && found < 3) {
         u8 *actor = ((u8 **)GamePhaseRuntime_GetActorCollection(context, 1))[index];

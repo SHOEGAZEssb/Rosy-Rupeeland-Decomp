@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov066/overlay066_recovery.c.
 .extern TouchPanelManager_GetPoint
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov066_02210f54
 .extern data_ov066_02210f64
 .extern data_ov066_02210f74
@@ -331,7 +331,7 @@ func_ov066_0220ff60:
     ldmia sp!, {r4, r5, pc}
 .L_022103e0: .word data_020f4e14
 .L_022103e4: .word gDebugFont
-.L_022103e8: .word data_021052fc
+.L_022103e8: .word gGamePhaseRuntime
 .L_022103ec: .word gSystemState
 .L_022103f0: .word gTouchPanelManager
 .L_022103f4: .word gFrameVCount

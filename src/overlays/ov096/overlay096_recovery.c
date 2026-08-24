@@ -14,7 +14,7 @@ typedef void (*V1)(void *, void *);
 typedef void (*V2)(void *, void *, s32);
 
 extern "C" void *gSoundContext;
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" const u8 data_020e6adc[], data_020e6b74[], data_020e6c0c[];
 extern "C" const u16 data_020e6e68[];
 extern "C" u8 gTrackedResourceActorRecordTable[];
@@ -153,7 +153,7 @@ extern "C" s32 func_ov096_02217f6c(void *actor)
     void *record=F(void*,actor,0x29c);s32 delay=record?F(s16,record,0x22):0x5a;s16 frame=F(s16,actor,0x25a);
     if(frame==0){F(s16,actor,0x258)=0xf0+(s16)(func_020bf1f8(genrand_int32(),600)>>32);}
     else if(frame>=F(u16,actor,0x258)) {
-        void *primary=F(void*,data_021052fc,0x2ea4);
+        void *primary=F(void*,gGamePhaseRuntime,0x2ea4);
         if(func_020adcac(primary?(u8*)primary+0x1c:0,(u8*)actor+0x1c)<0x40000){F(u16,actor,0x25a)=0;F(u16,actor,0x258)=delay+1;}
         else {F(u8,actor,0x29a)=0x5a;F(u32,actor,0x220)=F(u32,data_ov096_02218b08,8);F(u32,actor,0x224)=F(u32,data_ov096_02218b08,0xc);}
     /* Retail tests the division helper's ARM r1 remainder; spell it out for the host ABI. */

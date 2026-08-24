@@ -11,7 +11,7 @@
 
 extern const u8 data_ov054_0220f0e0[], data_ov054_0220f108[];
 extern const u8 data_ov054_0220f130[], data_ov054_0220f150[];
-extern void *data_021052fc, *data_020f4e18[], *gGameWork;
+extern void *gGamePhaseRuntime, *data_020f4e18[], *gGameWork;
 extern u8 gSystemState[], gHeapContext[];
 extern const s16 data_020c9670[];
 extern u8 gMainBgPaletteBuffer[];
@@ -251,7 +251,7 @@ void func_ov054_0220e9bc(s32 variant, s32 enabled)
 {
     void *object = Heap_Alloc(0x1b8, data_ov054_0220f150, 4, gHeapContext);
     if (object != 0) object = func_ov054_0220e68c(object, variant, enabled);
-    RuntimePresentationManager_AppendSecondListEffect((u8 *)data_021052fc + 0x2f7c, object);
+    RuntimePresentationManager_AppendSecondListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, object);
 }
 
 /* Forward one scanline index to the first presentation. */
@@ -382,7 +382,7 @@ void *func_ov054_0220ed54(void *object)
 s32 func_ov054_0220eda4(void *object)
 {
     void *configuration =
-        GamePhaseState_GetConfiguration((u8 *)data_021052fc + 0x24);
+        GamePhaseState_GetConfiguration((u8 *)gGamePhaseRuntime + 0x24);
     u32 type = (FIELD(u32, configuration, 0x40) >> 18) & 3;
     u8 orbit[16], damping[16];
     s32 angle, phase, radius;
@@ -425,7 +425,7 @@ void func_ov054_0220ef80(void *owner)
     void *object = Heap_Alloc(0x50, data_ov054_0220f150, 4, gHeapContext);
     if (object != 0) object = func_ov054_0220ec6c(object, owner);
     data_ov054_0220f160 = object;
-    RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, object);
+    RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, object);
 }
 
 /* Intentional no-op callback; the presentation remains unchanged. */

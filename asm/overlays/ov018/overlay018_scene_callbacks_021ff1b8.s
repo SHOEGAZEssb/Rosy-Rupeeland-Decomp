@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_scene_callbacks.c. */
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern GamePhaseState_UpdateRenderHelpers
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_020b198c
@@ -84,6 +84,6 @@ func_ov018_021ff258:
 L_021ff2bc:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_021ff2c4: .word data_021052fc
+L_021ff2c4: .word gGamePhaseRuntime
 L_021ff2c8: .word 0x4001000
     .size func_ov018_021ff258, . - func_ov018_021ff258

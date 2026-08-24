@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Scene_Init
 .extern Scene_SetFlags03
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov072_02210b0c
 .extern data_ov072_02210b38
 .extern AnimationResource_Init
@@ -137,7 +137,7 @@ func_ov072_0220fd20:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 .L_0220fee4: .word data_ov072_02210b0c
-.L_0220fee8: .word data_021052fc
+.L_0220fee8: .word gGamePhaseRuntime
 .L_0220feec: .word data_ov072_02210b38
 .L_0220fef0: .word gHeapContext
 .L_0220fef4: .word 0x10c8

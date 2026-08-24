@@ -7,7 +7,7 @@
  */
 
 extern const u8 gTrackedResourceActorRecordTable[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -86,13 +86,13 @@ void *TrackedResourceActor_SpawnFromKey(s32 key, const void *position, u32 argum
                   record->width, record->height, flags,
                   0, 0, 0, 0, 0xff, 0, 0, 0, 0);
 
-    void *records = FIELD(void *, data_021052fc, 0x24);
+    void *records = FIELD(void *, gGamePhaseRuntime, 0x24);
     void *latest = GamePhaseMetadata_GetByIndex(FIELD(s32, records, 0) - 1);
     if ((FIELD(u32, latest, 0x40) >> 18 & 3) == 3)
         FIELD(u32, descriptor, 0x28) |= 1;
 
     void *actor = ActorCollection_SpawnActorFromDescriptor(
-        GamePhaseRuntime_GetActorCollection(data_021052fc, 1), descriptor);
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), descriptor);
     ActorRecordCallback initialize =
         *(ActorRecordCallback *)((u8 *)FIELD(void *, actor, 0) + 0xc0);
     initialize(actor, record, argument);

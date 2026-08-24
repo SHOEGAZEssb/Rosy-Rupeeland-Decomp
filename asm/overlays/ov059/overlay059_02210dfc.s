@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_CreateSecondaryActorSubsystem
 .extern GamePhaseRuntime_DestroySecondaryActorSubsystem
@@ -89,7 +89,7 @@ func_ov059_02210dfc:
     strh r0, [r4, #0x24]
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_02210f20: .word data_021052fc
+.L_02210f20: .word gGamePhaseRuntime
 .L_02210f24: .word 0x3333
 .L_02210f28: .word 0x30d3
 .L_02210f2c: .word 0x138a

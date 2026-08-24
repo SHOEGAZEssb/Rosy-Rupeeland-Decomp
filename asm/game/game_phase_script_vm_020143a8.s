@@ -5,7 +5,7 @@
 .extern OS_Halt
 .extern data_020d5b2c
 .extern data_020d5b34
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov054_0220f160
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
@@ -1264,7 +1264,7 @@ L_020154c0:
     b L_0201553c
 L_020154c8: .word data_020d5b34
 L_020154cc: .word gHeapContext
-L_020154d0: .word data_021052fc
+L_020154d0: .word gGamePhaseRuntime
 L_020154d4: .word 0x37
 L_020154d8: .word 0x41
 L_020154dc: .word data_020d5b2c

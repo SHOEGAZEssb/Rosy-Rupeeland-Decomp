@@ -10,7 +10,7 @@ typedef s32 (*Predicate)(void *);
 typedef void (*ForwardMethod)(void *, void *, s32, void *, void *);
 
 extern u8 data_ov086_02212e40[];
-extern void *data_021052fc, *gGameWork;
+extern void *gGamePhaseRuntime, *gGameWork;
 
 #ifdef __cplusplus
 extern "C" {
@@ -49,7 +49,7 @@ void *func_ov086_02212b14(void *actor) {
  */
 void func_ov086_02212b30(void *actor, void *state, void *context) {
   if (GameWork_TestFlag(gGameWork, 0x44b) != 0 && F(s32, actor, 0x1fc) <= 0) {
-    void *paired = F(void *, data_021052fc, 0x2ea8);
+    void *paired = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (paired == 0 || F(s16, F(void *, paired, 0x29c), 0x36) != 5 ||
         F(s32, paired, 0x1fc) == 0)
       F(s32, actor, 0x1fc) = 1;

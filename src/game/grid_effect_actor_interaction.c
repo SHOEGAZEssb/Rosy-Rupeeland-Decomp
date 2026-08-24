@@ -6,7 +6,7 @@
  * current world point and a globally selected mode.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_021e9ac0;
 extern void *gSoundContext;
 
@@ -43,7 +43,7 @@ typedef s32 (*ActorPredicate)(void *actor);
  */
 void GridEffectActor_BeginDeparture(void *actor, const void *trigger)
 {
-    void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+    void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     if (FIELD(u8, trigger, 0x4d) == 1) {
         ActorPredicate predicate =
             *(ActorPredicate *)((u8 *)FIELD(void *, primary, 0) + 0xa8);
@@ -58,7 +58,7 @@ void GridEffectActor_BeginDeparture(void *actor, const void *trigger)
     FIELD(u8, FIELD(void *, actor, 0x54), 0x3a) = 1;
     FIELD(u16, FIELD(void *, actor, 0x54), 0x24) &= (u16)~4;
     FIELD(u32, actor, 0x14) |= 0x1000000;
-    void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+    void *point = ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
     VecFx32Object_Subtract((u8 *)actor + 0x18, point);
     FIELD(s32, actor, 0x20) -= FIELD(s32, actor, 0x24);
     FIELD(s32, actor, 0x24) = 0;

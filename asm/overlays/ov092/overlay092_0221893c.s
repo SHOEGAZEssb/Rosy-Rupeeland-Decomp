@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov092_0221b308
 .extern data_ov092_0221c834
 .extern VecFx32Object_Init
@@ -621,7 +621,7 @@ func_ov092_0221893c:
 .L_022191dc: .word gSoundContext
 .L_022191e0: .word data_ov092_0221c834
 .L_022191e4: .word gHeapContext
-.L_022191e8: .word data_021052fc
+.L_022191e8: .word gGamePhaseRuntime
 .L_022191ec: .word 0x1553
 .L_022191f0: .word data_ov092_0221b308
 .size func_ov092_0221893c, . - func_ov092_0221893c

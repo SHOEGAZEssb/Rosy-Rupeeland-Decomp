@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Classify a terrain transition as normal, alternate, or rejected. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,7 +26,7 @@ extern u32 Actor_QueryTerrainCell(void *actor, s32 gridX, s32 gridY);
 s32 Actor_ClassifyTerrainCellTransition(void *actor, s32 gridX, s32 gridY,
                                          s32 referenceHeight)
 {
-    void *terrainMap = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *terrainMap = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     u32 packedDimensions = *(u32 *)((u8 *)terrainMap + 0x20);
     u32 packedCell;
     u32 terrainClass;

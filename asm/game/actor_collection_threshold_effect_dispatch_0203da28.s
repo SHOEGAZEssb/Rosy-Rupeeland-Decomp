@@ -3,7 +3,7 @@
 .extern data_020df9e8
 .extern data_020dfa20
 .extern data_020e8380
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt
@@ -98,6 +98,6 @@ ActorCollection_DispatchType2ThresholdEffects: ; 0x0203da28
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0203db70: .word data_020dfa20
 .L_0203db74: .word data_020e8380
-.L_0203db78: .word data_021052fc
+.L_0203db78: .word gGamePhaseRuntime
 .L_0203db7c: .word data_020df9e8
     .size ActorCollection_DispatchType2ThresholdEffects, . - ActorCollection_DispatchType2ThresholdEffects

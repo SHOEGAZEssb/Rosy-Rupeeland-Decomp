@@ -1,6 +1,6 @@
     .text
     .extern GameWork_SetFlag
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern ActorMotion_SetMode2
     .extern GridEffectActorRegistry_FinalizeDepartingActors
     .extern func_ov013_021fdbb0
@@ -85,5 +85,5 @@ L_021feaac:
 L_021feabc: .word gGameWork
 L_021feac0: .word 0x3f2
 L_021feac4: .word 0x393
-L_021feac8: .word data_021052fc
+L_021feac8: .word gGamePhaseRuntime
     .size func_ov013_021fe9c8, . - func_ov013_021fe9c8

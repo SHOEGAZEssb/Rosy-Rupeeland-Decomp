@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern VecFx32Object *ActorMotionAreaFollower_GetPosition(void *object);
 #ifdef __cplusplus
 }
@@ -110,7 +110,7 @@ s32 RuntimePresentationManager_UpdatePresentations(
     if (self->graphics3dPresentation != 0 &&
         self->graphics3dPresentation->enabled != 0) {
         worldPosition = ActorMotionAreaFollower_GetPosition(
-            (u8 *)data_021052fc + 0x2fbc);
+            (u8 *)gGamePhaseRuntime + 0x2fbc);
         Graphics3dPresentation_UpdateFrame(self->graphics3dPresentation,
                                             worldPosition,
                                             graphicsUpdateArgument);

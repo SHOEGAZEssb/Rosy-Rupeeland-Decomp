@@ -1,6 +1,6 @@
 .text
-.extern data_020d431c
-.extern data_021052fc
+.extern gGamePhaseRuntimeVTable
+.extern gGamePhaseRuntime
 .extern FrameTaskList_DestroyNode
 .extern OverlaySlot_Destroy
 .extern GamePhaseRuntime_DestroyFieldLoader
@@ -103,8 +103,8 @@ L_02007100:
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
-L_02007190: .word data_020d431c
-L_02007194: .word data_021052fc
+L_02007190: .word gGamePhaseRuntimeVTable
+L_02007194: .word gGamePhaseRuntime
 L_02007198: .word gSoundContext
     .size GamePhaseRuntime_Destroy, .-GamePhaseRuntime_Destroy
 

@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern data_020df4a4
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern RuntimePresentationManager_AppendFirstListEffect
@@ -130,6 +130,6 @@ ActorDerivedType1_DispatchInteractionAmount: ; 0x020398a4
 .L_02039a3c: .word gGamePhaseCurrencyHud
 .L_02039a40: .word data_020df4a4
 .L_02039a44: .word gHeapContext
-.L_02039a48: .word data_021052fc
+.L_02039a48: .word gGamePhaseRuntime
 .L_02039a4c: .word gSceneManager
     .size ActorDerivedType1_DispatchInteractionAmount, . - ActorDerivedType1_DispatchInteractionAmount

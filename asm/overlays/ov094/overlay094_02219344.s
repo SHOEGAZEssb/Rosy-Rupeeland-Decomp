@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov094/overlay094_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov094_02219e9c
 .extern PresentationScalar_TransitionTo
 .extern Presentation_SetPosition
@@ -68,6 +68,6 @@ func_ov094_02219344:
     str r1, [r4, #0x88]
     ldmia sp!, {r4, r5, r6, pc}
 .L_02219428: .word data_ov094_02219e9c
-.L_0221942c: .word data_021052fc
+.L_0221942c: .word gGamePhaseRuntime
 .L_02219430: .word 0x7fff
 .size func_ov094_02219344, . - func_ov094_02219344

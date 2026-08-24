@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_render_callback.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern RuntimePresentationManager_GetGraphics3dPresentation
@@ -76,7 +76,7 @@ ActorExtendedType2_RunRenderCallback: ; 0x0203efac
     bl VecFx32Object_Destroy
     add sp, sp, #0x1c
     ldmia sp!, {r3, r4, r5, r6, pc}
-.L_0203f0b4: .word data_021052fc
+.L_0203f0b4: .word gGamePhaseRuntime
 .L_0203f0b8: .word 0xb33
     .size ActorExtendedType2_RunRenderCallback, . - ActorExtendedType2_RunRenderCallback
 

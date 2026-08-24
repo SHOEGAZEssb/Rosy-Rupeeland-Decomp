@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void Type7Actor_ResetMotionAndCooldown(void *actor);
 extern u32 Actor_QueryRuntimeProperty(void *actor, u32 value);
 extern void Actor_SetRuntimeProperty(void *actor, u32 first, u32 second);
@@ -37,7 +37,7 @@ s32 GamePhaseActorScriptVm_ClearFlag01000000AndCleanup(GamePhaseActorScriptVm *s
         if (index <= 31 && ((0x90000007u >> index) & 1) != 0) {
             ActorPointerMethod method =
                 *(ActorPointerMethod *)((u8 *)*(void **)actor + 0xd4);
-            method(actor, *(void **)((u8 *)data_021052fc + 0x2ea4));
+            method(actor, *(void **)((u8 *)gGamePhaseRuntime + 0x2ea4));
         }
     } else if (actor[0x4d] == 7) {
         Type7Actor_ResetMotionAndCooldown(actor);

@@ -6,7 +6,7 @@
 .extern data_020e1728
 .extern data_020e1748
 .extern data_020e1838
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern func_02025d14
@@ -546,7 +546,7 @@ Type7Actor_UpdateFrame: ; 0x02045a60
 .L_020461e4: .word 0xaf7efe
 .L_020461e8: .word data_020e16b0
 .L_020461ec: .word data_020e1728
-.L_020461f0: .word data_021052fc
+.L_020461f0: .word gGamePhaseRuntime
 .L_020461f4: .word gGameWork
 .L_020461f8: .word 0x3fd
 .L_020461fc: .word data_020e1748

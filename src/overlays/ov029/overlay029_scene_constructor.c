@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern void *data_020f4e18[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 extern void *gDebugFont;
 extern void *gHeapContext;
@@ -62,7 +62,7 @@ extern "C" void *func_ov029_021fce74(void *state, void *argument)
     TitleCharacterResourceCollection_Init((u8 *)state + 0x78);
     FIELD(u32, state, 0xe4) = 0;
     func_020929b0((u8 *)state + 0xec);
-    RuntimePresentationManager_BroadcastSlot1C((u8 *)data_021052fc + 0x2f7c, 1);
+    RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 1);
     FIELD(u32, state, 0xe4) = genrand_int32();
     GameWork_ClearFlag(gGameWork, 0x38a);
     FIELD(void *, state, 0x68) = argument;

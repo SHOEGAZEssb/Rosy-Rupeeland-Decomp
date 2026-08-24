@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern GameWork_SetFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorDerivedType1_TeardownActiveRecord
 .extern func_ov092_02218394
 .extern func_ov092_02219fc8
@@ -52,6 +52,6 @@ func_ov092_02219fec:
     orr r0, r0, #0x4
     strh r0, [r1, #0x24]
     ldmia sp!, {r3, r4, r5, pc}
-.L_0221a098: .word data_021052fc
+.L_0221a098: .word gGamePhaseRuntime
 .L_0221a09c: .word gGameWork
 .size func_ov092_02219fec, . - func_ov092_02219fec

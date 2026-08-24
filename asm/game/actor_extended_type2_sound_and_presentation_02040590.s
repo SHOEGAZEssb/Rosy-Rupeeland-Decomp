@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern gActorExtendedType2SpritePresentationAllocationTag
 .extern data_020e7444
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern TimedSpriteOffsetPresentation_Init
 .extern Actor_PlayHorizontalSpatialSound
@@ -76,6 +76,6 @@ ActorExtendedType2_SpawnOptionalPresentation: ; 0x020405c8
     ldmia sp!, {r4, r5, r6, r7, pc}
 .L_02040670: .word gActorExtendedType2SpritePresentationAllocationTag
 .L_02040674: .word gHeapContext
-.L_02040678: .word data_021052fc
+.L_02040678: .word gGamePhaseRuntime
 .size ActorExtendedType2_SpawnOptionalPresentation, . - ActorExtendedType2_SpawnOptionalPresentation
 

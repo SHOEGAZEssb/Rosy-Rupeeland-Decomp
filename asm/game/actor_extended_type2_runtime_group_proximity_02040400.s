@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_runtime_group_proximity.c.
 .text
 .extern data_020e70c0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global ActorExtendedType2_CheckRuntimeGroupProximity
 .type ActorExtendedType2_CheckRuntimeGroupProximity, @function
 ActorExtendedType2_CheckRuntimeGroupProximity: ; 0x02040400
@@ -116,7 +116,7 @@ ActorExtendedType2_CheckRuntimeGroupProximity: ; 0x02040400
 .L_02040580:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02040588: .word data_021052fc
+.L_02040588: .word gGamePhaseRuntime
 .L_0204058c: .word data_020e70c0
 .size ActorExtendedType2_CheckRuntimeGroupProximity, . - ActorExtendedType2_CheckRuntimeGroupProximity
 

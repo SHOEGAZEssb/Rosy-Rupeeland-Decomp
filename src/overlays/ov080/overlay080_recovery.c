@@ -18,7 +18,7 @@ typedef void (*Ov80VoidMethod0)(void *);
 typedef void (*Ov80VoidMethod1)(void *, void *);
 
 extern "C" void *gGameWork;
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *gSoundContext;
 extern "C" void *gActorRuntimeCollection;
 extern "C" u8 data_0210576c, data_0210576d, data_0210576e, data_0210576f;
@@ -181,7 +181,7 @@ extern "C" void func_ov080_02212de8(void *actor)
     if ((FIELD(u32, actor, 0x14) & 0x200000) != 0)
         return;
     FIELD(u32, actor, 0xd0) |= 0x80000;
-    FIELD(s32, actor, 0x24) = Actor_GetCachedTerrainHeight(FIELD(void *, data_021052fc, 0x2ea4));
+    FIELD(s32, actor, 0x24) = Actor_GetCachedTerrainHeight(FIELD(void *, gGamePhaseRuntime, 0x2ea4));
     s16 form = (s16)func_ov080_02212ae0(gGameWork, 0, 0x7d);
     if (FIELD(s16, actor, 0x2a0) != form) {
         FIELD(s16, actor, 0x2a0) = form;
@@ -236,9 +236,9 @@ extern "C" s32 func_ov080_02212f90(void *actor)
         FIELD(u32, actor, 0x14) |= 0x10000000;
         return 0;
     }
-    void *primary = FIELD(void *, data_021052fc, 0x2ea8);
+    void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
     if (primary == 0 || (data_0210576c & 4) != 0)
-        primary = FIELD(void *, data_021052fc, 0x2ea4);
+        primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     u8 origin[0x10], candidate[0x10];
     VecFx32Object_InitCopy(origin, (u8 *)primary + 0x18);
     VecFx32Object_Init(candidate);
@@ -342,8 +342,8 @@ extern "C" s32 func_ov080_022134d8(void *actor, void *contact)
         (FIELD(u32, actor, 0x224) == FIELD(u32, data_ov080_02213e90, 4) || FIELD(u32, actor, 0x220) == 0);
     if (!pairA && !pairB)
         return 0;
-    void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
-    void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+    void *secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
+    void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     void *target = primary;
     if (secondary != 0 && (FIELD(u32, secondary, 0xd0) & 0x100) == 0) {
         s32 secondaryDistance = func_020adcac((u8 *)secondary + 0x1c, (u8 *)actor + 0x1c);
@@ -397,8 +397,8 @@ extern "C" s32 func_ov080_02213774(void *actor, const void *contact)
     if (((Ov80Method0)vmethod(actor, 0x38))(actor) != 0)
         return 0;
     func_ov080_02213b24(actor);
-    void *secondary = FIELD(void *, data_021052fc, 0x2ea8);
-    void *primary = FIELD(void *, data_021052fc, 0x2ea4);
+    void *secondary = FIELD(void *, gGamePhaseRuntime, 0x2ea8);
+    void *primary = FIELD(void *, gGamePhaseRuntime, 0x2ea4);
     void *target = primary;
     if (secondary != 0 && (FIELD(u32, secondary, 0xd0) & 0x100) == 0 &&
         func_020adcac((u8 *)secondary + 0x1c, (u8 *)actor + 0x1c) <

@@ -18,7 +18,7 @@ extern u8 data_ov062_02211ba4[], data_ov062_02211bd0[];
 extern u8 data_ov062_02211bd8[], data_ov062_02211be8[];
 extern u8 data_ov062_02211bf4[], data_ov062_02211c14[];
 extern u8 data_ov062_02211c40[];
-extern void *gHeapContext, *gSceneManager, *data_021052fc;
+extern void *gHeapContext, *gSceneManager, *gGamePhaseRuntime;
 extern void *gSoundContext, *data_020c9670;
 #define data_020f4db0 gHeapContext
 #define data_020f4e00 gSceneManager
@@ -142,7 +142,7 @@ void *func_ov062_0220fe78(void *scene, const void *target, s32 duration,
   F(s32, scene, 0x40) = amplitude;
   F(void *, scene, 0x44) = callbackOwner;
   F(s32, scene, 4) = 14;
-  actor = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+  actor = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
   F(void *, scene, 0x24) = actor;
   F(u32, actor, 0x230) = (F(u32, actor, 0x230) & ~4u) | 0x100;
   F(u32, actor, 0x14) |= 2;
@@ -165,7 +165,7 @@ void *func_ov062_0220fe78(void *scene, const void *target, s32 duration,
                   1, 2, 0, 0x40, -1, 1);
   func_02059394(data_02105860, 0, 0x61);
   if (preserveGlobalFlag == 0)
-    F(u32, F(void *, data_021052fc, 0), 0x2fec) |= 8;
+    F(u32, F(void *, gGamePhaseRuntime, 0), 0x2fec) |= 8;
   Scene_SetFlags03(scene);
   return scene;
 }
@@ -189,7 +189,7 @@ static void *Ov62_DestroyOne(void *scene, s32 freeSelf) {
     Heap_Free(F(void *, scene, 0x30));
   }
   Ov62_Call(F(void *, scene, 0x44), 0x5c);
-  F(u32, F(void *, data_021052fc, 0), 0x2fec) &= ~8u;
+  F(u32, F(void *, gGamePhaseRuntime, 0), 0x2fec) &= ~8u;
   func_02002290(func_020022dc(), 2);
   Scene_Destroy(scene);
   if (freeSelf)
@@ -213,7 +213,7 @@ static s32 Ov62_UpdateMotion(void *scene, s32 actorOffset, s32 frameOffset,
   if (SceneManager_GetCurrent(data_020f4e00) != scene)
     return 0;
   actor = F(void *, scene, actorOffset);
-  func_02008e10(data_021052fc, 2);
+  func_02008e10(gGamePhaseRuntime, 2);
   frame = ++F(s32, scene, frameOffset);
   duration = F(s32, scene, durationOffset);
   if (frame > duration)
@@ -229,7 +229,7 @@ static s32 Ov62_UpdateMotion(void *scene, s32 actorOffset, s32 frameOffset,
                   position[3], 4);
   Actor_RefreshCachedTerrainHeight(actor);
   ((void (*)(void *, void *, s32))METHOD(actor, 0x58))(
-      position, actor, func_02009d78((u8 *)data_021052fc + 0x2fbc));
+      position, actor, func_02009d78((u8 *)gGamePhaseRuntime + 0x2fbc));
   if (frame != duration)
     return 0;
   Ov62_Call(scene, 4);
@@ -242,7 +242,7 @@ s32 func_ov062_022104d0(void *scene) {
 }
 /* Route variant one through the global runtime callback. */
 s32 func_ov062_02210650(void) {
-  Ov62_Call(F(void *, data_021052fc, 0), 0x0c);
+  Ov62_Call(F(void *, gGamePhaseRuntime, 0), 0x0c);
   return 0;
 }
 
@@ -308,7 +308,7 @@ s32 func_ov062_022109d4(void *scene) {
 }
 /* Route variant two through the global runtime callback. */
 s32 func_ov062_02210b14(void) {
-  Ov62_Call(F(void *, data_021052fc, 0), 0x0c);
+  Ov62_Call(F(void *, gGamePhaseRuntime, 0), 0x0c);
   return 0;
 }
 
@@ -326,7 +326,7 @@ void *func_ov062_02210b38(void *scene) {
   F(s32, scene, 0x78) = 1;
   F(s32, scene, 4) = 12;
   F(s32, scene, 8) = 0;
-  actor = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+  actor = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
   F(void *, scene, 0x58) = actor;
   F(u32, actor, 0x230) = (F(u32, actor, 0x230) & ~4u) | 0x100;
   F(u32, actor, 0x14) |= 2;
@@ -336,7 +336,7 @@ void *func_ov062_02210b38(void *scene) {
   x = F(s32, actor, 0x1c);
   y = F(s32, actor, 0x20);
   z = F(s32, actor, 0x24);
-  map = F(void *, F(void *, data_021052fc, 0), 0x2ed4);
+  map = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ed4);
   tileClass =
       ((s32(*)(void *, s32, s32))METHOD(map, 0x2c))(map, x >> 16, y >> 16);
   direction = ((tileClass >> 11) & 0x1f) - 2;
@@ -373,7 +373,7 @@ void *func_ov062_02210b38(void *scene) {
                                          F(void *, scene, 0x68), 0, 0, 0, 4, 2);
   func_0205974c(data_02105860, 0x1b8);
   Sound_PlayEffectWithParameters(data_02105860, 0, 0x28, 0x50, 0, -0x100);
-  if (F(void *, F(void *, data_021052fc, 0), 0x2ea8) != 0)
+  if (F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea8) != 0)
     func_0204b5d8();
   Scene_SetFlags03(scene);
   return scene;
@@ -395,7 +395,7 @@ static void *Ov62_DestroyThree(void *scene, s32 freeSelf) {
   func_020050a4((u8 *)actor + 0x28, (u8 *)scene + 0x24);
   ((Method1)METHOD(actor, 0x54))(actor, 1);
   func_02038aac(actor);
-  if (F(void *, F(void *, data_021052fc, 0), 0x2ea8) != 0)
+  if (F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea8) != 0)
     func_0204b680();
   if (F(s32, scene, 0x78) != 0)
     func_02002290(func_020022dc(), 2);
@@ -438,7 +438,7 @@ s32 func_ov062_02211388(void *scene) {
     }
     F(s32, scene, 8) = 4;
     F(s32, scene, 0x30) = F(s32, scene, 0x40) =
-        func_0202baec(F(void *, F(void *, data_021052fc, 0), 0x2ed4),
+        func_0202baec(F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ed4),
                       F(s32, scene, 0x38) >> 16, F(s32, scene, 0x3c) >> 16)
         << 16;
   }
@@ -496,10 +496,10 @@ s32 func_ov062_02211388(void *scene) {
     F(s32, scene, 8) = 5;
     F(s16, scene, 0x56) = 0;
     F(s32, scene, 0x70) = 0x2000;
-    func_020099c0((u8 *)data_021052fc + 0x2fbc, 10, 2);
+    func_020099c0((u8 *)gGamePhaseRuntime + 0x2fbc, 10, 2);
     func_02059394(data_02105860, 0x1b8, 1);
   }
-  func_02008e10(data_021052fc, 2);
+  func_02008e10(gGamePhaseRuntime, 2);
   func_02005afc(F(void *, scene, 0x64), F(s32, actor, 0x1c),
                 F(s32, actor, 0x20), F(s32, actor, 0x24), 4);
   if (F(s32, scene, 8) > 4 && (F(u16, F(void *, scene, 0x6c), 0x24) & 1) == 0) {
@@ -515,6 +515,6 @@ s32 func_ov062_02211388(void *scene) {
 
 /* Route variant three through the global runtime callback. */
 s32 func_ov062_02211acc(void) {
-  Ov62_Call(F(void *, data_021052fc, 0), 0x0c);
+  Ov62_Call(F(void *, gGamePhaseRuntime, 0), 0x0c);
   return 0;
 }

@@ -6,7 +6,7 @@
  * ActorMotion objects embedded in the global game-phase runtime.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 /*
  * Pop duration, Y amplitude, and X amplitude, configure the ActorMotion at
@@ -17,7 +17,7 @@ s32 GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation(GamePhaseActorScriptV
     s32 duration = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 yAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 xAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
-    ActorMotion_SetOscillation((ActorMotion *)((u8 *)data_021052fc + 0x3044),
+    ActorMotion_SetOscillation((ActorMotion *)((u8 *)gGamePhaseRuntime + 0x3044),
                   xAmplitude, yAmplitude, duration);
     return 0;
 }
@@ -26,7 +26,7 @@ s32 GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation(GamePhaseActorScriptV
 s32 GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    ActorMotion_ClearOscillation((ActorMotion *)((u8 *)data_021052fc + 0x3044));
+    ActorMotion_ClearOscillation((ActorMotion *)((u8 *)gGamePhaseRuntime + 0x3044));
     return 0;
 }
 
@@ -39,7 +39,7 @@ s32 GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation(GamePhaseActorScriptV
     s32 duration = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 yAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 xAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
-    ActorMotion_SetOscillation((ActorMotion *)((u8 *)data_021052fc + 0x2fbc),
+    ActorMotion_SetOscillation((ActorMotion *)((u8 *)gGamePhaseRuntime + 0x2fbc),
                   xAmplitude, yAmplitude, duration);
     return 0;
 }
@@ -48,6 +48,6 @@ s32 GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation(GamePhaseActorScriptV
 s32 GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation(GamePhaseActorScriptVm *self)
 {
     (void)self;
-    ActorMotion_ClearOscillation((ActorMotion *)((u8 *)data_021052fc + 0x2fbc));
+    ActorMotion_ClearOscillation((ActorMotion *)((u8 *)gGamePhaseRuntime + 0x2fbc));
     return 0;
 }

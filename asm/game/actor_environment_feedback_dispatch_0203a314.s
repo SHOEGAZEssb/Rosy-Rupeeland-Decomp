@@ -4,7 +4,7 @@
 .extern Sound_Play
 .extern data_020c9670
 .extern data_020df4f0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorInteractionResourceState
 .extern gActorFeedbackPresentations
 .extern VecFx32Object_InitCopy
@@ -403,7 +403,7 @@ ActorFeedback_DispatchEnvironment: ; 0x0203a314
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_0203a890: .word data_020c9670
 .L_0203a894: .word gSceneTouchInitialData
-.L_0203a898: .word data_021052fc
+.L_0203a898: .word gGamePhaseRuntime
 .L_0203a89c: .word gActorFeedbackPresentations
 .L_0203a8a0: .word data_020df4f0
 .L_0203a8a4: .word gHeapContext

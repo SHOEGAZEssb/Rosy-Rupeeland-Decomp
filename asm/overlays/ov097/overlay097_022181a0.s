@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern OS_Halt
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov097_0221a4c8
 .extern data_ov097_0221aa1c
 .extern VecFx32Object_InitComponents
@@ -517,7 +517,7 @@ func_ov097_022181a0:
 .L_022188d8: .word 0x162f
 .L_022188dc: .word data_020c9670
 .L_022188e0: .word 0x166b
-.L_022188e4: .word data_021052fc
+.L_022188e4: .word gGamePhaseRuntime
 .L_022188e8: .word gSoundContext
 .L_022188ec: .word data_ov097_0221a4c8
 .L_022188f0: .word 0x555

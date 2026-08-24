@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/presentation_backed_actor_update.c.
 .extern SceneManager_GetCurrent
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gSceneManager
 .extern VecFx32Object_Assign
 .extern VecFx32Object_Add
@@ -393,7 +393,7 @@ func_0204d858: ; 0x0204d858
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .L_0204de04: .word 0x1666
-.L_0204de08: .word data_021052fc
+.L_0204de08: .word gGamePhaseRuntime
 .L_0204de0c: .word gSceneManager
 .L_0204de10: .word 0xd9a
 .L_0204de14: .word 0xe66

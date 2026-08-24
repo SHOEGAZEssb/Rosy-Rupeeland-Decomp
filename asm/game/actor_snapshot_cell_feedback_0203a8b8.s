@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern TouchPanelManager_GetPoint
 .extern data_020df4f0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorInteractionResourceState
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -149,7 +149,7 @@ ActorFeedback_ProcessSnapshotCell: ; 0x0203a8b8
 .L_0203aaa4:
     add sp, sp, #0x38
     ldmia sp!, {r3, r4, r5, pc}
-.L_0203aaac: .word data_021052fc
+.L_0203aaac: .word gGamePhaseRuntime
 .L_0203aab0: .word gActorInteractionResourceState
 .L_0203aab4: .word gTouchPanelManager
 .L_0203aab8: .word gSoundContext

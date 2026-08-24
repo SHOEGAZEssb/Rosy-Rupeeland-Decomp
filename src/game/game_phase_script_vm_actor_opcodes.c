@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gActorRuntimeCollection[];
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
@@ -65,7 +65,7 @@ s32 GamePhaseActorScriptVm_DispatchIndexedActorValueCommand(GamePhaseActorScript
     void *target = ActorCollection_FindActorByRuntimeId(collection, index);
 
     if (*((u8 *)target + 0x4d) == 1) {
-        u8 *runtimeCollection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        u8 *runtimeCollection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         target = *(void **)(runtimeCollection + 0x2e7c);
         callActorValueMethod(target, 0x74, value);
         Actor_SetActive(target, 1);

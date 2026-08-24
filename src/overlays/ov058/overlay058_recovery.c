@@ -14,7 +14,7 @@ extern const u8 data_ov058_0220fcec[], data_ov058_0220fcf4[];
 extern const u8 data_ov058_0220fcfc[], data_ov058_0220fd04[];
 extern const u16 *data_ov058_0220fd0c;
 extern void *data_020f4e14[], *data_020f4e18[], *gDebugFont[];
-extern void *data_021052fc, *gGameWork;
+extern void *gGamePhaseRuntime, *gGameWork;
 extern u8 gHeapContext[], gMainBgPaletteBuffer[], gSubBgPaletteBuffer[];
 
 #ifdef __cplusplus
@@ -504,8 +504,8 @@ void func_ov058_0220f308(void *scene)
 void *func_ov058_0220f484(void)
 {
     void *scene = Heap_Alloc(0xb0, data_ov058_0220fd04, 4, gHeapContext);
-    if (scene) scene = func_ov058_0220e840(scene, (u8 *)data_021052fc + 0x2fbc);
-    RuntimePresentationManager_AppendSecondListEffect((u8 *)data_021052fc + 0x2f7c, scene);
+    if (scene) scene = func_ov058_0220e840(scene, (u8 *)gGamePhaseRuntime + 0x2fbc);
+    RuntimePresentationManager_AppendSecondListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, scene);
     return scene;
 }
 

@@ -7,7 +7,7 @@
  */
 
 extern void *data_020f4e18;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gGridEffectActorRuntimeState[];
 extern void *gGridEffectActorRegistry[];
 
@@ -94,7 +94,7 @@ void GridEffectActorRegistry_BroadcastStateValue0(void)
  * Ignore all register inputs. For each occupied actor whose low state bits at
  * 0x1F0 equal two, set presentation flags 0x14, change the state to three, and
  * finish it through Actor_GetOwningCollection/ActorCollection_QueueActorForRemoval. Finally set global flag 0x10
- * at data_021052fc+0x30B8. Returns nothing; actor/global state changes without
+ * at gGamePhaseRuntime+0x30B8. Returns nothing; actor/global state changes without
  * direct hardware effects.
  */
 void GridEffectActorRegistry_FinalizeDepartingActors(void)
@@ -109,7 +109,7 @@ void GridEffectActorRegistry_FinalizeDepartingActors(void)
             ActorCollection_QueueActorForRemoval(Actor_GetOwningCollection(actor), actor);
         }
     }
-    FIELD(u32, data_021052fc, 0x30b8) |= 0x10;
+    FIELD(u32, gGamePhaseRuntime, 0x30b8) |= 0x10;
 }
 
 /*

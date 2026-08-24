@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern gTimedSpriteSampledArcPresentationVtable
 .extern gTimedSpritePresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
@@ -32,6 +32,6 @@ TimedSpriteSampledArcPresentation_Update: ; 0x0201f6e0
     movne r0, #0x1
     moveq r0, #0x0
     ldmia sp!, {r4, pc}
-.L_0201f720: .word data_021052fc
+.L_0201f720: .word gGamePhaseRuntime
     .size TimedSpriteSampledArcPresentation_Update, .-TimedSpriteSampledArcPresentation_Update
 

@@ -16,7 +16,7 @@ extern void *gSoundContext;
 extern void *gDebugFont;
 extern void *data_020f4e14[];
 extern void *data_020f4e18[];
-extern void *data_021052fc[];
+extern void *gGamePhaseRuntime[];
 
 #ifdef __cplusplus
 extern "C" {
@@ -159,7 +159,7 @@ static void load_affine_resources(GraphicsResourceSet *set,
 extern "C" void Overlay032Scene_SetupGraphics(void *scene)
 {
     GraphicsResourceSet set;
-    u8 *context = (u8 *)data_021052fc[0];
+    u8 *context = (u8 *)gGamePhaseRuntime[0];
 
     RuntimePresentationManager_DisableGraphics3dForActivePhase(context + 0x2f7c);
     func_020923a4((u8 *)scene + 0xbe8);

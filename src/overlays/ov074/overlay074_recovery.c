@@ -12,8 +12,8 @@
 extern u8 data_ov074_02211d34[], data_ov074_02211d48[];
 extern u8 data_ov074_02211d5c[];
 extern u8 data_ov074_02211d8c[], data_ov074_02211db8[];
-extern void *data_021052fc;
-extern void *data_02105300, *gGameWork, *gSoundContext, *gGamePhaseCurrencyHud;
+extern void *gGamePhaseRuntime;
+extern void *gGamePhaseTouchPromptTaskNode, *gGameWork, *gSoundContext, *gGamePhaseCurrencyHud;
 extern void *gHeapContext, *gSceneManager;
 extern u8 data_020f4e14[];
 extern const s16 data_020c9670[];
@@ -153,10 +153,10 @@ void *func_ov074_0220fda8(void *scene, s32 direction) {
   func_ov074_0220fd20((u8 *)scene + 0x144);
   func_ov074_0220fd44((u8 *)scene + 0x15c);
   F(s32, scene, 4) = 3;
-  F(u8, data_021052fc, 0x30cc) |= 4;
+  F(u8, gGamePhaseRuntime, 0x30cc) |= 4;
   func_ov074_02210b90(scene);
 
-  presentationManager = (u8 *)data_021052fc + 0x2f7c;
+  presentationManager = (u8 *)gGamePhaseRuntime + 0x2f7c;
   actor = RuntimePresentationManager_GetGraphics3dPresentation(presentationManager);
   Graphics3dPresentation_Clear(actor);
   Graphics3dPresentation_Disable(actor, 1, 0);
@@ -166,7 +166,7 @@ void *func_ov074_0220fda8(void *scene, s32 direction) {
   *display_control = (display & ~0x1f00U) |
                      ((((display & 0x1f00U) >> 8) & ~1U) << 8);
   *(volatile u32 *)0x04000010 = 0;
-  GamePhaseTouchPrompt_SetEnabled(F(void *, data_02105300, 8), 0);
+  GamePhaseTouchPrompt_SetEnabled(F(void *, gGamePhaseTouchPromptTaskNode, 8), 0);
   actor = ActorDerivedType1_GetSingletonObject();
   if (actor != 0 && F(s16, actor, 0x230) == 1)
     func_ov088_0221ad9c(actor, 0);
@@ -174,19 +174,19 @@ void *func_ov074_0220fda8(void *scene, s32 direction) {
   GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
 
   actor = GamePhaseMetadata_GetByIndex(
-      F(s16, F(void *, data_021052fc, 0x30bc), 0x14 + direction * 2));
+      F(s16, F(void *, gGamePhaseRuntime, 0x30bc), 0x14 + direction * 2));
   target_area = F(s8, actor, 0x4c);
-  current_area = F(s8, F(void *, data_021052fc, 0x30bc), 0x4c);
+  current_area = F(s8, F(void *, gGamePhaseRuntime, 0x30bc), 0x4c);
   if (current_area != target_area) {
     F(s32, scene, 0x124) = 1;
-    if (F(s32, F(void *, data_021052fc, 0x30bc), 0x40) < 0)
+    if (F(s32, F(void *, gGamePhaseRuntime, 0x30bc), 0x40) < 0)
       F(u32, scene, 0x140) |= 4;
-    func_ov074_0220fd68(transition, F(s16, data_021052fc, 0x2ef4),
-                       F(s16, data_021052fc, 0x2ef6));
+    func_ov074_0220fd68(transition, F(s16, gGamePhaseRuntime, 0x2ef4),
+                       F(s16, gGamePhaseRuntime, 0x2ef6));
     func_ov074_02210008((u8 *)scene + 0x144, transition);
     GameWork_SetFlag(gGameWork, 0x412);
   }
-  ActorDerivedType1_ResetToBaseState(F(void *, data_021052fc, 0x2ea4));
+  ActorDerivedType1_ResetToBaseState(F(void *, gGamePhaseRuntime, 0x2ea4));
   Scene_SetFlags03(scene);
   return scene;
 }
@@ -202,7 +202,7 @@ void *func_ov074_02210008(void *destination, const void *source) {
 static void *func_ov074_destroy_scene(void *scene, s32 free_allocation) {
   void *actor;
   F(void *, scene, 0) = data_ov074_02211d8c;
-  GamePhaseTouchPrompt_SetEnabled(F(void *, data_02105300, 8), 1);
+  GamePhaseTouchPrompt_SetEnabled(F(void *, gGamePhaseTouchPromptTaskNode, 8), 1);
   actor = ActorDerivedType1_GetSingletonObject();
   if (actor != 0 && F(s16, actor, 0x230) == 1)
     func_ov088_0221ad9c(actor, 1);
@@ -238,7 +238,7 @@ s32 func_ov074_022101dc(void *scene) {
   typedef void (*UiFn)(void *, s32, s32);
   s32 point[4];
   s32 transition[6];
-  void *runtime = data_021052fc;
+  void *runtime = gGamePhaseRuntime;
   void *object;
   UpdateFn update;
 
@@ -356,26 +356,26 @@ void func_ov074_022105b4(void *scene, s32 direction, void *source_spline,
   void *current;
   (void)unused_spline;
   Scene_ClearFlags03(scene);
-  GamePhaseRuntime_RunFrameMaintenance(data_021052fc);
-  GamePhaseRuntime_ChangeToNeighborArea(data_021052fc, direction);
+  GamePhaseRuntime_RunFrameMaintenance(gGamePhaseRuntime);
+  GamePhaseRuntime_ChangeToNeighborArea(gGamePhaseRuntime, direction);
   SplineMover_Evaluate2D(point, source_spline);
-  GamePhaseState_ApplyPlacementState((u8 *)data_021052fc + 0x24, point);
+  GamePhaseState_ApplyPlacementState((u8 *)gGamePhaseRuntime + 0x24, point);
   VecFx32Object_Destroy(point);
-  GamePhaseState_SetEnabled((u8 *)data_021052fc + 0x24, 1);
+  GamePhaseState_SetEnabled((u8 *)gGamePhaseRuntime + 0x24, 1);
   DualLayerTileRenderer_SetEmbeddedAnimationPaused(
-      F(void *, data_021052fc, 0x2ed4), 1);
-  GamePhaseRuntime_SynchronizeActorPlacement(data_021052fc, 1);
-  GamePhaseRuntime_FinalizeActorCollections(data_021052fc, F(s32, scene, 4), 2);
+      F(void *, gGamePhaseRuntime, 0x2ed4), 1);
+  GamePhaseRuntime_SynchronizeActorPlacement(gGamePhaseRuntime, 1);
+  GamePhaseRuntime_FinalizeActorCollections(gGamePhaseRuntime, F(s32, scene, 4), 2);
   func_ov074_02210878(spline, scene, F(s32, scene, 0x24));
   SplineMover_Assign((u8 *)scene + 0xc8, spline);
   SplineMover_Destroy(spline);
   if (F(s32, scene, 0x124) == 0)
-    GamePhaseAreaScene_SetEnabled(F(void *, data_021052fc, 0x2fb8), 1);
+    GamePhaseAreaScene_SetEnabled(F(void *, gGamePhaseRuntime, 0x2fb8), 1);
   else
     ActorCollection_SetEnabled(
-        GamePhaseRuntime_GetActorCollection(data_021052fc, 2), 0);
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2), 0);
   DualLayerTileRenderer_SetEmbeddedAnimationPaused(
-      F(void *, data_021052fc, 0x2ed4), 0);
+      F(void *, gGamePhaseRuntime, 0x2ed4), 0);
   resume = Heap_Alloc(0x28, data_ov074_02211db8, -4, gHeapContext);
   if (resume != 0)
     GamePhaseResumeScene_Init(resume, 1);
@@ -388,16 +388,16 @@ void func_ov074_02210730(void *scene, void *spline) {
   s32 point[4];
   void *actor;
   SplineMover_Evaluate2D(point, spline);
-  GamePhaseState_ApplyPlacementState((u8 *)data_021052fc + 0x24, point);
+  GamePhaseState_ApplyPlacementState((u8 *)gGamePhaseRuntime + 0x24, point);
   ActorCollection_DispatchEventToActors(
-      GamePhaseRuntime_GetActorCollection(data_021052fc, 1), point);
+      GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), point);
   actor = ActorDerivedType1_GetSingletonObject();
   if (actor != 0 && F(s16, actor, 0x230) == 1)
     func_ov088_0221aaac(actor);
   if (F(s32, scene, 0x124) != 0 &&
       SplineMover_Update((u8 *)scene + 0xc8))
     func_ov074_022107f8(scene, (u8 *)scene + 0xc8, 0, 0);
-  GamePhaseAreaScene_SetEnabled(F(void *, data_021052fc, 0x2fb8), 1);
+  GamePhaseAreaScene_SetEnabled(F(void *, gGamePhaseRuntime, 0x2fb8), 1);
   VecFx32Object_Destroy(point);
 }
 
@@ -406,7 +406,7 @@ void func_ov074_022107f8(void *unused, void *spline, void *unused2,
                           void *unused3) {
   typedef void (*DisableFn)(void *, s32);
   s32 point[4];
-  void *phase = F(void *, data_021052fc, 0x2fb8);
+  void *phase = F(void *, gGamePhaseRuntime, 0x2fb8);
   void *area = F(void *, phase, 0x2ebc);
   DisableFn disable = F(DisableFn, F(void *, area, 0), 0x54);
   (void)unused;
@@ -431,7 +431,7 @@ void func_ov074_02210878(void *spline, void *unused, s32 direction) {
   s32 y = 0;
   (void)unused;
   VecFx32Object_Init(target);
-  GamePhaseRuntime_BuildSecondaryTransform(base, data_021052fc);
+  GamePhaseRuntime_BuildSecondaryTransform(base, gGamePhaseRuntime);
   if (direction == 0)
     x = 0x80000;
   else if (direction == 1)
@@ -464,21 +464,21 @@ s32 func_ov074_02210a3c(void *scene) {
   void *area;
   switch (F(s32, scene, 8)) {
   case 0:
-    GamePhaseVisualEffect_Update((u8 *)data_021052fc + 0x2ed8);
+    GamePhaseVisualEffect_Update((u8 *)gGamePhaseRuntime + 0x2ed8);
     break;
   case 1:
-    GamePhaseVisualEffect_Update((u8 *)data_021052fc + 0x2ed8);
+    GamePhaseVisualEffect_Update((u8 *)gGamePhaseRuntime + 0x2ed8);
     func_ov074_02211a0c((u8 *)scene + 0x38);
     break;
   case 2:
-    area = F(void *, data_021052fc, 0x2fb8);
+    area = F(void *, gGamePhaseRuntime, 0x2fb8);
     if (area != 0)
       GamePhaseAreaScene_Update(area);
     break;
   case 3:
   case 4:
-    GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
-    area = F(void *, data_021052fc, 0x2fb8);
+    GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
+    area = F(void *, gGamePhaseRuntime, 0x2fb8);
     if (area != 0)
       GamePhaseAreaScene_Update(area);
     break;
@@ -488,18 +488,18 @@ s32 func_ov074_02210a3c(void *scene) {
       GX_DisableBankForLCDC();
       GX_SetGraphicsMode(1, 0, 1);
     }
-    area = F(void *, data_021052fc, 0x2fb8);
+    area = F(void *, gGamePhaseRuntime, 0x2fb8);
     if (area != 0)
       GamePhaseAreaScene_Update(area);
     break;
   case 6:
-    GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
-    area = F(void *, data_021052fc, 0x2fb8);
+    GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
+    area = F(void *, gGamePhaseRuntime, 0x2fb8);
     if (area != 0)
       GamePhaseAreaScene_Update(area);
     break;
   }
-  RuntimePresentationManager_DispatchVBlankCallbacks((u8 *)data_021052fc + 0x2f7c);
+  RuntimePresentationManager_DispatchVBlankCallbacks((u8 *)gGamePhaseRuntime + 0x2f7c);
   return 0;
 }
 
@@ -558,7 +558,7 @@ static void func_ov074_build_boundary_splines(void *scene, s32 direction,
   VecFx32Object_Destroy(zero);
   VecFx32Object_Destroy(first_control);
 
-  GamePhaseRuntime_BuildSecondaryTransform(secondary_target, data_021052fc);
+  GamePhaseRuntime_BuildSecondaryTransform(secondary_target, gGamePhaseRuntime);
   VecFx32Object_InitComponents(offset, offset_x, offset_y, 0);
   func_ov074_02210a04(secondary_start, secondary_target, offset);
   SplineMover_InitTransition(spline, secondary_start, secondary_target,
@@ -578,7 +578,7 @@ void func_ov074_02210b90(void *scene) {
   s32 current[4];
   s32 zero[4];
   s32 point[4];
-  void *follower = (u8 *)data_021052fc + 0x2fbc;
+  void *follower = (u8 *)gGamePhaseRuntime + 0x2fbc;
   void *actor;
   void *actor_a;
   void *actor_b;
@@ -590,15 +590,15 @@ void func_ov074_02210b90(void *scene) {
   VecFx32Object_InitCopy(current, ActorMotionAreaFollower_GetPosition(follower));
   actor = ActorMotion_GetActor(follower);
   VecFx32Object_Assign((u8 *)scene + 0x28, (u8 *)actor + 0x18);
-  dimensions = F(u32, F(void *, data_021052fc, 0x2ed4), 0x20);
+  dimensions = F(u32, F(void *, gGamePhaseRuntime, 0x2ed4), 0x20);
   width = (s32)(dimensions << 16) >> 12;
   height = (s32)(dimensions >> 16) << 4;
   func_ov074_build_boundary_splines(scene, F(s32, scene, 0x24), width,
                                      height, current);
 
-  collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+  collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
   actor_a = F(void *, collection, 0x2e7c);
-  collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+  collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
   actor_b = F(void *, collection, 0x2e7c);
   VecFx32Object_Assign((u8 *)actor_a + 0x28, (u8 *)scene + 0x28);
   VecFx32Object_Assign((u8 *)actor_b + 0x18, (u8 *)actor_a + 0x28);
@@ -611,7 +611,7 @@ void func_ov074_02210b90(void *scene) {
     VecFx32Object_Assign((u8 *)actor + 0x28, (u8 *)scene + 0x28);
     VecFx32Object_Assign((u8 *)actor + 0x18, (u8 *)actor + 0x28);
   }
-  actor = F(void *, data_021052fc, 0x2ea8);
+  actor = F(void *, gGamePhaseRuntime, 0x2ea8);
   if (actor != 0)
     Type7Actor_ProcessBoundaryTransition(actor, (u8 *)scene + 0x28,
                                          F(s32, scene, 0x24));
@@ -620,7 +620,7 @@ void func_ov074_02210b90(void *scene) {
   ActorMotion_SetPosition(follower, point);
   VecFx32Object_Destroy(point);
   SplineMover_Evaluate2D(point, (u8 *)scene + 0xc8);
-  ActorMotion_SetPosition((u8 *)data_021052fc + 0x3044, point);
+  ActorMotion_SetPosition((u8 *)gGamePhaseRuntime + 0x3044, point);
   VecFx32Object_Destroy(point);
   VecFx32Object_Destroy(current);
 }
@@ -690,7 +690,7 @@ void func_ov074_022117d0(void *record, s32 x, s32 y) {
   *scale = 0x1000;
   scale[15] = 0x5ed00000;
   scale[14] = 0x001f00c0;
-  color = F(s16, GamePhaseState_GetConfiguration((u8 *)data_021052fc + 0x24),
+  color = F(s16, GamePhaseState_GetConfiguration((u8 *)gGamePhaseRuntime + 0x24),
             0x56);
   *(volatile u32 *)0x04000480 =
       ((u32)(color | color << 5 | color << 10) & 0xffff) | 0;
@@ -804,7 +804,7 @@ void func_ov074_02211b58(void *destination, const void *source) {
 /* Updates one branch of a small state dispatcher and invokes shared system callbacks; returns dispatch status. */
 s32 func_ov074_02211b88(void *record) {
   s32 frame = ++F(s32, record, 0x14);
-  void *effect = (u8 *)data_021052fc + 0x2ed8;
+  void *effect = (u8 *)gGamePhaseRuntime + 0x2ed8;
   if (frame > 7) {
     GamePhaseVisualEffect_SetBlendCoefficients(effect, 0, 0x10);
     return 1;
@@ -823,7 +823,7 @@ s32 func_ov074_02211c08(void *record) {
   if (complete)
     frame = F(s32, record, 0x14) = 7;
   GamePhaseVisualEffect_SetBlendCoefficients(
-      (u8 *)data_021052fc + 0x2ed8,
+      (u8 *)gGamePhaseRuntime + 0x2ed8,
       (F(s32, record, 4) + F(s32, record, 8) * frame) >> 12,
       (F(s32, record, 0xc) + F(s32, record, 0x10) * frame) >> 12);
   return complete;

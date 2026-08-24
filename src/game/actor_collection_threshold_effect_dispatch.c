@@ -4,7 +4,7 @@
  * Scan the runtime actor collection and trigger a visual response on eligible
  * type-two actors whose descriptor threshold is reached.
  */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 data_020e8380[];
 extern u8 data_020df9e8[];
 extern u8 data_020dfa20[];
@@ -36,7 +36,7 @@ void ActorCollection_DispatchType2ThresholdEffects(s32 threshold)
     s32 index;
 
     for (index = 0;; ++index) {
-        void **actors = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+        void **actors = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         u8 *actor;
         u16 descriptorIndex;
         s32 descriptorThreshold;
@@ -71,7 +71,7 @@ void ActorCollection_DispatchType2ThresholdEffects(s32 threshold)
             continue;
         (*(void (**)(void *))(*(u8 **)actor + 0x104))(actor);
         {
-            void *effect = RuntimePresentationManager_GetGraphics3dPresentation(data_021052fc + 0x2f7c);
+            void *effect = RuntimePresentationManager_GetGraphics3dPresentation(gGamePhaseRuntime + 0x2f7c);
             Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(effect, 1,
                           *(s32 *)(actor + 0x1c) >> 12,
                           (*(s32 *)(actor + 0x20) >> 12) -

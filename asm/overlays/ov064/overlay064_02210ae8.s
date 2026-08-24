@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov064/overlay064_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseRuntime_SynchronizeActorPlacement
@@ -113,6 +113,6 @@ Overlay064Scene_Update:
 .L_02210c4c:
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-.L_02210c54: .word data_021052fc
+.L_02210c54: .word gGamePhaseRuntime
 .L_02210c58: .word gGamePhaseCurrencyHud
 .size Overlay064Scene_Update, . - Overlay064Scene_Update

@@ -5,7 +5,7 @@
  * an interpolated directional impulse and emits a world-space feedback effect.
  */
 extern s16 data_020c9670[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -133,7 +133,7 @@ void Type7Actor_ApplyType2InteractionResponse(void *self, void *otherObject, s32
         *(s32 *)(effectTransform + 2) =
             originalY + 0x18000 - *(s32 *)(effectTransform + 3);
         graphics3dPresentation = RuntimePresentationManager_GetGraphics3dPresentation(
-            data_021052fc + 0x2f7c,
+            gGamePhaseRuntime + 0x2f7c,
             *(s32 *)(effectTransform + 2), originalY);
         Graphics3dPresentation_CreatePreset20To21ScaledPointSpriteEffectAt(graphics3dPresentation, 1,
                       *(s32 *)(effectTransform + 1),

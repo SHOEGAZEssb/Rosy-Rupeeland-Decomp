@@ -2,7 +2,7 @@
 
 /* Apply table-record actor collision force, recoil, sound, and follow-up effects. */
 extern s16 data_020c9670[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -121,18 +121,18 @@ void ActorTableRecord_ApplyCollisionResponse(void *self, void *other,
 
     if (target[0x4d] == 1 && *(s16 *)(record + 2) != -1 &&
         func_02007868(target) != 0)
-        ActorDerivedType1_StartRecordOrHandleType6D66(*(void **)(data_021052fc + 0x2ea4),
+        ActorDerivedType1_StartRecordOrHandleType6D66(*(void **)(gGamePhaseRuntime + 0x2ea4),
                       *(s16 *)(record + 2));
     if (actor[0x211] == 0 && *(u16 *)(record + 0x0a) != 0)
         Actor_PlayHorizontalSpatialSound(actor, *(u16 *)(record + 0x0a), 0);
     actor[0x211] = record[0x0c];
     if ((*(u32 *)(actor + 0x20c) & 0x4000) != 0)
         ActorTableRecord_ApplySeparationImpulse(
-            actor, *(void **)(data_021052fc + 0x2ea4));
+            actor, *(void **)(gGamePhaseRuntime + 0x2ea4));
     if ((*(u32 *)(actor + 0x20c) & 0x8000) != 0 &&
-        *(void **)(data_021052fc + 0x2ea8) != 0)
+        *(void **)(gGamePhaseRuntime + 0x2ea8) != 0)
         ActorTableRecord_ApplySeparationImpulse(
-            actor, *(void **)(data_021052fc + 0x2ea8));
+            actor, *(void **)(gGamePhaseRuntime + 0x2ea8));
     if (target[0x4d] == 1)
         *(u32 *)(actor + 0x20c) |= 0x4000;
     if (target[0x4d] == 7)

@@ -2,7 +2,7 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern GameWork_TestFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -254,6 +254,6 @@ L_0200a070:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_0200a108: .word gGameWork
 L_0200a10c: .word 0x404
-L_0200a110: .word data_021052fc
+L_0200a110: .word gGamePhaseRuntime
     .size ActorMotionAreaFollower_Update, .-ActorMotionAreaFollower_Update
 

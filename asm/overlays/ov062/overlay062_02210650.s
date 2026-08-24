@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov062/overlay062_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 
 .global func_ov062_02210650
 func_ov062_02210650:
@@ -12,5 +12,5 @@ func_ov062_02210650:
     blx r1
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.L_02210670: .word data_021052fc
+.L_02210670: .word gGamePhaseRuntime
 .size func_ov062_02210650, . - func_ov062_02210650

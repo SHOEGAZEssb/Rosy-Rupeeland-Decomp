@@ -53,7 +53,7 @@ extern "C" {
 #endif
 extern const char data_020d6b58[];
 extern const u8 data_020c3704[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 gActorRuntimeCollection[];
 extern void *gDebugFont;
 extern void *gSoundContext;
@@ -151,7 +151,7 @@ void func_02026514(DualScreenUiGridState *self)
  */
 void func_02026588(DualScreenUiGridState *self, s32 alternateMode)
 {
-    u8 *runtime = *(u8 **)(data_021052fc + 0x2ea8);
+    u8 *runtime = *(u8 **)(gGamePhaseRuntime + 0x2ea8);
     s32 index;
     self->runtimeId74 = *(u16 *)(runtime + 0x4e);
     if (self->spriteOwner00) {
@@ -282,7 +282,7 @@ void func_020269f8(DualScreenUiGridState *self)
     s32 progressFrame = 0;
     s32 desiredTarget;
     if (self->flags8c & 1) return;
-    runtime = *(u8 **)(data_021052fc + 0x2ea8);
+    runtime = *(u8 **)(gGamePhaseRuntime + 0x2ea8);
     active = self->spriteOwner00 && *(u32 *)(self->spriteOwner00 + 0x20);
     if (active) {
         if (!runtime) func_02026514(self);

@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov019/overlay019_scene_helpers.c. */
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern GamePhaseState_ForwardVCount
 
 .global func_ov019_021fd588
@@ -22,5 +22,5 @@ L_021fd5bc:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_021fd5c4: .word 0x4000006
-L_021fd5c8: .word data_021052fc
+L_021fd5c8: .word gGamePhaseRuntime
     .size func_ov019_021fd588, . - func_ov019_021fd588

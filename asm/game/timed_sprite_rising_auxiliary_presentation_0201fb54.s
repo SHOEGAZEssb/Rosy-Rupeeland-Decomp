@@ -2,7 +2,7 @@
 .text
 .extern Heap_Free
 .extern gRisingAuxiliaryTimedSpritePresentationVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern DisplayController_GetSubScreenVerticalOffset
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy

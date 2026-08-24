@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/presentation_backed_actor_spawn.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_SpawnActorFromDescriptor
@@ -91,6 +91,6 @@ PresentationBackedActor_Spawn: ; 0x0204e2ac
     add sp, sp, #0xb0
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204e3ec: .word 0x8018
-.L_0204e3f0: .word data_021052fc
+.L_0204e3f0: .word gGamePhaseRuntime
 .size PresentationBackedActor_Spawn, . - PresentationBackedActor_Spawn
 

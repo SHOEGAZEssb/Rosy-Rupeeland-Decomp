@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_area_scene_lifecycle.c.
 .text
 .extern data_020d5680
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern OverlaySlot_Destroy
 .extern RuntimePresentationManager_DetachEffectsByKey
@@ -39,6 +39,6 @@ L_02011f6c:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_02011f90: .word data_020d5680
-L_02011f94: .word data_021052fc
+L_02011f94: .word gGamePhaseRuntime
     .size GamePhaseAreaScene_Destroy, . - GamePhaseAreaScene_Destroy
 

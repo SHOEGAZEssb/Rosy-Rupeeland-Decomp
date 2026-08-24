@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/grid_effect_actor_eligibility.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern ActorRuntimeCollection_GetPendingAttachmentFlag
 .text
@@ -28,6 +28,6 @@ GridEffectActor_CanBeginDeparture:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 .L_0204f4cc: .word gActorRuntimeCollection
-.L_0204f4d0: .word data_021052fc
+.L_0204f4d0: .word gGamePhaseRuntime
 .size GridEffectActor_CanBeginDeparture, . - GridEffectActor_CanBeginDeparture
 

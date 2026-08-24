@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern data_020e1788
 .extern data_020e18d0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionJitter_EnsureMinimum
 .extern Type7Actor_TryCancelDistantTarget
 .extern Type7Actor_TryInstallGlobalTargetCallback
@@ -112,7 +112,7 @@ Type7Actor_HandleResourceInteraction: ; 0x02048c2c
 .L_02048d4c: .word gGameWork
 .L_02048d50: .word 0x3fd
 .L_02048d54: .word data_020e1788
-.L_02048d58: .word data_021052fc
+.L_02048d58: .word gGamePhaseRuntime
 .L_02048d5c: .word data_020e18d0
 
 Type7Actor_UpdateIdleTargeting: ; 0x02048d60

@@ -17,7 +17,7 @@
 .extern Type7Actor_InitializeStationaryMotionState
 .extern Type7Actor_FindAuxiliaryRecord
 .extern func_02025d14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_020e16b0
 .extern data_020e5804
 .text
@@ -327,7 +327,7 @@ Type7Actor_SpawnFromRecord: ; 0x0204bf9c
 .L_0204c410:
     add sp, sp, #0xb0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0204c418: .word data_021052fc
+.L_0204c418: .word gGamePhaseRuntime
 .L_0204c41c: .word 0x2000408
 .L_0204c420: .word data_020e16b0
 .L_0204c424: .word 0x25b

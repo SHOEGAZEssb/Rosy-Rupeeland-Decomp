@@ -13,7 +13,7 @@
     .extern TitleDialog_Init
     .extern func_ov033_021fd034
     .extern func_ov033_021fd04c
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_020f4e14
     .extern data_ov033_021fdeb0
     .extern data_ov033_021fdeb8
@@ -142,7 +142,7 @@ L_021fd1e8:
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
-L_021fd244: .word data_021052fc
+L_021fd244: .word gGamePhaseRuntime
 L_021fd248: .word data_020f4e14
 L_021fd24c: .word data_ov033_021fdeb0
 L_021fd250: .word gHeapContext

@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 #ifdef __cplusplus
 }
 #endif
@@ -13,7 +13,7 @@ extern void *data_021052fc;
 /* Store active-entity X in integer units, or zero when no entity exists, as the VM result; return zero. */
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionX(GamePhaseActorScriptVm *self)
 {
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, entity ? (u32)(*(s32 *)(entity + 0x1c) >> 12) : 0);
     return 0;
@@ -22,7 +22,7 @@ s32 GamePhaseActorScriptVm_GetActiveEntityPositionX(GamePhaseActorScriptVm *self
 /* Store active-entity Y in integer units, or zero when no entity exists, as the VM result; return zero. */
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionY(GamePhaseActorScriptVm *self)
 {
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, entity ? (u32)(*(s32 *)(entity + 0x20) >> 12) : 0);
     return 0;
@@ -31,7 +31,7 @@ s32 GamePhaseActorScriptVm_GetActiveEntityPositionY(GamePhaseActorScriptVm *self
 /* Store active-entity Z in integer units, or zero when no entity exists, as the VM result; return zero. */
 s32 GamePhaseActorScriptVm_GetActiveEntityPositionZ(GamePhaseActorScriptVm *self)
 {
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *entity = *(u8 **)(runtime + 0x2ea8);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, entity ? (u32)(*(s32 *)(entity + 0x24) >> 12) : 0);
     return 0;

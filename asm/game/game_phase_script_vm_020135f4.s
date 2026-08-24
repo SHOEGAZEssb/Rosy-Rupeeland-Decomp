@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_query_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern GamePhaseRuntime_GetActorCollection
@@ -29,6 +29,6 @@ GamePhaseActorScriptVm_GetCollection1ActorVectorX: ; 0x020135f4
     mov r0, #0x0
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-L_02013648: .word data_021052fc
+L_02013648: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_GetCollection1ActorVectorX, . - GamePhaseActorScriptVm_GetCollection1ActorVectorX
 

@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov062/overlay062_recovery.c.
 .extern SceneManager_GetCurrent
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32Bezier_Evaluate3D
@@ -95,6 +95,6 @@ func_ov062_022109d4:
     add sp, sp, #0x1c
     ldmia sp!, {r3, r4, pc}
 .L_02210b08: .word gSceneManager
-.L_02210b0c: .word data_021052fc
+.L_02210b0c: .word gGamePhaseRuntime
 .L_02210b10: .word data_020c9670
 .size func_ov062_022109d4, . - func_ov062_022109d4

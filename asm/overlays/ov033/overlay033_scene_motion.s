@@ -8,7 +8,7 @@
     .extern TitleDialog_UpdateTextPage
     .extern Presentation_InterpolateQuadraticPulse
     .extern GamePhaseState_QueryTerrainHeight
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov033_021fdec0
     .extern gHeapContext
     .extern gPadState1
@@ -55,7 +55,7 @@ L_021fd3f8:
 L_021fd404:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_021fd40c: .word data_021052fc
+L_021fd40c: .word gGamePhaseRuntime
 L_021fd410: .word data_ov033_021fdec0
 L_021fd414: .word gHeapContext
 .size func_ov033_021fd37c, .-func_ov033_021fd37c
@@ -163,6 +163,6 @@ func_ov033_021fd4cc:
     mov r0, r0, asr #0x5
     str r0, [r4, #0x20]
     ldmia sp!, {r4, pc}
-L_021fd590: .word data_021052fc
+L_021fd590: .word gGamePhaseRuntime
 L_021fd594: .word data_020c9670
 .size func_ov033_021fd4cc, .-func_ov033_021fd4cc

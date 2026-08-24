@@ -3,7 +3,7 @@
 .extern DebugText_BeginFrame
 .extern Sound_Play
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GraphicsSpriteState_SetScreenPositionCulled
 .extern GraphicsSpriteState_SetDepthOrderedWorldPosition
 .extern Sound_LoadGroup
@@ -407,7 +407,7 @@ func_ov072_02210214:
     blt .L_0221073c
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_022107c8: .word data_021052fc
+.L_022107c8: .word gGamePhaseRuntime
 .L_022107cc: .word gSoundContext
 .L_022107d0: .word data_020c9670
 .size func_ov072_02210214, . - func_ov072_02210214

@@ -4,7 +4,7 @@
 .extern Heap_Alloc
 .extern Heap_Free
 .extern data_020df4a4
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern func_02008378
@@ -98,7 +98,7 @@ ActorDerivedType1_ReleaseAuxiliaryAndSpawnResetEffect: ; 0x0203811c
     ldmia sp!, {r3, r4, r5, pc}
 .L_02038244: .word gGameWork
 .L_02038248: .word 0x3ee
-.L_0203824c: .word data_021052fc
+.L_0203824c: .word gGamePhaseRuntime
 .L_02038250: .word data_020df4a4
 .L_02038254: .word gHeapContext
 .L_02038258: .word 0x21e1

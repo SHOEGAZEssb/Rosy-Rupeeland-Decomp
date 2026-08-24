@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 extern const u8 data_ov033_021fdd60[];
 extern const u8 data_ov033_021fdd2c[];
@@ -95,7 +95,7 @@ extern "C" s32 func_ov033_021fd738(void *scene)
         if (update_group(group)) {
             GameWork_SetFlag(gGameWork, 0x3f8);
             GameWork_SetFlag(gGameWork, 0x386);
-            GamePhaseRuntime_StageAreaRequest(data_021052fc, 0x69, 0x80, 0x280, 0, 0);
+            GamePhaseRuntime_StageAreaRequest(gGamePhaseRuntime, 0x69, 0x80, 0x280, 0, 0);
             void *effect = Heap_Alloc(0x24, data_ov033_021fdec8, -4,
                                       gHeapContext);
             if (effect != 0)
@@ -108,7 +108,7 @@ extern "C" s32 func_ov033_021fd738(void *scene)
             func_ov033_021fd598(scene);
         }
     } else if (state == 2) {
-        void *global = data_021052fc;
+        void *global = gGamePhaseRuntime;
         void *primary = FIELD(void *, (u8 *)global + 0x2000, 0xea4);
         FIELD(void *, scene, 4) = primary;
         FIELD(u16, FIELD(void *, primary, 0x54), 0x24) |= 0x10;

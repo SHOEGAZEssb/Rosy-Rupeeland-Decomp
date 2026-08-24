@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern GameWork_ClearFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Assign
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_PlayRadialSpatialSound
@@ -155,7 +155,7 @@ func_ov088_0221a58c:
     mov r1, #0x0
     strh r1, [r0, #0x30]
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_0221a7a8: .word data_021052fc
+.L_0221a7a8: .word gGamePhaseRuntime
 .L_0221a7ac: .word gGameWork
 .L_0221a7b0: .word 0x402
 .L_0221a7b4: .word 0x1002

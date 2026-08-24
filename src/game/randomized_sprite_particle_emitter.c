@@ -51,7 +51,7 @@ extern void *data_020de8cc[];
 extern const char gRandomizedSpriteParticleListNodeAllocationTag[];
 extern const char gRandomizedSpriteParticleAllocationTag[];
 extern const char gRandomizedSpriteParticleEmitterAllocationTag[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *data_020f4e14;
 extern u32 genrand_int32(void);
 extern void __construct_array(void *, u32, u32, void (*)(void *),
@@ -284,7 +284,7 @@ void *func_0202906c(const void *projection, s32 x0, s32 y0, s32 x1,
         &gHeapContext);
     if (self)
         self = func_02028b98(self, projection, &position, &target, frame);
-    result = RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, self);
+    result = RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, self);
     VecFx32Object_Destroy(&target);
     VecFx32Object_Destroy(&position);
     return result;

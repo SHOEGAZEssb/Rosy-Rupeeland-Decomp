@@ -4,7 +4,7 @@
 .extern Sound_Play
 .extern data_020c9670
 .extern data_020e6e68
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov075_022177d0
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -298,7 +298,7 @@ func_ov075_0221647c:
 .L_02216880: .word data_020c9670
 .L_02216884: .word data_ov075_022177d0
 .L_02216888: .word gHeapContext
-.L_0221688c: .word data_021052fc
+.L_0221688c: .word gGamePhaseRuntime
 .L_02216890: .word gGamePhaseCurrencyHud
 .L_02216894: .word data_020e6e68
 .L_02216898: .word 0xffff

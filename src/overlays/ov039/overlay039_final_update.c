@@ -19,7 +19,7 @@ typedef struct Graphics3dPresentation Graphics3dPresentation;
 
 extern void *gSoundContext;
 extern void *gSystemState;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gActorRuntimeFlags;
 extern const s16 data_020c9670[];
 extern const s32 data_ov039_022083fc[];
@@ -210,7 +210,7 @@ extern "C" void func_ov039_0220713c(void *scene)
     void *principal = FIELD(void *, scene, 0x48);
     Graphics3dPresentation *presentation =
         RuntimePresentationManager_GetGraphics3dPresentation(
-            (u8 *)FIELD(void *, data_021052fc, 0) + 0x2f7c);
+            (u8 *)FIELD(void *, gGamePhaseRuntime, 0) + 0x2f7c);
     Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(
         presentation, 1, FIELD(s32, principal, 0x30) >> 12,
         FIELD(s32, principal, 0x34) >> 12);

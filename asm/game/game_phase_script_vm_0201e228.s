@@ -8,7 +8,7 @@
 .extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global FieldEffectList_DestroyAndFree
 FieldEffectList_DestroyAndFree: ; 0x0201e228
     stmdb sp!, {r4, lr}

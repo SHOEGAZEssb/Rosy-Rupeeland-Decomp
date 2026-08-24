@@ -3,7 +3,7 @@
 
 /* Compact flag, timing, global-access, and deleting helpers for the runtime. */
 
-extern GamePhaseRuntime *data_021052fc;
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern void *data_020f4e14;
 extern void *gDebugFont;
 
@@ -58,7 +58,7 @@ s32 FrameCounter_Tick31(void *counter)
 /* Store value at offset 0x30f8 of the global active runtime; returns no value. */
 void GamePhaseRuntime_SetGlobalValue30F8(void *value)
 {
-    *(void **)((u8 *)data_021052fc + 0x30f8) = value;
+    *(void **)((u8 *)gGamePhaseRuntime + 0x30f8) = value;
 }
 
 /* Return the area-dependent auxiliary overlay object at +0x30ec; changes no state. */

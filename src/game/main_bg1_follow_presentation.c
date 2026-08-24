@@ -27,7 +27,7 @@ extern "C" {
 #endif
 extern void *data_020de7e4[];
 extern const char data_020de804[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *data_020f4e18;
 extern u8 gMainBgPaletteBuffer[];
 
@@ -94,7 +94,7 @@ s32 func_020285a4(MainBg1FollowPresentation *self)
 /* Allocate/construct a 0x0c-byte follower and enqueue it at global offset 0x2f7c. */
 void func_02028630(void *target)
 {
-    void *manager = data_021052fc + 0x2f7c;
+    void *manager = gGamePhaseRuntime + 0x2f7c;
     MainBg1FollowPresentation *self =
         (MainBg1FollowPresentation *)Heap_Alloc(
             sizeof(MainBg1FollowPresentation), data_020de804, 4,

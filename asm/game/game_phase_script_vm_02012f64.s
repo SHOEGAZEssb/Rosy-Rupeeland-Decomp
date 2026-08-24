@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_actor_state_opcodes.c.
 .text
 .extern OS_Halt
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern Actor_GetOwningCollection
 
@@ -52,6 +52,6 @@ L_02013004:
     mov r0, #0x0
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
-L_02013010: .word data_021052fc
+L_02013010: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_DispatchCollectionModeCommand, . - GamePhaseActorScriptVm_DispatchCollectionModeCommand
 

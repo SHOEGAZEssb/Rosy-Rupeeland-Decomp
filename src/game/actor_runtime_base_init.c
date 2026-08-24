@@ -5,7 +5,7 @@
  * collision, resource, and per-frame bookkeeping state.
  */
 extern u8 data_020df040[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -86,7 +86,7 @@ void *ActorRuntimeBase_Init(void *self, const void *descriptor)
     *(u32 *)(actor + 0xc4) = 0;
     Actor_TurnTowardVector(actor, 0, 0x1000, 0x800);
     VecFx32Object_Assign(actor + 0x78,
-                  ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc));
+                  ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc));
     actor[0x194] = actor[0x195] = 0;
     *(u16 *)(actor + 0x196) = 0;
     for (i = 0; i < 5; i++)

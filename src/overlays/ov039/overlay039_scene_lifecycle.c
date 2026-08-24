@@ -9,7 +9,7 @@
 
 extern void *data_ov039_02208438;
 extern void *data_ov039_0220846c;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gHeapContext;
 
 #ifdef __cplusplus
@@ -76,7 +76,7 @@ extern "C" void *func_ov039_02200cd8(void *scene, void *owner, s32 variant)
     FIELD(void *, scene, 0x48) = owner;
     FIELD(void *, scene, 0xb0c) = owner;
     FIELD(void *, scene, 0xbc) = owner;
-    func_0209a748(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, data_021052fc, 0) +
+    func_0209a748(RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                 0x2f7c), 7);
     FIELD(s32, scene, 0x30) = 0x200000;
     FIELD(s32, scene, 0x34) = 0x118000;

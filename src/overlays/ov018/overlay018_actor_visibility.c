@@ -6,7 +6,7 @@
 
 extern s32 data_020c37e4;
 extern const u8 data_020d7a48[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 
 #ifdef __cplusplus
@@ -37,7 +37,7 @@ extern "C" void func_ov018_021fe5ac(void *state)
     void *node;
     (void)state;
 
-    collection = ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
+    collection = ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2));
     node = FIELD(void *, collection, 0xc);
     while (node != 0) {
         if (FIELD(s32, FIELD(void *, node, 0x18), 0x10) == 0x70)
@@ -58,7 +58,7 @@ extern "C" void func_ov018_021fe5f8(void *state)
     void *node;
     (void)state;
 
-    collection = ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
+    collection = ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2));
     node = FIELD(void *, collection, 0xc);
     while (node != 0) {
         if (FIELD(s32, FIELD(void *, node, 0x18), 0x10) == 0x70)

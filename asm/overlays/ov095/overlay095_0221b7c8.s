@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -177,6 +177,6 @@ Overlay095Actor_UpdateHopPositionTransition:
 .L_0221ba28:
     add sp, sp, #0x54
     ldmia sp!, {r4, r5, pc}
-.L_0221ba30: .word data_021052fc
+.L_0221ba30: .word gGamePhaseRuntime
 .L_0221ba34: .word 0x7fff
 .size Overlay095Actor_UpdateHopPositionTransition, . - Overlay095Actor_UpdateHopPositionTransition

@@ -2,7 +2,7 @@
 #include "tingle/types.h"
 
 /* Classify type-1 actor motion and events into state/substate animation codes. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 extern void *gSoundContext;
 extern u8 data_020df49c[];
@@ -25,7 +25,7 @@ extern void Sound_Play(void *soundContext, u32 sound, u32 variant);
 /* Query packed terrain data through the global terrain object's vtable slot 0x2c. */
 static u32 queryPackedTerrain(u8 *actor)
 {
-    void *terrain = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *terrain = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     u32 (*query)(void *, s32, s32, s32) =
         *(u32 (**)(void *, s32, s32, s32))(*(u8 **)terrain + 0x2c);
 

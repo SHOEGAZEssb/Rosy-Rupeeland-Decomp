@@ -9,7 +9,7 @@ extern "C" void *gActorRuntimeCollection;
 extern "C" void *gGameWork;
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
-extern "C" u8 *data_021052fc;
+extern "C" u8 *gGamePhaseRuntime;
 extern "C" s16 data_020c9670[];
 extern "C" u8 data_020e83a0[];
 extern "C" u8 data_ov077_02216f2c[], data_ov077_02216f34[];
@@ -194,16 +194,16 @@ extern "C" void func_ov077_02212d04(void *actor)
     if (resource != 0)
     {
         void *owner1 = ActorCollection_GetSpriteGroup(
-            GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
+            GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1));
         void *owner2 = ActorCollection_GetSpriteGroup(
-            GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
+            GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2));
         resource = func_ov090_0221bc84(resource, owner1, owner2,
                                        F(void *, actor, 0x210), P(actor, 0x18),
                                        0x6000, descriptor, config);
     }
     F(void *, actor, 0x298) = resource;
     func_ov090_0221c3dc(resource, 1);
-    void *phase = F(void *, F(void *, data_021052fc, 0), 0x24);
+    void *phase = F(void *, F(void *, gGamePhaseRuntime, 0), 0x24);
     void *metadata = GamePhaseMetadata_GetByIndex(F(s32, phase, 0) - 1);
     if (((u32)F(s32, metadata, 0x40) & 0xc0000) != 0xc0000)
     {
@@ -404,16 +404,16 @@ extern "C" void *func_ov077_02213408(void *actor)
 extern "C" void func_ov077_02213490(void *actor)
 {
     func_ov077_02212d04(actor);
-    void *phase = F(void *, F(void *, data_021052fc, 0), 0x24);
+    void *phase = F(void *, F(void *, gGamePhaseRuntime, 0), 0x24);
     void *metadata = GamePhaseMetadata_GetByIndex(F(s32, phase, 0) - 1);
     bool hide = ((u32)F(s32, metadata, 0x40) & 0xc0000) != 0xc0000;
     void *body = Heap_Alloc(0x20, data_ov077_022174c8, 4, gHeapContext);
     if (body != 0)
     {
         void *owner1 = ActorCollection_GetSpriteGroup(
-            GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
+            GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1));
         void *owner2 = ActorCollection_GetSpriteGroup(
-            GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
+            GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2));
         body = UtilAnimationResource_Init(
             body, owner1, owner2, 2, F(s32, F(void *, actor, 0x20c), 4),
             F(s32, F(void *, actor, 0x20c), 8),
@@ -439,9 +439,9 @@ extern "C" void func_ov077_02213490(void *actor)
             if (effect != 0)
             {
                 void *owner1 = ActorCollection_GetSpriteGroup(
-                    GamePhaseRuntime_GetActorCollection(data_021052fc, 1));
+                    GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1));
                 void *owner2 = ActorCollection_GetSpriteGroup(
-                    GamePhaseRuntime_GetActorCollection(data_021052fc, 2));
+                    GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2));
                 effect = func_ov090_0221c468(effect, owner1, owner2, animation,
                                              0, 0, -1);
             }
@@ -656,7 +656,7 @@ extern "C" void func_ov077_02213c30(void *out, void *actor, void *contact)
         {
             static const s16 *offsetsX = (const s16 *)data_ov077_02216f4c;
             static const s16 *offsetsY = (const s16 *)data_ov077_02216f64;
-            void *primary = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+            void *primary = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
             s32 trigIndex = ((u16)F(s16, actor, 0x2fc)) >> 4;
             s16 cosine = data_020c9670[trigIndex * 2];
             s16 sine = data_020c9670[trigIndex * 2 + 1];
@@ -1128,7 +1128,7 @@ extern "C" s32 func_ov077_02215050(void *actor)
                           ? 2
                           : (F(s16, actor, 0x4e) == 0x82 ? 1 : 0);
         void *context =
-            (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, data_021052fc, 0), 0x2f7c));
+            (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, gGamePhaseRuntime, 0), 0x2f7c));
         Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(context, variant, F(s32, actor, 0x1c) >> 12,
                       (F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12, 3);
         Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(context, 2, F(s32, actor, 0x1c) >> 12,
@@ -1238,7 +1238,7 @@ extern "C" void func_ov077_02215494(void *actor)
             ((countdown - 1) << 16) | (F(s32, actor, 0x308) & 0xffff);
     }
 
-    void *primary = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+    void *primary = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
     bool pursue = false;
     if ((F(u32, primary, 0xd0) & 0x100) == 0 && F(s16, actor, 0x2ea) == 0 &&
         (F(u16, actor, 0x2f2) & 6) == 6 && F(s16, actor, 0x2e8) == 0)
@@ -1341,7 +1341,7 @@ extern "C" void func_ov077_02215494(void *actor)
                 Actor_PlayHorizontalSpatialSound(actor, 0x9f85, 0);
                 Actor_PlayHorizontalSpatialSound(actor, 0x9f83, 0);
                 void *context = (void *)RuntimePresentationManager_GetGraphics3dPresentation(
-                    P(F(void *, data_021052fc, 0), 0x2f7c));
+                    P(F(void *, gGamePhaseRuntime, 0), 0x2f7c));
                 Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(context, 2,
                               F(s32, F(void *, actor, 0x29c), 0x1c) >> 12,
                               ((F(s32, F(void *, actor, 0x29c), 0x20) -
@@ -1374,7 +1374,7 @@ extern "C" s32 func_ov077_02215f2c(void)
  */
 extern "C" s32 func_ov077_02215f34(void *actor)
 {
-    void *primary = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+    void *primary = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
     F(u16, actor, 0x2ee) = 0x5a;
     bool pursued = (F(u16, actor, 0x2f2) & 4) != 0;
 
@@ -1457,7 +1457,7 @@ extern "C" s32 func_ov077_02215f34(void *actor)
             {
                 F(u16, actor, 0x2ea) = 5;
                 F(u16, actor, 0x25a) = 0;
-                func_020099c0(P(F(void *, data_021052fc, 0), 0x2fbc), 0x1e, 2);
+                func_020099c0(P(F(void *, gGamePhaseRuntime, 0), 0x2fbc), 0x1e, 2);
                 Actor_PlayHorizontalSpatialSound(actor, 0x9f86, 0);
             }
             break;
@@ -1503,7 +1503,7 @@ extern "C" s32 func_ov077_02215f34(void *actor)
                 Actor_PlayHorizontalSpatialSound(actor, 0x4281, 0);
                 ++F(s16, actor, 0xda);
                 func_ov090_0221b03c(F(void *, actor, 0x2f8), actor);
-                func_020099c0(P(F(void *, data_021052fc, 0), 0x2fbc), 0xf, 2);
+                func_020099c0(P(F(void *, gGamePhaseRuntime, 0), 0x2fbc), 0xf, 2);
                 if (F(s16, actor, 0xda) < 3)
                 {
                     func_ov077_02214fc0(actor, 0x80);
@@ -1552,7 +1552,7 @@ extern "C" s32 func_ov077_022169bc(void *actor)
     F(u32, actor, 0x260) &= ~3u;
     F(s32, actor, 0x3c) = F(s32, actor, 0x40) = 0;
     void *effects =
-        (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, data_021052fc, 0), 0x2f7c));
+        (void *)RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, gGamePhaseRuntime, 0), 0x2f7c));
     u32 phase = (F(u8, actor, 0x2e4) >> 4) & 7;
     if (phase == 0)
     {

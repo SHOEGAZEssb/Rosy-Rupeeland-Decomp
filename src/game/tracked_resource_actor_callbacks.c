@@ -6,7 +6,7 @@
  * the primary global actor, and a screen-relative bounded action.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,7 +51,7 @@ void TrackedResourceActor_PostUpdate(void *actor, void *context)
 {
     if ((FIELD(u16, actor, 0x1f0) & 0x7fff) == 0 &&
         (FIELD(u32, actor, 0x1f4) & 1) == 0) {
-        ActorDerivedType1_ScanActiveRecordCollisions(FIELD(void *, data_021052fc, 0x2ea4));
+        ActorDerivedType1_ScanActiveRecordCollisions(FIELD(void *, gGamePhaseRuntime, 0x2ea4));
     }
     Actor_SetInteractionFlag2000(actor, context);
 }
@@ -74,7 +74,7 @@ void TrackedResourceActor_ActivateBoundedAction(void *actor)
     void *object = FIELD(void *, actor, 0x1fc);
     u16 value = FIELD(u16, object, 0x1e);
     if (value != 0) {
-        void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+        void *point = ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
         s32 left = FIELD(s16, actor, 0x68);
         s32 top = FIELD(s16, actor, 0x6a);
         s32 right = FIELD(s16, actor, 0x6c);

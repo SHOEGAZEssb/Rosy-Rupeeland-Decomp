@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
 .extern OS_Halt
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov095_0221cba8
 .extern VecFx32Object_Assign
 .extern Sound_PlayOwnedEffect
@@ -198,6 +198,6 @@ func_ov095_02218130:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
 .L_022183f8: .word data_ov095_0221cba8
-.L_022183fc: .word data_021052fc
+.L_022183fc: .word gGamePhaseRuntime
 .L_02218400: .word gSoundContext
 .size func_ov095_02218130, . - func_ov095_02218130

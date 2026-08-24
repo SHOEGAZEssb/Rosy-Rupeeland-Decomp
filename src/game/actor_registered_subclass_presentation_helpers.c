@@ -6,7 +6,7 @@
  * table-record actor subclass.
  */
 extern const char gActorRegisteredSubclassPresentationAllocationTag[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ void ActorRegisteredSubclass_HandleLanding(Actor *self)
     s32 magnitude = SignedAbsoluteValue(self->velocity.value.z);
 
     if (magnitude > 0x1000) {
-        u8 *reference = (u8 *)ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+        u8 *reference = (u8 *)ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
         s32 pan = (*(s32 *)(actor + 0x1c) - *(s32 *)(reference + 4) -
                    0x80000) >> 12;
         s32 volume;

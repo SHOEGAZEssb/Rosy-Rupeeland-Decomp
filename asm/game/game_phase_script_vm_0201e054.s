@@ -8,7 +8,7 @@
 .extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global RuntimePresentationManager_SetEnabled
 RuntimePresentationManager_SetEnabled: ; 0x0201e054
     stmdb sp!, {r4, r5, r6, lr}

@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Build actor rectangles and query or adjust terrain-relative coordinates. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -48,7 +48,7 @@ s32 Actor_QueryTerrainHeight(void *actorPointer, s32 gridX, s32 gridY)
 
     if ((*(u32 *)(actor + 0x14) & 0x04000000) != 0) return 0;
     terrainHeight = GamePhaseState_QueryTerrainHeight(
-        (u8 *)data_021052fc + 0x24, gridX, gridY);
+        (u8 *)gGamePhaseRuntime + 0x24, gridX, gridY);
     if (((Actor_QueryTerrainCell(actorPointer, gridX, gridY) >> 5) & 0x1f) ==
             15 &&
         terrainHeight + 4 <= (*(s32 *)(actor + 0x24) >> 16)) {
@@ -75,7 +75,7 @@ u32 Actor_QueryTerrainCell(void *actorPointer, s32 gridX, s32 gridY)
     u32 (*queryCell)(void *, s32, s32);
 
     if ((*(u32 *)(actor + 0x14) & 0x04000000) != 0) return 0;
-    terrainMap = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    terrainMap = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     queryCell = *(u32 (**)(void *, s32, s32))(*(u8 **)terrainMap + 0x2c);
     return queryCell(terrainMap, gridX, gridY);
 }
@@ -92,12 +92,12 @@ void Position_AdjustForTerrainHeight(void *value)
     u8 *vector = (u8 *)value;
     s32 gridX = func_020adae4(*(s32 *)(vector + 4) >> 12, 16);
     s32 gridY = func_020adae4(*(s32 *)(vector + 8) >> 12, 16);
-    void *terrain = *(void **)((u8 *)data_021052fc + 0x2ed4);
+    void *terrain = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
     s32 level = func_020adae4((*(u32 *)((u8 *)terrain + 0x20) >> 16) << 4,
                               16) - 1;
 
     while (level >= 0) {
-        s32 height = GamePhaseState_QueryTerrainHeight((u8 *)data_021052fc + 0x24,
+        s32 height = GamePhaseState_QueryTerrainHeight((u8 *)gGamePhaseRuntime + 0x24,
                                    gridX, gridY);
         if (gridY == level - height) {
             s32 adjustment = height << 16;

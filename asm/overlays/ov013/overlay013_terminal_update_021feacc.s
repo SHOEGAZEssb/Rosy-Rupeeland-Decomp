@@ -1,5 +1,5 @@
     .text
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern GamePhaseAreaScene_Update
 
 /* Exact fallback; see the documented portable reconstruction in
@@ -38,5 +38,5 @@ L_021feb1c:
 L_021feb34:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_021feb3c: .word data_021052fc
+L_021feb3c: .word gGamePhaseRuntime
     .size func_ov013_021feacc, . - func_ov013_021feacc

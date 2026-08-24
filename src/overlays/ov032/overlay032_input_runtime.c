@@ -17,7 +17,7 @@ extern const u16 gPadState1[];
 extern void *gTouchPanelManager;
 extern void *gGamePhaseCurrencyHud;
 extern void *data_020f4e14[];
-extern void *data_021052fc[];
+extern void *gGamePhaseRuntime[];
 extern const u8 data_021f4020[];
 
 #ifdef __cplusplus
@@ -58,7 +58,7 @@ extern void TitleDialog_SetText(...);
  */
 extern "C" void Overlay032Scene_ShutdownGraphics(void *scene)
 {
-    u8 *context = (u8 *)data_021052fc[0];
+    u8 *context = (u8 *)gGamePhaseRuntime[0];
     FIELD(s32, scene, 0xf2c) = 0;
     func_ov032_021fde1c(FIELD(s32, scene, 0xb50));
     func_02092418((u8 *)scene + 0xbe8);

@@ -5,7 +5,7 @@
 .extern Heap_Alloc
 .extern SceneManager_GetCurrent
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov092_0221c820
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
@@ -405,7 +405,7 @@ func_ov092_02217ddc:
 .L_02218354:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
-.L_0221835c: .word data_021052fc
+.L_0221835c: .word gGamePhaseRuntime
 .L_02218360: .word gSceneManager
 .L_02218364: .word gGameWork
 .L_02218368: .word 0x3f

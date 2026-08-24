@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_motion_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotion_ClearOscillation
 .global GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation
 GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation:
@@ -12,5 +12,5 @@ GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation:
     bl ActorMotion_ClearOscillation
     mov r0, #0
     ldmia sp!, {r3, pc}
-L_02017078: .word data_021052fc
+L_02017078: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation, . - GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation

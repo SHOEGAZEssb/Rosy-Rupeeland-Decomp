@@ -15,7 +15,7 @@
 .extern data_020d5bdc
 .extern data_020d5be4
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
 .extern GamePhaseScriptVm_Pop
@@ -376,7 +376,7 @@ L_020181b0:
     ldmia sp!, {r3, r4, r5, r6, pc}
 L_020181bc: .word data_020d5b94
 L_020181c0: .word gHeapContext
-L_020181c4: .word data_021052fc
+L_020181c4: .word gGamePhaseRuntime
 L_020181c8: .word data_020f4e14
 L_020181cc: .word gDebugFont
 L_020181d0: .word data_020d5b9c

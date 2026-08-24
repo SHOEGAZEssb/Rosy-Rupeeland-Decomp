@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Resolve an actor's collection and refresh its cached terrain-height state. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,7 +24,7 @@ void *Actor_GetOwningCollection(void *actorPointer)
     u8 *actor = (u8 *)actorPointer;
     u32 slot = (*(u32 *)(actor + 0x14) & 0x04000000) != 0 ? 2 : 1;
 
-    return GamePhaseRuntime_GetActorCollection(data_021052fc, slot);
+    return GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, slot);
 }
 
 /*
@@ -35,7 +35,7 @@ void *Actor_GetOwningCollection(void *actorPointer)
 void *Actor_GetGlobalCollectionBySlot(void *unusedActor, u32 slot)
 {
     (void)unusedActor;
-    return GamePhaseRuntime_GetActorCollection(data_021052fc, slot);
+    return GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, slot);
 }
 
 /*
@@ -65,7 +65,7 @@ void Actor_RefreshCachedTerrainHeight(void *actorPointer)
     gridX = *(s32 *)(actor + 0x1c) >> 16;
     gridY = *(s32 *)(actor + 0x20) >> 16;
     selectedHeightLevel = GamePhaseState_QueryTerrainHeight(
-        (u8 *)data_021052fc + 0x24, gridX, gridY);
+        (u8 *)gGamePhaseRuntime + 0x24, gridX, gridY);
     packedCell = Actor_QueryTerrainCell(actor, gridX, gridY);
 
     if (((packedCell >> 5) & 0x1f) == 15) {

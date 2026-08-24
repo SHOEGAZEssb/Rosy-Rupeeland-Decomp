@@ -10,7 +10,7 @@
 .extern RuntimePresentationManager_UpdatePresentations
 .extern GamePhaseRuntime_UpdateDualScreenUiPresentation
 .extern GamePhaseCurrencyHud_Update
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .global ActorRuntimeScene_Update
 ActorRuntimeScene_Update:
@@ -76,6 +76,6 @@ L_0200b774:
     bl GamePhaseCurrencyHud_Update
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-L_0200b7ac: .word data_021052fc
+L_0200b7ac: .word gGamePhaseRuntime
 L_0200b7b0: .word gGamePhaseCurrencyHud
 .size ActorRuntimeScene_Update, . - ActorRuntimeScene_Update

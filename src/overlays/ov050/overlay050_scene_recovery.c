@@ -6,7 +6,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void *gGameWork;
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" void *data_020f4e14[];
 extern "C" void *data_020f4e18[];
 extern "C" void *gDebugFont;
@@ -260,6 +260,6 @@ extern "C" void *func_ov050_0220e1a0(void *argument,
 
     if (scene != 0)
         scene = func_ov050_0220db84(scene, argument, origin, resources);
-    RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, scene);
+    RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, scene);
     return scene;
 }

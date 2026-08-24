@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const char data_020d5b34[];
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void *ActorMotionAreaFollower_GetPosition(void *motion);
@@ -34,7 +34,7 @@ s32 GamePhaseActorScriptVm_SetRisingSpriteSwarmEnabled(GamePhaseActorScriptVm *s
     s32 actorIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 trackZ = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 enabled = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     if (enabled) {
         void *actor = ActorCollection_FindActorByRuntimeId(
             GamePhaseRuntime_GetActorCollection((GamePhaseRuntime *)runtime, 1), actorIndex);

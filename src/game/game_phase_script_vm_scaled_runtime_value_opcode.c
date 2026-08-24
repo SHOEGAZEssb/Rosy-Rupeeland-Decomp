@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern s32 func_020befec(s32 dividend, s32 divisor);
 #ifdef __cplusplus
 }
@@ -21,7 +21,7 @@ s32 GamePhaseActorScriptVm_CalculateScaledRuntimeValue(GamePhaseActorScriptVm *s
 {
     s32 factor = (u16)GamePhaseScriptVm_Pop(&self->base);
     s32 base = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *state = *(u8 **)(runtime + 0x2ed4);
     s32 runtimeScale = (s32)((u32)(*(s32 *)(state + 0x20) << 16) >> 12);
     s32 result = func_020befec(factor, 192) * (runtimeScale / 256)

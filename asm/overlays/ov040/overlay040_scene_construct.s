@@ -7,7 +7,7 @@
     .extern GX_SetGraphicsMode
     .extern __construct_array
     .extern data_020f4e18
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov040_022042a8
     .extern VecFx32Object_Init
     .extern VecFx32Object_InitComponents
@@ -580,6 +580,6 @@ func_ov040_021fcebc: ; 0x021fcebc
 .L_021fd714: .word 0x186000
 .L_021fd718: .word 0x1655
 .L_021fd71c: .word 0x1652
-.L_021fd720: .word data_021052fc
+.L_021fd720: .word gGamePhaseRuntime
     .size func_ov040_021fcebc, . - func_ov040_021fcebc
 

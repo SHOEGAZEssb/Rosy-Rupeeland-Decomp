@@ -8,7 +8,7 @@
  * understood more fully.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSceneManager;
 
 #ifdef __cplusplus
@@ -101,7 +101,7 @@ void func_0204d858(void *actor)
                 FIELD(s32, actor, 0x40) = -FIELD(s32, actor, 0x40);
         }
     } else if (state == 1) {
-        void *map = FIELD(void *, data_021052fc, 0x2ed4);
+        void *map = FIELD(void *, gGamePhaseRuntime, 0x2ed4);
         MapQueryCallback query =
             *(MapQueryCallback *)((u8 *)FIELD(void *, map, 0) + 0x2c);
         s32 x = FIELD(s32, actor, 0x1c) >> 16;
@@ -140,7 +140,7 @@ void func_0204d858(void *actor)
         FIELD(u8, FIELD(void *, actor, 0x54), 0x3a) = 0;
         s16 duration = FIELD(u16, actor, 0x4e) == 10 ? 20 : 40;
         if (++FIELD(s16, actor, 0x1f0) < duration) {
-            void *point = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+            void *point = ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
             if (FIELD(u16, actor, 0x4e) == 10) {
                 FIELD(s32, actor, 0x1c) =
                     fx_mul(FIELD(s32, actor, 0x1c), 0xc00) +

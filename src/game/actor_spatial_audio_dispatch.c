@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Derive actor-relative volume and pan, then dispatch packed sound requests. */
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 
 #ifdef __cplusplus
@@ -43,7 +43,7 @@ void Actor_PlayHorizontalSpatialSound(void *actor, u32 packedSound, s32 pitch)
         return;
     }
     soundReferencePosition =
-        (u8 *)ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+        (u8 *)ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
     pan = (*(s32 *)(actorBytes + 0x1c) -
            *(s32 *)(soundReferencePosition + 4) - 0x80000) >> 12;
     if (pan < -96) pan = -96;
@@ -73,7 +73,7 @@ void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch)
 {
     u8 *actorBytes = (u8 *)actor;
     u8 *soundReferencePosition =
-        (u8 *)ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+        (u8 *)ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
     s32 relativeX = (*(s32 *)(actorBytes + 0x1c) -
                      *(s32 *)(soundReferencePosition + 4) - 0x80000) >> 12;
     s32 relativeY;
@@ -82,7 +82,7 @@ void Actor_PlayRadialSpatialSound(void *actor, u32 packedSound, s32 pitch)
 
     if (relativeX < -255 || relativeX > 255) return;
     soundReferencePosition =
-        (u8 *)ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+        (u8 *)ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
     relativeY = (*(s32 *)(actorBytes + 0x20) -
                  *(s32 *)(soundReferencePosition + 8) - 0x74000) >> 12;
     if (relativeY < -255 || relativeY > 255) return;

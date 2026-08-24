@@ -13,7 +13,7 @@ typedef struct Overlay013ResourceSet {
 } Overlay013ResourceSet;
 
 extern void *gGameWork;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *data_020f4e14;
 extern void *gDebugFont;
 extern void *data_020f4e18;

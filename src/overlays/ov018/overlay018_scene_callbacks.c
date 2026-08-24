@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -59,7 +59,7 @@ extern "C" s32 func_ov018_021ff258(void *state)
         volatile u32 *display = (volatile u32 *)0x04001000;
         void *descriptor;
 
-        GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
+        GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
         *display = (*display & ~0x1f00U) |
                    (FIELD(u32, state, 0x4c) << 8);
         descriptor = FIELD(void *, FIELD(void *, state, 0x190), 0);

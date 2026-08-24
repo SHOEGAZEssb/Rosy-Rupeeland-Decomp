@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_visual_effect_update.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseVisualEffect_ApplyBlend
 .extern func_02072048
 .extern func_020af958
@@ -116,6 +116,6 @@ L_0200fdd8:
 L_0200fdfc: .word 0x400000a
 L_0200fe00: .word 0x1ff
 L_0200fe04: .word 0x4000014
-L_0200fe08: .word data_021052fc
+L_0200fe08: .word gGamePhaseRuntime
     .size GamePhaseVisualEffect_Update, . - GamePhaseVisualEffect_Update
 

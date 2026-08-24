@@ -7,7 +7,7 @@
 .extern GameWork_TestFlag
 .extern data_020e1f2c
 .extern gGameWork
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .text
     .global func_0204d068
 func_0204d068: ; 0x0204d068
@@ -133,7 +133,7 @@ func_0204d10c: ; 0x0204d10c
     mov r0, r0, asr #0x1
     str r0, [r4, #0x24]
     ldmia sp!, {r4, pc}
-.L_0204d214: .word data_021052fc
+.L_0204d214: .word gGamePhaseRuntime
 .L_0204d218: .word gGameWork
 .L_0204d21c: .word 0x405
 .size func_0204d10c, . - func_0204d10c

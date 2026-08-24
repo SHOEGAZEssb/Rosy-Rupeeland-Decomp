@@ -26,7 +26,7 @@
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global func_0201d094
 func_0201d094: ; 0x0201d094
     stmdb sp!, {r4, lr}

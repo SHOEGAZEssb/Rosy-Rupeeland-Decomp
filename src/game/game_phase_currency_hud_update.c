@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern void Sound_Play(void *context, s32 bank, s32 soundId);
 extern u32 genrand_int32(void);
@@ -43,8 +43,8 @@ void GamePhaseCurrencyHud_Update(GamePhaseCurrencyHud *self)
     GraphicsSpriteGroup *activeGroup;
     s32 i;
 
-    if (data_021052fc)
-        actor = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+    if (gGamePhaseRuntime)
+        actor = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
     if (!actor) {
         if (!(self->flags & 1))
             GamePhaseCurrencyHud_SetVisible(self, 0);

@@ -9,7 +9,7 @@ typedef struct ActorRenderAttachmentOwner {
     void *secondaryAttachment_58;
 } ActorRenderAttachmentOwner;
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,7 +50,7 @@ void Actor_CreateSecondaryRenderAttachment(ActorRenderAttachmentOwner *actor,
         return;
     primaryAttachment = (u8 *)actor->primaryAttachment_54;
     actor->secondaryAttachment_58 = GraphicsSpriteGroup_CreateState(
-        ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(data_021052fc, 2)),
+        ActorCollection_GetSpriteGroup(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2)),
         *(u32 *)(primaryAttachment + 0x14), *(u32 *)(primaryAttachment + 0x18),
         *(u32 *)(primaryAttachment + 0x1c), attachPolicy);
     secondaryAttachment = (u8 *)actor->secondaryAttachment_58;

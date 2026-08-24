@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern "C" u8 data_021052fc[];
+extern "C" u8 gGamePhaseRuntime[];
 extern "C" void *gGameWork;
 extern "C" const u8 data_020d780c[];
 extern "C" const u8 data_020d7838[];
@@ -28,7 +28,7 @@ extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" s32 func_ov046_0220c4a0(void *panel)
 {
     u8 *header = (u8 *)FIELD(void *, panel, 0x38);
-    u8 *runtime = *(u8 **)data_021052fc;
+    u8 *runtime = *(u8 **)gGamePhaseRuntime;
     s32 current;
     s32 selection;
     s32 selectorOffset;

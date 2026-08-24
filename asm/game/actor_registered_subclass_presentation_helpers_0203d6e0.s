@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gActorRegisteredSubclassPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern AuxiliaryTimedSpritePresentation_Init
 .extern TrackedResourceActor_SpawnFromKey
@@ -87,7 +87,7 @@ ActorRegisteredSubclass_HandleLanding: ; 0x0203d6e0
 .L_0203d7e8:
     add sp, sp, #0x18
     ldmia sp!, {r4, r5, r6, pc}
-.L_0203d7f0: .word data_021052fc
+.L_0203d7f0: .word gGamePhaseRuntime
 .L_0203d7f4: .word gSoundContext
 .L_0203d7f8: .word gActorRegisteredSubclassPresentationAllocationTag
 .L_0203d7fc: .word gHeapContext

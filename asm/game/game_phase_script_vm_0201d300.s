@@ -23,7 +23,7 @@
 .extern data_020d5d58
 .extern data_020d5d8c
 .extern data_020d5d94
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gDebugFont
 .extern gHeapContext

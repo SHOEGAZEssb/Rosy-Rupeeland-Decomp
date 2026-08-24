@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov074/overlay074_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseVisualEffect_SetBlendCoefficients
 
 .global func_ov074_02211c08
@@ -30,5 +30,5 @@ func_ov074_02211c08:
     bl GamePhaseVisualEffect_SetBlendCoefficients
     mov r0, r4
     ldmia sp!, {r4, pc}
-.L_02211c6c: .word data_021052fc
+.L_02211c6c: .word gGamePhaseRuntime
 .size func_ov074_02211c08, . - func_ov074_02211c08

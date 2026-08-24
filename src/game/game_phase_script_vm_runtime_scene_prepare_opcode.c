@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseState_GetConfiguration(void *state);
 extern void func_02026174(void *object, void *area);
 extern void GamePhaseRuntime_UpdateDualScreenUiPresentation(void *runtime);
@@ -30,7 +30,7 @@ static void configureObject(void *object)
  */
 s32 GamePhaseActorScriptVm_PrepareRuntimeScene(GamePhaseActorScriptVm *self)
 {
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     void *object = *(void **)(runtime + 0x30e8);
     void *area = GamePhaseState_GetConfiguration(runtime + 0x24);
     (void)self;

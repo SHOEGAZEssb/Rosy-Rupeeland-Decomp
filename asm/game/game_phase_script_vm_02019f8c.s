@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_misc_runtime_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .global func_02019f8c
 func_02019f8c:
@@ -38,5 +38,5 @@ L_02019fdc:
 L_0201a000:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-L_0201a008: .word data_021052fc
+L_0201a008: .word gGamePhaseRuntime
 .size func_02019f8c, . - func_02019f8c

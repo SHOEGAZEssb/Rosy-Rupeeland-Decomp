@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern void GamePhaseRuntime_PrepareActorCollections(void *context, u32 value, s32 mode);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *context, u32 value, s32 mode);
@@ -31,7 +31,7 @@ extern s32 RuntimePresentationManager_UpdatePresentations(
  */
 s32 ActorRuntimeScene_Update(ActorRuntimeScene *self)
 {
-    u8 *root = (u8 *)data_021052fc;
+    u8 *root = (u8 *)gGamePhaseRuntime;
 
     GamePhaseRuntime_ProcessPendingPresentationRefreshes(root);
     if (self->base.value08 == 0) {

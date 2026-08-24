@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_presentation_states.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gSoundContext
 .extern Type7Actor_DispatchCurrentCallback
 .extern Sound_PlayOwnedEffect
@@ -27,7 +27,7 @@ Type7Actor_UpdatePresentation17UntilGlobalTargetClears: ; 0x02049e50
 .L_02049e94:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
-.L_02049e9c: .word data_021052fc
+.L_02049e9c: .word gGamePhaseRuntime
 .size Type7Actor_UpdatePresentation17UntilGlobalTargetClears, . - Type7Actor_UpdatePresentation17UntilGlobalTargetClears
 
     .global Type7Actor_UpdatePresentation18WithInitialSound

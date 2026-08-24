@@ -16,7 +16,7 @@ typedef void (*Method2)(void *, void *, s32);
 extern "C" void *gSoundContext;
 extern "C" void *gHeapContext;
 extern "C" void *gGameWork;
-extern "C" void *data_021052fc;
+extern "C" void *gGamePhaseRuntime;
 extern "C" u8 gSystemState[];
 extern "C" const s16 data_020c9670[];
 extern "C" const s16 data_020e6d3c[];
@@ -216,9 +216,9 @@ extern "C" void func_ov076_02212e18(void *vector, s32 scalar) {
 /* Forward actor interaction to the player pair before inherited handling. */
 extern "C" void func_ov076_02212e70(void *actor, s32 interaction, s32 context,
                                     s32 extra) {
-    void *secondary = F(void *, data_021052fc, 0x2ea8);
+    void *secondary = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (secondary && !(F(u8, actor, 0x29c) & 0x18)) {
-        void *primary = F(void *, data_021052fc, 0x2ea4);
+        void *primary = F(void *, gGamePhaseRuntime, 0x2ea4);
         ActorDerivedType1_TrySetStateVector(primary, (u8 *)actor + 0x18, 0x14,
                                             0);
         Type7Actor_HandleObjectInteraction(secondary, actor);
@@ -327,7 +327,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
             s32 state = F(s16, actor, 0xda);
             if (state > 4)
                 state = 4;
-            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
             Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(manager, 0, F(s32, actor, 0x1c) >> 12,
                           ((F(s32, actor, 0x20) - F(s32, actor, 0x24)) >> 12) -
                               0x20 - state * 9,
@@ -337,7 +337,7 @@ extern "C" s32 func_ov076_02212ee0(void *actor, s32, s32, s32) {
         F(u8, actor, 0x29c) &= ~4u;
         for (s32 i = 0; i < 4; ++i) {
             s32 angle = (((i - 1) * 0x2710 - 0xdac) & 0xffff) >> 4;
-            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)data_021052fc + 0x2f7c);
+            void *manager = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)gGamePhaseRuntime + 0x2f7c);
             Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(manager, 1,
                           (F(s32, actor, 0x1c) >> 12) +
                               ((data_020c9670[angle * 2] * 0x14) >> 12),

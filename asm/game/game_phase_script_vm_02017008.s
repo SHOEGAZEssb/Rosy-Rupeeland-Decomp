@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_motion_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotion_SetOscillation
 .extern GamePhaseScriptVm_Pop
 .global GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation
@@ -24,5 +24,5 @@ GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation:
     bl ActorMotion_SetOscillation
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
-L_02017054: .word data_021052fc
+L_02017054: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation, . - GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation

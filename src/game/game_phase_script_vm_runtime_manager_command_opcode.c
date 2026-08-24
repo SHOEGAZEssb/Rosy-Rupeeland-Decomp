@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void Actor_SetFlag200000Inverse(void *actor, s32 enabled);
 extern void RuntimePresentationManager_DestroyAllEffects(void *presentationManager);
@@ -47,7 +47,7 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
     s16 second = (s16)GamePhaseScriptVm_Pop(&self->base);
     s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *manager = *(u8 **)(runtime + 0x2ea4);
     switch (command) {
     case 0:

@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern u8 gActorRuntimeCollection[];
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
@@ -64,7 +64,7 @@ s32 GamePhaseActorScriptVm_DispatchCollectionModeCommand(GamePhaseActorScriptVm 
     u32 mode = *(u32 *)(collection + 0x2e84);
 
     if (mode == 1) {
-        u8 *runtime = (u8 *)data_021052fc;
+        u8 *runtime = (u8 *)gGamePhaseRuntime;
         void *object = *(void **)(runtime + 0x2ed4);
         RuntimeDispatchMethod method =
             *(RuntimeDispatchMethod *)((u8 *)*(void **)object + 0x30);

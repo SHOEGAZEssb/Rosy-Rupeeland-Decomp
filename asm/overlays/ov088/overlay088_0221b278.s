@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_IsTerrainCellEligibleAtHeight
 
 .global func_ov088_0221b278
@@ -23,5 +23,5 @@ func_ov088_0221b278:
     mov r3, r5
     bl Actor_IsTerrainCellEligibleAtHeight
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_0221b2c0: .word data_021052fc
+.L_0221b2c0: .word gGamePhaseRuntime
 .size func_ov088_0221b278, . - func_ov088_0221b278

@@ -11,7 +11,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *data_020f4e14;
 extern void *gDebugFont;
 extern const char data_020d5b34[];
@@ -65,7 +65,7 @@ static void *allocateObject(u32 size, const char *tag)
 /* Return the presentation manager at confirmed runtime offset 0x2f7c. */
 static void *runtimePresentationManager(void)
 {
-    return (u8 *)data_021052fc + 0x2f7c;
+    return (u8 *)gGamePhaseRuntime + 0x2f7c;
 }
 
 /*

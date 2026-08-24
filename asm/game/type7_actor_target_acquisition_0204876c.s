@@ -4,7 +4,7 @@
 .extern data_020e18e0
 .extern data_020e18e8
 .extern data_020e18f0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorTargetSelectionCandidates
 .extern gActorTargetSelectionPriorities
 .extern Actor_GetCachedTerrainHeight
@@ -211,7 +211,7 @@ Type7Actor_TryAcquireTarget: ; 0x0204876c
 .L_02048a28:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02048a30: .word data_021052fc
+.L_02048a30: .word gGamePhaseRuntime
 .L_02048a34: .word data_020e16e8
 .L_02048a38: .word data_020e18f0
 .L_02048a3c: .word gActorTargetSelectionPriorities

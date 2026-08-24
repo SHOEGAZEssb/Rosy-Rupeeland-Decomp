@@ -1,7 +1,7 @@
 .text
-.extern data_020d431c
+.extern gGamePhaseRuntimeVTable
 .extern gGamePhaseTouchPromptAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorRuntimeCollection
 .extern FrameTaskList_Add
 .extern DisplayController_SetVerticalOffset
@@ -112,8 +112,8 @@ L_02006bac:
     bl GamePhaseRuntime_CreateFieldLoader
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_02006bcc: .word data_020d431c
-L_02006bd0: .word data_021052fc
+L_02006bcc: .word gGamePhaseRuntimeVTable
+L_02006bd0: .word gGamePhaseRuntime
 L_02006bd4: .word gGamePhaseTouchPromptAllocationTag
 L_02006bd8: .word gHeapContext
     .size GamePhaseRuntime_Init, .-GamePhaseRuntime_Init
@@ -383,5 +383,5 @@ L_02006fc0: .word gActorRuntimeCollection
 L_02006fc4: .word gGameWork
 L_02006fc8: .word 0x3f2
 L_02006fcc: .word gGamePhaseCurrencyHud
-L_02006fd0: .word data_021052fc
+L_02006fd0: .word gGamePhaseRuntime
     .size GamePhaseRuntime_Configure, .-GamePhaseRuntime_Configure

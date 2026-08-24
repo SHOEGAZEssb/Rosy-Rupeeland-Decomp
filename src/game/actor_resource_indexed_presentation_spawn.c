@@ -5,7 +5,7 @@
 extern const char data_020df4f0[];
 extern u8 gActorInteractionResourceState[];
 extern void *gSoundContext;
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,7 +30,7 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void
  *
  * Play the table record's packed sound +0x06 for index one, or for indices
  * seven/eight only when actor subtype byte +0x4d is one. Register the result
- * with manager data_021052fc +0x2f7c, then store value into halfword +0x36 of
+ * with manager gGamePhaseRuntime +0x2f7c, then store value into halfword +0x36 of
  * the presentation's nested +0x08/+0x04 object. Returns no value. The matching
  * retail path assumes presentation allocation succeeds before that final
  * nested access; RNG, heap, sound, construction, and manager calls have
@@ -74,6 +74,6 @@ void ActorFeedback_SpawnIndexedPresentation(void *self, u32 index, u16 value)
         if (sound != 0)
             Sound_Play(gSoundContext, sound >> 7, sound & 0x7f);
     }
-    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, presentation);
+    RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, presentation);
     *(u16 *)(*(u8 **)(*(u8 **)((u8 *)presentation + 8) + 4) + 0x36) = value;
 }

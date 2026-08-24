@@ -31,7 +31,7 @@ public:
 };
 
 extern "C" {
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gGameWork;
 extern void *gSoundContext;
 extern s32 ActorDerivedType1_GetActiveRecordId(void *actor);
@@ -52,7 +52,7 @@ extern void Sound_Play(void *sound, s32 bank, s32 id);
  */
 extern "C" void func_ov090_0221a784(void *self, void *event)
 {
-    void *actor = FIELD(void *, (u8 *)data_021052fc + 0x2000, 0xea4);
+    void *actor = FIELD(void *, (u8 *)gGamePhaseRuntime + 0x2000, 0xea4);
 
     if (FIELD(void *, actor, 0x278) != 0) {
         s32 recordId = ActorDerivedType1_GetActiveRecordId(actor);

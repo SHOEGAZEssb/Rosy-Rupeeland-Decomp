@@ -10,7 +10,7 @@
 .extern data_020dfb78
 .extern data_020e6f94
 .extern data_020e8380
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32_Subtract
 .extern GamePhaseRuntime_GetActorCollection
@@ -557,7 +557,7 @@ ActorExtendedType2_UpdateFrame: ; 0x0203e7c8
     ldmia sp!, {r4, r5, r6, pc}
 .L_0203ef2c: .word data_020df9e8
 .L_0203ef30: .word data_020dfb08
-.L_0203ef34: .word data_021052fc
+.L_0203ef34: .word gGamePhaseRuntime
 .L_0203ef38: .word data_020e6f94
 .L_0203ef3c: .word data_020dfaf0
 .L_0203ef40: .word data_020dfa40

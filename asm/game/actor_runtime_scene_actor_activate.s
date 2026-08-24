@@ -3,7 +3,7 @@
 .text
 .extern GamePhaseRuntime_GetActorCollection
 .extern Actor_SetActive
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global ActorRuntimeScene_ActivateFlaggedActors
 ActorRuntimeScene_ActivateFlaggedActors:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
@@ -60,5 +60,5 @@ L_0200bab0:
     cmp r6, r0
     blt L_0200ba84
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_0200bac0: .word data_021052fc
+L_0200bac0: .word gGamePhaseRuntime
 .size ActorRuntimeScene_ActivateFlaggedActors, . - ActorRuntimeScene_ActivateFlaggedActors

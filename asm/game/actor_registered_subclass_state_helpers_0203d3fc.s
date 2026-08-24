@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_registered_subclass_state_helpers.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_PlayHorizontalSpatialSound
 .extern Actor_SetDirectionFromVector
 .extern ActorDerivedType1_StartRecord
@@ -44,5 +44,5 @@ ActorRegisteredSubclass_TriggerPrimaryInteraction: ; 0x0203d3fc
     blx r1
     ldmia sp!, {r3, r4, r5, pc}
 .L_0203d484: .word 0xe204
-.L_0203d488: .word data_021052fc
+.L_0203d488: .word gGamePhaseRuntime
     .size ActorRegisteredSubclass_TriggerPrimaryInteraction, . - ActorRegisteredSubclass_TriggerPrimaryInteraction

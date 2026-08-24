@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 extern SceneVTable data_020d448c;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void func_02030b58(void *context, s32 value);
 extern void ActorDerivedType1_ClearStateVectorTimers(void *object);
@@ -40,7 +40,7 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
     Scene_SetFlags03(&self->base);
     self->base.value04 = 2;
 
-    root = (u8 *)data_021052fc;
+    root = (u8 *)gGamePhaseRuntime;
     active = *(u8 **)(root + 0x2ea4);
     if (!GameWork_TestFlag(gGameWork, 0x3f3) &&
         !GameWork_TestFlag(gGameWork, 0x403)) {
@@ -62,7 +62,7 @@ ActorRuntimeScene *ActorRuntimeScene_Init(ActorRuntimeScene *self, void *object)
     if (context != 0)
         Type7Actor_EnterSpecialPresentationState(context);
     ActorRuntimeScene_ActivateFlaggedActors(self);
-    context = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    context = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     func_02030b58(context, 0);
     GameWork_TestFlag(gGameWork, 0x410);
     return self;

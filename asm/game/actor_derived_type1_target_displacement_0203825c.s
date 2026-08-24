@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern data_020c9670
 .extern data_020df4a4
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -367,7 +367,7 @@ ActorDerivedType1_ApplyWeightedCollisionDisplacement: ; 0x0203825c
     add sp, sp, #0x78
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02038770: .word data_020c9670
-.L_02038774: .word data_021052fc
+.L_02038774: .word gGamePhaseRuntime
 .L_02038778: .word gGamePhaseCurrencyHud
 .L_0203877c: .word data_020df4a4
 .L_02038780: .word gHeapContext

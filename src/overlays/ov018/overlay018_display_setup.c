@@ -4,7 +4,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern const u8 data_ov018_021ffcd0[];
 
 #ifdef __cplusplus
@@ -41,7 +41,7 @@ extern "C" void func_ov018_021fd5d0(void *state)
         s32 x;
         s32 y;
     } request = {data_ov018_021ffcd0, 0, 0};
-    void *global = data_021052fc;
+    void *global = gGamePhaseRuntime;
     void *renderer;
 
     func_020afd28((void *)0x04001020, matrix, 0, 0, 0, 0);
@@ -93,7 +93,7 @@ extern "C" void func_ov018_021fd6c0(void *state)
 extern "C" void func_ov018_021fd740(void *state)
 {
     s32 transform[4];
-    GamePhaseRuntime_BuildSecondaryTransform(transform, data_021052fc);
+    GamePhaseRuntime_BuildSecondaryTransform(transform, gGamePhaseRuntime);
     FIELD(s32, state, 0x5c) = transform[1] >> 12;
     FIELD(s32, state, 0x60) = transform[2] >> 12;
     VecFx32Object_Destroy(transform);

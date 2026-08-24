@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/type7_actor_type2_interaction.c.
 .text
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Subtract
 .extern VecFx32_Subtract
@@ -247,5 +247,5 @@ Type7Actor_ApplyType2InteractionResponse: ; 0x02046e60
     add sp, sp, #0x54
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_020471dc: .word data_020c9670
-.L_020471e0: .word data_021052fc
+.L_020471e0: .word gGamePhaseRuntime
 .size Type7Actor_ApplyType2InteractionResponse, . - Type7Actor_ApplyType2InteractionResponse

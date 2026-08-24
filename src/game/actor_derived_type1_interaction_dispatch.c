@@ -4,7 +4,7 @@
 /* Dispatch a type-1 actor interaction into damage effects or the active scene. */
 extern void *gGamePhaseCurrencyHud;
 extern const char data_020df4a4[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern void *gSceneManager;
 
 #ifdef __cplusplus
@@ -67,11 +67,11 @@ void ActorDerivedType1_DispatchInteractionAmount(void *self, s32 amount, void *s
         GamePhaseCurrencyHud_AddCurrency(gGamePhaseCurrencyHud, negative, 0);
         allocation = Heap_Alloc(0x44, data_020df4a4, 4, &gHeapContext);
         if (allocation != 0) {
-            void *resource = ActorMotionAreaFollower_GetPosition(data_021052fc + 0x2fbc);
+            void *resource = ActorMotionAreaFollower_GetPosition(gGamePhaseRuntime + 0x2fbc);
             effect = func_02022cb0(allocation, resource, actor, negative,
                                    0x2000, -0xc0);
         }
-        RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, effect);
+        RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, effect);
         descriptor = *(u8 **)(source + 0x1fc);
         if (*(s16 *)descriptor == 0x21 || *(s16 *)descriptor == 0x22 ||
             *(s16 *)descriptor == 0x2e || *(s16 *)descriptor == 0x2f ||

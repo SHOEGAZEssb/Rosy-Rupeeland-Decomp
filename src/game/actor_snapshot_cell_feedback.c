@@ -4,7 +4,7 @@
 
 /* Convert a saved cell snapshot into randomized visual and spatial-audio feedback. */
 extern const char data_020df4f0[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 gActorInteractionResourceState[];
 extern void *gSoundContext;
 extern TouchPanelManager *gTouchPanelManager;
@@ -53,7 +53,7 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
 
     VecFx32Object_InitComponents(position, saved[1] << 12, saved[2] << 12, 0);
     Position_AdjustForTerrainHeight(position);
-    map = *(u8 **)(data_021052fc + 0x2ed4);
+    map = *(u8 **)(gGamePhaseRuntime + 0x2ed4);
     cell = (*(u32 (**)(void *, s32, s32))(*(u8 **)map + 0x2c))(
         map, position[1] >> 16, position[2] >> 16);
     if (((cell >> 10) & 0x0f) != 1) {
@@ -70,7 +70,7 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
     packed = *(u16 *)(records + 6);
     if (packed != 0) {
         TouchPoint point;
-        u8 *reference = *(u8 **)(data_021052fc + 0x2ea4);
+        u8 *reference = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
         s32 dx = (*(s32 *)(reference + 0x1c) >> 12) -
                  (position[1] >> 12);
         s32 dy = (*(s32 *)(reference + 0x20) >> 12) -
@@ -92,14 +92,14 @@ s32 ActorFeedback_ProcessSnapshotCell(const void *snapshot)
     {
         void *allocation = Heap_Alloc(0x14, data_020df4f0, 4, &gHeapContext);
         if (allocation != 0) {
-            void *group = **(void ***)(data_021052fc + 0x2ea4 + 0x54);
+            void *group = **(void ***)(gGamePhaseRuntime + 0x2ea4 + 0x54);
             presentation = TimedSpriteOffsetPresentation_Init(
                 allocation, position, variant, group,
                 *(s32 *)(resource + 4), *(s32 *)(resource + 8),
                 *(s32 *)(resource + 0x0c), 0, -1);
         }
     }
-    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, presentation);
+    RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, presentation);
     VecFx32Object_Destroy(position);
     return 1;
 }

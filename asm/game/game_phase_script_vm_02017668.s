@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_control_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseScriptVm_Pop
 .global GamePhaseActorScriptVm_SetAreaSceneEnabled
@@ -15,5 +15,5 @@ GamePhaseActorScriptVm_SetAreaSceneEnabled:
     bl GamePhaseAreaScene_SetEnabled
     mov r0, #0
     ldmia sp!, {r3, pc}
-L_02017690: .word data_021052fc
+L_02017690: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_SetAreaSceneEnabled, . - GamePhaseActorScriptVm_SetAreaSceneEnabled

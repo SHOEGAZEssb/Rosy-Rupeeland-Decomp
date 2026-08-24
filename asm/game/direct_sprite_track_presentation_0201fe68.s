@@ -2,7 +2,7 @@
 .text
 .extern Heap_Alloc
 .extern gDirectSpriteTrackPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern RuntimePresentationManager_AppendSecondListEffect
 .extern DirectSpriteTrackPresentation_Init
@@ -60,5 +60,5 @@ DirectSpriteTrackPresentation_SpawnAndRegister: ; 0x0201fe68
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 .L_0201ff20: .word gDirectSpriteTrackPresentationAllocationTag
 .L_0201ff24: .word gHeapContext
-.L_0201ff28: .word data_021052fc
+.L_0201ff28: .word gGamePhaseRuntime
     .size DirectSpriteTrackPresentation_SpawnAndRegister, .-DirectSpriteTrackPresentation_SpawnAndRegister

@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern SceneVTable data_020d448c;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *context, s32 index);
 extern void ActorRuntimeScene_DeactivateActorSets(ActorRuntimeScene *self);
 extern void func_02030b58(void *context, s32 value);
@@ -39,8 +39,8 @@ ActorRuntimeScene *ActorRuntimeScene_Destroy(ActorRuntimeScene *self)
 
     self->base.vtable = &data_020d448c;
     ActorRuntimeScene_DeactivateActorSets(self);
-    root = (u8 *)data_021052fc;
-    context = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    root = (u8 *)gGamePhaseRuntime;
+    context = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     active = *(u8 **)((u8 *)context + 0x2e7c);
     Actor_SetActive(active, 0);
     if (GameWork_TestFlag(gGameWork, 0x3ec))
@@ -62,7 +62,7 @@ ActorRuntimeScene *ActorRuntimeScene_Destroy(ActorRuntimeScene *self)
     object = (u8 *)self->object;
     if (object[0x4d] == 3 && *(u16 *)(object + 0x4e) == 2)
         ActorCollection_UnregisterAndDestroyActor(Actor_GetOwningCollection(object), object);
-    context = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    context = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     func_02030b58(context, 1);
     Scene_Destroy(&self->base);
     return self;

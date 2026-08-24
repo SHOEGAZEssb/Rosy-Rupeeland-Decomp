@@ -6,7 +6,7 @@
  * the reset restores callback and global-target state once it arrives.
  */
 extern s16 data_020c9670[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -82,7 +82,7 @@ s32 Type7Actor_UpdateDestinationMotion(void *self)
 /*
  * Input is a type-seven actor that completed destination motion. Clear actor
  * flags 0x80000 and four, clear +0x14 bits two/four, set +0x14 bit 0x2000000,
- * pass the global object at data_021052fc+0x2ea4 to ActorDerivedType1_SetSpecialModeEnabled with mode
+ * pass the global object at gGamePhaseRuntime+0x2ea4 to ActorDerivedType1_SetSpecialModeEnabled with mode
  * zero, and select a fresh randomized callback through Type7Actor_SelectRandomCallback. Actor,
  * global-object, random, and callback state may change; there is no return
  * value or direct hardware access.
@@ -90,7 +90,7 @@ s32 Type7Actor_UpdateDestinationMotion(void *self)
 void Type7Actor_CompleteDestinationMotion(void *self)
 {
     u8 *actor = (u8 *)self;
-    u8 *globalObject = *(u8 **)(data_021052fc + 0x2ea4);
+    u8 *globalObject = *(u8 **)(gGamePhaseRuntime + 0x2ea4);
     *(u32 *)(actor + 0x268) &= ~(0x80000 | 4);
     *(u32 *)(actor + 0x14) =
         (*(u32 *)(actor + 0x14) & ~(2 | 4)) | 0x2000000;

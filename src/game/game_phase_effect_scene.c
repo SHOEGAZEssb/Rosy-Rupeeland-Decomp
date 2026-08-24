@@ -12,7 +12,7 @@ extern SceneVTable data_020d5400;
 extern const u32 data_020d53b8[];
 extern const u32 data_020cdc1c[];
 extern const u8 data_020d542c[];
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void);
@@ -41,7 +41,7 @@ static AnimationResource *createResources(void *resource1, void *resource2)
  */
 GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 mode)
 {
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     GraphicsSpriteState *source;
     GraphicsSpriteGroup *group;
 
@@ -154,7 +154,7 @@ s32 GamePhaseEffectScene_WaitForAnimation(GamePhaseEffectScene *self)
 {
     if (self->base.value08 == 0) {
         GraphicsSpriteState *source = *(GraphicsSpriteState **)(
-            *(u8 **)((u8 *)data_021052fc + 0x2ea4) + 0x54);
+            *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4) + 0x54);
         self->base.value08++;
         source->flags |= 4;
         self->sprite->flags &= (u16)~4;
@@ -173,7 +173,7 @@ s32 GamePhaseEffectScene_RiseAfterAnimation(GamePhaseEffectScene *self)
 {
     if (self->base.value08 == 0) {
         GraphicsSpriteState *source = *(GraphicsSpriteState **)(
-            *(u8 **)((u8 *)data_021052fc + 0x2ea4) + 0x54);
+            *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4) + 0x54);
         self->base.value08++;
         source->flags |= 4;
         self->sprite->flags &= (u16)~4;
@@ -193,7 +193,7 @@ s32 GamePhaseEffectScene_RiseAfterAnimation(GamePhaseEffectScene *self)
         if (self->timer > 90)
             return 1;
         source = *(GraphicsSpriteState **)(
-            *(u8 **)((u8 *)data_021052fc + 0x2ea4) + 0x54);
+            *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4) + 0x54);
         self->sprite->field_2e = (s16)(source->field_2e - self->timer / 2);
     }
     return 0;

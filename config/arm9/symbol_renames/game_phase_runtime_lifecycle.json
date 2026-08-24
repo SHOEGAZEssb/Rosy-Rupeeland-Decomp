@@ -1,0 +1,13 @@
+{
+  "GamePhaseRuntime_Init": "GamePhaseRuntime_Init",
+  "GamePhaseRuntime_Configure": "GamePhaseRuntime_Configure",
+  "GamePhaseRuntime_SetDisplayRouting": "GamePhaseRuntime_SetDisplayRouting",
+  "GamePhaseRuntime_CreateFieldLoader": "GamePhaseRuntime_CreateFieldLoader",
+  "GamePhaseRuntime_DestroyFieldLoader": "GamePhaseRuntime_DestroyFieldLoader",
+  "GamePhaseRuntime_Destroy": "GamePhaseRuntime_Destroy",
+  "GamePhaseRuntime_DestroyAndFree": "GamePhaseRuntime_DestroyAndFree",
+  "GamePhaseRuntime_Update": "GamePhaseRuntime_Update",
+  "data_020d431c": "gGamePhaseRuntimeVTable",
+  "data_021052fc": "gGamePhaseRuntime",
+  "data_02105300": "gGamePhaseTouchPromptTaskNode"
+}

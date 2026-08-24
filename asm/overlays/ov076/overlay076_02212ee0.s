@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov076/overlay076_recovery.c.
 .extern Heap_Alloc
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov076_02214eec
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
@@ -490,7 +490,7 @@ func_ov076_02212ee0:
 .L_022135b0: .word data_020c9670
 .L_022135b4: .word 0x2710
 .L_022135b8: .word 0xfffff254
-.L_022135bc: .word data_021052fc
+.L_022135bc: .word gGamePhaseRuntime
 .L_022135c0: .word 0x7fff
 .L_022135c4: .word data_ov076_02214eec
 .L_022135c8: .word gHeapContext

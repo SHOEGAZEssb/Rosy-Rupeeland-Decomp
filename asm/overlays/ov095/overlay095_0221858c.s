@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern OS_Halt
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov095_0221ceb8
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_InitCopy
@@ -1051,7 +1051,7 @@ func_ov095_0221858c:
     bl Sound_FadeDirectSequence
     b .L_022196bc
 .L_02219494: .word 0xfffffbf5
-.L_02219498: .word data_021052fc
+.L_02219498: .word gGamePhaseRuntime
 .L_0221949c: .word gSoundContext
 .L_022194a0: .word 0x1ee
 .L_022194a4: .word 0xffff0003

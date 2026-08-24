@@ -8,7 +8,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern s32 data_020e1964;
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void *Actor_GetOwningCollection(void *actor);
@@ -31,7 +31,7 @@ s32 GamePhaseActorScriptVm_DispatchType7ActorQuery(GamePhaseActorScriptVm *self)
     s32 subIndex = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *runtime = (u8 *)data_021052fc;
+    u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *entity;
     s32 result = 0;
 

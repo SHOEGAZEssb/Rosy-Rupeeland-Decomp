@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_callbacks.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern ActorContactState_AddContact
 .extern Actor_SetInteractionFlag2000
@@ -50,7 +50,7 @@ TrackedResourceActor_PostUpdate: ; 0x0204ff40
     mov r1, r4
     bl Actor_SetInteractionFlag2000
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204ff94: .word data_021052fc
+.L_0204ff94: .word gGamePhaseRuntime
 .size TrackedResourceActor_PostUpdate, . - TrackedResourceActor_PostUpdate
 
     .global TrackedResourceActor_ActivateBoundedAction
@@ -112,6 +112,6 @@ TrackedResourceActor_ActivateBoundedAction: ; 0x0204ff98
 .L_0205006c:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02050074: .word data_021052fc
+.L_02050074: .word gGamePhaseRuntime
 .size TrackedResourceActor_ActivateBoundedAction, . - TrackedResourceActor_ActivateBoundedAction
 

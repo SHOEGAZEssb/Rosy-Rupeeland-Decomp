@@ -18,7 +18,7 @@
     .extern func_ov039_02206ae0
     .extern VecFx32Object_Add
     .extern func_ov039_021ff458
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_020c9670
     .global func_ov039_022077b4
 func_ov039_022077b4:
@@ -523,7 +523,7 @@ L_02207ef8:
 L_02207f00:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_02207f08: .word data_021052fc
+L_02207f08: .word gGamePhaseRuntime
 L_02207f0c: .word data_020c9670
 L_02207f10: .word 0x26f000
     .size func_ov039_022077b4, .-func_ov039_022077b4

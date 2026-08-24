@@ -14,7 +14,7 @@
 .extern gFieldEffectListVtable
 .extern gFieldEffectListNodeAllocationTag
 .extern gGraphics3dPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gHeapContext
 .global RuntimePresentationManager_UpdatePresentations
 RuntimePresentationManager_UpdatePresentations: ; 0x0201dcec
@@ -88,7 +88,7 @@ L_0201dd98:
 L_0201ddd8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_0201dde0: .word data_021052fc
+L_0201dde0: .word gGamePhaseRuntime
 
 
 .size RuntimePresentationManager_UpdatePresentations, . - RuntimePresentationManager_UpdatePresentations

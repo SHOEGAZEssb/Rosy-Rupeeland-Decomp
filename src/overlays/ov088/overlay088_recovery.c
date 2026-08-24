@@ -15,7 +15,7 @@ typedef void (*V1)(void *, void *);
 typedef void (*VS)(void *, s32);
 typedef void (*V2)(void *, void *, s32);
 
-extern "C" void *data_021052fc, *data_021056f0;
+extern "C" void *gGamePhaseRuntime, *data_021056f0;
 extern "C" u8 data_020ed470[];
 extern "C" void *gSceneManager;
 extern "C" void *SceneManager_GetCurrent(void *);
@@ -368,7 +368,7 @@ extern "C" void func_ov088_02218328(void *a) {
         if (F(s32, SceneManager_GetCurrent(gSceneManager), 4) == 14)
             return;
         F(u16, a, 0x21a) &= ~0x80u;
-        void *player = F(void *, data_021052fc, 0x2ea4);
+        void *player = F(void *, gGamePhaseRuntime, 0x2ea4);
         VecFx32Object_Assign((u8 *)player + 0x24, (u8 *)player + 0x34);
         F(u16, player, 0xd6) = 2;
         Actor_ReplaceAttachmentSlotResource(player, 0, 0x1088, 0x1001, 0x1089);
@@ -474,7 +474,7 @@ extern "C" void func_ov088_02218328(void *a) {
     F(s16, a, 0x62) -= (s16)(F(s32, a, 0x23c) >> 12);
     if (F(s16, a, 0x230) == 1 &&
         F(s32, SceneManager_GetCurrent(gSceneManager), 4) != 14) {
-        void *player = F(void *, data_021052fc, 0x2ea4);
+        void *player = F(void *, gGamePhaseRuntime, 0x2ea4);
         VecFx32Object_Assign((u8 *)player + 0x18, (u8 *)a + 0x18);
         F(u32, player, 0x14) |= 2;
     }
@@ -538,7 +538,7 @@ extern "C" void func_ov088_022191d4(void *context, void *a, void *transform,
     }
     if (F(s16, a, 0x230) == 1 &&
         F(s32, SceneManager_GetCurrent(gSceneManager), 4) != 14) {
-        void *player = F(void *, data_021052fc, 0x2ea4),
+        void *player = F(void *, gGamePhaseRuntime, 0x2ea4),
              *ps = F(void *, player, 0x54);
         s32 dir = F(u8, a, 0xd4), ox = data_ov088_0221b6ac[dir * 2] >> 12,
             oy = (data_ov088_0221b6b0[dir * 2] >> 12) -
@@ -732,7 +732,7 @@ extern "C" void func_ov088_02219c0c(void *a, s32 interaction, s32, s32) {
                 VecFx32Object_Destroy(p);
             }
         } else {
-            void *player = F(void *, data_021052fc, 0x2ea4);
+            void *player = F(void *, gGamePhaseRuntime, 0x2ea4);
             if (ActorDerivedType1_IsIdleEligible(player) &&
                 Actor_GetCachedTerrainHeight(a) ==
                     Actor_GetCachedTerrainHeight(player)) {
@@ -741,7 +741,7 @@ extern "C" void func_ov088_02219c0c(void *a, s32 interaction, s32, s32) {
                 F(s32, d, 12) = 0;
                 if (VecFx32Object_GetMagnitude(d) < 0x3c000) {
                     ((VS)vm(a, 0xc4))(a, 15);
-                    void *t = F(void *, data_021052fc, 0x2ea8);
+                    void *t = F(void *, gGamePhaseRuntime, 0x2ea8);
                     if (t)
                         F(u16, t, 0x2a6) = 15;
                 }
@@ -823,7 +823,7 @@ extern "C" void func_ov088_02219ff4(void *a, s32 effect_duration) {
     if (F(s16, a, 0x230) == 0) {
         F(u16, a, 0x21a) |= 2;
         Actor_PlayRadialSpatialSound(a, 0xfd86, 0);
-        void *player = F(void *, data_021052fc, 0x2ea4);
+        void *player = F(void *, gGamePhaseRuntime, 0x2ea4);
         if (effect_duration > 0) {
             OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3e);
             void *e = Heap_Alloc(0x48, data_ov088_0221b9fc, 4, gHeapContext);
@@ -845,7 +845,7 @@ extern "C" void func_ov088_02219ff4(void *a, s32 effect_duration) {
         F(u16, a, 0x21a) &= ~0x1000u;
         if (F(u16, F(void *, a, 0x238), 0x2e) & 1) {
             void *collection =
-                GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+                GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
             s32 count = F(s32, collection, 0x2e74);
             for (s32 i = 0; i < count; i++) {
                 void *actor = F(void *, collection, i * 4);
@@ -905,11 +905,11 @@ extern "C" void func_ov088_0221aaac(void *a) {
         F(s32, a, 0x90) -= 0x2000;
     if (!Actor_IsTerrainCellEligibleAtHeight(a, x >> 4, (y - hh) >> 4, layer))
         F(s32, a, 0x90) += 0x2000;
-    void *player = F(void *, data_021052fc, 0x2ea4);
+    void *player = F(void *, gGamePhaseRuntime, 0x2ea4);
     clear_motion(player);
     F(u32, player, 0x14) |= 2;
     VecFx32Object_Assign((u8 *)player + 0x18, (u8 *)a + 0x18);
-    void *target = F(void *, data_021052fc, 0x2ea8);
+    void *target = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (target && F(void *, a, 0x24c)) {
         F(u16, F(void *, target, 0x54), 0x24) |= 4;
         void *resource = Heap_Alloc(0x10, data_ov088_0221b9fc, 4, gHeapContext);
@@ -983,7 +983,7 @@ static void leave_active_control(void *a) {
 /* Leave active control through the effect-producing scene transition. */
 extern "C" void func_ov088_0221a298(void *a, void *effect_position) {
     if (F(s16, a, 0x230) == 1) {
-        void *player = F(void *, data_021052fc, 0x2ea4);
+        void *player = F(void *, gGamePhaseRuntime, 0x2ea4);
         u16 s = F(u16, F(void *, a, 0x238), 0x24);
         if (s)
             Sound_PlayOwnedEffect(gSoundContext, s >> 7, s & 0x7f, a, 0, 0x100);
@@ -1008,7 +1008,7 @@ extern "C" void func_ov088_0221a298(void *a, void *effect_position) {
 /* Leave active control through the direct no-effect scene transition. */
 extern "C" void func_ov088_0221a58c(void *a, void *, s32, s32) {
     if (F(s16, a, 0x230) == 1) {
-        void *player = F(void *, data_021052fc, 0x2ea4);
+        void *player = F(void *, gGamePhaseRuntime, 0x2ea4);
         VecFx32Object_Assign((u8 *)player + 0x18, (u8 *)a + 0x18);
         GameWork_ClearFlag(gGameWork, 0x402);
         Actor_ReplaceAttachmentSlotResource(player, 0, 0x1000, 0x1001, 0x1002);
@@ -1041,7 +1041,7 @@ func_ov088_0221ad9c(void *a, s32 visible) {
 extern "C" s32 func_ov088_0221add8(void *a, s32, s32, s32) {
     if (F(s32, SceneManager_GetCurrent(gSceneManager), 4) != 1)
         return 0;
-    void *target = F(void *, data_021052fc, 0x2ea8);
+    void *target = F(void *, gGamePhaseRuntime, 0x2ea8);
     if (target) {
         if (!F(void *, a, 0x24c)) {
             if (F(s16, a, 0x230) == 1 && Type7Actor_GetStateCode(target) == 0 &&
@@ -1072,7 +1072,7 @@ extern "C" s32 func_ov088_0221add8(void *a, s32, s32, s32) {
 /* Acquire the type-7 actor's presentation resource and enter attached motion.
  */
 extern "C" void func_ov088_0221af2c(void *a, s32 duration) {
-    void *target = F(void *, data_021052fc, 0x2ea8);
+    void *target = F(void *, gGamePhaseRuntime, 0x2ea8);
     void *resource = Heap_Alloc(0x10, data_ov088_0221b9fc, 4, gHeapContext);
     void *d = F(void *, target, 0x29c);
     if (resource)
@@ -1105,7 +1105,7 @@ extern "C" void func_ov088_0221af2c(void *a, s32 duration) {
 /* Release the type-7 attachment, restore its position, and spawn its return
  * motion. */
 extern "C" void func_ov088_0221b098(void *a) {
-    void *target = F(void *, data_021052fc, 0x2ea8);
+    void *target = F(void *, gGamePhaseRuntime, 0x2ea8);
     GraphicsSpriteState_ReleaseFromGroup(F(void *, a, 0x250));
     F(void *, a, 0x250) = 0;
     if (F(void *, a, 0x24c))
@@ -1150,7 +1150,7 @@ extern "C" s32 func_ov088_0221b218(void *a) {
 
 /* Refresh scene collision state, then query one map cell. */
 extern "C" s32 func_ov088_0221b278(void *a, s32 x, s32 y, s32 layer) {
-    void *scene = F(void *, data_021052fc, 0x2ed4);
+    void *scene = F(void *, gGamePhaseRuntime, 0x2ed4);
     ((V0)vm(scene, 0x2c))(scene);
     return Actor_IsTerrainCellEligibleAtHeight(a, x, y, layer);
 }
@@ -1200,7 +1200,7 @@ func_ov088_0221b3c8(void *a) {
 extern "C" s32 func_ov088_0221b3e4(void *a) {
     if (!func_ov088_02219d9c(a))
         return 0;
-    if (F(s32, F(void *, data_021052fc, 0x2ed4), 4) == 1)
+    if (F(s32, F(void *, gGamePhaseRuntime, 0x2ed4), 4) == 1)
         F(u16, a, 0x21a) |= 0x800;
     return 1;
 }
@@ -1215,7 +1215,7 @@ extern "C" void Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch(vo
         return;
     u8 target[16], origin[16];
     VecFx32Object_Init(target);
-    void *p = ActorMotionAreaFollower_GetPosition((u8 *)data_021052fc + 0x2fbc);
+    void *p = ActorMotionAreaFollower_GetPosition((u8 *)gGamePhaseRuntime + 0x2fbc);
     F(s32, target, 4) =
         F(s32, p, 4) + F(u16, gTouchPanelManager, 0x40) * 0x1000;
     F(s32, target, 8) =
@@ -1247,7 +1247,7 @@ func_ov088_0221b53c(void *a) {
 }
 /* Mirror the scene attachment flag before the inherited update. */
 extern "C" void func_ov088_0221b558(void *a) {
-    void *s = F(void *, data_021052fc, 0x2ea4);
+    void *s = F(void *, gGamePhaseRuntime, 0x2ea4);
     if (s && (F(u32, s, 0x230) & 0x20000))
         F(u32, a, 0x10) &= ~0x10000u;
     else

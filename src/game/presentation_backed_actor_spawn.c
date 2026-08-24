@@ -6,7 +6,7 @@
  * manager, installs playback parameters, and configures its bounds and flags.
  */
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,7 +50,7 @@ void *PresentationBackedActor_Spawn(s32 type, u32 value_1f4, u32 value_1f2,
                   FIELD(s32, position, 12) >> 12,
                   20, 4, flags, 0, 0, 0, 0, 0xff, 0, 0, 0, 0);
 
-    void *manager = GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+    void *manager = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
     void *actor = ActorCollection_SpawnActorFromDescriptor(manager, descriptor);
     PresentationBackedActor_SetPlaybackParameters(actor, value_1f2, value_1f4,
                   (u8)selection, (u8)value_1ef);

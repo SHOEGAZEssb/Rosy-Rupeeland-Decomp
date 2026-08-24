@@ -4,7 +4,7 @@
 .extern GXS_SetGraphicsMode
 .extern GX_SetGraphicsMode
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_ApplyScreenMode
 .extern GamePhaseState_SetEnabled
 .extern GamePhaseAreaScene_SetEnabled
@@ -77,6 +77,6 @@ Overlay032Scene_ShutdownGraphics:
 L_021fdf20: .word 0x4001000
 L_021fdf24: .word data_020f4e14
 L_021fdf28: .word gDebugFont
-L_021fdf2c: .word data_021052fc
+L_021fdf2c: .word gGamePhaseRuntime
 .size Overlay032Scene_ShutdownGraphics, .-Overlay032Scene_ShutdownGraphics
 

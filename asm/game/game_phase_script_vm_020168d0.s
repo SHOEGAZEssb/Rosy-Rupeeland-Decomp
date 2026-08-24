@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_misc_opcodes.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern Actor_GetCachedTerrainHeight
 .global GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set
@@ -31,5 +31,5 @@ L_02016918:
 L_02016924:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
-L_0201692c: .word data_021052fc
+L_0201692c: .word gGamePhaseRuntime
     .size GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set, . - GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set

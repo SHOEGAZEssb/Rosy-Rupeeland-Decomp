@@ -26,7 +26,7 @@
 .extern gDebugFont
 .extern gHeapContext
 .extern gSoundContext
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global func_0201cfd0
 func_0201cfd0: ; 0x0201cfd0
     stmdb sp!, {r3, r4, r5, lr}

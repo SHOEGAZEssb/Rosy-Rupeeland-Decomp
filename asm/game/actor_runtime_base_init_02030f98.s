@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_runtime_base_init.c.
 .text
 .extern data_020df040
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Assign
@@ -153,5 +153,5 @@ ActorRuntimeBase_Init: ; 0x02030f98
     strh r1, [r5, #0x76]
     ldmia sp!, {r3, r4, r5, pc}
 .L_020311b4: .word data_020df040
-.L_020311b8: .word data_021052fc
+.L_020311b8: .word gGamePhaseRuntime
     .size ActorRuntimeBase_Init, . - ActorRuntimeBase_Init

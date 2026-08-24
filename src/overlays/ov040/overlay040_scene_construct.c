@@ -53,7 +53,7 @@ extern void func_020ae90c(void);
 extern void func_020ae284(s32, s32, s32);
 extern void func_020af478(s32 bank);
 extern void *data_020f4e18;
-extern void **data_021052fc;
+extern void **gGamePhaseRuntime;
 extern const void *data_ov040_022042a8;
 #ifdef __cplusplus
 }
@@ -223,10 +223,10 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
 
     func_ov040_021fd8ac(scene);
     FIELD(s32, scene, 0x848) = 0x1000;
-    if (FIELD(void *, *data_021052fc, 0x2ea8) == 0) {
+    if (FIELD(void *, *gGamePhaseRuntime, 0x2ea8) == 0) {
         FIELD(void *, scene, 0xb10) = 0;
     } else {
-        void *descriptor = FIELD(void *, FIELD(void *, *data_021052fc, 0x2ea8), 0x29c);
+        void *descriptor = FIELD(void *, FIELD(void *, *gGamePhaseRuntime, 0x2ea8), 0x29c);
         void *object = scene_create(scene, FIELD(u16, descriptor, 2),
                                     FIELD(u16, descriptor, 4), FIELD(u16, descriptor, 6),
                                     resourceArgument, 0x80000, 0x61000, 0x13);

@@ -2,7 +2,7 @@
 .text
 .extern data_020c9670
 .extern data_020e0f28
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern VecFx32_Subtract
@@ -154,7 +154,7 @@ ActorExtendedTransform_UpdateTargetMotion: ; 0x020441cc
 .L_020443dc:
     add sp, sp, #0x48
     ldmia sp!, {r4, r5, r6, pc}
-.L_020443e4: .word data_021052fc
+.L_020443e4: .word gGamePhaseRuntime
 .L_020443e8: .word data_020e0f28
 .L_020443ec: .word data_020c9670
 .size ActorExtendedTransform_UpdateTargetMotion, . - ActorExtendedTransform_UpdateTargetMotion

@@ -1,7 +1,7 @@
 #include "tingle/types.h"
 
 /* Apply an installed callback to a category control actor and enable category-two members. */
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern const s8 *data_020df500[2];
 
 #ifdef __cplusplus
@@ -30,7 +30,7 @@ extern "C"
 void ActorDescriptorBatch_ApplyCategoryCallback(s32 mode)
 {
     s32 category = mode == 0 ? 1 : 2;
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(data_021052fc, category);
+    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, category);
     void *control = ActorCollection_FindActorByTypeAndId(collection, 3, 4);
     u8 *vtable = *(u8 **)control;
 

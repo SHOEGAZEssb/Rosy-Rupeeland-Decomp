@@ -7,7 +7,7 @@
 .extern Scene_ClearFlag02
 .extern Sound_Play
 .extern gDisplayBrightnessPair
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov093_022187f0
 .extern data_ov093_022189e8
 .extern data_ov093_022189f0
@@ -613,7 +613,7 @@ func_ov093_02217c50:
 .L_022184c0:
     add sp, sp, #0x28
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_022184c8: .word data_021052fc
+.L_022184c8: .word gGamePhaseRuntime
 .L_022184cc: .word gSceneManager
 .L_022184d0: .word 0x3f
 .L_022184d4: .word data_ov093_022189e8

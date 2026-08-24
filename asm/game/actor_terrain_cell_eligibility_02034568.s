@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_terrain_cell_eligibility.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
@@ -62,7 +62,7 @@ Actor_IsTerrainCellEligibleAtHeight: ; 0x02034568
 .L_02034630:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_02034638: .word data_021052fc
+.L_02034638: .word gGamePhaseRuntime
     .size Actor_IsTerrainCellEligibleAtHeight, . - Actor_IsTerrainCellEligibleAtHeight
 
     .global Actor_IsTerrainCellEligibleAtHeightOrOneBelow

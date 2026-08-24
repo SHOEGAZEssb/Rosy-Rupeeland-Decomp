@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern void *ActorCollection_FindActorByRuntimeId(void *collection, s32 index);
 extern void Actor_SetRuntimeProperty(void *actor, s32 command, s32 value);
@@ -21,7 +21,7 @@ extern s32 GridEffectActorRegistry_CountDepartingOrFinishedActors(void);
 s32 GamePhaseActorScriptVm_SendCommand2aToCollection2Actor0(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *collection = GamePhaseRuntime_GetActorCollection(data_021052fc, 2);
+    void *collection = GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 2);
     void *actor = ActorCollection_FindActorByRuntimeId(collection, 0);
     Actor_SetRuntimeProperty(actor, 0x2a, value);
     return 0;

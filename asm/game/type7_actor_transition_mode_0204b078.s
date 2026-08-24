@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_transition_mode.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern AttachmentController_SetEnabled
 .extern ActorDerivedType1_SetSpecialModeEnabled
 .extern Type7Actor_ResetMotionAndCooldown
@@ -61,7 +61,7 @@ Type7Actor_SetActorEnabled: ; 0x0204b078
     ldr r0, [r0, #0xea4]
     bl ActorDerivedType1_SetSpecialModeEnabled
     ldmia sp!, {r4, pc}
-.L_0204b144: .word data_021052fc
+.L_0204b144: .word gGamePhaseRuntime
 .size Type7Actor_SetActorEnabled, . - Type7Actor_SetActorEnabled
 
     .global Type7Actor_ConfigureAttachmentController

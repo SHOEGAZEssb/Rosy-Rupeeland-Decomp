@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov095/overlay095_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Fx32Vector2_Magnitude
 .extern func_020adc90
 
@@ -68,5 +68,5 @@ func_ov095_0221c3ac:
     bl func_020adc90
     str r0, [r8, #0x40]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_0221c4a0: .word data_021052fc
+.L_0221c4a0: .word gGamePhaseRuntime
 .size func_ov095_0221c3ac, . - func_ov095_0221c3ac

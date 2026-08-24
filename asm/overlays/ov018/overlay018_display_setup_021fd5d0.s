@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov018/overlay018_display_setup.c. */
     .extern GXS_SetGraphicsMode
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov018_021ffcd0
     .extern VecFx32Object_Destroy
     .extern GamePhaseRuntime_BuildSecondaryTransform
@@ -71,7 +71,7 @@ func_ov018_021fd5d0:
     ldmia sp!, {r4, r5, pc}
 L_021fd6ac: .word 0x4001020
 L_021fd6b0: .word 0x400100c
-L_021fd6b4: .word data_021052fc
+L_021fd6b4: .word gGamePhaseRuntime
 L_021fd6b8: .word data_ov018_021ffcd0
     .size func_ov018_021fd5d0, . - func_ov018_021fd5d0
 
@@ -135,5 +135,5 @@ func_ov018_021fd740:
     bl VecFx32Object_Destroy
     add sp, sp, #0x10
     ldmia sp!, {r4, pc}
-L_021fd784: .word data_021052fc
+L_021fd784: .word gGamePhaseRuntime
     .size func_ov018_021fd740, . - func_ov018_021fd740

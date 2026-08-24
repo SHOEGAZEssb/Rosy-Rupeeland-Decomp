@@ -3,7 +3,7 @@
 .extern GameWork_SetFlag
 .extern Heap_Alloc
 .extern Sound_Play
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov087_02218aa4
 .extern OverlayManager_LoadOverlay
 .extern OverlayManager_GetGlobal
@@ -134,7 +134,7 @@ func_ov087_022184b0:
 .L_02218660: .word gHeapContext
 .L_02218664: .word 0x3e
 .L_02218668: .word gSoundContext
-.L_0221866c: .word data_021052fc
+.L_0221866c: .word gGamePhaseRuntime
 .L_02218670: .word gGameWork
 .L_02218674: .word 0x402
 .size func_ov087_022184b0, . - func_ov087_022184b0

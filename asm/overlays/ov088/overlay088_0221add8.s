@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern SceneManager_GetCurrent
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_PlayRadialSpatialSound
 .extern Type7Actor_GetStateCode
 .extern Fx32Vector2_Magnitude
@@ -97,7 +97,7 @@ func_ov088_0221add8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 .L_0221af1c: .word gSceneManager
-.L_0221af20: .word data_021052fc
+.L_0221af20: .word gGamePhaseRuntime
 .L_0221af24: .word 0xfffff99a
 .L_0221af28: .word 0xfd87
 .size func_ov088_0221add8, . - func_ov088_0221add8

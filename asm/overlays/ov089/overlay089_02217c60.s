@@ -4,7 +4,7 @@
 .extern SceneManager_GetCurrent
 .extern Sound_Play
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov089_022199fc
 .extern data_ov089_02219b48
 .extern data_ov089_02219b4c
@@ -706,7 +706,7 @@ func_ov089_02217c60:
     add sp, sp, #0x84
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02218680: .word gSceneManager
-.L_02218684: .word data_021052fc
+.L_02218684: .word gGamePhaseRuntime
 .L_02218688: .word 0x7fff
 .L_0221868c: .word data_020c9670
 .L_02218690: .word 0x333

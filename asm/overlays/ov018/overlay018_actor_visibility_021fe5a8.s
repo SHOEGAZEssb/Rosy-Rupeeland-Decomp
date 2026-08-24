@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_actor_visibility.c. */
     .extern data_020c37e4
     .extern data_020d7a48
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern GamePhaseRuntime_GetActorCollection
     .extern ActorCollection_GetSpriteGroup
     .extern func_02091b98
@@ -34,7 +34,7 @@ L_021fe5e8:
     cmp r1, #0x0
     bne L_021fe5cc
     ldmia sp!, {r3, pc}
-L_021fe5f4: .word data_021052fc
+L_021fe5f4: .word gGamePhaseRuntime
     .size func_ov018_021fe5ac, . - func_ov018_021fe5ac
 
     .global func_ov018_021fe5f8
@@ -59,7 +59,7 @@ L_021fe634:
     cmp r1, #0x0
     bne L_021fe618
     ldmia sp!, {r3, pc}
-L_021fe640: .word data_021052fc
+L_021fe640: .word gGamePhaseRuntime
     .size func_ov018_021fe5f8, . - func_ov018_021fe5f8
 
     .global func_ov018_021fe644

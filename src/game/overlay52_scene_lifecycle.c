@@ -25,7 +25,7 @@ extern DisplayBrightnessPair gDisplayBrightnessPair;
 extern void *gDebugFont;
 extern void *gSoundContext;
 extern HeapContext gHeapContext;
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
 extern Overlay52Child *Overlay052Scene_Init(Overlay52Child *self, s32 first,
                                            s32 second);
@@ -125,13 +125,13 @@ s32 func_0201d0f4(Overlay52Scene *self)
         if (self->child28->state04 == 1)
             Overlay052Scene_BeginConfirmationFade(self->child28);
     }
-    GamePhaseRuntime_UpdateActorPresentationState(data_021052fc, 2);
+    GamePhaseRuntime_UpdateActorPresentationState(gGamePhaseRuntime, 2);
     return 0;
 }
 
 /* Forward the runtime object's field at offset 0x24 and return zero. */
 s32 func_0201d220(void)
 {
-    GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
+    GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
     return 0;
 }

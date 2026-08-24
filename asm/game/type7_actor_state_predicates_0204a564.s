@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/type7_actor_state_predicates.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseState_GetConfiguration
 .text
     .global Type7Actor_MatchesGlobalRecordIndex
@@ -25,7 +25,7 @@ Type7Actor_MatchesGlobalRecordIndex: ; 0x0204a564
     moveq r0, #0x1
     movne r0, #0x0
     ldmia sp!, {r4, pc}
-.L_0204a5b4: .word data_021052fc
+.L_0204a5b4: .word gGamePhaseRuntime
 .size Type7Actor_MatchesGlobalRecordIndex, . - Type7Actor_MatchesGlobalRecordIndex
 
     .global Type7Actor_HasFlag4Target

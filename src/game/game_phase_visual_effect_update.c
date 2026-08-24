@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void GamePhaseVisualEffect_ApplyBlend(GamePhaseVisualEffect *self);
 extern u32 func_020af958(void);
 extern void func_020b581c(u32 random, s32 value, s32 scale);
@@ -40,7 +40,7 @@ void GamePhaseVisualEffect_Update(GamePhaseVisualEffect *self)
             (((u32)(self->vectors[1].value.y >> 12) & 0x1ff) << 16) |
             ((u32)(self->vectors[1].value.x >> 12) & 0x1ff);
         GamePhaseVisualEffect_ApplyBlend(self);
-        if (*((u8 *)data_021052fc + 0x30cc) & 4)
+        if (*((u8 *)gGamePhaseRuntime + 0x30cc) & 4)
             return;
         if (!self->randomToken || !self->sequenceEnabled)
             return;

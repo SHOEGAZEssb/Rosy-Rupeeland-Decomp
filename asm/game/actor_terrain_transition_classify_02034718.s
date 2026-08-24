@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_terrain_transition_classify.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern Actor_QueryTerrainHeight
 .extern Actor_QueryTerrainCell
 
@@ -67,7 +67,7 @@ Actor_ClassifyTerrainCellTransition: ; 0x02034718
 .L_020347f4:
     add sp, sp, #0x8
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-.L_020347fc: .word data_021052fc
+.L_020347fc: .word gGamePhaseRuntime
     .size Actor_ClassifyTerrainCellTransition, . - Actor_ClassifyTerrainCellTransition
 
     .global Actor_ApplyTerrainNeighborRepulsion

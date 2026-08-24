@@ -8,7 +8,7 @@
 .extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global RuntimePresentationManager_DisableGraphics3dForActivePhase
 RuntimePresentationManager_DisableGraphics3dForActivePhase: ; 0x0201e0f4
     stmdb sp!, {r4, lr}
@@ -32,7 +32,7 @@ RuntimePresentationManager_DisableGraphics3dForActivePhase: ; 0x0201e0f4
     mov r0, #0x6
     bl GX_SetGraphicsMode
     ldmia sp!, {r4, pc}
-L_0201e148: .word data_021052fc
+L_0201e148: .word gGamePhaseRuntime
 
 
 .size RuntimePresentationManager_DisableGraphics3dForActivePhase, . - RuntimePresentationManager_DisableGraphics3dForActivePhase

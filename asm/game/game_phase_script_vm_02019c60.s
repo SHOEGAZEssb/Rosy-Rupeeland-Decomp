@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_runtime_manager_query_opcode.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorDerivedType1_IsIdleEligible
@@ -113,6 +113,6 @@ L_02019db8:
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-L_02019dcc: .word data_021052fc
+L_02019dcc: .word gGamePhaseRuntime
 L_02019dd0: .word gSceneManager
 .size func_02019c60, . - func_02019c60

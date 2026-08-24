@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
@@ -66,6 +66,6 @@ Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch:
 .L_0221b4f8:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, pc}
-.L_0221b500: .word data_021052fc
+.L_0221b500: .word gGamePhaseRuntime
 .L_0221b504: .word gTouchPanelManager
 .size Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch, . - Overlay088Actor_SnapshotTransientStateAndProcessDeferredTouch

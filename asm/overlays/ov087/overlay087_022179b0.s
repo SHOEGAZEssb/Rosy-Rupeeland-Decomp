@@ -3,7 +3,7 @@
 .extern SceneManager_GetCurrent
 .extern Sound_Play
 .extern data_020c9670
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
@@ -377,5 +377,5 @@ func_ov087_022179b0:
 .L_02217ec8: .word data_020c9670
 .L_02217ecc: .word 0x19a
 .L_02217ed0: .word gSoundContext
-.L_02217ed4: .word data_021052fc
+.L_02217ed4: .word gGamePhaseRuntime
 .size func_ov087_022179b0, . - func_ov087_022179b0

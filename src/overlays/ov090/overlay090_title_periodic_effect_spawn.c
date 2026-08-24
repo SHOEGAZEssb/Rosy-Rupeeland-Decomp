@@ -5,7 +5,7 @@
 
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void func_ov090_0221a460(VecFx32Object *destination,
                                 const VecFx32Object *first,
                                 const VecFx32Object *second);
@@ -58,7 +58,7 @@ void func_ov090_0221ab4c(void *self)
     if (FIELD(u8, self, 0x1ee) >= cycleLimit) {
         effect = TrackedResourceActor_SpawnFromKey(
             0x14, &position,
-            (const VecFx32Object *)((u8 *)FIELD(void *, data_021052fc, 0x2ea4) +
+            (const VecFx32Object *)((u8 *)FIELD(void *, gGamePhaseRuntime, 0x2ea4) +
                                     0x18));
         FIELD(u32, effect, 0x20c) = 0x8000;
         FIELD(u32, effect, 0x10) |= 0x100;

@@ -10,7 +10,7 @@ extern "C" {
 #endif
 extern void *data_021e9e00;
 extern void *data_021e9ac0;
-extern void *data_02105300;
+extern void *gGamePhaseTouchPromptTaskNode;
 extern void *gRuntimeContext;
 extern void *gGameWork;
 extern void RetailPhaseDatabase_UnlockById(void *state, u16 value);
@@ -47,7 +47,7 @@ s32 GamePhaseActorScriptVm_RepeatGlobalState34Operation(GamePhaseActorScriptVm *
 s32 GamePhaseActorScriptVm_SetTouchPromptEnabled(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseTouchPrompt_SetEnabled(*(void **)((u8 *)data_02105300 + 8), value);
+    GamePhaseTouchPrompt_SetEnabled(*(void **)((u8 *)gGamePhaseTouchPromptTaskNode + 8), value);
     return 0;
 }
 

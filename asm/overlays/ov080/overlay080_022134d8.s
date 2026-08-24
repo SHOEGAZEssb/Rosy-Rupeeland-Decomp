@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov080/overlay080_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov080_02213e68
 .extern data_ov080_02213e90
 .extern data_ov080_02213ea8
@@ -135,5 +135,5 @@ func_ov080_022134d8:
 .L_022136b0: .word data_ov080_02213e68
 .L_022136b4: .word data_ov080_02213ea8
 .L_022136b8: .word data_ov080_02213e90
-.L_022136bc: .word data_021052fc
+.L_022136bc: .word gGamePhaseRuntime
 .size func_ov080_022134d8, . - func_ov080_022134d8

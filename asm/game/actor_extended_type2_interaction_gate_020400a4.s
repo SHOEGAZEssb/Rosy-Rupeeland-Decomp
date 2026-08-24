@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_extended_type2_interaction_gate.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorExtendedType2_MatchesInteractionCallbackPairs
 .global ActorExtendedType2_TryDescriptorInteraction120
 .type ActorExtendedType2_TryDescriptorInteraction120, @function
@@ -70,6 +70,6 @@ ActorExtendedType2_TryDescriptorInteraction120: ; 0x020400a4
 .L_02040194:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.L_0204019c: .word data_021052fc
+.L_0204019c: .word gGamePhaseRuntime
 .size ActorExtendedType2_TryDescriptorInteraction120, . - ActorExtendedType2_TryDescriptorInteraction120
 

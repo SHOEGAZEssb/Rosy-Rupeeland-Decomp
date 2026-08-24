@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern Heap_Alloc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern data_ov089_022199ec
 .extern ActorCollection_GetSpriteGroup
 .extern Actor_GetOwningCollection
@@ -84,5 +84,5 @@ func_ov089_022179dc:
 .L_02217af4: .word data_ov089_022199ec
 .L_02217af8: .word gHeapContext
 .L_02217afc: .word 0x1019
-.L_02217b00: .word data_021052fc
+.L_02217b00: .word gGamePhaseRuntime
 .size func_ov089_022179dc, . - func_ov089_022179dc

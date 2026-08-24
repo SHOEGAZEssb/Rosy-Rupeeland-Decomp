@@ -1,5 +1,5 @@
 ; Matching retail form; see src/game/tracked_resource_actor_timed_proximity.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_GetMagnitude
 .extern VecFx32_Subtract
@@ -81,6 +81,6 @@ TrackedResourceActorType26_HandleProximityInteraction:
     mov r0, r4
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-.L_02051968: .word data_021052fc
+.L_02051968: .word gGamePhaseRuntime
     .size TrackedResourceActorType26_HandleProximityInteraction, . - TrackedResourceActorType26_HandleProximityInteraction
 

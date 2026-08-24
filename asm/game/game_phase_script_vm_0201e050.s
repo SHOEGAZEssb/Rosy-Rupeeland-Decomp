@@ -8,7 +8,7 @@
 .extern Graphics3dPresentation_Enable
 .extern GX_SetGraphicsMode
 .extern gFieldEffectListVtable
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .global FieldEffect_ScreenModeChangedCallbackNoOp
 FieldEffect_ScreenModeChangedCallbackNoOp: ; 0x0201e050
     bx lr

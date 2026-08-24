@@ -10,7 +10,7 @@ extern "C" void *gGameWork;
 extern "C" void *gSceneManager;
 extern "C" void *gHeapContext;
 extern "C" void *gSoundContext;
-extern "C" u8 *data_021052fc;
+extern "C" u8 *gGamePhaseRuntime;
 extern "C" u8 data_020c9670[];
 extern "C" void *data_020f4e14;
 extern "C" u8 gSystemState[];
@@ -268,7 +268,7 @@ extern "C" void *func_ov092_02217940(void *scene)
     F(u8, scene, 0x2a0) = F(u8, scene, 0x2a1) = 0;
     F(s16, scene, 0x2a2) = 0;
 
-    void *collection = (void *)func_02007f0c(F(void *, data_021052fc, 0), 1);
+    void *collection = (void *)func_02007f0c(F(void *, gGamePhaseRuntime, 0), 1);
     s32 found = 0;
     for (s32 i = 0; i < F(s32, collection, 0x2e74); ++i)
     {
@@ -333,7 +333,7 @@ extern "C" void func_ov092_02217b7c(void *scene)
         func_02005c3c(func_02030acc(), resource, 0, 0, 0, 6, 0);
     F(s16, (void *)F(s32, scene, 0x250), 0x2c) = 0x80;
     F(s16, (void *)F(s32, scene, 0x250), 0x2e) = 0x60;
-    void *root = F(void *, data_021052fc, 0);
+    void *root = F(void *, gGamePhaseRuntime, 0);
     if (F(void *, root, 0x2ea8) != 0)
         func_0204b078(F(void *, root, 0x2ea8), 0);
 }
@@ -383,7 +383,7 @@ extern "C" s32 func_ov092_022183b8(void *scene)
 extern "C" void func_ov092_022183d4(void *scene)
 {
     func_ov092_02218394(gGameWork, 0, 0, F(s16, scene, 0x284));
-    CallMethod(F(void *, F(void *, data_021052fc, 0), 0x2ea4), 0x1c);
+    CallMethod(F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4), 0x1c);
     func_ov092_0221893c(scene);
     CallMethod(scene, 0x1c);
 }
@@ -696,7 +696,7 @@ extern "C" void func_ov092_0221893c(void *scene)
                 if (effect != 0)
                 {
                     void *owner =
-                        (void *)func_02007f0c(F(void *, data_021052fc, 0), 2);
+                        (void *)func_02007f0c(F(void *, gGamePhaseRuntime, 0), 2);
                     func_0201fafc(effect, P(actor, 0x18), owner, 0x1631, 0x1632,
                                   0x1633, 0, 0x800, -1);
                 }
@@ -1112,7 +1112,7 @@ extern "C" void func_ov092_02219e54(void *out, void *from, void *to)
 extern "C" void func_ov092_02219e8c(void *scene)
 {
     F(u8, scene, 0x2a0) = (u8)func_ov092_02218380(gGameWork, 0, 6);
-    void *actor = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+    void *actor = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
     F(u32, actor, 0xd0) |= 0x40000;
     F(u32, actor, 0x230) = (F(u32, actor, 0x230) & ~4u) | 0x20;
     func_0200199c(gGameWork, 0x3ec);
@@ -1144,7 +1144,7 @@ extern "C" void func_ov092_02219fc8(void *out, const void *source)
 /* Restores the primary actor and closes the current encounter round. */
 extern "C" void func_ov092_02219fec(void *scene)
 {
-    void *actor = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+    void *actor = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
     F(u32, actor, 0xd0) &= ~0x40000u;
     F(u32, actor, 0x230) = (F(u32, actor, 0x230) & ~0x20u) | 4;
     func_02001944(gGameWork, 0x3ec);
@@ -1311,7 +1311,7 @@ extern "C" s32 func_ov092_0221a6d4(void *scene)
 {
     if (F(u8, scene, 0x278) != 4)
         return 0;
-    void *collection = (void *)func_02007f0c(F(void *, data_021052fc, 0), 1);
+    void *collection = (void *)func_02007f0c(F(void *, gGamePhaseRuntime, 0), 1);
     for (s32 i = 0; i < F(s32, collection, 0x2e74); ++i)
     {
         void *actor = F(void *, collection, i * 4);
@@ -1326,12 +1326,12 @@ extern "C" s32 func_ov092_0221a6d4(void *scene)
 extern "C" void func_ov092_02217ddc(void *scene)
 {
     func_0204d308(scene);
-    void *primary = F(void *, F(void *, data_021052fc, 0), 0x2ea4);
+    void *primary = F(void *, F(void *, gGamePhaseRuntime, 0), 0x2ea4);
     void *manager = (void *)func_0200323c(gSceneManager);
     if (F(s32, manager, 4) == 2 || func_ov092_02218380(gGameWork, 0, 1) == 0)
         return;
     func_0200323c(gSceneManager);
-    RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, data_021052fc, 0), 0x2f7c));
+    RuntimePresentationManager_GetGraphics3dPresentation(P(F(void *, gGamePhaseRuntime, 0), 0x2f7c));
     func_ov092_02218394(gGameWork, 0, 0, F(s16, scene, 0x284));
     if (ActorDerivedType1_GetActiveRecordId(primary) == 0x68)
     {

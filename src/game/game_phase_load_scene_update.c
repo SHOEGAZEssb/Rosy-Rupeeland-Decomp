@@ -37,7 +37,7 @@ typedef struct OwnedSceneObject {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern GamePhaseRuntime *data_021052fc;
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern void *gSoundContext;
 extern GraphicsSpriteRenderer *data_020f4e14;
 extern GraphicsSpriteRenderer *gDebugFont;
@@ -231,7 +231,7 @@ s32 GamePhaseLoadScene_Update(GamePhaseLoadScene *self)
     if (iVar5 < 2) {
       if (iVar5 != 1) goto code_r0x0200d170;
       func_02092c8c(1,0xfffffff0);
-      if (GamePhaseRuntime_GetPhaseObjectMode(data_021052fc) != 2) {
+      if (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) != 2) {
         func_02092c8c(2,0xfffffff0);
       }
       goto code_r0x0200d17c;
@@ -264,7 +264,7 @@ code_r0x0200d17c:
     iVar5 = DisplayBrightness_IsMainTransitionComplete();
     if ((iVar5 == 0) || (iVar5 = DisplayBrightness_IsSubTransitionComplete(), iVar5 == 0)) {
       GraphicsSpriteGroup_AdvanceAnimations(ActorCollection_GetSpriteGroup(
-          GamePhaseRuntime_GetActorCollection(data_021052fc, 1)));
+          GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)));
       return 0;
     }
     break;
@@ -298,7 +298,7 @@ code_r0x0200d17c:
     iVar5 = self->phase;
     if (iVar5 < 2) {
       if (iVar5 == 1) {
-        uVar4 = GamePhaseRuntime_GetPhaseObjectMode(data_021052fc);
+        uVar4 = GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime);
         bVar7 = uVar4 == 2;
         if (bVar7) {
           uVar4 = *(u32 *)((u8 *)self->ownedObject + 0x980);
@@ -378,10 +378,10 @@ code_r0x0200dd3c:
       iVar5 = self->phase;
       if (iVar5 < 2) {
         if ((iVar5 == 1) &&
-           (GamePhaseRuntime_GetPhaseObjectMode(data_021052fc) == 2)) {
+           (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) == 2)) {
           GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
-          GamePhaseRuntime_ApplyScreenMode(data_021052fc,0,1);
-          GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
+          GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,0,1);
+          GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
           func_02092c8c(1,0);
           goto code_r0x0200e2ac;
         }
@@ -405,18 +405,18 @@ code_r0x0200dd3c:
       case 0x17:
 code_r0x0200e038:
         GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
-        GamePhaseRuntime_ApplyScreenMode(data_021052fc,0,1);
-        GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
+        GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,0,1);
+        GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
         func_02092c8c(1,0);
         goto code_r0x0200e2ac;
       }
 code_r0x0200e21c:
       GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
       GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0fc);
-      GamePhaseRuntime_ApplyScreenMode(data_021052fc,2,1);
+      GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,2,1);
       GamePhaseAreaScene_SetEnabled(
-          GamePhaseRuntime_GetAreaScene(data_021052fc), 1);
-      GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
+          GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 1);
+      GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
       iVar5 = GameWork_TestFlag(gGameWork,UNK_0200e3c4);
       if (iVar5 == 0) {
         func_02092c8c(3,0);
@@ -429,7 +429,7 @@ code_r0x0200e2ac:
         GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 1);
       }
       GraphicsSpriteGroup_PrepareResources(ActorCollection_GetSpriteGroup(
-          GamePhaseRuntime_GetActorCollection(data_021052fc, 1)));
+          GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)));
       if (self != 0) {
         self->base.vtable->destroyAndFree(&self->base);
       }
@@ -457,10 +457,10 @@ code_r0x0200e2ac:
       }
       return 1;
     case 1:
-      if (GamePhaseRuntime_GetPhaseObjectMode(data_021052fc) == 2) {
-        GamePhaseRuntime_ApplyScreenMode(data_021052fc,1,1);
+      if (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) == 2) {
+        GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,1,1);
         GamePhaseAreaScene_SetEnabled(
-            GamePhaseRuntime_GetAreaScene(data_021052fc), 1);
+            GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 1);
       }
       break;
     case 2:
@@ -481,16 +481,16 @@ code_r0x0200e2ac:
       if (self != 0) {
         self->base.vtable->destroyAndFree(&self->base);
       }
-      GamePhaseRuntime_ApplyScreenMode(data_021052fc,2,1);
-      GamePhaseRuntime_SetPlacementMode(data_021052fc, 3, 1);
-      GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
+      GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,2,1);
+      GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 3, 1);
+      GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
       GamePhaseAreaScene_SetEnabled(
-          GamePhaseRuntime_GetAreaScene(data_021052fc), 1);
+          GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 1);
       overlayManager = OverlayManager_GetGlobal();
       OverlayManager_LoadOverlay(overlayManager,2,UNK_0200e214);
       object = Heap_Alloc(0x90,UNK_0200e218,4,UNK_0200e114);
       if (object != 0) {
-        func_ov059_02210fec(object, GamePhaseRuntime_GetPhaseObject(data_021052fc));
+        func_ov059_02210fec(object, GamePhaseRuntime_GetPhaseObject(gGamePhaseRuntime));
       }
       return 1;
     case 10:
@@ -552,26 +552,26 @@ code_r0x0200d224:
     func_020923a4(self->field_40);
   }
   else {
-    RuntimePresentationManager_DisableGraphics3dForActivePhase((u8 *)data_021052fc + 0x2f7c);
+    RuntimePresentationManager_DisableGraphics3dForActivePhase((u8 *)gGamePhaseRuntime + 0x2f7c);
     func_020923a4(self->field_40);
     *UNK_0200e0ec = 0;
-    GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 0);
+    GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 0);
     GraphicsSpriteGroup_ReleaseResources(ActorCollection_GetSpriteGroup(
-        GamePhaseRuntime_GetActorCollection(data_021052fc, 1)));
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1)));
     GraphicsSpriteRenderer_BuildFrame(*UNK_0200e0f0,0);
   }
   iVar5 = self->phase;
   if (iVar5 == 1) {
-    if (GamePhaseRuntime_GetPhaseObjectMode(data_021052fc) != 2)
+    if (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) != 2)
     goto code_r0x0200d2f0;
     GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 1);
   }
   else if (iVar5 != 0x12 && iVar5 != 0x17) {
 code_r0x0200d2f0:
     *UNK_0200e0f8 = 0;
-    GamePhaseRuntime_SetPlacementMode(data_021052fc, 0, 1);
+    GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 0, 1);
     GamePhaseAreaScene_SetEnabled(
-        GamePhaseRuntime_GetAreaScene(data_021052fc), 0);
+        GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 0);
     GraphicsSpriteRenderer_BuildFrame(*UNK_0200e0fc,0);
     GamePhaseCurrencyHud_SetVisible(*UNK_0200e0f4, 0);
   }
@@ -638,11 +638,11 @@ code_r0x0200d3bc:
   case 8:
     OverlaySlot_LoadOverlay((OverlaySlot *)self->field_74,UNK_0200e13c);
     OverlaySlot_LoadOverlay((OverlaySlot *)self->field_80,UNK_0200e140);
-    GamePhaseRuntime_ApplyScreenMode(data_021052fc,0,1);
-    GamePhaseRuntime_SetPlacementMode(data_021052fc, 2, 0);
+    GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,0,1);
+    GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 2, 0);
     GamePhaseAreaScene_SetEnabled(
-        GamePhaseRuntime_GetAreaScene(data_021052fc), 1);
-    GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(data_021052fc), 1);
+        GamePhaseRuntime_GetAreaScene(gGamePhaseRuntime), 1);
+    GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
     object = Heap_Alloc(UNK_0200e144,UNK_0200e148,4,UNK_0200e114);
     if (object != 0) {
       object = func_ov018_021fcf68(object,self->phaseArgument);

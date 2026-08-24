@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov092/overlay092_recovery.c.
 .extern GameWork_ClearFlag
 .extern GameWork_SetFlag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseCurrencyHud_SetVisible
 .extern func_ov092_02218380
 .extern func_ov092_02218394
@@ -88,7 +88,7 @@ func_ov092_02219e8c:
     bl GamePhaseCurrencyHud_SetVisible
     ldmia sp!, {r3, r4, r5, pc}
 .L_02219fb8: .word gGameWork
-.L_02219fbc: .word data_021052fc
+.L_02219fbc: .word gGamePhaseRuntime
 .L_02219fc0: .word 0x3f5
 .L_02219fc4: .word gGamePhaseCurrencyHud
 .size func_ov092_02219e8c, . - func_ov092_02219e8c

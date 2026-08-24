@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 #ifdef __cplusplus
 }
 #endif
@@ -21,7 +21,7 @@ typedef void (*ActorRuntimeTouchMethod)(void *context,
  */
 s32 ActorRuntimeScene_Begin(ActorRuntimeScene *self)
 {
-    void *context = data_021052fc;
+    void *context = gGamePhaseRuntime;
     void **vtable = *(void ***)context;
 
     (void)self;
@@ -33,7 +33,7 @@ s32 ActorRuntimeScene_Begin(ActorRuntimeScene *self)
 /* Invoke shared-context vtable method 0x10 and return 0; self is unused. */
 s32 ActorRuntimeScene_End(ActorRuntimeScene *self)
 {
-    void *context = data_021052fc;
+    void *context = gGamePhaseRuntime;
     void **vtable = *(void ***)context;
 
     (void)self;
@@ -49,7 +49,7 @@ s32 ActorRuntimeScene_End(ActorRuntimeScene *self)
 s32 ActorRuntimeScene_TouchBegin(ActorRuntimeScene *self, const TouchPoint *point)
 {
     TouchPoint copy;
-    void *context = data_021052fc;
+    void *context = gGamePhaseRuntime;
     void **vtable;
 
     (void)self;
@@ -72,7 +72,7 @@ TouchPoint *TouchPoint_Assign(TouchPoint *result, const TouchPoint *source)
 s32 ActorRuntimeScene_TouchMove(ActorRuntimeScene *self, const TouchPoint *point)
 {
     TouchPoint copy;
-    void *context = data_021052fc;
+    void *context = gGamePhaseRuntime;
     void **vtable;
 
     (void)self;
@@ -86,7 +86,7 @@ s32 ActorRuntimeScene_TouchMove(ActorRuntimeScene *self, const TouchPoint *point
 s32 ActorRuntimeScene_TouchEnd(ActorRuntimeScene *self, const TouchPoint *point)
 {
     TouchPoint copy;
-    void *context = data_021052fc;
+    void *context = gGamePhaseRuntime;
     void **vtable;
 
     (void)self;

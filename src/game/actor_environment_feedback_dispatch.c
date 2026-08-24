@@ -4,7 +4,7 @@
 /* Probe the actor's nearby cells and dispatch the corresponding terrain feedback presentation. */
 extern s16 data_020c9670[];
 extern const char data_020df4f0[];
-extern u8 *data_021052fc;
+extern u8 *gGamePhaseRuntime;
 extern u8 gActorInteractionResourceState[];
 extern void *gActorFeedbackPresentations[6];
 extern void *gSoundContext;
@@ -32,14 +32,14 @@ static void spawnOffsetFeedback(const s32 *position, const u8 *resource)
 {
     void *allocation = Heap_Alloc(0x14, data_020df4f0, 4, &gHeapContext);
     void *presentation = 0;
-    void *group = **(void ***)(data_021052fc + 0x2ea4 + 0x54);
+    void *group = **(void ***)(gGamePhaseRuntime + 0x2ea4 + 0x54);
 
     if (allocation != 0) {
         presentation = TimedSpriteOffsetPresentation_Init(
             allocation, position, 0, group, *(s32 *)(resource + 4),
             *(s32 *)(resource + 8), *(s32 *)(resource + 0x0c), -4, 0);
     }
-    RuntimePresentationManager_AppendFirstListEffect(data_021052fc + 0x2f7c, presentation);
+    RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, presentation);
 }
 
 /* Play a packed table sound, whose high bits select the channel and low seven bits the cue. */
@@ -100,7 +100,7 @@ s32 ActorFeedback_DispatchEnvironment(void *self)
             s32 y = (centerY + dy) >> 4;
             s32 height = Actor_QueryTerrainHeight(actor, x, y) << 16;
             if (position[3] == height) {
-                u8 *map = *(u8 **)(data_021052fc + 0x2ed4);
+                u8 *map = *(u8 **)(gGamePhaseRuntime + 0x2ed4);
                 u32 cell = (*(u32 (**)(void *, s32, s32))(*(u8 **)map + 0x2c))(
                     map, x, y);
                 u32 kind = (cell >> 5) & 0x1f;
@@ -109,7 +109,7 @@ s32 ActorFeedback_DispatchEnvironment(void *self)
                     found24or25 = 1;
                     if (kind == 24)
                         found24 = 1;
-                    if (func_02008514(data_021052fc, x << 16, y << 16) != 0)
+                    if (func_02008514(gGamePhaseRuntime, x << 16, y << 16) != 0)
                         goto scanComplete;
                 }
                 if (subtype == 4)
@@ -152,7 +152,7 @@ scanComplete:
                     void *allocation = Heap_Alloc(0x0c, data_020df4f0, 4,
                                                   &gHeapContext);
                     void *presentation = 0;
-                    void *group = **(void ***)(data_021052fc + 0x2ea4 + 0x54);
+                    void *group = **(void ***)(gGamePhaseRuntime + 0x2ea4 + 0x54);
                     if (allocation != 0)
                         presentation = TimedSpriteSampledArcPresentation_Init(
                             allocation, position, group,

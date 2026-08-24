@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_collection_callback_apply.c.
 .text
 .extern data_020df500
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseRuntime_GetActorCollection
 .extern ActorCollection_FindActorByTypeAndId
 .extern Actor_SetActive
@@ -92,7 +92,7 @@ ActorDescriptorBatch_ApplyCategoryCallback: ; 0x0203b3cc
     cmp r8, r0
     blt .L_0203b4b8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-.L_0203b50c: .word data_021052fc
+.L_0203b50c: .word gGamePhaseRuntime
 .L_0203b510: .word data_020df500
 
     .size ActorDescriptorBatch_ApplyCategoryCallback, . - ActorDescriptorBatch_ApplyCategoryCallback

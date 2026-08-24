@@ -12,7 +12,7 @@ extern const u8 data_ov066_02210f4c[], data_ov066_02210fc0[];
 extern const char data_ov066_02210f54[], data_ov066_02210f64[];
 extern const char data_ov066_02210f74[], data_ov066_02210f88[];
 extern const char data_ov066_02210f98[], data_ov066_02210fb4[];
-extern void *data_020f4e14[], *data_020f4e18[], *data_021052fc;
+extern void *data_020f4e14[], *data_020f4e18[], *gGamePhaseRuntime;
 extern void *gDebugFont[], *gTouchPanelManager;
 extern u8 gHeapContext[], gSystemState[];
 extern u32 gFrameVCount;
@@ -213,7 +213,7 @@ s32 func_ov066_0220ff60(void *scene)
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont[0]);
     if (FIELD(s32, scene, 0x3c)) {
-        void *runtime = data_021052fc;
+        void *runtime = gGamePhaseRuntime;
         ((void (**)(void *))FIELD(void *, runtime, 0))[2](runtime);
     }
     pressed = FIELD(u16, gSystemState, 6);
@@ -259,8 +259,8 @@ s32 func_ov066_0220ff60(void *scene)
 s32 func_ov066_02210410(void *scene)
 {
     (void)scene;
-    GamePhaseState_UpdateRenderHelpers((u8 *)data_021052fc + 0x24);
-    GamePhaseAreaScene_Update(FIELD(void *, data_021052fc, 0x2fb8));
+    GamePhaseState_UpdateRenderHelpers((u8 *)gGamePhaseRuntime + 0x24);
+    GamePhaseAreaScene_Update(FIELD(void *, gGamePhaseRuntime, 0x2fb8));
     return 0;
 }
 

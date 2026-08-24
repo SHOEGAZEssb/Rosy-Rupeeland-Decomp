@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/timed_actor_rectangle_presentation.c.
 .text
 .extern data_020f4e14
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_020befec
@@ -94,6 +94,6 @@ func_020251ac: ; 0x020251ac
 .L_020252f0:
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-.L_020252f8: .word data_021052fc
+.L_020252f8: .word gGamePhaseRuntime
 .L_020252fc: .word data_020f4e14
     .size func_020251ac, . - func_020251ac

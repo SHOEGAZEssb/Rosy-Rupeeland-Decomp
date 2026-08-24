@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov073/overlay073_recovery.c.
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_InitCopy
 .extern VecFx32Object_Destroy
 .extern ActorMotionAreaFollower_GetPosition
@@ -88,5 +88,5 @@ func_ov073_02210a08:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, pc}
 .L_02210b30: .word 0x4cd
-.L_02210b34: .word data_021052fc
+.L_02210b34: .word gGamePhaseRuntime
 .size func_ov073_02210a08, . - func_ov073_02210a08

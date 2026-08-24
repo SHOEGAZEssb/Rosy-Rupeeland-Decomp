@@ -14,7 +14,7 @@ extern u8 data_ov052_0220e1e0[], data_ov052_0220e1e4[];
 extern u8 data_ov052_0220e1e8[], data_ov052_0220e1ec[];
 extern u8 data_ov052_0220e200[], data_ov052_0220e21c[];
 extern u8 data_ov052_0220e224[], data_ov052_0220e240[];
-extern void *data_020f4e18, *data_021052fc;
+extern void *data_020f4e18, *gGamePhaseRuntime;
 extern u8 data_021f4020[];
 extern void *gDebugFont, *gGamePhaseCurrencyHud, *gSceneManager;
 extern void *gSoundContext, *gTouchPanelManager;
@@ -75,7 +75,7 @@ void *Overlay052Scene_Init(void *scene, u32 mode, u32 variant)
     DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),0,-16,0);
     FIELD(u16,s,0x30)=(FIELD(u16,gGamePhaseCurrencyHud,0xb0)&1)==0;
     if(FIELD(s16,s,0x30)) GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud,0);
-    GamePhaseRuntime_SetPlacementMode(data_021052fc,0,1);
+    GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime,0,1);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont); return scene;
 }
 
@@ -86,7 +86,7 @@ void *Overlay052Scene_Destroy(void *scene)
     o=FIELD(void *,s,0x10); if(o) ((DeletingDestructor *)FIELD(void *,o,0))[1](o);
     GraphicsArchive_ReleaseResourceE4(data_020f4e18,FIELD(void *,s,0xc)); GraphicsSpriteGroup_Destroy(FIELD(void *,s,0x1c));
     o=FIELD(void *,s,0x20); if(o) ((DeletingDestructor *)FIELD(void *,o,0))[1](o);
-    if(FIELD(void *,data_021052fc,0x2fb8)) GamePhaseRuntime_ApplyScreenMode(data_021052fc,1,1);
+    if(FIELD(void *,gGamePhaseRuntime,0x2fb8)) GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,1,1);
     if(FIELD(s16,s,0x2c)) DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),-16,0,4);
     if(FIELD(s16,s,0x30)) GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud,1);
     return scene;
@@ -133,7 +133,7 @@ s32 Overlay052Scene_UpdateMessageMenu(void *scene)
     for(i=0;i<11;++i) input[i]=gPadState1[i]; state=FIELD(s16,s,4);
     switch(state){
     case 0:
-        if(FIELD(void *,data_021052fc,0x2fb8)) GamePhaseAreaScene_SetEnabled(FIELD(void *,data_021052fc,0x2fb8),0);
+        if(FIELD(void *,gGamePhaseRuntime,0x2fb8)) GamePhaseAreaScene_SetEnabled(FIELD(void *,gGamePhaseRuntime,0x2fb8),0);
         Overlay052Scene_LoadSubScreenResources(s);
         if(FIELD(s16,s,0x2e)==0) DisplayBrightness_StartTransition(DisplayBrightnessPair_GetScreen(gDisplayBrightnessPair,1),0,0,0);
         FIELD(s16,s,4)=FIELD(s16,s,8)!=0?2:1; break;

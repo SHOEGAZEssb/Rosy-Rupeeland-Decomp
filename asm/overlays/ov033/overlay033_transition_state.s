@@ -15,7 +15,7 @@
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern data_ov033_021fdd60
     .extern gGameWork
-    .extern data_021052fc
+    .extern gGamePhaseRuntime
     .extern data_ov033_021fdec8
     .extern gHeapContext
     .extern data_ov033_021fdd2c
@@ -183,7 +183,7 @@ L_021fd96c:
 L_021fd980: .word data_ov033_021fdd60
 L_021fd984: .word gGameWork
 L_021fd988: .word 0x386
-L_021fd98c: .word data_021052fc
+L_021fd98c: .word gGamePhaseRuntime
 L_021fd990: .word data_ov033_021fdec8
 L_021fd994: .word gHeapContext
 L_021fd998: .word data_ov033_021fdd2c

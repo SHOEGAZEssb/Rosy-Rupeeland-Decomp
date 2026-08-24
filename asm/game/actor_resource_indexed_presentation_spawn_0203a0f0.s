@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern Sound_Play
 .extern data_020df4f0
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorInteractionResourceState
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern TimedSpriteOffsetPresentation_Init
@@ -158,5 +158,5 @@ ActorFeedback_SpawnIndexedPresentation: ; 0x0203a0f0
 .L_0203a304: .word gHeapContext
 .L_0203a308: .word gActorInteractionResourceState
 .L_0203a30c: .word gSoundContext
-.L_0203a310: .word data_021052fc
+.L_0203a310: .word gGamePhaseRuntime
     .size ActorFeedback_SpawnIndexedPresentation, . - ActorFeedback_SpawnIndexedPresentation

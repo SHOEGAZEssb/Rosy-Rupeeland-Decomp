@@ -4,7 +4,7 @@
 .extern data_020d6780
 .extern data_020d67dc
 .extern data_020d67fc
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern ActorMotionAreaFollower_GetPosition
 .extern FourSlot3DPresentation_DrawSegmentQuad
 .extern func_02091bac
@@ -184,7 +184,7 @@ FourSlot3DPresentation_Update: ; 0x020246d8
 .L_02024948:
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-.L_02024950: .word data_021052fc
+.L_02024950: .word gGamePhaseRuntime
 .L_02024954: .word data_020d6780
 .L_02024958: .word gGameWork
 .L_0202495c: .word 0x4000444

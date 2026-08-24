@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov088/overlay088_recovery.c.
 .extern SceneManager_GetCurrent
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_GetMagnitude
 .extern Actor_SetInteractionFlag2000
@@ -101,5 +101,5 @@ func_ov088_02219c0c:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02219d5c: .word gSceneManager
-.L_02219d60: .word data_021052fc
+.L_02219d60: .word gGamePhaseRuntime
 .size func_ov088_02219c0c, . - func_ov088_02219c0c

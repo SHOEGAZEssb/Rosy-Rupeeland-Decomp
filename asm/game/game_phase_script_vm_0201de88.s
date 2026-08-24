@@ -14,7 +14,7 @@
 .extern gFieldEffectListVtable
 .extern gFieldEffectListNodeAllocationTag
 .extern gGraphics3dPresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gHeapContext
 .global FieldEffect_VBlankCallbackNoOp
 FieldEffect_VBlankCallbackNoOp: ; 0x0201de88

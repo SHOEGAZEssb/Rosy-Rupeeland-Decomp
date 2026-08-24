@@ -7,7 +7,7 @@
 .extern data_020df254
 .extern data_020df258
 .extern data_020df4a4
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorTargetSelectionMetadata
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
@@ -548,7 +548,7 @@ ActorDerivedType1_UpdateFrameControl: ; 0x020372e4
 .L_02037a5c: .word gGamePhaseCurrencyHud
 .L_02037a60: .word data_020df4a4
 .L_02037a64: .word gHeapContext
-.L_02037a68: .word data_021052fc
+.L_02037a68: .word gGamePhaseRuntime
 .L_02037a6c: .word gSoundContext
 .L_02037a70: .word 0x1001
 .L_02037a74: .word gGameWork

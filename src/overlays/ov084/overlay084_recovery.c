@@ -13,7 +13,7 @@ typedef void (*V0)(void *);
 typedef void (*V1)(void *, void *);
 typedef void (*V2)(void *, void *, s32);
 
-extern "C" void *gHeapContext, *gSoundContext, *gGamePhaseCurrencyHud, *data_021052fc;
+extern "C" void *gHeapContext, *gSoundContext, *gGamePhaseCurrencyHud, *gGamePhaseRuntime;
 extern "C" u16 gActorInteractionResourceState;
 extern "C" const s16 data_020c9670[], data_020e6f94[];
 extern "C" const u16 data_020e7318[];
@@ -222,9 +222,9 @@ extern "C" s32 func_ov084_02212e6c(void *a, s32, s32, s32) {
             if (e)
                 e = func_02022cb0(e,
                                   ActorMotionAreaFollower_GetPosition(
-                                      (u8 *)data_021052fc + 0x2fbc),
+                                      (u8 *)gGamePhaseRuntime + 0x2fbc),
                                   a, -amount, 0x2000, -0xc0);
-            RuntimePresentationManager_AppendFirstListEffect((u8 *)data_021052fc + 0x2f7c, e);
+            RuntimePresentationManager_AppendFirstListEffect((u8 *)gGamePhaseRuntime + 0x2f7c, e);
             if (F(s32, a, 0x298) + amount < 0x7fff)
                 F(s32, a, 0x298) += amount;
             u8 q[16], x[16], y[16], m[16];
@@ -241,7 +241,7 @@ extern "C" s32 func_ov084_02212e6c(void *a, s32, s32, s32) {
         } else {
             F(s16, a, 0x29e) = 0;
             F(u16, a, 0x2a0) |= 1;
-            F(void *, a, 0x228) = F(void *, data_021052fc, 0x2ea4);
+            F(void *, a, 0x228) = F(void *, gGamePhaseRuntime, 0x2ea4);
             F(void *, a, 0x218) = F(void *, data_ov084_02214108, 0x20);
             F(void *, a, 0x21c) = F(void *, data_ov084_02214108, 0x24);
             F(void *, a, 0x220) = F(void *, data_ov084_02214108, 8);
@@ -288,7 +288,7 @@ extern "C" s32 func_ov084_0221322c(void *a, void *d) {
         if (!((M0)vm(a, 0x38))(a)) {
             if (!(F(u16, d, 0x1a) & 2)) {
                 void *collection =
-                    GamePhaseRuntime_GetActorCollection(data_021052fc, 1);
+                    GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
                 if (!(F(u32, F(void *, collection, 0x2e7c), 0xd0) & 0x100)) {
                     u8 p[16];
                     VecFx32Object_InitCopy(p, (u8 *)a + 0x18);
@@ -328,7 +328,7 @@ extern "C" void func_ov084_0221341c(void *a) {
         return;
     }
     F(u16, a, 0x2a0) |= 1;
-    F(void *, a, 0x228) = F(void *, data_021052fc, 0x2ea4);
+    F(void *, a, 0x228) = F(void *, gGamePhaseRuntime, 0x2ea4);
     F(void *, a, 0x218) = F(void *, data_ov084_02214108, 0x48);
     F(void *, a, 0x21c) = F(void *, data_ov084_02214108, 0x4c);
     F(void *, a, 0x220) = F(void *, data_ov084_02214108, 0);

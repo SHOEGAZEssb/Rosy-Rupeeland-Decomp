@@ -3,7 +3,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_TestFlag
 .extern data_020e1964
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern gActorCategory1DescriptorTable
 .extern GamePhaseRuntime_GetActorCollection
 .extern GamePhaseMetadata_GetFlagsBits12To15
@@ -300,7 +300,7 @@ ActorDescriptorBatch_RegisterAndSpawn: ; 0x0203af24
     bne .L_0203b32c
     add sp, sp, #0xb0
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
-.L_0203b370: .word data_021052fc
+.L_0203b370: .word gGamePhaseRuntime
 .L_0203b374: .word gGameWork
 .L_0203b378: .word data_020e1964
 .L_0203b37c: .word gActorCategory1DescriptorTable

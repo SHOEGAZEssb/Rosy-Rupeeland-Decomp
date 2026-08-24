@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_packed_runtime_query_opcode.c.
 .text
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .global func_02016bc0
@@ -55,5 +55,5 @@ L_02016c6c:
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_02016c78: .word data_021052fc
+L_02016c78: .word gGamePhaseRuntime
     .size func_02016bc0, . - func_02016bc0

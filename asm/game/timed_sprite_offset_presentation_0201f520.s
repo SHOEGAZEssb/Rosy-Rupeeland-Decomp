@@ -4,7 +4,7 @@
 .extern Heap_Free
 .extern gTimedSpriteOffsetPresentationVtable
 .extern gTimedSpritePresentationAllocationTag
-.extern data_021052fc
+.extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern ActorMotionAreaFollower_GetPosition
@@ -46,6 +46,6 @@ TimedSpriteOffsetPresentation_Update: ; 0x0201f520
     movlt r0, #0x1
     movge r0, #0x0
     ldmia sp!, {r4, pc}
-.L_0201f594: .word data_021052fc
+.L_0201f594: .word gGamePhaseRuntime
     .size TimedSpriteOffsetPresentation_Update, .-TimedSpriteOffsetPresentation_Update
 

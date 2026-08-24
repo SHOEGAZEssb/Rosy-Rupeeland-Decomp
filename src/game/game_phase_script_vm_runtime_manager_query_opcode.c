@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *data_021052fc;
+extern void *gGamePhaseRuntime;
 extern void *gSceneManager;
 extern void *SceneManager_GetCurrent(void *manager);
 extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
@@ -22,7 +22,7 @@ extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
 s32 func_02019c60(GamePhaseActorScriptVm *self)
 {
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *manager = *(u8 **)((u8 *)data_021052fc + 0x2ea4);
+    u8 *manager = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);
     s32 result = 0;
     switch (mode) {
     case 0:
