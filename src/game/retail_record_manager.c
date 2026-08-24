@@ -554,7 +554,7 @@ void RetailRecordCategory0_PopulateTypeZeroRecords(void *self)
     PopulateRecordCategory((u8 *)self, 0x2f, 0xffff);
 }
 
-void func_0207e270(void *self)
+void RetailRecordCategory1_PopulateTypeZeroRecords(void *self)
 {
     PopulateRecordCategory((u8 *)self, 0x23, 0xffff);
 }
@@ -1093,7 +1093,7 @@ void *RetailRecordManager_Construct(void *manager_pointer)
         if (index == 0)
             RetailRecordCategory0_PopulateTypeZeroRecords(category);
         else if (index == 1)
-            func_0207e270(category);
+            RetailRecordCategory1_PopulateTypeZeroRecords(category);
         else if (index == 4)
             RetailRecordCategory4_PopulateTypeZeroRecords(category);
         else if (index == 5)

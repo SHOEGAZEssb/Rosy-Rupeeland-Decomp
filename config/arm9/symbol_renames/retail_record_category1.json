@@ -1,0 +1,6 @@
+{
+  "func_0207e270": "RetailRecordCategory1_PopulateTypeZeroRecords",
+  "func_0207e2dc": "RecordCategory_ApplyCategory1Completion",
+  "func_0207e34c": "RetailRecordCategory1_Delete",
+  "func_0207e390": "RetailRecordCategory1_Destroy"
+}
