@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_text_helpers.c for documented portable C. */
 .extern data_020c7ba8
 .extern data_021f3ecc
-.extern func_020791e0
+.extern LanguageLookupDatabase_GetResourceById
 .extern TitleDialog_SetText
 .extern TitleDialog_UpdateTextPage
 .extern func_020939c8
@@ -24,7 +24,7 @@ func_ov032_021fe440:
     bl TitleDialog_ClearTextRect
     ldr r0, L_021fe4a4
     mov r1, r5
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, [r4, #0x18]
     mov r2, #0x0

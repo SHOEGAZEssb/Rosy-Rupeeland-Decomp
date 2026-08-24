@@ -17,7 +17,7 @@ extern void TitleDialog_SetText(...);
 extern void func_020939c8(void *);
 extern void TitleDialog_ClearTextRect(void *);
 extern void TitleDialog_UpdateTextPage(...);
-extern void *func_020791e0(...);
+extern void *LanguageLookupDatabase_GetResourceById(...);
 #ifdef __cplusplus
 }
 #endif
@@ -89,7 +89,7 @@ extern "C" void func_ov032_021fe440(void *scene)
     u16 messageId = (u16)FIELD(u32, data_020c7ba8, index * 0x208);
     void *dialog = FIELD(void *, scene, 0x18);
     TitleDialog_ClearTextRect(dialog);
-    TitleDialog_SetText(dialog, func_020791e0(data_021f3ecc, messageId), 0);
+    TitleDialog_SetText(dialog, LanguageLookupDatabase_GetResourceById(data_021f3ecc, messageId), 0);
     func_020939c8(dialog);
     TitleDialog_UpdateTextPage(dialog, 0);
 }

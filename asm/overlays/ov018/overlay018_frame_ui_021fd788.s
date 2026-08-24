@@ -7,7 +7,7 @@
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceById
     .extern func_02091b98
     .extern func_02091c7c
     .extern func_020958d8
@@ -87,7 +87,7 @@ L_021fd874:
     bl GraphicsSpriteRenderer_SetFontResource
     ldr r0, L_021fd904
     ldr r1, L_021fd908
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r2, #0xb
     mov r1, #0x8
     str r2, [sp, #0x0]

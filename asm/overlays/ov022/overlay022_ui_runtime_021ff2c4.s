@@ -4,7 +4,7 @@
 .extern data_021f3ecc
 .extern data_021f5ed0
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_020791e0
+.extern LanguageLookupDatabase_GetResourceById
 .extern TitleDialog_SetText
 .extern TitleDialog_UpdateTextPage
 .extern func_ov022_021fd2f4
@@ -26,7 +26,7 @@ func_ov022_021ff2c4:
     ldr r0, L_021ff35c
     str r2, [r3, #0xd4]
     mov r1, r1, lsr #0x10
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, [r4, #0x2cc]
     mov r2, #0x4

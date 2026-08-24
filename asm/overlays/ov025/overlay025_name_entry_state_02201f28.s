@@ -21,7 +21,7 @@
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_020791e0
+.extern LanguageLookupDatabase_GetResourceById
 .extern RetailSaveContext_PollOperation
 .extern RetailSaveContext_BeginNamedRecordWrite
 .extern func_02092260
@@ -160,7 +160,7 @@ L_02202018:
     bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202aec
     mov r1, #0x6b
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, [r5, #0x50c]
     mov r2, #0x3
@@ -235,7 +235,7 @@ L_02202104:
     bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202aec
     mov r1, #0x28
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, [r5, #0x50c]
     mov r2, #0x3
@@ -871,7 +871,7 @@ L_02202a68:
     bl GraphicsSpriteRenderer_ClearTextBuffer
     ldr r0, L_02202aec
     mov r1, #0x6b
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, [r5, #0x50c]
     mov r2, #0x3

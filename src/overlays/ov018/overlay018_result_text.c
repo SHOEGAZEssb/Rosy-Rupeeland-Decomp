@@ -15,7 +15,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, const void *, s32, s32);
 extern void func_0207c460(void *, u16);
-extern const void *func_020791e0(const void *, s32);
+extern const void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern s32 func_ov018_021fe1d8(void *, const void *);
 #ifdef __cplusplus
 }
@@ -55,7 +55,7 @@ extern "C" void func_ov018_021fe46c(void *state)
     s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, primary, 8, -2);
     GraphicsSpriteRenderer_DrawText(gDebugFont, primary, 0x80 - width / 2, y, 13, 8, -2);
 
-    const void *secondary = func_020791e0(data_021f3ecc, 0x2f6);
+    const void *secondary = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x2f6);
     width = GraphicsSpriteRenderer_MeasureText(gDebugFont, secondary, 8, -2);
     GraphicsSpriteRenderer_DrawText(gDebugFont, secondary, 0x80 - width / 2,
                   y + 0x14, 11, 8, -2);

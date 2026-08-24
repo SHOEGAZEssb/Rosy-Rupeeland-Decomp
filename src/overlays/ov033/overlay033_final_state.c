@@ -11,7 +11,7 @@ extern const s16 data_020c9670[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020791e0(const void *table, s32 id);
+extern void *LanguageLookupDatabase_GetResourceById(const void *table, s32 id);
 extern void TitleDialog_SetText(void *dialog, void *text, s32 mode);
 extern s32 func_ov033_021fd418(void *scene);
 extern void Sound_StopDirectSequence(void *sound, s32 id, s32 duration);
@@ -61,7 +61,7 @@ extern "C" s32 func_ov033_021fd9a0(void *scene)
     void *group = FIELD(void *, scene, 0x48);
 
     if (state == 0) {
-        void *text = func_020791e0(data_021f3ecc, 0x1fc);
+        void *text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x1fc);
         TitleDialog_SetText(FIELD(void *, scene, 0xc4), text, 2);
         FIELD(s32, scene, 0xd0) = 1;
         state = 1;

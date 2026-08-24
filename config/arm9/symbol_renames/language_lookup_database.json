@@ -1,0 +1,6 @@
+{
+  "RetailLookupDatabase_Load": "LanguageLookupDatabase_Load",
+  "func_02079134": "LanguageLookupDatabase_Destroy",
+  "LanguageLookup_GetResourceSize": "LanguageLookupDatabase_GetResourceSize",
+  "func_020791e0": "LanguageLookupDatabase_GetResourceById"
+}

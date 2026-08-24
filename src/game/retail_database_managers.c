@@ -202,8 +202,14 @@ static void ReleaseArray(void *manager_pointer)
     *(u32 *)(manager + 4) = 0;
 }
 
+/* Release the language lookup database's owned record array. */
+void LanguageLookupDatabase_Destroy(void *manager_pointer)
+{
+    ReleaseArray(manager_pointer);
+}
+
 /* Load the five-bucket four-byte lookup database at retail 0x02078FFC. */
-void RetailLookupDatabase_Load(void *manager_pointer)
+void LanguageLookupDatabase_Load(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     FSFile *file = (FSFile *)(manager + 0x38);
@@ -222,7 +228,7 @@ void RetailLookupDatabase_Load(void *manager_pointer)
     count = ReadU16(header);
     *(u32 *)(manager + 8) = count;
     if (*(void **)manager != 0)
-        ReleaseArray(manager);
+        LanguageLookupDatabase_Destroy(manager);
     records = Heap_Alloc(count * 4, data_020ea5c8, 4, &gHeapContext);
     *(u8 **)manager = records;
     *(u32 *)(manager + 4) = count;
@@ -386,7 +392,7 @@ void func_02079d78(void *manager_pointer)
     *(u32 *)(manager + 0x1bc) = count / 2;
     *(u16 *)(manager + 0x1c0) =
         *(u16 *)(records + (count / 2) * 0x62);
-    RetailLookupDatabase_Load(manager);
+    LanguageLookupDatabase_Load(manager);
     func_020794a4(manager + 0x88);
     func_02079264(manager + 0x154);
     GameFile_Destroy(&file);

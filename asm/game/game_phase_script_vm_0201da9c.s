@@ -3,7 +3,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern SignedAbsoluteValueVariant
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020791e0
+.extern LanguageLookupDatabase_GetResourceById
 .extern Actor_GetOwningCollection
 .extern LanguageDatabase_GetRecordById
 .extern DisplayRouting_MatchesRequest
@@ -45,7 +45,7 @@ func_0201da9c: ; 0x0201da9c
     mov r1, r4, lsl #0x10
     ldr r0, L_0201dbb4
     mov r1, r1, lsr #0x10
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     b L_0201db24
 L_0201db10:
     ldr r0, [r10, #0x84]

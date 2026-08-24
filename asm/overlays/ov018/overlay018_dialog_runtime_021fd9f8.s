@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov018/overlay018_dialog_runtime.c (layout, text, and input helpers). */
     .extern MIi_CpuCopy16
     .extern data_021f3ecc
-    .extern LanguageLookup_GetResourceSize
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceSize
+    .extern LanguageLookupDatabase_GetResourceById
     .extern TitleDialog_SetText
     .extern TitleDialog_UpdateTextPage
 .global func_ov018_021fd9f8
@@ -24,11 +24,11 @@ func_ov018_021fda10:
     mov r5, r1, lsr #0x10
     ldr r0, L_021fda5c
     mov r1, r5
-    bl LanguageLookup_GetResourceSize
+    bl LanguageLookupDatabase_GetResourceSize
     mov r4, r0
     ldr r0, L_021fda5c
     mov r1, r5
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r2, r4
     add r1, r6, #0x1c8
     bl MIi_CpuCopy16

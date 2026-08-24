@@ -3,7 +3,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern SignedAbsoluteValueVariant
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern func_020791e0
+.extern LanguageLookupDatabase_GetResourceById
 .extern Actor_GetOwningCollection
 .extern LanguageDatabase_GetRecordById
 .extern DisplayRouting_MatchesRequest

@@ -27,7 +27,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
-extern const void *func_020791e0(const void *, u16);
+extern const void *LanguageLookupDatabase_GetResourceById(const void *, u16);
 extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
@@ -140,7 +140,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
     s32 firstY = gSystemState[0x5f] == 0 ? 0x18 : 0x16;
     s32 firstSpacing = gSystemState[0x5f] == 0 ? 8 : 4;
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x2c);
-    const void *text = func_020791e0(data_021f3ecc, FIELD(u16, entry, 0xe));
+    const void *text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, FIELD(u16, entry, 0xe));
     GraphicsSpriteRenderer_DrawText(FIELD(void *, state, 8), text, 0x60, firstY,
                   14, firstSpacing, 0);
 
@@ -165,7 +165,7 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
                   10, numberX + 0x1e, 0x3c, 14, -8, 1);
 
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x28);
-    text = func_020791e0(data_021f3ecc, FIELD(u16, entry, 0x10));
+    text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, FIELD(u16, entry, 0x10));
     TitleDialog_SetText(FIELD(void *, state, 0x4c), text, 1);
     return TitleDialog_UpdateTextPage(FIELD(void *, state, 0x4c), 0);
 }

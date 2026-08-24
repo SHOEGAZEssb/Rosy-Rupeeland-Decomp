@@ -52,7 +52,7 @@ extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void *func_020791e0(const void *, s32);
+extern void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern s32 RetailSaveContext_PollOperation(void *);
 extern void RetailSaveContext_BeginNamedRecordWrite(void *, s32, void *, s32);
 extern void func_02092260(void *, s32);
@@ -144,7 +144,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             }
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-            void *font = func_020791e0(data_021f3ecc, 0x6b);
+            void *font = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x6b);
             TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
             TitleDialog_UpdateTextPage(FIELD(void *, scene, 0x50c), 0);
             void *new_editor = Heap_Alloc(
@@ -177,7 +177,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                         (u8 *)scene + 0x510)) {
                     func_02092260(scene, 9);
                     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-                    void *font = func_020791e0(data_021f3ecc, 0x28);
+                    void *font = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x28);
                     TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
                     func_02092c8c(1, -8);
                     FIELD(s32, scene, 4) = 30;
@@ -529,7 +529,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         if (func_ov025_02200940(scene) && DisplayBrightness_IsMainTransitionComplete()) {
             func_02092c8c(3, 0);
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-            void *font = func_020791e0(data_021f3ecc, 0x6b);
+            void *font = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x6b);
             TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
             TitleDialog_UpdateTextPage(FIELD(void *, scene, 0x50c), 0);
             FIELD(s32, scene, 4) = 2;

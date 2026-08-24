@@ -12,8 +12,8 @@
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern LanguageLookup_GetResourceSize
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceSize
+    .extern LanguageLookupDatabase_GetResourceById
     .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
     .extern func_02094154
@@ -51,11 +51,11 @@ func_ov021_021fce18:
     str r0, [r7, #0x20]
     ldr r0, L_021fd050
     ldr r1, L_021fd054
-    bl LanguageLookup_GetResourceSize
+    bl LanguageLookupDatabase_GetResourceSize
     mov r8, r0
     ldr r0, L_021fd050
     ldr r1, L_021fd054
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r2, r8
     add r1, r7, #0x64
     bl MIi_CpuCopy16

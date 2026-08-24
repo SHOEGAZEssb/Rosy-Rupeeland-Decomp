@@ -1,7 +1,7 @@
 .text
 .extern GraphicsSpriteCanvas_FillRect
 .extern GraphicsSpriteRenderer_SetFontResource
-.extern func_020791e0
+.extern LanguageLookupDatabase_GetResourceById
 .extern GraphicsSpriteRenderer_MeasureText
 .extern GraphicsSpriteRenderer_DrawText
 .extern gDebugFont
@@ -30,7 +30,7 @@ func_ov044_0220c74c:
     mov r4, r0, lsr #0x10
     ldr r0, .L_0220c808
     mov r1, r4
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, .L_0220c804
     mov r2, #0x8
@@ -40,7 +40,7 @@ func_ov044_0220c74c:
     mov r1, r4
     mov r4, r0
     ldr r0, .L_0220c808
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     rsb r2, r4, #0xf8
     mov r1, r0
     mov r0, #0xe

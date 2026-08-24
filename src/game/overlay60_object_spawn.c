@@ -21,7 +21,7 @@ extern char gOverlay60ScriptObjectAllocationTag[];
 extern s32 GamePhaseScriptVm_Pop(void *script);
 extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 value);
-extern void *func_020791e0(void *table, u16 index);
+extern void *LanguageLookupDatabase_GetResourceById(void *table, u16 index);
 extern void Actor_GetOwningCollection(void *owner);
 extern void *LanguageDatabase_GetRecordById(void *table, u32 index);
 extern void *func_ov060_022100e4(void *self, s32 routedDisplay,
@@ -104,7 +104,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
 
     func_0201da34(context);
     if (useIndexed != 0)
-        resource = func_020791e0(data_021f3ecc, (u16)resourceIndex);
+        resource = LanguageLookupDatabase_GetResourceById(data_021f3ecc, (u16)resourceIndex);
     else {
         Actor_GetOwningCollection(context->owner84);
         resource = LanguageDatabase_GetRecordById(gLanguageDatabase, resourceIndex);

@@ -10,7 +10,7 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_MeasureText
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceById
     .extern TitleScreenResourceCollection_Get
     .extern func_02095f8c
     .extern gHeapContext
@@ -58,7 +58,7 @@ L_021ffa50:
     mov r4, r0, lsr #0x10
     ldr r0, L_021ffb38
     mov r1, r4
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, L_021ffb34
     mov r2, #0x4
@@ -68,7 +68,7 @@ L_021ffa50:
     mov r1, r4
     mov r4, r0
     ldr r0, L_021ffb38
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     add r1, r4, r4, lsr #0x1f
     mov r1, r1, asr #0x1
     rsb r2, r1, #0x80

@@ -8,7 +8,7 @@
     .extern GraphicsSpriteText_FormatDecimal
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_MeasureText
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceById
     .extern gDebugFont
 .global func_ov017_021ffdb4
 func_ov017_021ffdb4:
@@ -29,7 +29,7 @@ func_ov017_021ffdb4:
     beq L_021ffe30
     ldr r0, L_02200054
     mov r1, #0x2d4
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, #0xe
     str r1, [sp, #0x0]
     mov r1, #0x4
@@ -46,7 +46,7 @@ func_ov017_021ffdb4:
 L_021ffe30:
     ldr r0, L_02200054
     ldr r1, L_02200058
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, #0xe
     str r1, [sp, #0x0]
     mov r1, #0x4
@@ -66,7 +66,7 @@ L_021ffe6c:
     bne L_021ffebc
     ldr r0, L_02200054
     mov r1, #0x2d4
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, #0xe
     str r1, [sp, #0x0]
     mov r1, #0x4
@@ -83,7 +83,7 @@ L_021ffe6c:
 L_021ffebc:
     ldr r0, L_02200054
     ldr r1, L_02200058
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, #0xe
     str r1, [sp, #0x0]
     mov r1, #0x4
@@ -114,7 +114,7 @@ L_021ffef8:
     add r4, r0, #0x2
     ldr r0, L_02200054
     ldr r1, L_02200060
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, L_02200050
     mov r2, #0x6
@@ -154,7 +154,7 @@ L_021ffef8:
     ldr r0, L_02200054
     ldr r1, L_02200060
     add r4, r2, #0x2
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     mov r0, #0xe
     str r0, [sp, #0x0]

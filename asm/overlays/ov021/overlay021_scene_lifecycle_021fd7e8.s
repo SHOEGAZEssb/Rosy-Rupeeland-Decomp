@@ -16,8 +16,8 @@
     .extern AnimationResourceState_InitEmbedded
     .extern func_02071ee0
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern LanguageLookup_GetResourceSize
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceSize
+    .extern LanguageLookupDatabase_GetResourceById
     .extern SceneInputBase_Init
     .extern TitleCharacterResourceCollection_Init
     .extern func_02092814
@@ -120,21 +120,21 @@ L_021fd8c4:
     bl InventoryRecordCollection_Sort
     ldr r0, L_021fdb48
     ldr r1, L_021fdb4c
-    bl LanguageLookup_GetResourceSize
+    bl LanguageLookupDatabase_GetResourceSize
     mov r4, r0
     ldr r0, L_021fdb48
     ldr r1, L_021fdb4c
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r2, r4
     add r1, r5, #0x2d4
     bl MIi_CpuCopy16
     ldr r0, L_021fdb48
     ldr r1, L_021fdb50
-    bl LanguageLookup_GetResourceSize
+    bl LanguageLookupDatabase_GetResourceSize
     mov r4, r0
     ldr r0, L_021fdb48
     ldr r1, L_021fdb50
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r2, r4
     add r1, r5, #0x314
     bl MIi_CpuCopy16

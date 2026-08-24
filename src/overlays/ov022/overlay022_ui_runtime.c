@@ -21,7 +21,7 @@ extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
-extern const void *func_020791e0(const void *, u16);
+extern const void *LanguageLookupDatabase_GetResourceById(const void *, u16);
 extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern const void *RecordMode_GetMessage(void *, s32);
 extern void GamePhaseCurrencyHud_Update(void *);
@@ -233,7 +233,7 @@ extern "C" void func_ov022_021ff2c4(void *scene, s32 message_id)
     void *dialog = FIELD(void *, scene, 0x2cc);
     FIELD(s32, dialog, 0xd0) = 0xd;
     FIELD(s32, dialog, 0xd4) = 0;
-    const void *text = func_020791e0(data_021f3ecc, (u16)message_id);
+    const void *text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, (u16)message_id);
     TitleDialog_SetText(dialog, text, 4);
     s32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     if (result & 0x200)

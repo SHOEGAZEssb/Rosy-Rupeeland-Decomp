@@ -13,7 +13,7 @@ extern void *Actor_GetOwningCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
 extern void *DisplayRouting_MatchesRequest(u32 value);
 extern void func_0201da34(GamePhaseActorScriptVm *self);
-extern void *func_020791e0(void *state, u16 value);
+extern void *LanguageLookupDatabase_GetResourceById(void *state, u16 value);
 extern void *DebugHudState_GetGlobal(void *value);
 extern void *DebugHudState_RefreshRectangle(void *value);
 extern void DebugHudState_Open(void *state, void *first, void *second, u32 enabled);
@@ -48,7 +48,7 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
 /*
  * Pop and discard two operands, pop lookup and table operands, update VM-side
  * state through func_0201da34, resolve the table operand through
- * data_021f3ecc/func_020791e0 and the lookup through DisplayRouting_MatchesRequest, then feed
+ * data_021f3ecc/LanguageLookupDatabase_GetResourceById and the lookup through DisplayRouting_MatchesRequest, then feed
  * both to the recovered debug-state chain with enabled=1. Returns zero.
  */
 s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *self)
@@ -62,7 +62,7 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *
         u32 lookup = GamePhaseScriptVm_Pop(&self->base);
         u32 tableValue = GamePhaseScriptVm_Pop(&self->base);
         func_0201da34(self);
-        second = func_020791e0(data_021f3ecc, (u16)tableValue);
+        second = LanguageLookupDatabase_GetResourceById(data_021f3ecc, (u16)tableValue);
         first = DisplayRouting_MatchesRequest(lookup);
     }
     state = DebugHudState_GetGlobal(first);

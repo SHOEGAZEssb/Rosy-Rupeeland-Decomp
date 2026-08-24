@@ -105,6 +105,18 @@ def instructions_match_after_renames(target_entry: dict, current_entry: dict,
     return True
 
 
+def is_exported_function(entry: dict) -> bool:
+    """Recognize source functions even when objdiff omits their kind tag."""
+    return (
+        entry.get("kind") == "SYMBOL_FUNCTION"
+        or (
+            bool(entry.get("flags", {}).get("global"))
+            and entry.get("match_percent") is not None
+            and bool(entry.get("instructions"))
+        )
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("input", type=Path)
@@ -127,7 +139,7 @@ def main() -> int:
 
     rename_only: set[str] = set()
     for target_entry in target_symbols:
-        if target_entry.get("kind") != "SYMBOL_FUNCTION":
+        if not is_exported_function(target_entry):
             continue
         name = str(target_entry.get("name", ""))
         current_entry = next(
@@ -151,7 +163,7 @@ def main() -> int:
         if name == ".text" and percent != 100.0:
             mismatched = [
                 symbol for symbol in target_symbols
-                if symbol.get("kind") == "SYMBOL_FUNCTION"
+                if is_exported_function(symbol)
                 and symbol.get("match_percent") is not None
                 and float(symbol["match_percent"]) != 100.0
             ]

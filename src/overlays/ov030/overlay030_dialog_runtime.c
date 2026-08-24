@@ -11,7 +11,7 @@ extern void *gDebugFont;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020791e0(const void *, u16);
+extern void *LanguageLookupDatabase_GetResourceById(const void *, u16);
 extern void TitleDialog_SetText(void *, void *, s32);
 extern u32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void func_ov045_0220c128(void *, void *);
@@ -39,7 +39,7 @@ extern "C" void func_ov030_021fe954(void *scene, u16 messageId)
     void *dialog = FIELD(void *, scene, 0x2bc);
     FIELD(s32, dialog, 0xd0) = 13;
     FIELD(s32, dialog, 0xd4) = 0;
-    void *message = func_020791e0(data_021f3ecc, messageId);
+    void *message = LanguageLookupDatabase_GetResourceById(data_021f3ecc, messageId);
     TitleDialog_SetText(dialog, message, 4);
     u32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     if ((result & 0x200) != 0)

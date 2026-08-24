@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov033/overlay033_final_state.c for documented portable C. */
 
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceById
     .extern TitleDialog_SetText
     .extern func_ov033_021fd418
     .extern Sound_StopDirectSequence
@@ -44,7 +44,7 @@ L_021fd9b8:
 L_021fd9d0:
     ldr r0, L_021fdcd0
     mov r1, #0x1fc
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, [r5, #0xc4]
     mov r2, #0x2

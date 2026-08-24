@@ -20,7 +20,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 GraphicsSpriteRenderer_DrawText(void *, const u16 *, s32, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, const u16 *, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-extern const u16 *func_020791e0(void *, u16);
+extern const u16 *LanguageLookupDatabase_GetResourceById(void *, u16);
 extern void *TitleScreenResourceCollection_Get(void *, s32);
 extern void *func_020959d4(void *, s32, s32);
 extern void func_02095bec(void *);
@@ -44,9 +44,9 @@ extern "C" void func_ov016_021ff848(void *state, u16 messageId)
 
     GraphicsSpriteCanvas_FillRect(gDebugFont, 0, 6, 0xff, 0x16, 0);
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x64));
-    text = func_020791e0(data_021f3ecc, messageId);
+    text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, messageId);
     width = GraphicsSpriteRenderer_MeasureText(gDebugFont, text, 8, 0);
-    text = func_020791e0(data_021f3ecc, messageId);
+    text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, messageId);
     GraphicsSpriteRenderer_DrawText(gDebugFont, text, 0xf8 - width, 6, 0xe, 4, 0);
 }
 
@@ -122,9 +122,9 @@ extern "C" void func_ov016_021ff9f8(void *state, u16 messageId, s32 parameter)
     FIELD(void *, state, 0x464) = object;
     GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, 0x14, 0xc0, 0x74, 0);
     GraphicsSpriteRenderer_SetFontResource(data_020f4e14, FIELD(void *, state, 0x64));
-    text = func_020791e0(data_021f3ecc, messageId);
+    text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, messageId);
     width = GraphicsSpriteRenderer_MeasureText(data_020f4e14, text, 4, 0);
-    text = func_020791e0(data_021f3ecc, messageId);
+    text = LanguageLookupDatabase_GetResourceById(data_021f3ecc, messageId);
     GraphicsSpriteRenderer_DrawText(data_020f4e14, text, 0x80 - width / 2, 0x20, 0xe, 4, 0);
     GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get((u8 *)state + 0x84, 4), 1, 0);
     FIELD(u32, state, 0x48) |= 2;

@@ -7,7 +7,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern DisplayRouting_MatchesRequest
 .extern func_0201da34
-.extern func_020791e0
+.extern LanguageLookupDatabase_GetResourceById
 
     .global GamePhaseActorScriptVm_OpenDebugHudFromLookupTables
 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables: ; 0x0201579c
@@ -27,7 +27,7 @@ GamePhaseActorScriptVm_OpenDebugHudFromLookupTables: ; 0x0201579c
     mov r0, r4, lsl #0x10
     mov r1, r0, lsr #0x10
     ldr r0, L_02015814
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r5, r0
     mov r0, r6
     bl DisplayRouting_MatchesRequest

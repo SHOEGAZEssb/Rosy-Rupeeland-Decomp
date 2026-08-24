@@ -13,7 +13,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_DrawGlyph
     .extern GraphicsSpriteRenderer_DrawText
-    .extern func_020791e0
+    .extern LanguageLookupDatabase_GetResourceById
     .extern RetailTextTable_FindRecordById
     .extern func_02092960
     .extern TitleDialog_SetText
@@ -173,7 +173,7 @@ L_021fd654:
     bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r8, #0xe]
     ldr r0, L_021fd810
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, #0xe
     stmia sp, {r1, r5}
     mov r1, #0x0
@@ -259,7 +259,7 @@ L_021fd654:
     bl GraphicsSpriteRenderer_SetFontResource
     ldrh r1, [r8, #0x10]
     ldr r0, L_021fd810
-    bl func_020791e0
+    bl LanguageLookupDatabase_GetResourceById
     mov r1, r0
     ldr r0, [r6, #0x4c]
     mov r2, #0x1

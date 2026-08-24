@@ -64,7 +64,8 @@ typedef struct DescriptorMessageTable {
 
 /* Maps a language message identifier to the byte length of its resource via
  * the global resource manager. A missing record has length zero. */
-u32 LanguageLookup_GetResourceSize(const LookupIndexPrefix *table, s32 identifier)
+u32 LanguageLookupDatabase_GetResourceSize(const LookupIndexPrefix *table,
+                                           s32 identifier)
 {
     const LanguageLookupRecord *records =
         (const LanguageLookupRecord *)table->records;
@@ -241,7 +242,8 @@ void *LanguageDatabase_DebugLoadRecord(ResourceFileManager *manager,
 
 /* Maps a language message identifier to its resource payload via the global
  * resource manager, returning the retail missing-data pointer when absent. */
-void *func_020791e0(const LookupIndexPrefix *table, s32 identifier)
+void *LanguageLookupDatabase_GetResourceById(const LookupIndexPrefix *table,
+                                             s32 identifier)
 {
     const LanguageLookupRecord *records =
         (const LanguageLookupRecord *)table->records;
