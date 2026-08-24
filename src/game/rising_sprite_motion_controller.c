@@ -1,4 +1,5 @@
 #include "tingle/types.h"
+#include "tingle/vec_fx32_triple.h"
 
 /*
  * Control a sprite that follows a sampled motion path while rising and later
@@ -6,10 +7,6 @@
  * embeds the recovered motion-delta value, and writes final coordinates and
  * scale fields directly to the sprite state.
  */
-
-typedef struct PresentationValue {
-    u8 bytes[0x10];
-} PresentationValue;
 
 typedef struct SpriteMotionDelta {
     s32 first00;
@@ -25,7 +22,7 @@ typedef struct RisingSpriteMotionController {
     s32 state08;
     u8 oscillation0c[0x0c];
     s32 frame18;
-    u8 path1c[0x30];
+    VecFx32Triple path1c;
     SpriteMotionDelta motion4c;
     s32 offset5c;
     s32 systemTime60;
@@ -36,24 +33,16 @@ extern "C" {
 #endif
 extern u8 gSystemState[];
 extern void ActorMotionTriple_Clear(void *state);
-extern void VecFx32Triple_Init(void *path);
-extern void VecFx32Triple_Destroy(void *value);
-extern void VecFx32Object_InitComponents(PresentationValue *value, s32 x, s32 y, s32 z);
-extern void VecFx32Object_Destroy(PresentationValue *value);
-extern void func_02008378(PresentationValue *destination,
-                          const PresentationValue *left,
-                          const PresentationValue *right);
-extern void VecFx32Triple_InitWithValues(void *destination, const void *first,
-                          PresentationValue *source, const void *second);
-extern void VecFx32Triple_Assign(void *path, void *source);
+extern void func_02008378(VecFx32Object *destination,
+                          const VecFx32Object *left,
+                          const VecFx32Object *right);
 extern void ActorMotionOscillation_InitInterval(void *value, s32 first, s32 second, s32 third);
 extern void ActorMotionTriple_Assign(void *state, void *source);
 extern s32 ActorMotionOscillation_Sample(void *state, s32 time, s32 mode);
-extern void VecFx32Bezier_Evaluate3D(void *destination, void *path, s32 offset);
-extern void VecFx32_Subtract(PresentationValue *destination, void *source,
+extern void VecFx32_Subtract(VecFx32Object *destination, void *source,
                           s32 argument);
-extern void func_02056f00(PresentationValue *destination,
-                          PresentationValue *source);
+extern void func_02056f00(VecFx32Object *destination,
+                          VecFx32Object *source);
 extern u8 *GraphicsSpriteGroup_CreateState(void *owner, s32 first, s32 second, s32 third,
                          s32 mode);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, s32 value);
@@ -82,11 +71,11 @@ s32 SpriteMotionDelta_Step(SpriteMotionDelta *self);
  */
 RisingSpriteMotionController *RisingSpriteMotionController_Init(
     RisingSpriteMotionController *self, void *spriteOwner, s32 unused,
-    const s32 *spriteConfig, const PresentationValue *path, s32 sequence)
+    const s32 *spriteConfig, const VecFx32Object *path, s32 sequence)
 {
-    PresentationValue value60;
-    PresentationValue value50;
-    u8 pathValue20[0x30];
+    VecFx32Object value60;
+    VecFx32Object value50;
+    VecFx32Triple pathValue20;
     SpriteMotionDelta motion;
     u8 oscillationValue[0x0c];
 
@@ -97,15 +86,15 @@ RisingSpriteMotionController *RisingSpriteMotionController_Init(
     self->state08 = 0;
     ActorMotionTriple_Clear(self->oscillation0c);
     self->frame18 = 0;
-    VecFx32Triple_Init(self->path1c);
+    VecFx32Triple_Init(&self->path1c);
     SpriteMotionDelta_Init(&self->motion4c);
     self->offset5c = 0;
     self->systemTime60 = *(s32 *)(gSystemState + 0x64);
     VecFx32Object_InitComponents(&value60, 0, 0, 0x46000);
     func_02008378(&value50, path, &value60);
-    VecFx32Triple_InitWithValues(pathValue20, path, &value50, path);
-    VecFx32Triple_Assign(self->path1c, pathValue20);
-    VecFx32Triple_Destroy(pathValue20);
+    VecFx32Triple_InitWithValues(&pathValue20, path, &value50, path);
+    VecFx32Triple_Assign(&self->path1c, &pathValue20);
+    VecFx32Triple_Destroy(&pathValue20);
     VecFx32Object_Destroy(&value50);
     VecFx32Object_Destroy(&value60);
     SpriteMotionDelta_Configure(&motion, 0x100000, 0x2000, 0x78);
@@ -130,7 +119,7 @@ RisingSpriteMotionController *RisingSpriteMotionController_Destroy(
     RisingSpriteMotionController *self)
 {
     GraphicsSpriteGroup_ReleaseState(self->spriteOwner04, self->sprite00);
-    VecFx32Triple_Destroy(self->path1c);
+    VecFx32Triple_Destroy(&self->path1c);
     return self;
 }
 
@@ -148,9 +137,9 @@ s32 RisingSpriteMotionController_Update(RisingSpriteMotionController *self,
     s32 scale;
     s32 x;
     s32 y;
-    u8 pathSample[0x10];
-    PresentationValue sampled;
-    PresentationValue transformed;
+    VecFx32Object pathSample;
+    VecFx32Object sampled;
+    VecFx32Object transformed;
     u8 oscillationSample[0x0c];
 
     if (self->state08 == 0) {
@@ -171,16 +160,16 @@ s32 RisingSpriteMotionController_Update(RisingSpriteMotionController *self,
         scale = 2;
     }
     ActorMotionOscillation_InitInterval(oscillationSample, -scale << 6, scale << 6, 0xc8);
-    VecFx32Bezier_Evaluate3D(pathSample, self->path1c, self->offset5c);
-    VecFx32_Subtract(&sampled, pathSample, referencePosition);
+    VecFx32Bezier_Evaluate3D(&pathSample, &self->path1c, self->offset5c);
+    VecFx32_Subtract(&sampled, &pathSample, referencePosition);
     func_02056f00(&transformed, &sampled);
     VecFx32Object_Destroy(&sampled);
-    VecFx32Object_Destroy((PresentationValue *)pathSample);
-    *(s32 *)&transformed.bytes[4] +=
+    VecFx32Object_Destroy(&pathSample);
+    transformed.value.x +=
         ActorMotionOscillation_Sample(oscillationSample,
                       *(s32 *)(gSystemState + 0x64) + self->systemTime60, 0);
-    x = *(s32 *)&transformed.bytes[4] >> 12;
-    y = *(s32 *)&transformed.bytes[8] >> 12;
+    x = transformed.value.x >> 12;
+    y = transformed.value.y >> 12;
     *(s16 *)(self->sprite00 + 0x2c) = (s16)x;
     *(s16 *)(self->sprite00 + 0x2e) = (s16)y;
     *(u16 *)(self->sprite00 + 0x24) &= (u16)~4;
