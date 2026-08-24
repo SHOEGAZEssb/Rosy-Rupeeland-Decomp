@@ -1,0 +1,6 @@
+{
+  "func_0207a268": "RetailRecordManager_InitGlobal",
+  "func_0207a2a8": "RetailRecordSlot_Init",
+  "func_0207a2c8": "RetailRecordSlot_DestroyNoOp",
+  "func_0207a2cc": "RetailRecordManager_Construct"
+}

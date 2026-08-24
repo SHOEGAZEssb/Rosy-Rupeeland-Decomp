@@ -52,7 +52,7 @@ extern void RetailSaveContext_InitializeGlobal(void);
 extern void func_0206328c(void);
 extern void RetailResourceDescriptorManager_InitGlobal(void);
 extern void func_0206f780(void);
-extern void func_0207a268(void);
+extern void RetailRecordManager_InitGlobal(void);
 extern s32 RetailSaveContext_IdentifyBackupDevice(RuntimeContext *context);
 extern void *Heap_Alloc(u32 size, const char *tag, s32 alignment,
                         HeapContext *context);
@@ -139,7 +139,7 @@ s32 TingleRecoveredCanonicalStartup(void)
     STARTUP_STEP("manager 0206328c", func_0206328c());
     STARTUP_STEP("resource descriptor manager", RetailResourceDescriptorManager_InitGlobal());
     STARTUP_STEP("manager 0206f780", func_0206f780());
-    STARTUP_STEP("manager 0207a268", func_0207a268());
+    STARTUP_STEP("manager 0207a268", RetailRecordManager_InitGlobal());
 
     gSystemState.enabledKeyMask = 0x0fff;
     for (save_identified = 0; save_identified < PAD_STATE_COUNT;

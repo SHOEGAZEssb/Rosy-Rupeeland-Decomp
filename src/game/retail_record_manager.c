@@ -51,7 +51,7 @@ extern void func_0207b944(void *database);
 extern void RetailRecordDatabase_AppendLocalizedRecords(void *database);
 extern void RetailRecordDatabase_AppendAuxiliaryRecords(void *database);
 extern void RetailRecordDatabase_AppendFinalRecord(void *database);
-extern void *func_0207a2cc(void *manager);
+extern void *RetailRecordManager_Construct(void *manager);
 extern void *gGameWork;
 extern void GameWork_SetFlag(void *work, s32 flag);
 
@@ -732,7 +732,8 @@ void RetailRecordDatabase_AppendFinalRecord(void *database_pointer)
     CheckedFS_CloseFile(file);
 }
 
-static void InitializeRecordSlot(u8 *slot)
+/* Initialize one 0x10-byte manager/category record slot. */
+void RetailRecordSlot_Init(u8 *slot)
 {
     *(const void **)slot = data_020eeb4c;
     *(u32 *)(slot + 4) = 0;
@@ -752,8 +753,8 @@ static void InitializeRecordCategory(u8 *category, u32 category_index)
     *(u32 *)(category + 0x10) = 0x32;
     *(u32 *)(category + 0x14) = 0x32;
     for (index = 0; index < 0x32; ++index) {
-        InitializeRecordSlot(category + 0x20 + index * 0x10);
-        InitializeRecordSlot(category + 0x340 + index * 0x10);
+        RetailRecordSlot_Init(category + 0x20 + index * 0x10);
+        RetailRecordSlot_Init(category + 0x340 + index * 0x10);
     }
     *(u8 **)(category + 0x660) = category;
     *(u32 *)(category + 0x664) = 0;
@@ -781,14 +782,14 @@ static void *CreateRecordCategory(u32 category_index)
     return category;
 }
 
-/* Construct and initialize all 18 retail record categories at 0x0207A2CC. */
-void *func_0207a2cc(void *manager_pointer)
+/* Construct 200 manager slots and all 18 retail record categories. */
+void *RetailRecordManager_Construct(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     u32 index;
 
     for (index = 0; index < 0xc8; ++index)
-        InitializeRecordSlot(manager + 0x48 + index * 0x10);
+        RetailRecordSlot_Init(manager + 0x48 + index * 0x10);
     *(void **)data_021f5128 = manager;
     for (index = 0; index < 18; ++index) {
         u8 *category = CreateRecordCategory(index);
@@ -829,14 +830,14 @@ void RetailRecordDatabase_LoadAll(void *database)
 }
 
 /* Load record data, allocate 0xccc bytes, and publish its runtime manager. */
-void func_0207a268(void)
+void RetailRecordManager_InitGlobal(void)
 {
     void *manager;
 
     RetailRecordDatabase_LoadAll(data_021f5138);
     manager = Heap_Alloc(0xccc, data_020eeb54, 4, &gHeapContext);
     if (manager != 0)
-        func_0207a2cc(manager);
+        RetailRecordManager_Construct(manager);
 }
 
 

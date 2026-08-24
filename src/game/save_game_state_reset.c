@@ -43,7 +43,7 @@ void func_0207a820(void *category)
 #define DEFINE_RETAIL_EMPTY_HOOK(name) \
     void name(void *object) { (void)object; }
 
-DEFINE_RETAIL_EMPTY_HOOK(func_0207a2c8)
+DEFINE_RETAIL_EMPTY_HOOK(RetailRecordSlot_DestroyNoOp)
 DEFINE_RETAIL_EMPTY_HOOK(func_0207b558)
 DEFINE_RETAIL_EMPTY_HOOK(func_0207b560)
 DEFINE_RETAIL_EMPTY_HOOK(func_0207d020)
