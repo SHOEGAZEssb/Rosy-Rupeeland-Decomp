@@ -1,0 +1,8 @@
+{
+  "func_02083770": "ScenarioCompletion_TestQ000DefState01",
+  "func_0208382c": "ScenarioCompletion_TestQ000DefState02",
+  "func_020838b8": "ScenarioCompletion_TestQ000EndSalon",
+  "func_02083944": "ScenarioCompletion_TestQ000GetAllMap",
+  "func_0208396c": "ScenarioCompletion_TestQ000GetMapStages00To05",
+  "func_02083a40": "ScenarioCompletion_TestQ000GetMapStages06To11"
+}
