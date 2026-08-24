@@ -4,7 +4,7 @@
  * Fixed-capacity staging pool for graphics render entries. Active root entries
  * form a doubly linked list, while a root may own further entries through a
  * separate chain link. Before command emission the roots are stably ordered by
- * their signed sort keys. The meanings of the two payload words remain unknown.
+ * their signed sort keys. Each entry carries a copied sprite OAM template.
  */
 
 #ifdef __cplusplus
@@ -20,17 +20,17 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
 #endif
 
 /*
- * Clear all links, the sort key, and both payload words in entry. This mutates
+ * Clear all links, the sort key, and the OAM record in entry. This mutates
  * only the supplied descriptor, returns no value, and has no hardware effects.
  */
 void GraphicsRenderEntry_Init(GraphicsRenderEntry *entry)
 {
     entry->chainNext = 0;
-    entry->next = 0;
-    entry->prev = 0;
+    entry->nextOrFree = 0;
+    entry->previous = 0;
     entry->sortKey = 0;
-    entry->field_10 = 0;
-    entry->field_14 = 0;
+    ((u32 *)&entry->oamRecord)[0] = 0;
+    ((u32 *)&entry->oamRecord)[1] = 0;
 }
 
 /*
@@ -61,7 +61,7 @@ GraphicsRenderEntryPool *GraphicsRenderEntryPool_Init(
 
 /*
  * Empty the active list, reset the allocation count, and link all descriptors
- * through next as the free list. Existing entry payloads are not cleared. This
+ * through nextOrFree as the free list. Existing OAM records are not cleared. This
  * mutates pool in place, returns no value, and performs no SDK or hardware I/O.
  */
 void GraphicsRenderEntryPool_Reset(GraphicsRenderEntryPool *pool)
@@ -70,13 +70,13 @@ void GraphicsRenderEntryPool_Reset(GraphicsRenderEntryPool *pool)
 
     pool->tail = 0;
     pool->head = 0;
-    pool->freeEntries = pool->entries;
+    pool->freeHead = pool->entries;
     pool->allocatedCount = 0;
 
     for (i = 0; i < GRAPHICS_RENDER_ENTRY_CAPACITY - 1; i++) {
-        pool->entries[i].next = &pool->entries[i + 1];
+        pool->entries[i].nextOrFree = &pool->entries[i + 1];
     }
-    pool->entries[GRAPHICS_RENDER_ENTRY_CAPACITY - 1].next = 0;
+    pool->entries[GRAPHICS_RENDER_ENTRY_CAPACITY - 1].nextOrFree = 0;
 }
 
 /*
@@ -93,7 +93,7 @@ GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
 {
     GraphicsRenderEntry *head = pool->head;
     GraphicsRenderEntry *tail = pool->tail;
-    GraphicsRenderEntry *freeEntry = pool->freeEntries;
+    GraphicsRenderEntry *freeEntry = pool->freeHead;
     u32 allocatedCount = pool->allocatedCount;
     GraphicsRenderEntry *first = 0;
     GraphicsRenderEntry *previous = 0;
@@ -104,23 +104,23 @@ GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
         if (entry == 0) {
             break;
         }
-        freeEntry = freeEntry->next;
+        freeEntry = freeEntry->nextOrFree;
 
         if (previous != 0) {
             previous->chainNext = entry;
-            entry->prev = 0;
+            entry->previous = 0;
         } else {
             first = entry;
             if (head != 0) {
-                tail->next = entry;
+                tail->nextOrFree = entry;
             } else {
                 head = entry;
             }
-            entry->prev = tail;
+            entry->previous = tail;
             tail = entry;
         }
 
-        entry->next = 0;
+        entry->nextOrFree = 0;
         entry->chainNext = 0;
         allocatedCount++;
         previous = entry;
@@ -128,7 +128,7 @@ GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
 
     pool->head = head;
     pool->tail = tail;
-    pool->freeEntries = freeEntry;
+    pool->freeHead = freeEntry;
     pool->allocatedCount = allocatedCount;
     return first;
 }
@@ -199,13 +199,13 @@ void GraphicsRenderEntryPool_AppendRoot(GraphicsRenderEntryPool *pool,
     if (head == 0) {
         head = entry;
         tail = entry;
-        entry->prev = 0;
+        entry->previous = 0;
     } else {
-        tail->next = entry;
-        entry->prev = tail;
+        tail->nextOrFree = entry;
+        entry->previous = tail;
         tail = entry;
     }
-    entry->next = 0;
+    entry->nextOrFree = 0;
     pool->head = head;
     pool->tail = tail;
 }
@@ -251,9 +251,9 @@ void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool)
     GraphicsRenderEntry *entry = head;
 
     while (entry != 0) {
-        GraphicsRenderEntry *next = entry->next;
+        GraphicsRenderEntry *next = entry->nextOrFree;
         s32 sortKey = entry->sortKey;
-        GraphicsRenderEntry *scan = entry->prev;
+        GraphicsRenderEntry *scan = entry->previous;
         GraphicsRenderEntry *insertionPoint = 0;
 
         while (scan != 0) {
@@ -261,32 +261,32 @@ void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool)
                 break;
             }
             insertionPoint = scan;
-            scan = scan->prev;
+            scan = scan->previous;
         }
 
         if (insertionPoint != 0) {
-            GraphicsRenderEntry *beforeInsertion = insertionPoint->prev;
-            GraphicsRenderEntry *oldPrev = entry->prev;
-            GraphicsRenderEntry *oldNext = entry->next;
+            GraphicsRenderEntry *beforeInsertion = insertionPoint->previous;
+            GraphicsRenderEntry *oldPrev = entry->previous;
+            GraphicsRenderEntry *oldNext = entry->nextOrFree;
 
             if (oldPrev != 0) {
-                oldPrev->next = oldNext;
+                oldPrev->nextOrFree = oldNext;
             } else {
                 head = oldNext;
             }
             if (oldNext != 0) {
-                oldNext->prev = oldPrev;
+                oldNext->previous = oldPrev;
             } else {
                 tail = oldPrev;
             }
             if (beforeInsertion != 0) {
-                beforeInsertion->next = entry;
+                beforeInsertion->nextOrFree = entry;
             } else {
                 head = entry;
             }
-            insertionPoint->prev = entry;
-            entry->prev = beforeInsertion;
-            entry->next = insertionPoint;
+            insertionPoint->previous = entry;
+            entry->previous = beforeInsertion;
+            entry->nextOrFree = insertionPoint;
         }
 
         entry = next;

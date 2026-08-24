@@ -2,6 +2,7 @@
 #define TINGLE_GRAPHICS_RENDER_ENTRY_POOL_H
 
 #include "tingle/types.h"
+#include "tingle/graphics_sprite_render_helpers.h"
 
 enum { GRAPHICS_RENDER_ENTRY_CAPACITY = 128 };
 
@@ -9,12 +10,11 @@ typedef struct GraphicsRenderEntry GraphicsRenderEntry;
 
 /* One active render entry or an additional entry chained from it. */
 struct GraphicsRenderEntry {
-    GraphicsRenderEntry *prev;
-    GraphicsRenderEntry *next;
+    GraphicsRenderEntry *previous;
+    GraphicsRenderEntry *nextOrFree;
     GraphicsRenderEntry *chainNext;
     s32 sortKey;
-    u32 field_10;
-    u32 field_14;
+    GraphicsSpriteOamRecord oamRecord;
 };
 
 /* Fixed pool whose active entries can be sorted before command emission. */
@@ -22,7 +22,7 @@ typedef struct GraphicsRenderEntryPool {
     GraphicsRenderEntry entries[GRAPHICS_RENDER_ENTRY_CAPACITY];
     GraphicsRenderEntry *head;
     GraphicsRenderEntry *tail;
-    GraphicsRenderEntry *freeEntries;
+    GraphicsRenderEntry *freeHead;
     u32 allocatedCount;
 } GraphicsRenderEntryPool;
 
@@ -45,8 +45,6 @@ GraphicsRenderEntry *GraphicsRenderEntryPool_AllocateChain(
 void GraphicsRenderEntryPool_AppendRoot(GraphicsRenderEntryPool *pool,
                                         GraphicsRenderEntry *entry);
 void GraphicsRenderEntryPool_SortRoots(GraphicsRenderEntryPool *pool);
-void GraphicsRenderEntryPool_AddToTailPayload(GraphicsRenderEntryPool *pool, u32 delta);
-
 #ifdef __cplusplus
 }
 #endif

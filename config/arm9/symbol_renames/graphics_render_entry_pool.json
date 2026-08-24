@@ -1,0 +1,11 @@
+{
+  "func_020723e0": "GraphicsRenderEntry_Init",
+  "func_02072400": "GraphicsRenderEntry_Destroy",
+  "func_02072404": "GraphicsRenderEntryPool_Init",
+  "func_02072444": "GraphicsRenderEntryPool_Reset",
+  "func_0207248c": "GraphicsRenderEntryPool_AllocateChain",
+  "func_02072518": "GraphicsRenderEntryPool_AppendRoot",
+  "func_02072560": "GraphicsRenderEntryPool_SortRoots",
+  "func_02073304": "GraphicsTransferQueue_ExtendTailSize",
+  "func_0207331c": "GraphicsSpriteOamRecord_Copy"
+}

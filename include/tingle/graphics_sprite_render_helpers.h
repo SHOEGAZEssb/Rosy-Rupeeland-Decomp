@@ -3,23 +3,23 @@
 
 #include "tingle/types.h"
 
-/* One 8-byte record copied as four independently addressable halfwords. */
-typedef struct GraphicsSpriteRecord8 {
-    u16 field_00;
-    u16 field_02;
-    u16 field_04;
-    u16 field_06;
-} GraphicsSpriteRecord8;
+/* Three OAM attributes plus the source cell metadata copied with the template. */
+typedef struct GraphicsSpriteOamRecord {
+    u16 attribute0;
+    u16 attribute1;
+    u16 attribute2;
+    u16 cellMetadata;
+} GraphicsSpriteOamRecord;
 
-typedef char GraphicsSpriteRecord8SizeCheck[
-    sizeof(GraphicsSpriteRecord8) == 8 ? 1 : -1];
+typedef char GraphicsSpriteOamRecordSizeCheck[
+    sizeof(GraphicsSpriteOamRecord) == 8 ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GraphicsSpriteRecord8_Copy(GraphicsSpriteRecord8 *destination,
-                   const GraphicsSpriteRecord8 *source);
+void GraphicsSpriteOamRecord_Copy(GraphicsSpriteOamRecord *destination,
+                                  const GraphicsSpriteOamRecord *source);
 
 #ifdef __cplusplus
 }

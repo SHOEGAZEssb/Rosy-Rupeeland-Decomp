@@ -4582,7 +4582,7 @@ build build/reports/graphics_sprite_render_helpers.json: objdiff build/decomp/de
 
 build build/reports/graphics_sprite_render_helpers.txt: match_report build/reports/graphics_sprite_render_helpers.json | tools/report_objdiff.py
   report_json = build/reports/graphics_sprite_render_helpers.json
-  report_args = --section .text --function GraphicsRenderEntryPool_AddToTailPayload --function GraphicsSpriteRecord8_Copy
+  report_args = --section .text --function GraphicsTransferQueue_ExtendTailSize --function GraphicsSpriteOamRecord_Copy
 
 build build/reports/graphics_sprite_config.json: objdiff build/decomp/delinks/src/graphics/graphics_sprite_config.o | build/decomp/src/graphics/graphics_sprite_config.o
   target_object = build/decomp/delinks/src/graphics/graphics_sprite_config.o

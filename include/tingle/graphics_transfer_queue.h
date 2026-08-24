@@ -49,6 +49,8 @@ void GraphicsTransferQueue_Remove(GraphicsTransferQueue *queue,
                                   GraphicsTransferEntry *entry);
 GraphicsTransferEntry *GraphicsTransferQueue_FindBySource(
     GraphicsTransferQueue *queue, const void *source);
+void GraphicsTransferQueue_ExtendTailSize(GraphicsTransferQueue *queue,
+                                          u32 additionalBytes);
 
 #ifdef __cplusplus
 }

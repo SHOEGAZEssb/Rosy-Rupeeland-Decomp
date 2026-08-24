@@ -128,7 +128,7 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     entry->sortKey = (s32)((u32)state->sortOrder |
                            ((u32)state->oamPriority << 16));
     for (cellIndex = 0; cellIndex < cellFrame->cellCount; ++cellIndex) {
-        u16 *attributes = (u16 *)&entry->field_10;
+        u16 *attributes = (u16 *)&entry->oamRecord;
         u16 metadata;
         u32 sourceTile;
         u32 tileCount;
@@ -137,8 +137,8 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         s32 finalX;
         s32 finalY;
 
-        GraphicsSpriteRecord8_Copy((GraphicsSpriteRecord8 *)attributes,
-                                   (const GraphicsSpriteRecord8 *)cell);
+        GraphicsSpriteOamRecord_Copy((GraphicsSpriteOamRecord *)attributes,
+                                     (const GraphicsSpriteOamRecord *)cell);
         y = (s32)(cell[0] & 0xff);
         x = (s32)(cell[1] & 0x1ff);
         if ((y & 0x80) != 0) {
@@ -187,8 +187,8 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         } else {
             if (binding->field_0c == 0) {
                 if (expectedTile == sourceTile) {
-                    GraphicsRenderEntryPool_AddToTailPayload(
-                        (GraphicsRenderEntryPool *)queue, tileCount << 7);
+                    GraphicsTransferQueue_ExtendTailSize(queue,
+                                                         tileCount << 7);
                     expectedTile += tileCount;
                 } else {
                     GraphicsTransferQueue_Enqueue(
@@ -293,7 +293,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     entry->sortKey = (s32)((u32)state->sortOrder |
                            ((u32)state->oamPriority << 16));
     for (cellIndex = 0; cellIndex < cellFrame->cellCount; ++cellIndex) {
-        u16 *attributes = (u16 *)&entry->field_10;
+        u16 *attributes = (u16 *)&entry->oamRecord;
         u16 metadata = cell[3];
         u32 sourceTile;
         u32 tileCount;
@@ -305,8 +305,8 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         s32 finalX;
         s32 finalY;
 
-        GraphicsSpriteRecord8_Copy((GraphicsSpriteRecord8 *)attributes,
-                                   (const GraphicsSpriteRecord8 *)cell);
+        GraphicsSpriteOamRecord_Copy((GraphicsSpriteOamRecord *)attributes,
+                                     (const GraphicsSpriteOamRecord *)cell);
         if ((x & 0x100) != 0) x -= 0x200;
         if ((y & 0x80) != 0) y -= 0x100;
 
@@ -376,8 +376,8 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
         } else {
             if (binding->field_0c == 0) {
                 if (expectedTile == sourceTile) {
-                    GraphicsRenderEntryPool_AddToTailPayload(
-                        (GraphicsRenderEntryPool *)queue, tileCount << 7);
+                    GraphicsTransferQueue_ExtendTailSize(queue,
+                                                         tileCount << 7);
                     expectedTile += tileCount;
                 } else {
                     GraphicsTransferQueue_Enqueue(
@@ -431,7 +431,7 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
     }
 
     for (entry = firstEntry; entry != 0; entry = entry->chainNext) {
-        u16 *attribute1 = (u16 *)&entry->field_10 + 1;
+        u16 *attribute1 = &entry->oamRecord.attribute1;
         u32 variant = (*attribute1 >> 9) & 0x1fU;
         GraphicsAffineMatrixCacheEntry *cacheEntry = matrixEntries[variant & 3U];
         if (cacheEntry != 0) {

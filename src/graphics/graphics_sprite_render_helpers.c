@@ -1,22 +1,23 @@
-#include "tingle/graphics_render_entry_pool.h"
 #include "tingle/graphics_sprite_render_helpers.h"
+#include "tingle/graphics_transfer_queue.h"
 
 /*
- * Small helpers shared by the sprite render builders: adjustment of the most
- * recently appended root entry and a halfword-safe copy of an 8-byte record.
+ * Small helpers shared by the sprite render builders: extension of the most
+ * recently queued transfer and a halfword-safe copy of an OAM template.
  */
 
 /*
- * Add delta to the active list tail's offset-0x14 payload. An empty pool is
- * ignored. The pool and entry links are unchanged, no value is returned, and
- * there is no SDK or graphics-hardware access.
+ * Add additionalBytes to the tail transfer's byte count. An empty queue is
+ * ignored. Queue links are unchanged, no value is returned, and there is no
+ * SDK or graphics-hardware access.
  */
-void GraphicsRenderEntryPool_AddToTailPayload(GraphicsRenderEntryPool *pool, u32 delta)
+void GraphicsTransferQueue_ExtendTailSize(GraphicsTransferQueue *queue,
+                                          u32 additionalBytes)
 {
-    GraphicsRenderEntry *tail = pool->tail;
+    GraphicsTransferEntry *tail = queue->tail;
 
     if (tail != 0) {
-        tail->field_14 += delta;
+        tail->size += additionalBytes;
     }
 }
 
@@ -25,11 +26,11 @@ void GraphicsRenderEntryPool_AddToTailPayload(GraphicsRenderEntryPool *pool, u32
  * The explicit 16-bit accesses preserve the retail alignment contract. Returns
  * no value and has no SDK or graphics-hardware effects.
  */
-void GraphicsSpriteRecord8_Copy(GraphicsSpriteRecord8 *destination,
-                   const GraphicsSpriteRecord8 *source)
+void GraphicsSpriteOamRecord_Copy(GraphicsSpriteOamRecord *destination,
+                                  const GraphicsSpriteOamRecord *source)
 {
-    destination->field_00 = source->field_00;
-    destination->field_02 = source->field_02;
-    destination->field_04 = source->field_04;
-    destination->field_06 = source->field_06;
+    destination->attribute0 = source->attribute0;
+    destination->attribute1 = source->attribute1;
+    destination->attribute2 = source->attribute2;
+    destination->cellMetadata = source->cellMetadata;
 }
