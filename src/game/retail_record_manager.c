@@ -572,21 +572,24 @@ static u32 ReadHeaderCount(u8 *database, u32 file_offset, u32 id_offset,
     return ReadU16(header);
 }
 
-void func_0207b668(void *database_pointer)
+/* Load the leading record count from configured database path slot four. */
+void RetailRecordDatabase_LoadPath4Count(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     *(u32 *)(database + 0x24) =
         ReadHeaderCount(database, 0x78, 0x158, data_020c9200[4]);
 }
 
-void func_0207b6ec(void *database_pointer)
+/* Load the leading record count from configured database path slot seven. */
+void RetailRecordDatabase_LoadPath7Count(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     *(u32 *)(database + 0x28) =
         ReadHeaderCount(database, 0xc0, 0x160, data_020c9200[7]);
 }
 
-void func_0207b770(void *database_pointer)
+/* Load the leading record count from configured database path slot three. */
+void RetailRecordDatabase_LoadPath3Count(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     *(u32 *)(database + 0x2c) =
@@ -594,7 +597,7 @@ void func_0207b770(void *database_pointer)
 }
 
 /* Load the fixed 18 localized record-category rows at 0x0207B7F4. */
-void func_0207b7f4(void *database_pointer)
+void RetailRecordDatabase_LoadCategoryRows(void *database_pointer)
 {
     u8 *database = (u8 *)database_pointer;
     FSFile *file = (FSFile *)(database + 0x30);
@@ -1011,10 +1014,10 @@ void *RetailRecordManager_Construct(void *manager_pointer)
 /* Load all eight record/menu databases in retail order at 0x0207B620. */
 void RetailRecordDatabase_LoadAll(void *database)
 {
-    func_0207b7f4(database);
-    func_0207b668(database);
-    func_0207b6ec(database);
-    func_0207b770(database);
+    RetailRecordDatabase_LoadCategoryRows(database);
+    RetailRecordDatabase_LoadPath4Count(database);
+    RetailRecordDatabase_LoadPath7Count(database);
+    RetailRecordDatabase_LoadPath3Count(database);
     func_0207b944(database);
     RetailRecordDatabase_AppendLocalizedRecords(database);
     RetailRecordDatabase_AppendAuxiliaryRecords(database);
