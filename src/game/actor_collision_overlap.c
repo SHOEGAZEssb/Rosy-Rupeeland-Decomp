@@ -2,14 +2,6 @@
 
 /* Actor rectangle overlap detection and collision-response dispatch. */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern const s8 *Actor_GetCollisionBounds(void *actor);
-#ifdef __cplusplus
-}
-#endif
-
 static s32 overlap_half_toward_zero(s32 value)
 {
     return (value + (s32)((u32)value >> 31)) >> 1;
@@ -57,13 +49,13 @@ s32 ActorCollision_ResolveRangeOverlap(void *actorPointer, s32 deltaX, s32 delta
         return 0;
 
     if (actorRange.minX == intersection.minX)
-        edges |= 1;
+        edges |= ACTOR_COLLISION_DIRECTION_LEFT;
     if (actorRange.maxX == intersection.maxX)
-        edges |= 2;
+        edges |= ACTOR_COLLISION_DIRECTION_RIGHT;
     if (actorRange.minY == intersection.minY)
-        edges |= 4;
+        edges |= ACTOR_COLLISION_DIRECTION_UP;
     if (actorRange.maxY == intersection.maxY)
-        edges |= 8;
+        edges |= ACTOR_COLLISION_DIRECTION_DOWN;
     ActorCollision_ApplyOverlapResponse(actorPointer, deltaX, deltaY, edges, &intersection);
     return 1;
 }

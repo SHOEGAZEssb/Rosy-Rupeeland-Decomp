@@ -9,7 +9,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s8 *Actor_GetCollisionBounds(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
@@ -38,7 +37,7 @@ static s32 collision_to_integer_toward_zero(s32 value)
 void ActorCollision_ResolveCornerContacts(void *actorPointer, void *collisionContext)
 {
     u8 *actor = (u8 *)actorPointer;
-    const s8 *box;
+    const ActorCollisionBoundsS8 *box;
     s32 z = *(s32 *)(actor + 0x24);
     s32 left;
     s32 top;
@@ -60,13 +59,13 @@ void ActorCollision_ResolveCornerContacts(void *actorPointer, void *collisionCon
     if (z < 0)
         z -= 0xf000;
     box = Actor_GetCollisionBounds(actorPointer);
-    left = (s32)box[0] << 12;
+    left = (s32)box->left << 12;
     box = Actor_GetCollisionBounds(actorPointer);
-    top = (s32)box[1] << 12;
+    top = (s32)box->top << 12;
     box = Actor_GetCollisionBounds(actorPointer);
-    right = (s32)box[2] << 12;
+    right = (s32)box->right << 12;
     box = Actor_GetCollisionBounds(actorPointer);
-    bottom = (s32)box[3] << 12;
+    bottom = (s32)box->bottom << 12;
 
     halfWidth = collision_half_toward_zero(right - left);
     halfHeight = collision_half_toward_zero(bottom - top);
@@ -110,11 +109,11 @@ void ActorCollision_ResolveCornerContacts(void *actorPointer, void *collisionCon
     }
 
     if (pushX > 0)
-        *(u8 *)(actor + 0x4b) |= 1;
+        *(u8 *)(actor + 0x4b) |= ACTOR_COLLISION_DIRECTION_LEFT;
     else if (pushX < 0)
-        *(u8 *)(actor + 0x4b) |= 2;
+        *(u8 *)(actor + 0x4b) |= ACTOR_COLLISION_DIRECTION_RIGHT;
     if (pushY > 0)
-        *(u8 *)(actor + 0x4b) |= 4;
+        *(u8 *)(actor + 0x4b) |= ACTOR_COLLISION_DIRECTION_UP;
     else if (pushY < 0)
-        *(u8 *)(actor + 0x4b) |= 8;
+        *(u8 *)(actor + 0x4b) |= ACTOR_COLLISION_DIRECTION_DOWN;
 }

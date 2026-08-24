@@ -136,13 +136,29 @@ typedef struct ActorCollisionRange {
     s32 maxY;
 } ActorCollisionRange;
 
+typedef struct ActorCollisionBoundsS8 {
+    s8 left;
+    s8 top;
+    s8 right;
+    s8 bottom;
+} ActorCollisionBoundsS8;
+
+ActorCollisionBoundsS8 *Actor_GetCollisionBounds(void *actor);
+
+enum ActorCollisionDirection {
+    ACTOR_COLLISION_DIRECTION_LEFT = 1 << 0,
+    ACTOR_COLLISION_DIRECTION_RIGHT = 1 << 1,
+    ACTOR_COLLISION_DIRECTION_UP = 1 << 2,
+    ACTOR_COLLISION_DIRECTION_DOWN = 1 << 3
+};
+
 void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *collisionContext,
                    const ActorCollisionRange *input, s32 direction,
                    s32 z, s32 actorHeight);
 s32 ActorCollision_ResolveRangeOverlap(void *actor, s32 deltaX, s32 deltaY,
                   const ActorCollisionRange *other);
-s32 ActorBounds_GetWidth(const s8 *bounds);
-s32 ActorBounds_GetHeight(const s8 *bounds);
+s32 ActorBounds_GetWidth(const ActorCollisionBoundsS8 *bounds);
+s32 ActorBounds_GetHeight(const ActorCollisionBoundsS8 *bounds);
 void ActorCollision_ApplyOverlapResponse(void *actor, s32 deltaX, s32 deltaY, u8 edgeFlags,
                    const ActorCollisionRange *intersection);
 void ActorCollision_ResolveSweptMovement(void *actor, void *collisionContext);

@@ -1,14 +1,15 @@
+#include "tingle/actor_motion.h"
 #include "tingle/heap.h"
 #include "tingle/types.h"
 
 /* Tear down the common actor geometry header, with optional heap release. */
 typedef struct ActorBaseGeometryLifecycle {
     void *vtable_00;
-    u8 bounds_04[4];
+    ActorCollisionBoundsS8 collisionBounds;
     u8 field_08[0x10];
-    u8 vector_18[0x10];
-    u8 vector_28[0x10];
-    u8 vector_38[0x10];
+    VecFx32Object position;
+    VecFx32Object previousPosition;
+    VecFx32Object motionVector;
 } ActorBaseGeometryLifecycle;
 
 extern u8 data_020def7c[];
@@ -18,7 +19,6 @@ extern void *gSoundContext;
 extern "C" {
 #endif
 extern void Sound_StopOwnerEffects(void *, ActorBaseGeometryLifecycle *);
-extern void VecFx32Object_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -28,9 +28,9 @@ static ActorBaseGeometryLifecycle *destroyGeometry(
 {
     self->vtable_00 = data_020def7c;
     Sound_StopOwnerEffects(gSoundContext, self);
-    VecFx32Object_Destroy(self->vector_38);
-    VecFx32Object_Destroy(self->vector_28);
-    VecFx32Object_Destroy(self->vector_18);
+    VecFx32Object_Destroy(&self->motionVector);
+    VecFx32Object_Destroy(&self->previousPosition);
+    VecFx32Object_Destroy(&self->position);
     return self;
 }
 
@@ -66,7 +66,7 @@ ActorBaseGeometryLifecycle *func_02030e08(ActorBaseGeometryLifecycle *self)
 }
 
 /* Return a pointer to the four-byte bounds record at self offset 0x04. */
-void *Actor_GetCollisionBounds(ActorBaseGeometryLifecycle *self)
+ActorCollisionBoundsS8 *Actor_GetCollisionBounds(ActorBaseGeometryLifecycle *self)
 {
-    return self->bounds_04;
+    return &self->collisionBounds;
 }

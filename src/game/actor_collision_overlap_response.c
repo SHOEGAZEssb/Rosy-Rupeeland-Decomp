@@ -24,17 +24,17 @@ void ActorCollision_ApplyOverlapResponse(void *actorPointer, s32 deltaX, s32 del
     s32 overlap = intersection->maxX - intersection->minX;
 
     if (deltaX != 0 && overlap <= SignedAbsoluteValue(deltaX)) {
-        if (deltaX > 0 && (edgeFlags & 2))
+        if (deltaX > 0 && (edgeFlags & ACTOR_COLLISION_DIRECTION_RIGHT))
             *(s32 *)(actor + 0x1c) -= overlap;
-        if (deltaX < 0 && (edgeFlags & 1))
+        if (deltaX < 0 && (edgeFlags & ACTOR_COLLISION_DIRECTION_LEFT))
             *(s32 *)(actor + 0x1c) += overlap;
     }
 
     overlap = intersection->maxY - intersection->minY;
     if (deltaY != 0 && overlap <= SignedAbsoluteValue(deltaY)) {
-        if (deltaY > 0 && (edgeFlags & 8))
+        if (deltaY > 0 && (edgeFlags & ACTOR_COLLISION_DIRECTION_DOWN))
             *(s32 *)(actor + 0x20) -= overlap;
-        if (deltaY < 0 && (edgeFlags & 4))
+        if (deltaY < 0 && (edgeFlags & ACTOR_COLLISION_DIRECTION_UP))
             *(s32 *)(actor + 0x20) += overlap;
     }
     *(u8 *)(actor + 0x4b) |= edgeFlags;

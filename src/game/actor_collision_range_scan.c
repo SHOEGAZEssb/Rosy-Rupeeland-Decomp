@@ -44,13 +44,13 @@ void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *coll
     s32 coordinate;
 
     switch (direction) {
-    case 4:
-    case 8: {
-        s32 queryY = (direction == 4 ? minY : maxY) >> 4;
+    case ACTOR_COLLISION_DIRECTION_UP:
+    case ACTOR_COLLISION_DIRECTION_DOWN: {
+        s32 queryY = (direction == ACTOR_COLLISION_DIRECTION_UP ? minY : maxY) >> 4;
         result->minX = 0x7fffffff;
         result->maxX = 0;
         for (coordinate = minX; coordinate <= maxX; ++coordinate) {
-            if (direction == 8)
+            if (direction == ACTOR_COLLISION_DIRECTION_DOWN)
                 (void)ByteTileMapOwner_GetCell(collisionContext,
                                     coordinate >> 4, queryY, z);
             if (ActorCollision_TestPoint(collisionContext, coordinate >> 4, queryY,
@@ -61,7 +61,7 @@ void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *coll
                     result->maxX = collision_align_up_8(coordinate);
             }
         }
-        if (direction == 4) {
+        if (direction == ACTOR_COLLISION_DIRECTION_UP) {
             result->minY = collision_align_down_8(minY);
             result->maxY = collision_align_down_8(minY + 8);
         } else {
@@ -70,9 +70,9 @@ void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *coll
         }
         break;
     }
-    case 1:
-    case 2: {
-        s32 queryX = (direction == 1 ? minX : maxX) >> 4;
+    case ACTOR_COLLISION_DIRECTION_LEFT:
+    case ACTOR_COLLISION_DIRECTION_RIGHT: {
+        s32 queryX = (direction == ACTOR_COLLISION_DIRECTION_LEFT ? minX : maxX) >> 4;
         result->minY = 0x7fffffff;
         result->maxY = 0;
         for (coordinate = minY; coordinate <= maxY; ++coordinate) {
@@ -84,7 +84,7 @@ void ActorCollision_ScanDirectionalRange(ActorCollisionRange *result, void *coll
                     result->maxY = collision_align_up_8(coordinate);
             }
         }
-        if (direction == 1) {
+        if (direction == ACTOR_COLLISION_DIRECTION_LEFT) {
             result->minX = collision_align_down_8(minX);
             result->maxX = collision_align_down_8(minX + 8);
         } else {

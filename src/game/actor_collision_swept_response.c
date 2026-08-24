@@ -5,7 +5,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const s8 *Actor_GetCollisionBounds(void *actor);
 extern s32 Actor_GetCachedTerrainHeight(void *actor);
 #ifdef __cplusplus
 }
@@ -41,10 +40,12 @@ void ActorCollision_ResolveSweptMovement(void *actorPointer, void *collisionCont
         sweep.maxY = sweep.minY + height;
 
         if (deltaY < 0)
-            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 4, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep,
+                          ACTOR_COLLISION_DIRECTION_UP, z,
                           actorHeight);
         else
-            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 8, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep,
+                          ACTOR_COLLISION_DIRECTION_DOWN, z,
                           actorHeight);
         ActorCollision_ResolveRangeOverlap(actorPointer, 0, deltaY, &collision);
     }
@@ -56,10 +57,12 @@ void ActorCollision_ResolveSweptMovement(void *actorPointer, void *collisionCont
         sweep.maxY = sweep.minY + height;
 
         if (deltaX > 0)
-            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 2, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep,
+                          ACTOR_COLLISION_DIRECTION_RIGHT, z,
                           actorHeight);
         else
-            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep, 1, z,
+            ActorCollision_ScanDirectionalRange(&collision, collisionContext, &sweep,
+                          ACTOR_COLLISION_DIRECTION_LEFT, z,
                           actorHeight);
         ActorCollision_ResolveRangeOverlap(actorPointer, deltaX, 0, &collision);
     }

@@ -1,0 +1,11 @@
+{
+  "ActorCollision_ResolveCornerContacts": "ActorCollision_ResolveCornerContacts",
+  "ActorCollision_TestPoint": "ActorCollision_TestPoint",
+  "ActorCollision_ScanDirectionalRange": "ActorCollision_ScanDirectionalRange",
+  "ActorCollision_ResolveRangeOverlap": "ActorCollision_ResolveRangeOverlap",
+  "ActorBounds_GetWidth": "ActorBounds_GetWidth",
+  "ActorBounds_GetHeight": "ActorBounds_GetHeight",
+  "ActorCollision_ApplyOverlapResponse": "ActorCollision_ApplyOverlapResponse",
+  "ActorCollision_ResolveSweptMovement": "ActorCollision_ResolveSweptMovement",
+  "Actor_GetCollisionBounds": "Actor_GetCollisionBounds"
+}

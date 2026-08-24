@@ -8,14 +8,6 @@
  * this routine has no later observable read of their stack storage.
  */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern const s8 *Actor_GetCollisionBounds(void *actor);
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Copy the current position, construct and translate two rectangles from the
  * bound actor's signed-byte collision box and X/Y/Z coordinates, then clamp
@@ -31,7 +23,7 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
     VecFx32Object position;
     RectS16 lowerRectangle;
     RectS16 actorRectangle;
-    const s8 *collision;
+    const ActorCollisionBoundsS8 *collision;
     const GamePhaseRegion *bounds;
     s32 actorX;
     s32 actorY;
@@ -44,16 +36,16 @@ void ActorMotionAreaFollower_ClampToAreaBounds(ActorMotionAreaFollower *self, s3
     actorZ = *(s32 *)(actor + 0x24) >> 12;
     collision = Actor_GetCollisionBounds(actor);
 
-    lowerRectangle.left = collision[0];
+    lowerRectangle.left = collision->left;
     lowerRectangle.top = (s16)(-42 - actorZ);
-    lowerRectangle.right = collision[2];
+    lowerRectangle.right = collision->right;
     lowerRectangle.bottom = (s16)-actorZ;
     RectS16_Translate(&lowerRectangle, actorX, actorY);
 
-    actorRectangle.left = collision[0];
-    actorRectangle.top = (s16)(collision[1] - 8);
-    actorRectangle.right = collision[2];
-    actorRectangle.bottom = collision[3];
+    actorRectangle.left = collision->left;
+    actorRectangle.top = (s16)(collision->top - 8);
+    actorRectangle.right = collision->right;
+    actorRectangle.bottom = collision->bottom;
     RectS16_Translate(&actorRectangle, actorX, actorY);
 
     bounds = GamePhaseRegionTable_GetRegion(self->areaContext, area);
