@@ -23,7 +23,7 @@ extern s32 func_020bc874(u32 source, void *destination, u32 size,
                          u32 offset, u32 unused0, u32 unused1,
                          u32 operation, u32 retry_count, u32 async,
                          u32 *result);
-extern void func_02080e60(void);
+extern void RetailSaveContext_CardFatalErrorCallback(void);
 extern const u32 data_020ef330[];
 extern u8 data_021f5da0[];
 extern void *func_02003e20(u32 size, const char *tag, s32 alignment,
@@ -100,7 +100,7 @@ void *RetailSaveContext_Construct(void *context_pointer)
     *(u32 *)(context + 0x00) = 0;
     *(u32 *)(context + 0x14) = 0;
     CARD_Init();
-    func_020bd76c(func_02080e60);
+    func_020bd76c(RetailSaveContext_CardFatalErrorCallback);
     lock_id = OS_GetLockID();
     if (lock_id == 0xfffffffd)
         OS_Halt();
@@ -1005,4 +1005,3 @@ s32 RetailSaveContext_CopyRecord(void *context_pointer)
         return 0;
     }
 }
-

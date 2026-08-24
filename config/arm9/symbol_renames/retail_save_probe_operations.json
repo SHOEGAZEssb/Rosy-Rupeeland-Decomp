@@ -1,0 +1,7 @@
+{
+  "func_02080b10": "RetailSaveContext_BeginBackupCapacityProbe",
+  "func_02080b48": "RetailSaveContext_ProbeBackupCapacity",
+  "func_02080c5c": "RetailSaveContext_BeginRecordPairProbe",
+  "func_02080cc4": "RetailSaveContext_ProbeRecordPair",
+  "func_02080e60": "RetailSaveContext_CardFatalErrorCallback"
+}
