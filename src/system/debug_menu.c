@@ -23,7 +23,8 @@ extern void Sound_Play(void *context, int arg1, int soundId);
 
 extern void func_020ae920(void);
 extern void func_020ae934(void);
-extern void DebugPhaseSelector_Init(void *scene);
+typedef struct DebugPhaseSelector DebugPhaseSelector;
+extern DebugPhaseSelector *DebugPhaseSelector_Init(DebugPhaseSelector *scene);
 extern void func_02090b64(void *scene);
 extern void func_02091098(void *scene);
 extern void func_020966d8(void *scene);
@@ -147,7 +148,7 @@ int DebugMenu_Update(DebugMenu *menu)
         func_020ae934();
         scene = Heap_Alloc(0x4c, gDebugMenuScene0Tag, 4, &gHeapContext);
         if (scene != 0) {
-            DebugPhaseSelector_Init(scene);
+            DebugPhaseSelector_Init((DebugPhaseSelector *)scene);
         }
         break;
     case 1:

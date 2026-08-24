@@ -9,7 +9,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const u8 data_020d52f8[];
+extern const u8 gScenarioSelectMenuAllocationTag[];
 extern void DebugText_BeginFrame(void);
 extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
 extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
@@ -34,7 +34,7 @@ s32 DebugPhaseSelector_Update(DebugPhaseSelector *self)
     u16 pressed;
 
     DebugText_BeginFrame();
-    ActorRuntimeGridCanvas_DrawPage(&self->grid, self->column, self->row);
+    DebugPhaseGridCanvas_DrawPage(&self->grid, self->column, self->row);
     if (self->state == 0) {
         pressed = gSystemState.pads[0].pressed;
         if (pressed & 2) {
@@ -55,7 +55,7 @@ s32 DebugPhaseSelector_Update(DebugPhaseSelector *self)
             *subDisplayControl = (*subDisplayControl & ~0x1f00) |
                                  ((mode & ~4) << 8);
             DebugText_BeginFrame();
-            debugObject = Heap_Alloc(0xb8, (const char *)data_020d52f8, 4,
+            debugObject = Heap_Alloc(0xb8, (const char *)gScenarioSelectMenuAllocationTag, 4,
                                      &gHeapContext);
             if (debugObject != 0)
                 ScenarioSelectMenu_Construct(debugObject);
@@ -69,7 +69,7 @@ s32 DebugPhaseSelector_Update(DebugPhaseSelector *self)
             self->grid.pageIndex++;
             if (self->grid.pageIndex > 2)
                 self->grid.pageIndex = 0;
-            ActorRuntimeGridCanvas_DrawGrid(&self->grid);
+            DebugPhaseGridCanvas_DrawGrid(&self->grid);
         } else {
             u16 repeated = gSystemState.pads[0].repeated;
 

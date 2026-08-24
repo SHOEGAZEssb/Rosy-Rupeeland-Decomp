@@ -2,16 +2,16 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern DebugText_BeginFrame
-.extern ActorRuntimeGridCanvas_DrawPage
+.extern DebugPhaseGridCanvas_DrawPage
 .extern DebugMenu_Create
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern Heap_Alloc
 .extern ScenarioSelectMenu_Construct
-.extern ActorRuntimeGridCanvas_DrawGrid
+.extern DebugPhaseGridCanvas_DrawGrid
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GamePhase_Start
-.extern data_020d52f8
+.extern gScenarioSelectMenuAllocationTag
 .extern gHeapContext
 .extern gSystemState
 .global DebugPhaseSelector_Update
@@ -22,7 +22,7 @@ DebugPhaseSelector_Update:
     ldr r1, [r4, #0x2c]
     ldr r2, [r4, #0x30]
     add r0, r4, #0x34
-    bl ActorRuntimeGridCanvas_DrawPage
+    bl DebugPhaseGridCanvas_DrawPage
     ldr r0, [r4, #0x24]
     cmp r0, #0x0
     beq L_0200c394
@@ -112,7 +112,7 @@ L_0200c4a4:
     movgt r0, #0x0
     strgt r0, [r4, #0x48]
     add r0, r4, #0x34
-    bl ActorRuntimeGridCanvas_DrawGrid
+    bl DebugPhaseGridCanvas_DrawGrid
     b L_0200c59c
 L_0200c4d0:
     ldrh r0, [r1, #0xa]
@@ -176,7 +176,6 @@ L_0200c59c:
     ldmia sp!, {r3, r4, r5, pc}
 L_0200c5a4: .word gSystemState
 L_0200c5a8: .word 0x4001000
-L_0200c5ac: .word data_020d52f8
+L_0200c5ac: .word gScenarioSelectMenuAllocationTag
 L_0200c5b0: .word gHeapContext
 .size DebugPhaseSelector_Update, . - DebugPhaseSelector_Update
-

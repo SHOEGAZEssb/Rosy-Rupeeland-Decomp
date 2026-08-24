@@ -1,0 +1,17 @@
+{
+  "ActorRuntimeGridCanvas_Init": "DebugPhaseGridCanvas_Init",
+  "ActorRuntimeGridCanvas_SetupSubBg2": "DebugPhaseGridCanvas_SetupSubBg2",
+  "ActorRuntimeGridCanvas_DrawPage": "DebugPhaseGridCanvas_DrawPage",
+  "S32Rectangle_Translate": "RectS32_Translate",
+  "ActorRuntimeGridCanvas_DrawGrid": "DebugPhaseGridCanvas_DrawGrid",
+  "NdsDisplay_SetScreenSwap": "NdsDisplay_SetScreenSwap",
+  "DebugPhaseSelector_Init": "DebugPhaseSelector_Init",
+  "DebugPhaseSelector_Destroy": "DebugPhaseSelector_Destroy",
+  "DebugPhaseSelector_DestroyAndFree": "DebugPhaseSelector_DestroyAndFree",
+  "DebugPhaseSelector_Update": "DebugPhaseSelector_Update",
+  "DebugPhaseSelector_SelectTouchPoint": "DebugPhaseSelector_SelectTouchPoint",
+  "DebugPhaseSelector_RestoreSubBg2": "DebugPhaseSelector_RestoreSubBg2",
+  "data_020d52c8": "gDebugPhaseSelectorVTable",
+  "data_020d52f4": "gDebugPhaseGridLabelFormat",
+  "data_020d52f8": "gScenarioSelectMenuAllocationTag"
+}

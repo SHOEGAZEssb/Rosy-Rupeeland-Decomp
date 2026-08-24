@@ -19,7 +19,8 @@ extern void *gSceneManager;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *DebugPhaseSelector_Init(void *object);
+typedef struct DebugPhaseSelector DebugPhaseSelector;
+extern DebugPhaseSelector *DebugPhaseSelector_Init(DebugPhaseSelector *object);
 extern void *GamePhaseTransitionScene_Init(void *object);
 extern void *GamePhaseEffectScene_Init(void *object, s32 mode);
 extern void *GamePhaseApplyScene_Init(void *object, u32 a, u32 b, u32 c, u32 d);
@@ -79,7 +80,7 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         }
         object = allocRuntimeObject(0x4c);
         if (object != 0)
-            DebugPhaseSelector_Init(object);
+            DebugPhaseSelector_Init((DebugPhaseSelector *)object);
         return 1;
     }
 

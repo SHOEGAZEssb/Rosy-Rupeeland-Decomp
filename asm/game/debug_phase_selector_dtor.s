@@ -4,7 +4,7 @@
 .extern func_020ae90c
 .extern SoftwareCanvas_Destroy
 .extern Scene_Destroy
-.extern data_020d52c8
+.extern gDebugPhaseSelectorVTable
 .global DebugPhaseSelector_Destroy
 DebugPhaseSelector_Destroy:
     stmdb sp!, {r4, lr}
@@ -18,6 +18,5 @@ DebugPhaseSelector_Destroy:
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200c324: .word data_020d52c8
+L_0200c324: .word gDebugPhaseSelectorVTable
 .size DebugPhaseSelector_Destroy, . - DebugPhaseSelector_Destroy
-

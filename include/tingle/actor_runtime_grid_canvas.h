@@ -1,25 +1,26 @@
 #ifndef TINGLE_ACTOR_RUNTIME_GRID_CANVAS_H
 #define TINGLE_ACTOR_RUNTIME_GRID_CANVAS_H
 
+#include "tingle/rect_s32.h"
 #include "tingle/software_canvas.h"
 
-typedef struct ActorRuntimeGridCanvas {
+typedef struct DebugPhaseGridCanvas {
     SoftwareCanvas base;
     s32 pageIndex;
-} ActorRuntimeGridCanvas;
+} DebugPhaseGridCanvas;
 
-typedef char ActorRuntimeGridCanvasSizeCheck[
-    sizeof(ActorRuntimeGridCanvas) == 0x18 ? 1 : -1];
+typedef char DebugPhaseGridCanvasSizeCheck[
+    sizeof(DebugPhaseGridCanvas) == 0x18 ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-ActorRuntimeGridCanvas *ActorRuntimeGridCanvas_Init(ActorRuntimeGridCanvas *self);
-void ActorRuntimeGridCanvas_SetupSubBg2(ActorRuntimeGridCanvas *self);
-void ActorRuntimeGridCanvas_DrawGrid(ActorRuntimeGridCanvas *self);
-void ActorRuntimeGridCanvas_DrawPage(ActorRuntimeGridCanvas *self, s32 row, s32 column);
-void S32Rectangle_Translate(s32 *rectangle, s32 deltaX, s32 deltaY);
+DebugPhaseGridCanvas *DebugPhaseGridCanvas_Init(DebugPhaseGridCanvas *self);
+void DebugPhaseGridCanvas_SetupSubBg2(DebugPhaseGridCanvas *self);
+void DebugPhaseGridCanvas_DrawGrid(DebugPhaseGridCanvas *self);
+void DebugPhaseGridCanvas_DrawPage(DebugPhaseGridCanvas *self,
+                                   s32 selectedColumn, s32 selectedRow);
 void NdsDisplay_SetScreenSwap(s32 displaySelect);
 
 #ifdef __cplusplus

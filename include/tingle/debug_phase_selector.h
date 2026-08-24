@@ -11,7 +11,7 @@ typedef struct DebugPhaseSelector {
     s32 selectedPhase;
     s32 column;
     s32 row;
-    ActorRuntimeGridCanvas grid;
+    DebugPhaseGridCanvas grid;
 } DebugPhaseSelector;
 
 typedef char DebugPhaseSelectorSizeCheck[
@@ -27,6 +27,8 @@ DebugPhaseSelector *DebugPhaseSelector_DestroyAndFree(DebugPhaseSelector *self);
 s32 DebugPhaseSelector_Update(DebugPhaseSelector *self);
 s32 DebugPhaseSelector_SelectTouchPoint(DebugPhaseSelector *self, const TouchPoint *point);
 s32 DebugPhaseSelector_RestoreSubBg2(DebugPhaseSelector *self);
+
+extern SceneVTable gDebugPhaseSelectorVTable;
 
 #ifdef __cplusplus
 }

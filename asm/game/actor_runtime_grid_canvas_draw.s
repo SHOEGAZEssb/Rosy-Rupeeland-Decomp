@@ -1,13 +1,13 @@
 ; Matching retail form; see src/game/actor_runtime_grid_canvas_draw.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern S32Rectangle_Translate
+.extern RectS32_Translate
 .extern SoftwareCanvas_DrawFormattedText
 .extern GraphicsSpriteCanvas_FillRect
-.extern data_020d52f4
+.extern gDebugPhaseGridLabelFormat
 .extern gDebugFont
-.global ActorRuntimeGridCanvas_DrawPage
-ActorRuntimeGridCanvas_DrawPage:
+.global DebugPhaseGridCanvas_DrawPage
+DebugPhaseGridCanvas_DrawPage:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x18
     mov r4, #0x0
@@ -32,11 +32,11 @@ L_0200c03c:
     mov r2, r6
     str r11, [sp, #0x8]
     str r11, [sp, #0xc]
-    bl S32Rectangle_Translate
+    bl RectS32_Translate
     add r0, sp, #0x8
     mov r1, #0x9
     mov r2, #0x6
-    bl S32Rectangle_Translate
+    bl RectS32_Translate
     add r0, r5, r7
     add r3, r0, #0x1
     ldr r2, [r10, #0x14]
@@ -86,7 +86,6 @@ L_0200c03c:
     bl GraphicsSpriteCanvas_FillRect
     add sp, sp, #0x18
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-L_0200c13c: .word data_020d52f4
+L_0200c13c: .word gDebugPhaseGridLabelFormat
 L_0200c140: .word gDebugFont
-.size ActorRuntimeGridCanvas_DrawPage, . - ActorRuntimeGridCanvas_DrawPage
-
+.size DebugPhaseGridCanvas_DrawPage, . - DebugPhaseGridCanvas_DrawPage

@@ -7,7 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d52c8;
 extern void GXx_SetMasterBrightness_(volatile void *registerAddress,
                                      s32 brightness);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As);
@@ -30,17 +29,17 @@ DebugPhaseSelector *DebugPhaseSelector_Init(DebugPhaseSelector *self)
     volatile u32 *displayControl = (volatile u32 *)0x04000000;
 
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d52c8;
+    self->base.vtable = &gDebugPhaseSelectorVTable;
     self->state = 0;
     self->selectedPhase = -1;
-    ActorRuntimeGridCanvas_Init(&self->grid);
+    DebugPhaseGridCanvas_Init(&self->grid);
     GXx_SetMasterBrightness_((volatile void *)0x0400006c, -16);
     GXx_SetMasterBrightness_((volatile void *)0x0400106c, -16);
     GX_SetGraphicsMode(1, 0, 0);
     *displayControl = (*displayControl & ~0x1f00) | 0x1000;
     self->column = 0;
     self->row = 0;
-    ActorRuntimeGridCanvas_SetupSubBg2(&self->grid);
+    DebugPhaseGridCanvas_SetupSubBg2(&self->grid);
     DisplayBrightness_StartMainTransition(1, 0x10);
     DisplayBrightness_StartSubTransition(1, 0x10);
     GameWork_Reset();
@@ -54,7 +53,7 @@ DebugPhaseSelector *DebugPhaseSelector_Init(DebugPhaseSelector *self)
  */
 DebugPhaseSelector *DebugPhaseSelector_Destroy(DebugPhaseSelector *self)
 {
-    self->base.vtable = &data_020d52c8;
+    self->base.vtable = &gDebugPhaseSelectorVTable;
     func_020ae90c();
     SoftwareCanvas_Destroy(&self->grid.base);
     Scene_Destroy(&self->base);

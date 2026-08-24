@@ -2,15 +2,15 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern Scene_Init
-.extern ActorRuntimeGridCanvas_Init
+.extern DebugPhaseGridCanvas_Init
 .extern GXx_SetMasterBrightness_
 .extern GX_SetGraphicsMode
-.extern ActorRuntimeGridCanvas_SetupSubBg2
+.extern DebugPhaseGridCanvas_SetupSubBg2
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern GameWork_Reset
 .extern NdsDisplay_SetScreenSwap
-.extern data_020d52c8
+.extern gDebugPhaseSelectorVTable
 .global DebugPhaseSelector_Init
 DebugPhaseSelector_Init:
     stmdb sp!, {r4, lr}
@@ -23,7 +23,7 @@ DebugPhaseSelector_Init:
     sub r1, r0, #0x1
     add r0, r4, #0x34
     str r1, [r4, #0x28]
-    bl ActorRuntimeGridCanvas_Init
+    bl DebugPhaseGridCanvas_Init
     ldr r0, L_0200c2f0
     mvn r1, #0xf
     bl GXx_SetMasterBrightness_
@@ -43,7 +43,7 @@ DebugPhaseSelector_Init:
     str r0, [r4, #0x2c]
     str r0, [r4, #0x30]
     add r0, r4, #0x34
-    bl ActorRuntimeGridCanvas_SetupSubBg2
+    bl DebugPhaseGridCanvas_SetupSubBg2
     mov r0, #0x1
     mov r1, #0x10
     bl DisplayBrightness_StartMainTransition
@@ -55,8 +55,7 @@ DebugPhaseSelector_Init:
     bl NdsDisplay_SetScreenSwap
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200c2ec: .word data_020d52c8
+L_0200c2ec: .word gDebugPhaseSelectorVTable
 L_0200c2f0: .word 0x400006c
 L_0200c2f4: .word 0x400106c
 .size DebugPhaseSelector_Init, . - DebugPhaseSelector_Init
-
