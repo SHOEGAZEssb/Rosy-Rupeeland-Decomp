@@ -4,9 +4,15 @@
 #include "tingle/types.h"
 
 typedef struct AnimationBindingHandle {
-    u8 unknown00[0x24];
+    u8 opaque00[0x24];
     u16 flags24;
+    u8 opaque26[6];
+    s16 x2c;
+    s16 y2e;
 } AnimationBindingHandle;
+
+typedef char AnimationBindingHandleSizeCheck[
+    sizeof(AnimationBindingHandle) == 0x30 ? 1 : -1];
 
 typedef struct AnimationBinding {
     AnimationBindingHandle *handle;

@@ -29,7 +29,7 @@ void UtilAnimationResource_UpdatePosition(UtilAnimationResource *self, const Tou
 
 /*
  * Show and position handle when -64 < x < 320 and -50 < y < 242: clear flag
- * bit 3 and write the low 16 bits of x/y at handle offsets 0x2c/0x2e. Outside
+ * bit 3 and write the low 16 bits of x/y to the handle coordinates. Outside
  * that expanded viewport, set bit 3 and leave coordinates unchanged. self is
  * an ABI parameter only; the manager handle is the sole modified state.
  */
@@ -42,8 +42,8 @@ void UtilAnimationResource_ApplyHandlePosition(UtilAnimationResource *self,
     if ((s32)position->x > -64 && (s32)position->x < 320 &&
         (s32)position->y > -50 && (s32)position->y < 242) {
         handle->flags24 &= (u16)~8;
-        *(u16 *)((u8 *)handle + 0x2c) = position->x;
-        *(u16 *)((u8 *)handle + 0x2e) = position->y;
+        handle->x2c = position->x;
+        handle->y2e = position->y;
     } else {
         handle->flags24 |= 8;
     }

@@ -1,0 +1,9 @@
+{
+  "UtilAnimationResource_Init": "UtilAnimationResource_Init",
+  "TouchPoint_InitZero": "TouchPoint_InitZero",
+  "UtilAnimationResource_Destroy": "UtilAnimationResource_Destroy",
+  "UtilAnimationResource_DestroyAndFree": "UtilAnimationResource_DestroyAndFree",
+  "UtilAnimationResource_UpdatePosition": "UtilAnimationResource_UpdatePosition",
+  "UtilAnimationResource_ApplyHandlePosition": "UtilAnimationResource_ApplyHandlePosition",
+  "gUtilAnimationResourceVTable": "gUtilAnimationResourceVTable"
+}
