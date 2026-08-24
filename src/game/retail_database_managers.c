@@ -391,8 +391,27 @@ void *func_02079fc4(void *language_manager, u16 id)
     return data_020c6d18;
 }
 
-/* Load the 0x62-byte localized record database at retail 0x02079D78. */
-void func_02079d78(void *manager_pointer)
+/* Per-record destructor callback; localized records own inline text only. */
+void RetailTextRecord_DestroyNoOp(void *record_pointer)
+{
+    (void)record_pointer;
+}
+
+/* Release a header-prefixed array of 0x62-byte localized text records. */
+void RetailTextTable_Destroy(void *table_pointer)
+{
+    u8 *table = (u8 *)table_pointer;
+    u8 *records = *(u8 **)table;
+
+    if (records != 0) {
+        Heap_Free(records - 8);
+        *(void **)table = 0;
+    }
+    *(u32 *)(table + 4) = 0;
+}
+
+/* Load the aggregate localized text manager at retail 0x02079D78. */
+void RetailTextDatabaseManager_Load(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     GameFile file;
@@ -407,6 +426,8 @@ void func_02079d78(void *manager_pointer)
     GameFile_Read(&file, header, sizeof(header));
     count = ReadU16(header);
     *(u32 *)(manager + 0x1b8) = count;
+    if (*(void **)(manager + 0x1b0) != 0)
+        RetailTextTable_Destroy(manager + 0x1b0);
     records = (u8 *)Heap_Alloc(count * 0x62 + 8, data_020ea5c0, 4,
                                &gHeapContext) + 8;
     *(u32 *)(records - 8) = 0x62;

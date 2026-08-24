@@ -1,0 +1,5 @@
+{
+  "func_02079d78": "RetailTextDatabaseManager_Load",
+  "func_02079efc": "RetailTextTable_Destroy",
+  "func_02079f38": "RetailTextRecord_DestroyNoOp"
+}
