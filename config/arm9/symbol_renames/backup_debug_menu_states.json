@@ -5,5 +5,7 @@
   "func_020816c4": "BackupDebugMenu_UpdateLoadRecord",
   "func_02081a74": "BackupDebugMenu_UpdateCapacityProbe",
   "func_02081bec": "BackupDebugMenu_UpdateDeleteRecord",
-  "func_02081ecc": "BackupDebugMenu_UpdateCopyRecord"
+  "func_02081ecc": "BackupDebugMenu_UpdateCopyRecord",
+  "func_020822b8": "BackupDebugMenu_UpdateDestroyRecordBlock",
+  "func_02082598": "BackupDebugMenu_UpdateDestroyBlockHeader"
 }
