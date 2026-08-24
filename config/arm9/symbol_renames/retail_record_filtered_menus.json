@@ -1,0 +1,10 @@
+{
+  "func_0207d2e4": "RetailRecordNonTypeOneMenu_Construct",
+  "func_0207d424": "RetailRecordNonTypeOneMenu_Update",
+  "func_0207d6c0": "RetailRecordNonTypeOneMenu_Delete",
+  "func_0207d6fc": "RetailRecordNonTypeOneMenu_NoOp",
+  "func_0207d700": "RetailRecordTypeOneMenu_Construct",
+  "func_0207d838": "RetailRecordTypeOneMenu_Update",
+  "func_0207dad4": "RetailRecordTypeOneMenu_Delete",
+  "func_0207db10": "RetailRecordTypeOneMenu_NoOp"
+}
