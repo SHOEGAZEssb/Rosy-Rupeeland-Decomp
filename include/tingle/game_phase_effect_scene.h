@@ -6,14 +6,23 @@
 #include "tingle/scene.h"
 
 /* Short-lived sprite effect used by selected game-phase transition modes. */
+typedef struct GamePhaseEffectUpdateMethod {
+    u32 functionOrVtableOffset;
+    s32 thisAdjustment;
+} GamePhaseEffectUpdateMethod;
+
 typedef struct GamePhaseEffectScene {
     Scene base;
-    AnimationResource *resources;
+    AnimationResource *animationResource;
     GraphicsSpriteState *sprite;
-    u32 callbackWord;
-    s32 callbackThisAdjust;
-    s32 timer;
+    GamePhaseEffectUpdateMethod updateMethod;
+    s32 riseFrameCounter;
 } GamePhaseEffectScene;
+
+typedef char GamePhaseEffectUpdateMethodSizeCheck[
+    sizeof(GamePhaseEffectUpdateMethod) == 8 ? 1 : -1];
+typedef char GamePhaseEffectSceneSizeCheck[
+    sizeof(GamePhaseEffectScene) == 0x38 ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
@@ -25,6 +34,9 @@ GamePhaseEffectScene *GamePhaseEffectScene_DestroyAndFree(GamePhaseEffectScene *
 s32 GamePhaseEffectScene_Update(GamePhaseEffectScene *self);
 s32 GamePhaseEffectScene_WaitForAnimation(GamePhaseEffectScene *self);
 s32 GamePhaseEffectScene_RiseAfterAnimation(GamePhaseEffectScene *self);
+
+extern SceneVTable gGamePhaseEffectSceneVTable;
+extern const GamePhaseEffectUpdateMethod gGamePhaseEffectUpdateMethods[];
 
 #ifdef __cplusplus
 }

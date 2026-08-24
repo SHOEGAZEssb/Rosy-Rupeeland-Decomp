@@ -1,0 +1,11 @@
+{
+  "GamePhaseEffectScene_Init": "GamePhaseEffectScene_Init",
+  "GamePhaseEffectScene_Destroy": "GamePhaseEffectScene_Destroy",
+  "GamePhaseEffectScene_DestroyAndFree": "GamePhaseEffectScene_DestroyAndFree",
+  "GamePhaseEffectScene_Update": "GamePhaseEffectScene_Update",
+  "GamePhaseEffectScene_WaitForAnimation": "GamePhaseEffectScene_WaitForAnimation",
+  "GamePhaseEffectScene_RiseAfterAnimation": "GamePhaseEffectScene_RiseAfterAnimation",
+  "data_020d53b8": "gGamePhaseEffectUpdateMethods",
+  "data_020d5400": "gGamePhaseEffectSceneVTable",
+  "data_020d542c": "gGamePhaseEffectAnimationResourceAllocationTag"
+}

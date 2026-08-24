@@ -1,6 +1,7 @@
 #include "tingle/game_phase_effect_scene.h"
 #include "tingle/graphics_sprite_create.h"
 #include "tingle/graphics_sprite_group.h"
+#include "tingle/game_phase_runtime.h"
 #include "tingle/heap.h"
 
 /* Build and run the sprite effects used by several phase-change modes. */
@@ -8,13 +9,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5400;
-extern const u32 data_020d53b8[];
-extern const u32 data_020cdc1c[];
-extern const u8 data_020d542c[];
-extern void *gGamePhaseRuntime;
+extern const GamePhaseEffectUpdateMethod data_020cdc1c[];
+extern const u8 gGamePhaseEffectAnimationResourceAllocationTag[];
+extern GamePhaseRuntime *gGamePhaseRuntime;
 extern void *gSoundContext;
-extern void *GamePhaseRuntime_GetActorCollection(void *runtime, s32 index);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void);
 extern void Sound_Play(void *context, s32 bank, s32 soundId, s32 parameter);
 #ifdef __cplusplus
@@ -27,7 +25,8 @@ typedef s32 (*EffectUpdate)(GamePhaseEffectScene *self);
 static AnimationResource *createResources(void *resource1, void *resource2)
 {
     AnimationResource *result = (AnimationResource *)Heap_Alloc(
-        0x10, (const char *)data_020d542c, 4, &gHeapContext);
+        0x10, (const char *)gGamePhaseEffectAnimationResourceAllocationTag, 4,
+        &gHeapContext);
     if (result != 0)
         AnimationResource_Init(result, (void *)0x1001, resource1, resource2);
     return result;
@@ -46,59 +45,55 @@ GamePhaseEffectScene *GamePhaseEffectScene_Init(GamePhaseEffectScene *self, s32 
     GraphicsSpriteGroup *group;
 
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5400;
-    self->timer = 0;
+    self->base.vtable = &gGamePhaseEffectSceneVTable;
+    self->riseFrameCounter = 0;
     source = *(GraphicsSpriteState **)(*(u8 **)(runtime + 0x2ea4) + 0x54);
 
     switch (mode) {
     case 1:
-        self->resources = createResources((void *)0x100b, (void *)0x100c);
-        GamePhaseRuntime_GetActorCollection(runtime, 1);
+        self->animationResource = createResources((void *)0x100b, (void *)0x100c);
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         group = ActorCollection_GetSpriteGroup();
         self->sprite = GraphicsSpriteState_Create(group,
-            (const GraphicsSpriteResourceDescriptor *)self->resources,
+            (const GraphicsSpriteResourceDescriptor *)self->animationResource,
             0x24, source->oamPriority, source->sortOrder, 4, 2);
-        self->callbackWord = data_020d53b8[0];
-        self->callbackThisAdjust = (s32)data_020d53b8[1];
+        self->updateMethod = gGamePhaseEffectUpdateMethods[0];
         break;
     case 2:
-        self->resources = createResources((void *)0x101b, (void *)0x101c);
-        GamePhaseRuntime_GetActorCollection(runtime, 1);
+        self->animationResource = createResources((void *)0x101b, (void *)0x101c);
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         group = ActorCollection_GetSpriteGroup();
         self->sprite = GraphicsSpriteState_Create(group,
-            (const GraphicsSpriteResourceDescriptor *)self->resources,
+            (const GraphicsSpriteResourceDescriptor *)self->animationResource,
             0x35, source->oamPriority, source->sortOrder, 4, 2);
-        self->callbackWord = data_020d53b8[2];
-        self->callbackThisAdjust = (s32)data_020d53b8[3];
+        self->updateMethod = gGamePhaseEffectUpdateMethods[1];
         break;
     case 4:
-        self->resources = createResources((void *)0x1003, (void *)0x1004);
-        GamePhaseRuntime_GetActorCollection(runtime, 1);
+        self->animationResource = createResources((void *)0x1003, (void *)0x1004);
+        GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
         group = ActorCollection_GetSpriteGroup();
         self->sprite = GraphicsSpriteState_Create(group,
-            (const GraphicsSpriteResourceDescriptor *)self->resources,
+            (const GraphicsSpriteResourceDescriptor *)self->animationResource,
             0x16, source->oamPriority, source->sortOrder, 4, 2);
-        self->callbackWord = data_020d53b8[6];
-        self->callbackThisAdjust = (s32)data_020d53b8[7];
+        self->updateMethod = gGamePhaseEffectUpdateMethods[3];
         break;
     default:
-        self->callbackWord = data_020cdc1c[0];
-        self->callbackThisAdjust = (s32)data_020cdc1c[1];
+        self->updateMethod = data_020cdc1c[0];
         break;
     }
 
-    self->sprite->field_2c = source->field_2c;
-    self->sprite->field_2e = source->field_2e;
+    self->sprite->screenX = source->screenX;
+    self->sprite->screenY = source->screenY;
     return self;
 }
 
 /* Remove the sprite and owned resources, destroy the Scene, and return self. */
 GamePhaseEffectScene *GamePhaseEffectScene_Destroy(GamePhaseEffectScene *self)
 {
-    self->base.vtable = &data_020d5400;
+    self->base.vtable = &gGamePhaseEffectSceneVTable;
     GraphicsSpriteGroup_ReleaseState(self->sprite->group, self->sprite);
-    if (self->resources != 0)
-        self->resources->vtable->destroy(self->resources);
+    if (self->animationResource != 0)
+        self->animationResource->vtable->destroy(self->animationResource);
     Scene_Destroy(&self->base);
     return self;
 }
@@ -106,10 +101,10 @@ GamePhaseEffectScene *GamePhaseEffectScene_Destroy(GamePhaseEffectScene *self)
 /* Destroy the effect and then free its Scene allocation through the game heap. */
 GamePhaseEffectScene *GamePhaseEffectScene_DestroyAndFree(GamePhaseEffectScene *self)
 {
-    self->base.vtable = &data_020d5400;
+    self->base.vtable = &gGamePhaseEffectSceneVTable;
     GraphicsSpriteGroup_ReleaseState(self->sprite->group, self->sprite);
-    if (self->resources != 0)
-        self->resources->vtable->destroy(self->resources);
+    if (self->animationResource != 0)
+        self->animationResource->vtable->destroy(self->animationResource);
     Scene_Destroy(&self->base);
     Heap_Free(self);
     return self;
@@ -124,13 +119,14 @@ s32 GamePhaseEffectScene_Update(GamePhaseEffectScene *self)
 {
     EffectUpdate callback;
     GamePhaseEffectScene *adjusted = (GamePhaseEffectScene *)(
-        (u8 *)self + (self->callbackThisAdjust >> 1));
+        (u8 *)self + (self->updateMethod.thisAdjustment >> 1));
 
-    if (self->callbackThisAdjust & 1) {
+    if (self->updateMethod.thisAdjustment & 1) {
         u8 *vtable = *(u8 **)adjusted;
-        callback = *(EffectUpdate *)(vtable + self->callbackWord);
+        callback = *(EffectUpdate *)(
+            vtable + self->updateMethod.functionOrVtableOffset);
     } else {
-        callback = (EffectUpdate)self->callbackWord;
+        callback = (EffectUpdate)self->updateMethod.functionOrVtableOffset;
     }
 
     {
@@ -189,12 +185,13 @@ s32 GamePhaseEffectScene_RiseAfterAnimation(GamePhaseEffectScene *self)
     }
     if (self->base.value08 == 2) {
         GraphicsSpriteState *source;
-        self->timer++;
-        if (self->timer > 90)
+        self->riseFrameCounter++;
+        if (self->riseFrameCounter > 90)
             return 1;
         source = *(GraphicsSpriteState **)(
             *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4) + 0x54);
-        self->sprite->field_2e = (s16)(source->field_2e - self->timer / 2);
+        self->sprite->screenY =
+            (s16)(source->screenY - self->riseFrameCounter / 2);
     }
     return 0;
 }

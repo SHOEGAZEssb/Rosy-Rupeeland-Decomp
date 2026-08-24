@@ -28,7 +28,9 @@ extern GamePhaseApplyScene *GamePhaseApplyScene_Init(
 typedef struct GamePhaseTransitionScene GamePhaseTransitionScene;
 extern GamePhaseTransitionScene *GamePhaseTransitionScene_Init(
     GamePhaseTransitionScene *object);
-extern void *GamePhaseEffectScene_Init(void *object, s32 mode);
+typedef struct GamePhaseEffectScene GamePhaseEffectScene;
+extern GamePhaseEffectScene *GamePhaseEffectScene_Init(
+    GamePhaseEffectScene *object, s32 mode);
 extern void *func_ov059_0220fd20(void *object, s32 mode, s32 value);
 extern void *func_0206ec68(void *object);
 extern s32 OverlayManager_GetGlobal(void);
@@ -99,7 +101,8 @@ s32 GamePhaseRuntime_Update(GamePhaseRuntime *self)
         case 4:
             object = allocRuntimeObject(0x38);
             if (object != 0)
-                GamePhaseEffectScene_Init(object, *(s32 *)(b + 0x30e4));
+                GamePhaseEffectScene_Init((GamePhaseEffectScene *)object,
+                                          *(s32 *)(b + 0x30e4));
             break;
         case 1:
             OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x40);

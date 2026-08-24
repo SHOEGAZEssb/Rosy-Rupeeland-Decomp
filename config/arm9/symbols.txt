@@ -6809,11 +6809,11 @@ data_020d5334 kind:data(any) addr:0x020d5334
 gGamePhaseTransitionSceneVTable kind:data(any) addr:0x020d5350
 gGamePhaseApplySceneVTable kind:data(any) addr:0x020d5384
 gGamePhaseResumeSceneAllocationTag kind:data(any) addr:0x020d53b0
-data_020d53b8 kind:data(any) addr:0x020d53b8
+gGamePhaseEffectUpdateMethods kind:data(any) addr:0x020d53b8
 data_020d53d8 kind:data(any) addr:0x020d53d8
 data_020d53e4 kind:data(any) addr:0x020d53e4
-data_020d5400 kind:data(any) addr:0x020d5400
-data_020d542c kind:data(any) addr:0x020d542c
+gGamePhaseEffectSceneVTable kind:data(any) addr:0x020d5400
+gGamePhaseEffectAnimationResourceAllocationTag kind:data(any) addr:0x020d542c
 data_020d543c kind:data(any) addr:0x020d543c
 data_020d5448 kind:data(any) addr:0x020d5448
 data_020d5460 kind:data(any) addr:0x020d5460

@@ -6,9 +6,9 @@
 .extern Scene_Destroy
 .extern Scene_Init
 .extern Sound_Play
-.extern data_020d53b8
-.extern data_020d5400
-.extern data_020d542c
+.extern gGamePhaseEffectUpdateMethods
+.extern gGamePhaseEffectSceneVTable
+.extern gGamePhaseEffectAnimationResourceAllocationTag
 .extern data_020cdc1c
 .extern gGamePhaseRuntime
 .extern AnimationResource_Init
@@ -168,12 +168,12 @@ L_0200cc00:
     strh r3, [r2, #0x2e]
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}
-L_0200cc20: .word data_020d5400
+L_0200cc20: .word gGamePhaseEffectSceneVTable
 L_0200cc24: .word gGamePhaseRuntime
-L_0200cc28: .word data_020d542c
+L_0200cc28: .word gGamePhaseEffectAnimationResourceAllocationTag
 L_0200cc2c: .word gHeapContext
 L_0200cc30: .word 0x100b
-L_0200cc34: .word data_020d53b8
+L_0200cc34: .word gGamePhaseEffectUpdateMethods
 L_0200cc38: .word 0x101b
 L_0200cc3c: .word 0x1003
 L_0200cc40: .word data_020cdc1c
@@ -199,7 +199,7 @@ L_0200cc78:
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200cc88: .word data_020d5400
+L_0200cc88: .word gGamePhaseEffectSceneVTable
     .size GamePhaseEffectScene_Destroy, . - GamePhaseEffectScene_Destroy
 
     .global GamePhaseEffectScene_DestroyAndFree
@@ -224,7 +224,7 @@ L_0200ccc0:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200ccd8: .word data_020d5400
+L_0200ccd8: .word gGamePhaseEffectSceneVTable
     .size GamePhaseEffectScene_DestroyAndFree, . - GamePhaseEffectScene_DestroyAndFree
 
     .global GamePhaseEffectScene_Update
