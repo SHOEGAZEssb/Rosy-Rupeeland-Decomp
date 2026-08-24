@@ -486,7 +486,9 @@ void func_0207e270(void *self)
     PopulateRecordCategory((u8 *)self, 0x23, 0xffff);
 }
 
-void func_0207aae4(void *self)
+/* Populate every database record whose category matches and whose metadata
+ * type is zero. Category storage is borrowed and preallocated. */
+void RetailRecordCategory_PopulateTypeZeroRecords(void *self)
 {
     PopulateRecordCategory((u8 *)self, 0xffff, 0xffff);
 }
@@ -840,6 +842,14 @@ void RetailRecordSlot_Init(u8 *slot)
     *(u32 *)(slot + 0x0c) = 0;
 }
 
+/* Free one heap-owned record slot and return its original address, matching
+ * the retail deleting-destructor ABI. */
+void *RetailRecordSlot_Delete(void *slot)
+{
+    Heap_Free(slot);
+    return slot;
+}
+
 /* Build a temporary slot for `id` and dispatch it to the record-selected
  * manager category encoded in record byte +0x0c. */
 void RetailRecordManager_InsertRecordById(void *manager_pointer, u16 id)
@@ -856,7 +866,9 @@ void RetailRecordManager_InsertRecordById(void *manager_pointer, u16 id)
                   slot);
 }
 
-static void InitializeRecordCategory(u8 *category, u32 category_index)
+/* Construct a preallocated 0x670-byte category with two empty 50-slot
+ * channels. The caller retains ownership and supplies the category index. */
+void *RetailRecordCategory_Construct(u8 *category, u32 category_index)
 {
     u32 index;
 
@@ -875,6 +887,16 @@ static void InitializeRecordCategory(u8 *category, u32 category_index)
     *(u32 *)(category + 0x664) = 0;
     *(u8 **)(category + 0x668) = category;
     *(u32 *)(category + 0x66c) = 1;
+    return category;
+}
+
+/* Empty both category channels without modifying their preallocated slots. */
+void RetailRecordCategory_ClearChannels(void *category_pointer)
+{
+    u8 *category = (u8 *)category_pointer;
+
+    *(u32 *)(category + 8) = 0;
+    *(u32 *)(category + 0x0c) = 0;
 }
 
 static void *CreateRecordCategory(u32 category_index)
@@ -892,7 +914,7 @@ static void *CreateRecordCategory(u32 category_index)
         return 0;
     if (category_index >= 18)
         category_index = 8;
-    InitializeRecordCategory(category, category_index);
+    RetailRecordCategory_Construct(category, category_index);
     *(const void **)category = vtables[category_index];
     return category;
 }
@@ -925,7 +947,7 @@ void *RetailRecordManager_Construct(void *manager_pointer)
         else if (index == 8)
             func_0207b55c(category);
         else
-            func_0207aae4(category);
+            RetailRecordCategory_PopulateTypeZeroRecords(category);
     }
     *(u32 *)(manager + 0xcc8) = 0;
     return manager;

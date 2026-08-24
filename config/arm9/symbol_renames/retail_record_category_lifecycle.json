@@ -1,0 +1,6 @@
+{
+  "func_0207a9fc": "RetailRecordSlot_Delete",
+  "func_0207aa10": "RetailRecordCategory_Construct",
+  "func_0207aac4": "RetailRecordCategory_ClearChannels",
+  "func_0207aae4": "RetailRecordCategory_PopulateTypeZeroRecords"
+}
