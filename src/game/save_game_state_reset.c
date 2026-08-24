@@ -484,8 +484,8 @@ void RuntimeRecordTable_SaveActiveState(void *state_pointer, s32 mode)
     }
 }
 
-/* Save-category reset callback at retail 0x0207E45C. */
-void func_0207e45c(void *category_pointer)
+/* Populate category nine while deferring its special record 0x98. */
+void RetailRecordCategory9_PopulateTypeZeroRecords(void *category_pointer)
 {
     u8 *category = (u8 *)category_pointer;
     u8 *actors = *(u8 **)data_021f5138;
