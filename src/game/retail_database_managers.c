@@ -248,8 +248,14 @@ void LanguageLookupDatabase_Load(void *manager_pointer)
     }
 }
 
+/* Release the selection database's owned 0x66-byte record array. */
+void RetailSelectionDatabase_Destroy(void *manager_pointer)
+{
+    ReleaseArray(manager_pointer);
+}
+
 /* Load the localized 0x66-byte selection database at retail 0x02079264. */
-void func_02079264(void *manager_pointer)
+void RetailSelectionDatabase_Load(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     FSFile *file = (FSFile *)(manager + 0x0c);
@@ -268,7 +274,7 @@ void func_02079264(void *manager_pointer)
     count = ReadU16(header);
     *(u32 *)(manager + 8) = count;
     if (*(void **)manager != 0)
-        ReleaseArray(manager);
+        RetailSelectionDatabase_Destroy(manager);
     records = Heap_Alloc(count * 0x66, data_020ea5d8, 4, &gHeapContext);
     *(u8 **)manager = records;
     *(u32 *)(manager + 4) = count;
@@ -394,7 +400,7 @@ void func_02079d78(void *manager_pointer)
         *(u16 *)(records + (count / 2) * 0x62);
     LanguageLookupDatabase_Load(manager);
     func_020794a4(manager + 0x88);
-    func_02079264(manager + 0x154);
+    RetailSelectionDatabase_Load(manager + 0x154);
     GameFile_Destroy(&file);
 }
 
