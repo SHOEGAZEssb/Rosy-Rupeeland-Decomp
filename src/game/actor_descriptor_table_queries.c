@@ -15,7 +15,7 @@ extern s32 ActorDescriptorState_FindEligibleEntry(void *state);
 extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
 extern void func_02071ee0(void *resource, void *manager, u32 first,
                           u32 second, u32 third);
-extern void func_02078dd4(void *manager, u16 id, void *destination,
+extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern u8 data_021e9ad0[];
 extern u8 data_021f4090[];
@@ -160,7 +160,7 @@ void *ActorDescriptor_LoadDetailResource(void *self)
         metadata = *(u8 **)(data_021e9ad0 + 0x254);
     }
     resource_id = *(u16 *)(metadata + 6);
-    func_02078dd4(data_021f4090, resource_id, data_021e9ad0 + 0x50,
+    LanguageDatabase_CopyRecordById(data_021f4090, resource_id, data_021e9ad0 + 0x50,
                   0x200);
     return data_021e9ad0 + 0x50;
 }

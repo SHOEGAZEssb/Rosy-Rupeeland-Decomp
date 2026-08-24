@@ -5,7 +5,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020791e0
 .extern Actor_GetOwningCollection
-.extern LanguageResourceManager_FindById
+.extern LanguageDatabase_GetRecordById
 .extern DisplayRouting_MatchesRequest
 .extern func_0201da34
 .extern OverlayManager_GetGlobal
@@ -21,7 +21,7 @@ func_0201da20: ; 0x0201da20
     ldr ip, L_0201da2c
     ldr r0, L_0201da30
     bx ip
-L_0201da2c: .word LanguageResourceManager_FindById
+L_0201da2c: .word LanguageDatabase_GetRecordById
 L_0201da30: .word data_021f4090
 
 

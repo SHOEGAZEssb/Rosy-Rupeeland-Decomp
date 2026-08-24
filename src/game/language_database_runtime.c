@@ -19,10 +19,11 @@ extern u8 data_020ed6e0[];
 
 extern void func_02079d78(void *manager);
 extern void func_02079694(void *manager);
-extern void *LanguageResourceManager_FindById(void *manager, u32 identifier);
+extern void *LanguageDatabase_GetRecordById(void *manager, u32 identifier);
 extern void OS_Halt(void);
-void func_02078dd4(void *manager_pointer, u16 id, void *destination,
-                   u32 destination_size);
+void LanguageDatabase_CopyRecordById(void *manager_pointer, u16 id,
+                                     void *destination,
+                                     u32 destination_size);
 
 typedef struct LanguageDatabaseEntry {
     u16 id;
@@ -39,6 +40,18 @@ static u32 ReadU32(const u8 *bytes)
 static u16 ReadU16(const u8 *bytes)
 {
     return (u16)(bytes[0] | ((u16)bytes[1] << 8));
+}
+
+/* Release the owned record index and clear its capacity at retail 0x02078D28. */
+void LanguageDatabase_Destroy(void *manager_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+
+    if (*(void **)manager != 0) {
+        Heap_Free(*(void **)manager);
+        *(void **)manager = 0;
+    }
+    *(u32 *)(manager + 4) = 0;
 }
 
 /* Return the byte length for one language record, retail 0x02078D54. */
@@ -81,10 +94,11 @@ void *func_020795e8(void *manager_pointer, s32 message_id)
             *(u16 *)(manager + 0xbc) = *(const u16 *)(record + 2);
             *(u32 *)(manager + 0xc0) =
                 LanguageDatabase_GetRecordLength(data_021f4090, resource_id);
-            func_02078dd4(data_021f4090, text_id, manager + 0x5c, 0x60);
+            LanguageDatabase_CopyRecordById(data_021f4090, text_id,
+                                            manager + 0x5c, 0x60);
             *(void **)(manager + 0xc4) = manager + 0x5c;
             *(void **)(manager + 0xc8) =
-                LanguageResourceManager_FindById(data_021f4090, resource_id);
+                LanguageDatabase_GetRecordById(data_021f4090, resource_id);
             return manager + 0xbc;
         }
     }
@@ -112,8 +126,9 @@ static u32 LanguageDatabase_LoadRecord(u8 *manager, u32 index)
 }
 
 /* Copy a language string by ID, matching lookup/buffer behavior at 0x02078DD4. */
-void func_02078dd4(void *manager_pointer, u16 id, void *destination,
-                   u32 destination_size)
+void LanguageDatabase_CopyRecordById(void *manager_pointer, u16 id,
+                                     void *destination,
+                                     u32 destination_size)
 {
     u8 *manager = (u8 *)manager_pointer;
     LanguageDatabaseEntry *entries = *(LanguageDatabaseEntry **)manager;
@@ -148,7 +163,7 @@ void func_02078dd4(void *manager_pointer, u16 id, void *destination,
 
 /* Load the selected language index and fixed title/runtime strings exactly as
  * the assembly-selected 0x02078B10 constructor. */
-void func_02078b10(void *manager_pointer)
+void LanguageDatabase_Init(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     FSFile *file = (FSFile *)(manager + 0x48);
@@ -170,6 +185,8 @@ void func_02078b10(void *manager_pointer)
     CheckedFS_ReadFile(file, header, 0x10);
     count = ReadU16(header + 2);
     *(u32 *)(manager + 8) = count;
+    if (*(void **)manager != 0)
+        LanguageDatabase_Destroy(manager);
     entries = (LanguageDatabaseEntry *)Heap_Alloc(
         count * sizeof(*entries), data_020ea5d0, 4, &gHeapContext);
     *(LanguageDatabaseEntry **)manager = entries;
@@ -198,19 +215,17 @@ void func_02078b10(void *manager_pointer)
     for (index = 0; index < 50; ++index) {
         u8 *record = data_020ed6e0 + index * 0x68;
         u16 id = *(u16 *)(record + 0x66);
-        func_02078dd4(manager, id, record, 0x60);
+        LanguageDatabase_CopyRecordById(manager, id, record, 0x60);
     }
 }
 
 /* Preserve the retail order of the three global database constructors. */
-void func_02078ae4(void)
+void RetailDatabaseManagers_InitGlobals(void)
 {
-    func_02078b10(data_021f4090);
+    LanguageDatabase_Init(data_021f4090);
     func_02079d78(data_021f3ecc);
     func_02079694(data_021f3d68);
 }
-
-
 
 
 

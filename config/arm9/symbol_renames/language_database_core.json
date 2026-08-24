@@ -1,0 +1,10 @@
+{
+  "func_02078ae4": "RetailDatabaseManagers_InitGlobals",
+  "func_02078b10": "LanguageDatabase_Init",
+  "func_02078d28": "LanguageDatabase_Destroy",
+  "LanguageDatabase_GetRecordLength": "LanguageDatabase_GetRecordLength",
+  "func_02078dd4": "LanguageDatabase_CopyRecordById",
+  "LanguageResourceManager_FindById": "LanguageDatabase_GetRecordById",
+  "func_02078f3c": "LanguageDatabase_LoadRecordIntoCache",
+  "func_02078fdc": "LanguageDatabase_DebugLoadRecord"
+}

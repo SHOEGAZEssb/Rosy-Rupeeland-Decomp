@@ -43,7 +43,7 @@ extern u8 data_021f4090[];
 extern u8 data_021f5138[];
 extern void OS_Halt(void);
 extern u32 LanguageDatabase_GetRecordLength(void *manager, u16 identifier);
-void *LanguageResourceManager_FindById(ResourceFileManager *manager, u32 identifier);
+void *LanguageDatabase_GetRecordById(ResourceFileManager *manager, u32 identifier);
 
 typedef struct DescriptorMessageRecord {
     u16 identifier;
@@ -93,7 +93,7 @@ const void *RecordMessageTable_GetGroupMessage(const void *table, s32 group, s32
     const u8 *record = (const u8 *)table + group * 0x9c +
                        index * 4 + 0x1d0;
 
-    return LanguageResourceManager_FindById((ResourceFileManager *)data_021f4090,
+    return LanguageDatabase_GetRecordById((ResourceFileManager *)data_021f4090,
                          *(const u16 *)record);
 }
 
@@ -124,7 +124,7 @@ const void *DescriptorMessageTable_GetMessage(const void *table_pointer, s32 ide
     identifier = (u16)identifier;
     for (index = 0; index < count; ++index) {
         if (records[index].identifier == identifier) {
-            return LanguageResourceManager_FindById((ResourceFileManager *)data_021f4090,
+            return LanguageDatabase_GetRecordById((ResourceFileManager *)data_021f4090,
                                  records[index].resources[slot]);
         }
     }
@@ -165,7 +165,8 @@ void *RecordMode_GetMessageGroup(const void *mode_record)
 
 /* Loads one indexed blob into the manager cache and returns the bytes read, or
  * zero after closing the file where possible on any filesystem failure. */
-s32 func_02078f3c(ResourceFileManager *manager, s32 recordIndex)
+s32 LanguageDatabase_LoadRecordIntoCache(ResourceFileManager *manager,
+                                         s32 recordIndex)
 {
     const ResourceFileRecord *record = &manager->records[recordIndex];
     s32 size = record->size;
@@ -195,7 +196,8 @@ s32 func_02078f3c(ResourceFileManager *manager, s32 recordIndex)
 
 /* Resolves an identifier through the five-way record index, returning cached
  * data on success or the confirmed retail missing/empty fallback pointers. */
-void *LanguageResourceManager_FindById(ResourceFileManager *manager, u32 identifier)
+void *LanguageDatabase_GetRecordById(ResourceFileManager *manager,
+                                     u32 identifier)
 {
     s32 group = 0;
     s32 recordIndex;
@@ -217,7 +219,7 @@ void *LanguageResourceManager_FindById(ResourceFileManager *manager, u32 identif
     for (recordIndex = manager->starts[group];
          recordIndex < manager->count; ++recordIndex) {
         if (manager->records[recordIndex].identifier == identifier) {
-            if (func_02078f3c(manager, recordIndex) == 0) {
+            if (LanguageDatabase_LoadRecordIntoCache(manager, recordIndex) == 0) {
                 return (void *)0x020c6d00;
             }
             manager->cachedIdentifier = (s32)identifier;
@@ -225,6 +227,14 @@ void *LanguageResourceManager_FindById(ResourceFileManager *manager, u32 identif
         }
     }
     return (void *)0x020c6d00;
+}
+
+/* Exercise both language-record query paths for the resident debug menu. */
+void *LanguageDatabase_DebugLoadRecord(ResourceFileManager *manager,
+                                       u16 identifier)
+{
+    (void)LanguageDatabase_GetRecordLength(manager, identifier);
+    return LanguageDatabase_GetRecordById(manager, identifier);
 }
 
 /* Maps a language message identifier to its resource payload via the global
@@ -247,7 +257,7 @@ void *func_020791e0(const LookupIndexPrefix *table, s32 identifier)
     for (recordIndex = table->starts[group];
          recordIndex < table->count; ++recordIndex) {
         if (records[recordIndex].identifier == identifier) {
-            return LanguageResourceManager_FindById((ResourceFileManager *)data_021f4090,
+            return LanguageDatabase_GetRecordById((ResourceFileManager *)data_021f4090,
                                  records[recordIndex].resource);
         }
     }

@@ -42,7 +42,7 @@ extern const u8 data_020ef31c[];
 extern u8 data_021f5128[];
 extern const char *data_020c9200[];
 extern void OS_Halt(void);
-extern void func_02078dd4(void *manager, u16 id, void *destination,
+extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *func_02079fc4(void *manager, u16 id);
 extern void *ActorDatabase_FindDescriptorById(void *database, u16 id);
@@ -475,7 +475,7 @@ void func_0207b7f4(void *database_pointer)
 
         if (CheckedFS_ReadFile(file, input, sizeof(input)) < sizeof(input))
             OS_Halt();
-        func_02078dd4(data_021f4090, ReadU16(input), record, 0x60);
+        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input), record, 0x60);
         *(void **)(record + 0x8c) =
             func_02079fc4(data_021f3ecc, ReadU16(input + 2));
         *(u16 *)(record + 0x90) = ReadU16(input + 4);
@@ -592,7 +592,7 @@ void RetailRecordDatabase_AppendLocalizedRecords(void *database_pointer)
         *(u16 *)(record + 0) = ReadU16(input + 0);
         *(u16 *)(record + 2) = (u16)(start + index);
         *(u16 *)(record + 4) = ReadU16(input + 2);
-        func_02078dd4(data_021f4090, ReadU16(input + 6), record + 0x2c,
+        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input + 6), record + 0x2c,
                       0x60);
         flags = (u32)(s32)(s8)input[4] | 0x00010100u;
         if (input[5] == 1)
@@ -725,7 +725,7 @@ void RetailRecordDatabase_AppendFinalRecord(void *database_pointer)
         *(u32 *)(record + 8) = 0;
         *(u32 *)(record + 0x0c) = 0x00011107;
         *(u32 *)(record + 0x10) = 1;
-        func_02078dd4(data_021f4090, ReadU16(input + 2), record + 0x2c,
+        LanguageDatabase_CopyRecordById(data_021f4090, ReadU16(input + 2), record + 0x2c,
                       0x60);
         ids[index] = ReadU16(input + 0);
     }

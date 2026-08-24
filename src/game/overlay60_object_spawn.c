@@ -23,7 +23,7 @@ extern s32 SignedAbsoluteValueVariant(s32 value);
 extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u32 value);
 extern void *func_020791e0(void *table, u16 index);
 extern void Actor_GetOwningCollection(void *owner);
-extern void *LanguageResourceManager_FindById(void *table, u32 index);
+extern void *LanguageDatabase_GetRecordById(void *table, u32 index);
 extern void *func_ov060_022100e4(void *self, s32 routedDisplay,
                                 void *resource, s32 thirdOperand,
                                 s32 secondOperand, void *sprite,
@@ -50,13 +50,13 @@ s32 DisplayRouting_MatchesRequest(s32 input)
 /*
  * Resolve the resource identifier passed in r1 through the fixed language
  * manager. Retail replaces r0 with data_021f4090 before tail-calling
- * LanguageResourceManager_FindById, so the collection mode originally passed in r0 is ignored
+ * LanguageDatabase_GetRecordById, so the collection mode originally passed in r0 is ignored
  * while the second argument remains the lookup identifier.
  */
 void *func_0201da20(u32 unusedMode, u32 resourceIdentifier)
 {
     (void)unusedMode;
-    return LanguageResourceManager_FindById(data_021f4090, resourceIdentifier);
+    return LanguageDatabase_GetRecordById(data_021f4090, resourceIdentifier);
 }
 
 /*
@@ -107,7 +107,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
         resource = func_020791e0(data_021f3ecc, (u16)resourceIndex);
     else {
         Actor_GetOwningCollection(context->owner84);
-        resource = LanguageResourceManager_FindById(data_021f4090, resourceIndex);
+        resource = LanguageDatabase_GetRecordById(data_021f4090, resourceIndex);
     }
     requestedDisplay = DisplayRouting_MatchesRequest(requestedDisplay);
     OverlayManager_LoadOverlay(OverlayManager_GetGlobal(), 2, 0x3c);

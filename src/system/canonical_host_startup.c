@@ -47,7 +47,7 @@ extern void MIC_Init(void);
 extern void func_01ff8000(void);
 extern void SoundContext_Initialize(void);
 extern void SoundContext_Update(void *context);
-extern void func_02078ae4(void);
+extern void RetailDatabaseManagers_InitGlobals(void);
 extern void RetailSaveContext_InitializeGlobal(void);
 extern void func_0206328c(void);
 extern void RetailResourceDescriptorManager_InitGlobal(void);
@@ -134,7 +134,7 @@ s32 TingleRecoveredCanonicalStartup(void)
     sets = GraphicsResourceSets_Get();
     STARTUP_STEP("graphics resource sets", GraphicsResourceSets_Load(sets));
     STARTUP_STEP("game work", GameWork_Create());
-    STARTUP_STEP("manager 02078ae4", func_02078ae4());
+    STARTUP_STEP("retail database managers", RetailDatabaseManagers_InitGlobals());
     STARTUP_STEP("runtime context", RetailSaveContext_InitializeGlobal());
     STARTUP_STEP("manager 0206328c", func_0206328c());
     STARTUP_STEP("resource descriptor manager", RetailResourceDescriptorManager_InitGlobal());

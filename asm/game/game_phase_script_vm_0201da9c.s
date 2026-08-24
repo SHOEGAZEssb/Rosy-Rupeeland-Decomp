@@ -5,7 +5,7 @@
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern func_020791e0
 .extern Actor_GetOwningCollection
-.extern LanguageResourceManager_FindById
+.extern LanguageDatabase_GetRecordById
 .extern DisplayRouting_MatchesRequest
 .extern func_0201da34
 .extern OverlayManager_GetGlobal
@@ -52,7 +52,7 @@ L_0201db10:
     bl Actor_GetOwningCollection
     ldr r0, L_0201dbb8
     mov r1, r4
-    bl LanguageResourceManager_FindById
+    bl LanguageDatabase_GetRecordById
 L_0201db24:
     mov r4, r0
     mov r0, r11
