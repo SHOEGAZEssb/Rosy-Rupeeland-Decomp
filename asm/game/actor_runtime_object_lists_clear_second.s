@@ -2,9 +2,9 @@
 ; the documented portable implementation and recovered behavior.
 .text
 .extern ActorInteractionRuntime_Shutdown
-.extern ActorRuntimePayloadList_Clear
-.global ActorRuntimeObjectLists_ClearSecond
-ActorRuntimeObjectLists_ClearSecond:
+.extern ActorRuntimeAnimationResourceList_Clear
+.global ActorRuntimeAnimationResourceLists_ClearCategory1
+ActorRuntimeAnimationResourceLists_ClearCategory1:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl ActorInteractionRuntime_Shutdown
@@ -29,7 +29,7 @@ L_0200bd58:
     cmp r4, #0x0
     bne L_0200bd3c
     add r0, r5, #0x14
-    bl ActorRuntimePayloadList_Clear
+    bl ActorRuntimeAnimationResourceList_Clear
     ldmia sp!, {r3, r4, r5, pc}
-.size ActorRuntimeObjectLists_ClearSecond, . - ActorRuntimeObjectLists_ClearSecond
+.size ActorRuntimeAnimationResourceLists_ClearCategory1, . - ActorRuntimeAnimationResourceLists_ClearCategory1
 

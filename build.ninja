@@ -11396,84 +11396,84 @@ build build/reports/actor_runtime_object_lists_ctor.json: objdiff build/decomp/d
   base_object = build/decomp/asm/game/actor_runtime_object_lists_ctor.o
 build build/reports/actor_runtime_object_lists_ctor.txt: match_report build/reports/actor_runtime_object_lists_ctor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_ctor.json
-  report_args = --section .text --function ActorRuntimeObjectLists_Init --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_Init --require-exact
 
 build build/reports/actor_runtime_payload_list_ctor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_payload_list_ctor.o | build/decomp/asm/game/actor_runtime_payload_list_ctor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_payload_list_ctor.o
   base_object = build/decomp/asm/game/actor_runtime_payload_list_ctor.o
 build build/reports/actor_runtime_payload_list_ctor.txt: match_report build/reports/actor_runtime_payload_list_ctor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_payload_list_ctor.json
-  report_args = --section .text --function ActorRuntimePayloadList_Init --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceList_Init --require-exact
 
 build build/reports/actor_runtime_payload_list_dtor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_payload_list_dtor.o | build/decomp/asm/game/actor_runtime_payload_list_dtor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_payload_list_dtor.o
   base_object = build/decomp/asm/game/actor_runtime_payload_list_dtor.o
 build build/reports/actor_runtime_payload_list_dtor.txt: match_report build/reports/actor_runtime_payload_list_dtor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_payload_list_dtor.json
-  report_args = --section .text --function ActorRuntimePayloadList_Destroy --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceList_Destroy --require-exact
 
 build build/reports/actor_runtime_payload_list_clear.json: objdiff build/decomp/delinks/asm/game/actor_runtime_payload_list_clear.o | build/decomp/asm/game/actor_runtime_payload_list_clear.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_payload_list_clear.o
   base_object = build/decomp/asm/game/actor_runtime_payload_list_clear.o
 build build/reports/actor_runtime_payload_list_clear.txt: match_report build/reports/actor_runtime_payload_list_clear.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_payload_list_clear.json
-  report_args = --section .text --function ActorRuntimePayloadList_Clear --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceList_Clear --require-exact
 
 build build/reports/actor_runtime_object_lists_dtor.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_dtor.o | build/decomp/asm/game/actor_runtime_object_lists_dtor.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_dtor.o
   base_object = build/decomp/asm/game/actor_runtime_object_lists_dtor.o
 build build/reports/actor_runtime_object_lists_dtor.txt: match_report build/reports/actor_runtime_object_lists_dtor.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_dtor.json
-  report_args = --section .text --function ActorRuntimeObjectLists_Destroy --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_Destroy --require-exact
 
 build build/reports/actor_runtime_object_lists_delete.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_delete.o | build/decomp/asm/game/actor_runtime_object_lists_delete.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_delete.o
   base_object = build/decomp/asm/game/actor_runtime_object_lists_delete.o
 build build/reports/actor_runtime_object_lists_delete.txt: match_report build/reports/actor_runtime_object_lists_delete.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_delete.json
-  report_args = --section .text --function ActorRuntimeObjectLists_DestroyAndFree --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_DestroyAndFree --require-exact
 
 build build/reports/actor_runtime_object_lists_clear_first.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_clear_first.o | build/decomp/asm/game/actor_runtime_object_lists_clear_first.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_clear_first.o
   base_object = build/decomp/asm/game/actor_runtime_object_lists_clear_first.o
 build build/reports/actor_runtime_object_lists_clear_first.txt: match_report build/reports/actor_runtime_object_lists_clear_first.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_clear_first.json
-  report_args = --section .text --function ActorRuntimeObjectLists_ClearFirst --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_ClearCategory0 --require-exact
 
 build build/reports/actor_runtime_object_lists_clear_second.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_clear_second.o | build/decomp/asm/game/actor_runtime_object_lists_clear_second.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_clear_second.o
   base_object = build/decomp/asm/game/actor_runtime_object_lists_clear_second.o
 build build/reports/actor_runtime_object_lists_clear_second.txt: match_report build/reports/actor_runtime_object_lists_clear_second.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_clear_second.json
-  report_args = --section .text --function ActorRuntimeObjectLists_ClearSecond --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_ClearCategory1 --require-exact
 
 build build/reports/actor_runtime_object_lists_clear_third.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_clear_third.o | build/decomp/asm/game/actor_runtime_object_lists_clear_third.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_clear_third.o
   base_object = build/decomp/asm/game/actor_runtime_object_lists_clear_third.o
 build build/reports/actor_runtime_object_lists_clear_third.txt: match_report build/reports/actor_runtime_object_lists_clear_third.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_clear_third.json
-  report_args = --section .text --function ActorRuntimeObjectLists_ClearThird --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_ClearOtherCategory --require-exact
 
 build build/reports/actor_runtime_object_lists_populate.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_populate.o | build/decomp/asm/game/actor_runtime_object_lists_populate.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_populate.o
   base_object = build/decomp/asm/game/actor_runtime_object_lists_populate.o
 build build/reports/actor_runtime_object_lists_populate.txt: match_report build/reports/actor_runtime_object_lists_populate.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_populate.json
-  report_args = --section .text --function ActorRuntimeObjectLists_AddRecords --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_AppendRecords --require-exact
 
 build build/reports/actor_runtime_object_lists_append.json: objdiff build/decomp/delinks/asm/game/actor_runtime_object_lists_append.o | build/decomp/asm/game/actor_runtime_object_lists_append.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_object_lists_append.o
   base_object = build/decomp/asm/game/actor_runtime_object_lists_append.o
 build build/reports/actor_runtime_object_lists_append.txt: match_report build/reports/actor_runtime_object_lists_append.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_object_lists_append.json
-  report_args = --section .text --function ActorRuntimeObjectLists_AddRecord --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceLists_AppendRecord --require-exact
 
 build build/reports/actor_runtime_payload_list_delete.json: objdiff build/decomp/delinks/asm/game/actor_runtime_payload_list_delete.o | build/decomp/asm/game/actor_runtime_payload_list_delete.o
   target_object = build/decomp/delinks/asm/game/actor_runtime_payload_list_delete.o
   base_object = build/decomp/asm/game/actor_runtime_payload_list_delete.o
 build build/reports/actor_runtime_payload_list_delete.txt: match_report build/reports/actor_runtime_payload_list_delete.json | tools/report_objdiff.py
   report_json = build/reports/actor_runtime_payload_list_delete.json
-  report_args = --section .text --function ActorRuntimePayloadList_DestroyAndFree --require-exact
+  report_args = --section .text --function ActorRuntimeAnimationResourceList_DestroyAndFree --require-exact
 
 build build/reports/actor_runtime_grid_canvas_lifecycle.json: objdiff build/decomp/delinks/src/game/actor_runtime_grid_canvas_lifecycle.o | build/decomp/src/game/actor_runtime_grid_canvas_lifecycle.o
   target_object = build/decomp/delinks/src/game/actor_runtime_grid_canvas_lifecycle.o

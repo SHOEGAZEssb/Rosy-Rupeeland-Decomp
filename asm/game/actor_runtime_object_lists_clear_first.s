@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/actor_runtime_object_lists_lifecycle.c for
 ; the documented portable implementation and recovered behavior.
 .text
-.extern ActorRuntimePayloadList_Clear
-.global ActorRuntimeObjectLists_ClearFirst
-ActorRuntimeObjectLists_ClearFirst:
+.extern ActorRuntimeAnimationResourceList_Clear
+.global ActorRuntimeAnimationResourceLists_ClearCategory0
+ActorRuntimeAnimationResourceLists_ClearCategory0:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x10]
@@ -27,7 +27,7 @@ L_0200bcfc:
     cmp r4, #0x0
     bne L_0200bce0
     add r0, r5, #0x4
-    bl ActorRuntimePayloadList_Clear
+    bl ActorRuntimeAnimationResourceList_Clear
     ldmia sp!, {r3, r4, r5, pc}
-.size ActorRuntimeObjectLists_ClearFirst, . - ActorRuntimeObjectLists_ClearFirst
+.size ActorRuntimeAnimationResourceLists_ClearCategory0, . - ActorRuntimeAnimationResourceLists_ClearCategory0
 

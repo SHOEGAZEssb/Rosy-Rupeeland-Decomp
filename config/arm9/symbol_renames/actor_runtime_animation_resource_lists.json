@@ -1,0 +1,18 @@
+{
+  "ActorRuntimeObjectLists_Init": "ActorRuntimeAnimationResourceLists_Init",
+  "ActorRuntimePayloadList_Init": "ActorRuntimeAnimationResourceList_Init",
+  "ActorRuntimePayloadList_Destroy": "ActorRuntimeAnimationResourceList_Destroy",
+  "ActorRuntimePayloadList_Clear": "ActorRuntimeAnimationResourceList_Clear",
+  "ActorRuntimeObjectLists_Destroy": "ActorRuntimeAnimationResourceLists_Destroy",
+  "ActorRuntimeObjectLists_DestroyAndFree": "ActorRuntimeAnimationResourceLists_DestroyAndFree",
+  "ActorRuntimeObjectLists_ClearFirst": "ActorRuntimeAnimationResourceLists_ClearCategory0",
+  "ActorRuntimeObjectLists_ClearSecond": "ActorRuntimeAnimationResourceLists_ClearCategory1",
+  "ActorRuntimeObjectLists_ClearThird": "ActorRuntimeAnimationResourceLists_ClearOtherCategory",
+  "ActorRuntimeObjectLists_AddRecords": "ActorRuntimeAnimationResourceLists_AppendRecords",
+  "ActorRuntimeObjectLists_AddRecord": "ActorRuntimeAnimationResourceLists_AppendRecord",
+  "ActorRuntimePayloadList_DestroyAndFree": "ActorRuntimeAnimationResourceList_DestroyAndFree",
+  "data_020d44f0": "gActorRuntimeAnimationResourceListVTable",
+  "data_020d4500": "gActorRuntimeAnimationResourceListsVTable",
+  "gActorRuntimePayloadListNodeAllocationTag": "gActorRuntimeAnimationResourceListNodeAllocationTag",
+  "gActorRuntimePayloadAnimationResourceAllocationTag": "gActorRuntimeAnimationResourceAllocationTag"
+}

@@ -9,7 +9,7 @@ extern void DebugHudState_GetGlobal(void);
 extern void DebugHudState_Close(void);
 extern void GamePhaseState_ResetActivePhase(void *state);
 extern void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self);
-extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
+extern void ActorRuntimeAnimationResourceLists_ClearCategory1(void *loader);
 #ifdef __cplusplus
 }
 #endif
@@ -26,5 +26,5 @@ void GamePhaseRuntime_RunFrameMaintenance(GamePhaseRuntime *self)
     DebugHudState_Close();
     GamePhaseState_ResetActivePhase(b + 0x24);
     GamePhaseRuntime_DestroySecondaryActorSubsystem(self);
-    ActorRuntimeObjectLists_ClearSecond(*(void **)(b + 0x30b4));
+    ActorRuntimeAnimationResourceLists_ClearCategory1(*(void **)(b + 0x30b4));
 }

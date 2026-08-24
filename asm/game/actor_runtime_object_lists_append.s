@@ -3,11 +3,11 @@
 .text
 .extern Heap_Alloc
 .extern AnimationResource_Init
-.extern gActorRuntimePayloadListNodeAllocationTag
-.extern gActorRuntimePayloadAnimationResourceAllocationTag
+.extern gActorRuntimeAnimationResourceListNodeAllocationTag
+.extern gActorRuntimeAnimationResourceAllocationTag
 .extern gHeapContext
-.global ActorRuntimeObjectLists_AddRecord
-ActorRuntimeObjectLists_AddRecord:
+.global ActorRuntimeAnimationResourceLists_AppendRecord
+ActorRuntimeAnimationResourceLists_AppendRecord:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     ldrsh r4, [sp, #0x18]
     mov r8, r1
@@ -57,7 +57,7 @@ L_0200be70:
     add r1, r1, #0x1
     str r1, [r4, #0xc]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-L_0200bed0: .word gActorRuntimePayloadAnimationResourceAllocationTag
+L_0200bed0: .word gActorRuntimeAnimationResourceAllocationTag
 L_0200bed4: .word gHeapContext
-L_0200bed8: .word gActorRuntimePayloadListNodeAllocationTag
-.size ActorRuntimeObjectLists_AddRecord, . - ActorRuntimeObjectLists_AddRecord
+L_0200bed8: .word gActorRuntimeAnimationResourceListNodeAllocationTag
+.size ActorRuntimeAnimationResourceLists_AppendRecord, . - ActorRuntimeAnimationResourceLists_AppendRecord

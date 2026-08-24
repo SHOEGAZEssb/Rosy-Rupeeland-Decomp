@@ -13,8 +13,8 @@ extern u32 data_020d4264[];
 extern "C" {
 #endif
 
-extern void *ActorRuntimeObjectLists_Init(void *object);
-extern void ActorRuntimeObjectLists_AddRecords(void *object, const void *table,
+extern void *ActorRuntimeAnimationResourceLists_Init(void *object);
+extern void ActorRuntimeAnimationResourceLists_AppendRecords(void *object, const void *table,
                           s32 count, s32 value);
 
 #ifdef __cplusplus
@@ -34,7 +34,7 @@ void GamePhaseRuntime_SetDisplayRouting(s32 value)
 /*
  * Allocate and construct a 0x34-byte FLDR-tagged loader, store it at runtime
  * offset 0x30b4, and configure it with the recovered 11-entry table. Retail
- * forwards null on allocation failure to ActorRuntimeObjectLists_AddRecords. Returns no value.
+ * forwards null on allocation failure to ActorRuntimeAnimationResourceLists_AppendRecords. Returns no value.
  */
 void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *self)
 {
@@ -43,9 +43,9 @@ void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *self)
                               &gHeapContext);
 
     if (loader != 0)
-        loader = ActorRuntimeObjectLists_Init(loader);
+        loader = ActorRuntimeAnimationResourceLists_Init(loader);
     *(void *volatile *)(bytes + 0x30b4) = loader;
-    ActorRuntimeObjectLists_AddRecords(loader, data_020d4264, 11, 0);
+    ActorRuntimeAnimationResourceLists_AppendRecords(loader, data_020d4264, 11, 0);
 }
 
 /*

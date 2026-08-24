@@ -10,9 +10,9 @@ extern "C" {
 #endif
 extern void *GamePhaseAreaScene_Init(void *object, void *area, s32 enabled);
 extern void GamePhaseAreaScene_Start(void *object);
-extern void ActorRuntimeObjectLists_ClearThird(void *loader);
+extern void ActorRuntimeAnimationResourceLists_ClearOtherCategory(void *loader);
 extern void GamePhaseState_UnloadPhase(void *state);
-extern void ActorRuntimeObjectLists_ClearSecond(void *loader);
+extern void ActorRuntimeAnimationResourceLists_ClearCategory1(void *loader);
 #ifdef __cplusplus
 }
 #endif
@@ -44,7 +44,7 @@ void GamePhaseRuntime_DestroySecondaryActorSubsystem(GamePhaseRuntime *self)
     if (object != 0)
         (*(void (***)(void *))object)[1](object);
     *(void **)(b + 0x2fb8) = 0;
-    ActorRuntimeObjectLists_ClearThird(*(void **)(b + 0x30b4));
+    ActorRuntimeAnimationResourceLists_ClearOtherCategory(*(void **)(b + 0x30b4));
 }
 
 /*
@@ -59,5 +59,5 @@ void GamePhaseRuntime_TeardownActiveAreaState(GamePhaseRuntime *self)
     typedef void (*Method)(void *, s32);
     ((Method *)(*(void **)object))[9](object, 0);
     GamePhaseState_UnloadPhase(b + 0x24);
-    ActorRuntimeObjectLists_ClearSecond(*(void **)(b + 0x30b4));
+    ActorRuntimeAnimationResourceLists_ClearCategory1(*(void **)(b + 0x30b4));
 }
