@@ -60,8 +60,8 @@ extern void LanguageDatabase_InitEmpty(void *);
 extern void LanguageDatabase_DestroyIfLoaded(void *);
 extern void RuntimeRecordTable_InitEmpty(void *);
 extern void RuntimeRecordTable_DestroyIfLoaded(void *);
-extern void func_0207c38c(void *);
-extern void func_0207c424(void *);
+extern void RetailRecordDatabase_ConstructEmpty(void *);
+extern void RetailRecordDatabase_Destroy(void *);
 extern void ActorRuntimeFlags_Init(void *);
 extern void ActorRuntimeFlags_Destroy(void *);
 extern void func_020983c8(void *);
@@ -336,14 +336,15 @@ void __sinit_020c16f8(void)
 }
 
 /*
- * No inputs. Construct data_021f5138 and register func_0207c424 with record
+ * No inputs. Construct data_021f5138 and register its destructor with record
  * data_021f512c. Global lifetime state changes; no value or direct hardware
  * effect occurs.
  */
 void __sinit_020c176c(void)
 {
-    func_0207c38c(data_021f5138);
-    __register_global_object(data_021f5138, func_0207c424, data_021f512c);
+    RetailRecordDatabase_ConstructEmpty(data_021f5138);
+    __register_global_object(data_021f5138, RetailRecordDatabase_Destroy,
+                             data_021f512c);
 }
 
 /*

@@ -1,0 +1,7 @@
+{
+  "func_0207c38c": "RetailRecordDatabase_ConstructEmpty",
+  "func_0207c3c4": "RetailRecordDatabase_DestroyLocalizedAuxiliary",
+  "func_0207c3e4": "RetailRecordDatabase_DestroySecondaryAuxiliary",
+  "func_0207c404": "RetailRecordDatabase_DestroyFinalIds",
+  "func_0207c424": "RetailRecordDatabase_Destroy"
+}

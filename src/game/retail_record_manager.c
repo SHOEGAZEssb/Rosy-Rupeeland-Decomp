@@ -666,6 +666,40 @@ void RetailRecordDatabase_ClearFinalIds(void *array)
     RetailRecordDatabase_ClearOwnedArray(array);
 }
 
+void *RetailRecordDatabase_DestroyLocalizedAuxiliary(void *array)
+{
+    if (*(void **)array != 0)
+        RetailRecordDatabase_ClearLocalizedAuxiliary(array);
+    return array;
+}
+
+void *RetailRecordDatabase_DestroySecondaryAuxiliary(void *array)
+{
+    if (*(void **)array != 0)
+        RetailRecordDatabase_ClearSecondaryAuxiliary(array);
+    return array;
+}
+
+void *RetailRecordDatabase_DestroyFinalIds(void *array)
+{
+    if (*(void **)array != 0)
+        RetailRecordDatabase_ClearFinalIds(array);
+    return array;
+}
+
+/* Release all four owned arrays in reverse construction order. */
+void *RetailRecordDatabase_Destroy(void *database_pointer)
+{
+    u8 *database = (u8 *)database_pointer;
+
+    RetailRecordDatabase_DestroyFinalIds(database + 0x18);
+    RetailRecordDatabase_DestroySecondaryAuxiliary(database + 0x10);
+    RetailRecordDatabase_DestroyLocalizedAuxiliary(database + 8);
+    if (*(void **)database != 0)
+        RetailRecordDatabase_ClearPrimaryRecords(database);
+    return database;
+}
+
 /* Load the primary 0x8c-byte selectable records at retail 0x0207B944. */
 void RetailRecordDatabase_LoadPrimaryRecords(void *database_pointer)
 {

@@ -20,7 +20,7 @@
 .extern RetailTextDatabaseManager_Init
 .extern LanguageDatabase_InitEmpty
 .extern RuntimeRecordTable_InitEmpty
-.extern func_0207c38c
+.extern RetailRecordDatabase_ConstructEmpty
 .extern ActorRuntimeFlags_Init
 .extern func_02092364
 .extern func_020983c8
@@ -97,7 +97,7 @@
 .extern RetailTextDatabaseManager_Destroy
 .extern LanguageDatabase_DestroyIfLoaded
 .extern RuntimeRecordTable_DestroyIfLoaded
-.extern func_0207c424
+.extern RetailRecordDatabase_Destroy
 .extern ActorRuntimeFlags_Destroy
 .extern func_020923a0
 .extern func_02098450
@@ -430,14 +430,14 @@ __sinit_020c16f8: ; 0x020c16f8
 __sinit_020c176c: ; 0x020c176c
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c178c
-    bl func_0207c38c
+    bl RetailRecordDatabase_ConstructEmpty
     ldr r0, .L_020c178c
     ldr r1, .L_020c1790
     ldr r2, .L_020c1794
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c178c: .word data_021f5138
-.L_020c1790: .word func_0207c424
+.L_020c1790: .word RetailRecordDatabase_Destroy
 .L_020c1794: .word data_021f512c
 
 __sinit_020c1798: ; 0x020c1798

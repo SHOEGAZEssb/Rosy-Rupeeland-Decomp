@@ -158,8 +158,8 @@ void *RuntimeRecordTable_DestroyIfLoaded(void *object)
     return object;
 }
 
-/* Clear the twelve-word singleton at 0x0207C38C. */
-void func_0207c38c(void *object)
+/* Construct the 0x30-byte retail record database singleton as empty. */
+void RetailRecordDatabase_ConstructEmpty(void *object)
 {
     memset(object, 0, 12 * sizeof(u32));
 }
