@@ -9,7 +9,7 @@ extern const u8 data_ov029_021fecec[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0207c460(void *, void *);
+extern void RecordDescriptor_BindById(void *, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -25,7 +25,7 @@ extern "C" void *func_ov029_021fce00(void *object, void *argument)
     FIELD(s32, object, 4) = 0;
     FIELD(s32, object, 8) = 0;
     FIELD(s32, object, 0xc) = 0;
-    func_0207c460(object, argument);
+    RecordDescriptor_BindById(object, argument);
     return object;
 }
 

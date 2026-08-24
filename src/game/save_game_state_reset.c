@@ -15,7 +15,7 @@ extern u8 data_021f4020[];
 extern void *RetailRecordCategory_InsertById(void *category, u16 actor_id);
 extern s32 func_02062e70(void *entry, const void *packed);
 extern void RetailResourceDescriptor_LoadPackedState(void *entry, const void *packed);
-extern void func_0207c4a4(void *entry, const void *packed);
+extern void RecordDescriptor_BindById(void *entry, u16 id);
 extern void RetailSelectionHistoryEntry_Init(void *entry, u16 identifier);
 extern s32 func_0206fa9c(void *entry_slot);
 extern void *ActorDatabase_FindDescriptorById(void *manager, u16 actor_id);
@@ -173,14 +173,12 @@ s32 RetailRecordCategory_IsRecordDiscovered(void *category, u16 record_id)
     return work[0xee8 + (bit >> 3)] & (1u << (bit & 7));
 }
 
-void func_0207c4a4(void *entry_pointer, const void *packed_pointer)
+void RecordDescriptor_LoadPackedState(void *entry_pointer, const void *packed_pointer)
 {
     u8 *entry = (u8 *)entry_pointer;
     const u8 *packed = (const u8 *)packed_pointer;
-    u8 *record = (u8 *)LookupActorRecord(data_021f5138,
-                                         ReadU16(packed, 0),
-                                         0x20, 0, 0x8c);
-    *(u8 **)(entry + 4) = record;
+
+    RecordDescriptor_BindById(entry, ReadU16(packed, 0));
     WriteU32(entry, 8, ReadU32(packed, 4));
     WriteU32(entry, 0x0c, ReadU16(packed, 2));
 }
@@ -562,18 +560,18 @@ void RetailRecordManager_LoadState(void *state_pointer)
         u32 item;
         WriteU32(category, 8, ReadU16(work, 0xfe8 + base));
         for (item = 0; item < CategoryCount(category, 0); ++item)
-            func_0207c4a4(*(u8 **)(category + 0x18) + item * 0x10,
+            RecordDescriptor_LoadPackedState(*(u8 **)(category + 0x18) + item * 0x10,
                           work + 0xfec + base + item * 8);
         WriteU32(category, 0x0c, ReadU16(work, 0x117c + base));
         for (item = 0; item < CategoryCount(category, 1); ++item)
-            func_0207c4a4(*(u8 **)(category + 0x1c) + item * 0x10,
+            RecordDescriptor_LoadPackedState(*(u8 **)(category + 0x1c) + item * 0x10,
                           work + 0x1180 + base + item * 8);
         ((void (*)(void *))(*(void ***)category)[4])(category);
     }
     WriteU32(state, 0xcc8, ReadU32(work, 0x48b8));
     for (category_index = 0; category_index < ReadU32(state, 0xcc8);
          ++category_index)
-        func_0207c4a4(state + 0x48 + category_index * 0x10,
+        RecordDescriptor_LoadPackedState(state + 0x48 + category_index * 0x10,
                       work + 0x48bc + category_index * 8);
 }
 

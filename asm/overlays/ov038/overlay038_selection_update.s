@@ -12,7 +12,7 @@
     .extern func_02028100
     .extern func_0202836c
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_0207c460
+    .extern RecordDescriptor_BindById
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern data_020f4e14
@@ -103,7 +103,7 @@ L_021fd468:
     str r6, [sp, #0x10]
     str r6, [sp, #0x14]
     str r6, [sp, #0x18]
-    bl func_0207c460
+    bl RecordDescriptor_BindById
     ldr r0, [r4, #0x0]
     ldr r1, [r10, #0x31c]
     bl GraphicsSpriteRenderer_SetFontResource

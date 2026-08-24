@@ -1,0 +1,5 @@
+{
+  "func_0207c460": "RecordDescriptor_BindById",
+  "func_0207c484": "RecordDescriptor_SavePackedState",
+  "func_0207c4a4": "RecordDescriptor_LoadPackedState"
+}

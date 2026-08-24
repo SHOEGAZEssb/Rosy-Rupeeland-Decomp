@@ -32,7 +32,7 @@ extern void func_02028100(void *label, const void *text);
 extern void func_0202836c(void *label);
 extern void GraphicsSpriteCanvas_FillRect(void *renderer, s32 x, s32 y, s32 width,
                           s32 height, s32 value);
-extern void func_0207c460(Overlay038TextDescriptor *descriptor, u16 textId);
+extern void RecordDescriptor_BindById(Overlay038TextDescriptor *descriptor, u16 textId);
 extern void GraphicsSpriteRenderer_SetFontResource(void *renderer, void *font);
 extern void GraphicsSpriteRenderer_DrawText(void *renderer, void *text, s32 x, s32 y,
                           s32 color, s32 spacing, s32 unknown);
@@ -95,7 +95,7 @@ extern "C" void func_ov038_021fd40c(void *presentation)
         s32 record = FIELD(s32, presentation, 0x114 + item * 4);
         u16 textId = *(const u16 *)(data_020d7a48 + record * 0x24 + 0x1a);
         Overlay038TextDescriptor descriptor = {data_ov038_021fdd08, 0, 0, 0};
-        func_0207c460(&descriptor, textId);
+        RecordDescriptor_BindById(&descriptor, textId);
         GraphicsSpriteRenderer_SetFontResource(renderer, FIELD(void *, presentation, 0x31c));
         GraphicsSpriteRenderer_DrawText(renderer, (u8 *)descriptor.text + 0x2c, 0x20,
                       (row + 1) * 0x18, 0x0e, 8, 0);

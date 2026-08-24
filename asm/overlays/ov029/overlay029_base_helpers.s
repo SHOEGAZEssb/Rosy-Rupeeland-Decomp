@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov029/overlay029_base_helpers.c. */
 .extern data_ov029_021fecec
-.extern func_0207c460
+.extern RecordDescriptor_BindById
 
     .global func_ov029_021fce00
 func_ov029_021fce00:
@@ -14,7 +14,7 @@ func_ov029_021fce00:
     str r2, [r4, #0x4]
     str r2, [r4, #0x8]
     str r2, [r4, #0xc]
-    bl func_0207c460
+    bl RecordDescriptor_BindById
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fce2c: .word data_ov029_021fecec

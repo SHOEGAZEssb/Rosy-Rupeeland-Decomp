@@ -14,7 +14,7 @@ extern "C" {
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern s32 GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, const void *, s32, s32);
-extern void func_0207c460(void *, u16);
+extern void RecordDescriptor_BindById(void *, u16);
 extern const void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern s32 func_ov018_021fe1d8(void *, const void *);
 #ifdef __cplusplus
@@ -48,7 +48,7 @@ extern "C" void func_ov018_021fe46c(void *state)
             FIELD(s32, state, 0x60) > 0x80)
         y = 0x10;
 
-    func_0207c460(&temporary, FIELD(u16, descriptor, 0x1a));
+    RecordDescriptor_BindById(&temporary, FIELD(u16, descriptor, 0x1a));
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, (u8 *)state + 0x70);
 
     const void *primary = (u8 *)temporary.storage + 0x2c;

@@ -23,7 +23,7 @@ extern void *GraphicsSpriteGroup_CreateStateFromSource(void *, void *, s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *, s32, s32, s32, ...);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void *RetailTextTable_FindRecordById(const void *, u16);
-extern void func_0207c460(void *, u16);
+extern void RecordDescriptor_BindById(void *, u16);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void func_020922f0(void *, s32);
@@ -81,7 +81,7 @@ extern "C" void func_ov022_021feac8(void *scene)
     loader[2] = 0;
     loader[3] = 0;
     const u8 *descriptor = FIELD(const u8 *, scene, 0x360);
-    func_0207c460(loader, FIELD(u16, descriptor, 0x1a));
+    RecordDescriptor_BindById(loader, FIELD(u16, descriptor, 0x1a));
     const u16 *text = (const u16 *)((u8 *)loader[1] + 0x2c);
     for (s32 i = 0; i < 0x20; ++i) {
         FIELD(u16, scene, 0x2d0 + i * 2) = text[i];

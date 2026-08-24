@@ -56,7 +56,6 @@ extern void *gGameWork;
 extern void GameWork_SetFlag(void *work, s32 flag);
 extern s32 RecordSelection_HasAvailableEntry(void *category, s32 bank);
 extern s32 RecordSelection_GetChannelCount(void *category, s32 channel);
-extern void func_0207c460(void *slot, u16 id);
 
 /* Copy the mutable descriptor fields retained by the manager's ordered list.
  * Both records are borrowed 16-byte slots; identity storage at +0 is retained. */
@@ -281,6 +280,28 @@ s32 RetailRecordManager_CategoryContainsRecordId(void *manager_pointer,
             return 1;
     }
     return 0;
+}
+
+/* Bind a descriptor to a borrowed database record and copy its default value. */
+void RecordDescriptor_BindById(void *descriptor_pointer, u16 id)
+{
+    u8 *descriptor = (u8 *)descriptor_pointer;
+    u8 *record = RetailRecordDatabase_FindById(data_021f5138, id);
+
+    *(u8 **)(descriptor + 4) = record;
+    *(u32 *)(descriptor + 8) = *(u32 *)(record + 8);
+}
+
+/* Save record ID, tier, and value into the retail eight-byte packed form. */
+void RecordDescriptor_SavePackedState(const void *descriptor_pointer,
+                                      void *packed_pointer)
+{
+    const u8 *descriptor = (const u8 *)descriptor_pointer;
+    u8 *packed = (u8 *)packed_pointer;
+
+    *(u16 *)(packed + 0) = *(u16 *)(*(u8 *const *)(descriptor + 4));
+    *(u16 *)(packed + 2) = (u16)*(const u32 *)(descriptor + 0x0c);
+    *(u32 *)(packed + 4) = *(const u32 *)(descriptor + 8);
 }
 
 /* Apply each bank-one record's default value at metadata +8 to its slot. */
@@ -969,7 +990,7 @@ void RetailRecordManager_InsertRecordById(void *manager_pointer, u16 id)
     u32 category_index;
 
     RetailRecordSlot_Init(slot);
-    func_0207c460(slot, id);
+    RecordDescriptor_BindById(slot, id);
     record = *(u8 **)(slot + 4);
     category_index = record[0x0c];
     RetailRecordCategory_InsertDescriptor(

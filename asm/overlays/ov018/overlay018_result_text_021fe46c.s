@@ -6,7 +6,7 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_MeasureText
     .extern LanguageLookupDatabase_GetResourceById
-    .extern func_0207c460
+    .extern RecordDescriptor_BindById
     .extern func_ov018_021fe1d8
     .extern gDebugFont
 
@@ -31,7 +31,7 @@ func_ov018_021fe46c:
     str r2, [sp, #0x10]
     str r2, [sp, #0x14]
     str r2, [sp, #0x18]
-    bl func_0207c460
+    bl RecordDescriptor_BindById
     ldr r0, L_021fe59c
     ldr r1, [r5, #0x70]
     ldr r0, [r0, #0x0]

@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_action_setup.c. */
 .extern data_ov022_02200664
 .extern GraphicsSpriteText_FormatDecimal
-.extern func_0207c460
+.extern RecordDescriptor_BindById
 .extern TitleDialog_ClearTextRect
 .extern func_ov022_021ff2c4
 
@@ -22,7 +22,7 @@ func_ov022_021feac8:
     str r3, [sp, #0x0]
     str r2, [sp, #0x8]
     str r2, [sp, #0xc]
-    bl func_0207c460
+    bl RecordDescriptor_BindById
     ldr r0, [sp, #0x4]
     mov r3, #0x0
     add r2, r0, #0x2c
