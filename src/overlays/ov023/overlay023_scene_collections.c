@@ -16,9 +16,9 @@ extern "C" {
 #endif
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void func_02071ee0(void *, void *, s32, s32, s32);
-extern s32 func_0207b464(void *);
-extern s32 func_0207b490(void *);
-extern s32 func_0207b4bc(void *);
+extern s32 RecordMode_GetCharacterResourceId(void *);
+extern s32 RecordMode_GetPaletteResourceId(void *);
+extern s32 RecordMode_GetCellResourceId(void *);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void SpritePresentation_SetAnimation(void *, s32);
@@ -59,9 +59,9 @@ extern "C" void func_ov023_021fe39c(void *scene)
         u8 *entry = (u8 *)func_ov023_021fd024(main_collection, record);
         u32 bank_id = FIELD(u32, FIELD(void *, record, 4), 0xc) & 0xff;
         void *bank = ((void **)global)[bank_id];
-        s32 a = func_0207b464((u8 *)bank + 0x668);
-        s32 b = func_0207b490((u8 *)bank + 0x668);
-        s32 c = func_0207b4bc((u8 *)bank + 0x668);
+        s32 a = RecordMode_GetCharacterResourceId((u8 *)bank + 0x668);
+        s32 b = RecordMode_GetPaletteResourceId((u8 *)bank + 0x668);
+        s32 c = RecordMode_GetCellResourceId((u8 *)bank + 0x668);
         func_02071ee0(entry + 4, data_020f4e18, a, b, c);
         FIELD(u16, entry, 0x14) = 0;
         FIELD(u16, entry, 0x16) = (u16)(i * 26);

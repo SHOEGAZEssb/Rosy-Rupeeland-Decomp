@@ -7,9 +7,9 @@
 .extern data_ov023_021ffc00
 .extern data_ov023_021ffc08
 .extern func_02071ee0
-.extern func_0207b464
-.extern func_0207b490
-.extern func_0207b4bc
+.extern RecordMode_GetCharacterResourceId
+.extern RecordMode_GetPaletteResourceId
+.extern RecordMode_GetCellResourceId
 .extern IndexedSelectionController_ConfigureRange
 .extern func_ov023_021fce44
 .extern func_ov023_021fd024
@@ -61,15 +61,15 @@ L_021fe3ec:
     mov r6, r0
     add r0, r4, #0x660
     add r0, r0, #0x8
-    bl func_0207b464
+    bl RecordMode_GetCharacterResourceId
     mov r5, r0
     add r0, r4, #0x660
     add r0, r0, #0x8
-    bl func_0207b490
+    bl RecordMode_GetPaletteResourceId
     add r1, r4, #0x660
     mov r4, r0
     add r0, r1, #0x8
-    bl func_0207b4bc
+    bl RecordMode_GetCellResourceId
     str r0, [sp, #0x0]
     ldr r1, L_021fe5f0
     mov r2, r5

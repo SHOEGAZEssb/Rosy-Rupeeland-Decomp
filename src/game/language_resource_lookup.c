@@ -166,6 +166,41 @@ void *RecordMode_GetMessageGroup(const void *mode_record)
     return data_021f5138 + group * 0x9c;
 }
 
+static const u8 *RecordMode_GetResourceDescriptor(const void *mode_record)
+{
+    const u8 *group = (const u8 *)RecordMode_GetMessageGroup(mode_record);
+    s32 mode = *(const s32 *)((const u8 *)mode_record + 4);
+
+    return *(const u8 *const *)(group + 0x8c + mode * 8);
+}
+
+/* Return the character-resource ID for a borrowed category mode record. */
+u32 RecordMode_GetCharacterResourceId(const void *mode_record)
+{
+    return *(const u32 *)(RecordMode_GetResourceDescriptor(mode_record) + 4);
+}
+
+/* Return the palette-resource ID for a borrowed category mode record. */
+u32 RecordMode_GetPaletteResourceId(const void *mode_record)
+{
+    return *(const u32 *)(RecordMode_GetResourceDescriptor(mode_record) + 8);
+}
+
+/* Return the cell-resource ID for a borrowed category mode record. */
+u32 RecordMode_GetCellResourceId(const void *mode_record)
+{
+    return *(const u32 *)(RecordMode_GetResourceDescriptor(mode_record) + 0x0c);
+}
+
+/* Return the low-byte sprite animation index for a category mode record. */
+u32 RecordMode_GetAnimationIndex(const void *mode_record)
+{
+    const u8 *group = (const u8 *)RecordMode_GetMessageGroup(mode_record);
+    s32 mode = *(const s32 *)((const u8 *)mode_record + 4);
+
+    return *(const u16 *)(group + 0x90 + mode * 8) & 0xff;
+}
+
 /* Loads one indexed blob into the manager cache and returns the bytes read, or
  * zero after closing the file where possible on any filesystem failure. */
 s32 LanguageDatabase_LoadRecordIntoCache(ResourceFileManager *manager,

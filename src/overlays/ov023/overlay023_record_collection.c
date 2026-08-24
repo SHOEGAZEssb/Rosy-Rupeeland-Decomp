@@ -26,7 +26,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
-extern s32 func_0207b4e8(void *);
+extern s32 RecordMode_GetAnimationIndex(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
@@ -187,7 +187,7 @@ extern "C" void func_ov023_021fd164(void *collection, s32 index)
     void *bank = ((void **)data_021f5128)[bank_index];
     void *sprite = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, collection, 4), entry + 4, 2);
     FIELD(void *, entry, 0x10) = sprite;
-    s32 frame = func_0207b4e8((u8 *)bank + 0x668);
+    s32 frame = RecordMode_GetAnimationIndex((u8 *)bank + 0x668);
     GraphicsSpriteState_ApplyRenderConfig(sprite, frame, FIELD(s16, entry, 0x14),
                   FIELD(s16, entry, 0x16), 0, 0, 0);
 }

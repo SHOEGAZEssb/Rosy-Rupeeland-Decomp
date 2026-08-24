@@ -1,0 +1,6 @@
+{
+  "func_0207b464": "RecordMode_GetCharacterResourceId",
+  "func_0207b490": "RecordMode_GetPaletteResourceId",
+  "func_0207b4bc": "RecordMode_GetCellResourceId",
+  "func_0207b4e8": "RecordMode_GetAnimationIndex"
+}

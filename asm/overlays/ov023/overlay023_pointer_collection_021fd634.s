@@ -6,10 +6,10 @@
 .extern func_02071ee0
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
-.extern func_0207b464
-.extern func_0207b490
-.extern func_0207b4bc
-.extern func_0207b4e8
+.extern RecordMode_GetCharacterResourceId
+.extern RecordMode_GetPaletteResourceId
+.extern RecordMode_GetCellResourceId
+.extern RecordMode_GetAnimationIndex
 
 
     .global func_ov023_021fd634
@@ -38,13 +38,13 @@ func_ov023_021fd634:
     and r0, r1, #0xff
     ldr r8, [r2, r0, lsl #0x2]
     add r0, r8, #0x660
-    bl func_0207b464
+    bl RecordMode_GetCharacterResourceId
     mov r7, r0
     add r0, r8, #0x660
-    bl func_0207b490
+    bl RecordMode_GetPaletteResourceId
     mov r6, r0
     add r0, r8, #0x660
-    bl func_0207b4bc
+    bl RecordMode_GetCellResourceId
     mov r2, r7
     mov r3, r6
     str r0, [sp, #0x0]
@@ -58,7 +58,7 @@ func_ov023_021fd634:
     bl GraphicsSpriteGroup_CreateStateFromSource
     str r0, [r5, #0x14]
     add r0, r8, #0x660
-    bl func_0207b4e8
+    bl RecordMode_GetAnimationIndex
     mov r1, r0
     mov r0, #0x1
     str r0, [sp, #0x0]

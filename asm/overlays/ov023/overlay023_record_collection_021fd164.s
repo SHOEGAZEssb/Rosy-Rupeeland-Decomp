@@ -4,7 +4,7 @@
 .extern data_021f5128
 .extern GraphicsSpriteState_ApplyRenderConfig
 .extern GraphicsSpriteGroup_CreateStateFromSource
-.extern func_0207b4e8
+.extern RecordMode_GetAnimationIndex
 
 
     .global func_ov023_021fd164
@@ -43,7 +43,7 @@ func_ov023_021fd164:
     ldr r1, [r6, #0x2c]
     add r0, r0, #0x8
     add r5, r1, r5
-    bl func_0207b4e8
+    bl RecordMode_GetAnimationIndex
     mov r1, #0x0
     str r1, [sp, #0x0]
     str r1, [sp, #0x4]

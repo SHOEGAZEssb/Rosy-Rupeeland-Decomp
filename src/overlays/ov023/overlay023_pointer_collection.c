@@ -28,10 +28,10 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, const void *, s32, s32, ...);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, ...);
 extern const void *RecordMode_GetMessageGroup(void *);
-extern s32 func_0207b464(void *);
-extern s32 func_0207b490(void *);
-extern s32 func_0207b4bc(void *);
-extern s32 func_0207b4e8(void *);
+extern s32 RecordMode_GetCharacterResourceId(void *);
+extern s32 RecordMode_GetPaletteResourceId(void *);
+extern s32 RecordMode_GetCellResourceId(void *);
+extern s32 RecordMode_GetAnimationIndex(void *);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
@@ -123,14 +123,15 @@ extern "C" void *func_ov023_021fd634(void *collection, void *record)
     if (!FIELD(void *, collection, 0x14)) {
         u32 bank_index = FIELD(u32, FIELD(void *, record, 4), 0xc) & 0xff;
         void *bank = ((void **)data_021f5128)[bank_index];
-        s32 a = func_0207b464((u8 *)bank + 0x660);
-        s32 b = func_0207b490((u8 *)bank + 0x660);
-        s32 c = func_0207b4bc((u8 *)bank + 0x660);
+        s32 a = RecordMode_GetCharacterResourceId((u8 *)bank + 0x660);
+        s32 b = RecordMode_GetPaletteResourceId((u8 *)bank + 0x660);
+        s32 c = RecordMode_GetCellResourceId((u8 *)bank + 0x660);
         func_02071ee0((u8 *)collection + 8, data_020f4e18, a, b, c);
         FIELD(void *, collection, 0x14) = GraphicsSpriteGroup_CreateStateFromSource(
             FIELD(void *, collection, 4), (u8 *)collection + 8, 2);
         GraphicsSpriteState_ApplyRenderConfig(FIELD(void *, collection, 0x14),
-                      func_0207b4e8((u8 *)bank + 0x660), 42, 48, 1, 0, 0);
+                      RecordMode_GetAnimationIndex((u8 *)bank + 0x660),
+                      42, 48, 1, 0, 0);
     }
     FIELD(s32, collection, 0x44) = index + 1;
     return element;
