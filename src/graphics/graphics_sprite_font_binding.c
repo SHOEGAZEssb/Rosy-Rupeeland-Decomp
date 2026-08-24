@@ -96,12 +96,15 @@ void *func_02074b9c(void *renderer_pointer, void *resource)
         {
             GraphicsIndexedChainEntry *current = entry;
             u32 record_size = mode == 0x10 ? 0x20 : 0x200;
-            u32 transfer_type = mode == 0x10 ? 2 : 3;
+            u32 transferKind =
+                mode == 0x10
+                    ? GRAPHICS_TRANSFER_KIND_OBJECT_PALETTE
+                    : GRAPHICS_TRANSFER_KIND_OBJECT_EXTENDED_PALETTE;
             u8 *source = (u8 *)GraphicsBgResourceData_GetDecoded(resource);
 
             for (index = 0; index < count; ++index) {
                 GraphicsTransferQueue_Enqueue(
-                    &renderer->transferQueue, transfer_type,
+                    &renderer->transferQueue, transferKind,
                     source + index * record_size,
                     (u32)current->index * record_size, record_size);
                 current = current->chainNext;

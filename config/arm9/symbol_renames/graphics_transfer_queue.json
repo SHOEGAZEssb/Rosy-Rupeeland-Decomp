@@ -1,0 +1,10 @@
+{
+  "func_0207260c": "GraphicsTransferEntry_Init",
+  "func_02072620": "GraphicsTransferEntry_Destroy",
+  "func_02072624": "GraphicsTransferEntry_Clear",
+  "func_02072644": "GraphicsTransferQueue_Init",
+  "func_02072684": "GraphicsTransferQueue_Reset",
+  "func_020726e4": "GraphicsTransferQueue_Enqueue",
+  "func_02072748": "GraphicsTransferQueue_Remove",
+  "func_0207279c": "GraphicsTransferQueue_FindBySource"
+}

@@ -1,4 +1,5 @@
 #include "tingle/graphics_sprite_vram_binding.h"
+#include "tingle/graphics_transfer_queue.h"
 
 /*
  * Lookup and first-upload management for sprite graphics VRAM bindings. The
@@ -10,7 +11,7 @@ typedef struct GraphicsSpriteVramRenderer {
     u8 padding_0000[0x448];
     GraphicsVramAllocator vramAllocator;
     u8 padding_0bd0[0x1144];
-    u8 transferQueue[1];
+    GraphicsTransferQueue transferQueue;
 } GraphicsSpriteVramRenderer;
 
 typedef struct GraphicsSpriteGraphicsResource {
@@ -33,8 +34,6 @@ extern "C" {
 extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
 extern void func_02070418(void *resource);
 extern s32 func_0207043c(void *resource);
-extern void GraphicsTransferQueue_Enqueue(void *queue, u32 type, void *source,
-                                          u32 destination, u32 size);
 extern u32 GX_VBlankIntr(u32 state);
 
 #ifdef __cplusplus
@@ -78,7 +77,9 @@ GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
         node->field_0c = 1;
         size = func_0207043c(resource);
         GraphicsTransferQueue_Enqueue(
-            renderer->transferQueue, 1, resource->field_24,
+            &renderer->transferQueue,
+            GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
+            resource->field_24,
             (u32)node->blockStart << 7, (u32)size);
         GX_VBlankIntr(gGraphicsSpriteStatePool.interruptState);
     } else {

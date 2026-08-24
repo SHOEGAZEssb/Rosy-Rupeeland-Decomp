@@ -17,7 +17,7 @@ void GraphicsTransferQueue_ExtendTailSize(GraphicsTransferQueue *queue,
     GraphicsTransferEntry *tail = queue->tail;
 
     if (tail != 0) {
-        tail->size += additionalBytes;
+        tail->sizeBytes += additionalBytes;
     }
 }
 

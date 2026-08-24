@@ -197,32 +197,38 @@ void func_020748a8(void *renderer_pointer)
     sub_engine = *(u32 *)(renderer + 0x24);
     entry = queue->head;
     while (entry != 0) {
-        GraphicsTransferEntry *next = entry->next;
+        GraphicsTransferEntry *next = entry->nextOrFreeNext;
 
-        switch (entry->transferType) {
-        case 1:
+        switch (entry->transferKind) {
+        case GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER:
             if (sub_engine)
-                func_020b1d9c(entry->source, entry->destination, entry->size);
+                func_020b1d9c(entry->source, entry->destinationOffsetBytes,
+                              entry->sizeBytes);
             else
-                func_020b1dfc(entry->source, entry->destination, entry->size);
+                func_020b1dfc(entry->source, entry->destinationOffsetBytes,
+                              entry->sizeBytes);
             break;
-        case 2:
+        case GRAPHICS_TRANSFER_KIND_OBJECT_PALETTE:
             if (sub_engine)
-                func_020b1f20(entry->source, entry->destination, entry->size);
+                func_020b1f20(entry->source, entry->destinationOffsetBytes,
+                              entry->sizeBytes);
             else
-                func_020b1f88(entry->source, entry->destination, entry->size);
+                func_020b1f88(entry->source, entry->destinationOffsetBytes,
+                              entry->sizeBytes);
             break;
-        case 3:
+        case GRAPHICS_TRANSFER_KIND_OBJECT_EXTENDED_PALETTE:
             if (*(u32 *)(renderer + 0x34) != 0) {
                 if (sub_engine) {
                     func_020b12f0();
-                    func_020b127c(entry->source, entry->destination,
-                                  entry->size);
+                    func_020b127c(entry->source,
+                                  entry->destinationOffsetBytes,
+                                  entry->sizeBytes);
                     func_020b1230();
                 } else {
                     func_020b14c4();
-                    func_020b1450(entry->source, entry->destination,
-                                  entry->size);
+                    func_020b1450(entry->source,
+                                  entry->destinationOffsetBytes,
+                                  entry->sizeBytes);
                     func_020b13f8();
                 }
             }

@@ -118,7 +118,8 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                 func_02070418(graphics);
             }
             GraphicsTransferQueue_Enqueue(
-                queue, 1, graphics->pixels, tileDestination << 7,
+                queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
+                graphics->pixels, tileDestination << 7,
                 func_0207043c(graphics));
         }
     } else if (binding->field_0c == 0 && graphics->field_14 == 0) {
@@ -192,7 +193,8 @@ void func_02072ea4(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                     expectedTile += tileCount;
                 } else {
                     GraphicsTransferQueue_Enqueue(
-                        queue, 1, graphics->pixels + (sourceTile << 7),
+                        queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
+                        graphics->pixels + (sourceTile << 7),
                         tileDestination << 7, tileCount << 7);
                     expectedTile = sourceTile + tileCount;
                 }
@@ -283,7 +285,8 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
             if (graphics->field_14 == 0)
                 func_02070418(graphics);
             GraphicsTransferQueue_Enqueue(
-                queue, 1, graphics->pixels, tileDestination << 7,
+                queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
+                graphics->pixels, tileDestination << 7,
                 func_0207043c(graphics));
         }
     } else if (binding->field_0c == 0 && graphics->field_14 == 0) {
@@ -381,7 +384,8 @@ void func_02073340(GraphicsSpriteState *state, GraphicsRenderEntry *entry,
                     expectedTile += tileCount;
                 } else {
                     GraphicsTransferQueue_Enqueue(
-                        queue, 1, graphics->pixels + (sourceTile << 7),
+                        queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
+                        graphics->pixels + (sourceTile << 7),
                         tileDestination << 7, tileCount << 7);
                     expectedTile = sourceTile + tileCount;
                 }

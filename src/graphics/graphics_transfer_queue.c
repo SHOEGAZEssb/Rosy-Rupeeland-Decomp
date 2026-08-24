@@ -2,9 +2,8 @@
 
 /*
  * Fixed-capacity queue used to stage graphics transfers. Recovered upload
- * producers identify the four record values as transfer family, source,
- * destination offset, and byte size. The eventual hardware consumer remains
- * outside this reconstructed object.
+ * producers and the VBlank consumer identify the four record values as object
+ * VRAM transfer kind, borrowed source, byte destination offset, and byte size.
  */
 
 #ifdef __cplusplus
@@ -45,12 +44,12 @@ void GraphicsTransferEntry_Destroy(GraphicsTransferEntry *entry)
  */
 void GraphicsTransferEntry_Clear(GraphicsTransferEntry *entry)
 {
-    entry->next = 0;
-    entry->prev = 0;
+    entry->nextOrFreeNext = 0;
+    entry->previousOrFreePrevious = 0;
     entry->source = 0;
-    entry->transferType = 0;
-    entry->destination = 0;
-    entry->size = 0;
+    entry->transferKind = 0;
+    entry->destinationOffsetBytes = 0;
+    entry->sizeBytes = 0;
 }
 
 /*
@@ -72,8 +71,8 @@ GraphicsTransferQueue *GraphicsTransferQueue_Init(
 
 /*
  * Clear every descriptor, empty the active FIFO, reset count, and rebuild the
- * free list through next. This discards queued transfers without performing
- * them and returns no value; callers must own any payload lifetime separately.
+ * free list through nextOrFreeNext. This discards queued transfers without
+ * performing them and returns no value; source ownership remains with callers.
  */
 #ifndef MATCHING
 void GraphicsTransferQueue_Reset(GraphicsTransferQueue *queue)
@@ -83,14 +82,14 @@ void GraphicsTransferQueue_Reset(GraphicsTransferQueue *queue)
 
     base->tail = 0;
     base->head = 0;
-    base->freeEntries = base->entries;
-    base->count = 0;
+    base->freeHead = base->entries;
+    base->queuedCount = 0;
 
     for (; i < GRAPHICS_TRANSFER_QUEUE_CAPACITY; i++) {
         GraphicsTransferEntry_Clear(&base->entries[i]);
     }
     for (i = 0; i < GRAPHICS_TRANSFER_QUEUE_CAPACITY - 1; i++) {
-        base->entries[i].next = &base->entries[i + 1];
+        base->entries[i].nextOrFreeNext = &base->entries[i + 1];
     }
 }
 #else
@@ -130,29 +129,30 @@ asm void GraphicsTransferQueue_Reset(GraphicsTransferQueue *queue)
  * silently drops the request. This stages metadata without accessing hardware.
  */
 void GraphicsTransferQueue_Enqueue(GraphicsTransferQueue *queue,
-                                   u32 transferType, void *source,
-                                   u32 destination, u32 size)
+                                   u32 transferKind,
+                                   const void *source,
+                                   u32 destinationOffsetBytes, u32 sizeBytes)
 {
-    GraphicsTransferEntry *entry = queue->freeEntries;
+    GraphicsTransferEntry *entry = queue->freeHead;
 
     if (entry == 0) {
         return;
     }
 
-    queue->freeEntries = entry->next;
+    queue->freeHead = entry->nextOrFreeNext;
     if (queue->head != 0) {
-        queue->tail->next = entry;
+        queue->tail->nextOrFreeNext = entry;
     } else {
         queue->head = entry;
     }
-    entry->prev = queue->tail;
-    entry->next = 0;
+    entry->previousOrFreePrevious = queue->tail;
+    entry->nextOrFreeNext = 0;
     queue->tail = entry;
-    queue->count++;
-    entry->transferType = transferType;
+    queue->queuedCount++;
+    entry->transferKind = transferKind;
     entry->source = source;
-    entry->destination = destination;
-    entry->size = size;
+    entry->destinationOffsetBytes = destinationOffsetBytes;
+    entry->sizeBytes = sizeBytes;
 }
 
 /*
@@ -170,26 +170,26 @@ void GraphicsTransferQueue_Remove(GraphicsTransferQueue *queue,
         return;
     }
 
-    prev = entry->prev;
-    next = entry->next;
+    prev = entry->previousOrFreePrevious;
+    next = entry->nextOrFreeNext;
     if (prev != 0) {
-        prev->next = next;
+        prev->nextOrFreeNext = next;
     } else {
         queue->head = next;
     }
     if (next != 0) {
-        next->prev = prev;
+        next->previousOrFreePrevious = prev;
     } else {
         queue->tail = prev;
     }
 
-    if (queue->freeEntries != 0) {
-        queue->freeEntries->prev = entry;
+    if (queue->freeHead != 0) {
+        queue->freeHead->previousOrFreePrevious = entry;
     }
-    entry->prev = 0;
-    entry->next = queue->freeEntries;
-    queue->freeEntries = entry;
-    queue->count--;
+    entry->previousOrFreePrevious = 0;
+    entry->nextOrFreeNext = queue->freeHead;
+    queue->freeHead = entry;
+    queue->queuedCount--;
 }
 
 /*
@@ -206,7 +206,7 @@ GraphicsTransferEntry *GraphicsTransferQueue_FindBySource(
         if (entry->source == source) {
             return entry;
         }
-        entry = entry->next;
+        entry = entry->nextOrFreeNext;
     }
     return 0;
 }

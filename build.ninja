@@ -3666,7 +3666,7 @@ build build/decomp/src/graphics/graphics_sprite_oam.o: mwccarm src/graphics/grap
   source = src/graphics/graphics_sprite_oam.c
   cflags = $graphics_sprite_oam_cflags
 
-build build/decomp/src/graphics/graphics_sprite_vram_binding.o: mwccarm src/graphics/graphics_sprite_vram_binding.c | include/tingle/graphics_sprite_vram_binding.h include/tingle/graphics_vram_allocator.h include/tingle/types.h
+build build/decomp/src/graphics/graphics_sprite_vram_binding.o: mwccarm src/graphics/graphics_sprite_vram_binding.c | include/tingle/graphics_sprite_vram_binding.h include/tingle/graphics_transfer_queue.h include/tingle/graphics_vram_allocator.h include/tingle/types.h
   source = src/graphics/graphics_sprite_vram_binding.c
   cflags = $graphics_sprite_vram_binding_cflags
 

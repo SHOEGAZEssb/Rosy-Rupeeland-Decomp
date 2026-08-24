@@ -90,7 +90,8 @@ void GraphicsSpriteRenderer_QueuePendingBlocks(GraphicsSpriteRenderer *renderer)
         count = *(u16 *)(*(u8 **)(resource + 0x20) + 6);
         for (index = 0; index < count; ++index) {
             GraphicsTransferQueue_Enqueue(
-                &renderer->transferQueue, 3,
+                &renderer->transferQueue,
+                GRAPHICS_TRANSFER_KIND_OBJECT_EXTENDED_PALETTE,
                 (u8 *)GraphicsBgResourceData_GetDecoded(resource) + index * 0x200,
                 (u32)entry->index << 9, 0x200);
             entry = entry->chainNext;

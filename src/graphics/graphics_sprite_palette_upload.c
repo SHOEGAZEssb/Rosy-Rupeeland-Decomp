@@ -35,9 +35,9 @@ extern u32 GX_VBlankIntr(u32 state);
 #endif
 
 /*
- * Queue one type-2, 32-byte transfer for every record declared by the palette
- * resource at renderer->field_14. Sources are consecutive resource records;
- * each destination is the current indexed descriptor's byte index times 32.
+ * Queue one 32-byte object-palette transfer for every record declared by the
+ * palette resource at renderer->field_14. Sources are consecutive resource
+ * records; each destination is the indexed descriptor's byte index times 32.
  * The chain and record count are assumed consistent, as retail performs no
  * null or capacity checks. Returns no value; queue state and the shared saved
  * interrupt-state word change, and the prior interrupt state is restored.
@@ -56,7 +56,8 @@ void GraphicsSpriteRenderer_QueuePaletteUploads(GraphicsSpriteRenderer *renderer
         u8 *source = (u8 *)GraphicsBgResourceData_GetDecoded(resource) + index * 0x20;
 
         GraphicsTransferQueue_Enqueue(
-            &renderer->transferQueue, 2, source,
+            &renderer->transferQueue, GRAPHICS_TRANSFER_KIND_OBJECT_PALETTE,
+            source,
             (u32)entry->index << 5, 0x20);
         entry = entry->chainNext;
     }

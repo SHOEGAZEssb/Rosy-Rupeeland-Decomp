@@ -5,16 +5,22 @@
 
 enum { GRAPHICS_TRANSFER_QUEUE_CAPACITY = 128 };
 
+typedef enum GraphicsTransferKind {
+    GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER = 1,
+    GRAPHICS_TRANSFER_KIND_OBJECT_PALETTE = 2,
+    GRAPHICS_TRANSFER_KIND_OBJECT_EXTENDED_PALETTE = 3
+} GraphicsTransferKind;
+
 typedef struct GraphicsTransferEntry GraphicsTransferEntry;
 
 /* One queued graphics transfer request recovered from both upload producers. */
 struct GraphicsTransferEntry {
-    GraphicsTransferEntry *prev;
-    GraphicsTransferEntry *next;
-    void *source;
-    u32 transferType;
-    u32 destination;
-    u32 size;
+    GraphicsTransferEntry *previousOrFreePrevious;
+    GraphicsTransferEntry *nextOrFreeNext;
+    const void *source;
+    u32 transferKind;
+    u32 destinationOffsetBytes;
+    u32 sizeBytes;
 };
 
 /* Fixed-capacity FIFO with a separate descriptor free list. */
@@ -22,8 +28,8 @@ typedef struct GraphicsTransferQueue {
     GraphicsTransferEntry entries[GRAPHICS_TRANSFER_QUEUE_CAPACITY];
     GraphicsTransferEntry *head;
     GraphicsTransferEntry *tail;
-    GraphicsTransferEntry *freeEntries;
-    u32 count;
+    GraphicsTransferEntry *freeHead;
+    u32 queuedCount;
 } GraphicsTransferQueue;
 
 typedef char GraphicsTransferEntrySizeCheck[
@@ -43,8 +49,9 @@ GraphicsTransferQueue *GraphicsTransferQueue_Init(
     GraphicsTransferQueue *queue);
 void GraphicsTransferQueue_Reset(GraphicsTransferQueue *queue);
 void GraphicsTransferQueue_Enqueue(GraphicsTransferQueue *queue,
-                                   u32 transferType, void *source,
-                                   u32 destination, u32 size);
+                                   u32 transferKind,
+                                   const void *source,
+                                   u32 destinationOffsetBytes, u32 sizeBytes);
 void GraphicsTransferQueue_Remove(GraphicsTransferQueue *queue,
                                   GraphicsTransferEntry *entry);
 GraphicsTransferEntry *GraphicsTransferQueue_FindBySource(
