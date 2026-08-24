@@ -20,7 +20,7 @@ extern const u16 gLanguageDatabaseErrorText[];
 extern const u16 gLanguageDatabaseNullText[];
 
 extern void func_02079d78(void *manager);
-extern void func_02079694(void *manager);
+extern void RuntimeRecordTable_Load(void *manager);
 extern void *LanguageDatabase_GetRecordById(void *manager, u32 identifier);
 extern void OS_Halt(void);
 void LanguageDatabase_CopyRecordById(void *manager_pointer, u16 id,
@@ -228,7 +228,6 @@ void RetailDatabaseManagers_InitGlobals(void)
 {
     LanguageDatabase_Init(gLanguageDatabase);
     func_02079d78(data_021f3ecc);
-    func_02079694(data_021f3d68);
+    RuntimeRecordTable_Load(data_021f3d68);
 }
-
 

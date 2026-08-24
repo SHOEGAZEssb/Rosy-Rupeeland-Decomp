@@ -1,0 +1,5 @@
+{
+  "func_02079694": "RuntimeRecordTable_Load",
+  "func_02079908": "RuntimeRecordTable_Destroy",
+  "func_02079944": "RuntimeRecordTable_RecordDestroyNoOp"
+}

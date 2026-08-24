@@ -435,8 +435,27 @@ static void CopyRecord78(u8 *destination, const u8 *source)
     memcpy(destination, source, 0x78);
 }
 
-/* Load and sort the 0x78-byte artifact database at retail 0x02079694. */
-void func_02079694(void *manager_pointer)
+/* Per-record destructor callback; runtime records own no nested allocations. */
+void RuntimeRecordTable_RecordDestroyNoOp(void *record_pointer)
+{
+    (void)record_pointer;
+}
+
+/* Release the array allocation whose eight-byte header precedes the records. */
+void RuntimeRecordTable_Destroy(void *manager_pointer)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u8 *records = *(u8 **)manager;
+
+    if (records != 0) {
+        Heap_Free(records - 8);
+        *(void **)manager = 0;
+    }
+    *(u32 *)(manager + 4) = 0;
+}
+
+/* Load and sort the 0x78-byte runtime record table at retail 0x02079694. */
+void RuntimeRecordTable_Load(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     GameFile file;
@@ -451,6 +470,8 @@ void func_02079694(void *manager_pointer)
     GameFile_Read(&file, header, sizeof(header));
     count = ReadU16(header);
     *(u32 *)(manager + 0x108) = count;
+    if (*(void **)manager != 0)
+        RuntimeRecordTable_Destroy(manager);
     records = (u8 *)Heap_Alloc(count * 0x78 + 8, data_020ea5b8, 4,
                                &gHeapContext) + 8;
     *(u32 *)(records - 8) = 0x78;
