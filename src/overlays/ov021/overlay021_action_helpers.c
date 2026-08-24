@@ -10,7 +10,7 @@ extern const u32 data_ov021_02202f08[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0207c518(const void *);
+extern s32 RecordDescriptor_IsDiscovered(const void *);
 extern void func_02092260(void *, s32);
 extern void func_02092c8c(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
@@ -61,7 +61,7 @@ extern "C" void func_ov021_021ffcb4(void *state)
     if (func_ov021_021fd1b8(descriptor) == 1 &&
         FIELD(u16, record, 4) >= 2) {
         FIELD(s32, state, 0x3e0) = 1;
-        FIELD(s32, state, 0x3dc) = func_0207c518(descriptor) != 0;
+        FIELD(s32, state, 0x3dc) = RecordDescriptor_IsDiscovered(descriptor) != 0;
         func_ov021_021fd7c0(state, data_ov021_02202f08[0],
                             data_ov021_02202f08[1]);
     } else {

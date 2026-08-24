@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_action_helpers.c. */
     .extern data_ov021_02202f00
     .extern data_ov021_02202f08
-    .extern func_0207c518
+.extern RecordDescriptor_IsDiscovered
     .extern func_02092260
     .extern func_02092c8c
     .extern TitleDialog_ClearTextRect
@@ -34,7 +34,7 @@ func_ov021_021ffcb4:
     mov r0, #0x1
     str r0, [r4, #0x3e0]
     ldr r0, [r4, #0x2bc]
-    bl func_0207c518
+    bl RecordDescriptor_IsDiscovered
     cmp r0, #0x0
     movne r0, #0x1
     moveq r0, #0x0
@@ -56,4 +56,3 @@ L_021ffd34:
 L_021ffd54: .word data_ov021_02202f08
 L_021ffd58: .word data_ov021_02202f00
     .size func_ov021_021ffcb4, . - func_ov021_021ffcb4
-

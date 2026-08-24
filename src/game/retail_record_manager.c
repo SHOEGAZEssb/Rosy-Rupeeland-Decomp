@@ -334,6 +334,17 @@ void RecordSlot_MarkDiscovered(void *slot_pointer)
     ((u8 *)gGameWork)[0xee8 + index / 8] |= (u8)(1u << (index % 8));
 }
 
+/* Test the save-owned discovery bit for a borrowed descriptor's record. */
+s32 RecordDescriptor_IsDiscovered(const void *descriptor_pointer)
+{
+    const u8 *descriptor = (const u8 *)descriptor_pointer;
+    const u8 *record = *(const u8 *const *)(descriptor + 4);
+    u32 index = *(const u16 *)(record + 2);
+
+    return (((const u8 *)gGameWork)[0xee8 + index / 8] &
+            (u8)(1u << (index % 8))) != 0;
+}
+
 /* Publish one borrowed category slot: persist its discovery flag first, then
  * invoke the category's primary virtual callback synchronously. */
 void RecordCategory_PublishSlot(void *category_pointer, u32 bank, u32 index)
