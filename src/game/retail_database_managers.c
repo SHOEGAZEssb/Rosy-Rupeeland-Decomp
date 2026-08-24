@@ -336,8 +336,14 @@ void *RetailSelectionDatabase_GetRecordById(void *manager_pointer, u16 id)
     return 0;
 }
 
-/* Load the four-u16 relationship database at retail 0x020794A4. */
-void func_020794a4(void *manager_pointer)
+/* Release the modal-message database's owned eight-byte record array. */
+void ModalMessageDatabase_Destroy(void *manager_pointer)
+{
+    ReleaseArray(manager_pointer);
+}
+
+/* Load the four-u16 modal-message relationships at retail 0x020794A4. */
+void ModalMessageDatabase_Load(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     FSFile *file = (FSFile *)(manager + 0x0c);
@@ -355,7 +361,7 @@ void func_020794a4(void *manager_pointer)
     count = ReadU16(header);
     *(u32 *)(manager + 8) = count;
     if (*(void **)manager != 0)
-        ReleaseArray(manager);
+        ModalMessageDatabase_Destroy(manager);
     records = Heap_Alloc(count * 8, data_020ea5e0, 4, &gHeapContext);
     *(u8 **)manager = records;
     *(u32 *)(manager + 4) = count;
@@ -418,7 +424,7 @@ void func_02079d78(void *manager_pointer)
     *(u16 *)(manager + 0x1c0) =
         *(u16 *)(records + (count / 2) * 0x62);
     LanguageLookupDatabase_Load(manager);
-    func_020794a4(manager + 0x88);
+    ModalMessageDatabase_Load(manager + 0x88);
     RetailSelectionDatabase_Load(manager + 0x154);
     GameFile_Destroy(&file);
 }

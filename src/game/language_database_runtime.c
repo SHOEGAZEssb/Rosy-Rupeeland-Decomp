@@ -80,8 +80,9 @@ u32 LanguageDatabase_GetRecordLength(void *manager_pointer, u16 id)
     return 0;
 }
 
-/* Assemble the shared message descriptor selected at retail 0x020795E8. */
-void *func_020795e8(void *manager_pointer, s32 message_id)
+/* Assemble the manager-owned shared modal-message descriptor selected by ID. */
+void *ModalMessageDatabase_BuildDescriptorById(void *manager_pointer,
+                                               s32 message_id)
 {
     u8 *manager = (u8 *)manager_pointer;
     const u8 *records = *(const u8 **)manager;
@@ -229,6 +230,5 @@ void RetailDatabaseManagers_InitGlobals(void)
     func_02079d78(data_021f3ecc);
     func_02079694(data_021f3d68);
 }
-
 
 

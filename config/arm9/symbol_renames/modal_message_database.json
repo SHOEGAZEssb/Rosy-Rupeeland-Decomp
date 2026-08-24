@@ -1,0 +1,5 @@
+{
+  "func_020794a4": "ModalMessageDatabase_Load",
+  "func_020795bc": "ModalMessageDatabase_Destroy",
+  "func_020795e8": "ModalMessageDatabase_BuildDescriptorById"
+}

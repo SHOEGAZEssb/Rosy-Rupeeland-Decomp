@@ -23,7 +23,8 @@ extern void func_02091080(void *state, void *first, void *second,
 extern void func_02092f88(void *state, s32 value, void *destination);
 extern u8 data_021f3f54[];
 extern u8 gSystemState[];
-extern void *func_020795e8(void *manager, s32 message_id);
+extern void *ModalMessageDatabase_BuildDescriptorById(void *manager,
+                                                      s32 message_id);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *group,
                                                        void *source,
                                                        s32 mode);
@@ -74,7 +75,8 @@ void func_02095bec(void *state)
 void ModalState_InitResources(void *state, s32 message_id)
 {
     u8 *self = (u8 *)state;
-    u8 *message = (u8 *)func_020795e8(data_021f3f54, message_id);
+    u8 *message = (u8 *)ModalMessageDatabase_BuildDescriptorById(
+        data_021f3f54, message_id);
     u16 layout = *(u16 *)message;
     void *sprite;
     u32 index;
@@ -239,4 +241,3 @@ void *func_020959d4(void *storage, s32 first, s32 second)
     func_02092f88(dialog, 1, self + 0x250);
     return self;
 }
-
