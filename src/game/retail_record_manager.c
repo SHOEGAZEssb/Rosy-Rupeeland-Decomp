@@ -263,6 +263,27 @@ s32 RetailRecordManager_GetType1Tier(void *manager_pointer, s32 category_index,
     return -1;
 }
 
+/* Test whether a category contains a record ID in the bank selected by that
+ * record's metadata. All manager, category, slot, and record storage is borrowed. */
+s32 RetailRecordManager_CategoryContainsRecordId(void *manager_pointer,
+                                                  s32 category_index, s32 id)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u8 *category = *(u8 **)(manager + category_index * 4);
+    u32 bank = RetailRecord_GetCategoryBank((u16)id);
+    u32 count = (u32)RecordSelection_GetChannelCount(category, (s32)bank);
+    u8 *slots = *(u8 **)(category + 0x18 + bank * 4);
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *record = *(u8 **)(slots + index * 0x10 + 4);
+
+        if (*(u16 *)record == (u16)id)
+            return 1;
+    }
+    return 0;
+}
+
 /* Apply each bank-one record's default value at metadata +8 to its slot. */
 void RetailRecordManager_ApplyDefaultValues(void *manager_pointer)
 {

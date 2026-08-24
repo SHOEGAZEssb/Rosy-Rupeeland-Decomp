@@ -3,9 +3,9 @@
 .extern data_021f5128
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.extern func_0207a99c
-.global func_020177c8
-func_020177c8:
+.extern RetailRecordManager_CategoryContainsRecordId
+.global GamePhaseActorScriptVm_QueryRetailRecordPresent
+GamePhaseActorScriptVm_QueryRetailRecordPresent:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -17,7 +17,7 @@ func_020177c8:
     ldr r0, [r2]
     mov r2, r4
     mov r4, #0
-    bl func_0207a99c
+    bl RetailRecordManager_CategoryContainsRecordId
     cmp r0, #0
     movne r4, #1
     mov r0, r5
@@ -26,4 +26,4 @@ func_020177c8:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_02017814: .word data_021f5128
-    .size func_020177c8, . - func_020177c8
+    .size GamePhaseActorScriptVm_QueryRetailRecordPresent, . - GamePhaseActorScriptVm_QueryRetailRecordPresent

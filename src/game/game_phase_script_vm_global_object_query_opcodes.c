@@ -9,7 +9,9 @@ extern void *data_021f5128;
 extern void *RetailRecordManager_IsSelectorDiscovered(void *context, s32 selector);
 extern void *RetailRecordManager_IsSelectorAvailable(void *context, s32 selector);
 extern void *RetailRecordManager_CategoryHasAvailableEntry(void *context, s32 selector);
-extern void *func_0207a99c(void *context, s32 first, s32 second);
+extern s32 RetailRecordManager_CategoryContainsRecordId(void *manager,
+                                                         s32 category_index,
+                                                         s32 id);
 extern s32 RetailRecordManager_GetType1Tier(void *manager, s32 category_index,
                                             s32 id);
 #ifdef __cplusplus
@@ -24,13 +26,15 @@ s32 func_02017788(GamePhaseActorScriptVm *self)
     return 0;
 }
 
-/* Pop second and first selectors, test func_0207a99c, store its non-null status as the VM result, and return zero. */
-s32 func_020177c8(GamePhaseActorScriptVm *self)
+/* Pop a record ID and category index, store whether that category contains the
+ * record, update the VM condition, and return zero. */
+s32 GamePhaseActorScriptVm_QueryRetailRecordPresent(GamePhaseActorScriptVm *self)
 {
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 id = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 category_index = (s32)GamePhaseScriptVm_Pop(&self->base);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
-                  func_0207a99c(data_021f5128, first, second) != 0);
+        RetailRecordManager_CategoryContainsRecordId(data_021f5128,
+                                                      category_index, id) != 0);
     return 0;
 }
 

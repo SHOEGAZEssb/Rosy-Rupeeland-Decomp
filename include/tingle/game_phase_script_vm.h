@@ -210,7 +210,7 @@ s32 GamePhaseActorScriptVm_RuntimeControlNoOp(GamePhaseActorScriptVm *self);
 s32 func_02017718(GamePhaseActorScriptVm *self);
 s32 func_02017750(GamePhaseActorScriptVm *self);
 s32 func_02017788(GamePhaseActorScriptVm *self);
-s32 func_020177c8(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_QueryRetailRecordPresent(GamePhaseActorScriptVm *self);
 s32 func_02017818(GamePhaseActorScriptVm *self);
 s32 func_0201787c(GamePhaseActorScriptVm *self);
 s32 func_020178bc(GamePhaseActorScriptVm *self);
