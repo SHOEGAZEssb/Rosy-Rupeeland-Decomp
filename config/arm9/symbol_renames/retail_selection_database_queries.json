@@ -1,0 +1,4 @@
+{
+  "RetailSelectionDatabase_FindResource": "RetailSelectionDatabase_GetMessageRecordById",
+  "func_02079460": "RetailSelectionDatabase_GetRecordById"
+}

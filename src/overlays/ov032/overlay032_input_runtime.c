@@ -45,7 +45,7 @@ extern void TitleDialog_ClearTextRect(void *);
 extern u32 TitleDialog_UpdateTextPage(...);
 extern s32 DisplayBrightness_GetCurrent(void *);
 extern void DisplayBrightness_StartTransition(...);
-extern void *RetailSelectionDatabase_FindResource(...);
+extern void *RetailSelectionDatabase_GetMessageRecordById(...);
 extern void TitleDialog_SetText(...);
 #ifdef __cplusplus
 }
@@ -217,5 +217,5 @@ extern "C" void func_ov032_021fe23c(void *scene, s32 enabled)
 extern "C" void func_ov032_021fe2bc(void *scene, u32 messageId)
 {
     FIELD(u32, scene, 0xbd4) = messageId;
-    TitleDialog_SetText(FIELD(void *, scene, 0x10), RetailSelectionDatabase_FindResource(data_021f4020, (u16)messageId), 0);
+    TitleDialog_SetText(FIELD(void *, scene, 0x10), RetailSelectionDatabase_GetMessageRecordById(data_021f4020, (u16)messageId), 0);
 }

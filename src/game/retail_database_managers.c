@@ -35,7 +35,7 @@ extern u8 data_020c6d18[];
 extern void LanguageDatabase_CopyRecordById(void *manager, u16 id, void *destination,
                           u32 destination_size);
 extern void *LanguageDatabase_GetRecordById(void *manager, u32 identifier);
-extern void *RetailSelectionDatabase_FindResource(void *manager, u16 identifier);
+extern void *RetailSelectionDatabase_GetMessageRecordById(void *manager, u16 identifier);
 extern void RetailSelectionHistoryEntry_Init(void *entry, u16 identifier);
 extern void OS_Halt(void);
 
@@ -90,7 +90,7 @@ void *RetailSelectionHistory_GetMessageRecord(void *entry_pointer)
 {
     RetailSelectionEntry *entry = (RetailSelectionEntry *)entry_pointer;
 
-    return RetailSelectionDatabase_FindResource(data_021f4020, entry->identifier);
+    return RetailSelectionDatabase_GetMessageRecordById(data_021f4020, entry->identifier);
 }
 
 /* Return the borrowed text field at +6 in the database record referenced by
@@ -296,11 +296,11 @@ void RetailSelectionDatabase_Load(void *manager_pointer)
     func_02097f94(data_021f5f18);
 }
 
-/* Resolve a selection record's language resource at retail 0x02079408.
+/* Resolve a selection record's borrowed message at retail 0x02079408.
  * `manager_pointer` borrows the loaded 0x66-byte record array and `id` selects
  * its leading ID. The returned descriptor remains owned by the language
  * database; retail halts when the requested selection record does not exist. */
-void *RetailSelectionDatabase_FindResource(void *manager_pointer, u16 id)
+void *RetailSelectionDatabase_GetMessageRecordById(void *manager_pointer, u16 id)
 {
     u8 *manager = (u8 *)manager_pointer;
     u8 *records = *(u8 **)manager;
@@ -312,6 +312,25 @@ void *RetailSelectionDatabase_FindResource(void *manager_pointer, u16 id)
 
         if (*(u16 *)record == id)
             return LanguageDatabase_GetRecordById(gLanguageDatabase, *(u16 *)(record + 4));
+    }
+    OS_Halt();
+    return 0;
+}
+
+/* Return the manager-owned selection record with the requested leading ID.
+ * Retail halts when the record does not exist. */
+void *RetailSelectionDatabase_GetRecordById(void *manager_pointer, u16 id)
+{
+    u8 *manager = (u8 *)manager_pointer;
+    u8 *records = *(u8 **)manager;
+    u32 count = *(u32 *)(manager + 8);
+    u32 index;
+
+    for (index = 0; index < count; ++index) {
+        u8 *record = records + index * 0x66;
+
+        if (*(u16 *)record == id)
+            return record;
     }
     OS_Halt();
     return 0;

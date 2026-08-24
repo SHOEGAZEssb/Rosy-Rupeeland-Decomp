@@ -5,7 +5,7 @@
 .extern data_021f5ed0
 .extern data_ov031_021fe6e4
 .extern GraphicsSpriteState_SetAnimationIndex
-.extern RetailSelectionDatabase_FindResource
+.extern RetailSelectionDatabase_GetMessageRecordById
 .extern TitleDialog_SetText
 .extern TitleDialog_UpdateTextPage
 .extern TitleDialog_ResetAfterClose
@@ -25,7 +25,7 @@ func_ov031_021fdd04:
     mov r1, r5, lsl #0x10
     ldr r0, L_021fddb0
     mov r1, r1, lsr #0x10
-    bl RetailSelectionDatabase_FindResource
+    bl RetailSelectionDatabase_GetMessageRecordById
     mov r1, r0
     ldr r0, [r4, #0x98]
     mov r2, #0x0

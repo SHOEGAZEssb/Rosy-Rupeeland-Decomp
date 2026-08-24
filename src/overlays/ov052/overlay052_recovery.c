@@ -39,7 +39,7 @@ extern u32 genrand_int32(void); extern void *DisplayBrightnessPair_GetScreen(voi
 extern void DisplayBrightness_StartTransition(void *, s32, s32, s32); extern s32 DisplayBrightness_GetCurrent(void *);
 extern void Sound_Play(void *, s32, s32); extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GamePhaseRuntime_SetPlacementMode(void *, s32, s32); extern void GamePhaseAreaScene_SetEnabled(void *, s32);
-extern void GamePhaseRuntime_ApplyScreenMode(void *, s32, s32); extern void *RetailSelectionDatabase_FindResource(void *, u16);
+extern void GamePhaseRuntime_ApplyScreenMode(void *, s32, s32); extern void *RetailSelectionDatabase_GetMessageRecordById(void *, u16);
 extern void *SceneManager_GetCurrent(void *); extern s32 Scene_HasFlags03(void *);
 extern void Scene_ClearFlags03(void *); extern void Scene_SetFlags03(void *);
 extern void GXS_SetGraphicsMode(u32); extern void GX_SetBankForSubBG(u32); extern void func_020aea7c(u32);
@@ -175,7 +175,7 @@ void Overlay052Scene_SetMessage(void *scene, void *message, u32 reveal)
 
 /* Resolve a borrowed message-table entry and forward it to the menu VM. */
 void Overlay052Scene_SetMessageById(void *scene,u16 messageId,u32 reveal)
-{Overlay052Scene_SetMessage(scene,RetailSelectionDatabase_FindResource(data_021f4020,messageId),reveal);}
+{Overlay052Scene_SetMessage(scene,RetailSelectionDatabase_GetMessageRecordById(data_021f4020,messageId),reveal);}
 
 /* Enter state four, play the confirmation cue, and start the fade. */
 void Overlay052Scene_BeginConfirmationFade(void *scene)

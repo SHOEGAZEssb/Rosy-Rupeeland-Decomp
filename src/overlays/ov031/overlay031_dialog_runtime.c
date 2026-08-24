@@ -13,7 +13,7 @@ extern "C" {
 #endif
 extern void TitleDialog_ClearTextRect(void *);
 extern void TitleDialog_ResetAfterClose(void *);
-extern void *RetailSelectionDatabase_FindResource(const void *, u16);
+extern void *RetailSelectionDatabase_GetMessageRecordById(const void *, u16);
 extern void TitleDialog_SetText(void *, void *, s32);
 extern u32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -39,7 +39,7 @@ extern "C" void func_ov031_021fdd04(void *scene, s32 messageId)
         return;
     }
     TitleDialog_ClearTextRect(dialog);
-    void *message = RetailSelectionDatabase_FindResource(data_021f4020, (u16)messageId);
+    void *message = RetailSelectionDatabase_GetMessageRecordById(data_021f4020, (u16)messageId);
     TitleDialog_SetText(dialog, message, 0);
     u32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     s32 selection = (result & 0x200) != 0 ? FIELD(s32, dialog, 0xe8) : 0;
