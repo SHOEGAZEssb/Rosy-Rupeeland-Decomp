@@ -30,8 +30,8 @@
 .extern Type7Actor_ClearTarget
 .extern func_0206ec68
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02078384
-.extern func_020783cc
+.extern RetailResourceDescriptorManager_UpdateNextGroup
+.extern RetailResourceDescriptorManager_AdvanceFrame
 .extern func_ov059_0220fd20
 .extern GameWork_TestFlag
 .extern gDebugFont
@@ -158,10 +158,10 @@ L_020075b4:
     cmp r0, #0x0
     beq L_020075d0
     ldr r0, L_02007850
-    bl func_020783cc
+    bl RetailResourceDescriptorManager_AdvanceFrame
 L_020075d0:
     ldr r0, L_02007850
-    bl func_02078384
+    bl RetailResourceDescriptorManager_UpdateNextGroup
 L_020075d8:
     add r0, r4, #0x3000
     ldrb r1, [r0, #0xcc]

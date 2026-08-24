@@ -50,7 +50,7 @@ extern void SoundContext_Update(void *context);
 extern void func_02078ae4(void);
 extern void RetailSaveContext_InitializeGlobal(void);
 extern void func_0206328c(void);
-extern void func_02078370(void);
+extern void RetailResourceDescriptorManager_InitGlobal(void);
 extern void func_0206f780(void);
 extern void func_0207a268(void);
 extern s32 RetailSaveContext_IdentifyBackupDevice(RuntimeContext *context);
@@ -137,7 +137,7 @@ s32 TingleRecoveredCanonicalStartup(void)
     STARTUP_STEP("manager 02078ae4", func_02078ae4());
     STARTUP_STEP("runtime context", RetailSaveContext_InitializeGlobal());
     STARTUP_STEP("manager 0206328c", func_0206328c());
-    STARTUP_STEP("manager 02078370", func_02078370());
+    STARTUP_STEP("resource descriptor manager", RetailResourceDescriptorManager_InitGlobal());
     STARTUP_STEP("manager 0206f780", func_0206f780());
     STARTUP_STEP("manager 0207a268", func_0207a268());
 

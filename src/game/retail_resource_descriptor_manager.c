@@ -94,7 +94,7 @@ void RetailResourceDescriptorGroup_AllocateDescriptorAtSlot(
 }
 
 /* Load grouped 10-byte descriptor records exactly as retail 0x02078428. */
-void *func_02078428(void *manager_pointer)
+void *RetailResourceDescriptorManager_LoadDatabase(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     FSFile file;
@@ -162,9 +162,9 @@ void *func_02078428(void *manager_pointer)
 }
 
 /* Initialize the fixed retail grouped resource manager at 0x02078370. */
-void func_02078370(void)
+void RetailResourceDescriptorManager_InitGlobal(void)
 {
-    func_02078428(data_021f38fc);
+    RetailResourceDescriptorManager_LoadDatabase(data_021f38fc);
 }
 
 /* Advance one active resource descriptor to the supplied 16-bit frame. Every
@@ -220,7 +220,7 @@ void RetailResourceDescriptorGroup_UpdateForFrame(void *group_pointer,
 /* Update one of the manager's 271 optional groups per call, then advance the
  * retained round-robin index with retail wraparound. The frame at +0x444 is
  * borrowed as a scalar and no allocation or hardware operation occurs. */
-void func_02078384(void *manager_pointer)
+void RetailResourceDescriptorManager_UpdateNextGroup(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     u32 index = *(u32 *)(manager + 0x43c);
@@ -237,7 +237,7 @@ void func_02078384(void *manager_pointer)
 
 /* Advance the manager's retained 16-bit frame by one, or by one hundred when
  * fast-update flag bit zero at +0x440 is set. Overflow wraps as in retail. */
-void func_020783cc(void *manager_pointer)
+void RetailResourceDescriptorManager_AdvanceFrame(void *manager_pointer)
 {
     u8 *manager = (u8 *)manager_pointer;
     u16 frame = *(u16 *)(manager + 0x444);
@@ -246,4 +246,3 @@ void func_020783cc(void *manager_pointer)
                   ((*(u32 *)(manager + 0x440) & 1) != 0 ? 100 : 1));
     *(u16 *)(manager + 0x444) = frame;
 }
-

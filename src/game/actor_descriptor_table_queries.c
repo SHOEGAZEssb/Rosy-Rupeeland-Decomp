@@ -502,7 +502,8 @@ u32 ActorDescriptorComponent_GetCellResourceId(void *self)
  * All returned storage is borrowed and the retail routine performs no bounds
  * checks, so callers must supply validated table and record indices.
  */
-void *ActorDescriptorTable_GetRecord(void **tables, s32 tableIndex, s32 recordIndex)
+void *RetailResourceDescriptorManager_GetDescriptor(
+    void **tables, s32 tableIndex, s32 recordIndex)
 {
     void **table = *(void ***)tables[tableIndex];
 
@@ -513,7 +514,8 @@ void *ActorDescriptorTable_GetRecord(void **tables, s32 tableIndex, s32 recordIn
  * Return the count word at +4 of one optional table entry. Indices at or
  * above the retail table capacity (0x10e), and null entries, return zero.
  */
-s32 func_020783f0(void **tables, s32 index)
+s32 RetailResourceDescriptorManager_GetGroupDescriptorCount(
+    void **tables, s32 index)
 {
     u8 *entry;
 

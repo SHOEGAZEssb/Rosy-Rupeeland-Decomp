@@ -1,0 +1,8 @@
+{
+  "func_02078370": "RetailResourceDescriptorManager_InitGlobal",
+  "func_02078384": "RetailResourceDescriptorManager_UpdateNextGroup",
+  "func_020783cc": "RetailResourceDescriptorManager_AdvanceFrame",
+  "func_020783f0": "RetailResourceDescriptorManager_GetGroupDescriptorCount",
+  "ActorDescriptorTable_GetRecord": "RetailResourceDescriptorManager_GetDescriptor",
+  "func_02078428": "RetailResourceDescriptorManager_LoadDatabase"
+}

@@ -27,13 +27,15 @@ extern void __construct_array(void *array, u32 count, u32 elementSize,
 extern void func_02057570(void *record);
 extern void func_020575a0(void *record);
 extern void func_02057ca4(void *state);
-extern void *ActorDescriptorTable_GetRecord(void **tables, s32 tableIndex, s32 recordIndex);
+extern void *RetailResourceDescriptorManager_GetDescriptor(
+    void **tables, s32 tableIndex, s32 recordIndex);
 extern void ActorDescriptor_SetActive(void *record, s32 enabled);
 extern s32 GameWork_TestFlag(void *gameWork, s32 flag);
 extern void *GraphicsSpriteGroupOwner_CreateGroupWrapper(void *owner);
 extern void S16Rectangle_Translate(void *rectangle, s32 x, s32 y);
 extern void ActorKind8_PopulateInteractionPresentations(void *actor, s32 playSound);
-extern s32 func_020783f0(void **tables, s32 tableIndex);
+extern s32 RetailResourceDescriptorManager_GetGroupDescriptorCount(
+    void **tables, s32 tableIndex);
 extern void func_020575bc(void *state, const void *record, void *owner,
                           s32 valueA, s32 valueB);
 extern void *gSoundContext;
@@ -337,7 +339,7 @@ void *func_020579b0(void *self, const void *descriptor)
 
     runtime = *(u8 **)data_021052fc;
     tableIndex = **(s32 **)(runtime + 0x30bc);
-    record = (u8 *)ActorDescriptorTable_GetRecord(data_021f38fc, tableIndex,
+    record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(data_021f38fc, tableIndex,
                                 *(s32 *)(actor + 0x3ac));
     if (*(s32 *)(actor + 0x3c0) == -1) {
         ActorDescriptor_SetActive(record, 1);
@@ -406,7 +408,7 @@ void ActorKind8_CreatePrimaryPresentation(void *self)
     u8 *actor = (u8 *)self;
     u8 *runtime = *(u8 **)data_021052fc;
     s32 tableIndex = **(s32 **)(runtime + 0x30bc);
-    u8 *record = (u8 *)ActorDescriptorTable_GetRecord(
+    u8 *record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
     u32 mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
     u32 lastResource;
@@ -501,7 +503,7 @@ void ActorKind8_UpdateInteractionPresentations(void *self)
     } else {
         u8 *runtime = *(u8 **)data_021052fc;
         s32 tableIndex = **(s32 **)(runtime + 0x30bc);
-        u8 *record = (u8 *)ActorDescriptorTable_GetRecord(
+        u8 *record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
         s32 enabled = *(s32 *)(actor + 0x3c0) == -1 ||
             GameWork_TestFlag(gGameWork, *(s32 *)(actor + 0x3c0));
@@ -514,7 +516,7 @@ void ActorKind8_UpdateInteractionPresentations(void *self)
     {
         u8 *runtime = *(u8 **)data_021052fc;
         s32 tableIndex = **(s32 **)(runtime + 0x30bc);
-        u8 *record = (u8 *)ActorDescriptorTable_GetRecord(
+        u8 *record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
         u32 mode;
         s32 index;
@@ -594,7 +596,7 @@ void func_020582b8(void *screenPosition, void *self,
 
     runtime = *(u8 **)data_021052fc;
     tableIndex = **(s32 **)(runtime + 0x30bc);
-    record = (u8 *)ActorDescriptorTable_GetRecord(
+    record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
     mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
     if (mode == 4 || mode == 5) {
@@ -671,7 +673,7 @@ s32 ActorKind8_HandlePlayerContact(void *self)
 
     if (*(u32 *)(actor + 0x3dc) == 0) {
         tableIndex = **(s32 **)(runtime + 0x30bc);
-        record = (u8 *)ActorDescriptorTable_GetRecord(
+        record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
             data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
         mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
         if (mode == 4 || mode == 5) {
@@ -702,7 +704,7 @@ s32 ActorKind8_HandlePlayerContact(void *self)
 
     Actor_SetActive(actor, 1);
     tableIndex = **(s32 **)(runtime + 0x30bc);
-    record = (u8 *)ActorDescriptorTable_GetRecord(
+    record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
         data_021f38fc, tableIndex, *(s32 *)(actor + 0x3ac));
     mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
     if (mode != 2) {
@@ -818,7 +820,8 @@ void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
     u8 *runtime = *(u8 **)data_021052fc;
     s32 tableIndex = **(s32 **)(runtime + 0x30bc);
     s32 group;
-    s32 groupCount = func_020783f0(data_021f38fc, tableIndex);
+    s32 groupCount = RetailResourceDescriptorManager_GetGroupDescriptorCount(
+        data_021f38fc, tableIndex);
 
     for (group = 0; group < groupCount; ++group) {
         u8 *record;
@@ -828,7 +831,8 @@ void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
 
         if (group != *(s32 *)(actor + 0x3ac))
             continue;
-        record = (u8 *)ActorDescriptorTable_GetRecord(data_021f38fc, tableIndex, group);
+        record = (u8 *)RetailResourceDescriptorManager_GetDescriptor(
+            data_021f38fc, tableIndex, group);
         mode = (*(u16 *)(record + 4) & 0x0ff0) >> 4;
         entryCount = *(u16 *)(record + 0x0c);
         if ((mode == 4 || mode == 5) && entryCount != 0) {
