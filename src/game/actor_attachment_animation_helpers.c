@@ -20,7 +20,7 @@ extern void Position_AdjustForTerrainHeight(void *position);
  * nibble selects the signed direction byte in the fixed recovered lookup
  * table. No state changes and the zero-vector result follows SDK atan2.
  */
-s32 func_02057084(s32 x, s32 y)
+s32 ActorAttachment_DirectionFromVector(s32 x, s32 y)
 {
     u16 angle = func_020ae024(y, x);
     return data_020e3f50[(u32)angle >> 12];
@@ -43,7 +43,7 @@ void Actor_UpdateAttachmentDirectionFromVector(void *self, s32 x, s32 y)
         return;
     }
 
-    direction = func_02057084(x, y);
+    direction = ActorAttachment_DirectionFromVector(x, y);
     actor[0xd4] = (u8)direction;
     GraphicsSpriteState_SetAnimationIndex(attachment, (direction + actor[0xe7]) & 0xff);
     *(u16 *)(attachment + 0x24) &= (u16)~0x40;

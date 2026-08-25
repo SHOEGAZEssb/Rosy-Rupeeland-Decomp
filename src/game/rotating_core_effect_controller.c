@@ -67,7 +67,7 @@ extern void VecFx32Object_Assign(ControllerVector *, const ControllerVector *);
 extern void VecFx32Object_InitSum(ControllerVector *, const ControllerVector *,
                           const ControllerVector *);
 extern void *AnimationResource_Init(ResourceDescriptor *, s32, s32, s32);
-extern void *func_0206b628(void *, void *, ResourceDescriptor *,
+extern void *AuxiliaryPresentationCore_Init(void *, void *, ResourceDescriptor *,
                            ResourceDescriptor *, ResourceDescriptor *, s32,
                            s32, s32, s32, s32, s32, s32, s32);
 extern void AuxiliaryCore_Destroy(void *);
@@ -129,7 +129,7 @@ RotatingCoreEffectController *RotatingCoreEffectController_Init(
 
     self->core08 = (u8 *)Heap_Alloc(0x308, data_020d6a90, 4, &gHeapContext);
     if (self->core08) {
-        self->core08 = (u8 *)func_0206b628(
+        self->core08 = (u8 *)AuxiliaryPresentationCore_Init(
             self->core08, owner, self->firstDescriptor0c,
             self->secondDescriptor10, self->thirdDescriptor14,
             self->position18.x04, self->position18.y08,

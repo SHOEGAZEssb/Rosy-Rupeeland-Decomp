@@ -86,7 +86,7 @@ DECLARE_ACTOR_CTOR(func_02056580);
 DECLARE_ACTOR_CTOR(func_020567f4);
 DECLARE_ACTOR_CTOR(func_02056880);
 DECLARE_ACTOR_CTOR(func_02056be0);
-DECLARE_ACTOR_CTOR(func_020579b0);
+DECLARE_ACTOR_CTOR(ActorKind8_Init);
 DECLARE_ACTOR_CTOR(func_ov075_02212ae0);
 DECLARE_ACTOR_CTOR(func_ov075_02212bb8);
 DECLARE_ACTOR_CTOR(func_ov075_0221352c);
@@ -234,7 +234,7 @@ static ActorFactorySpec selectFactorySpec(const ActorSpawnDescriptor *descriptor
         default: return (ActorFactorySpec)SPEC(0x1ec, RuntimeActorScriptVariant_InitAlternate);
         }
     case 7: return (ActorFactorySpec)SPEC(0x2b8, Type7Actor_Init);
-    case 8: return (ActorFactorySpec)SPEC(0x3e0, func_020579b0);
+    case 8: return (ActorFactorySpec)SPEC(0x3e0, ActorKind8_Init);
     case 9:
         switch (data_020ed470[subtype * 0x30 + 1]) {
         case 0: return (ActorFactorySpec)SPEC(0x274, func_ov088_02217a3c);

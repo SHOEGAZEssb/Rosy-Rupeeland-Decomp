@@ -7,7 +7,7 @@
 .extern VecFx32Object_InitCopy
 .extern AnimationResource_Init
 .extern FieldEffect_Init
-.extern func_0206b628
+.extern AuxiliaryPresentationCore_Init
 .extern AuxiliaryCoreSprite_SetVisible
 .extern gHeapContext
 
@@ -107,7 +107,7 @@ RotatingCoreEffectController_Init: ; 0x02025300
     ldr r2, [r6, #0xc]
     ldr r3, [r6, #0x10]
     mov r1, r5
-    bl func_0206b628
+    bl AuxiliaryPresentationCore_Init
 .L_0202546c:
     mov r1, #0x1
     str r0, [r6, #0x8]

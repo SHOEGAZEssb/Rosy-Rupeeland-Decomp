@@ -46,7 +46,7 @@
 .extern func_020567f4
 .extern func_02056880
 .extern func_02056be0
-.extern func_020579b0
+.extern ActorKind8_Init
 .extern func_ov075_02212ae0
 .extern func_ov075_02212bb8
 .extern func_ov075_0221352c
@@ -2040,7 +2040,7 @@ ActorCollection_SpawnActorFromDescriptor: ; 0x0202ecd0
     movs r4, r0
     beq .L_020308a4
     mov r1, r5
-    bl func_020579b0
+    bl ActorKind8_Init
     mov r4, r0
 .L_020308a4:
     mov r0, r4

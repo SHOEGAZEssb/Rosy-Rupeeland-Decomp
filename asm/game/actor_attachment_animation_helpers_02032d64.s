@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/actor_attachment_animation_helpers.c.
 .text
-.extern func_02057084
+.extern ActorAttachment_DirectionFromVector
 .extern GraphicsSpriteState_SetAnimationIndex
 
     .global Actor_UpdateAttachmentDirectionFromVector
@@ -13,7 +13,7 @@ Actor_UpdateAttachmentDirectionFromVector: ; 0x02032d64
     ldmeqia sp!, {r4, pc}
     mov r0, r1
     mov r1, r2
-    bl func_02057084
+    bl ActorAttachment_DirectionFromVector
     mov r2, r0
     strb r2, [r4, #0xd4]
     ldrb r1, [r4, #0xe7]

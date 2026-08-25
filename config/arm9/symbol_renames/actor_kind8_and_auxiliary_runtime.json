@@ -1,0 +1,16 @@
+{
+  "func_02057084": "ActorAttachment_DirectionFromVector",
+  "func_02057570": "ActorKind8InteractionPresentation_Init",
+  "func_020575a0": "ActorKind8InteractionPresentation_Destroy",
+  "func_020575bc": "ActorKind8InteractionPresentation_Bind",
+  "func_020577ec": "ActorKind8DelayedGridEffect_Init",
+  "func_020579b0": "ActorKind8_Init",
+  "func_02057ca4": "ActorKind8PayloadList_Init",
+  "func_02057ce4": "ActorKind8PayloadList_Clear",
+  "func_02057d24": "ActorKind8_Destroy",
+  "func_02057dcc": "ActorKind8_Delete",
+  "func_020582b8": "ActorKind8_UpdatePresentation",
+  "func_0206b4b0": "AuxiliaryCoreSprite_Init",
+  "func_0206b628": "AuxiliaryPresentationCore_Init",
+  "func_0206c1b4": "AuxiliaryCoreHistoryRecord_ConfigureEffect"
+}

@@ -24,9 +24,9 @@ extern void AnimationResourceState_Destroy(void *state);
 extern void __construct_array(void *array, u32 count, u32 elementSize,
                               ObjectLifecycle constructor,
                               ObjectLifecycle destructor);
-extern void func_02057570(void *record);
-extern void func_020575a0(void *record);
-extern void func_02057ca4(void *state);
+extern void ActorKind8InteractionPresentation_Init(void *record);
+extern void ActorKind8InteractionPresentation_Destroy(void *record);
+extern void ActorKind8PayloadList_Init(void *state);
 extern void *RetailResourceDescriptorManager_GetDescriptor(
     void **tables, s32 tableIndex, s32 recordIndex);
 extern void ActorDescriptor_SetActive(void *record, s32 enabled);
@@ -36,7 +36,7 @@ extern void RectS16_Translate(void *rectangle, s32 x, s32 y);
 extern void ActorKind8_PopulateInteractionPresentations(void *actor, s32 playSound);
 extern s32 RetailResourceDescriptorManager_GetGroupDescriptorCount(
     void **tables, s32 tableIndex);
-extern void func_020575bc(void *state, const void *record, void *owner,
+extern void ActorKind8InteractionPresentation_Bind(void *state, const void *record, void *owner,
                           s32 valueA, s32 valueB);
 extern void *gSoundContext;
 extern s32 data_020e3f90[];
@@ -173,7 +173,7 @@ s32 ActorKind8_ReleaseInteractionPresentation(void *self)
  * presentation state and origin are borrowed/copied respectively; delay is
  * randomized in retail frame units (0, 20, 40, or 60). Returns self.
  */
-void *func_020577ec(void *self, s32 mode, void *presentation,
+void *ActorKind8DelayedGridEffect_Init(void *self, s32 mode, void *presentation,
                     const void *origin)
 {
     u8 *request = (u8 *)self;
@@ -279,7 +279,7 @@ void ActorKind8_AppendPayloadNode(void *self, void *payload)
 }
 
 /* Initialize one 0x24-byte interaction-presentation record. */
-void func_02057570(void *self)
+void ActorKind8InteractionPresentation_Init(void *self)
 {
     u8 *record = (u8 *)self;
 
@@ -293,14 +293,14 @@ void func_02057570(void *self)
 }
 
 /* Release one interaction-presentation record in reverse ownership order. */
-void func_020575a0(void *self)
+void ActorKind8InteractionPresentation_Destroy(void *self)
 {
     AnimationResourceState_ReleaseResources(self);
     AnimationResourceState_Destroy(self);
 }
 
 /* Initialize the kind-eight actor's embedded four-word state object. */
-void func_02057ca4(void *self)
+void ActorKind8PayloadList_Init(void *self)
 {
     u8 *state = (u8 *)self;
 
@@ -316,7 +316,7 @@ void func_02057ca4(void *self)
  * interaction records are owned by the actor; this function allocates no host
  * resources and returns self after applying the retail bounds adjustments.
  */
-void *func_020579b0(void *self, const void *descriptor)
+void *ActorKind8_Init(void *self, const void *descriptor)
 {
     u8 *actor = (u8 *)self;
     const u8 *config = (const u8 *)descriptor;
@@ -330,12 +330,12 @@ void *func_020579b0(void *self, const void *descriptor)
     *(const void ***)actor = data_020e408c;
     AnimationResourceState_InitEmbedded(actor + 0x1f0);
     __construct_array(actor + 0x1fc, 12, 0x24,
-                      func_02057570, func_020575a0);
+                      ActorKind8InteractionPresentation_Init, ActorKind8InteractionPresentation_Destroy);
     *(u32 *)(actor + 0x3bc) |= 0x80000000u;
     *(s32 *)(actor + 0x3c0) = -1;
     *(u32 *)(actor + 0x3c8) = 0;
     *(u32 *)(actor + 0x3cc) = 0;
-    func_02057ca4(actor + 0x3d0);
+    ActorKind8PayloadList_Init(actor + 0x3d0);
     *(u32 *)(actor + 0x3ac) = *(const u16 *)(config + 2);
     *(s32 *)(actor + 0x3c0) = *(const s32 *)(config + 0x48);
 
@@ -570,7 +570,7 @@ void ActorKind8_SyncAuxiliarySpriteLayer(void *self, const void *primarySprite)
  * sprite group. The screen-position record and view position are caller-owned
  * frame data.
  */
-void func_020582b8(void *screenPosition, void *self,
+void ActorKind8_UpdatePresentation(void *screenPosition, void *self,
                    const void *viewPosition)
 {
     u8 *actor = (u8 *)self;
@@ -685,7 +685,7 @@ s32 ActorKind8_HandlePlayerContact(void *self)
                     0x20, data_020e414c, 4, &gHeapContext);
 
                 if (request != 0)
-                    func_020577ec(request, mode, actor + 0x1fc,
+                    ActorKind8DelayedGridEffect_Init(request, mode, actor + 0x1fc,
                                   actor + 0x18);
                 ActorKind8_AppendPayloadNode(actor + 0x3d0, request);
             }
@@ -698,7 +698,7 @@ s32 ActorKind8_HandlePlayerContact(void *self)
                         0x20, data_020e414c, 4, &gHeapContext);
 
                     if (request != 0)
-                        func_020577ec(request, mode, state, actor + 0x18);
+                        ActorKind8DelayedGridEffect_Init(request, mode, state, actor + 0x18);
                     ActorKind8_AppendPayloadNode(actor + 0x3d0, request);
                 }
             }
@@ -725,7 +725,7 @@ s32 ActorKind8_HandlePlayerContact(void *self)
 }
 
 /* Release every node owned by the kind-eight actor's embedded linked list. */
-void func_02057ce4(void *self)
+void ActorKind8PayloadList_Clear(void *self)
 {
     u8 *list = (u8 *)self;
     u8 *node = *(u8 **)(list + 4);
@@ -760,7 +760,7 @@ void ActorKind8_RemovePayloadNode(void *self, void *nodePointer)
     Heap_Free(node);
     --*(u32 *)(list + 0x0c);
     if (*(u32 *)(list + 0x0c) == 0)
-        func_02057ce4(list);
+        ActorKind8PayloadList_Clear(list);
 }
 
 /* Common kind-eight teardown; optionally release the actor allocation itself. */
@@ -785,12 +785,12 @@ static void *destroyKind8Actor(void *self, s32 releaseAllocation)
         node = next;
     }
     *(const void ***)(actor + 0x3d0) = data_020e4064;
-    func_02057ce4(actor + 0x3d0);
+    ActorKind8PayloadList_Clear(actor + 0x3d0);
     {
         s32 index;
 
         for (index = 11; index >= 0; --index)
-            func_020575a0(actor + 0x1fc + index * 0x24);
+            ActorKind8InteractionPresentation_Destroy(actor + 0x1fc + index * 0x24);
     }
     AnimationResourceState_Destroy(actor + 0x1f0);
     RuntimeActor_DestroyAlternateEntry(actor);
@@ -800,13 +800,13 @@ static void *destroyKind8Actor(void *self, s32 releaseAllocation)
 }
 
 /* Destroy a kind-eight actor while retaining its caller-owned allocation. */
-void *func_02057d24(void *self)
+void *ActorKind8_Destroy(void *self)
 {
     return destroyKind8Actor(self, 0);
 }
 
 /* Destroy a heap-owned kind-eight actor and return its former identity. */
-void *func_02057dcc(void *self)
+void *ActorKind8_Delete(void *self)
 {
     return destroyKind8Actor(self, 1);
 }
@@ -840,7 +840,7 @@ void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
         entryCount = *(u16 *)(record + 0x0c);
         if ((mode == 4 || mode == 5) && entryCount != 0) {
             if (*(s16 *)(actor + 0x218) == 0) {
-                func_020575bc(actor + 0x1fc, record + 8,
+                ActorKind8InteractionPresentation_Bind(actor + 0x1fc, record + 8,
                               *(void **)(actor + 0x1ec), 0, -0x10);
                 if (playSound != 0)
                     Sound_PlayOwnedEffect(gSoundContext, 0xf5, 1,
@@ -854,12 +854,12 @@ void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
             if (*(s16 *)(state + 0x1c) != 0)
                 continue;
             if (mode == 2) {
-                func_020575bc(state, record + 8,
+                ActorKind8InteractionPresentation_Bind(state, record + 8,
                               *(void **)(actor + 0x1ec),
                               data_020e3fc0[entry],
                               data_020e3ff0[entry]);
             } else {
-                func_020575bc(state, record + 8,
+                ActorKind8InteractionPresentation_Bind(state, record + 8,
                               *(void **)(actor + 0x1ec),
                               data_020e4020[entry],
                               data_020e3f90[entry]);
@@ -876,7 +876,7 @@ void ActorKind8_PopulateInteractionPresentations(void *self, s32 playSound)
  * owned sprite state in owner. x/y are stored in pixels on the sprite and in
  * the record; the initial random delay is measured in frames (0..59).
  */
-void func_020575bc(void *self, const void *descriptor, void *owner,
+void ActorKind8InteractionPresentation_Bind(void *self, const void *descriptor, void *owner,
                    s32 x, s32 y)
 {
     u8 *state = (u8 *)self;

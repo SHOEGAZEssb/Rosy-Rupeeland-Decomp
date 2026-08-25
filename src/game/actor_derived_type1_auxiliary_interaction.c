@@ -46,7 +46,7 @@ extern const char data_020e5820[];
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *AnimationResource_Init(void *resource, s32 first, s32 second, s32 third);
 extern s32 func_020befec(s32 numerator, s32 denominator);
-extern void *func_0206b628(void *allocation, void *owner, void *first,
+extern void *AuxiliaryPresentationCore_Init(void *allocation, void *owner, void *first,
                            void *second, void *third, s32 x, s32 y, s32 z,
                            s32 argument8, s32 argument9, s32 argument10,
                            s32 argument11, s32 argument12);
@@ -689,7 +689,7 @@ void *AuxiliaryCoreSprite_InitControlled(void *object, const CoreSpriteConfig *c
 }
 
 /* Add the concrete core-sprite vtable and its presentation parameters. */
-void *func_0206b4b0(void *object, const CoreSpriteConfig *config, s32 control,
+void *AuxiliaryCoreSprite_Init(void *object, const CoreSpriteConfig *config, s32 control,
                     s32 extent, s32 phase)
 {
     u8 *self = (u8 *)AuxiliaryCoreSprite_InitControlled(object, config, 0);
@@ -733,7 +733,7 @@ static void *createCoreSprite(const CoreSpriteConfig *config, s32 control,
 {
     void *sprite = Heap_Alloc(0x50, data_020e57fc, 4, &gHeapContext);
     if (sprite != 0)
-        sprite = func_0206b4b0(sprite, config, control, extent, phase);
+        sprite = AuxiliaryCoreSprite_Init(sprite, config, control, extent, phase);
     return sprite;
 }
 
@@ -743,7 +743,7 @@ static void *createCoreSprite(const CoreSpriteConfig *config, s32 control,
  * halfwords. The result owns nine wrappers and sixteen embedded history
  * records; allocation and sprite-pool failures retain retail behavior.
  */
-void *func_0206b628(void *object, void *owner, void *firstDescriptor,
+void *AuxiliaryPresentationCore_Init(void *object, void *owner, void *firstDescriptor,
                     void *secondDescriptor, void *thirdDescriptor, s32 x,
                     s32 y, s32 z, s32 radial, s32 flagged, s32 argument10,
                     s32 argument11, s32 argument12)
@@ -1019,7 +1019,7 @@ void *AuxiliaryCore_GetSpriteGroup(void *object)
  * presentation kind. Position and velocity remain Q12 and palette/animation
  * selection uses the retail random distributions.
  */
-void func_0206c1b4(void *recordObject, void *coreObject, const void *position,
+void AuxiliaryCoreHistoryRecord_ConfigureEffect(void *recordObject, void *coreObject, const void *position,
                    s32 kind, s32 palette)
 {
     u8 *record = (u8 *)recordObject;
@@ -1090,7 +1090,7 @@ void AuxiliaryCore_AllocateHistorySprite(void *object, s32 kind)
     u8 *self = (u8 *)object;
     void *record = AuxiliaryCore_GetSpriteGroup(self);
     if (record != 0)
-        func_0206c1b4(record, self, self + 0x2b4, kind,
+        AuxiliaryCoreHistoryRecord_ConfigureEffect(record, self, self + 0x2b4, kind,
                       *(s16 *)(self + 0x304));
 }
 
@@ -2726,7 +2726,7 @@ void *AuxiliaryInteraction_Init(void *allocation, void *owner)
     if (object != 0) {
         s32 mirrored = actor[0x4d] == 1;
         s32 vertical = func_020befec(center.y * 2, 3) << 12;
-        object = func_0206b628(
+        object = AuxiliaryPresentationCore_Init(
             object, *(void **)(self + 0x0c), *(void **)(self + 0x00),
             *(void **)(self + 0x04), *(void **)(self + 0x08),
             *(s32 *)(actor + 0x1c), *(s32 *)(actor + 0x20),
