@@ -5,10 +5,10 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
     .extern GraphicsSpriteRenderer_DrawDecimal
-    .extern func_ov021_021fd6e8
+    .extern Overlay021_List_GetSelectedRow
 
-.global func_ov021_021fd490
-func_ov021_021fd490:
+.global Overlay021_List_UpdateSelectionDisplay
+Overlay021_List_UpdateSelectionDisplay:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x10
     mov r4, #0x0
@@ -50,11 +50,11 @@ L_021fd500:
     mov r3, #0x7a
     bl GraphicsSpriteCanvas_FillRect
     mov r0, r5
-    bl func_ov021_021fd6e8
+    bl Overlay021_List_GetSelectedRow
     cmp r0, #0x0
     beq L_021fd658
     mov r0, r5
-    bl func_ov021_021fd6e8
+    bl Overlay021_List_GetSelectedRow
     ldr r4, [r0, #0x0]
     ldr r0, [r4, #0x4]
     ldrh r0, [r0, #0x4]
@@ -62,7 +62,7 @@ L_021fd500:
     movge r6, #0x3
     mov r0, r5
     movlt r6, #0x1
-    bl func_ov021_021fd6e8
+    bl Overlay021_List_GetSelectedRow
     ldr r0, [r0, #0x4]
     mov r1, r6
     bl GraphicsSpriteState_SetAnimationIndex
@@ -140,5 +140,5 @@ L_021fd668:
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fd670: .word 0x2710
 L_021fd674: .word 0xff676980
-    .size func_ov021_021fd490, . - func_ov021_021fd490
+    .size Overlay021_List_UpdateSelectionDisplay, . - Overlay021_List_UpdateSelectionDisplay
 

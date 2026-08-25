@@ -18,10 +18,10 @@
     .extern RecordDescriptor_SetValue
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
-    .extern func_ov021_021fd1b8
-    .extern func_ov021_021fd1cc
-    .extern func_ov021_021fd39c
-    .extern func_ov021_021fd490
+    .extern Overlay021_Descriptor_GetCategory
+    .extern Overlay021_List_Show
+    .extern Overlay021_List_RenderVisibleRows
+    .extern Overlay021_List_UpdateSelectionDisplay
     .extern func_ov021_021fd7c0
     .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe6b0
@@ -103,7 +103,7 @@ L_02200dd8:
     b L_02201168
 L_02200df4:
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021fd1b8
+    bl Overlay021_Descriptor_GetCategory
     cmp r0, #0x1
     bne L_02200eb0
     ldr r0, [r4, #0x2bc]
@@ -297,15 +297,15 @@ L_022010c4:
     mov r0, r4
     bl Overlay021_SetupMainBackground
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd1cc
+    bl Overlay021_List_Show
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd39c
+    bl Overlay021_List_RenderVisibleRows
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd490
+    bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r4
     bl func_ov021_021fee54
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021fd1b8
+    bl Overlay021_Descriptor_GetCategory
     cmp r0, #0x1
     bne L_02201124
     mov r0, #0x1

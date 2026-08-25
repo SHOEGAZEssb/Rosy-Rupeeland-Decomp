@@ -10,9 +10,9 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern TitlePalette_SetMainBackdrop
     .extern DisplayBrightness_StartMaskedTransitions
-    .extern func_ov021_021fd1cc
-    .extern func_ov021_021fd39c
-    .extern func_ov021_021fd490
+    .extern Overlay021_List_Show
+    .extern Overlay021_List_RenderVisibleRows
+    .extern Overlay021_List_UpdateSelectionDisplay
     .extern func_ov021_021fd7c0
     .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe520
@@ -134,11 +134,11 @@ L_022007ac:
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0x2a4]
     str r0, [r4, #0x2c0]
-    bl func_ov021_021fd1cc
+    bl Overlay021_List_Show
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd39c
+    bl Overlay021_List_RenderVisibleRows
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd490
+    bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r4
     bl func_ov021_021fee54
     ldr r1, [r4, #0x4]

@@ -16,7 +16,7 @@ extern void InventoryRecordCollection_RebindPrimarySelectionDescriptors(void *, 
 extern void GraphicsSpriteGroup_Clear(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void Overlay000_CaptureViewState(void *, void *);
-extern void func_ov021_021fd074(void *);
+extern void Overlay021_List_Deinit(void *);
 extern void func_ov021_021feac8(void *, const void *);
 #ifdef __cplusplus
 }
@@ -40,7 +40,7 @@ extern "C" void func_ov021_021fe63c(void *state)
                 FIELD(s32, controller, 0xc);
             FIELD(s32, state, 0x2b4 + i * 4) =
                 FIELD(s32, controller, 0x14);
-            func_ov021_021fd074(list);
+            Overlay021_List_Deinit(list);
             Heap_Free(list);
             FIELD(void *, state, 0x2a4 + i * 4) = 0;
         }

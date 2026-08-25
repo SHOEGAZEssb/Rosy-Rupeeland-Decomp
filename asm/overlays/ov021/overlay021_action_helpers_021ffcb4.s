@@ -6,8 +6,8 @@
     .extern SceneSound_PlayPackedEffect
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
-    .extern func_ov021_021fd1b8
-    .extern func_ov021_021fd6e8
+    .extern Overlay021_Descriptor_GetCategory
+    .extern Overlay021_List_GetSelectedRow
     .extern func_ov021_021fd7c0
 
 .global func_ov021_021ffcb4
@@ -20,10 +20,10 @@ func_ov021_021ffcb4:
     mov r1, #0x2
     bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd6e8
+    bl Overlay021_List_GetSelectedRow
     ldr r0, [r0, #0x0]
     str r0, [r4, #0x2bc]
-    bl func_ov021_021fd1b8
+    bl Overlay021_Descriptor_GetCategory
     cmp r0, #0x1
     bne L_021ffd34
     ldr r0, [r4, #0x2bc]

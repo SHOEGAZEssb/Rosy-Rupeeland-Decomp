@@ -32,11 +32,11 @@ extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov002_021fbdc0(void *);
 extern s32 Overlay002_UpdateFooterAnimation(void *);
 extern s32 func_ov002_021fbe60(void *);
-extern void func_ov021_021fd1cc(void *);
-extern u32 func_ov021_021fd1b8(const void *);
-extern void func_ov021_021fd224(void *);
-extern void func_ov021_021fd39c(void *);
-extern void func_ov021_021fd490(void *);
+extern void Overlay021_List_Show(void *);
+extern u32 Overlay021_Descriptor_GetCategory(const void *);
+extern void Overlay021_List_Hide(void *);
+extern void Overlay021_List_RenderVisibleRows(void *);
+extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe29c(void *);
@@ -230,9 +230,9 @@ extern "C" s32 func_ov021_02200630(void *state)
         } else {
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(void *, state, 0x2c0) = list;
-            func_ov021_021fd1cc(list);
-            func_ov021_021fd39c(list);
-            func_ov021_021fd490(list);
+            Overlay021_List_Show(list);
+            Overlay021_List_RenderVisibleRows(list);
+            Overlay021_List_UpdateSelectionDisplay(list);
             func_ov021_021fee54(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
@@ -275,7 +275,7 @@ extern "C" s32 func_ov021_02200840(void *state)
             else if (FIELD(void *, state, 0x358) != 0)
                 func_ov021_021fecd0(state);
             else
-                func_ov021_021fd224(FIELD(void *, state, 0x2c0));
+                Overlay021_List_Hide(FIELD(void *, state, 0x2c0));
             func_ov021_021fe8a8(state);
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             func_ov021_021fedac(state);
@@ -287,7 +287,7 @@ extern "C" s32 func_ov021_02200840(void *state)
         func_ov021_021fe29c(state);
         if (FIELD(s32, state, 0x3e0) == 0) {
             const void *descriptor = FIELD(void *, state, 0x2bc);
-            if (func_ov021_021fd1b8(descriptor) == 1)
+            if (Overlay021_Descriptor_GetCategory(descriptor) == 1)
                 func_ov021_021ff0e0(state, 4);
             else if (Overlay021Descriptor_GetFlags16_19(descriptor) == 1)
                 func_ov021_021ff0e0(state, 5);

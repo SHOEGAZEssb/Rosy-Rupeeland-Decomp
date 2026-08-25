@@ -42,10 +42,10 @@ extern s32 Overlay000_Grid_UpdateTransition(void *);
 extern s32 func_ov000_021fc560(void *, void *);
 extern s32 Overlay001_Grid_UpdateTransition(void *);
 extern s32 func_ov001_021fc348(void *, void *);
-extern void func_ov021_021fd224(void *);
-extern void func_ov021_021fd490(void *);
-extern s32 func_ov021_021fd678(void *, const void *);
-extern s32 func_ov021_021fd700(void *);
+extern void Overlay021_List_Hide(void *);
+extern void Overlay021_List_UpdateSelectionDisplay(void *);
+extern s32 Overlay021_List_HitTestRow(void *, const void *);
+extern s32 Overlay021_List_UpdateVisibleRows(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void func_ov021_021feea4(void *);
 extern void func_ov021_021fee54(void *);
@@ -84,7 +84,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
-            if (func_ov021_021fd700(list) != 0)
+            if (Overlay021_List_UpdateVisibleRows(list) != 0)
                 func_ov021_021fee54(state);
             break;
         }
@@ -97,7 +97,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
         } else if ((keys & 0x80) != 0) {
             InventoryScroll_MoveSelectionDown(controller);
         } else if ((FIELD(u32, state, 0x20) & 0x10) != 0) {
-            s32 selected = func_ov021_021fd678(list,
+            s32 selected = Overlay021_List_HitTestRow(list,
                                                (u8 *)state + 0x30);
             if (InventoryScroll_TestUpperArrowHold(controller, (u8 *)state + 0x30) != 0) {
                 InventoryScroll_PageUp(controller);
@@ -123,7 +123,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                     if (selected != FIELD(s32, controller, 0x14)) {
                         SceneSound_PlayPackedEffect(state, 0);
                         InventoryScroll_SetSelectedRow(controller, selected);
-                        func_ov021_021fd490(list);
+                        Overlay021_List_UpdateSelectionDisplay(list);
                         func_ov021_021fee54(state);
                         FIELD(s32, state, 4) = 10;
                         FIELD(s32, state, 8) = 0;
@@ -164,7 +164,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
             FIELD(u32, state, 0x48) &= ~2U;
             FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
             FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
-            func_ov021_021fd224(list);
+            Overlay021_List_Hide(list);
             DisplayBrightness_StartMaskedTransitions(1, 0);
             func_ov021_021fd7c0(state, data_ov021_02202ef0[0],
                                 data_ov021_02202ef0[1]);
@@ -228,7 +228,7 @@ extern "C" s32 func_ov021_022000f0(void *state)
                 func_ov021_021ff644(state);
             break;
         } else {
-            if (func_ov021_021fd700(FIELD(void *, state, 0x2c0)) != 0)
+            if (Overlay021_List_UpdateVisibleRows(FIELD(void *, state, 0x2c0)) != 0)
                 func_ov021_021fee54(state);
             break;
         }

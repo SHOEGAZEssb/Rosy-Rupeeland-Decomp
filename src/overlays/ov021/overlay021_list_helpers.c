@@ -25,10 +25,10 @@ extern s32 func_020befec(s32, s32);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 extern void Overlay021Row_DestroyNoOp(void *);
-extern void func_ov021_021fd2b4(void *, s32);
-extern void func_ov021_021fd354(void *, s32);
-extern void func_ov021_021fd39c(void *);
-extern void func_ov021_021fd490(void *);
+extern void Overlay021_List_CreateRowSprite(void *, s32);
+extern void Overlay021_List_DestroyRowSprite(void *, s32);
+extern void Overlay021_List_RenderVisibleRows(void *);
+extern void Overlay021_List_UpdateSelectionDisplay(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ extern void func_ov021_021fd490(void *);
  * Clear a 12-byte row's descriptor, sprite, X, and Y fields. The caller-owned
  * row changes; no allocation, SDK calls, or hardware effects occur. Returns void.
  */
-extern "C" void func_ov021_021fce00(Overlay021Row *row)
+extern "C" void Overlay021_Row_Init(Overlay021Row *row)
 {
     row->descriptor = 0;
     row->sprite = 0;
@@ -52,7 +52,7 @@ extern "C" void func_ov021_021fce00(Overlay021Row *row)
  * Return state without freeing it. Heap/UI/resource SDK ownership changes; no
  * direct hardware access occurs.
  */
-extern "C" void *func_ov021_021fd074(void *state)
+extern "C" void *Overlay021_List_Deinit(void *state)
 {
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x1c));
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x20));
@@ -82,7 +82,7 @@ extern "C" void Overlay021Row_DestroyNoOp(void *row)
  * Y=index*24, increment the count, and return the appended row. Return null on
  * failure. Only list memory changes; no SDK/hardware effects.
  */
-extern "C" Overlay021Row *func_ov021_021fd0e8(void *state,
+extern "C" Overlay021Row *Overlay021_List_AppendRow(void *state,
                                                const void *descriptor)
 {
     Overlay021Row *rows = FIELD(Overlay021Row *, state, 0x4c);
@@ -103,7 +103,7 @@ extern "C" Overlay021Row *func_ov021_021fd0e8(void *state,
  * category bits 8..11 equal to 1, low byte other than 8, and halfword +4 equal
  * to 1. Return its row index or -1. State is read only; no SDK/hardware effects.
  */
-extern "C" s32 func_ov021_021fd150(void *state)
+extern "C" s32 Overlay021_List_FindSpecialRow(void *state)
 {
     Overlay021Row *rows = FIELD(Overlay021Row *, state, 0x4c);
     s32 i;
@@ -121,7 +121,7 @@ extern "C" s32 func_ov021_021fd150(void *state)
  * Return descriptor->record(+4) category bits 8..11. Inputs and global state
  * are read only; the value is in range 0..15 and no SDK/hardware effects occur.
  */
-extern "C" u32 func_ov021_021fd1b8(const void *descriptor)
+extern "C" u32 Overlay021_Descriptor_GetCategory(const void *descriptor)
 {
     const u8 *record = FIELD(const u8 *, descriptor, 4);
     return (FIELD(u32, record, 0xc) >> 8) & 0xf;
@@ -133,7 +133,7 @@ extern "C" u32 func_ov021_021fd1b8(const void *descriptor)
  * object. Mark both renderers +0x1C/+0x20 visible and return void. UI state
  * changes through GraphicsSpriteGroup_ReleaseIndexedEntries or direct visibility words; no MMIO.
  */
-extern "C" void func_ov021_021fd1cc(void *state)
+extern "C" void Overlay021_List_Show(void *state)
 {
     FIELD(s32, state, 0x5c) = 1;
     void *controller = FIELD(void *, state, 0x58);
@@ -152,7 +152,7 @@ extern "C" void func_ov021_021fd1cc(void *state)
  * +0x1C/+0x20. UI visibility changes through GraphicsSpriteGroup_ReleaseIndexedEntries; returns void and
  * performs no direct hardware access.
  */
-extern "C" void func_ov021_021fd224(void *state)
+extern "C" void Overlay021_List_Hide(void *state)
 {
     FIELD(s32, state, 0x5c) = 0;
     GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, FIELD(void *, state, 0x58), 0x50));
@@ -173,7 +173,7 @@ extern "C" void Overlay021List_SyncFirstVisibleRow(void *state)
     FIELD(s32, FIELD(void *, state, 0x1c), 0x1c) = 0x1c - first * 0x18;
     s32 i;
     for (i = first; i <= first + FIELD(s32, controller, 8) - 1; i++)
-        func_ov021_021fd2b4(state, i);
+        Overlay021_List_CreateRowSprite(state, i);
 }
 
 /*
@@ -182,7 +182,7 @@ extern "C" void Overlay021List_SyncFirstVisibleRow(void *state)
  * halfword +4 is at least 2, otherwise 1, and place it at stored row X/Y with
  * constants 0,0,2. Sprite SDK state changes; returns void and no MMIO occurs.
  */
-extern "C" void func_ov021_021fd2b4(void *state, s32 index)
+extern "C" void Overlay021_List_CreateRowSprite(void *state, s32 index)
 {
     if (index >= FIELD(s32, state, 0x54))
         return;
@@ -200,7 +200,7 @@ extern "C" void func_ov021_021fd2b4(void *state, s32 index)
  * Destroy and clear the sprite for a populated row index when one exists.
  * Sprite SDK ownership changes; returns void and performs no hardware access.
  */
-extern "C" void func_ov021_021fd354(void *state, s32 index)
+extern "C" void Overlay021_List_DestroyRowSprite(void *state, s32 index)
 {
     if (index < FIELD(s32, state, 0x54)) {
         Overlay021Row *row = &FIELD(Overlay021Row *, state, 0x4c)[index];
@@ -217,7 +217,7 @@ extern "C" void func_ov021_021fd354(void *state, s32 index)
  * below populated count +0x54; otherwise return -1. State is read only;
  * division uses func_020BEFEC and no hardware is accessed.
  */
-extern "C" s32 func_ov021_021fd678(void *state, const void *input)
+extern "C" s32 Overlay021_List_HitTestRow(void *state, const void *input)
 {
     s32 x = FIELD(s32, input, 4) - 0x10;
     s32 y = FIELD(s32, input, 8) - 0x10;
@@ -234,7 +234,7 @@ extern "C" s32 func_ov021_021fd678(void *state, const void *input)
  * Return the current 12-byte row selected by controller index +0x14. State is
  * read only; the returned pointer aliases list storage and no SDK/MMIO occurs.
  */
-extern "C" Overlay021Row *func_ov021_021fd6e8(void *state)
+extern "C" Overlay021Row *Overlay021_List_GetSelectedRow(void *state)
 {
     s32 index = FIELD(s32, FIELD(void *, state, 0x58), 0x14);
     return &FIELD(Overlay021Row *, state, 0x4c)[index];
@@ -246,7 +246,7 @@ extern "C" Overlay021Row *func_ov021_021fd6e8(void *state)
  * create row +0x70, redraw the list and details, and return 1. Return 0 while
  * motion has not reached the condition. Sprite/UI state changes; no MMIO.
  */
-extern "C" s32 func_ov021_021fd700(void *state)
+extern "C" s32 Overlay021_List_UpdateVisibleRows(void *state)
 {
     void *controller = FIELD(void *, state, 0x58);
     s32 value = FIELD(s32, controller, 0x2c);
@@ -256,10 +256,10 @@ extern "C" s32 func_ov021_021fd700(void *state)
     if (FIELD(s32, controller, 0xc) != FIELD(s32, controller, 0x10)) {
         FIELD(s32, FIELD(void *, state, 0x1c), 0x1c) =
             0x1c - FIELD(s32, controller, 0xc) * 0x18;
-        func_ov021_021fd354(state, FIELD(s32, controller, 0x74));
-        func_ov021_021fd2b4(state, FIELD(s32, controller, 0x70));
-        func_ov021_021fd39c(state);
+        Overlay021_List_DestroyRowSprite(state, FIELD(s32, controller, 0x74));
+        Overlay021_List_CreateRowSprite(state, FIELD(s32, controller, 0x70));
+        Overlay021_List_RenderVisibleRows(state);
     }
-    func_ov021_021fd490(state);
+    Overlay021_List_UpdateSelectionDisplay(state);
     return 1;
 }

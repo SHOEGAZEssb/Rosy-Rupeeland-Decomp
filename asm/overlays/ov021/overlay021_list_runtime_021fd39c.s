@@ -4,8 +4,8 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
 
-.global func_ov021_021fd39c
-func_ov021_021fd39c:
+.global Overlay021_List_RenderVisibleRows
+Overlay021_List_RenderVisibleRows:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r2, #0xb0
@@ -72,5 +72,5 @@ L_021fd480:
 L_021fd488:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_ov021_021fd39c, . - func_ov021_021fd39c
+    .size Overlay021_List_RenderVisibleRows, . - Overlay021_List_RenderVisibleRows
 

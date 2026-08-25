@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
     .extern GraphicsSpriteState_ReleaseFromGroup
 
-.global func_ov021_021fd354
-func_ov021_021fd354:
+.global Overlay021_List_DestroyRowSprite
+Overlay021_List_DestroyRowSprite:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x54]
@@ -22,5 +22,5 @@ func_ov021_021fd354:
     add r0, r0, r4
     str r1, [r0, #0x4]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov021_021fd354, . - func_ov021_021fd354
+    .size Overlay021_List_DestroyRowSprite, . - Overlay021_List_DestroyRowSprite
 

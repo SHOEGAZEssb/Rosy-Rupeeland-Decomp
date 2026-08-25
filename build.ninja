@@ -27731,46 +27731,46 @@ build build/reports/overlay021_list_helpers_021fd700.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd700.o
 build build/reports/overlay021_list_helpers_021fce00.txt: match_report build/reports/overlay021_list_helpers_021fce00.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fce00.json
-  report_args = --section .text --function func_ov021_021fce00 --require-exact
+  report_args = --section .text --function Overlay021_Row_Init --require-exact
 build build/reports/overlay021_list_helpers_021fd074.txt: match_report build/reports/overlay021_list_helpers_021fd074.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd074.json
-  report_args = --section .text --function func_ov021_021fd074 --require-exact
+  report_args = --section .text --function Overlay021_List_Deinit --require-exact
 build build/reports/overlay021_list_helpers_021fd0e4.txt: match_report build/reports/overlay021_list_helpers_021fd0e4.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd0e4.json
   report_args = --section .text --function Overlay021Row_DestroyNoOp --require-exact
 build build/reports/overlay021_list_helpers_021fd0e8.txt: match_report build/reports/overlay021_list_helpers_021fd0e8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd0e8.json
-  report_args = --section .text --function func_ov021_021fd0e8 --require-exact
+  report_args = --section .text --function Overlay021_List_AppendRow --require-exact
 build build/reports/overlay021_list_helpers_021fd150.txt: match_report build/reports/overlay021_list_helpers_021fd150.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd150.json
-  report_args = --section .text --function func_ov021_021fd150 --require-exact
+  report_args = --section .text --function Overlay021_List_FindSpecialRow --require-exact
 build build/reports/overlay021_list_helpers_021fd1b8.txt: match_report build/reports/overlay021_list_helpers_021fd1b8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd1b8.json
-  report_args = --section .text --function func_ov021_021fd1b8 --require-exact
+  report_args = --section .text --function Overlay021_Descriptor_GetCategory --require-exact
 build build/reports/overlay021_list_helpers_021fd1cc.txt: match_report build/reports/overlay021_list_helpers_021fd1cc.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd1cc.json
-  report_args = --section .text --function func_ov021_021fd1cc --require-exact
+  report_args = --section .text --function Overlay021_List_Show --require-exact
 build build/reports/overlay021_list_helpers_021fd224.txt: match_report build/reports/overlay021_list_helpers_021fd224.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd224.json
-  report_args = --section .text --function func_ov021_021fd224 --require-exact
+  report_args = --section .text --function Overlay021_List_Hide --require-exact
 build build/reports/overlay021_list_helpers_021fd254.txt: match_report build/reports/overlay021_list_helpers_021fd254.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd254.json
   report_args = --section .text --function Overlay021List_SyncFirstVisibleRow --require-exact
 build build/reports/overlay021_list_helpers_021fd2b4.txt: match_report build/reports/overlay021_list_helpers_021fd2b4.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd2b4.json
-  report_args = --section .text --function func_ov021_021fd2b4 --require-exact
+  report_args = --section .text --function Overlay021_List_CreateRowSprite --require-exact
 build build/reports/overlay021_list_helpers_021fd354.txt: match_report build/reports/overlay021_list_helpers_021fd354.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd354.json
-  report_args = --section .text --function func_ov021_021fd354 --require-exact
+  report_args = --section .text --function Overlay021_List_DestroyRowSprite --require-exact
 build build/reports/overlay021_list_helpers_021fd678.txt: match_report build/reports/overlay021_list_helpers_021fd678.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd678.json
-  report_args = --section .text --function func_ov021_021fd678 --require-exact
+  report_args = --section .text --function Overlay021_List_HitTestRow --require-exact
 build build/reports/overlay021_list_helpers_021fd6e8.txt: match_report build/reports/overlay021_list_helpers_021fd6e8.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd6e8.json
-  report_args = --section .text --function func_ov021_021fd6e8 --require-exact
+  report_args = --section .text --function Overlay021_List_GetSelectedRow --require-exact
 build build/reports/overlay021_list_helpers_021fd700.txt: match_report build/reports/overlay021_list_helpers_021fd700.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_helpers_021fd700.json
-  report_args = --section .text --function func_ov021_021fd700 --require-exact
+  report_args = --section .text --function Overlay021_List_UpdateVisibleRows --require-exact
 build overlay021_list_helpers: phony build/decomp/src/overlays/ov021/overlay021_list_helpers.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fce00.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd074.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd0e4.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd0e8.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd150.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd1b8.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd1cc.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd224.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd254.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd2b4.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd354.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd678.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd6e8.o build/decomp/asm/overlays/ov021/overlay021_list_helpers_021fd700.o build/reports/overlay021_list_helpers_021fce00.txt build/reports/overlay021_list_helpers_021fd074.txt build/reports/overlay021_list_helpers_021fd0e4.txt build/reports/overlay021_list_helpers_021fd0e8.txt build/reports/overlay021_list_helpers_021fd150.txt build/reports/overlay021_list_helpers_021fd1b8.txt build/reports/overlay021_list_helpers_021fd1cc.txt build/reports/overlay021_list_helpers_021fd224.txt build/reports/overlay021_list_helpers_021fd254.txt build/reports/overlay021_list_helpers_021fd2b4.txt build/reports/overlay021_list_helpers_021fd354.txt build/reports/overlay021_list_helpers_021fd678.txt build/reports/overlay021_list_helpers_021fd6e8.txt build/reports/overlay021_list_helpers_021fd700.txt
 
 overlay021_controller_helpers_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -27826,19 +27826,19 @@ build build/reports/overlay021_list_runtime_021fce18.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fce18.o
 build build/reports/overlay021_list_runtime_021fce18.txt: match_report build/reports/overlay021_list_runtime_021fce18.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_runtime_021fce18.json
-  report_args = --section .text --function func_ov021_021fce18 --require-exact
+  report_args = --section .text --function Overlay021_List_Init --require-exact
 build build/reports/overlay021_list_runtime_021fd39c.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_list_runtime_021fd39c.o | build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fd39c.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_list_runtime_021fd39c.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fd39c.o
 build build/reports/overlay021_list_runtime_021fd39c.txt: match_report build/reports/overlay021_list_runtime_021fd39c.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_runtime_021fd39c.json
-  report_args = --section .text --function func_ov021_021fd39c --require-exact
+  report_args = --section .text --function Overlay021_List_RenderVisibleRows --require-exact
 build build/reports/overlay021_list_runtime_021fd490.json: objdiff build/decomp/delinks/asm/overlays/ov021/overlay021_list_runtime_021fd490.o | build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fd490.o
   target_object = build/decomp/delinks/asm/overlays/ov021/overlay021_list_runtime_021fd490.o
   base_object = build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fd490.o
 build build/reports/overlay021_list_runtime_021fd490.txt: match_report build/reports/overlay021_list_runtime_021fd490.json | tools/report_objdiff.py
   report_json = build/reports/overlay021_list_runtime_021fd490.json
-  report_args = --section .text --function func_ov021_021fd490 --require-exact
+  report_args = --section .text --function Overlay021_List_UpdateSelectionDisplay --require-exact
 build overlay021_list_runtime: phony build/decomp/src/overlays/ov021/overlay021_list_runtime.o build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fce18.o build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fd39c.o build/decomp/asm/overlays/ov021/overlay021_list_runtime_021fd490.o build/reports/overlay021_list_runtime_021fce18.txt build/reports/overlay021_list_runtime_021fd39c.txt build/reports/overlay021_list_runtime_021fd490.txt
 overlay021_graphics_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov021/overlay021_graphics_setup.o: mwccarm src/overlays/ov021/overlay021_graphics_setup.c | include/tingle/types.h

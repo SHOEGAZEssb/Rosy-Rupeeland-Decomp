@@ -9,8 +9,8 @@
     .extern func_ov002_021fbdc0
     .extern Overlay002_UpdateFooterAnimation
     .extern func_ov002_021fbe60
-    .extern func_ov021_021fd1b8
-    .extern func_ov021_021fd224
+    .extern Overlay021_Descriptor_GetCategory
+    .extern Overlay021_List_Hide
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fe29c
     .extern func_ov021_021fe8a8
@@ -60,7 +60,7 @@ L_022008a0:
     b L_022008c0
 L_022008b8:
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd224
+    bl Overlay021_List_Hide
 L_022008c0:
     mov r0, r4
     bl func_ov021_021fe8a8
@@ -82,7 +82,7 @@ L_022008f4:
     cmp r0, #0x0
     bne L_02200944
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021fd1b8
+    bl Overlay021_Descriptor_GetCategory
     cmp r0, #0x1
     bne L_02200928
     mov r0, r4

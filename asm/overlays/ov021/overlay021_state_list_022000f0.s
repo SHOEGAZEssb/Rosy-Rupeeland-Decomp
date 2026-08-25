@@ -14,7 +14,7 @@
     .extern func_ov000_021fc560
     .extern Overlay001_Grid_UpdateTransition
     .extern func_ov001_021fc348
-    .extern func_ov021_021fd700
+    .extern Overlay021_List_UpdateVisibleRows
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
@@ -99,7 +99,7 @@ L_022001d8:
     b L_02200344
 L_022001fc:
     ldr r0, [r5, #0x2c0]
-    bl func_ov021_021fd700
+    bl Overlay021_List_UpdateVisibleRows
     cmp r0, #0x0
     beq L_02200344
     mov r0, r5

@@ -1,12 +1,12 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
-    .extern func_ov021_021fd2b4
-    .extern func_ov021_021fd354
-    .extern func_ov021_021fd39c
-    .extern func_ov021_021fd490
+    .extern Overlay021_List_CreateRowSprite
+    .extern Overlay021_List_DestroyRowSprite
+    .extern Overlay021_List_RenderVisibleRows
+    .extern Overlay021_List_UpdateSelectionDisplay
 
-.global func_ov021_021fd700
-func_ov021_021fd700:
+.global Overlay021_List_UpdateVisibleRows
+Overlay021_List_UpdateVisibleRows:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0x58]
@@ -30,20 +30,20 @@ func_ov021_021fd700:
     ldr r1, [r4, #0x58]
     mov r0, r4
     ldr r1, [r1, #0x74]
-    bl func_ov021_021fd354
+    bl Overlay021_List_DestroyRowSprite
     ldr r1, [r4, #0x58]
     mov r0, r4
     ldr r1, [r1, #0x70]
-    bl func_ov021_021fd2b4
+    bl Overlay021_List_CreateRowSprite
     mov r0, r4
-    bl func_ov021_021fd39c
+    bl Overlay021_List_RenderVisibleRows
 L_021fd778:
     mov r0, r4
-    bl func_ov021_021fd490
+    bl Overlay021_List_UpdateSelectionDisplay
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021fd788:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_ov021_021fd700, . - func_ov021_021fd700
+    .size Overlay021_List_UpdateVisibleRows, . - Overlay021_List_UpdateVisibleRows
 

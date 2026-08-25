@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
-    .extern func_ov021_021fd2b4
+    .extern Overlay021_List_CreateRowSprite
 
 .global Overlay021List_SyncFirstVisibleRow
 Overlay021List_SyncFirstVisibleRow:
@@ -19,7 +19,7 @@ Overlay021List_SyncFirstVisibleRow:
 L_021fd284:
     mov r0, r4
     mov r1, r5
-    bl func_ov021_021fd2b4
+    bl Overlay021_List_CreateRowSprite
     add r5, r5, #0x1
 L_021fd294:
     ldr r0, [r4, #0x58]

@@ -24,9 +24,9 @@
     .extern Presentation_SetScript
     .extern Presentation_IsScriptComplete
     .extern func_ov002_021fbe68
-    .extern func_ov021_021fd1cc
-    .extern func_ov021_021fd39c
-    .extern func_ov021_021fd490
+    .extern Overlay021_List_Show
+    .extern Overlay021_List_RenderVisibleRows
+    .extern Overlay021_List_UpdateSelectionDisplay
     .extern func_ov021_021fd7c0
     .extern Overlay021_SetupMainBackground
     .extern func_ov021_021fe6b0
@@ -494,11 +494,11 @@ L_02202a38:
     mov r0, r4
     bl Overlay021_SetupMainBackground
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd1cc
+    bl Overlay021_List_Show
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd39c
+    bl Overlay021_List_RenderVisibleRows
     ldr r0, [r4, #0x2c0]
-    bl func_ov021_021fd490
+    bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r4
     bl func_ov021_021fee54
     ldr r0, [r4, #0x2bc]

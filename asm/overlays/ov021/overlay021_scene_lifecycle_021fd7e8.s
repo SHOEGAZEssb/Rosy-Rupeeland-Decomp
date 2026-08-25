@@ -25,7 +25,7 @@
     .extern TitleDialog_Init
     .extern TitleDialog_SetExternalTextRow
     .extern SpriteMotionController_Init
-    .extern func_ov021_021fd150
+    .extern Overlay021_List_FindSpecialRow
     .extern func_ov021_021fd790
     .extern func_ov021_021fd794
     .extern func_ov021_021fd7a8
@@ -193,7 +193,7 @@ L_021fd8c4:
     ldr r0, [r5, #0x2a4]
     cmp r0, #0x0
     beq L_021fda3c
-    bl func_ov021_021fd150
+    bl Overlay021_List_FindSpecialRow
     str r0, [r5, #0x3e4]
 L_021fda3c:
     mov r3, #0x0

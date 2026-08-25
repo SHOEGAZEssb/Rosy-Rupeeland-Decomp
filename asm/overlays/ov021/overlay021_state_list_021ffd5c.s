@@ -23,10 +23,10 @@
     .extern InventoryScroll_UpdateSelectionMovement
     .extern InventoryScroll_ResetPresentationState
     .extern SpriteMotionController_BeginHitResponse
-    .extern func_ov021_021fd224
-    .extern func_ov021_021fd490
-    .extern func_ov021_021fd678
-    .extern func_ov021_021fd700
+    .extern Overlay021_List_Hide
+    .extern Overlay021_List_UpdateSelectionDisplay
+    .extern Overlay021_List_HitTestRow
+    .extern Overlay021_List_UpdateVisibleRows
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fee54
     .extern func_ov021_021feea4
@@ -77,7 +77,7 @@ L_021ffdc8:
     b L_021ffe0c
 L_021ffdf0:
     ldr r0, [r5, #0x2c0]
-    bl func_ov021_021fd700
+    bl Overlay021_List_UpdateVisibleRows
     cmp r0, #0x0
     beq L_022000d4
     mov r0, r5
@@ -106,7 +106,7 @@ L_021ffe44:
     beq L_02200010
     ldr r0, [r5, #0x2c0]
     add r1, r5, #0x30
-    bl func_ov021_021fd678
+    bl Overlay021_List_HitTestRow
     mov r6, r0
     mov r0, r4
     add r1, r5, #0x30
@@ -178,7 +178,7 @@ L_021fff38:
     mov r1, r6
     bl InventoryScroll_SetSelectedRow
     ldr r0, [r5, #0x2c0]
-    bl func_ov021_021fd490
+    bl Overlay021_List_UpdateSelectionDisplay
     mov r0, r5
     bl func_ov021_021fee54
     mov r0, #0xa
@@ -258,7 +258,7 @@ L_02200044:
     orr r0, r0, #0x4
     strh r0, [r1, #0x24]
     ldr r0, [r5, #0x2c0]
-    bl func_ov021_021fd224
+    bl Overlay021_List_Hide
     mov r0, #0x1
     mov r1, #0x0
     bl DisplayBrightness_StartMaskedTransitions

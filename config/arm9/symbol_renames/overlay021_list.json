@@ -1,0 +1,17 @@
+{
+  "func_ov021_021fce00": "Overlay021_Row_Init",
+  "func_ov021_021fce18": "Overlay021_List_Init",
+  "func_ov021_021fd074": "Overlay021_List_Deinit",
+  "func_ov021_021fd0e8": "Overlay021_List_AppendRow",
+  "func_ov021_021fd150": "Overlay021_List_FindSpecialRow",
+  "func_ov021_021fd1b8": "Overlay021_Descriptor_GetCategory",
+  "func_ov021_021fd1cc": "Overlay021_List_Show",
+  "func_ov021_021fd224": "Overlay021_List_Hide",
+  "func_ov021_021fd2b4": "Overlay021_List_CreateRowSprite",
+  "func_ov021_021fd354": "Overlay021_List_DestroyRowSprite",
+  "func_ov021_021fd39c": "Overlay021_List_RenderVisibleRows",
+  "func_ov021_021fd490": "Overlay021_List_UpdateSelectionDisplay",
+  "func_ov021_021fd678": "Overlay021_List_HitTestRow",
+  "func_ov021_021fd6e8": "Overlay021_List_GetSelectedRow",
+  "func_ov021_021fd700": "Overlay021_List_UpdateVisibleRows"
+}

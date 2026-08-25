@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
 
-.global func_ov021_021fd150
-func_ov021_021fd150:
+.global Overlay021_List_FindSpecialRow
+Overlay021_List_FindSpecialRow:
     stmdb sp!, {r4, lr}
     ldr r4, [r0, #0x54]
     mov lr, #0x0
@@ -32,5 +32,5 @@ L_021fd1a8:
     blt L_021fd164
     mvn r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_ov021_021fd150, . - func_ov021_021fd150
+    .size Overlay021_List_FindSpecialRow, . - Overlay021_List_FindSpecialRow
 

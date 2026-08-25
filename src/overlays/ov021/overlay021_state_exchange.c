@@ -48,10 +48,10 @@ extern s32 Overlay002_ApplySelectedKey(void *);
 extern void func_ov002_021fbd64(void *);
 extern s32 func_ov002_021fbd98(void *);
 extern s32 func_ov002_021fbdb0(void *);
-extern u32 func_ov021_021fd1b8(const void *);
-extern void func_ov021_021fd1cc(void *);
-extern void func_ov021_021fd39c(void *);
-extern void func_ov021_021fd490(void *);
+extern u32 Overlay021_Descriptor_GetCategory(const void *);
+extern void Overlay021_List_Show(void *);
+extern void Overlay021_List_RenderVisibleRows(void *);
+extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe390(void *);
@@ -128,11 +128,11 @@ extern "C" s32 func_ov021_022009e0(void *state)
             }
             FIELD(s32, state, 0x394) = FIELD(s32, panel, 0x88);
             if (FIELD(s32, state, 0x394) == 0 &&
-                func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 0) {
+                Overlay021_Descriptor_GetCategory(FIELD(void *, state, 0x2bc)) == 0) {
                 SceneSound_PlayPackedEffect(state, 9);
                 FIELD(s32, state, 4) = 0;
                 FIELD(s32, state, 8) = 0;
-            } else if (func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 1 &&
+            } else if (Overlay021_Descriptor_GetCategory(FIELD(void *, state, 0x2bc)) == 1 &&
                        GamePhaseCurrencyHud_GetCurrency(gGamePhaseCurrencyHud) <= FIELD(s32, state, 0x394)) {
                 SceneSound_PlayPackedEffect(state, 9);
                 FIELD(s32, state, 4) = 10;
@@ -212,7 +212,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
             change_state(state, FIELD(s32, state, 0x2c8) == 4
                                     ? data_ov021_02202e78
                                     : data_ov021_02202e70);
-        } else if (func_ov021_021fd1b8(desc) == 1) {
+        } else if (Overlay021_Descriptor_GetCategory(desc) == 1) {
             s32 capacity = FIELD(s32, FIELD(u8 *, desc, 4), 0x10);
             if (capacity > amount) {
                 s32 anim = func_ov045_0220b924(FIELD(void *, state, 0x3ec),
@@ -294,11 +294,11 @@ extern "C" s32 func_ov021_02200d10(void *state)
                 change_state(state, data_ov021_02202e48);
             } else {
                 Overlay021_SetupMainBackground(state);
-                func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
-                func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
-                func_ov021_021fd490(FIELD(void *, state, 0x2c0));
+                Overlay021_List_Show(FIELD(void *, state, 0x2c0));
+                Overlay021_List_RenderVisibleRows(FIELD(void *, state, 0x2c0));
+                Overlay021_List_UpdateSelectionDisplay(FIELD(void *, state, 0x2c0));
                 func_ov021_021fee54(state);
-                if (func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 1) {
+                if (Overlay021_Descriptor_GetCategory(FIELD(void *, state, 0x2bc)) == 1) {
                     FIELD(s32, state, 0x3e0) = 0;
                     DisplayBrightness_StartMaskedTransitions(1, -8);
                     change_state(state, data_ov021_02202e40);
@@ -346,9 +346,9 @@ extern "C" s32 func_ov021_022011a4(void *state)
                 change_state(state, data_ov021_02202e28);
             } else {
                 Overlay021_SetupMainBackground(state);
-                func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
-                func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
-                func_ov021_021fd490(FIELD(void *, state, 0x2c0));
+                Overlay021_List_Show(FIELD(void *, state, 0x2c0));
+                Overlay021_List_RenderVisibleRows(FIELD(void *, state, 0x2c0));
+                Overlay021_List_UpdateSelectionDisplay(FIELD(void *, state, 0x2c0));
                 func_ov021_021fee54(state);
                 DisplayBrightness_StartMaskedTransitions(1, 0);
                 FIELD(s32, state, 4)++;

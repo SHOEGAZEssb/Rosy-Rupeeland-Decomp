@@ -41,9 +41,9 @@ extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
-extern void func_ov021_021fce00(void *);
-extern void func_ov021_021fd224(void *);
-extern Overlay021Row *func_ov021_021fd6e8(void *);
+extern void Overlay021_Row_Init(void *);
+extern void Overlay021_List_Hide(void *);
+extern Overlay021Row *Overlay021_List_GetSelectedRow(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -58,7 +58,7 @@ extern Overlay021Row *func_ov021_021fd6e8(void *);
  * IDs 0x7007/0x7000, and return state. Heap/font/resource/sprite/list SDK state
  * changes; no direct MMIO occurs.
  */
-extern "C" void *func_ov021_021fce18(void *state, void *font,
+extern "C" void *Overlay021_List_Init(void *state, void *font,
                                       s32 capacity, s32 mode)
 {
     AnimationResourceState_InitEmbedded((u8 *)state + 4);
@@ -88,7 +88,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
                                    data_ov021_02202f78, 4, gHeapContext);
         if (rows != 0)
             rows = CxxArray_ConstructWithCookie(rows, capacity, 12, 8,
-                                 func_ov021_021fce00, 0);
+                                 Overlay021_Row_Init, 0);
         FIELD(void *, state, 0x4c) = rows;
     } else {
         FIELD(void *, state, 0x4c) = 0;
@@ -104,7 +104,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
     FIELD(void *, state, 0x58) = controller;
     InventoryScroll_SetSpritePriority(controller, 0);
     InventoryScroll_UpdatePresentation(controller);
-    func_ov021_021fd224(state);
+    Overlay021_List_Hide(state);
     TitleCharacterResourceCollection_Append((u8 *)state + 0x28, 0x7007);
     TitleCharacterResourceCollection_Append((u8 *)state + 0x28, 0x7000);
     return state;
@@ -118,7 +118,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
  * Y=0x13+row*24, width/style 0x0E/8, changing style to 3 when descriptor +8 is
  * null. Font/UI state changes; returns void and performs no direct MMIO.
  */
-extern "C" void func_ov021_021fd39c(void *state)
+extern "C" void Overlay021_List_RenderVisibleRows(void *state)
 {
     void *font = FIELD(void *, state, 0);
     GraphicsSpriteCanvas_FillRect(font, 0, 0, 0xff, 0xb0, 0);
@@ -154,7 +154,7 @@ extern "C" void func_ov021_021fd39c(void *state)
  * +0x24, print the value and append the cached +0x64 label. Otherwise hide the
  * marker. Sprite/font/UI state changes; returns void and performs no MMIO.
  */
-extern "C" void func_ov021_021fd490(void *state)
+extern "C" void Overlay021_List_UpdateSelectionDisplay(void *state)
 {
     Overlay021Row *rows = FIELD(Overlay021Row *, state, 0x4c);
     void *controller = FIELD(void *, state, 0x58);
@@ -168,7 +168,7 @@ extern "C" void func_ov021_021fd490(void *state)
 
     void *font = FIELD(void *, state, 0);
     GraphicsSpriteCanvas_FillRect(font, 0x2a, 0x7e, 0x7a, 0x8e, 0);
-    Overlay021Row *selected = func_ov021_021fd6e8(state);
+    Overlay021Row *selected = Overlay021_List_GetSelectedRow(state);
     if (selected == 0) {
         FIELD(u16, FIELD(void *, state, 0x24), 0x24) |= 4;
         return;

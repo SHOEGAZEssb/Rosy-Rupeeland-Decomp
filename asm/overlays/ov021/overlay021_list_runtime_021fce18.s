@@ -20,12 +20,12 @@
     .extern InventoryScroll_SetSpritePriority
     .extern InventoryScroll_UpdatePresentation
     .extern CxxArray_ConstructWithCookie
-    .extern func_ov021_021fce00
-    .extern func_ov021_021fd224
+    .extern Overlay021_Row_Init
+    .extern Overlay021_List_Hide
     .extern gHeapContext
 
-.global func_ov021_021fce18
-func_ov021_021fce18:
+.global Overlay021_List_Init
+Overlay021_List_Init:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0xc
     mov r7, r0
@@ -163,7 +163,7 @@ L_021fd010:
     ldr r0, [r7, #0x58]
     bl InventoryScroll_UpdatePresentation
     mov r0, r7
-    bl func_ov021_021fd224
+    bl Overlay021_List_Hide
     ldr r1, L_021fd070
     add r0, r7, #0x28
     bl TitleCharacterResourceCollection_Append
@@ -179,8 +179,8 @@ L_021fd058: .word data_020f4e18
 L_021fd05c: .word 0x329d
 L_021fd060: .word data_ov021_02202f78
 L_021fd064: .word gHeapContext
-L_021fd068: .word func_ov021_021fce00
+L_021fd068: .word Overlay021_Row_Init
 L_021fd06c: .word data_ov021_02202f80
 L_021fd070: .word 0x7007
-    .size func_ov021_021fce18, . - func_ov021_021fce18
+    .size Overlay021_List_Init, . - Overlay021_List_Init
 

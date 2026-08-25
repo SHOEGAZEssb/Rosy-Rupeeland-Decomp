@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_widget_helpers.c. */
     .extern Heap_Free
-    .extern func_ov021_021fd074
+    .extern Overlay021_List_Deinit
 
 .global func_ov021_021fe63c
 func_ov021_021fe63c:
@@ -26,7 +26,7 @@ L_021fe650:
     cmp r7, #0x0
     beq L_021fe698
     mov r0, r7
-    bl func_ov021_021fd074
+    bl Overlay021_List_Deinit
     mov r0, r7
     bl Heap_Free
 L_021fe698:

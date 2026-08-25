@@ -37,9 +37,9 @@ extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void Presentation_SetScript(void *, const void *, s32);
 extern s32 Presentation_IsScriptComplete(void *);
 extern void func_ov002_021fbe68(void *);
-extern void func_ov021_021fd1cc(void *);
-extern void func_ov021_021fd39c(void *);
-extern void func_ov021_021fd490(void *);
+extern void Overlay021_List_Show(void *);
+extern void Overlay021_List_RenderVisibleRows(void *);
+extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void Overlay021_SetupMainBackground(void *);
 extern void func_ov021_021fe6b0(void *);
@@ -257,9 +257,9 @@ extern "C" s32 func_ov021_022023f0(void *state)
                 change_state(state, data_ov021_02202d38);
             } else {
                 Overlay021_SetupMainBackground(state);
-                func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
-                func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
-                func_ov021_021fd490(FIELD(void *, state, 0x2c0));
+                Overlay021_List_Show(FIELD(void *, state, 0x2c0));
+                Overlay021_List_RenderVisibleRows(FIELD(void *, state, 0x2c0));
+                Overlay021_List_UpdateSelectionDisplay(FIELD(void *, state, 0x2c0));
                 func_ov021_021fee54(state);
                 if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
                     FIELD(s32, state, 0x3d8) = 1;

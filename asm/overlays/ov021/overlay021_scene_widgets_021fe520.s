@@ -7,8 +7,8 @@
     .extern RecordSelection_HasAvailableEntry
     .extern InventoryScroll_SetSelectedRow
     .extern InventoryScroll_SetFirstVisibleRow
-    .extern func_ov021_021fce18
-    .extern func_ov021_021fd0e8
+    .extern Overlay021_List_Init
+    .extern Overlay021_List_AppendRow
     .extern Overlay021List_SyncFirstVisibleRow
     .extern gHeapContext
 
@@ -44,7 +44,7 @@ L_021fe53c:
     mov r2, r9
     ldr r1, [r1, #0x0]
     mov r3, r8
-    bl func_ov021_021fce18
+    bl Overlay021_List_Init
 L_021fe598:
     add r1, r10, r8, lsl #0x2
     str r0, [r1, #0x2a4]
@@ -65,7 +65,7 @@ L_021fe5d4:
     ldr r1, [r4, #0x18]
     ldr r0, [r5, #0x2a4]
     add r1, r1, r6, lsl #0x4
-    bl func_ov021_021fd0e8
+    bl Overlay021_List_AppendRow
     mov r1, #0x18
     mul r1, r6, r1
     strh r11, [r0, #0x8]

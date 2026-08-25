@@ -14,7 +14,7 @@
     .extern func_ov002_021fbd64
     .extern func_ov002_021fbd98
     .extern func_ov002_021fbdb0
-    .extern func_ov021_021fd1b8
+    .extern Overlay021_Descriptor_GetCategory
     .extern func_ov021_021fd7c0
     .extern func_ov021_021feea4
     .extern func_ov021_021ff1d0
@@ -122,7 +122,7 @@ L_02200b00:
     cmp r0, #0x0
     bne L_02200b68
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021fd1b8
+    bl Overlay021_Descriptor_GetCategory
     cmp r0, #0x0
     bne L_02200b68
     mov r0, r4
@@ -134,7 +134,7 @@ L_02200b00:
     b L_02200ce8
 L_02200b68:
     ldr r0, [r4, #0x2bc]
-    bl func_ov021_021fd1b8
+    bl Overlay021_Descriptor_GetCategory
     cmp r0, #0x1
     bne L_02200bb0
     ldr r0, L_02200cfc

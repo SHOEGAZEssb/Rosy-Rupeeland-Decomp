@@ -11,7 +11,7 @@
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern TitleCharacterResourceCollection_Destroy
     .extern func_ov002_021fb9c4
-    .extern func_ov021_021fd074
+    .extern Overlay021_List_Deinit
     .extern func_ov021_021fd790
     .extern func_ov045_0220b8cc
     .extern func_ov045_0220d2d8
@@ -91,7 +91,7 @@ L_021fde18:
     cmp r6, #0x0
     beq L_021fde38
     mov r0, r6
-    bl func_ov021_021fd074
+    bl Overlay021_List_Deinit
     mov r0, r6
     bl Heap_Free
 L_021fde38:

@@ -47,8 +47,8 @@ extern void TitleDialog_SetExternalTextRow(void *, s32, void *);
 extern void SpriteMotionController_Init(void *);
 extern u32 genrand_int32(void);
 extern void func_ov002_021fb9c4(void *);
-extern void func_ov021_021fd074(void *);
-extern s32 func_ov021_021fd150(void *);
+extern void Overlay021_List_Deinit(void *);
+extern s32 Overlay021_List_FindSpecialRow(void *);
 extern void func_ov021_021fd790(void *);
 extern void func_ov021_021fd794(void *);
 extern void func_ov021_021fd7a8(void *, s32, s32, s32, s32);
@@ -99,7 +99,7 @@ static void destroy_scene_members(void *state)
     for (s32 i = 0; i < 2; ++i) {
         void *list = FIELD(void *, state, 0x2a4 + i * 4);
         if (list != 0) {
-            func_ov021_021fd074(list);
+            Overlay021_List_Deinit(list);
             Heap_Free(list);
         }
     }
@@ -193,7 +193,7 @@ extern "C" void *func_ov021_021fd7e8(void *state, s32 mode)
     func_ov021_021fe520(state);
     func_ov021_021fe6b0(state);
     if (FIELD(void *, state, 0x2a4) != 0)
-        FIELD(s32, state, 0x3e4) = func_ov021_021fd150(FIELD(void *, state, 0x2a4));
+        FIELD(s32, state, 0x3e4) = Overlay021_List_FindSpecialRow(FIELD(void *, state, 0x2a4));
 
     for (s32 i = 0; i < 16; ++i) {
         FIELD(u16, state, 0x3b8 + i * 2) = 0;

@@ -6,8 +6,8 @@
     .extern CxxArray_DestroyAndFree
     .extern Overlay021Row_DestroyNoOp
 
-.global func_ov021_021fd074
-func_ov021_021fd074:
+.global Overlay021_List_Deinit
+Overlay021_List_Deinit:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x1c]
@@ -38,5 +38,5 @@ L_021fd0c0:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fd0e0: .word Overlay021Row_DestroyNoOp
-    .size func_ov021_021fd074, . - func_ov021_021fd074
+    .size Overlay021_List_Deinit, . - Overlay021_List_Deinit
 

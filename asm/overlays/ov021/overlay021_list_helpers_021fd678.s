@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
     .extern func_020befec
 
-.global func_ov021_021fd678
-func_ov021_021fd678:
+.global Overlay021_List_HitTestRow
+Overlay021_List_HitTestRow:
     stmdb sp!, {r4, lr}
     ldr r2, [r1, #0x4]
     ldr r1, [r1, #0x8]
@@ -32,5 +32,5 @@ func_ov021_021fd678:
     cmp r0, r1
     mvnge r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_ov021_021fd678, . - func_ov021_021fd678
+    .size Overlay021_List_HitTestRow, . - Overlay021_List_HitTestRow
 

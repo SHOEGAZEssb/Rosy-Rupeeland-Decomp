@@ -21,8 +21,8 @@ extern void InventoryScroll_SetFirstVisibleRow(void *, s32);
 extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void SpriteMotionController_Hide(void *);
-extern void *func_ov021_021fce18(void *, void *, s32, s32);
-extern void *func_ov021_021fd0e8(void *, const void *);
+extern void *Overlay021_List_Init(void *, void *, s32, s32);
+extern void *Overlay021_List_AppendRow(void *, const void *);
 extern void Overlay021List_SyncFirstVisibleRow(void *);
 #ifdef __cplusplus
 }
@@ -53,7 +53,7 @@ extern "C" void func_ov021_021fe520(void *state)
             void *list = Heap_Alloc(0xa4, data_ov021_02202f98,
                                     4, gHeapContext);
             if (list != 0)
-                list = func_ov021_021fce18(list, data_020f4e14,
+                list = Overlay021_List_Init(list, data_020f4e14,
                                            capacity, channel);
             FIELD(void *, state, 0x2a4 + channel * 4) = list;
             void *controller = FIELD(void *, list, 0x58);
@@ -66,7 +66,7 @@ extern "C" void func_ov021_021fe520(void *state)
                 FIELD(const u8 *, record, 0x18 + channel * 4);
             s32 i;
             for (i = 0; i < capacity; i++) {
-                void *row = func_ov021_021fd0e8(
+                void *row = Overlay021_List_AppendRow(
                     list, descriptors + i * 0x10);
                 FIELD(s16, row, 8) = 0;
                 FIELD(s16, row, 0xa) = (s16)(i * 0x18);

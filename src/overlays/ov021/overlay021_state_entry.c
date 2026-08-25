@@ -38,9 +38,9 @@ extern void TitleDialog_ClearTextRect(void *);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
-extern void func_ov021_021fd1cc(void *);
-extern void func_ov021_021fd39c(void *);
-extern void func_ov021_021fd490(void *);
+extern void Overlay021_List_Show(void *);
+extern void Overlay021_List_RenderVisibleRows(void *);
+extern void Overlay021_List_UpdateSelectionDisplay(void *);
 extern void func_ov021_021fd7c0(void *, u32, u32);
 extern void func_ov021_021fe520(void *);
 extern void func_ov021_021fe63c(void *);
@@ -266,9 +266,9 @@ extern "C" s32 func_ov021_021ffa38(void *state)
     case 3:
         if (DisplayBrightness_IsMainTransitionComplete() != 0) {
             func_ov021_021ff050(state, FIELD(s32, state, 0x2c4));
-            func_ov021_021fd1cc(FIELD(void *, state, 0x2c0));
-            func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
-            func_ov021_021fd490(FIELD(void *, state, 0x2c0));
+            Overlay021_List_Show(FIELD(void *, state, 0x2c0));
+            Overlay021_List_RenderVisibleRows(FIELD(void *, state, 0x2c0));
+            Overlay021_List_UpdateSelectionDisplay(FIELD(void *, state, 0x2c0));
             func_ov021_021fee54(state);
             DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;

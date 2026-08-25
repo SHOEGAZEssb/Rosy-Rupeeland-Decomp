@@ -3,8 +3,8 @@
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
 
-.global func_ov021_021fd2b4
-func_ov021_021fd2b4:
+.global Overlay021_List_CreateRowSprite
+Overlay021_List_CreateRowSprite:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0xc
     mov r6, r0
@@ -46,5 +46,5 @@ func_ov021_021fd2b4:
 L_021fd34c:
     add sp, sp, #0xc
     ldmia sp!, {r3, r4, r5, r6, pc}
-    .size func_ov021_021fd2b4, . - func_ov021_021fd2b4
+    .size Overlay021_List_CreateRowSprite, . - Overlay021_List_CreateRowSprite
 

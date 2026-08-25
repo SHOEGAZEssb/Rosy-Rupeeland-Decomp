@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov021/overlay021_list_helpers.c. */
     .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 
-.global func_ov021_021fd1cc
-func_ov021_021fd1cc:
+.global Overlay021_List_Show
+Overlay021_List_Show:
     stmdb sp!, {r4, lr}
     mov r4, r0
     mov r3, #0x1
@@ -28,5 +28,5 @@ L_021fd20c:
     ldr r0, [r4, #0x20]
     str r1, [r0, #0x20]
     ldmia sp!, {r4, pc}
-    .size func_ov021_021fd1cc, . - func_ov021_021fd1cc
+    .size Overlay021_List_Show, . - Overlay021_List_Show
 
