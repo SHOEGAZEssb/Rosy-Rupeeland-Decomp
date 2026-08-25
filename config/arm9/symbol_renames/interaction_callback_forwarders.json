@@ -1,0 +1,20 @@
+{
+  "func_02045410": "InteractionCallbackForwarder01_SelectRandomCallback",
+  "func_0204541c": "InteractionCallbackForwarder02_SelectRandomCallback",
+  "func_02045428": "InteractionCallbackForwarder03_SelectRandomCallback",
+  "func_02045434": "InteractionCallbackForwarder04_SelectRandomCallback",
+  "func_02045440": "InteractionCallbackForwarder05_SelectRandomCallback",
+  "func_0204544c": "InteractionCallbackForwarder06_SelectRandomCallback",
+  "func_02045458": "InteractionCallbackForwarder07_SelectRandomCallback",
+  "func_02045464": "InteractionCallbackForwarder08_SelectRandomCallbackPair01",
+  "func_02045470": "InteractionCallbackForwarder09_SelectRandomCallbackPair01",
+  "func_0204547c": "InteractionCallbackForwarder10_SelectRandomCallbackPair01",
+  "func_02045488": "InteractionCallbackForwarder11_SelectRandomCallback",
+  "func_02045494": "InteractionCallbackForwarder12_SelectRandomCallback",
+  "func_020454a0": "InteractionCallbackForwarder13_SelectRandomCallback",
+  "func_020454ac": "InteractionCallbackForwarder14_SelectRandomCallback",
+  "func_020454b8": "InteractionCallbackForwarder15_SetGlobalCallbackPair",
+  "func_020454d4": "InteractionCallbackForwarder16_SelectRandomCallback",
+  "func_020454e0": "InteractionCallbackForwarder17_SelectRandomCallbackPair01",
+  "func_020454ec": "InteractionCallbackForwarder18_SelectRandomCallbackPair01"
+}
