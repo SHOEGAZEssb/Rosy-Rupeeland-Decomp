@@ -105,7 +105,7 @@ s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_WaitForMovementCompletion(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_IsMovementActive(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetField5cLowHalfword(GamePhaseActorScriptVm *self);
-s32 func_0201350c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_QueryRuntimeLayerPair(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetField3c(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetField40(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_LookupDirectionTowardCoordinates(GamePhaseActorScriptVm *self);

@@ -20,22 +20,25 @@ extern s32 func_020ae024(fx32 first, fx32 second);
 s32 GamePhaseActorScriptVm_SetField5cLowHalfword(GamePhaseActorScriptVm *self)
 {
     s16 value = (s16)GamePhaseScriptVm_Pop(&self->base);
-    u32 *field = (u32 *)((u8 *)self->actor + 0x5c);
-    *field = (*field & 0xffff0000) | (u16)value;
+    u32 *field5cWord = (u32 *)((u8 *)self->actor + 0x5c);
+    *field5cWord = (*field5cWord & 0xffff0000) | (u16)value;
     return 0;
 }
 
 /*
- * Pop three operands, pass them in reverse pop order to DualLayerTileRenderer_ForwardLayerPair on the
- * global runtime object at offset 0x2ed4, store its result as the VM result, and return zero.
+ * Pop three operands, pass them in reverse pop order to
+ * DualLayerTileRenderer_ForwardLayerPair on the global runtime tile renderer at
+ * offset 0x2ed4, store its result as the VM result, and return zero.
  */
-s32 func_0201350c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_QueryRuntimeLayerPair(GamePhaseActorScriptVm *self)
 {
     u32 third = GamePhaseScriptVm_Pop(&self->base);
     u32 second = GamePhaseScriptVm_Pop(&self->base);
     u32 first = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, DualLayerTileRenderer_ForwardLayerPair(object, first, second, third));
+    void *tileRenderer = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base,
+        DualLayerTileRenderer_ForwardLayerPair(tileRenderer, first, second, third));
     return 0;
 }
 
@@ -63,45 +66,46 @@ s32 GamePhaseActorScriptVm_LookupDirectionTowardCoordinates(GamePhaseActorScript
 {
     s32 targetY = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 targetX = (s32)GamePhaseScriptVm_Pop(&self->base);
-    VecFx32Object *position = (VecFx32Object *)((u8 *)self->actor + 0x18);
-    s32 angle = func_020ae024((targetY << 12) - position->value.y,
-                             (targetX << 12) - position->value.x);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, data_020d5af8[((u32)angle << 4) >> 16]);
+    VecFx32Object *actorPosition = (VecFx32Object *)((u8 *)self->actor + 0x18);
+    s32 angleFx16 = func_020ae024((targetY << 12) - actorPosition->value.y,
+                                 (targetX << 12) - actorPosition->value.x);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base, data_020d5af8[((u32)angleFx16 << 4) >> 16]);
     return 0;
 }
 
 /* Resolve runtime collection 1's actor at offset 0x2e7c and store integer x as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorX(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
-    VecFx32Object value;
-    void *actor = *(void **)(collection + 0x2e7c);
-    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value.value.x >> 12);
-    VecFx32Object_Destroy(&value);
+    u8 *actorCollection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
+    VecFx32Object targetPosition;
+    void *targetActor = *(void **)(actorCollection + 0x2e7c);
+    VecFx32Object_InitCopy(&targetPosition, (VecFx32Object *)((u8 *)targetActor + 0x18));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, targetPosition.value.x >> 12);
+    VecFx32Object_Destroy(&targetPosition);
     return 0;
 }
 
 /* Resolve runtime collection 1's actor at offset 0x2e7c and store integer y as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorY(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
-    VecFx32Object value;
-    void *actor = *(void **)(collection + 0x2e7c);
-    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value.value.y >> 12);
-    VecFx32Object_Destroy(&value);
+    u8 *actorCollection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
+    VecFx32Object targetPosition;
+    void *targetActor = *(void **)(actorCollection + 0x2e7c);
+    VecFx32Object_InitCopy(&targetPosition, (VecFx32Object *)((u8 *)targetActor + 0x18));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, targetPosition.value.y >> 12);
+    VecFx32Object_Destroy(&targetPosition);
     return 0;
 }
 
 /* Resolve runtime collection 1's actor at offset 0x2e7c and store integer z as the VM result. */
 s32 GamePhaseActorScriptVm_GetCollection1ActorVectorZ(GamePhaseActorScriptVm *self)
 {
-    u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
-    VecFx32Object value;
-    void *actor = *(void **)(collection + 0x2e7c);
-    VecFx32Object_InitCopy(&value, (VecFx32Object *)((u8 *)actor + 0x18));
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, value.value.z >> 12);
-    VecFx32Object_Destroy(&value);
+    u8 *actorCollection = (u8 *)GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1);
+    VecFx32Object targetPosition;
+    void *targetActor = *(void **)(actorCollection + 0x2e7c);
+    VecFx32Object_InitCopy(&targetPosition, (VecFx32Object *)((u8 *)targetActor + 0x18));
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, targetPosition.value.z >> 12);
+    VecFx32Object_Destroy(&targetPosition);
     return 0;
 }

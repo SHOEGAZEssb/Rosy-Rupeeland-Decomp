@@ -5406,7 +5406,7 @@ build build/reports/game_phase_script_vm_0201350c.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201350c.o
 build build/reports/game_phase_script_vm_0201350c.txt: match_report build/reports/game_phase_script_vm_0201350c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201350c.json
-  report_args = --section .text --function func_0201350c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_QueryRuntimeLayerPair --require-exact
 
 build build/reports/game_phase_script_vm_02013568.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02013568.o | build/decomp/asm/game/game_phase_script_vm_02013568.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02013568.o

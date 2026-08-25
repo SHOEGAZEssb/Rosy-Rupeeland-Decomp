@@ -1,0 +1,10 @@
+{
+  "GamePhaseActorScriptVm_SetField5cLowHalfword": "GamePhaseActorScriptVm_SetField5cLowHalfword",
+  "func_0201350c": "GamePhaseActorScriptVm_QueryRuntimeLayerPair",
+  "GamePhaseActorScriptVm_SetField3c": "GamePhaseActorScriptVm_SetField3c",
+  "GamePhaseActorScriptVm_SetField40": "GamePhaseActorScriptVm_SetField40",
+  "GamePhaseActorScriptVm_LookupDirectionTowardCoordinates": "GamePhaseActorScriptVm_LookupDirectionTowardCoordinates",
+  "GamePhaseActorScriptVm_GetCollection1ActorVectorX": "GamePhaseActorScriptVm_GetCollection1ActorVectorX",
+  "GamePhaseActorScriptVm_GetCollection1ActorVectorY": "GamePhaseActorScriptVm_GetCollection1ActorVectorY",
+  "GamePhaseActorScriptVm_GetCollection1ActorVectorZ": "GamePhaseActorScriptVm_GetCollection1ActorVectorZ"
+}
