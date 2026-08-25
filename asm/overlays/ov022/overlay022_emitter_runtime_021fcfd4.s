@@ -6,8 +6,8 @@
     .extern func_02091b98
     .extern TitleInterpolatedValue_Configure
 
-.global func_ov022_021fcfd4
-func_ov022_021fcfd4:
+.global Overlay022_Emitter_ConfigureBurst
+Overlay022_Emitter_ConfigureBurst:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r2
     mov r5, r0
@@ -45,4 +45,4 @@ func_ov022_021fcfd4:
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_021fd060: .word data_ov022_022005a8
 L_021fd064: .word data_ov022_022005b8
-.size func_ov022_021fcfd4, . - func_ov022_021fcfd4
+.size Overlay022_Emitter_ConfigureBurst, . - Overlay022_Emitter_ConfigureBurst

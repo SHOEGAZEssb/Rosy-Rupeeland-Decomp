@@ -10,7 +10,7 @@
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern TitleCharacterResourceCollection_Destroy
-    .extern func_ov022_021fcf98
+    .extern Overlay022_Emitter_Deinit
     .extern func_ov022_021fd458
     .extern func_ov022_021fda28
     .extern func_ov022_021fdd00
@@ -36,7 +36,7 @@ func_ov022_021fe18c:
     cmp r5, #0x0
     beq L_021fe1d4
     mov r0, r5
-    bl func_ov022_021fcf98
+    bl Overlay022_Emitter_Deinit
     mov r0, r5
     bl Heap_Free
 L_021fe1d4:

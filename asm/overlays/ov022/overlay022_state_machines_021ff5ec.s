@@ -16,7 +16,7 @@
 .extern SpriteMotionController_Show
 .extern SpriteMotionController_Hide
 .extern SpriteMotionController_SetAnimation
-.extern func_ov022_021fceb0
+.extern Overlay022_MovingSprite_IsComplete
 .extern func_ov022_021fdafc
 .extern func_ov022_021fdb38
 .extern func_ov022_021fdd1c
@@ -287,7 +287,7 @@ L_021ff95c:
     b L_021ff9f0
 L_021ff9a0:
     add r0, r4, #0x200
-    bl func_ov022_021fceb0
+    bl Overlay022_MovingSprite_IsComplete
     cmp r0, #0x0
     beq L_021ff9cc
     add r0, r4, #0xa8

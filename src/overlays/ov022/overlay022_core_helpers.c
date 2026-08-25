@@ -28,7 +28,7 @@ extern u32 genrand_int32(void);
 }
 #endif
 
-extern "C" s32 func_ov022_021fceb0(const void *object);
+extern "C" s32 Overlay022_MovingSprite_IsComplete(const void *object);
 
 /*
  * Constructs a 0xA4-byte moving sprite object in caller-provided storage.
@@ -36,7 +36,7 @@ extern "C" s32 func_ov022_021fceb0(const void *object);
  * retained at +0xA0, the overlay vtable is installed, and +0x88 is enabled.
  * Object state changes; no allocation occurs here. Returns the input object.
  */
-extern "C" void *func_ov022_021fce00(void *object, void *resource, s32 variant)
+extern "C" void *Overlay022_MovingSprite_Init(void *object, void *resource, s32 variant)
 {
     SpritePresentation_InitVariant(object, resource);
     FIELD(const void *, object, 0) = data_ov022_02200684;
@@ -49,7 +49,7 @@ extern "C" void *func_ov022_021fce00(void *object, void *resource, s32 variant)
  * Runs the moving sprite's non-freeing base destructor. The object is passed
  * to SDK cleanup and returned; owned storage is not released.
  */
-extern "C" void *func_ov022_021fce30(void *object)
+extern "C" void *Overlay022_MovingSprite_Deinit(void *object)
 {
     SpritePresentation_Destroy(object);
     return object;
@@ -59,7 +59,7 @@ extern "C" void *func_ov022_021fce30(void *object)
  * Runs the owning moving-sprite destructor. It performs SDK cleanup, frees the
  * object allocation, and returns the now-invalid pointer for ABI parity.
  */
-extern "C" void *func_ov022_021fce44(void *object)
+extern "C" void *Overlay022_MovingSprite_Delete(void *object)
 {
     SpritePresentation_Destroy(object);
     Heap_Free(object);
@@ -72,7 +72,7 @@ extern "C" void *func_ov022_021fce44(void *object)
  * +0x2C/+0x2E in sprite +0x9C. Returns one once elapsed +0x80 reaches duration
  * +0x7C, otherwise zero. Sprite/OAM-facing state changes through the SDK.
  */
-extern "C" s32 func_ov022_021fce60(void *object)
+extern "C" s32 Overlay022_MovingSprite_Update(void *object)
 {
     Presentation_AdvanceTransitions(object);
     s32 x = FIELD(s32, object, 0x10);
@@ -83,14 +83,14 @@ extern "C" s32 func_ov022_021fce60(void *object)
     void *sprite = FIELD(void *, object, 0x9c);
     FIELD(u16, sprite, 0x2c) = (u16)ix;
     FIELD(u16, sprite, 0x2e) = (u16)iy;
-    return func_ov022_021fceb0(object) != 0;
+    return Overlay022_MovingSprite_IsComplete(object) != 0;
 }
 
 /*
  * Tests whether moving-sprite elapsed value +0x80 has reached duration +0x7C.
  * The object is read only and the result is one when complete, zero otherwise.
  */
-extern "C" s32 func_ov022_021fceb0(const void *object)
+extern "C" s32 Overlay022_MovingSprite_IsComplete(const void *object)
 {
     return FIELD(s32, object, 0x80) >= FIELD(s32, object, 0x7c);
 }
@@ -100,7 +100,7 @@ extern "C" s32 func_ov022_021fceb0(const void *object)
  * installs vtable 0x02200654 and clears +4/+8/+C. Returns no value and performs
  * no allocation or direct hardware access.
  */
-extern "C" void func_ov022_021fcec8(void *controller)
+extern "C" void Overlay022_EmitterController_Init(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov022_02200654;
     FIELD(s32, controller, 4) = 0;
@@ -113,7 +113,7 @@ extern "C" void func_ov022_021fcec8(void *controller)
  * restores vtable 0x02200654, invokes SDK controller cleanup, and returns the
  * input address.
  */
-extern "C" void *func_ov022_021fcee8(void *controller)
+extern "C" void *Overlay022_EmitterController_Deinit(void *controller)
 {
     FIELD(const void *, controller, 0) = data_ov022_02200654;
     PresentationList_DeleteAll(controller);
@@ -127,12 +127,12 @@ extern "C" void *func_ov022_021fcee8(void *controller)
  * and clears counters +0x58/+0x5C. SDK/resource state changes; storage is
  * caller-owned and returned.
  */
-extern "C" void *func_ov022_021fcf08(void *emitter)
+extern "C" void *Overlay022_Emitter_Init(void *emitter)
 {
     AnimationResourceState_InitEmbedded((u8 *)emitter + 4);
     TitleInterpolatedValue_Init((u8 *)emitter + 0x10);
     TitleInterpolatedValue_Init((u8 *)emitter + 0x2c);
-    func_ov022_021fcec8((u8 *)emitter + 0x48);
+    Overlay022_EmitterController_Init((u8 *)emitter + 0x48);
     FIELD(u32, emitter, 0x64) = 0;
     FIELD(u32, emitter, 0x64) = genrand_int32();
     FIELD(void *, emitter, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
@@ -148,7 +148,7 @@ extern "C" void *func_ov022_021fcf08(void *emitter)
  * releases the font handle and resource +4, and returns the emitter address.
  * The repeated controller cleanup is the recovered base-destructor sequence.
  */
-extern "C" void *func_ov022_021fcf98(void *emitter)
+extern "C" void *Overlay022_Emitter_Deinit(void *emitter)
 {
     PresentationList_DeleteAll((u8 *)emitter + 0x48);
     GraphicsSpriteGroup_Destroy(FIELD(void *, emitter, 0));

@@ -28,12 +28,12 @@ extern void func_02091cf0(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void PresentationList_Append(void *, void *);
-extern void *func_ov022_021fce00(void *, void *, s32);
+extern void *Overlay022_MovingSprite_Init(void *, void *, s32);
 #ifdef __cplusplus
 }
 #endif
 
-extern "C" void func_ov022_021fd2dc(void *object, s32 duration);
+extern "C" void Overlay022_MovingSprite_SetLifetime(void *object, s32 duration);
 
 /*
  * Configures an emitter burst. Inputs are emitter, a randomization parameter,
@@ -44,7 +44,7 @@ extern "C" void func_ov022_021fd2dc(void *object, s32 duration);
  * direction is nonzero). Timer +0x2C starts at 10. Returns the chosen duration;
  * emitter timing state changes without direct allocation or MMIO.
  */
-extern "C" s32 func_ov022_021fcfd4(void *emitter, s32 random_arg,
+extern "C" s32 Overlay022_Emitter_ConfigureBurst(void *emitter, s32 random_arg,
                                      s32 count, s32 direction)
 {
     s32 duration = Presentation_InterpolateLinear(20, 200, random_arg, count);
@@ -73,7 +73,7 @@ extern "C" s32 func_ov022_021fcfd4(void *emitter, s32 random_arg,
  * heap, sprite/OAM, sound, and controller state may change. No value is
  * returned.
  */
-extern "C" void func_ov022_021fd068(void *emitter)
+extern "C" void Overlay022_Emitter_Update(void *emitter)
 {
     s32 current = func_02091c7c((u8 *)emitter + 0x10, 1);
     s32 delta = current - FIELD(s32, emitter, 0x58) +
@@ -106,7 +106,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
         void *object = Heap_Alloc(0xa4, data_ov022_022006b4,
                                   4, gHeapContext);
         if (object != 0)
-            object = func_ov022_021fce00(
+            object = Overlay022_MovingSprite_Init(
                 object, sprite_resource, FIELD(s32, emitter, 0x60));
 
         s32 start_x = start[0] + func_0209189c(
@@ -127,7 +127,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
             PresentationScalar_TransitionTo((u8 *)object + 0xc, 5, end_x << 12);
             PresentationScalar_TransitionTo((u8 *)object + 0x1c, 1, end_y << 12);
         }
-        func_ov022_021fd2dc(
+        Overlay022_MovingSprite_SetLifetime(
             object, TitleRandom_NextBounded((u8 *)emitter + 0x64, 4) + 24);
         PresentationList_Append((u8 *)emitter + 0x48, object);
     }
@@ -141,7 +141,7 @@ extern "C" void func_ov022_021fd068(void *emitter)
  * argument and resets elapsed time +0x80 to zero. The object is modified and
  * no value is returned; no SDK or hardware call occurs.
  */
-extern "C" void func_ov022_021fd2dc(void *object, s32 duration)
+extern "C" void Overlay022_MovingSprite_SetLifetime(void *object, s32 duration)
 {
     FIELD(s32, object, 0x7c) = (s16)duration;
     FIELD(s32, object, 0x80) = 0;

@@ -6,8 +6,8 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern DisplayBrightness_StartMaskedTransitions
-.extern func_ov022_021fcfd4
-.extern func_ov022_021fd068
+.extern Overlay022_Emitter_ConfigureBurst
+.extern Overlay022_Emitter_Update
 .extern func_ov022_021fdd1c
 .extern func_ov022_021ff0d0
 .extern func_ov022_021ff220
@@ -57,7 +57,7 @@ L_02200344:
     ldr r0, [r4, #0x354]
     ldr r2, [r2, #0x24]
     mov r3, #0x1
-    bl func_ov022_021fcfd4
+    bl Overlay022_Emitter_ConfigureBurst
     ldr r2, [r4, #0x2bc]
     ldr r1, L_02200470
     ldr r3, [r2, #0x24]
@@ -73,7 +73,7 @@ L_02200344:
     b L_0220045c
 L_022003a8:
     ldr r0, [r4, #0x354]
-    bl func_ov022_021fd068
+    bl Overlay022_Emitter_Update
     cmp r0, #0x0
     beq L_0220045c
     ldr r0, [r4, #0x354]

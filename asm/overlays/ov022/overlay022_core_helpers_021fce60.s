@@ -1,10 +1,10 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_core_helpers.c. */
     .extern Presentation_AdvanceTransitions
-    .extern func_ov022_021fceb0
+    .extern Overlay022_MovingSprite_IsComplete
 
-.global func_ov022_021fce60
-func_ov022_021fce60:
+.global Overlay022_MovingSprite_Update
+Overlay022_MovingSprite_Update:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Presentation_AdvanceTransitions
@@ -20,9 +20,9 @@ func_ov022_021fce60:
     strh r2, [r3, #0x2c]
     mov r1, r1, asr #0xc
     strh r1, [r3, #0x2e]
-    bl func_ov022_021fceb0
+    bl Overlay022_MovingSprite_IsComplete
     cmp r0, #0x0
     movne r0, #0x1
     moveq r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_ov022_021fce60, . - func_ov022_021fce60
+.size Overlay022_MovingSprite_Update, . - Overlay022_MovingSprite_Update

@@ -5,12 +5,12 @@
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern TitleInterpolatedValue_Init
-    .extern func_ov022_021fcec8
+    .extern Overlay022_EmitterController_Init
     .extern gDebugFont
     .extern genrand_int32
 
-.global func_ov022_021fcf08
-func_ov022_021fcf08:
+.global Overlay022_Emitter_Init
+Overlay022_Emitter_Init:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -21,7 +21,7 @@ func_ov022_021fcf08:
     add r0, r4, #0x2c
     bl TitleInterpolatedValue_Init
     add r0, r4, #0x48
-    bl func_ov022_021fcec8
+    bl Overlay022_EmitterController_Init
     mov r0, #0x0
     str r0, [r4, #0x64]
     bl genrand_int32
@@ -47,4 +47,4 @@ func_ov022_021fcf08:
 L_021fcf8c: .word gDebugFont
 L_021fcf90: .word 0x1716
 L_021fcf94: .word data_020f4e18
-.size func_ov022_021fcf08, . - func_ov022_021fcf08
+.size Overlay022_Emitter_Init, . - Overlay022_Emitter_Init

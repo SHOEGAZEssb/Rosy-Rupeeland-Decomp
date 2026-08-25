@@ -19,7 +19,7 @@
     .extern TitleDialog_Init
     .extern TitleDialog_SetExternalTextRow
     .extern SpriteMotionController_Init
-    .extern func_ov022_021fcf08
+    .extern Overlay022_Emitter_Init
     .extern func_ov022_021fd370
     .extern func_ov022_021fdd00
     .extern func_ov022_021fdd04
@@ -184,7 +184,7 @@ L_021fdf0c:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_021fdf8c
-    bl func_ov022_021fcf08
+    bl Overlay022_Emitter_Init
 L_021fdf8c:
     ldr r1, L_021fe008
     str r0, [r4, #0x354]

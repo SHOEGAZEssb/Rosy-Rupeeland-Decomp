@@ -5,8 +5,8 @@
     .extern GraphicsSpriteGroup_Destroy
     .extern PresentationList_DeleteAll
 
-.global func_ov022_021fcf98
-func_ov022_021fcf98:
+.global Overlay022_Emitter_Deinit
+Overlay022_Emitter_Deinit:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x48
@@ -22,4 +22,4 @@ func_ov022_021fcf98:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fcfd0: .word data_ov022_02200654
-.size func_ov022_021fcf98, . - func_ov022_021fcf98
+.size Overlay022_Emitter_Deinit, . - Overlay022_Emitter_Deinit

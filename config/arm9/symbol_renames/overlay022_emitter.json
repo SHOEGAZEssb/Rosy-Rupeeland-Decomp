@@ -1,0 +1,14 @@
+{
+  "func_ov022_021fce00": "Overlay022_MovingSprite_Init",
+  "func_ov022_021fce30": "Overlay022_MovingSprite_Deinit",
+  "func_ov022_021fce44": "Overlay022_MovingSprite_Delete",
+  "func_ov022_021fce60": "Overlay022_MovingSprite_Update",
+  "func_ov022_021fceb0": "Overlay022_MovingSprite_IsComplete",
+  "func_ov022_021fcec8": "Overlay022_EmitterController_Init",
+  "func_ov022_021fcee8": "Overlay022_EmitterController_Deinit",
+  "func_ov022_021fcf08": "Overlay022_Emitter_Init",
+  "func_ov022_021fcf98": "Overlay022_Emitter_Deinit",
+  "func_ov022_021fcfd4": "Overlay022_Emitter_ConfigureBurst",
+  "func_ov022_021fd068": "Overlay022_Emitter_Update",
+  "func_ov022_021fd2dc": "Overlay022_MovingSprite_SetLifetime"
+}

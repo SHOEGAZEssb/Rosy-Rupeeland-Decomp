@@ -3,8 +3,8 @@
     .extern data_ov022_02200654
     .extern PresentationList_DeleteAll
 
-.global func_ov022_021fcee8
-func_ov022_021fcee8:
+.global Overlay022_EmitterController_Deinit
+Overlay022_EmitterController_Deinit:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fcf04
     mov r4, r0
@@ -13,4 +13,4 @@ func_ov022_021fcee8:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fcf04: .word data_ov022_02200654
-.size func_ov022_021fcee8, . - func_ov022_021fcee8
+.size Overlay022_EmitterController_Deinit, . - Overlay022_EmitterController_Deinit

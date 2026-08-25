@@ -41,8 +41,8 @@ extern void *TitleDialog_Init(void *, void *, s32);
 extern void TitleDialog_SetExternalTextRow(void *, s32, void *);
 extern void SpriteMotionController_Init(void *);
 extern u32 genrand_int32(void);
-extern void func_ov022_021fcf08(void *);
-extern void *func_ov022_021fcf98(void *);
+extern void Overlay022_Emitter_Init(void *);
+extern void *Overlay022_Emitter_Deinit(void *);
 extern void *func_ov022_021fd370(void *);
 extern void *func_ov022_021fd458(void *);
 extern void func_ov022_021fda28(void *);
@@ -73,7 +73,7 @@ static void destroy_scene_members(void *scene)
 
     void *emitter = FIELD(void *, scene, 0x354);
     if (emitter != 0) {
-        func_ov022_021fcf98(emitter);
+        Overlay022_Emitter_Deinit(emitter);
         Heap_Free(emitter);
     }
     void *overlay46 = FIELD(void *, scene, 0x35c);
@@ -179,7 +179,7 @@ extern "C" void *func_ov022_021fdd44(void *scene)
 
     void *emitter = Heap_Alloc(0x70, data_ov022_022006e4, 4, gHeapContext);
     if (emitter != 0)
-        func_ov022_021fcf08(emitter);
+        Overlay022_Emitter_Init(emitter);
     FIELD(void *, scene, 0x354) = emitter;
     FIELD(u16, gGameWork, 0x204) = 0;
     FIELD(u32, scene, 0x20) |= 0x400;

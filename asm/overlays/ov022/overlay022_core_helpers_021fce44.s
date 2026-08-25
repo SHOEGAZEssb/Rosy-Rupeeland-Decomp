@@ -3,8 +3,8 @@
     .extern SpritePresentation_Destroy
     .extern Heap_Free
 
-.global func_ov022_021fce44
-func_ov022_021fce44:
+.global Overlay022_MovingSprite_Delete
+Overlay022_MovingSprite_Delete:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl SpritePresentation_Destroy
@@ -12,4 +12,4 @@ func_ov022_021fce44:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-.size func_ov022_021fce44, . - func_ov022_021fce44
+.size Overlay022_MovingSprite_Delete, . - Overlay022_MovingSprite_Delete

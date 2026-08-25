@@ -13,14 +13,14 @@
     .extern PresentationScalar_TransitionTo
     .extern Presentation_SetPosition
     .extern PresentationList_Append
-    .extern func_ov022_021fce00
-    .extern func_ov022_021fd2dc
+    .extern Overlay022_MovingSprite_Init
+    .extern Overlay022_MovingSprite_SetLifetime
     .extern gHeapContext
     .extern gSoundContext
     .extern Heap_Alloc
 
-.global func_ov022_021fd068
-func_ov022_021fd068:
+.global Overlay022_Emitter_Update
+Overlay022_Emitter_Update:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x1c
     mov r6, r0
@@ -108,7 +108,7 @@ L_021fd150:
     beq L_021fd1b0
     ldr r2, [r6, #0x60]
     mov r1, r5
-    bl func_ov022_021fce00
+    bl Overlay022_MovingSprite_Init
     mov r4, r0
 L_021fd1b0:
     ldr r8, [r6, #0x68]
@@ -174,7 +174,7 @@ L_021fd28c:
     mov r1, r0
     mov r0, r4
     add r1, r1, #0x18
-    bl func_ov022_021fd2dc
+    bl Overlay022_MovingSprite_SetLifetime
     mov r1, r4
     add r0, r6, #0x48
     bl PresentationList_Append
@@ -189,4 +189,4 @@ L_021fd2cc: .word data_ov022_022004b4
 L_021fd2d0: .word gSoundContext
 L_021fd2d4: .word data_ov022_022006b4
 L_021fd2d8: .word gHeapContext
-.size func_ov022_021fd068, . - func_ov022_021fd068
+.size Overlay022_Emitter_Update, . - Overlay022_Emitter_Update

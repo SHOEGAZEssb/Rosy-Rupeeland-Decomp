@@ -16,8 +16,8 @@
 .extern IndexedSelectionController_Increment
 .extern IndexedSelectionController_AdvanceTransition
 .extern IndexedSelectionController_AdvancePacing
-.extern func_ov022_021fcfd4
-.extern func_ov022_021fd068
+.extern Overlay022_Emitter_ConfigureBurst
+.extern Overlay022_Emitter_Update
 .extern func_ov022_021fdd1c
 .extern func_ov022_021fe544
 .extern func_ov022_021fe688
@@ -39,7 +39,7 @@ func_ov022_021ffa1c:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x354]
-    bl func_ov022_021fd068
+    bl Overlay022_Emitter_Update
     ldr r0, [r4, #0x4]
     cmp r0, #0x14
     addls pc, pc, r0, lsl #0x2
@@ -132,7 +132,7 @@ L_021ffb54:
     ldrh r2, [r2, #0x18]
     ldr r0, [r4, #0x354]
     mov r3, #0x0
-    bl func_ov022_021fcfd4
+    bl Overlay022_Emitter_ConfigureBurst
     ldr r1, [r4, #0x360]
     ldr r3, L_021ffd80
     mov r2, r0
@@ -184,7 +184,7 @@ L_021ffbfc:
     ldrh r2, [r2, r3]
     ldr r0, [r4, #0x354]
     mov r3, #0x0
-    bl func_ov022_021fcfd4
+    bl Overlay022_Emitter_ConfigureBurst
     ldr r2, [r4, #0x358]
     mov r1, #0x34
     mul ip, r2, r1

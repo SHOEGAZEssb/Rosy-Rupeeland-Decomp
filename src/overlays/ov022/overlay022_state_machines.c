@@ -68,8 +68,8 @@ extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void SceneSound_StopPackedEffect(void *, s32);
 extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void GameWork_ClearFlag(void *, u16);
-extern s32 func_ov022_021fcfd4(void *, s32, s32, s32);
-extern s32 func_ov022_021fd068(void *);
+extern s32 Overlay022_Emitter_ConfigureBurst(void *, s32, s32, s32);
+extern s32 Overlay022_Emitter_Update(void *);
 extern void func_ov022_021fdafc(void *);
 extern void func_ov022_021fdb38(void *);
 extern s32 func_ov022_021fdc30(void *, void *);
@@ -94,7 +94,7 @@ extern void func_ov022_021ff1e4(void *);
 extern void func_ov022_021ff220(void *, s32);
 extern void func_ov022_021ff2c4(void *, s32);
 extern s32 func_ov022_021ff368(void *);
-extern s32 func_ov022_021fceb0(void *);
+extern s32 Overlay022_MovingSprite_IsComplete(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -207,7 +207,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
         }
         break;
     case 12:
-        if (func_ov022_021fceb0((u8 *)scene + 0x200)) {
+        if (Overlay022_MovingSprite_IsComplete((u8 *)scene + 0x200)) {
             SpriteMotionController_Show((u8 *)scene + 0xa8);
             FIELD(s32, scene, 4) = 2;
             FIELD(s32, scene, 8) = 0;
@@ -231,7 +231,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
  */
 extern "C" s32 func_ov022_021ffa1c(void *scene)
 {
-    func_ov022_021fd068(FIELD(void *, scene, 0x354));
+    Overlay022_Emitter_Update(FIELD(void *, scene, 0x354));
     switch (FIELD(s32, scene, 4)) {
     case 0:
         DisplayBrightness_StartMaskedTransitions(2, -8);
@@ -261,7 +261,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
             s32 currency = GamePhaseCurrencyHud_GetCurrency(
                 gGamePhaseCurrencyHud);
             s32 id = FIELD(u16, FIELD(void *, scene, 0x360), 0x18);
-            s32 duration = func_ov022_021fcfd4(
+            s32 duration = Overlay022_Emitter_ConfigureBurst(
                 FIELD(void *, scene, 0x354), currency, id, 0);
             GamePhaseCurrencyHud_AddCurrency(
                 gGamePhaseCurrencyHud, id, duration);
@@ -285,7 +285,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
                 s32 id = FIELD(u16, data_020d782e, offset);
                 s32 currency = GamePhaseCurrencyHud_GetCurrency(
                     gGamePhaseCurrencyHud);
-                s32 duration = func_ov022_021fcfd4(
+                s32 duration = Overlay022_Emitter_ConfigureBurst(
                     FIELD(void *, scene, 0x354), currency, id, 0);
                 GamePhaseCurrencyHud_AddCurrency(
                     gGamePhaseCurrencyHud, id, duration);
@@ -511,7 +511,7 @@ extern "C" s32 func_ov022_022002e4(void *scene)
             s32 id = FIELD(s32, descriptor, 0x24);
             s32 currency = GamePhaseCurrencyHud_GetCurrency(
                 gGamePhaseCurrencyHud);
-            s32 duration = func_ov022_021fcfd4(
+            s32 duration = Overlay022_Emitter_ConfigureBurst(
                 FIELD(void *, scene, 0x354), currency, id, 1);
             GamePhaseCurrencyHud_AddCurrency(
                 gGamePhaseCurrencyHud, -id, duration);
@@ -519,7 +519,7 @@ extern "C" s32 func_ov022_022002e4(void *scene)
         }
         break;
     case 2:
-        if (func_ov022_021fd068(FIELD(void *, scene, 0x354)) &&
+        if (Overlay022_Emitter_Update(FIELD(void *, scene, 0x354)) &&
             FIELD(s32, FIELD(void *, scene, 0x354), 0x54) == 0) {
             func_ov022_021ff220(scene, 6);
             ADVANCE(scene);

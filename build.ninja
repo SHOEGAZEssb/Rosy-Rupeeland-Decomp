@@ -28487,7 +28487,7 @@ build build/reports/overlay022_core_helpers_021fce00.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce00.o
 build build/reports/overlay022_core_helpers_021fce00.txt: match_report build/reports/overlay022_core_helpers_021fce00.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fce00.json
-  report_args = --section .text --function func_ov022_021fce00 --require-exact
+  report_args = --section .text --function Overlay022_MovingSprite_Init --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce30.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fce30.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fce30.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fce30.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fce30.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce30.o
@@ -28495,7 +28495,7 @@ build build/reports/overlay022_core_helpers_021fce30.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce30.o
 build build/reports/overlay022_core_helpers_021fce30.txt: match_report build/reports/overlay022_core_helpers_021fce30.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fce30.json
-  report_args = --section .text --function func_ov022_021fce30 --require-exact
+  report_args = --section .text --function Overlay022_MovingSprite_Deinit --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce44.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fce44.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fce44.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fce44.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fce44.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce44.o
@@ -28503,7 +28503,7 @@ build build/reports/overlay022_core_helpers_021fce44.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce44.o
 build build/reports/overlay022_core_helpers_021fce44.txt: match_report build/reports/overlay022_core_helpers_021fce44.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fce44.json
-  report_args = --section .text --function func_ov022_021fce44 --require-exact
+  report_args = --section .text --function Overlay022_MovingSprite_Delete --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce60.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fce60.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fce60.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fce60.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fce60.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce60.o
@@ -28511,7 +28511,7 @@ build build/reports/overlay022_core_helpers_021fce60.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce60.o
 build build/reports/overlay022_core_helpers_021fce60.txt: match_report build/reports/overlay022_core_helpers_021fce60.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fce60.json
-  report_args = --section .text --function func_ov022_021fce60 --require-exact
+  report_args = --section .text --function Overlay022_MovingSprite_Update --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fceb0.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fceb0.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fceb0.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fceb0.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fceb0.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fceb0.o
@@ -28519,7 +28519,7 @@ build build/reports/overlay022_core_helpers_021fceb0.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fceb0.o
 build build/reports/overlay022_core_helpers_021fceb0.txt: match_report build/reports/overlay022_core_helpers_021fceb0.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fceb0.json
-  report_args = --section .text --function func_ov022_021fceb0 --require-exact
+  report_args = --section .text --function Overlay022_MovingSprite_IsComplete --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcec8.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fcec8.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcec8.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fcec8.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcec8.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcec8.o
@@ -28527,7 +28527,7 @@ build build/reports/overlay022_core_helpers_021fcec8.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcec8.o
 build build/reports/overlay022_core_helpers_021fcec8.txt: match_report build/reports/overlay022_core_helpers_021fcec8.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fcec8.json
-  report_args = --section .text --function func_ov022_021fcec8 --require-exact
+  report_args = --section .text --function Overlay022_EmitterController_Init --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcee8.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fcee8.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcee8.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fcee8.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcee8.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcee8.o
@@ -28535,7 +28535,7 @@ build build/reports/overlay022_core_helpers_021fcee8.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcee8.o
 build build/reports/overlay022_core_helpers_021fcee8.txt: match_report build/reports/overlay022_core_helpers_021fcee8.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fcee8.json
-  report_args = --section .text --function func_ov022_021fcee8 --require-exact
+  report_args = --section .text --function Overlay022_EmitterController_Deinit --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf08.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fcf08.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcf08.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fcf08.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcf08.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf08.o
@@ -28543,7 +28543,7 @@ build build/reports/overlay022_core_helpers_021fcf08.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf08.o
 build build/reports/overlay022_core_helpers_021fcf08.txt: match_report build/reports/overlay022_core_helpers_021fcf08.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fcf08.json
-  report_args = --section .text --function func_ov022_021fcf08 --require-exact
+  report_args = --section .text --function Overlay022_Emitter_Init --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf98.o: mwasmarm asm/overlays/ov022/overlay022_core_helpers_021fcf98.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcf98.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_core_helpers_021fcf98.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_core_helpers_021fcf98.o | build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf98.o
@@ -28551,7 +28551,7 @@ build build/reports/overlay022_core_helpers_021fcf98.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf98.o
 build build/reports/overlay022_core_helpers_021fcf98.txt: match_report build/reports/overlay022_core_helpers_021fcf98.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_core_helpers_021fcf98.json
-  report_args = --section .text --function func_ov022_021fcf98 --require-exact
+  report_args = --section .text --function Overlay022_Emitter_Deinit --require-exact
 build overlay022_core_helpers: phony build/decomp/src/overlays/ov022/overlay022_core_helpers.o build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce00.o build/reports/overlay022_core_helpers_021fce00.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce30.o build/reports/overlay022_core_helpers_021fce30.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce44.o build/reports/overlay022_core_helpers_021fce44.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fce60.o build/reports/overlay022_core_helpers_021fce60.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fceb0.o build/reports/overlay022_core_helpers_021fceb0.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcec8.o build/reports/overlay022_core_helpers_021fcec8.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcee8.o build/reports/overlay022_core_helpers_021fcee8.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf08.o build/reports/overlay022_core_helpers_021fcf08.txt build/decomp/asm/overlays/ov022/overlay022_core_helpers_021fcf98.o build/reports/overlay022_core_helpers_021fcf98.txt
 overlay022_emitter_runtime_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov022/overlay022_emitter_runtime.o: mwccarm src/overlays/ov022/overlay022_emitter_runtime.c | include/tingle/types.h
@@ -28564,7 +28564,7 @@ build build/reports/overlay022_emitter_runtime_021fcfd4.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fcfd4.o
 build build/reports/overlay022_emitter_runtime_021fcfd4.txt: match_report build/reports/overlay022_emitter_runtime_021fcfd4.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_emitter_runtime_021fcfd4.json
-  report_args = --section .text --function func_ov022_021fcfd4 --require-exact
+  report_args = --section .text --function Overlay022_Emitter_ConfigureBurst --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd068.o: mwasmarm asm/overlays/ov022/overlay022_emitter_runtime_021fd068.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_emitter_runtime_021fd068.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_emitter_runtime_021fd068.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_emitter_runtime_021fd068.o | build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd068.o
@@ -28572,7 +28572,7 @@ build build/reports/overlay022_emitter_runtime_021fd068.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd068.o
 build build/reports/overlay022_emitter_runtime_021fd068.txt: match_report build/reports/overlay022_emitter_runtime_021fd068.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_emitter_runtime_021fd068.json
-  report_args = --section .text --function func_ov022_021fd068 --require-exact
+  report_args = --section .text --function Overlay022_Emitter_Update --require-exact
 build build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd2dc.o: mwasmarm asm/overlays/ov022/overlay022_emitter_runtime_021fd2dc.s
 build build/decomp/delinks/asm/overlays/ov022/overlay022_emitter_runtime_021fd2dc.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov022/delinks.txt config/arm9/overlays/ov022/symbols.txt config/arm9/overlays/ov022/relocs.txt
 build build/reports/overlay022_emitter_runtime_021fd2dc.json: objdiff build/decomp/delinks/asm/overlays/ov022/overlay022_emitter_runtime_021fd2dc.o | build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd2dc.o
@@ -28580,7 +28580,7 @@ build build/reports/overlay022_emitter_runtime_021fd2dc.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd2dc.o
 build build/reports/overlay022_emitter_runtime_021fd2dc.txt: match_report build/reports/overlay022_emitter_runtime_021fd2dc.json | tools/report_objdiff.py
   report_json = build/reports/overlay022_emitter_runtime_021fd2dc.json
-  report_args = --section .text --function func_ov022_021fd2dc --require-exact
+  report_args = --section .text --function Overlay022_MovingSprite_SetLifetime --require-exact
 build overlay022_emitter_runtime: phony build/decomp/src/overlays/ov022/overlay022_emitter_runtime.o build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fcfd4.o build/reports/overlay022_emitter_runtime_021fcfd4.txt build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd068.o build/reports/overlay022_emitter_runtime_021fd068.txt build/decomp/asm/overlays/ov022/overlay022_emitter_runtime_021fd2dc.o build/reports/overlay022_emitter_runtime_021fd2dc.txt
 overlay022_status_widget_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
 build build/decomp/src/overlays/ov022/overlay022_status_widget.o: mwccarm src/overlays/ov022/overlay022_status_widget.c | include/tingle/types.h

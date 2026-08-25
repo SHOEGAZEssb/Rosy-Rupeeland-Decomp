@@ -3,8 +3,8 @@
     .extern data_ov022_02200684
     .extern SpritePresentation_InitVariant
 
-.global func_ov022_021fce00
-func_ov022_021fce00:
+.global Overlay022_MovingSprite_Init
+Overlay022_MovingSprite_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r2
@@ -17,4 +17,4 @@ func_ov022_021fce00:
     str r1, [r5, #0x88]
     ldmia sp!, {r3, r4, r5, pc}
 L_021fce2c: .word data_ov022_02200684
-.size func_ov022_021fce00, . - func_ov022_021fce00
+.size Overlay022_MovingSprite_Init, . - Overlay022_MovingSprite_Init
