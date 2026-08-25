@@ -5,16 +5,29 @@
 #include "tingle/vec_fx32.h"
 #include "tingle/vec_fx32_stepper.h"
 
+enum {
+    GAME_PHASE_VISUAL_EFFECT_PREVIOUS_POSITION = 0,
+    GAME_PHASE_VISUAL_EFFECT_BACKGROUND_OFFSET = 1,
+    GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET = 2,
+    GAME_PHASE_VISUAL_EFFECT_BASE_OFFSET = 3,
+    GAME_PHASE_VISUAL_EFFECT_VECTOR_COUNT = 4
+};
+
+typedef struct GamePhaseVisualEffectVTable {
+    void (*destroy)(void *self);
+    void (*destroyAndFree)(void *self);
+} GamePhaseVisualEffectVTable;
+
 /* Graphics/resource helper embedded in GamePhaseState at offset 0x2eb4. */
 typedef struct GamePhaseVisualEffect {
-    const void *vtable;
+    const GamePhaseVisualEffectVTable *vtable;
     GraphicsResourceSet resources;
     s32 effectEntryIndex;
     s32 effectTimer;
     u32 randomToken;
     u16 firstBlend;
     u16 secondBlend;
-    VecFx32Object vectors[4];
+    VecFx32Object vectors[GAME_PHASE_VISUAL_EFFECT_VECTOR_COUNT];
     VecFx32Stepper stepper;
     u32 flags;
     u32 sequenceEnabled;
@@ -37,6 +50,7 @@ GamePhaseVisualEffect *GamePhaseVisualEffect_Init(GamePhaseVisualEffect *self);
 GamePhaseVisualEffect *GamePhaseVisualEffect_Destroy(GamePhaseVisualEffect *self);
 GamePhaseVisualEffect *GamePhaseVisualEffect_DestroyAndFree(
     GamePhaseVisualEffect *self);
+extern const GamePhaseVisualEffectVTable gGamePhaseVisualEffectVTable;
 void GamePhaseVisualEffect_Update(GamePhaseVisualEffect *self);
 void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
                                           const VecFx32Object *position);

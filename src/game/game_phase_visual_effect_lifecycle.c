@@ -6,7 +6,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const void *data_020d55e0;
 #ifdef __cplusplus
 }
 #endif
@@ -19,7 +18,7 @@ extern const void *data_020d55e0;
 GamePhaseVisualEffect *GamePhaseVisualEffect_Init(GamePhaseVisualEffect *self)
 {
     s32 i;
-    self->vtable = data_020d55e0;
+    self->vtable = &gGamePhaseVisualEffectVTable;
     GraphicsResourceSet_Init(&self->resources);
     self->effectEntryIndex = 0;
     self->effectTimer = 0;
@@ -45,7 +44,7 @@ GamePhaseVisualEffect *GamePhaseVisualEffect_Destroy(GamePhaseVisualEffect *self
 {
     u32 display;
     s32 i;
-    self->vtable = data_020d55e0;
+    self->vtable = &gGamePhaseVisualEffectVTable;
     self->flags &= ~1;
     self->randomToken = 0;
     GraphicsResourceSet_ReleaseHandles(&self->resources);

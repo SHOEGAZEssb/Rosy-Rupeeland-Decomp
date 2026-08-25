@@ -3,7 +3,7 @@
 .extern GraphicsResourceSet_Destroy
 .extern GraphicsResourceSet_Init
 .extern Heap_Free
-.extern data_020d55e0
+.extern gGamePhaseVisualEffectVTable
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern VecFx32Stepper_Init
@@ -71,7 +71,7 @@ GamePhaseVisualEffect_Init: ; 0x0200fa40
     and r1, r2, r1
     strh r1, [r4, #0xa2]
     ldmia sp!, {r4, pc}
-L_0200fb2c: .word data_020d55e0
+L_0200fb2c: .word gGamePhaseVisualEffectVTable
 L_0200fb30: .word 0xffff000f
     .size GamePhaseVisualEffect_Init, . - GamePhaseVisualEffect_Init
 
@@ -113,7 +113,7 @@ GamePhaseVisualEffect_Destroy: ; 0x0200fb34
     bl GraphicsResourceSet_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200fbc4: .word data_020d55e0
+L_0200fbc4: .word gGamePhaseVisualEffectVTable
     .size GamePhaseVisualEffect_Destroy, . - GamePhaseVisualEffect_Destroy
 
     .global GamePhaseVisualEffect_DestroyAndFree
@@ -156,6 +156,5 @@ GamePhaseVisualEffect_DestroyAndFree: ; 0x0200fbc8
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200fc60: .word data_020d55e0
+L_0200fc60: .word gGamePhaseVisualEffectVTable
     .size GamePhaseVisualEffect_DestroyAndFree, . - GamePhaseVisualEffect_DestroyAndFree
-

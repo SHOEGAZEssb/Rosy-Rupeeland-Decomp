@@ -99,5 +99,5 @@ void GamePhaseVisualEffect_Configure(GamePhaseVisualEffect *self, u32 resource0I
 void GamePhaseVisualEffect_SetBaseOffset(GamePhaseVisualEffect *self,
                                          const VecFx32Object *offset)
 {
-    VecFx32Object_Assign(&self->vectors[3], offset);
+    VecFx32Object_Assign(&self->vectors[GAME_PHASE_VISUAL_EFFECT_BASE_OFFSET], offset);
 }

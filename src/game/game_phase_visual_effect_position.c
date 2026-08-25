@@ -41,7 +41,9 @@ void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
     if (!(*((u8 *)runtime + 0x30cc) & 4)) {
         void *area;
         u8 *actor;
-        VecFx32Object_Add(&self->vectors[1], &self->vectors[3]);
+        VecFx32Object_Add(
+            &self->vectors[GAME_PHASE_VISUAL_EFFECT_BACKGROUND_OFFSET],
+            &self->vectors[GAME_PHASE_VISUAL_EFFECT_BASE_OFFSET]);
         area = GamePhaseRuntime_GetActorCollection(runtime, 1);
         actor = *(u8 **)((u8 *)area + 0x2e7c);
         if (!(*(u32 *)(actor + 0xd0) & 0x10))
@@ -52,29 +54,44 @@ void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
                           gActorInteractionSmoothedDisplacement[1] * -32, 0);
         VecFx32Object_Assign(&current, &temporary);
         VecFx32Object_Destroy(&temporary);
-        if (current.value.x != self->vectors[2].value.x ||
-            current.value.y != self->vectors[2].value.y ||
-            current.value.z != self->vectors[2].value.z) {
+        if (current.value.x !=
+                self->vectors[GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET].value.x ||
+            current.value.y !=
+                self->vectors[GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET].value.y ||
+            current.value.z !=
+                self->vectors[GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET].value.z) {
             VecFx32Stepper newStepper;
-            VecFx32Stepper_InitTransition(&newStepper, &current, &self->vectors[2], 0x78);
+            VecFx32Stepper_InitTransition(
+                &newStepper, &current,
+                &self->vectors[GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET],
+                0x78);
             VecFx32Stepper_Assign(&self->stepper, &newStepper);
             VecFx32Stepper_Destroy(&newStepper);
         }
         VecFx32Stepper_Update(&self->stepper);
-        VecFx32Object_Assign(&self->vectors[2], VecFx32Stepper_GetCurrent(&self->stepper));
+        VecFx32Object_Assign(
+            &self->vectors[GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET],
+            VecFx32Stepper_GetCurrent(&self->stepper));
     } else {
         VecFx32Object_InitComponents(&temporary, 0, 0, 0);
-        VecFx32Object_Assign(&self->vectors[2], &temporary);
+        VecFx32Object_Assign(
+            &self->vectors[GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET],
+            &temporary);
         VecFx32Object_Destroy(&temporary);
     }
 
-    VecFx32_Subtract(&temporary, position, &self->vectors[0]);
+    VecFx32_Subtract(
+        &temporary, position,
+        &self->vectors[GAME_PHASE_VISUAL_EFFECT_PREVIOUS_POSITION]);
     VecFx32Object_Assign(&current, &temporary);
     VecFx32Object_Destroy(&temporary);
     current.value.x = quantizeComponent(current.value.x);
     current.value.y = quantizeComponent(current.value.y);
-    VecFx32Object_Assign(&self->vectors[0], position);
-    VecFx32_Subtract(&temporary, &current, &self->vectors[2]);
+    VecFx32Object_Assign(
+        &self->vectors[GAME_PHASE_VISUAL_EFFECT_PREVIOUS_POSITION], position);
+    VecFx32_Subtract(
+        &temporary, &current,
+        &self->vectors[GAME_PHASE_VISUAL_EFFECT_SMOOTHED_INTERACTION_OFFSET]);
     VecFx32Object_Assign(&current, &temporary);
     VecFx32Object_Destroy(&temporary);
     if (self->flags & 4) {
@@ -82,6 +99,7 @@ void GamePhaseVisualEffect_UpdatePosition(GamePhaseVisualEffect *self,
         current.value.y /= 2;
         current.value.z /= 2;
     }
-    VecFx32Object_Add(&self->vectors[1], &current);
+    VecFx32Object_Add(
+        &self->vectors[GAME_PHASE_VISUAL_EFFECT_BACKGROUND_OFFSET], &current);
     VecFx32Object_Destroy(&current);
 }

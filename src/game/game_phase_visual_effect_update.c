@@ -37,8 +37,10 @@ void GamePhaseVisualEffect_Update(GamePhaseVisualEffect *self)
             *bg1cnt = (u16)((*bg1cnt & ~3) | ((self->flags >> 4) & 0xf));
         }
         *(volatile u32 *)0x04000014 =
-            (((u32)(self->vectors[1].value.y >> 12) & 0x1ff) << 16) |
-            ((u32)(self->vectors[1].value.x >> 12) & 0x1ff);
+            (((u32)(self->vectors[GAME_PHASE_VISUAL_EFFECT_BACKGROUND_OFFSET]
+                         .value.y >> 12) & 0x1ff) << 16) |
+            ((u32)(self->vectors[GAME_PHASE_VISUAL_EFFECT_BACKGROUND_OFFSET]
+                        .value.x >> 12) & 0x1ff);
         GamePhaseVisualEffect_ApplyBlend(self);
         if (*((u8 *)gGamePhaseRuntime + 0x30cc) & 4)
             return;

@@ -6849,7 +6849,7 @@ data_020d5578 kind:data(any) addr:0x020d5578
 gGamePhaseResumeSceneVTable kind:data(any) addr:0x020d5594
 data_020d55c0 kind:data(any) addr:0x020d55c0
 data_020d55c8 kind:data(any) addr:0x020d55c8
-data_020d55e0 kind:data(any) addr:0x020d55e0
+gGamePhaseVisualEffectVTable kind:data(any) addr:0x020d55e0
 data_020d55f0 kind:data(any) addr:0x020d55f0
 data_020d5604 kind:data(any) addr:0x020d5604
 data_020d5610 kind:data(any) addr:0x020d5610

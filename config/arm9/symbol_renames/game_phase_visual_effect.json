@@ -1,0 +1,15 @@
+{
+  "GamePhaseVisualEffect_Init": "GamePhaseVisualEffect_Init",
+  "GamePhaseVisualEffect_Destroy": "GamePhaseVisualEffect_Destroy",
+  "GamePhaseVisualEffect_DestroyAndFree": "GamePhaseVisualEffect_DestroyAndFree",
+  "GamePhaseVisualEffect_Update": "GamePhaseVisualEffect_Update",
+  "GamePhaseVisualEffect_UpdatePosition": "GamePhaseVisualEffect_UpdatePosition",
+  "GamePhaseVisualEffect_SetEnabled": "GamePhaseVisualEffect_SetEnabled",
+  "GamePhaseVisualEffect_PrepareBackground": "GamePhaseVisualEffect_PrepareBackground",
+  "GamePhaseVisualEffect_SetBlendCoefficients": "GamePhaseVisualEffect_SetBlendCoefficients",
+  "GamePhaseVisualEffect_ApplyBlend": "GamePhaseVisualEffect_ApplyBlend",
+  "GamePhaseVisualEffect_LoadResources": "GamePhaseVisualEffect_LoadResources",
+  "GamePhaseVisualEffect_Configure": "GamePhaseVisualEffect_Configure",
+  "GamePhaseVisualEffect_SetBaseOffset": "GamePhaseVisualEffect_SetBaseOffset",
+  "data_020d55e0": "gGamePhaseVisualEffectVTable"
+}
