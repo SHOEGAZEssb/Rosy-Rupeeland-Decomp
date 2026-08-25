@@ -1,0 +1,11 @@
+{
+  "func_02019104": "GamePhaseActorScriptVm_UnlockRetailPhaseById",
+  "GamePhaseActorScriptVm_RepeatGlobalState34Operation": "GamePhaseActorScriptVm_ActivateEligibleActorDescriptors",
+  "GamePhaseActorScriptVm_SetTouchPromptEnabled": "GamePhaseActorScriptVm_SetTouchPromptEnabled",
+  "GamePhaseActorScriptVm_QueryRuntimeContextFixedMode": "GamePhaseActorScriptVm_BeginRetailRecordOperation",
+  "GamePhaseActorScriptVm_IsPointWithinEllipse": "GamePhaseActorScriptVm_IsPointWithinEllipse",
+  "GamePhaseActorScriptVm_GetGameWorkField44": "GamePhaseActorScriptVm_GetCurrencyIncreaseAccumulator",
+  "GamePhaseActorScriptVm_GetNegatedGameWorkField48": "GamePhaseActorScriptVm_GetNegatedCurrencyDecreaseAccumulator",
+  "GamePhaseActorScriptVm_ClearGameWorkFields44And48": "GamePhaseActorScriptVm_ClearCurrencyChangeAccumulators",
+  "GamePhaseActorScriptVm_RuntimeUtilityNoOp": "GamePhaseActorScriptVm_RuntimeUtilityNoOp"
+}

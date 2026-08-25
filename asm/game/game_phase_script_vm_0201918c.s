@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RetailSaveContext_BeginRecordOperation
 .extern gRuntimeContext
-.global GamePhaseActorScriptVm_QueryRuntimeContextFixedMode
-GamePhaseActorScriptVm_QueryRuntimeContextFixedMode:
+.global GamePhaseActorScriptVm_BeginRetailRecordOperation
+GamePhaseActorScriptVm_BeginRetailRecordOperation:
     stmdb sp!, {r4, lr}
     ldr r2, L_020191c0
     mov r4, r0
@@ -19,4 +19,4 @@ GamePhaseActorScriptVm_QueryRuntimeContextFixedMode:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_020191c0: .word gRuntimeContext
-.size GamePhaseActorScriptVm_QueryRuntimeContextFixedMode, . - GamePhaseActorScriptVm_QueryRuntimeContextFixedMode
+.size GamePhaseActorScriptVm_BeginRetailRecordOperation, . - GamePhaseActorScriptVm_BeginRetailRecordOperation

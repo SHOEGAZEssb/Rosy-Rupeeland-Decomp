@@ -3,8 +3,8 @@
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_Pop
 .extern ActorDescriptorState_ActivateFirstEligible
-.global GamePhaseActorScriptVm_RepeatGlobalState34Operation
-GamePhaseActorScriptVm_RepeatGlobalState34Operation:
+.global GamePhaseActorScriptVm_ActivateEligibleActorDescriptors
+GamePhaseActorScriptVm_ActivateEligibleActorDescriptors:
     stmdb sp!, {r4, r5, r6, lr}
     bl GamePhaseScriptVm_Pop
     mov r4, r0, lsl #0x10
@@ -22,4 +22,4 @@ L_02019150:
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02019160: .word data_021e9ac0
-.size GamePhaseActorScriptVm_RepeatGlobalState34Operation, . - GamePhaseActorScriptVm_RepeatGlobalState34Operation
+.size GamePhaseActorScriptVm_ActivateEligibleActorDescriptors, . - GamePhaseActorScriptVm_ActivateEligibleActorDescriptors

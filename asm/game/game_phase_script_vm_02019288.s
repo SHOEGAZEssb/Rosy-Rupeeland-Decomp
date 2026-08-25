@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern gGameWork
-.global GamePhaseActorScriptVm_GetGameWorkField44
-GamePhaseActorScriptVm_GetGameWorkField44:
+.global GamePhaseActorScriptVm_GetCurrencyIncreaseAccumulator
+GamePhaseActorScriptVm_GetCurrencyIncreaseAccumulator:
     stmdb sp!, {r3, lr}
     ldr r1, L_020192a4
     ldr r1, [r1, #0x0]
@@ -12,4 +12,4 @@ GamePhaseActorScriptVm_GetGameWorkField44:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_020192a4: .word gGameWork
-.size GamePhaseActorScriptVm_GetGameWorkField44, . - GamePhaseActorScriptVm_GetGameWorkField44
+.size GamePhaseActorScriptVm_GetCurrencyIncreaseAccumulator, . - GamePhaseActorScriptVm_GetCurrencyIncreaseAccumulator

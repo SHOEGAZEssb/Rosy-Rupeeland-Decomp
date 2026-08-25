@@ -2,8 +2,8 @@
 .text
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern gGameWork
-.global GamePhaseActorScriptVm_GetNegatedGameWorkField48
-GamePhaseActorScriptVm_GetNegatedGameWorkField48:
+.global GamePhaseActorScriptVm_GetNegatedCurrencyDecreaseAccumulator
+GamePhaseActorScriptVm_GetNegatedCurrencyDecreaseAccumulator:
     stmdb sp!, {r3, lr}
     ldr r1, L_020192c8
     ldr r1, [r1, #0x0]
@@ -13,4 +13,4 @@ GamePhaseActorScriptVm_GetNegatedGameWorkField48:
     mov r0, #0x0
     ldmia sp!, {r3, pc}
 L_020192c8: .word gGameWork
-.size GamePhaseActorScriptVm_GetNegatedGameWorkField48, . - GamePhaseActorScriptVm_GetNegatedGameWorkField48
+.size GamePhaseActorScriptVm_GetNegatedCurrencyDecreaseAccumulator, . - GamePhaseActorScriptVm_GetNegatedCurrencyDecreaseAccumulator
