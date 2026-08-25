@@ -1,6 +1,6 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov084/overlay084_recovery.c.
-.extern func_020536b8
+.extern ActorExtendedType2_FindEligibleCandidateSlot2
 .extern func_ov084_02213bc8
 
 .global func_ov084_02213a74
@@ -33,7 +33,7 @@ func_ov084_02213a74:
     b .L_02213b04
 .L_02213ad8:
     mov r0, r4
-    bl func_020536b8
+    bl ActorExtendedType2_FindEligibleCandidateSlot2
     cmp r0, #0x0
     bne .L_02213b04
     mov r0, r4

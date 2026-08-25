@@ -29,7 +29,7 @@ extern void ActorDerivedType1_BindExternalRecordObject(void *actor,
  * No input is consumed and no value is returned; all registered candidates
  * and auxiliary slots are discarded.
  */
-void func_020534cc(void)
+void ActorInteractionCandidateRuntime_Reset(void)
 {
     s32 i;
 
@@ -51,7 +51,7 @@ void func_020534cc(void)
  * Empty interaction-runtime shutdown hook. It accepts no input, changes no
  * state, performs no SDK or hardware work, and returns no value.
  */
-void func_0205355c(void)
+void ActorInteractionCandidateRuntime_Shutdown(void)
 {
 }
 
@@ -62,7 +62,7 @@ void func_0205355c(void)
  * descriptor priority; the winner is bound when its planar distance squared
  * is below 0x640. Returns no value and changes candidate and actor state only.
  */
-void func_02053560(void)
+void ActorInteractionCandidateRuntime_SelectNearest(void)
 {
     s32 upperHeight;
     s32 bestPriority;

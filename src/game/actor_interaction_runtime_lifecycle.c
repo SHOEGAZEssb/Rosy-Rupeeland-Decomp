@@ -28,8 +28,8 @@ extern void Type7ActorRegistry_Populate(void);
 extern void Type7ActorRegistry_Clear(void);
 extern void GridEffectActorRegistry_LoadSharedResource(void);
 extern void GridEffectActorRegistry_UnloadSharedResource(void);
-extern void func_020534cc(void);
-extern void func_0205355c(void);
+extern void ActorInteractionCandidateRuntime_Reset(void);
+extern void ActorInteractionCandidateRuntime_Shutdown(void);
 extern void ActorDerivedType1_SetSingletonFieldE4To20E(void);
 extern s32 Sound_IsDirectSequencePlaying(void *context, s32 channel);
 extern void Sound_StopDirectSequence(void *context, s32 channel, s32 value);
@@ -81,7 +81,7 @@ void ActorInteractionRuntime_Start(void)
     InteractionTimingState_Reset();
     Type7ActorRegistry_Populate();
     GridEffectActorRegistry_LoadSharedResource();
-    func_020534cc();
+    ActorInteractionCandidateRuntime_Reset();
     ActorDerivedType1_SetSingletonFieldE4To20E();
 }
 
@@ -123,7 +123,7 @@ void ActorInteractionRuntime_Shutdown(void)
         Sound_StopDirectSequence(gSoundContext, 0x1f, 0);
     if (Sound_IsDirectSequencePlaying(gSoundContext, 0x20) != 0)
         Sound_StopDirectSequence(gSoundContext, 0x20, 0);
-    func_0205355c();
+    ActorInteractionCandidateRuntime_Shutdown();
     GridEffectActorRegistry_UnloadSharedResource();
     Type7ActorRegistry_Clear();
     object = gInteractionRecordAllocatorPool;

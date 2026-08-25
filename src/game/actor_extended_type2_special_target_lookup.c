@@ -9,7 +9,7 @@ extern u8 data_020df9e8[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020536b8(void *actor);
+extern void *ActorExtendedType2_FindEligibleCandidateSlot2(void *actor);
 #ifdef __cplusplus
 }
 #endif
@@ -18,7 +18,7 @@ extern void *func_020536b8(void *actor);
  * Clear actor +0x260 bits zero and 0x20. A busy virtual +0x38 sets mode byte
  * +0x24c to seven and returns zero. Descriptor +0x1a bit one instead installs
  * global callback pair +0x248/+0x24c. Otherwise mode seven is selected and
- * func_020536b8 supplies target +0x228. A null target invokes virtual +0xe8 and
+ * ActorExtendedType2_FindEligibleCandidateSlot2 supplies target +0x228. A null target invokes virtual +0xe8 and
  * clears counter +0x254. A target whose halfword +0x4e is not 0x65 is retained
  * without further action. For kind 0x65, squared integer distance is compared
  * with the signed descriptor +0x0e radius: an excessive distance invokes +0xe8
@@ -45,7 +45,7 @@ s32 ActorExtendedType2_LookupSpecialTarget65(void *self, void *descriptorRecord)
     }
 
     actor[0x24c] = 7;
-    target = (u8 *)func_020536b8(actor);
+    target = (u8 *)ActorExtendedType2_FindEligibleCandidateSlot2(actor);
     if (target == 0) {
         (*(void (**)(void *))(vtable + 0xe8))(actor);
         *(u16 *)(actor + 0x254) = 0;

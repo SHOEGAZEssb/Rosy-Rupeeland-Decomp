@@ -4,15 +4,15 @@
 .extern data_020e83a8
 .extern data_020e83aa
 .extern data_020e83ac
-.extern func_020536b8
-.extern func_02053728
-.extern func_02053780
+.extern ActorExtendedType2_FindEligibleCandidateSlot2
+.extern ActorExtendedType2_FindCandidateSlot3InRange
+.extern ActorExtendedType2_FindEligibleCandidateSlot0
 .global ActorExtendedType2_UpdateDescriptorQueryFlags
 .type ActorExtendedType2_UpdateDescriptorQueryFlags, @function
 ActorExtendedType2_UpdateDescriptorQueryFlags: ; 0x02043534
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_020536b8
+    bl ActorExtendedType2_FindEligibleCandidateSlot2
     cmp r0, #0x0
     beq .L_02043578
     ldrh r3, [r4, #0x4e]
@@ -29,13 +29,13 @@ ActorExtendedType2_UpdateDescriptorQueryFlags: ; 0x02043534
     strge r0, [r4, #0x260]
 .L_02043578:
     mov r0, r4
-    bl func_02053728
+    bl ActorExtendedType2_FindCandidateSlot3InRange
     cmp r0, #0x0
     ldrne r0, [r4, #0x260]
     orrne r0, r0, #0x200
     strne r0, [r4, #0x260]
     mov r0, r4
-    bl func_02053780
+    bl ActorExtendedType2_FindEligibleCandidateSlot0
     cmp r0, #0x0
     ldmeqia sp!, {r4, pc}
     ldrh r3, [r4, #0x4e]

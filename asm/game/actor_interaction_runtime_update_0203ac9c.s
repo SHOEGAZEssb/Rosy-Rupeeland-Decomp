@@ -9,7 +9,7 @@
 .extern ActorRegisteredSubclass_ProcessRegistry
 .extern InteractionTimingState_Tick
 .extern Fx32Vector2_Magnitude
-.extern func_02053560
+.extern ActorInteractionCandidateRuntime_SelectNearest
     .global ActorInteractionRuntime_Update
     .type ActorInteractionRuntime_Update, @function
 ActorInteractionRuntime_Update: ; 0x0203ac9c
@@ -52,7 +52,7 @@ ActorInteractionRuntime_Update: ; 0x0203ac9c
     strlt r1, [r0, #0x0]
 .L_0203ad30:
     bl ActorTargetSelection_Populate
-    bl func_02053560
+    bl ActorInteractionCandidateRuntime_SelectNearest
     bl ActorRegisteredSubclass_ProcessRegistry
     ldr r0, .L_0203ad60
     mov r1, #0x0

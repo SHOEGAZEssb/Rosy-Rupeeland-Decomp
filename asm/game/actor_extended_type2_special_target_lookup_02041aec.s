@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/actor_extended_type2_special_target_lookup.c.
 .text
 .extern data_020df9e8
-.extern func_020536b8
+.extern ActorExtendedType2_FindEligibleCandidateSlot2
 .global ActorExtendedType2_LookupSpecialTarget65
 .type ActorExtendedType2_LookupSpecialTarget65, @function
 ActorExtendedType2_LookupSpecialTarget65: ; 0x02041aec
@@ -34,7 +34,7 @@ ActorExtendedType2_LookupSpecialTarget65: ; 0x02041aec
     mov r1, #0x7
     mov r0, r5
     strb r1, [r5, #0x24c]
-    bl func_020536b8
+    bl ActorExtendedType2_FindEligibleCandidateSlot2
     movs r1, r0
     beq .L_02041bf0
     str r1, [r5, #0x228]

@@ -23,8 +23,8 @@
 .extern Type7ActorRegistry_Clear
 .extern GridEffectActorRegistry_LoadSharedResource
 .extern GridEffectActorRegistry_UnloadSharedResource
-.extern func_020534cc
-.extern func_0205355c
+.extern ActorInteractionCandidateRuntime_Reset
+.extern ActorInteractionCandidateRuntime_Shutdown
 .extern Sound_StopDirectSequence
 .extern Sound_IsDirectSequencePlaying
 .extern gGameWork
@@ -94,7 +94,7 @@ ActorInteractionRuntime_Start: ; 0x0203ab6c
     bl InteractionTimingState_Reset
     bl Type7ActorRegistry_Populate
     bl GridEffectActorRegistry_LoadSharedResource
-    bl func_020534cc
+    bl ActorInteractionCandidateRuntime_Reset
     bl ActorDerivedType1_SetSingletonFieldE4To20E
     ldmia sp!, {r3, pc}
 .L_0203aba4: .word gActorExtendedType2ReentryAngleAccumulator
@@ -160,7 +160,7 @@ ActorInteractionRuntime_Shutdown: ; 0x0203abf4
     mov r2, #0x0
     bl Sound_StopDirectSequence
 .L_0203ac50:
-    bl func_0205355c
+    bl ActorInteractionCandidateRuntime_Shutdown
     bl GridEffectActorRegistry_UnloadSharedResource
     bl Type7ActorRegistry_Clear
     ldr r0, .L_0203ac98

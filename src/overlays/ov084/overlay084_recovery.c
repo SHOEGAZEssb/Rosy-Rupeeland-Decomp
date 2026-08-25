@@ -65,7 +65,7 @@ extern "C" void *SpriteNumberMotionPresentation_Init(void *, void *, void *, s32
 extern "C" void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern "C" void InteractionRecordAllocator_ReleaseOwner(void *, void *);
 extern "C" void *GamePhaseRuntime_GetActorCollection(void *, s32);
-extern "C" void *func_020536b8(void *);
+extern "C" void *ActorExtendedType2_FindEligibleCandidateSlot2(void *);
 extern "C" void *func_020537f0(void *);
 
 extern "C" void func_ov084_02212cbc(void *, const void *, s32);
@@ -482,7 +482,7 @@ func_ov084_022138b0(void *a) {
 /* Acquire an eligible nearby actor and install its target path. */
 extern "C" s32 func_ov084_022138d8(void *a, s32, s32, s32) {
     if (ActorExtendedType2_IsInteractionEligible(a)) {
-        void *t = func_020536b8(a);
+        void *t = ActorExtendedType2_FindEligibleCandidateSlot2(a);
         if (!t)
             t = func_020537f0(a);
         if (t) {
@@ -537,7 +537,7 @@ extern "C" s32 func_ov084_02213a74(void *a) {
     s16 s = F(s16, a, 0x2a8);
     if (s == 1)
         func_ov084_02213bc8(a);
-    else if (s == 2 && !func_020536b8(a))
+    else if (s == 2 && !ActorExtendedType2_FindEligibleCandidateSlot2(a))
         func_ov084_02213bc8(a);
     else if (s == 3)
         ((V0)vm(a, 0xe8))(a);

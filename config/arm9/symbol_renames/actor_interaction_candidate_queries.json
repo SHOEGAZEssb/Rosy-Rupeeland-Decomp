@@ -1,0 +1,9 @@
+{
+  "func_020534cc": "ActorInteractionCandidateRuntime_Reset",
+  "func_0205355c": "ActorInteractionCandidateRuntime_Shutdown",
+  "func_02053560": "ActorInteractionCandidateRuntime_SelectNearest",
+  "func_020536b8": "ActorExtendedType2_FindEligibleCandidateSlot2",
+  "func_02053728": "ActorExtendedType2_FindCandidateSlot3InRange",
+  "func_02053780": "ActorExtendedType2_FindEligibleCandidateSlot0",
+  "func_020562cc": "ActorExtendedType2_IsInteractionCandidateEligible"
+}

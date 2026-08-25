@@ -11690,7 +11690,7 @@ build build/reports/actor_interaction_candidate_runtime.json: objdiff build/deco
   base_object = build/decomp/src/game/actor_interaction_candidate_runtime.o
 build build/reports/actor_interaction_candidate_runtime.txt: match_report build/reports/actor_interaction_candidate_runtime.json | tools/report_objdiff.py
   report_json = build/reports/actor_interaction_candidate_runtime.json
-  report_args = --section .text --function func_020534cc --function func_0205355c --function func_02053560 --require-exact
+  report_args = --section .text --function ActorInteractionCandidateRuntime_Reset --function ActorInteractionCandidateRuntime_Shutdown --function ActorInteractionCandidateRuntime_SelectNearest --require-exact
 
 build actor_interaction_candidate_runtime: phony build/reports/actor_interaction_candidate_runtime.txt
 build build/reports/actor_interaction_registry_update.json: objdiff build/decomp/delinks/src/game/actor_interaction_registry_update.o | build/decomp/src/game/actor_interaction_registry_update.o

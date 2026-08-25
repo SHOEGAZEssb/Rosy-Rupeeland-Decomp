@@ -4,7 +4,7 @@
 .extern VecFx32Object_Destroy
 .extern Actor_GetCachedTerrainHeight
 .extern ActorExtendedType2_TriggerStoredTargetCallback
-.extern func_020536b8
+.extern ActorExtendedType2_FindEligibleCandidateSlot2
 .extern func_020537f0
 .extern func_ov084_02213b2c
 
@@ -17,7 +17,7 @@ func_ov084_022138d8:
     cmp r0, #0x0
     beq .L_02213948
     mov r0, r5
-    bl func_020536b8
+    bl ActorExtendedType2_FindEligibleCandidateSlot2
     movs r4, r0
     bne .L_0221390c
     mov r0, r5

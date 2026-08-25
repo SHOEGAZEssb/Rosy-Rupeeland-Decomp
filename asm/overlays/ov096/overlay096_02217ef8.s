@@ -1,7 +1,7 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov096/overlay096_recovery.c.
 .extern ActorExtendedType2_DispatchTransitionCallback
-.extern func_020536b8
+.extern ActorExtendedType2_FindEligibleCandidateSlot2
 
 .global func_ov096_02217ef8
 func_ov096_02217ef8:
@@ -11,7 +11,7 @@ func_ov096_02217ef8:
     mov r4, r1
     tst r2, #0x100
     bne .L_02217f3c
-    bl func_020536b8
+    bl ActorExtendedType2_FindEligibleCandidateSlot2
     cmp r0, #0x0
     beq .L_02217f3c
     ldr r0, [r0, #0x1f8]

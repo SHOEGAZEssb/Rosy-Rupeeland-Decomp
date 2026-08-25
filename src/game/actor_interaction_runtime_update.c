@@ -18,7 +18,7 @@ extern "C" {
  */
 extern s32 Fx32Vector2_Magnitude(void);
 extern void ActorTargetSelection_Populate(void);
-extern void func_02053560(void);
+extern void ActorInteractionCandidateRuntime_SelectNearest(void);
 extern void ActorRegisteredSubclass_ProcessRegistry(void);
 extern void InteractionTimingState_Tick(void);
 #ifdef __cplusplus
@@ -52,7 +52,7 @@ void ActorInteractionRuntime_Update(void)
         gActorInteractionSmoothedDisplacement[1] = 0;
     }
     ActorTargetSelection_Populate();
-    func_02053560();
+    ActorInteractionCandidateRuntime_SelectNearest();
     ActorRegisteredSubclass_ProcessRegistry();
     *(u16 *)gActorInteractionResourceState = 0;
     InteractionTimingState_Tick();

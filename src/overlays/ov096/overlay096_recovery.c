@@ -49,7 +49,7 @@ extern "C" void *TrackedResourceActor_SpawnFromKey(s32, const void *, const void
 extern "C" u32 genrand_int32(void);
 extern "C" u64 func_020bf1f8(u32, u32);
 extern "C" s32 func_020adcac(const void *, const void *);
-extern "C" void *func_020536b8(void);
+extern "C" void *ActorExtendedType2_FindEligibleCandidateSlot2(void);
 
 extern "C" bool func_ov096_02217e88(void *);
 extern "C" void func_ov096_0221811c(void *);
@@ -142,7 +142,7 @@ extern "C" void func_ov096_02217eb0(void *actor) { if(!(F(u8,actor,0x29b)&1))Act
 /* Copy the adjusted descriptor, clearing it while animation is active. */
 extern "C" void func_ov096_02217ec8(void *actor,void *out) { ActorExtendedType2_CopyAdjustedDescriptor(actor,out);if(!func_ov096_02217e88(actor))F(u16,out,0)=F(u16,out,2)=F(u16,out,4)=0; }
 /* Latch the descriptor threshold result and forward the transition callback. */
-extern "C" void func_ov096_02217ef8(void *actor,void *event) { if(!(F(u32,actor,0x260)&0x100)){void *x=func_020536b8();if(x&&((F(s16,event,0x2e)<<24)>>28)<=F(s8,F(void*,x,0x1f8),9))F(u32,actor,0x260)|=0x100;}ActorExtendedType2_DispatchTransitionCallback(actor,event); }
+extern "C" void func_ov096_02217ef8(void *actor,void *event) { if(!(F(u32,actor,0x260)&0x100)){void *x=ActorExtendedType2_FindEligibleCandidateSlot2();if(x&&((F(s16,event,0x2e)<<24)>>28)<=F(s8,F(void*,x,0x1f8),9))F(u32,actor,0x260)|=0x100;}ActorExtendedType2_DispatchTransitionCallback(actor,event); }
 /* Suppress the random-descriptor flag during the local delay. */
 extern "C" void func_ov096_02217f4c(void *actor,void *descriptor) { if(F(u8,actor,0x29a))F(u16,descriptor,0x18)&=~1u;ActorExtendedType2_SelectRandomDescriptorCallback(actor,descriptor); }
 
