@@ -1,4 +1,5 @@
 #include "tingle/game_phase_runtime.h"
+#include "tingle/game_phase_area_scene.h"
 #include "tingle/heap.h"
 
 /* Lifecycle helpers for the runtime's optional secondary actor subsystem. */
@@ -8,8 +9,6 @@ extern u8 gGamePhaseAreaSceneAllocationTag[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *GamePhaseAreaScene_Init(void *object, void *area, s32 enabled);
-extern void GamePhaseAreaScene_Start(void *object);
 extern void ActorRuntimeAnimationResourceLists_ClearOtherCategory(void *loader);
 extern void GamePhaseState_UnloadPhase(void *state);
 extern void ActorRuntimeAnimationResourceLists_ClearCategory1(void *loader);
@@ -18,19 +17,22 @@ extern void ActorRuntimeAnimationResourceLists_ClearCategory1(void *loader);
 #endif
 
 /*
- * Allocate a 0x2ed8-byte tagged secondary subsystem, construct it with area
+ * Allocate a typed area scene, construct it with area
  * and enabled, store it at runtime offset 0x2fb8, and run its post-create hook.
  * Null is stored and forwarded if allocation fails. Returns no value.
  */
-void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled)
+void GamePhaseRuntime_CreateSecondaryActorSubsystem(
+    GamePhaseRuntime *self, void *area, s32 enabled)
 {
     u8 *b = (u8 *)self;
-    void *object = Heap_Alloc(0x2ed8, (const char *)gGamePhaseAreaSceneAllocationTag, 4,
-                              &gHeapContext);
+    GamePhaseAreaScene *object = (GamePhaseAreaScene *)Heap_Alloc(
+        sizeof(GamePhaseAreaScene), (const char *)gGamePhaseAreaSceneAllocationTag,
+        4, &gHeapContext);
     if (object != 0)
-        object = GamePhaseAreaScene_Init(object, area, enabled);
+        object = GamePhaseAreaScene_Init(
+            object, (GamePhaseAreaSceneConfig *)area, enabled);
     *(void **)(b + 0x2fb8) = object;
-    GamePhaseAreaScene_Start(object);
+    GamePhaseAreaScene_Activate(object);
 }
 
 /*

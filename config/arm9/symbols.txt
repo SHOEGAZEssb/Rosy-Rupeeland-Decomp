@@ -646,7 +646,7 @@ GamePhaseRegionTable_GetRegionCount kind:function(arm,size=0x8) addr:0x02011a3c
 GamePhaseRegionTable_SetRevealFlagBase kind:function(arm,size=0x8) addr:0x02011a44
 GamePhaseRegionTable_PublishActive kind:function(arm,size=0x10) addr:0x02011a4c
 GamePhaseAreaScene_Init kind:function(arm,size=0x460) addr:0x02011a5c
-GamePhaseAreaScene_Start kind:function(arm,size=0x68) addr:0x02011ebc
+GamePhaseAreaScene_Activate kind:function(arm,size=0x68) addr:0x02011ebc
 GamePhaseAreaScene_Destroy kind:function(arm,size=0x74) addr:0x02011f24
 GamePhaseAreaScene_DestroyAndFree kind:function(arm,size=0x7c) addr:0x02011f98
 GamePhaseAreaScene_UpdateRegionAtPosition kind:function(arm,size=0x13c) addr:0x02012014
@@ -6859,9 +6859,9 @@ gGamePhaseRegionInitialArrayAllocationTag kind:data(any) addr:0x020d5638
 gGamePhaseRegionDataPath kind:data(any) addr:0x020d5640
 gGamePhaseRegionCompressedBufferAllocationTag kind:data(any) addr:0x020d5654
 gGamePhaseRegionExpandedBufferAllocationTag kind:data(any) addr:0x020d565c
-data_020d5664 kind:data(any) addr:0x020d5664
-data_020d566c kind:data(any) addr:0x020d566c
-data_020d5680 kind:data(any) addr:0x020d5680
+gGamePhaseAreaSceneRttiDescriptor kind:data(any) addr:0x020d5664
+gGamePhaseAreaSceneRttiName kind:data(any) addr:0x020d566c
+gGamePhaseAreaSceneVTable kind:data(any) addr:0x020d5680
 gGamePhaseAreaSceneRendererAllocationTag kind:data(any) addr:0x020d5688
 gGamePhaseAreaRegionEffectAllocationTag kind:data(any) addr:0x020d5690
 data_020d5698 kind:data(any) addr:0x020d5698

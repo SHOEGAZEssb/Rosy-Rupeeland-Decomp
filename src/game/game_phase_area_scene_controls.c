@@ -8,7 +8,7 @@ extern "C" {
 extern void GX_SetBankForSubBG(s32 bank);
 extern void GXS_SetGraphicsMode(s32 mode);
 extern void func_020aea7c(s32 value);
-extern void ActorCollection_SetEnabled(void *renderer, s32 enabled);
+extern void ActorCollection_SetEnabled(ActorCollection *collection, s32 enabled);
 extern s32 GamePhaseMetadata_IsAreaBehaviorPermitted(GamePhaseAreaSceneConfig *config);
 extern void func_ov056_0220ee78(void *object);
 extern void func_ov056_0220ee20(void *object, s32 enabled);
@@ -78,7 +78,7 @@ void GamePhaseAreaScene_SetEnabled(GamePhaseAreaScene *self, s32 enabled)
         finalEnabled = 0;
         secondaryActorValue = 0;
     }
-    ActorCollection_SetEnabled(self->actorCollectionStorage, finalEnabled);
+    ActorCollection_SetEnabled(&self->actorCollection, finalEnabled);
     if (self->subRenderer)
         callVirtual(self->subRenderer, 0x24, finalEnabled);
     if (self->overlayObject)

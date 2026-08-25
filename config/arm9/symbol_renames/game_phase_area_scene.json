@@ -1,0 +1,21 @@
+{
+  "GamePhaseAreaScene_Init": "GamePhaseAreaScene_Init",
+  "GamePhaseAreaScene_Start": "GamePhaseAreaScene_Activate",
+  "GamePhaseAreaScene_Destroy": "GamePhaseAreaScene_Destroy",
+  "GamePhaseAreaScene_DestroyAndFree": "GamePhaseAreaScene_DestroyAndFree",
+  "GamePhaseAreaScene_UpdateRegionAtPosition": "GamePhaseAreaScene_UpdateRegionAtPosition",
+  "GamePhaseAreaScene_ApplyPlacementState": "GamePhaseAreaScene_ApplyPlacementState",
+  "GamePhaseAreaScene_Update": "GamePhaseAreaScene_Update",
+  "GamePhaseAreaScene_RestoreSubDisplay": "GamePhaseAreaScene_RestoreSubDisplay",
+  "GamePhaseAreaScene_SetEnabled": "GamePhaseAreaScene_SetEnabled",
+  "GamePhaseAreaScene_GetConfig": "GamePhaseAreaScene_GetConfig",
+  "GamePhaseAreaScene_GetSubRendererLowCoordinate": "GamePhaseAreaScene_GetSubRendererLowCoordinate",
+  "GamePhaseAreaScene_GetSubRendererHighCoordinate": "GamePhaseAreaScene_GetSubRendererHighCoordinate",
+  "GamePhaseAreaScene_SetOverlayObject": "GamePhaseAreaScene_SetOverlayObject",
+  "data_020d5664": "gGamePhaseAreaSceneRttiDescriptor",
+  "data_020d566c": "gGamePhaseAreaSceneRttiName",
+  "data_020d5680": "gGamePhaseAreaSceneVTable",
+  "gGamePhaseAreaSceneRendererAllocationTag": "gGamePhaseAreaSceneRendererAllocationTag",
+  "gGamePhaseAreaRegionEffectAllocationTag": "gGamePhaseAreaRegionEffectAllocationTag",
+  "gGamePhaseAreaSceneAllocationTag": "gGamePhaseAreaSceneAllocationTag"
+}

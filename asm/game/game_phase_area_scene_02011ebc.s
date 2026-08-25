@@ -5,8 +5,8 @@
 .extern ActorCollection_FindActorByTypeAndId
 .extern ActorCollection_SetActorScale
 
-    .global GamePhaseAreaScene_Start
-GamePhaseAreaScene_Start: ; 0x02011ebc
+    .global GamePhaseAreaScene_Activate
+GamePhaseAreaScene_Activate: ; 0x02011ebc
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x8
@@ -33,5 +33,4 @@ GamePhaseAreaScene_Start: ; 0x02011ebc
     add r1, r4, #0x2000
     str r0, [r1, #0xebc]
     ldmia sp!, {r4, pc}
-    .size GamePhaseAreaScene_Start, . - GamePhaseAreaScene_Start
-
+    .size GamePhaseAreaScene_Activate, . - GamePhaseAreaScene_Activate

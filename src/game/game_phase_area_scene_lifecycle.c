@@ -7,18 +7,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const void *data_020d5680;
 extern const char gGamePhaseAreaSceneRendererAllocationTag[];
 extern void *gGamePhaseRuntime;
-extern void ActorCollection_Init(void *renderer);
-extern void ActorCollection_CreateSpriteGroupForDisplayMode(void *renderer, s32 value);
-extern void ActorCollection_SetActorScale(void *renderer, s32 scale);
-extern void *ActorCollection_FindActorByTypeAndId(void *renderer, s32 first, s32 second);
-extern void ActorCollection_UnregisterAndDestroyAllActors(void *renderer);
-extern void ActorCollection_Destructor(void *renderer);
-extern void OverlaySlot_Init(void *state);
-extern void OverlaySlot_Destroy(void *state);
-extern void OverlaySlot_LoadOverlay(void *state, u32 value);
+extern void ActorCollection_CreateSpriteGroupForDisplayMode(
+    ActorCollection *collection, s32 value);
+extern void ActorCollection_SetActorScale(ActorCollection *collection,
+                                          s32 scale);
+extern ActorCollectionActor *ActorCollection_FindActorByTypeAndId(
+    ActorCollection *collection, s32 first, s32 second);
 extern void *SubDualLayerResourceRenderer_Init(void *self);
 extern void *SubDualLayerResourceRendererAlt_Init(void *self);
 extern void *SubDualLayerResourceRendererSwapped_Init(void *self);
@@ -70,13 +66,13 @@ GamePhaseAreaScene *GamePhaseAreaScene_Init(GamePhaseAreaScene *self,
                                             s32 createSubRenderer)
 {
     u32 mode;
-    self->vtable = data_020d5680;
+    self->vtable = &gGamePhaseAreaSceneVTable;
     self->subRenderer = 0;
-    ActorCollection_Init(self->actorCollectionStorage);
+    ActorCollection_Init(&self->actorCollection);
     self->stateFlags =
         (self->stateFlags & ~0x1f) | 0x3f;
     self->config = config;
-    OverlaySlot_Init(self->overlaySlotStorage);
+    OverlaySlot_Init(&self->overlaySlot);
     self->secondaryActor = 0;
     VecFx32Object_Init(&self->position);
     self->overlayObject = 0;
@@ -139,17 +135,17 @@ rendererConfigured:
 
 /*
  * Configure embedded rendering mode 2 and scale 0x1000, copy config overlayId
- * into overlaySlotStorage, invoke config loadCallback with zero, create a 3/3
- * renderer handle into secondaryActor, and return no value.
+ * into the embedded overlay slot, invoke config loadCallback with zero, create
+ * a 3/3 renderer handle into secondaryActor, and return no value.
  */
-void GamePhaseAreaScene_Start(GamePhaseAreaScene *self)
+void GamePhaseAreaScene_Activate(GamePhaseAreaScene *self)
 {
-    ActorCollection_CreateSpriteGroupForDisplayMode(self->actorCollectionStorage, 2);
-    ActorCollection_SetActorScale(self->actorCollectionStorage, 0x1000);
-    OverlaySlot_LoadOverlay(self->overlaySlotStorage, self->config->overlayId);
+    ActorCollection_CreateSpriteGroupForDisplayMode(&self->actorCollection, 2);
+    ActorCollection_SetActorScale(&self->actorCollection, 0x1000);
+    OverlaySlot_LoadOverlay(&self->overlaySlot, self->config->overlayId);
     self->config->loadCallback(0);
     self->secondaryActor = ActorCollection_FindActorByTypeAndId(
-        self->actorCollectionStorage, 3, 3);
+        &self->actorCollection, 3, 3);
 }
 
 /*
@@ -159,14 +155,14 @@ void GamePhaseAreaScene_Start(GamePhaseAreaScene *self)
  */
 GamePhaseAreaScene *GamePhaseAreaScene_Destroy(GamePhaseAreaScene *self)
 {
-    self->vtable = data_020d5680;
+    self->vtable = &gGamePhaseAreaSceneVTable;
     RuntimePresentationManager_DetachEffectsByKey((u8 *)gGamePhaseRuntime + 0x2f7c, 0x37);
-    ActorCollection_UnregisterAndDestroyAllActors(self->actorCollectionStorage);
+    ActorCollection_UnregisterAndDestroyAllActors(&self->actorCollection);
     if (self->subRenderer)
         ((void (*)(void *))(*(void ***)self->subRenderer)[1])(
             self->subRenderer);
     VecFx32Object_Destroy(&self->position);
-    OverlaySlot_Destroy(self->overlaySlotStorage);
-    ActorCollection_Destructor(self->actorCollectionStorage);
+    OverlaySlot_Destroy(&self->overlaySlot);
+    ActorCollection_Destructor(&self->actorCollection);
     return self;
 }

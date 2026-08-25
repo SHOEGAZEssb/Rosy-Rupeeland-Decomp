@@ -5,7 +5,7 @@
 .extern GameWork_ClearFlag
 .extern GameWork_ClearPointerBank
 .extern Heap_Alloc
-.extern data_020d5680
+.extern gGamePhaseAreaSceneVTable
 .extern gGamePhaseAreaSceneRendererAllocationTag
 .extern VecFx32Object_Init
 .extern OverlaySlot_Init
@@ -311,7 +311,7 @@ L_02011e48:
     bl GameWork_ClearFlag
     mov r0, r6
     ldmia sp!, {r4, r5, r6, pc}
-L_02011e98: .word data_020d5680
+L_02011e98: .word gGamePhaseAreaSceneVTable
 L_02011e9c: .word 0x4001000
 L_02011ea0: .word 0x187c
 L_02011ea4: .word gGamePhaseAreaSceneRendererAllocationTag
@@ -321,4 +321,3 @@ L_02011eb0: .word 0x4001050
 L_02011eb4: .word gGameWork
 L_02011eb8: .word 0x3e9
     .size GamePhaseAreaScene_Init, . - GamePhaseAreaScene_Init
-

@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_area_scene_runtime.c.
 .text
 .extern Heap_Free
-.extern data_020d5680
+.extern gGamePhaseAreaSceneVTable
 .extern gGamePhaseRuntime
 .extern VecFx32Object_Destroy
 .extern OverlaySlot_Destroy
@@ -41,7 +41,6 @@ L_02011fe0:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0201200c: .word data_020d5680
+L_0201200c: .word gGamePhaseAreaSceneVTable
 L_02012010: .word gGamePhaseRuntime
     .size GamePhaseAreaScene_DestroyAndFree, . - GamePhaseAreaScene_DestroyAndFree
-

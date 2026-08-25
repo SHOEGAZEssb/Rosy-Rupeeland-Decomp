@@ -1,7 +1,9 @@
 #ifndef TINGLE_GAME_PHASE_AREA_SCENE_H
 #define TINGLE_GAME_PHASE_AREA_SCENE_H
 
+#include "tingle/actor_collection.h"
 #include "tingle/game_phase_region_table.h"
+#include "tingle/overlay_manager.h"
 #include "tingle/types.h"
 #include "tingle/vec_fx32.h"
 
@@ -19,26 +21,41 @@ typedef struct GamePhaseAreaSceneConfig {
     u32 flags;
 } GamePhaseAreaSceneConfig;
 
-typedef struct GamePhaseAreaScene {
-    const void *vtable;
+typedef struct GamePhaseAreaScene GamePhaseAreaScene;
+
+typedef struct GamePhaseAreaSceneVTable {
+    GamePhaseAreaScene *(*destroy)(GamePhaseAreaScene *self);
+    GamePhaseAreaScene *(*destroyAndFree)(GamePhaseAreaScene *self);
+} GamePhaseAreaSceneVTable;
+
+struct GamePhaseAreaScene {
+    const GamePhaseAreaSceneVTable *vtable;
     void *subRenderer;
-    u8 actorCollectionStorage[0x2ea0];
+    ActorCollection actorCollection;
     u32 stateFlags;
     GamePhaseAreaSceneConfig *config;
-    u8 overlaySlotStorage[0x0c];
-    void *secondaryActor;
+    OverlaySlot overlaySlot;
+    ActorCollectionActor *secondaryActor;
     VecFx32Object position;
     void *overlayObject;
     void *regionEffectHandle;
-} GamePhaseAreaScene;
+};
+
+typedef char GamePhaseAreaSceneConfigSizeCheck[
+    sizeof(GamePhaseAreaSceneConfig) == 0x44 ? 1 : -1];
+typedef char GamePhaseAreaSceneVTableSizeCheck[
+    sizeof(GamePhaseAreaSceneVTable) == 0x8 ? 1 : -1];
+typedef char GamePhaseAreaSceneSizeCheck[
+    sizeof(GamePhaseAreaScene) == 0x2ed8 ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+extern const GamePhaseAreaSceneVTable gGamePhaseAreaSceneVTable;
 GamePhaseAreaScene *GamePhaseAreaScene_Init(GamePhaseAreaScene *self,
                                             GamePhaseAreaSceneConfig *config,
                                             s32 createRenderer);
-void GamePhaseAreaScene_Start(GamePhaseAreaScene *self);
+void GamePhaseAreaScene_Activate(GamePhaseAreaScene *self);
 GamePhaseAreaScene *GamePhaseAreaScene_Destroy(GamePhaseAreaScene *self);
 GamePhaseAreaScene *GamePhaseAreaScene_DestroyAndFree(GamePhaseAreaScene *self);
 s32 GamePhaseAreaScene_UpdateRegionAtPosition(
