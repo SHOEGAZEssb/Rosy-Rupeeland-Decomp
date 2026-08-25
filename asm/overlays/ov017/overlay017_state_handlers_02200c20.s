@@ -7,8 +7,8 @@
     .extern Overlay017_SetCallbackDescriptor
     .extern Overlay017_UpdateScene
     .extern Overlay017_RenderScene
-.global func_ov017_02200c20
-func_ov017_02200c20:
+.global Overlay017_UpdateExitState
+Overlay017_UpdateExitState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -52,4 +52,4 @@ L_02200cb0: .word data_ov017_022016e0
 L_02200cb4: .word 0x4114
 L_02200cb8: .word 0x4115
 L_02200cbc: .word data_ov017_02201550
-    .size func_ov017_02200c20, . - func_ov017_02200c20
+    .size Overlay017_UpdateExitState, . - Overlay017_UpdateExitState

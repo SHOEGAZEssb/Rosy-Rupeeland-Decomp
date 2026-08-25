@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_scene_helpers.c. */
     .extern data_021e9ac0
     .extern ActorDescriptorState_FindInactiveQuantity
-.global func_ov017_02200bf8
-func_ov017_02200bf8:
+.global Overlay017_HasGlobalValueReachedLimit
+Overlay017_HasGlobalValueReachedLimit:
     stmdb sp!, {r3, lr}
     ldr r0, L_02200c1c
     ldr r0, [r0, #0x0]
@@ -14,4 +14,4 @@ func_ov017_02200bf8:
     movlt r0, #0x0
     ldmia sp!, {r3, pc}
 L_02200c1c: .word data_021e9ac0
-    .size func_ov017_02200bf8, . - func_ov017_02200bf8
+    .size Overlay017_HasGlobalValueReachedLimit, . - Overlay017_HasGlobalValueReachedLimit

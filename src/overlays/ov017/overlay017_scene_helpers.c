@@ -71,7 +71,7 @@ extern "C" s32 Overlay017Timer_Tick(void *timer)
  * 0x040004C0. Returns void; caller memory and SDK state are unchanged, while
  * geometry-engine MMIO changes directly.
  */
-extern "C" void func_ov017_02200a8c(u32 low, u32 high, s32 enabled)
+extern "C" void Overlay017_WriteTexturePaletteBase(u32 low, u32 high, s32 enabled)
 {
     u32 value = low | (high << 16) | ((u32)(enabled != 0) << 15);
     *(volatile u32 *)0x040004c0 = value;
@@ -85,7 +85,7 @@ extern "C" void func_ov017_02200a8c(u32 low, u32 high, s32 enabled)
  * its reported value is at least 99, otherwise zero. Global/SDK state is read
  * only and no direct hardware access occurs.
  */
-extern "C" s32 func_ov017_02200bf8(void)
+extern "C" s32 Overlay017_HasGlobalValueReachedLimit(void)
 {
     return ActorDescriptorState_FindInactiveQuantity((u8 *)data_021e9ac0 + 0x1c) >= 0x63;
 }

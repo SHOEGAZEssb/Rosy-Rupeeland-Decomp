@@ -16,8 +16,8 @@
     .extern Overlay017_RenderScene
     .extern gDebugFont
     .extern gGameWork
-.global func_ov017_02200ab0
-func_ov017_02200ab0:
+.global Overlay017_UpdateOpeningState
+Overlay017_UpdateOpeningState:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -104,4 +104,4 @@ L_02200be8: .word gGameWork
 L_02200bec: .word 0x3aa
 L_02200bf0: .word 0x4114
 L_02200bf4: .word data_ov017_02201540
-    .size func_ov017_02200ab0, . - func_ov017_02200ab0
+    .size Overlay017_UpdateOpeningState, . - Overlay017_UpdateOpeningState

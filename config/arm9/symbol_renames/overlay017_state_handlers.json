@@ -1,0 +1,14 @@
+{
+  "func_ov017_02200a8c": "Overlay017_WriteTexturePaletteBase",
+  "func_ov017_02200ab0": "Overlay017_UpdateOpeningState",
+  "func_ov017_02200bf8": "Overlay017_HasGlobalValueReachedLimit",
+  "func_ov017_02200c20": "Overlay017_UpdateExitState",
+  "func_ov017_02200cc0": "Overlay017_UpdateMainState",
+  "func_ov017_02201350": "Overlay017_UpdateFinalState",
+  "func_ov017_02201384": "Overlay017_Final_NoOp",
+  "func_ov017_02201388": "Overlay017_EffectBase_Delete",
+  "func_ov017_022013a4": "Overlay017_EffectBase_Destroy",
+  "func_ov017_022013b8": "Overlay017_RecordBase_Delete",
+  "func_ov017_022013e0": "Overlay017_FreeObject",
+  "func_ov017_022013f4": "Overlay017_GlobalHelper_Init"
+}

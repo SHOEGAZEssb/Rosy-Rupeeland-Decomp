@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_final_handlers.c. */
     .extern Overlay017_RenderScene
-.global func_ov017_02201350
-func_ov017_02201350:
+.global Overlay017_UpdateFinalState
+Overlay017_UpdateFinalState:
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x4]
     cmp r1, #0x0
@@ -18,4 +18,4 @@ L_02201378:
     bl Overlay017_RenderScene
     mov r0, #0x1
     ldmia sp!, {r3, pc}
-    .size func_ov017_02201350, . - func_ov017_02201350
+    .size Overlay017_UpdateFinalState, . - Overlay017_UpdateFinalState

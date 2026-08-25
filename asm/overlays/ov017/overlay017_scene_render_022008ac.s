@@ -12,7 +12,7 @@
     .extern Overlay017Transform_SubmitGeometry
     .extern Overlay017_ResolveEffectResourceEntry
     .extern Overlay017_ExportEffectTransform
-    .extern func_ov017_02200a8c
+    .extern Overlay017_WriteTexturePaletteBase
 .global Overlay017_RenderScene
 Overlay017_RenderScene:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
@@ -98,7 +98,7 @@ L_022009b4:
     ldrh r0, [r1, #0x3a]
     ldrh r1, [r1, #0x3c]
     mov r2, #0x1
-    bl func_ov017_02200a8c
+    bl Overlay017_WriteTexturePaletteBase
     ldr r8, [r5, #0x3f0]
     mov r7, #0x0
     ldr r6, L_02200a78
@@ -118,7 +118,7 @@ L_02200a1c:
     ldrh r0, [r0, #0x38]
     mov r1, #0x0
     mov r2, #0x1
-    bl func_ov017_02200a8c
+    bl Overlay017_WriteTexturePaletteBase
     ldr r0, [r5, #0x2c0]
     bl Overlay017_RenderGridGeometry
     ldr r0, L_02200a78

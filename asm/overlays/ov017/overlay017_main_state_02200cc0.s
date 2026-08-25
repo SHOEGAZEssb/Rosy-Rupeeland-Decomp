@@ -29,10 +29,10 @@
     .extern Overlay017_DrawStatusText
     .extern Overlay017_UpdateScene
     .extern Overlay017_RenderScene
-    .extern func_ov017_02200bf8
+    .extern Overlay017_HasGlobalValueReachedLimit
     .extern gGameWork
-    .global func_ov017_02200cc0
-func_ov017_02200cc0:
+    .global Overlay017_UpdateMainState
+Overlay017_UpdateMainState:
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -193,7 +193,7 @@ L_02200eb4:
     bl Overlay017_DrawStatusText
     mov r0, r4
     mov r1, #0xec
-    bl func_ov017_02200bf8
+    bl Overlay017_HasGlobalValueReachedLimit
     cmp r0, #0x0
     beq L_02200f50
     mov r0, r5
@@ -478,4 +478,4 @@ L_02201340: .word 0x3ce
 L_02201344: .word data_ov017_02201538
 L_02201348: .word 0x3a6
 L_0220134c: .word data_ov017_02201560
-    .size func_ov017_02200cc0, . - func_ov017_02200cc0
+    .size Overlay017_UpdateMainState, . - Overlay017_UpdateMainState

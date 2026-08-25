@@ -20,7 +20,7 @@ extern void Overlay017_ClearTextureParameters(void);
 extern void Overlay017Transform_SubmitGeometry(void *);
 extern s32 Overlay017_ResolveEffectResourceEntry(void *, s32);
 extern void Overlay017_ExportEffectTransform(void *, void *);
-extern void func_ov017_02200a8c(u16, u16, s32);
+extern void Overlay017_WriteTexturePaletteBase(u16, u16, s32);
 #ifndef MATCHING
 extern void TingleNativeG3_Push(void);
 extern void TingleNativeG3_Pop(u32 count);
@@ -84,7 +84,7 @@ extern "C" void Overlay017_RenderScene(void *state)
     }
 
     Overlay017_WritePolygonAttributes(2, 0, 2, 4, 0x1f, 0);
-    func_ov017_02200a8c(FIELD(u16, state, 0x43a),
+    Overlay017_WriteTexturePaletteBase(FIELD(u16, state, 0x43a),
                         FIELD(u16, state, 0x43c), 1);
 
     node = FIELD(void *, state, 0x3f0);
@@ -101,7 +101,7 @@ extern "C" void Overlay017_RenderScene(void *state)
         node = FIELD(void *, node, 8);
     }
 
-    func_ov017_02200a8c(FIELD(u16, state, 0x438), 0, 1);
+    Overlay017_WriteTexturePaletteBase(FIELD(u16, state, 0x438), 0, 1);
     Overlay017_RenderGridGeometry(FIELD(void *, state, 0x2c0));
     *(volatile u32 *)0x04000444 = 0;
 #ifndef MATCHING

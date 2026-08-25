@@ -16,7 +16,7 @@
     .extern Overlay017_RecordBase_NoOp
     .extern Overlay017_RecordBase_Init
     .extern Overlay017_RecordBase_Destroy
-    .extern func_ov017_022013f4
+    .extern Overlay017_GlobalHelper_Init
 .global __sinit_ov017_02201440
 .type __sinit_ov017_02201440, @function
 __sinit_ov017_02201440:
@@ -24,7 +24,7 @@ __sinit_ov017_02201440:
     mov r1, #0x0
     ldr r0, L_022014d8
     mov r2, r1
-    bl func_ov017_022013f4
+    bl Overlay017_GlobalHelper_Init
     ldr r0, L_022014d8
     ldr r1, L_022014dc
     ldr r2, L_022014e0
@@ -32,7 +32,7 @@ __sinit_ov017_02201440:
     mov r1, #0x0
     ldr r0, L_022014e4
     mov r2, r1
-    bl func_ov017_022013f4
+    bl Overlay017_GlobalHelper_Init
     ldr r0, L_022014e4
     ldr r1, L_022014dc
     ldr r2, L_022014e8

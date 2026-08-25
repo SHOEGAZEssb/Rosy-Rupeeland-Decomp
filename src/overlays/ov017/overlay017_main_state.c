@@ -36,7 +36,7 @@ extern void Overlay017_SetCallbackDescriptor(void *, s32, s32, s32);
 extern void Overlay017_CreateModalPanel(void *, s32, s32, void *);
 extern void Overlay017_DestroyModalPanel(void *);
 extern void Overlay017_DrawStatusText(void *, void *, s32);
-extern s32 func_ov017_02200bf8(void);
+extern s32 Overlay017_HasGlobalValueReachedLimit(void);
 extern void Overlay017_UpdateScene(void *);
 extern void Overlay017_RenderScene(void *);
 #ifdef __cplusplus
@@ -55,7 +55,7 @@ extern void Overlay017_RenderScene(void *);
  * render pass. Returns zero. Scene, GameWork, UI/resource, text, event, and
  * callback state may change; direct graphics MMIO is performed by the renderer.
  */
-extern "C" s32 func_ov017_02200cc0(void *state)
+extern "C" s32 Overlay017_UpdateMainState(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -118,7 +118,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                 record = (u8 *)FIELD(void *, global, 0x20) +
                          InventoryRecordCollection_FindIdAlternate((u8 *)global + 0x1c, 0xec) * 0x24;
                 Overlay017_DrawStatusText(state, record, amount);
-                if (func_ov017_02200bf8()) {
+                if (Overlay017_HasGlobalValueReachedLimit()) {
                     Overlay017_CreateModalPanel(state, 0x25, 0,
                                         ActorDescriptor_GetPrimaryLabel(record));
                     FIELD(s32, state, 4) = 0x23;

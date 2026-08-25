@@ -43,7 +43,7 @@ extern void Overlay017_RenderScene(void *);
  * 0x022008AC and return zero. Scene, GameWork, heap, audio/event, and SDK state
  * may change; no direct hardware access occurs here.
  */
-extern "C" s32 func_ov017_02200ab0(void *state)
+extern "C" s32 Overlay017_UpdateOpeningState(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -90,7 +90,7 @@ extern "C" s32 func_ov017_02200ab0(void *state)
  * 0x02201550. Always run the main update and final renderer helpers and return
  * zero. Scene, audio/event, sprite, and SDK state change; no direct MMIO occurs.
  */
-extern "C" s32 func_ov017_02200c20(void *state)
+extern "C" s32 Overlay017_UpdateExitState(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         s32 progress = ++FIELD(s32, data_ov017_022016e0, 0);

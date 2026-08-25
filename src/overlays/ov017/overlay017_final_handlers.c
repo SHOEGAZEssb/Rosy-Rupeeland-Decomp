@@ -40,7 +40,7 @@ extern void Overlay017_RenderScene(void *);
  * 0x022008AC and return one. Overlay and SDK state change; direct hardware
  * effects, if any, belong to the called helper.
  */
-extern "C" s32 func_ov017_02201350(void *state)
+extern "C" s32 Overlay017_UpdateFinalState(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         FIELD(s32, state, 4)++;
@@ -54,7 +54,7 @@ extern "C" s32 func_ov017_02201350(void *state)
  * No-op final virtual hook. The input is accepted but not read, no state is
  * changed, and the function returns void without SDK or hardware effects.
  */
-extern "C" void func_ov017_02201384(void *state)
+extern "C" void Overlay017_Final_NoOp(void *state)
 {
     (void)state;
 }
@@ -64,7 +64,7 @@ extern "C" void func_ov017_02201384(void *state)
  * original pointer value. Heap state changes and the returned address is no
  * longer valid; no direct hardware access occurs.
  */
-extern "C" void *func_ov017_02201388(void *state)
+extern "C" void *Overlay017_EffectBase_Delete(void *state)
 {
     Overlay017_EffectBase_NoOp(state);
     Heap_Free(state);
@@ -75,7 +75,7 @@ extern "C" void *func_ov017_02201388(void *state)
  * Invoke the recovered no-op effect-base destructor and return state without
  * freeing it. No observable state changes or direct hardware effects occur.
  */
-extern "C" void *func_ov017_022013a4(void *state)
+extern "C" void *Overlay017_EffectBase_Destroy(void *state)
 {
     Overlay017_EffectBase_NoOp(state);
     return state;
@@ -86,7 +86,7 @@ extern "C" void *func_ov017_022013a4(void *state)
  * destructor, free state, and return its original pointer value. SDK and heap
  * state change; the returned address is invalid and no direct MMIO occurs.
  */
-extern "C" void *func_ov017_022013b8(void *state)
+extern "C" void *Overlay017_RecordBase_Delete(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201628;
     PresentationList_DeleteAll(state);
@@ -98,7 +98,7 @@ extern "C" void *func_ov017_022013b8(void *state)
  * Free state and return its original pointer value. Heap state changes, the
  * returned address is invalid, and there are no direct hardware effects.
  */
-extern "C" void *func_ov017_022013e0(void *state)
+extern "C" void *Overlay017_FreeObject(void *state)
 {
     Heap_Free(state);
     return state;
@@ -109,7 +109,7 @@ extern "C" void *func_ov017_022013e0(void *state)
  * data_ov017_02201618 and caller values at +4/+8. Returns state; only object
  * memory changes and no SDK or hardware state is touched.
  */
-extern "C" void *func_ov017_022013f4(void *state, s32 value4, s32 value8)
+extern "C" void *Overlay017_GlobalHelper_Init(void *state, s32 value4, s32 value8)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201618;
     FIELD(s32, state, 4) = value4;
@@ -125,10 +125,10 @@ extern "C" void *func_ov017_022013f4(void *state, s32 value4, s32 value8)
  */
 extern "C" void __sinit_ov017_02201440(void)
 {
-    func_ov017_022013f4(data_ov017_0220170c, 0, 0);
+    Overlay017_GlobalHelper_Init(data_ov017_0220170c, 0, 0);
     __register_global_object(data_ov017_0220170c, Overlay017_RecordBase_NoOp,
                              data_ov017_02201718);
-    func_ov017_022013f4(data_ov017_02201730, 0, 0);
+    Overlay017_GlobalHelper_Init(data_ov017_02201730, 0, 0);
     __register_global_object(data_ov017_02201730, Overlay017_RecordBase_NoOp,
                              data_ov017_02201724);
     Overlay017_RecordBase_Init(data_ov017_02201754);
