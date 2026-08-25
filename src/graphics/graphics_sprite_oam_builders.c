@@ -61,9 +61,9 @@ typedef struct GraphicsSpriteStatePoolPrefix {
 } GraphicsSpriteStatePoolPrefix;
 
 extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
-extern void func_02070418(void *resource);
+extern void GraphicsSpriteGraphicsResource_Prepare(void *resource);
 extern u32 func_0207043c(void *resource);
-extern void func_02070d74(void *resource);
+extern void GraphicsSpriteAnimationResource_Prepare(void *resource);
 extern u32 GX_VBlankIntr(u32 state);
 extern const s16 gFx32CosSinTable[];
 
@@ -95,7 +95,7 @@ void GraphicsSpriteState_BuildUnscaledOamChain(GraphicsSpriteState *state, Graph
     s32 cellIndex;
 
     if (animation->field_14 == 0) {
-        func_02070d74(animation);
+        GraphicsSpriteAnimationResource_Prepare(animation);
     }
     sequence = &animation->sequences[state->animationIndex];
     timing = &animation->frames[sequence->firstFrame + state->frameIndex];
@@ -115,7 +115,7 @@ void GraphicsSpriteState_BuildUnscaledOamChain(GraphicsSpriteState *state, Graph
     if ((state->resourceControlFlags & 1) != 0) {
         if (binding->field_0c == 0) {
             if (graphics->field_14 == 0) {
-                func_02070418(graphics);
+                GraphicsSpriteGraphicsResource_Prepare(graphics);
             }
             GraphicsTransferQueue_Enqueue(
                 queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
@@ -123,7 +123,7 @@ void GraphicsSpriteState_BuildUnscaledOamChain(GraphicsSpriteState *state, Graph
                 func_0207043c(graphics));
         }
     } else if (binding->field_0c == 0 && graphics->field_14 == 0) {
-        func_02070418(graphics);
+        GraphicsSpriteGraphicsResource_Prepare(graphics);
     }
 
     entry->sortKey = (s32)((u32)state->sortOrder |
@@ -262,7 +262,7 @@ void GraphicsSpriteState_BuildAffineOamChain(GraphicsSpriteState *state, Graphic
     s32 cellIndex;
 
     if (animation->field_14 == 0)
-        func_02070d74(animation);
+        GraphicsSpriteAnimationResource_Prepare(animation);
     sequence = &animation->sequences[state->animationIndex];
     timing = &animation->frames[sequence->firstFrame + state->frameIndex];
     cellFrame = &animation->cellFrames[timing->resourceIndex];
@@ -283,14 +283,14 @@ void GraphicsSpriteState_BuildAffineOamChain(GraphicsSpriteState *state, Graphic
     if ((state->resourceControlFlags & 1) != 0) {
         if (binding->field_0c == 0) {
             if (graphics->field_14 == 0)
-                func_02070418(graphics);
+                GraphicsSpriteGraphicsResource_Prepare(graphics);
             GraphicsTransferQueue_Enqueue(
                 queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
                 graphics->pixels, tileDestination << 7,
                 func_0207043c(graphics));
         }
     } else if (binding->field_0c == 0 && graphics->field_14 == 0) {
-        func_02070418(graphics);
+        GraphicsSpriteGraphicsResource_Prepare(graphics);
     }
 
     entry->sortKey = (s32)((u32)state->sortOrder |

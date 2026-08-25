@@ -14,10 +14,10 @@ typedef struct Overlay004BackgroundHardwareState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020925a4(s32 layer);
-extern void func_02092638(s32 first, s32 second, s32 third, s32 fourth);
-extern void func_020925dc(s32 layer);
-extern void func_02092688(s32 first, s32 second, s32 third, s32 fourth);
+extern void TitleDisplay_ConfigureMain2dEngine(s32 layer);
+extern void TitleDisplay_SetMainBgPriorities(s32 first, s32 second, s32 third, s32 fourth);
+extern void TitleDisplay_ConfigureSub2dEngine(s32 layer);
+extern void TitleDisplay_SetSubBgPriorities(s32 first, s32 second, s32 third, s32 fourth);
 #ifdef __cplusplus
 }
 #endif
@@ -42,13 +42,13 @@ void func_ov004_021fb968(Overlay004BackgroundHardwareState *state)
 
     *control &= (u16)~0x8000;
     state->mainLayer_048 = 0x18;
-    func_020925a4(5);
+    TitleDisplay_ConfigureMain2dEngine(5);
     mainBg[0] = (mainBg[0] & 0x43) | 0xb800;
     mainBg[1] = (mainBg[1] & 0x43) | 0xbc10;
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     state->subLayer_04c = 0x18;
-    func_020925dc(5);
+    TitleDisplay_ConfigureSub2dEngine(5);
     subBg[0] = (subBg[0] & 0x43) | 0xb800;
     subBg[1] = (subBg[1] & 0x43) | 0xbc10;
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 }

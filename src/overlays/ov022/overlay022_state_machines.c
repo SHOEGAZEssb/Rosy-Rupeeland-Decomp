@@ -32,7 +32,7 @@ extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void IndexedSelectionController_ResetTransition(void *);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *);
@@ -140,7 +140,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
                 func_02092260(scene, 2);
                 FIELD(s32, scene, 0x2c0) = 0;
-                func_02092c8c(1, -16);
+                DisplayBrightness_StartMaskedTransitions(1, -16);
                 ADVANCE(scene);
             } else {
                 func_02092260(scene, 9);
@@ -151,7 +151,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
                 TitleDialog_ClearTextRect(FIELD(void *, scene, 0x2cc));
                 func_02092260(scene, 2);
                 FIELD(s32, scene, 0x2c0) = 1;
-                func_02092c8c(1, -16);
+                DisplayBrightness_StartMaskedTransitions(1, -16);
                 ADVANCE(scene);
             } else {
                 func_02092260(scene, 9);
@@ -175,7 +175,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
             func_02095820((u8 *)scene + 0x154, -64, 64);
             func_02095820((u8 *)scene + 0x200, 128, 170);
         }
-        func_02092c8c(1, 0);
+        DisplayBrightness_StartMaskedTransitions(1, 0);
         ADVANCE(scene);
         break;
     case 4:
@@ -234,7 +234,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
     func_ov022_021fd068(FIELD(void *, scene, 0x354));
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02092c8c(2, -8);
+        DisplayBrightness_StartMaskedTransitions(2, -8);
         func_ov022_021fe94c(scene);
         IndexedSelectionController_ResetTransition(FIELD(void *, scene, 0x2b4));
         ADVANCE(scene);
@@ -249,8 +249,8 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
         if (++FIELD(s32, scene, 8) <= 60) {
             func_ov022_021fe9e8(scene);
         } else {
-            func_02092c8c(2, 0);
-            func_02092c8c(1, -8);
+            DisplayBrightness_StartMaskedTransitions(2, 0);
+            DisplayBrightness_StartMaskedTransitions(1, -8);
             func_020922f0(scene, 0x9d);
             func_ov022_021feac8(scene);
             ADVANCE(scene);
@@ -300,10 +300,10 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
             IndexedSelectionController_SnapTransitionOrigin(collection);
             IndexedSelectionController_Increment(collection);
             if (IndexedSelectionController_AdvanceTransition(collection)) {
-                func_02092c8c(1, 0);
+                DisplayBrightness_StartMaskedTransitions(1, 0);
                 ADVANCE(scene);
             } else {
-                func_02092c8c(1, -16);
+                DisplayBrightness_StartMaskedTransitions(1, -16);
                 FIELD(s32, scene, 4) = 20;
                 FIELD(s32, scene, 8) = 0;
             }
@@ -323,7 +323,7 @@ extern "C" s32 func_ov022_021ffa1c(void *scene)
             func_ov022_021fe688(scene);
             func_ov022_021fef48(scene);
             func_ov022_021fe544(scene);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             CALLBACK(scene, data_ov022_022004f0);
         }
         break;
@@ -412,7 +412,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
         } else if (func_02095860((u8 *)scene + 0xa8,
                                  (u8 *)scene + 0x30, 0, 4)) {
             func_02092260(scene, 3);
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             ADVANCE(scene);
         } else if (InventoryScroll_UpdateSelectionMovement(ui)) {
             func_02092260(scene, 0);
@@ -428,7 +428,7 @@ extern "C" s32 func_ov022_021ffd8c(void *scene)
             FIELD(u32, scene, 0x48) &= ~2u;
             FIELD(u16, FIELD(void *, scene, 0xa4), 0x24) |= 4;
             GraphicsSpriteGroup_ReleaseIndexedEntries(FIELD(void *, ui, 0x50));
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             CALLBACK(scene, data_ov022_02200510);
         }
         break;
@@ -502,7 +502,7 @@ extern "C" s32 func_ov022_022002e4(void *scene)
     switch (FIELD(s32, scene, 4)) {
     case 0:
         ++FIELD(s16, gGameWork, 0x98);
-        func_02092c8c(1, -8);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
         ADVANCE(scene);
         /* fall through */
     case 1:

@@ -8,7 +8,7 @@ extern void *data_020f4e14,*gDebugFont,*data_020f4e18;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);extern void func_020925a4(s32);extern void func_020925f8(void);extern void func_02092638(s32,s32,s32,s32);extern void func_020925dc(s32);extern void func_02092618(void);extern void func_02092688(s32,s32,s32,s32);
+extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);extern void TitleDisplay_ConfigureMain2dEngine(s32);extern void TitleDisplay_ResetMainBgScroll(void);extern void TitleDisplay_SetMainBgPriorities(s32,s32,s32,s32);extern void TitleDisplay_ConfigureSub2dEngine(s32);extern void TitleDisplay_ResetSubBgScroll(void);extern void TitleDisplay_SetSubBgPriorities(s32,s32,s32,s32);
 extern void GraphicsResourceSet_Init(Overlay015ResourceSet *);extern void GraphicsResourceSet_Load(Overlay015ResourceSet *,void *,s32,s32,s32);extern void GraphicsResourceSet_Apply(Overlay015ResourceSet *,s32,s32);extern void GraphicsResourceSet_Destroy(Overlay015ResourceSet *);
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *,s32);extern void func_020b44e8(void);extern void func_02072048(Overlay015ResourceSet *,s32,s32);extern void func_020706c4(void *,s32,s32);extern void func_02070bc4(void *,s32);extern void GraphicsBgMapResource_UploadToSubBg(void *,s32,s32);
 #ifdef __cplusplus
@@ -28,8 +28,8 @@ extern void GraphicsBgMapResource_AddPaletteBankOffset(void *,s32);extern void f
 extern "C" void func_ov015_021fd41c(void *state)
 {
     Overlay015ResourceSet a,b,c;volatile u16 *power=(volatile u16 *)0x04000304,*mainBg=(volatile u16 *)0x0400000a,*subBg=(volatile u16 *)0x04001008;
-    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);if(FIELD(s32,state,0xec)==0)GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);*power&=(u16)~0x8000;FIELD(s32,state,0x48)=0x14;func_020925a4(0);mainBg[0]=(mainBg[0]&0x43)|0x3a00;mainBg[1]=(mainBg[1]&0x43)|0x1c00;func_020925f8();*(volatile u32 *)0x04000018=0x200000;func_02092638(0,1,2,3);
-    if(FIELD(s32,state,0xec)==0){FIELD(s32,state,0x4c)=0x19;func_020925dc(0);subBg[0]=(subBg[0]&0x43)|0x3800;subBg[1]=(subBg[1]&0x43)|0x3a00;subBg[3]=(subBg[3]&0x43)|0x1e10;func_02092618();func_02092688(0,1,2,3);}
+    GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);if(FIELD(s32,state,0xec)==0)GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);*power&=(u16)~0x8000;FIELD(s32,state,0x48)=0x14;TitleDisplay_ConfigureMain2dEngine(0);mainBg[0]=(mainBg[0]&0x43)|0x3a00;mainBg[1]=(mainBg[1]&0x43)|0x1c00;TitleDisplay_ResetMainBgScroll();*(volatile u32 *)0x04000018=0x200000;TitleDisplay_SetMainBgPriorities(0,1,2,3);
+    if(FIELD(s32,state,0xec)==0){FIELD(s32,state,0x4c)=0x19;TitleDisplay_ConfigureSub2dEngine(0);subBg[0]=(subBg[0]&0x43)|0x3800;subBg[1]=(subBg[1]&0x43)|0x3a00;subBg[3]=(subBg[3]&0x43)|0x1e10;TitleDisplay_ResetSubBgScroll();TitleDisplay_SetSubBgPriorities(0,1,2,3);}
     GraphicsResourceSet_Init(&a);GraphicsResourceSet_Init(&b);GraphicsResourceSet_Init(&c);GraphicsResourceSet_Load(&a,data_020f4e18,0xb003,0xb004,0xb005);GraphicsBgMapResource_AddPaletteBankOffset((void *)a.words[2],8);func_020b44e8();if(FIELD(s32,state,0xec)==0)GraphicsResourceSet_Apply(&a,3,0x100);
     GraphicsResourceSet_Load(&a,data_020f4e18,0x8008,0x8009,0x800a);GraphicsResourceSet_Load(&b,data_020f4e18,0x8008,0x8009,0x800e);GraphicsResourceSet_Load(&c,data_020f4e18,0x8008,0x8009,0x800d);func_020b44e8();func_02072048(&a,2,0);
     if(FIELD(s32,state,0xec)==0){func_020706c4((void *)a.words[0],0,0);func_02070bc4((void *)a.words[1],0);GraphicsBgMapResource_UploadToSubBg((void *)b.words[2],0,0);GraphicsBgMapResource_UploadToSubBg((void *)c.words[2],1,0);}GraphicsResourceSet_Destroy(&c);GraphicsResourceSet_Destroy(&b);GraphicsResourceSet_Destroy(&a);

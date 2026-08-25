@@ -5,7 +5,7 @@
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
     .extern func_02072048
-    .extern func_02092638
+    .extern TitleDisplay_SetMainBgPriorities
     .extern func_020afd0c
     .extern func_020b44e8
     .extern func_ov021_021fe268
@@ -20,7 +20,7 @@ func_ov021_021fe390:
     mov r2, r1
     mov r3, r1
     mov r0, #0x0
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     mov r0, #0x0
     mov ip, #0x1
     mov r1, r0

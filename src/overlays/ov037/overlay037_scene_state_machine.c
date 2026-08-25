@@ -17,7 +17,7 @@ extern void Presentation_SetScript(void *object, const void *command, s32 enable
 extern s32 Presentation_IsScriptSuspended(void *object);
 extern void func_ov037_021fdd08(void *scene);
 extern s32 func_ov037_021fd1b4(void *object);
-extern void func_02092c8c(s32 effect, s32 duration);
+extern void DisplayBrightness_StartMaskedTransitions(s32 effect, s32 duration);
 extern void func_ov037_021fe1f0(void *scene);
 extern void func_ov037_021fdf68(void *scene);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
@@ -71,7 +71,7 @@ extern "C" s32 func_ov037_021fe284(void *scene)
         break;
     case 3:
         if (func_ov037_021fd1b4(FIELD(void *, scene, 0x120))) {
-            func_02092c8c(3, 0x10);
+            DisplayBrightness_StartMaskedTransitions(3, 0x10);
             ++FIELD(s32, scene, 0x9c);
         } else {
             func_ov037_021fe1f0(scene);

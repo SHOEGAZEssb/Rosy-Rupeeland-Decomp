@@ -8,7 +8,7 @@ extern DisplayBrightnessPair gDisplayBrightnessPair;
 
 /* Start a linear transition for one screen. No transition is started when the
  * current brightness already equals target; otherwise duration is abs(delta). */
-void func_02092c38(u32 screen, s32 target)
+void DisplayBrightness_StartScreenTransition(u32 screen, s32 target)
 {
     DisplayBrightness *brightness;
     s32 current;
@@ -29,10 +29,10 @@ void func_02092c38(u32 screen, s32 target)
 
 /* Apply target to the main controller for mask bit 0 and the sub controller
  * for mask bit 1. Other bits are ignored and the function returns nothing. */
-void func_02092c8c(s32 screenMask, s32 target)
+void DisplayBrightness_StartMaskedTransitions(s32 screenMask, s32 target)
 {
     if ((screenMask & 1) != 0)
-        func_02092c38(0, target);
+        DisplayBrightness_StartScreenTransition(0, target);
     if ((screenMask & 2) != 0)
-        func_02092c38(1, target);
+        DisplayBrightness_StartScreenTransition(1, target);
 }

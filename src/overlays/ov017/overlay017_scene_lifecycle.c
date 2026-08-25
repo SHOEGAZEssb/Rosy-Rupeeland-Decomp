@@ -25,7 +25,7 @@ extern void Graphics3DLightSet_Destroy(void *);
 extern void Graphics3DRenderObject_Destroy(void *);
 extern void GraphicsBankStateSnapshot_Destroy(void *);
 extern void func_02092418(void *);
-extern void func_02092638(s32, s32, s32, s32);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void func_020926f8(void *);
 extern void func_020927b8(void *);
 extern void PresentationList_DeleteAll(void *);
@@ -98,7 +98,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
     func_02092418((u8 *)state + 0x404);
     GraphicsSpriteRenderer_QueuePendingBlocks(data_020f4e14);
     GX_SetGraphicsMode(1, 0, 0);
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x404);
     FIELD(const u32 *, state, 0x3ec) = data_ov017_02201628;
     PresentationList_DeleteAll((u8 *)state + 0x3ec);

@@ -17,11 +17,11 @@ extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void func_02072048(void *, s32, s32);
-extern void func_020925dc(s32, s32);
-extern void func_020925f8(void);
-extern void func_02092618(void);
-extern void func_02092638(s32, s32, s32, s32);
-extern void func_02092688(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureSub2dEngine(s32, s32);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
+extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void TitlePalette_SetSubBackdrop(s32);
 extern void func_020af1f8(s32);
 extern void func_020b0300(s32, s32, s32, s32, s32);
@@ -62,14 +62,14 @@ extern "C" void func_ov017_021ff58c(void *state)
     GX_SetBankForBG(0x10);
     func_020af1f8(0x40);
     *mainBg2Cnt = (*mainBg2Cnt & 0x43) | 0x1c00;
-    func_020925f8();
-    func_02092638(2, 1, 0, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(2, 1, 0, 3);
     *blendCnt = 0;
     FIELD(s32, state, 0x4c) = 0x10;
-    func_020925dc(0, 0x10);
+    TitleDisplay_ConfigureSub2dEngine(0, 0x10);
     *subBg3Cnt = (*subBg3Cnt & 0x43) | 0x1e00;
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 
     GraphicsResourceSet_Init(resourceSet);
     GraphicsResourceSet_Load(resourceSet, data_020f4e18[0], 0x8000, 0x8001,

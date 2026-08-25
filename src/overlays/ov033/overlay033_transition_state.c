@@ -25,7 +25,7 @@ extern void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
 typedef struct GamePhaseTransitionScene GamePhaseTransitionScene;
 extern GamePhaseTransitionScene *GamePhaseTransitionScene_Init(
     GamePhaseTransitionScene *object);
-extern void func_02092c8c(s32 first, s32 second);
+extern void DisplayBrightness_StartMaskedTransitions(s32 first, s32 second);
 extern void func_ov033_021fd598(void *scene);
 extern void Type7Actor_EnterFlag40000State(void *object);
 extern void func_ov033_021fd04c(void *scene, s32 callbackWord,
@@ -106,7 +106,7 @@ extern "C" s32 func_ov033_021fd738(void *scene)
         } else {
             if ((FIELD(u16, group, 0x98) & 1) != 0 &&
                 FIELD(s32, group, 0x80) == FIELD(s32, group, 0x7c) - 0x10)
-                func_02092c8c(3, 0x10);
+                DisplayBrightness_StartMaskedTransitions(3, 0x10);
             func_ov033_021fd598(scene);
         }
     } else if (state == 2) {
@@ -116,7 +116,7 @@ extern "C" s32 func_ov033_021fd738(void *scene)
         FIELD(u16, FIELD(void *, primary, 0x54), 0x24) |= 0x10;
         FIELD(u16, FIELD(void *, primary, 0xa8), 0x24) |= 0x10;
         refresh_secondary(scene, global);
-        func_02092c8c(3, 0);
+        DisplayBrightness_StartMaskedTransitions(3, 0);
         Presentation_SetScript(group, data_ov033_021fdd2c, 0);
         FIELD(s32, scene, 0xd0) = 3;
     } else if (state == 3) {

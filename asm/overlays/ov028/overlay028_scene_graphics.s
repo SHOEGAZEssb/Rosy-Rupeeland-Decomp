@@ -15,9 +15,9 @@
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_0209189c
-.extern func_020925a4
-.extern func_020925f8
-.extern func_02092638
+.extern TitleDisplay_ConfigureMain2dEngine
+.extern TitleDisplay_ResetMainBgScroll
+.extern TitleDisplay_SetMainBgPriorities
 .extern TitlePalette_SetMainBackdrop
 .extern InventoryScroll_UpdatePresentation
 .extern PresentationScalar_TransitionTo
@@ -50,7 +50,7 @@ func_ov028_021fe1b0:
     strh r2, [r3, #0x0]
     str r1, [r0, #0x48]
     mov r0, #0x0
-    bl func_020925a4
+    bl TitleDisplay_ConfigureMain2dEngine
     ldr r1, L_021fe388
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
@@ -70,12 +70,12 @@ func_ov028_021fe1b0:
     orr r0, r0, #0xe10
     orr r0, r0, #0x1000
     strh r0, [r1, #0x6]
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, #0x1
     mov r1, r0
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     ldr r0, L_021fe38c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_GetObjectPaletteAddress

@@ -10,12 +10,12 @@
     .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsBgMapResource_AddPaletteBankOffset
     .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
-    .extern func_020925a4
-    .extern func_020925dc
-    .extern func_020925f8
-    .extern func_02092618
-    .extern func_02092638
-    .extern func_02092688
+    .extern TitleDisplay_ConfigureMain2dEngine
+    .extern TitleDisplay_ConfigureSub2dEngine
+    .extern TitleDisplay_ResetMainBgScroll
+    .extern TitleDisplay_ResetSubBgScroll
+    .extern TitleDisplay_SetMainBgPriorities
+    .extern TitleDisplay_SetSubBgPriorities
     .extern TitleScreenResourceCollection_Init
     .extern func_020926f8
     .extern func_02092754
@@ -35,7 +35,7 @@ func_ov016_021fedc4:
     mov r1, #0x10
     mov r0, #0x0
     str r1, [r4, #0x48]
-    bl func_020925a4
+    bl TitleDisplay_ConfigureMain2dEngine
     ldr ip, L_021ff01c
     mov r0, #0x0
     ldrh r3, [ip, #0x0]
@@ -54,16 +54,16 @@ func_ov016_021fedc4:
     orr r5, r5, #0x1c00
     strh r5, [ip, #0x4]
     bl Overlay016_ConfigureMainBg3
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, #0x0
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     mov r0, #0x1d
     str r0, [r4, #0x4c]
     mov r0, #0x0
-    bl func_020925dc
+    bl TitleDisplay_ConfigureSub2dEngine
     ldr r1, L_021ff020
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
@@ -82,12 +82,12 @@ func_ov016_021fedc4:
     orr r0, r0, #0xe10
     orr r0, r0, #0x1000
     strh r0, [r1, #0x6]
-    bl func_02092618
+    bl TitleDisplay_ResetSubBgScroll
     mov r0, #0x0
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092688
+    bl TitleDisplay_SetSubBgPriorities
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     add r0, sp, #0x10

@@ -21,8 +21,8 @@
     .extern SceneInputBase_Init
     .extern GraphicsBankStateSnapshot_Init
     .extern func_020923a4
-    .extern func_02092618
-    .extern func_02092688
+    .extern TitleDisplay_ResetSubBgScroll
+    .extern TitleDisplay_SetSubBgPriorities
     .extern TitlePalette_SetMainBackdrop
     .extern func_020aea7c
     .extern func_020b4554
@@ -135,12 +135,12 @@ L_021fcf6c:
     mov r3, r0
     str r0, [sp, #0x0]
     bl func_ov011_021fce1c
-    bl func_02092618
+    bl TitleDisplay_ResetSubBgScroll
     mov r0, #0x0
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092688
+    bl TitleDisplay_SetSubBgPriorities
     mov r0, #0x0
     str r0, [r10, #0xfc]
     str r0, [r10, #0x100]

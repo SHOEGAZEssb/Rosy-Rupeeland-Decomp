@@ -41,7 +41,7 @@ extern void func_ov009_021fce74(void *, s32, s32, s32);
 extern void GX_DispOn(void);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As);
 extern void GX_SetBankForBG(s32 bank);
-extern void func_02092638(s32 first, s32 second, s32 third, s32 fourth);
+extern void TitleDisplay_SetMainBgPriorities(s32 first, s32 second, s32 third, s32 fourth);
 extern void func_020b44e8(void);
 extern void TitlePalette_SetMainBackdrop(u16 color);
 extern void TitlePalette_SetSubBackdrop(s32 value);
@@ -139,7 +139,7 @@ void *func_ov009_021fce9c(void *state)
     mainBgScroll[0] = ((u32)-FIELD(s32, state, 0xf0) & 0x1ff) |
                       (((u32)-FIELD(s32, state, 0xf4) & 0x1ff) << 16);
     mainBgScroll[1] = mainBgScroll[0];
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
 
     *subDispcnt |= 0x10000;
     *subDispcnt = (*subDispcnt & ~0x1f00) | 0x1000;

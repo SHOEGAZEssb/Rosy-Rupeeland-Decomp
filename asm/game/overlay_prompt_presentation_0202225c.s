@@ -16,7 +16,7 @@
 .extern FieldEffect_DestroyBase
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern SceneInputBase_Update
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov001_021fbe6c
 .extern gDebugFont
 .extern gGameWork

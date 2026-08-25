@@ -18,7 +18,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
 extern void InventoryScroll_SaveOrigins(void *);
@@ -142,7 +142,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
                     if (func_02095860((u8 *)state + 0xa0,
                                       (u8 *)state + 0x30, 0, 4) != 0) {
                         func_02092260(state, 3);
-                        func_02092c8c(1, -16);
+                        DisplayBrightness_StartMaskedTransitions(1, -16);
                         FIELD(s32, state, 4)++;
                         FIELD(s32, state, 8) = 0;
                         break;
@@ -165,7 +165,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
             FIELD(u16, FIELD(void *, state, 0x98), 0x24) |= 4;
             FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
             func_ov021_021fd224(list);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             func_ov021_021fd7c0(state, data_ov021_02202ef0[0],
                                 data_ov021_02202ef0[1]);
         }

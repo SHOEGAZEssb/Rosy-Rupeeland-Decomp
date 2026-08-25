@@ -22,7 +22,7 @@ extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
 extern void func_ov002_021fbdc0(void *);
 extern s32 func_ov002_021fbe08(void *);
@@ -93,7 +93,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
         break;
     case 2:
         if (func_ov029_021fd850(state) != 0) {
-            func_02092c8c(1, -0x10);
+            DisplayBrightness_StartMaskedTransitions(1, -0x10);
             Overlay029_NextPhase(state);
         }
         break;
@@ -108,7 +108,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
             FIELD(void *, state, 0xa8) = child;
         }
         func_ov029_021fd644(state);
-        func_02092c8c(1, 0);
+        DisplayBrightness_StartMaskedTransitions(1, 0);
         func_ov002_021fbdc0(FIELD(void *, state, 0xa8));
         Overlay029_NextPhase(state);
         break;

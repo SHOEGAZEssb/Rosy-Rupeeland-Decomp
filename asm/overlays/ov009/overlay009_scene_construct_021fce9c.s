@@ -27,7 +27,7 @@
     .extern SceneInputBase_Init
     .extern GraphicsBankStateSnapshot_Init
     .extern func_020923a4
-    .extern func_02092638
+    .extern TitleDisplay_SetMainBgPriorities
     .extern TitlePalette_SetMainBackdrop
     .extern TitlePalette_SetSubBackdrop
     .extern func_020b44e8
@@ -176,7 +176,7 @@ L_021fcf84:
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     ldr r2, L_021fd188
     ldr r0, [r2, #0x0]
     orr r0, r0, #0x10000

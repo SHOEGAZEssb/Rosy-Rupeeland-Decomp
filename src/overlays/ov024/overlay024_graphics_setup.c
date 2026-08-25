@@ -17,9 +17,9 @@ extern void func_02070b50(void *, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void func_02072048(void *, s32, s32);
-extern void func_020925a4(s32);
-extern void func_020925f8(void);
-extern void func_02092638(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureMain2dEngine(s32);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void TitlePalette_SetMainBackdrop(u16);
 extern void func_020afce8(void *, s32, s32);
 extern void func_020b44e8(void);
@@ -47,15 +47,15 @@ extern "C" void func_ov024_021fd2f8(void *scene)
 {
     *(volatile u16 *)0x04000304 &= (u16)~0x8000;
     FIELD(s32, scene, 0x48) = 31;
-    func_020925a4(0);
+    TitleDisplay_ConfigureMain2dEngine(0);
 
     volatile u16 *bg = (volatile u16 *)0x04000008;
     bg[0] = (bg[0] & 0x43) | 0xe008;
     bg[1] = (bg[1] & 0x43) | 0xe410;
     bg[2] = (bg[2] & 0x43) | 0xc818;
     bg[3] = (bg[3] & 0x43) | 0x0c14;
-    func_020925f8();
-    func_02092638(2, 2, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(2, 2, 2, 3);
     *(volatile u32 *)0x04000000 =
         (*(volatile u32 *)0x04000000 & ~0xe000u) | 0x8000;
     func_020afce8((void *)0x04000050, 31, 0);

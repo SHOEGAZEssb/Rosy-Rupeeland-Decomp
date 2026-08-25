@@ -31,7 +31,7 @@ extern void RecordDescriptor_SetValue(void *, s32);
 extern s32 func_0209189c(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void Presentation_SetScript(void *, const void *, s32);
@@ -117,7 +117,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -8);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
         advance(state);
         /* Deliberate fall-through. */
     case 1: {
@@ -218,7 +218,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
     case 10:
         if (func_ov045_0220b9b8(FIELD(void *, state, 0x3ec)) != 0 &&
             func_ov045_0220bc34(FIELD(void *, state, 0x3ec)) == 0) {
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             FIELD(s32, state, 4) = 30;
             FIELD(s32, state, 8) = 0;
         }
@@ -235,7 +235,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
             destroy_polymorphic(FIELD(void *, state, 0x384));
             FIELD(void *, state, 0x384) = 0;
             TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             FIELD(s32, state, 4) = 30;
             FIELD(s32, state, 8) = 0;
         }
@@ -284,7 +284,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
             func_ov021_021ff0c8(FIELD(void *, state, 0x384)) != 0) {
             destroy_polymorphic(FIELD(void *, state, 0x384));
             FIELD(void *, state, 0x384) = 0;
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             advance(state);
         }
         break;
@@ -311,7 +311,7 @@ extern "C" s32 func_ov021_02202be0(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -8);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
         advance(state);
         /* Deliberate fall-through. */
     case 1:

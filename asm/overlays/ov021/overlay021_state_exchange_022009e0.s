@@ -7,7 +7,7 @@
     .extern GraphicsSpriteText_FormatDecimal
     .extern RecordDescriptor_GetMessage
     .extern func_02092260
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern func_ov002_021fbb68
     .extern func_ov002_021fbc54
@@ -181,7 +181,7 @@ L_02200bfc:
     beq L_02200c5c
     mov r0, #0x1
     sub r1, r0, #0x9
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x388]
     bl TitleDialog_ClearTextRect
     ldr r0, [r4, #0x2bc]

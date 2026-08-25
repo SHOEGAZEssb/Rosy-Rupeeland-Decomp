@@ -32,7 +32,7 @@ extern "C" {
 #endif
 
 extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
-extern void func_02070418(void *resource);
+extern void GraphicsSpriteGraphicsResource_Prepare(void *resource);
 extern s32 func_0207043c(void *resource);
 extern u32 GX_VBlankIntr(u32 state);
 
@@ -66,7 +66,7 @@ GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
         u32 interruptState;
 
         if (resource->field_14 == 0) {
-            func_02070418(resource);
+            GraphicsSpriteGraphicsResource_Prepare(resource);
         }
         size = func_0207043c(resource);
         blocks = (size + 127) / 128;
@@ -104,7 +104,7 @@ asm GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
     cmp r0, #0
     bne sprite_vram_binding_prepared
     mov r0, r5
-    bl func_02070418
+    bl GraphicsSpriteGraphicsResource_Prepare
 sprite_vram_binding_prepared:
     mov r0, r5
     bl func_0207043c

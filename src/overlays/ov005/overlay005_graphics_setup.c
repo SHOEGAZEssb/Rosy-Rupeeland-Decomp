@@ -25,9 +25,9 @@ typedef struct Overlay005GraphicsState {
 extern "C" {
 #endif
 extern void *data_020f4e18;
-extern void func_020925dc(s32 value);
-extern void func_02092618(void);
-extern void func_02092688(s32 first, s32 second, s32 third, s32 fourth);
+extern void TitleDisplay_ConfigureSub2dEngine(s32 value);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetSubBgPriorities(s32 first, s32 second, s32 third, s32 fourth);
 extern void func_020afce8(volatile void *registers, s32 first, s32 second);
 extern void GraphicsResourceSet_Init(Overlay005GraphicsResourceSet *set);
 extern void GraphicsResourceSet_Load(Overlay005GraphicsResourceSet *set,
@@ -82,9 +82,9 @@ static void overlay005_select_resource_ids(const Overlay005GraphicsState *state,
 }
 
 /*
- * Set +0x4C to 0x19 and call func_020925dc(0). Configure sub-engine BG0CNT
+ * Set +0x4C to 0x19 and call TitleDisplay_ConfigureSub2dEngine(0). Configure sub-engine BG0CNT
  * 0x04001008 and BG3CNT 0x0400100E with the confirmed masks/values, invoke
- * func_02092618 and func_02092688(2,2,2,3), select sub DISPCNT mode bit 15
+ * TitleDisplay_ResetSubBgScroll and TitleDisplay_SetSubBgPriorities(2,2,2,3), select sub DISPCNT mode bit 15
  * while clearing bits 13..15 first, set sub BLDCNT through
  * func_020afce8(0x04001050,0x19,0), and set both six-bit fields of register
  * 0x0400104A to 0x39 and 0x19.
@@ -113,11 +113,11 @@ void func_ov005_021fc278(Overlay005GraphicsState *state)
     volatile u32 *subDispcnt = (volatile u32 *)0x04001000;
 
     state->field_04c = 0x19;
-    func_020925dc(0);
+    TitleDisplay_ConfigureSub2dEngine(0);
     *bg0cnt = (*bg0cnt & 0x43) | 0x08 | 0xe000;
     *bg3cnt = (*bg3cnt & 0x43) | 0x04 | 0x0400;
-    func_02092618();
-    func_02092688(2, 2, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(2, 2, 2, 3);
     *subDispcnt = (*subDispcnt & ~0xe000) | 0x8000;
     func_020afce8((volatile void *)0x04001050, 0x19, 0);
     *field104a = (*field104a & ~0x3f00) | 0x3900;

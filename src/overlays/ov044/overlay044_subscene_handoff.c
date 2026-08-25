@@ -15,7 +15,7 @@ extern "C" u8 gHeapContext[];
 extern "C" void *gGameWork;
 extern "C" u32 data_ov044_0220d2c8[2];
 extern "C" u32 data_ov044_0220d2c0[2];
-extern "C" void func_02092c8c(s32 first, s32 second);
+extern "C" void DisplayBrightness_StartMaskedTransitions(s32 first, s32 second);
 extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void *func_ov044_0220bd98(void *panel);
 extern "C" void func_02095940(void *presentation);
@@ -27,7 +27,7 @@ extern "C" void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
 extern "C" void *func_ov015_021fce58(void *storage, s32 mode, void *item);
 extern "C" void func_ov044_0220c880(void *object);
 extern "C" s32 SceneInputBase_Update(void *scene, s32 phase);
-extern "C" void func_020925f8(void);
+extern "C" void TitleDisplay_ResetMainBgScroll(void);
 extern "C" void func_ov044_0220c3e4(void *object);
 extern "C" void func_ov044_0220c610(void *object);
 extern "C" void func_ov044_0220c440(void *object);
@@ -63,7 +63,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
 {
     switch (FIELD(s32, object, 4)) {
     case 0:
-        func_02092c8c(1, -16);
+        DisplayBrightness_StartMaskedTransitions(1, -16);
         advance_handoff(object);
         /* Intentional same-frame fallthrough. */
     case 1:
@@ -79,7 +79,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
             if (scene)
                 scene = func_ov015_021fce58(scene, 0, item);
             FIELD(void *, object, 0x23c) = scene;
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             advance_handoff(object);
         } else {
             func_ov044_0220c880(object);
@@ -92,7 +92,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
         break;
     case 3:
         if (SceneInputBase_Update(FIELD(void *, object, 0x23c), 1)) {
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             advance_handoff(object);
         }
         break;
@@ -115,7 +115,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
         if (frame == 1) {
             GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
             FIELD(s32, object, 0x48) = 0x1c;
-            func_020925f8();
+            TitleDisplay_ResetMainBgScroll();
             func_ov044_0220c3e4(object);
             func_ov044_0220c610(object);
         } else if (frame == 2) {
@@ -127,7 +127,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
                 func_ov044_0220be38(object, data_ov044_0220d2c8[0],
                                     data_ov044_0220d2c8[1]);
             } else {
-                func_02092c8c(1, 0);
+                DisplayBrightness_StartMaskedTransitions(1, 0);
                 advance_handoff(object);
             }
         }

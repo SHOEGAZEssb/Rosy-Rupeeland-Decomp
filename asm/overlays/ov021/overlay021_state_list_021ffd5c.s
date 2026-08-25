@@ -6,7 +6,7 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02092260
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern InventoryScroll_SetSelectedRow
     .extern InventoryScroll_SaveOrigins
@@ -216,7 +216,7 @@ L_021fffc4:
     bl func_02092260
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -261,7 +261,7 @@ L_02200044:
     bl func_ov021_021fd224
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_022000ec
     mov r0, r5
     ldmia r1, {r1, r2}

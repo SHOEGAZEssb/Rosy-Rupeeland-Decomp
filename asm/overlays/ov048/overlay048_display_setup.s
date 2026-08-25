@@ -3,9 +3,9 @@
 .extern GXS_SetGraphicsMode
 .extern GX_SetGraphicsMode
 .extern gFx32CosSinTable
-.extern func_020925f8
-.extern func_02092638
-.extern func_02092688
+.extern TitleDisplay_ResetMainBgScroll
+.extern TitleDisplay_SetMainBgPriorities
+.extern TitleDisplay_SetSubBgPriorities
 .extern func_020afd28
 .extern func_020b0348
 .extern func_020b1e5c
@@ -48,12 +48,12 @@ func_ov048_0220b7b8:
     mov r2, r0
     mov r1, #0x0
     bl GX_SetGraphicsMode
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, #0x1
     mov r1, #0x0
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     ldr r1, .L_0220b988
     mov r2, #0x0
     mov r0, #0x5
@@ -122,7 +122,7 @@ func_ov048_0220b7b8:
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092688
+    bl TitleDisplay_SetSubBgPriorities
     ldr r1, .L_0220b998
     mov r0, #0x2
     str r0, [r1, #0x0]

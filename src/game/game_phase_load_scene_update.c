@@ -65,7 +65,7 @@ extern u8 gOverlay035Or036SceneAllocationTag[];
 extern u8 gOverlay019SceneAllocationTag[];
 extern u8 gOverlay037SceneAllocationTag[];
 extern u8 gOverlay013Kind25SceneAllocationTag[];
-extern void func_02092c8c(s32 screens, s32 brightness);
+extern void DisplayBrightness_StartMaskedTransitions(s32 screens, s32 brightness);
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 extern s32 SceneInputBase_Update(void *object, s32 mode);
 extern void Sound_SetModalEnvelopeEnabled(void *sound, s32 a, s32 b, s32 c, s32 d);
@@ -230,9 +230,9 @@ s32 GamePhaseLoadScene_Update(GamePhaseLoadScene *self)
     value = self->sceneKind;
     if (value < 2) {
       if (value != 1) goto code_r0x0200d170;
-      func_02092c8c(1,0xfffffff0);
+      DisplayBrightness_StartMaskedTransitions(1,0xfffffff0);
       if (GamePhaseRuntime_GetPhaseObjectMode(gGamePhaseRuntime) != 2) {
-        func_02092c8c(2,0xfffffff0);
+        DisplayBrightness_StartMaskedTransitions(2,0xfffffff0);
       }
       goto code_r0x0200d17c;
     }
@@ -251,15 +251,15 @@ s32 GamePhaseLoadScene_Update(GamePhaseLoadScene *self)
       goto code_r0x0200d150;
     case 0x17:
 code_r0x0200d160:
-      func_02092c8c(1,0xfffffff0);
+      DisplayBrightness_StartMaskedTransitions(1,0xfffffff0);
       goto code_r0x0200d17c;
     case 0x18:
 code_r0x0200d150:
-      func_02092c8c(3,0x10);
+      DisplayBrightness_StartMaskedTransitions(3,0x10);
       goto code_r0x0200d17c;
     }
 code_r0x0200d170:
-    func_02092c8c(3,0xfffffff0);
+    DisplayBrightness_StartMaskedTransitions(3,0xfffffff0);
 code_r0x0200d17c:
     value = DisplayBrightness_IsMainTransitionComplete();
     if ((value == 0) || (value = DisplayBrightness_IsSubTransitionComplete(), value == 0)) {
@@ -275,7 +275,7 @@ code_r0x0200d17c:
     if (-1 < *(int *)((u8 *)self->loadedScene + 0x20) << 0x1f) {
       return 0;
     }
-    func_02092c8c(3,0);
+    DisplayBrightness_StartMaskedTransitions(3,0);
     self->state++;
     return 0;
   case 3:
@@ -304,7 +304,7 @@ code_r0x0200d17c:
           phaseObjectModeOrFlag = *(u32 *)((u8 *)self->loadedScene + 0x980);
         }
         if (usesAlternateScreenMode && phaseObjectModeOrFlag == 0) {
-          func_02092c8c(1,0xfffffff0);
+          DisplayBrightness_StartMaskedTransitions(1,0xfffffff0);
           goto code_r0x0200dd3c;
         }
       }
@@ -323,15 +323,15 @@ code_r0x0200d17c:
       goto code_r0x0200dce0;
     case 0x17:
 code_r0x0200dcd0:
-      func_02092c8c(1,0xfffffff0);
+      DisplayBrightness_StartMaskedTransitions(1,0xfffffff0);
       goto code_r0x0200dd3c;
     case 0x18:
 code_r0x0200dce0:
-      func_02092c8c(3,0x10);
+      DisplayBrightness_StartMaskedTransitions(3,0x10);
       goto code_r0x0200dd3c;
     }
 code_r0x0200dd30:
-    func_02092c8c(3,0xfffffff0);
+    DisplayBrightness_StartMaskedTransitions(3,0xfffffff0);
 code_r0x0200dd3c:
     self->state++;
     return 0;
@@ -382,7 +382,7 @@ code_r0x0200dd3c:
           GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
           GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,0,1);
           GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
-          func_02092c8c(1,0);
+          DisplayBrightness_StartMaskedTransitions(1,0);
           goto code_r0x0200e2ac;
         }
         goto code_r0x0200e21c;
@@ -407,7 +407,7 @@ code_r0x0200e038:
         GraphicsSpriteRenderer_ClearTextBuffer(*UNK_0200e0f0);
         GamePhaseRuntime_ApplyScreenMode(gGamePhaseRuntime,0,1);
         GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
-        func_02092c8c(1,0);
+        DisplayBrightness_StartMaskedTransitions(1,0);
         goto code_r0x0200e2ac;
       }
 code_r0x0200e21c:
@@ -419,7 +419,7 @@ code_r0x0200e21c:
       GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 1);
       value = GameWork_TestFlag(gGameWork,UNK_0200e3c4);
       if (value == 0) {
-        func_02092c8c(3,0);
+        DisplayBrightness_StartMaskedTransitions(3,0);
       }
       else {
         GameWork_ClearFlag(gGameWork,UNK_0200e3c4);

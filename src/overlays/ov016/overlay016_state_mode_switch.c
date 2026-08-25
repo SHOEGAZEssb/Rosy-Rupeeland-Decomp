@@ -16,7 +16,7 @@ extern s32 GameWork_TestFlag(void *, u32);
 extern void GameWork_ClearFlag(void *, u32);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern s32 func_02095dd4(void *, void *, s32);
 extern void func_ov000_021fc9d4(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
@@ -47,7 +47,7 @@ extern "C" s32 func_ov016_022005c8(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -0x10);
+        DisplayBrightness_StartMaskedTransitions(1, -0x10);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through while the first fade is running. */
@@ -67,7 +67,7 @@ extern "C" s32 func_ov016_022005c8(void *state)
                 FIELD(s32, state, 4)++;
             }
             FIELD(s32, state, 8) = 0;
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
         }
         break;
     case 2:

@@ -6,7 +6,7 @@
     .extern data_020f4e18
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern func_02072048
-    .extern func_02092638
+    .extern TitleDisplay_SetMainBgPriorities
     .extern TitleScreenResourceCollection_Init
     .extern func_020926f8
     .extern func_02092754
@@ -24,7 +24,7 @@ func_ov021_021fe29c:
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     mov r0, #0x0
     ldr lr, L_021fe380
     mov r1, r0

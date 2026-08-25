@@ -9,11 +9,11 @@
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
     .extern func_02072048
-    .extern func_020925dc
-    .extern func_020925f8
-    .extern func_02092618
-    .extern func_02092638
-    .extern func_02092688
+    .extern TitleDisplay_ConfigureSub2dEngine
+    .extern TitleDisplay_ResetMainBgScroll
+    .extern TitleDisplay_ResetSubBgScroll
+    .extern TitleDisplay_SetMainBgPriorities
+    .extern TitleDisplay_SetSubBgPriorities
     .extern TitlePalette_SetSubBackdrop
     .extern func_020af1f8
     .extern func_020b0300
@@ -68,29 +68,29 @@ func_ov017_021ff58c:
     and r0, r0, #0x43
     orr r0, r0, #0x1c00
     strh r0, [r1, #0x0]
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, r5
     mov r1, #0x1
     mov r2, #0x0
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     ldr r2, L_021ff748
     mov r0, #0x0
     mov r1, #0x10
     strh r0, [r2, #0x0]
     str r1, [r4, #0x4c]
-    bl func_020925dc
+    bl TitleDisplay_ConfigureSub2dEngine
     ldr r1, L_021ff74c
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
     orr r0, r0, #0x1e00
     strh r0, [r1, #0x0]
-    bl func_02092618
+    bl TitleDisplay_ResetSubBgScroll
     mov r0, #0x0
     mov r1, #0x1
     mov r2, r5
     mov r3, #0x3
-    bl func_02092688
+    bl TitleDisplay_SetSubBgPriorities
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     ldr r1, L_021ff750

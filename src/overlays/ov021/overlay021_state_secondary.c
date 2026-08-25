@@ -28,7 +28,7 @@ extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095928(void *);
@@ -157,7 +157,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
                             if (category == 1) {
                                 FIELD(s32, state, 0x374) = FIELD(s32, widget, 0x1ac);
                                 FIELD(u32, state, 0x378) = FIELD(u16, selected, 0);
-                                func_02092c8c(1, -16);
+                                DisplayBrightness_StartMaskedTransitions(1, -16);
                                 change_state(state, data_ov021_02202d60);
                             } else if (category == 0) {
                                 change_state(state, data_ov021_02202da8);
@@ -225,7 +225,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
         if (func_ov045_0220b9b8(FIELD(void *, state, 0x3ec)) != 0) {
             void *selected = FIELD(void *, state, 0x380);
             if (FIELD(u16, selected, 4) == 0 || FIELD(s32, state, 0x3d8) != 0) {
-                func_02092c8c(1, -8);
+                DisplayBrightness_StartMaskedTransitions(1, -8);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
@@ -251,7 +251,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
     case 4:
         if (++FIELD(s32, state, 8) > 60) {
             TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -279,7 +279,7 @@ extern "C" s32 func_ov021_02202194(void *state)
     func_ov021_021ff274(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -16);
+        DisplayBrightness_StartMaskedTransitions(1, -16);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
@@ -294,7 +294,7 @@ extern "C" s32 func_ov021_02202194(void *state)
             FIELD(u16, FIELD(void *, state, 0x9c), 0x24) |= 4;
             func_02095928((u8 *)state + 0xa0);
             func_ov021_021fefcc(state);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -320,7 +320,7 @@ extern "C" s32 func_ov021_022022a4(void *state)
     func_ov021_021ff274(state);
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -16);
+        DisplayBrightness_StartMaskedTransitions(1, -16);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
@@ -344,7 +344,7 @@ extern "C" s32 func_ov021_022022a4(void *state)
         else
             Overlay021_RefreshSelectionBackground(state);
         func_ov021_021ff0e0(state, 2);
-        func_02092c8c(1, 0);
+        DisplayBrightness_StartMaskedTransitions(1, 0);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         break;

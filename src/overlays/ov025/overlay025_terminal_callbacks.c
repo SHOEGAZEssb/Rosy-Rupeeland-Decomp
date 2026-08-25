@@ -9,7 +9,7 @@ extern "C" {
 #endif
 extern void func_02092314(void *, s32, s32);
 extern void func_020929f4(void *);
-extern void func_02092a34(void *, s32);
+extern void GraphicsAffineScanlineWave_Apply(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -59,6 +59,6 @@ extern "C" s32 func_ov025_02202bf0(void *scene)
 {
     if (((s32)(FIELD(u32, scene, 0x20) << 21) >> 31) &&
         FIELD(void *, scene, 0x598))
-        func_02092a34((u8 *)scene + 0x5a0, 0);
+        GraphicsAffineScanlineWave_Apply((u8 *)scene + 0x5a0, 0);
     return 0;
 }

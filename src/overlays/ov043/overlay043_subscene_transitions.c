@@ -18,7 +18,7 @@ extern "C" u32 data_ov043_0220c450[];
 extern "C" u32 data_ov043_0220c460[];
 extern "C" u32 data_ov043_0220c468[];
 extern "C" u32 data_ov043_0220c478[];
-extern "C" void func_02092c8c(s32 screen, s32 brightness);
+extern "C" void DisplayBrightness_StartMaskedTransitions(s32 screen, s32 brightness);
 extern "C" s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern "C" void func_ov043_0220bcf4(void *object);
 extern "C" void Overlay043_UpdatePresentationResources(void *object);
@@ -60,7 +60,7 @@ static void restore_menu(void *object)
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     func_ov043_0220ba28(object);
     func_ov043_0220bc2c(object);
-    func_02092c8c(3, 0);
+    DisplayBrightness_StartMaskedTransitions(3, 0);
     advance_state(object);
 }
 
@@ -79,7 +79,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
     switch (FIELD(s32, object, 4)) {
     case 0:
         FIELD(s32, object, 0x294) = 0;
-        func_02092c8c(3, -16);
+        DisplayBrightness_StartMaskedTransitions(3, -16);
         advance_state(object);
         /* fall through */
     case 1:
@@ -101,7 +101,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
                                             FIELD(s32, object, 0x54));
             FIELD(void *, object, 0x2f4) = child;
         }
-        func_02092c8c(3, 0);
+        DisplayBrightness_StartMaskedTransitions(3, 0);
         advance_state(object);
         break;
     case 2:
@@ -111,7 +111,7 @@ extern "C" s32 func_ov043_0220bed4(void *object)
         break;
     case 3:
         if (SceneInputBase_Update(FIELD(void *, object, 0x2f4), 1)) {
-            func_02092c8c(3, -16);
+            DisplayBrightness_StartMaskedTransitions(3, -16);
             advance_state(object);
         }
         break;
@@ -172,7 +172,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
 {
     switch (FIELD(s32, object, 4)) {
     case 0:
-        func_02092c8c(3, -16);
+        DisplayBrightness_StartMaskedTransitions(3, -16);
         advance_state(object);
         /* fall through */
     case 1:
@@ -192,7 +192,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
                                             FIELD(s32, object, 0x54));
             FIELD(void *, object, 0x2f4) = child;
         }
-        func_02092c8c(3, 0);
+        DisplayBrightness_StartMaskedTransitions(3, 0);
         advance_state(object);
         break;
     case 2:
@@ -202,7 +202,7 @@ extern "C" s32 func_ov043_0220c1b0(void *object)
         break;
     case 3:
         if (SceneInputBase_Update(FIELD(void *, object, 0x2f4), 1)) {
-            func_02092c8c(3, -16);
+            DisplayBrightness_StartMaskedTransitions(3, -16);
             advance_state(object);
         }
         break;

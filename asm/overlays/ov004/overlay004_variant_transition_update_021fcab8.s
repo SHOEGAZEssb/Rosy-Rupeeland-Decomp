@@ -1,6 +1,6 @@
     .text
     .extern SceneInputBase_Update
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02092314
     .extern func_ov004_021fb6e4
@@ -52,12 +52,12 @@ L_021fcb0c:
 L_021fcb34:
     mov r0, #0x3
     sub r1, r0, #0x13
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_021fcb50
 L_021fcb44:
     mov r0, #0x3
     mov r1, #0x10
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
 L_021fcb50:
     ldr r1, [r4, #0x4]
     mov r0, #0x0
@@ -117,7 +117,7 @@ L_021fcc18:
     str r0, [r4, #0x54]
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -145,7 +145,7 @@ L_021fcc70:
     beq L_021fcce0
     mov r0, #0x3
     sub r1, r0, #0x13
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

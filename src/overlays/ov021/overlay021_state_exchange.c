@@ -39,7 +39,7 @@ extern void RecordCategory_PublishById(void *, u16);
 extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordDescriptor_SetValue(void *, s32);
 extern void func_02092260(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_02095940(void *);
 extern u32 genrand_int32(void);
@@ -146,7 +146,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
         } else if (result == 12) {
             func_02092260(state, 3);
             if (FIELD(s32, state, 0x3e0) != 0) {
-                func_02092c8c(1, -8);
+                DisplayBrightness_StartMaskedTransitions(1, -8);
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 func_ov021_021ff1d0(
                     state, RecordDescriptor_GetMessage(FIELD(void *, state, 0x2bc), 2));
@@ -197,7 +197,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -8);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
@@ -272,7 +272,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
     case 11:
         if (func_ov045_0220b9b8(FIELD(void *, state, 0x3ec)) != 0 &&
             func_ov045_0220bc34(FIELD(void *, state, 0x3ec)) == 0) {
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             FIELD(s32, state, 4) = 30;
             FIELD(s32, state, 8) = 0;
         }
@@ -300,7 +300,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
                 func_ov021_021fee54(state);
                 if (func_ov021_021fd1b8(FIELD(void *, state, 0x2bc)) == 1) {
                     FIELD(s32, state, 0x3e0) = 0;
-                    func_02092c8c(1, -8);
+                    DisplayBrightness_StartMaskedTransitions(1, -8);
                     change_state(state, data_ov021_02202e40);
                 } else {
                     if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
@@ -329,7 +329,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -16);
+        DisplayBrightness_StartMaskedTransitions(1, -16);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through. */
@@ -350,7 +350,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
                 func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
                 func_ov021_021fd490(FIELD(void *, state, 0x2c0));
                 func_ov021_021fee54(state);
-                func_02092c8c(1, 0);
+                DisplayBrightness_StartMaskedTransitions(1, 0);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             }
@@ -397,7 +397,7 @@ extern "C" s32 func_ov021_022012f0(void *state)
     case 2:
         func_ov021_021fe390(state);
         func_ov021_021ff0e0(state, 2);
-        func_02092c8c(1, 0);
+        DisplayBrightness_StartMaskedTransitions(1, 0);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         break;

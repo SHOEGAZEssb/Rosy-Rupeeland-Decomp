@@ -16,9 +16,9 @@
  * is returned. Packed values are confirmed hardware encodings.
  */
 extern "C" const s16 gFx32CosSinTable[];
-extern "C" void func_020925f8(void);
-extern "C" void func_02092638(s32, s32, s32, s32);
-extern "C" void func_02092688(s32, s32, s32, s32);
+extern "C" void TitleDisplay_ResetMainBgScroll(void);
+extern "C" void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
+extern "C" void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern "C" void func_020afd28(volatile void *, const void *, s32, s32, s32,
                                s32);
 extern "C" void func_020b0348(void *);
@@ -45,8 +45,8 @@ extern "C" void func_ov048_0220b7b8(void *object)
     func_020b0348(bytes + 0x404);
     func_ov048_0220b9a0(0);
     GX_SetGraphicsMode(1, 0, 1);
-    func_020925f8();
-    func_02092638(1, 0, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(1, 0, 2, 3);
     *(volatile u16 *)0x04000050 = 0;
     GXS_SetGraphicsMode(5);
 
@@ -71,7 +71,7 @@ extern "C" void func_ov048_0220b7b8(void *object)
     func_020b4554(bytes + 4, 0x400);
     func_020b44e8();
     func_020b1e5c(bytes + 4, 0, 0x400);
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
     *(volatile u32 *)0x04000540 = 2;
     *(volatile u32 *)0x04000580 = 0xbfff0000;
 }

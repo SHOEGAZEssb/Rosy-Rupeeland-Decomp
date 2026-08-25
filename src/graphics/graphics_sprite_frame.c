@@ -37,7 +37,7 @@ typedef struct SpriteFrameResource {
 extern "C" {
 #endif
 
-extern void func_02070d74(SpriteFrameResource *resource);
+extern void GraphicsSpriteAnimationResource_Prepare(SpriteFrameResource *resource);
 
 #ifdef __cplusplus
 }
@@ -65,7 +65,7 @@ void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state)
     s32 frameIndex;
 
     if (resource->field_14 == 0) {
-        func_02070d74(resource);
+        GraphicsSpriteAnimationResource_Prepare(resource);
     }
     if ((state->resourceControlFlags & 2) != 0 ||
         (state->flags & 0x35) != 0) {
@@ -124,7 +124,7 @@ asm void GraphicsSpriteState_AdvanceAnimation(GraphicsSpriteState *state)
     ldr r1, [r0, #0x14]
     cmp r1, #0
     bne sprite_advance_loaded
-    bl func_02070d74
+    bl GraphicsSpriteAnimationResource_Prepare
 sprite_advance_loaded:
     ldrb r0, [r4, #0x3b]
     and r0, r0, #2
@@ -223,7 +223,7 @@ u16 GraphicsSpriteState_GetCurrentCellCount(GraphicsSpriteState *state)
     SpriteFrameTiming *frame;
 
     if (resource->field_14 == 0) {
-        func_02070d74(resource);
+        GraphicsSpriteAnimationResource_Prepare(resource);
     }
     sequence = &resource->sequences[state->animationIndex];
     frame = &resource->frames[sequence->firstFrame + state->frameIndex];
@@ -239,7 +239,7 @@ asm u16 GraphicsSpriteState_GetCurrentCellCount(GraphicsSpriteState *state)
     ldr r1, [r0, #0x14]
     cmp r1, #0
     bne sprite_get_frame_loaded
-    bl func_02070d74
+    bl GraphicsSpriteAnimationResource_Prepare
 sprite_get_frame_loaded:
     ldr r3, [r4, #0x1c]
     ldrb r1, [r4, #0x38]

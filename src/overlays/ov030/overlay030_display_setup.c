@@ -9,12 +9,12 @@ extern void *data_020f4e14[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_020925a4(s32, s32);
-extern void func_020925f8(void);
-extern void func_02092638(s32, s32, s32, s32);
-extern void func_020925dc(s32);
-extern void func_02092618(void);
-extern void func_02092688(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureMain2dEngine(s32, s32);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureSub2dEngine(s32);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void func_ov030_021fe3e0(s32, s32, s32, s32, s32);
 extern void func_ov030_021fe414(s32, s32, s32, s32, s32);
@@ -33,22 +33,22 @@ extern "C" void func_ov030_021fe2b4(void *scene)
 {
     *(volatile u16 *)0x04000304 &= (u16)~0x8000;
     FIELD(s32, scene, 0x48) = 0x1c;
-    func_020925a4(0, 0x1c);
+    TitleDisplay_ConfigureMain2dEngine(0, 0x1c);
     func_ov030_021fe3e0(0, 1, 0x18, 4, 1);
     func_ov030_021fe414(2, 1, 0x1a, 4, 1);
     volatile u16 *mainBg2 = (volatile u16 *)0x0400000c;
     mainBg2[0] = (mainBg2[0] & 0x43) | 0x1e00;
     mainBg2[1] = (mainBg2[1] & 0x43) | 0x1e00;
-    func_020925f8();
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
 
     FIELD(s32, scene, 0x4c) = 0x1c;
-    func_020925dc(0);
+    TitleDisplay_ConfigureSub2dEngine(0);
     volatile u16 *subBg2 = (volatile u16 *)0x0400100c;
     subBg2[0] = (subBg2[0] & 0x43) | 0x1e00;
     subBg2[1] = (subBg2[1] & 0x43) | 0x1e00;
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 
     void *configuration = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14[0]);
     FIELD(u16, configuration, 6) = FIELD(u16, configuration, 0x16);

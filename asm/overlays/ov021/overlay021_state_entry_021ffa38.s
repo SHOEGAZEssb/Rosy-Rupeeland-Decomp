@@ -6,7 +6,7 @@
     .extern data_ov021_02202f28
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern func_02092260
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern func_02095860
     .extern func_02095928
@@ -118,7 +118,7 @@ L_021ffb4c:
     mov r0, #0x1
     str r7, [r8, #0x2c4]
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r8, #0x2c4]
     cmp r0, #0x1
     mov r0, r8
@@ -173,7 +173,7 @@ L_021ffc1c:
     bl func_ov021_021fee54
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r8, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

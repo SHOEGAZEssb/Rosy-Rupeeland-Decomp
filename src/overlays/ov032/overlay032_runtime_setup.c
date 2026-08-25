@@ -42,10 +42,10 @@ extern void GX_SetGraphicsMode(...);
 extern void GXS_SetGraphicsMode(...);
 extern void func_020af1f8(...);
 extern void func_020aea7c(...);
-extern void func_020925f8(void);
-extern void func_02092618(void);
-extern void func_02092638(...);
-extern void func_02092688(...);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(...);
+extern void TitleDisplay_SetSubBgPriorities(...);
 extern void func_020b44e8(void);
 extern void func_02070638(...);
 extern void func_020706c4(...);
@@ -181,8 +181,8 @@ extern "C" void Overlay032Scene_SetupGraphics(void *scene)
     REG16(0x0400000a) = (REG16(0x0400000a) & 0x43) | 0x3a00;
     REG16(0x0400000c) = (REG16(0x0400000c) & 0x43) | 0x1c00;
     REG16(0x0400000e) = (REG16(0x0400000e) & 0x43) | 0x5e90;
-    func_020925f8();
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
 
     REG32(0x04001000) = (REG32(0x04001000) & ~0x1f00) | 0x1e00;
     GXS_SetGraphicsMode(0);
@@ -190,8 +190,8 @@ extern "C" void Overlay032Scene_SetupGraphics(void *scene)
     REG16(0x0400100a) = (REG16(0x0400100a) & 0x43) | 0x3a00;
     REG16(0x0400100c) = (REG16(0x0400100c) & 0x43) | 0x1c10;
     REG16(0x0400100e) = (REG16(0x0400100e) & 0x43) | 0x1e98;
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 
     GraphicsResourceSet_Init(&set);
     load_text_resources(&set, 0xa064, 0xa065, 0xa066, 0, 0x6000);

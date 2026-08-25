@@ -7,9 +7,9 @@
 .extern func_02070b50
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern func_02072048
-.extern func_020925a4
-.extern func_020925f8
-.extern func_02092638
+.extern TitleDisplay_ConfigureMain2dEngine
+.extern TitleDisplay_ResetMainBgScroll
+.extern TitleDisplay_SetMainBgPriorities
 .extern TitlePalette_SetMainBackdrop
 .extern func_020afce8
 .extern func_020b44e8
@@ -30,7 +30,7 @@ func_ov024_021fd2f8:
     bic r2, r2, #0x8000
     strh r2, [r3, #0x0]
     str r1, [r4, #0x48]
-    bl func_020925a4
+    bl TitleDisplay_ConfigureMain2dEngine
     ldr r1, L_021fd82c
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
@@ -52,12 +52,12 @@ func_ov024_021fd2f8:
     orr r0, r0, #0x14
     orr r0, r0, #0xc00
     strh r0, [r1, #0x6]
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, #0x2
     mov r1, r0
     mov r2, r0
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     mov r2, #0x4000000
     ldr r1, [r2, #0x0]
     add r0, r2, #0x50

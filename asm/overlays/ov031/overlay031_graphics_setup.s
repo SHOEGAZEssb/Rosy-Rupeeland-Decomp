@@ -6,9 +6,9 @@
 .extern func_02070bc4
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsResourceSet_ReleaseHandles
-.extern func_020925dc
-.extern func_02092618
-.extern func_02092688
+.extern TitleDisplay_ConfigureSub2dEngine
+.extern TitleDisplay_ResetSubBgScroll
+.extern TitleDisplay_SetSubBgPriorities
 .extern func_020b44e8
 .extern func_ov031_021fe148
 .extern GraphicsResourceSet_Destroy
@@ -23,7 +23,7 @@ func_ov031_021fdfa8:
     mov r1, #0x17
     str r1, [r0, #0x4c]
     mov r0, #0x0
-    bl func_020925dc
+    bl TitleDisplay_ConfigureSub2dEngine
     mov r0, #0x0
     mov ip, #0x1
     mov r1, r0
@@ -42,12 +42,12 @@ func_ov031_021fdfa8:
     orr r0, r0, #0x298
     orr r0, r0, #0x1c00
     strh r0, [r1, #0x2]
-    bl func_02092618
+    bl TitleDisplay_ResetSubBgScroll
     mov r0, #0x0
     mov r1, #0x2
     mov r2, #0x1
     mov r3, #0x3
-    bl func_02092688
+    bl TitleDisplay_SetSubBgPriorities
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     ldr r3, L_021fe138

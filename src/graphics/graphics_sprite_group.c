@@ -25,11 +25,11 @@ extern "C" {
 extern GraphicsSpriteStatePool gGraphicsSpriteStatePool;
 extern GraphicsSpriteState gGraphicsSpriteStates[];
 extern void GraphicsSpriteResource_ReleaseTexture(void *resource);
-extern void func_02070418(void *resource);
+extern void GraphicsSpriteGraphicsResource_Prepare(void *resource);
 extern void func_02070830(void *resource);
 extern void GraphicsSpriteResource_Prepare(void *resource);
 extern void func_02070d38(void *resource);
-extern void func_02070d74(void *resource);
+extern void GraphicsSpriteAnimationResource_Prepare(void *resource);
 extern GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
     void *owner, void *graphicsResource, void *paletteResource,
     void *animationResource, u8 graphicsBindingMode,
@@ -76,9 +76,9 @@ void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state)
  */
 void GraphicsSpriteState_PrepareResources(GraphicsSpriteState *state)
 {
-    func_02070418(state->graphicsResource);
+    GraphicsSpriteGraphicsResource_Prepare(state->graphicsResource);
     GraphicsSpriteResource_Prepare(state->paletteResource);
-    func_02070d74(state->animationResource);
+    GraphicsSpriteAnimationResource_Prepare(state->animationResource);
 }
 
 /*

@@ -1,0 +1,16 @@
+{
+  "func_02070418": "GraphicsSpriteGraphicsResource_Prepare",
+  "func_02070d74": "GraphicsSpriteAnimationResource_Prepare",
+  "func_020925a4": "TitleDisplay_ConfigureMain2dEngine",
+  "func_020925dc": "TitleDisplay_ConfigureSub2dEngine",
+  "func_020925f8": "TitleDisplay_ResetMainBgScroll",
+  "func_02092618": "TitleDisplay_ResetSubBgScroll",
+  "func_02092638": "TitleDisplay_SetMainBgPriorities",
+  "func_02092688": "TitleDisplay_SetSubBgPriorities",
+  "func_02092a34": "GraphicsAffineScanlineWave_Apply",
+  "func_02092c38": "DisplayBrightness_StartScreenTransition",
+  "func_02092c8c": "DisplayBrightness_StartMaskedTransitions",
+  "func_0209b454": "G3Command_SetTexturePaletteBase",
+  "func_0209bcb0": "G3Command_SubmitTexCoord",
+  "func_0209bce4": "G3Command_SubmitVertex16"
+}

@@ -15,9 +15,9 @@
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_020925a4
-    .extern func_020925f8
-    .extern func_02092638
+    .extern TitleDisplay_ConfigureMain2dEngine
+    .extern TitleDisplay_ResetMainBgScroll
+    .extern TitleDisplay_SetMainBgPriorities
     .extern PresentationScalar_SetImmediate
     .extern PresentationScalar_TransitionTo
     .extern SpritePresentation_Hide
@@ -445,7 +445,7 @@ L_021fd918:
     mov r1, #0x18
     mov r0, #0x0
     str r1, [r4, #0x48]
-    bl func_020925a4
+    bl TitleDisplay_ConfigureMain2dEngine
     ldr r1, L_021fda18
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
@@ -456,12 +456,12 @@ L_021fd918:
     orr r0, r0, #0xe10
     orr r0, r0, #0x1000
     strh r0, [r1, #0x4]
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, #0x0
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     add r0, sp, #0x10
     bl GraphicsResourceSet_Init
     ldr r1, L_021fda1c

@@ -23,7 +23,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 ActorDescriptorState_FindInactiveQuantity(void *, u16);
 extern s32 func_0206fb18(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void func_02092260(void *, s32);
 extern void PresentationList_DeleteAll(void *);
 extern s32 func_02096450(void *, void *, void *, s32, s32);
@@ -96,7 +96,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -0x10);
+        DisplayBrightness_StartMaskedTransitions(1, -0x10);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through while fading out. */
@@ -109,7 +109,7 @@ extern "C" s32 func_ov016_022010c0(void *state)
             func_ov016_021ff094(state);
             func_ov016_021fd3f8(FIELD(void *, state, 0x444));
             func_ov016_021ffba4(state);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }

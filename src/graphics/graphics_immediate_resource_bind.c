@@ -8,7 +8,7 @@ extern "C" {
 
 extern void func_0209b414(u32 format, u32 generation, u32 sizeS, u32 sizeT,
                           u32 repeatS, u32 repeatT, u32 flip, u32 address);
-extern void func_0209b454(u32 address, u32 format);
+extern void G3Command_SetTexturePaletteBase(u32 address, u32 format);
 extern void func_0209b560(u32 light, u32 polygonMode, u32 cullMode,
                           u32 polygonId, u32 alpha, u32 misc);
 
@@ -30,7 +30,7 @@ void func_0209b494(void *context, s32 resource, s32 polygonMisc)
                       *(const u32 *)(bytes + 0x244 + offset),
                       3, 0, 1,
                       *(const u32 *)(bytes + 0x31c + offset));
-        func_0209b454(*(const u32 *)(bytes + 0x3f4 + offset), format);
+        G3Command_SetTexturePaletteBase(*(const u32 *)(bytes + 0x3f4 + offset), format);
         func_0209b560(0, 0, 3, 0, 0x1f, (u32)polygonMisc);
     } else {
         func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);

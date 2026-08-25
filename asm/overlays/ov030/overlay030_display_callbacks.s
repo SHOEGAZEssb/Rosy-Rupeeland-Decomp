@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov030/overlay030_display_callbacks.c for documented portable C. */
 .extern func_020929f4
-.extern func_02092a34
+.extern GraphicsAffineScanlineWave_Apply
 
 
     .global func_ov030_021fe218
@@ -47,7 +47,7 @@ func_ov030_021fe28c:
     beq L_021fe2ac
     add r0, r0, #0x364
     mov r1, #0x0
-    bl func_02092a34
+    bl GraphicsAffineScanlineWave_Apply
 L_021fe2ac:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

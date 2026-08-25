@@ -38,9 +38,9 @@ extern void GamePhaseMetadata_IsAreaBehaviorPermitted(void *);
 extern void func_ov013_021fda28(void *, s32);
 extern void func_ov013_021fdb50(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
-extern void func_020925a4(s32);
-extern void func_020925f8(void);
-extern void func_02092638(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureMain2dEngine(s32);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void GraphicsResourceSet_Init(Overlay013ResourceSet *);
 extern void GraphicsResourceSet_Load(Overlay013ResourceSet *, void *, s32,
                                      s32, s32);
@@ -179,11 +179,11 @@ void func_ov013_021fd310(void *state)
     if (FIELD(s32, state, 0x97c) == 0)
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     FIELD(s32, state, 0x48) = 0x18;
-    func_020925a4(0);
+    TitleDisplay_ConfigureMain2dEngine(0);
     *bg0cnt = (*bg0cnt & 0x43) | 0x3c00;
     bg0cnt[2] = (bg0cnt[2] & 0x43) | 0x1e10;
-    func_020925f8();
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
 
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18,

@@ -24,8 +24,8 @@ extern void func_0209b414(u32 format, u32 generation, u32 sizeS, u32 sizeT,
 extern void func_0209b494(void *context, s32 resource, s32 polygonId);
 extern void func_0209b560(u32 light, u32 polygonMode, u32 cullMode,
                           u32 polygonId, u32 alpha, u32 misc);
-extern void func_0209bcb0(s32 s, s32 t);
-extern void func_0209bce4(s32 x, s32 y, s32 z);
+extern void G3Command_SubmitTexCoord(s32 s, s32 t);
+extern void G3Command_SubmitVertex16(s32 x, s32 y, s32 z);
 extern void func_020b0808(s32 sine, s32 cosine);
 extern void func_020b0a54(s32 left, s32 right, s32 bottom, s32 top,
                           s32 nearPlane, s32 farPlane, s32 scale,
@@ -131,19 +131,19 @@ void func_0209c430(void *context, const VecFx32Object *position,
     TingleNativeG3_Color(color);
 #endif
 
-    func_0209bcb0(textureBounds[0], textureBounds[1]);
-    func_0209bce4((s16)region[0], (s16)region[1], (s16)parameter);
-    func_0209bcb0(textureBounds[0], textureBounds[3]);
+    G3Command_SubmitTexCoord(textureBounds[0], textureBounds[1]);
+    G3Command_SubmitVertex16((s16)region[0], (s16)region[1], (s16)parameter);
+    G3Command_SubmitTexCoord(textureBounds[0], textureBounds[3]);
     REG_G3_VTX_XY = PackSignedXY((s16)region[0], (s16)region[3]);
 #ifndef MATCHING
     TingleNativeG3_VertexXY(PackSignedXY((s16)region[0], (s16)region[3]));
 #endif
-    func_0209bcb0(textureBounds[2], textureBounds[3]);
+    G3Command_SubmitTexCoord(textureBounds[2], textureBounds[3]);
     REG_G3_VTX_XY = PackSignedXY((s16)region[2], (s16)region[3]);
 #ifndef MATCHING
     TingleNativeG3_VertexXY(PackSignedXY((s16)region[2], (s16)region[3]));
 #endif
-    func_0209bcb0(textureBounds[2], textureBounds[1]);
+    G3Command_SubmitTexCoord(textureBounds[2], textureBounds[1]);
     REG_G3_VTX_XY = PackSignedXY((s16)region[2], (s16)region[1]);
 #ifndef MATCHING
     TingleNativeG3_VertexXY(PackSignedXY((s16)region[2], (s16)region[1]));
@@ -209,7 +209,7 @@ void func_0209c614(void *context, const VecFx32Object *position,
     for (triangle = (s32)lastTriangle; triangle >= 0; --triangle) {
         const s32 *vertices = triangles + triangle * 6;
 
-        func_0209bce4((s16)vertices[0], (s16)vertices[1],
+        G3Command_SubmitVertex16((s16)vertices[0], (s16)vertices[1],
                       (s16)parameter);
         REG_G3_VTX_XY = PackSignedXY((s16)vertices[2],
                                      (s16)vertices[3]);

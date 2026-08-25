@@ -22,7 +22,7 @@ extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GamePhaseCurrencyHud_AddCurrency(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern void func_ov002_021fbe68(void *);
@@ -169,7 +169,7 @@ extern "C" s32 func_ov029_021fe870(void *state)
                 FIELD(Destructor *, result, 0)[1](result);
             }
             FIELD(void *, state, 0xa0) = 0;
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             Overlay029_NextPhase(state);
         }
         break;

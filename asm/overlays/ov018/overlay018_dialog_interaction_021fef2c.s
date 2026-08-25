@@ -5,7 +5,7 @@
     .extern func_02091c7c
     .extern func_02091cf0
     .extern func_020922b0
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern func_ov003_021fb7ec
     .extern func_ov018_021fcf40
@@ -37,7 +37,7 @@ L_021fef44: ; jump table
 L_021fef64:
     mov r0, #0x2
     sub r1, r0, #0xa
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_021ff1a4
     mov r0, r4
     bl func_ov018_021fda10
@@ -55,7 +55,7 @@ L_021fef90:
     bl TitleDialog_ClearTextRect
     mov r0, #0x2
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -111,7 +111,7 @@ L_021ff060:
     bne L_021ff0c4
     mov r0, #0x2
     sub r1, r0, #0xa
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x420]
     cmp r0, #0x1
     bne L_021ff0a0
@@ -145,7 +145,7 @@ L_021ff0dc:
     bl TitleDialog_ClearTextRect
     mov r0, #0x2
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

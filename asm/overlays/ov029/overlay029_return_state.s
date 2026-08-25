@@ -10,7 +10,7 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern func_02092260
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern PresentationScalar_TransitionTo
 .extern func_ov002_021fbe68
@@ -170,7 +170,7 @@ L_021fea70:
     mov r1, #0x0
     str r1, [r4, #0xa0]
     mov r0, #0x1
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

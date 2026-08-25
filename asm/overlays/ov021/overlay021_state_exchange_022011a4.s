@@ -4,7 +4,7 @@
     .extern data_ov021_02202e28
     .extern data_ov021_02202e30
     .extern DisplayBrightness_IsMainTransitionComplete
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov021_021fd1cc
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
@@ -31,7 +31,7 @@ func_ov021_022011a4:
 L_022011cc:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -82,7 +82,7 @@ L_02201264:
     bl func_ov021_021fee54
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

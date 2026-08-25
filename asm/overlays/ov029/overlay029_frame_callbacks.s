@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov029/overlay029_frame_callbacks.c. */
 .extern func_020929f4
-.extern func_02092a34
+.extern GraphicsAffineScanlineWave_Apply
 
 
     .global func_ov029_021fd3d4
@@ -44,7 +44,7 @@ func_ov029_021fd43c:
     beq L_021fd45c
     add r0, r0, #0xec
     mov r1, #0x0
-    bl func_02092a34
+    bl GraphicsAffineScanlineWave_Apply
 L_021fd45c:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

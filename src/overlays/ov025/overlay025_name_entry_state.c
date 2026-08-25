@@ -60,7 +60,7 @@ extern void func_020922f0(void *, s32);
 extern void func_02092314(void *, s32, s32);
 extern void func_020927b8(void *);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, void *);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_SetText(void *, void *, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern s32 func_02095860(void *, void *, s32, s32);
@@ -126,7 +126,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
     switch (FIELD(s32, scene, 4)) {
     case 0:
         func_02092314(scene, 0xe2, 0x10);
-        func_02092c8c(3, -0x10);
+        DisplayBrightness_StartMaskedTransitions(3, -0x10);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Fade setup intentionally falls through to resource initialization. */
@@ -156,7 +156,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_02095988((u8 *)scene + 0xf0, 0x2d);
             func_02095928((u8 *)scene + 0xf0);
             func_02095928((u8 *)scene + 0x248);
-            func_02092c8c(3, 0);
+            DisplayBrightness_StartMaskedTransitions(3, 0);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }
@@ -179,7 +179,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
                     void *font = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x28);
                     TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);
-                    func_02092c8c(1, -8);
+                    DisplayBrightness_StartMaskedTransitions(1, -8);
                     FIELD(s32, scene, 4) = 30;
                     FIELD(s32, scene, 8) = 0;
                     goto maintained_return;
@@ -198,7 +198,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
                                  (u8 *)scene + 0x30, 0, 4)) {
             FIELD(s32, FIELD(void *, scene, 0x598), 0x17c) = 0;
             func_02092260(scene, 3);
-            func_02092c8c(3, -0x10);
+            DisplayBrightness_StartMaskedTransitions(3, -0x10);
             func_02092314(scene, 0xe8, 0x10);
             FIELD(s32, scene, 4) = 20;
             FIELD(s32, scene, 8) = 0;
@@ -447,7 +447,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
     case 13:
         if (func_02095dd4(FIELD(void *, scene, 0x59c), (u8 *)scene + 0x30,
                           (s32)(FIELD(u32, scene, 0x20) << 26) >> 31) >= 0) {
-            func_02092c8c(3, -0x10);
+            DisplayBrightness_StartMaskedTransitions(3, -0x10);
             FIELD(s32, scene, 4) = 20;
             FIELD(s32, scene, 8) = 0;
         }
@@ -513,7 +513,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
             func_02095940((u8 *)scene + 0xf0);
             func_02095940((u8 *)scene + 0x248);
             func_ov025_02200014(scene);
-            func_02092c8c(3, 0);
+            DisplayBrightness_StartMaskedTransitions(3, 0);
             func_020922f0(scene, 0xe2);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
@@ -527,7 +527,7 @@ extern "C" s32 func_ov025_02201f28(void *scene)
         break;
     case 30:
         if (func_ov025_02200940(scene) && DisplayBrightness_IsMainTransitionComplete()) {
-            func_02092c8c(3, 0);
+            DisplayBrightness_StartMaskedTransitions(3, 0);
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
             void *font = LanguageLookupDatabase_GetResourceById(data_021f3ecc, 0x6b);
             TitleDialog_SetText(FIELD(void *, scene, 0x50c), font, 3);

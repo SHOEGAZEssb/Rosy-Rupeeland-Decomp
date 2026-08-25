@@ -21,9 +21,9 @@ typedef struct Overlay038GraphicsResourceSet {
 extern "C" {
 #endif
 extern void *data_020f4e18;
-extern void func_020925a4(s32 layer);
-extern void func_020925f8(void);
-extern void func_02092638(s32 first, s32 second, s32 third, s32 fourth);
+extern void TitleDisplay_ConfigureMain2dEngine(s32 layer);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32 first, s32 second, s32 third, s32 fourth);
 extern void GraphicsResourceSet_Init(Overlay038GraphicsResourceSet *set);
 extern void GraphicsResourceSet_Load(Overlay038GraphicsResourceSet *set,
                                      void *archive, s32 first, s32 second,
@@ -54,12 +54,12 @@ extern "C" void func_ov038_021fd210(Overlay038DisplayState *state)
 
     *displayControl &= (u16)~0x8000;
     state->layer_048 = 0x1b;
-    func_020925a4(0);
+    TitleDisplay_ConfigureMain2dEngine(0);
     backgroundControl[0] = (backgroundControl[0] & 0x43) | 0x3800;
     backgroundControl[1] = (backgroundControl[1] & 0x43) | 0x3a00;
     backgroundControl[3] = (backgroundControl[3] & 0x43) | 0x1e00;
-    func_020925f8();
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
 }
 
 /*

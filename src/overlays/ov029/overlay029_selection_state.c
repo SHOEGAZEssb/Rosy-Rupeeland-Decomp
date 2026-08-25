@@ -19,7 +19,7 @@ extern u32 genrand_int32(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void func_02092260(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_ov002_021fbb68(void *, const void *);
 extern s32 func_ov002_021fbc54(void *);
@@ -120,7 +120,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
             if (mode == 4) {
                 func_ov029_021fd7a8(state, 2);
                 Overlay029_ResetPhase(state, 10);
-                func_02092c8c(1, -8);
+                DisplayBrightness_StartMaskedTransitions(1, -8);
             } else if (mode <= 1) {
                 func_02092260(state, 9);
                 Overlay029_ResetPhase(state, 0);
@@ -137,7 +137,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
                 func_02092260(state, 3);
                 FIELD(s32, state, 0xac) = 0;
                 FIELD(s32, state, 0x6c) = 0;
-                func_02092c8c(1, -8);
+                DisplayBrightness_StartMaskedTransitions(1, -8);
                 Overlay029_SetPair(state, data_ov029_021fecb8);
             }
         }
@@ -156,7 +156,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
         break;
     case 11:
         if (func_ov029_021fd850(state) != 0) {
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             Overlay029_ResetPhase(state, 0);
         }
         break;

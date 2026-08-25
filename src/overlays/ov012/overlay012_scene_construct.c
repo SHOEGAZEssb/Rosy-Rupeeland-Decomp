@@ -38,7 +38,7 @@ extern void func_ov012_021fd5ac(void *);
 extern void func_ov012_021fd004(u32);
 extern void GX_DispOn(void);
 extern void GX_SetGraphicsMode(s32, s32, s32);
-extern void func_02092638(s32, s32, s32, s32);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void func_ov012_021fd020(u32);
 extern void func_ov012_021fd044(s32);
 extern void func_ov012_021fd080(s32);
@@ -117,7 +117,7 @@ void *func_ov012_021fd170(void *state)
     func_ov012_021fd004(0);
     GX_DispOn();
     GX_SetGraphicsMode(1, 0, 1);
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     FIELD(s32, state, 0x70) = 0x10;
     *(volatile u32 *)0x04001000 |= 0x10000;
     func_ov012_021fd020(0);

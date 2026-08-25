@@ -5,7 +5,7 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_02092260
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov002_021fbdc0
     .extern func_ov002_021fbe08
     .extern func_ov002_021fbe60
@@ -100,7 +100,7 @@ L_02200928:
 L_02200944:
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x390]
     bl func_ov002_021fbdc0
     ldr r1, [r4, #0x4]

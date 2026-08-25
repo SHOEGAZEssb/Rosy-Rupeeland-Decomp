@@ -8,7 +8,7 @@
 .extern OverlaySlot_Destroy
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible

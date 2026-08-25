@@ -22,7 +22,7 @@ extern void func_020aea7c(u32 banks);
 
 /* Configure the main engine for 2D mode, assign bank B to BG and banks F/G to
  * BG extended palettes, then clear the main BG block selector. */
-void func_020925a4(s32 backgroundMode)
+void TitleDisplay_ConfigureMain2dEngine(s32 backgroundMode)
 {
     GX_SetGraphicsMode(1, backgroundMode, 0);
     GX_SetBankForBG(2);
@@ -32,7 +32,7 @@ void func_020925a4(s32 backgroundMode)
 
 /* Configure the sub engine, assign bank C to BG and bank H to its extended
  * palettes. The caller supplies the SDK sub-engine background mode. */
-void func_020925dc(s32 backgroundMode)
+void TitleDisplay_ConfigureSub2dEngine(s32 backgroundMode)
 {
     GXS_SetGraphicsMode(backgroundMode);
     GX_SetBankForSubBG(4);
@@ -40,7 +40,7 @@ void func_020925dc(s32 backgroundMode)
 }
 
 /* Zero all four main-engine BG horizontal/vertical scroll register pairs. */
-void func_020925f8(void)
+void TitleDisplay_ResetMainBgScroll(void)
 {
     volatile u32 *scroll = (volatile u32 *)0x04000010;
 
@@ -51,7 +51,7 @@ void func_020925f8(void)
 }
 
 /* Zero all four sub-engine BG horizontal/vertical scroll register pairs. */
-void func_02092618(void)
+void TitleDisplay_ResetSubBgScroll(void)
 {
     volatile u32 *scroll = (volatile u32 *)0x04001010;
 
@@ -62,7 +62,7 @@ void func_02092618(void)
 }
 
 /* Replace only the two priority bits in the four main-engine BG controls. */
-void func_02092638(s32 bg0, s32 bg1, s32 bg2, s32 bg3)
+void TitleDisplay_SetMainBgPriorities(s32 bg0, s32 bg1, s32 bg2, s32 bg3)
 {
     volatile u16 *control = (volatile u16 *)0x04000008;
 
@@ -73,7 +73,7 @@ void func_02092638(s32 bg0, s32 bg1, s32 bg2, s32 bg3)
 }
 
 /* Replace only the two priority bits in the four sub-engine BG controls. */
-void func_02092688(s32 bg0, s32 bg1, s32 bg2, s32 bg3)
+void TitleDisplay_SetSubBgPriorities(s32 bg0, s32 bg1, s32 bg2, s32 bg3)
 {
     volatile u16 *control = (volatile u16 *)0x04001008;
 

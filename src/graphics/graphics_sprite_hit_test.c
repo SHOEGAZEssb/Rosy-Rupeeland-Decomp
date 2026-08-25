@@ -52,8 +52,8 @@ typedef struct SpriteTouchPoint {
 } SpriteTouchPoint;
 
 extern const s16 gFx32CosSinTable[];
-extern void func_02070418(void *resource);
-extern void func_02070d74(void *resource);
+extern void GraphicsSpriteGraphicsResource_Prepare(void *resource);
+extern void GraphicsSpriteAnimationResource_Prepare(void *resource);
 
 /* Convert a signed 20.12 intermediate to integer with truncation toward zero. */
 static s32 Fixed12ToInteger(s32 value)
@@ -134,9 +134,9 @@ s32 GraphicsSpriteState_HitTestOpaquePixel(GraphicsSpriteState *state, s32 point
         pointY = centerY + ((pointY - centerY) << 8) / state->scaleY;
 
     if (graphics->prepared == 0)
-        func_02070418(graphics);
+        GraphicsSpriteGraphicsResource_Prepare(graphics);
     if (animation->prepared == 0)
-        func_02070d74(animation);
+        GraphicsSpriteAnimationResource_Prepare(animation);
     sequence = &animation->sequences[state->animationIndex];
     timing = &animation->frames[sequence->firstFrame + state->frameIndex];
     frame = &animation->cellFrames[timing->resourceIndex];

@@ -25,7 +25,7 @@ extern s16 data_020c92cc[];
  * and BG2Y values. Flag bit 0 suppresses main-engine writes and bit 1
  * suppresses sub-engine writes. Lines outside the 192-line LCD are ignored.
  */
-void func_02092a34(const GraphicsAffineScanlineWave *wave, u32 flags)
+void GraphicsAffineScanlineWave_Apply(const GraphicsAffineScanlineWave *wave, u32 flags)
 {
     volatile u16 *vcount = (volatile u16 *)0x04000006;
     u32 index;

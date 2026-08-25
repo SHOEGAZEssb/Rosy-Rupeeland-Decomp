@@ -29,7 +29,7 @@ extern const u8 data_ov004_021fcde4[];
 extern const s32 data_ov004_021fcd28[2];
 extern const s32 data_ov004_021fcd58[2];
 extern s32 SceneInputBase_Update(void *object, s32 active);
-extern void func_02092c8c(s32 channel, s32 value);
+extern void DisplayBrightness_StartMaskedTransitions(s32 channel, s32 value);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02092314(void *state, s32 callbackId, s32 value);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
@@ -87,9 +87,9 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
     case 1:
         if (SceneInputBase_Update(state->helper_054, 1)) {
             if (state->variant_058 < 1 || state->variant_058 > 10) {
-                func_02092c8c(3, -16);
+                DisplayBrightness_StartMaskedTransitions(3, -16);
             } else {
-                func_02092c8c(3, 16);
+                DisplayBrightness_StartMaskedTransitions(3, 16);
             }
             overlay004_advance_transition(state);
         }
@@ -122,7 +122,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
             }
             state->helper_054 = memory;
         }
-        func_02092c8c(3, 0);
+        DisplayBrightness_StartMaskedTransitions(3, 0);
         overlay004_advance_transition(state);
         break;
 
@@ -135,7 +135,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
 
     case 4:
         if (SceneInputBase_Update(state->helper_054, 1)) {
-            func_02092c8c(3, -16);
+            DisplayBrightness_StartMaskedTransitions(3, -16);
             overlay004_advance_transition(state);
         }
         break;

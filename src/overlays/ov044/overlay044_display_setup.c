@@ -10,12 +10,12 @@
 
 extern "C" u32 data_020f4e14;
 extern "C" void *gDebugFont;
-extern "C" void func_020925a4(s32 value);
-extern "C" void func_020925f8(void);
-extern "C" void func_02092638(s32 a, s32 b, s32 c, s32 d);
-extern "C" void func_020925dc(s32 value);
-extern "C" void func_02092618(void);
-extern "C" void func_02092688(s32 a, s32 b, s32 c, s32 d);
+extern "C" void TitleDisplay_ConfigureMain2dEngine(s32 value);
+extern "C" void TitleDisplay_ResetMainBgScroll(void);
+extern "C" void TitleDisplay_SetMainBgPriorities(s32 a, s32 b, s32 c, s32 d);
+extern "C" void TitleDisplay_ConfigureSub2dEngine(s32 value);
+extern "C" void TitleDisplay_ResetSubBgScroll(void);
+extern "C" void TitleDisplay_SetSubBgPriorities(s32 a, s32 b, s32 c, s32 d);
 extern "C" void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *font);
 
 static void configure_bg_controls(volatile u16 *registers)
@@ -36,17 +36,17 @@ extern "C" void func_ov044_0220c19c(void *object)
 {
     volatile u16 *capture = (volatile u16 *)0x04000304;
     *capture &= ~0x8000;
-    func_020925a4(0);
+    TitleDisplay_ConfigureMain2dEngine(0);
     configure_bg_controls((volatile u16 *)0x04000008);
-    func_020925f8();
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     FIELD(s32, object, 0x4c) = 0x1d;
-    func_020925dc(0);
+    TitleDisplay_ConfigureSub2dEngine(0);
     configure_bg_controls((volatile u16 *)0x04001008);
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
     FIELD(s32, object, 0x48) = 0x1c;
-    func_020925f8();
+    TitleDisplay_ResetMainBgScroll();
 
     void *mainState = GraphicsSpriteRenderer_GetObjectPaletteAddress((void *)data_020f4e14);
     void *debugState = GraphicsSpriteRenderer_GetObjectPaletteAddress(gDebugFont);

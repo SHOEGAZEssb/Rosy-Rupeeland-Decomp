@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 /* Pack and synchronously submit one signed XYZ vertex as two command words. */
-void func_0209bce4(s32 x, s32 y, s32 z)
+void G3Command_SubmitVertex16(s32 x, s32 y, s32 z)
 {
     u32 xy = (u16)x | ((u32)(u16)y << 16);
     u32 depth = (u16)z;

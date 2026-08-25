@@ -16,7 +16,7 @@ extern "C" {
  * Select a texture palette address. Format 2 uses eight-byte palette units;
  * all other formats use sixteen-byte units. The command is synchronous.
  */
-void func_0209b454(u32 address, u32 format)
+void G3Command_SetTexturePaletteBase(u32 address, u32 format)
 {
     u32 value = address >> (format == 2 ? 3 : 4);
 

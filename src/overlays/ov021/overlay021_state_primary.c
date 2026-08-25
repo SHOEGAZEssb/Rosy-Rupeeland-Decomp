@@ -30,7 +30,7 @@ extern s32 ActorDescriptor_IsInvalid(void *);
 extern void func_02062ca8(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_02092260(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void func_02095940(void *);
@@ -157,7 +157,7 @@ extern "C" s32 func_ov021_02201410(void *state)
                             if (category == 1) {
                                 FIELD(s32, state, 0x374) = FIELD(s32, widget, 0x25c);
                                 FIELD(u32, state, 0x378) = FIELD(u16, selected, 0);
-                                func_02092c8c(1, -16);
+                                DisplayBrightness_StartMaskedTransitions(1, -16);
                                 change_state(state, data_ov021_02202df8);
                             } else if (category == 0) {
                                 change_state(state, data_ov021_02202df0);
@@ -227,13 +227,13 @@ extern "C" s32 func_ov021_02201800(void *state)
             if (GameWork_TestFlag(gGameWork, 0x3df) == 0 &&
                 GameWork_TestFlag(gGameWork, 0x71) != 0) {
                 GameWork_SetFlag(gGameWork, 0x3df);
-                func_02092c8c(1, -8);
+                DisplayBrightness_StartMaskedTransitions(1, -8);
                 FIELD(s32, state, 0x3d8) = 1;
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else if (ActorDescriptor_IsInvalid(FIELD(void *, state, 0x37c)) != 0 ||
                        FIELD(s32, state, 0x3d8) != 0) {
-                func_02092c8c(1, -8);
+                DisplayBrightness_StartMaskedTransitions(1, -8);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
@@ -259,7 +259,7 @@ extern "C" s32 func_ov021_02201800(void *state)
     case 4:
         if (++FIELD(s32, state, 8) > 60) {
             TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -307,7 +307,7 @@ extern "C" s32 func_ov021_02201a88(void *state)
     case 2:
         Overlay021_RefreshSelectionBackground(state);
         func_ov021_021ff0e0(state, 2);
-        func_02092c8c(1, 0);
+        DisplayBrightness_StartMaskedTransitions(1, 0);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         break;

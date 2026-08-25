@@ -3,7 +3,7 @@
     .extern AreaInfoPanelPresentation_Destroy
     .extern Heap_Free
     .extern func_ov005_021fbb78
-    .extern func_020925dc
+    .extern TitleDisplay_ConfigureSub2dEngine
     .extern AnimationResourceState_Destroy
     .extern data_ov005_021fcad4
 
@@ -45,7 +45,7 @@ L_021fc218:
     bl Heap_Free
 L_021fc234:
     mov r0, #0x0
-    bl func_020925dc
+    bl TitleDisplay_ConfigureSub2dEngine
     ldr r0, L_021fc274
     mov r1, #0x0
     strh r1, [r0, #0x0]

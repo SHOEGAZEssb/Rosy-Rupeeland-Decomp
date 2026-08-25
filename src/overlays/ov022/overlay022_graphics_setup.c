@@ -22,14 +22,14 @@ extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 extern void func_02072048(void *, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
-extern void func_020925a4(s32, s32);
-extern void func_020925dc(s32, s32);
-extern void func_020925f8(void);
-extern void func_02092618(void);
-extern void func_02092638(s32, s32, s32, s32);
-extern void func_02092688(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureMain2dEngine(s32, s32);
+extern void TitleDisplay_ConfigureSub2dEngine(s32, s32);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
+extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void func_020929f4(void *);
-extern void func_02092a34(void *, s32);
+extern void GraphicsAffineScanlineWave_Apply(void *, s32);
 extern void Presentation_BlendPalette16(s32, s32, s32);
 extern void func_020afd0c(void *, s32, s32, s32, ...);
 extern void func_020b1ff0(void *, s32, s32);
@@ -74,7 +74,7 @@ extern "C" s32 func_ov022_021fe310(void *scene)
 extern "C" s32 func_ov022_021fe380(void *scene)
 {
     if ((FIELD(u32, scene, 0x20) & 0x400) != 0)
-        func_02092a34((u8 *)scene + 0x378,
+        GraphicsAffineScanlineWave_Apply((u8 *)scene + 0x378,
                       FIELD(void *, scene, 0x35c) != 0 ? 1 : 0);
     return 0;
 }
@@ -90,14 +90,14 @@ extern "C" void func_ov022_021fe3c0(void *scene)
 {
     *(volatile u16 *)0x04000304 &= (u16)~0x8000;
     FIELD(s32, scene, 0x48) = 0x1c;
-    func_020925a4(0, 0x1c);
+    TitleDisplay_ConfigureMain2dEngine(0, 0x1c);
     FIELD(s32, scene, 0x4c) = 0x1c;
-    func_020925dc(0, 0x1c);
+    TitleDisplay_ConfigureSub2dEngine(0, 0x1c);
     volatile u16 *sub_bg = (volatile u16 *)0x0400100c;
     sub_bg[0] = (sub_bg[0] & 0x43) | 0x1e00;
     sub_bg[1] = (sub_bg[1] & 0x43) | 0x1e00;
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
     void *descriptor = GraphicsSpriteRenderer_GetObjectPaletteAddress(data_020f4e14);
     FIELD(u16, descriptor, 6) = FIELD(u16, descriptor, 0x16);
     FIELD(u16, descriptor, 8) = FIELD(u16, descriptor, 0x1e);
@@ -141,12 +141,12 @@ extern "C" void func_ov022_021fe498(void *scene)
  */
 extern "C" void func_ov022_021fe544(void *scene)
 {
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     volatile u16 *main_bg = (volatile u16 *)0x0400000a;
     main_bg[0] = (main_bg[0] & 0x43) | 0x3c00;
     main_bg[1] = (main_bg[1] & 0x43) | 0x1e10;
     main_bg[2] = (main_bg[2] & 0x43) | 0x1e10;
-    func_020925f8();
+    TitleDisplay_ResetMainBgScroll();
     u32 resources[3];
     GraphicsResourceSet_Init(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18,

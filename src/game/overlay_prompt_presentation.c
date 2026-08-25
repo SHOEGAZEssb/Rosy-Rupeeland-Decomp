@@ -28,7 +28,7 @@ extern void OverlaySlot_Destroy(void *);
 extern void OverlaySlot_LoadOverlay(void *, s32);
 extern void OverlaySlot_UnloadOverlay(void *);
 extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern void *func_ov001_021fbe6c(void *);
 extern void SceneInputBase_Update(void *, s32);
@@ -94,7 +94,7 @@ s32 OverlayPromptPresentation_Update(OverlayPromptPresentation *self)
     switch (self->state08) {
     case 0:
         self->callbacksActive20 = 1;
-        func_02092c8c(2, -16);
+        DisplayBrightness_StartMaskedTransitions(2, -16);
         self->state08++;
         /* Retail falls through into the readiness check. */
     case 1:
@@ -103,7 +103,7 @@ s32 OverlayPromptPresentation_Update(OverlayPromptPresentation *self)
         OverlaySlot_LoadOverlay(self->sharedResource10, 5);
         self->worker0c = Heap_Alloc(0x88, gOverlayPromptWorkerAllocationTag, 4, &gHeapContext);
         if (self->worker0c != 0) func_ov001_021fbe6c(self->worker0c);
-        func_02092c8c(2, 0);
+        DisplayBrightness_StartMaskedTransitions(2, 0);
         self->state08++;
         return 0;
     case 2:

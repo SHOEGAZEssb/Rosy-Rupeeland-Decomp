@@ -21,7 +21,7 @@ extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *func_ov030_021fcf20(void *, void *, void *, s32);
 extern void func_ov030_021fe554(void *);
-extern void func_02092c8c(s32, s32, ...);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32, ...);
 extern void TitleDialog_ClearTextRect(void *);
 extern s32 GameWork_TestFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
@@ -65,7 +65,7 @@ extern "C" s32 func_ov030_021fee6c(void *scene)
             FIELD(void *, scene, 0x2c4) = widget;
             FIELD(s32, widget, 0x1c4) = 0x10;
             func_ov030_021fe554(scene);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             ++FIELD(s32, scene, 4);
             FIELD(s32, scene, 8) = 0;
         }

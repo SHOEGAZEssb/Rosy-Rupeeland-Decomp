@@ -48,8 +48,8 @@ extern void GX_DispOn(void);
 extern void GXS_SetGraphicsMode(s32 mode);
 extern void GX_SetBankForSubBG(s32 bank);
 extern void func_020aea7c(s32 value);
-extern void func_02092618(void);
-extern void func_02092688(s32 a, s32 b, s32 c, s32 d);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetSubBgPriorities(s32 a, s32 b, s32 c, s32 d);
 extern void TitlePalette_SetMainBackdrop(u16 color);
 extern void TitlePalette_SetSubBackdrop(u16 color);
 extern void func_ov011_021fce00(u32 select);
@@ -116,8 +116,8 @@ void *func_ov011_021fdb6c(void *state)
     GX_SetBankForSubBG(4);
     func_020aea7c(0x80);
     func_ov011_021fce1c(0, 0, 0x10, 0, 0);
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0xc003, 0xc004,

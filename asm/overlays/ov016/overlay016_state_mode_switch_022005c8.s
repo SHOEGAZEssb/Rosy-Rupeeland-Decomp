@@ -8,7 +8,7 @@
     .extern data_ov016_022014b8
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_02095dd4
     .extern func_ov000_021fc9d4
     .extern Overlay016ActorValue_Init
@@ -43,7 +43,7 @@ L_022005e0: ; jump table
 L_0220060c:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -92,7 +92,7 @@ L_022006c4:
     str r0, [r4, #0x8]
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_02200754
 L_022006d8:
     bl DisplayBrightness_IsMainTransitionComplete

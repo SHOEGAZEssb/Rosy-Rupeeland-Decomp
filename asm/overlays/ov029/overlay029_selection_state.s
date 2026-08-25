@@ -8,7 +8,7 @@
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GraphicsSpriteText_FormatDecimal
 .extern func_02092260
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern func_ov002_021fbb68
 .extern func_ov002_021fbc54
@@ -226,7 +226,7 @@ L_021fdf0c:
     mov r2, #0x0
     sub r1, r0, #0x9
     str r2, [r4, #0x8]
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_021fe098
 L_021fdf38:
     mov r0, r4
@@ -256,7 +256,7 @@ L_021fdf78:
     str r2, [r4, #0xac]
     sub r1, r0, #0x9
     str r2, [r4, #0x6c]
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_021fe0c4
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -312,7 +312,7 @@ L_021fe050:
     beq L_021fe098
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, #0x0
     str r0, [r4, #0x4]
     str r0, [r4, #0x8]

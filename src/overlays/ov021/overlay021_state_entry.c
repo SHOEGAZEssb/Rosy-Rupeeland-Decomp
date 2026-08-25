@@ -32,7 +32,7 @@ extern const void *RecordDescriptor_GetMessage(const void *, s32);
 extern void RecordCategory_PublishById(void *, u16);
 extern void func_02092260(void *, s32);
 extern void TitlePalette_SetMainBackdrop(s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_02095928(void *);
@@ -131,7 +131,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -8);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
         /* Deliberate fall-through to wait state 1. */
@@ -150,7 +150,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
         break;
     case 2:
         if (func_ov021_021ff274(state) != 0) {
-            func_02092c8c(1, -16);
+            DisplayBrightness_StartMaskedTransitions(1, -16);
             if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
                 FIELD(s32, state, 0x3d8) = 1;
             const u8 *descriptor = FIELD(const u8 *, state, 0x2bc);
@@ -180,7 +180,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
             func_ov021_021fd7c0(state, data_ov021_02202f38[0],
                                 data_ov021_02202f38[1]);
         } else {
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 0x3e4) = -1;
             func_ov021_021fd7c0(state, data_ov021_02202f30[0],
                                 data_ov021_02202f30[1]);
@@ -244,7 +244,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
                 TitleDialog_ClearTextRect(FIELD(void *, state, 0x388));
                 func_02092260(state, 2);
                 FIELD(s32, state, 0x2c4) = channel;
-                func_02092c8c(1, -16);
+                DisplayBrightness_StartMaskedTransitions(1, -16);
                 if (channel == 1) {
                     if (Overlay021_IsAuxiliaryRecordAvailable(state) != 0)
                         func_ov021_021fd7c0(
@@ -270,7 +270,7 @@ extern "C" s32 func_ov021_021ffa38(void *state)
             func_ov021_021fd39c(FIELD(void *, state, 0x2c0));
             func_ov021_021fd490(FIELD(void *, state, 0x2c0));
             func_ov021_021fee54(state);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }

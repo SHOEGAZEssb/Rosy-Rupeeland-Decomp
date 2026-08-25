@@ -28,7 +28,7 @@ typedef struct SpriteAnimationResource {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02070d74(void *resource);
+extern void GraphicsSpriteAnimationResource_Prepare(void *resource);
 #ifdef __cplusplus
 }
 #endif
@@ -45,7 +45,7 @@ void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *sprite,
     u32 animationCount;
 
     if (resource->allocation == 0) {
-        func_02070d74(resource);
+        GraphicsSpriteAnimationResource_Prepare(resource);
     }
     animationCount = *(u32 *)((u8 *)resource->allocation + 4);
     if (animation >= animationCount) {
@@ -74,7 +74,7 @@ void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *sprite,
     u32 index;
 
     if (resource->allocation == 0) {
-        func_02070d74(resource);
+        GraphicsSpriteAnimationResource_Prepare(resource);
     }
     sequence = &resource->sequences[sprite->animationIndex];
     if (frameIndex >= sequence->frameCount) {
@@ -115,7 +115,7 @@ u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *sprite)
         (SpriteAnimationResource *)sprite->animationResource;
 
     if (resource->allocation == 0) {
-        func_02070d74(resource);
+        GraphicsSpriteAnimationResource_Prepare(resource);
     }
     return resource->sequences[sprite->animationIndex].duration;
 }
@@ -139,7 +139,7 @@ asm void GraphicsSpriteState_SetAnimationIndex(GraphicsSpriteState *sprite,
     ldr r1, [r0, #0x14]
     cmp r1, #0
     bne sprite_animation_loaded
-    bl func_02070d74
+    bl GraphicsSpriteAnimationResource_Prepare
 sprite_animation_loaded:
     ldr r0, [r4, #0x1c]
     mov r1, #0
@@ -175,7 +175,7 @@ asm void GraphicsSpriteState_SetFrameIndex(GraphicsSpriteState *sprite,
     ldr r1, [r0, #0x14]
     cmp r1, #0
     bne sprite_frame_loaded
-    bl func_02070d74
+    bl GraphicsSpriteAnimationResource_Prepare
 sprite_frame_loaded:
     ldr r1, [r5, #0x1c]
     ldrb r0, [r5, #0x38]
@@ -248,7 +248,7 @@ asm u16 GraphicsSpriteState_GetSequenceDuration(GraphicsSpriteState *sprite)
     ldr r1, [r0, #0x14]
     cmp r1, #0
     bne sprite_duration_loaded
-    bl func_02070d74
+    bl GraphicsSpriteAnimationResource_Prepare
 sprite_duration_loaded:
     ldr r1, [r4, #0x1c]
     ldrb r0, [r4, #0x38]

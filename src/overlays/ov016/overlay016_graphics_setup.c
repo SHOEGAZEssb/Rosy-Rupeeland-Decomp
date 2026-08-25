@@ -20,12 +20,12 @@ extern void GraphicsResourceSet_Load(Overlay016ResourceSet *, void *, s32, s32, 
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
-extern void func_020925a4(s32);
-extern void func_020925dc(s32);
-extern void func_020925f8(void);
-extern void func_02092618(void);
-extern void func_02092638(s32, s32, s32, s32);
-extern void func_02092688(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureMain2dEngine(s32);
+extern void TitleDisplay_ConfigureSub2dEngine(s32);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
+extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void TitleScreenResourceCollection_Init(void *);
 extern void func_020926f8(void *);
 extern void func_02092754(void *, s32);
@@ -61,22 +61,22 @@ extern "C" void func_ov016_021fedc4(void *state)
 
     func_ov016_021ff04c(0);
     FIELD(s32, state, 0x48) = 0x10;
-    func_020925a4(0);
+    TitleDisplay_ConfigureMain2dEngine(0);
     mainBg[0] = (mainBg[0] & 0x43) | 0x3800;
     mainBg[1] = (mainBg[1] & 0x43) | 0x3a00;
     mainBg[2] = (mainBg[2] & 0x43) | 0x1c00;
     Overlay016_ConfigureMainBg3(0, 0, 0x1e, 4);
-    func_020925f8();
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
 
     FIELD(s32, state, 0x4c) = 0x1d;
-    func_020925dc(0);
+    TitleDisplay_ConfigureSub2dEngine(0);
     subBg[0] = (subBg[0] & 0x43) | 0x3800;
     subBg[1] = (subBg[1] & 0x43) | 0x3a00;
     subBg[2] = (subBg[2] & 0x43) | 0x1c00;
     subBg[3] = (subBg[3] & 0x43) | 0x1e10;
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 
     GraphicsResourceSet_Init(&resources);
     TitleScreenResourceCollection_Init(&manager);

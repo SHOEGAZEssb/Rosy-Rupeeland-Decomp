@@ -31,7 +31,7 @@ extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *);
 extern void IndexedSelectionController_IncrementWrap(void *);
 extern void IndexedSelectionController_DecrementWrap(void *);
@@ -245,7 +245,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
     void *transition = (u8 *)scene + 0x4dc;
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02092c8c(1, -8);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
         func_02091bac(transition, 4, -128, 0, 8);
         ADVANCE(scene);
         /* fall through */
@@ -266,7 +266,7 @@ static s32 detail_machine(void *scene, void *entry, void **next)
     case 2:
         if (func_ov023_021fe88c(scene)) {
             GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             func_02091bac(transition, 5, 0, -128, 8);
             ADVANCE(scene);
         }

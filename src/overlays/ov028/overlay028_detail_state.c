@@ -19,7 +19,7 @@ extern "C" {
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void func_02092260(void *, s32);
 extern s32 GraphicsSpriteState_TestTouchPoint(void *, const void *);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void IndexedSelectionController_ConfigureRange(void *, s32, s32, s32);
 extern void IndexedSelectionController_ResetTransition(void *);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *);
@@ -87,7 +87,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
     switch (phase) {
     case 0:
         FIELD(s32, state, 0x1f8) = 0;
-        func_02092c8c(1, -0x10);
+        DisplayBrightness_StartMaskedTransitions(1, -0x10);
         Overlay028_NextPhase(state);
         /* fall through */
     case 1:
@@ -110,7 +110,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
             SpritePresentation_Show(FIELD(void *, state, 0x1f4));
         }
         func_ov028_021fce28((u8 *)state + 0x280);
-        func_02092c8c(1, 0);
+        DisplayBrightness_StartMaskedTransitions(1, 0);
         Overlay028_NextPhase(state);
         break;
     case 2:
@@ -188,7 +188,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         }
         break;
     case 10:
-        func_02092c8c(1, -0x10);
+        DisplayBrightness_StartMaskedTransitions(1, -0x10);
         Overlay028_NextPhase(state);
         /* fall through */
     case 11:
@@ -210,7 +210,7 @@ extern "C" s32 func_ov028_021febd0(void *state)
         func_02095928((u8 *)state + 0x98);
         func_ov028_021fce28((u8 *)state + 0x280);
         FIELD(s32, state, 0x48) = 0x1e;
-        func_02092c8c(1, 0);
+        DisplayBrightness_StartMaskedTransitions(1, 0);
         Overlay028_NextPhase(state);
         break;
     case 12:

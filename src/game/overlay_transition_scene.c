@@ -28,7 +28,7 @@ extern char gOverlayTransitionKind1AllocationTag[];
 extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern void *gDebugFont;
-extern void func_02092c8c(s32 screen, s32 brightness);
+extern void DisplayBrightness_StartMaskedTransitions(s32 screen, s32 brightness);
 extern s32 SceneInputBase_Update(void *object, s32 mode);
 extern void GamePhaseAreaScene_SetEnabled(void *object, s32 value);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
@@ -111,8 +111,8 @@ s32 OverlayTransitionScene_Update(OverlayTransitionScene *self)
 
     switch (self->state40) {
     case 0:
-        func_02092c8c(1, -8);
-        func_02092c8c(2, -16);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
+        DisplayBrightness_StartMaskedTransitions(2, -16);
         self->state40++;
         /* fall through */
     case 1:
@@ -139,7 +139,7 @@ s32 OverlayTransitionScene_Update(OverlayTransitionScene *self)
                 object = func_ov046_0220c7d8(object, (u16)self->parameter3c);
             self->object24 = object;
         }
-        func_02092c8c(2, 0);
+        DisplayBrightness_StartMaskedTransitions(2, 0);
         self->state40++;
         break;
     case 2:
@@ -149,7 +149,7 @@ s32 OverlayTransitionScene_Update(OverlayTransitionScene *self)
         break;
     case 3:
         if (SceneInputBase_Update(self->object24, 1) != 0) {
-            func_02092c8c(2, -16);
+            DisplayBrightness_StartMaskedTransitions(2, -16);
             self->state40++;
         }
         break;
@@ -169,7 +169,7 @@ s32 OverlayTransitionScene_Update(OverlayTransitionScene *self)
         }
         if (self->restoreCurrencyHud28 != 0)
             GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
-        func_02092c8c(3, 0);
+        DisplayBrightness_StartMaskedTransitions(3, 0);
         self->state40++;
         break;
     case 5:

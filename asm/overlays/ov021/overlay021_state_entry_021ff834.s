@@ -10,7 +10,7 @@
     .extern RecordCategory_PublishById
     .extern RecordDescriptor_GetMessage
     .extern TitlePalette_SetMainBackdrop
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_UpdateTextPage
     .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd7c0
@@ -41,7 +41,7 @@ L_021ff850: ; jump table
 L_021ff864:
     mov r0, #0x1
     sub r1, r0, #0x9
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -80,7 +80,7 @@ L_021ff8e8:
     beq L_021ff9e8
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x2bc]
     bl func_ov021_021ffa10
     cmp r0, #0x0
@@ -135,7 +135,7 @@ L_021ff98c:
 L_021ff9c4:
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mvn r0, #0x0
     ldr r1, L_021ffa0c
     str r0, [r4, #0x3e4]

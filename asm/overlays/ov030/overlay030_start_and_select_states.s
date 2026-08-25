@@ -11,7 +11,7 @@
 .extern GraphicsSpriteRenderer_SetFontResource
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092260
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern func_02095860
 .extern func_ov030_021fda14
@@ -164,7 +164,7 @@ L_021fed08:
     sub r1, r2, #0x34
     mla r2, r3, r2, ip
     str r2, [r4, #0x394]
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_021fee64
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -203,7 +203,7 @@ L_021fed98:
     mov r0, #0x1
     sub r1, r0, #0x11
     str r2, [r4, #0x394]
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_021fee68
     mov r0, r4
     ldmia r1, {r1, r2}

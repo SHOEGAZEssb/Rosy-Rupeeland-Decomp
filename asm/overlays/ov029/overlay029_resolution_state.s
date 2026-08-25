@@ -15,7 +15,7 @@
 .extern func_0209189c
 .extern func_02092260
 .extern func_02092288
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern PresentationScalar_TransitionTo
 .extern Presentation_SetScript
 .extern Presentation_IsScriptComplete
@@ -59,7 +59,7 @@ L_021fe0e4: ; jump table
 L_021fe100:
     mov r0, #0x1
     sub r1, r0, #0x9
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -470,7 +470,7 @@ L_021fe6e4:
     mov r1, #0x0
     str r1, [r4, #0xa0]
     mov r0, #0x1
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

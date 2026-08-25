@@ -30,12 +30,12 @@ extern "C" u8 gSystemState[];
 extern "C" s32 GameWork_TestFlag(void *gameWork, u16 flag);
 extern "C" void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 paletteBank);
 extern "C" void func_020b44e8(void);
-extern "C" void func_020925a4(s32 backgroundMode);
-extern "C" void func_020925dc(s32 backgroundMode);
-extern "C" void func_020925f8(void);
-extern "C" void func_02092618(void);
-extern "C" void func_02092638(s32 bg0, s32 bg1, s32 bg2, s32 bg3);
-extern "C" void func_02092688(s32 bg0, s32 bg1, s32 bg2, s32 bg3);
+extern "C" void TitleDisplay_ConfigureMain2dEngine(s32 backgroundMode);
+extern "C" void TitleDisplay_ConfigureSub2dEngine(s32 backgroundMode);
+extern "C" void TitleDisplay_ResetMainBgScroll(void);
+extern "C" void TitleDisplay_ResetSubBgScroll(void);
+extern "C" void TitleDisplay_SetMainBgPriorities(s32 bg0, s32 bg1, s32 bg2, s32 bg3);
+extern "C" void TitleDisplay_SetSubBgPriorities(s32 bg0, s32 bg1, s32 bg2, s32 bg3);
 extern "C" void func_ov046_0220bd14(void *panel);
 
 extern "C" void func_ov046_0220bac0(void *panel)
@@ -55,24 +55,24 @@ extern "C" void func_ov046_0220bac0(void *panel)
     func_020b44e8();
 
     if (FIELD(void *, panel, 0) == data_020f4e14) {
-        func_020925a4(0);
+        TitleDisplay_ConfigureMain2dEngine(0);
         bgControl = (volatile u16 *)0x04000008;
         bgControl[0] = (u16)((bgControl[0] & 0x43) | 0xe008);
         bgControl[1] = (u16)((bgControl[1] & 0x43) | 0xe410);
         bgControl[2] = (u16)((bgControl[2] & 0x43) | 0xc818);
         bgControl[3] = (u16)((bgControl[3] & 0x43) | 0x0c00);
-        func_020925f8();
-        func_02092638(2, 2, 2, 3);
+        TitleDisplay_ResetMainBgScroll();
+        TitleDisplay_SetMainBgPriorities(2, 2, 2, 3);
         func_02072048(&resources, 3, 0x1e0);
     } else {
-        func_020925dc(0);
+        TitleDisplay_ConfigureSub2dEngine(0);
         bgControl = (volatile u16 *)0x04001008;
         bgControl[0] = (u16)((bgControl[0] & 0x43) | 0xe008);
         bgControl[1] = (u16)((bgControl[1] & 0x43) | 0xe410);
         bgControl[2] = (u16)((bgControl[2] & 0x43) | 0xc818);
         bgControl[3] = (u16)((bgControl[3] & 0x43) | 0x0c00);
-        func_02092618();
-        func_02092688(2, 2, 2, 3);
+        TitleDisplay_ResetSubBgScroll();
+        TitleDisplay_SetSubBgPriorities(2, 2, 2, 3);
         GraphicsResourceSet_Apply(&resources, 3, 0x1e0);
     }
 

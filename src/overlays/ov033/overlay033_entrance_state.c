@@ -9,7 +9,7 @@ extern const s32 data_ov033_021fdd00[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_02092c8c(s32 first, s32 second);
+extern void DisplayBrightness_StartMaskedTransitions(s32 first, s32 second);
 extern void func_02091bac(void *interpolator, s32 mode, s32 start,
                          s32 end, s32 duration);
 extern s32 func_02091c7c(void *interpolator, s32 advance);
@@ -35,7 +35,7 @@ extern "C" s32 func_ov033_021fd624(void *scene)
 {
     s32 state = FIELD(s32, scene, 0xd0);
     if (state == 0) {
-        func_02092c8c(3, 0);
+        DisplayBrightness_StartMaskedTransitions(3, 0);
         void *primary = FIELD(void *, scene, 4);
         func_02091bac((u8 *)scene + 0x4c, 2,
                       FIELD(s32, primary, 0x24) + 0x40000, 0, 0x5a);

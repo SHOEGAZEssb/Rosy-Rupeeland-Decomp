@@ -9,12 +9,12 @@
 .extern GraphicsBgMapResource_SetPaletteBank
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_02072048
-.extern func_020925a4
-.extern func_020925dc
-.extern func_020925f8
-.extern func_02092618
-.extern func_02092638
-.extern func_02092688
+.extern TitleDisplay_ConfigureMain2dEngine
+.extern TitleDisplay_ConfigureSub2dEngine
+.extern TitleDisplay_ResetMainBgScroll
+.extern TitleDisplay_ResetSubBgScroll
+.extern TitleDisplay_SetMainBgPriorities
+.extern TitleDisplay_SetSubBgPriorities
 .extern func_020b44e8
 .extern func_ov046_0220bd14
 
@@ -57,7 +57,7 @@ func_ov046_0220bac0:
     cmp r1, r0
     mov r0, #0x0
     bne .L_0220bbcc
-    bl func_020925a4
+    bl TitleDisplay_ConfigureMain2dEngine
     ldr r1, .L_0220bc78
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
@@ -78,19 +78,19 @@ func_ov046_0220bac0:
     and r0, r0, #0x43
     orr r0, r0, #0xc00
     strh r0, [r1, #0x6]
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, #0x2
     mov r1, r0
     mov r2, r0
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     add r0, sp, #0x4
     mov r1, #0x3
     mov r2, #0x1e0
     bl func_02072048
     b .L_0220bc48
 .L_0220bbcc:
-    bl func_020925dc
+    bl TitleDisplay_ConfigureSub2dEngine
     ldr r1, .L_0220bc7c
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
@@ -111,12 +111,12 @@ func_ov046_0220bac0:
     and r0, r0, #0x43
     orr r0, r0, #0xc00
     strh r0, [r1, #0x6]
-    bl func_02092618
+    bl TitleDisplay_ResetSubBgScroll
     mov r0, #0x2
     mov r1, r0
     mov r2, r0
     mov r3, #0x3
-    bl func_02092688
+    bl TitleDisplay_SetSubBgPriorities
     add r0, sp, #0x4
     mov r1, #0x3
     mov r2, #0x1e0

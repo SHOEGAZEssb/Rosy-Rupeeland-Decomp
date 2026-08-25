@@ -56,11 +56,11 @@ extern void G3X_InitMtxStack(void);
 extern void func_020b0558(void);
 extern void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
                           u32 repeat_s, u32 repeat_t, u32 flip, u32 address);
-extern void func_0209b454(u32 address, u32 format);
+extern void G3Command_SetTexturePaletteBase(u32 address, u32 format);
 extern void func_0209b560(u32 light, u32 polygon_mode, u32 cull_mode,
                           u32 polygon_id, u32 alpha, u32 misc);
-extern void func_0209bcb0(s32 s, s32 t);
-extern void func_0209bce4(s32 x, s32 y, s32 z);
+extern void G3Command_SubmitTexCoord(s32 s, s32 t);
+extern void G3Command_SubmitVertex16(s32 x, s32 y, s32 z);
 extern void func_020b0844(s32 sine, s32 cosine);
 extern void func_020b0880(s32 sine, s32 cosine);
 extern void func_020b0a54(s32 left, s32 right, s32 bottom, s32 top,
@@ -489,12 +489,12 @@ void Graphics3dPresentation_SubmitRupeeMeshWithEffects(
     func_020b0880(gFx32CosSinTable[angle * 2],
                   gFx32CosSinTable[angle * 2 + 1]);
 
-    func_0209bcb0((s32)((appearanceFlags & 0xffu) << 15), 0);
+    G3Command_SubmitTexCoord((s32)((appearanceFlags & 0xffu) << 15), 0);
     func_0209b414(*(u32 *)(bytes + 0x130),
                   instance->renderVariant == 2 ? 2 : 1,
                   *(u32 *)(bytes + 0x208), *(u32 *)(bytes + 0x2e0),
                   0, 0, 0, *(u32 *)(bytes + 0x3b8));
-    func_0209b454(*(u32 *)(bytes + 0x490), *(u32 *)(bytes + 0x130));
+    G3Command_SetTexturePaletteBase(*(u32 *)(bytes + 0x490), *(u32 *)(bytes + 0x130));
     *(volatile u32 *)0x040004c0 = 0x6318;
     *(volatile u32 *)0x040004c4 = 0x4e73;
 #ifndef MATCHING
@@ -532,7 +532,7 @@ void Graphics3dPresentation_SubmitRupeeMeshWithEffects(
 #ifndef MATCHING
             TingleNativeG3_Begin(2);
 #endif
-            func_0209bce4(flashOutline[outline][0],
+            G3Command_SubmitVertex16(flashOutline[outline][0],
                           flashOutline[outline][1], 0);
             *(volatile u32 *)0x04000494 = xy;
             *(volatile u32 *)0x04000494 = 0;

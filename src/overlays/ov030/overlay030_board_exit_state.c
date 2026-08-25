@@ -12,7 +12,7 @@ extern const s32 data_ov030_021ff790[];
 extern "C" {
 #endif
 extern void func_ov030_021fea00(void *);
-extern void func_02092c8c(s32, s32, ...);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32, ...);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void InventoryRecordCollection_RemoveQuantity(void *, s32, u16);
 extern void *func_ov030_021fd27c(void *);
@@ -42,7 +42,7 @@ extern "C" s32 func_ov030_021ff5a4(void *scene)
     (void)func_ov030_021fea00(scene);
     switch (FIELD(s32, scene, 4)) {
     case 0:
-        func_02092c8c(1, -16);
+        DisplayBrightness_StartMaskedTransitions(1, -16);
         ++FIELD(s32, scene, 4);
         FIELD(s32, scene, 8) = 0;
         /* Recovered control flow intentionally continues into state 1. */
@@ -67,7 +67,7 @@ extern "C" s32 func_ov030_021ff5a4(void *scene)
             func_ov030_021fe808(scene);
             FIELD(s32, FIELD(void *, scene, 0x78), 0x20) = 1;
             func_ov030_021feb0c(scene);
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             func_ov030_021fda14(scene, data_ov030_021ff790[0],
                                 data_ov030_021ff790[1]);
         }

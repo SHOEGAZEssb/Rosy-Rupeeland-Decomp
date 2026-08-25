@@ -9,7 +9,7 @@
 
 extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resource_id, u32 *size);
 
-void func_02070418(void *resource)
+void GraphicsSpriteGraphicsResource_Prepare(void *resource)
 {
     u8 *bytes = (u8 *)resource;
     u32 size;
@@ -39,7 +39,7 @@ void GraphicsSpriteResource_Prepare(void *resource)
     *(u8 **)(bytes + 0x24) = (u8 *)source + 0x08;
 }
 
-void func_02070d74(void *resource)
+void GraphicsSpriteAnimationResource_Prepare(void *resource)
 {
     u8 *bytes = (u8 *)resource;
     u8 *source;

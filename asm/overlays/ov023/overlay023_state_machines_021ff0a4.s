@@ -9,7 +9,7 @@
 .extern func_02091bd0
 .extern func_02091c7c
 .extern func_02091cf0
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov023_021fd9d0
 .extern func_ov023_021fe77c
 .extern func_ov023_021fe804
@@ -35,7 +35,7 @@ L_021ff0bc: ; jump table
 L_021ff0cc:
     mov r0, #0x1
     sub r1, r0, #0x9
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     add r0, r4, #0xdc
     mov r2, #0x8
     mov r1, #0x4
@@ -98,7 +98,7 @@ L_021ff1a8:
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     add r0, r4, #0xdc
     mov r1, #0x8
     mov r2, #0x0

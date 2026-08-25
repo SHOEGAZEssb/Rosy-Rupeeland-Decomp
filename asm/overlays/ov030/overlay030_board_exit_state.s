@@ -6,7 +6,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern InventoryRecordCollection_RemoveQuantity
 .extern GraphicsSpriteRenderer_ClearTextBuffer
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov030_021fd27c
 .extern func_ov030_021fda14
 .extern func_ov030_021fe768
@@ -31,7 +31,7 @@ func_ov030_021ff5a4:
 L_021ff5c8:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -92,7 +92,7 @@ L_021ff664:
     bl func_ov030_021feb0c
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, r4
     ldr r1, L_021ff6e0
     ldmia r1, {r1, r2}

@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov033/overlay033_entrance_state.c for documented portable C. */
 
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_02091bac
     .extern func_02091c7c
     .extern func_02091cf0
@@ -24,7 +24,7 @@ func_ov033_021fd624:
 L_021fd648:
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     add r0, r4, #0x4c
     ldr r2, [r1, #0x24]

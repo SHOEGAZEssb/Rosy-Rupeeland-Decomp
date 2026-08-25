@@ -9,7 +9,7 @@
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsBgMapResource_SetPaletteBank
     .extern func_02072048
-    .extern func_02092638
+    .extern TitleDisplay_SetMainBgPriorities
     .extern func_020afd0c
     .extern func_020b2058
     .extern func_020b44e8
@@ -24,7 +24,7 @@ Overlay021_SetupMainBackground:
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     mov r0, #0x0
     mov ip, #0x1
     mov r1, r0

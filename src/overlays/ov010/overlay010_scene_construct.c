@@ -47,7 +47,7 @@ extern void func_ov010_021fce84(void *, s32, s32, s32);
 extern void func_ov010_021fce94(void *, s32, s32, s32);
 extern void GX_DispOn(void);
 extern void GX_SetGraphicsMode(s32, s32, s32);
-extern void func_02092638(s32, s32, s32, s32);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void func_020b0300(u16 color, s32 alpha, s32 depth, s32 polygonId,
                           s32 fog);
 extern void TitlePalette_SetSubBackdrop(s32);
@@ -132,7 +132,7 @@ void *func_ov010_021fcebc(void *state)
     func_ov010_021fce00(0);
     GX_DispOn();
     GX_SetGraphicsMode(1, 0, 1);
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
     FIELD(s32, state, 0x70) = 0x10;
     *(volatile u32 *)0x04001000 |= 0x10000;
     func_ov010_021fce1c(0);

@@ -56,7 +56,7 @@
 .extern SceneInputBase_Update
 .extern func_020923a4
 .extern func_02092418
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov004_021fc944
 .extern func_ov009_021fce74
 .extern func_ov013_021fce2c
@@ -124,7 +124,7 @@ L_0200d0f0: ; jump table
 L_0200d110:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, L_0200e0e4
     ldr r0, [r0, #0x0]
     add r0, r0, #0x3000
@@ -136,22 +136,22 @@ L_0200d110:
     beq L_0200d17c
     mov r0, #0x2
     sub r1, r0, #0x12
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200d17c
 L_0200d150:
     mov r0, #0x3
     mov r1, #0x10
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200d17c
 L_0200d160:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200d17c
 L_0200d170:
     mov r0, #0x3
     sub r1, r0, #0x13
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
 L_0200d17c:
     bl DisplayBrightness_IsMainTransitionComplete
     cmp r0, #0x0
@@ -916,7 +916,7 @@ L_0200dc10:
     beq L_0200e3bc
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r5, #0x28]
     add r0, r0, #0x1
     str r0, [r5, #0x28]
@@ -961,12 +961,12 @@ L_0200dcb4: ; jump table
 L_0200dcd0:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200dd3c
 L_0200dce0:
     mov r0, #0x3
     mov r1, #0x10
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200dd3c
 L_0200dcf0:
     ldr r0, L_0200e0e4
@@ -983,12 +983,12 @@ L_0200dcf0:
     bne L_0200dd30
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200dd3c
 L_0200dd30:
     mov r0, #0x3
     sub r1, r0, #0x13
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
 L_0200dd3c:
     ldr r0, [r5, #0x28]
     add r0, r0, #0x1
@@ -1213,7 +1213,7 @@ L_0200e038:
     bl GamePhaseState_SetEnabled
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200e2ac
 L_0200e07c:
     ldr r0, L_0200e0e4
@@ -1240,7 +1240,7 @@ L_0200e07c:
     bl GamePhaseState_SetEnabled
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     b L_0200e2ac
 L_0200e0e4: .word gGamePhaseRuntime
 L_0200e0e8: .word gSoundContext
@@ -1357,7 +1357,7 @@ L_0200e21c:
 L_0200e2a0:
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
 L_0200e2ac:
     ldr r0, [r5, #0x34]
     cmp r0, #0x0

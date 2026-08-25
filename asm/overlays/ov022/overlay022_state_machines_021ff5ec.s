@@ -8,7 +8,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern func_02092260
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern Presentation_InterpolateScalar
 .extern func_02095820
@@ -130,7 +130,7 @@ L_021ff710:
     mov r0, #0x1
     str r1, [r4, #0x2c0]
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -161,7 +161,7 @@ L_021ff788:
     mov r0, #0x1
     str r0, [r4, #0x2c0]
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -216,7 +216,7 @@ L_021ff854:
 L_021ff894:
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

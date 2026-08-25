@@ -8,7 +8,7 @@
 .extern OverlaySlot_Destroy
 .extern OverlaySlot_LoadOverlay
 .extern OverlaySlot_UnloadOverlay
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern DisplayBrightness_IsSubTransitionComplete
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
@@ -45,10 +45,10 @@ L_0201d370: ; jump table
 L_0201d388:
     mov r0, #0x1
     sub r1, r0, #0x9
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, #0x2
     sub r1, r0, #0x12
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x40]
     add r0, r0, #0x1
     str r0, [r4, #0x40]
@@ -120,7 +120,7 @@ L_0201d490:
 L_0201d494:
     mov r0, #0x2
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x40]
     add r0, r0, #0x1
     str r0, [r4, #0x40]
@@ -143,7 +143,7 @@ L_0201d4d4:
     beq L_0201d5ec
     mov r0, #0x2
     sub r1, r0, #0x12
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x40]
     add r0, r0, #0x1
     str r0, [r4, #0x40]
@@ -194,7 +194,7 @@ L_0201d588:
 L_0201d5a4:
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x40]
     add r0, r0, #0x1
     str r0, [r4, #0x40]

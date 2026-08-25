@@ -9,7 +9,7 @@
 .extern GamePhaseCurrencyHud_AddCurrency
 .extern func_02092260
 .extern func_020922f0
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern IndexedSelectionController_ResetTransition
 .extern IndexedSelectionController_SnapTransitionOrigin
@@ -69,7 +69,7 @@ L_021ffa3c: ; jump table
 L_021ffa90:
     mov r0, #0x2
     sub r1, r0, #0xa
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, r4
     bl func_ov022_021fe94c
     ldr r0, [r4, #0x2b4]
@@ -100,10 +100,10 @@ L_021ffaf0:
     ble L_021ffb48
     mov r0, #0x2
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, #0x1
     sub r1, r0, #0x9
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, r4
     mov r1, #0x9d
     bl func_020922f0
@@ -218,7 +218,7 @@ L_021ffc84:
     mov r0, #0x1
     beq L_021ffce0
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -227,7 +227,7 @@ L_021ffc84:
     b L_021ffd70
 L_021ffce0:
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -259,7 +259,7 @@ L_021ffd20:
     bl func_ov022_021fe544
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, r4
     ldr r1, L_021ffd88
     ldmia r1, {r1, r2}

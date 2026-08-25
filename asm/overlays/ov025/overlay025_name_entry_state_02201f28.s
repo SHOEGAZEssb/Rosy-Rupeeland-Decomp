@@ -29,7 +29,7 @@
 .extern func_02092314
 .extern func_020927b8
 .extern GraphicsSpriteState_TestTouchPoint
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_SetText
 .extern TitleDialog_UpdateTextPage
 .extern func_02095860
@@ -121,7 +121,7 @@ L_02201fac:
     bl func_02092314
     mov r0, #0x3
     sub r1, r0, #0x13
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -189,7 +189,7 @@ L_02202094:
     bl func_02095928
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r5, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -242,7 +242,7 @@ L_02202104:
     bl TitleDialog_SetText
     mov r0, #0x1
     sub r1, r0, #0x9
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, #0x1e
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -281,7 +281,7 @@ L_022021e4:
     bl func_02092260
     mov r0, #0x3
     sub r1, r0, #0x13
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, r5
     mov r1, #0xe8
     mov r2, #0x10
@@ -720,7 +720,7 @@ L_02202848:
     blt L_02202ad4
     mov r0, #0x3
     sub r1, r0, #0x13
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, #0x14
     str r0, [r5, #0x4]
     mov r0, #0x0
@@ -836,7 +836,7 @@ L_022029dc:
     bl func_ov025_02200014
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     mov r0, r5
     mov r1, #0xe2
     bl func_020922f0
@@ -865,7 +865,7 @@ L_02202a68:
     beq L_02202ad4
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, L_02202ae8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer

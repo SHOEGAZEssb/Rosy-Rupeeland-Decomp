@@ -9,7 +9,7 @@
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern TitlePalette_SetMainBackdrop
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov021_021fd1cc
     .extern func_ov021_021fd39c
     .extern func_ov021_021fd490
@@ -99,7 +99,7 @@ L_02200714:
     ldrh r2, [r3, #0x24]
     orr r2, r2, #0x4
     strh r2, [r3, #0x24]
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_02200830
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -129,7 +129,7 @@ L_02200784:
 L_022007ac:
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x2c4]
     add r0, r4, r0, lsl #0x2
     ldr r0, [r0, #0x2a4]

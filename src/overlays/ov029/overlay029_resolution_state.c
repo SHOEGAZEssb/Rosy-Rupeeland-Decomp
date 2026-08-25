@@ -26,7 +26,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern s32 func_0209189c(void *, s32, s32);
 extern void func_02092260(void *, s32);
 extern void func_02092288(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void Presentation_SetScript(void *, const void *, s32);
 extern void PresentationScalar_TransitionTo(void *, s32, s32);
 extern s32 Presentation_IsScriptComplete(void *);
@@ -91,7 +91,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
     void *result = FIELD(void *, state, 0xa0);
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_02092c8c(1, -8);
+        DisplayBrightness_StartMaskedTransitions(1, -8);
         Overlay029_NextPhase(state);
         /* fall through */
     case 1:
@@ -236,7 +236,7 @@ extern "C" s32 func_ov029_021fe0cc(void *state)
                 FIELD(Destructor *, result, 0)[1](result);
             }
             FIELD(void *, state, 0xa0) = 0;
-            func_02092c8c(1, 0);
+            DisplayBrightness_StartMaskedTransitions(1, 0);
             Overlay029_NextPhase(state);
         }
         break;

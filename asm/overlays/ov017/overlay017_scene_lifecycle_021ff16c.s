@@ -16,7 +16,7 @@
     .extern Graphics3DRenderObject_Destroy
     .extern GraphicsBankStateSnapshot_Destroy
     .extern func_02092418
-    .extern func_02092638
+    .extern TitleDisplay_SetMainBgPriorities
     .extern func_020926f8
     .extern func_020927b8
     .extern PresentationList_DeleteAll
@@ -114,7 +114,7 @@ L_021ff270:
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     add r0, r4, #0x4
     add r0, r0, #0x400
     bl GraphicsBankStateSnapshot_Destroy

@@ -16,7 +16,7 @@
 .extern FieldEffect_DestroyBase
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern SceneInputBase_Update
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov001_021fbe6c
 .extern gDebugFont
 .extern gGameWork
@@ -42,7 +42,7 @@ OverlayPromptPresentation_Update: ; 0x020223d4
     mov r0, #0x2
     str r1, [r4, #0x20]
     sub r1, r0, #0x12
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x8]
     add r0, r0, #0x1
     str r0, [r4, #0x8]
@@ -69,7 +69,7 @@ OverlayPromptPresentation_Update: ; 0x020223d4
     str r0, [r4, #0xc]
     mov r0, #0x2
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x8]
     add r0, r0, #0x1
     str r0, [r4, #0x8]

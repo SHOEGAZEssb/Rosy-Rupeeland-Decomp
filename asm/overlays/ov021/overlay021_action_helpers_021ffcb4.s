@@ -4,7 +4,7 @@
     .extern data_ov021_02202f08
 .extern RecordDescriptor_IsDiscovered
     .extern func_02092260
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern func_ov021_021fd1b8
     .extern func_ov021_021fd6e8
@@ -47,7 +47,7 @@ func_ov021_021ffcb4:
 L_021ffd34:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_021ffd58
     mov r0, r4
     ldmia r1, {r1, r2}

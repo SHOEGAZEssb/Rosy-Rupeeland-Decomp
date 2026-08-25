@@ -5,7 +5,7 @@
     .extern data_ov021_02202d80
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fe390
     .extern Overlay021_RefreshSelectionBackground
@@ -34,7 +34,7 @@ L_022022c0: ; jump table
 L_022022d0:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -81,7 +81,7 @@ L_02202368:
     bl func_ov021_021ff0e0
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

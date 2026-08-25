@@ -10965,7 +10965,7 @@ build build/reports/graphics_texture_palette_command.json: objdiff build/decomp/
   base_object = build/decomp/src/graphics/graphics_texture_palette_command.o
 build build/reports/graphics_texture_palette_command.txt: match_report build/reports/graphics_texture_palette_command.json | tools/report_objdiff.py
   report_json = build/reports/graphics_texture_palette_command.json
-  report_args = --section .text --function func_0209b454
+  report_args = --section .text --function G3Command_SetTexturePaletteBase
 
 build build/reports/graphics_immediate_resource_bind.json: objdiff build/decomp/delinks/src/graphics/graphics_immediate_resource_bind.o | build/decomp/src/graphics/graphics_immediate_resource_bind.o
   target_object = build/decomp/delinks/src/graphics/graphics_immediate_resource_bind.o
@@ -10979,14 +10979,14 @@ build build/reports/graphics_texcoord_command.json: objdiff build/decomp/delinks
   base_object = build/decomp/src/graphics/graphics_texcoord_command.o
 build build/reports/graphics_texcoord_command.txt: match_report build/reports/graphics_texcoord_command.json | tools/report_objdiff.py
   report_json = build/reports/graphics_texcoord_command.json
-  report_args = --section .text --function func_0209bcb0
+  report_args = --section .text --function G3Command_SubmitTexCoord
 
 build build/reports/graphics_vertex16_command.json: objdiff build/decomp/delinks/src/graphics/graphics_vertex16_command.o | build/decomp/src/graphics/graphics_vertex16_command.o
   target_object = build/decomp/delinks/src/graphics/graphics_vertex16_command.o
   base_object = build/decomp/src/graphics/graphics_vertex16_command.o
 build build/reports/graphics_vertex16_command.txt: match_report build/reports/graphics_vertex16_command.json | tools/report_objdiff.py
   report_json = build/reports/graphics_vertex16_command.json
-  report_args = --section .text --function func_0209bce4
+  report_args = --section .text --function G3Command_SubmitVertex16
 
 build build/reports/actor_motion_oscillation_control.json: objdiff build/decomp/delinks/src/game/actor_motion_oscillation_control.o | build/decomp/src/game/actor_motion_oscillation_control.o
   target_object = build/decomp/delinks/src/game/actor_motion_oscillation_control.o
@@ -11728,7 +11728,7 @@ build build/reports/title_display_setup_helpers.json: objdiff build/decomp/delin
   base_object = build/decomp/src/graphics/title_display_setup_helpers.o
 build build/reports/title_display_setup_helpers.txt: match_report build/reports/title_display_setup_helpers.json | tools/report_objdiff.py
   report_json = build/reports/title_display_setup_helpers.json
-  report_args = --section .text --function func_020925a4 --function func_020925dc --function func_020925f8 --function func_02092618 --function func_02092638 --function func_02092688 --require-exact
+  report_args = --section .text --function TitleDisplay_ConfigureMain2dEngine --function TitleDisplay_ConfigureSub2dEngine --function TitleDisplay_ResetMainBgScroll --function TitleDisplay_ResetSubBgScroll --function TitleDisplay_SetMainBgPriorities --function TitleDisplay_SetSubBgPriorities --require-exact
 
 build title_display_setup_helpers: phony build/reports/title_display_setup_helpers.txt
 build build/reports/display_brightness_helpers.json: objdiff build/decomp/delinks/src/graphics/display_brightness_helpers.o | build/decomp/src/graphics/display_brightness_helpers.o
@@ -11736,7 +11736,7 @@ build build/reports/display_brightness_helpers.json: objdiff build/decomp/delink
   base_object = build/decomp/src/graphics/display_brightness_helpers.o
 build build/reports/display_brightness_helpers.txt: match_report build/reports/display_brightness_helpers.json | tools/report_objdiff.py
   report_json = build/reports/display_brightness_helpers.json
-  report_args = --section .text --function func_02092c38 --function func_02092c8c --require-exact
+  report_args = --section .text --function DisplayBrightness_StartScreenTransition --function DisplayBrightness_StartMaskedTransitions --require-exact
 
 build display_brightness_helpers: phony build/reports/display_brightness_helpers.txt
 build build/reports/animation_resource_state.json: objdiff build/decomp/delinks/src/graphics/animation_resource_state.o | build/decomp/src/graphics/animation_resource_state.o

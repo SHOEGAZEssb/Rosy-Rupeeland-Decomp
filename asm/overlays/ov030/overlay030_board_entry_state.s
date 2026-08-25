@@ -8,7 +8,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern func_020922f0
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
 .extern func_ov030_021fcf20
 .extern func_ov030_021fda14
@@ -74,7 +74,7 @@ L_021fef00:
     bl func_ov030_021fe554
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

@@ -28,7 +28,7 @@ extern s32 func_ov030_021fea00(void *);
 extern s32 func_02095860(void *, void *, s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_02092260(void *, s32);
-extern void func_02092c8c(s32, s32, void *);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32, void *);
 #ifdef __cplusplus
 }
 #endif
@@ -116,7 +116,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
                 u8 *records = FIELD(u8 *, FIELD(void *, scene, 0x37c), 8);
                 void *record = records + FIELD(s32, scene, 0x380) * 0x24;
                 FIELD(void *, scene, 0x394) = record;
-                func_02092c8c(1, -16, record);
+                DisplayBrightness_StartMaskedTransitions(1, -16, record);
                 func_ov030_021fda14(scene, data_ov030_021ff768[0],
                                     data_ov030_021ff768[1]);
             } else {
@@ -134,7 +134,7 @@ extern "C" s32 func_ov030_021fec44(void *scene)
                 u8 *records = FIELD(u8 *, FIELD(void *, scene, 0x37c), 8);
                 void *record = records + FIELD(s32, scene, 0x388) * 0x24;
                 FIELD(void *, scene, 0x394) = record;
-                func_02092c8c(1, -16, record);
+                DisplayBrightness_StartMaskedTransitions(1, -16, record);
                 func_ov030_021fda14(scene, data_ov030_021ff7b8[0],
                                     data_ov030_021ff7b8[1]);
             } else {

@@ -5,7 +5,7 @@
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern GamePhaseCurrencyHud_GetCurrency
 .extern GamePhaseCurrencyHud_AddCurrency
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov022_021fcfd4
 .extern func_ov022_021fd068
 .extern func_ov022_021fdd1c
@@ -39,7 +39,7 @@ L_02200310:
     ldrsh r2, [r3, #0x98]
     add r2, r2, #0x1
     strh r2, [r3, #0x98]
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

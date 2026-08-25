@@ -10,12 +10,12 @@
 extern "C" void *data_020f4e18;
 extern "C" void *data_020f4e14;
 extern "C" void *gDebugFont;
-extern "C" void func_020925a4(s32 engine);
-extern "C" void func_020925f8(void);
-extern "C" void func_02092638(s32 first, s32 second, s32 third, s32 fourth);
-extern "C" void func_020925dc(s32 engine);
-extern "C" void func_02092618(void);
-extern "C" void func_02092688(s32 first, s32 second, s32 third, s32 fourth);
+extern "C" void TitleDisplay_ConfigureMain2dEngine(s32 engine);
+extern "C" void TitleDisplay_ResetMainBgScroll(void);
+extern "C" void TitleDisplay_SetMainBgPriorities(s32 first, s32 second, s32 third, s32 fourth);
+extern "C" void TitleDisplay_ConfigureSub2dEngine(s32 engine);
+extern "C" void TitleDisplay_ResetSubBgScroll(void);
+extern "C" void TitleDisplay_SetSubBgPriorities(s32 first, s32 second, s32 third, s32 fourth);
 extern "C" void GraphicsResourceSet_Init(void *resources);
 extern "C" void TitleScreenResourceCollection_Init(void *transfer);
 extern "C" void GraphicsResourceSet_Load(void *resources, void *archive,
@@ -49,18 +49,18 @@ extern "C" void func_ov043_0220ba28(void *object)
 
     *powerControl &= ~0x8000;
     FIELD(s32, object, 0x48) = 24;
-    func_020925a4(0);
+    TitleDisplay_ConfigureMain2dEngine(0);
     *mainBg0 = (*mainBg0 & 0x43) | 0x1e10;
-    func_020925f8();
-    func_02092638(0, 1, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
 
     FIELD(s32, object, 0x4c) = 29;
-    func_020925dc(0);
+    TitleDisplay_ConfigureSub2dEngine(0);
     subBg[0] = (subBg[0] & 0x43) | 0x3800;
     subBg[2] = (subBg[2] & 0x43) | 0x1c00;
     subBg[3] = (subBg[3] & 0x43) | 0x1e10;
-    func_02092618();
-    func_02092688(0, 1, 2, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 1, 2, 3);
 
     u8 resources[12];
     u8 transfer[68];

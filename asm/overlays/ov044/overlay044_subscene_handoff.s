@@ -1,5 +1,5 @@
 .text
-.extern func_02092c8c
+.extern DisplayBrightness_StartMaskedTransitions
 .extern DisplayBrightness_IsMainTransitionComplete
 .extern func_ov044_0220bd98
 .extern func_02095940
@@ -10,7 +10,7 @@
 .extern func_ov015_021fce58
 .extern func_ov044_0220c880
 .extern SceneInputBase_Update
-.extern func_020925f8
+.extern TitleDisplay_ResetMainBgScroll
 .extern func_ov044_0220c3e4
 .extern func_ov044_0220c610
 .extern func_ov044_0220c440
@@ -44,7 +44,7 @@ func_ov044_0220cf60:
 .L_0220cf94:
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -80,7 +80,7 @@ func_ov044_0220cf60:
     str r0, [r4, #0x23c]
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -112,7 +112,7 @@ func_ov044_0220cf60:
     beq .L_0220d1ec
     mov r0, #0x1
     sub r1, r0, #0x11
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -162,7 +162,7 @@ func_ov044_0220cf60:
     bl GraphicsSpriteRenderer_ClearTextBuffer
     mov r0, #0x1c
     str r0, [r4, #0x48]
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     mov r0, r4
     bl func_ov044_0220c3e4
     mov r0, r4
@@ -189,7 +189,7 @@ func_ov044_0220cf60:
 .L_0220d1a8:
     mov r0, #0x1
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

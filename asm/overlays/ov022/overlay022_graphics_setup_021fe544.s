@@ -6,8 +6,8 @@
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsBgMapResource_SetPaletteBank
     .extern func_02072048
-    .extern func_020925f8
-    .extern func_02092638
+    .extern TitleDisplay_ResetMainBgScroll
+    .extern TitleDisplay_SetMainBgPriorities
     .extern func_020afd0c
     .extern func_020b2058
     .extern func_020b44e8
@@ -24,7 +24,7 @@ func_ov022_021fe544:
     mov r1, #0x1
     mov r2, #0x2
     mov r3, #0x3
-    bl func_02092638
+    bl TitleDisplay_SetMainBgPriorities
     ldr r1, L_021fe670
     ldrh r0, [r1, #0x0]
     and r0, r0, #0x43
@@ -40,7 +40,7 @@ func_ov022_021fe544:
     orr r0, r0, #0xe10
     orr r0, r0, #0x1000
     strh r0, [r1, #0x4]
-    bl func_020925f8
+    bl TitleDisplay_ResetMainBgScroll
     add r0, sp, #0x4
     bl GraphicsResourceSet_Init
     ldr r3, L_021fe674

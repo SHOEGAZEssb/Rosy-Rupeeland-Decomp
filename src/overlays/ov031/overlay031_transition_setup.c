@@ -13,9 +13,9 @@ extern "C" {
 #endif
 extern s32 func_0209189c(void *, s32, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern void func_020925dc(s32);
-extern void func_02092618(void);
-extern void func_02092688(s32, s32, s32, s32);
+extern void TitleDisplay_ConfigureSub2dEngine(s32);
+extern void TitleDisplay_ResetSubBgScroll(void);
+extern void TitleDisplay_SetSubBgPriorities(s32, s32, s32, s32);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
@@ -68,13 +68,13 @@ extern "C" void func_ov031_021fdf20(void *scene, s32 restart)
 extern "C" void func_ov031_021fdfa8(void *scene)
 {
     FIELD(s32, scene, 0x4c) = 0x17;
-    func_020925dc(0);
+    TitleDisplay_ConfigureSub2dEngine(0);
     func_ov031_021fe148(0, 0, 0x1a, 0, 1);
     volatile u16 *bg1 = (volatile u16 *)0x0400100a;
     bg1[0] = (bg1[0] & 0x43) | 0x3c90;
     bg1[1] = (bg1[1] & 0x43) | 0x1e98;
-    func_02092618();
-    func_02092688(0, 2, 1, 3);
+    TitleDisplay_ResetSubBgScroll();
+    TitleDisplay_SetSubBgPriorities(0, 2, 1, 3);
     u32 resources[3];
     GraphicsResourceSet_Init(resources);
 

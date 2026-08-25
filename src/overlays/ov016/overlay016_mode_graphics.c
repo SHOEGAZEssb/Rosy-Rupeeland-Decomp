@@ -11,8 +11,8 @@ extern void *data_020f4e18;
 extern "C" {
 #endif
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
-extern void func_020925f8(void);
-extern void func_02092638(s32, s32, s32, s32);
+extern void TitleDisplay_ResetMainBgScroll(void);
+extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b44e8(void);
 extern void func_ov016_021fd188(void *);
@@ -38,8 +38,8 @@ extern "C" void func_ov016_021ff094(void *state)
     func_ov016_021ff04c(0);
     FIELD(s32, state, 0x48) = 0x1c;
     Overlay016_ConfigureMainBg3(0, 0, 0x1e, 4);
-    func_020925f8();
-    func_02092638(0, 0, 2, 3);
+    TitleDisplay_ResetMainBgScroll();
+    TitleDisplay_SetMainBgPriorities(0, 0, 2, 3);
 
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8004, 0x8005, 0x8006);
@@ -67,9 +67,9 @@ extern "C" void func_ov016_021ff17c(void *state)
 
     FIELD(s32, state, 0x48) = 0x1c;
     Overlay016_ConfigureMainBg3(0, 0, 0x1e, 4);
-    func_020925f8();
+    TitleDisplay_ResetMainBgScroll();
     *(volatile u32 *)0x04000018 = 0x00380000;
-    func_02092638(0, 0, 3, 2);
+    TitleDisplay_SetMainBgPriorities(0, 0, 3, 2);
 
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8008, 0x8009, 0x800a);

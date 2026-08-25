@@ -22,7 +22,7 @@ extern void GraphicsSpriteGroup_Destroy(void *context);
 extern void AreaInfoPanelPresentation_Destroy(void *object);
 extern void Heap_Free(void *memory);
 extern void *func_ov005_021fbb78(void *scene);
-extern void func_020925dc(s32 value);
+extern void TitleDisplay_ConfigureSub2dEngine(s32 value);
 extern void AnimationResourceState_Destroy(void *resource);
 #ifdef __cplusplus
 }
@@ -42,7 +42,7 @@ static void overlay005_release_controller(void *controller)
  * Restore data_ov005_021fcad4 as the vtable and clear +0x20 bit 10. Invoke
  * controller +0x64's vtable slot +0x04 when non-null, release context +0x60,
  * and for auxiliary +0x78 call AreaInfoPanelPresentation_Destroy then Heap_Free. For scene +0x74,
- * call func_ov005_021fbb78 then Heap_Free. Submit zero to func_020925dc, clear
+ * call func_ov005_021fbb78 then Heap_Free. Submit zero to TitleDisplay_ConfigureSub2dEngine, clear
  * the halfword at sub BLDCNT 0x04001050, clear bits 13..15 in sub DISPCNT
  * 0x04001000, destroy resource +0x54, and return state. The state object itself
  * is not freed. Ownership order and MMIO effects are confirmed.
@@ -71,7 +71,7 @@ Overlay005Presentation *func_ov005_021fc110(Overlay005Presentation *state)
         func_ov005_021fbb78(object);
         Heap_Free(object);
     }
-    func_020925dc(0);
+    TitleDisplay_ConfigureSub2dEngine(0);
     *(volatile u16 *)0x04001050 = 0;
     *(volatile u32 *)0x04001000 &= ~0xe000;
     AnimationResourceState_Destroy((u8 *)state + 0x54);

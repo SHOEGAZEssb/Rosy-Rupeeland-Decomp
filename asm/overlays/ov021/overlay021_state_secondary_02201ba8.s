@@ -7,7 +7,7 @@
     .extern data_ov021_02202dc0
     .extern data_ov021_02202dc8
     .extern func_02092260
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
     .extern func_02095860
     .extern func_ov001_021fc0ac
@@ -223,7 +223,7 @@ L_02201dac:
     ldr r2, [r4, #0x380]
     ldrh r2, [r2, #0x0]
     str r2, [r4, #0x378]
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r1, L_02201f8c
     mov r0, r4
     ldmia r1, {r1, r2}

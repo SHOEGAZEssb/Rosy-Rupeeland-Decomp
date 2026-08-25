@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_graphics_setup.c. */
-    .extern func_02092a34
+    .extern GraphicsAffineScanlineWave_Apply
 
 .global func_ov022_021fe380
 func_ov022_021fe380:
@@ -14,11 +14,11 @@ func_ov022_021fe380:
     cmp r1, #0x0
     beq L_021fe3b0
     mov r1, #0x1
-    bl func_02092a34
+    bl GraphicsAffineScanlineWave_Apply
     b L_021fe3b8
 L_021fe3b0:
     mov r1, #0x0
-    bl func_02092a34
+    bl GraphicsAffineScanlineWave_Apply
 L_021fe3b8:
     mov r0, #0x0
     ldmia sp!, {r3, pc}

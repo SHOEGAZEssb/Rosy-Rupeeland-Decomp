@@ -8,7 +8,7 @@
     .extern GamePhaseRuntime_StageAreaRequest
     .extern Heap_Alloc
     .extern GamePhaseTransitionScene_Init
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov033_021fd598
     .extern Type7Actor_EnterFlag40000State
     .extern func_ov033_021fd04c
@@ -104,7 +104,7 @@ L_021fd83c:
     bne L_021fd86c
     mov r0, #0x3
     mov r1, #0x10
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
 L_021fd86c:
     mov r0, r4
     bl func_ov033_021fd598
@@ -151,7 +151,7 @@ L_021fd878:
 L_021fd910:
     mov r0, #0x3
     mov r1, #0x0
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x48]
     ldr r1, L_021fd998
     mov r2, #0x0

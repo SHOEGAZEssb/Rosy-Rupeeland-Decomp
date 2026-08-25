@@ -6,7 +6,7 @@
     .extern Presentation_IsScriptSuspended
     .extern func_ov037_021fdd08
     .extern func_ov037_021fd1b4
-    .extern func_02092c8c
+    .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov037_021fe1f0
     .extern func_ov037_021fdf68
     .extern DisplayBrightness_IsMainTransitionComplete
@@ -92,7 +92,7 @@ L_021fe374:
     beq L_021fe3a0
     mov r0, #0x3
     mov r1, #0x10
-    bl func_02092c8c
+    bl DisplayBrightness_StartMaskedTransitions
     ldr r0, [r4, #0x9c]
     add r0, r0, #0x1
     str r0, [r4, #0x9c]

@@ -27,7 +27,7 @@ extern void func_02091bac(void *, s32, s32, s32, s32);
 extern s32 func_02091c7c(void *, s32);
 extern s32 func_02091cf0(void *);
 extern void func_020922f0(void *, s32);
-extern void func_02092c8c(s32, s32);
+extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void PresentationList_Append(void *, void *);
 extern void SpritePresentation_Show(void *);
@@ -185,7 +185,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
                 FIELD(s32, state, 4) = 10;
                 FIELD(s32, state, 8) = 0;
             } else {
-                func_02092c8c(2, -8);
+                DisplayBrightness_StartMaskedTransitions(2, -8);
                 func_ov018_021fda10(state, 0x1ec);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
@@ -196,7 +196,7 @@ extern "C" s32 func_ov018_021fea1c(void *state)
         if (func_ov018_021fda60(state)) {
             void *dialog = FIELD(void *, state, 0x418);
             TitleDialog_ClearTextRect(dialog);
-            func_02092c8c(2, 0);
+            DisplayBrightness_StartMaskedTransitions(2, 0);
             destroyVirtual(dialog);
             FIELD(void *, state, 0x418) = 0;
             func_ov018_021fcf40(state, data_ov018_021ffbf8[0],
