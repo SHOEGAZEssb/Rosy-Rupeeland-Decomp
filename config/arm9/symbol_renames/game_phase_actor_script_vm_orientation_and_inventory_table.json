@@ -1,0 +1,11 @@
+{
+  "GamePhaseActorScriptVm_SetSystemStateHalfword5c": "GamePhaseActorScriptVm_SetSystemStateHalfword5c",
+  "GamePhaseActorScriptVm_StepActorOrientation": "GamePhaseActorScriptVm_StepActorOrientation",
+  "func_02016070": "GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantA",
+  "func_020160b0": "GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantB",
+  "func_020160f0": "GamePhaseActorScriptVm_DispatchInventoryTableTriple",
+  "func_02016144": "GamePhaseActorScriptVm_DispatchInventoryTableValue",
+  "func_0201616c": "GamePhaseActorScriptVm_HasInventoryTableEntry",
+  "func_020161ac": "GamePhaseActorScriptVm_InventoryTableContainsId",
+  "func_020161f4": "GamePhaseActorScriptVm_SecondaryTableContainsValue"
+}

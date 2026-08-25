@@ -3,8 +3,8 @@
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_020636f0
-.global func_0201616c
-func_0201616c:
+.global GamePhaseActorScriptVm_HasInventoryTableEntry
+GamePhaseActorScriptVm_HasInventoryTableEntry:
     stmdb sp!, {r4, lr}
     ldr r1, L_020161a8
     mov r4, r0
@@ -23,4 +23,4 @@ L_020161a0:
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_020161a8: .word data_021e9ac0
-    .size func_0201616c, . - func_0201616c
+    .size GamePhaseActorScriptVm_HasInventoryTableEntry, . - GamePhaseActorScriptVm_HasInventoryTableEntry

@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern InventoryManager_ContainsId
-.global func_020161ac
-func_020161ac:
+.global GamePhaseActorScriptVm_InventoryTableContainsId
+GamePhaseActorScriptVm_InventoryTableContainsId:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -26,4 +26,4 @@ L_020161e8:
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_020161f0: .word data_021e9ac0
-    .size func_020161ac, . - func_020161ac
+    .size GamePhaseActorScriptVm_InventoryTableContainsId, . - GamePhaseActorScriptVm_InventoryTableContainsId

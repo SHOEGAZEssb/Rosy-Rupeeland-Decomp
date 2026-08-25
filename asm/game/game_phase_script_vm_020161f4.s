@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_0206f9d4
-.global func_020161f4
-func_020161f4:
+.global GamePhaseActorScriptVm_SecondaryTableContainsValue
+GamePhaseActorScriptVm_SecondaryTableContainsValue:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -25,4 +25,4 @@ L_0201622c:
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_02016234: .word data_021e9e00
-    .size func_020161f4, . - func_020161f4
+    .size GamePhaseActorScriptVm_SecondaryTableContainsValue, . - GamePhaseActorScriptVm_SecondaryTableContainsValue

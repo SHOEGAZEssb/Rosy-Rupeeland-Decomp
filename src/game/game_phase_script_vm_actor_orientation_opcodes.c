@@ -28,7 +28,8 @@ s32 GamePhaseActorScriptVm_StepActorOrientation(GamePhaseActorScriptVm *self)
 {
     s32 step = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
-    GraphicsSpriteState_SetAnimationIndex(*(void **)(actor + 0x54), (u8)(actor[0xe7] + step));
+    void *attachment = *(void **)(actor + 0x54);
+    GraphicsSpriteState_SetAnimationIndex(attachment, (u8)(actor[0xe7] + step));
     Actor_SetRuntimeProperty(actor, 17, step << 13);
     return 0;
 }

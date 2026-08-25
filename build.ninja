@@ -6030,21 +6030,21 @@ build build/reports/game_phase_script_vm_02016070.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02016070.o
 build build/reports/game_phase_script_vm_02016070.txt: match_report build/reports/game_phase_script_vm_02016070.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02016070.json
-  report_args = --section .text --function func_02016070 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantA --require-exact
 
 build build/reports/game_phase_script_vm_020160b0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020160b0.o | build/decomp/asm/game/game_phase_script_vm_020160b0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020160b0.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020160b0.o
 build build/reports/game_phase_script_vm_020160b0.txt: match_report build/reports/game_phase_script_vm_020160b0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020160b0.json
-  report_args = --section .text --function func_020160b0 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantB --require-exact
 
 build build/reports/game_phase_script_vm_020160f0.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020160f0.o | build/decomp/asm/game/game_phase_script_vm_020160f0.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020160f0.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020160f0.o
 build build/reports/game_phase_script_vm_020160f0.txt: match_report build/reports/game_phase_script_vm_020160f0.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020160f0.json
-  report_args = --section .text --function func_020160f0 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchInventoryTableTriple --require-exact
 
 build build/reports/game_phase_script_vm_u16_table_update_opcodes.txt: phony build/reports/game_phase_script_vm_02016070.txt build/reports/game_phase_script_vm_020160b0.txt build/reports/game_phase_script_vm_020160f0.txt
 
@@ -6053,28 +6053,28 @@ build build/reports/game_phase_script_vm_02016144.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02016144.o
 build build/reports/game_phase_script_vm_02016144.txt: match_report build/reports/game_phase_script_vm_02016144.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02016144.json
-  report_args = --section .text --function func_02016144 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchInventoryTableValue --require-exact
 
 build build/reports/game_phase_script_vm_0201616c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201616c.o | build/decomp/asm/game/game_phase_script_vm_0201616c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201616c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201616c.o
 build build/reports/game_phase_script_vm_0201616c.txt: match_report build/reports/game_phase_script_vm_0201616c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201616c.json
-  report_args = --section .text --function func_0201616c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_HasInventoryTableEntry --require-exact
 
 build build/reports/game_phase_script_vm_020161ac.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020161ac.o | build/decomp/asm/game/game_phase_script_vm_020161ac.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020161ac.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020161ac.o
 build build/reports/game_phase_script_vm_020161ac.txt: match_report build/reports/game_phase_script_vm_020161ac.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020161ac.json
-  report_args = --section .text --function func_020161ac --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_InventoryTableContainsId --require-exact
 
 build build/reports/game_phase_script_vm_020161f4.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_020161f4.o | build/decomp/asm/game/game_phase_script_vm_020161f4.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_020161f4.o
   base_object = build/decomp/asm/game/game_phase_script_vm_020161f4.o
 build build/reports/game_phase_script_vm_020161f4.txt: match_report build/reports/game_phase_script_vm_020161f4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_020161f4.json
-  report_args = --section .text --function func_020161f4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_SecondaryTableContainsValue --require-exact
 
 build build/reports/game_phase_script_vm_table_query_opcodes.txt: phony build/reports/game_phase_script_vm_02016144.txt build/reports/game_phase_script_vm_0201616c.txt build/reports/game_phase_script_vm_020161ac.txt build/reports/game_phase_script_vm_020161f4.txt
 

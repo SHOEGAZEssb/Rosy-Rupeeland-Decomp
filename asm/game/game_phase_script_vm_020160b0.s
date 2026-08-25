@@ -3,8 +3,8 @@
 .extern data_021e9ac0
 .extern GamePhaseScriptVm_Pop
 .extern func_02063724
-.global func_020160b0
-func_020160b0:
+.global GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantB
+GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantB:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -21,4 +21,4 @@ func_020160b0:
     mov r0, #0
     ldmia sp!, {r3, r4, r5, pc}
 L_020160ec: .word data_021e9ac0
-    .size func_020160b0, . - func_020160b0
+    .size GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantB, . - GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantB

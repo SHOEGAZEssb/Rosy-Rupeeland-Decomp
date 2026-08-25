@@ -14,7 +14,7 @@ extern void func_020638b0(void *table, u16 first, u16 second, u16 third);
 #endif
 
 /* Pop a value and key, narrow both to u16, pass them to func_0206370c, and return zero. */
-s32 func_02016070(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantA(GamePhaseActorScriptVm *self)
 {
     u16 value = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 key = (u16)GamePhaseScriptVm_Pop(&self->base);
@@ -23,7 +23,7 @@ s32 func_02016070(GamePhaseActorScriptVm *self)
 }
 
 /* Pop a value and key, narrow both to u16, pass them to func_02063724, and return zero. */
-s32 func_020160b0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchInventoryTableKeyValueVariantB(GamePhaseActorScriptVm *self)
 {
     u16 value = (u16)GamePhaseScriptVm_Pop(&self->base);
     u16 key = (u16)GamePhaseScriptVm_Pop(&self->base);
@@ -32,11 +32,11 @@ s32 func_020160b0(GamePhaseActorScriptVm *self)
 }
 
 /* Pop third, second, and first u16 values, pass them to func_020638b0, and return zero. */
-s32 func_020160f0(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchInventoryTableTriple(GamePhaseActorScriptVm *self)
 {
-    u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u16 second = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u16 first = (u16)GamePhaseScriptVm_Pop(&self->base);
-    func_020638b0(data_021e9ac0, first, second, third);
+    u16 operandC = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 operandB = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 operandA = (u16)GamePhaseScriptVm_Pop(&self->base);
+    func_020638b0(data_021e9ac0, operandA, operandB, operandC);
     return 0;
 }
