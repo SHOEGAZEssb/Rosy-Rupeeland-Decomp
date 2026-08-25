@@ -27,7 +27,7 @@ extern s32 func_0209189c(void *, s32, s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov013_021fdfd4(void *state, void *record, s32 horizontalRange,
+void Overlay013_RandomizeRecordPosition(void *state, void *record, s32 horizontalRange,
                          s32 verticalRange)
 {
     void *target = GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *, state, 0x84),
@@ -48,7 +48,7 @@ void func_ov013_021fdfd4(void *state, void *record, s32 horizontalRange,
 }
 
 /*
- * For each record whose +0x98 bit 0 is set, call func_ov013_021fdfd4: the seven
+ * For each record whose +0x98 bit 0 is set, call Overlay013_RandomizeRecordPosition: the seven
  * records at +0x8C use argument two and its signed half, the five records at
  * +0x540 use argument three for both ranges, and the final +0x89C record uses
  * argument four for both. Return void after any graphics/random-state effects.
@@ -56,7 +56,7 @@ void func_ov013_021fdfd4(void *state, void *record, s32 horizontalRange,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov013_021fe078(void *state, s32 firstRange, s32 secondRange,
+void Overlay013_RandomizeActiveRecordPositions(void *state, s32 firstRange, s32 secondRange,
                          s32 finalRange)
 {
     s32 i;
@@ -65,14 +65,14 @@ void func_ov013_021fe078(void *state, s32 firstRange, s32 secondRange,
     for (i = 0; i < 7; ++i) {
         u8 *record = (u8 *)state + 0x8c + i * 0xac;
         if (FIELD(u16, record, 0x98) & 1)
-            func_ov013_021fdfd4(state, record, firstRange, half);
+            Overlay013_RandomizeRecordPosition(state, record, firstRange, half);
     }
     for (i = 0; i < 5; ++i) {
         u8 *record = (u8 *)state + 0x540 + i * 0xac;
         if (FIELD(u16, record, 0x98) & 1)
-            func_ov013_021fdfd4(state, record, secondRange, secondRange);
+            Overlay013_RandomizeRecordPosition(state, record, secondRange, secondRange);
     }
     if (FIELD(u16, state, 0x934) & 1)
-        func_ov013_021fdfd4(state, (u8 *)state + 0x89c,
+        Overlay013_RandomizeRecordPosition(state, (u8 *)state + 0x89c,
                             finalRange, finalRange);
 }

@@ -5,9 +5,9 @@
     .extern TitleRandom_NextBounded
 
 /* Exact fallback; see src/overlays/ov013/overlay013_record_position.c. */
-    .global func_ov013_021fdfd4
+    .global Overlay013_RandomizeRecordPosition
 
-func_ov013_021fdfd4:
+Overlay013_RandomizeRecordPosition:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r9, r0
     ldr r0, [r9, #0x84]
@@ -49,4 +49,4 @@ func_ov013_021fdfd4:
     orr r0, r0, #0x100
     strh r0, [r5, #0x24]
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_ov013_021fdfd4, . - func_ov013_021fdfd4
+    .size Overlay013_RandomizeRecordPosition, . - Overlay013_RandomizeRecordPosition

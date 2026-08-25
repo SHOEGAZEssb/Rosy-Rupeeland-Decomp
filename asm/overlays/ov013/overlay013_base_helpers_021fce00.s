@@ -2,10 +2,10 @@
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_base_helpers.c. */
-    .global func_ov013_021fce00
-func_ov013_021fce00:
+    .global Overlay013_Record_NoOp
+Overlay013_Record_NoOp:
     bx lr
-    .size func_ov013_021fce00, . - func_ov013_021fce00
+    .size Overlay013_Record_NoOp, . - Overlay013_Record_NoOp
 
     .global func_ov013_021fce04
 func_ov013_021fce04:

@@ -59,7 +59,7 @@
 .extern DisplayBrightness_StartMaskedTransitions
 .extern Overlay004_VariantController_Init
 .extern Overlay009_InitSceneFields
-.extern func_ov013_021fce2c
+.extern Overlay013_Scene_Init
 .extern func_ov016_021fe77c
 .extern func_ov017_021fda3c
 .extern func_ov018_021fcf68
@@ -324,7 +324,7 @@ L_0200d3bc:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d400
-    bl func_ov013_021fce2c ; func_ov023_021fce2c, func_ov024_021fce2c, func_ov038_021fce2c
+    bl Overlay013_Scene_Init ; func_ov023_021fce2c, func_ov024_021fce2c, func_ov038_021fce2c
 L_0200d400:
     str r0, [r5, #0x24]
     b L_0200dbd4
@@ -548,7 +548,7 @@ L_0200d6f0:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d728
-    bl func_ov013_021fce2c ; func_ov023_021fce2c, func_ov024_021fce2c, func_ov038_021fce2c
+    bl Overlay013_Scene_Init ; func_ov023_021fce2c, func_ov024_021fce2c, func_ov038_021fce2c
 L_0200d728:
     str r0, [r5, #0x24]
     b L_0200dbd4
@@ -569,7 +569,7 @@ L_0200d730:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d774
-    bl func_ov013_021fce2c ; func_ov023_021fce2c, func_ov024_021fce2c, func_ov038_021fce2c
+    bl Overlay013_Scene_Init ; func_ov023_021fce2c, func_ov024_021fce2c, func_ov038_021fce2c
 L_0200d774:
     str r0, [r5, #0x24]
     b L_0200dbd4

@@ -78,7 +78,7 @@ extern void GraphicsBankStateSnapshot_Capture(void *object);
 extern void RuntimePresentationManager_DisableGraphics3dForActivePhase(
     void *manager);
 extern void GraphicsSpriteRenderer_BuildFrame(GraphicsSpriteRenderer *renderer, s32 mode);
-extern void *func_ov013_021fce2c(void *object);
+extern void *Overlay013_Scene_Init(void *object);
 extern void *InventoryScene_Init(void *object);
 extern void *func_ov044_0220be60(void *object);
 extern void *func_ov043_0220b76c(void *object);
@@ -584,7 +584,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e108);
     object = Heap_Alloc(UNK_0200e10c,OVERLAY013_DEFAULT_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov013_021fce2c(object);
+      object = Overlay013_Scene_Init(object);
     }
     self->loadedScene = object;
     break;
@@ -687,7 +687,7 @@ code_r0x0200d3bc:
     OverlaySlot_LoadOverlay(&self->overlaySlot2,UNK_0200e184);
     object = Heap_Alloc(0x2f8,OVERLAY013_KIND13_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov013_021fce2c(object);
+      object = Overlay013_Scene_Init(object);
     }
     self->loadedScene = object;
     break;
@@ -898,7 +898,7 @@ code_r0x0200d5d8:
     OverlaySlot_LoadOverlay(&self->overlaySlot1,UNK_0200e178);
     object = Heap_Alloc(0x368,OVERLAY013_KIND25_SCENE_ALLOCATION_TAG,4,UNK_0200e114);
     if (object != 0) {
-      object = func_ov013_021fce2c(object);
+      object = Overlay013_Scene_Init(object);
     }
     self->loadedScene = object;
   }

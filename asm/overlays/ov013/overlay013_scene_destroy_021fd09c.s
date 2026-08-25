@@ -7,13 +7,13 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
-    .extern func_ov013_021fce00
+    .extern Overlay013_Record_NoOp
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_scene_lifecycle.c. */
-    .global func_ov013_021fd09c
+    .global Overlay013_Scene_Destroy
 
-func_ov013_021fd09c:
+Overlay013_Scene_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fd190
     mov r4, r0
@@ -57,7 +57,7 @@ L_021fd100:
     bl RuntimePresentationManager_BroadcastSlot1C
     add r0, r4, #0x9c
     add r0, r0, #0x800
-    bl func_ov013_021fce00
+    bl Overlay013_Record_NoOp
     add r0, r4, #0x540
     mov r1, #0x5
     mov r2, #0xac
@@ -81,5 +81,5 @@ L_021fd100:
 L_021fd190: .word data_ov013_021fed6c
 L_021fd194: .word data_020f4e14
 L_021fd198: .word gGamePhaseRuntime
-L_021fd19c: .word func_ov013_021fce00
-    .size func_ov013_021fd09c, . - func_ov013_021fd09c
+L_021fd19c: .word Overlay013_Record_NoOp
+    .size Overlay013_Scene_Destroy, . - Overlay013_Scene_Destroy

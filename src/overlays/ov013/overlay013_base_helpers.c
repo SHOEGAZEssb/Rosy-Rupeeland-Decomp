@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov013_021fce00(void *element)
+void Overlay013_Record_NoOp(void *element)
 {
     (void)element;
 }

@@ -27,16 +27,16 @@
     .extern SpriteMotionController_Hide
     .extern SpriteMotionController_SetAnimation
     .extern func_020b44e8
-    .extern func_ov013_021fda28
+    .extern Overlay013_InitRecordCounter
     .extern func_ov013_021fdb50
     .extern gDebugFont
     .extern gGameWork
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_scene_populate.c. */
-    .global func_ov013_021fd310
+    .global Overlay013_PopulateScene
 
-func_ov013_021fd310:
+Overlay013_PopulateScene:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x1c
     ldr r1, L_021fd9f4
@@ -122,7 +122,7 @@ L_021fd34c:
     bl PresentationScalar_TransitionTo
     mov r0, r10
     mov r1, #0x78
-    bl func_ov013_021fda28
+    bl Overlay013_InitRecordCounter
     cmp r9, #0x4
     cmpne r9, #0x5
     cmpne r9, #0x6
@@ -379,7 +379,7 @@ L_021fd768:
     bl PresentationScalar_TransitionTo
     mov r0, r6
     mov r1, #0x78
-    bl func_ov013_021fda28
+    bl Overlay013_InitRecordCounter
     ldr r0, [r4, #0x948]
     bl SpritePresentation_Hide
     b L_021fd8a8
@@ -510,4 +510,4 @@ L_021fda18: .word 0x400000a
 L_021fda1c: .word 0xb002
 L_021fda20: .word data_020f4e18
 L_021fda24: .word 0x8002
-    .size func_ov013_021fd310, . - func_ov013_021fd310
+    .size Overlay013_PopulateScene, . - Overlay013_PopulateScene

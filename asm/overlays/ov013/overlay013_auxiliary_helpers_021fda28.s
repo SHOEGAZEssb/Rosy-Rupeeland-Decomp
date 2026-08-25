@@ -15,12 +15,12 @@
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_auxiliary_helpers.c. */
-    .global func_ov013_021fda28
+    .global Overlay013_InitRecordCounter
     .global func_ov013_021fda40
     .global func_ov013_021fda9c
     .global func_ov013_021fdb10
     .global func_ov013_021fdb50
-func_ov013_021fda28:
+Overlay013_InitRecordCounter:
     mov r1, r1, lsl #0x10
     mov r1, r1, asr #0x10
     str r1, [r0, #0x7c]
@@ -29,7 +29,7 @@ func_ov013_021fda28:
     bx lr
 
     .global func_ov013_021fda40
-    .size func_ov013_021fda28, . - func_ov013_021fda28
+    .size Overlay013_InitRecordCounter, . - Overlay013_InitRecordCounter
 func_ov013_021fda40:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fda90

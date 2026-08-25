@@ -4,9 +4,9 @@
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_terminal_states.c. */
-    .global func_ov013_021feacc
+    .global Overlay013_UpdateTerminalPhase
 
-func_ov013_021feacc:
+Overlay013_UpdateTerminalPhase:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x97c]
@@ -39,4 +39,4 @@ L_021feb34:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021feb3c: .word gGamePhaseRuntime
-    .size func_ov013_021feacc, . - func_ov013_021feacc
+    .size Overlay013_UpdateTerminalPhase, . - Overlay013_UpdateTerminalPhase

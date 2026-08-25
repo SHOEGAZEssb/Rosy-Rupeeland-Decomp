@@ -35,7 +35,7 @@ extern void SpriteMotionController_Hide(void *);
 extern void SpriteMotionController_Update(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void GamePhaseMetadata_IsAreaBehaviorPermitted(void *);
-extern void func_ov013_021fda28(void *, s32);
+extern void Overlay013_InitRecordCounter(void *, s32);
 extern void func_ov013_021fdb50(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void TitleDisplay_ConfigureMain2dEngine(s32);
@@ -78,7 +78,7 @@ extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov013_021fd310(void *state)
+void Overlay013_PopulateScene(void *state)
 {
     s32 i;
     Overlay013ResourceSet resources;
@@ -110,7 +110,7 @@ void func_ov013_021fd310(void *state)
             PresentationScalar_SetImmediate(record + 0x1c, 0xe0000);
             PresentationScalar_TransitionTo(record + 0x1c, 2,
                           FIELD(s32, descriptor, 0x0c) << 12);
-            func_ov013_021fda28(record, 0x78);
+            Overlay013_InitRecordCounter(record, 0x78);
             if (i >= 4) {
                 void *manager = FIELD(void *, state, 0x84);
                 FIELD(s32, manager, 0x18) = -256;
@@ -163,7 +163,7 @@ void func_ov013_021fd310(void *state)
                 FIELD(u16, record, 0x98) |= 1;
                 PresentationScalar_SetImmediate(record + 0x1c, 0xe0000);
                 PresentationScalar_TransitionTo(record + 0x1c, 2, 0x9c000);
-                func_ov013_021fda28(record, 0x78);
+                Overlay013_InitRecordCounter(record, 0x78);
                 SpritePresentation_Hide(FIELD(void *, state, 0x948));
             } else {
                 SpriteMotionController_Hide(record);

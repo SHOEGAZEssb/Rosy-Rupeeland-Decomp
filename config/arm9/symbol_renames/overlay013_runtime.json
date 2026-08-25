@@ -1,0 +1,19 @@
+{
+  "func_ov013_021fce00": "Overlay013_Record_NoOp",
+  "func_ov013_021fce2c": "Overlay013_Scene_Init",
+  "func_ov013_021fd09c": "Overlay013_Scene_Destroy",
+  "func_ov013_021fd1a0": "Overlay013_Scene_Delete",
+  "func_ov013_021fd2ac": "Overlay013_DispatchSceneCallback",
+  "func_ov013_021fd310": "Overlay013_PopulateScene",
+  "func_ov013_021fda28": "Overlay013_InitRecordCounter",
+  "func_ov013_021fdbb0": "Overlay013_UpdateSceneRuntime",
+  "func_ov013_021fdfbc": "Overlay013_HasRecordReachedLimit",
+  "func_ov013_021fdfd4": "Overlay013_RandomizeRecordPosition",
+  "func_ov013_021fe078": "Overlay013_RandomizeActiveRecordPositions",
+  "func_ov013_021fe148": "Overlay013_UpdateSetupPhase",
+  "func_ov013_021fe28c": "Overlay013_UpdateRevealPhase",
+  "func_ov013_021fe454": "Overlay013_UpdateInteractionPhase",
+  "func_ov013_021fe880": "Overlay013_UpdateExitPhase",
+  "func_ov013_021fe9c8": "Overlay013_UpdateCompletionPhase",
+  "func_ov013_021feacc": "Overlay013_UpdateTerminalPhase"
+}

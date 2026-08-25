@@ -4,9 +4,9 @@
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_scene_lifecycle.c. */
-    .global func_ov013_021fd2ac
+    .global Overlay013_DispatchSceneCallback
 
-func_ov013_021fd2ac:
+Overlay013_DispatchSceneCallback:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x9a8]
@@ -34,4 +34,4 @@ L_021fd304:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fd30c: .word gGamePhaseRuntime
-    .size func_ov013_021fd2ac, . - func_ov013_021fd2ac
+    .size Overlay013_DispatchSceneCallback, . - Overlay013_DispatchSceneCallback

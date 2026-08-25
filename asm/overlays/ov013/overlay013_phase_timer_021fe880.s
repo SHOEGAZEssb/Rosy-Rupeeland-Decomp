@@ -8,14 +8,14 @@
     .extern SceneSound_PlayPackedEffect
     .extern GraphicsSpriteState_TestTouchPoint
     .extern func_ov013_021fce04
-    .extern func_ov013_021fdbb0
+    .extern Overlay013_UpdateSceneRuntime
     .extern func_ov013_021fdd8c
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_phase_handlers.c. */
-    .global func_ov013_021fe880
+    .global Overlay013_UpdateExitPhase
 
-func_ov013_021fe880:
+Overlay013_UpdateExitPhase:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -97,10 +97,10 @@ L_021fe968:
     bl func_ov013_021fce04
 L_021fe9ac:
     mov r0, r4
-    bl func_ov013_021fdbb0
+    bl Overlay013_UpdateSceneRuntime
     mov r0, #0x0
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
 L_021fe9c0: .word data_ov013_021fed08
 L_021fe9c4: .word data_ov013_021fed00
-    .size func_ov013_021fe880, . - func_ov013_021fe880
+    .size Overlay013_UpdateExitPhase, . - Overlay013_UpdateExitPhase

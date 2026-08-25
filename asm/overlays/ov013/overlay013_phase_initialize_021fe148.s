@@ -8,16 +8,16 @@
     .extern DisplayBrightness_IsSubTransitionComplete
     .extern SceneInputBase_Update
     .extern func_ov013_021fce04
-    .extern func_ov013_021fd310
+    .extern Overlay013_PopulateScene
     .extern func_ov013_021fda40
-    .extern func_ov013_021fdbb0
+    .extern Overlay013_UpdateSceneRuntime
     .extern gGameWork
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_phase_handlers.c. */
-    .global func_ov013_021fe148
+    .global Overlay013_UpdateSetupPhase
 
-func_ov013_021fe148:
+Overlay013_UpdateSetupPhase:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -27,7 +27,7 @@ func_ov013_021fe148:
     beq L_021fe1d0
     b L_021fe268
 L_021fe168:
-    bl func_ov013_021fd310
+    bl Overlay013_PopulateScene
     ldr r0, [r4, #0x97c]
     cmp r0, #0x0
     bne L_021fe180
@@ -98,7 +98,7 @@ L_021fe258:
     bl func_ov013_021fce04
 L_021fe268:
     mov r0, r4
-    bl func_ov013_021fdbb0
+    bl Overlay013_UpdateSceneRuntime
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fe278: .word gGameWork
@@ -106,4 +106,4 @@ L_021fe27c: .word 0x3bd
 L_021fe280: .word data_ov013_021fece8
 L_021fe284: .word data_ov013_021fed40
 L_021fe288: .word data_ov013_021fed38
-    .size func_ov013_021fe148, . - func_ov013_021fe148
+    .size Overlay013_UpdateSetupPhase, . - Overlay013_UpdateSetupPhase

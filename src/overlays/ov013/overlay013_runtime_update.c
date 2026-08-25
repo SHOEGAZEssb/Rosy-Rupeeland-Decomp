@@ -27,7 +27,7 @@ extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void GraphicsSpriteState_SetAnimationIndex(void *, s32);
-extern s32 func_ov013_021fdfbc(void *);
+extern s32 Overlay013_HasRecordReachedLimit(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -53,7 +53,7 @@ static void overlay013_virtual_update(void *object)
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov013_021fdbb0(void *state)
+void Overlay013_UpdateSceneRuntime(void *state)
 {
     s32 i;
     void *controller;
@@ -203,17 +203,17 @@ s32 func_ov013_021fdf38(void *state)
 {
     s32 i;
     for (i = 0; i < 7; ++i)
-        if (!func_ov013_021fdfbc((u8 *)state + 0x8c + i * 0xac)) return 1;
+        if (!Overlay013_HasRecordReachedLimit((u8 *)state + 0x8c + i * 0xac)) return 1;
     for (i = 0; i < 5; ++i)
-        if (!func_ov013_021fdfbc((u8 *)state + 0x540 + i * 0xac)) return 1;
-    return func_ov013_021fdfbc((u8 *)state + 0x89c) ? 0 : 1;
+        if (!Overlay013_HasRecordReachedLimit((u8 *)state + 0x540 + i * 0xac)) return 1;
+    return Overlay013_HasRecordReachedLimit((u8 *)state + 0x89c) ? 0 : 1;
 }
 
 /* Compare signed counters +0x80 and +0x7C; return one when +0x80 is greater than or equal, otherwise zero. */
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021fdfbc(void *record)
+s32 Overlay013_HasRecordReachedLimit(void *record)
 {
     return FIELD(s32, record, 0x80) >= FIELD(s32, record, 0x7c);
 }

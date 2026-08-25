@@ -3,14 +3,14 @@
     .extern gGamePhaseRuntime
     .extern ActorMotion_SetMode2
     .extern GridEffectActorRegistry_FinalizeDepartingActors
-    .extern func_ov013_021fdbb0
+    .extern Overlay013_UpdateSceneRuntime
     .extern gGameWork
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_terminal_states.c. */
-    .global func_ov013_021fe9c8
+    .global Overlay013_UpdateCompletionPhase
 
-func_ov013_021fe9c8:
+Overlay013_UpdateCompletionPhase:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -79,11 +79,11 @@ L_021fea98:
     str r0, [r4, #0x8]
 L_021feaac:
     mov r0, r4
-    bl func_ov013_021fdbb0
+    bl Overlay013_UpdateSceneRuntime
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021feabc: .word gGameWork
 L_021feac0: .word 0x3f2
 L_021feac4: .word 0x393
 L_021feac8: .word gGamePhaseRuntime
-    .size func_ov013_021fe9c8, . - func_ov013_021fe9c8
+    .size Overlay013_UpdateCompletionPhase, . - Overlay013_UpdateCompletionPhase

@@ -39,7 +39,7 @@ extern void SpritePresentation_SyncPosition(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void GamePhaseRuntime_FinalizeActorCollections(void *, s32, s32);
-extern void func_ov013_021fce00(void *);
+extern void Overlay013_Record_NoOp(void *);
 extern void func_ov013_021fce04(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -71,7 +71,7 @@ static void overlay013_destroy_dynamic(void *object, s32 slot)
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov013_021fce2c(void *state)
+void *Overlay013_Scene_Init(void *state)
 {
     s32 i;
     void *selected;
@@ -142,7 +142,7 @@ void *func_ov013_021fce2c(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov013_021fd09c(void *state)
+void *Overlay013_Scene_Destroy(void *state)
 {
     s32 i;
 
@@ -155,11 +155,11 @@ void *func_ov013_021fd09c(void *state)
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x88));
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);
     RuntimePresentationManager_BroadcastSlot1C((u8 *)gGamePhaseRuntime + 0x2f7c, 0);
-    func_ov013_021fce00((u8 *)state + 0x89c);
+    Overlay013_Record_NoOp((u8 *)state + 0x89c);
     for (i = 4; i >= 0; --i)
-        func_ov013_021fce00((u8 *)state + 0x540 + i * 0xac);
+        Overlay013_Record_NoOp((u8 *)state + 0x540 + i * 0xac);
     for (i = 6; i >= 0; --i)
-        func_ov013_021fce00((u8 *)state + 0x8c + i * 0xac);
+        Overlay013_Record_NoOp((u8 *)state + 0x8c + i * 0xac);
     AnimationResourceState_Destroy((u8 *)state + 0x78);
     AnimationResourceState_Destroy((u8 *)state + 0x6c);
     AnimationResourceState_Destroy((u8 *)state + 0x60);
@@ -167,13 +167,13 @@ void *func_ov013_021fd09c(void *state)
     return state;
 }
 
-/* Call func_ov013_021fd09c, free the state allocation, and return its former address; heap state changes are observable. */
+/* Call Overlay013_Scene_Destroy, free the state allocation, and return its former address; heap state changes are observable. */
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov013_021fd1a0(void *state)
+void *Overlay013_Scene_Delete(void *state)
 {
-    func_ov013_021fd09c(state);
+    Overlay013_Scene_Destroy(state);
     Heap_Free(state);
     return state;
 }
@@ -189,7 +189,7 @@ void *func_ov013_021fd1a0(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021fd2ac(void *state)
+s32 Overlay013_DispatchSceneCallback(void *state)
 {
     u32 callback = FIELD(u32, state, 0x24);
     s32 encoding = FIELD(s32, state, 0x28);

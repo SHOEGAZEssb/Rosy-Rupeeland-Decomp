@@ -6,16 +6,16 @@
     .extern SceneInputBase_Update
     .extern SceneSound_PlayPackedEffect
     .extern func_ov013_021fce04
-    .extern func_ov013_021fdbb0
+    .extern Overlay013_UpdateSceneRuntime
     .extern func_ov013_021fdf38
-    .extern func_ov013_021fe078
+    .extern Overlay013_RandomizeActiveRecordPositions
     .extern gGameWork
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_phase_handlers.c. */
-    .global func_ov013_021fe28c
+    .global Overlay013_UpdateRevealPhase
 
-func_ov013_021fe28c:
+Overlay013_UpdateRevealPhase:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r4, r0
     ldr r0, [r4, #0x9a8]
@@ -73,7 +73,7 @@ L_021fe348:
     mov r1, #0x18
     mov r2, #0xc
     mov r3, #0x12
-    bl func_ov013_021fe078
+    bl Overlay013_RandomizeActiveRecordPositions
     b L_021fe430
 L_021fe360:
     ldr r0, [r4, #0x8]
@@ -92,7 +92,7 @@ L_021fe38c:
     mov r1, #0x20
     mov r2, #0x14
     mov r3, #0x1a
-    bl func_ov013_021fe078
+    bl Overlay013_RandomizeActiveRecordPositions
     b L_021fe430
 L_021fe3a4:
     ldr r0, [r4, #0x8]
@@ -134,7 +134,7 @@ L_021fe3f4:
     bl func_ov013_021fce04
 L_021fe430:
     mov r0, r4
-    bl func_ov013_021fdbb0
+    bl Overlay013_UpdateSceneRuntime
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fe440: .word data_ov013_021fec18
@@ -142,4 +142,4 @@ L_021fe444: .word gGameWork
 L_021fe448: .word data_ov013_021febb4
 L_021fe44c: .word 0x3de
 L_021fe450: .word data_ov013_021fed30
-    .size func_ov013_021fe28c, . - func_ov013_021fe28c
+    .size Overlay013_UpdateRevealPhase, . - Overlay013_UpdateRevealPhase

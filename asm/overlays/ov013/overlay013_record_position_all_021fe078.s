@@ -1,10 +1,10 @@
     .text
-    .extern func_ov013_021fdfd4
+    .extern Overlay013_RandomizeRecordPosition
 
 /* Exact fallback; see src/overlays/ov013/overlay013_record_position.c. */
-    .global func_ov013_021fe078
+    .global Overlay013_RandomizeActiveRecordPositions
 
-func_ov013_021fe078:
+Overlay013_RandomizeActiveRecordPositions:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r9, r1
     add r1, r9, r9, lsr #0x1f
@@ -26,7 +26,7 @@ L_021fe0a0:
     mov r2, r9
     mov r3, r6
     add r1, r4, r1
-    bl func_ov013_021fdfd4
+    bl Overlay013_RandomizeRecordPosition
 L_021fe0cc:
     add r5, r5, #0x1
     cmp r5, #0x7
@@ -45,7 +45,7 @@ L_021fe0e4:
     mov r2, r8
     mov r3, r8
     add r1, r6, r1
-    bl func_ov013_021fdfd4
+    bl Overlay013_RandomizeRecordPosition
 L_021fe110:
     add r4, r4, #0x1
     cmp r4, #0x5
@@ -59,6 +59,6 @@ L_021fe110:
     mov r2, r7
     mov r3, r7
     add r1, r1, #0x800
-    bl func_ov013_021fdfd4
+    bl Overlay013_RandomizeRecordPosition
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_ov013_021fe078, . - func_ov013_021fe078
+    .size Overlay013_RandomizeActiveRecordPositions, . - Overlay013_RandomizeActiveRecordPositions

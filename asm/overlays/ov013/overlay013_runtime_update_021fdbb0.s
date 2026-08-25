@@ -13,17 +13,17 @@
     .extern SpriteMotionController_Update
     .extern SpriteMotionController_PublishCoordinates
     .extern SpriteMotionController_SetAnimation
-    .extern func_ov013_021fdfbc
+    .extern Overlay013_HasRecordReachedLimit
     .extern gGamePhaseCurrencyHud
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_runtime_update.c. */
-    .global func_ov013_021fdbb0
+    .global Overlay013_UpdateSceneRuntime
     .global func_ov013_021fdd8c
     .global func_ov013_021fde18
     .global func_ov013_021fdee4
     .global func_ov013_021fdf38
-func_ov013_021fdbb0:
+Overlay013_UpdateSceneRuntime:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r6, r0
     ldr r0, [r6, #0x84]
@@ -156,7 +156,7 @@ L_021fdd80: .word data_ov013_021feb58
 L_021fdd84: .word data_ov013_021feb40
 L_021fdd88: .word gGamePhaseCurrencyHud
 
-    .size func_ov013_021fdbb0, . - func_ov013_021fdbb0
+    .size Overlay013_UpdateSceneRuntime, . - Overlay013_UpdateSceneRuntime
 func_ov013_021fdd8c:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r5, r0
@@ -289,7 +289,7 @@ func_ov013_021fdf38:
     b L_021fdf68
 L_021fdf50:
     mla r0, r6, r4, r5
-    bl func_ov013_021fdfbc
+    bl Overlay013_HasRecordReachedLimit
     cmp r0, #0x0
     moveq r0, #0x1
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -303,7 +303,7 @@ L_021fdf68:
     b L_021fdf98
 L_021fdf80:
     mla r0, r6, r4, r5
-    bl func_ov013_021fdfbc
+    bl Overlay013_HasRecordReachedLimit
     cmp r0, #0x0
     moveq r0, #0x1
     ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
@@ -313,7 +313,7 @@ L_021fdf98:
     blt L_021fdf80
     add r0, r7, #0x9c
     add r0, r0, #0x800
-    bl func_ov013_021fdfbc
+    bl Overlay013_HasRecordReachedLimit
     cmp r0, #0x0
     moveq r0, #0x1
     movne r0, #0x0

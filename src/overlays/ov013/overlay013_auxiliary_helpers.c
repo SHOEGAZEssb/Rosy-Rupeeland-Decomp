@@ -33,7 +33,7 @@ typedef void (*Overlay013VirtualMethod)(void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov013_021fda28(void *record, s32 limit)
+void Overlay013_InitRecordCounter(void *record, s32 limit)
 {
     FIELD(s32, record, 0x7c) = (s16)limit;
     FIELD(s32, record, 0x80) = 0;

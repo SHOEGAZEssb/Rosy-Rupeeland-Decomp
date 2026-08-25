@@ -15,17 +15,17 @@
     .extern func_ov013_021fce04
     .extern func_ov013_021fda9c
     .extern func_ov013_021fdb10
-    .extern func_ov013_021fdbb0
+    .extern Overlay013_UpdateSceneRuntime
     .extern func_ov013_021fdd8c
     .extern func_ov013_021fde18
     .extern func_ov013_021fdee4
-    .extern func_ov013_021fdfbc
+    .extern Overlay013_HasRecordReachedLimit
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_phase_handlers.c. */
-    .global func_ov013_021fe454
+    .global Overlay013_UpdateInteractionPhase
 
-func_ov013_021fe454:
+Overlay013_UpdateInteractionPhase:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x9a8]
@@ -158,7 +158,7 @@ L_021fe624:
     add r2, r4, #0x8c
     mov r0, #0xac
     mla r0, r1, r0, r2
-    bl func_ov013_021fdfbc
+    bl Overlay013_HasRecordReachedLimit
     cmp r0, #0x0
     beq L_021fe85c
     add r0, r4, #0x188
@@ -266,7 +266,7 @@ L_021fe7bc:
     add r2, r4, #0x8c
     mov r0, #0xac
     mla r0, r1, r0, r2
-    bl func_ov013_021fdfbc
+    bl Overlay013_HasRecordReachedLimit
     cmp r0, #0x0
     beq L_021fe85c
     mov r0, r4
@@ -306,7 +306,7 @@ L_021fe844:
     bl func_ov013_021fce04
 L_021fe85c:
     mov r0, r4
-    bl func_ov013_021fdbb0
+    bl Overlay013_UpdateSceneRuntime
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe86c: .word data_ov013_021fed28
@@ -314,4 +314,4 @@ L_021fe870: .word data_ov013_021fed20
 L_021fe874: .word data_ov013_021fed18
 L_021fe878: .word data_ov013_021febb4
 L_021fe87c: .word data_ov013_021fed10
-    .size func_ov013_021fe454, . - func_ov013_021fe454
+    .size Overlay013_UpdateInteractionPhase, . - Overlay013_UpdateInteractionPhase

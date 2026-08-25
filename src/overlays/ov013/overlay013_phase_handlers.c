@@ -24,16 +24,16 @@ extern const s32 data_ov013_021fed10[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov013_021fd310(void *);
+extern void Overlay013_PopulateScene(void *);
 extern void func_ov013_021fda40(void *);
 extern void func_ov013_021fce04(void *, s32, s32, s32);
-extern void func_ov013_021fdbb0(void *);
+extern void Overlay013_UpdateSceneRuntime(void *);
 extern s32 func_ov013_021fdf38(void *);
-extern void func_ov013_021fe078(void *, s32, s32, s32);
+extern void Overlay013_RandomizeActiveRecordPositions(void *, s32, s32, s32);
 extern s32 func_ov013_021fdd8c(void *);
 extern s32 func_ov013_021fde18(void *);
 extern s32 func_ov013_021fdee4(void *);
-extern s32 func_ov013_021fdfbc(void *);
+extern s32 Overlay013_HasRecordReachedLimit(void *);
 extern void func_ov013_021fda9c(void *, s32, void *);
 extern void func_ov013_021fdb10(void *);
 extern void SceneInputBase_Update(void *, s32);
@@ -64,17 +64,17 @@ static void overlay013_set_callback(void *state, const s32 *descriptor)
  * and clears +0x08. Phase one updates +0x9A8 with mode zero, waits for both
  * readiness predicates, then selects one of three callback descriptors based
  * on +0x974 and flag 0x3BD (clearing the flag in its special path). Always run
- * func_ov013_021fdbb0 and return zero. Calls may allocate scene resources and
+ * Overlay013_UpdateSceneRuntime and return zero. Calls may allocate scene resources and
  * alter GameWork/graphics state.
  */
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021fe148(void *state)
+s32 Overlay013_UpdateSetupPhase(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        func_ov013_021fd310(state);
+        Overlay013_PopulateScene(state);
         if (FIELD(s32, state, 0x97c) == 0)
             func_ov013_021fda40(state);
         if (GameWork_TestFlag(gGameWork, 0x3bd)) {
@@ -101,7 +101,7 @@ s32 func_ov013_021fe148(void *state)
         }
         break;
     }
-    func_ov013_021fdbb0(state);
+    Overlay013_UpdateSceneRuntime(state);
     return 0;
 }
 
@@ -118,7 +118,7 @@ s32 func_ov013_021fe148(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021fe28c(void *state)
+s32 Overlay013_UpdateRevealPhase(void *state)
 {
     s32 i;
 
@@ -131,7 +131,7 @@ s32 func_ov013_021fe28c(void *state)
         break;
     case 1:
         if (func_ov013_021fdf38(state)) {
-            func_ov013_021fe078(state, 0x18, 0x0c, 0x12);
+            Overlay013_RandomizeActiveRecordPositions(state, 0x18, 0x0c, 0x12);
         } else {
             for (i = 0; i < 7; ++i) {
                 u8 *record = (u8 *)state + 0x8c + i * 0xac;
@@ -150,7 +150,7 @@ s32 func_ov013_021fe28c(void *state)
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         } else {
-            func_ov013_021fe078(state, 0x20, 0x14, 0x1a);
+            Overlay013_RandomizeActiveRecordPositions(state, 0x20, 0x14, 0x1a);
         }
         break;
     case 3:
@@ -166,7 +166,7 @@ s32 func_ov013_021fe28c(void *state)
         }
         break;
     }
-    func_ov013_021fdbb0(state);
+    Overlay013_UpdateSceneRuntime(state);
     return 0;
 }
 
@@ -191,7 +191,7 @@ s32 func_ov013_021fe28c(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021fe454(void *state)
+s32 Overlay013_UpdateInteractionPhase(void *state)
 {
     s32 phase;
     s32 index;
@@ -242,7 +242,7 @@ s32 func_ov013_021fe454(void *state)
         break;
     case 2:
         index = FIELD(s32, state, 0x96c);
-        if (func_ov013_021fdfbc((u8 *)state + 0x8c + index * 0xac)) {
+        if (Overlay013_HasRecordReachedLimit((u8 *)state + 0x8c + index * 0xac)) {
             TitleInterpolatedValue_Configure(timer, 2, 0, -256, 20);
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
@@ -293,7 +293,7 @@ s32 func_ov013_021fe454(void *state)
     }
     case 30:
         index = FIELD(s32, state, 0x96c);
-        if (func_ov013_021fdfbc((u8 *)state + 0x8c + index * 0xac)) {
+        if (Overlay013_HasRecordReachedLimit((u8 *)state + 0x8c + index * 0xac)) {
             func_ov013_021fda9c(state, 0x20, 0);
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
@@ -316,7 +316,7 @@ s32 func_ov013_021fe454(void *state)
         break;
     }
     }
-    func_ov013_021fdbb0(state);
+    Overlay013_UpdateSceneRuntime(state);
     return 0;
 }
 
@@ -333,7 +333,7 @@ s32 func_ov013_021fe454(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021fe880(void *state)
+s32 Overlay013_UpdateExitPhase(void *state)
 {
     void *timer = (u8 *)state + 0x988;
 
@@ -362,6 +362,6 @@ s32 func_ov013_021fe880(void *state)
         if (func_02091cf0(timer))
             overlay013_set_callback(state, data_ov013_021fed00);
     }
-    func_ov013_021fdbb0(state);
+    Overlay013_UpdateSceneRuntime(state);
     return 0;
 }

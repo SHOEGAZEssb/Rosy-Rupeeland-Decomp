@@ -20,16 +20,16 @@
     .extern SpritePresentation_Init
     .extern SpritePresentation_SyncPosition
     .extern SpriteMotionController_Init
-    .extern func_ov013_021fce00
+    .extern Overlay013_Record_NoOp
     .extern func_ov013_021fce04
     .extern gHeapContext
     .extern genrand_int32
 
 /* Exact fallback; see the documented portable reconstruction in
  * src/overlays/ov013/overlay013_scene_lifecycle.c. */
-    .global func_ov013_021fce2c
+    .global Overlay013_Scene_Init
 
-func_ov013_021fce2c:
+Overlay013_Scene_Init:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl SceneInputBase_Init
@@ -175,7 +175,7 @@ L_021fd038:
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fd064: .word data_ov013_021fed6c
-L_021fd068: .word func_ov013_021fce00
+L_021fd068: .word Overlay013_Record_NoOp
 L_021fd06c: .word SpriteMotionController_Init
 L_021fd070: .word gGamePhaseRuntime
 L_021fd074: .word 0x329a
@@ -188,4 +188,4 @@ L_021fd08c: .word data_ov013_021fed80
 L_021fd090: .word gHeapContext
 L_021fd094: .word data_ov013_021feb58
 L_021fd098: .word data_ov013_021fecf0
-    .size func_ov013_021fce2c, . - func_ov013_021fce2c
+    .size Overlay013_Scene_Init, . - Overlay013_Scene_Init

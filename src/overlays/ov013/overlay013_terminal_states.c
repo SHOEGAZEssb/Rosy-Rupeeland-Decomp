@@ -12,7 +12,7 @@ extern "C" {
 extern void GridEffectActorRegistry_FinalizeDepartingActors(void);
 extern void GameWork_SetFlag(void *, s32);
 extern void ActorMotion_SetMode2(void *);
-extern void func_ov013_021fdbb0(void *);
+extern void Overlay013_UpdateSceneRuntime(void *);
 extern void GamePhaseAreaScene_Update(void *);
 #ifdef __cplusplus
 }
@@ -32,7 +32,7 @@ typedef void (*Overlay013TerminalMethod)(void *);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021fe9c8(void *state)
+s32 Overlay013_UpdateCompletionPhase(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         switch (FIELD(s32, state, 0x96c)) {
@@ -65,7 +65,7 @@ s32 func_ov013_021fe9c8(void *state)
         ++FIELD(s32, state, 4);
         FIELD(s32, state, 8) = 0;
     }
-    func_ov013_021fdbb0(state);
+    Overlay013_UpdateSceneRuntime(state);
     return 1;
 }
 
@@ -79,7 +79,7 @@ s32 func_ov013_021fe9c8(void *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov013_021feacc(void *state)
+s32 Overlay013_UpdateTerminalPhase(void *state)
 {
     if (FIELD(s32, state, 0x97c) != 0)
         GamePhaseAreaScene_Update(FIELD(void *, gGamePhaseRuntime, 0x2fb8));
