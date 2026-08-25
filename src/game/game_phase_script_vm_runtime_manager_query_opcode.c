@@ -19,7 +19,7 @@ extern s32 ActorDerivedType1_IsIdleEligible(void *manager);
  * 2 is active), and modes 3..5 return signed manager fields 0x294..0x298.
  * Unsupported modes store zero as the VM result.  Return zero.
  */
-s32 func_02019c60(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchType1ManagerQuery(GamePhaseActorScriptVm *self)
 {
     s32 mode = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *manager = *(u8 **)((u8 *)gGamePhaseRuntime + 0x2ea4);

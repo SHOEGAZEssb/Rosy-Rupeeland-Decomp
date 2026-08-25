@@ -41,11 +41,11 @@ static void invokeModeZero(void *object)
  * and related runtime objects, toggle matching actors in collection 1, clear
  * global/list state, or run a second manager operation.  Return zero.
  */
-s32 func_02019aa4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchType1ManagerCommand(GamePhaseActorScriptVm *self)
 {
-    s16 third = (s16)GamePhaseScriptVm_Pop(&self->base);
-    s16 second = (s16)GamePhaseScriptVm_Pop(&self->base);
-    s16 first = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 managerOperand2 = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 managerOperand1 = (s16)GamePhaseScriptVm_Pop(&self->base);
+    s16 managerOperand0 = (s16)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
     u8 *manager = *(u8 **)(runtime + 0x2ea4);
@@ -54,9 +54,9 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         ActorDerivedType1_TeardownActiveRecord(manager);
         break;
     case 1:
-        *(s16 *)(manager + 0x29a) = first;
-        *(s16 *)(manager + 0x29c) = second;
-        *(s16 *)(manager + 0x29e) = third;
+        *(s16 *)(manager + 0x29a) = managerOperand0;
+        *(s16 *)(manager + 0x29c) = managerOperand1;
+        *(s16 *)(manager + 0x29e) = managerOperand2;
         break;
     case 2:
         *(s16 *)(manager + 0x29e) = 0;
@@ -78,8 +78,8 @@ s32 func_02019aa4(GamePhaseActorScriptVm *self)
         s32 count = *(s32 *)(collection + 0x2e74);
         for (index = 0; index < count; index++) {
             u8 *actor = *(u8 **)(collection + index * 4);
-            if (actor && *(s16 *)(actor + 0x50) == first)
-                Actor_SetFlag200000Inverse(actor, second);
+            if (actor && *(s16 *)(actor + 0x50) == managerOperand0)
+                Actor_SetFlag200000Inverse(actor, managerOperand1);
         }
         break;
     }

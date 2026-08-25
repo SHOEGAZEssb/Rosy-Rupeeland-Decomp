@@ -6773,7 +6773,7 @@ build build/reports/game_phase_script_vm_02019aa4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02019aa4.o
 build build/reports/game_phase_script_vm_02019aa4.txt: match_report build/reports/game_phase_script_vm_02019aa4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02019aa4.json
-  report_args = --section .text --function func_02019aa4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchType1ManagerCommand --require-exact
 
 build build/reports/game_phase_script_vm_runtime_manager_command_opcode.txt: phony build/reports/game_phase_script_vm_02019aa4.txt
 
@@ -6782,7 +6782,7 @@ build build/reports/game_phase_script_vm_02019c60.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02019c60.o
 build build/reports/game_phase_script_vm_02019c60.txt: match_report build/reports/game_phase_script_vm_02019c60.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02019c60.json
-  report_args = --section .text --function func_02019c60 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchType1ManagerQuery --require-exact
 
 build build/reports/game_phase_script_vm_runtime_manager_query_opcode.txt: phony build/reports/game_phase_script_vm_02019c60.txt
 
@@ -6791,7 +6791,7 @@ build build/reports/game_phase_script_vm_02019dd4.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02019dd4.o
 build build/reports/game_phase_script_vm_02019dd4.txt: match_report build/reports/game_phase_script_vm_02019dd4.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02019dd4.json
-  report_args = --section .text --function func_02019dd4 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand --require-exact
 
 build build/reports/game_phase_script_vm_subsystem_command_opcode.txt: phony build/reports/game_phase_script_vm_02019dd4.txt
 

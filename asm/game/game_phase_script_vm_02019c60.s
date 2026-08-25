@@ -6,8 +6,8 @@
 .extern ActorDerivedType1_IsIdleEligible
 .extern gSceneManager
 .extern SceneManager_GetCurrent
-.global func_02019c60
-func_02019c60:
+.global GamePhaseActorScriptVm_DispatchType1ManagerQuery
+GamePhaseActorScriptVm_DispatchType1ManagerQuery:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -115,4 +115,4 @@ L_02019db8:
     ldmia sp!, {r4, r5, r6, pc}
 L_02019dcc: .word gGamePhaseRuntime
 L_02019dd0: .word gSceneManager
-.size func_02019c60, . - func_02019c60
+.size GamePhaseActorScriptVm_DispatchType1ManagerQuery, . - GamePhaseActorScriptVm_DispatchType1ManagerQuery

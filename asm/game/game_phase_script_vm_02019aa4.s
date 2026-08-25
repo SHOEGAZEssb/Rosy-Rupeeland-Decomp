@@ -14,8 +14,8 @@
 .extern func_02055688
 .extern GraphicsSpriteGroup_ReleaseResources
 .extern Graphics3dPresentation_Clear
-.global func_02019aa4
-func_02019aa4:
+.global GamePhaseActorScriptVm_DispatchType1ManagerCommand
+GamePhaseActorScriptVm_DispatchType1ManagerCommand:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -140,4 +140,4 @@ L_02019c54:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_02019c5c: .word gGamePhaseRuntime
-.size func_02019aa4, . - func_02019aa4
+.size GamePhaseActorScriptVm_DispatchType1ManagerCommand, . - GamePhaseActorScriptVm_DispatchType1ManagerCommand

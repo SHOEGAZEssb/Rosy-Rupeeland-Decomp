@@ -1,0 +1,5 @@
+{
+  "func_02019aa4": "GamePhaseActorScriptVm_DispatchType1ManagerCommand",
+  "func_02019c60": "GamePhaseActorScriptVm_DispatchType1ManagerQuery",
+  "func_02019dd4": "GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand"
+}

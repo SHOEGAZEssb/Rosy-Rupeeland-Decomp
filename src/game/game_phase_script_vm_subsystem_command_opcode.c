@@ -28,11 +28,11 @@ extern s32 func_02027eac(void *state);
  * as the VM result, while command 5 stores singleton word 0 directly.  Unsupported commands do
  * nothing.  Return zero.
  */
-s32 func_02019dd4(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand(GamePhaseActorScriptVm *self)
 {
     s32 value = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 command = (s32)GamePhaseScriptVm_Pop(&self->base);
-    void *state;
+    void *progress;
     switch (command) {
     case 1:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_02027818(GamePhaseProgress_GetOrCreateGlobal(), value));
@@ -47,8 +47,9 @@ s32 func_02019dd4(GamePhaseActorScriptVm *self)
         func_02027e94(GamePhaseProgress_GetOrCreateGlobal(), value);
         break;
     case 5:
-        state = GamePhaseProgress_GetOrCreateGlobal();
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, *(u32 *)state);
+        progress = GamePhaseProgress_GetOrCreateGlobal();
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base,
+                                                         *(u32 *)progress);
         break;
     case 6:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, (u32)func_02027828(GamePhaseProgress_GetOrCreateGlobal(), value));

@@ -15,8 +15,8 @@
 .extern func_02027ea4
 .extern func_02027eac
 .extern GamePhaseProgress_GetOrCreateGlobal
-.global func_02019dd4
-func_02019dd4:
+.global GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand
+GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     bl GamePhaseScriptVm_Pop
@@ -126,4 +126,4 @@ L_02019f28:
 L_02019f44:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}
-.size func_02019dd4, . - func_02019dd4
+.size GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand, . - GamePhaseActorScriptVm_DispatchGamePhaseProgressCommand
