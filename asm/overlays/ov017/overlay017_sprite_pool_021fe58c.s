@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_sprite_pool.c. */
     .extern GraphicsResourceSetVariant_Destroy
     .extern Graphics3DResourceOwner_RemoveManager
-.global func_ov017_021fe58c
-func_ov017_021fe58c:
+.global Overlay017_SpritePool_Destroy
+Overlay017_SpritePool_Destroy:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x0]
@@ -14,4 +14,4 @@ func_ov017_021fe58c:
     bl GraphicsResourceSetVariant_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_ov017_021fe58c, . - func_ov017_021fe58c
+    .size Overlay017_SpritePool_Destroy, . - Overlay017_SpritePool_Destroy

@@ -23,7 +23,7 @@ extern void func_020add34(void *, void *);
  * state. Only caller-owned grid memory changes; the math helper has no known
  * hardware effects.
  */
-extern "C" void *func_ov017_021fce00(void *state, s32 scale)
+extern "C" void *Overlay017_Grid_Init(void *state, s32 scale)
 {
     s32 fixedScale = scale << 4;
     s32 radiusSquared = fixedScale * fixedScale;

@@ -9,7 +9,7 @@
     .extern SceneSound_PlayPackedEffect
     .extern SceneSound_PlayDirectSequence
     .extern ModalState_UpdateInput
-    .extern func_ov017_021fe6dc
+    .extern Overlay017_ShowSpritePool
     .extern func_ov017_021fea8c
     .extern func_ov017_021ffcc8
     .extern func_ov017_021ffd74
@@ -82,7 +82,7 @@ L_02200b94:
     cmp r0, #0x0
     beq L_02200bd0
     ldr r0, [r4, #0x254]
-    bl func_ov017_021fe6dc
+    bl Overlay017_ShowSpritePool
     ldr r1, L_02200bf0
     mov r0, r4
     bl SceneSound_PlayPackedEffect

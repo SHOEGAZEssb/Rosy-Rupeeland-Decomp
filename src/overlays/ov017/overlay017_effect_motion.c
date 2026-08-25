@@ -47,7 +47,7 @@ static s32 hardwareSqrt(s32 squared)
  * to 0x2000. Object/component state changes, peer/global state is read, SDK math
  * helpers run, and the DS square-root MMIO registers are used directly.
  */
-extern "C" void func_ov017_021fda64(void *state)
+extern "C" void Overlay017_UpdateEffectMotion(void *state)
 {
     s32 vx = FIELD(s32, state, 0xa8);
     s32 vz = FIELD(s32, state, 0xb0);

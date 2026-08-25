@@ -3,7 +3,7 @@
     .extern data_ov017_02201550
     .extern data_ov017_022016e0
     .extern SceneSound_StopPackedEffect
-    .extern func_ov017_021fe71c
+    .extern Overlay017_HideSpritePool
     .extern func_ov017_021fea8c
     .extern func_ov017_02200188
     .extern func_ov017_022008ac
@@ -26,7 +26,7 @@ func_ov017_02200c20:
     bne L_02200c98
 L_02200c5c:
     ldr r0, [r4, #0x254]
-    bl func_ov017_021fe71c
+    bl Overlay017_HideSpritePool
     ldr r1, L_02200cb4
     mov r0, r4
     bl SceneSound_StopPackedEffect

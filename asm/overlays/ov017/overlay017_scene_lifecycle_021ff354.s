@@ -20,9 +20,9 @@
     .extern TitleScreenResourceCollection_Destroy
     .extern TitleCharacterResourceCollection_Destroy
     .extern PresentationList_DeleteAll
-    .extern func_ov017_021fd780
-    .extern func_ov017_021fd948
-    .extern func_ov017_021fe58c
+    .extern Overlay017_Transform_Destroy
+    .extern Overlay017_EffectBase_NoOp
+    .extern Overlay017_SpritePool_Destroy
     .extern gSoundContext
 .global func_ov017_021ff354
 func_ov017_021ff354:
@@ -66,7 +66,7 @@ L_021ff3d8:
     cmp r5, #0x0
     beq L_021ff3f4
     mov r0, r5
-    bl func_ov017_021fe58c
+    bl Overlay017_SpritePool_Destroy
     mov r0, r5
     bl Heap_Free
 L_021ff3f4:
@@ -129,9 +129,9 @@ L_021ff458:
     add r0, r4, #0x2d0
     bl Graphics3DLightSet_Destroy
     add r0, r4, #0x290
-    bl func_ov017_021fd780
+    bl Overlay017_Transform_Destroy
     add r0, r4, #0x264
-    bl func_ov017_021fd780
+    bl Overlay017_Transform_Destroy
     add r0, r4, #0x248
     bl GraphicsResourceSetVariant_Destroy
     add r0, r4, #0x1fc
@@ -139,9 +139,9 @@ L_021ff458:
     add r0, r4, #0x1d8
     bl TitleCharacterResourceCollection_Destroy
     add r0, r4, #0x12c
-    bl func_ov017_021fd948
+    bl Overlay017_EffectBase_NoOp
     add r0, r4, #0x80
-    bl func_ov017_021fd948
+    bl Overlay017_EffectBase_NoOp
     add r0, r4, #0x74
     bl AnimationResourceState_Destroy
     add r0, r4, #0x68

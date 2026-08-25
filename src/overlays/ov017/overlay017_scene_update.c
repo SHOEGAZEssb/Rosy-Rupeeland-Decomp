@@ -34,10 +34,10 @@ extern void PresentationList_UpdateAndDeleteCompleted(void *);
 extern void *AlternateSpritePresentation_Init(void *, void *);
 extern void SpriteMotionController_Update(void *);
 extern s32 func_020befec(s32, s32);
-extern void func_ov017_021fcf6c(void *);
-extern void func_ov017_021fd6b0(void *, s32, s32, s32);
-extern void *func_ov017_021fe190(void *, s32, s32, s32, s32, s16, s32);
-extern void func_ov017_021fe5b0(void *);
+extern void Overlay017_UpdateGridDeformation(void *);
+extern void Overlay017_ApplyGridImpulse(void *, s32, s32, s32);
+extern void *Overlay017_EffectVariant_Init(void *, s32, s32, s32, s32, s16, s32);
+extern void Overlay017_UpdateSpritePool(void *);
 extern void func_ov017_021fe894(void *);
 extern void Overlay017_UpdatePaletteRamp(void *);
 extern s32 Overlay017Timer_Tick(void *);
@@ -92,7 +92,7 @@ extern "C" void func_ov017_02200188(void *state)
         s32 button9 = ((s32)(input << 22)) >> 31;
 
         if (button5 != 0 || button9 != 0) {
-            func_ov017_021fd6b0(
+            Overlay017_ApplyGridImpulse(
                 FIELD(void *, state, 0x2c0),
                 FIELD(s32, data_ov017_022016e0, 0x30) << 4,
                 FIELD(s32, data_ov017_022016e0, 0x34) << 4, -0x40);
@@ -122,7 +122,7 @@ extern "C" void func_ov017_02200188(void *state)
                     void *effect = Heap_Alloc(
                         0xa0, data_ov017_022016c4, 4, &gHeapContext);
                     if (effect != 0) {
-                        effect = func_ov017_021fe190(
+                        effect = Overlay017_EffectVariant_Init(
                             effect, 0, currentX << 4, currentZ << 4, -0x80,
                             (s16)func_0209189c((u8 *)state + 0x3fc,
                                                0x20, 0x30),
@@ -154,12 +154,12 @@ extern "C" void func_ov017_02200188(void *state)
         s32 phase = FIELD(s32, node, 0xb4);
 
         if (phase == 2)
-            func_ov017_021fd6b0(FIELD(void *, state, 0x2c0), x, z, -0x80);
+            Overlay017_ApplyGridImpulse(FIELD(void *, state, 0x2c0), x, z, -0x80);
         if (phase == 6) {
             void *effect = Heap_Alloc(
                 0xa0, data_ov017_022016c4, 4, &gHeapContext);
             if (effect != 0) {
-                effect = func_ov017_021fe190(
+                effect = Overlay017_EffectVariant_Init(
                     effect, 2, x, z, y,
                     (s16)func_0209189c((u8 *)state + 0x3fc, 0x10, 0x18),
                     TitleRandom_NextBounded((u8 *)state + 0x3fc, 0x1000) << 4);
@@ -236,7 +236,7 @@ extern "C" void func_ov017_02200188(void *state)
                 void *effect = Heap_Alloc(
                     0xa0, data_ov017_022016c4, 4, &gHeapContext);
                 if (effect != 0) {
-                    effect = func_ov017_021fe190(
+                    effect = Overlay017_EffectVariant_Init(
                         effect, 1, x, z, -0x80,
                         (s16)func_0209189c((u8 *)state + 0x3fc,
                                            0x10, 0x18),
@@ -248,13 +248,13 @@ extern "C" void func_ov017_02200188(void *state)
     }
 
     PresentationList_UpdateAndDeleteCompleted((u8 *)state + 0x3d8);
-    func_ov017_021fe5b0(FIELD(void *, state, 0x254));
+    Overlay017_UpdateSpritePool(FIELD(void *, state, 0x254));
     SpriteMotionController_Update((u8 *)state + 0x12c);
     SpriteMotionController_Update((u8 *)state + 0x80);
     func_ov017_021fe894(FIELD(void *, state, 0x25c));
     GraphicsAnimationInstanceManager_Update(FIELD(void *, state, 0x244));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
-    func_ov017_021fcf6c(FIELD(void *, state, 0x2c0));
+    Overlay017_UpdateGridDeformation(FIELD(void *, state, 0x2c0));
     if (Overlay017Timer_Tick(data_ov017_022016f0))
         SceneSound_PlayPackedEffect(state, 0x21);
     if (Overlay017Timer_Tick(data_ov017_022016f8))

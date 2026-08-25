@@ -4,12 +4,12 @@
     .extern data_ov017_02201670
     .extern Presentation_Init
     .extern Presentation_SetPosition
-    .extern func_ov017_021fd744
+    .extern Overlay017_Transform_Init
     .extern Overlay017Transform_ReplaceResource
-    .extern func_ov017_021fe0b4
+    .extern Overlay017_UpdateEffectTransform
     .extern genrand_int32
-.global func_ov017_021fd94c
-func_ov017_021fd94c:
+.global Overlay017_Effect_Init
+Overlay017_Effect_Init:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     mov r7, r1
@@ -19,7 +19,7 @@ func_ov017_021fd94c:
     ldr r1, L_021fda18
     add r0, r4, #0xbc
     str r1, [r4, #0x0]
-    bl func_ov017_021fd744
+    bl Overlay017_Transform_Init
     ldr r0, [sp, #0x18]
     mov ip, #0x0
     strh r0, [r4, #0x9c]
@@ -58,9 +58,9 @@ func_ov017_021fd94c:
     mov r0, r0, lsr #0x10
     str r0, [r4, #0xe4]
     mov r0, r4
-    bl func_ov017_021fe0b4
+    bl Overlay017_UpdateEffectTransform
     mov r0, r4
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_021fda18: .word data_ov017_02201670
-    .size func_ov017_021fd94c, . - func_ov017_021fd94c
+    .size Overlay017_Effect_Init, . - Overlay017_Effect_Init
 

@@ -14,11 +14,11 @@ extern u32 genrand_int32(void);
 extern s32 func_01ff88c4(s32, void *, u32);
 extern void Presentation_Init(void *);
 extern void Presentation_SetPosition(void *, u32, u32, u32);
-extern void *func_ov017_021fd744(void *);
-extern void *func_ov017_021fd780(void *);
+extern void *Overlay017_Transform_Init(void *);
+extern void *Overlay017_Transform_Destroy(void *);
 extern void Overlay017Transform_ReplaceResource(void *, s32);
-extern void func_ov017_021fd948(void *);
-extern void func_ov017_021fe0b4(void *);
+extern void Overlay017_EffectBase_NoOp(void *);
+extern void Overlay017_UpdateEffectTransform(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -30,7 +30,7 @@ extern void func_ov017_021fe0b4(void *);
  * and the entry word, returning that helper's result. Object/resource memory is
  * read only; downstream effects are those of 0x01FF88C4 and no MMIO occurs here.
  */
-extern "C" s32 func_ov017_021fd918(void *object, s32 index)
+extern "C" s32 Overlay017_ResolveEffectResourceEntry(void *object, s32 index)
 {
     void *resource = FIELD(void *, object, 4);
     void *table = FIELD(void *, resource, 0x24);
@@ -43,7 +43,7 @@ extern "C" s32 func_ov017_021fd918(void *object, s32 index)
  * No-op base destructor hook for the overlay-17 effect object. The input pointer
  * is accepted but not read, no state changes, and the function returns void.
  */
-extern "C" void func_ov017_021fd948(void *state)
+extern "C" void Overlay017_EffectBase_NoOp(void *state)
 {
     (void)state;
 }
@@ -57,14 +57,14 @@ extern "C" void func_ov017_021fd948(void *state)
  * +0xE4 from three random low halfwords, invoke 0x021FE0B4, and return state.
  * SDK, resource, and PRNG state change; no direct MMIO occurs.
  */
-extern "C" void *func_ov017_021fd94c(void *state, u16 value9a,
+extern "C" void *Overlay017_Effect_Init(void *state, u16 value9a,
                                       u32 baseArg1, u32 baseArg3,
                                       u16 value9c, u16 valuea0,
                                       u16 resourceId)
 {
     Presentation_Init(state);
     FIELD(const u32 *, state, 0) = data_ov017_02201670;
-    func_ov017_021fd744((u8 *)state + 0xbc);
+    Overlay017_Transform_Init((u8 *)state + 0xbc);
     FIELD(u16, state, 0x9c) = value9c;
     FIELD(u16, state, 0x9e) = 0;
     FIELD(u16, state, 0x9a) = value9a;
@@ -82,7 +82,7 @@ extern "C" void *func_ov017_021fd94c(void *state, u16 value9a,
     FIELD(u32, state, 0xdc) = (u16)genrand_int32();
     FIELD(u32, state, 0xe0) = (u16)genrand_int32();
     FIELD(u32, state, 0xe4) = (u16)genrand_int32();
-    func_ov017_021fe0b4(state);
+    Overlay017_UpdateEffectTransform(state);
     return state;
 }
 
@@ -91,10 +91,10 @@ extern "C" void *func_ov017_021fd94c(void *state, u16 value9a,
  * base destructor, and return state. SDK resource ownership may change; the
  * containing allocation is retained and no direct hardware access occurs.
  */
-extern "C" void *func_ov017_021fda1c(void *state)
+extern "C" void *Overlay017_Effect_Destroy(void *state)
 {
-    func_ov017_021fd780((u8 *)state + 0xbc);
-    func_ov017_021fd948(state);
+    Overlay017_Transform_Destroy((u8 *)state + 0xbc);
+    Overlay017_EffectBase_NoOp(state);
     return state;
 }
 
@@ -104,10 +104,10 @@ extern "C" void *func_ov017_021fda1c(void *state)
  * value. The returned address is no longer valid storage; heap/resource state
  * changes and no direct MMIO occurs.
  */
-extern "C" void *func_ov017_021fda3c(void *state)
+extern "C" void *Overlay017_Effect_Delete(void *state)
 {
-    func_ov017_021fd780((u8 *)state + 0xbc);
-    func_ov017_021fd948(state);
+    Overlay017_Transform_Destroy((u8 *)state + 0xbc);
+    Overlay017_EffectBase_NoOp(state);
     Heap_Free(state);
     return state;
 }

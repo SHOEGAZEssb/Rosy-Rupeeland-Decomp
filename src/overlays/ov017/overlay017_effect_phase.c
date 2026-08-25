@@ -13,10 +13,10 @@ extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern s32 func_020adc90(s32, s32);
 extern s32 Overlay017_WaitForSquareRoot(void);
-extern void func_ov017_021fda64(void *);
-extern void func_ov017_021fe0b4(void *);
-extern void func_ov017_021fe160(void *);
-extern s32 func_ov017_021fe178(void *);
+extern void Overlay017_UpdateEffectMotion(void *);
+extern void Overlay017_UpdateEffectTransform(void *);
+extern void Overlay017_AdvanceEffectProgress(void *);
+extern s32 Overlay017_HasEffectCompleted(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -32,7 +32,7 @@ extern s32 func_ov017_021fe178(void *);
  * to phase 2. Phase 6 only refreshes derived state. Always call 0x021FE0B4 and
  * return zero. Object, overlay-global, SDK, and geometry MMIO state may change.
  */
-extern "C" s32 func_ov017_021fde40(void *state)
+extern "C" s32 Overlay017_UpdateEffectPhase(void *state)
 {
     s32 counter;
 
@@ -70,10 +70,10 @@ extern "C" s32 func_ov017_021fde40(void *state)
         } else {
             PresentationScalar_SetImmediate((u8 *)state + 0x1c, -0x10000);
             FIELD(s32, state, 0xb4) =
-                func_ov017_021fe178(state) ? 6 : 4;
+                Overlay017_HasEffectCompleted(state) ? 6 : 4;
             FIELD(s32, state, 0xb8) = 0;
         }
-        func_ov017_021fda64(state);
+        Overlay017_UpdateEffectMotion(state);
         break;
     case 4:
         counter = ++FIELD(s32, state, 0xb8);
@@ -85,7 +85,7 @@ extern "C" s32 func_ov017_021fde40(void *state)
             FIELD(s32, state, 0xb4) = 5;
             FIELD(s32, state, 0xb8) = 0;
         }
-        func_ov017_021fda64(state);
+        Overlay017_UpdateEffectMotion(state);
         break;
     case 5:
         if (FIELD(void *, data_ov017_022016e0, 4) != 0) {
@@ -110,15 +110,15 @@ extern "C" s32 func_ov017_021fde40(void *state)
                         FIELD(s32, state, 0xb0) = dz * scale;
                     }
                 }
-                func_ov017_021fe160(state);
+                Overlay017_AdvanceEffectProgress(state);
                 FIELD(s32, state, 0xb4) = 2;
                 FIELD(s32, state, 0xb8) = 0;
                 break;
             }
         }
-        func_ov017_021fda64(state);
+        Overlay017_UpdateEffectMotion(state);
         break;
     }
-    func_ov017_021fe0b4(state);
+    Overlay017_UpdateEffectTransform(state);
     return 0;
 }

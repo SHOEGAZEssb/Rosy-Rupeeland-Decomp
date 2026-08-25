@@ -5,7 +5,7 @@
     .extern data_ov017_02201754
     .extern TitleRandom_NextBounded
     .extern PresentationList_Append
-    .extern func_ov017_021fd94c
+    .extern Overlay017_Effect_Init
     .extern gHeapContext
 .global func_ov017_021ff8a8
 func_ov017_021ff8a8:
@@ -331,7 +331,7 @@ L_021ffc48:
     mov r2, r6
     mov r3, r5
     str r4, [sp, #0x8]
-    bl func_ov017_021fd94c
+    bl Overlay017_Effect_Init
     mov r9, r0
 L_021ffc98:
     ldr r0, L_021ffcc4

@@ -4,8 +4,8 @@
     .extern data_ov017_022016e0
     .extern PresentationScalar_SetImmediate
     .extern Presentation_AdvanceTransitions
-.global func_ov017_021fe2d4
-func_ov017_021fe2d4:
+.global Overlay017_UpdateEffectVariant
+Overlay017_UpdateEffectVariant:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x40]
@@ -34,4 +34,4 @@ L_021fe330:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fe338: .word data_ov017_022016e0
-    .size func_ov017_021fe2d4, . - func_ov017_021fe2d4
+    .size Overlay017_UpdateEffectVariant, . - Overlay017_UpdateEffectVariant

@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_grid_runtime.c. */
     .extern data_ov017_02201608
-.global func_ov017_021fd744
-func_ov017_021fd744:
+.global Overlay017_Transform_Init
+Overlay017_Transform_Init:
     ldr r1, L_021fd77c
     mov r2, #0x0
     stmia r0, {r1, r2}
@@ -19,5 +19,5 @@ func_ov017_021fd744:
     str r2, [r0, #0x28]
     bx lr
 L_021fd77c: .word data_ov017_02201608
-    .size func_ov017_021fd744, . - func_ov017_021fd744
+    .size Overlay017_Transform_Init, . - Overlay017_Transform_Init
 

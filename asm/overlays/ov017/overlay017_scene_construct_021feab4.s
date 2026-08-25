@@ -55,10 +55,10 @@
     .extern SpriteMotionController_Hide
     .extern func_020ae778
     .extern func_020ae7b0
-    .extern func_ov017_021fce00
-    .extern func_ov017_021fd744
+    .extern Overlay017_Grid_Init
+    .extern Overlay017_Transform_Init
     .extern Overlay017Transform_ReplaceResource
-    .extern func_ov017_021fe40c
+    .extern Overlay017_SpritePool_Init
     .extern Overlay017UiSpriteGroup_Init
     .extern func_ov017_021fe9c0
     .extern func_ov017_021fea00
@@ -102,9 +102,9 @@ func_ov017_021feab4:
     add r0, r10, #0x248
     bl GraphicsResourceSetVariant_Init
     add r0, r10, #0x264
-    bl func_ov017_021fd744
+    bl Overlay017_Transform_Init
     add r0, r10, #0x290
-    bl func_ov017_021fd744
+    bl Overlay017_Transform_Init
     add r0, r10, #0x2d0
     bl Graphics3DLightSet_Init
     add r0, r10, #0x310
@@ -421,7 +421,7 @@ L_021fefa0:
     cmp r0, #0x0
     beq L_021ff008
     ldr r1, [r10, #0x240]
-    bl func_ov017_021fe40c
+    bl Overlay017_SpritePool_Init
 L_021ff008:
     ldr r1, L_021ff134
     str r0, [r10, #0x254]
@@ -464,7 +464,7 @@ L_021ff070:
     ldr r1, [r1, #0xc]
     ldr r1, [r2, r1, lsl #0x2]
     add r1, r1, #0xc
-    bl func_ov017_021fce00
+    bl Overlay017_Grid_Init
 L_021ff0a8:
     ldr r1, L_021ff148
     str r0, [r10, #0x2c0]

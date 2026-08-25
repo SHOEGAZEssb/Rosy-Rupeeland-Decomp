@@ -2,12 +2,12 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_progress.c. */
     .extern Presentation_InterpolateLinear
-    .extern func_ov017_021fe178
-.global func_ov017_021fe0b4
-func_ov017_021fe0b4:
+    .extern Overlay017_HasEffectCompleted
+.global Overlay017_UpdateEffectTransform
+Overlay017_UpdateEffectTransform:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
-    bl func_ov017_021fe178
+    bl Overlay017_HasEffectCompleted
     cmp r0, #0x0
     beq L_021fe0e4
     ldr r3, [r4, #0xb8]
@@ -50,4 +50,4 @@ L_021fe114:
     mov r0, r0, asr #0x8
     str r0, [r4, #0xcc]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov017_021fe0b4, . - func_ov017_021fe0b4
+    .size Overlay017_UpdateEffectTransform, . - Overlay017_UpdateEffectTransform

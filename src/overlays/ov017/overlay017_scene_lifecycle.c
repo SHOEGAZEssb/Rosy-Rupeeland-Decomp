@@ -29,9 +29,9 @@ extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
 extern void TitleScreenResourceCollection_Destroy(void *);
 extern void TitleCharacterResourceCollection_Destroy(void *);
 extern void PresentationList_DeleteAll(void *);
-extern void *func_ov017_021fd780(void *);
-extern void func_ov017_021fd948(void *);
-extern void *func_ov017_021fe58c(void *);
+extern void *Overlay017_Transform_Destroy(void *);
+extern void Overlay017_EffectBase_NoOp(void *);
+extern void *Overlay017_SpritePool_Destroy(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -73,7 +73,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
         Heap_Free(FIELD(void *, state, 0x2c0));
     owned = FIELD(void *, state, 0x254);
     if (owned != 0) {
-        func_ov017_021fe58c(owned);
+        Overlay017_SpritePool_Destroy(owned);
         Heap_Free(owned);
     }
     owned = FIELD(void *, state, 0x25c);
@@ -105,13 +105,13 @@ extern "C" void *func_ov017_021ff16c(void *state)
     FIELD(const u32 *, state, 0x3d8) = data_ov017_02201628;
     PresentationList_DeleteAll((u8 *)state + 0x3d8);
     Graphics3DLightSet_Destroy((u8 *)state + 0x2d0);
-    func_ov017_021fd780((u8 *)state + 0x290);
-    func_ov017_021fd780((u8 *)state + 0x264);
+    Overlay017_Transform_Destroy((u8 *)state + 0x290);
+    Overlay017_Transform_Destroy((u8 *)state + 0x264);
     GraphicsResourceSetVariant_Destroy((u8 *)state + 0x248);
     TitleScreenResourceCollection_Destroy((u8 *)state + 0x1fc);
     TitleCharacterResourceCollection_Destroy((u8 *)state + 0x1d8);
-    func_ov017_021fd948((u8 *)state + 0x12c);
-    func_ov017_021fd948((u8 *)state + 0x80);
+    Overlay017_EffectBase_NoOp((u8 *)state + 0x12c);
+    Overlay017_EffectBase_NoOp((u8 *)state + 0x80);
     AnimationResourceState_Destroy((u8 *)state + 0x74);
     AnimationResourceState_Destroy((u8 *)state + 0x68);
     AnimationResourceState_Destroy((u8 *)state + 0x5c);

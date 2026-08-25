@@ -61,7 +61,7 @@ static s32 hardwareSqrt(s32 squared)
  * normal Y to [-0x1000, 0x0FFF]. Returns void; caller grid state and the DS
  * square-root MMIO unit change, and the fixed-point division helper runs.
  */
-extern "C" void func_ov017_021fcf6c(void *state)
+extern "C" void Overlay017_UpdateGridDeformation(void *state)
 {
     s32 row;
 

@@ -61,7 +61,7 @@
 .extern Overlay009_InitSceneFields
 .extern Overlay013_Scene_Init
 .extern Overlay016_Scene_Init
-.extern func_ov017_021fda3c
+.extern Overlay017_Effect_Delete
 .extern func_ov018_021fcf68
 .extern func_ov018_021fd9f8
 .extern func_ov019_021fce28
@@ -723,7 +723,7 @@ L_0200d958:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_0200d99c
-    bl func_ov017_021fda3c ; func_ov030_021fda3c, func_ov034_021fda3c
+    bl Overlay017_Effect_Delete ; func_ov030_021fda3c, func_ov034_021fda3c
 L_0200d99c:
     str r0, [r5, #0x24]
     b L_0200dbd4

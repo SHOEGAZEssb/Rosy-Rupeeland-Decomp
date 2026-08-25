@@ -1,12 +1,12 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_geometry_engine.c. */
-    .extern func_ov017_021fd60c
-    .extern func_ov017_021fd638
-    .extern func_ov017_021fd64c
-    .extern func_ov017_021fd680
-.global func_ov017_021fd414
-func_ov017_021fd414:
+    .extern Overlay017_WritePolygonAttributes
+    .extern Overlay017_ClearTextureParameters
+    .extern Overlay017_WritePackedNormal
+    .extern Overlay017_WriteVertex16
+.global Overlay017_RenderGridGeometry
+Overlay017_RenderGridGeometry:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     mov r1, #0x18
@@ -17,8 +17,8 @@ func_ov017_021fd414:
     mov r2, #0x2
     mov r3, #0x8
     str r1, [sp, #0x4]
-    bl func_ov017_021fd60c
-    bl func_ov017_021fd638
+    bl Overlay017_WritePolygonAttributes
+    bl Overlay017_ClearTextureParameters
     mov r5, #0x0
 L_021fd448:
     mov r1, #0x6c
@@ -52,7 +52,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd64c
+    bl Overlay017_WritePackedNormal
     add r10, r6, r8
     ldmia r10, {r0, r1, r2}
     mov r0, r0, lsl #0x10
@@ -61,7 +61,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd680
+    bl Overlay017_WriteVertex16
     ldr r0, [r9, #0xc]
     ldr r1, [r9, #0x10]
     ldr r2, [r9, #0x14]
@@ -71,7 +71,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd64c
+    bl Overlay017_WritePackedNormal
     ldr r0, [r10, #0xc]
     ldr r1, [r10, #0x10]
     ldr r2, [r10, #0x14]
@@ -81,7 +81,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd680
+    bl Overlay017_WriteVertex16
     ldr r0, [sp, #0xc]
     add r9, r0, r8
     ldr r0, [r0, r8]
@@ -93,7 +93,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd64c
+    bl Overlay017_WritePackedNormal
     add r10, r11, r8
     ldmia r10, {r0, r1, r2}
     mov r0, r0, lsl #0x10
@@ -102,7 +102,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd680
+    bl Overlay017_WriteVertex16
     ldr r0, [r9, #0xc]
     ldr r1, [r9, #0x10]
     ldr r2, [r9, #0x14]
@@ -112,7 +112,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd64c
+    bl Overlay017_WritePackedNormal
     ldr r0, [r10, #0xc]
     ldr r1, [r10, #0x10]
     ldr r2, [r10, #0x14]
@@ -122,7 +122,7 @@ L_021fd480:
     mov r0, r0, asr #0x10
     mov r1, r1, asr #0x10
     mov r2, r2, asr #0x10
-    bl func_ov017_021fd680
+    bl Overlay017_WriteVertex16
     add r7, r7, #0x1
     ldr r0, L_021fd608
     mov r1, #0x0
@@ -135,5 +135,5 @@ L_021fd480:
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fd608: .word 0x4000500
-    .size func_ov017_021fd414, . - func_ov017_021fd414
+    .size Overlay017_RenderGridGeometry, . - Overlay017_RenderGridGeometry
 

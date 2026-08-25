@@ -1,8 +1,8 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_lifecycle.c. */
-.global func_ov017_021fd948
-func_ov017_021fd948:
+.global Overlay017_EffectBase_NoOp
+Overlay017_EffectBase_NoOp:
     bx lr
-    .size func_ov017_021fd948, . - func_ov017_021fd948
+    .size Overlay017_EffectBase_NoOp, . - Overlay017_EffectBase_NoOp
 

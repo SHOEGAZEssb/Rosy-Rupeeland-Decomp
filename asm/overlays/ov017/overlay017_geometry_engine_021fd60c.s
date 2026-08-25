@@ -1,8 +1,8 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_geometry_engine.c. */
-.global func_ov017_021fd60c
-func_ov017_021fd60c:
+.global Overlay017_WritePolygonAttributes
+Overlay017_WritePolygonAttributes:
     orr r0, r0, r1, lsl #0x4
     ldr r1, [sp, #0x4]
     orr r0, r0, r2, lsl #0x6
@@ -14,5 +14,5 @@ func_ov017_021fd60c:
     str r1, [r0, #0x0]
     bx lr
 L_021fd634: .word 0x40004a4
-    .size func_ov017_021fd60c, . - func_ov017_021fd60c
+    .size Overlay017_WritePolygonAttributes, . - Overlay017_WritePolygonAttributes
 

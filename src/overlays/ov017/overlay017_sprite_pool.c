@@ -22,7 +22,7 @@ extern void Graphics3DResourceOwner_RemoveManager(void *, void *);
 extern void Graphics3DResourceOwner_PrepareResources(void *, void *);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void TitleInterpolatedValue_Init(void *);
-extern void func_ov017_021fe3c4(void *, u32, u32, u32, u32, u8, u32);
+extern void Overlay017_ConfigureSpriteInstance(void *, u32, u32, u32, u32, u8, u32);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ extern void func_ov017_021fe3c4(void *, u32, u32, u32, u32, u8, u32);
  * return pool. Heap/resource, PRNG, and graphics SDK state change; no direct
  * MMIO occurs. The roles of the tables are inferred from their access pattern.
  */
-extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
+extern "C" void *Overlay017_SpritePool_Init(void *pool, void *resourceContext)
 {
     s32 i;
     s32 zero = 0;
@@ -64,7 +64,7 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
         FIELD(void *, pool, 0x10 + i * 4) = sprite;
         coordinateZ = radius * gFx32CosSinTable[tableIndex * 2 + 1] / 0x100;
         coordinateX = radius * gFx32CosSinTable[tableIndex * 2] / 0x100;
-        func_ov017_021fe3c4(sprite,
+        Overlay017_ConfigureSpriteInstance(sprite,
                            (u8)TitleRandom_NextBounded((u8 *)pool + 0x54, 3),
                            (u32)coordinateX, (u32)-0x666, (u32)coordinateZ,
                            0x20, 0x42);
@@ -84,7 +84,7 @@ extern "C" void *func_ov017_021fe40c(void *pool, void *resourceContext)
  * resource controller at +4, and return pool. SDK/resource ownership changes;
  * the containing allocation is retained and no direct hardware access occurs.
  */
-extern "C" void *func_ov017_021fe58c(void *pool)
+extern "C" void *Overlay017_SpritePool_Destroy(void *pool)
 {
     void *resource = FIELD(void *, pool, 0);
 

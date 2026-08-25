@@ -3,9 +3,9 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_variant.c. */
     .extern data_ov017_02201408
     .extern Overlay017Transform_SubmitGeometry
-    .extern func_ov017_021fd918
-.global func_ov017_021fe33c
-func_ov017_021fe33c:
+    .extern Overlay017_ResolveEffectResourceEntry
+.global Overlay017_ExportEffectTransform
+Overlay017_ExportEffectTransform:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     ldr r2, L_021fe3c0
@@ -36,8 +36,8 @@ func_ov017_021fe33c:
     add r1, sp, #0x0
     ldr r1, [r1, r2, lsl #0x2]
     mov r0, r4
-    bl func_ov017_021fd918
+    bl Overlay017_ResolveEffectResourceEntry
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, pc}
 L_021fe3c0: .word data_ov017_02201408
-    .size func_ov017_021fe33c, . - func_ov017_021fe33c
+    .size Overlay017_ExportEffectTransform, . - Overlay017_ExportEffectTransform

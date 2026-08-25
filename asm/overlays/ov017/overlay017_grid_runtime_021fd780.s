@@ -4,8 +4,8 @@
     .extern data_020f4e18
     .extern data_ov017_02201608
     .extern GraphicsArchive_ReleaseOwlvResource
-.global func_ov017_021fd780
-func_ov017_021fd780:
+.global Overlay017_Transform_Destroy
+Overlay017_Transform_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fd7b0
     mov r4, r0
@@ -21,5 +21,5 @@ L_021fd7a8:
     ldmia sp!, {r4, pc}
 L_021fd7b0: .word data_ov017_02201608
 L_021fd7b4: .word data_020f4e18
-    .size func_ov017_021fd780, . - func_ov017_021fd780
+    .size Overlay017_Transform_Destroy, . - Overlay017_Transform_Destroy
 

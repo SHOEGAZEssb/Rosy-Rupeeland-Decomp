@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_grid_runtime.c. */
     .extern data_ov017_02201414
     .extern data_ov017_022016e0
-.global func_ov017_021fd6b0
-func_ov017_021fd6b0:
+.global Overlay017_ApplyGridImpulse
+Overlay017_ApplyGridImpulse:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r4, L_021fd73c
     ldr r5, L_021fd740
@@ -44,5 +44,5 @@ L_021fd6f0:
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fd73c: .word data_ov017_022016e0
 L_021fd740: .word data_ov017_02201414
-    .size func_ov017_021fd6b0, . - func_ov017_021fd6b0
+    .size Overlay017_ApplyGridImpulse, . - Overlay017_ApplyGridImpulse
 

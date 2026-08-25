@@ -24,10 +24,10 @@
     .extern AlternateSpritePresentation_Init
     .extern SpriteMotionController_Update
     .extern func_020befec
-    .extern func_ov017_021fcf6c
-    .extern func_ov017_021fd6b0
-    .extern func_ov017_021fe190
-    .extern func_ov017_021fe5b0
+    .extern Overlay017_UpdateGridDeformation
+    .extern Overlay017_ApplyGridImpulse
+    .extern Overlay017_EffectVariant_Init
+    .extern Overlay017_UpdateSpritePool
     .extern func_ov017_021fe894
     .extern Overlay017_UpdatePaletteRamp
     .extern Overlay017Timer_Tick
@@ -88,7 +88,7 @@ L_0220023c:
     mov r1, r3, lsl #0x4
     mov r2, r2, lsl #0x4
     mvn r3, #0x3f
-    bl func_ov017_021fd6b0
+    bl Overlay017_ApplyGridImpulse
 L_0220025c:
     ldr r0, [r10, #0x20]
     mov r0, r0, lsl #0x1a
@@ -165,7 +165,7 @@ L_0220025c:
     mov r2, r2, lsl #0x4
     mov r3, r1, lsl #0x4
     mov r1, #0x0
-    bl func_ov017_021fe190
+    bl Overlay017_EffectVariant_Init
     mov r4, r0
 L_02200390:
     mov r1, r4
@@ -217,7 +217,7 @@ L_022003f4:
     mov r1, r6
     mov r2, r8
     mov r3, r11
-    bl func_ov017_021fd6b0
+    bl Overlay017_ApplyGridImpulse
 L_02200448:
     ldr r0, [r4, #0xb4]
     cmp r0, #0x6
@@ -246,7 +246,7 @@ L_02200448:
     mov r3, r8
     mov r0, r9
     mov r1, #0x2
-    bl func_ov017_021fe190
+    bl Overlay017_EffectVariant_Init
     mov r9, r0
 L_022004bc:
     mov r1, r9
@@ -447,7 +447,7 @@ L_022006c8:
     mov r3, r6
     mov r1, #0x1
     str r4, [sp, #0x8]
-    bl func_ov017_021fe190
+    bl Overlay017_EffectVariant_Init
     mov r7, r0
 L_022007c4:
     mov r1, r7
@@ -457,7 +457,7 @@ L_022007d0:
     add r0, r10, #0x3d8
     bl PresentationList_UpdateAndDeleteCompleted
     ldr r0, [r10, #0x254]
-    bl func_ov017_021fe5b0
+    bl Overlay017_UpdateSpritePool
     add r0, r10, #0x12c
     bl SpriteMotionController_Update
     add r0, r10, #0x80
@@ -469,7 +469,7 @@ L_022007d0:
     ldr r0, [r10, #0x58]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldr r0, [r10, #0x2c0]
-    bl func_ov017_021fcf6c
+    bl Overlay017_UpdateGridDeformation
     ldr r0, L_02200874
     bl Overlay017Timer_Tick
     cmp r0, #0x0

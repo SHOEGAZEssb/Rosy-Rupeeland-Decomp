@@ -7,8 +7,8 @@
     .extern PresentationScalar_TransitionBy
     .extern Presentation_Init
     .extern Presentation_SetPosition
-.global func_ov017_021fe190
-func_ov017_021fe190:
+.global Overlay017_EffectVariant_Init
+Overlay017_EffectVariant_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r4, r0
     mov r8, r1
@@ -94,4 +94,4 @@ L_021fe29c:
     str r1, [r4, #0x88]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 L_021fe2d0: .word data_ov017_02201654
-    .size func_ov017_021fe190, . - func_ov017_021fe190
+    .size Overlay017_EffectVariant_Init, . - Overlay017_EffectVariant_Init

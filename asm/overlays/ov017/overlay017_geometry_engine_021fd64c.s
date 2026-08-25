@@ -1,8 +1,8 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_geometry_engine.c. */
-.global func_ov017_021fd64c
-func_ov017_021fd64c:
+.global Overlay017_WritePackedNormal
+Overlay017_WritePackedNormal:
     ldr r3, L_021fd678
     mov r1, r1, asr #0x3
     mov ip, r2, asr #0x3
@@ -16,5 +16,5 @@ func_ov017_021fd64c:
     bx lr
 L_021fd678: .word 0x3ff
 L_021fd67c: .word 0x4000484
-    .size func_ov017_021fd64c, . - func_ov017_021fd64c
+    .size Overlay017_WritePackedNormal, . - Overlay017_WritePackedNormal
 

@@ -22,8 +22,8 @@ extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void SceneSound_StopPackedEffect(void *, s32);
 extern void SceneSound_PlayDirectSequence(void *, s32);
 extern s32 ModalState_UpdateInput(void *, void *, s32);
-extern void func_ov017_021fe6dc(void *);
-extern void func_ov017_021fe71c(void *);
+extern void Overlay017_ShowSpritePool(void *);
+extern void Overlay017_HideSpritePool(void *);
 extern void func_ov017_021fea8c(void *, s32, s32, s32);
 extern void func_ov017_021ffcc8(void *, s32, s32, void *);
 extern void func_ov017_021ffd74(void *);
@@ -70,7 +70,7 @@ extern "C" s32 func_ov017_02200ab0(void *state)
         break;
     case 2:
         if (DisplayBrightness_IsMainTransitionComplete()) {
-            func_ov017_021fe6dc(FIELD(void *, state, 0x254));
+            Overlay017_ShowSpritePool(FIELD(void *, state, 0x254));
             SceneSound_PlayPackedEffect(state, 0x4114);
             SceneSound_PlayDirectSequence(state, 0x5c);
             func_ov017_021fea8c(state, data_ov017_02201540[0],
@@ -96,7 +96,7 @@ extern "C" s32 func_ov017_02200c20(void *state)
         s32 progress = ++FIELD(s32, data_ov017_022016e0, 0);
         if (progress >= FIELD(s32, data_ov017_022016e0, 8) ||
             FIELD(s32, data_ov017_022016e0, 0x80) == 0) {
-            func_ov017_021fe71c(FIELD(void *, state, 0x254));
+            Overlay017_HideSpritePool(FIELD(void *, state, 0x254));
             SceneSound_StopPackedEffect(state, 0x4114);
             if (FIELD(void *, state, 0x440) != 0) {
                 SceneSound_StopPackedEffect(state, 0x4115);

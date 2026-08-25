@@ -1,12 +1,12 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_final_handlers.c. */
     .extern Heap_Free
-    .extern func_ov017_021fd948
+    .extern Overlay017_EffectBase_NoOp
 .global func_ov017_02201388
 func_ov017_02201388:
     stmdb sp!, {r4, lr}
     mov r4, r0
-    bl func_ov017_021fd948
+    bl Overlay017_EffectBase_NoOp
     mov r0, r4
     bl Heap_Free
     mov r0, r4

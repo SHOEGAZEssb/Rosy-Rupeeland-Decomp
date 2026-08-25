@@ -7,10 +7,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov017_021fd60c(s32, s32, s32, s32, s32, s32);
-extern void func_ov017_021fd638(void);
-extern void func_ov017_021fd64c(s32, s32, s32);
-extern void func_ov017_021fd680(s32, s32, s32);
+extern void Overlay017_WritePolygonAttributes(s32, s32, s32, s32, s32, s32);
+extern void Overlay017_ClearTextureParameters(void);
+extern void Overlay017_WritePackedNormal(s32, s32, s32);
+extern void Overlay017_WriteVertex16(s32, s32, s32);
 #ifndef MATCHING
 extern void TingleNativeG3_SetPolygonAttr(u32 value);
 extern void TingleNativeG3_SetTextureParam(u32 value);
@@ -44,12 +44,12 @@ extern "C" u32 Overlay017_WaitForSquareRoot(void)
  * at 0x04000500/0x04000504. Input grid memory is read only; return void. This
  * directly submits Nintendo DS geometry-engine commands.
  */
-extern "C" void func_ov017_021fd414(void *state)
+extern "C" void Overlay017_RenderGridGeometry(void *state)
 {
     s32 row;
 
-    func_ov017_021fd60c(1, 0, 2, 8, 0x18, 0);
-    func_ov017_021fd638();
+    Overlay017_WritePolygonAttributes(1, 0, 2, 8, 0x18, 0);
+    Overlay017_ClearTextureParameters();
     for (row = 0; row < 8; row++) {
         s32 column;
         for (column = 0; column < 8; column++) {
@@ -66,28 +66,28 @@ extern "C" void func_ov017_021fd414(void *state)
 #ifndef MATCHING
             TingleNativeG3_Begin(2);
 #endif
-            func_ov017_021fd64c(FIELD(s16, valuesNext, 0),
+            Overlay017_WritePackedNormal(FIELD(s16, valuesNext, 0),
                                 FIELD(s16, valuesNext, 4),
                                 FIELD(s16, valuesNext, 8));
-            func_ov017_021fd680(FIELD(s16, coordsNext, 0),
+            Overlay017_WriteVertex16(FIELD(s16, coordsNext, 0),
                                 FIELD(s16, coordsNext, 4),
                                 FIELD(s16, coordsNext, 8));
-            func_ov017_021fd64c(FIELD(s16, valuesNext, 0xc),
+            Overlay017_WritePackedNormal(FIELD(s16, valuesNext, 0xc),
                                 FIELD(s16, valuesNext, 0x10),
                                 FIELD(s16, valuesNext, 0x14));
-            func_ov017_021fd680(FIELD(s16, coordsNext, 0xc),
+            Overlay017_WriteVertex16(FIELD(s16, coordsNext, 0xc),
                                 FIELD(s16, coordsNext, 0x10),
                                 FIELD(s16, coordsNext, 0x14));
-            func_ov017_021fd64c(FIELD(s16, valuesCurrent, 0),
+            Overlay017_WritePackedNormal(FIELD(s16, valuesCurrent, 0),
                                 FIELD(s16, valuesCurrent, 4),
                                 FIELD(s16, valuesCurrent, 8));
-            func_ov017_021fd680(FIELD(s16, coordsCurrent, 0),
+            Overlay017_WriteVertex16(FIELD(s16, coordsCurrent, 0),
                                 FIELD(s16, coordsCurrent, 4),
                                 FIELD(s16, coordsCurrent, 8));
-            func_ov017_021fd64c(FIELD(s16, valuesCurrent, 0xc),
+            Overlay017_WritePackedNormal(FIELD(s16, valuesCurrent, 0xc),
                                 FIELD(s16, valuesCurrent, 0x10),
                                 FIELD(s16, valuesCurrent, 0x14));
-            func_ov017_021fd680(FIELD(s16, coordsCurrent, 0xc),
+            Overlay017_WriteVertex16(FIELD(s16, coordsCurrent, 0xc),
                                 FIELD(s16, coordsCurrent, 0x10),
                                 FIELD(s16, coordsCurrent, 0x14));
             *(volatile u32 *)0x04000504 = 0;
@@ -104,7 +104,7 @@ extern "C" void func_ov017_021fd414(void *state)
  * at bit 16; and stack argument 6 is ORed directly. Return void. This directly
  * changes Nintendo DS geometry polygon state.
  */
-extern "C" void func_ov017_021fd60c(s32 value0, s32 value1, s32 value2,
+extern "C" void Overlay017_WritePolygonAttributes(s32 value0, s32 value1, s32 value2,
                                       s32 value3, s32 value4, s32 value5)
 {
     u32 value =
@@ -120,7 +120,7 @@ extern "C" void func_ov017_021fd60c(s32 value0, s32 value1, s32 value2,
  * Write zero to the Nintendo DS geometry texture-image parameter register at
  * 0x040004A8. There are no inputs or memory effects; return void.
  */
-extern "C" void func_ov017_021fd638(void)
+extern "C" void Overlay017_ClearTextureParameters(void)
 {
     *(volatile u32 *)0x040004a8 = 0;
 #ifndef MATCHING
@@ -133,7 +133,7 @@ extern "C" void func_ov017_021fd638(void)
  * pack them at bit positions 0/10/20, and write the word to geometry register
  * 0x04000484. Return void; this directly submits one packed vertex command.
  */
-extern "C" void func_ov017_021fd64c(s32 x, s32 y, s32 z)
+extern "C" void Overlay017_WritePackedNormal(s32 x, s32 y, s32 z)
 {
     u32 value =
         ((u32)(x >> 3) & 0x3ff) |
@@ -150,7 +150,7 @@ extern "C" void func_ov017_021fd64c(s32 x, s32 y, s32 z)
  * as two consecutive words to geometry register 0x0400048C, and return void.
  * This directly submits a two-word Nintendo DS vertex command.
  */
-extern "C" void func_ov017_021fd680(s32 x, s32 y, s32 z)
+extern "C" void Overlay017_WriteVertex16(s32 x, s32 y, s32 z)
 {
     volatile u32 *command = (volatile u32 *)0x0400048c;
     *command = (u16)x | ((u32)(u16)y << 16);

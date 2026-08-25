@@ -6,8 +6,8 @@
     .extern TitleInterpolatedValue_Configure
     .extern func_02091c7c
     .extern func_02091cf0
-.global func_ov017_021fe5b0
-func_ov017_021fe5b0:
+.global Overlay017_UpdateSpritePool
+Overlay017_UpdateSpritePool:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -89,4 +89,4 @@ L_021fe6ac:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
 L_021fe6d8: .word 0xe66
-    .size func_ov017_021fe5b0, . - func_ov017_021fe5b0
+    .size Overlay017_UpdateSpritePool, . - Overlay017_UpdateSpritePool

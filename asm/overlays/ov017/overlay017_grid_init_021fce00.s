@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_grid_init.c. */
     .extern func_020add34
-.global func_ov017_021fce00
-func_ov017_021fce00:
+.global Overlay017_Grid_Init
+Overlay017_Grid_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x14
     mov r9, r1
@@ -98,5 +98,5 @@ L_021fcf2c:
     add sp, sp, #0x14
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fcf68: .word 0xfff
-    .size func_ov017_021fce00, . - func_ov017_021fce00
+    .size Overlay017_Grid_Init, . - Overlay017_Grid_Init
 

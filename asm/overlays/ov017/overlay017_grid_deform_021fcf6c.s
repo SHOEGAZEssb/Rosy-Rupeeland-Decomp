@@ -3,8 +3,8 @@
     .extern func_020b5880
     .extern func_020befec
     .extern Overlay017_WaitForSquareRoot
-    .global func_ov017_021fcf6c
-func_ov017_021fcf6c:
+    .global Overlay017_UpdateGridDeformation
+Overlay017_UpdateGridDeformation:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x5c
     str r0, [sp, #0x0]
@@ -303,4 +303,4 @@ L_021fd3c8:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fd3e8: .word 0xfd7
 L_021fd3ec: .word 0x40002b0
-    .size func_ov017_021fcf6c, . - func_ov017_021fcf6c
+    .size Overlay017_UpdateGridDeformation, . - Overlay017_UpdateGridDeformation

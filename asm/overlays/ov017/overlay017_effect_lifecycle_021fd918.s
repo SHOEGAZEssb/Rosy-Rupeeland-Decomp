@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_lifecycle.c. */
     .extern func_01ff88c4
-.global func_ov017_021fd918
-func_ov017_021fd918:
+.global Overlay017_ResolveEffectResourceEntry
+Overlay017_ResolveEffectResourceEntry:
     mov r2, #0xc
     mul r2, r1, r2
     ldr r1, [r0, #0x4]
@@ -16,5 +16,5 @@ func_ov017_021fd918:
     add r1, r3, r1
     bx ip
 L_021fd944: .word func_01ff88c4
-    .size func_ov017_021fd918, . - func_ov017_021fd918
+    .size Overlay017_ResolveEffectResourceEntry, . - Overlay017_ResolveEffectResourceEntry
 

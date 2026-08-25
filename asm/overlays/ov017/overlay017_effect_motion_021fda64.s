@@ -8,8 +8,8 @@
     .extern func_020ae024
     .extern func_020befec
     .extern Overlay017_WaitForSquareRoot
-.global func_ov017_021fda64
-func_ov017_021fda64:
+.global Overlay017_UpdateEffectMotion
+Overlay017_UpdateEffectMotion:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     ldr r2, [r10, #0xa8]
@@ -264,4 +264,4 @@ L_021fde34: .word data_ov017_02201414
 L_021fde38: .word gFx32CosSinTable
 L_021fde3c: .word 0x40002b0
 
-    .size func_ov017_021fda64, . - func_ov017_021fda64
+    .size Overlay017_UpdateEffectMotion, . - Overlay017_UpdateEffectMotion

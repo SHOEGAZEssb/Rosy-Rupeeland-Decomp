@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_sprite_pool_state.c. */
     .extern TitleInterpolatedValue_Configure
-.global func_ov017_021fe6dc
-func_ov017_021fe6dc:
+.global Overlay017_ShowSpritePool
+Overlay017_ShowSpritePool:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -20,4 +20,4 @@ func_ov017_021fe6dc:
     str r0, [r4, #0x34]
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
-    .size func_ov017_021fe6dc, . - func_ov017_021fe6dc
+    .size Overlay017_ShowSpritePool, . - Overlay017_ShowSpritePool

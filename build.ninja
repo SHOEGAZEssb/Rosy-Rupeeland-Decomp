@@ -26123,7 +26123,7 @@ build build/reports/overlay017_grid_init.json: objdiff build/decomp/delinks/asm/
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_init_021fce00.o
 build build/reports/overlay017_grid_init.txt: match_report build/reports/overlay017_grid_init.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_init.json
-  report_args = --section .text --function func_ov017_021fce00 --require-exact
+  report_args = --section .text --function Overlay017_Grid_Init --require-exact
 build overlay017_grid_init: phony build/decomp/src/overlays/ov017/overlay017_grid_init.o build/decomp/asm/overlays/ov017/overlay017_grid_init_021fce00.o build/reports/overlay017_grid_init.txt
 
 overlay017_geometry_engine_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26145,7 +26145,7 @@ build build/reports/overlay017_geometry_engine_021fd414.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o
 build build/reports/overlay017_geometry_engine_021fd414.txt: match_report build/reports/overlay017_geometry_engine_021fd414.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_geometry_engine_021fd414.json
-  report_args = --section .text --function func_ov017_021fd414 --require-exact
+  report_args = --section .text --function Overlay017_RenderGridGeometry --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o: mwasmarm asm/overlays/ov017/overlay017_geometry_engine_021fd60c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_geometry_engine_021fd60c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o | build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o
@@ -26153,7 +26153,7 @@ build build/reports/overlay017_geometry_engine_021fd60c.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o
 build build/reports/overlay017_geometry_engine_021fd60c.txt: match_report build/reports/overlay017_geometry_engine_021fd60c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_geometry_engine_021fd60c.json
-  report_args = --section .text --function func_ov017_021fd60c --require-exact
+  report_args = --section .text --function Overlay017_WritePolygonAttributes --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o: mwasmarm asm/overlays/ov017/overlay017_geometry_engine_021fd638.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_geometry_engine_021fd638.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o | build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o
@@ -26161,7 +26161,7 @@ build build/reports/overlay017_geometry_engine_021fd638.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o
 build build/reports/overlay017_geometry_engine_021fd638.txt: match_report build/reports/overlay017_geometry_engine_021fd638.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_geometry_engine_021fd638.json
-  report_args = --section .text --function func_ov017_021fd638 --require-exact
+  report_args = --section .text --function Overlay017_ClearTextureParameters --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o: mwasmarm asm/overlays/ov017/overlay017_geometry_engine_021fd64c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_geometry_engine_021fd64c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o | build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o
@@ -26169,7 +26169,7 @@ build build/reports/overlay017_geometry_engine_021fd64c.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o
 build build/reports/overlay017_geometry_engine_021fd64c.txt: match_report build/reports/overlay017_geometry_engine_021fd64c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_geometry_engine_021fd64c.json
-  report_args = --section .text --function func_ov017_021fd64c --require-exact
+  report_args = --section .text --function Overlay017_WritePackedNormal --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o: mwasmarm asm/overlays/ov017/overlay017_geometry_engine_021fd680.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_geometry_engine_021fd680.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o | build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o
@@ -26177,7 +26177,7 @@ build build/reports/overlay017_geometry_engine_021fd680.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o
 build build/reports/overlay017_geometry_engine_021fd680.txt: match_report build/reports/overlay017_geometry_engine_021fd680.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_geometry_engine_021fd680.json
-  report_args = --section .text --function func_ov017_021fd680 --require-exact
+  report_args = --section .text --function Overlay017_WriteVertex16 --require-exact
 build overlay017_geometry_engine: phony build/decomp/src/overlays/ov017/overlay017_geometry_engine.o build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd3f0.o build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd414.o build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd60c.o build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd638.o build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd64c.o build/decomp/asm/overlays/ov017/overlay017_geometry_engine_021fd680.o build/reports/overlay017_geometry_engine_021fd3f0.txt build/reports/overlay017_geometry_engine_021fd414.txt build/reports/overlay017_geometry_engine_021fd60c.txt build/reports/overlay017_geometry_engine_021fd638.txt build/reports/overlay017_geometry_engine_021fd64c.txt build/reports/overlay017_geometry_engine_021fd680.txt
 
 overlay017_grid_runtime_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26191,7 +26191,7 @@ build build/reports/overlay017_grid_runtime_021fd6b0.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd6b0.o
 build build/reports/overlay017_grid_runtime_021fd6b0.txt: match_report build/reports/overlay017_grid_runtime_021fd6b0.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_runtime_021fd6b0.json
-  report_args = --section .text --function func_ov017_021fd6b0 --require-exact
+  report_args = --section .text --function Overlay017_ApplyGridImpulse --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o: mwasmarm asm/overlays/ov017/overlay017_grid_runtime_021fd744.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_grid_runtime_021fd744.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o | build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o
@@ -26199,7 +26199,7 @@ build build/reports/overlay017_grid_runtime_021fd744.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd744.o
 build build/reports/overlay017_grid_runtime_021fd744.txt: match_report build/reports/overlay017_grid_runtime_021fd744.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_runtime_021fd744.json
-  report_args = --section .text --function func_ov017_021fd744 --require-exact
+  report_args = --section .text --function Overlay017_Transform_Init --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o: mwasmarm asm/overlays/ov017/overlay017_grid_runtime_021fd780.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_grid_runtime_021fd780.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o | build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o
@@ -26207,7 +26207,7 @@ build build/reports/overlay017_grid_runtime_021fd780.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd780.o
 build build/reports/overlay017_grid_runtime_021fd780.txt: match_report build/reports/overlay017_grid_runtime_021fd780.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_runtime_021fd780.json
-  report_args = --section .text --function func_ov017_021fd780 --require-exact
+  report_args = --section .text --function Overlay017_Transform_Destroy --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o: mwasmarm asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_grid_runtime_021fd7b8.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o | build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o
@@ -26215,7 +26215,7 @@ build build/reports/overlay017_grid_runtime_021fd7b8.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7b8.o
 build build/reports/overlay017_grid_runtime_021fd7b8.txt: match_report build/reports/overlay017_grid_runtime_021fd7b8.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_runtime_021fd7b8.json
-  report_args = --section .text --function func_ov017_021fd7b8 --require-exact
+  report_args = --section .text --function Overlay017_Transform_Delete --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o: mwasmarm asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_grid_runtime_021fd7f8.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o | build/decomp/asm/overlays/ov017/overlay017_grid_runtime_021fd7f8.o
@@ -26245,7 +26245,7 @@ build build/reports/overlay017_effect_lifecycle_021fd918.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd918.o
 build build/reports/overlay017_effect_lifecycle_021fd918.txt: match_report build/reports/overlay017_effect_lifecycle_021fd918.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_lifecycle_021fd918.json
-  report_args = --section .text --function func_ov017_021fd918 --require-exact
+  report_args = --section .text --function Overlay017_ResolveEffectResourceEntry --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o: mwasmarm asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_lifecycle_021fd948.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o | build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o
@@ -26253,7 +26253,7 @@ build build/reports/overlay017_effect_lifecycle_021fd948.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o
 build build/reports/overlay017_effect_lifecycle_021fd948.txt: match_report build/reports/overlay017_effect_lifecycle_021fd948.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_lifecycle_021fd948.json
-  report_args = --section .text --function func_ov017_021fd948 --require-exact
+  report_args = --section .text --function Overlay017_EffectBase_NoOp --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o: mwasmarm asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_lifecycle_021fd94c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o | build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o
@@ -26261,7 +26261,7 @@ build build/reports/overlay017_effect_lifecycle_021fd94c.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o
 build build/reports/overlay017_effect_lifecycle_021fd94c.txt: match_report build/reports/overlay017_effect_lifecycle_021fd94c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_lifecycle_021fd94c.json
-  report_args = --section .text --function func_ov017_021fd94c --require-exact
+  report_args = --section .text --function Overlay017_Effect_Init --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o: mwasmarm asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_lifecycle_021fda1c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o | build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o
@@ -26269,7 +26269,7 @@ build build/reports/overlay017_effect_lifecycle_021fda1c.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o
 build build/reports/overlay017_effect_lifecycle_021fda1c.txt: match_report build/reports/overlay017_effect_lifecycle_021fda1c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_lifecycle_021fda1c.json
-  report_args = --section .text --function func_ov017_021fda1c --require-exact
+  report_args = --section .text --function Overlay017_Effect_Destroy --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o: mwasmarm asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_lifecycle_021fda3c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o | build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o
@@ -26277,7 +26277,7 @@ build build/reports/overlay017_effect_lifecycle_021fda3c.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o
 build build/reports/overlay017_effect_lifecycle_021fda3c.txt: match_report build/reports/overlay017_effect_lifecycle_021fda3c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_lifecycle_021fda3c.json
-  report_args = --section .text --function func_ov017_021fda3c --require-exact
+  report_args = --section .text --function Overlay017_Effect_Delete --require-exact
 build overlay017_effect_lifecycle: phony build/decomp/src/overlays/ov017/overlay017_effect_lifecycle.o build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd918.o build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd948.o build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fd94c.o build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda1c.o build/decomp/asm/overlays/ov017/overlay017_effect_lifecycle_021fda3c.o build/reports/overlay017_effect_lifecycle_021fd918.txt build/reports/overlay017_effect_lifecycle_021fd948.txt build/reports/overlay017_effect_lifecycle_021fd94c.txt build/reports/overlay017_effect_lifecycle_021fda1c.txt build/reports/overlay017_effect_lifecycle_021fda3c.txt
 
 overlay017_effect_progress_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26291,7 +26291,7 @@ build build/reports/overlay017_effect_progress_021fe0b4.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe0b4.o
 build build/reports/overlay017_effect_progress_021fe0b4.txt: match_report build/reports/overlay017_effect_progress_021fe0b4.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_progress_021fe0b4.json
-  report_args = --section .text --function func_ov017_021fe0b4 --require-exact
+  report_args = --section .text --function Overlay017_UpdateEffectTransform --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe160.o: mwasmarm asm/overlays/ov017/overlay017_effect_progress_021fe160.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_progress_021fe160.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_progress_021fe160.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_progress_021fe160.o | build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe160.o
@@ -26299,7 +26299,7 @@ build build/reports/overlay017_effect_progress_021fe160.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe160.o
 build build/reports/overlay017_effect_progress_021fe160.txt: match_report build/reports/overlay017_effect_progress_021fe160.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_progress_021fe160.json
-  report_args = --section .text --function func_ov017_021fe160 --require-exact
+  report_args = --section .text --function Overlay017_AdvanceEffectProgress --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe178.o: mwasmarm asm/overlays/ov017/overlay017_effect_progress_021fe178.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_progress_021fe178.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_progress_021fe178.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_progress_021fe178.o | build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe178.o
@@ -26307,7 +26307,7 @@ build build/reports/overlay017_effect_progress_021fe178.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe178.o
 build build/reports/overlay017_effect_progress_021fe178.txt: match_report build/reports/overlay017_effect_progress_021fe178.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_progress_021fe178.json
-  report_args = --section .text --function func_ov017_021fe178 --require-exact
+  report_args = --section .text --function Overlay017_HasEffectCompleted --require-exact
 build overlay017_effect_progress: phony build/decomp/src/overlays/ov017/overlay017_effect_progress.o build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe0b4.o build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe160.o build/decomp/asm/overlays/ov017/overlay017_effect_progress_021fe178.o build/reports/overlay017_effect_progress_021fe0b4.txt build/reports/overlay017_effect_progress_021fe160.txt build/reports/overlay017_effect_progress_021fe178.txt
 
 overlay017_effect_variant_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26321,7 +26321,7 @@ build build/reports/overlay017_effect_variant_021fe190.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe190.o
 build build/reports/overlay017_effect_variant_021fe190.txt: match_report build/reports/overlay017_effect_variant_021fe190.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_variant_021fe190.json
-  report_args = --section .text --function func_ov017_021fe190 --require-exact
+  report_args = --section .text --function Overlay017_EffectVariant_Init --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o: mwasmarm asm/overlays/ov017/overlay017_effect_variant_021fe2d4.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_variant_021fe2d4.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o | build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o
@@ -26329,7 +26329,7 @@ build build/reports/overlay017_effect_variant_021fe2d4.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o
 build build/reports/overlay017_effect_variant_021fe2d4.txt: match_report build/reports/overlay017_effect_variant_021fe2d4.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_variant_021fe2d4.json
-  report_args = --section .text --function func_ov017_021fe2d4 --require-exact
+  report_args = --section .text --function Overlay017_UpdateEffectVariant --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o: mwasmarm asm/overlays/ov017/overlay017_effect_variant_021fe33c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_variant_021fe33c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o | build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o
@@ -26337,7 +26337,7 @@ build build/reports/overlay017_effect_variant_021fe33c.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o
 build build/reports/overlay017_effect_variant_021fe33c.txt: match_report build/reports/overlay017_effect_variant_021fe33c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_variant_021fe33c.json
-  report_args = --section .text --function func_ov017_021fe33c --require-exact
+  report_args = --section .text --function Overlay017_ExportEffectTransform --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o: mwasmarm asm/overlays/ov017/overlay017_effect_variant_021fe3c4.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_effect_variant_021fe3c4.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o | build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o
@@ -26345,7 +26345,7 @@ build build/reports/overlay017_effect_variant_021fe3c4.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o
 build build/reports/overlay017_effect_variant_021fe3c4.txt: match_report build/reports/overlay017_effect_variant_021fe3c4.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_variant_021fe3c4.json
-  report_args = --section .text --function func_ov017_021fe3c4 --require-exact
+  report_args = --section .text --function Overlay017_ConfigureSpriteInstance --require-exact
 build overlay017_effect_variant: phony build/decomp/src/overlays/ov017/overlay017_effect_variant.o build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe190.o build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe2d4.o build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe33c.o build/decomp/asm/overlays/ov017/overlay017_effect_variant_021fe3c4.o build/reports/overlay017_effect_variant_021fe190.txt build/reports/overlay017_effect_variant_021fe2d4.txt build/reports/overlay017_effect_variant_021fe33c.txt build/reports/overlay017_effect_variant_021fe3c4.txt
 
 overlay017_sprite_pool_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26359,7 +26359,7 @@ build build/reports/overlay017_sprite_pool_021fe40c.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe40c.o
 build build/reports/overlay017_sprite_pool_021fe40c.txt: match_report build/reports/overlay017_sprite_pool_021fe40c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_sprite_pool_021fe40c.json
-  report_args = --section .text --function func_ov017_021fe40c --require-exact
+  report_args = --section .text --function Overlay017_SpritePool_Init --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o: mwasmarm asm/overlays/ov017/overlay017_sprite_pool_021fe58c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_sprite_pool_021fe58c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o | build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o
@@ -26367,7 +26367,7 @@ build build/reports/overlay017_sprite_pool_021fe58c.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o
 build build/reports/overlay017_sprite_pool_021fe58c.txt: match_report build/reports/overlay017_sprite_pool_021fe58c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_sprite_pool_021fe58c.json
-  report_args = --section .text --function func_ov017_021fe58c --require-exact
+  report_args = --section .text --function Overlay017_SpritePool_Destroy --require-exact
 build overlay017_sprite_pool: phony build/decomp/src/overlays/ov017/overlay017_sprite_pool.o build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe40c.o build/decomp/asm/overlays/ov017/overlay017_sprite_pool_021fe58c.o build/reports/overlay017_sprite_pool_021fe40c.txt build/reports/overlay017_sprite_pool_021fe58c.txt
 
 overlay017_sprite_pool_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26381,7 +26381,7 @@ build build/reports/overlay017_sprite_pool_state_021fe5b0.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe5b0.o
 build build/reports/overlay017_sprite_pool_state_021fe5b0.txt: match_report build/reports/overlay017_sprite_pool_state_021fe5b0.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_sprite_pool_state_021fe5b0.json
-  report_args = --section .text --function func_ov017_021fe5b0 --require-exact
+  report_args = --section .text --function Overlay017_UpdateSpritePool --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o: mwasmarm asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_sprite_pool_state_021fe6dc.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o | build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o
@@ -26389,7 +26389,7 @@ build build/reports/overlay017_sprite_pool_state_021fe6dc.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o
 build build/reports/overlay017_sprite_pool_state_021fe6dc.txt: match_report build/reports/overlay017_sprite_pool_state_021fe6dc.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_sprite_pool_state_021fe6dc.json
-  report_args = --section .text --function func_ov017_021fe6dc --require-exact
+  report_args = --section .text --function Overlay017_ShowSpritePool --require-exact
 build build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o: mwasmarm asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.s
 build build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o: dsd_delink config/arm9/config.yaml config/arm9/overlays/ov017/delinks.txt config/arm9/overlays/ov017/symbols.txt config/arm9/overlays/ov017/relocs.txt
 build build/reports/overlay017_sprite_pool_state_021fe71c.json: objdiff build/decomp/delinks/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o | build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o
@@ -26397,7 +26397,7 @@ build build/reports/overlay017_sprite_pool_state_021fe71c.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o
 build build/reports/overlay017_sprite_pool_state_021fe71c.txt: match_report build/reports/overlay017_sprite_pool_state_021fe71c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_sprite_pool_state_021fe71c.json
-  report_args = --section .text --function func_ov017_021fe71c --require-exact
+  report_args = --section .text --function Overlay017_HideSpritePool --require-exact
 build overlay017_sprite_pool_state: phony build/decomp/src/overlays/ov017/overlay017_sprite_pool_state.o build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe5b0.o build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe6dc.o build/decomp/asm/overlays/ov017/overlay017_sprite_pool_state_021fe71c.o build/reports/overlay017_sprite_pool_state_021fe5b0.txt build/reports/overlay017_sprite_pool_state_021fe6dc.txt build/reports/overlay017_sprite_pool_state_021fe71c.txt
 
 overlay017_record_base_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26719,7 +26719,7 @@ build build/reports/overlay017_effect_phase_021fde40.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_phase_021fde40.o
 build build/reports/overlay017_effect_phase_021fde40.txt: match_report build/reports/overlay017_effect_phase_021fde40.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_phase_021fde40.json
-  report_args = --section .text --function func_ov017_021fde40 --require-exact
+  report_args = --section .text --function Overlay017_UpdateEffectPhase --require-exact
 build overlay017_effect_phase: phony build/decomp/src/overlays/ov017/overlay017_effect_phase.o build/decomp/asm/overlays/ov017/overlay017_effect_phase_021fde40.o build/reports/overlay017_effect_phase_021fde40.txt
 
 overlay017_status_text_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26761,7 +26761,7 @@ build build/reports/overlay017_effect_motion_021fda64.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov017/overlay017_effect_motion_021fda64.o
 build build/reports/overlay017_effect_motion_021fda64.txt: match_report build/reports/overlay017_effect_motion_021fda64.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_effect_motion_021fda64.json
-  report_args = --section .text --function func_ov017_021fda64 --require-exact
+  report_args = --section .text --function Overlay017_UpdateEffectMotion --require-exact
 build overlay017_effect_motion: phony build/decomp/src/overlays/ov017/overlay017_effect_motion.o build/decomp/asm/overlays/ov017/overlay017_effect_motion_021fda64.o build/reports/overlay017_effect_motion_021fda64.txt
 
 overlay017_scene_render_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -26789,7 +26789,7 @@ build build/reports/overlay017_grid_deform_021fcf6c.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov017/overlay017_grid_deform_021fcf6c.o
 build build/reports/overlay017_grid_deform_021fcf6c.txt: match_report build/reports/overlay017_grid_deform_021fcf6c.json | tools/report_objdiff.py
   report_json = build/reports/overlay017_grid_deform_021fcf6c.json
-  report_args = --section .text --function func_ov017_021fcf6c --require-exact
+  report_args = --section .text --function Overlay017_UpdateGridDeformation --require-exact
 build overlay017_grid_deform: phony build/decomp/src/overlays/ov017/overlay017_grid_deform.o build/decomp/asm/overlays/ov017/overlay017_grid_deform_021fcf6c.o build/reports/overlay017_grid_deform_021fcf6c.txt
 
 overlay017_main_state_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_effect_variant.c. */
     .extern GraphicsAnimationInstance_SetAnimation
-.global func_ov017_021fe3c4
-func_ov017_021fe3c4:
+.global Overlay017_ConfigureSpriteInstance
+Overlay017_ConfigureSpriteInstance:
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     mov r6, r2
@@ -22,4 +22,4 @@ func_ov017_021fe3c4:
     orr r0, r1, r0, lsr #0x10
     strh r0, [r4, #0x50]
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_ov017_021fe3c4, . - func_ov017_021fe3c4
+    .size Overlay017_ConfigureSpriteInstance, . - Overlay017_ConfigureSpriteInstance

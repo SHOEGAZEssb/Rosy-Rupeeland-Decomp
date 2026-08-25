@@ -25,7 +25,7 @@ extern void GraphicsAnimationInstanceManager_Update(void *);
  * graphics object. Pool, sprite, PRNG, and SDK state change; returns void and
  * performs no direct MMIO.
  */
-extern "C" void func_ov017_021fe5b0(void *pool)
+extern "C" void Overlay017_UpdateSpritePool(void *pool)
 {
     s32 i;
 
@@ -70,7 +70,7 @@ extern "C" void func_ov017_021fe5b0(void *pool)
  * state 1, and clear +0x34. Pool/SDK state changes; returns void and has no
  * direct hardware effects.
  */
-extern "C" void func_ov017_021fe6dc(void *pool)
+extern "C" void Overlay017_ShowSpritePool(void *pool)
 {
     TitleInterpolatedValue_Configure((u8 *)pool + 0x38, 2, 0, 0x1800, 0x10);
     FIELD(s32, pool, 0x30) = 1;
@@ -82,7 +82,7 @@ extern "C" void func_ov017_021fe6dc(void *pool)
  * enter state 3, and clear +0x34. Pool/SDK state changes; returns void and has
  * no direct hardware effects.
  */
-extern "C" void func_ov017_021fe71c(void *pool)
+extern "C" void Overlay017_HideSpritePool(void *pool)
 {
     TitleInterpolatedValue_Configure((u8 *)pool + 0x38, 2, FIELD(s32, pool, 0x48), 0, 0x10);
     FIELD(s32, pool, 0x30) = 3;

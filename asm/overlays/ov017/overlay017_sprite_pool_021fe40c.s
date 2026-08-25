@@ -12,10 +12,10 @@
     .extern Graphics3DResourceOwner_PrepareResources
     .extern TitleRandom_NextBounded
     .extern TitleInterpolatedValue_Init
-    .extern func_ov017_021fe3c4
+    .extern Overlay017_ConfigureSpriteInstance
     .extern genrand_int32
-.global func_ov017_021fe40c
-func_ov017_021fe40c:
+.global Overlay017_SpritePool_Init
+Overlay017_SpritePool_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -88,7 +88,7 @@ L_021fe484:
     mov r2, r8, asr #0x7
     add r2, r8, r2, lsr #0x18
     mov r2, r2, asr #0x8
-    bl func_ov017_021fe3c4
+    bl Overlay017_ConfigureSpriteInstance
     add r2, r10, r6, lsl #0x2
     ldr r0, [r2, #0x10]
     add r6, r6, #0x1
@@ -113,4 +113,4 @@ L_021fe57c: .word data_ov017_02201414
 L_021fe580: .word gFx32CosSinTable
 L_021fe584: .word data_ov017_022016e0
 L_021fe588: .word 0xfffff99a
-    .size func_ov017_021fe40c, . - func_ov017_021fe40c
+    .size Overlay017_SpritePool_Init, . - Overlay017_SpritePool_Init

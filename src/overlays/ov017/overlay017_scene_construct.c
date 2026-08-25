@@ -67,10 +67,10 @@ extern void Presentation_SetPosition(void *, s32, s32, s32);
 extern void Sound_LoadGroup(void *, s32);
 extern void func_020ae778(void);
 extern void func_020ae7b0(void);
-extern void *func_ov017_021fce00(void *, s32);
-extern void *func_ov017_021fd744(void *);
+extern void *Overlay017_Grid_Init(void *, s32);
+extern void *Overlay017_Transform_Init(void *);
 extern void Overlay017Transform_ReplaceResource(void *, s32);
-extern void *func_ov017_021fe40c(void *, void *);
+extern void *Overlay017_SpritePool_Init(void *, void *);
 extern void *Overlay017UiSpriteGroup_Init(void *, s32, s32);
 extern void *func_ov017_021fe9c0(void *);
 extern void func_ov017_021fea00(void *, s32, s32, s32);
@@ -118,8 +118,8 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     TitleCharacterResourceCollection_Init((u8 *)state + 0x1d8);
     TitleScreenResourceCollection_Init((u8 *)state + 0x1fc);
     GraphicsResourceSetVariant_Init((u8 *)state + 0x248);
-    func_ov017_021fd744((u8 *)state + 0x264);
-    func_ov017_021fd744((u8 *)state + 0x290);
+    Overlay017_Transform_Init((u8 *)state + 0x264);
+    Overlay017_Transform_Init((u8 *)state + 0x290);
     Graphics3DLightSet_Init((u8 *)state + 0x2d0);
     Graphics3DSceneState_Init((u8 *)state + 0x310);
     func_ov017_021ff150((u8 *)state + 0x3ac);
@@ -244,7 +244,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
 
     object = Heap_Alloc(0x58, data_ov017_02201694, 4, &gHeapContext);
     if (object != 0)
-        object = func_ov017_021fe40c(object, FIELD(void *, state, 0x240));
+        object = Overlay017_SpritePool_Init(object, FIELD(void *, state, 0x240));
     FIELD(void *, state, 0x254) = object;
     object = Heap_Alloc(0x68, data_ov017_0220169c, 4, &gHeapContext);
     if (object != 0)
@@ -259,7 +259,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     FIELD(void *, state, 0x2bc) = object;
     object = Heap_Alloc(0xca8, data_ov017_022016ac, 4, &gHeapContext);
     if (object != 0) {
-        object = func_ov017_021fce00(
+        object = Overlay017_Grid_Init(
             object, data_ov017_02201414[radiusIndex] + 0xc);
     }
     FIELD(void *, state, 0x2c0) = object;

@@ -35,7 +35,7 @@ extern void TingleNativeG3_Scale(s32, s32, s32);
  * center X, center Z, and delta; return void. Only caller-owned grid values are
  * modified and no hardware is accessed.
  */
-extern "C" void func_ov017_021fd6b0(void *state, s32 centerX, s32 centerZ,
+extern "C" void Overlay017_ApplyGridImpulse(void *state, s32 centerX, s32 centerZ,
                                       s32 delta)
 {
     s32 tableIndex = FIELD(s32, data_ov017_022016e0, 0xc);
@@ -63,7 +63,7 @@ extern "C" void func_ov017_021fd6b0(void *state, s32 centerX, s32 centerZ,
  * +0x20..+0x28, and set scale +0x14..+0x1C to fixed-point 0x1000. Return state;
  * only caller memory changes and no SDK or hardware calls occur.
  */
-extern "C" void *func_ov017_021fd744(void *state)
+extern "C" void *Overlay017_Transform_Init(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201608;
     FIELD(void *, state, 4) = 0;
@@ -84,7 +84,7 @@ extern "C" void *func_ov017_021fd744(void *state)
  * owner data_020F4E18 when non-null. Return state without clearing the stored
  * pointer. SDK resource ownership changes; no direct hardware access occurs.
  */
-extern "C" void *func_ov017_021fd780(void *state)
+extern "C" void *Overlay017_Transform_Destroy(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201608;
     if (FIELD(void *, state, 4) != 0) {
@@ -98,7 +98,7 @@ extern "C" void *func_ov017_021fd780(void *state)
  * present, free the object, and return its original pointer value. The returned
  * address no longer owns valid storage. Heap/resource state changes; no MMIO.
  */
-extern "C" void *func_ov017_021fd7b8(void *state)
+extern "C" void *Overlay017_Transform_Delete(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201608;
     if (FIELD(void *, state, 4) != 0) {

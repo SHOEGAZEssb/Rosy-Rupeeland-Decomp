@@ -5,12 +5,12 @@
     .extern PresentationScalar_SetImmediate
     .extern func_020adc90
     .extern Overlay017_WaitForSquareRoot
-    .extern func_ov017_021fda64
-    .extern func_ov017_021fe0b4
-    .extern func_ov017_021fe160
-    .extern func_ov017_021fe178
-.global func_ov017_021fde40
-func_ov017_021fde40:
+    .extern Overlay017_UpdateEffectMotion
+    .extern Overlay017_UpdateEffectTransform
+    .extern Overlay017_AdvanceEffectProgress
+    .extern Overlay017_HasEffectCompleted
+.global Overlay017_UpdateEffectPhase
+Overlay017_UpdateEffectPhase:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     ldr r0, [r6, #0xb4]
@@ -75,7 +75,7 @@ L_021fdf04:
     rsb r1, r1, #0x0
     bl PresentationScalar_SetImmediate
     mov r0, r6
-    bl func_ov017_021fe178
+    bl Overlay017_HasEffectCompleted
     cmp r0, #0x0
     movne r0, #0x6
     strne r0, [r6, #0xb4]
@@ -96,7 +96,7 @@ L_021fdf58:
     bl PresentationScalar_SetImmediate
 L_021fdf74:
     mov r0, r6
-    bl func_ov017_021fda64
+    bl Overlay017_UpdateEffectMotion
     b L_021fe09c
 L_021fdf80:
     ldr r0, [r6, #0xb8]
@@ -122,7 +122,7 @@ L_021fdfb4:
     bl PresentationScalar_SetImmediate
 L_021fdfd0:
     mov r0, r6
-    bl func_ov017_021fda64
+    bl Overlay017_UpdateEffectMotion
     b L_021fe09c
 L_021fdfdc:
     ldr r1, L_021fe0ac
@@ -166,7 +166,7 @@ L_021fdfdc:
     str r0, [r6, #0xb0]
 L_021fe078:
     mov r0, r6
-    bl func_ov017_021fe160
+    bl Overlay017_AdvanceEffectProgress
     mov r0, #0x2
     str r0, [r6, #0xb4]
     mov r0, #0x0
@@ -174,13 +174,13 @@ L_021fe078:
     b L_021fe09c
 L_021fe094:
     mov r0, r6
-    bl func_ov017_021fda64
+    bl Overlay017_UpdateEffectMotion
 L_021fe09c:
     mov r0, r6
-    bl func_ov017_021fe0b4
+    bl Overlay017_UpdateEffectTransform
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_021fe0ac: .word data_ov017_022016e0
 L_021fe0b0: .word 0x40002b0
 
-    .size func_ov017_021fde40, . - func_ov017_021fde40
+    .size Overlay017_UpdateEffectPhase, . - Overlay017_UpdateEffectPhase

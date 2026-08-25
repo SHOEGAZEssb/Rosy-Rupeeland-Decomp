@@ -12,7 +12,7 @@ extern "C" {
 #endif
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void PresentationList_Append(void *, void *);
-extern void *func_ov017_021fd94c(void *, u16, u32, u32, u16, u16, u16);
+extern void *Overlay017_Effect_Init(void *, u16, u32, u32, u16, u16, u16);
 #ifdef __cplusplus
 }
 #endif
@@ -61,7 +61,7 @@ extern "C" void *func_ov017_021ff8a8(void *context, s32 eventCode, u32 baseArg1,
 
     effect = Heap_Alloc(0xe8, data_ov017_022016b4, 4, &gHeapContext);
     if (effect != 0) {
-        effect = func_ov017_021fd94c(
+        effect = Overlay017_Effect_Init(
             effect, (u16)eventCode, baseArg1, baseArg3, value9c,
             (u16)TitleRandom_NextBounded((u8 *)context + 0x3fc, 0x3c), resourceId);
     }

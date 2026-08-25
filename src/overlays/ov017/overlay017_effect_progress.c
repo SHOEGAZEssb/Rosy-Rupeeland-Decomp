@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 extern s32 Presentation_InterpolateLinear(s32, s32, s32, s32);
-extern s32 func_ov017_021fe178(void *);
+extern s32 Overlay017_HasEffectCompleted(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -22,11 +22,11 @@ extern s32 func_ov017_021fe178(void *);
  * mutated, the interpolation helper may update no known external state, and
  * the function returns void with no direct hardware access.
  */
-extern "C" void func_ov017_021fe0b4(void *state)
+extern "C" void Overlay017_UpdateEffectTransform(void *state)
 {
     s32 scale;
 
-    if (func_ov017_021fe178(state)) {
+    if (Overlay017_HasEffectCompleted(state)) {
         scale = Presentation_InterpolateLinear(0x100, 0, 8, FIELD(s32, state, 0xb8));
     } else {
         scale = Presentation_InterpolateLinear(0x400, 0x100, FIELD(u16, state, 0x9c),
@@ -49,7 +49,7 @@ extern "C" void func_ov017_021fe0b4(void *state)
  * object is updated in place, the function returns void, and no SDK or hardware
  * state is touched.
  */
-extern "C" void func_ov017_021fe160(void *state)
+extern "C" void Overlay017_AdvanceEffectProgress(void *state)
 {
     u16 progress = FIELD(u16, state, 0x9e);
 
@@ -63,7 +63,7 @@ extern "C" void func_ov017_021fe160(void *state)
  * return zero. The input object is read only and no SDK or hardware state is
  * changed.
  */
-extern "C" s32 func_ov017_021fe178(void *state)
+extern "C" s32 Overlay017_HasEffectCompleted(void *state)
 {
     return FIELD(u16, state, 0x9e) >= FIELD(u16, state, 0x9c);
 }

@@ -25,7 +25,7 @@ extern void __register_global_object(void *, void (*)(void *), void *);
 extern void func_02091e0c(void *, s32);
 extern void func_02091e1c(void *);
 extern void PresentationList_DeleteAll(void *);
-extern void func_ov017_021fd948(void *);
+extern void Overlay017_EffectBase_NoOp(void *);
 extern void func_ov017_021fe9bc(void *);
 extern void *func_ov017_021fe9c0(void *);
 extern void *func_ov017_021fe9e0(void *);
@@ -66,7 +66,7 @@ extern "C" void func_ov017_02201384(void *state)
  */
 extern "C" void *func_ov017_02201388(void *state)
 {
-    func_ov017_021fd948(state);
+    Overlay017_EffectBase_NoOp(state);
     Heap_Free(state);
     return state;
 }
@@ -77,7 +77,7 @@ extern "C" void *func_ov017_02201388(void *state)
  */
 extern "C" void *func_ov017_022013a4(void *state)
 {
-    func_ov017_021fd948(state);
+    Overlay017_EffectBase_NoOp(state);
     return state;
 }
 
