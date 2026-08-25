@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const void *data_020d5b20;
+extern const GamePhaseScriptVmVTable data_020d5b20;
 #ifdef __cplusplus
 }
 #endif
@@ -18,7 +18,7 @@ extern const void *data_020d5b20;
 GamePhaseActorScriptVm *GamePhaseActorScriptVm_Init(GamePhaseActorScriptVm *self)
 {
     GamePhaseScriptVm_Init(&self->base);
-    self->base.vtable = data_020d5b20;
+    self->base.vtable = &data_020d5b20;
     GamePhaseActorScriptVm_ResetState(self);
     self->actor = 0;
     return self;
@@ -30,7 +30,7 @@ GamePhaseActorScriptVm *GamePhaseActorScriptVm_InitWithScript(
     void *context)
 {
     GamePhaseScriptVm_InitWithScript(&self->base, script, context);
-    self->base.vtable = data_020d5b20;
+    self->base.vtable = &data_020d5b20;
     GamePhaseActorScriptVm_ResetState(self);
     self->actor = actor;
     return self;

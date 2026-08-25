@@ -3,26 +3,18 @@
 
 /* Initialize, copy, and destroy the compact game-phase script interpreter. */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern const void *data_020d56b4;
-#ifdef __cplusplus
-}
-#endif
-
 /* Install the script-VM vtable, reset recovered state, and return self. */
 GamePhaseScriptVm *GamePhaseScriptVm_Init(GamePhaseScriptVm *self)
 {
-    self->vtable = data_020d56b4;
+    self->vtable = &gGamePhaseScriptVmVTable;
     GamePhaseScriptVm_Reset(self);
     return self;
 }
 
 /*
- * Clear the cursor, script start, address-derived 0x0c slots, registers,
- * stack, depth, state flags, field_7f, and context. Field_7e is intentionally
- * left untouched by retail.
+ * Clear the cursor, script start, external-storage slots, registers, stack,
+ * depth, state flags, resetByte7f, and context. preservedByte7e is
+ * intentionally left untouched by retail.
  */
 void GamePhaseScriptVm_Reset(GamePhaseScriptVm *self)
 {
@@ -35,9 +27,9 @@ void GamePhaseScriptVm_Reset(GamePhaseScriptVm *self)
     for (i = 0; i < 12; i++)
         self->stack[i] = 0;
     for (i = 0; i < 8; i++)
-        self->callbacks_0c[i] = 0;
+        self->externalStorage[i] = 0;
     self->stackDepth = 0;
-    self->field_7f = 0;
+    self->resetByte7f = 0;
     self->context = 0;
 }
 
@@ -65,7 +57,7 @@ GamePhaseScriptVm *GamePhaseScriptVm_InitWithScript(GamePhaseScriptVm *self,
                                                     const s8 *script,
                                                     void *context)
 {
-    self->vtable = data_020d56b4;
+    self->vtable = &gGamePhaseScriptVmVTable;
     GamePhaseScriptVm_ResetWithScript(self, script, context);
     return self;
 }
@@ -91,9 +83,10 @@ GamePhaseScriptVm *GamePhaseScriptVm_Assign(GamePhaseScriptVm *self,
 
 /*
  * Copy cursor/start, registers, stack, state bytes, and context. Retail then
- * copies callbacks_0c into destination stack[0..7], overwriting those eight
- * stack values instead of copying callbacks to offset 0x0c. This surprising
- * address-confirmed behavior is preserved as a compiler/original-code trap.
+ * copies externalStorage into destination stack[0..7], overwriting those eight
+ * stack values instead of copying external storage to offset 0x0c. This
+ * surprising address-confirmed behavior is preserved as a compiler/original-
+ * code trap.
  */
 void GamePhaseScriptVm_CopyState(GamePhaseScriptVm *self,
                                  const GamePhaseScriptVm *source)
@@ -106,10 +99,10 @@ void GamePhaseScriptVm_CopyState(GamePhaseScriptVm *self,
     for (i = 0; i < 12; i++)
         self->stack[i] = source->stack[i];
     for (i = 0; i < 8; i++)
-        self->stack[i] = (u32)source->callbacks_0c[i];
+        self->stack[i] = source->externalStorage[i];
     self->stackDepth = source->stackDepth;
     self->stateFlags = source->stateFlags;
-    self->field_7e = source->field_7e;
-    self->field_7f = source->field_7f;
+    self->preservedByte7e = source->preservedByte7e;
+    self->resetByte7f = source->resetByte7f;
     self->context = source->context;
 }

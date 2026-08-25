@@ -3,20 +3,35 @@
 
 #include "tingle/types.h"
 
+typedef struct GamePhaseScriptVm GamePhaseScriptVm;
+
+typedef struct GamePhaseScriptVmVTable {
+    GamePhaseScriptVm *(*destroy)(GamePhaseScriptVm *self);
+    GamePhaseScriptVm *(*destroyAndFree)(GamePhaseScriptVm *self);
+    s32 (*noOpHook)(GamePhaseScriptVm *self);
+    const void *metadata0c;
+    const void *metadata10;
+} GamePhaseScriptVmVTable;
+
+enum {
+    GAME_PHASE_SCRIPT_VM_HALTED = 1,
+    GAME_PHASE_SCRIPT_VM_CONDITION_TRUE = 2
+};
+
 /* Compact bytecode interpreter state with registers and a shared value/call stack. */
-typedef struct GamePhaseScriptVm {
-    const void *vtable;
+struct GamePhaseScriptVm {
+    const GamePhaseScriptVmVTable *vtable;
     const s8 *cursor;
     const s8 *scriptStart;
-    void *callbacks_0c[8];
+    u32 externalStorage[8];
     u32 registers[8];
     u32 stack[12];
     s8 stackDepth;
     u8 stateFlags;
-    s8 field_7e;
-    s8 field_7f;
+    s8 preservedByte7e;
+    s8 resetByte7f;
     void *context;
-} GamePhaseScriptVm;
+};
 
 /* Script VM specialization used by actor-bound phase scripts. */
 typedef struct GamePhaseActorScriptVm {
@@ -28,9 +43,17 @@ typedef struct GamePhaseActorScriptVm {
     u8 padding_91[3];
 } GamePhaseActorScriptVm;
 
+typedef char GamePhaseScriptVmVTableSizeCheck[
+    sizeof(GamePhaseScriptVmVTable) == 0x14 ? 1 : -1];
+typedef char GamePhaseScriptVmSizeCheck[
+    sizeof(GamePhaseScriptVm) == 0x84 ? 1 : -1];
+typedef char GamePhaseActorScriptVmSizeCheck[
+    sizeof(GamePhaseActorScriptVm) == 0x94 ? 1 : -1];
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+extern const GamePhaseScriptVmVTable gGamePhaseScriptVmVTable;
 GamePhaseScriptVm *GamePhaseScriptVm_Init(GamePhaseScriptVm *self);
 void GamePhaseScriptVm_Reset(GamePhaseScriptVm *self);
 GamePhaseScriptVm *GamePhaseScriptVm_Destroy(GamePhaseScriptVm *self);
@@ -48,7 +71,7 @@ void GamePhaseScriptVm_CopyState(GamePhaseScriptVm *self,
 u32 GamePhaseScriptVm_Pop(GamePhaseScriptVm *self);
 void GamePhaseScriptVm_Push(GamePhaseScriptVm *self, u32 value);
 s32 GamePhaseScriptVm_Execute(GamePhaseScriptVm *self, s32 singleStep);
-s32 func_020127f0(GamePhaseScriptVm *self);
+s32 GamePhaseScriptVm_NoOpHook(GamePhaseScriptVm *self);
 void GamePhaseScriptVm_StoreResultAndUpdateCondition(GamePhaseScriptVm *self, u32 result);
 s32 func_02012814(GamePhaseScriptVm *self);
 s32 func_02012a60(GamePhaseScriptVm *self);

@@ -33,7 +33,7 @@ s32 func_0201bf04(GamePhaseScriptVm *self)
 {
     s32 source = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
-    self->callbacks_0c[index] = (void *)self->registers[source];
+    self->externalStorage[index] = self->registers[source];
     return 0;
 }
 
@@ -61,6 +61,6 @@ s32 func_0201bfb8(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
-    self->registers[destination] = (u32)self->callbacks_0c[index];
+    self->registers[destination] = self->externalStorage[index];
     return 0;
 }

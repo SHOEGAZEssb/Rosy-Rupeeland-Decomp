@@ -38,7 +38,7 @@ s32 GamePhaseScriptVm_PushContextSlot(GamePhaseScriptVm *self)
 s32 func_0201c07c(GamePhaseScriptVm *self)
 {
     u8 index = (u8)*self->cursor++;
-    GamePhaseScriptVm_Push(self, (u32)self->callbacks_0c[index]);
+    GamePhaseScriptVm_Push(self, self->externalStorage[index]);
     return 0;
 }
 

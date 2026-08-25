@@ -26,14 +26,14 @@ s32 GamePhaseScriptVm_Execute(GamePhaseScriptVm *self, s32 singleStep)
         return 0;
 
     if (singleStep) {
-        if (self->stateFlags & 1)
+        if (self->stateFlags & GAME_PHASE_SCRIPT_VM_HALTED)
             return 0;
         if (gSystemState.pads[0].pressed & 8) {
             s8 opcode = *self->cursor++;
             gGamePhaseScriptVmOpcodeTable[opcode](self);
         }
     } else {
-        if (self->stateFlags & 1)
+        if (self->stateFlags & GAME_PHASE_SCRIPT_VM_HALTED)
             return 0;
         while (!result) {
             s8 opcode = *self->cursor++;

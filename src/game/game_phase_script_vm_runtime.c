@@ -40,14 +40,14 @@ s32 GamePhaseScriptVm_Execute(GamePhaseScriptVm *self, s32 singleStep)
     if (!self->cursor)
         return 0;
     if (singleStep) {
-        if (self->stateFlags & 1)
+        if (self->stateFlags & GAME_PHASE_SCRIPT_VM_HALTED)
             return 0;
         if (gSystemState.pads[0].pressed & 8) {
             s8 opcode = *self->cursor++;
             gGamePhaseScriptVmOpcodeTable[opcode](self);
         }
     } else {
-        if (self->stateFlags & 1)
+        if (self->stateFlags & GAME_PHASE_SCRIPT_VM_HALTED)
             return 0;
         while (!result) {
             s8 opcode = *self->cursor++;
@@ -58,7 +58,7 @@ s32 GamePhaseScriptVm_Execute(GamePhaseScriptVm *self, s32 singleStep)
 }
 
 /* Recovered default opcode/hook: ignore self and return zero. */
-s32 func_020127f0(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_NoOpHook(GamePhaseScriptVm *self)
 {
     (void)self;
     return 0;
@@ -72,7 +72,7 @@ void GamePhaseScriptVm_StoreResultAndUpdateCondition(GamePhaseScriptVm *self, u3
 {
     self->registers[7] = result;
     if (result)
-        self->stateFlags |= 2;
+        self->stateFlags |= GAME_PHASE_SCRIPT_VM_CONDITION_TRUE;
     else
-        self->stateFlags &= ~2;
+        self->stateFlags &= ~GAME_PHASE_SCRIPT_VM_CONDITION_TRUE;
 }

@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_lifecycle.c.
 .text
-.extern data_020d56b4
+.extern gGamePhaseScriptVmVTable
 .extern GamePhaseScriptVm_ResetWithScript
 
     .global GamePhaseScriptVm_InitWithScript
@@ -12,6 +12,5 @@ GamePhaseScriptVm_InitWithScript: ; 0x02012608
     bl GamePhaseScriptVm_ResetWithScript
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_02012624: .word data_020d56b4
+L_02012624: .word gGamePhaseScriptVmVTable
     .size GamePhaseScriptVm_InitWithScript, . - GamePhaseScriptVm_InitWithScript
-
