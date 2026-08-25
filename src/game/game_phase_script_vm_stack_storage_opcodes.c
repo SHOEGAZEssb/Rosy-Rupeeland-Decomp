@@ -34,8 +34,8 @@ s32 GamePhaseScriptVm_PushContextSlot(GamePhaseScriptVm *self)
     return 0;
 }
 
-/* Push an indexed pointer-sized slot from VM offset 0x0c and return zero. */
-s32 func_0201c07c(GamePhaseScriptVm *self)
+/* Push an indexed external-storage slot and return zero. */
+s32 GamePhaseScriptVm_PushExternalStorage(GamePhaseScriptVm *self)
 {
     u8 index = (u8)*self->cursor++;
     GamePhaseScriptVm_Push(self, self->externalStorage[index]);

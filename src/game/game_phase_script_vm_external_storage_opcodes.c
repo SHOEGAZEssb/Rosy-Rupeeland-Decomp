@@ -28,8 +28,8 @@ s32 GamePhaseScriptVm_StoreRegisterToContextSlot(GamePhaseScriptVm *self)
     return 0;
 }
 
-/* Store the selected register in the VM's indexed pointer-sized slots at offset 0x0c. */
-s32 func_0201bf04(GamePhaseScriptVm *self)
+/* Store the selected register in the VM's indexed external-storage slots. */
+s32 GamePhaseScriptVm_StoreRegisterToExternalStorage(GamePhaseScriptVm *self)
 {
     s32 source = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
@@ -56,8 +56,8 @@ s32 GamePhaseScriptVm_LoadRegisterFromContextSlot(GamePhaseScriptVm *self)
     return 0;
 }
 
-/* Load an indexed pointer-sized slot at VM offset 0x0c into the selected register. */
-s32 func_0201bfb8(GamePhaseScriptVm *self)
+/* Load an indexed external-storage slot into the selected register. */
+s32 GamePhaseScriptVm_LoadRegisterFromExternalStorage(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;

@@ -1,0 +1,16 @@
+{
+  "GamePhaseScriptVm_StoreRegisterToGameWorkHalfword": "GamePhaseScriptVm_StoreRegisterToGameWorkHalfword",
+  "GamePhaseScriptVm_StoreRegisterToContextSlot": "GamePhaseScriptVm_StoreRegisterToContextSlot",
+  "func_0201bf04": "GamePhaseScriptVm_StoreRegisterToExternalStorage",
+  "GamePhaseScriptVm_LoadRegisterFromGameWorkHalfword": "GamePhaseScriptVm_LoadRegisterFromGameWorkHalfword",
+  "GamePhaseScriptVm_LoadRegisterFromContextSlot": "GamePhaseScriptVm_LoadRegisterFromContextSlot",
+  "func_0201bfb8": "GamePhaseScriptVm_LoadRegisterFromExternalStorage",
+  "GamePhaseScriptVm_PushImmediateU32": "GamePhaseScriptVm_PushImmediateU32",
+  "GamePhaseScriptVm_PushGameWorkHalfword": "GamePhaseScriptVm_PushGameWorkHalfword",
+  "GamePhaseScriptVm_PushContextSlot": "GamePhaseScriptVm_PushContextSlot",
+  "func_0201c07c": "GamePhaseScriptVm_PushExternalStorage",
+  "GamePhaseScriptVm_StoreRegisterToGameWorkWord": "GamePhaseScriptVm_StoreRegisterToGameWorkWord",
+  "GamePhaseScriptVm_LoadRegisterFromGameWorkWord": "GamePhaseScriptVm_LoadRegisterFromGameWorkWord",
+  "GamePhaseScriptVm_PushGameWorkWord": "GamePhaseScriptVm_PushGameWorkWord",
+  "GamePhaseScriptVm_PushZero": "GamePhaseScriptVm_PushZero"
+}

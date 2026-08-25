@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_script_vm_external_storage_opcodes.c.
 .text
-.global func_0201bfb8
-func_0201bfb8: ; 0x0201bfb8
+.global GamePhaseScriptVm_LoadRegisterFromExternalStorage
+GamePhaseScriptVm_LoadRegisterFromExternalStorage: ; 0x0201bfb8
     ldr r1, [r0, #0x4]
     add r3, r1, #0x1
     str r3, [r0, #0x4]
@@ -16,4 +16,4 @@ func_0201bfb8: ; 0x0201bfb8
     str r1, [r0, #0x2c]
     mov r0, #0x0
     bx lr
-.size func_0201bfb8, . - func_0201bfb8
+.size GamePhaseScriptVm_LoadRegisterFromExternalStorage, . - GamePhaseScriptVm_LoadRegisterFromExternalStorage
