@@ -7,8 +7,8 @@
 .extern GraphicsMainBackground_SetScroll
 .extern GraphicsMainBackground_SetVisible
 .extern GraphicsMainBackground_ConfigureAlphaBlend
-.global func_02016a84
-func_02016a84:
+.global GamePhaseActorScriptVm_DispatchMainBackgroundCommand
+GamePhaseActorScriptVm_DispatchMainBackgroundCommand:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #8
     mov r9, r0
@@ -95,4 +95,4 @@ L_02016bb4:
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_02016a84, . - func_02016a84
+    .size GamePhaseActorScriptVm_DispatchMainBackgroundCommand, . - GamePhaseActorScriptVm_DispatchMainBackgroundCommand

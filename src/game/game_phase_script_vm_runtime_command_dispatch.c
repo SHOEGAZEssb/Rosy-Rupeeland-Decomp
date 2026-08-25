@@ -48,12 +48,12 @@ static void *allocCommandObject(u32 size, const char *tag)
  * phase-90 bootstrap bytecode uses selector 5 with parameter zero: it maps to
  * load-scene kind 16, the retail overlay-25 title/menu scene request.
  */
-s32 func_02016238(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchRuntimeCommand(GamePhaseActorScriptVm *self)
 {
     u32 parameter = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
     u32 kind = 0;
-    void *object;
+    void *commandObject;
 
     switch (selector) {
     case 1: kind = 2; break;
@@ -79,59 +79,59 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
     case 40: kind = 25; break;
 
     case 21:
-        object = allocCommandObject(0x30, data_020d5b3c);
-        if (object != 0)
-            Overlay032Scene_Init(object);
+        commandObject = allocCommandObject(0x30, data_020d5b3c);
+        if (commandObject != 0)
+            Overlay032Scene_Init(commandObject);
         return 0;
     case 60:
     case 64:
-        object = allocCommandObject(0x38,
+        commandObject = allocCommandObject(0x38,
             selector == 60 ? data_020d5b44 : data_020d5b4c);
-        if (object != 0)
-            func_0209d774(object, selector == 60 ? 1 : 2);
+        if (commandObject != 0)
+            func_0209d774(commandObject, selector == 60 ? 1 : 2);
         return 0;
     case 61:
     case 65:
-        object = allocCommandObject(0x38, data_020d5b54);
-        if (object != 0)
-            func_0209f2f8(object, 1);
+        commandObject = allocCommandObject(0x38, data_020d5b54);
+        if (commandObject != 0)
+            func_0209f2f8(commandObject, 1);
         return 0;
     case 62:
     case 66:
-        object = allocCommandObject(0x5c,
+        commandObject = allocCommandObject(0x5c,
             selector == 62 ? data_020d5b5c : data_020d5b64);
-        if (object != 0)
-            func_0209fd50(object, selector == 62 ? 1 : 2);
+        if (commandObject != 0)
+            func_0209fd50(commandObject, selector == 62 ? 1 : 2);
         return 0;
     case 80:
     case 81:
     case 82:
-        object = allocCommandObject(0x58, data_020d5b6c);
-        if (object != 0)
-            func_020a042c(object, 1);
+        commandObject = allocCommandObject(0x58, data_020d5b6c);
+        if (commandObject != 0)
+            func_020a042c(commandObject, 1);
         return 0;
 
     case 11: {
         u8 *runtime = (u8 *)gGamePhaseRuntime;
         u8 *actor = *(u8 **)(runtime + 0x2ea4);
         VecFx32Object position;
-        s32 x, y;
+        s32 effectX, effectY;
         VecFx32Object_InitCopy(&position,
                       (const VecFx32Object *)ActorMotionAreaFollower_GetPosition(runtime + 0x2fbc));
-        x = (*(s32 *)(actor + 0x1c) >> 12) - (position.value.y >> 12);
-        y = (*(s32 *)(actor + 0x20) >> 12) - (*(s32 *)(actor + 0x24) >> 12)
+        effectX = (*(s32 *)(actor + 0x1c) >> 12) - (position.value.y >> 12);
+        effectY = (*(s32 *)(actor + 0x20) >> 12) - (*(s32 *)(actor + 0x24) >> 12)
             - (position.value.z >> 12) - 16;
-        object = allocCommandObject(0x1c, data_020d5b74);
-        if (object != 0)
-            object = func_020200bc(object, parameter, x, y, 30);
-        RuntimePresentationManager_AppendFirstListEffect(runtime + 0x2f7c, object);
+        commandObject = allocCommandObject(0x1c, data_020d5b74);
+        if (commandObject != 0)
+            commandObject = func_020200bc(commandObject, parameter, effectX, effectY, 30);
+        RuntimePresentationManager_AppendFirstListEffect(runtime + 0x2f7c, commandObject);
         VecFx32Object_Destroy(&position);
         return 0;
     }
     case 15:
-        object = allocCommandObject(0x2c, data_020d5b7c);
-        if (object != 0)
-            func_0201cfd0(object, parameter);
+        commandObject = allocCommandObject(0x2c, data_020d5b7c);
+        if (commandObject != 0)
+            func_0201cfd0(commandObject, parameter);
         return 0;
     case 26:
         *(u16 *)((u8 *)*(void **)((u8 *)self->actor + 0x54) + 0x24)
@@ -155,9 +155,9 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         return 0;
     }
     case 34:
-        object = allocCommandObject(0x38, data_020d5b84);
-        if (object != 0)
-            func_0206ec68(object);
+        commandObject = allocCommandObject(0x38, data_020d5b84);
+        if (commandObject != 0)
+            func_0206ec68(commandObject);
         return 0;
     case 35:
     case 36:
@@ -176,8 +176,8 @@ s32 func_02016238(GamePhaseActorScriptVm *self)
         return 0;
     }
 
-    object = allocCommandObject(0x9c, data_020d5b8c);
-    if (object != 0)
-        GamePhaseLoadScene_Init((GamePhaseLoadScene *)object, kind, parameter);
+    commandObject = allocCommandObject(0x9c, data_020d5b8c);
+    if (commandObject != 0)
+        GamePhaseLoadScene_Init((GamePhaseLoadScene *)commandObject, kind, parameter);
     return 0;
 }

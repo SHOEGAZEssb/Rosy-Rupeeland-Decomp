@@ -195,14 +195,14 @@ s32 GamePhaseActorScriptVm_DispatchInventoryTableValue(GamePhaseActorScriptVm *s
 s32 GamePhaseActorScriptVm_HasInventoryTableEntry(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_InventoryTableContainsId(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SecondaryTableContainsValue(GamePhaseActorScriptVm *self);
-s32 func_02016238(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchRuntimeCommand(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_RuntimeMiscNoOp0(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_RuntimeMiscNoOp1(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set(GamePhaseActorScriptVm *self);
-s32 func_02016930(GamePhaseActorScriptVm *self);
-s32 func_02016a84(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchSubBackgroundCommand(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchMainBackgroundCommand(GamePhaseActorScriptVm *self);
 s32 func_02016bc0(GamePhaseActorScriptVm *self);
 s32 func_02016c7c(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds(GamePhaseActorScriptVm *self);

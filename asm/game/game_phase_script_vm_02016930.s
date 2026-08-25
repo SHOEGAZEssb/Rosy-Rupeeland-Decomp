@@ -8,8 +8,8 @@
 .extern GraphicsSubBackground_SetVisible
 .extern GraphicsSubBackground_LoadResources
 .extern GraphicsSubBackground_ConfigureAlphaBlend
-.global func_02016930
-func_02016930:
+.global GamePhaseActorScriptVm_DispatchSubBackgroundCommand
+GamePhaseActorScriptVm_DispatchSubBackgroundCommand:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #8
     mov r9, r0
@@ -103,4 +103,4 @@ L_02016a78:
     mov r0, #0
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
-    .size func_02016930, . - func_02016930
+    .size GamePhaseActorScriptVm_DispatchSubBackgroundCommand, . - GamePhaseActorScriptVm_DispatchSubBackgroundCommand

@@ -27,36 +27,38 @@ extern void GraphicsSubBackground_ConfigureAlphaBlend(...);
  * four operands to u16 and differ only in a final boolean. Invalid selectors
  * halt through the SDK routine.
  */
-s32 func_02016930(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchSubBackgroundCommand(GamePhaseActorScriptVm *self)
 {
-    u32 fifth = GamePhaseScriptVm_Pop(&self->base);
-    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
-    u32 third = GamePhaseScriptVm_Pop(&self->base);
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandE = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandD = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandC = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandB = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandA = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
 
     switch (selector) {
     case 0:
-        GraphicsSubBackground_Configure256ColorText(first, second, third,
-                                                    fourth);
+        GraphicsSubBackground_Configure256ColorText(operandA, operandB,
+                                                    operandC, operandD);
         break;
     case 1:
-        GraphicsSubBackground_Configure16ColorText(first, second, third,
-                                                   fourth);
+        GraphicsSubBackground_Configure16ColorText(operandA, operandB,
+                                                   operandC, operandD);
         break;
     case 2:
-        GraphicsSubBackground_LoadResources(first, (u16)second, (u16)third,
-                                            (u16)fourth, (u16)fifth, 1);
+        GraphicsSubBackground_LoadResources(operandA, (u16)operandB,
+                                            (u16)operandC, (u16)operandD,
+                                            (u16)operandE, 1);
         break;
-    case 3: GraphicsSubBackground_SetScroll(first, second, third); break;
-    case 4: GraphicsSubBackground_SetVisible(first, second); break;
+    case 3: GraphicsSubBackground_SetScroll(operandA, operandB, operandC); break;
+    case 4: GraphicsSubBackground_SetVisible(operandA, operandB); break;
     case 5:
-        GraphicsSubBackground_ConfigureAlphaBlend(first, second, third);
+        GraphicsSubBackground_ConfigureAlphaBlend(operandA, operandB, operandC);
         break;
     case 6:
-        GraphicsSubBackground_LoadResources(first, (u16)second, (u16)third,
-                                            (u16)fourth, (u16)fifth, 0);
+        GraphicsSubBackground_LoadResources(operandA, (u16)operandB,
+                                            (u16)operandC, (u16)operandD,
+                                            (u16)operandE, 0);
         break;
     default: OS_Halt(); break;
     }
@@ -69,32 +71,34 @@ s32 func_02016930(GamePhaseActorScriptVm *self)
  * last four operands to u16 and differ only in a final boolean. Selector zero
  * and out-of-range values halt.
  */
-s32 func_02016a84(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchMainBackgroundCommand(GamePhaseActorScriptVm *self)
 {
-    u32 fifth = GamePhaseScriptVm_Pop(&self->base);
-    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
-    u32 third = GamePhaseScriptVm_Pop(&self->base);
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandE = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandD = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandC = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandB = GamePhaseScriptVm_Pop(&self->base);
+    u32 operandA = GamePhaseScriptVm_Pop(&self->base);
     u32 selector = GamePhaseScriptVm_Pop(&self->base);
 
     switch (selector) {
     case 1:
-        GraphicsMainBackground_Configure16ColorText(first, second, third,
-                                                    fourth);
+        GraphicsMainBackground_Configure16ColorText(operandA, operandB,
+                                                    operandC, operandD);
         break;
     case 2:
-        GraphicsMainBackground_LoadResources(first, (u16)second, (u16)third,
-                                             (u16)fourth, (u16)fifth, 1);
+        GraphicsMainBackground_LoadResources(operandA, (u16)operandB,
+                                             (u16)operandC, (u16)operandD,
+                                             (u16)operandE, 1);
         break;
-    case 3: GraphicsMainBackground_SetScroll(first, second, third); break;
-    case 4: GraphicsMainBackground_SetVisible(first, second); break;
+    case 3: GraphicsMainBackground_SetScroll(operandA, operandB, operandC); break;
+    case 4: GraphicsMainBackground_SetVisible(operandA, operandB); break;
     case 5:
-        GraphicsMainBackground_ConfigureAlphaBlend(first, second, third);
+        GraphicsMainBackground_ConfigureAlphaBlend(operandA, operandB, operandC);
         break;
     case 6:
-        GraphicsMainBackground_LoadResources(first, (u16)second, (u16)third,
-                                             (u16)fourth, (u16)fifth, 0);
+        GraphicsMainBackground_LoadResources(operandA, (u16)operandB,
+                                             (u16)operandC, (u16)operandD,
+                                             (u16)operandE, 0);
         break;
     default: OS_Halt(); break;
     }

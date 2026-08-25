@@ -35,8 +35,8 @@
 .extern func_020a042c
 .extern gHeapContext
 
-.global func_02016238
-func_02016238:
+.global GamePhaseActorScriptVm_DispatchRuntimeCommand
+GamePhaseActorScriptVm_DispatchRuntimeCommand:
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x14
     mov r5, r0
@@ -468,4 +468,4 @@ L_02016804: .word data_020d5b7c
 L_02016808: .word data_020d5b84
 L_0201680c: .word data_021f3d68
 L_02016810: .word data_020d5b8c
-    .size func_02016238, . - func_02016238
+    .size GamePhaseActorScriptVm_DispatchRuntimeCommand, . - GamePhaseActorScriptVm_DispatchRuntimeCommand

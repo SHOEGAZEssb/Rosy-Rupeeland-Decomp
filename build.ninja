@@ -6083,7 +6083,7 @@ build build/reports/game_phase_script_vm_02016238.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02016238.o
 build build/reports/game_phase_script_vm_02016238.txt: match_report build/reports/game_phase_script_vm_02016238.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02016238.json
-  report_args = --section .text --function func_02016238 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchRuntimeCommand --require-exact
 
 build build/reports/game_phase_script_vm_runtime_command_dispatch.txt: phony build/reports/game_phase_script_vm_02016238.txt
 
@@ -6129,14 +6129,14 @@ build build/reports/game_phase_script_vm_02016930.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_02016930.o
 build build/reports/game_phase_script_vm_02016930.txt: match_report build/reports/game_phase_script_vm_02016930.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02016930.json
-  report_args = --section .text --function func_02016930 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchSubBackgroundCommand --require-exact
 
 build build/reports/game_phase_script_vm_02016a84.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_02016a84.o | build/decomp/asm/game/game_phase_script_vm_02016a84.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_02016a84.o
   base_object = build/decomp/asm/game/game_phase_script_vm_02016a84.o
 build build/reports/game_phase_script_vm_02016a84.txt: match_report build/reports/game_phase_script_vm_02016a84.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_02016a84.json
-  report_args = --section .text --function func_02016a84 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_DispatchMainBackgroundCommand --require-exact
 
 build build/reports/game_phase_script_vm_record_dispatch_opcodes.txt: phony build/reports/game_phase_script_vm_02016930.txt build/reports/game_phase_script_vm_02016a84.txt
 

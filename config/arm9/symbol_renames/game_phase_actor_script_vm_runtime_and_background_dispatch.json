@@ -1,0 +1,10 @@
+{
+  "func_02016238": "GamePhaseActorScriptVm_DispatchRuntimeCommand",
+  "GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4": "GamePhaseActorScriptVm_SetGameWorkFlag1004AndCollection1ActorFlag4",
+  "GamePhaseActorScriptVm_RuntimeMiscNoOp0": "GamePhaseActorScriptVm_RuntimeMiscNoOp0",
+  "GamePhaseActorScriptVm_RuntimeMiscNoOp1": "GamePhaseActorScriptVm_RuntimeMiscNoOp1",
+  "GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown": "GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown",
+  "GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set": "GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set",
+  "func_02016930": "GamePhaseActorScriptVm_DispatchSubBackgroundCommand",
+  "func_02016a84": "GamePhaseActorScriptVm_DispatchMainBackgroundCommand"
+}
