@@ -1,0 +1,6 @@
+{
+  "GamePhaseActorScriptVm_SetPositionFromCoordinates": "GamePhaseActorScriptVm_SetPositionFromCoordinates",
+  "GamePhaseActorScriptVm_TranslateSecondaryBounds": "GamePhaseActorScriptVm_TranslateSecondaryBounds",
+  "GamePhaseActorScriptVm_TranslateCollisionBounds": "GamePhaseActorScriptVm_TranslateCollisionBounds",
+  "GamePhaseActorScriptVm_StageAreaRequest": "GamePhaseActorScriptVm_StageAreaRequest"
+}

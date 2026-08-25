@@ -7,8 +7,8 @@
 extern "C" {
 #endif
 extern void Actor_AdjustPositionForTerrainHeight(void *actor);
-extern void Actor_TranslateSecondaryBounds(void *actor, u32 first, u32 second);
-extern void Actor_TranslateCollisionBounds(void *actor, u32 first, u32 second);
+extern void Actor_TranslateSecondaryBounds(void *actor, s32 xOffset, s32 yOffset);
+extern void Actor_TranslateCollisionBounds(void *actor, s32 xOffset, s32 yOffset);
 #ifdef __cplusplus
 }
 #endif
@@ -24,12 +24,13 @@ s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *se
     s32 y = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 x = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
-    VecFx32Object value;
-    VecFx32Object *copy;
-    VecFx32Object_InitComponents(&value, x << 12, y << 12, 0);
-    copy = VecFx32Object_Assign((VecFx32Object *)(actor + 0x28), &value);
-    VecFx32Object_Assign((VecFx32Object *)(actor + 0x18), copy);
-    VecFx32Object_Destroy(&value);
+    VecFx32Object position;
+    VecFx32Object *assignedPosition;
+    VecFx32Object_InitComponents(&position, x << 12, y << 12, 0);
+    assignedPosition = VecFx32Object_Assign(
+        (VecFx32Object *)(actor + 0x28), &position);
+    VecFx32Object_Assign((VecFx32Object *)(actor + 0x18), assignedPosition);
+    VecFx32Object_Destroy(&position);
     Actor_AdjustPositionForTerrainHeight(actor);
     return 0;
 }
@@ -37,17 +38,17 @@ s32 GamePhaseActorScriptVm_SetPositionFromCoordinates(GamePhaseActorScriptVm *se
 /* Translate the bound actor's secondary bounds by two popped values. */
 s32 GamePhaseActorScriptVm_TranslateSecondaryBounds(GamePhaseActorScriptVm *self)
 {
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
-    Actor_TranslateSecondaryBounds(self->actor, first, second);
+    s32 yOffset = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 xOffset = (s32)GamePhaseScriptVm_Pop(&self->base);
+    Actor_TranslateSecondaryBounds(self->actor, xOffset, yOffset);
     return 0;
 }
 
 /* Translate the bound actor's collision bounds by two popped values. */
 s32 GamePhaseActorScriptVm_TranslateCollisionBounds(GamePhaseActorScriptVm *self)
 {
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
-    Actor_TranslateCollisionBounds(self->actor, first, second);
+    s32 yOffset = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 xOffset = (s32)GamePhaseScriptVm_Pop(&self->base);
+    Actor_TranslateCollisionBounds(self->actor, xOffset, yOffset);
     return 0;
 }

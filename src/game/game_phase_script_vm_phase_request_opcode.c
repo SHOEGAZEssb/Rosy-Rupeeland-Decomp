@@ -6,23 +6,26 @@
 extern "C" {
 #endif
 extern void *gGamePhaseRuntime;
-extern void GamePhaseRuntime_StageAreaRequest(void *runtime, u32 first, u32 second, u32 third,
-                         u32 fourth, u32 zero);
+extern void GamePhaseRuntime_StageAreaRequest(
+    void *runtime, s32 areaNumber, s32 transitionValueA, s32 transitionValueB,
+    s32 transitionValueC, s32 mode);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Pop fourth through first operands, submit them plus a trailing zero to
- * GamePhaseRuntime_StageAreaRequest on the global phase runtime, and return one. Returning one
- * stops the current VM dispatch loop after the request is queued.
+ * Pop an area number and three transition values, submit them with mode zero,
+ * and return one. Returning one stops the current VM dispatch loop after the
+ * request is queued.
  */
 s32 GamePhaseActorScriptVm_StageAreaRequest(GamePhaseActorScriptVm *self)
 {
-    u32 fourth = GamePhaseScriptVm_Pop(&self->base);
-    u32 third = GamePhaseScriptVm_Pop(&self->base);
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseRuntime_StageAreaRequest(gGamePhaseRuntime, first, second, third, fourth, 0);
+    s32 transitionValueC = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 transitionValueB = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 transitionValueA = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 areaNumber = (s32)GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseRuntime_StageAreaRequest(
+        gGamePhaseRuntime, areaNumber, transitionValueA, transitionValueB,
+        transitionValueC, 0);
     return 1;
 }
