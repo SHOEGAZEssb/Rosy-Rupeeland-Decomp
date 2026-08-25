@@ -6,8 +6,8 @@
 .extern Actor_UpdateTimedResourceState
 .text
 
-    .global func_0204eaac
-func_0204eaac: ; 0x0204eaac
+    .global TriggerPresentationActor_Update
+TriggerPresentationActor_Update: ; 0x0204eaac
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Actor_MarkFrameUpdateStarted
@@ -15,11 +15,11 @@ func_0204eaac: ; 0x0204eaac
     bl Actor_UpdateTimedResourceState
     cmp r0, #0x0
     ldmia sp!, {r4, pc}
-.size func_0204eaac, . - func_0204eaac
+.size TriggerPresentationActor_Update, . - TriggerPresentationActor_Update
 
-    .global func_0204eac8
+    .global TriggerPresentationActor_HandleContact
 
-func_0204eac8: ; 0x0204eac8
+TriggerPresentationActor_HandleContact: ; 0x0204eac8
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -38,13 +38,13 @@ func_0204eac8: ; 0x0204eac8
 .L_0204eb04:
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
-.size func_0204eac8, . - func_0204eac8
+.size TriggerPresentationActor_HandleContact, . - TriggerPresentationActor_HandleContact
 
-    .global func_0204eb0c
+    .global TriggerPresentationActor_RemoveContact
 
-func_0204eb0c: ; 0x0204eb0c
+TriggerPresentationActor_RemoveContact: ; 0x0204eb0c
     ldr ip, .L_0204eb14
     bx ip
 .L_0204eb14: .word ActorContactState_RemoveContact
-.size func_0204eb0c, . - func_0204eb0c
+.size TriggerPresentationActor_RemoveContact, . - TriggerPresentationActor_RemoveContact
 

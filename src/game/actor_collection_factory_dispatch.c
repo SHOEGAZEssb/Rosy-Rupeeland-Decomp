@@ -65,7 +65,7 @@ DECLARE_ACTOR_CTOR(RuntimeActorScriptVariant_InitAlternate);
 DECLARE_ACTOR_CTOR(IndexedStateActor_Init);
 DECLARE_ACTOR_CTOR(PresentationBackedActor_Init);
 DECLARE_ACTOR_CTOR(EffectHandleActor_Init);
-DECLARE_ACTOR_CTOR(func_0204e944);
+DECLARE_ACTOR_CTOR(TriggerPresentationActor_Init);
 DECLARE_ACTOR_CTOR(GridEffectActor_Init);
 DECLARE_ACTOR_CTOR(TrackedResourceActorType21_Init);
 DECLARE_ACTOR_CTOR(TrackedResourceActorType22And25_Init);
@@ -178,7 +178,7 @@ static ActorFactorySpec kind4Spec(u16 subtype)
     case 10: case 11: case 12: case 13: case 19:
         return (ActorFactorySpec)SPEC(0x1fc, PresentationBackedActor_Init);
     case 14: case 15: case 16: case 17:
-        return (ActorFactorySpec)SPEC(0x1f0, func_0204e944);
+        return (ActorFactorySpec)SPEC(0x1f0, TriggerPresentationActor_Init);
     case 18: return (ActorFactorySpec)SPEC(0x200, EffectHandleActor_Init);
     case 20: return (ActorFactorySpec)SPEC(0x21c, GridEffectActor_Init);
     case 21: return (ActorFactorySpec)SPEC(0x200, TrackedResourceActorType21_Init);

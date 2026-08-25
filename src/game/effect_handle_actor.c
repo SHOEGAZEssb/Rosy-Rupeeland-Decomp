@@ -48,7 +48,7 @@ void *EffectHandleActor_Init(void *self, const void *descriptor)
  * return self. Effect and inherited engine state may change; heap storage is
  * retained and no hardware is touched directly.
  */
-void *func_0204e774(void *self)
+void *EffectHandleActor_Destroy(void *self)
 {
     FIELD(const void *, self, 0) = data_020e2458;
     s16 handle = FIELD(s16, self, 0x1fe);
@@ -64,12 +64,12 @@ void *func_0204e774(void *self)
 
 /*
  * Input is an actor. Perform the effect removal and inherited teardown of
- * func_0204e774, free the actor allocation, and return its former address.
+ * EffectHandleActor_Destroy, free the actor allocation, and return its former address.
  * Effect, inherited, and heap state change; there are no direct hardware effects.
  */
 void *EffectHandleActor_Delete(void *self)
 {
-    func_0204e774(self);
+    EffectHandleActor_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -83,7 +83,7 @@ void *EffectHandleActor_Delete(void *self)
  * Always run PresentationBackedActor_UpdateStateMachine afterward. Returns nothing; visual and actor state
  * change, and hardware is not accessed directly.
  */
-void func_0204e82c(void *actor)
+void EffectHandleActor_Update(void *actor)
 {
     if (FIELD(u8, FIELD(void *, actor, 0x54), 0x38) >= 6) {
         Graphics3dPresentation *manager =

@@ -6,8 +6,8 @@
 .extern Actor_SetPresentationSelection
 .text
 
-    .global func_0204eb18
-func_0204eb18: ; 0x0204eb18
+    .global TriggerPresentationActor_Spawn
+TriggerPresentationActor_Spawn: ; 0x0204eb18
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0xb0
     ldr r5, [sp, #0xc0]
@@ -63,4 +63,4 @@ func_0204eb18: ; 0x0204eb18
     add sp, sp, #0xb0
     ldmia sp!, {r3, r4, r5, pc}
 .L_0204ebf0: .word gGamePhaseRuntime
-.size func_0204eb18, . - func_0204eb18
+.size TriggerPresentationActor_Spawn, . - TriggerPresentationActor_Spawn

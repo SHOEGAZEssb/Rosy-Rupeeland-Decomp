@@ -29,7 +29,7 @@ extern void Actor_SetPresentationSelection(void *actor, u16 selection);
  * Retail leaves the updated flag word in r0 but recovered callers treat the
  * function as void. Actor-manager state changes; no hardware is touched directly.
  */
-void func_0204eb18(u32 type, u32 selection, const void *position,
+void TriggerPresentationActor_Spawn(u32 type, u32 selection, const void *position,
                    u32 descriptor_arg0, u32 descriptor_arg1,
                    u32 descriptor_arg2, u32 width, u32 height)
 {

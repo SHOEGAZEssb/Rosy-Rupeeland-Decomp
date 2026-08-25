@@ -6,8 +6,8 @@
 .extern Actor_ReleaseSecondaryRenderAttachment
 .text
 
-    .global func_0204e944
-func_0204e944: ; 0x0204e944
+    .global TriggerPresentationActor_Init
+TriggerPresentationActor_Init: ; 0x0204e944
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl ActorRuntimeBase_Init
@@ -19,11 +19,11 @@ func_0204e944: ; 0x0204e944
     strh r2, [r1, #0xec]
     ldmia sp!, {r4, pc}
 .L_0204e96c: .word data_020e2560
-.size func_0204e944, . - func_0204e944
+.size TriggerPresentationActor_Init, . - TriggerPresentationActor_Init
 
-    .global func_0204e970
+    .global TriggerPresentationActor_Destroy
 
-func_0204e970: ; 0x0204e970
+TriggerPresentationActor_Destroy: ; 0x0204e970
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204e9a4
     mov r4, r0
@@ -38,11 +38,11 @@ func_0204e970: ; 0x0204e970
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204e9a4: .word data_020e2560
-.size func_0204e970, . - func_0204e970
+.size TriggerPresentationActor_Destroy, . - TriggerPresentationActor_Destroy
 
-    .global func_0204e9a8
+    .global TriggerPresentationActor_DestroyAndFree
 
-func_0204e9a8: ; 0x0204e9a8
+TriggerPresentationActor_DestroyAndFree: ; 0x0204e9a8
     stmdb sp!, {r4, lr}
     ldr r1, .L_0204e9e4
     mov r4, r0
@@ -59,5 +59,5 @@ func_0204e9a8: ; 0x0204e9a8
     mov r0, r4
     ldmia sp!, {r4, pc}
 .L_0204e9e4: .word data_020e2560
-.size func_0204e9a8, . - func_0204e9a8
+.size TriggerPresentationActor_DestroyAndFree, . - TriggerPresentationActor_DestroyAndFree
 

@@ -23,7 +23,7 @@ extern s32 Actor_UpdateTimedResourceState(void *actor);
  * retail comparison against zero. Returns nothing; only the callees' engine
  * effects are observable and hardware is untouched directly.
  */
-void func_0204eaac(void *actor)
+void TriggerPresentationActor_Update(void *actor)
 {
     Actor_MarkFrameUpdateStarted(actor);
     (void)(Actor_UpdateTimedResourceState(actor) == 0);
@@ -35,7 +35,7 @@ void func_0204eaac(void *actor)
  * 0x4D equals one, and the condition is zero, invoke Actor_TryDispatchActivationMode2 on the first
  * actor. Always return one. Engine state may change; no direct hardware effects.
  */
-s32 func_0204eac8(void *actor, const void *other, s32 condition)
+s32 TriggerPresentationActor_HandleContact(void *actor, const void *other, s32 condition)
 {
     ActorContactState_AddContact((ActorPairActor *)actor,
                                  (ActorPairActor *)other, condition);
@@ -50,7 +50,7 @@ s32 func_0204eac8(void *actor, const void *other, s32 condition)
  * Forward all register inputs to ActorContactState_RemoveContact and propagate its return value.
  * This tail-call thunk has only the callee's engine effects.
  */
-void func_0204eb0c(ActorPairActor *actor)
+void TriggerPresentationActor_RemoveContact(ActorPairActor *actor)
 {
     ActorContactState_RemoveContact(actor);
 }

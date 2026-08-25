@@ -35,7 +35,7 @@ extern void *GraphicsSpriteGroup_CreateState(void *context, void *resource0, voi
  * resource, script, and presentation state change without direct hardware
  * access.
  */
-void func_0204e9e8(void *actor, const void *descriptor)
+void TriggerPresentationActor_SetupPresentation(void *actor, const void *descriptor)
 {
     void *resource0 = func_02071e60(data_020f4e18,
                                     FIELD(u32, descriptor, 4));

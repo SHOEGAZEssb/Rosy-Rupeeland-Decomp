@@ -26,7 +26,7 @@ extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
  * data_020e2560, clear halfword 0x1EC, and return self. Parent construction may
  * change engine state; no hardware is accessed directly.
  */
-void *func_0204e944(void *self)
+void *TriggerPresentationActor_Init(void *self)
 {
     ActorRuntimeBase_Init(self);
     FIELD(const void *, self, 0) = data_020e2560;
@@ -39,7 +39,7 @@ void *func_0204e944(void *self)
  * inherited presentation state, and run final base teardown. Return self;
  * engine state changes, heap storage remains, and hardware is untouched directly.
  */
-void *func_0204e970(void *self)
+void *TriggerPresentationActor_Destroy(void *self)
 {
     FIELD(const void *, self, 0) = data_020e2560;
     void (**vtable)(void *) = (void (**)(void *))data_020e2560;
@@ -50,13 +50,13 @@ void *func_0204e970(void *self)
 }
 
 /*
- * Input is an actor. Perform the teardown documented for func_0204e970, free
+ * Input is an actor. Perform the teardown documented for TriggerPresentationActor_Destroy, free
  * the actor allocation, and return its former address. Engine and heap state
  * change; there are no direct hardware effects.
  */
-void *func_0204e9a8(void *self)
+void *TriggerPresentationActor_DestroyAndFree(void *self)
 {
-    func_0204e970(self);
+    TriggerPresentationActor_Destroy(self);
     Heap_Free(self);
     return self;
 }

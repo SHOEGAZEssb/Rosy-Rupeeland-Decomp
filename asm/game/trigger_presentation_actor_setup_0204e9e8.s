@@ -10,8 +10,8 @@
 .extern GraphicsSpriteGroup_CreateState
 .text
 
-    .global func_0204e9e8
-func_0204e9e8: ; 0x0204e9e8
+    .global TriggerPresentationActor_SetupPresentation
+TriggerPresentationActor_SetupPresentation: ; 0x0204e9e8
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x4
     ldr r2, .L_0204ea88
@@ -53,7 +53,7 @@ func_0204e9e8: ; 0x0204e9e8
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 .L_0204ea88: .word data_020f4e18
-.size func_0204e9e8, . - func_0204e9e8
+.size TriggerPresentationActor_SetupPresentation, . - TriggerPresentationActor_SetupPresentation
 
     .global Actor_SetPresentationSelection
 

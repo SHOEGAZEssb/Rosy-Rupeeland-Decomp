@@ -1,0 +1,14 @@
+{
+  "func_0204e774": "EffectHandleActor_Destroy",
+  "func_0204e82c": "EffectHandleActor_Update",
+  "func_0204e93c": "EffectHandleActor_GetGravityAcceleration",
+  "func_0204e944": "TriggerPresentationActor_Init",
+  "func_0204e970": "TriggerPresentationActor_Destroy",
+  "func_0204e9a8": "TriggerPresentationActor_DestroyAndFree",
+  "func_0204e9e8": "TriggerPresentationActor_SetupPresentation",
+  "func_0204eaac": "TriggerPresentationActor_Update",
+  "func_0204eac8": "TriggerPresentationActor_HandleContact",
+  "func_0204eb0c": "TriggerPresentationActor_RemoveContact",
+  "func_0204eb18": "TriggerPresentationActor_Spawn",
+  "func_0204ebf4": "TriggerPresentationActor_PostUpdate"
+}

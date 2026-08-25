@@ -16,7 +16,7 @@ extern void Actor_DispatchActivationMode1(void *actor);
  * nothing. Only the callees' engine effects are observable; hardware is not
  * accessed directly.
  */
-void func_0204ebf4(void *actor)
+void TriggerPresentationActor_PostUpdate(void *actor)
 {
     Actor_SetInteractionFlag2000(actor);
     Actor_DispatchActivationMode1(actor);

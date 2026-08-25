@@ -5,7 +5,7 @@
 .extern VecFx32Object_Destroy
 .extern GamePhaseScriptVm_Pop
 .extern Position_AdjustForTerrainHeight
-.extern func_0204eb18
+.extern TriggerPresentationActor_Spawn
 .global GamePhaseActorScriptVm_SpawnDualVariantEffect
 GamePhaseActorScriptVm_SpawnDualVariantEffect:
     stmdb sp!, {r3, r4, r5, lr}
@@ -47,7 +47,7 @@ L_020175a8:
     sub r3, r3, #1
     mov r0, #14
     str r12, [sp, #0xc]
-    bl func_0204eb18
+    bl TriggerPresentationActor_Spawn
     b L_0201761c
 L_020175e0:
     ldr r3, L_02017634
@@ -62,7 +62,7 @@ L_020175e0:
     sub r3, r3, #1
     mov r0, #15
     str r12, [sp, #0xc]
-    bl func_0204eb18
+    bl TriggerPresentationActor_Spawn
     b L_0201761c
 L_02017618:
     bl OS_Halt

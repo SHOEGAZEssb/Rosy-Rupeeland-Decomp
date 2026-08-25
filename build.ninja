@@ -20037,7 +20037,7 @@ build build/reports/effect_handle_actor_0204e740.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/game/effect_handle_actor_0204e740.o
 build build/reports/effect_handle_actor_0204e740.txt: match_report build/reports/effect_handle_actor_0204e740.json | tools/report_objdiff.py
   report_json = build/reports/effect_handle_actor_0204e740.json
-  report_args = --section .text --function EffectHandleActor_Init --function func_0204e774 --function EffectHandleActor_Delete --function func_0204e82c --require-exact
+  report_args = --section .text --function EffectHandleActor_Init --function EffectHandleActor_Destroy --function EffectHandleActor_Delete --function EffectHandleActor_Update --require-exact
 build effect_handle_actor: phony build/decomp/src/game/effect_handle_actor.o build/decomp/asm/game/effect_handle_actor_0204e740.o build/reports/effect_handle_actor_0204e740.txt
 
 effect_handle_actor_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -20051,7 +20051,7 @@ build build/reports/effect_handle_actor_callbacks_0204e93c.json: objdiff build/d
   base_object = build/decomp/asm/game/effect_handle_actor_callbacks_0204e93c.o
 build build/reports/effect_handle_actor_callbacks_0204e93c.txt: match_report build/reports/effect_handle_actor_callbacks_0204e93c.json | tools/report_objdiff.py
   report_json = build/reports/effect_handle_actor_callbacks_0204e93c.json
-  report_args = --section .text --function func_0204e93c --require-exact
+  report_args = --section .text --function EffectHandleActor_GetGravityAcceleration --require-exact
 build effect_handle_actor_callbacks: phony build/decomp/src/game/effect_handle_actor_callbacks.o build/decomp/asm/game/effect_handle_actor_callbacks_0204e93c.o build/reports/effect_handle_actor_callbacks_0204e93c.txt
 
 trigger_presentation_actor_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -20065,7 +20065,7 @@ build build/reports/trigger_presentation_actor_lifecycle_0204e944.json: objdiff 
   base_object = build/decomp/asm/game/trigger_presentation_actor_lifecycle_0204e944.o
 build build/reports/trigger_presentation_actor_lifecycle_0204e944.txt: match_report build/reports/trigger_presentation_actor_lifecycle_0204e944.json | tools/report_objdiff.py
   report_json = build/reports/trigger_presentation_actor_lifecycle_0204e944.json
-  report_args = --section .text --function func_0204e944 --function func_0204e970 --function func_0204e9a8 --require-exact
+  report_args = --section .text --function TriggerPresentationActor_Init --function TriggerPresentationActor_Destroy --function TriggerPresentationActor_DestroyAndFree --require-exact
 build trigger_presentation_actor_lifecycle: phony build/decomp/src/game/trigger_presentation_actor_lifecycle.o build/decomp/asm/game/trigger_presentation_actor_lifecycle_0204e944.o build/reports/trigger_presentation_actor_lifecycle_0204e944.txt
 
 trigger_presentation_actor_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -20079,7 +20079,7 @@ build build/reports/trigger_presentation_actor_setup_0204e9e8.json: objdiff buil
   base_object = build/decomp/asm/game/trigger_presentation_actor_setup_0204e9e8.o
 build build/reports/trigger_presentation_actor_setup_0204e9e8.txt: match_report build/reports/trigger_presentation_actor_setup_0204e9e8.json | tools/report_objdiff.py
   report_json = build/reports/trigger_presentation_actor_setup_0204e9e8.json
-  report_args = --section .text --function func_0204e9e8 --function Actor_SetPresentationSelection --require-exact
+  report_args = --section .text --function TriggerPresentationActor_SetupPresentation --function Actor_SetPresentationSelection --require-exact
 build trigger_presentation_actor_setup: phony build/decomp/src/game/trigger_presentation_actor_setup.o build/decomp/asm/game/trigger_presentation_actor_setup_0204e9e8.o build/reports/trigger_presentation_actor_setup_0204e9e8.txt
 
 trigger_presentation_actor_callbacks_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -20093,7 +20093,7 @@ build build/reports/trigger_presentation_actor_callbacks_0204eaac.json: objdiff 
   base_object = build/decomp/asm/game/trigger_presentation_actor_callbacks_0204eaac.o
 build build/reports/trigger_presentation_actor_callbacks_0204eaac.txt: match_report build/reports/trigger_presentation_actor_callbacks_0204eaac.json | tools/report_objdiff.py
   report_json = build/reports/trigger_presentation_actor_callbacks_0204eaac.json
-  report_args = --section .text --function func_0204eaac --function func_0204eac8 --function func_0204eb0c --require-exact
+  report_args = --section .text --function TriggerPresentationActor_Update --function TriggerPresentationActor_HandleContact --function TriggerPresentationActor_RemoveContact --require-exact
 build trigger_presentation_actor_callbacks: phony build/decomp/src/game/trigger_presentation_actor_callbacks.o build/decomp/asm/game/trigger_presentation_actor_callbacks_0204eaac.o build/reports/trigger_presentation_actor_callbacks_0204eaac.txt
 
 trigger_presentation_actor_spawn_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -20107,7 +20107,7 @@ build build/reports/trigger_presentation_actor_spawn_0204eb18.json: objdiff buil
   base_object = build/decomp/asm/game/trigger_presentation_actor_spawn_0204eb18.o
 build build/reports/trigger_presentation_actor_spawn_0204eb18.txt: match_report build/reports/trigger_presentation_actor_spawn_0204eb18.json | tools/report_objdiff.py
   report_json = build/reports/trigger_presentation_actor_spawn_0204eb18.json
-  report_args = --section .text --function func_0204eb18 --require-exact
+  report_args = --section .text --function TriggerPresentationActor_Spawn --require-exact
 build trigger_presentation_actor_spawn: phony build/decomp/src/game/trigger_presentation_actor_spawn.o build/decomp/asm/game/trigger_presentation_actor_spawn_0204eb18.o build/reports/trigger_presentation_actor_spawn_0204eb18.txt
 
 trigger_presentation_actor_post_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -20121,7 +20121,7 @@ build build/reports/trigger_presentation_actor_post_update_0204ebf4.json: objdif
   base_object = build/decomp/asm/game/trigger_presentation_actor_post_update_0204ebf4.o
 build build/reports/trigger_presentation_actor_post_update_0204ebf4.txt: match_report build/reports/trigger_presentation_actor_post_update_0204ebf4.json | tools/report_objdiff.py
   report_json = build/reports/trigger_presentation_actor_post_update_0204ebf4.json
-  report_args = --section .text --function func_0204ebf4 --require-exact
+  report_args = --section .text --function TriggerPresentationActor_PostUpdate --require-exact
 build trigger_presentation_actor_post_update: phony build/decomp/src/game/trigger_presentation_actor_post_update.o build/decomp/asm/game/trigger_presentation_actor_post_update_0204ebf4.o build/reports/trigger_presentation_actor_post_update_0204ebf4.txt
 
 grid_effect_actor_lifecycle_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

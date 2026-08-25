@@ -1,8 +1,8 @@
 ; Matching retail form; see src/game/effect_handle_actor_callbacks.c.
 .text
-    .global func_0204e93c
-func_0204e93c:
+    .global EffectHandleActor_GetGravityAcceleration
+EffectHandleActor_GetGravityAcceleration:
     mov r0, #0x100000
     bx lr
-.size func_0204e93c, . - func_0204e93c
+.size EffectHandleActor_GetGravityAcceleration, . - EffectHandleActor_GetGravityAcceleration
 
