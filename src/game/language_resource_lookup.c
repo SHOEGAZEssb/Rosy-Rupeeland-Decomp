@@ -43,6 +43,7 @@ extern u8 gLanguageDatabase[];
 extern const u16 gLanguageDatabaseErrorText[];
 extern const u16 gLanguageDatabaseNullText[];
 extern u8 data_021f5138[];
+extern u8 data_021f52a8[];
 extern void OS_Halt(void);
 extern u32 LanguageDatabase_GetRecordLength(void *manager, u16 identifier);
 void *LanguageDatabase_GetRecordById(ResourceFileManager *manager, u32 identifier);
@@ -176,12 +177,13 @@ const void *RecordMode_GetMessage(const void *mode_record, s32 key)
                          *(const s32 *)((const u8 *)mode_record + 4), key);
 }
 
-/* Return the borrowed 0x9C-byte global group selected by a mode record. */
+/* Return the borrowed 0x9C-byte global message group selected by a mode
+ * record. This table is distinct from the record database at data_021f5138. */
 void *RecordMode_GetMessageGroup(const void *mode_record)
 {
     s32 group = *(const s32 *)((const u8 *)mode_record + 4);
 
-    return data_021f5138 + group * 0x9c;
+    return data_021f52a8 + group * 0x9c;
 }
 
 static const u8 *RecordMode_GetResourceDescriptor(const void *mode_record)
