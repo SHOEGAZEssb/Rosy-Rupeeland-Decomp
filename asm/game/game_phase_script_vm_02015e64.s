@@ -4,8 +4,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern func_02063670
-.global func_02015e64
-func_02015e64:
+.global GamePhaseActorScriptVm_QueryInventoryTableByKey
+GamePhaseActorScriptVm_QueryInventoryTableByKey:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -20,4 +20,4 @@ func_02015e64:
     mov r0, #0
     ldmia sp!, {r4, pc}
 L_02015e98: .word data_021e9ac0
-    .size func_02015e64, . - func_02015e64
+    .size GamePhaseActorScriptVm_QueryInventoryTableByKey, . - GamePhaseActorScriptVm_QueryInventoryTableByKey

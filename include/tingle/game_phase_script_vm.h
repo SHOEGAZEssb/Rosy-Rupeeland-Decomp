@@ -181,11 +181,11 @@ s32 GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand(GamePhaseActor
 s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CalculateScaledDistance(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CreateApplyScene(GamePhaseActorScriptVm *self);
-s32 func_02015e40(GamePhaseActorScriptVm *self);
-s32 func_02015e64(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_GetAbsoluteValue(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_QueryInventoryTableByKey(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetIndexedActorActive(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ActivateAllActors(GamePhaseActorScriptVm *self);
-s32 func_02015f50(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetSystemStateHalfword5c(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_StepActorOrientation(GamePhaseActorScriptVm *self);
 s32 func_02016070(GamePhaseActorScriptVm *self);

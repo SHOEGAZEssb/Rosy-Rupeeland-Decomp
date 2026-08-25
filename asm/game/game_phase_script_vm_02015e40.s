@@ -3,8 +3,8 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern SignedAbsoluteValueVariant
-.global func_02015e40
-func_02015e40:
+.global GamePhaseActorScriptVm_GetAbsoluteValue
+GamePhaseActorScriptVm_GetAbsoluteValue:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl GamePhaseScriptVm_Pop
@@ -14,4 +14,4 @@ func_02015e40:
     bl GamePhaseScriptVm_StoreResultAndUpdateCondition
     mov r0, #0
     ldmia sp!, {r4, pc}
-    .size func_02015e40, . - func_02015e40
+    .size GamePhaseActorScriptVm_GetAbsoluteValue, . - GamePhaseActorScriptVm_GetAbsoluteValue

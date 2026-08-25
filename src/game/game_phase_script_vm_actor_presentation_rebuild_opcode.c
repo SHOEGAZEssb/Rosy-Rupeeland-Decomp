@@ -5,8 +5,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *Actor_RebuildPrimaryAttachment(void *actor, u16 first, u16 second,
-                                            u16 third, u16 fourth);
+extern void *Actor_RebuildPrimaryAttachment(
+    void *actor, u16 creationOperandA, u16 creationOperandB,
+    u16 creationOperandC, u16 creationOperandD);
 extern void Actor_SetAttachmentAnimation(void *actor, u32 value);
 extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
 #ifdef __cplusplus
@@ -20,29 +21,30 @@ extern void Actor_SetAttachmentEnabled(void *actor, u32 value);
  * halfwords at 0x30..0x36 into the replacement, request actor update value
  * one, and return zero.
  */
-s32 func_02015f50(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState(GamePhaseActorScriptVm *self)
 {
-    u32 command = GamePhaseScriptVm_Pop(&self->base);
-    u16 fourth = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u16 third = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u16 second = (u16)GamePhaseScriptVm_Pop(&self->base);
-    u16 first = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u32 animation = GamePhaseScriptVm_Pop(&self->base);
+    u16 creationOperandD = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 creationOperandC = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 creationOperandB = (u16)GamePhaseScriptVm_Pop(&self->base);
+    u16 creationOperandA = (u16)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
-    u8 *oldObject = *(u8 **)(actor + 0x54);
-    u8 byte3a = oldObject[0x3a];
-    s16 value36 = *(s16 *)(oldObject + 0x36);
-    s16 value32 = *(s16 *)(oldObject + 0x32);
-    s16 value34 = *(s16 *)(oldObject + 0x34);
-    s16 value30 = *(s16 *)(oldObject + 0x30);
-    u8 *newObject = (u8 *)Actor_RebuildPrimaryAttachment(
-        actor, first, second, third, fourth);
+    u8 *oldAttachment = *(u8 **)(actor + 0x54);
+    u8 savedByte3a = oldAttachment[0x3a];
+    s16 savedHalfword36 = *(s16 *)(oldAttachment + 0x36);
+    s16 savedScaleX = *(s16 *)(oldAttachment + 0x32);
+    s16 savedScaleY = *(s16 *)(oldAttachment + 0x34);
+    s16 savedAngle = *(s16 *)(oldAttachment + 0x30);
+    u8 *newAttachment = (u8 *)Actor_RebuildPrimaryAttachment(
+        actor, creationOperandA, creationOperandB, creationOperandC,
+        creationOperandD);
 
-    Actor_SetAttachmentAnimation(actor, command);
-    newObject[0x3a] = byte3a;
-    *(s16 *)(newObject + 0x36) = value36;
-    *(s16 *)(newObject + 0x32) = value32;
-    *(s16 *)(newObject + 0x34) = value34;
-    *(s16 *)(newObject + 0x30) = value30;
+    Actor_SetAttachmentAnimation(actor, animation);
+    newAttachment[0x3a] = savedByte3a;
+    *(s16 *)(newAttachment + 0x36) = savedHalfword36;
+    *(s16 *)(newAttachment + 0x32) = savedScaleX;
+    *(s16 *)(newAttachment + 0x34) = savedScaleY;
+    *(s16 *)(newAttachment + 0x30) = savedAngle;
     Actor_SetAttachmentEnabled(actor, 1);
     return 0;
 }

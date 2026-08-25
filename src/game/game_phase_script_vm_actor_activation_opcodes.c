@@ -20,13 +20,14 @@ extern void *Actor_GetOwningCollection(void *actor);
 s32 GamePhaseActorScriptVm_SetIndexedActorActive(GamePhaseActorScriptVm *self)
 {
     s32 active = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(self->actor), index);
+    s32 targetRuntimeId = (s32)GamePhaseScriptVm_Pop(&self->base);
+    u8 *targetActor = (u8 *)ActorCollection_FindActorByRuntimeId(
+        Actor_GetOwningCollection(self->actor), targetRuntimeId);
 
-    if (actor != 0) {
-        Actor_SetActive(actor, active != 0);
-        if (active == 0 && actor[0x4d] == 1)
-            *(u16 *)(actor + 0xd6) = 0;
+    if (targetActor != 0) {
+        Actor_SetActive(targetActor, active != 0);
+        if (active == 0 && targetActor[0x4d] == 1)
+            *(u16 *)(targetActor + 0xd6) = 0;
     }
     return 0;
 }

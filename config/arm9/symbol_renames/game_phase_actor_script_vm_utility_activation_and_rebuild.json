@@ -1,0 +1,10 @@
+{
+  "GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude": "GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude",
+  "GamePhaseActorScriptVm_CalculateScaledDistance": "GamePhaseActorScriptVm_CalculateScaledDistance",
+  "GamePhaseActorScriptVm_CreateApplyScene": "GamePhaseActorScriptVm_CreateApplyScene",
+  "func_02015e40": "GamePhaseActorScriptVm_GetAbsoluteValue",
+  "func_02015e64": "GamePhaseActorScriptVm_QueryInventoryTableByKey",
+  "GamePhaseActorScriptVm_SetIndexedActorActive": "GamePhaseActorScriptVm_SetIndexedActorActive",
+  "GamePhaseActorScriptVm_ActivateAllActors": "GamePhaseActorScriptVm_ActivateAllActors",
+  "func_02015f50": "GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState"
+}

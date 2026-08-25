@@ -4,8 +4,8 @@
 .extern Actor_SetAttachmentEnabled
 .extern Actor_SetAttachmentAnimation
 .extern Actor_RebuildPrimaryAttachment
-.global func_02015f50
-func_02015f50:
+.global GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState
+GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #4
     mov r5, r0
@@ -55,4 +55,4 @@ func_02015f50:
     mov r0, #0
     add sp, sp, #4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, pc}
-    .size func_02015f50, . - func_02015f50
+    .size GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState, . - GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState

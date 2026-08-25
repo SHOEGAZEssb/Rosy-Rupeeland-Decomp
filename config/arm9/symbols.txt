@@ -774,11 +774,11 @@ GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand kind:function(arm,
 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude kind:function(arm,size=0x40) addr:0x02015d0c
 GamePhaseActorScriptVm_CalculateScaledDistance kind:function(arm,size=0x7c) addr:0x02015d4c
 GamePhaseActorScriptVm_CreateApplyScene kind:function(arm,size=0x78) addr:0x02015dc8
-func_02015e40 kind:function(arm,size=0x24) addr:0x02015e40
-func_02015e64 kind:function(arm,size=0x38) addr:0x02015e64
+GamePhaseActorScriptVm_GetAbsoluteValue kind:function(arm,size=0x24) addr:0x02015e40
+GamePhaseActorScriptVm_QueryInventoryTableByKey kind:function(arm,size=0x38) addr:0x02015e64
 GamePhaseActorScriptVm_SetIndexedActorActive kind:function(arm,size=0x74) addr:0x02015e9c
 GamePhaseActorScriptVm_ActivateAllActors kind:function(arm,size=0x40) addr:0x02015f10
-func_02015f50 kind:function(arm,size=0xc4) addr:0x02015f50
+GamePhaseActorScriptVm_RebuildPrimaryAttachmentPreservingDisplayState kind:function(arm,size=0xc4) addr:0x02015f50
 GamePhaseActorScriptVm_SetSystemStateHalfword5c kind:function(arm,size=0x1c) addr:0x02016014
 GamePhaseActorScriptVm_StepActorOrientation kind:function(arm,size=0x40) addr:0x02016030
 func_02016070 kind:function(arm,size=0x40) addr:0x02016070
