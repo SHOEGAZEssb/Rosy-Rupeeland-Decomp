@@ -1,0 +1,22 @@
+{
+  "GamePhaseState_Init": "GamePhaseState_Init",
+  "GamePhaseState_Destroy": "GamePhaseState_Destroy",
+  "GamePhaseState_UnloadPhase": "GamePhaseState_UnloadPhase",
+  "GamePhaseState_ResetRuntime": "GamePhaseState_ResetRuntime",
+  "GamePhaseState_ConfigureForPhase": "GamePhaseState_ConfigureForPhase",
+  "GamePhaseState_ApplyAreaChange": "GamePhaseState_ApplyAreaChange",
+  "GamePhaseState_ApplyConfiguration": "GamePhaseState_ApplyConfiguration",
+  "GamePhaseState_UpdateRenderHelpers": "GamePhaseState_UpdateRenderHelpers",
+  "GamePhaseState_ForwardVCount": "GamePhaseState_ForwardVCount",
+  "GamePhaseState_ResetActivePhase": "GamePhaseState_ResetActivePhase",
+  "GamePhaseState_GetConfiguration": "GamePhaseState_GetConfiguration",
+  "GamePhaseState_QueryTerrainHeight": "GamePhaseState_QueryTerrainHeight",
+  "GamePhaseState_ConfigureMainDisplay": "GamePhaseState_ConfigureMainDisplay",
+  "GamePhaseState_SetEnabled": "GamePhaseState_SetEnabled",
+  "GamePhaseState_ApplyPlacementState": "GamePhaseState_ApplyPlacementState",
+  "GamePhaseState_TryStartBoundaryTransition": "GamePhaseState_TryStartBoundaryTransition",
+  "GamePhaseState_GetBoundaryDirection": "GamePhaseState_GetBoundaryDirection",
+  "GamePhaseState_CreatePhaseObject": "GamePhaseState_CreatePhaseObject",
+  "gGamePhaseBoundaryTransitionAllocationTag": "gGamePhaseBoundaryTransitionAllocationTag",
+  "gGamePhaseStateRendererAllocationTag": "gGamePhaseStateRendererAllocationTag"
+}

@@ -8,22 +8,15 @@ extern "C" {
 #endif
 extern void *gGamePhaseCurrencyHud;
 extern void *gSoundContext;
-extern void OverlaySlot_LoadOverlay(void *object, u32 value);
-extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern void *func_0202751c(void *object, void *phaseObject);
 extern void *func_020275b0(void);
 extern void func_02027f2c(void);
 extern void *GamePhaseProgress_GetOrCreateGlobal(void);
-extern void ActorCollection_CreateSpriteGroupForDisplayMode(void *object, s32 value);
-extern void ActorCollection_SetEnabled(void *object, s32 value);
+extern void ActorCollection_SetEnabled(ActorCollection *self, s32 enabled);
 extern void ActorDerivedType1_UpdateGameWorkRuntimeFlags(void *object, s32 enabled);
 extern void ActorInteractionRuntime_Start(void);
 extern void SoundPhaseManager_SetPhase(void *sound, u16 value);
 extern void GamePhase_ResetTransientState(void);
-extern void GamePhaseState_CreatePhaseObject(GamePhaseState *self,
-                                             const void *configuration);
-extern void Graphics3dPresentation_Disable(void *object, s32 a, s32 b);
-extern void Graphics3dPresentation_Enable(void *object, s32 a, s32 b);
 extern void func_020ae740(void);
 extern void GX_DisableBankForLCDC(void);
 extern void GX_SetBankForBG(s32 bank);
@@ -61,26 +54,26 @@ void GamePhaseState_ConfigureForPhase(GamePhaseState *self, const void *configur
         GX_SetBankForBG(0x10);
         GX_DisableBankForLCDC();
         GX_SetGraphicsMode(1, 0, 1);
-        render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
+        render = RuntimePresentationManager_GetGraphics3dPresentation(&self->presentationManager);
         Graphics3dPresentation_Enable(render, 1, 1);
     } else {
         func_020ae740();
         GX_SetBankForBG(2);
-        render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
+        render = RuntimePresentationManager_GetGraphics3dPresentation(&self->presentationManager);
         Graphics3dPresentation_Disable(render, 1, 0);
         GX_SetGraphicsMode(1, 0, 0);
         *(volatile u32 *)0x04000000 =
             (*(volatile u32 *)0x04000000 & ~0x1f00) | 0x1000;
     }
-    ActorCollection_CreateSpriteGroupForDisplayMode(self->actorCollectionStorage, 1);
-    ActorCollection_SetEnabled(self->actorCollectionStorage, 0);
+    ActorCollection_CreateSpriteGroupForDisplayMode(&self->actorCollection, 1);
+    ActorCollection_SetEnabled(&self->actorCollection, 0);
     GamePhaseState_ApplyConfiguration(self, configuration);
 }
 
 /*
  * Apply a descriptor, invoke its callback with zero, reset a global phase
  * service, and select a helper mode for phase IDs 2..4. If field_12 is
- * negative, also invoke helper_2eb4's first virtual method.
+ * negative, also destroy the embedded visual effect's active resources.
  */
 void GamePhaseState_ApplyAreaChange(GamePhaseState *self, const void *configuration)
 {
@@ -92,10 +85,10 @@ void GamePhaseState_ApplyAreaChange(GamePhaseState *self, const void *configurat
     GamePhaseState_ApplyConfiguration(self, configuration);
     config->callback24(0);
     ActorInteractionRuntime_Start();
-    ActorDerivedType1_UpdateGameWorkRuntimeFlags(self->actorCollectionStorage + 0x2e7c,
+    ActorDerivedType1_UpdateGameWorkRuntimeFlags((u8 *)&self->actorCollection + 0x2e7c,
                   config->phaseId >= 2 && config->phaseId <= 4);
     if (config->field_12 < 0)
-        (*(HelperMethod **)self->helper_2eb4)[0](self->helper_2eb4);
+        (*(HelperMethod **)&self->visualEffect)[0](&self->visualEffect);
 }
 
 /*
@@ -121,7 +114,7 @@ void GamePhaseState_ApplyConfiguration(GamePhaseState *self, const void *configu
     SoundPhaseManager_SetPhase(gSoundContext, (u16)config->phaseId);
     GamePhaseState_CreatePhaseObject(self, configuration);
     /* Offset 0x1c is the phase's overlay ID; phase 90 stores overlay 195. */
-    OverlaySlot_LoadOverlay(self->overlaySlotStorage, config->overlayId1c);
+    OverlaySlot_LoadOverlay(&self->overlaySlot, config->overlayId1c);
     GameWork_ClearPointerBank(gGameWork, 0);
     *(u16 *)(work + 0x228) = 0;
     GameWork_SetFlag(gGameWork, 0x3ec);

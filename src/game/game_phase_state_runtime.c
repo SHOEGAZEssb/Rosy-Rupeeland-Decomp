@@ -7,23 +7,9 @@
 extern "C" {
 #endif
 extern void DebugText_BeginFrame(void);
-extern void *GamePhaseVisualEffect_Update(void *object);
-extern void GamePhaseVisualEffect_PrepareBackground(void *object);
-extern void GamePhaseRegionTable_Destroy(void *object);
-extern void RuntimePresentationManager_DispatchVBlankCallbacks(void *manager);
-extern void RuntimePresentationManager_DispatchHBlankCallbacks(
-    void *manager, u16 vcount);
-extern void RuntimePresentationManager_DestroyAllEffects(void *object);
-extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
 extern s32 ByteTileMapOwner_GetCell(void *object, s32 x, s32 y);
-extern void ActorCollection_DestroyUnretainedActors(void *object);
 extern void ActorDerivedType1_ClearFailureCounter(void *object);
 extern void ActorFeedback_DestroyPresentations(void);
-/* Matching forwards the preceding getter result in r0; host preparation makes
- * that argument explicit. */
-extern void Graphics3dPresentation_Clear(void);
-extern void Graphics3dPresentation_Disable(void *object, s32 a, s32 b);
-extern void Graphics3dPresentation_Enable(void *object, s32 a, s32 b);
 extern void func_020ae9a4(GamePhaseState *self);
 extern void GX_SetBankForBG(s32 bank);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As3D);
@@ -41,23 +27,23 @@ static void *phaseVirtual(GamePhaseState *self, u32 offset)
 
 /*
  * If renderFlags bit 1 is set, update the render helper, forward virtual method
- * 0x1c to phaseObject when present, and update helper_2eb4. No value is
+ * 0x1c to phaseObject when present, and update the visual effect. No value is
  * returned.
  */
 void GamePhaseState_UpdateRenderHelpers(GamePhaseState *self)
 {
     if (!(self->renderFlags & 2))
         return;
-    RuntimePresentationManager_DispatchVBlankCallbacks(self->renderHelperStorage);
+    RuntimePresentationManager_DispatchVBlankCallbacks(&self->presentationManager);
     if (self->phaseObject)
         ((PhaseVirtualMethod)phaseVirtual(self, 0x1c))(self->phaseObject);
-    GamePhaseVisualEffect_Update(self->helper_2eb4);
+    GamePhaseVisualEffect_Update(&self->visualEffect);
 }
 
 /* Forward VCOUNT to the render helper at offset 0x2f58. */
 void GamePhaseState_ForwardVCount(GamePhaseState *self, u16 vcount)
 {
-    RuntimePresentationManager_DispatchHBlankCallbacks(self->renderHelperStorage, vcount);
+    RuntimePresentationManager_DispatchHBlankCallbacks(&self->presentationManager, vcount);
 }
 
 /*
@@ -72,16 +58,17 @@ void GamePhaseState_ResetActivePhase(GamePhaseState *self)
     GameWork_SetFlag(gGameWork, 0x3ec);
     *(u16 *)(work + 0x20c) = 0;
     *(u16 *)(work + 0x20e) = 0;
-    GamePhaseRegionTable_Destroy(self->helper_2f80);
-    RuntimePresentationManager_DestroyAllEffects(self->renderHelperStorage);
-    RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
-    Graphics3dPresentation_Clear();
+    GamePhaseRegionTable_Destroy(&self->regionTable);
+    RuntimePresentationManager_DestroyAllEffects(&self->presentationManager);
+    Graphics3dPresentation_Clear(
+        RuntimePresentationManager_GetGraphics3dPresentation(
+            &self->presentationManager));
     ActorFeedback_DestroyPresentations();
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x24))(self->phaseObject, 0);
     if (self->phaseObject)
         ((PhaseVirtualMethod)phaseVirtual(self, 4))(self->phaseObject);
-    ActorCollection_DestroyUnretainedActors(self->actorCollectionStorage);
-    ActorDerivedType1_ClearFailureCounter(self->actorCollectionStorage + 0x2e7c);
+    ActorCollection_DestroyUnretainedActors(&self->actorCollection);
+    ActorDerivedType1_ClearFailureCounter((u8 *)&self->actorCollection + 0x2e7c);
     DebugText_BeginFrame();
 }
 
@@ -110,8 +97,8 @@ s32 GamePhaseState_QueryTerrainHeight(GamePhaseState *self, s32 x, s32 y)
 /*
  * Restore BG/graphics mode from configuration flag bit 23, clear DISPCNT
  * display-plane bits, select the 3D render helper only when requested, invoke
- * owned virtual methods 0x34/0x20/0x1c, and refresh helper_2eb4 when field_12
- * is nonnegative.
+ * owned virtual methods 0x34/0x20/0x1c, and refresh the visual effect when
+ * field_12 is nonnegative.
  */
 void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
 {
@@ -126,7 +113,7 @@ void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
         GX_SetGraphicsMode(1, 0, 0);
     }
     *(volatile u32 *)0x04000000 &= ~0x38000000;
-    render = RuntimePresentationManager_GetGraphics3dPresentation(self->renderHelperStorage);
+    render = RuntimePresentationManager_GetGraphics3dPresentation(&self->presentationManager);
     if ((s32)(*(u32 *)(config + 0x40) << 8) < 0 && use3dMode)
         Graphics3dPresentation_Enable(render, 1, 1);
     else
@@ -135,5 +122,5 @@ void GamePhaseState_ConfigureMainDisplay(GamePhaseState *self, s32 use3dMode)
     ((PhaseVirtualValueMethod)phaseVirtual(self, 0x20))(self->phaseObject, 1);
     ((PhaseVirtualMethod)phaseVirtual(self, 0x1c))(self->phaseObject);
     if (*(s16 *)(config + 0x12) >= 0)
-        GamePhaseVisualEffect_PrepareBackground(self->helper_2eb4);
+        GamePhaseVisualEffect_PrepareBackground(&self->visualEffect);
 }

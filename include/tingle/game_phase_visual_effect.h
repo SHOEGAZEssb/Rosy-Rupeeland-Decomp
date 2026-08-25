@@ -21,6 +21,9 @@ typedef struct GamePhaseVisualEffect {
     s16 effectEntries[4];
 } GamePhaseVisualEffect;
 
+typedef char GamePhaseVisualEffectSizeCheck[
+    sizeof(GamePhaseVisualEffect) == 0xa4 ? 1 : -1];
+
 /* Four signed effect entries preceded by the update-enable word. */
 typedef struct GamePhaseVisualEffectConfig {
     u32 enabled;

@@ -5,10 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void GamePhaseVisualEffect_UpdatePosition(void *object, const void *state);
-extern void GamePhaseVisualEffect_SetEnabled(void *object, s32 value);
-extern void RuntimePresentationManager_SetEnabled(void *manager, s32 enabled);
-extern void ActorCollection_SetEnabled(void *object, s32 value);
+extern void ActorCollection_SetEnabled(ActorCollection *self, s32 enabled);
 #ifdef __cplusplus
 }
 #endif
@@ -24,19 +21,20 @@ void GamePhaseState_SetEnabled(GamePhaseState *self, s32 enabled)
 {
     void **vtable = *(void ***)self->phaseObject;
     ((PhaseControlMethod)vtable[9])(self->phaseObject, enabled);
-    ActorCollection_SetEnabled(self->actorCollectionStorage, enabled);
-    GamePhaseVisualEffect_SetEnabled(self->helper_2eb4, enabled);
-    RuntimePresentationManager_SetEnabled(self->renderHelperStorage, enabled);
+    ActorCollection_SetEnabled(&self->actorCollection, enabled);
+    GamePhaseVisualEffect_SetEnabled(&self->visualEffect, enabled);
+    RuntimePresentationManager_SetEnabled(&self->presentationManager, enabled);
 }
 
 /*
  * Send the placement state through owned virtual method 0x18 and synchronize
- * helper_2eb4. No value is returned.
+ * the embedded visual effect. No value is returned.
  */
 void GamePhaseState_ApplyPlacementState(GamePhaseState *self,
                                         const void *placementState)
 {
     void **vtable = *(void ***)self->phaseObject;
     ((PhasePlacementMethod)vtable[6])(self->phaseObject, placementState);
-    GamePhaseVisualEffect_UpdatePosition(self->helper_2eb4, placementState);
+    GamePhaseVisualEffect_UpdatePosition(
+        &self->visualEffect, (const VecFx32Object *)placementState);
 }

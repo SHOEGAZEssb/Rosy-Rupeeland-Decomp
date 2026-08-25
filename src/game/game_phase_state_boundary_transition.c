@@ -14,10 +14,8 @@ extern void *ActorDerivedType1_GetSingletonObject(void);
 extern s32 ActorRuntimeCollection_GetPendingAttachmentFlag(void *object);
 extern s32 ActorRuntimeCollection_GetBusyState(void *object);
 extern s32 ActorDerivedType1_GetActiveRecordId(void *actor);
-extern void OverlayManager_LoadOverlay(s32 value, s32 mode, s32 mask);
-extern s32 OverlayManager_GetGlobal(void);
-extern void *VecFx32Object_InitPlanarProjection(void *vector, const void *source);
-extern void VecFx32Object_Destroy(void *vector);
+extern VecFx32Object *VecFx32Object_InitPlanarProjection(
+    VecFx32Object *vector, const void *source);
 extern void *func_ov074_0220fda8(void *object, s32 directionIndex);
 #ifdef __cplusplus
 }
@@ -92,7 +90,7 @@ s32 GamePhaseState_TryStartBoundaryTransition(GamePhaseState *self)
 s32 GamePhaseState_GetBoundaryDirection(GamePhaseState *self)
 {
     u8 *actor = *(u8 **)((u8 *)self + 0x2e80);
-    s32 vector[4];
+    VecFx32Object vector;
     u32 dimensions;
     s32 x;
     s32 z;
@@ -100,10 +98,10 @@ s32 GamePhaseState_GetBoundaryDirection(GamePhaseState *self)
 
     if (*(u32 *)(actor + 0xd0) & 0x10)
         return -1;
-    VecFx32Object_InitPlanarProjection(vector, actor + 0x18);
+    VecFx32Object_InitPlanarProjection(&vector, actor + 0x18);
     dimensions = *(u32 *)((u8 *)self->phaseObject + 0x20);
-    x = vector[1] >> 12;
-    z = vector[2] >> 12;
+    x = vector.value.x >> 12;
+    z = vector.value.y >> 12;
     if (x < 32)
         result = 1;
     else if (x > (s32)((dimensions & 0xffff) << 4) - 32)
@@ -112,6 +110,6 @@ s32 GamePhaseState_GetBoundaryDirection(GamePhaseState *self)
         result = 3;
     else if (z > (s32)((dimensions >> 16) << 4) - 32)
         result = 4;
-    VecFx32Object_Destroy(vector);
+    VecFx32Object_Destroy(&vector);
     return result;
 }

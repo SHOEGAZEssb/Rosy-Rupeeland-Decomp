@@ -32,6 +32,9 @@ typedef struct RuntimePresentationManager {
     Graphics3dPresentation *graphics3dPresentation;
 } RuntimePresentationManager;
 
+typedef char RuntimePresentationManagerSizeCheck[
+    sizeof(RuntimePresentationManager) == 0x24 ? 1 : -1];
+
 #ifdef __cplusplus
 extern "C" {
 #endif

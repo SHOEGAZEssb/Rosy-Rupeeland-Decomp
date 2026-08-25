@@ -1,21 +1,28 @@
 #ifndef TINGLE_GAME_PHASE_STATE_H
 #define TINGLE_GAME_PHASE_STATE_H
 
-#include "tingle/types.h"
+#include "tingle/actor_collection.h"
+#include "tingle/game_phase_region_table.h"
+#include "tingle/game_phase_visual_effect.h"
+#include "tingle/overlay_manager.h"
+#include "tingle/runtime_presentation_manager.h"
 
 /* Large runtime state embedded at GamePhaseRuntime offset 0x24. */
 typedef struct GamePhaseState {
     void *configuration;
-    u8 actorCollectionStorage[0x2ea0];
-    u8 overlaySlotStorage[0x0c];
+    ActorCollection actorCollection;
+    OverlaySlot overlaySlot;
     void *phaseObject;
-    u8 helper_2eb4[0xa4];
-    u8 renderHelperStorage[0x28];
+    GamePhaseVisualEffect visualEffect;
+    RuntimePresentationManager presentationManager;
     u32 renderFlags;
-    u8 helper_2f80[0x10];
+    GamePhaseRegionTable regionTable;
     u16 field_2f90;
     s16 field_2f92;
 } GamePhaseState;
+
+typedef char GamePhaseStateSizeCheck[
+    sizeof(GamePhaseState) == 0x2f94 ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
