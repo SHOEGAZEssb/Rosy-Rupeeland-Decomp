@@ -18,7 +18,7 @@
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseAreaScene_SetEnabled
 .extern GamePhaseAreaScene_SetOverlayObject
-.extern func_02020060
+.extern TimedSpriteRecordPresentation_SpawnAndRegister
 .extern func_02026174
 .extern GamePhaseMetadata_GetByIndex
 .extern ActorCollection_DispatchEventToActors
@@ -203,7 +203,7 @@ L_02007d24:
     add r0, r0, #0x2c00
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r5
-    bl func_02020060
+    bl TimedSpriteRecordPresentation_SpawnAndRegister
 L_02007d94:
     ldr r0, L_02007f04
     mov r1, #0x1
@@ -304,4 +304,3 @@ L_02007ef8:
 L_02007f00: .word gActorRuntimeCollection
 L_02007f04: .word gGamePhaseCurrencyHud
     .size GamePhaseRuntime_ChangeToNeighborArea, .-GamePhaseRuntime_ChangeToNeighborArea
-

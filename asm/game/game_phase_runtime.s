@@ -32,7 +32,7 @@
 .extern GamePhaseTouchPrompt_SetEnabled
 .extern GamePhaseCurrencyHud_SetVisible
 .extern GamePhaseAreaScene_ApplyRevealedRegions
-.extern func_02020060
+.extern TimedSpriteRecordPresentation_SpawnAndRegister
 .extern ActorCollection_DispatchEventToActors
 .extern Actor_AdjustPositionForTerrainHeight
 .extern ActorDerivedType1_ResetToDisabledState
@@ -321,7 +321,7 @@ L_02006ec8:
     add r0, r0, #0x2c00
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r5
-    bl func_02020060
+    bl TimedSpriteRecordPresentation_SpawnAndRegister
     b L_02006f0c
 L_02006eec:
     ldrsh r0, [r5, #0x12]
@@ -331,7 +331,7 @@ L_02006eec:
     add r0, r0, #0x2c00
     bl ActorMotionAreaFollower_GetPosition
     mov r1, r5
-    bl func_02020060
+    bl TimedSpriteRecordPresentation_SpawnAndRegister
 L_02006f0c:
     add r0, r4, #0x3000
     mvn r2, #0x0

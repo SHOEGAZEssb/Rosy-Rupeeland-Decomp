@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern FieldEffect_DestroyBase
 
-.global func_0202002c
-    .type func_0202002c, @function
-func_0202002c: ; 0x0202002c
+.global TimedSpriteRecordPresentation_DestroyAndFree
+    .type TimedSpriteRecordPresentation_DestroyAndFree, @function
+TimedSpriteRecordPresentation_DestroyAndFree: ; 0x0202002c
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl FieldEffect_DestroyBase
@@ -13,4 +13,4 @@ func_0202002c: ; 0x0202002c
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_0202002c, .-func_0202002c
+    .size TimedSpriteRecordPresentation_DestroyAndFree, .-TimedSpriteRecordPresentation_DestroyAndFree

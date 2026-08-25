@@ -9,9 +9,9 @@
 .extern FieldEffect_Init
 .extern GamePhaseGraphicsMetadata_GetByIndex
 
-.global func_0201ff2c
-    .type func_0201ff2c, @function
-func_0201ff2c: ; 0x0201ff2c
+.global TimedSpriteRecordPresentation_Init
+.type TimedSpriteRecordPresentation_Init, @function
+TimedSpriteRecordPresentation_Init: ; 0x0201ff2c
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x20
     mov r5, r0
@@ -71,4 +71,4 @@ func_0201ff2c: ; 0x0201ff2c
     ldmia sp!, {r4, r5, r6, pc}
 .L_02020010: .word data_020d62b0
 .L_02020014: .word gGamePhaseRuntime
-    .size func_0201ff2c, .-func_0201ff2c
+    .size TimedSpriteRecordPresentation_Init, .-TimedSpriteRecordPresentation_Init

@@ -53,7 +53,7 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *manager, void
  * made from signed record offsets 0x0a/0x0c shifted by four.  Destroy the
  * temporary and return self.
  */
-TimedSpriteRecordPresentation *func_0201ff2c(
+TimedSpriteRecordPresentation *TimedSpriteRecordPresentation_Init(
     TimedSpriteRecordPresentation *self, s32 field08, const u8 *config)
 {
     PresentationValue position;
@@ -84,7 +84,7 @@ TimedSpriteRecordPresentation *func_0201ff2c(
 }
 
 /* Run FieldEffect base teardown and return self without freeing it. */
-TimedSpriteRecordPresentation *func_02020018(
+TimedSpriteRecordPresentation *TimedSpriteRecordPresentation_Destroy(
     TimedSpriteRecordPresentation *self)
 {
     FieldEffect_DestroyBase(self);
@@ -92,7 +92,7 @@ TimedSpriteRecordPresentation *func_02020018(
 }
 
 /* Run FieldEffect base teardown, free self, and return its old address. */
-TimedSpriteRecordPresentation *func_0202002c(
+TimedSpriteRecordPresentation *TimedSpriteRecordPresentation_DestroyAndFree(
     TimedSpriteRecordPresentation *self)
 {
     FieldEffect_DestroyBase(self);
@@ -101,7 +101,7 @@ TimedSpriteRecordPresentation *func_0202002c(
 }
 
 /* Set state0c from zero to one on the first update and always return zero. */
-s32 func_02020048(TimedSpriteRecordPresentation *self)
+s32 TimedSpriteRecordPresentation_Update(TimedSpriteRecordPresentation *self)
 {
     if (self->state0c == 0) {
         self->state0c++;
@@ -114,13 +114,14 @@ s32 func_02020048(TimedSpriteRecordPresentation *self)
  * then register the resulting pointer (including null on allocation failure)
  * with the runtime manager at offset 0x2f7c.
  */
-void func_02020060(s32 field08, const u8 *config)
+void TimedSpriteRecordPresentation_SpawnAndRegister(
+    s32 field08, const u8 *config)
 {
     TimedSpriteRecordPresentation *self =
         (TimedSpriteRecordPresentation *)Heap_Alloc(
             0x20, data_020d62d0, 4, &gHeapContext);
     if (self != 0) {
-        func_0201ff2c(self, field08, config);
+        TimedSpriteRecordPresentation_Init(self, field08, config);
     }
     RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, self);
 }

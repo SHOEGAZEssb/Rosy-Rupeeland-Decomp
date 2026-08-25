@@ -8373,31 +8373,31 @@ build build/reports/timed_sprite_record_presentation_0201ff2c.json: objdiff buil
   base_object = build/decomp/asm/game/timed_sprite_record_presentation_0201ff2c.o
 build build/reports/timed_sprite_record_presentation_0201ff2c.txt: match_report build/reports/timed_sprite_record_presentation_0201ff2c.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_record_presentation_0201ff2c.json
-  report_args = --section .text --function func_0201ff2c --require-exact
+  report_args = --section .text --function TimedSpriteRecordPresentation_Init --require-exact
 build build/reports/timed_sprite_record_presentation_02020018.json: objdiff build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020018.o | build/decomp/asm/game/timed_sprite_record_presentation_02020018.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020018.o
   base_object = build/decomp/asm/game/timed_sprite_record_presentation_02020018.o
 build build/reports/timed_sprite_record_presentation_02020018.txt: match_report build/reports/timed_sprite_record_presentation_02020018.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_record_presentation_02020018.json
-  report_args = --section .text --function func_02020018 --require-exact
+  report_args = --section .text --function TimedSpriteRecordPresentation_Destroy --require-exact
 build build/reports/timed_sprite_record_presentation_0202002c.json: objdiff build/decomp/delinks/asm/game/timed_sprite_record_presentation_0202002c.o | build/decomp/asm/game/timed_sprite_record_presentation_0202002c.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_record_presentation_0202002c.o
   base_object = build/decomp/asm/game/timed_sprite_record_presentation_0202002c.o
 build build/reports/timed_sprite_record_presentation_0202002c.txt: match_report build/reports/timed_sprite_record_presentation_0202002c.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_record_presentation_0202002c.json
-  report_args = --section .text --function func_0202002c --require-exact
+  report_args = --section .text --function TimedSpriteRecordPresentation_DestroyAndFree --require-exact
 build build/reports/timed_sprite_record_presentation_02020048.json: objdiff build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020048.o | build/decomp/asm/game/timed_sprite_record_presentation_02020048.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020048.o
   base_object = build/decomp/asm/game/timed_sprite_record_presentation_02020048.o
 build build/reports/timed_sprite_record_presentation_02020048.txt: match_report build/reports/timed_sprite_record_presentation_02020048.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_record_presentation_02020048.json
-  report_args = --section .text --function func_02020048 --require-exact
+  report_args = --section .text --function TimedSpriteRecordPresentation_Update --require-exact
 build build/reports/timed_sprite_record_presentation_02020060.json: objdiff build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020060.o | build/decomp/asm/game/timed_sprite_record_presentation_02020060.o
   target_object = build/decomp/delinks/asm/game/timed_sprite_record_presentation_02020060.o
   base_object = build/decomp/asm/game/timed_sprite_record_presentation_02020060.o
 build build/reports/timed_sprite_record_presentation_02020060.txt: match_report build/reports/timed_sprite_record_presentation_02020060.json | tools/report_objdiff.py
   report_json = build/reports/timed_sprite_record_presentation_02020060.json
-  report_args = --section .text --function func_02020060 --require-exact
+  report_args = --section .text --function TimedSpriteRecordPresentation_SpawnAndRegister --require-exact
 build build/reports/timed_sprite_record_presentation.txt: phony build/reports/timed_sprite_record_presentation_0201ff2c.txt build/reports/timed_sprite_record_presentation_02020018.txt build/reports/timed_sprite_record_presentation_0202002c.txt build/reports/timed_sprite_record_presentation_02020048.txt build/reports/timed_sprite_record_presentation_02020060.txt
 build build/reports/overlay_worker_presentation_020200bc.json: objdiff build/decomp/delinks/asm/game/overlay_worker_presentation_020200bc.o | build/decomp/asm/game/overlay_worker_presentation_020200bc.o
   target_object = build/decomp/delinks/asm/game/overlay_worker_presentation_020200bc.o

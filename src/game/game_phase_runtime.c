@@ -48,7 +48,8 @@ extern void *ActorMotion_GetPosition(void *object);
 extern void *ActorMotionAreaFollower_GetPosition(void *object);
 extern void ActorCollection_DispatchEventToActors(void *object, void *value);
 extern void GamePhaseRuntime_SetDisplayRouting(s32 value);
-extern void func_02020060(void *object, const void *config);
+extern void TimedSpriteRecordPresentation_SpawnAndRegister(
+    void *object, const void *config);
 extern void GamePhaseCurrencyHud_SetVisible(void *object, s32 enabled);
 extern void GamePhaseAreaScene_ApplyRevealedRegions(void *object, void *source);
 
@@ -196,11 +197,15 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     switch ((modeBits >> 18) & 3) {
     case 1:
         if (*(const s16 *)(config + 0x12) >= 0)
-            func_02020060(ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc), configPointer);
+            TimedSpriteRecordPresentation_SpawnAndRegister(
+                ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc),
+                configPointer);
         break;
     case 2:
         if (*(const s16 *)(config + 0x12) >= 0)
-            func_02020060(ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc), configPointer);
+            TimedSpriteRecordPresentation_SpawnAndRegister(
+                ActorMotionAreaFollower_GetPosition(bytes + 0x2fbc),
+                configPointer);
         break;
     }
 

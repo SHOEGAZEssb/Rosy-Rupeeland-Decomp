@@ -1,0 +1,7 @@
+{
+  "func_0201ff2c": "TimedSpriteRecordPresentation_Init",
+  "func_02020018": "TimedSpriteRecordPresentation_Destroy",
+  "func_0202002c": "TimedSpriteRecordPresentation_DestroyAndFree",
+  "func_02020048": "TimedSpriteRecordPresentation_Update",
+  "func_02020060": "TimedSpriteRecordPresentation_SpawnAndRegister"
+}

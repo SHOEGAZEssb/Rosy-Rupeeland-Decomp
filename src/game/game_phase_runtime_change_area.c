@@ -24,7 +24,8 @@ extern void ActorRuntimeCollection_Reset(void *state);
 extern void GamePhaseRuntime_CreateSecondaryActorSubsystem(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void GamePhaseState_ApplyAreaChange(void *state, void *area, const void *transform);
 extern void ActorCollection_DispatchEventToActors(void *actor, const void *transform);
-extern void func_02020060(void *object, void *area);
+extern void TimedSpriteRecordPresentation_SpawnAndRegister(
+    void *object, void *area);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 enabled);
 extern void GamePhaseRuntime_RefreshAreaAuxiliaryObject(GamePhaseRuntime *self, void *area, s32 enabled);
 extern void GamePhaseAreaScene_SetOverlayObject(void *actor, void *object);
@@ -82,7 +83,9 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
         offset.value.y = func_020beae4(component);
     }
 
-    VecFx32Object_InitCopy(&transform, ActorMotionAreaFollower_GetPosition(b + 0x2fbc));
+    VecFx32Object_InitCopy(
+        &transform,
+        (const VecFx32Object *)ActorMotionAreaFollower_GetPosition(b + 0x2fbc));
     VecFx32Object_Add(&transform, &offset);
     ActorMotion_SetPosition(b + 0x2fbc, &transform);
 
@@ -98,7 +101,8 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     ActorCollection_DispatchEventToActors(b + 0x28, &transform);
 
     if (*(s16 *)(area + 0x12) >= 0)
-        func_02020060(ActorMotionAreaFollower_GetPosition(b + 0x2fbc), area);
+        TimedSpriteRecordPresentation_SpawnAndRegister(
+            ActorMotionAreaFollower_GetPosition(b + 0x2fbc), area);
 
     GamePhaseCurrencyHud_SetVisible(gGamePhaseCurrencyHud, 1);
     *(u16 *)((u8 *)gGamePhaseCurrencyHud + 0xbc) = 250;
@@ -121,8 +125,10 @@ s32 GamePhaseRuntime_ChangeToNeighborArea(GamePhaseRuntime *self, s32 direction)
     *(void **)(b + 0x30f0) = *(void **)(b + 0x2ea4);
 
     object = GamePhaseRuntime_GetActorCollection(self, 1);
-    VecFx32Object_Assign((u8 *)object + 0x2e94,
-                  (u8 *)*(void **)((u8 *)*(void **)(b + 0x2fb8) + 0x2ebc) + 0x18);
+    VecFx32Object_Assign(
+        (VecFx32Object *)((u8 *)object + 0x2e94),
+        (const VecFx32Object *)((u8 *)*(void **)(
+            (u8 *)*(void **)(b + 0x2fb8) + 0x2ebc) + 0x18));
 
     object = *(void **)((u8 *)*(void **)(b + 0x2fb8) + 0x2ebc);
     *(s32 *)((u8 *)object + 0x1c) =

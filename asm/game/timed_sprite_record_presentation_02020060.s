@@ -4,12 +4,12 @@
 .extern data_020d62d0
 .extern gGamePhaseRuntime
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_0201ff2c
+.extern TimedSpriteRecordPresentation_Init
 .extern gHeapContext
 
-.global func_02020060
-    .type func_02020060, @function
-func_02020060: ; 0x02020060
+.global TimedSpriteRecordPresentation_SpawnAndRegister
+    .type TimedSpriteRecordPresentation_SpawnAndRegister, @function
+TimedSpriteRecordPresentation_SpawnAndRegister: ; 0x02020060
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     mov r5, r0
@@ -22,7 +22,7 @@ func_02020060: ; 0x02020060
     beq .L_02020098
     mov r1, r5
     mov r2, r4
-    bl func_0201ff2c
+    bl TimedSpriteRecordPresentation_Init
     mov r1, r0
 .L_02020098:
     ldr r0, .L_020200b8
@@ -34,4 +34,4 @@ func_02020060: ; 0x02020060
 .L_020200b0: .word data_020d62d0
 .L_020200b4: .word gHeapContext
 .L_020200b8: .word gGamePhaseRuntime
-    .size func_02020060, .-func_02020060
+    .size TimedSpriteRecordPresentation_SpawnAndRegister, .-TimedSpriteRecordPresentation_SpawnAndRegister
