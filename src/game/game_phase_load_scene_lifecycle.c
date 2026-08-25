@@ -8,8 +8,8 @@
 extern "C" {
 #endif
 extern void *gGamePhaseCurrencyHud;
-extern void func_02092364(void *object);
-extern void func_020923a0(void *object);
+extern void GraphicsBankStateSnapshot_Init(void *object);
+extern void GraphicsBankStateSnapshot_Destroy(void *object);
 #ifdef __cplusplus
 }
 #endif
@@ -37,7 +37,7 @@ GamePhaseLoadScene *GamePhaseLoadScene_Init(GamePhaseLoadScene *self, s32 sceneK
 
     Scene_Init(&self->base);
     self->base.vtable = &gGamePhaseLoadSceneVTable;
-    func_02092364(&self->graphicsBankStateSnapshot);
+    GraphicsBankStateSnapshot_Init(&self->graphicsBankStateSnapshot);
     OverlaySlot_Init(&self->overlaySlot0);
     OverlaySlot_Init(&self->overlaySlot1);
     OverlaySlot_Init(&self->overlaySlot2);
@@ -69,7 +69,7 @@ GamePhaseLoadScene *GamePhaseLoadScene_Destroy(GamePhaseLoadScene *self)
     OverlaySlot_Destroy(&self->overlaySlot2);
     OverlaySlot_Destroy(&self->overlaySlot1);
     OverlaySlot_Destroy(&self->overlaySlot0);
-    func_020923a0(&self->graphicsBankStateSnapshot);
+    GraphicsBankStateSnapshot_Destroy(&self->graphicsBankStateSnapshot);
     Scene_Destroy(&self->base);
     return self;
 }
@@ -91,7 +91,7 @@ GamePhaseLoadScene *GamePhaseLoadScene_DestroyAndFree(GamePhaseLoadScene *self)
     OverlaySlot_Destroy(&self->overlaySlot2);
     OverlaySlot_Destroy(&self->overlaySlot1);
     OverlaySlot_Destroy(&self->overlaySlot0);
-    func_020923a0(&self->graphicsBankStateSnapshot);
+    GraphicsBankStateSnapshot_Destroy(&self->graphicsBankStateSnapshot);
     Scene_Destroy(&self->base);
     Heap_Free(self);
     return self;

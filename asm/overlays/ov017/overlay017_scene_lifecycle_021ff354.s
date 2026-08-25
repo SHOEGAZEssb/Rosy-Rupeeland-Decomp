@@ -14,7 +14,7 @@
     .extern Graphics3DResourceOwner_Destroy
     .extern Graphics3DLightSet_Destroy
     .extern Graphics3DRenderObject_Destroy
-    .extern func_020923a0
+    .extern GraphicsBankStateSnapshot_Destroy
     .extern func_02092418
     .extern func_02092638
     .extern func_020926f8
@@ -117,7 +117,7 @@ L_021ff458:
     bl func_02092638
     add r0, r4, #0x4
     add r0, r0, #0x400
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     ldr r1, L_021ff540
     add r0, r4, #0x3ec
     str r1, [r4, #0x3ec]

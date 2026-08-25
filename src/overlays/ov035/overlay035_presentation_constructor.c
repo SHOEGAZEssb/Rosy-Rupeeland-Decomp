@@ -16,7 +16,7 @@ extern u8 gHeapContext[];
 extern "C" {
 #endif
 extern void SceneInputBase_Init(void *object);
-extern void func_02092364(void *state);
+extern void GraphicsBankStateSnapshot_Init(void *state);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
 extern void func_020923a4(void *state);
@@ -107,7 +107,7 @@ extern "C" void *func_ov035_02202378(void *object, s32 selection)
 {
     SceneInputBase_Init(object);
     FIELD(const void *, object, 0) = data_ov035_02203bb4;
-    func_02092364((u8 *)object + 0x64);
+    GraphicsBankStateSnapshot_Init((u8 *)object + 0x64);
     func_ov043_0220b740((u8 *)object + 0x98);
     FIELD(s32, object, 0x54) = selection;
     FIELD(s32, object, 0x58) = 0;

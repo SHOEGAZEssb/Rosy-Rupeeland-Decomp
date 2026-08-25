@@ -35,19 +35,19 @@ extern void ActorRuntimeCollection_Init(void *);
 extern void ActorRuntimeCollection_Destroy(void *);
 extern void RectS16_InitComponents(void *, s32, s32, s32, s32);
 extern void NoOpDestructor(void *);
-extern void func_02092364(void *);
-extern void func_020923a0(void *);
-extern void func_02059a48(void *);
-extern void func_02059a64(void *);
-extern void func_02059a68(void *);
-extern void func_020645d8(void *);
+extern void GraphicsBankStateSnapshot_Init(void *);
+extern void GraphicsBankStateSnapshot_Destroy(void *);
+extern void PackedTimerRecord_Init(void *);
+extern void PackedTimerRecord_Destroy(void *);
+extern void PackedTimerRecordArray_DestroyThunk(void *);
+extern void PointerSlotArray19_InitAtOffset29C(void *);
 extern void func_020646cc(void *);
 extern void SelfLinkedSpriteConfig_Init(void *);
-extern void func_0206f750(void *);
+extern void TwoWordResourceOwner_Init(void *);
 extern void func_0206f760(void *);
-extern void func_0206fbb0(void *);
+extern void FourWordResourceOwner_Init(void *);
 extern void func_0206fbe8(void *);
-extern void func_0206fd78(void *);
+extern void SelfLinkedResourceOwner_Init(void *);
 extern void func_0206fdd8(void *);
 extern void GraphicsSpriteState_Init(void *);
 extern void GraphicsSpriteState_Destroy(void *);
@@ -64,7 +64,7 @@ extern void RetailRecordDatabase_ConstructEmpty(void *);
 extern void RetailRecordDatabase_Destroy(void *);
 extern void ActorRuntimeFlags_Init(void *);
 extern void ActorRuntimeFlags_Destroy(void *);
-extern void func_020983c8(void *);
+extern void FixedRecordArrayOwner_Init(void *);
 extern void func_02098450(void *);
 
 extern u8 gFrameTaskList[];
@@ -210,30 +210,30 @@ void __sinit_020c14bc(void)
 }
 
 /*
- * No inputs. Construct data_021055dc and register func_020923a0 with record
+ * No inputs. Construct data_021055dc and register GraphicsBankStateSnapshot_Destroy with record
  * data_021055d0. Global lifetime state changes; no value is returned and no
  * direct hardware access occurs.
  */
 void __sinit_020c152c(void)
 {
-    func_02092364(data_021055dc);
-    __register_global_object(data_021055dc, func_020923a0, data_021055d0);
+    GraphicsBankStateSnapshot_Init(data_021055dc);
+    __register_global_object(data_021055dc, GraphicsBankStateSnapshot_Destroy, data_021055d0);
 }
 
 /*
  * No inputs. Construct 32 elements of size 0x10 at data_0210588c using
- * func_02059a48/func_02059a64 and register the array destructor thunk
- * func_02059a68 with a null object and record data_02105864. Then construct
- * data_0210587c and register func_02059a64 with data_02105870. Global array and
+ * PackedTimerRecord_Init/PackedTimerRecord_Destroy and register the array destructor thunk
+ * PackedTimerRecordArray_DestroyThunk with a null object and record data_02105864. Then construct
+ * data_0210587c and register PackedTimerRecord_Destroy with data_02105870. Global array and
  * singleton lifetimes change; no value or direct hardware effect occurs.
  */
 void __sinit_020c1558(void)
 {
     __construct_array(data_0210588c, 0x20, 0x10,
-                      func_02059a48, func_02059a64);
-    __register_global_object(0, func_02059a68, data_02105864);
-    func_02059a48(data_0210587c);
-    __register_global_object(data_0210587c, func_02059a64, data_02105870);
+                      PackedTimerRecord_Init, PackedTimerRecord_Destroy);
+    __register_global_object(0, PackedTimerRecordArray_DestroyThunk, data_02105864);
+    PackedTimerRecord_Init(data_0210587c);
+    __register_global_object(data_0210587c, PackedTimerRecord_Destroy, data_02105870);
 }
 
 /*
@@ -243,7 +243,7 @@ void __sinit_020c1558(void)
  */
 void __sinit_020c15c0(void)
 {
-    func_020645d8(data_021e9ad0);
+    PointerSlotArray19_InitAtOffset29C(data_021e9ad0);
     __register_global_object(data_021e9ad0, func_020646cc, data_021e9ac4);
 }
 
@@ -264,7 +264,7 @@ void __sinit_020c15ec(void)
  */
 void __sinit_020c1600(void)
 {
-    func_0206f750(data_021e9de8);
+    TwoWordResourceOwner_Init(data_021e9de8);
     __register_global_object(data_021e9de8, func_0206f760, data_021e9ddc);
 }
 
@@ -275,7 +275,7 @@ void __sinit_020c1600(void)
  */
 void __sinit_020c162c(void)
 {
-    func_0206fbb0(data_021e9e00);
+    FourWordResourceOwner_Init(data_021e9e00);
     __register_global_object(data_021e9e00, func_0206fbe8, data_021e9df4);
 }
 
@@ -286,7 +286,7 @@ void __sinit_020c162c(void)
  */
 void __sinit_020c1658(void)
 {
-    func_0206fd78(data_021e9e1c);
+    SelfLinkedResourceOwner_Init(data_021e9e1c);
     __register_global_object(data_021e9e1c, func_0206fdd8, data_021e9e10);
 }
 
@@ -365,6 +365,6 @@ void __sinit_020c1798(void)
  */
 void __sinit_020c17c4(void)
 {
-    func_020983c8(data_021f5f18);
+    FixedRecordArrayOwner_Init(data_021f5f18);
     __register_global_object(data_021f5f18, func_02098450, data_021f5f0c);
 }

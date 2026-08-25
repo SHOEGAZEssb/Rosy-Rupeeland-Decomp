@@ -25,7 +25,7 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern SceneInputBase_Init
-    .extern func_02092364
+    .extern GraphicsBankStateSnapshot_Init
     .extern func_020923a4
     .extern func_02092638
     .extern TitlePalette_SetMainBackdrop
@@ -57,7 +57,7 @@ func_ov009_021fce9c: ; 0x021fce9c
     str r1, [r10, #0x24]
     bl AnimationResourceState_InitEmbedded
     add r0, r10, #0x13c
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     add r0, r10, #0x13c
     bl func_020923a4
     mov r1, #0x0

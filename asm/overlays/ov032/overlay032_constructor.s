@@ -17,7 +17,7 @@
 .extern func_02071ee0
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
 .extern GraphicsSpriteGroupOwner_CreateGroup
-.extern func_02092364
+.extern GraphicsBankStateSnapshot_Init
 .extern TitleDialog_Init
 .extern func_020adc90
 .extern func_020bf1f8
@@ -111,7 +111,7 @@ func_ov032_021fce20:
     bl func_ov032_021fd7a4
     add r0, r4, #0x3e8
     add r0, r0, #0x800
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     ldr r1, L_021fd760
     add r0, r4, #0x44
     str r1, [sp, #0x0]

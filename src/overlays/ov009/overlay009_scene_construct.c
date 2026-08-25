@@ -25,7 +25,7 @@ extern void Scene_Init(void *state);
 extern void Scene_SetFlags03(void *state);
 extern void SceneInputBase_Init(void *member);
 extern void AnimationResourceState_InitEmbedded(void *member);
-extern void func_02092364(void *member);
+extern void GraphicsBankStateSnapshot_Init(void *member);
 extern void func_020923a4(void *member);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *manager);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
@@ -91,7 +91,7 @@ void *func_ov009_021fce9c(void *state)
     FIELD(const void *, state, 0x00) = data_ov009_021fee8c;
     FIELD(const void *, state, 0x24) = data_ov009_021feec0;
     AnimationResourceState_InitEmbedded((u8 *)state + 0x78);
-    func_02092364((u8 *)state + 0x13c);
+    GraphicsBankStateSnapshot_Init((u8 *)state + 0x13c);
     func_020923a4((u8 *)state + 0x13c);
     FIELD(s32, state, 0x74) = 0;
     manager = data_020f4e14;

@@ -19,7 +19,7 @@ extern void GraphicsSpriteRenderer_Resume(void *);
 extern void func_02092418(void *);
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void func_ov048_0220b7b4(void *);
-extern void func_020923a0(void *);
+extern void GraphicsBankStateSnapshot_Destroy(void *);
 extern void GraphicsResourceSetVariant_Destroy(void *);
 #ifdef __cplusplus
 }
@@ -54,7 +54,7 @@ extern "C" void *func_ov027_021fde24(void *scene)
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
     func_ov048_0220b7b4((u8 *)scene + 0x198);
-    func_020923a0((u8 *)scene + 0x164);
+    GraphicsBankStateSnapshot_Destroy((u8 *)scene + 0x164);
 
     FIELD(const void *, scene, 0x150) = data_ov027_021fee60;
     PresentationList_DeleteAll((u8 *)scene + 0x150);

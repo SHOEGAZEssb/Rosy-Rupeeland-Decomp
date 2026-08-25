@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov036/overlay036_scene_init.c for documented portable C. */
 
     .extern SceneInputBase_Init
-    .extern func_02092364
+    .extern GraphicsBankStateSnapshot_Init
     .extern func_ov043_0220b740
     .extern G3X_Init
     .extern func_020923a4
@@ -40,7 +40,7 @@ func_ov036_022045d4:
     ldr r1, L_022048b0
     add r0, r4, #0x64
     str r1, [r4, #0x0]
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     add r0, r4, #0x98
     bl func_ov043_0220b740 ; func_ov044_0220b740, func_ov045_0220b740, func_ov046_0220b740, func_ov047_0220b740, func_ov048_0220b740, func_ov049_0220b740
     str r5, [r4, #0x54]

@@ -20,7 +20,7 @@ extern void GraphicsSpriteRenderer_Resume(void *resource);
 extern void func_02092418(void *camera);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As3D);
 extern void func_ov048_0220b7b4(void *state);
-extern void func_020923a0(void *camera);
+extern void GraphicsBankStateSnapshot_Destroy(void *camera);
 #ifdef __cplusplus
 }
 #endif
@@ -54,7 +54,7 @@ extern "C" void *func_ov037_021fe648(void *presentation)
     REG16(0x04000050) = 0;
     REG16(0x04001050) = 0;
     func_ov048_0220b7b4((u8 *)presentation + 0x94);
-    func_020923a0((u8 *)presentation + 0x60);
+    GraphicsBankStateSnapshot_Destroy((u8 *)presentation + 0x60);
     return presentation;
 }
 

@@ -39,7 +39,7 @@
     .extern Graphics3DRenderObject_Init
     .extern TitleRandom_NextBounded
     .extern SceneInputBase_Init
-    .extern func_02092364
+    .extern GraphicsBankStateSnapshot_Init
     .extern func_020923a4
     .extern TitleScreenResourceCollection_Init
     .extern func_02092754
@@ -119,7 +119,7 @@ func_ov017_021feab4:
     str r0, [r10, #0x3fc]
     add r0, r10, #0x4
     add r0, r0, #0x400
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     mov r0, #0x0
     str r0, [r10, #0x50]
     bl genrand_int32

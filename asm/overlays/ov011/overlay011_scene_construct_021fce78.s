@@ -19,7 +19,7 @@
     .extern Heap_AllocCore
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern SceneInputBase_Init
-    .extern func_02092364
+    .extern GraphicsBankStateSnapshot_Init
     .extern func_020923a4
     .extern func_02092618
     .extern func_02092688
@@ -49,7 +49,7 @@ func_ov011_021fce78: ; 0x021fce78
     str r1, [r10, #0x24]
     bl GraphicsResourceSet_Init
     add r0, r10, #0x98
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     mov r1, #0x0
     str r1, [r10, #0x74]
     str r1, [r10, #0x108]

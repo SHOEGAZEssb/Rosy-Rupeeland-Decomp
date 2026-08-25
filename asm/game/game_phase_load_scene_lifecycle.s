@@ -8,8 +8,8 @@
 .extern gGamePhaseLoadSceneVTable
 .extern OverlaySlot_Init
 .extern OverlaySlot_Destroy
-.extern func_02092364
-.extern func_020923a0
+.extern GraphicsBankStateSnapshot_Init
+.extern GraphicsBankStateSnapshot_Destroy
 .extern gGamePhaseCurrencyHud
 
     .global GamePhaseLoadScene_Init
@@ -22,7 +22,7 @@ GamePhaseLoadScene_Init: ; 0x0200cf00
     ldr r1, L_0200cfa4
     add r0, r4, #0x40
     str r1, [r4, #0x0]
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     add r0, r4, #0x74
     bl OverlaySlot_Init
     add r0, r4, #0x80
@@ -82,7 +82,7 @@ L_0200cfe0:
     add r0, r4, #0x74
     bl OverlaySlot_Destroy
     add r0, r4, #0x40
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4
@@ -121,7 +121,7 @@ L_0200d058:
     add r0, r4, #0x74
     bl OverlaySlot_Destroy
     add r0, r4, #0x40
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     mov r0, r4
     bl Scene_Destroy
     mov r0, r4

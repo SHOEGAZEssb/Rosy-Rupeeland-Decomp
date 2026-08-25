@@ -7,7 +7,7 @@
 .extern GraphicsResourceSetVariant_Destroy
 .extern GraphicsSpriteRenderer_Resume
 .extern Graphics3DResourceOwner_Destroy
-.extern func_020923a0
+.extern GraphicsBankStateSnapshot_Destroy
 .extern func_02092418
 .extern PresentationList_DeleteAll
 .extern func_ov048_0220b7b4
@@ -61,7 +61,7 @@ L_021fde7c:
     strh r2, [r1, #0x0]
     bl func_ov048_0220b7b4
     add r0, r4, #0x164
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     ldr r1, L_021fdf40
     add r0, r4, #0x150
     str r1, [r4, #0x150]

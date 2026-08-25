@@ -10,7 +10,7 @@
 .extern GraphicsArchive_ReleaseResourceE4
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroupOwner_DestroyGroup
-.extern func_020923a0
+.extern GraphicsBankStateSnapshot_Destroy
 .extern func_ov032_021fce00
 .extern Overlay032Child_Destroy
 .extern gDebugFont
@@ -63,7 +63,7 @@ L_021fd84c:
     bl __destroy_arr
     add r0, r4, #0x3e8
     add r0, r0, #0x800
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     add r0, r4, #0x344
     add r0, r0, #0x800
     bl GraphicsResourceSet_Destroy

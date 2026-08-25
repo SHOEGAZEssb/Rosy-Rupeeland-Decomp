@@ -24,7 +24,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void SceneInputBase_Init(void *);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
-extern void func_02092364(void *);
+extern void GraphicsBankStateSnapshot_Init(void *);
 extern void func_ov043_0220b740(void *);
 extern void func_02091b6c(void *);
 extern void G3X_Init(void);
@@ -74,7 +74,7 @@ extern "C" void *Overlay027Scene_Init(void *scene)
     func_ov027_021fd9c8((u8 *)scene + 0x130);
     func_ov027_021fd9c8((u8 *)scene + 0x140);
     func_ov027_021fd9c8((u8 *)scene + 0x150);
-    func_02092364((u8 *)scene + 0x164);
+    GraphicsBankStateSnapshot_Init((u8 *)scene + 0x164);
     func_ov043_0220b740((u8 *)scene + 0x198);
     FIELD(s32, scene, 0x5bc) = 0;
     func_02091b6c((u8 *)scene + 0x5c4);

@@ -28,7 +28,7 @@
     .extern Graphics3DSceneState_Init
     .extern Graphics3DResourceBinding_Init
     .extern SceneInputBase_Init
-    .extern func_02092364
+    .extern GraphicsBankStateSnapshot_Init
     .extern func_020923a4
     .extern func_02092638
     .extern TitlePalette_SetSubBackdrop
@@ -63,7 +63,7 @@ func_ov010_021fcebc: ; 0x021fcebc
     add r0, r10, #0x98
     bl Graphics3DSceneState_Init
     add r0, r10, #0x180
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     add r0, r10, #0x180
     bl func_020923a4
     mov r1, #0x0

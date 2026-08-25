@@ -29,7 +29,7 @@ extern void GraphicsResourceSet_Init(GraphicsResourceSet *);
 extern void GraphicsResourceSet_Load(...);
 extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_020923a0(void *);
+extern void GraphicsBankStateSnapshot_Destroy(void *);
 extern void func_020923a4(void *);
 extern void __destroy_arr(...);
 extern void RuntimePresentationManager_DisableGraphics3dForActivePhase(
@@ -86,7 +86,7 @@ extern "C" void *func_ov032_021fd7f8(void *scene)
     GraphicsArchive_ReleaseResourceE4(data_020f4e18[0], FIELD(void *, scene, 8));
     GraphicsResourceSet_Destroy((GraphicsResourceSet *)((u8 *)scene + 0xf18));
     __destroy_arr((u8 *)scene + 0xc44, 5, 0x6c, Overlay032Child_Destroy);
-    func_020923a0((u8 *)scene + 0xbe8);
+    GraphicsBankStateSnapshot_Destroy((u8 *)scene + 0xbe8);
     GraphicsResourceSet_Destroy((GraphicsResourceSet *)((u8 *)scene + 0xb44));
     __destroy_arr((u8 *)scene + 0x334, 0x28, 0x30, func_ov032_021fce00);
 

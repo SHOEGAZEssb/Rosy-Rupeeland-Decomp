@@ -8,7 +8,7 @@
     .extern func_02092418
     .extern GX_SetGraphicsMode
     .extern func_ov048_0220b7b4
-    .extern func_020923a0
+    .extern GraphicsBankStateSnapshot_Destroy
     .extern data_ov037_021fee94
     .extern data_020f4e14
     .extern gDebugFont
@@ -57,7 +57,7 @@ L_021fe698:
     strh r2, [r1, #0x0]
     bl func_ov048_0220b7b4
     add r0, r4, #0x60
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe6f4: .word data_ov037_021fee94

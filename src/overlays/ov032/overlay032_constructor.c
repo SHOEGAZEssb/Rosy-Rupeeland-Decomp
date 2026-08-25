@@ -24,7 +24,7 @@ extern void func_ov032_021fce00(void *);
 extern void __construct_array(void *, s32, s32, void *, void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void func_ov032_021fd7a4(void *);
-extern void func_02092364(void *);
+extern void GraphicsBankStateSnapshot_Init(void *);
 extern void func_ov032_021fd7c0(void *);
 extern void Overlay032Child_Destroy(void *);
 extern s32 func_020adc90(s32, s32);
@@ -129,7 +129,7 @@ extern "C" void *func_ov032_021fce20(void *object)
     func_ov032_0220142c((u8 *)object + 0xb14);
     GraphicsResourceSet_Init((u8 *)object + 0xb44);
     func_ov032_021fd7a4((u8 *)object + 0xb54);
-    func_02092364((u8 *)object + 0xbe8);
+    GraphicsBankStateSnapshot_Init((u8 *)object + 0xbe8);
     __construct_array((u8 *)object + 0xc44, 5, 0x6c,
                       (void *)func_ov032_021fd7c0,
                       (void *)Overlay032Child_Destroy);

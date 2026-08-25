@@ -43,7 +43,7 @@ extern void func_02091b6c(void *);
 extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void SceneInputBase_Init(void *);
-extern void func_02092364(void *);
+extern void GraphicsBankStateSnapshot_Init(void *);
 extern void func_020923a4(void *);
 extern void *Presentation_InitVariant(void *);
 extern void PresentationScalar_SetImmediate(void *, s32);
@@ -107,7 +107,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     func_ov026_021ff7f0((u8 *)scene + 0x2f4);
     func_ov026_021ff7f0((u8 *)scene + 0x304);
     func_ov026_021ff7f0((u8 *)scene + 0x314);
-    func_02092364((u8 *)scene + 0x328);
+    GraphicsBankStateSnapshot_Init((u8 *)scene + 0x328);
     func_ov043_0220b740((u8 *)scene + 0x370);
     FIELD(s32, scene, 0x7a4) = 0;
     func_02091b6c((u8 *)scene + 0x7a8);

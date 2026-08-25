@@ -7,7 +7,7 @@
     .extern Heap_FreeCore
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
-    .extern func_020923a0
+    .extern GraphicsBankStateSnapshot_Destroy
     .extern func_02092418
 
 /* Exact fallback; see documented portable reconstruction in
@@ -34,7 +34,7 @@ L_021fd224:
     bl func_02092418
     bl DebugText_BeginFrame
     add r0, r5, #0x13c
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     add r0, r5, #0x78
     bl AnimationResourceState_Destroy
     mov r0, r5

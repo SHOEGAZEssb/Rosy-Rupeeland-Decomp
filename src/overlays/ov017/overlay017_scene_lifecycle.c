@@ -23,7 +23,7 @@ extern void GraphicsSpriteRenderer_QueuePendingBlocks(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
 extern void Graphics3DLightSet_Destroy(void *);
 extern void Graphics3DRenderObject_Destroy(void *);
-extern void func_020923a0(void *);
+extern void GraphicsBankStateSnapshot_Destroy(void *);
 extern void func_02092418(void *);
 extern void func_02092638(s32, s32, s32, s32);
 extern void func_020926f8(void *);
@@ -99,7 +99,7 @@ extern "C" void *func_ov017_021ff16c(void *state)
     GraphicsSpriteRenderer_QueuePendingBlocks(data_020f4e14);
     GX_SetGraphicsMode(1, 0, 0);
     func_02092638(0, 1, 2, 3);
-    func_020923a0((u8 *)state + 0x404);
+    GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x404);
     FIELD(const u32 *, state, 0x3ec) = data_ov017_02201628;
     PresentationList_DeleteAll((u8 *)state + 0x3ec);
     FIELD(const u32 *, state, 0x3d8) = data_ov017_02201628;

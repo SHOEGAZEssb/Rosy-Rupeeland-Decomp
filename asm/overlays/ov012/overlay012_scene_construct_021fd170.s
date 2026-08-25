@@ -17,7 +17,7 @@
     .extern Graphics3DSceneState_Init
     .extern Graphics3DResourceBinding_Init
     .extern SceneInputBase_Init
-    .extern func_02092364
+    .extern GraphicsBankStateSnapshot_Init
     .extern func_020923a4
     .extern func_02092638
     .extern func_020b0300
@@ -64,7 +64,7 @@ func_ov012_021fd170:
     add r0, r4, #0x158
     bl func_ov012_021fce00
     add r0, r4, #0x1c4
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     add r0, r4, #0x1c4
     bl func_020923a4
     mov r0, #0

@@ -50,7 +50,7 @@ extern void Graphics3DSceneState_Init(void *);
 extern void *Graphics3DRenderObject_Init(void *, void *, void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void SceneInputBase_Init(void *);
-extern void func_02092364(void *);
+extern void GraphicsBankStateSnapshot_Init(void *);
 extern void func_020923a4(void *);
 extern void TitleScreenResourceCollection_Init(void *);
 extern void func_02092754(void *, s32);
@@ -126,7 +126,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     func_ov017_021fe9c0((u8 *)state + 0x3d8);
     func_ov017_021fe9c0((u8 *)state + 0x3ec);
     FIELD(s32, state, 0x3fc) = 0;
-    func_02092364((u8 *)state + 0x404);
+    GraphicsBankStateSnapshot_Init((u8 *)state + 0x404);
     FIELD(s32, state, 0x50) = 0;
     FIELD(u32, state, 0x3fc) = genrand_int32();
 

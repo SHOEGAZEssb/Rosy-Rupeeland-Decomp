@@ -11,19 +11,19 @@
 .extern DisplayBrightnessPair_Init
 .extern RectS16_InitComponents
 .extern ActorRuntimeCollection_Init
-.extern func_02059a48
-.extern func_020645d8
-.extern func_0206f750
-.extern func_0206fbb0
-.extern func_0206fd78
+.extern PackedTimerRecord_Init
+.extern PointerSlotArray19_InitAtOffset29C
+.extern TwoWordResourceOwner_Init
+.extern FourWordResourceOwner_Init
+.extern SelfLinkedResourceOwner_Init
 .extern RetailResourceDescriptorManager_InitNoOp
 .extern RetailTextDatabaseManager_Init
 .extern LanguageDatabase_InitEmpty
 .extern RuntimeRecordTable_InitEmpty
 .extern RetailRecordDatabase_ConstructEmpty
 .extern ActorRuntimeFlags_Init
-.extern func_02092364
-.extern func_020983c8
+.extern GraphicsBankStateSnapshot_Init
+.extern FixedRecordArrayOwner_Init
 .extern MainBgExtendedPaletteBuffer_Destroy
 .extern MainBgPaletteBuffer_Destroy
 .extern SubBgExtendedPaletteBuffer_Destroy
@@ -84,8 +84,8 @@
 .extern NoOpDestructor
 .extern ActorRuntimeCollection_Destroy
 .extern SelfLinkedSpriteConfig_Init
-.extern func_02059a64
-.extern func_02059a68
+.extern PackedTimerRecord_Destroy
+.extern PackedTimerRecordArray_DestroyThunk
 .extern func_020646cc
 .extern func_0206f760
 .extern func_0206fbe8
@@ -99,7 +99,7 @@
 .extern RuntimeRecordTable_DestroyIfLoaded
 .extern RetailRecordDatabase_Destroy
 .extern ActorRuntimeFlags_Destroy
-.extern func_020923a0
+.extern GraphicsBankStateSnapshot_Destroy
 .extern func_02098450
 .extern gFrameTaskList
 .global __sinit_020c1374
@@ -266,14 +266,14 @@ __sinit_020c14bc: ; 0x020c14bc
 __sinit_020c152c: ; 0x020c152c
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c154c
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     ldr r0, .L_020c154c
     ldr r1, .L_020c1550
     ldr r2, .L_020c1554
     bl __register_global_object
     ldmia sp!, {r3, pc}
 .L_020c154c: .word data_021055dc
-.L_020c1550: .word func_020923a0
+.L_020c1550: .word GraphicsBankStateSnapshot_Destroy
 .L_020c1554: .word data_021055d0
 
 __sinit_020c1558: ; 0x020c1558
@@ -290,16 +290,16 @@ __sinit_020c1558: ; 0x020c1558
     mov r0, #0x0
     bl __register_global_object
     ldr r0, .L_020c15b8
-    bl func_02059a48
+    bl PackedTimerRecord_Init
     ldr r0, .L_020c15b8
     ldr r1, .L_020c15a4
     ldr r2, .L_020c15bc
     bl __register_global_object
     ldmia sp!, {r3, pc}
-.L_020c15a4: .word func_02059a64
+.L_020c15a4: .word PackedTimerRecord_Destroy
 .L_020c15a8: .word data_0210588c
-.L_020c15ac: .word func_02059a48
-.L_020c15b0: .word func_02059a68
+.L_020c15ac: .word PackedTimerRecord_Init
+.L_020c15b0: .word PackedTimerRecordArray_DestroyThunk
 .L_020c15b4: .word data_02105864
 .L_020c15b8: .word data_0210587c
 .L_020c15bc: .word data_02105870
@@ -307,7 +307,7 @@ __sinit_020c1558: ; 0x020c1558
 __sinit_020c15c0: ; 0x020c15c0
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c15e0
-    bl func_020645d8
+    bl PointerSlotArray19_InitAtOffset29C
     ldr r0, .L_020c15e0
     ldr r1, .L_020c15e4
     ldr r2, .L_020c15e8
@@ -327,7 +327,7 @@ __sinit_020c15ec: ; 0x020c15ec
 __sinit_020c1600: ; 0x020c1600
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c1620
-    bl func_0206f750
+    bl TwoWordResourceOwner_Init
     ldr r0, .L_020c1620
     ldr r1, .L_020c1624
     ldr r2, .L_020c1628
@@ -340,7 +340,7 @@ __sinit_020c1600: ; 0x020c1600
 __sinit_020c162c: ; 0x020c162c
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c164c
-    bl func_0206fbb0
+    bl FourWordResourceOwner_Init
     ldr r0, .L_020c164c
     ldr r1, .L_020c1650
     ldr r2, .L_020c1654
@@ -353,7 +353,7 @@ __sinit_020c162c: ; 0x020c162c
 __sinit_020c1658: ; 0x020c1658
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c1678
-    bl func_0206fd78
+    bl SelfLinkedResourceOwner_Init
     ldr r0, .L_020c1678
     ldr r1, .L_020c167c
     ldr r2, .L_020c1680
@@ -456,7 +456,7 @@ __sinit_020c1798: ; 0x020c1798
 __sinit_020c17c4: ; 0x020c17c4
     stmdb sp!, {r3, lr}
     ldr r0, .L_020c17e4
-    bl func_020983c8
+    bl FixedRecordArrayOwner_Init
     ldr r0, .L_020c17e4
     ldr r1, .L_020c17e8
     ldr r2, .L_020c17ec

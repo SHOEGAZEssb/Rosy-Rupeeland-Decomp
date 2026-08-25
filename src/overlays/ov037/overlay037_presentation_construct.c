@@ -16,7 +16,7 @@ extern void *gHeapContext;
 extern "C" {
 #endif
 extern void SceneInputBase_Init(void *presentation, void *argument);
-extern void func_02092364(void *camera);
+extern void GraphicsBankStateSnapshot_Init(void *camera);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
 extern void func_020923a4(void *camera);
@@ -49,7 +49,7 @@ extern "C" void *func_ov037_021fe4fc(void *presentation, void *argument)
 {
     SceneInputBase_Init(presentation, argument);
     FIELD(const void *, presentation, 0) = data_ov037_021fee94;
-    func_02092364((u8 *)presentation + 0x60);
+    GraphicsBankStateSnapshot_Init((u8 *)presentation + 0x60);
     func_ov043_0220b740((u8 *)presentation + 0x94);
     FIELD(void *, presentation, 0x54) = argument;
     G3X_Init();

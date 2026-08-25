@@ -4,19 +4,19 @@
 #include <string.h>
 
 /* Clear the thirteen-word display-resource snapshot exactly as 0x02092364. */
-void func_02092364(void *snapshot)
+void GraphicsBankStateSnapshot_Init(void *snapshot)
 {
     memset(snapshot, 0, 13 * sizeof(u32));
 }
 
 /* The retail destructor at 0x020923A0 has no state or observable effects. */
-void func_020923a0(void *snapshot)
+void GraphicsBankStateSnapshot_Destroy(void *snapshot)
 {
     (void)snapshot;
 }
 
 /* Initialize one 0x10-byte packed-timer record as 0x02059A48 does. */
-void func_02059a48(void *record)
+void PackedTimerRecord_Init(void *record)
 {
     u32 *words = (u32 *)record;
 
@@ -27,31 +27,31 @@ void func_02059a48(void *record)
 }
 
 /* Packed-timer records own no subordinate allocation at destruction. */
-void func_02059a64(void *record)
+void PackedTimerRecord_Destroy(void *record)
 {
     (void)record;
 }
 
 /* The array destructor thunk is registered separately by recovered startup. */
-void func_02059a68(void *unused)
+void PackedTimerRecordArray_DestroyThunk(void *unused)
 {
     (void)unused;
 }
 
 /* Clear the nineteen pointer slots at +0x29C exactly as 0x020645D8. */
-void func_020645d8(void *object)
+void PointerSlotArray19_InitAtOffset29C(void *object)
 {
     memset((u8 *)object + 0x29c, 0, 19 * sizeof(u32));
 }
 
 /* Initialize the two-word owner at 0x0206F750. */
-void func_0206f750(void *object)
+void TwoWordResourceOwner_Init(void *object)
 {
     memset(object, 0, 2 * sizeof(u32));
 }
 
 /* Initialize the four-word owner at 0x0206FBB0. */
-void func_0206fbb0(void *object)
+void FourWordResourceOwner_Init(void *object)
 {
     memset(object, 0, 4 * sizeof(u32));
 }
@@ -59,7 +59,7 @@ void func_0206fbb0(void *object)
 extern u8 data_020e5048[];
 
 /* Reconstruct the self-linked 0x44-byte owner initialized at 0x0206FD78. */
-void func_0206fd78(void *object)
+void SelfLinkedResourceOwner_Init(void *object)
 {
     u8 *bytes = (u8 *)object;
 
@@ -195,42 +195,42 @@ void ActorRuntimeFlags_Clear(void *object, u32 mask)
 extern void __construct_array(void *array, u32 count, u32 element_size,
                               void (*constructor)(void *),
                               void (*destructor)(void *));
-extern void func_02098430(void *object);
-extern void func_0209843c(void *object);
-extern void func_02098440(void *object);
-extern void func_0209844c(void *object);
+extern void FixedRecord58_Init(void *object);
+extern void FixedRecord58_Destroy(void *object);
+extern void FixedRecord8_Init(void *object);
+extern void FixedRecord8_Destroy(void *object);
 
 /* Initialize one 0x58-byte record's recovered pointer field. */
-void func_02098430(void *object)
+void FixedRecord58_Init(void *object)
 {
     *(u32 *)((u8 *)object + 4) = 0;
 }
 
 /* The 0x58-byte record destructor is empty in retail. */
-void func_0209843c(void *object)
+void FixedRecord58_Destroy(void *object)
 {
     (void)object;
 }
 
 /* Initialize one eight-byte record's halfword field at +2. */
-void func_02098440(void *object)
+void FixedRecord8_Init(void *object)
 {
     *(u16 *)((u8 *)object + 2) = 0;
 }
 
 /* The eight-byte record destructor is empty in retail. */
-void func_0209844c(void *object)
+void FixedRecord8_Destroy(void *object)
 {
     (void)object;
 }
 
 /* Reconstruct the two embedded arrays and flags initialized at 0x020983C8. */
-void func_020983c8(void *object)
+void FixedRecordArrayOwner_Init(void *object)
 {
     u8 *bytes = (u8 *)object;
 
-    __construct_array(bytes, 10, 0x58, func_02098430, func_0209843c);
-    __construct_array(bytes + 0x370, 30, 8, func_02098440, func_0209844c);
+    __construct_array(bytes, 10, 0x58, FixedRecord58_Init, FixedRecord58_Destroy);
+    __construct_array(bytes + 0x370, 30, 8, FixedRecord8_Init, FixedRecord8_Destroy);
     *(u32 *)(bytes + 0x460) = 0;
     *(u32 *)(bytes + 0x464) = 0;
 }

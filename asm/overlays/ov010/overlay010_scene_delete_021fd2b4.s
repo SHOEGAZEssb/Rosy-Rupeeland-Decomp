@@ -10,7 +10,7 @@
     .extern GraphicsSpriteRenderer_Resume
     .extern Graphics3DResourceOwner_Destroy
     .extern Graphics3DResourceBinding_Destroy
-    .extern func_020923a0
+    .extern GraphicsBankStateSnapshot_Destroy
     .extern func_02092418
 
 /* Exact fallback; see src/overlays/ov010/overlay010_scene_delete.c. */
@@ -61,7 +61,7 @@ L_021fd33c:
     bl func_02092418
     bl DebugText_BeginFrame
     add r0, r4, #0x180
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     add r0, r4, #0x7c
     bl GraphicsResourceSetVariant_Destroy
     mov r0, r4

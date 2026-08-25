@@ -16,7 +16,7 @@ extern void Heap_FreeCore(void *allocation);
 extern void GraphicsSpriteGroup_Destroy(void *resource);
 extern void func_02092418(void *member);
 extern void DebugText_BeginFrame(void);
-extern void func_020923a0(void *member);
+extern void GraphicsBankStateSnapshot_Destroy(void *member);
 extern void AnimationResourceState_Destroy(void *member);
 extern void Scene_Destroy(void *state);
 extern void Heap_Free(void *allocation);
@@ -46,7 +46,7 @@ void *func_ov009_021fd208(void *state)
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x84));
     func_02092418((u8 *)state + 0x13c);
     DebugText_BeginFrame();
-    func_020923a0((u8 *)state + 0x13c);
+    GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x13c);
     AnimationResourceState_Destroy((u8 *)state + 0x78);
     Scene_Destroy(state);
     Heap_Free(state);

@@ -5,7 +5,7 @@
     .extern func_02092418
     .extern Heap_FreeCore
     .extern DebugText_BeginFrame
-    .extern func_020923a0
+    .extern GraphicsBankStateSnapshot_Destroy
     .extern GraphicsResourceSet_Destroy
     .extern Scene_Destroy
 
@@ -33,7 +33,7 @@ L_021fd0b8:
     blt L_021fd0b8
     bl DebugText_BeginFrame
     add r0, r5, #0x98
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     add r0, r5, #0x78
     bl GraphicsResourceSet_Destroy
     mov r0, r5

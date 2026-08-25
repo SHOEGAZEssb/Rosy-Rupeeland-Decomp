@@ -1,0 +1,16 @@
+{
+  "func_02092364": "GraphicsBankStateSnapshot_Init",
+  "func_020923a0": "GraphicsBankStateSnapshot_Destroy",
+  "func_02059a48": "PackedTimerRecord_Init",
+  "func_02059a64": "PackedTimerRecord_Destroy",
+  "func_02059a68": "PackedTimerRecordArray_DestroyThunk",
+  "func_020645d8": "PointerSlotArray19_InitAtOffset29C",
+  "func_0206f750": "TwoWordResourceOwner_Init",
+  "func_0206fbb0": "FourWordResourceOwner_Init",
+  "func_0206fd78": "SelfLinkedResourceOwner_Init",
+  "func_020983c8": "FixedRecordArrayOwner_Init",
+  "func_02098430": "FixedRecord58_Init",
+  "func_0209843c": "FixedRecord58_Destroy",
+  "func_02098440": "FixedRecord8_Init",
+  "func_0209844c": "FixedRecord8_Destroy"
+}

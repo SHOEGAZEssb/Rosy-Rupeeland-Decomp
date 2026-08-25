@@ -21,7 +21,7 @@ extern void func_02092418(void *state);
 extern void GX_SetGraphicsMode(s32 mode, s32 bgMode, s32 bg0Mode);
 extern void SoundPhaseManager_Update(void *soundContext, s32 first, s32 second);
 extern void func_ov048_0220b7b4(void *state);
-extern void func_020923a0(void *state);
+extern void GraphicsBankStateSnapshot_Destroy(void *state);
 extern void GraphicsResourceSetVariant_Destroy(void *state);
 extern void func_ov048_0220ba90(void *state);
 #ifdef __cplusplus
@@ -59,7 +59,7 @@ static void *teardown_presentation(void *object)
     *(volatile u16 *)0x04001050 = 0;
     SoundPhaseManager_Update(gSoundContext, 0, 0);
     func_ov048_0220b7b4((u8 *)object + 0x98);
-    func_020923a0((u8 *)object + 0x64);
+    GraphicsBankStateSnapshot_Destroy((u8 *)object + 0x64);
     return object;
 }
 

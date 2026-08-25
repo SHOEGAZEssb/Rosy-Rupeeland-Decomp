@@ -22,7 +22,7 @@
 .extern Graphics3DSceneState_Init
 .extern func_02091b6c
 .extern SceneInputBase_Init
-.extern func_02092364
+.extern GraphicsBankStateSnapshot_Init
 .extern func_020923a4
 .extern Presentation_InitVariant
 .extern Presentation_SetPosition
@@ -66,7 +66,7 @@ Overlay027Scene_Init:
     add r0, r10, #0x150
     bl func_ov027_021fd9c8
     add r0, r10, #0x164
-    bl func_02092364
+    bl GraphicsBankStateSnapshot_Init
     add r0, r10, #0x198
     bl func_ov043_0220b740 ; func_ov044_0220b740, func_ov045_0220b740, func_ov046_0220b740, func_ov047_0220b740, func_ov048_0220b740, func_ov049_0220b740
     mov r0, #0x0

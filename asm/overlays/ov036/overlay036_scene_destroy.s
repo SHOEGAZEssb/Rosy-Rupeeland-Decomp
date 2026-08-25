@@ -9,7 +9,7 @@
     .extern GX_SetGraphicsMode
     .extern SoundPhaseManager_Update
     .extern func_ov048_0220b7b4
-    .extern func_020923a0
+    .extern GraphicsBankStateSnapshot_Destroy
     .extern data_ov036_02206124
     .extern data_020f4e14
     .extern gDebugFont
@@ -63,7 +63,7 @@ L_02204928:
     add r0, r4, #0x98
     bl func_ov048_0220b7b4
     add r0, r4, #0x64
-    bl func_020923a0
+    bl GraphicsBankStateSnapshot_Destroy
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_02204994: .word data_ov036_02206124
