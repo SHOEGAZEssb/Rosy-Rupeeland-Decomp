@@ -3,10 +3,10 @@
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern func_0209189c
     .extern TitleRandom_NextBounded
-    .extern func_ov022_021fd514
+    .extern Overlay022_StatusWidget_SetMode1
 
-.global func_ov022_021fd614
-func_ov022_021fd614:
+.global Overlay022_StatusWidget_UpdateIdleAnimation
+Overlay022_StatusWidget_UpdateIdleAnimation:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x28]
@@ -61,6 +61,6 @@ L_021fd6bc:
     mov r1, r1, lsl #0x10
     movs r1, r1, lsr #0x10
     ldmeqia sp!, {r4, pc}
-    bl func_ov022_021fd514
+    bl Overlay022_StatusWidget_SetMode1
     ldmia sp!, {r4, pc}
-.size func_ov022_021fd614, . - func_ov022_021fd614
+.size Overlay022_StatusWidget_UpdateIdleAnimation, . - Overlay022_StatusWidget_UpdateIdleAnimation

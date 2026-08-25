@@ -20,7 +20,7 @@
     .extern TitleDialog_SetExternalTextRow
     .extern SpriteMotionController_Init
     .extern Overlay022_Emitter_Init
-    .extern func_ov022_021fd370
+    .extern Overlay022_StatusWidget_Init
     .extern func_ov022_021fdd00
     .extern func_ov022_021fdd04
     .extern func_ov022_021fdd1c
@@ -120,7 +120,7 @@ func_ov022_021fdd44:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_021fde94
-    bl func_ov022_021fd370
+    bl Overlay022_StatusWidget_Init
 L_021fde94:
     ldr r1, L_021fdff8
     str r0, [r4, #0x350]

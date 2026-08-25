@@ -4,8 +4,8 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
 
-.global func_ov022_021fd458
-func_ov022_021fd458:
+.global Overlay022_StatusWidget_Deinit
+Overlay022_StatusWidget_Deinit:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fd488
     mov r4, r0
@@ -19,4 +19,4 @@ func_ov022_021fd458:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fd488: .word data_ov022_02200608
-.size func_ov022_021fd458, . - func_ov022_021fd458
+.size Overlay022_StatusWidget_Deinit, . - Overlay022_StatusWidget_Deinit

@@ -2,10 +2,10 @@
 
 /* Exact fallback; see src/overlays/ov022/overlay022_state_transitions.c. */
 .extern TitleDialog_UpdateTextPage
-.extern func_ov022_021fd4d4
-.extern func_ov022_021fd514
-.extern func_ov022_021fd5d4
-.extern func_ov022_021fd6dc
+.extern Overlay022_StatusWidget_SetMode2
+.extern Overlay022_StatusWidget_SetMode1
+.extern Overlay022_StatusWidget_SetSelector
+.extern Overlay022_StatusWidget_IsTransient
 
 
     .global func_ov022_021ff368
@@ -38,11 +38,11 @@ L_021ff380:
     movs r0, r0, asr #0x1f
     beq L_021ff3f8
     ldr r0, [r4, #0x350]
-    bl func_ov022_021fd6dc
+    bl Overlay022_StatusWidget_IsTransient
     cmp r0, #0x0
     beq L_021ff3e8
     ldr r0, [r4, #0x350]
-    bl func_ov022_021fd4d4
+    bl Overlay022_StatusWidget_SetMode2
 L_021ff3e8:
     ldrh r0, [sp, #0x1a]
     orr r0, r0, #0x1
@@ -61,7 +61,7 @@ L_021ff408:
     ldr r1, [r0, #0x28]
     cmp r1, #0x2
     bne L_021ff428
-    bl func_ov022_021fd514
+    bl Overlay022_StatusWidget_SetMode1
 L_021ff428:
     ldr r0, [r4, #0x2cc]
     add r1, sp, #0x18
@@ -74,7 +74,7 @@ L_021ff428:
     ldr r1, [r4, #0x2cc]
     ldr r0, [r4, #0x350]
     ldr r1, [r1, #0xe8]
-    bl func_ov022_021fd5d4
+    bl Overlay022_StatusWidget_SetSelector
 L_021ff458:
     ldr r0, [sp, #0x14]
     mov r0, r0, lsl #0x1f
@@ -82,7 +82,7 @@ L_021ff458:
     moveq r0, #0x0
     beq L_021ff478
     ldr r0, [r4, #0x350]
-    bl func_ov022_021fd514
+    bl Overlay022_StatusWidget_SetMode1
     mov r0, #0x1
 L_021ff478:
     add sp, sp, #0x30

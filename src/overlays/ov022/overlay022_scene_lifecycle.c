@@ -43,9 +43,9 @@ extern void SpriteMotionController_Init(void *);
 extern u32 genrand_int32(void);
 extern void Overlay022_Emitter_Init(void *);
 extern void *Overlay022_Emitter_Deinit(void *);
-extern void *func_ov022_021fd370(void *);
-extern void *func_ov022_021fd458(void *);
-extern void func_ov022_021fda28(void *);
+extern void *Overlay022_StatusWidget_Init(void *);
+extern void *Overlay022_StatusWidget_Deinit(void *);
+extern void Overlay022_Menu_Deinit(void *);
 extern void func_ov022_021fdd00(void *);
 extern void func_ov022_021fdd04(void *, s32, s32, s32, s32);
 extern void func_ov022_021fdd1c(void *, void *, void *);
@@ -83,7 +83,7 @@ static void destroy_scene_members(void *scene)
     }
     void *status = FIELD(void *, scene, 0x350);
     if (status != 0) {
-        func_ov022_021fd458(status);
+        Overlay022_StatusWidget_Deinit(status);
         Heap_Free(status);
     }
     destroy_polymorphic(FIELD(void *, scene, 0x2cc));
@@ -91,7 +91,7 @@ static void destroy_scene_members(void *scene)
 
     void *menu = FIELD(void *, scene, 0x2b8);
     if (menu != 0) {
-        func_ov022_021fda28(menu);
+        Overlay022_Menu_Deinit(menu);
         Heap_Free(menu);
     }
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x9c));
@@ -156,7 +156,7 @@ extern "C" void *func_ov022_021fdd44(void *scene)
 
     void *status = Heap_Alloc(0x34, data_ov022_022006d4, 4, gHeapContext);
     if (status != 0)
-        status = func_ov022_021fd370(status);
+        status = Overlay022_StatusWidget_Init(status);
     FIELD(void *, scene, 0x350) = status;
     FIELD(void *, scene, 0x9c) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     FIELD(void *, scene, 0xa0) = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);

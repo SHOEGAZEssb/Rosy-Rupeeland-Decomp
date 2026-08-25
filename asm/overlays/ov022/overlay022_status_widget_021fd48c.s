@@ -4,8 +4,8 @@
     .extern gDebugFont
     .extern genrand_int32
 
-.global func_ov022_021fd48c
-func_ov022_021fd48c:
+.global Overlay022_StatusWidget_Reset
+Overlay022_StatusWidget_Reset:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fd4d0
     mov r4, r0
@@ -24,4 +24,4 @@ func_ov022_021fd48c:
     str r0, [r4, #0x30]
     ldmia sp!, {r4, pc}
 L_021fd4d0: .word gDebugFont
-.size func_ov022_021fd48c, . - func_ov022_021fd48c
+.size Overlay022_StatusWidget_Reset, . - Overlay022_StatusWidget_Reset

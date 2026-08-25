@@ -1,6 +1,6 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_scene_collections.c. */
-    .extern func_ov022_021fda28
+    .extern Overlay022_Menu_Deinit
     .extern Heap_Free
 
 .global func_ov022_021fe81c
@@ -32,7 +32,7 @@ L_021fe848:
     cmp r5, #0x0
     beq L_021fe88c
     mov r0, r5
-    bl func_ov022_021fda28
+    bl Overlay022_Menu_Deinit
     mov r0, r5
     bl Heap_Free
 L_021fe88c:

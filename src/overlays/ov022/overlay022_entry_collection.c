@@ -22,15 +22,15 @@ extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 }
 #endif
 
-extern "C" void func_ov022_021fd6fc(void *entry);
-extern "C" void func_ov022_021fd800(void *entry);
+extern "C" void Overlay022_CollectionEntry_Init(void *entry);
+extern "C" void Overlay022_CollectionEntry_DestroyNoOp(void *entry);
 
 /*
  * Initializes one 8-byte collection entry by clearing its first word. The second
  * word is left for the collection append path. The entry is
  * modified in place; there is no return value, allocation, SDK call, or MMIO.
  */
-extern "C" void func_ov022_021fd6fc(void *entry)
+extern "C" void Overlay022_CollectionEntry_Init(void *entry)
 {
     FIELD(void *, entry, 0) = 0;
 }
@@ -43,7 +43,7 @@ extern "C" void func_ov022_021fd6fc(void *entry)
  * range as 0..capacity-1. Field +0x2C is set to 12. Heap/base state changes and
  * the input pointer is returned.
  */
-extern "C" void *func_ov022_021fd708(void *collection, s32 capacity)
+extern "C" void *Overlay022_EntryCollection_Init(void *collection, s32 capacity)
 {
     func_02093a34(collection);
     FIELD(const void *, collection, 0) = data_ov022_02200674;
@@ -54,7 +54,7 @@ extern "C" void *func_ov022_021fd708(void *collection, s32 capacity)
                                       data_ov022_022006bc, 4, gHeapContext);
         if (entries != 0)
             CxxArray_ConstructWithCookie(entries, capacity, 8, 8,
-                          func_ov022_021fd6fc, 0);
+                          Overlay022_CollectionEntry_Init, 0);
         FIELD(void *, collection, 0x38) = entries;
         IndexedSelectionController_ConfigureRange(collection, 0, capacity - 1, 0);
     } else {
@@ -70,12 +70,12 @@ extern "C" void *func_ov022_021fd708(void *collection, s32 capacity)
  * 8-byte element/header sizes and the no-op 0x021FD800 element destructor.
  * The collection's own storage is retained and returned.
  */
-extern "C" void *func_ov022_021fd7c4(void *collection)
+extern "C" void *Overlay022_EntryCollection_Deinit(void *collection)
 {
     FIELD(const void *, collection, 0) = data_ov022_02200674;
     if (FIELD(void *, collection, 0x38) != 0)
         CxxArray_DestroyAndFree(FIELD(void *, collection, 0x38),
-                      8, 8, func_ov022_021fd800);
+                      8, 8, Overlay022_CollectionEntry_DestroyNoOp);
     return collection;
 }
 
@@ -83,7 +83,7 @@ extern "C" void *func_ov022_021fd7c4(void *collection)
  * Empty destructor hook for one collection entry. The input is intentionally
  * untouched and there are no observable effects or return value.
  */
-extern "C" void func_ov022_021fd800(void *entry)
+extern "C" void Overlay022_CollectionEntry_DestroyNoOp(void *entry)
 {
     (void)entry;
 }
@@ -93,12 +93,12 @@ extern "C" void func_ov022_021fd800(void *entry)
  * destroys the entry array when present, frees the collection allocation, and
  * returns the now-invalid pointer for ABI parity.
  */
-extern "C" void *func_ov022_021fd804(void *collection)
+extern "C" void *Overlay022_EntryCollection_Delete(void *collection)
 {
     FIELD(const void *, collection, 0) = data_ov022_02200674;
     if (FIELD(void *, collection, 0x38) != 0)
         CxxArray_DestroyAndFree(FIELD(void *, collection, 0x38),
-                      8, 8, func_ov022_021fd800);
+                      8, 8, Overlay022_CollectionEntry_DestroyNoOp);
     Heap_Free(collection);
     return collection;
 }
@@ -109,7 +109,7 @@ extern "C" void *func_ov022_021fd804(void *collection)
  * the index itself; count +0x40 is incremented. Null/unallocated or full
  * collections are unchanged. No value is returned and no SDK/MMIO call occurs.
  */
-extern "C" void func_ov022_021fd848(void *collection, s32 index)
+extern "C" void Overlay022_EntryCollection_AppendIndex(void *collection, s32 index)
 {
     void *entries = FIELD(void *, collection, 0x38);
     s32 count = FIELD(s32, collection, 0x40);

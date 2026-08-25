@@ -11,8 +11,8 @@
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
     .extern TitleCharacterResourceCollection_Destroy
     .extern Overlay022_Emitter_Deinit
-    .extern func_ov022_021fd458
-    .extern func_ov022_021fda28
+    .extern Overlay022_StatusWidget_Deinit
+    .extern Overlay022_Menu_Deinit
     .extern func_ov022_021fdd00
     .extern func_ov046_0220ba80
     .extern gDebugFont
@@ -52,7 +52,7 @@ L_021fe1f0:
     cmp r5, #0x0
     beq L_021fe20c
     mov r0, r5
-    bl func_ov022_021fd458
+    bl Overlay022_StatusWidget_Deinit
     mov r0, r5
     bl Heap_Free
 L_021fe20c:
@@ -74,7 +74,7 @@ L_021fe23c:
     cmp r5, #0x0
     beq L_021fe258
     mov r0, r5
-    bl func_ov022_021fda28
+    bl Overlay022_Menu_Deinit
     mov r0, r5
     bl Heap_Free
 L_021fe258:

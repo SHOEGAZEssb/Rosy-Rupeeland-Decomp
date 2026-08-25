@@ -70,7 +70,7 @@ extern void SceneSound_PlayDirectSequence(void *, s32);
 extern void GameWork_ClearFlag(void *, u16);
 extern s32 Overlay022_Emitter_ConfigureBurst(void *, s32, s32, s32);
 extern s32 Overlay022_Emitter_Update(void *);
-extern void func_ov022_021fdafc(void *);
+extern void Overlay022_Menu_UpdateVisibility(void *);
 extern void func_ov022_021fdb38(void *);
 extern s32 func_ov022_021fdc30(void *, void *);
 extern void *func_ov022_021fdca0(void *);
@@ -168,7 +168,7 @@ extern "C" s32 func_ov022_021ff5ec(void *scene)
             SpriteMotionController_SetPosition((u8 *)scene + 0x200, -64, 112);
             func_ov022_021fe898(scene);
         } else {
-            func_ov022_021fdafc(FIELD(void *, scene, 0x2b8));
+            Overlay022_Menu_UpdateVisibility(FIELD(void *, scene, 0x2b8));
             func_ov022_021fdb38(FIELD(void *, scene, 0x2b8));
             func_ov022_021fefe0(scene);
             func_ov022_021ff048(scene);

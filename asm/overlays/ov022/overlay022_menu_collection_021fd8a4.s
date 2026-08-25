@@ -11,13 +11,13 @@
     .extern InventoryScroll_SetSpritePriority
     .extern InventoryScroll_UpdatePresentation
     .extern CxxArray_ConstructWithCookie
-    .extern func_ov022_021fd894
+    .extern Overlay022_MenuEntry_Init
     .extern gHeapContext
     .extern gSystemState
     .extern Heap_Alloc
 
-.global func_ov022_021fd8a4
-func_ov022_021fd8a4:
+.global Overlay022_Menu_Init
+Overlay022_Menu_Init:
     stmdb sp!, {r4, r5, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -116,10 +116,10 @@ L_021fd9fc:
     ldmia sp!, {r4, r5, pc}
 L_021fda08: .word data_ov022_022006c4
 L_021fda0c: .word gHeapContext
-L_021fda10: .word func_ov022_021fd894
+L_021fda10: .word Overlay022_MenuEntry_Init
 L_021fda14: .word data_ov022_022006cc
 L_021fda18: .word data_020f4e14
 L_021fda1c: .word gSystemState
 L_021fda20: .word 0x7006
 L_021fda24: .word 0x7007
-.size func_ov022_021fd8a4, . - func_ov022_021fd8a4
+.size Overlay022_Menu_Init, . - Overlay022_Menu_Init

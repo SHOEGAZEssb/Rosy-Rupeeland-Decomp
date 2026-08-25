@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_entry_collection.c. */
     .extern data_020d7a48
 
-.global func_ov022_021fd848
-func_ov022_021fd848:
+.global Overlay022_EntryCollection_AppendIndex
+Overlay022_EntryCollection_AppendIndex:
     stmdb sp!, {r3, lr}
     ldr lr, [r0, #0x38]
     cmp lr, #0x0
@@ -23,4 +23,4 @@ func_ov022_021fd848:
     str r1, [r0, #0x40]
     ldmia sp!, {r3, pc}
 L_021fd890: .word data_020d7a48
-.size func_ov022_021fd848, . - func_ov022_021fd848
+.size Overlay022_EntryCollection_AppendIndex, . - Overlay022_EntryCollection_AppendIndex

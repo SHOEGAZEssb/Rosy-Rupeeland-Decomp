@@ -5,10 +5,10 @@
     .extern data_ov022_022006f4
     .extern InventoryScroll_SetSelectedRow
     .extern InventoryScroll_SetFirstVisibleRow
-    .extern func_ov022_021fd708
-    .extern func_ov022_021fd848
-    .extern func_ov022_021fd8a4
-    .extern func_ov022_021fda7c
+    .extern Overlay022_EntryCollection_Init
+    .extern Overlay022_EntryCollection_AppendIndex
+    .extern Overlay022_Menu_Init
+    .extern Overlay022_Menu_AppendIndex
     .extern GameWork_TestFlag
     .extern gGameWork
     .extern gHeapContext
@@ -41,7 +41,7 @@ L_021fe6a0:
     cmp r0, #0x0
     beq L_021fe6ec
     mov r1, r5
-    bl func_ov022_021fd708
+    bl Overlay022_EntryCollection_Init
 L_021fe6ec:
     ldr r5, L_021fe808
     str r0, [r4, #0x2b4]
@@ -55,7 +55,7 @@ L_021fe6f8:
     bne L_021fe71c
     ldr r0, [r4, #0x2b4]
     mov r1, r6
-    bl func_ov022_021fd848
+    bl Overlay022_EntryCollection_AppendIndex
 L_021fe71c:
     add r6, r6, #0x1
     cmp r6, #0x80
@@ -90,7 +90,7 @@ L_021fe748:
     cmp r0, #0x0
     beq L_021fe798
     mov r1, r9
-    bl func_ov022_021fd8a4
+    bl Overlay022_Menu_Init
 L_021fe798:
     str r0, [r4, #0x2b8]
     ldr r0, [r0, #0x30]
@@ -113,7 +113,7 @@ L_021fe7c8:
     beq L_021fe7ec
     ldr r0, [r4, #0x2b8]
     mov r1, r8
-    bl func_ov022_021fda7c
+    bl Overlay022_Menu_AppendIndex
 L_021fe7ec:
     add r8, r8, #0x1
     cmp r8, #0xb

@@ -5,8 +5,8 @@
     .extern GamePhaseCurrencyHud_GetCurrency
     .extern gGamePhaseCurrencyHud
 
-.global func_ov022_021fda7c
-func_ov022_021fda7c:
+.global Overlay022_Menu_AppendIndex
+Overlay022_Menu_AppendIndex:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r3, [r5, #0x24]
@@ -39,4 +39,4 @@ func_ov022_021fda7c:
 L_021fdaf0: .word data_020d780c
 L_021fdaf4: .word gGamePhaseCurrencyHud
 L_021fdaf8: .word data_020d7830
-.size func_ov022_021fda7c, . - func_ov022_021fda7c
+.size Overlay022_Menu_AppendIndex, . - Overlay022_Menu_AppendIndex

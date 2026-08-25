@@ -6,11 +6,11 @@
     .extern func_02093a34
     .extern IndexedSelectionController_ConfigureRange
     .extern CxxArray_ConstructWithCookie
-    .extern func_ov022_021fd6fc
+    .extern Overlay022_CollectionEntry_Init
     .extern gHeapContext
 
-.global func_ov022_021fd708
-func_ov022_021fd708:
+.global Overlay022_EntryCollection_Init
+Overlay022_EntryCollection_Init:
     stmdb sp!, {r3, r4, r5, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -60,5 +60,5 @@ L_021fd7a0:
 L_021fd7b4: .word data_ov022_02200674
 L_021fd7b8: .word data_ov022_022006bc
 L_021fd7bc: .word gHeapContext
-L_021fd7c0: .word func_ov022_021fd6fc
-.size func_ov022_021fd708, . - func_ov022_021fd708
+L_021fd7c0: .word Overlay022_CollectionEntry_Init
+.size Overlay022_EntryCollection_Init, . - Overlay022_EntryCollection_Init

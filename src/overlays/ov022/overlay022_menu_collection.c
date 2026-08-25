@@ -32,8 +32,8 @@ extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 }
 #endif
 
-extern "C" void func_ov022_021fd894(void *entry);
-extern "C" void func_ov022_021fda78(void *entry);
+extern "C" void Overlay022_MenuEntry_Init(void *entry);
+extern "C" void Overlay022_MenuEntry_DestroyNoOp(void *entry);
 
 static void destroy_polymorphic(void *object)
 {
@@ -48,7 +48,7 @@ static void destroy_polymorphic(void *object)
  * availability flag. The entry changes in place; no return value, SDK call,
  * allocation, or hardware access occurs.
  */
-extern "C" void func_ov022_021fd894(void *entry)
+extern "C" void Overlay022_MenuEntry_Init(void *entry)
 {
     FIELD(void *, entry, 0) = 0;
     FIELD(s32, entry, 4) = 0;
@@ -63,7 +63,7 @@ extern "C" void func_ov022_021fd894(void *entry)
  * state byte +0x5F. Heap, SDK UI, and input-resource state change. The
  * caller-owned menu pointer is returned.
  */
-extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
+extern "C" void *Overlay022_Menu_Init(void *menu, s32 capacity)
 {
     TitleCharacterResourceCollection_Init(menu);
     FIELD(s32, menu, 0x28) = capacity;
@@ -73,7 +73,7 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
                                       data_ov022_022006c4, 4, gHeapContext);
         if (entries != 0)
             CxxArray_ConstructWithCookie(entries, capacity, 8, 8,
-                          func_ov022_021fd894, 0);
+                          Overlay022_MenuEntry_Init, 0);
         FIELD(void *, menu, 0x24) = entries;
         void *ui = Heap_Alloc(0x80, data_ov022_022006cc, 4, gHeapContext);
         if (ui != 0)
@@ -101,12 +101,12 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
  * hook, releases inherited input resources, and returns the menu address. The
  * menu storage itself is retained.
  */
-extern "C" void *func_ov022_021fda28(void *menu)
+extern "C" void *Overlay022_Menu_Deinit(void *menu)
 {
     destroy_polymorphic(FIELD(void *, menu, 0x30));
     if (FIELD(void *, menu, 0x24) != 0)
         CxxArray_DestroyAndFree(FIELD(void *, menu, 0x24),
-                      8, 8, func_ov022_021fda78);
+                      8, 8, Overlay022_MenuEntry_DestroyNoOp);
     TitleCharacterResourceCollection_Destroy(menu);
     return menu;
 }
@@ -115,7 +115,7 @@ extern "C" void *func_ov022_021fda28(void *menu)
  * Empty destructor hook for one menu option. The entry is intentionally left
  * untouched; there is no return value or observable side effect.
  */
-extern "C" void func_ov022_021fda78(void *entry)
+extern "C" void Overlay022_MenuEntry_DestroyNoOp(void *entry)
 {
     (void)entry;
 }
@@ -127,7 +127,7 @@ extern "C" void func_ov022_021fda78(void *entry)
  * than or equal to current currency, then count +0x2C advances. Full or
  * unallocated arrays are unchanged; no value is returned.
  */
-extern "C" void func_ov022_021fda7c(void *menu, s32 index)
+extern "C" void Overlay022_Menu_AppendIndex(void *menu, s32 index)
 {
     void *entries = FIELD(void *, menu, 0x24);
     s32 count = FIELD(s32, menu, 0x2c);
@@ -147,7 +147,7 @@ extern "C" void func_ov022_021fda7c(void *menu, s32 index)
  * fields +4/+8 and sets child +0x20 to one while +8 is below +4. Menu/UI state
  * may change and no value is returned.
  */
-extern "C" void func_ov022_021fdafc(void *menu)
+extern "C" void Overlay022_Menu_UpdateVisibility(void *menu)
 {
     void *ui = FIELD(void *, menu, 0x30);
     if (FIELD(s32, menu, 0x2c) != 0) {

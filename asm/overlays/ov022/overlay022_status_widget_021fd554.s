@@ -2,8 +2,8 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
     .extern GraphicsSpriteState_SetAnimationIndex
 
-.global func_ov022_021fd554
-func_ov022_021fd554:
+.global Overlay022_StatusWidget_SetMode3
+Overlay022_StatusWidget_SetMode3:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x28]
@@ -20,4 +20,4 @@ func_ov022_021fd554:
     strh r1, [r2, #0x24]
     str r0, [r4, #0x28]
     ldmia sp!, {r4, pc}
-.size func_ov022_021fd554, . - func_ov022_021fd554
+.size Overlay022_StatusWidget_SetMode3, . - Overlay022_StatusWidget_SetMode3

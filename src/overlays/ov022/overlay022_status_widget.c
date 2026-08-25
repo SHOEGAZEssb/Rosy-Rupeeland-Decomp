@@ -30,11 +30,11 @@ extern u32 genrand_int32(void);
 }
 #endif
 
-extern "C" void func_ov022_021fd48c(void *widget);
-extern "C" void func_ov022_021fd4d4(void *widget);
-extern "C" void func_ov022_021fd514(void *widget);
-extern "C" void func_ov022_021fd554(void *widget);
-extern "C" void func_ov022_021fd594(void *widget);
+extern "C" void Overlay022_StatusWidget_Reset(void *widget);
+extern "C" void Overlay022_StatusWidget_SetMode2(void *widget);
+extern "C" void Overlay022_StatusWidget_SetMode1(void *widget);
+extern "C" void Overlay022_StatusWidget_SetMode3(void *widget);
+extern "C" void Overlay022_StatusWidget_SetMode4(void *widget);
 
 /*
  * Draws the current value obtained from the first global mode record. It asks
@@ -43,7 +43,7 @@ extern "C" void func_ov022_021fd594(void *widget);
  * x=64 at y=172 with style parameters 13, 8, and -2. Font/render state changes;
  * the function has no return value and performs no direct MMIO.
  */
-extern "C" void func_ov022_021fd2f4(void)
+extern "C" void Overlay022_DrawCenteredCounter(void)
 {
     s32 value = RecordMode_GetMessageGroup(FIELD(void *, data_021f5128[0], 0x1c));
     s32 width = GraphicsSpriteRenderer_MeasureText(gDebugFont, value, 8, -2);
@@ -59,13 +59,13 @@ extern "C" void func_ov022_021fd2f4(void)
  * and positions the secondary sprite at (64,84). SDK sprite/resource state is
  * created, no heap allocation occurs here, and the input pointer is returned.
  */
-extern "C" void *func_ov022_021fd370(void *widget)
+extern "C" void *Overlay022_StatusWidget_Init(void *widget)
 {
     FIELD(const void *, widget, 0) = data_ov022_02200608;
     AnimationResourceState_InitEmbedded((u8 *)widget + 4);
     AnimationResourceState_InitEmbedded((u8 *)widget + 0x10);
     FIELD(u32, widget, 0x30) = 0;
-    func_ov022_021fd48c(widget);
+    Overlay022_StatusWidget_Reset(widget);
     AnimationResourceState_ReplaceResources((u8 *)widget + 4, data_020f4e18,
                   0x156f, 0x1570, 0x1571);
     AnimationResourceState_ReplaceResources((u8 *)widget + 0x10, data_020f4e18,
@@ -87,7 +87,7 @@ extern "C" void *func_ov022_021fd370(void *widget)
  * releases the debug-font handle and both resource holders, and returns the
  * original address. Sprite/resource state changes; storage is not freed.
  */
-extern "C" void *func_ov022_021fd458(void *widget)
+extern "C" void *Overlay022_StatusWidget_Deinit(void *widget)
 {
     FIELD(const void *, widget, 0) = data_ov022_02200608;
     GraphicsSpriteGroup_Destroy(FIELD(void *, widget, 0x1c));
@@ -102,7 +102,7 @@ extern "C" void *func_ov022_021fd458(void *widget)
  * 1 at +0x28, clears delay +0x2C, and seeds RNG +0x30. SDK handle state and the
  * widget change; no value is returned.
  */
-extern "C" void func_ov022_021fd48c(void *widget)
+extern "C" void Overlay022_StatusWidget_Reset(void *widget)
 {
     void *font = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
     FIELD(void *, widget, 0x1c) = font;
@@ -129,7 +129,7 @@ static void set_main_mode(void *widget, s32 mode, s32 animation)
  * Selects status mode 2 using animation 3. If already selected it is a no-op;
  * otherwise main-sprite flag bit 1 is set, bit 0 cleared, and +0x28 becomes 2.
  */
-extern "C" void func_ov022_021fd4d4(void *widget)
+extern "C" void Overlay022_StatusWidget_SetMode2(void *widget)
 {
     set_main_mode(widget, 2, 3);
 }
@@ -138,7 +138,7 @@ extern "C" void func_ov022_021fd4d4(void *widget)
  * Selects status mode 1 using animation 0. If already selected it is a no-op;
  * otherwise main-sprite flag bit 1 is set, bit 0 cleared, and +0x28 becomes 1.
  */
-extern "C" void func_ov022_021fd514(void *widget)
+extern "C" void Overlay022_StatusWidget_SetMode1(void *widget)
 {
     set_main_mode(widget, 1, 0);
 }
@@ -147,7 +147,7 @@ extern "C" void func_ov022_021fd514(void *widget)
  * Selects status mode 3 using animation 2. If already selected it is a no-op;
  * otherwise main-sprite flag bit 1 is set, bit 0 cleared, and +0x28 becomes 3.
  */
-extern "C" void func_ov022_021fd554(void *widget)
+extern "C" void Overlay022_StatusWidget_SetMode3(void *widget)
 {
     set_main_mode(widget, 3, 2);
 }
@@ -156,7 +156,7 @@ extern "C" void func_ov022_021fd554(void *widget)
  * Selects status mode 4 using animation 1. If already selected it is a no-op;
  * otherwise main-sprite flag bit 1 is set, bit 0 cleared, and +0x28 becomes 4.
  */
-extern "C" void func_ov022_021fd594(void *widget)
+extern "C" void Overlay022_StatusWidget_SetMode4(void *widget)
 {
     set_main_mode(widget, 4, 1);
 }
@@ -166,13 +166,13 @@ extern "C" void func_ov022_021fd594(void *widget)
  * and 1 respectively. Values outside that range are ignored. The widget may
  * start a main-sprite animation; no value is returned.
  */
-extern "C" void func_ov022_021fd5d4(void *widget, u32 selector)
+extern "C" void Overlay022_StatusWidget_SetSelector(void *widget, u32 selector)
 {
     switch (selector) {
-    case 0: func_ov022_021fd4d4(widget); break;
-    case 1: func_ov022_021fd554(widget); break;
-    case 2: func_ov022_021fd594(widget); break;
-    case 3: func_ov022_021fd514(widget); break;
+    case 0: Overlay022_StatusWidget_SetMode2(widget); break;
+    case 1: Overlay022_StatusWidget_SetMode3(widget); break;
+    case 2: Overlay022_StatusWidget_SetMode4(widget); break;
+    case 3: Overlay022_StatusWidget_SetMode1(widget); break;
     }
 }
 
@@ -183,7 +183,7 @@ extern "C" void func_ov022_021fd5d4(void *widget, u32 selector)
  * are cleared. Once delay is already zero, a set sprite bit 0 returns the widget
  * to mode 1. Widget RNG, animation, flags, mode, and delay may change.
  */
-extern "C" void func_ov022_021fd614(void *widget)
+extern "C" void Overlay022_StatusWidget_UpdateIdleAnimation(void *widget)
 {
     switch (FIELD(s32, widget, 0x28)) {
     case 1:
@@ -200,7 +200,7 @@ extern "C" void func_ov022_021fd614(void *widget)
                          TitleRandom_NextBounded((u8 *)widget + 0x30, 3) != 0 ? 4 : 5);
             FIELD(u16, sprite, 0x24) &= (u16)~3;
         } else if ((FIELD(u16, FIELD(void *, widget, 0x20), 0x24) & 1) != 0) {
-            func_ov022_021fd514(widget);
+            Overlay022_StatusWidget_SetMode1(widget);
         }
         break;
     }
@@ -210,7 +210,7 @@ extern "C" void func_ov022_021fd614(void *widget)
  * Reports whether the status widget is in a transient/covered mode. The widget
  * is read only; returns one for mode 2 or 5 and zero for all other modes.
  */
-extern "C" s32 func_ov022_021fd6dc(const void *widget)
+extern "C" s32 Overlay022_StatusWidget_IsTransient(const void *widget)
 {
     s32 mode = FIELD(s32, widget, 0x28);
     return mode == 2 || mode == 5;

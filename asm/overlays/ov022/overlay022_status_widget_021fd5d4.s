@@ -1,12 +1,12 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_status_widget.c. */
-    .extern func_ov022_021fd4d4
-    .extern func_ov022_021fd514
-    .extern func_ov022_021fd554
-    .extern func_ov022_021fd594
+    .extern Overlay022_StatusWidget_SetMode2
+    .extern Overlay022_StatusWidget_SetMode1
+    .extern Overlay022_StatusWidget_SetMode3
+    .extern Overlay022_StatusWidget_SetMode4
 
-.global func_ov022_021fd5d4
-func_ov022_021fd5d4:
+.global Overlay022_StatusWidget_SetSelector
+Overlay022_StatusWidget_SetSelector:
     stmdb sp!, {r3, lr}
     cmp r1, #0x3
     addls pc, pc, r1, lsl #0x2
@@ -17,15 +17,15 @@ L_021fd5e4: ; jump table
     b L_021fd604 ; case 2
     b L_021fd60c ; case 3
 L_021fd5f4:
-    bl func_ov022_021fd4d4
+    bl Overlay022_StatusWidget_SetMode2
     ldmia sp!, {r3, pc}
 L_021fd5fc:
-    bl func_ov022_021fd554
+    bl Overlay022_StatusWidget_SetMode3
     ldmia sp!, {r3, pc}
 L_021fd604:
-    bl func_ov022_021fd594
+    bl Overlay022_StatusWidget_SetMode4
     ldmia sp!, {r3, pc}
 L_021fd60c:
-    bl func_ov022_021fd514
+    bl Overlay022_StatusWidget_SetMode1
     ldmia sp!, {r3, pc}
-.size func_ov022_021fd5d4, . - func_ov022_021fd5d4
+.size Overlay022_StatusWidget_SetSelector, . - Overlay022_StatusWidget_SetSelector

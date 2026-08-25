@@ -41,9 +41,9 @@ extern void func_020b2058(void *, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
 extern void func_ov046_0220c1a4(void *);
 extern void *func_ov022_021fdca0(void *);
-extern void func_ov022_021fd2f4(void);
-extern void func_ov022_021fd4d4(void *);
-extern void func_ov022_021fd5d4(void *, void *);
+extern void Overlay022_DrawCenteredCounter(void);
+extern void Overlay022_StatusWidget_SetMode2(void *);
+extern void Overlay022_StatusWidget_SetSelector(void *, void *);
 extern void func_ov022_021fef48(void *);
 extern void func_ov022_021ff2c4(void *, s32);
 #ifdef __cplusplus
@@ -214,12 +214,12 @@ extern "C" void func_ov022_021ff220(void *scene, s32 key)
     TitleDialog_SetText(dialog, text, 4);
     s32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     if (result & 0x200)
-        func_ov022_021fd5d4(FIELD(void *, scene, 0x350),
+        Overlay022_StatusWidget_SetSelector(FIELD(void *, scene, 0x350),
                             FIELD(void *, dialog, 0xe8));
     else
-        func_ov022_021fd4d4(FIELD(void *, scene, 0x350));
+        Overlay022_StatusWidget_SetMode2(FIELD(void *, scene, 0x350));
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
-    func_ov022_021fd2f4();
+    Overlay022_DrawCenteredCounter();
 }
 
 /*
@@ -237,10 +237,10 @@ extern "C" void func_ov022_021ff2c4(void *scene, s32 message_id)
     TitleDialog_SetText(dialog, text, 4);
     s32 result = TitleDialog_UpdateTextPage(dialog, data_021f5ed0);
     if (result & 0x200)
-        func_ov022_021fd5d4(FIELD(void *, scene, 0x350),
+        Overlay022_StatusWidget_SetSelector(FIELD(void *, scene, 0x350),
                             FIELD(void *, dialog, 0xe8));
     else
-        func_ov022_021fd4d4(FIELD(void *, scene, 0x350));
+        Overlay022_StatusWidget_SetMode2(FIELD(void *, scene, 0x350));
     GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, scene, 0x54));
-    func_ov022_021fd2f4();
+    Overlay022_DrawCenteredCounter();
 }

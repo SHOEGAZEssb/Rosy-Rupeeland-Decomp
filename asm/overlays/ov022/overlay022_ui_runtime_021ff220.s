@@ -7,9 +7,9 @@
 .extern RecordMode_GetMessage
 .extern TitleDialog_SetText
 .extern TitleDialog_UpdateTextPage
-.extern func_ov022_021fd2f4
-.extern func_ov022_021fd4d4
-.extern func_ov022_021fd5d4
+.extern Overlay022_DrawCenteredCounter
+.extern Overlay022_StatusWidget_SetMode2
+.extern Overlay022_StatusWidget_SetSelector
 .extern gDebugFont
 
 
@@ -42,17 +42,17 @@ func_ov022_021ff220:
     ldr r1, [r4, #0x2cc]
     ldr r0, [r4, #0x350]
     ldr r1, [r1, #0xe8]
-    bl func_ov022_021fd5d4
+    bl Overlay022_StatusWidget_SetSelector
     b L_021ff29c
 L_021ff294:
     ldr r0, [r4, #0x350]
-    bl func_ov022_021fd4d4
+    bl Overlay022_StatusWidget_SetMode2
 L_021ff29c:
     ldr r0, L_021ff2c0
     ldr r1, [r4, #0x54]
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_SetFontResource
-    bl func_ov022_021fd2f4
+    bl Overlay022_DrawCenteredCounter
     add sp, sp, #0x8
     ldmia sp!, {r4, pc}
 L_021ff2b8: .word data_021f5128

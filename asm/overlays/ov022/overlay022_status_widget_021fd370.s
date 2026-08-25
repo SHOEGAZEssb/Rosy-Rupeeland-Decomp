@@ -6,10 +6,10 @@
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
-    .extern func_ov022_021fd48c
+    .extern Overlay022_StatusWidget_Reset
 
-.global func_ov022_021fd370
-func_ov022_021fd370:
+.global Overlay022_StatusWidget_Init
+Overlay022_StatusWidget_Init:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     mov r4, r0
@@ -22,7 +22,7 @@ func_ov022_021fd370:
     mov r1, #0x0
     mov r0, r4
     str r1, [r4, #0x30]
-    bl func_ov022_021fd48c
+    bl Overlay022_StatusWidget_Reset
     ldr r3, L_021fd450
     ldr r1, L_021fd454
     str r3, [sp, #0x0]
@@ -68,4 +68,4 @@ func_ov022_021fd370:
 L_021fd44c: .word data_ov022_02200608
 L_021fd450: .word 0x1571
 L_021fd454: .word data_020f4e18
-.size func_ov022_021fd370, . - func_ov022_021fd370
+.size Overlay022_StatusWidget_Init, . - Overlay022_StatusWidget_Init

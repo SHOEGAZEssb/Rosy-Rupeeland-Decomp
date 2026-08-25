@@ -18,11 +18,11 @@ extern void Heap_Free(void *);
 extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void InventoryScroll_SetSelectedRow(void *, s32);
 extern void InventoryScroll_SetFirstVisibleRow(void *, s32);
-extern void *func_ov022_021fd708(void *, s32);
-extern void func_ov022_021fd848(void *, s32);
-extern void *func_ov022_021fd8a4(void *, s32);
-extern void func_ov022_021fda28(void *);
-extern void func_ov022_021fda7c(void *, s32);
+extern void *Overlay022_EntryCollection_Init(void *, s32);
+extern void Overlay022_EntryCollection_AppendIndex(void *, s32);
+extern void *Overlay022_Menu_Init(void *, s32);
+extern void Overlay022_Menu_Deinit(void *);
+extern void Overlay022_Menu_AppendIndex(void *, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -55,11 +55,11 @@ extern "C" void func_ov022_021fe688(void *scene)
         void *collection = Heap_Alloc(0x44, data_ov022_022006ec,
                                       4, gHeapContext);
         if (collection != 0)
-            collection = func_ov022_021fd708(collection, count);
+            collection = Overlay022_EntryCollection_Init(collection, count);
         FIELD(void *, scene, 0x2b4) = collection;
         for (s32 i = 0; i < 0x80; ++i) {
             if (FIELD(u8, gGameWork, 0x5e94 + i) == 1)
-                func_ov022_021fd848(collection, i);
+                Overlay022_EntryCollection_AppendIndex(collection, i);
         }
     } else {
         FIELD(void *, scene, 0x2b4) = 0;
@@ -75,7 +75,7 @@ extern "C" void func_ov022_021fe688(void *scene)
         void *menu = Heap_Alloc(0x34, data_ov022_022006f4,
                                 4, gHeapContext);
         if (menu != 0)
-            menu = func_ov022_021fd8a4(menu, count);
+            menu = Overlay022_Menu_Init(menu, count);
         FIELD(void *, scene, 0x2b8) = menu;
         InventoryScroll_SetFirstVisibleRow(FIELD(void *, menu, 0x30),
                       FIELD(s32, scene, 0x2c4));
@@ -85,7 +85,7 @@ extern "C" void func_ov022_021fe688(void *scene)
             const u8 *descriptor = data_020d780c + i * 0x34;
             if (GameWork_TestFlag(gGameWork,
                                   FIELD(u16, descriptor, 0x20)) != 0)
-                func_ov022_021fda7c(menu, i);
+                Overlay022_Menu_AppendIndex(menu, i);
         }
     } else {
         FIELD(void *, scene, 0x2b8) = 0;
@@ -112,7 +112,7 @@ extern "C" void func_ov022_021fe81c(void *scene)
     void *ui = FIELD(void *, menu, 0x30);
     FIELD(s32, scene, 0x2c4) = FIELD(s32, ui, 0xc);
     FIELD(s32, scene, 0x2c8) = FIELD(s32, ui, 0x14);
-    func_ov022_021fda28(menu);
+    Overlay022_Menu_Deinit(menu);
     Heap_Free(menu);
     FIELD(void *, scene, 0x2b8) = 0;
 }

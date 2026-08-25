@@ -6,8 +6,8 @@
     .extern RecordMode_GetMessageGroup
     .extern gDebugFont
 
-.global func_ov022_021fd2f4
-func_ov022_021fd2f4:
+.global Overlay022_DrawCenteredCounter
+Overlay022_DrawCenteredCounter:
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0xc
     ldr r0, L_021fd368
@@ -39,4 +39,4 @@ func_ov022_021fd2f4:
     ldmia sp!, {r3, r4, pc}
 L_021fd368: .word data_021f5128
 L_021fd36c: .word gDebugFont
-.size func_ov022_021fd2f4, . - func_ov022_021fd2f4
+.size Overlay022_DrawCenteredCounter, . - Overlay022_DrawCenteredCounter

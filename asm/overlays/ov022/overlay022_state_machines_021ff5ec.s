@@ -17,7 +17,7 @@
 .extern SpriteMotionController_Hide
 .extern SpriteMotionController_SetAnimation
 .extern Overlay022_MovingSprite_IsComplete
-.extern func_ov022_021fdafc
+.extern Overlay022_Menu_UpdateVisibility
 .extern func_ov022_021fdb38
 .extern func_ov022_021fdd1c
 .extern func_ov022_021fe898
@@ -198,7 +198,7 @@ L_021ff7fc:
     b L_021ff894
 L_021ff854:
     ldr r0, [r4, #0x2b8]
-    bl func_ov022_021fdafc
+    bl Overlay022_Menu_UpdateVisibility
     ldr r0, [r4, #0x2b8]
     bl func_ov022_021fdb38
     mov r0, r4

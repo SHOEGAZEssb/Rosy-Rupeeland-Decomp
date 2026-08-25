@@ -2,7 +2,7 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_menu_collection.c. */
 
 
-.global func_ov022_021fda78
-func_ov022_021fda78:
+.global Overlay022_MenuEntry_DestroyNoOp
+Overlay022_MenuEntry_DestroyNoOp:
     bx lr
-.size func_ov022_021fda78, . - func_ov022_021fda78
+.size Overlay022_MenuEntry_DestroyNoOp, . - Overlay022_MenuEntry_DestroyNoOp

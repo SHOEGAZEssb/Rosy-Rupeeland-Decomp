@@ -23,10 +23,10 @@ extern void SpriteMotionController_Hide(void *);
 extern void Sound_Play(void *, s32, s32);
 extern s32 GameWork_TestFlag(void *, u16);
 extern void GameWork_SetFlag(void *, u16);
-extern void func_ov022_021fd4d4(void *);
-extern void func_ov022_021fd514(void *);
-extern void func_ov022_021fd5d4(void *, void *);
-extern s32 func_ov022_021fd6dc(void *);
+extern void Overlay022_StatusWidget_SetMode2(void *);
+extern void Overlay022_StatusWidget_SetMode1(void *);
+extern void Overlay022_StatusWidget_SetSelector(void *, void *);
+extern s32 Overlay022_StatusWidget_IsTransient(void *);
 extern void func_ov022_021fdd1c(void *, void *, void *);
 extern void func_ov022_021ff0d0(void *);
 extern void func_ov022_021ff220(void *, s32);
@@ -56,22 +56,22 @@ extern "C" s32 func_ov022_021ff368(void *scene)
     void *status = FIELD(void *, scene, 0x350);
     if (FIELD(u32, scene, 0x20) & 0x20) {
         if (flags & 2) {
-            if (func_ov022_021fd6dc(status) != 0)
-                func_ov022_021fd4d4(status);
+            if (Overlay022_StatusWidget_IsTransient(status) != 0)
+                Overlay022_StatusWidget_SetMode2(status);
             layout[1] |= 1;
         } else {
             layout[1] |= 2;
         }
     } else if ((flags & 2) && FIELD(s32, status, 0x28) == 2) {
-        func_ov022_021fd514(status);
+        Overlay022_StatusWidget_SetMode1(status);
     }
 
     s32 result = TitleDialog_UpdateTextPage(dialog, layout);
     if (result & 0x200)
-        func_ov022_021fd5d4(status, FIELD(void *, dialog, 0xe8));
+        Overlay022_StatusWidget_SetSelector(status, FIELD(void *, dialog, 0xe8));
     if (!(result & 1))
         return 0;
-    func_ov022_021fd514(status);
+    Overlay022_StatusWidget_SetMode1(status);
     return 1;
 }
 
