@@ -1,0 +1,20 @@
+{
+  "func_02070638": "GraphicsBgCharacterResource_UploadToMainBg",
+  "func_020706c4": "GraphicsBgCharacterResource_UploadToSubBg",
+  "func_02070830": "GraphicsPaletteResource_ReleaseAllocation",
+  "func_02070b50": "GraphicsBgPaletteResource_UploadToMainBg",
+  "func_02070bc4": "GraphicsBgPaletteResource_UploadToSubBg",
+  "func_02070c38": "GraphicsCellResource_Init",
+  "func_02070cb4": "GraphicsCellResource_Destroy",
+  "func_02070cc8": "GraphicsCellResource_DeleteAllocatorOwned",
+  "func_02070d38": "GraphicsSpriteAnimationResource_ReleaseAllocation",
+  "func_02071800": "GraphicsArchive_AcquireCellResource",
+  "func_02071bdc": "GraphicsArchive_ReleaseCharacterResource",
+  "func_02071c38": "GraphicsArchive_ReleasePaletteResource",
+  "func_02071c94": "GraphicsArchive_ReleaseCellResource",
+  "func_02071cf0": "GraphicsArchive_ReleaseScreenResource",
+  "func_02071da8": "GraphicsArchive_ReleaseVpoResource",
+  "func_02072048": "GraphicsResourceSet_ApplyToMainBg",
+  "func_020923a4": "GraphicsBankStateSnapshot_Capture",
+  "func_02092418": "GraphicsBankStateSnapshot_Restore"
+}

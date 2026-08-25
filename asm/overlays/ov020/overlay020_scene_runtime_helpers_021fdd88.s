@@ -6,7 +6,7 @@
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
     .extern GraphicsBgMapResource_AddPaletteBankOffset
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern func_020b44e8
 
 .global func_ov020_021fdd88
@@ -43,7 +43,7 @@ func_ov020_021fdd88:
     add r0, sp, #0x4
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     add r0, sp, #0x4
     mov r1, #0x3
     mov r2, #0x0
@@ -59,7 +59,7 @@ func_ov020_021fdd88:
     add r0, sp, #0x4
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

@@ -16,7 +16,7 @@ extern void Heap_Free(void *);
 extern void PresentationList_DeleteAll(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
 extern void GraphicsSpriteRenderer_Resume(void *);
-extern void func_02092418(void *);
+extern void GraphicsBankStateSnapshot_Restore(void *);
 extern void GX_SetGraphicsMode(s32, s32, s32);
 extern void func_ov048_0220b7b4(void *);
 extern void GraphicsBankStateSnapshot_Destroy(void *);
@@ -49,7 +49,7 @@ extern "C" void *func_ov027_021fde24(void *scene)
     }
     GraphicsSpriteRenderer_Resume(data_020f4e14);
     GraphicsSpriteRenderer_Resume(gDebugFont);
-    func_02092418((u8 *)scene + 0x164);
+    GraphicsBankStateSnapshot_Restore((u8 *)scene + 0x164);
     GX_SetGraphicsMode(1, 0, 0);
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;

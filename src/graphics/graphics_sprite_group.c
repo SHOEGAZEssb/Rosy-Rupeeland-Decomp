@@ -26,9 +26,9 @@ extern GraphicsSpriteStatePool gGraphicsSpriteStatePool;
 extern GraphicsSpriteState gGraphicsSpriteStates[];
 extern void GraphicsSpriteResource_ReleaseTexture(void *resource);
 extern void GraphicsSpriteGraphicsResource_Prepare(void *resource);
-extern void func_02070830(void *resource);
+extern void GraphicsPaletteResource_ReleaseAllocation(void *resource);
 extern void GraphicsSpriteResource_Prepare(void *resource);
-extern void func_02070d38(void *resource);
+extern void GraphicsSpriteAnimationResource_ReleaseAllocation(void *resource);
 extern void GraphicsSpriteAnimationResource_Prepare(void *resource);
 extern GraphicsSpriteState *GraphicsSpriteStatePool_Allocate(
     void *owner, void *graphicsResource, void *paletteResource,
@@ -65,8 +65,8 @@ void GraphicsSpriteState_ReleaseResources(GraphicsSpriteState *state)
     if (state->graphicsVramBinding != 0) {
         ((u8 *)state->graphicsVramBinding)[0x0c] = 0;
     }
-    func_02070830(state->paletteResource);
-    func_02070d38(state->animationResource);
+    GraphicsPaletteResource_ReleaseAllocation(state->paletteResource);
+    GraphicsSpriteAnimationResource_ReleaseAllocation(state->animationResource);
 }
 
 /*

@@ -28,7 +28,7 @@ extern void GraphicsBankStateSnapshot_Init(void *);
 extern void func_ov043_0220b740(void *);
 extern void func_02091b6c(void *);
 extern void G3X_Init(void);
-extern void func_020923a4(void *);
+extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void GraphicsSpriteRenderer_Suspend(void *);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
 extern void func_020ae6dc(void);
@@ -80,7 +80,7 @@ extern "C" void *Overlay027Scene_Init(void *scene)
     func_02091b6c((u8 *)scene + 0x5c4);
     G3X_Init();
     FIELD(s32, scene, 0x50) = 0;
-    func_020923a4((u8 *)scene + 0x164);
+    GraphicsBankStateSnapshot_Capture((u8 *)scene + 0x164);
     GraphicsSpriteRenderer_Suspend(data_020f4e14);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
     GraphicsSpriteRenderer_Suspend(gDebugFont);

@@ -14,13 +14,13 @@ extern "C" {
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
-extern void func_02070638(void *, s32, s32);
-extern void func_020706c4(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
 extern s32 GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void TitleDisplay_ConfigureMain2dEngine(s32, s32);
 extern void TitleDisplay_ConfigureSub2dEngine(s32, s32);
@@ -126,7 +126,7 @@ extern "C" void func_ov022_021fe498(void *scene)
     GraphicsResourceSet_Load(resources, data_020f4e18,
                              0xc006, 0xc007, 0xc008);
     func_020b44e8();
-    func_020706c4((void *)resources[0], 2, 0);
+    GraphicsBgCharacterResource_UploadToSubBg((void *)resources[0], 2, 0);
     GraphicsBgMapResource_UploadToSubBg((void *)resources[2], 2, 0);
     func_020b1ff0((void *)FIELD(s32, scene, 0x368), 0, 0x20);
     GraphicsResourceSet_Destroy(resources);
@@ -152,14 +152,14 @@ extern "C" void func_ov022_021fe544(void *scene)
     GraphicsResourceSet_Load(resources, data_020f4e18,
                              0x8038, 0x8039, 0x803a);
     func_020b44e8();
-    func_02072048(resources, 1, 0);
+    GraphicsResourceSet_ApplyToMainBg(resources, 1, 0);
     FIELD(s32, scene, 0x48) = 0x1c;
     func_020afd0c((void *)0x04000050, 4, 8, 8, 8);
     GraphicsResourceSet_Load(resources, data_020f4e18,
                              0xc006, 0xc007, 0xc008);
     GraphicsBgMapResource_SetPaletteBank((void *)resources[2], 8);
     func_020b44e8();
-    func_02070638((void *)resources[0], 2, 0);
+    GraphicsBgCharacterResource_UploadToMainBg((void *)resources[0], 2, 0);
     GraphicsBgMapResource_UploadToMainBg((void *)resources[2], 2, 0);
     func_020b2058(data_021f5ee8, 0x100, 0x20);
     GraphicsResourceSet_Destroy(resources);

@@ -15,9 +15,9 @@
 .extern GraphicsArchive_AcquireCharacterResource
 .extern GraphicsArchive_AcquirePaletteResource
 .extern GraphicsArchive_AcquireScreenResource
-.extern func_02071bdc
-.extern func_02071c38
-.extern func_02071cf0
+.extern GraphicsArchive_ReleaseCharacterResource
+.extern GraphicsArchive_ReleasePaletteResource
+.extern GraphicsArchive_ReleaseScreenResource
 .extern func_020b17ec
 .extern func_020b1924
 .extern func_020b1b2c
@@ -107,15 +107,15 @@ func_ov055_0220ebec:
     ldr r0, .L_0220eec4
     mov r1, r11
     ldr r0, [r0, #0x0]
-    bl func_02071bdc
+    bl GraphicsArchive_ReleaseCharacterResource
     ldr r0, .L_0220eec4
     ldr r1, [sp, #0x8]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, .L_0220eec4
     mov r1, r7
     ldr r0, [r0, #0x0]
-    bl func_02071cf0
+    bl GraphicsArchive_ReleaseScreenResource
     add r6, r6, #0x1
     cmp r6, #0x2
     blt .L_0220ec08
@@ -200,15 +200,15 @@ func_ov055_0220ebec:
     ldr r0, .L_0220eec4
     mov r1, r11
     ldr r0, [r0, #0x0]
-    bl func_02071bdc
+    bl GraphicsArchive_ReleaseCharacterResource
     ldr r0, .L_0220eec4
     ldr r1, [sp, #0x4]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, .L_0220eec4
     mov r1, r6
     ldr r0, [r0, #0x0]
-    bl func_02071cf0
+    bl GraphicsArchive_ReleaseScreenResource
     add r5, r5, #0x1
     cmp r5, #0x2
     blt .L_0220ed70

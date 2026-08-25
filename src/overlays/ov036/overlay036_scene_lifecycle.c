@@ -18,7 +18,7 @@ extern "C" {
 extern void Graphics3DResourceOwner_Destroy(void *owner);
 extern void Heap_Free(void *allocation);
 extern void GraphicsSpriteRenderer_Resume(void *resource);
-extern void func_02092418(void *state);
+extern void GraphicsBankStateSnapshot_Restore(void *state);
 extern void GX_SetGraphicsMode(s32 mode, s32 bgMode, s32 bg0Mode);
 extern void SoundPhaseManager_Update(void *sound, s32 first, s32 second);
 extern void func_ov048_0220b7b4(void *state);
@@ -46,7 +46,7 @@ static void teardown_scene(void *scene)
     }
     GraphicsSpriteRenderer_Resume(data_020f4e14);
     GraphicsSpriteRenderer_Resume(gDebugFont);
-    func_02092418((u8 *)scene + 0x64);
+    GraphicsBankStateSnapshot_Restore((u8 *)scene + 0x64);
     GX_SetGraphicsMode(1, 0, 0);
     REG16(0x04000050) = 0;
     REG16(0x04001050) = 0;

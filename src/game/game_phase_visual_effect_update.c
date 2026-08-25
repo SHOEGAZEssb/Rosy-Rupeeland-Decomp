@@ -33,7 +33,7 @@ void GamePhaseVisualEffect_Update(GamePhaseVisualEffect *self)
             volatile u16 *bg1cnt = (volatile u16 *)0x0400000a;
             self->flags &= ~2;
             if (self->resources.resource0)
-                func_02072048(&self->resources, 1, 0x1e0);
+                GraphicsResourceSet_ApplyToMainBg(&self->resources, 1, 0x1e0);
             *bg1cnt = (u16)((*bg1cnt & ~3) | ((self->flags >> 4) & 0xf));
         }
         *(volatile u32 *)0x04000014 =

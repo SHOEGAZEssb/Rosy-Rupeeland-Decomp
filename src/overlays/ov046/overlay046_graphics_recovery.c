@@ -63,7 +63,7 @@ extern "C" void func_ov046_0220bac0(void *panel)
         bgControl[3] = (u16)((bgControl[3] & 0x43) | 0x0c00);
         TitleDisplay_ResetMainBgScroll();
         TitleDisplay_SetMainBgPriorities(2, 2, 2, 3);
-        func_02072048(&resources, 3, 0x1e0);
+        GraphicsResourceSet_ApplyToMainBg(&resources, 3, 0x1e0);
     } else {
         TitleDisplay_ConfigureSub2dEngine(0);
         bgControl = (volatile u16 *)0x04001008;
@@ -209,7 +209,7 @@ extern "C" void func_ov046_0220bd14(void *panel)
             }
             func_020b44e8();
             if (FIELD(void *, panel, 0) == data_020f4e14) {
-                func_02072048(&resources, slot, 0);
+                GraphicsResourceSet_ApplyToMainBg(&resources, slot, 0);
             } else {
                 GraphicsResourceSet_Apply(&resources, slot, 0);
             }

@@ -45,9 +45,9 @@ extern void GraphicsSpriteGroup_Clear(void *);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
 extern void func_02071b94(void *, s32, s32, s32, void **, void **, void **);
-extern void func_02071bdc(void *, void *);
-extern void func_02071c38(void *, void *);
-extern void func_02071c94(void *, void *);
+extern void GraphicsArchive_ReleaseCharacterResource(void *, void *);
+extern void GraphicsArchive_ReleasePaletteResource(void *, void *);
+extern void GraphicsArchive_ReleaseCellResource(void *, void *);
 extern s32 func_020beb18(s32);
 extern s32 func_020be8c0(s32, s32);
 extern s32 func_020beb6c(s32, s32);
@@ -396,9 +396,9 @@ void *func_ov066_0221096c(void *controller)
     GraphicsSpriteGroup_Clear(FIELD(void *, controller, 0x1a4));
     GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14[0],
                                            FIELD(void *, controller, 0x1a4));
-    func_02071bdc(data_020f4e18[0], FIELD(void *, controller, 0x1a8));
-    func_02071c38(data_020f4e18[0], FIELD(void *, controller, 0x1ac));
-    func_02071c94(data_020f4e18[0], FIELD(void *, controller, 0x1b0));
+    GraphicsArchive_ReleaseCharacterResource(data_020f4e18[0], FIELD(void *, controller, 0x1a8));
+    GraphicsArchive_ReleasePaletteResource(data_020f4e18[0], FIELD(void *, controller, 0x1ac));
+    GraphicsArchive_ReleaseCellResource(data_020f4e18[0], FIELD(void *, controller, 0x1b0));
     return controller;
 }
 

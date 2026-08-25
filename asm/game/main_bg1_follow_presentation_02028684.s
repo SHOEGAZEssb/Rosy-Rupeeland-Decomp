@@ -9,7 +9,7 @@
 .extern GamePhaseGraphicsMetadata_GetByIndex
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_AddPaletteBankOffset
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern func_020b44e8
 
     .global MainBg1FollowPresentation_SetupBg1Resources
@@ -47,7 +47,7 @@ MainBg1FollowPresentation_SetupBg1Resources: ; 0x02028684
     bic r3, r3, #0x3
     orr r3, r3, #0x3
     strh r3, [ip, #0x0]
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r0, [sp, #0x8]
     bl GraphicsBgResourceData_GetDecoded
     mov r1, r0

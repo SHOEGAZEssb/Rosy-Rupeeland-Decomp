@@ -51,7 +51,7 @@ extern void *Graphics3DRenderObject_Init(void *, void *, void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void SceneInputBase_Init(void *);
 extern void GraphicsBankStateSnapshot_Init(void *);
-extern void func_020923a4(void *);
+extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void TitleScreenResourceCollection_Init(void *);
 extern void func_02092754(void *, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
@@ -138,7 +138,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     FIELD(void *, state, 0x400) = 0;
     FIELD(void *, state, 0x440) = 0;
     GraphicsSpriteRenderer_ReleaseExtendedPalette(data_020f4e14, 0);
-    func_020923a4((u8 *)state + 0x404);
+    GraphicsBankStateSnapshot_Capture((u8 *)state + 0x404);
     func_020ae7b0();
     func_020ae778();
 

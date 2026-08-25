@@ -13,7 +13,7 @@
 .extern Graphics3DLightSet_Destroy
 .extern func_02092314
 .extern GraphicsBankStateSnapshot_Destroy
-.extern func_02092418
+.extern GraphicsBankStateSnapshot_Restore
 .extern PresentationList_DeleteAll
 .extern func_ov048_0220b7b4
 .extern gDebugFont
@@ -64,7 +64,7 @@ L_022000e4:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x328
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     mov r1, #0x0
     mov r2, r1
     mov r0, #0x1

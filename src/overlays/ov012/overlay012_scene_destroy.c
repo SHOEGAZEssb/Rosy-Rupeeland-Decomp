@@ -13,7 +13,7 @@ extern void Graphics3DResourceBinding_Destroy(void *);
 extern void Heap_Free(void *);
 extern void Heap_FreeCore(void *);
 extern void Graphics3DResourceOwner_Destroy(void *);
-extern void func_02092418(void *);
+extern void GraphicsBankStateSnapshot_Restore(void *);
 extern void DebugText_BeginFrame(void);
 extern void GraphicsBankStateSnapshot_Destroy(void *);
 extern void func_ov012_021fce3c(void *);
@@ -44,7 +44,7 @@ void *func_ov012_021fd468(void *state)
         Graphics3DResourceOwner_Destroy(resource);
         Heap_Free(resource);
     }
-    func_02092418((u8 *)state + 0x1c4);
+    GraphicsBankStateSnapshot_Restore((u8 *)state + 0x1c4);
     DebugText_BeginFrame();
     GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x1c4);
     func_ov012_021fce3c((u8 *)state + 0x158);

@@ -97,9 +97,9 @@ extern "C" void *Heap_Alloc(s32, const void *, s32, void *);
 extern "C" void Heap_Free(void *);
 extern "C" void *AnimationResource_Init(void *, s32, s32, s32);
 extern "C" void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
-extern "C" void func_02071bdc(void *, void *);
-extern "C" void func_02071c38(void *, void *);
-extern "C" void func_02071c94(void *, void *);
+extern "C" void GraphicsArchive_ReleaseCharacterResource(void *, void *);
+extern "C" void GraphicsArchive_ReleasePaletteResource(void *, void *);
+extern "C" void GraphicsArchive_ReleaseCellResource(void *, void *);
 extern "C" void *GraphicsSpriteGroup_CreateState(void *, void *, void *, void *, s32);
 extern "C" void GraphicsSpriteGroup_ReleaseState(void *);
 extern "C" void GraphicsSpriteState_SetAnimationIndex(void *, s32);
@@ -311,9 +311,9 @@ extern "C" void func_ov089_02217b94(void *attachment)
     void *resource;
     if (sprite != 0) {
         GraphicsSpriteGroup_ReleaseState(sprite);
-        func_02071bdc(data_020f4e18, FIELD(void *, attachment, 8));
-        func_02071c38(data_020f4e18, FIELD(void *, attachment, 0xc));
-        func_02071c94(data_020f4e18, FIELD(void *, attachment, 0x10));
+        GraphicsArchive_ReleaseCharacterResource(data_020f4e18, FIELD(void *, attachment, 8));
+        GraphicsArchive_ReleasePaletteResource(data_020f4e18, FIELD(void *, attachment, 0xc));
+        GraphicsArchive_ReleaseCellResource(data_020f4e18, FIELD(void *, attachment, 0x10));
         FIELD(void *, attachment, 4) = 0;
     }
     resource = FIELD(void *, attachment, 0);

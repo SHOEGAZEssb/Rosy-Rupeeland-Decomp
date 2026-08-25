@@ -18,7 +18,7 @@ extern void func_020708c4(void *);
 extern void func_02070958(...);
 extern void func_020b44e8(void);
 extern s32 GraphicsResource_GetFormat(void *);
-extern void func_02070b50(...);
+extern void GraphicsBgPaletteResource_UploadToMainBg(...);
 extern void Overlay032Controller_SetScaleTarget(...);
 extern void Overlay032Controller_UpdateScale(void *);
 #ifdef __cplusplus
@@ -29,7 +29,7 @@ static void upload_selected_map(void *scene)
 {
     func_020b44e8();
     void *tiles = FIELD(void *, scene, 0xb44);
-    func_02070b50(FIELD(void *, scene, 0xb48), GraphicsResource_GetFormat(tiles) ? 0x6000 : 0);
+    GraphicsBgPaletteResource_UploadToMainBg(FIELD(void *, scene, 0xb48), GraphicsResource_GetFormat(tiles) ? 0x6000 : 0);
 }
 
 static void set_map_scalar(void *scene, s32 fixedValue)

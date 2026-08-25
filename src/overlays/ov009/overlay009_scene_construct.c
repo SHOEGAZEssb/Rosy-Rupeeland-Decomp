@@ -26,7 +26,7 @@ extern void Scene_SetFlags03(void *state);
 extern void SceneInputBase_Init(void *member);
 extern void AnimationResourceState_InitEmbedded(void *member);
 extern void GraphicsBankStateSnapshot_Init(void *member);
-extern void func_020923a4(void *member);
+extern void GraphicsBankStateSnapshot_Capture(void *member);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *manager);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
 extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
@@ -92,7 +92,7 @@ void *func_ov009_021fce9c(void *state)
     FIELD(const void *, state, 0x24) = data_ov009_021feec0;
     AnimationResourceState_InitEmbedded((u8 *)state + 0x78);
     GraphicsBankStateSnapshot_Init((u8 *)state + 0x13c);
-    func_020923a4((u8 *)state + 0x13c);
+    GraphicsBankStateSnapshot_Capture((u8 *)state + 0x13c);
     FIELD(s32, state, 0x74) = 0;
     manager = data_020f4e14;
     GraphicsSpriteRenderer_ClearTextBuffer(manager);
@@ -147,7 +147,7 @@ void *func_ov009_021fce9c(void *state)
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0xc003, 0xc004,
                              0xc005);
     func_020b44e8();
-    func_02072048(&resources, 3, 0);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 3, 0);
     {
         u32 component = FIELD(u32, state, 0xe8);
         TitlePalette_SetMainBackdrop((u16)(component | (component << 5) | (component << 10)));

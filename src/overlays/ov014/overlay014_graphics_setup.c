@@ -26,9 +26,9 @@ extern void GraphicsResourceSet_Apply(Overlay014ResourceSet *, s32, s32);
 extern void GraphicsResourceSet_Destroy(Overlay014ResourceSet *);
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void func_020b44e8(void);
-extern void func_02072048(Overlay014ResourceSet *, s32, s32);
-extern void func_020706c4(void *, s32, s32);
-extern void func_02070bc4(void *, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(Overlay014ResourceSet *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
+extern void GraphicsBgPaletteResource_UploadToSubBg(void *, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 #ifdef __cplusplus
 }
@@ -87,9 +87,9 @@ void func_ov014_021fd07c(void *state)
     GraphicsResourceSet_Load(&second, data_020f4e18, 0x8008, 0x8009, 0x800f);
     GraphicsResourceSet_Load(&third, data_020f4e18, 0x8008, 0x8009, 0x800c);
     func_020b44e8();
-    func_02072048(&first, 2, 0);
-    func_020706c4((void *)first.words[0], 0, 0);
-    func_02070bc4((void *)first.words[1], 0);
+    GraphicsResourceSet_ApplyToMainBg(&first, 2, 0);
+    GraphicsBgCharacterResource_UploadToSubBg((void *)first.words[0], 0, 0);
+    GraphicsBgPaletteResource_UploadToSubBg((void *)first.words[1], 0);
     GraphicsBgMapResource_UploadToSubBg((void *)second.words[2], 0, 0);
     GraphicsBgMapResource_UploadToSubBg((void *)third.words[2], 1, 0);
 

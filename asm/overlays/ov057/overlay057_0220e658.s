@@ -5,8 +5,8 @@
 .extern data_020f4e18
 .extern gMainBgPaletteBuffer
 .extern gSubBgPaletteBuffer
-.extern func_02070638
-.extern func_020706c4
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgCharacterResource_UploadToSubBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg
@@ -52,7 +52,7 @@ func_ov057_0220e658:
     ldr r0, [r4, #0x8]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [r4, #0x10]
     mov r1, #0x1
     mov r2, #0x0
@@ -67,7 +67,7 @@ func_ov057_0220e658:
     ldr r0, [r4, #0x8]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [r4, #0x10]
     mov r1, #0x1
     mov r2, #0x0

@@ -10,7 +10,7 @@
     .extern GraphicsBgMapResource_SetPaletteBank
     .extern GraphicsBgMapResource_AddPaletteBankOffset
     .extern func_020b44e8
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsResourceSet_Destroy
     .extern data_020f4e18
@@ -71,7 +71,7 @@ func_ov038_021fd28c:
     add r0, sp, #0x4
     mov r1, #0x3
     mov r2, #0x1e0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_021fd374
     ldr r1, L_021fd370
     str r3, [sp, #0x0]
@@ -87,7 +87,7 @@ func_ov038_021fd28c:
     add r0, sp, #0x4
     mov r1, #0x0
     mov r2, #0x100
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_021fd378
     ldr r1, L_021fd370
     str r3, [sp, #0x0]

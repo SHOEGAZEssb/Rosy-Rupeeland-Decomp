@@ -3,7 +3,7 @@
 .extern GraphicsResourceSet_Load
 .extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_020b44e8
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern GraphicsResourceSet_Apply
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern func_ov044_0220c3e4
@@ -34,7 +34,7 @@ func_ov044_0220c2e4:
     add r0, sp, #0x10
     mov r1, #0x3
     mov r2, #0x100
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     add r0, sp, #0x10
     mov r1, #0x3
     mov r2, #0x100

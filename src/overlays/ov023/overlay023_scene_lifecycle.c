@@ -20,7 +20,7 @@ extern void *Heap_Alloc(u32, const void *, u32, void *);
 extern void Heap_Free(void *);
 extern void __construct_array(void *, s32, s32, void *);
 extern void __destroy_arr(void *, s32, s32, void *);
-extern void func_02071c38(void *, void *);
+extern void GraphicsArchive_ReleasePaletteResource(void *, void *);
 extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
@@ -175,7 +175,7 @@ static void cleanup_scene(void *scene)
         if (collection) { func_ov023_021fd5d0(collection); Heap_Free(collection); }
     }
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xc8));
-    func_02071c38(data_020f4e18, FIELD(void *, scene, 0x4c0));
+    GraphicsArchive_ReleasePaletteResource(data_020f4e18, FIELD(void *, scene, 0x4c0));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);

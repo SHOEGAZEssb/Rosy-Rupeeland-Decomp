@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov031/overlay031_transition_setup.c for documented portable C. */
 .extern data_020f4e18
-.extern func_020706c4
-.extern func_02070bc4
+.extern GraphicsBgCharacterResource_UploadToSubBg
+.extern GraphicsBgPaletteResource_UploadToSubBg
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern TitleDisplay_ConfigureSub2dEngine
@@ -62,10 +62,10 @@ func_ov031_021fdfa8:
     mov r1, #0x0
     ldr r0, [sp, #0x4]
     mov r2, r1
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x0
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
@@ -84,10 +84,10 @@ func_ov031_021fdfa8:
     ldr r0, [sp, #0x4]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x6000
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
@@ -106,7 +106,7 @@ func_ov031_021fdfa8:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0

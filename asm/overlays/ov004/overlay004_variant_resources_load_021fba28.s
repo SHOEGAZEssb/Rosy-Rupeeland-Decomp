@@ -3,11 +3,11 @@
     .extern GraphicsResourceSet_Load
     .extern GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor
     .extern func_020b44e8
-    .extern func_02070638
-    .extern func_02070b50
+    .extern GraphicsBgCharacterResource_UploadToMainBg
+    .extern GraphicsBgPaletteResource_UploadToMainBg
     .extern GraphicsBgMapResource_UploadToMainBg
-    .extern func_020706c4
-    .extern func_02070bc4
+    .extern GraphicsBgCharacterResource_UploadToSubBg
+    .extern GraphicsBgPaletteResource_UploadToSubBg
     .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsResourceSet_ReleaseHandles
     .extern Sound_LoadGroup
@@ -143,10 +143,10 @@ L_021fbbdc:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     mov r1, #0x4000
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
@@ -154,10 +154,10 @@ L_021fbbdc:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x4000
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
@@ -234,10 +234,10 @@ L_021fbd2c:
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     mov r1, #0x6000
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0
@@ -245,10 +245,10 @@ L_021fbd2c:
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x6000
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0

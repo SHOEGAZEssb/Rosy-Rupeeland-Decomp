@@ -26,9 +26,9 @@ extern void Scene_Init(void *state);
 extern void Scene_Destroy(void *state);
 extern void SceneInputBase_Init(void *member);
 extern void GraphicsBankStateSnapshot_Init(void *renderer);
-extern void func_020923a4(void *renderer);
+extern void GraphicsBankStateSnapshot_Capture(void *renderer);
 extern void GraphicsBankStateSnapshot_Destroy(void *renderer);
-extern void func_02092418(void *renderer);
+extern void GraphicsBankStateSnapshot_Restore(void *renderer);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *renderer);
 extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
                             void *heapContext);
@@ -107,7 +107,7 @@ void *func_ov011_021fdb6c(void *state)
     FIELD(s32, state, 0xbc) = 0;
 
     func_ov011_021fce00(0);
-    func_020923a4((u8 *)state + 0x80);
+    GraphicsBankStateSnapshot_Capture((u8 *)state + 0x80);
     GX_DispOn();
     *mainDispcnt = (*mainDispcnt & ~0x1f00u) | 0x1000u;
     *subDispcnt |= 0x10000u;
@@ -148,7 +148,7 @@ void *func_ov011_021fdde0(void *state)
     FIELD(const void *, state, 0x00) = data_ov011_021fe5c8;
     FIELD(const void *, state, 0x24) = data_ov011_021fe5fc;
     func_ov011_021fce00(0);
-    func_02092418((u8 *)state + 0x80);
+    GraphicsBankStateSnapshot_Restore((u8 *)state + 0x80);
     Heap_FreeCore(FIELD(void *, state, 0x7c));
     DebugText_BeginFrame();
     GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x80);

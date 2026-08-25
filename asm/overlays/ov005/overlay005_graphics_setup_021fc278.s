@@ -8,8 +8,8 @@
     .extern func_020b44e8
     .extern GraphicsResourceSet_Apply
     .extern GraphicsBgMapResource_SetPaletteBank
-    .extern func_020706c4
-    .extern func_02070bc4
+    .extern GraphicsBgCharacterResource_UploadToSubBg
+    .extern GraphicsBgPaletteResource_UploadToSubBg
     .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsBgResourceData_GetDecoded
     .extern TitlePalette_SetSubBackdrop
@@ -222,10 +222,10 @@ L_021fc514:
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x1e0
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0

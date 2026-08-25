@@ -25,7 +25,7 @@ extern void *GraphicsArchive_LoadIndexedPayload(void *archive, u32 resource_id, 
 extern void *GraphicsArchiveResource_DestroyVariant(void *self);
 extern void func_020a7298(void *heap, void *allocation);
 
-void *func_02070c38(void *self, void *archive, const void *source,
+void *GraphicsCellResource_Init(void *self, void *archive, const void *source,
                     u32 source_size, u32 resource_id)
 {
     u8 *bytes = (u8 *)self;
@@ -43,20 +43,20 @@ void *func_02070c38(void *self, void *archive, const void *source,
 
 /* Non-deleting and allocator-aware deleting destructors at 0x02070CB4 and
  * 0x02070CC8, used by the retail cell-resource vtable. */
-void *func_02070cb4(void *self)
+void *GraphicsCellResource_Destroy(void *self)
 {
     GraphicsArchiveResource_DestroyVariant(self);
     return self;
 }
 
-void *func_02070cc8(void *self)
+void *GraphicsCellResource_DeleteAllocatorOwned(void *self)
 {
     GraphicsArchiveResource_DestroyVariant(self);
     func_020a7298(*(void **)(data_021e9e60 + 4), self);
     return self;
 }
 
-void *func_02071800(void *archive, u32 resource_id)
+void *GraphicsArchive_AcquireCellResource(void *archive, u32 resource_id)
 {
     GraphicsArchiveCachedResource *resource;
     const u32 *source;
@@ -72,7 +72,7 @@ void *func_02071800(void *archive, u32 resource_id)
         if (source != 0 && source[0] == 0x56434520) {
             resource = (GraphicsArchiveCachedResource *)GraphicsArchive_AllocateCachedHandle(0x34);
             if (resource != 0) {
-                resource = (GraphicsArchiveCachedResource *)func_02070c38(
+                resource = (GraphicsArchiveCachedResource *)GraphicsCellResource_Init(
                     resource, archive, source, source_size, resource_id);
             }
             resource->reference_count++;

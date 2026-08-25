@@ -22,7 +22,7 @@
 .extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern TitleRandom_NextBounded
-.extern func_02092418
+.extern GraphicsBankStateSnapshot_Restore
 .extern PresentationScalar_TransitionTo
 .extern Presentation_InitVariant
 .extern Presentation_SetPosition
@@ -55,7 +55,7 @@ DualArrayBlendPresentation_Destroy: ; 0x020216e0
     str r1, [r2, #0x0]
     mov r1, #0x0
     strh r1, [r2, #0x50]
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     b .L_02021764
 .L_02021738:
     ldr r3, .L_020217a0

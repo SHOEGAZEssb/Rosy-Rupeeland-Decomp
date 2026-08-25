@@ -9,8 +9,8 @@
 .extern GamePhaseRegionTable_Load
 .extern GamePhaseRegionTable_GetRegionCount
 .extern GamePhaseRegionTable_SetRevealFlagBase
-.extern func_020706c4
-.extern func_02070bc4
+.extern GraphicsBgCharacterResource_UploadToSubBg
+.extern GraphicsBgPaletteResource_UploadToSubBg
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsBgMapResource_SetPaletteBank
 .extern AnimationResourceState_ReplaceResources
@@ -153,7 +153,7 @@ func_ov059_0220fd80:
     ldr r0, [sp, #0x14]
     ldr r1, [r10, #0x54]
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x1c]
     ldr r1, [r10, #0x54]
     mov r2, #0x0
@@ -161,7 +161,7 @@ func_ov059_0220fd80:
     ldr r1, [sp, #0x4c]
     ldr r0, [sp, #0x18]
     mov r1, r1, lsl #0x5
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r1, .L_022100b8
     mov r2, #0x30c0
     str r1, [sp, #0x0]

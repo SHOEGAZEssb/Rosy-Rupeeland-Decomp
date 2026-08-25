@@ -8,8 +8,8 @@ extern "C" void Heap_Free(void *); extern "C" void GX_DispOn(void);
 extern "C" void DebugText_BeginFrame(void); extern "C" void Heap_FreeAlternateEntry(void *);
 extern "C" void *Heap_AllocAlternateEntry(s32, const void *, s32, void *);
 extern "C" void func_02071b94(void *, s32, s32, s32, void **, void **, void **);
-extern "C" void func_02071bdc(void *, void *); extern "C" void func_02071c38(void *, void *);
-extern "C" void func_02071c94(void *, void *);
+extern "C" void GraphicsArchive_ReleaseCharacterResource(void *, void *); extern "C" void GraphicsArchive_ReleasePaletteResource(void *, void *);
+extern "C" void GraphicsArchive_ReleaseCellResource(void *, void *);
 extern "C" void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern "C" void GraphicsSpriteGroupOwner_DestroyGroup(void *, void *);
 extern "C" void GraphicsSpriteGroup_Clear(void *);
@@ -63,7 +63,7 @@ extern "C" void *func_ov068_02210070(void *h,s32 count){if(FIELD(void*,h,0))func
 static void destroy_scene(void *s)
 {
     FIELD(void*,s,0)=data_ov068_0221077c;
-    for(s32 i=0;i<2;++i){func_02071bdc(data_020f4e18,FIELD(void*,s,0x30+i*4));func_02071c38(data_020f4e18,FIELD(void*,s,0x3c+i*4));func_02071c94(data_020f4e18,FIELD(void*,s,0x48+i*4));}
+    for(s32 i=0;i<2;++i){GraphicsArchive_ReleaseCharacterResource(data_020f4e18,FIELD(void*,s,0x30+i*4));GraphicsArchive_ReleasePaletteResource(data_020f4e18,FIELD(void*,s,0x3c+i*4));GraphicsArchive_ReleaseCellResource(data_020f4e18,FIELD(void*,s,0x48+i*4));}
     GraphicsSpriteGroup_Clear(FIELD(void*,s,0x24)); GraphicsSpriteGroupOwner_DestroyGroup(data_020f4e14,FIELD(void*,s,0x24));
     func_ov068_02210024((u8*)s+0x28); Scene_Destroy(s);
 }

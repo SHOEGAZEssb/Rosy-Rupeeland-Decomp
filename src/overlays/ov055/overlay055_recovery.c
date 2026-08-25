@@ -33,8 +33,8 @@ extern void RuntimePresentationManager_AppendFirstListEffect(void *, void *);
 extern void *OverlayManager_GetGlobal(void); extern void OverlayManager_UnloadOverlay(void *, s32);
 extern void *GraphicsArchive_AcquireCharacterResource(void *, u32); extern void *GraphicsArchive_AcquirePaletteResource(void *, u32);
 extern void *GraphicsArchive_AcquireScreenResource(void *, u32); extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void GraphicsBgMapResource_SetPaletteBank(void *, s32); extern void func_02071bdc(void *, void *);
-extern void func_02071c38(void *, void *); extern void func_02071cf0(void *, void *);
+extern void GraphicsBgMapResource_SetPaletteBank(void *, s32); extern void GraphicsArchive_ReleaseCharacterResource(void *, void *);
+extern void GraphicsArchive_ReleasePaletteResource(void *, void *); extern void GraphicsArchive_ReleaseScreenResource(void *, void *);
 extern void func_020b44e8(void); extern void func_020b1c64(const void *, u32, u32);
 extern void func_020b1924(const void *, u32, u32); extern void func_020b1b2c(const void *, u32, u32);
 extern void func_020b17ec(const void *, u32, u32); extern void PaletteBuffer_Write(void *, const void *, u32, u32);
@@ -160,7 +160,7 @@ static void Overlay055_LoadBgPair(const Overlay055BgConfig *config, s32 sub)
             PaletteBuffer_Write(gSubBgPaletteBuffer,GraphicsBgResourceData_GetDecoded(palette),e->palette_bank<<5,e->palette_count<<5);}
         else{func_020b1c64(FIELD(void*,map,0x24),(u32)(i*3)<<8,0x300); func_020b1924(FIELD(void*,character,0x24),e->character_destination,e->character_size);
             PaletteBuffer_Write(gMainBgPaletteBuffer,GraphicsBgResourceData_GetDecoded(palette),e->palette_bank<<5,e->palette_count<<5);}
-        func_02071bdc(archive,character); func_02071c38(archive,palette); func_02071cf0(archive,map);}
+        GraphicsArchive_ReleaseCharacterResource(archive,character); GraphicsArchive_ReleasePaletteResource(archive,palette); GraphicsArchive_ReleaseScreenResource(archive,map);}
 }
 
 /* Load paired main/sub background resources. */

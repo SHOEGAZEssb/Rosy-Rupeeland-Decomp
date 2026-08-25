@@ -15,8 +15,8 @@
 .extern SubBg1_SetControl
 .extern SubBg2_SetControl
 .extern PairedReferenceState_SetReferencesAndReset
-.extern func_02070638
-.extern func_020706c4
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgCharacterResource_UploadToSubBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg
@@ -108,7 +108,7 @@ DisplayFadePresentation_Init: ; 0x02020e84
     orr r0, r3, r0, lsl #0x8
     str r0, [r5, #0x0]
     ldr r0, [sp, #0x4]
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
@@ -162,7 +162,7 @@ DisplayFadePresentation_Init: ; 0x02020e84
     orr r0, r3, r0, lsl #0x8
     str r0, [r5, #0x0]
     ldr r0, [sp, #0x4]
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0

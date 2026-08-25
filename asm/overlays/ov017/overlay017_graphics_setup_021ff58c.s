@@ -8,7 +8,7 @@
     .extern GraphicsResourceSet_Init
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern TitleDisplay_ConfigureSub2dEngine
     .extern TitleDisplay_ResetMainBgScroll
     .extern TitleDisplay_ResetSubBgScroll
@@ -105,7 +105,7 @@ func_ov017_021ff58c:
     add r0, sp, #0x4
     mov r1, r5
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_021ff758
     ldr r1, L_021ff754
     str r3, [sp, #0x0]

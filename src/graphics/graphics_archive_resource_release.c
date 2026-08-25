@@ -30,7 +30,7 @@ void GraphicsSpriteResource_ReleaseTexture(void *resource)
 }
 
 /* Release the palette allocation and invalidate its derived pointer. */
-void func_02070830(void *resource)
+void GraphicsPaletteResource_ReleaseAllocation(void *resource)
 {
     u8 *bytes = (u8 *)resource;
     void **allocation = (void **)(bytes + 0x14);
@@ -55,7 +55,7 @@ void GraphicsArchiveResource_ReleaseAlternateBuffer(void *resource)
 }
 
 /* Release a cell/animation allocation and all four derived table pointers. */
-void func_02070d38(void *resource)
+void GraphicsSpriteAnimationResource_ReleaseAllocation(void *resource)
 {
     u8 *bytes = (u8 *)resource;
     void **allocation = (void **)(bytes + 0x14);
@@ -95,7 +95,7 @@ static void ReleaseCachedResource(void *archive, void *resource,
     vtable[1](resource);
 }
 
-void func_02071c94(void *archive, void *resource)
+void GraphicsArchive_ReleaseCellResource(void *archive, void *resource)
 {
     ReleaseCachedResource(archive, resource, 0xcc);
 }
@@ -107,7 +107,7 @@ void GraphicsArchive_ReleaseResourceE4(void *archive, void *resource)
 }
 
 /* Releases the resource family stored in archive cache +0xf0. */
-void func_02071da8(void *archive, void *resource)
+void GraphicsArchive_ReleaseVpoResource(void *archive, void *resource)
 {
     ReleaseCachedResource(archive, resource, 0xf0);
 }

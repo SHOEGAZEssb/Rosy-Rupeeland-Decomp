@@ -26,9 +26,9 @@ extern "C" {
 #endif
 extern void GraphicsResourceSet_Load(...);
 extern void func_020b44e8(void);
-extern void func_02070638(...);
+extern void GraphicsBgCharacterResource_UploadToMainBg(...);
 extern s32 GraphicsResource_GetFormat(void *);
-extern void func_02070b50(...);
+extern void GraphicsBgPaletteResource_UploadToMainBg(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void RetailSelectionManager_AdvanceHistory(void *);
 extern void GameWork_ClearFlag(...);
@@ -69,8 +69,8 @@ static void load_background(void *scene, u32 paletteId)
 static void upload_background(void *scene)
 {
     GraphicsResourceSet *set = (GraphicsResourceSet *)((u8 *)scene + 0xf18);
-    func_02070638(set->characterResource, 2, 0);
-    func_02070b50(set->paletteResource,
+    GraphicsBgCharacterResource_UploadToMainBg(set->characterResource, 2, 0);
+    GraphicsBgPaletteResource_UploadToMainBg(set->paletteResource,
                   GraphicsResource_GetFormat(set->characterResource)
                       ? 0x6000 : 0);
     GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, 2, 0);

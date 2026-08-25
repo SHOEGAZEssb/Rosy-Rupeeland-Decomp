@@ -5,7 +5,7 @@
     .extern data_020f4e18
     .extern data_ov022_022006a0
     .extern Sound_ReleaseGroup
-    .extern func_02071c38
+    .extern GraphicsArchive_ReleasePaletteResource
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
@@ -85,7 +85,7 @@ L_021fe258:
     ldr r0, L_021fe2fc
     ldr r1, [r4, #0x374]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, L_021fe300
     mov r1, #0x0
     strh r1, [r0, #0x0]

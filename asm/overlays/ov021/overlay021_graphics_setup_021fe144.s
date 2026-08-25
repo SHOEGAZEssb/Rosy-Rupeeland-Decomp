@@ -5,10 +5,10 @@
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
     .extern data_021f5ee8
-    .extern func_02070638
+    .extern GraphicsBgCharacterResource_UploadToMainBg
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsBgMapResource_SetPaletteBank
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern TitleDisplay_SetMainBgPriorities
     .extern func_020afd0c
     .extern func_020b2058
@@ -46,7 +46,7 @@ Overlay021_SetupMainBackground:
     add r0, sp, #0x4
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     mov r0, #0x0
     str r0, [r4, #0x3fc]
     mov r0, #0x1c
@@ -72,7 +72,7 @@ Overlay021_SetupMainBackground:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0

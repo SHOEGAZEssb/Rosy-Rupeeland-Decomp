@@ -25,7 +25,7 @@ extern void __construct_array(void *, s32, s32, void (*)(void *), void (*)(void 
 extern void __destroy_arr(void *, s32, s32, void (*)(void *));
 extern void Sound_ReleaseGroup(void *, s32);
 extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
-extern void func_02071c38(void *, void *);
+extern void GraphicsArchive_ReleasePaletteResource(void *, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
@@ -96,7 +96,7 @@ static void destroy_scene_members(void *scene)
     }
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0x9c));
     GraphicsSpriteGroup_Destroy(FIELD(void *, scene, 0xa0));
-    func_02071c38(data_020f4e18, FIELD(void *, scene, 0x374));
+    GraphicsArchive_ReleasePaletteResource(data_020f4e18, FIELD(void *, scene, 0x374));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);

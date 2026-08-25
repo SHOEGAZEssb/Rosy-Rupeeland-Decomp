@@ -2,7 +2,7 @@
 .text
 .extern gGamePhaseRuntime
 .extern GamePhaseVisualEffect_ApplyBlend
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern func_020af958
 .extern func_020b581c
 
@@ -41,7 +41,7 @@ GamePhaseVisualEffect_Update: ; 0x0200fc64
     add r0, r4, #0x4
     mov r1, #0x1
     mov r2, #0x1e0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
 L_0200fcec:
     ldr r2, L_0200fdfc
     ldr r0, [r4, #0x94]

@@ -42,7 +42,7 @@ extern void func_020b1784(const void *source, s32 destination, u32 size);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02070638(GraphicsBgResource *resource, s32 background,
+void GraphicsBgCharacterResource_UploadToMainBg(GraphicsBgResource *resource, s32 background,
                    s32 destination)
 {
     if (resource->allocation == 0)

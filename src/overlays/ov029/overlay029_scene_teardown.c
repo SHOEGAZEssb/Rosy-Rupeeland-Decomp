@@ -15,7 +15,7 @@ extern "C" {
 #endif
 extern void Heap_Free(void *);
 extern void RuntimePresentationManager_BroadcastSlot1C(void *, s32);
-extern void func_02071c38(void *, void *);
+extern void GraphicsArchive_ReleasePaletteResource(void *, void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_020927b8(void *);
 extern void func_ov002_021fb9c4(void *);
@@ -52,7 +52,7 @@ static void Overlay029_TearDown(void *state)
     Overlay029_DestroyPointer(FIELD(void *, state, 0xa0));
     Overlay029_DestroyPointer(FIELD(void *, state, 0xa4));
     Overlay029_DestroyPointer(FIELD(void *, state, 0x9c));
-    func_02071c38(data_020f4e18[0], FIELD(void *, state, 0xe8));
+    GraphicsArchive_ReleasePaletteResource(data_020f4e18[0], FIELD(void *, state, 0xe8));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14[0]);

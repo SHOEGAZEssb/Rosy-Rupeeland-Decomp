@@ -5,7 +5,7 @@
 .extern func_020708c4
 .extern GraphicsArchiveResource_ReleaseAlternateBuffer
 .extern func_02070958
-.extern func_02070b50
+.extern GraphicsBgPaletteResource_UploadToMainBg
 .extern func_020b44e8
 .extern Overlay032Controller_SetScaleTarget
 
@@ -39,7 +39,7 @@ func_ov032_021fe9e8:
     movne r1, #0x6000
     ldr r0, [r10, #0xb48]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     mov r8, #0x1
     add r0, r10, #0x5c
     add r6, r0, #0xc00

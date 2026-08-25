@@ -26,9 +26,9 @@
 .extern TimedSpriteBurstManager_Destroy
 .extern TimedSpriteBurstManager_DestroyAndFree
 .extern TimedSpriteBurstManager_Update
-.extern func_02071bdc
-.extern func_02071c38
-.extern func_02071c94
+.extern GraphicsArchive_ReleaseCharacterResource
+.extern GraphicsArchive_ReleasePaletteResource
+.extern GraphicsArchive_ReleaseCellResource
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteGroupOwner_DestroyGroup

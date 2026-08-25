@@ -5,7 +5,7 @@
     .extern Heap_Free
     .extern Graphics3DResourceOwner_Destroy
     .extern GraphicsSpriteRenderer_Resume
-    .extern func_02092418
+    .extern GraphicsBankStateSnapshot_Restore
     .extern GX_SetGraphicsMode
     .extern func_ov048_0220b7b4
     .extern GraphicsBankStateSnapshot_Destroy
@@ -44,7 +44,7 @@ L_021fe698:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x60
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     mov r1, #0x0
     mov r2, r1
     mov r0, #0x1

@@ -39,7 +39,7 @@ extern void GraphicsResourceCache_Remove(void *cache, void *node);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02071bdc(void *archive, GraphicsCachedResource *resource)
+void GraphicsArchive_ReleaseCharacterResource(void *archive, GraphicsCachedResource *resource)
 {
     void *cache = (u8 *)archive + 0xb4;
     if (GraphicsResourceCache_FindNode(cache, resource) == 0)
@@ -64,7 +64,7 @@ void func_02071bdc(void *archive, GraphicsCachedResource *resource)
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02071c38(void *archive, GraphicsCachedResource *resource)
+void GraphicsArchive_ReleasePaletteResource(void *archive, GraphicsCachedResource *resource)
 {
     void *cache = (u8 *)archive + 0xc0;
     if (GraphicsResourceCache_FindNode(cache, resource) == 0)

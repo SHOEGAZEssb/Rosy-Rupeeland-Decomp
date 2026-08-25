@@ -45,7 +45,7 @@ extern void Scene_ClearFlags03(void *); extern void Scene_SetFlags03(void *);
 extern void GXS_SetGraphicsMode(u32); extern void GX_SetBankForSubBG(u32); extern void func_020aea7c(u32);
 extern void GraphicsResourceSet_Init(void *); extern void GraphicsResourceSet_Load(void *, void *, u32, u32, u32);
 extern void GraphicsResourceSet_ReleaseHandles(void *); extern void *GraphicsResourceSet_Destroy(void *);
-extern void func_020706c4(void *, s32, s32); extern void func_02070bc4(void *, u32);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32); extern void GraphicsBgPaletteResource_UploadToSubBg(void *, u32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32); extern void func_020b44e8(void);
 extern void func_020afd28(volatile void *, const void *, s32, s32, s32, s32);
 
@@ -117,10 +117,10 @@ void Overlay052Scene_LoadSubScreenResources(void *scene)
     bg[0]=(u16)((bg[0]&0x43u)|0x3c80u); bg[2]=(u16)((bg[2]&0x43u)|0x7e10u);
     bg[0]=(u16)((bg[0]&~3u)|3u); bg[2]=(u16)((bg[2]&~3u)|1u); *(volatile u32 *)(bg+4)=0;
     GraphicsResourceSet_Init(&r); GraphicsResourceSet_Load(&r,data_020f4e18,0x900a,0x9008,0x900b);
-    func_020b44e8(); func_020706c4(r.resource0,2,0); func_02070bc4(r.resource1,0x4000);
+    func_020b44e8(); GraphicsBgCharacterResource_UploadToSubBg(r.resource0,2,0); GraphicsBgPaletteResource_UploadToSubBg(r.resource1,0x4000);
     GraphicsBgMapResource_UploadToSubBg(r.resource2,2,0); GraphicsResourceSet_ReleaseHandles(&r);
     GraphicsResourceSet_Load(&r,data_020f4e18,0x9007,0x9008,0x9009); func_020b44e8();
-    func_020706c4(r.resource0,0,0); GraphicsBgMapResource_UploadToSubBg(r.resource2,0,0); GraphicsResourceSet_ReleaseHandles(&r);
+    GraphicsBgCharacterResource_UploadToSubBg(r.resource0,0,0); GraphicsBgMapResource_UploadToSubBg(r.resource2,0,0); GraphicsResourceSet_ReleaseHandles(&r);
     func_020afd28((volatile void *)0x04001020,transform,0,0,0,0);
     func_020afd28((volatile void *)0x04001030,transform,0,0,0,0);
     if(restore) Scene_SetFlags03(SceneManager_GetCurrent(gSceneManager)); GraphicsResourceSet_Destroy(&r);

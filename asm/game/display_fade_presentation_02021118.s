@@ -15,8 +15,8 @@
 .extern SubBg1_SetControl
 .extern SubBg2_SetControl
 .extern PairedReferenceState_SetReferencesAndReset
-.extern func_02070638
-.extern func_020706c4
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgCharacterResource_UploadToSubBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg

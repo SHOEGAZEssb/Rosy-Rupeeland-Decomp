@@ -33,7 +33,7 @@
 .extern func_02091b6c
 .extern SceneInputBase_Init
 .extern GraphicsBankStateSnapshot_Init
-.extern func_020923a4
+.extern GraphicsBankStateSnapshot_Capture
 .extern PresentationScalar_SetImmediate
 .extern Presentation_InitVariant
 .extern Presentation_SetPosition
@@ -129,7 +129,7 @@ L_021ff984:
     mov r1, #0x0
     add r0, r7, #0x328
     str r1, [r7, #0x50]
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     ldr r0, L_021ffff8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_Suspend

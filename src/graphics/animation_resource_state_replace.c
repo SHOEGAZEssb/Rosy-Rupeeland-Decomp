@@ -12,7 +12,7 @@ typedef struct AnimationResourceState {
 
 extern void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId);
 extern void *GraphicsArchive_AcquirePaletteResource(void *archive, u32 resourceId);
-extern void *func_02071800(void *archive, u32 resourceId);
+extern void *GraphicsArchive_AcquireCellResource(void *archive, u32 resourceId);
 extern void AnimationResourceState_ReleaseResources(AnimationResourceState *state);
 
 /* Release any live triplet, then acquire all three requested archive entries.
@@ -24,5 +24,5 @@ void AnimationResourceState_ReplaceResources(AnimationResourceState *state, void
         AnimationResourceState_ReleaseResources(state);
     state->character = GraphicsArchive_AcquireCharacterResource(archive, characterId);
     state->palette = GraphicsArchive_AcquirePaletteResource(archive, paletteId);
-    state->cell = func_02071800(archive, cellId);
+    state->cell = GraphicsArchive_AcquireCellResource(archive, cellId);
 }

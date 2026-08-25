@@ -10,8 +10,8 @@
 .extern data_ov032_02202348
 .extern Sound_StopAllManagedPlayers
 .extern GraphicsResource_GetFormat
-.extern func_02070638
-.extern func_02070b50
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgPaletteResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteGroupOwner_DestroyGroup
@@ -90,14 +90,14 @@ L_02200e64:
     ldr r0, [r4, #0xf18]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [r4, #0xf18]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [r4, #0xf1c]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [r4, #0xf20]
     mov r1, #0x2
     mov r2, #0x0

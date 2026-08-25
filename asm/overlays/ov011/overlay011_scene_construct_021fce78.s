@@ -20,7 +20,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern SceneInputBase_Init
     .extern GraphicsBankStateSnapshot_Init
-    .extern func_020923a4
+    .extern GraphicsBankStateSnapshot_Capture
     .extern TitleDisplay_ResetSubBgScroll
     .extern TitleDisplay_SetSubBgPriorities
     .extern TitlePalette_SetMainBackdrop
@@ -108,7 +108,7 @@ L_021fcf6c:
     str r1, [r10, #0x104]
     bl func_ov011_021fce00
     add r0, r10, #0x98
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     bl GX_DispOn
     mov r1, #0x4000000
     ldr r0, [r1, #0x0]

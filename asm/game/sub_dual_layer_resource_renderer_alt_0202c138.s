@@ -5,7 +5,7 @@
 .extern func_020b44e8
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsResourceSet_ReleaseHandles
-.extern func_020706c4
+.extern GraphicsBgCharacterResource_UploadToSubBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern MIi_CpuCopy16
 .extern DualLayerTileRenderer_UploadPalette
@@ -96,7 +96,7 @@ SubDualLayerResourceRendererAlt_LoadBgResources: ; 0x0202c138
     ldr r0, [sp, #0x4]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0

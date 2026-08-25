@@ -6,8 +6,8 @@
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
 .extern data_ov051_0220df48
-.extern func_02070638
-.extern func_02070b50
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgPaletteResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor
 .extern func_020af1f8
@@ -58,10 +58,10 @@ func_ov051_0220dbf0:
     str r0, [r2, #0x0]
     ldr r0, [sp, #0x8]
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x4000
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0x10]
     mov r1, #0x2
     mov r2, #0x0

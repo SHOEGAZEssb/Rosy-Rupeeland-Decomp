@@ -11,7 +11,7 @@
     .extern data_ov013_021fec18
     .extern GamePhaseMetadata_IsAreaBehaviorPermitted
     .extern GraphicsBgMapResource_SetPaletteBank
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -476,7 +476,7 @@ L_021fd918:
     add r0, sp, #0x10
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r1, L_021fda24
     mov r2, #0x8000
     str r1, [sp, #0x0]
@@ -492,7 +492,7 @@ L_021fd918:
     add r0, sp, #0x10
     mov r1, #0x1
     mov r2, #0x100
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     add r0, sp, #0x10
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x1c

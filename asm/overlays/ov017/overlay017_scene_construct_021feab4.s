@@ -40,7 +40,7 @@
     .extern TitleRandom_NextBounded
     .extern SceneInputBase_Init
     .extern GraphicsBankStateSnapshot_Init
-    .extern func_020923a4
+    .extern GraphicsBankStateSnapshot_Capture
     .extern TitleScreenResourceCollection_Init
     .extern func_02092754
     .extern TitleCharacterResourceCollection_Init
@@ -140,7 +140,7 @@ func_ov017_021feab4:
     bl GraphicsSpriteRenderer_ReleaseExtendedPalette
     add r0, r10, #0x4
     add r0, r0, #0x400
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     bl func_020ae7b0
     bl func_020ae778
     ldr r0, L_021ff0f4

@@ -20,8 +20,8 @@ extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void func_020b44e8(void);
-extern void func_020706c4(void *, s32, s32);
-extern void func_02070bc4(void *, s32);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
+extern void GraphicsBgPaletteResource_UploadToSubBg(void *, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void GraphicsResourceSet_ReleaseHandles(void *);
 extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
@@ -81,21 +81,21 @@ extern "C" void func_ov031_021fdfa8(void *scene)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0x900e, 0x900f, 0x9010);
     func_020b44e8();
-    func_020706c4((void *)resources[0], 0, 0);
-    func_02070bc4((void *)resources[1], 0);
+    GraphicsBgCharacterResource_UploadToSubBg((void *)resources[0], 0, 0);
+    GraphicsBgPaletteResource_UploadToSubBg((void *)resources[1], 0);
     GraphicsBgMapResource_UploadToSubBg((void *)resources[2], 0, 0);
     GraphicsResourceSet_ReleaseHandles(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0x900c, 0x9008, 0x900d);
     func_020b44e8();
-    func_020706c4((void *)resources[0], 1, 0);
-    func_02070bc4((void *)resources[1], 0x6000);
+    GraphicsBgCharacterResource_UploadToSubBg((void *)resources[0], 1, 0);
+    GraphicsBgPaletteResource_UploadToSubBg((void *)resources[1], 0x6000);
     GraphicsBgMapResource_UploadToSubBg((void *)resources[2], 1, 0);
     GraphicsResourceSet_ReleaseHandles(resources);
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0x9007, 0x9008, 0x9009);
     func_020b44e8();
-    func_020706c4((void *)resources[0], 2, 0);
+    GraphicsBgCharacterResource_UploadToSubBg((void *)resources[0], 2, 0);
     GraphicsBgMapResource_UploadToSubBg((void *)resources[2], 2, 0);
     GraphicsResourceSet_ReleaseHandles(resources);
     GraphicsResourceSet_Destroy(resources);
@@ -145,8 +145,8 @@ extern "C" void func_ov031_021fe1a8(void *scene)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0x900a, 0x9008, 0x900b);
     func_020b44e8();
-    func_020706c4((void *)resources[0], 0, 0);
-    func_02070bc4((void *)resources[1], 0x4000);
+    GraphicsBgCharacterResource_UploadToSubBg((void *)resources[0], 0, 0);
+    GraphicsBgPaletteResource_UploadToSubBg((void *)resources[1], 0x4000);
     GraphicsBgMapResource_UploadToSubBg((void *)resources[2], 0, 0);
     FIELD(s32, FIELD(void *, scene, 0x58), 0x20) = 1;
     *(volatile u32 *)0x04001010 = 0;

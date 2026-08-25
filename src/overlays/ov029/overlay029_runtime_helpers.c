@@ -18,7 +18,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GamePhaseCurrencyHud_Update(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void *RecordDescriptor_GetMessage(void *, s32);
 extern void TitleScreenResourceCollection_Init(void *);
 extern void func_020926f8(void *);
@@ -61,7 +61,7 @@ extern "C" void func_ov029_021fd644(void *state)
                              0xa06d, 0xa06e, 0xa06f);
     func_02092754(auxiliary, 0xa070);
     func_020b44e8();
-    func_02072048(graphics, 0, 0);
+    GraphicsResourceSet_ApplyToMainBg(graphics, 0, 0);
     void *resource = TitleScreenResourceCollection_Get(auxiliary, 0);
     GraphicsBgMapResource_UploadToMainBg(resource, 1, 0);
     TitlePalette_SetMainBackdrop(0);

@@ -27,7 +27,7 @@ extern void SceneInputBase_Init(void *);
 extern void GraphicsResourceSetVariant_Init(void *);
 extern void Graphics3DSceneState_Init(void *);
 extern void GraphicsBankStateSnapshot_Init(void *);
-extern void func_020923a4(void *);
+extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsSpriteRenderer_Suspend(void *);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *);
@@ -92,7 +92,7 @@ void *func_ov010_021fcebc(void *state)
     GraphicsResourceSetVariant_Init((u8 *)state + 0x7c);
     Graphics3DSceneState_Init((u8 *)state + 0x98);
     GraphicsBankStateSnapshot_Init((u8 *)state + 0x180);
-    func_020923a4((u8 *)state + 0x180);
+    GraphicsBankStateSnapshot_Capture((u8 *)state + 0x180);
     FIELD(s32, state, 0x74) = 0;
     GraphicsSpriteRenderer_ClearTextBuffer(manager);
     for (i = 0; i < 2; i++) {

@@ -12,12 +12,12 @@ extern "C" {
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
-extern void func_02070638(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void func_020afd0c(void *, s32, s32, s32, s32);
 extern void func_020b2058(void *, s32, s32);
 extern void func_020b44e8(void);
@@ -40,7 +40,7 @@ extern "C" void func_ov025_02200014(void *scene)
     GraphicsResourceSet_Load(set, data_020f4e18, 0xa13b, 0xa13c, 0xa13d);
     GraphicsBgMapResource_AddPaletteBankOffset(set[2], 8);
     func_020b44e8();
-    func_02072048(set, 3, 0x100);
+    GraphicsResourceSet_ApplyToMainBg(set, 3, 0x100);
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
     GraphicsResourceSet_Destroy(set);
@@ -62,7 +62,7 @@ extern "C" void func_ov025_022000a4(void *scene)
     GraphicsResourceSet_Load(set, data_020f4e18, 0xc006, 0xc007, 0xc008);
     GraphicsBgMapResource_SetPaletteBank(set[2], 8);
     func_020b44e8();
-    func_02070638(set[0], 2, 0);
+    GraphicsBgCharacterResource_UploadToMainBg(set[0], 2, 0);
     GraphicsBgMapResource_UploadToMainBg(set[2], 2, 0);
     func_020b2058((u8 *)GraphicsBgResourceData_GetDecoded(set[1]) + 0xa0, 0x100, 0x20);
     func_020afd0c((void *)0x04000050, 4, 24, 8, 8);

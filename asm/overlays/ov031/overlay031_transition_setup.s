@@ -5,8 +5,8 @@
 .extern data_020f4e18
 .extern DisplayBrightness_StartTransition
 .extern DisplayBrightnessPair_GetScreen
-.extern func_020706c4
-.extern func_02070bc4
+.extern GraphicsBgCharacterResource_UploadToSubBg
+.extern GraphicsBgPaletteResource_UploadToSubBg
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern func_020b44e8
 .extern func_ov031_021fe148
@@ -46,10 +46,10 @@ func_ov031_021fe1a8:
     mov r1, #0x0
     ldr r0, [sp, #0x4]
     mov r2, r1
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x4000
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1

@@ -11,7 +11,7 @@ extern const void *data_ov010_021fec68[];
 extern void *data_020f4e14;
 extern void Graphics3DResourceBinding_Destroy(void *); extern void Heap_Free(void *);
 extern void Heap_FreeCore(void *); extern void Graphics3DResourceOwner_Destroy(void *);
-extern void GraphicsSpriteRenderer_Resume(void *); extern void func_02092418(void *);
+extern void GraphicsSpriteRenderer_Resume(void *); extern void GraphicsBankStateSnapshot_Restore(void *);
 extern void DebugText_BeginFrame(void); extern void GraphicsBankStateSnapshot_Destroy(void *);
 extern void GraphicsResourceSetVariant_Destroy(void *); extern void Scene_Destroy(void *);
 #ifdef __cplusplus
@@ -32,7 +32,7 @@ void *func_ov010_021fd1e8(void *state)
     for (i = 0; i < 2; i++) Heap_FreeCore(FIELD(void *, state, 0x90 + i * 4));
     p = FIELD(void *, state, 0x78); if (p) { Graphics3DResourceOwner_Destroy(p); Heap_Free(p); }
     GraphicsSpriteRenderer_Resume(data_020f4e14);
-    func_02092418((u8 *)state + 0x180); DebugText_BeginFrame();
+    GraphicsBankStateSnapshot_Restore((u8 *)state + 0x180); DebugText_BeginFrame();
     GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x180); GraphicsResourceSetVariant_Destroy((u8 *)state + 0x7c);
     Scene_Destroy(state); return state;
 }

@@ -7,7 +7,7 @@ typedef struct TitleScreenResourceCollection {
 } TitleScreenResourceCollection;
 
 extern void *data_020f4e18;
-extern void func_02071cf0(void *archive, void *resource);
+extern void GraphicsArchive_ReleaseScreenResource(void *archive, void *resource);
 extern void *GraphicsArchive_AcquireScreenResource(void *archive, u32 resourceId);
 
 /* Release every live screen resource and reset the collection. */
@@ -16,7 +16,7 @@ void func_0209270c(TitleScreenResourceCollection *collection)
     s32 index;
 
     for (index = 0; index < collection->count; ++index) {
-        func_02071cf0(data_020f4e18, collection->entries[index]);
+        GraphicsArchive_ReleaseScreenResource(data_020f4e18, collection->entries[index]);
         collection->entries[index] = 0;
     }
     collection->count = 0;

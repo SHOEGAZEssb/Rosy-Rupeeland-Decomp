@@ -2,7 +2,7 @@
     .extern data_ov011_021fe578
     .extern data_ov011_021fe5ac
     .extern func_ov011_021fce00
-    .extern func_02092418
+    .extern GraphicsBankStateSnapshot_Restore
     .extern Heap_FreeCore
     .extern DebugText_BeginFrame
     .extern GraphicsBankStateSnapshot_Destroy
@@ -22,7 +22,7 @@ func_ov011_021fd08c:
     str r1, [r5, #0x24]
     bl func_ov011_021fce00
     add r0, r5, #0x98
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     mov r4, #0x0
 L_021fd0b8:
     add r0, r5, r4, lsl #0x2

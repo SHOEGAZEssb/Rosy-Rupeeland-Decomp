@@ -2,11 +2,11 @@
 
 /* Exact fallback; see src/overlays/ov024/overlay024_graphics_setup.c. */
 .extern data_020f4e18
-.extern func_02070638
+.extern GraphicsBgCharacterResource_UploadToMainBg
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070b50
+.extern GraphicsBgPaletteResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToMainBg
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern TitleDisplay_ConfigureMain2dEngine
 .extern TitleDisplay_ResetMainBgScroll
 .extern TitleDisplay_SetMainBgPriorities
@@ -147,7 +147,7 @@ L_021fd4c4:
     add r0, sp, #0x4
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_021fd848
     ldr r0, L_021fd838
     str r3, [sp, #0x0]
@@ -160,7 +160,7 @@ L_021fd4c4:
     add r0, sp, #0x4
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_021fd84c
     ldr r1, L_021fd838
     str r3, [sp, #0x0]
@@ -173,7 +173,7 @@ L_021fd4c4:
     mov r1, #0x0
     add r0, sp, #0x4
     mov r2, r1
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     b L_021fd748
 L_021fd544:
     ldr r3, L_021fd844
@@ -188,7 +188,7 @@ L_021fd544:
     add r0, sp, #0x4
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r0, [r4, #0x58]
     cmp r0, #0x5
     beq L_021fd598
@@ -231,7 +231,7 @@ L_021fd600:
     add r0, sp, #0x4
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_021fd84c
     ldr r0, L_021fd838
     str r3, [sp, #0x0]
@@ -244,7 +244,7 @@ L_021fd600:
     mov r1, #0x0
     add r0, sp, #0x4
     mov r2, r1
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     b L_021fd748
 L_021fd64c:
     ldr r3, L_021fd844
@@ -259,7 +259,7 @@ L_021fd64c:
     add r0, sp, #0x4
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_021fd858
     ldr r1, L_021fd838
     str r3, [sp, #0x0]
@@ -272,7 +272,7 @@ L_021fd64c:
     add r0, sp, #0x4
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r0, [r4, #0x58]
     cmp r0, #0x8
     beq L_021fd6cc
@@ -313,7 +313,7 @@ L_021fd734:
     mov r1, #0x0
     add r0, sp, #0x4
     mov r2, r1
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
 L_021fd748:
     ldr r3, L_021fd868
     ldr r0, L_021fd838
@@ -357,10 +357,10 @@ L_021fd7bc:
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x2000
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     mov r1, #0x1e0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0

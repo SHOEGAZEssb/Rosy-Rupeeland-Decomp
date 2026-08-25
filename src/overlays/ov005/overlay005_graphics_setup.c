@@ -37,8 +37,8 @@ extern void func_020b44e8(void);
 extern void GraphicsResourceSet_Apply(Overlay005GraphicsResourceSet *set,
                                       s32 first, s32 second);
 extern void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 value);
-extern void func_020706c4(void *resource, s32 first, s32 second);
-extern void func_02070bc4(void *resource, s32 value);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *resource, s32 first, s32 second);
+extern void GraphicsBgPaletteResource_UploadToSubBg(void *resource, s32 value);
 extern void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 first, s32 second);
 extern u16 *GraphicsBgResourceData_GetDecoded(void *resource);
 extern void TitlePalette_SetSubBackdrop(void);
@@ -131,8 +131,8 @@ void func_ov005_021fc278(Overlay005GraphicsState *state)
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xc00c, 0xc00d, 0xc00e);
     GraphicsBgMapResource_SetPaletteBank(set.third, 0x0f);
     func_020b44e8();
-    func_020706c4(set.first, 3, 0);
-    func_02070bc4(set.second, 0x1e0);
+    GraphicsBgCharacterResource_UploadToSubBg(set.first, 3, 0);
+    GraphicsBgPaletteResource_UploadToSubBg(set.second, 0x1e0);
     GraphicsBgMapResource_UploadToSubBg(set.third, 3, 0);
     state->field_084 = *GraphicsBgResourceData_GetDecoded(set.second);
     TitlePalette_SetSubBackdrop();

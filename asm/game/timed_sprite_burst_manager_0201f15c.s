@@ -26,9 +26,9 @@
 .extern TimedSpriteBurstManager_Destroy
 .extern TimedSpriteBurstManager_DestroyAndFree
 .extern TimedSpriteBurstManager_Update
-.extern func_02071bdc
-.extern func_02071c38
-.extern func_02071c94
+.extern GraphicsArchive_ReleaseCharacterResource
+.extern GraphicsArchive_ReleasePaletteResource
+.extern GraphicsArchive_ReleaseCellResource
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern GraphicsSpriteGroupOwner_DestroyGroup
@@ -69,15 +69,15 @@ TimedSpriteBurstManager_Destroy: ; 0x0201f15c
     ldr r0, .L_0201f200
     ldr r1, [r4, #0x18]
     ldr r0, [r0, #0x0]
-    bl func_02071bdc
+    bl GraphicsArchive_ReleaseCharacterResource
     ldr r0, .L_0201f200
     ldr r1, [r4, #0x1c]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, .L_0201f200
     ldr r1, [r4, #0x20]
     ldr r0, [r0, #0x0]
-    bl func_02071c94
+    bl GraphicsArchive_ReleaseCellResource
     add r0, r4, #0x8
     bl OwnedPointerArray_Destroy
     mov r0, r4

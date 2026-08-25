@@ -12,11 +12,11 @@ extern "C" {
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
-extern void func_02070638(void *, s32, s32);
-extern void func_02070b50(void *, s32);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgPaletteResource_UploadToMainBg(void *, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void TitleDisplay_ConfigureMain2dEngine(s32);
 extern void TitleDisplay_ResetMainBgScroll(void);
 extern void TitleDisplay_SetMainBgPriorities(s32, s32, s32, s32);
@@ -32,7 +32,7 @@ static void load_and_install(void *set, s32 first, s32 third, s32 slot)
     /* All overlay-specific map triplets share archive member 0xB087. */
     GraphicsResourceSet_Load(set, data_020f4e18, first, 0xb087, third);
     func_020b44e8();
-    func_02072048(set, slot, 0);
+    GraphicsResourceSet_ApplyToMainBg(set, slot, 0);
 }
 
 /*
@@ -96,8 +96,8 @@ extern "C" void func_ov024_021fd2f8(void *scene)
         cells[i] = (u16)((cells[i] & 0xfc00) |
                          ((cells[i] + 0x100) & 0x03ff) | 0xf000);
     func_020b44e8();
-    func_02070638(set[0], 3, 0x2000);
-    func_02070b50(set[1], 0x1e0);
+    GraphicsBgCharacterResource_UploadToMainBg(set[0], 3, 0x2000);
+    GraphicsBgPaletteResource_UploadToMainBg(set[1], 0x1e0);
     GraphicsBgMapResource_UploadToMainBg(set[2], 3, 0);
     TitlePalette_SetMainBackdrop(*(u16 *)GraphicsBgResourceData_GetDecoded(set[1]));
     GraphicsResourceSet_Destroy(set);

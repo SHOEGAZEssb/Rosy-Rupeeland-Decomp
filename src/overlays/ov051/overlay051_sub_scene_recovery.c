@@ -49,8 +49,8 @@ extern "C" void func_020b44e8(void);
 extern "C" void GX_SetBankForSubBG(u32 bank);
 extern "C" void func_020aea7c(u32 banks);
 extern "C" void GXS_SetGraphicsMode(u32 mode);
-extern "C" void func_020706c4(void *characterResource, s32 layer, s32 offset);
-extern "C" void func_02070bc4(void *paletteResource, s32 offset);
+extern "C" void GraphicsBgCharacterResource_UploadToSubBg(void *characterResource, s32 layer, s32 offset);
+extern "C" void GraphicsBgPaletteResource_UploadToSubBg(void *paletteResource, s32 offset);
 extern "C" void func_020afd28(volatile void *registers,
                                const void *transform, s32 width, s32 height,
                                s32 x, s32 y);
@@ -81,8 +81,8 @@ extern "C" void *func_ov051_0220d878(void *scene, s32 first, s32 second,
     func_ov051_0220d84c(2, 1, 0x10, 4);
     *(volatile u32 *)0x04001000 =
         (*(volatile u32 *)0x04001000 & ~0x1f00u) | 0x1400u;
-    func_020706c4(resources.characterResource, 2, 0);
-    func_02070bc4(resources.paletteResource, 0x4000);
+    GraphicsBgCharacterResource_UploadToSubBg(resources.characterResource, 2, 0);
+    GraphicsBgPaletteResource_UploadToSubBg(resources.paletteResource, 0x4000);
     GraphicsBgMapResource_UploadToSubBg(resources.bgMapResource, 2, 0);
     func_020afd28((volatile void *)0x04001020, bytes + 0xc10,
                   0x80, 0x60, zero, zero);

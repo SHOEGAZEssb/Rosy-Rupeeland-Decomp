@@ -48,7 +48,7 @@ extern void GraphicsResourceSet_Init(GraphicsResourceSet *);
 extern void GraphicsResourceSet_Load(GraphicsResourceSet *, void *, s32, s32,
                                      s32);
 extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
-extern void func_020706c4(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void ExtendedPaletteBuffer_Write(void *, const void *, s32, s32);
@@ -203,7 +203,7 @@ void DualScreenUiPresentationBase_LoadSubBg1Resources(DualScreenUiPresentationBa
     GraphicsResourceSet_Load(&set, data_020f4e18, 0x8026, 0x8027, 0x8028);
     *control = (u16)((*control & 0x43) | 0x1880);
     *control &= (u16)~3;
-    func_020706c4(set.first00, 1, 0);
+    GraphicsBgCharacterResource_UploadToSubBg(set.first00, 1, 0);
     GraphicsBgMapResource_UploadToSubBg(set.third08, 1, 0);
     ExtendedPaletteBuffer_Write(gSubBgExtendedPaletteBuffer,
                                 GraphicsBgResourceData_GetDecoded(set.second04), 0x2000, 0x200);

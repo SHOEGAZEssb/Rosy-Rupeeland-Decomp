@@ -8,7 +8,7 @@
 .extern data_020f4e18
 .extern GraphicsBgMapResource_SetPaletteBank
 .extern GraphicsResourceSet_ReleaseHandles
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern TitleDisplay_ConfigureMain2dEngine
 .extern TitleDisplay_ConfigureSub2dEngine
 .extern TitleDisplay_ResetMainBgScroll
@@ -87,7 +87,7 @@ func_ov046_0220bac0:
     add r0, sp, #0x4
     mov r1, #0x3
     mov r2, #0x1e0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     b .L_0220bc48
 .L_0220bbcc:
     bl TitleDisplay_ConfigureSub2dEngine

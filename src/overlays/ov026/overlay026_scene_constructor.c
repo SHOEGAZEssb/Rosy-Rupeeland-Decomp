@@ -44,7 +44,7 @@ extern s32 func_0209189c(void *, s32, s32);
 extern s32 TitleRandom_NextBounded(void *, s32);
 extern void SceneInputBase_Init(void *);
 extern void GraphicsBankStateSnapshot_Init(void *);
-extern void func_020923a4(void *);
+extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void *Presentation_InitVariant(void *);
 extern void PresentationScalar_SetImmediate(void *, s32);
 extern void Presentation_SetPosition(void *, s32, s32, s32);
@@ -119,7 +119,7 @@ extern "C" void *func_ov026_021ff8a0(void *scene, s32 scene_id,
     FIELD(s32, scene, 0x5c) = range_end - range_start;
     G3X_Init();
     FIELD(s32, scene, 0x50) = 0;
-    func_020923a4((u8 *)scene + 0x328);
+    GraphicsBankStateSnapshot_Capture((u8 *)scene + 0x328);
     GraphicsSpriteRenderer_Suspend(data_020f4e14);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
     GraphicsSpriteRenderer_Suspend(gDebugFont);

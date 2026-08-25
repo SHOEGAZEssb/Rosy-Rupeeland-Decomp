@@ -45,10 +45,10 @@ extern "C" void func_ov016_021ff094(void *state)
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8004, 0x8005, 0x8006);
     GraphicsBgMapResource_AddPaletteBankOffset(resources.resource2, 8);
     func_020b44e8();
-    func_02072048(&resources, 3, 0x100);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 3, 0x100);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8012, 0x8013, 0x8017);
     func_020b44e8();
-    func_02072048(&resources, 2, 0);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 2, 0);
     func_ov016_021fd188(FIELD(void *, state, 0x444));
     GraphicsResourceSet_Destroy(&resources);
 }
@@ -74,11 +74,11 @@ extern "C" void func_ov016_021ff17c(void *state)
     GraphicsResourceSet_Init(&resources);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8008, 0x8009, 0x800a);
     func_020b44e8();
-    func_02072048(&resources, 2, 0);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 2, 0);
     GraphicsResourceSet_Load(&resources, data_020f4e18, 0x8012, 0x8013, 0x801d);
     GraphicsBgMapResource_AddPaletteBankOffset(resources.resource2, 8);
     func_020b44e8();
-    func_02072048(&resources, 3, 0x100);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 3, 0x100);
     func_020afd0c((void *)0x04000050, 0, 0xc, 4, 0xc);
     func_ov016_021fd1e0(FIELD(void *, state, 0x444));
     GraphicsResourceSet_Destroy(&resources);

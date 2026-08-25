@@ -81,9 +81,9 @@ extern void *OrientedTimedSprite_Init(void *self, BurstSpriteConfig *config);
 extern void TimedSpritePresentation_SetVisible(void *sprite, s32 enabled);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *font);
 extern void GraphicsSpriteGroupOwner_DestroyGroup(void *font, void *spriteGroup);
-extern void func_02071bdc(void *owner, void *resource);
-extern void func_02071c38(void *owner, void *resource);
-extern void func_02071c94(void *owner, void *resource);
+extern void GraphicsArchive_ReleaseCharacterResource(void *owner, void *resource);
+extern void GraphicsArchive_ReleasePaletteResource(void *owner, void *resource);
+extern void GraphicsArchive_ReleaseCellResource(void *owner, void *resource);
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *spriteGroup);
 #ifdef __cplusplus
 }
@@ -217,9 +217,9 @@ TimedSpriteBurstManager *TimedSpriteBurstManager_Destroy(TimedSpriteBurstManager
     }
     OwnedPointerArray_Clear(&self->sprites08);
     GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteGroup10);
-    func_02071bdc(data_020f4e18, self->resource18);
-    func_02071c38(data_020f4e18, self->resource1c);
-    func_02071c94(data_020f4e18, self->resource20);
+    GraphicsArchive_ReleaseCharacterResource(data_020f4e18, self->resource18);
+    GraphicsArchive_ReleasePaletteResource(data_020f4e18, self->resource1c);
+    GraphicsArchive_ReleaseCellResource(data_020f4e18, self->resource20);
     OwnedPointerArray_Destroy(&self->sprites08);
     return self;
 }

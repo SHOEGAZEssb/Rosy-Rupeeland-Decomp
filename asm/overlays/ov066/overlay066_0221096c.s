@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02071bdc
-.extern func_02071c38
-.extern func_02071c94
+.extern GraphicsArchive_ReleaseCharacterResource
+.extern GraphicsArchive_ReleasePaletteResource
+.extern GraphicsArchive_ReleaseCellResource
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_ov066_02210534
@@ -39,15 +39,15 @@ func_ov066_0221096c:
     ldr r0, .L_022109fc
     ldr r1, [r4, #0x1a8]
     ldr r0, [r0, #0x0]
-    bl func_02071bdc
+    bl GraphicsArchive_ReleaseCharacterResource
     ldr r0, .L_022109fc
     ldr r1, [r4, #0x1ac]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, .L_022109fc
     ldr r1, [r4, #0x1b0]
     ldr r0, [r0, #0x0]
-    bl func_02071c94
+    bl GraphicsArchive_ReleaseCellResource
     mov r0, r4
     ldmia sp!, {r4, r5, r6, pc}
 .L_022109f8: .word data_020f4e14

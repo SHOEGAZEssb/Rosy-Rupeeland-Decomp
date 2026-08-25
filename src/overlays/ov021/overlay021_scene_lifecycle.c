@@ -28,7 +28,7 @@ extern void OverlaySlot_Destroy(void *);
 extern void InventoryRecordCollection_Sort(void *, s32);
 extern void InventoryRecordCollection_SortAlternate(void *, s32);
 extern void *GraphicsArchive_AcquirePaletteResource(void *, s32);
-extern void func_02071c38(void *, void *);
+extern void GraphicsArchive_ReleasePaletteResource(void *, void *);
 extern void AnimationResourceState_InitEmbedded(void *);
 extern void AnimationResourceState_Destroy(void *);
 extern void AnimationResourceState_ReplaceResources(void *, void *, s32, s32, s32);
@@ -105,7 +105,7 @@ static void destroy_scene_members(void *state)
     }
 
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x94));
-    func_02071c38(data_020f4e18, FIELD(void *, state, 0x400));
+    GraphicsArchive_ReleasePaletteResource(data_020f4e18, FIELD(void *, state, 0x400));
     *(volatile u16 *)0x04000050 = 0;
     *(volatile u16 *)0x04001050 = 0;
     GraphicsSpriteRenderer_QueuePaletteUploads(data_020f4e14);

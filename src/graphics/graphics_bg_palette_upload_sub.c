@@ -19,7 +19,7 @@ extern void func_020b1314(void);
 
 /* Upload a loaded palette according to its descriptor mode. Mode 0x10 uses
  * 32-byte colors; mode 0x100 brackets 512-byte extended-palette banks. */
-void func_02070bc4(GraphicsBgPaletteResource *resource, u32 destination)
+void GraphicsBgPaletteResource_UploadToSubBg(GraphicsBgPaletteResource *resource, u32 destination)
 {
     const u8 *descriptor;
 

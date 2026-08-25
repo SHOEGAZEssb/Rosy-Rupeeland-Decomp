@@ -54,8 +54,8 @@
 .extern GraphicsSpriteRenderer_BuildFrame
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern SceneInputBase_Update
-.extern func_020923a4
-.extern func_02092418
+.extern GraphicsBankStateSnapshot_Capture
+.extern GraphicsBankStateSnapshot_Restore
 .extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov004_021fc944
 .extern func_ov009_021fce74
@@ -203,7 +203,7 @@ L_0200d224:
     cmp r0, #0xa
     bne L_0200d23c
     add r0, r5, #0x40
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     b L_0200d29c
 L_0200d23c:
     ldr r0, L_0200e0e4
@@ -212,7 +212,7 @@ L_0200d23c:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_DisableGraphics3dForActivePhase
     add r0, r5, #0x40
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     ldr r2, L_0200e0ec
     mov r1, #0x0
     ldr r0, L_0200e0e4
@@ -1060,7 +1060,7 @@ L_0200dde8:
     mov r3, #0x14
     bl Sound_SetModalEnvelopeEnabled
     add r0, r5, #0x40
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     cmp r4, #0xf
     addls pc, pc, r4, lsl #0x2
     b L_0200dedc

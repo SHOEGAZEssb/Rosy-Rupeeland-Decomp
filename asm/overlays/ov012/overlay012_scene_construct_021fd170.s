@@ -18,7 +18,7 @@
     .extern Graphics3DResourceBinding_Init
     .extern SceneInputBase_Init
     .extern GraphicsBankStateSnapshot_Init
-    .extern func_020923a4
+    .extern GraphicsBankStateSnapshot_Capture
     .extern TitleDisplay_SetMainBgPriorities
     .extern func_020b0300
     .extern func_020b4554
@@ -66,7 +66,7 @@ func_ov012_021fd170:
     add r0, r4, #0x1c4
     bl GraphicsBankStateSnapshot_Init
     add r0, r4, #0x1c4
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     mov r0, #0
     str r0, [r4, #0x74]
     ldr r0, L_021fd42c

@@ -30,7 +30,7 @@ extern void GraphicsResourceSet_Load(...);
 extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
 extern void AnimationResourceState_Destroy(void *);
 extern void GraphicsBankStateSnapshot_Destroy(void *);
-extern void func_020923a4(void *);
+extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void __destroy_arr(...);
 extern void RuntimePresentationManager_DisableGraphics3dForActivePhase(
     void *manager);
@@ -47,11 +47,11 @@ extern void TitleDisplay_ResetSubBgScroll(void);
 extern void TitleDisplay_SetMainBgPriorities(...);
 extern void TitleDisplay_SetSubBgPriorities(...);
 extern void func_020b44e8(void);
-extern void func_02070638(...);
-extern void func_020706c4(...);
+extern void GraphicsBgCharacterResource_UploadToMainBg(...);
+extern void GraphicsBgCharacterResource_UploadToSubBg(...);
 extern s32 GraphicsResource_GetFormat(void *);
-extern void func_02070b50(...);
-extern void func_02070bc4(...);
+extern void GraphicsBgPaletteResource_UploadToMainBg(...);
+extern void GraphicsBgPaletteResource_UploadToSubBg(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void func_020afd0c(...);
 extern void GraphicsSpriteRenderer_ConfigureTextGridPriority(...);
@@ -125,8 +125,8 @@ static void load_text_resources(GraphicsResourceSet *set,
     GraphicsResourceSet_Load(set, data_020f4e18[0], characterResourceId,
                              paletteResourceId, bgMapResourceId);
     func_020b44e8();
-    func_02070638(set->characterResource, layer, 0);
-    func_02070b50(set->paletteResource,
+    GraphicsBgCharacterResource_UploadToMainBg(set->characterResource, layer, 0);
+    GraphicsBgPaletteResource_UploadToMainBg(set->paletteResource,
                   GraphicsResource_GetFormat(set->characterResource)
                       ? mapBase : 0);
     GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, layer, 0);
@@ -141,8 +141,8 @@ static void load_affine_resources(GraphicsResourceSet *set,
     GraphicsResourceSet_Load(set, data_020f4e18[0], characterResourceId,
                              paletteResourceId, bgMapResourceId);
     func_020b44e8();
-    func_020706c4(set->characterResource, layer, 0);
-    func_02070bc4(set->paletteResource,
+    GraphicsBgCharacterResource_UploadToSubBg(set->characterResource, layer, 0);
+    GraphicsBgPaletteResource_UploadToSubBg(set->paletteResource,
                   GraphicsResource_GetFormat(set->characterResource)
                       ? mapBase : 0);
     GraphicsBgMapResource_UploadToSubBg(set->bgMapResource, layer, 0);
@@ -162,7 +162,7 @@ extern "C" void Overlay032Scene_SetupGraphics(void *scene)
     u8 *context = (u8 *)gGamePhaseRuntime[0];
 
     RuntimePresentationManager_DisableGraphics3dForActivePhase(context + 0x2f7c);
-    func_020923a4((u8 *)scene + 0xbe8);
+    GraphicsBankStateSnapshot_Capture((u8 *)scene + 0xbe8);
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14[0]);
     GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
     GamePhaseState_SetEnabled(context + 0x24, 0);

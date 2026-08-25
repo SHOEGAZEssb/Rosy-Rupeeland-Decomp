@@ -17,7 +17,7 @@ extern void func_ov045_0220d2d8(s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void func_ov045_0220b8cc(void *);
 extern void *func_ov030_021fd27c(void *);
-extern void func_02071c38(void *, void *);
+extern void GraphicsArchive_ReleasePaletteResource(void *, void *);
 extern void GraphicsSpriteRenderer_SetTextGridObjectMode(void *);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_ov030_021fcf18(void *);
@@ -59,7 +59,7 @@ static void teardown_main_scene(void *scene)
     }
     destroy_owned_child(FIELD(void *, scene, 0x2c0));
     destroy_owned_child(FIELD(void *, scene, 0x2bc));
-    func_02071c38(data_020f4e18[0], FIELD(void *, scene, 0x360));
+    GraphicsArchive_ReleasePaletteResource(data_020f4e18[0], FIELD(void *, scene, 0x360));
 
     /* Disable both engines' blend coefficients and clear display-mode bits. */
     *(volatile u16 *)0x04000050 = 0;

@@ -5,11 +5,11 @@
     .extern GraphicsResourceSet_Load
     .extern data_020f4e14
     .extern data_020f4e18
-    .extern func_020706c4
-    .extern func_02070bc4
+    .extern GraphicsBgCharacterResource_UploadToSubBg
+    .extern GraphicsBgPaletteResource_UploadToSubBg
     .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsBgMapResource_AddPaletteBankOffset
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern TitleDisplay_ConfigureMain2dEngine
     .extern TitleDisplay_ConfigureSub2dEngine
@@ -145,17 +145,17 @@ L_021fd584:
     add r0, sp, #0x1c
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r0, [r4, #0xec]
     cmp r0, #0x0
     bne L_021fd640
     mov r1, #0x0
     ldr r0, [sp, #0x1c]
     mov r2, r1
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x20]
     mov r1, #0x0
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     mov r1, #0x0
     ldr r0, [sp, #0x18]
     mov r2, r1

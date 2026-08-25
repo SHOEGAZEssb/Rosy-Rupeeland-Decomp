@@ -13,8 +13,8 @@ extern "C" {
 extern void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId);
 extern void *GraphicsArchive_AcquirePaletteResource(void *archive, u16 resourceId);
 extern void GraphicsSpriteResource_ReleaseTexture(void *resource);
-extern void func_02071bdc(void *archive, void *resource);
-extern void func_02071c38(void *archive, void *resource);
+extern void GraphicsArchive_ReleaseCharacterResource(void *archive, void *resource);
+extern void GraphicsArchive_ReleasePaletteResource(void *archive, void *resource);
 
 #ifdef __cplusplus
 }
@@ -53,7 +53,7 @@ Graphics3DResourceBinding *Graphics3DResourceBinding_Destroy(
 {
     GraphicsSpriteRegionAllocator_Release(&binding->owner->textureRegions, binding->textureRegion);
     GraphicsSpriteSmallRegionAllocator_Release(&binding->owner->paletteRegions, binding->paletteRegion);
-    func_02071bdc(binding->archive, binding->textureResource);
-    func_02071c38(binding->archive, binding->paletteResource);
+    GraphicsArchive_ReleaseCharacterResource(binding->archive, binding->textureResource);
+    GraphicsArchive_ReleasePaletteResource(binding->archive, binding->paletteResource);
     return binding;
 }

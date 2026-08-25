@@ -8,7 +8,7 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsBankStateSnapshot_Destroy
-    .extern func_02092418
+    .extern GraphicsBankStateSnapshot_Restore
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov009/overlay009_scene_delete.c. */
@@ -31,7 +31,7 @@ L_021fd224:
     ldr r0, [r5, #0x84]
     bl GraphicsSpriteGroup_Destroy
     add r0, r5, #0x13c
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     bl DebugText_BeginFrame
     add r0, r5, #0x13c
     bl GraphicsBankStateSnapshot_Destroy

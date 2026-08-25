@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov032/overlay032_selection_motion.c for documented portable C. */
 .extern GraphicsResource_GetFormat
 .extern func_02070958
-.extern func_02070b50
+.extern GraphicsBgPaletteResource_UploadToMainBg
 .extern func_020b44e8
 .extern Overlay032Controller_UpdateScale
 
@@ -55,7 +55,7 @@ L_021feb1c:
     movne r1, #0x6000
     ldr r0, [r5, #0xb48]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     mov r0, #0x1
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 L_021feb90:
@@ -79,7 +79,7 @@ L_021feb90:
     movne r1, #0x6000
     ldr r0, [r5, #0xb48]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
 .size func_ov032_021fead4, .-func_ov032_021fead4

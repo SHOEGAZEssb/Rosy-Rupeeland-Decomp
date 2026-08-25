@@ -8,7 +8,7 @@
 .extern data_020f4e18
 .extern data_ov046_0220cd14
 .extern data_ov046_0220cdf0
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern func_020b44e8
 .extern func_ov046_0220bc80
 
@@ -167,7 +167,7 @@ func_ov046_0220bd14:
     add r0, sp, #0x4
     mov r1, r7
     bne .L_0220bf50
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     b .L_0220bf54
 .L_0220bf50:
     bl GraphicsResourceSet_Apply

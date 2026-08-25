@@ -6,7 +6,7 @@
 .extern gGamePhaseRuntime
 .extern data_ov029_021fecfc
 .extern RuntimePresentationManager_BroadcastSlot1C
-.extern func_02071c38
+.extern GraphicsArchive_ReleasePaletteResource
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
 .extern func_020927b8
 .extern func_ov002_021fb9c4
@@ -71,7 +71,7 @@ L_021fd224:
     ldr r0, L_021fd28c
     ldr r1, [r4, #0xe8]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, L_021fd290
     mov r2, #0x0
     strh r2, [r0, #0x0]
@@ -155,7 +155,7 @@ L_021fd350:
     ldr r0, L_021fd3c0
     ldr r1, [r4, #0xe8]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, L_021fd3c4
     mov r2, #0x0
     strh r2, [r0, #0x0]

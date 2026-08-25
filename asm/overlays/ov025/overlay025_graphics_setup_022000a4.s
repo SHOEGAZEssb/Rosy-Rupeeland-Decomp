@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov025/overlay025_graphics_setup.c. */
 .extern data_020f4e18
-.extern func_02070638
+.extern GraphicsBgCharacterResource_UploadToMainBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_SetPaletteBank
@@ -38,7 +38,7 @@ func_ov025_022000a4:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0

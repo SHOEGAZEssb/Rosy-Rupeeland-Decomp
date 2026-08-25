@@ -9,13 +9,13 @@
 .extern data_021055dc
 .extern MainBg1_SetControl
 .extern SubBg2_SetControl
-.extern func_02070638
-.extern func_020706c4
-.extern func_02070b50
-.extern func_02070bc4
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgCharacterResource_UploadToSubBg
+.extern GraphicsBgPaletteResource_UploadToMainBg
+.extern GraphicsBgPaletteResource_UploadToSubBg
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg
-.extern func_020923a4
+.extern GraphicsBankStateSnapshot_Capture
 .extern func_020af1f8
 .extern func_020b44e8
 .extern gGameWork
@@ -33,7 +33,7 @@ SceneDisplayResources_Setup: ; 0x02021350
     cmp r5, #0xd
     bne .L_020213f8
     ldr r0, .L_02021588
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     mov r0, #0x40
     bl func_020af1f8
     mov r3, #0x4000000
@@ -125,13 +125,13 @@ SceneDisplayResources_Setup: ; 0x02021350
     mov r1, #0x0
     ldr r0, [sp, #0x10]
     mov r2, r1
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x14]
     mov r1, #0x4000
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0x14]
     mov r1, #0x6000
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     mov r1, #0x0
     ldr r0, [sp, #0x18]
     mov r2, r1
@@ -145,13 +145,13 @@ SceneDisplayResources_Setup: ; 0x02021350
     ldr r0, [sp, #0x10]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x14]
     mov r1, #0x4000
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0x14]
     mov r1, #0x6000
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0x18]
     mov r1, #0x2
     mov r2, #0x0

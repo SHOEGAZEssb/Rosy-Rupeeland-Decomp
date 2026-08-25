@@ -4,7 +4,7 @@
     .extern GraphicsResourceSet_Init
     .extern GraphicsResourceSet_Load
     .extern data_020f4e18
-    .extern func_020706c4
+    .extern GraphicsBgCharacterResource_UploadToSubBg
     .extern GraphicsBgResourceData_GetDecoded
     .extern GraphicsBgMapResource_UploadToSubBg
     .extern Presentation_BlendPalette16
@@ -41,7 +41,7 @@ func_ov021_021fe098:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0

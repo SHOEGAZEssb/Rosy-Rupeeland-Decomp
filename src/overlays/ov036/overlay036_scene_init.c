@@ -19,7 +19,7 @@ extern void SceneInputBase_Init(void *scene);
 extern void GraphicsBankStateSnapshot_Init(void *state);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
-extern void func_020923a4(void *state);
+extern void GraphicsBankStateSnapshot_Capture(void *state);
 extern void GraphicsSpriteRenderer_Suspend(void *resource);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *resource);
 extern void func_020ae6dc(void);
@@ -72,7 +72,7 @@ extern "C" void *func_ov036_022045d4(void *scene, s32 selector)
     }
     G3X_Init();
     FIELD(s32, scene, 0x50) = 0;
-    func_020923a4((u8 *)scene + 0x64);
+    GraphicsBankStateSnapshot_Capture((u8 *)scene + 0x64);
     GraphicsSpriteRenderer_Suspend(data_020f4e14);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14);
     GraphicsSpriteRenderer_Suspend(gDebugFont);

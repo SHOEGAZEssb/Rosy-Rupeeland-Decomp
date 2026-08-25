@@ -21,12 +21,12 @@
     .extern data_ov009_021feed4
     .extern Heap_AllocCore
     .extern AnimationResourceState_InitEmbedded
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern SceneInputBase_Init
     .extern GraphicsBankStateSnapshot_Init
-    .extern func_020923a4
+    .extern GraphicsBankStateSnapshot_Capture
     .extern TitleDisplay_SetMainBgPriorities
     .extern TitlePalette_SetMainBackdrop
     .extern TitlePalette_SetSubBackdrop
@@ -59,7 +59,7 @@ func_ov009_021fce9c: ; 0x021fce9c
     add r0, r10, #0x13c
     bl GraphicsBankStateSnapshot_Init
     add r0, r10, #0x13c
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     mov r1, #0x0
     ldr r0, L_021fd170
     str r1, [r10, #0x74]
@@ -199,7 +199,7 @@ L_021fcf84:
     add r0, sp, #0xc
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r1, [r10, #0xe8]
     orr r0, r1, r1, lsl #0x5
     orr r0, r0, r1, lsl #0xa

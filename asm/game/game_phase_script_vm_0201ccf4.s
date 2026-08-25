@@ -5,9 +5,9 @@
 .extern GraphicsResourceSet_Destroy
 .extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_020b44e8
-.extern func_020706c4
+.extern GraphicsBgCharacterResource_UploadToSubBg
 .extern GraphicsResource_GetFormat
-.extern func_02070bc4
+.extern GraphicsBgPaletteResource_UploadToSubBg
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern data_020f4e18
 .global GraphicsSubBackground_LoadResources
@@ -50,10 +50,10 @@ L_0201cd70:
     mov r1, #0x0
     ldr r0, [sp, #0x4]
     mov r2, r1
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, r5, lsl #0x5
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
 L_0201cd94:
     mov r1, #0x0
     ldr r0, [sp, #0xc]
@@ -66,14 +66,14 @@ L_0201cda8:
     ldr r0, [sp, #0x4]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x2000
     ldr r0, [sp, #0x8]
     moveq r1, r5, lsl #0x5
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
 L_0201cddc:
     ldr r0, [sp, #0xc]
     mov r1, #0x1
@@ -86,14 +86,14 @@ L_0201cdf0:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x4000
     ldr r0, [sp, #0x8]
     moveq r1, r5, lsl #0x5
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
 L_0201ce24:
     ldr r0, [sp, #0xc]
     mov r1, #0x2
@@ -106,14 +106,14 @@ L_0201ce38:
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]
     moveq r1, r5, lsl #0x5
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
 L_0201ce6c:
     ldr r0, [sp, #0xc]
     mov r1, #0x3

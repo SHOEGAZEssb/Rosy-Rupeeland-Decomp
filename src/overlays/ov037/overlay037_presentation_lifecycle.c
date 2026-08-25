@@ -17,7 +17,7 @@ extern "C" {
 extern void Graphics3DResourceOwner_Destroy(void *owner);
 extern void Heap_Free(void *allocation);
 extern void GraphicsSpriteRenderer_Resume(void *resource);
-extern void func_02092418(void *camera);
+extern void GraphicsBankStateSnapshot_Restore(void *camera);
 extern void GX_SetGraphicsMode(s32 displayMode, s32 bgMode, s32 bg0As3D);
 extern void func_ov048_0220b7b4(void *state);
 extern void GraphicsBankStateSnapshot_Destroy(void *camera);
@@ -49,7 +49,7 @@ extern "C" void *func_ov037_021fe648(void *presentation)
     }
     GraphicsSpriteRenderer_Resume(data_020f4e14[0]);
     GraphicsSpriteRenderer_Resume(gDebugFont[0]);
-    func_02092418((u8 *)presentation + 0x60);
+    GraphicsBankStateSnapshot_Restore((u8 *)presentation + 0x60);
     GX_SetGraphicsMode(1, 0, 0);
     REG16(0x04000050) = 0;
     REG16(0x04001050) = 0;

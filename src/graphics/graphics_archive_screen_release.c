@@ -39,7 +39,7 @@ extern void GraphicsResourceCache_Remove(void *cache, void *node);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02071cf0(void *archive, GraphicsCachedScreen *resource)
+void GraphicsArchive_ReleaseScreenResource(void *archive, GraphicsCachedScreen *resource)
 {
     void *cache = (u8 *)archive + 0xd8;
     if (GraphicsResourceCache_FindNode(cache, resource) == 0)

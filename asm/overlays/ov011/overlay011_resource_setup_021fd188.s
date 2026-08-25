@@ -3,8 +3,8 @@
     .extern func_020b44e8
     .extern func_ov011_021fd374
     .extern func_0207043c
-    .extern func_020706c4
-    .extern func_02070bc4
+    .extern GraphicsBgCharacterResource_UploadToSubBg
+    .extern GraphicsBgPaletteResource_UploadToSubBg
     .extern Heap_AllocCore
     .extern func_020b1bfc
     .extern GraphicsResourceSet_Apply
@@ -65,10 +65,10 @@ func_ov011_021fd188: ; 0x021fd188
     ldr r0, [r4, #0x78]
     mov r1, #0x1
     moveq r5, #0x2000
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [r4, #0x7c]
     mov r1, r5
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r1, L_021fd368
     ldr r3, L_021fd36c
     mov r0, #0x800

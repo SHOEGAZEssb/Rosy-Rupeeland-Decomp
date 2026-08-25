@@ -13,13 +13,13 @@ extern "C" {
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
-extern void func_02070638(void *, s32, s32);
-extern void func_020706c4(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void TitleDisplay_ConfigureMain2dEngine(s32);
 extern void TitleDisplay_ConfigureSub2dEngine(s32);
@@ -110,7 +110,7 @@ extern "C" void func_ov023_021fe270(void *scene)
     GraphicsResourceSet_Init(set);
     GraphicsResourceSet_Load(set, data_020f4e18, 0x8038, 0x8039, 0x803c);
     func_020b44e8();
-    func_02072048(set, 1, 0);
+    GraphicsResourceSet_ApplyToMainBg(set, 1, 0);
     GraphicsResourceSet_Destroy(set);
 }
 
@@ -126,11 +126,11 @@ extern "C" void func_ov023_021fe2cc(void *scene)
     GraphicsResourceSet_Init(set);
     GraphicsResourceSet_Load(set, data_020f4e18, 0xc006, 0xc007, 0xc008);
     func_020b44e8();
-    func_020706c4(set[0], 2, 0);
+    GraphicsBgCharacterResource_UploadToSubBg(set[0], 2, 0);
     GraphicsBgMapResource_UploadToSubBg(set[2], 2, 0);
     GraphicsBgMapResource_SetPaletteBank(set[2], 8);
     func_020b44e8();
-    func_02070638(set[0], 2, 0);
+    GraphicsBgCharacterResource_UploadToMainBg(set[0], 2, 0);
     GraphicsBgMapResource_UploadToMainBg(set[2], 2, 0);
     u8 *palette = (u8 *)GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x4c0)) + 0x40;
     func_020b1ff0(palette, 0, 0x20);

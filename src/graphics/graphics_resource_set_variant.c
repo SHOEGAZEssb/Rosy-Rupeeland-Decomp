@@ -20,9 +20,9 @@ extern "C" {
 extern void *GraphicsArchive_AcquireCharacterResource(void *archive, u32 resourceId);
 extern void *GraphicsArchive_AcquirePaletteResource(void *archive, u32 resourceId);
 extern void *GraphicsArchive_AcquireVpoResource(void *archive, u32 resourceId);
-extern void func_02071bdc(void *archive, void *resource);
-extern void func_02071c38(void *archive, void *resource);
-extern void func_02071da8(void *archive, void *resource);
+extern void GraphicsArchive_ReleaseCharacterResource(void *archive, void *resource);
+extern void GraphicsArchive_ReleasePaletteResource(void *archive, void *resource);
+extern void GraphicsArchive_ReleaseVpoResource(void *archive, void *resource);
 
 #ifdef __cplusplus
 }
@@ -86,11 +86,11 @@ void GraphicsResourceSetVariant_ReleaseHandles(GraphicsResourceSet *set)
         return;
     }
 
-    func_02071bdc(resource0->archive_04, resource0);
+    GraphicsArchive_ReleaseCharacterResource(resource0->archive_04, resource0);
     resource1 = (GraphicsResourceHandleVariant *)set->resource1;
-    func_02071c38(resource1->archive_04, resource1);
+    GraphicsArchive_ReleasePaletteResource(resource1->archive_04, resource1);
     resource2 = (GraphicsResourceHandleVariant *)set->resource2;
-    func_02071da8(resource2->archive_04, resource2);
+    GraphicsArchive_ReleaseVpoResource(resource2->archive_04, resource2);
     set->resource0 = 0;
     set->resource1 = 0;
     set->resource2 = 0;

@@ -69,12 +69,12 @@ extern void DisplayBrightness_StartMaskedTransitions(s32 screens, s32 brightness
 extern GraphicsSpriteGroup *ActorCollection_GetSpriteGroup(void *collection);
 extern s32 SceneInputBase_Update(void *object, s32 mode);
 extern void Sound_SetModalEnvelopeEnabled(void *sound, s32 a, s32 b, s32 c, s32 d);
-extern void func_02092418(void *object);
+extern void GraphicsBankStateSnapshot_Restore(void *object);
 extern void *func_ov059_0220fd20(void *object, s32 mode);
 extern void *func_ov059_02210fec(void *object, void *phaseState);
 extern u32 GX_VBlankIntr(u32 callback);
 extern void GridEffectActorRegistry_FinalizeDepartingActors(void);
-extern void func_020923a4(void *object);
+extern void GraphicsBankStateSnapshot_Capture(void *object);
 extern void RuntimePresentationManager_DisableGraphics3dForActivePhase(
     void *manager);
 extern void GraphicsSpriteRenderer_BuildFrame(GraphicsSpriteRenderer *renderer, s32 mode);
@@ -372,7 +372,7 @@ code_r0x0200dd3c:
     *UNK_0200e20c = *UNK_0200e20c & 0x7fff |
                     (u16)(self->savedScreenSwap << 0xf);
     Sound_SetModalEnvelopeEnabled(gSoundContext,0,0,0x14,0x1e);
-    func_02092418(&self->graphicsBankStateSnapshot);
+    GraphicsBankStateSnapshot_Restore(&self->graphicsBankStateSnapshot);
     switch(value) {
     case 0:
       value = self->sceneKind;
@@ -549,11 +549,11 @@ code_r0x0200defc:
   Sound_SetModalEnvelopeEnabled(*UNK_0200e0e8,1,0,0x14,0x1e);
 code_r0x0200d224:
   if (self->sceneKind == 10) {
-    func_020923a4(&self->graphicsBankStateSnapshot);
+    GraphicsBankStateSnapshot_Capture(&self->graphicsBankStateSnapshot);
   }
   else {
     RuntimePresentationManager_DisableGraphics3dForActivePhase((u8 *)gGamePhaseRuntime + 0x2f7c);
-    func_020923a4(&self->graphicsBankStateSnapshot);
+    GraphicsBankStateSnapshot_Capture(&self->graphicsBankStateSnapshot);
     *UNK_0200e0ec = 0;
     GamePhaseState_SetEnabled(GamePhaseRuntime_GetEmbeddedState(gGamePhaseRuntime), 0);
     GraphicsSpriteGroup_ReleaseResources(ActorCollection_GetSpriteGroup(

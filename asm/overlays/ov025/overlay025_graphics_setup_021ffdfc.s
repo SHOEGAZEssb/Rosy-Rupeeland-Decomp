@@ -3,11 +3,11 @@
 /* Exact fallback; see src/overlays/ov025/overlay025_graphics_setup.c. */
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_020706c4
+.extern GraphicsBgCharacterResource_UploadToSubBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsBgMapResource_AddPaletteBankOffset
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern TitleDisplay_ConfigureMain2dEngine
 .extern TitleDisplay_ConfigureSub2dEngine
@@ -94,7 +94,7 @@ func_ov025_021ffdfc:
     add r0, sp, #0x4
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r3, L_02200000
     ldr r0, L_021ffffc
     str r3, [sp, #0x0]
@@ -123,7 +123,7 @@ func_ov025_021ffdfc:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0

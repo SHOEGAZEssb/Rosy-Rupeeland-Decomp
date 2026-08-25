@@ -26,7 +26,7 @@ extern void DualLayerTileRenderer_LoadFromConfig(void *self,
                                                  s32 mode, s32 variant);
 extern void DualLayerTileRenderer_ActivateLayers(void *self, s32 notify);
 extern void func_020b44e8(void);
-extern void func_02070638(void *resource, s32 background, s32 value);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *resource, s32 background, s32 value);
 extern void GraphicsBgMapResource_UploadToMainBg(void *resource, s32 background, s32 value);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *resource);
 void MainDualLayerResourceRenderer_LoadBgResources(MainDualLayerResourceRenderer *self);
@@ -99,7 +99,7 @@ void MainDualLayerResourceRenderer_LoadBgResources(MainDualLayerResourceRenderer
     GraphicsResourceSet_Load(&resources, data_020f4e18,
                              0xa006, 0xa007, 0xa008);
     func_020b44e8();
-    func_02070638(resources.resource0, 0, 0);
+    GraphicsBgCharacterResource_UploadToMainBg(resources.resource0, 0, 0);
     GraphicsBgMapResource_UploadToMainBg(resources.resource2, 0, 0);
     palette = GraphicsBgResourceData_GetDecoded(resources.resource1);
     PaletteBuffer_Write(&gMainBgPaletteBuffer, palette + 0x180, 0x180, 0x80);

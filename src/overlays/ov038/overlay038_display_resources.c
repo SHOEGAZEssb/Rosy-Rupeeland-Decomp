@@ -32,7 +32,7 @@ extern void GraphicsResourceSet_Destroy(Overlay038GraphicsResourceSet *set);
 extern void GraphicsBgMapResource_SetPaletteBank(void *resource, s32 layer);
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *resource, s32 layer);
 extern void func_020b44e8(void);
-extern void func_02072048(Overlay038GraphicsResourceSet *set, s32 layer,
+extern void GraphicsResourceSet_ApplyToMainBg(Overlay038GraphicsResourceSet *set, s32 layer,
                           s32 offset);
 extern void GraphicsBgMapResource_UploadToMainBg(void *resource, s32 layer, s32 value);
 #ifdef __cplusplus
@@ -79,12 +79,12 @@ extern "C" void func_ov038_021fd28c(void)
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xc00f, 0xc010, 0xc011);
     GraphicsBgMapResource_SetPaletteBank(set.third, 15);
     func_020b44e8();
-    func_02072048(&set, 3, 0x1e0);
+    GraphicsResourceSet_ApplyToMainBg(&set, 3, 0x1e0);
 
     GraphicsResourceSet_Load(&set, data_020f4e18, 0x801f, 0x8020, 0x8022);
     GraphicsBgMapResource_AddPaletteBankOffset(set.third, 8);
     func_020b44e8();
-    func_02072048(&set, 0, 0x100);
+    GraphicsResourceSet_ApplyToMainBg(&set, 0, 0x100);
 
     GraphicsResourceSet_Load(&set, data_020f4e18, 0x801f, 0x8020, 0x8021);
     GraphicsBgMapResource_AddPaletteBankOffset(set.third, 8);

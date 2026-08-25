@@ -38,7 +38,7 @@ extern s32 Presentation_InterpolateScalar(void *, s32, s32, s32);
 extern u32 genrand_int32(void);
 extern s32 TitleRandom_NextBounded(u32 *, s32);
 extern s32 func_0209189c(u32 *, s32, s32);
-extern void func_02092418(void *);
+extern void GraphicsBankStateSnapshot_Restore(void *);
 extern void func_020afd0c(volatile void *, s32, s32, s32, s32);
 extern void GameWork_SetFlag(void *, s32);
 extern void GameWork_ClearFlag(void *, s32);
@@ -99,7 +99,7 @@ static DualArrayBlendPresentation *teardown_blend(
         *dispcnt = (*dispcnt & ~0x1f00) |
                    ((((*(volatile u32 *)0x04001000 & 0x1f00) >> 8) & ~3) << 8);
         *(volatile u16 *)0x04000050 = 0;
-        func_02092418(data_021055dc);
+        GraphicsBankStateSnapshot_Restore(data_021055dc);
     } else {
         volatile u32 *dispcnt = (volatile u32 *)0x04001000;
         *dispcnt = (*dispcnt & ~0x1f00) |

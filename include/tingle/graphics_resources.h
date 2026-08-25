@@ -29,7 +29,7 @@ void GraphicsResourceSet_Load(GraphicsResourceSet *set, void *archive,
                               u32 resource0Id, u32 resource1Id,
                               u32 resource2Id);
 void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set);
-void func_02072048(GraphicsResourceSet *set, s32 value0, s32 value1);
+void GraphicsResourceSet_ApplyToMainBg(GraphicsResourceSet *set, s32 value0, s32 value1);
 void GraphicsResourceSet_Apply(GraphicsResourceSet *set, s32 value0,
                                s32 value1);
 

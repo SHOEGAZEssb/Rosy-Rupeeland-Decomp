@@ -67,7 +67,7 @@ extern void ActorCollection_SetEnabled(...);
 extern void *ActorCollection_GetSpriteGroup(...);
 extern void ActorCollection_SetActorScale(...);
 extern void *Actor_RebuildPrimaryAttachment(...);
-extern void Sound_Play(...), func_020706c4(...), func_02070bc4(...);
+extern void Sound_Play(...), GraphicsBgCharacterResource_UploadToSubBg(...), GraphicsBgPaletteResource_UploadToSubBg(...);
 extern void AnimationResourceState_InitEmbedded(...);
 extern void AnimationResourceState_Destroy(...);
 extern void AnimationResourceState_ReleaseResources(...);
@@ -240,10 +240,10 @@ void func_ov059_0220fd80(void *p, void *cfg, s32 bg, s32 priority,
   GraphicsBgMapResource_SetPaletteBank(
       F(GraphicsBgMapResource *, resources, 8), regionId);
   func_020b44e8();
-  func_020706c4(F(void *, resources, 0), bg, 0);
+  GraphicsBgCharacterResource_UploadToSubBg(F(void *, resources, 0), bg, 0);
   GraphicsBgMapResource_UploadToSubBg(
       F(GraphicsBgMapResource *, resources, 8), bg, 0);
-  func_02070bc4(F(void *, resources, 4), regionId << 5);
+  GraphicsBgPaletteResource_UploadToSubBg(F(void *, resources, 4), regionId << 5);
   AnimationResourceState_ReplaceResources((u8 *)p + 0x44, data_020f4e18, 0x30c0, 0x30c1, 0x30c2);
   F(void *, p, 0) = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
   for (row = 0; row < 4; row++)
@@ -672,10 +672,10 @@ void func_ov059_02211870(void) {
   GraphicsBgMapResource_SetPaletteBank(
       F(GraphicsBgMapResource *, resources, 8), 0x0f);
   func_020b44e8();
-  func_020706c4(F(void *, resources, 0), 0, 0);
+  GraphicsBgCharacterResource_UploadToSubBg(F(void *, resources, 0), 0, 0);
   GraphicsBgMapResource_UploadToSubBg(
       F(GraphicsBgMapResource *, resources, 8), 0, 0);
-  func_02070bc4(F(void *, resources, 4), 0x1e0);
+  GraphicsBgPaletteResource_UploadToSubBg(F(void *, resources, 4), 0x1e0);
   GraphicsResourceSet_Destroy(resources);
 }
 

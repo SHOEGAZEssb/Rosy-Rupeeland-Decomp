@@ -16,7 +16,7 @@ extern void GraphicsResourceSet_Apply(void *, s32, s32);
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void TitleDisplay_ConfigureSub2dEngine(s32, s32);
 extern void TitleDisplay_ResetMainBgScroll(void);
 extern void TitleDisplay_ResetSubBgScroll(void);
@@ -75,7 +75,7 @@ extern "C" void func_ov017_021ff58c(void *state)
     GraphicsResourceSet_Load(resourceSet, data_020f4e18[0], 0x8000, 0x8001,
                              0x8002);
     func_020b44e8();
-    func_02072048(resourceSet, 2, 0);
+    GraphicsResourceSet_ApplyToMainBg(resourceSet, 2, 0);
     GraphicsResourceSet_Load(resourceSet, data_020f4e18[0], 0x8012, 0x8013,
                              0x8019);
     func_020b44e8();

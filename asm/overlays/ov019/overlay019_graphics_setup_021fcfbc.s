@@ -7,7 +7,7 @@
     .extern data_020f4e18
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsBgMapResource_UploadToSubBg
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern TitleDisplay_ConfigureMain2dEngine
     .extern TitleDisplay_ConfigureSub2dEngine
     .extern TitleDisplay_ResetMainBgScroll
@@ -72,7 +72,7 @@ Overlay019_SetupGraphics:
     mov r1, #0x0
     add r0, sp, #0x4
     mov r2, r1
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     add r0, sp, #0x10
     mov r1, #0x0
     bl TitleScreenResourceCollection_Get

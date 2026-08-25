@@ -6,7 +6,7 @@
     .extern GraphicsBankStateSnapshot_Init
     .extern func_ov043_0220b740
     .extern G3X_Init
-    .extern func_020923a4
+    .extern GraphicsBankStateSnapshot_Capture
     .extern GraphicsSpriteRenderer_Suspend
     .extern GraphicsSpriteRenderer_HideAllSprites
     .extern func_020ae7b0
@@ -43,7 +43,7 @@ func_ov037_021fe4fc:
     mov r0, #0x0
     str r0, [r4, #0x50]
     add r0, r4, #0x60
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     ldr r0, L_021fe628
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_Suspend

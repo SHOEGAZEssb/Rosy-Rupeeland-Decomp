@@ -8,7 +8,7 @@
 .extern GraphicsSpriteRenderer_Resume
 .extern Graphics3DResourceOwner_Destroy
 .extern GraphicsBankStateSnapshot_Destroy
-.extern func_02092418
+.extern GraphicsBankStateSnapshot_Restore
 .extern PresentationList_DeleteAll
 .extern func_ov048_0220b7b4
 .extern gDebugFont
@@ -48,7 +48,7 @@ L_021fde7c:
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_Resume
     add r0, r4, #0x164
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     mov r1, #0x0
     mov r2, r1
     mov r0, #0x1

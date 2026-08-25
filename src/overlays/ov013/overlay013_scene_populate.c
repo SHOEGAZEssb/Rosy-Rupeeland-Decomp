@@ -46,7 +46,7 @@ extern void GraphicsResourceSet_Load(Overlay013ResourceSet *, void *, s32,
                                      s32, s32);
 extern void GraphicsResourceSet_Destroy(Overlay013ResourceSet *);
 extern void func_020b44e8(void);
-extern void func_02072048(Overlay013ResourceSet *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(Overlay013ResourceSet *, s32, s32);
 extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
 #ifdef __cplusplus
 }
@@ -189,11 +189,11 @@ void func_ov013_021fd310(void *state)
     GraphicsResourceSet_Load(&resources, data_020f4e18,
                              0xb000, 0xb001, 0xb002);
     func_020b44e8();
-    func_02072048(&resources, 3, 0);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 3, 0);
     GraphicsResourceSet_Load(&resources, data_020f4e18,
                              0x8000, 0x8001, 0x8002);
     GraphicsBgMapResource_SetPaletteBank((void *)resources.words[2], 8);
     func_020b44e8();
-    func_02072048(&resources, 1, 0x100);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 1, 0x100);
     GraphicsResourceSet_Destroy(&resources);
 }

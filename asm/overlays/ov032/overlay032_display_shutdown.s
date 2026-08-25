@@ -10,7 +10,7 @@
 .extern GamePhaseAreaScene_SetEnabled
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
-.extern func_02092418
+.extern GraphicsBankStateSnapshot_Restore
 .extern func_ov032_021fde1c
 .extern gDebugFont
 
@@ -24,7 +24,7 @@ Overlay032Scene_ShutdownGraphics:
     bl func_ov032_021fde1c
     add r0, r4, #0x3e8
     add r0, r0, #0x800
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     mov r3, #0x4000000
     ldr r0, [r3, #0x0]
     mov r1, #0x0

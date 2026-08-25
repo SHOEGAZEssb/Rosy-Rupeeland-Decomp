@@ -27,9 +27,9 @@ extern void GraphicsSpriteGroupOwner_DestroyGroup(...);
 extern void func_020b44e8(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void GraphicsResourceSet_Load(...);
-extern void func_02070638(...);
+extern void GraphicsBgCharacterResource_UploadToMainBg(...);
 extern s32 GraphicsResource_GetFormat(void *);
-extern void func_02070b50(...);
+extern void GraphicsBgPaletteResource_UploadToMainBg(...);
 extern void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *);
 extern void *func_020959d4(...);
 extern void ModalState_InitResources(...);
@@ -76,8 +76,8 @@ extern "C" s32 func_ov032_02200da4(void *scene)
         GraphicsResourceSet *set = (GraphicsResourceSet *)((u8 *)scene + 0xf18);
         GraphicsResourceSet_Load(set, data_020f4e18[0], 0x8030, 0x8031, 0x8032);
         func_020b44e8();
-        func_02070638(set->characterResource, 2, 0);
-        func_02070b50(set->paletteResource,
+        GraphicsBgCharacterResource_UploadToMainBg(set->characterResource, 2, 0);
+        GraphicsBgPaletteResource_UploadToMainBg(set->paletteResource,
                       GraphicsResource_GetFormat(set->characterResource)
                           ? 0x6000 : 0);
         GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, 2, 0);

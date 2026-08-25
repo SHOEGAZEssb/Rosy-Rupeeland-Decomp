@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov030/overlay030_board_screen_setup.c for documented portable C. */
 .extern data_020f4e14
 .extern data_020f4e18
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern GraphicsSpriteRenderer_SetTextGridObjectMode
 .extern GraphicsSpriteText_FormatDecimal
 .extern func_020b44e8
@@ -59,7 +59,7 @@ L_021fe5e8:
     add r0, sp, #0x4
     mov r1, #0x0
     mov r2, #0x6000
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     ldr r0, [r4, #0x390]
     cmp r0, #0x1
     bne L_021fe668
@@ -116,7 +116,7 @@ L_021fe6c4:
     add r0, sp, #0x4
     mov r1, #0x1
     mov r2, #0x4000
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     mov r1, #0x10
     str r1, [r4, #0x33c]
     str r1, [r4, #0x338]

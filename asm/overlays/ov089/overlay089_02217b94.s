@@ -1,9 +1,9 @@
 .text
 ; Matching fallback for the portable implementation in src/overlays/ov089/overlay089_recovery.c.
 .extern data_020f4e18
-.extern func_02071bdc
-.extern func_02071c38
-.extern func_02071c94
+.extern GraphicsArchive_ReleaseCharacterResource
+.extern GraphicsArchive_ReleasePaletteResource
+.extern GraphicsArchive_ReleaseCellResource
 .extern GraphicsSpriteGroup_ReleaseState
 
 .global func_ov089_02217b94
@@ -18,15 +18,15 @@ func_ov089_02217b94:
     ldr r0, .L_02217c10
     ldr r1, [r4, #0x8]
     ldr r0, [r0, #0x0]
-    bl func_02071bdc
+    bl GraphicsArchive_ReleaseCharacterResource
     ldr r0, .L_02217c10
     ldr r1, [r4, #0xc]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, .L_02217c10
     ldr r1, [r4, #0x10]
     ldr r0, [r0, #0x0]
-    bl func_02071c94
+    bl GraphicsArchive_ReleaseCellResource
     mov r0, #0x0
     str r0, [r4, #0x4]
 .L_02217be8:

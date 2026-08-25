@@ -22,7 +22,7 @@
 .extern DualArrayBlendPresentation_RetargetCompletedRandomly
 .extern func_0209189c
 .extern TitleRandom_NextBounded
-.extern func_02092418
+.extern GraphicsBankStateSnapshot_Restore
 .extern PresentationScalar_TransitionTo
 .extern Presentation_InitVariant
 .extern Presentation_SetPosition

@@ -19,9 +19,9 @@ extern "C" s32 func_020af938(void);
 extern "C" void func_020b581c(s32, s32, s32);
 extern "C" void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern "C" void func_020b44e8(void);
-extern "C" void func_020706c4(void *, s32, s32);
+extern "C" void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
 extern "C" void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
-extern "C" void func_02070638(void *, s32, s32);
+extern "C" void GraphicsBgCharacterResource_UploadToMainBg(void *, s32, s32);
 extern "C" void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern "C" void *GraphicsBgResourceData_GetDecoded(void *);
 extern "C" void PaletteBuffer_Write(void *, const void *, s32, s32);
@@ -130,11 +130,11 @@ extern "C" void func_ov057_0220e658(void *scene)
     *main_bg1 = (u16)((*main_bg1 & ~3) | 3);
     GraphicsBgMapResource_AddPaletteBankOffset(FIELD(void *, scene, 0x10), 15);
     func_020b44e8();
-    func_020706c4(FIELD(void *, scene, 8), 1, 0);
+    GraphicsBgCharacterResource_UploadToSubBg(FIELD(void *, scene, 8), 1, 0);
     GraphicsBgMapResource_UploadToSubBg(FIELD(void *, scene, 0x10), 1, 0);
     PaletteBuffer_Write(gSubBgPaletteBuffer,
         GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x0c)), 0x1e0, 0x20);
-    func_02070638(FIELD(void *, scene, 8), 1, 0);
+    GraphicsBgCharacterResource_UploadToMainBg(FIELD(void *, scene, 8), 1, 0);
     GraphicsBgMapResource_UploadToMainBg(FIELD(void *, scene, 0x10), 1, 0);
     PaletteBuffer_Write(gMainBgPaletteBuffer,
         GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x0c)), 0x1e0, 0x20);

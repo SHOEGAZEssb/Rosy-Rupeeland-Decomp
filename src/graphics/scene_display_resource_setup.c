@@ -21,14 +21,14 @@ extern void GraphicsResourceSet_Init(GraphicsResourceSet *);
 extern void GraphicsResourceSet_Load(GraphicsResourceSet *, void *, s32, s32, s32, s32);
 extern void GraphicsResourceSet_Destroy(GraphicsResourceSet *);
 extern void func_020b44e8(void);
-extern void func_020923a4(void *);
+extern void GraphicsBankStateSnapshot_Capture(void *);
 extern void func_020af1f8(s32);
 extern void MainBg1_SetControl(s32, s32, s32, s32, s32);
 extern void SubBg2_SetControl(s32, s32, s32, s32);
-extern void func_02070638(void *);
-extern void func_020706c4(void *, s32, s32);
-extern void func_02070b50(void *, s32);
-extern void func_02070bc4(void *, s32);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
+extern void GraphicsBgPaletteResource_UploadToMainBg(void *, s32);
+extern void GraphicsBgPaletteResource_UploadToSubBg(void *, s32);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ void SceneDisplayResources_Setup(s32 index)
 
     GameWork_ClearFlag(gGameWork, 0x38e);
     if (index == 13) {
-        func_020923a4(data_021055dc);
+        GraphicsBankStateSnapshot_Capture(data_021055dc);
         func_020af1f8(0x40);
         *(volatile u32 *)0x04000000 &= ~0x0300;
         *(volatile u16 *)0x04000008 =
@@ -76,15 +76,15 @@ void SceneDisplayResources_Setup(s32 index)
                              ids->second[1], ids->second[2], ids->second[2]);
     func_020b44e8();
     if (index == 13) {
-        func_02070638(first.a);
-        func_02070b50(first.b, 0x4000);
-        func_02070b50(first.b, 0x6000);
+        GraphicsBgCharacterResource_UploadToMainBg(first.a);
+        GraphicsBgPaletteResource_UploadToMainBg(first.b, 0x4000);
+        GraphicsBgPaletteResource_UploadToMainBg(first.b, 0x6000);
         GraphicsBgMapResource_UploadToMainBg(first.c, 0, 0);
         GraphicsBgMapResource_UploadToMainBg(second.c, 1, 0);
     } else {
-        func_020706c4(first.a, 2, 0);
-        func_02070bc4(first.b, 0x4000);
-        func_02070bc4(first.b, 0x6000);
+        GraphicsBgCharacterResource_UploadToSubBg(first.a, 2, 0);
+        GraphicsBgPaletteResource_UploadToSubBg(first.b, 0x4000);
+        GraphicsBgPaletteResource_UploadToSubBg(first.b, 0x6000);
         GraphicsBgMapResource_UploadToSubBg(first.c, 2, 0);
         GraphicsBgMapResource_UploadToSubBg(second.c, 3, 0);
     }

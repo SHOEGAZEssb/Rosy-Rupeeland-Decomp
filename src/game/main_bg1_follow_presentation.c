@@ -126,7 +126,7 @@ void MainBg1FollowPresentation_SetupBg1Resources(MainBg1FollowPresentation *self
     control = (control & 0x43) | 0x1a08;
     control = (control & ~3) | 3;
     *(volatile u16 *)0x0400000a = control;
-    func_02072048(&resources, 1, 0x1e0);
+    GraphicsResourceSet_ApplyToMainBg(&resources, 1, 0x1e0);
     PaletteBuffer_Write(gMainBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(resources.resource1),
                         0x1e0, 0x20);
     display = *(volatile u32 *)0x04000000;

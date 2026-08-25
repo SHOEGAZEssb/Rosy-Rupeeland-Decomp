@@ -39,7 +39,7 @@ extern void func_020b1534(void);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_02070b50(GraphicsBgPaletteResource *resource, s32 destination)
+void GraphicsBgPaletteResource_UploadToMainBg(GraphicsBgPaletteResource *resource, s32 destination)
 {
     GraphicsBgPaletteDescriptor *descriptor;
 

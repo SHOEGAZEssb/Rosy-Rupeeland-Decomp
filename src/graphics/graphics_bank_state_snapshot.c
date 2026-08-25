@@ -58,7 +58,7 @@ extern void GX_SetBankForLCDC(u32 banks);
 
 /* Query every NitroSDK ownership domain and write thirteen u32 entries to the
  * caller-owned 0x34-byte snapshot. No hardware state is changed. */
-void func_020923a4(u32 *snapshot)
+void GraphicsBankStateSnapshot_Capture(u32 *snapshot)
 {
     snapshot[0] = func_020ae668();
     snapshot[1] = func_020ae658();
@@ -75,10 +75,10 @@ void func_020923a4(u32 *snapshot)
     snapshot[12] = func_020ae5e8();
 }
 
-/* Restore a snapshot captured by func_020923a4. Changed ownership domains are
+/* Restore a snapshot captured by GraphicsBankStateSnapshot_Capture. Changed ownership domains are
  * disabled before every saved assignment is reapplied. VBlank IRQ delivery is
  * suppressed for the complete hardware transition and restored on return. */
-void func_02092418(const u32 *snapshot)
+void GraphicsBankStateSnapshot_Restore(const u32 *snapshot)
 {
     u32 interruptState = GX_VBlankIntr(0);
 

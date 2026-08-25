@@ -62,8 +62,8 @@ extern void SubBg2_SetControl(s32, s32, s32, s32);
 extern void PairedReferenceState_SetReferencesAndReset(void *self,
                                                        void *first,
                                                        void *second);
-extern void func_02070638(void *resource);
-extern void func_020706c4(void *resource, s32 first, s32 second);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *resource);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *resource, s32 first, s32 second);
 extern void GraphicsBgMapResource_UploadToMainBg(void *resource, s32 first, s32 second);
 extern void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 first, s32 second);
 extern void *GraphicsBgResourceData_GetDecoded(void *resource);
@@ -115,7 +115,7 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
         *(volatile u32 *)0x04000000 =
             (*(volatile u32 *)0x04000000 & ~0x1f00) |
             ((((*(volatile u32 *)0x04000000 & 0x1f00) >> 8) | 6) << 8);
-        func_02070638(resources.first);
+        GraphicsBgCharacterResource_UploadToMainBg(resources.first);
         GraphicsBgMapResource_UploadToMainBg(resources.third, 1, 0);
         GraphicsBgMapResource_UploadToMainBg(resources.third, 2, 0);
         palette = (u8 *)GraphicsBgResourceData_GetDecoded(resources.second) + paletteIndex * 0x20;
@@ -131,7 +131,7 @@ DisplayFadePresentation *DisplayFadePresentation_Init(
         *(volatile u32 *)0x04001000 =
             (*(volatile u32 *)0x04001000 & ~0x1f00) |
             ((((*(volatile u32 *)0x04001000 & 0x1f00) >> 8) | 6) << 8);
-        func_020706c4(resources.first, 1, 0);
+        GraphicsBgCharacterResource_UploadToSubBg(resources.first, 1, 0);
         GraphicsBgMapResource_UploadToSubBg(resources.third, 1, 0);
         GraphicsBgMapResource_UploadToSubBg(resources.third, 2, 0);
         palette = (u8 *)GraphicsBgResourceData_GetDecoded(resources.second) + paletteIndex * 0x20;

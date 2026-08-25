@@ -9,8 +9,8 @@
 .extern data_020c7bb4
 .extern data_020f4e18
 .extern GraphicsResource_GetFormat
-.extern func_02070638
-.extern func_02070b50
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgPaletteResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern func_020b44e8
@@ -39,14 +39,14 @@ func_ov032_021fe55c:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
@@ -75,14 +75,14 @@ func_ov032_021fe55c:
     ldr r0, [r4, #0xb44]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [r4, #0xb44]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [r4, #0xb48]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [r4, #0xb4c]
     mov r1, #0x3
     mov r2, #0x0

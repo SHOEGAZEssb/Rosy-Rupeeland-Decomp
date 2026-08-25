@@ -4,7 +4,7 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern data_ov030_021ff8b0
-.extern func_02071c38
+.extern GraphicsArchive_ReleasePaletteResource
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
 .extern GraphicsSpriteRenderer_QueuePaletteUploads
@@ -68,7 +68,7 @@ L_021fe018:
     ldr r0, L_021fe0b4
     ldr r1, [r4, #0x360]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, L_021fe0b8
     mov r1, #0x0
     strh r1, [r0, #0x0]
@@ -159,7 +159,7 @@ L_021fe164:
     ldr r0, L_021fe208
     ldr r1, [r4, #0x360]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, L_021fe20c
     mov r1, #0x0
     strh r1, [r0, #0x0]

@@ -7,11 +7,11 @@
 .extern data_ov028_021ff2e8
 .extern data_ov028_021ff300
 .extern GamePhaseCurrencyHud_Update
-.extern func_02070638
+.extern GraphicsBgCharacterResource_UploadToMainBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_SetPaletteBank
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern GraphicsSpriteRenderer_GetObjectPaletteAddress
 .extern func_0209189c
@@ -107,11 +107,11 @@ func_ov028_021fe1b0:
     add r0, sp, #0x1c
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     mov r1, #0x0
     add r0, sp, #0x10
     mov r2, r1
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     add r0, sp, #0x10
     bl GraphicsResourceSet_Destroy
     add r0, sp, #0x1c
@@ -133,7 +133,7 @@ func_ov028_021fe1b0:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0

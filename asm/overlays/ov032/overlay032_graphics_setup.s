@@ -14,16 +14,16 @@
 .extern GamePhaseAreaScene_SetEnabled
 .extern RuntimePresentationManager_DisableGraphics3dForActivePhase
 .extern GraphicsResource_GetFormat
-.extern func_02070638
-.extern func_020706c4
-.extern func_02070b50
-.extern func_02070bc4
+.extern GraphicsBgCharacterResource_UploadToMainBg
+.extern GraphicsBgCharacterResource_UploadToSubBg
+.extern GraphicsBgPaletteResource_UploadToMainBg
+.extern GraphicsBgPaletteResource_UploadToSubBg
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern GraphicsSpriteRenderer_ConfigureTextGridPriority
-.extern func_020923a4
+.extern GraphicsBankStateSnapshot_Capture
 .extern TitleDisplay_ResetMainBgScroll
 .extern TitleDisplay_ResetSubBgScroll
 .extern TitleDisplay_SetMainBgPriorities
@@ -47,7 +47,7 @@ Overlay032Scene_SetupGraphics:
     bl RuntimePresentationManager_DisableGraphics3dForActivePhase
     add r0, r4, #0x3e8
     add r0, r0, #0x800
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     ldr r0, L_021fdde0
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_ClearTextBuffer
@@ -158,14 +158,14 @@ Overlay032Scene_SetupGraphics:
     mov r1, #0x0
     ldr r0, [sp, #0x4]
     mov r2, r1
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
@@ -184,14 +184,14 @@ Overlay032Scene_SetupGraphics:
     ldr r0, [sp, #0x4]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x4000
     ldr r0, [sp, #0x8]
     moveq r1, #0x0
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
@@ -210,14 +210,14 @@ Overlay032Scene_SetupGraphics:
     ldr r0, [sp, #0x4]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     moveq r1, #0x0
     ldr r0, [sp, #0x8]
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0
@@ -236,14 +236,14 @@ Overlay032Scene_SetupGraphics:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x4000
     ldr r0, [sp, #0x8]
     moveq r1, #0x0
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
@@ -262,14 +262,14 @@ Overlay032Scene_SetupGraphics:
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]
     moveq r1, #0x0
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x3
     mov r2, #0x0

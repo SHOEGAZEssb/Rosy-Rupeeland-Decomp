@@ -14,13 +14,13 @@ extern "C" {
 extern void GraphicsResourceSet_Destroy(void *);
 extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
-extern void func_02070638(void *, s32, s32);
-extern void func_020706c4(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
 extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void *GraphicsSpriteRenderer_GetObjectPaletteAddress(void *);
 extern void TitleDisplay_ConfigureMain2dEngine(s32);
 extern void TitleDisplay_ConfigureSub2dEngine(s32);
@@ -133,7 +133,7 @@ extern "C" void func_ov021_021fe098(void *state)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0xc006, 0xc007, 0xc008);
     func_020b44e8();
-    func_020706c4(FIELD(void *, resources, 0), 2, 0);
+    GraphicsBgCharacterResource_UploadToSubBg(FIELD(void *, resources, 0), 2, 0);
     GraphicsBgMapResource_UploadToSubBg(FIELD(void *, resources, 8), 2, 0);
     func_020b1ff0(FIELD(void *, state, 0x3f0), 0, 0x20);
     GraphicsResourceSet_Destroy(resources);
@@ -156,7 +156,7 @@ extern "C" void Overlay021_SetupMainBackground(void *state)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0x8038, 0x8039, 0x803a);
     func_020b44e8();
-    func_02072048(resources, 1, 0);
+    GraphicsResourceSet_ApplyToMainBg(resources, 1, 0);
     FIELD(s32, state, 0x3fc) = 0;
     FIELD(s32, state, 0x48) = 0x1c;
     func_020afd0c((void *)0x04000050, 4, 8, 8, 8);
@@ -165,7 +165,7 @@ extern "C" void Overlay021_SetupMainBackground(void *state)
                              0xc006, 0xc007, 0xc008);
     GraphicsBgMapResource_SetPaletteBank(FIELD(void *, resources, 8), 8);
     func_020b44e8();
-    func_02070638(FIELD(void *, resources, 0), 2, 0);
+    GraphicsBgCharacterResource_UploadToMainBg(FIELD(void *, resources, 0), 2, 0);
     GraphicsBgMapResource_UploadToMainBg(FIELD(void *, resources, 8), 2, 0);
     func_020b2058(data_021f5ee8, 0x100, 0x20);
     GraphicsResourceSet_Destroy(resources);
@@ -194,7 +194,7 @@ extern "C" void func_ov021_021fe29c(void *state)
                              0xa06d, 0xa06e, 0xa06f);
     func_02092754(manager, 0xa070);
     func_020b44e8();
-    func_02072048(resources, 0, 0);
+    GraphicsResourceSet_ApplyToMainBg(resources, 0, 0);
     GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
     FIELD(s32, state, 0x3fc) = 0;
     FIELD(s32, state, 0x48) = 0x13;
@@ -219,7 +219,7 @@ extern "C" void func_ov021_021fe390(void *state)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0x8008, 0x8009, 0x800a);
     func_020b44e8();
-    func_02072048(resources, 1, 0);
+    GraphicsResourceSet_ApplyToMainBg(resources, 1, 0);
     FIELD(s32, state, 0x3fc) = 0x20;
     FIELD(s32, state, 0x48) = 0x12;
     func_020afd0c((void *)0x04000050, 0, 2, 4, 0xc);
@@ -241,7 +241,7 @@ extern "C" void Overlay021_RefreshSelectionBackground(void *state)
     GraphicsResourceSet_Load(resources, data_020f4e18[0],
                              0x8008, 0x8009, 0x800a);
     func_020b44e8();
-    func_02072048(resources, 1, 0);
+    GraphicsResourceSet_ApplyToMainBg(resources, 1, 0);
     FIELD(s32, state, 0x3fc) = 0x20;
     FIELD(s32, state, 0x48) = 0x12;
     func_020afd0c((void *)0x04000050, 0, 2, 4, 0xc);

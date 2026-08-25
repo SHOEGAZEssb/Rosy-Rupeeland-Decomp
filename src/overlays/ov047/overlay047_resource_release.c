@@ -8,8 +8,8 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void *data_020f4e18;
-extern "C" void func_02071bdc(void *resourceManager, void *model);
-extern "C" void func_02071c38(void *resourceManager, void *animation);
+extern "C" void GraphicsArchive_ReleaseCharacterResource(void *resourceManager, void *model);
+extern "C" void GraphicsArchive_ReleasePaletteResource(void *resourceManager, void *animation);
 
 /*
  * Release non-null model +0 and animation +4 through the shared resource
@@ -19,10 +19,10 @@ extern "C" void func_02071c38(void *resourceManager, void *animation);
 extern "C" void *func_ov047_0220ba64(void *controller)
 {
     if (FIELD(void *, controller, 0) != 0) {
-        func_02071bdc(data_020f4e18, FIELD(void *, controller, 0));
+        GraphicsArchive_ReleaseCharacterResource(data_020f4e18, FIELD(void *, controller, 0));
     }
     if (FIELD(void *, controller, 4) != 0) {
-        func_02071c38(data_020f4e18, FIELD(void *, controller, 4));
+        GraphicsArchive_ReleasePaletteResource(data_020f4e18, FIELD(void *, controller, 4));
     }
     return controller;
 }

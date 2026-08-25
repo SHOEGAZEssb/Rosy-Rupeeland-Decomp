@@ -4313,7 +4313,7 @@ build build/reports/graphics_bg_resource.json: objdiff build/decomp/delinks/src/
 
 build build/reports/graphics_bg_resource.txt: match_report build/reports/graphics_bg_resource.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_resource.json
-  report_args = --section .text --function func_02070638 --require-exact
+  report_args = --section .text --function GraphicsBgCharacterResource_UploadToMainBg --require-exact
 
 build build/reports/graphics_bg_resource_data.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_resource_data.o | build/decomp/src/graphics/graphics_bg_resource_data.o
   target_object = build/decomp/delinks/src/graphics/graphics_bg_resource_data.o
@@ -4461,14 +4461,14 @@ build build/reports/graphics_archive_character_palette_release.json: objdiff bui
   base_object = build/decomp/src/graphics/graphics_archive_character_palette_release.o
 build build/reports/graphics_archive_character_palette_release.txt: match_report build/reports/graphics_archive_character_palette_release.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_character_palette_release.json
-  report_args = --section .text --function func_02071bdc --function func_02071c38
+  report_args = --section .text --function GraphicsArchive_ReleaseCharacterResource --function GraphicsArchive_ReleasePaletteResource
 
 build build/reports/graphics_archive_screen_release.json: objdiff build/decomp/delinks/src/graphics/graphics_archive_screen_release.o | build/decomp/src/graphics/graphics_archive_screen_release.o
   target_object = build/decomp/delinks/src/graphics/graphics_archive_screen_release.o
   base_object = build/decomp/src/graphics/graphics_archive_screen_release.o
 build build/reports/graphics_archive_screen_release.txt: match_report build/reports/graphics_archive_screen_release.json | tools/report_objdiff.py
   report_json = build/reports/graphics_archive_screen_release.json
-  report_args = --section .text --function func_02071cf0
+  report_args = --section .text --function GraphicsArchive_ReleaseScreenResource
 
 build build/reports/graphics_bg_palette_upload.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_palette_upload.o | build/decomp/src/graphics/graphics_bg_palette_upload.o
   target_object = build/decomp/delinks/src/graphics/graphics_bg_palette_upload.o
@@ -4476,7 +4476,7 @@ build build/reports/graphics_bg_palette_upload.json: objdiff build/decomp/delink
 
 build build/reports/graphics_bg_palette_upload.txt: match_report build/reports/graphics_bg_palette_upload.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_palette_upload.json
-  report_args = --section .text --function func_02070b50 --require-exact
+  report_args = --section .text --function GraphicsBgPaletteResource_UploadToMainBg --require-exact
 
 build build/reports/graphics_bg_map_size.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_map_size.o | build/decomp/src/graphics/graphics_bg_map_size.o
   target_object = build/decomp/delinks/src/graphics/graphics_bg_map_size.o
@@ -4502,7 +4502,7 @@ build build/reports/graphics_resource_set_ops.json: objdiff build/decomp/delinks
 
 build build/reports/graphics_resource_set_ops.txt: match_report build/reports/graphics_resource_set_ops.json | tools/report_objdiff.py
   report_json = build/reports/graphics_resource_set_ops.json
-  report_args = --section .text --function GraphicsResourceSet_ReleaseHandles --function func_02072048 --function GraphicsResourceSet_Apply --require-exact
+  report_args = --section .text --function GraphicsResourceSet_ReleaseHandles --function GraphicsResourceSet_ApplyToMainBg --function GraphicsResourceSet_Apply --require-exact
 
 build build/reports/graphics_resource_set_variant.json: objdiff build/decomp/delinks/src/graphics/graphics_resource_set_variant.o | build/decomp/src/graphics/graphics_resource_set_variant.o
   target_object = build/decomp/delinks/src/graphics/graphics_resource_set_variant.o
@@ -11720,7 +11720,7 @@ build build/reports/graphics_bank_state_snapshot.json: objdiff build/decomp/deli
   base_object = build/decomp/src/graphics/graphics_bank_state_snapshot.o
 build build/reports/graphics_bank_state_snapshot.txt: match_report build/reports/graphics_bank_state_snapshot.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bank_state_snapshot.json
-  report_args = --section .text --function func_020923a4 --function func_02092418 --require-exact
+  report_args = --section .text --function GraphicsBankStateSnapshot_Capture --function GraphicsBankStateSnapshot_Restore --require-exact
 
 build graphics_bank_state_snapshot: phony build/reports/graphics_bank_state_snapshot.txt
 build build/reports/title_display_setup_helpers.json: objdiff build/decomp/delinks/src/graphics/title_display_setup_helpers.o | build/decomp/src/graphics/title_display_setup_helpers.o
@@ -11768,7 +11768,7 @@ build build/reports/graphics_bg_character_upload_sub.json: objdiff build/decomp/
   base_object = build/decomp/src/graphics/graphics_bg_character_upload_sub.o
 build build/reports/graphics_bg_character_upload_sub.txt: match_report build/reports/graphics_bg_character_upload_sub.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_character_upload_sub.json
-  report_args = --section .text --function func_020706c4 --require-exact
+  report_args = --section .text --function GraphicsBgCharacterResource_UploadToSubBg --require-exact
 
 build graphics_bg_character_upload_sub: phony build/reports/graphics_bg_character_upload_sub.txt
 build build/reports/graphics_bg_palette_upload_sub.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_palette_upload_sub.o | build/decomp/src/graphics/graphics_bg_palette_upload_sub.o
@@ -11776,7 +11776,7 @@ build build/reports/graphics_bg_palette_upload_sub.json: objdiff build/decomp/de
   base_object = build/decomp/src/graphics/graphics_bg_palette_upload_sub.o
 build build/reports/graphics_bg_palette_upload_sub.txt: match_report build/reports/graphics_bg_palette_upload_sub.json | tools/report_objdiff.py
   report_json = build/reports/graphics_bg_palette_upload_sub.json
-  report_args = --section .text --function func_02070bc4 --require-exact
+  report_args = --section .text --function GraphicsBgPaletteResource_UploadToSubBg --require-exact
 
 build graphics_bg_palette_upload_sub: phony build/reports/graphics_bg_palette_upload_sub.txt
 build build/reports/graphics_bg_map_upload_sub.json: objdiff build/decomp/delinks/src/graphics/graphics_bg_map_upload_sub.o | build/decomp/src/graphics/graphics_bg_map_upload_sub.o

@@ -23,8 +23,8 @@ extern const char data_ov011_021fe618[];
 extern u8 gHeapContext[];
 extern void func_020b44e8(void);
 extern s32 func_0207043c(void *resource);
-extern void func_020706c4(void *resource, s32 background, s32 value);
-extern void func_02070bc4(void *resource, s32 destination);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *resource, s32 background, s32 value);
+extern void GraphicsBgPaletteResource_UploadToSubBg(void *resource, s32 destination);
 extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
                            void *heapContext);
 extern void func_020b1bfc(void *source, s32 destination, s32 size);
@@ -79,10 +79,10 @@ void func_ov011_021fd188(void *state)
         func_ov011_021fd374(0, layout == 0x10 ? 0 : 1, 0x12, 4, 0);
         count = func_0207043c(set->resource0) /
                 (layout == 0x100 ? 0x40 : 0x20);
-        func_020706c4(set->resource0, 1, 0);
+        GraphicsBgCharacterResource_UploadToSubBg(set->resource0, 1, 0);
         if (layout == 0x100)
             paletteDestination = 0x2000;
-        func_02070bc4(set->resource1, paletteDestination);
+        GraphicsBgPaletteResource_UploadToSubBg(set->resource1, paletteDestination);
         tilemap = (u16 *)Heap_AllocCore(0x800, data_ov011_021fe618, 4,
                                       gHeapContext);
         for (i = 0; i < count; i++)

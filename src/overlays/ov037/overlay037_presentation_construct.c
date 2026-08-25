@@ -19,7 +19,7 @@ extern void SceneInputBase_Init(void *presentation, void *argument);
 extern void GraphicsBankStateSnapshot_Init(void *camera);
 extern void func_ov043_0220b740(void *state);
 extern void G3X_Init(void);
-extern void func_020923a4(void *camera);
+extern void GraphicsBankStateSnapshot_Capture(void *camera);
 extern void GraphicsSpriteRenderer_Suspend(void *resource);
 extern void GraphicsSpriteRenderer_HideAllSprites(void *resource);
 extern void func_020ae7b0(void);
@@ -54,7 +54,7 @@ extern "C" void *func_ov037_021fe4fc(void *presentation, void *argument)
     FIELD(void *, presentation, 0x54) = argument;
     G3X_Init();
     FIELD(s32, presentation, 0x50) = 0;
-    func_020923a4((u8 *)presentation + 0x60);
+    GraphicsBankStateSnapshot_Capture((u8 *)presentation + 0x60);
 
     GraphicsSpriteRenderer_Suspend(data_020f4e14[0]);
     GraphicsSpriteRenderer_HideAllSprites(data_020f4e14[0]);

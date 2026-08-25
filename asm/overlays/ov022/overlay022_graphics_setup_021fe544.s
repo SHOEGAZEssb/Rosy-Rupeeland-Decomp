@@ -2,10 +2,10 @@
 /* Exact fallback; see src/overlays/ov022/overlay022_graphics_setup.c. */
     .extern data_020f4e18
     .extern data_021f5ee8
-    .extern func_02070638
+    .extern GraphicsBgCharacterResource_UploadToMainBg
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsBgMapResource_SetPaletteBank
-    .extern func_02072048
+    .extern GraphicsResourceSet_ApplyToMainBg
     .extern TitleDisplay_ResetMainBgScroll
     .extern TitleDisplay_SetMainBgPriorities
     .extern func_020afd0c
@@ -55,7 +55,7 @@ func_ov022_021fe544:
     add r0, sp, #0x4
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     mov r0, #0x1c
     str r0, [r4, #0x48]
     mov r2, #0x8
@@ -79,7 +79,7 @@ func_ov022_021fe544:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0

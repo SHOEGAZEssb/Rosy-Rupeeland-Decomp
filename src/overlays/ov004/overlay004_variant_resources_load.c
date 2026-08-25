@@ -30,10 +30,10 @@ extern void GraphicsResourceSet_Load(Overlay004GraphicsResourceSet *set,
                                      s32 third);
 extern void GraphicsResourceSet_Destroy(Overlay004GraphicsResourceSet *set);
 extern void func_020b44e8(void);
-extern void func_02070638(void *resource, s32 layer, s32 value);
-extern void func_02070b50(void *resource, s32 offset);
-extern void func_020706c4(void *resource, s32 layer, s32 value);
-extern void func_02070bc4(void *resource, s32 offset);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *resource, s32 layer, s32 value);
+extern void GraphicsBgPaletteResource_UploadToMainBg(void *resource, s32 offset);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *resource, s32 layer, s32 value);
+extern void GraphicsBgPaletteResource_UploadToSubBg(void *resource, s32 offset);
 extern void GraphicsResourceSet_ReleaseHandles(Overlay004GraphicsResourceSet *set);
 extern void Sound_LoadGroup(void *context, s32 soundId);
 #ifdef __cplusplus
@@ -46,11 +46,11 @@ static void overlay004_upload_resource_set(Overlay004GraphicsResourceSet *set,
     GraphicsBgMapResource_Convert32x32BlockMajorToRowMajor(
         set->bgMapResource);
     func_020b44e8();
-    func_02070638(set->first, layer, 0);
-    func_02070b50(set->second, offset);
+    GraphicsBgCharacterResource_UploadToMainBg(set->first, layer, 0);
+    GraphicsBgPaletteResource_UploadToMainBg(set->second, offset);
     GraphicsBgMapResource_UploadToMainBg(set->bgMapResource, layer, 0);
-    func_020706c4(set->first, layer, 0);
-    func_02070bc4(set->second, offset);
+    GraphicsBgCharacterResource_UploadToSubBg(set->first, layer, 0);
+    GraphicsBgPaletteResource_UploadToSubBg(set->second, offset);
     GraphicsBgMapResource_UploadToSubBg(set->bgMapResource, layer, 0);
 }
 

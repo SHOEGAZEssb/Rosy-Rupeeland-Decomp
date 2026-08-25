@@ -14,7 +14,7 @@ extern const void *data_ov009_021fee8c[];
 extern const void *data_ov009_021feec0[];
 extern void Heap_FreeCore(void *allocation);
 extern void GraphicsSpriteGroup_Destroy(void *resource);
-extern void func_02092418(void *member);
+extern void GraphicsBankStateSnapshot_Restore(void *member);
 extern void DebugText_BeginFrame(void);
 extern void GraphicsBankStateSnapshot_Destroy(void *member);
 extern void AnimationResourceState_Destroy(void *member);
@@ -44,7 +44,7 @@ void *func_ov009_021fd208(void *state)
         Heap_FreeCore(FIELD(void *, state, 0x8c + index * 4));
     }
     GraphicsSpriteGroup_Destroy(FIELD(void *, state, 0x84));
-    func_02092418((u8 *)state + 0x13c);
+    GraphicsBankStateSnapshot_Restore((u8 *)state + 0x13c);
     DebugText_BeginFrame();
     GraphicsBankStateSnapshot_Destroy((u8 *)state + 0x13c);
     AnimationResourceState_Destroy((u8 *)state + 0x78);

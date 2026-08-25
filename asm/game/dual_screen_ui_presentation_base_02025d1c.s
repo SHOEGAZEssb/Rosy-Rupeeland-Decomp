@@ -6,7 +6,7 @@
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
 .extern gSubBgExtendedPaletteBuffer
-.extern func_020706c4
+.extern GraphicsBgCharacterResource_UploadToSubBg
 .extern GraphicsBgResourceData_GetDecoded
 .extern GraphicsBgMapResource_UploadToSubBg
 
@@ -36,7 +36,7 @@ DualScreenUiPresentationBase_LoadSubBg1Resources: ; 0x02025d1c
     bic r0, r0, #0x3
     strh r0, [r3, #0x0]
     ldr r0, [sp, #0x4]
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     ldr r0, [sp, #0xc]
     mov r1, #0x1
     mov r2, #0x0

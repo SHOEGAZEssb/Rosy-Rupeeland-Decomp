@@ -5,7 +5,7 @@
     .extern data_020f4e18
     .extern data_ov021_02202f64
     .extern OverlaySlot_Destroy
-    .extern func_02071c38
+    .extern GraphicsArchive_ReleasePaletteResource
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern GraphicsSpriteRenderer_QueuePaletteUploads
@@ -103,7 +103,7 @@ L_021fdc84:
     ldr r0, L_021fdd20
     ldr r1, [r4, #0x400]
     ldr r0, [r0, #0x0]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     ldr r0, L_021fdd24
     mov r2, #0x0
     strh r2, [r0, #0x0]

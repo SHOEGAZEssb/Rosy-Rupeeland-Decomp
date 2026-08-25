@@ -5,9 +5,9 @@
 .extern GraphicsResourceSet_Destroy
 .extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern func_020b44e8
-.extern func_02070638
+.extern GraphicsBgCharacterResource_UploadToMainBg
 .extern GraphicsResource_GetFormat
-.extern func_02070b50
+.extern GraphicsBgPaletteResource_UploadToMainBg
 .extern GraphicsBgMapResource_UploadToMainBg
 .extern data_020f4e18
 .global GraphicsMainBackground_LoadResources
@@ -50,10 +50,10 @@ L_0201c998:
     mov r1, #0x0
     ldr r0, [sp, #0x4]
     mov r2, r1
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x8]
     mov r1, r5, lsl #0x5
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
 L_0201c9bc:
     mov r1, #0x0
     ldr r0, [sp, #0xc]
@@ -66,14 +66,14 @@ L_0201c9d0:
     ldr r0, [sp, #0x4]
     mov r1, #0x1
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x2000
     ldr r0, [sp, #0x8]
     moveq r1, r5, lsl #0x5
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
 L_0201ca04:
     ldr r0, [sp, #0xc]
     mov r1, #0x1
@@ -86,7 +86,7 @@ L_0201ca18:
     ldr r0, [sp, #0x4]
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
 L_0201ca30:
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
@@ -94,7 +94,7 @@ L_0201ca30:
     movne r1, #0x4000
     ldr r0, [sp, #0x8]
     moveq r1, r5, lsl #0x5
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
     ldr r0, [sp, #0xc]
     mov r1, #0x2
     mov r2, #0x0
@@ -106,14 +106,14 @@ L_0201ca60:
     ldr r0, [sp, #0x4]
     mov r1, #0x3
     mov r2, #0x0
-    bl func_02070638
+    bl GraphicsBgCharacterResource_UploadToMainBg
     ldr r0, [sp, #0x4]
     bl GraphicsResource_GetFormat
     cmp r0, #0x0
     movne r1, #0x6000
     ldr r0, [sp, #0x8]
     moveq r1, r5, lsl #0x5
-    bl func_02070b50
+    bl GraphicsBgPaletteResource_UploadToMainBg
 L_0201ca94:
     ldr r0, [sp, #0xc]
     mov r1, #0x3

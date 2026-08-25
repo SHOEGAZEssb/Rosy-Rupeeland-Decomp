@@ -18,14 +18,14 @@ typedef struct GraphicsResourceHandle {
 extern "C" {
 #endif
 
-extern void func_02071bdc(void *archive, void *resource);
-extern void func_02071c38(void *archive, void *resource);
-extern void func_02071cf0(void *archive, void *resource);
-extern void func_02070638(void *resource, s32 value, s32 zero);
-extern void func_02070b50(void *resource, s32 value);
+extern void GraphicsArchive_ReleaseCharacterResource(void *archive, void *resource);
+extern void GraphicsArchive_ReleasePaletteResource(void *archive, void *resource);
+extern void GraphicsArchive_ReleaseScreenResource(void *archive, void *resource);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *resource, s32 value, s32 zero);
+extern void GraphicsBgPaletteResource_UploadToMainBg(void *resource, s32 value);
 extern void GraphicsBgMapResource_UploadToMainBg(void *resource, s32 value, s32 zero);
-extern void func_020706c4(void *resource, s32 value, s32 zero);
-extern void func_02070bc4(void *resource, s32 value);
+extern void GraphicsBgCharacterResource_UploadToSubBg(void *resource, s32 value, s32 zero);
+extern void GraphicsBgPaletteResource_UploadToSubBg(void *resource, s32 value);
 extern void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 value, s32 zero);
 
 #ifdef __cplusplus
@@ -48,11 +48,11 @@ void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set)
         return;
     }
 
-    func_02071bdc(resource0->archive_04, resource0);
+    GraphicsArchive_ReleaseCharacterResource(resource0->archive_04, resource0);
     resource1 = (GraphicsResourceHandle *)set->resource1;
-    func_02071c38(resource1->archive_04, resource1);
+    GraphicsArchive_ReleasePaletteResource(resource1->archive_04, resource1);
     resource2 = (GraphicsResourceHandle *)set->resource2;
-    func_02071cf0(resource2->archive_04, resource2);
+    GraphicsArchive_ReleaseScreenResource(resource2->archive_04, resource2);
     set->resource0 = 0;
     set->resource1 = 0;
     set->resource2 = 0;
@@ -63,22 +63,22 @@ void GraphicsResourceSet_ReleaseHandles(GraphicsResourceSet *set)
  * setup path. resource0/resource2 receive value0 plus a zero flag, while
  * resource1 receives value1; the downstream helpers mutate graphics state.
  */
-void func_02072048(GraphicsResourceSet *set, s32 value0, s32 value1)
+void GraphicsResourceSet_ApplyToMainBg(GraphicsResourceSet *set, s32 value0, s32 value1)
 {
-    func_02070638(set->resource0, value0, 0);
-    func_02070b50(set->resource1, value1);
+    GraphicsBgCharacterResource_UploadToMainBg(set->resource0, value0, 0);
+    GraphicsBgPaletteResource_UploadToMainBg(set->resource1, value1);
     GraphicsBgMapResource_UploadToMainBg(set->resource2, value0, 0);
 }
 
 /*
  * Forward set and the two caller values through the second confirmed graphics
- * application path. The argument routing matches func_02072048; downstream
+ * application path. The argument routing matches GraphicsResourceSet_ApplyToMainBg; downstream
  * helpers update graphics-library and potentially display-engine state.
  */
 void GraphicsResourceSet_Apply(GraphicsResourceSet *set, s32 value0,
                                s32 value1)
 {
-    func_020706c4(set->resource0, value0, 0);
-    func_02070bc4(set->resource1, value1);
+    GraphicsBgCharacterResource_UploadToSubBg(set->resource0, value0, 0);
+    GraphicsBgPaletteResource_UploadToSubBg(set->resource1, value1);
     GraphicsBgMapResource_UploadToSubBg(set->resource2, value0, 0);
 }

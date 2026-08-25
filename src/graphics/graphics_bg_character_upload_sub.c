@@ -19,7 +19,7 @@ extern void func_020b171c(const void *source, u32 destination, u32 size);
 
 /* Upload the decoded character block to sub BG0..BG3. Unloaded resources and
  * background indices outside 0..3 produce no hardware writes. */
-void func_020706c4(GraphicsBgCharacterResource *resource, s32 background,
+void GraphicsBgCharacterResource_UploadToSubBg(GraphicsBgCharacterResource *resource, s32 background,
                    u32 destination)
 {
     if (resource->loaded == 0)

@@ -15,7 +15,7 @@ extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsBgMapResource_UploadToSubBg(void *, s32, s32);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void TitleDisplay_ConfigureMain2dEngine(s32);
 extern void TitleDisplay_ConfigureSub2dEngine(s32);
 extern void TitleDisplay_ResetMainBgScroll(void);
@@ -66,7 +66,7 @@ extern "C" void Overlay019_SetupGraphics(void *state)
         background[1] = (background[1] & 0x43) | 0x3a00;
         TitleDisplay_ResetMainBgScroll();
         TitleDisplay_SetMainBgPriorities(0, 1, 2, 3);
-        func_02072048(resources, 0, 0);
+        GraphicsResourceSet_ApplyToMainBg(resources, 0, 0);
         GraphicsBgMapResource_UploadToMainBg(TitleScreenResourceCollection_Get(manager, 0), 1, 0);
         TitlePalette_SetMainBackdrop(0);
     } else {

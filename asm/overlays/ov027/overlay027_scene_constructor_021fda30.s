@@ -23,7 +23,7 @@
 .extern func_02091b6c
 .extern SceneInputBase_Init
 .extern GraphicsBankStateSnapshot_Init
-.extern func_020923a4
+.extern GraphicsBankStateSnapshot_Capture
 .extern Presentation_InitVariant
 .extern Presentation_SetPosition
 .extern PresentationList_Append
@@ -78,7 +78,7 @@ Overlay027Scene_Init:
     mov r0, #0x0
     str r0, [r10, #0x50]
     add r0, r10, #0x164
-    bl func_020923a4
+    bl GraphicsBankStateSnapshot_Capture
     ldr r0, L_021fdde8
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_Suspend

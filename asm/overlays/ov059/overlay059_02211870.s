@@ -4,8 +4,8 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern data_020f4e18
-.extern func_020706c4
-.extern func_02070bc4
+.extern GraphicsBgCharacterResource_UploadToSubBg
+.extern GraphicsBgPaletteResource_UploadToSubBg
 .extern GraphicsBgMapResource_UploadToSubBg
 .extern GraphicsBgMapResource_SetPaletteBank
 .extern func_020b44e8
@@ -41,14 +41,14 @@ func_ov059_02211870:
     mov r1, #0x0
     ldr r0, [sp, #0x4]
     mov r2, r1
-    bl func_020706c4
+    bl GraphicsBgCharacterResource_UploadToSubBg
     mov r1, #0x0
     ldr r0, [sp, #0xc]
     mov r2, r1
     bl GraphicsBgMapResource_UploadToSubBg
     ldr r0, [sp, #0x8]
     mov r1, #0x1e0
-    bl func_02070bc4
+    bl GraphicsBgPaletteResource_UploadToSubBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10

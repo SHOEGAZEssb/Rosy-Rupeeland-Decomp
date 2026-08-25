@@ -21,7 +21,7 @@ extern void GraphicsResourceSet_Init(void *);
 extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
 extern void AnimationResourceState_Destroy(void *);
-extern void func_02072048(void *, s32, s32);
+extern void GraphicsResourceSet_ApplyToMainBg(void *, s32, s32);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void TitleDisplay_ConfigureMain2dEngine(s32);
@@ -128,10 +128,10 @@ extern "C" void func_ov020_021fdd88(void)
     GraphicsResourceSet_Apply(resources, 1, 0x100);
     GraphicsResourceSet_Load(resources, data_020f4e18[0], 0x802e, 0x802c, 0x802f);
     func_020b44e8();
-    func_02072048(resources, 3, 0);
+    GraphicsResourceSet_ApplyToMainBg(resources, 3, 0);
     GraphicsResourceSet_Apply(resources, 3, 0);
     GraphicsResourceSet_Load(resources, data_020f4e18[0], 0x802b, 0x802c, 0x802d);
-    func_02072048(resources, 2, 0);
+    GraphicsResourceSet_ApplyToMainBg(resources, 2, 0);
     GraphicsResourceSet_Destroy(resources);
 }
 

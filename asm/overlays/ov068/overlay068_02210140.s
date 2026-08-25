@@ -5,9 +5,9 @@
 .extern data_020f4e14
 .extern data_020f4e18
 .extern data_ov068_0221077c
-.extern func_02071bdc
-.extern func_02071c38
-.extern func_02071c94
+.extern GraphicsArchive_ReleaseCharacterResource
+.extern GraphicsArchive_ReleasePaletteResource
+.extern GraphicsArchive_ReleaseCellResource
 .extern GraphicsSpriteGroup_Clear
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern func_ov068_02210024
@@ -24,15 +24,15 @@ func_ov068_02210140:
     add r1, r4, r6, lsl #0x2
     ldr r0, [r5, #0x0]
     ldr r1, [r1, #0x30]
-    bl func_02071bdc
+    bl GraphicsArchive_ReleaseCharacterResource
     add r1, r4, r6, lsl #0x2
     ldr r0, [r5, #0x0]
     ldr r1, [r1, #0x3c]
-    bl func_02071c38
+    bl GraphicsArchive_ReleasePaletteResource
     add r1, r4, r6, lsl #0x2
     ldr r0, [r5, #0x0]
     ldr r1, [r1, #0x48]
-    bl func_02071c94
+    bl GraphicsArchive_ReleaseCellResource
     add r6, r6, #0x1
     cmp r6, #0x2
     blt .L_02210158

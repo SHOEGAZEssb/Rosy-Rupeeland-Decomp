@@ -15,7 +15,7 @@
     .extern Graphics3DLightSet_Destroy
     .extern Graphics3DRenderObject_Destroy
     .extern GraphicsBankStateSnapshot_Destroy
-    .extern func_02092418
+    .extern GraphicsBankStateSnapshot_Restore
     .extern TitleDisplay_SetMainBgPriorities
     .extern func_020926f8
     .extern func_020927b8
@@ -102,7 +102,7 @@ L_021ff270:
     bl GraphicsSpriteGroup_Destroy
     add r0, r4, #0x4
     add r0, r0, #0x400
-    bl func_02092418
+    bl GraphicsBankStateSnapshot_Restore
     ldr r0, L_021ff34c
     ldr r0, [r0, #0x0]
     bl GraphicsSpriteRenderer_QueuePendingBlocks

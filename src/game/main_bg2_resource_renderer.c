@@ -22,7 +22,7 @@ extern void DualLayerTileRenderer_LoadFromConfig(void *, const void *, s32,
                                                  s32);
 extern void DualLayerTileRenderer_ActivateLayers(void *, s32);
 extern void func_020b44e8(void);
-extern void func_02070638(void *, s32, s32);
+extern void GraphicsBgCharacterResource_UploadToMainBg(void *, s32, s32);
 extern void GraphicsBgMapResource_UploadToMainBg(void *, s32, s32);
 extern u8 *GraphicsBgResourceData_GetDecoded(void *);
 void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *);
@@ -89,7 +89,7 @@ void MainBg0ResourceRenderer_LoadBgResources(MainBg0ResourceRenderer *self)
     *disp = (*disp & ~0x1f00u) | (planes << 8);
     GraphicsResourceSet_Load(&set, data_020f4e18, 0xa00c, 0xa00d, 0xa00e);
     func_020b44e8();
-    func_02070638(set.resource0, 0, 0);
+    GraphicsBgCharacterResource_UploadToMainBg(set.resource0, 0, 0);
     GraphicsBgMapResource_UploadToMainBg(set.resource2, 0, 0);
     PaletteBuffer_Write(&gMainBgPaletteBuffer, GraphicsBgResourceData_GetDecoded(set.resource1) + 0x180,
                         0x180, 0x80);

@@ -2,7 +2,7 @@
 .extern GraphicsResourceSet_Init
 .extern GraphicsResourceSet_Load
 .extern func_020b44e8
-.extern func_02072048
+.extern GraphicsResourceSet_ApplyToMainBg
 .extern GraphicsResourceSet_Destroy
 .extern data_020f4e18
 
@@ -24,7 +24,7 @@ func_ov044_0220c3e4:
     add r0, sp, #0x4
     mov r1, #0x2
     mov r2, #0x0
-    bl func_02072048
+    bl GraphicsResourceSet_ApplyToMainBg
     add r0, sp, #0x4
     bl GraphicsResourceSet_Destroy
     add sp, sp, #0x10
