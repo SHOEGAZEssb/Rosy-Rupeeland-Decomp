@@ -1,0 +1,8 @@
+{
+  "GamePhaseActorScriptVm_LookupAngleFirstComponent": "GamePhaseActorScriptVm_LookupAngleFirstComponent",
+  "GamePhaseActorScriptVm_LookupAngleSecondComponent": "GamePhaseActorScriptVm_LookupAngleSecondComponent",
+  "GamePhaseActorScriptVm_ComputeAngle": "GamePhaseActorScriptVm_ComputeAngle",
+  "GamePhaseActorScriptVm_GetVectorX": "GamePhaseActorScriptVm_GetVectorX",
+  "GamePhaseActorScriptVm_GetVectorY": "GamePhaseActorScriptVm_GetVectorY",
+  "GamePhaseActorScriptVm_GetVectorZ": "GamePhaseActorScriptVm_GetVectorZ"
+}
