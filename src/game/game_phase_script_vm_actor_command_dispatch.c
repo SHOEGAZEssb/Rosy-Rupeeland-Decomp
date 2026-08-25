@@ -28,7 +28,7 @@ extern void *AuxiliaryTimedSpritePresentation_Init(...);
 extern void *func_02025300(...);
 extern void *func_02023434(...);
 extern void *func_02024b04(...);
-extern void *func_0201d240(...);
+extern void *OverlayTransitionScene_Init(...);
 extern void *func_ov054_0220e9bc(...);
 extern void *func_ov054_0220ef80(...);
 extern void *RuntimePresentationManager_GetFirstListNodeEffect(...);
@@ -373,7 +373,7 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
     case 35: {
         void *object = Heap_Alloc(0x44, data_020d5b2c, 4, &gHeapContext);
         if (object != 0)
-            func_0201d240(object, 0, a1);
+            OverlayTransitionScene_Init(object, 0, a1);
         break;
     }
     case 36:

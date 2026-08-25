@@ -20,15 +20,15 @@
 .extern Heap_Alloc
 .extern func_ov029_021fd95c
 .extern func_ov046_0220c7d8
-.extern data_020d5d58
-.extern data_020d5d8c
-.extern data_020d5d94
+.extern gOverlayTransitionSceneVTable
+.extern gOverlayTransitionKind0AllocationTag
+.extern gOverlayTransitionKind1AllocationTag
 .extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gDebugFont
 .extern gHeapContext
-.global func_0201d2b0
-func_0201d2b0: ; 0x0201d2b0
+.global OverlayTransitionScene_Destroy
+OverlayTransitionScene_Destroy: ; 0x0201d2b0
     stmdb sp!, {r4, lr}
     ldr r1, L_0201d2fc
     mov r4, r0
@@ -50,7 +50,7 @@ L_0201d2e4:
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0201d2fc: .word data_020d5d58
+L_0201d2fc: .word gOverlayTransitionSceneVTable
 
 
-.size func_0201d2b0, . - func_0201d2b0
+.size OverlayTransitionScene_Destroy, . - OverlayTransitionScene_Destroy

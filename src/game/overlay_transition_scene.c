@@ -22,9 +22,9 @@ typedef struct OverlayTransitionScene {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5d58;
-extern char data_020d5d8c[];
-extern char data_020d5d94[];
+extern SceneVTable gOverlayTransitionSceneVTable;
+extern char gOverlayTransitionKind0AllocationTag[];
+extern char gOverlayTransitionKind1AllocationTag[];
 extern void *gGamePhaseRuntime;
 extern void *gGamePhaseCurrencyHud;
 extern void *gDebugFont;
@@ -49,13 +49,13 @@ extern OverlayTransitionObject *func_ov046_0220c7d8(
  * clear child/state, snapshot whether currency-HUD flag b0 bit zero was clear, set scene
  * flags 0/1, and return self.
  */
-OverlayTransitionScene *func_0201d240(OverlayTransitionScene *self, s32 kind,
-                                      u32 parameter)
+OverlayTransitionScene *OverlayTransitionScene_Init(
+    OverlayTransitionScene *self, s32 kind, u32 parameter)
 {
     s32 restore = 0;
 
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5d58;
+    self->base.vtable = &gOverlayTransitionSceneVTable;
     OverlaySlot_Init(&self->overlay2c);
     self->kind38 = kind;
     self->parameter3c = parameter;
@@ -69,9 +69,9 @@ OverlayTransitionScene *func_0201d240(OverlayTransitionScene *self, s32 kind,
 }
 
 /* Destroy an optional child, unload/destroy the embedded slot and Scene, and return self. */
-OverlayTransitionScene *func_0201d2b0(OverlayTransitionScene *self)
+OverlayTransitionScene *OverlayTransitionScene_Destroy(OverlayTransitionScene *self)
 {
-    self->base.vtable = &data_020d5d58;
+    self->base.vtable = &gOverlayTransitionSceneVTable;
     if (self->object24 != 0) {
         ((void (*)(void *))self->object24->vtable[2])(self->object24);
         OverlaySlot_UnloadOverlay(&self->overlay2c);
@@ -81,10 +81,11 @@ OverlayTransitionScene *func_0201d2b0(OverlayTransitionScene *self)
     return self;
 }
 
-/* Perform func_0201d2b0's teardown, free the scene, and return its old address. */
-OverlayTransitionScene *func_0201d300(OverlayTransitionScene *self)
+/* Perform OverlayTransitionScene_Destroy's teardown, free the scene, and return its old address. */
+OverlayTransitionScene *OverlayTransitionScene_DestroyAndFree(
+    OverlayTransitionScene *self)
 {
-    self->base.vtable = &data_020d5d58;
+    self->base.vtable = &gOverlayTransitionSceneVTable;
     if (self->object24 != 0) {
         ((void (*)(void *))self->object24->vtable[2])(self->object24);
         OverlaySlot_UnloadOverlay(&self->overlay2c);
@@ -102,7 +103,7 @@ OverlayTransitionScene *func_0201d300(OverlayTransitionScene *self)
  * fades in, and finally destroys this scene.  Other kind values intentionally
  * skip allocation as recovered.  Returns one only on final destruction.
  */
-s32 func_0201d358(OverlayTransitionScene *self)
+s32 OverlayTransitionScene_Update(OverlayTransitionScene *self)
 {
     void *runtime = gGamePhaseRuntime;
     void *runtimeObject;
@@ -126,14 +127,14 @@ s32 func_0201d358(OverlayTransitionScene *self)
         if (self->kind38 == 0) {
             OverlaySlot_LoadOverlay(&self->overlay2c, 0x1f);
             object = (OverlayTransitionObject *)Heap_Alloc(
-                0x550, data_020d5d8c, 4, &gHeapContext);
+                0x550, gOverlayTransitionKind0AllocationTag, 4, &gHeapContext);
             if (object != 0)
                 object = func_ov029_021fd95c(object, self->parameter3c);
             self->object24 = object;
         } else if (self->kind38 == 1) {
             OverlaySlot_LoadOverlay(&self->overlay2c, 0x2e);
             object = (OverlayTransitionObject *)Heap_Alloc(
-                0x7c, data_020d5d94, 4, &gHeapContext);
+                0x7c, gOverlayTransitionKind1AllocationTag, 4, &gHeapContext);
             if (object != 0)
                 object = func_ov046_0220c7d8(object, (u16)self->parameter3c);
             self->object24 = object;
@@ -184,7 +185,7 @@ s32 func_0201d358(OverlayTransitionScene *self)
 }
 
 /* Invoke method 0x0c on the runtime root and optional overlay object; return zero. */
-s32 func_0201d624(OverlayTransitionScene *self)
+s32 OverlayTransitionScene_NotifyRuntimeAndObject(OverlayTransitionScene *self)
 {
     Scene *runtime = (Scene *)gGamePhaseRuntime;
     runtime->vtable->method0C(runtime);
@@ -194,7 +195,7 @@ s32 func_0201d624(OverlayTransitionScene *self)
 }
 
 /* Invoke method 0x10 on the optional overlay object and return zero. */
-s32 func_0201d664(OverlayTransitionScene *self)
+s32 OverlayTransitionScene_NotifyObject(OverlayTransitionScene *self)
 {
     if (self->object24 != 0)
         ((void (*)(void *))self->object24->vtable[4])(self->object24);

@@ -19,7 +19,7 @@
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern RectS32_Set
-.extern func_0201d240
+.extern OverlayTransitionScene_Init
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern RuntimePresentationManager_GetFirstListNodeEffect
 .extern RuntimePresentationManager_GetSecondListNodeEffect
@@ -1248,7 +1248,7 @@ L_02015474:
     beq L_0201553c
     mov r2, r9
     mov r1, #0x0
-    bl func_0201d240
+    bl OverlayTransitionScene_Init
     b L_0201553c
 L_020154a0:
     bl OverlayManager_GetGlobal

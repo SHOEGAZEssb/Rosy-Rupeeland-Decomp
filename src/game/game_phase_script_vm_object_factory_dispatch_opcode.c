@@ -29,7 +29,7 @@ extern const char data_020d5bdc[];
 extern const char data_020d5be4[];
 extern void RuntimePresentationManager_AppendFirstListEffect(void *list, void *object);
 extern void RuntimePresentationManager_AppendSecondListEffect(void *list, void *object);
-extern void *func_0201d240(void *object, s32 enabled, s32 value);
+extern void *OverlayTransitionScene_Init(void *object, s32 kind, s32 parameter);
 extern void *func_0201d688(void *object, s32 value);
 extern void *func_020200bc(void *object, s32 value, s32 zero0, s32 zero1,
                            s32 parameter);
@@ -171,7 +171,7 @@ s32 GamePhaseActorScriptVm_DispatchObjectFactory(GamePhaseActorScriptVm *self)
     case 5:
         createdObject = allocateObject(0x44, data_020d5bdc);
         if (createdObject)
-            func_0201d240(createdObject, 1, value);
+            OverlayTransitionScene_Init(createdObject, 1, value);
         break;
     case 4:
         createdObject = allocateObject(0x24, data_020d5be4);

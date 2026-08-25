@@ -20,15 +20,15 @@
 .extern Heap_Alloc
 .extern func_ov029_021fd95c
 .extern func_ov046_0220c7d8
-.extern data_020d5d58
-.extern data_020d5d8c
-.extern data_020d5d94
+.extern gOverlayTransitionSceneVTable
+.extern gOverlayTransitionKind0AllocationTag
+.extern gOverlayTransitionKind1AllocationTag
 .extern gGamePhaseRuntime
 .extern gGamePhaseCurrencyHud
 .extern gDebugFont
 .extern gHeapContext
-.global func_0201d624
-func_0201d624: ; 0x0201d624
+.global OverlayTransitionScene_NotifyRuntimeAndObject
+OverlayTransitionScene_NotifyRuntimeAndObject: ; 0x0201d624
     stmdb sp!, {r4, lr}
     ldr r1, L_0201d660
     mov r4, r0
@@ -48,4 +48,4 @@ L_0201d658:
 L_0201d660: .word gGamePhaseRuntime
 
 
-.size func_0201d624, . - func_0201d624
+.size OverlayTransitionScene_NotifyRuntimeAndObject, . - OverlayTransitionScene_NotifyRuntimeAndObject

@@ -1,0 +1,11 @@
+{
+  "func_0201d240": "OverlayTransitionScene_Init",
+  "func_0201d2b0": "OverlayTransitionScene_Destroy",
+  "func_0201d300": "OverlayTransitionScene_DestroyAndFree",
+  "func_0201d358": "OverlayTransitionScene_Update",
+  "func_0201d624": "OverlayTransitionScene_NotifyRuntimeAndObject",
+  "func_0201d664": "OverlayTransitionScene_NotifyObject",
+  "data_020d5d58": "gOverlayTransitionSceneVTable",
+  "data_020d5d8c": "gOverlayTransitionKind0AllocationTag",
+  "data_020d5d94": "gOverlayTransitionKind1AllocationTag"
+}
