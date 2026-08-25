@@ -19,7 +19,7 @@ extern void GameWork_ClearFlag(void *, u32);
 extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void SceneInputBase_Init(void *);
-extern void *func_ov002_021fb6e0(void *, void *, s32);
+extern void *Overlay002_Presentation_Init(void *, void *, s32);
 extern void func_ov019_021fce00(void *, s32, s32, s32);
 extern void Overlay019_SetupGraphics(void *);
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ extern "C" void *func_ov019_021fce28(void *state, void *context, void *mode)
     void *presentation =
         Heap_Alloc(0xb4, data_ov019_021fd64c, 4, gHeapContext);
     if (presentation != 0)
-        presentation = func_ov002_021fb6e0(
+        presentation = Overlay002_Presentation_Init(
             presentation, mode == 0 ? data_020f4e14 : gDebugFont, 0);
     FIELD(void *, state, 0x5c) = presentation;
 

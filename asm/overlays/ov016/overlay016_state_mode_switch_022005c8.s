@@ -10,7 +10,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern DisplayBrightness_StartMaskedTransitions
     .extern ModalState_UpdateInput
-    .extern func_ov000_021fc9d4
+    .extern Overlay000_SyncSelection
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff17c
     .extern func_ov016_021ff4ec
@@ -65,7 +65,7 @@ L_0220062c:
     mov r0, r4
     bl func_ov016_021ffc2c
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fc9d4
+    bl Overlay000_SyncSelection
     ldr r0, L_02200768
     ldr r1, L_0220076c
     ldr r0, [r0, #0x0]

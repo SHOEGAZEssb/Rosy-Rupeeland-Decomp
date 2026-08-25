@@ -28,7 +28,7 @@ extern void Heap_Free(void *);
 extern void *func_ov000_021fb728(void *, void *);
 extern void func_ov000_021fb848(void *);
 extern void InventoryRecordCollection_Sort(void *, s32);
-extern void *func_ov000_021fbcc4(void *, void *);
+extern void *Overlay000_Grid_Init(void *, void *);
 extern void func_ov000_021fcae8(void *, void *, s32);
 extern void GraphicsSpriteRenderer_QueuePaletteUploads(void *);
 extern void func_ov014_021fce00(void *);
@@ -74,7 +74,7 @@ void *func_ov014_021fce3c(void *state, const void *parameters)
     InventoryRecordCollection_Sort(data_021e9ac0, 0);
     object = Heap_Alloc(0x2b0, data_ov014_021fd9b0, 4, gHeapContext);
     if (object != 0)
-        object = func_ov000_021fbcc4(object, data_020f4e14);
+        object = Overlay000_Grid_Init(object, data_020f4e14);
     FIELD(void *, state, 0x78) = object;
     func_ov000_021fcae8(object, (u8 *)state + 0x7c, 0);
     FIELD(s32, state, 0x8c) = 0;

@@ -1,8 +1,8 @@
     .text
     .extern func_020befec
     .extern GraphicsSpriteState_SetAnimationIndex
-    .global func_ov002_021fba1c
-func_ov002_021fba1c: ; 0x021fba1c
+    .global Overlay002_SetDisplayedValue
+Overlay002_SetDisplayedValue: ; 0x021fba1c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r10, r0
     ldr r2, [r10, #0x6c]
@@ -94,5 +94,5 @@ L_021fbb3c:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_021fbb60: .word 0xf4240
 L_021fbb64: .word 0x989680
-    .size func_ov002_021fba1c, .-func_ov002_021fba1c
+    .size Overlay002_SetDisplayedValue, .-Overlay002_SetDisplayedValue
 

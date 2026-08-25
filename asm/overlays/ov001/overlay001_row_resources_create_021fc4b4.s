@@ -8,8 +8,8 @@
     .extern AnimationResourceState_ReplaceResources
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteState_ApplyRenderConfig
-    .global func_ov001_021fc4b4
-func_ov001_021fc4b4: ; 0x021fc4b4
+    .global Overlay001_CreateRowResources
+Overlay001_CreateRowResources: ; 0x021fc4b4
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -88,4 +88,4 @@ L_021fc5d0:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fc5d8: .word data_020f4e18
-    .size func_ov001_021fc4b4, .-func_ov001_021fc4b4
+    .size Overlay001_CreateRowResources, .-Overlay001_CreateRowResources

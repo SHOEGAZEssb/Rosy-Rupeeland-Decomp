@@ -1,7 +1,7 @@
     .text
-    .extern func_ov003_021fbaa0
-    .global func_ov003_021fb8ac
-func_ov003_021fb8ac: ; 0x021fb8ac
+    .extern Overlay003_DrawRandomizedStamp
+    .global Overlay003_RasterizeLine
+Overlay003_RasterizeLine: ; 0x021fb8ac
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     ldr r0, [r0, #0x0]
     ldr r4, [sp, #0x24]
@@ -21,11 +21,11 @@ func_ov003_021fb8ac: ; 0x021fb8ac
     rsb r8, r3, #0x0
     add r5, r5, r3
 L_021fb8f4:
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
     add r1, r1, r6
     adds r8, r8, r4, lsl #0x1
     subpl r8, r8, r3, lsl #0x1
@@ -37,11 +37,11 @@ L_021fb924:
     rsb r8, r4, #0x0
     add r5, r5, r4
 L_021fb92c:
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
-    bl func_ov003_021fbaa0
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
+    bl Overlay003_DrawRandomizedStamp
     add r2, r2, r7
     adds r8, r8, r3, lsl #0x1
     subpl r8, r8, r4, lsl #0x1
@@ -51,7 +51,7 @@ L_021fb92c:
 L_021fb958:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     bx lr
-    .size func_ov003_021fb8ac, .-func_ov003_021fb8ac
+    .size Overlay003_RasterizeLine, .-Overlay003_RasterizeLine
 
     .byte 0x00, 0x00, 0x5b, 0xe3, 0x00, 0x00, 0x5c, 0xa3, 0x1e, 0xff, 0x2f, 0xb1, 0x01, 0x0c, 0x5b, 0xe3
     .byte 0xc0, 0x00, 0x5c, 0xb3, 0x1e, 0xff, 0x2f, 0xa1, 0x07, 0x60, 0xcc, 0xe3, 0x86, 0x73, 0x80, 0xe0

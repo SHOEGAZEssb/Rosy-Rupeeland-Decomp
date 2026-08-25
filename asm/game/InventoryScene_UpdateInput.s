@@ -12,8 +12,8 @@
 .extern InventoryScene_LoadSecondaryView
 .extern InventoryViewState_Copy
 .extern SceneInputBase_Update
-.extern func_ov000_021fcb4c
-.extern func_ov001_021fca94
+.extern Overlay000_CaptureViewState
+.extern Overlay001_CaptureViewState
 .extern gGameWork
 
 .global InventoryScene_UpdateInput
@@ -95,7 +95,7 @@ InventoryScene_UpdateInput:
     beq .L_02068834
     ldr r1, [r1, #0xdc]
     add r0, sp, #0xc
-    bl func_ov001_021fca94
+    bl Overlay001_CaptureViewState
     add r1, sp, #0xc
     add r0, r4, #0x7c
     bl InventoryViewState_Copy
@@ -103,7 +103,7 @@ InventoryScene_UpdateInput:
 .L_02068834:
     ldr r1, [r1, #0x78]
     add r0, sp, #0x0
-    bl func_ov000_021fcb4c
+    bl Overlay000_CaptureViewState
     add r1, sp, #0x0
     add r0, r4, #0x70
     bl InventoryViewState_Copy

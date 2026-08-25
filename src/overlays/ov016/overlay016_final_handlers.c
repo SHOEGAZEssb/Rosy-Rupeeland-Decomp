@@ -27,7 +27,7 @@ extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void PresentationList_DeleteAll(void *);
 extern s32 func_02096450(void *, void *, void *, s32, s32);
-extern void func_ov000_021fc714(void *);
+extern void Overlay000_Grid_Render(void *);
 extern void func_ov016_021fd3f8(void *);
 extern s32 func_ov016_021fe6f4(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
@@ -72,7 +72,7 @@ extern "C" s32 func_ov016_02200fe4(void *state)
             void *actor = FIELD(void *, state, 0x474);
             FIELD(s32, actor, 0x1c)++;
             FIELD(void *, state, 0x474) = 0;
-            func_ov000_021fc714(FIELD(void *, state, 0x44c));
+            Overlay000_Grid_Render(FIELD(void *, state, 0x44c));
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
             Overlay016ActorValue_Init(state, data_ov016_02201438[0],
@@ -172,7 +172,7 @@ extern "C" s32 func_ov016_022011c0(void *state)
                                     data_ov016_022013f0[1]);
             } else {
                 func_ov016_021ffb3c(state);
-                func_ov000_021fc714(FIELD(void *, state, 0x44c));
+                Overlay000_Grid_Render(FIELD(void *, state, 0x44c));
                 Overlay016ActorValue_Init(state, data_ov016_02201428[0],
                                     data_ov016_02201428[1]);
             }

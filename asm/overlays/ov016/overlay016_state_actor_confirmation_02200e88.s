@@ -5,7 +5,7 @@
     .extern data_ov016_02201448
     .extern data_ov016_02201458
     .extern SceneSound_PlayPackedEffect
-    .extern func_ov000_021fc714
+    .extern Overlay000_Grid_Render
     .extern Overlay000_GetActiveMetadata
     .extern func_ov016_021fe390
     .extern func_ov016_021fe4d0
@@ -42,7 +42,7 @@ L_02200ea8:
     sub r1, r1, #0x1
     str r1, [r0, #0x1c]
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fc714
+    bl Overlay000_Grid_Render
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -75,7 +75,7 @@ L_02200f2c:
     sub r1, r2, r1, lsr #0x10
     str r1, [r0, #0x1c]
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fc714
+    bl Overlay000_Grid_Render
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1

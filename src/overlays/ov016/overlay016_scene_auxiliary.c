@@ -19,12 +19,12 @@ extern void *Heap_Alloc(u32, const void *, s32, void *);
 extern void *InventoryRecord_GetMetadata(void *);
 extern void *func_ov000_021fb728(void *, void *);
 extern void func_ov000_021fb848(void *);
-extern void *func_ov000_021fbcc4(void *, void *);
+extern void *Overlay000_Grid_Init(void *, void *);
 extern void func_ov000_021fc59c(void *);
 extern void *func_ov000_021fcab4(void *, s32);
 extern void func_ov000_021fcae8(void *, void *, s32);
-extern void func_ov000_021fcb4c(void *, void *);
-extern void func_ov000_021fcb64(void *, void *, s32);
+extern void Overlay000_CaptureViewState(void *, void *);
+extern void Overlay000_GetViewRecordFromIndex(void *, void *, s32);
 extern void *func_ov016_021fe118(void *, s32);
 extern void *func_ov016_021fe24c(void *);
 extern void func_ov016_021ff6e8(void *, u32);
@@ -66,7 +66,7 @@ extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
 
     object = Heap_Alloc(0x2b0, data_ov016_022015a8, 4, gHeapContext);
     if (object != 0) {
-        object = func_ov000_021fbcc4(object, data_020f4e14);
+        object = Overlay000_Grid_Init(object, data_020f4e14);
     }
     FIELD(void *, state, 0x44c) = object;
 
@@ -88,7 +88,7 @@ extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
                     FIELD(u16, child, 0)) {
                     func_ov016_021ff700(entry, 1);
                     if (chooseFirst != 0) {
-                        func_ov000_021fcb64(object, (u8 *)state + 0x454,
+                        Overlay000_GetViewRecordFromIndex(object, (u8 *)state + 0x454,
                                            index);
                         chooseFirst = 0;
                     }
@@ -99,7 +99,7 @@ extern "C" void Overlay016_PopulateAuxiliaryList(void *state)
             FIELD(s32, state, 0x46c)++;
             func_ov016_021ff700(entry, 1);
             if (chooseFirst != 0) {
-                func_ov000_021fcb64(object, (u8 *)state + 0x454, index);
+                Overlay000_GetViewRecordFromIndex(object, (u8 *)state + 0x454, index);
                 chooseFirst = 0;
             }
         } else {
@@ -163,7 +163,7 @@ extern "C" void func_ov016_021ff71c(void *state)
     FIELD(void *, state, 0x470) = 0;
 
     object = FIELD(void *, state, 0x44c);
-    func_ov000_021fcb4c(saved, object);
+    Overlay000_CaptureViewState(saved, object);
     FIELD(u32, state, 0x454) = saved[0];
     FIELD(u32, state, 0x458) = saved[1];
     FIELD(u32, state, 0x45c) = saved[2];

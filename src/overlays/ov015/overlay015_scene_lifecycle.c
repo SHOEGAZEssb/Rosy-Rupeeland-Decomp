@@ -25,7 +25,7 @@ extern void TitleCharacterResourceCollection_Init(void *); extern void TitleChar
 extern void SpriteMotionController_Init(void *); extern void TitleScreenResourceCollection_Append(void *,s32); extern void TitleCharacterResourceCollection_Append(void *,s32);
 extern void *Heap_Alloc(u32,const char *,s32,void *); extern void Heap_Free(void *);
 extern void *func_ov001_021fb6f8(void *,void *); extern void func_ov001_021fb7d4(void *);
-extern void *func_ov001_021fbabc(void *,void *); extern void InventoryRecordCollection_SortAlternate(void *,s32);
+extern void *Overlay001_Grid_Init(void *,void *); extern void InventoryRecordCollection_SortAlternate(void *,s32);
 extern void AnimationResourceState_ReplaceResources(void *,void *,s32,s32,s32); extern void *GraphicsSpriteGroupOwner_CreateGroup(void *);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32); extern void SpriteMotionController_BindSprite(void *,void *,s32,s32,s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *,s32,s32,s32,s32,s32,s32); extern void func_020afd0c(void *,s32,s32,s32,s32);
@@ -67,7 +67,7 @@ extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soun
     object=Heap_Alloc(0x48,data_ov015_021fec88,4,gHeapContext);if(object)object=func_ov001_021fb6f8(object,gDebugFont);FIELD(void *,state,0xf4)=object;FIELD(void *,state,0xf8)=0;
     if(parameters)func_ov015_021fd230((u8 *)state+0xe0,parameters);
     InventoryRecordCollection_SortAlternate((u8 *)data_021e9ac0+0x34,1);
-    object=Heap_Alloc(0x210,data_ov015_021fec90,4,gHeapContext);if(object)object=func_ov001_021fbabc(object,data_020f4e14);FIELD(void *,state,0xdc)=object;
+    object=Heap_Alloc(0x210,data_ov015_021fec90,4,gHeapContext);if(object)object=Overlay001_Grid_Init(object,data_020f4e14);FIELD(void *,state,0xdc)=object;
     if(soundMode)Sound_LoadGroup(gSoundContext,0x82);
     AnimationResourceState_ReplaceResources((u8 *)state+0x58,data_020f4e18,0,1,2);
     AnimationResourceState_ReplaceResources((u8 *)state+0x64,data_020f4e18,0x47,0x45,0x48);

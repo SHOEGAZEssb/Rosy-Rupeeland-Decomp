@@ -21,8 +21,8 @@ extern void GraphicsSpriteText_FormatDecimal(void *, s32, u32, s32);
 extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
-extern s32 func_ov002_021fbb68(void *, const void *);
-extern s32 func_ov002_021fbc54(void *);
+extern s32 Overlay002_HitTestIcon(void *, const void *);
+extern s32 Overlay002_ApplySelectedKey(void *);
 extern void func_ov002_021fbd64(void *);
 extern s32 func_ov002_021fbd98(void *);
 extern s32 func_ov002_021fbdb0(void *);
@@ -71,7 +71,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
         /* fall through */
     case 1:
         if ((FIELD(u32, state, 0x20) & 0x20) &&
-            func_ov002_021fbb68(child, (u8 *)state + 0x30) >= 0) {
+            Overlay002_HitTestIcon(child, (u8 *)state + 0x30) >= 0) {
             SceneSound_PlayPackedEffect(state,
                           (genrand_int32() & 1) ? 0x3c80 : 0x3c81);
             Overlay029_ResetPhase(state, 2);
@@ -82,7 +82,7 @@ extern "C" s32 func_ov029_021fdc5c(void *state)
             Overlay029_ResetPhase(state, 3);
         break;
     case 3:
-        if (func_ov002_021fbc54(child) != 0) {
+        if (Overlay002_ApplySelectedKey(child) != 0) {
             Overlay029_ResetPhase(state, 4);
             break;
         }

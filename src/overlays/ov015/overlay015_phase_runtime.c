@@ -31,7 +31,7 @@ extern s32 func_ov001_021fc0ac(void *, void *);
 extern void func_ov001_021fc1f0(void *);
 extern s32 func_ov001_021fc214(void *);
 extern s32 func_ov001_021fc240(void *);
-extern void func_ov001_021fc250(void *);
+extern void Overlay001_Grid_UpdateTransition(void *);
 extern s32 func_ov001_021fc2e4(void *);
 extern s32 func_ov001_021fc310(void *);
 extern s32 func_ov001_021fc320(void *);
@@ -42,8 +42,8 @@ extern void func_ov001_021fc3b4(void *);
 extern s32 func_ov001_021fc3c4(void *, void *);
 extern void func_ov001_021fc3dc(void *);
 extern s32 func_ov001_021fc3ec(void *, void *);
-extern void func_ov001_021fc644(void *);
-extern void func_ov001_021fc758(void *, s32);
+extern void Overlay001_SyncSelection(void *);
+extern void Overlay001_SetSelection(void *, s32);
 extern void *func_ov001_021fc7e4(void *);
 extern void func_ov001_021fc7f4(void *);
 extern s32 func_ov001_021fcae0(void *, void *);
@@ -133,7 +133,7 @@ extern "C" s32 func_ov015_021fdfe8(void *state)
             func_ov015_021fdad4(state);
             overlay015_step_phase(state, 1);
         } else {
-            func_ov001_021fc250(controller);
+            Overlay001_Grid_UpdateTransition(controller);
             break;
         }
         /* The original intentionally continues into stage two after readiness. */
@@ -152,8 +152,8 @@ extern "C" s32 func_ov015_021fdfe8(void *state)
                 if (selected >= 0) {
                     SceneSound_PlayPackedEffect(state, 0);
                     if (selected != FIELD(s32, controller, 0x1ac)) {
-                        func_ov001_021fc758(controller, selected);
-                        func_ov001_021fc644(controller);
+                        Overlay001_SetSelection(controller, selected);
+                        Overlay001_SyncSelection(controller);
                         func_ov015_021fd6c8(state);
                         func_ov015_021fdad4(state);
                     }
@@ -215,7 +215,7 @@ extern "C" s32 func_ov015_021fe2b0(void *state)
         /* Intentional fallthrough into readiness polling. */
     case 1:
         if (func_ov001_021fc240(controller) == 0) {
-            func_ov001_021fc250(controller);
+            Overlay001_Grid_UpdateTransition(controller);
             break;
         }
         if (FIELD(s32, auxiliary, 0xc) != FIELD(s32, auxiliary, 0x10)) {

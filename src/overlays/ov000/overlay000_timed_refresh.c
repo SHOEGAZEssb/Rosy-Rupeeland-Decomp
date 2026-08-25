@@ -14,14 +14,14 @@ typedef struct Overlay000TimedRefreshState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov000_021fc9d4(Overlay000TimedRefreshState *state);
+extern void Overlay000_SyncSelection(Overlay000TimedRefreshState *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Return 0 unless counter_298 equals duration_294 divided by two with signed
- * truncation toward zero. At equality, run func_ov000_021fc9d4 and return 1.
+ * truncation toward zero. At equality, run Overlay000_SyncSelection and return 1.
  * The callee's presentation-state effects remain under reconstruction; this
  * gate has no direct SDK or hardware effect.
  */
@@ -33,6 +33,6 @@ s32 func_ov000_021fc538(Overlay000TimedRefreshState *state)
     if (state->counter_298 != state->duration_294 / 2) {
         return 0;
     }
-    func_ov000_021fc9d4(state);
+    Overlay000_SyncSelection(state);
     return 1;
 }

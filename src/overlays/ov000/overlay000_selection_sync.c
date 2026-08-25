@@ -35,7 +35,7 @@ typedef struct Overlay000SelectionSyncState {
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fc9d4(Overlay000SelectionSyncState *state)
+void Overlay000_SyncSelection(Overlay000SelectionSyncState *state)
 {
     s32 selectedRow = FIELD(s32, state->controller_26c, 0x14);
     s32 firstRow = FIELD(s32, state->controller_26c, 0x0c);

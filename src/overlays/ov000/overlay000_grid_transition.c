@@ -18,12 +18,12 @@ typedef struct Overlay000GridTransitionState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov000_021fc96c(Overlay000GridTransitionState *state,
+extern void Overlay000_DestroyRowResources(Overlay000GridTransitionState *state,
                                 s32 value);
-extern void func_ov000_021fc84c(Overlay000GridTransitionState *state,
+extern void Overlay000_CreateRowResources(Overlay000GridTransitionState *state,
                                 s32 value);
-extern void func_ov000_021fc9d4(Overlay000GridTransitionState *state);
-extern void func_ov000_021fc714(Overlay000GridTransitionState *state);
+extern void Overlay000_SyncSelection(Overlay000GridTransitionState *state);
+extern void Overlay000_Grid_Render(Overlay000GridTransitionState *state);
 #ifdef __cplusplus
 }
 #endif
@@ -39,7 +39,7 @@ extern void func_ov000_021fc714(Overlay000GridTransitionState *state);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov000_021fc460(Overlay000GridTransitionState *state)
+s32 Overlay000_Grid_UpdateTransition(Overlay000GridTransitionState *state)
 {
     void *controller = state->controller_26c;
     s32 row = FIELD(s32, controller, 0x0c);
@@ -51,10 +51,10 @@ s32 func_ov000_021fc460(Overlay000GridTransitionState *state)
     if ((row != rowTarget) != 0) {
         state->originY_268 = 0x34 - row * 0x24 - state->scrollY_264;
         FIELD(s32, FIELD(void *, state, 0x08), 0x1c) = state->originY_268;
-        func_ov000_021fc96c(state, FIELD(s32, controller, 0x74));
-        func_ov000_021fc84c(state, FIELD(s32, controller, 0x70));
+        Overlay000_DestroyRowResources(state, FIELD(s32, controller, 0x74));
+        Overlay000_CreateRowResources(state, FIELD(s32, controller, 0x70));
     }
-    func_ov000_021fc9d4(state);
-    func_ov000_021fc714(state);
+    Overlay000_SyncSelection(state);
+    Overlay000_Grid_Render(state);
     return 1;
 }

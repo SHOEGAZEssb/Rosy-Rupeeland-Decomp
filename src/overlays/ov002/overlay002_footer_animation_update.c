@@ -37,7 +37,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov002_021fbe08(Overlay002FooterAnimationUpdateState *state)
+s32 Overlay002_UpdateFooterAnimation(Overlay002FooterAnimationUpdateState *state)
 {
     s32 value = func_02091c7c(state->animation_098, 1);
 

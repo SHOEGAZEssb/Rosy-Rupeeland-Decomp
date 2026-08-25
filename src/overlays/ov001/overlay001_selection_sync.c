@@ -47,7 +47,7 @@ extern s32 func_020befec(s32 numerator, s32 denominator);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov001_021fc644(Overlay001SelectionSyncState *state)
+void Overlay001_SyncSelection(Overlay001SelectionSyncState *state)
 {
     s32 selectedRow = FIELD(s32, state->controller_1bc, 0x14);
     s32 firstVisibleRow = FIELD(s32, state->controller_1bc, 0x0c);

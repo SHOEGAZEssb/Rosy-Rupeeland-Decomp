@@ -85,7 +85,7 @@ extern void func_ov001_021fc404(void *state, s32 index, s32 initialize);
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay001GridState *func_ov001_021fbabc(Overlay001GridState *state,
+Overlay001GridState *Overlay001_Grid_Init(Overlay001GridState *state,
                                          void *owner)
 {
     s32 index;

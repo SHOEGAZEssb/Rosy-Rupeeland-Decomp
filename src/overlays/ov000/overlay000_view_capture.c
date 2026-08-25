@@ -29,7 +29,7 @@ typedef struct Overlay000ViewCaptureRecord {
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fcb4c(Overlay000ViewCaptureRecord *output,
+void Overlay000_CaptureViewState(Overlay000ViewCaptureRecord *output,
                          const Overlay000ViewCaptureState *state)
 {
     output->firstVisibleRow_00 = FIELD(s32, state->controller_26c, 0x0c);

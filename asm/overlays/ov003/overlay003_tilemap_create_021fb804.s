@@ -3,8 +3,8 @@
     .extern gHeapContext
     .extern Heap_AllocAlternateEntry
     .extern func_020b4554
-    .global func_ov003_021fb804
-func_ov003_021fb804: ; 0x021fb804
+    .global Overlay003_CreateTilemap
+Overlay003_CreateTilemap: ; 0x021fb804
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r1
     ldr r1, L_021fb8a4
@@ -48,5 +48,5 @@ L_021fb83c:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fb8a4: .word data_ov003_021fbcd8
 L_021fb8a8: .word gHeapContext
-    .size func_ov003_021fb804, .-func_ov003_021fb804
+    .size Overlay003_CreateTilemap, .-Overlay003_CreateTilemap
 

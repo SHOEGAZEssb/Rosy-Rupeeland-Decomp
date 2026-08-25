@@ -28,14 +28,14 @@ extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern void InventoryRecordCollection_Sort(void *, s32);
 extern void func_ov000_021fc3f8(void *);
 extern s32 func_ov000_021fc450(void *);
-extern void func_ov000_021fc460(void *);
+extern void Overlay000_Grid_UpdateTransition(void *);
 extern s32 func_ov000_021fcb98(void *, void *);
 extern s32 func_ov000_021fcca8(void *, void *);
 extern s32 func_ov000_021fc298(void *, void *);
 extern s32 func_ov000_021fcc18(void *, void *);
 extern s32 func_ov000_021fccfc(void *, void *);
-extern void func_ov000_021fca4c(void *, s32);
-extern void func_ov000_021fc9d4(void *);
+extern void Overlay000_SetSelection(void *, s32);
+extern void Overlay000_SyncSelection(void *);
 extern s32 func_ov000_021fc5ac(void *, void *);
 extern s32 func_ov000_021fc5d4(void *, void *);
 extern s32 func_ov000_021fc5fc(void *, void *);
@@ -47,8 +47,8 @@ extern s32 func_ov000_021fc560(void *, void *);
 extern void func_ov000_021fc3a4(void *);
 extern void func_ov000_021fc614(void *, s32);
 extern void func_ov000_021fc254(void *);
-extern void func_ov000_021fc714(void *);
-extern void func_ov000_021fc164(void *);
+extern void Overlay000_Grid_Render(void *);
+extern void Overlay000_Grid_Update(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -62,7 +62,7 @@ static void overlay014_set_callback(void *state, const s32 *descriptor)
 /*
  * Four-phase main interaction handler. Phase zero initializes +0x78 and enables
  * presentation +0x88. Phase one waits for func_ov000_021fc450, updating through
- * func_ov000_021fc460 until ready. Phase two processes target +0x2C and input
+ * Overlay000_Grid_UpdateTransition until ready. Phase two processes target +0x2C and input
  * +0x30 when state bits 4/5 allow: it can change the selected subordinate item,
  * install callbacks data_ov014_021fd968/938/958/930, request sounds 0/2/3/11,
  * and set GameWork flag 0x388. Independent previous/next predicates move the
@@ -92,7 +92,7 @@ s32 func_ov014_021fd38c(void *state)
             ++FIELD(s32, state, 4);
             FIELD(s32, state, 8) = 0;
         } else {
-            func_ov000_021fc460(subordinate);
+            Overlay000_Grid_UpdateTransition(subordinate);
             break;
         }
         /* The retail flow enters phase-two handling immediately when ready. */
@@ -110,8 +110,8 @@ s32 func_ov014_021fd38c(void *state)
                 if (selected >= 0) {
                     SceneSound_PlayPackedEffect(state, 0);
                     if (selected != FIELD(s32, subordinate, 0x25c)) {
-                        func_ov000_021fca4c(subordinate, selected);
-                        func_ov000_021fc9d4(subordinate);
+                        Overlay000_SetSelection(subordinate, selected);
+                        Overlay000_SyncSelection(subordinate);
                         func_ov014_021fd2f8(state, 0);
                     }
                     break;
@@ -154,7 +154,7 @@ s32 func_ov014_021fd38c(void *state)
         break;
     }
     if (subordinate != 0)
-        func_ov000_021fc164(subordinate);
+        Overlay000_Grid_Update(subordinate);
     return 0;
 }
 
@@ -183,7 +183,7 @@ s32 func_ov014_021fd67c(void *state)
         /* Fall through and poll readiness in the same frame. */
     case 1:
         if (!func_ov000_021fc450(subordinate)) {
-            func_ov000_021fc460(subordinate);
+            Overlay000_Grid_UpdateTransition(subordinate);
             break;
         }
         if (FIELD(s32, member, 0x0c) != FIELD(s32, member, 0x10)) {
@@ -207,7 +207,7 @@ s32 func_ov014_021fd67c(void *state)
         break;
     }
     if (subordinate != 0)
-        func_ov000_021fc164(subordinate);
+        Overlay000_Grid_Update(subordinate);
     return 0;
 }
 
@@ -237,11 +237,11 @@ s32 func_ov014_021fd7b4(void *state)
     } else if (FIELD(s32, state, 4) == 1) {
         func_ov000_021fc614(subordinate, 0);
         func_ov000_021fc254(subordinate);
-        func_ov000_021fc714(subordinate);
-        func_ov000_021fc9d4(subordinate);
+        Overlay000_Grid_Render(subordinate);
+        Overlay000_SyncSelection(subordinate);
         overlay014_set_callback(state, data_ov014_021fd940);
     }
     if (subordinate != 0)
-        func_ov000_021fc164(subordinate);
+        Overlay000_Grid_Update(subordinate);
     return 0;
 }

@@ -14,13 +14,13 @@
     .extern func_ov000_021fc3f8
     .extern func_ov000_021fc424
     .extern func_ov000_021fc450
-    .extern func_ov000_021fc460
+    .extern Overlay000_Grid_UpdateTransition
     .extern func_ov000_021fc4fc
     .extern func_ov000_021fc528
     .extern func_ov000_021fc538
     .extern func_ov000_021fc5ac
-    .extern func_ov000_021fc9d4
-    .extern func_ov000_021fca4c
+    .extern Overlay000_SyncSelection
+    .extern Overlay000_SetSelection
     .extern Overlay000_GetActiveMetadata
     .extern func_ov000_021fcb98
     .extern func_ov000_021fcc18
@@ -79,7 +79,7 @@ L_0220096c:
     b L_022009a8
 L_0220099c:
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fc460 ; func_ov001_021fc460
+    bl Overlay000_Grid_UpdateTransition ; func_ov001_021fc460
     b L_02200d30
 L_022009a8:
     ldr r0, [r4, #0x44c]
@@ -154,9 +154,9 @@ L_02200aa8:
     bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0x44c]
     mov r1, r5
-    bl func_ov000_021fca4c
+    bl Overlay000_SetSelection
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fc9d4
+    bl Overlay000_SyncSelection
     mov r0, r4
     bl func_ov016_021ffc2c
     b L_02200c60

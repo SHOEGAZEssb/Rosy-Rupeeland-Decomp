@@ -6,8 +6,8 @@
     .extern func_ov001_021fc460
     .extern func_ov001_021fc404
     .extern func_ov001_021fc068
-    .global func_ov001_021fc964
-func_ov001_021fc964: ; 0x021fc964
+    .global Overlay001_MergeActiveCell
+Overlay001_MergeActiveCell: ; 0x021fc964
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r7, r0
     ldr r3, [r7, #0x20c]
@@ -61,4 +61,4 @@ func_ov001_021fc964: ; 0x021fc964
     ldr r0, [r0, #0x10]
     str r0, [r7, #0x1c]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_ov001_021fc964, .-func_ov001_021fc964
+    .size Overlay001_MergeActiveCell, .-Overlay001_MergeActiveCell

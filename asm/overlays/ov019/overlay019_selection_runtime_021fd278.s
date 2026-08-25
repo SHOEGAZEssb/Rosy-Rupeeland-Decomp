@@ -5,8 +5,8 @@
     .extern data_ov019_021fd608
     .extern GamePhaseCurrencyHud_GetCurrency
     .extern SceneSound_PlayPackedEffect
-    .extern func_ov002_021fbb68
-    .extern func_ov002_021fbc54
+    .extern Overlay002_HitTestIcon
+    .extern Overlay002_ApplySelectedKey
     .extern func_ov002_021fbd64
     .extern func_ov002_021fbd98
     .extern func_ov002_021fbdb0
@@ -48,7 +48,7 @@ L_021fd2cc:
     beq L_021fd4a0
     ldr r0, [r4, #0x5c]
     add r1, r4, #0x30
-    bl func_ov002_021fbb68
+    bl Overlay002_HitTestIcon
     cmp r0, #0x0
     blt L_021fd4a0
     bl genrand_int32
@@ -82,7 +82,7 @@ L_021fd330:
     b L_021fd4a0
 L_021fd358:
     ldr r0, [r4, #0x5c]
-    bl func_ov002_021fbc54
+    bl Overlay002_ApplySelectedKey
     cmp r0, #0x0
     beq L_021fd380
     ldr r1, [r4, #0x4]

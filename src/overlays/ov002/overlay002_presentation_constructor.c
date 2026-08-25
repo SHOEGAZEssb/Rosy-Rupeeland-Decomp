@@ -46,7 +46,7 @@ extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *context, void *resource, s32 kind);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *sprite, s32 value, s32 x, s32 y, s32 mode,
                           s32 scale, s32 extra);
-extern void func_ov002_021fba1c(Overlay002PresentationState *state, s32 value);
+extern void Overlay002_SetDisplayedValue(Overlay002PresentationState *state, s32 value);
 extern void Sound_LoadGroup(void *context, s32 value);
 #ifdef __cplusplus
 }
@@ -58,7 +58,7 @@ extern void Sound_LoadGroup(void *context, s32 value);
  * resource contexts, then allocate/configure seven indicators from the
  * confirmed X-coordinate table and fourteen icons from the confirmed value/X/Y
  * table. Four standalone controls and two footer sprites are also created at
- * their fixed coordinates. func_ov002_021fba1c applies initialValue, and the
+ * their fixed coordinates. Overlay002_SetDisplayedValue applies initialValue, and the
  * sound context receives command 0x79. Return state. Exact object semantics
  * and the descriptor constant 0x98967F remain unconfirmed; graphics/resource
  * and sound effects occur through callees rather than direct hardware access.
@@ -66,7 +66,7 @@ extern void Sound_LoadGroup(void *context, s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay002PresentationState *func_ov002_021fb6e0(
+Overlay002PresentationState *Overlay002_Presentation_Init(
     Overlay002PresentationState *state, void *owner, s32 initialValue)
 {
     s32 i;
@@ -103,7 +103,7 @@ Overlay002PresentationState *func_ov002_021fb6e0(
     state->control_070 =
         GraphicsSpriteGroup_CreateStateFromSource(state->resourceA_010, state->resource_004, 1);
     GraphicsSpriteState_ApplyRenderConfig(state->control_070, 0x21, 0x91, 0x1f, 1, 0x100, 4);
-    func_ov002_021fba1c(state, initialValue);
+    Overlay002_SetDisplayedValue(state, initialValue);
     state->control_074 =
         GraphicsSpriteGroup_CreateStateFromSource(state->resourceB_014, state->resource_004, 1);
     GraphicsSpriteState_ApplyRenderConfig(state->control_074, 0x1d, 0xd0, 0x48, 1, 0, 2);

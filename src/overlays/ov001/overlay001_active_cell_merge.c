@@ -45,7 +45,7 @@ extern void func_ov001_021fc068(Overlay001ActiveCellMergeState *state);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov001_021fc964(Overlay001ActiveCellMergeState *state, s32 amount,
+void Overlay001_MergeActiveCell(Overlay001ActiveCellMergeState *state, s32 amount,
                           void *source)
 {
     void *metadata =

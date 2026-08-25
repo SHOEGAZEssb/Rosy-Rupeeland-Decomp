@@ -10,9 +10,9 @@
     .extern InventoryScroll_BeginMarkerDrag
     .extern InventoryScroll_UpdateMarkerDrag
     .extern InventoryScroll_EndMarkerDrag
-    .extern func_ov000_021fc460
+    .extern Overlay000_Grid_UpdateTransition
     .extern func_ov000_021fc560
-    .extern func_ov001_021fc250
+    .extern Overlay001_Grid_UpdateTransition
     .extern func_ov001_021fc348
     .extern func_ov021_021fd700
     .extern func_ov021_021fd7c0
@@ -81,7 +81,7 @@ L_022001b4:
     ldr r0, [r5, #0x354]
     cmp r0, #0x0
     beq L_022001d8
-    bl func_ov000_021fc460 ; func_ov001_021fc460
+    bl Overlay000_Grid_UpdateTransition ; func_ov001_021fc460
     cmp r0, #0x0
     beq L_02200344
     mov r0, r5
@@ -91,7 +91,7 @@ L_022001d8:
     ldr r0, [r5, #0x358]
     cmp r0, #0x0
     beq L_022001fc
-    bl func_ov001_021fc250
+    bl Overlay001_Grid_UpdateTransition
     cmp r0, #0x0
     beq L_02200344
     mov r0, r5

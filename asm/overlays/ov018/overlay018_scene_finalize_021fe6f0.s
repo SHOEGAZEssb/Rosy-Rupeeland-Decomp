@@ -10,7 +10,7 @@
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern func_020b1ccc
     .extern func_020b1ff0
-    .extern func_ov003_021fb804
+    .extern Overlay003_CreateTilemap
     .extern func_ov018_021fcf40
     .extern func_ov018_021fd788
     .extern func_ov018_021fd90c
@@ -47,7 +47,7 @@ L_021fe710:
     orr r2, r2, #0x2
     str r2, [r0, #0xf6c]
     ldr r0, [r4, #0x190]
-    bl func_ov003_021fb804
+    bl Overlay003_CreateTilemap
     mov r1, #0x0
     mov r5, r0
     mov r2, #0x600

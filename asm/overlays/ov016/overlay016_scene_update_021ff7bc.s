@@ -4,7 +4,7 @@
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern SpriteMotionController_Update
     .extern func_02096304
-    .extern func_ov000_021fc164
+    .extern Overlay000_Grid_Update
     .extern func_ov016_021fd358
     .extern func_ov016_021fdf50
     .extern func_ov016_021fe63c
@@ -37,7 +37,7 @@ L_021ff814:
     ldr r0, [r4, #0x44c]
     cmp r0, #0x0
     beq L_021ff824
-    bl func_ov000_021fc164
+    bl Overlay000_Grid_Update
 L_021ff824:
     ldr r0, [r4, #0x470]
     cmp r0, #0x0

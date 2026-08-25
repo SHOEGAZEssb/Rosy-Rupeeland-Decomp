@@ -39,7 +39,7 @@ extern void InventoryScroll_SetSelectedRow(void *controller, s32 row);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov001_021fc758(Overlay001SelectionSetState *state, s32 index)
+void Overlay001_SetSelection(Overlay001SelectionSetState *state, s32 index)
 {
     state->activeIndex_1ac = index;
     IndexedSelectionController_SetValue(state->embedded_1c0, index % 5);

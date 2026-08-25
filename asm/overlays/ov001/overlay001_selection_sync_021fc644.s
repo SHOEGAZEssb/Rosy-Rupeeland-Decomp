@@ -1,7 +1,7 @@
     .text
     .extern func_020befec
-    .global func_ov001_021fc644
-func_ov001_021fc644: ; 0x021fc644
+    .global Overlay001_SyncSelection
+Overlay001_SyncSelection: ; 0x021fc644
     stmdb sp!, {r4, r5, r6, lr}
     mov r4, r0
     ldr r0, [r4, #0x1bc]
@@ -74,4 +74,4 @@ L_021fc744:
     orr r0, r0, #0x4
     strh r0, [r1, #0x24]
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_ov001_021fc644, .-func_ov001_021fc644
+    .size Overlay001_SyncSelection, .-Overlay001_SyncSelection

@@ -25,7 +25,7 @@ extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
 extern void func_ov002_021fbdc0(void *);
-extern s32 func_ov002_021fbe08(void *);
+extern s32 Overlay002_UpdateFooterAnimation(void *);
 extern s32 func_ov002_021fbe60(void *);
 extern void func_ov029_021fce4c(void *, s32, s32);
 extern void func_ov029_021fd644(void *);
@@ -113,7 +113,7 @@ extern "C" s32 func_ov029_021fd9e0(void *state)
         Overlay029_NextPhase(state);
         break;
     case 4:
-        if (func_ov002_021fbe08(FIELD(void *, state, 0xa8)) != 0 &&
+        if (Overlay002_UpdateFooterAnimation(FIELD(void *, state, 0xa8)) != 0 &&
             DisplayBrightness_IsMainTransitionComplete() != 0) {
             SceneSound_PlayPackedEffect(state, 0x3c84);
             FIELD(s32, state, 0xe0) = 0;

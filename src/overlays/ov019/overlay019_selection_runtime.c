@@ -16,8 +16,8 @@ extern void GameWork_SetFlag(void *, u32);
 extern u32 genrand_int32(void);
 extern s32 GamePhaseCurrencyHud_GetCurrency(const void *);
 extern void SceneSound_PlayPackedEffect(void *, s32);
-extern s32 func_ov002_021fbb68(void *, const void *);
-extern s32 func_ov002_021fbc54(void *);
+extern s32 Overlay002_HitTestIcon(void *, const void *);
+extern s32 Overlay002_ApplySelectedKey(void *);
 extern void func_ov002_021fbd64(void *);
 extern s32 func_ov002_021fbd98(void *);
 extern s32 func_ov002_021fbdb0(void *);
@@ -51,7 +51,7 @@ extern "C" s32 func_ov019_021fd278(void *state)
         /* Confirmed fallthrough into input polling. */
     case 1:
         if ((FIELD(u32, state, 0x20) & 0x20) &&
-            func_ov002_021fbb68(presentation,
+            Overlay002_HitTestIcon(presentation,
                                 (u8 *)state + 0x30) >= 0) {
             SceneSound_PlayPackedEffect(state,
                           (genrand_int32() & 1) ? 0x3c80 : 0x3c81);
@@ -66,7 +66,7 @@ extern "C" s32 func_ov019_021fd278(void *state)
         }
         break;
     case 3:
-        if (func_ov002_021fbc54(presentation)) {
+        if (Overlay002_ApplySelectedKey(presentation)) {
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
             break;

@@ -8,7 +8,7 @@
     .extern ModalState_UpdateInput
     .extern func_ov001_021fc7e4
     .extern func_ov001_021fc7f4
-    .extern func_ov001_021fc88c
+    .extern Overlay001_TransferActiveCell
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
     .extern func_ov015_021fdad4
@@ -109,7 +109,7 @@ L_021fe6c0:
     mov r0, r4
     bl SceneSound_PlayPackedEffect
     ldr r0, [r4, #0xdc]
-    bl func_ov001_021fc88c
+    bl Overlay001_TransferActiveCell
     ldr r0, [r4, #0xdc]
     bl func_ov001_021fc7f4
     ldr r1, [r4, #0x4]

@@ -14,14 +14,14 @@ typedef struct Overlay001TimedSelectionState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov001_021fc644(Overlay001TimedSelectionState *state);
+extern void Overlay001_SyncSelection(Overlay001TimedSelectionState *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Return 0 unless counter_1E8 equals duration_1E4/2 with signed truncation
- * toward zero. At equality, run func_ov001_021fc644 and return 1. The callee
+ * toward zero. At equality, run Overlay001_SyncSelection and return 1. The callee
  * owns any selection/presentation effects; no hardware is accessed here.
  */
 #ifdef __cplusplus
@@ -32,6 +32,6 @@ s32 func_ov001_021fc320(Overlay001TimedSelectionState *state)
     if (state->counter_1e8 != state->duration_1e4 / 2) {
         return 0;
     }
-    func_ov001_021fc644(state);
+    Overlay001_SyncSelection(state);
     return 1;
 }

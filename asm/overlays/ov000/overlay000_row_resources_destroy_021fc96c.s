@@ -1,8 +1,8 @@
     .text
     .extern GraphicsSpriteState_ReleaseFromGroup
     .extern AnimationResourceState_ReleaseResources
-    .global func_ov000_021fc96c
-func_ov000_021fc96c:
+    .global Overlay000_DestroyRowResources
+Overlay000_DestroyRowResources:
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r6, #0x0
     mov r8, r0
@@ -32,4 +32,4 @@ L_021fc9c8:
     cmp r6, #0x5
     blt L_021fc984
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
-    .size func_ov000_021fc96c, .-func_ov000_021fc96c
+    .size Overlay000_DestroyRowResources, .-Overlay000_DestroyRowResources

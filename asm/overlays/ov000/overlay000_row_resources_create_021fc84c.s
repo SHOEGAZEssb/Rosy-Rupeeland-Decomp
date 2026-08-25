@@ -9,8 +9,8 @@
     .extern GraphicsSpriteState_ApplyRenderConfig
     .extern func_ov000_021fc834
     .extern data_020f4e18
-    .global func_ov000_021fc84c
-func_ov000_021fc84c:
+    .global Overlay000_CreateRowResources
+Overlay000_CreateRowResources:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -88,4 +88,4 @@ L_021fc960:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, r11, pc}
 L_021fc968:
     .word data_020f4e18
-    .size func_ov000_021fc84c, .-func_ov000_021fc84c
+    .size Overlay000_CreateRowResources, .-Overlay000_CreateRowResources

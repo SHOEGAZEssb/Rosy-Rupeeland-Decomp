@@ -16,7 +16,7 @@ extern "C" {
 extern void InventoryScroll_ResetPresentationState(void *controller);
 extern void IndexedSelectionController_ResetTransition(void *embeddedState);
 extern void func_ov000_021fc254(Overlay000GridRefreshState *state);
-extern void func_ov000_021fc714(Overlay000GridRefreshState *state);
+extern void Overlay000_Grid_Render(Overlay000GridRefreshState *state);
 #ifdef __cplusplus
 }
 #endif
@@ -35,5 +35,5 @@ void func_ov000_021fc3f8(Overlay000GridRefreshState *state)
     InventoryScroll_ResetPresentationState(state->controller_26c);
     IndexedSelectionController_ResetTransition((u8 *)state + 0x270);
     func_ov000_021fc254(state);
-    func_ov000_021fc714(state);
+    Overlay000_Grid_Render(state);
 }

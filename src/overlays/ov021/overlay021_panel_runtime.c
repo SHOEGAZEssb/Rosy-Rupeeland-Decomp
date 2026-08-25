@@ -26,20 +26,20 @@ extern void InventoryScroll_UpdatePresentation(void *);
 extern void SpriteMotionController_Update(void *);
 extern void func_020b1ff0(void *, s32, s32);
 extern void func_020b2058(const void *, s32, s32);
-extern void *func_ov000_021fbcc4(void *, void *);
-extern void func_ov000_021fc164(void *);
+extern void *Overlay000_Grid_Init(void *, void *);
+extern void Overlay000_Grid_Update(void *);
 extern void func_ov000_021fc59c(void *);
 extern void func_ov000_021fc5ec(void *);
 extern void *func_ov000_021fcab4(void *, s32);
 extern void func_ov000_021fcae8(void *, void *, s32);
-extern void func_ov000_021fcb64(void *, void *, s32);
-extern void *func_ov001_021fbabc(void *, void *);
-extern void func_ov001_021fbf7c(void *);
+extern void Overlay000_GetViewRecordFromIndex(void *, void *, s32);
+extern void *Overlay001_Grid_Init(void *, void *);
+extern void Overlay001_Grid_Update(void *);
 extern void func_ov001_021fc3b4(void *);
 extern void func_ov001_021fc3dc(void *);
 extern void *func_ov001_021fc7c0(void *, s32);
 extern void func_ov001_021fca38(void *, void *, s32);
-extern void func_ov001_021fcaac(void *, void *, s32);
+extern void Overlay001_GetViewRecordFromIndex(void *, void *, s32);
 extern void func_ov002_021fba00(void *);
 extern void func_ov021_021fea50(void *, u32);
 extern void func_ov045_0220b908(void *);
@@ -66,7 +66,7 @@ extern "C" void func_ov021_021fe8e8(void *state)
         void *panel = Heap_Alloc(0x2b0, data_ov021_02202fa0,
                                  4, gHeapContext);
         if (panel != 0)
-            panel = func_ov000_021fbcc4(panel, data_020f4e14);
+            panel = Overlay000_Grid_Init(panel, data_020f4e14);
         FIELD(void *, state, 0x354) = panel;
 
         s32 restored = 0;
@@ -77,7 +77,7 @@ extern "C" void func_ov021_021fe8e8(void *state)
             if (first != 0) {
                 if (FIELD(void *, first, 0xc) != 0) {
                     if (restored == 0) {
-                        func_ov000_021fcb64(panel,
+                        Overlay000_GetViewRecordFromIndex(panel,
                                             (u8 *)state + 0x35c, i);
                         restored = 1;
                     }
@@ -92,7 +92,7 @@ extern "C" void func_ov021_021fe8e8(void *state)
             void *first = entry != 0 ? FIELD(void *, entry, 0xc) : 0;
             if (first != 0 &&
                 FIELD(u16, first, 0) == FIELD(u16, state, 0x378)) {
-                func_ov000_021fcb64(panel, (u8 *)state + 0x35c, saved);
+                Overlay000_GetViewRecordFromIndex(panel, (u8 *)state + 0x35c, saved);
             }
         }
         func_ov000_021fcae8(panel, (u8 *)state + 0x35c, 0);
@@ -121,7 +121,7 @@ extern "C" void func_ov021_021feb60(void *state)
         void *panel = Heap_Alloc(0x210, data_ov021_02202fa8,
                                  4, gHeapContext);
         if (panel != 0)
-            panel = func_ov001_021fbabc(panel, data_020f4e14);
+            panel = Overlay001_Grid_Init(panel, data_020f4e14);
         FIELD(void *, state, 0x358) = panel;
 
         s32 restored = 0;
@@ -132,7 +132,7 @@ extern "C" void func_ov021_021feb60(void *state)
             if (first != 0) {
                 if (FIELD(void *, first, 0xc) != 0) {
                     if (restored == 0) {
-                        func_ov001_021fcaac(panel,
+                        Overlay001_GetViewRecordFromIndex(panel,
                                             (u8 *)state + 0x368, i);
                         restored = 1;
                     }
@@ -148,7 +148,7 @@ extern "C" void func_ov021_021feb60(void *state)
             void *first = entry != 0 ? FIELD(void *, entry, 0xc) : 0;
             if (first != 0 &&
                 FIELD(u16, first, 0) == FIELD(u16, state, 0x378)) {
-                func_ov000_021fcb64(primary,
+                Overlay000_GetViewRecordFromIndex(primary,
                                     (u8 *)state + 0x35c, saved);
             }
         }
@@ -192,9 +192,9 @@ extern "C" void func_ov021_021feea4(void *state)
         FIELD(Update *, object, 0)[2](object);
     }
     if (FIELD(void *, state, 0x354) != 0)
-        func_ov000_021fc164(FIELD(void *, state, 0x354));
+        Overlay000_Grid_Update(FIELD(void *, state, 0x354));
     if (FIELD(void *, state, 0x358) != 0)
-        func_ov001_021fbf7c(FIELD(void *, state, 0x358));
+        Overlay001_Grid_Update(FIELD(void *, state, 0x358));
     func_ov045_0220b908(FIELD(void *, state, 0x3ec));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x94));
 

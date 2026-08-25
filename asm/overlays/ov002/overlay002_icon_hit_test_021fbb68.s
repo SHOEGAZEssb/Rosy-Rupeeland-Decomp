@@ -1,8 +1,8 @@
     .text
     .extern GraphicsSpriteState_HitTestOpaquePixel
     .extern GraphicsSpriteState_SetAnimationIndex
-    .global func_ov002_021fbb68
-func_ov002_021fbb68: ; 0x021fbb68
+    .global Overlay002_HitTestIcon
+Overlay002_HitTestIcon: ; 0x021fbb68
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -70,5 +70,5 @@ L_021fbc44:
 L_021fbc4c:
     mvn r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_ov002_021fbb68, .-func_ov002_021fbb68
+    .size Overlay002_HitTestIcon, .-Overlay002_HitTestIcon
 

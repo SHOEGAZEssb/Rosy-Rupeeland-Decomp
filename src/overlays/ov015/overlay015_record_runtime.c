@@ -22,8 +22,8 @@ extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, 
 extern void SpriteMotionController_Update(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
 extern void func_ov001_021fb81c(void *, s32);
-extern void func_ov001_021fb87c(void *, void *, s32);
-extern void func_ov001_021fbf7c(void *);
+extern void Overlay001_PopulatePresentation(void *, void *, s32);
+extern void Overlay001_Grid_Update(void *);
 extern void *func_ov001_021fc7e4(void *);
 #ifdef __cplusplus
 }
@@ -40,7 +40,7 @@ extern "C" void Overlay015_UpdateRecords(void *state)
     s32 i;
 
     if (FIELD(void *, state, 0xdc) != 0) {
-        func_ov001_021fbf7c(FIELD(void *, state, 0xdc));
+        Overlay001_Grid_Update(FIELD(void *, state, 0xdc));
     }
     for (i = 0; i < 3; i++) {
         SpriteMotionController_Update((u8 *)state + 0xfc + i * 0xac);
@@ -83,7 +83,7 @@ extern "C" void func_ov015_021fd6c8(void *state)
                           0x80 - width / 2, 6, 0xe, 8, 0);
         }
     } else if (FIELD(void *, status, 0xc) != 0) {
-        func_ov001_021fb87c(FIELD(void *, state, 0xf4), FIELD(void *, status, 0xc), 1);
+        Overlay001_PopulatePresentation(FIELD(void *, state, 0xf4), FIELD(void *, status, 0xc), 1);
         FIELD(u32, state, 0x4c) |= 2;
     } else {
         func_ov001_021fb81c(FIELD(void *, state, 0xf4), 1);

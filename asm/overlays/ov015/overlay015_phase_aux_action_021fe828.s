@@ -8,7 +8,7 @@
     .extern ModalState_UpdateInput
     .extern func_ov001_021fc39c
     .extern func_ov001_021fc7e4
-    .extern func_ov001_021fc964
+    .extern Overlay001_MergeActiveCell
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
     .extern func_ov015_021fdad4
@@ -54,7 +54,7 @@ L_021fe898:
     ldr r0, [r4, #0xdc]
     ldr r2, [r4, #0xec]
     mov r1, #0x1
-    bl func_ov001_021fc964
+    bl Overlay001_MergeActiveCell
     mov r0, r4
     bl func_ov015_021fdad4
     ldr r0, L_021fe9a8

@@ -8,14 +8,14 @@
     .extern func_ov001_021fc1f0
     .extern func_ov001_021fc214
     .extern func_ov001_021fc240
-    .extern func_ov001_021fc250
+    .extern Overlay001_Grid_UpdateTransition
     .extern func_ov001_021fc2e4
     .extern func_ov001_021fc310
     .extern func_ov001_021fc320
     .extern func_ov001_021fc3c4
     .extern func_ov001_021fc3ec
-    .extern func_ov001_021fc644
-    .extern func_ov001_021fc758
+    .extern Overlay001_SyncSelection
+    .extern Overlay001_SetSelection
     .extern func_ov001_021fcae0
     .extern func_ov001_021fcb60
     .extern func_ov001_021fcbf0
@@ -70,7 +70,7 @@ L_021fe038:
     b L_021fe07c
 L_021fe070:
     ldr r0, [r4, #0xdc]
-    bl func_ov001_021fc250
+    bl Overlay001_Grid_UpdateTransition
     b L_021fe28c
 L_021fe07c:
     ldr r0, [r4, #0xdc]
@@ -121,9 +121,9 @@ L_021fe110:
     cmp r5, r1
     beq L_021fe28c
     mov r1, r5
-    bl func_ov001_021fc758
+    bl Overlay001_SetSelection
     ldr r0, [r4, #0xdc]
-    bl func_ov001_021fc644
+    bl Overlay001_SyncSelection
     mov r0, r4
     bl func_ov015_021fd6c8
     mov r0, r4

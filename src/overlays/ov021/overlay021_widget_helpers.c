@@ -15,7 +15,7 @@ extern s32 ActorDescriptor_IsInvalid(void *);
 extern void InventoryRecordCollection_RebindPrimarySelectionDescriptors(void *, s32);
 extern void GraphicsSpriteGroup_Clear(void *);
 extern void SpriteMotionController_SetAnimation(void *, s32);
-extern void func_ov000_021fcb4c(void *, void *);
+extern void Overlay000_CaptureViewState(void *, void *);
 extern void func_ov021_021fd074(void *);
 extern void func_ov021_021feac8(void *, const void *);
 #ifdef __cplusplus
@@ -100,7 +100,7 @@ extern "C" void func_ov021_021fea68(void *state)
     void *panel = FIELD(void *, state, 0x354);
     if (panel != 0) {
         u32 snapshot[3];
-        func_ov000_021fcb4c(snapshot, panel);
+        Overlay000_CaptureViewState(snapshot, panel);
         func_ov021_021feac8((u8 *)state + 0x35c, snapshot);
         typedef void (*Destructor)(void *);
         FIELD(Destructor *, panel, 0)[1](panel);

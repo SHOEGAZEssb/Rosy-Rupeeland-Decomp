@@ -43,8 +43,8 @@ extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void SpriteMotionController_Hide(void *);
 extern u32 genrand_int32(void);
-extern s32 func_ov002_021fbb68(void *, void *);
-extern s32 func_ov002_021fbc54(void *);
+extern s32 Overlay002_HitTestIcon(void *, void *);
+extern s32 Overlay002_ApplySelectedKey(void *);
 extern void func_ov002_021fbd64(void *);
 extern s32 func_ov002_021fbd98(void *);
 extern s32 func_ov002_021fbdb0(void *);
@@ -97,7 +97,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
         /* Deliberate fall-through. */
     case 1:
         if ((FIELD(u32, state, 0x20) & 0x20) != 0 &&
-            func_ov002_021fbb68(FIELD(void *, state, 0x390),
+            Overlay002_HitTestIcon(FIELD(void *, state, 0x390),
                                 (u8 *)state + 0x30) >= 0) {
             SceneSound_PlayPackedEffect(state, (genrand_int32() & 1) ? 0x3c80 : 0x3c81);
             FIELD(s32, state, 4)++;
@@ -112,7 +112,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
         break;
     case 3: {
         void *panel = FIELD(void *, state, 0x390);
-        if (func_ov002_021fbc54(panel) != 0) {
+        if (Overlay002_ApplySelectedKey(panel) != 0) {
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
             break;

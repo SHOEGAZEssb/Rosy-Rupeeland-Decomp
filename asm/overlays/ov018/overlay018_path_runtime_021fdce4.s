@@ -3,7 +3,7 @@
     .extern SceneSound_PlayPackedEffect
     .extern SceneSound_SetPackedEffectValue
     .extern func_020ae024
-    .extern func_ov003_021fb8ac
+    .extern Overlay003_RasterizeLine
     .extern func_ov018_021fdb7c
     .extern func_ov018_021fdbac
     .extern func_ov018_021fdbd4
@@ -57,7 +57,7 @@ L_021fdd1c:
     stmib sp, {r0, r3}
     ldr r0, [r4, #0x190]
     mov r3, r1
-    bl func_ov003_021fb8ac
+    bl Overlay003_RasterizeLine
     add r0, r4, #0x64
     add r1, r4, #0x30
     bl func_ov018_021fe184
@@ -104,7 +104,7 @@ L_021fddf4:
     ldr r1, [r4, #0x68]
     ldr r2, [r4, #0x6c]
     ldr r3, [r4, #0x34]
-    bl func_ov003_021fb8ac
+    bl Overlay003_RasterizeLine
     add r0, r4, #0x64
     add r1, r4, #0x30
     bl func_ov018_021fe184
@@ -283,7 +283,7 @@ L_021fe094:
     sub r10, lr, ip
     ldr r0, [r4, #0x190]
     mov r3, r10
-    bl func_ov003_021fb8ac
+    bl Overlay003_RasterizeLine
     mov r1, r10
     mov r2, r9
     add r8, r8, #0x1

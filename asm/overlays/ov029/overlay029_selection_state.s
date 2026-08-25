@@ -10,8 +10,8 @@
 .extern SceneSound_PlayPackedEffect
 .extern DisplayBrightness_StartMaskedTransitions
 .extern TitleDialog_ClearTextRect
-.extern func_ov002_021fbb68
-.extern func_ov002_021fbc54
+.extern Overlay002_HitTestIcon
+.extern Overlay002_ApplySelectedKey
 .extern func_ov002_021fbd64
 .extern func_ov002_021fbd98
 .extern func_ov002_021fbdb0
@@ -65,7 +65,7 @@ L_021fdccc:
     beq L_021fe098
     ldr r0, [r4, #0xa8]
     add r1, r4, #0x30
-    bl func_ov002_021fbb68
+    bl Overlay002_HitTestIcon
     cmp r0, #0x0
     blt L_021fe098
     bl genrand_int32
@@ -99,7 +99,7 @@ L_021fdd30:
     b L_021fe098
 L_021fdd58:
     ldr r0, [r4, #0xa8]
-    bl func_ov002_021fbc54
+    bl Overlay002_ApplySelectedKey
     cmp r0, #0x0
     beq L_021fdd80
     ldr r1, [r4, #0x4]

@@ -1,7 +1,7 @@
     .text
     .extern func_020befec
-    .global func_ov001_021fcaac
-func_ov001_021fcaac: ; 0x021fcaac
+    .global Overlay001_GetViewRecordFromIndex
+Overlay001_GetViewRecordFromIndex: ; 0x021fcaac
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r2
     mov r5, r1
@@ -15,4 +15,4 @@ func_ov001_021fcaac: ; 0x021fcaac
     str r0, [r5, #0x0]
     str r0, [r5, #0x8]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov001_021fcaac, .-func_ov001_021fcaac
+    .size Overlay001_GetViewRecordFromIndex, .-Overlay001_GetViewRecordFromIndex

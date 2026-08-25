@@ -36,7 +36,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 digit);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov002_021fba1c(Overlay002ValueDisplayState *state, s32 value)
+void Overlay002_SetDisplayedValue(Overlay002ValueDisplayState *state, s32 value)
 {
     s32 divisor;
     s32 i;

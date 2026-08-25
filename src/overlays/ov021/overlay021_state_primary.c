@@ -36,16 +36,16 @@ extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void SpriteMotionController_Hide(void *);
 extern void func_ov000_021fc3f8(void *);
 extern s32 func_ov000_021fc450(void *);
-extern s32 func_ov000_021fc460(void *);
+extern s32 Overlay000_Grid_UpdateTransition(void *);
 extern s32 func_ov000_021fc424(void *);
 extern s32 func_ov000_021fc4fc(void *);
 extern s32 func_ov000_021fc528(void *);
 extern s32 func_ov000_021fc538(void *);
 extern s32 func_ov000_021fc5ac(void *, void *);
 extern s32 func_ov000_021fc5fc(void *, void *);
-extern void func_ov000_021fc714(void *);
-extern void func_ov000_021fc9d4(void *);
-extern void func_ov000_021fca4c(void *, s32);
+extern void Overlay000_Grid_Render(void *);
+extern void Overlay000_SyncSelection(void *);
+extern void Overlay000_SetSelection(void *, s32);
 extern void *Overlay000_GetActiveMetadata(void *);
 extern s32 func_ov000_021fcb98(void *, s32);
 extern s32 func_ov000_021fc298(void *, void *);
@@ -99,7 +99,7 @@ extern "C" s32 func_ov021_02201410(void *state)
         if (func_ov000_021fc450(FIELD(void *, state, 0x354)) != 0) {
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
-        } else if (func_ov000_021fc460(FIELD(void *, state, 0x354)) != 0) {
+        } else if (Overlay000_Grid_UpdateTransition(FIELD(void *, state, 0x354)) != 0) {
             func_ov021_021ff5b8(state);
         }
         break;
@@ -119,8 +119,8 @@ extern "C" s32 func_ov021_02201410(void *state)
                 if (row >= 0) {
                     SceneSound_PlayPackedEffect(state, 0);
                     if (row != FIELD(s32, widget, 0x25c)) {
-                        func_ov000_021fca4c(widget, row);
-                        func_ov000_021fc9d4(widget);
+                        Overlay000_SetSelection(widget, row);
+                        Overlay000_SyncSelection(widget);
                         func_ov021_021ff5b8(state);
                     }
                     break;
@@ -210,7 +210,7 @@ extern "C" s32 func_ov021_02201800(void *state)
     case 0: {
         void *entry = Overlay000_GetActiveMetadata(FIELD(void *, state, 0x354));
         FIELD(s32, entry, 0x1c)--;
-        func_ov000_021fc714(FIELD(void *, state, 0x354));
+        Overlay000_Grid_Render(FIELD(void *, state, 0x354));
         if (func_ov021_021ffa10(FIELD(void *, state, 0x2bc)) != 0)
             FIELD(s32, state, 0x3d8) = 1;
         s32 gain = FIELD(s32, FIELD(void *, state, 0x2bc), 8);

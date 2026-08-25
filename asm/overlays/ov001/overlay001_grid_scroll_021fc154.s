@@ -1,7 +1,7 @@
     .text
     .extern SpriteMotionController_SetPosition
-    .global func_ov001_021fc154
-func_ov001_021fc154:
+    .global Overlay001_Grid_Scroll
+Overlay001_Grid_Scroll:
     stmdb sp!, {r3, lr}
     str r1, [r0, #0x1b4]
     ldr r3, [r0, #0x1bc]
@@ -27,4 +27,4 @@ func_ov001_021fc154:
     str r12, [r3, #0x1c]
     bl SpriteMotionController_SetPosition
     ldmia sp!, {r3, pc}
-    .size func_ov001_021fc154, .-func_ov001_021fc154
+    .size Overlay001_Grid_Scroll, .-Overlay001_Grid_Scroll

@@ -7,7 +7,7 @@
     .extern SceneSound_PlayPackedEffect
     .extern DisplayBrightness_StartMaskedTransitions
     .extern func_ov002_021fbdc0
-    .extern func_ov002_021fbe08
+    .extern Overlay002_UpdateFooterAnimation
     .extern func_ov002_021fbe60
     .extern func_ov021_021fd1b8
     .extern func_ov021_021fd224
@@ -111,7 +111,7 @@ L_02200944:
     b L_022009c4
 L_02200970:
     ldr r0, [r4, #0x390]
-    bl func_ov002_021fbe08
+    bl Overlay002_UpdateFooterAnimation
     cmp r0, #0x0
     beq L_022009b4
     bl DisplayBrightness_IsMainTransitionComplete

@@ -17,7 +17,7 @@ typedef struct Overlay002SelectedKeyState {
 extern "C" {
 #endif
 extern void *gSoundContext;
-extern void func_ov002_021fba1c(Overlay002SelectedKeyState *state, s32 value);
+extern void Overlay002_SetDisplayedValue(Overlay002SelectedKeyState *state, s32 value);
 extern void Sound_Play(void *context, s32 channel, s32 soundId);
 #ifdef __cplusplus
 }
@@ -35,7 +35,7 @@ extern void Sound_Play(void *context, s32 channel, s32 soundId);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov002_021fbc54(Overlay002SelectedKeyState *state)
+s32 Overlay002_ApplySelectedKey(Overlay002SelectedKeyState *state)
 {
     switch (state->selectedIndex_08c) {
     case 0: case 1: case 2: case 3: case 4:
@@ -48,18 +48,18 @@ s32 func_ov002_021fbc54(Overlay002SelectedKeyState *state)
         if (state->value_088 > state->maximum_084) {
             state->value_088 = state->maximum_084;
         }
-        func_ov002_021fba1c(state, state->value_088);
+        Overlay002_SetDisplayedValue(state, state->value_088);
         Sound_Play(gSoundContext, 0x79, 3);
         return 1;
     case 10:
         state->value_088 /= 10;
-        func_ov002_021fba1c(state, state->value_088);
+        Overlay002_SetDisplayedValue(state, state->value_088);
         Sound_Play(gSoundContext, 0x79, 3);
         return 1;
     case 11:
         state->enabled_090 = 0;
         state->value_088 = 0;
-        func_ov002_021fba1c(state, 0);
+        Overlay002_SetDisplayedValue(state, 0);
         return 1;
     default:
         return 0;

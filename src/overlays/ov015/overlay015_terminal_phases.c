@@ -30,8 +30,8 @@ extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void func_ov001_021fc39c(void *);
 extern void *func_ov001_021fc7e4(void *);
 extern void func_ov001_021fc7f4(void *);
-extern void func_ov001_021fc88c(void *);
-extern void func_ov001_021fc964(void *, s32, void *);
+extern void Overlay001_TransferActiveCell(void *);
+extern void Overlay001_MergeActiveCell(void *, s32, void *);
 extern void func_ov015_021fce30(void *, u32, u32);
 extern void Overlay015_UpdateRecords(void *);
 extern void func_ov015_021fdad4(void *);
@@ -100,7 +100,7 @@ extern "C" s32 func_ov015_021fe588(void *state)
         result = overlay015_poll_transient(state);
         if (result == 1) {
             SceneSound_PlayPackedEffect(state, 0x4102);
-            func_ov001_021fc88c(controller);
+            Overlay001_TransferActiveCell(controller);
             func_ov001_021fc7f4(controller);
             overlay015_terminal_step(state, 2);
         } else if (result == 2) {
@@ -158,7 +158,7 @@ extern "C" s32 func_ov015_021fe828(void *state)
         }
         break;
     case 1:
-        func_ov001_021fc964(FIELD(void *, state, 0xdc), 1, FIELD(void *, state, 0xec));
+        Overlay001_MergeActiveCell(FIELD(void *, state, 0xdc), 1, FIELD(void *, state, 0xec));
         func_ov015_021fdad4(state);
         if (GameWork_TestFlag(gGameWork, 0x3af) != 0) {
             overlay015_terminal_transition(state, data_ov015_021fec20);

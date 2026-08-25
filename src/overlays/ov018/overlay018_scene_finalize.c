@@ -20,7 +20,7 @@ extern void GamePhaseCurrencyHud_SetVisible(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_020b1ccc(void *, s32, s32);
 extern void func_020b1ff0(void *, s32, s32);
-extern void *func_ov003_021fb804(void *);
+extern void *Overlay003_CreateTilemap(void *);
 extern void func_ov018_021fcf40(void *, s32, s32, s32);
 extern void func_ov018_021fd788(void *);
 extern void func_ov018_021fd90c(void *);
@@ -50,7 +50,7 @@ extern "C" s32 func_ov018_021fe6f0(void *state)
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         FIELD(u32, (u8 *)gGamePhaseRuntime + 0x2000, 0xf6c) |= 2;
 
-        void *temporary = func_ov003_021fb804(FIELD(void *, state, 0x190));
+        void *temporary = Overlay003_CreateTilemap(FIELD(void *, state, 0x190));
         func_020b1ccc(temporary, 0, 0x600);
         func_020b1ff0((u8 *)FIELD(void *, state, 0x190) + 4, 0x20, 0x20);
         Heap_FreeAlternateEntry(temporary);

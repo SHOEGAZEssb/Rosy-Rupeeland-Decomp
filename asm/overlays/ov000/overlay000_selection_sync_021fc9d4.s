@@ -1,6 +1,6 @@
     .text
-    .global func_ov000_021fc9d4
-func_ov000_021fc9d4:
+    .global Overlay000_SyncSelection
+Overlay000_SyncSelection:
     stmdb sp!, {r3, lr}
     ldr r1, [r0, #0x26c]
     ldr lr, [r0, #0x27c]
@@ -31,4 +31,4 @@ func_ov000_021fc9d4:
     str r2, [r0, #0x2a8]
     str r1, [r0, #0x2ac]
     ldmia sp!, {r3, pc}
-    .size func_ov000_021fc9d4, .-func_ov000_021fc9d4
+    .size Overlay000_SyncSelection, .-Overlay000_SyncSelection

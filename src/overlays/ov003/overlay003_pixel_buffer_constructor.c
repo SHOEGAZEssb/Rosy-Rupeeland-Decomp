@@ -45,7 +45,7 @@ extern void func_ov003_021fb7c0(Overlay003Pair *destination,
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay003PixelBufferState *func_ov003_021fb6e0(
+Overlay003PixelBufferState *Overlay003_PixelBuffer_Init(
     Overlay003PixelBufferState *state)
 {
     s32 i;

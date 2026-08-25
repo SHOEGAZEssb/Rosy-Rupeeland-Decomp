@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov016/overlay016_scene_auxiliary.c. */
     .extern Heap_Free
     .extern func_ov000_021fb848
-    .extern func_ov000_021fcb4c
+    .extern Overlay000_CaptureViewState
     .extern func_ov016_021fe24c
 .global func_ov016_021ff71c
 func_ov016_021ff71c:
@@ -32,7 +32,7 @@ L_021ff768:
     str r0, [r4, #0x470]
     ldr r1, [r4, #0x44c]
     add r0, sp, #0x0
-    bl func_ov000_021fcb4c
+    bl Overlay000_CaptureViewState
     ldr r0, [sp, #0x0]
     str r0, [r4, #0x454]
     ldr r0, [sp, #0x4]

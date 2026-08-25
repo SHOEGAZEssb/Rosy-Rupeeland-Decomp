@@ -6,12 +6,12 @@
     .extern data_ov021_02202fa0
     .extern OverlaySlot_LoadOverlay
     .extern InventoryRecordCollection_RebindPrimarySelectionDescriptors
-    .extern func_ov000_021fbcc4
+    .extern Overlay000_Grid_Init
     .extern func_ov000_021fc59c
     .extern func_ov000_021fc5ec
     .extern func_ov000_021fcab4
     .extern func_ov000_021fcae8
-    .extern func_ov000_021fcb64
+    .extern Overlay000_GetViewRecordFromIndex
     .extern func_ov021_021fea50
     .extern gHeapContext
 
@@ -39,7 +39,7 @@ func_ov021_021fe8e8:
     beq L_021fe944
     ldr r1, L_021fea4c
     ldr r1, [r1, #0x0]
-    bl func_ov000_021fbcc4
+    bl Overlay000_Grid_Init
 L_021fe944:
     mov r8, #0x1
     mov r9, #0x0
@@ -67,7 +67,7 @@ L_021fe964:
     mov r2, r9
     add r1, r10, #0x35c
     mov r8, r5
-    bl func_ov000_021fcb64
+    bl Overlay000_GetViewRecordFromIndex
     b L_021fe9b8
 L_021fe9b0:
     mov r1, r4
@@ -94,7 +94,7 @@ L_021fe9bc:
     ldr r0, [r10, #0x354]
     ldr r2, [r10, #0x374]
     add r1, r10, #0x35c
-    bl func_ov000_021fcb64
+    bl Overlay000_GetViewRecordFromIndex
 L_021fea0c:
     ldr r0, [r10, #0x354]
     add r1, r10, #0x35c

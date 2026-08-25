@@ -8,8 +8,8 @@
     .extern SpriteMotionController_Update
     .extern func_020b1ff0
     .extern func_020b2058
-    .extern func_ov000_021fc164
-    .extern func_ov001_021fbf7c
+    .extern Overlay000_Grid_Update
+    .extern Overlay001_Grid_Update
     .extern func_ov002_021fba00
     .extern func_ov045_0220b908
     .extern func_ov045_0220c18c
@@ -61,12 +61,12 @@ L_021fef34:
     ldr r0, [r4, #0x354]
     cmp r0, #0x0
     beq L_021fef44
-    bl func_ov000_021fc164
+    bl Overlay000_Grid_Update
 L_021fef44:
     ldr r0, [r4, #0x358]
     cmp r0, #0x0
     beq L_021fef54
-    bl func_ov001_021fbf7c
+    bl Overlay001_Grid_Update
 L_021fef54:
     ldr r0, [r4, #0x3ec]
     bl func_ov045_0220b908

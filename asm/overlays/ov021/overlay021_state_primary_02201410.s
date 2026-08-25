@@ -14,14 +14,14 @@
     .extern func_ov000_021fc3f8
     .extern func_ov000_021fc424
     .extern func_ov000_021fc450
-    .extern func_ov000_021fc460
+    .extern Overlay000_Grid_UpdateTransition
     .extern func_ov000_021fc4fc
     .extern func_ov000_021fc528
     .extern func_ov000_021fc538
     .extern func_ov000_021fc5ac
     .extern func_ov000_021fc5fc
-    .extern func_ov000_021fc9d4
-    .extern func_ov000_021fca4c
+    .extern Overlay000_SyncSelection
+    .extern Overlay000_SetSelection
     .extern Overlay000_GetActiveMetadata
     .extern func_ov000_021fcb98
     .extern func_ov000_021fcc18
@@ -73,7 +73,7 @@ L_02201464:
     b L_022014a8
 L_0220148c:
     ldr r0, [r4, #0x354]
-    bl func_ov000_021fc460 ; func_ov001_021fc460
+    bl Overlay000_Grid_UpdateTransition ; func_ov001_021fc460
     cmp r0, #0x0
     beq L_022017d8
     mov r0, r4
@@ -128,9 +128,9 @@ L_0220153c:
     cmp r5, r1
     beq L_022017d8
     mov r1, r5
-    bl func_ov000_021fca4c
+    bl Overlay000_SetSelection
     ldr r0, [r4, #0x354]
-    bl func_ov000_021fc9d4
+    bl Overlay000_SyncSelection
     mov r0, r4
     bl func_ov021_021ff5b8
     b L_022017d8

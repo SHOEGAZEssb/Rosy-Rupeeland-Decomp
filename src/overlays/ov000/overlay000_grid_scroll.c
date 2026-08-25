@@ -32,7 +32,7 @@ extern void SpriteMotionController_SetPosition(void *region, s32 width, s32 heig
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fc340(Overlay000GridScrollState *state, s32 scrollY)
+void Overlay000_Grid_Scroll(Overlay000GridScrollState *state, s32 scrollY)
 {
     state->scrollY_264 = scrollY;
     state->originY_268 =

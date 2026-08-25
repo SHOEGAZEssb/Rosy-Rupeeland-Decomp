@@ -1,10 +1,10 @@
     .text
-    .extern func_ov000_021fc96c
-    .extern func_ov000_021fc84c
-    .extern func_ov000_021fc9d4
-    .extern func_ov000_021fc714
-    .global func_ov000_021fc460
-func_ov000_021fc460:
+    .extern Overlay000_DestroyRowResources
+    .extern Overlay000_CreateRowResources
+    .extern Overlay000_SyncSelection
+    .extern Overlay000_Grid_Render
+    .global Overlay000_Grid_UpdateTransition
+Overlay000_Grid_UpdateTransition:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0x26c]
@@ -31,19 +31,19 @@ func_ov000_021fc460:
     ldr r1, [r4, #0x26c]
     mov r0, r4
     ldr r1, [r1, #0x74]
-    bl func_ov000_021fc96c
+    bl Overlay000_DestroyRowResources
     ldr r1, [r4, #0x26c]
     mov r0, r4
     ldr r1, [r1, #0x70]
-    bl func_ov000_021fc84c
+    bl Overlay000_CreateRowResources
 L_021fc4dc:
     mov r0, r4
-    bl func_ov000_021fc9d4
+    bl Overlay000_SyncSelection
     mov r0, r4
-    bl func_ov000_021fc714
+    bl Overlay000_Grid_Render
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021fc4f4:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
-    .size func_ov000_021fc460, .-func_ov000_021fc460
+    .size Overlay000_Grid_UpdateTransition, .-Overlay000_Grid_UpdateTransition

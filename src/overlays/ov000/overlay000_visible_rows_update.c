@@ -15,14 +15,14 @@ typedef struct Overlay000GridState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov000_021fc84c(void *state, s32 row);
+extern void Overlay000_CreateRowResources(void *state, s32 row);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Read the first visible row from controller field 0x0C and the visible count
- * from field 0x08, then invoke func_ov000_021fc84c for every inclusive row in
+ * from field 0x08, then invoke Overlay000_CreateRowResources for every inclusive row in
  * that interval. Returns nothing. Row presentation state changes through the
  * callback; no SDK service or hardware is accessed directly here.
  */
@@ -35,7 +35,7 @@ void func_ov000_021fc254(Overlay000GridState *state)
 
     while (row <= FIELD(s32, state->controller_26c, 0x0c) +
                   FIELD(s32, state->controller_26c, 0x08) - 1) {
-        func_ov000_021fc84c(state, row);
+        Overlay000_CreateRowResources(state, row);
         row++;
     }
 }

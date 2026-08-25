@@ -45,7 +45,7 @@ extern void SpriteMotionController_Update(void *element);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov001_021fbf7c(Overlay001GridUpdateState *state)
+void Overlay001_Grid_Update(Overlay001GridUpdateState *state)
 {
     s32 value;
     s64 product;

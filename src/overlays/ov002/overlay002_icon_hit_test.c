@@ -46,7 +46,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *sprite, u8 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov002_021fbb68(Overlay002IconHitState *state,
+s32 Overlay002_HitTestIcon(Overlay002IconHitState *state,
                          const Overlay002PointInput *input)
 {
     s32 i;

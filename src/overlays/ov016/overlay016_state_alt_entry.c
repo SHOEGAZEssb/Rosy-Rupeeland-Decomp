@@ -17,7 +17,7 @@ extern void GameWork_ClearFlag(void *, u32);
 extern s32 GameWork_TestFlag(void *, u32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern s32 ModalState_UpdateInput(void *, void *, s32);
-extern void func_ov000_021fc9d4(void *);
+extern void Overlay000_SyncSelection(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff7bc(void *);
 extern void func_ov016_021ff908(void *, s32, s32, void *);
@@ -45,7 +45,7 @@ extern "C" s32 func_ov016_02200778(void *state)
         GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);
         GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);
         func_ov016_021ffc2c(state);
-        func_ov000_021fc9d4(FIELD(void *, state, 0x44c));
+        Overlay000_SyncSelection(FIELD(void *, state, 0x44c));
         if (FIELD(s32, state, 0x46c) != 0) {
             if (GameWork_TestFlag(gGameWork, 0x3a7) != 0) {
                 GameWork_ClearFlag(gGameWork, 0x3a7);

@@ -7,7 +7,7 @@
     .extern ActorDescriptorState_FindInactiveQuantity
     .extern func_0206fb18
     .extern func_02096450
-    .extern func_ov000_021fc714
+    .extern Overlay000_Grid_Render
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
     .extern func_ov016_021ff9f8
@@ -87,7 +87,7 @@ L_022012c4:
     mov r0, r4
     bl func_ov016_021ffb3c
     ldr r0, [r4, #0x44c]
-    bl func_ov000_021fc714
+    bl Overlay000_Grid_Render
     ldr r1, L_02201300
     mov r0, r4
     ldmia r1, {r1, r2}

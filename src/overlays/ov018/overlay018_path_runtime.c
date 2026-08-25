@@ -16,7 +16,7 @@ extern "C" {
 extern void SceneSound_PlayPackedEffect(void *, s32);
 extern void SceneSound_SetPackedEffectValue(void *, s32, s32);
 extern u32 func_020ae024(s32, s32);
-extern void func_ov003_021fb8ac(void *, s32, s32, s32, s32, u32, u32);
+extern void Overlay003_RasterizeLine(void *, s32, s32, s32, s32, u32, u32);
 extern void func_ov018_021fdb7c(void *, s32);
 extern void func_ov018_021fdbac(void *);
 extern void func_ov018_021fdbd4(void *);
@@ -67,7 +67,7 @@ extern "C" void func_ov018_021fdce4(void *state)
             s32 x = FIELD(s32, state, 0x34);
             s32 y = FIELD(s32, state, 0x38);
             FIELD(s32, state, 0x404) = 1;
-            func_ov003_021fb8ac(FIELD(void *, state, 0x190),
+            Overlay003_RasterizeLine(FIELD(void *, state, 0x190),
                                 x, y, x, y, 2, 1);
             func_ov018_021fe184((u8 *)state + 0x64, (u8 *)state + 0x30);
             func_ov018_021fdbfc(state);
@@ -83,7 +83,7 @@ extern "C" void func_ov018_021fdce4(void *state)
                 func_ov018_021fe184((u8 *)state + 0x64,
                                     (u8 *)state + 0x30);
             }
-            func_ov003_021fb8ac(FIELD(void *, state, 0x190),
+            Overlay003_RasterizeLine(FIELD(void *, state, 0x190),
                                 FIELD(s32, state, 0x68),
                                 FIELD(s32, state, 0x6c),
                                 FIELD(s32, state, 0x34),
@@ -154,7 +154,7 @@ extern "C" void func_ov018_021fdce4(void *state)
                 for (s32 i = 1; i < FIELD(s32, buffer, 0x10); i++) {
                     s32 nextX = points[i].x - FIELD(s32, state, 0x5c);
                     s32 nextY = points[i].y - FIELD(s32, state, 0x60);
-                    func_ov003_021fb8ac(FIELD(void *, state, 0x190),
+                    Overlay003_RasterizeLine(FIELD(void *, state, 0x190),
                                         pointX, pointY, nextX, nextY,
                                         brush, 1);
                     pointX = nextX;

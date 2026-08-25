@@ -1,10 +1,10 @@
     .text
     .extern data_ov003_021fbce0
     .extern data_ov003_021fbb40
-    .global func_ov003_021fbaa0
-L_ov003_center_pixel = func_ov003_021fbaa0 - 0x140
-L_ov003_neighbor_pixel = func_ov003_021fbaa0 - 0xf4
-func_ov003_021fbaa0: ; 0x021fbaa0
+    .global Overlay003_DrawRandomizedStamp
+L_ov003_center_pixel = Overlay003_DrawRandomizedStamp - 0x140
+L_ov003_neighbor_pixel = Overlay003_DrawRandomizedStamp - 0xf4
+Overlay003_DrawRandomizedStamp: ; 0x021fbaa0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     mov r8, #0xf
     ldr r3, L_021fbb2c
@@ -42,4 +42,4 @@ func_ov003_021fbaa0: ; 0x021fbaa0
     bx lr
 L_021fbb2c: .word data_ov003_021fbce0
 L_021fbb30: .word data_ov003_021fbb40
-    .size func_ov003_021fbaa0, .-func_ov003_021fbaa0
+    .size Overlay003_DrawRandomizedStamp, .-Overlay003_DrawRandomizedStamp

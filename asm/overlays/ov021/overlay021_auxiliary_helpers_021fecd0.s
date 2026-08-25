@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov021/overlay021_auxiliary_helpers.c. */
     .extern OverlaySlot_UnloadOverlay
-    .extern func_ov001_021fca94
+    .extern Overlay001_CaptureViewState
     .extern func_ov021_021feac8
 
 .global func_ov021_021fecd0
@@ -13,7 +13,7 @@ func_ov021_021fecd0:
     cmp r1, #0x0
     beq L_021fed28
     add r0, sp, #0x0
-    bl func_ov001_021fca94
+    bl Overlay001_CaptureViewState
     add r1, sp, #0x0
     add r0, r4, #0x368
     bl func_ov021_021feac8

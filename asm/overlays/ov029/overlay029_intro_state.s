@@ -14,7 +14,7 @@
 .extern DisplayBrightness_StartMaskedTransitions
 .extern func_ov000_021fb6e0
 .extern func_ov002_021fbdc0
-.extern func_ov002_021fbe08
+.extern Overlay002_UpdateFooterAnimation
 .extern func_ov002_021fbe60
 .extern func_ov029_021fce4c
 .extern func_ov029_021fd644
@@ -150,7 +150,7 @@ L_021fdb68:
     ldr r1, L_021fdc3c
     mov r2, #0x0
     ldr r1, [r1, #0x0]
-    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, func_ov002_021fb6e0, func_ov003_021fb6e0, func_ov004_021fb6e0, func_ov005_021fb6e0, func_ov006_021fb6e0, func_ov007_021fb6e0, func_ov008_021fb6e0
+    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, Overlay002_Presentation_Init, Overlay003_PixelBuffer_Init, func_ov004_021fb6e0, func_ov005_021fb6e0, func_ov006_021fb6e0, func_ov007_021fb6e0, func_ov008_021fb6e0
 L_021fdba0:
     str r0, [r4, #0xa8]
     mov r0, r4
@@ -168,7 +168,7 @@ L_021fdba0:
     b L_021fdc2c
 L_021fdbd8:
     ldr r0, [r4, #0xa8]
-    bl func_ov002_021fbe08
+    bl Overlay002_UpdateFooterAnimation
     cmp r0, #0x0
     beq L_021fdc1c
     bl DisplayBrightness_IsMainTransitionComplete

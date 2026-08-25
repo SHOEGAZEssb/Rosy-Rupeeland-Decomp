@@ -11,7 +11,7 @@
     .extern TitleCharacterResourceCollection_Init
     .extern TitleCharacterResourceCollection_Append
     .extern func_ov000_021fb728
-    .extern func_ov000_021fbcc4
+    .extern Overlay000_Grid_Init
     .extern func_ov000_021fcae8
     .extern func_ov014_021fce00
     .extern func_ov014_021fce14
@@ -71,7 +71,7 @@ L_021fceb8:
     beq L_021fcef0
     ldr r1, L_021fcf48
     ldr r1, [r1, #0x0]
-    bl func_ov000_021fbcc4
+    bl Overlay000_Grid_Init
 L_021fcef0:
     add r1, r4, #0x7c
     mov r2, #0x0

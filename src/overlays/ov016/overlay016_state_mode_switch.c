@@ -18,7 +18,7 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern s32 ModalState_UpdateInput(void *, void *, s32);
-extern void func_ov000_021fc9d4(void *);
+extern void Overlay000_SyncSelection(void *);
 extern void Overlay016ActorValue_Init(void *, u32, u32);
 extern void func_ov016_021ff17c(void *);
 extern void func_ov016_021ff4ec(void *);
@@ -58,7 +58,7 @@ extern "C" s32 func_ov016_022005c8(void *state)
             Overlay016_PopulateAuxiliaryList(state);
             func_ov016_021ff17c(state);
             func_ov016_021ffc2c(state);
-            func_ov000_021fc9d4(FIELD(void *, state, 0x44c));
+            Overlay000_SyncSelection(FIELD(void *, state, 0x44c));
             if (GameWork_TestFlag(gGameWork, 0x3a7) == 0) {
                 FIELD(s32, state, 4) = 10;
             } else {

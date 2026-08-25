@@ -31,7 +31,7 @@ extern void AnimationResourceState_ReleaseResources(void *metadata);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fc96c(Overlay000RowResourcesDestroyState *state, s32 row)
+void Overlay000_DestroyRowResources(Overlay000RowResourcesDestroyState *state, s32 row)
 {
     s32 baseIndex = row * 5;
     s32 column;

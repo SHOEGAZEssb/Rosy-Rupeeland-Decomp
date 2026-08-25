@@ -5,7 +5,7 @@
     .extern InventoryScroll_BeginMarkerDrag
     .extern InventoryScroll_EndMarkerDrag
     .extern func_ov001_021fc240
-    .extern func_ov001_021fc250
+    .extern Overlay001_Grid_UpdateTransition
     .extern func_ov001_021fc348
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
@@ -65,7 +65,7 @@ L_021fe348:
     b L_021fe36c
 L_021fe360:
     ldr r0, [r5, #0xdc]
-    bl func_ov001_021fc250
+    bl Overlay001_Grid_UpdateTransition
     b L_021fe3d0
 L_021fe36c:
     ldr r0, [r5, #0x20]

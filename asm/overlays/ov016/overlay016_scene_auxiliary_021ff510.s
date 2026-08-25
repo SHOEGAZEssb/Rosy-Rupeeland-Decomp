@@ -8,11 +8,11 @@
     .extern data_ov016_022015a8
     .extern InventoryRecord_GetMetadata
     .extern func_ov000_021fb728
-    .extern func_ov000_021fbcc4
+    .extern Overlay000_Grid_Init
     .extern func_ov000_021fc59c
     .extern func_ov000_021fcab4
     .extern func_ov000_021fcae8
-    .extern func_ov000_021fcb64
+    .extern Overlay000_GetViewRecordFromIndex
     .extern func_ov016_021fe118
     .extern func_ov016_021ff6e8
     .extern func_ov016_021ff700
@@ -56,7 +56,7 @@ L_021ff568:
     beq L_021ff59c
     ldr r1, L_021ff6e4
     ldr r1, [r1, #0x0]
-    bl func_ov000_021fbcc4
+    bl Overlay000_Grid_Init
 L_021ff59c:
     str r0, [r8, #0x44c]
     mov r4, #0x1
@@ -96,7 +96,7 @@ L_021ff5f0:
     mov r2, r5
     add r1, r1, #0x400
     mov r4, #0x0
-    bl func_ov000_021fcb64
+    bl Overlay000_GetViewRecordFromIndex
     b L_021ff6a0
 L_021ff634:
     add r3, r3, #0x1
@@ -123,7 +123,7 @@ L_021ff644:
     mov r2, r5
     add r1, r1, #0x400
     mov r4, #0x0
-    bl func_ov000_021fcb64
+    bl Overlay000_GetViewRecordFromIndex
     b L_021ff6a0
 L_021ff694:
     mov r0, r6

@@ -3,8 +3,8 @@
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern InventoryScroll_UpdatePresentation
     .extern SpriteMotionController_Update
-    .global func_ov001_021fbf7c
-func_ov001_021fbf7c: ; 0x021fbf7c
+    .global Overlay001_Grid_Update
+Overlay001_Grid_Update: ; 0x021fbf7c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r0, r4, #0x28
@@ -65,4 +65,4 @@ L_021fc04c:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fc060: .word gFx32CosSinTable
 L_021fc064: .word 0x1052
-    .size func_ov001_021fbf7c, .-func_ov001_021fbf7c
+    .size Overlay001_Grid_Update, .-Overlay001_Grid_Update

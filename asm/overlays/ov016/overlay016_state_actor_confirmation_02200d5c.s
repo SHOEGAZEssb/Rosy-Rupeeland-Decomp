@@ -7,7 +7,7 @@
     .extern InventoryScroll_BeginMarkerDrag
     .extern InventoryScroll_EndMarkerDrag
     .extern func_ov000_021fc450
-    .extern func_ov000_021fc460
+    .extern Overlay000_Grid_UpdateTransition
     .extern func_ov000_021fc560
     .extern Overlay016ActorValue_Init
     .extern func_ov016_021ff7bc
@@ -61,7 +61,7 @@ L_02200dec:
     b L_02200e10
 L_02200e04:
     ldr r0, [r5, #0x44c]
-    bl func_ov000_021fc460 ; func_ov001_021fc460
+    bl Overlay000_Grid_UpdateTransition ; func_ov001_021fc460
     b L_02200e74
 L_02200e10:
     ldr r0, [r5, #0x20]

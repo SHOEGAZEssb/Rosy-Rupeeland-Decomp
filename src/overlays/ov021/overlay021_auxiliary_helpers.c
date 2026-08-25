@@ -20,8 +20,8 @@ extern s32 ActorDescriptor_IsInvalid(void *);
 extern void InventoryRecordCollection_RebindSecondarySelectionDescriptors(void *, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void *func_ov000_021fb6e0(void *, void *, s32);
-extern void func_ov001_021fca94(void *, void *);
-extern void *func_ov002_021fb6e0(void *, void *, s32);
+extern void Overlay001_CaptureViewState(void *, void *);
+extern void *Overlay002_Presentation_Init(void *, void *, s32);
 extern void func_ov002_021fb9c4(void *);
 extern void func_ov021_021feac8(void *, const void *);
 #ifdef __cplusplus
@@ -39,7 +39,7 @@ extern "C" void func_ov021_021fecd0(void *state)
     void *panel = FIELD(void *, state, 0x358);
     if (panel != 0) {
         u32 snapshot[3];
-        func_ov001_021fca94(snapshot, panel);
+        Overlay001_CaptureViewState(snapshot, panel);
         func_ov021_021feac8((u8 *)state + 0x368, snapshot);
         typedef void (*Destructor)(void *);
         FIELD(Destructor *, panel, 0)[1](panel);
@@ -86,7 +86,7 @@ extern "C" void func_ov021_021fedac(void *state)
         panel = func_ov000_021fb6e0(panel, data_020f4e14, 0);
 #else
         /* Host symbols must name the overlay that owns the loaded address. */
-        panel = func_ov002_021fb6e0(panel, data_020f4e14, 0);
+        panel = Overlay002_Presentation_Init(panel, data_020f4e14, 0);
 #endif
     }
     FIELD(void *, state, 0x390) = panel;

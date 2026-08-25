@@ -18,7 +18,7 @@ typedef struct Overlay002SelectedIconReleaseState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov002_021fba1c(Overlay002SelectedIconReleaseState *state,
+extern void Overlay002_SetDisplayedValue(Overlay002SelectedIconReleaseState *state,
                                  s32 value);
 #ifdef __cplusplus
 }
@@ -39,7 +39,7 @@ void func_ov002_021fbd64(Overlay002SelectedIconReleaseState *state)
     s16 x;
     s16 y;
 
-    func_ov002_021fba1c(state, state->value_088);
+    Overlay002_SetDisplayedValue(state, state->value_088);
     sprite = state->icon_034[state->selectedIndex_08c];
     y = FIELD(s16, sprite, 0x2e);
     x = FIELD(s16, sprite, 0x2c);

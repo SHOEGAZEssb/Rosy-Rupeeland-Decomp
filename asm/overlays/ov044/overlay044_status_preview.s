@@ -3,7 +3,7 @@
 .extern func_ov044_0220c74c
 .extern func_ov044_0220bd98
 .extern func_ov044_0220bb48
-.extern func_ov001_021fb87c
+.extern Overlay001_PopulatePresentation
 .extern func_ov001_021fb81c
 .extern gDebugFont
 
@@ -31,7 +31,7 @@ func_ov044_0220c80c:
     ldr r0, [r4, #0x22c]
     ldr r1, [r1, #0xc]
     mov r2, #0x0
-    bl func_ov001_021fb87c
+    bl Overlay001_PopulatePresentation
     ldmia sp!, {r4, pc}
 .L_0220c86c:
     ldr r0, [r4, #0x22c]

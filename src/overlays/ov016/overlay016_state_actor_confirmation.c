@@ -17,9 +17,9 @@ extern void SceneSound_StopPackedEffect(void *, s32);
 extern void InventoryScroll_BeginMarkerDrag(void *, s32);
 extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 func_ov000_021fc450(void *);
-extern void func_ov000_021fc460(void *);
+extern void Overlay000_Grid_UpdateTransition(void *);
 extern s32 func_ov000_021fc560(void *, void *);
-extern void func_ov000_021fc714(void *);
+extern void Overlay000_Grid_Render(void *);
 extern void *Overlay000_GetActiveMetadata(void *);
 extern u32 func_ov016_021fe390(void *, void *, void *);
 extern s32 func_ov016_021fe4d0(void *, void *);
@@ -62,7 +62,7 @@ extern "C" s32 func_ov016_02200d5c(void *state)
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
-            func_ov000_021fc460(list);
+            Overlay000_Grid_UpdateTransition(list);
             break;
         }
         /* Completed opening continues directly into state 2. */
@@ -104,7 +104,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
             if (func_ov016_021fe4d0(FIELD(void *, state, 0x470), entry) != 0) {
                 SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, entry, 0x1c)--;
-                func_ov000_021fc714(list);
+                Overlay000_Grid_Render(list);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {
@@ -121,7 +121,7 @@ extern "C" s32 func_ov016_02200e88(void *state)
             if (consumed != 0) {
                 SceneSound_PlayPackedEffect(state, 2);
                 FIELD(s32, entry, 0x1c) -= (u16)consumed;
-                func_ov000_021fc714(list);
+                Overlay000_Grid_Render(list);
                 FIELD(s32, state, 4)++;
                 FIELD(s32, state, 8) = 0;
             } else {

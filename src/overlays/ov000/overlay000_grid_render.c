@@ -47,7 +47,7 @@ extern void func_ov000_021fb6e0(void *surface, s32 value, s32 x, s32 y,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fc714(Overlay000GridRenderState *state)
+void Overlay000_Grid_Render(Overlay000GridRenderState *state)
 {
     s32 row;
 

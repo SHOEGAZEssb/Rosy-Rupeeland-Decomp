@@ -20,7 +20,7 @@ typedef struct Overlay000ViewIndexRecord {
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fcb64(void *owner, Overlay000ViewIndexRecord *output,
+void Overlay000_GetViewRecordFromIndex(void *owner, Overlay000ViewIndexRecord *output,
                          s32 index)
 {
     (void)owner;

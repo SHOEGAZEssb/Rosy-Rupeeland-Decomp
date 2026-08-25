@@ -10,7 +10,7 @@ extern "C" {
 extern void GraphicsSpriteGroup_AdvanceAnimations(void *);
 extern void SpriteMotionController_Update(void *);
 extern void func_02096304(void *);
-extern void func_ov000_021fc164(void *);
+extern void Overlay000_Grid_Update(void *);
 extern void func_ov016_021fd358(void *);
 extern void func_ov016_021fdf50(void *);
 extern void func_ov016_021fe63c(void *);
@@ -40,7 +40,7 @@ extern "C" void func_ov016_021ff7bc(void *state)
         func_ov016_021fdf50(FIELD(void *, state, 0x448));
     }
     if (FIELD(void *, state, 0x44c) != 0) {
-        func_ov000_021fc164(FIELD(void *, state, 0x44c));
+        Overlay000_Grid_Update(FIELD(void *, state, 0x44c));
     }
     if (FIELD(void *, state, 0x470) != 0) {
         func_ov016_021fe63c(FIELD(void *, state, 0x470));

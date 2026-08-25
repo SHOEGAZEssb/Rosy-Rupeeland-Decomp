@@ -1,12 +1,12 @@
     .text
     .extern data_ov014_021fd940
     .extern InventoryRecordCollection_Sort
-    .extern func_ov000_021fc164
+    .extern Overlay000_Grid_Update
     .extern func_ov000_021fc254
     .extern func_ov000_021fc3a4
     .extern func_ov000_021fc614
-    .extern func_ov000_021fc714
-    .extern func_ov000_021fc9d4
+    .extern Overlay000_Grid_Render
+    .extern Overlay000_SyncSelection
     .extern func_ov014_021fce14
 
 /* Exact fallback; see the documented portable reconstruction in
@@ -62,9 +62,9 @@ L_021fd84c:
     ldr r0, [r4, #0x78]
     bl func_ov000_021fc254
     ldr r0, [r4, #0x78]
-    bl func_ov000_021fc714
+    bl Overlay000_Grid_Render
     ldr r0, [r4, #0x78]
-    bl func_ov000_021fc9d4
+    bl Overlay000_SyncSelection
     ldr r1, L_021fd898
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -73,7 +73,7 @@ L_021fd880:
     ldr r0, [r4, #0x78]
     cmp r0, #0x0
     beq L_021fd890
-    bl func_ov000_021fc164
+    bl Overlay000_Grid_Update
 L_021fd890:
     mov r0, #0x0
     ldmia sp!, {r4, pc}

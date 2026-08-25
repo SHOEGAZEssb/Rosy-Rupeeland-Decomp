@@ -60,7 +60,7 @@ static void overlay003_set_pixel(u8 *pixels, s32 x, s32 y, u32 color,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov003_021fbaa0(void *pixels, s32 x, s32 y, u32 centerColor,
+void Overlay003_DrawRandomizedStamp(void *pixels, s32 x, s32 y, u32 centerColor,
                           u32 neighborColor)
 {
     Overlay003StampOffset *offset;

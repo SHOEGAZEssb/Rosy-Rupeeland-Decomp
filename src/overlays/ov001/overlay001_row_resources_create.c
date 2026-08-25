@@ -46,7 +46,7 @@ extern void GraphicsSpriteState_ApplyRenderConfig(void *resource, s32 value, s32
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov001_021fc4b4(Overlay001RowResourcesState *state, s32 row)
+void Overlay001_CreateRowResources(Overlay001RowResourcesState *state, s32 row)
 {
     s32 column;
 

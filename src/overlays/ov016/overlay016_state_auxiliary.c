@@ -21,13 +21,13 @@ extern s32 func_ov000_021fc298(void *, void *);
 extern void func_ov000_021fc3f8(void *);
 extern s32 func_ov000_021fc424(void *);
 extern s32 func_ov000_021fc450(void *);
-extern void func_ov000_021fc460(void *);
+extern void Overlay000_Grid_UpdateTransition(void *);
 extern s32 func_ov000_021fc4fc(void *);
 extern s32 func_ov000_021fc528(void *);
 extern s32 func_ov000_021fc538(void *);
 extern s32 func_ov000_021fc5ac(void *, void *);
-extern void func_ov000_021fc9d4(void *);
-extern void func_ov000_021fca4c(void *, s32);
+extern void Overlay000_SyncSelection(void *);
+extern void Overlay000_SetSelection(void *, s32);
 extern void *Overlay000_GetActiveMetadata(void *);
 extern s32 func_ov000_021fcb98(void *, void *);
 extern s32 func_ov000_021fcc18(void *, void *);
@@ -74,7 +74,7 @@ extern "C" s32 func_ov016_02200900(void *state)
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else {
-            func_ov000_021fc460(list);
+            Overlay000_Grid_UpdateTransition(list);
             break;
         }
         /* Completed opening continues directly into state 2. */
@@ -104,8 +104,8 @@ extern "C" s32 func_ov016_02200900(void *state)
                         }
                     } else {
                         SceneSound_PlayPackedEffect(state, 0);
-                        func_ov000_021fca4c(list, selected);
-                        func_ov000_021fc9d4(list);
+                        Overlay000_SetSelection(list, selected);
+                        Overlay000_SyncSelection(list);
                         func_ov016_021ffc2c(state);
                     }
                 } else if (func_ov000_021fc5ac(list,

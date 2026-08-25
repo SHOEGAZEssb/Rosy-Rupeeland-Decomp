@@ -15,7 +15,7 @@ typedef struct Overlay002ValueClearState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov002_021fba1c(Overlay002ValueClearState *state, s32 value);
+extern void Overlay002_SetDisplayedValue(Overlay002ValueClearState *state, s32 value);
 #ifdef __cplusplus
 }
 #endif
@@ -32,5 +32,5 @@ void func_ov002_021fbe68(Overlay002ValueClearState *state)
 {
     state->enabled_090 = 0;
     state->value_088 = 0;
-    func_ov002_021fba1c(state, 0);
+    Overlay002_SetDisplayedValue(state, 0);
 }

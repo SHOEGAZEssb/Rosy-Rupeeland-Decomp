@@ -11,8 +11,8 @@
     .extern SpriteMotionController_Update
     .extern SpriteMotionController_SetAnimation
     .extern func_ov001_021fb81c
-    .extern func_ov001_021fb87c
-    .extern func_ov001_021fbf7c
+    .extern Overlay001_PopulatePresentation
+    .extern Overlay001_Grid_Update
     .extern func_ov001_021fc7e4
     .extern gDebugFont
     .extern gSystemState
@@ -28,7 +28,7 @@ Overlay015_UpdateRecords:
     ldr r0, [r4, #0xdc]
     cmp r0, #0x0
     beq L_021fd6a4
-    bl func_ov001_021fbf7c
+    bl Overlay001_Grid_Update
 L_021fd6a4:
     add r5, r4, #0xfc
     mov r6, #0x0
@@ -148,7 +148,7 @@ L_021fd854:
     cmp r1, #0x0
     beq L_021fd87c
     mov r2, #0x1
-    bl func_ov001_021fb87c
+    bl Overlay001_PopulatePresentation
     ldr r0, [r6, #0x4c]
     orr r0, r0, #0x2
     str r0, [r6, #0x4c]

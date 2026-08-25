@@ -28,7 +28,7 @@ extern void func_020b4554(void *address, u32 size);
 #ifdef __cplusplus
 extern "C"
 #endif
-u16 *func_ov003_021fb804(void *owner, u16 paletteBank)
+u16 *Overlay003_CreateTilemap(void *owner, u16 paletteBank)
 {
     u16 *map;
     s32 i;

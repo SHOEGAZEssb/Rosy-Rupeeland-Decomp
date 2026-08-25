@@ -2,8 +2,8 @@
     .extern func_020befec
     .extern IndexedSelectionController_SetValue
     .extern InventoryScroll_SetSelectedRow
-    .global func_ov000_021fca4c
-func_ov000_021fca4c:
+    .global Overlay000_SetSelection
+Overlay000_SetSelection:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r1
     mov r4, r0
@@ -30,4 +30,4 @@ func_ov000_021fca4c:
     movne r0, #0x0
     strne r0, [r4, #0x1c]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov000_021fca4c, .-func_ov000_021fca4c
+    .size Overlay000_SetSelection, .-Overlay000_SetSelection

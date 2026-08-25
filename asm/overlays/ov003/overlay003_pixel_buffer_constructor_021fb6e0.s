@@ -7,8 +7,8 @@
     .extern func_020bf1f8
     .extern data_ov003_021fbb40
     .extern func_ov003_021fb7c0
-    .global func_ov003_021fb6e0
-func_ov003_021fb6e0: ; 0x021fb6e0
+    .global Overlay003_PixelBuffer_Init
+Overlay003_PixelBuffer_Init: ; 0x021fb6e0
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     ldr r1, L_021fb7b4
@@ -68,5 +68,5 @@ L_021fb79c:
 L_021fb7b4: .word data_ov003_021fbcd0
 L_021fb7b8: .word gHeapContext
 L_021fb7bc: .word data_ov003_021fbb40
-    .size func_ov003_021fb6e0, .-func_ov003_021fb6e0
+    .size Overlay003_PixelBuffer_Init, .-Overlay003_PixelBuffer_Init
 

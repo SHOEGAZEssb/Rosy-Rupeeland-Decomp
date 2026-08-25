@@ -4,8 +4,8 @@
     .extern func_ov000_021fc834
     .extern InventoryRecord_CanMergeQuantity
     .extern func_ov000_021fb6e0
-    .global func_ov000_021fc714
-func_ov000_021fc714:
+    .global Overlay000_Grid_Render
+Overlay000_Grid_Render:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     mov r10, r0
@@ -83,4 +83,4 @@ L_021fc820:
     blt L_021fc758
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
-    .size func_ov000_021fc714, .-func_ov000_021fc714
+    .size Overlay000_Grid_Render, .-Overlay000_Grid_Render

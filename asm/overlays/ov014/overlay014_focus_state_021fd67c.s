@@ -4,9 +4,9 @@
     .extern SceneSound_StopPackedEffect
     .extern InventoryScroll_BeginMarkerDrag
     .extern InventoryScroll_EndMarkerDrag
-    .extern func_ov000_021fc164
+    .extern Overlay000_Grid_Update
     .extern func_ov000_021fc450
-    .extern func_ov000_021fc460
+    .extern Overlay000_Grid_UpdateTransition
     .extern func_ov000_021fc560
     .extern func_ov014_021fce14
     .extern func_ov014_021fd2f8
@@ -64,7 +64,7 @@ L_021fd710:
     b L_021fd734
 L_021fd728:
     ldr r0, [r5, #0x78]
-    bl func_ov000_021fc460 ; func_ov001_021fc460
+    bl Overlay000_Grid_UpdateTransition ; func_ov001_021fc460
     b L_021fd798
 L_021fd734:
     ldr r0, [r5, #0x20]
@@ -97,7 +97,7 @@ L_021fd798:
     ldr r0, [r5, #0x78]
     cmp r0, #0x0
     beq L_021fd7a8
-    bl func_ov000_021fc164
+    bl Overlay000_Grid_Update
 L_021fd7a8:
     mov r0, #0x0
     ldmia sp!, {r3, r4, r5, pc}

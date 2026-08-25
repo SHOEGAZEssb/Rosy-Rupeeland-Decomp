@@ -45,7 +45,7 @@ extern void func_ov001_021fc068(Overlay001ActiveCellTransferState *state);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov001_021fc88c(Overlay001ActiveCellTransferState *state)
+void Overlay001_TransferActiveCell(Overlay001ActiveCellTransferState *state)
 {
     void *metadata =
         (u8 *)state->metadata_20c + state->activeIndex_1ac * 0x20;

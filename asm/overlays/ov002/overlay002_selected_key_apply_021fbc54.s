@@ -1,10 +1,10 @@
     .text
     .extern func_020befec
-    .extern func_ov002_021fba1c
+    .extern Overlay002_SetDisplayedValue
     .extern gSoundContext
     .extern Sound_Play
-    .global func_ov002_021fbc54
-func_ov002_021fbc54: ; 0x021fbc54
+    .global Overlay002_ApplySelectedKey
+Overlay002_ApplySelectedKey: ; 0x021fbc54
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x8c]
@@ -44,7 +44,7 @@ L_021fbcbc:
     strgt r1, [r4, #0x88]
     ldr r1, [r4, #0x88]
     mov r0, r4
-    bl func_ov002_021fba1c
+    bl Overlay002_SetDisplayedValue
     ldr r0, L_021fbd60
     mov r1, #0x79
     ldr r0, [r0, #0x0]
@@ -59,7 +59,7 @@ L_021fbd04:
     str r0, [r4, #0x88]
     mov r1, r0
     mov r0, r4
-    bl func_ov002_021fba1c
+    bl Overlay002_SetDisplayedValue
     ldr r0, L_021fbd60
     mov r1, #0x79
     ldr r0, [r0, #0x0]
@@ -71,7 +71,7 @@ L_021fbd3c:
     mov r1, #0x0
     str r1, [r4, #0x90]
     str r1, [r4, #0x88]
-    bl func_ov002_021fba1c
+    bl Overlay002_SetDisplayedValue
     mov r0, #0x1
     ldmia sp!, {r4, pc}
 L_021fbd54:
@@ -79,5 +79,5 @@ L_021fbd54:
     ldmia sp!, {r4, pc}
 L_021fbd5c: .word 0xf4240
 L_021fbd60: .word gSoundContext
-    .size func_ov002_021fbc54, .-func_ov002_021fbc54
+    .size Overlay002_ApplySelectedKey, .-Overlay002_ApplySelectedKey
 

@@ -6,13 +6,13 @@
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern GraphicsSpriteGroup_CreateStateFromSource
     .extern GraphicsSpriteState_ApplyRenderConfig
-    .extern func_ov002_021fba1c
+    .extern Overlay002_SetDisplayedValue
     .extern data_ov002_021fbe80
     .extern data_ov002_021fbea0
     .extern gSoundContext
     .extern Sound_LoadGroup
-    .global func_ov002_021fb6e0
-func_ov002_021fb6e0: ; 0x021fb6e0
+    .global Overlay002_Presentation_Init
+Overlay002_Presentation_Init: ; 0x021fb6e0
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -128,7 +128,7 @@ L_021fb7d0:
     bl GraphicsSpriteState_ApplyRenderConfig
     mov r0, r10
     ldr r1, [r10, #0x88]
-    bl func_ov002_021fba1c
+    bl Overlay002_SetDisplayedValue
     ldr r0, [r10, #0x14]
     add r1, r10, #0x4
     mov r2, #0x1
@@ -201,5 +201,5 @@ L_021fb9b4: .word data_020f4e18
 L_021fb9b8: .word data_ov002_021fbe80
 L_021fb9bc: .word data_ov002_021fbea0
 L_021fb9c0: .word gSoundContext
-    .size func_ov002_021fb6e0, .-func_ov002_021fb6e0
+    .size Overlay002_Presentation_Init, .-Overlay002_Presentation_Init
 

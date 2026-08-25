@@ -4,7 +4,7 @@
     .extern GamePhaseCurrencyHud_SetVisible
     .extern SceneSound_PlayPackedEffect
     .extern func_ov002_021fbdc0
-    .extern func_ov002_021fbe08
+    .extern Overlay002_UpdateFooterAnimation
     .extern func_ov002_021fbe60
     .extern func_ov019_021fce00
     .extern func_ov019_021fd170
@@ -38,7 +38,7 @@ L_021fd1d8:
     str r0, [r4, #0x8]
 L_021fd214:
     ldr r0, [r4, #0x5c]
-    bl func_ov002_021fbe08
+    bl Overlay002_UpdateFooterAnimation
     cmp r0, #0x0
     beq L_021fd24c
     ldr r1, L_021fd270

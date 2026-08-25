@@ -11,7 +11,7 @@ extern "C" {
 extern void func_ov000_021fc59c(void *);
 extern void func_ov000_021fc5c4(void *);
 extern void func_ov000_021fc5ec(void *);
-extern void func_ov000_021fc164(void *);
+extern void Overlay000_Grid_Update(void *);
 extern void func_ov014_021fce14(void *, s32, s32, s32);
 #ifdef __cplusplus
 }
@@ -36,7 +36,7 @@ s32 func_ov014_021fd350(void *state)
     return 0;
 }
 
-/* If subordinate +0x78 is non-null, dispatch func_ov000_021fc164 on it; always return one. */
+/* If subordinate +0x78 is non-null, dispatch Overlay000_Grid_Update on it; always return one. */
 #ifdef __cplusplus
 extern "C"
 #endif
@@ -44,7 +44,7 @@ s32 func_ov014_021fd89c(void *state)
 {
     void *subordinate = FIELD(void *, state, 0x78);
     if (subordinate != 0)
-        func_ov000_021fc164(subordinate);
+        Overlay000_Grid_Update(subordinate);
     return 1;
 }
 

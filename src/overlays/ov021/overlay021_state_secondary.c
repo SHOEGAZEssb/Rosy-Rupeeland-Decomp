@@ -35,14 +35,14 @@ extern void SpriteMotionController_Show(void *);
 extern void func_ov001_021fc1f0(void *);
 extern s32 func_ov001_021fc214(void *);
 extern s32 func_ov001_021fc240(void *);
-extern s32 func_ov001_021fc250(void *);
+extern s32 Overlay001_Grid_UpdateTransition(void *);
 extern s32 func_ov001_021fc2e4(void *);
 extern s32 func_ov001_021fc310(void *);
 extern s32 func_ov001_021fc320(void *);
 extern s32 func_ov001_021fc3c4(void *, void *);
 extern s32 func_ov001_021fc3ec(void *, void *);
-extern void func_ov001_021fc644(void *);
-extern void func_ov001_021fc758(void *, s32);
+extern void Overlay001_SyncSelection(void *);
+extern void Overlay001_SetSelection(void *, s32);
 extern void *func_ov001_021fc7e4(void *);
 extern s32 func_ov001_021fcae0(void *, s32);
 extern s32 func_ov001_021fcbf0(void *, void *);
@@ -99,7 +99,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
         if (func_ov001_021fc240(FIELD(void *, state, 0x358)) != 0) {
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
-        } else if (func_ov001_021fc250(FIELD(void *, state, 0x358)) != 0) {
+        } else if (Overlay001_Grid_UpdateTransition(FIELD(void *, state, 0x358)) != 0) {
             func_ov021_021ff644(state);
         }
         break;
@@ -119,8 +119,8 @@ extern "C" s32 func_ov021_02201ba8(void *state)
                 if (row >= 0) {
                     SceneSound_PlayPackedEffect(state, 0);
                     if (row != FIELD(s32, widget, 0x1ac)) {
-                        func_ov001_021fc758(widget, row);
-                        func_ov001_021fc644(widget);
+                        Overlay001_SetSelection(widget, row);
+                        Overlay001_SyncSelection(widget);
                         func_ov021_021ff644(state);
                     }
                     break;

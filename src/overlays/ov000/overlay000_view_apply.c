@@ -24,10 +24,10 @@ extern void InventoryScroll_SetFirstVisibleRow(void *controller, s32 value);
 extern void InventoryScroll_SetSelectedRow(void *controller, s32 value);
 extern void InventoryScroll_UpdatePresentation(void *controller);
 extern void IndexedSelectionController_SetValue(void *embeddedState, s32 value);
-extern void func_ov000_021fc340(Overlay000ViewApplyState *state, s32 scrollY);
+extern void Overlay000_Grid_Scroll(Overlay000ViewApplyState *state, s32 scrollY);
 extern void func_ov000_021fc254(Overlay000ViewApplyState *state);
-extern void func_ov000_021fc9d4(Overlay000ViewApplyState *state);
-extern void func_ov000_021fc714(Overlay000ViewApplyState *state);
+extern void Overlay000_SyncSelection(Overlay000ViewApplyState *state);
+extern void Overlay000_Grid_Render(Overlay000ViewApplyState *state);
 #ifdef __cplusplus
 }
 #endif
@@ -49,8 +49,8 @@ void func_ov000_021fcae8(Overlay000ViewApplyState *state,
     InventoryScroll_SetSelectedRow(state->controller_26c, record->field_08);
     InventoryScroll_UpdatePresentation(state->controller_26c);
     IndexedSelectionController_SetValue(state->embedded_270, record->field_04);
-    func_ov000_021fc340(state, scrollY);
+    Overlay000_Grid_Scroll(state, scrollY);
     func_ov000_021fc254(state);
-    func_ov000_021fc9d4(state);
-    func_ov000_021fc714(state);
+    Overlay000_SyncSelection(state);
+    Overlay000_Grid_Render(state);
 }

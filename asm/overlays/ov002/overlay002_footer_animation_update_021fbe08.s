@@ -2,8 +2,8 @@
     .extern func_02091c7c
     .extern func_02091cf0
     .extern GraphicsSpriteState_SetAnimationIndex
-    .global func_ov002_021fbe08
-func_ov002_021fbe08: ; 0x021fbe08
+    .global Overlay002_UpdateFooterAnimation
+Overlay002_UpdateFooterAnimation: ; 0x021fbe08
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r4, #0x98
@@ -26,4 +26,4 @@ func_ov002_021fbe08: ; 0x021fbe08
     bl GraphicsSpriteState_SetAnimationIndex
     mov r0, #0x1
     ldmia sp!, {r4, pc}
-    .size func_ov002_021fbe08, .-func_ov002_021fbe08
+    .size Overlay002_UpdateFooterAnimation, .-Overlay002_UpdateFooterAnimation

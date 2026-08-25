@@ -61,7 +61,7 @@ extern void func_ov001_021fb81c(void *state, s32 startAnimation);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov001_021fb87c(Overlay001PresentationPopulateState *state,
+void Overlay001_PopulatePresentation(Overlay001PresentationPopulateState *state,
                          void *record, s32 createDetail)
 {
     void *resource;

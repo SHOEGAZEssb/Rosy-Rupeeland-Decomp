@@ -50,9 +50,9 @@ extern void *func_ov014_021fce3c(void *scene,
 extern void *func_ov015_021fce58(void *scene,
                                 const InventoryViewState *state,
                                 s32 soundMode);
-extern void func_ov000_021fcb4c(InventoryViewState *output,
+extern void Overlay000_CaptureViewState(InventoryViewState *output,
                                 const void *view);
-extern void func_ov001_021fca94(InventoryViewState *output,
+extern void Overlay001_CaptureViewState(InventoryViewState *output,
                                 const void *view);
 #ifdef __cplusplus
 }
@@ -221,13 +221,13 @@ s32 InventoryScene_UpdateInput(void *scene)
 
             if (GameWork_TestFlag(gGameWork, 0x387)) {
                 InventoryViewState captured;
-                func_ov001_021fca94(&captured,
+                Overlay001_CaptureViewState(&captured,
                                     FIELD(void *, child, 0xdc));
                 InventoryViewState_Copy(
                     (InventoryViewState *)((u8 *)scene + 0x7c), &captured);
             } else {
                 InventoryViewState captured;
-                func_ov000_021fcb4c(&captured,
+                Overlay000_CaptureViewState(&captured,
                                     FIELD(void *, child, 0x78));
                 InventoryViewState_Copy(
                     (InventoryViewState *)((u8 *)scene + 0x70), &captured);

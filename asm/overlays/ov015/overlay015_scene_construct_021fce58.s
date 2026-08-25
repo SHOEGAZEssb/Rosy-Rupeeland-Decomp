@@ -27,10 +27,10 @@
     .extern SpriteMotionController_BindSprite
     .extern func_020afd0c
     .extern func_ov001_021fb6f8
-    .extern func_ov001_021fbabc
+    .extern Overlay001_Grid_Init
     .extern func_ov001_021fc7c0
     .extern func_ov001_021fca38
-    .extern func_ov001_021fcaac
+    .extern Overlay001_GetViewRecordFromIndex
     .extern func_ov015_021fce00
     .extern func_ov015_021fce14
     .extern func_ov015_021fce18
@@ -128,7 +128,7 @@ L_021fcf58:
     beq L_021fcf94
     ldr r1, L_021fd21c
     ldr r1, [r1, #0x0]
-    bl func_ov001_021fbabc
+    bl Overlay001_Grid_Init
 L_021fcf94:
     str r0, [r10, #0xdc]
     ldr r0, [r10, #0xec]
@@ -171,7 +171,7 @@ L_021fd008:
     mov r2, r8
     add r1, r10, #0xe0
     mov r6, r8
-    bl func_ov001_021fcaac
+    bl Overlay001_GetViewRecordFromIndex
     b L_021fd060
 L_021fd038:
     mov r0, r9
@@ -198,7 +198,7 @@ L_021fd064:
     blt L_021fd090
     mov r2, r7
     add r1, r10, #0xe0
-    bl func_ov001_021fcaac
+    bl Overlay001_GetViewRecordFromIndex
 L_021fd090:
     ldr r0, [r10, #0xdc]
     add r1, r10, #0xe0

@@ -38,9 +38,9 @@ extern void InventoryScroll_EndMarkerDrag(void *, s32);
 extern s32 InventoryScroll_UpdateSelectionMovement(void *);
 extern void InventoryScroll_ResetPresentationState(void *);
 extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
-extern s32 func_ov000_021fc460(void *);
+extern s32 Overlay000_Grid_UpdateTransition(void *);
 extern s32 func_ov000_021fc560(void *, void *);
-extern s32 func_ov001_021fc250(void *);
+extern s32 Overlay001_Grid_UpdateTransition(void *);
 extern s32 func_ov001_021fc348(void *, void *);
 extern void func_ov021_021fd224(void *);
 extern void func_ov021_021fd490(void *);
@@ -220,11 +220,11 @@ extern "C" s32 func_ov021_022000f0(void *state)
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         } else if (primary != 0) {
-            if (func_ov000_021fc460(primary) != 0)
+            if (Overlay000_Grid_UpdateTransition(primary) != 0)
                 func_ov021_021ff5b8(state);
             break;
         } else if (secondary != 0) {
-            if (func_ov001_021fc250(secondary) != 0)
+            if (Overlay001_Grid_UpdateTransition(secondary) != 0)
                 func_ov021_021ff644(state);
             break;
         } else {

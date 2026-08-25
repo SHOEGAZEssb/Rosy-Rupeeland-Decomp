@@ -46,7 +46,7 @@ extern s32 func_ov000_021fc834(const void *metadata, s32 mask);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov000_021fc84c(Overlay000RowResourcesState *state, s32 row)
+void Overlay000_CreateRowResources(Overlay000RowResourcesState *state, s32 row)
 {
     s32 column;
 

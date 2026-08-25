@@ -21,7 +21,7 @@ extern "C" void GraphicsSpriteRenderer_DrawText(void *font, const void *text, s3
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void *func_ov044_0220bd98(void *panel);
 extern "C" u32 func_ov044_0220bb48(void *record, u32 mask);
-extern "C" void func_ov001_021fb87c(void *preview, void *item, s32 mode);
+extern "C" void Overlay001_PopulatePresentation(void *preview, void *item, s32 mode);
 extern "C" void func_ov001_021fb81c(void *preview, s32 mode);
 
 /*
@@ -57,7 +57,7 @@ extern "C" void func_ov044_0220c80c(void *object)
         void *record = func_ov044_0220bd98(panel);
         if (!func_ov044_0220bb48(record, 1)) {
             record = func_ov044_0220bd98(panel);
-            func_ov001_021fb87c(FIELD(void *, object, 0x22c),
+            Overlay001_PopulatePresentation(FIELD(void *, object, 0x22c),
                                 FIELD(void *, record, 0xc), 0);
             return;
         }

@@ -12,7 +12,7 @@ typedef struct Overlay003LineState {
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov003_021fbaa0(void *pixels, s32 x, s32 y, s32 delta,
+extern void Overlay003_DrawRandomizedStamp(void *pixels, s32 x, s32 y, s32 delta,
                                 s32 yEnd, u32 value, u32 blend);
 #ifdef __cplusplus
 }
@@ -32,7 +32,7 @@ extern void func_ov003_021fbaa0(void *pixels, s32 x, s32 y, s32 delta,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov003_021fb8ac(Overlay003LineState *state, s32 x0, s32 y0, s32 x1,
+void Overlay003_RasterizeLine(Overlay003LineState *state, s32 x0, s32 y0, s32 x1,
                           s32 y1, u32 value, u32 blend)
 {
     s32 dx = x1 - x0;
@@ -56,7 +56,7 @@ void func_ov003_021fb8ac(Overlay003LineState *state, s32 x0, s32 y0, s32 x1,
         while (count-- != 0) {
             s32 i;
             for (i = 0; i < 5; i++) {
-                func_ov003_021fbaa0(state->pixels_000, x0, y0, dx, y1,
+                Overlay003_DrawRandomizedStamp(state->pixels_000, x0, y0, dx, y1,
                                     value, blend);
             }
             x0 += stepX;
@@ -72,7 +72,7 @@ void func_ov003_021fb8ac(Overlay003LineState *state, s32 x0, s32 y0, s32 x1,
         while (count-- != 0) {
             s32 i;
             for (i = 0; i < 5; i++) {
-                func_ov003_021fbaa0(state->pixels_000, x0, y0, dx, y1,
+                Overlay003_DrawRandomizedStamp(state->pixels_000, x0, y0, dx, y1,
                                     value, blend);
             }
             y0 += stepY;

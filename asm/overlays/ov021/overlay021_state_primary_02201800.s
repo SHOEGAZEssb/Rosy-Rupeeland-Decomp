@@ -9,7 +9,7 @@
     .extern func_02062ca8
     .extern DisplayBrightness_StartMaskedTransitions
     .extern TitleDialog_ClearTextRect
-    .extern func_ov000_021fc714
+    .extern Overlay000_Grid_Render
     .extern Overlay000_GetActiveMetadata
     .extern func_ov021_021fd7c0
     .extern func_ov021_021fea68
@@ -46,7 +46,7 @@ L_02201830:
     sub r1, r1, #0x1
     str r1, [r0, #0x1c]
     ldr r0, [r4, #0x354]
-    bl func_ov000_021fc714
+    bl Overlay000_Grid_Render
     ldr r0, [r4, #0x2bc]
     bl func_ov021_021ffa10
     cmp r0, #0x0

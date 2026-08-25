@@ -1,10 +1,10 @@
-func_ov003_021fb6e0 kind:function(arm,size=0xe0) addr:0x021fb6e0
+Overlay003_PixelBuffer_Init kind:function(arm,size=0xe0) addr:0x021fb6e0
 func_ov003_021fb7c0 kind:function(arm,size=0x14) addr:0x021fb7c0
 func_ov003_021fb7d4 kind:function(arm,size=0x18) addr:0x021fb7d4
 func_ov003_021fb7ec kind:function(arm,size=0x18) addr:0x021fb7ec
-func_ov003_021fb804 kind:function(arm,size=0xa8) addr:0x021fb804
-func_ov003_021fb8ac kind:function(arm,size=0xb4) addr:0x021fb8ac
-func_ov003_021fbaa0 kind:function(arm,size=0x94) addr:0x021fbaa0
+Overlay003_CreateTilemap kind:function(arm,size=0xa8) addr:0x021fb804
+Overlay003_RasterizeLine kind:function(arm,size=0xb4) addr:0x021fb8ac
+Overlay003_DrawRandomizedStamp kind:function(arm,size=0x94) addr:0x021fbaa0
 data_ov003_021fbb40 kind:data(any) addr:0x021fbb40
 data_ov003_021fbcd0 kind:data(any) addr:0x021fbcd0
 data_ov003_021fbcd8 kind:data(any) addr:0x021fbcd8

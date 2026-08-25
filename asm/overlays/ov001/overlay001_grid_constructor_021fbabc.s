@@ -27,8 +27,8 @@
     .extern CxxArray_ConstructWithCookie
     .extern func_ov001_021fc404
     .extern gHeapContext
-    .global func_ov001_021fbabc
-func_ov001_021fbabc: ; 0x021fbabc
+    .global Overlay001_Grid_Init
+Overlay001_Grid_Init: ; 0x021fbabc
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -271,4 +271,4 @@ L_021fbe5c: .word gHeapContext
 L_021fbe60: .word InventoryCell_Init
 L_021fbe64: .word InventoryCell_Destroy
 L_021fbe68: .word data_ov001_021fcc98
-    .size func_ov001_021fbabc, .-func_ov001_021fbabc
+    .size Overlay001_Grid_Init, .-Overlay001_Grid_Init

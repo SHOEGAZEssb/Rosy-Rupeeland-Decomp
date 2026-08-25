@@ -30,7 +30,7 @@ extern void TitlePalette_SetMainBackdrop(s32);
 extern void DisplayBrightness_StartMaskedTransitions(s32, s32);
 extern void TitleDialog_ClearTextRect(void *);
 extern void func_ov002_021fbdc0(void *);
-extern s32 func_ov002_021fbe08(void *);
+extern s32 Overlay002_UpdateFooterAnimation(void *);
 extern s32 func_ov002_021fbe60(void *);
 extern void func_ov021_021fd1cc(void *);
 extern u32 func_ov021_021fd1b8(const void *);
@@ -298,7 +298,7 @@ extern "C" s32 func_ov021_02200840(void *state)
         FIELD(s32, state, 8) = 0;
         break;
     case 3:
-        if (func_ov002_021fbe08(FIELD(void *, state, 0x390)) != 0 &&
+        if (Overlay002_UpdateFooterAnimation(FIELD(void *, state, 0x390)) != 0 &&
             DisplayBrightness_IsMainTransitionComplete() != 0) {
             SceneSound_PlayPackedEffect(state, 0x3c84);
             FIELD(s32, state, 0x3fc) = 0;

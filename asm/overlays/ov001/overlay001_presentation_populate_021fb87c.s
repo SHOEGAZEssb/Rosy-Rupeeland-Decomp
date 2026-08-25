@@ -20,8 +20,8 @@
     .extern ActorDescriptorComponent_GetAnimation
     .extern gSystemState
     .extern data_020f4e18
-    .global func_ov001_021fb87c
-func_ov001_021fb87c: ; 0x021fb87c
+    .global Overlay001_PopulatePresentation
+Overlay001_PopulatePresentation: ; 0x021fb87c
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0xc
     movs r5, r1
@@ -163,4 +163,4 @@ L_021fba98:
     ldmia sp!, {r4, r5, r6, r7, pc}
 L_021fbaa0: .word gSystemState
 L_021fbaa4: .word data_020f4e18
-    .size func_ov001_021fb87c, .-func_ov001_021fb87c
+    .size Overlay001_PopulatePresentation, .-Overlay001_PopulatePresentation
