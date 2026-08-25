@@ -7803,21 +7803,21 @@ build build/reports/game_phase_script_vm_0201da20.json: objdiff build/decomp/del
   base_object = build/decomp/asm/game/game_phase_script_vm_0201da20.o
 build build/reports/game_phase_script_vm_0201da20.txt: match_report build/reports/game_phase_script_vm_0201da20.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201da20.json
-  report_args = --section .text --function func_0201da20 --require-exact
+  report_args = --section .text --function LanguageDatabase_GetRecordByIdIgnoringCollectionMode --require-exact
 
 build build/reports/game_phase_script_vm_0201da34.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201da34.o | build/decomp/asm/game/game_phase_script_vm_0201da34.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201da34.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201da34.o
 build build/reports/game_phase_script_vm_0201da34.txt: match_report build/reports/game_phase_script_vm_0201da34.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201da34.json
-  report_args = --section .text --function func_0201da34 --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation --require-exact
 
 build build/reports/game_phase_script_vm_0201da9c.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201da9c.o | build/decomp/asm/game/game_phase_script_vm_0201da9c.o
   target_object = build/decomp/delinks/asm/game/game_phase_script_vm_0201da9c.o
   base_object = build/decomp/asm/game/game_phase_script_vm_0201da9c.o
 build build/reports/game_phase_script_vm_0201da9c.txt: match_report build/reports/game_phase_script_vm_0201da9c.json | tools/report_objdiff.py
   report_json = build/reports/game_phase_script_vm_0201da9c.json
-  report_args = --section .text --function func_0201da9c --require-exact
+  report_args = --section .text --function GamePhaseActorScriptVm_CreateOverlay60PresentationObject --require-exact
 
 build build/reports/overlay60_object_spawn.txt: phony build/reports/game_phase_script_vm_0201d9e4.txt build/reports/game_phase_script_vm_0201da20.txt build/reports/game_phase_script_vm_0201da34.txt build/reports/game_phase_script_vm_0201da9c.txt
 build build/reports/game_phase_script_vm_0201dbc8.json: objdiff build/decomp/delinks/asm/game/game_phase_script_vm_0201dbc8.o | build/decomp/asm/game/game_phase_script_vm_0201dbc8.o

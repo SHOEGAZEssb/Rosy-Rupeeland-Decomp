@@ -5,8 +5,8 @@
 .extern DebugHudState_GetGlobal
 .extern GamePhaseScriptVm_Pop
 .extern DisplayRouting_MatchesRequest
-.extern func_0201da20
-.extern func_0201da34
+.extern LanguageDatabase_GetRecordByIdIgnoringCollectionMode
+.extern GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
 .extern Actor_GetOwningCollection
 
     .global GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode
@@ -23,13 +23,13 @@ GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode: ; 0x02015610
     bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_0201da34
+    bl GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
     ldr r0, [r5, #0x84]
     bl Actor_GetOwningCollection
     mov r1, r4
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
-    bl func_0201da20
+    bl LanguageDatabase_GetRecordByIdIgnoringCollectionMode
     mov r5, r0
     mov r0, r6
     bl DisplayRouting_MatchesRequest
@@ -44,4 +44,3 @@ GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode: ; 0x02015610
     mov r0, #0x1
     ldmia sp!, {r4, r5, r6, pc}
     .size GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode, . - GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode
-

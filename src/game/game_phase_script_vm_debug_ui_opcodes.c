@@ -6,20 +6,22 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_0201da34(GamePhaseActorScriptVm *self);
+extern void GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation(
+    GamePhaseActorScriptVm *self);
 extern void *Actor_GetOwningCollection(void *actor);
-extern void *func_0201da20(u32 mode, u32 value);
+extern void *LanguageDatabase_GetRecordByIdIgnoringCollectionMode(
+    u32 mode, u32 value);
 extern void *DisplayRouting_MatchesRequest(u32 value);
-extern void func_0201da9c(GamePhaseActorScriptVm *self,
-                         u32 first, u32 second, u32 third,
-                         s32 fourth, s32 fifth);
+extern void GamePhaseActorScriptVm_CreateOverlay60PresentationObject(
+    GamePhaseActorScriptVm *self, u32 first, u32 second, u32 third,
+    s32 fourth, s32 fifth);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Pop and discard two operands, then pop lookup and value operands. Let
- * func_0201da34 consume/update VM-side state, resolve the value through the
+ * the overlay-60 sprite helper consume/update VM-side state, resolve the value through the
  * bound collection's mode at 0x2e84 and the lookup through DisplayRouting_MatchesRequest,
  * refresh the global debug-HUD rectangle, and open the HUD with font reset
  * enabled. Returns one to stop the VM loop.
@@ -35,9 +37,9 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm
         u32 lookup = GamePhaseScriptVm_Pop(&self->base);
         u32 value = GamePhaseScriptVm_Pop(&self->base);
         u8 *collection;
-        func_0201da34(self);
+        GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation(self);
         collection = (u8 *)Actor_GetOwningCollection(self->actor);
-        hudResource = func_0201da20(
+        hudResource = LanguageDatabase_GetRecordByIdIgnoringCollectionMode(
             *(u32 *)(collection + 0x2e84), value);
         displayRoute = DisplayRouting_MatchesRequest(lookup);
     }
@@ -50,20 +52,22 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm
 
 /*
  * Submit the fixed ID tuple 0x136f/0x1370/0x1371 and values 0x79/0x7a to
- * func_0201da9c for this VM, then return zero.
+ * the overlay-60 presentation factory for this VM, then return zero.
  */
 s32 GamePhaseActorScriptVm_CreateOverlay60PresentationPreset136f(GamePhaseActorScriptVm *self)
 {
-    func_0201da9c(self, 0x136f, 0x1370, 0x1371, 0x79, 0x7a);
+    GamePhaseActorScriptVm_CreateOverlay60PresentationObject(
+        self, 0x136f, 0x1370, 0x1371, 0x79, 0x7a);
     return 0;
 }
 
 /*
  * Submit the fixed ID tuple 0x1372/0x1373/0x1374 and two -1 values to
- * func_0201da9c for this VM, then return zero.
+ * the overlay-60 presentation factory for this VM, then return zero.
  */
 s32 GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372(GamePhaseActorScriptVm *self)
 {
-    func_0201da9c(self, 0x1372, 0x1373, 0x1374, -1, -1);
+    GamePhaseActorScriptVm_CreateOverlay60PresentationObject(
+        self, 0x1372, 0x1373, 0x1374, -1, -1);
     return 0;
 }

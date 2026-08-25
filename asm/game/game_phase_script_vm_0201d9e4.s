@@ -7,7 +7,7 @@
 .extern Actor_GetOwningCollection
 .extern LanguageDatabase_GetRecordById
 .extern DisplayRouting_MatchesRequest
-.extern func_0201da34
+.extern GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
 .extern OverlayManager_GetGlobal
 .extern OverlayManager_LoadOverlay
 .extern Heap_Alloc

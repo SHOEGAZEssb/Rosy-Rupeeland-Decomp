@@ -6,7 +6,7 @@
 .extern OverlayManager_GetGlobal
 .extern GamePhaseScriptVm_Pop
 .extern DisplayRouting_MatchesRequest
-.extern func_0201da20
+.extern LanguageDatabase_GetRecordByIdIgnoringCollectionMode
 .extern Actor_GetOwningCollection
 .extern func_ov059_0220fd20
 .extern gHeapContext
@@ -28,7 +28,7 @@ GamePhaseActorScriptVm_CreateOverlay61DebugObject: ; 0x020156fc
     mov r1, r4
     add r0, r0, #0x2000
     ldr r0, [r0, #0xe84]
-    bl func_0201da20
+    bl LanguageDatabase_GetRecordByIdIgnoringCollectionMode
     mov r5, r0
     mov r0, r6
     bl DisplayRouting_MatchesRequest
@@ -55,4 +55,3 @@ L_02015790: .word 0x3d
 L_02015794: .word data_020d5b2c
 L_02015798: .word gHeapContext
     .size GamePhaseActorScriptVm_CreateOverlay61DebugObject, . - GamePhaseActorScriptVm_CreateOverlay61DebugObject
-

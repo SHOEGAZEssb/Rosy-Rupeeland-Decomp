@@ -11,9 +11,11 @@ extern "C" {
 extern const char data_020d5b2c[];
 extern u8 data_021f3ecc[];
 extern void *Actor_GetOwningCollection(void *actor);
-extern void *func_0201da20(u32 mode, u32 value);
+extern void *LanguageDatabase_GetRecordByIdIgnoringCollectionMode(
+    u32 mode, u32 value);
 extern void *DisplayRouting_MatchesRequest(u32 value);
-extern void func_0201da34(GamePhaseActorScriptVm *self);
+extern void GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation(
+    GamePhaseActorScriptVm *self);
 extern void *LanguageLookupDatabase_GetResourceById(void *state, u16 value);
 extern void func_ov061_0220fd20(void *allocation, void *first,
                                void *second, u32 third);
@@ -33,7 +35,7 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
     u32 displayLookup = GamePhaseScriptVm_Pop(&self->base);
     u32 collectionModeValue = GamePhaseScriptVm_Pop(&self->base);
     u8 *collection = (u8 *)Actor_GetOwningCollection(self->actor);
-    void *hudResource = func_0201da20(
+    void *hudResource = LanguageDatabase_GetRecordByIdIgnoringCollectionMode(
         *(u32 *)(collection + 0x2e84), collectionModeValue);
     void *displayRoute = DisplayRouting_MatchesRequest(displayLookup);
     void *debugObjectStorage;
@@ -47,7 +49,7 @@ s32 GamePhaseActorScriptVm_CreateOverlay61DebugObject(GamePhaseActorScriptVm *se
 
 /*
  * Pop and discard two operands, pop lookup and table operands, update VM-side
- * state through func_0201da34, resolve the table operand through
+ * state through the overlay-60 sprite helper, resolve the table operand through
  * data_021f3ecc/LanguageLookupDatabase_GetResourceById and the lookup through DisplayRouting_MatchesRequest, then feed
  * both to the recovered debug-state chain with enabled=1. Returns zero.
  */
@@ -61,7 +63,7 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *
     {
         u32 lookup = GamePhaseScriptVm_Pop(&self->base);
         u32 tableValue = GamePhaseScriptVm_Pop(&self->base);
-        func_0201da34(self);
+        GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation(self);
         hudResource = LanguageLookupDatabase_GetResourceById(
             data_021f3ecc, (u16)tableValue);
         displayRoute = DisplayRouting_MatchesRequest(lookup);

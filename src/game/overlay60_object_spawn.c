@@ -53,7 +53,8 @@ s32 DisplayRouting_MatchesRequest(s32 input)
  * LanguageDatabase_GetRecordById, so the collection mode originally passed in r0 is ignored
  * while the second argument remains the lookup identifier.
  */
-void *func_0201da20(u32 unusedMode, u32 resourceIdentifier)
+void *LanguageDatabase_GetRecordByIdIgnoringCollectionMode(
+    u32 unusedMode, u32 resourceIdentifier)
 {
     (void)unusedMode;
     return LanguageDatabase_GetRecordById(gLanguageDatabase, resourceIdentifier);
@@ -66,7 +67,8 @@ void *func_0201da20(u32 unusedMode, u32 resourceIdentifier)
  * value is passed explicitly even though retail's ARM call reuses r0 across
  * the preceding comparisons. Returns no value.
  */
-void func_0201da34(Overlay60ScriptContext *context)
+void GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation(
+    Overlay60ScriptContext *context)
 {
     void *sprite = *(void **)((u8 *)context->owner84 + 0x54);
     s32 enabled = (s32)(context->flags8c << 30) >> 31;
@@ -88,9 +90,9 @@ void func_0201da34(Overlay60ScriptContext *context)
  * all recovered operands/arguments to the overlay constructor.  Returns the
  * constructed object, or null when allocation fails.
  */
-void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
-                    s32 argument2, s32 argument3, s32 argument4,
-                    s32 argument5)
+void *GamePhaseActorScriptVm_CreateOverlay60PresentationObject(
+    Overlay60ScriptContext *context, s32 argument1, s32 argument2,
+    s32 argument3, s32 argument4, s32 argument5)
 {
     s32 useIndexed = GamePhaseScriptVm_Pop(context);
     s32 secondOperand = GamePhaseScriptVm_Pop(context);
@@ -102,7 +104,7 @@ void *func_0201da9c(Overlay60ScriptContext *context, s32 argument1,
     void *sprite;
     s32 presentationFlag;
 
-    func_0201da34(context);
+    GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation(context);
     if (useIndexed != 0)
         resource = LanguageLookupDatabase_GetResourceById(data_021f3ecc, (u16)resourceIndex);
     else {

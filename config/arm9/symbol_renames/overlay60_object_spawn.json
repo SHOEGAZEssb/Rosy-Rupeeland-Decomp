@@ -1,0 +1,6 @@
+{
+  "DisplayRouting_MatchesRequest": "DisplayRouting_MatchesRequest",
+  "func_0201da20": "LanguageDatabase_GetRecordByIdIgnoringCollectionMode",
+  "func_0201da34": "GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation",
+  "func_0201da9c": "GamePhaseActorScriptVm_CreateOverlay60PresentationObject"
+}

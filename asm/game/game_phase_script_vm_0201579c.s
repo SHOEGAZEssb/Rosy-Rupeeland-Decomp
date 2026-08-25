@@ -6,7 +6,7 @@
 .extern DebugHudState_GetGlobal
 .extern GamePhaseScriptVm_Pop
 .extern DisplayRouting_MatchesRequest
-.extern func_0201da34
+.extern GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
 .extern LanguageLookupDatabase_GetResourceById
 
     .global GamePhaseActorScriptVm_OpenDebugHudFromLookupTables
@@ -23,7 +23,7 @@ GamePhaseActorScriptVm_OpenDebugHudFromLookupTables: ; 0x0201579c
     bl GamePhaseScriptVm_Pop
     mov r4, r0
     mov r0, r5
-    bl func_0201da34
+    bl GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
     mov r0, r4, lsl #0x10
     mov r1, r0, lsr #0x10
     ldr r0, L_02015814
@@ -43,4 +43,3 @@ GamePhaseActorScriptVm_OpenDebugHudFromLookupTables: ; 0x0201579c
     ldmia sp!, {r4, r5, r6, pc}
 L_02015814: .word data_021f3ecc
     .size GamePhaseActorScriptVm_OpenDebugHudFromLookupTables, . - GamePhaseActorScriptVm_OpenDebugHudFromLookupTables
-

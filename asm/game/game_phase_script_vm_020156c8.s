@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_script_vm_debug_ui_opcodes.c.
 .text
-.extern func_0201da9c
+.extern GamePhaseActorScriptVm_CreateOverlay60PresentationObject
 
     .global GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372
 GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372: ; 0x020156c8
@@ -12,10 +12,9 @@ GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372: ; 0x020156c8
     add r2, r1, #0x1
     add r3, r1, #0x2
     str ip, [sp, #0x4]
-    bl func_0201da9c
+    bl GamePhaseActorScriptVm_CreateOverlay60PresentationObject
     mov r0, #0x0
     add sp, sp, #0x8
     ldmia sp!, {r3, pc}
 L_020156f8: .word 0x1372
     .size GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372, . - GamePhaseActorScriptVm_CreateOverlay60PresentationPreset1372
-

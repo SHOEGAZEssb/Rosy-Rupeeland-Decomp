@@ -7,7 +7,7 @@
 .extern Actor_GetOwningCollection
 .extern LanguageDatabase_GetRecordById
 .extern DisplayRouting_MatchesRequest
-.extern func_0201da34
+.extern GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
 .extern OverlayManager_GetGlobal
 .extern OverlayManager_LoadOverlay
 .extern Heap_Alloc
@@ -16,8 +16,8 @@
 .extern gLanguageDatabase
 .extern gOverlay60ScriptObjectAllocationTag
 .extern gHeapContext
-.global func_0201da34
-func_0201da34: ; 0x0201da34
+.global GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
+GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation: ; 0x0201da34
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x8c]
@@ -46,4 +46,4 @@ func_0201da34: ; 0x0201da34
     ldmia sp!, {r3, r4, r5, pc}
 
 
-.size func_0201da34, . - func_0201da34
+.size GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation, . - GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation

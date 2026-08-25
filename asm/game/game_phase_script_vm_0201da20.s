@@ -7,7 +7,7 @@
 .extern Actor_GetOwningCollection
 .extern LanguageDatabase_GetRecordById
 .extern DisplayRouting_MatchesRequest
-.extern func_0201da34
+.extern GamePhaseActorScriptVm_UpdateOverlay60SpritePresentation
 .extern OverlayManager_GetGlobal
 .extern OverlayManager_LoadOverlay
 .extern Heap_Alloc
@@ -16,8 +16,8 @@
 .extern gLanguageDatabase
 .extern gOverlay60ScriptObjectAllocationTag
 .extern gHeapContext
-.global func_0201da20
-func_0201da20: ; 0x0201da20
+.global LanguageDatabase_GetRecordByIdIgnoringCollectionMode
+LanguageDatabase_GetRecordByIdIgnoringCollectionMode: ; 0x0201da20
     ldr ip, L_0201da2c
     ldr r0, L_0201da30
     bx ip
@@ -25,4 +25,4 @@ L_0201da2c: .word LanguageDatabase_GetRecordById
 L_0201da30: .word gLanguageDatabase
 
 
-.size func_0201da20, . - func_0201da20
+.size LanguageDatabase_GetRecordByIdIgnoringCollectionMode, . - LanguageDatabase_GetRecordByIdIgnoringCollectionMode
