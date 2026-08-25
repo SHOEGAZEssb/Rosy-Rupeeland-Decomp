@@ -1,0 +1,8 @@
+{
+  "GamePhaseResumeScene_Init": "GamePhaseResumeScene_Init",
+  "GamePhaseResumeScene_Destroy": "GamePhaseResumeScene_Destroy",
+  "GamePhaseResumeScene_DestroyAndFree": "GamePhaseResumeScene_DestroyAndFree",
+  "GamePhaseResumeScene_Update": "GamePhaseResumeScene_Update",
+  "gGamePhaseResumeSceneAllocationTag": "gGamePhaseResumeSceneAllocationTag",
+  "data_020d5594": "gGamePhaseResumeSceneVTable"
+}

@@ -18,6 +18,8 @@ typedef struct GamePhaseConfig {
 typedef char GamePhaseConfigSizeCheck[
     sizeof(GamePhaseConfig) == 0x58 ? 1 : -1];
 
+typedef struct GamePhaseResumeScene GamePhaseResumeScene;
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -30,7 +32,8 @@ extern void Scene_Destroy(void *scene);
 extern void *GamePhaseRuntime_Init(void *phase);
 extern void GamePhaseRuntime_Configure(void *phase, const GamePhaseConfig *config,
                           s32 value2C, s32 value30, int unknown);
-extern void *GamePhaseResumeScene_Init(void *object, int unknown);
+extern GamePhaseResumeScene *GamePhaseResumeScene_Init(
+    GamePhaseResumeScene *self, s32 skipFade);
 extern const GamePhaseConfig *GamePhaseMetadata_GetByIndex(int phaseIndex);
 
 extern void DisplayBrightness_StartMainTransition(int mode, int duration);
@@ -107,7 +110,7 @@ void GamePhase_Start(int phaseId, int resetGameWork)
     companion = Heap_Alloc(0x28, gGamePhaseInitialData.phaseTag, -4,
                            &gHeapContext);
     if (companion != 0) {
-        GamePhaseResumeScene_Init(companion, 0);
+        GamePhaseResumeScene_Init((GamePhaseResumeScene *)companion, 0);
     }
 }
 

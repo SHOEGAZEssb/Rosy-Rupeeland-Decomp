@@ -1,4 +1,5 @@
 #include "tingle/game_phase_transition_scene.h"
+#include "tingle/game_phase_resume_scene.h"
 #include "tingle/game_phase_runtime.h"
 #include "tingle/game_work.h"
 #include "tingle/heap.h"
@@ -18,7 +19,6 @@ extern s32 DisplayBrightness_IsSubTransitionComplete(void);
 extern s32 DisplayBrightness_IsMainTransitionDecreasing(void);
 extern s32 DisplayBrightness_IsSubTransitionDecreasing(void);
 extern void GamePhaseCurrencyHud_SetVisible(void *context, s32 value);
-extern void *GamePhaseResumeScene_Init(void *allocation, s32 mode);
 #ifdef __cplusplus
 }
 #endif
@@ -75,7 +75,7 @@ s32 GamePhaseTransitionScene_Update(GamePhaseTransitionScene *self)
         allocation = Heap_Alloc(0x28, (const char *)gGamePhaseResumeSceneAllocationTag, -4,
                                 &gHeapContext);
         if (allocation != 0)
-            GamePhaseResumeScene_Init(allocation, 1);
+            GamePhaseResumeScene_Init((GamePhaseResumeScene *)allocation, 1);
         self->base.value08++;
         break;
     }

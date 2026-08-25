@@ -7,7 +7,7 @@
 .extern SceneManager_GetCurrent
 .extern Scene_Destroy
 .extern Scene_Init
-.extern data_020d5594
+.extern gGamePhaseResumeSceneVTable
 .extern DisplayBrightness_StartMainTransition
 .extern DisplayBrightness_StartSubTransition
 .extern ActorDescriptorBatch_ApplyCategoryCallback
@@ -29,7 +29,7 @@ GamePhaseResumeScene_Init: ; 0x0200f878
     bl GameWork_SetFlag
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
-L_0200f8ac: .word data_020d5594
+L_0200f8ac: .word gGamePhaseResumeSceneVTable
 L_0200f8b0: .word gGameWork
 L_0200f8b4: .word 0x3f3
     .size GamePhaseResumeScene_Init, . - GamePhaseResumeScene_Init
@@ -48,7 +48,7 @@ GamePhaseResumeScene_Destroy: ; 0x0200f8b8
     bl Scene_Destroy
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200f8e8: .word data_020d5594
+L_0200f8e8: .word gGamePhaseResumeSceneVTable
 L_0200f8ec: .word gGameWork
 L_0200f8f0: .word 0x3f3
     .size GamePhaseResumeScene_Destroy, . - GamePhaseResumeScene_Destroy
@@ -69,7 +69,7 @@ GamePhaseResumeScene_DestroyAndFree: ; 0x0200f8f4
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200f92c: .word data_020d5594
+L_0200f92c: .word gGamePhaseResumeSceneVTable
 L_0200f930: .word gGameWork
 L_0200f934: .word 0x3f3
     .size GamePhaseResumeScene_DestroyAndFree, . - GamePhaseResumeScene_DestroyAndFree
@@ -150,4 +150,3 @@ L_0200fa34: .word gSceneManager
 L_0200fa38: .word gGameWork
 L_0200fa3c: .word 0x386
     .size GamePhaseResumeScene_Update, . - GamePhaseResumeScene_Update
-

@@ -7,7 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern SceneVTable data_020d5594;
 extern void DisplayBrightness_StartMainTransition(s32 screen, s32 frames);
 extern void DisplayBrightness_StartSubTransition(s32 screen, s32 frames);
 extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
@@ -19,7 +18,7 @@ extern void ActorDescriptorBatch_ApplyCategoryCallback(s32 value);
 GamePhaseResumeScene *GamePhaseResumeScene_Init(GamePhaseResumeScene *self, s32 skipFade)
 {
     Scene_Init(&self->base);
-    self->base.vtable = &data_020d5594;
+    self->base.vtable = &gGamePhaseResumeSceneVTable;
     self->skipFade = skipFade;
     GameWork_SetFlag(gGameWork, 0x3f3);
     return self;
@@ -28,7 +27,7 @@ GamePhaseResumeScene *GamePhaseResumeScene_Init(GamePhaseResumeScene *self, s32 
 /* Clear flag 0x3f3, destroy the Scene base, and return self without freeing. */
 GamePhaseResumeScene *GamePhaseResumeScene_Destroy(GamePhaseResumeScene *self)
 {
-    self->base.vtable = &data_020d5594;
+    self->base.vtable = &gGamePhaseResumeSceneVTable;
     GameWork_ClearFlag(gGameWork, 0x3f3);
     Scene_Destroy(&self->base);
     return self;
@@ -37,7 +36,7 @@ GamePhaseResumeScene *GamePhaseResumeScene_Destroy(GamePhaseResumeScene *self)
 /* Clear flag 0x3f3, destroy and free the Scene, and return its old address. */
 GamePhaseResumeScene *GamePhaseResumeScene_DestroyAndFree(GamePhaseResumeScene *self)
 {
-    self->base.vtable = &data_020d5594;
+    self->base.vtable = &gGamePhaseResumeSceneVTable;
     GameWork_ClearFlag(gGameWork, 0x3f3);
     Scene_Destroy(&self->base);
     Heap_Free(self);

@@ -1,3 +1,4 @@
+#include "tingle/game_phase_resume_scene.h"
 #include "tingle/types.h"
 
 /*
@@ -63,7 +64,7 @@ extern void GamePhaseRuntime_SynchronizeActorPlacement(...);
 extern void GamePhaseRuntime_FinalizeActorCollections(...);
 extern void *GamePhaseRuntime_GetActorCollection(...);
 extern void GamePhaseState_SetEnabled(...), GamePhaseState_ApplyPlacementState(...);
-extern void GamePhaseResumeScene_Init(...), GamePhaseAreaScene_SetEnabled(...);
+extern void GamePhaseAreaScene_SetEnabled(...);
 extern void DualLayerTileRenderer_SetEmbeddedAnimationPaused(...);
 extern void ActorCollection_SetEnabled(...);
 extern void GamePhaseVisualEffect_Update(...), GamePhaseAreaScene_Update(...);
@@ -378,7 +379,7 @@ void func_ov074_022105b4(void *scene, s32 direction, void *source_spline,
       F(void *, gGamePhaseRuntime, 0x2ed4), 0);
   resume = Heap_Alloc(0x28, data_ov074_02211db8, -4, gHeapContext);
   if (resume != 0)
-    GamePhaseResumeScene_Init(resume, 1);
+    GamePhaseResumeScene_Init((GamePhaseResumeScene *)resume, 1);
   current = SceneManager_GetCurrent(gSceneManager);
   F(SceneFn, F(void *, current, 0), 8)(current);
 }

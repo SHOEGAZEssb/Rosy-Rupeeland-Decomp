@@ -6846,7 +6846,7 @@ gDebugHudTextTables kind:data(any) addr:0x020d5554
 gDebugHudRendererAllocationTag kind:data(any) addr:0x020d555c
 data_020d556c kind:data(any) addr:0x020d556c
 data_020d5578 kind:data(any) addr:0x020d5578
-data_020d5594 kind:data(any) addr:0x020d5594
+gGamePhaseResumeSceneVTable kind:data(any) addr:0x020d5594
 data_020d55c0 kind:data(any) addr:0x020d55c0
 data_020d55c8 kind:data(any) addr:0x020d55c8
 data_020d55e0 kind:data(any) addr:0x020d55e0
