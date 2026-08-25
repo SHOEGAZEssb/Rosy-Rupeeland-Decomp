@@ -1,0 +1,8 @@
+{
+  "GamePhaseActorScriptVm_ClearFlag01000000AndCleanup": "GamePhaseActorScriptVm_ClearFlag01000000AndCleanup",
+  "GamePhaseActorScriptVm_NoOp": "GamePhaseActorScriptVm_NoOp",
+  "GamePhaseActorScriptVm_QueryActorProperty": "GamePhaseActorScriptVm_QueryActorProperty",
+  "GamePhaseActorScriptVm_SetActorProperty": "GamePhaseActorScriptVm_SetActorProperty",
+  "GamePhaseActorScriptVm_QueryIndexedActorProperty": "GamePhaseActorScriptVm_QueryIndexedActorProperty",
+  "GamePhaseActorScriptVm_SetIndexedActorProperty": "GamePhaseActorScriptVm_SetIndexedActorProperty"
+}
