@@ -19,25 +19,27 @@ extern void RuntimeRecordTable_ActivateByKey(void *table, u32 value);
  */
 s32 GamePhaseActorScriptVm_GetDataTableRecordByte(GamePhaseActorScriptVm *self)
 {
-    u32 offset = GamePhaseScriptVm_Pop(&self->base);
-    u32 index = GamePhaseScriptVm_Pop(&self->base);
-    u8 *record = RuntimeRecordTable_FindByKey(data_021f3d68, index);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, record[offset + 0xc]);
+    u32 recordByteOffset = GamePhaseScriptVm_Pop(&self->base);
+    u32 key = GamePhaseScriptVm_Pop(&self->base);
+    u8 *record = RuntimeRecordTable_FindByKey(data_021f3d68, key);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base, record[recordByteOffset + 0xc]);
     return 0;
 }
 
 /* Store whether RuntimeRecordTable_IsKeyActive finds the popped value in data_021f3d68 as the VM result. */
 s32 GamePhaseActorScriptVm_HasDataTableValue(GamePhaseActorScriptVm *self)
 {
-    u32 value = GamePhaseScriptVm_Pop(&self->base);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, RuntimeRecordTable_IsKeyActive(data_021f3d68, value) != 0);
+    u32 key = GamePhaseScriptVm_Pop(&self->base);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base, RuntimeRecordTable_IsKeyActive(data_021f3d68, key) != 0);
     return 0;
 }
 
 /* Pop a value, pass it to RuntimeRecordTable_ActivateByKey for data_021f3d68, and return zero. */
 s32 GamePhaseActorScriptVm_UpdateDataTableValue(GamePhaseActorScriptVm *self)
 {
-    u32 value = GamePhaseScriptVm_Pop(&self->base);
-    RuntimeRecordTable_ActivateByKey(data_021f3d68, value);
+    u32 key = GamePhaseScriptVm_Pop(&self->base);
+    RuntimeRecordTable_ActivateByKey(data_021f3d68, key);
     return 0;
 }

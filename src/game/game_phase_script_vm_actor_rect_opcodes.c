@@ -22,10 +22,10 @@ s32 GamePhaseActorScriptVm_SetActorRectangle(GamePhaseActorScriptVm *self)
 /* Pop an amount, move the actor rectangle's left edge left by it, and return zero. */
 s32 GamePhaseActorScriptVm_ExpandActorRectangleLeft(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 expansionAmount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
-    bounds.left -= amount;
+    bounds.left -= expansionAmount;
     RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }
@@ -33,10 +33,10 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleLeft(GamePhaseActorScriptVm *self
 /* Pop an amount, move the actor rectangle's top edge upward by it, and return zero. */
 s32 GamePhaseActorScriptVm_ExpandActorRectangleTop(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 expansionAmount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
-    bounds.top -= amount;
+    bounds.top -= expansionAmount;
     RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }
@@ -44,10 +44,10 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleTop(GamePhaseActorScriptVm *self)
 /* Pop an amount, move the actor rectangle's right edge right by it, and return zero. */
 s32 GamePhaseActorScriptVm_ExpandActorRectangleRight(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 expansionAmount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
-    bounds.right += amount;
+    bounds.right += expansionAmount;
     RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }
@@ -55,10 +55,10 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleRight(GamePhaseActorScriptVm *sel
 /* Pop an amount, move the actor rectangle's bottom edge down by it, and return zero. */
 s32 GamePhaseActorScriptVm_ExpandActorRectangleBottom(GamePhaseActorScriptVm *self)
 {
-    s32 amount = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 expansionAmount = (s32)GamePhaseScriptVm_Pop(&self->base);
     RectS16 bounds;
     RectS16_Copy(&bounds, (const RectS16 *)((u8 *)self->actor + 0x68));
-    bounds.bottom += amount;
+    bounds.bottom += expansionAmount;
     RectS16_Assign((RectS16 *)((u8 *)self->actor + 0x68), &bounds);
     return 0;
 }

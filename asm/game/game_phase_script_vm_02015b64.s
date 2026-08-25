@@ -11,8 +11,8 @@
 .extern Actor_SetActive
 .extern Actor_GetOwningCollection
 
-.global func_02015b64
-func_02015b64:
+.global GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand
+GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     bl GamePhaseScriptVm_Pop
@@ -127,4 +127,4 @@ L_02015cf0:
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_02015d04: .word gGamePhaseRuntime
 L_02015d08: .word gActorRuntimeCollection
-    .size func_02015b64, . - func_02015b64
+    .size GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand, . - GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand

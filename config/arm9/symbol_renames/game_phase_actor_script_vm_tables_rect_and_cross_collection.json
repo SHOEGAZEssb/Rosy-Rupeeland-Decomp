@@ -1,0 +1,11 @@
+{
+  "GamePhaseActorScriptVm_GetDataTableRecordByte": "GamePhaseActorScriptVm_GetDataTableRecordByte",
+  "GamePhaseActorScriptVm_HasDataTableValue": "GamePhaseActorScriptVm_HasDataTableValue",
+  "GamePhaseActorScriptVm_UpdateDataTableValue": "GamePhaseActorScriptVm_UpdateDataTableValue",
+  "GamePhaseActorScriptVm_SetActorRectangle": "GamePhaseActorScriptVm_SetActorRectangle",
+  "GamePhaseActorScriptVm_ExpandActorRectangleLeft": "GamePhaseActorScriptVm_ExpandActorRectangleLeft",
+  "GamePhaseActorScriptVm_ExpandActorRectangleTop": "GamePhaseActorScriptVm_ExpandActorRectangleTop",
+  "GamePhaseActorScriptVm_ExpandActorRectangleRight": "GamePhaseActorScriptVm_ExpandActorRectangleRight",
+  "GamePhaseActorScriptVm_ExpandActorRectangleBottom": "GamePhaseActorScriptVm_ExpandActorRectangleBottom",
+  "func_02015b64": "GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand"
+}

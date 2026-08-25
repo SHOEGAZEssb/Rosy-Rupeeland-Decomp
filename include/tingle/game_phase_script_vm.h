@@ -177,7 +177,7 @@ s32 GamePhaseActorScriptVm_ExpandActorRectangleLeft(GamePhaseActorScriptVm *self
 s32 GamePhaseActorScriptVm_ExpandActorRectangleTop(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ExpandActorRectangleRight(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ExpandActorRectangleBottom(GamePhaseActorScriptVm *self);
-s32 func_02015b64(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_SetInteractionDirectionAndMagnitude(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CalculateScaledDistance(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_CreateApplyScene(GamePhaseActorScriptVm *self);

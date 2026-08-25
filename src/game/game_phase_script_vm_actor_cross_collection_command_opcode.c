@@ -20,7 +20,7 @@ extern void OS_Halt(void);
 typedef void (*ActorValueMethod)(void *actor, u32 value);
 
 /* Invoke an actor virtual method whose address-derived byte offset is confirmed. */
-static void callActorValueMethod(void *actor, u32 offset, u32 value)
+static void CallActorValueMethod(void *actor, u32 offset, u32 value)
 {
     ActorValueMethod *vtable = *(ActorValueMethod **)actor;
     vtable[offset / sizeof(void *)](actor, value);
@@ -33,44 +33,49 @@ static void callActorValueMethod(void *actor, u32 offset, u32 value)
  * 0x2e84, dispatch through virtual method 0x70 or 0x74, activate non-local
  * targets, store one as the VM result, and return zero. Mode values other than 1 or 2 halt.
  */
-s32 func_02015b64(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_DispatchOppositeCollectionActorCommand(GamePhaseActorScriptVm *self)
 {
-    u32 value = GamePhaseScriptVm_Pop(&self->base);
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
+    u32 commandValue = GamePhaseScriptVm_Pop(&self->base);
+    s32 targetRuntimeId = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
-    u8 *owner = *(u8 **)(runtime + 0x2fb8);
-    void *target;
-    u32 mode;
+    u8 *runtimeOwner = *(u8 **)(runtime + 0x2fb8);
+    void *targetActor;
+    u32 collectionMode;
 
-    if (**(void ***)(runtime + 0x24) != **(void ***)(owner + 0x2eac))
+    if (**(void ***)(runtime + 0x24) !=
+        **(void ***)(runtimeOwner + 0x2eac))
         return 0;
 
-    mode = *(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84);
-    if (mode == 1)
-        target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 2), index);
-    else if (mode == 2)
-        target = ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(runtime, 1), index);
+    collectionMode =
+        *(u32 *)((u8 *)Actor_GetOwningCollection(self->actor) + 0x2e84);
+    if (collectionMode == 1)
+        targetActor = ActorCollection_FindActorByRuntimeId(
+            GamePhaseRuntime_GetActorCollection(runtime, 2), targetRuntimeId);
+    else if (collectionMode == 2)
+        targetActor = ActorCollection_FindActorByRuntimeId(
+            GamePhaseRuntime_GetActorCollection(runtime, 1), targetRuntimeId);
     else {
         OS_Halt();
-        target = 0; /* OS_Halt does not return; this only makes the C flow explicit. */
+        targetActor = 0;
     }
 
-    if (*((u8 *)target + 0x4d) == 1) {
-        u8 *collection = (u8 *)GamePhaseRuntime_GetActorCollection(runtime, 1);
-        target = *(void **)(collection + 0x2e7c);
-        callActorValueMethod(target, 0x74, value);
-        Actor_SetActive(target, 1);
-    } else if (target == self->actor) {
-        callActorValueMethod(target, 0x70, value);
+    if (*((u8 *)targetActor + 0x4d) == 1) {
+        u8 *collectionOne =
+            (u8 *)GamePhaseRuntime_GetActorCollection(runtime, 1);
+        targetActor = *(void **)(collectionOne + 0x2e7c);
+        CallActorValueMethod(targetActor, 0x74, commandValue);
+        Actor_SetActive(targetActor, 1);
+    } else if (targetActor == self->actor) {
+        CallActorValueMethod(targetActor, 0x70, commandValue);
     } else {
-        if (value != 0) {
+        if (commandValue != 0) {
             if (ActorRuntimeCollection_GetPendingAttachmentFlag(gActorRuntimeCollection) &&
-                *(void **)(gActorRuntimeCollection + 4) == target)
-                callActorValueMethod(target, 0x70, value);
+                *(void **)(gActorRuntimeCollection + 4) == targetActor)
+                CallActorValueMethod(targetActor, 0x70, commandValue);
             else
-                callActorValueMethod(target, 0x74, value);
+                CallActorValueMethod(targetActor, 0x74, commandValue);
         }
-        Actor_SetActive(target, 1);
+        Actor_SetActive(targetActor, 1);
     }
 
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, 1);
