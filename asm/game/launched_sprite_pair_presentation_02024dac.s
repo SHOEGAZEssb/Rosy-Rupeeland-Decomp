@@ -9,9 +9,9 @@
 .extern GraphicsSpriteGroup_ReleaseState
 .extern gGameWork
 
-    .global func_02024dac
-    .type func_02024dac, @function
-func_02024dac: ; 0x02024dac
+    .global LaunchedSpritePairPresentation_DestroyAndFree
+    .type LaunchedSpritePairPresentation_DestroyAndFree, @function
+LaunchedSpritePairPresentation_DestroyAndFree: ; 0x02024dac
     stmdb sp!, {r4, lr}
     ldr r1, .L_02024e1c
     mov r4, r0
@@ -43,4 +43,4 @@ func_02024dac: ; 0x02024dac
     ldmia sp!, {r4, pc}
 .L_02024e1c: .word data_020d68e4
 .L_02024e20: .word gGameWork
-    .size func_02024dac, . - func_02024dac
+    .size LaunchedSpritePairPresentation_DestroyAndFree, . - LaunchedSpritePairPresentation_DestroyAndFree

@@ -27,7 +27,7 @@ extern void *RecordSpriteMotionPresentation_Init(...);
 extern void *AuxiliaryTimedSpritePresentation_Init(...);
 extern void *func_02025300(...);
 extern void *ArcingSpriteEffectPresentation_Init(...);
-extern void *func_02024b04(...);
+extern void *LaunchedSpritePairPresentation_Init(...);
 extern void *OverlayTransitionScene_Init(...);
 extern void *func_ov054_0220e9bc(...);
 extern void *func_ov054_0220ef80(...);
@@ -264,7 +264,7 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
     case 19: {
         void *object = Heap_Alloc(0x58, data_020d5b34, 4, &gHeapContext);
         if (object != 0)
-            object = func_02024b04(object, getScriptEffectContext(), actor,
+            object = LaunchedSpritePairPresentation_Init(object, getScriptEffectContext(), actor,
                                    a1, a2, a3);
         addScriptFieldEffect(object);
         break;

@@ -23,9 +23,9 @@
 .extern RuntimeRecordTable_FindByKey
 .extern gGameWork
 
-    .global func_02024b04
-    .type func_02024b04, @function
-func_02024b04: ; 0x02024b04
+    .global LaunchedSpritePairPresentation_Init
+    .type LaunchedSpritePairPresentation_Init, @function
+LaunchedSpritePairPresentation_Init: ; 0x02024b04
     stmdb sp!, {r4, r5, r6, r7, lr}
     sub sp, sp, #0x14
     mov r6, r0
@@ -172,4 +172,4 @@ func_02024b04: ; 0x02024b04
 .L_02024d30: .word gGamePhaseRuntime
 .L_02024d34: .word gGameWork
 .L_02024d38: .word 0x385
-    .size func_02024b04, . - func_02024b04
+    .size LaunchedSpritePairPresentation_Init, . - LaunchedSpritePairPresentation_Init

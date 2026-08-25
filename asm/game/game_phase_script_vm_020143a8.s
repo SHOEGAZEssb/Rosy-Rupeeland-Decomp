@@ -31,7 +31,7 @@
 .extern RecordSpriteMotionPresentation_Init
 .extern ArcingSpriteEffectPresentation_Init
 .extern BallisticSpriteEmitter_SpawnAndRegister
-.extern func_02024b04
+.extern LaunchedSpritePairPresentation_Init
 .extern func_02025300
 .extern func_02028630
 .extern func_02028814
@@ -968,7 +968,7 @@ L_02015038:
     ldr r2, [r11, #0x84]
     mov r0, r4
     mov r3, r9
-    bl func_02024b04
+    bl LaunchedSpritePairPresentation_Init
     mov r4, r0
 L_02015088:
     ldr r0, L_020154d0

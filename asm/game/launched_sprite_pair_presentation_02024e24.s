@@ -13,9 +13,9 @@
 .extern gGameWork
 .extern genrand_int32
 
-    .global func_02024e24
-    .type func_02024e24, @function
-func_02024e24: ; 0x02024e24
+    .global LaunchedSpritePairPresentation_Update
+    .type LaunchedSpritePairPresentation_Update, @function
+LaunchedSpritePairPresentation_Update: ; 0x02024e24
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -222,4 +222,4 @@ func_02024e24: ; 0x02024e24
 .L_02025114: .word 0x115c
 .L_02025118: .word data_020f4e18
 .L_0202511c: .word gFx32CosSinTable
-    .size func_02024e24, . - func_02024e24
+    .size LaunchedSpritePairPresentation_Update, . - LaunchedSpritePairPresentation_Update

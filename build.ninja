@@ -9224,25 +9224,25 @@ build build/reports/launched_sprite_pair_presentation_02024b04.json: objdiff bui
   base_object = build/decomp/asm/game/launched_sprite_pair_presentation_02024b04.o
 build build/reports/launched_sprite_pair_presentation_02024b04.txt: match_report build/reports/launched_sprite_pair_presentation_02024b04.json | tools/report_objdiff.py
   report_json = build/reports/launched_sprite_pair_presentation_02024b04.json
-  report_args = --section .text --function func_02024b04 --require-exact
+  report_args = --section .text --function LaunchedSpritePairPresentation_Init --require-exact
 build build/reports/launched_sprite_pair_presentation_02024d3c.json: objdiff build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024d3c.o | build/decomp/asm/game/launched_sprite_pair_presentation_02024d3c.o
   target_object = build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024d3c.o
   base_object = build/decomp/asm/game/launched_sprite_pair_presentation_02024d3c.o
 build build/reports/launched_sprite_pair_presentation_02024d3c.txt: match_report build/reports/launched_sprite_pair_presentation_02024d3c.json | tools/report_objdiff.py
   report_json = build/reports/launched_sprite_pair_presentation_02024d3c.json
-  report_args = --section .text --function func_02024d3c --require-exact
+  report_args = --section .text --function LaunchedSpritePairPresentation_Destroy --require-exact
 build build/reports/launched_sprite_pair_presentation_02024dac.json: objdiff build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024dac.o | build/decomp/asm/game/launched_sprite_pair_presentation_02024dac.o
   target_object = build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024dac.o
   base_object = build/decomp/asm/game/launched_sprite_pair_presentation_02024dac.o
 build build/reports/launched_sprite_pair_presentation_02024dac.txt: match_report build/reports/launched_sprite_pair_presentation_02024dac.json | tools/report_objdiff.py
   report_json = build/reports/launched_sprite_pair_presentation_02024dac.json
-  report_args = --section .text --function func_02024dac --require-exact
+  report_args = --section .text --function LaunchedSpritePairPresentation_DestroyAndFree --require-exact
 build build/reports/launched_sprite_pair_presentation_02024e24.json: objdiff build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024e24.o | build/decomp/asm/game/launched_sprite_pair_presentation_02024e24.o
   target_object = build/decomp/delinks/asm/game/launched_sprite_pair_presentation_02024e24.o
   base_object = build/decomp/asm/game/launched_sprite_pair_presentation_02024e24.o
 build build/reports/launched_sprite_pair_presentation_02024e24.txt: match_report build/reports/launched_sprite_pair_presentation_02024e24.json | tools/report_objdiff.py
   report_json = build/reports/launched_sprite_pair_presentation_02024e24.json
-  report_args = --section .text --function func_02024e24 --require-exact
+  report_args = --section .text --function LaunchedSpritePairPresentation_Update --require-exact
 build build/reports/launched_sprite_pair_presentation.txt: phony build/reports/launched_sprite_pair_presentation_02024b04.txt build/reports/launched_sprite_pair_presentation_02024d3c.txt build/reports/launched_sprite_pair_presentation_02024dac.txt build/reports/launched_sprite_pair_presentation_02024e24.txt
 build build/reports/timed_actor_rectangle_presentation_02025120.json: objdiff build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025120.o | build/decomp/asm/game/timed_actor_rectangle_presentation_02025120.o
   target_object = build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025120.o

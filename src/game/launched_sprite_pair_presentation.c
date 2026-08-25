@@ -82,7 +82,7 @@ extern u32 genrand_int32(void);
  * initial screen coordinates relative to anchor, zero motion/state, set flag
  * 0x385, clear flag 0x3e0, and return self.
  */
-LaunchedSpritePairPresentation *func_02024b04(
+LaunchedSpritePairPresentation *LaunchedSpritePairPresentation_Init(
     LaunchedSpritePairPresentation *self, const PresentationVector *anchor,
     void *actor, s32 recordIndex, s32 xOffset, s32 zOffset)
 {
@@ -148,7 +148,7 @@ LaunchedSpritePairPresentation *func_02024b04(
  * through their respective owners, destroy resource/velocity/position state,
  * tear down the FieldEffect base, and return self.
  */
-LaunchedSpritePairPresentation *func_02024d3c(
+LaunchedSpritePairPresentation *LaunchedSpritePairPresentation_Destroy(
     LaunchedSpritePairPresentation *self)
 {
     self->vtable00 = (void **)data_020d68e4;
@@ -164,11 +164,11 @@ LaunchedSpritePairPresentation *func_02024d3c(
     return self;
 }
 
-/* Perform func_02024d3c teardown, free self, and return its old address. */
-LaunchedSpritePairPresentation *func_02024dac(
+/* Perform LaunchedSpritePairPresentation_Destroy teardown, free self, and return its old address. */
+LaunchedSpritePairPresentation *LaunchedSpritePairPresentation_DestroyAndFree(
     LaunchedSpritePairPresentation *self)
 {
-    func_02024d3c(self);
+    LaunchedSpritePairPresentation_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -187,7 +187,7 @@ LaunchedSpritePairPresentation *func_02024dac(
  * launched frames or when the primary passes its secondary-dependent lower
  * boundary; without a secondary the limits are 120 frames and y < -32.
  */
-s32 func_02024e24(LaunchedSpritePairPresentation *self)
+s32 LaunchedSpritePairPresentation_Update(LaunchedSpritePairPresentation *self)
 {
     s32 screenX;
     s32 screenY;

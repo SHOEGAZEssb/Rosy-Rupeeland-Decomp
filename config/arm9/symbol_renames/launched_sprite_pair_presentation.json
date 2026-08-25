@@ -1,0 +1,6 @@
+{
+  "func_02024b04": "LaunchedSpritePairPresentation_Init",
+  "func_02024d3c": "LaunchedSpritePairPresentation_Destroy",
+  "func_02024dac": "LaunchedSpritePairPresentation_DestroyAndFree",
+  "func_02024e24": "LaunchedSpritePairPresentation_Update"
+}
