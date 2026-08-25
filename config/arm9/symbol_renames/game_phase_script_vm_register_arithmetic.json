@@ -1,0 +1,12 @@
+{
+  "GamePhaseScriptVm_CopyRegister": "GamePhaseScriptVm_CopyRegister",
+  "GamePhaseScriptVm_LoadRegisterFromContext": "GamePhaseScriptVm_LoadRegisterFromContext",
+  "GamePhaseScriptVm_StoreRegisterToContext": "GamePhaseScriptVm_StoreRegisterToContext",
+  "GamePhaseScriptVm_PushRegister": "GamePhaseScriptVm_PushRegister",
+  "GamePhaseScriptVm_PushImmediateS16": "GamePhaseScriptVm_PushImmediateS16",
+  "GamePhaseScriptVm_LoadImmediateU32": "GamePhaseScriptVm_LoadImmediateU32",
+  "GamePhaseScriptVm_AddRegisters": "GamePhaseScriptVm_AddRegisters",
+  "GamePhaseScriptVm_AddImmediate": "GamePhaseScriptVm_AddImmediate",
+  "GamePhaseScriptVm_SubtractRegisters": "GamePhaseScriptVm_SubtractRegisters",
+  "GamePhaseScriptVm_SubtractImmediate": "GamePhaseScriptVm_SubtractImmediate"
+}

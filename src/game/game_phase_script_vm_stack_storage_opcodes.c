@@ -30,7 +30,7 @@ s32 GamePhaseScriptVm_PushGameWorkHalfword(GamePhaseScriptVm *self)
 s32 GamePhaseScriptVm_PushContextSlot(GamePhaseScriptVm *self)
 {
     u8 index = (u8)*self->cursor++;
-    GamePhaseScriptVm_Push(self, ((u32 *)self->context)[index]);
+    GamePhaseScriptVm_Push(self, ((u32 *)self->contextWords)[index]);
     return 0;
 }
 

@@ -24,7 +24,7 @@ s32 GamePhaseScriptVm_StoreRegisterToContextSlot(GamePhaseScriptVm *self)
 {
     s32 source = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
-    ((u32 *)self->context)[index] = self->registers[source];
+    ((u32 *)self->contextWords)[index] = self->registers[source];
     return 0;
 }
 
@@ -52,7 +52,7 @@ s32 GamePhaseScriptVm_LoadRegisterFromContextSlot(GamePhaseScriptVm *self)
 {
     s32 destination = (u8)*self->cursor++ & 7;
     u8 index = (u8)*self->cursor++;
-    self->registers[destination] = ((u32 *)self->context)[index];
+    self->registers[destination] = ((u32 *)self->contextWords)[index];
     return 0;
 }
 

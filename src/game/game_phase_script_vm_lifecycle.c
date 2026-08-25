@@ -13,7 +13,7 @@ GamePhaseScriptVm *GamePhaseScriptVm_Init(GamePhaseScriptVm *self)
 
 /*
  * Clear the cursor, script start, external-storage slots, registers, stack,
- * depth, state flags, resetByte7f, and context. preservedByte7e is
+ * depth, state flags, resetByte7f, and contextWords. preservedByte7e is
  * intentionally left untouched by retail.
  */
 void GamePhaseScriptVm_Reset(GamePhaseScriptVm *self)
@@ -30,7 +30,7 @@ void GamePhaseScriptVm_Reset(GamePhaseScriptVm *self)
         self->externalStorage[i] = 0;
     self->stackDepth = 0;
     self->resetByte7f = 0;
-    self->context = 0;
+    self->contextWords = 0;
 }
 
 /* Recovered no-op non-deleting destructor; returns self unchanged. */
@@ -52,24 +52,24 @@ GamePhaseScriptVm *GamePhaseScriptVm_DestroyBase(GamePhaseScriptVm *self)
     return self;
 }
 
-/* Install the vtable, initialize script/context state, and return self. */
+/* Install the vtable, initialize script/context-word state, and return self. */
 GamePhaseScriptVm *GamePhaseScriptVm_InitWithScript(GamePhaseScriptVm *self,
                                                     const s8 *script,
-                                                    void *context)
+                                                    void *contextWords)
 {
     self->vtable = &gGamePhaseScriptVmVTable;
-    GamePhaseScriptVm_ResetWithScript(self, script, context);
+    GamePhaseScriptVm_ResetWithScript(self, script, contextWords);
     return self;
 }
 
-/* Reset the VM, set both cursor and start to script, and retain context. */
+/* Reset the VM, set both cursor and start to script, and retain contextWords. */
 void GamePhaseScriptVm_ResetWithScript(GamePhaseScriptVm *self,
-                                       const s8 *script, void *context)
+                                       const s8 *script, void *contextWords)
 {
     GamePhaseScriptVm_Reset(self);
     self->scriptStart = script;
     self->cursor = script;
-    self->context = context;
+    self->contextWords = contextWords;
 }
 
 /* Copy source into a distinct VM through GamePhaseScriptVm_CopyState and return self. */
@@ -82,7 +82,7 @@ GamePhaseScriptVm *GamePhaseScriptVm_Assign(GamePhaseScriptVm *self,
 }
 
 /*
- * Copy cursor/start, registers, stack, state bytes, and context. Retail then
+ * Copy cursor/start, registers, stack, state bytes, and contextWords. Retail then
  * copies externalStorage into destination stack[0..7], overwriting those eight
  * stack values instead of copying external storage to offset 0x0c. This
  * surprising address-confirmed behavior is preserved as a compiler/original-
@@ -104,5 +104,5 @@ void GamePhaseScriptVm_CopyState(GamePhaseScriptVm *self,
     self->stateFlags = source->stateFlags;
     self->preservedByte7e = source->preservedByte7e;
     self->resetByte7f = source->resetByte7f;
-    self->context = source->context;
+    self->contextWords = source->contextWords;
 }

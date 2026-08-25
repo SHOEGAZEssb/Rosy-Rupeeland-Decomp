@@ -33,7 +33,7 @@ struct GamePhaseScriptVm {
     u8 stateFlags;
     s8 preservedByte7e;
     s8 resetByte7f;
-    void *context;
+    void *contextWords;
 };
 
 /* Script VM specialization used by actor-bound phase scripts. */
@@ -65,9 +65,9 @@ GamePhaseScriptVm *GamePhaseScriptVm_DestroyAndFree(GamePhaseScriptVm *self);
 GamePhaseScriptVm *GamePhaseScriptVm_DestroyBase(GamePhaseScriptVm *self);
 GamePhaseScriptVm *GamePhaseScriptVm_InitWithScript(GamePhaseScriptVm *self,
                                                     const s8 *script,
-                                                    void *context);
+                                                    void *contextWords);
 void GamePhaseScriptVm_ResetWithScript(GamePhaseScriptVm *self,
-                                       const s8 *script, void *context);
+                                       const s8 *script, void *contextWords);
 GamePhaseScriptVm *GamePhaseScriptVm_Assign(GamePhaseScriptVm *self,
                                             const GamePhaseScriptVm *source);
 void GamePhaseScriptVm_CopyState(GamePhaseScriptVm *self,
