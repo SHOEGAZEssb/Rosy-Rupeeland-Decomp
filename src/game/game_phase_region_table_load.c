@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char data_020d5640[];
+extern const char gGamePhaseRegionDataPath[];
 extern const char gGamePhaseRegionCompressedBufferAllocationTag[];
 extern const char gGamePhaseRegionExpandedBufferAllocationTag[];
 extern void OS_Halt(void);
@@ -42,7 +42,7 @@ s32 GamePhaseRegionTable_Load(GamePhaseRegionTable *self,
         return 0;
     }
     GameFile_Init(&file);
-    if (!GameFile_Open(&file, data_020d5640))
+    if (!GameFile_Open(&file, gGamePhaseRegionDataPath))
         OS_Halt();
     compressed = (u8 *)Heap_Alloc(info->compressedSize_34, gGamePhaseRegionCompressedBufferAllocationTag,
                                   -4, &gHeapContext);

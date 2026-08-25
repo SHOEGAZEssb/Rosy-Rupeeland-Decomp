@@ -25,6 +25,13 @@ typedef struct GamePhaseRegionFileInfo {
     u32 compressedSize_34;
 } GamePhaseRegionFileInfo;
 
+typedef char GamePhaseRegionSizeCheck[
+    sizeof(GamePhaseRegion) == 0x8 ? 1 : -1];
+typedef char GamePhaseRegionTableSizeCheck[
+    sizeof(GamePhaseRegionTable) == 0x10 ? 1 : -1];
+typedef char GamePhaseRegionFileInfoSizeCheck[
+    sizeof(GamePhaseRegionFileInfo) == 0x38 ? 1 : -1];
+
 #ifdef __cplusplus
 extern "C" {
 #endif

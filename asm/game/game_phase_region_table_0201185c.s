@@ -8,7 +8,7 @@
 .extern MI_CpuCopy8
 .extern MI_UncompressLZ8
 .extern OS_Halt
-.extern data_020d5640
+.extern gGamePhaseRegionDataPath
 .extern gGamePhaseRegionCompressedBufferAllocationTag
 .extern gGamePhaseRegionExpandedBufferAllocationTag
 .extern func_02003e20
@@ -111,9 +111,8 @@ L_0201198c:
 L_020119b0:
     add sp, sp, #0x4c
     ldmia sp!, {r4, r5, r6, r7, pc}
-L_020119b8: .word data_020d5640
+L_020119b8: .word gGamePhaseRegionDataPath
 L_020119bc: .word gGamePhaseRegionCompressedBufferAllocationTag
 L_020119c0: .word gHeapContext
 L_020119c4: .word gGamePhaseRegionExpandedBufferAllocationTag
     .size GamePhaseRegionTable_Load, . - GamePhaseRegionTable_Load
-

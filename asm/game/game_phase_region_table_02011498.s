@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_region_table_lifecycle.c.
 .text
-.extern data_020d5638
+.extern gGamePhaseRegionInitialArrayAllocationTag
 .extern func_02003e20
 .extern GamePhaseRegion_Init
 .extern GamePhaseRegion_Destroy
@@ -39,9 +39,8 @@ L_020114fc:
     mov r0, r5
     add sp, sp, #0x8
     ldmia sp!, {r3, r4, r5, pc}
-L_02011508: .word data_020d5638
+L_02011508: .word gGamePhaseRegionInitialArrayAllocationTag
 L_0201150c: .word gHeapContext
 L_02011510: .word GamePhaseRegion_Init
 L_02011514: .word GamePhaseRegion_Destroy
     .size GamePhaseRegionTable_InitWithCount, . - GamePhaseRegionTable_InitWithCount
-

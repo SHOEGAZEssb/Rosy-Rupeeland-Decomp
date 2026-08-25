@@ -6854,9 +6854,9 @@ data_020d55f0 kind:data(any) addr:0x020d55f0
 gGamePhaseTouchPromptVTable kind:data(any) addr:0x020d5604
 data_020d5610 kind:data(any) addr:0x020d5610
 gGamePhaseTouchPromptActorAllocationTag kind:data(any) addr:0x020d5628
-data_020d5630 kind:data(any) addr:0x020d5630
-data_020d5638 kind:data(any) addr:0x020d5638
-data_020d5640 kind:data(any) addr:0x020d5640
+gGamePhaseRegionResizeArrayAllocationTag kind:data(any) addr:0x020d5630
+gGamePhaseRegionInitialArrayAllocationTag kind:data(any) addr:0x020d5638
+gGamePhaseRegionDataPath kind:data(any) addr:0x020d5640
 gGamePhaseRegionCompressedBufferAllocationTag kind:data(any) addr:0x020d5654
 gGamePhaseRegionExpandedBufferAllocationTag kind:data(any) addr:0x020d565c
 data_020d5664 kind:data(any) addr:0x020d5664

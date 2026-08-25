@@ -6,8 +6,8 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const char data_020d5630[];
-extern const char data_020d5638[];
+extern const char gGamePhaseRegionResizeArrayAllocationTag[];
+extern const char gGamePhaseRegionInitialArrayAllocationTag[];
 extern const GamePhaseRegion gDefaultGamePhaseRegion;
 extern void *func_020c09cc(void *allocation, s32 count, s32 elementSize,
                            s32 stride, void (*construct)(GamePhaseRegion *),
@@ -37,7 +37,8 @@ GamePhaseRegionTable *GamePhaseRegionTable_InitWithCount(
     GamePhaseRegion *regions = 0;
     if (count) {
         void *allocation = Heap_Alloc(count * sizeof(GamePhaseRegion) + 8,
-                                      data_020d5638, 4, &gHeapContext);
+                                      gGamePhaseRegionInitialArrayAllocationTag,
+                                      4, &gHeapContext);
         if (allocation)
             regions = (GamePhaseRegion *)func_020c09cc(
                 allocation, count, sizeof(GamePhaseRegion),
@@ -114,7 +115,8 @@ void GamePhaseRegionTable_Resize(GamePhaseRegionTable *self, s32 count)
         GamePhaseRegionTable_Clear(self);
     {
         void *allocation = Heap_Alloc(count * sizeof(GamePhaseRegion) + 8,
-                                      data_020d5630, 4, &gHeapContext);
+                                      gGamePhaseRegionResizeArrayAllocationTag,
+                                      4, &gHeapContext);
         if (allocation)
             regions = (GamePhaseRegion *)func_020c09cc(
                 allocation, count, sizeof(GamePhaseRegion),

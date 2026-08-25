@@ -1,0 +1,23 @@
+{
+  "GamePhaseRegionTable_Init": "GamePhaseRegionTable_Init",
+  "GamePhaseRegionTable_InitWithCount": "GamePhaseRegionTable_InitWithCount",
+  "GamePhaseRegion_Init": "GamePhaseRegion_Init",
+  "GamePhaseRegion_Destroy": "GamePhaseRegion_Destroy",
+  "GamePhaseRegionTable_Clear": "GamePhaseRegionTable_Clear",
+  "GamePhaseRegionTable_Destroy": "GamePhaseRegionTable_Destroy",
+  "GamePhaseRegionTable_SetRegionsFromSentinel": "GamePhaseRegionTable_SetRegionsFromSentinel",
+  "GamePhaseRegionTable_Resize": "GamePhaseRegionTable_Resize",
+  "GamePhaseRegionTable_FindContainingRegion": "GamePhaseRegionTable_FindContainingRegion",
+  "GamePhaseRegion_ContainsPoint": "GamePhaseRegion_ContainsPoint",
+  "GamePhaseRegionTable_GetRegion": "GamePhaseRegionTable_GetRegion",
+  "GamePhaseRegionTable_ClassifyContainedSide": "GamePhaseRegionTable_ClassifyContainedSide",
+  "GamePhaseRegionTable_Load": "GamePhaseRegionTable_Load",
+  "GamePhaseRegionTable_PublishActive": "GamePhaseRegionTable_PublishActive",
+  "data_020d5630": "gGamePhaseRegionResizeArrayAllocationTag",
+  "data_020d5638": "gGamePhaseRegionInitialArrayAllocationTag",
+  "data_020d5640": "gGamePhaseRegionDataPath",
+  "gGamePhaseRegionCompressedBufferAllocationTag": "gGamePhaseRegionCompressedBufferAllocationTag",
+  "gGamePhaseRegionExpandedBufferAllocationTag": "gGamePhaseRegionExpandedBufferAllocationTag",
+  "gDefaultGamePhaseRegion": "gDefaultGamePhaseRegion",
+  "gActiveGamePhaseRegionTable": "gActiveGamePhaseRegionTable"
+}
