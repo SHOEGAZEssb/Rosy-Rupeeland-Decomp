@@ -12,8 +12,8 @@
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
 .extern ActorCollection_FindActorByRuntimeId
 
-    .global func_02012814
-func_02012814: ; 0x02012814
+    .global GamePhaseScriptVm_DispatchRuntimeMotionCommand
+GamePhaseScriptVm_DispatchRuntimeMotionCommand: ; 0x02012814
     stmdb sp!, {r3, r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x4
     mov r8, r0
@@ -176,5 +176,4 @@ L_02012a50:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 L_02012a5c: .word gGamePhaseRuntime
-    .size func_02012814, . - func_02012814
-
+    .size GamePhaseScriptVm_DispatchRuntimeMotionCommand, . - GamePhaseScriptVm_DispatchRuntimeMotionCommand

@@ -23,28 +23,33 @@ extern u32 genrand_int32(void);
  * Pop four operands and a selector. Selectors 1-6 operate on runtime fields
  * 0x2fbc/0x2fd4/0x2fec; selectors 7-9 mirror the collection operations at
  * 0x3044. Query results are stored in the VM result register and update its
- * condition; selector 5 resolves an object from runtime collection 1,
- * selector 11 is a no-op, and selectors
- * 0/10/out-of-range enter OS_Halt. Always returns zero after dispatch. The
+ * condition; selector 5 resolves an actor from runtime collection 1 using the
+ * first operand, selector 11 is a no-op, and selectors 0/10/out-of-range enter
+ * OS_Halt. Always returns zero after dispatch. The
  * underlying collection calls may mutate runtime state.
  */
-s32 func_02012814(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_DispatchRuntimeMotionCommand(GamePhaseScriptVm *self)
 {
-    u32 d = GamePhaseScriptVm_Pop(self);
-    u32 c = GamePhaseScriptVm_Pop(self);
-    u32 b = GamePhaseScriptVm_Pop(self);
-    u32 a = GamePhaseScriptVm_Pop(self);
+    u32 fourthOperand = GamePhaseScriptVm_Pop(self);
+    u32 thirdOperand = GamePhaseScriptVm_Pop(self);
+    u32 secondOperand = GamePhaseScriptVm_Pop(self);
+    u32 firstOperand = GamePhaseScriptVm_Pop(self);
     u32 selector = GamePhaseScriptVm_Pop(self);
     u8 *runtime = (u8 *)gGamePhaseRuntime;
     switch (selector) {
     case 1:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(self, ActorMotion_ConfigureGridTarget(runtime + 0x2fbc, a, b, c, d));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(
+            self, ActorMotion_ConfigureGridTarget(runtime + 0x2fbc, firstOperand,
+                                                  secondOperand, thirdOperand,
+                                                  fourthOperand));
         break;
     case 2:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x2fbc, a, b));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(
+            self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x2fbc,
+                                                        firstOperand, secondOperand));
         break;
     case 3:
-        if (a)
+        if (firstOperand)
             ActorMotion_SetMode2(runtime + 0x2fbc);
         else
             ActorMotion_SetMode1AndClearOutputs(runtime + 0x2fbc);
@@ -53,22 +58,27 @@ s32 func_02012814(GamePhaseScriptVm *self)
         GamePhaseScriptVm_StoreResultAndUpdateCondition(self, *(u32 *)(runtime + 0x2fd4) == 2);
         break;
     case 5: {
-        void *collection = GamePhaseRuntime_GetActorCollection(runtime, 1);
-        void *object = ActorCollection_FindActorByRuntimeId(collection, a);
-        ActorMotionAreaFollower_BindActor(runtime + 0x2fbc, object);
+        void *actorCollection = GamePhaseRuntime_GetActorCollection(runtime, 1);
+        void *actor = ActorCollection_FindActorByRuntimeId(actorCollection, firstOperand);
+        ActorMotionAreaFollower_BindActor(runtime + 0x2fbc, actor);
         break;
     }
     case 6:
         GamePhaseScriptVm_StoreResultAndUpdateCondition(self, *(u32 *)(runtime + 0x2fec) & 1);
         break;
     case 7:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(self, ActorMotion_ConfigureGridTarget(runtime + 0x3044, a, b, c, d));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(
+            self, ActorMotion_ConfigureGridTarget(runtime + 0x3044, firstOperand,
+                                                  secondOperand, thirdOperand,
+                                                  fourthOperand));
         break;
     case 8:
-        GamePhaseScriptVm_StoreResultAndUpdateCondition(self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x3044, a, b));
+        GamePhaseScriptVm_StoreResultAndUpdateCondition(
+            self, ActorMotion_ConfigureBoundActorTarget(runtime + 0x3044,
+                                                        firstOperand, secondOperand));
         break;
     case 9:
-        if (a)
+        if (firstOperand)
             ActorMotion_SetMode2(runtime + 0x3044);
         else
             ActorMotion_SetMode1AndClearOutputs(runtime + 0x3044);
@@ -85,7 +95,7 @@ s32 func_02012814(GamePhaseScriptVm *self)
 }
 
 /* Pop an upper bound, store a global-RNG value modulo that bound, and return zero. */
-s32 func_02012a60(GamePhaseScriptVm *self)
+s32 GamePhaseScriptVm_StoreRandomBelowLimit(GamePhaseScriptVm *self)
 {
     u32 limit = GamePhaseScriptVm_Pop(self);
     GamePhaseScriptVm_StoreResultAndUpdateCondition(self, genrand_int32() % limit);
