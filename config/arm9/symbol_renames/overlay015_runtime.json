@@ -1,0 +1,23 @@
+{
+  "func_ov015_021fce00": "Overlay015_ClearValueTriple",
+  "func_ov015_021fce58": "Overlay015_Scene_Init",
+  "func_ov015_021fd230": "Overlay015_CopyValueTriple",
+  "func_ov015_021fd24c": "Overlay015_Scene_Destroy",
+  "func_ov015_021fd330": "Overlay015_Scene_Delete",
+  "func_ov015_021fd41c": "Overlay015_SetupGraphics",
+  "func_ov015_021fd8ec": "Overlay015_LayoutRecords",
+  "func_ov015_021fd9f0": "Overlay015_ReplaceRecords",
+  "func_ov015_021fda50": "Overlay015_StopRecords",
+  "func_ov015_021fdad4": "Overlay015_RebuildSelectionRecords",
+  "func_ov015_021fdd1c": "Overlay015_HandleRecordSelection",
+  "func_ov015_021fde00": "Overlay015_CreatePrompt",
+  "func_ov015_021fdeac": "Overlay015_DestroyPrompt",
+  "func_ov015_021fdfe8": "Overlay015_UpdatePrimaryInteraction",
+  "func_ov015_021fe2b0": "Overlay015_UpdateAuxiliaryController",
+  "func_ov015_021fe3e4": "Overlay015_UpdateActionConfirmation",
+  "func_ov015_021fe548": "Overlay015_HasRecordReachedLimit",
+  "func_ov015_021fe588": "Overlay015_UpdateChoiceResolution",
+  "func_ov015_021fe828": "Overlay015_UpdateAuxiliaryAction",
+  "func_ov015_021fe9b8": "Overlay015_UpdateTerminalCommit",
+  "func_ov015_021feb20": "Overlay015_FinalizeRecordUpdate"
+}

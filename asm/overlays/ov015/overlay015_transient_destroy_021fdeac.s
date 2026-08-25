@@ -2,9 +2,9 @@
     .extern ModalState_DrawFrame
 
 /* Exact fallback for transient presentation teardown; see src/overlays/ov015/overlay015_selection_runtime.c. */
-    .global func_ov015_021fdeac
+    .global Overlay015_DestroyPrompt
 
-func_ov015_021fdeac:
+Overlay015_DestroyPrompt:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xf8]
@@ -23,4 +23,4 @@ L_021fded4:
     str r0, [r4, #0x48]
     ldmia sp!, {r4, pc}
 
-    .size func_ov015_021fdeac, . - func_ov015_021fdeac
+    .size Overlay015_DestroyPrompt, . - Overlay015_DestroyPrompt

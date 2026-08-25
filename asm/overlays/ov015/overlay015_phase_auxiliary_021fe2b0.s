@@ -10,12 +10,12 @@
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
     .extern func_ov015_021fd6c8
-    .extern func_ov015_021fdad4
+    .extern Overlay015_RebuildSelectionRecords
 
 /* Exact fallbacks for auxiliary controller phase; see src/overlays/ov015/overlay015_phase_runtime.c. */
-    .global func_ov015_021fe2b0
+    .global Overlay015_UpdateAuxiliaryController
 
-func_ov015_021fe2b0:
+Overlay015_UpdateAuxiliaryController:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r1, [r5, #0xdc]
@@ -52,7 +52,7 @@ L_021fe300:
     mov r0, r5
     bl func_ov015_021fd6c8
     mov r0, r5
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     mov r0, r5
     mov r1, #0x8
     bl SceneSound_StopPackedEffect
@@ -101,4 +101,4 @@ L_021fe3d0:
     ldmia sp!, {r3, r4, r5, pc}
 L_021fe3e0: .word data_ov015_021febf8
 
-    .size func_ov015_021fe2b0, . - func_ov015_021fe2b0
+    .size Overlay015_UpdateAuxiliaryController, . - Overlay015_UpdateAuxiliaryController

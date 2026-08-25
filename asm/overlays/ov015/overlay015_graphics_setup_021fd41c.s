@@ -21,9 +21,9 @@
     .extern gDebugFont
 
 /* Exact fallback; see src/overlays/ov015/overlay015_graphics_setup.c. */
-    .global func_ov015_021fd41c
+    .global Overlay015_SetupGraphics
 
-func_ov015_021fd41c:
+Overlay015_SetupGraphics:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x28
     ldr r1, L_021fd660
@@ -185,4 +185,4 @@ L_021fd680: .word 0x800a
 L_021fd684: .word 0x800e
 L_021fd688: .word 0x800d
 
-    .size func_ov015_021fd41c, . - func_ov015_021fd41c
+    .size Overlay015_SetupGraphics, . - Overlay015_SetupGraphics

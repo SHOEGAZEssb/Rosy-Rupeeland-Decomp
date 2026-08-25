@@ -3,7 +3,7 @@
 .extern Heap_Alloc
 .extern OverlaySlot_LoadOverlay
 .extern data_020e55f4
-.extern func_ov015_021fce58
+.extern Overlay015_Scene_Init
 .extern gHeapContext
 
 .global InventoryScene_LoadSecondaryView
@@ -25,7 +25,7 @@ InventoryScene_LoadSecondaryView:
     beq .L_020686e0
     add r1, r4, #0x7c
     mov r2, #0x0
-    bl func_ov015_021fce58
+    bl Overlay015_Scene_Init
 .L_020686e0:
     str r0, [r4, #0x54]
     ldr r0, [r4, #0x20]

@@ -10,13 +10,13 @@
     .extern func_ov001_021fc7e4
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
-    .extern func_ov015_021fe548
+    .extern Overlay015_HasRecordReachedLimit
     .extern gGameWork
 
 /* Exact fallbacks for terminal commit phase; see src/overlays/ov015/overlay015_terminal_phases.c. */
-    .global func_ov015_021fe9b8
+    .global Overlay015_UpdateTerminalCommit
 
-func_ov015_021fe9b8:
+Overlay015_UpdateTerminalCommit:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r0, [r5, #0x4]
@@ -30,7 +30,7 @@ L_021fe9d8:
     add r2, r5, #0xfc
     mov r0, #0xac
     mla r0, r1, r0, r2
-    bl func_ov015_021fe548
+    bl Overlay015_HasRecordReachedLimit
     cmp r0, #0x0
     beq L_021feafc
     ldr r2, [r5, #0xdc]
@@ -115,4 +115,4 @@ L_021feb14: .word gGamePhaseRuntime
 L_021feb18: .word 0x389
 L_021feb1c: .word data_ov015_021feba8
 
-    .size func_ov015_021fe9b8, . - func_ov015_021fe9b8
+    .size Overlay015_UpdateTerminalCommit, . - Overlay015_UpdateTerminalCommit

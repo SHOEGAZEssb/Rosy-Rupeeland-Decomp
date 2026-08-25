@@ -31,23 +31,23 @@
     .extern func_ov001_021fc7c0
     .extern func_ov001_021fca38
     .extern Overlay001_GetViewRecordFromIndex
-    .extern func_ov015_021fce00
+    .extern Overlay015_ClearValueTriple
     .extern func_ov015_021fce14
     .extern func_ov015_021fce18
     .extern func_ov015_021fce30
-    .extern func_ov015_021fd230
-    .extern func_ov015_021fd41c
+    .extern Overlay015_CopyValueTriple
+    .extern Overlay015_SetupGraphics
     .extern func_ov015_021fd8a8
-    .extern func_ov015_021fd8ec
-    .extern func_ov015_021fda50
+    .extern Overlay015_LayoutRecords
+    .extern Overlay015_StopRecords
     .extern gDebugFont
     .extern gHeapContext
     .extern gSoundContext
 
 /* Exact fallback; see src/overlays/ov015/overlay015_scene_lifecycle.c. */
-    .global func_ov015_021fce58
+    .global Overlay015_Scene_Init
 
-func_ov015_021fce58:
+Overlay015_Scene_Init:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -65,7 +65,7 @@ func_ov015_021fce58:
     add r0, r10, #0x98
     bl TitleScreenResourceCollection_Init
     add r0, r10, #0xe0
-    bl func_ov015_021fce00
+    bl Overlay015_ClearValueTriple
     ldr r1, L_021fd1ec
     add r0, r10, #0xfc
     str r1, [sp, #0x0]
@@ -75,7 +75,7 @@ func_ov015_021fce58:
     bl __construct_array
     str r4, [r10, #0xec]
     mov r0, r10
-    bl func_ov015_021fd41c
+    bl Overlay015_SetupGraphics
     add r0, r10, #0x98
     ldr r1, L_021fd1f4
     bl TitleScreenResourceCollection_Append
@@ -112,7 +112,7 @@ L_021fcf38:
     beq L_021fcf58
     mov r1, r5
     add r0, r10, #0xe0
-    bl func_ov015_021fd230
+    bl Overlay015_CopyValueTriple
 L_021fcf58:
     ldr r0, L_021fd214
     mov r1, #0x1
@@ -247,14 +247,14 @@ L_021fd108:
     mov r1, #0x0
     mov r0, r10
     str r1, [r10, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r10
     mov r1, #0x0
     bl func_ov015_021fd8a8
     mov r0, r10
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     mov r0, r10
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     ldr r0, [r10, #0x54]
     add r1, r10, #0x64
     mov r2, #0x1
@@ -305,4 +305,4 @@ L_021fd220: .word gSoundContext
 L_021fd224: .word data_020f4e18
 L_021fd228: .word 0x4000050
 L_021fd22c: .word data_ov015_021fec48
-    .size func_ov015_021fce58, . - func_ov015_021fce58
+    .size Overlay015_Scene_Init, . - Overlay015_Scene_Init

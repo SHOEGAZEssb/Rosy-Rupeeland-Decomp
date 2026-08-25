@@ -8,9 +8,9 @@
     .extern func_ov015_021fda78
 
 /* Exact fallback for selected-record dispatch; see src/overlays/ov015/overlay015_selection_runtime.c. */
-    .global func_ov015_021fdd1c
+    .global Overlay015_HandleRecordSelection
 
-func_ov015_021fdd1c:
+Overlay015_HandleRecordSelection:
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r1, r4, #0x30
@@ -76,4 +76,4 @@ L_021fddf4: .word data_ov015_021fec38
 L_021fddf8: .word data_ov015_021fec30
 L_021fddfc: .word data_ov015_021fec28
 
-    .size func_ov015_021fdd1c, . - func_ov015_021fdd1c
+    .size Overlay015_HandleRecordSelection, . - Overlay015_HandleRecordSelection

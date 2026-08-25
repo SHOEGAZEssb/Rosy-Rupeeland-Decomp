@@ -8,9 +8,9 @@
     .extern func_ov001_021fc3b4
     .extern func_ov001_021fc3dc
     .extern func_ov015_021fce30
-    .extern func_ov015_021fdad4
-    .extern func_ov015_021fde00
-    .extern func_ov015_021fdeac
+    .extern Overlay015_RebuildSelectionRecords
+    .extern Overlay015_CreatePrompt
+    .extern Overlay015_DestroyPrompt
 
 /* Exact fallbacks for transient-confirmation phase; see src/overlays/ov015/overlay015_phase_runtime.c. */
     .global Overlay015_UpdateTransientConfirmation
@@ -34,7 +34,7 @@ L_021fdf20:
     ldr r0, [r4, #0xdc]
     bl func_ov001_021fc3b4
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r0, [r4, #0xec]
     cmp r0, #0x0
     beq L_021fdf84
@@ -49,7 +49,7 @@ L_021fdf20:
     mov r1, #0xf
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov015_021fde00
+    bl Overlay015_CreatePrompt
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -72,7 +72,7 @@ L_021fdf98:
     cmp r0, #0x0
     blt L_021fdfd8
     mov r0, r4
-    bl func_ov015_021fdeac
+    bl Overlay015_DestroyPrompt
     ldr r0, [r4, #0xdc]
     bl func_ov001_021fc384
     ldr r1, L_021fdfe4

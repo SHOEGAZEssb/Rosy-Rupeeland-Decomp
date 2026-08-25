@@ -47,7 +47,7 @@ extern void DisplayBrightness_StartSubTransition(s32 mode, s32 duration);
 extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void *Overlay014_Scene_Init(void *scene,
                                 const InventoryViewState *state);
-extern void *func_ov015_021fce58(void *scene,
+extern void *Overlay015_Scene_Init(void *scene,
                                 const InventoryViewState *state,
                                 s32 soundMode);
 extern void Overlay000_CaptureViewState(InventoryViewState *output,
@@ -99,7 +99,7 @@ void InventoryScene_LoadSecondaryView(void *scene)
     OverlaySlot_LoadOverlay((OverlaySlot *)((u8 *)scene + 0x64), 15);
     child = Heap_Alloc(0x304, data_020e55f4, 4, gHeapContext);
     if (child != 0)
-        child = func_ov015_021fce58(
+        child = Overlay015_Scene_Init(
             child, (const InventoryViewState *)((u8 *)scene + 0x7c), 0);
     FIELD(void *, scene, 0x54) = child;
     FIELD(u32, scene, 0x20) |= 0x400;

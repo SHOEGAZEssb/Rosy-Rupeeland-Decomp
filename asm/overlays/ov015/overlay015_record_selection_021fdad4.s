@@ -4,15 +4,15 @@
     .extern InventoryRecord_GetMetadata
     .extern func_ov001_021fc7e4
     .extern func_ov015_021fd8a8
-    .extern func_ov015_021fd8ec
-    .extern func_ov015_021fd9f0
-    .extern func_ov015_021fda50
+    .extern Overlay015_LayoutRecords
+    .extern Overlay015_ReplaceRecords
+    .extern Overlay015_StopRecords
     .extern gGameWork
 
 /* Exact fallback for contextual record selection; see src/overlays/ov015/overlay015_selection_runtime.c. */
-    .global func_ov015_021fdad4
+    .global Overlay015_RebuildSelectionRecords
 
-func_ov015_021fdad4:
+Overlay015_RebuildSelectionRecords:
     stmdb sp!, {r4, r5, r6, lr}
     ldr r1, L_021fdd18
     mov r5, r0
@@ -43,7 +43,7 @@ L_021fdb28:
     cmp r1, #0x0
     beq L_021fdb50
     mov r0, r5
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdb50:
     ldr r2, [r5, #0xec]
@@ -57,12 +57,12 @@ L_021fdb50:
     mov r1, #0x0
     mov r0, r5
     str r1, [r5, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r5
     mov r1, #0x24
     bl func_ov015_021fd8a8
     mov r0, r5
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdb98:
     bl ActorDescriptor_GetSubtype
@@ -71,12 +71,12 @@ L_021fdb98:
     mov r1, #0x0
     mov r0, r5
     str r1, [r5, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r5
     mov r1, #0x2c
     bl func_ov015_021fd8a8
     mov r0, r5
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdbcc:
     cmp r2, #0x0
@@ -85,7 +85,7 @@ L_021fdbcc:
     cmp r1, #0x0
     bne L_021fdbec
     mov r0, r5
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdbec:
     bl ActorDescriptor_GetSubtype
@@ -94,12 +94,12 @@ L_021fdbec:
     mov r1, #0x0
     mov r0, r5
     str r1, [r5, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r5
     mov r1, #0x2c
     bl func_ov015_021fd8a8
     mov r0, r5
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdc20:
     cmp r1, #0x0
@@ -109,16 +109,16 @@ L_021fdc20:
     mov r1, #0x0
     mov r0, r5
     str r1, [r5, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r5
     mov r1, #0xd
     bl func_ov015_021fd8a8
     mov r0, r5
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdc58:
     mov r0, r5
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdc64:
     cmp r4, #0x0
@@ -130,7 +130,7 @@ L_021fdc64:
     mov r0, r5
     sub r3, r2, #0x12
     mov r1, #0xd
-    bl func_ov015_021fd9f0
+    bl Overlay015_ReplaceRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdc90:
     bl ActorDescriptor_GetSubtype
@@ -139,12 +139,12 @@ L_021fdc90:
     mov r1, #0x0
     mov r0, r5
     str r1, [r5, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r5
     mov r1, #0x11
     bl func_ov015_021fd8a8
     mov r0, r5
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdcc4:
     ldr r0, [r5, #0xec]
@@ -154,23 +154,23 @@ L_021fdcc4:
     bne L_021fdce4
 L_021fdcd8:
     mov r0, r5
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdce4:
     mov r1, #0x0
     mov r0, r5
     str r1, [r5, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r5
     mov r1, #0xd
     bl func_ov015_021fd8a8
     mov r0, r5
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdd0c:
     mov r0, r5
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     ldmia sp!, {r4, r5, r6, pc}
 L_021fdd18: .word gGameWork
 
-    .size func_ov015_021fdad4, . - func_ov015_021fdad4
+    .size Overlay015_RebuildSelectionRecords, . - Overlay015_RebuildSelectionRecords

@@ -7,15 +7,15 @@
     .extern func_ov001_021fc7f4
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
-    .extern func_ov015_021fdad4
-    .extern func_ov015_021fde00
-    .extern func_ov015_021fdeac
-    .extern func_ov015_021fe548
+    .extern Overlay015_RebuildSelectionRecords
+    .extern Overlay015_CreatePrompt
+    .extern Overlay015_DestroyPrompt
+    .extern Overlay015_HasRecordReachedLimit
 
 /* Exact fallbacks for action-confirmation phase; see src/overlays/ov015/overlay015_phase_runtime.c. */
-    .global func_ov015_021fe3e4
+    .global Overlay015_UpdateActionConfirmation
 
-func_ov015_021fe3e4:
+Overlay015_UpdateActionConfirmation:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xdc]
@@ -35,7 +35,7 @@ L_021fe418:
     add r2, r4, #0xfc
     mov r0, #0xac
     mla r0, r1, r0, r2
-    bl func_ov015_021fe548
+    bl Overlay015_HasRecordReachedLimit
     cmp r0, #0x0
     beq L_021fe530
     ldr r1, [r4, #0x4]
@@ -51,7 +51,7 @@ L_021fe44c:
     mov r0, r4
     mov r1, #0x12
     mov r2, #0x0
-    bl func_ov015_021fde00
+    bl Overlay015_CreatePrompt
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -83,7 +83,7 @@ L_021fe4b4:
     b L_021fe530
 L_021fe4d4:
     mov r0, r4
-    bl func_ov015_021fdeac
+    bl Overlay015_DestroyPrompt
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -92,7 +92,7 @@ L_021fe4d4:
     b L_021fe530
 L_021fe4f4:
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r1, L_021fe540
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -100,9 +100,9 @@ L_021fe4f4:
     b L_021fe530
 L_021fe510:
     mov r0, r4
-    bl func_ov015_021fdeac
+    bl Overlay015_DestroyPrompt
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r1, L_021fe544
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -115,4 +115,4 @@ L_021fe530:
 L_021fe540: .word data_ov015_021febf0
 L_021fe544: .word data_ov015_021febe8
 
-    .size func_ov015_021fe3e4, . - func_ov015_021fe3e4
+    .size Overlay015_UpdateActionConfirmation, . - Overlay015_UpdateActionConfirmation

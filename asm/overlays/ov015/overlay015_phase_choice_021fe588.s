@@ -11,16 +11,16 @@
     .extern Overlay001_TransferActiveCell
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
-    .extern func_ov015_021fdad4
-    .extern func_ov015_021fde00
-    .extern func_ov015_021fdeac
-    .extern func_ov015_021fe548
+    .extern Overlay015_RebuildSelectionRecords
+    .extern Overlay015_CreatePrompt
+    .extern Overlay015_DestroyPrompt
+    .extern Overlay015_HasRecordReachedLimit
     .extern func_ov015_021fe560
 
 /* Exact fallbacks for choice-resolution phase; see src/overlays/ov015/overlay015_terminal_phases.c. */
-    .global func_ov015_021fe588
+    .global Overlay015_UpdateChoiceResolution
 
-func_ov015_021fe588:
+Overlay015_UpdateChoiceResolution:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0xdc]
@@ -49,7 +49,7 @@ L_021fe5e0:
     add r2, r4, #0xfc
     mov r0, #0xac
     mla r0, r1, r0, r2
-    bl func_ov015_021fe548
+    bl Overlay015_HasRecordReachedLimit
     cmp r0, #0x0
     beq L_021fe804
     ldr r1, [r4, #0x4]
@@ -71,7 +71,7 @@ L_021fe614:
     mov r0, r4
     mov r1, #0x26
     mov r2, #0x0
-    bl func_ov015_021fde00
+    bl Overlay015_CreatePrompt
     mov r0, #0xa
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -83,7 +83,7 @@ L_021fe65c:
     mov r0, r4
     mov r1, #0x11
     mov r2, #0x0
-    bl func_ov015_021fde00
+    bl Overlay015_CreatePrompt
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -120,7 +120,7 @@ L_021fe6c0:
     b L_021fe804
 L_021fe6f4:
     mov r0, r4
-    bl func_ov015_021fdeac
+    bl Overlay015_DestroyPrompt
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -129,7 +129,7 @@ L_021fe6f4:
     b L_021fe804
 L_021fe714:
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r1, L_021fe818
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -137,9 +137,9 @@ L_021fe714:
     b L_021fe804
 L_021fe730:
     mov r0, r4
-    bl func_ov015_021fdeac
+    bl Overlay015_DestroyPrompt
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r1, L_021fe81c
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -170,7 +170,7 @@ L_021fe788:
     b L_021fe804
 L_021fe7a8:
     mov r0, r4
-    bl func_ov015_021fdeac
+    bl Overlay015_DestroyPrompt
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -179,7 +179,7 @@ L_021fe7a8:
     b L_021fe804
 L_021fe7c8:
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r1, L_021fe820
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -187,9 +187,9 @@ L_021fe7c8:
     b L_021fe804
 L_021fe7e4:
     mov r0, r4
-    bl func_ov015_021fdeac
+    bl Overlay015_DestroyPrompt
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r1, L_021fe824
     mov r0, r4
     ldmia r1, {r1, r2}
@@ -205,4 +205,4 @@ L_021fe81c: .word data_ov015_021febd8
 L_021fe820: .word data_ov015_021febc0
 L_021fe824: .word data_ov015_021febc8
 
-    .size func_ov015_021fe588, . - func_ov015_021fe588
+    .size Overlay015_UpdateChoiceResolution, . - Overlay015_UpdateChoiceResolution

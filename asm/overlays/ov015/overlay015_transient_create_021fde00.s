@@ -9,9 +9,9 @@
     .extern gHeapContext
 
 /* Exact fallback for transient presentation creation; see src/overlays/ov015/overlay015_selection_runtime.c. */
-    .global func_ov015_021fde00
+    .global Overlay015_CreatePrompt
 
-func_ov015_021fde00:
+Overlay015_CreatePrompt:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -60,4 +60,4 @@ L_021fde88:
 L_021fdea4: .word data_ov015_021fec98
 L_021fdea8: .word gHeapContext
 
-    .size func_ov015_021fde00, . - func_ov015_021fde00
+    .size Overlay015_CreatePrompt, . - Overlay015_CreatePrompt

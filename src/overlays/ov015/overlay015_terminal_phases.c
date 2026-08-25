@@ -34,10 +34,10 @@ extern void Overlay001_TransferActiveCell(void *);
 extern void Overlay001_MergeActiveCell(void *, s32, void *);
 extern void func_ov015_021fce30(void *, u32, u32);
 extern void Overlay015_UpdateRecords(void *);
-extern void func_ov015_021fdad4(void *);
-extern void func_ov015_021fde00(void *, s32, s32, void *);
-extern void func_ov015_021fdeac(void *);
-extern s32 func_ov015_021fe548(void *);
+extern void Overlay015_RebuildSelectionRecords(void *);
+extern void Overlay015_CreatePrompt(void *, s32, s32, void *);
+extern void Overlay015_DestroyPrompt(void *);
+extern s32 Overlay015_HasRecordReachedLimit(void *);
 extern s32 func_ov015_021fe560(void *, u16);
 #ifdef __cplusplus
 }
@@ -71,7 +71,7 @@ static s32 overlay015_poll_transient(void *state)
  * sound 0x4102 and commits the selected controller action. Record, transient,
  * audio, and transition state may change. Always update records and return zero.
  */
-extern "C" s32 func_ov015_021fe588(void *state)
+extern "C" s32 Overlay015_UpdateChoiceResolution(void *state)
 {
     void *controller = FIELD(void *, state, 0xdc);
     void *status = func_ov001_021fc7e4(controller);
@@ -79,7 +79,7 @@ extern "C" s32 func_ov015_021fe588(void *state)
 
     switch (FIELD(s32, state, 4)) {
     case 0:
-        if (func_ov015_021fe548((u8 *)state + 0xfc + FIELD(s32, state, 0xf0) * 0xac)) {
+        if (Overlay015_HasRecordReachedLimit((u8 *)state + 0xfc + FIELD(s32, state, 0xf0) * 0xac)) {
             overlay015_terminal_step(state, 1);
         }
         break;
@@ -87,11 +87,11 @@ extern "C" s32 func_ov015_021fe588(void *state)
         void *item = FIELD(void *, status, 0xc);
         void *text = (void *)ActorDescriptor_GetPrimaryLabel(item);
         if (func_ov015_021fe560(state, FIELD(u16, item, 0)) != 0) {
-            func_ov015_021fde00(state, 0x26, 0, text);
+            Overlay015_CreatePrompt(state, 0x26, 0, text);
             FIELD(s32, state, 4) = 10;
             FIELD(s32, state, 8) = 0;
         } else {
-            func_ov015_021fde00(state, 0x11, 0, text);
+            Overlay015_CreatePrompt(state, 0x11, 0, text);
             overlay015_terminal_step(state, 1);
         }
         break;
@@ -104,17 +104,17 @@ extern "C" s32 func_ov015_021fe588(void *state)
             func_ov001_021fc7f4(controller);
             overlay015_terminal_step(state, 2);
         } else if (result == 2) {
-            func_ov015_021fdeac(state);
+            Overlay015_DestroyPrompt(state);
             overlay015_terminal_step(state, 1);
         }
         break;
     case 3:
-        func_ov015_021fdad4(state);
+        Overlay015_RebuildSelectionRecords(state);
         overlay015_terminal_transition(state, data_ov015_021febb0);
         break;
     case 4:
-        func_ov015_021fdeac(state);
-        func_ov015_021fdad4(state);
+        Overlay015_DestroyPrompt(state);
+        Overlay015_RebuildSelectionRecords(state);
         overlay015_terminal_transition(state, data_ov015_021febd8);
         break;
     case 10:
@@ -123,17 +123,17 @@ extern "C" s32 func_ov015_021fe588(void *state)
             func_ov001_021fc7f4(controller);
             overlay015_terminal_step(state, 2);
         } else if (result == 2) {
-            func_ov015_021fdeac(state);
+            Overlay015_DestroyPrompt(state);
             overlay015_terminal_step(state, 1);
         }
         break;
     case 11:
-        func_ov015_021fdad4(state);
+        Overlay015_RebuildSelectionRecords(state);
         overlay015_terminal_transition(state, data_ov015_021febc0);
         break;
     case 12:
-        func_ov015_021fdeac(state);
-        func_ov015_021fdad4(state);
+        Overlay015_DestroyPrompt(state);
+        Overlay015_RebuildSelectionRecords(state);
         overlay015_terminal_transition(state, data_ov015_021febc8);
         break;
     }
@@ -148,18 +148,18 @@ extern "C" s32 func_ov015_021fe588(void *state)
  * 0x3B0 and transitions once polling completes. Records, game flags, controller,
  * presentation, audio, and transition state may change. Always return zero.
  */
-extern "C" s32 func_ov015_021fe828(void *state)
+extern "C" s32 Overlay015_UpdateAuxiliaryAction(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
-        if (func_ov015_021fe548((u8 *)state + 0xfc + FIELD(s32, state, 0xf0) * 0xac)) {
+        if (Overlay015_HasRecordReachedLimit((u8 *)state + 0xfc + FIELD(s32, state, 0xf0) * 0xac)) {
             SceneSound_PlayPackedEffect(state, 0x4104);
             overlay015_terminal_step(state, 1);
         }
         break;
     case 1:
         Overlay001_MergeActiveCell(FIELD(void *, state, 0xdc), 1, FIELD(void *, state, 0xec));
-        func_ov015_021fdad4(state);
+        Overlay015_RebuildSelectionRecords(state);
         if (GameWork_TestFlag(gGameWork, 0x3af) != 0) {
             overlay015_terminal_transition(state, data_ov015_021fec20);
         } else {
@@ -170,7 +170,7 @@ extern "C" s32 func_ov015_021fe828(void *state)
     case 2:
         if (++FIELD(s32, state, 8) > 30) {
             func_ov001_021fc39c(FIELD(void *, state, 0xdc));
-            func_ov015_021fde00(state, 0x10, 1,
+            Overlay015_CreatePrompt(state, 0x10, 1,
                                 (void *)ActorDescriptor_GetPrimaryLabel(FIELD(void *, state, 0xec)));
             overlay015_terminal_step(state, 1);
         }
@@ -194,10 +194,10 @@ extern "C" s32 func_ov015_021fe828(void *state)
  * clear flag 0x389 and transition. Gameplay flags, objects, records, and the
  * transition state may change; always return zero and perform no direct MMIO.
  */
-extern "C" s32 func_ov015_021fe9b8(void *state)
+extern "C" s32 Overlay015_UpdateTerminalCommit(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
-        if (func_ov015_021fe548((u8 *)state + 0xfc + FIELD(s32, state, 0xf0) * 0xac)) {
+        if (Overlay015_HasRecordReachedLimit((u8 *)state + 0xfc + FIELD(s32, state, 0xf0) * 0xac)) {
             void *controller = FIELD(void *, state, 0xdc);
             FIELD(s32, controller, 0x1fc) = 0;
             FIELD(s32, controller, 0x200) = 0x1000;
@@ -227,7 +227,7 @@ extern "C" s32 func_ov015_021fe9b8(void *state)
  * Perform one final record update and return one. The state and its record
  * objects may change through the updater; there are no direct hardware effects.
  */
-extern "C" s32 func_ov015_021feb20(void *state)
+extern "C" s32 Overlay015_FinalizeRecordUpdate(void *state)
 {
     Overlay015_UpdateRecords(state);
     return 1;

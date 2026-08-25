@@ -30,9 +30,9 @@ extern void AnimationResourceState_ReplaceResources(void *,void *,s32,s32,s32); 
 extern void *GraphicsSpriteGroup_CreateStateFromSource(void *,void *,s32); extern void SpriteMotionController_BindSprite(void *,void *,s32,s32,s32);
 extern void GraphicsSpriteState_ApplyRenderConfig(void *,s32,s32,s32,s32,s32,s32); extern void func_020afd0c(void *,s32,s32,s32,s32);
 extern void Sound_LoadGroup(void *,s32); extern void Sound_ReleaseGroup(void *,s32); extern void GraphicsSpriteGroup_Destroy(void *);
-extern void func_ov015_021fce00(void *); extern void func_ov015_021fce14(void *); extern void func_ov015_021fce30(void *,s32,s32,s32);
-extern void func_ov015_021fd230(void *,const void *); extern void func_ov015_021fd41c(void *);
-extern void func_ov015_021fda50(void *); extern void func_ov015_021fd8a8(void *,s32); extern void func_ov015_021fd8ec(void *);
+extern void Overlay015_ClearValueTriple(void *); extern void func_ov015_021fce14(void *); extern void func_ov015_021fce30(void *,s32,s32,s32);
+extern void Overlay015_CopyValueTriple(void *,const void *); extern void Overlay015_SetupGraphics(void *);
+extern void Overlay015_StopRecords(void *); extern void func_ov015_021fd8a8(void *,s32); extern void Overlay015_LayoutRecords(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -53,19 +53,19 @@ typedef void (*Overlay015Destructor)(void *);
  * data_ov015_021fec48. Allocation, sound, graphics, and global-service effects
  * pass through their callees; semantic object names remain inferred.
  */
-extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soundMode)
+extern "C" void *Overlay015_Scene_Init(void *state,const void *parameters,s32 soundMode)
 {
     s32 i; void *object; void *selected;
     SceneInputBase_Init(state); FIELD(const void *,state,0)=data_ov015_021fec74;
     AnimationResourceState_InitEmbedded((u8 *)state+0x58); AnimationResourceState_InitEmbedded((u8 *)state+0x64);
     TitleCharacterResourceCollection_Init((u8 *)state+0x74); TitleScreenResourceCollection_Init((u8 *)state+0x98);
-    func_ov015_021fce00((u8 *)state+0xe0);
+    Overlay015_ClearValueTriple((u8 *)state+0xe0);
     for(i=0;i<3;i++)SpriteMotionController_Init((u8 *)state+0xfc+i*0xac);
-    FIELD(s32,state,0xec)=soundMode; func_ov015_021fd41c(state);
+    FIELD(s32,state,0xec)=soundMode; Overlay015_SetupGraphics(state);
     TitleScreenResourceCollection_Append((u8 *)state+0x98,0x8010); TitleScreenResourceCollection_Append((u8 *)state+0x98,0x8011); TitleScreenResourceCollection_Append((u8 *)state+0x98,0x800b);
     TitleCharacterResourceCollection_Append((u8 *)state+0x74,0x7001); TitleCharacterResourceCollection_Append((u8 *)state+0x74,0x7005); TitleCharacterResourceCollection_Append((u8 *)state+0x74,0x7000);
     object=Heap_Alloc(0x48,data_ov015_021fec88,4,gHeapContext);if(object)object=func_ov001_021fb6f8(object,gDebugFont);FIELD(void *,state,0xf4)=object;FIELD(void *,state,0xf8)=0;
-    if(parameters)func_ov015_021fd230((u8 *)state+0xe0,parameters);
+    if(parameters)Overlay015_CopyValueTriple((u8 *)state+0xe0,parameters);
     InventoryRecordCollection_SortAlternate((u8 *)data_021e9ac0+0x34,1);
     object=Heap_Alloc(0x210,data_ov015_021fec90,4,gHeapContext);if(object)object=Overlay001_Grid_Init(object,data_020f4e14);FIELD(void *,state,0xdc)=object;
     if(soundMode)Sound_LoadGroup(gSoundContext,0x82);
@@ -73,14 +73,14 @@ extern "C" void *func_ov015_021fce58(void *state,const void *parameters,s32 soun
     AnimationResourceState_ReplaceResources((u8 *)state+0x64,data_020f4e18,0x47,0x45,0x48);
     FIELD(void *,state,0x54)=GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     for(i=0;i<3;i++){selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x58,1);SpriteMotionController_BindSprite((u8 *)state+0xfc+i*0xac,selected,0,2,0);}
-    FIELD(s32,state,0x300)=0;func_ov015_021fda50(state);func_ov015_021fd8a8(state,0);func_ov015_021fd8ec(state);func_ov015_021fda50(state);
+    FIELD(s32,state,0x300)=0;Overlay015_StopRecords(state);func_ov015_021fd8a8(state,0);Overlay015_LayoutRecords(state);Overlay015_StopRecords(state);
     selected=GraphicsSpriteGroup_CreateStateFromSource(FIELD(void *,state,0x54),(u8 *)state+0x64,1);FIELD(void *,state,0x70)=selected;GraphicsSpriteState_ApplyRenderConfig(selected,0,0x9c,0xe,1,0,4);
     func_020afd0c((void *)0x04000050,0,4,4,0xc);FIELD(u32,state,0x20)|=0x400;
     func_ov015_021fce30(state,data_ov015_021fec48[0],data_ov015_021fec48[1],0);return state;
 }
 
 /* Destroy owned sound, presentation, record, timer, and resource objects without freeing state; return state. */
-extern "C" void *func_ov015_021fd24c(void *state)
+extern "C" void *Overlay015_Scene_Destroy(void *state)
 {
     s32 i;void *o;FIELD(const void *,state,0)=data_ov015_021fec74;FIELD(u32,state,0x20)&=~0x400u;
     if(FIELD(s32,state,0xec))Sound_ReleaseGroup(gSoundContext,0x82);*(volatile u16 *)0x04000050=0;
@@ -91,5 +91,5 @@ extern "C" void *func_ov015_021fd24c(void *state)
 }
 
 /* Call the non-freeing destructor, free state, and return its former address; heap state changes are observable. */
-extern "C" void *func_ov015_021fd330(void *state)
-{ func_ov015_021fd24c(state);Heap_Free(state);return state; }
+extern "C" void *Overlay015_Scene_Delete(void *state)
+{ Overlay015_Scene_Destroy(state);Heap_Free(state);return state; }

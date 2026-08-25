@@ -29,9 +29,9 @@ extern void ModalState_CopyAttachmentText(void *, void *);
 extern void *func_ov001_021fc7e4(void *);
 extern void func_ov015_021fce30(void *, u32, u32);
 extern void func_ov015_021fd8a8(void *, s32);
-extern s32 func_ov015_021fd8ec(void *);
-extern s32 func_ov015_021fd9f0(void *, s32, s32, s32);
-extern void func_ov015_021fda50(void *);
+extern s32 Overlay015_LayoutRecords(void *);
+extern s32 Overlay015_ReplaceRecords(void *, s32, s32, s32);
+extern void Overlay015_StopRecords(void *);
 extern s32 func_ov015_021fda78(void *, void *);
 #ifdef __cplusplus
 }
@@ -40,9 +40,9 @@ extern s32 func_ov015_021fda78(void *, void *);
 static void overlay015_replace_one(void *state, s32 value)
 {
     FIELD(s32, state, 0x300) = 0;
-    func_ov015_021fda50(state);
+    Overlay015_StopRecords(state);
     func_ov015_021fd8a8(state, value);
-    func_ov015_021fd8ec(state);
+    Overlay015_LayoutRecords(state);
 }
 
 /*
@@ -53,7 +53,7 @@ static void overlay015_replace_one(void *state, s32 value)
  * because their semantic types remain unconfirmed. Return void; record objects
  * and count +0x300 may change, with no direct hardware access.
  */
-extern "C" void func_ov015_021fdad4(void *state)
+extern "C" void Overlay015_RebuildSelectionRecords(void *state)
 {
     s32 allowFlag = GameWork_TestFlag(gGameWork, 0x38b) == 0;
     void *status = func_ov001_021fc7e4(FIELD(void *, state, 0xdc));
@@ -61,13 +61,13 @@ extern "C" void func_ov015_021fdad4(void *state)
     s32 type;
 
     if (item == 0) {
-        func_ov015_021fda50(state);
+        Overlay015_StopRecords(state);
         return;
     }
     type = FIELD(u8, InventoryRecord_GetMetadata(item), 2);
     if (type != 1) {
         if (FIELD(void *, state, 0xec) != 0 || !allowFlag) {
-            func_ov015_021fda50(state);
+            Overlay015_StopRecords(state);
         } else {
             overlay015_replace_one(state, 0xd);
         }
@@ -75,7 +75,7 @@ extern "C" void func_ov015_021fdad4(void *state)
     }
 
     if ((FIELD(u32, item, 0x20) & 1) != 0) {
-        func_ov015_021fda50(state);
+        Overlay015_StopRecords(state);
         return;
     }
     if (FIELD(void *, state, 0xec) != 0 &&
@@ -89,7 +89,7 @@ extern "C" void func_ov015_021fdad4(void *state)
     }
     if (FIELD(void *, state, 0xec) != 0) {
         if (FIELD(u16, item, 4) == 0) {
-            func_ov015_021fda50(state);
+            Overlay015_StopRecords(state);
         } else if (ActorDescriptor_GetSubtype(item) == 1) {
             overlay015_replace_one(state, 0x2c);
         }
@@ -99,11 +99,11 @@ extern "C" void func_ov015_021fdad4(void *state)
         if (allowFlag) {
             overlay015_replace_one(state, 0xd);
         } else {
-            func_ov015_021fda50(state);
+            Overlay015_StopRecords(state);
         }
     } else if (ActorDescriptor_GetSubtype(item) == 1) {
         if (allowFlag) {
-            func_ov015_021fd9f0(state, 0xd, 0x11, -1);
+            Overlay015_ReplaceRecords(state, 0xd, 0x11, -1);
         } else {
             overlay015_replace_one(state, 0x11);
         }
@@ -116,7 +116,7 @@ extern "C" void func_ov015_021fdad4(void *state)
  * Values 0x0D and 0x11 also request sounds 0x5D and 2. Return zero when there is
  * no selected record, otherwise one; state transitions and audio may change.
  */
-extern "C" s32 func_ov015_021fdd1c(void *state)
+extern "C" s32 Overlay015_HandleRecordSelection(void *state)
 {
     s32 index = func_ov015_021fda78(state, (u8 *)state + 0x30);
     s32 value;
@@ -151,7 +151,7 @@ extern "C" s32 func_ov015_021fdd1c(void *state)
  * +0x48. Allocation uses the overlay descriptor and global heap context. Return
  * void; graphics/presentation state changes through the called SDK helpers.
  */
-extern "C" void func_ov015_021fde00(void *state, s32 value, s32 alternate, void *attachment)
+extern "C" void Overlay015_CreatePrompt(void *state, s32 value, s32 alternate, void *attachment)
 {
     void *handle = TitleScreenResourceCollection_Get((u8 *)state + 0x98, alternate != 0);
     void *object;
@@ -174,7 +174,7 @@ extern "C" void func_ov015_021fde00(void *state, s32 value, s32 alternate, void 
  * the stored pointer, and clear state bit 1 at +0x48. Return void; the called
  * teardown routine may release graphics resources, with no direct MMIO here.
  */
-extern "C" void func_ov015_021fdeac(void *state)
+extern "C" void Overlay015_DestroyPrompt(void *state)
 {
     typedef void (*DeleteFunction)(void *);
     void *object = FIELD(void *, state, 0xf8);

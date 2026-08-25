@@ -12,9 +12,9 @@
     .extern gSoundContext
 
 /* Exact fallback; see src/overlays/ov015/overlay015_scene_lifecycle.c. */
-    .global func_ov015_021fd330
+    .global Overlay015_Scene_Delete
 
-func_ov015_021fd330:
+Overlay015_Scene_Delete:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fd40c
     mov r4, r0
@@ -78,4 +78,4 @@ L_021fd40c: .word data_ov015_021fec74
 L_021fd410: .word gSoundContext
 L_021fd414: .word 0x4000050
 L_021fd418: .word func_ov015_021fce14
-    .size func_ov015_021fd330, . - func_ov015_021fd330
+    .size Overlay015_Scene_Delete, . - Overlay015_Scene_Delete

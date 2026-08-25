@@ -5,9 +5,9 @@
     .extern SpriteMotionController_Show
 
 /* Exact fallback for record layout; see src/overlays/ov015/overlay015_record_layout.c. */
-    .global func_ov015_021fd8ec
+    .global Overlay015_LayoutRecords
 
-func_ov015_021fd8ec:
+Overlay015_LayoutRecords:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r7, r0
     ldr r0, [r7, #0x300]
@@ -80,4 +80,4 @@ L_021fd9e0:
 L_021fd9e8: .word data_ov015_021feb84
 L_021fd9ec: .word data_ov015_021feb88
 
-    .size func_ov015_021fd8ec, . - func_ov015_021fd8ec
+    .size Overlay015_LayoutRecords, . - Overlay015_LayoutRecords

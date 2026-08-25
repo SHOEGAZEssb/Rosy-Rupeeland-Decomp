@@ -5,7 +5,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 /* Clear words +0x00/+0x04/+0x08 and return void without hardware effects. */
-extern "C" void func_ov015_021fce00(void *value)
+extern "C" void Overlay015_ClearValueTriple(void *value)
 { FIELD(s32,value,8)=0; FIELD(s32,value,4)=0; FIELD(s32,value,0)=0; }
 
 /* Accept one pointer and return immediately without changing state or hardware. */

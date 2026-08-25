@@ -3,10 +3,10 @@
     .extern SpriteMotionController_Hide
 
 /* Exact fallback for record stop and lookup; see src/overlays/ov015/overlay015_record_layout.c. */
-    .global func_ov015_021fda50
+    .global Overlay015_StopRecords
     .global func_ov015_021fda78
 
-func_ov015_021fda50:
+Overlay015_StopRecords:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, #0x0
     add r5, r0, #0xfc
@@ -47,5 +47,5 @@ L_021fdac0:
     mvn r0, #0x0
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 
-    .size func_ov015_021fda50, func_ov015_021fda78 - func_ov015_021fda50
+    .size Overlay015_StopRecords, func_ov015_021fda78 - Overlay015_StopRecords
     .size func_ov015_021fda78, . - func_ov015_021fda78

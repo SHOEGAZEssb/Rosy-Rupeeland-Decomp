@@ -2,10 +2,10 @@
     .extern Overlay015_UpdateRecords
 
 /* Exact fallbacks for completion and display hooks; see src/overlays/ov015/overlay015_terminal_phases.c. */
-    .global func_ov015_021feb20
+    .global Overlay015_FinalizeRecordUpdate
     .global func_ov015_021feb30
 
-func_ov015_021feb20:
+Overlay015_FinalizeRecordUpdate:
     stmdb sp!, {r3, lr}
     bl Overlay015_UpdateRecords
     mov r0, #0x1
@@ -36,5 +36,5 @@ L_021feb7c:
     mov r0, #0x0
     bx lr
 
-    .size func_ov015_021feb20, func_ov015_021feb30 - func_ov015_021feb20
+    .size Overlay015_FinalizeRecordUpdate, func_ov015_021feb30 - Overlay015_FinalizeRecordUpdate
     .size func_ov015_021feb30, . - func_ov015_021feb30

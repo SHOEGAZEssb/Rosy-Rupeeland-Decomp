@@ -1,12 +1,12 @@
     .text
     .extern func_ov015_021fd8a8
-    .extern func_ov015_021fd8ec
-    .extern func_ov015_021fda50
+    .extern Overlay015_LayoutRecords
+    .extern Overlay015_StopRecords
 
 /* Exact fallback for record replacement; see src/overlays/ov015/overlay015_record_layout.c. */
-    .global func_ov015_021fd9f0
+    .global Overlay015_ReplaceRecords
 
-func_ov015_021fd9f0:
+Overlay015_ReplaceRecords:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r7, r0
     mov ip, #0x0
@@ -14,7 +14,7 @@ func_ov015_021fd9f0:
     mov r5, r2
     mov r4, r3
     str ip, [r7, #0x300]
-    bl func_ov015_021fda50
+    bl Overlay015_StopRecords
     mov r0, r7
     mov r1, r6
     bl func_ov015_021fd8a8
@@ -30,7 +30,7 @@ func_ov015_021fd9f0:
     bl func_ov015_021fd8a8
 L_021fda44:
     mov r0, r7
-    bl func_ov015_021fd8ec
+    bl Overlay015_LayoutRecords
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 
-    .size func_ov015_021fd9f0, . - func_ov015_021fd9f0
+    .size Overlay015_ReplaceRecords, . - Overlay015_ReplaceRecords

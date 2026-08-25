@@ -3,10 +3,10 @@
     .extern ActorDescriptorState_FindInactiveQuantity
 
 /* Exact fallbacks for phase predicates; see src/overlays/ov015/overlay015_phase_runtime.c. */
-    .global func_ov015_021fe548
+    .global Overlay015_HasRecordReachedLimit
     .global func_ov015_021fe560
 
-func_ov015_021fe548:
+Overlay015_HasRecordReachedLimit:
     ldr r1, [r0, #0x80]
     ldr r0, [r0, #0x7c]
     cmp r1, r0
@@ -27,5 +27,5 @@ func_ov015_021fe560:
     ldmia sp!, {r3, pc}
 L_021fe584: .word data_021e9ac0
 
-    .size func_ov015_021fe548, func_ov015_021fe560 - func_ov015_021fe548
+    .size Overlay015_HasRecordReachedLimit, func_ov015_021fe560 - Overlay015_HasRecordReachedLimit
     .size func_ov015_021fe560, . - func_ov015_021fe560

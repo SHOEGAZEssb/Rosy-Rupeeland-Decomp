@@ -7,7 +7,7 @@
 .extern func_ov044_0220c6dc
 .extern GraphicsSpriteRenderer_ClearTextBuffer
 .extern Heap_Alloc
-.extern func_ov015_021fce58
+.extern Overlay015_Scene_Init
 .extern func_ov044_0220c880
 .extern SceneInputBase_Update
 .extern TitleDisplay_ResetMainBgScroll
@@ -75,7 +75,7 @@ func_ov044_0220cf60:
     beq .L_0220d018
     mov r2, r5
     mov r1, #0x0
-    bl func_ov015_021fce58
+    bl Overlay015_Scene_Init
 .L_0220d018:
     str r0, [r4, #0x23c]
     mov r0, #0x1

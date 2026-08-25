@@ -25,7 +25,7 @@ extern void GraphicsBgMapResource_AddPaletteBankOffset(void *,s32);extern void f
  * resource IDs are confirmed Nintendo DS graphics effects; +0xEC semantics are
  * inferred as a single-screen/sound mode from constructor use.
  */
-extern "C" void func_ov015_021fd41c(void *state)
+extern "C" void Overlay015_SetupGraphics(void *state)
 {
     Overlay015ResourceSet a,b,c;volatile u16 *power=(volatile u16 *)0x04000304,*mainBg=(volatile u16 *)0x0400000a,*subBg=(volatile u16 *)0x04001008;
     GraphicsSpriteRenderer_ClearTextBuffer(data_020f4e14);if(FIELD(s32,state,0xec)==0)GraphicsSpriteRenderer_ClearTextBuffer(gDebugFont);*power&=(u16)~0x8000;FIELD(s32,state,0x48)=0x14;TitleDisplay_ConfigureMain2dEngine(0);mainBg[0]=(mainBg[0]&0x43)|0x3a00;mainBg[1]=(mainBg[1]&0x43)|0x1c00;TitleDisplay_ResetMainBgScroll();*(volatile u32 *)0x04000018=0x200000;TitleDisplay_SetMainBgPriorities(0,1,2,3);

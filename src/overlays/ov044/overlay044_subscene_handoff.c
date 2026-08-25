@@ -24,7 +24,7 @@ extern "C" void func_ov044_0220c6dc(void *object);
 extern "C" void GraphicsSpriteRenderer_ClearTextBuffer(void *font);
 extern "C" void *Heap_Alloc(u32 size, const void *tag, s32 alignment,
                               void *heap);
-extern "C" void *func_ov015_021fce58(void *storage, s32 mode, void *item);
+extern "C" void *Overlay015_Scene_Init(void *storage, s32 mode, void *item);
 extern "C" void func_ov044_0220c880(void *object);
 extern "C" s32 SceneInputBase_Update(void *scene, s32 phase);
 extern "C" void TitleDisplay_ResetMainBgScroll(void);
@@ -77,7 +77,7 @@ extern "C" s32 func_ov044_0220cf60(void *object)
             void *scene = Heap_Alloc(0x304, data_ov044_0220d358, 4,
                                      gHeapContext);
             if (scene)
-                scene = func_ov015_021fce58(scene, 0, item);
+                scene = Overlay015_Scene_Init(scene, 0, item);
             FIELD(void *, object, 0x23c) = scene;
             DisplayBrightness_StartMaskedTransitions(1, 0);
             advance_handoff(object);

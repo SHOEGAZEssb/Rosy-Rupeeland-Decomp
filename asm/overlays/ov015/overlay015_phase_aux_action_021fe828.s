@@ -11,15 +11,15 @@
     .extern Overlay001_MergeActiveCell
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
-    .extern func_ov015_021fdad4
-    .extern func_ov015_021fde00
-    .extern func_ov015_021fe548
+    .extern Overlay015_RebuildSelectionRecords
+    .extern Overlay015_CreatePrompt
+    .extern Overlay015_HasRecordReachedLimit
     .extern gGameWork
 
 /* Exact fallbacks for auxiliary action phase; see src/overlays/ov015/overlay015_terminal_phases.c. */
-    .global func_ov015_021fe828
+    .global Overlay015_UpdateAuxiliaryAction
 
-func_ov015_021fe828:
+Overlay015_UpdateAuxiliaryAction:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0xdc]
@@ -38,7 +38,7 @@ L_021fe858:
     add r2, r4, #0xfc
     mov r0, #0xac
     mla r0, r1, r0, r2
-    bl func_ov015_021fe548
+    bl Overlay015_HasRecordReachedLimit
     cmp r0, #0x0
     beq L_021fe994
     ldr r1, L_021fe9a4
@@ -56,7 +56,7 @@ L_021fe898:
     mov r1, #0x1
     bl Overlay001_MergeActiveCell
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r0, L_021fe9a8
     ldr r1, L_021fe9ac
     ldr r0, [r0, #0x0]
@@ -93,7 +93,7 @@ L_021fe904:
     mov r0, r4
     mov r1, #0x10
     mov r2, #0x1
-    bl func_ov015_021fde00
+    bl Overlay015_CreatePrompt
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -128,4 +128,4 @@ L_021fe9ac: .word 0x3af
 L_021fe9b0: .word data_ov015_021fec20
 L_021fe9b4: .word data_ov015_021febb8
 
-    .size func_ov015_021fe828, . - func_ov015_021fe828
+    .size Overlay015_UpdateAuxiliaryAction, . - Overlay015_UpdateAuxiliaryAction

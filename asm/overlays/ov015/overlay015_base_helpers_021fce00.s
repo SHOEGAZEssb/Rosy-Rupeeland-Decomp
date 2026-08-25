@@ -1,19 +1,19 @@
     .text
 
 /* Exact fallbacks; see src/overlays/ov015/overlay015_base_helpers.c. */
-    .global func_ov015_021fce00
+    .global Overlay015_ClearValueTriple
     .global func_ov015_021fce14
     .global func_ov015_021fce18
     .global func_ov015_021fce30
 
-func_ov015_021fce00:
+Overlay015_ClearValueTriple:
     mov r1, #0x0
     str r1, [r0, #0x8]
     str r1, [r0, #0x4]
     str r1, [r0, #0x0]
     bx lr
 
-    .size func_ov015_021fce00, . - func_ov015_021fce00
+    .size Overlay015_ClearValueTriple, . - Overlay015_ClearValueTriple
 func_ov015_021fce14:
     bx lr
 

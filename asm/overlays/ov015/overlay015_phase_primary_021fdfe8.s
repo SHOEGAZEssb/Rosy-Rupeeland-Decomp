@@ -23,14 +23,14 @@
     .extern func_ov015_021fce30
     .extern Overlay015_UpdateRecords
     .extern func_ov015_021fd6c8
-    .extern func_ov015_021fdad4
-    .extern func_ov015_021fdd1c
+    .extern Overlay015_RebuildSelectionRecords
+    .extern Overlay015_HandleRecordSelection
     .extern gGameWork
 
 /* Exact fallbacks for primary interaction phase; see src/overlays/ov015/overlay015_phase_runtime.c. */
-    .global func_ov015_021fdfe8
+    .global Overlay015_UpdatePrimaryInteraction
 
-func_ov015_021fdfe8:
+Overlay015_UpdatePrimaryInteraction:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -61,7 +61,7 @@ L_021fe038:
     mov r0, r4
     bl func_ov015_021fd6c8
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -127,7 +127,7 @@ L_021fe110:
     mov r0, r4
     bl func_ov015_021fd6c8
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
     b L_021fe28c
 L_021fe158:
     ldr r0, [r4, #0xdc]
@@ -162,7 +162,7 @@ L_021fe18c:
     bl func_ov015_021fce30
     b L_021fe28c
 L_021fe1d0:
-    bl func_ov015_021fdd1c
+    bl Overlay015_HandleRecordSelection
     cmp r0, #0x0
     bne L_021fe28c
 L_021fe1dc:
@@ -212,7 +212,7 @@ L_021fe26c:
     mov r0, r4
     bl func_ov015_021fd6c8
     mov r0, r4
-    bl func_ov015_021fdad4
+    bl Overlay015_RebuildSelectionRecords
 L_021fe28c:
     mov r0, r4
     bl Overlay015_UpdateRecords
@@ -224,4 +224,4 @@ L_021fe2a4: .word gGameWork
 L_021fe2a8: .word 0x387
 L_021fe2ac: .word data_ov015_021fec08
 
-    .size func_ov015_021fdfe8, . - func_ov015_021fdfe8
+    .size Overlay015_UpdatePrimaryInteraction, . - Overlay015_UpdatePrimaryInteraction

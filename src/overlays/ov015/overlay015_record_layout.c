@@ -15,8 +15,8 @@ extern s32 SpriteMotionController_BeginHitResponse(void *, s32, s32, s32);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
 extern void func_ov015_021fd8a8(void *, s32);
-extern s32 func_ov015_021fd8ec(void *);
-extern void func_ov015_021fda50(void *);
+extern s32 Overlay015_LayoutRecords(void *);
+extern void Overlay015_StopRecords(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -28,7 +28,7 @@ extern void func_ov015_021fda50(void *);
  * object halfword +0x2C and animation state are changed. Return zero only when
  * no records are populated, otherwise return one; no direct hardware effects.
  */
-extern "C" s32 func_ov015_021fd8ec(void *state)
+extern "C" s32 Overlay015_LayoutRecords(void *state)
 {
     s32 count = FIELD(s32, state, 0x300);
     s32 i;
@@ -60,10 +60,10 @@ extern "C" s32 func_ov015_021fd8ec(void *state)
  * nonnegative values. Stop all existing records, append in argument order,
  * lay out the resulting set, and return the layout helper's zero/one result.
  */
-extern "C" s32 func_ov015_021fd9f0(void *state, s32 first, s32 second, s32 third)
+extern "C" s32 Overlay015_ReplaceRecords(void *state, s32 first, s32 second, s32 third)
 {
     FIELD(s32, state, 0x300) = 0;
-    func_ov015_021fda50(state);
+    Overlay015_StopRecords(state);
     func_ov015_021fd8a8(state, first);
     if (second >= 0) {
         func_ov015_021fd8a8(state, second);
@@ -71,7 +71,7 @@ extern "C" s32 func_ov015_021fd9f0(void *state, s32 first, s32 second, s32 third
             func_ov015_021fd8a8(state, third);
         }
     }
-    return func_ov015_021fd8ec(state);
+    return Overlay015_LayoutRecords(state);
 }
 
 /*
@@ -79,7 +79,7 @@ extern "C" s32 func_ov015_021fd9f0(void *state, s32 first, s32 second, s32 third
  * count at +0x300. The record shutdown calls mutate their objects; return void
  * and perform no direct hardware access.
  */
-extern "C" void func_ov015_021fda50(void *state)
+extern "C" void Overlay015_StopRecords(void *state)
 {
     s32 i;
 
