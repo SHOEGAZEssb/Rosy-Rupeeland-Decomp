@@ -26,15 +26,15 @@ extern void Actor_UpdateAttachmentDirectionFromVector(void *actor, fx32 x, fx32 
 s32 GamePhaseActorScriptVm_CancelMovement(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
-    VecFx32Object zero;
+    VecFx32Object zeroVelocity;
     VecFx32Object_SetComponents(actor + 0x38, 0, 0, 0);
     VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
     VecFx32Object_SetComponents(actor + 0x98, 0, 0, 0);
     if (actor[0x4d] == 1)
         ActorDerivedType1_ResetSpecialModeFlags(actor);
-    VecFx32Object_InitComponents(&zero, 0, 0, 0);
-    Actor_SetVelocity(actor, &zero);
-    VecFx32Object_Destroy(&zero);
+    VecFx32Object_InitComponents(&zeroVelocity, 0, 0, 0);
+    Actor_SetVelocity(actor, &zeroVelocity);
+    VecFx32Object_Destroy(&zeroVelocity);
     *(u32 *)(actor + 0x10) &= ~0x40u;
     VecFx32Stepper_Reset(actor + 0x198);
     return 0;
@@ -50,11 +50,12 @@ s32 GamePhaseActorScriptVm_FaceIndexedActorAndGetAttachmentByte38(GamePhaseActor
     s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
     u8 *target = (u8 *)ActorCollection_FindActorByRuntimeId(Actor_GetOwningCollection(actor), index);
-    fx32 dx = *(fx32 *)(target + 0x1c) - *(fx32 *)(actor + 0x1c);
-    fx32 dy = *(fx32 *)(target + 0x20) - *(fx32 *)(actor + 0x20);
-    u8 *object;
-    Actor_UpdateAttachmentDirectionFromVector(actor, dx, dy);
-    object = *(u8 **)(actor + 0x54);
-    GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, object != 0 ? object[0x38] : 0);
+    fx32 displacementX = *(fx32 *)(target + 0x1c) - *(fx32 *)(actor + 0x1c);
+    fx32 displacementY = *(fx32 *)(target + 0x20) - *(fx32 *)(actor + 0x20);
+    u8 *attachment;
+    Actor_UpdateAttachmentDirectionFromVector(actor, displacementX, displacementY);
+    attachment = *(u8 **)(actor + 0x54);
+    GamePhaseScriptVm_StoreResultAndUpdateCondition(
+        &self->base, attachment != 0 ? attachment[0x38] : 0);
     return 0;
 }
