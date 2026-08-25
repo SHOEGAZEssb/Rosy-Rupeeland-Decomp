@@ -36,7 +36,7 @@ extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
  * stack-provided lifetime, register self in the runtime list at offset 0x2f7c,
  * and return self.
  */
-TimedActorRectanglePresentation *func_02025120(
+TimedActorRectanglePresentation *TimedActorRectanglePresentation_Init(
     TimedActorRectanglePresentation *self, void *actor, s32 firstExtent,
     s32 secondExtent, s32 lifetime)
 {
@@ -51,7 +51,7 @@ TimedActorRectanglePresentation *func_02025120(
 }
 
 /* Tear down the FieldEffect base and return self; this object owns no actor data. */
-TimedActorRectanglePresentation *func_0202517c(
+TimedActorRectanglePresentation *TimedActorRectanglePresentation_Destroy(
     TimedActorRectanglePresentation *self)
 {
     FieldEffect_DestroyBase(self);
@@ -59,7 +59,7 @@ TimedActorRectanglePresentation *func_0202517c(
 }
 
 /* Perform FieldEffect base teardown, free self, and return its old address. */
-TimedActorRectanglePresentation *func_02025190(
+TimedActorRectanglePresentation *TimedActorRectanglePresentation_DestroyAndFree(
     TimedActorRectanglePresentation *self)
 {
     FieldEffect_DestroyBase(self);
@@ -75,7 +75,7 @@ TimedActorRectanglePresentation *func_02025190(
  * 200, draw outer color 14 and inner color 2 rectangles through GraphicsSpriteCanvas_FillRect,
  * set runtime flags 0x30 at offset 0x30b8, and return zero.
  */
-s32 func_020251ac(TimedActorRectanglePresentation *self)
+s32 TimedActorRectanglePresentation_Update(TimedActorRectanglePresentation *self)
 {
     const s32 *camera;
     s32 x;

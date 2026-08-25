@@ -5,9 +5,9 @@
 .extern RuntimePresentationManager_AppendFirstListEffect
 .extern FieldEffect_Init
 
-    .global func_02025120
-    .type func_02025120, @function
-func_02025120: ; 0x02025120
+    .global TimedActorRectanglePresentation_Init
+    .type TimedActorRectanglePresentation_Init, @function
+TimedActorRectanglePresentation_Init: ; 0x02025120
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     mov r4, r0
     mov r7, r1
@@ -31,4 +31,4 @@ func_02025120: ; 0x02025120
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_02025174: .word data_020d6a24
 .L_02025178: .word gGamePhaseRuntime
-    .size func_02025120, . - func_02025120
+    .size TimedActorRectanglePresentation_Init, . - TimedActorRectanglePresentation_Init

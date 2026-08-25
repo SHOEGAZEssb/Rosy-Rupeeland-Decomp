@@ -9249,25 +9249,25 @@ build build/reports/timed_actor_rectangle_presentation_02025120.json: objdiff bu
   base_object = build/decomp/asm/game/timed_actor_rectangle_presentation_02025120.o
 build build/reports/timed_actor_rectangle_presentation_02025120.txt: match_report build/reports/timed_actor_rectangle_presentation_02025120.json | tools/report_objdiff.py
   report_json = build/reports/timed_actor_rectangle_presentation_02025120.json
-  report_args = --section .text --function func_02025120 --require-exact
+  report_args = --section .text --function TimedActorRectanglePresentation_Init --require-exact
 build build/reports/timed_actor_rectangle_presentation_0202517c.json: objdiff build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_0202517c.o | build/decomp/asm/game/timed_actor_rectangle_presentation_0202517c.o
   target_object = build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_0202517c.o
   base_object = build/decomp/asm/game/timed_actor_rectangle_presentation_0202517c.o
 build build/reports/timed_actor_rectangle_presentation_0202517c.txt: match_report build/reports/timed_actor_rectangle_presentation_0202517c.json | tools/report_objdiff.py
   report_json = build/reports/timed_actor_rectangle_presentation_0202517c.json
-  report_args = --section .text --function func_0202517c --require-exact
+  report_args = --section .text --function TimedActorRectanglePresentation_Destroy --require-exact
 build build/reports/timed_actor_rectangle_presentation_02025190.json: objdiff build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025190.o | build/decomp/asm/game/timed_actor_rectangle_presentation_02025190.o
   target_object = build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_02025190.o
   base_object = build/decomp/asm/game/timed_actor_rectangle_presentation_02025190.o
 build build/reports/timed_actor_rectangle_presentation_02025190.txt: match_report build/reports/timed_actor_rectangle_presentation_02025190.json | tools/report_objdiff.py
   report_json = build/reports/timed_actor_rectangle_presentation_02025190.json
-  report_args = --section .text --function func_02025190 --require-exact
+  report_args = --section .text --function TimedActorRectanglePresentation_DestroyAndFree --require-exact
 build build/reports/timed_actor_rectangle_presentation_020251ac.json: objdiff build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_020251ac.o | build/decomp/asm/game/timed_actor_rectangle_presentation_020251ac.o
   target_object = build/decomp/delinks/asm/game/timed_actor_rectangle_presentation_020251ac.o
   base_object = build/decomp/asm/game/timed_actor_rectangle_presentation_020251ac.o
 build build/reports/timed_actor_rectangle_presentation_020251ac.txt: match_report build/reports/timed_actor_rectangle_presentation_020251ac.json | tools/report_objdiff.py
   report_json = build/reports/timed_actor_rectangle_presentation_020251ac.json
-  report_args = --section .text --function func_020251ac --require-exact
+  report_args = --section .text --function TimedActorRectanglePresentation_Update --require-exact
 build build/reports/timed_actor_rectangle_presentation.txt: phony build/reports/timed_actor_rectangle_presentation_02025120.txt build/reports/timed_actor_rectangle_presentation_0202517c.txt build/reports/timed_actor_rectangle_presentation_02025190.txt build/reports/timed_actor_rectangle_presentation_020251ac.txt
 build build/reports/rotating_core_effect_controller_02025300.json: objdiff build/decomp/delinks/asm/game/rotating_core_effect_controller_02025300.o | build/decomp/asm/game/rotating_core_effect_controller_02025300.o
   target_object = build/decomp/delinks/asm/game/rotating_core_effect_controller_02025300.o

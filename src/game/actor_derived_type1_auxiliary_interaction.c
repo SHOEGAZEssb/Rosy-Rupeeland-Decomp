@@ -169,7 +169,7 @@ extern void func_0202de90(void *actorCollection);
 extern void ActorAttachmentEventList_InsertByPriority(void *queue, const void *event);
 extern void ActorAttachmentManager_QueueEvent(void *manager, const void *event);
 extern void ActorAttachmentRecord_ConfigureHitInterval(void *record, s32 first, s32 second);
-extern void *func_02025120(void *effect, void *actor, s32 amount,
+extern void *TimedActorRectanglePresentation_Init(void *effect, void *actor, s32 amount,
                            s32 variant, s32 duration);
 extern const char data_020e5828[];
 extern const char data_020e5830[];
@@ -2055,7 +2055,7 @@ void AuxiliaryInteraction_FinalizeResult(void *object, s32 requestedResult)
                 if ((descriptorFlags & 1) != 0) {
                     void *effect = Heap_Alloc(0x14, data_020e5828, 4, &gHeapContext);
                     if (effect != 0)
-                        func_02025120(effect, actor, *(s32 *)(actor + 0x1fc),
+                        TimedActorRectanglePresentation_Init(effect, actor, *(s32 *)(actor + 0x1fc),
                                      descriptorFlags >> 1, 60);
                 }
             }

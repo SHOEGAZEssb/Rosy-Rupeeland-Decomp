@@ -1,0 +1,6 @@
+{
+  "func_02025120": "TimedActorRectanglePresentation_Init",
+  "func_0202517c": "TimedActorRectanglePresentation_Destroy",
+  "func_02025190": "TimedActorRectanglePresentation_DestroyAndFree",
+  "func_020251ac": "TimedActorRectanglePresentation_Update"
+}

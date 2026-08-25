@@ -3,9 +3,9 @@
 .extern Heap_Free
 .extern FieldEffect_DestroyBase
 
-    .global func_02025190
-    .type func_02025190, @function
-func_02025190: ; 0x02025190
+    .global TimedActorRectanglePresentation_DestroyAndFree
+    .type TimedActorRectanglePresentation_DestroyAndFree, @function
+TimedActorRectanglePresentation_DestroyAndFree: ; 0x02025190
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl FieldEffect_DestroyBase
@@ -13,4 +13,4 @@ func_02025190: ; 0x02025190
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-    .size func_02025190, . - func_02025190
+    .size TimedActorRectanglePresentation_DestroyAndFree, . - TimedActorRectanglePresentation_DestroyAndFree

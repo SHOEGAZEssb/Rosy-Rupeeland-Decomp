@@ -6,9 +6,9 @@
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_020befec
 
-    .global func_020251ac
-    .type func_020251ac, @function
-func_020251ac: ; 0x020251ac
+    .global TimedActorRectanglePresentation_Update
+    .type TimedActorRectanglePresentation_Update, @function
+TimedActorRectanglePresentation_Update: ; 0x020251ac
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x8
     mov r7, r0
@@ -96,4 +96,4 @@ func_020251ac: ; 0x020251ac
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 .L_020252f8: .word gGamePhaseRuntime
 .L_020252fc: .word data_020f4e14
-    .size func_020251ac, . - func_020251ac
+    .size TimedActorRectanglePresentation_Update, . - TimedActorRectanglePresentation_Update
