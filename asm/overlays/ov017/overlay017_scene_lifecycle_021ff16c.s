@@ -24,8 +24,8 @@
     .extern Overlay017_EffectBase_NoOp
     .extern Overlay017_SpritePool_Destroy
     .extern gSoundContext
-.global func_ov017_021ff16c
-func_ov017_021ff16c:
+.global Overlay017_Scene_Destroy
+Overlay017_Scene_Destroy:
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021ff340
     mov r4, r0
@@ -155,4 +155,4 @@ L_021ff344: .word gSoundContext
 L_021ff348: .word data_ov017_02201754
 L_021ff34c: .word data_020f4e14
 L_021ff350: .word data_ov017_02201628
-    .size func_ov017_021ff16c, . - func_ov017_021ff16c
+    .size Overlay017_Scene_Destroy, . - Overlay017_Scene_Destroy

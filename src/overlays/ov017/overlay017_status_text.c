@@ -31,7 +31,7 @@ extern const char *LanguageLookupDatabase_GetResourceById(void *, s32);
  * line within 0x70 pixels when necessary. Draw the three pieces at Y=0x68.
  * Font/render state changes; the function returns void and has no direct MMIO.
  */
-extern "C" void func_ov017_021ffdb4(void *state, s32 textValue,
+extern "C" void Overlay017_DrawStatusText(void *state, s32 textValue,
                                      s32 numericValue)
 {
     char numberText[32];

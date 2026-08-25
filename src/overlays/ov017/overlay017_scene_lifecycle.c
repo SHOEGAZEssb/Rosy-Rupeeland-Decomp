@@ -56,7 +56,7 @@ static void destroyVirtual(void *object)
  * +0x404 down through +0x5C. Return state without freeing it. Heap, audio,
  * graphics, and SDK state change; graphics helpers may write hardware MMIO.
  */
-extern "C" void *func_ov017_021ff16c(void *state)
+extern "C" void *Overlay017_Scene_Destroy(void *state)
 {
     void *owned;
 
@@ -124,9 +124,9 @@ extern "C" void *func_ov017_021ff16c(void *state)
  * effects are those documented for the non-deleting destructor plus heap
  * release; the returned address is no longer valid.
  */
-extern "C" void *func_ov017_021ff354(void *state)
+extern "C" void *Overlay017_Scene_Delete(void *state)
 {
-    func_ov017_021ff16c(state);
+    Overlay017_Scene_Destroy(state);
     Heap_Free(state);
     return state;
 }

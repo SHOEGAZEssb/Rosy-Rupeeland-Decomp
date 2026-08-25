@@ -10,10 +10,10 @@
     .extern SceneSound_PlayDirectSequence
     .extern ModalState_UpdateInput
     .extern Overlay017_ShowSpritePool
-    .extern func_ov017_021fea8c
-    .extern func_ov017_021ffcc8
-    .extern func_ov017_021ffd74
-    .extern func_ov017_022008ac
+    .extern Overlay017_SetCallbackDescriptor
+    .extern Overlay017_CreateModalPanel
+    .extern Overlay017_DestroyModalPanel
+    .extern Overlay017_RenderScene
     .extern gDebugFont
     .extern gGameWork
 .global func_ov017_02200ab0
@@ -53,7 +53,7 @@ L_02200ad8:
     mov r1, #0x8
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov017_021ffcc8
+    bl Overlay017_CreateModalPanel
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -70,7 +70,7 @@ L_02200b54:
     cmp r0, #0x0
     blt L_02200bd0
     mov r0, r4
-    bl func_ov017_021ffd74
+    bl Overlay017_DestroyModalPanel
     ldr r1, [r4, #0x4]
     mov r0, #0x0
     add r1, r1, #0x1
@@ -92,10 +92,10 @@ L_02200b94:
     ldr r1, L_02200bf4
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov017_021fea8c
+    bl Overlay017_SetCallbackDescriptor
 L_02200bd0:
     mov r0, r4
-    bl func_ov017_022008ac
+    bl Overlay017_RenderScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02200be0: .word data_020f4e14

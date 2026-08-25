@@ -23,7 +23,7 @@ extern void TingleNativeG3_SetMaterial(u32 value);
  * the incoming result register; only object memory changes and no SDK or
  * hardware state is touched.
  */
-extern "C" void *func_ov017_021ff150(void *state)
+extern "C" void *Overlay017_InitSceneHelper(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201618;
     FIELD(s32, state, 4) = 0;
@@ -37,7 +37,7 @@ extern "C" void *func_ov017_021ff150(void *state)
  * memory is read only, but Nintendo DS display MMIO at 0x04000000/0x04001000
  * may change; no SDK helper is called.
  */
-extern "C" s32 func_ov017_021ff544(void *state)
+extern "C" s32 Overlay017_ApplyDisplayModes(void *state)
 {
     if (FIELD(u32, state, 0x20) & (1U << 10)) {
         volatile u32 *mainDisplay = (volatile u32 *)0x04000000;

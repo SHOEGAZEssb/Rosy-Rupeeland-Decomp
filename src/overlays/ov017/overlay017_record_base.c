@@ -20,7 +20,7 @@ extern void func_020add34(void *, void *);
  * no state changes occur, and the function returns void without SDK or hardware
  * effects.
  */
-extern "C" void func_ov017_021fe9bc(void *state)
+extern "C" void Overlay017_RecordBase_NoOp(void *state)
 {
     (void)state;
 }
@@ -30,7 +30,7 @@ extern "C" void func_ov017_021fe9bc(void *state)
  * state in the incoming result register; only the object changes and there are
  * no SDK or hardware effects.
  */
-extern "C" void *func_ov017_021fe9c0(void *state)
+extern "C" void *Overlay017_RecordBase_Init(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201628;
     FIELD(s32, state, 8) = 0;
@@ -44,7 +44,7 @@ extern "C" void *func_ov017_021fe9c0(void *state)
  * 0x02095308, and return state. Object/SDK state changes, the allocation is
  * retained, and no direct hardware access occurs.
  */
-extern "C" void *func_ov017_021fe9e0(void *state)
+extern "C" void *Overlay017_RecordBase_Destroy(void *state)
 {
     FIELD(const u32 *, state, 0) = data_ov017_02201628;
     PresentationList_DeleteAll(state);
@@ -55,7 +55,7 @@ extern "C" void *func_ov017_021fe9e0(void *state)
  * Store three caller words at +4/+8/+0xC. The object changes in place; the
  * function returns void and has no SDK or hardware effects.
  */
-extern "C" void func_ov017_021fea00(void *state, s32 x, s32 y, s32 z)
+extern "C" void Overlay017_RecordBase_SetVector(void *state, s32 x, s32 y, s32 z)
 {
     FIELD(s32, state, 4) = x;
     FIELD(s32, state, 8) = y;
@@ -80,7 +80,7 @@ extern "C" void Overlay017Record_SetSecondaryVector(void *state, s32 x, s32 y, s
  * set +0xE again. Invalid indices are ignored. Record/SDK state may change; the
  * function returns void and performs no direct hardware access.
  */
-extern "C" void func_ov017_021fea18(void *records, s32 index, s32 value0,
+extern "C" void Overlay017_ConfigureLightRecord(void *records, s32 index, s32 value0,
                                      s32 value4, s32 value8, u32 packed0,
                                      u32 packed1, u32 packed2)
 {
@@ -105,7 +105,7 @@ extern "C" void func_ov017_021fea18(void *records, s32 index, s32 value0,
  * argument is intentionally ignored by the recovered implementation. Object
  * state changes; returns void with no SDK or hardware effects.
  */
-extern "C" void func_ov017_021fea8c(void *state, s32 value24, s32 value28,
+extern "C" void Overlay017_SetCallbackDescriptor(void *state, s32 value24, s32 value28,
                                      s32 unused)
 {
     (void)unused;

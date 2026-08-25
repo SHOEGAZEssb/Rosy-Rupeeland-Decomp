@@ -3,8 +3,8 @@
 /* Exact fallback; see src/overlays/ov017/overlay017_record_base.c. */
     .extern data_ov017_02201628
     .extern PresentationList_DeleteAll
-.global func_ov017_021fe9e0
-func_ov017_021fe9e0:
+.global Overlay017_RecordBase_Destroy
+Overlay017_RecordBase_Destroy:
     stmdb sp!, {r4, lr}
     ldr r1, L_021fe9fc
     mov r4, r0
@@ -13,4 +13,4 @@ func_ov017_021fe9e0:
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fe9fc: .word data_ov017_02201628
-    .size func_ov017_021fe9e0, . - func_ov017_021fe9e0
+    .size Overlay017_RecordBase_Destroy, . - Overlay017_RecordBase_Destroy

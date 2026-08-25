@@ -13,9 +13,9 @@
     .extern data_ov017_02201754
     .extern func_02091e0c
     .extern func_02091e1c
-    .extern func_ov017_021fe9bc
-    .extern func_ov017_021fe9c0
-    .extern func_ov017_021fe9e0
+    .extern Overlay017_RecordBase_NoOp
+    .extern Overlay017_RecordBase_Init
+    .extern Overlay017_RecordBase_Destroy
     .extern func_ov017_022013f4
 .global __sinit_ov017_02201440
 .type __sinit_ov017_02201440, @function
@@ -38,7 +38,7 @@ __sinit_ov017_02201440:
     ldr r2, L_022014e8
     bl __register_global_object
     ldr r0, L_022014ec
-    bl func_ov017_021fe9c0
+    bl Overlay017_RecordBase_Init
     ldr r0, L_022014ec
     ldr r1, L_022014f0
     ldr r2, L_022014f4
@@ -59,12 +59,12 @@ __sinit_ov017_02201440:
     bl __register_global_object
     ldmia sp!, {r3, pc}
 L_022014d8: .word data_ov017_0220170c
-L_022014dc: .word func_ov017_021fe9bc
+L_022014dc: .word Overlay017_RecordBase_NoOp
 L_022014e0: .word data_ov017_02201718
 L_022014e4: .word data_ov017_02201730
 L_022014e8: .word data_ov017_02201724
 L_022014ec: .word data_ov017_02201754
-L_022014f0: .word func_ov017_021fe9e0
+L_022014f0: .word Overlay017_RecordBase_Destroy
 L_022014f4: .word data_ov017_0220173c
 L_022014f8: .word data_ov017_022016f0
 L_022014fc: .word func_02091e1c

@@ -23,12 +23,12 @@
     .extern SpriteMotionController_Show
     .extern ModalState_UpdateInput
     .extern func_020befec
-    .extern func_ov017_021fea8c
-    .extern func_ov017_021ffcc8
-    .extern func_ov017_021ffd74
-    .extern func_ov017_021ffdb4
-    .extern func_ov017_02200188
-    .extern func_ov017_022008ac
+    .extern Overlay017_SetCallbackDescriptor
+    .extern Overlay017_CreateModalPanel
+    .extern Overlay017_DestroyModalPanel
+    .extern Overlay017_DrawStatusText
+    .extern Overlay017_UpdateScene
+    .extern Overlay017_RenderScene
     .extern func_ov017_02200bf8
     .extern gGameWork
     .global func_ov017_02200cc0
@@ -145,7 +145,7 @@ L_02200dcc:
     mov r1, #0x9
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov017_021ffcc8
+    bl Overlay017_CreateModalPanel
     mov r0, #0xa
     b L_02200e88
 L_02200e6c:
@@ -166,7 +166,7 @@ L_02200e88:
     ldrh r2, [r0, #0x20]
     mov r0, r4
     add r1, r1, #0x4
-    bl func_ov017_021ffdb4
+    bl Overlay017_DrawStatusText
     b L_02201308
 L_02200eb4:
     mov r0, r4
@@ -190,7 +190,7 @@ L_02200eb4:
     mov r0, r4
     mov r1, r5
     mov r2, r6
-    bl func_ov017_021ffdb4
+    bl Overlay017_DrawStatusText
     mov r0, r4
     mov r1, #0xec
     bl func_ov017_02200bf8
@@ -202,7 +202,7 @@ L_02200eb4:
     mov r0, r4
     mov r1, #0x25
     mov r2, #0x0
-    bl func_ov017_021ffcc8
+    bl Overlay017_CreateModalPanel
     mov r0, #0x23
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -232,7 +232,7 @@ L_02200f50:
     mov r1, #0xa
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov017_021ffcc8
+    bl Overlay017_CreateModalPanel
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -257,7 +257,7 @@ L_02200fc4:
     mov r1, #0xb
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov017_021ffcc8
+    bl Overlay017_CreateModalPanel
     mov r0, #0x14
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -278,7 +278,7 @@ L_02201024:
     mov r1, #0x21
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov017_021ffcc8
+    bl Overlay017_CreateModalPanel
     mov r0, #0x1e
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -304,7 +304,7 @@ L_02201098:
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
-    bl func_ov017_021ffd74
+    bl Overlay017_DestroyModalPanel
     add r0, r4, #0x12c
     bl SpriteMotionController_Show
     add r0, r4, #0x80
@@ -324,7 +324,7 @@ L_022010e4:
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
-    bl func_ov017_021ffd74
+    bl Overlay017_DestroyModalPanel
     ldr r0, L_0220132c
     ldr r1, L_02201340
     ldr r0, [r0, #0x0]
@@ -360,7 +360,7 @@ L_02201170:
     mov r1, #0x21
     mov r2, #0x1
     mov r3, #0x0
-    bl func_ov017_021ffcc8
+    bl Overlay017_CreateModalPanel
     mov r0, #0x1e
     str r0, [r4, #0x4]
     mov r0, #0x0
@@ -376,7 +376,7 @@ L_022011a8:
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
-    bl func_ov017_021ffd74
+    bl Overlay017_DestroyModalPanel
     add r0, r4, #0x12c
     bl SpriteMotionController_Show
     add r0, r4, #0x80
@@ -396,7 +396,7 @@ L_022011f4:
     cmp r0, #0x0
     blt L_02201308
     mov r0, r4
-    bl func_ov017_021ffd74
+    bl Overlay017_DestroyModalPanel
     add r0, r4, #0x12c
     bl SpriteMotionController_Show
     add r0, r4, #0x80
@@ -424,7 +424,7 @@ L_02201240:
     ldr r1, L_02201344
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov017_021fea8c
+    bl Overlay017_SetCallbackDescriptor
     b L_02201308
 L_0220128c:
     add r0, r4, #0x12c
@@ -458,12 +458,12 @@ L_022012f0:
     ldr r1, L_0220134c
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov017_021fea8c
+    bl Overlay017_SetCallbackDescriptor
 L_02201308:
     mov r0, r4
-    bl func_ov017_02200188
+    bl Overlay017_UpdateScene
     mov r0, r4
-    bl func_ov017_022008ac
+    bl Overlay017_RenderScene
     mov r0, #0x0
     ldmia sp!, {r4, r5, r6, pc}
 L_02201320: .word data_ov017_022016e0

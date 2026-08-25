@@ -12,7 +12,7 @@
 .extern func_ov043_0220b744
 .extern func_ov043_0220ba28
 .extern func_ov043_0220bc2c
-.extern func_ov017_021feab4
+.extern Overlay017_Scene_Init
 .extern GameWork_TestFlag
 .extern data_020f4e14
 .extern gDebugFont
@@ -272,7 +272,7 @@ func_ov043_0220c1b0:
     str r1, [sp, #0x0]
     ldr r1, [r4, #0x298]
     ldr r3, [r4, #0x2d8]
-    bl func_ov017_021feab4
+    bl Overlay017_Scene_Init
 .L_0220c250:
     str r0, [r4, #0x2f4]
     mov r0, #0x3

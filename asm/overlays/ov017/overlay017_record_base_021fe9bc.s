@@ -1,7 +1,7 @@
     .text
 
 /* Exact fallback; see src/overlays/ov017/overlay017_record_base.c. */
-.global func_ov017_021fe9bc
-func_ov017_021fe9bc:
+.global Overlay017_RecordBase_NoOp
+Overlay017_RecordBase_NoOp:
     bx lr
-    .size func_ov017_021fe9bc, . - func_ov017_021fe9bc
+    .size Overlay017_RecordBase_NoOp, . - Overlay017_RecordBase_NoOp

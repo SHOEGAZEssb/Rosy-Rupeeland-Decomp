@@ -72,15 +72,15 @@ extern void *Overlay017_Transform_Init(void *);
 extern void Overlay017Transform_ReplaceResource(void *, s32);
 extern void *Overlay017_SpritePool_Init(void *, void *);
 extern void *Overlay017UiSpriteGroup_Init(void *, s32, s32);
-extern void *func_ov017_021fe9c0(void *);
-extern void func_ov017_021fea00(void *, s32, s32, s32);
+extern void *Overlay017_RecordBase_Init(void *);
+extern void Overlay017_RecordBase_SetVector(void *, s32, s32, s32);
 extern void Overlay017Record_SetSecondaryVector(void *, s32, s32, s32);
-extern void func_ov017_021fea18(void *, s32, s32, s32, s32, u32, u32, u32);
-extern void func_ov017_021fea8c(void *, s32, s32, s32);
-extern void func_ov017_021ff150(void *);
-extern void func_ov017_021ff58c(void *);
-extern void func_ov017_021ff75c(void *);
-extern void *func_ov017_021ff8a8(void *, s32, u32, u32, u16);
+extern void Overlay017_ConfigureLightRecord(void *, s32, s32, s32, s32, u32, u32, u32);
+extern void Overlay017_SetCallbackDescriptor(void *, s32, s32, s32);
+extern void Overlay017_InitSceneHelper(void *);
+extern void Overlay017_SetupGraphics(void *);
+extern void Overlay017_SetupProjection(void *);
+extern void *Overlay017_SpawnEventEffect(void *, s32, u32, u32, u16);
 extern void Overlay017_UpdatePaletteRamp(void *);
 #ifdef __cplusplus
 }
@@ -100,7 +100,7 @@ extern void Overlay017_UpdatePaletteRamp(void *);
  * graphics, audio, global, and caller-owned scene state all change; setup
  * helpers may access Nintendo DS graphics hardware.
  */
-extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
+extern "C" void *Overlay017_Scene_Init(void *state, s32 effectCount,
                                       const s32 *effectIds, s32 category,
                                       s32 radiusIndex)
 {
@@ -122,9 +122,9 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     Overlay017_Transform_Init((u8 *)state + 0x290);
     Graphics3DLightSet_Init((u8 *)state + 0x2d0);
     Graphics3DSceneState_Init((u8 *)state + 0x310);
-    func_ov017_021ff150((u8 *)state + 0x3ac);
-    func_ov017_021fe9c0((u8 *)state + 0x3d8);
-    func_ov017_021fe9c0((u8 *)state + 0x3ec);
+    Overlay017_InitSceneHelper((u8 *)state + 0x3ac);
+    Overlay017_RecordBase_Init((u8 *)state + 0x3d8);
+    Overlay017_RecordBase_Init((u8 *)state + 0x3ec);
     FIELD(s32, state, 0x3fc) = 0;
     GraphicsBankStateSnapshot_Init((u8 *)state + 0x404);
     FIELD(s32, state, 0x50) = 0;
@@ -180,11 +180,11 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     SpritePresentation_SyncPosition(object);
 
     FIELD(s32, state, 0x310) = 1;
-    func_ov017_021fea00((u8 *)state + 0x310, 0, 0x1800, 0x1000);
+    Overlay017_RecordBase_SetVector((u8 *)state + 0x310, 0, 0x1800, 0x1000);
     Overlay017Record_SetSecondaryVector((u8 *)state + 0x310, 0, 0, 0);
-    func_ov017_021fea18((u8 *)state + 0x2d0, 0,
+    Overlay017_ConfigureLightRecord((u8 *)state + 0x2d0, 0,
                         0x1000, -0x1000, -0x1000, 0x1f, 0x1f, 0x1f);
-    func_ov017_021fea18((u8 *)state + 0x2d0, 1,
+    Overlay017_ConfigureLightRecord((u8 *)state + 0x2d0, 1,
                         0x800, -0x1000, 0, 0x1f, 0x1f, 0x1f);
 
     RetailPhaseSelection_Reset(data_021e9e1c);
@@ -210,7 +210,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
         radius = TitleRandom_NextBounded(
             (u8 *)state + 0x3fc,
             data_ov017_02201414[radiusIndex] - 0xc);
-        func_ov017_021ff8a8(
+        Overlay017_SpawnEventEffect(
             state, effectId,
             radius * gFx32CosSinTable[angle * 2],
             radius * gFx32CosSinTable[angle * 2 + 1],
@@ -234,8 +234,8 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
     }
 
     Overlay017_UpdatePaletteRamp(state);
-    func_ov017_021ff58c(state);
-    func_ov017_021ff75c(state);
+    Overlay017_SetupGraphics(state);
+    Overlay017_SetupProjection(state);
     Overlay017Transform_ReplaceResource((u8 *)state + 0x264, 0x5011);
     FIELD(s32, state, 0x278) = 0x400;
     FIELD(s32, state, 0x27c) = 0x400;
@@ -266,7 +266,7 @@ extern "C" void *func_ov017_021feab4(void *state, s32 effectCount,
 
     Sound_LoadGroup(gSoundContext, 0x82);
     FIELD(u32, state, 0x20) |= 0x400;
-    func_ov017_021fea8c(state, data_ov017_02201548[0],
+    Overlay017_SetCallbackDescriptor(state, data_ov017_02201548[0],
                         data_ov017_02201548[1], 0);
     return state;
 }

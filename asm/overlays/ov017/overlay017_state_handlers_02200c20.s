@@ -4,9 +4,9 @@
     .extern data_ov017_022016e0
     .extern SceneSound_StopPackedEffect
     .extern Overlay017_HideSpritePool
-    .extern func_ov017_021fea8c
-    .extern func_ov017_02200188
-    .extern func_ov017_022008ac
+    .extern Overlay017_SetCallbackDescriptor
+    .extern Overlay017_UpdateScene
+    .extern Overlay017_RenderScene
 .global func_ov017_02200c20
 func_ov017_02200c20:
     stmdb sp!, {r4, lr}
@@ -40,12 +40,12 @@ L_02200c88:
     ldr r1, L_02200cbc
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov017_021fea8c
+    bl Overlay017_SetCallbackDescriptor
 L_02200c98:
     mov r0, r4
-    bl func_ov017_02200188
+    bl Overlay017_UpdateScene
     mov r0, r4
-    bl func_ov017_022008ac
+    bl Overlay017_RenderScene
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_02200cb0: .word data_ov017_022016e0

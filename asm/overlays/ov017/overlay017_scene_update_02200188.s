@@ -28,13 +28,13 @@
     .extern Overlay017_ApplyGridImpulse
     .extern Overlay017_EffectVariant_Init
     .extern Overlay017_UpdateSpritePool
-    .extern func_ov017_021fe894
+    .extern Overlay017_UpdateUiSpriteGroup
     .extern Overlay017_UpdatePaletteRamp
     .extern Overlay017Timer_Tick
     .extern gHeapContext
     .extern Heap_Alloc
-    .global func_ov017_02200188
-func_ov017_02200188:
+    .global Overlay017_UpdateScene
+Overlay017_UpdateScene:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     mov r10, r0
@@ -463,7 +463,7 @@ L_022007d0:
     add r0, r10, #0x80
     bl SpriteMotionController_Update
     ldr r0, [r10, #0x25c]
-    bl func_ov017_021fe894
+    bl Overlay017_UpdateUiSpriteGroup
     ldr r0, [r10, #0x244]
     bl GraphicsAnimationInstanceManager_Update
     ldr r0, [r10, #0x58]
@@ -499,4 +499,4 @@ L_0220086c: .word gFx32CosSinTable
 L_02200870: .word data_ov017_022016cc
 L_02200874: .word data_ov017_022016f0
 L_02200878: .word data_ov017_022016f8
-    .size func_ov017_02200188, . - func_ov017_02200188
+    .size Overlay017_UpdateScene, . - Overlay017_UpdateScene

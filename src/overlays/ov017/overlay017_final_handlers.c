@@ -26,10 +26,10 @@ extern void func_02091e0c(void *, s32);
 extern void func_02091e1c(void *);
 extern void PresentationList_DeleteAll(void *);
 extern void Overlay017_EffectBase_NoOp(void *);
-extern void func_ov017_021fe9bc(void *);
-extern void *func_ov017_021fe9c0(void *);
-extern void *func_ov017_021fe9e0(void *);
-extern void func_ov017_022008ac(void *);
+extern void Overlay017_RecordBase_NoOp(void *);
+extern void *Overlay017_RecordBase_Init(void *);
+extern void *Overlay017_RecordBase_Destroy(void *);
+extern void Overlay017_RenderScene(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -46,7 +46,7 @@ extern "C" s32 func_ov017_02201350(void *state)
         FIELD(s32, state, 4)++;
         FIELD(s32, state, 8) = 0;
     }
-    func_ov017_022008ac(state);
+    Overlay017_RenderScene(state);
     return 1;
 }
 
@@ -126,14 +126,14 @@ extern "C" void *func_ov017_022013f4(void *state, s32 value4, s32 value8)
 extern "C" void __sinit_ov017_02201440(void)
 {
     func_ov017_022013f4(data_ov017_0220170c, 0, 0);
-    __register_global_object(data_ov017_0220170c, func_ov017_021fe9bc,
+    __register_global_object(data_ov017_0220170c, Overlay017_RecordBase_NoOp,
                              data_ov017_02201718);
     func_ov017_022013f4(data_ov017_02201730, 0, 0);
-    __register_global_object(data_ov017_02201730, func_ov017_021fe9bc,
+    __register_global_object(data_ov017_02201730, Overlay017_RecordBase_NoOp,
                              data_ov017_02201724);
-    func_ov017_021fe9c0(data_ov017_02201754);
+    Overlay017_RecordBase_Init(data_ov017_02201754);
     __register_global_object(data_ov017_02201754,
-                             (void (*)(void *))func_ov017_021fe9e0,
+                             (void (*)(void *))Overlay017_RecordBase_Destroy,
                              data_ov017_0220173c);
     func_02091e0c(data_ov017_022016f0, 4);
     __register_global_object(data_ov017_022016f0, func_02091e1c,

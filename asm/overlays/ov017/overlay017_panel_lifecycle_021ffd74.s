@@ -1,8 +1,8 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_panel_lifecycle.c. */
     .extern ModalState_DrawFrame
-.global func_ov017_021ffd74
-func_ov017_021ffd74:
+.global Overlay017_DestroyModalPanel
+Overlay017_DestroyModalPanel:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x400]
@@ -20,4 +20,4 @@ L_021ffd9c:
     bic r0, r0, #0x4
     str r0, [r4, #0x48]
     ldmia sp!, {r4, pc}
-    .size func_ov017_021ffd74, . - func_ov017_021ffd74
+    .size Overlay017_DestroyModalPanel, . - Overlay017_DestroyModalPanel

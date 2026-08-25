@@ -6,8 +6,8 @@
     .extern func_020adc90
     .extern func_020b01a0
     .extern func_020b0558
-.global func_ov017_021ff75c
-func_ov017_021ff75c:
+.global Overlay017_SetupProjection
+Overlay017_SetupProjection:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -93,4 +93,4 @@ L_021ff898: .word 0x4000444
 L_021ff89c: .word data_ov017_022016e0
 L_021ff8a0: .word data_ov017_02201414
 L_021ff8a4: .word 0x4000448
-    .size func_ov017_021ff75c, . - func_ov017_021ff75c
+    .size Overlay017_SetupProjection, . - Overlay017_SetupProjection

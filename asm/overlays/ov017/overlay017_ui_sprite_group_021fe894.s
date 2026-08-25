@@ -6,8 +6,8 @@
     .extern GraphicsSpriteGroup_AdvanceAnimations
     .extern Presentation_InterpolateLinear
     .extern gSoundContext
-.global func_ov017_021fe894
-func_ov017_021fe894:
+.global Overlay017_UpdateUiSpriteGroup
+Overlay017_UpdateUiSpriteGroup:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     ldr r1, L_021fe9b4
     mov r10, r0
@@ -92,4 +92,4 @@ L_021fe9a8:
     ldmia sp!, {r4, r5, r6, r7, r8, r9, r10, pc}
 L_021fe9b4: .word data_ov017_022016e0
 L_021fe9b8: .word gSoundContext
-    .size func_ov017_021fe894, . - func_ov017_021fe894
+    .size Overlay017_UpdateUiSpriteGroup, . - Overlay017_UpdateUiSpriteGroup

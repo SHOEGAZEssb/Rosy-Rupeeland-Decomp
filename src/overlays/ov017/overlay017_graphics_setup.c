@@ -39,7 +39,7 @@ extern void func_020b44e8(void);
  * State, graphics SDK, VRAM/resource ownership, and Nintendo DS MMIO change;
  * returns void. Masked halfword accesses preserve unrelated hardware bits.
  */
-extern "C" void func_ov017_021ff58c(void *state)
+extern "C" void Overlay017_SetupGraphics(void *state)
 {
     u8 resourceSet[12];
     volatile u16 *reg60 = (volatile u16 *)0x04000060;

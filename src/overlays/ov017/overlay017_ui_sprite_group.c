@@ -68,7 +68,7 @@ extern "C" void *Overlay017UiSpriteGroup_Init(void *group, s32 duration, s32 cur
  * first changed index). Submit the renderer afterward. Sprite/audio/SDK state
  * changes; returns void and performs no direct hardware access.
  */
-extern "C" void func_ov017_021fe894(void *group)
+extern "C" void Overlay017_UpdateUiSpriteGroup(void *group)
 {
     s32 i;
 

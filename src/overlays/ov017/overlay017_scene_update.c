@@ -38,7 +38,7 @@ extern void Overlay017_UpdateGridDeformation(void *);
 extern void Overlay017_ApplyGridImpulse(void *, s32, s32, s32);
 extern void *Overlay017_EffectVariant_Init(void *, s32, s32, s32, s32, s16, s32);
 extern void Overlay017_UpdateSpritePool(void *);
-extern void func_ov017_021fe894(void *);
+extern void Overlay017_UpdateUiSpriteGroup(void *);
 extern void Overlay017_UpdatePaletteRamp(void *);
 extern s32 Overlay017Timer_Tick(void *);
 #ifdef __cplusplus
@@ -68,7 +68,7 @@ static s32 coordinateToGrid(s32 value)
  * void. Scene/global lists, heap, PRNG, audio/event, graphics, and grid state
  * change; the grid helper uses Nintendo DS square-root MMIO.
  */
-extern "C" void func_ov017_02200188(void *state)
+extern "C" void Overlay017_UpdateScene(void *state)
 {
     u32 input = FIELD(u32, state, 0x20);
     s32 radius = data_ov017_02201414[
@@ -251,7 +251,7 @@ extern "C" void func_ov017_02200188(void *state)
     Overlay017_UpdateSpritePool(FIELD(void *, state, 0x254));
     SpriteMotionController_Update((u8 *)state + 0x12c);
     SpriteMotionController_Update((u8 *)state + 0x80);
-    func_ov017_021fe894(FIELD(void *, state, 0x25c));
+    Overlay017_UpdateUiSpriteGroup(FIELD(void *, state, 0x25c));
     GraphicsAnimationInstanceManager_Update(FIELD(void *, state, 0x244));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, state, 0x58));
     Overlay017_UpdateGridDeformation(FIELD(void *, state, 0x2c0));

@@ -26,7 +26,7 @@ extern void *Overlay017_Effect_Init(void *, u16, u32, u32, u16, u16, u16);
  * Return the constructed object or null. Heap, PRNG, owner-list, resource, and
  * SDK state may change; no direct hardware access occurs.
  */
-extern "C" void *func_ov017_021ff8a8(void *context, s32 eventCode, u32 baseArg1,
+extern "C" void *Overlay017_SpawnEventEffect(void *context, s32 eventCode, u32 baseArg1,
                                       u32 baseArg3, u16 value9c)
 {
     static const u8 offsets[60] = {

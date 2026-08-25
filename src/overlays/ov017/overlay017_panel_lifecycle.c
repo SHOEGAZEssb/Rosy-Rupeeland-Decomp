@@ -28,7 +28,7 @@ extern void ModalState_CopyAttachmentText(void *, void *);
  * attach caller data, apply setting, and set flag bit 2 in +0x48. Manager, heap,
  * and SDK state change; returns void and performs no direct hardware access.
  */
-extern "C" void func_ov017_021ffcc8(void *state, s32 setting, s32 alternate,
+extern "C" void Overlay017_CreateModalPanel(void *state, s32 setting, s32 alternate,
                                      void *attachment)
 {
     void *object;
@@ -52,7 +52,7 @@ extern "C" void func_ov017_021ffcc8(void *state, s32 setting, s32 alternate,
  * the pointer, and clear flag bit 2 in +0x48. Heap/SDK ownership may change;
  * returns void and performs no direct hardware access.
  */
-extern "C" void func_ov017_021ffd74(void *state)
+extern "C" void Overlay017_DestroyModalPanel(void *state)
 {
     void *object = FIELD(void *, state, 0x400);
     ModalState_DrawFrame(object);

@@ -8,8 +8,8 @@
     .extern ModalState_InitResources
     .extern ModalState_CopyAttachmentText
     .extern gHeapContext
-.global func_ov017_021ffcc8
-func_ov017_021ffcc8:
+.global Overlay017_CreateModalPanel
+Overlay017_CreateModalPanel:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     mov r5, r1
@@ -57,4 +57,4 @@ L_021ffd50:
     ldmia sp!, {r4, r5, r6, pc}
 L_021ffd6c: .word data_ov017_022016bc
 L_021ffd70: .word gHeapContext
-    .size func_ov017_021ffcc8, . - func_ov017_021ffcc8
+    .size Overlay017_CreateModalPanel, . - Overlay017_CreateModalPanel

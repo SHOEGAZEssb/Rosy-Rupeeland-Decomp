@@ -37,7 +37,7 @@ extern void TingleNativeG3_Pop(u32 count);
  * the DS polygon, texture/palette, and display-control MMIO registers are
  * written directly. Returns void.
  */
-extern "C" void func_ov017_022008ac(void *state)
+extern "C" void Overlay017_RenderScene(void *state)
 {
     s32 i;
     void *node;

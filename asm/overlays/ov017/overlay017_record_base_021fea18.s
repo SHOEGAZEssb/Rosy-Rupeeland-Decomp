@@ -2,8 +2,8 @@
 
 /* Exact fallback; see src/overlays/ov017/overlay017_record_base.c. */
     .extern func_020add34
-.global func_ov017_021fea18
-func_ov017_021fea18:
+.global Overlay017_ConfigureLightRecord
+Overlay017_ConfigureLightRecord:
     stmdb sp!, {r3, r4, r5, lr}
     movs r4, r1
     mov r5, r0
@@ -34,4 +34,4 @@ L_021fea54:
     orr r0, r0, r2, lsl #0xa
     strh r0, [r1, #0xc]
     ldmia sp!, {r3, r4, r5, pc}
-    .size func_ov017_021fea18, . - func_ov017_021fea18
+    .size Overlay017_ConfigureLightRecord, . - Overlay017_ConfigureLightRecord

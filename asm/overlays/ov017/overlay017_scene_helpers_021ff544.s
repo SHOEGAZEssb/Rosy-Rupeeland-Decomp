@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov017/overlay017_scene_helpers.c. */
-.global func_ov017_021ff544
-func_ov017_021ff544:
+.global Overlay017_ApplyDisplayModes
+Overlay017_ApplyDisplayModes:
     ldr r1, [r0, #0x20]
     mov r1, r1, lsl #0x15
     movs r1, r1, asr #0x1f
@@ -21,4 +21,4 @@ func_ov017_021ff544:
 L_021ff584:
     mov r0, #0x0
     bx lr
-    .size func_ov017_021ff544, . - func_ov017_021ff544
+    .size Overlay017_ApplyDisplayModes, . - Overlay017_ApplyDisplayModes

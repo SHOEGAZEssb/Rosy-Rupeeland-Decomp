@@ -24,11 +24,11 @@ extern void SceneSound_PlayDirectSequence(void *, s32);
 extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern void Overlay017_ShowSpritePool(void *);
 extern void Overlay017_HideSpritePool(void *);
-extern void func_ov017_021fea8c(void *, s32, s32, s32);
-extern void func_ov017_021ffcc8(void *, s32, s32, void *);
-extern void func_ov017_021ffd74(void *);
-extern void func_ov017_02200188(void *);
-extern void func_ov017_022008ac(void *);
+extern void Overlay017_SetCallbackDescriptor(void *, s32, s32, s32);
+extern void Overlay017_CreateModalPanel(void *, s32, s32, void *);
+extern void Overlay017_DestroyModalPanel(void *);
+extern void Overlay017_UpdateScene(void *);
+extern void Overlay017_RenderScene(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -54,7 +54,7 @@ extern "C" s32 func_ov017_02200ab0(void *state)
             FIELD(s32, state, 8) = 0;
         } else {
             GameWork_ClearFlag(gGameWork, 0x3aa);
-            func_ov017_021ffcc8(state, 8, 1, 0);
+            Overlay017_CreateModalPanel(state, 8, 1, 0);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -63,7 +63,7 @@ extern "C" s32 func_ov017_02200ab0(void *state)
         if (ModalState_UpdateInput(FIELD(void *, state, 0x400),
                            (u8 *)state + 0x30,
                            (FIELD(u32, state, 0x20) & 0x20) != 0) >= 0) {
-            func_ov017_021ffd74(state);
+            Overlay017_DestroyModalPanel(state);
             FIELD(s32, state, 4)++;
             FIELD(s32, state, 8) = 0;
         }
@@ -73,12 +73,12 @@ extern "C" s32 func_ov017_02200ab0(void *state)
             Overlay017_ShowSpritePool(FIELD(void *, state, 0x254));
             SceneSound_PlayPackedEffect(state, 0x4114);
             SceneSound_PlayDirectSequence(state, 0x5c);
-            func_ov017_021fea8c(state, data_ov017_02201540[0],
+            Overlay017_SetCallbackDescriptor(state, data_ov017_02201540[0],
                                 data_ov017_02201540[1], 0);
         }
         break;
     }
-    func_ov017_022008ac(state);
+    Overlay017_RenderScene(state);
     return 0;
 }
 
@@ -101,11 +101,11 @@ extern "C" s32 func_ov017_02200c20(void *state)
             if (FIELD(void *, state, 0x440) != 0) {
                 SceneSound_StopPackedEffect(state, 0x4115);
             }
-            func_ov017_021fea8c(state, data_ov017_02201550[0],
+            Overlay017_SetCallbackDescriptor(state, data_ov017_02201550[0],
                                 data_ov017_02201550[1], 0);
         }
     }
-    func_ov017_02200188(state);
-    func_ov017_022008ac(state);
+    Overlay017_UpdateScene(state);
+    Overlay017_RenderScene(state);
     return 0;
 }

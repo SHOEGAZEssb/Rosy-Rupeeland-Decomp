@@ -1,0 +1,22 @@
+{
+  "func_ov017_021fe894": "Overlay017_UpdateUiSpriteGroup",
+  "func_ov017_021fe9bc": "Overlay017_RecordBase_NoOp",
+  "func_ov017_021fe9c0": "Overlay017_RecordBase_Init",
+  "func_ov017_021fe9e0": "Overlay017_RecordBase_Destroy",
+  "func_ov017_021fea00": "Overlay017_RecordBase_SetVector",
+  "func_ov017_021fea18": "Overlay017_ConfigureLightRecord",
+  "func_ov017_021fea8c": "Overlay017_SetCallbackDescriptor",
+  "func_ov017_021feab4": "Overlay017_Scene_Init",
+  "func_ov017_021ff150": "Overlay017_InitSceneHelper",
+  "func_ov017_021ff16c": "Overlay017_Scene_Destroy",
+  "func_ov017_021ff354": "Overlay017_Scene_Delete",
+  "func_ov017_021ff544": "Overlay017_ApplyDisplayModes",
+  "func_ov017_021ff58c": "Overlay017_SetupGraphics",
+  "func_ov017_021ff75c": "Overlay017_SetupProjection",
+  "func_ov017_021ff8a8": "Overlay017_SpawnEventEffect",
+  "func_ov017_021ffcc8": "Overlay017_CreateModalPanel",
+  "func_ov017_021ffd74": "Overlay017_DestroyModalPanel",
+  "func_ov017_021ffdb4": "Overlay017_DrawStatusText",
+  "func_ov017_02200188": "Overlay017_UpdateScene",
+  "func_ov017_022008ac": "Overlay017_RenderScene"
+}

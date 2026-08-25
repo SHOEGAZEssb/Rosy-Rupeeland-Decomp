@@ -60,22 +60,22 @@
     .extern Overlay017Transform_ReplaceResource
     .extern Overlay017_SpritePool_Init
     .extern Overlay017UiSpriteGroup_Init
-    .extern func_ov017_021fe9c0
-    .extern func_ov017_021fea00
+    .extern Overlay017_RecordBase_Init
+    .extern Overlay017_RecordBase_SetVector
     .extern Overlay017Record_SetSecondaryVector
-    .extern func_ov017_021fea18
-    .extern func_ov017_021fea8c
-    .extern func_ov017_021ff150
-    .extern func_ov017_021ff58c
-    .extern func_ov017_021ff75c
-    .extern func_ov017_021ff8a8
+    .extern Overlay017_ConfigureLightRecord
+    .extern Overlay017_SetCallbackDescriptor
+    .extern Overlay017_InitSceneHelper
+    .extern Overlay017_SetupGraphics
+    .extern Overlay017_SetupProjection
+    .extern Overlay017_SpawnEventEffect
     .extern Overlay017_UpdatePaletteRamp
     .extern genrand_int32
     .extern gHeapContext
     .extern gSoundContext
     .extern Heap_Alloc
-    .global func_ov017_021feab4
-func_ov017_021feab4:
+    .global Overlay017_Scene_Init
+Overlay017_Scene_Init:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x10
     mov r10, r0
@@ -110,11 +110,11 @@ func_ov017_021feab4:
     add r0, r10, #0x310
     bl Graphics3DSceneState_Init
     add r0, r10, #0x3ac
-    bl func_ov017_021ff150
+    bl Overlay017_InitSceneHelper
     add r0, r10, #0x3d8
-    bl func_ov017_021fe9c0
+    bl Overlay017_RecordBase_Init
     add r0, r10, #0x3ec
-    bl func_ov017_021fe9c0
+    bl Overlay017_RecordBase_Init
     mov r0, #0x0
     str r0, [r10, #0x3fc]
     add r0, r10, #0x4
@@ -274,7 +274,7 @@ L_021fed74:
     mov r1, #0x0
     mov r2, #0x1800
     mov r3, #0x1000
-    bl func_ov017_021fea00
+    bl Overlay017_RecordBase_SetVector
     mov r1, #0x0
     add r0, r10, #0x310
     mov r2, r1
@@ -290,7 +290,7 @@ L_021fed74:
     add r0, r10, #0x2d0
     mov r1, #0x0
     mov r2, #0x1000
-    bl func_ov017_021fea18
+    bl Overlay017_ConfigureLightRecord
     mov r0, #0x0
     str r0, [sp, #0x0]
     mov r0, #0x1f
@@ -301,7 +301,7 @@ L_021fed74:
     add r0, r10, #0x2d0
     mov r1, #0x1
     sub r3, r2, #0x1800
-    bl func_ov017_021fea18
+    bl Overlay017_ConfigureLightRecord
     ldr r0, L_021ff118
     bl RetailPhaseSelection_Reset
     ldr r0, L_021ff11c
@@ -360,7 +360,7 @@ L_021fee68:
     ldrsh r3, [r3, #0x2]
     mul r2, r7, r2
     mul r3, r7, r3
-    bl func_ov017_021ff8a8
+    bl Overlay017_SpawnEventEffect
     ldr r0, [r10, #0x3c8]
     add r6, r6, #0x1
     add r0, r0, r4
@@ -400,9 +400,9 @@ L_021fefa0:
     mov r0, r10
     bl Overlay017_UpdatePaletteRamp
     mov r0, r10
-    bl func_ov017_021ff58c
+    bl Overlay017_SetupGraphics
     mov r0, r10
-    bl func_ov017_021ff75c
+    bl Overlay017_SetupProjection
     ldr r1, L_021ff128
     add r0, r10, #0x264
     bl Overlay017Transform_ReplaceResource
@@ -477,7 +477,7 @@ L_021ff0a8:
     str r0, [r10, #0x20]
     mov r0, r10
     ldmia r1, {r1, r2}
-    bl func_ov017_021fea8c
+    bl Overlay017_SetCallbackDescriptor
     mov r0, r10
     add sp, sp, #0x10
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
@@ -508,4 +508,4 @@ L_021ff140: .word 0xca8
 L_021ff144: .word data_ov017_022016ac
 L_021ff148: .word gSoundContext
 L_021ff14c: .word data_ov017_02201548
-    .size func_ov017_021feab4, . - func_ov017_021feab4
+    .size Overlay017_Scene_Init, . - Overlay017_Scene_Init

@@ -30,7 +30,7 @@ extern void TingleNativeG3_ProjectPosition(s32, s32, s32, s32 *, s32 *);
  * volatile zero writes are confirmed matching behavior and intentionally kept.
  * State, geometry SDK, and Nintendo DS geometry MMIO change; returns void.
  */
-extern "C" void func_ov017_021ff75c(void *state)
+extern "C" void Overlay017_SetupProjection(void *state)
 {
     volatile s32 *reg444 = (volatile s32 *)0x04000444;
     volatile s32 *reg448 = (volatile s32 *)0x04000448;

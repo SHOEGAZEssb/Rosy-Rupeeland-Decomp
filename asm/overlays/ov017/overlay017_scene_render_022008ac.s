@@ -13,8 +13,8 @@
     .extern Overlay017_ResolveEffectResourceEntry
     .extern Overlay017_ExportEffectTransform
     .extern func_ov017_02200a8c
-.global func_ov017_022008ac
-func_ov017_022008ac:
+.global Overlay017_RenderScene
+Overlay017_RenderScene:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     sub sp, sp, #0x8
     mov r5, r0
@@ -141,4 +141,4 @@ L_02200a80: .word 0x4000448
 L_02200a84: .word 0x40004c0
 L_02200a88: .word 0x2108ffff
 
-    .size func_ov017_022008ac, . - func_ov017_022008ac
+    .size Overlay017_RenderScene, . - Overlay017_RenderScene

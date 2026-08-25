@@ -10,8 +10,8 @@
     .extern GraphicsSpriteRenderer_MeasureText
     .extern LanguageLookupDatabase_GetResourceById
     .extern gDebugFont
-.global func_ov017_021ffdb4
-func_ov017_021ffdb4:
+.global Overlay017_DrawStatusText
+Overlay017_DrawStatusText:
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x2c
     ldr r3, L_02200050
@@ -189,4 +189,4 @@ L_02200058: .word 0x2d5
 L_0220005c: .word data_ov017_022016e0
 L_02200060: .word 0x2d6
 
-    .size func_ov017_021ffdb4, . - func_ov017_021ffdb4
+    .size Overlay017_DrawStatusText, . - Overlay017_DrawStatusText

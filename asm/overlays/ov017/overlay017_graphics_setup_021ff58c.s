@@ -18,8 +18,8 @@
     .extern func_020af1f8
     .extern func_020b0300
     .extern func_020b44e8
-.global func_ov017_021ff58c
-func_ov017_021ff58c:
+.global Overlay017_SetupGraphics
+Overlay017_SetupGraphics:
     stmdb sp!, {r4, r5, r6, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -136,4 +136,4 @@ L_021ff74c: .word 0x400100e
 L_021ff750: .word 0x8002
 L_021ff754: .word data_020f4e18
 L_021ff758: .word 0x8019
-    .size func_ov017_021ff58c, . - func_ov017_021ff58c
+    .size Overlay017_SetupGraphics, . - Overlay017_SetupGraphics

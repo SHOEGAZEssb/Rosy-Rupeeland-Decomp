@@ -7,8 +7,8 @@
     .extern PresentationList_Append
     .extern Overlay017_Effect_Init
     .extern gHeapContext
-.global func_ov017_021ff8a8
-func_ov017_021ff8a8:
+.global Overlay017_SpawnEventEffect
+Overlay017_SpawnEventEffect:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     mov r7, r1
@@ -347,4 +347,4 @@ L_021ffcbc: .word data_ov017_022016b4
 L_021ffcc0: .word gHeapContext
 L_021ffcc4: .word data_ov017_02201754
 
-    .size func_ov017_021ff8a8, . - func_ov017_021ff8a8
+    .size Overlay017_SpawnEventEffect, . - Overlay017_SpawnEventEffect

@@ -32,13 +32,13 @@ extern s32 SpriteMotionController_BeginHitResponse(void *, void *, s32, s32);
 extern void SpriteMotionController_Show(void *);
 extern s32 ModalState_UpdateInput(void *, void *, s32);
 extern s32 func_020befec(s32, s32);
-extern void func_ov017_021fea8c(void *, s32, s32, s32);
-extern void func_ov017_021ffcc8(void *, s32, s32, void *);
-extern void func_ov017_021ffd74(void *);
-extern void func_ov017_021ffdb4(void *, void *, s32);
+extern void Overlay017_SetCallbackDescriptor(void *, s32, s32, s32);
+extern void Overlay017_CreateModalPanel(void *, s32, s32, void *);
+extern void Overlay017_DestroyModalPanel(void *);
+extern void Overlay017_DrawStatusText(void *, void *, s32);
 extern s32 func_ov017_02200bf8(void);
-extern void func_ov017_02200188(void *);
-extern void func_ov017_022008ac(void *);
+extern void Overlay017_UpdateScene(void *);
+extern void Overlay017_RenderScene(void *);
 #ifdef __cplusplus
 }
 #endif
@@ -93,7 +93,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                 if (GameWork_TestFlag(gGameWork, 0x3ab)) {
                     GameWork_ClearFlag(gGameWork, 0x3ab);
                     func_0206fcec(data_021e9e1c);
-                    func_ov017_021ffcc8(state, 9, 1, 0);
+                    Overlay017_CreateModalPanel(state, 9, 1, 0);
                     FIELD(s32, state, 4) = 10;
                 } else {
                     func_0206fcec(data_021e9e1c);
@@ -102,7 +102,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                     FIELD(s32, state, 4) = 40;
                 }
                 FIELD(s32, state, 8) = 0;
-                func_ov017_021ffdb4(
+                Overlay017_DrawStatusText(
                     state, (u8 *)FIELD(void *, FIELD(void *, state, 0x258), 0) + 4,
                     FIELD(u16, data_021e9e1c, 0x20));
             } else {
@@ -117,9 +117,9 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                 global = data_021e9ac0;
                 record = (u8 *)FIELD(void *, global, 0x20) +
                          InventoryRecordCollection_FindIdAlternate((u8 *)global + 0x1c, 0xec) * 0x24;
-                func_ov017_021ffdb4(state, record, amount);
+                Overlay017_DrawStatusText(state, record, amount);
                 if (func_ov017_02200bf8()) {
-                    func_ov017_021ffcc8(state, 0x25, 0,
+                    Overlay017_CreateModalPanel(state, 0x25, 0,
                                         ActorDescriptor_GetPrimaryLabel(record));
                     FIELD(s32, state, 4) = 0x23;
                     FIELD(s32, state, 8) = 0;
@@ -131,18 +131,18 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                 if (FIELD(s32, state, 0x3bc) == 0 &&
                     GameWork_TestFlag(gGameWork, 0x3ac)) {
                     GameWork_ClearFlag(gGameWork, 0x3ac);
-                    func_ov017_021ffcc8(state, 10, 1, 0);
+                    Overlay017_CreateModalPanel(state, 10, 1, 0);
                     FIELD(s32, state, 4) = 20;
                     FIELD(s32, state, 8) = 0;
                 } else if (FIELD(s32, data_ov017_022016e0, 0x80) != 0 &&
                            GameWork_TestFlag(gGameWork, 0x3ad)) {
                     GameWork_ClearFlag(gGameWork, 0x3ad);
-                    func_ov017_021ffcc8(state, 11, 1, 0);
+                    Overlay017_CreateModalPanel(state, 11, 1, 0);
                     FIELD(s32, state, 4) = 20;
                     FIELD(s32, state, 8) = 0;
                 } else if (GameWork_TestFlag(gGameWork, 0x3ce)) {
                     GameWork_ClearFlag(gGameWork, 0x3ce);
-                    func_ov017_021ffcc8(state, 0x21, 1, 0);
+                    Overlay017_CreateModalPanel(state, 0x21, 1, 0);
                     FIELD(s32, state, 4) = 30;
                     FIELD(s32, state, 8) = 0;
                 } else {
@@ -162,7 +162,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
         if (ModalState_UpdateInput(FIELD(void *, state, 0x400),
                            (u8 *)state + 0x30,
                            ((s32)(FIELD(u32, state, 0x20) << 26)) >> 31) >= 0) {
-            func_ov017_021ffd74(state);
+            Overlay017_DestroyModalPanel(state);
             SpriteMotionController_Show((u8 *)state + 0x12c);
             SpriteMotionController_Show((u8 *)state + 0x80);
             FIELD(s32, state, 4) = 40;
@@ -174,7 +174,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
         if (ModalState_UpdateInput(FIELD(void *, state, 0x400),
                            (u8 *)state + 0x30,
                            ((s32)(FIELD(u32, state, 0x20) << 26)) >> 31) >= 0) {
-            func_ov017_021ffd74(state);
+            Overlay017_DestroyModalPanel(state);
             if (GameWork_TestFlag(gGameWork, 0x3ce)) {
                 GameWork_ClearFlag(gGameWork, 0x3ce);
                 FIELD(s32, state, 4)++;
@@ -190,7 +190,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
 
     case 21:
         if (++FIELD(s32, state, 8) > 0x14) {
-            func_ov017_021ffcc8(state, 0x21, 1, 0);
+            Overlay017_CreateModalPanel(state, 0x21, 1, 0);
             FIELD(s32, state, 4) = 30;
             FIELD(s32, state, 8) = 0;
         }
@@ -201,7 +201,7 @@ extern "C" s32 func_ov017_02200cc0(void *state)
             if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x80, (u8 *)state + 0x30,
                               0, 4)) {
                 SceneSound_PlayPackedEffect(state, 2);
-                func_ov017_021fea8c(state, data_ov017_02201538[0],
+                Overlay017_SetCallbackDescriptor(state, data_ov017_02201538[0],
                                     data_ov017_02201538[1], 4);
             } else if (SpriteMotionController_BeginHitResponse((u8 *)state + 0x12c,
                                      (u8 *)state + 0x30, 0, 4)) {
@@ -215,14 +215,14 @@ extern "C" s32 func_ov017_02200cc0(void *state)
                         FIELD(void *, FIELD(void *, state, 0x258), 0), 4);
                 }
                 FIELD(u16, gGameWork, 0x1ca) = result;
-                func_ov017_021fea8c(state, data_ov017_02201560[0],
+                Overlay017_SetCallbackDescriptor(state, data_ov017_02201560[0],
                                     data_ov017_02201560[1], 4);
             }
         }
         break;
     }
 
-    func_ov017_02200188(state);
-    func_ov017_022008ac(state);
+    Overlay017_UpdateScene(state);
+    Overlay017_RenderScene(state);
     return 0;
 }
