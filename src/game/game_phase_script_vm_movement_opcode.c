@@ -39,7 +39,7 @@ static fx32 squareFx32(fx32 value)
  */
 s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
 {
-    u32 useZ = GamePhaseScriptVm_Pop(&self->base);
+    u32 useZCoordinate = GamePhaseScriptVm_Pop(&self->base);
     u32 mode = GamePhaseScriptVm_Pop(&self->base);
     s32 durationOrSpeed = (s32)GamePhaseScriptVm_Pop(&self->base);
     fx32 z = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
@@ -47,14 +47,14 @@ s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
     fx32 x = (s32)GamePhaseScriptVm_Pop(&self->base) << 12;
     u8 *actor = (u8 *)self->actor;
     VecFx32Object *position = (VecFx32Object *)(actor + 0x18);
-    VecFx32Object target;
-    fx32 dx = 0;
-    fx32 dy = 0;
-    fx32 dz = 0;
+    VecFx32Object targetPosition;
+    fx32 displacementX = 0;
+    fx32 displacementY = 0;
+    fx32 displacementZ = 0;
     s32 duration;
-    u8 movement[0x34];
+    u8 movementStepper[0x34];
 
-    VecFx32Object_Init(&target);
+    VecFx32Object_Init(&targetPosition);
     if (actor[0xe6] == 1) {
         if ((mode & 1) == 0)
             Actor_UpdateAttachmentDirectionFromVector(actor, x, y);
@@ -73,39 +73,40 @@ s32 GamePhaseActorScriptVm_StartMovement(GamePhaseActorScriptVm *self)
     }
 
     if ((mode & 1) == 0) {
-        target.value.x = position->value.x + x;
-        target.value.y = position->value.y + y;
-        target.value.z = useZ ? position->value.z + z : position->value.z;
-        dx = x;
-        dy = y;
-        dz = z;
+        targetPosition.value.x = position->value.x + x;
+        targetPosition.value.y = position->value.y + y;
+        targetPosition.value.z = useZCoordinate ? position->value.z + z : position->value.z;
+        displacementX = x;
+        displacementY = y;
+        displacementZ = z;
     } else {
-        target.value.x = x;
-        target.value.y = y;
-        target.value.z = useZ ? z : position->value.z;
-        dx = x - position->value.x;
-        dy = y - position->value.y;
-        dz = z - position->value.z;
+        targetPosition.value.x = x;
+        targetPosition.value.y = y;
+        targetPosition.value.z = useZCoordinate ? z : position->value.z;
+        displacementX = x - position->value.x;
+        displacementY = y - position->value.y;
+        displacementZ = z - position->value.z;
     }
 
     if (mode < 4) {
         duration = durationOrSpeed;
     } else {
         fx32 distance = func_020adc40(
-            squareFx32(dx) + squareFx32(dy) + squareFx32(dz));
+            squareFx32(displacementX) + squareFx32(displacementY) +
+            squareFx32(displacementZ));
         duration = func_020befec(distance, durationOrSpeed);
         if (duration <= 0)
             duration = 1;
     }
 
     *(u32 *)(actor + 0x10) |= 0x40;
-    VecFx32Stepper_InitTransition(movement, &target, position, duration);
-    VecFx32Stepper_Assign(actor + 0x198, movement);
-    VecFx32Stepper_Destroy(movement);
+    VecFx32Stepper_InitTransition(movementStepper, &targetPosition, position, duration);
+    VecFx32Stepper_Assign(actor + 0x198, movementStepper);
+    VecFx32Stepper_Destroy(movementStepper);
     *(u32 *)(actor + 0x10) &= ~1u;
     GamePhaseScriptVm_StoreResultAndUpdateCondition(&self->base, duration);
     if (*(s16 *)(actor + 0xe4) == 1 && *(void **)(actor + 0x54) != 0)
         *(u16 *)(*(u8 **)(actor + 0x54) + 0x24) &= (u16)~0x20;
-    VecFx32Object_Destroy(&target);
+    VecFx32Object_Destroy(&targetPosition);
     return 0;
 }

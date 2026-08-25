@@ -1,0 +1,5 @@
+{
+  "GamePhaseActorScriptVm_StartMovement": "GamePhaseActorScriptVm_StartMovement",
+  "GamePhaseActorScriptVm_WaitForMovementCompletion": "GamePhaseActorScriptVm_WaitForMovementCompletion",
+  "GamePhaseActorScriptVm_IsMovementActive": "GamePhaseActorScriptVm_IsMovementActive"
+}

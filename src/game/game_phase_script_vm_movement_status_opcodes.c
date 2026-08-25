@@ -22,7 +22,7 @@ extern void Actor_SetVelocity(void *actor, const VecFx32Object *value);
 s32 GamePhaseActorScriptVm_WaitForMovementCompletion(GamePhaseActorScriptVm *self)
 {
     u8 *actor = (u8 *)self->actor;
-    VecFx32Object zero;
+    VecFx32Object zeroVelocity;
     if ((*(u32 *)(actor + 0x10) & 0x40) != 0) {
         self->base.cursor -= 2;
         return 1;
@@ -32,9 +32,9 @@ s32 GamePhaseActorScriptVm_WaitForMovementCompletion(GamePhaseActorScriptVm *sel
     VecFx32Object_SetComponents(actor + 0x38, 0, 0, 0);
     VecFx32Object_SetComponents(actor + 0x88, 0, 0, 0);
     VecFx32Object_SetComponents(actor + 0x98, 0, 0, 0);
-    VecFx32Object_InitComponents(&zero, 0, 0, 0);
-    Actor_SetVelocity(actor, &zero);
-    VecFx32Object_Destroy(&zero);
+    VecFx32Object_InitComponents(&zeroVelocity, 0, 0, 0);
+    Actor_SetVelocity(actor, &zeroVelocity);
+    VecFx32Object_Destroy(&zeroVelocity);
     return 0;
 }
 
