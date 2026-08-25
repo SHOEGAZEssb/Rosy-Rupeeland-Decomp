@@ -1,0 +1,14 @@
+{
+  "GamePhaseScriptVm_MultiplyRegisters": "GamePhaseScriptVm_MultiplyRegisters",
+  "GamePhaseScriptVm_MultiplyImmediate": "GamePhaseScriptVm_MultiplyImmediate",
+  "GamePhaseScriptVm_DivideRegisters": "GamePhaseScriptVm_DivideRegisters",
+  "GamePhaseScriptVm_DivideImmediate": "GamePhaseScriptVm_DivideImmediate",
+  "GamePhaseScriptVm_ModuloRegisters": "GamePhaseScriptVm_ModuloRegisters",
+  "GamePhaseScriptVm_ModuloImmediate": "GamePhaseScriptVm_ModuloImmediate",
+  "GamePhaseScriptVm_AndRegisters": "GamePhaseScriptVm_AndRegisters",
+  "GamePhaseScriptVm_AndImmediate": "GamePhaseScriptVm_AndImmediate",
+  "GamePhaseScriptVm_OrRegisters": "GamePhaseScriptVm_OrRegisters",
+  "GamePhaseScriptVm_OrImmediate": "GamePhaseScriptVm_OrImmediate",
+  "GamePhaseScriptVm_XorRegisters": "GamePhaseScriptVm_XorRegisters",
+  "GamePhaseScriptVm_XorImmediate": "GamePhaseScriptVm_XorImmediate"
+}

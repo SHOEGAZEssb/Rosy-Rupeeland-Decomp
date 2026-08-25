@@ -2,12 +2,12 @@
 
 /* Apply AND, OR, and XOR to VM registers using register or immediate operands. */
 
-static u8 readOperand(GamePhaseScriptVm *self)
+static u8 readPackedRegisterOperand(GamePhaseScriptVm *self)
 {
     return (u8)*self->cursor++;
 }
 
-static u32 readImmediate(GamePhaseScriptVm *self)
+static u32 readImmediateU32(GamePhaseScriptVm *self)
 {
     u32 value = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
@@ -18,7 +18,7 @@ static u32 readImmediate(GamePhaseScriptVm *self)
  * reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_AndRegisters(GamePhaseScriptVm *self)
 {
-    u8 operand = readOperand(self);
+    u8 operand = readPackedRegisterOperand(self);
     s32 destination = operand & 7;
     self->registers[destination] &= self->registers[(operand >> 4) & 7];
     GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
@@ -29,8 +29,8 @@ s32 GamePhaseScriptVm_AndRegisters(GamePhaseScriptVm *self)
  * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_AndImmediate(GamePhaseScriptVm *self)
 {
-    u8 destination = readOperand(self);
-    self->registers[destination] &= readImmediate(self);
+    u8 destination = readPackedRegisterOperand(self);
+    self->registers[destination] &= readImmediateU32(self);
     GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
@@ -39,7 +39,7 @@ s32 GamePhaseScriptVm_AndImmediate(GamePhaseScriptVm *self)
  * reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_OrRegisters(GamePhaseScriptVm *self)
 {
-    u8 operand = readOperand(self);
+    u8 operand = readPackedRegisterOperand(self);
     s32 destination = operand & 7;
     self->registers[destination] |= self->registers[(operand >> 4) & 7];
     GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
@@ -50,8 +50,8 @@ s32 GamePhaseScriptVm_OrRegisters(GamePhaseScriptVm *self)
  * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_OrImmediate(GamePhaseScriptVm *self)
 {
-    u8 destination = readOperand(self);
-    self->registers[destination] |= readImmediate(self);
+    u8 destination = readPackedRegisterOperand(self);
+    self->registers[destination] |= readImmediateU32(self);
     GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }
@@ -60,7 +60,7 @@ s32 GamePhaseScriptVm_OrImmediate(GamePhaseScriptVm *self)
  * reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_XorRegisters(GamePhaseScriptVm *self)
 {
-    u8 operand = readOperand(self);
+    u8 operand = readPackedRegisterOperand(self);
     s32 destination = operand & 7;
     self->registers[destination] ^= self->registers[(operand >> 4) & 7];
     GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
@@ -71,8 +71,8 @@ s32 GamePhaseScriptVm_XorRegisters(GamePhaseScriptVm *self)
  * to reflect whether the destination result is zero, and return zero. */
 s32 GamePhaseScriptVm_XorImmediate(GamePhaseScriptVm *self)
 {
-    u8 destination = readOperand(self);
-    self->registers[destination] ^= readImmediate(self);
+    u8 destination = readPackedRegisterOperand(self);
+    self->registers[destination] ^= readImmediateU32(self);
     GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
     return 0;
 }

@@ -10,8 +10,8 @@ extern s32 func_020befec(s32 dividend, s32 divisor);
 }
 #endif
 
-static void updateConditionForZeroValue(GamePhaseScriptVm *self,
-                                        s32 destination)
+static void updateDestinationZeroCondition(GamePhaseScriptVm *self,
+                                           s32 destination)
 {
     GamePhaseScriptVm_UpdateConditionForZeroRegisterValue(self, destination);
 }
@@ -24,7 +24,7 @@ s32 GamePhaseScriptVm_MultiplyRegisters(GamePhaseScriptVm *self)
     s32 destination = operand & 7;
     s32 source = (operand >> 4) & 7;
     self->registers[destination] *= self->registers[source];
-    updateConditionForZeroValue(self, destination);
+    updateDestinationZeroCondition(self, destination);
     return 0;
 }
 
@@ -36,7 +36,7 @@ s32 GamePhaseScriptVm_MultiplyImmediate(GamePhaseScriptVm *self)
     u32 immediate = GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] *= immediate;
-    updateConditionForZeroValue(self, destination);
+    updateDestinationZeroCondition(self, destination);
     return 0;
 }
 
@@ -50,7 +50,7 @@ s32 GamePhaseScriptVm_DivideRegisters(GamePhaseScriptVm *self)
     self->registers[destination] =
         (u32)func_020befec((s32)self->registers[destination],
                            (s32)self->registers[source]);
-    updateConditionForZeroValue(self, destination);
+    updateDestinationZeroCondition(self, destination);
     return 0;
 }
 
@@ -63,7 +63,7 @@ s32 GamePhaseScriptVm_DivideImmediate(GamePhaseScriptVm *self)
     self->cursor += 4;
     self->registers[destination] =
         (u32)func_020befec((s32)self->registers[destination], immediate);
-    updateConditionForZeroValue(self, destination);
+    updateDestinationZeroCondition(self, destination);
     return 0;
 }
 
@@ -76,7 +76,7 @@ s32 GamePhaseScriptVm_ModuloRegisters(GamePhaseScriptVm *self)
     s32 source = (operand >> 4) & 7;
     self->registers[destination] =
         (u32)((s32)self->registers[destination] % (s32)self->registers[source]);
-    updateConditionForZeroValue(self, destination);
+    updateDestinationZeroCondition(self, destination);
     return 0;
 }
 
@@ -88,6 +88,6 @@ s32 GamePhaseScriptVm_ModuloImmediate(GamePhaseScriptVm *self)
     s32 immediate = (s32)GamePhaseScriptVm_ReadU32Le(self->cursor);
     self->cursor += 4;
     self->registers[destination] = (u32)((s32)self->registers[destination] % immediate);
-    updateConditionForZeroValue(self, destination);
+    updateDestinationZeroCondition(self, destination);
     return 0;
 }
