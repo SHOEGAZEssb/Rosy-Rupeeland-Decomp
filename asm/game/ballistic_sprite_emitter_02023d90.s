@@ -4,16 +4,16 @@
 .extern Sound_Play
 .extern BallisticSpriteParticle_Destroy
 .extern BallisticSpriteParticle_Update
-.extern func_02023c0c
+.extern BallisticSpriteParticleList_Clear
 .extern GraphicsSpriteGroup_CreateState
 .extern GraphicsSpriteGroup_AdvanceAnimations
 .extern func_020be4e4
 .extern func_020befec
 .extern gSoundContext
 
-    .global func_02023d90
-    .type func_02023d90, @function
-func_02023d90: ; 0x02023d90
+    .global BallisticSpriteEmitter_Update
+    .type BallisticSpriteEmitter_Update, @function
+BallisticSpriteEmitter_Update: ; 0x02023d90
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     mov r10, r0
     ldr r9, [r10, #0x40]
@@ -52,7 +52,7 @@ func_02023d90: ; 0x02023d90
     str r0, [r10, #0x48]
     bne .L_02023e24
     add r0, r10, #0x3c
-    bl func_02023c0c
+    bl BallisticSpriteParticleList_Clear
 .L_02023e24:
     cmp r8, #0x0
     beq .L_02023e3c
@@ -102,4 +102,4 @@ func_02023d90: ; 0x02023d90
     moveq r0, #0x0
     ldmia sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, pc}
 .L_02023ed0: .word gSoundContext
-    .size func_02023d90, . - func_02023d90
+    .size BallisticSpriteEmitter_Update, . - BallisticSpriteEmitter_Update

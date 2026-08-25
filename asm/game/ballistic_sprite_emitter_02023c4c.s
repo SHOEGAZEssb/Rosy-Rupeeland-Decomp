@@ -4,9 +4,9 @@
 .extern gBallisticSpriteParticleListNodeAllocationTag
 .extern gHeapContext
 
-    .global func_02023c4c
-    .type func_02023c4c, @function
-func_02023c4c: ; 0x02023c4c
+    .global BallisticSpriteParticleList_Append
+    .type BallisticSpriteParticleList_Append, @function
+BallisticSpriteParticleList_Append: ; 0x02023c4c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r1
     mov r5, r0
@@ -32,4 +32,4 @@ func_02023c4c: ; 0x02023c4c
     ldmia sp!, {r3, r4, r5, pc}
 .L_02023ca8: .word gBallisticSpriteParticleListNodeAllocationTag
 .L_02023cac: .word gHeapContext
-    .size func_02023c4c, . - func_02023c4c
+    .size BallisticSpriteParticleList_Append, . - BallisticSpriteParticleList_Append

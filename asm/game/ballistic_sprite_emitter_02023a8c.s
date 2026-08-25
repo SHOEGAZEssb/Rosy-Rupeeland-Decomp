@@ -11,15 +11,15 @@
 .extern AnimationResource_InitEmpty
 .extern FieldEffect_Init
 .extern BallisticSpriteParticle_Init
-.extern func_02023bcc
-.extern func_02023c4c
+.extern BallisticSpriteParticleList_Init
+.extern BallisticSpriteParticleList_Append
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern gDebugFont
 .extern gHeapContext
 
-    .global func_02023a8c
-    .type func_02023a8c, @function
-func_02023a8c: ; 0x02023a8c
+    .global BallisticSpriteEmitter_Init
+    .type BallisticSpriteEmitter_Init, @function
+BallisticSpriteEmitter_Init: ; 0x02023a8c
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x28
     mov r10, r0
@@ -40,7 +40,7 @@ func_02023a8c: ; 0x02023a8c
     mov r2, #0x10
     bl __construct_array
     add r0, r10, #0x3c
-    bl func_02023bcc
+    bl BallisticSpriteParticleList_Init
     ldr r1, .L_02023bb8
     add r0, sp, #0x18
     add r2, r1, #0x1
@@ -87,7 +87,7 @@ func_02023a8c: ; 0x02023a8c
     mov r1, r0
 .L_02023b8c:
     add r0, r10, #0x3c
-    bl func_02023c4c
+    bl BallisticSpriteParticleList_Append
     add r7, r7, #0x1
     cmp r7, #0x6
     blt .L_02023b54
@@ -102,4 +102,4 @@ func_02023a8c: ; 0x02023a8c
 .L_02023bc0: .word gDebugFont
 .L_02023bc4: .word gBallisticSpriteParticleAllocationTag
 .L_02023bc8: .word gHeapContext
-    .size func_02023a8c, . - func_02023a8c
+    .size BallisticSpriteEmitter_Init, . - BallisticSpriteEmitter_Init

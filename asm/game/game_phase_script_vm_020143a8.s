@@ -30,7 +30,7 @@
 .extern SpriteNumberMotionPresentation_Init
 .extern RecordSpriteMotionPresentation_Init
 .extern ArcingSpriteEffectPresentation_Init
-.extern func_02023ed4
+.extern BallisticSpriteEmitter_SpawnAndRegister
 .extern func_02024b04
 .extern func_02025300
 .extern func_02028630
@@ -1236,7 +1236,7 @@ L_0201545c:
     mov r1, r8
     mov r2, r7
     mov r3, r6
-    bl func_02023ed4
+    bl BallisticSpriteEmitter_SpawnAndRegister
     b L_0201553c
 L_02015474:
     ldr r1, L_020154dc

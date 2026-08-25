@@ -1,0 +1,12 @@
+{
+  "func_02023a8c": "BallisticSpriteEmitter_Init",
+  "func_02023bcc": "BallisticSpriteParticleList_Init",
+  "func_02023bec": "BallisticSpriteParticleList_Destroy",
+  "func_02023c0c": "BallisticSpriteParticleList_Clear",
+  "func_02023c4c": "BallisticSpriteParticleList_Append",
+  "func_02023cb0": "BallisticSpriteEmitter_Destroy",
+  "func_02023d1c": "BallisticSpriteEmitter_DestroyAndFree",
+  "func_02023d90": "BallisticSpriteEmitter_Update",
+  "func_02023ed4": "BallisticSpriteEmitter_SpawnAndRegister",
+  "func_02023f78": "BallisticSpriteParticleList_DestroyAndFree"
+}

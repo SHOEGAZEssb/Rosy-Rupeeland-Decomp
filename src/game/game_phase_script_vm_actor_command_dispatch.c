@@ -39,7 +39,7 @@ extern void RuntimePresentationManager_AppendFirstListEffect(...);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern void func_02028630(...);
 extern u32 DirectSpriteTrackPresentation_SpawnAndRegister(...);
-extern void func_02023ed4(...);
+extern void BallisticSpriteEmitter_SpawnAndRegister(...);
 extern void func_02028814(...);
 extern void func_0202906c(...);
 extern u32 func_020beb18(s32 value);
@@ -368,7 +368,7 @@ s32 GamePhaseActorScriptVm_DispatchEffectCommand(GamePhaseActorScriptVm *self)
         func_ov057_0220e558();
         break;
     case 34:
-        func_02023ed4(a1, a2, a3, a4);
+        BallisticSpriteEmitter_SpawnAndRegister(a1, a2, a3, a4);
         break;
     case 35: {
         void *object = Heap_Alloc(0x44, data_020d5b2c, 4, &gHeapContext);

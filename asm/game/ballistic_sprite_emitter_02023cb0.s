@@ -6,13 +6,13 @@
 .extern VecFx32Object_Destroy
 .extern AnimationResource_Destroy
 .extern FieldEffect_DestroyBase
-.extern func_02023c0c
+.extern BallisticSpriteParticleList_Clear
 .extern GraphicsSpriteGroupOwner_DestroyGroup
 .extern gDebugFont
 
-    .global func_02023cb0
-    .type func_02023cb0, @function
-func_02023cb0: ; 0x02023cb0
+    .global BallisticSpriteEmitter_Destroy
+    .type BallisticSpriteEmitter_Destroy, @function
+BallisticSpriteEmitter_Destroy: ; 0x02023cb0
     stmdb sp!, {r4, lr}
     ldr r1, .L_02023d0c
     mov r4, r0
@@ -24,7 +24,7 @@ func_02023cb0: ; 0x02023cb0
     ldr r1, .L_02023d14
     add r0, r4, #0x3c
     str r1, [r4, #0x3c]
-    bl func_02023c0c
+    bl BallisticSpriteParticleList_Clear
     ldr r3, .L_02023d18
     add r0, r4, #0x18
     mov r1, #0x2
@@ -40,4 +40,4 @@ func_02023cb0: ; 0x02023cb0
 .L_02023d10: .word gDebugFont
 .L_02023d14: .word data_020d66b8
 .L_02023d18: .word AnimationResource_Destroy
-    .size func_02023cb0, . - func_02023cb0
+    .size BallisticSpriteEmitter_Destroy, . - BallisticSpriteEmitter_Destroy

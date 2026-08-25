@@ -85,9 +85,9 @@ extern void Sound_Play(void *context, s32 first, s32 soundId);
 }
 #endif
 
-ParticleList *func_02023bcc(ParticleList *self);
-void func_02023c0c(ParticleList *self);
-void func_02023c4c(ParticleList *self, void *particle);
+ParticleList *BallisticSpriteParticleList_Init(ParticleList *self);
+void BallisticSpriteParticleList_Clear(ParticleList *self);
+void BallisticSpriteParticleList_Append(ParticleList *self, void *particle);
 
 /*
  * Initialize FieldEffect state and copy position.  Construct and copy descriptors for
@@ -96,7 +96,7 @@ void func_02023c4c(ParticleList *self, void *particle);
  * supplied lifetime and direction and append every allocation result to the
  * embedded list.  Return self; failed particle allocations are stored as null.
  */
-BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
+BallisticSpriteEmitter *BallisticSpriteEmitter_Init(BallisticSpriteEmitter *self,
                                       const EmitterVector *position,
                                       s32 remaining, s32 direction)
 {
@@ -108,7 +108,7 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
     VecFx32Object_InitCopy(&self->position08, position);
     AnimationResource_Init(&self->resources18[0], 0, 0, 0);
     AnimationResource_Init(&self->resources18[1], 0, 0, 0);
-    func_02023bcc(&self->particles3c);
+    BallisticSpriteParticleList_Init(&self->particles3c);
 
     AnimationResource_Init(&temporary, 0x1714, 0x1715, 0x1716);
     AnimationResource_Assign(&self->resources18[0], &temporary);
@@ -125,13 +125,13 @@ BallisticSpriteEmitter *func_02023a8c(BallisticSpriteEmitter *self,
                                      &self->resources18[0], &self->position08,
                                      remaining, direction);
         }
-        func_02023c4c(&self->particles3c, particle);
+        BallisticSpriteParticleList_Append(&self->particles3c, particle);
     }
     return self;
 }
 
 /* Initialize an empty particle list and return it. */
-ParticleList *func_02023bcc(ParticleList *self)
+ParticleList *BallisticSpriteParticleList_Init(ParticleList *self)
 {
     self->vtable00 = (void **)data_020d66b8;
     self->head04 = 0;
@@ -141,10 +141,10 @@ ParticleList *func_02023bcc(ParticleList *self)
 }
 
 /* Restore the list vtable, release every node, clear its fields, and return it. */
-ParticleList *func_02023bec(ParticleList *self)
+ParticleList *BallisticSpriteParticleList_Destroy(ParticleList *self)
 {
     self->vtable00 = (void **)data_020d66b8;
-    func_02023c0c(self);
+    BallisticSpriteParticleList_Clear(self);
     return self;
 }
 
@@ -152,7 +152,7 @@ ParticleList *func_02023bec(ParticleList *self)
  * Free all linked-list nodes without touching their particle payloads, then
  * clear head, tail, and count.  Payload ownership is handled by emitter update.
  */
-void func_02023c0c(ParticleList *self)
+void BallisticSpriteParticleList_Clear(ParticleList *self)
 {
     ParticleListNode *node = self->head04;
     while (node != 0) {
@@ -166,7 +166,7 @@ void func_02023c0c(ParticleList *self)
 }
 
 /* Allocate a 12-byte tail node for particle, link it, and increment count. */
-void func_02023c4c(ParticleList *self, void *particle)
+void BallisticSpriteParticleList_Append(ParticleList *self, void *particle)
 {
     ParticleListNode *node = (ParticleListNode *)Heap_Alloc(
         0x0c, gBallisticSpriteParticleListNodeAllocationTag, 4, &gHeapContext);
@@ -191,12 +191,12 @@ void func_02023c4c(ParticleList *self, void *particle)
  * Release the acquired sprite owner, free list nodes, destroy both resource
  * descriptors and position, tear down the FieldEffect base, and return self.
  */
-BallisticSpriteEmitter *func_02023cb0(BallisticSpriteEmitter *self)
+BallisticSpriteEmitter *BallisticSpriteEmitter_Destroy(BallisticSpriteEmitter *self)
 {
     self->vtable00 = (void **)data_020d6718;
     GraphicsSpriteGroupOwner_DestroyGroup(gDebugFont, self->spriteOwner38);
     self->particles3c.vtable00 = (void **)data_020d66b8;
-    func_02023c0c(&self->particles3c);
+    BallisticSpriteParticleList_Clear(&self->particles3c);
     AnimationResource_Destroy(&self->resources18[1]);
     AnimationResource_Destroy(&self->resources18[0]);
     VecFx32Object_Destroy(&self->position08);
@@ -205,9 +205,9 @@ BallisticSpriteEmitter *func_02023cb0(BallisticSpriteEmitter *self)
 }
 
 /* Perform emitter teardown, free its storage, and return the old address. */
-BallisticSpriteEmitter *func_02023d1c(BallisticSpriteEmitter *self)
+BallisticSpriteEmitter *BallisticSpriteEmitter_DestroyAndFree(BallisticSpriteEmitter *self)
 {
-    func_02023cb0(self);
+    BallisticSpriteEmitter_Destroy(self);
     Heap_Free(self);
     return self;
 }
@@ -223,7 +223,7 @@ BallisticSpriteEmitter *func_02023d1c(BallisticSpriteEmitter *self)
  * freed node.  This offset-derived lifetime quirk is intentionally documented;
  * allocator behavior evidently leaves the saved link readable for that step.
  */
-s32 func_02023d90(BallisticSpriteEmitter *self)
+s32 BallisticSpriteEmitter_Update(BallisticSpriteEmitter *self)
 {
     ParticleListNode *node = self->particles3c.head04;
     while (node != 0) {
@@ -243,7 +243,7 @@ s32 func_02023d90(BallisticSpriteEmitter *self)
             Heap_Free(node);
             self->particles3c.count0c--;
             if (self->particles3c.count0c == 0) {
-                func_02023c0c(&self->particles3c);
+                BallisticSpriteParticleList_Clear(&self->particles3c);
             }
             if (particle != 0) {
                 BallisticSpriteParticle_Destroy(particle);
@@ -275,24 +275,24 @@ s32 func_02023d90(BallisticSpriteEmitter *self)
  * construct it with the supplied lifetime/direction, register it in the global
  * owner list at offset 0x2f7c, and destroy the temporary position value.
  */
-void func_02023ed4(s32 x, s32 y, s32 remaining, s32 direction)
+void BallisticSpriteEmitter_SpawnAndRegister(s32 x, s32 y, s32 remaining, s32 direction)
 {
     EmitterVector position;
     BallisticSpriteEmitter *emitter = (BallisticSpriteEmitter *)Heap_Alloc(
         0x4c, gBallisticSpriteEmitterAllocationTag, 4, &gHeapContext);
     VecFx32Object_InitComponents(&position, x << 12, y << 12, 0);
     if (emitter != 0) {
-        emitter = func_02023a8c(emitter, &position, remaining, direction);
+        emitter = BallisticSpriteEmitter_Init(emitter, &position, remaining, direction);
     }
     RuntimePresentationManager_AppendFirstListEffect(gGamePhaseRuntime + 0x2f7c, emitter);
     VecFx32Object_Destroy(&position);
 }
 
 /* Clear a standalone particle list, free it, and return its old address. */
-ParticleList *func_02023f78(ParticleList *self)
+ParticleList *BallisticSpriteParticleList_DestroyAndFree(ParticleList *self)
 {
     self->vtable00 = (void **)data_020d66b8;
-    func_02023c0c(self);
+    BallisticSpriteParticleList_Clear(self);
     Heap_Free(self);
     return self;
 }

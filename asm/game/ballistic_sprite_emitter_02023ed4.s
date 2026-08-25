@@ -6,12 +6,12 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern RuntimePresentationManager_AppendFirstListEffect
-.extern func_02023a8c
+.extern BallisticSpriteEmitter_Init
 .extern gHeapContext
 
-    .global func_02023ed4
-    .type func_02023ed4, @function
-func_02023ed4: ; 0x02023ed4
+    .global BallisticSpriteEmitter_SpawnAndRegister
+    .type BallisticSpriteEmitter_SpawnAndRegister, @function
+BallisticSpriteEmitter_SpawnAndRegister: ; 0x02023ed4
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0x10
     mov r8, r1
@@ -36,7 +36,7 @@ func_02023ed4: ; 0x02023ed4
     mov r2, r7
     mov r3, r6
     mov r4, #0x1
-    bl func_02023a8c
+    bl BallisticSpriteEmitter_Init
     mov r5, r0
 .L_02023f3c:
     ldr r0, .L_02023f74
@@ -55,4 +55,4 @@ func_02023ed4: ; 0x02023ed4
 .L_02023f6c: .word gBallisticSpriteEmitterAllocationTag
 .L_02023f70: .word gHeapContext
 .L_02023f74: .word gGamePhaseRuntime
-    .size func_02023ed4, . - func_02023ed4
+    .size BallisticSpriteEmitter_SpawnAndRegister, . - BallisticSpriteEmitter_SpawnAndRegister
