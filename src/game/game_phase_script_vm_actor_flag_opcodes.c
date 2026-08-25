@@ -19,13 +19,13 @@ s32 GamePhaseActorScriptVm_SetActorFlag10AndAttachmentFlag40(GamePhaseActorScrip
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
     u8 *actor = (u8 *)self->actor;
     u32 *actorFlags = (u32 *)(actor + 0x10);
-    u16 *objectFlags = (u16 *)(*(u8 **)(actor + 0x54) + 0x24);
+    u16 *attachmentFlags = (u16 *)(*(u8 **)(actor + 0x54) + 0x24);
     if (enabled != 0) {
         *actorFlags |= 0x10;
-        *objectFlags |= 0x40;
+        *attachmentFlags |= 0x40;
     } else {
         *actorFlags &= ~0x10u;
-        *objectFlags &= (u16)~0x40;
+        *attachmentFlags &= (u16)~0x40;
     }
     return 0;
 }
@@ -34,11 +34,11 @@ s32 GamePhaseActorScriptVm_SetActorFlag10AndAttachmentFlag40(GamePhaseActorScrip
 s32 GamePhaseActorScriptVm_SetAttachmentFlag80(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor + 0x54) + 0x24);
+    u16 *attachmentFlags = (u16 *)(*(u8 **)((u8 *)self->actor + 0x54) + 0x24);
     if (enabled != 0)
-        *flags |= 0x80;
+        *attachmentFlags |= 0x80;
     else
-        *flags &= (u16)~0x80;
+        *attachmentFlags &= (u16)~0x80;
     return 0;
 }
 
@@ -46,11 +46,11 @@ s32 GamePhaseActorScriptVm_SetAttachmentFlag80(GamePhaseActorScriptVm *self)
 s32 GamePhaseActorScriptVm_SetAttachmentFlag20(GamePhaseActorScriptVm *self)
 {
     u32 enabled = GamePhaseScriptVm_Pop(&self->base);
-    u16 *flags = (u16 *)(*(u8 **)((u8 *)self->actor + 0x54) + 0x24);
+    u16 *attachmentFlags = (u16 *)(*(u8 **)((u8 *)self->actor + 0x54) + 0x24);
     if (enabled != 0)
-        *flags |= 0x20;
+        *attachmentFlags |= 0x20;
     else
-        *flags &= (u16)~0x20;
+        *attachmentFlags &= (u16)~0x20;
     return 0;
 }
 
