@@ -1,0 +1,14 @@
+{
+  "GamePhaseActorScriptVm_Init": "GamePhaseActorScriptVm_Init",
+  "GamePhaseActorScriptVm_InitWithScript": "GamePhaseActorScriptVm_InitWithScript",
+  "GamePhaseActorScriptVm_ResetState": "GamePhaseActorScriptVm_ResetState",
+  "GamePhaseActorScriptVm_Assign": "GamePhaseActorScriptVm_Assign",
+  "GamePhaseActorScriptVm_CopyState": "GamePhaseActorScriptVm_CopyState",
+  "GamePhaseActorScriptVm_Destroy": "GamePhaseActorScriptVm_Destroy",
+  "GamePhaseActorScriptVm_DestroyAndFree": "GamePhaseActorScriptVm_DestroyAndFree",
+  "GamePhaseActorScriptVm_DispatchOpcode": "GamePhaseActorScriptVm_DispatchOpcode",
+  "GamePhaseActorScriptVm_Activate": "GamePhaseActorScriptVm_Activate",
+  "GamePhaseActorScriptVm_IsActive": "GamePhaseActorScriptVm_IsActive",
+  "data_020d5b20": "gGamePhaseActorScriptVmVTable",
+  "gGamePhaseActorScriptVmOpcodeTable": "gGamePhaseActorScriptVmOpcodeTable"
+}

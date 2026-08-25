@@ -9,13 +9,16 @@ typedef struct GamePhaseScriptVmVTable {
     GamePhaseScriptVm *(*destroy)(GamePhaseScriptVm *self);
     GamePhaseScriptVm *(*destroyAndFree)(GamePhaseScriptVm *self);
     s32 (*noOpHook)(GamePhaseScriptVm *self);
-    const void *metadata0c;
-    const void *metadata10;
 } GamePhaseScriptVmVTable;
 
 enum {
     GAME_PHASE_SCRIPT_VM_HALTED = 1,
     GAME_PHASE_SCRIPT_VM_CONDITION_TRUE = 2
+};
+
+enum {
+    GAME_PHASE_ACTOR_SCRIPT_VM_ACTIVE = 1,
+    GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING = 2
 };
 
 /* Compact bytecode interpreter state with registers and a shared value/call stack. */
@@ -38,13 +41,13 @@ typedef struct GamePhaseActorScriptVm {
     GamePhaseScriptVm base;
     void *actor;
     s32 waitCounter;
-    u32 flags_8c;
-    u8 value_90;
+    u32 actorStateFlags;
+    u8 effectStateValue;
     u8 padding_91[3];
 } GamePhaseActorScriptVm;
 
 typedef char GamePhaseScriptVmVTableSizeCheck[
-    sizeof(GamePhaseScriptVmVTable) == 0x14 ? 1 : -1];
+    sizeof(GamePhaseScriptVmVTable) == 0x0c ? 1 : -1];
 typedef char GamePhaseScriptVmSizeCheck[
     sizeof(GamePhaseScriptVm) == 0x84 ? 1 : -1];
 typedef char GamePhaseActorScriptVmSizeCheck[
@@ -54,6 +57,7 @@ typedef char GamePhaseActorScriptVmSizeCheck[
 extern "C" {
 #endif
 extern const GamePhaseScriptVmVTable gGamePhaseScriptVmVTable;
+extern const GamePhaseScriptVmVTable gGamePhaseActorScriptVmVTable;
 GamePhaseScriptVm *GamePhaseScriptVm_Init(GamePhaseScriptVm *self);
 void GamePhaseScriptVm_Reset(GamePhaseScriptVm *self);
 GamePhaseScriptVm *GamePhaseScriptVm_Destroy(GamePhaseScriptVm *self);

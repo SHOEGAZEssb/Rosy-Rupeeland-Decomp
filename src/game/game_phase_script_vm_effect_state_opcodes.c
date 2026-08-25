@@ -8,14 +8,14 @@
  */
 s32 GamePhaseActorScriptVm_SetValue90AndFlag2(GamePhaseActorScriptVm *self)
 {
-    self->value_90 = (u8)GamePhaseScriptVm_Pop(&self->base);
-    self->flags_8c |= 2;
+    self->effectStateValue = (u8)GamePhaseScriptVm_Pop(&self->base);
+    self->actorStateFlags |= GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING;
     return 0;
 }
 
 /* Clear VM flag 0x2 at offset 0x8c and return zero. */
 s32 GamePhaseActorScriptVm_ClearFlag2(GamePhaseActorScriptVm *self)
 {
-    self->flags_8c &= ~2u;
+    self->actorStateFlags &= ~GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING;
     return 0;
 }

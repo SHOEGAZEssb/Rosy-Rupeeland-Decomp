@@ -24,11 +24,11 @@ s32 GamePhaseActorScriptVm_DispatchOpcode(GamePhaseActorScriptVm *self, s32 inde
 /* Mark the actor VM active by setting derived flag bit zero. */
 void GamePhaseActorScriptVm_Activate(GamePhaseActorScriptVm *self)
 {
-    self->flags_8c |= 1;
+    self->actorStateFlags |= GAME_PHASE_ACTOR_SCRIPT_VM_ACTIVE;
 }
 
 /* Return active flag bit zero in retail's Boolean representation, zero or -1. */
 s32 GamePhaseActorScriptVm_IsActive(const GamePhaseActorScriptVm *self)
 {
-    return (s32)(self->flags_8c << 31) >> 31;
+    return (s32)(self->actorStateFlags << 31) >> 31;
 }

@@ -6874,7 +6874,7 @@ data_020d5ad8 kind:data(any) addr:0x020d5ad8
 data_020d5ae8 kind:data(any) addr:0x020d5ae8
 data_020d5af8 kind:data(any) addr:0x020d5af8
 gCPoint2DS16VTable kind:data(any) addr:0x020d5b10
-data_020d5b20 kind:data(any) addr:0x020d5b20
+gGamePhaseActorScriptVmVTable kind:data(any) addr:0x020d5b20
 data_020d5b2c kind:data(any) addr:0x020d5b2c
 data_020d5b34 kind:data(any) addr:0x020d5b34
 data_020d5b3c kind:data(any) addr:0x020d5b3c

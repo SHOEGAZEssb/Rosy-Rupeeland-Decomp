@@ -3,14 +3,6 @@
 
 /* Construct, reset, copy, and destroy the actor-bound script VM specialization. */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-extern const GamePhaseScriptVmVTable data_020d5b20;
-#ifdef __cplusplus
-}
-#endif
-
 /*
  * Construct an empty actor VM, install its derived vtable, reset derived
  * state, clear the actor binding, and return self.
@@ -18,7 +10,7 @@ extern const GamePhaseScriptVmVTable data_020d5b20;
 GamePhaseActorScriptVm *GamePhaseActorScriptVm_Init(GamePhaseActorScriptVm *self)
 {
     GamePhaseScriptVm_Init(&self->base);
-    self->base.vtable = &data_020d5b20;
+    self->base.vtable = &gGamePhaseActorScriptVmVTable;
     GamePhaseActorScriptVm_ResetState(self);
     self->actor = 0;
     return self;
@@ -30,19 +22,19 @@ GamePhaseActorScriptVm *GamePhaseActorScriptVm_InitWithScript(
     void *context)
 {
     GamePhaseScriptVm_InitWithScript(&self->base, script, context);
-    self->base.vtable = &data_020d5b20;
+    self->base.vtable = &gGamePhaseActorScriptVmVTable;
     GamePhaseActorScriptVm_ResetState(self);
     self->actor = actor;
     return self;
 }
 
-/* Clear the wait counter and low two flags, set value_90 to 0x80, and return. */
+/* Clear the wait counter and low two flags, set effectStateValue to 0x80. */
 void GamePhaseActorScriptVm_ResetState(GamePhaseActorScriptVm *self)
 {
     self->waitCounter = 0;
-    self->flags_8c &= ~1u;
-    self->flags_8c &= ~2u;
-    self->value_90 = 0x80;
+    self->actorStateFlags &= ~GAME_PHASE_ACTOR_SCRIPT_VM_ACTIVE;
+    self->actorStateFlags &= ~GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING;
+    self->effectStateValue = 0x80;
 }
 
 /* Copy a distinct actor VM's base and recovered derived fields, then return self. */
@@ -62,7 +54,9 @@ void GamePhaseActorScriptVm_CopyState(GamePhaseActorScriptVm *self,
 {
     self->actor = source->actor;
     self->waitCounter = source->waitCounter;
-    self->flags_8c = (self->flags_8c & ~1u) | (source->flags_8c & 1u);
+    self->actorStateFlags =
+        (self->actorStateFlags & ~GAME_PHASE_ACTOR_SCRIPT_VM_ACTIVE) |
+        (source->actorStateFlags & GAME_PHASE_ACTOR_SCRIPT_VM_ACTIVE);
 }
 
 /* Run the recovered non-deleting base lifecycle hook and return self. */

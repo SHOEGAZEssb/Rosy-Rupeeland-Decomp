@@ -2,7 +2,7 @@
 .text
 .extern GamePhaseScriptVm_InitWithScript
 .extern GamePhaseActorScriptVm_ResetState
-.extern data_020d5b20
+.extern gGamePhaseActorScriptVmVTable
 .global GamePhaseActorScriptVm_InitWithScript
 GamePhaseActorScriptVm_InitWithScript: ; 0x0201b124
     stmdb sp!, {r3, r4, r5, lr}
@@ -18,5 +18,5 @@ GamePhaseActorScriptVm_InitWithScript: ; 0x0201b124
     mov r0, r5
     str r4, [r5, #0x84]
     ldmia sp!, {r3, r4, r5, pc}
-L_0201b158: .word data_020d5b20
+L_0201b158: .word gGamePhaseActorScriptVmVTable
 .size GamePhaseActorScriptVm_InitWithScript, . - GamePhaseActorScriptVm_InitWithScript

@@ -32,7 +32,8 @@ s32 GamePhaseActorScriptVm_WaitForDebugHudInput(GamePhaseActorScriptVm *self)
     uiState = DebugHudState_GetGlobal();
     state = DebugHudState_PollInput(uiState, 0);
 
-    if ((self->flags_8c & 2) != 0) {
+    if ((self->actorStateFlags &
+         GAME_PHASE_ACTOR_SCRIPT_VM_EFFECT_STATE_PENDING) != 0) {
         u8 *object = *(u8 **)((u8 *)self->actor + 0x54);
         if (object != 0) {
             u16 *flags = (u16 *)(object + 0x24);
