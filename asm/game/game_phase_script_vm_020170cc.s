@@ -2,8 +2,8 @@
 .text
 .extern gGamePhaseRuntime
 .extern ActorMotion_ClearOscillation
-.global GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation
-GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation:
+.global GamePhaseActorScriptVm_ClearAreaFollowerMotionOscillation
+GamePhaseActorScriptVm_ClearAreaFollowerMotionOscillation:
     stmdb sp!, {r3, lr}
     ldr r0, L_020170ec
     ldr r0, [r0]
@@ -13,4 +13,4 @@ GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_020170ec: .word gGamePhaseRuntime
-    .size GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation, . - GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation
+    .size GamePhaseActorScriptVm_ClearAreaFollowerMotionOscillation, . - GamePhaseActorScriptVm_ClearAreaFollowerMotionOscillation

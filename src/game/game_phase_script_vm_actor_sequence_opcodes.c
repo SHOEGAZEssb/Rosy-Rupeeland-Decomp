@@ -5,9 +5,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void ActorMotionProbe_ConfigureMotion(void *actor, s32 first,
-                                             s32 second, s32 count,
-                                             s32 fourth, s32 fifth);
+extern void ActorMotionProbe_ConfigureMotion(void *actor, s32 operandA,
+                                             s32 operandB, s32 count,
+                                             s32 operandD, s32 operandE);
 extern void ActorMotionProbe_ResetMotion(void *actor);
 #ifdef __cplusplus
 }
@@ -20,19 +20,19 @@ extern void ActorMotionProbe_ResetMotion(void *actor);
  */
 s32 GamePhaseActorScriptVm_ConfigureMotionProbe(GamePhaseActorScriptVm *self)
 {
-    s32 fifth = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 fourth = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandE = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandD = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 count = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 second = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 first = (s32)GamePhaseScriptVm_Pop(&self->base);
-    if (first < 0)
-        first = 0;
-    if (second < 0)
-        second = 0;
+    s32 operandB = (s32)GamePhaseScriptVm_Pop(&self->base);
+    s32 operandA = (s32)GamePhaseScriptVm_Pop(&self->base);
+    if (operandA < 0)
+        operandA = 0;
+    if (operandB < 0)
+        operandB = 0;
     if (count < 1)
         count = 1;
-    ActorMotionProbe_ConfigureMotion(self->actor, first, second, count,
-                                     fourth, fifth);
+    ActorMotionProbe_ConfigureMotion(self->actor, operandA, operandB, count,
+                                     operandD, operandE);
     return 0;
 }
 

@@ -3,8 +3,8 @@
 .extern gGamePhaseRuntime
 .extern ActorMotion_SetOscillation
 .extern GamePhaseScriptVm_Pop
-.global GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation
-GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation:
+.global GamePhaseActorScriptVm_SetAreaFollowerMotionOscillation
+GamePhaseActorScriptVm_SetAreaFollowerMotionOscillation:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -25,4 +25,4 @@ GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation:
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
 L_020170c8: .word gGamePhaseRuntime
-    .size GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation, . - GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation
+    .size GamePhaseActorScriptVm_SetAreaFollowerMotionOscillation, . - GamePhaseActorScriptVm_SetAreaFollowerMotionOscillation

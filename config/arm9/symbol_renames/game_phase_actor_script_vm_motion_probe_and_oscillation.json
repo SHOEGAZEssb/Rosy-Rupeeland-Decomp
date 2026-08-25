@@ -1,0 +1,9 @@
+{
+  "GamePhaseActorScriptVm_ConfigureMotionProbe": "GamePhaseActorScriptVm_ConfigureMotionProbe",
+  "GamePhaseActorScriptVm_ResetMotionProbe": "GamePhaseActorScriptVm_ResetMotionProbe",
+  "GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation": "GamePhaseActorScriptVm_SetGameWorkMotionOscillation",
+  "GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation": "GamePhaseActorScriptVm_ClearGameWorkMotionOscillation",
+  "GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation": "GamePhaseActorScriptVm_SetAreaFollowerMotionOscillation",
+  "GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation": "GamePhaseActorScriptVm_ClearAreaFollowerMotionOscillation",
+  "GamePhaseActorScriptVm_SetActorFlag40AndClearField44": "GamePhaseActorScriptVm_SetActorFlag40AndClearField44"
+}

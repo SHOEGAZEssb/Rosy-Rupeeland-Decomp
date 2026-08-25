@@ -2,8 +2,8 @@
 .text
 .extern gGamePhaseRuntime
 .extern ActorMotion_ClearOscillation
-.global GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation
-GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation:
+.global GamePhaseActorScriptVm_ClearGameWorkMotionOscillation
+GamePhaseActorScriptVm_ClearGameWorkMotionOscillation:
     stmdb sp!, {r3, lr}
     ldr r0, L_02017078
     ldr r0, [r0]
@@ -13,4 +13,4 @@ GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation:
     mov r0, #0
     ldmia sp!, {r3, pc}
 L_02017078: .word gGamePhaseRuntime
-    .size GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation, . - GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation
+    .size GamePhaseActorScriptVm_ClearGameWorkMotionOscillation, . - GamePhaseActorScriptVm_ClearGameWorkMotionOscillation

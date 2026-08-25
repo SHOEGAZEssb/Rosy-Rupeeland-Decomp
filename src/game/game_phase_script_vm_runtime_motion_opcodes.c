@@ -12,7 +12,7 @@ extern void *gGamePhaseRuntime;
  * Pop duration, Y amplitude, and X amplitude, configure the ActorMotion at
  * runtime offset 0x3044 through ActorMotion_SetOscillation, and return zero.
  */
-s32 GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetGameWorkMotionOscillation(GamePhaseActorScriptVm *self)
 {
     s32 duration = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 yAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -23,7 +23,7 @@ s32 GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation(GamePhaseActorScriptV
 }
 
 /* Clear the ActorMotion at runtime offset 0x3044 and return zero. */
-s32 GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ClearGameWorkMotionOscillation(GamePhaseActorScriptVm *self)
 {
     (void)self;
     ActorMotion_ClearOscillation((ActorMotion *)((u8 *)gGamePhaseRuntime + 0x3044));
@@ -34,7 +34,7 @@ s32 GamePhaseActorScriptVm_ClearRuntimeMotion3044Oscillation(GamePhaseActorScrip
  * Pop duration, Y amplitude, and X amplitude, configure the ActorMotion at
  * runtime offset 0x2fbc through ActorMotion_SetOscillation, and return zero.
  */
-s32 GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetAreaFollowerMotionOscillation(GamePhaseActorScriptVm *self)
 {
     s32 duration = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 yAmplitude = (s32)GamePhaseScriptVm_Pop(&self->base);
@@ -45,7 +45,7 @@ s32 GamePhaseActorScriptVm_SetRuntimeMotion2fbcOscillation(GamePhaseActorScriptV
 }
 
 /* Clear the ActorMotion at runtime offset 0x2fbc and return zero. */
-s32 GamePhaseActorScriptVm_ClearRuntimeMotion2fbcOscillation(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_ClearAreaFollowerMotionOscillation(GamePhaseActorScriptVm *self)
 {
     (void)self;
     ActorMotion_ClearOscillation((ActorMotion *)((u8 *)gGamePhaseRuntime + 0x2fbc));

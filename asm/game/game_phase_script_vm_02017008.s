@@ -3,8 +3,8 @@
 .extern gGamePhaseRuntime
 .extern ActorMotion_SetOscillation
 .extern GamePhaseScriptVm_Pop
-.global GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation
-GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation:
+.global GamePhaseActorScriptVm_SetGameWorkMotionOscillation
+GamePhaseActorScriptVm_SetGameWorkMotionOscillation:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r0
     bl GamePhaseScriptVm_Pop
@@ -25,4 +25,4 @@ GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation:
     mov r0, #0
     ldmia sp!, {r4, r5, r6, pc}
 L_02017054: .word gGamePhaseRuntime
-    .size GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation, . - GamePhaseActorScriptVm_SetRuntimeMotion3044Oscillation
+    .size GamePhaseActorScriptVm_SetGameWorkMotionOscillation, . - GamePhaseActorScriptVm_SetGameWorkMotionOscillation
