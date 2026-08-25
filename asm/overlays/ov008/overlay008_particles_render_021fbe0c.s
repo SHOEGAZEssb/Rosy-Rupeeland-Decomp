@@ -4,7 +4,7 @@
     .extern VecFx32Object_InitCopy
     .extern VecFx32Object_Destroy
     .extern func_0209a2ac
-    .extern func_0209b494
+    .extern Graphics3dPresentation_BindImmediateTexture
     .extern func_0209c7e8
     .extern func_0209c87c
 
@@ -261,7 +261,7 @@ L_021fc0a4:
     movge r1, #0x0
     ldr r0, [r0, #0x18]
     movlt r1, #0x1c
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     str r11, [sp, #0x0]
     add r3, r5, r4, lsl #0x1
     ldr r0, [r5, #0x48]

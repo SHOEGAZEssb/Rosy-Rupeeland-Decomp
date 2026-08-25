@@ -11,7 +11,7 @@
 extern "C" {
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 void Heap_FreeAlternateEntry(void *);
-void func_020c0c24(void *, s32, s32, void *);
+void CxxArray_DestroyAndFree(void *, s32, s32, void *);
 void func_02099fb0(void *);
 void func_ov041_021fec04(void *, const void *);
 u32 genrand_int32(void);
@@ -48,9 +48,9 @@ extern "C" void *func_ov041_021ff530(void *object)
 {
     FIELD(void *, object, 0) = &data_ov041_02205820;
     Heap_FreeAlternateEntry(FIELD(void *, object, 0x80));
-    func_020c0c24(FIELD(void *, object, 0x84), 12, 8,
+    CxxArray_DestroyAndFree(FIELD(void *, object, 0x84), 12, 8,
                   (void *)func_ov041_021fce00);
-    func_020c0c24(FIELD(void *, object, 0x88), 12, 8,
+    CxxArray_DestroyAndFree(FIELD(void *, object, 0x88), 12, 8,
                   (void *)func_ov041_021fce00);
     Heap_FreeAlternateEntry(FIELD(void *, object, 0x8c));
     Heap_FreeAlternateEntry(FIELD(void *, object, 0x90));

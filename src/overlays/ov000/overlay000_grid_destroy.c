@@ -39,7 +39,7 @@ extern void InventoryCell_Destroy(void *cell);
 extern void AnimationResourceState_Destroy(void *resource);
 extern void GraphicsSpriteGroup_Destroy(void *group);
 extern void func_020927b8(void *state);
-extern void func_020c0c24(void *array, s32 elementSize, s32 alignment,
+extern void CxxArray_DestroyAndFree(void *array, s32 elementSize, s32 alignment,
                            void (*destructor)(void *));
 extern void func_ov000_021fbcc0(void *element);
 #ifdef __cplusplus
@@ -61,7 +61,7 @@ Overlay000GridState *func_ov000_021fc054(Overlay000GridState *state)
     Overlay000Controller *controller;
 
     state->vtable_000 = &data_ov000_021fcd30;
-    func_020c0c24(state->cells_250, 0x20, 8, InventoryCell_Destroy);
+    CxxArray_DestroyAndFree(state->cells_250, 0x20, 8, InventoryCell_Destroy);
     controller = (Overlay000Controller *)state->controller_26c;
     if (controller != 0) {
         controller->vtable->destroy_04(controller);

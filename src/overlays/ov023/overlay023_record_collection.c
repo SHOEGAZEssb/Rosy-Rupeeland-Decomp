@@ -34,8 +34,8 @@ extern void *func_02094154(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern s32 func_020befec(s32, s32);
-extern void func_020c09cc(void *, s32, s32, s32, ...);
-extern void func_020c0c24(void *, s32, s32, void *);
+extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, ...);
+extern void CxxArray_DestroyAndFree(void *, s32, s32, void *);
 extern void *func_ov023_021fce00(void *);
 extern void *func_ov023_021fce2c(void *);
 extern void func_ov023_021fd0dc(void *);
@@ -68,7 +68,7 @@ extern "C" void *func_ov023_021fce44(void *collection, void *font, s32 capacity)
         entries = Heap_AllocAlternateEntry(capacity * 0x18 + 8,
                                 data_ov023_021ffbd8, 4, gHeapContext);
         if (entries != 0)
-            func_020c09cc(entries, capacity, 0x18, 8,
+            CxxArray_ConstructWithCookie(entries, capacity, 0x18, 8,
                           func_ov023_021fce00, func_ov023_021fce2c);
     }
     FIELD(void *, collection, 0x2c) = entries;
@@ -100,7 +100,7 @@ extern "C" void *func_ov023_021fcfcc(void *collection)
     }
     void *entries = FIELD(void *, collection, 0x2c);
     if (entries != 0)
-        func_020c0c24(entries, 0x18, 8, (void *)func_ov023_021fce2c);
+        CxxArray_DestroyAndFree(entries, 0x18, 8, (void *)func_ov023_021fce2c);
     func_020927b8((u8 *)collection + 8);
     return collection;
 }

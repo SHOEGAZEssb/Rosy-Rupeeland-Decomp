@@ -25,12 +25,12 @@ extern void func_0209a2ac(void *object, void *context, s32 enabled);
 extern void Sound_SetEffectParameters(void *context, s32 soundId, s32 mode, s32 parameter,
                           s32 horizontalPosition, s32 verticalPosition);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
-extern void *func_0209c3b4(void);
+extern void *GraphicsImmediateEffectRenderer_SetupProjection(void);
 extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Init(void *vector);
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *vector);
-extern void func_0209c430(void *resource, ...);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *resource, ...);
 extern s32 func_020befec(s32 value, s32 divisor);
 extern void func_ov069_0220ff38(void *system, void *position, s32 value,
                                 s32 limit);
@@ -98,7 +98,7 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
 
     void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                    0x2f7c);
-    void *renderer = func_0209c3b4();
+    void *renderer = GraphicsImmediateEffectRenderer_SetupProjection();
     for (s32 i = 29; i >= 0; i--) {
         void *helper = FIELD(void *, scene, 0xa0 + i * 4);
         if (FIELD(s32, helper, 0x18) != 0) continue;
@@ -113,7 +113,7 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
         position.y_08 = FIELD(s32, helper, 8);
         position.z_0c = 0;
         const s32 *selectedSize = sizePairs[FIELD(s32, helper, 0x1c) & 6];
-        func_0209c430(renderer, resource, &position, &scale, 0,
+        GraphicsImmediateEffectRenderer_DrawTexturedQuad(renderer, resource, &position, &scale, 0,
                       bounds, 0, selectedSize, 0x7fff, 0, packetSize);
         VecFx32Object_Destroy(&position);
         VecFx32Object_Destroy(&scale);
@@ -172,7 +172,7 @@ extern "C" void func_ov039_0220076c(void *scene, void *context)
         s32 size[4] = {0x80000, 0x40000, 0xc0000, 0x80000};
         VecFx32Object_InitComponents(&scale, step, step, step);
         VecFx32Object_InitCopy(&position, (u8 *)scene + 0x1da0);
-        func_0209c430(renderer, resource, &position, &scale, 0,
+        GraphicsImmediateEffectRenderer_DrawTexturedQuad(renderer, resource, &position, &scale, 0,
                       bounds, 0x1c, size, 0x7fff, 0x190, packetSize);
         VecFx32Object_Destroy(&position);
         VecFx32Object_Destroy(&scale);

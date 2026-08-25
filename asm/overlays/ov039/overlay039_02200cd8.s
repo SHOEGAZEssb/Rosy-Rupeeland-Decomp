@@ -7,7 +7,7 @@
     .extern func_ov069_022109c4
     .extern func_ov039_021fce40
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_0209a748
+    .extern Graphics3dPresentation_LoadResourceProfile
     .extern func_ov039_02200f9c
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Assign
@@ -53,7 +53,7 @@ func_ov039_02200cd8:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x7
-    bl func_0209a748
+    bl Graphics3dPresentation_LoadResourceProfile
     mov r0, #0x200000
     str r0, [r6, #0x30]
     mov r0, #0x118000

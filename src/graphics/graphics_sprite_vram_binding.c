@@ -33,7 +33,7 @@ extern "C" {
 
 extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
 extern void GraphicsSpriteGraphicsResource_Prepare(void *resource);
-extern s32 func_0207043c(void *resource);
+extern s32 GraphicsCharacterResource_GetUploadSize(void *resource);
 extern u32 GX_VBlankIntr(u32 state);
 
 #ifdef __cplusplus
@@ -68,14 +68,14 @@ GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
         if (resource->field_14 == 0) {
             GraphicsSpriteGraphicsResource_Prepare(resource);
         }
-        size = func_0207043c(resource);
+        size = GraphicsCharacterResource_GetUploadSize(resource);
         blocks = (size + 127) / 128;
         node = GraphicsVramAllocator_Allocate(
             &renderer->vramAllocator, blocks, resource, 1);
         interruptState = GX_VBlankIntr(0);
         gGraphicsSpriteStatePool.interruptState = interruptState;
         node->field_0c = 1;
-        size = func_0207043c(resource);
+        size = GraphicsCharacterResource_GetUploadSize(resource);
         GraphicsTransferQueue_Enqueue(
             &renderer->transferQueue,
             GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
@@ -107,7 +107,7 @@ asm GraphicsVramRangeNode *GraphicsSpriteRenderer_AcquireGraphicsVramBinding(
     bl GraphicsSpriteGraphicsResource_Prepare
 sprite_vram_binding_prepared:
     mov r0, r5
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r1, r0, asr #4
     add r0, r0, r1, lsr #27
     mov r0, r0, asr #5
@@ -131,7 +131,7 @@ sprite_vram_binding_prepared:
     ldrh r7, [r4, #0xe]
     ldr r8, [r5, #0x24]
     mov r0, r5
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     add r1, r6, #0x114
     mov r2, r8
     mov r3, r7, lsl #7

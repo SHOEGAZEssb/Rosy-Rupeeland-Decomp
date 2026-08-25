@@ -1,7 +1,7 @@
     .text
 /* Exact fallback; see src/overlays/ov022/overlay022_menu_collection.c. */
     .extern func_020927b8
-    .extern func_020c0c24
+    .extern CxxArray_DestroyAndFree
     .extern func_ov022_021fda78
 
 .global func_ov022_021fda28
@@ -21,7 +21,7 @@ L_021fda48:
     mov r1, #0x8
     ldr r3, L_021fda74
     mov r2, r1
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
 L_021fda64:
     mov r0, r4
     bl func_020927b8

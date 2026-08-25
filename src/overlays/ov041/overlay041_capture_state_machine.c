@@ -12,9 +12,9 @@ extern "C" {
 s32 func_020befec(s32, s32);
 void func_020afce8(volatile void *, s32, s32);
 void func_ov041_021fdd04(s32, s32, s32, s32, s32);
-s32 func_0207043c(void);
+s32 GraphicsCharacterResource_GetUploadSize(void);
 s32 GraphicsBgResourceData_GetDecoded(void *);
-s32 func_02070888(void *);
+s32 GraphicsPaletteResource_GetUploadSize(void *);
 void func_020b1924(void *, s32, s32);
 void func_020b2058(s32, s32, s32);
 }
@@ -54,7 +54,7 @@ extern "C" void func_ov041_021fe8b8(void *owner)
         s32 slot = FIELD(s32, owner, 0x180) + 1;
         void *resource = FIELD(void *, owner, 0x48 + slot * 12);
         u8 *pixels = (u8 *)FIELD(void *, resource, 0x24);
-        s32 length = func_0207043c();
+        s32 length = GraphicsCharacterResource_GetUploadSize();
         func_020b1924(pixels + (offset >> 1), offset, length / 4);
         func_ov041_021fdd04(0, 0, 0x1c, 0, 0);
         ++FIELD(s32, owner, 0x184);
@@ -67,7 +67,7 @@ extern "C" void func_ov041_021fe8b8(void *owner)
         s32 slot = FIELD(s32, owner, 0x180);
         void *resource = FIELD(void *, owner, 0x48 + slot * 12);
         u8 *pixels = (u8 *)FIELD(void *, resource, 0x24);
-        s32 length = func_0207043c();
+        s32 length = GraphicsCharacterResource_GetUploadSize();
         func_020b1924(pixels + (offset >> 1), offset, length / 4);
         ++FIELD(s32, owner, 0x184);
         break;
@@ -77,7 +77,7 @@ extern "C" void func_ov041_021fe8b8(void *owner)
             void *resource = FIELD(void *, owner,
                                    0x4c + FIELD(s32, owner, 0x180) * 12);
             s32 start = GraphicsBgResourceData_GetDecoded(resource);
-            s32 end = func_02070888(resource);
+            s32 end = GraphicsPaletteResource_GetUploadSize(resource);
             func_020b2058(start + 0x20, 0x20, end - 0x20);
             ++FIELD(s32, owner, 0x184);
         }
@@ -87,7 +87,7 @@ extern "C" void func_ov041_021fe8b8(void *owner)
             s32 slot = FIELD(s32, owner, 0x180) + 1;
             void *resource = FIELD(void *, owner, 0x4c + slot * 12);
             func_020b2058(GraphicsBgResourceData_GetDecoded(resource), 0x100,
-                          func_02070888(resource));
+                          GraphicsPaletteResource_GetUploadSize(resource));
             ++FIELD(s32, owner, 0x184);
         }
         break;

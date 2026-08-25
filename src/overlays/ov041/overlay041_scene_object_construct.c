@@ -12,7 +12,7 @@ extern "C" {
 void *func_ov041_021ff1cc(void *);
 void func_ov041_021fd000(void *);
 void *Heap_AllocAlternateEntry(s32, const void *, s32, void *);
-void func_020c09cc(void *, s32, s32, s32, void *, void *);
+void CxxArray_ConstructWithCookie(void *, s32, s32, s32, void *, void *);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
 void VecFx32Object_Init(void *);
 void VecFx32Object_Destroy(void *);
@@ -62,14 +62,14 @@ extern "C" void *func_ov041_021ff20c(void *object, void *owner,
 
     void *recordsA = allocate_overlay_array(count * 12 + 8);
     if (recordsA != 0)
-        func_020c09cc(recordsA, count, 12, 8,
+        CxxArray_ConstructWithCookie(recordsA, count, 12, 8,
                       (void *)func_ov041_021fd000,
                       (void *)func_ov041_021fce00);
     FIELD(void *, object, 0x84) = recordsA;
 
     void *recordsB = allocate_overlay_array(count * 12 + 8);
     if (recordsB != 0)
-        func_020c09cc(recordsB, count, 12, 8,
+        CxxArray_ConstructWithCookie(recordsB, count, 12, 8,
                       (void *)func_ov041_021fd000,
                       (void *)func_ov041_021fce00);
     FIELD(void *, object, 0x88) = recordsB;

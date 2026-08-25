@@ -2,7 +2,7 @@
 ; Matching fallback for the portable implementation in src/overlays/ov059/overlay059_recovery.c.
 .extern data_ov059_02211ac0
 .extern Heap_AllocAlternateEntry
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern func_ov059_0220fd20
 .extern func_ov059_0220fd64
 .extern gHeapContext
@@ -33,7 +33,7 @@ func_ov059_02210a2c:
     mov r2, #0x70
     mov r3, #0x8
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 .L_02210a90:
     stmia r5, {r0, r4}
 .L_02210a94:

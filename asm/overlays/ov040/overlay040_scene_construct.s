@@ -13,9 +13,9 @@
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Destroy
     .extern VecFx32Object_Assign
-    .extern func_0207043c
+    .extern GraphicsCharacterResource_GetUploadSize
     .extern GraphicsBgResourceData_GetDecoded
-    .extern func_02070888
+    .extern GraphicsPaletteResource_GetUploadSize
     .extern func_020708c4
     .extern GraphicsBgMapResource_UploadToMainBg
     .extern GraphicsBgMapResource_AddPaletteBankOffset
@@ -162,7 +162,7 @@ func_ov040_021fcebc: ; 0x021fcebc
     bl func_020b44e8
     ldr r0, [sp, #0x18]
     ldr r4, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r4
     mov r1, #0x0
@@ -173,7 +173,7 @@ func_ov040_021fcebc: ; 0x021fcebc
     bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r5
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r4
     mov r1, #0x80
@@ -203,7 +203,7 @@ func_ov040_021fcebc: ; 0x021fcebc
     add r0, r10, #0x1000
     ldr r0, [r0, #0xb7c]
     ldr r4, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r4
     mov r1, #0x0
@@ -215,7 +215,7 @@ func_ov040_021fcebc: ; 0x021fcebc
     bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r5
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r4
     mov r1, #0x0

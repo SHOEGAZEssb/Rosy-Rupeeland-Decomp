@@ -5,7 +5,7 @@
     .extern Heap_AllocAlternateEntry
     .extern func_02093a34
     .extern IndexedSelectionController_ConfigureRange
-    .extern func_020c09cc
+    .extern CxxArray_ConstructWithCookie
     .extern func_ov022_021fd6fc
     .extern gHeapContext
 
@@ -39,7 +39,7 @@ func_ov022_021fd708:
     str ip, [sp, #0x0]
     mov ip, #0x0
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_021fd77c:
     str r0, [r4, #0x38]
     ldr r2, [r4, #0x3c]

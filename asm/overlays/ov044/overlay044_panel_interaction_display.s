@@ -5,7 +5,7 @@
 .extern RetailTextTable_FindRecordById
 .extern GraphicsSpriteRenderer_DrawText
 .extern ActorDescriptor_GetPrimaryLabel
-.extern func_02092960
+.extern GraphicsSpriteRenderer_DrawDecimal
 .extern func_020befec
 .extern data_021f3ecc
 .extern gSystemState
@@ -103,7 +103,7 @@ func_ov044_0220bba4:
     str r0, [sp, #0xc]
     ldr r0, [r10, #0x0]
     mov r3, #0xb0
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
 .L_0220bd0c:
     add r7, r7, #0x1
 .L_0220bd10:

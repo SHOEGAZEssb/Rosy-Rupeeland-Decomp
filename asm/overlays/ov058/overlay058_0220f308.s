@@ -11,7 +11,7 @@
 .extern data_ov058_0220fcfc
 .extern Heap_AllocCore
 .extern Heap_FreeCore
-.extern func_0207043c
+.extern GraphicsCharacterResource_GetUploadSize
 .extern GraphicsBgResourceData_GetDecoded
 .extern func_020b18bc
 .extern func_020b1924
@@ -71,14 +71,14 @@ func_ov058_0220f308:
     mla r4, r9, r6, r5
     ldr r0, [r4, #0x18]
     ldr r10, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r10
     mov r1, r8
     bl func_020b1924
     ldr r0, [r4, #0x18]
     ldr r10, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r10
     mov r1, r8

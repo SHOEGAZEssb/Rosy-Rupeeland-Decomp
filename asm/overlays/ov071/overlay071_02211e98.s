@@ -3,7 +3,7 @@
 .extern gFx32CosSinTable
 .extern data_ov071_02212280
 .extern data_ov071_02212340
-.extern func_0209b494
+.extern Graphics3dPresentation_BindImmediateTexture
 .extern func_020befec
 .extern func_ov071_02212090
 .extern func_ov071_022120a4
@@ -117,7 +117,7 @@ func_ov071_02211e98:
     ldr r0, [r0, #0x20]
     add r1, r1, #0x2f
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     add r0, r10, r9, lsl #0x2
     ldr r0, [r0, #0xa54]
     mov r1, #0xd

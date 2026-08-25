@@ -47,7 +47,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, const void *);
 extern const u16 *RetailTextTable_FindRecordById(void *, u16);
 extern void GraphicsSpriteRenderer_DrawText(void *, const u16 *, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteRenderer_DrawGlyph(void *, s32, s32, s32, s32);
-extern s32 func_02092960(void *, s32, s32, s32, s32, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, s32, s32, s32);
 extern s32 func_020befec(s32, s32);
 #ifdef __cplusplus
 }
@@ -135,7 +135,7 @@ void AreaInfoPanelPresentation_ShowIndex(AreaInfoPanelPresentation *self, s32 in
     if (matching != 0) {
         s32 percent = func_020befec(available * 100, matching);
         if (percent > 0) {
-            s32 width = func_02092960(self->uiContext_30, percent, 100,
+            s32 width = GraphicsSpriteRenderer_DrawDecimal(self->uiContext_30, percent, 100,
                                      0xca, 0xac, 13, 12, 0, 0);
             GraphicsSpriteRenderer_DrawGlyph(self->uiContext_30, 5, width + 0xca, 0xac, 13);
         }

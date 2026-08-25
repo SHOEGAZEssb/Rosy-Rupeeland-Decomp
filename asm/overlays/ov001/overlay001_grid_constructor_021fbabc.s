@@ -24,7 +24,7 @@
     .extern func_02095820
     .extern func_02095940
     .extern func_020befec
-    .extern func_020c09cc
+    .extern CxxArray_ConstructWithCookie
     .extern func_ov001_021fc404
     .extern gHeapContext
     .global func_ov001_021fbabc
@@ -168,7 +168,7 @@ L_021fbc68:
     mov r2, #0x20
     mov r3, #0x8
     str r4, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_021fbce4:
     mov r6, #0x5
     mov r4, #0x24

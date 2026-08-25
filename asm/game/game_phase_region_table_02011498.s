@@ -4,7 +4,7 @@
 .extern Heap_AllocAlternateEntry
 .extern GamePhaseRegion_Init
 .extern GamePhaseRegion_Destroy
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern gHeapContext
 
     .global GamePhaseRegionTable_InitWithCount
@@ -32,7 +32,7 @@ GamePhaseRegionTable_InitWithCount: ; 0x02011498
     mov r1, r4
     mov r3, r2
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_020114f8:
     stmia r5, {r0, r4}
 L_020114fc:

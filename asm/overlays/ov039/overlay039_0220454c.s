@@ -3,7 +3,7 @@
     .extern RuntimePresentationManager_GetGraphics3dPresentation
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Init
-    .extern func_0209c430
+    .extern GraphicsImmediateEffectRenderer_DrawTexturedQuad
     .extern VecFx32Object_Destroy
     .extern gGamePhaseRuntime
     .global func_ov039_0220454c
@@ -93,7 +93,7 @@ L_02204578:
     mov r3, r0, lsl #0x10
     mov r0, r7
     mov r3, r3, lsr #0x10
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     mov r0, #0x8
     mvn r5, #0xc
     sub r8, r0, #0x1
@@ -177,7 +177,7 @@ L_022046b8:
     mov r3, r3, lsl #0x10
     add r2, sp, #0x24
     mov r3, r3, lsr #0x10
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, sp, #0x14
     bl VecFx32Object_Destroy
     add r0, sp, #0x24

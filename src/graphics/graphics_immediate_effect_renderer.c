@@ -19,10 +19,10 @@ extern "C" {
 #endif
 
 extern const s16 gFx32CosSinTable[];
-extern void func_0209b414(u32 format, u32 generation, u32 sizeS, u32 sizeT,
+extern void G3Command_SetTextureParameters(u32 format, u32 generation, u32 sizeS, u32 sizeT,
                           u32 repeatS, u32 repeatT, u32 flip, u32 address);
-extern void func_0209b494(void *context, s32 resource, s32 polygonId);
-extern void func_0209b560(u32 light, u32 polygonMode, u32 cullMode,
+extern void Graphics3dPresentation_BindImmediateTexture(void *context, s32 resource, s32 polygonId);
+extern void G3Command_SetPolygonAttributes(u32 light, u32 polygonMode, u32 cullMode,
                           u32 polygonId, u32 alpha, u32 misc);
 extern void G3Command_SubmitTexCoord(s32 s, s32 t);
 extern void G3Command_SubmitVertex16(s32 x, s32 y, s32 z);
@@ -61,7 +61,7 @@ static s32 ScreenCoordinate(s32 value)
  * context is borrowed for API compatibility but is not inspected. Geometry
  * state changes are submitted synchronously to the NDS or host G3 boundary.
  */
-void func_0209c3b4(void *context)
+void GraphicsImmediateEffectRenderer_SetupProjection(void *context)
 {
     (void)context;
     REG_G3_MTX_MODE = 0;
@@ -90,7 +90,7 @@ void func_0209c3b4(void *context)
  * Geometry is culled when its projected depth exceeds 0x200. All G3 writes
  * are synchronous and the final signed parameter supplies vertex depth.
  */
-void func_0209c430(void *context, const VecFx32Object *position,
+void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *context, const VecFx32Object *position,
                    const VecFx32Object *scale, u16 angle,
                    const s32 *textureBounds, u32 resource,
                    const s32 *region, u16 color, s32 parameter)
@@ -122,7 +122,7 @@ void func_0209c430(void *context, const VecFx32Object *position,
     tableIndex = (angle >> 4) * 2;
     func_020b0808(gFx32CosSinTable[tableIndex],
                   gFx32CosSinTable[tableIndex + 1]);
-    func_0209b494(context, (s32)resource, 0);
+    Graphics3dPresentation_BindImmediateTexture(context, (s32)resource, 0);
 
     REG_G3_BEGIN_VTXS = 1;
     REG_G3_COLOR = color;
@@ -163,7 +163,7 @@ void func_0209c430(void *context, const VecFx32Object *position,
  * index and retail emits entries in descending order. Geometry state changes
  * are synchronous, and parameter supplies the first vertex's signed depth.
  */
-void func_0209c614(void *context, const VecFx32Object *position,
+void GraphicsImmediateEffectRenderer_DrawTriangles(void *context, const VecFx32Object *position,
                    const VecFx32Object *scale, u16 angle,
                    const s32 *triangles, u32 lastTriangle, u16 color,
                    s32 parameter)
@@ -196,8 +196,8 @@ void func_0209c614(void *context, const VecFx32Object *position,
     tableIndex = (angle >> 4) * 2;
     func_020b0808(gFx32CosSinTable[tableIndex],
                   gFx32CosSinTable[tableIndex + 1]);
-    func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);
-    func_0209b560(0, 0, 3, 2, 0x1f, 0);
+    G3Command_SetTextureParameters(0, 0, 0, 0, 0, 0, 0, 0);
+    G3Command_SetPolygonAttributes(0, 0, 3, 2, 0x1f, 0);
 
     REG_G3_BEGIN_VTXS = 0;
     REG_G3_COLOR = color;

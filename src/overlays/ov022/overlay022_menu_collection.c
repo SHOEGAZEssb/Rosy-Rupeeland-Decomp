@@ -26,8 +26,8 @@ extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern void func_020c09cc(void *, s32, s32, s32, void (*)(void *), void *);
-extern void func_020c0c24(void *, s32, s32, void (*)(void *));
+extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), void *);
+extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 #ifdef __cplusplus
 }
 #endif
@@ -72,7 +72,7 @@ extern "C" void *func_ov022_021fd8a4(void *menu, s32 capacity)
         void *entries = Heap_AllocAlternateEntry(capacity * 8 + 8,
                                       data_ov022_022006c4, 4, gHeapContext);
         if (entries != 0)
-            func_020c09cc(entries, capacity, 8, 8,
+            CxxArray_ConstructWithCookie(entries, capacity, 8, 8,
                           func_ov022_021fd894, 0);
         FIELD(void *, menu, 0x24) = entries;
         void *ui = Heap_Alloc(0x80, data_ov022_022006cc, 4, gHeapContext);
@@ -105,7 +105,7 @@ extern "C" void *func_ov022_021fda28(void *menu)
 {
     destroy_polymorphic(FIELD(void *, menu, 0x30));
     if (FIELD(void *, menu, 0x24) != 0)
-        func_020c0c24(FIELD(void *, menu, 0x24),
+        CxxArray_DestroyAndFree(FIELD(void *, menu, 0x24),
                       8, 8, func_ov022_021fda78);
     func_020927b8(menu);
     return menu;

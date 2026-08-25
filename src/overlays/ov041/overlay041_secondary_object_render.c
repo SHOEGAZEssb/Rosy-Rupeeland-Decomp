@@ -16,7 +16,7 @@ void VecFx32Object_Destroy(void *);
 s32 func_020befec(s32, s32);
 void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 void VecFx32Object_Assign(void *, const void *);
-void func_0209c9d4(void *);
+void Graphics3dPresentation_ConfigureOrthographicState(void *);
 void func_0209cb74(void *, const void *, const void *, s32,
                    s32, const void *, s32);
 extern void *data_020f4e14;
@@ -81,7 +81,7 @@ extern "C" void func_ov041_02200ce8(void *object, const void *transform)
 
     void *scene = FIELD(void *, owner, 0x18);
     VecFx32Object_Assign((u8 *)scene + 0x84, transform);
-    func_0209c9d4(scene);
+    Graphics3dPresentation_ConfigureOrthographicState(scene);
     s32 animation = ((++FIELD(s32, object, 0x158) / 6) % 4) << 6;
 
     for (s32 row = 0; row < 10; ++row) {

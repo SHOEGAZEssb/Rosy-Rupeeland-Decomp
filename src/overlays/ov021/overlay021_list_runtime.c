@@ -35,12 +35,12 @@ extern u32 LanguageLookupDatabase_GetResourceSize(const void *, s32);
 extern const void *LanguageLookupDatabase_GetResourceById(const void *, s32);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
-extern s32 func_02092960(void *, s32, u32, s32, s32, s32, s32, s32);
+extern s32 GraphicsSpriteRenderer_DrawDecimal(void *, s32, u32, s32, s32, s32, s32, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
+extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
 extern void func_ov021_021fce00(void *);
 extern void func_ov021_021fd224(void *);
 extern Overlay021Row *func_ov021_021fd6e8(void *);
@@ -87,7 +87,7 @@ extern "C" void *func_ov021_021fce18(void *state, void *font,
         void *rows = Heap_AllocAlternateEntry(capacity * 12 + 8,
                                    data_ov021_02202f78, 4, gHeapContext);
         if (rows != 0)
-            rows = func_020c09cc(rows, capacity, 12, 8,
+            rows = CxxArray_ConstructWithCookie(rows, capacity, 12, 8,
                                  func_ov021_021fce00, 0);
         FIELD(void *, state, 0x4c) = rows;
     } else {
@@ -183,7 +183,7 @@ extern "C" void func_ov021_021fd490(void *state)
         FIELD(u16, FIELD(void *, state, 0x24), 0x24) &= ~4;
         GraphicsSpriteRenderer_SetFontResource(
             font, FIELD(void *, state, 0x2c));
-        s32 width = func_02092960(font, value, 0xff676980, 0x2a,
+        s32 width = GraphicsSpriteRenderer_DrawDecimal(font, value, 0xff676980, 0x2a,
                                   0x7e, 0xe, 8, 0);
         GraphicsSpriteRenderer_DrawText(font, (u8 *)state + 0x64, width + 0x2e, 0x7e,
                       0xe, 4, 0);

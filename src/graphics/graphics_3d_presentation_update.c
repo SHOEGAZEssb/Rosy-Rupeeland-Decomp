@@ -11,7 +11,7 @@ extern "C" {
 extern void func_0200500c(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32_TerminateNoOp(void *vector);
 extern void func_020050a4(void *destination, const void *source);
-extern void func_0209c9d4(void *presentation);
+extern void Graphics3dPresentation_ConfigureOrthographicState(void *presentation);
 #ifndef MATCHING
 extern void TingleNativeG3_Begin(u32 primitive);
 extern void TingleNativeG3_End(void);
@@ -115,7 +115,7 @@ void PairedEntryManager_Render(PairedEntryManager *manager)
     s32 translation_y;
 
     manager->renderParity ^= 1;
-    func_0209c9d4(renderContext);
+    Graphics3dPresentation_ConfigureOrthographicState(renderContext);
     base_x = renderContext->framePosition.value.x + 0x80000;
     base_y = renderContext->framePosition.value.y + 0x60000;
     translation_x = (s16)((u32)base_x >> 12);

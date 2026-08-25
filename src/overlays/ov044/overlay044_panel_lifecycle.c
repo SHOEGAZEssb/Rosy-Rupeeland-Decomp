@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void GraphicsSpriteGroup_Destroy(void *object);
-extern "C" void func_020c0c24(void *records, s32 stride, s32 alignment,
+extern "C" void CxxArray_DestroyAndFree(void *records, s32 stride, s32 alignment,
                                void (*destroy)(void *));
 extern "C" void func_020927b8(void *presentation);
 extern "C" void AnimationResourceState_Destroy(void *owner);
@@ -37,7 +37,7 @@ extern "C" void *func_ov044_0220b8e4(void *object)
         ((void (*)(void *))vtable[1])(child);
     }
     if (FIELD(void *, object, 0x38))
-        func_020c0c24(FIELD(void *, object, 0x38), 0x20, 8, InventoryCell_Destroy);
+        CxxArray_DestroyAndFree(FIELD(void *, object, 0x38), 0x20, 8, InventoryCell_Destroy);
     func_020927b8((u8 *)object + 0x14);
     AnimationResourceState_Destroy((u8 *)object + 8);
     return object;

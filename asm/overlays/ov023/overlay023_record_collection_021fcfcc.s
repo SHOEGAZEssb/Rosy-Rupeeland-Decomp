@@ -3,7 +3,7 @@
 /* Exact fallback; see src/overlays/ov023/overlay023_record_collection.c. */
 .extern GraphicsSpriteGroup_Destroy
 .extern func_020927b8
-.extern func_020c0c24
+.extern CxxArray_DestroyAndFree
 .extern func_ov023_021fce2c
 
 
@@ -26,7 +26,7 @@ L_021fcff4:
     ldr r3, L_021fd020
     mov r1, #0x18
     mov r2, #0x8
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
 L_021fd010:
     add r0, r4, #0x8
     bl func_020927b8

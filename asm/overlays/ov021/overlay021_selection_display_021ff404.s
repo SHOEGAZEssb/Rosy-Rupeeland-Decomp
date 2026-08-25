@@ -3,7 +3,7 @@
     .extern data_020f4e14
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
-    .extern func_02092960
+    .extern GraphicsSpriteRenderer_DrawDecimal
 
 .global func_ov021_021ff404
 func_ov021_021ff404:
@@ -35,7 +35,7 @@ func_ov021_021ff404:
     ldr r0, [r0, #0x0]
     ldr r2, L_021ff4ec
     mov r3, #0x72
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
     b L_021ff4e0
 L_021ff47c:
     mov r0, #0xe

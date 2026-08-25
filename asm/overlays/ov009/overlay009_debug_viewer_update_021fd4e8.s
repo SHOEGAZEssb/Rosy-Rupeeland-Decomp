@@ -24,7 +24,7 @@
     .extern data_ov009_021fef84
     .extern data_ov009_021fef98
     .extern data_ov009_021fefb4
-    .extern func_0207043c
+    .extern GraphicsCharacterResource_GetUploadSize
     .extern func_02070958
     .extern func_02070a78
     .extern GraphicsSpriteState_SetAnimationIndex
@@ -1271,7 +1271,7 @@ L_021fe658:
     bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x88]
     ldr r0, [r0, #0x14]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r1, r0, asr #0x4
     add r0, r0, r1, lsr #0x1b
     mov r0, r0, asr #0x5

@@ -4,7 +4,7 @@
 .extern data_020e0290
 .extern NoOpDestructor
 .extern ActorExtendedType2_Init
-.extern func_020c0c24
+.extern CxxArray_DestroyAndFree
 .global ActorExtendedRecordArray_Destroy
 .type ActorExtendedRecordArray_Destroy, @function
 ActorExtendedRecordArray_Destroy: ; 0x020437f4
@@ -18,7 +18,7 @@ ActorExtendedRecordArray_Destroy: ; 0x020437f4
     mov r1, #0x8
     ldr r3, .L_0204382c
     mov r2, r1
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
 .L_02043820:
     mov r0, r4
     ldmia sp!, {r4, pc}

@@ -39,8 +39,8 @@ extern void *func_02094154(void *, void *, s32, s32, ...);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
 extern s32 func_020befec(s32, s32);
-extern void func_020c09cc(void *, s32, s32, s32, ...);
-extern void func_020c0c24(void *, s32, s32, void *);
+extern void CxxArray_ConstructWithCookie(void *, s32, s32, s32, ...);
+extern void CxxArray_DestroyAndFree(void *, s32, s32, void *);
 extern void func_ov023_021fd438(void *);
 extern void func_ov023_021fd630(void *);
 extern void func_ov023_021fd780(void *);
@@ -69,7 +69,7 @@ extern "C" void *func_ov023_021fd444(void *collection, void *font, s32 capacity)
     if (capacity) {
         items = Heap_AllocAlternateEntry(capacity * 4 + 8,
                               data_ov023_021ffbe8, 4, gHeapContext);
-        if (items) func_020c09cc(items, capacity, 4, 8,
+        if (items) CxxArray_ConstructWithCookie(items, capacity, 4, 8,
                                 func_ov023_021fd438, 0);
     }
     FIELD(void *, collection, 0x3c) = items;
@@ -100,7 +100,7 @@ extern "C" void *func_ov023_021fd5d0(void *collection)
         ((Dtor)FIELD(void *, FIELD(void *, ui, 0), 4))(ui);
     }
     if (FIELD(void *, collection, 0x3c))
-        func_020c0c24(FIELD(void *, collection, 0x3c), 4, 8,
+        CxxArray_DestroyAndFree(FIELD(void *, collection, 0x3c), 4, 8,
                       (void *)func_ov023_021fd630);
     func_020927b8((u8 *)collection + 0x18);
     AnimationResourceState_Destroy((u8 *)collection + 8);

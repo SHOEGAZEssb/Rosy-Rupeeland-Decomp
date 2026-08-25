@@ -9,7 +9,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
-extern "C" void func_0209b494(void *resourceOwner, s32 resourceId, s32 unused);
+extern "C" void Graphics3dPresentation_BindImmediateTexture(void *resourceOwner, s32 resourceId, s32 unused);
 extern "C" void func_ov042_02205b38(void *context, const s32 *translation,
                                       u16 angle, const s32 *vertices,
                                       const s32 *texcoords, u16 attributes);
@@ -65,11 +65,11 @@ extern "C" void func_ov042_02205808(void *state)
             attributes = (u16)(component | (component << 5) |
                                (component << 10));
             textureIndex = texturePhase[(counter >> 1) % 6];
-            func_0209b494(resourceOwner, (index % 4) + 31, 0);
+            Graphics3dPresentation_BindImmediateTexture(resourceOwner, (index % 4) + 31, 0);
         } else {
             textureIndex = (index % 4) * 2;
             attributes = 0x7fff;
-            func_0209b494(resourceOwner, 46, 0);
+            Graphics3dPresentation_BindImmediateTexture(resourceOwner, 46, 0);
         }
 
         u16 angle = (u16)-FIELD(u16, state, 0xc4 + index * 2);

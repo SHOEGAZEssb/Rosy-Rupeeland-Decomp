@@ -13,7 +13,7 @@ extern void Actor_ReleaseSecondaryRenderAttachment(void *actor);
 extern void Type7MarkerPresentation_Destroy(void *object);
 extern void VecFx32Object_Destroy(void *vector);
 extern void ActorDerivedRuntime_DestroyAlternate(void *actor);
-extern void func_020c0c24(void *array, s32 countOrSize, s32 elementSize,
+extern void CxxArray_DestroyAndFree(void *array, s32 countOrSize, s32 elementSize,
                           void (*destructor)(void *));
 extern void NoOpDestructor(void *element);
 #ifdef __cplusplus
@@ -94,7 +94,7 @@ void *ActorExtendedType2_DestroyComplete(void *self)
 
 /*
  * Restore vtable data_020dfec0. If array +0x04 exists, destroy its eight-byte
- * elements through func_020c0c24 and NoOpDestructor, then free self. Return the
+ * elements through CxxArray_DestroyAndFree and NoOpDestructor, then free self. Return the
  * original pointer value after the free; array and object heap state is released.
  */
 void *ActorExtendedRecordArray_DestroyAndFree(void *self)
@@ -103,7 +103,7 @@ void *ActorExtendedRecordArray_DestroyAndFree(void *self)
 
     *(const void **)object = data_020dfec0;
     if (*(void **)(object + 4) != 0)
-        func_020c0c24(*(void **)(object + 4), 8, 8, NoOpDestructor);
+        CxxArray_DestroyAndFree(*(void **)(object + 4), 8, 8, NoOpDestructor);
     Heap_Free(object);
     return object;
 }

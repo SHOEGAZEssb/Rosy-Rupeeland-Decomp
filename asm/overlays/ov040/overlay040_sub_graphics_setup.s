@@ -9,9 +9,9 @@
     .extern data_020f4e18
     .extern DisplayBrightness_StartTransition
     .extern DisplayBrightnessPair_GetScreen
-    .extern func_0207043c
+    .extern GraphicsCharacterResource_GetUploadSize
     .extern GraphicsBgResourceData_GetDecoded
-    .extern func_02070888
+    .extern GraphicsPaletteResource_GetUploadSize
     .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsResourceSet_ReleaseHandles
     .extern GraphicsSpriteState_SetAnimationIndex
@@ -69,7 +69,7 @@ func_ov040_02202640: ; 0x02202640
     bl func_020b44e8
     ldr r0, [sp, #0x18]
     ldr r6, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r6
     mov r1, #0x0
@@ -80,7 +80,7 @@ func_ov040_02202640: ; 0x02202640
     bl GraphicsBgResourceData_GetDecoded
     mov r6, r0
     mov r0, r7
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r6
     mov r1, #0x0

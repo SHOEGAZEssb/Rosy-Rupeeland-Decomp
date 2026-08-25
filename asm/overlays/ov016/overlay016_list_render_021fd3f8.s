@@ -7,7 +7,7 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
     .extern RetailTextTable_FindRecordById
-    .extern func_02092960
+    .extern GraphicsSpriteRenderer_DrawDecimal
     .extern gSystemState
 
 /* Exact fallback; see src/overlays/ov016/overlay016_list_render.c. */
@@ -101,7 +101,7 @@ L_021fd444:
     mov r1, r4
     mov r2, #0xa
     mov r3, #0xb0
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
     b L_021fd598
 L_021fd558:
     ldr r0, L_021fd5b4

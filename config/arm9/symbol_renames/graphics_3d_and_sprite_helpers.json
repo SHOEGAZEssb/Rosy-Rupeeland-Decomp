@@ -1,0 +1,23 @@
+{
+  "func_0207043c": "GraphicsCharacterResource_GetUploadSize",
+  "func_02070474": "GraphicsCharacterResource_GetTextureFormat",
+  "func_020704c8": "GraphicsCharacterResource_GetTextureWidthExponent",
+  "func_02070580": "GraphicsCharacterResource_GetTextureHeightExponent",
+  "func_02070888": "GraphicsPaletteResource_GetUploadSize",
+  "func_0209a4f0": "Graphics3dPresentation_InitGraphics",
+  "func_0209a5cc": "Graphics3dPresentation_DestroyBase",
+  "func_0209a5fc": "Graphics3dPresentation_LoadTexturePaletteSlot",
+  "func_0209a748": "Graphics3dPresentation_LoadResourceProfile",
+  "func_0209b414": "G3Command_SetTextureParameters",
+  "func_0209b478": "Graphics3dPresentation_ReleaseGraphicsBanks",
+  "func_0209b494": "Graphics3dPresentation_BindImmediateTexture",
+  "func_0209b560": "G3Command_SetPolygonAttributes",
+  "func_0209c3b4": "GraphicsImmediateEffectRenderer_SetupProjection",
+  "func_0209c430": "GraphicsImmediateEffectRenderer_DrawTexturedQuad",
+  "func_0209c614": "GraphicsImmediateEffectRenderer_DrawTriangles",
+  "func_0209c9d4": "Graphics3dPresentation_ConfigureOrthographicState",
+  "func_0209286c": "GraphicsSpriteState_HitTestBounds",
+  "func_02092960": "GraphicsSpriteRenderer_DrawDecimal",
+  "func_020c09cc": "CxxArray_ConstructWithCookie",
+  "func_020c0c24": "CxxArray_DestroyAndFree"
+}

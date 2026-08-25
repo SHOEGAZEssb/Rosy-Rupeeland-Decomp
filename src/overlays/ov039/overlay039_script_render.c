@@ -39,8 +39,8 @@ extern void func_ov039_022014f8(void *output, const void *first,
                                 const void *second);
 extern s32 func_ov039_0220159c(void *scene, s32 *distance);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
-extern void *func_0209c3b4(void);
-extern void func_0209c430(void *renderer, ...);
+extern void *GraphicsImmediateEffectRenderer_SetupProjection(void);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *renderer, ...);
 extern void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(void *resource, const void *position);
 extern void Graphics3dPresentation_CreatePreset30ColoredRegionSpriteEffectAt(void *resource, const void *position);
 extern void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(void *resource, s32 type, s32 x, s32 y, s32 value);
@@ -244,14 +244,14 @@ extern "C" void func_ov039_02203064(void *scene)
 {
     void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                    0x2f7c);
-    void *renderer = func_0209c3b4();
+    void *renderer = GraphicsImmediateEffectRenderer_SetupProjection();
     Overlay039ScriptVector scale, direction;
     s32 bounds[2] = {-16, -16};
     s32 packet[2] = {16, 16};
     VecFx32Object_InitComponents(&scale, 0x1000, 0x1000, 0x1000);
     func_ov039_022014f8(&direction, (u8 *)scene + 0x2c,
                         (u8 *)scene + 0xac);
-    func_0209c430(renderer, resource, &direction, &scale, 0,
+    GraphicsImmediateEffectRenderer_DrawTexturedQuad(renderer, resource, &direction, &scale, 0,
                   bounds, 0, packet, 0x7fff, 0x1ea);
     VecFx32Object_Destroy(&direction);
     VecFx32Object_Destroy(&scale);

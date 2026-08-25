@@ -9,8 +9,8 @@
 .extern RuntimePresentationManager_GetGraphics3dPresentation
 .extern func_0209b7ec
 .extern func_0209b880
-.extern func_0209c3b4
-.extern func_0209c430
+.extern GraphicsImmediateEffectRenderer_SetupProjection
+.extern GraphicsImmediateEffectRenderer_DrawTexturedQuad
 .extern func_ov049_0220c21c
 .extern func_ov049_0220c23c
 
@@ -191,7 +191,7 @@ func_ov049_0220cf94:
     str r0, [ip, #0x4]
     mov r0, r5
     stmia r1, {r2, r11}
-    bl func_0209c3b4
+    bl GraphicsImmediateEffectRenderer_SetupProjection
     mov r0, #0xa
     mov r8, r11
     ldr r11, .L_0220d300
@@ -228,7 +228,7 @@ func_ov049_0220cf94:
     str r2, [sp, #0x10]
     ldrh r3, [r3, #0x94]
     add r2, sp, #0x38
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, sp, #0x18
     bl VecFx32Object_Destroy
 .L_0220d2dc:

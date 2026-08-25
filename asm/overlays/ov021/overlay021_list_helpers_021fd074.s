@@ -3,7 +3,7 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
-    .extern func_020c0c24
+    .extern CxxArray_DestroyAndFree
     .extern Overlay021Row_DestroyNoOp
 
 .global func_ov021_021fd074
@@ -27,7 +27,7 @@ L_021fd0a4:
     ldr r3, L_021fd0e0
     mov r1, #0xc
     mov r2, #0x8
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
 L_021fd0c0:
     add r0, r4, #0x28
     bl func_020927b8

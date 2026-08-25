@@ -24,8 +24,8 @@ extern "C" void *RuntimePresentationManager_GetGraphics3dPresentation(void *);
 extern "C" void *func_0209b7ec(void *, s32);
 extern "C" void func_0209b880(void *, const void *, const void *, const void *,
                                s32, u16, s32);
-extern "C" void func_0209c3b4(void *);
-extern "C" void func_0209c430(void *, const void *, const void *, u16,
+extern "C" void GraphicsImmediateEffectRenderer_SetupProjection(void *);
+extern "C" void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *, const void *, const void *, u16,
                                const void *, s32, const void *, s32, s32);
 extern "C" void func_ov049_0220c21c(void *);
 extern "C" void func_ov049_0220c23c(void *, const void *);
@@ -81,7 +81,7 @@ extern "C" void func_ov049_0220cf94(void *controller)
         {0x60000, 0, 0x80000, 0x20000},
     };
     const s32 shape[2] = {-20, -20};
-    func_0209c3b4(renderer);
+    GraphicsImmediateEffectRenderer_SetupProjection(renderer);
     for (s32 recordIndex = 9; recordIndex >= 0; --recordIndex) {
         s16 status = *(s16 *)(state + 0x644 + recordIndex * 2);
         if (status > 0) {
@@ -91,7 +91,7 @@ extern "C" void func_ov049_0220cf94(void *controller)
             *(s32 *)(position + 4) = *(s32 *)(record + 0x20);
             *(s32 *)(position + 8) = *(s32 *)(record + 0x24);
             *(s32 *)(position + 0xc) = 0;
-            func_0209c430(renderer, position, scale,
+            GraphicsImmediateEffectRenderer_DrawTexturedQuad(renderer, position, scale,
                           *(u16 *)(state + 0x694 + recordIndex * 2),
                           shape, 0x1b, burstParameters[status], 0x7fff, 0x14);
             VecFx32Object_Destroy(position);

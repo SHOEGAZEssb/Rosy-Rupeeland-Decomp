@@ -9,7 +9,7 @@
 .extern VecFx32Object_Assign
 .extern GraphicsSpriteCanvas_FillRect
 .extern func_0209a2ac
-.extern func_0209c9d4
+.extern Graphics3dPresentation_ConfigureOrthographicState
 .extern func_0209cb74
 .extern func_020befec
 
@@ -97,7 +97,7 @@ func_ov041_02200ce8: ; 0x02200ce8
     bl VecFx32Object_Assign
     ldr r0, [r10, #0x48]
     ldr r0, [r0, #0x18]
-    bl func_0209c9d4
+    bl Graphics3dPresentation_ConfigureOrthographicState
     ldr r0, [r10, #0x158]
     mov r1, #0x6
     add r0, r0, #0x1

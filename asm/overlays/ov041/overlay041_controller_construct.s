@@ -8,7 +8,7 @@
     .extern func_02003e14
     .extern VecFx32Object_Init
     .extern GraphicsSpriteGroupOwner_CreateGroup
-    .extern func_0209a748
+    .extern Graphics3dPresentation_LoadResourceProfile
     .extern func_020a6940
     .extern func_ov041_021fd000
     .extern func_ov041_021fd01c
@@ -63,7 +63,7 @@ func_ov041_021fce04: ; 0x021fce04
     str r0, [r5, #0x1f0]
     ldr r0, [r5, #0x18]
     mov r1, #0x4
-    bl func_0209a748
+    bl Graphics3dPresentation_LoadResourceProfile
     cmp r4, #0x2
     moveq r0, #0x2
     movne r0, #0x0

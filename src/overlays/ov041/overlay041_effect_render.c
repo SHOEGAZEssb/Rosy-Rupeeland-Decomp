@@ -23,7 +23,7 @@ void VecFx32Object_Init(void *);
 void Graphics3dPresentation_BeginFrame(void *, const void *);
 void func_0209c7e8(void *, s32);
 void func_0209c87c(void *, const Point2 *, const Point2 *, u16, s32);
-void func_0209c9d4(void *);
+void Graphics3dPresentation_ConfigureOrthographicState(void *);
 void func_0209ca90(void *, const Point2 *, s32, u16, s32);
 void func_ov008_021fbe0c(void *, const void *);
 u16 func_ov041_0220333c(void *, s32);
@@ -330,7 +330,7 @@ extern "C" void func_ov041_02203434(void *object, const void *transform)
             func_0209a2ac(child, localTransform, 1);
         }
 
-        func_0209c9d4(renderContext);
+        Graphics3dPresentation_ConfigureOrthographicState(renderContext);
         for (s32 slot = 6; slot >= 0; --slot) {
             s32 length = FIELD(s32, object, 0x8fc + slot * 4);
             if (length <= 0)

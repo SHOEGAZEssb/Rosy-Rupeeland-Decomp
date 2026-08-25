@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern u32 func_0207043c(void *resource);
+extern u32 GraphicsCharacterResource_GetUploadSize(void *resource);
 extern void *GraphicsBgResourceData_GetDecoded(void *resource);
-extern u32 func_02070888(void *resource);
+extern u32 GraphicsPaletteResource_GetUploadSize(void *resource);
 extern void func_020b239c(void);
 extern void func_020b2238(const void *source, u32 destination, u32 size);
 extern void func_020b21c8(void);
@@ -38,10 +38,10 @@ GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
     GraphicsSpriteRegion *region = Graphics3DResourceOwner_FindTextureRegion(owner, resource, 1);
 
     if (region == 0) {
-        u32 size = func_0207043c(resource);
+        u32 size = GraphicsCharacterResource_GetUploadSize(resource);
 
         region = GraphicsSpriteRegionAllocator_Allocate(&owner->textureRegions, size, resource, 1);
-        size = func_0207043c(resource);
+        size = GraphicsCharacterResource_GetUploadSize(resource);
         func_020b239c();
         func_020b2238(*(void **)((u8 *)resource + 0x24), region->offset, size);
         func_020b21c8();
@@ -66,7 +66,7 @@ asm GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
     strneh r0, [r5, #0x16]
     bne graphics_3d_texture_region_acquire_return
     mov r0, r4
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r1, r0
     mov r2, r4
     add r0, r6, #0x14
@@ -74,7 +74,7 @@ asm GraphicsSpriteRegion *Graphics3DResourceOwner_AcquireTextureRegion(
     bl GraphicsSpriteRegionAllocator_Allocate
     mov r5, r0
     mov r0, r4
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     ldr r6, [r4, #0x24]
     ldr r7, [r5, #0xc]
     mov r4, r0
@@ -148,7 +148,7 @@ GraphicsSpriteRegion *Graphics3DResourceOwner_AcquirePaletteRegion(
         region = region->next;
     }
     if (region == 0) {
-        u32 size = func_02070888(resource);
+        u32 size = GraphicsPaletteResource_GetUploadSize(resource);
 
         region = GraphicsSpriteSmallRegionAllocator_Allocate(&owner->paletteRegions, size, resource, 1);
         func_020b2180();
@@ -185,7 +185,7 @@ graphics_3d_palette_region_found:
     strneh r0, [r5, #0x16]
     bne graphics_3d_palette_region_acquire_return
     mov r0, r4
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r1, r0
     mov r2, r4
     add r0, r6, #0x31c

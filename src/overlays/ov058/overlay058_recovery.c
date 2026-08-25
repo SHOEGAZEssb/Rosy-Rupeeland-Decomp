@@ -50,7 +50,7 @@ extern void GraphicsResourceSet_Load(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_Apply(void *, s32, s32);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
 extern void GraphicsBgMapResource_SetPaletteBank(void *, s32);
-extern u32 func_0207043c(void *);
+extern u32 GraphicsCharacterResource_GetUploadSize(void *);
 extern void func_020b44e8(void);
 extern void func_020b57d4(s32, void *, u32);
 extern void func_020b5880(void *, const void *, u32);
@@ -489,8 +489,8 @@ void func_ov058_0220f308(void *scene)
         void *palette = FIELD(void *, set, 4);
         u32 destination = (u32)(15 - i) << 5;
         u32 offset = (u32)i * 0x2000;
-        func_020b1924(FIELD(void *, graphics, 0x24), offset, func_0207043c(graphics));
-        func_020b18bc(FIELD(void *, graphics, 0x24), offset, func_0207043c(graphics));
+        func_020b1924(FIELD(void *, graphics, 0x24), offset, GraphicsCharacterResource_GetUploadSize(graphics));
+        func_020b18bc(FIELD(void *, graphics, 0x24), offset, GraphicsCharacterResource_GetUploadSize(graphics));
         PaletteBuffer_Write(gMainBgPaletteBuffer,
             GraphicsBgResourceData_GetDecoded(palette), destination, 0x20);
         PaletteBuffer_Write(gSubBgPaletteBuffer,

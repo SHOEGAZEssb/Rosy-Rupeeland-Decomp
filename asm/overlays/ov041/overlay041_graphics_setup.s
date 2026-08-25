@@ -14,9 +14,9 @@
 .extern data_ov041_0220593c
 .extern data_ov041_02205960
 .extern VecFx32Object_Assign
-.extern func_0207043c
+.extern GraphicsCharacterResource_GetUploadSize
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070888
+.extern GraphicsPaletteResource_GetUploadSize
 .extern GraphicsBgMapResource_AddPaletteBankOffset
 .extern GraphicsResourceSet_ReleaseHandles
 .extern GraphicsSpriteRenderer_HideAllSprites
@@ -109,7 +109,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x48]
     ldr r5, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -120,7 +120,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -155,7 +155,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x54]
     ldr r5, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x8000
@@ -166,7 +166,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x100
@@ -214,7 +214,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x48]
     ldr r5, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -225,7 +225,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -242,7 +242,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x54]
     ldr r5, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x8000
@@ -253,7 +253,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x100
@@ -275,7 +275,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x48]
     ldr r5, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -286,7 +286,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -303,7 +303,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl func_020b44e8
     ldr r0, [r4, #0x54]
     ldr r5, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x8000
@@ -314,7 +314,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x100
@@ -353,7 +353,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -391,7 +391,7 @@ func_ov041_021fd01c: ; 0x021fd01c
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0

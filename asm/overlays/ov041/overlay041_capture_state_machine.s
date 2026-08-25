@@ -2,9 +2,9 @@
 
 /* Exact fallback for the documented portable C implementation in
  * src/overlays/ov041/overlay041_capture_state_machine.c. */
-.extern func_0207043c
+.extern GraphicsCharacterResource_GetUploadSize
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070888
+.extern GraphicsPaletteResource_GetUploadSize
 .extern func_020afce8
 .extern func_020b1924
 .extern func_020b2058
@@ -84,7 +84,7 @@ func_ov041_021fe8b8: ; 0x021fe8b8
     mla r0, r1, r0, r5
     ldr r0, [r0, #0x48]
     ldr r6, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     add r1, r4, r4, lsr #0x1f
     mov r2, r0, asr #0x1
     mov r3, r1, asr #0x1
@@ -112,7 +112,7 @@ func_ov041_021fe8b8: ; 0x021fe8b8
     mla r0, r1, r0, r5
     ldr r0, [r0, #0x48]
     ldr r6, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0, asr #0x1
     add r2, r0, r2, lsr #0x1e
     add r1, r4, r4, lsr #0x1f
@@ -143,7 +143,7 @@ func_ov041_021fe8b8: ; 0x021fe8b8
     bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r1, r0
     add r0, r4, #0x20
     sub r2, r1, #0x20
@@ -166,7 +166,7 @@ func_ov041_021fe8b8: ; 0x021fe8b8
     bl GraphicsBgResourceData_GetDecoded
     mov r4, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r4
     mov r1, #0x100

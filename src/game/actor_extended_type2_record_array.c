@@ -8,7 +8,7 @@ extern const char data_020df9e0[];
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020c09cc(void *allocation, s32 count, s32 elementSize,
+extern void *CxxArray_ConstructWithCookie(void *allocation, s32 count, s32 elementSize,
                            s32 alignment, void (*constructor)(void *),
                            void (*destructor)(void *));
 void ActorExtendedRecordArray_InitElementNoOp(void *element);
@@ -19,7 +19,7 @@ void ActorExtendedRecordArray_InitElementNoOp(void *element);
 /*
  * Install vtable data_020dfec0 and count consecutive eight-byte input records
  * until the first signed halfword equals -1. For a positive count, allocate
- * count*8+8 bytes, initialize an eight-byte-element array through func_020c09cc
+ * count*8+8 bytes, initialize an eight-byte-element array through CxxArray_ConstructWithCookie
  * using ActorExtendedRecordArray_InitElementNoOp and no destructor, store it
  * at +0x04, then copy all four input halfwords into each element. For a
  * non-positive count, store null at
@@ -43,7 +43,7 @@ void *ActorExtendedRecordArray_Init(void *self, const void *records)
         void *allocation = Heap_AllocAlternateEntry((u32)(count * 8 + 8),
                                          data_020df9e0, 4, &gHeapContext);
         if (allocation != 0) {
-            allocation = func_020c09cc(allocation, count, 8, 8,
+            allocation = CxxArray_ConstructWithCookie(allocation, count, 8, 8,
                                        ActorExtendedRecordArray_InitElementNoOp, 0);
         }
         *(void **)(object + 4) = allocation;

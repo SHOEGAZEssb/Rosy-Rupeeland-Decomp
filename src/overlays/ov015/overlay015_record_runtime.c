@@ -18,7 +18,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, s32, s32, s32);
 extern s32 GraphicsSpriteRenderer_MeasureText(void *, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
-extern void func_02092960(void *, s32, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, s32, s32);
 extern void func_020958d8(void *);
 extern void func_02095988(void *, s32);
 extern void func_ov001_021fb81c(void *, s32);
@@ -65,7 +65,7 @@ extern "C" void func_ov015_021fd6c8(void *state)
 
         GraphicsSpriteRenderer_SetFontResource(gDebugFont, FIELD(void *, state, 0x78));
         GraphicsSpriteCanvas_FillRect(gDebugFont, 0x40, 0x74, 0x58, bottom, 0);
-        func_02092960(gDebugFont, value, 10, 0x40, 0x74,
+        GraphicsSpriteRenderer_DrawDecimal(gDebugFont, value, 10, 0x40, 0x74,
                       value >= 99 ? 3 : 0xe, 8, 1);
         GraphicsSpriteCanvas_FillRect(data_020f4e14, 0x40, 6, 0xc0, 0x16, 0);
 

@@ -4,7 +4,7 @@
 .extern VecFx32Object_InitComponents
 .extern VecFx32Object_Destroy
 .extern RuntimePresentationManager_GetGraphics3dPresentation
-.extern func_0209c430
+.extern GraphicsImmediateEffectRenderer_DrawTexturedQuad
 
 .global func_ov069_02211274
 func_ov069_02211274:
@@ -198,7 +198,7 @@ func_ov069_02211274:
     mov r0, r9
     add r1, sp, #0x14
     add r2, sp, #0x24
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, sp, #0x14
     bl VecFx32Object_Destroy
 .L_02211574:

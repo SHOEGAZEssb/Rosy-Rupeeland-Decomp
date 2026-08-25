@@ -28,8 +28,8 @@ extern void func_020927b8(void *);
 extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
-extern void func_020c0c24(void *, s32, s32, void (*)(void *));
+extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
+extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 extern void func_ov016_021fce00(void *);
 extern void func_ov016_021fd0dc(void *);
 extern void func_ov016_021fd1e0(void *);
@@ -71,7 +71,7 @@ extern "C" void *func_ov016_021fce34(void *state, void *owner, s32 tableIndex)
         object = Heap_AllocAlternateEntry(capacity * 0x14 + 8, data_ov016_02201570, 4,
                               gHeapContext);
         if (object != 0) {
-            object = func_020c09cc(object, capacity, 0x14, 8,
+            object = CxxArray_ConstructWithCookie(object, capacity, 0x14, 8,
                                    func_ov016_021fce00, 0);
         }
         FIELD(void *, state, 0x4c) = object;
@@ -119,7 +119,7 @@ extern "C" void *func_ov016_021fd06c(void *state)
         vtable[1](presentation);
     }
     if (FIELD(void *, state, 0x4c) != 0) {
-        func_020c0c24(FIELD(void *, state, 0x4c), 0x14, 8, func_ov016_021fd0dc);
+        CxxArray_DestroyAndFree(FIELD(void *, state, 0x4c), 0x14, 8, func_ov016_021fd0dc);
     }
     func_020927b8((u8 *)state + 0x28);
     AnimationResourceState_Destroy((u8 *)state + 0x18);

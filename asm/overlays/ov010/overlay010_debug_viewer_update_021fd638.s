@@ -22,7 +22,7 @@
     .extern data_ov010_021fed3c
     .extern data_ov010_021fed44
     .extern data_ov010_021fed4c
-    .extern func_0207043c
+    .extern GraphicsCharacterResource_GetUploadSize
     .extern func_02070454
     .extern func_02070464
     .extern GraphicsSpriteRenderer_ClearTextBuffer
@@ -842,7 +842,7 @@ L_021fe08c:
     bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x8c]
     ldr r0, [r0, #0x14]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r1, r0, asr #0x4
     add r0, r0, r1, lsr #0x1b
     mov r0, r0, asr #0x5

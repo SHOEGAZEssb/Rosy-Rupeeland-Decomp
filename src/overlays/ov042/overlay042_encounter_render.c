@@ -22,7 +22,7 @@ extern "C" s32 func_020bf1f8(u32 value, s32 modulus);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" s32 func_020adc90(s32 numerator, s32 denominator);
 extern "C" void func_0209a2ac(void *display, void *renderContext, s32 layer);
-extern "C" void func_0209b494(void *graphics, s32 parameter, s32 value);
+extern "C" void Graphics3dPresentation_BindImmediateTexture(void *graphics, s32 parameter, s32 value);
 extern "C" void func_0209b668(void *graphics);
 extern "C" void func_020a1794(void *owner, const void *position,
                                const void *matrix, s32 flags);
@@ -216,7 +216,7 @@ static void draw_mode2_ribbon(void *scene)
     VecFx32Object_InitComponents(
         &billboardScale, rupeeScale.value.x * 32,
         rupeeScale.value.y * 32, rupeeScale.value.z * 32);
-    func_0209b494(FIELD(void *, FIELD(void *, scene, 0x48), 0x20), 38, 0);
+    Graphics3dPresentation_BindImmediateTexture(FIELD(void *, FIELD(void *, scene, 0x48), 0x20), 38, 0);
 
     for (i = 0; i < 27; ++i)
         localAttributes[i] = data_ov042_0220ad98[i];

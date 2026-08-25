@@ -18,7 +18,7 @@ extern "C" void AnimationResourceState_ReplaceResources(void *owner, void *archi
                                s32 second, s32 third, s32 fourth);
 extern "C" void *Heap_AllocAlternateEntry(s32 size, const void *tag,
                                  s32 alignment, void *heap);
-extern "C" void *func_020c09cc(void *records, s32 count, s32 stride,
+extern "C" void *CxxArray_ConstructWithCookie(void *records, s32 count, s32 stride,
                                 s32 alignment, void (*construct)(void *),
                                 void (*destroy)(void *));
 extern "C" void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
@@ -59,7 +59,7 @@ extern "C" void *func_ov044_0220b740(void *object, void *font, s32 rowCount)
         void *records = Heap_AllocAlternateEntry(rowCount * 0x20 + 8,
                                       data_ov044_0220d330, 4, gHeapContext);
         if (records)
-            records = func_020c09cc(records, rowCount, 0x20, 8,
+            records = CxxArray_ConstructWithCookie(records, rowCount, 0x20, 8,
                                     InventoryCell_Init, InventoryCell_Destroy);
         FIELD(void *, object, 0x38) = records;
         void *child = Heap_Alloc(0x80, data_ov044_0220d338, 4,

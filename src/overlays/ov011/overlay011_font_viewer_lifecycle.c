@@ -40,9 +40,9 @@ extern void func_020b44e8(void);
 extern void func_020b198c(const void *source, u32 destination, u32 size);
 extern void func_020b1ff0(const void *source, u32 destination, u32 size);
 extern void func_020b1ccc(const void *source, u32 destination, u32 size);
-extern s32 func_0207043c(void *resource);
+extern s32 GraphicsCharacterResource_GetUploadSize(void *resource);
 extern void *GraphicsBgResourceData_GetDecoded(void *resource);
-extern s32 func_02070888(void *resource);
+extern s32 GraphicsPaletteResource_GetUploadSize(void *resource);
 extern void DebugText_BeginFrame(void);
 extern void GX_DispOn(void);
 extern void GXS_SetGraphicsMode(s32 mode);
@@ -124,9 +124,9 @@ void *func_ov011_021fdb6c(void *state)
                              0xc005);
     func_020b44e8();
     func_020b198c(FIELD(void *, resources.resource0, 0x24), 0,
-                  (u32)func_0207043c(resources.resource0));
+                  (u32)GraphicsCharacterResource_GetUploadSize(resources.resource0));
     func_020b1ff0(GraphicsBgResourceData_GetDecoded(resources.resource1), 0,
-                  (u32)func_02070888(resources.resource1));
+                  (u32)GraphicsPaletteResource_GetUploadSize(resources.resource1));
     func_020b1ccc(FIELD(void *, resources.resource2, 0x24), 0,
                   (u32)func_ov011_021fdae0(resources.resource2));
     TitlePalette_SetMainBackdrop(0x4210);

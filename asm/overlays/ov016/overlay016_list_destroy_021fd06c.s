@@ -2,7 +2,7 @@
     .extern AnimationResourceState_Destroy
     .extern GraphicsSpriteGroup_Destroy
     .extern func_020927b8
-    .extern func_020c0c24
+    .extern CxxArray_DestroyAndFree
     .extern func_ov016_021fd0dc
 
 /* Exact fallback for list destruction; see src/overlays/ov016/overlay016_list_lifecycle.c. */
@@ -28,7 +28,7 @@ L_021fd09c:
     ldr r3, L_021fd0d8
     mov r1, #0x14
     mov r2, #0x8
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
 L_021fd0b8:
     add r0, r4, #0x28
     bl func_020927b8

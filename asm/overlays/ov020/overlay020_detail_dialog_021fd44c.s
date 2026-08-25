@@ -15,7 +15,7 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern LanguageLookupDatabase_GetResourceById
     .extern RetailTextTable_FindRecordById
-    .extern func_02092960
+    .extern GraphicsSpriteRenderer_DrawDecimal
     .extern TitleDialog_SetText
     .extern TitleDialog_UpdateTextPage
     .extern gSystemState
@@ -233,7 +233,7 @@ L_021fd654:
     ldr r0, [r6, #0x8]
     mov r2, #0xa
     add r3, r5, #0x6
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
     mov r0, #0xe
     str r0, [sp, #0x0]
     ldr r0, [r6, #0x8]
@@ -253,7 +253,7 @@ L_021fd654:
     ldr r0, [r6, #0x8]
     mov r1, #0x1e
     mov r2, #0xa
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
     ldr r0, [r6, #0x8]
     ldr r1, [r6, #0x28]
     bl GraphicsSpriteRenderer_SetFontResource

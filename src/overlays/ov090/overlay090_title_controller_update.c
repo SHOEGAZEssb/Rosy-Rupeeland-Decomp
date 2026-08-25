@@ -54,7 +54,7 @@ extern void Sound_PlayEffectWithParameters(UNKNOWN_PARAMETERS);
 extern void Sound_StopEffect(UNKNOWN_PARAMETERS);
 extern void Sound_FadeEffectVolume(UNKNOWN_PARAMETERS);
 extern void Sound_StopStream(UNKNOWN_PARAMETERS);
-extern void func_0209a748(UNKNOWN_PARAMETERS);
+extern void Graphics3dPresentation_LoadResourceProfile(UNKNOWN_PARAMETERS);
 extern void Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt(UNKNOWN_PARAMETERS);
 extern void Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt(UNKNOWN_PARAMETERS);
 extern void Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt(UNKNOWN_PARAMETERS);
@@ -180,7 +180,7 @@ void func_ov090_02217d70(void *self)
         TITLE_TIMER(self) = 0;
         GX_VBlankIntr(0);
         GX_HBlankIntr(0);
-        func_0209a748(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 2);
+        Graphics3dPresentation_LoadResourceProfile(RuntimePresentationManager_GetGraphics3dPresentation(runtime + 0x2f7c), 2);
         GX_VBlankIntr(1);
         GX_HBlankIntr(1);
         DisplayBrightness_StartTransition(

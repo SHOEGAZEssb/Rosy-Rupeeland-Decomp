@@ -10,7 +10,7 @@
 .extern func_02094154
 .extern InventoryScroll_SetSpritePriority
 .extern InventoryScroll_UpdatePresentation
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern func_ov023_021fce00
 .extern func_ov023_021fce2c
 .extern func_ov023_021fd0dc
@@ -57,7 +57,7 @@ func_ov023_021fce44:
     mov r2, #0x18
     mov r3, #0x8
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_021fcedc:
     ldr r1, L_021fcfc4
     str r0, [r6, #0x2c]

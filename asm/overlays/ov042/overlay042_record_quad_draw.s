@@ -1,7 +1,7 @@
 .text
 .extern data_ov042_0220acc0
 .extern func_020befec
-.extern func_0209b494
+.extern Graphics3dPresentation_BindImmediateTexture
 .extern func_ov042_02205b38
     .global func_ov042_02205808
 func_ov042_02205808:
@@ -180,7 +180,7 @@ func_ov042_02205808:
     ldr r0, [r0, #0x20]
     add r1, r1, #0x1f
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     b .L_02205af0
 .L_02205ac8:
     mov r1, r7, lsr #0x1f
@@ -192,7 +192,7 @@ func_ov042_02205808:
     ldr r0, [r0, #0x20]
     mov r2, #0x0
     mov r8, r4
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
 .L_02205af0:
     add r0, r11, r9, lsl #0x3
     stmia sp, {r0, r8}

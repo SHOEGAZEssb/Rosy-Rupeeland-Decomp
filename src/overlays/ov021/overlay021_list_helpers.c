@@ -23,7 +23,7 @@ extern void GraphicsSpriteGroup_ReleaseIndexedEntries(void *);
 extern void GraphicsSpriteGroup_Destroy(void *);
 extern s32 func_020befec(s32, s32);
 extern void func_020927b8(void *);
-extern void func_020c0c24(void *, s32, s32, void (*)(void *));
+extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 extern void Overlay021Row_DestroyNoOp(void *);
 extern void func_ov021_021fd2b4(void *, s32);
 extern void func_ov021_021fd354(void *, s32);
@@ -62,7 +62,7 @@ extern "C" void *func_ov021_021fd074(void *state)
         FIELD(Destructor *, controller, 0)[1](controller);
     }
     if (FIELD(void *, state, 0x4c) != 0)
-        func_020c0c24(FIELD(void *, state, 0x4c), 12, 8,
+        CxxArray_DestroyAndFree(FIELD(void *, state, 0x4c), 12, 8,
                       Overlay021Row_DestroyNoOp);
     func_020927b8((u8 *)state + 0x28);
     AnimationResourceState_Destroy((u8 *)state + 0x10);

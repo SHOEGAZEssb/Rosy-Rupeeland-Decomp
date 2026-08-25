@@ -28,7 +28,7 @@ extern void VecFx32Object_InitComponents(void *vector, s32 x, s32 y, s32 z);
 extern void VecFx32Object_Init(void *vector);
 extern void VecFx32Object_Destroy(void *vector);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
-extern void func_0209c430(void *renderer, ...);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *renderer, ...);
 extern void func_ov049_0220c2dc(void *system, void *input, s32 mode);
 extern s32 func_ov049_0220c3d8(void *system);
 extern s32 func_ov069_022115c0(void *system);
@@ -158,7 +158,7 @@ extern "C" void func_ov039_02203794(void *scene)
         position.z_0c = 0;
         void *resource = RuntimePresentationManager_GetGraphics3dPresentation((u8 *)FIELD(void *, gGamePhaseRuntime, 0) +
                                        0x2f7c);
-        func_0209c430(resource, &position, &scale, 0, bounds, 0,
+        GraphicsImmediateEffectRenderer_DrawTexturedQuad(resource, &position, &scale, 0, bounds, 0,
                       sizes[FIELD(s32, helper, 0x1c) & 6], 0x7fff, packet);
         VecFx32Object_Destroy(&position);
         VecFx32Object_Destroy(&scale);

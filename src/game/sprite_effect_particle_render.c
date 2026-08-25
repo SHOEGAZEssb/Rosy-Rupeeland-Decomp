@@ -3,12 +3,12 @@
 #include "tingle/sprite_effect.h"
 #include "tingle/vec_fx32.h"
 
-extern void func_0209c3b4(void *context);
-extern void func_0209c430(void *context, const VecFx32Object *position,
+extern void GraphicsImmediateEffectRenderer_SetupProjection(void *context);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *context, const VecFx32Object *position,
                           const VecFx32Object *scale, u16 angle,
                           const s32 *bounds, u32 animation,
                           const s32 *region, u16 color, s32 parameter);
-extern void func_0209c614(void *context, const VecFx32Object *position,
+extern void GraphicsImmediateEffectRenderer_DrawTriangles(void *context, const VecFx32Object *position,
                           const VecFx32Object *scale, u16 angle,
                           const s32 *triangles, u32 lastTriangle, u16 color,
                           s32 parameter);
@@ -47,7 +47,7 @@ void SpriteEffectInstance_Render(SpriteEffectInstance *effect)
     s32 mode = effect->renderMode70;
     s32 index;
 
-    func_0209c3b4(effect->renderContext);
+    GraphicsImmediateEffectRenderer_SetupProjection(effect->renderContext);
     if (mode == 5 || mode < 0 || mode > 10)
         return;
 
@@ -100,7 +100,7 @@ void SpriteEffectInstance_Render(SpriteEffectInstance *effect)
                 lastTriangle = 1;
                 color = 0x7fff;
             }
-            func_0209c614(effect->renderContext, &position, &scale,
+            GraphicsImmediateEffectRenderer_DrawTriangles(effect->renderContext, &position, &scale,
                           (u16)effect->angles10[index], triangles,
                           lastTriangle, color, effect->vertexDepth50);
         } else {
@@ -132,7 +132,7 @@ void SpriteEffectInstance_Render(SpriteEffectInstance *effect)
             color = (mode == 2 || mode == 6) ?
                         (u16)effect->grayscaleColors24[index] :
                         0x7fff;
-            func_0209c430(effect->renderContext, &position, &scale,
+            GraphicsImmediateEffectRenderer_DrawTexturedQuad(effect->renderContext, &position, &scale,
                           (u16)effect->angles10[index], bounds,
                           effect->textureResourceIndex48, region, color,
                           effect->vertexDepth50);

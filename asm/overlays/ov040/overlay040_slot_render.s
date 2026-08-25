@@ -2,8 +2,8 @@
 /* Exact fallback; see overlay040_object_update.c for portable C. */
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Destroy
-    .extern func_0209c3b4
-    .extern func_0209c430
+    .extern GraphicsImmediateEffectRenderer_SetupProjection
+    .extern GraphicsImmediateEffectRenderer_DrawTexturedQuad
 
 .global func_ov040_0220332c
 func_ov040_0220332c: ; 0x0220332c
@@ -156,7 +156,7 @@ func_ov040_0220332c: ; 0x0220332c
     str r3, [r5, #0x4]
     ldr r0, [r4, #0x0]
     ldr r0, [r0, #0x10]
-    bl func_0209c3b4
+    bl GraphicsImmediateEffectRenderer_SetupProjection
     mov r0, #0x50
     ldr r6, .L_02203670
     ldr r5, .L_02203674
@@ -209,7 +209,7 @@ func_ov040_0220332c: ; 0x0220332c
     ldr r0, [r0, #0x10]
     mov r1, r11
     add r2, sp, #0x14
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, sp, #0x14
     bl VecFx32Object_Destroy
     mov r0, r11

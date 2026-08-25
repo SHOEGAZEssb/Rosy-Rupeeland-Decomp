@@ -16,8 +16,8 @@
     .extern data_ov011_021fe690
     .extern data_ov011_021fe6a0
     .extern data_ov011_021fe6b0
-    .extern func_0207043c
-    .extern func_02070888
+    .extern GraphicsCharacterResource_GetUploadSize
+    .extern GraphicsPaletteResource_GetUploadSize
     .extern GraphicsResourceSet_ReleaseHandles
     .extern GraphicsSpriteRenderer_ClearTextBuffer
     .extern GraphicsSpriteRenderer_Printf
@@ -357,7 +357,7 @@ L_021fd888:
     bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x78]
     ldr r4, [r0, #0x10]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     str r4, [sp, #0x0]
     ldr r1, L_021fdaa0
     str r0, [sp, #0x4]
@@ -368,7 +368,7 @@ L_021fd888:
     bl GraphicsSpriteRenderer_Printf
     ldr r0, [r9, #0x7c]
     ldr r4, [r0, #0x10]
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     str r4, [sp, #0x0]
     str r0, [sp, #0x4]
     ldr r0, L_021fdaa0

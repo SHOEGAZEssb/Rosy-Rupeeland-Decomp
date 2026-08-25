@@ -31,7 +31,7 @@ extern const void *LanguageLookupDatabase_GetResourceById(const void *, u16);
 extern const void *RetailTextTable_FindRecordById(const void *, u16);
 extern void TitleCharacterResourceCollection_Init(void *);
 extern void func_02092814(void *, s32);
-extern void func_02092960(void *, s32, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, s32, s32);
 extern void *TitleDialog_Init(void *, void *, void *);
 extern void TitleDialog_SetText(void *, const void *, s32);
 extern s32 TitleDialog_UpdateTextPage(void *, const void *);
@@ -157,11 +157,11 @@ extern "C" s32 func_ov020_021fd44c(void *state, s32 selection, void *unused)
                               data_ov020_021fe48c + systemIndex * 0x10,
                               0xa8, 0x3c, 14, 6, 0);
     s32 numberX = 0xa8 + width;
-    func_02092960(FIELD(void *, state, 8), FIELD(s8, entry, 8),
+    GraphicsSpriteRenderer_DrawDecimal(FIELD(void *, state, 8), FIELD(s8, entry, 8),
                   10, numberX + 6, 0x3c, 14, -8, 1);
     GraphicsSpriteRenderer_DrawGlyph(FIELD(void *, state, 8), 15,
                   numberX + 0x16, 0x3c, 14);
-    func_02092960(FIELD(void *, state, 8), 30,
+    GraphicsSpriteRenderer_DrawDecimal(FIELD(void *, state, 8), 30,
                   10, numberX + 0x1e, 0x3c, 14, -8, 1);
 
     GraphicsSpriteRenderer_SetFontResource(FIELD(void *, state, 8), (u8 *)state + 0x28);

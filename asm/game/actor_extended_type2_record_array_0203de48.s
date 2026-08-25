@@ -4,7 +4,7 @@
 .extern data_020dfec0
 .extern Heap_AllocAlternateEntry
 .extern ActorExtendedRecordArray_InitElementNoOp
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern gHeapContext
     .global ActorExtendedRecordArray_Init
     .type ActorExtendedRecordArray_Init, @function
@@ -45,7 +45,7 @@ ActorExtendedRecordArray_Init: ; 0x0203de48
     str r6, [sp, #0x0]
     mov r6, #0x0
     str r6, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 .L_0203ded8:
     str r0, [r5, #0x4]
     mov r7, #0x0

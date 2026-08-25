@@ -35,8 +35,8 @@ extern void DebugText_Printf(void *debug, s32 x, s32 y, s32 style, ...);
 extern void GraphicsSpriteRenderer_Printf(void *debug, s32 x, s32 y, const char *format, ...);
 extern void GraphicsSpriteCanvas_DrawLine(void *font, s32 x, s32 y,
                                           s32 value, ...);
-extern s32 func_0207043c(void *resource);
-extern void *func_02070888(void *resource);
+extern s32 GraphicsCharacterResource_GetUploadSize(void *resource);
+extern void *GraphicsPaletteResource_GetUploadSize(void *resource);
 extern s32 func_ov011_021fdae0(void *resource);
 extern void func_ov011_021fce50(void *member, s32 x, s32 y, s32 mode);
 #ifdef __cplusplus
@@ -182,10 +182,10 @@ s32 func_ov011_021fd450(void *state)
                       FIELD(u16, meta1, 4), FIELD(u16, meta1, 6));
         GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 12, data_ov011_021fe648,
                       FIELD(void *, set->resource0, 0x10),
-                      func_0207043c(set->resource0));
+                      GraphicsCharacterResource_GetUploadSize(set->resource0));
         GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 13, data_ov011_021fe660,
                       FIELD(void *, set->resource1, 0x10),
-                      func_02070888(set->resource1));
+                      GraphicsPaletteResource_GetUploadSize(set->resource1));
         GraphicsSpriteRenderer_Printf(data_020f4e14, 1, 14, data_ov011_021fe678,
                       FIELD(void *, set->resource2, 0x10),
                       func_ov011_021fdae0(set->resource2));

@@ -5,7 +5,7 @@
 .extern GamePhaseRegion_Init
 .extern GamePhaseRegion_Destroy
 .extern GamePhaseRegionTable_Clear
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern gHeapContext
 
     .global GamePhaseRegionTable_Resize
@@ -34,7 +34,7 @@ L_0201168c:
     mov r1, r4
     mov r3, r2
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_020116cc:
     stmia r5, {r0, r4}
     add sp, sp, #0x8

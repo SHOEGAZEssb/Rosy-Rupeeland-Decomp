@@ -5,7 +5,7 @@
 .extern func_020befec
 .extern VecFx32Object_Assign
 .extern Graphics3dPresentation_DrawRupeeWithEffects
-.extern func_0209b494
+.extern Graphics3dPresentation_BindImmediateTexture
 .extern func_ov042_02204ee4
 .extern VecFx32Object_Init
 .extern func_020a1794
@@ -484,7 +484,7 @@ func_ov042_022036c4:
     mov r1, #0x26
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     ldr r6, .L_02204754
     add r4, sp, #0x78
     ldmia r6!, {r0, r1, r2, r3}

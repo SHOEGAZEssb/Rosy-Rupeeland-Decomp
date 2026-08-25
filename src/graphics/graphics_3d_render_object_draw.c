@@ -24,9 +24,9 @@
 extern "C" {
 #endif
 
-extern u32 func_02070474(const void *resource);
-extern u32 func_020704c8(const void *resource);
-extern u32 func_02070580(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureFormat(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureWidthExponent(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureHeightExponent(const void *resource);
 #ifndef MATCHING
 extern void TingleNativeG3_Push(void);
 extern void TingleNativeG3_Pop(u32 count);
@@ -164,15 +164,15 @@ asm void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
     ldr r1, [r0, #0x10]
     ldr r0, [r0, #4]
     ldr r8, [r1, #0xc]
-    bl func_02070580
+    bl GraphicsCharacterResource_GetTextureHeightExponent
     ldr r1, [r4]
     mov r6, r0
     ldr r0, [r1, #4]
-    bl func_020704c8
+    bl GraphicsCharacterResource_GetTextureWidthExponent
     ldr r1, [r4]
     mov r5, r0
     ldr r0, [r1, #4]
-    bl func_02070474
+    bl GraphicsCharacterResource_GetTextureFormat
     mov r0, r0, lsl #0x1a
     orr r0, r0, r8, lsr #3
     orr r0, r0, #0x40000000
@@ -185,7 +185,7 @@ asm void Graphics3DRenderObject_Draw(Graphics3DRenderObject *object)
     str r1, [r0]
     ldr r0, [r4]
     ldr r0, [r0, #4]
-    bl func_02070474
+    bl GraphicsCharacterResource_GetTextureFormat
     cmp r0, #2
     ldr r0, [r4]
     moveq r2, #1

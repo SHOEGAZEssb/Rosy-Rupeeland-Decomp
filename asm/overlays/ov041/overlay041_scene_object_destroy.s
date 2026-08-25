@@ -5,7 +5,7 @@
 .extern data_ov041_02205820
 .extern Heap_FreeAlternateEntry
 .extern func_02099fb0
-.extern func_020c0c24
+.extern CxxArray_DestroyAndFree
 .extern func_ov041_021fce00
 
     .global func_ov041_021ff530
@@ -20,12 +20,12 @@ func_ov041_021ff530: ; 0x021ff530
     ldr r3, .L_021ff5a4
     mov r1, #0xc
     mov r2, #0x8
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
     ldr r0, [r4, #0x88]
     ldr r3, .L_021ff5a4
     mov r1, #0xc
     mov r2, #0x8
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
     ldr r0, [r4, #0x8c]
     bl Heap_FreeAlternateEntry
     ldr r0, [r4, #0x90]

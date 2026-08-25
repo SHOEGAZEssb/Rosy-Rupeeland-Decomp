@@ -26,7 +26,7 @@
 .extern func_02095820
 .extern func_02095940
 .extern func_020befec
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern func_ov000_021fc658
 .global func_ov000_021fbcc4
 func_ov000_021fbcc4: ; 0x021fbcc4
@@ -190,7 +190,7 @@ L_021fbec4:
     mov r2, #0x20
     mov r3, #0x8
     str r4, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_021fbf40:
     mov r6, #0x5
     mov r4, #0x24

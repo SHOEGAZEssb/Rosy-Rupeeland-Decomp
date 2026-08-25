@@ -46,7 +46,7 @@ extern void func_020ad2d8(...), func_020ad2f4(...);
 extern void func_0209a2ac(...), Graphics3dPresentation_BeginFrame(...);
 extern void func_0209d640(...);
 extern void *func_0209a208(...);
-extern void func_0209b494(...);
+extern void Graphics3dPresentation_BindImmediateTexture(...);
 extern void func_020b0808(...), func_020b0880(...);
 extern void func_ov071_02211e98(void *);
 extern void func_ov071_0221083c(void *);
@@ -980,7 +980,7 @@ void func_ov071_02211e98(void *collection) {
                              F(s32, collection, 0x5ac + i * 12))) >>
           12;
     }
-    func_0209b494(F(void *, F(void *, collection, 0), 0x20),
+    Graphics3dPresentation_BindImmediateTexture(F(void *, F(void *, collection, 0), 0x20),
                   (i % 4) + 0x2f, 0);
     group = data_ov071_02212280[
         (F(s32, collection, 0xa54 + i * 4) >> 1) % 13];

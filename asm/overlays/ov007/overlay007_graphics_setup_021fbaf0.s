@@ -5,10 +5,10 @@
     .extern GraphicsResourceSet_Init
     .extern GraphicsResourceSet_Load
     .extern func_020b44e8
-    .extern func_0207043c
+    .extern GraphicsCharacterResource_GetUploadSize
     .extern func_020b198c
     .extern GraphicsBgResourceData_GetDecoded
-    .extern func_02070888
+    .extern GraphicsPaletteResource_GetUploadSize
     .extern func_020b1ff0
     .extern GraphicsBgMapResource_UploadToSubBg
     .extern GraphicsResourceSet_ReleaseHandles
@@ -61,7 +61,7 @@ func_ov007_021fbaf0: ; 0x021fbaf0
     bl func_020b44e8
     ldr r0, [sp, #0x18]
     ldr r5, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0
@@ -72,7 +72,7 @@ func_ov007_021fbaf0: ; 0x021fbaf0
     bl GraphicsBgResourceData_GetDecoded
     mov r5, r0
     mov r0, r6
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     mov r0, r5
     mov r1, #0x0

@@ -22,7 +22,7 @@ extern void *data_020f4e18;
 extern const char data_ov011_021fe618[];
 extern u8 gHeapContext[];
 extern void func_020b44e8(void);
-extern s32 func_0207043c(void *resource);
+extern s32 GraphicsCharacterResource_GetUploadSize(void *resource);
 extern void GraphicsBgCharacterResource_UploadToSubBg(void *resource, s32 background, s32 value);
 extern void GraphicsBgPaletteResource_UploadToSubBg(void *resource, s32 destination);
 extern void *Heap_AllocCore(s32 size, const char *tag, s32 alignment,
@@ -77,7 +77,7 @@ void func_ov011_021fd188(void *state)
         u16 *tilemap;
 
         func_ov011_021fd374(0, layout == 0x10 ? 0 : 1, 0x12, 4, 0);
-        count = func_0207043c(set->resource0) /
+        count = GraphicsCharacterResource_GetUploadSize(set->resource0) /
                 (layout == 0x100 ? 0x40 : 0x20);
         GraphicsBgCharacterResource_UploadToSubBg(set->resource0, 1, 0);
         if (layout == 0x100)

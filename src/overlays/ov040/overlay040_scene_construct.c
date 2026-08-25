@@ -35,9 +35,9 @@ extern void GraphicsResourceSet_Load(void *set, void *archive, s32 first,
 extern void GraphicsResourceSet_Destroy(void *set);
 extern void GraphicsResourceSet_ReleaseHandles(void *set);
 extern void func_020b44e8(void);
-extern void *func_0207043c(void);
+extern void *GraphicsCharacterResource_GetUploadSize(void);
 extern void *GraphicsBgResourceData_GetDecoded(void *resource);
-extern void *func_02070888(void *resource);
+extern void *GraphicsPaletteResource_GetUploadSize(void *resource);
 extern void func_020708c4(void *resource);
 extern void func_020b1924(void *destination, s32 slot, void *source);
 extern void func_020b1784(void *destination, s32 slot, void *source);
@@ -116,10 +116,10 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
     GraphicsResourceSet_Init(temporarySet);
     GraphicsResourceSet_Load(temporarySet, data_020f4e18, 0xa07e, 0xa07f, 0xa080);
     func_020b44e8();
-    func_020b1924(FIELD(void *, (void *)temporarySet[0], 0x24), 0, func_0207043c());
+    func_020b1924(FIELD(void *, (void *)temporarySet[0], 0x24), 0, GraphicsCharacterResource_GetUploadSize());
     func_020b44e8();
     func_020b2058(GraphicsBgResourceData_GetDecoded((void *)temporarySet[1]), 0x80,
-                  func_02070888((void *)temporarySet[1]));
+                  GraphicsPaletteResource_GetUploadSize((void *)temporarySet[1]));
     func_020b44e8();
     GraphicsBgMapResource_AddPaletteBankOffset((void *)temporarySet[2], 4);
     func_020b44e8();
@@ -129,10 +129,10 @@ extern "C" void *func_ov040_021fcebc(void *scene, void *argument,
 
     GraphicsResourceSet_Load((u8 *)scene + 0x1b7c, data_020f4e18, 0xa081, 0xa082, 0xa083);
     func_020b44e8();
-    func_020b1784(FIELD(void *, FIELD(void *, scene, 0x1b7c), 0x24), 0, func_0207043c());
+    func_020b1784(FIELD(void *, FIELD(void *, scene, 0x1b7c), 0x24), 0, GraphicsCharacterResource_GetUploadSize());
     func_020b44e8();
     func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, scene, 0x1b80)), 0,
-                  func_02070888(FIELD(void *, scene, 0x1b80)));
+                  GraphicsPaletteResource_GetUploadSize(FIELD(void *, scene, 0x1b80)));
     func_020b44e8();
     GraphicsBgMapResource_UploadToMainBg(FIELD(void *, scene, 0x1b84), 3, 0);
     func_020b44e8();

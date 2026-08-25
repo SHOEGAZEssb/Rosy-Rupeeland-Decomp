@@ -2,12 +2,12 @@
 ; Matching fallback for the portable implementation in src/overlays/ov047/overlay047_controller_recovery.c.
 .extern data_020f4e18
 .extern GraphicsSpriteResource_ReleaseTexture
-.extern func_0207043c
-.extern func_02070474
-.extern func_020704c8
-.extern func_02070580
+.extern GraphicsCharacterResource_GetUploadSize
+.extern GraphicsCharacterResource_GetTextureFormat
+.extern GraphicsCharacterResource_GetTextureWidthExponent
+.extern GraphicsCharacterResource_GetTextureHeightExponent
 .extern GraphicsBgResourceData_GetDecoded
-.extern func_02070888
+.extern GraphicsPaletteResource_GetUploadSize
 .extern GraphicsArchive_AcquireCharacterResource
 .extern GraphicsArchive_AcquirePaletteResource
 .extern func_020b20b4
@@ -86,26 +86,26 @@ func_ov047_0220b740:
 .L_0220b82c:
     str r0, [r6, #0x4]
     ldr r0, [r6, #0x0]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     rsb r0, r0, #0x20000
     str r0, [r6, #0x30]
     ldr r0, [r6, #0x4]
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     rsb r0, r0, #0x4000
     str r0, [r6, #0x34]
     ldr r0, [r6, #0x0]
-    bl func_02070474
+    bl GraphicsCharacterResource_GetTextureFormat
     str r0, [r6, #0x38]
     ldr r0, [r6, #0x0]
-    bl func_020704c8
+    bl GraphicsCharacterResource_GetTextureWidthExponent
     str r0, [r6, #0x3c]
     ldr r0, [r6, #0x0]
-    bl func_02070580
+    bl GraphicsCharacterResource_GetTextureHeightExponent
     str r0, [r6, #0x40]
     bl func_020b239c
     ldr r0, [r6, #0x0]
     ldr r7, [r0, #0x24]
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     mov r2, r0
     ldr r1, [r6, #0x30]
     mov r0, r7
@@ -116,7 +116,7 @@ func_ov047_0220b740:
     bl GraphicsBgResourceData_GetDecoded
     mov r7, r0
     ldr r0, [r6, #0x4]
-    bl func_02070888
+    bl GraphicsPaletteResource_GetUploadSize
     mov r2, r0
     ldr r1, [r6, #0x34]
     mov r0, r7

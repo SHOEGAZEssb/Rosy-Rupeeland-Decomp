@@ -18,7 +18,7 @@ extern void __construct_array(void *array, u32 count, u32 stride,
 extern void GraphicsResourceSet_Init(void *set);
 extern void GraphicsResourceSet_Destroy(void *set);
 extern void VecFx32Object_Init(void *vector);
-extern void func_0209a748(void *object, s32 value);
+extern void Graphics3dPresentation_LoadResourceProfile(void *object, s32 value);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *manager);
 extern void *func_02003e14(s32 size, void *heap, s32 alignment, void *context);
 extern void *func_ov070_0220fd60(void *storage, void *owner, void *context);
@@ -77,7 +77,7 @@ extern "C" void *func_ov041_021fce04(void *owner, s32 mode, void *argument,
     FIELD(void *, owner, 0x18) = argument;
     FIELD(s32, owner, 0x1ec) = 1;
     FIELD(s32, owner, 0x1f0) = 0;
-    func_0209a748(argument, 4);
+    Graphics3dPresentation_LoadResourceProfile(argument, 4);
     FIELD(s32, owner, 0x1f4) = mode == 2 ? 2 : 0;
     for (s32 offset = 0x16c; offset <= 0x1fc; offset += 4)
         if (offset != 0x1ec && offset != 0x1f4) FIELD(s32, owner, offset) = 0;

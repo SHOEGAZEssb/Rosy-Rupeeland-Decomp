@@ -5,8 +5,8 @@
     .extern func_ov039_022014f8
     .extern func_020befec
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_0209c3b4
-    .extern func_0209c430
+    .extern GraphicsImmediateEffectRenderer_SetupProjection
+    .extern GraphicsImmediateEffectRenderer_DrawTexturedQuad
     .extern VecFx32Object_Destroy
     .extern func_ov039_02203794
     .extern func_ov039_02203064
@@ -261,7 +261,7 @@ L_02203d1c:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r5, r0
-    bl func_0209c3b4
+    bl GraphicsImmediateEffectRenderer_SetupProjection
     add r1, sp, #0x6c
     mov r0, r9, lsl #0x10
     str r1, [sp, #0x0]
@@ -280,7 +280,7 @@ L_02203d1c:
     mov r0, r5
     mov r3, r3, lsr #0x10
     str r6, [sp, #0x10]
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, sp, #0x4c
     bl VecFx32Object_Destroy
     add r0, sp, #0x5c

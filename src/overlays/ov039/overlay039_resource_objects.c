@@ -37,7 +37,7 @@ extern s32 func_020befec(s32 value, s32 divisor);
 extern s32 func_020adc40(s32 value);
 extern s32 func_020bf1f8(s32 value, s32 modulus);
 extern void *RuntimePresentationManager_GetGraphics3dPresentation(void *object);
-extern void func_0209c430(void *renderer, ...);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *renderer, ...);
 extern void func_0209b58c(void *resource, ...);
 extern void func_0209b7ec(void *resource, ...);
 extern void func_0209b880(void *resource);
@@ -76,11 +76,11 @@ extern "C" void func_ov039_0220454c(void *scene)
         position.x_04 = FIELD(s32, effect, 0x10);
         position.y_08 = FIELD(s32, effect, 0x14);
         position.z_0c = 0;
-        func_0209c430(resource, &position, &scale, 0x7fff);
+        GraphicsImmediateEffectRenderer_DrawTexturedQuad(resource, &position, &scale, 0x7fff);
         for (s32 j = 7; j >= 0; j--) if (FIELD(s32, effect, 0x28 + j * 4)) {
             position.x_04 = FIELD(s32, effect, 0x8c + j * 12);
             position.y_08 = FIELD(s32, effect, 0x90 + j * 12);
-            func_0209c430(resource, &position, &scale, 0x7fff);
+            GraphicsImmediateEffectRenderer_DrawTexturedQuad(resource, &position, &scale, 0x7fff);
         }
         VecFx32Object_Destroy(&position);
         VecFx32Object_Destroy(&scale);

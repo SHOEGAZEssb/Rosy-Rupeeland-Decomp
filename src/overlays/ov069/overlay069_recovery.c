@@ -35,7 +35,7 @@ extern s32 func_020ae024(...);
 extern Graphics3dPresentation *
 RuntimePresentationManager_GetGraphics3dPresentation(...);
 extern void func_0209b58c(...), func_0209b7ec(...), func_0209b880(...);
-extern void func_0209c430(...), func_020adff0(...);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(...), func_020adff0(...);
 extern u32 Graphics3dPresentation_CreatePreset1To2SpriteEffectInBounds(
     Graphics3dPresentation *, s32, s32, s32, s32, s32, s32);
 extern void *func_0209a208(...);
@@ -459,7 +459,7 @@ void func_ov069_02211274(void *owner) {
       VecFx32Object_InitComponents(position, F(s32, entry, 0xa94),
           F(s32, entry, 0xa98) + F(s32, entry, 0xa9c),
           -(F(s32, entry, 0xa9c) >> 12));
-      func_0209c430(renderer, position, scale, F(u16, owner, 0x5a4 + i * 2),
+      GraphicsImmediateEffectRenderer_DrawTexturedQuad(renderer, position, scale, F(u16, owner, 0x5a4 + i * 2),
                     descriptors + 44 + type * 4, 0,
                     descriptors + type * 4, data_ov069_02212590, 0x14);
       VecFx32Object_Destroy(position);

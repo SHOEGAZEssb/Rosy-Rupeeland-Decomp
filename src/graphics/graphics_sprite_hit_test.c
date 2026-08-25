@@ -180,7 +180,7 @@ s32 GraphicsSpriteState_HitTestOpaquePixel(GraphicsSpriteState *state, s32 point
  * radii of the sprite's owner-relative center.  Hidden sprites, detached
  * states, and disabled owners cannot be hit.  The point flags are not read.
  */
-s32 func_0209286c(GraphicsSpriteState *state, const SpriteTouchPoint *point,
+s32 GraphicsSpriteState_HitTestBounds(GraphicsSpriteState *state, const SpriteTouchPoint *point,
                   s32 horizontalRadius, s32 verticalRadius)
 {
     GraphicsSpriteGroup *group;

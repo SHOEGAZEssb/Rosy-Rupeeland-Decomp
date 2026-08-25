@@ -1,6 +1,6 @@
 .text
 .extern GraphicsSpriteGroup_Destroy
-.extern func_020c0c24
+.extern CxxArray_DestroyAndFree
 .extern func_020927b8
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_ReleaseIndexedEntries
@@ -29,7 +29,7 @@ func_ov044_0220b8e4:
     ldr r3, .L_0220b940
     mov r1, #0x20
     mov r2, #0x8
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
 .L_0220b928:
     add r0, r4, #0x14
     bl func_020927b8

@@ -32,10 +32,10 @@ extern void GraphicsResourceSet_Load(Overlay007GraphicsResourceSet *set,
                                      void *manager, s32 first, s32 second,
                                      s32 third);
 extern void func_020b44e8(void);
-extern void *func_0207043c(void *resource);
+extern void *GraphicsCharacterResource_GetUploadSize(void *resource);
 extern void func_020b198c(void *destination, s32 offset, void *source);
 extern void *GraphicsBgResourceData_GetDecoded(void *resource);
-extern void *func_02070888(void *resource);
+extern void *GraphicsPaletteResource_GetUploadSize(void *resource);
 extern void func_020b1ff0(void *destination, s32 offset, void *source);
 extern void GraphicsBgMapResource_UploadToSubBg(void *resource, s32 first, s32 second);
 extern void GraphicsResourceSet_ReleaseHandles(Overlay007GraphicsResourceSet *set);
@@ -55,8 +55,8 @@ extern void GraphicsResourceSet_Destroy(Overlay007GraphicsResourceSet *set);
  * 0x04001008 by preserving bits 0/1/6, setting 0x3C00, and selecting priority
  * 3, then clear word 0x04001010. Initialize a temporary resource set and load
  * IDs 0x9061..0x9063 through data_020f4e18. Synchronize; copy the first
- * resource's +0x24 destination from func_0207043c via func_020b198c; synchronize
- * and copy the second resource's func_02070888 data to its GraphicsBgResourceData_GetDecoded
+ * resource's +0x24 destination from GraphicsCharacterResource_GetUploadSize via func_020b198c; synchronize
+ * and copy the second resource's GraphicsPaletteResource_GetUploadSize data to its GraphicsBgResourceData_GetDecoded
  * destination via func_020b1ff0; synchronize, apply 0/0 to the third resource,
  * and finalize through GraphicsResourceSet_ReleaseHandles.
  *
@@ -92,11 +92,11 @@ void func_ov007_021fbaf0(void *state)
     GraphicsResourceSet_Load(&set, data_020f4e18, 0x9061, 0x9062, 0x9063);
     func_020b44e8();
     destination = *(void **)((u8 *)set.first + 0x24);
-    source = func_0207043c(set.first);
+    source = GraphicsCharacterResource_GetUploadSize(set.first);
     func_020b198c(destination, 0, source);
     func_020b44e8();
     destination = GraphicsBgResourceData_GetDecoded(set.second);
-    source = func_02070888(set.second);
+    source = GraphicsPaletteResource_GetUploadSize(set.second);
     func_020b1ff0(destination, 0, source);
     func_020b44e8();
     GraphicsBgMapResource_UploadToSubBg(set.third, 0, 0);

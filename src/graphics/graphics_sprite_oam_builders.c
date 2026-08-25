@@ -62,7 +62,7 @@ typedef struct GraphicsSpriteStatePoolPrefix {
 
 extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
 extern void GraphicsSpriteGraphicsResource_Prepare(void *resource);
-extern u32 func_0207043c(void *resource);
+extern u32 GraphicsCharacterResource_GetUploadSize(void *resource);
 extern void GraphicsSpriteAnimationResource_Prepare(void *resource);
 extern u32 GX_VBlankIntr(u32 state);
 extern const s16 gFx32CosSinTable[];
@@ -120,7 +120,7 @@ void GraphicsSpriteState_BuildUnscaledOamChain(GraphicsSpriteState *state, Graph
             GraphicsTransferQueue_Enqueue(
                 queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
                 graphics->pixels, tileDestination << 7,
-                func_0207043c(graphics));
+                GraphicsCharacterResource_GetUploadSize(graphics));
         }
     } else if (binding->field_0c == 0 && graphics->field_14 == 0) {
         GraphicsSpriteGraphicsResource_Prepare(graphics);
@@ -287,7 +287,7 @@ void GraphicsSpriteState_BuildAffineOamChain(GraphicsSpriteState *state, Graphic
             GraphicsTransferQueue_Enqueue(
                 queue, GRAPHICS_TRANSFER_KIND_OBJECT_CHARACTER,
                 graphics->pixels, tileDestination << 7,
-                func_0207043c(graphics));
+                GraphicsCharacterResource_GetUploadSize(graphics));
         }
     } else if (binding->field_0c == 0 && graphics->field_14 == 0) {
         GraphicsSpriteGraphicsResource_Prepare(graphics);

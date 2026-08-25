@@ -1,12 +1,12 @@
 .text
 /* Exact fallback; see overlay039_script_render.c for portable C. */
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_0209c3b4
+    .extern GraphicsImmediateEffectRenderer_SetupProjection
     .extern VecFx32Object_InitComponents
     .extern func_ov039_022014f8
     .extern func_020befec
     .extern func_ov039_0220346c
-    .extern func_0209c430
+    .extern GraphicsImmediateEffectRenderer_DrawTexturedQuad
     .extern VecFx32Object_Destroy
     .extern gGamePhaseRuntime
     .global func_ov039_02203064
@@ -20,7 +20,7 @@ func_ov039_02203064:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r4, r0
-    bl func_0209c3b4
+    bl GraphicsImmediateEffectRenderer_SetupProjection
     mvn ip, #0xf
     ldr r2, L_02203464
     add r0, sp, #0x9c
@@ -138,7 +138,7 @@ func_ov039_02203064:
     mov r3, r2, lsr #0x10
     add r1, sp, #0x44
     add r2, sp, #0x54
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     b L_02203448
 L_02203268:
     cmp r1, #0x3
@@ -165,7 +165,7 @@ L_02203268:
     mov r3, r0, lsl #0x10
     mov r0, r4
     mov r3, r3, lsr #0x10
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r1, sp, #0x94
     add r0, r6, #0x3
     add r0, r1, r0, lsl #0x4
@@ -185,7 +185,7 @@ L_02203268:
     mov r3, r0, lsl #0x10
     mov r0, r4
     mov r3, r3, lsr #0x10
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     b L_02203448
 L_02203320:
     cmp r1, #0x2
@@ -225,7 +225,7 @@ L_02203320:
     mov r3, r0, lsl #0x10
     mov r0, r4
     mov r3, r3, lsr #0x10
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, r5, #0x1000
     ldr r2, [r0, #0xcc0]
     add r0, sp, #0x64
@@ -261,7 +261,7 @@ L_02203320:
     mov r3, r2, lsr #0x10
     add r1, sp, #0x44
     add r2, sp, #0x54
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
 L_02203448:
     add r0, sp, #0x44
     bl VecFx32Object_Destroy

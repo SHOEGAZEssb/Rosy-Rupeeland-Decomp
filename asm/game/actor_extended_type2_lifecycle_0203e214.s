@@ -9,7 +9,7 @@
 .extern Actor_ReleaseSecondaryRenderAttachment
 .extern ActorDerivedRuntime_DestroyAlternate
 .extern Type7MarkerPresentation_Destroy
-.extern func_020c0c24
+.extern CxxArray_DestroyAndFree
     .global ActorExtendedType2_ResetRuntimeState
     .type ActorExtendedType2_ResetRuntimeState, @function
 ActorExtendedType2_ResetRuntimeState: ; 0x0203e214
@@ -128,7 +128,7 @@ ActorExtendedRecordArray_DestroyAndFree: ; 0x0203e370
     mov r1, #0x8
     ldr r3, .L_0203e3b0
     mov r2, r1
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
 .L_0203e39c:
     mov r0, r4
     bl Heap_Free

@@ -10,7 +10,7 @@
     .extern func_02094154
     .extern InventoryScroll_SetSpritePriority
     .extern InventoryScroll_UpdatePresentation
-    .extern func_020c09cc
+    .extern CxxArray_ConstructWithCookie
     .extern func_ov022_021fd894
     .extern gHeapContext
     .extern gSystemState
@@ -44,7 +44,7 @@ func_ov022_021fd8a4:
     str ip, [sp, #0x0]
     mov ip, #0x0
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_021fd910:
     ldr r1, L_021fda14
     str r0, [r4, #0x24]

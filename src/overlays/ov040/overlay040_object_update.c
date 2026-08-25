@@ -36,8 +36,8 @@ extern void func_ov040_021fceb0(void *object, s32 first, s32 second);
 extern void Graphics3dPresentation_CreatePreset6To10SpriteEffectsAt(void *context, s32 type, s32 x, s32 y, s32 value);
 extern void Graphics3dPresentation_CreatePreset11To13SpriteEffectAt(void *context, s32 type, s32 x, s32 y);
 extern s32 ActorRuntimeFlags_Test(const void *input, s32 mask);
-extern void func_0209c3b4(void *context);
-extern void func_0209c430(void *context, const void *position,
+extern void GraphicsImmediateEffectRenderer_SetupProjection(void *context);
+extern void GraphicsImmediateEffectRenderer_DrawTexturedQuad(void *context, const void *position,
                           const void *scale, u16 value, const void *bounds,
                           s32 zero1, const void *region, s32 mask, s32 zero2);
 extern const u8 gActorRuntimeFlags[];
@@ -553,7 +553,7 @@ static const s32 slotBounds[11][4] = {
 extern "C" void func_ov040_0220332c(void *owner)
 {
     void *context = FIELD(void *, FIELD(void *, owner, 0), 0x10);
-    func_0209c3b4(context);
+    GraphicsImmediateEffectRenderer_SetupProjection(context);
 
     for (s32 slot = 0x4f; slot >= 0; slot--) {
         s32 state = FIELD(s32, owner, 0x824 + slot * 4);
@@ -568,7 +568,7 @@ extern "C" void func_ov040_0220332c(void *owner)
         VecFx32Object_InitComponents(position, FIELD(s32, record, 0),
                       FIELD(s32, record, 4), -FIELD(s32, record, 8) >> 12);
         VecFx32Object_InitComponents(scale, 0x1000, 0x1000, 0x1000);
-        func_0209c430(context, position, scale,
+        GraphicsImmediateEffectRenderer_DrawTexturedQuad(context, position, scale,
                       FIELD(u16, owner, 0x504 + slot * 2),
                       slotBounds[state], 0, slotRegions[state], 0x7fff, 0);
         VecFx32Object_Destroy(scale);

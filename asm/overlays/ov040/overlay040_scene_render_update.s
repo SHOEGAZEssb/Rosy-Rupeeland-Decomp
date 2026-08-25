@@ -19,7 +19,7 @@
     .extern func_0209b7ec
     .extern func_0209bd14
     .extern func_0209c1bc
-    .extern func_0209c9d4
+    .extern Graphics3dPresentation_ConfigureOrthographicState
     .extern func_0209ca90
     .extern func_020adc40
     .extern func_020adc90
@@ -732,7 +732,7 @@ func_ov040_022013e0: ; 0x022013e0
     cmp r9, r4
     blt .L_02201dbc
     mov r0, r8
-    bl func_0209c9d4
+    bl Graphics3dPresentation_ConfigureOrthographicState
     mov r0, #0x7d0
     rsb r0, r0, #0x0
     str r0, [sp, #0x0]
@@ -762,7 +762,7 @@ func_ov040_022013e0: ; 0x022013e0
     movgt r0, r0, lsl #0x1
     rsbgt r4, r0, #0xf
     mov r0, r8
-    bl func_0209c9d4
+    bl Graphics3dPresentation_ConfigureOrthographicState
     mov r0, #0x3
     sub r5, r0, #0x1
 .L_02201efc:
@@ -877,7 +877,7 @@ func_ov040_022013e0: ; 0x022013e0
     str r3, [sp, #0x94]
     str r1, [sp, #0x98]
     str r2, [sp, #0x9c]
-    bl func_0209c9d4
+    bl Graphics3dPresentation_ConfigureOrthographicState
     ldr r0, [r10, #0x6c]
     cmp r0, #0x0
     bne .L_02202100

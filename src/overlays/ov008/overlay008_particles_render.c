@@ -20,7 +20,7 @@ extern const s16 gFx32CosSinTable[];
 extern void VecFx32Object_InitCopy(void *destination, const void *source);
 extern void VecFx32Object_Destroy(void *member);
 extern void func_0209a2ac(void *object, const void *transform, s32 mode);
-extern void func_0209b494(void *resource, s32 value, s32 zero);
+extern void Graphics3dPresentation_BindImmediateTexture(void *resource, s32 value, s32 zero);
 extern void func_0209c7e8(void *resource, s32 value);
 extern void func_0209c87c(void *resource, const Overlay008Point *vertices,
                           const s32 *region, u16 color, s32 sentinel);
@@ -108,7 +108,7 @@ void func_ov008_021fbe0c(void *state, const void *transform)
             vertices[3].x = (x + size * (sine - cosine)) >> 12;
             vertices[3].y = (y - size * (cosine + sine)) >> 12;
 
-            func_0209b494(resource, code < 10 ? 28 : 0, 0);
+            Graphics3dPresentation_BindImmediateTexture(resource, code < 10 ? 28 : 0, 0);
             func_0209c87c(resource, vertices, regions[code],
                           FIELD(u16, state, 0x844 + index * 2), -1);
         } else if (code == 0) {

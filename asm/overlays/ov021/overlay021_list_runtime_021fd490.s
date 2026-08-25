@@ -4,7 +4,7 @@
     .extern GraphicsSpriteRenderer_SetFontResource
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_02092960
+    .extern GraphicsSpriteRenderer_DrawDecimal
     .extern func_ov021_021fd6e8
 
 .global func_ov021_021fd490
@@ -110,7 +110,7 @@ L_021fd5c0:
     ldr r2, L_021fd674
     mov r1, r4
     mov r3, #0x2a
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
     mov r1, #0xe
     mov r2, r0
     str r1, [sp, #0x0]

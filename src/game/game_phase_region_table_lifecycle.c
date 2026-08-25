@@ -9,10 +9,10 @@ extern "C" {
 extern const char gGamePhaseRegionResizeArrayAllocationTag[];
 extern const char gGamePhaseRegionInitialArrayAllocationTag[];
 extern const GamePhaseRegion gDefaultGamePhaseRegion;
-extern void *func_020c09cc(void *allocation, s32 count, s32 elementSize,
+extern void *CxxArray_ConstructWithCookie(void *allocation, s32 count, s32 elementSize,
                            s32 stride, void (*construct)(GamePhaseRegion *),
                            void (*destroy)(GamePhaseRegion *));
-extern void func_020c0c24(void *array, s32 elementSize, s32 stride,
+extern void CxxArray_DestroyAndFree(void *array, s32 elementSize, s32 stride,
                           void (*destroy)(GamePhaseRegion *));
 #ifdef __cplusplus
 }
@@ -40,7 +40,7 @@ GamePhaseRegionTable *GamePhaseRegionTable_InitWithCount(
                                       gGamePhaseRegionInitialArrayAllocationTag,
                                       4, &gHeapContext);
         if (allocation)
-            regions = (GamePhaseRegion *)func_020c09cc(
+            regions = (GamePhaseRegion *)CxxArray_ConstructWithCookie(
                 allocation, count, sizeof(GamePhaseRegion),
                 sizeof(GamePhaseRegion), GamePhaseRegion_Init,
                 GamePhaseRegion_Destroy);
@@ -66,7 +66,7 @@ void GamePhaseRegion_Destroy(GamePhaseRegion *region)
 void GamePhaseRegionTable_Clear(GamePhaseRegionTable *self)
 {
     if (self->regions) {
-        func_020c0c24(self->regions, sizeof(GamePhaseRegion),
+        CxxArray_DestroyAndFree(self->regions, sizeof(GamePhaseRegion),
                       sizeof(GamePhaseRegion), GamePhaseRegion_Destroy);
         self->regions = 0;
     }
@@ -118,7 +118,7 @@ void GamePhaseRegionTable_Resize(GamePhaseRegionTable *self, s32 count)
                                       gGamePhaseRegionResizeArrayAllocationTag,
                                       4, &gHeapContext);
         if (allocation)
-            regions = (GamePhaseRegion *)func_020c09cc(
+            regions = (GamePhaseRegion *)CxxArray_ConstructWithCookie(
                 allocation, count, sizeof(GamePhaseRegion),
                 sizeof(GamePhaseRegion), GamePhaseRegion_Init,
                 GamePhaseRegion_Destroy);

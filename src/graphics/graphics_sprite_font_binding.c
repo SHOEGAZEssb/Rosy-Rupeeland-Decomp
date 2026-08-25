@@ -33,7 +33,7 @@ extern GraphicsSpriteStatePoolPrefix gGraphicsSpriteStatePool;
 /* Constructs a cookie-prefixed array in caller-provided storage, records the
  * retail count/stride cookie, invokes each element constructor, and returns
  * the first element. Confirmed callers pass no throwing destructor path. */
-void *func_020c09cc(void *allocation, u32 count, u32 element_size,
+void *CxxArray_ConstructWithCookie(void *allocation, u32 count, u32 element_size,
                     u32 cookie_size, void (*constructor)(void *),
                     void *destructor)
 {
@@ -158,7 +158,7 @@ void GraphicsSpriteRenderer_InitTextResources(
     renderer->field_04 = GraphicsVramAllocator_Allocate(
         &renderer->vramAllocator, 0xc0, character_resource, 4);
     renderer->field_08 = GraphicsSpriteRenderer_AcquirePaletteBinding(renderer, palette_resource);
-    entries = (GraphicsRenderEntry *)func_020c09cc(
+    entries = (GraphicsRenderEntry *)CxxArray_ConstructWithCookie(
         Heap_Alloc(0x128, data_020e69f4, 4, &gHeapContext),
         12, 0x18, 8, (void (*)(void *))GraphicsRenderEntry_Init, 0);
     renderer->field_0c = entries;

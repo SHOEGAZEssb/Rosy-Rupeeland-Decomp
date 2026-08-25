@@ -10,7 +10,7 @@
 .extern VecFx32Object_Init
 .extern VecFx32Object_Destroy
 .extern func_0209a208
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern func_ov041_021fce00
 .extern func_ov041_021fd000
 .extern func_ov041_021ff1cc
@@ -60,7 +60,7 @@ func_ov041_021ff20c: ; 0x021ff20c
     mov r2, #0xc
     mov r3, #0x8
     str r5, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 .L_021ff2b4:
     str r0, [r10, #0x84]
     ldr r4, [r10, #0x1ac]
@@ -80,7 +80,7 @@ func_ov041_021ff20c: ; 0x021ff20c
     mov r2, #0xc
     mov r3, #0x8
     str r5, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 .L_021ff300:
     str r0, [r10, #0x88]
     ldr r0, [r10, #0x1ac]

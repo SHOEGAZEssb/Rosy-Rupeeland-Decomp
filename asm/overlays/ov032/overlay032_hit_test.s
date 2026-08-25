@@ -2,7 +2,7 @@
 
 /* Exact fallback; see src/overlays/ov032/overlay032_hit_test.c for documented portable C. */
 .extern Sound_Play
-.extern func_0209286c
+.extern GraphicsSpriteState_HitTestBounds
 .extern GraphicsSpriteState_TestTouchPoint
 .extern gSoundContext
 
@@ -17,7 +17,7 @@ Overlay032SpriteWrapper_HitTest:
     cmp r2, #0x0
     ldr r0, [r5, #0x0]
     blt L_021ff2b8
-    bl func_0209286c
+    bl GraphicsSpriteState_HitTestBounds
     mov r4, r0
     b L_021ff2c0
 L_021ff2b8:

@@ -11,7 +11,7 @@
 .extern Graphics3dPresentation_BeginFrame
 .extern func_0209c7e8
 .extern func_0209c87c
-.extern func_0209c9d4
+.extern Graphics3dPresentation_ConfigureOrthographicState
 .extern func_0209ca90
 .extern func_020befec
 .extern func_ov008_021fbe0c
@@ -1481,7 +1481,7 @@ func_ov041_02203434: ; 0x02203434
     blt .L_022037a0
     ldr r0, [r8, #0x48]
     ldr r0, [r0, #0x18]
-    bl func_0209c9d4
+    bl Graphics3dPresentation_ConfigureOrthographicState
     mov r0, #0x7
     ldr r4, .L_022044ac
     sub r6, r0, #0x1

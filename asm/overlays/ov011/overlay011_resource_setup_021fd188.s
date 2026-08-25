@@ -2,7 +2,7 @@
     .extern GraphicsResourceSet_Load
     .extern func_020b44e8
     .extern func_ov011_021fd374
-    .extern func_0207043c
+    .extern GraphicsCharacterResource_GetUploadSize
     .extern GraphicsBgCharacterResource_UploadToSubBg
     .extern GraphicsBgPaletteResource_UploadToSubBg
     .extern Heap_AllocCore
@@ -50,7 +50,7 @@ func_ov011_021fd188: ; 0x021fd188
     bl func_ov011_021fd374
     ldr r0, [r4, #0x78]
     mov r5, #0x0
-    bl func_0207043c
+    bl GraphicsCharacterResource_GetUploadSize
     ldr r1, [r4, #0x7c]
     mov r2, #0x0
     ldr r1, [r1, #0x20]

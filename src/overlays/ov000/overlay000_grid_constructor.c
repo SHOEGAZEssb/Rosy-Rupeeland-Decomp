@@ -63,7 +63,7 @@ extern void func_020957f0(void *element, void *sprite, s32 animation,
 extern void func_02095820(void *element, s32 x, s32 y);
 extern void func_02095940(void *element);
 extern s32 ActorDescriptor_IsInvalid(void *record);
-extern void *func_020c09cc(void *array, s32 count, s32 elementSize,
+extern void *CxxArray_ConstructWithCookie(void *array, s32 count, s32 elementSize,
                             s32 alignment, void (*constructor)(void *),
                             void (*destructor)(void *));
 extern void func_ov000_021fc658(void *state, s32 index, s32 initialize);
@@ -150,7 +150,7 @@ Overlay000GridState *func_ov000_021fbcc4(Overlay000GridState *state,
     state->cells_250 = (u8 *)Heap_AllocAlternateEntry(
         roundedCount * 0x20 + 8, data_ov000_021fcd54, 4, &gHeapContext);
     if (state->cells_250 != 0) {
-        state->cells_250 = (u8 *)func_020c09cc(
+        state->cells_250 = (u8 *)CxxArray_ConstructWithCookie(
             state->cells_250, roundedCount, 0x20, 8,
             InventoryCell_Init, InventoryCell_Destroy);
     }

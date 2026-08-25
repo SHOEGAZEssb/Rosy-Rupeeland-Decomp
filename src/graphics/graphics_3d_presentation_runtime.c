@@ -36,12 +36,12 @@ extern u32 genrand_int32(void);
 
 extern void *GraphicsArchive_LoadCharacterResourceUncached(void *manager, u32 archive_id);
 extern void *GraphicsArchive_LoadPaletteResourceUncached(void *manager, u32 archive_id);
-extern u32 func_0207043c(const void *resource);
-extern u32 func_02070474(const void *resource);
-extern u32 func_020704c8(const void *resource);
-extern u32 func_02070580(const void *resource);
+extern u32 GraphicsCharacterResource_GetUploadSize(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureFormat(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureWidthExponent(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureHeightExponent(const void *resource);
 extern void *GraphicsBgResourceData_GetDecoded(const void *resource);
-extern u32 func_02070888(const void *resource);
+extern u32 GraphicsPaletteResource_GetUploadSize(const void *resource);
 extern void func_020b44e8(void);
 extern void func_020b239c(void);
 extern void func_020b2238(const void *source, u32 destination, u32 size);
@@ -54,10 +54,10 @@ extern u32 GX_HBlankIntr(u32 enable);
 extern void G3X_Init(void);
 extern void G3X_InitMtxStack(void);
 extern void func_020b0558(void);
-extern void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
+extern void G3Command_SetTextureParameters(u32 format, u32 generation, u32 size_s, u32 size_t,
                           u32 repeat_s, u32 repeat_t, u32 flip, u32 address);
 extern void G3Command_SetTexturePaletteBase(u32 address, u32 format);
-extern void func_0209b560(u32 light, u32 polygon_mode, u32 cull_mode,
+extern void G3Command_SetPolygonAttributes(u32 light, u32 polygon_mode, u32 cull_mode,
                           u32 polygon_id, u32 alpha, u32 misc);
 extern void G3Command_SubmitTexCoord(s32 s, s32 t);
 extern void G3Command_SubmitVertex16(s32 x, s32 y, s32 z);
@@ -112,7 +112,7 @@ u32 GraphicsResource_GetFormat(const void *resource)
     return *(const u32 *)((const u8 *)resource + 0x28) & 0xf;
 }
 
-u32 func_0207043c(const void *resource)
+u32 GraphicsCharacterResource_GetUploadSize(const void *resource)
 {
     const u8 *bytes = (const u8 *)resource;
     return *(const u32 *)(bytes + 0x14) == 0
@@ -120,7 +120,7 @@ u32 func_0207043c(const void *resource)
                : *(const u32 *)(*(const u32 *)(bytes + 0x20) + 8);
 }
 
-u32 func_02070474(const void *resource)
+u32 GraphicsCharacterResource_GetTextureFormat(const void *resource)
 {
     static const u8 formats[5] = {3, 4, 4, 1, 6};
     u32 format = *(const u32 *)((const u8 *)resource + 0x28) & 0xf;
@@ -142,19 +142,19 @@ static u32 TextureDimension(u32 dimension)
     }
 }
 
-u32 func_020704c8(const void *resource)
+u32 GraphicsCharacterResource_GetTextureWidthExponent(const void *resource)
 {
     return TextureDimension((*(const u32 *)((const u8 *)resource + 0x28) >> 4) &
                             0x7ff);
 }
 
-u32 func_02070580(const void *resource)
+u32 GraphicsCharacterResource_GetTextureHeightExponent(const void *resource)
 {
     return TextureDimension((*(const u32 *)((const u8 *)resource + 0x28) >> 14) &
                             0x7ff);
 }
 
-u32 func_02070888(const void *resource)
+u32 GraphicsPaletteResource_GetUploadSize(const void *resource)
 {
     const u8 *bytes = (const u8 *)resource;
     const u8 *descriptor;
@@ -170,7 +170,7 @@ u32 func_02070888(const void *resource)
 }
 
 /* Retail 0x0209A5FC: bind one texture/palette archive pair into slot. */
-void func_0209a5fc(void *object, u32 slot, u32 texture_id, u32 palette_id)
+void Graphics3dPresentation_LoadTexturePaletteSlot(void *object, u32 slot, u32 texture_id, u32 palette_id)
 {
     u8 *bytes = (u8 *)object;
     void *manager = data_020f4e18;
@@ -182,21 +182,21 @@ void func_0209a5fc(void *object, u32 slot, u32 texture_id, u32 palette_id)
     func_020b44e8();
     func_020b239c();
     func_020b2238(*(void **)((u8 *)texture + 0x24), texture_offset,
-                  func_0207043c(texture));
+                  GraphicsCharacterResource_GetUploadSize(texture));
     func_020b21c8();
     func_020b2180();
     func_020b210c(GraphicsBgResourceData_GetDecoded(palette), palette_offset,
-                  func_02070888(palette));
+                  GraphicsPaletteResource_GetUploadSize(palette));
     func_020b20b4();
 
     *(u32 *)(bytes + 0x31c + slot * 4) = texture_offset;
-    *(u32 *)(bytes + 0x094 + slot * 4) = func_02070474(texture);
-    *(u32 *)(bytes + 0x16c + slot * 4) = func_020704c8(texture);
-    *(u32 *)(bytes + 0x244 + slot * 4) = func_02070580(texture);
-    *(u32 *)(bytes + 0x4d4) = texture_offset + func_0207043c(texture);
+    *(u32 *)(bytes + 0x094 + slot * 4) = GraphicsCharacterResource_GetTextureFormat(texture);
+    *(u32 *)(bytes + 0x16c + slot * 4) = GraphicsCharacterResource_GetTextureWidthExponent(texture);
+    *(u32 *)(bytes + 0x244 + slot * 4) = GraphicsCharacterResource_GetTextureHeightExponent(texture);
+    *(u32 *)(bytes + 0x4d4) = texture_offset + GraphicsCharacterResource_GetUploadSize(texture);
     ReleaseResource(texture);
     *(u32 *)(bytes + 0x3f4 + slot * 4) = palette_offset;
-    *(u32 *)(bytes + 0x4d8) = palette_offset + func_02070888(palette);
+    *(u32 *)(bytes + 0x4d8) = palette_offset + GraphicsPaletteResource_GetUploadSize(palette);
     ReleaseResource(palette);
     *(u32 *)(bytes + 0x4d0) = 1;
 }
@@ -252,7 +252,7 @@ static u16 GameplayActorTextureId(void)
  * are its confirmed call sites: mode 1 supplies the title/world base pair,
  * mode 3 adds the current actor's slot-16 pair, and mode 8 deliberately omits
  * slot 16. All three then install the common slots in retail order. */
-void func_0209a748(void *object, s32 mode)
+void Graphics3dPresentation_LoadResourceProfile(void *object, s32 mode)
 {
     static const u16 common_ids[] = {
         0xe016, 0xe018, 0xe01a, 0xe01c, 0xe01e, 0xe020, 0xe024,
@@ -279,19 +279,19 @@ void func_0209a748(void *object, s32 mode)
         return;
     }
     if (mode == 1)
-        func_0209a5fc(object, 0, 0xe000, 0xe001);
+        Graphics3dPresentation_LoadTexturePaletteSlot(object, 0, 0xe000, 0xe001);
     else
-        func_0209a5fc(object, 0, 0xe016, 0xe017);
+        Graphics3dPresentation_LoadTexturePaletteSlot(object, 0, 0xe016, 0xe017);
     for (index = 0; index < sizeof(common_ids) / sizeof(common_ids[0]); ++index)
-        func_0209a5fc(object, index + 1, common_ids[index], common_ids[index] + 1);
+        Graphics3dPresentation_LoadTexturePaletteSlot(object, index + 1, common_ids[index], common_ids[index] + 1);
     if (mode == 1)
-        func_0209a5fc(object, 0x10, 0xe086, 0xe087);
+        Graphics3dPresentation_LoadTexturePaletteSlot(object, 0x10, 0xe086, 0xe087);
     else if (mode == 3) {
         u16 texture_id = GameplayActorTextureId();
-        func_0209a5fc(object, 0x10, texture_id, texture_id + 1);
+        Graphics3dPresentation_LoadTexturePaletteSlot(object, 0x10, texture_id, texture_id + 1);
     }
     for (index = 0; index < sizeof(tail_ids) / sizeof(tail_ids[0]); ++index)
-        func_0209a5fc(object, index + 0x11, tail_ids[index], tail_ids[index] + 1);
+        Graphics3dPresentation_LoadTexturePaletteSlot(object, index + 0x11, tail_ids[index], tail_ids[index] + 1);
 
     GX_VBlankIntr(old_vblank);
     GX_HBlankIntr(old_hblank);
@@ -490,7 +490,7 @@ void Graphics3dPresentation_SubmitRupeeMeshWithEffects(
                   gFx32CosSinTable[angle * 2 + 1]);
 
     G3Command_SubmitTexCoord((s32)((appearanceFlags & 0xffu) << 15), 0);
-    func_0209b414(*(u32 *)(bytes + 0x130),
+    G3Command_SetTextureParameters(*(u32 *)(bytes + 0x130),
                   instance->renderVariant == 2 ? 2 : 1,
                   *(u32 *)(bytes + 0x208), *(u32 *)(bytes + 0x2e0),
                   0, 0, 0, *(u32 *)(bytes + 0x3b8));
@@ -502,7 +502,7 @@ void Graphics3dPresentation_SubmitRupeeMeshWithEffects(
      * the retail register write while mirroring its diffuse/ambient word. */
     TingleNativeG3_SetMaterial(0x6318);
 #endif
-    func_0209b560(3, 2, 2, 1, 0x1f, 0);
+    G3Command_SetPolygonAttributes(3, 2, 2, 1, 0x1f, 0);
     *(volatile u32 *)0x04000500 = 0;
 #ifndef MATCHING
     TingleNativeG3_Begin(0);
@@ -518,8 +518,8 @@ void Graphics3dPresentation_SubmitRupeeMeshWithEffects(
 #endif
 
     if ((appearanceFlags & 0x100u) != 0) {
-        func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);
-        func_0209b560(0, 0, 3, 0, 0x1f, 0);
+        G3Command_SetTextureParameters(0, 0, 0, 0, 0, 0, 0, 0);
+        G3Command_SetPolygonAttributes(0, 0, 3, 0, 0x1f, 0);
         *(volatile u32 *)0x04000480 = 0x7fff;
 #ifndef MATCHING
         TingleNativeG3_Color(0x7fff);
@@ -708,7 +708,7 @@ SpriteEffectManager *SpriteEffectManager_Init(SpriteEffectManager *manager,
 /* Reset Nitro 3D and matrix-stack state, select retail texture bank B and
  * texture-palette bank G, and clear the object's transfer offsets/active flag
  * through the SDK graphics boundary. */
-void func_0209a4f0(void *object)
+void Graphics3dPresentation_InitGraphics(void *object)
 {
     u8 *bytes = (u8 *)object;
     G3X_Init();
@@ -724,7 +724,7 @@ void func_0209a4f0(void *object)
  * mark the presentation object's resource transfer inactive. The object owns
  * the flag at +0x4D0; SDK bank ownership is released synchronously.
  */
-void func_0209b478(void *object)
+void Graphics3dPresentation_ReleaseGraphicsBanks(void *object)
 {
     func_020ae740();
     func_020ae72c();
@@ -760,7 +760,7 @@ void Graphics3dPresentation_EndFrame(Graphics3dPresentation *self,
 /* Pack the retail texture-parameter fields into the geometry command port.
  * Inputs are immediate bit fields; no memory is retained and the write is
  * synchronously visible to the Nitro geometry boundary. */
-void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
+void G3Command_SetTextureParameters(u32 format, u32 generation, u32 size_s, u32 size_t,
                    u32 repeat_s, u32 repeat_t, u32 flip, u32 address)
 {
     u32 value =
@@ -775,7 +775,7 @@ void func_0209b414(u32 format, u32 generation, u32 size_s, u32 size_t,
 
 /* Pack the retail polygon-attribute fields into the geometry command port.
  * Inputs are immediate bit fields; the command is submitted synchronously. */
-void func_0209b560(u32 light, u32 polygon_mode, u32 cull_mode, u32 polygon_id,
+void G3Command_SetPolygonAttributes(u32 light, u32 polygon_mode, u32 cull_mode, u32 polygon_id,
                    u32 alpha, u32 misc)
 {
     u32 value =
@@ -790,7 +790,7 @@ void func_0209b560(u32 light, u32 polygon_mode, u32 cull_mode, u32 polygon_id,
 /* Establish the orthographic and material state shared by paired 3D
  * presentation entries. The object is borrowed only for API compatibility;
  * retail does not inspect it and retains no state through this argument. */
-void func_0209c9d4(void *object)
+void Graphics3dPresentation_ConfigureOrthographicState(void *object)
 {
     (void)object;
     func_020b0a54(-0x60000, 0x60000, -0x80000, 0x80000,
@@ -805,8 +805,8 @@ void func_0209c9d4(void *object)
     TingleNativeG3_Identity();
     TingleNativeG3_Translate(0x01000000, 0x01000000, 0x00001000);
 #endif
-    func_0209b414(0, 0, 0, 0, 0, 0, 0, 0);
-    func_0209b560(0, 0, 3, 2, 0x1f, 0);
+    G3Command_SetTextureParameters(0, 0, 0, 0, 0, 0, 0, 0);
+    G3Command_SetPolygonAttributes(0, 0, 3, 2, 0x1f, 0);
 }
 
 /*
@@ -816,8 +816,8 @@ void func_0209c9d4(void *object)
  */
 void Graphics3dPresentation_ReloadResources(Graphics3dPresentation *self)
 {
-    func_0209a4f0(self);
-    func_0209a748(self, self->resourceProfile != 0 ? 3 : 8);
+    Graphics3dPresentation_InitGraphics(self);
+    Graphics3dPresentation_LoadResourceProfile(self, self->resourceProfile != 0 ? 3 : 8);
 }
 
 /* Skip presentation drawing without disabling manager updates, frame setup,
@@ -925,7 +925,7 @@ void Graphics3dPresentation_Disable(Graphics3dPresentation *self,
     volatile u32 *display_control = (volatile u32 *)0x04000000;
 
     if (releaseResources != 0)
-        func_0209b478(self);
+        Graphics3dPresentation_ReleaseGraphicsBanks(self);
     if (configureDisplay != 0) {
         GX_SetGraphicsMode(1, 0, 0);
         *display_control = (*display_control & ~0x1f00u) |
@@ -974,9 +974,9 @@ Graphics3dPresentation *Graphics3dPresentation_Init(
     VecFx32Object_Init(&self->framePosition);
     VecFx32Object_Init(&self->rupeePosition);
     self->resourceProfile = resourceProfile;
-    func_0209a4f0(self);
+    Graphics3dPresentation_InitGraphics(self);
     if (resourceProfile == 0)
-        func_0209a748(self, 8);
+        Graphics3dPresentation_LoadResourceProfile(self, 8);
 
     allocation = Heap_Alloc(0x2c, data_020f32e8, 4, &gHeapContext);
     self->rupeeMeshInstance =
@@ -1027,7 +1027,7 @@ PairedEntryManager *PairedEntryManager_Destroy(PairedEntryManager *self)
 }
 
 /* Release the base 3D VRAM ownership and destroy its two retained vectors. */
-void *func_0209a5cc(void *object)
+void *Graphics3dPresentation_DestroyBase(void *object)
 {
     Graphics3dPresentation *self = (Graphics3dPresentation *)object;
     u8 *bytes = (u8 *)self;
@@ -1065,6 +1065,6 @@ Graphics3dPresentation *Graphics3dPresentation_Destroy(
         Heap_Free(child);
     }
     VecFx32Object_Destroy(&self->rupeePosition);
-    func_0209a5cc(self);
+    Graphics3dPresentation_DestroyBase(self);
     return self;
 }

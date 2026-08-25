@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_region_table_lifecycle.c.
 .text
 .extern GamePhaseRegion_Destroy
-.extern func_020c0c24
+.extern CxxArray_DestroyAndFree
 
     .global GamePhaseRegionTable_Clear
 GamePhaseRegionTable_Clear: ; 0x02011520
@@ -13,7 +13,7 @@ GamePhaseRegionTable_Clear: ; 0x02011520
     mov r1, #0x8
     ldr r3, L_02011558
     mov r2, r1
-    bl func_020c0c24
+    bl CxxArray_DestroyAndFree
     mov r0, #0x0
     str r0, [r4, #0x0]
 L_0201154c:

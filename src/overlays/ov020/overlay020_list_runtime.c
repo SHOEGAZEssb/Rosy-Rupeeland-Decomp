@@ -40,8 +40,8 @@ extern void func_02092814(void *, s32);
 extern void *func_02094154(void *, void *, s32, s32, s32, s32, s32);
 extern void InventoryScroll_SetSpritePriority(void *, s32);
 extern void InventoryScroll_UpdatePresentation(void *);
-extern void *func_020c09cc(void *, s32, s32, s32, void (*)(void *), s32);
-extern void func_020c0c24(void *, s32, s32, void (*)(void *));
+extern void *CxxArray_ConstructWithCookie(void *, s32, s32, s32, void (*)(void *), s32);
+extern void CxxArray_DestroyAndFree(void *, s32, s32, void (*)(void *));
 extern void func_ov020_021fce00(void *);
 extern void func_ov020_021fd034(void *);
 extern void func_ov020_021fd100(void *, s32);
@@ -78,7 +78,7 @@ extern "C" void *func_ov020_021fce18(void *state, void *font, s32 capacity)
         void *rows = Heap_AllocAlternateEntry(capacity * 12 + 8,
                                    data_ov020_021fe518, 4, gHeapContext);
         if (rows != 0)
-            rows = func_020c09cc(rows, capacity, 12, 8,
+            rows = CxxArray_ConstructWithCookie(rows, capacity, 12, 8,
                                  func_ov020_021fce00, 0);
         FIELD(void *, state, 0x38) = rows;
     } else {
@@ -115,7 +115,7 @@ extern "C" void *func_ov020_021fcfd4(void *state)
         FIELD(Destructor *, controller, 0)[1](controller);
     }
     if (FIELD(void *, state, 0x38) != 0)
-        func_020c0c24(FIELD(void *, state, 0x38), 12, 8,
+        CxxArray_DestroyAndFree(FIELD(void *, state, 0x38), 12, 8,
                       func_ov020_021fd034);
     func_020927b8((u8 *)state + 0x14);
     AnimationResourceState_Destroy((u8 *)state + 8);

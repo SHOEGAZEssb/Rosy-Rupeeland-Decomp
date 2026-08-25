@@ -15,7 +15,7 @@
     .extern func_02092814
     .extern func_02094154
     .extern InventoryScroll_UpdatePresentation
-    .extern func_020c09cc
+    .extern CxxArray_ConstructWithCookie
     .extern func_ov016_021fce00
     .extern func_ov016_021fd1e0
     .extern gHeapContext
@@ -89,7 +89,7 @@ func_ov016_021fce34:
     mov r2, #0x14
     mov r3, #0x8
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 L_021fcf3c:
     ldr r1, L_021fd064
     str r0, [r5, #0x4c]

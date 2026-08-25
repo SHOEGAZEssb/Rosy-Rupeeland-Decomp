@@ -10958,7 +10958,7 @@ build build/reports/graphics_immediate_effect_renderer.json: objdiff build/decom
   base_object = build/decomp/src/graphics/graphics_immediate_effect_renderer.o
 build build/reports/graphics_immediate_effect_renderer.txt: match_report build/reports/graphics_immediate_effect_renderer.json | tools/report_objdiff.py
   report_json = build/reports/graphics_immediate_effect_renderer.json
-  report_args = --section .text --function func_0209c3b4 --function func_0209c430 --function func_0209c614
+  report_args = --section .text --function GraphicsImmediateEffectRenderer_SetupProjection --function GraphicsImmediateEffectRenderer_DrawTexturedQuad --function GraphicsImmediateEffectRenderer_DrawTriangles
 
 build build/reports/graphics_texture_palette_command.json: objdiff build/decomp/delinks/src/graphics/graphics_texture_palette_command.o | build/decomp/src/graphics/graphics_texture_palette_command.o
   target_object = build/decomp/delinks/src/graphics/graphics_texture_palette_command.o
@@ -10972,7 +10972,7 @@ build build/reports/graphics_immediate_resource_bind.json: objdiff build/decomp/
   base_object = build/decomp/src/graphics/graphics_immediate_resource_bind.o
 build build/reports/graphics_immediate_resource_bind.txt: match_report build/reports/graphics_immediate_resource_bind.json | tools/report_objdiff.py
   report_json = build/reports/graphics_immediate_resource_bind.json
-  report_args = --section .text --function func_0209b494
+  report_args = --section .text --function Graphics3dPresentation_BindImmediateTexture
 
 build build/reports/graphics_texcoord_command.json: objdiff build/decomp/delinks/src/graphics/graphics_texcoord_command.o | build/decomp/src/graphics/graphics_texcoord_command.o
   target_object = build/decomp/delinks/src/graphics/graphics_texcoord_command.o

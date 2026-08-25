@@ -15,7 +15,7 @@ extern void VecFx32_TerminateNoOp(void *vector);
  * element count immediately before the first element; destruction runs in
  * reverse order and the caller-provided header size locates the owning heap
  * allocation. A null destructor skips element cleanup but still frees. */
-void func_020c0c24(void *array, u32 stride, u32 headerSize,
+void CxxArray_DestroyAndFree(void *array, u32 stride, u32 headerSize,
                    ElementDestructor destructor)
 {
     u32 count;
@@ -40,9 +40,9 @@ SpriteEffectInstance *SpriteEffectInstance_Destroy(
 
     for (offset = 0x28; offset >= 0x10; offset -= 4)
         Heap_Free(*(void **)((u8 *)effect + offset));
-    func_020c0c24(effect->velocities0c, 0x10, 8,
+    CxxArray_DestroyAndFree(effect->velocities0c, 0x10, 8,
                    VecFx32_TerminateNoOp);
-    func_020c0c24(effect->positions08, 0x10, 8,
+    CxxArray_DestroyAndFree(effect->positions08, 0x10, 8,
                    VecFx32_TerminateNoOp);
     return effect;
 }

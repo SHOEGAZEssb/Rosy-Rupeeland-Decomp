@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern u32 func_02070474(const void *resource);
-extern u32 func_020704c8(const void *resource);
-extern u32 func_02070580(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureFormat(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureWidthExponent(const void *resource);
+extern u32 GraphicsCharacterResource_GetTextureHeightExponent(const void *resource);
 
 #ifdef __cplusplus
 }
@@ -22,19 +22,19 @@ extern u32 func_02070580(const void *resource);
 u32 Graphics3DResourceBinding_GetTextureFormat(
     const Graphics3DResourceBinding *binding)
 {
-    return func_02070474(binding->textureResource);
+    return GraphicsCharacterResource_GetTextureFormat(binding->textureResource);
 }
 
 /* Return the decoded texture width class for binding's texture resource. */
 u32 Graphics3DResourceBinding_GetTextureWidthClass(
     const Graphics3DResourceBinding *binding)
 {
-    return func_020704c8(binding->textureResource);
+    return GraphicsCharacterResource_GetTextureWidthExponent(binding->textureResource);
 }
 
 /* Return the decoded texture height class for binding's texture resource. */
 u32 Graphics3DResourceBinding_GetTextureHeightClass(
     const Graphics3DResourceBinding *binding)
 {
-    return func_02070580(binding->textureResource);
+    return GraphicsCharacterResource_GetTextureHeightExponent(binding->textureResource);
 }

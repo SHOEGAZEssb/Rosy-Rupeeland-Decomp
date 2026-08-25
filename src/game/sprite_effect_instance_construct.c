@@ -15,7 +15,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_020c09cc(void *allocation, u32 count, u32 elementSize,
+extern void *CxxArray_ConstructWithCookie(void *allocation, u32 count, u32 elementSize,
                            u32 headerSize, void *constructor,
                            void *destructor);
 SpriteEffectInstance *SpriteEffectInstance_Init(
@@ -69,7 +69,7 @@ SpriteEffectInstance *SpriteEffectInstance_Init(
     allocation = Heap_AllocAlternateEntry(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
                                &gHeapContext);
     if (allocation != 0)
-        allocation = func_020c09cc(allocation, count, 0x10, 8,
+        allocation = CxxArray_ConstructWithCookie(allocation, count, 0x10, 8,
                                    (void *)VecFx32Object_Init,
                                    (void *)VecFx32Object_Destroy);
     effect->positions08 = allocation;
@@ -77,7 +77,7 @@ SpriteEffectInstance *SpriteEffectInstance_Init(
     allocation = Heap_AllocAlternateEntry(count * 0x10 + 8, gSpriteEffectParticleStorageAllocationTag, 4,
                                &gHeapContext);
     if (allocation != 0)
-        allocation = func_020c09cc(allocation, count, 0x10, 8,
+        allocation = CxxArray_ConstructWithCookie(allocation, count, 0x10, 8,
                                    (void *)VecFx32Object_Init,
                                    (void *)VecFx32Object_Destroy);
     effect->velocities0c = allocation;

@@ -1,6 +1,6 @@
 .text
 .extern func_0209a2ac
-.extern func_0209b494
+.extern Graphics3dPresentation_BindImmediateTexture
 .extern func_020befec
 .extern func_020b0808
 .extern func_ov042_021ffd30
@@ -224,7 +224,7 @@ func_ov042_021ff31c:
     ldr r1, [sp, #0xc]
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     mov r0, #0x0
     str r0, [r9, #0x0]
     mov r0, #0xc
@@ -306,7 +306,7 @@ func_ov042_021ff31c:
     mov r1, #0x29
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     add r1, r5, r4, lsl #0x1
     add r0, r1, #0xc00
     ldrsh r10, [r0, #0xcc]
@@ -454,7 +454,7 @@ func_ov042_021ff31c:
     add r1, r2, #0x1b
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     ldr r0, [sp, #0x18]
     add r1, sp, #0x84
     str r0, [sp, #0x84]
@@ -476,7 +476,7 @@ func_ov042_021ff31c:
     mov r1, #0x25
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     ldr r0, [sp, #0x1c]
     add r1, sp, #0x74
     str r0, [sp, #0x74]
@@ -510,7 +510,7 @@ func_ov042_021ff31c:
     mov r1, #0x23
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     add r0, r5, r4, lsl #0x1
     add r0, r0, #0xa00
     ldrh r0, [r0, #0x74]
@@ -549,7 +549,7 @@ func_ov042_021ff31c:
     mov r1, #0x24
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     ldr r0, [sp, #0x20]
     add r1, sp, #0x54
     str r0, [sp, #0x54]
@@ -588,7 +588,7 @@ func_ov042_021ff31c:
     mov r1, #0x28
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     ldr r0, [sp, #0x24]
     add r1, sp, #0x44
     str r0, [sp, #0x44]
@@ -611,7 +611,7 @@ func_ov042_021ff31c:
     mov r1, #0x2a
     ldr r0, [r0, #0x20]
     mov r2, #0x0
-    bl func_0209b494
+    bl Graphics3dPresentation_BindImmediateTexture
     ldr r0, [sp, #0x28]
     add r1, sp, #0x34
     str r0, [sp, #0x34]

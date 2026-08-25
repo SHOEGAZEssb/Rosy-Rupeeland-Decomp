@@ -18,7 +18,7 @@ extern "C" void *RetailTextTable_FindRecordById(const void *table, s32 index);
 extern "C" void GraphicsSpriteRenderer_DrawText(void *font, const void *text, s32 x, s32 y,
                                s32 color, s32 mode, s32 flags);
 extern "C" const void *ActorDescriptor_GetPrimaryLabel(void *item);
-extern "C" void func_02092960(void *font, u32 value, s32 width, s32 y,
+extern "C" void GraphicsSpriteRenderer_DrawDecimal(void *font, u32 value, s32 width, s32 y,
                                s32 color, s32 digits, s32 spacing, s32 flags);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" void Overlay044Panel_ReleaseRow(void *object, s32 index);
@@ -86,7 +86,7 @@ extern "C" void func_ov044_0220bba4(void *object)
                 numberY -= 2;
             u16 value = FIELD(u16, item, 4);
             GraphicsSpriteRenderer_SetFontResource(font, FIELD(void *, object, 0x18));
-            func_02092960(font, value, 10, 0xb0, numberY,
+            GraphicsSpriteRenderer_DrawDecimal(font, value, 10, 0xb0, numberY,
                            value >= 99 ? 3 : 14, 8, 1);
         }
     }

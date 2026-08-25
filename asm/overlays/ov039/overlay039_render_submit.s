@@ -3,10 +3,10 @@
     .extern func_0209a2ac
     .extern Sound_SetEffectParameters
     .extern RuntimePresentationManager_GetGraphics3dPresentation
-    .extern func_0209c3b4
+    .extern GraphicsImmediateEffectRenderer_SetupProjection
     .extern VecFx32Object_InitComponents
     .extern VecFx32Object_Init
-    .extern func_0209c430
+    .extern GraphicsImmediateEffectRenderer_DrawTexturedQuad
     .extern VecFx32Object_Destroy
     .extern func_020befec
     .extern func_ov069_0220ff38
@@ -110,7 +110,7 @@ L_02200814:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r6, r0
-    bl func_0209c3b4
+    bl GraphicsImmediateEffectRenderer_SetupProjection
     mov r0, #0x1e
     mvn r5, #0x7
     sub r7, r0, #0x1
@@ -197,7 +197,7 @@ L_022008dc:
     str ip, [sp, #0x8]
     str r9, [sp, #0xc]
     str r10, [sp, #0x10]
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, sp, #0x84
     bl VecFx32Object_Destroy
     add r0, sp, #0xe4
@@ -367,7 +367,7 @@ L_02200ba0:
     mov r0, r6
     mov r3, #0x0
     str r4, [sp, #0x10]
-    bl func_0209c430
+    bl GraphicsImmediateEffectRenderer_DrawTexturedQuad
     add r0, sp, #0x14
     bl VecFx32Object_Destroy
     add r0, sp, #0x24

@@ -4,7 +4,7 @@
 .extern GraphicsSpriteGroupOwner_CreateGroup
 .extern AnimationResourceState_ReplaceResources
 .extern Heap_AllocAlternateEntry
-.extern func_020c09cc
+.extern CxxArray_ConstructWithCookie
 .extern Heap_Alloc
 .extern func_02094154
 .extern InventoryScroll_UpdatePresentation
@@ -65,7 +65,7 @@ func_ov044_0220b740:
     mov r2, #0x20
     mov r3, #0x8
     str ip, [sp, #0x4]
-    bl func_020c09cc
+    bl CxxArray_ConstructWithCookie
 .L_0220b7fc:
     ldr r1, .L_0220b8dc
     str r0, [r5, #0x38]

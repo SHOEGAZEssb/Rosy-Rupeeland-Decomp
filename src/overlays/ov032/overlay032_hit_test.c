@@ -9,7 +9,7 @@ extern void *gSoundContext;
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern s32 func_0209286c(...);
+extern s32 GraphicsSpriteState_HitTestBounds(...);
 extern s32 GraphicsSpriteState_TestTouchPoint(...);
 extern void Sound_Play(...);
 #ifdef __cplusplus
@@ -27,7 +27,7 @@ extern "C" s32 Overlay032SpriteWrapper_HitTest(void *wrapper, void *point, s32 a
     s32 hit = 0;
     if (FIELD(void *, wrapper, 0xc) != 0) {
         void *object = FIELD(void *, wrapper, 0);
-        hit = arg2 >= 0 ? func_0209286c(object, point, arg2, arg3)
+        hit = arg2 >= 0 ? GraphicsSpriteState_HitTestBounds(object, point, arg2, arg3)
                         : GraphicsSpriteState_TestTouchPoint(object, point, arg2, arg3);
     }
     if (hit) Sound_Play(gSoundContext, 0, FIELD(s32, wrapper, 0x2c) < 0 ? 3 : 0xb);

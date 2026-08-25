@@ -25,9 +25,9 @@ extern void func_02071f94(void *);
 extern void func_02071fa8(void *, void *, s32, s32, s32);
 extern void GraphicsResourceSet_ReleaseHandles(void *);
 extern void func_020b44e8(void);
-extern void *func_0207043c(void);
+extern void *GraphicsCharacterResource_GetUploadSize(void);
 extern void *GraphicsBgResourceData_GetDecoded(void *);
-extern void *func_02070888(void *);
+extern void *GraphicsPaletteResource_GetUploadSize(void *);
 extern void func_020b1924(void *, s32, void *);
 extern void func_020b2058(void *, s32, void *);
 extern void GraphicsBgMapResource_AddPaletteBankOffset(void *, s32);
@@ -115,17 +115,17 @@ extern "C" void func_ov041_021fd01c(void *owner)
     s32 secondaryLast = mode == 0 ? 0xa088 : mode == 1 ? 0xa0b3 : 0xa0c6;
     load_set((u8 *)owner + 0x48, baseLast);
     func_020b44e8();
-    func_020b1924((u8 *)FIELD(void *, owner, 0x48) + 0x24, 0, func_0207043c());
+    func_020b1924((u8 *)FIELD(void *, owner, 0x48) + 0x24, 0, GraphicsCharacterResource_GetUploadSize());
     func_020b44e8();
     func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, owner, 0x4c)), 0,
-                  func_02070888(FIELD(void *, owner, 0x4c)));
+                  GraphicsPaletteResource_GetUploadSize(FIELD(void *, owner, 0x4c)));
     func_020b44e8();
     load_set((u8 *)owner + 0x54, secondaryLast);
     func_020b44e8();
-    func_020b1924((u8 *)FIELD(void *, owner, 0x54) + 0x24, 0x8000, func_0207043c());
+    func_020b1924((u8 *)FIELD(void *, owner, 0x54) + 0x24, 0x8000, GraphicsCharacterResource_GetUploadSize());
     func_020b44e8();
     func_020b2058(GraphicsBgResourceData_GetDecoded(FIELD(void *, owner, 0x58)), 0x100,
-                  func_02070888(FIELD(void *, owner, 0x58)));
+                  GraphicsPaletteResource_GetUploadSize(FIELD(void *, owner, 0x58)));
     func_020b44e8();
     GraphicsBgMapResource_AddPaletteBankOffset(FIELD(void *, owner, 0x5c), 8);
 
@@ -136,7 +136,7 @@ extern "C" void func_ov041_021fd01c(void *owner)
         load_set(temporary, baseLast);
         func_020b44e8();
         func_020b2058(GraphicsBgResourceData_GetDecoded((void *)temporary[1]), 0,
-                      func_02070888((void *)temporary[1]));
+                      GraphicsPaletteResource_GetUploadSize((void *)temporary[1]));
         func_020b44e8();
         GraphicsResourceSet_ReleaseHandles(temporary);
     }

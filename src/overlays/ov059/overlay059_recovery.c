@@ -85,8 +85,8 @@ extern void *func_020adc90(...), *func_020af9e0(...), *func_020afaec(...);
 extern void *func_020afbf8(...);
 extern void func_020b44e8(...), func_020b57d4(...);
 extern s32 func_020befec(...);
-extern void *func_020c09cc(...), *__construct_array(...);
-extern void __destroy_arr(...), func_020c0c24(...);
+extern void *CxxArray_ConstructWithCookie(...), *__construct_array(...);
+extern void __destroy_arr(...), CxxArray_DestroyAndFree(...);
 #ifdef __cplusplus
 }
 #endif
@@ -427,7 +427,7 @@ void *func_ov059_02210a2c(void *a, s32 n) {
   if (n) {
     p = Heap_AllocAlternateEntry(n * 0x70 + 8, data_ov059_02211ac0, 4, gHeapContext);
     if (p)
-      p = func_020c09cc(p, n, 0x70, 8, func_ov059_0220fd20,
+      p = CxxArray_ConstructWithCookie(p, n, 0x70, 8, func_ov059_0220fd20,
                         func_ov059_0220fd64);
   }
   F(void *, a, 0) = p;
@@ -440,7 +440,7 @@ void func_ov059_02210ab0(void *a) {
   if (p) {
     for (i = 0; i < F(s32, a, 4); i++)
       func_ov059_0220fd64((u8 *)p + i * 0x70);
-    func_020c0c24(p, 0x70, 8, func_ov059_0220fd64);
+    CxxArray_DestroyAndFree(p, 0x70, 8, func_ov059_0220fd64);
   }
   F(void *, a, 0) = 0;
   F(s32, a, 4) = 0;
@@ -451,7 +451,7 @@ void func_ov059_02210b24(void *a, s32 n) {
     func_ov059_02210ab0(a);
   p = Heap_AllocAlternateEntry(n * 0x70 + 8, data_ov059_02211ac8, 4, gHeapContext);
   if (p)
-    p = func_020c09cc(p, n, 0x70, 8, func_ov059_0220fd20, func_ov059_0220fd64);
+    p = CxxArray_ConstructWithCookie(p, n, 0x70, 8, func_ov059_0220fd20, func_ov059_0220fd64);
   F(void *, a, 0) = p;
   F(s32, a, 4) = n;
 }

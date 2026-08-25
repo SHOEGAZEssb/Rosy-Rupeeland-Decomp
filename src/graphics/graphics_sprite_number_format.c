@@ -127,7 +127,7 @@ sprite_number_test:
  * caller's renderer tile buffer changes.
  */
 #ifndef MATCHING
-s32 func_02092960(GraphicsSpriteRenderer *renderer, s32 value,
+s32 GraphicsSpriteRenderer_DrawDecimal(GraphicsSpriteRenderer *renderer, s32 value,
                   s32 placeValue, s32 destinationX, s32 destinationY,
                   u32 mode, s32 glyphAdvance, s32 zeroPad)
 {

@@ -11,7 +11,7 @@
 #define FIELD(type, base, offset) (*(type *)((u8 *)(base) + (offset)))
 
 extern "C" void func_0209a2ac(void *object, s32 selector, s32 enabled);
-extern "C" void func_0209b494(void *owner, s32 resource, s32 unused);
+extern "C" void Graphics3dPresentation_BindImmediateTexture(void *owner, s32 resource, s32 unused);
 extern "C" s32 func_020befec(s32 numerator, s32 denominator);
 extern "C" void func_ov042_021ffd78(void *context, const s32 *translation,
                                       s32 angle, const s32 *vertices,
@@ -129,7 +129,7 @@ extern "C" void func_ov042_021ff31c(void *pool, s32 selector)
             continue;
         }
 
-        func_0209b494(resourceOwner, resource, 0);
+        Graphics3dPresentation_BindImmediateTexture(resourceOwner, resource, 0);
         func_ov042_021ffd78(pool, translation, angle, vertices,
                             texcoords, attributes);
     }

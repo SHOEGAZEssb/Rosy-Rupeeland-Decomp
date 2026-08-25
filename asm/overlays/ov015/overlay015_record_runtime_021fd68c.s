@@ -7,7 +7,7 @@
     .extern GraphicsSpriteRenderer_DrawText
     .extern GraphicsSpriteRenderer_MeasureText
     .extern GraphicsSpriteCanvas_FillRect
-    .extern func_02092960
+    .extern GraphicsSpriteRenderer_DrawDecimal
     .extern func_020958d8
     .extern func_02095988
     .extern func_ov001_021fb81c
@@ -90,7 +90,7 @@ func_ov015_021fd6c8:
     ldr r0, [r0, #0x0]
     mov r2, #0xa
     mov r3, #0x40
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
     mov r0, #0x16
     str r0, [sp, #0x0]
     mov r1, #0x0

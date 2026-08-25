@@ -51,7 +51,7 @@
 .extern Sound_StopStream
 .extern GraphicsSpriteState_SetAnimationIndex
 .extern GraphicsSpriteRenderer_SetTextGridPosition
-.extern func_0209a748
+.extern Graphics3dPresentation_LoadResourceProfile
 .extern Graphics3dPresentation_CreatePreset14To19SpriteEffectWithHorizontalVelocityAt
 .extern Graphics3dPresentation_CreatePreset25To27TimedPointSpriteEffectAt
 .extern Graphics3dPresentation_CreatePreset31VariantRegionSpriteEffectAt
@@ -266,7 +266,7 @@ func_ov090_02217d70:
     add r0, r0, #0x2c00
     bl RuntimePresentationManager_GetGraphics3dPresentation
     mov r1, #0x2
-    bl func_0209a748
+    bl Graphics3dPresentation_LoadResourceProfile
     mov r0, #0x1
     bl GX_VBlankIntr
     mov r0, #0x1

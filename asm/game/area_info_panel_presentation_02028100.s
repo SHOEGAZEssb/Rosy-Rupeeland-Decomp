@@ -15,7 +15,7 @@
 .extern GraphicsSpriteRenderer_DrawGlyph
 .extern GraphicsSpriteRenderer_DrawText
 .extern RetailTextTable_FindRecordById
-.extern func_02092960
+.extern GraphicsSpriteRenderer_DrawDecimal
 .extern func_020befec
 .extern gGameWork
 .extern gSystemState
@@ -161,7 +161,7 @@ AreaInfoPanelPresentation_ShowIndex: ; 0x02028100
     ldr r0, [r5, #0x30]
     mov r2, #0x64
     mov r3, #0xca
-    bl func_02092960
+    bl GraphicsSpriteRenderer_DrawDecimal
     mov r1, #0xd
     mov r2, r0
     str r1, [sp, #0x0]

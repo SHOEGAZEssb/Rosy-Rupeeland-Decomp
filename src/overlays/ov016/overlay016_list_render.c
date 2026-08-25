@@ -17,7 +17,7 @@ extern void GraphicsSpriteRenderer_SetFontResource(void *, void *);
 extern void GraphicsSpriteRenderer_DrawText(void *, s32, s32, s32, s32, s32, s32);
 extern void GraphicsSpriteCanvas_FillRect(void *, s32, s32, s32, s32, s32);
 extern void *RetailTextTable_FindRecordById(void *, s32);
-extern void func_02092960(void *, s32, s32, s32, s32, s32, s32, s32);
+extern void GraphicsSpriteRenderer_DrawDecimal(void *, s32, s32, s32, s32, s32, s32, s32);
 #ifdef __cplusplus
 }
 #endif
@@ -68,7 +68,7 @@ extern "C" void func_ov016_021fd3f8(void *state)
             }
             GraphicsSpriteRenderer_SetFontResource(
                 font, FIELD(void *, state, 0x2c));
-            func_02092960(font, value, 10, 0xb0, baseline, numberColor, 8, 1);
+            GraphicsSpriteRenderer_DrawDecimal(font, value, 10, 0xb0, baseline, numberColor, 8, 1);
         } else {
             void *message = RetailTextTable_FindRecordById(data_021f3ecc, 0x188);
             GraphicsSpriteRenderer_DrawText(font, (s32)((u8 *)message + 2), 0x44,
