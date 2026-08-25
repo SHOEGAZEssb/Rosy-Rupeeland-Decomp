@@ -22,8 +22,8 @@
     .extern Overlay021_Dialog_ShowMessage
     .extern Overlay021_Dialog_UpdatePrompt
 
-.global func_ov021_021ffa38
-func_ov021_021ffa38:
+.global Overlay021_UpdateListChannelChooser
+Overlay021_UpdateListChannelChooser:
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, lr}
     mov r8, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -197,4 +197,4 @@ L_021ffca4: .word data_ov021_02202f28
 L_021ffca8: .word data_ov021_02202f20
 L_021ffcac: .word data_ov021_02202f18
 L_021ffcb0: .word data_ov021_02202f10
-    .size func_ov021_021ffa38, . - func_ov021_021ffa38
+    .size Overlay021_UpdateListChannelChooser, . - Overlay021_UpdateListChannelChooser

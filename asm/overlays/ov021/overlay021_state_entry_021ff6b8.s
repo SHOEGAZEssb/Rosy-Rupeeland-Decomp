@@ -20,8 +20,8 @@
     .extern func_ov045_0220c9e8
     .extern Overlay045_DrawSelectorPreview
 
-.global func_ov021_021ff6b8
-func_ov021_021ff6b8:
+.global Overlay021_UpdateSceneEntry
+Overlay021_UpdateSceneEntry:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -124,4 +124,4 @@ L_021ff824: .word gGamePhaseCurrencyHud
 L_021ff828: .word 0xee0e
 L_021ff82c: .word data_ov021_02202e50
 L_021ff830: .word data_ov021_02202d28
-    .size func_ov021_021ff6b8, . - func_ov021_021ff6b8
+    .size Overlay021_UpdateSceneEntry, . - Overlay021_UpdateSceneEntry

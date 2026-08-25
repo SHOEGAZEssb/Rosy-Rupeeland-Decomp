@@ -23,8 +23,8 @@
     .extern genrand_int32
     .extern gGamePhaseCurrencyHud
 
-.global func_ov021_022009e0
-func_ov021_022009e0:
+.global Overlay021_UpdateAuxiliaryPanel
+Overlay021_UpdateAuxiliaryPanel:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -247,4 +247,4 @@ L_02200d00: .word 0xff676980
 L_02200d04: .word data_ov021_02202e90
 L_02200d08: .word data_ov021_02202e88
 L_02200d0c: .word data_ov021_02202e80
-.size func_ov021_022009e0, . - func_ov021_022009e0
+.size Overlay021_UpdateAuxiliaryPanel, . - Overlay021_UpdateAuxiliaryPanel

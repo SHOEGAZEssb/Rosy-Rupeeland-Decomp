@@ -14,8 +14,8 @@
     .extern Overlay021_PositionListButtons
     .extern Overlay021_Dialog_UpdatePrompt
 
-.global func_ov021_02202194
-func_ov021_02202194:
+.global Overlay021_UpdateReturnToBaseList
+Overlay021_UpdateReturnToBaseList:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -88,4 +88,4 @@ L_0220228c:
     ldmia sp!, {r4, pc}
 L_0220229c: .word data_020f4e14
 L_022022a0: .word data_ov021_02202d88
-.size func_ov021_02202194, . - func_ov021_02202194
+.size Overlay021_UpdateReturnToBaseList, . - Overlay021_UpdateReturnToBaseList

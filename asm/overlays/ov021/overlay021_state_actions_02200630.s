@@ -21,8 +21,8 @@
     .extern Overlay021_ShowListMarker
     .extern Overlay021_UpdateScene
 
-.global func_ov021_02200630
-func_ov021_02200630:
+.global Overlay021_UpdateListRebuild
+Overlay021_UpdateListRebuild:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -166,5 +166,5 @@ L_02200830: .word data_ov021_02202eb8
 L_02200834: .word data_ov021_02202eb0
 L_02200838: .word data_ov021_02202ea8
 L_0220083c: .word data_ov021_02202ea0
-    .size func_ov021_02200630, . - func_ov021_02200630
+    .size Overlay021_UpdateListRebuild, . - Overlay021_UpdateListRebuild
 

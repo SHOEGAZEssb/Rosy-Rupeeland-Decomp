@@ -113,7 +113,7 @@ static void prepare_result_widget(void *state)
  * descriptor. Input is overlay state. Heap ownership, persistent currency and
  * records, dialog/audio, graphics, and transitions change; return is zero.
  */
-extern "C" s32 func_ov021_022023f0(void *state)
+extern "C" s32 Overlay021_UpdateTransaction(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -307,7 +307,7 @@ extern "C" s32 func_ov021_022023f0(void *state)
  * according to whether +0x354 exists. Input UI/transition state changes and
  * the function always returns zero.
  */
-extern "C" s32 func_ov021_02202be0(void *state)
+extern "C" s32 Overlay021_UpdateCategoryMessage(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:

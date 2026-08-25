@@ -23,8 +23,8 @@
     .extern Overlay021_Descriptor_HasFlag29
     .extern func_ov045_0220c028
 
-.global func_ov021_021ff834
-func_ov021_021ff834:
+.global Overlay021_UpdatePostActionRebuild
+Overlay021_UpdatePostActionRebuild:
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x8
     mov r4, r0
@@ -153,4 +153,4 @@ L_021ffa00: .word data_021f5128
 L_021ffa04: .word data_020f4e14
 L_021ffa08: .word data_ov021_02202f38
 L_021ffa0c: .word data_ov021_02202f30
-    .size func_ov021_021ff834, . - func_ov021_021ff834
+    .size Overlay021_UpdatePostActionRebuild, . - Overlay021_UpdatePostActionRebuild

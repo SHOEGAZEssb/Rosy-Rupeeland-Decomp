@@ -73,7 +73,7 @@ extern void Overlay045_DrawSelectorPreview(s32, s32);
  * flag bit zero, update all components, and return zero. Game-work, UI,
  * transition, and external-object state change; no direct MMIO occurs.
  */
-extern "C" s32 func_ov021_021ff6b8(void *state)
+extern "C" s32 Overlay021_UpdateSceneEntry(void *state)
 {
     if (FIELD(s32, state, 4) == 0) {
         if (GameWork_TestFlag(gGameWork, 0x3b2) == 0) {
@@ -127,7 +127,7 @@ extern "C" s32 func_ov021_021ff6b8(void *state)
  * +0x3E4 and routes through 0x02202F30 after transition (1,0). Always update
  * components and return zero. Dialog/list/game-record/transition state changes.
  */
-extern "C" s32 func_ov021_021ff834(void *state)
+extern "C" s32 Overlay021_UpdatePostActionRebuild(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -203,7 +203,7 @@ extern "C" s32 func_ov021_021ff834(void *state)
  * advances. State 4 waits then transitions through 0x02202F10. Always update
  * components and return zero. Input/list/dialog/transition state changes.
  */
-extern "C" s32 func_ov021_021ffa38(void *state)
+extern "C" s32 Overlay021_UpdateListChannelChooser(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {

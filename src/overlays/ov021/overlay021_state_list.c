@@ -68,7 +68,7 @@ extern void Overlay021_BeginSelectedAction(void *);
  * routes through 0x02202EF0. Always process prompt/update components and return
  * zero. Input/list/dialog/action/transition state changes; no direct MMIO.
  */
-extern "C" s32 func_ov021_021ffd5c(void *state)
+extern "C" s32 Overlay021_UpdateActiveList(void *state)
 {
     void *list = FIELD(void *, state, 0x2c0);
     void *controller = FIELD(void *, list, 0x58);
@@ -193,7 +193,7 @@ extern "C" s32 func_ov021_021ffd5c(void *state)
  * according to active widget. Always process prompt/update components and
  * return zero. Input/panel/list/action/transition state changes; no MMIO.
  */
-extern "C" s32 func_ov021_022000f0(void *state)
+extern "C" s32 Overlay021_UpdateWidgetClose(void *state)
 {
     void *primary = FIELD(void *, state, 0x354);
     void *secondary = FIELD(void *, state, 0x358);

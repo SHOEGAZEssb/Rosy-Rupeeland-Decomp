@@ -35,8 +35,8 @@
     .extern Overlay021_TestNestedFlags
     .extern Overlay021_RefreshSecondarySelectionDisplay
 
-.global func_ov021_02201ba8
-func_ov021_02201ba8:
+.global Overlay021_UpdateSecondarySelection
+Overlay021_UpdateSecondarySelection:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -307,4 +307,4 @@ L_02201f88: .word data_ov021_02202db8
 L_02201f8c: .word data_ov021_02202d60
 L_02201f90: .word data_ov021_02202da8
 L_02201f94: .word data_ov021_02202da0
-.size func_ov021_02201ba8, . - func_ov021_02201ba8
+.size Overlay021_UpdateSecondarySelection, . - Overlay021_UpdateSecondarySelection

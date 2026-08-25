@@ -16,8 +16,8 @@
     .extern GameWork_ClearFlag
     .extern gGameWork
 
-.global func_ov021_022012f0
-func_ov021_022012f0:
+.global Overlay021_UpdatePostExchangeInfo
+Overlay021_UpdatePostExchangeInfo:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -96,4 +96,4 @@ L_02201400: .word gGameWork
 L_02201404: .word 0x387
 L_02201408: .word data_020f4e14
 L_0220140c: .word data_ov021_02202e18
-.size func_ov021_022012f0, . - func_ov021_022012f0
+.size Overlay021_UpdatePostExchangeInfo, . - Overlay021_UpdatePostExchangeInfo

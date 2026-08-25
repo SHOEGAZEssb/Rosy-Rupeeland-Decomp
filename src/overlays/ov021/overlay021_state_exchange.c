@@ -87,7 +87,7 @@ static void change_state(void *state, const u32 *next)
  * state 20. It updates panel, dialog, transition, and state fields and always
  * returns zero; the called UI helpers may touch graphics hardware.
  */
-extern "C" s32 func_ov021_022009e0(void *state)
+extern "C" s32 Overlay021_UpdateAuxiliaryPanel(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
@@ -193,7 +193,7 @@ extern "C" s32 func_ov021_022009e0(void *state)
  * list state. The input state is mutated; persistent currency/item records and
  * UI/transition state may change. The function always returns zero.
  */
-extern "C" s32 func_ov021_02200d10(void *state)
+extern "C" s32 Overlay021_UpdateExchange(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -325,7 +325,7 @@ extern "C" s32 func_ov021_02200d10(void *state)
  * for transition (1,0) before clearing +0x3E0 and routing through 0x02202E20.
  * The state and UI are updated; return is always zero.
  */
-extern "C" s32 func_ov021_022011a4(void *state)
+extern "C" s32 Overlay021_UpdateExchangeRestore(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -374,7 +374,7 @@ extern "C" s32 func_ov021_022011a4(void *state)
  * message 2, and finally routes through 0x02202E18. State and persistent flags
  * change; graphics helpers may access MMIO. The return value is always zero.
  */
-extern "C" s32 func_ov021_022012f0(void *state)
+extern "C" s32 Overlay021_UpdatePostExchangeInfo(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {

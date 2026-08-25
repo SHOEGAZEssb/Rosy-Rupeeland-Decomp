@@ -17,8 +17,8 @@
     .extern func_ov045_0220c028
     .extern gGameWork
 
-.global func_ov021_0220044c
-func_ov021_0220044c:
+.global Overlay021_UpdateRecordApplication
+Overlay021_UpdateRecordApplication:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -149,5 +149,5 @@ L_02200620: .word 0x389
 L_02200624: .word 0x3b2
 L_02200628: .word data_021f5128
 L_0220062c: .word data_ov021_02202ec8
-    .size func_ov021_0220044c, . - func_ov021_0220044c
+    .size Overlay021_UpdateRecordApplication, . - Overlay021_UpdateRecordApplication
 

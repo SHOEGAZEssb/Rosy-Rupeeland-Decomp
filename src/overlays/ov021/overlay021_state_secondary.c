@@ -85,7 +85,7 @@ static void change_state(void *state, const u32 *next)
  * routes by descriptor category. Input is the overlay state; UI, audio, and
  * transition state change. The return value is always zero.
  */
-extern "C" s32 func_ov021_02201ba8(void *state)
+extern "C" s32 Overlay021_UpdateSecondarySelection(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
@@ -204,7 +204,7 @@ extern "C" s32 func_ov021_02201ba8(void *state)
  * secondary panel, and routes via 0x02202D50. It changes persistent currency
  * and UI state and always returns zero.
  */
-extern "C" s32 func_ov021_02201f98(void *state)
+extern "C" s32 Overlay021_UpdateSecondaryCommit(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0: {
@@ -274,7 +274,7 @@ extern "C" s32 func_ov021_02201f98(void *state)
  * prompt, starts transition (1,0), then routes through 0x02202D88. Input state
  * and graphics/UI state change; the function always returns zero.
  */
-extern "C" s32 func_ov021_02202194(void *state)
+extern "C" s32 Overlay021_UpdateReturnToBaseList(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
@@ -315,7 +315,7 @@ extern "C" s32 func_ov021_02202194(void *state)
  * mode, opens message 2, starts transition (1,0), then routes to the primary or
  * secondary input handler. It changes UI/graphics state and returns zero.
  */
-extern "C" s32 func_ov021_022022a4(void *state)
+extern "C" s32 Overlay021_UpdateCategoryPanelReopen(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {

@@ -22,8 +22,8 @@
     .extern Overlay021_Dialog_UpdatePrompt
     .extern Overlay021Descriptor_GetFlags16_19
 
-.global func_ov021_02200840
-func_ov021_02200840:
+.global Overlay021_UpdateAuxiliaryAction
+Overlay021_UpdateAuxiliaryAction:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -140,5 +140,5 @@ L_022009c4:
 L_022009d4: .word data_020f4e14
 L_022009d8: .word 0x3c84
 L_022009dc: .word data_ov021_02202e98
-    .size func_ov021_02200840, . - func_ov021_02200840
+    .size Overlay021_UpdateAuxiliaryAction, . - Overlay021_UpdateAuxiliaryAction
 

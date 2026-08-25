@@ -17,8 +17,8 @@
     .extern Overlay021_Dialog_ShowMessage
     .extern Overlay021_Dialog_UpdatePrompt
 
-.global func_ov021_022022a4
-func_ov021_022022a4:
+.global Overlay021_UpdateCategoryPanelReopen
+Overlay021_UpdateCategoryPanelReopen:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -113,4 +113,4 @@ L_022023d4:
 L_022023e4: .word data_020f4e14
 L_022023e8: .word data_ov021_02202d80
 L_022023ec: .word data_ov021_02202d78
-.size func_ov021_022022a4, . - func_ov021_022022a4
+.size Overlay021_UpdateCategoryPanelReopen, . - Overlay021_UpdateCategoryPanelReopen

@@ -16,8 +16,8 @@
     .extern GameWork_ClearFlag
     .extern gGameWork
 
-.global func_ov021_02201a88
-func_ov021_02201a88:
+.global Overlay021_UpdateSecondaryInfoEntry
+Overlay021_UpdateSecondaryInfoEntry:
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl Overlay021_Dialog_UpdatePrompt
@@ -96,4 +96,4 @@ L_02201b98: .word gGameWork
 L_02201b9c: .word 0x387
 L_02201ba0: .word data_020f4e14
 L_02201ba4: .word data_ov021_02202dd0
-.size func_ov021_02201a88, . - func_ov021_02201a88
+.size Overlay021_UpdateSecondaryInfoEntry, . - Overlay021_UpdateSecondaryInfoEntry

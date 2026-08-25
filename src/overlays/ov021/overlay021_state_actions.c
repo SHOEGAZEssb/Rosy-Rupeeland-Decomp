@@ -68,7 +68,7 @@ extern void func_ov045_0220c028(void *);
  * data_ov021_02202ED0. Always update components and return zero. Dialog,
  * game-record, and transition state change; no direct MMIO occurs.
  */
-extern "C" s32 func_ov021_02200360(void *state)
+extern "C" s32 Overlay021_UpdateDescriptorConfirmation(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -112,7 +112,7 @@ extern "C" s32 func_ov021_02200360(void *state)
  * applies the nested ID to the current mode record, and transitions through
  * 0x02202EC8. Always update/return zero. Persistent game-work and UI state change.
  */
-extern "C" s32 func_ov021_0220044c(void *state)
+extern "C" s32 Overlay021_UpdateRecordApplication(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -179,7 +179,7 @@ extern "C" s32 func_ov021_0220044c(void *state)
  * start (1,0), and advance. State 3 waits then routes through 0x02202EA0.
  * Always update/return zero. List/graphics/UI/transition state changes.
  */
-extern "C" s32 func_ov021_02200630(void *state)
+extern "C" s32 Overlay021_UpdateListRebuild(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0:
@@ -260,7 +260,7 @@ extern "C" s32 func_ov021_02200630(void *state)
  * otherwise +0x3FC tracks the negated panel position. Always update/return zero.
  * Panel/list/dialog/graphics/transition state changes; graphics helpers use MMIO.
  */
-extern "C" s32 func_ov021_02200840(void *state)
+extern "C" s32 Overlay021_UpdateAuxiliaryAction(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {

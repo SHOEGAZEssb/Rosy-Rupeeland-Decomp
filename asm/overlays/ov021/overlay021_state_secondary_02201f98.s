@@ -19,8 +19,8 @@
     .extern func_ov045_0220b9b8
     .extern gGamePhaseCurrencyHud
 
-.global func_ov021_02201f98
-func_ov021_02201f98:
+.global Overlay021_UpdateSecondaryCommit
+Overlay021_UpdateSecondaryCommit:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -158,4 +158,4 @@ L_02202178:
 L_02202188: .word gGamePhaseCurrencyHud
 L_0220218c: .word data_ov021_02202d98
 L_02202190: .word data_ov021_02202d50
-.size func_ov021_02201f98, . - func_ov021_02201f98
+.size Overlay021_UpdateSecondaryCommit, . - Overlay021_UpdateSecondaryCommit

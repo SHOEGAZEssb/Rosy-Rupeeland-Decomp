@@ -12,8 +12,8 @@
     .extern Overlay021_Dialog_UpdatePrompt
     .extern func_ov045_0220c028
 
-.global func_ov021_02200360
-func_ov021_02200360:
+.global Overlay021_UpdateDescriptorConfirmation
+Overlay021_UpdateDescriptorConfirmation:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -77,5 +77,5 @@ L_02200434:
     ldmia sp!, {r4, pc}
 L_02200444: .word data_021f5128
 L_02200448: .word data_ov021_02202ed0
-    .size func_ov021_02200360, . - func_ov021_02200360
+    .size Overlay021_UpdateDescriptorConfirmation, . - Overlay021_UpdateDescriptorConfirmation
 

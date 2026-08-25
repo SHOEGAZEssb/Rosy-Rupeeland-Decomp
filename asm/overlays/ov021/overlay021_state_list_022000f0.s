@@ -22,8 +22,8 @@
     .extern Overlay021_RefreshPrimarySelectionDisplay
     .extern Overlay021_RefreshSecondarySelectionDisplay
 
-.global func_ov021_022000f0
-func_ov021_022000f0:
+.global Overlay021_UpdateWidgetClose
+Overlay021_UpdateWidgetClose:
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     ldr r0, [r5, #0x354]
@@ -194,5 +194,5 @@ L_02200344:
 L_02200354: .word data_ov021_02202ee8
 L_02200358: .word data_ov021_02202ee0
 L_0220035c: .word data_ov021_02202ed8
-    .size func_ov021_022000f0, . - func_ov021_022000f0
+    .size Overlay021_UpdateWidgetClose, . - Overlay021_UpdateWidgetClose
 

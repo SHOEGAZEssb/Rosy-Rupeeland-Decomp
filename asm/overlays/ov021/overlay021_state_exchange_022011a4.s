@@ -16,8 +16,8 @@
     .extern Overlay021_UpdateScene
     .extern Overlay021_SelectList
 
-.global func_ov021_022011a4
-func_ov021_022011a4:
+.global Overlay021_UpdateExchangeRestore
+Overlay021_UpdateExchangeRestore:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -107,4 +107,4 @@ L_022012d4:
 L_022012e4: .word data_ov021_02202e30
 L_022012e8: .word data_ov021_02202e28
 L_022012ec: .word data_ov021_02202e20
-.size func_ov021_022011a4, . - func_ov021_022011a4
+.size Overlay021_UpdateExchangeRestore, . - Overlay021_UpdateExchangeRestore

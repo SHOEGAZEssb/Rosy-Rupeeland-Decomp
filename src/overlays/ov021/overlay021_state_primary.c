@@ -85,7 +85,7 @@ static void change_state(void *state, const u32 *next)
  * +0x378, and starts transition (1,-16). Input is the overlay state; widget,
  * audio, dialog, and transition state change. It always returns zero.
  */
-extern "C" s32 func_ov021_02201410(void *state)
+extern "C" s32 Overlay021_UpdatePrimarySelection(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {
@@ -204,7 +204,7 @@ extern "C" s32 func_ov021_02201410(void *state)
  * dialog/delay and transition -16, closes the primary panel, then routes via
  * 0x02202DD8. Persistent flags/currency and UI state change; returns zero.
  */
-extern "C" s32 func_ov021_02201800(void *state)
+extern "C" s32 Overlay021_UpdatePrimaryCommit(void *state)
 {
     switch (FIELD(s32, state, 4)) {
     case 0: {
@@ -284,7 +284,7 @@ extern "C" s32 func_ov021_02201800(void *state)
  * transition (1,0), and route through 0x02202DD0. It mutates state and flags,
  * may touch graphics MMIO through helpers, and always returns zero.
  */
-extern "C" s32 func_ov021_02201a88(void *state)
+extern "C" s32 Overlay021_UpdateSecondaryInfoEntry(void *state)
 {
     Overlay021_Dialog_UpdatePrompt(state);
     switch (FIELD(s32, state, 4)) {

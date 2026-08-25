@@ -33,8 +33,8 @@
     .extern Overlay021_Dialog_UpdatePrompt
     .extern Overlay021_BeginSelectedAction
 
-.global func_ov021_021ffd5c
-func_ov021_021ffd5c:
+.global Overlay021_UpdateActiveList
+Overlay021_UpdateActiveList:
     stmdb sp!, {r4, r5, r6, lr}
     mov r5, r0
     ldr r1, [r5, #0x2c0]
@@ -283,5 +283,5 @@ L_022000d4:
 L_022000e4: .word data_ov021_02202ef8
 L_022000e8: .word data_020f4e14
 L_022000ec: .word data_ov021_02202ef0
-    .size func_ov021_021ffd5c, . - func_ov021_021ffd5c
+    .size Overlay021_UpdateActiveList, . - Overlay021_UpdateActiveList
 

@@ -54,8 +54,8 @@
     .extern gGamePhaseCurrencyHud
     .extern Heap_Alloc
 
-.global func_ov021_022023f0
-func_ov021_022023f0:
+.global Overlay021_UpdateTransaction
+Overlay021_UpdateTransaction:
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -602,4 +602,4 @@ L_02202bd0: .word data_ov021_02202d38
 L_02202bd4: .word data_021f5128
 L_02202bd8: .word data_ov021_02202d58
 L_02202bdc: .word data_ov021_02202d90
-.size func_ov021_022023f0, . - func_ov021_022023f0
+.size Overlay021_UpdateTransaction, . - Overlay021_UpdateTransaction

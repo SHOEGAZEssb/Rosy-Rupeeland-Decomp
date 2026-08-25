@@ -11,8 +11,8 @@
     .extern Overlay021_Dialog_UpdatePrompt
     .extern Overlay021Descriptor_GetFlags16_19
 
-.global func_ov021_02202be0
-func_ov021_02202be0:
+.global Overlay021_UpdateCategoryMessage
+Overlay021_UpdateCategoryMessage:
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -80,4 +80,4 @@ L_02202cb8:
     ldmia sp!, {r4, pc}
 L_02202cc8: .word data_ov021_02202d48
 L_02202ccc: .word data_ov021_02202d70
-.size func_ov021_02202be0, . - func_ov021_02202be0
+.size Overlay021_UpdateCategoryMessage, . - Overlay021_UpdateCategoryMessage
