@@ -796,8 +796,8 @@ GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown kind:function(arm,size
 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set kind:function(arm,size=0x60) addr:0x020168d0
 GamePhaseActorScriptVm_DispatchSubBackgroundCommand kind:function(arm,size=0x154) addr:0x02016930
 GamePhaseActorScriptVm_DispatchMainBackgroundCommand kind:function(arm,size=0x13c) addr:0x02016a84
-func_02016bc0 kind:function(arm,size=0xbc) addr:0x02016bc0
-func_02016c7c kind:function(arm,size=0xe4) addr:0x02016c7c
+GamePhaseActorScriptVm_QueryPackedTileField kind:function(arm,size=0xbc) addr:0x02016bc0
+GamePhaseActorScriptVm_SetPackedTileField kind:function(arm,size=0xe4) addr:0x02016c7c
 GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds kind:function(arm,size=0xe4) addr:0x02016d60
 GamePhaseActorScriptVm_IsCollection1ActorInRectangle kind:function(arm,size=0xd0) addr:0x02016e44
 RectS32_Init kind:function(arm,size=0x14) addr:0x02016f14

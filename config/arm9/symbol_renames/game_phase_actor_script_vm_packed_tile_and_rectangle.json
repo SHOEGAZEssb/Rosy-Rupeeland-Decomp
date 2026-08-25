@@ -1,0 +1,8 @@
+{
+  "func_02016bc0": "GamePhaseActorScriptVm_QueryPackedTileField",
+  "func_02016c7c": "GamePhaseActorScriptVm_SetPackedTileField",
+  "GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds": "GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds",
+  "GamePhaseActorScriptVm_IsCollection1ActorInRectangle": "GamePhaseActorScriptVm_IsCollection1ActorInRectangle",
+  "RectS32_Init": "RectS32_Init",
+  "RectS32_ContainsPoint": "RectS32_ContainsPoint"
+}

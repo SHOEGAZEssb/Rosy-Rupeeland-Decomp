@@ -3,8 +3,8 @@
 .extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern DualLayerTileRenderer_SetPackedTileValue
-.global func_02016c7c
-func_02016c7c:
+.global GamePhaseActorScriptVm_SetPackedTileField
+GamePhaseActorScriptVm_SetPackedTileField:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
     mov r4, r0
@@ -65,4 +65,4 @@ L_02016d2c:
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_02016d5c: .word gGamePhaseRuntime
-    .size func_02016c7c, . - func_02016c7c
+    .size GamePhaseActorScriptVm_SetPackedTileField, . - GamePhaseActorScriptVm_SetPackedTileField

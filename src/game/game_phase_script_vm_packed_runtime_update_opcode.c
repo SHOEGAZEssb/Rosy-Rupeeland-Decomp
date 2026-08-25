@@ -6,12 +6,12 @@
 extern "C" {
 #endif
 extern void *gGamePhaseRuntime;
-extern void DualLayerTileRenderer_SetPackedTileValue(void *object, u32 first, u32 second, u32 packed);
+extern void DualLayerTileRenderer_SetPackedTileValue(void *renderer, u32 gridX, u32 gridY, u32 packedTile);
 #ifdef __cplusplus
 }
 #endif
 
-typedef u32 (*RuntimePackedQueryMethod)(void *object, u32 first, u32 second);
+typedef u32 (*RuntimePackedQueryMethod)(void *renderer, u32 gridX, u32 gridY);
 
 /*
  * Pop replacement, second key, first key, and field selector values; query
@@ -20,22 +20,22 @@ typedef u32 (*RuntimePackedQueryMethod)(void *object, u32 first, u32 second);
  * 0, 1, or 2; then submit the resulting word through DualLayerTileRenderer_SetPackedTileValue.
  * Unsupported selectors resubmit the unmodified word. Returns zero.
  */
-s32 func_02016c7c(GamePhaseActorScriptVm *self)
+s32 GamePhaseActorScriptVm_SetPackedTileField(GamePhaseActorScriptVm *self)
 {
     u32 replacement = GamePhaseScriptVm_Pop(&self->base);
-    u32 second = GamePhaseScriptVm_Pop(&self->base);
-    u32 first = GamePhaseScriptVm_Pop(&self->base);
-    u32 selector = GamePhaseScriptVm_Pop(&self->base);
-    void *object = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
-    RuntimePackedQueryMethod *vtable = *(RuntimePackedQueryMethod **)object;
-    u32 packed = vtable[0x2c / sizeof(void *)](object, first, second);
+    u32 gridY = GamePhaseScriptVm_Pop(&self->base);
+    u32 gridX = GamePhaseScriptVm_Pop(&self->base);
+    u32 fieldSelector = GamePhaseScriptVm_Pop(&self->base);
+    void *renderer = *(void **)((u8 *)gGamePhaseRuntime + 0x2ed4);
+    RuntimePackedQueryMethod *vtable = *(RuntimePackedQueryMethod **)renderer;
+    u32 packedTile = vtable[0x2c / sizeof(void *)](renderer, gridX, gridY);
 
-    if (selector == 0)
-        packed = (packed & ~0x1fu) | (replacement & 0x1f);
-    else if (selector == 1)
-        packed = (packed & ~0x3e0u) | ((replacement & 0x1f) << 5);
-    else if (selector == 2)
-        packed = (packed & ~0x3c00u) | ((replacement & 0xf) << 10);
-    DualLayerTileRenderer_SetPackedTileValue(object, first, second, packed);
+    if (fieldSelector == 0)
+        packedTile = (packedTile & ~0x1fu) | (replacement & 0x1f);
+    else if (fieldSelector == 1)
+        packedTile = (packedTile & ~0x3e0u) | ((replacement & 0x1f) << 5);
+    else if (fieldSelector == 2)
+        packedTile = (packedTile & ~0x3c00u) | ((replacement & 0xf) << 10);
+    DualLayerTileRenderer_SetPackedTileValue(renderer, gridX, gridY, packedTile);
     return 0;
 }

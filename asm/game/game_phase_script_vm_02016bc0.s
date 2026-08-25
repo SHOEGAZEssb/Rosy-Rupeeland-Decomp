@@ -3,8 +3,8 @@
 .extern gGamePhaseRuntime
 .extern GamePhaseScriptVm_Pop
 .extern GamePhaseScriptVm_StoreResultAndUpdateCondition
-.global func_02016bc0
-func_02016bc0:
+.global GamePhaseActorScriptVm_QueryPackedTileField
+GamePhaseActorScriptVm_QueryPackedTileField:
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #8
     mov r4, r0
@@ -56,4 +56,4 @@ L_02016c6c:
     add sp, sp, #8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 L_02016c78: .word gGamePhaseRuntime
-    .size func_02016bc0, . - func_02016bc0
+    .size GamePhaseActorScriptVm_QueryPackedTileField, . - GamePhaseActorScriptVm_QueryPackedTileField

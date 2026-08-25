@@ -203,8 +203,8 @@ s32 GamePhaseActorScriptVm_BeginRuntimeActorAuxiliaryShutdown(GamePhaseActorScri
 s32 GamePhaseActorScriptVm_IsRuntimeActorAboveTerrainOrFlagD0Bit4Set(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchSubBackgroundCommand(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_DispatchMainBackgroundCommand(GamePhaseActorScriptVm *self);
-s32 func_02016bc0(GamePhaseActorScriptVm *self);
-s32 func_02016c7c(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_QueryPackedTileField(GamePhaseActorScriptVm *self);
+s32 GamePhaseActorScriptVm_SetPackedTileField(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_PlaceActorOnGridAndSetBounds(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm *self);
 s32 GamePhaseActorScriptVm_ConfigureMotionProbe(GamePhaseActorScriptVm *self);

@@ -50,8 +50,8 @@ s32 GamePhaseActorScriptVm_IsCollection1ActorInRectangle(GamePhaseActorScriptVm 
     s32 right = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 top = (s32)GamePhaseScriptVm_Pop(&self->base);
     s32 left = (s32)GamePhaseScriptVm_Pop(&self->base);
-    s32 index = (s32)GamePhaseScriptVm_Pop(&self->base);
-    u8 *actor = (u8 *)ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), index);
+    s32 runtimeId = (s32)GamePhaseScriptVm_Pop(&self->base);
+    u8 *actor = (u8 *)ActorCollection_FindActorByRuntimeId(GamePhaseRuntime_GetActorCollection(gGamePhaseRuntime, 1), runtimeId);
     VecFx32Object position;
     RectS32 rect;
 
