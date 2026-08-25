@@ -1,9 +1,9 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
 .extern __register_global_object
-.extern data_02105458
-.extern data_0210545c
-.extern data_02105468
+.extern gDebugHudStateInitializationFlags
+.extern gDebugHudStateDestructorRecord
+.extern gDebugHudState
 .extern DebugHudState_Init
 .extern DebugHudState_Destroy
 
@@ -27,9 +27,8 @@ DebugHudState_GetGlobal: ; 0x0200f824
 L_0200f860:
     ldr r0, L_0200f86c
     ldmia sp!, {r3, pc}
-L_0200f868: .word data_02105458
-L_0200f86c: .word data_02105468
+L_0200f868: .word gDebugHudStateInitializationFlags
+L_0200f86c: .word gDebugHudState
 L_0200f870: .word DebugHudState_Destroy
-L_0200f874: .word data_0210545c
+L_0200f874: .word gDebugHudStateDestructorRecord
     .size DebugHudState_GetGlobal, . - DebugHudState_GetGlobal
-

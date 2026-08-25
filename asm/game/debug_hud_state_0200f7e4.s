@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
-.extern data_0210548c
+.extern gDebugHudTextRows
 .extern func_02092f88
 
     .global DebugHudState_UploadRows
@@ -22,6 +22,5 @@ L_0200f810:
     cmp r6, #0x8
     blt L_0200f7f8
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
-L_0200f820: .word data_0210548c
+L_0200f820: .word gDebugHudTextRows
     .size DebugHudState_UploadRows, . - DebugHudState_UploadRows
-

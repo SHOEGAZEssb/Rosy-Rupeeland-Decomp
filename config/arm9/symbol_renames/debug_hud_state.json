@@ -1,0 +1,23 @@
+{
+  "DebugHudState_Init": "DebugHudState_Init",
+  "DebugHudState_Destroy": "DebugHudState_Destroy",
+  "DebugHudState_ResetSelectedFont": "DebugHudState_ResetSelectedFont",
+  "DebugHud_CountDecimalDigits": "DebugHud_CountDecimalDigits",
+  "DebugHud_GetCurrentRectangle": "DebugHud_GetCurrentRectangle",
+  "DebugHudState_Open": "DebugHudState_Open",
+  "DebugHudState_Close": "DebugHudState_Close",
+  "DebugHudState_PollInput": "DebugHudState_PollInput",
+  "DebugHudState_SetNumberRow": "DebugHudState_SetNumberRow",
+  "DebugHudState_SetTextRow": "DebugHudState_SetTextRow",
+  "DebugHud_GetTextTableEntry": "DebugHud_GetTextTableEntry",
+  "DebugHudState_SetRectangle": "DebugHudState_SetRectangle",
+  "DebugHudState_RefreshRectangle": "DebugHudState_RefreshRectangle",
+  "DebugHudState_UploadRows": "DebugHudState_UploadRows",
+  "DebugHudState_GetGlobal": "DebugHudState_GetGlobal",
+  "data_020d5554": "gDebugHudTextTables",
+  "gDebugHudRendererAllocationTag": "gDebugHudRendererAllocationTag",
+  "data_02105458": "gDebugHudStateInitializationFlags",
+  "data_0210545c": "gDebugHudStateDestructorRecord",
+  "data_02105468": "gDebugHudState",
+  "data_0210548c": "gDebugHudTextRows"
+}

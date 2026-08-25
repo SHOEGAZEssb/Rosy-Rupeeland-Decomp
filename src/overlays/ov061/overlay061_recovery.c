@@ -70,7 +70,7 @@ Overlay61Scene *func_ov061_0220fd20(Overlay61Scene *self, s32 screen,
     DebugHud_GetCurrentRectangle(&rect);
     func_ov061_0220fdd0(&rect, 0, -64);
     DebugHudState_SetRectangle(DebugHudState_GetGlobal(), &rect);
-    DebugHudState_Open(DebugHudState_GetGlobal(), screen, resource, 1);
+    DebugHudState_Open(DebugHudState_GetGlobal(), screen, (void *)resource, 1);
     if (self->playSound != 0)
         Sound_Play(gSoundContext, 0x186, 0);
     Scene_SetFlags03(&self->base);

@@ -226,7 +226,7 @@ Overlay60Scene* func_ov060_022100e4(Overlay60Scene* self, s32 font,
     DebugHud_GetCurrentRectangle(&rect);
     func_ov060_022101fc(&rect, 0, 0);
     DebugHudState_SetRectangle(DebugHudState_GetGlobal(), &rect);
-    DebugHudState_Open(DebugHudState_GetGlobal(), font, resource, 1);
+    DebugHudState_Open(DebugHudState_GetGlobal(), font, (void *)resource, 1);
     self->resources = (Overlay60Resources*)Heap_Alloc(
         sizeof(*self->resources), data_ov060_02210654, 4, &gHeapContext);
     if (self->resources)

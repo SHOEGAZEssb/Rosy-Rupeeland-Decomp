@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
 .extern OS_Halt
-.extern data_020d5554
+.extern gDebugHudTextTables
 
     .global DebugHud_GetTextTableEntry
 DebugHud_GetTextTableEntry: ; 0x0200f73c
@@ -27,6 +27,5 @@ L_0200f778:
 L_0200f77c:
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_0200f784: .word data_020d5554
+L_0200f784: .word gDebugHudTextTables
     .size DebugHud_GetTextTableEntry, . - DebugHud_GetTextTableEntry
-

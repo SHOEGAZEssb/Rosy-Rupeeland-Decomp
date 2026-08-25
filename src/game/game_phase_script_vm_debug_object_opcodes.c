@@ -1,3 +1,4 @@
+#include "tingle/debug_hud_state.h"
 #include "tingle/game_phase_script_vm.h"
 #include "tingle/heap.h"
 #include "tingle/overlay_manager.h"
@@ -14,9 +15,6 @@ extern void *func_0201da20(u32 mode, u32 value);
 extern void *DisplayRouting_MatchesRequest(u32 value);
 extern void func_0201da34(GamePhaseActorScriptVm *self);
 extern void *LanguageLookupDatabase_GetResourceById(void *state, u16 value);
-extern void *DebugHudState_GetGlobal(void *value);
-extern void *DebugHudState_RefreshRectangle(void *value);
-extern void DebugHudState_Open(void *state, void *first, void *second, u32 enabled);
 extern void func_ov061_0220fd20(void *allocation, void *first,
                                void *second, u32 third);
 #ifdef __cplusplus
@@ -55,7 +53,7 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *
 {
     void *first;
     void *second;
-    void *state;
+    DebugHudState *state;
     (void)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
     {
@@ -65,9 +63,9 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromLookupTables(GamePhaseActorScriptVm *
         second = LanguageLookupDatabase_GetResourceById(data_021f3ecc, (u16)tableValue);
         first = DisplayRouting_MatchesRequest(lookup);
     }
-    state = DebugHudState_GetGlobal(first);
-    state = DebugHudState_RefreshRectangle(state);
-    state = DebugHudState_GetGlobal(state);
-    DebugHudState_Open(state, first, second, 1);
+    state = DebugHudState_GetGlobal();
+    DebugHudState_RefreshRectangle(state);
+    state = DebugHudState_GetGlobal();
+    DebugHudState_Open(state, (s32)first, second, 1);
     return 0;
 }

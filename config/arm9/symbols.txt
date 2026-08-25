@@ -6842,7 +6842,7 @@ gOverlay059PhaseObjectSceneAllocationTag kind:data(any) addr:0x020d5534
 gOverlay059FollowupSceneAllocationTag kind:data(any) addr:0x020d553c
 gGamePhaseBoundaryTransitionAllocationTag kind:data(any) addr:0x020d5544
 gGamePhaseStateRendererAllocationTag kind:data(any) addr:0x020d554c
-data_020d5554 kind:data(any) addr:0x020d5554
+gDebugHudTextTables kind:data(any) addr:0x020d5554
 gDebugHudRendererAllocationTag kind:data(any) addr:0x020d555c
 data_020d556c kind:data(any) addr:0x020d556c
 data_020d5578 kind:data(any) addr:0x020d5578
@@ -9237,10 +9237,10 @@ gGamePhaseRuntime kind:bss addr:0x021052fc
 gGamePhaseTouchPromptTaskNode kind:bss addr:0x02105300
 gActorRuntimeCollectionDestructorRecord kind:bss addr:0x02105304
 gActorRuntimeCollection kind:bss addr:0x02105310
-data_02105458 kind:bss addr:0x02105458
-data_0210545c kind:bss addr:0x0210545c
-data_02105468 kind:bss addr:0x02105468
-data_0210548c kind:bss addr:0x0210548c
+gDebugHudStateInitializationFlags kind:bss addr:0x02105458
+gDebugHudStateDestructorRecord kind:bss addr:0x0210545c
+gDebugHudState kind:bss addr:0x02105468
+gDebugHudTextRows kind:bss addr:0x0210548c
 gGamePhaseCurrencyHud kind:bss addr:0x0210559c
 data_021055a0 kind:bss addr:0x021055a0
 data_021055ac kind:bss addr:0x021055ac

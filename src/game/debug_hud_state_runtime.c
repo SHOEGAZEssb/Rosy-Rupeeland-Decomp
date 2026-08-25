@@ -7,21 +7,21 @@
 extern "C" {
 #endif
 extern const u8 gDebugHudRendererAllocationTag[];
-extern void *data_020d5554[2];
+extern void *gDebugHudTextTables[2];
 extern void *data_020f4e14;
 extern void *data_020f4e18;
 extern void *gDebugFont;
 extern void *gGameWork;
-extern u16 data_0210548c[8][17];
-extern u32 data_02105458;
-extern DebugHudState data_02105468;
-extern void *data_0210545c;
+extern u16 gDebugHudTextRows[8][17];
+extern u32 gDebugHudStateInitializationFlags;
+extern DebugHudState gDebugHudState;
+extern void *gDebugHudStateDestructorRecord;
 extern const u16 gPadState1[11];
 extern void *gTouchPanelManager;
 extern void *GraphicsArchive_AcquireVfdResource(void *manager, u32 id);
 extern void GraphicsArchive_ReleaseResourceE4(void *manager, void *resource);
 extern void *TitleDialog_Init(void *object, void *font, void *resource);
-extern void TitleDialog_SetText(void *object, u32 parameter, s32 mode);
+extern void TitleDialog_SetText(void *object, void *textResource, s32 mode);
 extern void func_02092f88(void *object, s32 row, const u16 *text);
 extern u32 TitleDialog_UpdateTextPage(void *object, const u16 *mapping, s32 value);
 extern void GraphicsSpriteText_FormatDecimal(u16 *destination, s32 value, s32 firstPower,
@@ -36,23 +36,25 @@ extern void __register_global_object(void *object, void *destructor,
 /*
  * Retain constructor arguments, acquire resource 0x7007, allocate a 0xec-byte
  * renderer using the selected font, apply the current rectangle and fixed
- * renderer fields, configure it with parameter/mode 4, and set GameWork's HUD
- * row count to 12. resetFontOnClose controls cleanup-time font reset.
+ * renderer fields, configure it with the text resource and mode 4, and set
+ * GameWork's HUD row count to 12. resetFontOnClose controls cleanup-time font
+ * reset.
  */
-void DebugHudState_Open(DebugHudState *self, s32 fontSelect, u32 parameter,
+void DebugHudState_Open(DebugHudState *self, s32 fontSelect, void *textResource,
                         u32 resetFontOnClose)
 {
     void *renderer;
     self->resetFontOnClose = resetFontOnClose;
     self->fontSelect = fontSelect;
-    self->resourceHandle = (u32)GraphicsArchive_AcquireVfdResource(data_020f4e18, 0x7007);
+    self->graphicsResource =
+        GraphicsArchive_AcquireVfdResource(data_020f4e18, 0x7007);
     renderer = Heap_Alloc(0xec, (const char *)gDebugHudRendererAllocationTag, 4,
                           &gHeapContext);
     if (renderer)
         renderer = TitleDialog_Init(renderer,
             fontSelect == 0 ? data_020f4e14 : gDebugFont,
-            (void *)self->resourceHandle);
-    self->rendererHandle = (u32)renderer;
+            self->graphicsResource);
+    self->renderer = renderer;
     DebugHudState_UploadRows(self);
     *(s32 *)((u8 *)renderer + 0xa4) = self->left;
     *(s32 *)((u8 *)renderer + 0xa8) = self->top;
@@ -62,7 +64,7 @@ void DebugHudState_Open(DebugHudState *self, s32 fontSelect, u32 parameter,
     *(s32 *)((u8 *)renderer + 0xd4) = 0;
     *(s32 *)((u8 *)renderer + 0xb4) = 0;
     *(s32 *)((u8 *)renderer + 0xbc) = -2;
-    TitleDialog_SetText(renderer, parameter, 4);
+    TitleDialog_SetText(renderer, textResource, 4);
     *(u16 *)((u8 *)gGameWork + 0x1d2) = 12;
 }
 
@@ -72,17 +74,18 @@ void DebugHudState_Close(DebugHudState *self)
     s32 row;
     if (self->resetFontOnClose)
         DebugHudState_ResetSelectedFont(self);
-    if (self->rendererHandle) {
-        void *renderer = (void *)self->rendererHandle;
+    if (self->renderer) {
+        void *renderer = self->renderer;
         ((void (*)(void *))(*(void ***)renderer)[1])(renderer);
-        self->rendererHandle = 0;
+        self->renderer = 0;
     }
-    if (self->resourceHandle) {
-        GraphicsArchive_ReleaseResourceE4(data_020f4e18, (void *)self->resourceHandle);
-        self->resourceHandle = 0;
+    if (self->graphicsResource) {
+        GraphicsArchive_ReleaseResourceE4(data_020f4e18,
+                                           self->graphicsResource);
+        self->graphicsResource = 0;
     }
     for (row = 0; row < 8; row++)
-        data_0210548c[row][0] = 0;
+        gDebugHudTextRows[row][0] = 0;
 }
 
 /* Build and submit the pad/touch mapping, returning the renderer's input bits. */
@@ -95,13 +98,13 @@ u32 DebugHudState_PollInput(DebugHudState *self, s32 forceButtons)
     if (forceButtons)
         mapping[1] |= 3;
     else if (*(s32 *)((u8 *)gTouchPanelManager + 4) == 1) {
-        u32 rendererFlags = *(u32 *)((u8 *)self->rendererHandle + 0x38);
+        u32 rendererFlags = *(u32 *)((u8 *)self->renderer + 0x38);
         mapping[1] |= (rendererFlags & 2) ? 1 : 2;
     }
-    *(s32 *)((u8 *)self->rendererHandle + 0xd0) =
+    *(s32 *)((u8 *)self->renderer + 0xd0) =
         *(s16 *)((u8 *)gGameWork + 0x1d2);
-    *(s32 *)((u8 *)self->rendererHandle + 0xd4) = 0;
-    return TitleDialog_UpdateTextPage((void *)self->rendererHandle, mapping, 0);
+    *(s32 *)((u8 *)self->renderer + 0xd4) = 0;
+    return TitleDialog_UpdateTextPage(self->renderer, mapping, 0);
 }
 
 /* Format value right-aligned into one shared row and upload all rows if active. */
@@ -112,19 +115,19 @@ void DebugHudState_SetNumberRow(DebugHudState *self, s32 row, s32 value)
     s32 i;
     for (i = 0; i < digits - 1; i++)
         power *= 10;
-    GraphicsSpriteText_FormatDecimal(data_0210548c[row], value, -power, 0);
-    if (self->rendererHandle)
+    GraphicsSpriteText_FormatDecimal(gDebugHudTextRows[row], value, -power, 0);
+    if (self->renderer)
         DebugHudState_UploadRows(self);
 }
 
 /* Copy a zero-terminated UTF-16 string into one row and upload if active. */
 void DebugHudState_SetTextRow(DebugHudState *self, s32 row, const u16 *text)
 {
-    u16 *destination = data_0210548c[row];
+    u16 *destination = gDebugHudTextRows[row];
     while (*text)
         *destination++ = *text++;
     *destination = 0;
-    if (self->rendererHandle)
+    if (self->renderer)
         DebugHudState_UploadRows(self);
 }
 
@@ -137,7 +140,7 @@ void *DebugHud_GetTextTableEntry(void *unused, s32 table, s32 index)
         OS_Halt();
         return 0;
     }
-    entries = (void **)data_020d5554[table];
+    entries = (void **)gDebugHudTextTables[table];
     return entries[index];
 }
 
@@ -163,17 +166,17 @@ void DebugHudState_UploadRows(DebugHudState *self)
 {
     s32 row;
     for (row = 0; row < 8; row++)
-        func_02092f88((void *)self->rendererHandle, row, data_0210548c[row]);
+        func_02092f88(self->renderer, row, gDebugHudTextRows[row]);
 }
 
 /* Lazily construct, register, and return the process-global DebugHudState. */
 DebugHudState *DebugHudState_GetGlobal(void)
 {
-    if (!(data_02105458 & 1)) {
-        DebugHudState_Init(&data_02105468);
-        __register_global_object(&data_02105468, (void *)DebugHudState_Destroy,
-                                 data_0210545c);
-        data_02105458 |= 1;
+    if (!(gDebugHudStateInitializationFlags & 1)) {
+        DebugHudState_Init(&gDebugHudState);
+        __register_global_object(&gDebugHudState, (void *)DebugHudState_Destroy,
+                                 gDebugHudStateDestructorRecord);
+        gDebugHudStateInitializationFlags |= 1;
     }
-    return &data_02105468;
+    return &gDebugHudState;
 }

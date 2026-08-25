@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
 .extern data_020f4e18
-.extern data_0210548c
+.extern gDebugHudTextRows
 .extern DebugHudState_ResetSelectedFont
 .extern GraphicsArchive_ReleaseResourceE4
 
@@ -46,6 +46,5 @@ L_0200f598:
     blt L_0200f598
     ldmia sp!, {r4, pc}
 L_0200f5b0: .word data_020f4e18
-L_0200f5b4: .word data_0210548c
+L_0200f5b4: .word gDebugHudTextRows
     .size DebugHudState_Close, . - DebugHudState_Close
-

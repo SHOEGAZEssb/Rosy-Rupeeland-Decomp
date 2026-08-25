@@ -13,15 +13,18 @@ typedef struct DebugHudRect {
 /* State for a debug/HUD grid and its screen-space bounds. */
 typedef struct DebugHudState {
     s32 fontSelect;
-    u32 resourceHandle;
-    u32 rendererHandle;
-    u32 field_0c;
+    void *graphicsResource;
+    void *renderer;
+    u32 reserved0c;
     s32 left;
     s32 top;
     s32 width;
     s32 height;
     u32 resetFontOnClose;
 } DebugHudState;
+
+typedef char DebugHudStateSizeCheck[
+    sizeof(DebugHudState) == 0x24 ? 1 : -1];
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,7 +35,7 @@ DebugHudState *DebugHudState_Destroy(DebugHudState *self);
 void DebugHudState_ResetSelectedFont(DebugHudState *self);
 s32 DebugHud_CountDecimalDigits(void *unused, s32 value);
 void DebugHud_GetCurrentRectangle(DebugHudRect *rect);
-void DebugHudState_Open(DebugHudState *self, s32 fontSelect, u32 parameter,
+void DebugHudState_Open(DebugHudState *self, s32 fontSelect, void *textResource,
                         u32 resetFontOnClose);
 void DebugHudState_Close(DebugHudState *self);
 u32 DebugHudState_PollInput(DebugHudState *self, s32 forceButtons);

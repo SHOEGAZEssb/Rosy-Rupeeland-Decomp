@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/debug_hud_state_runtime.c.
 .text
-.extern data_0210548c
+.extern gDebugHudTextRows
 .extern DebugHud_CountDecimalDigits
 .extern DebugHudState_UploadRows
 .extern GraphicsSpriteText_FormatDecimal
@@ -38,6 +38,5 @@ L_0200f6b4:
     mov r0, r6
     bl DebugHudState_UploadRows
     ldmia sp!, {r4, r5, r6, pc}
-L_0200f6f0: .word data_0210548c
+L_0200f6f0: .word gDebugHudTextRows
     .size DebugHudState_SetNumberRow, . - DebugHudState_SetNumberRow
-

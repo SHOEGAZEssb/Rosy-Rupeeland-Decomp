@@ -5,7 +5,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern u16 data_0210548c[8][17];
+extern u16 gDebugHudTextRows[8][17];
 extern void *data_020f4e14;
 extern void *gDebugFont;
 extern u8 gSystemState[];
@@ -33,7 +33,7 @@ DebugHudState *DebugHudState_Init(DebugHudState *self)
         words[row] = 0;
     for (row = 0; row < 8; row++)
         for (column = 0; column < 17; column++)
-            data_0210548c[row][column] = 0;
+            gDebugHudTextRows[row][column] = 0;
     DebugHud_GetCurrentRectangle(&rect);
     self->left = rect.left;
     self->top = rect.top;

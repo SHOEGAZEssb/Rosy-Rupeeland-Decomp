@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/debug_hud_state_lifecycle.c.
 .text
-.extern data_0210548c
+.extern gDebugHudTextRows
 .extern DebugHud_GetCurrentRectangle
 
     .global DebugHudState_Init
@@ -51,6 +51,5 @@ L_0200f2ac:
     str r1, [r4, #0x1c]
     add sp, sp, #0x10
     ldmia sp!, {r4, r5, r6, pc}
-L_0200f310: .word data_0210548c
+L_0200f310: .word gDebugHudTextRows
     .size DebugHudState_Init, . - DebugHudState_Init
-

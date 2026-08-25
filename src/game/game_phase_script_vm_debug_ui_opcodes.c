@@ -1,3 +1,4 @@
+#include "tingle/debug_hud_state.h"
 #include "tingle/game_phase_script_vm.h"
 
 /* Implement actor-script opcodes that feed the recovered debug/UI subsystem. */
@@ -9,9 +10,6 @@ extern void func_0201da34(GamePhaseActorScriptVm *self);
 extern void *Actor_GetOwningCollection(void *actor);
 extern void *func_0201da20(u32 mode, u32 value);
 extern void *DisplayRouting_MatchesRequest(u32 value);
-extern void *DebugHudState_GetGlobal(void *value);
-extern void *DebugHudState_RefreshRectangle(void *value);
-extern void DebugHudState_Open(void *state, void *first, void *second, u32 enabled);
 extern void func_0201da9c(GamePhaseActorScriptVm *self,
                          u32 first, u32 second, u32 third,
                          s32 fourth, s32 fifth);
@@ -30,7 +28,7 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm
 {
     void *first;
     void *second;
-    void *state;
+    DebugHudState *state;
     (void)GamePhaseScriptVm_Pop(&self->base);
     (void)GamePhaseScriptVm_Pop(&self->base);
     {
@@ -42,10 +40,10 @@ s32 GamePhaseActorScriptVm_OpenDebugHudFromCollectionMode(GamePhaseActorScriptVm
         second = func_0201da20(*(u32 *)(collection + 0x2e84), value);
         first = DisplayRouting_MatchesRequest(lookup);
     }
-    state = DebugHudState_GetGlobal(first);
-    state = DebugHudState_RefreshRectangle(state);
-    state = DebugHudState_GetGlobal(state);
-    DebugHudState_Open(state, first, second, 1);
+    state = DebugHudState_GetGlobal();
+    DebugHudState_RefreshRectangle(state);
+    state = DebugHudState_GetGlobal();
+    DebugHudState_Open(state, (s32)first, second, 1);
     return 1;
 }
 
