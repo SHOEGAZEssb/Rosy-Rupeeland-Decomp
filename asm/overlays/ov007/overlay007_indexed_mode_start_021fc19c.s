@@ -3,8 +3,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov007/overlay007_indexed_mode_start.c. */
-    .global func_ov007_021fc19c
-func_ov007_021fc19c:
+    .global Overlay007_StartIndexedMode
+Overlay007_StartIndexedMode:
     mov r3, r1, lsr #0x1f
     rsb r2, r3, r1, lsl #0x1e
     add r2, r3, r2, ror #0x1e
@@ -19,4 +19,4 @@ func_ov007_021fc19c:
     and r1, r1, #0xff
     bx ip
 L_021fc1d0: .word GraphicsSpriteState_SetAnimationIndex
-    .size func_ov007_021fc19c, . - func_ov007_021fc19c
+    .size Overlay007_StartIndexedMode, . - Overlay007_StartIndexedMode

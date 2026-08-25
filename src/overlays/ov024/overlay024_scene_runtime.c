@@ -21,8 +21,8 @@ extern void SpriteMotionController_Update(void *);
 extern void SpriteMotionController_Show(void *);
 extern void SpriteMotionController_Hide(void *);
 extern void func_ov005_021fbd64(void *, s32, s32);
-extern void func_ov005_021fbd74(void *, s32);
-extern void func_ov005_021fbbe8(void *);
+extern void Overlay005_SetSceneSelection(void *, s32);
+extern void Overlay005_UpdateScenePopulation(void *);
 extern void func_ov024_021fd8f8(void *, s32);
 extern void func_ov046_0220bffc(void *, s32, s32, s32);
 extern void func_ov046_0220c1a4(void *);
@@ -46,7 +46,7 @@ extern "C" void func_ov024_021fd86c(void *scene)
     SpriteMotionController_Update((u8 *)scene + 0x12c);
     SpriteMotionController_Update((u8 *)scene + 0x1d8);
     func_ov046_0220c1a4(FIELD(void *, scene, 0x2c0));
-    func_ov005_021fbbe8(FIELD(void *, scene, 0x2bc));
+    Overlay005_UpdateScenePopulation(FIELD(void *, scene, 0x2bc));
     GraphicsSpriteGroup_AdvanceAnimations(FIELD(void *, scene, 0x7c));
     if (func_02091c7c((u8 *)scene + 0x2c8, 2)) {
         func_02091b98((u8 *)scene + 0x2c8, 60);
@@ -119,7 +119,7 @@ extern "C" void func_ov024_021fd968(void *scene)
         func_ov024_021fd8f8(scene, selection);
         AreaInfoPanelPresentation_ShowIndex(FIELD(void *, scene, 0x2c4), selection);
         func_ov046_0220bffc(panel, selection, 0, 0);
-        func_ov005_021fbd74(FIELD(void *, scene, 0x2bc), selection);
+        Overlay005_SetSceneSelection(FIELD(void *, scene, 0x2bc), selection);
         func_02091b98((u8 *)scene + 0x2c8, 120);
         FIELD(s32, scene, 0x2e4) = 1;
     }

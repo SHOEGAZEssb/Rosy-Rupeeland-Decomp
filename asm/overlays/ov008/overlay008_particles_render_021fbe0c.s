@@ -10,8 +10,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov008/overlay008_particles_render.c. */
-    .global func_ov008_021fbe0c
-func_ov008_021fbe0c: ; 0x021fbe0c
+    .global Overlay008_RenderParticles
+Overlay008_RenderParticles: ; 0x021fbe0c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x1ec
     mov r4, r1
@@ -292,4 +292,4 @@ L_021fc238:
 L_021fc250: .word data_ov008_021fc25c
 L_021fc254: .word gFx32CosSinTable
 
-    .size func_ov008_021fbe0c, . - func_ov008_021fbe0c
+    .size Overlay008_RenderParticles, . - Overlay008_RenderParticles

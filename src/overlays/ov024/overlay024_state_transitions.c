@@ -16,7 +16,7 @@ extern void AreaInfoPanelPresentation_ShowIndex(void *, s32);
 extern void func_02091b98(void *, s32);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *);
 extern void func_ov005_021fbd64(void *, s32, s32);
-extern void func_ov005_021fbd74(void *, s32);
+extern void Overlay005_SetSceneSelection(void *, s32);
 extern void func_ov024_021fce04(void *, void *, void *);
 extern void func_ov046_0220bffc(void *, s32, s32, s32);
 extern s32 func_ov046_0220c3bc(void *, s32);
@@ -83,7 +83,7 @@ extern "C" s32 func_ov024_021fdac4(void *scene)
     if (elapsed == ((duration + (s32)((u32)duration >> 31)) >> 1)) {
         AreaInfoPanelPresentation_ShowIndex(FIELD(void *, scene, 0x2c4), target);
         func_ov046_0220bffc(panel, target, 0, 0);
-        func_ov005_021fbd74(FIELD(void *, scene, 0x2bc), target);
+        Overlay005_SetSceneSelection(FIELD(void *, scene, 0x2bc), target);
         func_02091b98((u8 *)scene + 0x2c8, 120);
         FIELD(s32, scene, 0x2e4) = 1;
     }

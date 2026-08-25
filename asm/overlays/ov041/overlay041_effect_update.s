@@ -8,7 +8,7 @@
 .extern VecFx32Object_Destroy
 .extern VecFx32Object_Assign
 .extern func_ov004_021fb868
-.extern func_ov008_021fbd1c
+.extern Overlay008_UpdateParticles
 .extern func_ov041_021fd000
 .extern func_ov041_021fec04
 .extern func_ov041_022009e8
@@ -148,7 +148,7 @@ func_ov041_02202c34: ; 0x02202c34
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x6
-    bl func_ov004_021fb868 ; func_ov008_021fb868
+    bl func_ov004_021fb868 ; Overlay008_SpawnParticles
 .L_02202df0:
     ldr r0, [r4, #0x93c]
     and r0, r0, #0x3f
@@ -504,7 +504,7 @@ func_ov041_02202c34: ; 0x02202c34
     bl func_ov070_02210320
 .L_02203318:
     ldr r0, [r4, #0x958]
-    bl func_ov008_021fbd1c
+    bl Overlay008_UpdateParticles
 .L_02203320:
     add sp, sp, #0x24
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}

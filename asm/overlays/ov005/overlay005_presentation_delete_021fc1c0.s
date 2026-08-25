@@ -10,8 +10,8 @@
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_presentation_delete.c and the expanded
      * teardown in overlay005_presentation_destroy.c. */
-    .global func_ov005_021fc1c0
-func_ov005_021fc1c0: ; 0x021fc1c0
+    .global Overlay005_Presentation_Delete
+Overlay005_Presentation_Delete: ; 0x021fc1c0
     stmdb sp!, {r3, r4, r5, lr}
     ldr r1, L_021fc270
     mov r4, r0
@@ -62,4 +62,4 @@ L_021fc234:
 L_021fc270: .word data_ov005_021fcad4
 L_021fc274: .word 0x4001050
 
-    .size func_ov005_021fc1c0, .-func_ov005_021fc1c0
+    .size Overlay005_Presentation_Delete, .-Overlay005_Presentation_Delete

@@ -83,7 +83,7 @@ static void overlay007_initialize_item_positions(void)
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov007_021fb788(Overlay007ItemState *state, s32 argument)
+void Overlay007_PopulateItems(Overlay007ItemState *state, s32 argument)
 {
     s32 index;
     u8 temporary[0x10];

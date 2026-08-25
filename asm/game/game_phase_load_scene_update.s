@@ -57,7 +57,7 @@
 .extern GraphicsBankStateSnapshot_Capture
 .extern GraphicsBankStateSnapshot_Restore
 .extern DisplayBrightness_StartMaskedTransitions
-.extern func_ov004_021fc944
+.extern Overlay004_VariantController_Init
 .extern func_ov009_021fce74
 .extern func_ov013_021fce2c
 .extern func_ov016_021fe77c
@@ -647,7 +647,7 @@ L_0200d844:
     cmp r0, #0x0
     beq L_0200d88c
     ldr r1, [r5, #0x30]
-    bl func_ov004_021fc944
+    bl Overlay004_VariantController_Init
 L_0200d88c:
     str r0, [r5, #0x24]
     b L_0200dbd4

@@ -23,7 +23,7 @@ typedef struct Overlay006TransitionState {
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov006_021fb6e0(Overlay006TransitionState *state, s32 first,
+void Overlay006_InitTransitionState(Overlay006TransitionState *state, s32 first,
                           s32 second)
 {
     state->first_024 = first;

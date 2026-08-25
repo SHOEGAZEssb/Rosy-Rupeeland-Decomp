@@ -50,7 +50,7 @@ static void overlay005_release_controller(void *controller)
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay005Presentation *func_ov005_021fc110(Overlay005Presentation *state)
+Overlay005Presentation *Overlay005_Presentation_Destroy(Overlay005Presentation *state)
 {
     void *object;
 

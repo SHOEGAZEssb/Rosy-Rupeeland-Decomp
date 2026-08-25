@@ -8,14 +8,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void func_ov004_021fbf10(void *state);
+extern void Overlay004_UpdateContext(void *state);
 #ifdef __cplusplus
 }
 #endif
 
 /*
  * Update both renderer contexts reachable through state via
- * func_ov004_021fbf10 and return one. The context and any observable renderer
+ * Overlay004_UpdateContext and return one. The context and any observable renderer
  * changes are owned by that callee; this callback performs no direct hardware
  * access.
  */
@@ -24,6 +24,6 @@ extern "C"
 #endif
 s32 func_ov004_021fc8ec(void *state)
 {
-    func_ov004_021fbf10(state);
+    Overlay004_UpdateContext(state);
     return 1;
 }

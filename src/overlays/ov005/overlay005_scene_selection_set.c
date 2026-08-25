@@ -39,7 +39,7 @@ extern void func_02091b98(void *animation, s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov005_021fbd74(Overlay005SceneSelectionState *state,
+void Overlay005_SetSceneSelection(Overlay005SceneSelectionState *state,
                           s32 selectedIndex)
 {
     s32 index;

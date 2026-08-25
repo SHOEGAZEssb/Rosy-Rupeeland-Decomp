@@ -61,7 +61,7 @@ static void *overlay004_create_sprite(void *context, void *resource, s32 value,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov004_021fbf40(Overlay004SpriteControllerState *state)
+void Overlay004_SpriteController_Init(Overlay004SpriteControllerState *state)
 {
     char text[32];
     void *sprite;

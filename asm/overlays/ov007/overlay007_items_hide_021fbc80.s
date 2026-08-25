@@ -2,8 +2,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_items_hide.c. */
-    .global func_ov007_021fbc80
-func_ov007_021fbc80: ; 0x021fbc80
+    .global Overlay007_HideItems
+Overlay007_HideItems: ; 0x021fbc80
     ldr r2, [r0, #0x4c]
     mov r3, #0x4
     mov r1, #0xa
@@ -28,4 +28,4 @@ L_021fbc98:
     bx lr
 L_021fbcd4: .word 0x4001010
 
-    .size func_ov007_021fbc80, .-func_ov007_021fbc80
+    .size Overlay007_HideItems, .-Overlay007_HideItems

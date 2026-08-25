@@ -6,7 +6,7 @@
 .extern Presentation_InterpolateLinear
 .extern func_02091b98
 .extern func_ov002_021fbd64
-.extern func_ov005_021fbd74
+.extern Overlay005_SetSceneSelection
 .extern func_ov024_021fd8f8
 .extern func_ov046_0220bffc
 .extern func_ov046_0220c3bc
@@ -90,7 +90,7 @@ func_ov024_021fd968:
     bl func_ov046_0220bffc
     ldr r0, [r6, #0x2bc]
     mov r1, r4
-    bl func_ov005_021fbd74
+    bl Overlay005_SetSceneSelection
     add r0, r6, #0x2c8
     mov r1, #0x78
     bl func_02091b98

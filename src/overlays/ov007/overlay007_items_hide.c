@@ -15,7 +15,7 @@
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov007_021fbc80(void *state)
+void Overlay007_HideItems(void *state)
 {
     s32 index;
 

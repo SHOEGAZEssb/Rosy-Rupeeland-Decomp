@@ -4,7 +4,7 @@
     .extern func_020afca0
     .extern func_02091b98
     .extern Heap_Alloc
-    .extern func_ov005_021fb6e4
+    .extern Overlay005_RenderEffect_Init
     .extern func_0209189c
     .extern PresentationScalar_SetImmediate
     .extern PresentationScalar_TransitionBy
@@ -18,8 +18,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_scene_population_update.c. */
-    .global func_ov005_021fbbe8
-func_ov005_021fbbe8: ; 0x021fbbe8
+    .global Overlay005_UpdateScenePopulation
+Overlay005_UpdateScenePopulation: ; 0x021fbbe8
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     add r0, r4, #0x110
@@ -79,7 +79,7 @@ L_021fbc78:
     movs r5, r0
     beq L_021fbccc
     ldr r1, [r4, #0x4]
-    bl func_ov005_021fb6e4
+    bl Overlay005_RenderEffect_Init
     mov r5, r0
 L_021fbccc:
     add r0, r4, #0x10c
@@ -122,4 +122,4 @@ L_021fbd58: .word data_ov005_021fcb04
 L_021fbd5c: .word gHeapContext
 L_021fbd60: .word data_ov005_021fc8f0
 
-    .size func_ov005_021fbbe8, .-func_ov005_021fbbe8
+    .size Overlay005_UpdateScenePopulation, .-Overlay005_UpdateScenePopulation

@@ -21,8 +21,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_graphics_setup.c. */
-    .global func_ov007_021fbaf0
-func_ov007_021fbaf0: ; 0x021fbaf0
+    .global Overlay007_SetupGraphics
+Overlay007_SetupGraphics: ; 0x021fbaf0
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x24
     mov r4, r0
@@ -124,4 +124,4 @@ L_021fbc74: .word 0x4001020
 L_021fbc78: .word 0x4001030
 L_021fbc7c: .word gDisplayBrightnessPair
 
-    .size func_ov007_021fbaf0, .-func_ov007_021fbaf0
+    .size Overlay007_SetupGraphics, .-Overlay007_SetupGraphics

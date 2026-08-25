@@ -23,7 +23,7 @@ extern void Heap_Free(void *allocation);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov004_021fb8e4(void *state)
+void *Overlay004_Presentation_Delete(void *state)
 {
     func_ov004_021fb868(state);
     Heap_Free(state);

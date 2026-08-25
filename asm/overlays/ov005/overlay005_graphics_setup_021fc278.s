@@ -18,8 +18,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_graphics_setup.c. */
-    .global func_ov005_021fc278
-func_ov005_021fc278: ; 0x021fc278
+    .global Overlay005_SetupGraphics
+Overlay005_SetupGraphics: ; 0x021fc278
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -255,4 +255,4 @@ L_021fc5d8: .word 0xb09c
 L_021fc5dc: .word 0xb09e
 L_021fc5e0: .word 0xc00e
 
-    .size func_ov005_021fc278, .-func_ov005_021fc278
+    .size Overlay005_SetupGraphics, .-Overlay005_SetupGraphics

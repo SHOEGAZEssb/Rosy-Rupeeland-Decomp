@@ -2,8 +2,8 @@
     .extern func_020adc90
     .extern func_020afd28
     .extern gFx32CosSinTable
-    .global func_ov004_021fc24c
-func_ov004_021fc24c: ; 0x021fc24c
+    .global Overlay004_ApplyAffineBackground
+Overlay004_ApplyAffineBackground: ; 0x021fc24c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     sub sp, sp, #0x18
     mov r8, r0
@@ -92,5 +92,5 @@ L_021fc39c: .word 0x4001030
 L_021fc3a0: .word 0x4000030
 L_021fc3a4: .word 0x4001020
 L_021fc3a8: .word 0x4000020
-    .size func_ov004_021fc24c, .-func_ov004_021fc24c
+    .size Overlay004_ApplyAffineBackground, .-Overlay004_ApplyAffineBackground
 

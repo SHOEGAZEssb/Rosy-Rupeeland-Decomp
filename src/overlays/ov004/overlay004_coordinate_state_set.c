@@ -22,7 +22,7 @@ typedef struct Overlay004CoordinateState {
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov004_021fb6e4(Overlay004CoordinateState *state, s32 first,
+void Overlay004_SetCoordinateState(Overlay004CoordinateState *state, s32 first,
                           s32 second)
 {
     state->field_024 = first;

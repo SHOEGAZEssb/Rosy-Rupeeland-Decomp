@@ -21,15 +21,15 @@ typedef struct Overlay006TransitionPrepareState {
 extern "C" {
 #endif
 extern const s32 data_ov006_021fbc48[2];
-extern void func_ov006_021fb9b4(void *state);
+extern void Overlay006_InterpolateGeometry(void *state);
 extern void AreaInfoPanelPresentation_ShowIndex(void *auxiliary, void *controllerMember);
-extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
+extern void Overlay006_InitTransitionState(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * In phase zero, call func_ov006_021fb9b4, bind auxiliary_094 to
+ * In phase zero, call Overlay006_InterpolateGeometry, bind auxiliary_094 to
  * controllerMember_064 through AreaInfoPanelPresentation_ShowIndex, advance phase, clear timer_008,
  * and intentionally fall through. In phase one, force flags_020 bit 0 to one
  * and initialize the transition from data_ov006_021fbc48. Other phases do
@@ -39,18 +39,18 @@ extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov006_021fba8c(Overlay006TransitionPrepareState *state)
+s32 Overlay006_PrepareTransition(Overlay006TransitionPrepareState *state)
 {
     switch (state->phase_004) {
     case 0:
-        func_ov006_021fb9b4(state);
+        Overlay006_InterpolateGeometry(state);
         AreaInfoPanelPresentation_ShowIndex(state->auxiliary_094, state->controllerMember_064);
         state->phase_004++;
         state->timer_008 = 0;
         /* Intentional same-frame fallthrough into phase one. */
     case 1:
         state->flags_020 = (state->flags_020 & ~1) | 1;
-        func_ov006_021fb6e0(state, data_ov006_021fbc48[0],
+        Overlay006_InitTransitionState(state, data_ov006_021fbc48[0],
                             data_ov006_021fbc48[1]);
         break;
     }

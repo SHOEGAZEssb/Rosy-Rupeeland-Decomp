@@ -8,8 +8,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_items_render.c. */
-    .global func_ov007_021fbfdc
-func_ov007_021fbfdc: ; 0x021fbfdc
+    .global Overlay007_RenderItems
+Overlay007_RenderItems: ; 0x021fbfdc
     stmdb sp!, {r3, r4, r5, r6, r7, lr}
     sub sp, sp, #0x20
     mov r4, r0
@@ -78,4 +78,4 @@ L_021fc0d4:
     add sp, sp, #0x20
     ldmia sp!, {r3, r4, r5, r6, r7, pc}
 
-    .size func_ov007_021fbfdc, .-func_ov007_021fbfdc
+    .size Overlay007_RenderItems, .-Overlay007_RenderItems

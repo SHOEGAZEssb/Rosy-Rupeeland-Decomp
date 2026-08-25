@@ -150,7 +150,7 @@ L_021fdb68:
     ldr r1, L_021fdc3c
     mov r2, #0x0
     ldr r1, [r1, #0x0]
-    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, Overlay002_Presentation_Init, Overlay003_PixelBuffer_Init, func_ov004_021fb6e0, func_ov005_021fb6e0, func_ov006_021fb6e0, func_ov007_021fb6e0, func_ov008_021fb6e0
+    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, Overlay002_Presentation_Init, Overlay003_PixelBuffer_Init, func_ov004_021fb6e0, func_ov005_021fb6e0, Overlay006_InitTransitionState, func_ov007_021fb6e0, func_ov008_021fb6e0
 L_021fdba0:
     str r0, [r4, #0xa8]
     mov r0, r4

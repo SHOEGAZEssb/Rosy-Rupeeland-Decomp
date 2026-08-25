@@ -18,8 +18,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_scene_population_construct.c. */
-    .global func_ov005_021fb86c
-func_ov005_021fb86c: ; 0x021fb86c
+    .global Overlay005_ScenePopulation_Init
+Overlay005_ScenePopulation_Init: ; 0x021fb86c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0xc
     mov r10, r0
@@ -219,4 +219,4 @@ L_021fbb6c: .word data_ov005_021fca28
 L_021fbb70: .word data_020d780c
 L_021fbb74: .word data_ov005_021fc8d8
 
-    .size func_ov005_021fb86c, .-func_ov005_021fb86c
+    .size Overlay005_ScenePopulation_Init, .-Overlay005_ScenePopulation_Init

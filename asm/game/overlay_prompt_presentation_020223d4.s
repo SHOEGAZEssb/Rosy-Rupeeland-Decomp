@@ -64,7 +64,7 @@ OverlayPromptPresentation_Update: ; 0x020223d4
     bl Heap_Alloc
     cmp r0, #0x0
     beq .L_02022464
-    bl func_ov001_021fbe6c ; func_ov005_021fbe6c
+    bl func_ov001_021fbe6c ; Overlay005_Presentation_Init
 .L_02022464:
     str r0, [r4, #0xc]
     mov r0, #0x2

@@ -9,8 +9,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_render_effect_update.c. */
-    .global func_ov005_021fb75c
-func_ov005_021fb75c: ; 0x021fb75c
+    .global Overlay005_UpdateRenderEffect
+Overlay005_UpdateRenderEffect: ; 0x021fb75c
     stmdb sp!, {r4, r5, r6, r7, r8, r9, lr}
     sub sp, sp, #0xc
     mov r8, r0
@@ -64,4 +64,4 @@ L_021fb81c:
     add sp, sp, #0xc
     ldmia sp!, {r4, r5, r6, r7, r8, r9, pc}
 L_021fb828: .word 0x7fff
-    .size func_ov005_021fb75c, .-func_ov005_021fb75c
+    .size Overlay005_UpdateRenderEffect, .-Overlay005_UpdateRenderEffect

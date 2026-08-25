@@ -38,7 +38,7 @@ extern s32 AreaInfoPanelPresentation_Hide(void *auxiliary);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov006_021fb950(Overlay006AuxiliaryToggleState *state)
+s32 Overlay006_UpdateAuxiliaryToggle(Overlay006AuxiliaryToggleState *state)
 {
     func_ov046_0220c1a4(state->overlay46Helper_090);
     if (!func_02091c7c(state->animation_098, 2)) {

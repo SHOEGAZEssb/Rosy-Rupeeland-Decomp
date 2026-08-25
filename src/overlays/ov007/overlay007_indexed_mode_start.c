@@ -22,7 +22,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov007_021fc19c(void *state, s32 index)
+void Overlay007_StartIndexedMode(void *state, s32 index)
 {
     state = (u8 *)state + index * 4;
     *(s32 *)((u8 *)state + 0xa4) = 1;

@@ -40,9 +40,9 @@ extern void SpriteMotionController_Init(void *);
 extern void SpriteMotionController_BindSprite(void *, void *, s32, s32, s32);
 extern void SpriteMotionController_SetPosition(void *, s32, s32);
 extern void SpriteMotionController_Hide(void *);
-extern void func_ov005_021fb86c(void *, void *, s32);
+extern void Overlay005_ScenePopulation_Init(void *, void *, s32);
 extern void func_ov005_021fbb78(void *);
-extern void func_ov005_021fbd74(void *, s32);
+extern void Overlay005_SetSceneSelection(void *, s32);
 extern void func_ov024_021fce00(void *);
 extern void func_ov024_021fce04(void *, void *, void *);
 extern void func_ov024_021fd2f8(void *);
@@ -106,11 +106,11 @@ extern "C" void *func_ov024_021fce2c(void *scene)
     SpriteMotionController_Hide((u8 *)scene + 0x1d8);
 
     void *menu = Heap_Alloc(0x15c, data_ov024_021fe34c, 4, gHeapContext);
-    if (menu != 0) func_ov005_021fb86c(menu, data_020f4e14, 1);
+    if (menu != 0) Overlay005_ScenePopulation_Init(menu, data_020f4e14, 1);
     FIELD(void *, scene, 0x2bc) = menu;
     IndexedSelectionController_ConfigureRange((u8 *)scene + 0x284, 0, FIELD(s32, scene, 0x60), 0);
     FIELD(s32, scene, 0x2b0) = 12;
-    func_ov005_021fbd74(menu, FIELD(s32, scene, 0x290));
+    Overlay005_SetSceneSelection(menu, FIELD(s32, scene, 0x290));
 
     void *panel = Heap_Alloc(0x118, data_ov024_021fe354, 4, gHeapContext);
     if (panel != 0) func_ov046_0220b7bc(panel, gDebugFont, 0);

@@ -4,8 +4,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_scanline_scroll_update.c. */
-    .global func_ov005_021fc7d8
-func_ov005_021fc7d8: ; 0x021fc7d8
+    .global Overlay005_UpdateScanlineScroll
+Overlay005_UpdateScanlineScroll: ; 0x021fc7d8
     sub sp, sp, #0x40
     ldr r0, [r0, #0x20]
     mov r0, r0, lsl #0x15
@@ -44,4 +44,4 @@ L_021fc858: .word gSystemState
 L_021fc85c: .word 0x1ff
 L_021fc860: .word 0x400101c
 
-    .size func_ov005_021fc7d8, .-func_ov005_021fc7d8
+    .size Overlay005_UpdateScanlineScroll, .-Overlay005_UpdateScanlineScroll

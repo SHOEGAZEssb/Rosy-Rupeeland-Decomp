@@ -34,7 +34,7 @@ func_ov041_02202adc: ; 0x02202adc
     mov r2, r2, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x5
-    bl func_ov004_021fb868 ; func_ov008_021fb868
+    bl func_ov004_021fb868 ; Overlay008_SpawnParticles
 .L_02202b48:
     ldr r0, [r4, #0x920]
     cmp r0, #0x4
@@ -57,7 +57,7 @@ func_ov041_02202adc: ; 0x02202adc
     mov r2, r3, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x7
-    bl func_ov004_021fb868 ; func_ov008_021fb868
+    bl func_ov004_021fb868 ; Overlay008_SpawnParticles
 .L_02202ba0:
     ldr r0, [r4, #0x920]
     sub r0, r0, #0x8
@@ -76,7 +76,7 @@ func_ov041_02202adc: ; 0x02202adc
     mov r2, r3, asr #0xc
     mov r3, r1, asr #0xc
     mov r1, #0x6
-    bl func_ov004_021fb868 ; func_ov008_021fb868
+    bl func_ov004_021fb868 ; Overlay008_SpawnParticles
 .L_02202be8:
     ldr r0, [r4, #0x94c]
     cmp r0, #0x0
@@ -95,7 +95,7 @@ func_ov041_02202adc: ; 0x02202adc
     sub r1, r1, #0x1e000
     mov r3, r1, asr #0xc
     mov r1, #0x6
-    bl func_ov004_021fb868 ; func_ov008_021fb868
+    bl func_ov004_021fb868 ; Overlay008_SpawnParticles
     ldmia sp!, {r4, pc}
     .size func_ov041_02202adc, . - func_ov041_02202adc
 

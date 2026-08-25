@@ -34,7 +34,7 @@ extern void TitleDisplay_SetSubBgPriorities(s32 first, s32 second, s32 third, s3
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov004_021fb968(Overlay004BackgroundHardwareState *state)
+void Overlay004_SetupBackgroundHardware(Overlay004BackgroundHardwareState *state)
 {
     volatile u16 *control = (volatile u16 *)0x04000304;
     volatile u16 *mainBg = (volatile u16 *)0x0400000c;

@@ -11,7 +11,7 @@
     .extern VecFx32Object_Destroy
     .extern VecFx32Object_Add
     .extern func_0209a2a4
-    .extern func_ov007_021fc19c
+    .extern Overlay007_StartIndexedMode
     .extern Sound_Play
     .extern genrand_int32
     .extern Sound_StopAllDirectSequences
@@ -160,7 +160,7 @@ L_02205e00:
     ldr r0, [r4, #0x80]
     mov r1, r8
     ldr r0, [r0, #0x20]
-    bl func_ov007_021fc19c
+    bl Overlay007_StartIndexedMode
     add r8, r8, #0x1
 L_02205e44:
     cmp r8, r6

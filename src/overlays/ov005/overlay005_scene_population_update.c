@@ -25,7 +25,7 @@ extern void func_020afca0(volatile void *registers, s32 value);
 extern void func_02091b98(void *animation, s32 value);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
-extern void *func_ov005_021fb6e4(void *memory, void *owner);
+extern void *Overlay005_RenderEffect_Init(void *memory, void *owner);
 extern s32 func_0209189c(u32 *randomState, s32 minimum, s32 maximum);
 extern void PresentationScalar_SetImmediate(void *object, s32 value);
 extern void PresentationScalar_TransitionBy(void *object, s32 mode, s32 value);
@@ -44,7 +44,7 @@ extern s32 GraphicsSpriteGroup_AdvanceAnimations(void *context);
  *
  * When +0x158 is nonzero and animation +0x12C channel 2 completes, submit
  * value 0x10, allocate a 0xCC-byte child tagged by data_ov005_021fcb04, and
- * construct func_ov005_021fb6e4 with context +0x04. Choose its +0x0C position
+ * construct Overlay005_RenderEffect_Init with context +0x04. Choose its +0x0C position
  * randomly from 0..0x100 (then shift by 12), and its +0x1C position from the
  * range beginning at data_ov005_021fc8f0[+0x100] and extending 0xC0. Configure
  * +0x1C with mode 2/value 0x18000, set child +0x7C/+0x80 to 64/0, and enqueue
@@ -56,7 +56,7 @@ extern s32 GraphicsSpriteGroup_AdvanceAnimations(void *context);
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov005_021fbbe8(Overlay005ScenePopulation *state)
+s32 Overlay005_UpdateScenePopulation(Overlay005ScenePopulation *state)
 {
     void *animation = (u8 *)state + 0x110;
     s32 blend;
@@ -84,7 +84,7 @@ s32 func_ov005_021fbbe8(Overlay005ScenePopulation *state)
         func_02091b98((u8 *)state + 0x12c, 0x10);
         child = Heap_Alloc(0xcc, data_ov005_021fcb04, 4, gHeapContext);
         if (child != 0) {
-            child = func_ov005_021fb6e4(child,
+            child = Overlay005_RenderEffect_Init(child,
                                        FIELD(void *, state, 0x004));
         }
         PresentationScalar_SetImmediate((u8 *)child + 0x0c,

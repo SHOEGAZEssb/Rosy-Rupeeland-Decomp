@@ -9,12 +9,12 @@
     .extern Presentation_SetPosition
     .extern Presentation_SetScript
     .extern GameWork_ClearFlag
-    .extern func_ov005_021fc278
-    .extern func_ov005_021fb86c
-    .extern func_ov005_021fbd74
+    .extern Overlay005_SetupGraphics
+    .extern Overlay005_ScenePopulation_Init
+    .extern Overlay005_SetSceneSelection
     .extern func_ov005_021fbd64
     .extern AreaInfoPanelPresentation_Init
-    .extern func_ov005_021fbe44
+    .extern Overlay005_InitTransitionState
     .extern data_ov005_021fcad4
     .extern data_020f4e18
     .extern gDebugFont
@@ -31,8 +31,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_presentation_construct.c. */
-    .global func_ov005_021fbe6c
-func_ov005_021fbe6c: ; 0x021fbe6c
+    .global Overlay005_Presentation_Init
+Overlay005_Presentation_Init: ; 0x021fbe6c
     stmdb sp!, {r3, r4, r5, lr}
     mov r4, r0
     bl SceneInputBase_Init
@@ -125,7 +125,7 @@ L_021fbef4:
     ldr r0, [r0, #0x0]
     bl GameWork_ClearFlag
     mov r0, r4
-    bl func_ov005_021fc278
+    bl Overlay005_SetupGraphics
     ldr r1, L_021fc0f8
     ldr r3, L_021fc0e0
     mov r0, #0x15c
@@ -136,11 +136,11 @@ L_021fbef4:
     ldr r1, L_021fc0d8
     mov r2, #0x0
     ldr r1, [r1, #0x0]
-    bl func_ov005_021fb86c
+    bl Overlay005_ScenePopulation_Init
 L_021fc008:
     str r0, [r4, #0x74]
     ldr r1, [r4, #0x68]
-    bl func_ov005_021fbd74
+    bl Overlay005_SetSceneSelection
     ldr r2, [r4, #0x68]
     ldr r1, L_021fc0fc
     ldr r0, [r4, #0x74]
@@ -185,7 +185,7 @@ L_021fc064:
     orr r1, r1, #0x400
     str r1, [r4, #0x20]
     ldmia r2, {r1, r2}
-    bl func_ov005_021fbe44
+    bl Overlay005_InitTransitionState
     mov r0, r4
     ldmia sp!, {r3, r4, r5, pc}
 L_021fc0cc: .word data_ov005_021fcad4
@@ -206,4 +206,4 @@ L_021fc104: .word data_020d7824
 L_021fc108: .word data_020d7826
 L_021fc10c: .word data_ov005_021fc9e8
 
-    .size func_ov005_021fbe6c, .-func_ov005_021fbe6c
+    .size Overlay005_Presentation_Init, .-Overlay005_Presentation_Init

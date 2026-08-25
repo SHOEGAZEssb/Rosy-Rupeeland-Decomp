@@ -61,7 +61,7 @@ static void overlay004_build_affine(Overlay004AffineMatrix *matrix, s32 angle,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov004_021fc24c(Overlay004AffineBackgroundState *state)
+void Overlay004_ApplyAffineBackground(Overlay004AffineBackgroundState *state)
 {
     Overlay004AffineMatrix matrix;
     s32 angle = state->angle_110 >> 4;

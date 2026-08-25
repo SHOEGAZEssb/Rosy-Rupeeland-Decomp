@@ -3,8 +3,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov008/overlay008_particles_update.c. */
-    .global func_ov008_021fbd1c
-func_ov008_021fbd1c: ; 0x021fbd1c
+    .global Overlay008_UpdateParticles
+Overlay008_UpdateParticles: ; 0x021fbd1c
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r1, #0x3c
     mov r8, r0
@@ -72,4 +72,4 @@ L_021fbe00:
     bpl L_021fbd38
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 
-    .size func_ov008_021fbd1c, . - func_ov008_021fbd1c
+    .size Overlay008_UpdateParticles, . - Overlay008_UpdateParticles

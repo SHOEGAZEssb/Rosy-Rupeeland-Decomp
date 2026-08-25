@@ -3,9 +3,9 @@
     .extern DisplayBrightness_StartMaskedTransitions
     .extern DisplayBrightness_IsMainTransitionComplete
     .extern SceneSound_StopDirectSequence
-    .extern func_ov004_021fb6e4
+    .extern Overlay004_SetCoordinateState
     .extern Heap_Alloc
-    .extern func_ov004_021fb70c
+    .extern Overlay004_Presentation_Init
     .extern data_ov004_021fcd28
     .extern data_ov004_021fcde4
     .extern gHeapContext
@@ -13,8 +13,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov004/overlay004_variant_transition_update.c. */
-    .global func_ov004_021fcab8
-func_ov004_021fcab8: ; 0x021fcab8
+    .global Overlay004_UpdateVariantTransition
+Overlay004_UpdateVariantTransition: ; 0x021fcab8
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -85,7 +85,7 @@ L_021fcb94:
     ldr r1, L_021fcce8
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov004_021fb6e4
+    bl Overlay004_SetCoordinateState
     b L_021fcce0
 L_021fcbb8:
     ldr r0, [r4, #0x20]
@@ -112,7 +112,7 @@ L_021fcbdc:
     beq L_021fcc18
     ldr r1, [r4, #0x58]
     ldr r2, [r4, #0x60]
-    bl func_ov004_021fb70c
+    bl Overlay004_Presentation_Init
 L_021fcc18:
     str r0, [r4, #0x54]
     mov r0, #0x3
@@ -166,7 +166,7 @@ L_021fcca8:
     ldr r1, L_021fccf4
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov004_021fb6e4
+    bl Overlay004_SetCoordinateState
 L_021fcce0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
@@ -174,4 +174,4 @@ L_021fcce8: .word data_ov004_021fcd28
 L_021fccec: .word data_ov004_021fcde4
 L_021fccf0: .word gHeapContext
 L_021fccf4: .word data_ov004_021fcd58
-    .size func_ov004_021fcab8, .-func_ov004_021fcab8
+    .size Overlay004_UpdateVariantTransition, .-Overlay004_UpdateVariantTransition

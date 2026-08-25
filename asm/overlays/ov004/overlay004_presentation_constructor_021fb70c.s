@@ -10,15 +10,15 @@
     .extern data_020f4e14
     .extern GraphicsSpriteGroupOwner_CreateGroup
     .extern gDebugFont
-    .extern func_ov004_021fbf40
+    .extern Overlay004_SpriteController_Init
     .extern TitleInterpolatedValue_Configure
-    .extern func_ov004_021fb968
-    .extern func_ov004_021fba28
-    .extern func_ov004_021fc24c
+    .extern Overlay004_SetupBackgroundHardware
+    .extern Overlay004_LoadVariantResources
+    .extern Overlay004_ApplyAffineBackground
     .extern data_ov004_021fcd30
-    .extern func_ov004_021fb6e4
-    .global func_ov004_021fb70c
-func_ov004_021fb70c: ; 0x021fb70c
+    .extern Overlay004_SetCoordinateState
+    .global Overlay004_Presentation_Init
+Overlay004_Presentation_Init: ; 0x021fb70c
     stmdb sp!, {r3, r4, r5, r6, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -58,7 +58,7 @@ func_ov004_021fb70c: ; 0x021fb70c
     bl GraphicsSpriteGroupOwner_CreateGroup
     str r0, [r4, #0x64]
     mov r0, r4
-    bl func_ov004_021fbf40
+    bl Overlay004_SpriteController_Init
     mov r1, #0x0
     add r0, r4, #0x100
     strh r1, [r0, #0x10]
@@ -83,18 +83,18 @@ func_ov004_021fb70c: ; 0x021fb70c
     ldr r3, L_021fb860
     bl TitleInterpolatedValue_Configure
     mov r0, r4
-    bl func_ov004_021fb968
+    bl Overlay004_SetupBackgroundHardware
     mov r0, r4
-    bl func_ov004_021fba28
+    bl Overlay004_LoadVariantResources
     mov r0, r4
-    bl func_ov004_021fc24c
+    bl Overlay004_ApplyAffineBackground
     ldr r1, [r4, #0x20]
     mov r0, r4
     orr r1, r1, #0x400
     str r1, [r4, #0x20]
     ldr r1, L_021fb864
     ldmia r1, {r1, r2}
-    bl func_ov004_021fb6e4
+    bl Overlay004_SetCoordinateState
     mov r0, r4
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, r5, r6, pc}
@@ -106,5 +106,5 @@ L_021fb858: .word gDebugFont
 L_021fb85c: .word 0x119a
 L_021fb860: .word 0x466
 L_021fb864: .word data_ov004_021fcd30
-    .size func_ov004_021fb70c, .-func_ov004_021fb70c
+    .size Overlay004_Presentation_Init, .-Overlay004_Presentation_Init
 

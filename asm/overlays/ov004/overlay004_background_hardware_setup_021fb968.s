@@ -3,8 +3,8 @@
     .extern TitleDisplay_SetMainBgPriorities
     .extern TitleDisplay_ConfigureSub2dEngine
     .extern TitleDisplay_SetSubBgPriorities
-    .global func_ov004_021fb968
-func_ov004_021fb968: ; 0x021fb968
+    .global Overlay004_SetupBackgroundHardware
+Overlay004_SetupBackgroundHardware: ; 0x021fb968
     stmdb sp!, {r4, lr}
     ldr r3, L_021fba1c
     mov r4, r0
@@ -53,4 +53,4 @@ func_ov004_021fb968: ; 0x021fb968
 L_021fba1c: .word 0x4000304
 L_021fba20: .word 0x400000c
 L_021fba24: .word 0x400100c
-    .size func_ov004_021fb968, .-func_ov004_021fb968
+    .size Overlay004_SetupBackgroundHardware, .-Overlay004_SetupBackgroundHardware

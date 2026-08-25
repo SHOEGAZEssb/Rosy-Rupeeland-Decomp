@@ -34,7 +34,7 @@ extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
 extern void *func_ov026_021ff8a0(void *memory, s32 variant,
                                 void *previousResource,
                                 void *currentResource);
-extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
+extern void Overlay004_SetCoordinateState(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
@@ -55,7 +55,7 @@ extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
 extern "C"
 #endif
 Overlay004VariantController *
-func_ov004_021fc944(Overlay004VariantController *state, s32 variant)
+Overlay004_VariantController_Init(Overlay004VariantController *state, s32 variant)
 {
     void *memory;
 
@@ -84,7 +84,7 @@ func_ov004_021fc944(Overlay004VariantController *state, s32 variant)
     }
     state->helper_054 = memory;
     state->applyDisplayMode_020_10 = 1;
-    func_ov004_021fb6e4(state, data_ov004_021fcd48[0],
+    Overlay004_SetCoordinateState(state, data_ov004_021fcd48[0],
                         data_ov004_021fcd48[1]);
     return state;
 }

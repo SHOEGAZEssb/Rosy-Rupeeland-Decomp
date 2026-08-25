@@ -6,8 +6,8 @@
     .extern func_ov004_021fb6e0
     .extern AnimationResourceState_Destroy
     .extern Heap_Free
-    .global func_ov004_021fb8e4
-func_ov004_021fb8e4: ; 0x021fb8e4
+    .global Overlay004_Presentation_Delete
+Overlay004_Presentation_Delete: ; 0x021fb8e4
     stmdb sp!, {r4, lr}
     ldr r1, L_021fb960
     mov r4, r0
@@ -43,5 +43,5 @@ L_021fb930:
     ldmia sp!, {r4, pc}
 L_021fb960: .word data_ov004_021fcda0
 L_021fb964: .word gSoundContext
-    .size func_ov004_021fb8e4, .-func_ov004_021fb8e4
+    .size Overlay004_Presentation_Delete, .-Overlay004_Presentation_Delete
 

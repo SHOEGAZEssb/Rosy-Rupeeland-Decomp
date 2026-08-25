@@ -50,7 +50,7 @@ static void overlay005_advance_entry(Overlay005EntryTransitionState *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov005_021fc638(Overlay005EntryTransitionState *state)
+s32 Overlay005_UpdateEntryTransition(Overlay005EntryTransitionState *state)
 {
     void *controller;
 

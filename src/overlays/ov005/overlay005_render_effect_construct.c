@@ -43,7 +43,7 @@ extern void AnimationResourceState_ReplaceResources(void *resource, void *manage
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay005RenderEffect *func_ov005_021fb6e4(Overlay005RenderEffect *state,
+Overlay005RenderEffect *Overlay005_RenderEffect_Init(Overlay005RenderEffect *state,
                                              void *owner)
 {
     Presentation_Init(state);

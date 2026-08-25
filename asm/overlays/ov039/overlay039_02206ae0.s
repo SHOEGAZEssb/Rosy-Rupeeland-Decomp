@@ -13,7 +13,7 @@
     .extern VecFx32Object_Init
     .extern func_ov039_02205f64
     .extern func_020befec
-    .extern func_ov007_021fc0dc
+    .extern Overlay007_UpdateItemBucket
     .extern VecFx32Object_InitComponents
     .extern func_ov039_02205c18
     .extern func_020adc40
@@ -250,7 +250,7 @@ L_02206e0c:
     ldr r0, [r4, #0x80]
     rsb r1, r1, #0x384
     ldr r0, [r0, #0x20]
-    bl func_ov007_021fc0dc
+    bl Overlay007_UpdateItemBucket
     ldr r0, [r4, #0xac]
     mov r1, #0x12c
     bl func_020befec

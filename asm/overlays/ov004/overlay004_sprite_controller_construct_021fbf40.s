@@ -12,8 +12,8 @@
     .extern data_ov004_021fcdd0
     .extern gHeapContext
     .extern data_ov004_021fcdd8
-    .global func_ov004_021fbf40
-func_ov004_021fbf40: ; 0x021fbf40
+    .global Overlay004_SpriteController_Init
+Overlay004_SpriteController_Init: ; 0x021fbf40
     stmdb sp!, {r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x2c
     mov r10, r0
@@ -214,5 +214,5 @@ L_021fc1ec:
 L_021fc240: .word data_ov004_021fcdd0
 L_021fc244: .word gHeapContext
 L_021fc248: .word data_ov004_021fcdd8
-    .size func_ov004_021fbf40, .-func_ov004_021fbf40
+    .size Overlay004_SpriteController_Init, .-Overlay004_SpriteController_Init
 

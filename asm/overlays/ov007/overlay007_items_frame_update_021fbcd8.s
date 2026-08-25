@@ -1,5 +1,5 @@
     .text
-    .extern func_ov007_021fbaf0
+    .extern Overlay007_SetupGraphics
     .extern GraphicsSpriteState_SetAnimationIndex
     .extern VecFx32Object_InitCopy
     .extern func_020adc40
@@ -8,8 +8,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_items_frame_update.c. */
-    .global func_ov007_021fbcd8
-func_ov007_021fbcd8: ; 0x021fbcd8
+    .global Overlay007_UpdateItemFrames
+Overlay007_UpdateItemFrames: ; 0x021fbcd8
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -22,7 +22,7 @@ func_ov007_021fbcd8: ; 0x021fbcd8
     ldr r1, [r4, #0xd4]
     cmp r1, #0x1
     bne L_021fbd10
-    bl func_ov007_021fbaf0
+    bl Overlay007_SetupGraphics
     b L_021fbfc8
 L_021fbd10:
     ldr r0, [r4, #0x48]
@@ -219,4 +219,4 @@ L_021fbfd0: .word gFx32CosSinTable
 L_021fbfd4: .word 0x1ff
 L_021fbfd8: .word 0x4001010
 
-    .size func_ov007_021fbcd8, .-func_ov007_021fbcd8
+    .size Overlay007_UpdateItemFrames, .-Overlay007_UpdateItemFrames

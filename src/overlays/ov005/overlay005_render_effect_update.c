@@ -52,7 +52,7 @@ static s32 overlay005_fixed_to_integer(s32 value)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov005_021fb75c(Overlay005RenderEffect *state)
+s32 Overlay005_UpdateRenderEffect(Overlay005RenderEffect *state)
 {
     s32 result = Presentation_AdvanceTransitions(state);
 

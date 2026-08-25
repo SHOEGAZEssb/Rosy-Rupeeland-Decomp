@@ -4,7 +4,7 @@
     .extern GamePhaseProgressController_GetAdjustedThreshold
     .extern Heap_Alloc
     .extern func_ov026_021ff8a0
-    .extern func_ov004_021fb6e4
+    .extern Overlay004_SetCoordinateState
     .extern data_ov004_021fcdbc
     .extern data_ov004_021fcddc
     .extern gHeapContext
@@ -12,8 +12,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov004/overlay004_variant_controller_construct.c. */
-    .global func_ov004_021fc944
-func_ov004_021fc944: ; 0x021fc944
+    .global Overlay004_VariantController_Init
+Overlay004_VariantController_Init: ; 0x021fc944
     stmdb sp!, {r3, r4, r5, lr}
     mov r5, r0
     mov r4, r1
@@ -55,7 +55,7 @@ L_021fc9c4:
     str r0, [r5, #0x20]
     mov r0, r5
     ldmia r1, {r1, r2}
-    bl func_ov004_021fb6e4
+    bl Overlay004_SetCoordinateState
     mov r0, r5
     ldmia sp!, {r3, r4, r5, pc}
 L_021fc9ec: .word data_ov004_021fcdbc
@@ -63,4 +63,4 @@ L_021fc9f0: .word 0x7c4
 L_021fc9f4: .word data_ov004_021fcddc
 L_021fc9f8: .word gHeapContext
 L_021fc9fc: .word data_ov004_021fcd48
-    .size func_ov004_021fc944, .-func_ov004_021fc944
+    .size Overlay004_VariantController_Init, .-Overlay004_VariantController_Init

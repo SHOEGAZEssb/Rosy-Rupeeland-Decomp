@@ -14,7 +14,7 @@
 .extern Graphics3dPresentation_ConfigureOrthographicState
 .extern func_0209ca90
 .extern func_020befec
-.extern func_ov008_021fbe0c
+.extern Overlay008_RenderParticles
 .extern func_ov041_0220333c
 .extern genrand_int32
 
@@ -1577,7 +1577,7 @@ func_ov041_02203434: ; 0x02203434
     bl VecFx32Object_Assign
     ldr r0, [r8, #0x958]
     ldr r1, [sp, #0x4]
-    bl func_ov008_021fbe0c
+    bl Overlay008_RenderParticles
     add r0, sp, #0x234
     bl VecFx32Object_Destroy
     add sp, sp, #0x354

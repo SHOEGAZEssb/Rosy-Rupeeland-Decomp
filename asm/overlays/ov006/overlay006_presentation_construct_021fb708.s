@@ -11,7 +11,7 @@
     .extern func_ov046_0220c478
     .extern AreaInfoPanelPresentation_Init
     .extern func_02091b98
-    .extern func_ov006_021fb6e0
+    .extern Overlay006_InitTransitionState
     .extern data_ov006_021fbc88
     .extern gGameWork
     .extern data_ov006_021fbc9c
@@ -22,8 +22,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov006/overlay006_presentation_construct.c. */
-    .global func_ov006_021fb708
-func_ov006_021fb708: ; 0x021fb708
+    .global Overlay006_Presentation_Init
+Overlay006_Presentation_Init: ; 0x021fb708
     stmdb sp!, {r4, lr}
     mov r4, r0
     bl SceneInputBase_Init
@@ -96,7 +96,7 @@ L_021fb7f0:
     str r0, [r4, #0x20]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov006_021fb6e0
+    bl Overlay006_InitTransitionState
     mov r0, r4
     ldmia sp!, {r4, pc}
 L_021fb82c: .word data_ov006_021fbc88
@@ -107,4 +107,4 @@ L_021fb83c: .word gDebugFont
 L_021fb840: .word data_ov006_021fbca4
 L_021fb844: .word data_ov006_021fbc58
 
-    .size func_ov006_021fb708, .-func_ov006_021fb708
+    .size Overlay006_Presentation_Init, .-Overlay006_Presentation_Init

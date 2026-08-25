@@ -33,7 +33,7 @@ extern const u8 gSystemState[];
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov005_021fc7d8(Overlay005ScanlineState *state)
+s32 Overlay005_UpdateScanlineScroll(Overlay005ScanlineState *state)
 {
     s16 table[32];
     s32 index;

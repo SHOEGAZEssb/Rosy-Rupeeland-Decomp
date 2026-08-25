@@ -23,8 +23,8 @@ extern const s32 data_ov004_021fcd40[2];
 extern void SceneSound_PlayDirectSequence(void *state, s32 value);
 extern void Sound_SetDirectSequenceTrackMask(void *context, s32 channel, s32 value);
 extern void GraphicsSpriteRenderer_ClearTextBuffer(void *context);
-extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
-extern void func_ov004_021fbf10(void *state);
+extern void Overlay004_SetCoordinateState(void *state, s32 first, s32 second);
+extern void Overlay004_UpdateContext(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -50,14 +50,14 @@ static s32 overlay004_entry_sound_value(s32 variant)
  * variant-selected value above to sound channel 0xCC, activate data_020f4e14
  * and gDebugFont through GraphicsSpriteRenderer_ClearTextBuffer, advance phase to one, and clear +0x08.
  * In phase one (including the fallthrough from phase zero), apply the two-word
- * defaults at data_ov004_021fcd40 through func_ov004_021fb6e4. Always update
+ * defaults at data_ov004_021fcd40 through Overlay004_SetCoordinateState. Always update
  * the two renderer contexts and return zero. Sound/renderer effects occur via
  * callees; unknown variant values share the confirmed default with 0 and 10.
  */
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov004_021fc3ac(Overlay004EntryPhaseState *state)
+s32 Overlay004_UpdateEntryPhase(Overlay004EntryPhaseState *state)
 {
     if (state->phase_004 == 0) {
         SceneSound_PlayDirectSequence(state, 0xcc);
@@ -69,9 +69,9 @@ s32 func_ov004_021fc3ac(Overlay004EntryPhaseState *state)
         state->field_008 = 0;
     }
     if (state->phase_004 == 1) {
-        func_ov004_021fb6e4(state, data_ov004_021fcd40[0],
+        Overlay004_SetCoordinateState(state, data_ov004_021fcd40[0],
                             data_ov004_021fcd40[1]);
     }
-    func_ov004_021fbf10(state);
+    Overlay004_UpdateContext(state);
     return 0;
 }

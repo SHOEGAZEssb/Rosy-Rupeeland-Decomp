@@ -33,7 +33,7 @@ extern void VecFx32Object_Destroy(void *member);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov007_021fbfdc(void *state)
+void Overlay007_RenderItems(void *state)
 {
     u8 transform[0x10];
     u8 zeroTransform[0x10];

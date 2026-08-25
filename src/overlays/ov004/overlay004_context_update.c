@@ -35,7 +35,7 @@ extern void GraphicsSpriteGroup_AdvanceAnimations(void *context);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov004_021fbf10(Overlay004ContextUpdateState *state)
+void Overlay004_UpdateContext(Overlay004ContextUpdateState *state)
 {
     FIELD(s32, state->primaryContext_060, 0x18) = state->forwarded_07c;
     FIELD(s32, state->primaryContext_060, 0x1c) = state->forwarded_08c;

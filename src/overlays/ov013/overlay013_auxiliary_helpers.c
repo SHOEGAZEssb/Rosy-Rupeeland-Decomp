@@ -16,7 +16,7 @@ extern "C" {
 #endif
 extern void GamePhaseRuntime_SetPlacementMode(void *, s32, s32);
 extern void *Heap_Alloc(u32, const char *, s32, void *);
-extern void *func_ov006_021fb708(void *);
+extern void *Overlay006_Presentation_Init(void *);
 extern void *ModalState_Init(void *, s32, s32);
 extern void ModalState_CopyAttachmentText(void *, void *);
 extern void ModalState_InitResources(void *, s32);
@@ -54,7 +54,7 @@ void func_ov013_021fda40(void *state)
     GamePhaseRuntime_SetPlacementMode(gGamePhaseRuntime, 0, 1);
     object = Heap_Alloc(0xb8, data_ov013_021fed88, 4, gHeapContext);
     if (object != 0)
-        object = func_ov006_021fb708(object);
+        object = Overlay006_Presentation_Init(object);
     FIELD(void *, state, 0x9a8) = object;
     FIELD(u32, state, 0x20) |= 0x400;
 }

@@ -46,7 +46,7 @@ extern void func_0209c87c(void *resource, const Overlay008Point *vertices,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov008_021fbe0c(void *state, const void *transform)
+void Overlay008_RenderParticles(void *state, const void *transform)
 {
     static const s32 regions[22][4] = {
         {0x20000, 0x10000, 0x2f000, 0x1f000},

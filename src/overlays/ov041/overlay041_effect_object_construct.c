@@ -14,7 +14,7 @@ void __construct_array(void *, s32, s32, void *, void *);
 void func_ov041_021fd000(void *);
 void func_ov041_021fce00(void *);
 void *Heap_Alloc(s32, const void *, s32, void *);
-void *func_ov008_021fb720(void *, void *, s32);
+void *Overlay008_Controller_Init(void *, void *, s32);
 void *func_0209a208(void *, s32, s32, s32, s32, s32);
 void GraphicsSpriteState_SetAnimationIndex(void *, s32);
 extern u8 data_ov041_022059b8;
@@ -59,7 +59,7 @@ extern "C" void *func_ov041_0220106c(void *object, void *owner, void *context)
     void *helperMemory = Heap_Alloc(0x8bc, &data_ov041_022059d0, 4,
                                     &gHeapContext);
     if (helperMemory != 0)
-        helperMemory = func_ov008_021fb720(helperMemory, owner, (s32)context);
+        helperMemory = Overlay008_Controller_Init(helperMemory, owner, (s32)context);
     FIELD(void *, object, 0x958) = helperMemory;
 
     create_effect_render(object, 0, context, 0);

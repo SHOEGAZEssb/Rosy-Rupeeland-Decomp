@@ -9,8 +9,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov006/overlay006_geometry_interpolate.c. */
-    .global func_ov006_021fb9b4
-func_ov006_021fb9b4: ; 0x021fb9b4
+    .global Overlay006_InterpolateGeometry
+Overlay006_InterpolateGeometry: ; 0x021fb9b4
     stmdb sp!, {r4, r5, r6, r7, r8, lr}
     mov r5, r0
     ldr r6, [r5, #0x68]
@@ -66,4 +66,4 @@ func_ov006_021fb9b4: ; 0x021fb9b4
     str r0, [r5, #0xb4]
     ldmia sp!, {r4, r5, r6, r7, r8, pc}
 
-    .size func_ov006_021fb9b4, .-func_ov006_021fb9b4
+    .size Overlay006_InterpolateGeometry, .-Overlay006_InterpolateGeometry

@@ -35,9 +35,9 @@ extern s32 Presentation_InterpolateQuadraticPulse(s32 start, s32 end, s32 durati
 extern void func_02070958(void *resource, s32 red, s32 green, s32 blue);
 extern void GraphicsSpriteRenderer_QueueStatePaletteUploads(void *resource, void *context);
 extern s32 Sound_IsEffectPlaying(void *context, s32 group, s32 index);
-extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
-extern void func_ov004_021fc24c(void *state);
-extern void func_ov004_021fbf10(void *state);
+extern void Overlay004_SetCoordinateState(void *state, s32 first, s32 second);
+extern void Overlay004_ApplyAffineBackground(void *state);
+extern void Overlay004_UpdateContext(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -78,7 +78,7 @@ static void overlay004_advance_phase(Overlay004MainPhaseState *state)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
+s32 Overlay004_UpdateMainPhase(Overlay004MainPhaseState *state)
 {
     void *animationA = (u8 *)state + 0x114;
     void *animationB = (u8 *)state + 0x130;
@@ -155,15 +155,15 @@ s32 func_ov004_021fc57c(Overlay004MainPhaseState *state)
 
             if (Sound_IsEffectPlaying(gSoundContext, packed >> 7, packed & 0x7f) ==
                 0) {
-                func_ov004_021fb6e4(state, data_ov004_021fcd50[0],
+                Overlay004_SetCoordinateState(state, data_ov004_021fcd50[0],
                                     data_ov004_021fcd50[1]);
             }
         }
         break;
     }
 
-    func_ov004_021fc24c(state);
-    func_ov004_021fbf10(state);
+    Overlay004_ApplyAffineBackground(state);
+    Overlay004_UpdateContext(state);
     return 0;
 }
 

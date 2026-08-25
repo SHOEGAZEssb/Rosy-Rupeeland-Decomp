@@ -4,8 +4,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_item_bucket_update.c. */
-    .global func_ov007_021fc0dc
-func_ov007_021fc0dc: ; 0x021fc0dc
+    .global Overlay007_UpdateItemBucket
+Overlay007_UpdateItemBucket: ; 0x021fc0dc
     stmdb sp!, {r4, lr}
     mov r4, r0
     add r0, r1, #0x3b
@@ -44,4 +44,4 @@ L_021fc12c:
     strh r1, [r0, #0x3e]
     ldmia sp!, {r4, pc}
 
-    .size func_ov007_021fc0dc, .-func_ov007_021fc0dc
+    .size Overlay007_UpdateItemBucket, .-Overlay007_UpdateItemBucket

@@ -1,9 +1,9 @@
 func_ov008_021fb6e0 kind:function(arm,size=0x40) addr:0x021fb6e0
-func_ov008_021fb720 kind:function(arm,size=0xf4) addr:0x021fb720
-func_ov008_021fb814 kind:function(arm,size=0x54) addr:0x021fb814
-func_ov008_021fb868 kind:function(arm,size=0x4b4) addr:0x021fb868
-func_ov008_021fbd1c kind:function(arm,size=0xf0) addr:0x021fbd1c
-func_ov008_021fbe0c kind:function(arm,size=0x44c) addr:0x021fbe0c
+Overlay008_Controller_Init kind:function(arm,size=0xf4) addr:0x021fb720
+Overlay008_InitializeObject kind:function(arm,size=0x54) addr:0x021fb814
+Overlay008_SpawnParticles kind:function(arm,size=0x4b4) addr:0x021fb868
+Overlay008_UpdateParticles kind:function(arm,size=0xf0) addr:0x021fbd1c
+Overlay008_RenderParticles kind:function(arm,size=0x44c) addr:0x021fbe0c
 data_ov008_021fc25c kind:data(any) addr:0x021fc25c
 data_ov008_021fc2c0 kind:data(any) addr:0x021fc2c0
 data_ov008_021fc2c8 kind:data(any) addr:0x021fc2c8

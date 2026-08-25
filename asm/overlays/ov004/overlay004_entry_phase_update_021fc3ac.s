@@ -2,14 +2,14 @@
     .extern SceneSound_PlayDirectSequence
     .extern Sound_SetDirectSequenceTrackMask
     .extern GraphicsSpriteRenderer_ClearTextBuffer
-    .extern func_ov004_021fb6e4
-    .extern func_ov004_021fbf10
+    .extern Overlay004_SetCoordinateState
+    .extern Overlay004_UpdateContext
     .extern gSoundContext
     .extern data_020f4e14
     .extern gDebugFont
     .extern data_ov004_021fcd40
-    .global func_ov004_021fc3ac
-func_ov004_021fc3ac: ; 0x021fc3ac
+    .global Overlay004_UpdateEntryPhase
+Overlay004_UpdateEntryPhase: ; 0x021fc3ac
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -122,10 +122,10 @@ L_021fc528:
     ldr r1, L_021fc578
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov004_021fb6e4
+    bl Overlay004_SetCoordinateState
 L_021fc538:
     mov r0, r4
-    bl func_ov004_021fbf10
+    bl Overlay004_UpdateContext
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fc548: .word gSoundContext
@@ -141,5 +141,5 @@ L_021fc56c: .word 0xc7fb
 L_021fc570: .word data_020f4e14
 L_021fc574: .word gDebugFont
 L_021fc578: .word data_ov004_021fcd40
-    .size func_ov004_021fc3ac, .-func_ov004_021fc3ac
+    .size Overlay004_UpdateEntryPhase, .-Overlay004_UpdateEntryPhase
 

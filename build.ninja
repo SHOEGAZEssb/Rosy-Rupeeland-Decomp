@@ -22706,7 +22706,7 @@ build build/reports/overlay004_coordinate_state_set.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o
 build build/reports/overlay004_coordinate_state_set.txt: match_report build/reports/overlay004_coordinate_state_set.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_coordinate_state_set.json
-  report_args = --section .text --function func_ov004_021fb6e4 --require-exact
+  report_args = --section .text --function Overlay004_SetCoordinateState --require-exact
 build overlay004_coordinate_state_set: phony build/decomp/src/overlays/ov004/overlay004_coordinate_state_set.o build/decomp/asm/overlays/ov004/overlay004_coordinate_state_set_021fb6e4.o build/reports/overlay004_coordinate_state_set.txt
 
 overlay004_presentation_constructor_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22720,7 +22720,7 @@ build build/reports/overlay004_presentation_constructor.json: objdiff build/deco
   base_object = build/decomp/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o
 build build/reports/overlay004_presentation_constructor.txt: match_report build/reports/overlay004_presentation_constructor.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_presentation_constructor.json
-  report_args = --section .text --function func_ov004_021fb70c --require-exact
+  report_args = --section .text --function Overlay004_Presentation_Init --require-exact
 build overlay004_presentation_constructor: phony build/decomp/src/overlays/ov004/overlay004_presentation_constructor.o build/decomp/asm/overlays/ov004/overlay004_presentation_constructor_021fb70c.o build/reports/overlay004_presentation_constructor.txt
 
 overlay004_presentation_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22747,7 +22747,7 @@ build build/reports/overlay004_presentation_delete.json: objdiff build/decomp/de
   base_object = build/decomp/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o
 build build/reports/overlay004_presentation_delete.txt: match_report build/reports/overlay004_presentation_delete.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_presentation_delete.json
-  report_args = --section .text --function func_ov004_021fb8e4 --require-exact
+  report_args = --section .text --function Overlay004_Presentation_Delete --require-exact
 build overlay004_presentation_delete: phony build/decomp/src/overlays/ov004/overlay004_presentation_delete.o build/decomp/asm/overlays/ov004/overlay004_presentation_delete_021fb8e4.o build/reports/overlay004_presentation_delete.txt
 
 overlay004_background_hardware_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22761,7 +22761,7 @@ build build/reports/overlay004_background_hardware_setup.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o
 build build/reports/overlay004_background_hardware_setup.txt: match_report build/reports/overlay004_background_hardware_setup.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_background_hardware_setup.json
-  report_args = --section .text --function func_ov004_021fb968 --require-exact
+  report_args = --section .text --function Overlay004_SetupBackgroundHardware --require-exact
 build overlay004_background_hardware_setup: phony build/decomp/src/overlays/ov004/overlay004_background_hardware_setup.o build/decomp/asm/overlays/ov004/overlay004_background_hardware_setup_021fb968.o build/reports/overlay004_background_hardware_setup.txt
 
 overlay004_variant_resources_load_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22775,7 +22775,7 @@ build build/reports/overlay004_variant_resources_load.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov004/overlay004_variant_resources_load_021fba28.o
 build build/reports/overlay004_variant_resources_load.txt: match_report build/reports/overlay004_variant_resources_load.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_variant_resources_load.json
-  report_args = --section .text --function func_ov004_021fba28 --require-exact
+  report_args = --section .text --function Overlay004_LoadVariantResources --require-exact
 build overlay004_variant_resources_load: phony build/decomp/src/overlays/ov004/overlay004_variant_resources_load.o build/decomp/asm/overlays/ov004/overlay004_variant_resources_load_021fba28.o build/reports/overlay004_variant_resources_load.txt
 
 overlay004_context_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22789,7 +22789,7 @@ build build/reports/overlay004_context_update.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov004/overlay004_context_update_021fbf10.o
 build build/reports/overlay004_context_update.txt: match_report build/reports/overlay004_context_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_context_update.json
-  report_args = --section .text --function func_ov004_021fbf10 --require-exact
+  report_args = --section .text --function Overlay004_UpdateContext --require-exact
 build overlay004_context_update: phony build/decomp/src/overlays/ov004/overlay004_context_update.o build/decomp/asm/overlays/ov004/overlay004_context_update_021fbf10.o build/reports/overlay004_context_update.txt
 
 overlay004_sprite_controller_construct_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22803,7 +22803,7 @@ build build/reports/overlay004_sprite_controller_construct.json: objdiff build/d
   base_object = build/decomp/asm/overlays/ov004/overlay004_sprite_controller_construct_021fbf40.o
 build build/reports/overlay004_sprite_controller_construct.txt: match_report build/reports/overlay004_sprite_controller_construct.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_sprite_controller_construct.json
-  report_args = --section .text --function func_ov004_021fbf40 --require-exact
+  report_args = --section .text --function Overlay004_SpriteController_Init --require-exact
 build overlay004_sprite_controller_construct: phony build/decomp/src/overlays/ov004/overlay004_sprite_controller_construct.o build/decomp/asm/overlays/ov004/overlay004_sprite_controller_construct_021fbf40.o build/reports/overlay004_sprite_controller_construct.txt
 
 overlay004_affine_background_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22817,7 +22817,7 @@ build build/reports/overlay004_affine_background_apply.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov004/overlay004_affine_background_apply_021fc24c.o
 build build/reports/overlay004_affine_background_apply.txt: match_report build/reports/overlay004_affine_background_apply.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_affine_background_apply.json
-  report_args = --section .text --function func_ov004_021fc24c --require-exact
+  report_args = --section .text --function Overlay004_ApplyAffineBackground --require-exact
 build overlay004_affine_background_apply: phony build/decomp/src/overlays/ov004/overlay004_affine_background_apply.o build/decomp/asm/overlays/ov004/overlay004_affine_background_apply_021fc24c.o build/reports/overlay004_affine_background_apply.txt
 
 overlay004_entry_phase_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22831,7 +22831,7 @@ build build/reports/overlay004_entry_phase_update.json: objdiff build/decomp/del
   base_object = build/decomp/asm/overlays/ov004/overlay004_entry_phase_update_021fc3ac.o
 build build/reports/overlay004_entry_phase_update.txt: match_report build/reports/overlay004_entry_phase_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_entry_phase_update.json
-  report_args = --section .text --function func_ov004_021fc3ac --require-exact
+  report_args = --section .text --function Overlay004_UpdateEntryPhase --require-exact
 build overlay004_entry_phase_update: phony build/decomp/src/overlays/ov004/overlay004_entry_phase_update.o build/decomp/asm/overlays/ov004/overlay004_entry_phase_update_021fc3ac.o build/reports/overlay004_entry_phase_update.txt
 
 overlay004_main_phase_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22845,7 +22845,7 @@ build build/reports/overlay004_main_phase_update.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/overlays/ov004/overlay004_main_phase_update_021fc57c.o
 build build/reports/overlay004_main_phase_update.txt: match_report build/reports/overlay004_main_phase_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_main_phase_update.json
-  report_args = --section .text --function func_ov004_021fc57c --require-exact
+  report_args = --section .text --function Overlay004_UpdateMainPhase --require-exact
 build overlay004_main_phase_update: phony build/decomp/src/overlays/ov004/overlay004_main_phase_update.o build/decomp/asm/overlays/ov004/overlay004_main_phase_update_021fc57c.o build/reports/overlay004_main_phase_update.txt
 
 overlay004_context_finish_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22885,7 +22885,7 @@ build build/reports/overlay004_variant_controller_construct.json: objdiff build/
   base_object = build/decomp/asm/overlays/ov004/overlay004_variant_controller_construct_021fc944.o
 build build/reports/overlay004_variant_controller_construct.txt: match_report build/reports/overlay004_variant_controller_construct.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_variant_controller_construct.json
-  report_args = --section .text --function func_ov004_021fc944 --require-exact
+  report_args = --section .text --function Overlay004_VariantController_Init --require-exact
 build overlay004_variant_controller_construct: phony build/decomp/src/overlays/ov004/overlay004_variant_controller_construct.o build/decomp/asm/overlays/ov004/overlay004_variant_controller_construct_021fc944.o build/reports/overlay004_variant_controller_construct.txt
 
 overlay004_variant_controller_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22938,7 +22938,7 @@ build build/reports/overlay004_variant_transition_update.json: objdiff build/dec
   base_object = build/decomp/asm/overlays/ov004/overlay004_variant_transition_update_021fcab8.o
 build build/reports/overlay004_variant_transition_update.txt: match_report build/reports/overlay004_variant_transition_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay004_variant_transition_update.json
-  report_args = --section .text --function func_ov004_021fcab8 --require-exact
+  report_args = --section .text --function Overlay004_UpdateVariantTransition --require-exact
 build overlay004_variant_transition_update: phony build/decomp/src/overlays/ov004/overlay004_variant_transition_update.o build/decomp/asm/overlays/ov004/overlay004_variant_transition_update_021fcab8.o build/reports/overlay004_variant_transition_update.txt
 
 overlay004_transition_complete_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22978,7 +22978,7 @@ build build/reports/overlay005_render_effect_construct.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov005/overlay005_render_effect_construct_021fb6e4.o
 build build/reports/overlay005_render_effect_construct.txt: match_report build/reports/overlay005_render_effect_construct.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_render_effect_construct.json
-  report_args = --section .text --function func_ov005_021fb6e4 --require-exact
+  report_args = --section .text --function Overlay005_RenderEffect_Init --require-exact
 build overlay005_render_effect_construct: phony build/decomp/src/overlays/ov005/overlay005_render_effect_construct.o build/decomp/asm/overlays/ov005/overlay005_render_effect_construct_021fb6e4.o build/reports/overlay005_render_effect_construct.txt
 
 overlay005_render_effect_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -22992,7 +22992,7 @@ build build/reports/overlay005_render_effect_update.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov005/overlay005_render_effect_update_021fb75c.o
 build build/reports/overlay005_render_effect_update.txt: match_report build/reports/overlay005_render_effect_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_render_effect_update.json
-  report_args = --section .text --function func_ov005_021fb75c --require-exact
+  report_args = --section .text --function Overlay005_UpdateRenderEffect --require-exact
 build overlay005_render_effect_update: phony build/decomp/src/overlays/ov005/overlay005_render_effect_update.o build/decomp/asm/overlays/ov005/overlay005_render_effect_update_021fb75c.o build/reports/overlay005_render_effect_update.txt
 
 overlay005_counter_state_init_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23032,7 +23032,7 @@ build build/reports/overlay005_scene_population_construct.json: objdiff build/de
   base_object = build/decomp/asm/overlays/ov005/overlay005_scene_population_construct_021fb86c.o
 build build/reports/overlay005_scene_population_construct.txt: match_report build/reports/overlay005_scene_population_construct.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_scene_population_construct.json
-  report_args = --section .text --function func_ov005_021fb86c --require-exact
+  report_args = --section .text --function Overlay005_ScenePopulation_Init --require-exact
 build overlay005_scene_population_construct: phony build/decomp/src/overlays/ov005/overlay005_scene_population_construct.o build/decomp/asm/overlays/ov005/overlay005_scene_population_construct_021fb86c.o build/reports/overlay005_scene_population_construct.txt
 
 overlay005_scene_population_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23059,7 +23059,7 @@ build build/reports/overlay005_scene_population_update.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov005/overlay005_scene_population_update_021fbbe8.o
 build build/reports/overlay005_scene_population_update.txt: match_report build/reports/overlay005_scene_population_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_scene_population_update.json
-  report_args = --section .text --function func_ov005_021fbbe8 --require-exact
+  report_args = --section .text --function Overlay005_UpdateScenePopulation --require-exact
 build overlay005_scene_population_update: phony build/decomp/src/overlays/ov005/overlay005_scene_population_update.o build/decomp/asm/overlays/ov005/overlay005_scene_population_update_021fbbe8.o build/reports/overlay005_scene_population_update.txt
 
 overlay005_context_pair_set_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23086,7 +23086,7 @@ build build/reports/overlay005_scene_selection_set.json: objdiff build/decomp/de
   base_object = build/decomp/asm/overlays/ov005/overlay005_scene_selection_set_021fbd74.o
 build build/reports/overlay005_scene_selection_set.txt: match_report build/reports/overlay005_scene_selection_set.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_scene_selection_set.json
-  report_args = --section .text --function func_ov005_021fbd74 --require-exact
+  report_args = --section .text --function Overlay005_SetSceneSelection --require-exact
 build overlay005_scene_selection_set: phony build/decomp/src/overlays/ov005/overlay005_scene_selection_set.o build/decomp/asm/overlays/ov005/overlay005_scene_selection_set_021fbd74.o build/reports/overlay005_scene_selection_set.txt
 
 overlay005_draw_pair_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23126,7 +23126,7 @@ build build/reports/overlay005_transition_state_init.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov005/overlay005_transition_state_init_021fbe44.o
 build build/reports/overlay005_transition_state_init.txt: match_report build/reports/overlay005_transition_state_init.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_transition_state_init.json
-  report_args = --section .text --function func_ov005_021fbe44 --require-exact
+  report_args = --section .text --function Overlay005_InitTransitionState --require-exact
 build overlay005_transition_state_init: phony build/decomp/src/overlays/ov005/overlay005_transition_state_init.o build/decomp/asm/overlays/ov005/overlay005_transition_state_init_021fbe44.o build/reports/overlay005_transition_state_init.txt
 
 overlay005_presentation_construct_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23140,7 +23140,7 @@ build build/reports/overlay005_presentation_construct.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov005/overlay005_presentation_construct_021fbe6c.o
 build build/reports/overlay005_presentation_construct.txt: match_report build/reports/overlay005_presentation_construct.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_presentation_construct.json
-  report_args = --section .text --function func_ov005_021fbe6c --require-exact
+  report_args = --section .text --function Overlay005_Presentation_Init --require-exact
 build overlay005_presentation_construct: phony build/decomp/src/overlays/ov005/overlay005_presentation_construct.o build/decomp/asm/overlays/ov005/overlay005_presentation_construct_021fbe6c.o build/reports/overlay005_presentation_construct.txt
 
 overlay005_presentation_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23154,7 +23154,7 @@ build build/reports/overlay005_presentation_destroy.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov005/overlay005_presentation_destroy_021fc110.o
 build build/reports/overlay005_presentation_destroy.txt: match_report build/reports/overlay005_presentation_destroy.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_presentation_destroy.json
-  report_args = --section .text --function func_ov005_021fc110 --require-exact
+  report_args = --section .text --function Overlay005_Presentation_Destroy --require-exact
 build overlay005_presentation_destroy: phony build/decomp/src/overlays/ov005/overlay005_presentation_destroy.o build/decomp/asm/overlays/ov005/overlay005_presentation_destroy_021fc110.o build/reports/overlay005_presentation_destroy.txt
 
 overlay005_presentation_delete_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23168,7 +23168,7 @@ build build/reports/overlay005_presentation_delete.json: objdiff build/decomp/de
   base_object = build/decomp/asm/overlays/ov005/overlay005_presentation_delete_021fc1c0.o
 build build/reports/overlay005_presentation_delete.txt: match_report build/reports/overlay005_presentation_delete.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_presentation_delete.json
-  report_args = --section .text --function func_ov005_021fc1c0 --require-exact
+  report_args = --section .text --function Overlay005_Presentation_Delete --require-exact
 build overlay005_presentation_delete: phony build/decomp/src/overlays/ov005/overlay005_presentation_delete.o build/decomp/asm/overlays/ov005/overlay005_presentation_delete_021fc1c0.o build/reports/overlay005_presentation_delete.txt
 
 overlay005_graphics_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23182,7 +23182,7 @@ build build/reports/overlay005_graphics_setup.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov005/overlay005_graphics_setup_021fc278.o
 build build/reports/overlay005_graphics_setup.txt: match_report build/reports/overlay005_graphics_setup.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_graphics_setup.json
-  report_args = --section .text --function func_ov005_021fc278 --require-exact
+  report_args = --section .text --function Overlay005_SetupGraphics --require-exact
 build overlay005_graphics_setup: phony build/decomp/src/overlays/ov005/overlay005_graphics_setup.o build/decomp/asm/overlays/ov005/overlay005_graphics_setup_021fc278.o build/reports/overlay005_graphics_setup.txt
 
 overlay005_presentation_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23209,7 +23209,7 @@ build build/reports/overlay005_transition_prime.json: objdiff build/decomp/delin
   base_object = build/decomp/asm/overlays/ov005/overlay005_transition_prime_021fc610.o
 build build/reports/overlay005_transition_prime.txt: match_report build/reports/overlay005_transition_prime.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_transition_prime.json
-  report_args = --section .text --function func_ov005_021fc610 --require-exact
+  report_args = --section .text --function Overlay005_PrimeTransition --require-exact
 build overlay005_transition_prime: phony build/decomp/src/overlays/ov005/overlay005_transition_prime.o build/decomp/asm/overlays/ov005/overlay005_transition_prime_021fc610.o build/reports/overlay005_transition_prime.txt
 
 overlay005_entry_transition_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23223,7 +23223,7 @@ build build/reports/overlay005_entry_transition_update.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov005/overlay005_entry_transition_update_021fc638.o
 build build/reports/overlay005_entry_transition_update.txt: match_report build/reports/overlay005_entry_transition_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_entry_transition_update.json
-  report_args = --section .text --function func_ov005_021fc638 --require-exact
+  report_args = --section .text --function Overlay005_UpdateEntryTransition --require-exact
 build overlay005_entry_transition_update: phony build/decomp/src/overlays/ov005/overlay005_entry_transition_update.o build/decomp/asm/overlays/ov005/overlay005_entry_transition_update_021fc638.o build/reports/overlay005_entry_transition_update.txt
 
 overlay005_display_mode_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23250,7 +23250,7 @@ build build/reports/overlay005_scanline_scroll_update.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov005/overlay005_scanline_scroll_update_021fc7d8.o
 build build/reports/overlay005_scanline_scroll_update.txt: match_report build/reports/overlay005_scanline_scroll_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay005_scanline_scroll_update.json
-  report_args = --section .text --function func_ov005_021fc7d8 --require-exact
+  report_args = --section .text --function Overlay005_UpdateScanlineScroll --require-exact
 build overlay005_scanline_scroll_update: phony build/decomp/src/overlays/ov005/overlay005_scanline_scroll_update.o build/decomp/asm/overlays/ov005/overlay005_scanline_scroll_update_021fc7d8.o build/reports/overlay005_scanline_scroll_update.txt
 
 overlay005_render_noop_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23316,7 +23316,7 @@ build build/reports/overlay006_transition_state_init.json: objdiff build/decomp/
   base_object = build/decomp/asm/overlays/ov006/overlay006_transition_state_init_021fb6e0.o
 build build/reports/overlay006_transition_state_init.txt: match_report build/reports/overlay006_transition_state_init.json | tools/report_objdiff.py
   report_json = build/reports/overlay006_transition_state_init.json
-  report_args = --section .text --function func_ov006_021fb6e0 --require-exact
+  report_args = --section .text --function Overlay006_InitTransitionState --require-exact
 build overlay006_transition_state_init: phony build/decomp/src/overlays/ov006/overlay006_transition_state_init.o build/decomp/asm/overlays/ov006/overlay006_transition_state_init_021fb6e0.o build/reports/overlay006_transition_state_init.txt
 
 overlay006_presentation_construct_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23330,7 +23330,7 @@ build build/reports/overlay006_presentation_construct.json: objdiff build/decomp
   base_object = build/decomp/asm/overlays/ov006/overlay006_presentation_construct_021fb708.o
 build build/reports/overlay006_presentation_construct.txt: match_report build/reports/overlay006_presentation_construct.json | tools/report_objdiff.py
   report_json = build/reports/overlay006_presentation_construct.json
-  report_args = --section .text --function func_ov006_021fb708 --require-exact
+  report_args = --section .text --function Overlay006_Presentation_Init --require-exact
 build overlay006_presentation_construct: phony build/decomp/src/overlays/ov006/overlay006_presentation_construct.o build/decomp/asm/overlays/ov006/overlay006_presentation_construct_021fb708.o build/reports/overlay006_presentation_construct.txt
 
 overlay006_presentation_destroy_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23370,7 +23370,7 @@ build build/reports/overlay006_auxiliary_toggle_update.json: objdiff build/decom
   base_object = build/decomp/asm/overlays/ov006/overlay006_auxiliary_toggle_update_021fb950.o
 build build/reports/overlay006_auxiliary_toggle_update.txt: match_report build/reports/overlay006_auxiliary_toggle_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay006_auxiliary_toggle_update.json
-  report_args = --section .text --function func_ov006_021fb950 --require-exact
+  report_args = --section .text --function Overlay006_UpdateAuxiliaryToggle --require-exact
 build overlay006_auxiliary_toggle_update: phony build/decomp/src/overlays/ov006/overlay006_auxiliary_toggle_update.o build/decomp/asm/overlays/ov006/overlay006_auxiliary_toggle_update_021fb950.o build/reports/overlay006_auxiliary_toggle_update.txt
 
 overlay006_geometry_interpolate_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23384,7 +23384,7 @@ build build/reports/overlay006_geometry_interpolate.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov006/overlay006_geometry_interpolate_021fb9b4.o
 build build/reports/overlay006_geometry_interpolate.txt: match_report build/reports/overlay006_geometry_interpolate.json | tools/report_objdiff.py
   report_json = build/reports/overlay006_geometry_interpolate.json
-  report_args = --section .text --function func_ov006_021fb9b4 --require-exact
+  report_args = --section .text --function Overlay006_InterpolateGeometry --require-exact
 build overlay006_geometry_interpolate: phony build/decomp/src/overlays/ov006/overlay006_geometry_interpolate.o build/decomp/asm/overlays/ov006/overlay006_geometry_interpolate_021fb9b4.o build/reports/overlay006_geometry_interpolate.txt
 
 overlay006_transition_prepare_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23398,7 +23398,7 @@ build build/reports/overlay006_transition_prepare.json: objdiff build/decomp/del
   base_object = build/decomp/asm/overlays/ov006/overlay006_transition_prepare_021fba8c.o
 build build/reports/overlay006_transition_prepare.txt: match_report build/reports/overlay006_transition_prepare.json | tools/report_objdiff.py
   report_json = build/reports/overlay006_transition_prepare.json
-  report_args = --section .text --function func_ov006_021fba8c --require-exact
+  report_args = --section .text --function Overlay006_PrepareTransition --require-exact
 build overlay006_transition_prepare: phony build/decomp/src/overlays/ov006/overlay006_transition_prepare.o build/decomp/asm/overlays/ov006/overlay006_transition_prepare_021fba8c.o build/reports/overlay006_transition_prepare.txt
 
 overlay006_selection_interaction_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23412,7 +23412,7 @@ build build/reports/overlay006_selection_interaction_update.json: objdiff build/
   base_object = build/decomp/asm/overlays/ov006/overlay006_selection_interaction_update_021fbafc.o
 build build/reports/overlay006_selection_interaction_update.txt: match_report build/reports/overlay006_selection_interaction_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay006_selection_interaction_update.json
-  report_args = --section .text --function func_ov006_021fbafc --require-exact
+  report_args = --section .text --function Overlay006_UpdateSelectionInteraction --require-exact
 build overlay006_selection_interaction_update: phony build/decomp/src/overlays/ov006/overlay006_selection_interaction_update.o build/decomp/asm/overlays/ov006/overlay006_selection_interaction_update_021fbafc.o build/reports/overlay006_selection_interaction_update.txt
 
 overlay006_display_helper_apply_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23478,7 +23478,7 @@ build build/reports/overlay007_items_populate.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov007/overlay007_items_populate_021fb788.o
 build build/reports/overlay007_items_populate.txt: match_report build/reports/overlay007_items_populate.json | tools/report_objdiff.py
   report_json = build/reports/overlay007_items_populate.json
-  report_args = --section .text --function func_ov007_021fb788 --require-exact
+  report_args = --section .text --function Overlay007_PopulateItems --require-exact
 build overlay007_items_populate: phony build/decomp/src/overlays/ov007/overlay007_items_populate.o build/decomp/asm/overlays/ov007/overlay007_items_populate_021fb788.o build/reports/overlay007_items_populate.txt
 
 overlay007_graphics_setup_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23492,7 +23492,7 @@ build build/reports/overlay007_graphics_setup.json: objdiff build/decomp/delinks
   base_object = build/decomp/asm/overlays/ov007/overlay007_graphics_setup_021fbaf0.o
 build build/reports/overlay007_graphics_setup.txt: match_report build/reports/overlay007_graphics_setup.json | tools/report_objdiff.py
   report_json = build/reports/overlay007_graphics_setup.json
-  report_args = --section .text --function func_ov007_021fbaf0 --require-exact
+  report_args = --section .text --function Overlay007_SetupGraphics --require-exact
 build overlay007_graphics_setup: phony build/decomp/src/overlays/ov007/overlay007_graphics_setup.o build/decomp/asm/overlays/ov007/overlay007_graphics_setup_021fbaf0.o build/reports/overlay007_graphics_setup.txt
 
 overlay007_items_hide_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23506,7 +23506,7 @@ build build/reports/overlay007_items_hide.json: objdiff build/decomp/delinks/asm
   base_object = build/decomp/asm/overlays/ov007/overlay007_items_hide_021fbc80.o
 build build/reports/overlay007_items_hide.txt: match_report build/reports/overlay007_items_hide.json | tools/report_objdiff.py
   report_json = build/reports/overlay007_items_hide.json
-  report_args = --section .text --function func_ov007_021fbc80 --require-exact
+  report_args = --section .text --function Overlay007_HideItems --require-exact
 build overlay007_items_hide: phony build/decomp/src/overlays/ov007/overlay007_items_hide.o build/decomp/asm/overlays/ov007/overlay007_items_hide_021fbc80.o build/reports/overlay007_items_hide.txt
 
 overlay007_items_frame_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23520,7 +23520,7 @@ build build/reports/overlay007_items_frame_update.json: objdiff build/decomp/del
   base_object = build/decomp/asm/overlays/ov007/overlay007_items_frame_update_021fbcd8.o
 build build/reports/overlay007_items_frame_update.txt: match_report build/reports/overlay007_items_frame_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay007_items_frame_update.json
-  report_args = --section .text --function func_ov007_021fbcd8 --require-exact
+  report_args = --section .text --function Overlay007_UpdateItemFrames --require-exact
 build overlay007_items_frame_update: phony build/decomp/src/overlays/ov007/overlay007_items_frame_update.o build/decomp/asm/overlays/ov007/overlay007_items_frame_update_021fbcd8.o build/reports/overlay007_items_frame_update.txt
 
 overlay007_items_render_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23534,7 +23534,7 @@ build build/reports/overlay007_items_render.json: objdiff build/decomp/delinks/a
   base_object = build/decomp/asm/overlays/ov007/overlay007_items_render_021fbfdc.o
 build build/reports/overlay007_items_render.txt: match_report build/reports/overlay007_items_render.json | tools/report_objdiff.py
   report_json = build/reports/overlay007_items_render.json
-  report_args = --section .text --function func_ov007_021fbfdc --require-exact
+  report_args = --section .text --function Overlay007_RenderItems --require-exact
 build overlay007_items_render: phony build/decomp/src/overlays/ov007/overlay007_items_render.o build/decomp/asm/overlays/ov007/overlay007_items_render_021fbfdc.o build/reports/overlay007_items_render.txt
 
 overlay007_item_bucket_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23548,7 +23548,7 @@ build build/reports/overlay007_item_bucket_update.json: objdiff build/decomp/del
   base_object = build/decomp/asm/overlays/ov007/overlay007_item_bucket_update_021fc0dc.o
 build build/reports/overlay007_item_bucket_update.txt: match_report build/reports/overlay007_item_bucket_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay007_item_bucket_update.json
-  report_args = --section .text --function func_ov007_021fc0dc --require-exact
+  report_args = --section .text --function Overlay007_UpdateItemBucket --require-exact
 build overlay007_item_bucket_update: phony build/decomp/src/overlays/ov007/overlay007_item_bucket_update.o build/decomp/asm/overlays/ov007/overlay007_item_bucket_update_021fc0dc.o build/reports/overlay007_item_bucket_update.txt
 
 overlay007_primary_jitter_start_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23575,7 +23575,7 @@ build build/reports/overlay007_indexed_mode_start.json: objdiff build/decomp/del
   base_object = build/decomp/asm/overlays/ov007/overlay007_indexed_mode_start_021fc19c.o
 build build/reports/overlay007_indexed_mode_start.txt: match_report build/reports/overlay007_indexed_mode_start.json | tools/report_objdiff.py
   report_json = build/reports/overlay007_indexed_mode_start.json
-  report_args = --section .text --function func_ov007_021fc19c --require-exact
+  report_args = --section .text --function Overlay007_StartIndexedMode --require-exact
 build overlay007_indexed_mode_start: phony build/decomp/src/overlays/ov007/overlay007_indexed_mode_start.o build/decomp/asm/overlays/ov007/overlay007_indexed_mode_start_021fc19c.o build/reports/overlay007_indexed_mode_start.txt
 
 overlay007_primary_mode_clear_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23628,7 +23628,7 @@ build build/reports/overlay008_controller_construct.json: objdiff build/decomp/d
   base_object = build/decomp/asm/overlays/ov008/overlay008_controller_construct_021fb720.o
 build build/reports/overlay008_controller_construct.txt: match_report build/reports/overlay008_controller_construct.json | tools/report_objdiff.py
   report_json = build/reports/overlay008_controller_construct.json
-  report_args = --section .text --function func_ov008_021fb720 --require-exact
+  report_args = --section .text --function Overlay008_Controller_Init --require-exact
 build overlay008_controller_construct: phony build/decomp/src/overlays/ov008/overlay008_controller_construct.o build/decomp/asm/overlays/ov008/overlay008_controller_construct_021fb720.o build/reports/overlay008_controller_construct.txt
 
 overlay008_object_initialize_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23642,7 +23642,7 @@ build build/reports/overlay008_object_initialize.json: objdiff build/decomp/deli
   base_object = build/decomp/asm/overlays/ov008/overlay008_object_initialize_021fb814.o
 build build/reports/overlay008_object_initialize.txt: match_report build/reports/overlay008_object_initialize.json | tools/report_objdiff.py
   report_json = build/reports/overlay008_object_initialize.json
-  report_args = --section .text --function func_ov008_021fb814 --require-exact
+  report_args = --section .text --function Overlay008_InitializeObject --require-exact
 build overlay008_object_initialize: phony build/decomp/src/overlays/ov008/overlay008_object_initialize.o build/decomp/asm/overlays/ov008/overlay008_object_initialize_021fb814.o build/reports/overlay008_object_initialize.txt
 
 overlay008_particles_spawn_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23656,7 +23656,7 @@ build build/reports/overlay008_particles_spawn.json: objdiff build/decomp/delink
   base_object = build/decomp/asm/overlays/ov008/overlay008_particles_spawn_021fb868.o
 build build/reports/overlay008_particles_spawn.txt: match_report build/reports/overlay008_particles_spawn.json | tools/report_objdiff.py
   report_json = build/reports/overlay008_particles_spawn.json
-  report_args = --section .text --function func_ov008_021fb868 --require-exact
+  report_args = --section .text --function Overlay008_SpawnParticles --require-exact
 build overlay008_particles_spawn: phony build/decomp/src/overlays/ov008/overlay008_particles_spawn.o build/decomp/asm/overlays/ov008/overlay008_particles_spawn_021fb868.o build/reports/overlay008_particles_spawn.txt
 
 overlay008_particles_update_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23670,7 +23670,7 @@ build build/reports/overlay008_particles_update.json: objdiff build/decomp/delin
   base_object = build/decomp/asm/overlays/ov008/overlay008_particles_update_021fbd1c.o
 build build/reports/overlay008_particles_update.txt: match_report build/reports/overlay008_particles_update.json | tools/report_objdiff.py
   report_json = build/reports/overlay008_particles_update.json
-  report_args = --section .text --function func_ov008_021fbd1c --require-exact
+  report_args = --section .text --function Overlay008_UpdateParticles --require-exact
 build overlay008_particles_update: phony build/decomp/src/overlays/ov008/overlay008_particles_update.o build/decomp/asm/overlays/ov008/overlay008_particles_update_021fbd1c.o build/reports/overlay008_particles_update.txt
 
 overlay008_particles_render_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++
@@ -23684,7 +23684,7 @@ build build/reports/overlay008_particles_render.json: objdiff build/decomp/delin
   base_object = build/decomp/asm/overlays/ov008/overlay008_particles_render_021fbe0c.o
 build build/reports/overlay008_particles_render.txt: match_report build/reports/overlay008_particles_render.json | tools/report_objdiff.py
   report_json = build/reports/overlay008_particles_render.json
-  report_args = --section .text --function func_ov008_021fbe0c --require-exact
+  report_args = --section .text --function Overlay008_RenderParticles --require-exact
 build overlay008_particles_render: phony build/decomp/src/overlays/ov008/overlay008_particles_render.o build/decomp/asm/overlays/ov008/overlay008_particles_render_021fbe0c.o build/reports/overlay008_particles_render.txt
 
 overlay009_display_select_cflags = -proc arm946e -O4 -inline off -ipa function -interworking -Cpp_exceptions off -lang c++

@@ -26,7 +26,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov007_021fc0dc(void *state, s32 value)
+void Overlay007_UpdateItemBucket(void *state, s32 value)
 {
     s32 bucket = func_020befec(value + 59, 60);
     void *object;

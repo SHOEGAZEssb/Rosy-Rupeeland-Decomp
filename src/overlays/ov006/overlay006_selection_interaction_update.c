@@ -17,13 +17,13 @@ extern "C" {
 #endif
 extern void IndexedSelectionController_ResetTransition(void *controller);
 extern s32 IndexedSelectionController_AdvancePacing(void *controller);
-extern void func_ov006_021fb9b4(void *state);
+extern void Overlay006_InterpolateGeometry(void *state);
 extern void IndexedSelectionController_SnapTransitionOrigin(void *controller);
 extern void IndexedSelectionController_Increment(void *controller);
 extern void IndexedSelectionController_Decrement(void *controller);
 extern s32 IndexedSelectionController_AdvanceTransition(void *controller);
 extern void SceneSound_PlayPackedEffect(void *state, s32 value);
-extern s32 func_ov006_021fb950(void *state);
+extern s32 Overlay006_UpdateAuxiliaryToggle(void *state);
 #ifdef __cplusplus
 }
 #endif
@@ -38,19 +38,19 @@ static void overlay006_advance_selection(Overlay006SelectionState *state)
 /*
  * In phase zero, call IndexedSelectionController_ResetTransition on controller +0x58, advance, and fall
  * through. Phase one polls IndexedSelectionController_AdvancePacing. While false, update geometry through
- * func_ov006_021fb9b4 and finish the frame. When true, update geometry only if
+ * Overlay006_InterpolateGeometry and finish the frame. When true, update geometry only if
  * +0x64 differs from +0x68, advance to phase two, and process it immediately.
  * Phase two calls IndexedSelectionController_SnapTransitionOrigin, reads the input halfword through pointer +0x2C,
  * calls IndexedSelectionController_Increment for bit 0x40 or IndexedSelectionController_Decrement for bit 0x80, then polls
  * IndexedSelectionController_AdvanceTransition. When that poll succeeds, call SceneSound_PlayPackedEffect(state,0), decrement
- * phase back to one, and clear the timer. Always call func_ov006_021fb950 and
+ * phase back to one, and clear the timer. Always call Overlay006_UpdateAuxiliaryToggle and
  * return zero. Controller/input meanings beyond these confirmed branches remain
  * unidentified; effects are delegated and there is no direct hardware access.
  */
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov006_021fbafc(Overlay006SelectionState *state)
+s32 Overlay006_UpdateSelectionInteraction(Overlay006SelectionState *state)
 {
     void *controller = (u8 *)state + 0x58;
 
@@ -62,11 +62,11 @@ s32 func_ov006_021fbafc(Overlay006SelectionState *state)
     case 1:
         if (IndexedSelectionController_AdvancePacing(controller)) {
             if (FIELD(s32, state, 0x064) != FIELD(s32, state, 0x068)) {
-                func_ov006_021fb9b4(state);
+                Overlay006_InterpolateGeometry(state);
             }
             overlay006_advance_selection(state);
         } else {
-            func_ov006_021fb9b4(state);
+            Overlay006_InterpolateGeometry(state);
             break;
         }
         /* Successful phase one intentionally enters phase two immediately. */
@@ -90,7 +90,7 @@ s32 func_ov006_021fbafc(Overlay006SelectionState *state)
         break;
     }
 
-    func_ov006_021fb950(state);
+    Overlay006_UpdateAuxiliaryToggle(state);
     return 0;
 }
 

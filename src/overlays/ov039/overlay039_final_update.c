@@ -51,8 +51,8 @@ extern s32 ActorRuntimeFlags_Test(void *object, s32 mode);
 extern void func_ov049_0220bbdc(void *system, const void *position,
                                 s32 index, s32 mode);
 extern void func_ov007_021fc16c(void *object);
-extern void func_ov007_021fc19c(void *object, s32 index);
-extern void func_ov007_021fc0dc(void *object, s32 mode);
+extern void Overlay007_StartIndexedMode(void *object, s32 index);
+extern void Overlay007_UpdateItemBucket(void *object, s32 mode);
 extern void func_ov007_021fc1d4(void *object);
 extern void Sound_StopAllDirectSequences(void *context, s32 mode);
 extern void Sound_PlayDirectSequence(void *context, s32 value);
@@ -115,7 +115,7 @@ extern "C" void func_ov039_02205c18(void *scene, const void *direction)
                       (u8 *)FIELD(void *, scene, 0x48) + 0x2c);
         FIELD(u16, child, 0x40) = 1;
         func_0209a2a4(child, 0);
-        func_ov007_021fc19c(FIELD(void *, FIELD(void *, scene, 0x80), 0x20), i);
+        Overlay007_StartIndexedMode(FIELD(void *, FIELD(void *, scene, 0x80), 0x20), i);
     }
     if (FIELD(s16, scene, 0xba) == 0) {
         GraphicsSpriteState_SetAnimationIndex(FIELD(void *, FIELD(void *, scene, 0x48), 0x0c), 0x18);

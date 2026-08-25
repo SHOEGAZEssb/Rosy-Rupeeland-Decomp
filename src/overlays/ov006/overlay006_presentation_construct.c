@@ -34,7 +34,7 @@ extern void func_ov046_0220bffc(void *helper, s32 controllerMember,
 extern void func_ov046_0220c478(void *helper, s32 controllerMember);
 extern void *AreaInfoPanelPresentation_Init(void *memory, void *owner);
 extern void func_02091b98(void *animation, s32 value);
-extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
+extern void Overlay006_InitTransitionState(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
@@ -57,7 +57,7 @@ extern void func_ov006_021fb6e0(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay006Presentation *func_ov006_021fb708(Overlay006Presentation *state)
+Overlay006Presentation *Overlay006_Presentation_Init(Overlay006Presentation *state)
 {
     void *helper;
     void *auxiliary;
@@ -94,7 +94,7 @@ Overlay006Presentation *func_ov006_021fb708(Overlay006Presentation *state)
     func_02091b98((u8 *)state + 0x98, 0x78);
     FIELD(s32, state, 0x0b4) = 1;
     FIELD(u32, state, 0x020) |= 0x400;
-    func_ov006_021fb6e0(state, data_ov006_021fbc58[0],
+    Overlay006_InitTransitionState(state, data_ov006_021fbc58[0],
                         data_ov006_021fbc58[1]);
     return state;
 }

@@ -10,7 +10,7 @@
     .extern ModalState_DrawFrame
     .extern ModalState_InitResources
     .extern ModalState_CopyAttachmentText
-    .extern func_ov006_021fb708
+    .extern Overlay006_Presentation_Init
     .extern gHeapContext
 
 /* Exact fallback; see the documented portable reconstruction in
@@ -45,7 +45,7 @@ func_ov013_021fda40:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_021fda7c
-    bl func_ov006_021fb708
+    bl Overlay006_Presentation_Init
 L_021fda7c:
     str r0, [r4, #0x9a8]
     ldr r0, [r4, #0x20]

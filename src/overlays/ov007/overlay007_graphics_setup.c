@@ -70,7 +70,7 @@ extern void GraphicsResourceSet_Destroy(Overlay007GraphicsResourceSet *set);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov007_021fbaf0(void *state)
+void Overlay007_SetupGraphics(void *state)
 {
     Overlay007GraphicsResourceSet set;
     Overlay007AffineMatrix matrix = {0x1000, 0, 0, 0x1000};

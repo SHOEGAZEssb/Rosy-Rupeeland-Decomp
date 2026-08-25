@@ -40,7 +40,7 @@ extern void func_02091b98(void *animation, s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov006_021fb9b4(Overlay006GeometryState *state)
+void Overlay006_InterpolateGeometry(Overlay006GeometryState *state)
 {
     void *helper = FIELD(void *, state, 0x090);
     s32 selected = FIELD(s32, state, 0x068);

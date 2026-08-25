@@ -44,7 +44,7 @@ func_ov041_0220106c: ; 0x0220106c
     beq .L_022010e0
     mov r1, r5
     mov r2, r9
-    bl func_ov007_021fb720 ; func_ov008_021fb720
+    bl func_ov007_021fb720 ; Overlay008_Controller_Init
 .L_022010e0:
     str r0, [r10, #0x958]
     ldr r1, .L_022012f0

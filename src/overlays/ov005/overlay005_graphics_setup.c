@@ -102,7 +102,7 @@ static void overlay005_select_resource_ids(const Overlay005GraphicsState *state,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov005_021fc278(Overlay005GraphicsState *state)
+void Overlay005_SetupGraphics(Overlay005GraphicsState *state)
 {
     Overlay005GraphicsResourceSet set;
     s32 first;

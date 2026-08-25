@@ -55,7 +55,7 @@ static u16 overlay008_random_color(void)
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov008_021fb868(void *state, s32 mode, s32 x, s32 y)
+void Overlay008_SpawnParticles(void *state, s32 mode, s32 x, s32 y)
 {
     s32 attempts;
     s32 attempt;

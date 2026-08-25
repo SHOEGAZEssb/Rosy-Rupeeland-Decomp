@@ -25,7 +25,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov008_021fb814(void *unused, void *object, s32 field30, s32 field34,
+void Overlay008_InitializeObject(void *unused, void *object, s32 field30, s32 field34,
                          s32 field38, u8 mode)
 {
     void *member;

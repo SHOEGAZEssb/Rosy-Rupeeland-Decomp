@@ -8,14 +8,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern void *func_ov005_021fc110(void *state);
+extern void *Overlay005_Presentation_Destroy(void *state);
 extern void Heap_Free(void *memory);
 #ifdef __cplusplus
 }
 #endif
 
 /*
- * Apply the documented non-deleting teardown in func_ov005_021fc110, including
+ * Apply the documented non-deleting teardown in Overlay005_Presentation_Destroy, including
  * controller/context/scene/resource release and sub-display restoration, then
  * pass state to Heap_Free and return the original pointer. The matching code
  * expands that teardown inline; this portable form expresses the equivalent
@@ -24,9 +24,9 @@ extern void Heap_Free(void *memory);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov005_021fc1c0(void *state)
+void *Overlay005_Presentation_Delete(void *state)
 {
-    func_ov005_021fc110(state);
+    Overlay005_Presentation_Destroy(state);
     Heap_Free(state);
     return state;
 }

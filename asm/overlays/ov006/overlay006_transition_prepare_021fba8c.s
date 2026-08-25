@@ -1,13 +1,13 @@
     .text
-    .extern func_ov006_021fb9b4
+    .extern Overlay006_InterpolateGeometry
     .extern AreaInfoPanelPresentation_ShowIndex
-    .extern func_ov006_021fb6e0
+    .extern Overlay006_InitTransitionState
     .extern data_ov006_021fbc48
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov006/overlay006_transition_prepare.c. */
-    .global func_ov006_021fba8c
-func_ov006_021fba8c: ; 0x021fba8c
+    .global Overlay006_PrepareTransition
+Overlay006_PrepareTransition: ; 0x021fba8c
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r1, [r4, #0x4]
@@ -17,7 +17,7 @@ func_ov006_021fba8c: ; 0x021fba8c
     beq L_021fbad0
     b L_021fbaf0
 L_021fbaac:
-    bl func_ov006_021fb9b4
+    bl Overlay006_InterpolateGeometry
     ldr r0, [r4, #0x94]
     ldr r1, [r4, #0x64]
     bl AreaInfoPanelPresentation_ShowIndex
@@ -34,10 +34,10 @@ L_021fbad0:
     str r0, [r4, #0x20]
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov006_021fb6e0
+    bl Overlay006_InitTransitionState
 L_021fbaf0:
     mov r0, #0x0
     ldmia sp!, {r4, pc}
 L_021fbaf8: .word data_ov006_021fbc48
 
-    .size func_ov006_021fba8c, .-func_ov006_021fba8c
+    .size Overlay006_PrepareTransition, .-Overlay006_PrepareTransition

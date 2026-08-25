@@ -14,8 +14,8 @@
     .extern GraphicsResourceSet_Destroy
     .extern data_020f4e18
     .extern gSoundContext
-    .global func_ov004_021fba28
-func_ov004_021fba28: ; 0x021fba28
+    .global Overlay004_LoadVariantResources
+Overlay004_LoadVariantResources: ; 0x021fba28
     stmdb sp!, {r4, lr}
     sub sp, sp, #0x10
     mov r4, r0
@@ -360,5 +360,5 @@ L_021fbf00: .word 0x21d
 L_021fbf04: .word 0x6880
 L_021fbf08: .word 0x21e
 L_021fbf0c: .word gSoundContext
-    .size func_ov004_021fba28, .-func_ov004_021fba28
+    .size Overlay004_LoadVariantResources, .-Overlay004_LoadVariantResources
 

@@ -70,7 +70,7 @@ static void overlay004_upload_resource_set(Overlay004GraphicsResourceSet *set,
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov004_021fba28(Overlay004VariantResourceState *state)
+void Overlay004_LoadVariantResources(Overlay004VariantResourceState *state)
 {
     Overlay004GraphicsResourceSet set;
     s32 finalId;

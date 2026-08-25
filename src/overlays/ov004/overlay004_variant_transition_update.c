@@ -34,9 +34,9 @@ extern s32 DisplayBrightness_IsMainTransitionComplete(void);
 extern void SceneSound_StopDirectSequence(void *state, s32 callbackId, s32 value);
 extern void *Heap_Alloc(s32 size, const void *tag, s32 alignment,
                         void *heapContext);
-extern void *func_ov004_021fb70c(void *memory, s32 variant,
+extern void *Overlay004_Presentation_Init(void *memory, s32 variant,
                                 void *currentResource);
-extern void func_ov004_021fb6e4(void *state, s32 first, s32 second);
+extern void Overlay004_SetCoordinateState(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
@@ -66,7 +66,7 @@ static void overlay004_destroy_helper(void *helper)
  * DisplayBrightness_IsMainTransitionComplete. Out-of-range variants then install callback 0x3D/value 0x10
  * and the pair at data_ov004_021fcd28. Valid variants disable +0x20 bit 10,
  * destroy the existing helper, re-enable the bit, allocate 0x15C bytes tagged
- * by data_ov004_021fcde4, construct func_ov004_021fb70c with variant and +0x60,
+ * by data_ov004_021fcde4, construct Overlay004_Presentation_Init with variant and +0x60,
  * store the result at +0x54, reset transition channel 3 to zero, and advance.
  * Phases three and four wait through inactive/active states, with phase four
  * applying -16. Phase five waits for inactive completion, installs the same
@@ -77,7 +77,7 @@ static void overlay004_destroy_helper(void *helper)
 #ifdef __cplusplus
 extern "C"
 #endif
-s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
+s32 Overlay004_UpdateVariantTransition(Overlay004VariantTransitionState *state)
 {
     switch (state->phase_004) {
     case 0:
@@ -102,7 +102,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
         }
         if (state->variant_058 < 1 || state->variant_058 > 10) {
             SceneSound_StopDirectSequence(state, 0x3d, 0x10);
-            func_ov004_021fb6e4(state, data_ov004_021fcd28[0],
+            Overlay004_SetCoordinateState(state, data_ov004_021fcd28[0],
                                 data_ov004_021fcd28[1]);
             break;
         }
@@ -117,7 +117,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
             void *memory =
                 Heap_Alloc(0x15c, data_ov004_021fcde4, 4, gHeapContext);
             if (memory != 0) {
-                memory = func_ov004_021fb70c(memory, state->variant_058,
+                memory = Overlay004_Presentation_Init(memory, state->variant_058,
                                              state->currentResource_060);
             }
             state->helper_054 = memory;
@@ -144,7 +144,7 @@ s32 func_ov004_021fcab8(Overlay004VariantTransitionState *state)
         SceneInputBase_Update(state->helper_054, 0);
         if (DisplayBrightness_IsMainTransitionComplete()) {
             SceneSound_StopDirectSequence(state, 0x3d, 0x10);
-            func_ov004_021fb6e4(state, data_ov004_021fcd58[0],
+            Overlay004_SetCoordinateState(state, data_ov004_021fcd58[0],
                                 data_ov004_021fcd58[1]);
         }
         break;

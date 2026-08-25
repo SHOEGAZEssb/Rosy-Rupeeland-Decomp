@@ -104,7 +104,7 @@ L_021fd014:
     bl Heap_Alloc
     cmp r0, #0x0
     beq L_021fd06c
-    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, Overlay002_Presentation_Init, Overlay003_PixelBuffer_Init, func_ov004_021fb6e0, func_ov005_021fb6e0, func_ov006_021fb6e0, func_ov007_021fb6e0, func_ov008_021fb6e0
+    bl func_ov000_021fb6e0 ; func_ov001_021fb6e0, Overlay002_Presentation_Init, Overlay003_PixelBuffer_Init, func_ov004_021fb6e0, func_ov005_021fb6e0, Overlay006_InitTransitionState, func_ov007_021fb6e0, func_ov008_021fb6e0
 L_021fd06c:
     ldr r1, L_021fd334
     str r0, [r4, #0x190]

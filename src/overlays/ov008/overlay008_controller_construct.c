@@ -40,7 +40,7 @@ extern void GraphicsSpriteState_SetAnimationIndex(void *member, s32 value);
 #ifdef __cplusplus
 extern "C"
 #endif
-void *func_ov008_021fb720(void *state, void *owner, s32 argument)
+void *Overlay008_Controller_Init(void *state, void *owner, s32 argument)
 {
     s32 index;
 

@@ -39,13 +39,13 @@ extern void *SpritePresentation_Init(void *memory, void *drawObject);
 extern void Presentation_SetPosition(void *object, s32 first, s32 second, s32 third);
 extern void Presentation_SetScript(void *object, const void *data, s32 mode);
 extern void GameWork_ClearFlag(void *gameWork, s32 flag);
-extern void func_ov005_021fc278(void *state);
-extern void *func_ov005_021fb86c(void *memory, void *owner,
+extern void Overlay005_SetupGraphics(void *state);
+extern void *Overlay005_ScenePopulation_Init(void *memory, void *owner,
                                 s32 createMarkers);
-extern void func_ov005_021fbd74(void *scene, s32 index);
+extern void Overlay005_SetSceneSelection(void *scene, s32 index);
 extern void func_ov005_021fbd64(void *scene, s32 first, s32 second);
 extern void *AreaInfoPanelPresentation_Init(void *memory, void *owner);
-extern void func_ov005_021fbe44(void *state, s32 first, s32 second);
+extern void Overlay005_InitTransitionState(void *state, s32 first, s32 second);
 #ifdef __cplusplus
 }
 #endif
@@ -72,21 +72,21 @@ static s16 overlay005_presentation_coordinate(s32 index, s32 offset)
  *
  * Read signed gGameWork halfwords +0x1DE/+0x12E/+0x1CE into +0x68/+0x6C/+0x70
  * and clamp each only above 11. Clear game-work flags 0x3D3..0x3D6 and invoke
- * func_ov005_021fc278. Allocate the 0x15C-byte populated scene tagged by
+ * Overlay005_SetupGraphics. Allocate the 0x15C-byte populated scene tagged by
  * data_ov005_021fcb14, constructing it with gDebugFont and markers disabled;
  * store +0x74, select index +0x68, set its context pair to 0 and the negated
  * data_ov005_021fc8f0 entry, and set scene +0x158 to one. Allocate a 0x3C-byte
  * helper tagged by data_ov005_021fcb1c, construct AreaInfoPanelPresentation_Init with gDebugFont,
  * and store +0x78. Derive +0x7C/+0x80 as 20.12 coordinates from record +0x18
  * and record +0x1A minus the same table entry. Set +0x20 bit 10, initialize
- * transition state from data_ov005_021fc9e8 through func_ov005_021fbe44, and
+ * transition state from data_ov005_021fc9e8 through Overlay005_InitTransitionState, and
  * return state. Allocator failure handling is delegated and several callees
  * are assumed by the original to succeed before later dereference.
  */
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay005Presentation *func_ov005_021fbe6c(Overlay005Presentation *state)
+Overlay005Presentation *Overlay005_Presentation_Init(Overlay005Presentation *state)
 {
     void *controller;
     void *scene;
@@ -125,15 +125,15 @@ Overlay005Presentation *func_ov005_021fbe6c(Overlay005Presentation *state)
     GameWork_ClearFlag(gGameWork, 0x3d4);
     GameWork_ClearFlag(gGameWork, 0x3d5);
     GameWork_ClearFlag(gGameWork, 0x3d6);
-    func_ov005_021fc278(state);
+    Overlay005_SetupGraphics(state);
 
     scene = Heap_Alloc(0x15c, data_ov005_021fcb14, 4, gHeapContext);
     if (scene != 0) {
-        scene = func_ov005_021fb86c(scene, gDebugFont, 0);
+        scene = Overlay005_ScenePopulation_Init(scene, gDebugFont, 0);
     }
     FIELD(void *, state, 0x074) = scene;
     selected = FIELD(s32, state, 0x068);
-    func_ov005_021fbd74(scene, selected);
+    Overlay005_SetSceneSelection(scene, selected);
     func_ov005_021fbd64(scene, 0, -data_ov005_021fc8f0[selected]);
     FIELD(s32, scene, 0x158) = 1;
 
@@ -149,7 +149,7 @@ Overlay005Presentation *func_ov005_021fbe6c(Overlay005Presentation *state)
          data_ov005_021fc8f0[selected])
         << 12;
     FIELD(u32, state, 0x020) |= 0x400;
-    func_ov005_021fbe44(state, data_ov005_021fc9e8[0],
+    Overlay005_InitTransitionState(state, data_ov005_021fc9e8[0],
                         data_ov005_021fc9e8[1]);
     return state;
 }

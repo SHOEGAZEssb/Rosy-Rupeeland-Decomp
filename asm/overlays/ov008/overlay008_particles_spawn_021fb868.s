@@ -4,8 +4,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov008/overlay008_particles_spawn.c. */
-    .global func_ov008_021fb868
-func_ov008_021fb868: ; 0x021fb868
+    .global Overlay008_SpawnParticles
+Overlay008_SpawnParticles: ; 0x021fb868
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, lr}
     mov r8, r1
     cmp r8, #0x1
@@ -326,4 +326,4 @@ L_021fbd10: .word 0xfffff19a
 L_021fbd14: .word 0x7ff
 L_021fbd18: .word 0xffffc99a
 
-    .size func_ov008_021fb868, . - func_ov008_021fb868
+    .size Overlay008_SpawnParticles, . - Overlay008_SpawnParticles

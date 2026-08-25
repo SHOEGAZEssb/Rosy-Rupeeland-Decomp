@@ -7,7 +7,7 @@
 .extern func_02091b98
 .extern func_02091c7c
 .extern SpriteMotionController_Update
-.extern func_ov005_021fbbe8
+.extern Overlay005_UpdateScenePopulation
 .extern func_ov046_0220c1a4
 
 
@@ -24,7 +24,7 @@ func_ov024_021fd86c:
     ldr r0, [r4, #0x2c0]
     bl func_ov046_0220c1a4
     ldr r0, [r4, #0x2bc]
-    bl func_ov005_021fbbe8
+    bl Overlay005_UpdateScenePopulation
     ldr r0, [r4, #0x7c]
     bl GraphicsSpriteGroup_AdvanceAnimations
     add r0, r4, #0x2c8

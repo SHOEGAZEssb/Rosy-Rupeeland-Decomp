@@ -28,7 +28,7 @@ extern void func_0209a2ac(void *object, const void *transform, s32 mode);
 #ifdef __cplusplus
 extern "C"
 #endif
-void func_ov008_021fbd1c(void *state)
+void Overlay008_UpdateParticles(void *state)
 {
     s32 index;
 

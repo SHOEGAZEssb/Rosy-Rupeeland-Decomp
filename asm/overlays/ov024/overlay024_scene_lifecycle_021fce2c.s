@@ -24,8 +24,8 @@
 .extern SpriteMotionController_BindSprite
 .extern SpriteMotionController_SetPosition
 .extern SpriteMotionController_Hide
-.extern func_ov005_021fb86c
-.extern func_ov005_021fbd74
+.extern Overlay005_ScenePopulation_Init
+.extern Overlay005_SetSceneSelection
 .extern func_ov024_021fce00
 .extern func_ov024_021fce04
 .extern func_ov024_021fd2f8
@@ -162,7 +162,7 @@ func_ov024_021fce2c:
     ldr r1, L_021fd11c
     mov r2, #0x1
     ldr r1, [r1, #0x0]
-    bl func_ov005_021fb86c
+    bl Overlay005_ScenePopulation_Init
 L_021fd018:
     str r0, [r4, #0x2bc]
     mov r1, #0x0
@@ -174,7 +174,7 @@ L_021fd018:
     str r0, [r4, #0x2b0]
     ldr r0, [r4, #0x2bc]
     ldr r1, [r4, #0x290]
-    bl func_ov005_021fbd74
+    bl Overlay005_SetSceneSelection
     ldr r1, L_021fd128
     ldr r3, L_021fd124
     mov r0, #0x118

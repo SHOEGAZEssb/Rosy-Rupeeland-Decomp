@@ -1,7 +1,7 @@
     .text
     .extern GraphicsSpriteGroup_AdvanceAnimations
-    .global func_ov004_021fbf10
-func_ov004_021fbf10: ; 0x021fbf10
+    .global Overlay004_UpdateContext
+Overlay004_UpdateContext: ; 0x021fbf10
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r2, [r4, #0x8c]
@@ -14,4 +14,4 @@ func_ov004_021fbf10: ; 0x021fbf10
     ldr r0, [r4, #0x64]
     bl GraphicsSpriteGroup_AdvanceAnimations
     ldmia sp!, {r4, pc}
-    .size func_ov004_021fbf10, .-func_ov004_021fbf10
+    .size Overlay004_UpdateContext, .-Overlay004_UpdateContext

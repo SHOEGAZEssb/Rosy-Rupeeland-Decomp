@@ -26,7 +26,7 @@ void func_ov041_02202a3c(void *);
 s32 func_ov041_02202aa4(void *);
 void func_ov041_02202adc(void *);
 void func_ov004_021fb868(void *, s32, s32, s32);
-void func_ov008_021fbd1c(void *);
+void Overlay008_UpdateParticles(void *);
 void func_ov070_02210320(void *);
 void VecFx32Object_Init(void *);
 void VecFx32Object_Assign(void *, const void *);
@@ -63,7 +63,7 @@ extern "C" void func_ov041_02202c34(void *object)
     s32 maxTurn = 0x200;
     if (FIELD(s32, object, 0x924) > 0) {
         FIELD(s32, object, 0x924)--;
-        func_ov008_021fbd1c(FIELD(void *, object, 0x958));
+        Overlay008_UpdateParticles(FIELD(void *, object, 0x958));
         return;
     }
 

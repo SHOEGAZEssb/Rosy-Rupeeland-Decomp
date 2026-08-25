@@ -46,11 +46,11 @@ extern void func_020708c4(void *resourceMember);
 extern void *GraphicsSpriteGroupOwner_CreateGroup(void *owner);
 extern void TitleInterpolatedValue_Configure(void *animation, s32 mode, s32 value, s32 target,
                           s32 duration);
-extern void func_ov004_021fbf40(Overlay004PresentationState *state);
-extern void func_ov004_021fb968(Overlay004PresentationState *state);
-extern void func_ov004_021fba28(Overlay004PresentationState *state);
-extern void func_ov004_021fc24c(Overlay004PresentationState *state);
-extern void func_ov004_021fb6e4(Overlay004PresentationState *state, s32 first,
+extern void Overlay004_SpriteController_Init(Overlay004PresentationState *state);
+extern void Overlay004_SetupBackgroundHardware(Overlay004PresentationState *state);
+extern void Overlay004_LoadVariantResources(Overlay004PresentationState *state);
+extern void Overlay004_ApplyAffineBackground(Overlay004PresentationState *state);
+extern void Overlay004_SetCoordinateState(Overlay004PresentationState *state, s32 first,
                                 s32 second);
 #ifdef __cplusplus
 }
@@ -70,7 +70,7 @@ extern void func_ov004_021fb6e4(Overlay004PresentationState *state, s32 first,
 #ifdef __cplusplus
 extern "C"
 #endif
-Overlay004PresentationState *func_ov004_021fb70c(
+Overlay004PresentationState *Overlay004_Presentation_Init(
     Overlay004PresentationState *state, s32 argument1, s32 argument2)
 {
     SceneInputBase_Init(state);
@@ -87,18 +87,18 @@ Overlay004PresentationState *func_ov004_021fb70c(
     func_020708c4(state->resource_054 + 4);
     state->context_060 = GraphicsSpriteGroupOwner_CreateGroup(data_020f4e14);
     state->fontContext_064 = GraphicsSpriteGroupOwner_CreateGroup(gDebugFont);
-    func_ov004_021fbf40(state);
+    Overlay004_SpriteController_Init(state);
     state->field_110 = 0;
     state->width_108 = 0x100;
     state->height_10c = 0xe0;
     state->field_154 = -1;
     TitleInterpolatedValue_Configure(state->animation_114, 2, 0x6000, 0x119a, 0xf0);
     TitleInterpolatedValue_Configure(state->animation_130, 4, 0x4000, 0x466, 0x50);
-    func_ov004_021fb968(state);
-    func_ov004_021fba28(state);
-    func_ov004_021fc24c(state);
+    Overlay004_SetupBackgroundHardware(state);
+    Overlay004_LoadVariantResources(state);
+    Overlay004_ApplyAffineBackground(state);
     state->flags_020 |= 0x400;
-    func_ov004_021fb6e4(state, data_ov004_021fcd30[0],
+    Overlay004_SetCoordinateState(state, data_ov004_021fcd30[0],
                         data_ov004_021fcd30[1]);
     return state;
 }

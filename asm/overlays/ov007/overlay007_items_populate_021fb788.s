@@ -18,8 +18,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov007/overlay007_items_populate.c. */
-    .global func_ov007_021fb788
-func_ov007_021fb788: ; 0x021fb788
+    .global Overlay007_PopulateItems
+Overlay007_PopulateItems: ; 0x021fb788
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x18
     mov r5, r0
@@ -244,4 +244,4 @@ L_021fbae4: .word data_ov007_021fc284
 L_021fbae8: .word 0x13ba
 L_021fbaec: .word 0x137f
 
-    .size func_ov007_021fb788, .-func_ov007_021fb788
+    .size Overlay007_PopulateItems, .-Overlay007_PopulateItems

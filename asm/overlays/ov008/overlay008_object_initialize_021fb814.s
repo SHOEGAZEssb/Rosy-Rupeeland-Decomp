@@ -3,8 +3,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov008/overlay008_object_initialize.c. */
-    .global func_ov008_021fb814
-func_ov008_021fb814:
+    .global Overlay008_InitializeObject
+Overlay008_InitializeObject:
     stmdb sp!, {r4, r5, r6, lr}
     mov r6, r1
     ldrb r1, [sp, #0x14]
@@ -26,4 +26,4 @@ func_ov008_021fb814:
     strh r1, [r6, #0x3e]
     strh r0, [r6, #0x40]
     ldmia sp!, {r4, r5, r6, pc}
-    .size func_ov008_021fb814, . - func_ov008_021fb814
+    .size Overlay008_InitializeObject, . - Overlay008_InitializeObject

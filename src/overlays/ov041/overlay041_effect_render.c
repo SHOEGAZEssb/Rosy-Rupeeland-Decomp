@@ -25,7 +25,7 @@ void func_0209c7e8(void *, s32);
 void func_0209c87c(void *, const Point2 *, const Point2 *, u16, s32);
 void Graphics3dPresentation_ConfigureOrthographicState(void *);
 void func_0209ca90(void *, const Point2 *, s32, u16, s32);
-void func_ov008_021fbe0c(void *, const void *);
+void Overlay008_RenderParticles(void *, const void *);
 u16 func_ov041_0220333c(void *, s32);
 u32 genrand_int32(void);
 extern s16 gFx32CosSinTable[];
@@ -367,6 +367,6 @@ extern "C" void func_ov041_02203434(void *object, const void *transform)
     void *renderContext =
         FIELD(void *, FIELD(void *, object, 0x48), 0x18);
     VecFx32Object_Assign((u8 *)renderContext + 0x84, transform);
-    func_ov008_021fbe0c(FIELD(void *, object, 0x958), transform);
+    Overlay008_RenderParticles(FIELD(void *, object, 0x958), transform);
     VecFx32Object_Destroy(localTransform);
 }

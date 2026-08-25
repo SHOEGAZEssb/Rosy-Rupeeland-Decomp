@@ -70,7 +70,7 @@ static s16 overlay005_record_coordinate(s32 index, s32 offset)
 extern "C"
 #endif
 Overlay005ScenePopulation *
-func_ov005_021fb86c(Overlay005ScenePopulation *state, void *owner,
+Overlay005_ScenePopulation_Init(Overlay005ScenePopulation *state, void *owner,
                      s32 createMarkers)
 {
     s32 index;

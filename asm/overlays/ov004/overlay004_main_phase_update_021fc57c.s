@@ -13,15 +13,15 @@
     .extern func_02070958
     .extern GraphicsSpriteRenderer_QueueStatePaletteUploads
     .extern Sound_IsEffectPlaying
-    .extern func_ov004_021fb6e4
-    .extern func_ov004_021fc24c
-    .extern func_ov004_021fbf10
+    .extern Overlay004_SetCoordinateState
+    .extern Overlay004_ApplyAffineBackground
+    .extern Overlay004_UpdateContext
     .extern data_020f4e14
     .extern gDebugFont
     .extern gSoundContext
     .extern data_ov004_021fcd50
-    .global func_ov004_021fc57c
-func_ov004_021fc57c: ; 0x021fc57c
+    .global Overlay004_UpdateMainPhase
+Overlay004_UpdateMainPhase: ; 0x021fc57c
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -231,12 +231,12 @@ L_021fc85c:
     ldr r1, L_021fc8e8
     mov r0, r4
     ldmia r1, {r1, r2}
-    bl func_ov004_021fb6e4
+    bl Overlay004_SetCoordinateState
 L_021fc8a8:
     mov r0, r4
-    bl func_ov004_021fc24c
+    bl Overlay004_ApplyAffineBackground
     mov r0, r4
-    bl func_ov004_021fbf10
+    bl Overlay004_UpdateContext
     mov r0, #0x0
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
@@ -250,4 +250,4 @@ L_021fc8dc: .word data_020f4e14
 L_021fc8e0: .word gDebugFont
 L_021fc8e4: .word gSoundContext
 L_021fc8e8: .word data_ov004_021fcd50
-    .size func_ov004_021fc57c, .-func_ov004_021fc57c
+    .size Overlay004_UpdateMainPhase, .-Overlay004_UpdateMainPhase

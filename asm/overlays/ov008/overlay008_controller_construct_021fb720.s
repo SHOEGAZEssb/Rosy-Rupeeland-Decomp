@@ -9,8 +9,8 @@
 
 /* Exact fallback; see documented portable reconstruction in
  * src/overlays/ov008/overlay008_controller_construct.c. */
-    .global func_ov008_021fb720
-func_ov008_021fb720:
+    .global Overlay008_Controller_Init
+Overlay008_Controller_Init:
     stmdb sp!, {r3, r4, r5, r6, r7, r8, r9, r10, r11, lr}
     sub sp, sp, #0x8
     mov r10, r0
@@ -73,4 +73,4 @@ L_021fb804: .word data_ov008_021fc2e4
 L_021fb808: .word VecFx32Object_Destroy
 L_021fb80c: .word VecFx32Object_Init
 L_021fb810: .word 0x12d8
-    .size func_ov008_021fb720, . - func_ov008_021fb720
+    .size Overlay008_Controller_Init, . - Overlay008_Controller_Init

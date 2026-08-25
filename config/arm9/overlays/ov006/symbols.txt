@@ -1,11 +1,11 @@
-func_ov006_021fb6e0 kind:function(arm,size=0x28) addr:0x021fb6e0
-func_ov006_021fb708 kind:function(arm,size=0x140) addr:0x021fb708
+Overlay006_InitTransitionState kind:function(arm,size=0x28) addr:0x021fb6e0
+Overlay006_Presentation_Init kind:function(arm,size=0x140) addr:0x021fb708
 func_ov006_021fb848 kind:function(arm,size=0x80) addr:0x021fb848
 func_ov006_021fb8c8 kind:function(arm,size=0x88) addr:0x021fb8c8
-func_ov006_021fb950 kind:function(arm,size=0x64) addr:0x021fb950
-func_ov006_021fb9b4 kind:function(arm,size=0xd8) addr:0x021fb9b4
-func_ov006_021fba8c kind:function(arm,size=0x70) addr:0x021fba8c
-func_ov006_021fbafc kind:function(arm,size=0x104) addr:0x021fbafc
+Overlay006_UpdateAuxiliaryToggle kind:function(arm,size=0x64) addr:0x021fb950
+Overlay006_InterpolateGeometry kind:function(arm,size=0xd8) addr:0x021fb9b4
+Overlay006_PrepareTransition kind:function(arm,size=0x70) addr:0x021fba8c
+Overlay006_UpdateSelectionInteraction kind:function(arm,size=0x104) addr:0x021fbafc
 func_ov006_021fbc00 kind:function(arm,size=0x24) addr:0x021fbc00
 data_ov006_021fbc40 kind:data(any) addr:0x021fbc40
 data_ov006_021fbc48 kind:data(any) addr:0x021fbc48

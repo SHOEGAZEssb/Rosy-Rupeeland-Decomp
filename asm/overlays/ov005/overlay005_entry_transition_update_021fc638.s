@@ -10,8 +10,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_entry_transition_update.c. */
-    .global func_ov005_021fc638
-func_ov005_021fc638: ; 0x021fc638
+    .global Overlay005_UpdateEntryTransition
+Overlay005_UpdateEntryTransition: ; 0x021fc638
     stmdb sp!, {r4, lr}
     mov r4, r0
     ldr r0, [r4, #0x4]
@@ -106,4 +106,4 @@ L_021fc77c:
 L_021fc78c: .word gGameWork
 L_021fc790: .word 0x3d3
 
-    .size func_ov005_021fc638, .-func_ov005_021fc638
+    .size Overlay005_UpdateEntryTransition, .-Overlay005_UpdateEntryTransition

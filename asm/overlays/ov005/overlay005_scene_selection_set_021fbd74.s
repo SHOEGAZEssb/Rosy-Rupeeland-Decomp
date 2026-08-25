@@ -4,8 +4,8 @@
 
     /* Exact fallback; see the documented portable reconstruction in
      * src/overlays/ov005/overlay005_scene_selection_set.c. */
-    .global func_ov005_021fbd74
-func_ov005_021fbd74: ; 0x021fbd74
+    .global Overlay005_SetSceneSelection
+Overlay005_SetSceneSelection: ; 0x021fbd74
     stmdb sp!, {r3, r4, lr}
     sub sp, sp, #0x4
     mov r4, r0
@@ -42,4 +42,4 @@ L_021fbda0:
     add sp, sp, #0x4
     ldmia sp!, {r3, r4, pc}
 
-    .size func_ov005_021fbd74, .-func_ov005_021fbd74
+    .size Overlay005_SetSceneSelection, .-Overlay005_SetSceneSelection
