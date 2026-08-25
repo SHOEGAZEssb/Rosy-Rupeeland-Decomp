@@ -1,6 +1,6 @@
 ; Matching retail form; see src/game/game_phase_touch_prompt_lifecycle.c.
 .text
-.extern data_020d5604
+.extern gGamePhaseTouchPromptVTable
 .extern FrameTask_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
@@ -25,5 +25,5 @@ L_02010360:
     bl FrameTask_DestroyBase
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_02010380: .word data_020d5604
+L_02010380: .word gGamePhaseTouchPromptVTable
     .size GamePhaseTouchPrompt_Destroy, . - GamePhaseTouchPrompt_Destroy

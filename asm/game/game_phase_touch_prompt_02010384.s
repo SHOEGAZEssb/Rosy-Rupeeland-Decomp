@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_touch_prompt_lifecycle.c.
 .text
 .extern Heap_Free
-.extern data_020d5604
+.extern gGamePhaseTouchPromptVTable
 .extern FrameTask_DestroyBase
 .extern AnimationResourceState_Destroy
 .extern GraphicsSpriteGroup_Destroy
@@ -28,5 +28,5 @@ L_020103ac:
     bl Heap_Free
     mov r0, r4
     ldmia sp!, {r4, pc}
-L_020103d4: .word data_020d5604
+L_020103d4: .word gGamePhaseTouchPromptVTable
     .size GamePhaseTouchPrompt_DestroyAndFree, . - GamePhaseTouchPrompt_DestroyAndFree

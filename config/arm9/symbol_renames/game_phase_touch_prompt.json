@@ -1,0 +1,13 @@
+{
+  "GamePhaseTouchPrompt_Init": "GamePhaseTouchPrompt_Init",
+  "GamePhaseTouchPrompt_Destroy": "GamePhaseTouchPrompt_Destroy",
+  "GamePhaseTouchPrompt_DestroyAndFree": "GamePhaseTouchPrompt_DestroyAndFree",
+  "GamePhaseTouchPrompt_Update": "GamePhaseTouchPrompt_Update",
+  "GamePhaseTouchPrompt_SetEnabled": "GamePhaseTouchPrompt_SetEnabled",
+  "GamePhaseTouchPrompt_UpdateInteraction": "GamePhaseTouchPrompt_UpdateInteraction",
+  "GamePhaseTouchPrompt_UpdateHideSequence": "GamePhaseTouchPrompt_UpdateHideSequence",
+  "GamePhaseTouchPrompt_UpdateAlternateHideSequence": "GamePhaseTouchPrompt_UpdateAlternateHideSequence",
+  "gGamePhaseTouchPromptAllocationTag": "gGamePhaseTouchPromptAllocationTag",
+  "data_020d5604": "gGamePhaseTouchPromptVTable",
+  "gGamePhaseTouchPromptActorAllocationTag": "gGamePhaseTouchPromptActorAllocationTag"
+}

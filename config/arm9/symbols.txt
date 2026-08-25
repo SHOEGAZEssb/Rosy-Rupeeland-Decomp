@@ -6851,7 +6851,7 @@ data_020d55c0 kind:data(any) addr:0x020d55c0
 data_020d55c8 kind:data(any) addr:0x020d55c8
 gGamePhaseVisualEffectVTable kind:data(any) addr:0x020d55e0
 data_020d55f0 kind:data(any) addr:0x020d55f0
-data_020d5604 kind:data(any) addr:0x020d5604
+gGamePhaseTouchPromptVTable kind:data(any) addr:0x020d5604
 data_020d5610 kind:data(any) addr:0x020d5610
 gGamePhaseTouchPromptActorAllocationTag kind:data(any) addr:0x020d5628
 data_020d5630 kind:data(any) addr:0x020d5630

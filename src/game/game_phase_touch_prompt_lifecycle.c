@@ -7,7 +7,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-extern const void *data_020d5604;
 extern const char gGamePhaseTouchPromptActorAllocationTag[];
 extern void *data_020f4e14;
 extern void *data_020f4e18;
@@ -36,8 +35,8 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
     GraphicsSpriteState *sprite;
     void *spriteState;
 
-    FrameTask_Construct((FrameTask *)self);
-    self->vtable = data_020d5604;
+    FrameTask_Construct(&self->base);
+    self->base.vtable = &gGamePhaseTouchPromptVTable;
     self->owner = owner;
     AnimationResourceState_InitEmbedded(&self->resources);
     self->enabled = 1;
@@ -69,12 +68,12 @@ GamePhaseTouchPrompt *GamePhaseTouchPrompt_Init(GamePhaseTouchPrompt *self, void
  */
 GamePhaseTouchPrompt *GamePhaseTouchPrompt_Destroy(GamePhaseTouchPrompt *self)
 {
-    self->vtable = data_020d5604;
+    self->base.vtable = &gGamePhaseTouchPromptVTable;
     if (self->actor)
         ((void (*)(void *))(*(void ***)self->actor)[1])(self->actor);
     GraphicsSpriteGroup_Destroy(self->spriteGroup);
     AnimationResourceState_Destroy(&self->resources);
-    FrameTask_DestroyBase((FrameTask *)self);
+    FrameTask_DestroyBase(&self->base);
     return self;
 }
 

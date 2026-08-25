@@ -1,6 +1,7 @@
 #include "tingle/frame_task.h"
 #include "tingle/game_work.h"
 #include "tingle/game_phase_runtime.h"
+#include "tingle/game_phase_touch_prompt.h"
 #include "tingle/heap.h"
 #include "tingle/overlay_manager.h"
 #include "tingle/scene.h"
@@ -28,7 +29,6 @@ extern void GamePhaseState_Init(void *object);
 extern void ActorMotionAreaFollower_Init(void *object, void *source);
 extern void ActorMotionGameWork_Init(void *object);
 extern void func_020ae90c(void *object);
-extern void *GamePhaseTouchPrompt_Init(void *task, GamePhaseRuntime *runtime);
 extern void GamePhaseRuntime_CreateFieldLoader(GamePhaseRuntime *runtime);
 extern void GXS_SetGraphicsMode(u32 bgMode);
 extern void DisplayController_SetVerticalOffset(s32 value);
@@ -51,7 +51,6 @@ extern void GamePhaseRuntime_SetDisplayRouting(s32 value);
 extern void func_02020060(void *object, const void *config);
 extern void GamePhaseCurrencyHud_SetVisible(void *object, s32 enabled);
 extern void GamePhaseAreaScene_ApplyRevealedRegions(void *object, void *source);
-extern void GamePhaseTouchPrompt_SetEnabled(FrameTask *task, s32 enabled);
 
 #ifdef __cplusplus
 }
@@ -66,7 +65,7 @@ extern void GamePhaseTouchPrompt_SetEnabled(FrameTask *task, s32 enabled);
 GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
 {
     u8 *bytes = (u8 *)self;
-    void *task;
+    GamePhaseTouchPrompt *task;
 
     Scene_Init((Scene *)self);
     self->vtable = gGamePhaseRuntimeVTable;
@@ -92,10 +91,13 @@ GamePhaseRuntime *GamePhaseRuntime_Init(GamePhaseRuntime *self)
 
     gGamePhaseRuntime = self;
     self->field_04 = 1;
-    task = Heap_Alloc(0x30, (const char *)gGamePhaseTouchPromptAllocationTag, 4, &gHeapContext);
+    task = (GamePhaseTouchPrompt *)Heap_Alloc(
+        sizeof(GamePhaseTouchPrompt),
+        (const char *)gGamePhaseTouchPromptAllocationTag, 4, &gHeapContext);
     if (task != 0)
         task = GamePhaseTouchPrompt_Init(task, self);
-    gGamePhaseTouchPromptTaskNode = FrameTaskList_Add((FrameTask *)task, 0);
+    gGamePhaseTouchPromptTaskNode =
+        FrameTaskList_Add(task != 0 ? &task->base : 0, 0);
 
     GamePhaseRuntime_CreateFieldLoader(self);
     return self;
@@ -213,7 +215,8 @@ void GamePhaseRuntime_Configure(GamePhaseRuntime *self, const void *configPointe
     }
 
     *(void **)(bytes + 0x30f0) = entity;
-    GamePhaseTouchPrompt_SetEnabled(gGamePhaseTouchPromptTaskNode->task, 1);
+    GamePhaseTouchPrompt_SetEnabled(
+        (GamePhaseTouchPrompt *)gGamePhaseTouchPromptTaskNode->task, 1);
     *(u32 *)(bytes + 0x30b8) |= 0x30;
     Scene_SetFlags03((Scene *)self);
 }

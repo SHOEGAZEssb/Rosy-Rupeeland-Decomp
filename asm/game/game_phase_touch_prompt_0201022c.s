@@ -1,7 +1,7 @@
 ; Matching retail form; see src/game/game_phase_touch_prompt_lifecycle.c.
 .text
 .extern Heap_Alloc
-.extern data_020d5604
+.extern gGamePhaseTouchPromptVTable
 .extern gGamePhaseTouchPromptActorAllocationTag
 .extern data_020f4e14
 .extern data_020f4e18
@@ -79,7 +79,7 @@ L_020102d8:
     orr r1, r1, #0x2
     strh r1, [r2, #0x24]
     ldmia sp!, {r3, r4, r5, pc}
-L_02010320: .word data_020d5604
+L_02010320: .word gGamePhaseTouchPromptVTable
 L_02010324: .word data_020f4e14
 L_02010328: .word 0x329a
 L_0201032c: .word data_020f4e18
